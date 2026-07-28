@@ -13,58 +13,75 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
-export type AggregateRequestFilteredDataQualityStandardItemEnum = "dataQualityUnknown" | "dataQualityBloodPressureEsh2002" | "dataQualityBloodPressureEsh2010" | "dataQualityBloodPressureAami" | "dataQualityBloodPressureBhsAA" | "dataQualityBloodPressureBhsAB" | "dataQualityBloodPressureBhsBA" | "dataQualityBloodPressureBhsBB" | "dataQualityBloodGlucoseIso151972003" | "dataQualityBloodGlucoseIso151972013";
-export const AggregateRequestFilteredDataQualityStandardItemEnum = /*@__PURE__*/ S.String;
+export type AggregateRequestFilteredDataQualityStandardItemEnum =
+  | "dataQualityUnknown"
+  | "dataQualityBloodPressureEsh2002"
+  | "dataQualityBloodPressureEsh2010"
+  | "dataQualityBloodPressureAami"
+  | "dataQualityBloodPressureBhsAA"
+  | "dataQualityBloodPressureBhsAB"
+  | "dataQualityBloodPressureBhsBA"
+  | "dataQualityBloodPressureBhsBB"
+  | "dataQualityBloodGlucoseIso151972003"
+  | "dataQualityBloodGlucoseIso151972013";
+export const AggregateRequestFilteredDataQualityStandardItemEnum =
+  /*@__PURE__*/ S.String;
 
-export type AggregateRequestFilteredDataQualityStandardItemEnumList = ReadonlyArray<AggregateRequestFilteredDataQualityStandardItemEnum | (string & {})>;
-export const AggregateRequestFilteredDataQualityStandardItemEnumList = /*@__PURE__*/ S.Array(AggregateRequestFilteredDataQualityStandardItemEnum) as any as S.Schema<AggregateRequestFilteredDataQualityStandardItemEnumList>;
+export type AggregateRequestFilteredDataQualityStandardItemEnumList =
+  ReadonlyArray<
+    AggregateRequestFilteredDataQualityStandardItemEnum | (string & {})
+  >;
+export const AggregateRequestFilteredDataQualityStandardItemEnumList =
+  /*@__PURE__*/ S.Array(
+    AggregateRequestFilteredDataQualityStandardItemEnum,
+  ) as any as S.Schema<AggregateRequestFilteredDataQualityStandardItemEnumList>;
 
 /** The specification of which data to aggregate. */
 export interface AggregateBy {
@@ -74,14 +91,16 @@ export interface AggregateBy {
   dataSourceId?: string;
 }
 export const AggregateBy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dataTypeName": S.optional(S.String),
-  "dataSourceId": S.optional(S.String),
-}),
+  S.Struct({
+    dataTypeName: S.optional(S.String),
+    dataSourceId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "AggregateBy" }) as any as S.Schema<AggregateBy>;
 
 export type AggregateByList = ReadonlyArray<AggregateBy>;
-export const AggregateByList = /*@__PURE__*/ S.Array(AggregateBy) as any as S.Schema<AggregateByList>;
+export const AggregateByList = /*@__PURE__*/ S.Array(
+  AggregateBy,
+) as any as S.Schema<AggregateByList>;
 
 export interface BucketByActivity {
   /** Specifies that only activity segments of duration longer than minDurationMillis are considered and used as a container for aggregated data. */
@@ -90,21 +109,25 @@ export interface BucketByActivity {
   activityDataSourceId?: string;
 }
 export const BucketByActivity = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "minDurationMillis": S.optional(S.String),
-  "activityDataSourceId": S.optional(S.String),
-}),
-).annotate({ identifier: "BucketByActivity" }) as any as S.Schema<BucketByActivity>;
+  S.Struct({
+    minDurationMillis: S.optional(S.String),
+    activityDataSourceId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BucketByActivity",
+}) as any as S.Schema<BucketByActivity>;
 
 export interface BucketBySession {
   /** Specifies that only sessions of duration longer than minDurationMillis are considered and used as a container for aggregated data. */
   minDurationMillis?: string;
 }
 export const BucketBySession = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "minDurationMillis": S.optional(S.String),
-}),
-).annotate({ identifier: "BucketBySession" }) as any as S.Schema<BucketBySession>;
+  S.Struct({
+    minDurationMillis: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BucketBySession",
+}) as any as S.Schema<BucketBySession>;
 
 export type BucketByTimePeriodTypeEnum = "day" | "week" | "month";
 export const BucketByTimePeriodTypeEnum = /*@__PURE__*/ S.String;
@@ -116,12 +139,14 @@ export interface BucketByTimePeriod {
   timeZoneId?: string;
 }
 export const BucketByTimePeriod = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "value": S.optional(S.Number),
-  "type": S.optional(BucketByTimePeriodTypeEnum),
-  "timeZoneId": S.optional(S.String),
-}),
-).annotate({ identifier: "BucketByTimePeriod" }) as any as S.Schema<BucketByTimePeriod>;
+  S.Struct({
+    value: S.optional(S.Number),
+    type: S.optional(BucketByTimePeriodTypeEnum),
+    timeZoneId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BucketByTimePeriod",
+}) as any as S.Schema<BucketByTimePeriod>;
 
 export interface BucketByTime {
   /** Specifies that result buckets aggregate data by exactly durationMillis time frames. Time frames that contain no data will be included in the response with an empty dataset. */
@@ -129,10 +154,10 @@ export interface BucketByTime {
   period?: BucketByTimePeriod;
 }
 export const BucketByTime = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "durationMillis": S.optional(S.String),
-  "period": S.optional(BucketByTimePeriod),
-}),
+  S.Struct({
+    durationMillis: S.optional(S.String),
+    period: S.optional(BucketByTimePeriod),
+  }),
 ).annotate({ identifier: "BucketByTime" }) as any as S.Schema<BucketByTime>;
 
 /** Next id: 10 */
@@ -155,17 +180,21 @@ export interface AggregateRequest {
   bucketByTime?: BucketByTime;
 }
 export const AggregateRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filteredDataQualityStandard": S.optional(AggregateRequestFilteredDataQualityStandardItemEnumList),
-  "endTimeMillis": S.optional(S.String),
-  "aggregateBy": S.optional(AggregateByList),
-  "bucketByActivitySegment": S.optional(BucketByActivity),
-  "bucketBySession": S.optional(BucketBySession),
-  "startTimeMillis": S.optional(S.String),
-  "bucketByActivityType": S.optional(BucketByActivity),
-  "bucketByTime": S.optional(BucketByTime),
-}),
-).annotate({ identifier: "AggregateRequest" }) as any as S.Schema<AggregateRequest>;
+  S.Struct({
+    filteredDataQualityStandard: S.optional(
+      AggregateRequestFilteredDataQualityStandardItemEnumList,
+    ),
+    endTimeMillis: S.optional(S.String),
+    aggregateBy: S.optional(AggregateByList),
+    bucketByActivitySegment: S.optional(BucketByActivity),
+    bucketBySession: S.optional(BucketBySession),
+    startTimeMillis: S.optional(S.String),
+    bucketByActivityType: S.optional(BucketByActivity),
+    bucketByTime: S.optional(BucketByTime),
+  }),
+).annotate({
+  identifier: "AggregateRequest",
+}) as any as S.Schema<AggregateRequest>;
 
 export interface AggregateUsersDatasetRequest {
   /** Aggregate data for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. */
@@ -174,11 +203,19 @@ export interface AggregateUsersDatasetRequest {
   body?: AggregateRequest;
 }
 export const AggregateUsersDatasetRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "userId": S.String.pipe(T.Label()),
-  "body": S.optional(AggregateRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"{userId}/dataset:aggregate","baseUrl":"https://fitness.googleapis.com/fitness/v1/users/"})),
-).annotate({ identifier: "AggregateUsersDatasetRequest" }) as any as S.Schema<AggregateUsersDatasetRequest>;
+  S.Struct({
+    userId: S.String.pipe(T.Label()),
+    body: S.optional(AggregateRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "{userId}/dataset:aggregate",
+      baseUrl: "https://fitness.googleapis.com/fitness/v1/users/",
+    }),
+  ),
+).annotate({
+  identifier: "AggregateUsersDatasetRequest",
+}) as any as S.Schema<AggregateUsersDatasetRequest>;
 
 export interface Application {
   /** Package name for this application. This is used as a unique identifier when created by Android applications, but cannot be specified by REST clients. REST clients will have their developer project number reflected into the Data Source data stream IDs, instead of the packageName. */
@@ -191,12 +228,12 @@ export interface Application {
   name?: string;
 }
 export const Application = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "packageName": S.optional(S.String),
-  "version": S.optional(S.String),
-  "detailsUrl": S.optional(S.String),
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    packageName: S.optional(S.String),
+    version: S.optional(S.String),
+    detailsUrl: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Application" }) as any as S.Schema<Application>;
 
 /** Sessions contain metadata, such as a user-friendly name and time interval information. */
@@ -221,20 +258,25 @@ export interface Session {
   endTimeMillis?: string;
 }
 export const Session = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "startTimeMillis": S.optional(S.String),
-  "id": S.optional(S.String),
-  "application": S.optional(Application),
-  "activityType": S.optional(S.Number),
-  "activeTimeMillis": S.optional(S.String),
-  "name": S.optional(S.String),
-  "modifiedTimeMillis": S.optional(S.String),
-  "description": S.optional(S.String),
-  "endTimeMillis": S.optional(S.String),
-}),
+  S.Struct({
+    startTimeMillis: S.optional(S.String),
+    id: S.optional(S.String),
+    application: S.optional(Application),
+    activityType: S.optional(S.Number),
+    activeTimeMillis: S.optional(S.String),
+    name: S.optional(S.String),
+    modifiedTimeMillis: S.optional(S.String),
+    description: S.optional(S.String),
+    endTimeMillis: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Session" }) as any as S.Schema<Session>;
 
-export type AggregateBucketTypeEnum = "unknown" | "time" | "session" | "activityType" | "activitySegment";
+export type AggregateBucketTypeEnum =
+  | "unknown"
+  | "time"
+  | "session"
+  | "activityType"
+  | "activitySegment";
 export const AggregateBucketTypeEnum = /*@__PURE__*/ S.String;
 
 /** Holder object for the value of an entry in a map field of a data point. A map value supports a subset of the formats that the regular Value supports. */
@@ -243,9 +285,9 @@ export interface MapValue {
   fpVal?: number;
 }
 export const MapValue = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fpVal": S.optional(S.Number),
-}),
+  S.Struct({
+    fpVal: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "MapValue" }) as any as S.Schema<MapValue>;
 
 export interface ValueMapValEntry {
@@ -253,14 +295,18 @@ export interface ValueMapValEntry {
   value?: MapValue;
 }
 export const ValueMapValEntry = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "key": S.optional(S.String),
-  "value": S.optional(MapValue),
-}),
-).annotate({ identifier: "ValueMapValEntry" }) as any as S.Schema<ValueMapValEntry>;
+  S.Struct({
+    key: S.optional(S.String),
+    value: S.optional(MapValue),
+  }),
+).annotate({
+  identifier: "ValueMapValEntry",
+}) as any as S.Schema<ValueMapValEntry>;
 
 export type ValueMapValEntryList = ReadonlyArray<ValueMapValEntry>;
-export const ValueMapValEntryList = /*@__PURE__*/ S.Array(ValueMapValEntry) as any as S.Schema<ValueMapValEntryList>;
+export const ValueMapValEntryList = /*@__PURE__*/ S.Array(
+  ValueMapValEntry,
+) as any as S.Schema<ValueMapValEntryList>;
 
 /** Holder object for the value of a single field in a data point. A field value has a particular format and is only ever set to one of an integer or a floating point value. */
 export interface Value {
@@ -274,16 +320,18 @@ export interface Value {
   stringVal?: string;
 }
 export const Value = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "mapVal": S.optional(ValueMapValEntryList),
-  "fpVal": S.optional(S.Number),
-  "intVal": S.optional(S.Number),
-  "stringVal": S.optional(S.String),
-}),
+  S.Struct({
+    mapVal: S.optional(ValueMapValEntryList),
+    fpVal: S.optional(S.Number),
+    intVal: S.optional(S.Number),
+    stringVal: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Value" }) as any as S.Schema<Value>;
 
 export type ValueList = ReadonlyArray<Value>;
-export const ValueList = /*@__PURE__*/ S.Array(Value) as any as S.Schema<ValueList>;
+export const ValueList = /*@__PURE__*/ S.Array(
+  Value,
+) as any as S.Schema<ValueList>;
 
 /** Represents a single data point, generated by a particular data source. A data point holds a value for each field, an end timestamp and an optional start time. The exact semantics of each of these attributes are specified in the documentation for the particular data type. A data point can represent an instantaneous measurement, reading or input observation, as well as averages or aggregates over a time interval. Check the data type documentation to determine which is the case for a particular data type. Data points always contain one value for each field of the data type. */
 export interface DataPoint {
@@ -305,20 +353,22 @@ export interface DataPoint {
   endTimeNanos?: string;
 }
 export const DataPoint = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "originDataSourceId": S.optional(S.String),
-  "modifiedTimeMillis": S.optional(S.String),
-  "startTimeNanos": S.optional(S.String),
-  "value": S.optional(ValueList),
-  "rawTimestampNanos": S.optional(S.String),
-  "dataTypeName": S.optional(S.String),
-  "computationTimeMillis": S.optional(S.String),
-  "endTimeNanos": S.optional(S.String),
-}),
+  S.Struct({
+    originDataSourceId: S.optional(S.String),
+    modifiedTimeMillis: S.optional(S.String),
+    startTimeNanos: S.optional(S.String),
+    value: S.optional(ValueList),
+    rawTimestampNanos: S.optional(S.String),
+    dataTypeName: S.optional(S.String),
+    computationTimeMillis: S.optional(S.String),
+    endTimeNanos: S.optional(S.String),
+  }),
 ).annotate({ identifier: "DataPoint" }) as any as S.Schema<DataPoint>;
 
 export type DataPointList = ReadonlyArray<DataPoint>;
-export const DataPointList = /*@__PURE__*/ S.Array(DataPoint) as any as S.Schema<DataPointList>;
+export const DataPointList = /*@__PURE__*/ S.Array(
+  DataPoint,
+) as any as S.Schema<DataPointList>;
 
 /** A dataset represents a projection container for data points. They do not carry any info of their own. Datasets represent a set of data points from a particular data source. A data point can be found in more than one dataset. */
 export interface Dataset {
@@ -334,17 +384,19 @@ export interface Dataset {
   dataSourceId?: string;
 }
 export const Dataset = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "minStartTimeNs": S.optional(S.String),
-  "point": S.optional(DataPointList),
-  "maxEndTimeNs": S.optional(S.String),
-  "dataSourceId": S.optional(S.String),
-}),
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    minStartTimeNs: S.optional(S.String),
+    point: S.optional(DataPointList),
+    maxEndTimeNs: S.optional(S.String),
+    dataSourceId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Dataset" }) as any as S.Schema<Dataset>;
 
 export type DatasetList = ReadonlyArray<Dataset>;
-export const DatasetList = /*@__PURE__*/ S.Array(Dataset) as any as S.Schema<DatasetList>;
+export const DatasetList = /*@__PURE__*/ S.Array(
+  Dataset,
+) as any as S.Schema<DatasetList>;
 
 export interface AggregateBucket {
   /** Available for Bucket.Type.SESSION */
@@ -361,30 +413,43 @@ export interface AggregateBucket {
   activity?: number;
 }
 export const AggregateBucket = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "session": S.optional(Session),
-  "endTimeMillis": S.optional(S.String),
-  "type": S.optional(AggregateBucketTypeEnum),
-  "dataset": S.optional(DatasetList),
-  "startTimeMillis": S.optional(S.String),
-  "activity": S.optional(S.Number),
-}),
-).annotate({ identifier: "AggregateBucket" }) as any as S.Schema<AggregateBucket>;
+  S.Struct({
+    session: S.optional(Session),
+    endTimeMillis: S.optional(S.String),
+    type: S.optional(AggregateBucketTypeEnum),
+    dataset: S.optional(DatasetList),
+    startTimeMillis: S.optional(S.String),
+    activity: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "AggregateBucket",
+}) as any as S.Schema<AggregateBucket>;
 
 export type AggregateBucketList = ReadonlyArray<AggregateBucket>;
-export const AggregateBucketList = /*@__PURE__*/ S.Array(AggregateBucket) as any as S.Schema<AggregateBucketList>;
+export const AggregateBucketList = /*@__PURE__*/ S.Array(
+  AggregateBucket,
+) as any as S.Schema<AggregateBucketList>;
 
 export interface AggregateResponse {
   /** A list of buckets containing the aggregated data. */
   bucket?: AggregateBucketList;
 }
 export const AggregateResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.optional(AggregateBucketList),
-}),
-).annotate({ identifier: "AggregateResponse" }) as any as S.Schema<AggregateResponse>;
+  S.Struct({
+    bucket: S.optional(AggregateBucketList),
+  }),
+).annotate({
+  identifier: "AggregateResponse",
+}) as any as S.Schema<AggregateResponse>;
 
-export type DataTypeFieldFormatEnum = "integer" | "floatPoint" | "string" | "map" | "integerList" | "floatList" | "blob";
+export type DataTypeFieldFormatEnum =
+  | "integer"
+  | "floatPoint"
+  | "string"
+  | "map"
+  | "integerList"
+  | "floatList"
+  | "blob";
 export const DataTypeFieldFormatEnum = /*@__PURE__*/ S.String;
 
 /** In case of multi-dimensional data (such as an accelerometer with x, y, and z axes) each field represents one dimension. Each data type field has a unique name which identifies it. The field also defines the format of the data (int, float, etc.). This message is only instantiated in code and not used for wire comms or stored in any way. */
@@ -396,15 +461,17 @@ export interface DataTypeField {
   optional?: boolean;
 }
 export const DataTypeField = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "format": S.optional(DataTypeFieldFormatEnum),
-  "optional": S.optional(S.Boolean),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    format: S.optional(DataTypeFieldFormatEnum),
+    optional: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "DataTypeField" }) as any as S.Schema<DataTypeField>;
 
 export type DataTypeFieldList = ReadonlyArray<DataTypeField>;
-export const DataTypeFieldList = /*@__PURE__*/ S.Array(DataTypeField) as any as S.Schema<DataTypeFieldList>;
+export const DataTypeFieldList = /*@__PURE__*/ S.Array(
+  DataTypeField,
+) as any as S.Schema<DataTypeFieldList>;
 
 export interface DataType {
   /** Each data type has a unique, namespaced, name. All data types in the com.google namespace are shared as part of the platform. */
@@ -413,19 +480,40 @@ export interface DataType {
   field?: DataTypeFieldList;
 }
 export const DataType = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "field": S.optional(DataTypeFieldList),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    field: S.optional(DataTypeFieldList),
+  }),
 ).annotate({ identifier: "DataType" }) as any as S.Schema<DataType>;
 
-export type DataSourceDataQualityStandardItemEnum = "dataQualityUnknown" | "dataQualityBloodPressureEsh2002" | "dataQualityBloodPressureEsh2010" | "dataQualityBloodPressureAami" | "dataQualityBloodPressureBhsAA" | "dataQualityBloodPressureBhsAB" | "dataQualityBloodPressureBhsBA" | "dataQualityBloodPressureBhsBB" | "dataQualityBloodGlucoseIso151972003" | "dataQualityBloodGlucoseIso151972013";
+export type DataSourceDataQualityStandardItemEnum =
+  | "dataQualityUnknown"
+  | "dataQualityBloodPressureEsh2002"
+  | "dataQualityBloodPressureEsh2010"
+  | "dataQualityBloodPressureAami"
+  | "dataQualityBloodPressureBhsAA"
+  | "dataQualityBloodPressureBhsAB"
+  | "dataQualityBloodPressureBhsBA"
+  | "dataQualityBloodPressureBhsBB"
+  | "dataQualityBloodGlucoseIso151972003"
+  | "dataQualityBloodGlucoseIso151972013";
 export const DataSourceDataQualityStandardItemEnum = /*@__PURE__*/ S.String;
 
-export type DataSourceDataQualityStandardItemEnumList = ReadonlyArray<DataSourceDataQualityStandardItemEnum>;
-export const DataSourceDataQualityStandardItemEnumList = /*@__PURE__*/ S.Array(DataSourceDataQualityStandardItemEnum) as any as S.Schema<DataSourceDataQualityStandardItemEnumList>;
+export type DataSourceDataQualityStandardItemEnumList =
+  ReadonlyArray<DataSourceDataQualityStandardItemEnum>;
+export const DataSourceDataQualityStandardItemEnumList = /*@__PURE__*/ S.Array(
+  DataSourceDataQualityStandardItemEnum,
+) as any as S.Schema<DataSourceDataQualityStandardItemEnumList>;
 
-export type DeviceTypeEnum = "unknown" | "phone" | "tablet" | "watch" | "chestStrap" | "scale" | "headMounted" | "smartDisplay";
+export type DeviceTypeEnum =
+  | "unknown"
+  | "phone"
+  | "tablet"
+  | "watch"
+  | "chestStrap"
+  | "scale"
+  | "headMounted"
+  | "smartDisplay";
 export const DeviceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Representation of an integrated device (such as a phone or a wearable) that can hold sensors. Each sensor is exposed as a data source. The main purpose of the device information contained in this class is to identify the hardware of a particular data source. This can be useful in different ways, including: - Distinguishing two similar sensors on different devices (the step counter on two nexus 5 phones, for instance) - Display the source of data to the user (by using the device make / model) - Treat data differently depending on sensor type (accelerometers on a watch may give different patterns than those on a phone) - Build different analysis models for each device/version. */
@@ -442,13 +530,13 @@ export interface Device {
   type?: DeviceTypeEnum;
 }
 export const Device = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "manufacturer": S.optional(S.String),
-  "model": S.optional(S.String),
-  "uid": S.optional(S.String),
-  "version": S.optional(S.String),
-  "type": S.optional(DeviceTypeEnum),
-}),
+  S.Struct({
+    manufacturer: S.optional(S.String),
+    model: S.optional(S.String),
+    uid: S.optional(S.String),
+    version: S.optional(S.String),
+    type: S.optional(DeviceTypeEnum),
+  }),
 ).annotate({ identifier: "Device" }) as any as S.Schema<Device>;
 
 export type DataSourceTypeEnum = "raw" | "derived";
@@ -474,16 +562,16 @@ export interface DataSource {
   type?: DataSourceTypeEnum;
 }
 export const DataSource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "application": S.optional(Application),
-  "dataStreamId": S.optional(S.String),
-  "dataType": S.optional(DataType),
-  "dataQualityStandard": S.optional(DataSourceDataQualityStandardItemEnumList),
-  "name": S.optional(S.String),
-  "dataStreamName": S.optional(S.String),
-  "device": S.optional(Device),
-  "type": S.optional(DataSourceTypeEnum),
-}),
+  S.Struct({
+    application: S.optional(Application),
+    dataStreamId: S.optional(S.String),
+    dataType: S.optional(DataType),
+    dataQualityStandard: S.optional(DataSourceDataQualityStandardItemEnumList),
+    name: S.optional(S.String),
+    dataStreamName: S.optional(S.String),
+    device: S.optional(Device),
+    type: S.optional(DataSourceTypeEnum),
+  }),
 ).annotate({ identifier: "DataSource" }) as any as S.Schema<DataSource>;
 
 export interface CreateUsersDataSourcesRequest {
@@ -493,11 +581,19 @@ export interface CreateUsersDataSourcesRequest {
   body?: DataSource;
 }
 export const CreateUsersDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "userId": S.String.pipe(T.Label()),
-  "body": S.optional(DataSource.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"{userId}/dataSources","baseUrl":"https://fitness.googleapis.com/fitness/v1/users/"})),
-).annotate({ identifier: "CreateUsersDataSourcesRequest" }) as any as S.Schema<CreateUsersDataSourcesRequest>;
+  S.Struct({
+    userId: S.String.pipe(T.Label()),
+    body: S.optional(DataSource.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "{userId}/dataSources",
+      baseUrl: "https://fitness.googleapis.com/fitness/v1/users/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateUsersDataSourcesRequest",
+}) as any as S.Schema<CreateUsersDataSourcesRequest>;
 
 export interface DeleteUsersDataSourcesRequest {
   /** Retrieve a data source for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. */
@@ -506,11 +602,19 @@ export interface DeleteUsersDataSourcesRequest {
   dataSourceId: string;
 }
 export const DeleteUsersDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "userId": S.String.pipe(T.Label()),
-  "dataSourceId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"{userId}/dataSources/{dataSourceId}","baseUrl":"https://fitness.googleapis.com/fitness/v1/users/"})),
-).annotate({ identifier: "DeleteUsersDataSourcesRequest" }) as any as S.Schema<DeleteUsersDataSourcesRequest>;
+  S.Struct({
+    userId: S.String.pipe(T.Label()),
+    dataSourceId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "{userId}/dataSources/{dataSourceId}",
+      baseUrl: "https://fitness.googleapis.com/fitness/v1/users/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteUsersDataSourcesRequest",
+}) as any as S.Schema<DeleteUsersDataSourcesRequest>;
 
 export interface DeleteUsersDataSourcesDatasetsRequest {
   /** The data stream ID of the data source that created the dataset. */
@@ -520,18 +624,29 @@ export interface DeleteUsersDataSourcesDatasetsRequest {
   /** Delete a dataset for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. */
   userId: string;
 }
-export const DeleteUsersDataSourcesDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dataSourceId": S.String.pipe(T.Label()),
-  "datasetId": S.String.pipe(T.Label()),
-  "userId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"{userId}/dataSources/{dataSourceId}/datasets/{datasetId}","baseUrl":"https://fitness.googleapis.com/fitness/v1/users/"})),
-).annotate({ identifier: "DeleteUsersDataSourcesDatasetsRequest" }) as any as S.Schema<DeleteUsersDataSourcesDatasetsRequest>;
+export const DeleteUsersDataSourcesDatasetsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      dataSourceId: S.String.pipe(T.Label()),
+      datasetId: S.String.pipe(T.Label()),
+      userId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "{userId}/dataSources/{dataSourceId}/datasets/{datasetId}",
+        baseUrl: "https://fitness.googleapis.com/fitness/v1/users/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteUsersDataSourcesDatasetsRequest",
+}) as any as S.Schema<DeleteUsersDataSourcesDatasetsRequest>;
 
 export interface DeleteUsersDataSourcesDatasetsResponse {}
-export const DeleteUsersDataSourcesDatasetsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "DeleteUsersDataSourcesDatasetsResponse" }) as any as S.Schema<DeleteUsersDataSourcesDatasetsResponse>;
+export const DeleteUsersDataSourcesDatasetsResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DeleteUsersDataSourcesDatasetsResponse",
+}) as any as S.Schema<DeleteUsersDataSourcesDatasetsResponse>;
 
 export interface DeleteUsersSessionsRequest {
   /** The ID of the session to be deleted. */
@@ -540,16 +655,26 @@ export interface DeleteUsersSessionsRequest {
   userId: string;
 }
 export const DeleteUsersSessionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sessionId": S.String.pipe(T.Label()),
-  "userId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"{userId}/sessions/{sessionId}","baseUrl":"https://fitness.googleapis.com/fitness/v1/users/"})),
-).annotate({ identifier: "DeleteUsersSessionsRequest" }) as any as S.Schema<DeleteUsersSessionsRequest>;
+  S.Struct({
+    sessionId: S.String.pipe(T.Label()),
+    userId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "{userId}/sessions/{sessionId}",
+      baseUrl: "https://fitness.googleapis.com/fitness/v1/users/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteUsersSessionsRequest",
+}) as any as S.Schema<DeleteUsersSessionsRequest>;
 
 export interface DeleteUsersSessionsResponse {}
 export const DeleteUsersSessionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "DeleteUsersSessionsResponse" }) as any as S.Schema<DeleteUsersSessionsResponse>;
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteUsersSessionsResponse",
+}) as any as S.Schema<DeleteUsersSessionsResponse>;
 
 export interface GetUsersDataSourcesRequest {
   /** Retrieve a data source for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. */
@@ -558,11 +683,19 @@ export interface GetUsersDataSourcesRequest {
   dataSourceId: string;
 }
 export const GetUsersDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "userId": S.String.pipe(T.Label()),
-  "dataSourceId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"{userId}/dataSources/{dataSourceId}","baseUrl":"https://fitness.googleapis.com/fitness/v1/users/"})),
-).annotate({ identifier: "GetUsersDataSourcesRequest" }) as any as S.Schema<GetUsersDataSourcesRequest>;
+  S.Struct({
+    userId: S.String.pipe(T.Label()),
+    dataSourceId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "{userId}/dataSources/{dataSourceId}",
+      baseUrl: "https://fitness.googleapis.com/fitness/v1/users/",
+    }),
+  ),
+).annotate({
+  identifier: "GetUsersDataSourcesRequest",
+}) as any as S.Schema<GetUsersDataSourcesRequest>;
 
 export interface GetUsersDataSourcesDatasetsRequest {
   /** Dataset identifier that is a composite of the minimum data point start time and maximum data point end time represented as nanoseconds from the epoch. The ID is formatted like: "startTime-endTime" where startTime and endTime are 64 bit integers. */
@@ -577,17 +710,27 @@ export interface GetUsersDataSourcesDatasetsRequest {
   pageToken?: string;
 }
 export const GetUsersDataSourcesDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "datasetId": S.String.pipe(T.Label()),
-  "dataSourceId": S.String.pipe(T.Label()),
-  "userId": S.String.pipe(T.Label()),
-  "limit": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"{userId}/dataSources/{dataSourceId}/datasets/{datasetId}","baseUrl":"https://fitness.googleapis.com/fitness/v1/users/"})),
-).annotate({ identifier: "GetUsersDataSourcesDatasetsRequest" }) as any as S.Schema<GetUsersDataSourcesDatasetsRequest>;
+  S.Struct({
+    datasetId: S.String.pipe(T.Label()),
+    dataSourceId: S.String.pipe(T.Label()),
+    userId: S.String.pipe(T.Label()),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "{userId}/dataSources/{dataSourceId}/datasets/{datasetId}",
+      baseUrl: "https://fitness.googleapis.com/fitness/v1/users/",
+    }),
+  ),
+).annotate({
+  identifier: "GetUsersDataSourcesDatasetsRequest",
+}) as any as S.Schema<GetUsersDataSourcesDatasetsRequest>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 export interface ListUsersDataSourcesRequest {
   /** List data sources for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. */
@@ -596,24 +739,36 @@ export interface ListUsersDataSourcesRequest {
   dataTypeName?: StringList;
 }
 export const ListUsersDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "userId": S.String.pipe(T.Label()),
-  "dataTypeName": S.optional(StringList.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"{userId}/dataSources","baseUrl":"https://fitness.googleapis.com/fitness/v1/users/"})),
-).annotate({ identifier: "ListUsersDataSourcesRequest" }) as any as S.Schema<ListUsersDataSourcesRequest>;
+  S.Struct({
+    userId: S.String.pipe(T.Label()),
+    dataTypeName: S.optional(StringList.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "{userId}/dataSources",
+      baseUrl: "https://fitness.googleapis.com/fitness/v1/users/",
+    }),
+  ),
+).annotate({
+  identifier: "ListUsersDataSourcesRequest",
+}) as any as S.Schema<ListUsersDataSourcesRequest>;
 
 export type DataSourceList = ReadonlyArray<DataSource>;
-export const DataSourceList = /*@__PURE__*/ S.Array(DataSource) as any as S.Schema<DataSourceList>;
+export const DataSourceList = /*@__PURE__*/ S.Array(
+  DataSource,
+) as any as S.Schema<DataSourceList>;
 
 export interface ListDataSourcesResponse {
   /** A previously created data source. */
   dataSource?: DataSourceList;
 }
 export const ListDataSourcesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dataSource": S.optional(DataSourceList),
-}),
-).annotate({ identifier: "ListDataSourcesResponse" }) as any as S.Schema<ListDataSourcesResponse>;
+  S.Struct({
+    dataSource: S.optional(DataSourceList),
+  }),
+).annotate({
+  identifier: "ListDataSourcesResponse",
+}) as any as S.Schema<ListDataSourcesResponse>;
 
 export interface ListUsersDataSourcesDataPointChangesRequest {
   /** List data points for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. */
@@ -625,14 +780,23 @@ export interface ListUsersDataSourcesDataPointChangesRequest {
   /** The continuation token, which is used to page through large result sets. To get the next page of results, set this parameter to the value of nextPageToken from the previous response. */
   pageToken?: string;
 }
-export const ListUsersDataSourcesDataPointChangesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "userId": S.String.pipe(T.Label()),
-  "limit": S.optional(S.Number.pipe(T.Query())),
-  "dataSourceId": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"{userId}/dataSources/{dataSourceId}/dataPointChanges","baseUrl":"https://fitness.googleapis.com/fitness/v1/users/"})),
-).annotate({ identifier: "ListUsersDataSourcesDataPointChangesRequest" }) as any as S.Schema<ListUsersDataSourcesDataPointChangesRequest>;
+export const ListUsersDataSourcesDataPointChangesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      userId: S.String.pipe(T.Label()),
+      limit: S.optional(S.Number.pipe(T.Query())),
+      dataSourceId: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "{userId}/dataSources/{dataSourceId}/dataPointChanges",
+        baseUrl: "https://fitness.googleapis.com/fitness/v1/users/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListUsersDataSourcesDataPointChangesRequest",
+  }) as any as S.Schema<ListUsersDataSourcesDataPointChangesRequest>;
 
 export interface ListDataPointChangesResponse {
   /** The data stream ID of the data source with data point changes. */
@@ -645,16 +809,20 @@ export interface ListDataPointChangesResponse {
   deletedDataPoint?: DataPointList;
 }
 export const ListDataPointChangesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dataSourceId": S.optional(S.String),
-  "insertedDataPoint": S.optional(DataPointList),
-  "nextPageToken": S.optional(S.String),
-  "deletedDataPoint": S.optional(DataPointList),
-}),
-).annotate({ identifier: "ListDataPointChangesResponse" }) as any as S.Schema<ListDataPointChangesResponse>;
+  S.Struct({
+    dataSourceId: S.optional(S.String),
+    insertedDataPoint: S.optional(DataPointList),
+    nextPageToken: S.optional(S.String),
+    deletedDataPoint: S.optional(DataPointList),
+  }),
+).annotate({
+  identifier: "ListDataPointChangesResponse",
+}) as any as S.Schema<ListDataPointChangesResponse>;
 
 export type IntegerList = ReadonlyArray<number>;
-export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
+export const IntegerList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<IntegerList>;
 
 export interface ListUsersSessionsRequest {
   /** An RFC3339 timestamp. Only sessions starting before endTime and ending after startTime up to (endTime + 1 day) will be included in the response. If this time is omitted but startTime is specified, all sessions ending after startTime to the end of time will be returned. */
@@ -671,18 +839,28 @@ export interface ListUsersSessionsRequest {
   userId: string;
 }
 export const ListUsersSessionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "endTime": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "activityType": S.optional(IntegerList.pipe(T.Query())),
-  "includeDeleted": S.optional(S.Boolean.pipe(T.Query())),
-  "startTime": S.optional(S.String.pipe(T.Query())),
-  "userId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"{userId}/sessions","baseUrl":"https://fitness.googleapis.com/fitness/v1/users/"})),
-).annotate({ identifier: "ListUsersSessionsRequest" }) as any as S.Schema<ListUsersSessionsRequest>;
+  S.Struct({
+    endTime: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    activityType: S.optional(IntegerList.pipe(T.Query())),
+    includeDeleted: S.optional(S.Boolean.pipe(T.Query())),
+    startTime: S.optional(S.String.pipe(T.Query())),
+    userId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "{userId}/sessions",
+      baseUrl: "https://fitness.googleapis.com/fitness/v1/users/",
+    }),
+  ),
+).annotate({
+  identifier: "ListUsersSessionsRequest",
+}) as any as S.Schema<ListUsersSessionsRequest>;
 
 export type SessionList = ReadonlyArray<Session>;
-export const SessionList = /*@__PURE__*/ S.Array(Session) as any as S.Schema<SessionList>;
+export const SessionList = /*@__PURE__*/ S.Array(
+  Session,
+) as any as S.Schema<SessionList>;
 
 export interface ListSessionsResponse {
   /** If includeDeleted is set to true in the request, and startTime and endTime are omitted, this will include sessions which were deleted since the last sync. */
@@ -695,13 +873,15 @@ export interface ListSessionsResponse {
   hasMoreData?: boolean;
 }
 export const ListSessionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "deletedSession": S.optional(SessionList),
-  "nextPageToken": S.optional(S.String),
-  "session": S.optional(SessionList),
-  "hasMoreData": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "ListSessionsResponse" }) as any as S.Schema<ListSessionsResponse>;
+  S.Struct({
+    deletedSession: S.optional(SessionList),
+    nextPageToken: S.optional(S.String),
+    session: S.optional(SessionList),
+    hasMoreData: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ListSessionsResponse",
+}) as any as S.Schema<ListSessionsResponse>;
 
 export interface PatchUsersDataSourcesDatasetsRequest {
   /** Patch a dataset for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. */
@@ -713,14 +893,23 @@ export interface PatchUsersDataSourcesDatasetsRequest {
   /** Request body */
   body?: Dataset;
 }
-export const PatchUsersDataSourcesDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "userId": S.String.pipe(T.Label()),
-  "dataSourceId": S.String.pipe(T.Label()),
-  "datasetId": S.String.pipe(T.Label()),
-  "body": S.optional(Dataset.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"{userId}/dataSources/{dataSourceId}/datasets/{datasetId}","baseUrl":"https://fitness.googleapis.com/fitness/v1/users/"})),
-).annotate({ identifier: "PatchUsersDataSourcesDatasetsRequest" }) as any as S.Schema<PatchUsersDataSourcesDatasetsRequest>;
+export const PatchUsersDataSourcesDatasetsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      userId: S.String.pipe(T.Label()),
+      dataSourceId: S.String.pipe(T.Label()),
+      datasetId: S.String.pipe(T.Label()),
+      body: S.optional(Dataset.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "{userId}/dataSources/{dataSourceId}/datasets/{datasetId}",
+        baseUrl: "https://fitness.googleapis.com/fitness/v1/users/",
+      }),
+    ),
+).annotate({
+  identifier: "PatchUsersDataSourcesDatasetsRequest",
+}) as any as S.Schema<PatchUsersDataSourcesDatasetsRequest>;
 
 export interface UpdateUsersDataSourcesRequest {
   /** The data stream ID of the data source to update. */
@@ -731,12 +920,20 @@ export interface UpdateUsersDataSourcesRequest {
   body?: DataSource;
 }
 export const UpdateUsersDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dataSourceId": S.String.pipe(T.Label()),
-  "userId": S.String.pipe(T.Label()),
-  "body": S.optional(DataSource.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"{userId}/dataSources/{dataSourceId}","baseUrl":"https://fitness.googleapis.com/fitness/v1/users/"})),
-).annotate({ identifier: "UpdateUsersDataSourcesRequest" }) as any as S.Schema<UpdateUsersDataSourcesRequest>;
+  S.Struct({
+    dataSourceId: S.String.pipe(T.Label()),
+    userId: S.String.pipe(T.Label()),
+    body: S.optional(DataSource.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "{userId}/dataSources/{dataSourceId}",
+      baseUrl: "https://fitness.googleapis.com/fitness/v1/users/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateUsersDataSourcesRequest",
+}) as any as S.Schema<UpdateUsersDataSourcesRequest>;
 
 export interface UpdateUsersSessionsRequest {
   /** Create sessions for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. */
@@ -747,14 +944,27 @@ export interface UpdateUsersSessionsRequest {
   body?: Session;
 }
 export const UpdateUsersSessionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "userId": S.String.pipe(T.Label()),
-  "sessionId": S.String.pipe(T.Label()),
-  "body": S.optional(Session.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"{userId}/sessions/{sessionId}","baseUrl":"https://fitness.googleapis.com/fitness/v1/users/"})),
-).annotate({ identifier: "UpdateUsersSessionsRequest" }) as any as S.Schema<UpdateUsersSessionsRequest>;
+  S.Struct({
+    userId: S.String.pipe(T.Label()),
+    sessionId: S.String.pipe(T.Label()),
+    body: S.optional(Session.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "{userId}/sessions/{sessionId}",
+      baseUrl: "https://fitness.googleapis.com/fitness/v1/users/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateUsersSessionsRequest",
+}) as any as S.Schema<UpdateUsersSessionsRequest>;
 
-export type AggregateUsersDatasetError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type AggregateUsersDatasetError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Aggregates data of a certain type or stream into buckets divided by a given type of boundary. Multiple data sets of multiple types and from multiple sources can be aggregated into exactly one bucket type per request. */
 export const aggregateUsersDataset: API.OperationMethod<
   AggregateUsersDatasetRequest,
@@ -769,7 +979,12 @@ export const aggregateUsersDataset: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateUsersDataSourcesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateUsersDataSourcesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new data source that is unique across all data sources belonging to this user. A data source is a unique source of sensor data. Data sources can expose raw data coming from hardware sensors on local or companion devices. They can also expose derived data, created by transforming or merging other data sources. Multiple data sources can exist for the same data type. Every data point in every dataset inserted into or read from the Fitness API has an associated data source. Each data source produces a unique stream of dataset updates, with a unique data source identifier. Not all changes to data source affect the data stream ID, so that data collected by updated versions of the same application/device can still be considered to belong to the same data source. Data sources are identified using a string generated by the server, based on the contents of the source being created. The dataStreamId field should not be set when invoking this method. It will be automatically generated by the server with the correct format. If a dataStreamId is set, it must match the format that the server would generate. This format is a combination of some fields from the data source, and has a specific order. If it doesn't match, the request will fail with an error. Specifying a DataType which is not a known type (beginning with "com.google.") will create a DataSource with a *custom data type*. Custom data types are only readable by the application that created them. Custom data types are *deprecated*; use standard data types instead. In addition to the data source fields included in the data source ID, the developer project number that is authenticated when creating the data source is included. This developer project number is obfuscated when read by any other developer reading public data types. */
 export const createUsersDataSources: API.OperationMethod<
   CreateUsersDataSourcesRequest,
@@ -784,7 +999,12 @@ export const createUsersDataSources: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteUsersDataSourcesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteUsersDataSourcesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes the specified data source. The request will fail if the data source contains any data points. */
 export const deleteUsersDataSources: API.OperationMethod<
   DeleteUsersDataSourcesRequest,
@@ -799,7 +1019,12 @@ export const deleteUsersDataSources: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteUsersDataSourcesDatasetsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteUsersDataSourcesDatasetsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Performs an inclusive delete of all data points whose start and end times have any overlap with the time range specified by the dataset ID. For most data types, the entire data point will be deleted. For data types where the time span represents a consistent value (such as com.google.activity.segment), and a data point straddles either end point of the dataset, only the overlapping portion of the data point will be deleted. */
 export const deleteUsersDataSourcesDatasets: API.OperationMethod<
   DeleteUsersDataSourcesDatasetsRequest,
@@ -814,7 +1039,12 @@ export const deleteUsersDataSourcesDatasets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteUsersSessionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteUsersSessionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a session specified by the given session ID. */
 export const deleteUsersSessions: API.OperationMethod<
   DeleteUsersSessionsRequest,
@@ -844,7 +1074,10 @@ export const getUsersDataSources: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetUsersDataSourcesDatasetsError = NotFound | Forbidden | GcpOpError;
+export type GetUsersDataSourcesDatasetsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns a dataset containing all data points whose start and end times overlap with the specified range of the dataset minimum start time and maximum end time. Specifically, any data point whose start time is less than or equal to the dataset end time and whose end time is greater than or equal to the dataset start time. */
 export const getUsersDataSourcesDatasets: API.PaginatedOperationMethod<
   GetUsersDataSourcesDatasetsRequest,
@@ -857,7 +1090,10 @@ export const getUsersDataSourcesDatasets: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListUsersDataSourcesError = NotFound | Forbidden | GcpOpError;
@@ -875,7 +1111,10 @@ export const listUsersDataSources: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListUsersDataSourcesDataPointChangesError = NotFound | Forbidden | GcpOpError;
+export type ListUsersDataSourcesDataPointChangesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Queries for user's data point changes for a particular data source. */
 export const listUsersDataSourcesDataPointChanges: API.PaginatedOperationMethod<
   ListUsersDataSourcesDataPointChangesRequest,
@@ -888,7 +1127,10 @@ export const listUsersDataSourcesDataPointChanges: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListUsersSessionsError = NotFound | Forbidden | GcpOpError;
@@ -904,10 +1146,18 @@ export const listUsersSessions: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type PatchUsersDataSourcesDatasetsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchUsersDataSourcesDatasetsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Adds data points to a dataset. The dataset need not be previously created. All points within the given dataset will be returned with subsquent calls to retrieve this dataset. Data points can belong to more than one dataset. This method does not use patch semantics: the data points provided are merely inserted, with no existing data replaced. */
 export const patchUsersDataSourcesDatasets: API.OperationMethod<
   PatchUsersDataSourcesDatasetsRequest,
@@ -922,7 +1172,12 @@ export const patchUsersDataSourcesDatasets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateUsersDataSourcesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateUsersDataSourcesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the specified data source. The dataStreamId, dataType, type, dataStreamName, and device properties with the exception of version, cannot be modified. Data sources are identified by their dataStreamId. */
 export const updateUsersDataSources: API.OperationMethod<
   UpdateUsersDataSourcesRequest,
@@ -937,7 +1192,12 @@ export const updateUsersDataSources: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateUsersSessionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateUsersSessionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates or insert a given session. */
 export const updateUsersSessions: API.OperationMethod<
   UpdateUsersSessionsRequest,
@@ -951,4 +1211,3 @@ export const updateUsersSessions: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

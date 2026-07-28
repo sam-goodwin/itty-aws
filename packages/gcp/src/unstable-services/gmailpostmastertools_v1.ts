@@ -13,27 +13,27 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export interface GetDomainsRequest {
@@ -41,12 +41,24 @@ export interface GetDomainsRequest {
   name: string;
 }
 export const GetDomainsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://gmailpostmastertools.googleapis.com/"})),
-).annotate({ identifier: "GetDomainsRequest" }) as any as S.Schema<GetDomainsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://gmailpostmastertools.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetDomainsRequest",
+}) as any as S.Schema<GetDomainsRequest>;
 
-export type DomainPermissionEnum = "PERMISSION_UNSPECIFIED" | "OWNER" | "READER" | "NONE";
+export type DomainPermissionEnum =
+  | "PERMISSION_UNSPECIFIED"
+  | "OWNER"
+  | "READER"
+  | "NONE";
 export const DomainPermissionEnum = /*@__PURE__*/ S.String;
 
 /** A registered domain resource in the Postmaster API. */
@@ -59,11 +71,11 @@ export interface Domain {
   permission?: DomainPermissionEnum;
 }
 export const Domain = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "permission": S.optional(DomainPermissionEnum),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    createTime: S.optional(S.String),
+    permission: S.optional(DomainPermissionEnum),
+  }),
 ).annotate({ identifier: "Domain" }) as any as S.Schema<Domain>;
 
 export interface GetDomainsTrafficStatsRequest {
@@ -71,16 +83,31 @@ export interface GetDomainsTrafficStatsRequest {
   name: string;
 }
 export const GetDomainsTrafficStatsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://gmailpostmastertools.googleapis.com/"})),
-).annotate({ identifier: "GetDomainsTrafficStatsRequest" }) as any as S.Schema<GetDomainsTrafficStatsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://gmailpostmastertools.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetDomainsTrafficStatsRequest",
+}) as any as S.Schema<GetDomainsTrafficStatsRequest>;
 
-export type IpReputationReputationEnum = "REPUTATION_CATEGORY_UNSPECIFIED" | "HIGH" | "MEDIUM" | "LOW" | "BAD";
+export type IpReputationReputationEnum =
+  | "REPUTATION_CATEGORY_UNSPECIFIED"
+  | "HIGH"
+  | "MEDIUM"
+  | "LOW"
+  | "BAD";
 export const IpReputationReputationEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** IP Reputation information for a set of IPs in a specific reputation category. */
 export interface IpReputation {
@@ -92,15 +119,17 @@ export interface IpReputation {
   sampleIps?: StringList;
 }
 export const IpReputation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "reputation": S.optional(IpReputationReputationEnum),
-  "ipCount": S.optional(S.String),
-  "sampleIps": S.optional(StringList),
-}),
+  S.Struct({
+    reputation: S.optional(IpReputationReputationEnum),
+    ipCount: S.optional(S.String),
+    sampleIps: S.optional(StringList),
+  }),
 ).annotate({ identifier: "IpReputation" }) as any as S.Schema<IpReputation>;
 
 export type IpReputationList = ReadonlyArray<IpReputation>;
-export const IpReputationList = /*@__PURE__*/ S.Array(IpReputation) as any as S.Schema<IpReputationList>;
+export const IpReputationList = /*@__PURE__*/ S.Array(
+  IpReputation,
+) as any as S.Schema<IpReputationList>;
 
 /** [Feedback loop](https://support.google.com/mail/answer/6254652) identifier information. */
 export interface FeedbackLoop {
@@ -110,22 +139,43 @@ export interface FeedbackLoop {
   spamRatio?: number;
 }
 export const FeedbackLoop = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.optional(S.String),
-  "spamRatio": S.optional(S.Number),
-}),
+  S.Struct({
+    id: S.optional(S.String),
+    spamRatio: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "FeedbackLoop" }) as any as S.Schema<FeedbackLoop>;
 
 export type FeedbackLoopList = ReadonlyArray<FeedbackLoop>;
-export const FeedbackLoopList = /*@__PURE__*/ S.Array(FeedbackLoop) as any as S.Schema<FeedbackLoopList>;
+export const FeedbackLoopList = /*@__PURE__*/ S.Array(
+  FeedbackLoop,
+) as any as S.Schema<FeedbackLoopList>;
 
-export type TrafficStatsDomainReputationEnum = "REPUTATION_CATEGORY_UNSPECIFIED" | "HIGH" | "MEDIUM" | "LOW" | "BAD";
+export type TrafficStatsDomainReputationEnum =
+  | "REPUTATION_CATEGORY_UNSPECIFIED"
+  | "HIGH"
+  | "MEDIUM"
+  | "LOW"
+  | "BAD";
 export const TrafficStatsDomainReputationEnum = /*@__PURE__*/ S.String;
 
-export type DeliveryErrorErrorClassEnum = "DELIVERY_ERROR_CLASS_UNSPECIFIED" | "PERMANENT_ERROR" | "TEMPORARY_ERROR";
+export type DeliveryErrorErrorClassEnum =
+  | "DELIVERY_ERROR_CLASS_UNSPECIFIED"
+  | "PERMANENT_ERROR"
+  | "TEMPORARY_ERROR";
 export const DeliveryErrorErrorClassEnum = /*@__PURE__*/ S.String;
 
-export type DeliveryErrorErrorTypeEnum = "DELIVERY_ERROR_TYPE_UNSPECIFIED" | "RATE_LIMIT_EXCEEDED" | "SUSPECTED_SPAM" | "CONTENT_SPAMMY" | "BAD_ATTACHMENT" | "BAD_DMARC_POLICY" | "LOW_IP_REPUTATION" | "LOW_DOMAIN_REPUTATION" | "IP_IN_RBL" | "DOMAIN_IN_RBL" | "BAD_PTR_RECORD";
+export type DeliveryErrorErrorTypeEnum =
+  | "DELIVERY_ERROR_TYPE_UNSPECIFIED"
+  | "RATE_LIMIT_EXCEEDED"
+  | "SUSPECTED_SPAM"
+  | "CONTENT_SPAMMY"
+  | "BAD_ATTACHMENT"
+  | "BAD_DMARC_POLICY"
+  | "LOW_IP_REPUTATION"
+  | "LOW_DOMAIN_REPUTATION"
+  | "IP_IN_RBL"
+  | "DOMAIN_IN_RBL"
+  | "BAD_PTR_RECORD";
 export const DeliveryErrorErrorTypeEnum = /*@__PURE__*/ S.String;
 
 /** Metric on a particular delivery error type. */
@@ -138,15 +188,17 @@ export interface DeliveryError {
   errorRatio?: number;
 }
 export const DeliveryError = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "errorClass": S.optional(DeliveryErrorErrorClassEnum),
-  "errorType": S.optional(DeliveryErrorErrorTypeEnum),
-  "errorRatio": S.optional(S.Number),
-}),
+  S.Struct({
+    errorClass: S.optional(DeliveryErrorErrorClassEnum),
+    errorType: S.optional(DeliveryErrorErrorTypeEnum),
+    errorRatio: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "DeliveryError" }) as any as S.Schema<DeliveryError>;
 
 export type DeliveryErrorList = ReadonlyArray<DeliveryError>;
-export const DeliveryErrorList = /*@__PURE__*/ S.Array(DeliveryError) as any as S.Schema<DeliveryErrorList>;
+export const DeliveryErrorList = /*@__PURE__*/ S.Array(
+  DeliveryError,
+) as any as S.Schema<DeliveryErrorList>;
 
 /** Email traffic statistics pertaining to a specific date. */
 export interface TrafficStats {
@@ -178,21 +230,21 @@ export interface TrafficStats {
   deliveryErrors?: DeliveryErrorList;
 }
 export const TrafficStats = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "spfSuccessRatio": S.optional(S.Number),
-  "name": S.optional(S.String),
-  "userReportedSpamRatio": S.optional(S.Number),
-  "ipReputations": S.optional(IpReputationList),
-  "dkimSuccessRatio": S.optional(S.Number),
-  "outboundEncryptionRatio": S.optional(S.Number),
-  "spammyFeedbackLoops": S.optional(FeedbackLoopList),
-  "userReportedSpamRatioLowerBound": S.optional(S.Number),
-  "userReportedSpamRatioUpperBound": S.optional(S.Number),
-  "domainReputation": S.optional(TrafficStatsDomainReputationEnum),
-  "inboundEncryptionRatio": S.optional(S.Number),
-  "dmarcSuccessRatio": S.optional(S.Number),
-  "deliveryErrors": S.optional(DeliveryErrorList),
-}),
+  S.Struct({
+    spfSuccessRatio: S.optional(S.Number),
+    name: S.optional(S.String),
+    userReportedSpamRatio: S.optional(S.Number),
+    ipReputations: S.optional(IpReputationList),
+    dkimSuccessRatio: S.optional(S.Number),
+    outboundEncryptionRatio: S.optional(S.Number),
+    spammyFeedbackLoops: S.optional(FeedbackLoopList),
+    userReportedSpamRatioLowerBound: S.optional(S.Number),
+    userReportedSpamRatioUpperBound: S.optional(S.Number),
+    domainReputation: S.optional(TrafficStatsDomainReputationEnum),
+    inboundEncryptionRatio: S.optional(S.Number),
+    dmarcSuccessRatio: S.optional(S.Number),
+    deliveryErrors: S.optional(DeliveryErrorList),
+  }),
 ).annotate({ identifier: "TrafficStats" }) as any as S.Schema<TrafficStats>;
 
 export interface ListDomainsRequest {
@@ -202,14 +254,24 @@ export interface ListDomainsRequest {
   pageToken?: string;
 }
 export const ListDomainsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/domains","baseUrl":"https://gmailpostmastertools.googleapis.com/"})),
-).annotate({ identifier: "ListDomainsRequest" }) as any as S.Schema<ListDomainsRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/domains",
+      baseUrl: "https://gmailpostmastertools.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListDomainsRequest",
+}) as any as S.Schema<ListDomainsRequest>;
 
 export type DomainList = ReadonlyArray<Domain>;
-export const DomainList = /*@__PURE__*/ S.Array(Domain) as any as S.Schema<DomainList>;
+export const DomainList = /*@__PURE__*/ S.Array(
+  Domain,
+) as any as S.Schema<DomainList>;
 
 /** Response message for ListDomains. */
 export interface ListDomainsResponse {
@@ -219,11 +281,13 @@ export interface ListDomainsResponse {
   nextPageToken?: string;
 }
 export const ListDomainsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "domains": S.optional(DomainList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListDomainsResponse" }) as any as S.Schema<ListDomainsResponse>;
+  S.Struct({
+    domains: S.optional(DomainList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListDomainsResponse",
+}) as any as S.Schema<ListDomainsResponse>;
 
 export interface ListDomainsTrafficStatsRequest {
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
@@ -246,21 +310,31 @@ export interface ListDomainsTrafficStatsRequest {
   "endDate.year"?: number;
 }
 export const ListDomainsTrafficStatsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "endDate.day": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "startDate.year": S.optional(S.Number.pipe(T.Query())),
-  "startDate.day": S.optional(S.Number.pipe(T.Query())),
-  "startDate.month": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "endDate.month": S.optional(S.Number.pipe(T.Query())),
-  "endDate.year": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/trafficStats","baseUrl":"https://gmailpostmastertools.googleapis.com/"})),
-).annotate({ identifier: "ListDomainsTrafficStatsRequest" }) as any as S.Schema<ListDomainsTrafficStatsRequest>;
+  S.Struct({
+    "endDate.day": S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    "startDate.year": S.optional(S.Number.pipe(T.Query())),
+    "startDate.day": S.optional(S.Number.pipe(T.Query())),
+    "startDate.month": S.optional(S.Number.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    "endDate.month": S.optional(S.Number.pipe(T.Query())),
+    "endDate.year": S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/trafficStats",
+      baseUrl: "https://gmailpostmastertools.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListDomainsTrafficStatsRequest",
+}) as any as S.Schema<ListDomainsTrafficStatsRequest>;
 
 export type TrafficStatsList = ReadonlyArray<TrafficStats>;
-export const TrafficStatsList = /*@__PURE__*/ S.Array(TrafficStats) as any as S.Schema<TrafficStatsList>;
+export const TrafficStatsList = /*@__PURE__*/ S.Array(
+  TrafficStats,
+) as any as S.Schema<TrafficStatsList>;
 
 /** Response message for ListTrafficStats. */
 export interface ListTrafficStatsResponse {
@@ -270,11 +344,13 @@ export interface ListTrafficStatsResponse {
   nextPageToken?: string;
 }
 export const ListTrafficStatsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "trafficStats": S.optional(TrafficStatsList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListTrafficStatsResponse" }) as any as S.Schema<ListTrafficStatsResponse>;
+  S.Struct({
+    trafficStats: S.optional(TrafficStatsList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListTrafficStatsResponse",
+}) as any as S.Schema<ListTrafficStatsResponse>;
 
 export type GetDomainsError = NotFound | Forbidden | GcpOpError;
 /** Gets a specific domain registered by the client. Returns NOT_FOUND if the domain does not exist. */
@@ -319,7 +395,10 @@ export const listDomains: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListDomainsTrafficStatsError = NotFound | Forbidden | GcpOpError;
@@ -335,6 +414,8 @@ export const listDomainsTrafficStats: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
-

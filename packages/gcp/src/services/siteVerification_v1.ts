@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export interface DeleteWebResourceRequest {
@@ -65,15 +65,25 @@ export interface DeleteWebResourceRequest {
   id: string;
 }
 export const DeleteWebResourceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"webResource/{id}","baseUrl":"https://www.googleapis.com/siteVerification/v1/"})),
-).annotate({ identifier: "DeleteWebResourceRequest" }) as any as S.Schema<DeleteWebResourceRequest>;
+  S.Struct({
+    id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "webResource/{id}",
+      baseUrl: "https://www.googleapis.com/siteVerification/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteWebResourceRequest",
+}) as any as S.Schema<DeleteWebResourceRequest>;
 
 export interface DeleteWebResourceResponse {}
 export const DeleteWebResourceResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "DeleteWebResourceResponse" }) as any as S.Schema<DeleteWebResourceResponse>;
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteWebResourceResponse",
+}) as any as S.Schema<DeleteWebResourceResponse>;
 
 export interface SiteVerificationWebResourceGettokenRequestSite {
   /** The type of resource to be verified. Can be SITE or INET_DOMAIN (domain name). */
@@ -81,12 +91,15 @@ export interface SiteVerificationWebResourceGettokenRequestSite {
   /** The site identifier. If the type is set to SITE, the identifier is a URL. If the type is set to INET_DOMAIN, the site identifier is a domain name. */
   identifier?: string;
 }
-export const SiteVerificationWebResourceGettokenRequestSite = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(S.String),
-  "identifier": S.optional(S.String),
-}),
-).annotate({ identifier: "SiteVerificationWebResourceGettokenRequestSite" }) as any as S.Schema<SiteVerificationWebResourceGettokenRequestSite>;
+export const SiteVerificationWebResourceGettokenRequestSite =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(S.String),
+      identifier: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "SiteVerificationWebResourceGettokenRequestSite",
+  }) as any as S.Schema<SiteVerificationWebResourceGettokenRequestSite>;
 
 export interface SiteVerificationWebResourceGettokenRequest {
   /** The site for which a verification token will be generated. */
@@ -94,22 +107,35 @@ export interface SiteVerificationWebResourceGettokenRequest {
   /** The verification method that will be used to verify this site. For sites, 'FILE' or 'META' methods may be used. For domains, only 'DNS' may be used. */
   verificationMethod?: string;
 }
-export const SiteVerificationWebResourceGettokenRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "site": S.optional(SiteVerificationWebResourceGettokenRequestSite),
-  "verificationMethod": S.optional(S.String),
-}),
-).annotate({ identifier: "SiteVerificationWebResourceGettokenRequest" }) as any as S.Schema<SiteVerificationWebResourceGettokenRequest>;
+export const SiteVerificationWebResourceGettokenRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      site: S.optional(SiteVerificationWebResourceGettokenRequestSite),
+      verificationMethod: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "SiteVerificationWebResourceGettokenRequest",
+  }) as any as S.Schema<SiteVerificationWebResourceGettokenRequest>;
 
 export interface GetTokenWebResourceRequest {
   /** Request body */
   body?: SiteVerificationWebResourceGettokenRequest;
 }
 export const GetTokenWebResourceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(SiteVerificationWebResourceGettokenRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"token","baseUrl":"https://www.googleapis.com/siteVerification/v1/"})),
-).annotate({ identifier: "GetTokenWebResourceRequest" }) as any as S.Schema<GetTokenWebResourceRequest>;
+  S.Struct({
+    body: S.optional(
+      SiteVerificationWebResourceGettokenRequest.pipe(T.HttpBody()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "token",
+      baseUrl: "https://www.googleapis.com/siteVerification/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "GetTokenWebResourceRequest",
+}) as any as S.Schema<GetTokenWebResourceRequest>;
 
 export interface SiteVerificationWebResourceGettokenResponse {
   /** The verification method to use in conjunction with this token. For FILE, the token should be placed in the top-level directory of the site, stored inside a file of the same name. For META, the token should be placed in the HEAD tag of the default page that is loaded for the site. For DNS, the token should be placed in a TXT record of the domain. */
@@ -117,25 +143,38 @@ export interface SiteVerificationWebResourceGettokenResponse {
   /** The verification token. The token must be placed appropriately in order for verification to succeed. */
   token?: string;
 }
-export const SiteVerificationWebResourceGettokenResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "method": S.optional(S.String),
-  "token": S.optional(S.String),
-}),
-).annotate({ identifier: "SiteVerificationWebResourceGettokenResponse" }) as any as S.Schema<SiteVerificationWebResourceGettokenResponse>;
+export const SiteVerificationWebResourceGettokenResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      method: S.optional(S.String),
+      token: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "SiteVerificationWebResourceGettokenResponse",
+  }) as any as S.Schema<SiteVerificationWebResourceGettokenResponse>;
 
 export interface GetWebResourceRequest {
   /** The id of a verified site or domain. */
   id: string;
 }
 export const GetWebResourceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"webResource/{id}","baseUrl":"https://www.googleapis.com/siteVerification/v1/"})),
-).annotate({ identifier: "GetWebResourceRequest" }) as any as S.Schema<GetWebResourceRequest>;
+  S.Struct({
+    id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "webResource/{id}",
+      baseUrl: "https://www.googleapis.com/siteVerification/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "GetWebResourceRequest",
+}) as any as S.Schema<GetWebResourceRequest>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 export interface SiteVerificationWebResourceResourceSite {
   /** The site type. Can be SITE or INET_DOMAIN (domain name). */
@@ -143,12 +182,15 @@ export interface SiteVerificationWebResourceResourceSite {
   /** The site identifier. If the type is set to SITE, the identifier is a URL. If the type is set to INET_DOMAIN, the site identifier is a domain name. */
   identifier?: string;
 }
-export const SiteVerificationWebResourceResourceSite = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(S.String),
-  "identifier": S.optional(S.String),
-}),
-).annotate({ identifier: "SiteVerificationWebResourceResourceSite" }) as any as S.Schema<SiteVerificationWebResourceResourceSite>;
+export const SiteVerificationWebResourceResourceSite = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      type: S.optional(S.String),
+      identifier: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "SiteVerificationWebResourceResourceSite",
+}) as any as S.Schema<SiteVerificationWebResourceResourceSite>;
 
 export interface SiteVerificationWebResourceResource {
   /** The email addresses of all verified owners. */
@@ -159,12 +201,14 @@ export interface SiteVerificationWebResourceResource {
   site?: SiteVerificationWebResourceResourceSite;
 }
 export const SiteVerificationWebResourceResource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "owners": S.optional(StringList),
-  "id": S.optional(S.String),
-  "site": S.optional(SiteVerificationWebResourceResourceSite),
-}),
-).annotate({ identifier: "SiteVerificationWebResourceResource" }) as any as S.Schema<SiteVerificationWebResourceResource>;
+  S.Struct({
+    owners: S.optional(StringList),
+    id: S.optional(S.String),
+    site: S.optional(SiteVerificationWebResourceResourceSite),
+  }),
+).annotate({
+  identifier: "SiteVerificationWebResourceResource",
+}) as any as S.Schema<SiteVerificationWebResourceResource>;
 
 export interface InsertWebResourceRequest {
   /** The method to use for verifying a site or domain. */
@@ -173,29 +217,51 @@ export interface InsertWebResourceRequest {
   body?: SiteVerificationWebResourceResource;
 }
 export const InsertWebResourceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "verificationMethod": S.String.pipe(T.Query()),
-  "body": S.optional(SiteVerificationWebResourceResource.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"webResource","baseUrl":"https://www.googleapis.com/siteVerification/v1/"})),
-).annotate({ identifier: "InsertWebResourceRequest" }) as any as S.Schema<InsertWebResourceRequest>;
+  S.Struct({
+    verificationMethod: S.String.pipe(T.Query()),
+    body: S.optional(SiteVerificationWebResourceResource.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "webResource",
+      baseUrl: "https://www.googleapis.com/siteVerification/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "InsertWebResourceRequest",
+}) as any as S.Schema<InsertWebResourceRequest>;
 
 export interface ListWebResourceRequest {}
 export const ListWebResourceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}).pipe(T.Http({"method":"GET","uri":"webResource","baseUrl":"https://www.googleapis.com/siteVerification/v1/"})),
-).annotate({ identifier: "ListWebResourceRequest" }) as any as S.Schema<ListWebResourceRequest>;
+  S.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      uri: "webResource",
+      baseUrl: "https://www.googleapis.com/siteVerification/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "ListWebResourceRequest",
+}) as any as S.Schema<ListWebResourceRequest>;
 
-export type SiteVerificationWebResourceResourceList = ReadonlyArray<SiteVerificationWebResourceResource>;
-export const SiteVerificationWebResourceResourceList = /*@__PURE__*/ S.Array(SiteVerificationWebResourceResource) as any as S.Schema<SiteVerificationWebResourceResourceList>;
+export type SiteVerificationWebResourceResourceList =
+  ReadonlyArray<SiteVerificationWebResourceResource>;
+export const SiteVerificationWebResourceResourceList = /*@__PURE__*/ S.Array(
+  SiteVerificationWebResourceResource,
+) as any as S.Schema<SiteVerificationWebResourceResourceList>;
 
 export interface SiteVerificationWebResourceListResponse {
   /** The list of sites that are owned by the authenticated user. */
   items?: SiteVerificationWebResourceResourceList;
 }
-export const SiteVerificationWebResourceListResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "items": S.optional(SiteVerificationWebResourceResourceList),
-}),
-).annotate({ identifier: "SiteVerificationWebResourceListResponse" }) as any as S.Schema<SiteVerificationWebResourceListResponse>;
+export const SiteVerificationWebResourceListResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      items: S.optional(SiteVerificationWebResourceResourceList),
+    }),
+).annotate({
+  identifier: "SiteVerificationWebResourceListResponse",
+}) as any as S.Schema<SiteVerificationWebResourceListResponse>;
 
 export interface PatchWebResourceRequest {
   /** The id of a verified site or domain. */
@@ -204,11 +270,19 @@ export interface PatchWebResourceRequest {
   body?: SiteVerificationWebResourceResource;
 }
 export const PatchWebResourceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.String.pipe(T.Label()),
-  "body": S.optional(SiteVerificationWebResourceResource.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"webResource/{id}","baseUrl":"https://www.googleapis.com/siteVerification/v1/"})),
-).annotate({ identifier: "PatchWebResourceRequest" }) as any as S.Schema<PatchWebResourceRequest>;
+  S.Struct({
+    id: S.String.pipe(T.Label()),
+    body: S.optional(SiteVerificationWebResourceResource.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "webResource/{id}",
+      baseUrl: "https://www.googleapis.com/siteVerification/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchWebResourceRequest",
+}) as any as S.Schema<PatchWebResourceRequest>;
 
 export interface UpdateWebResourceRequest {
   /** The id of a verified site or domain. */
@@ -217,13 +291,26 @@ export interface UpdateWebResourceRequest {
   body?: SiteVerificationWebResourceResource;
 }
 export const UpdateWebResourceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.String.pipe(T.Label()),
-  "body": S.optional(SiteVerificationWebResourceResource.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"webResource/{id}","baseUrl":"https://www.googleapis.com/siteVerification/v1/"})),
-).annotate({ identifier: "UpdateWebResourceRequest" }) as any as S.Schema<UpdateWebResourceRequest>;
+  S.Struct({
+    id: S.String.pipe(T.Label()),
+    body: S.optional(SiteVerificationWebResourceResource.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "webResource/{id}",
+      baseUrl: "https://www.googleapis.com/siteVerification/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateWebResourceRequest",
+}) as any as S.Schema<UpdateWebResourceRequest>;
 
-export type DeleteWebResourceError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteWebResourceError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Relinquish ownership of a website or domain. */
 export const deleteWebResource: API.OperationMethod<
   DeleteWebResourceRequest,
@@ -238,7 +325,12 @@ export const deleteWebResource: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetTokenWebResourceError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type GetTokenWebResourceError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Get a verification token for placing on a website or domain. */
 export const getTokenWebResource: API.OperationMethod<
   GetTokenWebResourceRequest,
@@ -268,7 +360,12 @@ export const getWebResource: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertWebResourceError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type InsertWebResourceError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Attempt verification of a website or domain. */
 export const insertWebResource: API.OperationMethod<
   InsertWebResourceRequest,
@@ -298,7 +395,12 @@ export const listWebResource: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchWebResourceError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchWebResourceError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Modify the list of owners for your website or domain. This method supports patch semantics. */
 export const patchWebResource: API.OperationMethod<
   PatchWebResourceRequest,
@@ -313,7 +415,12 @@ export const patchWebResource: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateWebResourceError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateWebResourceError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Modify the list of owners for your website or domain. */
 export const updateWebResource: API.OperationMethod<
   UpdateWebResourceRequest,
@@ -327,4 +434,3 @@ export const updateWebResource: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

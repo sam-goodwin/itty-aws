@@ -13,54 +13,62 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
-export type ParameterTypeEnum = "typeUnspecified" | "template" | "integer" | "boolean" | "list" | "map" | "triggerReference" | "tagReference";
+export type ParameterTypeEnum =
+  | "typeUnspecified"
+  | "template"
+  | "integer"
+  | "boolean"
+  | "list"
+  | "map"
+  | "triggerReference"
+  | "tagReference";
 export const ParameterTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a Google Tag Manager Parameter. */
@@ -79,18 +87,20 @@ export interface Parameter {
   map?: ParameterList;
 }
 export const Parameter = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(ParameterTypeEnum),
-  "key": S.optional(S.String),
-  "value": S.optional(S.String),
-  "isWeakReference": S.optional(S.Boolean),
-  "list": S.optional(S.suspend(() => ParameterList)),
-  "map": S.optional(S.suspend(() => ParameterList)),
-}),
+  S.Struct({
+    type: S.optional(ParameterTypeEnum),
+    key: S.optional(S.String),
+    value: S.optional(S.String),
+    isWeakReference: S.optional(S.Boolean),
+    list: S.optional(S.suspend(() => ParameterList)),
+    map: S.optional(S.suspend(() => ParameterList)),
+  }),
 ).annotate({ identifier: "Parameter" }) as any as S.Schema<Parameter>;
 
 export type ParameterList = ReadonlyArray<Parameter>;
-export const ParameterList = /*@__PURE__*/ S.Array(Parameter) as any as S.Schema<ParameterList>;
+export const ParameterList = /*@__PURE__*/ S.Array(
+  Parameter,
+) as any as S.Schema<ParameterList>;
 
 /** Represents a Google Tag Manager Transformation. */
 export interface Transformation {
@@ -120,26 +130,43 @@ export interface Transformation {
   parentFolderId?: string;
 }
 export const Transformation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "workspaceId": S.optional(S.String),
-  "accountId": S.optional(S.String),
-  "fingerprint": S.optional(S.String),
-  "parameter": S.optional(ParameterList),
-  "tagManagerUrl": S.optional(S.String),
-  "notes": S.optional(S.String),
-  "path": S.optional(S.String),
-  "containerId": S.optional(S.String),
-  "name": S.optional(S.String),
-  "type": S.optional(S.String),
-  "transformationId": S.optional(S.String),
-  "parentFolderId": S.optional(S.String),
-}),
+  S.Struct({
+    workspaceId: S.optional(S.String),
+    accountId: S.optional(S.String),
+    fingerprint: S.optional(S.String),
+    parameter: S.optional(ParameterList),
+    tagManagerUrl: S.optional(S.String),
+    notes: S.optional(S.String),
+    path: S.optional(S.String),
+    containerId: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    transformationId: S.optional(S.String),
+    parentFolderId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Transformation" }) as any as S.Schema<Transformation>;
 
-export type EntityChangeStatusEnum = "changeStatusUnspecified" | "none" | "added" | "deleted" | "updated";
+export type EntityChangeStatusEnum =
+  | "changeStatusUnspecified"
+  | "none"
+  | "added"
+  | "deleted"
+  | "updated";
 export const EntityChangeStatusEnum = /*@__PURE__*/ S.String;
 
-export type ConditionTypeEnum = "conditionTypeUnspecified" | "equals" | "contains" | "startsWith" | "endsWith" | "matchRegex" | "greater" | "greaterOrEquals" | "less" | "lessOrEquals" | "cssSelector" | "urlMatches";
+export type ConditionTypeEnum =
+  | "conditionTypeUnspecified"
+  | "equals"
+  | "contains"
+  | "startsWith"
+  | "endsWith"
+  | "matchRegex"
+  | "greater"
+  | "greaterOrEquals"
+  | "less"
+  | "lessOrEquals"
+  | "cssSelector"
+  | "urlMatches";
 export const ConditionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a predicate. */
@@ -150,16 +177,53 @@ export interface Condition {
   parameter?: ParameterList;
 }
 export const Condition = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(ConditionTypeEnum),
-  "parameter": S.optional(ParameterList),
-}),
+  S.Struct({
+    type: S.optional(ConditionTypeEnum),
+    parameter: S.optional(ParameterList),
+  }),
 ).annotate({ identifier: "Condition" }) as any as S.Schema<Condition>;
 
 export type ConditionList = ReadonlyArray<Condition>;
-export const ConditionList = /*@__PURE__*/ S.Array(Condition) as any as S.Schema<ConditionList>;
+export const ConditionList = /*@__PURE__*/ S.Array(
+  Condition,
+) as any as S.Schema<ConditionList>;
 
-export type TriggerTypeEnum = "eventTypeUnspecified" | "pageview" | "domReady" | "windowLoaded" | "customEvent" | "triggerGroup" | "init" | "consentInit" | "serverPageview" | "always" | "firebaseAppException" | "firebaseAppUpdate" | "firebaseCampaign" | "firebaseFirstOpen" | "firebaseInAppPurchase" | "firebaseNotificationDismiss" | "firebaseNotificationForeground" | "firebaseNotificationOpen" | "firebaseNotificationReceive" | "firebaseOsUpdate" | "firebaseSessionStart" | "firebaseUserEngagement" | "formSubmission" | "click" | "linkClick" | "jsError" | "historyChange" | "timer" | "ampClick" | "ampTimer" | "ampScroll" | "ampVisibility" | "youTubeVideo" | "scrollDepth" | "elementVisibility";
+export type TriggerTypeEnum =
+  | "eventTypeUnspecified"
+  | "pageview"
+  | "domReady"
+  | "windowLoaded"
+  | "customEvent"
+  | "triggerGroup"
+  | "init"
+  | "consentInit"
+  | "serverPageview"
+  | "always"
+  | "firebaseAppException"
+  | "firebaseAppUpdate"
+  | "firebaseCampaign"
+  | "firebaseFirstOpen"
+  | "firebaseInAppPurchase"
+  | "firebaseNotificationDismiss"
+  | "firebaseNotificationForeground"
+  | "firebaseNotificationOpen"
+  | "firebaseNotificationReceive"
+  | "firebaseOsUpdate"
+  | "firebaseSessionStart"
+  | "firebaseUserEngagement"
+  | "formSubmission"
+  | "click"
+  | "linkClick"
+  | "jsError"
+  | "historyChange"
+  | "timer"
+  | "ampClick"
+  | "ampTimer"
+  | "ampScroll"
+  | "ampVisibility"
+  | "youTubeVideo"
+  | "scrollDepth"
+  | "elementVisibility";
 export const TriggerTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a Google Tag Manager Trigger */
@@ -230,49 +294,58 @@ export interface Trigger {
   totalTimeMinMilliseconds?: Parameter;
 }
 export const Trigger = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "maxTimerLengthSeconds": S.optional(Parameter),
-  "parameter": S.optional(ParameterList),
-  "autoEventFilter": S.optional(ConditionList),
-  "triggerId": S.optional(S.String),
-  "horizontalScrollPercentageList": S.optional(Parameter),
-  "customEventFilter": S.optional(ConditionList),
-  "selector": S.optional(Parameter),
-  "tagManagerUrl": S.optional(S.String),
-  "interval": S.optional(Parameter),
-  "continuousTimeMinMilliseconds": S.optional(Parameter),
-  "limit": S.optional(Parameter),
-  "visiblePercentageMax": S.optional(Parameter),
-  "type": S.optional(TriggerTypeEnum),
-  "waitForTagsTimeout": S.optional(Parameter),
-  "eventName": S.optional(Parameter),
-  "visiblePercentageMin": S.optional(Parameter),
-  "waitForTags": S.optional(Parameter),
-  "uniqueTriggerId": S.optional(Parameter),
-  "intervalSeconds": S.optional(Parameter),
-  "visibilitySelector": S.optional(Parameter),
-  "notes": S.optional(S.String),
-  "workspaceId": S.optional(S.String),
-  "accountId": S.optional(S.String),
-  "fingerprint": S.optional(S.String),
-  "filter": S.optional(ConditionList),
-  "parentFolderId": S.optional(S.String),
-  "checkValidation": S.optional(Parameter),
-  "path": S.optional(S.String),
-  "containerId": S.optional(S.String),
-  "name": S.optional(S.String),
-  "verticalScrollPercentageList": S.optional(Parameter),
-  "totalTimeMinMilliseconds": S.optional(Parameter),
-}),
+  S.Struct({
+    maxTimerLengthSeconds: S.optional(Parameter),
+    parameter: S.optional(ParameterList),
+    autoEventFilter: S.optional(ConditionList),
+    triggerId: S.optional(S.String),
+    horizontalScrollPercentageList: S.optional(Parameter),
+    customEventFilter: S.optional(ConditionList),
+    selector: S.optional(Parameter),
+    tagManagerUrl: S.optional(S.String),
+    interval: S.optional(Parameter),
+    continuousTimeMinMilliseconds: S.optional(Parameter),
+    limit: S.optional(Parameter),
+    visiblePercentageMax: S.optional(Parameter),
+    type: S.optional(TriggerTypeEnum),
+    waitForTagsTimeout: S.optional(Parameter),
+    eventName: S.optional(Parameter),
+    visiblePercentageMin: S.optional(Parameter),
+    waitForTags: S.optional(Parameter),
+    uniqueTriggerId: S.optional(Parameter),
+    intervalSeconds: S.optional(Parameter),
+    visibilitySelector: S.optional(Parameter),
+    notes: S.optional(S.String),
+    workspaceId: S.optional(S.String),
+    accountId: S.optional(S.String),
+    fingerprint: S.optional(S.String),
+    filter: S.optional(ConditionList),
+    parentFolderId: S.optional(S.String),
+    checkValidation: S.optional(Parameter),
+    path: S.optional(S.String),
+    containerId: S.optional(S.String),
+    name: S.optional(S.String),
+    verticalScrollPercentageList: S.optional(Parameter),
+    totalTimeMinMilliseconds: S.optional(Parameter),
+  }),
 ).annotate({ identifier: "Trigger" }) as any as S.Schema<Trigger>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
-export type VariableFormatValueCaseConversionTypeEnum = "none" | "lowercase" | "uppercase";
+export type VariableFormatValueCaseConversionTypeEnum =
+  | "none"
+  | "lowercase"
+  | "uppercase";
 export const VariableFormatValueCaseConversionTypeEnum = /*@__PURE__*/ S.String;
 
-export type VariableFormatValueConvertToNumberEnum = "decimalSeparatorTypeUnspecified" | "period" | "comma" | "automatic";
+export type VariableFormatValueConvertToNumberEnum =
+  | "decimalSeparatorTypeUnspecified"
+  | "period"
+  | "comma"
+  | "automatic";
 export const VariableFormatValueConvertToNumberEnum = /*@__PURE__*/ S.String;
 
 export interface VariableFormatValue {
@@ -292,16 +365,18 @@ export interface VariableFormatValue {
   convertFalseToValue?: Parameter;
 }
 export const VariableFormatValue = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "caseConversionType": S.optional(VariableFormatValueCaseConversionTypeEnum),
-  "convertUndefinedToValue": S.optional(Parameter),
-  "convertNullToValue": S.optional(Parameter),
-  "convertTrueToValue": S.optional(Parameter),
-  "convertToNumber": S.optional(VariableFormatValueConvertToNumberEnum),
-  "convertToBoolean": S.optional(S.Boolean),
-  "convertFalseToValue": S.optional(Parameter),
-}),
-).annotate({ identifier: "VariableFormatValue" }) as any as S.Schema<VariableFormatValue>;
+  S.Struct({
+    caseConversionType: S.optional(VariableFormatValueCaseConversionTypeEnum),
+    convertUndefinedToValue: S.optional(Parameter),
+    convertNullToValue: S.optional(Parameter),
+    convertTrueToValue: S.optional(Parameter),
+    convertToNumber: S.optional(VariableFormatValueConvertToNumberEnum),
+    convertToBoolean: S.optional(S.Boolean),
+    convertFalseToValue: S.optional(Parameter),
+  }),
+).annotate({
+  identifier: "VariableFormatValue",
+}) as any as S.Schema<VariableFormatValue>;
 
 /** Represents a Google Tag Manager Variable. */
 export interface Variable {
@@ -341,25 +416,25 @@ export interface Variable {
   parentFolderId?: string;
 }
 export const Variable = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parameter": S.optional(ParameterList),
-  "enablingTriggerId": S.optional(StringList),
-  "disablingTriggerId": S.optional(StringList),
-  "scheduleEndMs": S.optional(S.String),
-  "workspaceId": S.optional(S.String),
-  "variableId": S.optional(S.String),
-  "accountId": S.optional(S.String),
-  "fingerprint": S.optional(S.String),
-  "tagManagerUrl": S.optional(S.String),
-  "formatValue": S.optional(VariableFormatValue),
-  "notes": S.optional(S.String),
-  "path": S.optional(S.String),
-  "containerId": S.optional(S.String),
-  "name": S.optional(S.String),
-  "scheduleStartMs": S.optional(S.String),
-  "type": S.optional(S.String),
-  "parentFolderId": S.optional(S.String),
-}),
+  S.Struct({
+    parameter: S.optional(ParameterList),
+    enablingTriggerId: S.optional(StringList),
+    disablingTriggerId: S.optional(StringList),
+    scheduleEndMs: S.optional(S.String),
+    workspaceId: S.optional(S.String),
+    variableId: S.optional(S.String),
+    accountId: S.optional(S.String),
+    fingerprint: S.optional(S.String),
+    tagManagerUrl: S.optional(S.String),
+    formatValue: S.optional(VariableFormatValue),
+    notes: S.optional(S.String),
+    path: S.optional(S.String),
+    containerId: S.optional(S.String),
+    name: S.optional(S.String),
+    scheduleStartMs: S.optional(S.String),
+    type: S.optional(S.String),
+    parentFolderId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Variable" }) as any as S.Schema<Variable>;
 
 /** Represents the link between a custom template and an entry on the Community Template Gallery site. */
@@ -382,17 +457,19 @@ export interface GalleryReference {
   galleryTemplateId?: string;
 }
 export const GalleryReference = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "owner": S.optional(S.String),
-  "isModified": S.optional(S.Boolean),
-  "templateDeveloperId": S.optional(S.String),
-  "host": S.optional(S.String),
-  "repository": S.optional(S.String),
-  "version": S.optional(S.String),
-  "signature": S.optional(S.String),
-  "galleryTemplateId": S.optional(S.String),
-}),
-).annotate({ identifier: "GalleryReference" }) as any as S.Schema<GalleryReference>;
+  S.Struct({
+    owner: S.optional(S.String),
+    isModified: S.optional(S.Boolean),
+    templateDeveloperId: S.optional(S.String),
+    host: S.optional(S.String),
+    repository: S.optional(S.String),
+    version: S.optional(S.String),
+    signature: S.optional(S.String),
+    galleryTemplateId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GalleryReference",
+}) as any as S.Schema<GalleryReference>;
 
 /** Represents a Google Tag Manager Custom Template's contents. */
 export interface CustomTemplate {
@@ -418,18 +495,18 @@ export interface CustomTemplate {
   fingerprint?: string;
 }
 export const CustomTemplate = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.optional(S.String),
-  "containerId": S.optional(S.String),
-  "name": S.optional(S.String),
-  "templateId": S.optional(S.String),
-  "tagManagerUrl": S.optional(S.String),
-  "galleryReference": S.optional(GalleryReference),
-  "templateData": S.optional(S.String),
-  "workspaceId": S.optional(S.String),
-  "accountId": S.optional(S.String),
-  "fingerprint": S.optional(S.String),
-}),
+  S.Struct({
+    path: S.optional(S.String),
+    containerId: S.optional(S.String),
+    name: S.optional(S.String),
+    templateId: S.optional(S.String),
+    tagManagerUrl: S.optional(S.String),
+    galleryReference: S.optional(GalleryReference),
+    templateData: S.optional(S.String),
+    workspaceId: S.optional(S.String),
+    accountId: S.optional(S.String),
+    fingerprint: S.optional(S.String),
+  }),
 ).annotate({ identifier: "CustomTemplate" }) as any as S.Schema<CustomTemplate>;
 
 export interface Client {
@@ -461,21 +538,21 @@ export interface Client {
   parameter?: ParameterList;
 }
 export const Client = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.optional(S.String),
-  "containerId": S.optional(S.String),
-  "name": S.optional(S.String),
-  "clientId": S.optional(S.String),
-  "type": S.optional(S.String),
-  "parentFolderId": S.optional(S.String),
-  "workspaceId": S.optional(S.String),
-  "accountId": S.optional(S.String),
-  "fingerprint": S.optional(S.String),
-  "tagManagerUrl": S.optional(S.String),
-  "notes": S.optional(S.String),
-  "priority": S.optional(S.Number),
-  "parameter": S.optional(ParameterList),
-}),
+  S.Struct({
+    path: S.optional(S.String),
+    containerId: S.optional(S.String),
+    name: S.optional(S.String),
+    clientId: S.optional(S.String),
+    type: S.optional(S.String),
+    parentFolderId: S.optional(S.String),
+    workspaceId: S.optional(S.String),
+    accountId: S.optional(S.String),
+    fingerprint: S.optional(S.String),
+    tagManagerUrl: S.optional(S.String),
+    notes: S.optional(S.String),
+    priority: S.optional(S.Number),
+    parameter: S.optional(ParameterList),
+  }),
 ).annotate({ identifier: "Client" }) as any as S.Schema<Client>;
 
 /** Represents a child container of a Zone. */
@@ -486,14 +563,18 @@ export interface ZoneChildContainer {
   publicId?: string;
 }
 export const ZoneChildContainer = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nickname": S.optional(S.String),
-  "publicId": S.optional(S.String),
-}),
-).annotate({ identifier: "ZoneChildContainer" }) as any as S.Schema<ZoneChildContainer>;
+  S.Struct({
+    nickname: S.optional(S.String),
+    publicId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ZoneChildContainer",
+}) as any as S.Schema<ZoneChildContainer>;
 
 export type ZoneChildContainerList = ReadonlyArray<ZoneChildContainer>;
-export const ZoneChildContainerList = /*@__PURE__*/ S.Array(ZoneChildContainer) as any as S.Schema<ZoneChildContainerList>;
+export const ZoneChildContainerList = /*@__PURE__*/ S.Array(
+  ZoneChildContainer,
+) as any as S.Schema<ZoneChildContainerList>;
 
 /** Represents a Zone's type restrictions. */
 export interface ZoneTypeRestriction {
@@ -503,11 +584,13 @@ export interface ZoneTypeRestriction {
   whitelistedTypeId?: StringList;
 }
 export const ZoneTypeRestriction = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "enable": S.optional(S.Boolean),
-  "whitelistedTypeId": S.optional(StringList),
-}),
-).annotate({ identifier: "ZoneTypeRestriction" }) as any as S.Schema<ZoneTypeRestriction>;
+  S.Struct({
+    enable: S.optional(S.Boolean),
+    whitelistedTypeId: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ZoneTypeRestriction",
+}) as any as S.Schema<ZoneTypeRestriction>;
 
 /** Represents a Zone's boundaries. */
 export interface ZoneBoundary {
@@ -517,10 +600,10 @@ export interface ZoneBoundary {
   condition?: ConditionList;
 }
 export const ZoneBoundary = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "customEvaluationTriggerId": S.optional(StringList),
-  "condition": S.optional(ConditionList),
-}),
+  S.Struct({
+    customEvaluationTriggerId: S.optional(StringList),
+    condition: S.optional(ConditionList),
+  }),
 ).annotate({ identifier: "ZoneBoundary" }) as any as S.Schema<ZoneBoundary>;
 
 /** Represents a Google Tag Manager Zone's contents. */
@@ -551,23 +634,140 @@ export interface Zone {
   name?: string;
 }
 export const Zone = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "childContainer": S.optional(ZoneChildContainerList),
-  "tagManagerUrl": S.optional(S.String),
-  "notes": S.optional(S.String),
-  "typeRestriction": S.optional(ZoneTypeRestriction),
-  "workspaceId": S.optional(S.String),
-  "accountId": S.optional(S.String),
-  "zoneId": S.optional(S.String),
-  "fingerprint": S.optional(S.String),
-  "boundary": S.optional(ZoneBoundary),
-  "path": S.optional(S.String),
-  "containerId": S.optional(S.String),
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    childContainer: S.optional(ZoneChildContainerList),
+    tagManagerUrl: S.optional(S.String),
+    notes: S.optional(S.String),
+    typeRestriction: S.optional(ZoneTypeRestriction),
+    workspaceId: S.optional(S.String),
+    accountId: S.optional(S.String),
+    zoneId: S.optional(S.String),
+    fingerprint: S.optional(S.String),
+    boundary: S.optional(ZoneBoundary),
+    path: S.optional(S.String),
+    containerId: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Zone" }) as any as S.Schema<Zone>;
 
-export type BuiltInVariableTypeEnum = "builtInVariableTypeUnspecified" | "pageUrl" | "pageHostname" | "pagePath" | "referrer" | "event" | "clickElement" | "clickClasses" | "clickId" | "clickTarget" | "clickUrl" | "clickText" | "firstPartyServingUrl" | "formElement" | "formClasses" | "formId" | "formTarget" | "formUrl" | "formText" | "errorMessage" | "errorUrl" | "errorLine" | "newHistoryUrl" | "oldHistoryUrl" | "newHistoryFragment" | "oldHistoryFragment" | "newHistoryState" | "oldHistoryState" | "historySource" | "containerVersion" | "debugMode" | "randomNumber" | "containerId" | "appId" | "appName" | "appVersionCode" | "appVersionName" | "language" | "osVersion" | "platform" | "sdkVersion" | "deviceName" | "resolution" | "advertiserId" | "advertisingTrackingEnabled" | "htmlId" | "environmentName" | "ampBrowserLanguage" | "ampCanonicalPath" | "ampCanonicalUrl" | "ampCanonicalHost" | "ampReferrer" | "ampTitle" | "ampClientId" | "ampClientTimezone" | "ampClientTimestamp" | "ampClientScreenWidth" | "ampClientScreenHeight" | "ampClientScrollX" | "ampClientScrollY" | "ampClientMaxScrollX" | "ampClientMaxScrollY" | "ampTotalEngagedTime" | "ampPageViewId" | "ampPageLoadTime" | "ampPageDownloadTime" | "ampGtmEvent" | "eventName" | "firebaseEventParameterCampaign" | "firebaseEventParameterCampaignAclid" | "firebaseEventParameterCampaignAnid" | "firebaseEventParameterCampaignClickTimestamp" | "firebaseEventParameterCampaignContent" | "firebaseEventParameterCampaignCp1" | "firebaseEventParameterCampaignGclid" | "firebaseEventParameterCampaignSource" | "firebaseEventParameterCampaignTerm" | "firebaseEventParameterCurrency" | "firebaseEventParameterDynamicLinkAcceptTime" | "firebaseEventParameterDynamicLinkLinkid" | "firebaseEventParameterNotificationMessageDeviceTime" | "firebaseEventParameterNotificationMessageId" | "firebaseEventParameterNotificationMessageName" | "firebaseEventParameterNotificationMessageTime" | "firebaseEventParameterNotificationTopic" | "firebaseEventParameterPreviousAppVersion" | "firebaseEventParameterPreviousOsVersion" | "firebaseEventParameterPrice" | "firebaseEventParameterProductId" | "firebaseEventParameterQuantity" | "firebaseEventParameterValue" | "videoProvider" | "videoUrl" | "videoTitle" | "videoDuration" | "videoPercent" | "videoVisible" | "videoStatus" | "videoCurrentTime" | "scrollDepthThreshold" | "scrollDepthUnits" | "scrollDepthDirection" | "elementVisibilityRatio" | "elementVisibilityTime" | "elementVisibilityFirstTime" | "elementVisibilityRecentTime" | "requestPath" | "requestMethod" | "clientName" | "queryString" | "serverPageLocationUrl" | "serverPageLocationPath" | "serverPageLocationHostname" | "visitorRegion" | "analyticsClientId" | "analyticsSessionId" | "analyticsSessionNumber";
+export type BuiltInVariableTypeEnum =
+  | "builtInVariableTypeUnspecified"
+  | "pageUrl"
+  | "pageHostname"
+  | "pagePath"
+  | "referrer"
+  | "event"
+  | "clickElement"
+  | "clickClasses"
+  | "clickId"
+  | "clickTarget"
+  | "clickUrl"
+  | "clickText"
+  | "firstPartyServingUrl"
+  | "formElement"
+  | "formClasses"
+  | "formId"
+  | "formTarget"
+  | "formUrl"
+  | "formText"
+  | "errorMessage"
+  | "errorUrl"
+  | "errorLine"
+  | "newHistoryUrl"
+  | "oldHistoryUrl"
+  | "newHistoryFragment"
+  | "oldHistoryFragment"
+  | "newHistoryState"
+  | "oldHistoryState"
+  | "historySource"
+  | "containerVersion"
+  | "debugMode"
+  | "randomNumber"
+  | "containerId"
+  | "appId"
+  | "appName"
+  | "appVersionCode"
+  | "appVersionName"
+  | "language"
+  | "osVersion"
+  | "platform"
+  | "sdkVersion"
+  | "deviceName"
+  | "resolution"
+  | "advertiserId"
+  | "advertisingTrackingEnabled"
+  | "htmlId"
+  | "environmentName"
+  | "ampBrowserLanguage"
+  | "ampCanonicalPath"
+  | "ampCanonicalUrl"
+  | "ampCanonicalHost"
+  | "ampReferrer"
+  | "ampTitle"
+  | "ampClientId"
+  | "ampClientTimezone"
+  | "ampClientTimestamp"
+  | "ampClientScreenWidth"
+  | "ampClientScreenHeight"
+  | "ampClientScrollX"
+  | "ampClientScrollY"
+  | "ampClientMaxScrollX"
+  | "ampClientMaxScrollY"
+  | "ampTotalEngagedTime"
+  | "ampPageViewId"
+  | "ampPageLoadTime"
+  | "ampPageDownloadTime"
+  | "ampGtmEvent"
+  | "eventName"
+  | "firebaseEventParameterCampaign"
+  | "firebaseEventParameterCampaignAclid"
+  | "firebaseEventParameterCampaignAnid"
+  | "firebaseEventParameterCampaignClickTimestamp"
+  | "firebaseEventParameterCampaignContent"
+  | "firebaseEventParameterCampaignCp1"
+  | "firebaseEventParameterCampaignGclid"
+  | "firebaseEventParameterCampaignSource"
+  | "firebaseEventParameterCampaignTerm"
+  | "firebaseEventParameterCurrency"
+  | "firebaseEventParameterDynamicLinkAcceptTime"
+  | "firebaseEventParameterDynamicLinkLinkid"
+  | "firebaseEventParameterNotificationMessageDeviceTime"
+  | "firebaseEventParameterNotificationMessageId"
+  | "firebaseEventParameterNotificationMessageName"
+  | "firebaseEventParameterNotificationMessageTime"
+  | "firebaseEventParameterNotificationTopic"
+  | "firebaseEventParameterPreviousAppVersion"
+  | "firebaseEventParameterPreviousOsVersion"
+  | "firebaseEventParameterPrice"
+  | "firebaseEventParameterProductId"
+  | "firebaseEventParameterQuantity"
+  | "firebaseEventParameterValue"
+  | "videoProvider"
+  | "videoUrl"
+  | "videoTitle"
+  | "videoDuration"
+  | "videoPercent"
+  | "videoVisible"
+  | "videoStatus"
+  | "videoCurrentTime"
+  | "scrollDepthThreshold"
+  | "scrollDepthUnits"
+  | "scrollDepthDirection"
+  | "elementVisibilityRatio"
+  | "elementVisibilityTime"
+  | "elementVisibilityFirstTime"
+  | "elementVisibilityRecentTime"
+  | "requestPath"
+  | "requestMethod"
+  | "clientName"
+  | "queryString"
+  | "serverPageLocationUrl"
+  | "serverPageLocationPath"
+  | "serverPageLocationHostname"
+  | "visitorRegion"
+  | "analyticsClientId"
+  | "analyticsSessionId"
+  | "analyticsSessionNumber";
 export const BuiltInVariableTypeEnum = /*@__PURE__*/ S.String;
 
 /** Built-in variables are a special category of variables that are pre-created and non-customizable. They provide common functionality like accessing properties of the gtm data layer, monitoring clicks, or accessing elements of a page URL. */
@@ -586,15 +786,17 @@ export interface BuiltInVariable {
   accountId?: string;
 }
 export const BuiltInVariable = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(BuiltInVariableTypeEnum),
-  "path": S.optional(S.String),
-  "containerId": S.optional(S.String),
-  "workspaceId": S.optional(S.String),
-  "name": S.optional(S.String),
-  "accountId": S.optional(S.String),
-}),
-).annotate({ identifier: "BuiltInVariable" }) as any as S.Schema<BuiltInVariable>;
+  S.Struct({
+    type: S.optional(BuiltInVariableTypeEnum),
+    path: S.optional(S.String),
+    containerId: S.optional(S.String),
+    workspaceId: S.optional(S.String),
+    name: S.optional(S.String),
+    accountId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BuiltInVariable",
+}) as any as S.Schema<BuiltInVariable>;
 
 /** Represents a tag that fires after another tag in order to tear down dependencies. */
 export interface TeardownTag {
@@ -604,16 +806,21 @@ export interface TeardownTag {
   stopTeardownOnFailure?: boolean;
 }
 export const TeardownTag = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "tagName": S.optional(S.String),
-  "stopTeardownOnFailure": S.optional(S.Boolean),
-}),
+  S.Struct({
+    tagName: S.optional(S.String),
+    stopTeardownOnFailure: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "TeardownTag" }) as any as S.Schema<TeardownTag>;
 
 export type TeardownTagList = ReadonlyArray<TeardownTag>;
-export const TeardownTagList = /*@__PURE__*/ S.Array(TeardownTag) as any as S.Schema<TeardownTagList>;
+export const TeardownTagList = /*@__PURE__*/ S.Array(
+  TeardownTag,
+) as any as S.Schema<TeardownTagList>;
 
-export type TagConsentSettingConsentStatusEnum = "notSet" | "notNeeded" | "needed";
+export type TagConsentSettingConsentStatusEnum =
+  | "notSet"
+  | "notNeeded"
+  | "needed";
 export const TagConsentSettingConsentStatusEnum = /*@__PURE__*/ S.String;
 
 export interface TagConsentSetting {
@@ -623,11 +830,13 @@ export interface TagConsentSetting {
   consentStatus?: TagConsentSettingConsentStatusEnum;
 }
 export const TagConsentSetting = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "consentType": S.optional(Parameter),
-  "consentStatus": S.optional(TagConsentSettingConsentStatusEnum),
-}),
-).annotate({ identifier: "TagConsentSetting" }) as any as S.Schema<TagConsentSetting>;
+  S.Struct({
+    consentType: S.optional(Parameter),
+    consentStatus: S.optional(TagConsentSettingConsentStatusEnum),
+  }),
+).annotate({
+  identifier: "TagConsentSetting",
+}) as any as S.Schema<TagConsentSetting>;
 
 /** Represents a reference to atag that fires before another tag in order to set up dependencies. */
 export interface SetupTag {
@@ -637,16 +846,22 @@ export interface SetupTag {
   stopOnSetupFailure?: boolean;
 }
 export const SetupTag = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "tagName": S.optional(S.String),
-  "stopOnSetupFailure": S.optional(S.Boolean),
-}),
+  S.Struct({
+    tagName: S.optional(S.String),
+    stopOnSetupFailure: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "SetupTag" }) as any as S.Schema<SetupTag>;
 
 export type SetupTagList = ReadonlyArray<SetupTag>;
-export const SetupTagList = /*@__PURE__*/ S.Array(SetupTag) as any as S.Schema<SetupTagList>;
+export const SetupTagList = /*@__PURE__*/ S.Array(
+  SetupTag,
+) as any as S.Schema<SetupTagList>;
 
-export type TagTagFiringOptionEnum = "tagFiringOptionUnspecified" | "unlimited" | "oncePerEvent" | "oncePerLoad";
+export type TagTagFiringOptionEnum =
+  | "tagFiringOptionUnspecified"
+  | "unlimited"
+  | "oncePerEvent"
+  | "oncePerLoad";
 export const TagTagFiringOptionEnum = /*@__PURE__*/ S.String;
 
 /** Represents a Google Tag Manager Tag. */
@@ -703,33 +918,33 @@ export interface Tag {
   scheduleEndMs?: string;
 }
 export const Tag = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "monitoringMetadataTagNameKey": S.optional(S.String),
-  "notes": S.optional(S.String),
-  "firingTriggerId": S.optional(StringList),
-  "teardownTag": S.optional(TeardownTagList),
-  "workspaceId": S.optional(S.String),
-  "consentSettings": S.optional(TagConsentSetting),
-  "accountId": S.optional(S.String),
-  "fingerprint": S.optional(S.String),
-  "parentFolderId": S.optional(S.String),
-  "path": S.optional(S.String),
-  "containerId": S.optional(S.String),
-  "name": S.optional(S.String),
-  "scheduleStartMs": S.optional(S.String),
-  "monitoringMetadata": S.optional(Parameter),
-  "tagId": S.optional(S.String),
-  "priority": S.optional(Parameter),
-  "blockingTriggerId": S.optional(StringList),
-  "tagManagerUrl": S.optional(S.String),
-  "type": S.optional(S.String),
-  "liveOnly": S.optional(S.Boolean),
-  "paused": S.optional(S.Boolean),
-  "parameter": S.optional(ParameterList),
-  "setupTag": S.optional(SetupTagList),
-  "tagFiringOption": S.optional(TagTagFiringOptionEnum),
-  "scheduleEndMs": S.optional(S.String),
-}),
+  S.Struct({
+    monitoringMetadataTagNameKey: S.optional(S.String),
+    notes: S.optional(S.String),
+    firingTriggerId: S.optional(StringList),
+    teardownTag: S.optional(TeardownTagList),
+    workspaceId: S.optional(S.String),
+    consentSettings: S.optional(TagConsentSetting),
+    accountId: S.optional(S.String),
+    fingerprint: S.optional(S.String),
+    parentFolderId: S.optional(S.String),
+    path: S.optional(S.String),
+    containerId: S.optional(S.String),
+    name: S.optional(S.String),
+    scheduleStartMs: S.optional(S.String),
+    monitoringMetadata: S.optional(Parameter),
+    tagId: S.optional(S.String),
+    priority: S.optional(Parameter),
+    blockingTriggerId: S.optional(StringList),
+    tagManagerUrl: S.optional(S.String),
+    type: S.optional(S.String),
+    liveOnly: S.optional(S.Boolean),
+    paused: S.optional(S.Boolean),
+    parameter: S.optional(ParameterList),
+    setupTag: S.optional(SetupTagList),
+    tagFiringOption: S.optional(TagTagFiringOptionEnum),
+    scheduleEndMs: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 
 /** Represents a Google tag configuration. */
@@ -754,17 +969,17 @@ export interface GtagConfig {
   containerId?: string;
 }
 export const GtagConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parameter": S.optional(ParameterList),
-  "tagManagerUrl": S.optional(S.String),
-  "accountId": S.optional(S.String),
-  "fingerprint": S.optional(S.String),
-  "workspaceId": S.optional(S.String),
-  "type": S.optional(S.String),
-  "gtagConfigId": S.optional(S.String),
-  "path": S.optional(S.String),
-  "containerId": S.optional(S.String),
-}),
+  S.Struct({
+    parameter: S.optional(ParameterList),
+    tagManagerUrl: S.optional(S.String),
+    accountId: S.optional(S.String),
+    fingerprint: S.optional(S.String),
+    workspaceId: S.optional(S.String),
+    type: S.optional(S.String),
+    gtagConfigId: S.optional(S.String),
+    path: S.optional(S.String),
+    containerId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "GtagConfig" }) as any as S.Schema<GtagConfig>;
 
 /** Represents a Google Tag Manager Folder. */
@@ -789,17 +1004,17 @@ export interface Folder {
   name?: string;
 }
 export const Folder = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "folderId": S.optional(S.String),
-  "accountId": S.optional(S.String),
-  "fingerprint": S.optional(S.String),
-  "workspaceId": S.optional(S.String),
-  "notes": S.optional(S.String),
-  "tagManagerUrl": S.optional(S.String),
-  "path": S.optional(S.String),
-  "containerId": S.optional(S.String),
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    folderId: S.optional(S.String),
+    accountId: S.optional(S.String),
+    fingerprint: S.optional(S.String),
+    workspaceId: S.optional(S.String),
+    notes: S.optional(S.String),
+    tagManagerUrl: S.optional(S.String),
+    path: S.optional(S.String),
+    containerId: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Folder" }) as any as S.Schema<Folder>;
 
 /** A workspace entity that may represent a tag, trigger, variable, or folder in addition to its status in the workspace. */
@@ -828,32 +1043,34 @@ export interface Entity {
   folder?: Folder;
 }
 export const Entity = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "transformation": S.optional(Transformation),
-  "changeStatus": S.optional(EntityChangeStatusEnum),
-  "trigger": S.optional(Trigger),
-  "variable": S.optional(Variable),
-  "customTemplate": S.optional(CustomTemplate),
-  "client": S.optional(Client),
-  "zone": S.optional(Zone),
-  "builtInVariable": S.optional(BuiltInVariable),
-  "tag": S.optional(Tag),
-  "gtagConfig": S.optional(GtagConfig),
-  "folder": S.optional(Folder),
-}),
+  S.Struct({
+    transformation: S.optional(Transformation),
+    changeStatus: S.optional(EntityChangeStatusEnum),
+    trigger: S.optional(Trigger),
+    variable: S.optional(Variable),
+    customTemplate: S.optional(CustomTemplate),
+    client: S.optional(Client),
+    zone: S.optional(Zone),
+    builtInVariable: S.optional(BuiltInVariable),
+    tag: S.optional(Tag),
+    gtagConfig: S.optional(GtagConfig),
+    folder: S.optional(Folder),
+  }),
 ).annotate({ identifier: "Entity" }) as any as S.Schema<Entity>;
 
 export type EntityList = ReadonlyArray<Entity>;
-export const EntityList = /*@__PURE__*/ S.Array(Entity) as any as S.Schema<EntityList>;
+export const EntityList = /*@__PURE__*/ S.Array(
+  Entity,
+) as any as S.Schema<EntityList>;
 
 export interface ProposedChange {
   /** The list of workspace changes to be applied. */
   changes?: EntityList;
 }
 export const ProposedChange = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "changes": S.optional(EntityList),
-}),
+  S.Struct({
+    changes: S.optional(EntityList),
+  }),
 ).annotate({ identifier: "ProposedChange" }) as any as S.Schema<ProposedChange>;
 
 export interface Bulk_updateAccountsContainersWorkspacesRequest {
@@ -862,25 +1079,40 @@ export interface Bulk_updateAccountsContainersWorkspacesRequest {
   /** Request body */
   body?: ProposedChange;
 }
-export const Bulk_updateAccountsContainersWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-  "body": S.optional(ProposedChange.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"tagmanager/v2/{+path}/bulk_update","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "Bulk_updateAccountsContainersWorkspacesRequest" }) as any as S.Schema<Bulk_updateAccountsContainersWorkspacesRequest>;
+export const Bulk_updateAccountsContainersWorkspacesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+      body: S.optional(ProposedChange.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "tagmanager/v2/{+path}/bulk_update",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "Bulk_updateAccountsContainersWorkspacesRequest",
+  }) as any as S.Schema<Bulk_updateAccountsContainersWorkspacesRequest>;
 
 export interface BulkUpdateWorkspaceResponse {
   /** The entities that were added or updated during the bulk-update. Does not include entities that were deleted or updated by the system. */
   changes?: EntityList;
 }
 export const BulkUpdateWorkspaceResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "changes": S.optional(EntityList),
-}),
-).annotate({ identifier: "BulkUpdateWorkspaceResponse" }) as any as S.Schema<BulkUpdateWorkspaceResponse>;
+  S.Struct({
+    changes: S.optional(EntityList),
+  }),
+).annotate({
+  identifier: "BulkUpdateWorkspaceResponse",
+}) as any as S.Schema<BulkUpdateWorkspaceResponse>;
 
-export type CombineAccountsContainersSettingSourceEnum = "settingSourceUnspecified" | "current" | "other";
-export const CombineAccountsContainersSettingSourceEnum = /*@__PURE__*/ S.String;
+export type CombineAccountsContainersSettingSourceEnum =
+  | "settingSourceUnspecified"
+  | "current"
+  | "other";
+export const CombineAccountsContainersSettingSourceEnum =
+  /*@__PURE__*/ S.String;
 
 export interface CombineAccountsContainersRequest {
   /** Must be set to true to allow features.user_permissions to change from false to true. If this operation causes an update but this bit is false, the operation will fail. */
@@ -893,13 +1125,23 @@ export interface CombineAccountsContainersRequest {
   containerId?: string;
 }
 export const CombineAccountsContainersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "allowUserPermissionFeatureUpdate": S.optional(S.Boolean.pipe(T.Query())),
-  "settingSource": S.optional(CombineAccountsContainersSettingSourceEnum.pipe(T.Query())),
-  "path": S.String.pipe(T.Label()),
-  "containerId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"POST","uri":"tagmanager/v2/{+path}:combine","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "CombineAccountsContainersRequest" }) as any as S.Schema<CombineAccountsContainersRequest>;
+  S.Struct({
+    allowUserPermissionFeatureUpdate: S.optional(S.Boolean.pipe(T.Query())),
+    settingSource: S.optional(
+      CombineAccountsContainersSettingSourceEnum.pipe(T.Query()),
+    ),
+    path: S.String.pipe(T.Label()),
+    containerId: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "tagmanager/v2/{+path}:combine",
+      baseUrl: "https://tagmanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CombineAccountsContainersRequest",
+}) as any as S.Schema<CombineAccountsContainersRequest>;
 
 export interface ContainerFeatures {
   /** Whether this Container supports workspaces. */
@@ -932,29 +1174,42 @@ export interface ContainerFeatures {
   supportVersions?: boolean;
 }
 export const ContainerFeatures = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "supportWorkspaces": S.optional(S.Boolean),
-  "supportBuiltInVariables": S.optional(S.Boolean),
-  "supportFolders": S.optional(S.Boolean),
-  "supportTriggers": S.optional(S.Boolean),
-  "supportVariables": S.optional(S.Boolean),
-  "supportZones": S.optional(S.Boolean),
-  "supportTemplates": S.optional(S.Boolean),
-  "supportGtagConfigs": S.optional(S.Boolean),
-  "supportTags": S.optional(S.Boolean),
-  "supportEnvironments": S.optional(S.Boolean),
-  "supportUserPermissions": S.optional(S.Boolean),
-  "supportClients": S.optional(S.Boolean),
-  "supportTransformations": S.optional(S.Boolean),
-  "supportVersions": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "ContainerFeatures" }) as any as S.Schema<ContainerFeatures>;
+  S.Struct({
+    supportWorkspaces: S.optional(S.Boolean),
+    supportBuiltInVariables: S.optional(S.Boolean),
+    supportFolders: S.optional(S.Boolean),
+    supportTriggers: S.optional(S.Boolean),
+    supportVariables: S.optional(S.Boolean),
+    supportZones: S.optional(S.Boolean),
+    supportTemplates: S.optional(S.Boolean),
+    supportGtagConfigs: S.optional(S.Boolean),
+    supportTags: S.optional(S.Boolean),
+    supportEnvironments: S.optional(S.Boolean),
+    supportUserPermissions: S.optional(S.Boolean),
+    supportClients: S.optional(S.Boolean),
+    supportTransformations: S.optional(S.Boolean),
+    supportVersions: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ContainerFeatures",
+}) as any as S.Schema<ContainerFeatures>;
 
-export type ContainerUsageContextItemEnum = "usageContextUnspecified" | "web" | "android" | "ios" | "androidSdk5" | "iosSdk5" | "amp" | "server";
+export type ContainerUsageContextItemEnum =
+  | "usageContextUnspecified"
+  | "web"
+  | "android"
+  | "ios"
+  | "androidSdk5"
+  | "iosSdk5"
+  | "amp"
+  | "server";
 export const ContainerUsageContextItemEnum = /*@__PURE__*/ S.String;
 
-export type ContainerUsageContextItemEnumList = ReadonlyArray<ContainerUsageContextItemEnum>;
-export const ContainerUsageContextItemEnumList = /*@__PURE__*/ S.Array(ContainerUsageContextItemEnum) as any as S.Schema<ContainerUsageContextItemEnumList>;
+export type ContainerUsageContextItemEnumList =
+  ReadonlyArray<ContainerUsageContextItemEnum>;
+export const ContainerUsageContextItemEnumList = /*@__PURE__*/ S.Array(
+  ContainerUsageContextItemEnum,
+) as any as S.Schema<ContainerUsageContextItemEnumList>;
 
 /** Represents a Google Tag Manager Container, which specifies the platform tags will run on, manages workspaces, and retains container versions. */
 export interface Container {
@@ -986,21 +1241,21 @@ export interface Container {
   fingerprint?: string;
 }
 export const Container = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "features": S.optional(ContainerFeatures),
-  "usageContext": S.optional(ContainerUsageContextItemEnumList),
-  "taggingServerUrls": S.optional(StringList),
-  "domainName": S.optional(StringList),
-  "tagIds": S.optional(StringList),
-  "path": S.optional(S.String),
-  "containerId": S.optional(S.String),
-  "name": S.optional(S.String),
-  "notes": S.optional(S.String),
-  "tagManagerUrl": S.optional(S.String),
-  "publicId": S.optional(S.String),
-  "accountId": S.optional(S.String),
-  "fingerprint": S.optional(S.String),
-}),
+  S.Struct({
+    features: S.optional(ContainerFeatures),
+    usageContext: S.optional(ContainerUsageContextItemEnumList),
+    taggingServerUrls: S.optional(StringList),
+    domainName: S.optional(StringList),
+    tagIds: S.optional(StringList),
+    path: S.optional(S.String),
+    containerId: S.optional(S.String),
+    name: S.optional(S.String),
+    notes: S.optional(S.String),
+    tagManagerUrl: S.optional(S.String),
+    publicId: S.optional(S.String),
+    accountId: S.optional(S.String),
+    fingerprint: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Container" }) as any as S.Schema<Container>;
 
 /** Options for new container versions. */
@@ -1010,12 +1265,15 @@ export interface CreateContainerVersionRequestVersionOptions {
   /** The name of the container version to be created. */
   name?: string;
 }
-export const CreateContainerVersionRequestVersionOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "notes": S.optional(S.String),
-  "name": S.optional(S.String),
-}),
-).annotate({ identifier: "CreateContainerVersionRequestVersionOptions" }) as any as S.Schema<CreateContainerVersionRequestVersionOptions>;
+export const CreateContainerVersionRequestVersionOptions =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      notes: S.optional(S.String),
+      name: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "CreateContainerVersionRequestVersionOptions",
+  }) as any as S.Schema<CreateContainerVersionRequestVersionOptions>;
 
 export interface Create_versionAccountsContainersWorkspacesRequest {
   /** GTM Workspace's API relative path. */
@@ -1023,42 +1281,71 @@ export interface Create_versionAccountsContainersWorkspacesRequest {
   /** Request body */
   body?: CreateContainerVersionRequestVersionOptions;
 }
-export const Create_versionAccountsContainersWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-  "body": S.optional(CreateContainerVersionRequestVersionOptions.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"tagmanager/v2/{+path}:create_version","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "Create_versionAccountsContainersWorkspacesRequest" }) as any as S.Schema<Create_versionAccountsContainersWorkspacesRequest>;
+export const Create_versionAccountsContainersWorkspacesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+      body: S.optional(
+        CreateContainerVersionRequestVersionOptions.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "tagmanager/v2/{+path}:create_version",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "Create_versionAccountsContainersWorkspacesRequest",
+  }) as any as S.Schema<Create_versionAccountsContainersWorkspacesRequest>;
 
 export type TransformationList = ReadonlyArray<Transformation>;
-export const TransformationList = /*@__PURE__*/ S.Array(Transformation) as any as S.Schema<TransformationList>;
+export const TransformationList = /*@__PURE__*/ S.Array(
+  Transformation,
+) as any as S.Schema<TransformationList>;
 
 export type TriggerList = ReadonlyArray<Trigger>;
-export const TriggerList = /*@__PURE__*/ S.Array(Trigger) as any as S.Schema<TriggerList>;
+export const TriggerList = /*@__PURE__*/ S.Array(
+  Trigger,
+) as any as S.Schema<TriggerList>;
 
 export type GtagConfigList = ReadonlyArray<GtagConfig>;
-export const GtagConfigList = /*@__PURE__*/ S.Array(GtagConfig) as any as S.Schema<GtagConfigList>;
+export const GtagConfigList = /*@__PURE__*/ S.Array(
+  GtagConfig,
+) as any as S.Schema<GtagConfigList>;
 
 export type VariableList = ReadonlyArray<Variable>;
-export const VariableList = /*@__PURE__*/ S.Array(Variable) as any as S.Schema<VariableList>;
+export const VariableList = /*@__PURE__*/ S.Array(
+  Variable,
+) as any as S.Schema<VariableList>;
 
 export type CustomTemplateList = ReadonlyArray<CustomTemplate>;
-export const CustomTemplateList = /*@__PURE__*/ S.Array(CustomTemplate) as any as S.Schema<CustomTemplateList>;
+export const CustomTemplateList = /*@__PURE__*/ S.Array(
+  CustomTemplate,
+) as any as S.Schema<CustomTemplateList>;
 
 export type BuiltInVariableList = ReadonlyArray<BuiltInVariable>;
-export const BuiltInVariableList = /*@__PURE__*/ S.Array(BuiltInVariable) as any as S.Schema<BuiltInVariableList>;
+export const BuiltInVariableList = /*@__PURE__*/ S.Array(
+  BuiltInVariable,
+) as any as S.Schema<BuiltInVariableList>;
 
 export type ZoneList = ReadonlyArray<Zone>;
-export const ZoneList = /*@__PURE__*/ S.Array(Zone) as any as S.Schema<ZoneList>;
+export const ZoneList = /*@__PURE__*/ S.Array(
+  Zone,
+) as any as S.Schema<ZoneList>;
 
 export type ClientList = ReadonlyArray<Client>;
-export const ClientList = /*@__PURE__*/ S.Array(Client) as any as S.Schema<ClientList>;
+export const ClientList = /*@__PURE__*/ S.Array(
+  Client,
+) as any as S.Schema<ClientList>;
 
 export type TagList = ReadonlyArray<Tag>;
 export const TagList = /*@__PURE__*/ S.Array(Tag) as any as S.Schema<TagList>;
 
 export type FolderList = ReadonlyArray<Folder>;
-export const FolderList = /*@__PURE__*/ S.Array(Folder) as any as S.Schema<FolderList>;
+export const FolderList = /*@__PURE__*/ S.Array(
+  Folder,
+) as any as S.Schema<FolderList>;
 
 /** Represents a Google Tag Manager Container Version. */
 export interface ContainerVersion {
@@ -1104,29 +1391,31 @@ export interface ContainerVersion {
   folder?: FolderList;
 }
 export const ContainerVersion = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "transformation": S.optional(TransformationList),
-  "trigger": S.optional(TriggerList),
-  "container": S.optional(Container),
-  "containerVersionId": S.optional(S.String),
-  "description": S.optional(S.String),
-  "gtagConfig": S.optional(GtagConfigList),
-  "deleted": S.optional(S.Boolean),
-  "accountId": S.optional(S.String),
-  "fingerprint": S.optional(S.String),
-  "tagManagerUrl": S.optional(S.String),
-  "variable": S.optional(VariableList),
-  "customTemplate": S.optional(CustomTemplateList),
-  "builtInVariable": S.optional(BuiltInVariableList),
-  "zone": S.optional(ZoneList),
-  "client": S.optional(ClientList),
-  "path": S.optional(S.String),
-  "containerId": S.optional(S.String),
-  "name": S.optional(S.String),
-  "tag": S.optional(TagList),
-  "folder": S.optional(FolderList),
-}),
-).annotate({ identifier: "ContainerVersion" }) as any as S.Schema<ContainerVersion>;
+  S.Struct({
+    transformation: S.optional(TransformationList),
+    trigger: S.optional(TriggerList),
+    container: S.optional(Container),
+    containerVersionId: S.optional(S.String),
+    description: S.optional(S.String),
+    gtagConfig: S.optional(GtagConfigList),
+    deleted: S.optional(S.Boolean),
+    accountId: S.optional(S.String),
+    fingerprint: S.optional(S.String),
+    tagManagerUrl: S.optional(S.String),
+    variable: S.optional(VariableList),
+    customTemplate: S.optional(CustomTemplateList),
+    builtInVariable: S.optional(BuiltInVariableList),
+    zone: S.optional(ZoneList),
+    client: S.optional(ClientList),
+    path: S.optional(S.String),
+    containerId: S.optional(S.String),
+    name: S.optional(S.String),
+    tag: S.optional(TagList),
+    folder: S.optional(FolderList),
+  }),
+).annotate({
+  identifier: "ContainerVersion",
+}) as any as S.Schema<ContainerVersion>;
 
 /** The status of a workspace after synchronization. */
 export interface SyncStatus {
@@ -1136,10 +1425,10 @@ export interface SyncStatus {
   syncError?: boolean;
 }
 export const SyncStatus = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "mergeConflict": S.optional(S.Boolean),
-  "syncError": S.optional(S.Boolean),
-}),
+  S.Struct({
+    mergeConflict: S.optional(S.Boolean),
+    syncError: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "SyncStatus" }) as any as S.Schema<SyncStatus>;
 
 /** Create container versions response. */
@@ -1154,13 +1443,15 @@ export interface CreateContainerVersionResponse {
   syncStatus?: SyncStatus;
 }
 export const CreateContainerVersionResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "compilerError": S.optional(S.Boolean),
-  "newWorkspacePath": S.optional(S.String),
-  "containerVersion": S.optional(ContainerVersion),
-  "syncStatus": S.optional(SyncStatus),
-}),
-).annotate({ identifier: "CreateContainerVersionResponse" }) as any as S.Schema<CreateContainerVersionResponse>;
+  S.Struct({
+    compilerError: S.optional(S.Boolean),
+    newWorkspacePath: S.optional(S.String),
+    containerVersion: S.optional(ContainerVersion),
+    syncStatus: S.optional(SyncStatus),
+  }),
+).annotate({
+  identifier: "CreateContainerVersionResponse",
+}) as any as S.Schema<CreateContainerVersionResponse>;
 
 export interface CreateAccountsContainersRequest {
   /** GTM Account's API relative path. */
@@ -1169,11 +1460,19 @@ export interface CreateAccountsContainersRequest {
   body?: Container;
 }
 export const CreateAccountsContainersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(Container.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"tagmanager/v2/{+parent}/containers","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "CreateAccountsContainersRequest" }) as any as S.Schema<CreateAccountsContainersRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(Container.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "tagmanager/v2/{+parent}/containers",
+      baseUrl: "https://tagmanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateAccountsContainersRequest",
+}) as any as S.Schema<CreateAccountsContainersRequest>;
 
 export type EnvironmentTypeEnum = "user" | "live" | "latest" | "workspace";
 export const EnvironmentTypeEnum = /*@__PURE__*/ S.String;
@@ -1212,23 +1511,23 @@ export interface Environment {
   environmentId?: string;
 }
 export const Environment = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(EnvironmentTypeEnum),
-  "path": S.optional(S.String),
-  "containerId": S.optional(S.String),
-  "name": S.optional(S.String),
-  "tagManagerUrl": S.optional(S.String),
-  "accountId": S.optional(S.String),
-  "fingerprint": S.optional(S.String),
-  "workspaceId": S.optional(S.String),
-  "authorizationCode": S.optional(S.String),
-  "description": S.optional(S.String),
-  "enableDebug": S.optional(S.Boolean),
-  "containerVersionId": S.optional(S.String),
-  "url": S.optional(S.String),
-  "authorizationTimestamp": S.optional(S.String),
-  "environmentId": S.optional(S.String),
-}),
+  S.Struct({
+    type: S.optional(EnvironmentTypeEnum),
+    path: S.optional(S.String),
+    containerId: S.optional(S.String),
+    name: S.optional(S.String),
+    tagManagerUrl: S.optional(S.String),
+    accountId: S.optional(S.String),
+    fingerprint: S.optional(S.String),
+    workspaceId: S.optional(S.String),
+    authorizationCode: S.optional(S.String),
+    description: S.optional(S.String),
+    enableDebug: S.optional(S.Boolean),
+    containerVersionId: S.optional(S.String),
+    url: S.optional(S.String),
+    authorizationTimestamp: S.optional(S.String),
+    environmentId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Environment" }) as any as S.Schema<Environment>;
 
 export interface CreateAccountsContainersEnvironmentsRequest {
@@ -1237,12 +1536,21 @@ export interface CreateAccountsContainersEnvironmentsRequest {
   /** Request body */
   body?: Environment;
 }
-export const CreateAccountsContainersEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(Environment.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"tagmanager/v2/{+parent}/environments","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "CreateAccountsContainersEnvironmentsRequest" }) as any as S.Schema<CreateAccountsContainersEnvironmentsRequest>;
+export const CreateAccountsContainersEnvironmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(Environment.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "tagmanager/v2/{+parent}/environments",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateAccountsContainersEnvironmentsRequest",
+  }) as any as S.Schema<CreateAccountsContainersEnvironmentsRequest>;
 
 /** Represents a Google Tag Manager Container Workspace. */
 export interface Workspace {
@@ -1264,16 +1572,16 @@ export interface Workspace {
   tagManagerUrl?: string;
 }
 export const Workspace = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.optional(S.String),
-  "containerId": S.optional(S.String),
-  "workspaceId": S.optional(S.String),
-  "name": S.optional(S.String),
-  "description": S.optional(S.String),
-  "accountId": S.optional(S.String),
-  "fingerprint": S.optional(S.String),
-  "tagManagerUrl": S.optional(S.String),
-}),
+  S.Struct({
+    path: S.optional(S.String),
+    containerId: S.optional(S.String),
+    workspaceId: S.optional(S.String),
+    name: S.optional(S.String),
+    description: S.optional(S.String),
+    accountId: S.optional(S.String),
+    fingerprint: S.optional(S.String),
+    tagManagerUrl: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Workspace" }) as any as S.Schema<Workspace>;
 
 export interface CreateAccountsContainersWorkspacesRequest {
@@ -1282,18 +1590,151 @@ export interface CreateAccountsContainersWorkspacesRequest {
   /** Request body */
   body?: Workspace;
 }
-export const CreateAccountsContainersWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(Workspace.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"tagmanager/v2/{+parent}/workspaces","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "CreateAccountsContainersWorkspacesRequest" }) as any as S.Schema<CreateAccountsContainersWorkspacesRequest>;
+export const CreateAccountsContainersWorkspacesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(Workspace.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "tagmanager/v2/{+parent}/workspaces",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateAccountsContainersWorkspacesRequest",
+  }) as any as S.Schema<CreateAccountsContainersWorkspacesRequest>;
 
-export type CreateAccountsContainersWorkspacesBuilt_in_variablesTypeEnum = "builtInVariableTypeUnspecified" | "pageUrl" | "pageHostname" | "pagePath" | "referrer" | "event" | "clickElement" | "clickClasses" | "clickId" | "clickTarget" | "clickUrl" | "clickText" | "firstPartyServingUrl" | "formElement" | "formClasses" | "formId" | "formTarget" | "formUrl" | "formText" | "errorMessage" | "errorUrl" | "errorLine" | "newHistoryUrl" | "oldHistoryUrl" | "newHistoryFragment" | "oldHistoryFragment" | "newHistoryState" | "oldHistoryState" | "historySource" | "containerVersion" | "debugMode" | "randomNumber" | "containerId" | "appId" | "appName" | "appVersionCode" | "appVersionName" | "language" | "osVersion" | "platform" | "sdkVersion" | "deviceName" | "resolution" | "advertiserId" | "advertisingTrackingEnabled" | "htmlId" | "environmentName" | "ampBrowserLanguage" | "ampCanonicalPath" | "ampCanonicalUrl" | "ampCanonicalHost" | "ampReferrer" | "ampTitle" | "ampClientId" | "ampClientTimezone" | "ampClientTimestamp" | "ampClientScreenWidth" | "ampClientScreenHeight" | "ampClientScrollX" | "ampClientScrollY" | "ampClientMaxScrollX" | "ampClientMaxScrollY" | "ampTotalEngagedTime" | "ampPageViewId" | "ampPageLoadTime" | "ampPageDownloadTime" | "ampGtmEvent" | "eventName" | "firebaseEventParameterCampaign" | "firebaseEventParameterCampaignAclid" | "firebaseEventParameterCampaignAnid" | "firebaseEventParameterCampaignClickTimestamp" | "firebaseEventParameterCampaignContent" | "firebaseEventParameterCampaignCp1" | "firebaseEventParameterCampaignGclid" | "firebaseEventParameterCampaignSource" | "firebaseEventParameterCampaignTerm" | "firebaseEventParameterCurrency" | "firebaseEventParameterDynamicLinkAcceptTime" | "firebaseEventParameterDynamicLinkLinkid" | "firebaseEventParameterNotificationMessageDeviceTime" | "firebaseEventParameterNotificationMessageId" | "firebaseEventParameterNotificationMessageName" | "firebaseEventParameterNotificationMessageTime" | "firebaseEventParameterNotificationTopic" | "firebaseEventParameterPreviousAppVersion" | "firebaseEventParameterPreviousOsVersion" | "firebaseEventParameterPrice" | "firebaseEventParameterProductId" | "firebaseEventParameterQuantity" | "firebaseEventParameterValue" | "videoProvider" | "videoUrl" | "videoTitle" | "videoDuration" | "videoPercent" | "videoVisible" | "videoStatus" | "videoCurrentTime" | "scrollDepthThreshold" | "scrollDepthUnits" | "scrollDepthDirection" | "elementVisibilityRatio" | "elementVisibilityTime" | "elementVisibilityFirstTime" | "elementVisibilityRecentTime" | "requestPath" | "requestMethod" | "clientName" | "queryString" | "serverPageLocationUrl" | "serverPageLocationPath" | "serverPageLocationHostname" | "visitorRegion" | "analyticsClientId" | "analyticsSessionId" | "analyticsSessionNumber";
-export const CreateAccountsContainersWorkspacesBuilt_in_variablesTypeEnum = /*@__PURE__*/ S.String;
+export type CreateAccountsContainersWorkspacesBuilt_in_variablesTypeEnum =
+  | "builtInVariableTypeUnspecified"
+  | "pageUrl"
+  | "pageHostname"
+  | "pagePath"
+  | "referrer"
+  | "event"
+  | "clickElement"
+  | "clickClasses"
+  | "clickId"
+  | "clickTarget"
+  | "clickUrl"
+  | "clickText"
+  | "firstPartyServingUrl"
+  | "formElement"
+  | "formClasses"
+  | "formId"
+  | "formTarget"
+  | "formUrl"
+  | "formText"
+  | "errorMessage"
+  | "errorUrl"
+  | "errorLine"
+  | "newHistoryUrl"
+  | "oldHistoryUrl"
+  | "newHistoryFragment"
+  | "oldHistoryFragment"
+  | "newHistoryState"
+  | "oldHistoryState"
+  | "historySource"
+  | "containerVersion"
+  | "debugMode"
+  | "randomNumber"
+  | "containerId"
+  | "appId"
+  | "appName"
+  | "appVersionCode"
+  | "appVersionName"
+  | "language"
+  | "osVersion"
+  | "platform"
+  | "sdkVersion"
+  | "deviceName"
+  | "resolution"
+  | "advertiserId"
+  | "advertisingTrackingEnabled"
+  | "htmlId"
+  | "environmentName"
+  | "ampBrowserLanguage"
+  | "ampCanonicalPath"
+  | "ampCanonicalUrl"
+  | "ampCanonicalHost"
+  | "ampReferrer"
+  | "ampTitle"
+  | "ampClientId"
+  | "ampClientTimezone"
+  | "ampClientTimestamp"
+  | "ampClientScreenWidth"
+  | "ampClientScreenHeight"
+  | "ampClientScrollX"
+  | "ampClientScrollY"
+  | "ampClientMaxScrollX"
+  | "ampClientMaxScrollY"
+  | "ampTotalEngagedTime"
+  | "ampPageViewId"
+  | "ampPageLoadTime"
+  | "ampPageDownloadTime"
+  | "ampGtmEvent"
+  | "eventName"
+  | "firebaseEventParameterCampaign"
+  | "firebaseEventParameterCampaignAclid"
+  | "firebaseEventParameterCampaignAnid"
+  | "firebaseEventParameterCampaignClickTimestamp"
+  | "firebaseEventParameterCampaignContent"
+  | "firebaseEventParameterCampaignCp1"
+  | "firebaseEventParameterCampaignGclid"
+  | "firebaseEventParameterCampaignSource"
+  | "firebaseEventParameterCampaignTerm"
+  | "firebaseEventParameterCurrency"
+  | "firebaseEventParameterDynamicLinkAcceptTime"
+  | "firebaseEventParameterDynamicLinkLinkid"
+  | "firebaseEventParameterNotificationMessageDeviceTime"
+  | "firebaseEventParameterNotificationMessageId"
+  | "firebaseEventParameterNotificationMessageName"
+  | "firebaseEventParameterNotificationMessageTime"
+  | "firebaseEventParameterNotificationTopic"
+  | "firebaseEventParameterPreviousAppVersion"
+  | "firebaseEventParameterPreviousOsVersion"
+  | "firebaseEventParameterPrice"
+  | "firebaseEventParameterProductId"
+  | "firebaseEventParameterQuantity"
+  | "firebaseEventParameterValue"
+  | "videoProvider"
+  | "videoUrl"
+  | "videoTitle"
+  | "videoDuration"
+  | "videoPercent"
+  | "videoVisible"
+  | "videoStatus"
+  | "videoCurrentTime"
+  | "scrollDepthThreshold"
+  | "scrollDepthUnits"
+  | "scrollDepthDirection"
+  | "elementVisibilityRatio"
+  | "elementVisibilityTime"
+  | "elementVisibilityFirstTime"
+  | "elementVisibilityRecentTime"
+  | "requestPath"
+  | "requestMethod"
+  | "clientName"
+  | "queryString"
+  | "serverPageLocationUrl"
+  | "serverPageLocationPath"
+  | "serverPageLocationHostname"
+  | "visitorRegion"
+  | "analyticsClientId"
+  | "analyticsSessionId"
+  | "analyticsSessionNumber";
+export const CreateAccountsContainersWorkspacesBuilt_in_variablesTypeEnum =
+  /*@__PURE__*/ S.String;
 
-export type CreateAccountsContainersWorkspacesBuilt_in_variablesTypeEnumList = ReadonlyArray<CreateAccountsContainersWorkspacesBuilt_in_variablesTypeEnum | (string & {})>;
-export const CreateAccountsContainersWorkspacesBuilt_in_variablesTypeEnumList = /*@__PURE__*/ S.Array(CreateAccountsContainersWorkspacesBuilt_in_variablesTypeEnum) as any as S.Schema<CreateAccountsContainersWorkspacesBuilt_in_variablesTypeEnumList>;
+export type CreateAccountsContainersWorkspacesBuilt_in_variablesTypeEnumList =
+  ReadonlyArray<
+    CreateAccountsContainersWorkspacesBuilt_in_variablesTypeEnum | (string & {})
+  >;
+export const CreateAccountsContainersWorkspacesBuilt_in_variablesTypeEnumList =
+  /*@__PURE__*/ S.Array(
+    CreateAccountsContainersWorkspacesBuilt_in_variablesTypeEnum,
+  ) as any as S.Schema<CreateAccountsContainersWorkspacesBuilt_in_variablesTypeEnumList>;
 
 export interface CreateAccountsContainersWorkspacesBuilt_in_variablesRequest {
   /** GTM Workspace's API relative path. */
@@ -1301,22 +1742,37 @@ export interface CreateAccountsContainersWorkspacesBuilt_in_variablesRequest {
   /** The types of built-in variables to enable. */
   type?: CreateAccountsContainersWorkspacesBuilt_in_variablesTypeEnumList;
 }
-export const CreateAccountsContainersWorkspacesBuilt_in_variablesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "type": S.optional(CreateAccountsContainersWorkspacesBuilt_in_variablesTypeEnumList.pipe(T.Query())),
-}).pipe(T.Http({"method":"POST","uri":"tagmanager/v2/{+parent}/built_in_variables","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "CreateAccountsContainersWorkspacesBuilt_in_variablesRequest" }) as any as S.Schema<CreateAccountsContainersWorkspacesBuilt_in_variablesRequest>;
+export const CreateAccountsContainersWorkspacesBuilt_in_variablesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      type: S.optional(
+        CreateAccountsContainersWorkspacesBuilt_in_variablesTypeEnumList.pipe(
+          T.Query(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "tagmanager/v2/{+parent}/built_in_variables",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateAccountsContainersWorkspacesBuilt_in_variablesRequest",
+  }) as any as S.Schema<CreateAccountsContainersWorkspacesBuilt_in_variablesRequest>;
 
 export interface CreateBuiltInVariableResponse {
   /** List of created built-in variables. */
   builtInVariable?: BuiltInVariableList;
 }
 export const CreateBuiltInVariableResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "builtInVariable": S.optional(BuiltInVariableList),
-}),
-).annotate({ identifier: "CreateBuiltInVariableResponse" }) as any as S.Schema<CreateBuiltInVariableResponse>;
+  S.Struct({
+    builtInVariable: S.optional(BuiltInVariableList),
+  }),
+).annotate({
+  identifier: "CreateBuiltInVariableResponse",
+}) as any as S.Schema<CreateBuiltInVariableResponse>;
 
 export interface CreateAccountsContainersWorkspacesClientsRequest {
   /** GTM Workspace's API relative path. */
@@ -1324,12 +1780,21 @@ export interface CreateAccountsContainersWorkspacesClientsRequest {
   /** Request body */
   body?: Client;
 }
-export const CreateAccountsContainersWorkspacesClientsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(Client.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"tagmanager/v2/{+parent}/clients","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "CreateAccountsContainersWorkspacesClientsRequest" }) as any as S.Schema<CreateAccountsContainersWorkspacesClientsRequest>;
+export const CreateAccountsContainersWorkspacesClientsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(Client.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "tagmanager/v2/{+parent}/clients",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateAccountsContainersWorkspacesClientsRequest",
+  }) as any as S.Schema<CreateAccountsContainersWorkspacesClientsRequest>;
 
 export interface CreateAccountsContainersWorkspacesFoldersRequest {
   /** GTM Workspace's API relative path. */
@@ -1337,12 +1802,21 @@ export interface CreateAccountsContainersWorkspacesFoldersRequest {
   /** Request body */
   body?: Folder;
 }
-export const CreateAccountsContainersWorkspacesFoldersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(Folder.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"tagmanager/v2/{+parent}/folders","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "CreateAccountsContainersWorkspacesFoldersRequest" }) as any as S.Schema<CreateAccountsContainersWorkspacesFoldersRequest>;
+export const CreateAccountsContainersWorkspacesFoldersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(Folder.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "tagmanager/v2/{+parent}/folders",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateAccountsContainersWorkspacesFoldersRequest",
+  }) as any as S.Schema<CreateAccountsContainersWorkspacesFoldersRequest>;
 
 export interface CreateAccountsContainersWorkspacesGtag_configRequest {
   /** Workspace's API relative path. */
@@ -1350,12 +1824,21 @@ export interface CreateAccountsContainersWorkspacesGtag_configRequest {
   /** Request body */
   body?: GtagConfig;
 }
-export const CreateAccountsContainersWorkspacesGtag_configRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(GtagConfig.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"tagmanager/v2/{+parent}/gtag_config","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "CreateAccountsContainersWorkspacesGtag_configRequest" }) as any as S.Schema<CreateAccountsContainersWorkspacesGtag_configRequest>;
+export const CreateAccountsContainersWorkspacesGtag_configRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(GtagConfig.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "tagmanager/v2/{+parent}/gtag_config",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateAccountsContainersWorkspacesGtag_configRequest",
+  }) as any as S.Schema<CreateAccountsContainersWorkspacesGtag_configRequest>;
 
 export interface CreateAccountsContainersWorkspacesTagsRequest {
   /** GTM Workspace's API relative path. */
@@ -1363,12 +1846,21 @@ export interface CreateAccountsContainersWorkspacesTagsRequest {
   /** Request body */
   body?: Tag;
 }
-export const CreateAccountsContainersWorkspacesTagsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(Tag.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"tagmanager/v2/{+parent}/tags","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "CreateAccountsContainersWorkspacesTagsRequest" }) as any as S.Schema<CreateAccountsContainersWorkspacesTagsRequest>;
+export const CreateAccountsContainersWorkspacesTagsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(Tag.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "tagmanager/v2/{+parent}/tags",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateAccountsContainersWorkspacesTagsRequest",
+  }) as any as S.Schema<CreateAccountsContainersWorkspacesTagsRequest>;
 
 export interface CreateAccountsContainersWorkspacesTemplatesRequest {
   /** GTM Workspace's API relative path. */
@@ -1376,12 +1868,21 @@ export interface CreateAccountsContainersWorkspacesTemplatesRequest {
   /** Request body */
   body?: CustomTemplate;
 }
-export const CreateAccountsContainersWorkspacesTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(CustomTemplate.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"tagmanager/v2/{+parent}/templates","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "CreateAccountsContainersWorkspacesTemplatesRequest" }) as any as S.Schema<CreateAccountsContainersWorkspacesTemplatesRequest>;
+export const CreateAccountsContainersWorkspacesTemplatesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(CustomTemplate.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "tagmanager/v2/{+parent}/templates",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateAccountsContainersWorkspacesTemplatesRequest",
+  }) as any as S.Schema<CreateAccountsContainersWorkspacesTemplatesRequest>;
 
 export interface CreateAccountsContainersWorkspacesTransformationsRequest {
   /** GTM Workspace's API relative path. */
@@ -1389,12 +1890,21 @@ export interface CreateAccountsContainersWorkspacesTransformationsRequest {
   /** Request body */
   body?: Transformation;
 }
-export const CreateAccountsContainersWorkspacesTransformationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(Transformation.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"tagmanager/v2/{+parent}/transformations","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "CreateAccountsContainersWorkspacesTransformationsRequest" }) as any as S.Schema<CreateAccountsContainersWorkspacesTransformationsRequest>;
+export const CreateAccountsContainersWorkspacesTransformationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(Transformation.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "tagmanager/v2/{+parent}/transformations",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateAccountsContainersWorkspacesTransformationsRequest",
+  }) as any as S.Schema<CreateAccountsContainersWorkspacesTransformationsRequest>;
 
 export interface CreateAccountsContainersWorkspacesTriggersRequest {
   /** GTM Workspace's API relative path. */
@@ -1402,12 +1912,21 @@ export interface CreateAccountsContainersWorkspacesTriggersRequest {
   /** Request body */
   body?: Trigger;
 }
-export const CreateAccountsContainersWorkspacesTriggersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(Trigger.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"tagmanager/v2/{+parent}/triggers","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "CreateAccountsContainersWorkspacesTriggersRequest" }) as any as S.Schema<CreateAccountsContainersWorkspacesTriggersRequest>;
+export const CreateAccountsContainersWorkspacesTriggersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(Trigger.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "tagmanager/v2/{+parent}/triggers",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateAccountsContainersWorkspacesTriggersRequest",
+  }) as any as S.Schema<CreateAccountsContainersWorkspacesTriggersRequest>;
 
 export interface CreateAccountsContainersWorkspacesVariablesRequest {
   /** GTM Workspace's API relative path. */
@@ -1415,12 +1934,21 @@ export interface CreateAccountsContainersWorkspacesVariablesRequest {
   /** Request body */
   body?: Variable;
 }
-export const CreateAccountsContainersWorkspacesVariablesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(Variable.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"tagmanager/v2/{+parent}/variables","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "CreateAccountsContainersWorkspacesVariablesRequest" }) as any as S.Schema<CreateAccountsContainersWorkspacesVariablesRequest>;
+export const CreateAccountsContainersWorkspacesVariablesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(Variable.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "tagmanager/v2/{+parent}/variables",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateAccountsContainersWorkspacesVariablesRequest",
+  }) as any as S.Schema<CreateAccountsContainersWorkspacesVariablesRequest>;
 
 export interface CreateAccountsContainersWorkspacesZonesRequest {
   /** GTM Workspace's API relative path. */
@@ -1428,14 +1956,27 @@ export interface CreateAccountsContainersWorkspacesZonesRequest {
   /** Request body */
   body?: Zone;
 }
-export const CreateAccountsContainersWorkspacesZonesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(Zone.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"tagmanager/v2/{+parent}/zones","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "CreateAccountsContainersWorkspacesZonesRequest" }) as any as S.Schema<CreateAccountsContainersWorkspacesZonesRequest>;
+export const CreateAccountsContainersWorkspacesZonesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(Zone.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "tagmanager/v2/{+parent}/zones",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateAccountsContainersWorkspacesZonesRequest",
+  }) as any as S.Schema<CreateAccountsContainersWorkspacesZonesRequest>;
 
-export type AccountAccessPermissionEnum = "accountPermissionUnspecified" | "noAccess" | "user" | "admin";
+export type AccountAccessPermissionEnum =
+  | "accountPermissionUnspecified"
+  | "noAccess"
+  | "user"
+  | "admin";
 export const AccountAccessPermissionEnum = /*@__PURE__*/ S.String;
 
 /** Defines the Google Tag Manager Account access permissions. */
@@ -1444,12 +1985,18 @@ export interface AccountAccess {
   permission?: AccountAccessPermissionEnum;
 }
 export const AccountAccess = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "permission": S.optional(AccountAccessPermissionEnum),
-}),
+  S.Struct({
+    permission: S.optional(AccountAccessPermissionEnum),
+  }),
 ).annotate({ identifier: "AccountAccess" }) as any as S.Schema<AccountAccess>;
 
-export type ContainerAccessPermissionEnum = "containerPermissionUnspecified" | "noAccess" | "read" | "edit" | "approve" | "publish";
+export type ContainerAccessPermissionEnum =
+  | "containerPermissionUnspecified"
+  | "noAccess"
+  | "read"
+  | "edit"
+  | "approve"
+  | "publish";
 export const ContainerAccessPermissionEnum = /*@__PURE__*/ S.String;
 
 /** Defines the Google Tag Manager Container access permissions. */
@@ -1460,14 +2007,18 @@ export interface ContainerAccess {
   containerId?: string;
 }
 export const ContainerAccess = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "permission": S.optional(ContainerAccessPermissionEnum),
-  "containerId": S.optional(S.String),
-}),
-).annotate({ identifier: "ContainerAccess" }) as any as S.Schema<ContainerAccess>;
+  S.Struct({
+    permission: S.optional(ContainerAccessPermissionEnum),
+    containerId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ContainerAccess",
+}) as any as S.Schema<ContainerAccess>;
 
 export type ContainerAccessList = ReadonlyArray<ContainerAccess>;
-export const ContainerAccessList = /*@__PURE__*/ S.Array(ContainerAccess) as any as S.Schema<ContainerAccessList>;
+export const ContainerAccessList = /*@__PURE__*/ S.Array(
+  ContainerAccess,
+) as any as S.Schema<ContainerAccessList>;
 
 /** Represents a user's permissions to an account and its container. */
 export interface UserPermission {
@@ -1483,13 +2034,13 @@ export interface UserPermission {
   emailAddress?: string;
 }
 export const UserPermission = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "accountId": S.optional(S.String),
-  "accountAccess": S.optional(AccountAccess),
-  "containerAccess": S.optional(ContainerAccessList),
-  "path": S.optional(S.String),
-  "emailAddress": S.optional(S.String),
-}),
+  S.Struct({
+    accountId: S.optional(S.String),
+    accountAccess: S.optional(AccountAccess),
+    containerAccess: S.optional(ContainerAccessList),
+    path: S.optional(S.String),
+    emailAddress: S.optional(S.String),
+  }),
 ).annotate({ identifier: "UserPermission" }) as any as S.Schema<UserPermission>;
 
 export interface CreateAccountsUser_permissionsRequest {
@@ -1498,78 +2049,252 @@ export interface CreateAccountsUser_permissionsRequest {
   /** Request body */
   body?: UserPermission;
 }
-export const CreateAccountsUser_permissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(UserPermission.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"tagmanager/v2/{+parent}/user_permissions","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "CreateAccountsUser_permissionsRequest" }) as any as S.Schema<CreateAccountsUser_permissionsRequest>;
+export const CreateAccountsUser_permissionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(UserPermission.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "tagmanager/v2/{+parent}/user_permissions",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateAccountsUser_permissionsRequest",
+}) as any as S.Schema<CreateAccountsUser_permissionsRequest>;
 
 export interface DeleteAccountsContainersRequest {
   /** GTM Container's API relative path. */
   path: string;
 }
 export const DeleteAccountsContainersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"tagmanager/v2/{+path}","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "DeleteAccountsContainersRequest" }) as any as S.Schema<DeleteAccountsContainersRequest>;
+  S.Struct({
+    path: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "tagmanager/v2/{+path}",
+      baseUrl: "https://tagmanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteAccountsContainersRequest",
+}) as any as S.Schema<DeleteAccountsContainersRequest>;
 
 export interface DeleteAccountsContainersResponse {}
 export const DeleteAccountsContainersResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "DeleteAccountsContainersResponse" }) as any as S.Schema<DeleteAccountsContainersResponse>;
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteAccountsContainersResponse",
+}) as any as S.Schema<DeleteAccountsContainersResponse>;
 
 export interface DeleteAccountsContainersEnvironmentsRequest {
   /** GTM Environment's API relative path. */
   path: string;
 }
-export const DeleteAccountsContainersEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"tagmanager/v2/{+path}","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "DeleteAccountsContainersEnvironmentsRequest" }) as any as S.Schema<DeleteAccountsContainersEnvironmentsRequest>;
+export const DeleteAccountsContainersEnvironmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "tagmanager/v2/{+path}",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteAccountsContainersEnvironmentsRequest",
+  }) as any as S.Schema<DeleteAccountsContainersEnvironmentsRequest>;
 
 export interface DeleteAccountsContainersEnvironmentsResponse {}
-export const DeleteAccountsContainersEnvironmentsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "DeleteAccountsContainersEnvironmentsResponse" }) as any as S.Schema<DeleteAccountsContainersEnvironmentsResponse>;
+export const DeleteAccountsContainersEnvironmentsResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "DeleteAccountsContainersEnvironmentsResponse",
+  }) as any as S.Schema<DeleteAccountsContainersEnvironmentsResponse>;
 
 export interface DeleteAccountsContainersVersionsRequest {
   /** GTM ContainerVersion's API relative path. */
   path: string;
 }
-export const DeleteAccountsContainersVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"tagmanager/v2/{+path}","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "DeleteAccountsContainersVersionsRequest" }) as any as S.Schema<DeleteAccountsContainersVersionsRequest>;
+export const DeleteAccountsContainersVersionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "tagmanager/v2/{+path}",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteAccountsContainersVersionsRequest",
+}) as any as S.Schema<DeleteAccountsContainersVersionsRequest>;
 
 export interface DeleteAccountsContainersVersionsResponse {}
-export const DeleteAccountsContainersVersionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "DeleteAccountsContainersVersionsResponse" }) as any as S.Schema<DeleteAccountsContainersVersionsResponse>;
+export const DeleteAccountsContainersVersionsResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DeleteAccountsContainersVersionsResponse",
+}) as any as S.Schema<DeleteAccountsContainersVersionsResponse>;
 
 export interface DeleteAccountsContainersWorkspacesRequest {
   /** GTM Workspace's API relative path. */
   path: string;
 }
-export const DeleteAccountsContainersWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"tagmanager/v2/{+path}","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "DeleteAccountsContainersWorkspacesRequest" }) as any as S.Schema<DeleteAccountsContainersWorkspacesRequest>;
+export const DeleteAccountsContainersWorkspacesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "tagmanager/v2/{+path}",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteAccountsContainersWorkspacesRequest",
+  }) as any as S.Schema<DeleteAccountsContainersWorkspacesRequest>;
 
 export interface DeleteAccountsContainersWorkspacesResponse {}
-export const DeleteAccountsContainersWorkspacesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "DeleteAccountsContainersWorkspacesResponse" }) as any as S.Schema<DeleteAccountsContainersWorkspacesResponse>;
+export const DeleteAccountsContainersWorkspacesResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "DeleteAccountsContainersWorkspacesResponse",
+  }) as any as S.Schema<DeleteAccountsContainersWorkspacesResponse>;
 
-export type DeleteAccountsContainersWorkspacesBuilt_in_variablesTypeEnum = "builtInVariableTypeUnspecified" | "pageUrl" | "pageHostname" | "pagePath" | "referrer" | "event" | "clickElement" | "clickClasses" | "clickId" | "clickTarget" | "clickUrl" | "clickText" | "firstPartyServingUrl" | "formElement" | "formClasses" | "formId" | "formTarget" | "formUrl" | "formText" | "errorMessage" | "errorUrl" | "errorLine" | "newHistoryUrl" | "oldHistoryUrl" | "newHistoryFragment" | "oldHistoryFragment" | "newHistoryState" | "oldHistoryState" | "historySource" | "containerVersion" | "debugMode" | "randomNumber" | "containerId" | "appId" | "appName" | "appVersionCode" | "appVersionName" | "language" | "osVersion" | "platform" | "sdkVersion" | "deviceName" | "resolution" | "advertiserId" | "advertisingTrackingEnabled" | "htmlId" | "environmentName" | "ampBrowserLanguage" | "ampCanonicalPath" | "ampCanonicalUrl" | "ampCanonicalHost" | "ampReferrer" | "ampTitle" | "ampClientId" | "ampClientTimezone" | "ampClientTimestamp" | "ampClientScreenWidth" | "ampClientScreenHeight" | "ampClientScrollX" | "ampClientScrollY" | "ampClientMaxScrollX" | "ampClientMaxScrollY" | "ampTotalEngagedTime" | "ampPageViewId" | "ampPageLoadTime" | "ampPageDownloadTime" | "ampGtmEvent" | "eventName" | "firebaseEventParameterCampaign" | "firebaseEventParameterCampaignAclid" | "firebaseEventParameterCampaignAnid" | "firebaseEventParameterCampaignClickTimestamp" | "firebaseEventParameterCampaignContent" | "firebaseEventParameterCampaignCp1" | "firebaseEventParameterCampaignGclid" | "firebaseEventParameterCampaignSource" | "firebaseEventParameterCampaignTerm" | "firebaseEventParameterCurrency" | "firebaseEventParameterDynamicLinkAcceptTime" | "firebaseEventParameterDynamicLinkLinkid" | "firebaseEventParameterNotificationMessageDeviceTime" | "firebaseEventParameterNotificationMessageId" | "firebaseEventParameterNotificationMessageName" | "firebaseEventParameterNotificationMessageTime" | "firebaseEventParameterNotificationTopic" | "firebaseEventParameterPreviousAppVersion" | "firebaseEventParameterPreviousOsVersion" | "firebaseEventParameterPrice" | "firebaseEventParameterProductId" | "firebaseEventParameterQuantity" | "firebaseEventParameterValue" | "videoProvider" | "videoUrl" | "videoTitle" | "videoDuration" | "videoPercent" | "videoVisible" | "videoStatus" | "videoCurrentTime" | "scrollDepthThreshold" | "scrollDepthUnits" | "scrollDepthDirection" | "elementVisibilityRatio" | "elementVisibilityTime" | "elementVisibilityFirstTime" | "elementVisibilityRecentTime" | "requestPath" | "requestMethod" | "clientName" | "queryString" | "serverPageLocationUrl" | "serverPageLocationPath" | "serverPageLocationHostname" | "visitorRegion" | "analyticsClientId" | "analyticsSessionId" | "analyticsSessionNumber";
-export const DeleteAccountsContainersWorkspacesBuilt_in_variablesTypeEnum = /*@__PURE__*/ S.String;
+export type DeleteAccountsContainersWorkspacesBuilt_in_variablesTypeEnum =
+  | "builtInVariableTypeUnspecified"
+  | "pageUrl"
+  | "pageHostname"
+  | "pagePath"
+  | "referrer"
+  | "event"
+  | "clickElement"
+  | "clickClasses"
+  | "clickId"
+  | "clickTarget"
+  | "clickUrl"
+  | "clickText"
+  | "firstPartyServingUrl"
+  | "formElement"
+  | "formClasses"
+  | "formId"
+  | "formTarget"
+  | "formUrl"
+  | "formText"
+  | "errorMessage"
+  | "errorUrl"
+  | "errorLine"
+  | "newHistoryUrl"
+  | "oldHistoryUrl"
+  | "newHistoryFragment"
+  | "oldHistoryFragment"
+  | "newHistoryState"
+  | "oldHistoryState"
+  | "historySource"
+  | "containerVersion"
+  | "debugMode"
+  | "randomNumber"
+  | "containerId"
+  | "appId"
+  | "appName"
+  | "appVersionCode"
+  | "appVersionName"
+  | "language"
+  | "osVersion"
+  | "platform"
+  | "sdkVersion"
+  | "deviceName"
+  | "resolution"
+  | "advertiserId"
+  | "advertisingTrackingEnabled"
+  | "htmlId"
+  | "environmentName"
+  | "ampBrowserLanguage"
+  | "ampCanonicalPath"
+  | "ampCanonicalUrl"
+  | "ampCanonicalHost"
+  | "ampReferrer"
+  | "ampTitle"
+  | "ampClientId"
+  | "ampClientTimezone"
+  | "ampClientTimestamp"
+  | "ampClientScreenWidth"
+  | "ampClientScreenHeight"
+  | "ampClientScrollX"
+  | "ampClientScrollY"
+  | "ampClientMaxScrollX"
+  | "ampClientMaxScrollY"
+  | "ampTotalEngagedTime"
+  | "ampPageViewId"
+  | "ampPageLoadTime"
+  | "ampPageDownloadTime"
+  | "ampGtmEvent"
+  | "eventName"
+  | "firebaseEventParameterCampaign"
+  | "firebaseEventParameterCampaignAclid"
+  | "firebaseEventParameterCampaignAnid"
+  | "firebaseEventParameterCampaignClickTimestamp"
+  | "firebaseEventParameterCampaignContent"
+  | "firebaseEventParameterCampaignCp1"
+  | "firebaseEventParameterCampaignGclid"
+  | "firebaseEventParameterCampaignSource"
+  | "firebaseEventParameterCampaignTerm"
+  | "firebaseEventParameterCurrency"
+  | "firebaseEventParameterDynamicLinkAcceptTime"
+  | "firebaseEventParameterDynamicLinkLinkid"
+  | "firebaseEventParameterNotificationMessageDeviceTime"
+  | "firebaseEventParameterNotificationMessageId"
+  | "firebaseEventParameterNotificationMessageName"
+  | "firebaseEventParameterNotificationMessageTime"
+  | "firebaseEventParameterNotificationTopic"
+  | "firebaseEventParameterPreviousAppVersion"
+  | "firebaseEventParameterPreviousOsVersion"
+  | "firebaseEventParameterPrice"
+  | "firebaseEventParameterProductId"
+  | "firebaseEventParameterQuantity"
+  | "firebaseEventParameterValue"
+  | "videoProvider"
+  | "videoUrl"
+  | "videoTitle"
+  | "videoDuration"
+  | "videoPercent"
+  | "videoVisible"
+  | "videoStatus"
+  | "videoCurrentTime"
+  | "scrollDepthThreshold"
+  | "scrollDepthUnits"
+  | "scrollDepthDirection"
+  | "elementVisibilityRatio"
+  | "elementVisibilityTime"
+  | "elementVisibilityFirstTime"
+  | "elementVisibilityRecentTime"
+  | "requestPath"
+  | "requestMethod"
+  | "clientName"
+  | "queryString"
+  | "serverPageLocationUrl"
+  | "serverPageLocationPath"
+  | "serverPageLocationHostname"
+  | "visitorRegion"
+  | "analyticsClientId"
+  | "analyticsSessionId"
+  | "analyticsSessionNumber";
+export const DeleteAccountsContainersWorkspacesBuilt_in_variablesTypeEnum =
+  /*@__PURE__*/ S.String;
 
-export type DeleteAccountsContainersWorkspacesBuilt_in_variablesTypeEnumList = ReadonlyArray<DeleteAccountsContainersWorkspacesBuilt_in_variablesTypeEnum | (string & {})>;
-export const DeleteAccountsContainersWorkspacesBuilt_in_variablesTypeEnumList = /*@__PURE__*/ S.Array(DeleteAccountsContainersWorkspacesBuilt_in_variablesTypeEnum) as any as S.Schema<DeleteAccountsContainersWorkspacesBuilt_in_variablesTypeEnumList>;
+export type DeleteAccountsContainersWorkspacesBuilt_in_variablesTypeEnumList =
+  ReadonlyArray<
+    DeleteAccountsContainersWorkspacesBuilt_in_variablesTypeEnum | (string & {})
+  >;
+export const DeleteAccountsContainersWorkspacesBuilt_in_variablesTypeEnumList =
+  /*@__PURE__*/ S.Array(
+    DeleteAccountsContainersWorkspacesBuilt_in_variablesTypeEnum,
+  ) as any as S.Schema<DeleteAccountsContainersWorkspacesBuilt_in_variablesTypeEnumList>;
 
 export interface DeleteAccountsContainersWorkspacesBuilt_in_variablesRequest {
   /** The types of built-in variables to delete. */
@@ -1577,167 +2302,282 @@ export interface DeleteAccountsContainersWorkspacesBuilt_in_variablesRequest {
   /** GTM BuiltInVariable's API relative path. */
   path: string;
 }
-export const DeleteAccountsContainersWorkspacesBuilt_in_variablesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(DeleteAccountsContainersWorkspacesBuilt_in_variablesTypeEnumList.pipe(T.Query())),
-  "path": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"tagmanager/v2/{+path}","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "DeleteAccountsContainersWorkspacesBuilt_in_variablesRequest" }) as any as S.Schema<DeleteAccountsContainersWorkspacesBuilt_in_variablesRequest>;
+export const DeleteAccountsContainersWorkspacesBuilt_in_variablesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(
+        DeleteAccountsContainersWorkspacesBuilt_in_variablesTypeEnumList.pipe(
+          T.Query(),
+        ),
+      ),
+      path: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "tagmanager/v2/{+path}",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteAccountsContainersWorkspacesBuilt_in_variablesRequest",
+  }) as any as S.Schema<DeleteAccountsContainersWorkspacesBuilt_in_variablesRequest>;
 
 export interface DeleteAccountsContainersWorkspacesBuilt_in_variablesResponse {}
-export const DeleteAccountsContainersWorkspacesBuilt_in_variablesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "DeleteAccountsContainersWorkspacesBuilt_in_variablesResponse" }) as any as S.Schema<DeleteAccountsContainersWorkspacesBuilt_in_variablesResponse>;
+export const DeleteAccountsContainersWorkspacesBuilt_in_variablesResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "DeleteAccountsContainersWorkspacesBuilt_in_variablesResponse",
+  }) as any as S.Schema<DeleteAccountsContainersWorkspacesBuilt_in_variablesResponse>;
 
 export interface DeleteAccountsContainersWorkspacesClientsRequest {
   /** GTM Client's API relative path. */
   path: string;
 }
-export const DeleteAccountsContainersWorkspacesClientsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"tagmanager/v2/{+path}","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "DeleteAccountsContainersWorkspacesClientsRequest" }) as any as S.Schema<DeleteAccountsContainersWorkspacesClientsRequest>;
+export const DeleteAccountsContainersWorkspacesClientsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "tagmanager/v2/{+path}",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteAccountsContainersWorkspacesClientsRequest",
+  }) as any as S.Schema<DeleteAccountsContainersWorkspacesClientsRequest>;
 
 export interface DeleteAccountsContainersWorkspacesClientsResponse {}
-export const DeleteAccountsContainersWorkspacesClientsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "DeleteAccountsContainersWorkspacesClientsResponse" }) as any as S.Schema<DeleteAccountsContainersWorkspacesClientsResponse>;
+export const DeleteAccountsContainersWorkspacesClientsResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "DeleteAccountsContainersWorkspacesClientsResponse",
+  }) as any as S.Schema<DeleteAccountsContainersWorkspacesClientsResponse>;
 
 export interface DeleteAccountsContainersWorkspacesFoldersRequest {
   /** GTM Folder's API relative path. */
   path: string;
 }
-export const DeleteAccountsContainersWorkspacesFoldersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"tagmanager/v2/{+path}","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "DeleteAccountsContainersWorkspacesFoldersRequest" }) as any as S.Schema<DeleteAccountsContainersWorkspacesFoldersRequest>;
+export const DeleteAccountsContainersWorkspacesFoldersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "tagmanager/v2/{+path}",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteAccountsContainersWorkspacesFoldersRequest",
+  }) as any as S.Schema<DeleteAccountsContainersWorkspacesFoldersRequest>;
 
 export interface DeleteAccountsContainersWorkspacesFoldersResponse {}
-export const DeleteAccountsContainersWorkspacesFoldersResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "DeleteAccountsContainersWorkspacesFoldersResponse" }) as any as S.Schema<DeleteAccountsContainersWorkspacesFoldersResponse>;
+export const DeleteAccountsContainersWorkspacesFoldersResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "DeleteAccountsContainersWorkspacesFoldersResponse",
+  }) as any as S.Schema<DeleteAccountsContainersWorkspacesFoldersResponse>;
 
 export interface DeleteAccountsContainersWorkspacesGtag_configRequest {
   /** Google tag config's API relative path. */
   path: string;
 }
-export const DeleteAccountsContainersWorkspacesGtag_configRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"tagmanager/v2/{+path}","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "DeleteAccountsContainersWorkspacesGtag_configRequest" }) as any as S.Schema<DeleteAccountsContainersWorkspacesGtag_configRequest>;
+export const DeleteAccountsContainersWorkspacesGtag_configRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "tagmanager/v2/{+path}",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteAccountsContainersWorkspacesGtag_configRequest",
+  }) as any as S.Schema<DeleteAccountsContainersWorkspacesGtag_configRequest>;
 
 export interface DeleteAccountsContainersWorkspacesGtag_configResponse {}
-export const DeleteAccountsContainersWorkspacesGtag_configResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "DeleteAccountsContainersWorkspacesGtag_configResponse" }) as any as S.Schema<DeleteAccountsContainersWorkspacesGtag_configResponse>;
+export const DeleteAccountsContainersWorkspacesGtag_configResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "DeleteAccountsContainersWorkspacesGtag_configResponse",
+  }) as any as S.Schema<DeleteAccountsContainersWorkspacesGtag_configResponse>;
 
 export interface DeleteAccountsContainersWorkspacesTagsRequest {
   /** GTM Tag's API relative path. */
   path: string;
 }
-export const DeleteAccountsContainersWorkspacesTagsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"tagmanager/v2/{+path}","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "DeleteAccountsContainersWorkspacesTagsRequest" }) as any as S.Schema<DeleteAccountsContainersWorkspacesTagsRequest>;
+export const DeleteAccountsContainersWorkspacesTagsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "tagmanager/v2/{+path}",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteAccountsContainersWorkspacesTagsRequest",
+  }) as any as S.Schema<DeleteAccountsContainersWorkspacesTagsRequest>;
 
 export interface DeleteAccountsContainersWorkspacesTagsResponse {}
-export const DeleteAccountsContainersWorkspacesTagsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "DeleteAccountsContainersWorkspacesTagsResponse" }) as any as S.Schema<DeleteAccountsContainersWorkspacesTagsResponse>;
+export const DeleteAccountsContainersWorkspacesTagsResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "DeleteAccountsContainersWorkspacesTagsResponse",
+  }) as any as S.Schema<DeleteAccountsContainersWorkspacesTagsResponse>;
 
 export interface DeleteAccountsContainersWorkspacesTemplatesRequest {
   /** GTM Custom Template's API relative path. */
   path: string;
 }
-export const DeleteAccountsContainersWorkspacesTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"tagmanager/v2/{+path}","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "DeleteAccountsContainersWorkspacesTemplatesRequest" }) as any as S.Schema<DeleteAccountsContainersWorkspacesTemplatesRequest>;
+export const DeleteAccountsContainersWorkspacesTemplatesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "tagmanager/v2/{+path}",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteAccountsContainersWorkspacesTemplatesRequest",
+  }) as any as S.Schema<DeleteAccountsContainersWorkspacesTemplatesRequest>;
 
 export interface DeleteAccountsContainersWorkspacesTemplatesResponse {}
-export const DeleteAccountsContainersWorkspacesTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "DeleteAccountsContainersWorkspacesTemplatesResponse" }) as any as S.Schema<DeleteAccountsContainersWorkspacesTemplatesResponse>;
+export const DeleteAccountsContainersWorkspacesTemplatesResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "DeleteAccountsContainersWorkspacesTemplatesResponse",
+  }) as any as S.Schema<DeleteAccountsContainersWorkspacesTemplatesResponse>;
 
 export interface DeleteAccountsContainersWorkspacesTransformationsRequest {
   /** GTM Transformation's API relative path. */
   path: string;
 }
-export const DeleteAccountsContainersWorkspacesTransformationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"tagmanager/v2/{+path}","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "DeleteAccountsContainersWorkspacesTransformationsRequest" }) as any as S.Schema<DeleteAccountsContainersWorkspacesTransformationsRequest>;
+export const DeleteAccountsContainersWorkspacesTransformationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "tagmanager/v2/{+path}",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteAccountsContainersWorkspacesTransformationsRequest",
+  }) as any as S.Schema<DeleteAccountsContainersWorkspacesTransformationsRequest>;
 
 export interface DeleteAccountsContainersWorkspacesTransformationsResponse {}
-export const DeleteAccountsContainersWorkspacesTransformationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "DeleteAccountsContainersWorkspacesTransformationsResponse" }) as any as S.Schema<DeleteAccountsContainersWorkspacesTransformationsResponse>;
+export const DeleteAccountsContainersWorkspacesTransformationsResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "DeleteAccountsContainersWorkspacesTransformationsResponse",
+  }) as any as S.Schema<DeleteAccountsContainersWorkspacesTransformationsResponse>;
 
 export interface DeleteAccountsContainersWorkspacesTriggersRequest {
   /** GTM Trigger's API relative path. */
   path: string;
 }
-export const DeleteAccountsContainersWorkspacesTriggersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"tagmanager/v2/{+path}","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "DeleteAccountsContainersWorkspacesTriggersRequest" }) as any as S.Schema<DeleteAccountsContainersWorkspacesTriggersRequest>;
+export const DeleteAccountsContainersWorkspacesTriggersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "tagmanager/v2/{+path}",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteAccountsContainersWorkspacesTriggersRequest",
+  }) as any as S.Schema<DeleteAccountsContainersWorkspacesTriggersRequest>;
 
 export interface DeleteAccountsContainersWorkspacesTriggersResponse {}
-export const DeleteAccountsContainersWorkspacesTriggersResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "DeleteAccountsContainersWorkspacesTriggersResponse" }) as any as S.Schema<DeleteAccountsContainersWorkspacesTriggersResponse>;
+export const DeleteAccountsContainersWorkspacesTriggersResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "DeleteAccountsContainersWorkspacesTriggersResponse",
+  }) as any as S.Schema<DeleteAccountsContainersWorkspacesTriggersResponse>;
 
 export interface DeleteAccountsContainersWorkspacesVariablesRequest {
   /** GTM Variable's API relative path. */
   path: string;
 }
-export const DeleteAccountsContainersWorkspacesVariablesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"tagmanager/v2/{+path}","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "DeleteAccountsContainersWorkspacesVariablesRequest" }) as any as S.Schema<DeleteAccountsContainersWorkspacesVariablesRequest>;
+export const DeleteAccountsContainersWorkspacesVariablesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "tagmanager/v2/{+path}",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteAccountsContainersWorkspacesVariablesRequest",
+  }) as any as S.Schema<DeleteAccountsContainersWorkspacesVariablesRequest>;
 
 export interface DeleteAccountsContainersWorkspacesVariablesResponse {}
-export const DeleteAccountsContainersWorkspacesVariablesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "DeleteAccountsContainersWorkspacesVariablesResponse" }) as any as S.Schema<DeleteAccountsContainersWorkspacesVariablesResponse>;
+export const DeleteAccountsContainersWorkspacesVariablesResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "DeleteAccountsContainersWorkspacesVariablesResponse",
+  }) as any as S.Schema<DeleteAccountsContainersWorkspacesVariablesResponse>;
 
 export interface DeleteAccountsContainersWorkspacesZonesRequest {
   /** GTM Zone's API relative path. */
   path: string;
 }
-export const DeleteAccountsContainersWorkspacesZonesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"tagmanager/v2/{+path}","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "DeleteAccountsContainersWorkspacesZonesRequest" }) as any as S.Schema<DeleteAccountsContainersWorkspacesZonesRequest>;
+export const DeleteAccountsContainersWorkspacesZonesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "tagmanager/v2/{+path}",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteAccountsContainersWorkspacesZonesRequest",
+  }) as any as S.Schema<DeleteAccountsContainersWorkspacesZonesRequest>;
 
 export interface DeleteAccountsContainersWorkspacesZonesResponse {}
-export const DeleteAccountsContainersWorkspacesZonesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "DeleteAccountsContainersWorkspacesZonesResponse" }) as any as S.Schema<DeleteAccountsContainersWorkspacesZonesResponse>;
+export const DeleteAccountsContainersWorkspacesZonesResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "DeleteAccountsContainersWorkspacesZonesResponse",
+  }) as any as S.Schema<DeleteAccountsContainersWorkspacesZonesResponse>;
 
 export interface DeleteAccountsUser_permissionsRequest {
   /** GTM UserPermission's API relative path. */
   path: string;
 }
-export const DeleteAccountsUser_permissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"tagmanager/v2/{+path}","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "DeleteAccountsUser_permissionsRequest" }) as any as S.Schema<DeleteAccountsUser_permissionsRequest>;
+export const DeleteAccountsUser_permissionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "tagmanager/v2/{+path}",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteAccountsUser_permissionsRequest",
+}) as any as S.Schema<DeleteAccountsUser_permissionsRequest>;
 
 export interface DeleteAccountsUser_permissionsResponse {}
-export const DeleteAccountsUser_permissionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "DeleteAccountsUser_permissionsResponse" }) as any as S.Schema<DeleteAccountsUser_permissionsResponse>;
+export const DeleteAccountsUser_permissionsResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DeleteAccountsUser_permissionsResponse",
+}) as any as S.Schema<DeleteAccountsUser_permissionsResponse>;
 
 export interface EntitiesAccountsContainersWorkspacesFoldersRequest {
   /** GTM Folder's API relative path. */
@@ -1745,12 +2585,21 @@ export interface EntitiesAccountsContainersWorkspacesFoldersRequest {
   /** Continuation token for fetching the next page of results. */
   pageToken?: string;
 }
-export const EntitiesAccountsContainersWorkspacesFoldersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"POST","uri":"tagmanager/v2/{+path}:entities","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "EntitiesAccountsContainersWorkspacesFoldersRequest" }) as any as S.Schema<EntitiesAccountsContainersWorkspacesFoldersRequest>;
+export const EntitiesAccountsContainersWorkspacesFoldersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "tagmanager/v2/{+path}:entities",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "EntitiesAccountsContainersWorkspacesFoldersRequest",
+  }) as any as S.Schema<EntitiesAccountsContainersWorkspacesFoldersRequest>;
 
 /** Represents a Google Tag Manager Folder's contents. */
 export interface FolderEntities {
@@ -1764,12 +2613,12 @@ export interface FolderEntities {
   trigger?: TriggerList;
 }
 export const FolderEntities = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "tag": S.optional(TagList),
-  "variable": S.optional(VariableList),
-  "trigger": S.optional(TriggerList),
-}),
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    tag: S.optional(TagList),
+    variable: S.optional(VariableList),
+    trigger: S.optional(TriggerList),
+  }),
 ).annotate({ identifier: "FolderEntities" }) as any as S.Schema<FolderEntities>;
 
 export interface GetAccountsRequest {
@@ -1777,10 +2626,18 @@ export interface GetAccountsRequest {
   path: string;
 }
 export const GetAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"tagmanager/v2/{+path}","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "GetAccountsRequest" }) as any as S.Schema<GetAccountsRequest>;
+  S.Struct({
+    path: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "tagmanager/v2/{+path}",
+      baseUrl: "https://tagmanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetAccountsRequest",
+}) as any as S.Schema<GetAccountsRequest>;
 
 export interface AccountFeatures {
   /** Whether this Account supports multiple Containers. */
@@ -1789,11 +2646,13 @@ export interface AccountFeatures {
   supportUserPermissions?: boolean;
 }
 export const AccountFeatures = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "supportMultipleContainers": S.optional(S.Boolean),
-  "supportUserPermissions": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "AccountFeatures" }) as any as S.Schema<AccountFeatures>;
+  S.Struct({
+    supportMultipleContainers: S.optional(S.Boolean),
+    supportUserPermissions: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "AccountFeatures",
+}) as any as S.Schema<AccountFeatures>;
 
 /** Represents a Google Tag Manager Account. */
 export interface Account {
@@ -1813,15 +2672,15 @@ export interface Account {
   tagManagerUrl?: string;
 }
 export const Account = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "accountId": S.optional(S.String),
-  "fingerprint": S.optional(S.String),
-  "path": S.optional(S.String),
-  "name": S.optional(S.String),
-  "features": S.optional(AccountFeatures),
-  "shareData": S.optional(S.Boolean),
-  "tagManagerUrl": S.optional(S.String),
-}),
+  S.Struct({
+    accountId: S.optional(S.String),
+    fingerprint: S.optional(S.String),
+    path: S.optional(S.String),
+    name: S.optional(S.String),
+    features: S.optional(AccountFeatures),
+    shareData: S.optional(S.Boolean),
+    tagManagerUrl: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Account" }) as any as S.Schema<Account>;
 
 export interface GetAccountsContainersRequest {
@@ -1829,20 +2688,37 @@ export interface GetAccountsContainersRequest {
   path: string;
 }
 export const GetAccountsContainersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"tagmanager/v2/{+path}","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "GetAccountsContainersRequest" }) as any as S.Schema<GetAccountsContainersRequest>;
+  S.Struct({
+    path: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "tagmanager/v2/{+path}",
+      baseUrl: "https://tagmanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetAccountsContainersRequest",
+}) as any as S.Schema<GetAccountsContainersRequest>;
 
 export interface GetAccountsContainersDestinationsRequest {
   /** Google Tag Destination's API relative path. */
   path: string;
 }
-export const GetAccountsContainersDestinationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"tagmanager/v2/{+path}","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "GetAccountsContainersDestinationsRequest" }) as any as S.Schema<GetAccountsContainersDestinationsRequest>;
+export const GetAccountsContainersDestinationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "tagmanager/v2/{+path}",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetAccountsContainersDestinationsRequest",
+}) as any as S.Schema<GetAccountsContainersDestinationsRequest>;
 
 /** Represents a Google Tag Destination. */
 export interface Destination {
@@ -1864,27 +2740,36 @@ export interface Destination {
   destinationId?: string;
 }
 export const Destination = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.optional(S.String),
-  "containerId": S.optional(S.String),
-  "name": S.optional(S.String),
-  "accountId": S.optional(S.String),
-  "fingerprint": S.optional(S.String),
-  "destinationLinkId": S.optional(S.String),
-  "tagManagerUrl": S.optional(S.String),
-  "destinationId": S.optional(S.String),
-}),
+  S.Struct({
+    path: S.optional(S.String),
+    containerId: S.optional(S.String),
+    name: S.optional(S.String),
+    accountId: S.optional(S.String),
+    fingerprint: S.optional(S.String),
+    destinationLinkId: S.optional(S.String),
+    tagManagerUrl: S.optional(S.String),
+    destinationId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Destination" }) as any as S.Schema<Destination>;
 
 export interface GetAccountsContainersEnvironmentsRequest {
   /** GTM Environment's API relative path. */
   path: string;
 }
-export const GetAccountsContainersEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"tagmanager/v2/{+path}","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "GetAccountsContainersEnvironmentsRequest" }) as any as S.Schema<GetAccountsContainersEnvironmentsRequest>;
+export const GetAccountsContainersEnvironmentsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "tagmanager/v2/{+path}",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetAccountsContainersEnvironmentsRequest",
+}) as any as S.Schema<GetAccountsContainersEnvironmentsRequest>;
 
 export interface GetAccountsContainersVersionsRequest {
   /** GTM ContainerVersion's API relative path. */
@@ -1892,132 +2777,248 @@ export interface GetAccountsContainersVersionsRequest {
   /** The GTM ContainerVersion ID. Specify published to retrieve the currently published version. */
   containerVersionId?: string;
 }
-export const GetAccountsContainersVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-  "containerVersionId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"tagmanager/v2/{+path}","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "GetAccountsContainersVersionsRequest" }) as any as S.Schema<GetAccountsContainersVersionsRequest>;
+export const GetAccountsContainersVersionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+      containerVersionId: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "tagmanager/v2/{+path}",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetAccountsContainersVersionsRequest",
+}) as any as S.Schema<GetAccountsContainersVersionsRequest>;
 
 export interface GetAccountsContainersWorkspacesRequest {
   /** GTM Workspace's API relative path. */
   path: string;
 }
-export const GetAccountsContainersWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"tagmanager/v2/{+path}","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "GetAccountsContainersWorkspacesRequest" }) as any as S.Schema<GetAccountsContainersWorkspacesRequest>;
+export const GetAccountsContainersWorkspacesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "tagmanager/v2/{+path}",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetAccountsContainersWorkspacesRequest",
+}) as any as S.Schema<GetAccountsContainersWorkspacesRequest>;
 
 export interface GetAccountsContainersWorkspacesClientsRequest {
   /** GTM Client's API relative path. */
   path: string;
 }
-export const GetAccountsContainersWorkspacesClientsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"tagmanager/v2/{+path}","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "GetAccountsContainersWorkspacesClientsRequest" }) as any as S.Schema<GetAccountsContainersWorkspacesClientsRequest>;
+export const GetAccountsContainersWorkspacesClientsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "tagmanager/v2/{+path}",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetAccountsContainersWorkspacesClientsRequest",
+  }) as any as S.Schema<GetAccountsContainersWorkspacesClientsRequest>;
 
 export interface GetAccountsContainersWorkspacesFoldersRequest {
   /** GTM Folder's API relative path. */
   path: string;
 }
-export const GetAccountsContainersWorkspacesFoldersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"tagmanager/v2/{+path}","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "GetAccountsContainersWorkspacesFoldersRequest" }) as any as S.Schema<GetAccountsContainersWorkspacesFoldersRequest>;
+export const GetAccountsContainersWorkspacesFoldersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "tagmanager/v2/{+path}",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetAccountsContainersWorkspacesFoldersRequest",
+  }) as any as S.Schema<GetAccountsContainersWorkspacesFoldersRequest>;
 
 export interface GetAccountsContainersWorkspacesGtag_configRequest {
   /** Google tag config's API relative path. */
   path: string;
 }
-export const GetAccountsContainersWorkspacesGtag_configRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"tagmanager/v2/{+path}","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "GetAccountsContainersWorkspacesGtag_configRequest" }) as any as S.Schema<GetAccountsContainersWorkspacesGtag_configRequest>;
+export const GetAccountsContainersWorkspacesGtag_configRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "tagmanager/v2/{+path}",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetAccountsContainersWorkspacesGtag_configRequest",
+  }) as any as S.Schema<GetAccountsContainersWorkspacesGtag_configRequest>;
 
 export interface GetAccountsContainersWorkspacesTagsRequest {
   /** GTM Tag's API relative path. */
   path: string;
 }
-export const GetAccountsContainersWorkspacesTagsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"tagmanager/v2/{+path}","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "GetAccountsContainersWorkspacesTagsRequest" }) as any as S.Schema<GetAccountsContainersWorkspacesTagsRequest>;
+export const GetAccountsContainersWorkspacesTagsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "tagmanager/v2/{+path}",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetAccountsContainersWorkspacesTagsRequest",
+  }) as any as S.Schema<GetAccountsContainersWorkspacesTagsRequest>;
 
 export interface GetAccountsContainersWorkspacesTemplatesRequest {
   /** GTM Custom Template's API relative path. */
   path: string;
 }
-export const GetAccountsContainersWorkspacesTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"tagmanager/v2/{+path}","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "GetAccountsContainersWorkspacesTemplatesRequest" }) as any as S.Schema<GetAccountsContainersWorkspacesTemplatesRequest>;
+export const GetAccountsContainersWorkspacesTemplatesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "tagmanager/v2/{+path}",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetAccountsContainersWorkspacesTemplatesRequest",
+  }) as any as S.Schema<GetAccountsContainersWorkspacesTemplatesRequest>;
 
 export interface GetAccountsContainersWorkspacesTransformationsRequest {
   /** GTM Transformation's API relative path. */
   path: string;
 }
-export const GetAccountsContainersWorkspacesTransformationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"tagmanager/v2/{+path}","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "GetAccountsContainersWorkspacesTransformationsRequest" }) as any as S.Schema<GetAccountsContainersWorkspacesTransformationsRequest>;
+export const GetAccountsContainersWorkspacesTransformationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "tagmanager/v2/{+path}",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetAccountsContainersWorkspacesTransformationsRequest",
+  }) as any as S.Schema<GetAccountsContainersWorkspacesTransformationsRequest>;
 
 export interface GetAccountsContainersWorkspacesTriggersRequest {
   /** GTM Trigger's API relative path. */
   path: string;
 }
-export const GetAccountsContainersWorkspacesTriggersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"tagmanager/v2/{+path}","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "GetAccountsContainersWorkspacesTriggersRequest" }) as any as S.Schema<GetAccountsContainersWorkspacesTriggersRequest>;
+export const GetAccountsContainersWorkspacesTriggersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "tagmanager/v2/{+path}",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetAccountsContainersWorkspacesTriggersRequest",
+  }) as any as S.Schema<GetAccountsContainersWorkspacesTriggersRequest>;
 
 export interface GetAccountsContainersWorkspacesVariablesRequest {
   /** GTM Variable's API relative path. */
   path: string;
 }
-export const GetAccountsContainersWorkspacesVariablesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"tagmanager/v2/{+path}","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "GetAccountsContainersWorkspacesVariablesRequest" }) as any as S.Schema<GetAccountsContainersWorkspacesVariablesRequest>;
+export const GetAccountsContainersWorkspacesVariablesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "tagmanager/v2/{+path}",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetAccountsContainersWorkspacesVariablesRequest",
+  }) as any as S.Schema<GetAccountsContainersWorkspacesVariablesRequest>;
 
 export interface GetAccountsContainersWorkspacesZonesRequest {
   /** GTM Zone's API relative path. */
   path: string;
 }
-export const GetAccountsContainersWorkspacesZonesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"tagmanager/v2/{+path}","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "GetAccountsContainersWorkspacesZonesRequest" }) as any as S.Schema<GetAccountsContainersWorkspacesZonesRequest>;
+export const GetAccountsContainersWorkspacesZonesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "tagmanager/v2/{+path}",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetAccountsContainersWorkspacesZonesRequest",
+  }) as any as S.Schema<GetAccountsContainersWorkspacesZonesRequest>;
 
 export interface GetAccountsUser_permissionsRequest {
   /** GTM UserPermission's API relative path. */
   path: string;
 }
 export const GetAccountsUser_permissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"tagmanager/v2/{+path}","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "GetAccountsUser_permissionsRequest" }) as any as S.Schema<GetAccountsUser_permissionsRequest>;
+  S.Struct({
+    path: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "tagmanager/v2/{+path}",
+      baseUrl: "https://tagmanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetAccountsUser_permissionsRequest",
+}) as any as S.Schema<GetAccountsUser_permissionsRequest>;
 
 export interface GetStatusAccountsContainersWorkspacesRequest {
   /** GTM Workspace's API relative path. */
   path: string;
 }
-export const GetStatusAccountsContainersWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"tagmanager/v2/{+path}/status","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "GetStatusAccountsContainersWorkspacesRequest" }) as any as S.Schema<GetStatusAccountsContainersWorkspacesRequest>;
+export const GetStatusAccountsContainersWorkspacesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "tagmanager/v2/{+path}/status",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetStatusAccountsContainersWorkspacesRequest",
+  }) as any as S.Schema<GetStatusAccountsContainersWorkspacesRequest>;
 
 /** Represents a merge conflict. */
 export interface MergeConflict {
@@ -2027,14 +3028,16 @@ export interface MergeConflict {
   entityInBaseVersion?: Entity;
 }
 export const MergeConflict = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "entityInWorkspace": S.optional(Entity),
-  "entityInBaseVersion": S.optional(Entity),
-}),
+  S.Struct({
+    entityInWorkspace: S.optional(Entity),
+    entityInBaseVersion: S.optional(Entity),
+  }),
 ).annotate({ identifier: "MergeConflict" }) as any as S.Schema<MergeConflict>;
 
 export type MergeConflictList = ReadonlyArray<MergeConflict>;
-export const MergeConflictList = /*@__PURE__*/ S.Array(MergeConflict) as any as S.Schema<MergeConflictList>;
+export const MergeConflictList = /*@__PURE__*/ S.Array(
+  MergeConflict,
+) as any as S.Schema<MergeConflictList>;
 
 /** The changes that have occurred in the workspace since the base container version. */
 export interface GetWorkspaceStatusResponse {
@@ -2044,11 +3047,13 @@ export interface GetWorkspaceStatusResponse {
   mergeConflict?: MergeConflictList;
 }
 export const GetWorkspaceStatusResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "workspaceChange": S.optional(EntityList),
-  "mergeConflict": S.optional(MergeConflictList),
-}),
-).annotate({ identifier: "GetWorkspaceStatusResponse" }) as any as S.Schema<GetWorkspaceStatusResponse>;
+  S.Struct({
+    workspaceChange: S.optional(EntityList),
+    mergeConflict: S.optional(MergeConflictList),
+  }),
+).annotate({
+  identifier: "GetWorkspaceStatusResponse",
+}) as any as S.Schema<GetWorkspaceStatusResponse>;
 
 export interface Import_from_galleryAccountsContainersWorkspacesTemplatesRequest {
   /** Owner of the Gallery template to import */
@@ -2062,25 +3067,44 @@ export interface Import_from_galleryAccountsContainersWorkspacesTemplatesRequest
   /** Repository of the Gallery template to import */
   galleryRepository?: string;
 }
-export const Import_from_galleryAccountsContainersWorkspacesTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "galleryOwner": S.optional(S.String.pipe(T.Query())),
-  "gallerySha": S.optional(S.String.pipe(T.Query())),
-  "acknowledgePermissions": S.optional(S.Boolean.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "galleryRepository": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"POST","uri":"tagmanager/v2/{+parent}/templates:import_from_gallery","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "Import_from_galleryAccountsContainersWorkspacesTemplatesRequest" }) as any as S.Schema<Import_from_galleryAccountsContainersWorkspacesTemplatesRequest>;
+export const Import_from_galleryAccountsContainersWorkspacesTemplatesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      galleryOwner: S.optional(S.String.pipe(T.Query())),
+      gallerySha: S.optional(S.String.pipe(T.Query())),
+      acknowledgePermissions: S.optional(S.Boolean.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      galleryRepository: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "tagmanager/v2/{+parent}/templates:import_from_gallery",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "Import_from_galleryAccountsContainersWorkspacesTemplatesRequest",
+  }) as any as S.Schema<Import_from_galleryAccountsContainersWorkspacesTemplatesRequest>;
 
 export interface LatestAccountsContainersVersion_headersRequest {
   /** GTM Container's API relative path. */
   parent: string;
 }
-export const LatestAccountsContainersVersion_headersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"tagmanager/v2/{+parent}/version_headers:latest","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "LatestAccountsContainersVersion_headersRequest" }) as any as S.Schema<LatestAccountsContainersVersion_headersRequest>;
+export const LatestAccountsContainersVersion_headersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "tagmanager/v2/{+parent}/version_headers:latest",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "LatestAccountsContainersVersion_headersRequest",
+  }) as any as S.Schema<LatestAccountsContainersVersion_headersRequest>;
 
 /** Represents a Google Tag Manager Container Version Header. */
 export interface ContainerVersionHeader {
@@ -2114,23 +3138,25 @@ export interface ContainerVersionHeader {
   numTags?: string;
 }
 export const ContainerVersionHeader = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "numGtagConfigs": S.optional(S.String),
-  "numVariables": S.optional(S.String),
-  "path": S.optional(S.String),
-  "containerId": S.optional(S.String),
-  "name": S.optional(S.String),
-  "accountId": S.optional(S.String),
-  "numZones": S.optional(S.String),
-  "deleted": S.optional(S.Boolean),
-  "numCustomTemplates": S.optional(S.String),
-  "numClients": S.optional(S.String),
-  "numTransformations": S.optional(S.String),
-  "containerVersionId": S.optional(S.String),
-  "numTriggers": S.optional(S.String),
-  "numTags": S.optional(S.String),
-}),
-).annotate({ identifier: "ContainerVersionHeader" }) as any as S.Schema<ContainerVersionHeader>;
+  S.Struct({
+    numGtagConfigs: S.optional(S.String),
+    numVariables: S.optional(S.String),
+    path: S.optional(S.String),
+    containerId: S.optional(S.String),
+    name: S.optional(S.String),
+    accountId: S.optional(S.String),
+    numZones: S.optional(S.String),
+    deleted: S.optional(S.Boolean),
+    numCustomTemplates: S.optional(S.String),
+    numClients: S.optional(S.String),
+    numTransformations: S.optional(S.String),
+    containerVersionId: S.optional(S.String),
+    numTriggers: S.optional(S.String),
+    numTags: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ContainerVersionHeader",
+}) as any as S.Schema<ContainerVersionHeader>;
 
 export interface LinkAccountsContainersDestinationsRequest {
   /** Destination ID to be linked to the current container. */
@@ -2140,13 +3166,22 @@ export interface LinkAccountsContainersDestinationsRequest {
   /** Must be set to true to allow features.user_permissions to change from false to true. If this operation causes an update but this bit is false, the operation will fail. */
   allowUserPermissionFeatureUpdate?: boolean;
 }
-export const LinkAccountsContainersDestinationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "destinationId": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "allowUserPermissionFeatureUpdate": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"POST","uri":"tagmanager/v2/{+parent}/destinations:link","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "LinkAccountsContainersDestinationsRequest" }) as any as S.Schema<LinkAccountsContainersDestinationsRequest>;
+export const LinkAccountsContainersDestinationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      destinationId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      allowUserPermissionFeatureUpdate: S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "tagmanager/v2/{+parent}/destinations:link",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "LinkAccountsContainersDestinationsRequest",
+  }) as any as S.Schema<LinkAccountsContainersDestinationsRequest>;
 
 export interface ListAccountsRequest {
   /** Also retrieve accounts associated with Google Tag when true. */
@@ -2155,14 +3190,24 @@ export interface ListAccountsRequest {
   pageToken?: string;
 }
 export const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "includeGoogleTags": S.optional(S.Boolean.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"tagmanager/v2/accounts","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "ListAccountsRequest" }) as any as S.Schema<ListAccountsRequest>;
+  S.Struct({
+    includeGoogleTags: S.optional(S.Boolean.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "tagmanager/v2/accounts",
+      baseUrl: "https://tagmanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListAccountsRequest",
+}) as any as S.Schema<ListAccountsRequest>;
 
 export type AccountList = ReadonlyArray<Account>;
-export const AccountList = /*@__PURE__*/ S.Array(Account) as any as S.Schema<AccountList>;
+export const AccountList = /*@__PURE__*/ S.Array(
+  Account,
+) as any as S.Schema<AccountList>;
 
 /** List Accounts Response. */
 export interface ListAccountsResponse {
@@ -2172,11 +3217,13 @@ export interface ListAccountsResponse {
   nextPageToken?: string;
 }
 export const ListAccountsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "account": S.optional(AccountList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListAccountsResponse" }) as any as S.Schema<ListAccountsResponse>;
+  S.Struct({
+    account: S.optional(AccountList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListAccountsResponse",
+}) as any as S.Schema<ListAccountsResponse>;
 
 export interface ListAccountsContainersRequest {
   /** GTM Account's API relative path. */
@@ -2185,14 +3232,24 @@ export interface ListAccountsContainersRequest {
   pageToken?: string;
 }
 export const ListAccountsContainersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"tagmanager/v2/{+parent}/containers","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "ListAccountsContainersRequest" }) as any as S.Schema<ListAccountsContainersRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "tagmanager/v2/{+parent}/containers",
+      baseUrl: "https://tagmanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListAccountsContainersRequest",
+}) as any as S.Schema<ListAccountsContainersRequest>;
 
 export type ContainerList = ReadonlyArray<Container>;
-export const ContainerList = /*@__PURE__*/ S.Array(Container) as any as S.Schema<ContainerList>;
+export const ContainerList = /*@__PURE__*/ S.Array(
+  Container,
+) as any as S.Schema<ContainerList>;
 
 /** List Containers Response. */
 export interface ListContainersResponse {
@@ -2202,24 +3259,37 @@ export interface ListContainersResponse {
   nextPageToken?: string;
 }
 export const ListContainersResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "container": S.optional(ContainerList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListContainersResponse" }) as any as S.Schema<ListContainersResponse>;
+  S.Struct({
+    container: S.optional(ContainerList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListContainersResponse",
+}) as any as S.Schema<ListContainersResponse>;
 
 export interface ListAccountsContainersDestinationsRequest {
   /** GTM parent Container's API relative path. */
   parent: string;
 }
-export const ListAccountsContainersDestinationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"tagmanager/v2/{+parent}/destinations","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "ListAccountsContainersDestinationsRequest" }) as any as S.Schema<ListAccountsContainersDestinationsRequest>;
+export const ListAccountsContainersDestinationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "tagmanager/v2/{+parent}/destinations",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListAccountsContainersDestinationsRequest",
+  }) as any as S.Schema<ListAccountsContainersDestinationsRequest>;
 
 export type DestinationList = ReadonlyArray<Destination>;
-export const DestinationList = /*@__PURE__*/ S.Array(Destination) as any as S.Schema<DestinationList>;
+export const DestinationList = /*@__PURE__*/ S.Array(
+  Destination,
+) as any as S.Schema<DestinationList>;
 
 export interface ListDestinationsResponse {
   /** All Destinations linked to a GTM Container. */
@@ -2228,11 +3298,13 @@ export interface ListDestinationsResponse {
   nextPageToken?: string;
 }
 export const ListDestinationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "destination": S.optional(DestinationList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListDestinationsResponse" }) as any as S.Schema<ListDestinationsResponse>;
+  S.Struct({
+    destination: S.optional(DestinationList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListDestinationsResponse",
+}) as any as S.Schema<ListDestinationsResponse>;
 
 export interface ListAccountsContainersEnvironmentsRequest {
   /** GTM Container's API relative path. */
@@ -2240,15 +3312,26 @@ export interface ListAccountsContainersEnvironmentsRequest {
   /** Continuation token for fetching the next page of results. */
   pageToken?: string;
 }
-export const ListAccountsContainersEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"tagmanager/v2/{+parent}/environments","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "ListAccountsContainersEnvironmentsRequest" }) as any as S.Schema<ListAccountsContainersEnvironmentsRequest>;
+export const ListAccountsContainersEnvironmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "tagmanager/v2/{+parent}/environments",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListAccountsContainersEnvironmentsRequest",
+  }) as any as S.Schema<ListAccountsContainersEnvironmentsRequest>;
 
 export type EnvironmentList = ReadonlyArray<Environment>;
-export const EnvironmentList = /*@__PURE__*/ S.Array(Environment) as any as S.Schema<EnvironmentList>;
+export const EnvironmentList = /*@__PURE__*/ S.Array(
+  Environment,
+) as any as S.Schema<EnvironmentList>;
 
 /** List Environments Response. */
 export interface ListEnvironmentsResponse {
@@ -2258,11 +3341,13 @@ export interface ListEnvironmentsResponse {
   nextPageToken?: string;
 }
 export const ListEnvironmentsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "environment": S.optional(EnvironmentList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListEnvironmentsResponse" }) as any as S.Schema<ListEnvironmentsResponse>;
+  S.Struct({
+    environment: S.optional(EnvironmentList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListEnvironmentsResponse",
+}) as any as S.Schema<ListEnvironmentsResponse>;
 
 export interface ListAccountsContainersVersion_headersRequest {
   /** Also retrieve deleted (archived) versions when true. */
@@ -2272,16 +3357,27 @@ export interface ListAccountsContainersVersion_headersRequest {
   /** Continuation token for fetching the next page of results. */
   pageToken?: string;
 }
-export const ListAccountsContainersVersion_headersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "includeDeleted": S.optional(S.Boolean.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"tagmanager/v2/{+parent}/version_headers","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "ListAccountsContainersVersion_headersRequest" }) as any as S.Schema<ListAccountsContainersVersion_headersRequest>;
+export const ListAccountsContainersVersion_headersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      includeDeleted: S.optional(S.Boolean.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "tagmanager/v2/{+parent}/version_headers",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListAccountsContainersVersion_headersRequest",
+  }) as any as S.Schema<ListAccountsContainersVersion_headersRequest>;
 
 export type ContainerVersionHeaderList = ReadonlyArray<ContainerVersionHeader>;
-export const ContainerVersionHeaderList = /*@__PURE__*/ S.Array(ContainerVersionHeader) as any as S.Schema<ContainerVersionHeaderList>;
+export const ContainerVersionHeaderList = /*@__PURE__*/ S.Array(
+  ContainerVersionHeader,
+) as any as S.Schema<ContainerVersionHeaderList>;
 
 /** List container versions response. */
 export interface ListContainerVersionsResponse {
@@ -2291,11 +3387,13 @@ export interface ListContainerVersionsResponse {
   nextPageToken?: string;
 }
 export const ListContainerVersionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "containerVersionHeader": S.optional(ContainerVersionHeaderList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListContainerVersionsResponse" }) as any as S.Schema<ListContainerVersionsResponse>;
+  S.Struct({
+    containerVersionHeader: S.optional(ContainerVersionHeaderList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListContainerVersionsResponse",
+}) as any as S.Schema<ListContainerVersionsResponse>;
 
 export interface ListAccountsContainersWorkspacesRequest {
   /** GTM parent Container's API relative path. */
@@ -2303,15 +3401,26 @@ export interface ListAccountsContainersWorkspacesRequest {
   /** Continuation token for fetching the next page of results. */
   pageToken?: string;
 }
-export const ListAccountsContainersWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"tagmanager/v2/{+parent}/workspaces","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "ListAccountsContainersWorkspacesRequest" }) as any as S.Schema<ListAccountsContainersWorkspacesRequest>;
+export const ListAccountsContainersWorkspacesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "tagmanager/v2/{+parent}/workspaces",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListAccountsContainersWorkspacesRequest",
+}) as any as S.Schema<ListAccountsContainersWorkspacesRequest>;
 
 export type WorkspaceList = ReadonlyArray<Workspace>;
-export const WorkspaceList = /*@__PURE__*/ S.Array(Workspace) as any as S.Schema<WorkspaceList>;
+export const WorkspaceList = /*@__PURE__*/ S.Array(
+  Workspace,
+) as any as S.Schema<WorkspaceList>;
 
 /** A list of workspaces in a container. */
 export interface ListWorkspacesResponse {
@@ -2321,11 +3430,13 @@ export interface ListWorkspacesResponse {
   nextPageToken?: string;
 }
 export const ListWorkspacesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "workspace": S.optional(WorkspaceList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListWorkspacesResponse" }) as any as S.Schema<ListWorkspacesResponse>;
+  S.Struct({
+    workspace: S.optional(WorkspaceList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListWorkspacesResponse",
+}) as any as S.Schema<ListWorkspacesResponse>;
 
 export interface ListAccountsContainersWorkspacesBuilt_in_variablesRequest {
   /** GTM Workspace's API relative path. */
@@ -2333,12 +3444,21 @@ export interface ListAccountsContainersWorkspacesBuilt_in_variablesRequest {
   /** Continuation token for fetching the next page of results. */
   pageToken?: string;
 }
-export const ListAccountsContainersWorkspacesBuilt_in_variablesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"tagmanager/v2/{+parent}/built_in_variables","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "ListAccountsContainersWorkspacesBuilt_in_variablesRequest" }) as any as S.Schema<ListAccountsContainersWorkspacesBuilt_in_variablesRequest>;
+export const ListAccountsContainersWorkspacesBuilt_in_variablesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "tagmanager/v2/{+parent}/built_in_variables",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListAccountsContainersWorkspacesBuilt_in_variablesRequest",
+  }) as any as S.Schema<ListAccountsContainersWorkspacesBuilt_in_variablesRequest>;
 
 /** A list of enabled built-in variables. */
 export interface ListEnabledBuiltInVariablesResponse {
@@ -2348,11 +3468,13 @@ export interface ListEnabledBuiltInVariablesResponse {
   nextPageToken?: string;
 }
 export const ListEnabledBuiltInVariablesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "builtInVariable": S.optional(BuiltInVariableList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListEnabledBuiltInVariablesResponse" }) as any as S.Schema<ListEnabledBuiltInVariablesResponse>;
+  S.Struct({
+    builtInVariable: S.optional(BuiltInVariableList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListEnabledBuiltInVariablesResponse",
+}) as any as S.Schema<ListEnabledBuiltInVariablesResponse>;
 
 export interface ListAccountsContainersWorkspacesClientsRequest {
   /** GTM Workspace's API relative path. */
@@ -2360,12 +3482,21 @@ export interface ListAccountsContainersWorkspacesClientsRequest {
   /** Continuation token for fetching the next page of results. */
   pageToken?: string;
 }
-export const ListAccountsContainersWorkspacesClientsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"tagmanager/v2/{+parent}/clients","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "ListAccountsContainersWorkspacesClientsRequest" }) as any as S.Schema<ListAccountsContainersWorkspacesClientsRequest>;
+export const ListAccountsContainersWorkspacesClientsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "tagmanager/v2/{+parent}/clients",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListAccountsContainersWorkspacesClientsRequest",
+  }) as any as S.Schema<ListAccountsContainersWorkspacesClientsRequest>;
 
 export interface ListClientsResponse {
   /** All GTM Clients of a GTM Container. */
@@ -2374,11 +3505,13 @@ export interface ListClientsResponse {
   nextPageToken?: string;
 }
 export const ListClientsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "client": S.optional(ClientList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListClientsResponse" }) as any as S.Schema<ListClientsResponse>;
+  S.Struct({
+    client: S.optional(ClientList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListClientsResponse",
+}) as any as S.Schema<ListClientsResponse>;
 
 export interface ListAccountsContainersWorkspacesFoldersRequest {
   /** GTM Workspace's API relative path. */
@@ -2386,12 +3519,21 @@ export interface ListAccountsContainersWorkspacesFoldersRequest {
   /** Continuation token for fetching the next page of results. */
   pageToken?: string;
 }
-export const ListAccountsContainersWorkspacesFoldersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"tagmanager/v2/{+parent}/folders","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "ListAccountsContainersWorkspacesFoldersRequest" }) as any as S.Schema<ListAccountsContainersWorkspacesFoldersRequest>;
+export const ListAccountsContainersWorkspacesFoldersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "tagmanager/v2/{+parent}/folders",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListAccountsContainersWorkspacesFoldersRequest",
+  }) as any as S.Schema<ListAccountsContainersWorkspacesFoldersRequest>;
 
 /** List Folders Response. */
 export interface ListFoldersResponse {
@@ -2401,11 +3543,13 @@ export interface ListFoldersResponse {
   nextPageToken?: string;
 }
 export const ListFoldersResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "folder": S.optional(FolderList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListFoldersResponse" }) as any as S.Schema<ListFoldersResponse>;
+  S.Struct({
+    folder: S.optional(FolderList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListFoldersResponse",
+}) as any as S.Schema<ListFoldersResponse>;
 
 export interface ListAccountsContainersWorkspacesGtag_configRequest {
   /** Workspace's API relative path. */
@@ -2413,12 +3557,21 @@ export interface ListAccountsContainersWorkspacesGtag_configRequest {
   /** Continuation token for fetching the next page of results. */
   pageToken?: string;
 }
-export const ListAccountsContainersWorkspacesGtag_configRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"tagmanager/v2/{+parent}/gtag_config","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "ListAccountsContainersWorkspacesGtag_configRequest" }) as any as S.Schema<ListAccountsContainersWorkspacesGtag_configRequest>;
+export const ListAccountsContainersWorkspacesGtag_configRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "tagmanager/v2/{+parent}/gtag_config",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListAccountsContainersWorkspacesGtag_configRequest",
+  }) as any as S.Schema<ListAccountsContainersWorkspacesGtag_configRequest>;
 
 export interface ListGtagConfigResponse {
   /** All Google tag configs in a Container. */
@@ -2427,11 +3580,13 @@ export interface ListGtagConfigResponse {
   nextPageToken?: string;
 }
 export const ListGtagConfigResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "gtagConfig": S.optional(GtagConfigList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListGtagConfigResponse" }) as any as S.Schema<ListGtagConfigResponse>;
+  S.Struct({
+    gtagConfig: S.optional(GtagConfigList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListGtagConfigResponse",
+}) as any as S.Schema<ListGtagConfigResponse>;
 
 export interface ListAccountsContainersWorkspacesTagsRequest {
   /** GTM Workspace's API relative path. */
@@ -2439,12 +3594,21 @@ export interface ListAccountsContainersWorkspacesTagsRequest {
   /** Continuation token for fetching the next page of results. */
   pageToken?: string;
 }
-export const ListAccountsContainersWorkspacesTagsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"tagmanager/v2/{+parent}/tags","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "ListAccountsContainersWorkspacesTagsRequest" }) as any as S.Schema<ListAccountsContainersWorkspacesTagsRequest>;
+export const ListAccountsContainersWorkspacesTagsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "tagmanager/v2/{+parent}/tags",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListAccountsContainersWorkspacesTagsRequest",
+  }) as any as S.Schema<ListAccountsContainersWorkspacesTagsRequest>;
 
 /** List Tags Response. */
 export interface ListTagsResponse {
@@ -2454,11 +3618,13 @@ export interface ListTagsResponse {
   nextPageToken?: string;
 }
 export const ListTagsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "tag": S.optional(TagList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListTagsResponse" }) as any as S.Schema<ListTagsResponse>;
+  S.Struct({
+    tag: S.optional(TagList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListTagsResponse",
+}) as any as S.Schema<ListTagsResponse>;
 
 export interface ListAccountsContainersWorkspacesTemplatesRequest {
   /** GTM Workspace's API relative path. */
@@ -2466,12 +3632,21 @@ export interface ListAccountsContainersWorkspacesTemplatesRequest {
   /** Continuation token for fetching the next page of results. */
   pageToken?: string;
 }
-export const ListAccountsContainersWorkspacesTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"tagmanager/v2/{+parent}/templates","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "ListAccountsContainersWorkspacesTemplatesRequest" }) as any as S.Schema<ListAccountsContainersWorkspacesTemplatesRequest>;
+export const ListAccountsContainersWorkspacesTemplatesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "tagmanager/v2/{+parent}/templates",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListAccountsContainersWorkspacesTemplatesRequest",
+  }) as any as S.Schema<ListAccountsContainersWorkspacesTemplatesRequest>;
 
 export interface ListTemplatesResponse {
   /** All GTM Custom Templates of a GTM Container. */
@@ -2480,11 +3655,13 @@ export interface ListTemplatesResponse {
   nextPageToken?: string;
 }
 export const ListTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "template": S.optional(CustomTemplateList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListTemplatesResponse" }) as any as S.Schema<ListTemplatesResponse>;
+  S.Struct({
+    template: S.optional(CustomTemplateList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListTemplatesResponse",
+}) as any as S.Schema<ListTemplatesResponse>;
 
 export interface ListAccountsContainersWorkspacesTransformationsRequest {
   /** GTM Workspace's API relative path. */
@@ -2492,12 +3669,21 @@ export interface ListAccountsContainersWorkspacesTransformationsRequest {
   /** Continuation token for fetching the next page of results. */
   pageToken?: string;
 }
-export const ListAccountsContainersWorkspacesTransformationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"tagmanager/v2/{+parent}/transformations","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "ListAccountsContainersWorkspacesTransformationsRequest" }) as any as S.Schema<ListAccountsContainersWorkspacesTransformationsRequest>;
+export const ListAccountsContainersWorkspacesTransformationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "tagmanager/v2/{+parent}/transformations",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListAccountsContainersWorkspacesTransformationsRequest",
+  }) as any as S.Schema<ListAccountsContainersWorkspacesTransformationsRequest>;
 
 export interface ListTransformationsResponse {
   /** All GTM Transformations of a GTM Container. */
@@ -2506,11 +3692,13 @@ export interface ListTransformationsResponse {
   nextPageToken?: string;
 }
 export const ListTransformationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "transformation": S.optional(TransformationList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListTransformationsResponse" }) as any as S.Schema<ListTransformationsResponse>;
+  S.Struct({
+    transformation: S.optional(TransformationList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListTransformationsResponse",
+}) as any as S.Schema<ListTransformationsResponse>;
 
 export interface ListAccountsContainersWorkspacesTriggersRequest {
   /** GTM Workspace's API relative path. */
@@ -2518,12 +3706,21 @@ export interface ListAccountsContainersWorkspacesTriggersRequest {
   /** Continuation token for fetching the next page of results. */
   pageToken?: string;
 }
-export const ListAccountsContainersWorkspacesTriggersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"tagmanager/v2/{+parent}/triggers","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "ListAccountsContainersWorkspacesTriggersRequest" }) as any as S.Schema<ListAccountsContainersWorkspacesTriggersRequest>;
+export const ListAccountsContainersWorkspacesTriggersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "tagmanager/v2/{+parent}/triggers",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListAccountsContainersWorkspacesTriggersRequest",
+  }) as any as S.Schema<ListAccountsContainersWorkspacesTriggersRequest>;
 
 /** List triggers response. */
 export interface ListTriggersResponse {
@@ -2533,11 +3730,13 @@ export interface ListTriggersResponse {
   nextPageToken?: string;
 }
 export const ListTriggersResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "trigger": S.optional(TriggerList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListTriggersResponse" }) as any as S.Schema<ListTriggersResponse>;
+  S.Struct({
+    trigger: S.optional(TriggerList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListTriggersResponse",
+}) as any as S.Schema<ListTriggersResponse>;
 
 export interface ListAccountsContainersWorkspacesVariablesRequest {
   /** GTM Workspace's API relative path. */
@@ -2545,12 +3744,21 @@ export interface ListAccountsContainersWorkspacesVariablesRequest {
   /** Continuation token for fetching the next page of results. */
   pageToken?: string;
 }
-export const ListAccountsContainersWorkspacesVariablesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"tagmanager/v2/{+parent}/variables","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "ListAccountsContainersWorkspacesVariablesRequest" }) as any as S.Schema<ListAccountsContainersWorkspacesVariablesRequest>;
+export const ListAccountsContainersWorkspacesVariablesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "tagmanager/v2/{+parent}/variables",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListAccountsContainersWorkspacesVariablesRequest",
+  }) as any as S.Schema<ListAccountsContainersWorkspacesVariablesRequest>;
 
 /** List Variables Response. */
 export interface ListVariablesResponse {
@@ -2560,11 +3768,13 @@ export interface ListVariablesResponse {
   nextPageToken?: string;
 }
 export const ListVariablesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "variable": S.optional(VariableList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListVariablesResponse" }) as any as S.Schema<ListVariablesResponse>;
+  S.Struct({
+    variable: S.optional(VariableList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListVariablesResponse",
+}) as any as S.Schema<ListVariablesResponse>;
 
 export interface ListAccountsContainersWorkspacesZonesRequest {
   /** GTM Workspace's API relative path. */
@@ -2572,12 +3782,21 @@ export interface ListAccountsContainersWorkspacesZonesRequest {
   /** Continuation token for fetching the next page of results. */
   pageToken?: string;
 }
-export const ListAccountsContainersWorkspacesZonesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"tagmanager/v2/{+parent}/zones","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "ListAccountsContainersWorkspacesZonesRequest" }) as any as S.Schema<ListAccountsContainersWorkspacesZonesRequest>;
+export const ListAccountsContainersWorkspacesZonesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "tagmanager/v2/{+parent}/zones",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListAccountsContainersWorkspacesZonesRequest",
+  }) as any as S.Schema<ListAccountsContainersWorkspacesZonesRequest>;
 
 export interface ListZonesResponse {
   /** All GTM Zones of a GTM Container. */
@@ -2586,11 +3805,13 @@ export interface ListZonesResponse {
   nextPageToken?: string;
 }
 export const ListZonesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "zone": S.optional(ZoneList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListZonesResponse" }) as any as S.Schema<ListZonesResponse>;
+  S.Struct({
+    zone: S.optional(ZoneList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListZonesResponse",
+}) as any as S.Schema<ListZonesResponse>;
 
 export interface ListAccountsUser_permissionsRequest {
   /** GTM Account's API relative path. */
@@ -2599,14 +3820,24 @@ export interface ListAccountsUser_permissionsRequest {
   pageToken?: string;
 }
 export const ListAccountsUser_permissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"tagmanager/v2/{+parent}/user_permissions","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "ListAccountsUser_permissionsRequest" }) as any as S.Schema<ListAccountsUser_permissionsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "tagmanager/v2/{+parent}/user_permissions",
+      baseUrl: "https://tagmanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListAccountsUser_permissionsRequest",
+}) as any as S.Schema<ListAccountsUser_permissionsRequest>;
 
 export type UserPermissionList = ReadonlyArray<UserPermission>;
-export const UserPermissionList = /*@__PURE__*/ S.Array(UserPermission) as any as S.Schema<UserPermissionList>;
+export const UserPermissionList = /*@__PURE__*/ S.Array(
+  UserPermission,
+) as any as S.Schema<UserPermissionList>;
 
 /** List user permissions response. */
 export interface ListUserPermissionsResponse {
@@ -2616,21 +3847,32 @@ export interface ListUserPermissionsResponse {
   nextPageToken?: string;
 }
 export const ListUserPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "userPermission": S.optional(UserPermissionList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListUserPermissionsResponse" }) as any as S.Schema<ListUserPermissionsResponse>;
+  S.Struct({
+    userPermission: S.optional(UserPermissionList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListUserPermissionsResponse",
+}) as any as S.Schema<ListUserPermissionsResponse>;
 
 export interface LiveAccountsContainersVersionsRequest {
   /** GTM Container's API relative path. */
   parent: string;
 }
-export const LiveAccountsContainersVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"tagmanager/v2/{+parent}/versions:live","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "LiveAccountsContainersVersionsRequest" }) as any as S.Schema<LiveAccountsContainersVersionsRequest>;
+export const LiveAccountsContainersVersionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "tagmanager/v2/{+parent}/versions:live",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "LiveAccountsContainersVersionsRequest",
+}) as any as S.Schema<LiveAccountsContainersVersionsRequest>;
 
 export interface LookupAccountsContainersRequest {
   /** Destination ID linked to a GTM Container, e.g. AW-123456789. Only one of destination_id or tag_id should be set. */
@@ -2639,11 +3881,19 @@ export interface LookupAccountsContainersRequest {
   tagId?: string;
 }
 export const LookupAccountsContainersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "destinationId": S.optional(S.String.pipe(T.Query())),
-  "tagId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"tagmanager/v2/accounts/containers:lookup","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "LookupAccountsContainersRequest" }) as any as S.Schema<LookupAccountsContainersRequest>;
+  S.Struct({
+    destinationId: S.optional(S.String.pipe(T.Query())),
+    tagId: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "tagmanager/v2/accounts/containers:lookup",
+      baseUrl: "https://tagmanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "LookupAccountsContainersRequest",
+}) as any as S.Schema<LookupAccountsContainersRequest>;
 
 export interface Move_entities_to_folderAccountsContainersWorkspacesFoldersRequest {
   /** GTM Folder's API relative path. */
@@ -2657,20 +3907,32 @@ export interface Move_entities_to_folderAccountsContainersWorkspacesFoldersReque
   /** Request body */
   body?: Folder;
 }
-export const Move_entities_to_folderAccountsContainersWorkspacesFoldersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-  "tagId": S.optional(StringList.pipe(T.Query())),
-  "variableId": S.optional(StringList.pipe(T.Query())),
-  "triggerId": S.optional(StringList.pipe(T.Query())),
-  "body": S.optional(Folder.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"tagmanager/v2/{+path}:move_entities_to_folder","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "Move_entities_to_folderAccountsContainersWorkspacesFoldersRequest" }) as any as S.Schema<Move_entities_to_folderAccountsContainersWorkspacesFoldersRequest>;
+export const Move_entities_to_folderAccountsContainersWorkspacesFoldersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+      tagId: S.optional(StringList.pipe(T.Query())),
+      variableId: S.optional(StringList.pipe(T.Query())),
+      triggerId: S.optional(StringList.pipe(T.Query())),
+      body: S.optional(Folder.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "tagmanager/v2/{+path}:move_entities_to_folder",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "Move_entities_to_folderAccountsContainersWorkspacesFoldersRequest",
+  }) as any as S.Schema<Move_entities_to_folderAccountsContainersWorkspacesFoldersRequest>;
 
 export interface Move_entities_to_folderAccountsContainersWorkspacesFoldersResponse {}
-export const Move_entities_to_folderAccountsContainersWorkspacesFoldersResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Move_entities_to_folderAccountsContainersWorkspacesFoldersResponse" }) as any as S.Schema<Move_entities_to_folderAccountsContainersWorkspacesFoldersResponse>;
+export const Move_entities_to_folderAccountsContainersWorkspacesFoldersResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier:
+      "Move_entities_to_folderAccountsContainersWorkspacesFoldersResponse",
+  }) as any as S.Schema<Move_entities_to_folderAccountsContainersWorkspacesFoldersResponse>;
 
 export interface Move_tag_idAccountsContainersRequest {
   /** Whether or not to copy tag settings from this tag to the new tag. */
@@ -2688,17 +3950,26 @@ export interface Move_tag_idAccountsContainersRequest {
   /** Must be set to true to accept all terms of service agreements copied from the current tag to the newly created tag. If this bit is false, the operation will fail. */
   copyTermsOfService?: boolean;
 }
-export const Move_tag_idAccountsContainersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "copySettings": S.optional(S.Boolean.pipe(T.Query())),
-  "tagId": S.optional(S.String.pipe(T.Query())),
-  "allowUserPermissionFeatureUpdate": S.optional(S.Boolean.pipe(T.Query())),
-  "tagName": S.optional(S.String.pipe(T.Query())),
-  "path": S.String.pipe(T.Label()),
-  "copyUsers": S.optional(S.Boolean.pipe(T.Query())),
-  "copyTermsOfService": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"POST","uri":"tagmanager/v2/{+path}:move_tag_id","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "Move_tag_idAccountsContainersRequest" }) as any as S.Schema<Move_tag_idAccountsContainersRequest>;
+export const Move_tag_idAccountsContainersRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      copySettings: S.optional(S.Boolean.pipe(T.Query())),
+      tagId: S.optional(S.String.pipe(T.Query())),
+      allowUserPermissionFeatureUpdate: S.optional(S.Boolean.pipe(T.Query())),
+      tagName: S.optional(S.String.pipe(T.Query())),
+      path: S.String.pipe(T.Label()),
+      copyUsers: S.optional(S.Boolean.pipe(T.Query())),
+      copyTermsOfService: S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "tagmanager/v2/{+path}:move_tag_id",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "Move_tag_idAccountsContainersRequest",
+}) as any as S.Schema<Move_tag_idAccountsContainersRequest>;
 
 export interface PublishAccountsContainersVersionsRequest {
   /** GTM ContainerVersion's API relative path. */
@@ -2706,12 +3977,21 @@ export interface PublishAccountsContainersVersionsRequest {
   /** When provided, this fingerprint must match the fingerprint of the container version in storage. */
   fingerprint?: string;
 }
-export const PublishAccountsContainersVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-  "fingerprint": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"POST","uri":"tagmanager/v2/{+path}:publish","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "PublishAccountsContainersVersionsRequest" }) as any as S.Schema<PublishAccountsContainersVersionsRequest>;
+export const PublishAccountsContainersVersionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+      fingerprint: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "tagmanager/v2/{+path}:publish",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "PublishAccountsContainersVersionsRequest",
+}) as any as S.Schema<PublishAccountsContainersVersionsRequest>;
 
 /** Publish container version response. */
 export interface PublishContainerVersionResponse {
@@ -2721,21 +4001,32 @@ export interface PublishContainerVersionResponse {
   compilerError?: boolean;
 }
 export const PublishContainerVersionResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "containerVersion": S.optional(ContainerVersion),
-  "compilerError": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "PublishContainerVersionResponse" }) as any as S.Schema<PublishContainerVersionResponse>;
+  S.Struct({
+    containerVersion: S.optional(ContainerVersion),
+    compilerError: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "PublishContainerVersionResponse",
+}) as any as S.Schema<PublishContainerVersionResponse>;
 
 export interface Quick_previewAccountsContainersWorkspacesRequest {
   /** GTM Workspace's API relative path. */
   path: string;
 }
-export const Quick_previewAccountsContainersWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"POST","uri":"tagmanager/v2/{+path}:quick_preview","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "Quick_previewAccountsContainersWorkspacesRequest" }) as any as S.Schema<Quick_previewAccountsContainersWorkspacesRequest>;
+export const Quick_previewAccountsContainersWorkspacesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "tagmanager/v2/{+path}:quick_preview",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "Quick_previewAccountsContainersWorkspacesRequest",
+  }) as any as S.Schema<Quick_previewAccountsContainersWorkspacesRequest>;
 
 /** Response to quick previewing a workspace. */
 export interface QuickPreviewResponse {
@@ -2747,12 +4038,14 @@ export interface QuickPreviewResponse {
   compilerError?: boolean;
 }
 export const QuickPreviewResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "containerVersion": S.optional(ContainerVersion),
-  "syncStatus": S.optional(SyncStatus),
-  "compilerError": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "QuickPreviewResponse" }) as any as S.Schema<QuickPreviewResponse>;
+  S.Struct({
+    containerVersion: S.optional(ContainerVersion),
+    syncStatus: S.optional(SyncStatus),
+    compilerError: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "QuickPreviewResponse",
+}) as any as S.Schema<QuickPreviewResponse>;
 
 export interface ReauthorizeAccountsContainersEnvironmentsRequest {
   /** GTM Environment's API relative path. */
@@ -2760,12 +4053,21 @@ export interface ReauthorizeAccountsContainersEnvironmentsRequest {
   /** Request body */
   body?: Environment;
 }
-export const ReauthorizeAccountsContainersEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-  "body": S.optional(Environment.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"tagmanager/v2/{+path}:reauthorize","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "ReauthorizeAccountsContainersEnvironmentsRequest" }) as any as S.Schema<ReauthorizeAccountsContainersEnvironmentsRequest>;
+export const ReauthorizeAccountsContainersEnvironmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+      body: S.optional(Environment.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "tagmanager/v2/{+path}:reauthorize",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ReauthorizeAccountsContainersEnvironmentsRequest",
+  }) as any as S.Schema<ReauthorizeAccountsContainersEnvironmentsRequest>;
 
 export interface Resolve_conflictAccountsContainersWorkspacesRequest {
   /** When provided, this fingerprint must match the fingerprint of the entity_in_workspace in the merge conflict. */
@@ -2775,34 +4077,177 @@ export interface Resolve_conflictAccountsContainersWorkspacesRequest {
   /** Request body */
   body?: Entity;
 }
-export const Resolve_conflictAccountsContainersWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fingerprint": S.optional(S.String.pipe(T.Query())),
-  "path": S.String.pipe(T.Label()),
-  "body": S.optional(Entity.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"tagmanager/v2/{+path}:resolve_conflict","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "Resolve_conflictAccountsContainersWorkspacesRequest" }) as any as S.Schema<Resolve_conflictAccountsContainersWorkspacesRequest>;
+export const Resolve_conflictAccountsContainersWorkspacesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      fingerprint: S.optional(S.String.pipe(T.Query())),
+      path: S.String.pipe(T.Label()),
+      body: S.optional(Entity.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "tagmanager/v2/{+path}:resolve_conflict",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "Resolve_conflictAccountsContainersWorkspacesRequest",
+  }) as any as S.Schema<Resolve_conflictAccountsContainersWorkspacesRequest>;
 
 export interface Resolve_conflictAccountsContainersWorkspacesResponse {}
-export const Resolve_conflictAccountsContainersWorkspacesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Resolve_conflictAccountsContainersWorkspacesResponse" }) as any as S.Schema<Resolve_conflictAccountsContainersWorkspacesResponse>;
+export const Resolve_conflictAccountsContainersWorkspacesResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "Resolve_conflictAccountsContainersWorkspacesResponse",
+  }) as any as S.Schema<Resolve_conflictAccountsContainersWorkspacesResponse>;
 
-export type RevertAccountsContainersWorkspacesBuilt_in_variablesTypeEnum = "builtInVariableTypeUnspecified" | "pageUrl" | "pageHostname" | "pagePath" | "referrer" | "event" | "clickElement" | "clickClasses" | "clickId" | "clickTarget" | "clickUrl" | "clickText" | "firstPartyServingUrl" | "formElement" | "formClasses" | "formId" | "formTarget" | "formUrl" | "formText" | "errorMessage" | "errorUrl" | "errorLine" | "newHistoryUrl" | "oldHistoryUrl" | "newHistoryFragment" | "oldHistoryFragment" | "newHistoryState" | "oldHistoryState" | "historySource" | "containerVersion" | "debugMode" | "randomNumber" | "containerId" | "appId" | "appName" | "appVersionCode" | "appVersionName" | "language" | "osVersion" | "platform" | "sdkVersion" | "deviceName" | "resolution" | "advertiserId" | "advertisingTrackingEnabled" | "htmlId" | "environmentName" | "ampBrowserLanguage" | "ampCanonicalPath" | "ampCanonicalUrl" | "ampCanonicalHost" | "ampReferrer" | "ampTitle" | "ampClientId" | "ampClientTimezone" | "ampClientTimestamp" | "ampClientScreenWidth" | "ampClientScreenHeight" | "ampClientScrollX" | "ampClientScrollY" | "ampClientMaxScrollX" | "ampClientMaxScrollY" | "ampTotalEngagedTime" | "ampPageViewId" | "ampPageLoadTime" | "ampPageDownloadTime" | "ampGtmEvent" | "eventName" | "firebaseEventParameterCampaign" | "firebaseEventParameterCampaignAclid" | "firebaseEventParameterCampaignAnid" | "firebaseEventParameterCampaignClickTimestamp" | "firebaseEventParameterCampaignContent" | "firebaseEventParameterCampaignCp1" | "firebaseEventParameterCampaignGclid" | "firebaseEventParameterCampaignSource" | "firebaseEventParameterCampaignTerm" | "firebaseEventParameterCurrency" | "firebaseEventParameterDynamicLinkAcceptTime" | "firebaseEventParameterDynamicLinkLinkid" | "firebaseEventParameterNotificationMessageDeviceTime" | "firebaseEventParameterNotificationMessageId" | "firebaseEventParameterNotificationMessageName" | "firebaseEventParameterNotificationMessageTime" | "firebaseEventParameterNotificationTopic" | "firebaseEventParameterPreviousAppVersion" | "firebaseEventParameterPreviousOsVersion" | "firebaseEventParameterPrice" | "firebaseEventParameterProductId" | "firebaseEventParameterQuantity" | "firebaseEventParameterValue" | "videoProvider" | "videoUrl" | "videoTitle" | "videoDuration" | "videoPercent" | "videoVisible" | "videoStatus" | "videoCurrentTime" | "scrollDepthThreshold" | "scrollDepthUnits" | "scrollDepthDirection" | "elementVisibilityRatio" | "elementVisibilityTime" | "elementVisibilityFirstTime" | "elementVisibilityRecentTime" | "requestPath" | "requestMethod" | "clientName" | "queryString" | "serverPageLocationUrl" | "serverPageLocationPath" | "serverPageLocationHostname" | "visitorRegion" | "analyticsClientId" | "analyticsSessionId" | "analyticsSessionNumber";
-export const RevertAccountsContainersWorkspacesBuilt_in_variablesTypeEnum = /*@__PURE__*/ S.String;
+export type RevertAccountsContainersWorkspacesBuilt_in_variablesTypeEnum =
+  | "builtInVariableTypeUnspecified"
+  | "pageUrl"
+  | "pageHostname"
+  | "pagePath"
+  | "referrer"
+  | "event"
+  | "clickElement"
+  | "clickClasses"
+  | "clickId"
+  | "clickTarget"
+  | "clickUrl"
+  | "clickText"
+  | "firstPartyServingUrl"
+  | "formElement"
+  | "formClasses"
+  | "formId"
+  | "formTarget"
+  | "formUrl"
+  | "formText"
+  | "errorMessage"
+  | "errorUrl"
+  | "errorLine"
+  | "newHistoryUrl"
+  | "oldHistoryUrl"
+  | "newHistoryFragment"
+  | "oldHistoryFragment"
+  | "newHistoryState"
+  | "oldHistoryState"
+  | "historySource"
+  | "containerVersion"
+  | "debugMode"
+  | "randomNumber"
+  | "containerId"
+  | "appId"
+  | "appName"
+  | "appVersionCode"
+  | "appVersionName"
+  | "language"
+  | "osVersion"
+  | "platform"
+  | "sdkVersion"
+  | "deviceName"
+  | "resolution"
+  | "advertiserId"
+  | "advertisingTrackingEnabled"
+  | "htmlId"
+  | "environmentName"
+  | "ampBrowserLanguage"
+  | "ampCanonicalPath"
+  | "ampCanonicalUrl"
+  | "ampCanonicalHost"
+  | "ampReferrer"
+  | "ampTitle"
+  | "ampClientId"
+  | "ampClientTimezone"
+  | "ampClientTimestamp"
+  | "ampClientScreenWidth"
+  | "ampClientScreenHeight"
+  | "ampClientScrollX"
+  | "ampClientScrollY"
+  | "ampClientMaxScrollX"
+  | "ampClientMaxScrollY"
+  | "ampTotalEngagedTime"
+  | "ampPageViewId"
+  | "ampPageLoadTime"
+  | "ampPageDownloadTime"
+  | "ampGtmEvent"
+  | "eventName"
+  | "firebaseEventParameterCampaign"
+  | "firebaseEventParameterCampaignAclid"
+  | "firebaseEventParameterCampaignAnid"
+  | "firebaseEventParameterCampaignClickTimestamp"
+  | "firebaseEventParameterCampaignContent"
+  | "firebaseEventParameterCampaignCp1"
+  | "firebaseEventParameterCampaignGclid"
+  | "firebaseEventParameterCampaignSource"
+  | "firebaseEventParameterCampaignTerm"
+  | "firebaseEventParameterCurrency"
+  | "firebaseEventParameterDynamicLinkAcceptTime"
+  | "firebaseEventParameterDynamicLinkLinkid"
+  | "firebaseEventParameterNotificationMessageDeviceTime"
+  | "firebaseEventParameterNotificationMessageId"
+  | "firebaseEventParameterNotificationMessageName"
+  | "firebaseEventParameterNotificationMessageTime"
+  | "firebaseEventParameterNotificationTopic"
+  | "firebaseEventParameterPreviousAppVersion"
+  | "firebaseEventParameterPreviousOsVersion"
+  | "firebaseEventParameterPrice"
+  | "firebaseEventParameterProductId"
+  | "firebaseEventParameterQuantity"
+  | "firebaseEventParameterValue"
+  | "videoProvider"
+  | "videoUrl"
+  | "videoTitle"
+  | "videoDuration"
+  | "videoPercent"
+  | "videoVisible"
+  | "videoStatus"
+  | "videoCurrentTime"
+  | "scrollDepthThreshold"
+  | "scrollDepthUnits"
+  | "scrollDepthDirection"
+  | "elementVisibilityRatio"
+  | "elementVisibilityTime"
+  | "elementVisibilityFirstTime"
+  | "elementVisibilityRecentTime"
+  | "requestPath"
+  | "requestMethod"
+  | "clientName"
+  | "queryString"
+  | "serverPageLocationUrl"
+  | "serverPageLocationPath"
+  | "serverPageLocationHostname"
+  | "visitorRegion"
+  | "analyticsClientId"
+  | "analyticsSessionId"
+  | "analyticsSessionNumber";
+export const RevertAccountsContainersWorkspacesBuilt_in_variablesTypeEnum =
+  /*@__PURE__*/ S.String;
 
 export interface RevertAccountsContainersWorkspacesBuilt_in_variablesRequest {
   /** GTM BuiltInVariable's API relative path. */
   path: string;
   /** The type of built-in variable to revert. */
-  type?: RevertAccountsContainersWorkspacesBuilt_in_variablesTypeEnum | (string & {});
+  type?:
+    | RevertAccountsContainersWorkspacesBuilt_in_variablesTypeEnum
+    | (string & {});
 }
-export const RevertAccountsContainersWorkspacesBuilt_in_variablesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-  "type": S.optional(RevertAccountsContainersWorkspacesBuilt_in_variablesTypeEnum.pipe(T.Query())),
-}).pipe(T.Http({"method":"POST","uri":"tagmanager/v2/{+path}/built_in_variables:revert","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "RevertAccountsContainersWorkspacesBuilt_in_variablesRequest" }) as any as S.Schema<RevertAccountsContainersWorkspacesBuilt_in_variablesRequest>;
+export const RevertAccountsContainersWorkspacesBuilt_in_variablesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+      type: S.optional(
+        RevertAccountsContainersWorkspacesBuilt_in_variablesTypeEnum.pipe(
+          T.Query(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "tagmanager/v2/{+path}/built_in_variables:revert",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "RevertAccountsContainersWorkspacesBuilt_in_variablesRequest",
+  }) as any as S.Schema<RevertAccountsContainersWorkspacesBuilt_in_variablesRequest>;
 
 /** The result of reverting a built-in variable in a workspace. */
 export interface RevertBuiltInVariableResponse {
@@ -2810,10 +4255,12 @@ export interface RevertBuiltInVariableResponse {
   enabled?: boolean;
 }
 export const RevertBuiltInVariableResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "enabled": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "RevertBuiltInVariableResponse" }) as any as S.Schema<RevertBuiltInVariableResponse>;
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "RevertBuiltInVariableResponse",
+}) as any as S.Schema<RevertBuiltInVariableResponse>;
 
 export interface RevertAccountsContainersWorkspacesClientsRequest {
   /** GTM Client's API relative path. */
@@ -2821,12 +4268,21 @@ export interface RevertAccountsContainersWorkspacesClientsRequest {
   /** When provided, this fingerprint must match the fingerprint of the client in storage. */
   fingerprint?: string;
 }
-export const RevertAccountsContainersWorkspacesClientsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-  "fingerprint": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"POST","uri":"tagmanager/v2/{+path}:revert","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "RevertAccountsContainersWorkspacesClientsRequest" }) as any as S.Schema<RevertAccountsContainersWorkspacesClientsRequest>;
+export const RevertAccountsContainersWorkspacesClientsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+      fingerprint: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "tagmanager/v2/{+path}:revert",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "RevertAccountsContainersWorkspacesClientsRequest",
+  }) as any as S.Schema<RevertAccountsContainersWorkspacesClientsRequest>;
 
 /** The result of reverting a client in a workspace. */
 export interface RevertClientResponse {
@@ -2834,10 +4290,12 @@ export interface RevertClientResponse {
   client?: Client;
 }
 export const RevertClientResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "client": S.optional(Client),
-}),
-).annotate({ identifier: "RevertClientResponse" }) as any as S.Schema<RevertClientResponse>;
+  S.Struct({
+    client: S.optional(Client),
+  }),
+).annotate({
+  identifier: "RevertClientResponse",
+}) as any as S.Schema<RevertClientResponse>;
 
 export interface RevertAccountsContainersWorkspacesFoldersRequest {
   /** GTM Folder's API relative path. */
@@ -2845,12 +4303,21 @@ export interface RevertAccountsContainersWorkspacesFoldersRequest {
   /** When provided, this fingerprint must match the fingerprint of the tag in storage. */
   fingerprint?: string;
 }
-export const RevertAccountsContainersWorkspacesFoldersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-  "fingerprint": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"POST","uri":"tagmanager/v2/{+path}:revert","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "RevertAccountsContainersWorkspacesFoldersRequest" }) as any as S.Schema<RevertAccountsContainersWorkspacesFoldersRequest>;
+export const RevertAccountsContainersWorkspacesFoldersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+      fingerprint: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "tagmanager/v2/{+path}:revert",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "RevertAccountsContainersWorkspacesFoldersRequest",
+  }) as any as S.Schema<RevertAccountsContainersWorkspacesFoldersRequest>;
 
 /** The result of reverting folder changes in a workspace. */
 export interface RevertFolderResponse {
@@ -2858,10 +4325,12 @@ export interface RevertFolderResponse {
   folder?: Folder;
 }
 export const RevertFolderResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "folder": S.optional(Folder),
-}),
-).annotate({ identifier: "RevertFolderResponse" }) as any as S.Schema<RevertFolderResponse>;
+  S.Struct({
+    folder: S.optional(Folder),
+  }),
+).annotate({
+  identifier: "RevertFolderResponse",
+}) as any as S.Schema<RevertFolderResponse>;
 
 export interface RevertAccountsContainersWorkspacesTagsRequest {
   /** GTM Tag's API relative path. */
@@ -2869,12 +4338,21 @@ export interface RevertAccountsContainersWorkspacesTagsRequest {
   /** When provided, this fingerprint must match the fingerprint of thetag in storage. */
   fingerprint?: string;
 }
-export const RevertAccountsContainersWorkspacesTagsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-  "fingerprint": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"POST","uri":"tagmanager/v2/{+path}:revert","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "RevertAccountsContainersWorkspacesTagsRequest" }) as any as S.Schema<RevertAccountsContainersWorkspacesTagsRequest>;
+export const RevertAccountsContainersWorkspacesTagsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+      fingerprint: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "tagmanager/v2/{+path}:revert",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "RevertAccountsContainersWorkspacesTagsRequest",
+  }) as any as S.Schema<RevertAccountsContainersWorkspacesTagsRequest>;
 
 /** The result of reverting a tag in a workspace. */
 export interface RevertTagResponse {
@@ -2882,10 +4360,12 @@ export interface RevertTagResponse {
   tag?: Tag;
 }
 export const RevertTagResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "tag": S.optional(Tag),
-}),
-).annotate({ identifier: "RevertTagResponse" }) as any as S.Schema<RevertTagResponse>;
+  S.Struct({
+    tag: S.optional(Tag),
+  }),
+).annotate({
+  identifier: "RevertTagResponse",
+}) as any as S.Schema<RevertTagResponse>;
 
 export interface RevertAccountsContainersWorkspacesTemplatesRequest {
   /** GTM Custom Template's API relative path. */
@@ -2893,12 +4373,21 @@ export interface RevertAccountsContainersWorkspacesTemplatesRequest {
   /** When provided, this fingerprint must match the fingerprint of the template in storage. */
   fingerprint?: string;
 }
-export const RevertAccountsContainersWorkspacesTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-  "fingerprint": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"POST","uri":"tagmanager/v2/{+path}:revert","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "RevertAccountsContainersWorkspacesTemplatesRequest" }) as any as S.Schema<RevertAccountsContainersWorkspacesTemplatesRequest>;
+export const RevertAccountsContainersWorkspacesTemplatesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+      fingerprint: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "tagmanager/v2/{+path}:revert",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "RevertAccountsContainersWorkspacesTemplatesRequest",
+  }) as any as S.Schema<RevertAccountsContainersWorkspacesTemplatesRequest>;
 
 /** The result of reverting a template in a workspace. */
 export interface RevertTemplateResponse {
@@ -2906,10 +4395,12 @@ export interface RevertTemplateResponse {
   template?: CustomTemplate;
 }
 export const RevertTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "template": S.optional(CustomTemplate),
-}),
-).annotate({ identifier: "RevertTemplateResponse" }) as any as S.Schema<RevertTemplateResponse>;
+  S.Struct({
+    template: S.optional(CustomTemplate),
+  }),
+).annotate({
+  identifier: "RevertTemplateResponse",
+}) as any as S.Schema<RevertTemplateResponse>;
 
 export interface RevertAccountsContainersWorkspacesTransformationsRequest {
   /** GTM Transformation's API relative path. */
@@ -2917,12 +4408,21 @@ export interface RevertAccountsContainersWorkspacesTransformationsRequest {
   /** When provided, this fingerprint must match the fingerprint of the transformation in storage. */
   fingerprint?: string;
 }
-export const RevertAccountsContainersWorkspacesTransformationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-  "fingerprint": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"POST","uri":"tagmanager/v2/{+path}:revert","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "RevertAccountsContainersWorkspacesTransformationsRequest" }) as any as S.Schema<RevertAccountsContainersWorkspacesTransformationsRequest>;
+export const RevertAccountsContainersWorkspacesTransformationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+      fingerprint: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "tagmanager/v2/{+path}:revert",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "RevertAccountsContainersWorkspacesTransformationsRequest",
+  }) as any as S.Schema<RevertAccountsContainersWorkspacesTransformationsRequest>;
 
 /** The result of reverting a transformation in a workspace. */
 export interface RevertTransformationResponse {
@@ -2930,10 +4430,12 @@ export interface RevertTransformationResponse {
   transformation?: Transformation;
 }
 export const RevertTransformationResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "transformation": S.optional(Transformation),
-}),
-).annotate({ identifier: "RevertTransformationResponse" }) as any as S.Schema<RevertTransformationResponse>;
+  S.Struct({
+    transformation: S.optional(Transformation),
+  }),
+).annotate({
+  identifier: "RevertTransformationResponse",
+}) as any as S.Schema<RevertTransformationResponse>;
 
 export interface RevertAccountsContainersWorkspacesTriggersRequest {
   /** GTM Trigger's API relative path. */
@@ -2941,12 +4443,21 @@ export interface RevertAccountsContainersWorkspacesTriggersRequest {
   /** When provided, this fingerprint must match the fingerprint of the trigger in storage. */
   fingerprint?: string;
 }
-export const RevertAccountsContainersWorkspacesTriggersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-  "fingerprint": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"POST","uri":"tagmanager/v2/{+path}:revert","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "RevertAccountsContainersWorkspacesTriggersRequest" }) as any as S.Schema<RevertAccountsContainersWorkspacesTriggersRequest>;
+export const RevertAccountsContainersWorkspacesTriggersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+      fingerprint: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "tagmanager/v2/{+path}:revert",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "RevertAccountsContainersWorkspacesTriggersRequest",
+  }) as any as S.Schema<RevertAccountsContainersWorkspacesTriggersRequest>;
 
 /** The result of reverting a trigger in a workspace. */
 export interface RevertTriggerResponse {
@@ -2954,10 +4465,12 @@ export interface RevertTriggerResponse {
   trigger?: Trigger;
 }
 export const RevertTriggerResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "trigger": S.optional(Trigger),
-}),
-).annotate({ identifier: "RevertTriggerResponse" }) as any as S.Schema<RevertTriggerResponse>;
+  S.Struct({
+    trigger: S.optional(Trigger),
+  }),
+).annotate({
+  identifier: "RevertTriggerResponse",
+}) as any as S.Schema<RevertTriggerResponse>;
 
 export interface RevertAccountsContainersWorkspacesVariablesRequest {
   /** When provided, this fingerprint must match the fingerprint of the variable in storage. */
@@ -2965,12 +4478,21 @@ export interface RevertAccountsContainersWorkspacesVariablesRequest {
   /** GTM Variable's API relative path. */
   path: string;
 }
-export const RevertAccountsContainersWorkspacesVariablesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fingerprint": S.optional(S.String.pipe(T.Query())),
-  "path": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"POST","uri":"tagmanager/v2/{+path}:revert","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "RevertAccountsContainersWorkspacesVariablesRequest" }) as any as S.Schema<RevertAccountsContainersWorkspacesVariablesRequest>;
+export const RevertAccountsContainersWorkspacesVariablesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      fingerprint: S.optional(S.String.pipe(T.Query())),
+      path: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "tagmanager/v2/{+path}:revert",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "RevertAccountsContainersWorkspacesVariablesRequest",
+  }) as any as S.Schema<RevertAccountsContainersWorkspacesVariablesRequest>;
 
 /** The result of reverting a variable in a workspace. */
 export interface RevertVariableResponse {
@@ -2978,10 +4500,12 @@ export interface RevertVariableResponse {
   variable?: Variable;
 }
 export const RevertVariableResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "variable": S.optional(Variable),
-}),
-).annotate({ identifier: "RevertVariableResponse" }) as any as S.Schema<RevertVariableResponse>;
+  S.Struct({
+    variable: S.optional(Variable),
+  }),
+).annotate({
+  identifier: "RevertVariableResponse",
+}) as any as S.Schema<RevertVariableResponse>;
 
 export interface RevertAccountsContainersWorkspacesZonesRequest {
   /** GTM Zone's API relative path. */
@@ -2989,12 +4513,21 @@ export interface RevertAccountsContainersWorkspacesZonesRequest {
   /** When provided, this fingerprint must match the fingerprint of the zone in storage. */
   fingerprint?: string;
 }
-export const RevertAccountsContainersWorkspacesZonesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-  "fingerprint": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"POST","uri":"tagmanager/v2/{+path}:revert","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "RevertAccountsContainersWorkspacesZonesRequest" }) as any as S.Schema<RevertAccountsContainersWorkspacesZonesRequest>;
+export const RevertAccountsContainersWorkspacesZonesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+      fingerprint: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "tagmanager/v2/{+path}:revert",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "RevertAccountsContainersWorkspacesZonesRequest",
+  }) as any as S.Schema<RevertAccountsContainersWorkspacesZonesRequest>;
 
 /** The result of reverting a zone in a workspace. */
 export interface RevertZoneResponse {
@@ -3002,30 +4535,49 @@ export interface RevertZoneResponse {
   zone?: Zone;
 }
 export const RevertZoneResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "zone": S.optional(Zone),
-}),
-).annotate({ identifier: "RevertZoneResponse" }) as any as S.Schema<RevertZoneResponse>;
+  S.Struct({
+    zone: S.optional(Zone),
+  }),
+).annotate({
+  identifier: "RevertZoneResponse",
+}) as any as S.Schema<RevertZoneResponse>;
 
 export interface Set_latestAccountsContainersVersionsRequest {
   /** GTM ContainerVersion's API relative path. */
   path: string;
 }
-export const Set_latestAccountsContainersVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"POST","uri":"tagmanager/v2/{+path}:set_latest","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "Set_latestAccountsContainersVersionsRequest" }) as any as S.Schema<Set_latestAccountsContainersVersionsRequest>;
+export const Set_latestAccountsContainersVersionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "tagmanager/v2/{+path}:set_latest",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "Set_latestAccountsContainersVersionsRequest",
+  }) as any as S.Schema<Set_latestAccountsContainersVersionsRequest>;
 
 export interface SnippetAccountsContainersRequest {
   /** Container snippet's API relative path. */
   path: string;
 }
 export const SnippetAccountsContainersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"tagmanager/v2/{+path}:snippet","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "SnippetAccountsContainersRequest" }) as any as S.Schema<SnippetAccountsContainersRequest>;
+  S.Struct({
+    path: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "tagmanager/v2/{+path}:snippet",
+      baseUrl: "https://tagmanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SnippetAccountsContainersRequest",
+}) as any as S.Schema<SnippetAccountsContainersRequest>;
 
 export interface GetContainerSnippetResponse {
   /** Server container config param for manually provisioning a tagging server. */
@@ -3034,21 +4586,32 @@ export interface GetContainerSnippetResponse {
   snippet?: string;
 }
 export const GetContainerSnippetResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "containerConfig": S.optional(S.String),
-  "snippet": S.optional(S.String),
-}),
-).annotate({ identifier: "GetContainerSnippetResponse" }) as any as S.Schema<GetContainerSnippetResponse>;
+  S.Struct({
+    containerConfig: S.optional(S.String),
+    snippet: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetContainerSnippetResponse",
+}) as any as S.Schema<GetContainerSnippetResponse>;
 
 export interface SyncAccountsContainersWorkspacesRequest {
   /** GTM Workspace's API relative path. */
   path: string;
 }
-export const SyncAccountsContainersWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"POST","uri":"tagmanager/v2/{+path}:sync","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "SyncAccountsContainersWorkspacesRequest" }) as any as S.Schema<SyncAccountsContainersWorkspacesRequest>;
+export const SyncAccountsContainersWorkspacesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "tagmanager/v2/{+path}:sync",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "SyncAccountsContainersWorkspacesRequest",
+}) as any as S.Schema<SyncAccountsContainersWorkspacesRequest>;
 
 /** A response after synchronizing the workspace to the latest container version. */
 export interface SyncWorkspaceResponse {
@@ -3058,21 +4621,32 @@ export interface SyncWorkspaceResponse {
   syncStatus?: SyncStatus;
 }
 export const SyncWorkspaceResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "mergeConflict": S.optional(MergeConflictList),
-  "syncStatus": S.optional(SyncStatus),
-}),
-).annotate({ identifier: "SyncWorkspaceResponse" }) as any as S.Schema<SyncWorkspaceResponse>;
+  S.Struct({
+    mergeConflict: S.optional(MergeConflictList),
+    syncStatus: S.optional(SyncStatus),
+  }),
+).annotate({
+  identifier: "SyncWorkspaceResponse",
+}) as any as S.Schema<SyncWorkspaceResponse>;
 
 export interface UndeleteAccountsContainersVersionsRequest {
   /** GTM ContainerVersion's API relative path. */
   path: string;
 }
-export const UndeleteAccountsContainersVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"POST","uri":"tagmanager/v2/{+path}:undelete","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "UndeleteAccountsContainersVersionsRequest" }) as any as S.Schema<UndeleteAccountsContainersVersionsRequest>;
+export const UndeleteAccountsContainersVersionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "tagmanager/v2/{+path}:undelete",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "UndeleteAccountsContainersVersionsRequest",
+  }) as any as S.Schema<UndeleteAccountsContainersVersionsRequest>;
 
 export interface UpdateAccountsRequest {
   /** When provided, this fingerprint must match the fingerprint of the account in storage. */
@@ -3083,12 +4657,20 @@ export interface UpdateAccountsRequest {
   body?: Account;
 }
 export const UpdateAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fingerprint": S.optional(S.String.pipe(T.Query())),
-  "path": S.String.pipe(T.Label()),
-  "body": S.optional(Account.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"tagmanager/v2/{+path}","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "UpdateAccountsRequest" }) as any as S.Schema<UpdateAccountsRequest>;
+  S.Struct({
+    fingerprint: S.optional(S.String.pipe(T.Query())),
+    path: S.String.pipe(T.Label()),
+    body: S.optional(Account.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "tagmanager/v2/{+path}",
+      baseUrl: "https://tagmanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateAccountsRequest",
+}) as any as S.Schema<UpdateAccountsRequest>;
 
 export interface UpdateAccountsContainersRequest {
   /** When provided, this fingerprint must match the fingerprint of the container in storage. */
@@ -3099,12 +4681,20 @@ export interface UpdateAccountsContainersRequest {
   body?: Container;
 }
 export const UpdateAccountsContainersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fingerprint": S.optional(S.String.pipe(T.Query())),
-  "path": S.String.pipe(T.Label()),
-  "body": S.optional(Container.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"tagmanager/v2/{+path}","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "UpdateAccountsContainersRequest" }) as any as S.Schema<UpdateAccountsContainersRequest>;
+  S.Struct({
+    fingerprint: S.optional(S.String.pipe(T.Query())),
+    path: S.String.pipe(T.Label()),
+    body: S.optional(Container.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "tagmanager/v2/{+path}",
+      baseUrl: "https://tagmanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateAccountsContainersRequest",
+}) as any as S.Schema<UpdateAccountsContainersRequest>;
 
 export interface UpdateAccountsContainersEnvironmentsRequest {
   /** When provided, this fingerprint must match the fingerprint of the environment in storage. */
@@ -3114,13 +4704,22 @@ export interface UpdateAccountsContainersEnvironmentsRequest {
   /** Request body */
   body?: Environment;
 }
-export const UpdateAccountsContainersEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fingerprint": S.optional(S.String.pipe(T.Query())),
-  "path": S.String.pipe(T.Label()),
-  "body": S.optional(Environment.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"tagmanager/v2/{+path}","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "UpdateAccountsContainersEnvironmentsRequest" }) as any as S.Schema<UpdateAccountsContainersEnvironmentsRequest>;
+export const UpdateAccountsContainersEnvironmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      fingerprint: S.optional(S.String.pipe(T.Query())),
+      path: S.String.pipe(T.Label()),
+      body: S.optional(Environment.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "tagmanager/v2/{+path}",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "UpdateAccountsContainersEnvironmentsRequest",
+  }) as any as S.Schema<UpdateAccountsContainersEnvironmentsRequest>;
 
 export interface UpdateAccountsContainersVersionsRequest {
   /** When provided, this fingerprint must match the fingerprint of the container version in storage. */
@@ -3130,13 +4729,22 @@ export interface UpdateAccountsContainersVersionsRequest {
   /** Request body */
   body?: ContainerVersion;
 }
-export const UpdateAccountsContainersVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fingerprint": S.optional(S.String.pipe(T.Query())),
-  "path": S.String.pipe(T.Label()),
-  "body": S.optional(ContainerVersion.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"tagmanager/v2/{+path}","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "UpdateAccountsContainersVersionsRequest" }) as any as S.Schema<UpdateAccountsContainersVersionsRequest>;
+export const UpdateAccountsContainersVersionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      fingerprint: S.optional(S.String.pipe(T.Query())),
+      path: S.String.pipe(T.Label()),
+      body: S.optional(ContainerVersion.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "tagmanager/v2/{+path}",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "UpdateAccountsContainersVersionsRequest",
+}) as any as S.Schema<UpdateAccountsContainersVersionsRequest>;
 
 export interface UpdateAccountsContainersWorkspacesRequest {
   /** GTM Workspace's API relative path. */
@@ -3146,13 +4754,22 @@ export interface UpdateAccountsContainersWorkspacesRequest {
   /** Request body */
   body?: Workspace;
 }
-export const UpdateAccountsContainersWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-  "fingerprint": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Workspace.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"tagmanager/v2/{+path}","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "UpdateAccountsContainersWorkspacesRequest" }) as any as S.Schema<UpdateAccountsContainersWorkspacesRequest>;
+export const UpdateAccountsContainersWorkspacesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+      fingerprint: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Workspace.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "tagmanager/v2/{+path}",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "UpdateAccountsContainersWorkspacesRequest",
+  }) as any as S.Schema<UpdateAccountsContainersWorkspacesRequest>;
 
 export interface UpdateAccountsContainersWorkspacesClientsRequest {
   /** When provided, this fingerprint must match the fingerprint of the client in storage. */
@@ -3162,13 +4779,22 @@ export interface UpdateAccountsContainersWorkspacesClientsRequest {
   /** Request body */
   body?: Client;
 }
-export const UpdateAccountsContainersWorkspacesClientsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fingerprint": S.optional(S.String.pipe(T.Query())),
-  "path": S.String.pipe(T.Label()),
-  "body": S.optional(Client.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"tagmanager/v2/{+path}","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "UpdateAccountsContainersWorkspacesClientsRequest" }) as any as S.Schema<UpdateAccountsContainersWorkspacesClientsRequest>;
+export const UpdateAccountsContainersWorkspacesClientsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      fingerprint: S.optional(S.String.pipe(T.Query())),
+      path: S.String.pipe(T.Label()),
+      body: S.optional(Client.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "tagmanager/v2/{+path}",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "UpdateAccountsContainersWorkspacesClientsRequest",
+  }) as any as S.Schema<UpdateAccountsContainersWorkspacesClientsRequest>;
 
 export interface UpdateAccountsContainersWorkspacesFoldersRequest {
   /** GTM Folder's API relative path. */
@@ -3178,13 +4804,22 @@ export interface UpdateAccountsContainersWorkspacesFoldersRequest {
   /** Request body */
   body?: Folder;
 }
-export const UpdateAccountsContainersWorkspacesFoldersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-  "fingerprint": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Folder.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"tagmanager/v2/{+path}","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "UpdateAccountsContainersWorkspacesFoldersRequest" }) as any as S.Schema<UpdateAccountsContainersWorkspacesFoldersRequest>;
+export const UpdateAccountsContainersWorkspacesFoldersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+      fingerprint: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Folder.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "tagmanager/v2/{+path}",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "UpdateAccountsContainersWorkspacesFoldersRequest",
+  }) as any as S.Schema<UpdateAccountsContainersWorkspacesFoldersRequest>;
 
 export interface UpdateAccountsContainersWorkspacesGtag_configRequest {
   /** Google tag config's API relative path. */
@@ -3194,13 +4829,22 @@ export interface UpdateAccountsContainersWorkspacesGtag_configRequest {
   /** Request body */
   body?: GtagConfig;
 }
-export const UpdateAccountsContainersWorkspacesGtag_configRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-  "fingerprint": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(GtagConfig.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"tagmanager/v2/{+path}","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "UpdateAccountsContainersWorkspacesGtag_configRequest" }) as any as S.Schema<UpdateAccountsContainersWorkspacesGtag_configRequest>;
+export const UpdateAccountsContainersWorkspacesGtag_configRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+      fingerprint: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(GtagConfig.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "tagmanager/v2/{+path}",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "UpdateAccountsContainersWorkspacesGtag_configRequest",
+  }) as any as S.Schema<UpdateAccountsContainersWorkspacesGtag_configRequest>;
 
 export interface UpdateAccountsContainersWorkspacesTagsRequest {
   /** GTM Tag's API relative path. */
@@ -3210,13 +4854,22 @@ export interface UpdateAccountsContainersWorkspacesTagsRequest {
   /** Request body */
   body?: Tag;
 }
-export const UpdateAccountsContainersWorkspacesTagsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-  "fingerprint": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Tag.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"tagmanager/v2/{+path}","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "UpdateAccountsContainersWorkspacesTagsRequest" }) as any as S.Schema<UpdateAccountsContainersWorkspacesTagsRequest>;
+export const UpdateAccountsContainersWorkspacesTagsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+      fingerprint: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Tag.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "tagmanager/v2/{+path}",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "UpdateAccountsContainersWorkspacesTagsRequest",
+  }) as any as S.Schema<UpdateAccountsContainersWorkspacesTagsRequest>;
 
 export interface UpdateAccountsContainersWorkspacesTemplatesRequest {
   /** GTM Custom Template's API relative path. */
@@ -3226,13 +4879,22 @@ export interface UpdateAccountsContainersWorkspacesTemplatesRequest {
   /** Request body */
   body?: CustomTemplate;
 }
-export const UpdateAccountsContainersWorkspacesTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-  "fingerprint": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(CustomTemplate.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"tagmanager/v2/{+path}","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "UpdateAccountsContainersWorkspacesTemplatesRequest" }) as any as S.Schema<UpdateAccountsContainersWorkspacesTemplatesRequest>;
+export const UpdateAccountsContainersWorkspacesTemplatesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+      fingerprint: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(CustomTemplate.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "tagmanager/v2/{+path}",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "UpdateAccountsContainersWorkspacesTemplatesRequest",
+  }) as any as S.Schema<UpdateAccountsContainersWorkspacesTemplatesRequest>;
 
 export interface UpdateAccountsContainersWorkspacesTransformationsRequest {
   /** When provided, this fingerprint must match the fingerprint of the transformation in storage. */
@@ -3242,13 +4904,22 @@ export interface UpdateAccountsContainersWorkspacesTransformationsRequest {
   /** Request body */
   body?: Transformation;
 }
-export const UpdateAccountsContainersWorkspacesTransformationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fingerprint": S.optional(S.String.pipe(T.Query())),
-  "path": S.String.pipe(T.Label()),
-  "body": S.optional(Transformation.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"tagmanager/v2/{+path}","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "UpdateAccountsContainersWorkspacesTransformationsRequest" }) as any as S.Schema<UpdateAccountsContainersWorkspacesTransformationsRequest>;
+export const UpdateAccountsContainersWorkspacesTransformationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      fingerprint: S.optional(S.String.pipe(T.Query())),
+      path: S.String.pipe(T.Label()),
+      body: S.optional(Transformation.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "tagmanager/v2/{+path}",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "UpdateAccountsContainersWorkspacesTransformationsRequest",
+  }) as any as S.Schema<UpdateAccountsContainersWorkspacesTransformationsRequest>;
 
 export interface UpdateAccountsContainersWorkspacesTriggersRequest {
   /** GTM Trigger's API relative path. */
@@ -3258,13 +4929,22 @@ export interface UpdateAccountsContainersWorkspacesTriggersRequest {
   /** Request body */
   body?: Trigger;
 }
-export const UpdateAccountsContainersWorkspacesTriggersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-  "fingerprint": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Trigger.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"tagmanager/v2/{+path}","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "UpdateAccountsContainersWorkspacesTriggersRequest" }) as any as S.Schema<UpdateAccountsContainersWorkspacesTriggersRequest>;
+export const UpdateAccountsContainersWorkspacesTriggersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+      fingerprint: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Trigger.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "tagmanager/v2/{+path}",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "UpdateAccountsContainersWorkspacesTriggersRequest",
+  }) as any as S.Schema<UpdateAccountsContainersWorkspacesTriggersRequest>;
 
 export interface UpdateAccountsContainersWorkspacesVariablesRequest {
   /** GTM Variable's API relative path. */
@@ -3274,13 +4954,22 @@ export interface UpdateAccountsContainersWorkspacesVariablesRequest {
   /** Request body */
   body?: Variable;
 }
-export const UpdateAccountsContainersWorkspacesVariablesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-  "fingerprint": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Variable.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"tagmanager/v2/{+path}","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "UpdateAccountsContainersWorkspacesVariablesRequest" }) as any as S.Schema<UpdateAccountsContainersWorkspacesVariablesRequest>;
+export const UpdateAccountsContainersWorkspacesVariablesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+      fingerprint: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Variable.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "tagmanager/v2/{+path}",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "UpdateAccountsContainersWorkspacesVariablesRequest",
+  }) as any as S.Schema<UpdateAccountsContainersWorkspacesVariablesRequest>;
 
 export interface UpdateAccountsContainersWorkspacesZonesRequest {
   /** When provided, this fingerprint must match the fingerprint of the zone in storage. */
@@ -3290,13 +4979,22 @@ export interface UpdateAccountsContainersWorkspacesZonesRequest {
   /** Request body */
   body?: Zone;
 }
-export const UpdateAccountsContainersWorkspacesZonesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fingerprint": S.optional(S.String.pipe(T.Query())),
-  "path": S.String.pipe(T.Label()),
-  "body": S.optional(Zone.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"tagmanager/v2/{+path}","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "UpdateAccountsContainersWorkspacesZonesRequest" }) as any as S.Schema<UpdateAccountsContainersWorkspacesZonesRequest>;
+export const UpdateAccountsContainersWorkspacesZonesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      fingerprint: S.optional(S.String.pipe(T.Query())),
+      path: S.String.pipe(T.Label()),
+      body: S.optional(Zone.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "tagmanager/v2/{+path}",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "UpdateAccountsContainersWorkspacesZonesRequest",
+  }) as any as S.Schema<UpdateAccountsContainersWorkspacesZonesRequest>;
 
 export interface UpdateAccountsUser_permissionsRequest {
   /** GTM UserPermission's API relative path. */
@@ -3304,14 +5002,28 @@ export interface UpdateAccountsUser_permissionsRequest {
   /** Request body */
   body?: UserPermission;
 }
-export const UpdateAccountsUser_permissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.String.pipe(T.Label()),
-  "body": S.optional(UserPermission.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"tagmanager/v2/{+path}","baseUrl":"https://tagmanager.googleapis.com/"})),
-).annotate({ identifier: "UpdateAccountsUser_permissionsRequest" }) as any as S.Schema<UpdateAccountsUser_permissionsRequest>;
+export const UpdateAccountsUser_permissionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      path: S.String.pipe(T.Label()),
+      body: S.optional(UserPermission.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "tagmanager/v2/{+path}",
+        baseUrl: "https://tagmanager.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "UpdateAccountsUser_permissionsRequest",
+}) as any as S.Schema<UpdateAccountsUser_permissionsRequest>;
 
-export type Bulk_updateAccountsContainersWorkspacesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type Bulk_updateAccountsContainersWorkspacesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Applies multiple entity changes to a workspace in one call. When creating new entities, their entity IDs must be unique and in correct format. That is, they must start with "new_" and followed by number, e.g. "new_1", "new_2". Example body snippet to create myNewTag under myNewFolder is: ``` "changes": [ { "folder": { "folderId": "new_1", "name": "myNewFolder", ... }, "changeStatus": "added" }, { "tag": { "tagId": "new_2", "name": "myNewTag", "parentFolderId": "new_1", ... }, "changeStatus": "added" } ] ``` */
 export const bulk_updateAccountsContainersWorkspaces: API.OperationMethod<
   Bulk_updateAccountsContainersWorkspacesRequest,
@@ -3326,7 +5038,12 @@ export const bulk_updateAccountsContainersWorkspaces: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CombineAccountsContainersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CombineAccountsContainersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Combines Containers. */
 export const combineAccountsContainers: API.OperationMethod<
   CombineAccountsContainersRequest,
@@ -3341,7 +5058,12 @@ export const combineAccountsContainers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type Create_versionAccountsContainersWorkspacesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type Create_versionAccountsContainersWorkspacesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a Container Version from the entities present in the workspace, deletes the workspace, and sets the base container version to the newly created version. */
 export const create_versionAccountsContainersWorkspaces: API.OperationMethod<
   Create_versionAccountsContainersWorkspacesRequest,
@@ -3356,7 +5078,12 @@ export const create_versionAccountsContainersWorkspaces: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAccountsContainersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateAccountsContainersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a Container. */
 export const createAccountsContainers: API.OperationMethod<
   CreateAccountsContainersRequest,
@@ -3371,7 +5098,12 @@ export const createAccountsContainers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAccountsContainersEnvironmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateAccountsContainersEnvironmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a GTM Environment. */
 export const createAccountsContainersEnvironments: API.OperationMethod<
   CreateAccountsContainersEnvironmentsRequest,
@@ -3386,7 +5118,12 @@ export const createAccountsContainersEnvironments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAccountsContainersWorkspacesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateAccountsContainersWorkspacesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a Workspace. */
 export const createAccountsContainersWorkspaces: API.OperationMethod<
   CreateAccountsContainersWorkspacesRequest,
@@ -3401,7 +5138,12 @@ export const createAccountsContainersWorkspaces: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAccountsContainersWorkspacesBuilt_in_variablesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateAccountsContainersWorkspacesBuilt_in_variablesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates one or more GTM Built-In Variables. */
 export const createAccountsContainersWorkspacesBuilt_in_variables: API.OperationMethod<
   CreateAccountsContainersWorkspacesBuilt_in_variablesRequest,
@@ -3416,7 +5158,12 @@ export const createAccountsContainersWorkspacesBuilt_in_variables: API.Operation
   retry: Retry.Retry,
 }));
 
-export type CreateAccountsContainersWorkspacesClientsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateAccountsContainersWorkspacesClientsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a GTM Client. */
 export const createAccountsContainersWorkspacesClients: API.OperationMethod<
   CreateAccountsContainersWorkspacesClientsRequest,
@@ -3431,7 +5178,12 @@ export const createAccountsContainersWorkspacesClients: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAccountsContainersWorkspacesFoldersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateAccountsContainersWorkspacesFoldersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a GTM Folder. */
 export const createAccountsContainersWorkspacesFolders: API.OperationMethod<
   CreateAccountsContainersWorkspacesFoldersRequest,
@@ -3446,7 +5198,12 @@ export const createAccountsContainersWorkspacesFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAccountsContainersWorkspacesGtag_configError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateAccountsContainersWorkspacesGtag_configError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a Google tag config. */
 export const createAccountsContainersWorkspacesGtag_config: API.OperationMethod<
   CreateAccountsContainersWorkspacesGtag_configRequest,
@@ -3461,7 +5218,12 @@ export const createAccountsContainersWorkspacesGtag_config: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAccountsContainersWorkspacesTagsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateAccountsContainersWorkspacesTagsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a GTM Tag. */
 export const createAccountsContainersWorkspacesTags: API.OperationMethod<
   CreateAccountsContainersWorkspacesTagsRequest,
@@ -3476,7 +5238,12 @@ export const createAccountsContainersWorkspacesTags: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAccountsContainersWorkspacesTemplatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateAccountsContainersWorkspacesTemplatesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a GTM Custom Template. */
 export const createAccountsContainersWorkspacesTemplates: API.OperationMethod<
   CreateAccountsContainersWorkspacesTemplatesRequest,
@@ -3491,7 +5258,12 @@ export const createAccountsContainersWorkspacesTemplates: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAccountsContainersWorkspacesTransformationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateAccountsContainersWorkspacesTransformationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a GTM Transformation. */
 export const createAccountsContainersWorkspacesTransformations: API.OperationMethod<
   CreateAccountsContainersWorkspacesTransformationsRequest,
@@ -3506,7 +5278,12 @@ export const createAccountsContainersWorkspacesTransformations: API.OperationMet
   retry: Retry.Retry,
 }));
 
-export type CreateAccountsContainersWorkspacesTriggersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateAccountsContainersWorkspacesTriggersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a GTM Trigger. */
 export const createAccountsContainersWorkspacesTriggers: API.OperationMethod<
   CreateAccountsContainersWorkspacesTriggersRequest,
@@ -3521,7 +5298,12 @@ export const createAccountsContainersWorkspacesTriggers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAccountsContainersWorkspacesVariablesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateAccountsContainersWorkspacesVariablesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a GTM Variable. */
 export const createAccountsContainersWorkspacesVariables: API.OperationMethod<
   CreateAccountsContainersWorkspacesVariablesRequest,
@@ -3536,7 +5318,12 @@ export const createAccountsContainersWorkspacesVariables: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAccountsContainersWorkspacesZonesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateAccountsContainersWorkspacesZonesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a GTM Zone. */
 export const createAccountsContainersWorkspacesZones: API.OperationMethod<
   CreateAccountsContainersWorkspacesZonesRequest,
@@ -3551,7 +5338,12 @@ export const createAccountsContainersWorkspacesZones: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAccountsUser_permissionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateAccountsUser_permissionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a user's Account & Container access. */
 export const createAccountsUser_permissions: API.OperationMethod<
   CreateAccountsUser_permissionsRequest,
@@ -3566,7 +5358,12 @@ export const createAccountsUser_permissions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAccountsContainersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteAccountsContainersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a Container. */
 export const deleteAccountsContainers: API.OperationMethod<
   DeleteAccountsContainersRequest,
@@ -3581,7 +5378,12 @@ export const deleteAccountsContainers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAccountsContainersEnvironmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteAccountsContainersEnvironmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a GTM Environment. */
 export const deleteAccountsContainersEnvironments: API.OperationMethod<
   DeleteAccountsContainersEnvironmentsRequest,
@@ -3596,7 +5398,12 @@ export const deleteAccountsContainersEnvironments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAccountsContainersVersionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteAccountsContainersVersionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a Container Version. */
 export const deleteAccountsContainersVersions: API.OperationMethod<
   DeleteAccountsContainersVersionsRequest,
@@ -3611,7 +5418,12 @@ export const deleteAccountsContainersVersions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAccountsContainersWorkspacesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteAccountsContainersWorkspacesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a Workspace. */
 export const deleteAccountsContainersWorkspaces: API.OperationMethod<
   DeleteAccountsContainersWorkspacesRequest,
@@ -3626,7 +5438,12 @@ export const deleteAccountsContainersWorkspaces: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAccountsContainersWorkspacesBuilt_in_variablesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteAccountsContainersWorkspacesBuilt_in_variablesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes one or more GTM Built-In Variables. */
 export const deleteAccountsContainersWorkspacesBuilt_in_variables: API.OperationMethod<
   DeleteAccountsContainersWorkspacesBuilt_in_variablesRequest,
@@ -3641,7 +5458,12 @@ export const deleteAccountsContainersWorkspacesBuilt_in_variables: API.Operation
   retry: Retry.Retry,
 }));
 
-export type DeleteAccountsContainersWorkspacesClientsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteAccountsContainersWorkspacesClientsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a GTM Client. */
 export const deleteAccountsContainersWorkspacesClients: API.OperationMethod<
   DeleteAccountsContainersWorkspacesClientsRequest,
@@ -3656,7 +5478,12 @@ export const deleteAccountsContainersWorkspacesClients: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAccountsContainersWorkspacesFoldersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteAccountsContainersWorkspacesFoldersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a GTM Folder. */
 export const deleteAccountsContainersWorkspacesFolders: API.OperationMethod<
   DeleteAccountsContainersWorkspacesFoldersRequest,
@@ -3671,7 +5498,12 @@ export const deleteAccountsContainersWorkspacesFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAccountsContainersWorkspacesGtag_configError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteAccountsContainersWorkspacesGtag_configError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a Google tag config. */
 export const deleteAccountsContainersWorkspacesGtag_config: API.OperationMethod<
   DeleteAccountsContainersWorkspacesGtag_configRequest,
@@ -3686,7 +5518,12 @@ export const deleteAccountsContainersWorkspacesGtag_config: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAccountsContainersWorkspacesTagsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteAccountsContainersWorkspacesTagsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a GTM Tag. */
 export const deleteAccountsContainersWorkspacesTags: API.OperationMethod<
   DeleteAccountsContainersWorkspacesTagsRequest,
@@ -3701,7 +5538,12 @@ export const deleteAccountsContainersWorkspacesTags: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAccountsContainersWorkspacesTemplatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteAccountsContainersWorkspacesTemplatesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a GTM Template. */
 export const deleteAccountsContainersWorkspacesTemplates: API.OperationMethod<
   DeleteAccountsContainersWorkspacesTemplatesRequest,
@@ -3716,7 +5558,12 @@ export const deleteAccountsContainersWorkspacesTemplates: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAccountsContainersWorkspacesTransformationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteAccountsContainersWorkspacesTransformationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a GTM Transformation. */
 export const deleteAccountsContainersWorkspacesTransformations: API.OperationMethod<
   DeleteAccountsContainersWorkspacesTransformationsRequest,
@@ -3731,7 +5578,12 @@ export const deleteAccountsContainersWorkspacesTransformations: API.OperationMet
   retry: Retry.Retry,
 }));
 
-export type DeleteAccountsContainersWorkspacesTriggersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteAccountsContainersWorkspacesTriggersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a GTM Trigger. */
 export const deleteAccountsContainersWorkspacesTriggers: API.OperationMethod<
   DeleteAccountsContainersWorkspacesTriggersRequest,
@@ -3746,7 +5598,12 @@ export const deleteAccountsContainersWorkspacesTriggers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAccountsContainersWorkspacesVariablesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteAccountsContainersWorkspacesVariablesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a GTM Variable. */
 export const deleteAccountsContainersWorkspacesVariables: API.OperationMethod<
   DeleteAccountsContainersWorkspacesVariablesRequest,
@@ -3761,7 +5618,12 @@ export const deleteAccountsContainersWorkspacesVariables: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAccountsContainersWorkspacesZonesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteAccountsContainersWorkspacesZonesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a GTM Zone. */
 export const deleteAccountsContainersWorkspacesZones: API.OperationMethod<
   DeleteAccountsContainersWorkspacesZonesRequest,
@@ -3776,7 +5638,12 @@ export const deleteAccountsContainersWorkspacesZones: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAccountsUser_permissionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteAccountsUser_permissionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Removes a user from the account, revoking access to it and all of its containers. */
 export const deleteAccountsUser_permissions: API.OperationMethod<
   DeleteAccountsUser_permissionsRequest,
@@ -3791,7 +5658,12 @@ export const deleteAccountsUser_permissions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type EntitiesAccountsContainersWorkspacesFoldersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type EntitiesAccountsContainersWorkspacesFoldersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** List all entities in a GTM Folder. */
 export const entitiesAccountsContainersWorkspacesFolders: API.PaginatedOperationMethod<
   EntitiesAccountsContainersWorkspacesFoldersRequest,
@@ -3804,7 +5676,10 @@ export const entitiesAccountsContainersWorkspacesFolders: API.PaginatedOperation
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type GetAccountsError = NotFound | Forbidden | GcpOpError;
@@ -3837,7 +5712,10 @@ export const getAccountsContainers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAccountsContainersDestinationsError = NotFound | Forbidden | GcpOpError;
+export type GetAccountsContainersDestinationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets a Destination. */
 export const getAccountsContainersDestinations: API.OperationMethod<
   GetAccountsContainersDestinationsRequest,
@@ -3852,7 +5730,10 @@ export const getAccountsContainersDestinations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAccountsContainersEnvironmentsError = NotFound | Forbidden | GcpOpError;
+export type GetAccountsContainersEnvironmentsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets a GTM Environment. */
 export const getAccountsContainersEnvironments: API.OperationMethod<
   GetAccountsContainersEnvironmentsRequest,
@@ -3867,7 +5748,10 @@ export const getAccountsContainersEnvironments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAccountsContainersVersionsError = NotFound | Forbidden | GcpOpError;
+export type GetAccountsContainersVersionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets a Container Version. */
 export const getAccountsContainersVersions: API.OperationMethod<
   GetAccountsContainersVersionsRequest,
@@ -3882,7 +5766,10 @@ export const getAccountsContainersVersions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAccountsContainersWorkspacesError = NotFound | Forbidden | GcpOpError;
+export type GetAccountsContainersWorkspacesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets a Workspace. */
 export const getAccountsContainersWorkspaces: API.OperationMethod<
   GetAccountsContainersWorkspacesRequest,
@@ -3897,7 +5784,10 @@ export const getAccountsContainersWorkspaces: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAccountsContainersWorkspacesClientsError = NotFound | Forbidden | GcpOpError;
+export type GetAccountsContainersWorkspacesClientsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets a GTM Client. */
 export const getAccountsContainersWorkspacesClients: API.OperationMethod<
   GetAccountsContainersWorkspacesClientsRequest,
@@ -3912,7 +5802,10 @@ export const getAccountsContainersWorkspacesClients: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAccountsContainersWorkspacesFoldersError = NotFound | Forbidden | GcpOpError;
+export type GetAccountsContainersWorkspacesFoldersError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets a GTM Folder. */
 export const getAccountsContainersWorkspacesFolders: API.OperationMethod<
   GetAccountsContainersWorkspacesFoldersRequest,
@@ -3927,7 +5820,10 @@ export const getAccountsContainersWorkspacesFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAccountsContainersWorkspacesGtag_configError = NotFound | Forbidden | GcpOpError;
+export type GetAccountsContainersWorkspacesGtag_configError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets a Google tag config. */
 export const getAccountsContainersWorkspacesGtag_config: API.OperationMethod<
   GetAccountsContainersWorkspacesGtag_configRequest,
@@ -3942,7 +5838,10 @@ export const getAccountsContainersWorkspacesGtag_config: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAccountsContainersWorkspacesTagsError = NotFound | Forbidden | GcpOpError;
+export type GetAccountsContainersWorkspacesTagsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets a GTM Tag. */
 export const getAccountsContainersWorkspacesTags: API.OperationMethod<
   GetAccountsContainersWorkspacesTagsRequest,
@@ -3957,7 +5856,10 @@ export const getAccountsContainersWorkspacesTags: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAccountsContainersWorkspacesTemplatesError = NotFound | Forbidden | GcpOpError;
+export type GetAccountsContainersWorkspacesTemplatesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets a GTM Template. */
 export const getAccountsContainersWorkspacesTemplates: API.OperationMethod<
   GetAccountsContainersWorkspacesTemplatesRequest,
@@ -3972,7 +5874,10 @@ export const getAccountsContainersWorkspacesTemplates: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAccountsContainersWorkspacesTransformationsError = NotFound | Forbidden | GcpOpError;
+export type GetAccountsContainersWorkspacesTransformationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets a GTM Transformation. */
 export const getAccountsContainersWorkspacesTransformations: API.OperationMethod<
   GetAccountsContainersWorkspacesTransformationsRequest,
@@ -3987,7 +5892,10 @@ export const getAccountsContainersWorkspacesTransformations: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type GetAccountsContainersWorkspacesTriggersError = NotFound | Forbidden | GcpOpError;
+export type GetAccountsContainersWorkspacesTriggersError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets a GTM Trigger. */
 export const getAccountsContainersWorkspacesTriggers: API.OperationMethod<
   GetAccountsContainersWorkspacesTriggersRequest,
@@ -4002,7 +5910,10 @@ export const getAccountsContainersWorkspacesTriggers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAccountsContainersWorkspacesVariablesError = NotFound | Forbidden | GcpOpError;
+export type GetAccountsContainersWorkspacesVariablesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets a GTM Variable. */
 export const getAccountsContainersWorkspacesVariables: API.OperationMethod<
   GetAccountsContainersWorkspacesVariablesRequest,
@@ -4017,7 +5928,10 @@ export const getAccountsContainersWorkspacesVariables: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAccountsContainersWorkspacesZonesError = NotFound | Forbidden | GcpOpError;
+export type GetAccountsContainersWorkspacesZonesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets a GTM Zone. */
 export const getAccountsContainersWorkspacesZones: API.OperationMethod<
   GetAccountsContainersWorkspacesZonesRequest,
@@ -4032,7 +5946,10 @@ export const getAccountsContainersWorkspacesZones: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAccountsUser_permissionsError = NotFound | Forbidden | GcpOpError;
+export type GetAccountsUser_permissionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets a user's Account & Container access. */
 export const getAccountsUser_permissions: API.OperationMethod<
   GetAccountsUser_permissionsRequest,
@@ -4047,7 +5964,10 @@ export const getAccountsUser_permissions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetStatusAccountsContainersWorkspacesError = NotFound | Forbidden | GcpOpError;
+export type GetStatusAccountsContainersWorkspacesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Finds conflicting and modified entities in the workspace. */
 export const getStatusAccountsContainersWorkspaces: API.OperationMethod<
   GetStatusAccountsContainersWorkspacesRequest,
@@ -4062,7 +5982,12 @@ export const getStatusAccountsContainersWorkspaces: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type Import_from_galleryAccountsContainersWorkspacesTemplatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type Import_from_galleryAccountsContainersWorkspacesTemplatesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Imports a GTM Custom Template from Gallery. */
 export const import_from_galleryAccountsContainersWorkspacesTemplates: API.OperationMethod<
   Import_from_galleryAccountsContainersWorkspacesTemplatesRequest,
@@ -4077,7 +6002,10 @@ export const import_from_galleryAccountsContainersWorkspacesTemplates: API.Opera
   retry: Retry.Retry,
 }));
 
-export type LatestAccountsContainersVersion_headersError = NotFound | Forbidden | GcpOpError;
+export type LatestAccountsContainersVersion_headersError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the latest container version header */
 export const latestAccountsContainersVersion_headers: API.OperationMethod<
   LatestAccountsContainersVersion_headersRequest,
@@ -4092,7 +6020,12 @@ export const latestAccountsContainersVersion_headers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type LinkAccountsContainersDestinationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type LinkAccountsContainersDestinationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Adds a Destination to this Container and removes it from the Container to which it is currently linked. */
 export const linkAccountsContainersDestinations: API.OperationMethod<
   LinkAccountsContainersDestinationsRequest,
@@ -4120,7 +6053,10 @@ export const listAccounts: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListAccountsContainersError = NotFound | Forbidden | GcpOpError;
@@ -4136,10 +6072,16 @@ export const listAccountsContainers: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListAccountsContainersDestinationsError = NotFound | Forbidden | GcpOpError;
+export type ListAccountsContainersDestinationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all Destinations linked to a GTM Container. */
 export const listAccountsContainersDestinations: API.OperationMethod<
   ListAccountsContainersDestinationsRequest,
@@ -4154,7 +6096,10 @@ export const listAccountsContainersDestinations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListAccountsContainersEnvironmentsError = NotFound | Forbidden | GcpOpError;
+export type ListAccountsContainersEnvironmentsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all GTM Environments of a GTM Container. */
 export const listAccountsContainersEnvironments: API.PaginatedOperationMethod<
   ListAccountsContainersEnvironmentsRequest,
@@ -4167,10 +6112,16 @@ export const listAccountsContainersEnvironments: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListAccountsContainersVersion_headersError = NotFound | Forbidden | GcpOpError;
+export type ListAccountsContainersVersion_headersError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all Container Versions of a GTM Container. */
 export const listAccountsContainersVersion_headers: API.PaginatedOperationMethod<
   ListAccountsContainersVersion_headersRequest,
@@ -4183,10 +6134,16 @@ export const listAccountsContainersVersion_headers: API.PaginatedOperationMethod
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListAccountsContainersWorkspacesError = NotFound | Forbidden | GcpOpError;
+export type ListAccountsContainersWorkspacesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all Workspaces that belong to a GTM Container. */
 export const listAccountsContainersWorkspaces: API.PaginatedOperationMethod<
   ListAccountsContainersWorkspacesRequest,
@@ -4199,10 +6156,16 @@ export const listAccountsContainersWorkspaces: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListAccountsContainersWorkspacesBuilt_in_variablesError = NotFound | Forbidden | GcpOpError;
+export type ListAccountsContainersWorkspacesBuilt_in_variablesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all the enabled Built-In Variables of a GTM Container. */
 export const listAccountsContainersWorkspacesBuilt_in_variables: API.PaginatedOperationMethod<
   ListAccountsContainersWorkspacesBuilt_in_variablesRequest,
@@ -4215,10 +6178,16 @@ export const listAccountsContainersWorkspacesBuilt_in_variables: API.PaginatedOp
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListAccountsContainersWorkspacesClientsError = NotFound | Forbidden | GcpOpError;
+export type ListAccountsContainersWorkspacesClientsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all GTM Clients of a GTM container workspace. */
 export const listAccountsContainersWorkspacesClients: API.PaginatedOperationMethod<
   ListAccountsContainersWorkspacesClientsRequest,
@@ -4231,10 +6200,16 @@ export const listAccountsContainersWorkspacesClients: API.PaginatedOperationMeth
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListAccountsContainersWorkspacesFoldersError = NotFound | Forbidden | GcpOpError;
+export type ListAccountsContainersWorkspacesFoldersError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all GTM Folders of a Container. */
 export const listAccountsContainersWorkspacesFolders: API.PaginatedOperationMethod<
   ListAccountsContainersWorkspacesFoldersRequest,
@@ -4247,10 +6222,16 @@ export const listAccountsContainersWorkspacesFolders: API.PaginatedOperationMeth
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListAccountsContainersWorkspacesGtag_configError = NotFound | Forbidden | GcpOpError;
+export type ListAccountsContainersWorkspacesGtag_configError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all Google tag configs in a Container. */
 export const listAccountsContainersWorkspacesGtag_config: API.PaginatedOperationMethod<
   ListAccountsContainersWorkspacesGtag_configRequest,
@@ -4263,10 +6244,16 @@ export const listAccountsContainersWorkspacesGtag_config: API.PaginatedOperation
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListAccountsContainersWorkspacesTagsError = NotFound | Forbidden | GcpOpError;
+export type ListAccountsContainersWorkspacesTagsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all GTM Tags of a Container. */
 export const listAccountsContainersWorkspacesTags: API.PaginatedOperationMethod<
   ListAccountsContainersWorkspacesTagsRequest,
@@ -4279,10 +6266,16 @@ export const listAccountsContainersWorkspacesTags: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListAccountsContainersWorkspacesTemplatesError = NotFound | Forbidden | GcpOpError;
+export type ListAccountsContainersWorkspacesTemplatesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all GTM Templates of a GTM container workspace. */
 export const listAccountsContainersWorkspacesTemplates: API.PaginatedOperationMethod<
   ListAccountsContainersWorkspacesTemplatesRequest,
@@ -4295,10 +6288,16 @@ export const listAccountsContainersWorkspacesTemplates: API.PaginatedOperationMe
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListAccountsContainersWorkspacesTransformationsError = NotFound | Forbidden | GcpOpError;
+export type ListAccountsContainersWorkspacesTransformationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all GTM Transformations of a GTM container workspace. */
 export const listAccountsContainersWorkspacesTransformations: API.PaginatedOperationMethod<
   ListAccountsContainersWorkspacesTransformationsRequest,
@@ -4311,10 +6310,16 @@ export const listAccountsContainersWorkspacesTransformations: API.PaginatedOpera
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListAccountsContainersWorkspacesTriggersError = NotFound | Forbidden | GcpOpError;
+export type ListAccountsContainersWorkspacesTriggersError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all GTM Triggers of a Container. */
 export const listAccountsContainersWorkspacesTriggers: API.PaginatedOperationMethod<
   ListAccountsContainersWorkspacesTriggersRequest,
@@ -4327,10 +6332,16 @@ export const listAccountsContainersWorkspacesTriggers: API.PaginatedOperationMet
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListAccountsContainersWorkspacesVariablesError = NotFound | Forbidden | GcpOpError;
+export type ListAccountsContainersWorkspacesVariablesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all GTM Variables of a Container. */
 export const listAccountsContainersWorkspacesVariables: API.PaginatedOperationMethod<
   ListAccountsContainersWorkspacesVariablesRequest,
@@ -4343,10 +6354,16 @@ export const listAccountsContainersWorkspacesVariables: API.PaginatedOperationMe
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListAccountsContainersWorkspacesZonesError = NotFound | Forbidden | GcpOpError;
+export type ListAccountsContainersWorkspacesZonesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all GTM Zones of a GTM container workspace. */
 export const listAccountsContainersWorkspacesZones: API.PaginatedOperationMethod<
   ListAccountsContainersWorkspacesZonesRequest,
@@ -4359,10 +6376,16 @@ export const listAccountsContainersWorkspacesZones: API.PaginatedOperationMethod
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListAccountsUser_permissionsError = NotFound | Forbidden | GcpOpError;
+export type ListAccountsUser_permissionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** List all users that have access to the account along with Account and Container user access granted to each of them. */
 export const listAccountsUser_permissions: API.PaginatedOperationMethod<
   ListAccountsUser_permissionsRequest,
@@ -4375,10 +6398,16 @@ export const listAccountsUser_permissions: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type LiveAccountsContainersVersionsError = NotFound | Forbidden | GcpOpError;
+export type LiveAccountsContainersVersionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the live (i.e. published) container version */
 export const liveAccountsContainersVersions: API.OperationMethod<
   LiveAccountsContainersVersionsRequest,
@@ -4408,7 +6437,12 @@ export const lookupAccountsContainers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type Move_entities_to_folderAccountsContainersWorkspacesFoldersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type Move_entities_to_folderAccountsContainersWorkspacesFoldersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Moves entities to a GTM Folder. If {folder_id} in the request path equals 0, this will instead move entities out of the folder they currently belong to. */
 export const move_entities_to_folderAccountsContainersWorkspacesFolders: API.OperationMethod<
   Move_entities_to_folderAccountsContainersWorkspacesFoldersRequest,
@@ -4423,7 +6457,12 @@ export const move_entities_to_folderAccountsContainersWorkspacesFolders: API.Ope
   retry: Retry.Retry,
 }));
 
-export type Move_tag_idAccountsContainersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type Move_tag_idAccountsContainersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Move Tag ID out of a Container. */
 export const move_tag_idAccountsContainers: API.OperationMethod<
   Move_tag_idAccountsContainersRequest,
@@ -4438,7 +6477,12 @@ export const move_tag_idAccountsContainers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PublishAccountsContainersVersionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PublishAccountsContainersVersionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Publishes a Container Version. */
 export const publishAccountsContainersVersions: API.OperationMethod<
   PublishAccountsContainersVersionsRequest,
@@ -4453,7 +6497,12 @@ export const publishAccountsContainersVersions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type Quick_previewAccountsContainersWorkspacesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type Quick_previewAccountsContainersWorkspacesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Quick previews a workspace by creating a fake container version from all entities in the provided workspace. */
 export const quick_previewAccountsContainersWorkspaces: API.OperationMethod<
   Quick_previewAccountsContainersWorkspacesRequest,
@@ -4468,7 +6517,12 @@ export const quick_previewAccountsContainersWorkspaces: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ReauthorizeAccountsContainersEnvironmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ReauthorizeAccountsContainersEnvironmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Re-generates the authorization code for a GTM Environment. */
 export const reauthorizeAccountsContainersEnvironments: API.OperationMethod<
   ReauthorizeAccountsContainersEnvironmentsRequest,
@@ -4483,7 +6537,12 @@ export const reauthorizeAccountsContainersEnvironments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type Resolve_conflictAccountsContainersWorkspacesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type Resolve_conflictAccountsContainersWorkspacesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Resolves a merge conflict for a workspace entity by updating it to the resolved entity passed in the request. */
 export const resolve_conflictAccountsContainersWorkspaces: API.OperationMethod<
   Resolve_conflictAccountsContainersWorkspacesRequest,
@@ -4498,7 +6557,12 @@ export const resolve_conflictAccountsContainersWorkspaces: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RevertAccountsContainersWorkspacesBuilt_in_variablesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RevertAccountsContainersWorkspacesBuilt_in_variablesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Reverts changes to a GTM Built-In Variables in a GTM Workspace. */
 export const revertAccountsContainersWorkspacesBuilt_in_variables: API.OperationMethod<
   RevertAccountsContainersWorkspacesBuilt_in_variablesRequest,
@@ -4513,7 +6577,12 @@ export const revertAccountsContainersWorkspacesBuilt_in_variables: API.Operation
   retry: Retry.Retry,
 }));
 
-export type RevertAccountsContainersWorkspacesClientsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RevertAccountsContainersWorkspacesClientsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Reverts changes to a GTM Client in a GTM Workspace. */
 export const revertAccountsContainersWorkspacesClients: API.OperationMethod<
   RevertAccountsContainersWorkspacesClientsRequest,
@@ -4528,7 +6597,12 @@ export const revertAccountsContainersWorkspacesClients: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RevertAccountsContainersWorkspacesFoldersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RevertAccountsContainersWorkspacesFoldersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Reverts changes to a GTM Folder in a GTM Workspace. */
 export const revertAccountsContainersWorkspacesFolders: API.OperationMethod<
   RevertAccountsContainersWorkspacesFoldersRequest,
@@ -4543,7 +6617,12 @@ export const revertAccountsContainersWorkspacesFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RevertAccountsContainersWorkspacesTagsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RevertAccountsContainersWorkspacesTagsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Reverts changes to a GTM Tag in a GTM Workspace. */
 export const revertAccountsContainersWorkspacesTags: API.OperationMethod<
   RevertAccountsContainersWorkspacesTagsRequest,
@@ -4558,7 +6637,12 @@ export const revertAccountsContainersWorkspacesTags: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RevertAccountsContainersWorkspacesTemplatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RevertAccountsContainersWorkspacesTemplatesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Reverts changes to a GTM Template in a GTM Workspace. */
 export const revertAccountsContainersWorkspacesTemplates: API.OperationMethod<
   RevertAccountsContainersWorkspacesTemplatesRequest,
@@ -4573,7 +6657,12 @@ export const revertAccountsContainersWorkspacesTemplates: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RevertAccountsContainersWorkspacesTransformationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RevertAccountsContainersWorkspacesTransformationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Reverts changes to a GTM Transformation in a GTM Workspace. */
 export const revertAccountsContainersWorkspacesTransformations: API.OperationMethod<
   RevertAccountsContainersWorkspacesTransformationsRequest,
@@ -4588,7 +6677,12 @@ export const revertAccountsContainersWorkspacesTransformations: API.OperationMet
   retry: Retry.Retry,
 }));
 
-export type RevertAccountsContainersWorkspacesTriggersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RevertAccountsContainersWorkspacesTriggersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Reverts changes to a GTM Trigger in a GTM Workspace. */
 export const revertAccountsContainersWorkspacesTriggers: API.OperationMethod<
   RevertAccountsContainersWorkspacesTriggersRequest,
@@ -4603,7 +6697,12 @@ export const revertAccountsContainersWorkspacesTriggers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RevertAccountsContainersWorkspacesVariablesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RevertAccountsContainersWorkspacesVariablesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Reverts changes to a GTM Variable in a GTM Workspace. */
 export const revertAccountsContainersWorkspacesVariables: API.OperationMethod<
   RevertAccountsContainersWorkspacesVariablesRequest,
@@ -4618,7 +6717,12 @@ export const revertAccountsContainersWorkspacesVariables: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RevertAccountsContainersWorkspacesZonesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RevertAccountsContainersWorkspacesZonesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Reverts changes to a GTM Zone in a GTM Workspace. */
 export const revertAccountsContainersWorkspacesZones: API.OperationMethod<
   RevertAccountsContainersWorkspacesZonesRequest,
@@ -4633,7 +6737,12 @@ export const revertAccountsContainersWorkspacesZones: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type Set_latestAccountsContainersVersionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type Set_latestAccountsContainersVersionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sets the latest version used for synchronization of workspaces when detecting conflicts and errors. */
 export const set_latestAccountsContainersVersions: API.OperationMethod<
   Set_latestAccountsContainersVersionsRequest,
@@ -4663,7 +6772,12 @@ export const snippetAccountsContainers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SyncAccountsContainersWorkspacesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SyncAccountsContainersWorkspacesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Syncs a workspace to the latest container version by updating all unmodified workspace entities and displaying conflicts for modified entities. */
 export const syncAccountsContainersWorkspaces: API.OperationMethod<
   SyncAccountsContainersWorkspacesRequest,
@@ -4678,7 +6792,12 @@ export const syncAccountsContainersWorkspaces: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UndeleteAccountsContainersVersionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UndeleteAccountsContainersVersionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Undeletes a Container Version. */
 export const undeleteAccountsContainersVersions: API.OperationMethod<
   UndeleteAccountsContainersVersionsRequest,
@@ -4693,7 +6812,12 @@ export const undeleteAccountsContainersVersions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateAccountsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateAccountsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a GTM Account. */
 export const updateAccounts: API.OperationMethod<
   UpdateAccountsRequest,
@@ -4708,7 +6832,12 @@ export const updateAccounts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateAccountsContainersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateAccountsContainersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a Container. */
 export const updateAccountsContainers: API.OperationMethod<
   UpdateAccountsContainersRequest,
@@ -4723,7 +6852,12 @@ export const updateAccountsContainers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateAccountsContainersEnvironmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateAccountsContainersEnvironmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a GTM Environment. */
 export const updateAccountsContainersEnvironments: API.OperationMethod<
   UpdateAccountsContainersEnvironmentsRequest,
@@ -4738,7 +6872,12 @@ export const updateAccountsContainersEnvironments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateAccountsContainersVersionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateAccountsContainersVersionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a Container Version. */
 export const updateAccountsContainersVersions: API.OperationMethod<
   UpdateAccountsContainersVersionsRequest,
@@ -4753,7 +6892,12 @@ export const updateAccountsContainersVersions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateAccountsContainersWorkspacesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateAccountsContainersWorkspacesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a Workspace. */
 export const updateAccountsContainersWorkspaces: API.OperationMethod<
   UpdateAccountsContainersWorkspacesRequest,
@@ -4768,7 +6912,12 @@ export const updateAccountsContainersWorkspaces: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateAccountsContainersWorkspacesClientsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateAccountsContainersWorkspacesClientsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a GTM Client. */
 export const updateAccountsContainersWorkspacesClients: API.OperationMethod<
   UpdateAccountsContainersWorkspacesClientsRequest,
@@ -4783,7 +6932,12 @@ export const updateAccountsContainersWorkspacesClients: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateAccountsContainersWorkspacesFoldersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateAccountsContainersWorkspacesFoldersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a GTM Folder. */
 export const updateAccountsContainersWorkspacesFolders: API.OperationMethod<
   UpdateAccountsContainersWorkspacesFoldersRequest,
@@ -4798,7 +6952,12 @@ export const updateAccountsContainersWorkspacesFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateAccountsContainersWorkspacesGtag_configError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateAccountsContainersWorkspacesGtag_configError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a Google tag config. */
 export const updateAccountsContainersWorkspacesGtag_config: API.OperationMethod<
   UpdateAccountsContainersWorkspacesGtag_configRequest,
@@ -4813,7 +6972,12 @@ export const updateAccountsContainersWorkspacesGtag_config: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateAccountsContainersWorkspacesTagsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateAccountsContainersWorkspacesTagsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a GTM Tag. */
 export const updateAccountsContainersWorkspacesTags: API.OperationMethod<
   UpdateAccountsContainersWorkspacesTagsRequest,
@@ -4828,7 +6992,12 @@ export const updateAccountsContainersWorkspacesTags: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateAccountsContainersWorkspacesTemplatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateAccountsContainersWorkspacesTemplatesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a GTM Template. */
 export const updateAccountsContainersWorkspacesTemplates: API.OperationMethod<
   UpdateAccountsContainersWorkspacesTemplatesRequest,
@@ -4843,7 +7012,12 @@ export const updateAccountsContainersWorkspacesTemplates: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateAccountsContainersWorkspacesTransformationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateAccountsContainersWorkspacesTransformationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a GTM Transformation. */
 export const updateAccountsContainersWorkspacesTransformations: API.OperationMethod<
   UpdateAccountsContainersWorkspacesTransformationsRequest,
@@ -4858,7 +7032,12 @@ export const updateAccountsContainersWorkspacesTransformations: API.OperationMet
   retry: Retry.Retry,
 }));
 
-export type UpdateAccountsContainersWorkspacesTriggersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateAccountsContainersWorkspacesTriggersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a GTM Trigger. */
 export const updateAccountsContainersWorkspacesTriggers: API.OperationMethod<
   UpdateAccountsContainersWorkspacesTriggersRequest,
@@ -4873,7 +7052,12 @@ export const updateAccountsContainersWorkspacesTriggers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateAccountsContainersWorkspacesVariablesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateAccountsContainersWorkspacesVariablesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a GTM Variable. */
 export const updateAccountsContainersWorkspacesVariables: API.OperationMethod<
   UpdateAccountsContainersWorkspacesVariablesRequest,
@@ -4888,7 +7072,12 @@ export const updateAccountsContainersWorkspacesVariables: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateAccountsContainersWorkspacesZonesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateAccountsContainersWorkspacesZonesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a GTM Zone. */
 export const updateAccountsContainersWorkspacesZones: API.OperationMethod<
   UpdateAccountsContainersWorkspacesZonesRequest,
@@ -4903,7 +7092,12 @@ export const updateAccountsContainersWorkspacesZones: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateAccountsUser_permissionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateAccountsUser_permissionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a user's Account & Container access. */
 export const updateAccountsUser_permissions: API.OperationMethod<
   UpdateAccountsUser_permissionsRequest,
@@ -4917,4 +7111,3 @@ export const updateAccountsUser_permissions: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

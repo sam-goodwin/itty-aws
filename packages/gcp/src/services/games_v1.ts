@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export interface CheckRevisionsRequest {
@@ -65,12 +65,23 @@ export interface CheckRevisionsRequest {
   clientRevision: string;
 }
 export const CheckRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "clientRevision": S.String.pipe(T.Query()),
-}).pipe(T.Http({"method":"GET","uri":"games/v1/revisions/check","baseUrl":"https://games.googleapis.com/"})),
-).annotate({ identifier: "CheckRevisionsRequest" }) as any as S.Schema<CheckRevisionsRequest>;
+  S.Struct({
+    clientRevision: S.String.pipe(T.Query()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "games/v1/revisions/check",
+      baseUrl: "https://games.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CheckRevisionsRequest",
+}) as any as S.Schema<CheckRevisionsRequest>;
 
-export type RevisionCheckResponseRevisionStatusEnum = "OK" | "DEPRECATED" | "INVALID";
+export type RevisionCheckResponseRevisionStatusEnum =
+  | "OK"
+  | "DEPRECATED"
+  | "INVALID";
 export const RevisionCheckResponseRevisionStatusEnum = /*@__PURE__*/ S.String;
 
 /** A third party checking a revision response. */
@@ -83,15 +94,19 @@ export interface RevisionCheckResponse {
   apiVersion?: string;
 }
 export const RevisionCheckResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "revisionStatus": S.optional(RevisionCheckResponseRevisionStatusEnum),
-  "kind": S.optional(S.String),
-  "apiVersion": S.optional(S.String),
-}),
-).annotate({ identifier: "RevisionCheckResponse" }) as any as S.Schema<RevisionCheckResponse>;
+  S.Struct({
+    revisionStatus: S.optional(RevisionCheckResponseRevisionStatusEnum),
+    kind: S.optional(S.String),
+    apiVersion: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RevisionCheckResponse",
+}) as any as S.Schema<RevisionCheckResponse>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 export interface GamesPlayerTokensRecallRequest {
   /** Required. Opaque server-generated string that encodes all the necessary information to identify the PGS player / Google user and application. */
@@ -100,11 +115,19 @@ export interface GamesPlayerTokensRecallRequest {
   applicationIds?: StringList;
 }
 export const GamesPlayerTokensRecallRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sessionId": S.String.pipe(T.Label()),
-  "applicationIds": S.optional(StringList.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"games/v1/recall/gamesPlayerTokens/{sessionId}","baseUrl":"https://games.googleapis.com/"})),
-).annotate({ identifier: "GamesPlayerTokensRecallRequest" }) as any as S.Schema<GamesPlayerTokensRecallRequest>;
+  S.Struct({
+    sessionId: S.String.pipe(T.Label()),
+    applicationIds: S.optional(StringList.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "games/v1/recall/gamesPlayerTokens/{sessionId}",
+      baseUrl: "https://games.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GamesPlayerTokensRecallRequest",
+}) as any as S.Schema<GamesPlayerTokensRecallRequest>;
 
 /** Recall token data returned from RetrievePlayerTokens RPC */
 export interface RecallToken {
@@ -116,11 +139,11 @@ export interface RecallToken {
   multiPlayerPersona?: boolean;
 }
 export const RecallToken = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "expireTime": S.optional(S.String),
-  "token": S.optional(S.String),
-  "multiPlayerPersona": S.optional(S.Boolean),
-}),
+  S.Struct({
+    expireTime: S.optional(S.String),
+    token: S.optional(S.String),
+    multiPlayerPersona: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "RecallToken" }) as any as S.Schema<RecallToken>;
 
 /** Recall tokens for a game. */
@@ -131,14 +154,18 @@ export interface GamePlayerToken {
   recallToken?: RecallToken;
 }
 export const GamePlayerToken = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "applicationId": S.optional(S.String),
-  "recallToken": S.optional(RecallToken),
-}),
-).annotate({ identifier: "GamePlayerToken" }) as any as S.Schema<GamePlayerToken>;
+  S.Struct({
+    applicationId: S.optional(S.String),
+    recallToken: S.optional(RecallToken),
+  }),
+).annotate({
+  identifier: "GamePlayerToken",
+}) as any as S.Schema<GamePlayerToken>;
 
 export type GamePlayerTokenList = ReadonlyArray<GamePlayerToken>;
-export const GamePlayerTokenList = /*@__PURE__*/ S.Array(GamePlayerToken) as any as S.Schema<GamePlayerTokenList>;
+export const GamePlayerTokenList = /*@__PURE__*/ S.Array(
+  GamePlayerToken,
+) as any as S.Schema<GamePlayerTokenList>;
 
 /** A list of recall token data returned from the RetrieveGamesPlayerTokens RPC */
 export interface RetrieveGamesPlayerTokensResponse {
@@ -146,10 +173,12 @@ export interface RetrieveGamesPlayerTokensResponse {
   gamePlayerTokens?: GamePlayerTokenList;
 }
 export const RetrieveGamesPlayerTokensResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "gamePlayerTokens": S.optional(GamePlayerTokenList),
-}),
-).annotate({ identifier: "RetrieveGamesPlayerTokensResponse" }) as any as S.Schema<RetrieveGamesPlayerTokensResponse>;
+  S.Struct({
+    gamePlayerTokens: S.optional(GamePlayerTokenList),
+  }),
+).annotate({
+  identifier: "RetrieveGamesPlayerTokensResponse",
+}) as any as S.Schema<RetrieveGamesPlayerTokensResponse>;
 
 export interface GeneratePlayGroupingApiTokenAccesstokensRequest {
   /** Required. App package name to generate the token for (e.g. com.example.mygame). */
@@ -157,12 +186,21 @@ export interface GeneratePlayGroupingApiTokenAccesstokensRequest {
   /** Required. Persona to associate with the token. Persona is a developer-provided stable identifier of the user. Must be deterministically generated (e.g. as a one-way hash) from the user account ID and user profile ID (if the app has the concept), according to the developer's own user identity system. */
   persona?: string;
 }
-export const GeneratePlayGroupingApiTokenAccesstokensRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "packageName": S.optional(S.String.pipe(T.Query())),
-  "persona": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"POST","uri":"games/v1/accesstokens/generatePlayGroupingApiToken","baseUrl":"https://games.googleapis.com/"})),
-).annotate({ identifier: "GeneratePlayGroupingApiTokenAccesstokensRequest" }) as any as S.Schema<GeneratePlayGroupingApiTokenAccesstokensRequest>;
+export const GeneratePlayGroupingApiTokenAccesstokensRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      packageName: S.optional(S.String.pipe(T.Query())),
+      persona: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "games/v1/accesstokens/generatePlayGroupingApiToken",
+        baseUrl: "https://games.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GeneratePlayGroupingApiTokenAccesstokensRequest",
+  }) as any as S.Schema<GeneratePlayGroupingApiTokenAccesstokensRequest>;
 
 /** Token data returned from GeneratePlayGroupingApiToken RPC. */
 export interface PlayGroupingApiToken {
@@ -170,21 +208,26 @@ export interface PlayGroupingApiToken {
   tokenValue?: string;
 }
 export const PlayGroupingApiToken = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "tokenValue": S.optional(S.String),
-}),
-).annotate({ identifier: "PlayGroupingApiToken" }) as any as S.Schema<PlayGroupingApiToken>;
+  S.Struct({
+    tokenValue: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PlayGroupingApiToken",
+}) as any as S.Schema<PlayGroupingApiToken>;
 
 /** Response for the GeneratePlayGroupingApiToken RPC. */
 export interface GeneratePlayGroupingApiTokenResponse {
   /** Token for accessing the Play Grouping API. */
   token?: PlayGroupingApiToken;
 }
-export const GeneratePlayGroupingApiTokenResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "token": S.optional(PlayGroupingApiToken),
-}),
-).annotate({ identifier: "GeneratePlayGroupingApiTokenResponse" }) as any as S.Schema<GeneratePlayGroupingApiTokenResponse>;
+export const GeneratePlayGroupingApiTokenResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      token: S.optional(PlayGroupingApiToken),
+    }),
+).annotate({
+  identifier: "GeneratePlayGroupingApiTokenResponse",
+}) as any as S.Schema<GeneratePlayGroupingApiTokenResponse>;
 
 export interface GenerateRecallPlayGroupingApiTokenAccesstokensRequest {
   /** Required. Persona to associate with the token. Persona is a developer-provided stable identifier of the user. Must be deterministically generated (e.g. as a one-way hash) from the user account ID and user profile ID (if the app has the concept), according to the developer's own user identity system. */
@@ -194,24 +237,36 @@ export interface GenerateRecallPlayGroupingApiTokenAccesstokensRequest {
   /** Required. App package name to generate the token for (e.g. com.example.mygame). */
   packageName?: string;
 }
-export const GenerateRecallPlayGroupingApiTokenAccesstokensRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "persona": S.optional(S.String.pipe(T.Query())),
-  "recallSessionId": S.optional(S.String.pipe(T.Query())),
-  "packageName": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"POST","uri":"games/v1/accesstokens/generateRecallPlayGroupingApiToken","baseUrl":"https://games.googleapis.com/"})),
-).annotate({ identifier: "GenerateRecallPlayGroupingApiTokenAccesstokensRequest" }) as any as S.Schema<GenerateRecallPlayGroupingApiTokenAccesstokensRequest>;
+export const GenerateRecallPlayGroupingApiTokenAccesstokensRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      persona: S.optional(S.String.pipe(T.Query())),
+      recallSessionId: S.optional(S.String.pipe(T.Query())),
+      packageName: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "games/v1/accesstokens/generateRecallPlayGroupingApiToken",
+        baseUrl: "https://games.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GenerateRecallPlayGroupingApiTokenAccesstokensRequest",
+  }) as any as S.Schema<GenerateRecallPlayGroupingApiTokenAccesstokensRequest>;
 
 /** Response for the GenerateRecallPlayGroupingApiToken RPC. */
 export interface GenerateRecallPlayGroupingApiTokenResponse {
   /** Token for accessing the Play Grouping API. */
   token?: PlayGroupingApiToken;
 }
-export const GenerateRecallPlayGroupingApiTokenResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "token": S.optional(PlayGroupingApiToken),
-}),
-).annotate({ identifier: "GenerateRecallPlayGroupingApiTokenResponse" }) as any as S.Schema<GenerateRecallPlayGroupingApiTokenResponse>;
+export const GenerateRecallPlayGroupingApiTokenResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      token: S.optional(PlayGroupingApiToken),
+    }),
+  ).annotate({
+    identifier: "GenerateRecallPlayGroupingApiTokenResponse",
+  }) as any as S.Schema<GenerateRecallPlayGroupingApiTokenResponse>;
 
 export type GetApplicationsPlatformTypeEnum = "ANDROID" | "IOS" | "WEB_APP";
 export const GetApplicationsPlatformTypeEnum = /*@__PURE__*/ S.String;
@@ -225,12 +280,20 @@ export interface GetApplicationsRequest {
   applicationId: string;
 }
 export const GetApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "platformType": S.optional(GetApplicationsPlatformTypeEnum.pipe(T.Query())),
-  "language": S.optional(S.String.pipe(T.Query())),
-  "applicationId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"games/v1/applications/{applicationId}","baseUrl":"https://games.googleapis.com/"})),
-).annotate({ identifier: "GetApplicationsRequest" }) as any as S.Schema<GetApplicationsRequest>;
+  S.Struct({
+    platformType: S.optional(GetApplicationsPlatformTypeEnum.pipe(T.Query())),
+    language: S.optional(S.String.pipe(T.Query())),
+    applicationId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "games/v1/applications/{applicationId}",
+      baseUrl: "https://games.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetApplicationsRequest",
+}) as any as S.Schema<GetApplicationsRequest>;
 
 /** An image asset object. */
 export interface ImageAsset {
@@ -246,17 +309,19 @@ export interface ImageAsset {
   width?: number;
 }
 export const ImageAsset = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "url": S.optional(S.String),
-  "height": S.optional(S.Number),
-  "kind": S.optional(S.String),
-  "width": S.optional(S.Number),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    url: S.optional(S.String),
+    height: S.optional(S.Number),
+    kind: S.optional(S.String),
+    width: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "ImageAsset" }) as any as S.Schema<ImageAsset>;
 
 export type ImageAssetList = ReadonlyArray<ImageAsset>;
-export const ImageAssetList = /*@__PURE__*/ S.Array(ImageAsset) as any as S.Schema<ImageAssetList>;
+export const ImageAssetList = /*@__PURE__*/ S.Array(
+  ImageAsset,
+) as any as S.Schema<ImageAssetList>;
 
 /** An application category object. */
 export interface ApplicationCategory {
@@ -268,12 +333,14 @@ export interface ApplicationCategory {
   secondary?: string;
 }
 export const ApplicationCategory = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "primary": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "secondary": S.optional(S.String),
-}),
-).annotate({ identifier: "ApplicationCategory" }) as any as S.Schema<ApplicationCategory>;
+  S.Struct({
+    primary: S.optional(S.String),
+    kind: S.optional(S.String),
+    secondary: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ApplicationCategory",
+}) as any as S.Schema<ApplicationCategory>;
 
 /** The Android instance details resource. */
 export interface InstanceAndroidDetails {
@@ -287,13 +354,15 @@ export interface InstanceAndroidDetails {
   preferred?: boolean;
 }
 export const InstanceAndroidDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "packageName": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "enablePiracyCheck": S.optional(S.Boolean),
-  "preferred": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "InstanceAndroidDetails" }) as any as S.Schema<InstanceAndroidDetails>;
+  S.Struct({
+    packageName: S.optional(S.String),
+    kind: S.optional(S.String),
+    enablePiracyCheck: S.optional(S.Boolean),
+    preferred: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "InstanceAndroidDetails",
+}) as any as S.Schema<InstanceAndroidDetails>;
 
 /** The iOS details resource. */
 export interface InstanceIosDetails {
@@ -313,16 +382,18 @@ export interface InstanceIosDetails {
   kind?: string;
 }
 export const InstanceIosDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bundleIdentifier": S.optional(S.String),
-  "preferredForIpad": S.optional(S.Boolean),
-  "itunesAppId": S.optional(S.String),
-  "supportIphone": S.optional(S.Boolean),
-  "supportIpad": S.optional(S.Boolean),
-  "preferredForIphone": S.optional(S.Boolean),
-  "kind": S.optional(S.String),
-}),
-).annotate({ identifier: "InstanceIosDetails" }) as any as S.Schema<InstanceIosDetails>;
+  S.Struct({
+    bundleIdentifier: S.optional(S.String),
+    preferredForIpad: S.optional(S.Boolean),
+    itunesAppId: S.optional(S.String),
+    supportIphone: S.optional(S.Boolean),
+    supportIpad: S.optional(S.Boolean),
+    preferredForIphone: S.optional(S.Boolean),
+    kind: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "InstanceIosDetails",
+}) as any as S.Schema<InstanceIosDetails>;
 
 export type InstancePlatformTypeEnum = "ANDROID" | "IOS" | "WEB_APP";
 export const InstancePlatformTypeEnum = /*@__PURE__*/ S.String;
@@ -337,12 +408,14 @@ export interface InstanceWebDetails {
   launchUrl?: string;
 }
 export const InstanceWebDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "preferred": S.optional(S.Boolean),
-  "launchUrl": S.optional(S.String),
-}),
-).annotate({ identifier: "InstanceWebDetails" }) as any as S.Schema<InstanceWebDetails>;
+  S.Struct({
+    kind: S.optional(S.String),
+    preferred: S.optional(S.Boolean),
+    launchUrl: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "InstanceWebDetails",
+}) as any as S.Schema<InstanceWebDetails>;
 
 /** The Instance resource. */
 export interface Instance {
@@ -366,27 +439,32 @@ export interface Instance {
   webInstance?: InstanceWebDetails;
 }
 export const Instance = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "androidInstance": S.optional(InstanceAndroidDetails),
-  "iosInstance": S.optional(InstanceIosDetails),
-  "acquisitionUri": S.optional(S.String),
-  "platformType": S.optional(InstancePlatformTypeEnum),
-  "turnBasedPlay": S.optional(S.Boolean),
-  "realtimePlay": S.optional(S.Boolean),
-  "name": S.optional(S.String),
-  "webInstance": S.optional(InstanceWebDetails),
-}),
+  S.Struct({
+    kind: S.optional(S.String),
+    androidInstance: S.optional(InstanceAndroidDetails),
+    iosInstance: S.optional(InstanceIosDetails),
+    acquisitionUri: S.optional(S.String),
+    platformType: S.optional(InstancePlatformTypeEnum),
+    turnBasedPlay: S.optional(S.Boolean),
+    realtimePlay: S.optional(S.Boolean),
+    name: S.optional(S.String),
+    webInstance: S.optional(InstanceWebDetails),
+  }),
 ).annotate({ identifier: "Instance" }) as any as S.Schema<Instance>;
 
 export type InstanceList = ReadonlyArray<Instance>;
-export const InstanceList = /*@__PURE__*/ S.Array(Instance) as any as S.Schema<InstanceList>;
+export const InstanceList = /*@__PURE__*/ S.Array(
+  Instance,
+) as any as S.Schema<InstanceList>;
 
 export type ApplicationEnabledFeaturesItemEnum = "SNAPSHOTS";
 export const ApplicationEnabledFeaturesItemEnum = /*@__PURE__*/ S.String;
 
-export type ApplicationEnabledFeaturesItemEnumList = ReadonlyArray<ApplicationEnabledFeaturesItemEnum>;
-export const ApplicationEnabledFeaturesItemEnumList = /*@__PURE__*/ S.Array(ApplicationEnabledFeaturesItemEnum) as any as S.Schema<ApplicationEnabledFeaturesItemEnumList>;
+export type ApplicationEnabledFeaturesItemEnumList =
+  ReadonlyArray<ApplicationEnabledFeaturesItemEnum>;
+export const ApplicationEnabledFeaturesItemEnumList = /*@__PURE__*/ S.Array(
+  ApplicationEnabledFeaturesItemEnum,
+) as any as S.Schema<ApplicationEnabledFeaturesItemEnumList>;
 
 /** The Application resource. */
 export interface Application {
@@ -418,24 +496,26 @@ export interface Application {
   themeColor?: string;
 }
 export const Application = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "achievement_count": S.optional(S.Number),
-  "assets": S.optional(ImageAssetList),
-  "category": S.optional(ApplicationCategory),
-  "instances": S.optional(InstanceList),
-  "lastUpdatedTimestamp": S.optional(S.String),
-  "description": S.optional(S.String),
-  "id": S.optional(S.String),
-  "enabledFeatures": S.optional(ApplicationEnabledFeaturesItemEnumList),
-  "leaderboard_count": S.optional(S.Number),
-  "author": S.optional(S.String),
-  "name": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "themeColor": S.optional(S.String),
-}),
+  S.Struct({
+    achievement_count: S.optional(S.Number),
+    assets: S.optional(ImageAssetList),
+    category: S.optional(ApplicationCategory),
+    instances: S.optional(InstanceList),
+    lastUpdatedTimestamp: S.optional(S.String),
+    description: S.optional(S.String),
+    id: S.optional(S.String),
+    enabledFeatures: S.optional(ApplicationEnabledFeaturesItemEnumList),
+    leaderboard_count: S.optional(S.Number),
+    author: S.optional(S.String),
+    name: S.optional(S.String),
+    kind: S.optional(S.String),
+    themeColor: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Application" }) as any as S.Schema<Application>;
 
-export type GetEndPointApplicationsEndPointTypeEnum = "PROFILE_CREATION" | "PROFILE_SETTINGS";
+export type GetEndPointApplicationsEndPointTypeEnum =
+  | "PROFILE_CREATION"
+  | "PROFILE_SETTINGS";
 export const GetEndPointApplicationsEndPointTypeEnum = /*@__PURE__*/ S.String;
 
 export interface GetEndPointApplicationsRequest {
@@ -445,11 +525,21 @@ export interface GetEndPointApplicationsRequest {
   endPointType?: GetEndPointApplicationsEndPointTypeEnum | (string & {});
 }
 export const GetEndPointApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "applicationId": S.optional(S.String.pipe(T.Query())),
-  "endPointType": S.optional(GetEndPointApplicationsEndPointTypeEnum.pipe(T.Query())),
-}).pipe(T.Http({"method":"POST","uri":"games/v1/applications/getEndPoint","baseUrl":"https://games.googleapis.com/"})),
-).annotate({ identifier: "GetEndPointApplicationsRequest" }) as any as S.Schema<GetEndPointApplicationsRequest>;
+  S.Struct({
+    applicationId: S.optional(S.String.pipe(T.Query())),
+    endPointType: S.optional(
+      GetEndPointApplicationsEndPointTypeEnum.pipe(T.Query()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "games/v1/applications/getEndPoint",
+      baseUrl: "https://games.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetEndPointApplicationsRequest",
+}) as any as S.Schema<GetEndPointApplicationsRequest>;
 
 /** Container for a URL end point of the requested type. */
 export interface EndPoint {
@@ -457,9 +547,9 @@ export interface EndPoint {
   url?: string;
 }
 export const EndPoint = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "url": S.optional(S.String),
-}),
+  S.Struct({
+    url: S.optional(S.String),
+  }),
 ).annotate({ identifier: "EndPoint" }) as any as S.Schema<EndPoint>;
 
 export interface GetLeaderboardsRequest {
@@ -469,11 +559,19 @@ export interface GetLeaderboardsRequest {
   language?: string;
 }
 export const GetLeaderboardsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "leaderboardId": S.String.pipe(T.Label()),
-  "language": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"games/v1/leaderboards/{leaderboardId}","baseUrl":"https://games.googleapis.com/"})),
-).annotate({ identifier: "GetLeaderboardsRequest" }) as any as S.Schema<GetLeaderboardsRequest>;
+  S.Struct({
+    leaderboardId: S.String.pipe(T.Label()),
+    language: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "games/v1/leaderboards/{leaderboardId}",
+      baseUrl: "https://games.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetLeaderboardsRequest",
+}) as any as S.Schema<GetLeaderboardsRequest>;
 
 export type LeaderboardOrderEnum = "LARGER_IS_BETTER" | "SMALLER_IS_BETTER";
 export const LeaderboardOrderEnum = /*@__PURE__*/ S.String;
@@ -494,20 +592,28 @@ export interface Leaderboard {
   order?: LeaderboardOrderEnum;
 }
 export const Leaderboard = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "isIconUrlDefault": S.optional(S.Boolean),
-  "id": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "iconUrl": S.optional(S.String),
-  "order": S.optional(LeaderboardOrderEnum),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    isIconUrlDefault: S.optional(S.Boolean),
+    id: S.optional(S.String),
+    kind: S.optional(S.String),
+    iconUrl: S.optional(S.String),
+    order: S.optional(LeaderboardOrderEnum),
+  }),
 ).annotate({ identifier: "Leaderboard" }) as any as S.Schema<Leaderboard>;
 
 export interface GetMetagameConfigMetagameRequest {}
 export const GetMetagameConfigMetagameRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}).pipe(T.Http({"method":"GET","uri":"games/v1/metagameConfig","baseUrl":"https://games.googleapis.com/"})),
-).annotate({ identifier: "GetMetagameConfigMetagameRequest" }) as any as S.Schema<GetMetagameConfigMetagameRequest>;
+  S.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      uri: "games/v1/metagameConfig",
+      baseUrl: "https://games.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetMetagameConfigMetagameRequest",
+}) as any as S.Schema<GetMetagameConfigMetagameRequest>;
 
 /** 1P/3P metadata about a user's level. */
 export interface PlayerLevel {
@@ -521,16 +627,18 @@ export interface PlayerLevel {
   maxExperiencePoints?: string;
 }
 export const PlayerLevel = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "level": S.optional(S.Number),
-  "minExperiencePoints": S.optional(S.String),
-  "maxExperiencePoints": S.optional(S.String),
-}),
+  S.Struct({
+    kind: S.optional(S.String),
+    level: S.optional(S.Number),
+    minExperiencePoints: S.optional(S.String),
+    maxExperiencePoints: S.optional(S.String),
+  }),
 ).annotate({ identifier: "PlayerLevel" }) as any as S.Schema<PlayerLevel>;
 
 export type PlayerLevelList = ReadonlyArray<PlayerLevel>;
-export const PlayerLevelList = /*@__PURE__*/ S.Array(PlayerLevel) as any as S.Schema<PlayerLevelList>;
+export const PlayerLevelList = /*@__PURE__*/ S.Array(
+  PlayerLevel,
+) as any as S.Schema<PlayerLevelList>;
 
 /** The metagame config resource */
 export interface MetagameConfig {
@@ -542,22 +650,31 @@ export interface MetagameConfig {
   currentVersion?: number;
 }
 export const MetagameConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "playerLevels": S.optional(PlayerLevelList),
-  "kind": S.optional(S.String),
-  "currentVersion": S.optional(S.Number),
-}),
+  S.Struct({
+    playerLevels: S.optional(PlayerLevelList),
+    kind: S.optional(S.String),
+    currentVersion: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "MetagameConfig" }) as any as S.Schema<MetagameConfig>;
 
 export interface GetMultipleApplicationPlayerIdsPlayersRequest {
   /** Required. The application IDs from the Google Play developer console for the games to return scoped ids for. */
   applicationIds?: StringList;
 }
-export const GetMultipleApplicationPlayerIdsPlayersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "applicationIds": S.optional(StringList.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"games/v1/players/me/multipleApplicationPlayerIds","baseUrl":"https://games.googleapis.com/"})),
-).annotate({ identifier: "GetMultipleApplicationPlayerIdsPlayersRequest" }) as any as S.Schema<GetMultipleApplicationPlayerIdsPlayersRequest>;
+export const GetMultipleApplicationPlayerIdsPlayersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      applicationIds: S.optional(StringList.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "games/v1/players/me/multipleApplicationPlayerIds",
+        baseUrl: "https://games.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetMultipleApplicationPlayerIdsPlayersRequest",
+  }) as any as S.Schema<GetMultipleApplicationPlayerIdsPlayersRequest>;
 
 /** Primary scoped player identifier for an application. */
 export interface ApplicationPlayerId {
@@ -567,25 +684,32 @@ export interface ApplicationPlayerId {
   playerId?: string;
 }
 export const ApplicationPlayerId = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "applicationId": S.optional(S.String),
-  "playerId": S.optional(S.String),
-}),
-).annotate({ identifier: "ApplicationPlayerId" }) as any as S.Schema<ApplicationPlayerId>;
+  S.Struct({
+    applicationId: S.optional(S.String),
+    playerId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ApplicationPlayerId",
+}) as any as S.Schema<ApplicationPlayerId>;
 
 export type ApplicationPlayerIdList = ReadonlyArray<ApplicationPlayerId>;
-export const ApplicationPlayerIdList = /*@__PURE__*/ S.Array(ApplicationPlayerId) as any as S.Schema<ApplicationPlayerIdList>;
+export const ApplicationPlayerIdList = /*@__PURE__*/ S.Array(
+  ApplicationPlayerId,
+) as any as S.Schema<ApplicationPlayerIdList>;
 
 /** Response message for GetMultipleApplicationPlayerIds rpc. */
 export interface GetMultipleApplicationPlayerIdsResponse {
   /** Output only. The requested applications along with the scoped ids for tha player, if that player has an id for the application. If not, the application is not included in the response. */
   playerIds?: ApplicationPlayerIdList;
 }
-export const GetMultipleApplicationPlayerIdsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "playerIds": S.optional(ApplicationPlayerIdList),
-}),
-).annotate({ identifier: "GetMultipleApplicationPlayerIdsResponse" }) as any as S.Schema<GetMultipleApplicationPlayerIdsResponse>;
+export const GetMultipleApplicationPlayerIdsResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      playerIds: S.optional(ApplicationPlayerIdList),
+    }),
+).annotate({
+  identifier: "GetMultipleApplicationPlayerIdsResponse",
+}) as any as S.Schema<GetMultipleApplicationPlayerIdsResponse>;
 
 export interface GetPlayersRequest {
   /** The preferred language to use for strings returned by this method. */
@@ -596,12 +720,20 @@ export interface GetPlayersRequest {
   playerIdConsistencyToken?: string;
 }
 export const GetPlayersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "language": S.optional(S.String.pipe(T.Query())),
-  "playerId": S.String.pipe(T.Label()),
-  "playerIdConsistencyToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"games/v1/players/{playerId}","baseUrl":"https://games.googleapis.com/"})),
-).annotate({ identifier: "GetPlayersRequest" }) as any as S.Schema<GetPlayersRequest>;
+  S.Struct({
+    language: S.optional(S.String.pipe(T.Query())),
+    playerId: S.String.pipe(T.Label()),
+    playerIdConsistencyToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "games/v1/players/{playerId}",
+      baseUrl: "https://games.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetPlayersRequest",
+}) as any as S.Schema<GetPlayersRequest>;
 
 /** 1P/3P metadata about the player's experience. */
 export interface PlayerExperienceInfo {
@@ -617,16 +749,21 @@ export interface PlayerExperienceInfo {
   nextLevel?: PlayerLevel;
 }
 export const PlayerExperienceInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "currentExperiencePoints": S.optional(S.String),
-  "lastLevelUpTimestampMillis": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "currentLevel": S.optional(PlayerLevel),
-  "nextLevel": S.optional(PlayerLevel),
-}),
-).annotate({ identifier: "PlayerExperienceInfo" }) as any as S.Schema<PlayerExperienceInfo>;
+  S.Struct({
+    currentExperiencePoints: S.optional(S.String),
+    lastLevelUpTimestampMillis: S.optional(S.String),
+    kind: S.optional(S.String),
+    currentLevel: S.optional(PlayerLevel),
+    nextLevel: S.optional(PlayerLevel),
+  }),
+).annotate({
+  identifier: "PlayerExperienceInfo",
+}) as any as S.Schema<PlayerExperienceInfo>;
 
-export type ProfileSettingsFriendsListVisibilityEnum = "VISIBLE" | "REQUEST_REQUIRED" | "UNAVAILABLE";
+export type ProfileSettingsFriendsListVisibilityEnum =
+  | "VISIBLE"
+  | "REQUEST_REQUIRED"
+  | "UNAVAILABLE";
 export const ProfileSettingsFriendsListVisibilityEnum = /*@__PURE__*/ S.String;
 
 /** Profile settings */
@@ -638,12 +775,14 @@ export interface ProfileSettings {
   friendsListVisibility?: ProfileSettingsFriendsListVisibilityEnum;
 }
 export const ProfileSettings = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "profileVisible": S.optional(S.Boolean),
-  "kind": S.optional(S.String),
-  "friendsListVisibility": S.optional(ProfileSettingsFriendsListVisibilityEnum),
-}),
-).annotate({ identifier: "ProfileSettings" }) as any as S.Schema<ProfileSettings>;
+  S.Struct({
+    profileVisible: S.optional(S.Boolean),
+    kind: S.optional(S.String),
+    friendsListVisibility: S.optional(ProfileSettingsFriendsListVisibilityEnum),
+  }),
+).annotate({
+  identifier: "ProfileSettings",
+}) as any as S.Schema<ProfileSettings>;
 
 export interface PlayerName {
   /** The family name of this player. In some places, this is known as the last name. */
@@ -652,10 +791,10 @@ export interface PlayerName {
   givenName?: string;
 }
 export const PlayerName = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "familyName": S.optional(S.String),
-  "givenName": S.optional(S.String),
-}),
+  S.Struct({
+    familyName: S.optional(S.String),
+    givenName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "PlayerName" }) as any as S.Schema<PlayerName>;
 
 export type PlayerFriendStatusEnum = "NO_RELATIONSHIP" | "FRIEND";
@@ -691,27 +830,35 @@ export interface Player {
   friendStatus?: PlayerFriendStatusEnum;
 }
 export const Player = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "experienceInfo": S.optional(PlayerExperienceInfo),
-  "playerId": S.optional(S.String),
-  "avatarImageUrl": S.optional(S.String),
-  "gamePlayerId": S.optional(S.String),
-  "bannerUrlLandscape": S.optional(S.String),
-  "profileSettings": S.optional(ProfileSettings),
-  "bannerUrlPortrait": S.optional(S.String),
-  "name": S.optional(PlayerName),
-  "title": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "originalPlayerId": S.optional(S.String),
-  "friendStatus": S.optional(PlayerFriendStatusEnum),
-}),
+  S.Struct({
+    experienceInfo: S.optional(PlayerExperienceInfo),
+    playerId: S.optional(S.String),
+    avatarImageUrl: S.optional(S.String),
+    gamePlayerId: S.optional(S.String),
+    bannerUrlLandscape: S.optional(S.String),
+    profileSettings: S.optional(ProfileSettings),
+    bannerUrlPortrait: S.optional(S.String),
+    name: S.optional(PlayerName),
+    title: S.optional(S.String),
+    kind: S.optional(S.String),
+    displayName: S.optional(S.String),
+    originalPlayerId: S.optional(S.String),
+    friendStatus: S.optional(PlayerFriendStatusEnum),
+  }),
 ).annotate({ identifier: "Player" }) as any as S.Schema<Player>;
 
 export interface GetScopedPlayerIdsPlayersRequest {}
 export const GetScopedPlayerIdsPlayersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}).pipe(T.Http({"method":"GET","uri":"games/v1/players/me/scopedIds","baseUrl":"https://games.googleapis.com/"})),
-).annotate({ identifier: "GetScopedPlayerIdsPlayersRequest" }) as any as S.Schema<GetScopedPlayerIdsPlayersRequest>;
+  S.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      uri: "games/v1/players/me/scopedIds",
+      baseUrl: "https://games.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetScopedPlayerIdsPlayersRequest",
+}) as any as S.Schema<GetScopedPlayerIdsPlayersRequest>;
 
 /** Scoped player identifiers. */
 export interface ScopedPlayerIds {
@@ -721,13 +868,19 @@ export interface ScopedPlayerIds {
   developerPlayerKey?: string;
 }
 export const ScopedPlayerIds = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "gamePlayerId": S.optional(S.String),
-  "developerPlayerKey": S.optional(S.String),
-}),
-).annotate({ identifier: "ScopedPlayerIds" }) as any as S.Schema<ScopedPlayerIds>;
+  S.Struct({
+    gamePlayerId: S.optional(S.String),
+    developerPlayerKey: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ScopedPlayerIds",
+}) as any as S.Schema<ScopedPlayerIds>;
 
-export type GetScoresIncludeRankTypeEnum = "ALL" | "PUBLIC" | "SOCIAL" | "FRIENDS";
+export type GetScoresIncludeRankTypeEnum =
+  | "ALL"
+  | "PUBLIC"
+  | "SOCIAL"
+  | "FRIENDS";
 export const GetScoresIncludeRankTypeEnum = /*@__PURE__*/ S.String;
 
 export type GetScoresTimeSpanEnum = "ALL" | "ALL_TIME" | "WEEKLY" | "DAILY";
@@ -750,16 +903,24 @@ export interface GetScoresRequest {
   pageToken?: string;
 }
 export const GetScoresRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "language": S.optional(S.String.pipe(T.Query())),
-  "includeRankType": S.optional(GetScoresIncludeRankTypeEnum.pipe(T.Query())),
-  "playerId": S.String.pipe(T.Label()),
-  "timeSpan": GetScoresTimeSpanEnum.pipe(T.Label()),
-  "leaderboardId": S.String.pipe(T.Label()),
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"games/v1/players/{playerId}/leaderboards/{leaderboardId}/scores/{timeSpan}","baseUrl":"https://games.googleapis.com/"})),
-).annotate({ identifier: "GetScoresRequest" }) as any as S.Schema<GetScoresRequest>;
+  S.Struct({
+    language: S.optional(S.String.pipe(T.Query())),
+    includeRankType: S.optional(GetScoresIncludeRankTypeEnum.pipe(T.Query())),
+    playerId: S.String.pipe(T.Label()),
+    timeSpan: GetScoresTimeSpanEnum.pipe(T.Label()),
+    leaderboardId: S.String.pipe(T.Label()),
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "games/v1/players/{playerId}/leaderboards/{leaderboardId}/scores/{timeSpan}",
+      baseUrl: "https://games.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetScoresRequest",
+}) as any as S.Schema<GetScoresRequest>;
 
 /** A score rank in a leaderboard. */
 export interface LeaderboardScoreRank {
@@ -775,16 +936,21 @@ export interface LeaderboardScoreRank {
   formattedNumScores?: string;
 }
 export const LeaderboardScoreRank = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "formattedRank": S.optional(S.String),
-  "rank": S.optional(S.String),
-  "numScores": S.optional(S.String),
-  "formattedNumScores": S.optional(S.String),
-}),
-).annotate({ identifier: "LeaderboardScoreRank" }) as any as S.Schema<LeaderboardScoreRank>;
+  S.Struct({
+    kind: S.optional(S.String),
+    formattedRank: S.optional(S.String),
+    rank: S.optional(S.String),
+    numScores: S.optional(S.String),
+    formattedNumScores: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "LeaderboardScoreRank",
+}) as any as S.Schema<LeaderboardScoreRank>;
 
-export type PlayerLeaderboardScoreTimeSpanEnum = "ALL_TIME" | "WEEKLY" | "DAILY";
+export type PlayerLeaderboardScoreTimeSpanEnum =
+  | "ALL_TIME"
+  | "WEEKLY"
+  | "DAILY";
 export const PlayerLeaderboardScoreTimeSpanEnum = /*@__PURE__*/ S.String;
 
 /** A player leaderboard score object. */
@@ -811,22 +977,26 @@ export interface PlayerLeaderboardScore {
   timeSpan?: PlayerLeaderboardScoreTimeSpanEnum;
 }
 export const PlayerLeaderboardScore = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "socialRank": S.optional(LeaderboardScoreRank),
-  "friendsRank": S.optional(LeaderboardScoreRank),
-  "writeTimestamp": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "publicRank": S.optional(LeaderboardScoreRank),
-  "leaderboard_id": S.optional(S.String),
-  "scoreTag": S.optional(S.String),
-  "scoreString": S.optional(S.String),
-  "scoreValue": S.optional(S.String),
-  "timeSpan": S.optional(PlayerLeaderboardScoreTimeSpanEnum),
-}),
-).annotate({ identifier: "PlayerLeaderboardScore" }) as any as S.Schema<PlayerLeaderboardScore>;
+  S.Struct({
+    socialRank: S.optional(LeaderboardScoreRank),
+    friendsRank: S.optional(LeaderboardScoreRank),
+    writeTimestamp: S.optional(S.String),
+    kind: S.optional(S.String),
+    publicRank: S.optional(LeaderboardScoreRank),
+    leaderboard_id: S.optional(S.String),
+    scoreTag: S.optional(S.String),
+    scoreString: S.optional(S.String),
+    scoreValue: S.optional(S.String),
+    timeSpan: S.optional(PlayerLeaderboardScoreTimeSpanEnum),
+  }),
+).annotate({
+  identifier: "PlayerLeaderboardScore",
+}) as any as S.Schema<PlayerLeaderboardScore>;
 
 export type PlayerLeaderboardScoreList = ReadonlyArray<PlayerLeaderboardScore>;
-export const PlayerLeaderboardScoreList = /*@__PURE__*/ S.Array(PlayerLeaderboardScore) as any as S.Schema<PlayerLeaderboardScoreList>;
+export const PlayerLeaderboardScoreList = /*@__PURE__*/ S.Array(
+  PlayerLeaderboardScore,
+) as any as S.Schema<PlayerLeaderboardScoreList>;
 
 /** A list of player leaderboard scores. */
 export interface PlayerLeaderboardScoreListResponse {
@@ -840,13 +1010,15 @@ export interface PlayerLeaderboardScoreListResponse {
   kind?: string;
 }
 export const PlayerLeaderboardScoreListResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "items": PlayerLeaderboardScoreList,
-  "player": S.optional(Player),
-  "kind": S.optional(S.String),
-}),
-).annotate({ identifier: "PlayerLeaderboardScoreListResponse" }) as any as S.Schema<PlayerLeaderboardScoreListResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    items: PlayerLeaderboardScoreList,
+    player: S.optional(Player),
+    kind: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PlayerLeaderboardScoreListResponse",
+}) as any as S.Schema<PlayerLeaderboardScoreListResponse>;
 
 export interface GetSnapshotsRequest {
   /** The preferred language to use for strings returned by this method. */
@@ -855,11 +1027,19 @@ export interface GetSnapshotsRequest {
   snapshotId: string;
 }
 export const GetSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "language": S.optional(S.String.pipe(T.Query())),
-  "snapshotId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"games/v1/snapshots/{snapshotId}","baseUrl":"https://games.googleapis.com/"})),
-).annotate({ identifier: "GetSnapshotsRequest" }) as any as S.Schema<GetSnapshotsRequest>;
+  S.Struct({
+    language: S.optional(S.String.pipe(T.Query())),
+    snapshotId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "games/v1/snapshots/{snapshotId}",
+      baseUrl: "https://games.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetSnapshotsRequest",
+}) as any as S.Schema<GetSnapshotsRequest>;
 
 /** An image of a snapshot. */
 export interface SnapshotImage {
@@ -875,13 +1055,13 @@ export interface SnapshotImage {
   width?: number;
 }
 export const SnapshotImage = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "url": S.optional(S.String),
-  "height": S.optional(S.Number),
-  "kind": S.optional(S.String),
-  "mime_type": S.optional(S.String),
-  "width": S.optional(S.Number),
-}),
+  S.Struct({
+    url: S.optional(S.String),
+    height: S.optional(S.Number),
+    kind: S.optional(S.String),
+    mime_type: S.optional(S.String),
+    width: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "SnapshotImage" }) as any as S.Schema<SnapshotImage>;
 
 export type SnapshotTypeEnum = "SAVE_GAME";
@@ -913,25 +1093,33 @@ export interface Snapshot {
   progressValue?: string;
 }
 export const Snapshot = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "coverImage": S.optional(SnapshotImage),
-  "driveId": S.optional(S.String),
-  "id": S.optional(S.String),
-  "lastModifiedMillis": S.optional(S.String),
-  "uniqueName": S.optional(S.String),
-  "type": S.optional(SnapshotTypeEnum),
-  "title": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "description": S.optional(S.String),
-  "durationMillis": S.optional(S.String),
-  "progressValue": S.optional(S.String),
-}),
+  S.Struct({
+    coverImage: S.optional(SnapshotImage),
+    driveId: S.optional(S.String),
+    id: S.optional(S.String),
+    lastModifiedMillis: S.optional(S.String),
+    uniqueName: S.optional(S.String),
+    type: S.optional(SnapshotTypeEnum),
+    title: S.optional(S.String),
+    kind: S.optional(S.String),
+    description: S.optional(S.String),
+    durationMillis: S.optional(S.String),
+    progressValue: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Snapshot" }) as any as S.Schema<Snapshot>;
 
 export interface GetStatsRequest {}
 export const GetStatsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}).pipe(T.Http({"method":"GET","uri":"games/v1/stats","baseUrl":"https://games.googleapis.com/"})),
-).annotate({ identifier: "GetStatsRequest" }) as any as S.Schema<GetStatsRequest>;
+  S.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      uri: "games/v1/stats",
+      baseUrl: "https://games.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetStatsRequest",
+}) as any as S.Schema<GetStatsRequest>;
 
 /** A third party stats resource. */
 export interface StatsResponse {
@@ -959,19 +1147,19 @@ export interface StatsResponse {
   kind?: string;
 }
 export const StatsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "churn_probability": S.optional(S.Number),
-  "spend_percentile": S.optional(S.Number),
-  "num_purchases": S.optional(S.Number),
-  "num_sessions_percentile": S.optional(S.Number),
-  "avg_session_length_minutes": S.optional(S.Number),
-  "days_since_last_played": S.optional(S.Number),
-  "spend_probability": S.optional(S.Number),
-  "num_sessions": S.optional(S.Number),
-  "high_spender_probability": S.optional(S.Number),
-  "total_spend_next_28_days": S.optional(S.Number),
-  "kind": S.optional(S.String),
-}),
+  S.Struct({
+    churn_probability: S.optional(S.Number),
+    spend_percentile: S.optional(S.Number),
+    num_purchases: S.optional(S.Number),
+    num_sessions_percentile: S.optional(S.Number),
+    avg_session_length_minutes: S.optional(S.Number),
+    days_since_last_played: S.optional(S.Number),
+    spend_probability: S.optional(S.Number),
+    num_sessions: S.optional(S.Number),
+    high_spender_probability: S.optional(S.Number),
+    total_spend_next_28_days: S.optional(S.Number),
+    kind: S.optional(S.String),
+  }),
 ).annotate({ identifier: "StatsResponse" }) as any as S.Schema<StatsResponse>;
 
 export interface IncrementAchievementsRequest {
@@ -983,12 +1171,20 @@ export interface IncrementAchievementsRequest {
   achievementId: string;
 }
 export const IncrementAchievementsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "stepsToIncrement": S.Number.pipe(T.Query()),
-  "achievementId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"POST","uri":"games/v1/achievements/{achievementId}/increment","baseUrl":"https://games.googleapis.com/"})),
-).annotate({ identifier: "IncrementAchievementsRequest" }) as any as S.Schema<IncrementAchievementsRequest>;
+  S.Struct({
+    requestId: S.optional(S.String.pipe(T.Query())),
+    stepsToIncrement: S.Number.pipe(T.Query()),
+    achievementId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "games/v1/achievements/{achievementId}/increment",
+      baseUrl: "https://games.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "IncrementAchievementsRequest",
+}) as any as S.Schema<IncrementAchievementsRequest>;
 
 /** An achievement increment response */
 export interface AchievementIncrementResponse {
@@ -1000,46 +1196,67 @@ export interface AchievementIncrementResponse {
   kind?: string;
 }
 export const AchievementIncrementResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "currentSteps": S.optional(S.Number),
-  "newlyUnlocked": S.optional(S.Boolean),
-  "kind": S.optional(S.String),
-}),
-).annotate({ identifier: "AchievementIncrementResponse" }) as any as S.Schema<AchievementIncrementResponse>;
+  S.Struct({
+    currentSteps: S.optional(S.Number),
+    newlyUnlocked: S.optional(S.Boolean),
+    kind: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AchievementIncrementResponse",
+}) as any as S.Schema<AchievementIncrementResponse>;
 
 export interface LastTokenFromAllDeveloperGamesRecallRequest {
   /** Required. Opaque server-generated string that encodes all the necessary information to identify the PGS player / Google user and application. */
   sessionId: string;
 }
-export const LastTokenFromAllDeveloperGamesRecallRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sessionId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"games/v1/recall/developerGamesLastPlayerToken/{sessionId}","baseUrl":"https://games.googleapis.com/"})),
-).annotate({ identifier: "LastTokenFromAllDeveloperGamesRecallRequest" }) as any as S.Schema<LastTokenFromAllDeveloperGamesRecallRequest>;
+export const LastTokenFromAllDeveloperGamesRecallRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      sessionId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "games/v1/recall/developerGamesLastPlayerToken/{sessionId}",
+        baseUrl: "https://games.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "LastTokenFromAllDeveloperGamesRecallRequest",
+  }) as any as S.Schema<LastTokenFromAllDeveloperGamesRecallRequest>;
 
 /** Recall token data returned from for the RetrieveDeveloperGamesLastPlayerToken RPC */
 export interface RetrieveDeveloperGamesLastPlayerTokenResponse {
   /** The recall token associated with the requested PGS Player principal. It can be unset if there is no recall token associated with the requested principal. */
   gamePlayerToken?: GamePlayerToken;
 }
-export const RetrieveDeveloperGamesLastPlayerTokenResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "gamePlayerToken": S.optional(GamePlayerToken),
-}),
-).annotate({ identifier: "RetrieveDeveloperGamesLastPlayerTokenResponse" }) as any as S.Schema<RetrieveDeveloperGamesLastPlayerTokenResponse>;
+export const RetrieveDeveloperGamesLastPlayerTokenResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      gamePlayerToken: S.optional(GamePlayerToken),
+    }),
+  ).annotate({
+    identifier: "RetrieveDeveloperGamesLastPlayerTokenResponse",
+  }) as any as S.Schema<RetrieveDeveloperGamesLastPlayerTokenResponse>;
 
-export type LinkPersonaRequestCardinalityConstraintEnum = "ONE_PERSONA_TO_ONE_PLAYER";
-export const LinkPersonaRequestCardinalityConstraintEnum = /*@__PURE__*/ S.String;
+export type LinkPersonaRequestCardinalityConstraintEnum =
+  "ONE_PERSONA_TO_ONE_PLAYER";
+export const LinkPersonaRequestCardinalityConstraintEnum =
+  /*@__PURE__*/ S.String;
 
-export type LinkPersonaRequestConflictingLinksResolutionPolicyEnum = "KEEP_EXISTING_LINKS" | "CREATE_NEW_LINK";
-export const LinkPersonaRequestConflictingLinksResolutionPolicyEnum = /*@__PURE__*/ S.String;
+export type LinkPersonaRequestConflictingLinksResolutionPolicyEnum =
+  | "KEEP_EXISTING_LINKS"
+  | "CREATE_NEW_LINK";
+export const LinkPersonaRequestConflictingLinksResolutionPolicyEnum =
+  /*@__PURE__*/ S.String;
 
 /** Request to link an in-game account with a PGS principal (encoded in the session id). */
 export interface LinkPersonaRequest {
   /** Required. Value of the token to create. Opaque to Play Games and assumed to be non-stable (encrypted with key rotation). */
   token?: string;
   /** Required. Cardinality constraint to observe when linking a persona to a player in the scope of a game. */
-  cardinalityConstraint?: LinkPersonaRequestCardinalityConstraintEnum | (string & {});
+  cardinalityConstraint?:
+    | LinkPersonaRequestCardinalityConstraintEnum
+    | (string & {});
   /** Required. Opaque server-generated string that encodes all the necessary information to identify the PGS player / Google user and application. */
   sessionId?: string;
   /** Required. Stable identifier of the in-game account. Please refrain from re-using the same persona for different games. */
@@ -1047,33 +1264,51 @@ export interface LinkPersonaRequest {
   /** Input only. Optional time-to-live. */
   ttl?: string;
   /** Required. Resolution policy to apply when the linking of a persona to a player would result in violating the specified cardinality constraint. */
-  conflictingLinksResolutionPolicy?: LinkPersonaRequestConflictingLinksResolutionPolicyEnum | (string & {});
+  conflictingLinksResolutionPolicy?:
+    | LinkPersonaRequestConflictingLinksResolutionPolicyEnum
+    | (string & {});
   /** Input only. Optional expiration time. */
   expireTime?: string;
 }
 export const LinkPersonaRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "token": S.optional(S.String),
-  "cardinalityConstraint": S.optional(LinkPersonaRequestCardinalityConstraintEnum),
-  "sessionId": S.optional(S.String),
-  "persona": S.optional(S.String),
-  "ttl": S.optional(S.String),
-  "conflictingLinksResolutionPolicy": S.optional(LinkPersonaRequestConflictingLinksResolutionPolicyEnum),
-  "expireTime": S.optional(S.String),
-}),
-).annotate({ identifier: "LinkPersonaRequest" }) as any as S.Schema<LinkPersonaRequest>;
+  S.Struct({
+    token: S.optional(S.String),
+    cardinalityConstraint: S.optional(
+      LinkPersonaRequestCardinalityConstraintEnum,
+    ),
+    sessionId: S.optional(S.String),
+    persona: S.optional(S.String),
+    ttl: S.optional(S.String),
+    conflictingLinksResolutionPolicy: S.optional(
+      LinkPersonaRequestConflictingLinksResolutionPolicyEnum,
+    ),
+    expireTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "LinkPersonaRequest",
+}) as any as S.Schema<LinkPersonaRequest>;
 
 export interface LinkPersonaRecallRequest {
   /** Request body */
   body?: LinkPersonaRequest;
 }
 export const LinkPersonaRecallRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(LinkPersonaRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"games/v1/recall:linkPersona","baseUrl":"https://games.googleapis.com/"})),
-).annotate({ identifier: "LinkPersonaRecallRequest" }) as any as S.Schema<LinkPersonaRecallRequest>;
+  S.Struct({
+    body: S.optional(LinkPersonaRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "games/v1/recall:linkPersona",
+      baseUrl: "https://games.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "LinkPersonaRecallRequest",
+}) as any as S.Schema<LinkPersonaRecallRequest>;
 
-export type LinkPersonaResponseStateEnum = "LINK_CREATED" | "PERSONA_OR_PLAYER_ALREADY_LINKED";
+export type LinkPersonaResponseStateEnum =
+  | "LINK_CREATED"
+  | "PERSONA_OR_PLAYER_ALREADY_LINKED";
 export const LinkPersonaResponseStateEnum = /*@__PURE__*/ S.String;
 
 /** Outcome of a persona linking attempt. */
@@ -1082,10 +1317,12 @@ export interface LinkPersonaResponse {
   state?: LinkPersonaResponseStateEnum;
 }
 export const LinkPersonaResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "state": S.optional(LinkPersonaResponseStateEnum),
-}),
-).annotate({ identifier: "LinkPersonaResponse" }) as any as S.Schema<LinkPersonaResponse>;
+  S.Struct({
+    state: S.optional(LinkPersonaResponseStateEnum),
+  }),
+).annotate({
+  identifier: "LinkPersonaResponse",
+}) as any as S.Schema<LinkPersonaResponse>;
 
 export interface ListAchievementDefinitionsRequest {
   /** The token returned by the previous request. */
@@ -1096,20 +1333,37 @@ export interface ListAchievementDefinitionsRequest {
   maxResults?: number;
 }
 export const ListAchievementDefinitionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "language": S.optional(S.String.pipe(T.Query())),
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"games/v1/achievements","baseUrl":"https://games.googleapis.com/"})),
-).annotate({ identifier: "ListAchievementDefinitionsRequest" }) as any as S.Schema<ListAchievementDefinitionsRequest>;
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    language: S.optional(S.String.pipe(T.Query())),
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "games/v1/achievements",
+      baseUrl: "https://games.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListAchievementDefinitionsRequest",
+}) as any as S.Schema<ListAchievementDefinitionsRequest>;
 
-export type AchievementDefinitionAchievementTypeEnum = "STANDARD" | "INCREMENTAL";
+export type AchievementDefinitionAchievementTypeEnum =
+  | "STANDARD"
+  | "INCREMENTAL";
 export const AchievementDefinitionAchievementTypeEnum = /*@__PURE__*/ S.String;
 
-export type AchievementDefinitionAchievementLifecycleStateEnum = "ACHIEVEMENT_LIFECYCLE_STATE_UNSPECIFIED" | "ACHIEVEMENT_LIFECYCLE_STATE_ACTIVE" | "ACHIEVEMENT_LIFECYCLE_STATE_ARCHIVED";
-export const AchievementDefinitionAchievementLifecycleStateEnum = /*@__PURE__*/ S.String;
+export type AchievementDefinitionAchievementLifecycleStateEnum =
+  | "ACHIEVEMENT_LIFECYCLE_STATE_UNSPECIFIED"
+  | "ACHIEVEMENT_LIFECYCLE_STATE_ACTIVE"
+  | "ACHIEVEMENT_LIFECYCLE_STATE_ARCHIVED";
+export const AchievementDefinitionAchievementLifecycleStateEnum =
+  /*@__PURE__*/ S.String;
 
-export type AchievementDefinitionInitialStateEnum = "HIDDEN" | "REVEALED" | "UNLOCKED";
+export type AchievementDefinitionInitialStateEnum =
+  | "HIDDEN"
+  | "REVEALED"
+  | "UNLOCKED";
 export const AchievementDefinitionInitialStateEnum = /*@__PURE__*/ S.String;
 
 /** An achievement definition object. */
@@ -1144,26 +1398,32 @@ export interface AchievementDefinition {
   initialState?: AchievementDefinitionInitialStateEnum;
 }
 export const AchievementDefinition = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "description": S.optional(S.String),
-  "achievementType": S.optional(AchievementDefinitionAchievementTypeEnum),
-  "isUnlockedIconUrlDefault": S.optional(S.Boolean),
-  "id": S.optional(S.String),
-  "totalSteps": S.optional(S.Number),
-  "isRevealedIconUrlDefault": S.optional(S.Boolean),
-  "name": S.optional(S.String),
-  "experiencePoints": S.optional(S.String),
-  "achievementLifecycleState": S.optional(AchievementDefinitionAchievementLifecycleStateEnum),
-  "formattedTotalSteps": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "unlockedIconUrl": S.optional(S.String),
-  "revealedIconUrl": S.optional(S.String),
-  "initialState": S.optional(AchievementDefinitionInitialStateEnum),
-}),
-).annotate({ identifier: "AchievementDefinition" }) as any as S.Schema<AchievementDefinition>;
+  S.Struct({
+    description: S.optional(S.String),
+    achievementType: S.optional(AchievementDefinitionAchievementTypeEnum),
+    isUnlockedIconUrlDefault: S.optional(S.Boolean),
+    id: S.optional(S.String),
+    totalSteps: S.optional(S.Number),
+    isRevealedIconUrlDefault: S.optional(S.Boolean),
+    name: S.optional(S.String),
+    experiencePoints: S.optional(S.String),
+    achievementLifecycleState: S.optional(
+      AchievementDefinitionAchievementLifecycleStateEnum,
+    ),
+    formattedTotalSteps: S.optional(S.String),
+    kind: S.optional(S.String),
+    unlockedIconUrl: S.optional(S.String),
+    revealedIconUrl: S.optional(S.String),
+    initialState: S.optional(AchievementDefinitionInitialStateEnum),
+  }),
+).annotate({
+  identifier: "AchievementDefinition",
+}) as any as S.Schema<AchievementDefinition>;
 
 export type AchievementDefinitionList = ReadonlyArray<AchievementDefinition>;
-export const AchievementDefinitionList = /*@__PURE__*/ S.Array(AchievementDefinition) as any as S.Schema<AchievementDefinitionList>;
+export const AchievementDefinitionList = /*@__PURE__*/ S.Array(
+  AchievementDefinition,
+) as any as S.Schema<AchievementDefinitionList>;
 
 /** A list of achievement definition objects. */
 export interface AchievementDefinitionsListResponse {
@@ -1175,14 +1435,20 @@ export interface AchievementDefinitionsListResponse {
   kind?: string;
 }
 export const AchievementDefinitionsListResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "items": AchievementDefinitionList,
-  "kind": S.optional(S.String),
-}),
-).annotate({ identifier: "AchievementDefinitionsListResponse" }) as any as S.Schema<AchievementDefinitionsListResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    items: AchievementDefinitionList,
+    kind: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AchievementDefinitionsListResponse",
+}) as any as S.Schema<AchievementDefinitionsListResponse>;
 
-export type ListAchievementsStateEnum = "ALL" | "HIDDEN" | "REVEALED" | "UNLOCKED";
+export type ListAchievementsStateEnum =
+  | "ALL"
+  | "HIDDEN"
+  | "REVEALED"
+  | "UNLOCKED";
 export const ListAchievementsStateEnum = /*@__PURE__*/ S.String;
 
 export interface ListAchievementsRequest {
@@ -1198,16 +1464,27 @@ export interface ListAchievementsRequest {
   playerId: string;
 }
 export const ListAchievementsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "state": S.optional(ListAchievementsStateEnum.pipe(T.Query())),
-  "language": S.optional(S.String.pipe(T.Query())),
-  "playerId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"games/v1/players/{playerId}/achievements","baseUrl":"https://games.googleapis.com/"})),
-).annotate({ identifier: "ListAchievementsRequest" }) as any as S.Schema<ListAchievementsRequest>;
+  S.Struct({
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    state: S.optional(ListAchievementsStateEnum.pipe(T.Query())),
+    language: S.optional(S.String.pipe(T.Query())),
+    playerId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "games/v1/players/{playerId}/achievements",
+      baseUrl: "https://games.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListAchievementsRequest",
+}) as any as S.Schema<ListAchievementsRequest>;
 
-export type PlayerAchievementAchievementStateEnum = "HIDDEN" | "REVEALED" | "UNLOCKED";
+export type PlayerAchievementAchievementStateEnum =
+  | "HIDDEN"
+  | "REVEALED"
+  | "UNLOCKED";
 export const PlayerAchievementAchievementStateEnum = /*@__PURE__*/ S.String;
 
 /** An achievement object. */
@@ -1228,19 +1505,23 @@ export interface PlayerAchievement {
   id?: string;
 }
 export const PlayerAchievement = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "achievementState": S.optional(PlayerAchievementAchievementStateEnum),
-  "formattedCurrentStepsString": S.optional(S.String),
-  "currentSteps": S.optional(S.Number),
-  "lastUpdatedTimestamp": S.optional(S.String),
-  "experiencePoints": S.optional(S.String),
-  "id": S.optional(S.String),
-}),
-).annotate({ identifier: "PlayerAchievement" }) as any as S.Schema<PlayerAchievement>;
+  S.Struct({
+    kind: S.optional(S.String),
+    achievementState: S.optional(PlayerAchievementAchievementStateEnum),
+    formattedCurrentStepsString: S.optional(S.String),
+    currentSteps: S.optional(S.Number),
+    lastUpdatedTimestamp: S.optional(S.String),
+    experiencePoints: S.optional(S.String),
+    id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PlayerAchievement",
+}) as any as S.Schema<PlayerAchievement>;
 
 export type PlayerAchievementList = ReadonlyArray<PlayerAchievement>;
-export const PlayerAchievementList = /*@__PURE__*/ S.Array(PlayerAchievement) as any as S.Schema<PlayerAchievementList>;
+export const PlayerAchievementList = /*@__PURE__*/ S.Array(
+  PlayerAchievement,
+) as any as S.Schema<PlayerAchievementList>;
 
 /** A list of achievement objects. */
 export interface PlayerAchievementListResponse {
@@ -1252,12 +1533,14 @@ export interface PlayerAchievementListResponse {
   items: PlayerAchievementList;
 }
 export const PlayerAchievementListResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "nextPageToken": S.optional(S.String),
-  "items": PlayerAchievementList,
-}),
-).annotate({ identifier: "PlayerAchievementListResponse" }) as any as S.Schema<PlayerAchievementListResponse>;
+  S.Struct({
+    kind: S.optional(S.String),
+    nextPageToken: S.optional(S.String),
+    items: PlayerAchievementList,
+  }),
+).annotate({
+  identifier: "PlayerAchievementListResponse",
+}) as any as S.Schema<PlayerAchievementListResponse>;
 
 export interface ListByPlayerEventsRequest {
   /** The token returned by the previous request. */
@@ -1268,12 +1551,20 @@ export interface ListByPlayerEventsRequest {
   maxResults?: number;
 }
 export const ListByPlayerEventsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "language": S.optional(S.String.pipe(T.Query())),
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"games/v1/events","baseUrl":"https://games.googleapis.com/"})),
-).annotate({ identifier: "ListByPlayerEventsRequest" }) as any as S.Schema<ListByPlayerEventsRequest>;
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    language: S.optional(S.String.pipe(T.Query())),
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "games/v1/events",
+      baseUrl: "https://games.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListByPlayerEventsRequest",
+}) as any as S.Schema<ListByPlayerEventsRequest>;
 
 /** An event status resource. */
 export interface PlayerEvent {
@@ -1289,17 +1580,19 @@ export interface PlayerEvent {
   definitionId?: string;
 }
 export const PlayerEvent = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "formattedNumEvents": S.optional(S.String),
-  "playerId": S.optional(S.String),
-  "numEvents": S.optional(S.String),
-  "definitionId": S.optional(S.String),
-}),
+  S.Struct({
+    kind: S.optional(S.String),
+    formattedNumEvents: S.optional(S.String),
+    playerId: S.optional(S.String),
+    numEvents: S.optional(S.String),
+    definitionId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "PlayerEvent" }) as any as S.Schema<PlayerEvent>;
 
 export type PlayerEventList = ReadonlyArray<PlayerEvent>;
-export const PlayerEventList = /*@__PURE__*/ S.Array(PlayerEvent) as any as S.Schema<PlayerEventList>;
+export const PlayerEventList = /*@__PURE__*/ S.Array(
+  PlayerEvent,
+) as any as S.Schema<PlayerEventList>;
 
 /** A ListByPlayer response. */
 export interface PlayerEventListResponse {
@@ -1311,15 +1604,18 @@ export interface PlayerEventListResponse {
   items: PlayerEventList;
 }
 export const PlayerEventListResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "nextPageToken": S.optional(S.String),
-  "items": PlayerEventList,
-}),
-).annotate({ identifier: "PlayerEventListResponse" }) as any as S.Schema<PlayerEventListResponse>;
+  S.Struct({
+    kind: S.optional(S.String),
+    nextPageToken: S.optional(S.String),
+    items: PlayerEventList,
+  }),
+).annotate({
+  identifier: "PlayerEventListResponse",
+}) as any as S.Schema<PlayerEventListResponse>;
 
 export type ListCategoriesByPlayerMetagameCollectionEnum = "ALL";
-export const ListCategoriesByPlayerMetagameCollectionEnum = /*@__PURE__*/ S.String;
+export const ListCategoriesByPlayerMetagameCollectionEnum =
+  /*@__PURE__*/ S.String;
 
 export interface ListCategoriesByPlayerMetagameRequest {
   /** The token returned by the previous request. */
@@ -1333,15 +1629,24 @@ export interface ListCategoriesByPlayerMetagameRequest {
   /** The preferred language to use for strings returned by this method. */
   language?: string;
 }
-export const ListCategoriesByPlayerMetagameRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-  "collection": ListCategoriesByPlayerMetagameCollectionEnum.pipe(T.Label()),
-  "playerId": S.String.pipe(T.Label()),
-  "language": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"games/v1/players/{playerId}/categories/{collection}","baseUrl":"https://games.googleapis.com/"})),
-).annotate({ identifier: "ListCategoriesByPlayerMetagameRequest" }) as any as S.Schema<ListCategoriesByPlayerMetagameRequest>;
+export const ListCategoriesByPlayerMetagameRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      maxResults: S.optional(S.Number.pipe(T.Query())),
+      collection: ListCategoriesByPlayerMetagameCollectionEnum.pipe(T.Label()),
+      playerId: S.String.pipe(T.Label()),
+      language: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "games/v1/players/{playerId}/categories/{collection}",
+        baseUrl: "https://games.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListCategoriesByPlayerMetagameRequest",
+}) as any as S.Schema<ListCategoriesByPlayerMetagameRequest>;
 
 /** Data related to individual game categories. */
 export interface Category {
@@ -1353,15 +1658,17 @@ export interface Category {
   experiencePoints?: string;
 }
 export const Category = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "category": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "experiencePoints": S.optional(S.String),
-}),
+  S.Struct({
+    category: S.optional(S.String),
+    kind: S.optional(S.String),
+    experiencePoints: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Category" }) as any as S.Schema<Category>;
 
 export type CategoryList = ReadonlyArray<Category>;
-export const CategoryList = /*@__PURE__*/ S.Array(Category) as any as S.Schema<CategoryList>;
+export const CategoryList = /*@__PURE__*/ S.Array(
+  Category,
+) as any as S.Schema<CategoryList>;
 
 /** A third party list metagame categories response. */
 export interface CategoryListResponse {
@@ -1373,12 +1680,14 @@ export interface CategoryListResponse {
   items: CategoryList;
 }
 export const CategoryListResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "nextPageToken": S.optional(S.String),
-  "items": CategoryList,
-}),
-).annotate({ identifier: "CategoryListResponse" }) as any as S.Schema<CategoryListResponse>;
+  S.Struct({
+    kind: S.optional(S.String),
+    nextPageToken: S.optional(S.String),
+    items: CategoryList,
+  }),
+).annotate({
+  identifier: "CategoryListResponse",
+}) as any as S.Schema<CategoryListResponse>;
 
 export interface ListDefinitionsEventsRequest {
   /** The preferred language to use for strings returned by this method. */
@@ -1389,12 +1698,20 @@ export interface ListDefinitionsEventsRequest {
   pageToken?: string;
 }
 export const ListDefinitionsEventsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "language": S.optional(S.String.pipe(T.Query())),
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"games/v1/eventDefinitions","baseUrl":"https://games.googleapis.com/"})),
-).annotate({ identifier: "ListDefinitionsEventsRequest" }) as any as S.Schema<ListDefinitionsEventsRequest>;
+  S.Struct({
+    language: S.optional(S.String.pipe(T.Query())),
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "games/v1/eventDefinitions",
+      baseUrl: "https://games.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListDefinitionsEventsRequest",
+}) as any as S.Schema<ListDefinitionsEventsRequest>;
 
 export type EventDefinitionVisibilityEnum = "REVEALED" | "HIDDEN";
 export const EventDefinitionVisibilityEnum = /*@__PURE__*/ S.String;
@@ -1407,14 +1724,16 @@ export interface EventChild {
   kind?: string;
 }
 export const EventChild = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "childId": S.optional(S.String),
-  "kind": S.optional(S.String),
-}),
+  S.Struct({
+    childId: S.optional(S.String),
+    kind: S.optional(S.String),
+  }),
 ).annotate({ identifier: "EventChild" }) as any as S.Schema<EventChild>;
 
 export type EventChildList = ReadonlyArray<EventChild>;
-export const EventChildList = /*@__PURE__*/ S.Array(EventChild) as any as S.Schema<EventChildList>;
+export const EventChildList = /*@__PURE__*/ S.Array(
+  EventChild,
+) as any as S.Schema<EventChildList>;
 
 /** An event definition resource. */
 export interface EventDefinition {
@@ -1436,20 +1755,24 @@ export interface EventDefinition {
   isDefaultImageUrl?: boolean;
 }
 export const EventDefinition = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "description": S.optional(S.String),
-  "visibility": S.optional(EventDefinitionVisibilityEnum),
-  "childEvents": S.optional(EventChildList),
-  "kind": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "imageUrl": S.optional(S.String),
-  "id": S.optional(S.String),
-  "isDefaultImageUrl": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "EventDefinition" }) as any as S.Schema<EventDefinition>;
+  S.Struct({
+    description: S.optional(S.String),
+    visibility: S.optional(EventDefinitionVisibilityEnum),
+    childEvents: S.optional(EventChildList),
+    kind: S.optional(S.String),
+    displayName: S.optional(S.String),
+    imageUrl: S.optional(S.String),
+    id: S.optional(S.String),
+    isDefaultImageUrl: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "EventDefinition",
+}) as any as S.Schema<EventDefinition>;
 
 export type EventDefinitionList = ReadonlyArray<EventDefinition>;
-export const EventDefinitionList = /*@__PURE__*/ S.Array(EventDefinition) as any as S.Schema<EventDefinitionList>;
+export const EventDefinitionList = /*@__PURE__*/ S.Array(
+  EventDefinition,
+) as any as S.Schema<EventDefinitionList>;
 
 /** A ListDefinitions response. */
 export interface EventDefinitionListResponse {
@@ -1461,12 +1784,14 @@ export interface EventDefinitionListResponse {
   kind?: string;
 }
 export const EventDefinitionListResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "items": EventDefinitionList,
-  "kind": S.optional(S.String),
-}),
-).annotate({ identifier: "EventDefinitionListResponse" }) as any as S.Schema<EventDefinitionListResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    items: EventDefinitionList,
+    kind: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EventDefinitionListResponse",
+}) as any as S.Schema<EventDefinitionListResponse>;
 
 export interface ListLeaderboardsRequest {
   /** The token returned by the previous request. */
@@ -1477,15 +1802,25 @@ export interface ListLeaderboardsRequest {
   maxResults?: number;
 }
 export const ListLeaderboardsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "language": S.optional(S.String.pipe(T.Query())),
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"games/v1/leaderboards","baseUrl":"https://games.googleapis.com/"})),
-).annotate({ identifier: "ListLeaderboardsRequest" }) as any as S.Schema<ListLeaderboardsRequest>;
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    language: S.optional(S.String.pipe(T.Query())),
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "games/v1/leaderboards",
+      baseUrl: "https://games.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListLeaderboardsRequest",
+}) as any as S.Schema<ListLeaderboardsRequest>;
 
 export type LeaderboardList = ReadonlyArray<Leaderboard>;
-export const LeaderboardList = /*@__PURE__*/ S.Array(Leaderboard) as any as S.Schema<LeaderboardList>;
+export const LeaderboardList = /*@__PURE__*/ S.Array(
+  Leaderboard,
+) as any as S.Schema<LeaderboardList>;
 
 /** A list of leaderboard objects. */
 export interface LeaderboardListResponse {
@@ -1497,12 +1832,14 @@ export interface LeaderboardListResponse {
   items: LeaderboardList;
 }
 export const LeaderboardListResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "nextPageToken": S.optional(S.String),
-  "items": LeaderboardList,
-}),
-).annotate({ identifier: "LeaderboardListResponse" }) as any as S.Schema<LeaderboardListResponse>;
+  S.Struct({
+    kind: S.optional(S.String),
+    nextPageToken: S.optional(S.String),
+    items: LeaderboardList,
+  }),
+).annotate({
+  identifier: "LeaderboardListResponse",
+}) as any as S.Schema<LeaderboardListResponse>;
 
 export type ListPlayersCollectionEnum = "CONNECTED" | "VISIBLE" | "FRIENDS_ALL";
 export const ListPlayersCollectionEnum = /*@__PURE__*/ S.String;
@@ -1518,16 +1855,26 @@ export interface ListPlayersRequest {
   pageToken?: string;
 }
 export const ListPlayersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "language": S.optional(S.String.pipe(T.Query())),
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-  "collection": ListPlayersCollectionEnum.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"games/v1/players/me/players/{collection}","baseUrl":"https://games.googleapis.com/"})),
-).annotate({ identifier: "ListPlayersRequest" }) as any as S.Schema<ListPlayersRequest>;
+  S.Struct({
+    language: S.optional(S.String.pipe(T.Query())),
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+    collection: ListPlayersCollectionEnum.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "games/v1/players/me/players/{collection}",
+      baseUrl: "https://games.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListPlayersRequest",
+}) as any as S.Schema<ListPlayersRequest>;
 
 export type PlayerList = ReadonlyArray<Player>;
-export const PlayerList = /*@__PURE__*/ S.Array(Player) as any as S.Schema<PlayerList>;
+export const PlayerList = /*@__PURE__*/ S.Array(
+  Player,
+) as any as S.Schema<PlayerList>;
 
 /** A third party player list response. */
 export interface PlayerListResponse {
@@ -1539,12 +1886,14 @@ export interface PlayerListResponse {
   kind?: string;
 }
 export const PlayerListResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "items": PlayerList,
-  "kind": S.optional(S.String),
-}),
-).annotate({ identifier: "PlayerListResponse" }) as any as S.Schema<PlayerListResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    items: PlayerList,
+    kind: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PlayerListResponse",
+}) as any as S.Schema<PlayerListResponse>;
 
 export type ListScoresCollectionEnum = "PUBLIC" | "SOCIAL" | "FRIENDS";
 export const ListScoresCollectionEnum = /*@__PURE__*/ S.String;
@@ -1567,15 +1916,23 @@ export interface ListScoresRequest {
   language?: string;
 }
 export const ListScoresRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "leaderboardId": S.String.pipe(T.Label()),
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-  "collection": ListScoresCollectionEnum.pipe(T.Label()),
-  "timeSpan": ListScoresTimeSpanEnum.pipe(T.Query()),
-  "language": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"games/v1/leaderboards/{leaderboardId}/scores/{collection}","baseUrl":"https://games.googleapis.com/"})),
-).annotate({ identifier: "ListScoresRequest" }) as any as S.Schema<ListScoresRequest>;
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    leaderboardId: S.String.pipe(T.Label()),
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+    collection: ListScoresCollectionEnum.pipe(T.Label()),
+    timeSpan: ListScoresTimeSpanEnum.pipe(T.Query()),
+    language: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "games/v1/leaderboards/{leaderboardId}/scores/{collection}",
+      baseUrl: "https://games.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListScoresRequest",
+}) as any as S.Schema<ListScoresRequest>;
 
 export type LeaderboardEntryTimeSpanEnum = "ALL_TIME" | "WEEKLY" | "DAILY";
 export const LeaderboardEntryTimeSpanEnum = /*@__PURE__*/ S.String;
@@ -1602,21 +1959,25 @@ export interface LeaderboardEntry {
   scoreTag?: string;
 }
 export const LeaderboardEntry = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "formattedScoreRank": S.optional(S.String),
-  "player": S.optional(Player),
-  "scoreRank": S.optional(S.String),
-  "formattedScore": S.optional(S.String),
-  "writeTimestampMillis": S.optional(S.String),
-  "timeSpan": S.optional(LeaderboardEntryTimeSpanEnum),
-  "scoreValue": S.optional(S.String),
-  "scoreTag": S.optional(S.String),
-}),
-).annotate({ identifier: "LeaderboardEntry" }) as any as S.Schema<LeaderboardEntry>;
+  S.Struct({
+    kind: S.optional(S.String),
+    formattedScoreRank: S.optional(S.String),
+    player: S.optional(Player),
+    scoreRank: S.optional(S.String),
+    formattedScore: S.optional(S.String),
+    writeTimestampMillis: S.optional(S.String),
+    timeSpan: S.optional(LeaderboardEntryTimeSpanEnum),
+    scoreValue: S.optional(S.String),
+    scoreTag: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "LeaderboardEntry",
+}) as any as S.Schema<LeaderboardEntry>;
 
 export type LeaderboardEntryList = ReadonlyArray<LeaderboardEntry>;
-export const LeaderboardEntryList = /*@__PURE__*/ S.Array(LeaderboardEntry) as any as S.Schema<LeaderboardEntryList>;
+export const LeaderboardEntryList = /*@__PURE__*/ S.Array(
+  LeaderboardEntry,
+) as any as S.Schema<LeaderboardEntryList>;
 
 /** A ListScores response. */
 export interface LeaderboardScores {
@@ -1634,15 +1995,17 @@ export interface LeaderboardScores {
   playerScore?: LeaderboardEntry;
 }
 export const LeaderboardScores = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "items": LeaderboardEntryList,
-  "kind": S.optional(S.String),
-  "prevPageToken": S.optional(S.String),
-  "numScores": S.optional(S.String),
-  "playerScore": S.optional(LeaderboardEntry),
-}),
-).annotate({ identifier: "LeaderboardScores" }) as any as S.Schema<LeaderboardScores>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    items: LeaderboardEntryList,
+    kind: S.optional(S.String),
+    prevPageToken: S.optional(S.String),
+    numScores: S.optional(S.String),
+    playerScore: S.optional(LeaderboardEntry),
+  }),
+).annotate({
+  identifier: "LeaderboardScores",
+}) as any as S.Schema<LeaderboardScores>;
 
 export interface ListSnapshotsRequest {
   /** The preferred language to use for strings returned by this method. */
@@ -1655,16 +2018,26 @@ export interface ListSnapshotsRequest {
   pageToken?: string;
 }
 export const ListSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "language": S.optional(S.String.pipe(T.Query())),
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-  "playerId": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"games/v1/players/{playerId}/snapshots","baseUrl":"https://games.googleapis.com/"})),
-).annotate({ identifier: "ListSnapshotsRequest" }) as any as S.Schema<ListSnapshotsRequest>;
+  S.Struct({
+    language: S.optional(S.String.pipe(T.Query())),
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+    playerId: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "games/v1/players/{playerId}/snapshots",
+      baseUrl: "https://games.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListSnapshotsRequest",
+}) as any as S.Schema<ListSnapshotsRequest>;
 
 export type SnapshotList = ReadonlyArray<Snapshot>;
-export const SnapshotList = /*@__PURE__*/ S.Array(Snapshot) as any as S.Schema<SnapshotList>;
+export const SnapshotList = /*@__PURE__*/ S.Array(
+  Snapshot,
+) as any as S.Schema<SnapshotList>;
 
 /** A third party list snapshots response. */
 export interface SnapshotListResponse {
@@ -1676,12 +2049,14 @@ export interface SnapshotListResponse {
   kind?: string;
 }
 export const SnapshotListResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "items": SnapshotList,
-  "kind": S.optional(S.String),
-}),
-).annotate({ identifier: "SnapshotListResponse" }) as any as S.Schema<SnapshotListResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    items: SnapshotList,
+    kind: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SnapshotListResponse",
+}) as any as S.Schema<SnapshotListResponse>;
 
 export type ListWindowScoresCollectionEnum = "PUBLIC" | "SOCIAL" | "FRIENDS";
 export const ListWindowScoresCollectionEnum = /*@__PURE__*/ S.String;
@@ -1708,27 +2083,45 @@ export interface ListWindowScoresRequest {
   language?: string;
 }
 export const ListWindowScoresRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "returnTopIfAbsent": S.optional(S.Boolean.pipe(T.Query())),
-  "leaderboardId": S.String.pipe(T.Label()),
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-  "collection": ListWindowScoresCollectionEnum.pipe(T.Label()),
-  "timeSpan": ListWindowScoresTimeSpanEnum.pipe(T.Query()),
-  "resultsAbove": S.optional(S.Number.pipe(T.Query())),
-  "language": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"games/v1/leaderboards/{leaderboardId}/window/{collection}","baseUrl":"https://games.googleapis.com/"})),
-).annotate({ identifier: "ListWindowScoresRequest" }) as any as S.Schema<ListWindowScoresRequest>;
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    returnTopIfAbsent: S.optional(S.Boolean.pipe(T.Query())),
+    leaderboardId: S.String.pipe(T.Label()),
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+    collection: ListWindowScoresCollectionEnum.pipe(T.Label()),
+    timeSpan: ListWindowScoresTimeSpanEnum.pipe(T.Query()),
+    resultsAbove: S.optional(S.Number.pipe(T.Query())),
+    language: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "games/v1/leaderboards/{leaderboardId}/window/{collection}",
+      baseUrl: "https://games.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListWindowScoresRequest",
+}) as any as S.Schema<ListWindowScoresRequest>;
 
 export interface PlayedApplicationsRequest {}
 export const PlayedApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}).pipe(T.Http({"method":"POST","uri":"games/v1/applications/played","baseUrl":"https://games.googleapis.com/"})),
-).annotate({ identifier: "PlayedApplicationsRequest" }) as any as S.Schema<PlayedApplicationsRequest>;
+  S.Struct({}).pipe(
+    T.Http({
+      method: "POST",
+      uri: "games/v1/applications/played",
+      baseUrl: "https://games.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PlayedApplicationsRequest",
+}) as any as S.Schema<PlayedApplicationsRequest>;
 
 export interface PlayedApplicationsResponse {}
 export const PlayedApplicationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "PlayedApplicationsResponse" }) as any as S.Schema<PlayedApplicationsResponse>;
+  S.Struct({}),
+).annotate({
+  identifier: "PlayedApplicationsResponse",
+}) as any as S.Schema<PlayedApplicationsResponse>;
 
 /** An event period update resource. */
 export interface EventUpdateRequest {
@@ -1740,15 +2133,19 @@ export interface EventUpdateRequest {
   updateCount?: string;
 }
 export const EventUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "definitionId": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "updateCount": S.optional(S.String),
-}),
-).annotate({ identifier: "EventUpdateRequest" }) as any as S.Schema<EventUpdateRequest>;
+  S.Struct({
+    definitionId: S.optional(S.String),
+    kind: S.optional(S.String),
+    updateCount: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EventUpdateRequest",
+}) as any as S.Schema<EventUpdateRequest>;
 
 export type EventUpdateRequestList = ReadonlyArray<EventUpdateRequest>;
-export const EventUpdateRequestList = /*@__PURE__*/ S.Array(EventUpdateRequest) as any as S.Schema<EventUpdateRequestList>;
+export const EventUpdateRequestList = /*@__PURE__*/ S.Array(
+  EventUpdateRequest,
+) as any as S.Schema<EventUpdateRequestList>;
 
 /** An event period time range. */
 export interface EventPeriodRange {
@@ -1760,12 +2157,14 @@ export interface EventPeriodRange {
   periodEndMillis?: string;
 }
 export const EventPeriodRange = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "periodStartMillis": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "periodEndMillis": S.optional(S.String),
-}),
-).annotate({ identifier: "EventPeriodRange" }) as any as S.Schema<EventPeriodRange>;
+  S.Struct({
+    periodStartMillis: S.optional(S.String),
+    kind: S.optional(S.String),
+    periodEndMillis: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EventPeriodRange",
+}) as any as S.Schema<EventPeriodRange>;
 
 /** An event period update resource. */
 export interface EventPeriodUpdate {
@@ -1777,15 +2176,19 @@ export interface EventPeriodUpdate {
   timePeriod?: EventPeriodRange;
 }
 export const EventPeriodUpdate = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updates": S.optional(EventUpdateRequestList),
-  "kind": S.optional(S.String),
-  "timePeriod": S.optional(EventPeriodRange),
-}),
-).annotate({ identifier: "EventPeriodUpdate" }) as any as S.Schema<EventPeriodUpdate>;
+  S.Struct({
+    updates: S.optional(EventUpdateRequestList),
+    kind: S.optional(S.String),
+    timePeriod: S.optional(EventPeriodRange),
+  }),
+).annotate({
+  identifier: "EventPeriodUpdate",
+}) as any as S.Schema<EventPeriodUpdate>;
 
 export type EventPeriodUpdateList = ReadonlyArray<EventPeriodUpdate>;
-export const EventPeriodUpdateList = /*@__PURE__*/ S.Array(EventPeriodUpdate) as any as S.Schema<EventPeriodUpdateList>;
+export const EventPeriodUpdateList = /*@__PURE__*/ S.Array(
+  EventPeriodUpdate,
+) as any as S.Schema<EventPeriodUpdateList>;
 
 /** An event period update resource. */
 export interface EventRecordRequest {
@@ -1799,13 +2202,15 @@ export interface EventRecordRequest {
   currentTimeMillis?: string;
 }
 export const EventRecordRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String),
-  "timePeriods": S.optional(EventPeriodUpdateList),
-  "kind": S.optional(S.String),
-  "currentTimeMillis": S.optional(S.String),
-}),
-).annotate({ identifier: "EventRecordRequest" }) as any as S.Schema<EventRecordRequest>;
+  S.Struct({
+    requestId: S.optional(S.String),
+    timePeriods: S.optional(EventPeriodUpdateList),
+    kind: S.optional(S.String),
+    currentTimeMillis: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EventRecordRequest",
+}) as any as S.Schema<EventRecordRequest>;
 
 export interface RecordEventsRequest {
   /** The preferred language to use for strings returned by this method. */
@@ -1814,13 +2219,23 @@ export interface RecordEventsRequest {
   body?: EventRecordRequest;
 }
 export const RecordEventsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "language": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(EventRecordRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"games/v1/events","baseUrl":"https://games.googleapis.com/"})),
-).annotate({ identifier: "RecordEventsRequest" }) as any as S.Schema<RecordEventsRequest>;
+  S.Struct({
+    language: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(EventRecordRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "games/v1/events",
+      baseUrl: "https://games.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "RecordEventsRequest",
+}) as any as S.Schema<RecordEventsRequest>;
 
-export type EventRecordFailureFailureCauseEnum = "NOT_FOUND" | "INVALID_UPDATE_VALUE";
+export type EventRecordFailureFailureCauseEnum =
+  | "NOT_FOUND"
+  | "INVALID_UPDATE_VALUE";
 export const EventRecordFailureFailureCauseEnum = /*@__PURE__*/ S.String;
 
 /** An event update failure resource. */
@@ -1833,17 +2248,27 @@ export interface EventRecordFailure {
   kind?: string;
 }
 export const EventRecordFailure = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "failureCause": S.optional(EventRecordFailureFailureCauseEnum),
-  "eventId": S.optional(S.String),
-  "kind": S.optional(S.String),
-}),
-).annotate({ identifier: "EventRecordFailure" }) as any as S.Schema<EventRecordFailure>;
+  S.Struct({
+    failureCause: S.optional(EventRecordFailureFailureCauseEnum),
+    eventId: S.optional(S.String),
+    kind: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EventRecordFailure",
+}) as any as S.Schema<EventRecordFailure>;
 
 export type EventRecordFailureList = ReadonlyArray<EventRecordFailure>;
-export const EventRecordFailureList = /*@__PURE__*/ S.Array(EventRecordFailure) as any as S.Schema<EventRecordFailureList>;
+export const EventRecordFailureList = /*@__PURE__*/ S.Array(
+  EventRecordFailure,
+) as any as S.Schema<EventRecordFailureList>;
 
-export type EventBatchRecordFailureFailureCauseEnum = "TOO_LARGE" | "TIME_PERIOD_EXPIRED" | "TIME_PERIOD_SHORT" | "TIME_PERIOD_LONG" | "ALREADY_UPDATED" | "RECORD_RATE_HIGH";
+export type EventBatchRecordFailureFailureCauseEnum =
+  | "TOO_LARGE"
+  | "TIME_PERIOD_EXPIRED"
+  | "TIME_PERIOD_SHORT"
+  | "TIME_PERIOD_LONG"
+  | "ALREADY_UPDATED"
+  | "RECORD_RATE_HIGH";
 export const EventBatchRecordFailureFailureCauseEnum = /*@__PURE__*/ S.String;
 
 /** A batch update failure resource. */
@@ -1856,15 +2281,20 @@ export interface EventBatchRecordFailure {
   range?: EventPeriodRange;
 }
 export const EventBatchRecordFailure = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "failureCause": S.optional(EventBatchRecordFailureFailureCauseEnum),
-  "range": S.optional(EventPeriodRange),
-}),
-).annotate({ identifier: "EventBatchRecordFailure" }) as any as S.Schema<EventBatchRecordFailure>;
+  S.Struct({
+    kind: S.optional(S.String),
+    failureCause: S.optional(EventBatchRecordFailureFailureCauseEnum),
+    range: S.optional(EventPeriodRange),
+  }),
+).annotate({
+  identifier: "EventBatchRecordFailure",
+}) as any as S.Schema<EventBatchRecordFailure>;
 
-export type EventBatchRecordFailureList = ReadonlyArray<EventBatchRecordFailure>;
-export const EventBatchRecordFailureList = /*@__PURE__*/ S.Array(EventBatchRecordFailure) as any as S.Schema<EventBatchRecordFailureList>;
+export type EventBatchRecordFailureList =
+  ReadonlyArray<EventBatchRecordFailure>;
+export const EventBatchRecordFailureList = /*@__PURE__*/ S.Array(
+  EventBatchRecordFailure,
+) as any as S.Schema<EventBatchRecordFailureList>;
 
 /** An event period update resource. */
 export interface EventUpdateResponse {
@@ -1878,13 +2308,15 @@ export interface EventUpdateResponse {
   batchFailures?: EventBatchRecordFailureList;
 }
 export const EventUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "eventFailures": S.optional(EventRecordFailureList),
-  "playerEvents": S.optional(PlayerEventList),
-  "batchFailures": S.optional(EventBatchRecordFailureList),
-}),
-).annotate({ identifier: "EventUpdateResponse" }) as any as S.Schema<EventUpdateResponse>;
+  S.Struct({
+    kind: S.optional(S.String),
+    eventFailures: S.optional(EventRecordFailureList),
+    playerEvents: S.optional(PlayerEventList),
+    batchFailures: S.optional(EventBatchRecordFailureList),
+  }),
+).annotate({
+  identifier: "EventUpdateResponse",
+}) as any as S.Schema<EventUpdateResponse>;
 
 /** Request to remove all Recall tokens associated with a persona for an app. */
 export interface ResetPersonaRequest {
@@ -1892,20 +2324,30 @@ export interface ResetPersonaRequest {
   persona?: string;
 }
 export const ResetPersonaRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "persona": S.optional(S.String),
-}),
-).annotate({ identifier: "ResetPersonaRequest" }) as any as S.Schema<ResetPersonaRequest>;
+  S.Struct({
+    persona: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ResetPersonaRequest",
+}) as any as S.Schema<ResetPersonaRequest>;
 
 export interface ResetPersonaRecallRequest {
   /** Request body */
   body?: ResetPersonaRequest;
 }
 export const ResetPersonaRecallRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(ResetPersonaRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"games/v1/recall:resetPersona","baseUrl":"https://games.googleapis.com/"})),
-).annotate({ identifier: "ResetPersonaRecallRequest" }) as any as S.Schema<ResetPersonaRecallRequest>;
+  S.Struct({
+    body: S.optional(ResetPersonaRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "games/v1/recall:resetPersona",
+      baseUrl: "https://games.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ResetPersonaRecallRequest",
+}) as any as S.Schema<ResetPersonaRecallRequest>;
 
 /** Response for the ResetPersona RPC */
 export interface ResetPersonaResponse {
@@ -1913,23 +2355,35 @@ export interface ResetPersonaResponse {
   unlinked?: boolean;
 }
 export const ResetPersonaResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "unlinked": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "ResetPersonaResponse" }) as any as S.Schema<ResetPersonaResponse>;
+  S.Struct({
+    unlinked: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ResetPersonaResponse",
+}) as any as S.Schema<ResetPersonaResponse>;
 
 export interface RetrieveTokensRecallRequest {
   /** Required. Opaque server-generated string that encodes all the necessary information to identify the PGS player / Google user and application. */
   sessionId: string;
 }
 export const RetrieveTokensRecallRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sessionId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"games/v1/recall/tokens/{sessionId}","baseUrl":"https://games.googleapis.com/"})),
-).annotate({ identifier: "RetrieveTokensRecallRequest" }) as any as S.Schema<RetrieveTokensRecallRequest>;
+  S.Struct({
+    sessionId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "games/v1/recall/tokens/{sessionId}",
+      baseUrl: "https://games.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "RetrieveTokensRecallRequest",
+}) as any as S.Schema<RetrieveTokensRecallRequest>;
 
 export type RecallTokenList = ReadonlyArray<RecallToken>;
-export const RecallTokenList = /*@__PURE__*/ S.Array(RecallToken) as any as S.Schema<RecallTokenList>;
+export const RecallTokenList = /*@__PURE__*/ S.Array(
+  RecallToken,
+) as any as S.Schema<RecallTokenList>;
 
 /** Response for the RetrievePlayerTokens RPC */
 export interface RetrievePlayerTokensResponse {
@@ -1937,20 +2391,30 @@ export interface RetrievePlayerTokensResponse {
   tokens?: RecallTokenList;
 }
 export const RetrievePlayerTokensResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "tokens": S.optional(RecallTokenList),
-}),
-).annotate({ identifier: "RetrievePlayerTokensResponse" }) as any as S.Schema<RetrievePlayerTokensResponse>;
+  S.Struct({
+    tokens: S.optional(RecallTokenList),
+  }),
+).annotate({
+  identifier: "RetrievePlayerTokensResponse",
+}) as any as S.Schema<RetrievePlayerTokensResponse>;
 
 export interface RevealAchievementsRequest {
   /** The ID of the achievement used by this method. */
   achievementId: string;
 }
 export const RevealAchievementsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "achievementId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"POST","uri":"games/v1/achievements/{achievementId}/reveal","baseUrl":"https://games.googleapis.com/"})),
-).annotate({ identifier: "RevealAchievementsRequest" }) as any as S.Schema<RevealAchievementsRequest>;
+  S.Struct({
+    achievementId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "games/v1/achievements/{achievementId}/reveal",
+      baseUrl: "https://games.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "RevealAchievementsRequest",
+}) as any as S.Schema<RevealAchievementsRequest>;
 
 export type AchievementRevealResponseCurrentStateEnum = "REVEALED" | "UNLOCKED";
 export const AchievementRevealResponseCurrentStateEnum = /*@__PURE__*/ S.String;
@@ -1963,11 +2427,13 @@ export interface AchievementRevealResponse {
   currentState?: AchievementRevealResponseCurrentStateEnum;
 }
 export const AchievementRevealResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "currentState": S.optional(AchievementRevealResponseCurrentStateEnum),
-}),
-).annotate({ identifier: "AchievementRevealResponse" }) as any as S.Schema<AchievementRevealResponse>;
+  S.Struct({
+    kind: S.optional(S.String),
+    currentState: S.optional(AchievementRevealResponseCurrentStateEnum),
+  }),
+).annotate({
+  identifier: "AchievementRevealResponse",
+}) as any as S.Schema<AchievementRevealResponse>;
 
 export interface SetStepsAtLeastAchievementsRequest {
   /** The ID of the achievement used by this method. */
@@ -1976,11 +2442,19 @@ export interface SetStepsAtLeastAchievementsRequest {
   steps: number;
 }
 export const SetStepsAtLeastAchievementsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "achievementId": S.String.pipe(T.Label()),
-  "steps": S.Number.pipe(T.Query()),
-}).pipe(T.Http({"method":"POST","uri":"games/v1/achievements/{achievementId}/setStepsAtLeast","baseUrl":"https://games.googleapis.com/"})),
-).annotate({ identifier: "SetStepsAtLeastAchievementsRequest" }) as any as S.Schema<SetStepsAtLeastAchievementsRequest>;
+  S.Struct({
+    achievementId: S.String.pipe(T.Label()),
+    steps: S.Number.pipe(T.Query()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "games/v1/achievements/{achievementId}/setStepsAtLeast",
+      baseUrl: "https://games.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SetStepsAtLeastAchievementsRequest",
+}) as any as S.Schema<SetStepsAtLeastAchievementsRequest>;
 
 /** An achievement set steps at least response. */
 export interface AchievementSetStepsAtLeastResponse {
@@ -1992,12 +2466,14 @@ export interface AchievementSetStepsAtLeastResponse {
   currentSteps?: number;
 }
 export const AchievementSetStepsAtLeastResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "newlyUnlocked": S.optional(S.Boolean),
-  "currentSteps": S.optional(S.Number),
-}),
-).annotate({ identifier: "AchievementSetStepsAtLeastResponse" }) as any as S.Schema<AchievementSetStepsAtLeastResponse>;
+  S.Struct({
+    kind: S.optional(S.String),
+    newlyUnlocked: S.optional(S.Boolean),
+    currentSteps: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "AchievementSetStepsAtLeastResponse",
+}) as any as S.Schema<AchievementSetStepsAtLeastResponse>;
 
 /** A request to submit a score to leaderboards. */
 export interface ScoreSubmission {
@@ -2013,17 +2489,21 @@ export interface ScoreSubmission {
   signature?: string;
 }
 export const ScoreSubmission = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "score": S.optional(S.String),
-  "leaderboardId": S.optional(S.String),
-  "scoreTag": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "signature": S.optional(S.String),
-}),
-).annotate({ identifier: "ScoreSubmission" }) as any as S.Schema<ScoreSubmission>;
+  S.Struct({
+    score: S.optional(S.String),
+    leaderboardId: S.optional(S.String),
+    scoreTag: S.optional(S.String),
+    kind: S.optional(S.String),
+    signature: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ScoreSubmission",
+}) as any as S.Schema<ScoreSubmission>;
 
 export type ScoreSubmissionList = ReadonlyArray<ScoreSubmission>;
-export const ScoreSubmissionList = /*@__PURE__*/ S.Array(ScoreSubmission) as any as S.Schema<ScoreSubmissionList>;
+export const ScoreSubmissionList = /*@__PURE__*/ S.Array(
+  ScoreSubmission,
+) as any as S.Schema<ScoreSubmissionList>;
 
 /** A list of score submission requests. */
 export interface PlayerScoreSubmissionList {
@@ -2033,11 +2513,13 @@ export interface PlayerScoreSubmissionList {
   kind?: string;
 }
 export const PlayerScoreSubmissionList = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "scores": S.optional(ScoreSubmissionList),
-  "kind": S.optional(S.String),
-}),
-).annotate({ identifier: "PlayerScoreSubmissionList" }) as any as S.Schema<PlayerScoreSubmissionList>;
+  S.Struct({
+    scores: S.optional(ScoreSubmissionList),
+    kind: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PlayerScoreSubmissionList",
+}) as any as S.Schema<PlayerScoreSubmissionList>;
 
 export interface SubmitMultipleScoresRequest {
   /** The preferred language to use for strings returned by this method. */
@@ -2046,11 +2528,19 @@ export interface SubmitMultipleScoresRequest {
   body?: PlayerScoreSubmissionList;
 }
 export const SubmitMultipleScoresRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "language": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(PlayerScoreSubmissionList.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"games/v1/leaderboards/scores","baseUrl":"https://games.googleapis.com/"})),
-).annotate({ identifier: "SubmitMultipleScoresRequest" }) as any as S.Schema<SubmitMultipleScoresRequest>;
+  S.Struct({
+    language: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(PlayerScoreSubmissionList.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "games/v1/leaderboards/scores",
+      baseUrl: "https://games.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SubmitMultipleScoresRequest",
+}) as any as S.Schema<SubmitMultipleScoresRequest>;
 
 export type PlayerScoreTimeSpanEnum = "ALL_TIME" | "WEEKLY" | "DAILY";
 export const PlayerScoreTimeSpanEnum = /*@__PURE__*/ S.String;
@@ -2069,23 +2559,33 @@ export interface PlayerScore {
   formattedScore?: string;
 }
 export const PlayerScore = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "timeSpan": S.optional(PlayerScoreTimeSpanEnum),
-  "score": S.optional(S.String),
-  "scoreTag": S.optional(S.String),
-  "formattedScore": S.optional(S.String),
-}),
+  S.Struct({
+    kind: S.optional(S.String),
+    timeSpan: S.optional(PlayerScoreTimeSpanEnum),
+    score: S.optional(S.String),
+    scoreTag: S.optional(S.String),
+    formattedScore: S.optional(S.String),
+  }),
 ).annotate({ identifier: "PlayerScore" }) as any as S.Schema<PlayerScore>;
 
 export type PlayerScoreList = ReadonlyArray<PlayerScore>;
-export const PlayerScoreList = /*@__PURE__*/ S.Array(PlayerScore) as any as S.Schema<PlayerScoreList>;
+export const PlayerScoreList = /*@__PURE__*/ S.Array(
+  PlayerScore,
+) as any as S.Schema<PlayerScoreList>;
 
-export type PlayerScoreResponseBeatenScoreTimeSpansItemEnum = "ALL_TIME" | "WEEKLY" | "DAILY";
-export const PlayerScoreResponseBeatenScoreTimeSpansItemEnum = /*@__PURE__*/ S.String;
+export type PlayerScoreResponseBeatenScoreTimeSpansItemEnum =
+  | "ALL_TIME"
+  | "WEEKLY"
+  | "DAILY";
+export const PlayerScoreResponseBeatenScoreTimeSpansItemEnum =
+  /*@__PURE__*/ S.String;
 
-export type PlayerScoreResponseBeatenScoreTimeSpansItemEnumList = ReadonlyArray<PlayerScoreResponseBeatenScoreTimeSpansItemEnum>;
-export const PlayerScoreResponseBeatenScoreTimeSpansItemEnumList = /*@__PURE__*/ S.Array(PlayerScoreResponseBeatenScoreTimeSpansItemEnum) as any as S.Schema<PlayerScoreResponseBeatenScoreTimeSpansItemEnumList>;
+export type PlayerScoreResponseBeatenScoreTimeSpansItemEnumList =
+  ReadonlyArray<PlayerScoreResponseBeatenScoreTimeSpansItemEnum>;
+export const PlayerScoreResponseBeatenScoreTimeSpansItemEnumList =
+  /*@__PURE__*/ S.Array(
+    PlayerScoreResponseBeatenScoreTimeSpansItemEnum,
+  ) as any as S.Schema<PlayerScoreResponseBeatenScoreTimeSpansItemEnumList>;
 
 /** A list of leaderboard entry resources. */
 export interface PlayerScoreResponse {
@@ -2103,18 +2603,24 @@ export interface PlayerScoreResponse {
   formattedScore?: string;
 }
 export const PlayerScoreResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "unbeatenScores": S.optional(PlayerScoreList),
-  "kind": S.optional(S.String),
-  "beatenScoreTimeSpans": S.optional(PlayerScoreResponseBeatenScoreTimeSpansItemEnumList),
-  "leaderboardId": S.optional(S.String),
-  "scoreTag": S.optional(S.String),
-  "formattedScore": S.optional(S.String),
-}),
-).annotate({ identifier: "PlayerScoreResponse" }) as any as S.Schema<PlayerScoreResponse>;
+  S.Struct({
+    unbeatenScores: S.optional(PlayerScoreList),
+    kind: S.optional(S.String),
+    beatenScoreTimeSpans: S.optional(
+      PlayerScoreResponseBeatenScoreTimeSpansItemEnumList,
+    ),
+    leaderboardId: S.optional(S.String),
+    scoreTag: S.optional(S.String),
+    formattedScore: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PlayerScoreResponse",
+}) as any as S.Schema<PlayerScoreResponse>;
 
 export type PlayerScoreResponseList = ReadonlyArray<PlayerScoreResponse>;
-export const PlayerScoreResponseList = /*@__PURE__*/ S.Array(PlayerScoreResponse) as any as S.Schema<PlayerScoreResponseList>;
+export const PlayerScoreResponseList = /*@__PURE__*/ S.Array(
+  PlayerScoreResponse,
+) as any as S.Schema<PlayerScoreResponseList>;
 
 /** A list of score submission statuses. */
 export interface PlayerScoreListResponse {
@@ -2124,11 +2630,13 @@ export interface PlayerScoreListResponse {
   submittedScores?: PlayerScoreResponseList;
 }
 export const PlayerScoreListResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "submittedScores": S.optional(PlayerScoreResponseList),
-}),
-).annotate({ identifier: "PlayerScoreListResponse" }) as any as S.Schema<PlayerScoreListResponse>;
+  S.Struct({
+    kind: S.optional(S.String),
+    submittedScores: S.optional(PlayerScoreResponseList),
+  }),
+).annotate({
+  identifier: "PlayerScoreListResponse",
+}) as any as S.Schema<PlayerScoreListResponse>;
 
 export interface SubmitScoresRequest {
   /** The ID of the leaderboard. */
@@ -2141,13 +2649,21 @@ export interface SubmitScoresRequest {
   scoreTag?: string;
 }
 export const SubmitScoresRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "leaderboardId": S.String.pipe(T.Label()),
-  "language": S.optional(S.String.pipe(T.Query())),
-  "score": S.String.pipe(T.Query()),
-  "scoreTag": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"POST","uri":"games/v1/leaderboards/{leaderboardId}/scores","baseUrl":"https://games.googleapis.com/"})),
-).annotate({ identifier: "SubmitScoresRequest" }) as any as S.Schema<SubmitScoresRequest>;
+  S.Struct({
+    leaderboardId: S.String.pipe(T.Label()),
+    language: S.optional(S.String.pipe(T.Query())),
+    score: S.String.pipe(T.Query()),
+    scoreTag: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "games/v1/leaderboards/{leaderboardId}/scores",
+      baseUrl: "https://games.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SubmitScoresRequest",
+}) as any as S.Schema<SubmitScoresRequest>;
 
 /** Request to remove a Recall token linking PGS principal and an in-game account */
 export interface UnlinkPersonaRequest {
@@ -2159,22 +2675,32 @@ export interface UnlinkPersonaRequest {
   persona?: string;
 }
 export const UnlinkPersonaRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "token": S.optional(S.String),
-  "sessionId": S.optional(S.String),
-  "persona": S.optional(S.String),
-}),
-).annotate({ identifier: "UnlinkPersonaRequest" }) as any as S.Schema<UnlinkPersonaRequest>;
+  S.Struct({
+    token: S.optional(S.String),
+    sessionId: S.optional(S.String),
+    persona: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UnlinkPersonaRequest",
+}) as any as S.Schema<UnlinkPersonaRequest>;
 
 export interface UnlinkPersonaRecallRequest {
   /** Request body */
   body?: UnlinkPersonaRequest;
 }
 export const UnlinkPersonaRecallRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(UnlinkPersonaRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"games/v1/recall:unlinkPersona","baseUrl":"https://games.googleapis.com/"})),
-).annotate({ identifier: "UnlinkPersonaRecallRequest" }) as any as S.Schema<UnlinkPersonaRecallRequest>;
+  S.Struct({
+    body: S.optional(UnlinkPersonaRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "games/v1/recall:unlinkPersona",
+      baseUrl: "https://games.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UnlinkPersonaRecallRequest",
+}) as any as S.Schema<UnlinkPersonaRecallRequest>;
 
 /** Response for the UnlinkPersona RPC */
 export interface UnlinkPersonaResponse {
@@ -2182,20 +2708,30 @@ export interface UnlinkPersonaResponse {
   unlinked?: boolean;
 }
 export const UnlinkPersonaResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "unlinked": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "UnlinkPersonaResponse" }) as any as S.Schema<UnlinkPersonaResponse>;
+  S.Struct({
+    unlinked: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "UnlinkPersonaResponse",
+}) as any as S.Schema<UnlinkPersonaResponse>;
 
 export interface UnlockAchievementsRequest {
   /** The ID of the achievement used by this method. */
   achievementId: string;
 }
 export const UnlockAchievementsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "achievementId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"POST","uri":"games/v1/achievements/{achievementId}/unlock","baseUrl":"https://games.googleapis.com/"})),
-).annotate({ identifier: "UnlockAchievementsRequest" }) as any as S.Schema<UnlockAchievementsRequest>;
+  S.Struct({
+    achievementId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "games/v1/achievements/{achievementId}/unlock",
+      baseUrl: "https://games.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UnlockAchievementsRequest",
+}) as any as S.Schema<UnlockAchievementsRequest>;
 
 /** An achievement unlock response */
 export interface AchievementUnlockResponse {
@@ -2205,13 +2741,19 @@ export interface AchievementUnlockResponse {
   newlyUnlocked?: boolean;
 }
 export const AchievementUnlockResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "newlyUnlocked": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "AchievementUnlockResponse" }) as any as S.Schema<AchievementUnlockResponse>;
+  S.Struct({
+    kind: S.optional(S.String),
+    newlyUnlocked: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "AchievementUnlockResponse",
+}) as any as S.Schema<AchievementUnlockResponse>;
 
-export type AchievementUpdateRequestUpdateTypeEnum = "REVEAL" | "UNLOCK" | "INCREMENT" | "SET_STEPS_AT_LEAST";
+export type AchievementUpdateRequestUpdateTypeEnum =
+  | "REVEAL"
+  | "UNLOCK"
+  | "INCREMENT"
+  | "SET_STEPS_AT_LEAST";
 export const AchievementUpdateRequestUpdateTypeEnum = /*@__PURE__*/ S.String;
 
 /** The payload to request to increment an achievement. */
@@ -2222,11 +2764,13 @@ export interface GamesAchievementSetStepsAtLeast {
   steps?: number;
 }
 export const GamesAchievementSetStepsAtLeast = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "steps": S.optional(S.Number),
-}),
-).annotate({ identifier: "GamesAchievementSetStepsAtLeast" }) as any as S.Schema<GamesAchievementSetStepsAtLeast>;
+  S.Struct({
+    kind: S.optional(S.String),
+    steps: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "GamesAchievementSetStepsAtLeast",
+}) as any as S.Schema<GamesAchievementSetStepsAtLeast>;
 
 /** The payload to request to increment an achievement. */
 export interface GamesAchievementIncrement {
@@ -2238,12 +2782,14 @@ export interface GamesAchievementIncrement {
   kind?: string;
 }
 export const GamesAchievementIncrement = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String),
-  "steps": S.optional(S.Number),
-  "kind": S.optional(S.String),
-}),
-).annotate({ identifier: "GamesAchievementIncrement" }) as any as S.Schema<GamesAchievementIncrement>;
+  S.Struct({
+    requestId: S.optional(S.String),
+    steps: S.optional(S.Number),
+    kind: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GamesAchievementIncrement",
+}) as any as S.Schema<GamesAchievementIncrement>;
 
 /** A request to update an achievement. */
 export interface AchievementUpdateRequest {
@@ -2259,17 +2805,22 @@ export interface AchievementUpdateRequest {
   incrementPayload?: GamesAchievementIncrement;
 }
 export const AchievementUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "achievementId": S.optional(S.String),
-  "updateType": S.optional(AchievementUpdateRequestUpdateTypeEnum),
-  "setStepsAtLeastPayload": S.optional(GamesAchievementSetStepsAtLeast),
-  "incrementPayload": S.optional(GamesAchievementIncrement),
-}),
-).annotate({ identifier: "AchievementUpdateRequest" }) as any as S.Schema<AchievementUpdateRequest>;
+  S.Struct({
+    kind: S.optional(S.String),
+    achievementId: S.optional(S.String),
+    updateType: S.optional(AchievementUpdateRequestUpdateTypeEnum),
+    setStepsAtLeastPayload: S.optional(GamesAchievementSetStepsAtLeast),
+    incrementPayload: S.optional(GamesAchievementIncrement),
+  }),
+).annotate({
+  identifier: "AchievementUpdateRequest",
+}) as any as S.Schema<AchievementUpdateRequest>;
 
-export type AchievementUpdateRequestList = ReadonlyArray<AchievementUpdateRequest>;
-export const AchievementUpdateRequestList = /*@__PURE__*/ S.Array(AchievementUpdateRequest) as any as S.Schema<AchievementUpdateRequestList>;
+export type AchievementUpdateRequestList =
+  ReadonlyArray<AchievementUpdateRequest>;
+export const AchievementUpdateRequestList = /*@__PURE__*/ S.Array(
+  AchievementUpdateRequest,
+) as any as S.Schema<AchievementUpdateRequestList>;
 
 /** A list of achievement update requests. */
 export interface AchievementUpdateMultipleRequest {
@@ -2279,23 +2830,36 @@ export interface AchievementUpdateMultipleRequest {
   updates?: AchievementUpdateRequestList;
 }
 export const AchievementUpdateMultipleRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "updates": S.optional(AchievementUpdateRequestList),
-}),
-).annotate({ identifier: "AchievementUpdateMultipleRequest" }) as any as S.Schema<AchievementUpdateMultipleRequest>;
+  S.Struct({
+    kind: S.optional(S.String),
+    updates: S.optional(AchievementUpdateRequestList),
+  }),
+).annotate({
+  identifier: "AchievementUpdateMultipleRequest",
+}) as any as S.Schema<AchievementUpdateMultipleRequest>;
 
 export interface UpdateMultipleAchievementsRequest {
   /** Request body */
   body?: AchievementUpdateMultipleRequest;
 }
 export const UpdateMultipleAchievementsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(AchievementUpdateMultipleRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"games/v1/achievements/updateMultiple","baseUrl":"https://games.googleapis.com/"})),
-).annotate({ identifier: "UpdateMultipleAchievementsRequest" }) as any as S.Schema<UpdateMultipleAchievementsRequest>;
+  S.Struct({
+    body: S.optional(AchievementUpdateMultipleRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "games/v1/achievements/updateMultiple",
+      baseUrl: "https://games.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateMultipleAchievementsRequest",
+}) as any as S.Schema<UpdateMultipleAchievementsRequest>;
 
-export type AchievementUpdateResponseCurrentStateEnum = "HIDDEN" | "REVEALED" | "UNLOCKED";
+export type AchievementUpdateResponseCurrentStateEnum =
+  | "HIDDEN"
+  | "REVEALED"
+  | "UNLOCKED";
 export const AchievementUpdateResponseCurrentStateEnum = /*@__PURE__*/ S.String;
 
 /** An updated achievement. */
@@ -2314,18 +2878,23 @@ export interface AchievementUpdateResponse {
   kind?: string;
 }
 export const AchievementUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateOccurred": S.optional(S.Boolean),
-  "currentState": S.optional(AchievementUpdateResponseCurrentStateEnum),
-  "currentSteps": S.optional(S.Number),
-  "achievementId": S.optional(S.String),
-  "newlyUnlocked": S.optional(S.Boolean),
-  "kind": S.optional(S.String),
-}),
-).annotate({ identifier: "AchievementUpdateResponse" }) as any as S.Schema<AchievementUpdateResponse>;
+  S.Struct({
+    updateOccurred: S.optional(S.Boolean),
+    currentState: S.optional(AchievementUpdateResponseCurrentStateEnum),
+    currentSteps: S.optional(S.Number),
+    achievementId: S.optional(S.String),
+    newlyUnlocked: S.optional(S.Boolean),
+    kind: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AchievementUpdateResponse",
+}) as any as S.Schema<AchievementUpdateResponse>;
 
-export type AchievementUpdateResponseList = ReadonlyArray<AchievementUpdateResponse>;
-export const AchievementUpdateResponseList = /*@__PURE__*/ S.Array(AchievementUpdateResponse) as any as S.Schema<AchievementUpdateResponseList>;
+export type AchievementUpdateResponseList =
+  ReadonlyArray<AchievementUpdateResponse>;
+export const AchievementUpdateResponseList = /*@__PURE__*/ S.Array(
+  AchievementUpdateResponse,
+) as any as S.Schema<AchievementUpdateResponseList>;
 
 /** Response message for UpdateMultipleAchievements rpc. */
 export interface AchievementUpdateMultipleResponse {
@@ -2335,21 +2904,31 @@ export interface AchievementUpdateMultipleResponse {
   kind?: string;
 }
 export const AchievementUpdateMultipleResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updatedAchievements": S.optional(AchievementUpdateResponseList),
-  "kind": S.optional(S.String),
-}),
-).annotate({ identifier: "AchievementUpdateMultipleResponse" }) as any as S.Schema<AchievementUpdateMultipleResponse>;
+  S.Struct({
+    updatedAchievements: S.optional(AchievementUpdateResponseList),
+    kind: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AchievementUpdateMultipleResponse",
+}) as any as S.Schema<AchievementUpdateMultipleResponse>;
 
 export interface VerifyApplicationsRequest {
   /** The application ID from the Google Play developer console. */
   applicationId: string;
 }
 export const VerifyApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "applicationId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"games/v1/applications/{applicationId}/verify","baseUrl":"https://games.googleapis.com/"})),
-).annotate({ identifier: "VerifyApplicationsRequest" }) as any as S.Schema<VerifyApplicationsRequest>;
+  S.Struct({
+    applicationId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "games/v1/applications/{applicationId}/verify",
+      baseUrl: "https://games.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "VerifyApplicationsRequest",
+}) as any as S.Schema<VerifyApplicationsRequest>;
 
 /** A third party application verification response resource. */
 export interface ApplicationVerifyResponse {
@@ -2361,12 +2940,14 @@ export interface ApplicationVerifyResponse {
   alternate_player_id?: string;
 }
 export const ApplicationVerifyResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "player_id": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "alternate_player_id": S.optional(S.String),
-}),
-).annotate({ identifier: "ApplicationVerifyResponse" }) as any as S.Schema<ApplicationVerifyResponse>;
+  S.Struct({
+    player_id: S.optional(S.String),
+    kind: S.optional(S.String),
+    alternate_player_id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ApplicationVerifyResponse",
+}) as any as S.Schema<ApplicationVerifyResponse>;
 
 export type CheckRevisionsError = NotFound | Forbidden | GcpOpError;
 /** Checks whether the games client is out of date. */
@@ -2398,7 +2979,12 @@ export const gamesPlayerTokensRecall: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GeneratePlayGroupingApiTokenAccesstokensError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type GeneratePlayGroupingApiTokenAccesstokensError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Generates a Play Grouping API token for the PGS user identified by the attached credential. */
 export const generatePlayGroupingApiTokenAccesstokens: API.OperationMethod<
   GeneratePlayGroupingApiTokenAccesstokensRequest,
@@ -2413,7 +2999,12 @@ export const generatePlayGroupingApiTokenAccesstokens: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GenerateRecallPlayGroupingApiTokenAccesstokensError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type GenerateRecallPlayGroupingApiTokenAccesstokensError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Generates a Play Grouping API token for the PGS user identified by the Recall session ID provided in the request. */
 export const generateRecallPlayGroupingApiTokenAccesstokens: API.OperationMethod<
   GenerateRecallPlayGroupingApiTokenAccesstokensRequest,
@@ -2443,7 +3034,12 @@ export const getApplications: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetEndPointApplicationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type GetEndPointApplicationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Returns a URL for the requested end point type. */
 export const getEndPointApplications: API.OperationMethod<
   GetEndPointApplicationsRequest,
@@ -2488,7 +3084,10 @@ export const getMetagameConfigMetagame: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetMultipleApplicationPlayerIdsPlayersError = NotFound | Forbidden | GcpOpError;
+export type GetMultipleApplicationPlayerIdsPlayersError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Get the application player ids for the currently authenticated player across all requested games by the same developer as the calling application. This will only return ids for players that actually have an id (scoped or otherwise) with that game. */
 export const getMultipleApplicationPlayerIdsPlayers: API.OperationMethod<
   GetMultipleApplicationPlayerIdsPlayersRequest,
@@ -2546,7 +3145,11 @@ export const getScores: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken","items":"items"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+    items: "items",
+  } as const,
 }));
 
 export type GetSnapshotsError = NotFound | Forbidden | GcpOpError;
@@ -2579,7 +3182,12 @@ export const getStats: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type IncrementAchievementsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type IncrementAchievementsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Increments the steps of the achievement with the given ID for the currently authenticated player. */
 export const incrementAchievements: API.OperationMethod<
   IncrementAchievementsRequest,
@@ -2594,7 +3202,10 @@ export const incrementAchievements: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type LastTokenFromAllDeveloperGamesRecallError = NotFound | Forbidden | GcpOpError;
+export type LastTokenFromAllDeveloperGamesRecallError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieve the last Recall token from all developer games that is associated with the PGS Player encoded in the provided recall session id. The API is only available for users that have active PGS Player profile. */
 export const lastTokenFromAllDeveloperGamesRecall: API.OperationMethod<
   LastTokenFromAllDeveloperGamesRecallRequest,
@@ -2609,7 +3220,12 @@ export const lastTokenFromAllDeveloperGamesRecall: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type LinkPersonaRecallError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type LinkPersonaRecallError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Associate the PGS Player principal encoded in the provided recall session id with an in-game account */
 export const linkPersonaRecall: API.OperationMethod<
   LinkPersonaRecallRequest,
@@ -2637,7 +3253,11 @@ export const listAchievementDefinitions: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken","items":"items"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+    items: "items",
+  } as const,
 }));
 
 export type ListAchievementsError = NotFound | Forbidden | GcpOpError;
@@ -2653,7 +3273,11 @@ export const listAchievements: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken","items":"items"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+    items: "items",
+  } as const,
 }));
 
 export type ListByPlayerEventsError = NotFound | Forbidden | GcpOpError;
@@ -2669,10 +3293,17 @@ export const listByPlayerEvents: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken","items":"items"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+    items: "items",
+  } as const,
 }));
 
-export type ListCategoriesByPlayerMetagameError = NotFound | Forbidden | GcpOpError;
+export type ListCategoriesByPlayerMetagameError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** List play data aggregated per category for the player corresponding to `playerId`. */
 export const listCategoriesByPlayerMetagame: API.PaginatedOperationMethod<
   ListCategoriesByPlayerMetagameRequest,
@@ -2685,7 +3316,11 @@ export const listCategoriesByPlayerMetagame: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken","items":"items"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+    items: "items",
+  } as const,
 }));
 
 export type ListDefinitionsEventsError = NotFound | Forbidden | GcpOpError;
@@ -2701,7 +3336,11 @@ export const listDefinitionsEvents: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken","items":"items"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+    items: "items",
+  } as const,
 }));
 
 export type ListLeaderboardsError = NotFound | Forbidden | GcpOpError;
@@ -2717,7 +3356,11 @@ export const listLeaderboards: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken","items":"items"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+    items: "items",
+  } as const,
 }));
 
 export type ListPlayersError = NotFound | Forbidden | GcpOpError;
@@ -2733,7 +3376,11 @@ export const listPlayers: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken","items":"items"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+    items: "items",
+  } as const,
 }));
 
 export type ListScoresError = NotFound | Forbidden | GcpOpError;
@@ -2749,7 +3396,11 @@ export const listScores: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken","items":"items"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+    items: "items",
+  } as const,
 }));
 
 export type ListSnapshotsError = NotFound | Forbidden | GcpOpError;
@@ -2765,7 +3416,11 @@ export const listSnapshots: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken","items":"items"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+    items: "items",
+  } as const,
 }));
 
 export type ListWindowScoresError = NotFound | Forbidden | GcpOpError;
@@ -2781,10 +3436,19 @@ export const listWindowScores: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken","items":"items"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+    items: "items",
+  } as const,
 }));
 
-export type PlayedApplicationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PlayedApplicationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Indicate that the currently authenticated user is playing your application. */
 export const playedApplications: API.OperationMethod<
   PlayedApplicationsRequest,
@@ -2799,7 +3463,12 @@ export const playedApplications: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RecordEventsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RecordEventsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Records a batch of changes to the number of times events have occurred for the currently authenticated user of this application. */
 export const recordEvents: API.OperationMethod<
   RecordEventsRequest,
@@ -2814,7 +3483,12 @@ export const recordEvents: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ResetPersonaRecallError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ResetPersonaRecallError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Delete all Recall tokens linking the given persona to any player (with or without a profile). */
 export const resetPersonaRecall: API.OperationMethod<
   ResetPersonaRecallRequest,
@@ -2844,7 +3518,12 @@ export const retrieveTokensRecall: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RevealAchievementsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RevealAchievementsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sets the state of the achievement with the given ID to `REVEALED` for the currently authenticated player. */
 export const revealAchievements: API.OperationMethod<
   RevealAchievementsRequest,
@@ -2859,7 +3538,12 @@ export const revealAchievements: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetStepsAtLeastAchievementsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetStepsAtLeastAchievementsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sets the steps for the currently authenticated player towards unlocking an achievement. If the steps parameter is less than the current number of steps that the player already gained for the achievement, the achievement is not modified. */
 export const setStepsAtLeastAchievements: API.OperationMethod<
   SetStepsAtLeastAchievementsRequest,
@@ -2874,7 +3558,12 @@ export const setStepsAtLeastAchievements: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SubmitMultipleScoresError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SubmitMultipleScoresError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Submits multiple scores to leaderboards. */
 export const submitMultipleScores: API.OperationMethod<
   SubmitMultipleScoresRequest,
@@ -2889,7 +3578,12 @@ export const submitMultipleScores: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SubmitScoresError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SubmitScoresError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Submits a score to the specified leaderboard. */
 export const submitScores: API.OperationMethod<
   SubmitScoresRequest,
@@ -2904,7 +3598,12 @@ export const submitScores: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UnlinkPersonaRecallError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UnlinkPersonaRecallError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Delete a Recall token linking the PGS Player principal identified by the Recall session and an in-game account identified either by the 'persona' or by the token value. */
 export const unlinkPersonaRecall: API.OperationMethod<
   UnlinkPersonaRecallRequest,
@@ -2919,7 +3618,12 @@ export const unlinkPersonaRecall: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UnlockAchievementsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UnlockAchievementsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Unlocks this achievement for the currently authenticated player. */
 export const unlockAchievements: API.OperationMethod<
   UnlockAchievementsRequest,
@@ -2934,7 +3638,12 @@ export const unlockAchievements: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateMultipleAchievementsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateMultipleAchievementsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates multiple achievements for the currently authenticated player. */
 export const updateMultipleAchievements: API.OperationMethod<
   UpdateMultipleAchievementsRequest,
@@ -2963,4 +3672,3 @@ export const verifyApplications: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

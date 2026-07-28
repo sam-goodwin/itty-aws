@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export interface GSuitePrincipal {
@@ -69,12 +69,14 @@ export interface GSuitePrincipal {
   gsuiteDomain?: boolean;
 }
 export const GSuitePrincipal = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "gsuiteUserEmail": S.optional(S.String),
-  "gsuiteGroupEmail": S.optional(S.String),
-  "gsuiteDomain": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "GSuitePrincipal" }) as any as S.Schema<GSuitePrincipal>;
+  S.Struct({
+    gsuiteUserEmail: S.optional(S.String),
+    gsuiteGroupEmail: S.optional(S.String),
+    gsuiteDomain: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "GSuitePrincipal",
+}) as any as S.Schema<GSuitePrincipal>;
 
 /** Reference to a user, group, or domain. */
 export interface Principal {
@@ -86,11 +88,11 @@ export interface Principal {
   gsuitePrincipal?: GSuitePrincipal;
 }
 export const Principal = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "userResourceName": S.optional(S.String),
-  "groupResourceName": S.optional(S.String),
-  "gsuitePrincipal": S.optional(GSuitePrincipal),
-}),
+  S.Struct({
+    userResourceName: S.optional(S.String),
+    groupResourceName: S.optional(S.String),
+    gsuitePrincipal: S.optional(GSuitePrincipal),
+  }),
 ).annotate({ identifier: "Principal" }) as any as S.Schema<Principal>;
 
 export interface CheckAccessDebugDatasourcesItemsRequest {
@@ -101,29 +103,44 @@ export interface CheckAccessDebugDatasourcesItemsRequest {
   /** Request body */
   body?: Principal;
 }
-export const CheckAccessDebugDatasourcesItemsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "debugOptions.enableDebugging": S.optional(S.Boolean.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(Principal.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/debug/{+name}:checkAccess","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "CheckAccessDebugDatasourcesItemsRequest" }) as any as S.Schema<CheckAccessDebugDatasourcesItemsRequest>;
+export const CheckAccessDebugDatasourcesItemsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      "debugOptions.enableDebugging": S.optional(S.Boolean.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      body: S.optional(Principal.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/debug/{+name}:checkAccess",
+        baseUrl: "https://cloudsearch.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CheckAccessDebugDatasourcesItemsRequest",
+}) as any as S.Schema<CheckAccessDebugDatasourcesItemsRequest>;
 
 export interface CheckAccessResponse {
   /** Returns true if principal has access. Returns false otherwise. */
   hasAccess?: boolean;
 }
 export const CheckAccessResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "hasAccess": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "CheckAccessResponse" }) as any as S.Schema<CheckAccessResponse>;
+  S.Struct({
+    hasAccess: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "CheckAccessResponse",
+}) as any as S.Schema<CheckAccessResponse>;
 
 export type GSuitePrincipalList = ReadonlyArray<GSuitePrincipal>;
-export const GSuitePrincipalList = /*@__PURE__*/ S.Array(GSuitePrincipal) as any as S.Schema<GSuitePrincipalList>;
+export const GSuitePrincipalList = /*@__PURE__*/ S.Array(
+  GSuitePrincipal,
+) as any as S.Schema<GSuitePrincipalList>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** Datasource is a logical namespace for items to be indexed. All items must belong to a datasource. This is the prerequisite before items can be indexed into Cloud Search. */
 export interface DataSource {
@@ -147,17 +164,17 @@ export interface DataSource {
   operationIds?: StringList;
 }
 export const DataSource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "shortName": S.optional(S.String),
-  "itemsVisibility": S.optional(GSuitePrincipalList),
-  "disableServing": S.optional(S.Boolean),
-  "returnThumbnailUrls": S.optional(S.Boolean),
-  "indexingServiceAccounts": S.optional(StringList),
-  "displayName": S.optional(S.String),
-  "name": S.optional(S.String),
-  "disableModifications": S.optional(S.Boolean),
-  "operationIds": S.optional(StringList),
-}),
+  S.Struct({
+    shortName: S.optional(S.String),
+    itemsVisibility: S.optional(GSuitePrincipalList),
+    disableServing: S.optional(S.Boolean),
+    returnThumbnailUrls: S.optional(S.Boolean),
+    indexingServiceAccounts: S.optional(StringList),
+    displayName: S.optional(S.String),
+    name: S.optional(S.String),
+    disableModifications: S.optional(S.Boolean),
+    operationIds: S.optional(StringList),
+  }),
 ).annotate({ identifier: "DataSource" }) as any as S.Schema<DataSource>;
 
 export interface CreateSettingsDatasourcesRequest {
@@ -165,16 +182,29 @@ export interface CreateSettingsDatasourcesRequest {
   body?: DataSource;
 }
 export const CreateSettingsDatasourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(DataSource.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/settings/datasources","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "CreateSettingsDatasourcesRequest" }) as any as S.Schema<CreateSettingsDatasourcesRequest>;
+  S.Struct({
+    body: S.optional(DataSource.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/settings/datasources",
+      baseUrl: "https://cloudsearch.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateSettingsDatasourcesRequest",
+}) as any as S.Schema<CreateSettingsDatasourcesRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -186,11 +216,11 @@ export interface Status {
   code?: number;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "message": S.optional(S.String),
-  "details": S.optional(DocumentMapList),
-  "code": S.optional(S.Number),
-}),
+  S.Struct({
+    message: S.optional(S.String),
+    details: S.optional(DocumentMapList),
+    code: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -207,13 +237,13 @@ export interface Operation {
   name?: string;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "metadata": S.optional(DocumentMap),
-  "done": S.optional(S.Boolean),
-  "error": S.optional(Status),
-  "response": S.optional(DocumentMap),
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    metadata: S.optional(DocumentMap),
+    done: S.optional(S.Boolean),
+    error: S.optional(Status),
+    response: S.optional(DocumentMap),
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 export type SortOptionsSortOrderEnum = "ASCENDING" | "DESCENDING";
@@ -226,10 +256,10 @@ export interface SortOptions {
   sortOrder?: SortOptionsSortOrderEnum;
 }
 export const SortOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "operatorName": S.optional(S.String),
-  "sortOrder": S.optional(SortOptionsSortOrderEnum),
-}),
+  S.Struct({
+    operatorName: S.optional(S.String),
+    sortOrder: S.optional(SortOptionsSortOrderEnum),
+  }),
 ).annotate({ identifier: "SortOptions" }) as any as S.Schema<SortOptions>;
 
 /** Represents a whole calendar date, for example a date of birth. The time of day and time zone are either specified elsewhere or are not significant. The date is relative to the [Proleptic Gregorian Calendar](https://en.wikipedia.org/wiki/Proleptic_Gregorian_calendar). The date must be a valid calendar date between the year 1 and 9999. */
@@ -242,12 +272,14 @@ export interface Cloudsearch_Date {
   year?: number;
 }
 export const Cloudsearch_Date = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "day": S.optional(S.Number),
-  "month": S.optional(S.Number),
-  "year": S.optional(S.Number),
-}),
-).annotate({ identifier: "Cloudsearch_Date" }) as any as S.Schema<Cloudsearch_Date>;
+  S.Struct({
+    day: S.optional(S.Number),
+    month: S.optional(S.Number),
+    year: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "Cloudsearch_Date",
+}) as any as S.Schema<Cloudsearch_Date>;
 
 /** Definition of a single value with generic type. */
 export interface Value {
@@ -259,14 +291,14 @@ export interface Value {
   timestampValue?: string;
 }
 export const Value = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "stringValue": S.optional(S.String),
-  "integerValue": S.optional(S.String),
-  "booleanValue": S.optional(S.Boolean),
-  "dateValue": S.optional(Cloudsearch_Date),
-  "doubleValue": S.optional(S.Number),
-  "timestampValue": S.optional(S.String),
-}),
+  S.Struct({
+    stringValue: S.optional(S.String),
+    integerValue: S.optional(S.String),
+    booleanValue: S.optional(S.Boolean),
+    dateValue: S.optional(Cloudsearch_Date),
+    doubleValue: S.optional(S.Number),
+    timestampValue: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Value" }) as any as S.Schema<Value>;
 
 export interface ValueFilter {
@@ -276,17 +308,19 @@ export interface ValueFilter {
   value?: Value;
 }
 export const ValueFilter = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "operatorName": S.optional(S.String),
-  "value": S.optional(Value),
-}),
+  S.Struct({
+    operatorName: S.optional(S.String),
+    value: S.optional(Value),
+  }),
 ).annotate({ identifier: "ValueFilter" }) as any as S.Schema<ValueFilter>;
 
 export type CompositeFilterLogicOperatorEnum = "AND" | "OR" | "NOT";
 export const CompositeFilterLogicOperatorEnum = /*@__PURE__*/ S.String;
 
 export type FilterList = ReadonlyArray<Filter>;
-export const FilterList = /*@__PURE__*/ S.Array(S.suspend(() => Filter)) as any as S.Schema<FilterList>;
+export const FilterList = /*@__PURE__*/ S.Array(
+  S.suspend(() => Filter),
+) as any as S.Schema<FilterList>;
 
 export interface CompositeFilter {
   /** The logic operator of the sub filter. */
@@ -295,11 +329,13 @@ export interface CompositeFilter {
   subFilters?: FilterList;
 }
 export const CompositeFilter = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "logicOperator": S.optional(CompositeFilterLogicOperatorEnum),
-  "subFilters": S.optional(FilterList),
-}),
-).annotate({ identifier: "CompositeFilter" }) as any as S.Schema<CompositeFilter>;
+  S.Struct({
+    logicOperator: S.optional(CompositeFilterLogicOperatorEnum),
+    subFilters: S.optional(FilterList),
+  }),
+).annotate({
+  identifier: "CompositeFilter",
+}) as any as S.Schema<CompositeFilter>;
 
 /** A generic way of expressing filters in a query, which supports two approaches: **1. Setting a ValueFilter.** The name must match an operator_name defined in the schema for your data source. **2. Setting a CompositeFilter.** The filters are evaluated using the logical operator. The top-level operators can only be either an AND or a NOT. AND can appear only at the top-most level. OR can appear only under a top-level AND. */
 export interface Filter {
@@ -307,10 +343,10 @@ export interface Filter {
   compositeFilter?: CompositeFilter;
 }
 export const Filter = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "valueFilter": S.optional(ValueFilter),
-  "compositeFilter": S.optional(CompositeFilter),
-}),
+  S.Struct({
+    valueFilter: S.optional(ValueFilter),
+    compositeFilter: S.optional(CompositeFilter),
+  }),
 ).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
 
 /** Filter options to be applied on query. */
@@ -321,16 +357,27 @@ export interface FilterOptions {
   filter?: Filter;
 }
 export const FilterOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "objectType": S.optional(S.String),
-  "filter": S.optional(Filter),
-}),
+  S.Struct({
+    objectType: S.optional(S.String),
+    filter: S.optional(Filter),
+  }),
 ).annotate({ identifier: "FilterOptions" }) as any as S.Schema<FilterOptions>;
 
 export type FilterOptionsList = ReadonlyArray<FilterOptions>;
-export const FilterOptionsList = /*@__PURE__*/ S.Array(FilterOptions) as any as S.Schema<FilterOptionsList>;
+export const FilterOptionsList = /*@__PURE__*/ S.Array(
+  FilterOptions,
+) as any as S.Schema<FilterOptionsList>;
 
-export type SourcePredefinedSourceEnum = "NONE" | "QUERY_HISTORY" | "PERSON" | "GOOGLE_DRIVE" | "GOOGLE_GMAIL" | "GOOGLE_SITES" | "GOOGLE_GROUPS" | "GOOGLE_CALENDAR" | "GOOGLE_KEEP";
+export type SourcePredefinedSourceEnum =
+  | "NONE"
+  | "QUERY_HISTORY"
+  | "PERSON"
+  | "GOOGLE_DRIVE"
+  | "GOOGLE_GMAIL"
+  | "GOOGLE_SITES"
+  | "GOOGLE_GROUPS"
+  | "GOOGLE_CALENDAR"
+  | "GOOGLE_KEEP";
 export const SourcePredefinedSourceEnum = /*@__PURE__*/ S.String;
 
 /** Defines sources for the suggest/search APIs. */
@@ -341,10 +388,10 @@ export interface Source {
   name?: string;
 }
 export const Source = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "predefinedSource": S.optional(SourcePredefinedSourceEnum),
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    predefinedSource: S.optional(SourcePredefinedSourceEnum),
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Source" }) as any as S.Schema<Source>;
 
 /** Restriction on Datasource. */
@@ -355,14 +402,18 @@ export interface DataSourceRestriction {
   source?: Source;
 }
 export const DataSourceRestriction = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filterOptions": S.optional(FilterOptionsList),
-  "source": S.optional(Source),
-}),
-).annotate({ identifier: "DataSourceRestriction" }) as any as S.Schema<DataSourceRestriction>;
+  S.Struct({
+    filterOptions: S.optional(FilterOptionsList),
+    source: S.optional(Source),
+  }),
+).annotate({
+  identifier: "DataSourceRestriction",
+}) as any as S.Schema<DataSourceRestriction>;
 
 export type DataSourceRestrictionList = ReadonlyArray<DataSourceRestriction>;
-export const DataSourceRestrictionList = /*@__PURE__*/ S.Array(DataSourceRestriction) as any as S.Schema<DataSourceRestrictionList>;
+export const DataSourceRestrictionList = /*@__PURE__*/ S.Array(
+  DataSourceRestriction,
+) as any as S.Schema<DataSourceRestrictionList>;
 
 /** Used to specify integer faceting options. */
 export interface IntegerFacetingOptions {
@@ -370,10 +421,12 @@ export interface IntegerFacetingOptions {
   integerBuckets?: StringList;
 }
 export const IntegerFacetingOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "integerBuckets": S.optional(StringList),
-}),
-).annotate({ identifier: "IntegerFacetingOptions" }) as any as S.Schema<IntegerFacetingOptions>;
+  S.Struct({
+    integerBuckets: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "IntegerFacetingOptions",
+}) as any as S.Schema<IntegerFacetingOptions>;
 
 /** Specifies operators to return facet results for. There will be one FacetResult for every source_name/object_type/operator_name combination. */
 export interface FacetOptions {
@@ -389,17 +442,19 @@ export interface FacetOptions {
   operatorName?: string;
 }
 export const FacetOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sourceName": S.optional(S.String),
-  "numFacetBuckets": S.optional(S.Number),
-  "integerFacetingOptions": S.optional(IntegerFacetingOptions),
-  "objectType": S.optional(S.String),
-  "operatorName": S.optional(S.String),
-}),
+  S.Struct({
+    sourceName: S.optional(S.String),
+    numFacetBuckets: S.optional(S.Number),
+    integerFacetingOptions: S.optional(IntegerFacetingOptions),
+    objectType: S.optional(S.String),
+    operatorName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "FacetOptions" }) as any as S.Schema<FacetOptions>;
 
 export type FacetOptionsList = ReadonlyArray<FacetOptions>;
-export const FacetOptionsList = /*@__PURE__*/ S.Array(FacetOptions) as any as S.Schema<FacetOptionsList>;
+export const FacetOptionsList = /*@__PURE__*/ S.Array(
+  FacetOptions,
+) as any as S.Schema<FacetOptionsList>;
 
 /** Default options to interpret user query. */
 export interface QueryInterpretationConfig {
@@ -409,13 +464,18 @@ export interface QueryInterpretationConfig {
   forceDisableSupplementalResults?: boolean;
 }
 export const QueryInterpretationConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "forceVerbatimMode": S.optional(S.Boolean),
-  "forceDisableSupplementalResults": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "QueryInterpretationConfig" }) as any as S.Schema<QueryInterpretationConfig>;
+  S.Struct({
+    forceVerbatimMode: S.optional(S.Boolean),
+    forceDisableSupplementalResults: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "QueryInterpretationConfig",
+}) as any as S.Schema<QueryInterpretationConfig>;
 
-export type SourceScoringConfigSourceImportanceEnum = "DEFAULT" | "LOW" | "HIGH";
+export type SourceScoringConfigSourceImportanceEnum =
+  | "DEFAULT"
+  | "LOW"
+  | "HIGH";
 export const SourceScoringConfigSourceImportanceEnum = /*@__PURE__*/ S.String;
 
 /** Set the scoring configuration. This allows modifying the ranking of results for a source. */
@@ -424,10 +484,12 @@ export interface SourceScoringConfig {
   sourceImportance?: SourceScoringConfigSourceImportanceEnum;
 }
 export const SourceScoringConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sourceImportance": S.optional(SourceScoringConfigSourceImportanceEnum),
-}),
-).annotate({ identifier: "SourceScoringConfig" }) as any as S.Schema<SourceScoringConfig>;
+  S.Struct({
+    sourceImportance: S.optional(SourceScoringConfigSourceImportanceEnum),
+  }),
+).annotate({
+  identifier: "SourceScoringConfig",
+}) as any as S.Schema<SourceScoringConfig>;
 
 /** Set search results crowding limits. Crowding is a situation in which multiple results from the same source or host "crowd out" other results, diminishing the quality of search for users. To foster better search quality and source diversity in search results, you can set a condition to reduce repetitive results by source. */
 export interface SourceCrowdingConfig {
@@ -437,11 +499,13 @@ export interface SourceCrowdingConfig {
   numSuggestions?: number;
 }
 export const SourceCrowdingConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "numResults": S.optional(S.Number),
-  "numSuggestions": S.optional(S.Number),
-}),
-).annotate({ identifier: "SourceCrowdingConfig" }) as any as S.Schema<SourceCrowdingConfig>;
+  S.Struct({
+    numResults: S.optional(S.Number),
+    numSuggestions: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "SourceCrowdingConfig",
+}) as any as S.Schema<SourceCrowdingConfig>;
 
 /** Configurations for a source while processing a Search or Suggest request. */
 export interface SourceConfig {
@@ -453,15 +517,17 @@ export interface SourceConfig {
   crowdingConfig?: SourceCrowdingConfig;
 }
 export const SourceConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "source": S.optional(Source),
-  "scoringConfig": S.optional(SourceScoringConfig),
-  "crowdingConfig": S.optional(SourceCrowdingConfig),
-}),
+  S.Struct({
+    source: S.optional(Source),
+    scoringConfig: S.optional(SourceScoringConfig),
+    crowdingConfig: S.optional(SourceCrowdingConfig),
+  }),
 ).annotate({ identifier: "SourceConfig" }) as any as S.Schema<SourceConfig>;
 
 export type SourceConfigList = ReadonlyArray<SourceConfig>;
-export const SourceConfigList = /*@__PURE__*/ S.Array(SourceConfig) as any as S.Schema<SourceConfigList>;
+export const SourceConfigList = /*@__PURE__*/ S.Array(
+  SourceConfig,
+) as any as S.Schema<SourceConfigList>;
 
 /** Scoring configurations for a source while processing a Search or Suggest request. */
 export interface ScoringConfig {
@@ -471,10 +537,10 @@ export interface ScoringConfig {
   disablePersonalization?: boolean;
 }
 export const ScoringConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "disableFreshness": S.optional(S.Boolean),
-  "disablePersonalization": S.optional(S.Boolean),
-}),
+  S.Struct({
+    disableFreshness: S.optional(S.Boolean),
+    disablePersonalization: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "ScoringConfig" }) as any as S.Schema<ScoringConfig>;
 
 /** SearchApplication */
@@ -503,32 +569,46 @@ export interface SearchApplication {
   name?: string;
 }
 export const SearchApplication = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "enableAuditLog": S.optional(S.Boolean),
-  "displayName": S.optional(S.String),
-  "defaultSortOptions": S.optional(SortOptions),
-  "dataSourceRestrictions": S.optional(DataSourceRestrictionList),
-  "defaultFacetOptions": S.optional(FacetOptionsList),
-  "queryInterpretationConfig": S.optional(QueryInterpretationConfig),
-  "sourceConfig": S.optional(SourceConfigList),
-  "returnResultThumbnailUrls": S.optional(S.Boolean),
-  "operationIds": S.optional(StringList),
-  "scoringConfig": S.optional(ScoringConfig),
-  "name": S.optional(S.String),
-}),
-).annotate({ identifier: "SearchApplication" }) as any as S.Schema<SearchApplication>;
+  S.Struct({
+    enableAuditLog: S.optional(S.Boolean),
+    displayName: S.optional(S.String),
+    defaultSortOptions: S.optional(SortOptions),
+    dataSourceRestrictions: S.optional(DataSourceRestrictionList),
+    defaultFacetOptions: S.optional(FacetOptionsList),
+    queryInterpretationConfig: S.optional(QueryInterpretationConfig),
+    sourceConfig: S.optional(SourceConfigList),
+    returnResultThumbnailUrls: S.optional(S.Boolean),
+    operationIds: S.optional(StringList),
+    scoringConfig: S.optional(ScoringConfig),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SearchApplication",
+}) as any as S.Schema<SearchApplication>;
 
 export interface CreateSettingsSearchapplicationsRequest {
   /** Request body */
   body?: SearchApplication;
 }
-export const CreateSettingsSearchapplicationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(SearchApplication.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/settings/searchapplications","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "CreateSettingsSearchapplicationsRequest" }) as any as S.Schema<CreateSettingsSearchapplicationsRequest>;
+export const CreateSettingsSearchapplicationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      body: S.optional(SearchApplication.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/settings/searchapplications",
+        baseUrl: "https://cloudsearch.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateSettingsSearchapplicationsRequest",
+}) as any as S.Schema<CreateSettingsSearchapplicationsRequest>;
 
-export type DeleteIndexingDatasourcesItemsModeEnum = "UNSPECIFIED" | "SYNCHRONOUS" | "ASYNCHRONOUS";
+export type DeleteIndexingDatasourcesItemsModeEnum =
+  | "UNSPECIFIED"
+  | "SYNCHRONOUS"
+  | "ASYNCHRONOUS";
 export const DeleteIndexingDatasourcesItemsModeEnum = /*@__PURE__*/ S.String;
 
 export interface DeleteIndexingDatasourcesItemsRequest {
@@ -543,15 +623,24 @@ export interface DeleteIndexingDatasourcesItemsRequest {
   /** Required. The RequestMode for this request. */
   mode?: DeleteIndexingDatasourcesItemsModeEnum | (string & {});
 }
-export const DeleteIndexingDatasourcesItemsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "version": S.optional(S.String.pipe(T.Query())),
-  "debugOptions.enableDebugging": S.optional(S.Boolean.pipe(T.Query())),
-  "connectorName": S.optional(S.String.pipe(T.Query())),
-  "mode": S.optional(DeleteIndexingDatasourcesItemsModeEnum.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/indexing/{+name}","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "DeleteIndexingDatasourcesItemsRequest" }) as any as S.Schema<DeleteIndexingDatasourcesItemsRequest>;
+export const DeleteIndexingDatasourcesItemsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      version: S.optional(S.String.pipe(T.Query())),
+      "debugOptions.enableDebugging": S.optional(S.Boolean.pipe(T.Query())),
+      connectorName: S.optional(S.String.pipe(T.Query())),
+      mode: S.optional(DeleteIndexingDatasourcesItemsModeEnum.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/indexing/{+name}",
+        baseUrl: "https://cloudsearch.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteIndexingDatasourcesItemsRequest",
+}) as any as S.Schema<DeleteIndexingDatasourcesItemsRequest>;
 
 /** Shared request debug options for all cloudsearch RPC methods. */
 export interface DebugOptions {
@@ -559,9 +648,9 @@ export interface DebugOptions {
   enableDebugging?: boolean;
 }
 export const DebugOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "enableDebugging": S.optional(S.Boolean),
-}),
+  S.Struct({
+    enableDebugging: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "DebugOptions" }) as any as S.Schema<DebugOptions>;
 
 export interface DeleteQueueItemsRequest {
@@ -573,12 +662,14 @@ export interface DeleteQueueItemsRequest {
   debugOptions?: DebugOptions;
 }
 export const DeleteQueueItemsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "connectorName": S.optional(S.String),
-  "queue": S.optional(S.String),
-  "debugOptions": S.optional(DebugOptions),
-}),
-).annotate({ identifier: "DeleteQueueItemsRequest" }) as any as S.Schema<DeleteQueueItemsRequest>;
+  S.Struct({
+    connectorName: S.optional(S.String),
+    queue: S.optional(S.String),
+    debugOptions: S.optional(DebugOptions),
+  }),
+).annotate({
+  identifier: "DeleteQueueItemsRequest",
+}) as any as S.Schema<DeleteQueueItemsRequest>;
 
 export interface DeleteQueueItemsIndexingDatasourcesItemsRequest {
   /** The name of the Data Source to delete items in a queue. Format: datasources/{source_id} */
@@ -586,12 +677,21 @@ export interface DeleteQueueItemsIndexingDatasourcesItemsRequest {
   /** Request body */
   body?: DeleteQueueItemsRequest;
 }
-export const DeleteQueueItemsIndexingDatasourcesItemsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(DeleteQueueItemsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/indexing/{+name}/items:deleteQueueItems","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "DeleteQueueItemsIndexingDatasourcesItemsRequest" }) as any as S.Schema<DeleteQueueItemsIndexingDatasourcesItemsRequest>;
+export const DeleteQueueItemsIndexingDatasourcesItemsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(DeleteQueueItemsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/indexing/{+name}/items:deleteQueueItems",
+        baseUrl: "https://cloudsearch.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteQueueItemsIndexingDatasourcesItemsRequest",
+  }) as any as S.Schema<DeleteQueueItemsIndexingDatasourcesItemsRequest>;
 
 export interface DeleteSchemaIndexingDatasourcesRequest {
   /** The name of the data source to delete Schema. Format: datasources/{source_id} */
@@ -599,12 +699,21 @@ export interface DeleteSchemaIndexingDatasourcesRequest {
   /** If you are asked by Google to help with debugging, set this field. Otherwise, ignore this field. */
   "debugOptions.enableDebugging"?: boolean;
 }
-export const DeleteSchemaIndexingDatasourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "debugOptions.enableDebugging": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/indexing/{+name}/schema","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "DeleteSchemaIndexingDatasourcesRequest" }) as any as S.Schema<DeleteSchemaIndexingDatasourcesRequest>;
+export const DeleteSchemaIndexingDatasourcesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      "debugOptions.enableDebugging": S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/indexing/{+name}/schema",
+        baseUrl: "https://cloudsearch.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteSchemaIndexingDatasourcesRequest",
+}) as any as S.Schema<DeleteSchemaIndexingDatasourcesRequest>;
 
 export interface DeleteSettingsDatasourcesRequest {
   /** The name of the datasource. Format: datasources/{source_id}. */
@@ -613,11 +722,19 @@ export interface DeleteSettingsDatasourcesRequest {
   "debugOptions.enableDebugging"?: boolean;
 }
 export const DeleteSettingsDatasourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "debugOptions.enableDebugging": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/settings/{+name}","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "DeleteSettingsDatasourcesRequest" }) as any as S.Schema<DeleteSettingsDatasourcesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    "debugOptions.enableDebugging": S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/settings/{+name}",
+      baseUrl: "https://cloudsearch.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteSettingsDatasourcesRequest",
+}) as any as S.Schema<DeleteSettingsDatasourcesRequest>;
 
 export interface DeleteSettingsSearchapplicationsRequest {
   /** If you are asked by Google to help with debugging, set this field. Otherwise, ignore this field. */
@@ -625,26 +742,43 @@ export interface DeleteSettingsSearchapplicationsRequest {
   /** The name of the search application to be deleted. Format: applications/{application_id}. */
   name: string;
 }
-export const DeleteSettingsSearchapplicationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "debugOptions.enableDebugging": S.optional(S.Boolean.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/settings/{+name}","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "DeleteSettingsSearchapplicationsRequest" }) as any as S.Schema<DeleteSettingsSearchapplicationsRequest>;
+export const DeleteSettingsSearchapplicationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      "debugOptions.enableDebugging": S.optional(S.Boolean.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/settings/{+name}",
+        baseUrl: "https://cloudsearch.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteSettingsSearchapplicationsRequest",
+}) as any as S.Schema<DeleteSettingsSearchapplicationsRequest>;
 
 export interface GetCustomerSettingsRequest {}
 export const GetCustomerSettingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}).pipe(T.Http({"method":"GET","uri":"v1/settings/customer","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "GetCustomerSettingsRequest" }) as any as S.Schema<GetCustomerSettingsRequest>;
+  S.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/settings/customer",
+      baseUrl: "https://cloudsearch.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetCustomerSettingsRequest",
+}) as any as S.Schema<GetCustomerSettingsRequest>;
 
 export interface VPCSettings {
   /** The resource name of the GCP Project to be used for VPC SC policy check. VPC security settings on this project will be honored for Cloud Search APIs after project_name has been updated through CustomerService. Format: projects/{project_id} */
   project?: string;
 }
 export const VPCSettings = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "project": S.optional(S.String),
-}),
+  S.Struct({
+    project: S.optional(S.String),
+  }),
 ).annotate({ identifier: "VPCSettings" }) as any as S.Schema<VPCSettings>;
 
 /** Represents the settings for Cloud audit logging */
@@ -659,13 +793,15 @@ export interface AuditLoggingSettings {
   logDataWriteActions?: boolean;
 }
 export const AuditLoggingSettings = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "logAdminReadActions": S.optional(S.Boolean),
-  "logDataReadActions": S.optional(S.Boolean),
-  "project": S.optional(S.String),
-  "logDataWriteActions": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "AuditLoggingSettings" }) as any as S.Schema<AuditLoggingSettings>;
+  S.Struct({
+    logAdminReadActions: S.optional(S.Boolean),
+    logDataReadActions: S.optional(S.Boolean),
+    project: S.optional(S.String),
+    logDataWriteActions: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "AuditLoggingSettings",
+}) as any as S.Schema<AuditLoggingSettings>;
 
 /** Represents settings at a customer level. */
 export interface CustomerSettings {
@@ -675,11 +811,13 @@ export interface CustomerSettings {
   auditLoggingSettings?: AuditLoggingSettings;
 }
 export const CustomerSettings = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "vpcSettings": S.optional(VPCSettings),
-  "auditLoggingSettings": S.optional(AuditLoggingSettings),
-}),
-).annotate({ identifier: "CustomerSettings" }) as any as S.Schema<CustomerSettings>;
+  S.Struct({
+    vpcSettings: S.optional(VPCSettings),
+    auditLoggingSettings: S.optional(AuditLoggingSettings),
+  }),
+).annotate({
+  identifier: "CustomerSettings",
+}) as any as S.Schema<CustomerSettings>;
 
 export interface GetIndexingDatasourcesItemsRequest {
   /** The name of the item to get info. Format: datasources/{source_id}/items/{item_id} */
@@ -690,34 +828,46 @@ export interface GetIndexingDatasourcesItemsRequest {
   connectorName?: string;
 }
 export const GetIndexingDatasourcesItemsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "debugOptions.enableDebugging": S.optional(S.Boolean.pipe(T.Query())),
-  "connectorName": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/indexing/{+name}","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "GetIndexingDatasourcesItemsRequest" }) as any as S.Schema<GetIndexingDatasourcesItemsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    "debugOptions.enableDebugging": S.optional(S.Boolean.pipe(T.Query())),
+    connectorName: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/indexing/{+name}",
+      baseUrl: "https://cloudsearch.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetIndexingDatasourcesItemsRequest",
+}) as any as S.Schema<GetIndexingDatasourcesItemsRequest>;
 
 /** List of timestamp values. */
 export interface TimestampValues {
   values?: StringList;
 }
 export const TimestampValues = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "values": S.optional(StringList),
-}),
-).annotate({ identifier: "TimestampValues" }) as any as S.Schema<TimestampValues>;
+  S.Struct({
+    values: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "TimestampValues",
+}) as any as S.Schema<TimestampValues>;
 
 export type StructuredDataObjectList = ReadonlyArray<StructuredDataObject>;
-export const StructuredDataObjectList = /*@__PURE__*/ S.Array(S.suspend(() => StructuredDataObject)) as any as S.Schema<StructuredDataObjectList>;
+export const StructuredDataObjectList = /*@__PURE__*/ S.Array(
+  S.suspend(() => StructuredDataObject),
+) as any as S.Schema<StructuredDataObjectList>;
 
 /** List of object values. */
 export interface ObjectValues {
   values?: StructuredDataObjectList;
 }
 export const ObjectValues = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "values": S.optional(StructuredDataObjectList),
-}),
+  S.Struct({
+    values: S.optional(StructuredDataObjectList),
+  }),
 ).annotate({ identifier: "ObjectValues" }) as any as S.Schema<ObjectValues>;
 
 /** List of integer values. */
@@ -725,9 +875,9 @@ export interface IntegerValues {
   values?: StringList;
 }
 export const IntegerValues = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "values": S.optional(StringList),
-}),
+  S.Struct({
+    values: S.optional(StringList),
+  }),
 ).annotate({ identifier: "IntegerValues" }) as any as S.Schema<IntegerValues>;
 
 /** List of text values. */
@@ -736,9 +886,9 @@ export interface TextValues {
   values?: StringList;
 }
 export const TextValues = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "values": S.optional(StringList),
-}),
+  S.Struct({
+    values: S.optional(StringList),
+  }),
 ).annotate({ identifier: "TextValues" }) as any as S.Schema<TextValues>;
 
 /** List of html values. */
@@ -747,35 +897,39 @@ export interface HtmlValues {
   values?: StringList;
 }
 export const HtmlValues = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "values": S.optional(StringList),
-}),
+  S.Struct({
+    values: S.optional(StringList),
+  }),
 ).annotate({ identifier: "HtmlValues" }) as any as S.Schema<HtmlValues>;
 
 export type DoubleList = ReadonlyArray<number>;
-export const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
+export const DoubleList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<DoubleList>;
 
 /** List of double values. */
 export interface DoubleValues {
   values?: DoubleList;
 }
 export const DoubleValues = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "values": S.optional(DoubleList),
-}),
+  S.Struct({
+    values: S.optional(DoubleList),
+  }),
 ).annotate({ identifier: "DoubleValues" }) as any as S.Schema<DoubleValues>;
 
 export type Cloudsearch_DateList = ReadonlyArray<Cloudsearch_Date>;
-export const Cloudsearch_DateList = /*@__PURE__*/ S.Array(Cloudsearch_Date) as any as S.Schema<Cloudsearch_DateList>;
+export const Cloudsearch_DateList = /*@__PURE__*/ S.Array(
+  Cloudsearch_Date,
+) as any as S.Schema<Cloudsearch_DateList>;
 
 /** List of date values. */
 export interface DateValues {
   values?: Cloudsearch_DateList;
 }
 export const DateValues = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "values": S.optional(Cloudsearch_DateList),
-}),
+  S.Struct({
+    values: S.optional(Cloudsearch_DateList),
+  }),
 ).annotate({ identifier: "DateValues" }) as any as S.Schema<DateValues>;
 
 /** List of enum values. */
@@ -784,9 +938,9 @@ export interface EnumValues {
   values?: StringList;
 }
 export const EnumValues = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "values": S.optional(StringList),
-}),
+  S.Struct({
+    values: S.optional(StringList),
+  }),
 ).annotate({ identifier: "EnumValues" }) as any as S.Schema<EnumValues>;
 
 /** A typed name-value pair for structured data. The type of the value should be the same as the registered type for the `name` property in the object definition of `objectType`. */
@@ -804,22 +958,24 @@ export interface NamedProperty {
   enumValues?: EnumValues;
 }
 export const NamedProperty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "timestampValues": S.optional(TimestampValues),
-  "objectValues": S.optional(ObjectValues),
-  "integerValues": S.optional(IntegerValues),
-  "textValues": S.optional(TextValues),
-  "name": S.optional(S.String),
-  "htmlValues": S.optional(HtmlValues),
-  "doubleValues": S.optional(DoubleValues),
-  "dateValues": S.optional(DateValues),
-  "booleanValue": S.optional(S.Boolean),
-  "enumValues": S.optional(EnumValues),
-}),
+  S.Struct({
+    timestampValues: S.optional(TimestampValues),
+    objectValues: S.optional(ObjectValues),
+    integerValues: S.optional(IntegerValues),
+    textValues: S.optional(TextValues),
+    name: S.optional(S.String),
+    htmlValues: S.optional(HtmlValues),
+    doubleValues: S.optional(DoubleValues),
+    dateValues: S.optional(DateValues),
+    booleanValue: S.optional(S.Boolean),
+    enumValues: S.optional(EnumValues),
+  }),
 ).annotate({ identifier: "NamedProperty" }) as any as S.Schema<NamedProperty>;
 
 export type NamedPropertyList = ReadonlyArray<NamedProperty>;
-export const NamedPropertyList = /*@__PURE__*/ S.Array(NamedProperty) as any as S.Schema<NamedPropertyList>;
+export const NamedPropertyList = /*@__PURE__*/ S.Array(
+  NamedProperty,
+) as any as S.Schema<NamedPropertyList>;
 
 /** A structured data object consisting of named properties. */
 export interface StructuredDataObject {
@@ -827,10 +983,12 @@ export interface StructuredDataObject {
   properties?: NamedPropertyList;
 }
 export const StructuredDataObject = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "properties": S.optional(NamedPropertyList),
-}),
-).annotate({ identifier: "StructuredDataObject" }) as any as S.Schema<StructuredDataObject>;
+  S.Struct({
+    properties: S.optional(NamedPropertyList),
+  }),
+).annotate({
+  identifier: "StructuredDataObject",
+}) as any as S.Schema<StructuredDataObject>;
 
 /** Available structured data fields for the item. */
 export interface ItemStructuredData {
@@ -840,16 +998,28 @@ export interface ItemStructuredData {
   hash?: string;
 }
 export const ItemStructuredData = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "object": S.optional(StructuredDataObject),
-  "hash": S.optional(S.String),
-}),
-).annotate({ identifier: "ItemStructuredData" }) as any as S.Schema<ItemStructuredData>;
+  S.Struct({
+    object: S.optional(StructuredDataObject),
+    hash: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ItemStructuredData",
+}) as any as S.Schema<ItemStructuredData>;
 
-export type ItemStatusCodeEnum = "CODE_UNSPECIFIED" | "ERROR" | "MODIFIED" | "NEW_ITEM" | "ACCEPTED";
+export type ItemStatusCodeEnum =
+  | "CODE_UNSPECIFIED"
+  | "ERROR"
+  | "MODIFIED"
+  | "NEW_ITEM"
+  | "ACCEPTED";
 export const ItemStatusCodeEnum = /*@__PURE__*/ S.String;
 
-export type ProcessingErrorCodeEnum = "PROCESSING_ERROR_CODE_UNSPECIFIED" | "MALFORMED_REQUEST" | "UNSUPPORTED_CONTENT_FORMAT" | "INDIRECT_BROKEN_ACL" | "ACL_CYCLE";
+export type ProcessingErrorCodeEnum =
+  | "PROCESSING_ERROR_CODE_UNSPECIFIED"
+  | "MALFORMED_REQUEST"
+  | "UNSUPPORTED_CONTENT_FORMAT"
+  | "INDIRECT_BROKEN_ACL"
+  | "ACL_CYCLE";
 export const ProcessingErrorCodeEnum = /*@__PURE__*/ S.String;
 
 export interface FieldViolation {
@@ -859,14 +1029,16 @@ export interface FieldViolation {
   description?: string;
 }
 export const FieldViolation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "field": S.optional(S.String),
-  "description": S.optional(S.String),
-}),
+  S.Struct({
+    field: S.optional(S.String),
+    description: S.optional(S.String),
+  }),
 ).annotate({ identifier: "FieldViolation" }) as any as S.Schema<FieldViolation>;
 
 export type FieldViolationList = ReadonlyArray<FieldViolation>;
-export const FieldViolationList = /*@__PURE__*/ S.Array(FieldViolation) as any as S.Schema<FieldViolationList>;
+export const FieldViolationList = /*@__PURE__*/ S.Array(
+  FieldViolation,
+) as any as S.Schema<FieldViolationList>;
 
 export interface ProcessingError {
   /** The description of the error. */
@@ -877,17 +1049,31 @@ export interface ProcessingError {
   fieldViolations?: FieldViolationList;
 }
 export const ProcessingError = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "errorMessage": S.optional(S.String),
-  "code": S.optional(ProcessingErrorCodeEnum),
-  "fieldViolations": S.optional(FieldViolationList),
-}),
-).annotate({ identifier: "ProcessingError" }) as any as S.Schema<ProcessingError>;
+  S.Struct({
+    errorMessage: S.optional(S.String),
+    code: S.optional(ProcessingErrorCodeEnum),
+    fieldViolations: S.optional(FieldViolationList),
+  }),
+).annotate({
+  identifier: "ProcessingError",
+}) as any as S.Schema<ProcessingError>;
 
 export type ProcessingErrorList = ReadonlyArray<ProcessingError>;
-export const ProcessingErrorList = /*@__PURE__*/ S.Array(ProcessingError) as any as S.Schema<ProcessingErrorList>;
+export const ProcessingErrorList = /*@__PURE__*/ S.Array(
+  ProcessingError,
+) as any as S.Schema<ProcessingErrorList>;
 
-export type RepositoryErrorTypeEnum = "UNKNOWN" | "NETWORK_ERROR" | "DNS_ERROR" | "CONNECTION_ERROR" | "AUTHENTICATION_ERROR" | "AUTHORIZATION_ERROR" | "SERVER_ERROR" | "QUOTA_EXCEEDED" | "SERVICE_UNAVAILABLE" | "CLIENT_ERROR";
+export type RepositoryErrorTypeEnum =
+  | "UNKNOWN"
+  | "NETWORK_ERROR"
+  | "DNS_ERROR"
+  | "CONNECTION_ERROR"
+  | "AUTHENTICATION_ERROR"
+  | "AUTHORIZATION_ERROR"
+  | "SERVER_ERROR"
+  | "QUOTA_EXCEEDED"
+  | "SERVICE_UNAVAILABLE"
+  | "CLIENT_ERROR";
 export const RepositoryErrorTypeEnum = /*@__PURE__*/ S.String;
 
 /** Errors when the connector is communicating to the source repository. */
@@ -900,15 +1086,19 @@ export interface RepositoryError {
   httpStatusCode?: number;
 }
 export const RepositoryError = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "errorMessage": S.optional(S.String),
-  "type": S.optional(RepositoryErrorTypeEnum),
-  "httpStatusCode": S.optional(S.Number),
-}),
-).annotate({ identifier: "RepositoryError" }) as any as S.Schema<RepositoryError>;
+  S.Struct({
+    errorMessage: S.optional(S.String),
+    type: S.optional(RepositoryErrorTypeEnum),
+    httpStatusCode: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "RepositoryError",
+}) as any as S.Schema<RepositoryError>;
 
 export type RepositoryErrorList = ReadonlyArray<RepositoryError>;
-export const RepositoryErrorList = /*@__PURE__*/ S.Array(RepositoryError) as any as S.Schema<RepositoryErrorList>;
+export const RepositoryErrorList = /*@__PURE__*/ S.Array(
+  RepositoryError,
+) as any as S.Schema<RepositoryErrorList>;
 
 /** This contains item's status and any errors. */
 export interface ItemStatus {
@@ -920,17 +1110,25 @@ export interface ItemStatus {
   repositoryErrors?: RepositoryErrorList;
 }
 export const ItemStatus = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(ItemStatusCodeEnum),
-  "processingErrors": S.optional(ProcessingErrorList),
-  "repositoryErrors": S.optional(RepositoryErrorList),
-}),
+  S.Struct({
+    code: S.optional(ItemStatusCodeEnum),
+    processingErrors: S.optional(ProcessingErrorList),
+    repositoryErrors: S.optional(RepositoryErrorList),
+  }),
 ).annotate({ identifier: "ItemStatus" }) as any as S.Schema<ItemStatus>;
 
-export type ItemItemTypeEnum = "UNSPECIFIED" | "CONTENT_ITEM" | "CONTAINER_ITEM" | "VIRTUAL_CONTAINER_ITEM";
+export type ItemItemTypeEnum =
+  | "UNSPECIFIED"
+  | "CONTENT_ITEM"
+  | "CONTAINER_ITEM"
+  | "VIRTUAL_CONTAINER_ITEM";
 export const ItemItemTypeEnum = /*@__PURE__*/ S.String;
 
-export type ItemContentContentFormatEnum = "UNSPECIFIED" | "HTML" | "TEXT" | "RAW";
+export type ItemContentContentFormatEnum =
+  | "UNSPECIFIED"
+  | "HTML"
+  | "TEXT"
+  | "RAW";
 export const ItemContentContentFormatEnum = /*@__PURE__*/ S.String;
 
 /** Represents an upload session reference. This reference is created via upload method. This reference is valid for 30 days after its creation. Updating of item content may refer to this uploaded content via contentDataRef. */
@@ -939,9 +1137,9 @@ export interface UploadItemRef {
   name?: string;
 }
 export const UploadItemRef = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "UploadItemRef" }) as any as S.Schema<UploadItemRef>;
 
 /** Content of an item to be indexed and surfaced by Cloud Search. Only UTF-8 encoded strings are allowed as inlineContent. If the content is uploaded and not binary, it must be UTF-8 encoded. */
@@ -955,18 +1153,24 @@ export interface ItemContent {
   hash?: string;
 }
 export const ItemContent = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "contentFormat": S.optional(ItemContentContentFormatEnum),
-  "contentDataRef": S.optional(UploadItemRef),
-  "inlineContent": S.optional(S.String),
-  "hash": S.optional(S.String),
-}),
+  S.Struct({
+    contentFormat: S.optional(ItemContentContentFormatEnum),
+    contentDataRef: S.optional(UploadItemRef),
+    inlineContent: S.optional(S.String),
+    hash: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ItemContent" }) as any as S.Schema<ItemContent>;
 
 export type PrincipalList = ReadonlyArray<Principal>;
-export const PrincipalList = /*@__PURE__*/ S.Array(Principal) as any as S.Schema<PrincipalList>;
+export const PrincipalList = /*@__PURE__*/ S.Array(
+  Principal,
+) as any as S.Schema<PrincipalList>;
 
-export type ItemAclAclInheritanceTypeEnum = "NOT_APPLICABLE" | "CHILD_OVERRIDE" | "PARENT_OVERRIDE" | "BOTH_PERMIT";
+export type ItemAclAclInheritanceTypeEnum =
+  | "NOT_APPLICABLE"
+  | "CHILD_OVERRIDE"
+  | "PARENT_OVERRIDE"
+  | "BOTH_PERMIT";
 export const ItemAclAclInheritanceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Access control list information for the item. For more information see [Map ACLs](https://developers.google.com/workspace/cloud-search/docs/guides/acls). */
@@ -983,13 +1187,13 @@ export interface ItemAcl {
   aclInheritanceType?: ItemAclAclInheritanceTypeEnum;
 }
 export const ItemAcl = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "inheritAclFrom": S.optional(S.String),
-  "deniedReaders": S.optional(PrincipalList),
-  "owners": S.optional(PrincipalList),
-  "readers": S.optional(PrincipalList),
-  "aclInheritanceType": S.optional(ItemAclAclInheritanceTypeEnum),
-}),
+  S.Struct({
+    inheritAclFrom: S.optional(S.String),
+    deniedReaders: S.optional(PrincipalList),
+    owners: S.optional(PrincipalList),
+    readers: S.optional(PrincipalList),
+    aclInheritanceType: S.optional(ItemAclAclInheritanceTypeEnum),
+  }),
 ).annotate({ identifier: "ItemAcl" }) as any as S.Schema<ItemAcl>;
 
 /** A named attribute associated with an item which can be used for influencing the ranking of the item based on the context in the request. */
@@ -1000,14 +1204,18 @@ export interface ContextAttribute {
   name?: string;
 }
 export const ContextAttribute = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "values": S.optional(StringList),
-  "name": S.optional(S.String),
-}),
-).annotate({ identifier: "ContextAttribute" }) as any as S.Schema<ContextAttribute>;
+  S.Struct({
+    values: S.optional(StringList),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ContextAttribute",
+}) as any as S.Schema<ContextAttribute>;
 
 export type ContextAttributeList = ReadonlyArray<ContextAttribute>;
-export const ContextAttributeList = /*@__PURE__*/ S.Array(ContextAttribute) as any as S.Schema<ContextAttributeList>;
+export const ContextAttributeList = /*@__PURE__*/ S.Array(
+  ContextAttribute,
+) as any as S.Schema<ContextAttributeList>;
 
 /** Additional search quality metadata of the item. */
 export interface SearchQualityMetadata {
@@ -1015,10 +1223,12 @@ export interface SearchQualityMetadata {
   quality?: number;
 }
 export const SearchQualityMetadata = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "quality": S.optional(S.Number),
-}),
-).annotate({ identifier: "SearchQualityMetadata" }) as any as S.Schema<SearchQualityMetadata>;
+  S.Struct({
+    quality: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "SearchQualityMetadata",
+}) as any as S.Schema<SearchQualityMetadata>;
 
 export type InteractionTypeEnum = "UNSPECIFIED" | "VIEW" | "EDIT";
 export const InteractionTypeEnum = /*@__PURE__*/ S.String;
@@ -1032,15 +1242,17 @@ export interface Interaction {
   interactionTime?: string;
 }
 export const Interaction = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "principal": S.optional(Principal),
-  "type": S.optional(InteractionTypeEnum),
-  "interactionTime": S.optional(S.String),
-}),
+  S.Struct({
+    principal: S.optional(Principal),
+    type: S.optional(InteractionTypeEnum),
+    interactionTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Interaction" }) as any as S.Schema<Interaction>;
 
 export type InteractionList = ReadonlyArray<Interaction>;
-export const InteractionList = /*@__PURE__*/ S.Array(Interaction) as any as S.Schema<InteractionList>;
+export const InteractionList = /*@__PURE__*/ S.Array(
+  Interaction,
+) as any as S.Schema<InteractionList>;
 
 /** Available metadata fields for the item. */
 export interface ItemMetadata {
@@ -1072,21 +1284,21 @@ export interface ItemMetadata {
   keywords?: StringList;
 }
 export const ItemMetadata = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "contextAttributes": S.optional(ContextAttributeList),
-  "title": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "searchQualityMetadata": S.optional(SearchQualityMetadata),
-  "hash": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "sourceRepositoryUrl": S.optional(S.String),
-  "mimeType": S.optional(S.String),
-  "interactions": S.optional(InteractionList),
-  "contentLanguage": S.optional(S.String),
-  "containerName": S.optional(S.String),
-  "objectType": S.optional(S.String),
-  "keywords": S.optional(StringList),
-}),
+  S.Struct({
+    contextAttributes: S.optional(ContextAttributeList),
+    title: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    searchQualityMetadata: S.optional(SearchQualityMetadata),
+    hash: S.optional(S.String),
+    createTime: S.optional(S.String),
+    sourceRepositoryUrl: S.optional(S.String),
+    mimeType: S.optional(S.String),
+    interactions: S.optional(InteractionList),
+    contentLanguage: S.optional(S.String),
+    containerName: S.optional(S.String),
+    objectType: S.optional(S.String),
+    keywords: S.optional(StringList),
+  }),
 ).annotate({ identifier: "ItemMetadata" }) as any as S.Schema<ItemMetadata>;
 
 /** Represents a single object that is an item in the search index, such as a file, folder, or a database record. */
@@ -1113,18 +1325,18 @@ export interface Item {
   metadata?: ItemMetadata;
 }
 export const Item = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "structuredData": S.optional(ItemStructuredData),
-  "queue": S.optional(S.String),
-  "status": S.optional(ItemStatus),
-  "payload": S.optional(S.String),
-  "itemType": S.optional(ItemItemTypeEnum),
-  "content": S.optional(ItemContent),
-  "acl": S.optional(ItemAcl),
-  "name": S.optional(S.String),
-  "version": S.optional(S.String),
-  "metadata": S.optional(ItemMetadata),
-}),
+  S.Struct({
+    structuredData: S.optional(ItemStructuredData),
+    queue: S.optional(S.String),
+    status: S.optional(ItemStatus),
+    payload: S.optional(S.String),
+    itemType: S.optional(ItemItemTypeEnum),
+    content: S.optional(ItemContent),
+    acl: S.optional(ItemAcl),
+    name: S.optional(S.String),
+    version: S.optional(S.String),
+    metadata: S.optional(ItemMetadata),
+  }),
 ).annotate({ identifier: "Item" }) as any as S.Schema<Item>;
 
 export interface GetIndexStatsRequest {
@@ -1142,17 +1354,30 @@ export interface GetIndexStatsRequest {
   "fromDate.month"?: number;
 }
 export const GetIndexStatsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fromDate.year": S.optional(S.Number.pipe(T.Query())),
-  "toDate.month": S.optional(S.Number.pipe(T.Query())),
-  "toDate.day": S.optional(S.Number.pipe(T.Query())),
-  "fromDate.day": S.optional(S.Number.pipe(T.Query())),
-  "toDate.year": S.optional(S.Number.pipe(T.Query())),
-  "fromDate.month": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/stats/index","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "GetIndexStatsRequest" }) as any as S.Schema<GetIndexStatsRequest>;
+  S.Struct({
+    "fromDate.year": S.optional(S.Number.pipe(T.Query())),
+    "toDate.month": S.optional(S.Number.pipe(T.Query())),
+    "toDate.day": S.optional(S.Number.pipe(T.Query())),
+    "fromDate.day": S.optional(S.Number.pipe(T.Query())),
+    "toDate.year": S.optional(S.Number.pipe(T.Query())),
+    "fromDate.month": S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/stats/index",
+      baseUrl: "https://cloudsearch.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetIndexStatsRequest",
+}) as any as S.Schema<GetIndexStatsRequest>;
 
-export type ItemCountByStatusStatusCodeEnum = "CODE_UNSPECIFIED" | "ERROR" | "MODIFIED" | "NEW_ITEM" | "ACCEPTED";
+export type ItemCountByStatusStatusCodeEnum =
+  | "CODE_UNSPECIFIED"
+  | "ERROR"
+  | "MODIFIED"
+  | "NEW_ITEM"
+  | "ACCEPTED";
 export const ItemCountByStatusStatusCodeEnum = /*@__PURE__*/ S.String;
 
 export interface ItemCountByStatus {
@@ -1164,15 +1389,19 @@ export interface ItemCountByStatus {
   indexedItemsCount?: string;
 }
 export const ItemCountByStatus = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "statusCode": S.optional(ItemCountByStatusStatusCodeEnum),
-  "count": S.optional(S.String),
-  "indexedItemsCount": S.optional(S.String),
-}),
-).annotate({ identifier: "ItemCountByStatus" }) as any as S.Schema<ItemCountByStatus>;
+  S.Struct({
+    statusCode: S.optional(ItemCountByStatusStatusCodeEnum),
+    count: S.optional(S.String),
+    indexedItemsCount: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ItemCountByStatus",
+}) as any as S.Schema<ItemCountByStatus>;
 
 export type ItemCountByStatusList = ReadonlyArray<ItemCountByStatus>;
-export const ItemCountByStatusList = /*@__PURE__*/ S.Array(ItemCountByStatus) as any as S.Schema<ItemCountByStatusList>;
+export const ItemCountByStatusList = /*@__PURE__*/ S.Array(
+  ItemCountByStatus,
+) as any as S.Schema<ItemCountByStatusList>;
 
 /** Aggregation of items by status code as of the specified date. */
 export interface CustomerIndexStats {
@@ -1182,14 +1411,18 @@ export interface CustomerIndexStats {
   date?: Cloudsearch_Date;
 }
 export const CustomerIndexStats = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "itemCountByStatus": S.optional(ItemCountByStatusList),
-  "date": S.optional(Cloudsearch_Date),
-}),
-).annotate({ identifier: "CustomerIndexStats" }) as any as S.Schema<CustomerIndexStats>;
+  S.Struct({
+    itemCountByStatus: S.optional(ItemCountByStatusList),
+    date: S.optional(Cloudsearch_Date),
+  }),
+).annotate({
+  identifier: "CustomerIndexStats",
+}) as any as S.Schema<CustomerIndexStats>;
 
 export type CustomerIndexStatsList = ReadonlyArray<CustomerIndexStats>;
-export const CustomerIndexStatsList = /*@__PURE__*/ S.Array(CustomerIndexStats) as any as S.Schema<CustomerIndexStatsList>;
+export const CustomerIndexStatsList = /*@__PURE__*/ S.Array(
+  CustomerIndexStats,
+) as any as S.Schema<CustomerIndexStatsList>;
 
 export interface GetCustomerIndexStatsResponse {
   /** Summary of indexed item counts, one for each day in the requested range. */
@@ -1198,21 +1431,31 @@ export interface GetCustomerIndexStatsResponse {
   averageIndexedItemCount?: string;
 }
 export const GetCustomerIndexStatsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "stats": S.optional(CustomerIndexStatsList),
-  "averageIndexedItemCount": S.optional(S.String),
-}),
-).annotate({ identifier: "GetCustomerIndexStatsResponse" }) as any as S.Schema<GetCustomerIndexStatsResponse>;
+  S.Struct({
+    stats: S.optional(CustomerIndexStatsList),
+    averageIndexedItemCount: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetCustomerIndexStatsResponse",
+}) as any as S.Schema<GetCustomerIndexStatsResponse>;
 
 export interface GetOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
 export const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "GetOperationsRequest" }) as any as S.Schema<GetOperationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://cloudsearch.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetOperationsRequest",
+}) as any as S.Schema<GetOperationsRequest>;
 
 export interface GetQueryStatsRequest {
   /** Month of date. Must be from 1 to 12. */
@@ -1229,15 +1472,23 @@ export interface GetQueryStatsRequest {
   "fromDate.year"?: number;
 }
 export const GetQueryStatsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fromDate.month": S.optional(S.Number.pipe(T.Query())),
-  "toDate.year": S.optional(S.Number.pipe(T.Query())),
-  "fromDate.day": S.optional(S.Number.pipe(T.Query())),
-  "toDate.day": S.optional(S.Number.pipe(T.Query())),
-  "toDate.month": S.optional(S.Number.pipe(T.Query())),
-  "fromDate.year": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/stats/query","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "GetQueryStatsRequest" }) as any as S.Schema<GetQueryStatsRequest>;
+  S.Struct({
+    "fromDate.month": S.optional(S.Number.pipe(T.Query())),
+    "toDate.year": S.optional(S.Number.pipe(T.Query())),
+    "fromDate.day": S.optional(S.Number.pipe(T.Query())),
+    "toDate.day": S.optional(S.Number.pipe(T.Query())),
+    "toDate.month": S.optional(S.Number.pipe(T.Query())),
+    "fromDate.year": S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/stats/query",
+      baseUrl: "https://cloudsearch.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetQueryStatsRequest",
+}) as any as S.Schema<GetQueryStatsRequest>;
 
 export interface QueryCountByStatus {
   /** This represents the http status code. */
@@ -1245,14 +1496,18 @@ export interface QueryCountByStatus {
   count?: string;
 }
 export const QueryCountByStatus = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "statusCode": S.optional(S.Number),
-  "count": S.optional(S.String),
-}),
-).annotate({ identifier: "QueryCountByStatus" }) as any as S.Schema<QueryCountByStatus>;
+  S.Struct({
+    statusCode: S.optional(S.Number),
+    count: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "QueryCountByStatus",
+}) as any as S.Schema<QueryCountByStatus>;
 
 export type QueryCountByStatusList = ReadonlyArray<QueryCountByStatus>;
-export const QueryCountByStatusList = /*@__PURE__*/ S.Array(QueryCountByStatus) as any as S.Schema<QueryCountByStatusList>;
+export const QueryCountByStatusList = /*@__PURE__*/ S.Array(
+  QueryCountByStatus,
+) as any as S.Schema<QueryCountByStatusList>;
 
 export interface CustomerQueryStats {
   queryCountByStatus?: QueryCountByStatusList;
@@ -1260,14 +1515,18 @@ export interface CustomerQueryStats {
   date?: Cloudsearch_Date;
 }
 export const CustomerQueryStats = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "queryCountByStatus": S.optional(QueryCountByStatusList),
-  "date": S.optional(Cloudsearch_Date),
-}),
-).annotate({ identifier: "CustomerQueryStats" }) as any as S.Schema<CustomerQueryStats>;
+  S.Struct({
+    queryCountByStatus: S.optional(QueryCountByStatusList),
+    date: S.optional(Cloudsearch_Date),
+  }),
+).annotate({
+  identifier: "CustomerQueryStats",
+}) as any as S.Schema<CustomerQueryStats>;
 
 export type CustomerQueryStatsList = ReadonlyArray<CustomerQueryStats>;
-export const CustomerQueryStatsList = /*@__PURE__*/ S.Array(CustomerQueryStats) as any as S.Schema<CustomerQueryStatsList>;
+export const CustomerQueryStatsList = /*@__PURE__*/ S.Array(
+  CustomerQueryStats,
+) as any as S.Schema<CustomerQueryStatsList>;
 
 export interface GetCustomerQueryStatsResponse {
   stats?: CustomerQueryStatsList;
@@ -1275,11 +1534,13 @@ export interface GetCustomerQueryStatsResponse {
   totalQueryCount?: string;
 }
 export const GetCustomerQueryStatsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "stats": S.optional(CustomerQueryStatsList),
-  "totalQueryCount": S.optional(S.String),
-}),
-).annotate({ identifier: "GetCustomerQueryStatsResponse" }) as any as S.Schema<GetCustomerQueryStatsResponse>;
+  S.Struct({
+    stats: S.optional(CustomerQueryStatsList),
+    totalQueryCount: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetCustomerQueryStatsResponse",
+}) as any as S.Schema<GetCustomerQueryStatsResponse>;
 
 export interface GetSchemaIndexingDatasourcesRequest {
   /** The name of the data source to get Schema. Format: datasources/{source_id} */
@@ -1288,11 +1549,19 @@ export interface GetSchemaIndexingDatasourcesRequest {
   "debugOptions.enableDebugging"?: boolean;
 }
 export const GetSchemaIndexingDatasourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "debugOptions.enableDebugging": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/indexing/{+name}/schema","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "GetSchemaIndexingDatasourcesRequest" }) as any as S.Schema<GetSchemaIndexingDatasourcesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    "debugOptions.enableDebugging": S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/indexing/{+name}/schema",
+      baseUrl: "https://cloudsearch.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetSchemaIndexingDatasourcesRequest",
+}) as any as S.Schema<GetSchemaIndexingDatasourcesRequest>;
 
 /** A reference to a top-level property within the object that should be displayed in search results. The values of the chosen properties is displayed in the search results along with the display label for that property if one is specified. If a display label is not specified, only the values is shown. */
 export interface DisplayedProperty {
@@ -1300,13 +1569,17 @@ export interface DisplayedProperty {
   propertyName?: string;
 }
 export const DisplayedProperty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "propertyName": S.optional(S.String),
-}),
-).annotate({ identifier: "DisplayedProperty" }) as any as S.Schema<DisplayedProperty>;
+  S.Struct({
+    propertyName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DisplayedProperty",
+}) as any as S.Schema<DisplayedProperty>;
 
 export type DisplayedPropertyList = ReadonlyArray<DisplayedProperty>;
-export const DisplayedPropertyList = /*@__PURE__*/ S.Array(DisplayedProperty) as any as S.Schema<DisplayedPropertyList>;
+export const DisplayedPropertyList = /*@__PURE__*/ S.Array(
+  DisplayedProperty,
+) as any as S.Schema<DisplayedPropertyList>;
 
 /** A metaline is a list of properties that are displayed along with the search result to provide context. */
 export interface Metaline {
@@ -1314,13 +1587,15 @@ export interface Metaline {
   properties?: DisplayedPropertyList;
 }
 export const Metaline = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "properties": S.optional(DisplayedPropertyList),
-}),
+  S.Struct({
+    properties: S.optional(DisplayedPropertyList),
+  }),
 ).annotate({ identifier: "Metaline" }) as any as S.Schema<Metaline>;
 
 export type MetalineList = ReadonlyArray<Metaline>;
-export const MetalineList = /*@__PURE__*/ S.Array(Metaline) as any as S.Schema<MetalineList>;
+export const MetalineList = /*@__PURE__*/ S.Array(
+  Metaline,
+) as any as S.Schema<MetalineList>;
 
 /** The display options for an object. */
 export interface ObjectDisplayOptions {
@@ -1330,11 +1605,13 @@ export interface ObjectDisplayOptions {
   objectDisplayLabel?: string;
 }
 export const ObjectDisplayOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "metalines": S.optional(MetalineList),
-  "objectDisplayLabel": S.optional(S.String),
-}),
-).annotate({ identifier: "ObjectDisplayOptions" }) as any as S.Schema<ObjectDisplayOptions>;
+  S.Struct({
+    metalines: S.optional(MetalineList),
+    objectDisplayLabel: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ObjectDisplayOptions",
+}) as any as S.Schema<ObjectDisplayOptions>;
 
 /** Indicates which freshness property to use when adjusting search ranking for an item. Fresher, more recent dates indicate higher quality. Use the freshness option property that best works with your data. For fileshare documents, last modified time is most relevant. For calendar event data, the time when the event occurs is a more relevant freshness indicator. In this way, calendar events that occur closer to the time of the search query are considered higher quality and ranked accordingly. */
 export interface FreshnessOptions {
@@ -1344,11 +1621,13 @@ export interface FreshnessOptions {
   freshnessDuration?: string;
 }
 export const FreshnessOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "freshnessProperty": S.optional(S.String),
-  "freshnessDuration": S.optional(S.String),
-}),
-).annotate({ identifier: "FreshnessOptions" }) as any as S.Schema<FreshnessOptions>;
+  S.Struct({
+    freshnessProperty: S.optional(S.String),
+    freshnessDuration: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "FreshnessOptions",
+}) as any as S.Schema<FreshnessOptions>;
 
 /** The options for an object. */
 export interface ObjectOptions {
@@ -1360,11 +1639,11 @@ export interface ObjectOptions {
   suggestionFilteringOperators?: StringList;
 }
 export const ObjectOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "displayOptions": S.optional(ObjectDisplayOptions),
-  "freshnessOptions": S.optional(FreshnessOptions),
-  "suggestionFilteringOperators": S.optional(StringList),
-}),
+  S.Struct({
+    displayOptions: S.optional(ObjectDisplayOptions),
+    freshnessOptions: S.optional(FreshnessOptions),
+    suggestionFilteringOperators: S.optional(StringList),
+  }),
 ).annotate({ identifier: "ObjectOptions" }) as any as S.Schema<ObjectOptions>;
 
 /** Used to provide a search operator for boolean properties. This is optional. Search operators let users restrict the query to specific fields relevant to the type of item being searched. */
@@ -1373,10 +1652,12 @@ export interface BooleanOperatorOptions {
   operatorName?: string;
 }
 export const BooleanOperatorOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "operatorName": S.optional(S.String),
-}),
-).annotate({ identifier: "BooleanOperatorOptions" }) as any as S.Schema<BooleanOperatorOptions>;
+  S.Struct({
+    operatorName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BooleanOperatorOptions",
+}) as any as S.Schema<BooleanOperatorOptions>;
 
 /** The options for boolean properties. */
 export interface BooleanPropertyOptions {
@@ -1384,10 +1665,12 @@ export interface BooleanPropertyOptions {
   operatorOptions?: BooleanOperatorOptions;
 }
 export const BooleanPropertyOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "operatorOptions": S.optional(BooleanOperatorOptions),
-}),
-).annotate({ identifier: "BooleanPropertyOptions" }) as any as S.Schema<BooleanPropertyOptions>;
+  S.Struct({
+    operatorOptions: S.optional(BooleanOperatorOptions),
+  }),
+).annotate({
+  identifier: "BooleanPropertyOptions",
+}) as any as S.Schema<BooleanPropertyOptions>;
 
 /** Used to provide a search operator for text properties. This is optional. Search operators let users restrict the query to specific fields relevant to the type of item being searched. */
 export interface TextOperatorOptions {
@@ -1397,13 +1680,20 @@ export interface TextOperatorOptions {
   operatorName?: string;
 }
 export const TextOperatorOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "exactMatchWithOperator": S.optional(S.Boolean),
-  "operatorName": S.optional(S.String),
-}),
-).annotate({ identifier: "TextOperatorOptions" }) as any as S.Schema<TextOperatorOptions>;
+  S.Struct({
+    exactMatchWithOperator: S.optional(S.Boolean),
+    operatorName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "TextOperatorOptions",
+}) as any as S.Schema<TextOperatorOptions>;
 
-export type RetrievalImportanceImportanceEnum = "DEFAULT" | "HIGHEST" | "HIGH" | "LOW" | "NONE";
+export type RetrievalImportanceImportanceEnum =
+  | "DEFAULT"
+  | "HIGHEST"
+  | "HIGH"
+  | "LOW"
+  | "NONE";
 export const RetrievalImportanceImportanceEnum = /*@__PURE__*/ S.String;
 
 export interface RetrievalImportance {
@@ -1411,10 +1701,12 @@ export interface RetrievalImportance {
   importance?: RetrievalImportanceImportanceEnum;
 }
 export const RetrievalImportance = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "importance": S.optional(RetrievalImportanceImportanceEnum),
-}),
-).annotate({ identifier: "RetrievalImportance" }) as any as S.Schema<RetrievalImportance>;
+  S.Struct({
+    importance: S.optional(RetrievalImportanceImportanceEnum),
+  }),
+).annotate({
+  identifier: "RetrievalImportance",
+}) as any as S.Schema<RetrievalImportance>;
 
 /** The options for text properties. */
 export interface TextPropertyOptions {
@@ -1424,11 +1716,13 @@ export interface TextPropertyOptions {
   retrievalImportance?: RetrievalImportance;
 }
 export const TextPropertyOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "operatorOptions": S.optional(TextOperatorOptions),
-  "retrievalImportance": S.optional(RetrievalImportance),
-}),
-).annotate({ identifier: "TextPropertyOptions" }) as any as S.Schema<TextPropertyOptions>;
+  S.Struct({
+    operatorOptions: S.optional(TextOperatorOptions),
+    retrievalImportance: S.optional(RetrievalImportance),
+  }),
+).annotate({
+  identifier: "TextPropertyOptions",
+}) as any as S.Schema<TextPropertyOptions>;
 
 /** Used to provide a search operator for html properties. This is optional. Search operators let users restrict the query to specific fields relevant to the type of item being searched. */
 export interface HtmlOperatorOptions {
@@ -1436,10 +1730,12 @@ export interface HtmlOperatorOptions {
   operatorName?: string;
 }
 export const HtmlOperatorOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "operatorName": S.optional(S.String),
-}),
-).annotate({ identifier: "HtmlOperatorOptions" }) as any as S.Schema<HtmlOperatorOptions>;
+  S.Struct({
+    operatorName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "HtmlOperatorOptions",
+}) as any as S.Schema<HtmlOperatorOptions>;
 
 /** The options for html properties. */
 export interface HtmlPropertyOptions {
@@ -1449,11 +1745,13 @@ export interface HtmlPropertyOptions {
   retrievalImportance?: RetrievalImportance;
 }
 export const HtmlPropertyOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "operatorOptions": S.optional(HtmlOperatorOptions),
-  "retrievalImportance": S.optional(RetrievalImportance),
-}),
-).annotate({ identifier: "HtmlPropertyOptions" }) as any as S.Schema<HtmlPropertyOptions>;
+  S.Struct({
+    operatorOptions: S.optional(HtmlOperatorOptions),
+    retrievalImportance: S.optional(RetrievalImportance),
+  }),
+).annotate({
+  identifier: "HtmlPropertyOptions",
+}) as any as S.Schema<HtmlPropertyOptions>;
 
 /** Used to provide a search operator for integer properties. This is optional. Search operators let users restrict the query to specific fields relevant to the type of item being searched. */
 export interface IntegerOperatorOptions {
@@ -1465,14 +1763,19 @@ export interface IntegerOperatorOptions {
   lessThanOperatorName?: string;
 }
 export const IntegerOperatorOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "greaterThanOperatorName": S.optional(S.String),
-  "operatorName": S.optional(S.String),
-  "lessThanOperatorName": S.optional(S.String),
-}),
-).annotate({ identifier: "IntegerOperatorOptions" }) as any as S.Schema<IntegerOperatorOptions>;
+  S.Struct({
+    greaterThanOperatorName: S.optional(S.String),
+    operatorName: S.optional(S.String),
+    lessThanOperatorName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "IntegerOperatorOptions",
+}) as any as S.Schema<IntegerOperatorOptions>;
 
-export type IntegerPropertyOptionsOrderedRankingEnum = "NO_ORDER" | "ASCENDING" | "DESCENDING";
+export type IntegerPropertyOptionsOrderedRankingEnum =
+  | "NO_ORDER"
+  | "ASCENDING"
+  | "DESCENDING";
 export const IntegerPropertyOptionsOrderedRankingEnum = /*@__PURE__*/ S.String;
 
 /** The options for integer properties. */
@@ -1489,14 +1792,16 @@ export interface IntegerPropertyOptions {
   minimumValue?: string;
 }
 export const IntegerPropertyOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "operatorOptions": S.optional(IntegerOperatorOptions),
-  "maximumValue": S.optional(S.String),
-  "integerFacetingOptions": S.optional(IntegerFacetingOptions),
-  "orderedRanking": S.optional(IntegerPropertyOptionsOrderedRankingEnum),
-  "minimumValue": S.optional(S.String),
-}),
-).annotate({ identifier: "IntegerPropertyOptions" }) as any as S.Schema<IntegerPropertyOptions>;
+  S.Struct({
+    operatorOptions: S.optional(IntegerOperatorOptions),
+    maximumValue: S.optional(S.String),
+    integerFacetingOptions: S.optional(IntegerFacetingOptions),
+    orderedRanking: S.optional(IntegerPropertyOptionsOrderedRankingEnum),
+    minimumValue: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "IntegerPropertyOptions",
+}) as any as S.Schema<IntegerPropertyOptions>;
 
 /** The display options for a property. */
 export interface PropertyDisplayOptions {
@@ -1504,10 +1809,12 @@ export interface PropertyDisplayOptions {
   displayLabel?: string;
 }
 export const PropertyDisplayOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "displayLabel": S.optional(S.String),
-}),
-).annotate({ identifier: "PropertyDisplayOptions" }) as any as S.Schema<PropertyDisplayOptions>;
+  S.Struct({
+    displayLabel: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PropertyDisplayOptions",
+}) as any as S.Schema<PropertyDisplayOptions>;
 
 /** Used to provide a search operator for double properties. This is optional. Search operators let users restrict the query to specific fields relevant to the type of item being searched. */
 export interface DoubleOperatorOptions {
@@ -1515,10 +1822,12 @@ export interface DoubleOperatorOptions {
   operatorName?: string;
 }
 export const DoubleOperatorOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "operatorName": S.optional(S.String),
-}),
-).annotate({ identifier: "DoubleOperatorOptions" }) as any as S.Schema<DoubleOperatorOptions>;
+  S.Struct({
+    operatorName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DoubleOperatorOptions",
+}) as any as S.Schema<DoubleOperatorOptions>;
 
 /** The options for double properties. */
 export interface DoublePropertyOptions {
@@ -1526,10 +1835,12 @@ export interface DoublePropertyOptions {
   operatorOptions?: DoubleOperatorOptions;
 }
 export const DoublePropertyOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "operatorOptions": S.optional(DoubleOperatorOptions),
-}),
-).annotate({ identifier: "DoublePropertyOptions" }) as any as S.Schema<DoublePropertyOptions>;
+  S.Struct({
+    operatorOptions: S.optional(DoubleOperatorOptions),
+  }),
+).annotate({
+  identifier: "DoublePropertyOptions",
+}) as any as S.Schema<DoublePropertyOptions>;
 
 /** Used to provide a search operator for timestamp properties. This is optional. Search operators let users restrict the query to specific fields relevant to the type of item being searched. */
 export interface TimestampOperatorOptions {
@@ -1541,12 +1852,14 @@ export interface TimestampOperatorOptions {
   greaterThanOperatorName?: string;
 }
 export const TimestampOperatorOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "operatorName": S.optional(S.String),
-  "lessThanOperatorName": S.optional(S.String),
-  "greaterThanOperatorName": S.optional(S.String),
-}),
-).annotate({ identifier: "TimestampOperatorOptions" }) as any as S.Schema<TimestampOperatorOptions>;
+  S.Struct({
+    operatorName: S.optional(S.String),
+    lessThanOperatorName: S.optional(S.String),
+    greaterThanOperatorName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "TimestampOperatorOptions",
+}) as any as S.Schema<TimestampOperatorOptions>;
 
 /** The options for timestamp properties. */
 export interface TimestampPropertyOptions {
@@ -1554,10 +1867,12 @@ export interface TimestampPropertyOptions {
   operatorOptions?: TimestampOperatorOptions;
 }
 export const TimestampPropertyOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "operatorOptions": S.optional(TimestampOperatorOptions),
-}),
-).annotate({ identifier: "TimestampPropertyOptions" }) as any as S.Schema<TimestampPropertyOptions>;
+  S.Struct({
+    operatorOptions: S.optional(TimestampOperatorOptions),
+  }),
+).annotate({
+  identifier: "TimestampPropertyOptions",
+}) as any as S.Schema<TimestampPropertyOptions>;
 
 /** The options for object properties. */
 export interface ObjectPropertyOptions {
@@ -1565,12 +1880,17 @@ export interface ObjectPropertyOptions {
   subobjectProperties?: PropertyDefinitionList;
 }
 export const ObjectPropertyOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "subobjectProperties": S.optional(S.suspend(() => PropertyDefinitionList)),
-}),
-).annotate({ identifier: "ObjectPropertyOptions" }) as any as S.Schema<ObjectPropertyOptions>;
+  S.Struct({
+    subobjectProperties: S.optional(S.suspend(() => PropertyDefinitionList)),
+  }),
+).annotate({
+  identifier: "ObjectPropertyOptions",
+}) as any as S.Schema<ObjectPropertyOptions>;
 
-export type EnumPropertyOptionsOrderedRankingEnum = "NO_ORDER" | "ASCENDING" | "DESCENDING";
+export type EnumPropertyOptionsOrderedRankingEnum =
+  | "NO_ORDER"
+  | "ASCENDING"
+  | "DESCENDING";
 export const EnumPropertyOptionsOrderedRankingEnum = /*@__PURE__*/ S.String;
 
 /** Used to provide a search operator for enum properties. This is optional. Search operators let users restrict the query to specific fields relevant to the type of item being searched. For example, if you provide no operator for a *priority* enum property with possible values *p0* and *p1*, a query that contains the term *p0* returns items that have *p0* as the value of the *priority* property, as well as any items that contain the string *p0* in other fields. If you provide an operator name for the enum, such as *priority*, then search users can use that operator to refine results to only items that have *p0* as this property's value, with the query *priority:p0*. */
@@ -1579,10 +1899,12 @@ export interface EnumOperatorOptions {
   operatorName?: string;
 }
 export const EnumOperatorOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "operatorName": S.optional(S.String),
-}),
-).annotate({ identifier: "EnumOperatorOptions" }) as any as S.Schema<EnumOperatorOptions>;
+  S.Struct({
+    operatorName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EnumOperatorOptions",
+}) as any as S.Schema<EnumOperatorOptions>;
 
 /** The enumeration value pair defines two things: a required string value and an optional integer value. The string value defines the necessary query term required to retrieve that item, such as *p0* for a priority item. The integer value determines the ranking of that string value relative to other enumerated values for the same property. For example, you might associate *p0* with *0* and define another enum pair such as *p1* and *1*. You must use the integer value in combination with ordered ranking to set the ranking of a given value relative to other enumerated values for the same property name. Here, a ranking order of DESCENDING for *priority* properties results in a ranking boost for items indexed with a value of *p0* compared to items indexed with a value of *p1*. Without a specified ranking order, the integer value has no effect on item ranking. */
 export interface EnumValuePair {
@@ -1592,14 +1914,16 @@ export interface EnumValuePair {
   integerValue?: number;
 }
 export const EnumValuePair = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "stringValue": S.optional(S.String),
-  "integerValue": S.optional(S.Number),
-}),
+  S.Struct({
+    stringValue: S.optional(S.String),
+    integerValue: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "EnumValuePair" }) as any as S.Schema<EnumValuePair>;
 
 export type EnumValuePairList = ReadonlyArray<EnumValuePair>;
-export const EnumValuePairList = /*@__PURE__*/ S.Array(EnumValuePair) as any as S.Schema<EnumValuePairList>;
+export const EnumValuePairList = /*@__PURE__*/ S.Array(
+  EnumValuePair,
+) as any as S.Schema<EnumValuePairList>;
 
 /** The options for enum properties, which allow you to define a restricted set of strings to match user queries, set rankings for those string values, and define an operator name to be paired with those strings so that users can narrow results to only items with a specific value. For example, for items in a request tracking system with priority information, you could define *p0* as an allowable enum value and tie this enum to the operator name *priority* so that search users could add *priority:p0* to their query to restrict the set of results to only those items indexed with the value *p0*. */
 export interface EnumPropertyOptions {
@@ -1611,12 +1935,14 @@ export interface EnumPropertyOptions {
   possibleValues?: EnumValuePairList;
 }
 export const EnumPropertyOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "orderedRanking": S.optional(EnumPropertyOptionsOrderedRankingEnum),
-  "operatorOptions": S.optional(EnumOperatorOptions),
-  "possibleValues": S.optional(EnumValuePairList),
-}),
-).annotate({ identifier: "EnumPropertyOptions" }) as any as S.Schema<EnumPropertyOptions>;
+  S.Struct({
+    orderedRanking: S.optional(EnumPropertyOptionsOrderedRankingEnum),
+    operatorOptions: S.optional(EnumOperatorOptions),
+    possibleValues: S.optional(EnumValuePairList),
+  }),
+).annotate({
+  identifier: "EnumPropertyOptions",
+}) as any as S.Schema<EnumPropertyOptions>;
 
 /** Optional. Provides a search operator for date properties. Search operators let users restrict the query to specific fields relevant to the type of item being searched. */
 export interface DateOperatorOptions {
@@ -1628,12 +1954,14 @@ export interface DateOperatorOptions {
   lessThanOperatorName?: string;
 }
 export const DateOperatorOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "greaterThanOperatorName": S.optional(S.String),
-  "operatorName": S.optional(S.String),
-  "lessThanOperatorName": S.optional(S.String),
-}),
-).annotate({ identifier: "DateOperatorOptions" }) as any as S.Schema<DateOperatorOptions>;
+  S.Struct({
+    greaterThanOperatorName: S.optional(S.String),
+    operatorName: S.optional(S.String),
+    lessThanOperatorName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DateOperatorOptions",
+}) as any as S.Schema<DateOperatorOptions>;
 
 /** The options for date properties. */
 export interface DatePropertyOptions {
@@ -1641,10 +1969,12 @@ export interface DatePropertyOptions {
   operatorOptions?: DateOperatorOptions;
 }
 export const DatePropertyOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "operatorOptions": S.optional(DateOperatorOptions),
-}),
-).annotate({ identifier: "DatePropertyOptions" }) as any as S.Schema<DatePropertyOptions>;
+  S.Struct({
+    operatorOptions: S.optional(DateOperatorOptions),
+  }),
+).annotate({
+  identifier: "DatePropertyOptions",
+}) as any as S.Schema<DatePropertyOptions>;
 
 /** The definition of a property within an object. */
 export interface PropertyDefinition {
@@ -1675,29 +2005,33 @@ export interface PropertyDefinition {
   datePropertyOptions?: DatePropertyOptions;
 }
 export const PropertyDefinition = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "booleanPropertyOptions": S.optional(BooleanPropertyOptions),
-  "name": S.optional(S.String),
-  "isRepeatable": S.optional(S.Boolean),
-  "isFacetable": S.optional(S.Boolean),
-  "textPropertyOptions": S.optional(TextPropertyOptions),
-  "isReturnable": S.optional(S.Boolean),
-  "isSuggestable": S.optional(S.Boolean),
-  "isWildcardSearchable": S.optional(S.Boolean),
-  "isSortable": S.optional(S.Boolean),
-  "htmlPropertyOptions": S.optional(HtmlPropertyOptions),
-  "integerPropertyOptions": S.optional(IntegerPropertyOptions),
-  "displayOptions": S.optional(PropertyDisplayOptions),
-  "doublePropertyOptions": S.optional(DoublePropertyOptions),
-  "timestampPropertyOptions": S.optional(TimestampPropertyOptions),
-  "objectPropertyOptions": S.optional(ObjectPropertyOptions),
-  "enumPropertyOptions": S.optional(EnumPropertyOptions),
-  "datePropertyOptions": S.optional(DatePropertyOptions),
-}),
-).annotate({ identifier: "PropertyDefinition" }) as any as S.Schema<PropertyDefinition>;
+  S.Struct({
+    booleanPropertyOptions: S.optional(BooleanPropertyOptions),
+    name: S.optional(S.String),
+    isRepeatable: S.optional(S.Boolean),
+    isFacetable: S.optional(S.Boolean),
+    textPropertyOptions: S.optional(TextPropertyOptions),
+    isReturnable: S.optional(S.Boolean),
+    isSuggestable: S.optional(S.Boolean),
+    isWildcardSearchable: S.optional(S.Boolean),
+    isSortable: S.optional(S.Boolean),
+    htmlPropertyOptions: S.optional(HtmlPropertyOptions),
+    integerPropertyOptions: S.optional(IntegerPropertyOptions),
+    displayOptions: S.optional(PropertyDisplayOptions),
+    doublePropertyOptions: S.optional(DoublePropertyOptions),
+    timestampPropertyOptions: S.optional(TimestampPropertyOptions),
+    objectPropertyOptions: S.optional(ObjectPropertyOptions),
+    enumPropertyOptions: S.optional(EnumPropertyOptions),
+    datePropertyOptions: S.optional(DatePropertyOptions),
+  }),
+).annotate({
+  identifier: "PropertyDefinition",
+}) as any as S.Schema<PropertyDefinition>;
 
 export type PropertyDefinitionList = ReadonlyArray<PropertyDefinition>;
-export const PropertyDefinitionList = /*@__PURE__*/ S.Array(PropertyDefinition) as any as S.Schema<PropertyDefinitionList>;
+export const PropertyDefinitionList = /*@__PURE__*/ S.Array(
+  PropertyDefinition,
+) as any as S.Schema<PropertyDefinitionList>;
 
 /** The definition for an object within a data source. */
 export interface ObjectDefinition {
@@ -1709,15 +2043,19 @@ export interface ObjectDefinition {
   propertyDefinitions?: PropertyDefinitionList;
 }
 export const ObjectDefinition = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "options": S.optional(ObjectOptions),
-  "name": S.optional(S.String),
-  "propertyDefinitions": S.optional(PropertyDefinitionList),
-}),
-).annotate({ identifier: "ObjectDefinition" }) as any as S.Schema<ObjectDefinition>;
+  S.Struct({
+    options: S.optional(ObjectOptions),
+    name: S.optional(S.String),
+    propertyDefinitions: S.optional(PropertyDefinitionList),
+  }),
+).annotate({
+  identifier: "ObjectDefinition",
+}) as any as S.Schema<ObjectDefinition>;
 
 export type ObjectDefinitionList = ReadonlyArray<ObjectDefinition>;
-export const ObjectDefinitionList = /*@__PURE__*/ S.Array(ObjectDefinition) as any as S.Schema<ObjectDefinitionList>;
+export const ObjectDefinitionList = /*@__PURE__*/ S.Array(
+  ObjectDefinition,
+) as any as S.Schema<ObjectDefinitionList>;
 
 /** The schema definition for a data source. */
 export interface Cloudsearch_Schema {
@@ -1727,11 +2065,13 @@ export interface Cloudsearch_Schema {
   operationIds?: StringList;
 }
 export const Cloudsearch_Schema = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "objectDefinitions": S.optional(ObjectDefinitionList),
-  "operationIds": S.optional(StringList),
-}),
-).annotate({ identifier: "Cloudsearch_Schema" }) as any as S.Schema<Cloudsearch_Schema>;
+  S.Struct({
+    objectDefinitions: S.optional(ObjectDefinitionList),
+    operationIds: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "Cloudsearch_Schema",
+}) as any as S.Schema<Cloudsearch_Schema>;
 
 export interface GetSearchapplicationStatsRequest {
   /** Day of month. Must be from 1 to 31 and valid for the year and month. */
@@ -1748,15 +2088,23 @@ export interface GetSearchapplicationStatsRequest {
   "startDate.year"?: number;
 }
 export const GetSearchapplicationStatsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "startDate.day": S.optional(S.Number.pipe(T.Query())),
-  "endDate.day": S.optional(S.Number.pipe(T.Query())),
-  "startDate.month": S.optional(S.Number.pipe(T.Query())),
-  "endDate.month": S.optional(S.Number.pipe(T.Query())),
-  "endDate.year": S.optional(S.Number.pipe(T.Query())),
-  "startDate.year": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/stats/searchapplication","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "GetSearchapplicationStatsRequest" }) as any as S.Schema<GetSearchapplicationStatsRequest>;
+  S.Struct({
+    "startDate.day": S.optional(S.Number.pipe(T.Query())),
+    "endDate.day": S.optional(S.Number.pipe(T.Query())),
+    "startDate.month": S.optional(S.Number.pipe(T.Query())),
+    "endDate.month": S.optional(S.Number.pipe(T.Query())),
+    "endDate.year": S.optional(S.Number.pipe(T.Query())),
+    "startDate.year": S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/stats/searchapplication",
+      baseUrl: "https://cloudsearch.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetSearchapplicationStatsRequest",
+}) as any as S.Schema<GetSearchapplicationStatsRequest>;
 
 /** Search application stats for a customer for the given date. */
 export interface CustomerSearchApplicationStats {
@@ -1766,14 +2114,19 @@ export interface CustomerSearchApplicationStats {
   count?: string;
 }
 export const CustomerSearchApplicationStats = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "date": S.optional(Cloudsearch_Date),
-  "count": S.optional(S.String),
-}),
-).annotate({ identifier: "CustomerSearchApplicationStats" }) as any as S.Schema<CustomerSearchApplicationStats>;
+  S.Struct({
+    date: S.optional(Cloudsearch_Date),
+    count: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CustomerSearchApplicationStats",
+}) as any as S.Schema<CustomerSearchApplicationStats>;
 
-export type CustomerSearchApplicationStatsList = ReadonlyArray<CustomerSearchApplicationStats>;
-export const CustomerSearchApplicationStatsList = /*@__PURE__*/ S.Array(CustomerSearchApplicationStats) as any as S.Schema<CustomerSearchApplicationStatsList>;
+export type CustomerSearchApplicationStatsList =
+  ReadonlyArray<CustomerSearchApplicationStats>;
+export const CustomerSearchApplicationStatsList = /*@__PURE__*/ S.Array(
+  CustomerSearchApplicationStats,
+) as any as S.Schema<CustomerSearchApplicationStatsList>;
 
 /** Response format for search application stats for a customer. */
 export interface GetCustomerSearchApplicationStatsResponse {
@@ -1782,12 +2135,15 @@ export interface GetCustomerSearchApplicationStatsResponse {
   /** Average search application count for the given date range. */
   averageSearchApplicationCount?: string;
 }
-export const GetCustomerSearchApplicationStatsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "stats": S.optional(CustomerSearchApplicationStatsList),
-  "averageSearchApplicationCount": S.optional(S.String),
-}),
-).annotate({ identifier: "GetCustomerSearchApplicationStatsResponse" }) as any as S.Schema<GetCustomerSearchApplicationStatsResponse>;
+export const GetCustomerSearchApplicationStatsResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      stats: S.optional(CustomerSearchApplicationStatsList),
+      averageSearchApplicationCount: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GetCustomerSearchApplicationStatsResponse",
+  }) as any as S.Schema<GetCustomerSearchApplicationStatsResponse>;
 
 export interface GetSessionStatsRequest {
   /** Day of month. Must be from 1 to 31 and valid for the year and month. */
@@ -1804,15 +2160,23 @@ export interface GetSessionStatsRequest {
   "fromDate.year"?: number;
 }
 export const GetSessionStatsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fromDate.day": S.optional(S.Number.pipe(T.Query())),
-  "toDate.day": S.optional(S.Number.pipe(T.Query())),
-  "fromDate.month": S.optional(S.Number.pipe(T.Query())),
-  "toDate.year": S.optional(S.Number.pipe(T.Query())),
-  "toDate.month": S.optional(S.Number.pipe(T.Query())),
-  "fromDate.year": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/stats/session","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "GetSessionStatsRequest" }) as any as S.Schema<GetSessionStatsRequest>;
+  S.Struct({
+    "fromDate.day": S.optional(S.Number.pipe(T.Query())),
+    "toDate.day": S.optional(S.Number.pipe(T.Query())),
+    "fromDate.month": S.optional(S.Number.pipe(T.Query())),
+    "toDate.year": S.optional(S.Number.pipe(T.Query())),
+    "toDate.month": S.optional(S.Number.pipe(T.Query())),
+    "fromDate.year": S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/stats/session",
+      baseUrl: "https://cloudsearch.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetSessionStatsRequest",
+}) as any as S.Schema<GetSessionStatsRequest>;
 
 export interface CustomerSessionStats {
   /** The count of search sessions on the day */
@@ -1821,23 +2185,29 @@ export interface CustomerSessionStats {
   date?: Cloudsearch_Date;
 }
 export const CustomerSessionStats = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "searchSessionsCount": S.optional(S.String),
-  "date": S.optional(Cloudsearch_Date),
-}),
-).annotate({ identifier: "CustomerSessionStats" }) as any as S.Schema<CustomerSessionStats>;
+  S.Struct({
+    searchSessionsCount: S.optional(S.String),
+    date: S.optional(Cloudsearch_Date),
+  }),
+).annotate({
+  identifier: "CustomerSessionStats",
+}) as any as S.Schema<CustomerSessionStats>;
 
 export type CustomerSessionStatsList = ReadonlyArray<CustomerSessionStats>;
-export const CustomerSessionStatsList = /*@__PURE__*/ S.Array(CustomerSessionStats) as any as S.Schema<CustomerSessionStatsList>;
+export const CustomerSessionStatsList = /*@__PURE__*/ S.Array(
+  CustomerSessionStats,
+) as any as S.Schema<CustomerSessionStatsList>;
 
 export interface GetCustomerSessionStatsResponse {
   stats?: CustomerSessionStatsList;
 }
 export const GetCustomerSessionStatsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "stats": S.optional(CustomerSessionStatsList),
-}),
-).annotate({ identifier: "GetCustomerSessionStatsResponse" }) as any as S.Schema<GetCustomerSessionStatsResponse>;
+  S.Struct({
+    stats: S.optional(CustomerSessionStatsList),
+  }),
+).annotate({
+  identifier: "GetCustomerSessionStatsResponse",
+}) as any as S.Schema<GetCustomerSessionStatsResponse>;
 
 export interface GetSettingsDatasourcesRequest {
   /** If you are asked by Google to help with debugging, set this field. Otherwise, ignore this field. */
@@ -1846,11 +2216,19 @@ export interface GetSettingsDatasourcesRequest {
   name: string;
 }
 export const GetSettingsDatasourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "debugOptions.enableDebugging": S.optional(S.Boolean.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/settings/{+name}","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "GetSettingsDatasourcesRequest" }) as any as S.Schema<GetSettingsDatasourcesRequest>;
+  S.Struct({
+    "debugOptions.enableDebugging": S.optional(S.Boolean.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/settings/{+name}",
+      baseUrl: "https://cloudsearch.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetSettingsDatasourcesRequest",
+}) as any as S.Schema<GetSettingsDatasourcesRequest>;
 
 export interface GetSettingsSearchapplicationsRequest {
   /** If you are asked by Google to help with debugging, set this field. Otherwise, ignore this field. */
@@ -1858,12 +2236,21 @@ export interface GetSettingsSearchapplicationsRequest {
   /** The name of the search application. Format: searchapplications/{application_id}. */
   name: string;
 }
-export const GetSettingsSearchapplicationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "debugOptions.enableDebugging": S.optional(S.Boolean.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/settings/{+name}","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "GetSettingsSearchapplicationsRequest" }) as any as S.Schema<GetSettingsSearchapplicationsRequest>;
+export const GetSettingsSearchapplicationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      "debugOptions.enableDebugging": S.optional(S.Boolean.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/settings/{+name}",
+        baseUrl: "https://cloudsearch.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetSettingsSearchapplicationsRequest",
+}) as any as S.Schema<GetSettingsSearchapplicationsRequest>;
 
 export interface GetStatsIndexDatasourcesRequest {
   /** Month of date. Must be from 1 to 12. */
@@ -1882,16 +2269,24 @@ export interface GetStatsIndexDatasourcesRequest {
   name: string;
 }
 export const GetStatsIndexDatasourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fromDate.month": S.optional(S.Number.pipe(T.Query())),
-  "toDate.year": S.optional(S.Number.pipe(T.Query())),
-  "fromDate.day": S.optional(S.Number.pipe(T.Query())),
-  "toDate.day": S.optional(S.Number.pipe(T.Query())),
-  "toDate.month": S.optional(S.Number.pipe(T.Query())),
-  "fromDate.year": S.optional(S.Number.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/stats/index/{+name}","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "GetStatsIndexDatasourcesRequest" }) as any as S.Schema<GetStatsIndexDatasourcesRequest>;
+  S.Struct({
+    "fromDate.month": S.optional(S.Number.pipe(T.Query())),
+    "toDate.year": S.optional(S.Number.pipe(T.Query())),
+    "fromDate.day": S.optional(S.Number.pipe(T.Query())),
+    "toDate.day": S.optional(S.Number.pipe(T.Query())),
+    "toDate.month": S.optional(S.Number.pipe(T.Query())),
+    "fromDate.year": S.optional(S.Number.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/stats/index/{+name}",
+      baseUrl: "https://cloudsearch.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetStatsIndexDatasourcesRequest",
+}) as any as S.Schema<GetStatsIndexDatasourcesRequest>;
 
 /** Aggregation of items by status code as of the specified date. */
 export interface DataSourceIndexStats {
@@ -1901,14 +2296,18 @@ export interface DataSourceIndexStats {
   itemCountByStatus?: ItemCountByStatusList;
 }
 export const DataSourceIndexStats = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "date": S.optional(Cloudsearch_Date),
-  "itemCountByStatus": S.optional(ItemCountByStatusList),
-}),
-).annotate({ identifier: "DataSourceIndexStats" }) as any as S.Schema<DataSourceIndexStats>;
+  S.Struct({
+    date: S.optional(Cloudsearch_Date),
+    itemCountByStatus: S.optional(ItemCountByStatusList),
+  }),
+).annotate({
+  identifier: "DataSourceIndexStats",
+}) as any as S.Schema<DataSourceIndexStats>;
 
 export type DataSourceIndexStatsList = ReadonlyArray<DataSourceIndexStats>;
-export const DataSourceIndexStatsList = /*@__PURE__*/ S.Array(DataSourceIndexStats) as any as S.Schema<DataSourceIndexStatsList>;
+export const DataSourceIndexStatsList = /*@__PURE__*/ S.Array(
+  DataSourceIndexStats,
+) as any as S.Schema<DataSourceIndexStatsList>;
 
 export interface GetDataSourceIndexStatsResponse {
   /** Summary of indexed item counts, one for each day in the requested range. */
@@ -1917,11 +2316,13 @@ export interface GetDataSourceIndexStatsResponse {
   averageIndexedItemCount?: string;
 }
 export const GetDataSourceIndexStatsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "stats": S.optional(DataSourceIndexStatsList),
-  "averageIndexedItemCount": S.optional(S.String),
-}),
-).annotate({ identifier: "GetDataSourceIndexStatsResponse" }) as any as S.Schema<GetDataSourceIndexStatsResponse>;
+  S.Struct({
+    stats: S.optional(DataSourceIndexStatsList),
+    averageIndexedItemCount: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetDataSourceIndexStatsResponse",
+}) as any as S.Schema<GetDataSourceIndexStatsResponse>;
 
 export interface GetStatsQuerySearchapplicationsRequest {
   /** Day of month. Must be from 1 to 31 and valid for the year and month. */
@@ -1939,17 +2340,26 @@ export interface GetStatsQuerySearchapplicationsRequest {
   /** Month of date. Must be from 1 to 12. */
   "toDate.month"?: number;
 }
-export const GetStatsQuerySearchapplicationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "toDate.day": S.optional(S.Number.pipe(T.Query())),
-  "fromDate.day": S.optional(S.Number.pipe(T.Query())),
-  "toDate.year": S.optional(S.Number.pipe(T.Query())),
-  "fromDate.month": S.optional(S.Number.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "fromDate.year": S.optional(S.Number.pipe(T.Query())),
-  "toDate.month": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/stats/query/{+name}","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "GetStatsQuerySearchapplicationsRequest" }) as any as S.Schema<GetStatsQuerySearchapplicationsRequest>;
+export const GetStatsQuerySearchapplicationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      "toDate.day": S.optional(S.Number.pipe(T.Query())),
+      "fromDate.day": S.optional(S.Number.pipe(T.Query())),
+      "toDate.year": S.optional(S.Number.pipe(T.Query())),
+      "fromDate.month": S.optional(S.Number.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      "fromDate.year": S.optional(S.Number.pipe(T.Query())),
+      "toDate.month": S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/stats/query/{+name}",
+        baseUrl: "https://cloudsearch.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetStatsQuerySearchapplicationsRequest",
+}) as any as S.Schema<GetStatsQuerySearchapplicationsRequest>;
 
 /** Search application level query stats per date */
 export interface SearchApplicationQueryStats {
@@ -1958,14 +2368,19 @@ export interface SearchApplicationQueryStats {
   queryCountByStatus?: QueryCountByStatusList;
 }
 export const SearchApplicationQueryStats = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "date": S.optional(Cloudsearch_Date),
-  "queryCountByStatus": S.optional(QueryCountByStatusList),
-}),
-).annotate({ identifier: "SearchApplicationQueryStats" }) as any as S.Schema<SearchApplicationQueryStats>;
+  S.Struct({
+    date: S.optional(Cloudsearch_Date),
+    queryCountByStatus: S.optional(QueryCountByStatusList),
+  }),
+).annotate({
+  identifier: "SearchApplicationQueryStats",
+}) as any as S.Schema<SearchApplicationQueryStats>;
 
-export type SearchApplicationQueryStatsList = ReadonlyArray<SearchApplicationQueryStats>;
-export const SearchApplicationQueryStatsList = /*@__PURE__*/ S.Array(SearchApplicationQueryStats) as any as S.Schema<SearchApplicationQueryStatsList>;
+export type SearchApplicationQueryStatsList =
+  ReadonlyArray<SearchApplicationQueryStats>;
+export const SearchApplicationQueryStatsList = /*@__PURE__*/ S.Array(
+  SearchApplicationQueryStats,
+) as any as S.Schema<SearchApplicationQueryStatsList>;
 
 /** Response format for getting query stats for a search application between given dates. */
 export interface GetSearchApplicationQueryStatsResponse {
@@ -1974,12 +2389,15 @@ export interface GetSearchApplicationQueryStatsResponse {
   /** Total successful query count (status code 200) for the given date range. */
   totalQueryCount?: string;
 }
-export const GetSearchApplicationQueryStatsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "stats": S.optional(SearchApplicationQueryStatsList),
-  "totalQueryCount": S.optional(S.String),
-}),
-).annotate({ identifier: "GetSearchApplicationQueryStatsResponse" }) as any as S.Schema<GetSearchApplicationQueryStatsResponse>;
+export const GetSearchApplicationQueryStatsResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      stats: S.optional(SearchApplicationQueryStatsList),
+      totalQueryCount: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "GetSearchApplicationQueryStatsResponse",
+}) as any as S.Schema<GetSearchApplicationQueryStatsResponse>;
 
 export interface GetStatsSessionSearchapplicationsRequest {
   /** The resource id of the search application session stats, in the following format: searchapplications/{application_id} */
@@ -1997,17 +2415,26 @@ export interface GetStatsSessionSearchapplicationsRequest {
   /** Year of date. Must be from 1 to 9999. */
   "toDate.year"?: number;
 }
-export const GetStatsSessionSearchapplicationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "toDate.month": S.optional(S.Number.pipe(T.Query())),
-  "fromDate.year": S.optional(S.Number.pipe(T.Query())),
-  "fromDate.day": S.optional(S.Number.pipe(T.Query())),
-  "toDate.day": S.optional(S.Number.pipe(T.Query())),
-  "fromDate.month": S.optional(S.Number.pipe(T.Query())),
-  "toDate.year": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/stats/session/{+name}","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "GetStatsSessionSearchapplicationsRequest" }) as any as S.Schema<GetStatsSessionSearchapplicationsRequest>;
+export const GetStatsSessionSearchapplicationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      "toDate.month": S.optional(S.Number.pipe(T.Query())),
+      "fromDate.year": S.optional(S.Number.pipe(T.Query())),
+      "fromDate.day": S.optional(S.Number.pipe(T.Query())),
+      "toDate.day": S.optional(S.Number.pipe(T.Query())),
+      "fromDate.month": S.optional(S.Number.pipe(T.Query())),
+      "toDate.year": S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/stats/session/{+name}",
+        baseUrl: "https://cloudsearch.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetStatsSessionSearchapplicationsRequest",
+}) as any as S.Schema<GetStatsSessionSearchapplicationsRequest>;
 
 export interface SearchApplicationSessionStats {
   /** The date for which session stats were calculated. Stats are calculated on the following day, close to midnight PST, and then returned. */
@@ -2016,23 +2443,31 @@ export interface SearchApplicationSessionStats {
   searchSessionsCount?: string;
 }
 export const SearchApplicationSessionStats = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "date": S.optional(Cloudsearch_Date),
-  "searchSessionsCount": S.optional(S.String),
-}),
-).annotate({ identifier: "SearchApplicationSessionStats" }) as any as S.Schema<SearchApplicationSessionStats>;
+  S.Struct({
+    date: S.optional(Cloudsearch_Date),
+    searchSessionsCount: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SearchApplicationSessionStats",
+}) as any as S.Schema<SearchApplicationSessionStats>;
 
-export type SearchApplicationSessionStatsList = ReadonlyArray<SearchApplicationSessionStats>;
-export const SearchApplicationSessionStatsList = /*@__PURE__*/ S.Array(SearchApplicationSessionStats) as any as S.Schema<SearchApplicationSessionStatsList>;
+export type SearchApplicationSessionStatsList =
+  ReadonlyArray<SearchApplicationSessionStats>;
+export const SearchApplicationSessionStatsList = /*@__PURE__*/ S.Array(
+  SearchApplicationSessionStats,
+) as any as S.Schema<SearchApplicationSessionStatsList>;
 
 export interface GetSearchApplicationSessionStatsResponse {
   stats?: SearchApplicationSessionStatsList;
 }
-export const GetSearchApplicationSessionStatsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "stats": S.optional(SearchApplicationSessionStatsList),
-}),
-).annotate({ identifier: "GetSearchApplicationSessionStatsResponse" }) as any as S.Schema<GetSearchApplicationSessionStatsResponse>;
+export const GetSearchApplicationSessionStatsResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      stats: S.optional(SearchApplicationSessionStatsList),
+    }),
+).annotate({
+  identifier: "GetSearchApplicationSessionStatsResponse",
+}) as any as S.Schema<GetSearchApplicationSessionStatsResponse>;
 
 export interface GetStatsUserSearchapplicationsRequest {
   /** Month of date. Must be from 1 to 12. */
@@ -2050,17 +2485,26 @@ export interface GetStatsUserSearchapplicationsRequest {
   /** Day of month. Must be from 1 to 31 and valid for the year and month. */
   "toDate.day"?: number;
 }
-export const GetStatsUserSearchapplicationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "toDate.month": S.optional(S.Number.pipe(T.Query())),
-  "fromDate.year": S.optional(S.Number.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "fromDate.month": S.optional(S.Number.pipe(T.Query())),
-  "toDate.year": S.optional(S.Number.pipe(T.Query())),
-  "fromDate.day": S.optional(S.Number.pipe(T.Query())),
-  "toDate.day": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/stats/user/{+name}","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "GetStatsUserSearchapplicationsRequest" }) as any as S.Schema<GetStatsUserSearchapplicationsRequest>;
+export const GetStatsUserSearchapplicationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      "toDate.month": S.optional(S.Number.pipe(T.Query())),
+      "fromDate.year": S.optional(S.Number.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      "fromDate.month": S.optional(S.Number.pipe(T.Query())),
+      "toDate.year": S.optional(S.Number.pipe(T.Query())),
+      "fromDate.day": S.optional(S.Number.pipe(T.Query())),
+      "toDate.day": S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/stats/user/{+name}",
+        baseUrl: "https://cloudsearch.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetStatsUserSearchapplicationsRequest",
+}) as any as S.Schema<GetStatsUserSearchapplicationsRequest>;
 
 export interface SearchApplicationUserStats {
   /** The count of unique active users in the past seven days */
@@ -2073,25 +2517,33 @@ export interface SearchApplicationUserStats {
   oneDayActiveUsersCount?: string;
 }
 export const SearchApplicationUserStats = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sevenDaysActiveUsersCount": S.optional(S.String),
-  "date": S.optional(Cloudsearch_Date),
-  "thirtyDaysActiveUsersCount": S.optional(S.String),
-  "oneDayActiveUsersCount": S.optional(S.String),
-}),
-).annotate({ identifier: "SearchApplicationUserStats" }) as any as S.Schema<SearchApplicationUserStats>;
+  S.Struct({
+    sevenDaysActiveUsersCount: S.optional(S.String),
+    date: S.optional(Cloudsearch_Date),
+    thirtyDaysActiveUsersCount: S.optional(S.String),
+    oneDayActiveUsersCount: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SearchApplicationUserStats",
+}) as any as S.Schema<SearchApplicationUserStats>;
 
-export type SearchApplicationUserStatsList = ReadonlyArray<SearchApplicationUserStats>;
-export const SearchApplicationUserStatsList = /*@__PURE__*/ S.Array(SearchApplicationUserStats) as any as S.Schema<SearchApplicationUserStatsList>;
+export type SearchApplicationUserStatsList =
+  ReadonlyArray<SearchApplicationUserStats>;
+export const SearchApplicationUserStatsList = /*@__PURE__*/ S.Array(
+  SearchApplicationUserStats,
+) as any as S.Schema<SearchApplicationUserStatsList>;
 
 export interface GetSearchApplicationUserStatsResponse {
   stats?: SearchApplicationUserStatsList;
 }
-export const GetSearchApplicationUserStatsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "stats": S.optional(SearchApplicationUserStatsList),
-}),
-).annotate({ identifier: "GetSearchApplicationUserStatsResponse" }) as any as S.Schema<GetSearchApplicationUserStatsResponse>;
+export const GetSearchApplicationUserStatsResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      stats: S.optional(SearchApplicationUserStatsList),
+    }),
+).annotate({
+  identifier: "GetSearchApplicationUserStatsResponse",
+}) as any as S.Schema<GetSearchApplicationUserStatsResponse>;
 
 export interface GetUserStatsRequest {
   /** Year of date. Must be from 1 to 9999. */
@@ -2108,15 +2560,23 @@ export interface GetUserStatsRequest {
   "fromDate.day"?: number;
 }
 export const GetUserStatsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fromDate.year": S.optional(S.Number.pipe(T.Query())),
-  "toDate.month": S.optional(S.Number.pipe(T.Query())),
-  "toDate.year": S.optional(S.Number.pipe(T.Query())),
-  "fromDate.month": S.optional(S.Number.pipe(T.Query())),
-  "toDate.day": S.optional(S.Number.pipe(T.Query())),
-  "fromDate.day": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/stats/user","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "GetUserStatsRequest" }) as any as S.Schema<GetUserStatsRequest>;
+  S.Struct({
+    "fromDate.year": S.optional(S.Number.pipe(T.Query())),
+    "toDate.month": S.optional(S.Number.pipe(T.Query())),
+    "toDate.year": S.optional(S.Number.pipe(T.Query())),
+    "fromDate.month": S.optional(S.Number.pipe(T.Query())),
+    "toDate.day": S.optional(S.Number.pipe(T.Query())),
+    "fromDate.day": S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/stats/user",
+      baseUrl: "https://cloudsearch.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetUserStatsRequest",
+}) as any as S.Schema<GetUserStatsRequest>;
 
 export interface CustomerUserStats {
   /** The date for which session stats were calculated. Stats calculated on the next day close to midnight are returned. */
@@ -2129,37 +2589,48 @@ export interface CustomerUserStats {
   sevenDaysActiveUsersCount?: string;
 }
 export const CustomerUserStats = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "date": S.optional(Cloudsearch_Date),
-  "thirtyDaysActiveUsersCount": S.optional(S.String),
-  "oneDayActiveUsersCount": S.optional(S.String),
-  "sevenDaysActiveUsersCount": S.optional(S.String),
-}),
-).annotate({ identifier: "CustomerUserStats" }) as any as S.Schema<CustomerUserStats>;
+  S.Struct({
+    date: S.optional(Cloudsearch_Date),
+    thirtyDaysActiveUsersCount: S.optional(S.String),
+    oneDayActiveUsersCount: S.optional(S.String),
+    sevenDaysActiveUsersCount: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CustomerUserStats",
+}) as any as S.Schema<CustomerUserStats>;
 
 export type CustomerUserStatsList = ReadonlyArray<CustomerUserStats>;
-export const CustomerUserStatsList = /*@__PURE__*/ S.Array(CustomerUserStats) as any as S.Schema<CustomerUserStatsList>;
+export const CustomerUserStatsList = /*@__PURE__*/ S.Array(
+  CustomerUserStats,
+) as any as S.Schema<CustomerUserStatsList>;
 
 export interface GetCustomerUserStatsResponse {
   stats?: CustomerUserStatsList;
 }
 export const GetCustomerUserStatsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "stats": S.optional(CustomerUserStatsList),
-}),
-).annotate({ identifier: "GetCustomerUserStatsResponse" }) as any as S.Schema<GetCustomerUserStatsResponse>;
+  S.Struct({
+    stats: S.optional(CustomerUserStatsList),
+  }),
+).annotate({
+  identifier: "GetCustomerUserStatsResponse",
+}) as any as S.Schema<GetCustomerUserStatsResponse>;
 
 export interface IndexItemOptions {
   /** Specifies if the index request should allow Google Workspace principals that do not exist or are deleted. */
   allowUnknownGsuitePrincipals?: boolean;
 }
 export const IndexItemOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "allowUnknownGsuitePrincipals": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "IndexItemOptions" }) as any as S.Schema<IndexItemOptions>;
+  S.Struct({
+    allowUnknownGsuitePrincipals: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "IndexItemOptions",
+}) as any as S.Schema<IndexItemOptions>;
 
-export type IndexItemRequestModeEnum = "UNSPECIFIED" | "SYNCHRONOUS" | "ASYNCHRONOUS";
+export type IndexItemRequestModeEnum =
+  | "UNSPECIFIED"
+  | "SYNCHRONOUS"
+  | "ASYNCHRONOUS";
 export const IndexItemRequestModeEnum = /*@__PURE__*/ S.String;
 
 export interface IndexItemRequest {
@@ -2174,14 +2645,16 @@ export interface IndexItemRequest {
   connectorName?: string;
 }
 export const IndexItemRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "debugOptions": S.optional(DebugOptions),
-  "indexItemOptions": S.optional(IndexItemOptions),
-  "item": S.optional(Item),
-  "mode": S.optional(IndexItemRequestModeEnum),
-  "connectorName": S.optional(S.String),
-}),
-).annotate({ identifier: "IndexItemRequest" }) as any as S.Schema<IndexItemRequest>;
+  S.Struct({
+    debugOptions: S.optional(DebugOptions),
+    indexItemOptions: S.optional(IndexItemOptions),
+    item: S.optional(Item),
+    mode: S.optional(IndexItemRequestModeEnum),
+    connectorName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "IndexItemRequest",
+}) as any as S.Schema<IndexItemRequest>;
 
 export interface IndexIndexingDatasourcesItemsRequest {
   /** The name of the Item. Format: datasources/{source_id}/items/{item_id} This is a required field. The maximum length is 1536 characters. */
@@ -2189,28 +2662,47 @@ export interface IndexIndexingDatasourcesItemsRequest {
   /** Request body */
   body?: IndexItemRequest;
 }
-export const IndexIndexingDatasourcesItemsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(IndexItemRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/indexing/{+name}:index","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "IndexIndexingDatasourcesItemsRequest" }) as any as S.Schema<IndexIndexingDatasourcesItemsRequest>;
+export const IndexIndexingDatasourcesItemsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(IndexItemRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/indexing/{+name}:index",
+        baseUrl: "https://cloudsearch.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "IndexIndexingDatasourcesItemsRequest",
+}) as any as S.Schema<IndexIndexingDatasourcesItemsRequest>;
 
 /** Request message for `InitializeCustomer` method. */
 export interface InitializeCustomerRequest {}
 export const InitializeCustomerRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "InitializeCustomerRequest" }) as any as S.Schema<InitializeCustomerRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "InitializeCustomerRequest",
+}) as any as S.Schema<InitializeCustomerRequest>;
 
 export interface InitializeCustomerV1Request {
   /** Request body */
   body?: InitializeCustomerRequest;
 }
 export const InitializeCustomerV1Request = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(InitializeCustomerRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1:initializeCustomer","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "InitializeCustomerV1Request" }) as any as S.Schema<InitializeCustomerV1Request>;
+  S.Struct({
+    body: S.optional(InitializeCustomerRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1:initializeCustomer",
+      baseUrl: "https://cloudsearch.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "InitializeCustomerV1Request",
+}) as any as S.Schema<InitializeCustomerV1Request>;
 
 export interface ListDebugDatasourcesItemsUnmappedidsRequest {
   /** Maximum number of items to fetch in a request. Defaults to 100. */
@@ -2222,16 +2714,31 @@ export interface ListDebugDatasourcesItemsUnmappedidsRequest {
   /** If you are asked by Google to help with debugging, set this field. Otherwise, ignore this field. */
   "debugOptions.enableDebugging"?: boolean;
 }
-export const ListDebugDatasourcesItemsUnmappedidsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "debugOptions.enableDebugging": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/debug/{+parent}/unmappedids","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "ListDebugDatasourcesItemsUnmappedidsRequest" }) as any as S.Schema<ListDebugDatasourcesItemsUnmappedidsRequest>;
+export const ListDebugDatasourcesItemsUnmappedidsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      "debugOptions.enableDebugging": S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/debug/{+parent}/unmappedids",
+        baseUrl: "https://cloudsearch.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListDebugDatasourcesItemsUnmappedidsRequest",
+  }) as any as S.Schema<ListDebugDatasourcesItemsUnmappedidsRequest>;
 
-export type UnmappedIdentityResolutionStatusCodeEnum = "CODE_UNSPECIFIED" | "NOT_FOUND" | "IDENTITY_SOURCE_NOT_FOUND" | "IDENTITY_SOURCE_MISCONFIGURED" | "TOO_MANY_MAPPINGS_FOUND" | "INTERNAL_ERROR";
+export type UnmappedIdentityResolutionStatusCodeEnum =
+  | "CODE_UNSPECIFIED"
+  | "NOT_FOUND"
+  | "IDENTITY_SOURCE_NOT_FOUND"
+  | "IDENTITY_SOURCE_MISCONFIGURED"
+  | "TOO_MANY_MAPPINGS_FOUND"
+  | "INTERNAL_ERROR";
 export const UnmappedIdentityResolutionStatusCodeEnum = /*@__PURE__*/ S.String;
 
 export interface UnmappedIdentity {
@@ -2241,14 +2748,18 @@ export interface UnmappedIdentity {
   resolutionStatusCode?: UnmappedIdentityResolutionStatusCodeEnum;
 }
 export const UnmappedIdentity = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "externalIdentity": S.optional(Principal),
-  "resolutionStatusCode": S.optional(UnmappedIdentityResolutionStatusCodeEnum),
-}),
-).annotate({ identifier: "UnmappedIdentity" }) as any as S.Schema<UnmappedIdentity>;
+  S.Struct({
+    externalIdentity: S.optional(Principal),
+    resolutionStatusCode: S.optional(UnmappedIdentityResolutionStatusCodeEnum),
+  }),
+).annotate({
+  identifier: "UnmappedIdentity",
+}) as any as S.Schema<UnmappedIdentity>;
 
 export type UnmappedIdentityList = ReadonlyArray<UnmappedIdentity>;
-export const UnmappedIdentityList = /*@__PURE__*/ S.Array(UnmappedIdentity) as any as S.Schema<UnmappedIdentityList>;
+export const UnmappedIdentityList = /*@__PURE__*/ S.Array(
+  UnmappedIdentity,
+) as any as S.Schema<UnmappedIdentityList>;
 
 export interface ListUnmappedIdentitiesResponse {
   unmappedIdentities?: UnmappedIdentityList;
@@ -2256,20 +2767,31 @@ export interface ListUnmappedIdentitiesResponse {
   nextPageToken?: string;
 }
 export const ListUnmappedIdentitiesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "unmappedIdentities": S.optional(UnmappedIdentityList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListUnmappedIdentitiesResponse" }) as any as S.Schema<ListUnmappedIdentitiesResponse>;
+  S.Struct({
+    unmappedIdentities: S.optional(UnmappedIdentityList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListUnmappedIdentitiesResponse",
+}) as any as S.Schema<ListUnmappedIdentitiesResponse>;
 
-export type ListDebugIdentitysourcesUnmappedidsResolutionStatusCodeEnum = "CODE_UNSPECIFIED" | "NOT_FOUND" | "IDENTITY_SOURCE_NOT_FOUND" | "IDENTITY_SOURCE_MISCONFIGURED" | "TOO_MANY_MAPPINGS_FOUND" | "INTERNAL_ERROR";
-export const ListDebugIdentitysourcesUnmappedidsResolutionStatusCodeEnum = /*@__PURE__*/ S.String;
+export type ListDebugIdentitysourcesUnmappedidsResolutionStatusCodeEnum =
+  | "CODE_UNSPECIFIED"
+  | "NOT_FOUND"
+  | "IDENTITY_SOURCE_NOT_FOUND"
+  | "IDENTITY_SOURCE_MISCONFIGURED"
+  | "TOO_MANY_MAPPINGS_FOUND"
+  | "INTERNAL_ERROR";
+export const ListDebugIdentitysourcesUnmappedidsResolutionStatusCodeEnum =
+  /*@__PURE__*/ S.String;
 
 export interface ListDebugIdentitysourcesUnmappedidsRequest {
   /** Maximum number of items to fetch in a request. Defaults to 100. */
   pageSize?: number;
   /** Limit users selection to this status. */
-  resolutionStatusCode?: ListDebugIdentitysourcesUnmappedidsResolutionStatusCodeEnum | (string & {});
+  resolutionStatusCode?:
+    | ListDebugIdentitysourcesUnmappedidsResolutionStatusCodeEnum
+    | (string & {});
   /** The name of the identity source, in the following format: identitysources/{source_id} */
   parent: string;
   /** If you are asked by Google to help with debugging, set this field. Otherwise, ignore this field. */
@@ -2277,15 +2799,28 @@ export interface ListDebugIdentitysourcesUnmappedidsRequest {
   /** The next_page_token value returned from a previous List request, if any. */
   pageToken?: string;
 }
-export const ListDebugIdentitysourcesUnmappedidsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "resolutionStatusCode": S.optional(ListDebugIdentitysourcesUnmappedidsResolutionStatusCodeEnum.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "debugOptions.enableDebugging": S.optional(S.Boolean.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/debug/{+parent}/unmappedids","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "ListDebugIdentitysourcesUnmappedidsRequest" }) as any as S.Schema<ListDebugIdentitysourcesUnmappedidsRequest>;
+export const ListDebugIdentitysourcesUnmappedidsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      resolutionStatusCode: S.optional(
+        ListDebugIdentitysourcesUnmappedidsResolutionStatusCodeEnum.pipe(
+          T.Query(),
+        ),
+      ),
+      parent: S.String.pipe(T.Label()),
+      "debugOptions.enableDebugging": S.optional(S.Boolean.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/debug/{+parent}/unmappedids",
+        baseUrl: "https://cloudsearch.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListDebugIdentitysourcesUnmappedidsRequest",
+  }) as any as S.Schema<ListDebugIdentitysourcesUnmappedidsRequest>;
 
 export interface ListForunmappedidentityDebugIdentitysourcesItemsRequest {
   /** Maximum number of items to fetch in a request. Defaults to 100. */
@@ -2299,28 +2834,40 @@ export interface ListForunmappedidentityDebugIdentitysourcesItemsRequest {
   /** The next_page_token value returned from a previous List request, if any. */
   pageToken?: string;
 }
-export const ListForunmappedidentityDebugIdentitysourcesItemsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "userResourceName": S.optional(S.String.pipe(T.Query())),
-  "groupResourceName": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "debugOptions.enableDebugging": S.optional(S.Boolean.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/debug/{+parent}/items:forunmappedidentity","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "ListForunmappedidentityDebugIdentitysourcesItemsRequest" }) as any as S.Schema<ListForunmappedidentityDebugIdentitysourcesItemsRequest>;
+export const ListForunmappedidentityDebugIdentitysourcesItemsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      userResourceName: S.optional(S.String.pipe(T.Query())),
+      groupResourceName: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      "debugOptions.enableDebugging": S.optional(S.Boolean.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/debug/{+parent}/items:forunmappedidentity",
+        baseUrl: "https://cloudsearch.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListForunmappedidentityDebugIdentitysourcesItemsRequest",
+  }) as any as S.Schema<ListForunmappedidentityDebugIdentitysourcesItemsRequest>;
 
 export interface ListItemNamesForUnmappedIdentityResponse {
   itemNames?: StringList;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
-export const ListItemNamesForUnmappedIdentityResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "itemNames": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListItemNamesForUnmappedIdentityResponse" }) as any as S.Schema<ListItemNamesForUnmappedIdentityResponse>;
+export const ListItemNamesForUnmappedIdentityResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      itemNames: S.optional(StringList),
+      nextPageToken: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ListItemNamesForUnmappedIdentityResponse",
+}) as any as S.Schema<ListItemNamesForUnmappedIdentityResponse>;
 
 export interface ListIndexingDatasourcesItemsRequest {
   /** The name of connector making this call. Format: datasources/{source_id}/connectors/{ID} */
@@ -2337,18 +2884,28 @@ export interface ListIndexingDatasourcesItemsRequest {
   brief?: boolean;
 }
 export const ListIndexingDatasourcesItemsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "connectorName": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "debugOptions.enableDebugging": S.optional(S.Boolean.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "brief": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/indexing/{+name}/items","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "ListIndexingDatasourcesItemsRequest" }) as any as S.Schema<ListIndexingDatasourcesItemsRequest>;
+  S.Struct({
+    connectorName: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    "debugOptions.enableDebugging": S.optional(S.Boolean.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    brief: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/indexing/{+name}/items",
+      baseUrl: "https://cloudsearch.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListIndexingDatasourcesItemsRequest",
+}) as any as S.Schema<ListIndexingDatasourcesItemsRequest>;
 
 export type ItemList = ReadonlyArray<Item>;
-export const ItemList = /*@__PURE__*/ S.Array(Item) as any as S.Schema<ItemList>;
+export const ItemList = /*@__PURE__*/ S.Array(
+  Item,
+) as any as S.Schema<ItemList>;
 
 export interface ListItemsResponse {
   items: ItemList;
@@ -2356,11 +2913,13 @@ export interface ListItemsResponse {
   nextPageToken?: string;
 }
 export const ListItemsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "items": ItemList,
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListItemsResponse" }) as any as S.Schema<ListItemsResponse>;
+  S.Struct({
+    items: ItemList,
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListItemsResponse",
+}) as any as S.Schema<ListItemsResponse>;
 
 export interface ListOperationsLroRequest {
   /** The name of the operation's parent resource. */
@@ -2375,17 +2934,27 @@ export interface ListOperationsLroRequest {
   returnPartialSuccess?: boolean;
 }
 export const ListOperationsLroRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/lro","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "ListOperationsLroRequest" }) as any as S.Schema<ListOperationsLroRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}/lro",
+      baseUrl: "https://cloudsearch.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListOperationsLroRequest",
+}) as any as S.Schema<ListOperationsLroRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(
+  Operation,
+) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -2397,12 +2966,14 @@ export interface ListOperationsResponse {
   operations?: OperationList;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "unreachable": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-  "operations": S.optional(OperationList),
-}),
-).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
+  S.Struct({
+    unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+    operations: S.optional(OperationList),
+  }),
+).annotate({
+  identifier: "ListOperationsResponse",
+}) as any as S.Schema<ListOperationsResponse>;
 
 export interface ListQuerySourcesRequest {
   /** The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. For translations. Set this field using the language set in browser or for the page. In the event that the user's language preference is known, set this field to the known user language. When specified, the documents in search results are biased towards the specified language. The Suggest API uses this field as a hint to make better third-party autocomplete predictions. */
@@ -2419,17 +2990,38 @@ export interface ListQuerySourcesRequest {
   pageToken?: string;
 }
 export const ListQuerySourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestOptions.languageCode": S.optional(S.String.pipe(T.Query())),
-  "requestOptions.debugOptions.enableDebugging": S.optional(S.Boolean.pipe(T.Query())),
-  "requestOptions.clientDisplayLanguageCode": S.optional(S.String.pipe(T.Query())),
-  "requestOptions.timeZone": S.optional(S.String.pipe(T.Query())),
-  "requestOptions.searchApplicationId": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/query/sources","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "ListQuerySourcesRequest" }) as any as S.Schema<ListQuerySourcesRequest>;
+  S.Struct({
+    "requestOptions.languageCode": S.optional(S.String.pipe(T.Query())),
+    "requestOptions.debugOptions.enableDebugging": S.optional(
+      S.Boolean.pipe(T.Query()),
+    ),
+    "requestOptions.clientDisplayLanguageCode": S.optional(
+      S.String.pipe(T.Query()),
+    ),
+    "requestOptions.timeZone": S.optional(S.String.pipe(T.Query())),
+    "requestOptions.searchApplicationId": S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/query/sources",
+      baseUrl: "https://cloudsearch.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListQuerySourcesRequest",
+}) as any as S.Schema<ListQuerySourcesRequest>;
 
-export type QueryOperatorTypeEnum = "UNKNOWN" | "INTEGER" | "DOUBLE" | "TIMESTAMP" | "BOOLEAN" | "ENUM" | "DATE" | "TEXT" | "HTML";
+export type QueryOperatorTypeEnum =
+  | "UNKNOWN"
+  | "INTEGER"
+  | "DOUBLE"
+  | "TIMESTAMP"
+  | "BOOLEAN"
+  | "ENUM"
+  | "DATE"
+  | "TEXT"
+  | "HTML";
 export const QueryOperatorTypeEnum = /*@__PURE__*/ S.String;
 
 /** The definition of a operator that can be used in a Search/Suggest request. */
@@ -2460,24 +3052,26 @@ export interface QueryOperator {
   isRepeatable?: boolean;
 }
 export const QueryOperator = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "displayName": S.optional(S.String),
-  "objectType": S.optional(S.String),
-  "greaterThanOperatorName": S.optional(S.String),
-  "enumValues": S.optional(StringList),
-  "lessThanOperatorName": S.optional(S.String),
-  "isSortable": S.optional(S.Boolean),
-  "isReturnable": S.optional(S.Boolean),
-  "isSuggestable": S.optional(S.Boolean),
-  "type": S.optional(QueryOperatorTypeEnum),
-  "operatorName": S.optional(S.String),
-  "isFacetable": S.optional(S.Boolean),
-  "isRepeatable": S.optional(S.Boolean),
-}),
+  S.Struct({
+    displayName: S.optional(S.String),
+    objectType: S.optional(S.String),
+    greaterThanOperatorName: S.optional(S.String),
+    enumValues: S.optional(StringList),
+    lessThanOperatorName: S.optional(S.String),
+    isSortable: S.optional(S.Boolean),
+    isReturnable: S.optional(S.Boolean),
+    isSuggestable: S.optional(S.Boolean),
+    type: S.optional(QueryOperatorTypeEnum),
+    operatorName: S.optional(S.String),
+    isFacetable: S.optional(S.Boolean),
+    isRepeatable: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "QueryOperator" }) as any as S.Schema<QueryOperator>;
 
 export type QueryOperatorList = ReadonlyArray<QueryOperator>;
-export const QueryOperatorList = /*@__PURE__*/ S.Array(QueryOperator) as any as S.Schema<QueryOperatorList>;
+export const QueryOperatorList = /*@__PURE__*/ S.Array(
+  QueryOperator,
+) as any as S.Schema<QueryOperatorList>;
 
 /** List of sources that the user can search using the query API. */
 export interface QuerySource {
@@ -2491,16 +3085,18 @@ export interface QuerySource {
   operators?: QueryOperatorList;
 }
 export const QuerySource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "source": S.optional(Source),
-  "shortName": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "operators": S.optional(QueryOperatorList),
-}),
+  S.Struct({
+    source: S.optional(Source),
+    shortName: S.optional(S.String),
+    displayName: S.optional(S.String),
+    operators: S.optional(QueryOperatorList),
+  }),
 ).annotate({ identifier: "QuerySource" }) as any as S.Schema<QuerySource>;
 
 export type QuerySourceList = ReadonlyArray<QuerySource>;
-export const QuerySourceList = /*@__PURE__*/ S.Array(QuerySource) as any as S.Schema<QuerySourceList>;
+export const QuerySourceList = /*@__PURE__*/ S.Array(
+  QuerySource,
+) as any as S.Schema<QuerySourceList>;
 
 /** List sources response. */
 export interface ListQuerySourcesResponse {
@@ -2508,11 +3104,13 @@ export interface ListQuerySourcesResponse {
   sources?: QuerySourceList;
 }
 export const ListQuerySourcesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "sources": S.optional(QuerySourceList),
-}),
-).annotate({ identifier: "ListQuerySourcesResponse" }) as any as S.Schema<ListQuerySourcesResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    sources: S.optional(QuerySourceList),
+  }),
+).annotate({
+  identifier: "ListQuerySourcesResponse",
+}) as any as S.Schema<ListQuerySourcesResponse>;
 
 export interface ListSettingsDatasourcesRequest {
   /** Starting index of the results. */
@@ -2523,15 +3121,25 @@ export interface ListSettingsDatasourcesRequest {
   pageSize?: number;
 }
 export const ListSettingsDatasourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "debugOptions.enableDebugging": S.optional(S.Boolean.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/settings/datasources","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "ListSettingsDatasourcesRequest" }) as any as S.Schema<ListSettingsDatasourcesRequest>;
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    "debugOptions.enableDebugging": S.optional(S.Boolean.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/settings/datasources",
+      baseUrl: "https://cloudsearch.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListSettingsDatasourcesRequest",
+}) as any as S.Schema<ListSettingsDatasourcesRequest>;
 
 export type DataSourceList = ReadonlyArray<DataSource>;
-export const DataSourceList = /*@__PURE__*/ S.Array(DataSource) as any as S.Schema<DataSourceList>;
+export const DataSourceList = /*@__PURE__*/ S.Array(
+  DataSource,
+) as any as S.Schema<DataSourceList>;
 
 export interface ListDataSourceResponse {
   sources?: DataSourceList;
@@ -2539,11 +3147,13 @@ export interface ListDataSourceResponse {
   nextPageToken?: string;
 }
 export const ListDataSourceResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sources": S.optional(DataSourceList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListDataSourceResponse" }) as any as S.Schema<ListDataSourceResponse>;
+  S.Struct({
+    sources: S.optional(DataSourceList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListDataSourceResponse",
+}) as any as S.Schema<ListDataSourceResponse>;
 
 export interface ListSettingsSearchapplicationsRequest {
   /** The maximum number of items to return. */
@@ -2553,16 +3163,27 @@ export interface ListSettingsSearchapplicationsRequest {
   /** If you are asked by Google to help with debugging, set this field. Otherwise, ignore this field. */
   "debugOptions.enableDebugging"?: boolean;
 }
-export const ListSettingsSearchapplicationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "debugOptions.enableDebugging": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/settings/searchapplications","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "ListSettingsSearchapplicationsRequest" }) as any as S.Schema<ListSettingsSearchapplicationsRequest>;
+export const ListSettingsSearchapplicationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      "debugOptions.enableDebugging": S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/settings/searchapplications",
+        baseUrl: "https://cloudsearch.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListSettingsSearchapplicationsRequest",
+}) as any as S.Schema<ListSettingsSearchapplicationsRequest>;
 
 export type SearchApplicationList = ReadonlyArray<SearchApplication>;
-export const SearchApplicationList = /*@__PURE__*/ S.Array(SearchApplication) as any as S.Schema<SearchApplicationList>;
+export const SearchApplicationList = /*@__PURE__*/ S.Array(
+  SearchApplication,
+) as any as S.Schema<SearchApplicationList>;
 
 export interface ListSearchApplicationsResponse {
   searchApplications?: SearchApplicationList;
@@ -2570,11 +3191,13 @@ export interface ListSearchApplicationsResponse {
   nextPageToken?: string;
 }
 export const ListSearchApplicationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "searchApplications": S.optional(SearchApplicationList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListSearchApplicationsResponse" }) as any as S.Schema<ListSearchApplicationsResponse>;
+  S.Struct({
+    searchApplications: S.optional(SearchApplicationList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListSearchApplicationsResponse",
+}) as any as S.Schema<ListSearchApplicationsResponse>;
 
 export interface PatchSettingsDatasourcesRequest {
   /** Only applies to [`settings.datasources.patch`](https://developers.google.com/workspace/cloud-search/docs/reference/rest/v1/settings.datasources/patch). Update mask to control which fields to update. Example field paths: `name`, `displayName`. * If `update_mask` is non-empty, then only the fields specified in the `update_mask` are updated. * If you specify a field in the `update_mask`, but don't specify its value in the source, that field is cleared. * If the `update_mask` is not present or empty or has the value `*`, then all fields are updated. */
@@ -2587,13 +3210,21 @@ export interface PatchSettingsDatasourcesRequest {
   body?: DataSource;
 }
 export const PatchSettingsDatasourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "debugOptions.enableDebugging": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(DataSource.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/settings/{+name}","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "PatchSettingsDatasourcesRequest" }) as any as S.Schema<PatchSettingsDatasourcesRequest>;
+  S.Struct({
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    "debugOptions.enableDebugging": S.optional(S.Boolean.pipe(T.Query())),
+    body: S.optional(DataSource.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/settings/{+name}",
+      baseUrl: "https://cloudsearch.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchSettingsDatasourcesRequest",
+}) as any as S.Schema<PatchSettingsDatasourcesRequest>;
 
 export interface PatchSettingsSearchapplicationsRequest {
   /** The name of the Search Application. Format: searchapplications/{application_id}. */
@@ -2603,19 +3234,37 @@ export interface PatchSettingsSearchapplicationsRequest {
   /** Request body */
   body?: SearchApplication;
 }
-export const PatchSettingsSearchapplicationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(SearchApplication.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/settings/{+name}","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "PatchSettingsSearchapplicationsRequest" }) as any as S.Schema<PatchSettingsSearchapplicationsRequest>;
+export const PatchSettingsSearchapplicationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(SearchApplication.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/settings/{+name}",
+        baseUrl: "https://cloudsearch.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "PatchSettingsSearchapplicationsRequest",
+}) as any as S.Schema<PatchSettingsSearchapplicationsRequest>;
 
-export type PollItemsRequestStatusCodesItemEnum = "CODE_UNSPECIFIED" | "ERROR" | "MODIFIED" | "NEW_ITEM" | "ACCEPTED";
+export type PollItemsRequestStatusCodesItemEnum =
+  | "CODE_UNSPECIFIED"
+  | "ERROR"
+  | "MODIFIED"
+  | "NEW_ITEM"
+  | "ACCEPTED";
 export const PollItemsRequestStatusCodesItemEnum = /*@__PURE__*/ S.String;
 
-export type PollItemsRequestStatusCodesItemEnumList = ReadonlyArray<PollItemsRequestStatusCodesItemEnum | (string & {})>;
-export const PollItemsRequestStatusCodesItemEnumList = /*@__PURE__*/ S.Array(PollItemsRequestStatusCodesItemEnum) as any as S.Schema<PollItemsRequestStatusCodesItemEnumList>;
+export type PollItemsRequestStatusCodesItemEnumList = ReadonlyArray<
+  PollItemsRequestStatusCodesItemEnum | (string & {})
+>;
+export const PollItemsRequestStatusCodesItemEnumList = /*@__PURE__*/ S.Array(
+  PollItemsRequestStatusCodesItemEnum,
+) as any as S.Schema<PollItemsRequestStatusCodesItemEnumList>;
 
 export interface PollItemsRequest {
   /** The name of connector making this call. Format: datasources/{source_id}/connectors/{ID} */
@@ -2630,14 +3279,16 @@ export interface PollItemsRequest {
   debugOptions?: DebugOptions;
 }
 export const PollItemsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "connectorName": S.optional(S.String),
-  "queue": S.optional(S.String),
-  "statusCodes": S.optional(PollItemsRequestStatusCodesItemEnumList),
-  "limit": S.optional(S.Number),
-  "debugOptions": S.optional(DebugOptions),
-}),
-).annotate({ identifier: "PollItemsRequest" }) as any as S.Schema<PollItemsRequest>;
+  S.Struct({
+    connectorName: S.optional(S.String),
+    queue: S.optional(S.String),
+    statusCodes: S.optional(PollItemsRequestStatusCodesItemEnumList),
+    limit: S.optional(S.Number),
+    debugOptions: S.optional(DebugOptions),
+  }),
+).annotate({
+  identifier: "PollItemsRequest",
+}) as any as S.Schema<PollItemsRequest>;
 
 export interface PollIndexingDatasourcesItemsRequest {
   /** The name of the Data Source to poll items. Format: datasources/{source_id} */
@@ -2646,23 +3297,38 @@ export interface PollIndexingDatasourcesItemsRequest {
   body?: PollItemsRequest;
 }
 export const PollIndexingDatasourcesItemsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(PollItemsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/indexing/{+name}/items:poll","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "PollIndexingDatasourcesItemsRequest" }) as any as S.Schema<PollIndexingDatasourcesItemsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(PollItemsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/indexing/{+name}/items:poll",
+      baseUrl: "https://cloudsearch.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PollIndexingDatasourcesItemsRequest",
+}) as any as S.Schema<PollIndexingDatasourcesItemsRequest>;
 
 export interface PollItemsResponse {
   /** Set of items from the queue available for connector to process. These items have the following subset of fields populated: version metadata.hash structured_data.hash content.hash payload status queue */
   items?: ItemList;
 }
 export const PollItemsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "items": S.optional(ItemList),
-}),
-).annotate({ identifier: "PollItemsResponse" }) as any as S.Schema<PollItemsResponse>;
+  S.Struct({
+    items: S.optional(ItemList),
+  }),
+).annotate({
+  identifier: "PollItemsResponse",
+}) as any as S.Schema<PollItemsResponse>;
 
-export type PushItemTypeEnum = "UNSPECIFIED" | "MODIFIED" | "NOT_MODIFIED" | "REPOSITORY_ERROR" | "REQUEUE";
+export type PushItemTypeEnum =
+  | "UNSPECIFIED"
+  | "MODIFIED"
+  | "NOT_MODIFIED"
+  | "REPOSITORY_ERROR"
+  | "REQUEUE";
 export const PushItemTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents an item to be pushed to the indexing queue. */
@@ -2683,15 +3349,15 @@ export interface PushItem {
   payload?: string;
 }
 export const PushItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "metadataHash": S.optional(S.String),
-  "contentHash": S.optional(S.String),
-  "repositoryError": S.optional(RepositoryError),
-  "structuredDataHash": S.optional(S.String),
-  "queue": S.optional(S.String),
-  "type": S.optional(PushItemTypeEnum),
-  "payload": S.optional(S.String),
-}),
+  S.Struct({
+    metadataHash: S.optional(S.String),
+    contentHash: S.optional(S.String),
+    repositoryError: S.optional(RepositoryError),
+    structuredDataHash: S.optional(S.String),
+    queue: S.optional(S.String),
+    type: S.optional(PushItemTypeEnum),
+    payload: S.optional(S.String),
+  }),
 ).annotate({ identifier: "PushItem" }) as any as S.Schema<PushItem>;
 
 export interface PushItemRequest {
@@ -2703,12 +3369,14 @@ export interface PushItemRequest {
   connectorName?: string;
 }
 export const PushItemRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "debugOptions": S.optional(DebugOptions),
-  "item": S.optional(PushItem),
-  "connectorName": S.optional(S.String),
-}),
-).annotate({ identifier: "PushItemRequest" }) as any as S.Schema<PushItemRequest>;
+  S.Struct({
+    debugOptions: S.optional(DebugOptions),
+    item: S.optional(PushItem),
+    connectorName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PushItemRequest",
+}) as any as S.Schema<PushItemRequest>;
 
 export interface PushIndexingDatasourcesItemsRequest {
   /** The name of the item to push into the indexing queue. Format: datasources/{source_id}/items/{ID} This is a required field. The maximum length is 1536 characters. */
@@ -2717,11 +3385,19 @@ export interface PushIndexingDatasourcesItemsRequest {
   body?: PushItemRequest;
 }
 export const PushIndexingDatasourcesItemsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(PushItemRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/indexing/{+name}:push","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "PushIndexingDatasourcesItemsRequest" }) as any as S.Schema<PushIndexingDatasourcesItemsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(PushItemRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/indexing/{+name}:push",
+      baseUrl: "https://cloudsearch.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PushIndexingDatasourcesItemsRequest",
+}) as any as S.Schema<PushIndexingDatasourcesItemsRequest>;
 
 /** Details about a user's query activity. */
 export interface QueryActivity {
@@ -2729,9 +3405,9 @@ export interface QueryActivity {
   query?: string;
 }
 export const QueryActivity = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "query": S.optional(S.String),
-}),
+  S.Struct({
+    query: S.optional(S.String),
+  }),
 ).annotate({ identifier: "QueryActivity" }) as any as S.Schema<QueryActivity>;
 
 /** User's single or bulk query activity. This can be a logging query or deletion query. */
@@ -2740,9 +3416,9 @@ export interface UserActivity {
   queryActivity?: QueryActivity;
 }
 export const UserActivity = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "queryActivity": S.optional(QueryActivity),
-}),
+  S.Struct({
+    queryActivity: S.optional(QueryActivity),
+  }),
 ).annotate({ identifier: "UserActivity" }) as any as S.Schema<UserActivity>;
 
 /** Shared request options for all RPC methods. */
@@ -2759,13 +3435,13 @@ export interface RequestOptions {
   searchApplicationId?: string;
 }
 export const RequestOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "debugOptions": S.optional(DebugOptions),
-  "clientDisplayLanguageCode": S.optional(S.String),
-  "languageCode": S.optional(S.String),
-  "timeZone": S.optional(S.String),
-  "searchApplicationId": S.optional(S.String),
-}),
+  S.Struct({
+    debugOptions: S.optional(DebugOptions),
+    clientDisplayLanguageCode: S.optional(S.String),
+    languageCode: S.optional(S.String),
+    timeZone: S.optional(S.String),
+    searchApplicationId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "RequestOptions" }) as any as S.Schema<RequestOptions>;
 
 /** Remove Logged Activity Request. */
@@ -2776,37 +3452,51 @@ export interface RemoveActivityRequest {
   requestOptions?: RequestOptions;
 }
 export const RemoveActivityRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "userActivity": S.optional(UserActivity),
-  "requestOptions": S.optional(RequestOptions),
-}),
-).annotate({ identifier: "RemoveActivityRequest" }) as any as S.Schema<RemoveActivityRequest>;
+  S.Struct({
+    userActivity: S.optional(UserActivity),
+    requestOptions: S.optional(RequestOptions),
+  }),
+).annotate({
+  identifier: "RemoveActivityRequest",
+}) as any as S.Schema<RemoveActivityRequest>;
 
 export interface RemoveActivityQueryRequest {
   /** Request body */
   body?: RemoveActivityRequest;
 }
 export const RemoveActivityQueryRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(RemoveActivityRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/query:removeActivity","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "RemoveActivityQueryRequest" }) as any as S.Schema<RemoveActivityQueryRequest>;
+  S.Struct({
+    body: S.optional(RemoveActivityRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/query:removeActivity",
+      baseUrl: "https://cloudsearch.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "RemoveActivityQueryRequest",
+}) as any as S.Schema<RemoveActivityQueryRequest>;
 
 /** Remove Logged Activity Response. will return an empty response for now. Will be revisited in later phases. */
 export interface RemoveActivityResponse {}
 export const RemoveActivityResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "RemoveActivityResponse" }) as any as S.Schema<RemoveActivityResponse>;
+  S.Struct({}),
+).annotate({
+  identifier: "RemoveActivityResponse",
+}) as any as S.Schema<RemoveActivityResponse>;
 
 export interface ResetSearchApplicationRequest {
   /** Common debug options. */
   debugOptions?: DebugOptions;
 }
 export const ResetSearchApplicationRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "debugOptions": S.optional(DebugOptions),
-}),
-).annotate({ identifier: "ResetSearchApplicationRequest" }) as any as S.Schema<ResetSearchApplicationRequest>;
+  S.Struct({
+    debugOptions: S.optional(DebugOptions),
+  }),
+).annotate({
+  identifier: "ResetSearchApplicationRequest",
+}) as any as S.Schema<ResetSearchApplicationRequest>;
 
 export interface ResetSettingsSearchapplicationsRequest {
   /** The name of the search application to be reset. Format: applications/{application_id}. */
@@ -2814,12 +3504,21 @@ export interface ResetSettingsSearchapplicationsRequest {
   /** Request body */
   body?: ResetSearchApplicationRequest;
 }
-export const ResetSettingsSearchapplicationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(ResetSearchApplicationRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/settings/{+name}:reset","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "ResetSettingsSearchapplicationsRequest" }) as any as S.Schema<ResetSettingsSearchapplicationsRequest>;
+export const ResetSettingsSearchapplicationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(ResetSearchApplicationRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/settings/{+name}:reset",
+        baseUrl: "https://cloudsearch.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ResetSettingsSearchapplicationsRequest",
+}) as any as S.Schema<ResetSettingsSearchapplicationsRequest>;
 
 export interface SearchItemsByViewUrlRequest {
   /** Specify the full view URL to find the corresponding item. The maximum length is 2048 characters. */
@@ -2830,12 +3529,14 @@ export interface SearchItemsByViewUrlRequest {
   debugOptions?: DebugOptions;
 }
 export const SearchItemsByViewUrlRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "viewUrl": S.optional(S.String),
-  "pageToken": S.optional(S.String),
-  "debugOptions": S.optional(DebugOptions),
-}),
-).annotate({ identifier: "SearchItemsByViewUrlRequest" }) as any as S.Schema<SearchItemsByViewUrlRequest>;
+  S.Struct({
+    viewUrl: S.optional(S.String),
+    pageToken: S.optional(S.String),
+    debugOptions: S.optional(DebugOptions),
+  }),
+).annotate({
+  identifier: "SearchItemsByViewUrlRequest",
+}) as any as S.Schema<SearchItemsByViewUrlRequest>;
 
 export interface SearchByViewUrlDebugDatasourcesItemsRequest {
   /** Source name, format: datasources/{source_id} */
@@ -2843,12 +3544,21 @@ export interface SearchByViewUrlDebugDatasourcesItemsRequest {
   /** Request body */
   body?: SearchItemsByViewUrlRequest;
 }
-export const SearchByViewUrlDebugDatasourcesItemsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(SearchItemsByViewUrlRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/debug/{+name}/items:searchByViewUrl","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "SearchByViewUrlDebugDatasourcesItemsRequest" }) as any as S.Schema<SearchByViewUrlDebugDatasourcesItemsRequest>;
+export const SearchByViewUrlDebugDatasourcesItemsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(SearchItemsByViewUrlRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/debug/{+name}/items:searchByViewUrl",
+        baseUrl: "https://cloudsearch.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "SearchByViewUrlDebugDatasourcesItemsRequest",
+  }) as any as S.Schema<SearchByViewUrlDebugDatasourcesItemsRequest>;
 
 export interface SearchItemsByViewUrlResponse {
   items?: ItemList;
@@ -2856,11 +3566,13 @@ export interface SearchItemsByViewUrlResponse {
   nextPageToken?: string;
 }
 export const SearchItemsByViewUrlResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "items": S.optional(ItemList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "SearchItemsByViewUrlResponse" }) as any as S.Schema<SearchItemsByViewUrlResponse>;
+  S.Struct({
+    items: S.optional(ItemList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SearchItemsByViewUrlResponse",
+}) as any as S.Schema<SearchItemsByViewUrlResponse>;
 
 /** Options to interpret user query. */
 export interface QueryInterpretationOptions {
@@ -2872,12 +3584,14 @@ export interface QueryInterpretationOptions {
   disableNlInterpretation?: boolean;
 }
 export const QueryInterpretationOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "enableVerbatimMode": S.optional(S.Boolean),
-  "disableSupplementalResults": S.optional(S.Boolean),
-  "disableNlInterpretation": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "QueryInterpretationOptions" }) as any as S.Schema<QueryInterpretationOptions>;
+  S.Struct({
+    enableVerbatimMode: S.optional(S.Boolean),
+    disableSupplementalResults: S.optional(S.Boolean),
+    disableNlInterpretation: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "QueryInterpretationOptions",
+}) as any as S.Schema<QueryInterpretationOptions>;
 
 /** The search API request. NEXT ID: 26 */
 export interface SearchRequest {
@@ -2900,17 +3614,17 @@ export interface SearchRequest {
   dataSourceRestrictions?: DataSourceRestrictionList;
 }
 export const SearchRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "facetOptions": S.optional(FacetOptionsList),
-  "start": S.optional(S.Number),
-  "contextAttributes": S.optional(ContextAttributeList),
-  "requestOptions": S.optional(RequestOptions),
-  "sortOptions": S.optional(SortOptions),
-  "pageSize": S.optional(S.Number),
-  "queryInterpretationOptions": S.optional(QueryInterpretationOptions),
-  "query": S.optional(S.String),
-  "dataSourceRestrictions": S.optional(DataSourceRestrictionList),
-}),
+  S.Struct({
+    facetOptions: S.optional(FacetOptionsList),
+    start: S.optional(S.Number),
+    contextAttributes: S.optional(ContextAttributeList),
+    requestOptions: S.optional(RequestOptions),
+    sortOptions: S.optional(SortOptions),
+    pageSize: S.optional(S.Number),
+    queryInterpretationOptions: S.optional(QueryInterpretationOptions),
+    query: S.optional(S.String),
+    dataSourceRestrictions: S.optional(DataSourceRestrictionList),
+  }),
 ).annotate({ identifier: "SearchRequest" }) as any as S.Schema<SearchRequest>;
 
 export interface SearchQueryRequest {
@@ -2918,12 +3632,23 @@ export interface SearchQueryRequest {
   body?: SearchRequest;
 }
 export const SearchQueryRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(SearchRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/query/search","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "SearchQueryRequest" }) as any as S.Schema<SearchQueryRequest>;
+  S.Struct({
+    body: S.optional(SearchRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/query/search",
+      baseUrl: "https://cloudsearch.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SearchQueryRequest",
+}) as any as S.Schema<SearchQueryRequest>;
 
-export type SpellResultSuggestionTypeEnum = "SUGGESTION_TYPE_UNSPECIFIED" | "NON_EMPTY_RESULTS_SPELL_SUGGESTION" | "ZERO_RESULTS_FULL_PAGE_REPLACEMENT";
+export type SpellResultSuggestionTypeEnum =
+  | "SUGGESTION_TYPE_UNSPECIFIED"
+  | "NON_EMPTY_RESULTS_SPELL_SUGGESTION"
+  | "ZERO_RESULTS_FULL_PAGE_REPLACEMENT";
 export const SpellResultSuggestionTypeEnum = /*@__PURE__*/ S.String;
 
 /** IMPORTANT: It is unsafe to accept this message from an untrusted source, since it's trivial for an attacker to forge serialized messages that don't fulfill the type's safety contract -- for example, it could contain attacker controlled script. A system which receives a SafeHtmlProto implicitly trusts the producer of the SafeHtmlProto. So, it's generally safe to return this message in RPC responses, but generally unsafe to accept it in RPC requests. */
@@ -2932,9 +3657,9 @@ export interface SafeHtmlProto {
   privateDoNotAccessOrElseSafeHtmlWrappedValue?: string;
 }
 export const SafeHtmlProto = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "privateDoNotAccessOrElseSafeHtmlWrappedValue": S.optional(S.String),
-}),
+  S.Struct({
+    privateDoNotAccessOrElseSafeHtmlWrappedValue: S.optional(S.String),
+  }),
 ).annotate({ identifier: "SafeHtmlProto" }) as any as S.Schema<SafeHtmlProto>;
 
 export interface SpellResult {
@@ -2946,15 +3671,17 @@ export interface SpellResult {
   suggestedQueryHtml?: SafeHtmlProto;
 }
 export const SpellResult = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "suggestionType": S.optional(SpellResultSuggestionTypeEnum),
-  "suggestedQuery": S.optional(S.String),
-  "suggestedQueryHtml": S.optional(SafeHtmlProto),
-}),
+  S.Struct({
+    suggestionType: S.optional(SpellResultSuggestionTypeEnum),
+    suggestedQuery: S.optional(S.String),
+    suggestedQueryHtml: S.optional(SafeHtmlProto),
+  }),
 ).annotate({ identifier: "SpellResult" }) as any as S.Schema<SpellResult>;
 
 export type SpellResultList = ReadonlyArray<SpellResult>;
-export const SpellResultList = /*@__PURE__*/ S.Array(SpellResult) as any as S.Schema<SpellResultList>;
+export const SpellResultList = /*@__PURE__*/ S.Array(
+  SpellResult,
+) as any as S.Schema<SpellResultList>;
 
 /** Error message per source response. */
 export interface ErrorMessage {
@@ -2962,29 +3689,37 @@ export interface ErrorMessage {
   source?: Source;
 }
 export const ErrorMessage = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "errorMessage": S.optional(S.String),
-  "source": S.optional(Source),
-}),
+  S.Struct({
+    errorMessage: S.optional(S.String),
+    source: S.optional(Source),
+  }),
 ).annotate({ identifier: "ErrorMessage" }) as any as S.Schema<ErrorMessage>;
 
 export type ErrorMessageList = ReadonlyArray<ErrorMessage>;
-export const ErrorMessageList = /*@__PURE__*/ S.Array(ErrorMessage) as any as S.Schema<ErrorMessageList>;
+export const ErrorMessageList = /*@__PURE__*/ S.Array(
+  ErrorMessage,
+) as any as S.Schema<ErrorMessageList>;
 
 /** Error information about the response. */
 export interface ErrorInfo {
   errorMessages?: ErrorMessageList;
 }
 export const ErrorInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "errorMessages": S.optional(ErrorMessageList),
-}),
+  S.Struct({
+    errorMessages: S.optional(ErrorMessageList),
+  }),
 ).annotate({ identifier: "ErrorInfo" }) as any as S.Schema<ErrorInfo>;
 
-export type QueryInterpretationReasonEnum = "UNSPECIFIED" | "QUERY_HAS_NATURAL_LANGUAGE_INTENT" | "NOT_ENOUGH_RESULTS_FOUND_FOR_USER_QUERY";
+export type QueryInterpretationReasonEnum =
+  | "UNSPECIFIED"
+  | "QUERY_HAS_NATURAL_LANGUAGE_INTENT"
+  | "NOT_ENOUGH_RESULTS_FOUND_FOR_USER_QUERY";
 export const QueryInterpretationReasonEnum = /*@__PURE__*/ S.String;
 
-export type QueryInterpretationInterpretationTypeEnum = "NONE" | "BLEND" | "REPLACE";
+export type QueryInterpretationInterpretationTypeEnum =
+  | "NONE"
+  | "BLEND"
+  | "REPLACE";
 export const QueryInterpretationInterpretationTypeEnum = /*@__PURE__*/ S.String;
 
 export interface QueryInterpretation {
@@ -2999,14 +3734,16 @@ export interface QueryInterpretation {
   interpretedQueryEstimatedResultCount?: string;
 }
 export const QueryInterpretation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "interpretedQuery": S.optional(S.String),
-  "interpretedQueryActualResultCount": S.optional(S.Number),
-  "reason": S.optional(QueryInterpretationReasonEnum),
-  "interpretationType": S.optional(QueryInterpretationInterpretationTypeEnum),
-  "interpretedQueryEstimatedResultCount": S.optional(S.String),
-}),
-).annotate({ identifier: "QueryInterpretation" }) as any as S.Schema<QueryInterpretation>;
+  S.Struct({
+    interpretedQuery: S.optional(S.String),
+    interpretedQueryActualResultCount: S.optional(S.Number),
+    reason: S.optional(QueryInterpretationReasonEnum),
+    interpretationType: S.optional(QueryInterpretationInterpretationTypeEnum),
+    interpretedQueryEstimatedResultCount: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "QueryInterpretation",
+}) as any as S.Schema<QueryInterpretation>;
 
 /** Debugging information about the response. */
 export interface ResponseDebugInfo {
@@ -3014,10 +3751,12 @@ export interface ResponseDebugInfo {
   formattedDebugInfo?: string;
 }
 export const ResponseDebugInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "formattedDebugInfo": S.optional(S.String),
-}),
-).annotate({ identifier: "ResponseDebugInfo" }) as any as S.Schema<ResponseDebugInfo>;
+  S.Struct({
+    formattedDebugInfo: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ResponseDebugInfo",
+}) as any as S.Schema<ResponseDebugInfo>;
 
 /** Display Fields for Search Results */
 export interface ResultDisplayField {
@@ -3029,28 +3768,36 @@ export interface ResultDisplayField {
   property?: NamedProperty;
 }
 export const ResultDisplayField = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "label": S.optional(S.String),
-  "operatorName": S.optional(S.String),
-  "property": S.optional(NamedProperty),
-}),
-).annotate({ identifier: "ResultDisplayField" }) as any as S.Schema<ResultDisplayField>;
+  S.Struct({
+    label: S.optional(S.String),
+    operatorName: S.optional(S.String),
+    property: S.optional(NamedProperty),
+  }),
+).annotate({
+  identifier: "ResultDisplayField",
+}) as any as S.Schema<ResultDisplayField>;
 
 export type ResultDisplayFieldList = ReadonlyArray<ResultDisplayField>;
-export const ResultDisplayFieldList = /*@__PURE__*/ S.Array(ResultDisplayField) as any as S.Schema<ResultDisplayFieldList>;
+export const ResultDisplayFieldList = /*@__PURE__*/ S.Array(
+  ResultDisplayField,
+) as any as S.Schema<ResultDisplayFieldList>;
 
 /** The collection of fields that make up a displayed line */
 export interface ResultDisplayLine {
   fields?: ResultDisplayFieldList;
 }
 export const ResultDisplayLine = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fields": S.optional(ResultDisplayFieldList),
-}),
-).annotate({ identifier: "ResultDisplayLine" }) as any as S.Schema<ResultDisplayLine>;
+  S.Struct({
+    fields: S.optional(ResultDisplayFieldList),
+  }),
+).annotate({
+  identifier: "ResultDisplayLine",
+}) as any as S.Schema<ResultDisplayLine>;
 
 export type ResultDisplayLineList = ReadonlyArray<ResultDisplayLine>;
-export const ResultDisplayLineList = /*@__PURE__*/ S.Array(ResultDisplayLine) as any as S.Schema<ResultDisplayLineList>;
+export const ResultDisplayLineList = /*@__PURE__*/ S.Array(
+  ResultDisplayLine,
+) as any as S.Schema<ResultDisplayLineList>;
 
 export interface ResultDisplayMetadata {
   /** The display label for the object. */
@@ -3059,11 +3806,13 @@ export interface ResultDisplayMetadata {
   metalines?: ResultDisplayLineList;
 }
 export const ResultDisplayMetadata = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "objectTypeLabel": S.optional(S.String),
-  "metalines": S.optional(ResultDisplayLineList),
-}),
-).annotate({ identifier: "ResultDisplayMetadata" }) as any as S.Schema<ResultDisplayMetadata>;
+  S.Struct({
+    objectTypeLabel: S.optional(S.String),
+    metalines: S.optional(ResultDisplayLineList),
+  }),
+).annotate({
+  identifier: "ResultDisplayMetadata",
+}) as any as S.Schema<ResultDisplayMetadata>;
 
 /** A person's name. */
 export interface Name {
@@ -3071,13 +3820,15 @@ export interface Name {
   displayName?: string;
 }
 export const Name = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "displayName": S.optional(S.String),
-}),
+  S.Struct({
+    displayName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Name" }) as any as S.Schema<Name>;
 
 export type NameList = ReadonlyArray<Name>;
-export const NameList = /*@__PURE__*/ S.Array(Name) as any as S.Schema<NameList>;
+export const NameList = /*@__PURE__*/ S.Array(
+  Name,
+) as any as S.Schema<NameList>;
 
 /** A person's email address. */
 export interface EmailAddress {
@@ -3093,17 +3844,19 @@ export interface EmailAddress {
   emailUrl?: string;
 }
 export const EmailAddress = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "primary": S.optional(S.Boolean),
-  "emailAddress": S.optional(S.String),
-  "type": S.optional(S.String),
-  "customType": S.optional(S.String),
-  "emailUrl": S.optional(S.String),
-}),
+  S.Struct({
+    primary: S.optional(S.Boolean),
+    emailAddress: S.optional(S.String),
+    type: S.optional(S.String),
+    customType: S.optional(S.String),
+    emailUrl: S.optional(S.String),
+  }),
 ).annotate({ identifier: "EmailAddress" }) as any as S.Schema<EmailAddress>;
 
 export type EmailAddressList = ReadonlyArray<EmailAddress>;
-export const EmailAddressList = /*@__PURE__*/ S.Array(EmailAddress) as any as S.Schema<EmailAddressList>;
+export const EmailAddressList = /*@__PURE__*/ S.Array(
+  EmailAddress,
+) as any as S.Schema<EmailAddressList>;
 
 /** A person's photo. */
 export interface Photo {
@@ -3111,13 +3864,15 @@ export interface Photo {
   url?: string;
 }
 export const Photo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "url": S.optional(S.String),
-}),
+  S.Struct({
+    url: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Photo" }) as any as S.Schema<Photo>;
 
 export type PhotoList = ReadonlyArray<Photo>;
-export const PhotoList = /*@__PURE__*/ S.Array(Photo) as any as S.Schema<PhotoList>;
+export const PhotoList = /*@__PURE__*/ S.Array(
+  Photo,
+) as any as S.Schema<PhotoList>;
 
 export type PhoneNumberTypeEnum = "OTHER" | "MOBILE" | "OFFICE";
 export const PhoneNumberTypeEnum = /*@__PURE__*/ S.String;
@@ -3129,14 +3884,16 @@ export interface PhoneNumber {
   type?: PhoneNumberTypeEnum;
 }
 export const PhoneNumber = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "phoneNumber": S.optional(S.String),
-  "type": S.optional(PhoneNumberTypeEnum),
-}),
+  S.Struct({
+    phoneNumber: S.optional(S.String),
+    type: S.optional(PhoneNumberTypeEnum),
+  }),
 ).annotate({ identifier: "PhoneNumber" }) as any as S.Schema<PhoneNumber>;
 
 export type PhoneNumberList = ReadonlyArray<PhoneNumber>;
-export const PhoneNumberList = /*@__PURE__*/ S.Array(PhoneNumber) as any as S.Schema<PhoneNumberList>;
+export const PhoneNumberList = /*@__PURE__*/ S.Array(
+  PhoneNumber,
+) as any as S.Schema<PhoneNumberList>;
 
 /** Object to represent a person. */
 export interface Person {
@@ -3154,14 +3911,14 @@ export interface Person {
   phoneNumbers?: PhoneNumberList;
 }
 export const Person = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "obfuscatedId": S.optional(S.String),
-  "personNames": S.optional(NameList),
-  "emailAddresses": S.optional(EmailAddressList),
-  "photos": S.optional(PhotoList),
-  "phoneNumbers": S.optional(PhoneNumberList),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    obfuscatedId: S.optional(S.String),
+    personNames: S.optional(NameList),
+    emailAddresses: S.optional(EmailAddressList),
+    photos: S.optional(PhotoList),
+    phoneNumbers: S.optional(PhoneNumberList),
+  }),
 ).annotate({ identifier: "Person" }) as any as S.Schema<Person>;
 
 /** Metadata of a matched search result. */
@@ -3186,17 +3943,17 @@ export interface Metadata {
   fields?: NamedPropertyList;
 }
 export const Metadata = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "objectType": S.optional(S.String),
-  "thumbnailUrl": S.optional(S.String),
-  "displayOptions": S.optional(ResultDisplayMetadata),
-  "source": S.optional(Source),
-  "mimeType": S.optional(S.String),
-  "owner": S.optional(Person),
-  "updateTime": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "fields": S.optional(NamedPropertyList),
-}),
+  S.Struct({
+    objectType: S.optional(S.String),
+    thumbnailUrl: S.optional(S.String),
+    displayOptions: S.optional(ResultDisplayMetadata),
+    source: S.optional(Source),
+    mimeType: S.optional(S.String),
+    owner: S.optional(Person),
+    updateTime: S.optional(S.String),
+    createTime: S.optional(S.String),
+    fields: S.optional(NamedPropertyList),
+  }),
 ).annotate({ identifier: "Metadata" }) as any as S.Schema<Metadata>;
 
 /** Matched range of a snippet [start, end). */
@@ -3207,14 +3964,16 @@ export interface MatchRange {
   end?: number;
 }
 export const MatchRange = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "start": S.optional(S.Number),
-  "end": S.optional(S.Number),
-}),
+  S.Struct({
+    start: S.optional(S.Number),
+    end: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "MatchRange" }) as any as S.Schema<MatchRange>;
 
 export type MatchRangeList = ReadonlyArray<MatchRange>;
-export const MatchRangeList = /*@__PURE__*/ S.Array(MatchRange) as any as S.Schema<MatchRangeList>;
+export const MatchRangeList = /*@__PURE__*/ S.Array(
+  MatchRange,
+) as any as S.Schema<MatchRangeList>;
 
 /** Snippet of the search result, which summarizes the content of the resulting page. */
 export interface Snippet {
@@ -3224,10 +3983,10 @@ export interface Snippet {
   matchRanges?: MatchRangeList;
 }
 export const Snippet = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "snippet": S.optional(S.String),
-  "matchRanges": S.optional(MatchRangeList),
-}),
+  S.Struct({
+    snippet: S.optional(S.String),
+    matchRanges: S.optional(MatchRangeList),
+  }),
 ).annotate({ identifier: "Snippet" }) as any as S.Schema<Snippet>;
 
 /** Debugging information about the result. */
@@ -3236,10 +3995,12 @@ export interface ResultDebugInfo {
   formattedDebugInfo?: string;
 }
 export const ResultDebugInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "formattedDebugInfo": S.optional(S.String),
-}),
-).annotate({ identifier: "ResultDebugInfo" }) as any as S.Schema<ResultDebugInfo>;
+  S.Struct({
+    formattedDebugInfo: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ResultDebugInfo",
+}) as any as S.Schema<ResultDebugInfo>;
 
 /** Results containing indexed information for a document. Next ID: 17 */
 export interface SearchResult {
@@ -3257,18 +4018,20 @@ export interface SearchResult {
   debugInfo?: ResultDebugInfo;
 }
 export const SearchResult = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "title": S.optional(S.String),
-  "url": S.optional(S.String),
-  "metadata": S.optional(Metadata),
-  "clusteredResults": S.optional(S.suspend(() => SearchResultList)),
-  "snippet": S.optional(Snippet),
-  "debugInfo": S.optional(ResultDebugInfo),
-}),
+  S.Struct({
+    title: S.optional(S.String),
+    url: S.optional(S.String),
+    metadata: S.optional(Metadata),
+    clusteredResults: S.optional(S.suspend(() => SearchResultList)),
+    snippet: S.optional(Snippet),
+    debugInfo: S.optional(ResultDebugInfo),
+  }),
 ).annotate({ identifier: "SearchResult" }) as any as S.Schema<SearchResult>;
 
 export type SearchResultList = ReadonlyArray<SearchResult>;
-export const SearchResultList = /*@__PURE__*/ S.Array(SearchResult) as any as S.Schema<SearchResultList>;
+export const SearchResultList = /*@__PURE__*/ S.Array(
+  SearchResult,
+) as any as S.Schema<SearchResultList>;
 
 /** A bucket in a facet is the basic unit of operation. A bucket can comprise either a single value OR a contiguous range of values, depending on the type of the field bucketed. FacetBucket is currently used only for returning the response object. */
 export interface FacetBucket {
@@ -3281,16 +4044,18 @@ export interface FacetBucket {
   count?: number;
 }
 export const FacetBucket = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "value": S.optional(Value),
-  "percentage": S.optional(S.Number),
-  "filter": S.optional(Filter),
-  "count": S.optional(S.Number),
-}),
+  S.Struct({
+    value: S.optional(Value),
+    percentage: S.optional(S.Number),
+    filter: S.optional(Filter),
+    count: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "FacetBucket" }) as any as S.Schema<FacetBucket>;
 
 export type FacetBucketList = ReadonlyArray<FacetBucket>;
-export const FacetBucketList = /*@__PURE__*/ S.Array(FacetBucket) as any as S.Schema<FacetBucketList>;
+export const FacetBucketList = /*@__PURE__*/ S.Array(
+  FacetBucket,
+) as any as S.Schema<FacetBucketList>;
 
 /** Source specific facet response */
 export interface FacetResult {
@@ -3304,16 +4069,18 @@ export interface FacetResult {
   operatorName?: string;
 }
 export const FacetResult = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sourceName": S.optional(S.String),
-  "objectType": S.optional(S.String),
-  "buckets": S.optional(FacetBucketList),
-  "operatorName": S.optional(S.String),
-}),
+  S.Struct({
+    sourceName: S.optional(S.String),
+    objectType: S.optional(S.String),
+    buckets: S.optional(FacetBucketList),
+    operatorName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "FacetResult" }) as any as S.Schema<FacetResult>;
 
 export type FacetResultList = ReadonlyArray<FacetResult>;
-export const FacetResultList = /*@__PURE__*/ S.Array(FacetResult) as any as S.Schema<FacetResultList>;
+export const FacetResultList = /*@__PURE__*/ S.Array(
+  FacetResult,
+) as any as S.Schema<FacetResultList>;
 
 /** Per source result count information. */
 export interface SourceResultCount {
@@ -3327,16 +4094,20 @@ export interface SourceResultCount {
   resultCountEstimate?: string;
 }
 export const SourceResultCount = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resultCountExact": S.optional(S.String),
-  "hasMoreResults": S.optional(S.Boolean),
-  "source": S.optional(Source),
-  "resultCountEstimate": S.optional(S.String),
-}),
-).annotate({ identifier: "SourceResultCount" }) as any as S.Schema<SourceResultCount>;
+  S.Struct({
+    resultCountExact: S.optional(S.String),
+    hasMoreResults: S.optional(S.Boolean),
+    source: S.optional(Source),
+    resultCountEstimate: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SourceResultCount",
+}) as any as S.Schema<SourceResultCount>;
 
 export type SourceResultCountList = ReadonlyArray<SourceResultCount>;
-export const SourceResultCountList = /*@__PURE__*/ S.Array(SourceResultCount) as any as S.Schema<SourceResultCountList>;
+export const SourceResultCountList = /*@__PURE__*/ S.Array(
+  SourceResultCount,
+) as any as S.Schema<SourceResultCountList>;
 
 /** Result count information */
 export interface ResultCounts {
@@ -3344,9 +4115,9 @@ export interface ResultCounts {
   sourceResultCounts?: SourceResultCountList;
 }
 export const ResultCounts = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sourceResultCounts": S.optional(SourceResultCountList),
-}),
+  S.Struct({
+    sourceResultCounts: S.optional(SourceResultCountList),
+  }),
 ).annotate({ identifier: "ResultCounts" }) as any as S.Schema<ResultCounts>;
 
 /** Structured results that are returned as part of search request. */
@@ -3355,13 +4126,17 @@ export interface StructuredResult {
   person?: Person;
 }
 export const StructuredResult = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "person": S.optional(Person),
-}),
-).annotate({ identifier: "StructuredResult" }) as any as S.Schema<StructuredResult>;
+  S.Struct({
+    person: S.optional(Person),
+  }),
+).annotate({
+  identifier: "StructuredResult",
+}) as any as S.Schema<StructuredResult>;
 
 export type StructuredResultList = ReadonlyArray<StructuredResult>;
-export const StructuredResultList = /*@__PURE__*/ S.Array(StructuredResult) as any as S.Schema<StructuredResultList>;
+export const StructuredResultList = /*@__PURE__*/ S.Array(
+  StructuredResult,
+) as any as S.Schema<StructuredResultList>;
 
 /** The search API response. NEXT ID: 20 */
 export interface SearchResponse {
@@ -3389,19 +4164,19 @@ export interface SearchResponse {
   structuredResults?: StructuredResultList;
 }
 export const SearchResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "spellResults": S.optional(SpellResultList),
-  "resultCountExact": S.optional(S.String),
-  "errorInfo": S.optional(ErrorInfo),
-  "queryInterpretation": S.optional(QueryInterpretation),
-  "resultCountEstimate": S.optional(S.String),
-  "debugInfo": S.optional(ResponseDebugInfo),
-  "results": S.optional(SearchResultList),
-  "hasMoreResults": S.optional(S.Boolean),
-  "facetResults": S.optional(FacetResultList),
-  "resultCounts": S.optional(ResultCounts),
-  "structuredResults": S.optional(StructuredResultList),
-}),
+  S.Struct({
+    spellResults: S.optional(SpellResultList),
+    resultCountExact: S.optional(S.String),
+    errorInfo: S.optional(ErrorInfo),
+    queryInterpretation: S.optional(QueryInterpretation),
+    resultCountEstimate: S.optional(S.String),
+    debugInfo: S.optional(ResponseDebugInfo),
+    results: S.optional(SearchResultList),
+    hasMoreResults: S.optional(S.Boolean),
+    facetResults: S.optional(FacetResultList),
+    resultCounts: S.optional(ResultCounts),
+    structuredResults: S.optional(StructuredResultList),
+  }),
 ).annotate({ identifier: "SearchResponse" }) as any as S.Schema<SearchResponse>;
 
 /** Request of suggest API. */
@@ -3414,11 +4189,11 @@ export interface SuggestRequest {
   query?: string;
 }
 export const SuggestRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestOptions": S.optional(RequestOptions),
-  "dataSourceRestrictions": S.optional(DataSourceRestrictionList),
-  "query": S.optional(S.String),
-}),
+  S.Struct({
+    requestOptions: S.optional(RequestOptions),
+    dataSourceRestrictions: S.optional(DataSourceRestrictionList),
+    query: S.optional(S.String),
+  }),
 ).annotate({ identifier: "SuggestRequest" }) as any as S.Schema<SuggestRequest>;
 
 export interface SuggestQueryRequest {
@@ -3426,12 +4201,25 @@ export interface SuggestQueryRequest {
   body?: SuggestRequest;
 }
 export const SuggestQueryRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(SuggestRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/query/suggest","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "SuggestQueryRequest" }) as any as S.Schema<SuggestQueryRequest>;
+  S.Struct({
+    body: S.optional(SuggestRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/query/suggest",
+      baseUrl: "https://cloudsearch.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SuggestQueryRequest",
+}) as any as S.Schema<SuggestQueryRequest>;
 
-export type QuerySuggestionSourceCorpusEnum = "SOURCE_CORPUS_UNSPECIFIED" | "GMAIL" | "DRIVE" | "CHAT" | "CALENDAR";
+export type QuerySuggestionSourceCorpusEnum =
+  | "SOURCE_CORPUS_UNSPECIFIED"
+  | "GMAIL"
+  | "DRIVE"
+  | "CHAT"
+  | "CALENDAR";
 export const QuerySuggestionSourceCorpusEnum = /*@__PURE__*/ S.String;
 
 export interface QuerySuggestion {
@@ -3441,11 +4229,13 @@ export interface QuerySuggestion {
   lastQueryTime?: string;
 }
 export const QuerySuggestion = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sourceCorpus": S.optional(QuerySuggestionSourceCorpusEnum),
-  "lastQueryTime": S.optional(S.String),
-}),
-).annotate({ identifier: "QuerySuggestion" }) as any as S.Schema<QuerySuggestion>;
+  S.Struct({
+    sourceCorpus: S.optional(QuerySuggestionSourceCorpusEnum),
+    lastQueryTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "QuerySuggestion",
+}) as any as S.Schema<QuerySuggestion>;
 
 /** This field contains information about the person being suggested. */
 export interface PeopleSuggestion {
@@ -3453,10 +4243,12 @@ export interface PeopleSuggestion {
   person?: Person;
 }
 export const PeopleSuggestion = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "person": S.optional(Person),
-}),
-).annotate({ identifier: "PeopleSuggestion" }) as any as S.Schema<PeopleSuggestion>;
+  S.Struct({
+    person: S.optional(Person),
+  }),
+).annotate({
+  identifier: "PeopleSuggestion",
+}) as any as S.Schema<PeopleSuggestion>;
 
 /** One suggestion result. */
 export interface SuggestResult {
@@ -3470,16 +4262,18 @@ export interface SuggestResult {
   peopleSuggestion?: PeopleSuggestion;
 }
 export const SuggestResult = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "source": S.optional(Source),
-  "querySuggestion": S.optional(QuerySuggestion),
-  "suggestedQuery": S.optional(S.String),
-  "peopleSuggestion": S.optional(PeopleSuggestion),
-}),
+  S.Struct({
+    source: S.optional(Source),
+    querySuggestion: S.optional(QuerySuggestion),
+    suggestedQuery: S.optional(S.String),
+    peopleSuggestion: S.optional(PeopleSuggestion),
+  }),
 ).annotate({ identifier: "SuggestResult" }) as any as S.Schema<SuggestResult>;
 
 export type SuggestResultList = ReadonlyArray<SuggestResult>;
-export const SuggestResultList = /*@__PURE__*/ S.Array(SuggestResult) as any as S.Schema<SuggestResultList>;
+export const SuggestResultList = /*@__PURE__*/ S.Array(
+  SuggestResult,
+) as any as S.Schema<SuggestResultList>;
 
 /** Response of the suggest API. */
 export interface SuggestResponse {
@@ -3487,10 +4281,12 @@ export interface SuggestResponse {
   suggestResults?: SuggestResultList;
 }
 export const SuggestResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "suggestResults": S.optional(SuggestResultList),
-}),
-).annotate({ identifier: "SuggestResponse" }) as any as S.Schema<SuggestResponse>;
+  S.Struct({
+    suggestResults: S.optional(SuggestResultList),
+  }),
+).annotate({
+  identifier: "SuggestResponse",
+}) as any as S.Schema<SuggestResponse>;
 
 export interface UnreserveItemsRequest {
   /** Common debug options. */
@@ -3501,12 +4297,14 @@ export interface UnreserveItemsRequest {
   queue?: string;
 }
 export const UnreserveItemsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "debugOptions": S.optional(DebugOptions),
-  "connectorName": S.optional(S.String),
-  "queue": S.optional(S.String),
-}),
-).annotate({ identifier: "UnreserveItemsRequest" }) as any as S.Schema<UnreserveItemsRequest>;
+  S.Struct({
+    debugOptions: S.optional(DebugOptions),
+    connectorName: S.optional(S.String),
+    queue: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UnreserveItemsRequest",
+}) as any as S.Schema<UnreserveItemsRequest>;
 
 export interface UnreserveIndexingDatasourcesItemsRequest {
   /** The name of the Data Source to unreserve all items. Format: datasources/{source_id} */
@@ -3514,12 +4312,21 @@ export interface UnreserveIndexingDatasourcesItemsRequest {
   /** Request body */
   body?: UnreserveItemsRequest;
 }
-export const UnreserveIndexingDatasourcesItemsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(UnreserveItemsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/indexing/{+name}/items:unreserve","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "UnreserveIndexingDatasourcesItemsRequest" }) as any as S.Schema<UnreserveIndexingDatasourcesItemsRequest>;
+export const UnreserveIndexingDatasourcesItemsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(UnreserveItemsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/indexing/{+name}/items:unreserve",
+        baseUrl: "https://cloudsearch.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "UnreserveIndexingDatasourcesItemsRequest",
+}) as any as S.Schema<UnreserveIndexingDatasourcesItemsRequest>;
 
 export interface UpdateCustomerSettingsRequest {
   /** Update mask to control which fields get updated. If you specify a field in the update_mask but don't specify its value here, that field will be cleared. If the mask is not present or empty, all fields will be updated. Currently supported field paths: vpc_settings and audit_logging_settings */
@@ -3528,11 +4335,19 @@ export interface UpdateCustomerSettingsRequest {
   body?: CustomerSettings;
 }
 export const UpdateCustomerSettingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(CustomerSettings.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/settings/customer","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "UpdateCustomerSettingsRequest" }) as any as S.Schema<UpdateCustomerSettingsRequest>;
+  S.Struct({
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(CustomerSettings.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/settings/customer",
+      baseUrl: "https://cloudsearch.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateCustomerSettingsRequest",
+}) as any as S.Schema<UpdateCustomerSettingsRequest>;
 
 export interface UpdateSchemaRequest {
   /** Common debug options. */
@@ -3543,12 +4358,14 @@ export interface UpdateSchemaRequest {
   schema?: Cloudsearch_Schema;
 }
 export const UpdateSchemaRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "debugOptions": S.optional(DebugOptions),
-  "validateOnly": S.optional(S.Boolean),
-  "schema": S.optional(Cloudsearch_Schema),
-}),
-).annotate({ identifier: "UpdateSchemaRequest" }) as any as S.Schema<UpdateSchemaRequest>;
+  S.Struct({
+    debugOptions: S.optional(DebugOptions),
+    validateOnly: S.optional(S.Boolean),
+    schema: S.optional(Cloudsearch_Schema),
+  }),
+).annotate({
+  identifier: "UpdateSchemaRequest",
+}) as any as S.Schema<UpdateSchemaRequest>;
 
 export interface UpdateSchemaIndexingDatasourcesRequest {
   /** The name of the data source to update Schema. Format: datasources/{source_id} */
@@ -3556,12 +4373,21 @@ export interface UpdateSchemaIndexingDatasourcesRequest {
   /** Request body */
   body?: UpdateSchemaRequest;
 }
-export const UpdateSchemaIndexingDatasourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(UpdateSchemaRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"v1/indexing/{+name}/schema","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "UpdateSchemaIndexingDatasourcesRequest" }) as any as S.Schema<UpdateSchemaIndexingDatasourcesRequest>;
+export const UpdateSchemaIndexingDatasourcesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(UpdateSchemaRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "v1/indexing/{+name}/schema",
+        baseUrl: "https://cloudsearch.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "UpdateSchemaIndexingDatasourcesRequest",
+}) as any as S.Schema<UpdateSchemaIndexingDatasourcesRequest>;
 
 export interface UpdateDataSourceRequest {
   source?: DataSource;
@@ -3571,12 +4397,14 @@ export interface UpdateDataSourceRequest {
   updateMask?: string;
 }
 export const UpdateDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "source": S.optional(DataSource),
-  "debugOptions": S.optional(DebugOptions),
-  "updateMask": S.optional(S.String),
-}),
-).annotate({ identifier: "UpdateDataSourceRequest" }) as any as S.Schema<UpdateDataSourceRequest>;
+  S.Struct({
+    source: S.optional(DataSource),
+    debugOptions: S.optional(DebugOptions),
+    updateMask: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateDataSourceRequest",
+}) as any as S.Schema<UpdateDataSourceRequest>;
 
 export interface UpdateSettingsDatasourcesRequest {
   /** The name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating a datasource. */
@@ -3585,11 +4413,19 @@ export interface UpdateSettingsDatasourcesRequest {
   body?: UpdateDataSourceRequest;
 }
 export const UpdateSettingsDatasourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(UpdateDataSourceRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"v1/settings/{+name}","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "UpdateSettingsDatasourcesRequest" }) as any as S.Schema<UpdateSettingsDatasourcesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(UpdateDataSourceRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "v1/settings/{+name}",
+      baseUrl: "https://cloudsearch.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateSettingsDatasourcesRequest",
+}) as any as S.Schema<UpdateSettingsDatasourcesRequest>;
 
 export interface UpdateSettingsSearchapplicationsRequest {
   /** The name of the Search Application. Format: searchapplications/{application_id}. */
@@ -3599,13 +4435,22 @@ export interface UpdateSettingsSearchapplicationsRequest {
   /** Request body */
   body?: SearchApplication;
 }
-export const UpdateSettingsSearchapplicationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(SearchApplication.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"v1/settings/{+name}","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "UpdateSettingsSearchapplicationsRequest" }) as any as S.Schema<UpdateSettingsSearchapplicationsRequest>;
+export const UpdateSettingsSearchapplicationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(SearchApplication.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "v1/settings/{+name}",
+        baseUrl: "https://cloudsearch.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "UpdateSettingsSearchapplicationsRequest",
+}) as any as S.Schema<UpdateSettingsSearchapplicationsRequest>;
 
 /** Start upload file request. */
 export interface StartUploadItemRequest {
@@ -3615,11 +4460,13 @@ export interface StartUploadItemRequest {
   debugOptions?: DebugOptions;
 }
 export const StartUploadItemRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "connectorName": S.optional(S.String),
-  "debugOptions": S.optional(DebugOptions),
-}),
-).annotate({ identifier: "StartUploadItemRequest" }) as any as S.Schema<StartUploadItemRequest>;
+  S.Struct({
+    connectorName: S.optional(S.String),
+    debugOptions: S.optional(DebugOptions),
+  }),
+).annotate({
+  identifier: "StartUploadItemRequest",
+}) as any as S.Schema<StartUploadItemRequest>;
 
 export interface UploadIndexingDatasourcesItemsRequest {
   /** The name of the Item to start a resumable upload. Format: datasources/{source_id}/items/{item_id}. The maximum length is 1536 bytes. */
@@ -3627,12 +4474,21 @@ export interface UploadIndexingDatasourcesItemsRequest {
   /** Request body */
   body?: StartUploadItemRequest;
 }
-export const UploadIndexingDatasourcesItemsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(StartUploadItemRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/indexing/{+name}:upload","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "UploadIndexingDatasourcesItemsRequest" }) as any as S.Schema<UploadIndexingDatasourcesItemsRequest>;
+export const UploadIndexingDatasourcesItemsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(StartUploadItemRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/indexing/{+name}:upload",
+        baseUrl: "https://cloudsearch.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "UploadIndexingDatasourcesItemsRequest",
+}) as any as S.Schema<UploadIndexingDatasourcesItemsRequest>;
 
 /** Media resource. */
 export interface Media {
@@ -3640,9 +4496,9 @@ export interface Media {
   resourceName?: string;
 }
 export const Media = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceName": S.optional(S.String),
-}),
+  S.Struct({
+    resourceName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Media" }) as any as S.Schema<Media>;
 
 export interface UploadMediaRequest {
@@ -3652,13 +4508,26 @@ export interface UploadMediaRequest {
   body?: Media;
 }
 export const UploadMediaRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceName": S.String.pipe(T.Label()),
-  "body": S.optional(Media.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/media/{+resourceName}","baseUrl":"https://cloudsearch.googleapis.com/"})),
-).annotate({ identifier: "UploadMediaRequest" }) as any as S.Schema<UploadMediaRequest>;
+  S.Struct({
+    resourceName: S.String.pipe(T.Label()),
+    body: S.optional(Media.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/media/{+resourceName}",
+      baseUrl: "https://cloudsearch.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UploadMediaRequest",
+}) as any as S.Schema<UploadMediaRequest>;
 
-export type CheckAccessDebugDatasourcesItemsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CheckAccessDebugDatasourcesItemsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Checks whether an item is accessible by specified principal. Principal must be a user; groups and domain values aren't supported. **Note:** This API requires an admin account to execute. */
 export const checkAccessDebugDatasourcesItems: API.OperationMethod<
   CheckAccessDebugDatasourcesItemsRequest,
@@ -3673,7 +4542,12 @@ export const checkAccessDebugDatasourcesItems: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateSettingsDatasourcesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateSettingsDatasourcesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a datasource. **Note:** This API requires an admin account to execute. */
 export const createSettingsDatasources: API.OperationMethod<
   CreateSettingsDatasourcesRequest,
@@ -3688,7 +4562,12 @@ export const createSettingsDatasources: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateSettingsSearchapplicationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateSettingsSearchapplicationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a search application. **Note:** This API requires an admin account to execute. */
 export const createSettingsSearchapplications: API.OperationMethod<
   CreateSettingsSearchapplicationsRequest,
@@ -3703,7 +4582,12 @@ export const createSettingsSearchapplications: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteIndexingDatasourcesItemsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteIndexingDatasourcesItemsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes Item resource for the specified resource name. This API requires an admin or service account to execute. The service account used is the one whitelisted in the corresponding data source. */
 export const deleteIndexingDatasourcesItems: API.OperationMethod<
   DeleteIndexingDatasourcesItemsRequest,
@@ -3718,7 +4602,12 @@ export const deleteIndexingDatasourcesItems: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteQueueItemsIndexingDatasourcesItemsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteQueueItemsIndexingDatasourcesItemsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes all items in a queue. This method is useful for deleting stale items. This API requires an admin or service account to execute. The service account used is the one whitelisted in the corresponding data source. */
 export const deleteQueueItemsIndexingDatasourcesItems: API.OperationMethod<
   DeleteQueueItemsIndexingDatasourcesItemsRequest,
@@ -3733,7 +4622,12 @@ export const deleteQueueItemsIndexingDatasourcesItems: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteSchemaIndexingDatasourcesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteSchemaIndexingDatasourcesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes the schema of a data source. **Note:** This API requires an admin or service account to execute. */
 export const deleteSchemaIndexingDatasources: API.OperationMethod<
   DeleteSchemaIndexingDatasourcesRequest,
@@ -3748,7 +4642,12 @@ export const deleteSchemaIndexingDatasources: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteSettingsDatasourcesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteSettingsDatasourcesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a datasource. **Note:** This API requires an admin account to execute. */
 export const deleteSettingsDatasources: API.OperationMethod<
   DeleteSettingsDatasourcesRequest,
@@ -3763,7 +4662,12 @@ export const deleteSettingsDatasources: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteSettingsSearchapplicationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteSettingsSearchapplicationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a search application. **Note:** This API requires an admin account to execute. */
 export const deleteSettingsSearchapplications: API.OperationMethod<
   DeleteSettingsSearchapplicationsRequest,
@@ -3793,7 +4697,10 @@ export const getCustomerSettings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIndexingDatasourcesItemsError = NotFound | Forbidden | GcpOpError;
+export type GetIndexingDatasourcesItemsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets Item resource by item name. This API requires an admin or service account to execute. The service account used is the one whitelisted in the corresponding data source. */
 export const getIndexingDatasourcesItems: API.OperationMethod<
   GetIndexingDatasourcesItemsRequest,
@@ -3853,7 +4760,10 @@ export const getQueryStats: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetSchemaIndexingDatasourcesError = NotFound | Forbidden | GcpOpError;
+export type GetSchemaIndexingDatasourcesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the schema of a data source. **Note:** This API requires an admin or service account to execute. */
 export const getSchemaIndexingDatasources: API.OperationMethod<
   GetSchemaIndexingDatasourcesRequest,
@@ -3913,7 +4823,10 @@ export const getSettingsDatasources: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetSettingsSearchapplicationsError = NotFound | Forbidden | GcpOpError;
+export type GetSettingsSearchapplicationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the specified search application. **Note:** This API requires an admin account to execute. */
 export const getSettingsSearchapplications: API.OperationMethod<
   GetSettingsSearchapplicationsRequest,
@@ -3943,7 +4856,10 @@ export const getStatsIndexDatasources: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetStatsQuerySearchapplicationsError = NotFound | Forbidden | GcpOpError;
+export type GetStatsQuerySearchapplicationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Get the query statistics for search application. **Note:** This API requires a standard end user account to execute. */
 export const getStatsQuerySearchapplications: API.OperationMethod<
   GetStatsQuerySearchapplicationsRequest,
@@ -3958,7 +4874,10 @@ export const getStatsQuerySearchapplications: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetStatsSessionSearchapplicationsError = NotFound | Forbidden | GcpOpError;
+export type GetStatsSessionSearchapplicationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Get the # of search sessions, % of successful sessions with a click query statistics for search application. **Note:** This API requires a standard end user account to execute. */
 export const getStatsSessionSearchapplications: API.OperationMethod<
   GetStatsSessionSearchapplicationsRequest,
@@ -3973,7 +4892,10 @@ export const getStatsSessionSearchapplications: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetStatsUserSearchapplicationsError = NotFound | Forbidden | GcpOpError;
+export type GetStatsUserSearchapplicationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Get the users statistics for search application. **Note:** This API requires a standard end user account to execute. */
 export const getStatsUserSearchapplications: API.OperationMethod<
   GetStatsUserSearchapplicationsRequest,
@@ -4003,7 +4925,12 @@ export const getUserStats: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type IndexIndexingDatasourcesItemsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type IndexIndexingDatasourcesItemsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates Item ACL, metadata, and content. It will insert the Item if it does not exist. This method does not support partial updates. Fields with no provided values are cleared out in the Cloud Search index. This API requires an admin or service account to execute. The service account used is the one whitelisted in the corresponding data source. */
 export const indexIndexingDatasourcesItems: API.OperationMethod<
   IndexIndexingDatasourcesItemsRequest,
@@ -4018,7 +4945,12 @@ export const indexIndexingDatasourcesItems: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InitializeCustomerV1Error = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type InitializeCustomerV1Error =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Enables `third party` support in Google Cloud Search. **Note:** This API requires an admin account to execute. */
 export const initializeCustomerV1: API.OperationMethod<
   InitializeCustomerV1Request,
@@ -4033,7 +4965,10 @@ export const initializeCustomerV1: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListDebugDatasourcesItemsUnmappedidsError = NotFound | Forbidden | GcpOpError;
+export type ListDebugDatasourcesItemsUnmappedidsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** List all unmapped identities for a specific item. **Note:** This API requires an admin account to execute. */
 export const listDebugDatasourcesItemsUnmappedids: API.PaginatedOperationMethod<
   ListDebugDatasourcesItemsUnmappedidsRequest,
@@ -4046,10 +4981,16 @@ export const listDebugDatasourcesItemsUnmappedids: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListDebugIdentitysourcesUnmappedidsError = NotFound | Forbidden | GcpOpError;
+export type ListDebugIdentitysourcesUnmappedidsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists unmapped user identities for an identity source. **Note:** This API requires an admin account to execute. */
 export const listDebugIdentitysourcesUnmappedids: API.PaginatedOperationMethod<
   ListDebugIdentitysourcesUnmappedidsRequest,
@@ -4062,10 +5003,16 @@ export const listDebugIdentitysourcesUnmappedids: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListForunmappedidentityDebugIdentitysourcesItemsError = NotFound | Forbidden | GcpOpError;
+export type ListForunmappedidentityDebugIdentitysourcesItemsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists names of items associated with an unmapped identity. **Note:** This API requires an admin account to execute. */
 export const listForunmappedidentityDebugIdentitysourcesItems: API.PaginatedOperationMethod<
   ListForunmappedidentityDebugIdentitysourcesItemsRequest,
@@ -4078,10 +5025,16 @@ export const listForunmappedidentityDebugIdentitysourcesItems: API.PaginatedOper
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListIndexingDatasourcesItemsError = NotFound | Forbidden | GcpOpError;
+export type ListIndexingDatasourcesItemsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all or a subset of Item resources. This API requires an admin or service account to execute. The service account used is the one whitelisted in the corresponding data source. */
 export const listIndexingDatasourcesItems: API.PaginatedOperationMethod<
   ListIndexingDatasourcesItemsRequest,
@@ -4094,7 +5047,11 @@ export const listIndexingDatasourcesItems: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken","items":"items"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+    items: "items",
+  } as const,
 }));
 
 export type ListOperationsLroError = NotFound | Forbidden | GcpOpError;
@@ -4110,7 +5067,10 @@ export const listOperationsLro: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListQuerySourcesError = NotFound | Forbidden | GcpOpError;
@@ -4126,7 +5086,10 @@ export const listQuerySources: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListSettingsDatasourcesError = NotFound | Forbidden | GcpOpError;
@@ -4142,10 +5105,16 @@ export const listSettingsDatasources: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListSettingsSearchapplicationsError = NotFound | Forbidden | GcpOpError;
+export type ListSettingsSearchapplicationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all search applications. **Note:** This API requires an admin account to execute. */
 export const listSettingsSearchapplications: API.PaginatedOperationMethod<
   ListSettingsSearchapplicationsRequest,
@@ -4158,10 +5127,18 @@ export const listSettingsSearchapplications: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type PatchSettingsDatasourcesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchSettingsDatasourcesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a datasource. **Note:** This API requires an admin account to execute. */
 export const patchSettingsDatasources: API.OperationMethod<
   PatchSettingsDatasourcesRequest,
@@ -4176,7 +5153,12 @@ export const patchSettingsDatasources: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchSettingsSearchapplicationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchSettingsSearchapplicationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a search application. **Note:** This API requires an admin account to execute. */
 export const patchSettingsSearchapplications: API.OperationMethod<
   PatchSettingsSearchapplicationsRequest,
@@ -4191,7 +5173,12 @@ export const patchSettingsSearchapplications: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PollIndexingDatasourcesItemsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PollIndexingDatasourcesItemsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Polls for unreserved items from the indexing queue and marks a set as reserved, starting with items that have the oldest timestamp from the highest priority ItemStatus. The priority order is as follows: ERROR MODIFIED NEW_ITEM ACCEPTED Reserving items ensures that polling from other threads cannot create overlapping sets. After handling the reserved items, the client should put items back into the unreserved state, either by calling index, or by calling push with the type REQUEUE. Items automatically become available (unreserved) after 4 hours even if no update or push method is called. This API requires an admin or service account to execute. The service account used is the one whitelisted in the corresponding data source. */
 export const pollIndexingDatasourcesItems: API.OperationMethod<
   PollIndexingDatasourcesItemsRequest,
@@ -4206,7 +5193,12 @@ export const pollIndexingDatasourcesItems: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PushIndexingDatasourcesItemsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PushIndexingDatasourcesItemsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Pushes an item onto a queue for later polling and updating. This API requires an admin or service account to execute. The service account used is the one whitelisted in the corresponding data source. */
 export const pushIndexingDatasourcesItems: API.OperationMethod<
   PushIndexingDatasourcesItemsRequest,
@@ -4221,7 +5213,12 @@ export const pushIndexingDatasourcesItems: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RemoveActivityQueryError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RemoveActivityQueryError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Provides functionality to remove logged activity for a user. Currently to be used only for Chat 1p clients **Note:** This API requires a standard end user account to execute. A service account can't perform Remove Activity requests directly; to use a service account to perform queries, set up [Google Workspace domain-wide delegation of authority](https://developers.google.com/workspace/cloud-search/docs/guides/delegation/). */
 export const removeActivityQuery: API.OperationMethod<
   RemoveActivityQueryRequest,
@@ -4236,7 +5233,12 @@ export const removeActivityQuery: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ResetSettingsSearchapplicationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ResetSettingsSearchapplicationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Resets a search application to default settings. This will return an empty response. **Note:** This API requires an admin account to execute. */
 export const resetSettingsSearchapplications: API.OperationMethod<
   ResetSettingsSearchapplicationsRequest,
@@ -4251,7 +5253,12 @@ export const resetSettingsSearchapplications: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SearchByViewUrlDebugDatasourcesItemsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SearchByViewUrlDebugDatasourcesItemsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Fetches the item whose viewUrl exactly matches that of the URL provided in the request. **Note:** This API requires an admin account to execute. */
 export const searchByViewUrlDebugDatasourcesItems: API.OperationMethod<
   SearchByViewUrlDebugDatasourcesItemsRequest,
@@ -4266,7 +5273,12 @@ export const searchByViewUrlDebugDatasourcesItems: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SearchQueryError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SearchQueryError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** The Cloud Search Query API provides the search method, which returns the most relevant results from a user query. The results can come from Google Workspace apps, such as Gmail or Google Drive, or they can come from data that you have indexed from a third party. **Note:** This API requires a standard end user account to execute. A service account can't perform Query API requests directly; to use a service account to perform queries, set up [Google Workspace domain-wide delegation of authority](https://developers.google.com/workspace/cloud-search/docs/guides/delegation/). */
 export const searchQuery: API.OperationMethod<
   SearchQueryRequest,
@@ -4281,7 +5293,12 @@ export const searchQuery: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SuggestQueryError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SuggestQueryError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Provides suggestions for autocompleting the query. **Note:** This API requires a standard end user account to execute. A service account can't perform Query API requests directly; to use a service account to perform queries, set up [Google Workspace domain-wide delegation of authority](https://developers.google.com/workspace/cloud-search/docs/guides/delegation/). */
 export const suggestQuery: API.OperationMethod<
   SuggestQueryRequest,
@@ -4296,7 +5313,12 @@ export const suggestQuery: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UnreserveIndexingDatasourcesItemsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UnreserveIndexingDatasourcesItemsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Unreserves all items from a queue, making them all eligible to be polled. This method is useful for resetting the indexing queue after a connector has been restarted. This API requires an admin or service account to execute. The service account used is the one whitelisted in the corresponding data source. */
 export const unreserveIndexingDatasourcesItems: API.OperationMethod<
   UnreserveIndexingDatasourcesItemsRequest,
@@ -4311,7 +5333,12 @@ export const unreserveIndexingDatasourcesItems: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateCustomerSettingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateCustomerSettingsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update customer settings. **Note:** This API requires an admin account to execute. */
 export const updateCustomerSettings: API.OperationMethod<
   UpdateCustomerSettingsRequest,
@@ -4326,7 +5353,12 @@ export const updateCustomerSettings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateSchemaIndexingDatasourcesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateSchemaIndexingDatasourcesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the schema of a data source. This method does not perform incremental updates to the schema. Instead, this method updates the schema by overwriting the entire schema. **Note:** This API requires an admin or service account to execute. */
 export const updateSchemaIndexingDatasources: API.OperationMethod<
   UpdateSchemaIndexingDatasourcesRequest,
@@ -4341,7 +5373,12 @@ export const updateSchemaIndexingDatasources: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateSettingsDatasourcesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateSettingsDatasourcesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a datasource. **Note:** This API requires an admin account to execute. */
 export const updateSettingsDatasources: API.OperationMethod<
   UpdateSettingsDatasourcesRequest,
@@ -4356,7 +5393,12 @@ export const updateSettingsDatasources: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateSettingsSearchapplicationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateSettingsSearchapplicationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a search application. **Note:** This API requires an admin account to execute. */
 export const updateSettingsSearchapplications: API.OperationMethod<
   UpdateSettingsSearchapplicationsRequest,
@@ -4371,7 +5413,12 @@ export const updateSettingsSearchapplications: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UploadIndexingDatasourcesItemsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UploadIndexingDatasourcesItemsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates an upload session for uploading item content. For items smaller than 100 KB, it's easier to embed the content inline within an index request. This API requires an admin or service account to execute. The service account used is the one whitelisted in the corresponding data source. */
 export const uploadIndexingDatasourcesItems: API.OperationMethod<
   UploadIndexingDatasourcesItemsRequest,
@@ -4386,7 +5433,12 @@ export const uploadIndexingDatasourcesItems: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UploadMediaError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UploadMediaError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Uploads media for indexing. The upload endpoint supports direct and resumable upload protocols and is intended for large items that can not be [inlined during index requests](https://developers.google.com/workspace/cloud-search/docs/reference/rest/v1/indexing.datasources.items#itemcontent). To index large content: 1. Call indexing.datasources.items.upload with the item name to begin an upload session and retrieve the UploadItemRef. 1. Call media.upload to upload the content, as a streaming request, using the same resource name from the UploadItemRef from step 1. 1. Call indexing.datasources.items.index to index the item. Populate the [ItemContent](/cloud-search/docs/reference/rest/v1/indexing.datasources.items#ItemContent) with the UploadItemRef from step 1. For additional information, see [Create a content connector using the REST API](https://developers.google.com/workspace/cloud-search/docs/guides/content-connector#rest). **Note:** This API requires a service account to execute. */
 export const uploadMedia: API.OperationMethod<
   UploadMediaRequest,
@@ -4400,4 +5452,3 @@ export const uploadMedia: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

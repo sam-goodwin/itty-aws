@@ -13,60 +13,73 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
-export type FlagAttributeValueTypeEnum = "FLAG_ATTRIBUTE_VALUE_TYPE_UNSPECIFIED" | "BOOLEAN" | "INTEGER" | "STRING" | "DOUBLE";
+export type FlagAttributeValueTypeEnum =
+  | "FLAG_ATTRIBUTE_VALUE_TYPE_UNSPECIFIED"
+  | "BOOLEAN"
+  | "INTEGER"
+  | "STRING"
+  | "DOUBLE";
 export const FlagAttributeValueTypeEnum = /*@__PURE__*/ S.String;
 
-export type FlagAttributeAttributeValueTypeEnum = "FLAG_ATTRIBUTE_VALUE_TYPE_UNSPECIFIED" | "FLAG_ATTRIBUTE_VALUE_TYPE_BOOLEAN" | "FLAG_ATTRIBUTE_VALUE_TYPE_INTEGER" | "FLAG_ATTRIBUTE_VALUE_TYPE_STRING" | "FLAG_ATTRIBUTE_VALUE_TYPE_DOUBLE";
+export type FlagAttributeAttributeValueTypeEnum =
+  | "FLAG_ATTRIBUTE_VALUE_TYPE_UNSPECIFIED"
+  | "FLAG_ATTRIBUTE_VALUE_TYPE_BOOLEAN"
+  | "FLAG_ATTRIBUTE_VALUE_TYPE_INTEGER"
+  | "FLAG_ATTRIBUTE_VALUE_TYPE_STRING"
+  | "FLAG_ATTRIBUTE_VALUE_TYPE_DOUBLE";
 export const FlagAttributeAttributeValueTypeEnum = /*@__PURE__*/ S.String;
 
 /** FlagAttribute defines a custom property in the evaluation context. */
@@ -93,18 +106,18 @@ export interface FlagAttribute {
   labels?: StringMap;
 }
 export const FlagAttribute = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateTime": S.optional(S.String),
-  "annotations": S.optional(StringMap),
-  "uid": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "valueType": S.optional(FlagAttributeValueTypeEnum),
-  "key": S.optional(S.String),
-  "etag": S.optional(S.String),
-  "name": S.optional(S.String),
-  "attributeValueType": S.optional(FlagAttributeAttributeValueTypeEnum),
-  "labels": S.optional(StringMap),
-}),
+  S.Struct({
+    updateTime: S.optional(S.String),
+    annotations: S.optional(StringMap),
+    uid: S.optional(S.String),
+    createTime: S.optional(S.String),
+    valueType: S.optional(FlagAttributeValueTypeEnum),
+    key: S.optional(S.String),
+    etag: S.optional(S.String),
+    name: S.optional(S.String),
+    attributeValueType: S.optional(FlagAttributeAttributeValueTypeEnum),
+    labels: S.optional(StringMap),
+  }),
 ).annotate({ identifier: "FlagAttribute" }) as any as S.Schema<FlagAttribute>;
 
 export interface CreateProjectsLocationsFlagAttributesRequest {
@@ -119,18 +132,29 @@ export interface CreateProjectsLocationsFlagAttributesRequest {
   /** Request body */
   body?: FlagAttribute;
 }
-export const CreateProjectsLocationsFlagAttributesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "flagAttributeId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(FlagAttribute.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/flagAttributes","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsFlagAttributesRequest" }) as any as S.Schema<CreateProjectsLocationsFlagAttributesRequest>;
+export const CreateProjectsLocationsFlagAttributesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      flagAttributeId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(FlagAttribute.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+parent}/flagAttributes",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsFlagAttributesRequest",
+  }) as any as S.Schema<CreateProjectsLocationsFlagAttributesRequest>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** Wrapper for a list of flag revisions. */
 export interface FlagRevisionList {
@@ -138,10 +162,12 @@ export interface FlagRevisionList {
   revisions?: StringList;
 }
 export const FlagRevisionList = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "revisions": S.optional(StringList),
-}),
-).annotate({ identifier: "FlagRevisionList" }) as any as S.Schema<FlagRevisionList>;
+  S.Struct({
+    revisions: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "FlagRevisionList",
+}) as any as S.Schema<FlagRevisionList>;
 
 /** Wrapper for a list of flag sets. */
 export interface FlagSetList {
@@ -149,9 +175,9 @@ export interface FlagSetList {
   sets?: StringList;
 }
 export const FlagSetList = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sets": S.optional(StringList),
-}),
+  S.Struct({
+    sets: S.optional(StringList),
+  }),
 ).annotate({ identifier: "FlagSetList" }) as any as S.Schema<FlagSetList>;
 
 /** A collection of FlagRevisions. */
@@ -190,24 +216,24 @@ export interface FlagRelease {
   unitKind?: string;
 }
 export const FlagRelease = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "uid": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "flagSets": S.optional(StringList),
-  "effectiveFlagRevisions": S.optional(StringList),
-  "name": S.optional(S.String),
-  "etag": S.optional(S.String),
-  "flagRevisionsRelease": S.optional(FlagRevisionList),
-  "allFlagsRelease": S.optional(S.Boolean),
-  "labels": S.optional(StringMap),
-  "flagSetsRelease": S.optional(FlagSetList),
-  "obsoleteFlags": S.optional(StringList),
-  "annotations": S.optional(StringMap),
-  "updateTime": S.optional(S.String),
-  "flagRevisions": S.optional(StringList),
-  "allFlags": S.optional(S.Boolean),
-  "unitKind": S.optional(S.String),
-}),
+  S.Struct({
+    uid: S.optional(S.String),
+    createTime: S.optional(S.String),
+    flagSets: S.optional(StringList),
+    effectiveFlagRevisions: S.optional(StringList),
+    name: S.optional(S.String),
+    etag: S.optional(S.String),
+    flagRevisionsRelease: S.optional(FlagRevisionList),
+    allFlagsRelease: S.optional(S.Boolean),
+    labels: S.optional(StringMap),
+    flagSetsRelease: S.optional(FlagSetList),
+    obsoleteFlags: S.optional(StringList),
+    annotations: S.optional(StringMap),
+    updateTime: S.optional(S.String),
+    flagRevisions: S.optional(StringList),
+    allFlags: S.optional(S.Boolean),
+    unitKind: S.optional(S.String),
+  }),
 ).annotate({ identifier: "FlagRelease" }) as any as S.Schema<FlagRelease>;
 
 export interface CreateProjectsLocationsFlagReleasesRequest {
@@ -222,15 +248,24 @@ export interface CreateProjectsLocationsFlagReleasesRequest {
   /** Request body */
   body?: FlagRelease;
 }
-export const CreateProjectsLocationsFlagReleasesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "flagReleaseId": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(FlagRelease.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/flagReleases","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsFlagReleasesRequest" }) as any as S.Schema<CreateProjectsLocationsFlagReleasesRequest>;
+export const CreateProjectsLocationsFlagReleasesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      flagReleaseId: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      body: S.optional(FlagRelease.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+parent}/flagReleases",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsFlagReleasesRequest",
+  }) as any as S.Schema<CreateProjectsLocationsFlagReleasesRequest>;
 
 /** Variant is an identifier for a value (name assigned to a value). DEPRECATED: Use Flag.Variants instead. */
 export interface Variant {
@@ -246,17 +281,19 @@ export interface Variant {
   stringValue?: string;
 }
 export const Variant = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "doubleValue": S.optional(S.Number),
-  "intValue": S.optional(S.String),
-  "boolValue": S.optional(S.Boolean),
-  "stringValue": S.optional(S.String),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    doubleValue: S.optional(S.Number),
+    intValue: S.optional(S.String),
+    boolValue: S.optional(S.Boolean),
+    stringValue: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Variant" }) as any as S.Schema<Variant>;
 
 export type VariantList = ReadonlyArray<Variant>;
-export const VariantList = /*@__PURE__*/ S.Array(Variant) as any as S.Schema<VariantList>;
+export const VariantList = /*@__PURE__*/ S.Array(
+  Variant,
+) as any as S.Schema<VariantList>;
 
 /** EvaluationRule defines a single rule for evaluating a feature flag. A rule consists of a condition that, if met, assigns a specific variant or allocation to the user. */
 export interface EvaluationRule {
@@ -272,17 +309,19 @@ export interface EvaluationRule {
   variantId?: string;
 }
 export const EvaluationRule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "condition": S.optional(S.String),
-  "target": S.optional(S.String),
-  "id": S.optional(S.String),
-  "allocationId": S.optional(S.String),
-  "variantId": S.optional(S.String),
-}),
+  S.Struct({
+    condition: S.optional(S.String),
+    target: S.optional(S.String),
+    id: S.optional(S.String),
+    allocationId: S.optional(S.String),
+    variantId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "EvaluationRule" }) as any as S.Schema<EvaluationRule>;
 
 export type EvaluationRuleList = ReadonlyArray<EvaluationRule>;
-export const EvaluationRuleList = /*@__PURE__*/ S.Array(EvaluationRule) as any as S.Schema<EvaluationRuleList>;
+export const EvaluationRuleList = /*@__PURE__*/ S.Array(
+  EvaluationRule,
+) as any as S.Schema<EvaluationRuleList>;
 
 /** AllocationSlot specifies a variant and the proportion of traffic allocated to it. */
 export interface AllocationSlot {
@@ -292,14 +331,16 @@ export interface AllocationSlot {
   weight?: number;
 }
 export const AllocationSlot = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "variant": S.optional(S.String),
-  "weight": S.optional(S.Number),
-}),
+  S.Struct({
+    variant: S.optional(S.String),
+    weight: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "AllocationSlot" }) as any as S.Schema<AllocationSlot>;
 
 export type AllocationSlotList = ReadonlyArray<AllocationSlot>;
-export const AllocationSlotList = /*@__PURE__*/ S.Array(AllocationSlot) as any as S.Schema<AllocationSlotList>;
+export const AllocationSlotList = /*@__PURE__*/ S.Array(
+  AllocationSlot,
+) as any as S.Schema<AllocationSlotList>;
 
 /** Allocation defines a set of weighted flag variants, specifying how traffic is split based on the randomization unit. */
 export interface Allocation {
@@ -313,16 +354,18 @@ export interface Allocation {
   slots?: AllocationSlotList;
 }
 export const Allocation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.optional(S.String),
-  "randomizedOn": S.optional(S.String),
-  "description": S.optional(S.String),
-  "slots": S.optional(AllocationSlotList),
-}),
+  S.Struct({
+    id: S.optional(S.String),
+    randomizedOn: S.optional(S.String),
+    description: S.optional(S.String),
+    slots: S.optional(AllocationSlotList),
+  }),
 ).annotate({ identifier: "Allocation" }) as any as S.Schema<Allocation>;
 
 export type AllocationList = ReadonlyArray<Allocation>;
-export const AllocationList = /*@__PURE__*/ S.Array(Allocation) as any as S.Schema<AllocationList>;
+export const AllocationList = /*@__PURE__*/ S.Array(
+  Allocation,
+) as any as S.Schema<AllocationList>;
 
 /** EvaluationSpec holds rules for evaluating the value of a flag. */
 export interface EvaluationSpec {
@@ -338,19 +381,29 @@ export interface EvaluationSpec {
   allocations?: AllocationList;
 }
 export const EvaluationSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "variants": S.optional(VariantList),
-  "rules": S.optional(EvaluationRuleList),
-  "attributes": S.optional(StringList),
-  "defaultTarget": S.optional(S.String),
-  "allocations": S.optional(AllocationList),
-}),
+  S.Struct({
+    variants: S.optional(VariantList),
+    rules: S.optional(EvaluationRuleList),
+    attributes: S.optional(StringList),
+    defaultTarget: S.optional(S.String),
+    allocations: S.optional(AllocationList),
+  }),
 ).annotate({ identifier: "EvaluationSpec" }) as any as S.Schema<EvaluationSpec>;
 
-export type FlagFlagValueTypeEnum = "FLAG_VALUE_TYPE_UNSPECIFIED" | "FLAG_VALUE_TYPE_BOOLEAN" | "FLAG_VALUE_TYPE_INTEGER" | "FLAG_VALUE_TYPE_STRING" | "FLAG_VALUE_TYPE_DOUBLE";
+export type FlagFlagValueTypeEnum =
+  | "FLAG_VALUE_TYPE_UNSPECIFIED"
+  | "FLAG_VALUE_TYPE_BOOLEAN"
+  | "FLAG_VALUE_TYPE_INTEGER"
+  | "FLAG_VALUE_TYPE_STRING"
+  | "FLAG_VALUE_TYPE_DOUBLE";
 export const FlagFlagValueTypeEnum = /*@__PURE__*/ S.String;
 
-export type FlagStateEnum = "FLAG_STATE_UNSPECIFIED" | "FLAG_STATE_IN_DEVELOPMENT" | "FLAG_STATE_ACTIVE" | "FLAG_STATE_SUNSETTING" | "FLAG_STATE_CLEANUP";
+export type FlagStateEnum =
+  | "FLAG_STATE_UNSPECIFIED"
+  | "FLAG_STATE_IN_DEVELOPMENT"
+  | "FLAG_STATE_ACTIVE"
+  | "FLAG_STATE_SUNSETTING"
+  | "FLAG_STATE_CLEANUP";
 export const FlagStateEnum = /*@__PURE__*/ S.String;
 
 /** Variant is an identifier for a value (name assigned to a value). */
@@ -371,21 +424,28 @@ export interface FlagVariant {
   integerValue?: string;
 }
 export const FlagVariant = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "doubleValue": S.optional(S.Number),
-  "description": S.optional(S.String),
-  "id": S.optional(S.String),
-  "booleanValue": S.optional(S.Boolean),
-  "trackingId": S.optional(S.String),
-  "stringValue": S.optional(S.String),
-  "integerValue": S.optional(S.String),
-}),
+  S.Struct({
+    doubleValue: S.optional(S.Number),
+    description: S.optional(S.String),
+    id: S.optional(S.String),
+    booleanValue: S.optional(S.Boolean),
+    trackingId: S.optional(S.String),
+    stringValue: S.optional(S.String),
+    integerValue: S.optional(S.String),
+  }),
 ).annotate({ identifier: "FlagVariant" }) as any as S.Schema<FlagVariant>;
 
 export type FlagVariantList = ReadonlyArray<FlagVariant>;
-export const FlagVariantList = /*@__PURE__*/ S.Array(FlagVariant) as any as S.Schema<FlagVariantList>;
+export const FlagVariantList = /*@__PURE__*/ S.Array(
+  FlagVariant,
+) as any as S.Schema<FlagVariantList>;
 
-export type FlagValueTypeEnum = "FLAG_VALUE_TYPE_UNSPECIFIED" | "FLAG_VALUE_TYPE_BOOL" | "FLAG_VALUE_TYPE_INT" | "FLAG_VALUE_TYPE_STRING" | "FLAG_VALUE_TYPE_DOUBLE";
+export type FlagValueTypeEnum =
+  | "FLAG_VALUE_TYPE_UNSPECIFIED"
+  | "FLAG_VALUE_TYPE_BOOL"
+  | "FLAG_VALUE_TYPE_INT"
+  | "FLAG_VALUE_TYPE_STRING"
+  | "FLAG_VALUE_TYPE_DOUBLE";
 export const FlagValueTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a single Flag. */
@@ -424,24 +484,24 @@ export interface Flag {
   key?: string;
 }
 export const Flag = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "description": S.optional(S.String),
-  "flagValueType": S.optional(FlagFlagValueTypeEnum),
-  "state": S.optional(FlagStateEnum),
-  "labels": S.optional(StringMap),
-  "uid": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "flagSet": S.optional(S.String),
-  "name": S.optional(S.String),
-  "variants": S.optional(FlagVariantList),
-  "valueType": S.optional(FlagValueTypeEnum),
-  "etag": S.optional(S.String),
-  "unitKind": S.optional(S.String),
-  "annotations": S.optional(StringMap),
-  "evaluationSpec": S.optional(EvaluationSpec),
-  "updateTime": S.optional(S.String),
-  "key": S.optional(S.String),
-}),
+  S.Struct({
+    description: S.optional(S.String),
+    flagValueType: S.optional(FlagFlagValueTypeEnum),
+    state: S.optional(FlagStateEnum),
+    labels: S.optional(StringMap),
+    uid: S.optional(S.String),
+    createTime: S.optional(S.String),
+    flagSet: S.optional(S.String),
+    name: S.optional(S.String),
+    variants: S.optional(FlagVariantList),
+    valueType: S.optional(FlagValueTypeEnum),
+    etag: S.optional(S.String),
+    unitKind: S.optional(S.String),
+    annotations: S.optional(StringMap),
+    evaluationSpec: S.optional(EvaluationSpec),
+    updateTime: S.optional(S.String),
+    key: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Flag" }) as any as S.Schema<Flag>;
 
 /** A snapshot of the EvaluationSpec for the Flag. */
@@ -468,18 +528,18 @@ export interface FlagRevision {
   labels?: StringMap;
 }
 export const FlagRevision = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "annotations": S.optional(StringMap),
-  "uid": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "evaluationSpec": S.optional(EvaluationSpec),
-  "updateTime": S.optional(S.String),
-  "name": S.optional(S.String),
-  "snapshot": S.optional(Flag),
-  "etag": S.optional(S.String),
-  "flag": S.optional(S.String),
-  "labels": S.optional(StringMap),
-}),
+  S.Struct({
+    annotations: S.optional(StringMap),
+    uid: S.optional(S.String),
+    createTime: S.optional(S.String),
+    evaluationSpec: S.optional(EvaluationSpec),
+    updateTime: S.optional(S.String),
+    name: S.optional(S.String),
+    snapshot: S.optional(Flag),
+    etag: S.optional(S.String),
+    flag: S.optional(S.String),
+    labels: S.optional(StringMap),
+  }),
 ).annotate({ identifier: "FlagRevision" }) as any as S.Schema<FlagRevision>;
 
 export interface CreateProjectsLocationsFlagRevisionsRequest {
@@ -494,15 +554,24 @@ export interface CreateProjectsLocationsFlagRevisionsRequest {
   /** Request body */
   body?: FlagRevision;
 }
-export const CreateProjectsLocationsFlagRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "flagRevisionId": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(FlagRevision.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/flagRevisions","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsFlagRevisionsRequest" }) as any as S.Schema<CreateProjectsLocationsFlagRevisionsRequest>;
+export const CreateProjectsLocationsFlagRevisionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      flagRevisionId: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      body: S.optional(FlagRevision.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+parent}/flagRevisions",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsFlagRevisionsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsFlagRevisionsRequest>;
 
 export interface CreateProjectsLocationsFlagsRequest {
   /** Required. The parent of the flag. */
@@ -517,16 +586,30 @@ export interface CreateProjectsLocationsFlagsRequest {
   body?: Flag;
 }
 export const CreateProjectsLocationsFlagsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "flagId": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(Flag.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/flags","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsFlagsRequest" }) as any as S.Schema<CreateProjectsLocationsFlagsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    requestId: S.optional(S.String.pipe(T.Query())),
+    flagId: S.optional(S.String.pipe(T.Query())),
+    validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+    body: S.optional(Flag.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1/{+parent}/flags",
+      baseUrl: "https://saasservicemgmt.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateProjectsLocationsFlagsRequest",
+}) as any as S.Schema<CreateProjectsLocationsFlagsRequest>;
 
-export type UnitVariableTypeEnum = "TYPE_UNSPECIFIED" | "STRING" | "INT" | "BOOL" | "STRUCT" | "LIST";
+export type UnitVariableTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "STRING"
+  | "INT"
+  | "BOOL"
+  | "STRUCT"
+  | "LIST";
 export const UnitVariableTypeEnum = /*@__PURE__*/ S.String;
 
 /** UnitVariable describes a parameter for a Unit. */
@@ -539,15 +622,17 @@ export interface UnitVariable {
   type?: UnitVariableTypeEnum;
 }
 export const UnitVariable = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "value": S.optional(S.String),
-  "variable": S.optional(S.String),
-  "type": S.optional(UnitVariableTypeEnum),
-}),
+  S.Struct({
+    value: S.optional(S.String),
+    variable: S.optional(S.String),
+    type: S.optional(UnitVariableTypeEnum),
+  }),
 ).annotate({ identifier: "UnitVariable" }) as any as S.Schema<UnitVariable>;
 
 export type UnitVariableList = ReadonlyArray<UnitVariable>;
-export const UnitVariableList = /*@__PURE__*/ S.Array(UnitVariable) as any as S.Schema<UnitVariableList>;
+export const UnitVariableList = /*@__PURE__*/ S.Array(
+  UnitVariable,
+) as any as S.Schema<UnitVariableList>;
 
 /** CompositeRef represents a reference to a composite resource. */
 export interface CompositeRef {
@@ -559,11 +644,11 @@ export interface CompositeRef {
   applicationTemplate?: string;
 }
 export const CompositeRef = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "syncOperation": S.optional(S.String),
-  "revision": S.optional(S.String),
-  "applicationTemplate": S.optional(S.String),
-}),
+  S.Struct({
+    syncOperation: S.optional(S.String),
+    revision: S.optional(S.String),
+    applicationTemplate: S.optional(S.String),
+  }),
 ).annotate({ identifier: "CompositeRef" }) as any as S.Schema<CompositeRef>;
 
 /** ComponentRef represents a reference to a component resource. */
@@ -576,11 +661,11 @@ export interface ComponentRef {
   revision?: string;
 }
 export const ComponentRef = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "component": S.optional(S.String),
-  "compositeRef": S.optional(CompositeRef),
-  "revision": S.optional(S.String),
-}),
+  S.Struct({
+    component: S.optional(S.String),
+    compositeRef: S.optional(CompositeRef),
+    revision: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ComponentRef" }) as any as S.Schema<ComponentRef>;
 
 /** Blueprints are OCI Images that contain all of the artifacts needed to provision a unit. Metadata such as, type of the engine used to actuate the blueprint (e.g. terraform, helm etc) and version will come from the image manifest. If the hostname is omitted, it will be assumed to be the regional path to Artifact Registry (eg. us-east1-docker.pkg.dev). */
@@ -593,11 +678,11 @@ export interface Blueprint {
   version?: string;
 }
 export const Blueprint = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "package": S.optional(S.String),
-  "engine": S.optional(S.String),
-  "version": S.optional(S.String),
-}),
+  S.Struct({
+    package: S.optional(S.String),
+    engine: S.optional(S.String),
+    version: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Blueprint" }) as any as S.Schema<Blueprint>;
 
 /** Set of requirements to be fulfilled on the Unit when using this Release. */
@@ -606,10 +691,12 @@ export interface ReleaseRequirements {
   upgradeableFromReleases?: StringList;
 }
 export const ReleaseRequirements = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "upgradeableFromReleases": S.optional(StringList),
-}),
-).annotate({ identifier: "ReleaseRequirements" }) as any as S.Schema<ReleaseRequirements>;
+  S.Struct({
+    upgradeableFromReleases: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ReleaseRequirements",
+}) as any as S.Schema<ReleaseRequirements>;
 
 /** A new version to be propagated and deployed to units. This includes pointers to packaged blueprints for actuation (e.g Helm or Terraform configuration packages) via artifact registry. */
 export interface Release {
@@ -643,22 +730,22 @@ export interface Release {
   labels?: StringMap;
 }
 export const Release = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateTime": S.optional(S.String),
-  "inputVariables": S.optional(UnitVariableList),
-  "annotations": S.optional(StringMap),
-  "outputVariables": S.optional(UnitVariableList),
-  "unitKind": S.optional(S.String),
-  "applicationTemplateComponent": S.optional(ComponentRef),
-  "blueprint": S.optional(Blueprint),
-  "uid": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "etag": S.optional(S.String),
-  "name": S.optional(S.String),
-  "inputVariableDefaults": S.optional(UnitVariableList),
-  "releaseRequirements": S.optional(ReleaseRequirements),
-  "labels": S.optional(StringMap),
-}),
+  S.Struct({
+    updateTime: S.optional(S.String),
+    inputVariables: S.optional(UnitVariableList),
+    annotations: S.optional(StringMap),
+    outputVariables: S.optional(UnitVariableList),
+    unitKind: S.optional(S.String),
+    applicationTemplateComponent: S.optional(ComponentRef),
+    blueprint: S.optional(Blueprint),
+    uid: S.optional(S.String),
+    createTime: S.optional(S.String),
+    etag: S.optional(S.String),
+    name: S.optional(S.String),
+    inputVariableDefaults: S.optional(UnitVariableList),
+    releaseRequirements: S.optional(ReleaseRequirements),
+    labels: S.optional(StringMap),
+  }),
 ).annotate({ identifier: "Release" }) as any as S.Schema<Release>;
 
 export interface CreateProjectsLocationsReleasesRequest {
@@ -673,15 +760,24 @@ export interface CreateProjectsLocationsReleasesRequest {
   /** Request body */
   body?: Release;
 }
-export const CreateProjectsLocationsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "releaseId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Release.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/releases","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsReleasesRequest" }) as any as S.Schema<CreateProjectsLocationsReleasesRequest>;
+export const CreateProjectsLocationsReleasesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      releaseId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Release.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+parent}/releases",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateProjectsLocationsReleasesRequest",
+}) as any as S.Schema<CreateProjectsLocationsReleasesRequest>;
 
 /** A representation of a decimal value, such as 2.5. Clients may convert values into language-native decimal formats, such as Java's [BigDecimal](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html) or Python's [decimal.Decimal](https://docs.python.org/3/library/decimal.html). */
 export interface Decimal {
@@ -689,9 +785,9 @@ export interface Decimal {
   value?: string;
 }
 export const Decimal = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "value": S.optional(S.String),
-}),
+  S.Struct({
+    value: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Decimal" }) as any as S.Schema<Decimal>;
 
 /** UnitUpdatePacing defines the policy for the maximum number of unit operations that can run for a rollout in parallel in a single region. */
@@ -702,13 +798,18 @@ export interface UnitUpdatePacing {
   maxConcurrentOperationsPercent?: Decimal;
 }
 export const UnitUpdatePacing = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "maxConcurrentOperationsCount": S.optional(S.Number),
-  "maxConcurrentOperationsPercent": S.optional(Decimal),
-}),
-).annotate({ identifier: "UnitUpdatePacing" }) as any as S.Schema<UnitUpdatePacing>;
+  S.Struct({
+    maxConcurrentOperationsCount: S.optional(S.Number),
+    maxConcurrentOperationsPercent: S.optional(Decimal),
+  }),
+).annotate({
+  identifier: "UnitUpdatePacing",
+}) as any as S.Schema<UnitUpdatePacing>;
 
-export type RolloutKindUpdateUnitKindStrategyEnum = "UPDATE_UNIT_KIND_STRATEGY_UNSPECIFIED" | "UPDATE_UNIT_KIND_STRATEGY_ON_START" | "UPDATE_UNIT_KIND_STRATEGY_NEVER";
+export type RolloutKindUpdateUnitKindStrategyEnum =
+  | "UPDATE_UNIT_KIND_STRATEGY_UNSPECIFIED"
+  | "UPDATE_UNIT_KIND_STRATEGY_ON_START"
+  | "UPDATE_UNIT_KIND_STRATEGY_NEVER";
 export const RolloutKindUpdateUnitKindStrategyEnum = /*@__PURE__*/ S.String;
 
 /** The configuration for error budget. If the number of failed units exceeds max(allowed_count, allowed_ratio * total_units), the rollout will be paused. */
@@ -719,10 +820,10 @@ export interface ErrorBudget {
   allowedPercentage?: number;
 }
 export const ErrorBudget = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "allowedCount": S.optional(S.Number),
-  "allowedPercentage": S.optional(S.Number),
-}),
+  S.Struct({
+    allowedCount: S.optional(S.Number),
+    allowedPercentage: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "ErrorBudget" }) as any as S.Schema<ErrorBudget>;
 
 /** An object that describes various settings of Rollout execution. Includes built-in and customizable policies. */
@@ -755,21 +856,21 @@ export interface RolloutKind {
   unitKind?: string;
 }
 export const RolloutKind = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "etag": S.optional(S.String),
-  "uid": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "unitFilter": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "rolloutOrchestrationStrategy": S.optional(S.String),
-  "unitUpdatePacing": S.optional(UnitUpdatePacing),
-  "updateUnitKindStrategy": S.optional(RolloutKindUpdateUnitKindStrategyEnum),
-  "errorBudget": S.optional(ErrorBudget),
-  "annotations": S.optional(StringMap),
-  "updateTime": S.optional(S.String),
-  "unitKind": S.optional(S.String),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    etag: S.optional(S.String),
+    uid: S.optional(S.String),
+    createTime: S.optional(S.String),
+    unitFilter: S.optional(S.String),
+    labels: S.optional(StringMap),
+    rolloutOrchestrationStrategy: S.optional(S.String),
+    unitUpdatePacing: S.optional(UnitUpdatePacing),
+    updateUnitKindStrategy: S.optional(RolloutKindUpdateUnitKindStrategyEnum),
+    errorBudget: S.optional(ErrorBudget),
+    annotations: S.optional(StringMap),
+    updateTime: S.optional(S.String),
+    unitKind: S.optional(S.String),
+  }),
 ).annotate({ identifier: "RolloutKind" }) as any as S.Schema<RolloutKind>;
 
 export interface CreateProjectsLocationsRolloutKindsRequest {
@@ -784,17 +885,36 @@ export interface CreateProjectsLocationsRolloutKindsRequest {
   /** Request body */
   body?: RolloutKind;
 }
-export const CreateProjectsLocationsRolloutKindsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "rolloutKindId": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(RolloutKind.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/rolloutKinds","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsRolloutKindsRequest" }) as any as S.Schema<CreateProjectsLocationsRolloutKindsRequest>;
+export const CreateProjectsLocationsRolloutKindsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      rolloutKindId: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      body: S.optional(RolloutKind.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+parent}/rolloutKinds",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsRolloutKindsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsRolloutKindsRequest>;
 
-export type RolloutStateEnum = "ROLLOUT_STATE_UNSPECIFIED" | "ROLLOUT_STATE_RUNNING" | "ROLLOUT_STATE_PAUSED" | "ROLLOUT_STATE_SUCCEEDED" | "ROLLOUT_STATE_FAILED" | "ROLLOUT_STATE_CANCELLED" | "ROLLOUT_STATE_WAITING" | "ROLLOUT_STATE_CANCELLING" | "ROLLOUT_STATE_RESUMING" | "ROLLOUT_STATE_PAUSING";
+export type RolloutStateEnum =
+  | "ROLLOUT_STATE_UNSPECIFIED"
+  | "ROLLOUT_STATE_RUNNING"
+  | "ROLLOUT_STATE_PAUSED"
+  | "ROLLOUT_STATE_SUCCEEDED"
+  | "ROLLOUT_STATE_FAILED"
+  | "ROLLOUT_STATE_CANCELLED"
+  | "ROLLOUT_STATE_WAITING"
+  | "ROLLOUT_STATE_CANCELLING"
+  | "ROLLOUT_STATE_RESUMING"
+  | "ROLLOUT_STATE_PAUSING";
 export const RolloutStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents the aggregation of a set of population of like records by a certain group. For example, a collection of unit counts can be aggregated and grouped by their state. */
@@ -805,14 +925,16 @@ export interface Aggregate {
   count?: number;
 }
 export const Aggregate = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "group": S.optional(S.String),
-  "count": S.optional(S.Number),
-}),
+  S.Struct({
+    group: S.optional(S.String),
+    count: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "Aggregate" }) as any as S.Schema<Aggregate>;
 
 export type AggregateList = ReadonlyArray<Aggregate>;
-export const AggregateList = /*@__PURE__*/ S.Array(Aggregate) as any as S.Schema<AggregateList>;
+export const AggregateList = /*@__PURE__*/ S.Array(
+  Aggregate,
+) as any as S.Schema<AggregateList>;
 
 /** RolloutStats contains information about the progress of a rollout. */
 export interface RolloutStats {
@@ -822,10 +944,10 @@ export interface RolloutStats {
   estimatedTotalUnitCount?: string;
 }
 export const RolloutStats = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "operationsByState": S.optional(AggregateList),
-  "estimatedTotalUnitCount": S.optional(S.String),
-}),
+  S.Struct({
+    operationsByState: S.optional(AggregateList),
+    estimatedTotalUnitCount: S.optional(S.String),
+  }),
 ).annotate({ identifier: "RolloutStats" }) as any as S.Schema<RolloutStats>;
 
 /** Parameters for the RUN action controlling the behavior of the rollout when it is resumed from a PAUSED state. */
@@ -834,12 +956,18 @@ export interface RunRolloutActionParams {
   retryFailedOperations?: boolean;
 }
 export const RunRolloutActionParams = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "retryFailedOperations": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "RunRolloutActionParams" }) as any as S.Schema<RunRolloutActionParams>;
+  S.Struct({
+    retryFailedOperations: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "RunRolloutActionParams",
+}) as any as S.Schema<RunRolloutActionParams>;
 
-export type RolloutControlActionEnum = "ROLLOUT_ACTION_UNSPECIFIED" | "ROLLOUT_ACTION_RUN" | "ROLLOUT_ACTION_PAUSE" | "ROLLOUT_ACTION_CANCEL";
+export type RolloutControlActionEnum =
+  | "ROLLOUT_ACTION_UNSPECIFIED"
+  | "ROLLOUT_ACTION_RUN"
+  | "ROLLOUT_ACTION_PAUSE"
+  | "ROLLOUT_ACTION_CANCEL";
 export const RolloutControlActionEnum = /*@__PURE__*/ S.String;
 
 /** RolloutControl provides a way to request a change to the execution of a Rollout by pausing or canceling it. */
@@ -850,10 +978,10 @@ export interface RolloutControl {
   action?: RolloutControlActionEnum;
 }
 export const RolloutControl = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "runParams": S.optional(RunRolloutActionParams),
-  "action": S.optional(RolloutControlActionEnum),
-}),
+  S.Struct({
+    runParams: S.optional(RunRolloutActionParams),
+    action: S.optional(RolloutControlActionEnum),
+  }),
 ).annotate({ identifier: "RolloutControl" }) as any as S.Schema<RolloutControl>;
 
 /** Represents a single rollout execution and its results */
@@ -906,31 +1034,31 @@ export interface Rollout {
   control?: RolloutControl;
 }
 export const Rollout = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "endTime": S.optional(S.String),
-  "unitFilter": S.optional(S.String),
-  "effectiveUnitFilter": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "state": S.optional(RolloutStateEnum),
-  "rootRollout": S.optional(S.String),
-  "rolloutOrchestrationStrategy": S.optional(S.String),
-  "name": S.optional(S.String),
-  "release": S.optional(S.String),
-  "parentRollout": S.optional(S.String),
-  "etag": S.optional(S.String),
-  "flagRelease": S.optional(S.String),
-  "uid": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "stats": S.optional(RolloutStats),
-  "stateTransitionTime": S.optional(S.String),
-  "deleteTime": S.optional(S.String),
-  "rolloutKind": S.optional(S.String),
-  "stateMessage": S.optional(S.String),
-  "startTime": S.optional(S.String),
-  "annotations": S.optional(StringMap),
-  "updateTime": S.optional(S.String),
-  "control": S.optional(RolloutControl),
-}),
+  S.Struct({
+    endTime: S.optional(S.String),
+    unitFilter: S.optional(S.String),
+    effectiveUnitFilter: S.optional(S.String),
+    labels: S.optional(StringMap),
+    state: S.optional(RolloutStateEnum),
+    rootRollout: S.optional(S.String),
+    rolloutOrchestrationStrategy: S.optional(S.String),
+    name: S.optional(S.String),
+    release: S.optional(S.String),
+    parentRollout: S.optional(S.String),
+    etag: S.optional(S.String),
+    flagRelease: S.optional(S.String),
+    uid: S.optional(S.String),
+    createTime: S.optional(S.String),
+    stats: S.optional(RolloutStats),
+    stateTransitionTime: S.optional(S.String),
+    deleteTime: S.optional(S.String),
+    rolloutKind: S.optional(S.String),
+    stateMessage: S.optional(S.String),
+    startTime: S.optional(S.String),
+    annotations: S.optional(StringMap),
+    updateTime: S.optional(S.String),
+    control: S.optional(RolloutControl),
+  }),
 ).annotate({ identifier: "Rollout" }) as any as S.Schema<Rollout>;
 
 export interface CreateProjectsLocationsRolloutsRequest {
@@ -945,21 +1073,35 @@ export interface CreateProjectsLocationsRolloutsRequest {
   /** Request body */
   body?: Rollout;
 }
-export const CreateProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "rolloutId": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Rollout.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/rollouts","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsRolloutsRequest" }) as any as S.Schema<CreateProjectsLocationsRolloutsRequest>;
+export const CreateProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      rolloutId: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Rollout.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+parent}/rollouts",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateProjectsLocationsRolloutsRequest",
+}) as any as S.Schema<CreateProjectsLocationsRolloutsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -971,17 +1113,24 @@ export interface Status {
   message?: string;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(S.Number),
-  "details": S.optional(DocumentMapList),
-  "message": S.optional(S.String),
-}),
+  S.Struct({
+    code: S.optional(S.Number),
+    details: S.optional(DocumentMapList),
+    message: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
-export type SaasConditionTypeEnum = "TYPE_UNSPECIFIED" | "TYPE_READY" | "TYPE_SYNCHRONIZED";
+export type SaasConditionTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "TYPE_READY"
+  | "TYPE_SYNCHRONIZED";
 export const SaasConditionTypeEnum = /*@__PURE__*/ S.String;
 
-export type SaasConditionStatusEnum = "STATUS_UNSPECIFIED" | "STATUS_UNKNOWN" | "STATUS_TRUE" | "STATUS_FALSE";
+export type SaasConditionStatusEnum =
+  | "STATUS_UNSPECIFIED"
+  | "STATUS_UNKNOWN"
+  | "STATUS_TRUE"
+  | "STATUS_FALSE";
 export const SaasConditionStatusEnum = /*@__PURE__*/ S.String;
 
 /** SaasCondition describes the status of a Saas. */
@@ -998,17 +1147,19 @@ export interface SaasCondition {
   reason?: string;
 }
 export const SaasCondition = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(SaasConditionTypeEnum),
-  "lastTransitionTime": S.optional(S.String),
-  "status": S.optional(SaasConditionStatusEnum),
-  "message": S.optional(S.String),
-  "reason": S.optional(S.String),
-}),
+  S.Struct({
+    type: S.optional(SaasConditionTypeEnum),
+    lastTransitionTime: S.optional(S.String),
+    status: S.optional(SaasConditionStatusEnum),
+    message: S.optional(S.String),
+    reason: S.optional(S.String),
+  }),
 ).annotate({ identifier: "SaasCondition" }) as any as S.Schema<SaasCondition>;
 
 export type SaasConditionList = ReadonlyArray<SaasCondition>;
-export const SaasConditionList = /*@__PURE__*/ S.Array(SaasCondition) as any as S.Schema<SaasConditionList>;
+export const SaasConditionList = /*@__PURE__*/ S.Array(
+  SaasCondition,
+) as any as S.Schema<SaasConditionList>;
 
 /** Location information that the service is available in. */
 export interface Location {
@@ -1016,15 +1167,21 @@ export interface Location {
   name?: string;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(
+  Location,
+) as any as S.Schema<LocationList>;
 
-export type SaasStateEnum = "STATE_TYPE_UNSPECIFIED" | "STATE_ACTIVE" | "STATE_RUNNING" | "STATE_FAILED";
+export type SaasStateEnum =
+  | "STATE_TYPE_UNSPECIFIED"
+  | "STATE_ACTIVE"
+  | "STATE_RUNNING"
+  | "STATE_FAILED";
 export const SaasStateEnum = /*@__PURE__*/ S.String;
 
 /** Saas is a representation of a SaaS service managed by the Producer. */
@@ -1057,21 +1214,21 @@ export interface Saas {
   state?: SaasStateEnum;
 }
 export const Saas = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateTime": S.optional(S.String),
-  "annotations": S.optional(StringMap),
-  "error": S.optional(Status),
-  "conditions": S.optional(SaasConditionList),
-  "locations": S.optional(LocationList),
-  "applicationTemplate": S.optional(CompositeRef),
-  "blueprintRepo": S.optional(S.String),
-  "uid": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "etag": S.optional(S.String),
-  "name": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "state": S.optional(SaasStateEnum),
-}),
+  S.Struct({
+    updateTime: S.optional(S.String),
+    annotations: S.optional(StringMap),
+    error: S.optional(Status),
+    conditions: S.optional(SaasConditionList),
+    locations: S.optional(LocationList),
+    applicationTemplate: S.optional(CompositeRef),
+    blueprintRepo: S.optional(S.String),
+    uid: S.optional(S.String),
+    createTime: S.optional(S.String),
+    etag: S.optional(S.String),
+    name: S.optional(S.String),
+    labels: S.optional(StringMap),
+    state: S.optional(SaasStateEnum),
+  }),
 ).annotate({ identifier: "Saas" }) as any as S.Schema<Saas>;
 
 export interface CreateProjectsLocationsSaasRequest {
@@ -1087,14 +1244,22 @@ export interface CreateProjectsLocationsSaasRequest {
   body?: Saas;
 }
 export const CreateProjectsLocationsSaasRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "saasId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Saas.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/saas","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsSaasRequest" }) as any as S.Schema<CreateProjectsLocationsSaasRequest>;
+  S.Struct({
+    validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    requestId: S.optional(S.String.pipe(T.Query())),
+    saasId: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(Saas.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1/{+parent}/saas",
+      baseUrl: "https://saasservicemgmt.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateProjectsLocationsSaasRequest",
+}) as any as S.Schema<CreateProjectsLocationsSaasRequest>;
 
 /** SaasRelease is a collection of Releases that are assigned to a UnitGroup. It allows provisioning and updates of UnitGroup, which contains multiple Units of different UnitKinds. */
 export interface SaasRelease {
@@ -1114,15 +1279,15 @@ export interface SaasRelease {
   name?: string;
 }
 export const SaasRelease = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateTime": S.optional(S.String),
-  "annotations": S.optional(StringMap),
-  "uid": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "etag": S.optional(S.String),
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    updateTime: S.optional(S.String),
+    annotations: S.optional(StringMap),
+    uid: S.optional(S.String),
+    createTime: S.optional(S.String),
+    labels: S.optional(StringMap),
+    etag: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "SaasRelease" }) as any as S.Schema<SaasRelease>;
 
 export interface CreateProjectsLocationsSaasReleasesRequest {
@@ -1137,15 +1302,24 @@ export interface CreateProjectsLocationsSaasReleasesRequest {
   /** Request body */
   body?: SaasRelease;
 }
-export const CreateProjectsLocationsSaasReleasesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "saasReleaseId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(SaasRelease.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/saasReleases","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsSaasReleasesRequest" }) as any as S.Schema<CreateProjectsLocationsSaasReleasesRequest>;
+export const CreateProjectsLocationsSaasReleasesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      saasReleaseId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(SaasRelease.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+parent}/saasReleases",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsSaasReleasesRequest",
+  }) as any as S.Schema<CreateProjectsLocationsSaasReleasesRequest>;
 
 /** Tenant represents the service producer side of an instance of the service created based on a request from a consumer. In a typical scenario a Tenant has a one-to-one mapping with a resource given out to a service consumer. Example: tenant: name: "projects/svc1/locations/loc/tenants/inst-068afff8" consumer_resource: "projects/gshoe/locations/loc/shoes/black-shoe" */
 export interface Tenant {
@@ -1169,17 +1343,17 @@ export interface Tenant {
   labels?: StringMap;
 }
 export const Tenant = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "annotations": S.optional(StringMap),
-  "uid": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "name": S.optional(S.String),
-  "etag": S.optional(S.String),
-  "consumerResource": S.optional(S.String),
-  "saas": S.optional(S.String),
-  "labels": S.optional(StringMap),
-}),
+  S.Struct({
+    annotations: S.optional(StringMap),
+    uid: S.optional(S.String),
+    createTime: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    name: S.optional(S.String),
+    etag: S.optional(S.String),
+    consumerResource: S.optional(S.String),
+    saas: S.optional(S.String),
+    labels: S.optional(StringMap),
+  }),
 ).annotate({ identifier: "Tenant" }) as any as S.Schema<Tenant>;
 
 export interface CreateProjectsLocationsTenantsRequest {
@@ -1194,15 +1368,24 @@ export interface CreateProjectsLocationsTenantsRequest {
   /** Request body */
   body?: Tenant;
 }
-export const CreateProjectsLocationsTenantsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "tenantId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Tenant.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/tenants","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsTenantsRequest" }) as any as S.Schema<CreateProjectsLocationsTenantsRequest>;
+export const CreateProjectsLocationsTenantsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      tenantId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Tenant.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+parent}/tenants",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateProjectsLocationsTenantsRequest",
+}) as any as S.Schema<CreateProjectsLocationsTenantsRequest>;
 
 /** UnitGroupOperation represents an operation on a UnitGroup. */
 export interface UnitGroupOperation {
@@ -1222,16 +1405,18 @@ export interface UnitGroupOperation {
   createTime?: string;
 }
 export const UnitGroupOperation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "labels": S.optional(StringMap),
-  "etag": S.optional(S.String),
-  "name": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "annotations": S.optional(StringMap),
-  "uid": S.optional(S.String),
-  "createTime": S.optional(S.String),
-}),
-).annotate({ identifier: "UnitGroupOperation" }) as any as S.Schema<UnitGroupOperation>;
+  S.Struct({
+    labels: S.optional(StringMap),
+    etag: S.optional(S.String),
+    name: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    annotations: S.optional(StringMap),
+    uid: S.optional(S.String),
+    createTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UnitGroupOperation",
+}) as any as S.Schema<UnitGroupOperation>;
 
 export interface CreateProjectsLocationsUnitGroupOperationsRequest {
   /** Required. The ID value for the new unit group operation. */
@@ -1245,15 +1430,24 @@ export interface CreateProjectsLocationsUnitGroupOperationsRequest {
   /** Request body */
   body?: UnitGroupOperation;
 }
-export const CreateProjectsLocationsUnitGroupOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "unitGroupOperationId": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(UnitGroupOperation.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/unitGroupOperations","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsUnitGroupOperationsRequest" }) as any as S.Schema<CreateProjectsLocationsUnitGroupOperationsRequest>;
+export const CreateProjectsLocationsUnitGroupOperationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      unitGroupOperationId: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(UnitGroupOperation.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+parent}/unitGroupOperations",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsUnitGroupOperationsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsUnitGroupOperationsRequest>;
 
 /** UnitGroup represents a set of Units to be used by a Tenant. In pooling scenarios, the UnitGroup may be created and provisioned before the Tenant is created. */
 export interface UnitGroup {
@@ -1273,15 +1467,15 @@ export interface UnitGroup {
   updateTime?: string;
 }
 export const UnitGroup = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "etag": S.optional(S.String),
-  "annotations": S.optional(StringMap),
-  "uid": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    labels: S.optional(StringMap),
+    etag: S.optional(S.String),
+    annotations: S.optional(StringMap),
+    uid: S.optional(S.String),
+    createTime: S.optional(S.String),
+    updateTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "UnitGroup" }) as any as S.Schema<UnitGroup>;
 
 export interface CreateProjectsLocationsUnitGroupsRequest {
@@ -1296,15 +1490,24 @@ export interface CreateProjectsLocationsUnitGroupsRequest {
   /** Request body */
   body?: UnitGroup;
 }
-export const CreateProjectsLocationsUnitGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "unitGroupId": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(UnitGroup.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/unitGroups","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsUnitGroupsRequest" }) as any as S.Schema<CreateProjectsLocationsUnitGroupsRequest>;
+export const CreateProjectsLocationsUnitGroupsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      unitGroupId: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(UnitGroup.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+parent}/unitGroups",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateProjectsLocationsUnitGroupsRequest",
+}) as any as S.Schema<CreateProjectsLocationsUnitGroupsRequest>;
 
 /** Dependency represent a single dependency with another unit kind by alias. */
 export interface Dependency {
@@ -1314,14 +1517,16 @@ export interface Dependency {
   alias?: string;
 }
 export const Dependency = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "unitKind": S.optional(S.String),
-  "alias": S.optional(S.String),
-}),
+  S.Struct({
+    unitKind: S.optional(S.String),
+    alias: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Dependency" }) as any as S.Schema<Dependency>;
 
 export type DependencyList = ReadonlyArray<Dependency>;
-export const DependencyList = /*@__PURE__*/ S.Array(Dependency) as any as S.Schema<DependencyList>;
+export const DependencyList = /*@__PURE__*/ S.Array(
+  Dependency,
+) as any as S.Schema<DependencyList>;
 
 /** Output variables whose values will be passed on to dependencies */
 export interface FromMapping {
@@ -1331,10 +1536,10 @@ export interface FromMapping {
   outputVariable?: string;
 }
 export const FromMapping = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dependency": S.optional(S.String),
-  "outputVariable": S.optional(S.String),
-}),
+  S.Struct({
+    dependency: S.optional(S.String),
+    outputVariable: S.optional(S.String),
+  }),
 ).annotate({ identifier: "FromMapping" }) as any as S.Schema<FromMapping>;
 
 /** Input variables whose values will be passed on to dependencies */
@@ -1347,11 +1552,11 @@ export interface ToMapping {
   dependency?: string;
 }
 export const ToMapping = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "inputVariable": S.optional(S.String),
-  "ignoreForLookup": S.optional(S.Boolean),
-  "dependency": S.optional(S.String),
-}),
+  S.Struct({
+    inputVariable: S.optional(S.String),
+    ignoreForLookup: S.optional(S.Boolean),
+    dependency: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ToMapping" }) as any as S.Schema<ToMapping>;
 
 /** Mapping of input variables to their respective output variable for depedenencies */
@@ -1364,20 +1569,30 @@ export interface VariableMapping {
   variable?: string;
 }
 export const VariableMapping = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "from": S.optional(FromMapping),
-  "to": S.optional(ToMapping),
-  "variable": S.optional(S.String),
-}),
-).annotate({ identifier: "VariableMapping" }) as any as S.Schema<VariableMapping>;
+  S.Struct({
+    from: S.optional(FromMapping),
+    to: S.optional(ToMapping),
+    variable: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VariableMapping",
+}) as any as S.Schema<VariableMapping>;
 
 export type VariableMappingList = ReadonlyArray<VariableMapping>;
-export const VariableMappingList = /*@__PURE__*/ S.Array(VariableMapping) as any as S.Schema<VariableMappingList>;
+export const VariableMappingList = /*@__PURE__*/ S.Array(
+  VariableMapping,
+) as any as S.Schema<VariableMappingList>;
 
-export type UnitKindBoundaryTypeEnum = "BOUNDARY_TYPE_UNSPECIFIED" | "BOUNDARY_TYPE_TENANT_PROJECT" | "BOUNDARY_TYPE_MANAGED_PROJECT";
+export type UnitKindBoundaryTypeEnum =
+  | "BOUNDARY_TYPE_UNSPECIFIED"
+  | "BOUNDARY_TYPE_TENANT_PROJECT"
+  | "BOUNDARY_TYPE_MANAGED_PROJECT";
 export const UnitKindBoundaryTypeEnum = /*@__PURE__*/ S.String;
 
-export type ScopeTypeEnum = "TYPE_UNSPECIFIED" | "TYPE_REGIONAL" | "TYPE_GLOBAL";
+export type ScopeTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "TYPE_REGIONAL"
+  | "TYPE_GLOBAL";
 export const ScopeTypeEnum = /*@__PURE__*/ S.String;
 
 /** Scope of an application. */
@@ -1386,9 +1601,9 @@ export interface Scope {
   type?: ScopeTypeEnum;
 }
 export const Scope = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(ScopeTypeEnum),
-}),
+  S.Struct({
+    type: S.optional(ScopeTypeEnum),
+  }),
 ).annotate({ identifier: "Scope" }) as any as S.Schema<Scope>;
 
 /** AppParams contains the parameters for creating an AppHub Application. */
@@ -1399,10 +1614,10 @@ export interface AppParams {
   scope?: Scope;
 }
 export const AppParams = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "group": S.optional(S.String),
-  "scope": S.optional(Scope),
-}),
+  S.Struct({
+    group: S.optional(S.String),
+    scope: S.optional(Scope),
+  }),
 ).annotate({ identifier: "AppParams" }) as any as S.Schema<AppParams>;
 
 /** Definition of a Unit. Units belonging to the same UnitKind are managed together; for example they follow the same release model (blueprints, versions etc.) and are typically rolled out together. */
@@ -1441,24 +1656,24 @@ export interface UnitKind {
   labels?: StringMap;
 }
 export const UnitKind = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "annotations": S.optional(StringMap),
-  "dependencies": S.optional(DependencyList),
-  "updateTime": S.optional(S.String),
-  "defaultRelease": S.optional(S.String),
-  "outputVariableMappings": S.optional(VariableMappingList),
-  "boundaryType": S.optional(UnitKindBoundaryTypeEnum),
-  "uid": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "applicationTemplateComponent": S.optional(ComponentRef),
-  "name": S.optional(S.String),
-  "appParams": S.optional(AppParams),
-  "etag": S.optional(S.String),
-  "defaultFlagRevisions": S.optional(StringList),
-  "inputVariableMappings": S.optional(VariableMappingList),
-  "saas": S.optional(S.String),
-  "labels": S.optional(StringMap),
-}),
+  S.Struct({
+    annotations: S.optional(StringMap),
+    dependencies: S.optional(DependencyList),
+    updateTime: S.optional(S.String),
+    defaultRelease: S.optional(S.String),
+    outputVariableMappings: S.optional(VariableMappingList),
+    boundaryType: S.optional(UnitKindBoundaryTypeEnum),
+    uid: S.optional(S.String),
+    createTime: S.optional(S.String),
+    applicationTemplateComponent: S.optional(ComponentRef),
+    name: S.optional(S.String),
+    appParams: S.optional(AppParams),
+    etag: S.optional(S.String),
+    defaultFlagRevisions: S.optional(StringList),
+    inputVariableMappings: S.optional(VariableMappingList),
+    saas: S.optional(S.String),
+    labels: S.optional(StringMap),
+  }),
 ).annotate({ identifier: "UnitKind" }) as any as S.Schema<UnitKind>;
 
 export interface CreateProjectsLocationsUnitKindsRequest {
@@ -1473,17 +1688,33 @@ export interface CreateProjectsLocationsUnitKindsRequest {
   /** Request body */
   body?: UnitKind;
 }
-export const CreateProjectsLocationsUnitKindsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "unitKindId": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(UnitKind.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/unitKinds","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsUnitKindsRequest" }) as any as S.Schema<CreateProjectsLocationsUnitKindsRequest>;
+export const CreateProjectsLocationsUnitKindsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      unitKindId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      body: S.optional(UnitKind.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+parent}/unitKinds",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateProjectsLocationsUnitKindsRequest",
+}) as any as S.Schema<CreateProjectsLocationsUnitKindsRequest>;
 
-export type UnitOperationStateEnum = "UNIT_OPERATION_STATE_UNKNOWN" | "UNIT_OPERATION_STATE_PENDING" | "UNIT_OPERATION_STATE_SCHEDULED" | "UNIT_OPERATION_STATE_RUNNING" | "UNIT_OPERATION_STATE_SUCCEEDED" | "UNIT_OPERATION_STATE_FAILED" | "UNIT_OPERATION_STATE_CANCELLED";
+export type UnitOperationStateEnum =
+  | "UNIT_OPERATION_STATE_UNKNOWN"
+  | "UNIT_OPERATION_STATE_PENDING"
+  | "UNIT_OPERATION_STATE_SCHEDULED"
+  | "UNIT_OPERATION_STATE_RUNNING"
+  | "UNIT_OPERATION_STATE_SUCCEEDED"
+  | "UNIT_OPERATION_STATE_FAILED"
+  | "UNIT_OPERATION_STATE_CANCELLED";
 export const UnitOperationStateEnum = /*@__PURE__*/ S.String;
 
 /** Provision is the unit operation that provision the underlying resources represented by a Unit. Can only execute if the Unit is not currently provisioned. */
@@ -1494,17 +1725,17 @@ export interface Provision {
   release?: string;
 }
 export const Provision = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "inputVariables": S.optional(UnitVariableList),
-  "release": S.optional(S.String),
-}),
+  S.Struct({
+    inputVariables: S.optional(UnitVariableList),
+    release: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Provision" }) as any as S.Schema<Provision>;
 
 /** Deprovision is the unit operation that deprovision the underlying resources represented by a Unit. Can only execute if the Unit is currently provisioned. */
 export interface Deprovision {}
-export const Deprovision = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Deprovision" }) as any as S.Schema<Deprovision>;
+export const Deprovision = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
+  { identifier: "Deprovision" },
+) as any as S.Schema<Deprovision>;
 
 /** Upgrade is the unit operation that upgrades a provisioned unit, which may also include the underlying resources represented by a Unit. Can only execute if the Unit is currently provisioned. */
 export interface Upgrade {
@@ -1514,10 +1745,10 @@ export interface Upgrade {
   inputVariables?: UnitVariableList;
 }
 export const Upgrade = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "release": S.optional(S.String),
-  "inputVariables": S.optional(UnitVariableList),
-}),
+  S.Struct({
+    release: S.optional(S.String),
+    inputVariables: S.optional(UnitVariableList),
+  }),
 ).annotate({ identifier: "Upgrade" }) as any as S.Schema<Upgrade>;
 
 /** FlagUpdate is a UnitOperation that pushes new flag values to Units. */
@@ -1526,15 +1757,27 @@ export interface FlagUpdate {
   flagRelease?: string;
 }
 export const FlagUpdate = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "flagRelease": S.optional(S.String),
-}),
+  S.Struct({
+    flagRelease: S.optional(S.String),
+  }),
 ).annotate({ identifier: "FlagUpdate" }) as any as S.Schema<FlagUpdate>;
 
-export type UnitOperationConditionStatusEnum = "STATUS_UNSPECIFIED" | "STATUS_UNKNOWN" | "STATUS_TRUE" | "STATUS_FALSE";
+export type UnitOperationConditionStatusEnum =
+  | "STATUS_UNSPECIFIED"
+  | "STATUS_UNKNOWN"
+  | "STATUS_TRUE"
+  | "STATUS_FALSE";
 export const UnitOperationConditionStatusEnum = /*@__PURE__*/ S.String;
 
-export type UnitOperationConditionTypeEnum = "TYPE_UNSPECIFIED" | "TYPE_SCHEDULED" | "TYPE_RUNNING" | "TYPE_SUCCEEDED" | "TYPE_CANCELLED" | "TYPE_APP_CREATED" | "TYPE_APP_COMPONENTS_REGISTERED" | "TYPE_WORKLOAD_SUCCEEDED";
+export type UnitOperationConditionTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "TYPE_SCHEDULED"
+  | "TYPE_RUNNING"
+  | "TYPE_SUCCEEDED"
+  | "TYPE_CANCELLED"
+  | "TYPE_APP_CREATED"
+  | "TYPE_APP_COMPONENTS_REGISTERED"
+  | "TYPE_WORKLOAD_SUCCEEDED";
 export const UnitOperationConditionTypeEnum = /*@__PURE__*/ S.String;
 
 /** UnitOperationCondition describes the status of an Unit Operation. UnitOperationCondition is individual components that contribute to an overall state. */
@@ -1551,17 +1794,21 @@ export interface UnitOperationCondition {
   type?: UnitOperationConditionTypeEnum;
 }
 export const UnitOperationCondition = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "message": S.optional(S.String),
-  "reason": S.optional(S.String),
-  "status": S.optional(UnitOperationConditionStatusEnum),
-  "lastTransitionTime": S.optional(S.String),
-  "type": S.optional(UnitOperationConditionTypeEnum),
-}),
-).annotate({ identifier: "UnitOperationCondition" }) as any as S.Schema<UnitOperationCondition>;
+  S.Struct({
+    message: S.optional(S.String),
+    reason: S.optional(S.String),
+    status: S.optional(UnitOperationConditionStatusEnum),
+    lastTransitionTime: S.optional(S.String),
+    type: S.optional(UnitOperationConditionTypeEnum),
+  }),
+).annotate({
+  identifier: "UnitOperationCondition",
+}) as any as S.Schema<UnitOperationCondition>;
 
 export type UnitOperationConditionList = ReadonlyArray<UnitOperationCondition>;
-export const UnitOperationConditionList = /*@__PURE__*/ S.Array(UnitOperationCondition) as any as S.Schema<UnitOperationConditionList>;
+export const UnitOperationConditionList = /*@__PURE__*/ S.Array(
+  UnitOperationCondition,
+) as any as S.Schema<UnitOperationConditionList>;
 
 /** A time specification to schedule the maintenance. */
 export interface Schedule {
@@ -1569,12 +1816,18 @@ export interface Schedule {
   startTime?: string;
 }
 export const Schedule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "startTime": S.optional(S.String),
-}),
+  S.Struct({
+    startTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Schedule" }) as any as S.Schema<Schedule>;
 
-export type UnitOperationErrorCategoryEnum = "UNIT_OPERATION_ERROR_CATEGORY_UNSPECIFIED" | "NOT_APPLICABLE" | "FATAL" | "RETRIABLE" | "IGNORABLE" | "STANDARD";
+export type UnitOperationErrorCategoryEnum =
+  | "UNIT_OPERATION_ERROR_CATEGORY_UNSPECIFIED"
+  | "NOT_APPLICABLE"
+  | "FATAL"
+  | "RETRIABLE"
+  | "IGNORABLE"
+  | "STANDARD";
 export const UnitOperationErrorCategoryEnum = /*@__PURE__*/ S.String;
 
 /** UnitOperation encapsulates the intent of changing/interacting with the service component represented by the specific Unit. Multiple UnitOperations can be created (requested) and scheduled in the future, however only one will be allowed to execute at a time (that can change in the future for non-mutating operations). UnitOperations allow different actors interacting with the same unit to focus only on the change they have requested. This is a base object that contains the common fields in all unit operations. Next: 22 */
@@ -1623,29 +1876,29 @@ export interface UnitOperation {
   annotations?: StringMap;
 }
 export const UnitOperation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "labels": S.optional(StringMap),
-  "state": S.optional(UnitOperationStateEnum),
-  "engineState": S.optional(S.String),
-  "provision": S.optional(Provision),
-  "unit": S.optional(S.String),
-  "etag": S.optional(S.String),
-  "cancel": S.optional(S.Boolean),
-  "name": S.optional(S.String),
-  "deprovision": S.optional(Deprovision),
-  "uid": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "deleteTime": S.optional(S.String),
-  "upgrade": S.optional(Upgrade),
-  "flagUpdate": S.optional(FlagUpdate),
-  "conditions": S.optional(UnitOperationConditionList),
-  "parentUnitOperation": S.optional(S.String),
-  "schedule": S.optional(Schedule),
-  "errorCategory": S.optional(UnitOperationErrorCategoryEnum),
-  "updateTime": S.optional(S.String),
-  "rollout": S.optional(S.String),
-  "annotations": S.optional(StringMap),
-}),
+  S.Struct({
+    labels: S.optional(StringMap),
+    state: S.optional(UnitOperationStateEnum),
+    engineState: S.optional(S.String),
+    provision: S.optional(Provision),
+    unit: S.optional(S.String),
+    etag: S.optional(S.String),
+    cancel: S.optional(S.Boolean),
+    name: S.optional(S.String),
+    deprovision: S.optional(Deprovision),
+    uid: S.optional(S.String),
+    createTime: S.optional(S.String),
+    deleteTime: S.optional(S.String),
+    upgrade: S.optional(Upgrade),
+    flagUpdate: S.optional(FlagUpdate),
+    conditions: S.optional(UnitOperationConditionList),
+    parentUnitOperation: S.optional(S.String),
+    schedule: S.optional(Schedule),
+    errorCategory: S.optional(UnitOperationErrorCategoryEnum),
+    updateTime: S.optional(S.String),
+    rollout: S.optional(S.String),
+    annotations: S.optional(StringMap),
+  }),
 ).annotate({ identifier: "UnitOperation" }) as any as S.Schema<UnitOperation>;
 
 export interface CreateProjectsLocationsUnitOperationsRequest {
@@ -1660,17 +1913,33 @@ export interface CreateProjectsLocationsUnitOperationsRequest {
   /** Request body */
   body?: UnitOperation;
 }
-export const CreateProjectsLocationsUnitOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "unitOperationId": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(UnitOperation.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/unitOperations","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsUnitOperationsRequest" }) as any as S.Schema<CreateProjectsLocationsUnitOperationsRequest>;
+export const CreateProjectsLocationsUnitOperationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      unitOperationId: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(UnitOperation.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+parent}/unitOperations",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsUnitOperationsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsUnitOperationsRequest>;
 
-export type UnitStateEnum = "UNIT_STATE_UNSPECIFIED" | "UNIT_STATE_NOT_PROVISIONED" | "UNIT_STATE_PROVISIONING" | "UNIT_STATE_UPDATING" | "UNIT_STATE_DEPROVISIONING" | "UNIT_STATE_READY" | "UNIT_STATE_ERROR";
+export type UnitStateEnum =
+  | "UNIT_STATE_UNSPECIFIED"
+  | "UNIT_STATE_NOT_PROVISIONED"
+  | "UNIT_STATE_PROVISIONING"
+  | "UNIT_STATE_UPDATING"
+  | "UNIT_STATE_DEPROVISIONING"
+  | "UNIT_STATE_READY"
+  | "UNIT_STATE_ERROR";
 export const UnitStateEnum = /*@__PURE__*/ S.String;
 
 /** Captures requested directives for performing future maintenance on the unit. This includes a request for the unit to skip maintenance for a period of time and remain pinned to its current release as well as controls for postponing maintenance scheduled in future. */
@@ -1679,10 +1948,12 @@ export interface MaintenanceSettings {
   pinnedUntilTime?: string;
 }
 export const MaintenanceSettings = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pinnedUntilTime": S.optional(S.String),
-}),
-).annotate({ identifier: "MaintenanceSettings" }) as any as S.Schema<MaintenanceSettings>;
+  S.Struct({
+    pinnedUntilTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MaintenanceSettings",
+}) as any as S.Schema<MaintenanceSettings>;
 
 /** Set of dependencies for this unit. Maximum 10. */
 export interface UnitDependency {
@@ -1692,25 +1963,46 @@ export interface UnitDependency {
   unit?: string;
 }
 export const UnitDependency = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "alias": S.optional(S.String),
-  "unit": S.optional(S.String),
-}),
+  S.Struct({
+    alias: S.optional(S.String),
+    unit: S.optional(S.String),
+  }),
 ).annotate({ identifier: "UnitDependency" }) as any as S.Schema<UnitDependency>;
 
 export type UnitDependencyList = ReadonlyArray<UnitDependency>;
-export const UnitDependencyList = /*@__PURE__*/ S.Array(UnitDependency) as any as S.Schema<UnitDependencyList>;
+export const UnitDependencyList = /*@__PURE__*/ S.Array(
+  UnitDependency,
+) as any as S.Schema<UnitDependencyList>;
 
-export type UnitSystemManagedStateEnum = "SYSTEM_MANAGED_STATE_UNSPECIFIED" | "SYSTEM_MANAGED_STATE_ACTIVE" | "SYSTEM_MANAGED_STATE_INACTIVE" | "SYSTEM_MANAGED_STATE_DECOMMISSIONED";
+export type UnitSystemManagedStateEnum =
+  | "SYSTEM_MANAGED_STATE_UNSPECIFIED"
+  | "SYSTEM_MANAGED_STATE_ACTIVE"
+  | "SYSTEM_MANAGED_STATE_INACTIVE"
+  | "SYSTEM_MANAGED_STATE_DECOMMISSIONED";
 export const UnitSystemManagedStateEnum = /*@__PURE__*/ S.String;
 
-export type UnitManagementModeEnum = "MANAGEMENT_MODE_UNSPECIFIED" | "MANAGEMENT_MODE_USER" | "MANAGEMENT_MODE_SYSTEM";
+export type UnitManagementModeEnum =
+  | "MANAGEMENT_MODE_UNSPECIFIED"
+  | "MANAGEMENT_MODE_USER"
+  | "MANAGEMENT_MODE_SYSTEM";
 export const UnitManagementModeEnum = /*@__PURE__*/ S.String;
 
-export type UnitConditionTypeEnum = "TYPE_UNSPECIFIED" | "TYPE_READY" | "TYPE_UPDATING" | "TYPE_PROVISIONED" | "TYPE_OPERATION_ERROR" | "TYPE_FLAGS_CONFIG_INITIALIZED" | "TYPE_APP_CREATED_OR_ALREADY_EXISTS" | "TYPE_APP_COMPONENTS_REGISTERED";
+export type UnitConditionTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "TYPE_READY"
+  | "TYPE_UPDATING"
+  | "TYPE_PROVISIONED"
+  | "TYPE_OPERATION_ERROR"
+  | "TYPE_FLAGS_CONFIG_INITIALIZED"
+  | "TYPE_APP_CREATED_OR_ALREADY_EXISTS"
+  | "TYPE_APP_COMPONENTS_REGISTERED";
 export const UnitConditionTypeEnum = /*@__PURE__*/ S.String;
 
-export type UnitConditionStatusEnum = "STATUS_UNSPECIFIED" | "STATUS_UNKNOWN" | "STATUS_TRUE" | "STATUS_FALSE";
+export type UnitConditionStatusEnum =
+  | "STATUS_UNSPECIFIED"
+  | "STATUS_UNKNOWN"
+  | "STATUS_TRUE"
+  | "STATUS_FALSE";
 export const UnitConditionStatusEnum = /*@__PURE__*/ S.String;
 
 /** UnitCondition describes the status of an Unit. UnitCondition is individual components that contribute to an overall state. */
@@ -1727,17 +2019,19 @@ export interface UnitCondition {
   status?: UnitConditionStatusEnum;
 }
 export const UnitCondition = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "lastTransitionTime": S.optional(S.String),
-  "type": S.optional(UnitConditionTypeEnum),
-  "message": S.optional(S.String),
-  "reason": S.optional(S.String),
-  "status": S.optional(UnitConditionStatusEnum),
-}),
+  S.Struct({
+    lastTransitionTime: S.optional(S.String),
+    type: S.optional(UnitConditionTypeEnum),
+    message: S.optional(S.String),
+    reason: S.optional(S.String),
+    status: S.optional(UnitConditionStatusEnum),
+  }),
 ).annotate({ identifier: "UnitCondition" }) as any as S.Schema<UnitCondition>;
 
 export type UnitConditionList = ReadonlyArray<UnitCondition>;
-export const UnitConditionList = /*@__PURE__*/ S.Array(UnitCondition) as any as S.Schema<UnitConditionList>;
+export const UnitConditionList = /*@__PURE__*/ S.Array(
+  UnitCondition,
+) as any as S.Schema<UnitConditionList>;
 
 /** A unit of deployment that has its lifecycle via a CRUD API using an actuation engine under the hood (e.g. based on Terraform, Helm or a custom implementation provided by a service producer). A building block of a SaaS Tenant. */
 export interface Unit {
@@ -1801,37 +2095,37 @@ export interface Unit {
   scheduledOperations?: StringList;
 }
 export const Unit = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "unitGroup": S.optional(S.String),
-  "name": S.optional(S.String),
-  "release": S.optional(S.String),
-  "uid": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "state": S.optional(UnitStateEnum),
-  "flagConfigName": S.optional(S.String),
-  "flagRevisions": S.optional(StringList),
-  "maintenance": S.optional(MaintenanceSettings),
-  "annotations": S.optional(StringMap),
-  "unitKind": S.optional(S.String),
-  "dependents": S.optional(UnitDependencyList),
-  "outputVariables": S.optional(UnitVariableList),
-  "systemManagedState": S.optional(UnitSystemManagedStateEnum),
-  "application": S.optional(S.String),
-  "etag": S.optional(S.String),
-  "pendingOperations": S.optional(StringList),
-  "managementMode": S.optional(UnitManagementModeEnum),
-  "ongoingOperations": S.optional(StringList),
-  "labels": S.optional(StringMap),
-  "systemCleanupAt": S.optional(S.String),
-  "dependencies": S.optional(UnitDependencyList),
-  "updateTime": S.optional(S.String),
-  "inputVariables": S.optional(UnitVariableList),
-  "conditions": S.optional(UnitConditionList),
-  "satisfiesPzs": S.optional(S.Boolean),
-  "tenant": S.optional(S.String),
-  "satisfiesPzi": S.optional(S.Boolean),
-  "scheduledOperations": S.optional(StringList),
-}),
+  S.Struct({
+    unitGroup: S.optional(S.String),
+    name: S.optional(S.String),
+    release: S.optional(S.String),
+    uid: S.optional(S.String),
+    createTime: S.optional(S.String),
+    state: S.optional(UnitStateEnum),
+    flagConfigName: S.optional(S.String),
+    flagRevisions: S.optional(StringList),
+    maintenance: S.optional(MaintenanceSettings),
+    annotations: S.optional(StringMap),
+    unitKind: S.optional(S.String),
+    dependents: S.optional(UnitDependencyList),
+    outputVariables: S.optional(UnitVariableList),
+    systemManagedState: S.optional(UnitSystemManagedStateEnum),
+    application: S.optional(S.String),
+    etag: S.optional(S.String),
+    pendingOperations: S.optional(StringList),
+    managementMode: S.optional(UnitManagementModeEnum),
+    ongoingOperations: S.optional(StringList),
+    labels: S.optional(StringMap),
+    systemCleanupAt: S.optional(S.String),
+    dependencies: S.optional(UnitDependencyList),
+    updateTime: S.optional(S.String),
+    inputVariables: S.optional(UnitVariableList),
+    conditions: S.optional(UnitConditionList),
+    satisfiesPzs: S.optional(S.Boolean),
+    tenant: S.optional(S.String),
+    satisfiesPzi: S.optional(S.Boolean),
+    scheduledOperations: S.optional(StringList),
+  }),
 ).annotate({ identifier: "Unit" }) as any as S.Schema<Unit>;
 
 export interface CreateProjectsLocationsUnitsRequest {
@@ -1847,14 +2141,22 @@ export interface CreateProjectsLocationsUnitsRequest {
   body?: Unit;
 }
 export const CreateProjectsLocationsUnitsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "unitId": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(Unit.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/units","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsUnitsRequest" }) as any as S.Schema<CreateProjectsLocationsUnitsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    unitId: S.optional(S.String.pipe(T.Query())),
+    requestId: S.optional(S.String.pipe(T.Query())),
+    validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+    body: S.optional(Unit.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1/{+parent}/units",
+      baseUrl: "https://saasservicemgmt.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateProjectsLocationsUnitsRequest",
+}) as any as S.Schema<CreateProjectsLocationsUnitsRequest>;
 
 export interface DeleteProjectsLocationsFlagAttributesRequest {
   /** Required. The resource name of the resource within a service. */
@@ -1866,20 +2168,29 @@ export interface DeleteProjectsLocationsFlagAttributesRequest {
   /** If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. */
   validateOnly?: boolean;
 }
-export const DeleteProjectsLocationsFlagAttributesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "etag": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsFlagAttributesRequest" }) as any as S.Schema<DeleteProjectsLocationsFlagAttributesRequest>;
+export const DeleteProjectsLocationsFlagAttributesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      etag: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsFlagAttributesRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsFlagAttributesRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 export interface DeleteProjectsLocationsFlagReleasesRequest {
   /** The etag known to the client for the expected state of the flag release. This is used with state-changing methods to prevent accidental overwrites when multiple user agents might be acting in parallel on the same resource. An etag wildcard provide optimistic concurrency based on the expected existence of the flag release. The Any wildcard (`*`) requires that the resource must already exists, and the Not Any wildcard (`!*`) requires that it must not. */
@@ -1891,14 +2202,23 @@ export interface DeleteProjectsLocationsFlagReleasesRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
 }
-export const DeleteProjectsLocationsFlagReleasesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "etag": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsFlagReleasesRequest" }) as any as S.Schema<DeleteProjectsLocationsFlagReleasesRequest>;
+export const DeleteProjectsLocationsFlagReleasesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      etag: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsFlagReleasesRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsFlagReleasesRequest>;
 
 export interface DeleteProjectsLocationsFlagRevisionsRequest {
   /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -1910,14 +2230,23 @@ export interface DeleteProjectsLocationsFlagRevisionsRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
 }
-export const DeleteProjectsLocationsFlagRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "etag": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsFlagRevisionsRequest" }) as any as S.Schema<DeleteProjectsLocationsFlagRevisionsRequest>;
+export const DeleteProjectsLocationsFlagRevisionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      requestId: S.optional(S.String.pipe(T.Query())),
+      etag: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsFlagRevisionsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsFlagRevisionsRequest>;
 
 export interface DeleteProjectsLocationsFlagsRequest {
   /** Required. The resource name of the resource within a service. */
@@ -1930,13 +2259,21 @@ export interface DeleteProjectsLocationsFlagsRequest {
   validateOnly?: boolean;
 }
 export const DeleteProjectsLocationsFlagsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "etag": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsFlagsRequest" }) as any as S.Schema<DeleteProjectsLocationsFlagsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    requestId: S.optional(S.String.pipe(T.Query())),
+    etag: S.optional(S.String.pipe(T.Query())),
+    validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1beta1/{+name}",
+      baseUrl: "https://saasservicemgmt.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteProjectsLocationsFlagsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsFlagsRequest>;
 
 export interface DeleteProjectsLocationsReleasesRequest {
   /** Required. The resource name of the resource within a service. */
@@ -1948,14 +2285,23 @@ export interface DeleteProjectsLocationsReleasesRequest {
   /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "etag": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsReleasesRequest" }) as any as S.Schema<DeleteProjectsLocationsReleasesRequest>;
+export const DeleteProjectsLocationsReleasesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      etag: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsReleasesRequest",
+}) as any as S.Schema<DeleteProjectsLocationsReleasesRequest>;
 
 export interface DeleteProjectsLocationsRolloutKindsRequest {
   /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -1967,14 +2313,23 @@ export interface DeleteProjectsLocationsRolloutKindsRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
 }
-export const DeleteProjectsLocationsRolloutKindsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "etag": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsRolloutKindsRequest" }) as any as S.Schema<DeleteProjectsLocationsRolloutKindsRequest>;
+export const DeleteProjectsLocationsRolloutKindsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      requestId: S.optional(S.String.pipe(T.Query())),
+      etag: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsRolloutKindsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsRolloutKindsRequest>;
 
 export interface DeleteProjectsLocationsRolloutsRequest {
   /** Required. The resource name of the resource within a service. */
@@ -1986,14 +2341,23 @@ export interface DeleteProjectsLocationsRolloutsRequest {
   /** If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. */
   validateOnly?: boolean;
 }
-export const DeleteProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "etag": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsRolloutsRequest" }) as any as S.Schema<DeleteProjectsLocationsRolloutsRequest>;
+export const DeleteProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      etag: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsRolloutsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsRolloutsRequest>;
 
 export interface DeleteProjectsLocationsSaasRequest {
   /** The etag known to the client for the expected state of the saas. This is used with state-changing methods to prevent accidental overwrites when multiple user agents might be acting in parallel on the same resource. An etag wildcard provide optimistic concurrency based on the expected existence of the saas. The Any wildcard (`*`) requires that the resource must already exists, and the Not Any wildcard (`!*`) requires that it must not. */
@@ -2006,13 +2370,21 @@ export interface DeleteProjectsLocationsSaasRequest {
   name: string;
 }
 export const DeleteProjectsLocationsSaasRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "etag": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsSaasRequest" }) as any as S.Schema<DeleteProjectsLocationsSaasRequest>;
+  S.Struct({
+    etag: S.optional(S.String.pipe(T.Query())),
+    validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+    requestId: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1beta1/{+name}",
+      baseUrl: "https://saasservicemgmt.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteProjectsLocationsSaasRequest",
+}) as any as S.Schema<DeleteProjectsLocationsSaasRequest>;
 
 export interface DeleteProjectsLocationsSaasReleasesRequest {
   /** An optional request ID to identify requests. */
@@ -2024,14 +2396,23 @@ export interface DeleteProjectsLocationsSaasReleasesRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
 }
-export const DeleteProjectsLocationsSaasReleasesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "etag": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsSaasReleasesRequest" }) as any as S.Schema<DeleteProjectsLocationsSaasReleasesRequest>;
+export const DeleteProjectsLocationsSaasReleasesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      requestId: S.optional(S.String.pipe(T.Query())),
+      etag: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsSaasReleasesRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsSaasReleasesRequest>;
 
 export interface DeleteProjectsLocationsTenantsRequest {
   /** The etag known to the client for the expected state of the tenant. This is used with state-changing methods to prevent accidental overwrites when multiple user agents might be acting in parallel on the same resource. An etag wildcard provide optimistic concurrency based on the expected existence of the tenant. The Any wildcard (`*`) requires that the resource must already exists, and the Not Any wildcard (`!*`) requires that it must not. */
@@ -2043,14 +2424,23 @@ export interface DeleteProjectsLocationsTenantsRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
 }
-export const DeleteProjectsLocationsTenantsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "etag": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsTenantsRequest" }) as any as S.Schema<DeleteProjectsLocationsTenantsRequest>;
+export const DeleteProjectsLocationsTenantsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      etag: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsTenantsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsTenantsRequest>;
 
 export interface DeleteProjectsLocationsUnitGroupOperationsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -2062,14 +2452,23 @@ export interface DeleteProjectsLocationsUnitGroupOperationsRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
 }
-export const DeleteProjectsLocationsUnitGroupOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "etag": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsUnitGroupOperationsRequest" }) as any as S.Schema<DeleteProjectsLocationsUnitGroupOperationsRequest>;
+export const DeleteProjectsLocationsUnitGroupOperationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      requestId: S.optional(S.String.pipe(T.Query())),
+      etag: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsUnitGroupOperationsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsUnitGroupOperationsRequest>;
 
 export interface DeleteProjectsLocationsUnitGroupsRequest {
   /** Required. The resource name of the resource within a service. */
@@ -2081,14 +2480,23 @@ export interface DeleteProjectsLocationsUnitGroupsRequest {
   /** If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. */
   validateOnly?: boolean;
 }
-export const DeleteProjectsLocationsUnitGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "etag": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsUnitGroupsRequest" }) as any as S.Schema<DeleteProjectsLocationsUnitGroupsRequest>;
+export const DeleteProjectsLocationsUnitGroupsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      etag: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsUnitGroupsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsUnitGroupsRequest>;
 
 export interface DeleteProjectsLocationsUnitKindsRequest {
   /** The etag known to the client for the expected state of the unit kind. This is used with state-changing methods to prevent accidental overwrites when multiple user agents might be acting in parallel on the same resource. An etag wildcard provide optimistic concurrency based on the expected existence of the unit kind. The Any wildcard (`*`) requires that the resource must already exists, and the Not Any wildcard (`!*`) requires that it must not. */
@@ -2100,14 +2508,23 @@ export interface DeleteProjectsLocationsUnitKindsRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
 }
-export const DeleteProjectsLocationsUnitKindsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "etag": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsUnitKindsRequest" }) as any as S.Schema<DeleteProjectsLocationsUnitKindsRequest>;
+export const DeleteProjectsLocationsUnitKindsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      etag: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsUnitKindsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsUnitKindsRequest>;
 
 export interface DeleteProjectsLocationsUnitOperationsRequest {
   /** The etag known to the client for the expected state of the unit operation. This is used with state-changing methods to prevent accidental overwrites when multiple user agents might be acting in parallel on the same resource. An etag wildcard provide optimistic concurrency based on the expected existence of the unit operation. The Any wildcard (`*`) requires that the resource must already exists, and the Not Any wildcard (`!*`) requires that it must not. */
@@ -2119,14 +2536,23 @@ export interface DeleteProjectsLocationsUnitOperationsRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
 }
-export const DeleteProjectsLocationsUnitOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "etag": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsUnitOperationsRequest" }) as any as S.Schema<DeleteProjectsLocationsUnitOperationsRequest>;
+export const DeleteProjectsLocationsUnitOperationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      etag: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsUnitOperationsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsUnitOperationsRequest>;
 
 export interface DeleteProjectsLocationsUnitsRequest {
   /** Required. The resource name of the resource within a service. */
@@ -2139,23 +2565,39 @@ export interface DeleteProjectsLocationsUnitsRequest {
   requestId?: string;
 }
 export const DeleteProjectsLocationsUnitsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "etag": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsUnitsRequest" }) as any as S.Schema<DeleteProjectsLocationsUnitsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    etag: S.optional(S.String.pipe(T.Query())),
+    validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+    requestId: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1beta1/{+name}",
+      baseUrl: "https://saasservicemgmt.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteProjectsLocationsUnitsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsUnitsRequest>;
 
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+name}",
+      baseUrl: "https://saasservicemgmt.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsRequest",
+}) as any as S.Schema<GetProjectsLocationsRequest>;
 
 /** A resource that represents a Google Cloud location. */
 export interface GoogleCloudLocationLocation {
@@ -2171,164 +2613,295 @@ export interface GoogleCloudLocationLocation {
   metadata?: DocumentMap;
 }
 export const GoogleCloudLocationLocation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "displayName": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "name": S.optional(S.String),
-  "locationId": S.optional(S.String),
-  "metadata": S.optional(DocumentMap),
-}),
-).annotate({ identifier: "GoogleCloudLocationLocation" }) as any as S.Schema<GoogleCloudLocationLocation>;
+  S.Struct({
+    displayName: S.optional(S.String),
+    labels: S.optional(StringMap),
+    name: S.optional(S.String),
+    locationId: S.optional(S.String),
+    metadata: S.optional(DocumentMap),
+  }),
+).annotate({
+  identifier: "GoogleCloudLocationLocation",
+}) as any as S.Schema<GoogleCloudLocationLocation>;
 
 export interface GetProjectsLocationsFlagAttributesRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
 }
-export const GetProjectsLocationsFlagAttributesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsFlagAttributesRequest" }) as any as S.Schema<GetProjectsLocationsFlagAttributesRequest>;
+export const GetProjectsLocationsFlagAttributesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsFlagAttributesRequest",
+  }) as any as S.Schema<GetProjectsLocationsFlagAttributesRequest>;
 
 export interface GetProjectsLocationsFlagReleasesRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
 }
-export const GetProjectsLocationsFlagReleasesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsFlagReleasesRequest" }) as any as S.Schema<GetProjectsLocationsFlagReleasesRequest>;
+export const GetProjectsLocationsFlagReleasesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsFlagReleasesRequest",
+}) as any as S.Schema<GetProjectsLocationsFlagReleasesRequest>;
 
 export interface GetProjectsLocationsFlagRevisionsRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
 }
-export const GetProjectsLocationsFlagRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsFlagRevisionsRequest" }) as any as S.Schema<GetProjectsLocationsFlagRevisionsRequest>;
+export const GetProjectsLocationsFlagRevisionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsFlagRevisionsRequest",
+}) as any as S.Schema<GetProjectsLocationsFlagRevisionsRequest>;
 
 export interface GetProjectsLocationsFlagsRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
 }
 export const GetProjectsLocationsFlagsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsFlagsRequest" }) as any as S.Schema<GetProjectsLocationsFlagsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+name}",
+      baseUrl: "https://saasservicemgmt.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsFlagsRequest",
+}) as any as S.Schema<GetProjectsLocationsFlagsRequest>;
 
 export interface GetProjectsLocationsReleasesRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
 }
 export const GetProjectsLocationsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsReleasesRequest" }) as any as S.Schema<GetProjectsLocationsReleasesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+name}",
+      baseUrl: "https://saasservicemgmt.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsReleasesRequest",
+}) as any as S.Schema<GetProjectsLocationsReleasesRequest>;
 
 export interface GetProjectsLocationsRolloutKindsRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
 }
-export const GetProjectsLocationsRolloutKindsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsRolloutKindsRequest" }) as any as S.Schema<GetProjectsLocationsRolloutKindsRequest>;
+export const GetProjectsLocationsRolloutKindsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsRolloutKindsRequest",
+}) as any as S.Schema<GetProjectsLocationsRolloutKindsRequest>;
 
 export interface GetProjectsLocationsRolloutsRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
 }
 export const GetProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsRolloutsRequest" }) as any as S.Schema<GetProjectsLocationsRolloutsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+name}",
+      baseUrl: "https://saasservicemgmt.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsRolloutsRequest",
+}) as any as S.Schema<GetProjectsLocationsRolloutsRequest>;
 
 export interface GetProjectsLocationsSaasRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
 }
 export const GetProjectsLocationsSaasRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsSaasRequest" }) as any as S.Schema<GetProjectsLocationsSaasRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+name}",
+      baseUrl: "https://saasservicemgmt.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsSaasRequest",
+}) as any as S.Schema<GetProjectsLocationsSaasRequest>;
 
 export interface GetProjectsLocationsSaasReleasesRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
 }
-export const GetProjectsLocationsSaasReleasesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsSaasReleasesRequest" }) as any as S.Schema<GetProjectsLocationsSaasReleasesRequest>;
+export const GetProjectsLocationsSaasReleasesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsSaasReleasesRequest",
+}) as any as S.Schema<GetProjectsLocationsSaasReleasesRequest>;
 
 export interface GetProjectsLocationsTenantsRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
 }
 export const GetProjectsLocationsTenantsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsTenantsRequest" }) as any as S.Schema<GetProjectsLocationsTenantsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+name}",
+      baseUrl: "https://saasservicemgmt.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsTenantsRequest",
+}) as any as S.Schema<GetProjectsLocationsTenantsRequest>;
 
 export interface GetProjectsLocationsUnitGroupOperationsRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
 }
-export const GetProjectsLocationsUnitGroupOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsUnitGroupOperationsRequest" }) as any as S.Schema<GetProjectsLocationsUnitGroupOperationsRequest>;
+export const GetProjectsLocationsUnitGroupOperationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsUnitGroupOperationsRequest",
+  }) as any as S.Schema<GetProjectsLocationsUnitGroupOperationsRequest>;
 
 export interface GetProjectsLocationsUnitGroupsRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
 }
-export const GetProjectsLocationsUnitGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsUnitGroupsRequest" }) as any as S.Schema<GetProjectsLocationsUnitGroupsRequest>;
+export const GetProjectsLocationsUnitGroupsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsUnitGroupsRequest",
+}) as any as S.Schema<GetProjectsLocationsUnitGroupsRequest>;
 
 export interface GetProjectsLocationsUnitKindsRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
 }
-export const GetProjectsLocationsUnitKindsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsUnitKindsRequest" }) as any as S.Schema<GetProjectsLocationsUnitKindsRequest>;
+export const GetProjectsLocationsUnitKindsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsUnitKindsRequest",
+}) as any as S.Schema<GetProjectsLocationsUnitKindsRequest>;
 
 export interface GetProjectsLocationsUnitOperationsRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
 }
-export const GetProjectsLocationsUnitOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsUnitOperationsRequest" }) as any as S.Schema<GetProjectsLocationsUnitOperationsRequest>;
+export const GetProjectsLocationsUnitOperationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsUnitOperationsRequest",
+  }) as any as S.Schema<GetProjectsLocationsUnitOperationsRequest>;
 
 export interface GetProjectsLocationsUnitsRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
 }
 export const GetProjectsLocationsUnitsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsUnitsRequest" }) as any as S.Schema<GetProjectsLocationsUnitsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+name}",
+      baseUrl: "https://saasservicemgmt.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsUnitsRequest",
+}) as any as S.Schema<GetProjectsLocationsUnitsRequest>;
 
 export interface ListProjectsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
@@ -2343,17 +2916,28 @@ export interface ListProjectsLocationsRequest {
   name: string;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}/locations","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
+  S.Struct({
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+name}/locations",
+      baseUrl: "https://saasservicemgmt.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsRequest",
+}) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type GoogleCloudLocationLocationList = ReadonlyArray<GoogleCloudLocationLocation>;
-export const GoogleCloudLocationLocationList = /*@__PURE__*/ S.Array(GoogleCloudLocationLocation) as any as S.Schema<GoogleCloudLocationLocationList>;
+export type GoogleCloudLocationLocationList =
+  ReadonlyArray<GoogleCloudLocationLocation>;
+export const GoogleCloudLocationLocationList = /*@__PURE__*/ S.Array(
+  GoogleCloudLocationLocation,
+) as any as S.Schema<GoogleCloudLocationLocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -2363,11 +2947,13 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locations": S.optional(GoogleCloudLocationLocationList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
+  S.Struct({
+    locations: S.optional(GoogleCloudLocationLocationList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListLocationsResponse",
+}) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsLocationsFlagAttributesRequest {
   /** Required. The parent of the flag attribute. */
@@ -2381,18 +2967,29 @@ export interface ListProjectsLocationsFlagAttributesRequest {
   /** Order results as specified in https://google.aip.dev/132. */
   orderBy?: string;
 }
-export const ListProjectsLocationsFlagAttributesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/flagAttributes","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsFlagAttributesRequest" }) as any as S.Schema<ListProjectsLocationsFlagAttributesRequest>;
+export const ListProjectsLocationsFlagAttributesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+parent}/flagAttributes",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsFlagAttributesRequest",
+  }) as any as S.Schema<ListProjectsLocationsFlagAttributesRequest>;
 
 export type FlagAttributeList = ReadonlyArray<FlagAttribute>;
-export const FlagAttributeList = /*@__PURE__*/ S.Array(FlagAttribute) as any as S.Schema<FlagAttributeList>;
+export const FlagAttributeList = /*@__PURE__*/ S.Array(
+  FlagAttribute,
+) as any as S.Schema<FlagAttributeList>;
 
 /** The response structure for the ListFlagAttributes method. */
 export interface ListFlagAttributesResponse {
@@ -2404,12 +3001,14 @@ export interface ListFlagAttributesResponse {
   nextPageToken?: string;
 }
 export const ListFlagAttributesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "flagAttributes": S.optional(FlagAttributeList),
-  "unreachable": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListFlagAttributesResponse" }) as any as S.Schema<ListFlagAttributesResponse>;
+  S.Struct({
+    flagAttributes: S.optional(FlagAttributeList),
+    unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListFlagAttributesResponse",
+}) as any as S.Schema<ListFlagAttributesResponse>;
 
 export interface ListProjectsLocationsFlagReleasesRequest {
   /** Required. The parent of the flag release. */
@@ -2423,18 +3022,29 @@ export interface ListProjectsLocationsFlagReleasesRequest {
   /** The maximum number of flag releases to send per page. */
   pageSize?: number;
 }
-export const ListProjectsLocationsFlagReleasesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/flagReleases","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsFlagReleasesRequest" }) as any as S.Schema<ListProjectsLocationsFlagReleasesRequest>;
+export const ListProjectsLocationsFlagReleasesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+parent}/flagReleases",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsFlagReleasesRequest",
+}) as any as S.Schema<ListProjectsLocationsFlagReleasesRequest>;
 
 export type FlagReleaseList = ReadonlyArray<FlagRelease>;
-export const FlagReleaseList = /*@__PURE__*/ S.Array(FlagRelease) as any as S.Schema<FlagReleaseList>;
+export const FlagReleaseList = /*@__PURE__*/ S.Array(
+  FlagRelease,
+) as any as S.Schema<FlagReleaseList>;
 
 /** The response structure for the ListFlagReleases method. */
 export interface ListFlagReleasesResponse {
@@ -2446,12 +3056,14 @@ export interface ListFlagReleasesResponse {
   nextPageToken?: string;
 }
 export const ListFlagReleasesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "flagReleases": S.optional(FlagReleaseList),
-  "unreachable": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListFlagReleasesResponse" }) as any as S.Schema<ListFlagReleasesResponse>;
+  S.Struct({
+    flagReleases: S.optional(FlagReleaseList),
+    unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListFlagReleasesResponse",
+}) as any as S.Schema<ListFlagReleasesResponse>;
 
 export interface ListProjectsLocationsFlagRevisionsRequest {
   /** The maximum number of flag revisions to send per page. */
@@ -2465,18 +3077,29 @@ export interface ListProjectsLocationsFlagRevisionsRequest {
   /** The page token: If the next_page_token from a previous response is provided, this request will send the subsequent page. */
   pageToken?: string;
 }
-export const ListProjectsLocationsFlagRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/flagRevisions","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsFlagRevisionsRequest" }) as any as S.Schema<ListProjectsLocationsFlagRevisionsRequest>;
+export const ListProjectsLocationsFlagRevisionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+parent}/flagRevisions",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsFlagRevisionsRequest",
+  }) as any as S.Schema<ListProjectsLocationsFlagRevisionsRequest>;
 
 export type FlagRevisionList_ = ReadonlyArray<FlagRevision>;
-export const FlagRevisionList_ = /*@__PURE__*/ S.Array(FlagRevision) as any as S.Schema<FlagRevisionList_>;
+export const FlagRevisionList_ = /*@__PURE__*/ S.Array(
+  FlagRevision,
+) as any as S.Schema<FlagRevisionList_>;
 
 /** The response structure for the ListFlagRevisions method. */
 export interface ListFlagRevisionsResponse {
@@ -2488,12 +3111,14 @@ export interface ListFlagRevisionsResponse {
   flagRevisions?: FlagRevisionList_;
 }
 export const ListFlagRevisionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "unreachable": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-  "flagRevisions": S.optional(FlagRevisionList_),
-}),
-).annotate({ identifier: "ListFlagRevisionsResponse" }) as any as S.Schema<ListFlagRevisionsResponse>;
+  S.Struct({
+    unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+    flagRevisions: S.optional(FlagRevisionList_),
+  }),
+).annotate({
+  identifier: "ListFlagRevisionsResponse",
+}) as any as S.Schema<ListFlagRevisionsResponse>;
 
 export interface ListProjectsLocationsFlagsRequest {
   /** Required. The parent of the flag. */
@@ -2508,17 +3133,27 @@ export interface ListProjectsLocationsFlagsRequest {
   pageSize?: number;
 }
 export const ListProjectsLocationsFlagsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/flags","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsFlagsRequest" }) as any as S.Schema<ListProjectsLocationsFlagsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+parent}/flags",
+      baseUrl: "https://saasservicemgmt.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsFlagsRequest",
+}) as any as S.Schema<ListProjectsLocationsFlagsRequest>;
 
 export type FlagList = ReadonlyArray<Flag>;
-export const FlagList = /*@__PURE__*/ S.Array(Flag) as any as S.Schema<FlagList>;
+export const FlagList = /*@__PURE__*/ S.Array(
+  Flag,
+) as any as S.Schema<FlagList>;
 
 /** The response structure for the ListFlags method. */
 export interface ListFlagsResponse {
@@ -2530,12 +3165,14 @@ export interface ListFlagsResponse {
   unreachable?: StringList;
 }
 export const ListFlagsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "flags": S.optional(FlagList),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListFlagsResponse" }) as any as S.Schema<ListFlagsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    flags: S.optional(FlagList),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListFlagsResponse",
+}) as any as S.Schema<ListFlagsResponse>;
 
 export interface ListProjectsLocationsReleasesRequest {
   /** Required. The parent of the release. */
@@ -2549,18 +3186,29 @@ export interface ListProjectsLocationsReleasesRequest {
   /** Order results as specified in https://google.aip.dev/132. */
   orderBy?: string;
 }
-export const ListProjectsLocationsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/releases","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsReleasesRequest" }) as any as S.Schema<ListProjectsLocationsReleasesRequest>;
+export const ListProjectsLocationsReleasesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+parent}/releases",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsReleasesRequest",
+}) as any as S.Schema<ListProjectsLocationsReleasesRequest>;
 
 export type ReleaseList = ReadonlyArray<Release>;
-export const ReleaseList = /*@__PURE__*/ S.Array(Release) as any as S.Schema<ReleaseList>;
+export const ReleaseList = /*@__PURE__*/ S.Array(
+  Release,
+) as any as S.Schema<ReleaseList>;
 
 /** The response structure for the ListReleases method. */
 export interface ListReleasesResponse {
@@ -2572,12 +3220,14 @@ export interface ListReleasesResponse {
   unreachable?: StringList;
 }
 export const ListReleasesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "releases": S.optional(ReleaseList),
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListReleasesResponse" }) as any as S.Schema<ListReleasesResponse>;
+  S.Struct({
+    releases: S.optional(ReleaseList),
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListReleasesResponse",
+}) as any as S.Schema<ListReleasesResponse>;
 
 export interface ListProjectsLocationsRolloutKindsRequest {
   /** Required. The parent of the rollout kind. */
@@ -2591,18 +3241,29 @@ export interface ListProjectsLocationsRolloutKindsRequest {
   /** The maximum number of rollout kinds to send per page. */
   pageSize?: number;
 }
-export const ListProjectsLocationsRolloutKindsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/rolloutKinds","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsRolloutKindsRequest" }) as any as S.Schema<ListProjectsLocationsRolloutKindsRequest>;
+export const ListProjectsLocationsRolloutKindsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+parent}/rolloutKinds",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsRolloutKindsRequest",
+}) as any as S.Schema<ListProjectsLocationsRolloutKindsRequest>;
 
 export type RolloutKindList = ReadonlyArray<RolloutKind>;
-export const RolloutKindList = /*@__PURE__*/ S.Array(RolloutKind) as any as S.Schema<RolloutKindList>;
+export const RolloutKindList = /*@__PURE__*/ S.Array(
+  RolloutKind,
+) as any as S.Schema<RolloutKindList>;
 
 /** The response structure for the ListRolloutKinds method. */
 export interface ListRolloutKindsResponse {
@@ -2614,12 +3275,14 @@ export interface ListRolloutKindsResponse {
   nextPageToken?: string;
 }
 export const ListRolloutKindsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "rolloutKinds": S.optional(RolloutKindList),
-  "unreachable": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListRolloutKindsResponse" }) as any as S.Schema<ListRolloutKindsResponse>;
+  S.Struct({
+    rolloutKinds: S.optional(RolloutKindList),
+    unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListRolloutKindsResponse",
+}) as any as S.Schema<ListRolloutKindsResponse>;
 
 export interface ListProjectsLocationsRolloutsRequest {
   /** The maximum number of rollouts to send per page. */
@@ -2633,18 +3296,29 @@ export interface ListProjectsLocationsRolloutsRequest {
   /** The page token: If the next_page_token from a previous response is provided, this request will send the subsequent page. */
   pageToken?: string;
 }
-export const ListProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/rollouts","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsRolloutsRequest" }) as any as S.Schema<ListProjectsLocationsRolloutsRequest>;
+export const ListProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+parent}/rollouts",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsRolloutsRequest",
+}) as any as S.Schema<ListProjectsLocationsRolloutsRequest>;
 
 export type RolloutList = ReadonlyArray<Rollout>;
-export const RolloutList = /*@__PURE__*/ S.Array(Rollout) as any as S.Schema<RolloutList>;
+export const RolloutList = /*@__PURE__*/ S.Array(
+  Rollout,
+) as any as S.Schema<RolloutList>;
 
 /** The response structure for the ListRollouts method. */
 export interface ListRolloutsResponse {
@@ -2656,12 +3330,14 @@ export interface ListRolloutsResponse {
   unreachable?: StringList;
 }
 export const ListRolloutsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "rollouts": S.optional(RolloutList),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListRolloutsResponse" }) as any as S.Schema<ListRolloutsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    rollouts: S.optional(RolloutList),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListRolloutsResponse",
+}) as any as S.Schema<ListRolloutsResponse>;
 
 export interface ListProjectsLocationsSaasRequest {
   /** Required. The parent of the saas. */
@@ -2676,17 +3352,27 @@ export interface ListProjectsLocationsSaasRequest {
   orderBy?: string;
 }
 export const ListProjectsLocationsSaasRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/saas","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsSaasRequest" }) as any as S.Schema<ListProjectsLocationsSaasRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+parent}/saas",
+      baseUrl: "https://saasservicemgmt.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsSaasRequest",
+}) as any as S.Schema<ListProjectsLocationsSaasRequest>;
 
 export type SaasList = ReadonlyArray<Saas>;
-export const SaasList = /*@__PURE__*/ S.Array(Saas) as any as S.Schema<SaasList>;
+export const SaasList = /*@__PURE__*/ S.Array(
+  Saas,
+) as any as S.Schema<SaasList>;
 
 /** The response structure for the ListSaas method. */
 export interface ListSaasResponse {
@@ -2698,12 +3384,14 @@ export interface ListSaasResponse {
   saas?: SaasList;
 }
 export const ListSaasResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "unreachable": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-  "saas": S.optional(SaasList),
-}),
-).annotate({ identifier: "ListSaasResponse" }) as any as S.Schema<ListSaasResponse>;
+  S.Struct({
+    unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+    saas: S.optional(SaasList),
+  }),
+).annotate({
+  identifier: "ListSaasResponse",
+}) as any as S.Schema<ListSaasResponse>;
 
 export interface ListProjectsLocationsSaasReleasesRequest {
   /** Filter the list as specified in https://google.aip.dev/160. */
@@ -2717,18 +3405,29 @@ export interface ListProjectsLocationsSaasReleasesRequest {
   /** The page token: If the next_page_token from a previous response is provided, this request will send the subsequent page. */
   pageToken?: string;
 }
-export const ListProjectsLocationsSaasReleasesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/saasReleases","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsSaasReleasesRequest" }) as any as S.Schema<ListProjectsLocationsSaasReleasesRequest>;
+export const ListProjectsLocationsSaasReleasesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      filter: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+parent}/saasReleases",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsSaasReleasesRequest",
+}) as any as S.Schema<ListProjectsLocationsSaasReleasesRequest>;
 
 export type SaasReleaseList = ReadonlyArray<SaasRelease>;
-export const SaasReleaseList = /*@__PURE__*/ S.Array(SaasRelease) as any as S.Schema<SaasReleaseList>;
+export const SaasReleaseList = /*@__PURE__*/ S.Array(
+  SaasRelease,
+) as any as S.Schema<SaasReleaseList>;
 
 /** The response structure for the ListSaasReleases method. */
 export interface ListSaasReleasesResponse {
@@ -2740,12 +3439,14 @@ export interface ListSaasReleasesResponse {
   saasReleases?: SaasReleaseList;
 }
 export const ListSaasReleasesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "unreachable": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-  "saasReleases": S.optional(SaasReleaseList),
-}),
-).annotate({ identifier: "ListSaasReleasesResponse" }) as any as S.Schema<ListSaasReleasesResponse>;
+  S.Struct({
+    unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+    saasReleases: S.optional(SaasReleaseList),
+  }),
+).annotate({
+  identifier: "ListSaasReleasesResponse",
+}) as any as S.Schema<ListSaasReleasesResponse>;
 
 export interface ListProjectsLocationsTenantsRequest {
   /** Required. The parent of the tenant. */
@@ -2760,17 +3461,27 @@ export interface ListProjectsLocationsTenantsRequest {
   orderBy?: string;
 }
 export const ListProjectsLocationsTenantsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/tenants","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsTenantsRequest" }) as any as S.Schema<ListProjectsLocationsTenantsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+parent}/tenants",
+      baseUrl: "https://saasservicemgmt.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsTenantsRequest",
+}) as any as S.Schema<ListProjectsLocationsTenantsRequest>;
 
 export type TenantList = ReadonlyArray<Tenant>;
-export const TenantList = /*@__PURE__*/ S.Array(Tenant) as any as S.Schema<TenantList>;
+export const TenantList = /*@__PURE__*/ S.Array(
+  Tenant,
+) as any as S.Schema<TenantList>;
 
 /** The response structure for the ListTenants method. */
 export interface ListTenantsResponse {
@@ -2782,12 +3493,14 @@ export interface ListTenantsResponse {
   unreachable?: StringList;
 }
 export const ListTenantsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "tenants": S.optional(TenantList),
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListTenantsResponse" }) as any as S.Schema<ListTenantsResponse>;
+  S.Struct({
+    tenants: S.optional(TenantList),
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListTenantsResponse",
+}) as any as S.Schema<ListTenantsResponse>;
 
 export interface ListProjectsLocationsUnitGroupOperationsRequest {
   /** Filter the list as specified in https://google.aip.dev/160. */
@@ -2801,18 +3514,29 @@ export interface ListProjectsLocationsUnitGroupOperationsRequest {
   /** The page token: If the next_page_token from a previous response is provided, this request will send the subsequent page. */
   pageToken?: string;
 }
-export const ListProjectsLocationsUnitGroupOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/unitGroupOperations","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsUnitGroupOperationsRequest" }) as any as S.Schema<ListProjectsLocationsUnitGroupOperationsRequest>;
+export const ListProjectsLocationsUnitGroupOperationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      filter: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+parent}/unitGroupOperations",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsUnitGroupOperationsRequest",
+  }) as any as S.Schema<ListProjectsLocationsUnitGroupOperationsRequest>;
 
 export type UnitGroupOperationList = ReadonlyArray<UnitGroupOperation>;
-export const UnitGroupOperationList = /*@__PURE__*/ S.Array(UnitGroupOperation) as any as S.Schema<UnitGroupOperationList>;
+export const UnitGroupOperationList = /*@__PURE__*/ S.Array(
+  UnitGroupOperation,
+) as any as S.Schema<UnitGroupOperationList>;
 
 /** The response structure for the ListUnitGroupOperations method. */
 export interface ListUnitGroupOperationsResponse {
@@ -2824,12 +3548,14 @@ export interface ListUnitGroupOperationsResponse {
   unitGroupOperations?: UnitGroupOperationList;
 }
 export const ListUnitGroupOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-  "unitGroupOperations": S.optional(UnitGroupOperationList),
-}),
-).annotate({ identifier: "ListUnitGroupOperationsResponse" }) as any as S.Schema<ListUnitGroupOperationsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+    unitGroupOperations: S.optional(UnitGroupOperationList),
+  }),
+).annotate({
+  identifier: "ListUnitGroupOperationsResponse",
+}) as any as S.Schema<ListUnitGroupOperationsResponse>;
 
 export interface ListProjectsLocationsUnitGroupsRequest {
   /** Required. The parent of the unit group. */
@@ -2843,18 +3569,29 @@ export interface ListProjectsLocationsUnitGroupsRequest {
   /** Order results as specified in https://google.aip.dev/132. */
   orderBy?: string;
 }
-export const ListProjectsLocationsUnitGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/unitGroups","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsUnitGroupsRequest" }) as any as S.Schema<ListProjectsLocationsUnitGroupsRequest>;
+export const ListProjectsLocationsUnitGroupsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+parent}/unitGroups",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsUnitGroupsRequest",
+}) as any as S.Schema<ListProjectsLocationsUnitGroupsRequest>;
 
 export type UnitGroupList = ReadonlyArray<UnitGroup>;
-export const UnitGroupList = /*@__PURE__*/ S.Array(UnitGroup) as any as S.Schema<UnitGroupList>;
+export const UnitGroupList = /*@__PURE__*/ S.Array(
+  UnitGroup,
+) as any as S.Schema<UnitGroupList>;
 
 /** The response structure for the ListUnitGroups method. */
 export interface ListUnitGroupsResponse {
@@ -2866,12 +3603,14 @@ export interface ListUnitGroupsResponse {
   unreachable?: StringList;
 }
 export const ListUnitGroupsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "unitGroups": S.optional(UnitGroupList),
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListUnitGroupsResponse" }) as any as S.Schema<ListUnitGroupsResponse>;
+  S.Struct({
+    unitGroups: S.optional(UnitGroupList),
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListUnitGroupsResponse",
+}) as any as S.Schema<ListUnitGroupsResponse>;
 
 export interface ListProjectsLocationsUnitKindsRequest {
   /** Filter the list as specified in https://google.aip.dev/160. */
@@ -2885,18 +3624,29 @@ export interface ListProjectsLocationsUnitKindsRequest {
   /** The page token: If the next_page_token from a previous response is provided, this request will send the subsequent page. */
   pageToken?: string;
 }
-export const ListProjectsLocationsUnitKindsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/unitKinds","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsUnitKindsRequest" }) as any as S.Schema<ListProjectsLocationsUnitKindsRequest>;
+export const ListProjectsLocationsUnitKindsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      filter: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+parent}/unitKinds",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsUnitKindsRequest",
+}) as any as S.Schema<ListProjectsLocationsUnitKindsRequest>;
 
 export type UnitKindList = ReadonlyArray<UnitKind>;
-export const UnitKindList = /*@__PURE__*/ S.Array(UnitKind) as any as S.Schema<UnitKindList>;
+export const UnitKindList = /*@__PURE__*/ S.Array(
+  UnitKind,
+) as any as S.Schema<UnitKindList>;
 
 /** The response structure for the ListUnitKinds method. */
 export interface ListUnitKindsResponse {
@@ -2908,12 +3658,14 @@ export interface ListUnitKindsResponse {
   unitKinds?: UnitKindList;
 }
 export const ListUnitKindsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "unreachable": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-  "unitKinds": S.optional(UnitKindList),
-}),
-).annotate({ identifier: "ListUnitKindsResponse" }) as any as S.Schema<ListUnitKindsResponse>;
+  S.Struct({
+    unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+    unitKinds: S.optional(UnitKindList),
+  }),
+).annotate({
+  identifier: "ListUnitKindsResponse",
+}) as any as S.Schema<ListUnitKindsResponse>;
 
 export interface ListProjectsLocationsUnitOperationsRequest {
   /** Filter the list as specified in https://google.aip.dev/160. */
@@ -2927,18 +3679,29 @@ export interface ListProjectsLocationsUnitOperationsRequest {
   /** The page token: If the next_page_token from a previous response is provided, this request will send the subsequent page. */
   pageToken?: string;
 }
-export const ListProjectsLocationsUnitOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/unitOperations","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsUnitOperationsRequest" }) as any as S.Schema<ListProjectsLocationsUnitOperationsRequest>;
+export const ListProjectsLocationsUnitOperationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      filter: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+parent}/unitOperations",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsUnitOperationsRequest",
+  }) as any as S.Schema<ListProjectsLocationsUnitOperationsRequest>;
 
 export type UnitOperationList = ReadonlyArray<UnitOperation>;
-export const UnitOperationList = /*@__PURE__*/ S.Array(UnitOperation) as any as S.Schema<UnitOperationList>;
+export const UnitOperationList = /*@__PURE__*/ S.Array(
+  UnitOperation,
+) as any as S.Schema<UnitOperationList>;
 
 /** The response structure for the ListUnitOperations method. */
 export interface ListUnitOperationsResponse {
@@ -2950,12 +3713,14 @@ export interface ListUnitOperationsResponse {
   unreachable?: StringList;
 }
 export const ListUnitOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "unitOperations": S.optional(UnitOperationList),
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListUnitOperationsResponse" }) as any as S.Schema<ListUnitOperationsResponse>;
+  S.Struct({
+    unitOperations: S.optional(UnitOperationList),
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListUnitOperationsResponse",
+}) as any as S.Schema<ListUnitOperationsResponse>;
 
 export interface ListProjectsLocationsUnitsRequest {
   /** Required. The parent of the unit. */
@@ -2970,17 +3735,27 @@ export interface ListProjectsLocationsUnitsRequest {
   pageSize?: number;
 }
 export const ListProjectsLocationsUnitsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/units","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsUnitsRequest" }) as any as S.Schema<ListProjectsLocationsUnitsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+parent}/units",
+      baseUrl: "https://saasservicemgmt.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsUnitsRequest",
+}) as any as S.Schema<ListProjectsLocationsUnitsRequest>;
 
 export type UnitList = ReadonlyArray<Unit>;
-export const UnitList = /*@__PURE__*/ S.Array(Unit) as any as S.Schema<UnitList>;
+export const UnitList = /*@__PURE__*/ S.Array(
+  Unit,
+) as any as S.Schema<UnitList>;
 
 /** The response structure for the ListUnits method. */
 export interface ListUnitsResponse {
@@ -2992,12 +3767,14 @@ export interface ListUnitsResponse {
   nextPageToken?: string;
 }
 export const ListUnitsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "units": S.optional(UnitList),
-  "unreachable": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListUnitsResponse" }) as any as S.Schema<ListUnitsResponse>;
+  S.Struct({
+    units: S.optional(UnitList),
+    unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListUnitsResponse",
+}) as any as S.Schema<ListUnitsResponse>;
 
 export interface PatchProjectsLocationsFlagAttributesRequest {
   /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -3011,15 +3788,24 @@ export interface PatchProjectsLocationsFlagAttributesRequest {
   /** Request body */
   body?: FlagAttribute;
 }
-export const PatchProjectsLocationsFlagAttributesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(FlagAttribute.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsFlagAttributesRequest" }) as any as S.Schema<PatchProjectsLocationsFlagAttributesRequest>;
+export const PatchProjectsLocationsFlagAttributesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      requestId: S.optional(S.String.pipe(T.Query())),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      body: S.optional(FlagAttribute.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsFlagAttributesRequest",
+  }) as any as S.Schema<PatchProjectsLocationsFlagAttributesRequest>;
 
 export interface PatchProjectsLocationsFlagReleasesRequest {
   /** If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. */
@@ -3033,15 +3819,24 @@ export interface PatchProjectsLocationsFlagReleasesRequest {
   /** Request body */
   body?: FlagRelease;
 }
-export const PatchProjectsLocationsFlagReleasesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(FlagRelease.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsFlagReleasesRequest" }) as any as S.Schema<PatchProjectsLocationsFlagReleasesRequest>;
+export const PatchProjectsLocationsFlagReleasesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      body: S.optional(FlagRelease.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsFlagReleasesRequest",
+  }) as any as S.Schema<PatchProjectsLocationsFlagReleasesRequest>;
 
 export interface PatchProjectsLocationsFlagRevisionsRequest {
   /** Identifier. The resource name (full URI of the resource) following the standard naming scheme: "projects/{project}/locations/{location}/flagRevisions/{flag_revision_id}" */
@@ -3055,15 +3850,24 @@ export interface PatchProjectsLocationsFlagRevisionsRequest {
   /** Request body */
   body?: FlagRevision;
 }
-export const PatchProjectsLocationsFlagRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(FlagRevision.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsFlagRevisionsRequest" }) as any as S.Schema<PatchProjectsLocationsFlagRevisionsRequest>;
+export const PatchProjectsLocationsFlagRevisionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(FlagRevision.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsFlagRevisionsRequest",
+  }) as any as S.Schema<PatchProjectsLocationsFlagRevisionsRequest>;
 
 export interface PatchProjectsLocationsFlagsRequest {
   /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -3078,14 +3882,22 @@ export interface PatchProjectsLocationsFlagsRequest {
   body?: Flag;
 }
 export const PatchProjectsLocationsFlagsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(Flag.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsFlagsRequest" }) as any as S.Schema<PatchProjectsLocationsFlagsRequest>;
+  S.Struct({
+    requestId: S.optional(S.String.pipe(T.Query())),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    body: S.optional(Flag.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1beta1/{+name}",
+      baseUrl: "https://saasservicemgmt.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchProjectsLocationsFlagsRequest",
+}) as any as S.Schema<PatchProjectsLocationsFlagsRequest>;
 
 export interface PatchProjectsLocationsReleasesRequest {
   /** Identifier. The resource name (full URI of the resource) following the standard naming scheme: "projects/{project}/locations/{location}/releases/{release}" */
@@ -3099,15 +3911,24 @@ export interface PatchProjectsLocationsReleasesRequest {
   /** Request body */
   body?: Release;
 }
-export const PatchProjectsLocationsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(Release.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsReleasesRequest" }) as any as S.Schema<PatchProjectsLocationsReleasesRequest>;
+export const PatchProjectsLocationsReleasesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      body: S.optional(Release.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "PatchProjectsLocationsReleasesRequest",
+}) as any as S.Schema<PatchProjectsLocationsReleasesRequest>;
 
 export interface PatchProjectsLocationsRolloutKindsRequest {
   /** Identifier. The resource name (full URI of the resource) following the standard naming scheme: "projects/{project}/locations/{location}/rolloutKinds/{rollout_kind_id}" */
@@ -3121,15 +3942,24 @@ export interface PatchProjectsLocationsRolloutKindsRequest {
   /** Request body */
   body?: RolloutKind;
 }
-export const PatchProjectsLocationsRolloutKindsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(RolloutKind.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsRolloutKindsRequest" }) as any as S.Schema<PatchProjectsLocationsRolloutKindsRequest>;
+export const PatchProjectsLocationsRolloutKindsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      body: S.optional(RolloutKind.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsRolloutKindsRequest",
+  }) as any as S.Schema<PatchProjectsLocationsRolloutKindsRequest>;
 
 export interface PatchProjectsLocationsRolloutsRequest {
   /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -3143,15 +3973,24 @@ export interface PatchProjectsLocationsRolloutsRequest {
   /** Request body */
   body?: Rollout;
 }
-export const PatchProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(Rollout.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsRolloutsRequest" }) as any as S.Schema<PatchProjectsLocationsRolloutsRequest>;
+export const PatchProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      requestId: S.optional(S.String.pipe(T.Query())),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      body: S.optional(Rollout.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "PatchProjectsLocationsRolloutsRequest",
+}) as any as S.Schema<PatchProjectsLocationsRolloutsRequest>;
 
 export interface PatchProjectsLocationsSaasRequest {
   /** Identifier. The resource name (full URI of the resource) following the standard naming scheme: "projects/{project}/locations/{location}/saas/{saas}" */
@@ -3166,14 +4005,22 @@ export interface PatchProjectsLocationsSaasRequest {
   body?: Saas;
 }
 export const PatchProjectsLocationsSaasRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Saas.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsSaasRequest" }) as any as S.Schema<PatchProjectsLocationsSaasRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+    requestId: S.optional(S.String.pipe(T.Query())),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(Saas.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1beta1/{+name}",
+      baseUrl: "https://saasservicemgmt.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchProjectsLocationsSaasRequest",
+}) as any as S.Schema<PatchProjectsLocationsSaasRequest>;
 
 export interface PatchProjectsLocationsSaasReleasesRequest {
   /** Identifier. The resource name (full URI of the resource) following the standard naming scheme: "projects/{project}/locations/{location}/saasReleases/{saasRelease}" */
@@ -3187,15 +4034,24 @@ export interface PatchProjectsLocationsSaasReleasesRequest {
   /** Request body */
   body?: SaasRelease;
 }
-export const PatchProjectsLocationsSaasReleasesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(SaasRelease.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsSaasReleasesRequest" }) as any as S.Schema<PatchProjectsLocationsSaasReleasesRequest>;
+export const PatchProjectsLocationsSaasReleasesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(SaasRelease.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsSaasReleasesRequest",
+  }) as any as S.Schema<PatchProjectsLocationsSaasReleasesRequest>;
 
 export interface PatchProjectsLocationsTenantsRequest {
   /** If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. */
@@ -3209,15 +4065,24 @@ export interface PatchProjectsLocationsTenantsRequest {
   /** Request body */
   body?: Tenant;
 }
-export const PatchProjectsLocationsTenantsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(Tenant.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsTenantsRequest" }) as any as S.Schema<PatchProjectsLocationsTenantsRequest>;
+export const PatchProjectsLocationsTenantsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      body: S.optional(Tenant.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "PatchProjectsLocationsTenantsRequest",
+}) as any as S.Schema<PatchProjectsLocationsTenantsRequest>;
 
 export interface PatchProjectsLocationsUnitGroupOperationsRequest {
   /** Optional. If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. */
@@ -3231,15 +4096,24 @@ export interface PatchProjectsLocationsUnitGroupOperationsRequest {
   /** Request body */
   body?: UnitGroupOperation;
 }
-export const PatchProjectsLocationsUnitGroupOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(UnitGroupOperation.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsUnitGroupOperationsRequest" }) as any as S.Schema<PatchProjectsLocationsUnitGroupOperationsRequest>;
+export const PatchProjectsLocationsUnitGroupOperationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      body: S.optional(UnitGroupOperation.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsUnitGroupOperationsRequest",
+  }) as any as S.Schema<PatchProjectsLocationsUnitGroupOperationsRequest>;
 
 export interface PatchProjectsLocationsUnitGroupsRequest {
   /** Identifier. The resource name (full URI of the resource) following the standard naming scheme: "projects/{project}/locations/{location}/unitGroups/{unitGroup}" */
@@ -3253,15 +4127,24 @@ export interface PatchProjectsLocationsUnitGroupsRequest {
   /** Request body */
   body?: UnitGroup;
 }
-export const PatchProjectsLocationsUnitGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(UnitGroup.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsUnitGroupsRequest" }) as any as S.Schema<PatchProjectsLocationsUnitGroupsRequest>;
+export const PatchProjectsLocationsUnitGroupsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      body: S.optional(UnitGroup.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "PatchProjectsLocationsUnitGroupsRequest",
+}) as any as S.Schema<PatchProjectsLocationsUnitGroupsRequest>;
 
 export interface PatchProjectsLocationsUnitKindsRequest {
   /** Identifier. The resource name (full URI of the resource) following the standard naming scheme: "projects/{project}/locations/{location}/unitKinds/{unitKind}" */
@@ -3275,15 +4158,24 @@ export interface PatchProjectsLocationsUnitKindsRequest {
   /** Request body */
   body?: UnitKind;
 }
-export const PatchProjectsLocationsUnitKindsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(UnitKind.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsUnitKindsRequest" }) as any as S.Schema<PatchProjectsLocationsUnitKindsRequest>;
+export const PatchProjectsLocationsUnitKindsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      body: S.optional(UnitKind.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "PatchProjectsLocationsUnitKindsRequest",
+}) as any as S.Schema<PatchProjectsLocationsUnitKindsRequest>;
 
 export interface PatchProjectsLocationsUnitOperationsRequest {
   /** Identifier. The resource name (full URI of the resource) following the standard naming scheme: "projects/{project}/locations/{location}/unitOperations/{unitOperation}" */
@@ -3297,15 +4189,24 @@ export interface PatchProjectsLocationsUnitOperationsRequest {
   /** Request body */
   body?: UnitOperation;
 }
-export const PatchProjectsLocationsUnitOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(UnitOperation.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsUnitOperationsRequest" }) as any as S.Schema<PatchProjectsLocationsUnitOperationsRequest>;
+export const PatchProjectsLocationsUnitOperationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      body: S.optional(UnitOperation.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://saasservicemgmt.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsUnitOperationsRequest",
+  }) as any as S.Schema<PatchProjectsLocationsUnitOperationsRequest>;
 
 export interface PatchProjectsLocationsUnitsRequest {
   /** If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. */
@@ -3320,16 +4221,29 @@ export interface PatchProjectsLocationsUnitsRequest {
   body?: Unit;
 }
 export const PatchProjectsLocationsUnitsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(Unit.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://saasservicemgmt.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsUnitsRequest" }) as any as S.Schema<PatchProjectsLocationsUnitsRequest>;
+  S.Struct({
+    validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+    requestId: S.optional(S.String.pipe(T.Query())),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    body: S.optional(Unit.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1beta1/{+name}",
+      baseUrl: "https://saasservicemgmt.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchProjectsLocationsUnitsRequest",
+}) as any as S.Schema<PatchProjectsLocationsUnitsRequest>;
 
-export type CreateProjectsLocationsFlagAttributesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsFlagAttributesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Create a new flag attribute. */
 export const createProjectsLocationsFlagAttributes: API.OperationMethod<
   CreateProjectsLocationsFlagAttributesRequest,
@@ -3344,7 +4258,12 @@ export const createProjectsLocationsFlagAttributes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsFlagReleasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsFlagReleasesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Create a new flag release. */
 export const createProjectsLocationsFlagReleases: API.OperationMethod<
   CreateProjectsLocationsFlagReleasesRequest,
@@ -3359,7 +4278,12 @@ export const createProjectsLocationsFlagReleases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsFlagRevisionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsFlagRevisionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Create a new flag revision. */
 export const createProjectsLocationsFlagRevisions: API.OperationMethod<
   CreateProjectsLocationsFlagRevisionsRequest,
@@ -3374,7 +4298,12 @@ export const createProjectsLocationsFlagRevisions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsFlagsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsFlagsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Create a new flag. */
 export const createProjectsLocationsFlags: API.OperationMethod<
   CreateProjectsLocationsFlagsRequest,
@@ -3389,7 +4318,12 @@ export const createProjectsLocationsFlags: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsReleasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsReleasesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Create a new release. */
 export const createProjectsLocationsReleases: API.OperationMethod<
   CreateProjectsLocationsReleasesRequest,
@@ -3404,7 +4338,12 @@ export const createProjectsLocationsReleases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsRolloutKindsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsRolloutKindsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Create a new rollout kind. */
 export const createProjectsLocationsRolloutKinds: API.OperationMethod<
   CreateProjectsLocationsRolloutKindsRequest,
@@ -3419,7 +4358,12 @@ export const createProjectsLocationsRolloutKinds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsRolloutsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsRolloutsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Create a new rollout. */
 export const createProjectsLocationsRollouts: API.OperationMethod<
   CreateProjectsLocationsRolloutsRequest,
@@ -3434,7 +4378,12 @@ export const createProjectsLocationsRollouts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsSaasError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsSaasError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Create a new saas. */
 export const createProjectsLocationsSaas: API.OperationMethod<
   CreateProjectsLocationsSaasRequest,
@@ -3449,7 +4398,12 @@ export const createProjectsLocationsSaas: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsSaasReleasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsSaasReleasesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Create a new saas release. */
 export const createProjectsLocationsSaasReleases: API.OperationMethod<
   CreateProjectsLocationsSaasReleasesRequest,
@@ -3464,7 +4418,12 @@ export const createProjectsLocationsSaasReleases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsTenantsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsTenantsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Create a new tenant. */
 export const createProjectsLocationsTenants: API.OperationMethod<
   CreateProjectsLocationsTenantsRequest,
@@ -3479,7 +4438,12 @@ export const createProjectsLocationsTenants: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsUnitGroupOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsUnitGroupOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Create a new unit group operation. */
 export const createProjectsLocationsUnitGroupOperations: API.OperationMethod<
   CreateProjectsLocationsUnitGroupOperationsRequest,
@@ -3494,7 +4458,12 @@ export const createProjectsLocationsUnitGroupOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsUnitGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsUnitGroupsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Create a new unit group. */
 export const createProjectsLocationsUnitGroups: API.OperationMethod<
   CreateProjectsLocationsUnitGroupsRequest,
@@ -3509,7 +4478,12 @@ export const createProjectsLocationsUnitGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsUnitKindsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsUnitKindsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Create a new unit kind. */
 export const createProjectsLocationsUnitKinds: API.OperationMethod<
   CreateProjectsLocationsUnitKindsRequest,
@@ -3524,7 +4498,12 @@ export const createProjectsLocationsUnitKinds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsUnitOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsUnitOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Create a new unit operation. */
 export const createProjectsLocationsUnitOperations: API.OperationMethod<
   CreateProjectsLocationsUnitOperationsRequest,
@@ -3539,7 +4518,12 @@ export const createProjectsLocationsUnitOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsUnitsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsUnitsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Create a new unit. */
 export const createProjectsLocationsUnits: API.OperationMethod<
   CreateProjectsLocationsUnitsRequest,
@@ -3554,7 +4538,12 @@ export const createProjectsLocationsUnits: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsFlagAttributesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsFlagAttributesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Delete a single flag attribute. */
 export const deleteProjectsLocationsFlagAttributes: API.OperationMethod<
   DeleteProjectsLocationsFlagAttributesRequest,
@@ -3569,7 +4558,12 @@ export const deleteProjectsLocationsFlagAttributes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsFlagReleasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsFlagReleasesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Delete a single flag release. */
 export const deleteProjectsLocationsFlagReleases: API.OperationMethod<
   DeleteProjectsLocationsFlagReleasesRequest,
@@ -3584,7 +4578,12 @@ export const deleteProjectsLocationsFlagReleases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsFlagRevisionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsFlagRevisionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Delete a single flag revision. */
 export const deleteProjectsLocationsFlagRevisions: API.OperationMethod<
   DeleteProjectsLocationsFlagRevisionsRequest,
@@ -3599,7 +4598,12 @@ export const deleteProjectsLocationsFlagRevisions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsFlagsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsFlagsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Delete a single flag. */
 export const deleteProjectsLocationsFlags: API.OperationMethod<
   DeleteProjectsLocationsFlagsRequest,
@@ -3614,7 +4618,12 @@ export const deleteProjectsLocationsFlags: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsReleasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsReleasesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Delete a single release. */
 export const deleteProjectsLocationsReleases: API.OperationMethod<
   DeleteProjectsLocationsReleasesRequest,
@@ -3629,7 +4638,12 @@ export const deleteProjectsLocationsReleases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsRolloutKindsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsRolloutKindsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Delete a single rollout kind. */
 export const deleteProjectsLocationsRolloutKinds: API.OperationMethod<
   DeleteProjectsLocationsRolloutKindsRequest,
@@ -3644,7 +4658,12 @@ export const deleteProjectsLocationsRolloutKinds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsRolloutsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsRolloutsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Delete a single rollout. */
 export const deleteProjectsLocationsRollouts: API.OperationMethod<
   DeleteProjectsLocationsRolloutsRequest,
@@ -3659,7 +4678,12 @@ export const deleteProjectsLocationsRollouts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsSaasError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsSaasError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Delete a single saas. */
 export const deleteProjectsLocationsSaas: API.OperationMethod<
   DeleteProjectsLocationsSaasRequest,
@@ -3674,7 +4698,12 @@ export const deleteProjectsLocationsSaas: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsSaasReleasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsSaasReleasesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Delete a single saas release. */
 export const deleteProjectsLocationsSaasReleases: API.OperationMethod<
   DeleteProjectsLocationsSaasReleasesRequest,
@@ -3689,7 +4718,12 @@ export const deleteProjectsLocationsSaasReleases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsTenantsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsTenantsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Delete a single tenant. */
 export const deleteProjectsLocationsTenants: API.OperationMethod<
   DeleteProjectsLocationsTenantsRequest,
@@ -3704,7 +4738,12 @@ export const deleteProjectsLocationsTenants: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsUnitGroupOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsUnitGroupOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Delete a single unit group operation. */
 export const deleteProjectsLocationsUnitGroupOperations: API.OperationMethod<
   DeleteProjectsLocationsUnitGroupOperationsRequest,
@@ -3719,7 +4758,12 @@ export const deleteProjectsLocationsUnitGroupOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsUnitGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsUnitGroupsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Delete a single unit group. */
 export const deleteProjectsLocationsUnitGroups: API.OperationMethod<
   DeleteProjectsLocationsUnitGroupsRequest,
@@ -3734,7 +4778,12 @@ export const deleteProjectsLocationsUnitGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsUnitKindsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsUnitKindsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Delete a single unit kind. */
 export const deleteProjectsLocationsUnitKinds: API.OperationMethod<
   DeleteProjectsLocationsUnitKindsRequest,
@@ -3749,7 +4798,12 @@ export const deleteProjectsLocationsUnitKinds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsUnitOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsUnitOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Delete a single unit operation. */
 export const deleteProjectsLocationsUnitOperations: API.OperationMethod<
   DeleteProjectsLocationsUnitOperationsRequest,
@@ -3764,7 +4818,12 @@ export const deleteProjectsLocationsUnitOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsUnitsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsUnitsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Delete a single unit. */
 export const deleteProjectsLocationsUnits: API.OperationMethod<
   DeleteProjectsLocationsUnitsRequest,
@@ -3794,7 +4853,10 @@ export const getProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsFlagAttributesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsFlagAttributesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieve a single flag attribute. */
 export const getProjectsLocationsFlagAttributes: API.OperationMethod<
   GetProjectsLocationsFlagAttributesRequest,
@@ -3809,7 +4871,10 @@ export const getProjectsLocationsFlagAttributes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsFlagReleasesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsFlagReleasesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieve a single flag release. */
 export const getProjectsLocationsFlagReleases: API.OperationMethod<
   GetProjectsLocationsFlagReleasesRequest,
@@ -3824,7 +4889,10 @@ export const getProjectsLocationsFlagReleases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsFlagRevisionsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsFlagRevisionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieve a single flag revision. */
 export const getProjectsLocationsFlagRevisions: API.OperationMethod<
   GetProjectsLocationsFlagRevisionsRequest,
@@ -3854,7 +4922,10 @@ export const getProjectsLocationsFlags: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsReleasesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsReleasesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieve a single release. */
 export const getProjectsLocationsReleases: API.OperationMethod<
   GetProjectsLocationsReleasesRequest,
@@ -3869,7 +4940,10 @@ export const getProjectsLocationsReleases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsRolloutKindsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsRolloutKindsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieve a single rollout kind. */
 export const getProjectsLocationsRolloutKinds: API.OperationMethod<
   GetProjectsLocationsRolloutKindsRequest,
@@ -3884,7 +4958,10 @@ export const getProjectsLocationsRolloutKinds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsRolloutsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsRolloutsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieve a single rollout. */
 export const getProjectsLocationsRollouts: API.OperationMethod<
   GetProjectsLocationsRolloutsRequest,
@@ -3914,7 +4991,10 @@ export const getProjectsLocationsSaas: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsSaasReleasesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsSaasReleasesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieve a single saas release. */
 export const getProjectsLocationsSaasReleases: API.OperationMethod<
   GetProjectsLocationsSaasReleasesRequest,
@@ -3929,7 +5009,10 @@ export const getProjectsLocationsSaasReleases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsTenantsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsTenantsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieve a single tenant. */
 export const getProjectsLocationsTenants: API.OperationMethod<
   GetProjectsLocationsTenantsRequest,
@@ -3944,7 +5027,10 @@ export const getProjectsLocationsTenants: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsUnitGroupOperationsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsUnitGroupOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieve a single unit group operation. */
 export const getProjectsLocationsUnitGroupOperations: API.OperationMethod<
   GetProjectsLocationsUnitGroupOperationsRequest,
@@ -3959,7 +5045,10 @@ export const getProjectsLocationsUnitGroupOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsUnitGroupsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsUnitGroupsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieve a single unit group. */
 export const getProjectsLocationsUnitGroups: API.OperationMethod<
   GetProjectsLocationsUnitGroupsRequest,
@@ -3974,7 +5063,10 @@ export const getProjectsLocationsUnitGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsUnitKindsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsUnitKindsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieve a single unit kind. */
 export const getProjectsLocationsUnitKinds: API.OperationMethod<
   GetProjectsLocationsUnitKindsRequest,
@@ -3989,7 +5081,10 @@ export const getProjectsLocationsUnitKinds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsUnitOperationsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsUnitOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieve a single unit operation. */
 export const getProjectsLocationsUnitOperations: API.OperationMethod<
   GetProjectsLocationsUnitOperationsRequest,
@@ -4032,10 +5127,16 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsFlagAttributesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsFlagAttributesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieve a collection of flag attributes. */
 export const listProjectsLocationsFlagAttributes: API.PaginatedOperationMethod<
   ListProjectsLocationsFlagAttributesRequest,
@@ -4048,10 +5149,16 @@ export const listProjectsLocationsFlagAttributes: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsFlagReleasesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsFlagReleasesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieve a collection of flag releases. */
 export const listProjectsLocationsFlagReleases: API.PaginatedOperationMethod<
   ListProjectsLocationsFlagReleasesRequest,
@@ -4064,10 +5171,16 @@ export const listProjectsLocationsFlagReleases: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsFlagRevisionsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsFlagRevisionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieve a collection of flag revisions. */
 export const listProjectsLocationsFlagRevisions: API.PaginatedOperationMethod<
   ListProjectsLocationsFlagRevisionsRequest,
@@ -4080,7 +5193,10 @@ export const listProjectsLocationsFlagRevisions: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListProjectsLocationsFlagsError = NotFound | Forbidden | GcpOpError;
@@ -4096,10 +5212,16 @@ export const listProjectsLocationsFlags: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsReleasesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsReleasesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieve a collection of releases. */
 export const listProjectsLocationsReleases: API.PaginatedOperationMethod<
   ListProjectsLocationsReleasesRequest,
@@ -4112,10 +5234,16 @@ export const listProjectsLocationsReleases: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsRolloutKindsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsRolloutKindsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieve a collection of rollout kinds. */
 export const listProjectsLocationsRolloutKinds: API.PaginatedOperationMethod<
   ListProjectsLocationsRolloutKindsRequest,
@@ -4128,10 +5256,16 @@ export const listProjectsLocationsRolloutKinds: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsRolloutsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsRolloutsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieve a collection of rollouts. */
 export const listProjectsLocationsRollouts: API.PaginatedOperationMethod<
   ListProjectsLocationsRolloutsRequest,
@@ -4144,7 +5278,10 @@ export const listProjectsLocationsRollouts: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListProjectsLocationsSaasError = NotFound | Forbidden | GcpOpError;
@@ -4160,10 +5297,16 @@ export const listProjectsLocationsSaas: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsSaasReleasesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsSaasReleasesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieve a collection of saas releases. */
 export const listProjectsLocationsSaasReleases: API.PaginatedOperationMethod<
   ListProjectsLocationsSaasReleasesRequest,
@@ -4176,10 +5319,16 @@ export const listProjectsLocationsSaasReleases: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsTenantsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsTenantsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieve a collection of tenants. */
 export const listProjectsLocationsTenants: API.PaginatedOperationMethod<
   ListProjectsLocationsTenantsRequest,
@@ -4192,10 +5341,16 @@ export const listProjectsLocationsTenants: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsUnitGroupOperationsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsUnitGroupOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieve a collection of unit group operations. */
 export const listProjectsLocationsUnitGroupOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsUnitGroupOperationsRequest,
@@ -4208,10 +5363,16 @@ export const listProjectsLocationsUnitGroupOperations: API.PaginatedOperationMet
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsUnitGroupsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsUnitGroupsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieve a collection of unit groups. */
 export const listProjectsLocationsUnitGroups: API.PaginatedOperationMethod<
   ListProjectsLocationsUnitGroupsRequest,
@@ -4224,10 +5385,16 @@ export const listProjectsLocationsUnitGroups: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsUnitKindsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsUnitKindsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieve a collection of unit kinds. */
 export const listProjectsLocationsUnitKinds: API.PaginatedOperationMethod<
   ListProjectsLocationsUnitKindsRequest,
@@ -4240,10 +5407,16 @@ export const listProjectsLocationsUnitKinds: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsUnitOperationsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsUnitOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieve a collection of unit operations. */
 export const listProjectsLocationsUnitOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsUnitOperationsRequest,
@@ -4256,7 +5429,10 @@ export const listProjectsLocationsUnitOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListProjectsLocationsUnitsError = NotFound | Forbidden | GcpOpError;
@@ -4272,10 +5448,18 @@ export const listProjectsLocationsUnits: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type PatchProjectsLocationsFlagAttributesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsFlagAttributesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update a single flag attribute. */
 export const patchProjectsLocationsFlagAttributes: API.OperationMethod<
   PatchProjectsLocationsFlagAttributesRequest,
@@ -4290,7 +5474,12 @@ export const patchProjectsLocationsFlagAttributes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsFlagReleasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsFlagReleasesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update a single flag release. */
 export const patchProjectsLocationsFlagReleases: API.OperationMethod<
   PatchProjectsLocationsFlagReleasesRequest,
@@ -4305,7 +5494,12 @@ export const patchProjectsLocationsFlagReleases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsFlagRevisionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsFlagRevisionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update a single flag revision. */
 export const patchProjectsLocationsFlagRevisions: API.OperationMethod<
   PatchProjectsLocationsFlagRevisionsRequest,
@@ -4320,7 +5514,12 @@ export const patchProjectsLocationsFlagRevisions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsFlagsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsFlagsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update a single flag. */
 export const patchProjectsLocationsFlags: API.OperationMethod<
   PatchProjectsLocationsFlagsRequest,
@@ -4335,7 +5534,12 @@ export const patchProjectsLocationsFlags: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsReleasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsReleasesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update a single release. */
 export const patchProjectsLocationsReleases: API.OperationMethod<
   PatchProjectsLocationsReleasesRequest,
@@ -4350,7 +5554,12 @@ export const patchProjectsLocationsReleases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsRolloutKindsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsRolloutKindsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update a single rollout kind. */
 export const patchProjectsLocationsRolloutKinds: API.OperationMethod<
   PatchProjectsLocationsRolloutKindsRequest,
@@ -4365,7 +5574,12 @@ export const patchProjectsLocationsRolloutKinds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsRolloutsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsRolloutsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update a single rollout. */
 export const patchProjectsLocationsRollouts: API.OperationMethod<
   PatchProjectsLocationsRolloutsRequest,
@@ -4380,7 +5594,12 @@ export const patchProjectsLocationsRollouts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsSaasError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsSaasError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update a single saas. */
 export const patchProjectsLocationsSaas: API.OperationMethod<
   PatchProjectsLocationsSaasRequest,
@@ -4395,7 +5614,12 @@ export const patchProjectsLocationsSaas: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsSaasReleasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsSaasReleasesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update a single saas release. */
 export const patchProjectsLocationsSaasReleases: API.OperationMethod<
   PatchProjectsLocationsSaasReleasesRequest,
@@ -4410,7 +5634,12 @@ export const patchProjectsLocationsSaasReleases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsTenantsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsTenantsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update a single tenant. */
 export const patchProjectsLocationsTenants: API.OperationMethod<
   PatchProjectsLocationsTenantsRequest,
@@ -4425,7 +5654,12 @@ export const patchProjectsLocationsTenants: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsUnitGroupOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsUnitGroupOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update a single unit group operation. */
 export const patchProjectsLocationsUnitGroupOperations: API.OperationMethod<
   PatchProjectsLocationsUnitGroupOperationsRequest,
@@ -4440,7 +5674,12 @@ export const patchProjectsLocationsUnitGroupOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsUnitGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsUnitGroupsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update a single unit group. */
 export const patchProjectsLocationsUnitGroups: API.OperationMethod<
   PatchProjectsLocationsUnitGroupsRequest,
@@ -4455,7 +5694,12 @@ export const patchProjectsLocationsUnitGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsUnitKindsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsUnitKindsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update a single unit kind. */
 export const patchProjectsLocationsUnitKinds: API.OperationMethod<
   PatchProjectsLocationsUnitKindsRequest,
@@ -4470,7 +5714,12 @@ export const patchProjectsLocationsUnitKinds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsUnitOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsUnitOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update a single unit operation. */
 export const patchProjectsLocationsUnitOperations: API.OperationMethod<
   PatchProjectsLocationsUnitOperationsRequest,
@@ -4485,7 +5734,12 @@ export const patchProjectsLocationsUnitOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsUnitsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsUnitsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update a single unit. */
 export const patchProjectsLocationsUnits: API.OperationMethod<
   PatchProjectsLocationsUnitsRequest,
@@ -4499,4 +5753,3 @@ export const patchProjectsLocationsUnits: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

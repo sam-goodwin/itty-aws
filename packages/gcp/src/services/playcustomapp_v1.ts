@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 /** Represents an organization that can access a custom app. */
@@ -68,14 +68,16 @@ export interface Organization {
   organizationName?: string;
 }
 export const Organization = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "organizationId": S.optional(S.String),
-  "organizationName": S.optional(S.String),
-}),
+  S.Struct({
+    organizationId: S.optional(S.String),
+    organizationName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Organization" }) as any as S.Schema<Organization>;
 
 export type OrganizationList = ReadonlyArray<Organization>;
-export const OrganizationList = /*@__PURE__*/ S.Array(Organization) as any as S.Schema<OrganizationList>;
+export const OrganizationList = /*@__PURE__*/ S.Array(
+  Organization,
+) as any as S.Schema<OrganizationList>;
 
 /** This resource represents a custom app. */
 export interface CustomApp {
@@ -89,12 +91,12 @@ export interface CustomApp {
   organizations?: OrganizationList;
 }
 export const CustomApp = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "title": S.optional(S.String),
-  "packageName": S.optional(S.String),
-  "languageCode": S.optional(S.String),
-  "organizations": S.optional(OrganizationList),
-}),
+  S.Struct({
+    title: S.optional(S.String),
+    packageName: S.optional(S.String),
+    languageCode: S.optional(S.String),
+    organizations: S.optional(OrganizationList),
+  }),
 ).annotate({ identifier: "CustomApp" }) as any as S.Schema<CustomApp>;
 
 export interface CreateAccountsCustomAppsRequest {
@@ -104,13 +106,26 @@ export interface CreateAccountsCustomAppsRequest {
   body?: CustomApp;
 }
 export const CreateAccountsCustomAppsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "account": S.String.pipe(T.Label()),
-  "body": S.optional(CustomApp.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"playcustomapp/v1/accounts/{account}/customApps","baseUrl":"https://playcustomapp.googleapis.com/"})),
-).annotate({ identifier: "CreateAccountsCustomAppsRequest" }) as any as S.Schema<CreateAccountsCustomAppsRequest>;
+  S.Struct({
+    account: S.String.pipe(T.Label()),
+    body: S.optional(CustomApp.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "playcustomapp/v1/accounts/{account}/customApps",
+      baseUrl: "https://playcustomapp.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateAccountsCustomAppsRequest",
+}) as any as S.Schema<CreateAccountsCustomAppsRequest>;
 
-export type CreateAccountsCustomAppsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateAccountsCustomAppsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new custom app. */
 export const createAccountsCustomApps: API.OperationMethod<
   CreateAccountsCustomAppsRequest,
@@ -124,4 +139,3 @@ export const createAccountsCustomApps: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

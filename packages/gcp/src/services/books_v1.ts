@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export interface AcceptPromoofferRequest {
@@ -78,23 +78,31 @@ export interface AcceptPromoofferRequest {
   device?: string;
 }
 export const AcceptPromoofferRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "androidId": S.optional(S.String.pipe(T.Query())),
-  "product": S.optional(S.String.pipe(T.Query())),
-  "volumeId": S.optional(S.String.pipe(T.Query())),
-  "offerId": S.optional(S.String.pipe(T.Query())),
-  "manufacturer": S.optional(S.String.pipe(T.Query())),
-  "model": S.optional(S.String.pipe(T.Query())),
-  "serial": S.optional(S.String.pipe(T.Query())),
-  "device": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"POST","uri":"books/v1/promooffer/accept","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "AcceptPromoofferRequest" }) as any as S.Schema<AcceptPromoofferRequest>;
+  S.Struct({
+    androidId: S.optional(S.String.pipe(T.Query())),
+    product: S.optional(S.String.pipe(T.Query())),
+    volumeId: S.optional(S.String.pipe(T.Query())),
+    offerId: S.optional(S.String.pipe(T.Query())),
+    manufacturer: S.optional(S.String.pipe(T.Query())),
+    model: S.optional(S.String.pipe(T.Query())),
+    serial: S.optional(S.String.pipe(T.Query())),
+    device: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "books/v1/promooffer/accept",
+      baseUrl: "https://books.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "AcceptPromoofferRequest",
+}) as any as S.Schema<AcceptPromoofferRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 export interface AddBookCloudloadingRequest {
   /** A drive document id. The upload_client_token must not be set. */
@@ -107,13 +115,21 @@ export interface AddBookCloudloadingRequest {
   upload_client_token?: string;
 }
 export const AddBookCloudloadingRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "drive_document_id": S.optional(S.String.pipe(T.Query())),
-  "mime_type": S.optional(S.String.pipe(T.Query())),
-  "name": S.optional(S.String.pipe(T.Query())),
-  "upload_client_token": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"POST","uri":"books/v1/cloudloading/addBook","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "AddBookCloudloadingRequest" }) as any as S.Schema<AddBookCloudloadingRequest>;
+  S.Struct({
+    drive_document_id: S.optional(S.String.pipe(T.Query())),
+    mime_type: S.optional(S.String.pipe(T.Query())),
+    name: S.optional(S.String.pipe(T.Query())),
+    upload_client_token: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "books/v1/cloudloading/addBook",
+      baseUrl: "https://books.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "AddBookCloudloadingRequest",
+}) as any as S.Schema<AddBookCloudloadingRequest>;
 
 export interface BooksCloudloadingResource {
   title?: string;
@@ -122,15 +138,21 @@ export interface BooksCloudloadingResource {
   processingState?: string;
 }
 export const BooksCloudloadingResource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "title": S.optional(S.String),
-  "author": S.optional(S.String),
-  "volumeId": S.optional(S.String),
-  "processingState": S.optional(S.String),
-}),
-).annotate({ identifier: "BooksCloudloadingResource" }) as any as S.Schema<BooksCloudloadingResource>;
+  S.Struct({
+    title: S.optional(S.String),
+    author: S.optional(S.String),
+    volumeId: S.optional(S.String),
+    processingState: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BooksCloudloadingResource",
+}) as any as S.Schema<BooksCloudloadingResource>;
 
-export type AddVolumeMylibraryBookshelvesReasonEnum = "REASON_UNDEFINED" | "IOS_PREX" | "IOS_SEARCH" | "ONBOARDING";
+export type AddVolumeMylibraryBookshelvesReasonEnum =
+  | "REASON_UNDEFINED"
+  | "IOS_PREX"
+  | "IOS_SEARCH"
+  | "ONBOARDING";
 export const AddVolumeMylibraryBookshelvesReasonEnum = /*@__PURE__*/ S.String;
 
 export interface AddVolumeMylibraryBookshelvesRequest {
@@ -143,14 +165,25 @@ export interface AddVolumeMylibraryBookshelvesRequest {
   /** String to identify the originator of this request. */
   source?: string;
 }
-export const AddVolumeMylibraryBookshelvesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "shelf": S.String.pipe(T.Label()),
-  "reason": S.optional(AddVolumeMylibraryBookshelvesReasonEnum.pipe(T.Query())),
-  "volumeId": S.String.pipe(T.Query()),
-  "source": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"POST","uri":"books/v1/mylibrary/bookshelves/{shelf}/addVolume","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "AddVolumeMylibraryBookshelvesRequest" }) as any as S.Schema<AddVolumeMylibraryBookshelvesRequest>;
+export const AddVolumeMylibraryBookshelvesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      shelf: S.String.pipe(T.Label()),
+      reason: S.optional(
+        AddVolumeMylibraryBookshelvesReasonEnum.pipe(T.Query()),
+      ),
+      volumeId: S.String.pipe(T.Query()),
+      source: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "books/v1/mylibrary/bookshelves/{shelf}/addVolume",
+        baseUrl: "https://books.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "AddVolumeMylibraryBookshelvesRequest",
+}) as any as S.Schema<AddVolumeMylibraryBookshelvesRequest>;
 
 export interface ClearVolumesMylibraryBookshelvesRequest {
   /** String to identify the originator of this request. */
@@ -158,22 +191,39 @@ export interface ClearVolumesMylibraryBookshelvesRequest {
   /** ID of bookshelf from which to remove a volume. */
   shelf: string;
 }
-export const ClearVolumesMylibraryBookshelvesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "source": S.optional(S.String.pipe(T.Query())),
-  "shelf": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"POST","uri":"books/v1/mylibrary/bookshelves/{shelf}/clearVolumes","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "ClearVolumesMylibraryBookshelvesRequest" }) as any as S.Schema<ClearVolumesMylibraryBookshelvesRequest>;
+export const ClearVolumesMylibraryBookshelvesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      source: S.optional(S.String.pipe(T.Query())),
+      shelf: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "books/v1/mylibrary/bookshelves/{shelf}/clearVolumes",
+        baseUrl: "https://books.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ClearVolumesMylibraryBookshelvesRequest",
+}) as any as S.Schema<ClearVolumesMylibraryBookshelvesRequest>;
 
 export interface DeleteBookCloudloadingRequest {
   /** The id of the book to be removed. */
   volumeId: string;
 }
 export const DeleteBookCloudloadingRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "volumeId": S.String.pipe(T.Query()),
-}).pipe(T.Http({"method":"POST","uri":"books/v1/cloudloading/deleteBook","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "DeleteBookCloudloadingRequest" }) as any as S.Schema<DeleteBookCloudloadingRequest>;
+  S.Struct({
+    volumeId: S.String.pipe(T.Query()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "books/v1/cloudloading/deleteBook",
+      baseUrl: "https://books.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteBookCloudloadingRequest",
+}) as any as S.Schema<DeleteBookCloudloadingRequest>;
 
 export interface DeleteMylibraryAnnotationsRequest {
   /** The ID for the annotation to delete. */
@@ -182,11 +232,19 @@ export interface DeleteMylibraryAnnotationsRequest {
   source?: string;
 }
 export const DeleteMylibraryAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "annotationId": S.String.pipe(T.Label()),
-  "source": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"books/v1/mylibrary/annotations/{annotationId}","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "DeleteMylibraryAnnotationsRequest" }) as any as S.Schema<DeleteMylibraryAnnotationsRequest>;
+  S.Struct({
+    annotationId: S.String.pipe(T.Label()),
+    source: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "books/v1/mylibrary/annotations/{annotationId}",
+      baseUrl: "https://books.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteMylibraryAnnotationsRequest",
+}) as any as S.Schema<DeleteMylibraryAnnotationsRequest>;
 
 export interface DismissPromoofferRequest {
   /** device manufacturer */
@@ -205,16 +263,24 @@ export interface DismissPromoofferRequest {
   product?: string;
 }
 export const DismissPromoofferRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "manufacturer": S.optional(S.String.pipe(T.Query())),
-  "offerId": S.optional(S.String.pipe(T.Query())),
-  "device": S.optional(S.String.pipe(T.Query())),
-  "model": S.optional(S.String.pipe(T.Query())),
-  "serial": S.optional(S.String.pipe(T.Query())),
-  "androidId": S.optional(S.String.pipe(T.Query())),
-  "product": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"POST","uri":"books/v1/promooffer/dismiss","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "DismissPromoofferRequest" }) as any as S.Schema<DismissPromoofferRequest>;
+  S.Struct({
+    manufacturer: S.optional(S.String.pipe(T.Query())),
+    offerId: S.optional(S.String.pipe(T.Query())),
+    device: S.optional(S.String.pipe(T.Query())),
+    model: S.optional(S.String.pipe(T.Query())),
+    serial: S.optional(S.String.pipe(T.Query())),
+    androidId: S.optional(S.String.pipe(T.Query())),
+    product: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "books/v1/promooffer/dismiss",
+      baseUrl: "https://books.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DismissPromoofferRequest",
+}) as any as S.Schema<DismissPromoofferRequest>;
 
 export interface GetBookshelvesRequest {
   /** ID of bookshelf to retrieve. */
@@ -225,12 +291,20 @@ export interface GetBookshelvesRequest {
   source?: string;
 }
 export const GetBookshelvesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "shelf": S.String.pipe(T.Label()),
-  "userId": S.String.pipe(T.Label()),
-  "source": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"books/v1/users/{userId}/bookshelves/{shelf}","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "GetBookshelvesRequest" }) as any as S.Schema<GetBookshelvesRequest>;
+  S.Struct({
+    shelf: S.String.pipe(T.Label()),
+    userId: S.String.pipe(T.Label()),
+    source: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "books/v1/users/{userId}/bookshelves/{shelf}",
+      baseUrl: "https://books.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetBookshelvesRequest",
+}) as any as S.Schema<GetBookshelvesRequest>;
 
 export interface Bookshelf {
   /** Created time for this bookshelf (formatted UTC timestamp with millisecond resolution). */
@@ -255,18 +329,18 @@ export interface Bookshelf {
   access?: string;
 }
 export const Bookshelf = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "created": S.optional(S.String),
-  "updated": S.optional(S.String),
-  "title": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "volumesLastUpdated": S.optional(S.String),
-  "selfLink": S.optional(S.String),
-  "description": S.optional(S.String),
-  "volumeCount": S.optional(S.Number),
-  "id": S.optional(S.Number),
-  "access": S.optional(S.String),
-}),
+  S.Struct({
+    created: S.optional(S.String),
+    updated: S.optional(S.String),
+    title: S.optional(S.String),
+    kind: S.optional(S.String),
+    volumesLastUpdated: S.optional(S.String),
+    selfLink: S.optional(S.String),
+    description: S.optional(S.String),
+    volumeCount: S.optional(S.Number),
+    id: S.optional(S.Number),
+    access: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Bookshelf" }) as any as S.Schema<Bookshelf>;
 
 export interface GetFamilyInfoFamilysharingRequest {
@@ -274,10 +348,18 @@ export interface GetFamilyInfoFamilysharingRequest {
   source?: string;
 }
 export const GetFamilyInfoFamilysharingRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "source": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"books/v1/familysharing/getFamilyInfo","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "GetFamilyInfoFamilysharingRequest" }) as any as S.Schema<GetFamilyInfoFamilysharingRequest>;
+  S.Struct({
+    source: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "books/v1/familysharing/getFamilyInfo",
+      baseUrl: "https://books.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetFamilyInfoFamilysharingRequest",
+}) as any as S.Schema<GetFamilyInfoFamilysharingRequest>;
 
 export interface FamilyInfoMembership {
   /** The age group of the user. */
@@ -291,14 +373,16 @@ export interface FamilyInfoMembership {
   role?: string;
 }
 export const FamilyInfoMembership = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "ageGroup": S.optional(S.String),
-  "isInFamily": S.optional(S.Boolean),
-  "acquirePermission": S.optional(S.String),
-  "allowedMaturityRating": S.optional(S.String),
-  "role": S.optional(S.String),
-}),
-).annotate({ identifier: "FamilyInfoMembership" }) as any as S.Schema<FamilyInfoMembership>;
+  S.Struct({
+    ageGroup: S.optional(S.String),
+    isInFamily: S.optional(S.Boolean),
+    acquirePermission: S.optional(S.String),
+    allowedMaturityRating: S.optional(S.String),
+    role: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "FamilyInfoMembership",
+}) as any as S.Schema<FamilyInfoMembership>;
 
 export interface FamilyInfo {
   /** Resource type. */
@@ -307,10 +391,10 @@ export interface FamilyInfo {
   membership?: FamilyInfoMembership;
 }
 export const FamilyInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "membership": S.optional(FamilyInfoMembership),
-}),
+  S.Struct({
+    kind: S.optional(S.String),
+    membership: S.optional(FamilyInfoMembership),
+  }),
 ).annotate({ identifier: "FamilyInfo" }) as any as S.Schema<FamilyInfo>;
 
 export interface GetLayersRequest {
@@ -324,16 +408,26 @@ export interface GetLayersRequest {
   contentVersion?: string;
 }
 export const GetLayersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "source": S.optional(S.String.pipe(T.Query())),
-  "volumeId": S.String.pipe(T.Label()),
-  "summaryId": S.String.pipe(T.Label()),
-  "contentVersion": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"books/v1/volumes/{volumeId}/layersummary/{summaryId}","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "GetLayersRequest" }) as any as S.Schema<GetLayersRequest>;
+  S.Struct({
+    source: S.optional(S.String.pipe(T.Query())),
+    volumeId: S.String.pipe(T.Label()),
+    summaryId: S.String.pipe(T.Label()),
+    contentVersion: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "books/v1/volumes/{volumeId}/layersummary/{summaryId}",
+      baseUrl: "https://books.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetLayersRequest",
+}) as any as S.Schema<GetLayersRequest>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 export interface Layersummary {
   /** The link to get the annotations for this layer. */
@@ -364,21 +458,21 @@ export interface Layersummary {
   volumeAnnotationsVersion?: string;
 }
 export const Layersummary = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "annotationsLink": S.optional(S.String),
-  "volumeId": S.optional(S.String),
-  "annotationsDataLink": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "selfLink": S.optional(S.String),
-  "updated": S.optional(S.String),
-  "annotationCount": S.optional(S.Number),
-  "annotationTypes": S.optional(StringList),
-  "id": S.optional(S.String),
-  "layerId": S.optional(S.String),
-  "contentVersion": S.optional(S.String),
-  "dataCount": S.optional(S.Number),
-  "volumeAnnotationsVersion": S.optional(S.String),
-}),
+  S.Struct({
+    annotationsLink: S.optional(S.String),
+    volumeId: S.optional(S.String),
+    annotationsDataLink: S.optional(S.String),
+    kind: S.optional(S.String),
+    selfLink: S.optional(S.String),
+    updated: S.optional(S.String),
+    annotationCount: S.optional(S.Number),
+    annotationTypes: S.optional(StringList),
+    id: S.optional(S.String),
+    layerId: S.optional(S.String),
+    contentVersion: S.optional(S.String),
+    dataCount: S.optional(S.Number),
+    volumeAnnotationsVersion: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Layersummary" }) as any as S.Schema<Layersummary>;
 
 export interface GetLayersAnnotationDataRequest {
@@ -404,129 +498,186 @@ export interface GetLayersAnnotationDataRequest {
   w?: number;
 }
 export const GetLayersAnnotationDataRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "layerId": S.String.pipe(T.Label()),
-  "allowWebDefinitions": S.optional(S.Boolean.pipe(T.Query())),
-  "scale": S.optional(S.Number.pipe(T.Query())),
-  "volumeId": S.String.pipe(T.Label()),
-  "annotationDataId": S.String.pipe(T.Label()),
-  "locale": S.optional(S.String.pipe(T.Query())),
-  "source": S.optional(S.String.pipe(T.Query())),
-  "contentVersion": S.String.pipe(T.Query()),
-  "h": S.optional(S.Number.pipe(T.Query())),
-  "w": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"books/v1/volumes/{volumeId}/layers/{layerId}/data/{annotationDataId}","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "GetLayersAnnotationDataRequest" }) as any as S.Schema<GetLayersAnnotationDataRequest>;
+  S.Struct({
+    layerId: S.String.pipe(T.Label()),
+    allowWebDefinitions: S.optional(S.Boolean.pipe(T.Query())),
+    scale: S.optional(S.Number.pipe(T.Query())),
+    volumeId: S.String.pipe(T.Label()),
+    annotationDataId: S.String.pipe(T.Label()),
+    locale: S.optional(S.String.pipe(T.Query())),
+    source: S.optional(S.String.pipe(T.Query())),
+    contentVersion: S.String.pipe(T.Query()),
+    h: S.optional(S.Number.pipe(T.Query())),
+    w: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "books/v1/volumes/{volumeId}/layers/{layerId}/data/{annotationDataId}",
+      baseUrl: "https://books.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetLayersAnnotationDataRequest",
+}) as any as S.Schema<GetLayersAnnotationDataRequest>;
 
 export interface DictlayerdataCommon {
   /** The display title and localized canonical name to use when searching for this entity on Google search. */
   title?: string;
 }
 export const DictlayerdataCommon = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "title": S.optional(S.String),
-}),
-).annotate({ identifier: "DictlayerdataCommon" }) as any as S.Schema<DictlayerdataCommon>;
+  S.Struct({
+    title: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DictlayerdataCommon",
+}) as any as S.Schema<DictlayerdataCommon>;
 
 export interface DictlayerdataDictSource {
   url?: string;
   attribution?: string;
 }
 export const DictlayerdataDictSource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "url": S.optional(S.String),
-  "attribution": S.optional(S.String),
-}),
-).annotate({ identifier: "DictlayerdataDictSource" }) as any as S.Schema<DictlayerdataDictSource>;
+  S.Struct({
+    url: S.optional(S.String),
+    attribution: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DictlayerdataDictSource",
+}) as any as S.Schema<DictlayerdataDictSource>;
 
 export interface DictlayerdataDictWordsItemSensesItemSynonymsItemSource {
   url?: string;
   attribution?: string;
 }
-export const DictlayerdataDictWordsItemSensesItemSynonymsItemSource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "url": S.optional(S.String),
-  "attribution": S.optional(S.String),
-}),
-).annotate({ identifier: "DictlayerdataDictWordsItemSensesItemSynonymsItemSource" }) as any as S.Schema<DictlayerdataDictWordsItemSensesItemSynonymsItemSource>;
+export const DictlayerdataDictWordsItemSensesItemSynonymsItemSource =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      url: S.optional(S.String),
+      attribution: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DictlayerdataDictWordsItemSensesItemSynonymsItemSource",
+  }) as any as S.Schema<DictlayerdataDictWordsItemSensesItemSynonymsItemSource>;
 
 export interface DictlayerdataDictWordsItemSensesItemSynonymsItem {
   text?: string;
   source?: DictlayerdataDictWordsItemSensesItemSynonymsItemSource;
 }
-export const DictlayerdataDictWordsItemSensesItemSynonymsItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "text": S.optional(S.String),
-  "source": S.optional(DictlayerdataDictWordsItemSensesItemSynonymsItemSource),
-}),
-).annotate({ identifier: "DictlayerdataDictWordsItemSensesItemSynonymsItem" }) as any as S.Schema<DictlayerdataDictWordsItemSensesItemSynonymsItem>;
+export const DictlayerdataDictWordsItemSensesItemSynonymsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      text: S.optional(S.String),
+      source: S.optional(
+        DictlayerdataDictWordsItemSensesItemSynonymsItemSource,
+      ),
+    }),
+  ).annotate({
+    identifier: "DictlayerdataDictWordsItemSensesItemSynonymsItem",
+  }) as any as S.Schema<DictlayerdataDictWordsItemSensesItemSynonymsItem>;
 
-export type DictlayerdataDictWordsItemSensesItemSynonymsItemList = ReadonlyArray<DictlayerdataDictWordsItemSensesItemSynonymsItem>;
-export const DictlayerdataDictWordsItemSensesItemSynonymsItemList = /*@__PURE__*/ S.Array(DictlayerdataDictWordsItemSensesItemSynonymsItem) as any as S.Schema<DictlayerdataDictWordsItemSensesItemSynonymsItemList>;
+export type DictlayerdataDictWordsItemSensesItemSynonymsItemList =
+  ReadonlyArray<DictlayerdataDictWordsItemSensesItemSynonymsItem>;
+export const DictlayerdataDictWordsItemSensesItemSynonymsItemList =
+  /*@__PURE__*/ S.Array(
+    DictlayerdataDictWordsItemSensesItemSynonymsItem,
+  ) as any as S.Schema<DictlayerdataDictWordsItemSensesItemSynonymsItemList>;
 
 export interface DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItemSource {
   url?: string;
   attribution?: string;
 }
-export const DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItemSource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "url": S.optional(S.String),
-  "attribution": S.optional(S.String),
-}),
-).annotate({ identifier: "DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItemSource" }) as any as S.Schema<DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItemSource>;
+export const DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItemSource =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      url: S.optional(S.String),
+      attribution: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItemSource",
+  }) as any as S.Schema<DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItemSource>;
 
 export interface DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItem {
   text?: string;
   source?: DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItemSource;
 }
-export const DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "text": S.optional(S.String),
-  "source": S.optional(DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItemSource),
-}),
-).annotate({ identifier: "DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItem" }) as any as S.Schema<DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItem>;
+export const DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      text: S.optional(S.String),
+      source: S.optional(
+        DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItemSource,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItem",
+  }) as any as S.Schema<DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItem>;
 
-export type DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItemList = ReadonlyArray<DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItem>;
-export const DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItemList = /*@__PURE__*/ S.Array(DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItem) as any as S.Schema<DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItemList>;
+export type DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItemList =
+  ReadonlyArray<DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItem>;
+export const DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItemList =
+  /*@__PURE__*/ S.Array(
+    DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItem,
+  ) as any as S.Schema<DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItemList>;
 
 export interface DictlayerdataDictWordsItemSensesItemDefinitionsItem {
   definition?: string;
   examples?: DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItemList;
 }
-export const DictlayerdataDictWordsItemSensesItemDefinitionsItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "definition": S.optional(S.String),
-  "examples": S.optional(DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItemList),
-}),
-).annotate({ identifier: "DictlayerdataDictWordsItemSensesItemDefinitionsItem" }) as any as S.Schema<DictlayerdataDictWordsItemSensesItemDefinitionsItem>;
+export const DictlayerdataDictWordsItemSensesItemDefinitionsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      definition: S.optional(S.String),
+      examples: S.optional(
+        DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItemList,
+      ),
+    }),
+  ).annotate({
+    identifier: "DictlayerdataDictWordsItemSensesItemDefinitionsItem",
+  }) as any as S.Schema<DictlayerdataDictWordsItemSensesItemDefinitionsItem>;
 
-export type DictlayerdataDictWordsItemSensesItemDefinitionsItemList = ReadonlyArray<DictlayerdataDictWordsItemSensesItemDefinitionsItem>;
-export const DictlayerdataDictWordsItemSensesItemDefinitionsItemList = /*@__PURE__*/ S.Array(DictlayerdataDictWordsItemSensesItemDefinitionsItem) as any as S.Schema<DictlayerdataDictWordsItemSensesItemDefinitionsItemList>;
+export type DictlayerdataDictWordsItemSensesItemDefinitionsItemList =
+  ReadonlyArray<DictlayerdataDictWordsItemSensesItemDefinitionsItem>;
+export const DictlayerdataDictWordsItemSensesItemDefinitionsItemList =
+  /*@__PURE__*/ S.Array(
+    DictlayerdataDictWordsItemSensesItemDefinitionsItem,
+  ) as any as S.Schema<DictlayerdataDictWordsItemSensesItemDefinitionsItemList>;
 
 export interface DictlayerdataDictWordsItemSensesItemSource {
   url?: string;
   attribution?: string;
 }
-export const DictlayerdataDictWordsItemSensesItemSource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "url": S.optional(S.String),
-  "attribution": S.optional(S.String),
-}),
-).annotate({ identifier: "DictlayerdataDictWordsItemSensesItemSource" }) as any as S.Schema<DictlayerdataDictWordsItemSensesItemSource>;
+export const DictlayerdataDictWordsItemSensesItemSource =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      url: S.optional(S.String),
+      attribution: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DictlayerdataDictWordsItemSensesItemSource",
+  }) as any as S.Schema<DictlayerdataDictWordsItemSensesItemSource>;
 
 export interface DictlayerdataDictWordsItemSensesItemConjugationsItem {
   value?: string;
   type?: string;
 }
-export const DictlayerdataDictWordsItemSensesItemConjugationsItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "value": S.optional(S.String),
-  "type": S.optional(S.String),
-}),
-).annotate({ identifier: "DictlayerdataDictWordsItemSensesItemConjugationsItem" }) as any as S.Schema<DictlayerdataDictWordsItemSensesItemConjugationsItem>;
+export const DictlayerdataDictWordsItemSensesItemConjugationsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      value: S.optional(S.String),
+      type: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DictlayerdataDictWordsItemSensesItemConjugationsItem",
+  }) as any as S.Schema<DictlayerdataDictWordsItemSensesItemConjugationsItem>;
 
-export type DictlayerdataDictWordsItemSensesItemConjugationsItemList = ReadonlyArray<DictlayerdataDictWordsItemSensesItemConjugationsItem>;
-export const DictlayerdataDictWordsItemSensesItemConjugationsItemList = /*@__PURE__*/ S.Array(DictlayerdataDictWordsItemSensesItemConjugationsItem) as any as S.Schema<DictlayerdataDictWordsItemSensesItemConjugationsItemList>;
+export type DictlayerdataDictWordsItemSensesItemConjugationsItemList =
+  ReadonlyArray<DictlayerdataDictWordsItemSensesItemConjugationsItem>;
+export const DictlayerdataDictWordsItemSensesItemConjugationsItemList =
+  /*@__PURE__*/ S.Array(
+    DictlayerdataDictWordsItemSensesItemConjugationsItem,
+  ) as any as S.Schema<DictlayerdataDictWordsItemSensesItemConjugationsItemList>;
 
 export interface DictlayerdataDictWordsItemSensesItem {
   syllabification?: string;
@@ -538,82 +689,115 @@ export interface DictlayerdataDictWordsItemSensesItem {
   conjugations?: DictlayerdataDictWordsItemSensesItemConjugationsItemList;
   partOfSpeech?: string;
 }
-export const DictlayerdataDictWordsItemSensesItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "syllabification": S.optional(S.String),
-  "pronunciation": S.optional(S.String),
-  "synonyms": S.optional(DictlayerdataDictWordsItemSensesItemSynonymsItemList),
-  "pronunciationUrl": S.optional(S.String),
-  "definitions": S.optional(DictlayerdataDictWordsItemSensesItemDefinitionsItemList),
-  "source": S.optional(DictlayerdataDictWordsItemSensesItemSource),
-  "conjugations": S.optional(DictlayerdataDictWordsItemSensesItemConjugationsItemList),
-  "partOfSpeech": S.optional(S.String),
-}),
-).annotate({ identifier: "DictlayerdataDictWordsItemSensesItem" }) as any as S.Schema<DictlayerdataDictWordsItemSensesItem>;
+export const DictlayerdataDictWordsItemSensesItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      syllabification: S.optional(S.String),
+      pronunciation: S.optional(S.String),
+      synonyms: S.optional(
+        DictlayerdataDictWordsItemSensesItemSynonymsItemList,
+      ),
+      pronunciationUrl: S.optional(S.String),
+      definitions: S.optional(
+        DictlayerdataDictWordsItemSensesItemDefinitionsItemList,
+      ),
+      source: S.optional(DictlayerdataDictWordsItemSensesItemSource),
+      conjugations: S.optional(
+        DictlayerdataDictWordsItemSensesItemConjugationsItemList,
+      ),
+      partOfSpeech: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "DictlayerdataDictWordsItemSensesItem",
+}) as any as S.Schema<DictlayerdataDictWordsItemSensesItem>;
 
-export type DictlayerdataDictWordsItemSensesItemList = ReadonlyArray<DictlayerdataDictWordsItemSensesItem>;
-export const DictlayerdataDictWordsItemSensesItemList = /*@__PURE__*/ S.Array(DictlayerdataDictWordsItemSensesItem) as any as S.Schema<DictlayerdataDictWordsItemSensesItemList>;
+export type DictlayerdataDictWordsItemSensesItemList =
+  ReadonlyArray<DictlayerdataDictWordsItemSensesItem>;
+export const DictlayerdataDictWordsItemSensesItemList = /*@__PURE__*/ S.Array(
+  DictlayerdataDictWordsItemSensesItem,
+) as any as S.Schema<DictlayerdataDictWordsItemSensesItemList>;
 
 export interface DictlayerdataDictWordsItemExamplesItemSource {
   url?: string;
   attribution?: string;
 }
-export const DictlayerdataDictWordsItemExamplesItemSource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "url": S.optional(S.String),
-  "attribution": S.optional(S.String),
-}),
-).annotate({ identifier: "DictlayerdataDictWordsItemExamplesItemSource" }) as any as S.Schema<DictlayerdataDictWordsItemExamplesItemSource>;
+export const DictlayerdataDictWordsItemExamplesItemSource =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      url: S.optional(S.String),
+      attribution: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DictlayerdataDictWordsItemExamplesItemSource",
+  }) as any as S.Schema<DictlayerdataDictWordsItemExamplesItemSource>;
 
 export interface DictlayerdataDictWordsItemExamplesItem {
   text?: string;
   source?: DictlayerdataDictWordsItemExamplesItemSource;
 }
-export const DictlayerdataDictWordsItemExamplesItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "text": S.optional(S.String),
-  "source": S.optional(DictlayerdataDictWordsItemExamplesItemSource),
-}),
-).annotate({ identifier: "DictlayerdataDictWordsItemExamplesItem" }) as any as S.Schema<DictlayerdataDictWordsItemExamplesItem>;
+export const DictlayerdataDictWordsItemExamplesItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      text: S.optional(S.String),
+      source: S.optional(DictlayerdataDictWordsItemExamplesItemSource),
+    }),
+).annotate({
+  identifier: "DictlayerdataDictWordsItemExamplesItem",
+}) as any as S.Schema<DictlayerdataDictWordsItemExamplesItem>;
 
-export type DictlayerdataDictWordsItemExamplesItemList = ReadonlyArray<DictlayerdataDictWordsItemExamplesItem>;
-export const DictlayerdataDictWordsItemExamplesItemList = /*@__PURE__*/ S.Array(DictlayerdataDictWordsItemExamplesItem) as any as S.Schema<DictlayerdataDictWordsItemExamplesItemList>;
+export type DictlayerdataDictWordsItemExamplesItemList =
+  ReadonlyArray<DictlayerdataDictWordsItemExamplesItem>;
+export const DictlayerdataDictWordsItemExamplesItemList = /*@__PURE__*/ S.Array(
+  DictlayerdataDictWordsItemExamplesItem,
+) as any as S.Schema<DictlayerdataDictWordsItemExamplesItemList>;
 
 export interface DictlayerdataDictWordsItemSource {
   url?: string;
   attribution?: string;
 }
 export const DictlayerdataDictWordsItemSource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "url": S.optional(S.String),
-  "attribution": S.optional(S.String),
-}),
-).annotate({ identifier: "DictlayerdataDictWordsItemSource" }) as any as S.Schema<DictlayerdataDictWordsItemSource>;
+  S.Struct({
+    url: S.optional(S.String),
+    attribution: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DictlayerdataDictWordsItemSource",
+}) as any as S.Schema<DictlayerdataDictWordsItemSource>;
 
 export interface DictlayerdataDictWordsItemDerivativesItemSource {
   url?: string;
   attribution?: string;
 }
-export const DictlayerdataDictWordsItemDerivativesItemSource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "url": S.optional(S.String),
-  "attribution": S.optional(S.String),
-}),
-).annotate({ identifier: "DictlayerdataDictWordsItemDerivativesItemSource" }) as any as S.Schema<DictlayerdataDictWordsItemDerivativesItemSource>;
+export const DictlayerdataDictWordsItemDerivativesItemSource =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      url: S.optional(S.String),
+      attribution: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DictlayerdataDictWordsItemDerivativesItemSource",
+  }) as any as S.Schema<DictlayerdataDictWordsItemDerivativesItemSource>;
 
 export interface DictlayerdataDictWordsItemDerivativesItem {
   text?: string;
   source?: DictlayerdataDictWordsItemDerivativesItemSource;
 }
-export const DictlayerdataDictWordsItemDerivativesItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "text": S.optional(S.String),
-  "source": S.optional(DictlayerdataDictWordsItemDerivativesItemSource),
-}),
-).annotate({ identifier: "DictlayerdataDictWordsItemDerivativesItem" }) as any as S.Schema<DictlayerdataDictWordsItemDerivativesItem>;
+export const DictlayerdataDictWordsItemDerivativesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      text: S.optional(S.String),
+      source: S.optional(DictlayerdataDictWordsItemDerivativesItemSource),
+    }),
+  ).annotate({
+    identifier: "DictlayerdataDictWordsItemDerivativesItem",
+  }) as any as S.Schema<DictlayerdataDictWordsItemDerivativesItem>;
 
-export type DictlayerdataDictWordsItemDerivativesItemList = ReadonlyArray<DictlayerdataDictWordsItemDerivativesItem>;
-export const DictlayerdataDictWordsItemDerivativesItemList = /*@__PURE__*/ S.Array(DictlayerdataDictWordsItemDerivativesItem) as any as S.Schema<DictlayerdataDictWordsItemDerivativesItemList>;
+export type DictlayerdataDictWordsItemDerivativesItemList =
+  ReadonlyArray<DictlayerdataDictWordsItemDerivativesItem>;
+export const DictlayerdataDictWordsItemDerivativesItemList =
+  /*@__PURE__*/ S.Array(
+    DictlayerdataDictWordsItemDerivativesItem,
+  ) as any as S.Schema<DictlayerdataDictWordsItemDerivativesItemList>;
 
 export interface DictlayerdataDictWordsItem {
   senses?: DictlayerdataDictWordsItemSensesItemList;
@@ -623,16 +807,21 @@ export interface DictlayerdataDictWordsItem {
   derivatives?: DictlayerdataDictWordsItemDerivativesItemList;
 }
 export const DictlayerdataDictWordsItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "senses": S.optional(DictlayerdataDictWordsItemSensesItemList),
-  "examples": S.optional(DictlayerdataDictWordsItemExamplesItemList),
-  "source": S.optional(DictlayerdataDictWordsItemSource),
-  "derivatives": S.optional(DictlayerdataDictWordsItemDerivativesItemList),
-}),
-).annotate({ identifier: "DictlayerdataDictWordsItem" }) as any as S.Schema<DictlayerdataDictWordsItem>;
+  S.Struct({
+    senses: S.optional(DictlayerdataDictWordsItemSensesItemList),
+    examples: S.optional(DictlayerdataDictWordsItemExamplesItemList),
+    source: S.optional(DictlayerdataDictWordsItemSource),
+    derivatives: S.optional(DictlayerdataDictWordsItemDerivativesItemList),
+  }),
+).annotate({
+  identifier: "DictlayerdataDictWordsItem",
+}) as any as S.Schema<DictlayerdataDictWordsItem>;
 
-export type DictlayerdataDictWordsItemList = ReadonlyArray<DictlayerdataDictWordsItem>;
-export const DictlayerdataDictWordsItemList = /*@__PURE__*/ S.Array(DictlayerdataDictWordsItem) as any as S.Schema<DictlayerdataDictWordsItemList>;
+export type DictlayerdataDictWordsItemList =
+  ReadonlyArray<DictlayerdataDictWordsItem>;
+export const DictlayerdataDictWordsItemList = /*@__PURE__*/ S.Array(
+  DictlayerdataDictWordsItem,
+) as any as S.Schema<DictlayerdataDictWordsItemList>;
 
 export interface DictlayerdataDict {
   /** The source, url and attribution for this dictionary data. */
@@ -640,11 +829,13 @@ export interface DictlayerdataDict {
   words?: DictlayerdataDictWordsItemList;
 }
 export const DictlayerdataDict = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "source": S.optional(DictlayerdataDictSource),
-  "words": S.optional(DictlayerdataDictWordsItemList),
-}),
-).annotate({ identifier: "DictlayerdataDict" }) as any as S.Schema<DictlayerdataDict>;
+  S.Struct({
+    source: S.optional(DictlayerdataDictSource),
+    words: S.optional(DictlayerdataDictWordsItemList),
+  }),
+).annotate({
+  identifier: "DictlayerdataDict",
+}) as any as S.Schema<DictlayerdataDict>;
 
 export interface Dictlayerdata {
   kind?: string;
@@ -652,11 +843,11 @@ export interface Dictlayerdata {
   dict?: DictlayerdataDict;
 }
 export const Dictlayerdata = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "common": S.optional(DictlayerdataCommon),
-  "dict": S.optional(DictlayerdataDict),
-}),
+  S.Struct({
+    kind: S.optional(S.String),
+    common: S.optional(DictlayerdataCommon),
+    dict: S.optional(DictlayerdataDict),
+  }),
 ).annotate({ identifier: "Dictlayerdata" }) as any as S.Schema<Dictlayerdata>;
 
 export interface DictionaryAnnotationdata {
@@ -680,18 +871,20 @@ export interface DictionaryAnnotationdata {
   kind?: string;
 }
 export const DictionaryAnnotationdata = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "encodedData": S.optional(S.String),
-  "data": S.optional(Dictlayerdata),
-  "volumeId": S.optional(S.String),
-  "annotationType": S.optional(S.String),
-  "id": S.optional(S.String),
-  "layerId": S.optional(S.String),
-  "updated": S.optional(S.String),
-  "selfLink": S.optional(S.String),
-  "kind": S.optional(S.String),
-}),
-).annotate({ identifier: "DictionaryAnnotationdata" }) as any as S.Schema<DictionaryAnnotationdata>;
+  S.Struct({
+    encodedData: S.optional(S.String),
+    data: S.optional(Dictlayerdata),
+    volumeId: S.optional(S.String),
+    annotationType: S.optional(S.String),
+    id: S.optional(S.String),
+    layerId: S.optional(S.String),
+    updated: S.optional(S.String),
+    selfLink: S.optional(S.String),
+    kind: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DictionaryAnnotationdata",
+}) as any as S.Schema<DictionaryAnnotationdata>;
 
 export interface GetLayersVolumeAnnotationsRequest {
   /** The volume to retrieve annotations for. */
@@ -706,14 +899,22 @@ export interface GetLayersVolumeAnnotationsRequest {
   annotationId: string;
 }
 export const GetLayersVolumeAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "volumeId": S.String.pipe(T.Label()),
-  "locale": S.optional(S.String.pipe(T.Query())),
-  "source": S.optional(S.String.pipe(T.Query())),
-  "layerId": S.String.pipe(T.Label()),
-  "annotationId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"books/v1/volumes/{volumeId}/layers/{layerId}/annotations/{annotationId}","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "GetLayersVolumeAnnotationsRequest" }) as any as S.Schema<GetLayersVolumeAnnotationsRequest>;
+  S.Struct({
+    volumeId: S.String.pipe(T.Label()),
+    locale: S.optional(S.String.pipe(T.Query())),
+    source: S.optional(S.String.pipe(T.Query())),
+    layerId: S.String.pipe(T.Label()),
+    annotationId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "books/v1/volumes/{volumeId}/layers/{layerId}/annotations/{annotationId}",
+      baseUrl: "https://books.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetLayersVolumeAnnotationsRequest",
+}) as any as S.Schema<GetLayersVolumeAnnotationsRequest>;
 
 export interface BooksAnnotationsRange {
   /** The starting position for the range. */
@@ -726,13 +927,15 @@ export interface BooksAnnotationsRange {
   endPosition?: string;
 }
 export const BooksAnnotationsRange = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "startPosition": S.optional(S.String),
-  "endOffset": S.optional(S.String),
-  "startOffset": S.optional(S.String),
-  "endPosition": S.optional(S.String),
-}),
-).annotate({ identifier: "BooksAnnotationsRange" }) as any as S.Schema<BooksAnnotationsRange>;
+  S.Struct({
+    startPosition: S.optional(S.String),
+    endOffset: S.optional(S.String),
+    startOffset: S.optional(S.String),
+    endPosition: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BooksAnnotationsRange",
+}) as any as S.Schema<BooksAnnotationsRange>;
 
 export interface VolumeannotationContentRanges {
   /** Range in CFI format for this annotation for version above. */
@@ -745,13 +948,15 @@ export interface VolumeannotationContentRanges {
   contentVersion?: string;
 }
 export const VolumeannotationContentRanges = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "cfiRange": S.optional(BooksAnnotationsRange),
-  "gbTextRange": S.optional(BooksAnnotationsRange),
-  "gbImageRange": S.optional(BooksAnnotationsRange),
-  "contentVersion": S.optional(S.String),
-}),
-).annotate({ identifier: "VolumeannotationContentRanges" }) as any as S.Schema<VolumeannotationContentRanges>;
+  S.Struct({
+    cfiRange: S.optional(BooksAnnotationsRange),
+    gbTextRange: S.optional(BooksAnnotationsRange),
+    gbImageRange: S.optional(BooksAnnotationsRange),
+    contentVersion: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VolumeannotationContentRanges",
+}) as any as S.Schema<VolumeannotationContentRanges>;
 
 export interface Volumeannotation {
   /** The type of annotation this is. */
@@ -784,23 +989,25 @@ export interface Volumeannotation {
   pageIds?: StringList;
 }
 export const Volumeannotation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "annotationType": S.optional(S.String),
-  "deleted": S.optional(S.Boolean),
-  "data": S.optional(S.String),
-  "annotationDataId": S.optional(S.String),
-  "volumeId": S.optional(S.String),
-  "selfLink": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "selectedText": S.optional(S.String),
-  "updated": S.optional(S.String),
-  "annotationDataLink": S.optional(S.String),
-  "id": S.optional(S.String),
-  "layerId": S.optional(S.String),
-  "contentRanges": S.optional(VolumeannotationContentRanges),
-  "pageIds": S.optional(StringList),
-}),
-).annotate({ identifier: "Volumeannotation" }) as any as S.Schema<Volumeannotation>;
+  S.Struct({
+    annotationType: S.optional(S.String),
+    deleted: S.optional(S.Boolean),
+    data: S.optional(S.String),
+    annotationDataId: S.optional(S.String),
+    volumeId: S.optional(S.String),
+    selfLink: S.optional(S.String),
+    kind: S.optional(S.String),
+    selectedText: S.optional(S.String),
+    updated: S.optional(S.String),
+    annotationDataLink: S.optional(S.String),
+    id: S.optional(S.String),
+    layerId: S.optional(S.String),
+    contentRanges: S.optional(VolumeannotationContentRanges),
+    pageIds: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "Volumeannotation",
+}) as any as S.Schema<Volumeannotation>;
 
 export interface GetMylibraryBookshelvesRequest {
   /** String to identify the originator of this request. */
@@ -809,11 +1016,19 @@ export interface GetMylibraryBookshelvesRequest {
   shelf: string;
 }
 export const GetMylibraryBookshelvesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "source": S.optional(S.String.pipe(T.Query())),
-  "shelf": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"books/v1/mylibrary/bookshelves/{shelf}","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "GetMylibraryBookshelvesRequest" }) as any as S.Schema<GetMylibraryBookshelvesRequest>;
+  S.Struct({
+    source: S.optional(S.String.pipe(T.Query())),
+    shelf: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "books/v1/mylibrary/bookshelves/{shelf}",
+      baseUrl: "https://books.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetMylibraryBookshelvesRequest",
+}) as any as S.Schema<GetMylibraryBookshelvesRequest>;
 
 export interface GetMylibraryReadingpositionsRequest {
   /** String to identify the originator of this request. */
@@ -824,12 +1039,20 @@ export interface GetMylibraryReadingpositionsRequest {
   contentVersion?: string;
 }
 export const GetMylibraryReadingpositionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "source": S.optional(S.String.pipe(T.Query())),
-  "volumeId": S.String.pipe(T.Label()),
-  "contentVersion": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"books/v1/mylibrary/readingpositions/{volumeId}","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "GetMylibraryReadingpositionsRequest" }) as any as S.Schema<GetMylibraryReadingpositionsRequest>;
+  S.Struct({
+    source: S.optional(S.String.pipe(T.Query())),
+    volumeId: S.String.pipe(T.Label()),
+    contentVersion: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "books/v1/mylibrary/readingpositions/{volumeId}",
+      baseUrl: "https://books.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetMylibraryReadingpositionsRequest",
+}) as any as S.Schema<GetMylibraryReadingpositionsRequest>;
 
 export interface ReadingPosition {
   /** Position in a volume for text-based content. */
@@ -848,16 +1071,18 @@ export interface ReadingPosition {
   pdfPosition?: string;
 }
 export const ReadingPosition = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "gbTextPosition": S.optional(S.String),
-  "epubCfiPosition": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "volumeId": S.optional(S.String),
-  "updated": S.optional(S.String),
-  "gbImagePosition": S.optional(S.String),
-  "pdfPosition": S.optional(S.String),
-}),
-).annotate({ identifier: "ReadingPosition" }) as any as S.Schema<ReadingPosition>;
+  S.Struct({
+    gbTextPosition: S.optional(S.String),
+    epubCfiPosition: S.optional(S.String),
+    kind: S.optional(S.String),
+    volumeId: S.optional(S.String),
+    updated: S.optional(S.String),
+    gbImagePosition: S.optional(S.String),
+    pdfPosition: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ReadingPosition",
+}) as any as S.Schema<ReadingPosition>;
 
 export interface GetNotificationRequest {
   /** String to identify the notification. */
@@ -868,12 +1093,20 @@ export interface GetNotificationRequest {
   source?: string;
 }
 export const GetNotificationRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "notification_id": S.String.pipe(T.Query()),
-  "locale": S.optional(S.String.pipe(T.Query())),
-  "source": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"books/v1/notification/get","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "GetNotificationRequest" }) as any as S.Schema<GetNotificationRequest>;
+  S.Struct({
+    notification_id: S.String.pipe(T.Query()),
+    locale: S.optional(S.String.pipe(T.Query())),
+    source: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "books/v1/notification/get",
+      baseUrl: "https://books.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetNotificationRequest",
+}) as any as S.Schema<GetNotificationRequest>;
 
 export interface Notification {
   /** The list of crm experiment ids. */
@@ -896,28 +1129,32 @@ export interface Notification {
   doc_id?: string;
 }
 export const Notification = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "crmExperimentIds": S.optional(StringList),
-  "notification_type": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "notificationGroup": S.optional(S.String),
-  "timeToExpireMs": S.optional(S.String),
-  "dont_show_notification": S.optional(S.Boolean),
-  "body": S.optional(S.String),
-  "targetUrl": S.optional(S.String),
-  "pcampaign_id": S.optional(S.String),
-  "doc_type": S.optional(S.String),
-  "show_notification_settings_action": S.optional(S.Boolean),
-  "title": S.optional(S.String),
-  "reason": S.optional(S.String),
-  "iconUrl": S.optional(S.String),
-  "is_document_mature": S.optional(S.Boolean),
-  "doc_id": S.optional(S.String),
-}),
+  S.Struct({
+    crmExperimentIds: S.optional(StringList),
+    notification_type: S.optional(S.String),
+    kind: S.optional(S.String),
+    notificationGroup: S.optional(S.String),
+    timeToExpireMs: S.optional(S.String),
+    dont_show_notification: S.optional(S.Boolean),
+    body: S.optional(S.String),
+    targetUrl: S.optional(S.String),
+    pcampaign_id: S.optional(S.String),
+    doc_type: S.optional(S.String),
+    show_notification_settings_action: S.optional(S.Boolean),
+    title: S.optional(S.String),
+    reason: S.optional(S.String),
+    iconUrl: S.optional(S.String),
+    is_document_mature: S.optional(S.Boolean),
+    doc_id: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Notification" }) as any as S.Schema<Notification>;
 
-export type GetPersonalizedstreamMaxAllowedMaturityRatingEnum = "MAX_ALLOWED_MATURITY_RATING_UNDEFINED" | "MATURE" | "not-mature";
-export const GetPersonalizedstreamMaxAllowedMaturityRatingEnum = /*@__PURE__*/ S.String;
+export type GetPersonalizedstreamMaxAllowedMaturityRatingEnum =
+  | "MAX_ALLOWED_MATURITY_RATING_UNDEFINED"
+  | "MATURE"
+  | "not-mature";
+export const GetPersonalizedstreamMaxAllowedMaturityRatingEnum =
+  /*@__PURE__*/ S.String;
 
 export interface GetPersonalizedstreamRequest {
   /** ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for generating recommendations. */
@@ -925,58 +1162,79 @@ export interface GetPersonalizedstreamRequest {
   /** String to identify the originator of this request. */
   source?: string;
   /** The maximum allowed maturity rating of returned recommendations. Books with a higher maturity rating are filtered out. */
-  maxAllowedMaturityRating?: GetPersonalizedstreamMaxAllowedMaturityRatingEnum | (string & {});
+  maxAllowedMaturityRating?:
+    | GetPersonalizedstreamMaxAllowedMaturityRatingEnum
+    | (string & {});
 }
 export const GetPersonalizedstreamRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locale": S.optional(S.String.pipe(T.Query())),
-  "source": S.optional(S.String.pipe(T.Query())),
-  "maxAllowedMaturityRating": S.optional(GetPersonalizedstreamMaxAllowedMaturityRatingEnum.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"books/v1/personalizedstream/get","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "GetPersonalizedstreamRequest" }) as any as S.Schema<GetPersonalizedstreamRequest>;
+  S.Struct({
+    locale: S.optional(S.String.pipe(T.Query())),
+    source: S.optional(S.String.pipe(T.Query())),
+    maxAllowedMaturityRating: S.optional(
+      GetPersonalizedstreamMaxAllowedMaturityRatingEnum.pipe(T.Query()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "books/v1/personalizedstream/get",
+      baseUrl: "https://books.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetPersonalizedstreamRequest",
+}) as any as S.Schema<GetPersonalizedstreamRequest>;
 
 export interface VolumeRecommendedInfo {
   /** A text explaining why this volume is recommended. */
   explanation?: string;
 }
 export const VolumeRecommendedInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "explanation": S.optional(S.String),
-}),
-).annotate({ identifier: "VolumeRecommendedInfo" }) as any as S.Schema<VolumeRecommendedInfo>;
+  S.Struct({
+    explanation: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VolumeRecommendedInfo",
+}) as any as S.Schema<VolumeRecommendedInfo>;
 
 export interface VolumeSaleInfoOffersItemListPrice {
   currencyCode?: string;
   amountInMicros?: number;
 }
 export const VolumeSaleInfoOffersItemListPrice = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "currencyCode": S.optional(S.String),
-  "amountInMicros": S.optional(S.Number),
-}),
-).annotate({ identifier: "VolumeSaleInfoOffersItemListPrice" }) as any as S.Schema<VolumeSaleInfoOffersItemListPrice>;
+  S.Struct({
+    currencyCode: S.optional(S.String),
+    amountInMicros: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "VolumeSaleInfoOffersItemListPrice",
+}) as any as S.Schema<VolumeSaleInfoOffersItemListPrice>;
 
 export interface VolumeSaleInfoOffersItemRetailPrice {
   currencyCode?: string;
   amountInMicros?: number;
 }
 export const VolumeSaleInfoOffersItemRetailPrice = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "currencyCode": S.optional(S.String),
-  "amountInMicros": S.optional(S.Number),
-}),
-).annotate({ identifier: "VolumeSaleInfoOffersItemRetailPrice" }) as any as S.Schema<VolumeSaleInfoOffersItemRetailPrice>;
+  S.Struct({
+    currencyCode: S.optional(S.String),
+    amountInMicros: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "VolumeSaleInfoOffersItemRetailPrice",
+}) as any as S.Schema<VolumeSaleInfoOffersItemRetailPrice>;
 
 export interface VolumeSaleInfoOffersItemRentalDuration {
   count?: number;
   unit?: string;
 }
-export const VolumeSaleInfoOffersItemRentalDuration = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "count": S.optional(S.Number),
-  "unit": S.optional(S.String),
-}),
-).annotate({ identifier: "VolumeSaleInfoOffersItemRentalDuration" }) as any as S.Schema<VolumeSaleInfoOffersItemRentalDuration>;
+export const VolumeSaleInfoOffersItemRentalDuration = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      count: S.optional(S.Number),
+      unit: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "VolumeSaleInfoOffersItemRentalDuration",
+}) as any as S.Schema<VolumeSaleInfoOffersItemRentalDuration>;
 
 export interface VolumeSaleInfoOffersItem {
   /** Offer list (=undiscounted) price in Micros. */
@@ -991,17 +1249,22 @@ export interface VolumeSaleInfoOffersItem {
   rentalDuration?: VolumeSaleInfoOffersItemRentalDuration;
 }
 export const VolumeSaleInfoOffersItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "listPrice": S.optional(VolumeSaleInfoOffersItemListPrice),
-  "giftable": S.optional(S.Boolean),
-  "retailPrice": S.optional(VolumeSaleInfoOffersItemRetailPrice),
-  "finskyOfferType": S.optional(S.Number),
-  "rentalDuration": S.optional(VolumeSaleInfoOffersItemRentalDuration),
-}),
-).annotate({ identifier: "VolumeSaleInfoOffersItem" }) as any as S.Schema<VolumeSaleInfoOffersItem>;
+  S.Struct({
+    listPrice: S.optional(VolumeSaleInfoOffersItemListPrice),
+    giftable: S.optional(S.Boolean),
+    retailPrice: S.optional(VolumeSaleInfoOffersItemRetailPrice),
+    finskyOfferType: S.optional(S.Number),
+    rentalDuration: S.optional(VolumeSaleInfoOffersItemRentalDuration),
+  }),
+).annotate({
+  identifier: "VolumeSaleInfoOffersItem",
+}) as any as S.Schema<VolumeSaleInfoOffersItem>;
 
-export type VolumeSaleInfoOffersItemList = ReadonlyArray<VolumeSaleInfoOffersItem>;
-export const VolumeSaleInfoOffersItemList = /*@__PURE__*/ S.Array(VolumeSaleInfoOffersItem) as any as S.Schema<VolumeSaleInfoOffersItemList>;
+export type VolumeSaleInfoOffersItemList =
+  ReadonlyArray<VolumeSaleInfoOffersItem>;
+export const VolumeSaleInfoOffersItemList = /*@__PURE__*/ S.Array(
+  VolumeSaleInfoOffersItem,
+) as any as S.Schema<VolumeSaleInfoOffersItemList>;
 
 export interface VolumeSaleInfoRetailPrice {
   /** Amount in the currency listed below. (In LITE projection.) */
@@ -1010,11 +1273,13 @@ export interface VolumeSaleInfoRetailPrice {
   currencyCode?: string;
 }
 export const VolumeSaleInfoRetailPrice = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "amount": S.optional(S.Number),
-  "currencyCode": S.optional(S.String),
-}),
-).annotate({ identifier: "VolumeSaleInfoRetailPrice" }) as any as S.Schema<VolumeSaleInfoRetailPrice>;
+  S.Struct({
+    amount: S.optional(S.Number),
+    currencyCode: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VolumeSaleInfoRetailPrice",
+}) as any as S.Schema<VolumeSaleInfoRetailPrice>;
 
 export interface VolumeSaleInfoListPrice {
   /** Amount in the currency listed below. (In LITE projection.) */
@@ -1023,11 +1288,13 @@ export interface VolumeSaleInfoListPrice {
   currencyCode?: string;
 }
 export const VolumeSaleInfoListPrice = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "amount": S.optional(S.Number),
-  "currencyCode": S.optional(S.String),
-}),
-).annotate({ identifier: "VolumeSaleInfoListPrice" }) as any as S.Schema<VolumeSaleInfoListPrice>;
+  S.Struct({
+    amount: S.optional(S.Number),
+    currencyCode: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VolumeSaleInfoListPrice",
+}) as any as S.Schema<VolumeSaleInfoListPrice>;
 
 export interface VolumeSaleInfo {
   /** Whether or not this volume is an eBook (can be added to the My eBooks shelf). */
@@ -1048,16 +1315,16 @@ export interface VolumeSaleInfo {
   listPrice?: VolumeSaleInfoListPrice;
 }
 export const VolumeSaleInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "isEbook": S.optional(S.Boolean),
-  "buyLink": S.optional(S.String),
-  "country": S.optional(S.String),
-  "offers": S.optional(VolumeSaleInfoOffersItemList),
-  "retailPrice": S.optional(VolumeSaleInfoRetailPrice),
-  "saleability": S.optional(S.String),
-  "onSaleDate": S.optional(S.String),
-  "listPrice": S.optional(VolumeSaleInfoListPrice),
-}),
+  S.Struct({
+    isEbook: S.optional(S.Boolean),
+    buyLink: S.optional(S.String),
+    country: S.optional(S.String),
+    offers: S.optional(VolumeSaleInfoOffersItemList),
+    retailPrice: S.optional(VolumeSaleInfoRetailPrice),
+    saleability: S.optional(S.String),
+    onSaleDate: S.optional(S.String),
+    listPrice: S.optional(VolumeSaleInfoListPrice),
+  }),
 ).annotate({ identifier: "VolumeSaleInfo" }) as any as S.Schema<VolumeSaleInfo>;
 
 export interface VolumeLayerInfoLayersItem {
@@ -1067,24 +1334,31 @@ export interface VolumeLayerInfoLayersItem {
   volumeAnnotationsVersion?: string;
 }
 export const VolumeLayerInfoLayersItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "layerId": S.optional(S.String),
-  "volumeAnnotationsVersion": S.optional(S.String),
-}),
-).annotate({ identifier: "VolumeLayerInfoLayersItem" }) as any as S.Schema<VolumeLayerInfoLayersItem>;
+  S.Struct({
+    layerId: S.optional(S.String),
+    volumeAnnotationsVersion: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VolumeLayerInfoLayersItem",
+}) as any as S.Schema<VolumeLayerInfoLayersItem>;
 
-export type VolumeLayerInfoLayersItemList = ReadonlyArray<VolumeLayerInfoLayersItem>;
-export const VolumeLayerInfoLayersItemList = /*@__PURE__*/ S.Array(VolumeLayerInfoLayersItem) as any as S.Schema<VolumeLayerInfoLayersItemList>;
+export type VolumeLayerInfoLayersItemList =
+  ReadonlyArray<VolumeLayerInfoLayersItem>;
+export const VolumeLayerInfoLayersItemList = /*@__PURE__*/ S.Array(
+  VolumeLayerInfoLayersItem,
+) as any as S.Schema<VolumeLayerInfoLayersItemList>;
 
 export interface VolumeLayerInfo {
   /** A layer should appear here if and only if the layer exists for this book. */
   layers?: VolumeLayerInfoLayersItemList;
 }
 export const VolumeLayerInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "layers": S.optional(VolumeLayerInfoLayersItemList),
-}),
-).annotate({ identifier: "VolumeLayerInfo" }) as any as S.Schema<VolumeLayerInfo>;
+  S.Struct({
+    layers: S.optional(VolumeLayerInfoLayersItemList),
+  }),
+).annotate({
+  identifier: "VolumeLayerInfo",
+}) as any as S.Schema<VolumeLayerInfo>;
 
 export interface VolumeAccessInfoEpub {
   /** URL to download epub. (In LITE projection.) */
@@ -1095,12 +1369,14 @@ export interface VolumeAccessInfoEpub {
   isAvailable?: boolean;
 }
 export const VolumeAccessInfoEpub = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "downloadLink": S.optional(S.String),
-  "acsTokenLink": S.optional(S.String),
-  "isAvailable": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "VolumeAccessInfoEpub" }) as any as S.Schema<VolumeAccessInfoEpub>;
+  S.Struct({
+    downloadLink: S.optional(S.String),
+    acsTokenLink: S.optional(S.String),
+    isAvailable: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "VolumeAccessInfoEpub",
+}) as any as S.Schema<VolumeAccessInfoEpub>;
 
 export interface VolumeAccessInfoPdf {
   /** URL to download pdf. (In LITE projection.) */
@@ -1111,12 +1387,14 @@ export interface VolumeAccessInfoPdf {
   isAvailable?: boolean;
 }
 export const VolumeAccessInfoPdf = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "downloadLink": S.optional(S.String),
-  "acsTokenLink": S.optional(S.String),
-  "isAvailable": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "VolumeAccessInfoPdf" }) as any as S.Schema<VolumeAccessInfoPdf>;
+  S.Struct({
+    downloadLink: S.optional(S.String),
+    acsTokenLink: S.optional(S.String),
+    isAvailable: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "VolumeAccessInfoPdf",
+}) as any as S.Schema<VolumeAccessInfoPdf>;
 
 export interface DownloadAccessRestriction {
   /** Error/warning reason code. Additional codes may be added in the future. 0 OK 100 ACCESS_DENIED_PUBLISHER_LIMIT 101 ACCESS_DENIED_LIMIT 200 WARNING_USED_LAST_ACCESS */
@@ -1145,21 +1423,23 @@ export interface DownloadAccessRestriction {
   message?: string;
 }
 export const DownloadAccessRestriction = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "reasonCode": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "deviceAllowed": S.optional(S.Boolean),
-  "nonce": S.optional(S.String),
-  "restricted": S.optional(S.Boolean),
-  "signature": S.optional(S.String),
-  "justAcquired": S.optional(S.Boolean),
-  "maxDownloadDevices": S.optional(S.Number),
-  "source": S.optional(S.String),
-  "volumeId": S.optional(S.String),
-  "downloadsAcquired": S.optional(S.Number),
-  "message": S.optional(S.String),
-}),
-).annotate({ identifier: "DownloadAccessRestriction" }) as any as S.Schema<DownloadAccessRestriction>;
+  S.Struct({
+    reasonCode: S.optional(S.String),
+    kind: S.optional(S.String),
+    deviceAllowed: S.optional(S.Boolean),
+    nonce: S.optional(S.String),
+    restricted: S.optional(S.Boolean),
+    signature: S.optional(S.String),
+    justAcquired: S.optional(S.Boolean),
+    maxDownloadDevices: S.optional(S.Number),
+    source: S.optional(S.String),
+    volumeId: S.optional(S.String),
+    downloadsAcquired: S.optional(S.Number),
+    message: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DownloadAccessRestriction",
+}) as any as S.Schema<DownloadAccessRestriction>;
 
 export interface VolumeAccessInfo {
   /** Whether this volume requires that the client explicitly request offline download license rather than have it done automatically when loading the content, if the client supports it. */
@@ -1192,33 +1472,37 @@ export interface VolumeAccessInfo {
   driveImportedContentLink?: string;
 }
 export const VolumeAccessInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "explicitOfflineLicenseManagement": S.optional(S.Boolean),
-  "viewOrderUrl": S.optional(S.String),
-  "epub": S.optional(VolumeAccessInfoEpub),
-  "viewability": S.optional(S.String),
-  "quoteSharingAllowed": S.optional(S.Boolean),
-  "country": S.optional(S.String),
-  "textToSpeechPermission": S.optional(S.String),
-  "webReaderLink": S.optional(S.String),
-  "publicDomain": S.optional(S.Boolean),
-  "embeddable": S.optional(S.Boolean),
-  "pdf": S.optional(VolumeAccessInfoPdf),
-  "accessViewStatus": S.optional(S.String),
-  "downloadAccess": S.optional(DownloadAccessRestriction),
-  "driveImportedContentLink": S.optional(S.String),
-}),
-).annotate({ identifier: "VolumeAccessInfo" }) as any as S.Schema<VolumeAccessInfo>;
+  S.Struct({
+    explicitOfflineLicenseManagement: S.optional(S.Boolean),
+    viewOrderUrl: S.optional(S.String),
+    epub: S.optional(VolumeAccessInfoEpub),
+    viewability: S.optional(S.String),
+    quoteSharingAllowed: S.optional(S.Boolean),
+    country: S.optional(S.String),
+    textToSpeechPermission: S.optional(S.String),
+    webReaderLink: S.optional(S.String),
+    publicDomain: S.optional(S.Boolean),
+    embeddable: S.optional(S.Boolean),
+    pdf: S.optional(VolumeAccessInfoPdf),
+    accessViewStatus: S.optional(S.String),
+    downloadAccess: S.optional(DownloadAccessRestriction),
+    driveImportedContentLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VolumeAccessInfo",
+}) as any as S.Schema<VolumeAccessInfo>;
 
 export interface VolumeSearchInfo {
   /** A text snippet containing the search query. */
   textSnippet?: string;
 }
 export const VolumeSearchInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "textSnippet": S.optional(S.String),
-}),
-).annotate({ identifier: "VolumeSearchInfo" }) as any as S.Schema<VolumeSearchInfo>;
+  S.Struct({
+    textSnippet: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VolumeSearchInfo",
+}) as any as S.Schema<VolumeSearchInfo>;
 
 export interface VolumeVolumeInfoImageLinks {
   /** Image link for thumbnail size (width of ~128 pixels). (In LITE projection) */
@@ -1235,15 +1519,17 @@ export interface VolumeVolumeInfoImageLinks {
   small?: string;
 }
 export const VolumeVolumeInfoImageLinks = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "thumbnail": S.optional(S.String),
-  "medium": S.optional(S.String),
-  "large": S.optional(S.String),
-  "extraLarge": S.optional(S.String),
-  "smallThumbnail": S.optional(S.String),
-  "small": S.optional(S.String),
-}),
-).annotate({ identifier: "VolumeVolumeInfoImageLinks" }) as any as S.Schema<VolumeVolumeInfoImageLinks>;
+  S.Struct({
+    thumbnail: S.optional(S.String),
+    medium: S.optional(S.String),
+    large: S.optional(S.String),
+    extraLarge: S.optional(S.String),
+    smallThumbnail: S.optional(S.String),
+    small: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VolumeVolumeInfoImageLinks",
+}) as any as S.Schema<VolumeVolumeInfoImageLinks>;
 
 export interface VolumeVolumeInfoIndustryIdentifiersItem {
   /** Identifier type. Possible values are ISBN_10, ISBN_13, ISSN and OTHER. */
@@ -1251,26 +1537,35 @@ export interface VolumeVolumeInfoIndustryIdentifiersItem {
   /** Industry specific volume identifier. */
   identifier?: string;
 }
-export const VolumeVolumeInfoIndustryIdentifiersItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(S.String),
-  "identifier": S.optional(S.String),
-}),
-).annotate({ identifier: "VolumeVolumeInfoIndustryIdentifiersItem" }) as any as S.Schema<VolumeVolumeInfoIndustryIdentifiersItem>;
+export const VolumeVolumeInfoIndustryIdentifiersItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      type: S.optional(S.String),
+      identifier: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "VolumeVolumeInfoIndustryIdentifiersItem",
+}) as any as S.Schema<VolumeVolumeInfoIndustryIdentifiersItem>;
 
-export type VolumeVolumeInfoIndustryIdentifiersItemList = ReadonlyArray<VolumeVolumeInfoIndustryIdentifiersItem>;
-export const VolumeVolumeInfoIndustryIdentifiersItemList = /*@__PURE__*/ S.Array(VolumeVolumeInfoIndustryIdentifiersItem) as any as S.Schema<VolumeVolumeInfoIndustryIdentifiersItemList>;
+export type VolumeVolumeInfoIndustryIdentifiersItemList =
+  ReadonlyArray<VolumeVolumeInfoIndustryIdentifiersItem>;
+export const VolumeVolumeInfoIndustryIdentifiersItemList =
+  /*@__PURE__*/ S.Array(
+    VolumeVolumeInfoIndustryIdentifiersItem,
+  ) as any as S.Schema<VolumeVolumeInfoIndustryIdentifiersItemList>;
 
 export interface VolumeVolumeInfoReadingModes {
   text?: boolean;
   image?: boolean;
 }
 export const VolumeVolumeInfoReadingModes = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "text": S.optional(S.Boolean),
-  "image": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "VolumeVolumeInfoReadingModes" }) as any as S.Schema<VolumeVolumeInfoReadingModes>;
+  S.Struct({
+    text: S.optional(S.Boolean),
+    image: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "VolumeVolumeInfoReadingModes",
+}) as any as S.Schema<VolumeVolumeInfoReadingModes>;
 
 export interface VolumeVolumeInfoDimensions {
   /** Height or length of this volume (in cm). */
@@ -1281,26 +1576,35 @@ export interface VolumeVolumeInfoDimensions {
   width?: string;
 }
 export const VolumeVolumeInfoDimensions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "height": S.optional(S.String),
-  "thickness": S.optional(S.String),
-  "width": S.optional(S.String),
-}),
-).annotate({ identifier: "VolumeVolumeInfoDimensions" }) as any as S.Schema<VolumeVolumeInfoDimensions>;
+  S.Struct({
+    height: S.optional(S.String),
+    thickness: S.optional(S.String),
+    width: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VolumeVolumeInfoDimensions",
+}) as any as S.Schema<VolumeVolumeInfoDimensions>;
 
 export interface VolumeseriesinfoVolumeSeriesItemIssueItem {
   issueDisplayNumber?: string;
   issueOrderNumber?: number;
 }
-export const VolumeseriesinfoVolumeSeriesItemIssueItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "issueDisplayNumber": S.optional(S.String),
-  "issueOrderNumber": S.optional(S.Number),
-}),
-).annotate({ identifier: "VolumeseriesinfoVolumeSeriesItemIssueItem" }) as any as S.Schema<VolumeseriesinfoVolumeSeriesItemIssueItem>;
+export const VolumeseriesinfoVolumeSeriesItemIssueItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      issueDisplayNumber: S.optional(S.String),
+      issueOrderNumber: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "VolumeseriesinfoVolumeSeriesItemIssueItem",
+  }) as any as S.Schema<VolumeseriesinfoVolumeSeriesItemIssueItem>;
 
-export type VolumeseriesinfoVolumeSeriesItemIssueItemList = ReadonlyArray<VolumeseriesinfoVolumeSeriesItemIssueItem>;
-export const VolumeseriesinfoVolumeSeriesItemIssueItemList = /*@__PURE__*/ S.Array(VolumeseriesinfoVolumeSeriesItemIssueItem) as any as S.Schema<VolumeseriesinfoVolumeSeriesItemIssueItemList>;
+export type VolumeseriesinfoVolumeSeriesItemIssueItemList =
+  ReadonlyArray<VolumeseriesinfoVolumeSeriesItemIssueItem>;
+export const VolumeseriesinfoVolumeSeriesItemIssueItemList =
+  /*@__PURE__*/ S.Array(
+    VolumeseriesinfoVolumeSeriesItemIssueItem,
+  ) as any as S.Schema<VolumeseriesinfoVolumeSeriesItemIssueItemList>;
 
 export interface VolumeseriesinfoVolumeSeriesItem {
   /** The series id. */
@@ -1313,16 +1617,21 @@ export interface VolumeseriesinfoVolumeSeriesItem {
   issue?: VolumeseriesinfoVolumeSeriesItemIssueItemList;
 }
 export const VolumeseriesinfoVolumeSeriesItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "seriesId": S.optional(S.String),
-  "seriesBookType": S.optional(S.String),
-  "orderNumber": S.optional(S.Number),
-  "issue": S.optional(VolumeseriesinfoVolumeSeriesItemIssueItemList),
-}),
-).annotate({ identifier: "VolumeseriesinfoVolumeSeriesItem" }) as any as S.Schema<VolumeseriesinfoVolumeSeriesItem>;
+  S.Struct({
+    seriesId: S.optional(S.String),
+    seriesBookType: S.optional(S.String),
+    orderNumber: S.optional(S.Number),
+    issue: S.optional(VolumeseriesinfoVolumeSeriesItemIssueItemList),
+  }),
+).annotate({
+  identifier: "VolumeseriesinfoVolumeSeriesItem",
+}) as any as S.Schema<VolumeseriesinfoVolumeSeriesItem>;
 
-export type VolumeseriesinfoVolumeSeriesItemList = ReadonlyArray<VolumeseriesinfoVolumeSeriesItem>;
-export const VolumeseriesinfoVolumeSeriesItemList = /*@__PURE__*/ S.Array(VolumeseriesinfoVolumeSeriesItem) as any as S.Schema<VolumeseriesinfoVolumeSeriesItemList>;
+export type VolumeseriesinfoVolumeSeriesItemList =
+  ReadonlyArray<VolumeseriesinfoVolumeSeriesItem>;
+export const VolumeseriesinfoVolumeSeriesItemList = /*@__PURE__*/ S.Array(
+  VolumeseriesinfoVolumeSeriesItem,
+) as any as S.Schema<VolumeseriesinfoVolumeSeriesItemList>;
 
 export interface Volumeseriesinfo {
   /** Short book title in the context of the series. */
@@ -1334,13 +1643,15 @@ export interface Volumeseriesinfo {
   bookDisplayNumber?: string;
 }
 export const Volumeseriesinfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "shortSeriesBookTitle": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "volumeSeries": S.optional(VolumeseriesinfoVolumeSeriesItemList),
-  "bookDisplayNumber": S.optional(S.String),
-}),
-).annotate({ identifier: "Volumeseriesinfo" }) as any as S.Schema<Volumeseriesinfo>;
+  S.Struct({
+    shortSeriesBookTitle: S.optional(S.String),
+    kind: S.optional(S.String),
+    volumeSeries: S.optional(VolumeseriesinfoVolumeSeriesItemList),
+    bookDisplayNumber: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "Volumeseriesinfo",
+}) as any as S.Schema<Volumeseriesinfo>;
 
 export interface VolumeVolumeInfoPanelizationSummary {
   epubBubbleVersion?: string;
@@ -1349,13 +1660,15 @@ export interface VolumeVolumeInfoPanelizationSummary {
   containsImageBubbles?: boolean;
 }
 export const VolumeVolumeInfoPanelizationSummary = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "epubBubbleVersion": S.optional(S.String),
-  "imageBubbleVersion": S.optional(S.String),
-  "containsEpubBubbles": S.optional(S.Boolean),
-  "containsImageBubbles": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "VolumeVolumeInfoPanelizationSummary" }) as any as S.Schema<VolumeVolumeInfoPanelizationSummary>;
+  S.Struct({
+    epubBubbleVersion: S.optional(S.String),
+    imageBubbleVersion: S.optional(S.String),
+    containsEpubBubbles: S.optional(S.Boolean),
+    containsImageBubbles: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "VolumeVolumeInfoPanelizationSummary",
+}) as any as S.Schema<VolumeVolumeInfoPanelizationSummary>;
 
 export interface VolumeVolumeInfo {
   /** Total number of pages as per publisher metadata. */
@@ -1414,57 +1727,66 @@ export interface VolumeVolumeInfo {
   samplePageCount?: number;
 }
 export const VolumeVolumeInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageCount": S.optional(S.Number),
-  "imageLinks": S.optional(VolumeVolumeInfoImageLinks),
-  "comicsContent": S.optional(S.Boolean),
-  "allowAnonLogging": S.optional(S.Boolean),
-  "publisher": S.optional(S.String),
-  "categories": S.optional(StringList),
-  "industryIdentifiers": S.optional(VolumeVolumeInfoIndustryIdentifiersItemList),
-  "subtitle": S.optional(S.String),
-  "contentVersion": S.optional(S.String),
-  "description": S.optional(S.String),
-  "readingModes": S.optional(VolumeVolumeInfoReadingModes),
-  "authors": S.optional(StringList),
-  "ratingsCount": S.optional(S.Number),
-  "title": S.optional(S.String),
-  "infoLink": S.optional(S.String),
-  "printType": S.optional(S.String),
-  "dimensions": S.optional(VolumeVolumeInfoDimensions),
-  "previewLink": S.optional(S.String),
-  "publishedDate": S.optional(S.String),
-  "averageRating": S.optional(S.Number),
-  "canonicalVolumeLink": S.optional(S.String),
-  "seriesInfo": S.optional(Volumeseriesinfo),
-  "mainCategory": S.optional(S.String),
-  "maturityRating": S.optional(S.String),
-  "language": S.optional(S.String),
-  "panelizationSummary": S.optional(VolumeVolumeInfoPanelizationSummary),
-  "printedPageCount": S.optional(S.Number),
-  "samplePageCount": S.optional(S.Number),
-}),
-).annotate({ identifier: "VolumeVolumeInfo" }) as any as S.Schema<VolumeVolumeInfo>;
+  S.Struct({
+    pageCount: S.optional(S.Number),
+    imageLinks: S.optional(VolumeVolumeInfoImageLinks),
+    comicsContent: S.optional(S.Boolean),
+    allowAnonLogging: S.optional(S.Boolean),
+    publisher: S.optional(S.String),
+    categories: S.optional(StringList),
+    industryIdentifiers: S.optional(
+      VolumeVolumeInfoIndustryIdentifiersItemList,
+    ),
+    subtitle: S.optional(S.String),
+    contentVersion: S.optional(S.String),
+    description: S.optional(S.String),
+    readingModes: S.optional(VolumeVolumeInfoReadingModes),
+    authors: S.optional(StringList),
+    ratingsCount: S.optional(S.Number),
+    title: S.optional(S.String),
+    infoLink: S.optional(S.String),
+    printType: S.optional(S.String),
+    dimensions: S.optional(VolumeVolumeInfoDimensions),
+    previewLink: S.optional(S.String),
+    publishedDate: S.optional(S.String),
+    averageRating: S.optional(S.Number),
+    canonicalVolumeLink: S.optional(S.String),
+    seriesInfo: S.optional(Volumeseriesinfo),
+    mainCategory: S.optional(S.String),
+    maturityRating: S.optional(S.String),
+    language: S.optional(S.String),
+    panelizationSummary: S.optional(VolumeVolumeInfoPanelizationSummary),
+    printedPageCount: S.optional(S.Number),
+    samplePageCount: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "VolumeVolumeInfo",
+}) as any as S.Schema<VolumeVolumeInfo>;
 
 export interface VolumeUserInfoRentalPeriod {
   startUtcSec?: string;
   endUtcSec?: string;
 }
 export const VolumeUserInfoRentalPeriod = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "startUtcSec": S.optional(S.String),
-  "endUtcSec": S.optional(S.String),
-}),
-).annotate({ identifier: "VolumeUserInfoRentalPeriod" }) as any as S.Schema<VolumeUserInfoRentalPeriod>;
+  S.Struct({
+    startUtcSec: S.optional(S.String),
+    endUtcSec: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VolumeUserInfoRentalPeriod",
+}) as any as S.Schema<VolumeUserInfoRentalPeriod>;
 
 export interface VolumeUserInfoUserUploadedVolumeInfo {
   processingState?: string;
 }
-export const VolumeUserInfoUserUploadedVolumeInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "processingState": S.optional(S.String),
-}),
-).annotate({ identifier: "VolumeUserInfoUserUploadedVolumeInfo" }) as any as S.Schema<VolumeUserInfoUserUploadedVolumeInfo>;
+export const VolumeUserInfoUserUploadedVolumeInfo = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      processingState: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "VolumeUserInfoUserUploadedVolumeInfo",
+}) as any as S.Schema<VolumeUserInfoUserUploadedVolumeInfo>;
 
 export interface VolumeUserInfoFamilySharing {
   /** Whether or not this volume can be shared with the family by the user. This includes sharing eligibility of both the volume and the user. If the value is true, the user can initiate a family sharing action. */
@@ -1475,12 +1797,14 @@ export interface VolumeUserInfoFamilySharing {
   familyRole?: string;
 }
 export const VolumeUserInfoFamilySharing = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "isSharingAllowed": S.optional(S.Boolean),
-  "isSharingDisabledByFop": S.optional(S.Boolean),
-  "familyRole": S.optional(S.String),
-}),
-).annotate({ identifier: "VolumeUserInfoFamilySharing" }) as any as S.Schema<VolumeUserInfoFamilySharing>;
+  S.Struct({
+    isSharingAllowed: S.optional(S.Boolean),
+    isSharingDisabledByFop: S.optional(S.Boolean),
+    familyRole: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VolumeUserInfoFamilySharing",
+}) as any as S.Schema<VolumeUserInfoFamilySharing>;
 
 export interface ReviewSource {
   /** Extra text about the source of the review. */
@@ -1491,11 +1815,11 @@ export interface ReviewSource {
   url?: string;
 }
 export const ReviewSource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "extraDescription": S.optional(S.String),
-  "description": S.optional(S.String),
-  "url": S.optional(S.String),
-}),
+  S.Struct({
+    extraDescription: S.optional(S.String),
+    description: S.optional(S.String),
+    url: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ReviewSource" }) as any as S.Schema<ReviewSource>;
 
 export interface ReviewAuthor {
@@ -1503,9 +1827,9 @@ export interface ReviewAuthor {
   displayName?: string;
 }
 export const ReviewAuthor = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "displayName": S.optional(S.String),
-}),
+  S.Struct({
+    displayName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ReviewAuthor" }) as any as S.Schema<ReviewAuthor>;
 
 export interface Review {
@@ -1531,18 +1855,18 @@ export interface Review {
   content?: string;
 }
 export const Review = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "rating": S.optional(S.String),
-  "source": S.optional(ReviewSource),
-  "volumeId": S.optional(S.String),
-  "fullTextUrl": S.optional(S.String),
-  "date": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "author": S.optional(ReviewAuthor),
-  "type": S.optional(S.String),
-  "title": S.optional(S.String),
-  "content": S.optional(S.String),
-}),
+  S.Struct({
+    rating: S.optional(S.String),
+    source: S.optional(ReviewSource),
+    volumeId: S.optional(S.String),
+    fullTextUrl: S.optional(S.String),
+    date: S.optional(S.String),
+    kind: S.optional(S.String),
+    author: S.optional(ReviewAuthor),
+    type: S.optional(S.String),
+    title: S.optional(S.String),
+    content: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Review" }) as any as S.Schema<Review>;
 
 export interface VolumeUserInfoCopy {
@@ -1552,13 +1876,15 @@ export interface VolumeUserInfoCopy {
   updated?: string;
 }
 export const VolumeUserInfoCopy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "remainingCharacterCount": S.optional(S.Number),
-  "allowedCharacterCount": S.optional(S.Number),
-  "limitType": S.optional(S.String),
-  "updated": S.optional(S.String),
-}),
-).annotate({ identifier: "VolumeUserInfoCopy" }) as any as S.Schema<VolumeUserInfoCopy>;
+  S.Struct({
+    remainingCharacterCount: S.optional(S.Number),
+    allowedCharacterCount: S.optional(S.Number),
+    limitType: S.optional(S.String),
+    updated: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VolumeUserInfoCopy",
+}) as any as S.Schema<VolumeUserInfoCopy>;
 
 export interface VolumeUserInfo {
   /** Whether or not this volume was pre-ordered by the authenticated user making the request. (In LITE projection.) */
@@ -1600,27 +1926,27 @@ export interface VolumeUserInfo {
   isInMyBooks?: boolean;
 }
 export const VolumeUserInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "isPreordered": S.optional(S.Boolean),
-  "isFamilySharingDisabledByFop": S.optional(S.Boolean),
-  "readingPosition": S.optional(ReadingPosition),
-  "isFamilySharedToUser": S.optional(S.Boolean),
-  "rentalPeriod": S.optional(VolumeUserInfoRentalPeriod),
-  "isUploaded": S.optional(S.Boolean),
-  "acquisitionType": S.optional(S.Number),
-  "acquiredTime": S.optional(S.String),
-  "userUploadedVolumeInfo": S.optional(VolumeUserInfoUserUploadedVolumeInfo),
-  "updated": S.optional(S.String),
-  "familySharing": S.optional(VolumeUserInfoFamilySharing),
-  "isPurchased": S.optional(S.Boolean),
-  "review": S.optional(Review),
-  "isFamilySharingAllowed": S.optional(S.Boolean),
-  "isFamilySharedFromUser": S.optional(S.Boolean),
-  "rentalState": S.optional(S.String),
-  "copy": S.optional(VolumeUserInfoCopy),
-  "entitlementType": S.optional(S.Number),
-  "isInMyBooks": S.optional(S.Boolean),
-}),
+  S.Struct({
+    isPreordered: S.optional(S.Boolean),
+    isFamilySharingDisabledByFop: S.optional(S.Boolean),
+    readingPosition: S.optional(ReadingPosition),
+    isFamilySharedToUser: S.optional(S.Boolean),
+    rentalPeriod: S.optional(VolumeUserInfoRentalPeriod),
+    isUploaded: S.optional(S.Boolean),
+    acquisitionType: S.optional(S.Number),
+    acquiredTime: S.optional(S.String),
+    userUploadedVolumeInfo: S.optional(VolumeUserInfoUserUploadedVolumeInfo),
+    updated: S.optional(S.String),
+    familySharing: S.optional(VolumeUserInfoFamilySharing),
+    isPurchased: S.optional(S.Boolean),
+    review: S.optional(Review),
+    isFamilySharingAllowed: S.optional(S.Boolean),
+    isFamilySharedFromUser: S.optional(S.Boolean),
+    rentalState: S.optional(S.String),
+    copy: S.optional(VolumeUserInfoCopy),
+    entitlementType: S.optional(S.Number),
+    isInMyBooks: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "VolumeUserInfo" }) as any as S.Schema<VolumeUserInfo>;
 
 export interface Volume {
@@ -1648,23 +1974,25 @@ export interface Volume {
   userInfo?: VolumeUserInfo;
 }
 export const Volume = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "selfLink": S.optional(S.String),
-  "recommendedInfo": S.optional(VolumeRecommendedInfo),
-  "etag": S.optional(S.String),
-  "id": S.optional(S.String),
-  "saleInfo": S.optional(VolumeSaleInfo),
-  "layerInfo": S.optional(VolumeLayerInfo),
-  "accessInfo": S.optional(VolumeAccessInfo),
-  "searchInfo": S.optional(VolumeSearchInfo),
-  "volumeInfo": S.optional(VolumeVolumeInfo),
-  "userInfo": S.optional(VolumeUserInfo),
-}),
+  S.Struct({
+    kind: S.optional(S.String),
+    selfLink: S.optional(S.String),
+    recommendedInfo: S.optional(VolumeRecommendedInfo),
+    etag: S.optional(S.String),
+    id: S.optional(S.String),
+    saleInfo: S.optional(VolumeSaleInfo),
+    layerInfo: S.optional(VolumeLayerInfo),
+    accessInfo: S.optional(VolumeAccessInfo),
+    searchInfo: S.optional(VolumeSearchInfo),
+    volumeInfo: S.optional(VolumeVolumeInfo),
+    userInfo: S.optional(VolumeUserInfo),
+  }),
 ).annotate({ identifier: "Volume" }) as any as S.Schema<Volume>;
 
 export type VolumeList = ReadonlyArray<Volume>;
-export const VolumeList = /*@__PURE__*/ S.Array(Volume) as any as S.Schema<VolumeList>;
+export const VolumeList = /*@__PURE__*/ S.Array(
+  Volume,
+) as any as S.Schema<VolumeList>;
 
 export interface DiscoveryclustersClustersItemBanner_with_content_container {
   moreButtonUrl?: string;
@@ -1674,16 +2002,19 @@ export interface DiscoveryclustersClustersItemBanner_with_content_container {
   fillColorArgb?: string;
   moreButtonText?: string;
 }
-export const DiscoveryclustersClustersItemBanner_with_content_container = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "moreButtonUrl": S.optional(S.String),
-  "textColorArgb": S.optional(S.String),
-  "maskColorArgb": S.optional(S.String),
-  "imageUrl": S.optional(S.String),
-  "fillColorArgb": S.optional(S.String),
-  "moreButtonText": S.optional(S.String),
-}),
-).annotate({ identifier: "DiscoveryclustersClustersItemBanner_with_content_container" }) as any as S.Schema<DiscoveryclustersClustersItemBanner_with_content_container>;
+export const DiscoveryclustersClustersItemBanner_with_content_container =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      moreButtonUrl: S.optional(S.String),
+      textColorArgb: S.optional(S.String),
+      maskColorArgb: S.optional(S.String),
+      imageUrl: S.optional(S.String),
+      fillColorArgb: S.optional(S.String),
+      moreButtonText: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DiscoveryclustersClustersItemBanner_with_content_container",
+  }) as any as S.Schema<DiscoveryclustersClustersItemBanner_with_content_container>;
 
 export interface DiscoveryclustersClustersItem {
   volumes?: VolumeList;
@@ -1694,18 +2025,25 @@ export interface DiscoveryclustersClustersItem {
   subTitle?: string;
 }
 export const DiscoveryclustersClustersItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "volumes": S.optional(VolumeList),
-  "totalVolumes": S.optional(S.Number),
-  "title": S.optional(S.String),
-  "banner_with_content_container": S.optional(DiscoveryclustersClustersItemBanner_with_content_container),
-  "uid": S.optional(S.String),
-  "subTitle": S.optional(S.String),
-}),
-).annotate({ identifier: "DiscoveryclustersClustersItem" }) as any as S.Schema<DiscoveryclustersClustersItem>;
+  S.Struct({
+    volumes: S.optional(VolumeList),
+    totalVolumes: S.optional(S.Number),
+    title: S.optional(S.String),
+    banner_with_content_container: S.optional(
+      DiscoveryclustersClustersItemBanner_with_content_container,
+    ),
+    uid: S.optional(S.String),
+    subTitle: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DiscoveryclustersClustersItem",
+}) as any as S.Schema<DiscoveryclustersClustersItem>;
 
-export type DiscoveryclustersClustersItemList = ReadonlyArray<DiscoveryclustersClustersItem>;
-export const DiscoveryclustersClustersItemList = /*@__PURE__*/ S.Array(DiscoveryclustersClustersItem) as any as S.Schema<DiscoveryclustersClustersItemList>;
+export type DiscoveryclustersClustersItemList =
+  ReadonlyArray<DiscoveryclustersClustersItem>;
+export const DiscoveryclustersClustersItemList = /*@__PURE__*/ S.Array(
+  DiscoveryclustersClustersItem,
+) as any as S.Schema<DiscoveryclustersClustersItemList>;
 
 export interface Discoveryclusters {
   totalClusters?: number;
@@ -1714,12 +2052,14 @@ export interface Discoveryclusters {
   clusters?: DiscoveryclustersClustersItemList;
 }
 export const Discoveryclusters = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "totalClusters": S.optional(S.Number),
-  "kind": S.optional(S.String),
-  "clusters": S.optional(DiscoveryclustersClustersItemList),
-}),
-).annotate({ identifier: "Discoveryclusters" }) as any as S.Schema<Discoveryclusters>;
+  S.Struct({
+    totalClusters: S.optional(S.Number),
+    kind: S.optional(S.String),
+    clusters: S.optional(DiscoveryclustersClustersItemList),
+  }),
+).annotate({
+  identifier: "Discoveryclusters",
+}) as any as S.Schema<Discoveryclusters>;
 
 export interface GetPromoofferRequest {
   /** device device */
@@ -1736,15 +2076,23 @@ export interface GetPromoofferRequest {
   androidId?: string;
 }
 export const GetPromoofferRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "device": S.optional(S.String.pipe(T.Query())),
-  "model": S.optional(S.String.pipe(T.Query())),
-  "serial": S.optional(S.String.pipe(T.Query())),
-  "manufacturer": S.optional(S.String.pipe(T.Query())),
-  "product": S.optional(S.String.pipe(T.Query())),
-  "androidId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"books/v1/promooffer/get","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "GetPromoofferRequest" }) as any as S.Schema<GetPromoofferRequest>;
+  S.Struct({
+    device: S.optional(S.String.pipe(T.Query())),
+    model: S.optional(S.String.pipe(T.Query())),
+    serial: S.optional(S.String.pipe(T.Query())),
+    manufacturer: S.optional(S.String.pipe(T.Query())),
+    product: S.optional(S.String.pipe(T.Query())),
+    androidId: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "books/v1/promooffer/get",
+      baseUrl: "https://books.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetPromoofferRequest",
+}) as any as S.Schema<GetPromoofferRequest>;
 
 export interface OffersItemsItemItemsItem {
   canonicalVolumeLink?: string;
@@ -1755,18 +2103,23 @@ export interface OffersItemsItemItemsItem {
   description?: string;
 }
 export const OffersItemsItemItemsItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "canonicalVolumeLink": S.optional(S.String),
-  "coverUrl": S.optional(S.String),
-  "title": S.optional(S.String),
-  "author": S.optional(S.String),
-  "volumeId": S.optional(S.String),
-  "description": S.optional(S.String),
-}),
-).annotate({ identifier: "OffersItemsItemItemsItem" }) as any as S.Schema<OffersItemsItemItemsItem>;
+  S.Struct({
+    canonicalVolumeLink: S.optional(S.String),
+    coverUrl: S.optional(S.String),
+    title: S.optional(S.String),
+    author: S.optional(S.String),
+    volumeId: S.optional(S.String),
+    description: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OffersItemsItemItemsItem",
+}) as any as S.Schema<OffersItemsItemItemsItem>;
 
-export type OffersItemsItemItemsItemList = ReadonlyArray<OffersItemsItemItemsItem>;
-export const OffersItemsItemItemsItemList = /*@__PURE__*/ S.Array(OffersItemsItemItemsItem) as any as S.Schema<OffersItemsItemItemsItemList>;
+export type OffersItemsItemItemsItemList =
+  ReadonlyArray<OffersItemsItemItemsItem>;
+export const OffersItemsItemItemsItemList = /*@__PURE__*/ S.Array(
+  OffersItemsItemItemsItem,
+) as any as S.Schema<OffersItemsItemItemsItemList>;
 
 export interface OffersItemsItem {
   gservicesKey?: string;
@@ -1775,16 +2128,20 @@ export interface OffersItemsItem {
   artUrl?: string;
 }
 export const OffersItemsItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "gservicesKey": S.optional(S.String),
-  "id": S.optional(S.String),
-  "items": S.optional(OffersItemsItemItemsItemList),
-  "artUrl": S.optional(S.String),
-}),
-).annotate({ identifier: "OffersItemsItem" }) as any as S.Schema<OffersItemsItem>;
+  S.Struct({
+    gservicesKey: S.optional(S.String),
+    id: S.optional(S.String),
+    items: S.optional(OffersItemsItemItemsItemList),
+    artUrl: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OffersItemsItem",
+}) as any as S.Schema<OffersItemsItem>;
 
 export type OffersItemsItemList = ReadonlyArray<OffersItemsItem>;
-export const OffersItemsItemList = /*@__PURE__*/ S.Array(OffersItemsItem) as any as S.Schema<OffersItemsItemList>;
+export const OffersItemsItemList = /*@__PURE__*/ S.Array(
+  OffersItemsItem,
+) as any as S.Schema<OffersItemsItemList>;
 
 export interface Offers {
   /** Resource type. */
@@ -1793,10 +2150,10 @@ export interface Offers {
   items?: OffersItemsItemList;
 }
 export const Offers = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "items": S.optional(OffersItemsItemList),
-}),
+  S.Struct({
+    kind: S.optional(S.String),
+    items: S.optional(OffersItemsItemList),
+  }),
 ).annotate({ identifier: "Offers" }) as any as S.Schema<Offers>;
 
 export interface GetSeriesRequest {
@@ -1804,10 +2161,18 @@ export interface GetSeriesRequest {
   series_id: StringList;
 }
 export const GetSeriesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "series_id": StringList.pipe(T.Query()),
-}).pipe(T.Http({"method":"GET","uri":"books/v1/series/get","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "GetSeriesRequest" }) as any as S.Schema<GetSeriesRequest>;
+  S.Struct({
+    series_id: StringList.pipe(T.Query()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "books/v1/series/get",
+      baseUrl: "https://books.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetSeriesRequest",
+}) as any as S.Schema<GetSeriesRequest>;
 
 export interface SeriesSeriesItemSeriesSubscriptionReleaseInfoCurrentReleaseInfo {
   releaseNumber?: string;
@@ -1815,14 +2180,18 @@ export interface SeriesSeriesItemSeriesSubscriptionReleaseInfoCurrentReleaseInfo
   currencyCode?: string;
   amountInMicros?: number;
 }
-export const SeriesSeriesItemSeriesSubscriptionReleaseInfoCurrentReleaseInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "releaseNumber": S.optional(S.String),
-  "releaseTime": S.optional(S.String),
-  "currencyCode": S.optional(S.String),
-  "amountInMicros": S.optional(S.Number),
-}),
-).annotate({ identifier: "SeriesSeriesItemSeriesSubscriptionReleaseInfoCurrentReleaseInfo" }) as any as S.Schema<SeriesSeriesItemSeriesSubscriptionReleaseInfoCurrentReleaseInfo>;
+export const SeriesSeriesItemSeriesSubscriptionReleaseInfoCurrentReleaseInfo =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      releaseNumber: S.optional(S.String),
+      releaseTime: S.optional(S.String),
+      currencyCode: S.optional(S.String),
+      amountInMicros: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "SeriesSeriesItemSeriesSubscriptionReleaseInfoCurrentReleaseInfo",
+  }) as any as S.Schema<SeriesSeriesItemSeriesSubscriptionReleaseInfoCurrentReleaseInfo>;
 
 export interface SeriesSeriesItemSeriesSubscriptionReleaseInfoNextReleaseInfo {
   releaseNumber?: string;
@@ -1830,14 +2199,17 @@ export interface SeriesSeriesItemSeriesSubscriptionReleaseInfoNextReleaseInfo {
   currencyCode?: string;
   amountInMicros?: number;
 }
-export const SeriesSeriesItemSeriesSubscriptionReleaseInfoNextReleaseInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "releaseNumber": S.optional(S.String),
-  "releaseTime": S.optional(S.String),
-  "currencyCode": S.optional(S.String),
-  "amountInMicros": S.optional(S.Number),
-}),
-).annotate({ identifier: "SeriesSeriesItemSeriesSubscriptionReleaseInfoNextReleaseInfo" }) as any as S.Schema<SeriesSeriesItemSeriesSubscriptionReleaseInfoNextReleaseInfo>;
+export const SeriesSeriesItemSeriesSubscriptionReleaseInfoNextReleaseInfo =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      releaseNumber: S.optional(S.String),
+      releaseTime: S.optional(S.String),
+      currencyCode: S.optional(S.String),
+      amountInMicros: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "SeriesSeriesItemSeriesSubscriptionReleaseInfoNextReleaseInfo",
+  }) as any as S.Schema<SeriesSeriesItemSeriesSubscriptionReleaseInfoNextReleaseInfo>;
 
 export interface SeriesSeriesItemSeriesSubscriptionReleaseInfo {
   seriesSubscriptionType?: string;
@@ -1845,14 +2217,21 @@ export interface SeriesSeriesItemSeriesSubscriptionReleaseInfo {
   nextReleaseInfo?: SeriesSeriesItemSeriesSubscriptionReleaseInfoNextReleaseInfo;
   cancelTime?: string;
 }
-export const SeriesSeriesItemSeriesSubscriptionReleaseInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "seriesSubscriptionType": S.optional(S.String),
-  "currentReleaseInfo": S.optional(SeriesSeriesItemSeriesSubscriptionReleaseInfoCurrentReleaseInfo),
-  "nextReleaseInfo": S.optional(SeriesSeriesItemSeriesSubscriptionReleaseInfoNextReleaseInfo),
-  "cancelTime": S.optional(S.String),
-}),
-).annotate({ identifier: "SeriesSeriesItemSeriesSubscriptionReleaseInfo" }) as any as S.Schema<SeriesSeriesItemSeriesSubscriptionReleaseInfo>;
+export const SeriesSeriesItemSeriesSubscriptionReleaseInfo =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      seriesSubscriptionType: S.optional(S.String),
+      currentReleaseInfo: S.optional(
+        SeriesSeriesItemSeriesSubscriptionReleaseInfoCurrentReleaseInfo,
+      ),
+      nextReleaseInfo: S.optional(
+        SeriesSeriesItemSeriesSubscriptionReleaseInfoNextReleaseInfo,
+      ),
+      cancelTime: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "SeriesSeriesItemSeriesSubscriptionReleaseInfo",
+  }) as any as S.Schema<SeriesSeriesItemSeriesSubscriptionReleaseInfo>;
 
 export interface SeriesSeriesItem {
   subscriptionId?: string;
@@ -1867,22 +2246,28 @@ export interface SeriesSeriesItem {
   seriesFormatType?: string;
 }
 export const SeriesSeriesItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "subscriptionId": S.optional(S.String),
-  "seriesSubscriptionReleaseInfo": S.optional(SeriesSeriesItemSeriesSubscriptionReleaseInfo),
-  "bannerImageUrl": S.optional(S.String),
-  "seriesId": S.optional(S.String),
-  "title": S.optional(S.String),
-  "seriesType": S.optional(S.String),
-  "imageUrl": S.optional(S.String),
-  "isComplete": S.optional(S.Boolean),
-  "eligibleForSubscription": S.optional(S.Boolean),
-  "seriesFormatType": S.optional(S.String),
-}),
-).annotate({ identifier: "SeriesSeriesItem" }) as any as S.Schema<SeriesSeriesItem>;
+  S.Struct({
+    subscriptionId: S.optional(S.String),
+    seriesSubscriptionReleaseInfo: S.optional(
+      SeriesSeriesItemSeriesSubscriptionReleaseInfo,
+    ),
+    bannerImageUrl: S.optional(S.String),
+    seriesId: S.optional(S.String),
+    title: S.optional(S.String),
+    seriesType: S.optional(S.String),
+    imageUrl: S.optional(S.String),
+    isComplete: S.optional(S.Boolean),
+    eligibleForSubscription: S.optional(S.Boolean),
+    seriesFormatType: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SeriesSeriesItem",
+}) as any as S.Schema<SeriesSeriesItem>;
 
 export type SeriesSeriesItemList = ReadonlyArray<SeriesSeriesItem>;
-export const SeriesSeriesItemList = /*@__PURE__*/ S.Array(SeriesSeriesItem) as any as S.Schema<SeriesSeriesItemList>;
+export const SeriesSeriesItemList = /*@__PURE__*/ S.Array(
+  SeriesSeriesItem,
+) as any as S.Schema<SeriesSeriesItemList>;
 
 export interface Series {
   series?: SeriesSeriesItemList;
@@ -1890,10 +2275,10 @@ export interface Series {
   kind?: string;
 }
 export const Series = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "series": S.optional(SeriesSeriesItemList),
-  "kind": S.optional(S.String),
-}),
+  S.Struct({
+    series: S.optional(SeriesSeriesItemList),
+    kind: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Series" }) as any as S.Schema<Series>;
 
 export interface GetSeriesMembershipRequest {
@@ -1905,12 +2290,20 @@ export interface GetSeriesMembershipRequest {
   page_size?: number;
 }
 export const GetSeriesMembershipRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "page_token": S.optional(S.String.pipe(T.Query())),
-  "series_id": S.String.pipe(T.Query()),
-  "page_size": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"books/v1/series/membership/get","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "GetSeriesMembershipRequest" }) as any as S.Schema<GetSeriesMembershipRequest>;
+  S.Struct({
+    page_token: S.optional(S.String.pipe(T.Query())),
+    series_id: S.String.pipe(T.Query()),
+    page_size: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "books/v1/series/membership/get",
+      baseUrl: "https://books.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetSeriesMembershipRequest",
+}) as any as S.Schema<GetSeriesMembershipRequest>;
 
 export interface Seriesmembership {
   member?: VolumeList;
@@ -1919,67 +2312,91 @@ export interface Seriesmembership {
   kind?: string;
 }
 export const Seriesmembership = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "member": S.optional(VolumeList),
-  "nextPageToken": S.optional(S.String),
-  "kind": S.optional(S.String),
-}),
-).annotate({ identifier: "Seriesmembership" }) as any as S.Schema<Seriesmembership>;
+  S.Struct({
+    member: S.optional(VolumeList),
+    nextPageToken: S.optional(S.String),
+    kind: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "Seriesmembership",
+}) as any as S.Schema<Seriesmembership>;
 
 export interface GetUserSettingsMyconfigRequest {
   /** Unused. Added only to workaround TEX mandatory request template requirement */
   country?: string;
 }
 export const GetUserSettingsMyconfigRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "country": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"books/v1/myconfig/getUserSettings","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "GetUserSettingsMyconfigRequest" }) as any as S.Schema<GetUserSettingsMyconfigRequest>;
+  S.Struct({
+    country: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "books/v1/myconfig/getUserSettings",
+      baseUrl: "https://books.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetUserSettingsMyconfigRequest",
+}) as any as S.Schema<GetUserSettingsMyconfigRequest>;
 
 export interface UsersettingsNotificationMatchMyInterests {
   opted_state?: string;
 }
-export const UsersettingsNotificationMatchMyInterests = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "opted_state": S.optional(S.String),
-}),
-).annotate({ identifier: "UsersettingsNotificationMatchMyInterests" }) as any as S.Schema<UsersettingsNotificationMatchMyInterests>;
+export const UsersettingsNotificationMatchMyInterests = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      opted_state: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "UsersettingsNotificationMatchMyInterests",
+}) as any as S.Schema<UsersettingsNotificationMatchMyInterests>;
 
 export interface UsersettingsNotificationMoreFromAuthors {
   opted_state?: string;
 }
-export const UsersettingsNotificationMoreFromAuthors = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "opted_state": S.optional(S.String),
-}),
-).annotate({ identifier: "UsersettingsNotificationMoreFromAuthors" }) as any as S.Schema<UsersettingsNotificationMoreFromAuthors>;
+export const UsersettingsNotificationMoreFromAuthors = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      opted_state: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "UsersettingsNotificationMoreFromAuthors",
+}) as any as S.Schema<UsersettingsNotificationMoreFromAuthors>;
 
 export interface UsersettingsNotificationMoreFromSeries {
   opted_state?: string;
 }
-export const UsersettingsNotificationMoreFromSeries = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "opted_state": S.optional(S.String),
-}),
-).annotate({ identifier: "UsersettingsNotificationMoreFromSeries" }) as any as S.Schema<UsersettingsNotificationMoreFromSeries>;
+export const UsersettingsNotificationMoreFromSeries = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      opted_state: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "UsersettingsNotificationMoreFromSeries",
+}) as any as S.Schema<UsersettingsNotificationMoreFromSeries>;
 
 export interface UsersettingsNotificationRewardExpirations {
   opted_state?: string;
 }
-export const UsersettingsNotificationRewardExpirations = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "opted_state": S.optional(S.String),
-}),
-).annotate({ identifier: "UsersettingsNotificationRewardExpirations" }) as any as S.Schema<UsersettingsNotificationRewardExpirations>;
+export const UsersettingsNotificationRewardExpirations =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      opted_state: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "UsersettingsNotificationRewardExpirations",
+  }) as any as S.Schema<UsersettingsNotificationRewardExpirations>;
 
 export interface UsersettingsNotificationPriceDrop {
   opted_state?: string;
 }
 export const UsersettingsNotificationPriceDrop = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "opted_state": S.optional(S.String),
-}),
-).annotate({ identifier: "UsersettingsNotificationPriceDrop" }) as any as S.Schema<UsersettingsNotificationPriceDrop>;
+  S.Struct({
+    opted_state: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UsersettingsNotificationPriceDrop",
+}) as any as S.Schema<UsersettingsNotificationPriceDrop>;
 
 export interface UsersettingsNotification {
   matchMyInterests?: UsersettingsNotificationMatchMyInterests;
@@ -1989,25 +2406,29 @@ export interface UsersettingsNotification {
   priceDrop?: UsersettingsNotificationPriceDrop;
 }
 export const UsersettingsNotification = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "matchMyInterests": S.optional(UsersettingsNotificationMatchMyInterests),
-  "moreFromAuthors": S.optional(UsersettingsNotificationMoreFromAuthors),
-  "moreFromSeries": S.optional(UsersettingsNotificationMoreFromSeries),
-  "rewardExpirations": S.optional(UsersettingsNotificationRewardExpirations),
-  "priceDrop": S.optional(UsersettingsNotificationPriceDrop),
-}),
-).annotate({ identifier: "UsersettingsNotification" }) as any as S.Schema<UsersettingsNotification>;
+  S.Struct({
+    matchMyInterests: S.optional(UsersettingsNotificationMatchMyInterests),
+    moreFromAuthors: S.optional(UsersettingsNotificationMoreFromAuthors),
+    moreFromSeries: S.optional(UsersettingsNotificationMoreFromSeries),
+    rewardExpirations: S.optional(UsersettingsNotificationRewardExpirations),
+    priceDrop: S.optional(UsersettingsNotificationPriceDrop),
+  }),
+).annotate({
+  identifier: "UsersettingsNotification",
+}) as any as S.Schema<UsersettingsNotification>;
 
 export interface UsersettingsNotesExport {
   isEnabled?: boolean;
   folderName?: string;
 }
 export const UsersettingsNotesExport = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "isEnabled": S.optional(S.Boolean),
-  "folderName": S.optional(S.String),
-}),
-).annotate({ identifier: "UsersettingsNotesExport" }) as any as S.Schema<UsersettingsNotesExport>;
+  S.Struct({
+    isEnabled: S.optional(S.Boolean),
+    folderName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UsersettingsNotesExport",
+}) as any as S.Schema<UsersettingsNotesExport>;
 
 export interface Usersettings {
   notification?: UsersettingsNotification;
@@ -2017,11 +2438,11 @@ export interface Usersettings {
   notesExport?: UsersettingsNotesExport;
 }
 export const Usersettings = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "notification": S.optional(UsersettingsNotification),
-  "kind": S.optional(S.String),
-  "notesExport": S.optional(UsersettingsNotesExport),
-}),
+  S.Struct({
+    notification: S.optional(UsersettingsNotification),
+    kind: S.optional(S.String),
+    notesExport: S.optional(UsersettingsNotesExport),
+  }),
 ).annotate({ identifier: "Usersettings" }) as any as S.Schema<Usersettings>;
 
 export type GetVolumesProjectionEnum = "PROJECTION_UNDEFINED" | "FULL" | "LITE";
@@ -2043,16 +2464,24 @@ export interface GetVolumesRequest {
   includeNonComicsSeries?: boolean;
 }
 export const GetVolumesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projection": S.optional(GetVolumesProjectionEnum.pipe(T.Query())),
-  "volumeId": S.String.pipe(T.Label()),
-  "source": S.optional(S.String.pipe(T.Query())),
-  "user_library_consistent_read": S.optional(S.Boolean.pipe(T.Query())),
-  "country": S.optional(S.String.pipe(T.Query())),
-  "partner": S.optional(S.String.pipe(T.Query())),
-  "includeNonComicsSeries": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"books/v1/volumes/{volumeId}","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "GetVolumesRequest" }) as any as S.Schema<GetVolumesRequest>;
+  S.Struct({
+    projection: S.optional(GetVolumesProjectionEnum.pipe(T.Query())),
+    volumeId: S.String.pipe(T.Label()),
+    source: S.optional(S.String.pipe(T.Query())),
+    user_library_consistent_read: S.optional(S.Boolean.pipe(T.Query())),
+    country: S.optional(S.String.pipe(T.Query())),
+    partner: S.optional(S.String.pipe(T.Query())),
+    includeNonComicsSeries: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "books/v1/volumes/{volumeId}",
+      baseUrl: "https://books.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetVolumesRequest",
+}) as any as S.Schema<GetVolumesRequest>;
 
 export interface AnnotationClientVersionRanges {
   /** Range in GB text format for this annotation sent by client. */
@@ -2067,14 +2496,16 @@ export interface AnnotationClientVersionRanges {
   imageCfiRange?: BooksAnnotationsRange;
 }
 export const AnnotationClientVersionRanges = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "gbTextRange": S.optional(BooksAnnotationsRange),
-  "cfiRange": S.optional(BooksAnnotationsRange),
-  "gbImageRange": S.optional(BooksAnnotationsRange),
-  "contentVersion": S.optional(S.String),
-  "imageCfiRange": S.optional(BooksAnnotationsRange),
-}),
-).annotate({ identifier: "AnnotationClientVersionRanges" }) as any as S.Schema<AnnotationClientVersionRanges>;
+  S.Struct({
+    gbTextRange: S.optional(BooksAnnotationsRange),
+    cfiRange: S.optional(BooksAnnotationsRange),
+    gbImageRange: S.optional(BooksAnnotationsRange),
+    contentVersion: S.optional(S.String),
+    imageCfiRange: S.optional(BooksAnnotationsRange),
+  }),
+).annotate({
+  identifier: "AnnotationClientVersionRanges",
+}) as any as S.Schema<AnnotationClientVersionRanges>;
 
 export interface AnnotationCurrentVersionRanges {
   /** Range in GB image format for this annotation for version above. */
@@ -2089,14 +2520,16 @@ export interface AnnotationCurrentVersionRanges {
   cfiRange?: BooksAnnotationsRange;
 }
 export const AnnotationCurrentVersionRanges = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "gbImageRange": S.optional(BooksAnnotationsRange),
-  "contentVersion": S.optional(S.String),
-  "imageCfiRange": S.optional(BooksAnnotationsRange),
-  "gbTextRange": S.optional(BooksAnnotationsRange),
-  "cfiRange": S.optional(BooksAnnotationsRange),
-}),
-).annotate({ identifier: "AnnotationCurrentVersionRanges" }) as any as S.Schema<AnnotationCurrentVersionRanges>;
+  S.Struct({
+    gbImageRange: S.optional(BooksAnnotationsRange),
+    contentVersion: S.optional(S.String),
+    imageCfiRange: S.optional(BooksAnnotationsRange),
+    gbTextRange: S.optional(BooksAnnotationsRange),
+    cfiRange: S.optional(BooksAnnotationsRange),
+  }),
+).annotate({
+  identifier: "AnnotationCurrentVersionRanges",
+}) as any as S.Schema<AnnotationCurrentVersionRanges>;
 
 export interface AnnotationLayerSummary {
   /** Type of limitation on this layer. "limited" or "unlimited" for the "copy" layer. */
@@ -2107,12 +2540,14 @@ export interface AnnotationLayerSummary {
   allowedCharacterCount?: number;
 }
 export const AnnotationLayerSummary = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "limitType": S.optional(S.String),
-  "remainingCharacterCount": S.optional(S.Number),
-  "allowedCharacterCount": S.optional(S.Number),
-}),
-).annotate({ identifier: "AnnotationLayerSummary" }) as any as S.Schema<AnnotationLayerSummary>;
+  S.Struct({
+    limitType: S.optional(S.String),
+    remainingCharacterCount: S.optional(S.Number),
+    allowedCharacterCount: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "AnnotationLayerSummary",
+}) as any as S.Schema<AnnotationLayerSummary>;
 
 export interface Annotation {
   /** Id of this annotation, in the form of a GUID. */
@@ -2150,25 +2585,25 @@ export interface Annotation {
   selfLink?: string;
 }
 export const Annotation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.optional(S.String),
-  "layerId": S.optional(S.String),
-  "clientVersionRanges": S.optional(AnnotationClientVersionRanges),
-  "created": S.optional(S.String),
-  "pageIds": S.optional(StringList),
-  "afterSelectedText": S.optional(S.String),
-  "data": S.optional(S.String),
-  "currentVersionRanges": S.optional(AnnotationCurrentVersionRanges),
-  "layerSummary": S.optional(AnnotationLayerSummary),
-  "volumeId": S.optional(S.String),
-  "deleted": S.optional(S.Boolean),
-  "highlightStyle": S.optional(S.String),
-  "selectedText": S.optional(S.String),
-  "updated": S.optional(S.String),
-  "beforeSelectedText": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "selfLink": S.optional(S.String),
-}),
+  S.Struct({
+    id: S.optional(S.String),
+    layerId: S.optional(S.String),
+    clientVersionRanges: S.optional(AnnotationClientVersionRanges),
+    created: S.optional(S.String),
+    pageIds: S.optional(StringList),
+    afterSelectedText: S.optional(S.String),
+    data: S.optional(S.String),
+    currentVersionRanges: S.optional(AnnotationCurrentVersionRanges),
+    layerSummary: S.optional(AnnotationLayerSummary),
+    volumeId: S.optional(S.String),
+    deleted: S.optional(S.Boolean),
+    highlightStyle: S.optional(S.String),
+    selectedText: S.optional(S.String),
+    updated: S.optional(S.String),
+    beforeSelectedText: S.optional(S.String),
+    kind: S.optional(S.String),
+    selfLink: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Annotation" }) as any as S.Schema<Annotation>;
 
 export interface InsertMylibraryAnnotationsRequest {
@@ -2184,14 +2619,22 @@ export interface InsertMylibraryAnnotationsRequest {
   body?: Annotation;
 }
 export const InsertMylibraryAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "annotationId": S.optional(S.String.pipe(T.Query())),
-  "showOnlySummaryInResponse": S.optional(S.Boolean.pipe(T.Query())),
-  "source": S.optional(S.String.pipe(T.Query())),
-  "country": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Annotation.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"books/v1/mylibrary/annotations","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "InsertMylibraryAnnotationsRequest" }) as any as S.Schema<InsertMylibraryAnnotationsRequest>;
+  S.Struct({
+    annotationId: S.optional(S.String.pipe(T.Query())),
+    showOnlySummaryInResponse: S.optional(S.Boolean.pipe(T.Query())),
+    source: S.optional(S.String.pipe(T.Query())),
+    country: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(Annotation.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "books/v1/mylibrary/annotations",
+      baseUrl: "https://books.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "InsertMylibraryAnnotationsRequest",
+}) as any as S.Schema<InsertMylibraryAnnotationsRequest>;
 
 export interface ListBookshelvesRequest {
   /** ID of user for whom to retrieve bookshelves. */
@@ -2200,14 +2643,24 @@ export interface ListBookshelvesRequest {
   source?: string;
 }
 export const ListBookshelvesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "userId": S.String.pipe(T.Label()),
-  "source": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"books/v1/users/{userId}/bookshelves","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "ListBookshelvesRequest" }) as any as S.Schema<ListBookshelvesRequest>;
+  S.Struct({
+    userId: S.String.pipe(T.Label()),
+    source: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "books/v1/users/{userId}/bookshelves",
+      baseUrl: "https://books.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListBookshelvesRequest",
+}) as any as S.Schema<ListBookshelvesRequest>;
 
 export type BookshelfList = ReadonlyArray<Bookshelf>;
-export const BookshelfList = /*@__PURE__*/ S.Array(Bookshelf) as any as S.Schema<BookshelfList>;
+export const BookshelfList = /*@__PURE__*/ S.Array(
+  Bookshelf,
+) as any as S.Schema<BookshelfList>;
 
 export interface Bookshelves {
   /** Resource type. */
@@ -2216,10 +2669,10 @@ export interface Bookshelves {
   items?: BookshelfList;
 }
 export const Bookshelves = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "items": S.optional(BookshelfList),
-}),
+  S.Struct({
+    kind: S.optional(S.String),
+    items: S.optional(BookshelfList),
+  }),
 ).annotate({ identifier: "Bookshelves" }) as any as S.Schema<Bookshelves>;
 
 export interface ListBookshelvesVolumesRequest {
@@ -2237,15 +2690,23 @@ export interface ListBookshelvesVolumesRequest {
   showPreorders?: boolean;
 }
 export const ListBookshelvesVolumesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "shelf": S.String.pipe(T.Label()),
-  "startIndex": S.optional(S.Number.pipe(T.Query())),
-  "userId": S.String.pipe(T.Label()),
-  "source": S.optional(S.String.pipe(T.Query())),
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-  "showPreorders": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"books/v1/users/{userId}/bookshelves/{shelf}/volumes","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "ListBookshelvesVolumesRequest" }) as any as S.Schema<ListBookshelvesVolumesRequest>;
+  S.Struct({
+    shelf: S.String.pipe(T.Label()),
+    startIndex: S.optional(S.Number.pipe(T.Query())),
+    userId: S.String.pipe(T.Label()),
+    source: S.optional(S.String.pipe(T.Query())),
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+    showPreorders: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "books/v1/users/{userId}/bookshelves/{shelf}/volumes",
+      baseUrl: "https://books.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListBookshelvesVolumesRequest",
+}) as any as S.Schema<ListBookshelvesVolumesRequest>;
 
 export interface Volumes {
   /** Total number of volumes found. This might be greater than the number of volumes returned in this response if results have been paginated. */
@@ -2256,11 +2717,11 @@ export interface Volumes {
   items?: VolumeList;
 }
 export const Volumes = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "totalItems": S.optional(S.Number),
-  "kind": S.optional(S.String),
-  "items": S.optional(VolumeList),
-}),
+  S.Struct({
+    totalItems: S.optional(S.Number),
+    kind: S.optional(S.String),
+    items: S.optional(VolumeList),
+  }),
 ).annotate({ identifier: "Volumes" }) as any as S.Schema<Volumes>;
 
 export interface ListCategoriesOnboardingRequest {
@@ -2268,10 +2729,18 @@ export interface ListCategoriesOnboardingRequest {
   locale?: string;
 }
 export const ListCategoriesOnboardingRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locale": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"books/v1/onboarding/listCategories","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "ListCategoriesOnboardingRequest" }) as any as S.Schema<ListCategoriesOnboardingRequest>;
+  S.Struct({
+    locale: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "books/v1/onboarding/listCategories",
+      baseUrl: "https://books.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListCategoriesOnboardingRequest",
+}) as any as S.Schema<ListCategoriesOnboardingRequest>;
 
 export interface CategoryItemsItem {
   name?: string;
@@ -2279,15 +2748,19 @@ export interface CategoryItemsItem {
   categoryId?: string;
 }
 export const CategoryItemsItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "badgeUrl": S.optional(S.String),
-  "categoryId": S.optional(S.String),
-}),
-).annotate({ identifier: "CategoryItemsItem" }) as any as S.Schema<CategoryItemsItem>;
+  S.Struct({
+    name: S.optional(S.String),
+    badgeUrl: S.optional(S.String),
+    categoryId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CategoryItemsItem",
+}) as any as S.Schema<CategoryItemsItem>;
 
 export type CategoryItemsItemList = ReadonlyArray<CategoryItemsItem>;
-export const CategoryItemsItemList = /*@__PURE__*/ S.Array(CategoryItemsItem) as any as S.Schema<CategoryItemsItemList>;
+export const CategoryItemsItemList = /*@__PURE__*/ S.Array(
+  CategoryItemsItem,
+) as any as S.Schema<CategoryItemsItemList>;
 
 export interface Category {
   /** Resource type. */
@@ -2296,14 +2769,18 @@ export interface Category {
   items?: CategoryItemsItemList;
 }
 export const Category = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "items": S.optional(CategoryItemsItemList),
-}),
+  S.Struct({
+    kind: S.optional(S.String),
+    items: S.optional(CategoryItemsItemList),
+  }),
 ).annotate({ identifier: "Category" }) as any as S.Schema<Category>;
 
-export type ListCategoryVolumesOnboardingMaxAllowedMaturityRatingEnum = "MAX_ALLOWED_MATURITY_RATING_UNDEFINED" | "MATURE" | "not-mature";
-export const ListCategoryVolumesOnboardingMaxAllowedMaturityRatingEnum = /*@__PURE__*/ S.String;
+export type ListCategoryVolumesOnboardingMaxAllowedMaturityRatingEnum =
+  | "MAX_ALLOWED_MATURITY_RATING_UNDEFINED"
+  | "MATURE"
+  | "not-mature";
+export const ListCategoryVolumesOnboardingMaxAllowedMaturityRatingEnum =
+  /*@__PURE__*/ S.String;
 
 export interface ListCategoryVolumesOnboardingRequest {
   /** List of category ids requested. */
@@ -2311,21 +2788,36 @@ export interface ListCategoryVolumesOnboardingRequest {
   /** The value of the nextToken from the previous page. */
   pageToken?: string;
   /** The maximum allowed maturity rating of returned volumes. Books with a higher maturity rating are filtered out. */
-  maxAllowedMaturityRating?: ListCategoryVolumesOnboardingMaxAllowedMaturityRatingEnum | (string & {});
+  maxAllowedMaturityRating?:
+    | ListCategoryVolumesOnboardingMaxAllowedMaturityRatingEnum
+    | (string & {});
   /** Number of maximum results per page to be included in the response. */
   pageSize?: number;
   /** ISO-639-1 language and ISO-3166-1 country code. Default is en-US if unset. */
   locale?: string;
 }
-export const ListCategoryVolumesOnboardingRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "categoryId": S.optional(StringList.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "maxAllowedMaturityRating": S.optional(ListCategoryVolumesOnboardingMaxAllowedMaturityRatingEnum.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "locale": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"books/v1/onboarding/listCategoryVolumes","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "ListCategoryVolumesOnboardingRequest" }) as any as S.Schema<ListCategoryVolumesOnboardingRequest>;
+export const ListCategoryVolumesOnboardingRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      categoryId: S.optional(StringList.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      maxAllowedMaturityRating: S.optional(
+        ListCategoryVolumesOnboardingMaxAllowedMaturityRatingEnum.pipe(
+          T.Query(),
+        ),
+      ),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      locale: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "books/v1/onboarding/listCategoryVolumes",
+        baseUrl: "https://books.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListCategoryVolumesOnboardingRequest",
+}) as any as S.Schema<ListCategoryVolumesOnboardingRequest>;
 
 export interface Volume2 {
   /** Resource type. */
@@ -2335,11 +2827,11 @@ export interface Volume2 {
   nextPageToken?: string;
 }
 export const Volume2 = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "items": VolumeList,
-  "nextPageToken": S.optional(S.String),
-}),
+  S.Struct({
+    kind: S.optional(S.String),
+    items: VolumeList,
+    nextPageToken: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Volume2" }) as any as S.Schema<Volume2>;
 
 export interface ListLayersRequest {
@@ -2355,17 +2847,27 @@ export interface ListLayersRequest {
   maxResults?: number;
 }
 export const ListLayersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "volumeId": S.String.pipe(T.Label()),
-  "source": S.optional(S.String.pipe(T.Query())),
-  "contentVersion": S.optional(S.String.pipe(T.Query())),
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"books/v1/volumes/{volumeId}/layersummary","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "ListLayersRequest" }) as any as S.Schema<ListLayersRequest>;
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    volumeId: S.String.pipe(T.Label()),
+    source: S.optional(S.String.pipe(T.Query())),
+    contentVersion: S.optional(S.String.pipe(T.Query())),
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "books/v1/volumes/{volumeId}/layersummary",
+      baseUrl: "https://books.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListLayersRequest",
+}) as any as S.Schema<ListLayersRequest>;
 
 export type LayersummaryList = ReadonlyArray<Layersummary>;
-export const LayersummaryList = /*@__PURE__*/ S.Array(Layersummary) as any as S.Schema<LayersummaryList>;
+export const LayersummaryList = /*@__PURE__*/ S.Array(
+  Layersummary,
+) as any as S.Schema<LayersummaryList>;
 
 export interface Layersummaries {
   /** Resource type. */
@@ -2376,11 +2878,11 @@ export interface Layersummaries {
   totalItems?: number;
 }
 export const Layersummaries = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "items": S.optional(LayersummaryList),
-  "totalItems": S.optional(S.Number),
-}),
+  S.Struct({
+    kind: S.optional(S.String),
+    items: S.optional(LayersummaryList),
+    totalItems: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "Layersummaries" }) as any as S.Schema<Layersummaries>;
 
 export interface ListLayersAnnotationDataRequest {
@@ -2412,55 +2914,69 @@ export interface ListLayersAnnotationDataRequest {
   maxResults?: number;
 }
 export const ListLayersAnnotationDataRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "h": S.optional(S.Number.pipe(T.Query())),
-  "scale": S.optional(S.Number.pipe(T.Query())),
-  "updatedMax": S.optional(S.String.pipe(T.Query())),
-  "volumeId": S.String.pipe(T.Label()),
-  "annotationDataId": S.optional(StringList.pipe(T.Query())),
-  "locale": S.optional(S.String.pipe(T.Query())),
-  "updatedMin": S.optional(S.String.pipe(T.Query())),
-  "w": S.optional(S.Number.pipe(T.Query())),
-  "contentVersion": S.String.pipe(T.Query()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "source": S.optional(S.String.pipe(T.Query())),
-  "layerId": S.String.pipe(T.Label()),
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"books/v1/volumes/{volumeId}/layers/{layerId}/data","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "ListLayersAnnotationDataRequest" }) as any as S.Schema<ListLayersAnnotationDataRequest>;
+  S.Struct({
+    h: S.optional(S.Number.pipe(T.Query())),
+    scale: S.optional(S.Number.pipe(T.Query())),
+    updatedMax: S.optional(S.String.pipe(T.Query())),
+    volumeId: S.String.pipe(T.Label()),
+    annotationDataId: S.optional(StringList.pipe(T.Query())),
+    locale: S.optional(S.String.pipe(T.Query())),
+    updatedMin: S.optional(S.String.pipe(T.Query())),
+    w: S.optional(S.Number.pipe(T.Query())),
+    contentVersion: S.String.pipe(T.Query()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    source: S.optional(S.String.pipe(T.Query())),
+    layerId: S.String.pipe(T.Label()),
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "books/v1/volumes/{volumeId}/layers/{layerId}/data",
+      baseUrl: "https://books.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListLayersAnnotationDataRequest",
+}) as any as S.Schema<ListLayersAnnotationDataRequest>;
 
 export interface GeolayerdataGeoViewportLo {
   longitude?: number;
   latitude?: number;
 }
 export const GeolayerdataGeoViewportLo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "longitude": S.optional(S.Number),
-  "latitude": S.optional(S.Number),
-}),
-).annotate({ identifier: "GeolayerdataGeoViewportLo" }) as any as S.Schema<GeolayerdataGeoViewportLo>;
+  S.Struct({
+    longitude: S.optional(S.Number),
+    latitude: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "GeolayerdataGeoViewportLo",
+}) as any as S.Schema<GeolayerdataGeoViewportLo>;
 
 export interface GeolayerdataGeoViewportHi {
   longitude?: number;
   latitude?: number;
 }
 export const GeolayerdataGeoViewportHi = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "longitude": S.optional(S.Number),
-  "latitude": S.optional(S.Number),
-}),
-).annotate({ identifier: "GeolayerdataGeoViewportHi" }) as any as S.Schema<GeolayerdataGeoViewportHi>;
+  S.Struct({
+    longitude: S.optional(S.Number),
+    latitude: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "GeolayerdataGeoViewportHi",
+}) as any as S.Schema<GeolayerdataGeoViewportHi>;
 
 export interface GeolayerdataGeoViewport {
   lo?: GeolayerdataGeoViewportLo;
   hi?: GeolayerdataGeoViewportHi;
 }
 export const GeolayerdataGeoViewport = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "lo": S.optional(GeolayerdataGeoViewportLo),
-  "hi": S.optional(GeolayerdataGeoViewportHi),
-}),
-).annotate({ identifier: "GeolayerdataGeoViewport" }) as any as S.Schema<GeolayerdataGeoViewport>;
+  S.Struct({
+    lo: S.optional(GeolayerdataGeoViewportLo),
+    hi: S.optional(GeolayerdataGeoViewportHi),
+  }),
+).annotate({
+  identifier: "GeolayerdataGeoViewport",
+}) as any as S.Schema<GeolayerdataGeoViewport>;
 
 export interface GeolayerdataGeo {
   /** The country code of the location. */
@@ -2481,17 +2997,19 @@ export interface GeolayerdataGeo {
   cachePolicy?: string;
 }
 export const GeolayerdataGeo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "countryCode": S.optional(S.String),
-  "zoom": S.optional(S.Number),
-  "latitude": S.optional(S.Number),
-  "longitude": S.optional(S.Number),
-  "boundary": S.optional(StringList),
-  "viewport": S.optional(GeolayerdataGeoViewport),
-  "mapType": S.optional(S.String),
-  "cachePolicy": S.optional(S.String),
-}),
-).annotate({ identifier: "GeolayerdataGeo" }) as any as S.Schema<GeolayerdataGeo>;
+  S.Struct({
+    countryCode: S.optional(S.String),
+    zoom: S.optional(S.Number),
+    latitude: S.optional(S.Number),
+    longitude: S.optional(S.Number),
+    boundary: S.optional(StringList),
+    viewport: S.optional(GeolayerdataGeoViewport),
+    mapType: S.optional(S.String),
+    cachePolicy: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GeolayerdataGeo",
+}) as any as S.Schema<GeolayerdataGeo>;
 
 export interface GeolayerdataCommon {
   /** The language of the information url and description. */
@@ -2506,14 +3024,16 @@ export interface GeolayerdataCommon {
   snippetUrl?: string;
 }
 export const GeolayerdataCommon = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "lang": S.optional(S.String),
-  "previewImageUrl": S.optional(S.String),
-  "title": S.optional(S.String),
-  "snippet": S.optional(S.String),
-  "snippetUrl": S.optional(S.String),
-}),
-).annotate({ identifier: "GeolayerdataCommon" }) as any as S.Schema<GeolayerdataCommon>;
+  S.Struct({
+    lang: S.optional(S.String),
+    previewImageUrl: S.optional(S.String),
+    title: S.optional(S.String),
+    snippet: S.optional(S.String),
+    snippetUrl: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GeolayerdataCommon",
+}) as any as S.Schema<GeolayerdataCommon>;
 
 export interface Geolayerdata {
   kind?: string;
@@ -2521,11 +3041,11 @@ export interface Geolayerdata {
   common?: GeolayerdataCommon;
 }
 export const Geolayerdata = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "geo": S.optional(GeolayerdataGeo),
-  "common": S.optional(GeolayerdataCommon),
-}),
+  S.Struct({
+    kind: S.optional(S.String),
+    geo: S.optional(GeolayerdataGeo),
+    common: S.optional(GeolayerdataCommon),
+  }),
 ).annotate({ identifier: "Geolayerdata" }) as any as S.Schema<Geolayerdata>;
 
 export interface GeoAnnotationdata {
@@ -2549,21 +3069,25 @@ export interface GeoAnnotationdata {
   volumeId?: string;
 }
 export const GeoAnnotationdata = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "selfLink": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "updated": S.optional(S.String),
-  "annotationType": S.optional(S.String),
-  "id": S.optional(S.String),
-  "layerId": S.optional(S.String),
-  "encodedData": S.optional(S.String),
-  "data": S.optional(Geolayerdata),
-  "volumeId": S.optional(S.String),
-}),
-).annotate({ identifier: "GeoAnnotationdata" }) as any as S.Schema<GeoAnnotationdata>;
+  S.Struct({
+    selfLink: S.optional(S.String),
+    kind: S.optional(S.String),
+    updated: S.optional(S.String),
+    annotationType: S.optional(S.String),
+    id: S.optional(S.String),
+    layerId: S.optional(S.String),
+    encodedData: S.optional(S.String),
+    data: S.optional(Geolayerdata),
+    volumeId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GeoAnnotationdata",
+}) as any as S.Schema<GeoAnnotationdata>;
 
 export type GeoAnnotationdataList = ReadonlyArray<GeoAnnotationdata>;
-export const GeoAnnotationdataList = /*@__PURE__*/ S.Array(GeoAnnotationdata) as any as S.Schema<GeoAnnotationdataList>;
+export const GeoAnnotationdataList = /*@__PURE__*/ S.Array(
+  GeoAnnotationdata,
+) as any as S.Schema<GeoAnnotationdataList>;
 
 export interface Annotationsdata {
   /** Token to pass in for pagination for the next page. This will not be present if this request does not have more results. */
@@ -2576,13 +3100,15 @@ export interface Annotationsdata {
   totalItems?: number;
 }
 export const Annotationsdata = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "items": GeoAnnotationdataList,
-  "totalItems": S.optional(S.Number),
-}),
-).annotate({ identifier: "Annotationsdata" }) as any as S.Schema<Annotationsdata>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    kind: S.optional(S.String),
+    items: GeoAnnotationdataList,
+    totalItems: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "Annotationsdata",
+}) as any as S.Schema<Annotationsdata>;
 
 export interface ListLayersVolumeAnnotationsRequest {
   /** The version of the volume annotations that you are requesting. */
@@ -2617,27 +3143,37 @@ export interface ListLayersVolumeAnnotationsRequest {
   updatedMin?: string;
 }
 export const ListLayersVolumeAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "volumeAnnotationsVersion": S.optional(S.String.pipe(T.Query())),
-  "contentVersion": S.String.pipe(T.Query()),
-  "endPosition": S.optional(S.String.pipe(T.Query())),
-  "endOffset": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "showDeleted": S.optional(S.Boolean.pipe(T.Query())),
-  "source": S.optional(S.String.pipe(T.Query())),
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-  "layerId": S.String.pipe(T.Label()),
-  "startOffset": S.optional(S.String.pipe(T.Query())),
-  "updatedMax": S.optional(S.String.pipe(T.Query())),
-  "locale": S.optional(S.String.pipe(T.Query())),
-  "volumeId": S.String.pipe(T.Label()),
-  "startPosition": S.optional(S.String.pipe(T.Query())),
-  "updatedMin": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"books/v1/volumes/{volumeId}/layers/{layerId}","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "ListLayersVolumeAnnotationsRequest" }) as any as S.Schema<ListLayersVolumeAnnotationsRequest>;
+  S.Struct({
+    volumeAnnotationsVersion: S.optional(S.String.pipe(T.Query())),
+    contentVersion: S.String.pipe(T.Query()),
+    endPosition: S.optional(S.String.pipe(T.Query())),
+    endOffset: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    showDeleted: S.optional(S.Boolean.pipe(T.Query())),
+    source: S.optional(S.String.pipe(T.Query())),
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+    layerId: S.String.pipe(T.Label()),
+    startOffset: S.optional(S.String.pipe(T.Query())),
+    updatedMax: S.optional(S.String.pipe(T.Query())),
+    locale: S.optional(S.String.pipe(T.Query())),
+    volumeId: S.String.pipe(T.Label()),
+    startPosition: S.optional(S.String.pipe(T.Query())),
+    updatedMin: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "books/v1/volumes/{volumeId}/layers/{layerId}",
+      baseUrl: "https://books.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListLayersVolumeAnnotationsRequest",
+}) as any as S.Schema<ListLayersVolumeAnnotationsRequest>;
 
 export type VolumeannotationList = ReadonlyArray<Volumeannotation>;
-export const VolumeannotationList = /*@__PURE__*/ S.Array(Volumeannotation) as any as S.Schema<VolumeannotationList>;
+export const VolumeannotationList = /*@__PURE__*/ S.Array(
+  Volumeannotation,
+) as any as S.Schema<VolumeannotationList>;
 
 export interface Volumeannotations {
   /** The total number of volume annotations found. */
@@ -2652,14 +3188,16 @@ export interface Volumeannotations {
   items: VolumeannotationList;
 }
 export const Volumeannotations = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "totalItems": S.optional(S.Number),
-  "version": S.optional(S.String),
-  "nextPageToken": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "items": VolumeannotationList,
-}),
-).annotate({ identifier: "Volumeannotations" }) as any as S.Schema<Volumeannotations>;
+  S.Struct({
+    totalItems: S.optional(S.Number),
+    version: S.optional(S.String),
+    nextPageToken: S.optional(S.String),
+    kind: S.optional(S.String),
+    items: VolumeannotationList,
+  }),
+).annotate({
+  identifier: "Volumeannotations",
+}) as any as S.Schema<Volumeannotations>;
 
 export interface ListMylibraryAnnotationsRequest {
   /** The content version for the requested volume. */
@@ -2684,22 +3222,32 @@ export interface ListMylibraryAnnotationsRequest {
   updatedMin?: string;
 }
 export const ListMylibraryAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "contentVersion": S.optional(S.String.pipe(T.Query())),
-  "volumeId": S.optional(S.String.pipe(T.Query())),
-  "source": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "showDeleted": S.optional(S.Boolean.pipe(T.Query())),
-  "updatedMax": S.optional(S.String.pipe(T.Query())),
-  "layerId": S.optional(S.String.pipe(T.Query())),
-  "layerIds": S.optional(StringList.pipe(T.Query())),
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-  "updatedMin": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"books/v1/mylibrary/annotations","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "ListMylibraryAnnotationsRequest" }) as any as S.Schema<ListMylibraryAnnotationsRequest>;
+  S.Struct({
+    contentVersion: S.optional(S.String.pipe(T.Query())),
+    volumeId: S.optional(S.String.pipe(T.Query())),
+    source: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    showDeleted: S.optional(S.Boolean.pipe(T.Query())),
+    updatedMax: S.optional(S.String.pipe(T.Query())),
+    layerId: S.optional(S.String.pipe(T.Query())),
+    layerIds: S.optional(StringList.pipe(T.Query())),
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+    updatedMin: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "books/v1/mylibrary/annotations",
+      baseUrl: "https://books.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListMylibraryAnnotationsRequest",
+}) as any as S.Schema<ListMylibraryAnnotationsRequest>;
 
 export type AnnotationList = ReadonlyArray<Annotation>;
-export const AnnotationList = /*@__PURE__*/ S.Array(Annotation) as any as S.Schema<AnnotationList>;
+export const AnnotationList = /*@__PURE__*/ S.Array(
+  Annotation,
+) as any as S.Schema<AnnotationList>;
 
 export interface Annotations {
   /** Total number of annotations found. This may be greater than the number of notes returned in this response if results have been paginated. */
@@ -2712,12 +3260,12 @@ export interface Annotations {
   nextPageToken?: string;
 }
 export const Annotations = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "totalItems": S.optional(S.Number),
-  "kind": S.optional(S.String),
-  "items": AnnotationList,
-  "nextPageToken": S.optional(S.String),
-}),
+  S.Struct({
+    totalItems: S.optional(S.Number),
+    kind: S.optional(S.String),
+    items: AnnotationList,
+    nextPageToken: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Annotations" }) as any as S.Schema<Annotations>;
 
 export interface ListMylibraryBookshelvesRequest {
@@ -2725,13 +3273,25 @@ export interface ListMylibraryBookshelvesRequest {
   source?: string;
 }
 export const ListMylibraryBookshelvesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "source": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"books/v1/mylibrary/bookshelves","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "ListMylibraryBookshelvesRequest" }) as any as S.Schema<ListMylibraryBookshelvesRequest>;
+  S.Struct({
+    source: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "books/v1/mylibrary/bookshelves",
+      baseUrl: "https://books.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListMylibraryBookshelvesRequest",
+}) as any as S.Schema<ListMylibraryBookshelvesRequest>;
 
-export type ListMylibraryBookshelvesVolumesProjectionEnum = "PROJECTION_UNDEFINED" | "FULL" | "LITE";
-export const ListMylibraryBookshelvesVolumesProjectionEnum = /*@__PURE__*/ S.String;
+export type ListMylibraryBookshelvesVolumesProjectionEnum =
+  | "PROJECTION_UNDEFINED"
+  | "FULL"
+  | "LITE";
+export const ListMylibraryBookshelvesVolumesProjectionEnum =
+  /*@__PURE__*/ S.String;
 
 export interface ListMylibraryBookshelvesVolumesRequest {
   /** ISO-3166-1 code to override the IP-based location. */
@@ -2751,28 +3311,48 @@ export interface ListMylibraryBookshelvesVolumesRequest {
   /** String to identify the originator of this request. */
   source?: string;
 }
-export const ListMylibraryBookshelvesVolumesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "country": S.optional(S.String.pipe(T.Query())),
-  "q": S.optional(S.String.pipe(T.Query())),
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-  "showPreorders": S.optional(S.Boolean.pipe(T.Query())),
-  "projection": S.optional(ListMylibraryBookshelvesVolumesProjectionEnum.pipe(T.Query())),
-  "shelf": S.String.pipe(T.Label()),
-  "startIndex": S.optional(S.Number.pipe(T.Query())),
-  "source": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"books/v1/mylibrary/bookshelves/{shelf}/volumes","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "ListMylibraryBookshelvesVolumesRequest" }) as any as S.Schema<ListMylibraryBookshelvesVolumesRequest>;
+export const ListMylibraryBookshelvesVolumesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      country: S.optional(S.String.pipe(T.Query())),
+      q: S.optional(S.String.pipe(T.Query())),
+      maxResults: S.optional(S.Number.pipe(T.Query())),
+      showPreorders: S.optional(S.Boolean.pipe(T.Query())),
+      projection: S.optional(
+        ListMylibraryBookshelvesVolumesProjectionEnum.pipe(T.Query()),
+      ),
+      shelf: S.String.pipe(T.Label()),
+      startIndex: S.optional(S.Number.pipe(T.Query())),
+      source: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "books/v1/mylibrary/bookshelves/{shelf}/volumes",
+        baseUrl: "https://books.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListMylibraryBookshelvesVolumesRequest",
+}) as any as S.Schema<ListMylibraryBookshelvesVolumesRequest>;
 
 export interface ListOfflineMetadataDictionaryRequest {
   /** The device/version ID from which to request the data. */
   cpksver: string;
 }
-export const ListOfflineMetadataDictionaryRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "cpksver": S.String.pipe(T.Query()),
-}).pipe(T.Http({"method":"GET","uri":"books/v1/dictionary/listOfflineMetadata","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "ListOfflineMetadataDictionaryRequest" }) as any as S.Schema<ListOfflineMetadataDictionaryRequest>;
+export const ListOfflineMetadataDictionaryRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      cpksver: S.String.pipe(T.Query()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "books/v1/dictionary/listOfflineMetadata",
+        baseUrl: "https://books.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListOfflineMetadataDictionaryRequest",
+}) as any as S.Schema<ListOfflineMetadataDictionaryRequest>;
 
 export interface MetadataItemsItem {
   version?: string;
@@ -2782,17 +3362,21 @@ export interface MetadataItemsItem {
   language?: string;
 }
 export const MetadataItemsItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "version": S.optional(S.String),
-  "download_url": S.optional(S.String),
-  "size": S.optional(S.String),
-  "encrypted_key": S.optional(S.String),
-  "language": S.optional(S.String),
-}),
-).annotate({ identifier: "MetadataItemsItem" }) as any as S.Schema<MetadataItemsItem>;
+  S.Struct({
+    version: S.optional(S.String),
+    download_url: S.optional(S.String),
+    size: S.optional(S.String),
+    encrypted_key: S.optional(S.String),
+    language: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MetadataItemsItem",
+}) as any as S.Schema<MetadataItemsItem>;
 
 export type MetadataItemsItemList = ReadonlyArray<MetadataItemsItem>;
-export const MetadataItemsItemList = /*@__PURE__*/ S.Array(MetadataItemsItem) as any as S.Schema<MetadataItemsItemList>;
+export const MetadataItemsItemList = /*@__PURE__*/ S.Array(
+  MetadataItemsItem,
+) as any as S.Schema<MetadataItemsItemList>;
 
 export interface Metadata {
   /** Resource type. */
@@ -2801,31 +3385,53 @@ export interface Metadata {
   items?: MetadataItemsItemList;
 }
 export const Metadata = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "items": S.optional(MetadataItemsItemList),
-}),
+  S.Struct({
+    kind: S.optional(S.String),
+    items: S.optional(MetadataItemsItemList),
+  }),
 ).annotate({ identifier: "Metadata" }) as any as S.Schema<Metadata>;
 
-export type ListVolumesPrintTypeEnum = "PRINT_TYPE_UNDEFINED" | "ALL" | "BOOKS" | "MAGAZINES";
+export type ListVolumesPrintTypeEnum =
+  | "PRINT_TYPE_UNDEFINED"
+  | "ALL"
+  | "BOOKS"
+  | "MAGAZINES";
 export const ListVolumesPrintTypeEnum = /*@__PURE__*/ S.String;
 
-export type ListVolumesFilterEnum = "FILTER_UNDEFINED" | "ebooks" | "free-ebooks" | "full" | "paid-ebooks" | "partial";
+export type ListVolumesFilterEnum =
+  | "FILTER_UNDEFINED"
+  | "ebooks"
+  | "free-ebooks"
+  | "full"
+  | "paid-ebooks"
+  | "partial";
 export const ListVolumesFilterEnum = /*@__PURE__*/ S.String;
 
-export type ListVolumesOrderByEnum = "ORDER_BY_UNDEFINED" | "newest" | "relevance";
+export type ListVolumesOrderByEnum =
+  | "ORDER_BY_UNDEFINED"
+  | "newest"
+  | "relevance";
 export const ListVolumesOrderByEnum = /*@__PURE__*/ S.String;
 
-export type ListVolumesLibraryRestrictEnum = "LIBRARY_RESTRICT_UNDEFINED" | "my-library" | "no-restrict";
+export type ListVolumesLibraryRestrictEnum =
+  | "LIBRARY_RESTRICT_UNDEFINED"
+  | "my-library"
+  | "no-restrict";
 export const ListVolumesLibraryRestrictEnum = /*@__PURE__*/ S.String;
 
 export type ListVolumesDownloadEnum = "DOWNLOAD_UNDEFINED" | "EPUB";
 export const ListVolumesDownloadEnum = /*@__PURE__*/ S.String;
 
-export type ListVolumesProjectionEnum = "PROJECTION_UNDEFINED" | "FULL" | "LITE";
+export type ListVolumesProjectionEnum =
+  | "PROJECTION_UNDEFINED"
+  | "FULL"
+  | "LITE";
 export const ListVolumesProjectionEnum = /*@__PURE__*/ S.String;
 
-export type ListVolumesMaxAllowedMaturityRatingEnum = "MAX_ALLOWED_MATURITY_RATING_UNDEFINED" | "MATURE" | "not-mature";
+export type ListVolumesMaxAllowedMaturityRatingEnum =
+  | "MAX_ALLOWED_MATURITY_RATING_UNDEFINED"
+  | "MATURE"
+  | "not-mature";
 export const ListVolumesMaxAllowedMaturityRatingEnum = /*@__PURE__*/ S.String;
 
 export interface ListVolumesRequest {
@@ -2852,36 +3458,56 @@ export interface ListVolumesRequest {
   /** Maximum number of results to return. */
   maxResults?: number;
   /** The maximum allowed maturity rating of returned recommendations. Books with a higher maturity rating are filtered out. */
-  maxAllowedMaturityRating?: ListVolumesMaxAllowedMaturityRatingEnum | (string & {});
+  maxAllowedMaturityRating?:
+    | ListVolumesMaxAllowedMaturityRatingEnum
+    | (string & {});
   /** Index of the first result to return (starts at 0) */
   startIndex?: number;
   /** Restrict and brand results for partner ID. */
   partner?: string;
 }
 export const ListVolumesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "printType": S.optional(ListVolumesPrintTypeEnum.pipe(T.Query())),
-  "langRestrict": S.optional(S.String.pipe(T.Query())),
-  "showPreorders": S.optional(S.Boolean.pipe(T.Query())),
-  "filter": S.optional(ListVolumesFilterEnum.pipe(T.Query())),
-  "orderBy": S.optional(ListVolumesOrderByEnum.pipe(T.Query())),
-  "libraryRestrict": S.optional(ListVolumesLibraryRestrictEnum.pipe(T.Query())),
-  "q": S.String.pipe(T.Query()),
-  "download": S.optional(ListVolumesDownloadEnum.pipe(T.Query())),
-  "source": S.optional(S.String.pipe(T.Query())),
-  "projection": S.optional(ListVolumesProjectionEnum.pipe(T.Query())),
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-  "maxAllowedMaturityRating": S.optional(ListVolumesMaxAllowedMaturityRatingEnum.pipe(T.Query())),
-  "startIndex": S.optional(S.Number.pipe(T.Query())),
-  "partner": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"books/v1/volumes","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "ListVolumesRequest" }) as any as S.Schema<ListVolumesRequest>;
+  S.Struct({
+    printType: S.optional(ListVolumesPrintTypeEnum.pipe(T.Query())),
+    langRestrict: S.optional(S.String.pipe(T.Query())),
+    showPreorders: S.optional(S.Boolean.pipe(T.Query())),
+    filter: S.optional(ListVolumesFilterEnum.pipe(T.Query())),
+    orderBy: S.optional(ListVolumesOrderByEnum.pipe(T.Query())),
+    libraryRestrict: S.optional(ListVolumesLibraryRestrictEnum.pipe(T.Query())),
+    q: S.String.pipe(T.Query()),
+    download: S.optional(ListVolumesDownloadEnum.pipe(T.Query())),
+    source: S.optional(S.String.pipe(T.Query())),
+    projection: S.optional(ListVolumesProjectionEnum.pipe(T.Query())),
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+    maxAllowedMaturityRating: S.optional(
+      ListVolumesMaxAllowedMaturityRatingEnum.pipe(T.Query()),
+    ),
+    startIndex: S.optional(S.Number.pipe(T.Query())),
+    partner: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "books/v1/volumes",
+      baseUrl: "https://books.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListVolumesRequest",
+}) as any as S.Schema<ListVolumesRequest>;
 
-export type ListVolumesAssociatedAssociationEnum = "ASSOCIATION_UNDEFINED" | "end-of-sample" | "end-of-volume" | "related-for-play";
+export type ListVolumesAssociatedAssociationEnum =
+  | "ASSOCIATION_UNDEFINED"
+  | "end-of-sample"
+  | "end-of-volume"
+  | "related-for-play";
 export const ListVolumesAssociatedAssociationEnum = /*@__PURE__*/ S.String;
 
-export type ListVolumesAssociatedMaxAllowedMaturityRatingEnum = "MAX_ALLOWED_MATURITY_RATING_UNDEFINED" | "MATURE" | "not-mature";
-export const ListVolumesAssociatedMaxAllowedMaturityRatingEnum = /*@__PURE__*/ S.String;
+export type ListVolumesAssociatedMaxAllowedMaturityRatingEnum =
+  | "MAX_ALLOWED_MATURITY_RATING_UNDEFINED"
+  | "MATURE"
+  | "not-mature";
+export const ListVolumesAssociatedMaxAllowedMaturityRatingEnum =
+  /*@__PURE__*/ S.String;
 
 export interface ListVolumesAssociatedRequest {
   /** Association type. */
@@ -2889,33 +3515,68 @@ export interface ListVolumesAssociatedRequest {
   /** ID of the source volume. */
   volumeId: string;
   /** The maximum allowed maturity rating of returned recommendations. Books with a higher maturity rating are filtered out. */
-  maxAllowedMaturityRating?: ListVolumesAssociatedMaxAllowedMaturityRatingEnum | (string & {});
+  maxAllowedMaturityRating?:
+    | ListVolumesAssociatedMaxAllowedMaturityRatingEnum
+    | (string & {});
   /** ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for generating recommendations. */
   locale?: string;
   /** String to identify the originator of this request. */
   source?: string;
 }
 export const ListVolumesAssociatedRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "association": S.optional(ListVolumesAssociatedAssociationEnum.pipe(T.Query())),
-  "volumeId": S.String.pipe(T.Label()),
-  "maxAllowedMaturityRating": S.optional(ListVolumesAssociatedMaxAllowedMaturityRatingEnum.pipe(T.Query())),
-  "locale": S.optional(S.String.pipe(T.Query())),
-  "source": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"books/v1/volumes/{volumeId}/associated","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "ListVolumesAssociatedRequest" }) as any as S.Schema<ListVolumesAssociatedRequest>;
+  S.Struct({
+    association: S.optional(
+      ListVolumesAssociatedAssociationEnum.pipe(T.Query()),
+    ),
+    volumeId: S.String.pipe(T.Label()),
+    maxAllowedMaturityRating: S.optional(
+      ListVolumesAssociatedMaxAllowedMaturityRatingEnum.pipe(T.Query()),
+    ),
+    locale: S.optional(S.String.pipe(T.Query())),
+    source: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "books/v1/volumes/{volumeId}/associated",
+      baseUrl: "https://books.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListVolumesAssociatedRequest",
+}) as any as S.Schema<ListVolumesAssociatedRequest>;
 
-export type ListVolumesMybooksProcessingStateEnum = "PROCESSING_STATE_UNDEFINED" | "COMPLETED_FAILED" | "COMPLETED_SUCCESS" | "RUNNING";
+export type ListVolumesMybooksProcessingStateEnum =
+  | "PROCESSING_STATE_UNDEFINED"
+  | "COMPLETED_FAILED"
+  | "COMPLETED_SUCCESS"
+  | "RUNNING";
 export const ListVolumesMybooksProcessingStateEnum = /*@__PURE__*/ S.String;
 
-export type ListVolumesMybooksProcessingStateEnumList = ReadonlyArray<ListVolumesMybooksProcessingStateEnum | (string & {})>;
-export const ListVolumesMybooksProcessingStateEnumList = /*@__PURE__*/ S.Array(ListVolumesMybooksProcessingStateEnum) as any as S.Schema<ListVolumesMybooksProcessingStateEnumList>;
+export type ListVolumesMybooksProcessingStateEnumList = ReadonlyArray<
+  ListVolumesMybooksProcessingStateEnum | (string & {})
+>;
+export const ListVolumesMybooksProcessingStateEnumList = /*@__PURE__*/ S.Array(
+  ListVolumesMybooksProcessingStateEnum,
+) as any as S.Schema<ListVolumesMybooksProcessingStateEnumList>;
 
-export type ListVolumesMybooksAcquireMethodEnum = "ACQUIRE_METHOD_UNDEFINED" | "FAMILY_SHARED" | "PREORDERED" | "PREVIOUSLY_RENTED" | "PUBLIC_DOMAIN" | "PURCHASED" | "RENTED" | "SAMPLE" | "UPLOADED";
+export type ListVolumesMybooksAcquireMethodEnum =
+  | "ACQUIRE_METHOD_UNDEFINED"
+  | "FAMILY_SHARED"
+  | "PREORDERED"
+  | "PREVIOUSLY_RENTED"
+  | "PUBLIC_DOMAIN"
+  | "PURCHASED"
+  | "RENTED"
+  | "SAMPLE"
+  | "UPLOADED";
 export const ListVolumesMybooksAcquireMethodEnum = /*@__PURE__*/ S.String;
 
-export type ListVolumesMybooksAcquireMethodEnumList = ReadonlyArray<ListVolumesMybooksAcquireMethodEnum | (string & {})>;
-export const ListVolumesMybooksAcquireMethodEnumList = /*@__PURE__*/ S.Array(ListVolumesMybooksAcquireMethodEnum) as any as S.Schema<ListVolumesMybooksAcquireMethodEnumList>;
+export type ListVolumesMybooksAcquireMethodEnumList = ReadonlyArray<
+  ListVolumesMybooksAcquireMethodEnum | (string & {})
+>;
+export const ListVolumesMybooksAcquireMethodEnumList = /*@__PURE__*/ S.Array(
+  ListVolumesMybooksAcquireMethodEnum,
+) as any as S.Schema<ListVolumesMybooksAcquireMethodEnumList>;
 
 export interface ListVolumesMybooksRequest {
   /** ISO-3166-1 code to override the IP-based location. */
@@ -2934,41 +3595,79 @@ export interface ListVolumesMybooksRequest {
   source?: string;
 }
 export const ListVolumesMybooksRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "country": S.optional(S.String.pipe(T.Query())),
-  "processingState": S.optional(ListVolumesMybooksProcessingStateEnumList.pipe(T.Query())),
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-  "startIndex": S.optional(S.Number.pipe(T.Query())),
-  "acquireMethod": S.optional(ListVolumesMybooksAcquireMethodEnumList.pipe(T.Query())),
-  "locale": S.optional(S.String.pipe(T.Query())),
-  "source": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"books/v1/volumes/mybooks","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "ListVolumesMybooksRequest" }) as any as S.Schema<ListVolumesMybooksRequest>;
+  S.Struct({
+    country: S.optional(S.String.pipe(T.Query())),
+    processingState: S.optional(
+      ListVolumesMybooksProcessingStateEnumList.pipe(T.Query()),
+    ),
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+    startIndex: S.optional(S.Number.pipe(T.Query())),
+    acquireMethod: S.optional(
+      ListVolumesMybooksAcquireMethodEnumList.pipe(T.Query()),
+    ),
+    locale: S.optional(S.String.pipe(T.Query())),
+    source: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "books/v1/volumes/mybooks",
+      baseUrl: "https://books.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListVolumesMybooksRequest",
+}) as any as S.Schema<ListVolumesMybooksRequest>;
 
-export type ListVolumesRecommendedMaxAllowedMaturityRatingEnum = "MAX_ALLOWED_MATURITY_RATING_UNDEFINED" | "MATURE" | "not-mature";
-export const ListVolumesRecommendedMaxAllowedMaturityRatingEnum = /*@__PURE__*/ S.String;
+export type ListVolumesRecommendedMaxAllowedMaturityRatingEnum =
+  | "MAX_ALLOWED_MATURITY_RATING_UNDEFINED"
+  | "MATURE"
+  | "not-mature";
+export const ListVolumesRecommendedMaxAllowedMaturityRatingEnum =
+  /*@__PURE__*/ S.String;
 
 export interface ListVolumesRecommendedRequest {
   /** The maximum allowed maturity rating of returned recommendations. Books with a higher maturity rating are filtered out. */
-  maxAllowedMaturityRating?: ListVolumesRecommendedMaxAllowedMaturityRatingEnum | (string & {});
+  maxAllowedMaturityRating?:
+    | ListVolumesRecommendedMaxAllowedMaturityRatingEnum
+    | (string & {});
   /** ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for generating recommendations. */
   locale?: string;
   /** String to identify the originator of this request. */
   source?: string;
 }
 export const ListVolumesRecommendedRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "maxAllowedMaturityRating": S.optional(ListVolumesRecommendedMaxAllowedMaturityRatingEnum.pipe(T.Query())),
-  "locale": S.optional(S.String.pipe(T.Query())),
-  "source": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"books/v1/volumes/recommended","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "ListVolumesRecommendedRequest" }) as any as S.Schema<ListVolumesRecommendedRequest>;
+  S.Struct({
+    maxAllowedMaturityRating: S.optional(
+      ListVolumesRecommendedMaxAllowedMaturityRatingEnum.pipe(T.Query()),
+    ),
+    locale: S.optional(S.String.pipe(T.Query())),
+    source: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "books/v1/volumes/recommended",
+      baseUrl: "https://books.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListVolumesRecommendedRequest",
+}) as any as S.Schema<ListVolumesRecommendedRequest>;
 
-export type ListVolumesUseruploadedProcessingStateEnum = "PROCESSING_STATE_UNDEFINED" | "COMPLETED_FAILED" | "COMPLETED_SUCCESS" | "RUNNING";
-export const ListVolumesUseruploadedProcessingStateEnum = /*@__PURE__*/ S.String;
+export type ListVolumesUseruploadedProcessingStateEnum =
+  | "PROCESSING_STATE_UNDEFINED"
+  | "COMPLETED_FAILED"
+  | "COMPLETED_SUCCESS"
+  | "RUNNING";
+export const ListVolumesUseruploadedProcessingStateEnum =
+  /*@__PURE__*/ S.String;
 
-export type ListVolumesUseruploadedProcessingStateEnumList = ReadonlyArray<ListVolumesUseruploadedProcessingStateEnum | (string & {})>;
-export const ListVolumesUseruploadedProcessingStateEnumList = /*@__PURE__*/ S.Array(ListVolumesUseruploadedProcessingStateEnum) as any as S.Schema<ListVolumesUseruploadedProcessingStateEnumList>;
+export type ListVolumesUseruploadedProcessingStateEnumList = ReadonlyArray<
+  ListVolumesUseruploadedProcessingStateEnum | (string & {})
+>;
+export const ListVolumesUseruploadedProcessingStateEnumList =
+  /*@__PURE__*/ S.Array(
+    ListVolumesUseruploadedProcessingStateEnum,
+  ) as any as S.Schema<ListVolumesUseruploadedProcessingStateEnumList>;
 
 export interface ListVolumesUseruploadedRequest {
   /** Maximum number of results to return. */
@@ -2985,15 +3684,25 @@ export interface ListVolumesUseruploadedRequest {
   volumeId?: StringList;
 }
 export const ListVolumesUseruploadedRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-  "processingState": S.optional(ListVolumesUseruploadedProcessingStateEnumList.pipe(T.Query())),
-  "startIndex": S.optional(S.Number.pipe(T.Query())),
-  "locale": S.optional(S.String.pipe(T.Query())),
-  "source": S.optional(S.String.pipe(T.Query())),
-  "volumeId": S.optional(StringList.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"books/v1/volumes/useruploaded","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "ListVolumesUseruploadedRequest" }) as any as S.Schema<ListVolumesUseruploadedRequest>;
+  S.Struct({
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+    processingState: S.optional(
+      ListVolumesUseruploadedProcessingStateEnumList.pipe(T.Query()),
+    ),
+    startIndex: S.optional(S.Number.pipe(T.Query())),
+    locale: S.optional(S.String.pipe(T.Query())),
+    source: S.optional(S.String.pipe(T.Query())),
+    volumeId: S.optional(StringList.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "books/v1/volumes/useruploaded",
+      baseUrl: "https://books.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListVolumesUseruploadedRequest",
+}) as any as S.Schema<ListVolumesUseruploadedRequest>;
 
 export interface MoveVolumeMylibraryBookshelvesRequest {
   /** ID of volume to move. */
@@ -3005,16 +3714,28 @@ export interface MoveVolumeMylibraryBookshelvesRequest {
   /** ID of bookshelf with the volume. */
   shelf: string;
 }
-export const MoveVolumeMylibraryBookshelvesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "volumeId": S.String.pipe(T.Query()),
-  "volumePosition": S.Number.pipe(T.Query()),
-  "source": S.optional(S.String.pipe(T.Query())),
-  "shelf": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"POST","uri":"books/v1/mylibrary/bookshelves/{shelf}/moveVolume","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "MoveVolumeMylibraryBookshelvesRequest" }) as any as S.Schema<MoveVolumeMylibraryBookshelvesRequest>;
+export const MoveVolumeMylibraryBookshelvesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      volumeId: S.String.pipe(T.Query()),
+      volumePosition: S.Number.pipe(T.Query()),
+      source: S.optional(S.String.pipe(T.Query())),
+      shelf: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "books/v1/mylibrary/bookshelves/{shelf}/moveVolume",
+        baseUrl: "https://books.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "MoveVolumeMylibraryBookshelvesRequest",
+}) as any as S.Schema<MoveVolumeMylibraryBookshelvesRequest>;
 
-export type RateVolumesRecommendedRatingEnum = "RATING_UNDEFINED" | "HAVE_IT" | "NOT_INTERESTED";
+export type RateVolumesRecommendedRatingEnum =
+  | "RATING_UNDEFINED"
+  | "HAVE_IT"
+  | "NOT_INTERESTED";
 export const RateVolumesRecommendedRatingEnum = /*@__PURE__*/ S.String;
 
 export interface RateVolumesRecommendedRequest {
@@ -3028,22 +3749,32 @@ export interface RateVolumesRecommendedRequest {
   source?: string;
 }
 export const RateVolumesRecommendedRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "volumeId": S.String.pipe(T.Query()),
-  "locale": S.optional(S.String.pipe(T.Query())),
-  "rating": RateVolumesRecommendedRatingEnum.pipe(T.Query()),
-  "source": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"POST","uri":"books/v1/volumes/recommended/rate","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "RateVolumesRecommendedRequest" }) as any as S.Schema<RateVolumesRecommendedRequest>;
+  S.Struct({
+    volumeId: S.String.pipe(T.Query()),
+    locale: S.optional(S.String.pipe(T.Query())),
+    rating: RateVolumesRecommendedRatingEnum.pipe(T.Query()),
+    source: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "books/v1/volumes/recommended/rate",
+      baseUrl: "https://books.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "RateVolumesRecommendedRequest",
+}) as any as S.Schema<RateVolumesRecommendedRequest>;
 
 export interface BooksVolumesRecommendedRateResponse {
   consistency_token?: string;
 }
 export const BooksVolumesRecommendedRateResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "consistency_token": S.optional(S.String),
-}),
-).annotate({ identifier: "BooksVolumesRecommendedRateResponse" }) as any as S.Schema<BooksVolumesRecommendedRateResponse>;
+  S.Struct({
+    consistency_token: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BooksVolumesRecommendedRateResponse",
+}) as any as S.Schema<BooksVolumesRecommendedRateResponse>;
 
 export interface ReleaseDownloadAccessMyconfigRequest {
   /** The device/version ID from which to release the restriction. */
@@ -3055,17 +3786,29 @@ export interface ReleaseDownloadAccessMyconfigRequest {
   /** The volume(s) to release restrictions for. */
   volumeIds: StringList;
 }
-export const ReleaseDownloadAccessMyconfigRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "cpksver": S.String.pipe(T.Query()),
-  "locale": S.optional(S.String.pipe(T.Query())),
-  "source": S.optional(S.String.pipe(T.Query())),
-  "volumeIds": StringList.pipe(T.Query()),
-}).pipe(T.Http({"method":"POST","uri":"books/v1/myconfig/releaseDownloadAccess","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "ReleaseDownloadAccessMyconfigRequest" }) as any as S.Schema<ReleaseDownloadAccessMyconfigRequest>;
+export const ReleaseDownloadAccessMyconfigRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      cpksver: S.String.pipe(T.Query()),
+      locale: S.optional(S.String.pipe(T.Query())),
+      source: S.optional(S.String.pipe(T.Query())),
+      volumeIds: StringList.pipe(T.Query()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "books/v1/myconfig/releaseDownloadAccess",
+        baseUrl: "https://books.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ReleaseDownloadAccessMyconfigRequest",
+}) as any as S.Schema<ReleaseDownloadAccessMyconfigRequest>;
 
-export type DownloadAccessRestrictionList = ReadonlyArray<DownloadAccessRestriction>;
-export const DownloadAccessRestrictionList = /*@__PURE__*/ S.Array(DownloadAccessRestriction) as any as S.Schema<DownloadAccessRestrictionList>;
+export type DownloadAccessRestrictionList =
+  ReadonlyArray<DownloadAccessRestriction>;
+export const DownloadAccessRestrictionList = /*@__PURE__*/ S.Array(
+  DownloadAccessRestriction,
+) as any as S.Schema<DownloadAccessRestrictionList>;
 
 export interface DownloadAccesses {
   /** Resource type. */
@@ -3074,14 +3817,19 @@ export interface DownloadAccesses {
   downloadAccessList?: DownloadAccessRestrictionList;
 }
 export const DownloadAccesses = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "downloadAccessList": S.optional(DownloadAccessRestrictionList),
-}),
-).annotate({ identifier: "DownloadAccesses" }) as any as S.Schema<DownloadAccesses>;
+  S.Struct({
+    kind: S.optional(S.String),
+    downloadAccessList: S.optional(DownloadAccessRestrictionList),
+  }),
+).annotate({
+  identifier: "DownloadAccesses",
+}) as any as S.Schema<DownloadAccesses>;
 
-export type RemoveVolumeMylibraryBookshelvesReasonEnum = "REASON_UNDEFINED" | "ONBOARDING";
-export const RemoveVolumeMylibraryBookshelvesReasonEnum = /*@__PURE__*/ S.String;
+export type RemoveVolumeMylibraryBookshelvesReasonEnum =
+  | "REASON_UNDEFINED"
+  | "ONBOARDING";
+export const RemoveVolumeMylibraryBookshelvesReasonEnum =
+  /*@__PURE__*/ S.String;
 
 export interface RemoveVolumeMylibraryBookshelvesRequest {
   /** ID of bookshelf from which to remove a volume. */
@@ -3093,16 +3841,31 @@ export interface RemoveVolumeMylibraryBookshelvesRequest {
   /** String to identify the originator of this request. */
   source?: string;
 }
-export const RemoveVolumeMylibraryBookshelvesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "shelf": S.String.pipe(T.Label()),
-  "reason": S.optional(RemoveVolumeMylibraryBookshelvesReasonEnum.pipe(T.Query())),
-  "volumeId": S.String.pipe(T.Query()),
-  "source": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"POST","uri":"books/v1/mylibrary/bookshelves/{shelf}/removeVolume","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "RemoveVolumeMylibraryBookshelvesRequest" }) as any as S.Schema<RemoveVolumeMylibraryBookshelvesRequest>;
+export const RemoveVolumeMylibraryBookshelvesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      shelf: S.String.pipe(T.Label()),
+      reason: S.optional(
+        RemoveVolumeMylibraryBookshelvesReasonEnum.pipe(T.Query()),
+      ),
+      volumeId: S.String.pipe(T.Query()),
+      source: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "books/v1/mylibrary/bookshelves/{shelf}/removeVolume",
+        baseUrl: "https://books.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "RemoveVolumeMylibraryBookshelvesRequest",
+}) as any as S.Schema<RemoveVolumeMylibraryBookshelvesRequest>;
 
-export type RequestAccessMyconfigLicenseTypesEnum = "LICENSE_TYPES_UNDEFINED" | "BOTH" | "CONCURRENT" | "DOWNLOAD";
+export type RequestAccessMyconfigLicenseTypesEnum =
+  | "LICENSE_TYPES_UNDEFINED"
+  | "BOTH"
+  | "CONCURRENT"
+  | "DOWNLOAD";
 export const RequestAccessMyconfigLicenseTypesEnum = /*@__PURE__*/ S.String;
 
 export interface RequestAccessMyconfigRequest {
@@ -3120,15 +3883,25 @@ export interface RequestAccessMyconfigRequest {
   volumeId: string;
 }
 export const RequestAccessMyconfigRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "licenseTypes": S.optional(RequestAccessMyconfigLicenseTypesEnum.pipe(T.Query())),
-  "cpksver": S.String.pipe(T.Query()),
-  "locale": S.optional(S.String.pipe(T.Query())),
-  "nonce": S.String.pipe(T.Query()),
-  "source": S.String.pipe(T.Query()),
-  "volumeId": S.String.pipe(T.Query()),
-}).pipe(T.Http({"method":"POST","uri":"books/v1/myconfig/requestAccess","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "RequestAccessMyconfigRequest" }) as any as S.Schema<RequestAccessMyconfigRequest>;
+  S.Struct({
+    licenseTypes: S.optional(
+      RequestAccessMyconfigLicenseTypesEnum.pipe(T.Query()),
+    ),
+    cpksver: S.String.pipe(T.Query()),
+    locale: S.optional(S.String.pipe(T.Query())),
+    nonce: S.String.pipe(T.Query()),
+    source: S.String.pipe(T.Query()),
+    volumeId: S.String.pipe(T.Query()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "books/v1/myconfig/requestAccess",
+      baseUrl: "https://books.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "RequestAccessMyconfigRequest",
+}) as any as S.Schema<RequestAccessMyconfigRequest>;
 
 export interface ConcurrentAccessRestriction {
   /** Response signature. */
@@ -3155,20 +3928,22 @@ export interface ConcurrentAccessRestriction {
   restricted?: boolean;
 }
 export const ConcurrentAccessRestriction = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "signature": S.optional(S.String),
-  "volumeId": S.optional(S.String),
-  "source": S.optional(S.String),
-  "message": S.optional(S.String),
-  "reasonCode": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "deviceAllowed": S.optional(S.Boolean),
-  "timeWindowSeconds": S.optional(S.Number),
-  "maxConcurrentDevices": S.optional(S.Number),
-  "nonce": S.optional(S.String),
-  "restricted": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "ConcurrentAccessRestriction" }) as any as S.Schema<ConcurrentAccessRestriction>;
+  S.Struct({
+    signature: S.optional(S.String),
+    volumeId: S.optional(S.String),
+    source: S.optional(S.String),
+    message: S.optional(S.String),
+    reasonCode: S.optional(S.String),
+    kind: S.optional(S.String),
+    deviceAllowed: S.optional(S.Boolean),
+    timeWindowSeconds: S.optional(S.Number),
+    maxConcurrentDevices: S.optional(S.Number),
+    nonce: S.optional(S.String),
+    restricted: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ConcurrentAccessRestriction",
+}) as any as S.Schema<ConcurrentAccessRestriction>;
 
 export interface RequestAccessData {
   /** A download access response. */
@@ -3179,15 +3954,25 @@ export interface RequestAccessData {
   concurrentAccess?: ConcurrentAccessRestriction;
 }
 export const RequestAccessData = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "downloadAccess": S.optional(DownloadAccessRestriction),
-  "kind": S.optional(S.String),
-  "concurrentAccess": S.optional(ConcurrentAccessRestriction),
-}),
-).annotate({ identifier: "RequestAccessData" }) as any as S.Schema<RequestAccessData>;
+  S.Struct({
+    downloadAccess: S.optional(DownloadAccessRestriction),
+    kind: S.optional(S.String),
+    concurrentAccess: S.optional(ConcurrentAccessRestriction),
+  }),
+).annotate({
+  identifier: "RequestAccessData",
+}) as any as S.Schema<RequestAccessData>;
 
-export type SetPositionMylibraryReadingpositionsActionEnum = "ACTION_UNDEFINED" | "bookmark" | "chapter" | "next-page" | "prev-page" | "scroll" | "search";
-export const SetPositionMylibraryReadingpositionsActionEnum = /*@__PURE__*/ S.String;
+export type SetPositionMylibraryReadingpositionsActionEnum =
+  | "ACTION_UNDEFINED"
+  | "bookmark"
+  | "chapter"
+  | "next-page"
+  | "prev-page"
+  | "scroll"
+  | "search";
+export const SetPositionMylibraryReadingpositionsActionEnum =
+  /*@__PURE__*/ S.String;
 
 export interface SetPositionMylibraryReadingpositionsRequest {
   /** Action that caused this reading position to be set. */
@@ -3205,17 +3990,28 @@ export interface SetPositionMylibraryReadingpositionsRequest {
   /** Position string for the new volume reading position. */
   position: string;
 }
-export const SetPositionMylibraryReadingpositionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "action": S.optional(SetPositionMylibraryReadingpositionsActionEnum.pipe(T.Query())),
-  "contentVersion": S.optional(S.String.pipe(T.Query())),
-  "timestamp": S.String.pipe(T.Query()),
-  "deviceCookie": S.optional(S.String.pipe(T.Query())),
-  "volumeId": S.String.pipe(T.Label()),
-  "source": S.optional(S.String.pipe(T.Query())),
-  "position": S.String.pipe(T.Query()),
-}).pipe(T.Http({"method":"POST","uri":"books/v1/mylibrary/readingpositions/{volumeId}/setPosition","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "SetPositionMylibraryReadingpositionsRequest" }) as any as S.Schema<SetPositionMylibraryReadingpositionsRequest>;
+export const SetPositionMylibraryReadingpositionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      action: S.optional(
+        SetPositionMylibraryReadingpositionsActionEnum.pipe(T.Query()),
+      ),
+      contentVersion: S.optional(S.String.pipe(T.Query())),
+      timestamp: S.String.pipe(T.Query()),
+      deviceCookie: S.optional(S.String.pipe(T.Query())),
+      volumeId: S.String.pipe(T.Label()),
+      source: S.optional(S.String.pipe(T.Query())),
+      position: S.String.pipe(T.Query()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "books/v1/mylibrary/readingpositions/{volumeId}/setPosition",
+        baseUrl: "https://books.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "SetPositionMylibraryReadingpositionsRequest",
+  }) as any as S.Schema<SetPositionMylibraryReadingpositionsRequest>;
 
 export interface ShareFamilysharingRequest {
   /** The volume to share. */
@@ -3226,12 +4022,20 @@ export interface ShareFamilysharingRequest {
   docId?: string;
 }
 export const ShareFamilysharingRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "volumeId": S.optional(S.String.pipe(T.Query())),
-  "source": S.optional(S.String.pipe(T.Query())),
-  "docId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"POST","uri":"books/v1/familysharing/share","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "ShareFamilysharingRequest" }) as any as S.Schema<ShareFamilysharingRequest>;
+  S.Struct({
+    volumeId: S.optional(S.String.pipe(T.Query())),
+    source: S.optional(S.String.pipe(T.Query())),
+    docId: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "books/v1/familysharing/share",
+      baseUrl: "https://books.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ShareFamilysharingRequest",
+}) as any as S.Schema<ShareFamilysharingRequest>;
 
 export interface SummaryMylibraryAnnotationsRequest {
   /** Volume id to get the summary for. */
@@ -3242,12 +4046,20 @@ export interface SummaryMylibraryAnnotationsRequest {
   source?: string;
 }
 export const SummaryMylibraryAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "volumeId": S.String.pipe(T.Query()),
-  "layerIds": StringList.pipe(T.Query()),
-  "source": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"POST","uri":"books/v1/mylibrary/annotations/summary","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "SummaryMylibraryAnnotationsRequest" }) as any as S.Schema<SummaryMylibraryAnnotationsRequest>;
+  S.Struct({
+    volumeId: S.String.pipe(T.Query()),
+    layerIds: StringList.pipe(T.Query()),
+    source: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "books/v1/mylibrary/annotations/summary",
+      baseUrl: "https://books.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SummaryMylibraryAnnotationsRequest",
+}) as any as S.Schema<SummaryMylibraryAnnotationsRequest>;
 
 export interface AnnotationsSummaryLayersItem {
   remainingCharacterCount?: number;
@@ -3257,34 +4069,47 @@ export interface AnnotationsSummaryLayersItem {
   layerId?: string;
 }
 export const AnnotationsSummaryLayersItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "remainingCharacterCount": S.optional(S.Number),
-  "allowedCharacterCount": S.optional(S.Number),
-  "updated": S.optional(S.String),
-  "limitType": S.optional(S.String),
-  "layerId": S.optional(S.String),
-}),
-).annotate({ identifier: "AnnotationsSummaryLayersItem" }) as any as S.Schema<AnnotationsSummaryLayersItem>;
+  S.Struct({
+    remainingCharacterCount: S.optional(S.Number),
+    allowedCharacterCount: S.optional(S.Number),
+    updated: S.optional(S.String),
+    limitType: S.optional(S.String),
+    layerId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AnnotationsSummaryLayersItem",
+}) as any as S.Schema<AnnotationsSummaryLayersItem>;
 
-export type AnnotationsSummaryLayersItemList = ReadonlyArray<AnnotationsSummaryLayersItem>;
-export const AnnotationsSummaryLayersItemList = /*@__PURE__*/ S.Array(AnnotationsSummaryLayersItem) as any as S.Schema<AnnotationsSummaryLayersItemList>;
+export type AnnotationsSummaryLayersItemList =
+  ReadonlyArray<AnnotationsSummaryLayersItem>;
+export const AnnotationsSummaryLayersItemList = /*@__PURE__*/ S.Array(
+  AnnotationsSummaryLayersItem,
+) as any as S.Schema<AnnotationsSummaryLayersItemList>;
 
 export interface AnnotationsSummary {
   layers?: AnnotationsSummaryLayersItemList;
   kind?: string;
 }
 export const AnnotationsSummary = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "layers": S.optional(AnnotationsSummaryLayersItemList),
-  "kind": S.optional(S.String),
-}),
-).annotate({ identifier: "AnnotationsSummary" }) as any as S.Schema<AnnotationsSummary>;
+  S.Struct({
+    layers: S.optional(AnnotationsSummaryLayersItemList),
+    kind: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AnnotationsSummary",
+}) as any as S.Schema<AnnotationsSummary>;
 
-export type SyncVolumeLicensesMyconfigFeaturesEnum = "FEATURES_UNDEFINED" | "RENTALS";
+export type SyncVolumeLicensesMyconfigFeaturesEnum =
+  | "FEATURES_UNDEFINED"
+  | "RENTALS";
 export const SyncVolumeLicensesMyconfigFeaturesEnum = /*@__PURE__*/ S.String;
 
-export type SyncVolumeLicensesMyconfigFeaturesEnumList = ReadonlyArray<SyncVolumeLicensesMyconfigFeaturesEnum | (string & {})>;
-export const SyncVolumeLicensesMyconfigFeaturesEnumList = /*@__PURE__*/ S.Array(SyncVolumeLicensesMyconfigFeaturesEnum) as any as S.Schema<SyncVolumeLicensesMyconfigFeaturesEnumList>;
+export type SyncVolumeLicensesMyconfigFeaturesEnumList = ReadonlyArray<
+  SyncVolumeLicensesMyconfigFeaturesEnum | (string & {})
+>;
+export const SyncVolumeLicensesMyconfigFeaturesEnumList = /*@__PURE__*/ S.Array(
+  SyncVolumeLicensesMyconfigFeaturesEnum,
+) as any as S.Schema<SyncVolumeLicensesMyconfigFeaturesEnumList>;
 
 export interface SyncVolumeLicensesMyconfigRequest {
   /** ISO-639-1, ISO-3166-1 codes for message localization, i.e. en_US. */
@@ -3305,17 +4130,27 @@ export interface SyncVolumeLicensesMyconfigRequest {
   cpksver: string;
 }
 export const SyncVolumeLicensesMyconfigRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locale": S.optional(S.String.pipe(T.Query())),
-  "nonce": S.String.pipe(T.Query()),
-  "source": S.String.pipe(T.Query()),
-  "volumeIds": S.optional(StringList.pipe(T.Query())),
-  "features": S.optional(SyncVolumeLicensesMyconfigFeaturesEnumList.pipe(T.Query())),
-  "showPreorders": S.optional(S.Boolean.pipe(T.Query())),
-  "includeNonComicsSeries": S.optional(S.Boolean.pipe(T.Query())),
-  "cpksver": S.String.pipe(T.Query()),
-}).pipe(T.Http({"method":"POST","uri":"books/v1/myconfig/syncVolumeLicenses","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "SyncVolumeLicensesMyconfigRequest" }) as any as S.Schema<SyncVolumeLicensesMyconfigRequest>;
+  S.Struct({
+    locale: S.optional(S.String.pipe(T.Query())),
+    nonce: S.String.pipe(T.Query()),
+    source: S.String.pipe(T.Query()),
+    volumeIds: S.optional(StringList.pipe(T.Query())),
+    features: S.optional(
+      SyncVolumeLicensesMyconfigFeaturesEnumList.pipe(T.Query()),
+    ),
+    showPreorders: S.optional(S.Boolean.pipe(T.Query())),
+    includeNonComicsSeries: S.optional(S.Boolean.pipe(T.Query())),
+    cpksver: S.String.pipe(T.Query()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "books/v1/myconfig/syncVolumeLicenses",
+      baseUrl: "https://books.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SyncVolumeLicensesMyconfigRequest",
+}) as any as S.Schema<SyncVolumeLicensesMyconfigRequest>;
 
 export interface UnshareFamilysharingRequest {
   /** The docid to unshare. */
@@ -3326,22 +4161,38 @@ export interface UnshareFamilysharingRequest {
   volumeId?: string;
 }
 export const UnshareFamilysharingRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "docId": S.optional(S.String.pipe(T.Query())),
-  "source": S.optional(S.String.pipe(T.Query())),
-  "volumeId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"POST","uri":"books/v1/familysharing/unshare","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "UnshareFamilysharingRequest" }) as any as S.Schema<UnshareFamilysharingRequest>;
+  S.Struct({
+    docId: S.optional(S.String.pipe(T.Query())),
+    source: S.optional(S.String.pipe(T.Query())),
+    volumeId: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "books/v1/familysharing/unshare",
+      baseUrl: "https://books.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UnshareFamilysharingRequest",
+}) as any as S.Schema<UnshareFamilysharingRequest>;
 
 export interface UpdateBookCloudloadingRequest {
   /** Request body */
   body?: BooksCloudloadingResource;
 }
 export const UpdateBookCloudloadingRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(BooksCloudloadingResource.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"books/v1/cloudloading/updateBook","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "UpdateBookCloudloadingRequest" }) as any as S.Schema<UpdateBookCloudloadingRequest>;
+  S.Struct({
+    body: S.optional(BooksCloudloadingResource.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "books/v1/cloudloading/updateBook",
+      baseUrl: "https://books.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateBookCloudloadingRequest",
+}) as any as S.Schema<UpdateBookCloudloadingRequest>;
 
 export interface UpdateMylibraryAnnotationsRequest {
   /** The ID for the annotation to update. */
@@ -3352,24 +4203,45 @@ export interface UpdateMylibraryAnnotationsRequest {
   body?: Annotation;
 }
 export const UpdateMylibraryAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "annotationId": S.String.pipe(T.Label()),
-  "source": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Annotation.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"books/v1/mylibrary/annotations/{annotationId}","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "UpdateMylibraryAnnotationsRequest" }) as any as S.Schema<UpdateMylibraryAnnotationsRequest>;
+  S.Struct({
+    annotationId: S.String.pipe(T.Label()),
+    source: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(Annotation.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "books/v1/mylibrary/annotations/{annotationId}",
+      baseUrl: "https://books.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateMylibraryAnnotationsRequest",
+}) as any as S.Schema<UpdateMylibraryAnnotationsRequest>;
 
 export interface UpdateUserSettingsMyconfigRequest {
   /** Request body */
   body?: Usersettings;
 }
 export const UpdateUserSettingsMyconfigRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(Usersettings.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"books/v1/myconfig/updateUserSettings","baseUrl":"https://books.googleapis.com/"})),
-).annotate({ identifier: "UpdateUserSettingsMyconfigRequest" }) as any as S.Schema<UpdateUserSettingsMyconfigRequest>;
+  S.Struct({
+    body: S.optional(Usersettings.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "books/v1/myconfig/updateUserSettings",
+      baseUrl: "https://books.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateUserSettingsMyconfigRequest",
+}) as any as S.Schema<UpdateUserSettingsMyconfigRequest>;
 
-export type AcceptPromoofferError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type AcceptPromoofferError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Accepts the promo offer. */
 export const acceptPromooffer: API.OperationMethod<
   AcceptPromoofferRequest,
@@ -3384,7 +4256,12 @@ export const acceptPromooffer: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AddBookCloudloadingError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type AddBookCloudloadingError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Add a user-upload volume and triggers processing. */
 export const addBookCloudloading: API.OperationMethod<
   AddBookCloudloadingRequest,
@@ -3399,7 +4276,12 @@ export const addBookCloudloading: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AddVolumeMylibraryBookshelvesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type AddVolumeMylibraryBookshelvesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Adds a volume to a bookshelf. */
 export const addVolumeMylibraryBookshelves: API.OperationMethod<
   AddVolumeMylibraryBookshelvesRequest,
@@ -3414,7 +4296,12 @@ export const addVolumeMylibraryBookshelves: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ClearVolumesMylibraryBookshelvesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ClearVolumesMylibraryBookshelvesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Clears all volumes from a bookshelf. */
 export const clearVolumesMylibraryBookshelves: API.OperationMethod<
   ClearVolumesMylibraryBookshelvesRequest,
@@ -3429,7 +4316,12 @@ export const clearVolumesMylibraryBookshelves: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteBookCloudloadingError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteBookCloudloadingError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Remove the book and its contents */
 export const deleteBookCloudloading: API.OperationMethod<
   DeleteBookCloudloadingRequest,
@@ -3444,7 +4336,12 @@ export const deleteBookCloudloading: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteMylibraryAnnotationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteMylibraryAnnotationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes an annotation. */
 export const deleteMylibraryAnnotations: API.OperationMethod<
   DeleteMylibraryAnnotationsRequest,
@@ -3459,7 +4356,12 @@ export const deleteMylibraryAnnotations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DismissPromoofferError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DismissPromoofferError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Marks the promo offer as dismissed. */
 export const dismissPromooffer: API.OperationMethod<
   DismissPromoofferRequest,
@@ -3564,7 +4466,10 @@ export const getMylibraryBookshelves: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetMylibraryReadingpositionsError = NotFound | Forbidden | GcpOpError;
+export type GetMylibraryReadingpositionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieves my reading position information for a volume. */
 export const getMylibraryReadingpositions: API.OperationMethod<
   GetMylibraryReadingpositionsRequest,
@@ -3684,7 +4589,12 @@ export const getVolumes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertMylibraryAnnotationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type InsertMylibraryAnnotationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Inserts a new annotation. */
 export const insertMylibraryAnnotations: API.OperationMethod<
   InsertMylibraryAnnotationsRequest,
@@ -3744,7 +4654,10 @@ export const listCategoriesOnboarding: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListCategoryVolumesOnboardingError = NotFound | Forbidden | GcpOpError;
+export type ListCategoryVolumesOnboardingError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** List available volumes under categories for onboarding experience. */
 export const listCategoryVolumesOnboarding: API.PaginatedOperationMethod<
   ListCategoryVolumesOnboardingRequest,
@@ -3757,7 +4670,11 @@ export const listCategoryVolumesOnboarding: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken","items":"items"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+    items: "items",
+  } as const,
 }));
 
 export type ListLayersError = NotFound | Forbidden | GcpOpError;
@@ -3788,10 +4705,17 @@ export const listLayersAnnotationData: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken","items":"items"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+    items: "items",
+  } as const,
 }));
 
-export type ListLayersVolumeAnnotationsError = NotFound | Forbidden | GcpOpError;
+export type ListLayersVolumeAnnotationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the volume annotations for a volume and layer. */
 export const listLayersVolumeAnnotations: API.PaginatedOperationMethod<
   ListLayersVolumeAnnotationsRequest,
@@ -3804,7 +4728,11 @@ export const listLayersVolumeAnnotations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken","items":"items"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+    items: "items",
+  } as const,
 }));
 
 export type ListMylibraryAnnotationsError = NotFound | Forbidden | GcpOpError;
@@ -3820,7 +4748,11 @@ export const listMylibraryAnnotations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken","items":"items"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+    items: "items",
+  } as const,
 }));
 
 export type ListMylibraryBookshelvesError = NotFound | Forbidden | GcpOpError;
@@ -3838,7 +4770,10 @@ export const listMylibraryBookshelves: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListMylibraryBookshelvesVolumesError = NotFound | Forbidden | GcpOpError;
+export type ListMylibraryBookshelvesVolumesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets volume information for volumes on a bookshelf. */
 export const listMylibraryBookshelvesVolumes: API.OperationMethod<
   ListMylibraryBookshelvesVolumesRequest,
@@ -3853,7 +4788,10 @@ export const listMylibraryBookshelvesVolumes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListOfflineMetadataDictionaryError = NotFound | Forbidden | GcpOpError;
+export type ListOfflineMetadataDictionaryError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns a list of offline dictionary metadata available */
 export const listOfflineMetadataDictionary: API.OperationMethod<
   ListOfflineMetadataDictionaryRequest,
@@ -3943,7 +4881,12 @@ export const listVolumesUseruploaded: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type MoveVolumeMylibraryBookshelvesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type MoveVolumeMylibraryBookshelvesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Moves a volume within a bookshelf. */
 export const moveVolumeMylibraryBookshelves: API.OperationMethod<
   MoveVolumeMylibraryBookshelvesRequest,
@@ -3958,7 +4901,12 @@ export const moveVolumeMylibraryBookshelves: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RateVolumesRecommendedError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RateVolumesRecommendedError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Rate a recommended book for the current user. */
 export const rateVolumesRecommended: API.OperationMethod<
   RateVolumesRecommendedRequest,
@@ -3973,7 +4921,12 @@ export const rateVolumesRecommended: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ReleaseDownloadAccessMyconfigError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ReleaseDownloadAccessMyconfigError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Release downloaded content access restriction. */
 export const releaseDownloadAccessMyconfig: API.OperationMethod<
   ReleaseDownloadAccessMyconfigRequest,
@@ -3988,7 +4941,12 @@ export const releaseDownloadAccessMyconfig: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RemoveVolumeMylibraryBookshelvesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RemoveVolumeMylibraryBookshelvesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Removes a volume from a bookshelf. */
 export const removeVolumeMylibraryBookshelves: API.OperationMethod<
   RemoveVolumeMylibraryBookshelvesRequest,
@@ -4003,7 +4961,12 @@ export const removeVolumeMylibraryBookshelves: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RequestAccessMyconfigError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RequestAccessMyconfigError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Request concurrent and download access restrictions. */
 export const requestAccessMyconfig: API.OperationMethod<
   RequestAccessMyconfigRequest,
@@ -4018,7 +4981,12 @@ export const requestAccessMyconfig: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetPositionMylibraryReadingpositionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetPositionMylibraryReadingpositionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sets my reading position information for a volume. */
 export const setPositionMylibraryReadingpositions: API.OperationMethod<
   SetPositionMylibraryReadingpositionsRequest,
@@ -4033,7 +5001,12 @@ export const setPositionMylibraryReadingpositions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ShareFamilysharingError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ShareFamilysharingError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Initiates sharing of the content with the user's family. Empty response indicates success. */
 export const shareFamilysharing: API.OperationMethod<
   ShareFamilysharingRequest,
@@ -4048,7 +5021,12 @@ export const shareFamilysharing: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SummaryMylibraryAnnotationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SummaryMylibraryAnnotationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Gets the summary of specified layers. */
 export const summaryMylibraryAnnotations: API.OperationMethod<
   SummaryMylibraryAnnotationsRequest,
@@ -4063,7 +5041,12 @@ export const summaryMylibraryAnnotations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SyncVolumeLicensesMyconfigError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SyncVolumeLicensesMyconfigError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Request downloaded content access for specified volumes on the My eBooks shelf. */
 export const syncVolumeLicensesMyconfig: API.OperationMethod<
   SyncVolumeLicensesMyconfigRequest,
@@ -4078,7 +5061,12 @@ export const syncVolumeLicensesMyconfig: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UnshareFamilysharingError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UnshareFamilysharingError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Initiates revoking content that has already been shared with the user's family. Empty response indicates success. */
 export const unshareFamilysharing: API.OperationMethod<
   UnshareFamilysharingRequest,
@@ -4093,7 +5081,12 @@ export const unshareFamilysharing: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateBookCloudloadingError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateBookCloudloadingError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a user-upload volume. */
 export const updateBookCloudloading: API.OperationMethod<
   UpdateBookCloudloadingRequest,
@@ -4108,7 +5101,12 @@ export const updateBookCloudloading: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateMylibraryAnnotationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateMylibraryAnnotationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates an existing annotation. */
 export const updateMylibraryAnnotations: API.OperationMethod<
   UpdateMylibraryAnnotationsRequest,
@@ -4123,7 +5121,12 @@ export const updateMylibraryAnnotations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateUserSettingsMyconfigError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateUserSettingsMyconfigError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sets the settings for the user. If a sub-object is specified, it will overwrite the existing sub-object stored in the server. Unspecified sub-objects will retain the existing value. */
 export const updateUserSettingsMyconfig: API.OperationMethod<
   UpdateUserSettingsMyconfigRequest,
@@ -4137,4 +5140,3 @@ export const updateUserSettingsMyconfig: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

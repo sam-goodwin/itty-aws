@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 /** OutputConfig contains a destination for writing trace data. */
@@ -66,9 +66,9 @@ export interface OutputConfig {
   destination?: string;
 }
 export const OutputConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "destination": S.optional(S.String),
-}),
+  S.Struct({
+    destination: S.optional(S.String),
+  }),
 ).annotate({ identifier: "OutputConfig" }) as any as S.Schema<OutputConfig>;
 
 /** Describes a sink used to export traces to a BigQuery dataset. The sink must be created within a project. */
@@ -81,11 +81,11 @@ export interface TraceSink {
   outputConfig?: OutputConfig;
 }
 export const TraceSink = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "writerIdentity": S.optional(S.String),
-  "outputConfig": S.optional(OutputConfig),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    writerIdentity: S.optional(S.String),
+    outputConfig: S.optional(OutputConfig),
+  }),
 ).annotate({ identifier: "TraceSink" }) as any as S.Schema<TraceSink>;
 
 export interface CreateProjectsTraceSinksRequest {
@@ -95,37 +95,61 @@ export interface CreateProjectsTraceSinksRequest {
   body?: TraceSink;
 }
 export const CreateProjectsTraceSinksRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(TraceSink.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2beta1/{+parent}/traceSinks","baseUrl":"https://cloudtrace.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsTraceSinksRequest" }) as any as S.Schema<CreateProjectsTraceSinksRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(TraceSink.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v2beta1/{+parent}/traceSinks",
+      baseUrl: "https://cloudtrace.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateProjectsTraceSinksRequest",
+}) as any as S.Schema<CreateProjectsTraceSinksRequest>;
 
 export interface DeleteProjectsTraceSinksRequest {
   /** Required. The full resource name of the sink to delete, including the parent resource and the sink identifier: "projects/[PROJECT_NUMBER]/traceSinks/[SINK_ID]" Example: `"projects/12345/traceSinks/my-sink-id"`. */
   name: string;
 }
 export const DeleteProjectsTraceSinksRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v2beta1/{+name}","baseUrl":"https://cloudtrace.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsTraceSinksRequest" }) as any as S.Schema<DeleteProjectsTraceSinksRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v2beta1/{+name}",
+      baseUrl: "https://cloudtrace.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteProjectsTraceSinksRequest",
+}) as any as S.Schema<DeleteProjectsTraceSinksRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 export interface GetProjectsTraceSinksRequest {
   /** Required. The resource name of the sink: "projects/[PROJECT_NUMBER]/traceSinks/[SINK_ID]" Example: `"projects/12345/traceSinks/my-sink-id"`. */
   name: string;
 }
 export const GetProjectsTraceSinksRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v2beta1/{+name}","baseUrl":"https://cloudtrace.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsTraceSinksRequest" }) as any as S.Schema<GetProjectsTraceSinksRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v2beta1/{+name}",
+      baseUrl: "https://cloudtrace.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsTraceSinksRequest",
+}) as any as S.Schema<GetProjectsTraceSinksRequest>;
 
 export interface ListProjectsTraceSinksRequest {
   /** Required. The parent resource whose sinks are to be listed (currently only project parent resources are supported): "projects/[PROJECT_ID]" */
@@ -136,15 +160,25 @@ export interface ListProjectsTraceSinksRequest {
   pageToken?: string;
 }
 export const ListProjectsTraceSinksRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v2beta1/{+parent}/traceSinks","baseUrl":"https://cloudtrace.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsTraceSinksRequest" }) as any as S.Schema<ListProjectsTraceSinksRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v2beta1/{+parent}/traceSinks",
+      baseUrl: "https://cloudtrace.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsTraceSinksRequest",
+}) as any as S.Schema<ListProjectsTraceSinksRequest>;
 
 export type TraceSinkList = ReadonlyArray<TraceSink>;
-export const TraceSinkList = /*@__PURE__*/ S.Array(TraceSink) as any as S.Schema<TraceSinkList>;
+export const TraceSinkList = /*@__PURE__*/ S.Array(
+  TraceSink,
+) as any as S.Schema<TraceSinkList>;
 
 /** Result returned from `ListTraceSinks`. */
 export interface ListTraceSinksResponse {
@@ -154,11 +188,13 @@ export interface ListTraceSinksResponse {
   nextPageToken?: string;
 }
 export const ListTraceSinksResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sinks": S.optional(TraceSinkList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListTraceSinksResponse" }) as any as S.Schema<ListTraceSinksResponse>;
+  S.Struct({
+    sinks: S.optional(TraceSinkList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListTraceSinksResponse",
+}) as any as S.Schema<ListTraceSinksResponse>;
 
 export interface PatchProjectsTraceSinksRequest {
   /** Required. The full resource name of the sink to update, including the parent resource and the sink identifier: "projects/[PROJECT_NUMBER]/traceSinks/[SINK_ID]" Example: `"projects/12345/traceSinks/my-sink-id"`. */
@@ -169,14 +205,27 @@ export interface PatchProjectsTraceSinksRequest {
   body?: TraceSink;
 }
 export const PatchProjectsTraceSinksRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(TraceSink.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v2beta1/{+name}","baseUrl":"https://cloudtrace.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsTraceSinksRequest" }) as any as S.Schema<PatchProjectsTraceSinksRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(TraceSink.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v2beta1/{+name}",
+      baseUrl: "https://cloudtrace.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchProjectsTraceSinksRequest",
+}) as any as S.Schema<PatchProjectsTraceSinksRequest>;
 
-export type CreateProjectsTraceSinksError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsTraceSinksError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a sink that exports trace spans to a destination. The export of newly-ingested traces begins immediately, unless the sink's `writer_identity` is not permitted to write to the destination. A sink can export traces only from the resource owning the sink (the 'parent'). */
 export const createProjectsTraceSinks: API.OperationMethod<
   CreateProjectsTraceSinksRequest,
@@ -191,7 +240,12 @@ export const createProjectsTraceSinks: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsTraceSinksError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsTraceSinksError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a sink. */
 export const deleteProjectsTraceSinks: API.OperationMethod<
   DeleteProjectsTraceSinksRequest,
@@ -234,10 +288,18 @@ export const listProjectsTraceSinks: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type PatchProjectsTraceSinksError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsTraceSinksError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a sink. This method updates fields in the existing sink according to the provided update mask. The sink's name cannot be changed nor any output-only fields (e.g. the writer_identity). */
 export const patchProjectsTraceSinks: API.OperationMethod<
   PatchProjectsTraceSinksRequest,
@@ -251,4 +313,3 @@ export const patchProjectsTraceSinks: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

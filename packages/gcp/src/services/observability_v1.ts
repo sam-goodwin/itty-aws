@@ -13,58 +13,60 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
 export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "CancelOperationRequest" }) as any as S.Schema<CancelOperationRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "CancelOperationRequest",
+}) as any as S.Schema<CancelOperationRequest>;
 
 export interface CancelFoldersLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -72,18 +74,27 @@ export interface CancelFoldersLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelFoldersLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://observability.googleapis.com/"})),
-).annotate({ identifier: "CancelFoldersLocationsOperationsRequest" }) as any as S.Schema<CancelFoldersLocationsOperationsRequest>;
+export const CancelFoldersLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:cancel",
+        baseUrl: "https://observability.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CancelFoldersLocationsOperationsRequest",
+}) as any as S.Schema<CancelFoldersLocationsOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 export interface CancelOrganizationsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -91,12 +102,21 @@ export interface CancelOrganizationsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://observability.googleapis.com/"})),
-).annotate({ identifier: "CancelOrganizationsLocationsOperationsRequest" }) as any as S.Schema<CancelOrganizationsLocationsOperationsRequest>;
+export const CancelOrganizationsLocationsOperationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:cancel",
+        baseUrl: "https://observability.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CancelOrganizationsLocationsOperationsRequest",
+  }) as any as S.Schema<CancelOrganizationsLocationsOperationsRequest>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -104,12 +124,21 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://observability.googleapis.com/"})),
-).annotate({ identifier: "CancelProjectsLocationsOperationsRequest" }) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:cancel",
+        baseUrl: "https://observability.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CancelProjectsLocationsOperationsRequest",
+}) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
 
 /** A link lets a dataset be accessible to BigQuery via usage of linked datasets. */
 export interface Link {
@@ -123,12 +152,12 @@ export interface Link {
   createTime?: string;
 }
 export const Link = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "description": S.optional(S.String),
-  "createTime": S.optional(S.String),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    displayName: S.optional(S.String),
+    description: S.optional(S.String),
+    createTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Link" }) as any as S.Schema<Link>;
 
 export interface CreateProjectsLocationsBucketsDatasetsLinksRequest {
@@ -139,19 +168,33 @@ export interface CreateProjectsLocationsBucketsDatasetsLinksRequest {
   /** Request body */
   body?: Link;
 }
-export const CreateProjectsLocationsBucketsDatasetsLinksRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "linkId": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(Link.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/links","baseUrl":"https://observability.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsBucketsDatasetsLinksRequest" }) as any as S.Schema<CreateProjectsLocationsBucketsDatasetsLinksRequest>;
+export const CreateProjectsLocationsBucketsDatasetsLinksRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      linkId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(Link.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/links",
+        baseUrl: "https://observability.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsBucketsDatasetsLinksRequest",
+  }) as any as S.Schema<CreateProjectsLocationsBucketsDatasetsLinksRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -163,11 +206,11 @@ export interface Status {
   details?: DocumentMapList;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(S.Number),
-  "message": S.optional(S.String),
-  "details": S.optional(DocumentMapList),
-}),
+  S.Struct({
+    code: S.optional(S.Number),
+    message: S.optional(S.String),
+    details: S.optional(DocumentMapList),
+  }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -184,17 +227,19 @@ export interface Operation {
   error?: Status;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "metadata": S.optional(DocumentMap),
-  "response": S.optional(DocumentMap),
-  "done": S.optional(S.Boolean),
-  "error": S.optional(Status),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    metadata: S.optional(DocumentMap),
+    response: S.optional(DocumentMap),
+    done: S.optional(S.Boolean),
+    error: S.optional(Status),
+  }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** A trace scope is a collection of resources whose traces are queried together. */
 export interface TraceScope {
@@ -210,13 +255,13 @@ export interface TraceScope {
   createTime?: string;
 }
 export const TraceScope = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceNames": S.optional(StringList),
-  "description": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "name": S.optional(S.String),
-  "createTime": S.optional(S.String),
-}),
+  S.Struct({
+    resourceNames: S.optional(StringList),
+    description: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    name: S.optional(S.String),
+    createTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "TraceScope" }) as any as S.Schema<TraceScope>;
 
 export interface CreateProjectsLocationsTraceScopesRequest {
@@ -227,76 +272,141 @@ export interface CreateProjectsLocationsTraceScopesRequest {
   /** Request body */
   body?: TraceScope;
 }
-export const CreateProjectsLocationsTraceScopesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "traceScopeId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(TraceScope.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/traceScopes","baseUrl":"https://observability.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsTraceScopesRequest" }) as any as S.Schema<CreateProjectsLocationsTraceScopesRequest>;
+export const CreateProjectsLocationsTraceScopesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      traceScopeId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(TraceScope.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/traceScopes",
+        baseUrl: "https://observability.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsTraceScopesRequest",
+  }) as any as S.Schema<CreateProjectsLocationsTraceScopesRequest>;
 
 export interface DeleteFoldersLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteFoldersLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://observability.googleapis.com/"})),
-).annotate({ identifier: "DeleteFoldersLocationsOperationsRequest" }) as any as S.Schema<DeleteFoldersLocationsOperationsRequest>;
+export const DeleteFoldersLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://observability.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteFoldersLocationsOperationsRequest",
+}) as any as S.Schema<DeleteFoldersLocationsOperationsRequest>;
 
 export interface DeleteOrganizationsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://observability.googleapis.com/"})),
-).annotate({ identifier: "DeleteOrganizationsLocationsOperationsRequest" }) as any as S.Schema<DeleteOrganizationsLocationsOperationsRequest>;
+export const DeleteOrganizationsLocationsOperationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://observability.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteOrganizationsLocationsOperationsRequest",
+  }) as any as S.Schema<DeleteOrganizationsLocationsOperationsRequest>;
 
 export interface DeleteProjectsLocationsBucketsDatasetsLinksRequest {
   /** Required. Name of the link to delete. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/buckets/[BUCKET_ID]/datasets/[DATASET_ID]/links/[LINK_ID] */
   name: string;
 }
-export const DeleteProjectsLocationsBucketsDatasetsLinksRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://observability.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsBucketsDatasetsLinksRequest" }) as any as S.Schema<DeleteProjectsLocationsBucketsDatasetsLinksRequest>;
+export const DeleteProjectsLocationsBucketsDatasetsLinksRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://observability.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsBucketsDatasetsLinksRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsBucketsDatasetsLinksRequest>;
 
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://observability.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsOperationsRequest" }) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://observability.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsOperationsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
 
 export interface DeleteProjectsLocationsTraceScopesRequest {
   /** Required. The full resource name of the trace scope to delete: projects/[PROJECT_ID]/locations/[LOCATION_ID]/traceScopes/[TRACE_SCOPE_ID] For example: projects/my-project/locations/global/traceScopes/my-trace-scope */
   name: string;
 }
-export const DeleteProjectsLocationsTraceScopesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://observability.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsTraceScopesRequest" }) as any as S.Schema<DeleteProjectsLocationsTraceScopesRequest>;
+export const DeleteProjectsLocationsTraceScopesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://observability.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsTraceScopesRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsTraceScopesRequest>;
 
 export interface GetFoldersLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
 export const GetFoldersLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://observability.googleapis.com/"})),
-).annotate({ identifier: "GetFoldersLocationsRequest" }) as any as S.Schema<GetFoldersLocationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://observability.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetFoldersLocationsRequest",
+}) as any as S.Schema<GetFoldersLocationsRequest>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -312,64 +422,106 @@ export interface Location {
   displayName?: string;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "labels": S.optional(StringMap),
-  "locationId": S.optional(S.String),
-  "metadata": S.optional(DocumentMap),
-  "name": S.optional(S.String),
-  "displayName": S.optional(S.String),
-}),
+  S.Struct({
+    labels: S.optional(StringMap),
+    locationId: S.optional(S.String),
+    metadata: S.optional(DocumentMap),
+    name: S.optional(S.String),
+    displayName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export interface GetFoldersLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetFoldersLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://observability.googleapis.com/"})),
-).annotate({ identifier: "GetFoldersLocationsOperationsRequest" }) as any as S.Schema<GetFoldersLocationsOperationsRequest>;
+export const GetFoldersLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://observability.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetFoldersLocationsOperationsRequest",
+}) as any as S.Schema<GetFoldersLocationsOperationsRequest>;
 
 export interface GetOrganizationsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
 export const GetOrganizationsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://observability.googleapis.com/"})),
-).annotate({ identifier: "GetOrganizationsLocationsRequest" }) as any as S.Schema<GetOrganizationsLocationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://observability.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetOrganizationsLocationsRequest",
+}) as any as S.Schema<GetOrganizationsLocationsRequest>;
 
 export interface GetOrganizationsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://observability.googleapis.com/"})),
-).annotate({ identifier: "GetOrganizationsLocationsOperationsRequest" }) as any as S.Schema<GetOrganizationsLocationsOperationsRequest>;
+export const GetOrganizationsLocationsOperationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://observability.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetOrganizationsLocationsOperationsRequest",
+  }) as any as S.Schema<GetOrganizationsLocationsOperationsRequest>;
 
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://observability.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://observability.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsRequest",
+}) as any as S.Schema<GetProjectsLocationsRequest>;
 
 export interface GetProjectsLocationsBucketsRequest {
   /** Required. Name of the bucket to retrieve. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/buckets/[BUCKET_ID] */
   name: string;
 }
 export const GetProjectsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://observability.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsBucketsRequest" }) as any as S.Schema<GetProjectsLocationsBucketsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://observability.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsBucketsRequest",
+}) as any as S.Schema<GetProjectsLocationsBucketsRequest>;
 
 /** Settings for configuring CMEK for a bucket. */
 export interface CmekSettings {
@@ -381,11 +533,11 @@ export interface CmekSettings {
   kmsKeyVersion?: string;
 }
 export const CmekSettings = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "serviceAccountId": S.optional(S.String),
-  "kmsKey": S.optional(S.String),
-  "kmsKeyVersion": S.optional(S.String),
-}),
+  S.Struct({
+    serviceAccountId: S.optional(S.String),
+    kmsKey: S.optional(S.String),
+    kmsKeyVersion: S.optional(S.String),
+  }),
 ).annotate({ identifier: "CmekSettings" }) as any as S.Schema<CmekSettings>;
 
 /** Bucket configuration for storing observability data. */
@@ -408,27 +560,36 @@ export interface Bucket {
   purgeTime?: string;
 }
 export const Bucket = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "cmekSettings": S.optional(CmekSettings),
-  "deleteTime": S.optional(S.String),
-  "description": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "name": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "purgeTime": S.optional(S.String),
-}),
+  S.Struct({
+    cmekSettings: S.optional(CmekSettings),
+    deleteTime: S.optional(S.String),
+    description: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    name: S.optional(S.String),
+    displayName: S.optional(S.String),
+    createTime: S.optional(S.String),
+    purgeTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Bucket" }) as any as S.Schema<Bucket>;
 
 export interface GetProjectsLocationsBucketsDatasetsRequest {
   /** Required. Name of the dataset to retrieve. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/buckets/[BUCKET_ID]/datasets/[DATASET_ID] */
   name: string;
 }
-export const GetProjectsLocationsBucketsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://observability.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsBucketsDatasetsRequest" }) as any as S.Schema<GetProjectsLocationsBucketsDatasetsRequest>;
+export const GetProjectsLocationsBucketsDatasetsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://observability.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsBucketsDatasetsRequest",
+  }) as any as S.Schema<GetProjectsLocationsBucketsDatasetsRequest>;
 
 /** A dataset is a collection of data that has a specific configuration. A dataset can be backed by multiple tables. One bucket can have multiple datasets. */
 export interface Dataset {
@@ -446,35 +607,53 @@ export interface Dataset {
   purgeTime?: string;
 }
 export const Dataset = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "deleteTime": S.optional(S.String),
-  "description": S.optional(S.String),
-  "name": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "purgeTime": S.optional(S.String),
-}),
+  S.Struct({
+    deleteTime: S.optional(S.String),
+    description: S.optional(S.String),
+    name: S.optional(S.String),
+    displayName: S.optional(S.String),
+    createTime: S.optional(S.String),
+    purgeTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Dataset" }) as any as S.Schema<Dataset>;
 
 export interface GetProjectsLocationsBucketsDatasetsLinksRequest {
   /** Required. Name of the link to retrieve. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/buckets/[BUCKET_ID]/datasets/[DATASET_ID]/links/[LINK_ID] */
   name: string;
 }
-export const GetProjectsLocationsBucketsDatasetsLinksRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://observability.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsBucketsDatasetsLinksRequest" }) as any as S.Schema<GetProjectsLocationsBucketsDatasetsLinksRequest>;
+export const GetProjectsLocationsBucketsDatasetsLinksRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://observability.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsBucketsDatasetsLinksRequest",
+  }) as any as S.Schema<GetProjectsLocationsBucketsDatasetsLinksRequest>;
 
 export interface GetProjectsLocationsBucketsDatasetsViewsRequest {
   /** Required. Name of the view to retrieve. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/buckets/[BUCKET_ID]/datasets/[DATASET_ID]/views/[VIEW_ID] */
   name: string;
 }
-export const GetProjectsLocationsBucketsDatasetsViewsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://observability.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsBucketsDatasetsViewsRequest" }) as any as S.Schema<GetProjectsLocationsBucketsDatasetsViewsRequest>;
+export const GetProjectsLocationsBucketsDatasetsViewsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://observability.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsBucketsDatasetsViewsRequest",
+  }) as any as S.Schema<GetProjectsLocationsBucketsDatasetsViewsRequest>;
 
 /** A view corresponds to a read-only representation of a subset of the data in a dataset. */
 export interface View {
@@ -490,34 +669,51 @@ export interface View {
   description?: string;
 }
 export const View = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateTime": S.optional(S.String),
-  "name": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "description": S.optional(S.String),
-}),
+  S.Struct({
+    updateTime: S.optional(S.String),
+    name: S.optional(S.String),
+    displayName: S.optional(S.String),
+    createTime: S.optional(S.String),
+    description: S.optional(S.String),
+  }),
 ).annotate({ identifier: "View" }) as any as S.Schema<View>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://observability.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://observability.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsOperationsRequest",
+}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export interface GetProjectsLocationsScopesRequest {
   /** Required. Name of the resource. The format is: projects/{project}/locations/{location}/scopes/{scope} The `{location}` field must be set to `global`. The `{scope}` field must be set to `_Default`. */
   name: string;
 }
 export const GetProjectsLocationsScopesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://observability.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsScopesRequest" }) as any as S.Schema<GetProjectsLocationsScopesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://observability.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsScopesRequest",
+}) as any as S.Schema<GetProjectsLocationsScopesRequest>;
 
 /** Message describing Scope object */
 export interface Scope {
@@ -531,33 +727,50 @@ export interface Scope {
   logScope?: string;
 }
 export const Scope = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "traceScope": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "logScope": S.optional(S.String),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    traceScope: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    logScope: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Scope" }) as any as S.Schema<Scope>;
 
 export interface GetProjectsLocationsTraceScopesRequest {
   /** Required. The resource name of the trace scope: projects/[PROJECT_ID]/locations/[LOCATION_ID]/traceScopes/[TRACE_SCOPE_ID] For example: projects/my-project/locations/global/traceScopes/my-trace-scope */
   name: string;
 }
-export const GetProjectsLocationsTraceScopesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://observability.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsTraceScopesRequest" }) as any as S.Schema<GetProjectsLocationsTraceScopesRequest>;
+export const GetProjectsLocationsTraceScopesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://observability.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsTraceScopesRequest",
+}) as any as S.Schema<GetProjectsLocationsTraceScopesRequest>;
 
 export interface GetSettingsFoldersLocationsRequest {
   /** Required. Name of the settings to retrieve. Name format: "projects/[PROJECT_ID]/locations/[LOCATION]/settings" "folders/[FOLDER_ID]/locations/[LOCATION]/settings" "organizations/[ORGANIZATION_ID]/locations/[LOCATION]/settings" */
   name: string;
 }
 export const GetSettingsFoldersLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://observability.googleapis.com/"})),
-).annotate({ identifier: "GetSettingsFoldersLocationsRequest" }) as any as S.Schema<GetSettingsFoldersLocationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://observability.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetSettingsFoldersLocationsRequest",
+}) as any as S.Schema<GetSettingsFoldersLocationsRequest>;
 
 /** Describes the settings associated with a project, organization, or folder. */
 export interface Settings {
@@ -571,33 +784,50 @@ export interface Settings {
   serviceAccountId?: string;
 }
 export const Settings = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "kmsKeyName": S.optional(S.String),
-  "defaultStorageLocation": S.optional(S.String),
-  "serviceAccountId": S.optional(S.String),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    kmsKeyName: S.optional(S.String),
+    defaultStorageLocation: S.optional(S.String),
+    serviceAccountId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Settings" }) as any as S.Schema<Settings>;
 
 export interface GetSettingsOrganizationsLocationsRequest {
   /** Required. Name of the settings to retrieve. Name format: "projects/[PROJECT_ID]/locations/[LOCATION]/settings" "folders/[FOLDER_ID]/locations/[LOCATION]/settings" "organizations/[ORGANIZATION_ID]/locations/[LOCATION]/settings" */
   name: string;
 }
-export const GetSettingsOrganizationsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://observability.googleapis.com/"})),
-).annotate({ identifier: "GetSettingsOrganizationsLocationsRequest" }) as any as S.Schema<GetSettingsOrganizationsLocationsRequest>;
+export const GetSettingsOrganizationsLocationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://observability.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetSettingsOrganizationsLocationsRequest",
+}) as any as S.Schema<GetSettingsOrganizationsLocationsRequest>;
 
 export interface GetSettingsProjectsLocationsRequest {
   /** Required. Name of the settings to retrieve. Name format: "projects/[PROJECT_ID]/locations/[LOCATION]/settings" "folders/[FOLDER_ID]/locations/[LOCATION]/settings" "organizations/[ORGANIZATION_ID]/locations/[LOCATION]/settings" */
   name: string;
 }
 export const GetSettingsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://observability.googleapis.com/"})),
-).annotate({ identifier: "GetSettingsProjectsLocationsRequest" }) as any as S.Schema<GetSettingsProjectsLocationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://observability.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetSettingsProjectsLocationsRequest",
+}) as any as S.Schema<GetSettingsProjectsLocationsRequest>;
 
 export interface ListFoldersLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
@@ -612,17 +842,27 @@ export interface ListFoldersLocationsRequest {
   pageToken?: string;
 }
 export const ListFoldersLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/locations","baseUrl":"https://observability.googleapis.com/"})),
-).annotate({ identifier: "ListFoldersLocationsRequest" }) as any as S.Schema<ListFoldersLocationsRequest>;
+  S.Struct({
+    filter: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}/locations",
+      baseUrl: "https://observability.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListFoldersLocationsRequest",
+}) as any as S.Schema<ListFoldersLocationsRequest>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(
+  Location,
+) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -632,11 +872,13 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locations": S.optional(LocationList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
+  S.Struct({
+    locations: S.optional(LocationList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListLocationsResponse",
+}) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListFoldersLocationsOperationsRequest {
   /** The standard list filter. */
@@ -650,18 +892,29 @@ export interface ListFoldersLocationsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
-export const ListFoldersLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/operations","baseUrl":"https://observability.googleapis.com/"})),
-).annotate({ identifier: "ListFoldersLocationsOperationsRequest" }) as any as S.Schema<ListFoldersLocationsOperationsRequest>;
+export const ListFoldersLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      filter: S.optional(S.String.pipe(T.Query())),
+      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}/operations",
+        baseUrl: "https://observability.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListFoldersLocationsOperationsRequest",
+}) as any as S.Schema<ListFoldersLocationsOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(
+  Operation,
+) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -673,12 +926,14 @@ export interface ListOperationsResponse {
   unreachable?: StringList;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "operations": S.optional(OperationList),
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
+  S.Struct({
+    operations: S.optional(OperationList),
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListOperationsResponse",
+}) as any as S.Schema<ListOperationsResponse>;
 
 export interface ListOrganizationsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
@@ -693,14 +948,22 @@ export interface ListOrganizationsLocationsRequest {
   pageToken?: string;
 }
 export const ListOrganizationsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/locations","baseUrl":"https://observability.googleapis.com/"})),
-).annotate({ identifier: "ListOrganizationsLocationsRequest" }) as any as S.Schema<ListOrganizationsLocationsRequest>;
+  S.Struct({
+    filter: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}/locations",
+      baseUrl: "https://observability.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListOrganizationsLocationsRequest",
+}) as any as S.Schema<ListOrganizationsLocationsRequest>;
 
 export interface ListOrganizationsLocationsOperationsRequest {
   /** The standard list page size. */
@@ -714,15 +977,24 @@ export interface ListOrganizationsLocationsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
-export const ListOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/operations","baseUrl":"https://observability.googleapis.com/"})),
-).annotate({ identifier: "ListOrganizationsLocationsOperationsRequest" }) as any as S.Schema<ListOrganizationsLocationsOperationsRequest>;
+export const ListOrganizationsLocationsOperationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      filter: S.optional(S.String.pipe(T.Query())),
+      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}/operations",
+        baseUrl: "https://observability.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListOrganizationsLocationsOperationsRequest",
+  }) as any as S.Schema<ListOrganizationsLocationsOperationsRequest>;
 
 export interface ListProjectsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
@@ -737,14 +1009,22 @@ export interface ListProjectsLocationsRequest {
   extraLocationTypes?: StringList;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/locations","baseUrl":"https://observability.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
+  S.Struct({
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}/locations",
+      baseUrl: "https://observability.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsRequest",
+}) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export interface ListProjectsLocationsBucketsRequest {
   /** Optional. If true, then the response will include deleted buckets. */
@@ -757,16 +1037,26 @@ export interface ListProjectsLocationsBucketsRequest {
   pageToken?: string;
 }
 export const ListProjectsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "showDeleted": S.optional(S.Boolean.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/buckets","baseUrl":"https://observability.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsBucketsRequest" }) as any as S.Schema<ListProjectsLocationsBucketsRequest>;
+  S.Struct({
+    showDeleted: S.optional(S.Boolean.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/buckets",
+      baseUrl: "https://observability.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsBucketsRequest",
+}) as any as S.Schema<ListProjectsLocationsBucketsRequest>;
 
 export type BucketList = ReadonlyArray<Bucket>;
-export const BucketList = /*@__PURE__*/ S.Array(Bucket) as any as S.Schema<BucketList>;
+export const BucketList = /*@__PURE__*/ S.Array(
+  Bucket,
+) as any as S.Schema<BucketList>;
 
 /** Response for listing buckets. */
 export interface ListBucketsResponse {
@@ -776,11 +1066,13 @@ export interface ListBucketsResponse {
   nextPageToken?: string;
 }
 export const ListBucketsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "buckets": S.optional(BucketList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListBucketsResponse" }) as any as S.Schema<ListBucketsResponse>;
+  S.Struct({
+    buckets: S.optional(BucketList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListBucketsResponse",
+}) as any as S.Schema<ListBucketsResponse>;
 
 export interface ListProjectsLocationsBucketsDatasetsRequest {
   /** Required. The parent bucket that owns this collection of datasets. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/buckets/[BUCKET_ID] */
@@ -792,17 +1084,28 @@ export interface ListProjectsLocationsBucketsDatasetsRequest {
   /** Optional. If true, then the response will include deleted datasets. */
   showDeleted?: boolean;
 }
-export const ListProjectsLocationsBucketsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "showDeleted": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/datasets","baseUrl":"https://observability.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsBucketsDatasetsRequest" }) as any as S.Schema<ListProjectsLocationsBucketsDatasetsRequest>;
+export const ListProjectsLocationsBucketsDatasetsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      showDeleted: S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/datasets",
+        baseUrl: "https://observability.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsBucketsDatasetsRequest",
+  }) as any as S.Schema<ListProjectsLocationsBucketsDatasetsRequest>;
 
 export type DatasetList = ReadonlyArray<Dataset>;
-export const DatasetList = /*@__PURE__*/ S.Array(Dataset) as any as S.Schema<DatasetList>;
+export const DatasetList = /*@__PURE__*/ S.Array(
+  Dataset,
+) as any as S.Schema<DatasetList>;
 
 /** Response for listing datasets. */
 export interface ListDatasetsResponse {
@@ -812,11 +1115,13 @@ export interface ListDatasetsResponse {
   nextPageToken?: string;
 }
 export const ListDatasetsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "datasets": S.optional(DatasetList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListDatasetsResponse" }) as any as S.Schema<ListDatasetsResponse>;
+  S.Struct({
+    datasets: S.optional(DatasetList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListDatasetsResponse",
+}) as any as S.Schema<ListDatasetsResponse>;
 
 export interface ListProjectsLocationsBucketsDatasetsLinksRequest {
   /** Required. The parent dataset that owns this collection of links. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/buckets/[BUCKET_ID]/datasets/[DATASET_ID] */
@@ -826,16 +1131,27 @@ export interface ListProjectsLocationsBucketsDatasetsLinksRequest {
   /** Optional. A page token, received from a previous `ListLinks` call. Provide this to retrieve the subsequent page. */
   pageToken?: string;
 }
-export const ListProjectsLocationsBucketsDatasetsLinksRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/links","baseUrl":"https://observability.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsBucketsDatasetsLinksRequest" }) as any as S.Schema<ListProjectsLocationsBucketsDatasetsLinksRequest>;
+export const ListProjectsLocationsBucketsDatasetsLinksRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/links",
+        baseUrl: "https://observability.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsBucketsDatasetsLinksRequest",
+  }) as any as S.Schema<ListProjectsLocationsBucketsDatasetsLinksRequest>;
 
 export type LinkList = ReadonlyArray<Link>;
-export const LinkList = /*@__PURE__*/ S.Array(Link) as any as S.Schema<LinkList>;
+export const LinkList = /*@__PURE__*/ S.Array(
+  Link,
+) as any as S.Schema<LinkList>;
 
 /** Response for listing links. */
 export interface ListLinksResponse {
@@ -845,11 +1161,13 @@ export interface ListLinksResponse {
   nextPageToken?: string;
 }
 export const ListLinksResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "links": S.optional(LinkList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListLinksResponse" }) as any as S.Schema<ListLinksResponse>;
+  S.Struct({
+    links: S.optional(LinkList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListLinksResponse",
+}) as any as S.Schema<ListLinksResponse>;
 
 export interface ListProjectsLocationsBucketsDatasetsViewsRequest {
   /** Required. Dataset whose views are to be listed. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/buckets/[BUCKET_ID]/datasets/[DATASET_ID] */
@@ -859,16 +1177,27 @@ export interface ListProjectsLocationsBucketsDatasetsViewsRequest {
   /** Optional. A page token, received from a previous `ListViews` call. Provide this to retrieve the subsequent page. */
   pageToken?: string;
 }
-export const ListProjectsLocationsBucketsDatasetsViewsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/views","baseUrl":"https://observability.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsBucketsDatasetsViewsRequest" }) as any as S.Schema<ListProjectsLocationsBucketsDatasetsViewsRequest>;
+export const ListProjectsLocationsBucketsDatasetsViewsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/views",
+        baseUrl: "https://observability.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsBucketsDatasetsViewsRequest",
+  }) as any as S.Schema<ListProjectsLocationsBucketsDatasetsViewsRequest>;
 
 export type ViewList = ReadonlyArray<View>;
-export const ViewList = /*@__PURE__*/ S.Array(View) as any as S.Schema<ViewList>;
+export const ViewList = /*@__PURE__*/ S.Array(
+  View,
+) as any as S.Schema<ViewList>;
 
 /** Response for listing views. */
 export interface ListViewsResponse {
@@ -878,11 +1207,13 @@ export interface ListViewsResponse {
   nextPageToken?: string;
 }
 export const ListViewsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "views": S.optional(ViewList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListViewsResponse" }) as any as S.Schema<ListViewsResponse>;
+  S.Struct({
+    views: S.optional(ViewList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListViewsResponse",
+}) as any as S.Schema<ListViewsResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
   /** The name of the operation's parent resource. */
@@ -896,15 +1227,24 @@ export interface ListProjectsLocationsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/operations","baseUrl":"https://observability.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}/operations",
+        baseUrl: "https://observability.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsOperationsRequest",
+}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export interface ListProjectsLocationsTraceScopesRequest {
   /** Required. The full resource name of the location to look for trace scopes: projects/[PROJECT_ID]/locations/[LOCATION_ID] For example: projects/my-project/locations/global */
@@ -914,16 +1254,27 @@ export interface ListProjectsLocationsTraceScopesRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. `page_token` must be the value of `next_page_token` from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
 }
-export const ListProjectsLocationsTraceScopesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/traceScopes","baseUrl":"https://observability.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsTraceScopesRequest" }) as any as S.Schema<ListProjectsLocationsTraceScopesRequest>;
+export const ListProjectsLocationsTraceScopesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/traceScopes",
+        baseUrl: "https://observability.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsTraceScopesRequest",
+}) as any as S.Schema<ListProjectsLocationsTraceScopesRequest>;
 
 export type TraceScopeList = ReadonlyArray<TraceScope>;
-export const TraceScopeList = /*@__PURE__*/ S.Array(TraceScope) as any as S.Schema<TraceScopeList>;
+export const TraceScopeList = /*@__PURE__*/ S.Array(
+  TraceScope,
+) as any as S.Schema<TraceScopeList>;
 
 /** Response for listing TraceScopes. */
 export interface ListTraceScopesResponse {
@@ -933,11 +1284,13 @@ export interface ListTraceScopesResponse {
   traceScopes?: TraceScopeList;
 }
 export const ListTraceScopesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "traceScopes": S.optional(TraceScopeList),
-}),
-).annotate({ identifier: "ListTraceScopesResponse" }) as any as S.Schema<ListTraceScopesResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    traceScopes: S.optional(TraceScopeList),
+  }),
+).annotate({
+  identifier: "ListTraceScopesResponse",
+}) as any as S.Schema<ListTraceScopesResponse>;
 
 export interface PatchProjectsLocationsBucketsDatasetsLinksRequest {
   /** Identifier. Name of the link. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/buckets/[BUCKET_ID]/datasets/[DATASET_ID]/links/[LINK_ID] */
@@ -947,13 +1300,22 @@ export interface PatchProjectsLocationsBucketsDatasetsLinksRequest {
   /** Request body */
   body?: Link;
 }
-export const PatchProjectsLocationsBucketsDatasetsLinksRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Link.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://observability.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsBucketsDatasetsLinksRequest" }) as any as S.Schema<PatchProjectsLocationsBucketsDatasetsLinksRequest>;
+export const PatchProjectsLocationsBucketsDatasetsLinksRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Link.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://observability.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsBucketsDatasetsLinksRequest",
+  }) as any as S.Schema<PatchProjectsLocationsBucketsDatasetsLinksRequest>;
 
 export interface PatchProjectsLocationsScopesRequest {
   /** Identifier. Name of the resource. The format is: projects/{project}/locations/{location}/scopes/{scope} The `{location}` field must be set to `global`. The `{scope}` field must be set to `_Default`. */
@@ -964,12 +1326,20 @@ export interface PatchProjectsLocationsScopesRequest {
   body?: Scope;
 }
 export const PatchProjectsLocationsScopesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Scope.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://observability.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsScopesRequest" }) as any as S.Schema<PatchProjectsLocationsScopesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(Scope.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+name}",
+      baseUrl: "https://observability.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchProjectsLocationsScopesRequest",
+}) as any as S.Schema<PatchProjectsLocationsScopesRequest>;
 
 export interface PatchProjectsLocationsTraceScopesRequest {
   /** Identifier. The resource name of the trace scope. For example: projects/my-project/locations/global/traceScopes/my-trace-scope */
@@ -979,13 +1349,22 @@ export interface PatchProjectsLocationsTraceScopesRequest {
   /** Request body */
   body?: TraceScope;
 }
-export const PatchProjectsLocationsTraceScopesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(TraceScope.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://observability.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsTraceScopesRequest" }) as any as S.Schema<PatchProjectsLocationsTraceScopesRequest>;
+export const PatchProjectsLocationsTraceScopesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(TraceScope.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://observability.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "PatchProjectsLocationsTraceScopesRequest",
+}) as any as S.Schema<PatchProjectsLocationsTraceScopesRequest>;
 
 export interface UpdateSettingsFoldersLocationsRequest {
   /** Identifier. The resource name of the settings. */
@@ -995,13 +1374,22 @@ export interface UpdateSettingsFoldersLocationsRequest {
   /** Request body */
   body?: Settings;
 }
-export const UpdateSettingsFoldersLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Settings.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://observability.googleapis.com/"})),
-).annotate({ identifier: "UpdateSettingsFoldersLocationsRequest" }) as any as S.Schema<UpdateSettingsFoldersLocationsRequest>;
+export const UpdateSettingsFoldersLocationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Settings.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://observability.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "UpdateSettingsFoldersLocationsRequest",
+}) as any as S.Schema<UpdateSettingsFoldersLocationsRequest>;
 
 export interface UpdateSettingsOrganizationsLocationsRequest {
   /** Identifier. The resource name of the settings. */
@@ -1011,13 +1399,22 @@ export interface UpdateSettingsOrganizationsLocationsRequest {
   /** Request body */
   body?: Settings;
 }
-export const UpdateSettingsOrganizationsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Settings.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://observability.googleapis.com/"})),
-).annotate({ identifier: "UpdateSettingsOrganizationsLocationsRequest" }) as any as S.Schema<UpdateSettingsOrganizationsLocationsRequest>;
+export const UpdateSettingsOrganizationsLocationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Settings.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://observability.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "UpdateSettingsOrganizationsLocationsRequest",
+  }) as any as S.Schema<UpdateSettingsOrganizationsLocationsRequest>;
 
 export interface UpdateSettingsProjectsLocationsRequest {
   /** Identifier. The resource name of the settings. */
@@ -1027,15 +1424,29 @@ export interface UpdateSettingsProjectsLocationsRequest {
   /** Request body */
   body?: Settings;
 }
-export const UpdateSettingsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Settings.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://observability.googleapis.com/"})),
-).annotate({ identifier: "UpdateSettingsProjectsLocationsRequest" }) as any as S.Schema<UpdateSettingsProjectsLocationsRequest>;
+export const UpdateSettingsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Settings.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://observability.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "UpdateSettingsProjectsLocationsRequest",
+}) as any as S.Schema<UpdateSettingsProjectsLocationsRequest>;
 
-export type CancelFoldersLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CancelFoldersLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelFoldersLocationsOperations: API.OperationMethod<
   CancelFoldersLocationsOperationsRequest,
@@ -1050,7 +1461,12 @@ export const cancelFoldersLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CancelOrganizationsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CancelOrganizationsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelOrganizationsLocationsOperations: API.OperationMethod<
   CancelOrganizationsLocationsOperationsRequest,
@@ -1065,7 +1481,12 @@ export const cancelOrganizationsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CancelProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CancelProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsRequest,
@@ -1080,7 +1501,12 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsBucketsDatasetsLinksError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsBucketsDatasetsLinksError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Create a new link. */
 export const createProjectsLocationsBucketsDatasetsLinks: API.OperationMethod<
   CreateProjectsLocationsBucketsDatasetsLinksRequest,
@@ -1095,7 +1521,12 @@ export const createProjectsLocationsBucketsDatasetsLinks: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsTraceScopesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsTraceScopesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Create a new TraceScope. */
 export const createProjectsLocationsTraceScopes: API.OperationMethod<
   CreateProjectsLocationsTraceScopesRequest,
@@ -1110,7 +1541,12 @@ export const createProjectsLocationsTraceScopes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteFoldersLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteFoldersLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteFoldersLocationsOperations: API.OperationMethod<
   DeleteFoldersLocationsOperationsRequest,
@@ -1125,7 +1561,12 @@ export const deleteFoldersLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteOrganizationsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteOrganizationsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteOrganizationsLocationsOperations: API.OperationMethod<
   DeleteOrganizationsLocationsOperationsRequest,
@@ -1140,7 +1581,12 @@ export const deleteOrganizationsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsBucketsDatasetsLinksError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsBucketsDatasetsLinksError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Delete a link. */
 export const deleteProjectsLocationsBucketsDatasetsLinks: API.OperationMethod<
   DeleteProjectsLocationsBucketsDatasetsLinksRequest,
@@ -1155,7 +1601,12 @@ export const deleteProjectsLocationsBucketsDatasetsLinks: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsRequest,
@@ -1170,7 +1621,12 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsTraceScopesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsTraceScopesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Delete a TraceScope. */
 export const deleteProjectsLocationsTraceScopes: API.OperationMethod<
   DeleteProjectsLocationsTraceScopesRequest,
@@ -1200,7 +1656,10 @@ export const getFoldersLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetFoldersLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type GetFoldersLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getFoldersLocationsOperations: API.OperationMethod<
   GetFoldersLocationsOperationsRequest,
@@ -1230,7 +1689,10 @@ export const getOrganizationsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetOrganizationsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type GetOrganizationsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getOrganizationsLocationsOperations: API.OperationMethod<
   GetOrganizationsLocationsOperationsRequest,
@@ -1260,7 +1722,10 @@ export const getProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsBucketsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsBucketsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Get bucket resource. */
 export const getProjectsLocationsBuckets: API.OperationMethod<
   GetProjectsLocationsBucketsRequest,
@@ -1275,7 +1740,10 @@ export const getProjectsLocationsBuckets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsBucketsDatasetsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsBucketsDatasetsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Get a dataset. */
 export const getProjectsLocationsBucketsDatasets: API.OperationMethod<
   GetProjectsLocationsBucketsDatasetsRequest,
@@ -1290,7 +1758,10 @@ export const getProjectsLocationsBucketsDatasets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsBucketsDatasetsLinksError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsBucketsDatasetsLinksError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Get a link. */
 export const getProjectsLocationsBucketsDatasetsLinks: API.OperationMethod<
   GetProjectsLocationsBucketsDatasetsLinksRequest,
@@ -1305,7 +1776,10 @@ export const getProjectsLocationsBucketsDatasetsLinks: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsBucketsDatasetsViewsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsBucketsDatasetsViewsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Get a view. */
 export const getProjectsLocationsBucketsDatasetsViews: API.OperationMethod<
   GetProjectsLocationsBucketsDatasetsViewsRequest,
@@ -1320,7 +1794,10 @@ export const getProjectsLocationsBucketsDatasetsViews: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -1350,7 +1827,10 @@ export const getProjectsLocationsScopes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsTraceScopesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsTraceScopesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Get TraceScope resource. */
 export const getProjectsLocationsTraceScopes: API.OperationMethod<
   GetProjectsLocationsTraceScopesRequest,
@@ -1365,7 +1845,10 @@ export const getProjectsLocationsTraceScopes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetSettingsFoldersLocationsError = NotFound | Forbidden | GcpOpError;
+export type GetSettingsFoldersLocationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Get Settings */
 export const getSettingsFoldersLocations: API.OperationMethod<
   GetSettingsFoldersLocationsRequest,
@@ -1380,7 +1863,10 @@ export const getSettingsFoldersLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetSettingsOrganizationsLocationsError = NotFound | Forbidden | GcpOpError;
+export type GetSettingsOrganizationsLocationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Get Settings */
 export const getSettingsOrganizationsLocations: API.OperationMethod<
   GetSettingsOrganizationsLocationsRequest,
@@ -1395,7 +1881,10 @@ export const getSettingsOrganizationsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetSettingsProjectsLocationsError = NotFound | Forbidden | GcpOpError;
+export type GetSettingsProjectsLocationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Get Settings */
 export const getSettingsProjectsLocations: API.OperationMethod<
   GetSettingsProjectsLocationsRequest,
@@ -1423,10 +1912,16 @@ export const listFoldersLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListFoldersLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type ListFoldersLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listFoldersLocationsOperations: API.PaginatedOperationMethod<
   ListFoldersLocationsOperationsRequest,
@@ -1439,7 +1934,10 @@ export const listFoldersLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListOrganizationsLocationsError = NotFound | Forbidden | GcpOpError;
@@ -1455,10 +1953,16 @@ export const listOrganizationsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListOrganizationsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type ListOrganizationsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listOrganizationsLocationsOperations: API.PaginatedOperationMethod<
   ListOrganizationsLocationsOperationsRequest,
@@ -1471,7 +1975,10 @@ export const listOrganizationsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListProjectsLocationsError = NotFound | Forbidden | GcpOpError;
@@ -1487,10 +1994,16 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsBucketsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsBucketsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** List buckets of a project in a particular location. */
 export const listProjectsLocationsBuckets: API.PaginatedOperationMethod<
   ListProjectsLocationsBucketsRequest,
@@ -1503,10 +2016,16 @@ export const listProjectsLocationsBuckets: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsBucketsDatasetsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsBucketsDatasetsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** List datasets of a bucket. */
 export const listProjectsLocationsBucketsDatasets: API.PaginatedOperationMethod<
   ListProjectsLocationsBucketsDatasetsRequest,
@@ -1519,10 +2038,16 @@ export const listProjectsLocationsBucketsDatasets: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsBucketsDatasetsLinksError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsBucketsDatasetsLinksError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** List links of a dataset. */
 export const listProjectsLocationsBucketsDatasetsLinks: API.PaginatedOperationMethod<
   ListProjectsLocationsBucketsDatasetsLinksRequest,
@@ -1535,10 +2060,16 @@ export const listProjectsLocationsBucketsDatasetsLinks: API.PaginatedOperationMe
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsBucketsDatasetsViewsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsBucketsDatasetsViewsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** List views of a dataset. */
 export const listProjectsLocationsBucketsDatasetsViews: API.PaginatedOperationMethod<
   ListProjectsLocationsBucketsDatasetsViewsRequest,
@@ -1551,10 +2082,16 @@ export const listProjectsLocationsBucketsDatasetsViews: API.PaginatedOperationMe
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -1567,10 +2104,16 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsTraceScopesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsTraceScopesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** List TraceScopes of a project in a particular location. */
 export const listProjectsLocationsTraceScopes: API.PaginatedOperationMethod<
   ListProjectsLocationsTraceScopesRequest,
@@ -1583,10 +2126,18 @@ export const listProjectsLocationsTraceScopes: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type PatchProjectsLocationsBucketsDatasetsLinksError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsBucketsDatasetsLinksError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update a link. */
 export const patchProjectsLocationsBucketsDatasetsLinks: API.OperationMethod<
   PatchProjectsLocationsBucketsDatasetsLinksRequest,
@@ -1601,7 +2152,12 @@ export const patchProjectsLocationsBucketsDatasetsLinks: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsScopesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsScopesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the parameters of a single Scope. */
 export const patchProjectsLocationsScopes: API.OperationMethod<
   PatchProjectsLocationsScopesRequest,
@@ -1616,7 +2172,12 @@ export const patchProjectsLocationsScopes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsTraceScopesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsTraceScopesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update a TraceScope. */
 export const patchProjectsLocationsTraceScopes: API.OperationMethod<
   PatchProjectsLocationsTraceScopesRequest,
@@ -1631,7 +2192,12 @@ export const patchProjectsLocationsTraceScopes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateSettingsFoldersLocationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateSettingsFoldersLocationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update Settings */
 export const updateSettingsFoldersLocations: API.OperationMethod<
   UpdateSettingsFoldersLocationsRequest,
@@ -1646,7 +2212,12 @@ export const updateSettingsFoldersLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateSettingsOrganizationsLocationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateSettingsOrganizationsLocationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update Settings */
 export const updateSettingsOrganizationsLocations: API.OperationMethod<
   UpdateSettingsOrganizationsLocationsRequest,
@@ -1661,7 +2232,12 @@ export const updateSettingsOrganizationsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateSettingsProjectsLocationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateSettingsProjectsLocationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update Settings */
 export const updateSettingsProjectsLocations: API.OperationMethod<
   UpdateSettingsProjectsLocationsRequest,
@@ -1675,4 +2251,3 @@ export const updateSettingsProjectsLocations: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

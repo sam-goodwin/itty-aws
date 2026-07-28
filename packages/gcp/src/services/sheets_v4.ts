@@ -13,73 +13,94 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
-export type AppendSpreadsheetsValuesResponseValueRenderOptionEnum = "FORMATTED_VALUE" | "UNFORMATTED_VALUE" | "FORMULA";
-export const AppendSpreadsheetsValuesResponseValueRenderOptionEnum = /*@__PURE__*/ S.String;
+export type AppendSpreadsheetsValuesResponseValueRenderOptionEnum =
+  | "FORMATTED_VALUE"
+  | "UNFORMATTED_VALUE"
+  | "FORMULA";
+export const AppendSpreadsheetsValuesResponseValueRenderOptionEnum =
+  /*@__PURE__*/ S.String;
 
-export type AppendSpreadsheetsValuesResponseDateTimeRenderOptionEnum = "SERIAL_NUMBER" | "FORMATTED_STRING";
-export const AppendSpreadsheetsValuesResponseDateTimeRenderOptionEnum = /*@__PURE__*/ S.String;
+export type AppendSpreadsheetsValuesResponseDateTimeRenderOptionEnum =
+  | "SERIAL_NUMBER"
+  | "FORMATTED_STRING";
+export const AppendSpreadsheetsValuesResponseDateTimeRenderOptionEnum =
+  /*@__PURE__*/ S.String;
 
-export type AppendSpreadsheetsValuesInsertDataOptionEnum = "OVERWRITE" | "INSERT_ROWS";
-export const AppendSpreadsheetsValuesInsertDataOptionEnum = /*@__PURE__*/ S.String;
+export type AppendSpreadsheetsValuesInsertDataOptionEnum =
+  | "OVERWRITE"
+  | "INSERT_ROWS";
+export const AppendSpreadsheetsValuesInsertDataOptionEnum =
+  /*@__PURE__*/ S.String;
 
-export type AppendSpreadsheetsValuesValueInputOptionEnum = "INPUT_VALUE_OPTION_UNSPECIFIED" | "RAW" | "USER_ENTERED";
-export const AppendSpreadsheetsValuesValueInputOptionEnum = /*@__PURE__*/ S.String;
+export type AppendSpreadsheetsValuesValueInputOptionEnum =
+  | "INPUT_VALUE_OPTION_UNSPECIFIED"
+  | "RAW"
+  | "USER_ENTERED";
+export const AppendSpreadsheetsValuesValueInputOptionEnum =
+  /*@__PURE__*/ S.String;
 
-export type ValueRangeMajorDimensionEnum = "DIMENSION_UNSPECIFIED" | "ROWS" | "COLUMNS";
+export type ValueRangeMajorDimensionEnum =
+  | "DIMENSION_UNSPECIFIED"
+  | "ROWS"
+  | "COLUMNS";
 export const ValueRangeMajorDimensionEnum = /*@__PURE__*/ S.String;
 
 export type DocumentList = ReadonlyArray<unknown>;
-export const DocumentList = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Schema<DocumentList>;
+export const DocumentList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<DocumentList>;
 
 export type DocumentListList = ReadonlyArray<DocumentList>;
-export const DocumentListList = /*@__PURE__*/ S.Array(DocumentList) as any as S.Schema<DocumentListList>;
+export const DocumentListList = /*@__PURE__*/ S.Array(
+  DocumentList,
+) as any as S.Schema<DocumentListList>;
 
 /** Data within a range of the spreadsheet. */
 export interface ValueRange {
@@ -91,11 +112,11 @@ export interface ValueRange {
   range?: string;
 }
 export const ValueRange = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "majorDimension": S.optional(ValueRangeMajorDimensionEnum),
-  "values": S.optional(DocumentListList),
-  "range": S.optional(S.String),
-}),
+  S.Struct({
+    majorDimension: S.optional(ValueRangeMajorDimensionEnum),
+    values: S.optional(DocumentListList),
+    range: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ValueRange" }) as any as S.Schema<ValueRange>;
 
 export interface AppendSpreadsheetsValuesRequest {
@@ -106,28 +127,52 @@ export interface AppendSpreadsheetsValuesRequest {
   /** The ID of the spreadsheet to update. */
   spreadsheetId: string;
   /** Determines how values in the response should be rendered. The default render option is FORMATTED_VALUE. */
-  responseValueRenderOption?: AppendSpreadsheetsValuesResponseValueRenderOptionEnum | (string & {});
+  responseValueRenderOption?:
+    | AppendSpreadsheetsValuesResponseValueRenderOptionEnum
+    | (string & {});
   /** Determines how dates, times, and durations in the response should be rendered. This is ignored if response_value_render_option is FORMATTED_VALUE. The default dateTime render option is SERIAL_NUMBER. */
-  responseDateTimeRenderOption?: AppendSpreadsheetsValuesResponseDateTimeRenderOptionEnum | (string & {});
+  responseDateTimeRenderOption?:
+    | AppendSpreadsheetsValuesResponseDateTimeRenderOptionEnum
+    | (string & {});
   /** How the input data should be inserted. */
-  insertDataOption?: AppendSpreadsheetsValuesInsertDataOptionEnum | (string & {});
+  insertDataOption?:
+    | AppendSpreadsheetsValuesInsertDataOptionEnum
+    | (string & {});
   /** How the input data should be interpreted. */
-  valueInputOption?: AppendSpreadsheetsValuesValueInputOptionEnum | (string & {});
+  valueInputOption?:
+    | AppendSpreadsheetsValuesValueInputOptionEnum
+    | (string & {});
   /** Request body */
   body?: ValueRange;
 }
 export const AppendSpreadsheetsValuesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "includeValuesInResponse": S.optional(S.Boolean.pipe(T.Query())),
-  "range": S.String.pipe(T.Label()),
-  "spreadsheetId": S.String.pipe(T.Label()),
-  "responseValueRenderOption": S.optional(AppendSpreadsheetsValuesResponseValueRenderOptionEnum.pipe(T.Query())),
-  "responseDateTimeRenderOption": S.optional(AppendSpreadsheetsValuesResponseDateTimeRenderOptionEnum.pipe(T.Query())),
-  "insertDataOption": S.optional(AppendSpreadsheetsValuesInsertDataOptionEnum.pipe(T.Query())),
-  "valueInputOption": S.optional(AppendSpreadsheetsValuesValueInputOptionEnum.pipe(T.Query())),
-  "body": S.optional(ValueRange.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v4/spreadsheets/{spreadsheetId}/values/{range}:append","baseUrl":"https://sheets.googleapis.com/"})),
-).annotate({ identifier: "AppendSpreadsheetsValuesRequest" }) as any as S.Schema<AppendSpreadsheetsValuesRequest>;
+  S.Struct({
+    includeValuesInResponse: S.optional(S.Boolean.pipe(T.Query())),
+    range: S.String.pipe(T.Label()),
+    spreadsheetId: S.String.pipe(T.Label()),
+    responseValueRenderOption: S.optional(
+      AppendSpreadsheetsValuesResponseValueRenderOptionEnum.pipe(T.Query()),
+    ),
+    responseDateTimeRenderOption: S.optional(
+      AppendSpreadsheetsValuesResponseDateTimeRenderOptionEnum.pipe(T.Query()),
+    ),
+    insertDataOption: S.optional(
+      AppendSpreadsheetsValuesInsertDataOptionEnum.pipe(T.Query()),
+    ),
+    valueInputOption: S.optional(
+      AppendSpreadsheetsValuesValueInputOptionEnum.pipe(T.Query()),
+    ),
+    body: S.optional(ValueRange.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v4/spreadsheets/{spreadsheetId}/values/{range}:append",
+      baseUrl: "https://sheets.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "AppendSpreadsheetsValuesRequest",
+}) as any as S.Schema<AppendSpreadsheetsValuesRequest>;
 
 /** The response when updating a range of values in a spreadsheet. */
 export interface UpdateValuesResponse {
@@ -145,15 +190,17 @@ export interface UpdateValuesResponse {
   updatedCells?: number;
 }
 export const UpdateValuesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updatedRows": S.optional(S.Number),
-  "spreadsheetId": S.optional(S.String),
-  "updatedRange": S.optional(S.String),
-  "updatedData": S.optional(ValueRange),
-  "updatedColumns": S.optional(S.Number),
-  "updatedCells": S.optional(S.Number),
-}),
-).annotate({ identifier: "UpdateValuesResponse" }) as any as S.Schema<UpdateValuesResponse>;
+  S.Struct({
+    updatedRows: S.optional(S.Number),
+    spreadsheetId: S.optional(S.String),
+    updatedRange: S.optional(S.String),
+    updatedData: S.optional(ValueRange),
+    updatedColumns: S.optional(S.Number),
+    updatedCells: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "UpdateValuesResponse",
+}) as any as S.Schema<UpdateValuesResponse>;
 
 /** The response when updating a range of values in a spreadsheet. */
 export interface AppendValuesResponse {
@@ -165,14 +212,19 @@ export interface AppendValuesResponse {
   tableRange?: string;
 }
 export const AppendValuesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "spreadsheetId": S.optional(S.String),
-  "updates": S.optional(UpdateValuesResponse),
-  "tableRange": S.optional(S.String),
-}),
-).annotate({ identifier: "AppendValuesResponse" }) as any as S.Schema<AppendValuesResponse>;
+  S.Struct({
+    spreadsheetId: S.optional(S.String),
+    updates: S.optional(UpdateValuesResponse),
+    tableRange: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AppendValuesResponse",
+}) as any as S.Schema<AppendValuesResponse>;
 
-export type DimensionRangeDimensionEnum = "DIMENSION_UNSPECIFIED" | "ROWS" | "COLUMNS";
+export type DimensionRangeDimensionEnum =
+  | "DIMENSION_UNSPECIFIED"
+  | "ROWS"
+  | "COLUMNS";
 export const DimensionRangeDimensionEnum = /*@__PURE__*/ S.String;
 
 /** A range along a single dimension on a sheet. All indexes are zero-based. Indexes are half open: the start index is inclusive and the end index is exclusive. Missing indexes indicate the range is unbounded on that side. */
@@ -187,15 +239,20 @@ export interface DimensionRange {
   endIndex?: number;
 }
 export const DimensionRange = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sheetId": S.optional(S.Number),
-  "dimension": S.optional(DimensionRangeDimensionEnum),
-  "startIndex": S.optional(S.Number),
-  "endIndex": S.optional(S.Number),
-}),
+  S.Struct({
+    sheetId: S.optional(S.Number),
+    dimension: S.optional(DimensionRangeDimensionEnum),
+    startIndex: S.optional(S.Number),
+    endIndex: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "DimensionRange" }) as any as S.Schema<DimensionRange>;
 
-export type DeveloperMetadataLocationLocationTypeEnum = "DEVELOPER_METADATA_LOCATION_TYPE_UNSPECIFIED" | "ROW" | "COLUMN" | "SHEET" | "SPREADSHEET";
+export type DeveloperMetadataLocationLocationTypeEnum =
+  | "DEVELOPER_METADATA_LOCATION_TYPE_UNSPECIFIED"
+  | "ROW"
+  | "COLUMN"
+  | "SHEET"
+  | "SPREADSHEET";
 export const DeveloperMetadataLocationLocationTypeEnum = /*@__PURE__*/ S.String;
 
 /** A location where metadata may be associated in a spreadsheet. */
@@ -210,22 +267,36 @@ export interface DeveloperMetadataLocation {
   spreadsheet?: boolean;
 }
 export const DeveloperMetadataLocation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sheetId": S.optional(S.Number),
-  "dimensionRange": S.optional(DimensionRange),
-  "locationType": S.optional(DeveloperMetadataLocationLocationTypeEnum),
-  "spreadsheet": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "DeveloperMetadataLocation" }) as any as S.Schema<DeveloperMetadataLocation>;
+  S.Struct({
+    sheetId: S.optional(S.Number),
+    dimensionRange: S.optional(DimensionRange),
+    locationType: S.optional(DeveloperMetadataLocationLocationTypeEnum),
+    spreadsheet: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "DeveloperMetadataLocation",
+}) as any as S.Schema<DeveloperMetadataLocation>;
 
-export type DeveloperMetadataLookupLocationTypeEnum = "DEVELOPER_METADATA_LOCATION_TYPE_UNSPECIFIED" | "ROW" | "COLUMN" | "SHEET" | "SPREADSHEET";
+export type DeveloperMetadataLookupLocationTypeEnum =
+  | "DEVELOPER_METADATA_LOCATION_TYPE_UNSPECIFIED"
+  | "ROW"
+  | "COLUMN"
+  | "SHEET"
+  | "SPREADSHEET";
 export const DeveloperMetadataLookupLocationTypeEnum = /*@__PURE__*/ S.String;
 
-export type DeveloperMetadataLookupVisibilityEnum = "DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED" | "DOCUMENT" | "PROJECT";
+export type DeveloperMetadataLookupVisibilityEnum =
+  | "DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED"
+  | "DOCUMENT"
+  | "PROJECT";
 export const DeveloperMetadataLookupVisibilityEnum = /*@__PURE__*/ S.String;
 
-export type DeveloperMetadataLookupLocationMatchingStrategyEnum = "DEVELOPER_METADATA_LOCATION_MATCHING_STRATEGY_UNSPECIFIED" | "EXACT_LOCATION" | "INTERSECTING_LOCATION";
-export const DeveloperMetadataLookupLocationMatchingStrategyEnum = /*@__PURE__*/ S.String;
+export type DeveloperMetadataLookupLocationMatchingStrategyEnum =
+  | "DEVELOPER_METADATA_LOCATION_MATCHING_STRATEGY_UNSPECIFIED"
+  | "EXACT_LOCATION"
+  | "INTERSECTING_LOCATION";
+export const DeveloperMetadataLookupLocationMatchingStrategyEnum =
+  /*@__PURE__*/ S.String;
 
 /** Selects DeveloperMetadata that matches all of the specified fields. For example, if only a metadata ID is specified this considers the DeveloperMetadata with that particular unique ID. If a metadata key is specified, this considers all developer metadata with that key. If a key, visibility, and location type are all specified, this considers all developer metadata with that key and visibility that are associated with a location of that type. In general, this selects all DeveloperMetadata that match the intersection of all the specified fields; any field or combination of fields may be specified. */
 export interface DeveloperMetadataLookup {
@@ -245,16 +316,20 @@ export interface DeveloperMetadataLookup {
   locationMatchingStrategy?: DeveloperMetadataLookupLocationMatchingStrategyEnum;
 }
 export const DeveloperMetadataLookup = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "metadataLocation": S.optional(DeveloperMetadataLocation),
-  "metadataKey": S.optional(S.String),
-  "locationType": S.optional(DeveloperMetadataLookupLocationTypeEnum),
-  "metadataId": S.optional(S.Number),
-  "metadataValue": S.optional(S.String),
-  "visibility": S.optional(DeveloperMetadataLookupVisibilityEnum),
-  "locationMatchingStrategy": S.optional(DeveloperMetadataLookupLocationMatchingStrategyEnum),
-}),
-).annotate({ identifier: "DeveloperMetadataLookup" }) as any as S.Schema<DeveloperMetadataLookup>;
+  S.Struct({
+    metadataLocation: S.optional(DeveloperMetadataLocation),
+    metadataKey: S.optional(S.String),
+    locationType: S.optional(DeveloperMetadataLookupLocationTypeEnum),
+    metadataId: S.optional(S.Number),
+    metadataValue: S.optional(S.String),
+    visibility: S.optional(DeveloperMetadataLookupVisibilityEnum),
+    locationMatchingStrategy: S.optional(
+      DeveloperMetadataLookupLocationMatchingStrategyEnum,
+    ),
+  }),
+).annotate({
+  identifier: "DeveloperMetadataLookup",
+}) as any as S.Schema<DeveloperMetadataLookup>;
 
 /** A range on a sheet. All indexes are zero-based. Indexes are half open, i.e. the start index is inclusive and the end index is exclusive -- [start_index, end_index). Missing indexes indicate the range is unbounded on that side. For example, if `"Sheet1"` is sheet ID 123456, then: `Sheet1!A1:A1 == sheet_id: 123456, start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index: 1` `Sheet1!A3:B4 == sheet_id: 123456, start_row_index: 2, end_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 123456, start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 123456, start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 == sheet_id: 123456` The start index must always be less than or equal to the end index. If the start index equals the end index, then the range is empty. Empty ranges are typically not meaningful and are usually rendered in the UI as `#REF!`. */
 export interface GridRange {
@@ -270,13 +345,13 @@ export interface GridRange {
   endColumnIndex?: number;
 }
 export const GridRange = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "startRowIndex": S.optional(S.Number),
-  "startColumnIndex": S.optional(S.Number),
-  "sheetId": S.optional(S.Number),
-  "endRowIndex": S.optional(S.Number),
-  "endColumnIndex": S.optional(S.Number),
-}),
+  S.Struct({
+    startRowIndex: S.optional(S.Number),
+    startColumnIndex: S.optional(S.Number),
+    sheetId: S.optional(S.Number),
+    endRowIndex: S.optional(S.Number),
+    endColumnIndex: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "GridRange" }) as any as S.Schema<GridRange>;
 
 /** Filter that describes what data should be selected or returned from a request. For more information, see [Read, write, and search metadata](https://developers.google.com/workspace/sheets/api/guides/metadata). */
@@ -289,15 +364,17 @@ export interface DataFilter {
   gridRange?: GridRange;
 }
 export const DataFilter = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "a1Range": S.optional(S.String),
-  "developerMetadataLookup": S.optional(DeveloperMetadataLookup),
-  "gridRange": S.optional(GridRange),
-}),
+  S.Struct({
+    a1Range: S.optional(S.String),
+    developerMetadataLookup: S.optional(DeveloperMetadataLookup),
+    gridRange: S.optional(GridRange),
+  }),
 ).annotate({ identifier: "DataFilter" }) as any as S.Schema<DataFilter>;
 
 export type DataFilterList = ReadonlyArray<DataFilter>;
-export const DataFilterList = /*@__PURE__*/ S.Array(DataFilter) as any as S.Schema<DataFilterList>;
+export const DataFilterList = /*@__PURE__*/ S.Array(
+  DataFilter,
+) as any as S.Schema<DataFilterList>;
 
 /** The request for clearing more than one range selected by a DataFilter in a spreadsheet. */
 export interface BatchClearValuesByDataFilterRequest {
@@ -305,10 +382,12 @@ export interface BatchClearValuesByDataFilterRequest {
   dataFilters?: DataFilterList;
 }
 export const BatchClearValuesByDataFilterRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dataFilters": S.optional(DataFilterList),
-}),
-).annotate({ identifier: "BatchClearValuesByDataFilterRequest" }) as any as S.Schema<BatchClearValuesByDataFilterRequest>;
+  S.Struct({
+    dataFilters: S.optional(DataFilterList),
+  }),
+).annotate({
+  identifier: "BatchClearValuesByDataFilterRequest",
+}) as any as S.Schema<BatchClearValuesByDataFilterRequest>;
 
 export interface BatchClearByDataFilterSpreadsheetsValuesRequest {
   /** The ID of the spreadsheet to update. */
@@ -316,15 +395,26 @@ export interface BatchClearByDataFilterSpreadsheetsValuesRequest {
   /** Request body */
   body?: BatchClearValuesByDataFilterRequest;
 }
-export const BatchClearByDataFilterSpreadsheetsValuesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "spreadsheetId": S.String.pipe(T.Label()),
-  "body": S.optional(BatchClearValuesByDataFilterRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v4/spreadsheets/{spreadsheetId}/values:batchClearByDataFilter","baseUrl":"https://sheets.googleapis.com/"})),
-).annotate({ identifier: "BatchClearByDataFilterSpreadsheetsValuesRequest" }) as any as S.Schema<BatchClearByDataFilterSpreadsheetsValuesRequest>;
+export const BatchClearByDataFilterSpreadsheetsValuesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      spreadsheetId: S.String.pipe(T.Label()),
+      body: S.optional(BatchClearValuesByDataFilterRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v4/spreadsheets/{spreadsheetId}/values:batchClearByDataFilter",
+        baseUrl: "https://sheets.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "BatchClearByDataFilterSpreadsheetsValuesRequest",
+  }) as any as S.Schema<BatchClearByDataFilterSpreadsheetsValuesRequest>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** The response when clearing a range of values selected with DataFilters in a spreadsheet. */
 export interface BatchClearValuesByDataFilterResponse {
@@ -333,12 +423,15 @@ export interface BatchClearValuesByDataFilterResponse {
   /** The ranges that were cleared, in [A1 notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell). If the requests are for an unbounded range or a range larger than the bounds of the sheet, this is the actual ranges that were cleared, bounded to the sheet's limits. */
   clearedRanges?: StringList;
 }
-export const BatchClearValuesByDataFilterResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "spreadsheetId": S.optional(S.String),
-  "clearedRanges": S.optional(StringList),
-}),
-).annotate({ identifier: "BatchClearValuesByDataFilterResponse" }) as any as S.Schema<BatchClearValuesByDataFilterResponse>;
+export const BatchClearValuesByDataFilterResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      spreadsheetId: S.optional(S.String),
+      clearedRanges: S.optional(StringList),
+    }),
+).annotate({
+  identifier: "BatchClearValuesByDataFilterResponse",
+}) as any as S.Schema<BatchClearValuesByDataFilterResponse>;
 
 /** The request for clearing more than one range of values in a spreadsheet. */
 export interface BatchClearValuesRequest {
@@ -346,10 +439,12 @@ export interface BatchClearValuesRequest {
   ranges?: StringList;
 }
 export const BatchClearValuesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "ranges": S.optional(StringList),
-}),
-).annotate({ identifier: "BatchClearValuesRequest" }) as any as S.Schema<BatchClearValuesRequest>;
+  S.Struct({
+    ranges: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "BatchClearValuesRequest",
+}) as any as S.Schema<BatchClearValuesRequest>;
 
 export interface BatchClearSpreadsheetsValuesRequest {
   /** The ID of the spreadsheet to update. */
@@ -358,11 +453,19 @@ export interface BatchClearSpreadsheetsValuesRequest {
   body?: BatchClearValuesRequest;
 }
 export const BatchClearSpreadsheetsValuesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "spreadsheetId": S.String.pipe(T.Label()),
-  "body": S.optional(BatchClearValuesRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v4/spreadsheets/{spreadsheetId}/values:batchClear","baseUrl":"https://sheets.googleapis.com/"})),
-).annotate({ identifier: "BatchClearSpreadsheetsValuesRequest" }) as any as S.Schema<BatchClearSpreadsheetsValuesRequest>;
+  S.Struct({
+    spreadsheetId: S.String.pipe(T.Label()),
+    body: S.optional(BatchClearValuesRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v4/spreadsheets/{spreadsheetId}/values:batchClear",
+      baseUrl: "https://sheets.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "BatchClearSpreadsheetsValuesRequest",
+}) as any as S.Schema<BatchClearSpreadsheetsValuesRequest>;
 
 /** The response when clearing a range of values in a spreadsheet. */
 export interface BatchClearValuesResponse {
@@ -372,40 +475,67 @@ export interface BatchClearValuesResponse {
   clearedRanges?: StringList;
 }
 export const BatchClearValuesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "spreadsheetId": S.optional(S.String),
-  "clearedRanges": S.optional(StringList),
-}),
-).annotate({ identifier: "BatchClearValuesResponse" }) as any as S.Schema<BatchClearValuesResponse>;
+  S.Struct({
+    spreadsheetId: S.optional(S.String),
+    clearedRanges: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "BatchClearValuesResponse",
+}) as any as S.Schema<BatchClearValuesResponse>;
 
-export type BatchGetValuesByDataFilterRequestMajorDimensionEnum = "DIMENSION_UNSPECIFIED" | "ROWS" | "COLUMNS";
-export const BatchGetValuesByDataFilterRequestMajorDimensionEnum = /*@__PURE__*/ S.String;
+export type BatchGetValuesByDataFilterRequestMajorDimensionEnum =
+  | "DIMENSION_UNSPECIFIED"
+  | "ROWS"
+  | "COLUMNS";
+export const BatchGetValuesByDataFilterRequestMajorDimensionEnum =
+  /*@__PURE__*/ S.String;
 
-export type BatchGetValuesByDataFilterRequestValueRenderOptionEnum = "FORMATTED_VALUE" | "UNFORMATTED_VALUE" | "FORMULA";
-export const BatchGetValuesByDataFilterRequestValueRenderOptionEnum = /*@__PURE__*/ S.String;
+export type BatchGetValuesByDataFilterRequestValueRenderOptionEnum =
+  | "FORMATTED_VALUE"
+  | "UNFORMATTED_VALUE"
+  | "FORMULA";
+export const BatchGetValuesByDataFilterRequestValueRenderOptionEnum =
+  /*@__PURE__*/ S.String;
 
-export type BatchGetValuesByDataFilterRequestDateTimeRenderOptionEnum = "SERIAL_NUMBER" | "FORMATTED_STRING";
-export const BatchGetValuesByDataFilterRequestDateTimeRenderOptionEnum = /*@__PURE__*/ S.String;
+export type BatchGetValuesByDataFilterRequestDateTimeRenderOptionEnum =
+  | "SERIAL_NUMBER"
+  | "FORMATTED_STRING";
+export const BatchGetValuesByDataFilterRequestDateTimeRenderOptionEnum =
+  /*@__PURE__*/ S.String;
 
 /** The request for retrieving a range of values in a spreadsheet selected by a set of DataFilters. */
 export interface BatchGetValuesByDataFilterRequest {
   /** The data filters used to match the ranges of values to retrieve. Ranges that match any of the specified data filters are included in the response. */
   dataFilters?: DataFilterList;
   /** The major dimension that results should use. For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then a request that selects that range and sets `majorDimension=ROWS` returns `[[1,2],[3,4]]`, whereas a request that sets `majorDimension=COLUMNS` returns `[[1,3],[2,4]]`. */
-  majorDimension?: BatchGetValuesByDataFilterRequestMajorDimensionEnum | (string & {});
+  majorDimension?:
+    | BatchGetValuesByDataFilterRequestMajorDimensionEnum
+    | (string & {});
   /** How values should be represented in the output. The default render option is FORMATTED_VALUE. */
-  valueRenderOption?: BatchGetValuesByDataFilterRequestValueRenderOptionEnum | (string & {});
+  valueRenderOption?:
+    | BatchGetValuesByDataFilterRequestValueRenderOptionEnum
+    | (string & {});
   /** How dates, times, and durations should be represented in the output. This is ignored if value_render_option is FORMATTED_VALUE. The default dateTime render option is SERIAL_NUMBER. */
-  dateTimeRenderOption?: BatchGetValuesByDataFilterRequestDateTimeRenderOptionEnum | (string & {});
+  dateTimeRenderOption?:
+    | BatchGetValuesByDataFilterRequestDateTimeRenderOptionEnum
+    | (string & {});
 }
 export const BatchGetValuesByDataFilterRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dataFilters": S.optional(DataFilterList),
-  "majorDimension": S.optional(BatchGetValuesByDataFilterRequestMajorDimensionEnum),
-  "valueRenderOption": S.optional(BatchGetValuesByDataFilterRequestValueRenderOptionEnum),
-  "dateTimeRenderOption": S.optional(BatchGetValuesByDataFilterRequestDateTimeRenderOptionEnum),
-}),
-).annotate({ identifier: "BatchGetValuesByDataFilterRequest" }) as any as S.Schema<BatchGetValuesByDataFilterRequest>;
+  S.Struct({
+    dataFilters: S.optional(DataFilterList),
+    majorDimension: S.optional(
+      BatchGetValuesByDataFilterRequestMajorDimensionEnum,
+    ),
+    valueRenderOption: S.optional(
+      BatchGetValuesByDataFilterRequestValueRenderOptionEnum,
+    ),
+    dateTimeRenderOption: S.optional(
+      BatchGetValuesByDataFilterRequestDateTimeRenderOptionEnum,
+    ),
+  }),
+).annotate({
+  identifier: "BatchGetValuesByDataFilterRequest",
+}) as any as S.Schema<BatchGetValuesByDataFilterRequest>;
 
 export interface BatchGetByDataFilterSpreadsheetsValuesRequest {
   /** The ID of the spreadsheet to retrieve data from. */
@@ -413,12 +543,21 @@ export interface BatchGetByDataFilterSpreadsheetsValuesRequest {
   /** Request body */
   body?: BatchGetValuesByDataFilterRequest;
 }
-export const BatchGetByDataFilterSpreadsheetsValuesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "spreadsheetId": S.String.pipe(T.Label()),
-  "body": S.optional(BatchGetValuesByDataFilterRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v4/spreadsheets/{spreadsheetId}/values:batchGetByDataFilter","baseUrl":"https://sheets.googleapis.com/"})),
-).annotate({ identifier: "BatchGetByDataFilterSpreadsheetsValuesRequest" }) as any as S.Schema<BatchGetByDataFilterSpreadsheetsValuesRequest>;
+export const BatchGetByDataFilterSpreadsheetsValuesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      spreadsheetId: S.String.pipe(T.Label()),
+      body: S.optional(BatchGetValuesByDataFilterRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v4/spreadsheets/{spreadsheetId}/values:batchGetByDataFilter",
+        baseUrl: "https://sheets.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "BatchGetByDataFilterSpreadsheetsValuesRequest",
+  }) as any as S.Schema<BatchGetByDataFilterSpreadsheetsValuesRequest>;
 
 /** A value range that was matched by one or more data filers. */
 export interface MatchedValueRange {
@@ -428,14 +567,18 @@ export interface MatchedValueRange {
   dataFilters?: DataFilterList;
 }
 export const MatchedValueRange = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "valueRange": S.optional(ValueRange),
-  "dataFilters": S.optional(DataFilterList),
-}),
-).annotate({ identifier: "MatchedValueRange" }) as any as S.Schema<MatchedValueRange>;
+  S.Struct({
+    valueRange: S.optional(ValueRange),
+    dataFilters: S.optional(DataFilterList),
+  }),
+).annotate({
+  identifier: "MatchedValueRange",
+}) as any as S.Schema<MatchedValueRange>;
 
 export type MatchedValueRangeList = ReadonlyArray<MatchedValueRange>;
-export const MatchedValueRangeList = /*@__PURE__*/ S.Array(MatchedValueRange) as any as S.Schema<MatchedValueRangeList>;
+export const MatchedValueRangeList = /*@__PURE__*/ S.Array(
+  MatchedValueRange,
+) as any as S.Schema<MatchedValueRangeList>;
 
 /** The response when retrieving more than one range of values in a spreadsheet selected by DataFilters. */
 export interface BatchGetValuesByDataFilterResponse {
@@ -445,20 +588,33 @@ export interface BatchGetValuesByDataFilterResponse {
   spreadsheetId?: string;
 }
 export const BatchGetValuesByDataFilterResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "valueRanges": S.optional(MatchedValueRangeList),
-  "spreadsheetId": S.optional(S.String),
-}),
-).annotate({ identifier: "BatchGetValuesByDataFilterResponse" }) as any as S.Schema<BatchGetValuesByDataFilterResponse>;
+  S.Struct({
+    valueRanges: S.optional(MatchedValueRangeList),
+    spreadsheetId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BatchGetValuesByDataFilterResponse",
+}) as any as S.Schema<BatchGetValuesByDataFilterResponse>;
 
-export type BatchGetSpreadsheetsValuesDateTimeRenderOptionEnum = "SERIAL_NUMBER" | "FORMATTED_STRING";
-export const BatchGetSpreadsheetsValuesDateTimeRenderOptionEnum = /*@__PURE__*/ S.String;
+export type BatchGetSpreadsheetsValuesDateTimeRenderOptionEnum =
+  | "SERIAL_NUMBER"
+  | "FORMATTED_STRING";
+export const BatchGetSpreadsheetsValuesDateTimeRenderOptionEnum =
+  /*@__PURE__*/ S.String;
 
-export type BatchGetSpreadsheetsValuesValueRenderOptionEnum = "FORMATTED_VALUE" | "UNFORMATTED_VALUE" | "FORMULA";
-export const BatchGetSpreadsheetsValuesValueRenderOptionEnum = /*@__PURE__*/ S.String;
+export type BatchGetSpreadsheetsValuesValueRenderOptionEnum =
+  | "FORMATTED_VALUE"
+  | "UNFORMATTED_VALUE"
+  | "FORMULA";
+export const BatchGetSpreadsheetsValuesValueRenderOptionEnum =
+  /*@__PURE__*/ S.String;
 
-export type BatchGetSpreadsheetsValuesMajorDimensionEnum = "DIMENSION_UNSPECIFIED" | "ROWS" | "COLUMNS";
-export const BatchGetSpreadsheetsValuesMajorDimensionEnum = /*@__PURE__*/ S.String;
+export type BatchGetSpreadsheetsValuesMajorDimensionEnum =
+  | "DIMENSION_UNSPECIFIED"
+  | "ROWS"
+  | "COLUMNS";
+export const BatchGetSpreadsheetsValuesMajorDimensionEnum =
+  /*@__PURE__*/ S.String;
 
 export interface BatchGetSpreadsheetsValuesRequest {
   /** The ID of the spreadsheet to retrieve data from. */
@@ -466,24 +622,44 @@ export interface BatchGetSpreadsheetsValuesRequest {
   /** The [A1 notation or R1C1 notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell) of the range to retrieve values from. */
   ranges?: StringList;
   /** How dates, times, and durations should be represented in the output. This is ignored if value_render_option is FORMATTED_VALUE. The default dateTime render option is SERIAL_NUMBER. */
-  dateTimeRenderOption?: BatchGetSpreadsheetsValuesDateTimeRenderOptionEnum | (string & {});
+  dateTimeRenderOption?:
+    | BatchGetSpreadsheetsValuesDateTimeRenderOptionEnum
+    | (string & {});
   /** How values should be represented in the output. The default render option is ValueRenderOption.FORMATTED_VALUE. */
-  valueRenderOption?: BatchGetSpreadsheetsValuesValueRenderOptionEnum | (string & {});
+  valueRenderOption?:
+    | BatchGetSpreadsheetsValuesValueRenderOptionEnum
+    | (string & {});
   /** The major dimension that results should use. For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then requesting `ranges=["A1:B2"],majorDimension=ROWS` returns `[[1,2],[3,4]]`, whereas requesting `ranges=["A1:B2"],majorDimension=COLUMNS` returns `[[1,3],[2,4]]`. */
   majorDimension?: BatchGetSpreadsheetsValuesMajorDimensionEnum | (string & {});
 }
 export const BatchGetSpreadsheetsValuesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "spreadsheetId": S.String.pipe(T.Label()),
-  "ranges": S.optional(StringList.pipe(T.Query())),
-  "dateTimeRenderOption": S.optional(BatchGetSpreadsheetsValuesDateTimeRenderOptionEnum.pipe(T.Query())),
-  "valueRenderOption": S.optional(BatchGetSpreadsheetsValuesValueRenderOptionEnum.pipe(T.Query())),
-  "majorDimension": S.optional(BatchGetSpreadsheetsValuesMajorDimensionEnum.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v4/spreadsheets/{spreadsheetId}/values:batchGet","baseUrl":"https://sheets.googleapis.com/"})),
-).annotate({ identifier: "BatchGetSpreadsheetsValuesRequest" }) as any as S.Schema<BatchGetSpreadsheetsValuesRequest>;
+  S.Struct({
+    spreadsheetId: S.String.pipe(T.Label()),
+    ranges: S.optional(StringList.pipe(T.Query())),
+    dateTimeRenderOption: S.optional(
+      BatchGetSpreadsheetsValuesDateTimeRenderOptionEnum.pipe(T.Query()),
+    ),
+    valueRenderOption: S.optional(
+      BatchGetSpreadsheetsValuesValueRenderOptionEnum.pipe(T.Query()),
+    ),
+    majorDimension: S.optional(
+      BatchGetSpreadsheetsValuesMajorDimensionEnum.pipe(T.Query()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v4/spreadsheets/{spreadsheetId}/values:batchGet",
+      baseUrl: "https://sheets.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "BatchGetSpreadsheetsValuesRequest",
+}) as any as S.Schema<BatchGetSpreadsheetsValuesRequest>;
 
 export type ValueRangeList = ReadonlyArray<ValueRange>;
-export const ValueRangeList = /*@__PURE__*/ S.Array(ValueRange) as any as S.Schema<ValueRangeList>;
+export const ValueRangeList = /*@__PURE__*/ S.Array(
+  ValueRange,
+) as any as S.Schema<ValueRangeList>;
 
 /** The response when retrieving more than one range of values in a spreadsheet. */
 export interface BatchGetValuesResponse {
@@ -493,16 +669,25 @@ export interface BatchGetValuesResponse {
   valueRanges?: ValueRangeList;
 }
 export const BatchGetValuesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "spreadsheetId": S.optional(S.String),
-  "valueRanges": S.optional(ValueRangeList),
-}),
-).annotate({ identifier: "BatchGetValuesResponse" }) as any as S.Schema<BatchGetValuesResponse>;
+  S.Struct({
+    spreadsheetId: S.optional(S.String),
+    valueRanges: S.optional(ValueRangeList),
+  }),
+).annotate({
+  identifier: "BatchGetValuesResponse",
+}) as any as S.Schema<BatchGetValuesResponse>;
 
-export type BatchUpdateValuesByDataFilterRequestValueInputOptionEnum = "INPUT_VALUE_OPTION_UNSPECIFIED" | "RAW" | "USER_ENTERED";
-export const BatchUpdateValuesByDataFilterRequestValueInputOptionEnum = /*@__PURE__*/ S.String;
+export type BatchUpdateValuesByDataFilterRequestValueInputOptionEnum =
+  | "INPUT_VALUE_OPTION_UNSPECIFIED"
+  | "RAW"
+  | "USER_ENTERED";
+export const BatchUpdateValuesByDataFilterRequestValueInputOptionEnum =
+  /*@__PURE__*/ S.String;
 
-export type DataFilterValueRangeMajorDimensionEnum = "DIMENSION_UNSPECIFIED" | "ROWS" | "COLUMNS";
+export type DataFilterValueRangeMajorDimensionEnum =
+  | "DIMENSION_UNSPECIFIED"
+  | "ROWS"
+  | "COLUMNS";
 export const DataFilterValueRangeMajorDimensionEnum = /*@__PURE__*/ S.String;
 
 /** A range of values whose location is specified by a DataFilter. */
@@ -515,44 +700,69 @@ export interface DataFilterValueRange {
   values?: DocumentListList;
 }
 export const DataFilterValueRange = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dataFilter": S.optional(DataFilter),
-  "majorDimension": S.optional(DataFilterValueRangeMajorDimensionEnum),
-  "values": S.optional(DocumentListList),
-}),
-).annotate({ identifier: "DataFilterValueRange" }) as any as S.Schema<DataFilterValueRange>;
+  S.Struct({
+    dataFilter: S.optional(DataFilter),
+    majorDimension: S.optional(DataFilterValueRangeMajorDimensionEnum),
+    values: S.optional(DocumentListList),
+  }),
+).annotate({
+  identifier: "DataFilterValueRange",
+}) as any as S.Schema<DataFilterValueRange>;
 
 export type DataFilterValueRangeList = ReadonlyArray<DataFilterValueRange>;
-export const DataFilterValueRangeList = /*@__PURE__*/ S.Array(DataFilterValueRange) as any as S.Schema<DataFilterValueRangeList>;
+export const DataFilterValueRangeList = /*@__PURE__*/ S.Array(
+  DataFilterValueRange,
+) as any as S.Schema<DataFilterValueRangeList>;
 
-export type BatchUpdateValuesByDataFilterRequestResponseValueRenderOptionEnum = "FORMATTED_VALUE" | "UNFORMATTED_VALUE" | "FORMULA";
-export const BatchUpdateValuesByDataFilterRequestResponseValueRenderOptionEnum = /*@__PURE__*/ S.String;
+export type BatchUpdateValuesByDataFilterRequestResponseValueRenderOptionEnum =
+  | "FORMATTED_VALUE"
+  | "UNFORMATTED_VALUE"
+  | "FORMULA";
+export const BatchUpdateValuesByDataFilterRequestResponseValueRenderOptionEnum =
+  /*@__PURE__*/ S.String;
 
-export type BatchUpdateValuesByDataFilterRequestResponseDateTimeRenderOptionEnum = "SERIAL_NUMBER" | "FORMATTED_STRING";
-export const BatchUpdateValuesByDataFilterRequestResponseDateTimeRenderOptionEnum = /*@__PURE__*/ S.String;
+export type BatchUpdateValuesByDataFilterRequestResponseDateTimeRenderOptionEnum =
+  "SERIAL_NUMBER" | "FORMATTED_STRING";
+export const BatchUpdateValuesByDataFilterRequestResponseDateTimeRenderOptionEnum =
+  /*@__PURE__*/ S.String;
 
 /** The request for updating more than one range of values in a spreadsheet. */
 export interface BatchUpdateValuesByDataFilterRequest {
   /** How the input data should be interpreted. */
-  valueInputOption?: BatchUpdateValuesByDataFilterRequestValueInputOptionEnum | (string & {});
+  valueInputOption?:
+    | BatchUpdateValuesByDataFilterRequestValueInputOptionEnum
+    | (string & {});
   /** The new values to apply to the spreadsheet. If more than one range is matched by the specified DataFilter the specified values are applied to all of those ranges. */
   data?: DataFilterValueRangeList;
   /** Determines how values in the response should be rendered. The default render option is FORMATTED_VALUE. */
-  responseValueRenderOption?: BatchUpdateValuesByDataFilterRequestResponseValueRenderOptionEnum | (string & {});
+  responseValueRenderOption?:
+    | BatchUpdateValuesByDataFilterRequestResponseValueRenderOptionEnum
+    | (string & {});
   /** Determines how dates, times, and durations in the response should be rendered. This is ignored if response_value_render_option is FORMATTED_VALUE. The default dateTime render option is SERIAL_NUMBER. */
-  responseDateTimeRenderOption?: BatchUpdateValuesByDataFilterRequestResponseDateTimeRenderOptionEnum | (string & {});
+  responseDateTimeRenderOption?:
+    | BatchUpdateValuesByDataFilterRequestResponseDateTimeRenderOptionEnum
+    | (string & {});
   /** Determines if the update response should include the values of the cells that were updated. By default, responses do not include the updated values. The `updatedData` field within each of the BatchUpdateValuesResponse.responses contains the updated values. If the range to write was larger than the range actually written, the response includes all values in the requested range (excluding trailing empty rows and columns). */
   includeValuesInResponse?: boolean;
 }
-export const BatchUpdateValuesByDataFilterRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "valueInputOption": S.optional(BatchUpdateValuesByDataFilterRequestValueInputOptionEnum),
-  "data": S.optional(DataFilterValueRangeList),
-  "responseValueRenderOption": S.optional(BatchUpdateValuesByDataFilterRequestResponseValueRenderOptionEnum),
-  "responseDateTimeRenderOption": S.optional(BatchUpdateValuesByDataFilterRequestResponseDateTimeRenderOptionEnum),
-  "includeValuesInResponse": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "BatchUpdateValuesByDataFilterRequest" }) as any as S.Schema<BatchUpdateValuesByDataFilterRequest>;
+export const BatchUpdateValuesByDataFilterRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      valueInputOption: S.optional(
+        BatchUpdateValuesByDataFilterRequestValueInputOptionEnum,
+      ),
+      data: S.optional(DataFilterValueRangeList),
+      responseValueRenderOption: S.optional(
+        BatchUpdateValuesByDataFilterRequestResponseValueRenderOptionEnum,
+      ),
+      responseDateTimeRenderOption: S.optional(
+        BatchUpdateValuesByDataFilterRequestResponseDateTimeRenderOptionEnum,
+      ),
+      includeValuesInResponse: S.optional(S.Boolean),
+    }),
+).annotate({
+  identifier: "BatchUpdateValuesByDataFilterRequest",
+}) as any as S.Schema<BatchUpdateValuesByDataFilterRequest>;
 
 export interface BatchUpdateByDataFilterSpreadsheetsValuesRequest {
   /** The ID of the spreadsheet to update. */
@@ -560,12 +770,21 @@ export interface BatchUpdateByDataFilterSpreadsheetsValuesRequest {
   /** Request body */
   body?: BatchUpdateValuesByDataFilterRequest;
 }
-export const BatchUpdateByDataFilterSpreadsheetsValuesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "spreadsheetId": S.String.pipe(T.Label()),
-  "body": S.optional(BatchUpdateValuesByDataFilterRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v4/spreadsheets/{spreadsheetId}/values:batchUpdateByDataFilter","baseUrl":"https://sheets.googleapis.com/"})),
-).annotate({ identifier: "BatchUpdateByDataFilterSpreadsheetsValuesRequest" }) as any as S.Schema<BatchUpdateByDataFilterSpreadsheetsValuesRequest>;
+export const BatchUpdateByDataFilterSpreadsheetsValuesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      spreadsheetId: S.String.pipe(T.Label()),
+      body: S.optional(BatchUpdateValuesByDataFilterRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v4/spreadsheets/{spreadsheetId}/values:batchUpdateByDataFilter",
+        baseUrl: "https://sheets.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "BatchUpdateByDataFilterSpreadsheetsValuesRequest",
+  }) as any as S.Schema<BatchUpdateByDataFilterSpreadsheetsValuesRequest>;
 
 /** The response when updating a range of values by a data filter in a spreadsheet. */
 export interface UpdateValuesByDataFilterResponse {
@@ -583,18 +802,23 @@ export interface UpdateValuesByDataFilterResponse {
   updatedData?: ValueRange;
 }
 export const UpdateValuesByDataFilterResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updatedRange": S.optional(S.String),
-  "updatedRows": S.optional(S.Number),
-  "updatedColumns": S.optional(S.Number),
-  "updatedCells": S.optional(S.Number),
-  "dataFilter": S.optional(DataFilter),
-  "updatedData": S.optional(ValueRange),
-}),
-).annotate({ identifier: "UpdateValuesByDataFilterResponse" }) as any as S.Schema<UpdateValuesByDataFilterResponse>;
+  S.Struct({
+    updatedRange: S.optional(S.String),
+    updatedRows: S.optional(S.Number),
+    updatedColumns: S.optional(S.Number),
+    updatedCells: S.optional(S.Number),
+    dataFilter: S.optional(DataFilter),
+    updatedData: S.optional(ValueRange),
+  }),
+).annotate({
+  identifier: "UpdateValuesByDataFilterResponse",
+}) as any as S.Schema<UpdateValuesByDataFilterResponse>;
 
-export type UpdateValuesByDataFilterResponseList = ReadonlyArray<UpdateValuesByDataFilterResponse>;
-export const UpdateValuesByDataFilterResponseList = /*@__PURE__*/ S.Array(UpdateValuesByDataFilterResponse) as any as S.Schema<UpdateValuesByDataFilterResponseList>;
+export type UpdateValuesByDataFilterResponseList =
+  ReadonlyArray<UpdateValuesByDataFilterResponse>;
+export const UpdateValuesByDataFilterResponseList = /*@__PURE__*/ S.Array(
+  UpdateValuesByDataFilterResponse,
+) as any as S.Schema<UpdateValuesByDataFilterResponseList>;
 
 /** The response when updating a range of values in a spreadsheet. */
 export interface BatchUpdateValuesByDataFilterResponse {
@@ -611,21 +835,37 @@ export interface BatchUpdateValuesByDataFilterResponse {
   /** The response for each range updated. */
   responses?: UpdateValuesByDataFilterResponseList;
 }
-export const BatchUpdateValuesByDataFilterResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "spreadsheetId": S.optional(S.String),
-  "totalUpdatedCells": S.optional(S.Number),
-  "totalUpdatedSheets": S.optional(S.Number),
-  "totalUpdatedColumns": S.optional(S.Number),
-  "totalUpdatedRows": S.optional(S.Number),
-  "responses": S.optional(UpdateValuesByDataFilterResponseList),
-}),
-).annotate({ identifier: "BatchUpdateValuesByDataFilterResponse" }) as any as S.Schema<BatchUpdateValuesByDataFilterResponse>;
+export const BatchUpdateValuesByDataFilterResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      spreadsheetId: S.optional(S.String),
+      totalUpdatedCells: S.optional(S.Number),
+      totalUpdatedSheets: S.optional(S.Number),
+      totalUpdatedColumns: S.optional(S.Number),
+      totalUpdatedRows: S.optional(S.Number),
+      responses: S.optional(UpdateValuesByDataFilterResponseList),
+    }),
+).annotate({
+  identifier: "BatchUpdateValuesByDataFilterResponse",
+}) as any as S.Schema<BatchUpdateValuesByDataFilterResponse>;
 
-export type CellFormatVerticalAlignmentEnum = "VERTICAL_ALIGN_UNSPECIFIED" | "TOP" | "MIDDLE" | "BOTTOM";
+export type CellFormatVerticalAlignmentEnum =
+  | "VERTICAL_ALIGN_UNSPECIFIED"
+  | "TOP"
+  | "MIDDLE"
+  | "BOTTOM";
 export const CellFormatVerticalAlignmentEnum = /*@__PURE__*/ S.String;
 
-export type NumberFormatTypeEnum = "NUMBER_FORMAT_TYPE_UNSPECIFIED" | "TEXT" | "NUMBER" | "PERCENT" | "CURRENCY" | "DATE" | "TIME" | "DATE_TIME" | "SCIENTIFIC";
+export type NumberFormatTypeEnum =
+  | "NUMBER_FORMAT_TYPE_UNSPECIFIED"
+  | "TEXT"
+  | "NUMBER"
+  | "PERCENT"
+  | "CURRENCY"
+  | "DATE"
+  | "TIME"
+  | "DATE_TIME"
+  | "SCIENTIFIC";
 export const NumberFormatTypeEnum = /*@__PURE__*/ S.String;
 
 /** The number format of a cell. */
@@ -636,13 +876,17 @@ export interface NumberFormat {
   pattern?: string;
 }
 export const NumberFormat = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(NumberFormatTypeEnum),
-  "pattern": S.optional(S.String),
-}),
+  S.Struct({
+    type: S.optional(NumberFormatTypeEnum),
+    pattern: S.optional(S.String),
+  }),
 ).annotate({ identifier: "NumberFormat" }) as any as S.Schema<NumberFormat>;
 
-export type CellFormatHorizontalAlignmentEnum = "HORIZONTAL_ALIGN_UNSPECIFIED" | "LEFT" | "CENTER" | "RIGHT";
+export type CellFormatHorizontalAlignmentEnum =
+  | "HORIZONTAL_ALIGN_UNSPECIFIED"
+  | "LEFT"
+  | "CENTER"
+  | "RIGHT";
 export const CellFormatHorizontalAlignmentEnum = /*@__PURE__*/ S.String;
 
 /** Represents a color in the RGBA color space. This representation is designed for simplicity of conversion to and from color representations in various languages over compactness. For example, the fields of this representation can be trivially provided to the constructor of `java.awt.Color` in Java; it can also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha` method in iOS; and, with just a little work, it can be easily formatted into a CSS `rgba()` string in JavaScript. This reference page doesn't have information about the absolute color space that should be used to interpret the RGB value—for example, sRGB, Adobe RGB, DCI-P3, and BT.2020. By default, applications should assume the sRGB color space. When color equality needs to be decided, implementations, unless documented otherwise, treat two colors as equal if all their red, green, blue, and alpha values each differ by at most `1e-5`. Example (Java): import com.google.type.Color; // ... public static java.awt.Color fromProto(Color protocolor) { float alpha = protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); } public static Color toProto(java.awt.Color color) { float red = (float) color.getRed(); float green = (float) color.getGreen(); float blue = (float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator) .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255) { result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .build()); } return resultBuilder.build(); } // ... Example (iOS / Obj-C): // ... static UIColor* fromProto(Color* protocolor) { float red = [protocolor red]; float green = [protocolor green]; float blue = [protocolor blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (alpha_wrapper != nil) { alpha = [alpha_wrapper value]; } return [UIColor colorWithRed:red green:green blue:blue alpha:alpha]; } static Color* toProto(UIColor* color) { CGFloat red, green, blue, alpha; if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) { return nil; } Color* result = [[Color alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:blue]; if (alpha <= 0.9999) { [result setAlpha:floatWrapperWithValue(alpha)]; } [result autorelease]; return result; } // ... Example (JavaScript): // ... var protoToCssColor = function(rgb_color) { var redFrac = rgb_color.red || 0.0; var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0; var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255); var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) { return rgbToCssColor(red, green, blue); } var alphaFrac = rgb_color.alpha.value || 0.0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',', alphaFrac, ')'].join(''); }; var rgbToCssColor = function(red, green, blue) { var rgbNumber = new Number((red << 16) | (green << 8) | blue); var hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) { resultBuilder.push('0'); } resultBuilder.push(hexString); return resultBuilder.join(''); }; // ... */
@@ -657,12 +901,12 @@ export interface Color {
   alpha?: number;
 }
 export const Color = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "blue": S.optional(S.Number),
-  "red": S.optional(S.Number),
-  "green": S.optional(S.Number),
-  "alpha": S.optional(S.Number),
-}),
+  S.Struct({
+    blue: S.optional(S.Number),
+    red: S.optional(S.Number),
+    green: S.optional(S.Number),
+    alpha: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "Color" }) as any as S.Schema<Color>;
 
 /** The rotation applied to text in a cell. */
@@ -673,13 +917,23 @@ export interface TextRotation {
   vertical?: boolean;
 }
 export const TextRotation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "angle": S.optional(S.Number),
-  "vertical": S.optional(S.Boolean),
-}),
+  S.Struct({
+    angle: S.optional(S.Number),
+    vertical: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "TextRotation" }) as any as S.Schema<TextRotation>;
 
-export type ColorStyleThemeColorEnum = "THEME_COLOR_TYPE_UNSPECIFIED" | "TEXT" | "BACKGROUND" | "ACCENT1" | "ACCENT2" | "ACCENT3" | "ACCENT4" | "ACCENT5" | "ACCENT6" | "LINK";
+export type ColorStyleThemeColorEnum =
+  | "THEME_COLOR_TYPE_UNSPECIFIED"
+  | "TEXT"
+  | "BACKGROUND"
+  | "ACCENT1"
+  | "ACCENT2"
+  | "ACCENT3"
+  | "ACCENT4"
+  | "ACCENT5"
+  | "ACCENT6"
+  | "LINK";
 export const ColorStyleThemeColorEnum = /*@__PURE__*/ S.String;
 
 /** A color value. */
@@ -690,13 +944,18 @@ export interface ColorStyle {
   rgbColor?: Color;
 }
 export const ColorStyle = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "themeColor": S.optional(ColorStyleThemeColorEnum),
-  "rgbColor": S.optional(Color),
-}),
+  S.Struct({
+    themeColor: S.optional(ColorStyleThemeColorEnum),
+    rgbColor: S.optional(Color),
+  }),
 ).annotate({ identifier: "ColorStyle" }) as any as S.Schema<ColorStyle>;
 
-export type CellFormatWrapStrategyEnum = "WRAP_STRATEGY_UNSPECIFIED" | "OVERFLOW_CELL" | "LEGACY_WRAP" | "CLIP" | "WRAP";
+export type CellFormatWrapStrategyEnum =
+  | "WRAP_STRATEGY_UNSPECIFIED"
+  | "OVERFLOW_CELL"
+  | "LEGACY_WRAP"
+  | "CLIP"
+  | "WRAP";
 export const CellFormatWrapStrategyEnum = /*@__PURE__*/ S.String;
 
 /** An external or local reference. */
@@ -705,9 +964,9 @@ export interface Link {
   uri?: string;
 }
 export const Link = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "uri": S.optional(S.String),
-}),
+  S.Struct({
+    uri: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Link" }) as any as S.Schema<Link>;
 
 /** The format of a run of text in a cell. Absent values indicate that the field isn't specified. */
@@ -732,23 +991,34 @@ export interface TextFormat {
   underline?: boolean;
 }
 export const TextFormat = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bold": S.optional(S.Boolean),
-  "foregroundColorStyle": S.optional(ColorStyle),
-  "italic": S.optional(S.Boolean),
-  "fontSize": S.optional(S.Number),
-  "strikethrough": S.optional(S.Boolean),
-  "link": S.optional(Link),
-  "fontFamily": S.optional(S.String),
-  "foregroundColor": S.optional(Color),
-  "underline": S.optional(S.Boolean),
-}),
+  S.Struct({
+    bold: S.optional(S.Boolean),
+    foregroundColorStyle: S.optional(ColorStyle),
+    italic: S.optional(S.Boolean),
+    fontSize: S.optional(S.Number),
+    strikethrough: S.optional(S.Boolean),
+    link: S.optional(Link),
+    fontFamily: S.optional(S.String),
+    foregroundColor: S.optional(Color),
+    underline: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "TextFormat" }) as any as S.Schema<TextFormat>;
 
-export type CellFormatHyperlinkDisplayTypeEnum = "HYPERLINK_DISPLAY_TYPE_UNSPECIFIED" | "LINKED" | "PLAIN_TEXT";
+export type CellFormatHyperlinkDisplayTypeEnum =
+  | "HYPERLINK_DISPLAY_TYPE_UNSPECIFIED"
+  | "LINKED"
+  | "PLAIN_TEXT";
 export const CellFormatHyperlinkDisplayTypeEnum = /*@__PURE__*/ S.String;
 
-export type BorderStyleEnum = "STYLE_UNSPECIFIED" | "DOTTED" | "DASHED" | "SOLID" | "SOLID_MEDIUM" | "SOLID_THICK" | "NONE" | "DOUBLE";
+export type BorderStyleEnum =
+  | "STYLE_UNSPECIFIED"
+  | "DOTTED"
+  | "DASHED"
+  | "SOLID"
+  | "SOLID_MEDIUM"
+  | "SOLID_THICK"
+  | "NONE"
+  | "DOUBLE";
 export const BorderStyleEnum = /*@__PURE__*/ S.String;
 
 /** A border along a cell. */
@@ -763,12 +1033,12 @@ export interface Border {
   color?: Color;
 }
 export const Border = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "style": S.optional(BorderStyleEnum),
-  "colorStyle": S.optional(ColorStyle),
-  "width": S.optional(S.Number),
-  "color": S.optional(Color),
-}),
+  S.Struct({
+    style: S.optional(BorderStyleEnum),
+    colorStyle: S.optional(ColorStyle),
+    width: S.optional(S.Number),
+    color: S.optional(Color),
+  }),
 ).annotate({ identifier: "Border" }) as any as S.Schema<Border>;
 
 /** The borders of the cell. */
@@ -783,12 +1053,12 @@ export interface Borders {
   left?: Border;
 }
 export const Borders = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "top": S.optional(Border),
-  "right": S.optional(Border),
-  "bottom": S.optional(Border),
-  "left": S.optional(Border),
-}),
+  S.Struct({
+    top: S.optional(Border),
+    right: S.optional(Border),
+    bottom: S.optional(Border),
+    left: S.optional(Border),
+  }),
 ).annotate({ identifier: "Borders" }) as any as S.Schema<Borders>;
 
 /** The amount of padding around the cell, in pixels. When updating padding, every field must be specified. */
@@ -803,15 +1073,18 @@ export interface Padding {
   right?: number;
 }
 export const Padding = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bottom": S.optional(S.Number),
-  "left": S.optional(S.Number),
-  "top": S.optional(S.Number),
-  "right": S.optional(S.Number),
-}),
+  S.Struct({
+    bottom: S.optional(S.Number),
+    left: S.optional(S.Number),
+    top: S.optional(S.Number),
+    right: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "Padding" }) as any as S.Schema<Padding>;
 
-export type CellFormatTextDirectionEnum = "TEXT_DIRECTION_UNSPECIFIED" | "LEFT_TO_RIGHT" | "RIGHT_TO_LEFT";
+export type CellFormatTextDirectionEnum =
+  | "TEXT_DIRECTION_UNSPECIFIED"
+  | "LEFT_TO_RIGHT"
+  | "RIGHT_TO_LEFT";
 export const CellFormatTextDirectionEnum = /*@__PURE__*/ S.String;
 
 /** The format of a cell. */
@@ -842,20 +1115,20 @@ export interface CellFormat {
   textDirection?: CellFormatTextDirectionEnum;
 }
 export const CellFormat = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "verticalAlignment": S.optional(CellFormatVerticalAlignmentEnum),
-  "numberFormat": S.optional(NumberFormat),
-  "horizontalAlignment": S.optional(CellFormatHorizontalAlignmentEnum),
-  "backgroundColor": S.optional(Color),
-  "textRotation": S.optional(TextRotation),
-  "backgroundColorStyle": S.optional(ColorStyle),
-  "wrapStrategy": S.optional(CellFormatWrapStrategyEnum),
-  "textFormat": S.optional(TextFormat),
-  "hyperlinkDisplayType": S.optional(CellFormatHyperlinkDisplayTypeEnum),
-  "borders": S.optional(Borders),
-  "padding": S.optional(Padding),
-  "textDirection": S.optional(CellFormatTextDirectionEnum),
-}),
+  S.Struct({
+    verticalAlignment: S.optional(CellFormatVerticalAlignmentEnum),
+    numberFormat: S.optional(NumberFormat),
+    horizontalAlignment: S.optional(CellFormatHorizontalAlignmentEnum),
+    backgroundColor: S.optional(Color),
+    textRotation: S.optional(TextRotation),
+    backgroundColorStyle: S.optional(ColorStyle),
+    wrapStrategy: S.optional(CellFormatWrapStrategyEnum),
+    textFormat: S.optional(TextFormat),
+    hyperlinkDisplayType: S.optional(CellFormatHyperlinkDisplayTypeEnum),
+    borders: S.optional(Borders),
+    padding: S.optional(Padding),
+    textDirection: S.optional(CellFormatTextDirectionEnum),
+  }),
 ).annotate({ identifier: "CellFormat" }) as any as S.Schema<CellFormat>;
 
 /** Settings to control how circular dependencies are resolved with iterative calculation. */
@@ -866,13 +1139,25 @@ export interface IterativeCalculationSettings {
   convergenceThreshold?: number;
 }
 export const IterativeCalculationSettings = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "maxIterations": S.optional(S.Number),
-  "convergenceThreshold": S.optional(S.Number),
-}),
-).annotate({ identifier: "IterativeCalculationSettings" }) as any as S.Schema<IterativeCalculationSettings>;
+  S.Struct({
+    maxIterations: S.optional(S.Number),
+    convergenceThreshold: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "IterativeCalculationSettings",
+}) as any as S.Schema<IterativeCalculationSettings>;
 
-export type ThemeColorPairColorTypeEnum = "THEME_COLOR_TYPE_UNSPECIFIED" | "TEXT" | "BACKGROUND" | "ACCENT1" | "ACCENT2" | "ACCENT3" | "ACCENT4" | "ACCENT5" | "ACCENT6" | "LINK";
+export type ThemeColorPairColorTypeEnum =
+  | "THEME_COLOR_TYPE_UNSPECIFIED"
+  | "TEXT"
+  | "BACKGROUND"
+  | "ACCENT1"
+  | "ACCENT2"
+  | "ACCENT3"
+  | "ACCENT4"
+  | "ACCENT5"
+  | "ACCENT6"
+  | "LINK";
 export const ThemeColorPairColorTypeEnum = /*@__PURE__*/ S.String;
 
 /** A pair mapping a spreadsheet theme color type to the concrete color it represents. */
@@ -883,14 +1168,16 @@ export interface ThemeColorPair {
   color?: ColorStyle;
 }
 export const ThemeColorPair = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "colorType": S.optional(ThemeColorPairColorTypeEnum),
-  "color": S.optional(ColorStyle),
-}),
+  S.Struct({
+    colorType: S.optional(ThemeColorPairColorTypeEnum),
+    color: S.optional(ColorStyle),
+  }),
 ).annotate({ identifier: "ThemeColorPair" }) as any as S.Schema<ThemeColorPair>;
 
 export type ThemeColorPairList = ReadonlyArray<ThemeColorPair>;
-export const ThemeColorPairList = /*@__PURE__*/ S.Array(ThemeColorPair) as any as S.Schema<ThemeColorPairList>;
+export const ThemeColorPairList = /*@__PURE__*/ S.Array(
+  ThemeColorPair,
+) as any as S.Schema<ThemeColorPairList>;
 
 /** Represents spreadsheet theme */
 export interface SpreadsheetTheme {
@@ -900,13 +1187,19 @@ export interface SpreadsheetTheme {
   themeColors?: ThemeColorPairList;
 }
 export const SpreadsheetTheme = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "primaryFontFamily": S.optional(S.String),
-  "themeColors": S.optional(ThemeColorPairList),
-}),
-).annotate({ identifier: "SpreadsheetTheme" }) as any as S.Schema<SpreadsheetTheme>;
+  S.Struct({
+    primaryFontFamily: S.optional(S.String),
+    themeColors: S.optional(ThemeColorPairList),
+  }),
+).annotate({
+  identifier: "SpreadsheetTheme",
+}) as any as S.Schema<SpreadsheetTheme>;
 
-export type SpreadsheetPropertiesAutoRecalcEnum = "RECALCULATION_INTERVAL_UNSPECIFIED" | "ON_CHANGE" | "MINUTE" | "HOUR";
+export type SpreadsheetPropertiesAutoRecalcEnum =
+  | "RECALCULATION_INTERVAL_UNSPECIFIED"
+  | "ON_CHANGE"
+  | "MINUTE"
+  | "HOUR";
 export const SpreadsheetPropertiesAutoRecalcEnum = /*@__PURE__*/ S.String;
 
 /** Properties of a spreadsheet. */
@@ -929,17 +1222,19 @@ export interface SpreadsheetProperties {
   autoRecalc?: SpreadsheetPropertiesAutoRecalcEnum;
 }
 export const SpreadsheetProperties = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locale": S.optional(S.String),
-  "importFunctionsExternalUrlAccessAllowed": S.optional(S.Boolean),
-  "title": S.optional(S.String),
-  "defaultFormat": S.optional(CellFormat),
-  "timeZone": S.optional(S.String),
-  "iterativeCalculationSettings": S.optional(IterativeCalculationSettings),
-  "spreadsheetTheme": S.optional(SpreadsheetTheme),
-  "autoRecalc": S.optional(SpreadsheetPropertiesAutoRecalcEnum),
-}),
-).annotate({ identifier: "SpreadsheetProperties" }) as any as S.Schema<SpreadsheetProperties>;
+  S.Struct({
+    locale: S.optional(S.String),
+    importFunctionsExternalUrlAccessAllowed: S.optional(S.Boolean),
+    title: S.optional(S.String),
+    defaultFormat: S.optional(CellFormat),
+    timeZone: S.optional(S.String),
+    iterativeCalculationSettings: S.optional(IterativeCalculationSettings),
+    spreadsheetTheme: S.optional(SpreadsheetTheme),
+    autoRecalc: S.optional(SpreadsheetPropertiesAutoRecalcEnum),
+  }),
+).annotate({
+  identifier: "SpreadsheetProperties",
+}) as any as S.Schema<SpreadsheetProperties>;
 
 /** Updates properties of a spreadsheet. */
 export interface UpdateSpreadsheetPropertiesRequest {
@@ -949,11 +1244,13 @@ export interface UpdateSpreadsheetPropertiesRequest {
   properties?: SpreadsheetProperties;
 }
 export const UpdateSpreadsheetPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fields": S.optional(S.String),
-  "properties": S.optional(SpreadsheetProperties),
-}),
-).annotate({ identifier: "UpdateSpreadsheetPropertiesRequest" }) as any as S.Schema<UpdateSpreadsheetPropertiesRequest>;
+  S.Struct({
+    fields: S.optional(S.String),
+    properties: S.optional(SpreadsheetProperties),
+  }),
+).annotate({
+  identifier: "UpdateSpreadsheetPropertiesRequest",
+}) as any as S.Schema<UpdateSpreadsheetPropertiesRequest>;
 
 /** An unique identifier that references a data source column. */
 export interface DataSourceColumnReference {
@@ -961,12 +1258,17 @@ export interface DataSourceColumnReference {
   name?: string;
 }
 export const DataSourceColumnReference = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-}),
-).annotate({ identifier: "DataSourceColumnReference" }) as any as S.Schema<DataSourceColumnReference>;
+  S.Struct({
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DataSourceColumnReference",
+}) as any as S.Schema<DataSourceColumnReference>;
 
-export type SortSpecSortOrderEnum = "SORT_ORDER_UNSPECIFIED" | "ASCENDING" | "DESCENDING";
+export type SortSpecSortOrderEnum =
+  | "SORT_ORDER_UNSPECIFIED"
+  | "ASCENDING"
+  | "DESCENDING";
 export const SortSpecSortOrderEnum = /*@__PURE__*/ S.String;
 
 /** A sort order associated with a specific column or row. */
@@ -987,24 +1289,66 @@ export interface SortSpec {
   sortOrder?: SortSpecSortOrderEnum;
 }
 export const SortSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dimensionIndex": S.optional(S.Number),
-  "foregroundColorStyle": S.optional(ColorStyle),
-  "dataSourceColumnReference": S.optional(DataSourceColumnReference),
-  "foregroundColor": S.optional(Color),
-  "backgroundColorStyle": S.optional(ColorStyle),
-  "backgroundColor": S.optional(Color),
-  "sortOrder": S.optional(SortSpecSortOrderEnum),
-}),
+  S.Struct({
+    dimensionIndex: S.optional(S.Number),
+    foregroundColorStyle: S.optional(ColorStyle),
+    dataSourceColumnReference: S.optional(DataSourceColumnReference),
+    foregroundColor: S.optional(Color),
+    backgroundColorStyle: S.optional(ColorStyle),
+    backgroundColor: S.optional(Color),
+    sortOrder: S.optional(SortSpecSortOrderEnum),
+  }),
 ).annotate({ identifier: "SortSpec" }) as any as S.Schema<SortSpec>;
 
 export type SortSpecList = ReadonlyArray<SortSpec>;
-export const SortSpecList = /*@__PURE__*/ S.Array(SortSpec) as any as S.Schema<SortSpecList>;
+export const SortSpecList = /*@__PURE__*/ S.Array(
+  SortSpec,
+) as any as S.Schema<SortSpecList>;
 
-export type BooleanConditionTypeEnum = "CONDITION_TYPE_UNSPECIFIED" | "NUMBER_GREATER" | "NUMBER_GREATER_THAN_EQ" | "NUMBER_LESS" | "NUMBER_LESS_THAN_EQ" | "NUMBER_EQ" | "NUMBER_NOT_EQ" | "NUMBER_BETWEEN" | "NUMBER_NOT_BETWEEN" | "TEXT_CONTAINS" | "TEXT_NOT_CONTAINS" | "TEXT_STARTS_WITH" | "TEXT_ENDS_WITH" | "TEXT_EQ" | "TEXT_IS_EMAIL" | "TEXT_IS_URL" | "DATE_EQ" | "DATE_BEFORE" | "DATE_AFTER" | "DATE_ON_OR_BEFORE" | "DATE_ON_OR_AFTER" | "DATE_BETWEEN" | "DATE_NOT_BETWEEN" | "DATE_IS_VALID" | "ONE_OF_RANGE" | "ONE_OF_LIST" | "BLANK" | "NOT_BLANK" | "CUSTOM_FORMULA" | "BOOLEAN" | "TEXT_NOT_EQ" | "DATE_NOT_EQ" | "FILTER_EXPRESSION";
+export type BooleanConditionTypeEnum =
+  | "CONDITION_TYPE_UNSPECIFIED"
+  | "NUMBER_GREATER"
+  | "NUMBER_GREATER_THAN_EQ"
+  | "NUMBER_LESS"
+  | "NUMBER_LESS_THAN_EQ"
+  | "NUMBER_EQ"
+  | "NUMBER_NOT_EQ"
+  | "NUMBER_BETWEEN"
+  | "NUMBER_NOT_BETWEEN"
+  | "TEXT_CONTAINS"
+  | "TEXT_NOT_CONTAINS"
+  | "TEXT_STARTS_WITH"
+  | "TEXT_ENDS_WITH"
+  | "TEXT_EQ"
+  | "TEXT_IS_EMAIL"
+  | "TEXT_IS_URL"
+  | "DATE_EQ"
+  | "DATE_BEFORE"
+  | "DATE_AFTER"
+  | "DATE_ON_OR_BEFORE"
+  | "DATE_ON_OR_AFTER"
+  | "DATE_BETWEEN"
+  | "DATE_NOT_BETWEEN"
+  | "DATE_IS_VALID"
+  | "ONE_OF_RANGE"
+  | "ONE_OF_LIST"
+  | "BLANK"
+  | "NOT_BLANK"
+  | "CUSTOM_FORMULA"
+  | "BOOLEAN"
+  | "TEXT_NOT_EQ"
+  | "DATE_NOT_EQ"
+  | "FILTER_EXPRESSION";
 export const BooleanConditionTypeEnum = /*@__PURE__*/ S.String;
 
-export type ConditionValueRelativeDateEnum = "RELATIVE_DATE_UNSPECIFIED" | "PAST_YEAR" | "PAST_MONTH" | "PAST_WEEK" | "YESTERDAY" | "TODAY" | "TOMORROW";
+export type ConditionValueRelativeDateEnum =
+  | "RELATIVE_DATE_UNSPECIFIED"
+  | "PAST_YEAR"
+  | "PAST_MONTH"
+  | "PAST_WEEK"
+  | "YESTERDAY"
+  | "TODAY"
+  | "TOMORROW";
 export const ConditionValueRelativeDateEnum = /*@__PURE__*/ S.String;
 
 /** The value of the condition. */
@@ -1015,14 +1359,16 @@ export interface ConditionValue {
   userEnteredValue?: string;
 }
 export const ConditionValue = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "relativeDate": S.optional(ConditionValueRelativeDateEnum),
-  "userEnteredValue": S.optional(S.String),
-}),
+  S.Struct({
+    relativeDate: S.optional(ConditionValueRelativeDateEnum),
+    userEnteredValue: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ConditionValue" }) as any as S.Schema<ConditionValue>;
 
 export type ConditionValueList = ReadonlyArray<ConditionValue>;
-export const ConditionValueList = /*@__PURE__*/ S.Array(ConditionValue) as any as S.Schema<ConditionValueList>;
+export const ConditionValueList = /*@__PURE__*/ S.Array(
+  ConditionValue,
+) as any as S.Schema<ConditionValueList>;
 
 /** A condition that can evaluate to true or false. BooleanConditions are used by conditional formatting, data validation, and the criteria in filters. */
 export interface BooleanCondition {
@@ -1032,11 +1378,13 @@ export interface BooleanCondition {
   values?: ConditionValueList;
 }
 export const BooleanCondition = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(BooleanConditionTypeEnum),
-  "values": S.optional(ConditionValueList),
-}),
-).annotate({ identifier: "BooleanCondition" }) as any as S.Schema<BooleanCondition>;
+  S.Struct({
+    type: S.optional(BooleanConditionTypeEnum),
+    values: S.optional(ConditionValueList),
+  }),
+).annotate({
+  identifier: "BooleanCondition",
+}) as any as S.Schema<BooleanCondition>;
 
 /** Criteria for showing or hiding rows in a filter or filter view. */
 export interface FilterCriteria {
@@ -1054,18 +1402,21 @@ export interface FilterCriteria {
   visibleBackgroundColorStyle?: ColorStyle;
 }
 export const FilterCriteria = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "visibleBackgroundColor": S.optional(Color),
-  "hiddenValues": S.optional(StringList),
-  "condition": S.optional(BooleanCondition),
-  "visibleForegroundColorStyle": S.optional(ColorStyle),
-  "visibleForegroundColor": S.optional(Color),
-  "visibleBackgroundColorStyle": S.optional(ColorStyle),
-}),
+  S.Struct({
+    visibleBackgroundColor: S.optional(Color),
+    hiddenValues: S.optional(StringList),
+    condition: S.optional(BooleanCondition),
+    visibleForegroundColorStyle: S.optional(ColorStyle),
+    visibleForegroundColor: S.optional(Color),
+    visibleBackgroundColorStyle: S.optional(ColorStyle),
+  }),
 ).annotate({ identifier: "FilterCriteria" }) as any as S.Schema<FilterCriteria>;
 
 export type FilterCriteriaMap = { [key: string]: FilterCriteria | undefined };
-export const FilterCriteriaMap = /*@__PURE__*/ S.Record(S.String, FilterCriteria) as any as S.Schema<FilterCriteriaMap>;
+export const FilterCriteriaMap = /*@__PURE__*/ S.Record(
+  S.String,
+  FilterCriteria,
+) as any as S.Schema<FilterCriteriaMap>;
 
 /** The filter criteria associated with a specific column. */
 export interface FilterSpec {
@@ -1077,15 +1428,17 @@ export interface FilterSpec {
   filterCriteria?: FilterCriteria;
 }
 export const FilterSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "columnIndex": S.optional(S.Number),
-  "dataSourceColumnReference": S.optional(DataSourceColumnReference),
-  "filterCriteria": S.optional(FilterCriteria),
-}),
+  S.Struct({
+    columnIndex: S.optional(S.Number),
+    dataSourceColumnReference: S.optional(DataSourceColumnReference),
+    filterCriteria: S.optional(FilterCriteria),
+  }),
 ).annotate({ identifier: "FilterSpec" }) as any as S.Schema<FilterSpec>;
 
 export type FilterSpecList = ReadonlyArray<FilterSpec>;
-export const FilterSpecList = /*@__PURE__*/ S.Array(FilterSpec) as any as S.Schema<FilterSpecList>;
+export const FilterSpecList = /*@__PURE__*/ S.Array(
+  FilterSpec,
+) as any as S.Schema<FilterSpecList>;
 
 /** The default filter associated with a sheet. For more information, see [Manage data visibility with filters](https://developers.google.com/workspace/sheets/api/guides/filters). */
 export interface BasicFilter {
@@ -1101,13 +1454,13 @@ export interface BasicFilter {
   filterSpecs?: FilterSpecList;
 }
 export const BasicFilter = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "tableId": S.optional(S.String),
-  "sortSpecs": S.optional(SortSpecList),
-  "criteria": S.optional(FilterCriteriaMap),
-  "range": S.optional(GridRange),
-  "filterSpecs": S.optional(FilterSpecList),
-}),
+  S.Struct({
+    tableId: S.optional(S.String),
+    sortSpecs: S.optional(SortSpecList),
+    criteria: S.optional(FilterCriteriaMap),
+    range: S.optional(GridRange),
+    filterSpecs: S.optional(FilterSpecList),
+  }),
 ).annotate({ identifier: "BasicFilter" }) as any as S.Schema<BasicFilter>;
 
 /** Sets the basic filter associated with a sheet. */
@@ -1116,10 +1469,12 @@ export interface SetBasicFilterRequest {
   filter?: BasicFilter;
 }
 export const SetBasicFilterRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(BasicFilter),
-}),
-).annotate({ identifier: "SetBasicFilterRequest" }) as any as S.Schema<SetBasicFilterRequest>;
+  S.Struct({
+    filter: S.optional(BasicFilter),
+  }),
+).annotate({
+  identifier: "SetBasicFilterRequest",
+}) as any as S.Schema<SetBasicFilterRequest>;
 
 /** Removes the table with the given ID from the spreadsheet. */
 export interface DeleteTableRequest {
@@ -1127,12 +1482,21 @@ export interface DeleteTableRequest {
   tableId?: string;
 }
 export const DeleteTableRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "tableId": S.optional(S.String),
-}),
-).annotate({ identifier: "DeleteTableRequest" }) as any as S.Schema<DeleteTableRequest>;
+  S.Struct({
+    tableId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DeleteTableRequest",
+}) as any as S.Schema<DeleteTableRequest>;
 
-export type PasteDataRequestTypeEnum = "PASTE_NORMAL" | "PASTE_VALUES" | "PASTE_FORMAT" | "PASTE_NO_BORDERS" | "PASTE_FORMULA" | "PASTE_DATA_VALIDATION" | "PASTE_CONDITIONAL_FORMATTING";
+export type PasteDataRequestTypeEnum =
+  | "PASTE_NORMAL"
+  | "PASTE_VALUES"
+  | "PASTE_FORMAT"
+  | "PASTE_NO_BORDERS"
+  | "PASTE_FORMULA"
+  | "PASTE_DATA_VALIDATION"
+  | "PASTE_CONDITIONAL_FORMATTING";
 export const PasteDataRequestTypeEnum = /*@__PURE__*/ S.String;
 
 /** A coordinate in a sheet. All indexes are zero-based. */
@@ -1145,11 +1509,11 @@ export interface GridCoordinate {
   columnIndex?: number;
 }
 export const GridCoordinate = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "rowIndex": S.optional(S.Number),
-  "sheetId": S.optional(S.Number),
-  "columnIndex": S.optional(S.Number),
-}),
+  S.Struct({
+    rowIndex: S.optional(S.Number),
+    sheetId: S.optional(S.Number),
+    columnIndex: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "GridCoordinate" }) as any as S.Schema<GridCoordinate>;
 
 /** Inserts data into the spreadsheet starting at the specified coordinate. */
@@ -1166,14 +1530,16 @@ export interface PasteDataRequest {
   coordinate?: GridCoordinate;
 }
 export const PasteDataRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "data": S.optional(S.String),
-  "html": S.optional(S.Boolean),
-  "delimiter": S.optional(S.String),
-  "type": S.optional(PasteDataRequestTypeEnum),
-  "coordinate": S.optional(GridCoordinate),
-}),
-).annotate({ identifier: "PasteDataRequest" }) as any as S.Schema<PasteDataRequest>;
+  S.Struct({
+    data: S.optional(S.String),
+    html: S.optional(S.Boolean),
+    delimiter: S.optional(S.String),
+    type: S.optional(PasteDataRequestTypeEnum),
+    coordinate: S.optional(GridCoordinate),
+  }),
+).annotate({
+  identifier: "PasteDataRequest",
+}) as any as S.Schema<PasteDataRequest>;
 
 /** Reference to a data source object. */
 export interface DataSourceObjectReference {
@@ -1189,17 +1555,22 @@ export interface DataSourceObjectReference {
   dataSourcePivotTableAnchorCell?: GridCoordinate;
 }
 export const DataSourceObjectReference = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sheetId": S.optional(S.String),
-  "chartId": S.optional(S.Number),
-  "dataSourceFormulaCell": S.optional(GridCoordinate),
-  "dataSourceTableAnchorCell": S.optional(GridCoordinate),
-  "dataSourcePivotTableAnchorCell": S.optional(GridCoordinate),
-}),
-).annotate({ identifier: "DataSourceObjectReference" }) as any as S.Schema<DataSourceObjectReference>;
+  S.Struct({
+    sheetId: S.optional(S.String),
+    chartId: S.optional(S.Number),
+    dataSourceFormulaCell: S.optional(GridCoordinate),
+    dataSourceTableAnchorCell: S.optional(GridCoordinate),
+    dataSourcePivotTableAnchorCell: S.optional(GridCoordinate),
+  }),
+).annotate({
+  identifier: "DataSourceObjectReference",
+}) as any as S.Schema<DataSourceObjectReference>;
 
-export type DataSourceObjectReferenceList = ReadonlyArray<DataSourceObjectReference>;
-export const DataSourceObjectReferenceList = /*@__PURE__*/ S.Array(DataSourceObjectReference) as any as S.Schema<DataSourceObjectReferenceList>;
+export type DataSourceObjectReferenceList =
+  ReadonlyArray<DataSourceObjectReference>;
+export const DataSourceObjectReferenceList = /*@__PURE__*/ S.Array(
+  DataSourceObjectReference,
+) as any as S.Schema<DataSourceObjectReferenceList>;
 
 /** A list of references to data source objects. */
 export interface DataSourceObjectReferences {
@@ -1207,10 +1578,12 @@ export interface DataSourceObjectReferences {
   references?: DataSourceObjectReferenceList;
 }
 export const DataSourceObjectReferences = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "references": S.optional(DataSourceObjectReferenceList),
-}),
-).annotate({ identifier: "DataSourceObjectReferences" }) as any as S.Schema<DataSourceObjectReferences>;
+  S.Struct({
+    references: S.optional(DataSourceObjectReferenceList),
+  }),
+).annotate({
+  identifier: "DataSourceObjectReferences",
+}) as any as S.Schema<DataSourceObjectReferences>;
 
 /** Refreshes one or multiple data source objects in the spreadsheet by the specified references. The request requires an additional `bigquery.readonly` OAuth scope if you are refreshing a BigQuery data source. If there are multiple refresh requests referencing the same data source objects in one batch, only the last refresh request is processed, and all those requests will have the same response accordingly. */
 export interface RefreshDataSourceRequest {
@@ -1224,21 +1597,49 @@ export interface RefreshDataSourceRequest {
   isAll?: boolean;
 }
 export const RefreshDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "references": S.optional(DataSourceObjectReferences),
-  "force": S.optional(S.Boolean),
-  "dataSourceId": S.optional(S.String),
-  "isAll": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "RefreshDataSourceRequest" }) as any as S.Schema<RefreshDataSourceRequest>;
+  S.Struct({
+    references: S.optional(DataSourceObjectReferences),
+    force: S.optional(S.Boolean),
+    dataSourceId: S.optional(S.String),
+    isAll: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "RefreshDataSourceRequest",
+}) as any as S.Schema<RefreshDataSourceRequest>;
 
 export type PivotTableValueLayoutEnum = "HORIZONTAL" | "VERTICAL";
 export const PivotTableValueLayoutEnum = /*@__PURE__*/ S.String;
 
-export type DataExecutionStatusStateEnum = "DATA_EXECUTION_STATE_UNSPECIFIED" | "NOT_STARTED" | "RUNNING" | "CANCELLING" | "SUCCEEDED" | "FAILED";
+export type DataExecutionStatusStateEnum =
+  | "DATA_EXECUTION_STATE_UNSPECIFIED"
+  | "NOT_STARTED"
+  | "RUNNING"
+  | "CANCELLING"
+  | "SUCCEEDED"
+  | "FAILED";
 export const DataExecutionStatusStateEnum = /*@__PURE__*/ S.String;
 
-export type DataExecutionStatusErrorCodeEnum = "DATA_EXECUTION_ERROR_CODE_UNSPECIFIED" | "TIMED_OUT" | "TOO_MANY_ROWS" | "TOO_MANY_COLUMNS" | "TOO_MANY_CELLS" | "ENGINE" | "PARAMETER_INVALID" | "UNSUPPORTED_DATA_TYPE" | "DUPLICATE_COLUMN_NAMES" | "INTERRUPTED" | "CONCURRENT_QUERY" | "OTHER" | "TOO_MANY_CHARS_PER_CELL" | "DATA_NOT_FOUND" | "PERMISSION_DENIED" | "MISSING_COLUMN_ALIAS" | "OBJECT_NOT_FOUND" | "OBJECT_IN_ERROR_STATE" | "OBJECT_SPEC_INVALID" | "DATA_EXECUTION_CANCELLED";
+export type DataExecutionStatusErrorCodeEnum =
+  | "DATA_EXECUTION_ERROR_CODE_UNSPECIFIED"
+  | "TIMED_OUT"
+  | "TOO_MANY_ROWS"
+  | "TOO_MANY_COLUMNS"
+  | "TOO_MANY_CELLS"
+  | "ENGINE"
+  | "PARAMETER_INVALID"
+  | "UNSUPPORTED_DATA_TYPE"
+  | "DUPLICATE_COLUMN_NAMES"
+  | "INTERRUPTED"
+  | "CONCURRENT_QUERY"
+  | "OTHER"
+  | "TOO_MANY_CHARS_PER_CELL"
+  | "DATA_NOT_FOUND"
+  | "PERMISSION_DENIED"
+  | "MISSING_COLUMN_ALIAS"
+  | "OBJECT_NOT_FOUND"
+  | "OBJECT_IN_ERROR_STATE"
+  | "OBJECT_SPEC_INVALID"
+  | "DATA_EXECUTION_CANCELLED";
 export const DataExecutionStatusErrorCodeEnum = /*@__PURE__*/ S.String;
 
 /** The data execution status. A data execution is created to sync a data source object with the latest data from a DataSource. It is usually scheduled to run at background, you can check its state to tell if an execution completes There are several scenarios where a data execution is triggered to run: * Adding a data source creates an associated data source sheet as well as a data execution to sync the data from the data source to the sheet. * Updating a data source creates a data execution to refresh the associated data source sheet similarly. * You can send refresh request to explicitly refresh one or multiple data source objects. */
@@ -1253,13 +1654,15 @@ export interface DataExecutionStatus {
   lastRefreshTime?: string;
 }
 export const DataExecutionStatus = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "errorMessage": S.optional(S.String),
-  "state": S.optional(DataExecutionStatusStateEnum),
-  "errorCode": S.optional(DataExecutionStatusErrorCodeEnum),
-  "lastRefreshTime": S.optional(S.String),
-}),
-).annotate({ identifier: "DataExecutionStatus" }) as any as S.Schema<DataExecutionStatus>;
+  S.Struct({
+    errorMessage: S.optional(S.String),
+    state: S.optional(DataExecutionStatusStateEnum),
+    errorCode: S.optional(DataExecutionStatusErrorCodeEnum),
+    lastRefreshTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DataExecutionStatus",
+}) as any as S.Schema<DataExecutionStatus>;
 
 /** Allows you to organize the numeric values in a source data column into buckets of a constant size. All values from HistogramRule.start to HistogramRule.end are placed into groups of size HistogramRule.interval. In addition, all values below HistogramRule.start are placed in one group, and all values above HistogramRule.end are placed in another. Only HistogramRule.interval is required, though if HistogramRule.start and HistogramRule.end are both provided, HistogramRule.start must be less than HistogramRule.end. For example, a pivot table showing average purchase amount by age that has 50+ rows: +-----+-------------------+ | Age | AVERAGE of Amount | +-----+-------------------+ | 16 | $27.13 | | 17 | $5.24 | | 18 | $20.15 | ... +-----+-------------------+ could be turned into a pivot table that looks like the one below by applying a histogram group rule with a HistogramRule.start of 25, an HistogramRule.interval of 20, and an HistogramRule.end of 65. +-------------+-------------------+ | Grouped Age | AVERAGE of Amount | +-------------+-------------------+ | < 25 | $19.34 | | 25-45 | $31.43 | | 45-65 | $35.87 | | > 65 | $27.55 | +-------------+-------------------+ | Grand Total | $29.12 | +-------------+-------------------+ */
 export interface HistogramRule {
@@ -1271,14 +1674,24 @@ export interface HistogramRule {
   interval?: number;
 }
 export const HistogramRule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "start": S.optional(S.Number),
-  "end": S.optional(S.Number),
-  "interval": S.optional(S.Number),
-}),
+  S.Struct({
+    start: S.optional(S.Number),
+    end: S.optional(S.Number),
+    interval: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "HistogramRule" }) as any as S.Schema<HistogramRule>;
 
-export type ErrorValueTypeEnum = "ERROR_TYPE_UNSPECIFIED" | "ERROR" | "NULL_VALUE" | "DIVIDE_BY_ZERO" | "VALUE" | "REF" | "NAME" | "NUM" | "N_A" | "LOADING";
+export type ErrorValueTypeEnum =
+  | "ERROR_TYPE_UNSPECIFIED"
+  | "ERROR"
+  | "NULL_VALUE"
+  | "DIVIDE_BY_ZERO"
+  | "VALUE"
+  | "REF"
+  | "NAME"
+  | "NUM"
+  | "N_A"
+  | "LOADING";
 export const ErrorValueTypeEnum = /*@__PURE__*/ S.String;
 
 /** An error in a cell. */
@@ -1289,10 +1702,10 @@ export interface ErrorValue {
   message?: string;
 }
 export const ErrorValue = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(ErrorValueTypeEnum),
-  "message": S.optional(S.String),
-}),
+  S.Struct({
+    type: S.optional(ErrorValueTypeEnum),
+    message: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ErrorValue" }) as any as S.Schema<ErrorValue>;
 
 /** The kinds of value that a cell in a spreadsheet can have. */
@@ -1309,17 +1722,19 @@ export interface ExtendedValue {
   errorValue?: ErrorValue;
 }
 export const ExtendedValue = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "stringValue": S.optional(S.String),
-  "formulaValue": S.optional(S.String),
-  "numberValue": S.optional(S.Number),
-  "boolValue": S.optional(S.Boolean),
-  "errorValue": S.optional(ErrorValue),
-}),
+  S.Struct({
+    stringValue: S.optional(S.String),
+    formulaValue: S.optional(S.String),
+    numberValue: S.optional(S.Number),
+    boolValue: S.optional(S.Boolean),
+    errorValue: S.optional(ErrorValue),
+  }),
 ).annotate({ identifier: "ExtendedValue" }) as any as S.Schema<ExtendedValue>;
 
 export type ExtendedValueList = ReadonlyArray<ExtendedValue>;
-export const ExtendedValueList = /*@__PURE__*/ S.Array(ExtendedValue) as any as S.Schema<ExtendedValueList>;
+export const ExtendedValueList = /*@__PURE__*/ S.Array(
+  ExtendedValue,
+) as any as S.Schema<ExtendedValueList>;
 
 /** A group name and a list of items from the source data that should be placed in the group with this name. */
 export interface ManualRuleGroup {
@@ -1329,14 +1744,18 @@ export interface ManualRuleGroup {
   groupName?: ExtendedValue;
 }
 export const ManualRuleGroup = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "items": S.optional(ExtendedValueList),
-  "groupName": S.optional(ExtendedValue),
-}),
-).annotate({ identifier: "ManualRuleGroup" }) as any as S.Schema<ManualRuleGroup>;
+  S.Struct({
+    items: S.optional(ExtendedValueList),
+    groupName: S.optional(ExtendedValue),
+  }),
+).annotate({
+  identifier: "ManualRuleGroup",
+}) as any as S.Schema<ManualRuleGroup>;
 
 export type ManualRuleGroupList = ReadonlyArray<ManualRuleGroup>;
-export const ManualRuleGroupList = /*@__PURE__*/ S.Array(ManualRuleGroup) as any as S.Schema<ManualRuleGroupList>;
+export const ManualRuleGroupList = /*@__PURE__*/ S.Array(
+  ManualRuleGroup,
+) as any as S.Schema<ManualRuleGroupList>;
 
 /** Allows you to manually organize the values in a source data column into buckets with names of your choosing. For example, a pivot table that aggregates population by state: +-------+-------------------+ | State | SUM of Population | +-------+-------------------+ | AK | 0.7 | | AL | 4.8 | | AR | 2.9 | ... +-------+-------------------+ could be turned into a pivot table that aggregates population by time zone by providing a list of groups (for example, groupName = 'Central', items = ['AL', 'AR', 'IA', ...]) to a manual group rule. Note that a similar effect could be achieved by adding a time zone column to the source data and adjusting the pivot table. +-----------+-------------------+ | Time Zone | SUM of Population | +-----------+-------------------+ | Central | 106.3 | | Eastern | 151.9 | | Mountain | 17.4 | ... +-----------+-------------------+ */
 export interface ManualRule {
@@ -1344,12 +1763,28 @@ export interface ManualRule {
   groups?: ManualRuleGroupList;
 }
 export const ManualRule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "groups": S.optional(ManualRuleGroupList),
-}),
+  S.Struct({
+    groups: S.optional(ManualRuleGroupList),
+  }),
 ).annotate({ identifier: "ManualRule" }) as any as S.Schema<ManualRule>;
 
-export type DateTimeRuleTypeEnum = "DATE_TIME_RULE_TYPE_UNSPECIFIED" | "SECOND" | "MINUTE" | "HOUR" | "HOUR_MINUTE" | "HOUR_MINUTE_AMPM" | "DAY_OF_WEEK" | "DAY_OF_YEAR" | "DAY_OF_MONTH" | "DAY_MONTH" | "MONTH" | "QUARTER" | "YEAR" | "YEAR_MONTH" | "YEAR_QUARTER" | "YEAR_MONTH_DAY";
+export type DateTimeRuleTypeEnum =
+  | "DATE_TIME_RULE_TYPE_UNSPECIFIED"
+  | "SECOND"
+  | "MINUTE"
+  | "HOUR"
+  | "HOUR_MINUTE"
+  | "HOUR_MINUTE_AMPM"
+  | "DAY_OF_WEEK"
+  | "DAY_OF_YEAR"
+  | "DAY_OF_MONTH"
+  | "DAY_MONTH"
+  | "MONTH"
+  | "QUARTER"
+  | "YEAR"
+  | "YEAR_MONTH"
+  | "YEAR_QUARTER"
+  | "YEAR_MONTH_DAY";
 export const DateTimeRuleTypeEnum = /*@__PURE__*/ S.String;
 
 /** Allows you to organize the date-time values in a source data column into buckets based on selected parts of their date or time values. For example, consider a pivot table showing sales transactions by date: +----------+--------------+ | Date | SUM of Sales | +----------+--------------+ | 1/1/2017 | $621.14 | | 2/3/2017 | $708.84 | | 5/8/2017 | $326.84 | ... +----------+--------------+ Applying a date-time group rule with a DateTimeRuleType of YEAR_MONTH results in the following pivot table. +--------------+--------------+ | Grouped Date | SUM of Sales | +--------------+--------------+ | 2017-Jan | $53,731.78 | | 2017-Feb | $83,475.32 | | 2017-Mar | $94,385.05 | ... +--------------+--------------+ */
@@ -1358,9 +1793,9 @@ export interface DateTimeRule {
   type?: DateTimeRuleTypeEnum;
 }
 export const DateTimeRule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(DateTimeRuleTypeEnum),
-}),
+  S.Struct({
+    type: S.optional(DateTimeRuleTypeEnum),
+  }),
 ).annotate({ identifier: "DateTimeRule" }) as any as S.Schema<DateTimeRule>;
 
 /** An optional setting on a PivotGroup that defines buckets for the values in the source data column rather than breaking out each individual value. Only one PivotGroup with a group rule may be added for each column in the source data, though on any given column you may add both a PivotGroup that has a rule and a PivotGroup that does not. */
@@ -1373,11 +1808,11 @@ export interface PivotGroupRule {
   dateTimeRule?: DateTimeRule;
 }
 export const PivotGroupRule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "histogramRule": S.optional(HistogramRule),
-  "manualRule": S.optional(ManualRule),
-  "dateTimeRule": S.optional(DateTimeRule),
-}),
+  S.Struct({
+    histogramRule: S.optional(HistogramRule),
+    manualRule: S.optional(ManualRule),
+    dateTimeRule: S.optional(DateTimeRule),
+  }),
 ).annotate({ identifier: "PivotGroupRule" }) as any as S.Schema<PivotGroupRule>;
 
 /** The count limit on rows or columns in the pivot group. */
@@ -1388,11 +1823,13 @@ export interface PivotGroupLimit {
   applyOrder?: number;
 }
 export const PivotGroupLimit = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "countLimit": S.optional(S.Number),
-  "applyOrder": S.optional(S.Number),
-}),
-).annotate({ identifier: "PivotGroupLimit" }) as any as S.Schema<PivotGroupLimit>;
+  S.Struct({
+    countLimit: S.optional(S.Number),
+    applyOrder: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "PivotGroupLimit",
+}) as any as S.Schema<PivotGroupLimit>;
 
 /** Metadata about a value in a pivot grouping. */
 export interface PivotGroupValueMetadata {
@@ -1402,16 +1839,24 @@ export interface PivotGroupValueMetadata {
   value?: ExtendedValue;
 }
 export const PivotGroupValueMetadata = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "collapsed": S.optional(S.Boolean),
-  "value": S.optional(ExtendedValue),
-}),
-).annotate({ identifier: "PivotGroupValueMetadata" }) as any as S.Schema<PivotGroupValueMetadata>;
+  S.Struct({
+    collapsed: S.optional(S.Boolean),
+    value: S.optional(ExtendedValue),
+  }),
+).annotate({
+  identifier: "PivotGroupValueMetadata",
+}) as any as S.Schema<PivotGroupValueMetadata>;
 
-export type PivotGroupValueMetadataList = ReadonlyArray<PivotGroupValueMetadata>;
-export const PivotGroupValueMetadataList = /*@__PURE__*/ S.Array(PivotGroupValueMetadata) as any as S.Schema<PivotGroupValueMetadataList>;
+export type PivotGroupValueMetadataList =
+  ReadonlyArray<PivotGroupValueMetadata>;
+export const PivotGroupValueMetadataList = /*@__PURE__*/ S.Array(
+  PivotGroupValueMetadata,
+) as any as S.Schema<PivotGroupValueMetadataList>;
 
-export type PivotGroupSortOrderEnum = "SORT_ORDER_UNSPECIFIED" | "ASCENDING" | "DESCENDING";
+export type PivotGroupSortOrderEnum =
+  | "SORT_ORDER_UNSPECIFIED"
+  | "ASCENDING"
+  | "DESCENDING";
 export const PivotGroupSortOrderEnum = /*@__PURE__*/ S.String;
 
 /** Information about which values in a pivot group should be used for sorting. */
@@ -1422,11 +1867,13 @@ export interface PivotGroupSortValueBucket {
   buckets?: ExtendedValueList;
 }
 export const PivotGroupSortValueBucket = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "valuesIndex": S.optional(S.Number),
-  "buckets": S.optional(ExtendedValueList),
-}),
-).annotate({ identifier: "PivotGroupSortValueBucket" }) as any as S.Schema<PivotGroupSortValueBucket>;
+  S.Struct({
+    valuesIndex: S.optional(S.Number),
+    buckets: S.optional(ExtendedValueList),
+  }),
+).annotate({
+  identifier: "PivotGroupSortValueBucket",
+}) as any as S.Schema<PivotGroupSortValueBucket>;
 
 /** A single grouping (either row or column) in a pivot table. */
 export interface PivotGroup {
@@ -1452,22 +1899,24 @@ export interface PivotGroup {
   valueBucket?: PivotGroupSortValueBucket;
 }
 export const PivotGroup = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dataSourceColumnReference": S.optional(DataSourceColumnReference),
-  "sourceColumnOffset": S.optional(S.Number),
-  "showTotals": S.optional(S.Boolean),
-  "groupRule": S.optional(PivotGroupRule),
-  "groupLimit": S.optional(PivotGroupLimit),
-  "repeatHeadings": S.optional(S.Boolean),
-  "valueMetadata": S.optional(PivotGroupValueMetadataList),
-  "label": S.optional(S.String),
-  "sortOrder": S.optional(PivotGroupSortOrderEnum),
-  "valueBucket": S.optional(PivotGroupSortValueBucket),
-}),
+  S.Struct({
+    dataSourceColumnReference: S.optional(DataSourceColumnReference),
+    sourceColumnOffset: S.optional(S.Number),
+    showTotals: S.optional(S.Boolean),
+    groupRule: S.optional(PivotGroupRule),
+    groupLimit: S.optional(PivotGroupLimit),
+    repeatHeadings: S.optional(S.Boolean),
+    valueMetadata: S.optional(PivotGroupValueMetadataList),
+    label: S.optional(S.String),
+    sortOrder: S.optional(PivotGroupSortOrderEnum),
+    valueBucket: S.optional(PivotGroupSortValueBucket),
+  }),
 ).annotate({ identifier: "PivotGroup" }) as any as S.Schema<PivotGroup>;
 
 export type PivotGroupList = ReadonlyArray<PivotGroup>;
-export const PivotGroupList = /*@__PURE__*/ S.Array(PivotGroup) as any as S.Schema<PivotGroupList>;
+export const PivotGroupList = /*@__PURE__*/ S.Array(
+  PivotGroup,
+) as any as S.Schema<PivotGroupList>;
 
 /** Criteria for showing/hiding rows in a pivot table. */
 export interface PivotFilterCriteria {
@@ -1479,12 +1928,14 @@ export interface PivotFilterCriteria {
   visibleByDefault?: boolean;
 }
 export const PivotFilterCriteria = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "visibleValues": S.optional(StringList),
-  "condition": S.optional(BooleanCondition),
-  "visibleByDefault": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "PivotFilterCriteria" }) as any as S.Schema<PivotFilterCriteria>;
+  S.Struct({
+    visibleValues: S.optional(StringList),
+    condition: S.optional(BooleanCondition),
+    visibleByDefault: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "PivotFilterCriteria",
+}) as any as S.Schema<PivotFilterCriteria>;
 
 /** The pivot table filter criteria associated with a specific source column offset. */
 export interface PivotFilterSpec {
@@ -1496,20 +1947,44 @@ export interface PivotFilterSpec {
   columnOffsetIndex?: number;
 }
 export const PivotFilterSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filterCriteria": S.optional(PivotFilterCriteria),
-  "dataSourceColumnReference": S.optional(DataSourceColumnReference),
-  "columnOffsetIndex": S.optional(S.Number),
-}),
-).annotate({ identifier: "PivotFilterSpec" }) as any as S.Schema<PivotFilterSpec>;
+  S.Struct({
+    filterCriteria: S.optional(PivotFilterCriteria),
+    dataSourceColumnReference: S.optional(DataSourceColumnReference),
+    columnOffsetIndex: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "PivotFilterSpec",
+}) as any as S.Schema<PivotFilterSpec>;
 
 export type PivotFilterSpecList = ReadonlyArray<PivotFilterSpec>;
-export const PivotFilterSpecList = /*@__PURE__*/ S.Array(PivotFilterSpec) as any as S.Schema<PivotFilterSpecList>;
+export const PivotFilterSpecList = /*@__PURE__*/ S.Array(
+  PivotFilterSpec,
+) as any as S.Schema<PivotFilterSpecList>;
 
-export type PivotValueCalculatedDisplayTypeEnum = "PIVOT_VALUE_CALCULATED_DISPLAY_TYPE_UNSPECIFIED" | "PERCENT_OF_ROW_TOTAL" | "PERCENT_OF_COLUMN_TOTAL" | "PERCENT_OF_GRAND_TOTAL";
+export type PivotValueCalculatedDisplayTypeEnum =
+  | "PIVOT_VALUE_CALCULATED_DISPLAY_TYPE_UNSPECIFIED"
+  | "PERCENT_OF_ROW_TOTAL"
+  | "PERCENT_OF_COLUMN_TOTAL"
+  | "PERCENT_OF_GRAND_TOTAL";
 export const PivotValueCalculatedDisplayTypeEnum = /*@__PURE__*/ S.String;
 
-export type PivotValueSummarizeFunctionEnum = "PIVOT_STANDARD_VALUE_FUNCTION_UNSPECIFIED" | "SUM" | "COUNTA" | "COUNT" | "COUNTUNIQUE" | "AVERAGE" | "MAX" | "MIN" | "MEDIAN" | "PRODUCT" | "STDEV" | "STDEVP" | "VAR" | "VARP" | "CUSTOM" | "NONE";
+export type PivotValueSummarizeFunctionEnum =
+  | "PIVOT_STANDARD_VALUE_FUNCTION_UNSPECIFIED"
+  | "SUM"
+  | "COUNTA"
+  | "COUNT"
+  | "COUNTUNIQUE"
+  | "AVERAGE"
+  | "MAX"
+  | "MIN"
+  | "MEDIAN"
+  | "PRODUCT"
+  | "STDEV"
+  | "STDEVP"
+  | "VAR"
+  | "VARP"
+  | "CUSTOM"
+  | "NONE";
 export const PivotValueSummarizeFunctionEnum = /*@__PURE__*/ S.String;
 
 /** The definition of how a value in a pivot table should be calculated. */
@@ -1528,21 +2003,28 @@ export interface PivotValue {
   name?: string;
 }
 export const PivotValue = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sourceColumnOffset": S.optional(S.Number),
-  "calculatedDisplayType": S.optional(PivotValueCalculatedDisplayTypeEnum),
-  "formula": S.optional(S.String),
-  "dataSourceColumnReference": S.optional(DataSourceColumnReference),
-  "summarizeFunction": S.optional(PivotValueSummarizeFunctionEnum),
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    sourceColumnOffset: S.optional(S.Number),
+    calculatedDisplayType: S.optional(PivotValueCalculatedDisplayTypeEnum),
+    formula: S.optional(S.String),
+    dataSourceColumnReference: S.optional(DataSourceColumnReference),
+    summarizeFunction: S.optional(PivotValueSummarizeFunctionEnum),
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "PivotValue" }) as any as S.Schema<PivotValue>;
 
 export type PivotValueList = ReadonlyArray<PivotValue>;
-export const PivotValueList = /*@__PURE__*/ S.Array(PivotValue) as any as S.Schema<PivotValueList>;
+export const PivotValueList = /*@__PURE__*/ S.Array(
+  PivotValue,
+) as any as S.Schema<PivotValueList>;
 
-export type PivotFilterCriteriaMap = { [key: string]: PivotFilterCriteria | undefined };
-export const PivotFilterCriteriaMap = /*@__PURE__*/ S.Record(S.String, PivotFilterCriteria) as any as S.Schema<PivotFilterCriteriaMap>;
+export type PivotFilterCriteriaMap = {
+  [key: string]: PivotFilterCriteria | undefined;
+};
+export const PivotFilterCriteriaMap = /*@__PURE__*/ S.Record(
+  S.String,
+  PivotFilterCriteria,
+) as any as S.Schema<PivotFilterCriteriaMap>;
 
 /** A pivot table. */
 export interface PivotTable {
@@ -1566,17 +2048,17 @@ export interface PivotTable {
   dataSourceId?: string;
 }
 export const PivotTable = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "source": S.optional(GridRange),
-  "valueLayout": S.optional(PivotTableValueLayoutEnum),
-  "dataExecutionStatus": S.optional(DataExecutionStatus),
-  "rows": S.optional(PivotGroupList),
-  "filterSpecs": S.optional(PivotFilterSpecList),
-  "values": S.optional(PivotValueList),
-  "columns": S.optional(PivotGroupList),
-  "criteria": S.optional(PivotFilterCriteriaMap),
-  "dataSourceId": S.optional(S.String),
-}),
+  S.Struct({
+    source: S.optional(GridRange),
+    valueLayout: S.optional(PivotTableValueLayoutEnum),
+    dataExecutionStatus: S.optional(DataExecutionStatus),
+    rows: S.optional(PivotGroupList),
+    filterSpecs: S.optional(PivotFilterSpecList),
+    values: S.optional(PivotValueList),
+    columns: S.optional(PivotGroupList),
+    criteria: S.optional(PivotFilterCriteriaMap),
+    dataSourceId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "PivotTable" }) as any as S.Schema<PivotTable>;
 
 /** A data validation rule. */
@@ -1591,13 +2073,15 @@ export interface DataValidationRule {
   condition?: BooleanCondition;
 }
 export const DataValidationRule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "inputMessage": S.optional(S.String),
-  "showCustomUi": S.optional(S.Boolean),
-  "strict": S.optional(S.Boolean),
-  "condition": S.optional(BooleanCondition),
-}),
-).annotate({ identifier: "DataValidationRule" }) as any as S.Schema<DataValidationRule>;
+  S.Struct({
+    inputMessage: S.optional(S.String),
+    showCustomUi: S.optional(S.Boolean),
+    strict: S.optional(S.Boolean),
+    condition: S.optional(BooleanCondition),
+  }),
+).annotate({
+  identifier: "DataValidationRule",
+}) as any as S.Schema<DataValidationRule>;
 
 /** A run of a text format. The format of this run continues until the start index of the next run. When updating, all fields must be set. */
 export interface TextFormatRun {
@@ -1607,16 +2091,22 @@ export interface TextFormatRun {
   format?: TextFormat;
 }
 export const TextFormatRun = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "startIndex": S.optional(S.Number),
-  "format": S.optional(TextFormat),
-}),
+  S.Struct({
+    startIndex: S.optional(S.Number),
+    format: S.optional(TextFormat),
+  }),
 ).annotate({ identifier: "TextFormatRun" }) as any as S.Schema<TextFormatRun>;
 
 export type TextFormatRunList = ReadonlyArray<TextFormatRun>;
-export const TextFormatRunList = /*@__PURE__*/ S.Array(TextFormatRun) as any as S.Schema<TextFormatRunList>;
+export const TextFormatRunList = /*@__PURE__*/ S.Array(
+  TextFormatRun,
+) as any as S.Schema<TextFormatRunList>;
 
-export type PersonPropertiesDisplayFormatEnum = "DISPLAY_FORMAT_UNSPECIFIED" | "DEFAULT" | "LAST_NAME_COMMA_FIRST_NAME" | "EMAIL";
+export type PersonPropertiesDisplayFormatEnum =
+  | "DISPLAY_FORMAT_UNSPECIFIED"
+  | "DEFAULT"
+  | "LAST_NAME_COMMA_FIRST_NAME"
+  | "EMAIL";
 export const PersonPropertiesDisplayFormatEnum = /*@__PURE__*/ S.String;
 
 /** Properties specific to a linked person. */
@@ -1627,11 +2117,13 @@ export interface PersonProperties {
   displayFormat?: PersonPropertiesDisplayFormatEnum;
 }
 export const PersonProperties = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "email": S.optional(S.String),
-  "displayFormat": S.optional(PersonPropertiesDisplayFormatEnum),
-}),
-).annotate({ identifier: "PersonProperties" }) as any as S.Schema<PersonProperties>;
+  S.Struct({
+    email: S.optional(S.String),
+    displayFormat: S.optional(PersonPropertiesDisplayFormatEnum),
+  }),
+).annotate({
+  identifier: "PersonProperties",
+}) as any as S.Schema<PersonProperties>;
 
 /** Properties of a link to a Google resource (such as a file in Drive, a YouTube video, a Maps address, or a Calendar event). Only Drive files can be written as chips. All other rich link types are read only. URIs cannot exceed 2000 bytes when writing. NOTE: Writing Drive file chips requires at least one of the `drive.file`, `drive.readonly`, or `drive` OAuth scopes. */
 export interface RichLinkProperties {
@@ -1641,11 +2133,13 @@ export interface RichLinkProperties {
   mimeType?: string;
 }
 export const RichLinkProperties = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "uri": S.optional(S.String),
-  "mimeType": S.optional(S.String),
-}),
-).annotate({ identifier: "RichLinkProperties" }) as any as S.Schema<RichLinkProperties>;
+  S.Struct({
+    uri: S.optional(S.String),
+    mimeType: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RichLinkProperties",
+}) as any as S.Schema<RichLinkProperties>;
 
 /** The Smart Chip. */
 export interface Chip {
@@ -1655,10 +2149,10 @@ export interface Chip {
   richLinkProperties?: RichLinkProperties;
 }
 export const Chip = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "personProperties": S.optional(PersonProperties),
-  "richLinkProperties": S.optional(RichLinkProperties),
-}),
+  S.Struct({
+    personProperties: S.optional(PersonProperties),
+    richLinkProperties: S.optional(RichLinkProperties),
+  }),
 ).annotate({ identifier: "Chip" }) as any as S.Schema<Chip>;
 
 /** The run of a chip. The chip continues until the start index of the next run. */
@@ -1669,14 +2163,16 @@ export interface ChipRun {
   chip?: Chip;
 }
 export const ChipRun = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "startIndex": S.optional(S.Number),
-  "chip": S.optional(Chip),
-}),
+  S.Struct({
+    startIndex: S.optional(S.Number),
+    chip: S.optional(Chip),
+  }),
 ).annotate({ identifier: "ChipRun" }) as any as S.Schema<ChipRun>;
 
 export type ChipRunList = ReadonlyArray<ChipRun>;
-export const ChipRunList = /*@__PURE__*/ S.Array(ChipRun) as any as S.Schema<ChipRunList>;
+export const ChipRunList = /*@__PURE__*/ S.Array(
+  ChipRun,
+) as any as S.Schema<ChipRunList>;
 
 /** A data source formula. */
 export interface DataSourceFormula {
@@ -1686,17 +2182,25 @@ export interface DataSourceFormula {
   dataSourceId?: string;
 }
 export const DataSourceFormula = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dataExecutionStatus": S.optional(DataExecutionStatus),
-  "dataSourceId": S.optional(S.String),
-}),
-).annotate({ identifier: "DataSourceFormula" }) as any as S.Schema<DataSourceFormula>;
+  S.Struct({
+    dataExecutionStatus: S.optional(DataExecutionStatus),
+    dataSourceId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DataSourceFormula",
+}) as any as S.Schema<DataSourceFormula>;
 
-export type DataSourceTableColumnSelectionTypeEnum = "DATA_SOURCE_TABLE_COLUMN_SELECTION_TYPE_UNSPECIFIED" | "SELECTED" | "SYNC_ALL";
+export type DataSourceTableColumnSelectionTypeEnum =
+  | "DATA_SOURCE_TABLE_COLUMN_SELECTION_TYPE_UNSPECIFIED"
+  | "SELECTED"
+  | "SYNC_ALL";
 export const DataSourceTableColumnSelectionTypeEnum = /*@__PURE__*/ S.String;
 
-export type DataSourceColumnReferenceList = ReadonlyArray<DataSourceColumnReference>;
-export const DataSourceColumnReferenceList = /*@__PURE__*/ S.Array(DataSourceColumnReference) as any as S.Schema<DataSourceColumnReferenceList>;
+export type DataSourceColumnReferenceList =
+  ReadonlyArray<DataSourceColumnReference>;
+export const DataSourceColumnReferenceList = /*@__PURE__*/ S.Array(
+  DataSourceColumnReference,
+) as any as S.Schema<DataSourceColumnReferenceList>;
 
 /** A data source table, which allows the user to import a static table of data from the DataSource into Sheets. This is also known as "Extract" in the Sheets editor. */
 export interface DataSourceTable {
@@ -1716,16 +2220,18 @@ export interface DataSourceTable {
   dataExecutionStatus?: DataExecutionStatus;
 }
 export const DataSourceTable = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "columnSelectionType": S.optional(DataSourceTableColumnSelectionTypeEnum),
-  "columns": S.optional(DataSourceColumnReferenceList),
-  "sortSpecs": S.optional(SortSpecList),
-  "filterSpecs": S.optional(FilterSpecList),
-  "dataSourceId": S.optional(S.String),
-  "rowLimit": S.optional(S.Number),
-  "dataExecutionStatus": S.optional(DataExecutionStatus),
-}),
-).annotate({ identifier: "DataSourceTable" }) as any as S.Schema<DataSourceTable>;
+  S.Struct({
+    columnSelectionType: S.optional(DataSourceTableColumnSelectionTypeEnum),
+    columns: S.optional(DataSourceColumnReferenceList),
+    sortSpecs: S.optional(SortSpecList),
+    filterSpecs: S.optional(FilterSpecList),
+    dataSourceId: S.optional(S.String),
+    rowLimit: S.optional(S.Number),
+    dataExecutionStatus: S.optional(DataExecutionStatus),
+  }),
+).annotate({
+  identifier: "DataSourceTable",
+}) as any as S.Schema<DataSourceTable>;
 
 /** Data about a specific cell. */
 export interface CellData {
@@ -1757,25 +2263,27 @@ export interface CellData {
   dataSourceTable?: DataSourceTable;
 }
 export const CellData = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "hyperlink": S.optional(S.String),
-  "pivotTable": S.optional(PivotTable),
-  "userEnteredValue": S.optional(ExtendedValue),
-  "dataValidation": S.optional(DataValidationRule),
-  "effectiveFormat": S.optional(CellFormat),
-  "textFormatRuns": S.optional(TextFormatRunList),
-  "note": S.optional(S.String),
-  "chipRuns": S.optional(ChipRunList),
-  "dataSourceFormula": S.optional(DataSourceFormula),
-  "userEnteredFormat": S.optional(CellFormat),
-  "effectiveValue": S.optional(ExtendedValue),
-  "formattedValue": S.optional(S.String),
-  "dataSourceTable": S.optional(DataSourceTable),
-}),
+  S.Struct({
+    hyperlink: S.optional(S.String),
+    pivotTable: S.optional(PivotTable),
+    userEnteredValue: S.optional(ExtendedValue),
+    dataValidation: S.optional(DataValidationRule),
+    effectiveFormat: S.optional(CellFormat),
+    textFormatRuns: S.optional(TextFormatRunList),
+    note: S.optional(S.String),
+    chipRuns: S.optional(ChipRunList),
+    dataSourceFormula: S.optional(DataSourceFormula),
+    userEnteredFormat: S.optional(CellFormat),
+    effectiveValue: S.optional(ExtendedValue),
+    formattedValue: S.optional(S.String),
+    dataSourceTable: S.optional(DataSourceTable),
+  }),
 ).annotate({ identifier: "CellData" }) as any as S.Schema<CellData>;
 
 export type CellDataList = ReadonlyArray<CellData>;
-export const CellDataList = /*@__PURE__*/ S.Array(CellData) as any as S.Schema<CellDataList>;
+export const CellDataList = /*@__PURE__*/ S.Array(
+  CellData,
+) as any as S.Schema<CellDataList>;
 
 /** Data about each cell in a row. */
 export interface RowData {
@@ -1783,13 +2291,15 @@ export interface RowData {
   values?: CellDataList;
 }
 export const RowData = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "values": S.optional(CellDataList),
-}),
+  S.Struct({
+    values: S.optional(CellDataList),
+  }),
 ).annotate({ identifier: "RowData" }) as any as S.Schema<RowData>;
 
 export type RowDataList = ReadonlyArray<RowData>;
-export const RowDataList = /*@__PURE__*/ S.Array(RowData) as any as S.Schema<RowDataList>;
+export const RowDataList = /*@__PURE__*/ S.Array(
+  RowData,
+) as any as S.Schema<RowDataList>;
 
 /** Adds new cells after the last row with data in a sheet, inserting new rows into the sheet if necessary. */
 export interface AppendCellsRequest {
@@ -1803,13 +2313,15 @@ export interface AppendCellsRequest {
   fields?: string;
 }
 export const AppendCellsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "tableId": S.optional(S.String),
-  "sheetId": S.optional(S.Number),
-  "rows": S.optional(RowDataList),
-  "fields": S.optional(S.String),
-}),
-).annotate({ identifier: "AppendCellsRequest" }) as any as S.Schema<AppendCellsRequest>;
+  S.Struct({
+    tableId: S.optional(S.String),
+    sheetId: S.optional(S.Number),
+    rows: S.optional(RowDataList),
+    fields: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AppendCellsRequest",
+}) as any as S.Schema<AppendCellsRequest>;
 
 /** Removes the named range with the given ID from the spreadsheet. */
 export interface DeleteNamedRangeRequest {
@@ -1817,10 +2329,12 @@ export interface DeleteNamedRangeRequest {
   namedRangeId?: string;
 }
 export const DeleteNamedRangeRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "namedRangeId": S.optional(S.String),
-}),
-).annotate({ identifier: "DeleteNamedRangeRequest" }) as any as S.Schema<DeleteNamedRangeRequest>;
+  S.Struct({
+    namedRangeId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DeleteNamedRangeRequest",
+}) as any as S.Schema<DeleteNamedRangeRequest>;
 
 /** Sets a data validation rule to every cell in the range. To clear validation in a range, call this with no rule specified. */
 export interface SetDataValidationRequest {
@@ -1832,14 +2346,19 @@ export interface SetDataValidationRequest {
   rule?: DataValidationRule;
 }
 export const SetDataValidationRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "range": S.optional(GridRange),
-  "filteredRowsIncluded": S.optional(S.Boolean),
-  "rule": S.optional(DataValidationRule),
-}),
-).annotate({ identifier: "SetDataValidationRequest" }) as any as S.Schema<SetDataValidationRequest>;
+  S.Struct({
+    range: S.optional(GridRange),
+    filteredRowsIncluded: S.optional(S.Boolean),
+    rule: S.optional(DataValidationRule),
+  }),
+).annotate({
+  identifier: "SetDataValidationRequest",
+}) as any as S.Schema<SetDataValidationRequest>;
 
-export type AppendDimensionRequestDimensionEnum = "DIMENSION_UNSPECIFIED" | "ROWS" | "COLUMNS";
+export type AppendDimensionRequestDimensionEnum =
+  | "DIMENSION_UNSPECIFIED"
+  | "ROWS"
+  | "COLUMNS";
 export const AppendDimensionRequestDimensionEnum = /*@__PURE__*/ S.String;
 
 /** Appends rows or columns to the end of a sheet. */
@@ -1852,12 +2371,14 @@ export interface AppendDimensionRequest {
   length?: number;
 }
 export const AppendDimensionRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sheetId": S.optional(S.Number),
-  "dimension": S.optional(AppendDimensionRequestDimensionEnum),
-  "length": S.optional(S.Number),
-}),
-).annotate({ identifier: "AppendDimensionRequest" }) as any as S.Schema<AppendDimensionRequest>;
+  S.Struct({
+    sheetId: S.optional(S.Number),
+    dimension: S.optional(AppendDimensionRequestDimensionEnum),
+    length: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "AppendDimensionRequest",
+}) as any as S.Schema<AppendDimensionRequest>;
 
 /** Clears the basic filter, if any exists on the sheet. */
 export interface ClearBasicFilterRequest {
@@ -1865,10 +2386,12 @@ export interface ClearBasicFilterRequest {
   sheetId?: number;
 }
 export const ClearBasicFilterRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sheetId": S.optional(S.Number),
-}),
-).annotate({ identifier: "ClearBasicFilterRequest" }) as any as S.Schema<ClearBasicFilterRequest>;
+  S.Struct({
+    sheetId: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ClearBasicFilterRequest",
+}) as any as S.Schema<ClearBasicFilterRequest>;
 
 /** Inserts rows or columns in a sheet at a particular index. */
 export interface InsertDimensionRequest {
@@ -1878,11 +2401,13 @@ export interface InsertDimensionRequest {
   range?: DimensionRange;
 }
 export const InsertDimensionRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "inheritFromBefore": S.optional(S.Boolean),
-  "range": S.optional(DimensionRange),
-}),
-).annotate({ identifier: "InsertDimensionRequest" }) as any as S.Schema<InsertDimensionRequest>;
+  S.Struct({
+    inheritFromBefore: S.optional(S.Boolean),
+    range: S.optional(DimensionRange),
+  }),
+).annotate({
+  identifier: "InsertDimensionRequest",
+}) as any as S.Schema<InsertDimensionRequest>;
 
 /** Properties of a grid. */
 export interface GridProperties {
@@ -1902,18 +2427,22 @@ export interface GridProperties {
   columnGroupControlAfter?: boolean;
 }
 export const GridProperties = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "rowCount": S.optional(S.Number),
-  "frozenRowCount": S.optional(S.Number),
-  "columnCount": S.optional(S.Number),
-  "rowGroupControlAfter": S.optional(S.Boolean),
-  "frozenColumnCount": S.optional(S.Number),
-  "hideGridlines": S.optional(S.Boolean),
-  "columnGroupControlAfter": S.optional(S.Boolean),
-}),
+  S.Struct({
+    rowCount: S.optional(S.Number),
+    frozenRowCount: S.optional(S.Number),
+    columnCount: S.optional(S.Number),
+    rowGroupControlAfter: S.optional(S.Boolean),
+    frozenColumnCount: S.optional(S.Number),
+    hideGridlines: S.optional(S.Boolean),
+    columnGroupControlAfter: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "GridProperties" }) as any as S.Schema<GridProperties>;
 
-export type SheetPropertiesSheetTypeEnum = "SHEET_TYPE_UNSPECIFIED" | "GRID" | "OBJECT" | "DATA_SOURCE";
+export type SheetPropertiesSheetTypeEnum =
+  | "SHEET_TYPE_UNSPECIFIED"
+  | "GRID"
+  | "OBJECT"
+  | "DATA_SOURCE";
 export const SheetPropertiesSheetTypeEnum = /*@__PURE__*/ S.String;
 
 /** A column in a data source. */
@@ -1924,14 +2453,18 @@ export interface DataSourceColumn {
   formula?: string;
 }
 export const DataSourceColumn = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "reference": S.optional(DataSourceColumnReference),
-  "formula": S.optional(S.String),
-}),
-).annotate({ identifier: "DataSourceColumn" }) as any as S.Schema<DataSourceColumn>;
+  S.Struct({
+    reference: S.optional(DataSourceColumnReference),
+    formula: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DataSourceColumn",
+}) as any as S.Schema<DataSourceColumn>;
 
 export type DataSourceColumnList = ReadonlyArray<DataSourceColumn>;
-export const DataSourceColumnList = /*@__PURE__*/ S.Array(DataSourceColumn) as any as S.Schema<DataSourceColumnList>;
+export const DataSourceColumnList = /*@__PURE__*/ S.Array(
+  DataSourceColumn,
+) as any as S.Schema<DataSourceColumnList>;
 
 /** Additional properties of a DATA_SOURCE sheet. */
 export interface DataSourceSheetProperties {
@@ -1943,12 +2476,14 @@ export interface DataSourceSheetProperties {
   columns?: DataSourceColumnList;
 }
 export const DataSourceSheetProperties = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dataExecutionStatus": S.optional(DataExecutionStatus),
-  "dataSourceId": S.optional(S.String),
-  "columns": S.optional(DataSourceColumnList),
-}),
-).annotate({ identifier: "DataSourceSheetProperties" }) as any as S.Schema<DataSourceSheetProperties>;
+  S.Struct({
+    dataExecutionStatus: S.optional(DataExecutionStatus),
+    dataSourceId: S.optional(S.String),
+    columns: S.optional(DataSourceColumnList),
+  }),
+).annotate({
+  identifier: "DataSourceSheetProperties",
+}) as any as S.Schema<DataSourceSheetProperties>;
 
 /** Properties of a sheet. */
 export interface SheetProperties {
@@ -1974,19 +2509,21 @@ export interface SheetProperties {
   index?: number;
 }
 export const SheetProperties = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sheetId": S.optional(S.Number),
-  "tabColor": S.optional(Color),
-  "tabColorStyle": S.optional(ColorStyle),
-  "hidden": S.optional(S.Boolean),
-  "title": S.optional(S.String),
-  "gridProperties": S.optional(GridProperties),
-  "sheetType": S.optional(SheetPropertiesSheetTypeEnum),
-  "dataSourceSheetProperties": S.optional(DataSourceSheetProperties),
-  "rightToLeft": S.optional(S.Boolean),
-  "index": S.optional(S.Number),
-}),
-).annotate({ identifier: "SheetProperties" }) as any as S.Schema<SheetProperties>;
+  S.Struct({
+    sheetId: S.optional(S.Number),
+    tabColor: S.optional(Color),
+    tabColorStyle: S.optional(ColorStyle),
+    hidden: S.optional(S.Boolean),
+    title: S.optional(S.String),
+    gridProperties: S.optional(GridProperties),
+    sheetType: S.optional(SheetPropertiesSheetTypeEnum),
+    dataSourceSheetProperties: S.optional(DataSourceSheetProperties),
+    rightToLeft: S.optional(S.Boolean),
+    index: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "SheetProperties",
+}) as any as S.Schema<SheetProperties>;
 
 /** Adds a new sheet. When a sheet is added at a given index, all subsequent sheets' indexes are incremented. To add an object sheet, use AddChartRequest instead and specify EmbeddedObjectPosition.sheetId or EmbeddedObjectPosition.newSheet. */
 export interface AddSheetRequest {
@@ -1994,10 +2531,12 @@ export interface AddSheetRequest {
   properties?: SheetProperties;
 }
 export const AddSheetRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "properties": S.optional(SheetProperties),
-}),
-).annotate({ identifier: "AddSheetRequest" }) as any as S.Schema<AddSheetRequest>;
+  S.Struct({
+    properties: S.optional(SheetProperties),
+  }),
+).annotate({
+  identifier: "AddSheetRequest",
+}) as any as S.Schema<AddSheetRequest>;
 
 /** Creates a group over the specified range. If the requested range is a superset of the range of an existing group G, then the depth of G is incremented and this new group G' has the depth of that group. For example, a group [C:D, depth 1] + [B:E] results in groups [B:E, depth 1] and [C:D, depth 2]. If the requested range is a subset of the range of an existing group G, then the depth of the new group G' becomes one greater than the depth of G. For example, a group [B:E, depth 1] + [C:D] results in groups [B:E, depth 1] and [C:D, depth 2]. If the requested range starts before and ends within, or starts within and ends after, the range of an existing group G, then the range of the existing group G becomes the union of the ranges, and the new group G' has depth one greater than the depth of G and range as the intersection of the ranges. For example, a group [B:D, depth 1] + [C:E] results in groups [B:E, depth 1] and [C:D, depth 2]. */
 export interface AddDimensionGroupRequest {
@@ -2005,10 +2544,12 @@ export interface AddDimensionGroupRequest {
   range?: DimensionRange;
 }
 export const AddDimensionGroupRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "range": S.optional(DimensionRange),
-}),
-).annotate({ identifier: "AddDimensionGroupRequest" }) as any as S.Schema<AddDimensionGroupRequest>;
+  S.Struct({
+    range: S.optional(DimensionRange),
+  }),
+).annotate({
+  identifier: "AddDimensionGroupRequest",
+}) as any as S.Schema<AddDimensionGroupRequest>;
 
 /** Cancels one or multiple refreshes of data source objects in the spreadsheet by the specified references. The request requires an additional `bigquery.readonly` OAuth scope if you are cancelling a refresh on a BigQuery data source. */
 export interface CancelDataSourceRefreshRequest {
@@ -2020,12 +2561,14 @@ export interface CancelDataSourceRefreshRequest {
   isAll?: boolean;
 }
 export const CancelDataSourceRefreshRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dataSourceId": S.optional(S.String),
-  "references": S.optional(DataSourceObjectReferences),
-  "isAll": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "CancelDataSourceRefreshRequest" }) as any as S.Schema<CancelDataSourceRefreshRequest>;
+  S.Struct({
+    dataSourceId: S.optional(S.String),
+    references: S.optional(DataSourceObjectReferences),
+    isAll: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "CancelDataSourceRefreshRequest",
+}) as any as S.Schema<CancelDataSourceRefreshRequest>;
 
 /** Updates properties of the sheet with the specified sheetId. */
 export interface UpdateSheetPropertiesRequest {
@@ -2035,13 +2578,22 @@ export interface UpdateSheetPropertiesRequest {
   fields?: string;
 }
 export const UpdateSheetPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "properties": S.optional(SheetProperties),
-  "fields": S.optional(S.String),
-}),
-).annotate({ identifier: "UpdateSheetPropertiesRequest" }) as any as S.Schema<UpdateSheetPropertiesRequest>;
+  S.Struct({
+    properties: S.optional(SheetProperties),
+    fields: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateSheetPropertiesRequest",
+}) as any as S.Schema<UpdateSheetPropertiesRequest>;
 
-export type TextToColumnsRequestDelimiterTypeEnum = "DELIMITER_TYPE_UNSPECIFIED" | "COMMA" | "SEMICOLON" | "PERIOD" | "SPACE" | "CUSTOM" | "AUTODETECT";
+export type TextToColumnsRequestDelimiterTypeEnum =
+  | "DELIMITER_TYPE_UNSPECIFIED"
+  | "COMMA"
+  | "SEMICOLON"
+  | "PERIOD"
+  | "SPACE"
+  | "CUSTOM"
+  | "AUTODETECT";
 export const TextToColumnsRequestDelimiterTypeEnum = /*@__PURE__*/ S.String;
 
 /** Splits a column of text into multiple columns, based on a delimiter in each cell. */
@@ -2054,14 +2606,32 @@ export interface TextToColumnsRequest {
   delimiter?: string;
 }
 export const TextToColumnsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "source": S.optional(GridRange),
-  "delimiterType": S.optional(TextToColumnsRequestDelimiterTypeEnum),
-  "delimiter": S.optional(S.String),
-}),
-).annotate({ identifier: "TextToColumnsRequest" }) as any as S.Schema<TextToColumnsRequest>;
+  S.Struct({
+    source: S.optional(GridRange),
+    delimiterType: S.optional(TextToColumnsRequestDelimiterTypeEnum),
+    delimiter: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "TextToColumnsRequest",
+}) as any as S.Schema<TextToColumnsRequest>;
 
-export type ChartDateTimeRuleTypeEnum = "CHART_DATE_TIME_RULE_TYPE_UNSPECIFIED" | "SECOND" | "MINUTE" | "HOUR" | "HOUR_MINUTE" | "HOUR_MINUTE_AMPM" | "DAY_OF_WEEK" | "DAY_OF_YEAR" | "DAY_OF_MONTH" | "DAY_MONTH" | "MONTH" | "QUARTER" | "YEAR" | "YEAR_MONTH" | "YEAR_QUARTER" | "YEAR_MONTH_DAY";
+export type ChartDateTimeRuleTypeEnum =
+  | "CHART_DATE_TIME_RULE_TYPE_UNSPECIFIED"
+  | "SECOND"
+  | "MINUTE"
+  | "HOUR"
+  | "HOUR_MINUTE"
+  | "HOUR_MINUTE_AMPM"
+  | "DAY_OF_WEEK"
+  | "DAY_OF_YEAR"
+  | "DAY_OF_MONTH"
+  | "DAY_MONTH"
+  | "MONTH"
+  | "QUARTER"
+  | "YEAR"
+  | "YEAR_MONTH"
+  | "YEAR_QUARTER"
+  | "YEAR_MONTH_DAY";
 export const ChartDateTimeRuleTypeEnum = /*@__PURE__*/ S.String;
 
 /** Allows you to organize the date-time values in a source data column into buckets based on selected parts of their date or time values. */
@@ -2070,10 +2640,12 @@ export interface ChartDateTimeRule {
   type?: ChartDateTimeRuleTypeEnum;
 }
 export const ChartDateTimeRule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(ChartDateTimeRuleTypeEnum),
-}),
-).annotate({ identifier: "ChartDateTimeRule" }) as any as S.Schema<ChartDateTimeRule>;
+  S.Struct({
+    type: S.optional(ChartDateTimeRuleTypeEnum),
+  }),
+).annotate({
+  identifier: "ChartDateTimeRule",
+}) as any as S.Schema<ChartDateTimeRule>;
 
 /** Allows you to organize numeric values in a source data column into buckets of constant size. */
 export interface ChartHistogramRule {
@@ -2085,12 +2657,14 @@ export interface ChartHistogramRule {
   intervalSize?: number;
 }
 export const ChartHistogramRule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "maxValue": S.optional(S.Number),
-  "minValue": S.optional(S.Number),
-  "intervalSize": S.optional(S.Number),
-}),
-).annotate({ identifier: "ChartHistogramRule" }) as any as S.Schema<ChartHistogramRule>;
+  S.Struct({
+    maxValue: S.optional(S.Number),
+    minValue: S.optional(S.Number),
+    intervalSize: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ChartHistogramRule",
+}) as any as S.Schema<ChartHistogramRule>;
 
 /** An optional setting on the ChartData of the domain of a data source chart that defines buckets for the values in the domain rather than breaking out each individual value. For example, when plotting a data source chart, you can specify a histogram rule on the domain (it should only contain numeric values), grouping its values into buckets. Any values of a chart series that fall into the same bucket are aggregated based on the aggregate_type. */
 export interface ChartGroupRule {
@@ -2100,14 +2674,16 @@ export interface ChartGroupRule {
   histogramRule?: ChartHistogramRule;
 }
 export const ChartGroupRule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dateTimeRule": S.optional(ChartDateTimeRule),
-  "histogramRule": S.optional(ChartHistogramRule),
-}),
+  S.Struct({
+    dateTimeRule: S.optional(ChartDateTimeRule),
+    histogramRule: S.optional(ChartHistogramRule),
+  }),
 ).annotate({ identifier: "ChartGroupRule" }) as any as S.Schema<ChartGroupRule>;
 
 export type GridRangeList = ReadonlyArray<GridRange>;
-export const GridRangeList = /*@__PURE__*/ S.Array(GridRange) as any as S.Schema<GridRangeList>;
+export const GridRangeList = /*@__PURE__*/ S.Array(
+  GridRange,
+) as any as S.Schema<GridRangeList>;
 
 /** Source ranges for a chart. */
 export interface ChartSourceRange {
@@ -2115,12 +2691,21 @@ export interface ChartSourceRange {
   sources?: GridRangeList;
 }
 export const ChartSourceRange = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sources": S.optional(GridRangeList),
-}),
-).annotate({ identifier: "ChartSourceRange" }) as any as S.Schema<ChartSourceRange>;
+  S.Struct({
+    sources: S.optional(GridRangeList),
+  }),
+).annotate({
+  identifier: "ChartSourceRange",
+}) as any as S.Schema<ChartSourceRange>;
 
-export type ChartDataAggregateTypeEnum = "CHART_AGGREGATE_TYPE_UNSPECIFIED" | "AVERAGE" | "COUNT" | "MAX" | "MEDIAN" | "MIN" | "SUM";
+export type ChartDataAggregateTypeEnum =
+  | "CHART_AGGREGATE_TYPE_UNSPECIFIED"
+  | "AVERAGE"
+  | "COUNT"
+  | "MAX"
+  | "MEDIAN"
+  | "MIN"
+  | "SUM";
 export const ChartDataAggregateTypeEnum = /*@__PURE__*/ S.String;
 
 /** The data included in a domain or series. */
@@ -2135,15 +2720,19 @@ export interface ChartData {
   aggregateType?: ChartDataAggregateTypeEnum;
 }
 export const ChartData = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "groupRule": S.optional(ChartGroupRule),
-  "sourceRange": S.optional(ChartSourceRange),
-  "columnReference": S.optional(DataSourceColumnReference),
-  "aggregateType": S.optional(ChartDataAggregateTypeEnum),
-}),
+  S.Struct({
+    groupRule: S.optional(ChartGroupRule),
+    sourceRange: S.optional(ChartSourceRange),
+    columnReference: S.optional(DataSourceColumnReference),
+    aggregateType: S.optional(ChartDataAggregateTypeEnum),
+  }),
 ).annotate({ identifier: "ChartData" }) as any as S.Schema<ChartData>;
 
-export type OrgChartSpecNodeSizeEnum = "ORG_CHART_LABEL_SIZE_UNSPECIFIED" | "SMALL" | "MEDIUM" | "LARGE";
+export type OrgChartSpecNodeSizeEnum =
+  | "ORG_CHART_LABEL_SIZE_UNSPECIFIED"
+  | "SMALL"
+  | "MEDIUM"
+  | "LARGE";
 export const OrgChartSpecNodeSizeEnum = /*@__PURE__*/ S.String;
 
 /** An org chart. Org charts require a unique set of labels in labels and may optionally include parent_labels and tooltips. parent_labels contain, for each node, the label identifying the parent node. tooltips contain, for each node, an optional tooltip. For example, to describe an OrgChart with Alice as the CEO, Bob as the President (reporting to Alice) and Cathy as VP of Sales (also reporting to Alice), have labels contain "Alice", "Bob", "Cathy", parent_labels contain "", "Alice", "Alice" and tooltips contain "CEO", "President", "VP Sales". */
@@ -2166,19 +2755,26 @@ export interface OrgChartSpec {
   tooltips?: ChartData;
 }
 export const OrgChartSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "labels": S.optional(ChartData),
-  "nodeColorStyle": S.optional(ColorStyle),
-  "selectedNodeColorStyle": S.optional(ColorStyle),
-  "nodeColor": S.optional(Color),
-  "nodeSize": S.optional(OrgChartSpecNodeSizeEnum),
-  "selectedNodeColor": S.optional(Color),
-  "parentLabels": S.optional(ChartData),
-  "tooltips": S.optional(ChartData),
-}),
+  S.Struct({
+    labels: S.optional(ChartData),
+    nodeColorStyle: S.optional(ColorStyle),
+    selectedNodeColorStyle: S.optional(ColorStyle),
+    nodeColor: S.optional(Color),
+    nodeSize: S.optional(OrgChartSpecNodeSizeEnum),
+    selectedNodeColor: S.optional(Color),
+    parentLabels: S.optional(ChartData),
+    tooltips: S.optional(ChartData),
+  }),
 ).annotate({ identifier: "OrgChartSpec" }) as any as S.Schema<OrgChartSpec>;
 
-export type PieChartSpecLegendPositionEnum = "PIE_CHART_LEGEND_POSITION_UNSPECIFIED" | "BOTTOM_LEGEND" | "LEFT_LEGEND" | "RIGHT_LEGEND" | "TOP_LEGEND" | "NO_LEGEND" | "LABELED_LEGEND";
+export type PieChartSpecLegendPositionEnum =
+  | "PIE_CHART_LEGEND_POSITION_UNSPECIFIED"
+  | "BOTTOM_LEGEND"
+  | "LEFT_LEGEND"
+  | "RIGHT_LEGEND"
+  | "TOP_LEGEND"
+  | "NO_LEGEND"
+  | "LABELED_LEGEND";
 export const PieChartSpecLegendPositionEnum = /*@__PURE__*/ S.String;
 
 /** A pie chart. */
@@ -2195,16 +2791,20 @@ export interface PieChartSpec {
   legendPosition?: PieChartSpecLegendPositionEnum;
 }
 export const PieChartSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "threeDimensional": S.optional(S.Boolean),
-  "pieHole": S.optional(S.Number),
-  "series": S.optional(ChartData),
-  "domain": S.optional(ChartData),
-  "legendPosition": S.optional(PieChartSpecLegendPositionEnum),
-}),
+  S.Struct({
+    threeDimensional: S.optional(S.Boolean),
+    pieHole: S.optional(S.Number),
+    series: S.optional(ChartData),
+    domain: S.optional(ChartData),
+    legendPosition: S.optional(PieChartSpecLegendPositionEnum),
+  }),
 ).annotate({ identifier: "PieChartSpec" }) as any as S.Schema<PieChartSpec>;
 
-export type TextPositionHorizontalAlignmentEnum = "HORIZONTAL_ALIGN_UNSPECIFIED" | "LEFT" | "CENTER" | "RIGHT";
+export type TextPositionHorizontalAlignmentEnum =
+  | "HORIZONTAL_ALIGN_UNSPECIFIED"
+  | "LEFT"
+  | "CENTER"
+  | "RIGHT";
 export const TextPositionHorizontalAlignmentEnum = /*@__PURE__*/ S.String;
 
 /** Position settings for text. */
@@ -2213,9 +2813,9 @@ export interface TextPosition {
   horizontalAlignment?: TextPositionHorizontalAlignmentEnum;
 }
 export const TextPosition = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "horizontalAlignment": S.optional(TextPositionHorizontalAlignmentEnum),
-}),
+  S.Struct({
+    horizontalAlignment: S.optional(TextPositionHorizontalAlignmentEnum),
+  }),
 ).annotate({ identifier: "TextPosition" }) as any as S.Schema<TextPosition>;
 
 /** The domain of a waterfall chart. */
@@ -2226,16 +2826,31 @@ export interface WaterfallChartDomain {
   reversed?: boolean;
 }
 export const WaterfallChartDomain = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "data": S.optional(ChartData),
-  "reversed": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "WaterfallChartDomain" }) as any as S.Schema<WaterfallChartDomain>;
+  S.Struct({
+    data: S.optional(ChartData),
+    reversed: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "WaterfallChartDomain",
+}) as any as S.Schema<WaterfallChartDomain>;
 
-export type DataLabelPlacementEnum = "DATA_LABEL_PLACEMENT_UNSPECIFIED" | "CENTER" | "LEFT" | "RIGHT" | "ABOVE" | "BELOW" | "INSIDE_END" | "INSIDE_BASE" | "OUTSIDE_END";
+export type DataLabelPlacementEnum =
+  | "DATA_LABEL_PLACEMENT_UNSPECIFIED"
+  | "CENTER"
+  | "LEFT"
+  | "RIGHT"
+  | "ABOVE"
+  | "BELOW"
+  | "INSIDE_END"
+  | "INSIDE_BASE"
+  | "OUTSIDE_END";
 export const DataLabelPlacementEnum = /*@__PURE__*/ S.String;
 
-export type DataLabelTypeEnum = "DATA_LABEL_TYPE_UNSPECIFIED" | "NONE" | "DATA" | "CUSTOM";
+export type DataLabelTypeEnum =
+  | "DATA_LABEL_TYPE_UNSPECIFIED"
+  | "NONE"
+  | "DATA"
+  | "CUSTOM";
 export const DataLabelTypeEnum = /*@__PURE__*/ S.String;
 
 /** Settings for one set of data labels. Data labels are annotations that appear next to a set of data, such as the points on a line chart, and provide additional information about what the data represents, such as a text representation of the value behind that point on the graph. */
@@ -2250,12 +2865,12 @@ export interface DataLabel {
   type?: DataLabelTypeEnum;
 }
 export const DataLabel = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "placement": S.optional(DataLabelPlacementEnum),
-  "customLabelData": S.optional(ChartData),
-  "textFormat": S.optional(TextFormat),
-  "type": S.optional(DataLabelTypeEnum),
-}),
+  S.Struct({
+    placement: S.optional(DataLabelPlacementEnum),
+    customLabelData: S.optional(ChartData),
+    textFormat: S.optional(TextFormat),
+    type: S.optional(DataLabelTypeEnum),
+  }),
 ).annotate({ identifier: "DataLabel" }) as any as S.Schema<DataLabel>;
 
 /** Styles for a waterfall chart column. */
@@ -2268,12 +2883,14 @@ export interface WaterfallChartColumnStyle {
   label?: string;
 }
 export const WaterfallChartColumnStyle = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "color": S.optional(Color),
-  "colorStyle": S.optional(ColorStyle),
-  "label": S.optional(S.String),
-}),
-).annotate({ identifier: "WaterfallChartColumnStyle" }) as any as S.Schema<WaterfallChartColumnStyle>;
+  S.Struct({
+    color: S.optional(Color),
+    colorStyle: S.optional(ColorStyle),
+    label: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "WaterfallChartColumnStyle",
+}) as any as S.Schema<WaterfallChartColumnStyle>;
 
 /** A custom subtotal column for a waterfall chart series. */
 export interface WaterfallChartCustomSubtotal {
@@ -2285,15 +2902,20 @@ export interface WaterfallChartCustomSubtotal {
   dataIsSubtotal?: boolean;
 }
 export const WaterfallChartCustomSubtotal = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "label": S.optional(S.String),
-  "subtotalIndex": S.optional(S.Number),
-  "dataIsSubtotal": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "WaterfallChartCustomSubtotal" }) as any as S.Schema<WaterfallChartCustomSubtotal>;
+  S.Struct({
+    label: S.optional(S.String),
+    subtotalIndex: S.optional(S.Number),
+    dataIsSubtotal: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "WaterfallChartCustomSubtotal",
+}) as any as S.Schema<WaterfallChartCustomSubtotal>;
 
-export type WaterfallChartCustomSubtotalList = ReadonlyArray<WaterfallChartCustomSubtotal>;
-export const WaterfallChartCustomSubtotalList = /*@__PURE__*/ S.Array(WaterfallChartCustomSubtotal) as any as S.Schema<WaterfallChartCustomSubtotalList>;
+export type WaterfallChartCustomSubtotalList =
+  ReadonlyArray<WaterfallChartCustomSubtotal>;
+export const WaterfallChartCustomSubtotalList = /*@__PURE__*/ S.Array(
+  WaterfallChartCustomSubtotal,
+) as any as S.Schema<WaterfallChartCustomSubtotalList>;
 
 /** A single series of data for a waterfall chart. */
 export interface WaterfallChartSeries {
@@ -2313,21 +2935,34 @@ export interface WaterfallChartSeries {
   negativeColumnsStyle?: WaterfallChartColumnStyle;
 }
 export const WaterfallChartSeries = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "positiveColumnsStyle": S.optional(WaterfallChartColumnStyle),
-  "subtotalColumnsStyle": S.optional(WaterfallChartColumnStyle),
-  "customSubtotals": S.optional(WaterfallChartCustomSubtotalList),
-  "hideTrailingSubtotal": S.optional(S.Boolean),
-  "data": S.optional(ChartData),
-  "dataLabel": S.optional(DataLabel),
-  "negativeColumnsStyle": S.optional(WaterfallChartColumnStyle),
-}),
-).annotate({ identifier: "WaterfallChartSeries" }) as any as S.Schema<WaterfallChartSeries>;
+  S.Struct({
+    positiveColumnsStyle: S.optional(WaterfallChartColumnStyle),
+    subtotalColumnsStyle: S.optional(WaterfallChartColumnStyle),
+    customSubtotals: S.optional(WaterfallChartCustomSubtotalList),
+    hideTrailingSubtotal: S.optional(S.Boolean),
+    data: S.optional(ChartData),
+    dataLabel: S.optional(DataLabel),
+    negativeColumnsStyle: S.optional(WaterfallChartColumnStyle),
+  }),
+).annotate({
+  identifier: "WaterfallChartSeries",
+}) as any as S.Schema<WaterfallChartSeries>;
 
 export type WaterfallChartSeriesList = ReadonlyArray<WaterfallChartSeries>;
-export const WaterfallChartSeriesList = /*@__PURE__*/ S.Array(WaterfallChartSeries) as any as S.Schema<WaterfallChartSeriesList>;
+export const WaterfallChartSeriesList = /*@__PURE__*/ S.Array(
+  WaterfallChartSeries,
+) as any as S.Schema<WaterfallChartSeriesList>;
 
-export type LineStyleTypeEnum = "LINE_DASH_TYPE_UNSPECIFIED" | "INVISIBLE" | "CUSTOM" | "SOLID" | "DOTTED" | "MEDIUM_DASHED" | "MEDIUM_DASHED_DOTTED" | "LONG_DASHED" | "LONG_DASHED_DOTTED";
+export type LineStyleTypeEnum =
+  | "LINE_DASH_TYPE_UNSPECIFIED"
+  | "INVISIBLE"
+  | "CUSTOM"
+  | "SOLID"
+  | "DOTTED"
+  | "MEDIUM_DASHED"
+  | "MEDIUM_DASHED_DOTTED"
+  | "LONG_DASHED"
+  | "LONG_DASHED_DOTTED";
 export const LineStyleTypeEnum = /*@__PURE__*/ S.String;
 
 /** Properties that describe the style of a line. */
@@ -2338,13 +2973,16 @@ export interface LineStyle {
   type?: LineStyleTypeEnum;
 }
 export const LineStyle = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "width": S.optional(S.Number),
-  "type": S.optional(LineStyleTypeEnum),
-}),
+  S.Struct({
+    width: S.optional(S.Number),
+    type: S.optional(LineStyleTypeEnum),
+  }),
 ).annotate({ identifier: "LineStyle" }) as any as S.Schema<LineStyle>;
 
-export type WaterfallChartSpecStackedTypeEnum = "WATERFALL_STACKED_TYPE_UNSPECIFIED" | "STACKED" | "SEQUENTIAL";
+export type WaterfallChartSpecStackedTypeEnum =
+  | "WATERFALL_STACKED_TYPE_UNSPECIFIED"
+  | "STACKED"
+  | "SEQUENTIAL";
 export const WaterfallChartSpecStackedTypeEnum = /*@__PURE__*/ S.String;
 
 /** A waterfall chart. */
@@ -2365,16 +3003,18 @@ export interface WaterfallChartSpec {
   stackedType?: WaterfallChartSpecStackedTypeEnum;
 }
 export const WaterfallChartSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "domain": S.optional(WaterfallChartDomain),
-  "firstValueIsTotal": S.optional(S.Boolean),
-  "hideConnectorLines": S.optional(S.Boolean),
-  "totalDataLabel": S.optional(DataLabel),
-  "series": S.optional(WaterfallChartSeriesList),
-  "connectorLineStyle": S.optional(LineStyle),
-  "stackedType": S.optional(WaterfallChartSpecStackedTypeEnum),
-}),
-).annotate({ identifier: "WaterfallChartSpec" }) as any as S.Schema<WaterfallChartSpec>;
+  S.Struct({
+    domain: S.optional(WaterfallChartDomain),
+    firstValueIsTotal: S.optional(S.Boolean),
+    hideConnectorLines: S.optional(S.Boolean),
+    totalDataLabel: S.optional(DataLabel),
+    series: S.optional(WaterfallChartSeriesList),
+    connectorLineStyle: S.optional(LineStyle),
+    stackedType: S.optional(WaterfallChartSpecStackedTypeEnum),
+  }),
+).annotate({
+  identifier: "WaterfallChartSpec",
+}) as any as S.Schema<WaterfallChartSpec>;
 
 /** Properties of a data source chart. */
 export interface DataSourceChartProperties {
@@ -2384,13 +3024,22 @@ export interface DataSourceChartProperties {
   dataSourceId?: string;
 }
 export const DataSourceChartProperties = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dataExecutionStatus": S.optional(DataExecutionStatus),
-  "dataSourceId": S.optional(S.String),
-}),
-).annotate({ identifier: "DataSourceChartProperties" }) as any as S.Schema<DataSourceChartProperties>;
+  S.Struct({
+    dataExecutionStatus: S.optional(DataExecutionStatus),
+    dataSourceId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DataSourceChartProperties",
+}) as any as S.Schema<DataSourceChartProperties>;
 
-export type BubbleChartSpecLegendPositionEnum = "BUBBLE_CHART_LEGEND_POSITION_UNSPECIFIED" | "BOTTOM_LEGEND" | "LEFT_LEGEND" | "RIGHT_LEGEND" | "TOP_LEGEND" | "NO_LEGEND" | "INSIDE_LEGEND";
+export type BubbleChartSpecLegendPositionEnum =
+  | "BUBBLE_CHART_LEGEND_POSITION_UNSPECIFIED"
+  | "BOTTOM_LEGEND"
+  | "LEFT_LEGEND"
+  | "RIGHT_LEGEND"
+  | "TOP_LEGEND"
+  | "NO_LEGEND"
+  | "INSIDE_LEGEND";
 export const BubbleChartSpecLegendPositionEnum = /*@__PURE__*/ S.String;
 
 /** A bubble chart. */
@@ -2421,23 +3070,30 @@ export interface BubbleChartSpec {
   bubbleTextStyle?: TextFormat;
 }
 export const BubbleChartSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bubbleSizes": S.optional(ChartData),
-  "series": S.optional(ChartData),
-  "bubbleMaxRadiusSize": S.optional(S.Number),
-  "legendPosition": S.optional(BubbleChartSpecLegendPositionEnum),
-  "bubbleLabels": S.optional(ChartData),
-  "bubbleBorderColorStyle": S.optional(ColorStyle),
-  "domain": S.optional(ChartData),
-  "bubbleBorderColor": S.optional(Color),
-  "bubbleMinRadiusSize": S.optional(S.Number),
-  "bubbleOpacity": S.optional(S.Number),
-  "groupIds": S.optional(ChartData),
-  "bubbleTextStyle": S.optional(TextFormat),
-}),
-).annotate({ identifier: "BubbleChartSpec" }) as any as S.Schema<BubbleChartSpec>;
+  S.Struct({
+    bubbleSizes: S.optional(ChartData),
+    series: S.optional(ChartData),
+    bubbleMaxRadiusSize: S.optional(S.Number),
+    legendPosition: S.optional(BubbleChartSpecLegendPositionEnum),
+    bubbleLabels: S.optional(ChartData),
+    bubbleBorderColorStyle: S.optional(ColorStyle),
+    domain: S.optional(ChartData),
+    bubbleBorderColor: S.optional(Color),
+    bubbleMinRadiusSize: S.optional(S.Number),
+    bubbleOpacity: S.optional(S.Number),
+    groupIds: S.optional(ChartData),
+    bubbleTextStyle: S.optional(TextFormat),
+  }),
+).annotate({
+  identifier: "BubbleChartSpec",
+}) as any as S.Schema<BubbleChartSpec>;
 
-export type ChartSpecHiddenDimensionStrategyEnum = "CHART_HIDDEN_DIMENSION_STRATEGY_UNSPECIFIED" | "SKIP_HIDDEN_ROWS_AND_COLUMNS" | "SKIP_HIDDEN_ROWS" | "SKIP_HIDDEN_COLUMNS" | "SHOW_ALL";
+export type ChartSpecHiddenDimensionStrategyEnum =
+  | "CHART_HIDDEN_DIMENSION_STRATEGY_UNSPECIFIED"
+  | "SKIP_HIDDEN_ROWS_AND_COLUMNS"
+  | "SKIP_HIDDEN_ROWS"
+  | "SKIP_HIDDEN_COLUMNS"
+  | "SHOW_ALL";
 export const ChartSpecHiddenDimensionStrategyEnum = /*@__PURE__*/ S.String;
 
 /** A histogram series containing the series color and data. */
@@ -2450,17 +3106,28 @@ export interface HistogramSeries {
   barColorStyle?: ColorStyle;
 }
 export const HistogramSeries = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "barColor": S.optional(Color),
-  "data": S.optional(ChartData),
-  "barColorStyle": S.optional(ColorStyle),
-}),
-).annotate({ identifier: "HistogramSeries" }) as any as S.Schema<HistogramSeries>;
+  S.Struct({
+    barColor: S.optional(Color),
+    data: S.optional(ChartData),
+    barColorStyle: S.optional(ColorStyle),
+  }),
+).annotate({
+  identifier: "HistogramSeries",
+}) as any as S.Schema<HistogramSeries>;
 
 export type HistogramSeriesList = ReadonlyArray<HistogramSeries>;
-export const HistogramSeriesList = /*@__PURE__*/ S.Array(HistogramSeries) as any as S.Schema<HistogramSeriesList>;
+export const HistogramSeriesList = /*@__PURE__*/ S.Array(
+  HistogramSeries,
+) as any as S.Schema<HistogramSeriesList>;
 
-export type HistogramChartSpecLegendPositionEnum = "HISTOGRAM_CHART_LEGEND_POSITION_UNSPECIFIED" | "BOTTOM_LEGEND" | "LEFT_LEGEND" | "RIGHT_LEGEND" | "TOP_LEGEND" | "NO_LEGEND" | "INSIDE_LEGEND";
+export type HistogramChartSpecLegendPositionEnum =
+  | "HISTOGRAM_CHART_LEGEND_POSITION_UNSPECIFIED"
+  | "BOTTOM_LEGEND"
+  | "LEFT_LEGEND"
+  | "RIGHT_LEGEND"
+  | "TOP_LEGEND"
+  | "NO_LEGEND"
+  | "INSIDE_LEGEND";
 export const HistogramChartSpecLegendPositionEnum = /*@__PURE__*/ S.String;
 
 /** A histogram chart. A histogram chart groups data items into bins, displaying each bin as a column of stacked items. Histograms are used to display the distribution of a dataset. Each column of items represents a range into which those items fall. The number of bins can be chosen automatically or specified explicitly. */
@@ -2477,25 +3144,53 @@ export interface HistogramChartSpec {
   showItemDividers?: boolean;
 }
 export const HistogramChartSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "series": S.optional(HistogramSeriesList),
-  "outlierPercentile": S.optional(S.Number),
-  "bucketSize": S.optional(S.Number),
-  "legendPosition": S.optional(HistogramChartSpecLegendPositionEnum),
-  "showItemDividers": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "HistogramChartSpec" }) as any as S.Schema<HistogramChartSpec>;
+  S.Struct({
+    series: S.optional(HistogramSeriesList),
+    outlierPercentile: S.optional(S.Number),
+    bucketSize: S.optional(S.Number),
+    legendPosition: S.optional(HistogramChartSpecLegendPositionEnum),
+    showItemDividers: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "HistogramChartSpec",
+}) as any as S.Schema<HistogramChartSpec>;
 
-export type BasicChartSpecLegendPositionEnum = "BASIC_CHART_LEGEND_POSITION_UNSPECIFIED" | "BOTTOM_LEGEND" | "LEFT_LEGEND" | "RIGHT_LEGEND" | "TOP_LEGEND" | "NO_LEGEND";
+export type BasicChartSpecLegendPositionEnum =
+  | "BASIC_CHART_LEGEND_POSITION_UNSPECIFIED"
+  | "BOTTOM_LEGEND"
+  | "LEFT_LEGEND"
+  | "RIGHT_LEGEND"
+  | "TOP_LEGEND"
+  | "NO_LEGEND";
 export const BasicChartSpecLegendPositionEnum = /*@__PURE__*/ S.String;
 
-export type BasicChartSpecCompareModeEnum = "BASIC_CHART_COMPARE_MODE_UNSPECIFIED" | "DATUM" | "CATEGORY";
+export type BasicChartSpecCompareModeEnum =
+  | "BASIC_CHART_COMPARE_MODE_UNSPECIFIED"
+  | "DATUM"
+  | "CATEGORY";
 export const BasicChartSpecCompareModeEnum = /*@__PURE__*/ S.String;
 
-export type BasicChartSpecChartTypeEnum = "BASIC_CHART_TYPE_UNSPECIFIED" | "BAR" | "LINE" | "AREA" | "COLUMN" | "SCATTER" | "COMBO" | "STEPPED_AREA";
+export type BasicChartSpecChartTypeEnum =
+  | "BASIC_CHART_TYPE_UNSPECIFIED"
+  | "BAR"
+  | "LINE"
+  | "AREA"
+  | "COLUMN"
+  | "SCATTER"
+  | "COMBO"
+  | "STEPPED_AREA";
 export const BasicChartSpecChartTypeEnum = /*@__PURE__*/ S.String;
 
-export type PointStyleShapeEnum = "POINT_SHAPE_UNSPECIFIED" | "CIRCLE" | "DIAMOND" | "HEXAGON" | "PENTAGON" | "SQUARE" | "STAR" | "TRIANGLE" | "X_MARK";
+export type PointStyleShapeEnum =
+  | "POINT_SHAPE_UNSPECIFIED"
+  | "CIRCLE"
+  | "DIAMOND"
+  | "HEXAGON"
+  | "PENTAGON"
+  | "SQUARE"
+  | "STAR"
+  | "TRIANGLE"
+  | "X_MARK";
 export const PointStyleShapeEnum = /*@__PURE__*/ S.String;
 
 /** The style of a point on the chart. */
@@ -2506,10 +3201,10 @@ export interface PointStyle {
   size?: number;
 }
 export const PointStyle = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "shape": S.optional(PointStyleShapeEnum),
-  "size": S.optional(S.Number),
-}),
+  S.Struct({
+    shape: S.optional(PointStyleShapeEnum),
+    size: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "PointStyle" }) as any as S.Schema<PointStyle>;
 
 /** Style override settings for a single series data point. */
@@ -2524,21 +3219,38 @@ export interface BasicSeriesDataPointStyleOverride {
   pointStyle?: PointStyle;
 }
 export const BasicSeriesDataPointStyleOverride = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "index": S.optional(S.Number),
-  "color": S.optional(Color),
-  "colorStyle": S.optional(ColorStyle),
-  "pointStyle": S.optional(PointStyle),
-}),
-).annotate({ identifier: "BasicSeriesDataPointStyleOverride" }) as any as S.Schema<BasicSeriesDataPointStyleOverride>;
+  S.Struct({
+    index: S.optional(S.Number),
+    color: S.optional(Color),
+    colorStyle: S.optional(ColorStyle),
+    pointStyle: S.optional(PointStyle),
+  }),
+).annotate({
+  identifier: "BasicSeriesDataPointStyleOverride",
+}) as any as S.Schema<BasicSeriesDataPointStyleOverride>;
 
-export type BasicSeriesDataPointStyleOverrideList = ReadonlyArray<BasicSeriesDataPointStyleOverride>;
-export const BasicSeriesDataPointStyleOverrideList = /*@__PURE__*/ S.Array(BasicSeriesDataPointStyleOverride) as any as S.Schema<BasicSeriesDataPointStyleOverrideList>;
+export type BasicSeriesDataPointStyleOverrideList =
+  ReadonlyArray<BasicSeriesDataPointStyleOverride>;
+export const BasicSeriesDataPointStyleOverrideList = /*@__PURE__*/ S.Array(
+  BasicSeriesDataPointStyleOverride,
+) as any as S.Schema<BasicSeriesDataPointStyleOverrideList>;
 
-export type BasicChartSeriesTypeEnum = "BASIC_CHART_TYPE_UNSPECIFIED" | "BAR" | "LINE" | "AREA" | "COLUMN" | "SCATTER" | "COMBO" | "STEPPED_AREA";
+export type BasicChartSeriesTypeEnum =
+  | "BASIC_CHART_TYPE_UNSPECIFIED"
+  | "BAR"
+  | "LINE"
+  | "AREA"
+  | "COLUMN"
+  | "SCATTER"
+  | "COMBO"
+  | "STEPPED_AREA";
 export const BasicChartSeriesTypeEnum = /*@__PURE__*/ S.String;
 
-export type BasicChartSeriesTargetAxisEnum = "BASIC_CHART_AXIS_POSITION_UNSPECIFIED" | "BOTTOM_AXIS" | "LEFT_AXIS" | "RIGHT_AXIS";
+export type BasicChartSeriesTargetAxisEnum =
+  | "BASIC_CHART_AXIS_POSITION_UNSPECIFIED"
+  | "BOTTOM_AXIS"
+  | "LEFT_AXIS"
+  | "RIGHT_AXIS";
 export const BasicChartSeriesTargetAxisEnum = /*@__PURE__*/ S.String;
 
 /** A single series of data in a chart. For example, if charting stock prices over time, multiple series may exist, one for the "Open Price", "High Price", "Low Price" and "Close Price". */
@@ -2563,21 +3275,25 @@ export interface BasicChartSeries {
   targetAxis?: BasicChartSeriesTargetAxisEnum;
 }
 export const BasicChartSeries = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "styleOverrides": S.optional(BasicSeriesDataPointStyleOverrideList),
-  "dataLabel": S.optional(DataLabel),
-  "pointStyle": S.optional(PointStyle),
-  "color": S.optional(Color),
-  "series": S.optional(ChartData),
-  "type": S.optional(BasicChartSeriesTypeEnum),
-  "colorStyle": S.optional(ColorStyle),
-  "lineStyle": S.optional(LineStyle),
-  "targetAxis": S.optional(BasicChartSeriesTargetAxisEnum),
-}),
-).annotate({ identifier: "BasicChartSeries" }) as any as S.Schema<BasicChartSeries>;
+  S.Struct({
+    styleOverrides: S.optional(BasicSeriesDataPointStyleOverrideList),
+    dataLabel: S.optional(DataLabel),
+    pointStyle: S.optional(PointStyle),
+    color: S.optional(Color),
+    series: S.optional(ChartData),
+    type: S.optional(BasicChartSeriesTypeEnum),
+    colorStyle: S.optional(ColorStyle),
+    lineStyle: S.optional(LineStyle),
+    targetAxis: S.optional(BasicChartSeriesTargetAxisEnum),
+  }),
+).annotate({
+  identifier: "BasicChartSeries",
+}) as any as S.Schema<BasicChartSeries>;
 
 export type BasicChartSeriesList = ReadonlyArray<BasicChartSeries>;
-export const BasicChartSeriesList = /*@__PURE__*/ S.Array(BasicChartSeries) as any as S.Schema<BasicChartSeriesList>;
+export const BasicChartSeriesList = /*@__PURE__*/ S.Array(
+  BasicChartSeries,
+) as any as S.Schema<BasicChartSeriesList>;
 
 /** The domain of a chart. For example, if charting stock prices over time, this would be the date. */
 export interface BasicChartDomain {
@@ -2587,20 +3303,33 @@ export interface BasicChartDomain {
   reversed?: boolean;
 }
 export const BasicChartDomain = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "domain": S.optional(ChartData),
-  "reversed": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "BasicChartDomain" }) as any as S.Schema<BasicChartDomain>;
+  S.Struct({
+    domain: S.optional(ChartData),
+    reversed: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "BasicChartDomain",
+}) as any as S.Schema<BasicChartDomain>;
 
 export type BasicChartDomainList = ReadonlyArray<BasicChartDomain>;
-export const BasicChartDomainList = /*@__PURE__*/ S.Array(BasicChartDomain) as any as S.Schema<BasicChartDomainList>;
+export const BasicChartDomainList = /*@__PURE__*/ S.Array(
+  BasicChartDomain,
+) as any as S.Schema<BasicChartDomainList>;
 
-export type BasicChartAxisPositionEnum = "BASIC_CHART_AXIS_POSITION_UNSPECIFIED" | "BOTTOM_AXIS" | "LEFT_AXIS" | "RIGHT_AXIS";
+export type BasicChartAxisPositionEnum =
+  | "BASIC_CHART_AXIS_POSITION_UNSPECIFIED"
+  | "BOTTOM_AXIS"
+  | "LEFT_AXIS"
+  | "RIGHT_AXIS";
 export const BasicChartAxisPositionEnum = /*@__PURE__*/ S.String;
 
-export type ChartAxisViewWindowOptionsViewWindowModeEnum = "DEFAULT_VIEW_WINDOW_MODE" | "VIEW_WINDOW_MODE_UNSUPPORTED" | "EXPLICIT" | "PRETTY";
-export const ChartAxisViewWindowOptionsViewWindowModeEnum = /*@__PURE__*/ S.String;
+export type ChartAxisViewWindowOptionsViewWindowModeEnum =
+  | "DEFAULT_VIEW_WINDOW_MODE"
+  | "VIEW_WINDOW_MODE_UNSUPPORTED"
+  | "EXPLICIT"
+  | "PRETTY";
+export const ChartAxisViewWindowOptionsViewWindowModeEnum =
+  /*@__PURE__*/ S.String;
 
 /** The options that define a "view window" for a chart (such as the visible values in an axis). */
 export interface ChartAxisViewWindowOptions {
@@ -2612,12 +3341,14 @@ export interface ChartAxisViewWindowOptions {
   viewWindowMin?: number;
 }
 export const ChartAxisViewWindowOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "viewWindowMax": S.optional(S.Number),
-  "viewWindowMode": S.optional(ChartAxisViewWindowOptionsViewWindowModeEnum),
-  "viewWindowMin": S.optional(S.Number),
-}),
-).annotate({ identifier: "ChartAxisViewWindowOptions" }) as any as S.Schema<ChartAxisViewWindowOptions>;
+  S.Struct({
+    viewWindowMax: S.optional(S.Number),
+    viewWindowMode: S.optional(ChartAxisViewWindowOptionsViewWindowModeEnum),
+    viewWindowMin: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ChartAxisViewWindowOptions",
+}) as any as S.Schema<ChartAxisViewWindowOptions>;
 
 /** An axis of the chart. A chart may not have more than one axis per axis position. */
 export interface BasicChartAxis {
@@ -2633,19 +3364,25 @@ export interface BasicChartAxis {
   viewWindowOptions?: ChartAxisViewWindowOptions;
 }
 export const BasicChartAxis = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "position": S.optional(BasicChartAxisPositionEnum),
-  "format": S.optional(TextFormat),
-  "title": S.optional(S.String),
-  "titleTextPosition": S.optional(TextPosition),
-  "viewWindowOptions": S.optional(ChartAxisViewWindowOptions),
-}),
+  S.Struct({
+    position: S.optional(BasicChartAxisPositionEnum),
+    format: S.optional(TextFormat),
+    title: S.optional(S.String),
+    titleTextPosition: S.optional(TextPosition),
+    viewWindowOptions: S.optional(ChartAxisViewWindowOptions),
+  }),
 ).annotate({ identifier: "BasicChartAxis" }) as any as S.Schema<BasicChartAxis>;
 
 export type BasicChartAxisList = ReadonlyArray<BasicChartAxis>;
-export const BasicChartAxisList = /*@__PURE__*/ S.Array(BasicChartAxis) as any as S.Schema<BasicChartAxisList>;
+export const BasicChartAxisList = /*@__PURE__*/ S.Array(
+  BasicChartAxis,
+) as any as S.Schema<BasicChartAxisList>;
 
-export type BasicChartSpecStackedTypeEnum = "BASIC_CHART_STACKED_TYPE_UNSPECIFIED" | "NOT_STACKED" | "STACKED" | "PERCENT_STACKED";
+export type BasicChartSpecStackedTypeEnum =
+  | "BASIC_CHART_STACKED_TYPE_UNSPECIFIED"
+  | "NOT_STACKED"
+  | "STACKED"
+  | "PERCENT_STACKED";
 export const BasicChartSpecStackedTypeEnum = /*@__PURE__*/ S.String;
 
 /** The specification for a basic chart. See BasicChartType for the list of charts this supports. */
@@ -2676,20 +3413,20 @@ export interface BasicChartSpec {
   stackedType?: BasicChartSpecStackedTypeEnum;
 }
 export const BasicChartSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "legendPosition": S.optional(BasicChartSpecLegendPositionEnum),
-  "compareMode": S.optional(BasicChartSpecCompareModeEnum),
-  "chartType": S.optional(BasicChartSpecChartTypeEnum),
-  "series": S.optional(BasicChartSeriesList),
-  "headerCount": S.optional(S.Number),
-  "threeDimensional": S.optional(S.Boolean),
-  "domains": S.optional(BasicChartDomainList),
-  "axis": S.optional(BasicChartAxisList),
-  "lineSmoothing": S.optional(S.Boolean),
-  "totalDataLabel": S.optional(DataLabel),
-  "interpolateNulls": S.optional(S.Boolean),
-  "stackedType": S.optional(BasicChartSpecStackedTypeEnum),
-}),
+  S.Struct({
+    legendPosition: S.optional(BasicChartSpecLegendPositionEnum),
+    compareMode: S.optional(BasicChartSpecCompareModeEnum),
+    chartType: S.optional(BasicChartSpecChartTypeEnum),
+    series: S.optional(BasicChartSeriesList),
+    headerCount: S.optional(S.Number),
+    threeDimensional: S.optional(S.Boolean),
+    domains: S.optional(BasicChartDomainList),
+    axis: S.optional(BasicChartAxisList),
+    lineSmoothing: S.optional(S.Boolean),
+    totalDataLabel: S.optional(DataLabel),
+    interpolateNulls: S.optional(S.Boolean),
+    stackedType: S.optional(BasicChartSpecStackedTypeEnum),
+  }),
 ).annotate({ identifier: "BasicChartSpec" }) as any as S.Schema<BasicChartSpec>;
 
 /** The domain of a CandlestickChart. */
@@ -2700,11 +3437,13 @@ export interface CandlestickDomain {
   reversed?: boolean;
 }
 export const CandlestickDomain = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "data": S.optional(ChartData),
-  "reversed": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "CandlestickDomain" }) as any as S.Schema<CandlestickDomain>;
+  S.Struct({
+    data: S.optional(ChartData),
+    reversed: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "CandlestickDomain",
+}) as any as S.Schema<CandlestickDomain>;
 
 /** The series of a CandlestickData. */
 export interface CandlestickSeries {
@@ -2712,10 +3451,12 @@ export interface CandlestickSeries {
   data?: ChartData;
 }
 export const CandlestickSeries = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "data": S.optional(ChartData),
-}),
-).annotate({ identifier: "CandlestickSeries" }) as any as S.Schema<CandlestickSeries>;
+  S.Struct({
+    data: S.optional(ChartData),
+  }),
+).annotate({
+  identifier: "CandlestickSeries",
+}) as any as S.Schema<CandlestickSeries>;
 
 /** The Candlestick chart data, each containing the low, open, close, and high values for a series. */
 export interface CandlestickData {
@@ -2729,16 +3470,20 @@ export interface CandlestickData {
   lowSeries?: CandlestickSeries;
 }
 export const CandlestickData = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "openSeries": S.optional(CandlestickSeries),
-  "closeSeries": S.optional(CandlestickSeries),
-  "highSeries": S.optional(CandlestickSeries),
-  "lowSeries": S.optional(CandlestickSeries),
-}),
-).annotate({ identifier: "CandlestickData" }) as any as S.Schema<CandlestickData>;
+  S.Struct({
+    openSeries: S.optional(CandlestickSeries),
+    closeSeries: S.optional(CandlestickSeries),
+    highSeries: S.optional(CandlestickSeries),
+    lowSeries: S.optional(CandlestickSeries),
+  }),
+).annotate({
+  identifier: "CandlestickData",
+}) as any as S.Schema<CandlestickData>;
 
 export type CandlestickDataList = ReadonlyArray<CandlestickData>;
-export const CandlestickDataList = /*@__PURE__*/ S.Array(CandlestickData) as any as S.Schema<CandlestickDataList>;
+export const CandlestickDataList = /*@__PURE__*/ S.Array(
+  CandlestickData,
+) as any as S.Schema<CandlestickDataList>;
 
 /** A candlestick chart. */
 export interface CandlestickChartSpec {
@@ -2748,11 +3493,13 @@ export interface CandlestickChartSpec {
   data?: CandlestickDataList;
 }
 export const CandlestickChartSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "domain": S.optional(CandlestickDomain),
-  "data": S.optional(CandlestickDataList),
-}),
-).annotate({ identifier: "CandlestickChartSpec" }) as any as S.Schema<CandlestickChartSpec>;
+  S.Struct({
+    domain: S.optional(CandlestickDomain),
+    data: S.optional(CandlestickDataList),
+  }),
+).annotate({
+  identifier: "CandlestickChartSpec",
+}) as any as S.Schema<CandlestickChartSpec>;
 
 /** A color scale for a treemap chart. */
 export interface TreemapChartColorScale {
@@ -2774,17 +3521,19 @@ export interface TreemapChartColorScale {
   noDataColorStyle?: ColorStyle;
 }
 export const TreemapChartColorScale = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "minValueColorStyle": S.optional(ColorStyle),
-  "maxValueColor": S.optional(Color),
-  "midValueColorStyle": S.optional(ColorStyle),
-  "minValueColor": S.optional(Color),
-  "maxValueColorStyle": S.optional(ColorStyle),
-  "midValueColor": S.optional(Color),
-  "noDataColor": S.optional(Color),
-  "noDataColorStyle": S.optional(ColorStyle),
-}),
-).annotate({ identifier: "TreemapChartColorScale" }) as any as S.Schema<TreemapChartColorScale>;
+  S.Struct({
+    minValueColorStyle: S.optional(ColorStyle),
+    maxValueColor: S.optional(Color),
+    midValueColorStyle: S.optional(ColorStyle),
+    minValueColor: S.optional(Color),
+    maxValueColorStyle: S.optional(ColorStyle),
+    midValueColor: S.optional(Color),
+    noDataColor: S.optional(Color),
+    noDataColorStyle: S.optional(ColorStyle),
+  }),
+).annotate({
+  identifier: "TreemapChartColorScale",
+}) as any as S.Schema<TreemapChartColorScale>;
 
 /** A Treemap chart. */
 export interface TreemapChartSpec {
@@ -2816,27 +3565,39 @@ export interface TreemapChartSpec {
   hintedLevels?: number;
 }
 export const TreemapChartSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "maxValue": S.optional(S.Number),
-  "levels": S.optional(S.Number),
-  "hideTooltips": S.optional(S.Boolean),
-  "sizeData": S.optional(ChartData),
-  "colorData": S.optional(ChartData),
-  "textFormat": S.optional(TextFormat),
-  "headerColor": S.optional(Color),
-  "colorScale": S.optional(TreemapChartColorScale),
-  "headerColorStyle": S.optional(ColorStyle),
-  "minValue": S.optional(S.Number),
-  "labels": S.optional(ChartData),
-  "parentLabels": S.optional(ChartData),
-  "hintedLevels": S.optional(S.Number),
-}),
-).annotate({ identifier: "TreemapChartSpec" }) as any as S.Schema<TreemapChartSpec>;
+  S.Struct({
+    maxValue: S.optional(S.Number),
+    levels: S.optional(S.Number),
+    hideTooltips: S.optional(S.Boolean),
+    sizeData: S.optional(ChartData),
+    colorData: S.optional(ChartData),
+    textFormat: S.optional(TextFormat),
+    headerColor: S.optional(Color),
+    colorScale: S.optional(TreemapChartColorScale),
+    headerColorStyle: S.optional(ColorStyle),
+    minValue: S.optional(S.Number),
+    labels: S.optional(ChartData),
+    parentLabels: S.optional(ChartData),
+    hintedLevels: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "TreemapChartSpec",
+}) as any as S.Schema<TreemapChartSpec>;
 
-export type ScorecardChartSpecAggregateTypeEnum = "CHART_AGGREGATE_TYPE_UNSPECIFIED" | "AVERAGE" | "COUNT" | "MAX" | "MEDIAN" | "MIN" | "SUM";
+export type ScorecardChartSpecAggregateTypeEnum =
+  | "CHART_AGGREGATE_TYPE_UNSPECIFIED"
+  | "AVERAGE"
+  | "COUNT"
+  | "MAX"
+  | "MEDIAN"
+  | "MIN"
+  | "SUM";
 export const ScorecardChartSpecAggregateTypeEnum = /*@__PURE__*/ S.String;
 
-export type ScorecardChartSpecNumberFormatSourceEnum = "CHART_NUMBER_FORMAT_SOURCE_UNDEFINED" | "FROM_DATA" | "CUSTOM";
+export type ScorecardChartSpecNumberFormatSourceEnum =
+  | "CHART_NUMBER_FORMAT_SOURCE_UNDEFINED"
+  | "FROM_DATA"
+  | "CUSTOM";
 export const ScorecardChartSpecNumberFormatSourceEnum = /*@__PURE__*/ S.String;
 
 /** Formatting options for key value. */
@@ -2847,10 +3608,10 @@ export interface KeyValueFormat {
   position?: TextPosition;
 }
 export const KeyValueFormat = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "textFormat": S.optional(TextFormat),
-  "position": S.optional(TextPosition),
-}),
+  S.Struct({
+    textFormat: S.optional(TextFormat),
+    position: S.optional(TextPosition),
+  }),
 ).annotate({ identifier: "KeyValueFormat" }) as any as S.Schema<KeyValueFormat>;
 
 /** Custom number formatting options for chart attributes. */
@@ -2861,13 +3622,18 @@ export interface ChartCustomNumberFormatOptions {
   suffix?: string;
 }
 export const ChartCustomNumberFormatOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "prefix": S.optional(S.String),
-  "suffix": S.optional(S.String),
-}),
-).annotate({ identifier: "ChartCustomNumberFormatOptions" }) as any as S.Schema<ChartCustomNumberFormatOptions>;
+  S.Struct({
+    prefix: S.optional(S.String),
+    suffix: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ChartCustomNumberFormatOptions",
+}) as any as S.Schema<ChartCustomNumberFormatOptions>;
 
-export type BaselineValueFormatComparisonTypeEnum = "COMPARISON_TYPE_UNDEFINED" | "ABSOLUTE_DIFFERENCE" | "PERCENTAGE_DIFFERENCE";
+export type BaselineValueFormatComparisonTypeEnum =
+  | "COMPARISON_TYPE_UNDEFINED"
+  | "ABSOLUTE_DIFFERENCE"
+  | "PERCENTAGE_DIFFERENCE";
 export const BaselineValueFormatComparisonTypeEnum = /*@__PURE__*/ S.String;
 
 /** Formatting options for baseline value. */
@@ -2890,17 +3656,19 @@ export interface BaselineValueFormat {
   textFormat?: TextFormat;
 }
 export const BaselineValueFormat = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "comparisonType": S.optional(BaselineValueFormatComparisonTypeEnum),
-  "negativeColor": S.optional(Color),
-  "positiveColorStyle": S.optional(ColorStyle),
-  "negativeColorStyle": S.optional(ColorStyle),
-  "position": S.optional(TextPosition),
-  "description": S.optional(S.String),
-  "positiveColor": S.optional(Color),
-  "textFormat": S.optional(TextFormat),
-}),
-).annotate({ identifier: "BaselineValueFormat" }) as any as S.Schema<BaselineValueFormat>;
+  S.Struct({
+    comparisonType: S.optional(BaselineValueFormatComparisonTypeEnum),
+    negativeColor: S.optional(Color),
+    positiveColorStyle: S.optional(ColorStyle),
+    negativeColorStyle: S.optional(ColorStyle),
+    position: S.optional(TextPosition),
+    description: S.optional(S.String),
+    positiveColor: S.optional(Color),
+    textFormat: S.optional(TextFormat),
+  }),
+).annotate({
+  identifier: "BaselineValueFormat",
+}) as any as S.Schema<BaselineValueFormat>;
 
 /** A scorecard chart. Scorecard charts are used to highlight key performance indicators, known as KPIs, on the spreadsheet. A scorecard chart can represent things like total sales, average cost, or a top selling item. You can specify a single data value, or aggregate over a range of data. Percentage or absolute difference from a baseline value can be highlighted, like changes over time. */
 export interface ScorecardChartSpec {
@@ -2922,17 +3690,19 @@ export interface ScorecardChartSpec {
   scaleFactor?: number;
 }
 export const ScorecardChartSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "aggregateType": S.optional(ScorecardChartSpecAggregateTypeEnum),
-  "numberFormatSource": S.optional(ScorecardChartSpecNumberFormatSourceEnum),
-  "keyValueData": S.optional(ChartData),
-  "keyValueFormat": S.optional(KeyValueFormat),
-  "customFormatOptions": S.optional(ChartCustomNumberFormatOptions),
-  "baselineValueFormat": S.optional(BaselineValueFormat),
-  "baselineValueData": S.optional(ChartData),
-  "scaleFactor": S.optional(S.Number),
-}),
-).annotate({ identifier: "ScorecardChartSpec" }) as any as S.Schema<ScorecardChartSpec>;
+  S.Struct({
+    aggregateType: S.optional(ScorecardChartSpecAggregateTypeEnum),
+    numberFormatSource: S.optional(ScorecardChartSpecNumberFormatSourceEnum),
+    keyValueData: S.optional(ChartData),
+    keyValueFormat: S.optional(KeyValueFormat),
+    customFormatOptions: S.optional(ChartCustomNumberFormatOptions),
+    baselineValueFormat: S.optional(BaselineValueFormat),
+    baselineValueData: S.optional(ChartData),
+    scaleFactor: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ScorecardChartSpec",
+}) as any as S.Schema<ScorecardChartSpec>;
 
 /** The specifications of a chart. */
 export interface ChartSpec {
@@ -2986,32 +3756,32 @@ export interface ChartSpec {
   scorecardChart?: ScorecardChartSpec;
 }
 export const ChartSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "orgChart": S.optional(OrgChartSpec),
-  "pieChart": S.optional(PieChartSpec),
-  "title": S.optional(S.String),
-  "titleTextPosition": S.optional(TextPosition),
-  "waterfallChart": S.optional(WaterfallChartSpec),
-  "dataSourceChartProperties": S.optional(DataSourceChartProperties),
-  "altText": S.optional(S.String),
-  "sortSpecs": S.optional(SortSpecList),
-  "bubbleChart": S.optional(BubbleChartSpec),
-  "hiddenDimensionStrategy": S.optional(ChartSpecHiddenDimensionStrategyEnum),
-  "subtitleTextFormat": S.optional(TextFormat),
-  "backgroundColor": S.optional(Color),
-  "histogramChart": S.optional(HistogramChartSpec),
-  "maximized": S.optional(S.Boolean),
-  "subtitle": S.optional(S.String),
-  "filterSpecs": S.optional(FilterSpecList),
-  "basicChart": S.optional(BasicChartSpec),
-  "titleTextFormat": S.optional(TextFormat),
-  "subtitleTextPosition": S.optional(TextPosition),
-  "fontName": S.optional(S.String),
-  "candlestickChart": S.optional(CandlestickChartSpec),
-  "treemapChart": S.optional(TreemapChartSpec),
-  "backgroundColorStyle": S.optional(ColorStyle),
-  "scorecardChart": S.optional(ScorecardChartSpec),
-}),
+  S.Struct({
+    orgChart: S.optional(OrgChartSpec),
+    pieChart: S.optional(PieChartSpec),
+    title: S.optional(S.String),
+    titleTextPosition: S.optional(TextPosition),
+    waterfallChart: S.optional(WaterfallChartSpec),
+    dataSourceChartProperties: S.optional(DataSourceChartProperties),
+    altText: S.optional(S.String),
+    sortSpecs: S.optional(SortSpecList),
+    bubbleChart: S.optional(BubbleChartSpec),
+    hiddenDimensionStrategy: S.optional(ChartSpecHiddenDimensionStrategyEnum),
+    subtitleTextFormat: S.optional(TextFormat),
+    backgroundColor: S.optional(Color),
+    histogramChart: S.optional(HistogramChartSpec),
+    maximized: S.optional(S.Boolean),
+    subtitle: S.optional(S.String),
+    filterSpecs: S.optional(FilterSpecList),
+    basicChart: S.optional(BasicChartSpec),
+    titleTextFormat: S.optional(TextFormat),
+    subtitleTextPosition: S.optional(TextPosition),
+    fontName: S.optional(S.String),
+    candlestickChart: S.optional(CandlestickChartSpec),
+    treemapChart: S.optional(TreemapChartSpec),
+    backgroundColorStyle: S.optional(ColorStyle),
+    scorecardChart: S.optional(ScorecardChartSpec),
+  }),
 ).annotate({ identifier: "ChartSpec" }) as any as S.Schema<ChartSpec>;
 
 /** The location an object is overlaid on top of a grid. */
@@ -3028,14 +3798,16 @@ export interface OverlayPosition {
   widthPixels?: number;
 }
 export const OverlayPosition = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "anchorCell": S.optional(GridCoordinate),
-  "heightPixels": S.optional(S.Number),
-  "offsetYPixels": S.optional(S.Number),
-  "offsetXPixels": S.optional(S.Number),
-  "widthPixels": S.optional(S.Number),
-}),
-).annotate({ identifier: "OverlayPosition" }) as any as S.Schema<OverlayPosition>;
+  S.Struct({
+    anchorCell: S.optional(GridCoordinate),
+    heightPixels: S.optional(S.Number),
+    offsetYPixels: S.optional(S.Number),
+    offsetXPixels: S.optional(S.Number),
+    widthPixels: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "OverlayPosition",
+}) as any as S.Schema<OverlayPosition>;
 
 /** The position of an embedded object such as a chart. */
 export interface EmbeddedObjectPosition {
@@ -3047,12 +3819,14 @@ export interface EmbeddedObjectPosition {
   newSheet?: boolean;
 }
 export const EmbeddedObjectPosition = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sheetId": S.optional(S.Number),
-  "overlayPosition": S.optional(OverlayPosition),
-  "newSheet": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "EmbeddedObjectPosition" }) as any as S.Schema<EmbeddedObjectPosition>;
+  S.Struct({
+    sheetId: S.optional(S.Number),
+    overlayPosition: S.optional(OverlayPosition),
+    newSheet: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "EmbeddedObjectPosition",
+}) as any as S.Schema<EmbeddedObjectPosition>;
 
 /** A border along an embedded object. */
 export interface EmbeddedObjectBorder {
@@ -3062,11 +3836,13 @@ export interface EmbeddedObjectBorder {
   color?: Color;
 }
 export const EmbeddedObjectBorder = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "colorStyle": S.optional(ColorStyle),
-  "color": S.optional(Color),
-}),
-).annotate({ identifier: "EmbeddedObjectBorder" }) as any as S.Schema<EmbeddedObjectBorder>;
+  S.Struct({
+    colorStyle: S.optional(ColorStyle),
+    color: S.optional(Color),
+  }),
+).annotate({
+  identifier: "EmbeddedObjectBorder",
+}) as any as S.Schema<EmbeddedObjectBorder>;
 
 /** A chart embedded in a sheet. */
 export interface EmbeddedChart {
@@ -3080,12 +3856,12 @@ export interface EmbeddedChart {
   border?: EmbeddedObjectBorder;
 }
 export const EmbeddedChart = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "spec": S.optional(ChartSpec),
-  "position": S.optional(EmbeddedObjectPosition),
-  "chartId": S.optional(S.Number),
-  "border": S.optional(EmbeddedObjectBorder),
-}),
+  S.Struct({
+    spec: S.optional(ChartSpec),
+    position: S.optional(EmbeddedObjectPosition),
+    chartId: S.optional(S.Number),
+    border: S.optional(EmbeddedObjectBorder),
+  }),
 ).annotate({ identifier: "EmbeddedChart" }) as any as S.Schema<EmbeddedChart>;
 
 /** Adds a chart to a sheet in the spreadsheet. */
@@ -3094,10 +3870,12 @@ export interface AddChartRequest {
   chart?: EmbeddedChart;
 }
 export const AddChartRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "chart": S.optional(EmbeddedChart),
-}),
-).annotate({ identifier: "AddChartRequest" }) as any as S.Schema<AddChartRequest>;
+  S.Struct({
+    chart: S.optional(EmbeddedChart),
+  }),
+).annotate({
+  identifier: "AddChartRequest",
+}) as any as S.Schema<AddChartRequest>;
 
 /** A rule that may or may not match, depending on the condition. */
 export interface BooleanRule {
@@ -3107,13 +3885,19 @@ export interface BooleanRule {
   condition?: BooleanCondition;
 }
 export const BooleanRule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "format": S.optional(CellFormat),
-  "condition": S.optional(BooleanCondition),
-}),
+  S.Struct({
+    format: S.optional(CellFormat),
+    condition: S.optional(BooleanCondition),
+  }),
 ).annotate({ identifier: "BooleanRule" }) as any as S.Schema<BooleanRule>;
 
-export type InterpolationPointTypeEnum = "INTERPOLATION_POINT_TYPE_UNSPECIFIED" | "MIN" | "MAX" | "NUMBER" | "PERCENT" | "PERCENTILE";
+export type InterpolationPointTypeEnum =
+  | "INTERPOLATION_POINT_TYPE_UNSPECIFIED"
+  | "MIN"
+  | "MAX"
+  | "NUMBER"
+  | "PERCENT"
+  | "PERCENTILE";
 export const InterpolationPointTypeEnum = /*@__PURE__*/ S.String;
 
 /** A single interpolation point on a gradient conditional format. These pin the gradient color scale according to the color, type and value chosen. */
@@ -3128,13 +3912,15 @@ export interface InterpolationPoint {
   type?: InterpolationPointTypeEnum;
 }
 export const InterpolationPoint = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "color": S.optional(Color),
-  "value": S.optional(S.String),
-  "colorStyle": S.optional(ColorStyle),
-  "type": S.optional(InterpolationPointTypeEnum),
-}),
-).annotate({ identifier: "InterpolationPoint" }) as any as S.Schema<InterpolationPoint>;
+  S.Struct({
+    color: S.optional(Color),
+    value: S.optional(S.String),
+    colorStyle: S.optional(ColorStyle),
+    type: S.optional(InterpolationPointTypeEnum),
+  }),
+).annotate({
+  identifier: "InterpolationPoint",
+}) as any as S.Schema<InterpolationPoint>;
 
 /** A rule that applies a gradient color scale format, based on the interpolation points listed. The format of a cell will vary based on its contents as compared to the values of the interpolation points. */
 export interface GradientRule {
@@ -3146,11 +3932,11 @@ export interface GradientRule {
   minpoint?: InterpolationPoint;
 }
 export const GradientRule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "midpoint": S.optional(InterpolationPoint),
-  "maxpoint": S.optional(InterpolationPoint),
-  "minpoint": S.optional(InterpolationPoint),
-}),
+  S.Struct({
+    midpoint: S.optional(InterpolationPoint),
+    maxpoint: S.optional(InterpolationPoint),
+    minpoint: S.optional(InterpolationPoint),
+  }),
 ).annotate({ identifier: "GradientRule" }) as any as S.Schema<GradientRule>;
 
 /** A rule describing a conditional format. */
@@ -3163,12 +3949,14 @@ export interface ConditionalFormatRule {
   gradientRule?: GradientRule;
 }
 export const ConditionalFormatRule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "ranges": S.optional(GridRangeList),
-  "booleanRule": S.optional(BooleanRule),
-  "gradientRule": S.optional(GradientRule),
-}),
-).annotate({ identifier: "ConditionalFormatRule" }) as any as S.Schema<ConditionalFormatRule>;
+  S.Struct({
+    ranges: S.optional(GridRangeList),
+    booleanRule: S.optional(BooleanRule),
+    gradientRule: S.optional(GradientRule),
+  }),
+).annotate({
+  identifier: "ConditionalFormatRule",
+}) as any as S.Schema<ConditionalFormatRule>;
 
 /** Updates a conditional format rule at the given index, or moves a conditional format rule to another index. */
 export interface UpdateConditionalFormatRuleRequest {
@@ -3182,15 +3970,20 @@ export interface UpdateConditionalFormatRuleRequest {
   index?: number;
 }
 export const UpdateConditionalFormatRuleRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "newIndex": S.optional(S.Number),
-  "sheetId": S.optional(S.Number),
-  "rule": S.optional(ConditionalFormatRule),
-  "index": S.optional(S.Number),
-}),
-).annotate({ identifier: "UpdateConditionalFormatRuleRequest" }) as any as S.Schema<UpdateConditionalFormatRuleRequest>;
+  S.Struct({
+    newIndex: S.optional(S.Number),
+    sheetId: S.optional(S.Number),
+    rule: S.optional(ConditionalFormatRule),
+    index: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "UpdateConditionalFormatRuleRequest",
+}) as any as S.Schema<UpdateConditionalFormatRuleRequest>;
 
-export type InsertRangeRequestShiftDimensionEnum = "DIMENSION_UNSPECIFIED" | "ROWS" | "COLUMNS";
+export type InsertRangeRequestShiftDimensionEnum =
+  | "DIMENSION_UNSPECIFIED"
+  | "ROWS"
+  | "COLUMNS";
 export const InsertRangeRequestShiftDimensionEnum = /*@__PURE__*/ S.String;
 
 /** Inserts cells into a range, shifting the existing cells over or down. */
@@ -3201,11 +3994,13 @@ export interface InsertRangeRequest {
   shiftDimension?: InsertRangeRequestShiftDimensionEnum | (string & {});
 }
 export const InsertRangeRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "range": S.optional(GridRange),
-  "shiftDimension": S.optional(InsertRangeRequestShiftDimensionEnum),
-}),
-).annotate({ identifier: "InsertRangeRequest" }) as any as S.Schema<InsertRangeRequest>;
+  S.Struct({
+    range: S.optional(GridRange),
+    shiftDimension: S.optional(InsertRangeRequestShiftDimensionEnum),
+  }),
+).annotate({
+  identifier: "InsertRangeRequest",
+}) as any as S.Schema<InsertRangeRequest>;
 
 /** Deletes the embedded object with the given ID. */
 export interface DeleteEmbeddedObjectRequest {
@@ -3213,10 +4008,12 @@ export interface DeleteEmbeddedObjectRequest {
   objectId?: number;
 }
 export const DeleteEmbeddedObjectRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "objectId": S.optional(S.Number),
-}),
-).annotate({ identifier: "DeleteEmbeddedObjectRequest" }) as any as S.Schema<DeleteEmbeddedObjectRequest>;
+  S.Struct({
+    objectId: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "DeleteEmbeddedObjectRequest",
+}) as any as S.Schema<DeleteEmbeddedObjectRequest>;
 
 /** Updates an embedded object's border property. */
 export interface UpdateEmbeddedObjectBorderRequest {
@@ -3228,12 +4025,14 @@ export interface UpdateEmbeddedObjectBorderRequest {
   fields?: string;
 }
 export const UpdateEmbeddedObjectBorderRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "objectId": S.optional(S.Number),
-  "border": S.optional(EmbeddedObjectBorder),
-  "fields": S.optional(S.String),
-}),
-).annotate({ identifier: "UpdateEmbeddedObjectBorderRequest" }) as any as S.Schema<UpdateEmbeddedObjectBorderRequest>;
+  S.Struct({
+    objectId: S.optional(S.Number),
+    border: S.optional(EmbeddedObjectBorder),
+    fields: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateEmbeddedObjectBorderRequest",
+}) as any as S.Schema<UpdateEmbeddedObjectBorderRequest>;
 
 /** The editors of a protected range. */
 export interface Editors {
@@ -3245,11 +4044,11 @@ export interface Editors {
   groups?: StringList;
 }
 export const Editors = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "users": S.optional(StringList),
-  "domainUsersCanEdit": S.optional(S.Boolean),
-  "groups": S.optional(StringList),
-}),
+  S.Struct({
+    users: S.optional(StringList),
+    domainUsersCanEdit: S.optional(S.Boolean),
+    groups: S.optional(StringList),
+  }),
 ).annotate({ identifier: "Editors" }) as any as S.Schema<Editors>;
 
 /** A protected range. */
@@ -3274,17 +4073,17 @@ export interface ProtectedRange {
   tableId?: string;
 }
 export const ProtectedRange = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "protectedRangeId": S.optional(S.Number),
-  "namedRangeId": S.optional(S.String),
-  "warningOnly": S.optional(S.Boolean),
-  "editors": S.optional(Editors),
-  "unprotectedRanges": S.optional(GridRangeList),
-  "description": S.optional(S.String),
-  "range": S.optional(GridRange),
-  "requestingUserCanEdit": S.optional(S.Boolean),
-  "tableId": S.optional(S.String),
-}),
+  S.Struct({
+    protectedRangeId: S.optional(S.Number),
+    namedRangeId: S.optional(S.String),
+    warningOnly: S.optional(S.Boolean),
+    editors: S.optional(Editors),
+    unprotectedRanges: S.optional(GridRangeList),
+    description: S.optional(S.String),
+    range: S.optional(GridRange),
+    requestingUserCanEdit: S.optional(S.Boolean),
+    tableId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ProtectedRange" }) as any as S.Schema<ProtectedRange>;
 
 /** Adds a new protected range. */
@@ -3293,10 +4092,12 @@ export interface AddProtectedRangeRequest {
   protectedRange?: ProtectedRange;
 }
 export const AddProtectedRangeRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "protectedRange": S.optional(ProtectedRange),
-}),
-).annotate({ identifier: "AddProtectedRangeRequest" }) as any as S.Schema<AddProtectedRangeRequest>;
+  S.Struct({
+    protectedRange: S.optional(ProtectedRange),
+  }),
+).annotate({
+  identifier: "AddProtectedRangeRequest",
+}) as any as S.Schema<AddProtectedRangeRequest>;
 
 /** Updates the borders of a range. If a field is not set in the request, that means the border remains as-is. For example, with two subsequent UpdateBordersRequest: 1. range: A1:A5 `{ top: RED, bottom: WHITE }` 2. range: A1:A5 `{ left: BLUE }` That would result in A1:A5 having a borders of `{ top: RED, bottom: WHITE, left: BLUE }`. If you want to clear a border, explicitly set the style to NONE. */
 export interface UpdateBordersRequest {
@@ -3316,18 +4117,23 @@ export interface UpdateBordersRequest {
   top?: Border;
 }
 export const UpdateBordersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "range": S.optional(GridRange),
-  "right": S.optional(Border),
-  "innerVertical": S.optional(Border),
-  "bottom": S.optional(Border),
-  "left": S.optional(Border),
-  "innerHorizontal": S.optional(Border),
-  "top": S.optional(Border),
-}),
-).annotate({ identifier: "UpdateBordersRequest" }) as any as S.Schema<UpdateBordersRequest>;
+  S.Struct({
+    range: S.optional(GridRange),
+    right: S.optional(Border),
+    innerVertical: S.optional(Border),
+    bottom: S.optional(Border),
+    left: S.optional(Border),
+    innerHorizontal: S.optional(Border),
+    top: S.optional(Border),
+  }),
+).annotate({
+  identifier: "UpdateBordersRequest",
+}) as any as S.Schema<UpdateBordersRequest>;
 
-export type SourceAndDestinationDimensionEnum = "DIMENSION_UNSPECIFIED" | "ROWS" | "COLUMNS";
+export type SourceAndDestinationDimensionEnum =
+  | "DIMENSION_UNSPECIFIED"
+  | "ROWS"
+  | "COLUMNS";
 export const SourceAndDestinationDimensionEnum = /*@__PURE__*/ S.String;
 
 /** A combination of a source range and how to extend that source. */
@@ -3340,12 +4146,14 @@ export interface SourceAndDestination {
   dimension?: SourceAndDestinationDimensionEnum | (string & {});
 }
 export const SourceAndDestination = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fillLength": S.optional(S.Number),
-  "source": S.optional(GridRange),
-  "dimension": S.optional(SourceAndDestinationDimensionEnum),
-}),
-).annotate({ identifier: "SourceAndDestination" }) as any as S.Schema<SourceAndDestination>;
+  S.Struct({
+    fillLength: S.optional(S.Number),
+    source: S.optional(GridRange),
+    dimension: S.optional(SourceAndDestinationDimensionEnum),
+  }),
+).annotate({
+  identifier: "SourceAndDestination",
+}) as any as S.Schema<SourceAndDestination>;
 
 /** Fills in more data based on existing data. */
 export interface AutoFillRequest {
@@ -3357,12 +4165,14 @@ export interface AutoFillRequest {
   range?: GridRange;
 }
 export const AutoFillRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sourceAndDestination": S.optional(SourceAndDestination),
-  "useAlternateSeries": S.optional(S.Boolean),
-  "range": S.optional(GridRange),
-}),
-).annotate({ identifier: "AutoFillRequest" }) as any as S.Schema<AutoFillRequest>;
+  S.Struct({
+    sourceAndDestination: S.optional(SourceAndDestination),
+    useAlternateSeries: S.optional(S.Boolean),
+    range: S.optional(GridRange),
+  }),
+).annotate({
+  identifier: "AutoFillRequest",
+}) as any as S.Schema<AutoFillRequest>;
 
 /** The table row properties. */
 export interface TableRowsProperties {
@@ -3376,15 +4186,32 @@ export interface TableRowsProperties {
   footerColorStyle?: ColorStyle;
 }
 export const TableRowsProperties = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "secondBandColorStyle": S.optional(ColorStyle),
-  "firstBandColorStyle": S.optional(ColorStyle),
-  "headerColorStyle": S.optional(ColorStyle),
-  "footerColorStyle": S.optional(ColorStyle),
-}),
-).annotate({ identifier: "TableRowsProperties" }) as any as S.Schema<TableRowsProperties>;
+  S.Struct({
+    secondBandColorStyle: S.optional(ColorStyle),
+    firstBandColorStyle: S.optional(ColorStyle),
+    headerColorStyle: S.optional(ColorStyle),
+    footerColorStyle: S.optional(ColorStyle),
+  }),
+).annotate({
+  identifier: "TableRowsProperties",
+}) as any as S.Schema<TableRowsProperties>;
 
-export type TableColumnPropertiesColumnTypeEnum = "COLUMN_TYPE_UNSPECIFIED" | "DOUBLE" | "CURRENCY" | "PERCENT" | "DATE" | "TIME" | "DATE_TIME" | "TEXT" | "BOOLEAN" | "DROPDOWN" | "FILES_CHIP" | "PEOPLE_CHIP" | "FINANCE_CHIP" | "PLACE_CHIP" | "RATINGS_CHIP";
+export type TableColumnPropertiesColumnTypeEnum =
+  | "COLUMN_TYPE_UNSPECIFIED"
+  | "DOUBLE"
+  | "CURRENCY"
+  | "PERCENT"
+  | "DATE"
+  | "TIME"
+  | "DATE_TIME"
+  | "TEXT"
+  | "BOOLEAN"
+  | "DROPDOWN"
+  | "FILES_CHIP"
+  | "PEOPLE_CHIP"
+  | "FINANCE_CHIP"
+  | "PLACE_CHIP"
+  | "RATINGS_CHIP";
 export const TableColumnPropertiesColumnTypeEnum = /*@__PURE__*/ S.String;
 
 /** A data validation rule for a column in a table. */
@@ -3393,10 +4220,12 @@ export interface TableColumnDataValidationRule {
   condition?: BooleanCondition;
 }
 export const TableColumnDataValidationRule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "condition": S.optional(BooleanCondition),
-}),
-).annotate({ identifier: "TableColumnDataValidationRule" }) as any as S.Schema<TableColumnDataValidationRule>;
+  S.Struct({
+    condition: S.optional(BooleanCondition),
+  }),
+).annotate({
+  identifier: "TableColumnDataValidationRule",
+}) as any as S.Schema<TableColumnDataValidationRule>;
 
 /** The table column. */
 export interface TableColumnProperties {
@@ -3410,16 +4239,20 @@ export interface TableColumnProperties {
   dataValidationRule?: TableColumnDataValidationRule;
 }
 export const TableColumnProperties = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "columnName": S.optional(S.String),
-  "columnIndex": S.optional(S.Number),
-  "columnType": S.optional(TableColumnPropertiesColumnTypeEnum),
-  "dataValidationRule": S.optional(TableColumnDataValidationRule),
-}),
-).annotate({ identifier: "TableColumnProperties" }) as any as S.Schema<TableColumnProperties>;
+  S.Struct({
+    columnName: S.optional(S.String),
+    columnIndex: S.optional(S.Number),
+    columnType: S.optional(TableColumnPropertiesColumnTypeEnum),
+    dataValidationRule: S.optional(TableColumnDataValidationRule),
+  }),
+).annotate({
+  identifier: "TableColumnProperties",
+}) as any as S.Schema<TableColumnProperties>;
 
 export type TableColumnPropertiesList = ReadonlyArray<TableColumnProperties>;
-export const TableColumnPropertiesList = /*@__PURE__*/ S.Array(TableColumnProperties) as any as S.Schema<TableColumnPropertiesList>;
+export const TableColumnPropertiesList = /*@__PURE__*/ S.Array(
+  TableColumnProperties,
+) as any as S.Schema<TableColumnPropertiesList>;
 
 /** A table. */
 export interface Table {
@@ -3435,13 +4268,13 @@ export interface Table {
   columnProperties?: TableColumnPropertiesList;
 }
 export const Table = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "rowsProperties": S.optional(TableRowsProperties),
-  "tableId": S.optional(S.String),
-  "name": S.optional(S.String),
-  "range": S.optional(GridRange),
-  "columnProperties": S.optional(TableColumnPropertiesList),
-}),
+  S.Struct({
+    rowsProperties: S.optional(TableRowsProperties),
+    tableId: S.optional(S.String),
+    name: S.optional(S.String),
+    range: S.optional(GridRange),
+    columnProperties: S.optional(TableColumnPropertiesList),
+  }),
 ).annotate({ identifier: "Table" }) as any as S.Schema<Table>;
 
 /** Adds a new table to the spreadsheet. */
@@ -3450,12 +4283,17 @@ export interface AddTableRequest {
   table?: Table;
 }
 export const AddTableRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "table": S.optional(Table),
-}),
-).annotate({ identifier: "AddTableRequest" }) as any as S.Schema<AddTableRequest>;
+  S.Struct({
+    table: S.optional(Table),
+  }),
+).annotate({
+  identifier: "AddTableRequest",
+}) as any as S.Schema<AddTableRequest>;
 
-export type DeleteRangeRequestShiftDimensionEnum = "DIMENSION_UNSPECIFIED" | "ROWS" | "COLUMNS";
+export type DeleteRangeRequestShiftDimensionEnum =
+  | "DIMENSION_UNSPECIFIED"
+  | "ROWS"
+  | "COLUMNS";
 export const DeleteRangeRequestShiftDimensionEnum = /*@__PURE__*/ S.String;
 
 /** Deletes a range of cells, shifting other cells into the deleted area. */
@@ -3466,11 +4304,13 @@ export interface DeleteRangeRequest {
   shiftDimension?: DeleteRangeRequestShiftDimensionEnum | (string & {});
 }
 export const DeleteRangeRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "range": S.optional(GridRange),
-  "shiftDimension": S.optional(DeleteRangeRequestShiftDimensionEnum),
-}),
-).annotate({ identifier: "DeleteRangeRequest" }) as any as S.Schema<DeleteRangeRequest>;
+  S.Struct({
+    range: S.optional(GridRange),
+    shiftDimension: S.optional(DeleteRangeRequestShiftDimensionEnum),
+  }),
+).annotate({
+  identifier: "DeleteRangeRequest",
+}) as any as S.Schema<DeleteRangeRequest>;
 
 /** Updates a chart's specifications. (This does not move or resize a chart. To move or resize a chart, use UpdateEmbeddedObjectPositionRequest.) */
 export interface UpdateChartSpecRequest {
@@ -3480,13 +4320,22 @@ export interface UpdateChartSpecRequest {
   spec?: ChartSpec;
 }
 export const UpdateChartSpecRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "chartId": S.optional(S.Number),
-  "spec": S.optional(ChartSpec),
-}),
-).annotate({ identifier: "UpdateChartSpecRequest" }) as any as S.Schema<UpdateChartSpecRequest>;
+  S.Struct({
+    chartId: S.optional(S.Number),
+    spec: S.optional(ChartSpec),
+  }),
+).annotate({
+  identifier: "UpdateChartSpecRequest",
+}) as any as S.Schema<UpdateChartSpecRequest>;
 
-export type CutPasteRequestPasteTypeEnum = "PASTE_NORMAL" | "PASTE_VALUES" | "PASTE_FORMAT" | "PASTE_NO_BORDERS" | "PASTE_FORMULA" | "PASTE_DATA_VALIDATION" | "PASTE_CONDITIONAL_FORMATTING";
+export type CutPasteRequestPasteTypeEnum =
+  | "PASTE_NORMAL"
+  | "PASTE_VALUES"
+  | "PASTE_FORMAT"
+  | "PASTE_NO_BORDERS"
+  | "PASTE_FORMULA"
+  | "PASTE_DATA_VALIDATION"
+  | "PASTE_CONDITIONAL_FORMATTING";
 export const CutPasteRequestPasteTypeEnum = /*@__PURE__*/ S.String;
 
 /** Moves data from the source to the destination. */
@@ -3499,12 +4348,14 @@ export interface CutPasteRequest {
   destination?: GridCoordinate;
 }
 export const CutPasteRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pasteType": S.optional(CutPasteRequestPasteTypeEnum),
-  "source": S.optional(GridRange),
-  "destination": S.optional(GridCoordinate),
-}),
-).annotate({ identifier: "CutPasteRequest" }) as any as S.Schema<CutPasteRequest>;
+  S.Struct({
+    pasteType: S.optional(CutPasteRequestPasteTypeEnum),
+    source: S.optional(GridRange),
+    destination: S.optional(GridCoordinate),
+  }),
+).annotate({
+  identifier: "CutPasteRequest",
+}) as any as S.Schema<CutPasteRequest>;
 
 /** Duplicates the contents of a sheet. */
 export interface DuplicateSheetRequest {
@@ -3518,13 +4369,15 @@ export interface DuplicateSheetRequest {
   insertSheetIndex?: number;
 }
 export const DuplicateSheetRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "newSheetId": S.optional(S.Number),
-  "newSheetName": S.optional(S.String),
-  "sourceSheetId": S.optional(S.Number),
-  "insertSheetIndex": S.optional(S.Number),
-}),
-).annotate({ identifier: "DuplicateSheetRequest" }) as any as S.Schema<DuplicateSheetRequest>;
+  S.Struct({
+    newSheetId: S.optional(S.Number),
+    newSheetName: S.optional(S.String),
+    sourceSheetId: S.optional(S.Number),
+    insertSheetIndex: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "DuplicateSheetRequest",
+}) as any as S.Schema<DuplicateSheetRequest>;
 
 /** A group over an interval of rows or columns on a sheet, which can contain or be contained within other groups. A group can be collapsed or expanded as a unit on the sheet. */
 export interface DimensionGroup {
@@ -3536,11 +4389,11 @@ export interface DimensionGroup {
   depth?: number;
 }
 export const DimensionGroup = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "range": S.optional(DimensionRange),
-  "collapsed": S.optional(S.Boolean),
-  "depth": S.optional(S.Number),
-}),
+  S.Struct({
+    range: S.optional(DimensionRange),
+    collapsed: S.optional(S.Boolean),
+    depth: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "DimensionGroup" }) as any as S.Schema<DimensionGroup>;
 
 /** Updates the state of the specified group. */
@@ -3551,11 +4404,13 @@ export interface UpdateDimensionGroupRequest {
   fields?: string;
 }
 export const UpdateDimensionGroupRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dimensionGroup": S.optional(DimensionGroup),
-  "fields": S.optional(S.String),
-}),
-).annotate({ identifier: "UpdateDimensionGroupRequest" }) as any as S.Schema<UpdateDimensionGroupRequest>;
+  S.Struct({
+    dimensionGroup: S.optional(DimensionGroup),
+    fields: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateDimensionGroupRequest",
+}) as any as S.Schema<UpdateDimensionGroupRequest>;
 
 /** A request to delete developer metadata. */
 export interface DeleteDeveloperMetadataRequest {
@@ -3563,10 +4418,12 @@ export interface DeleteDeveloperMetadataRequest {
   dataFilter?: DataFilter;
 }
 export const DeleteDeveloperMetadataRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dataFilter": S.optional(DataFilter),
-}),
-).annotate({ identifier: "DeleteDeveloperMetadataRequest" }) as any as S.Schema<DeleteDeveloperMetadataRequest>;
+  S.Struct({
+    dataFilter: S.optional(DataFilter),
+  }),
+).annotate({
+  identifier: "DeleteDeveloperMetadataRequest",
+}) as any as S.Schema<DeleteDeveloperMetadataRequest>;
 
 /** Adds a new conditional format rule at the given index. All subsequent rules' indexes are incremented. */
 export interface AddConditionalFormatRuleRequest {
@@ -3576,11 +4433,13 @@ export interface AddConditionalFormatRuleRequest {
   index?: number;
 }
 export const AddConditionalFormatRuleRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "rule": S.optional(ConditionalFormatRule),
-  "index": S.optional(S.Number),
-}),
-).annotate({ identifier: "AddConditionalFormatRuleRequest" }) as any as S.Schema<AddConditionalFormatRuleRequest>;
+  S.Struct({
+    rule: S.optional(ConditionalFormatRule),
+    index: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "AddConditionalFormatRuleRequest",
+}) as any as S.Schema<AddConditionalFormatRuleRequest>;
 
 /** A named range. */
 export interface NamedRange {
@@ -3592,11 +4451,11 @@ export interface NamedRange {
   namedRangeId?: string;
 }
 export const NamedRange = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "range": S.optional(GridRange),
-  "namedRangeId": S.optional(S.String),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    range: S.optional(GridRange),
+    namedRangeId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "NamedRange" }) as any as S.Schema<NamedRange>;
 
 /** Updates properties of the named range with the specified namedRangeId. */
@@ -3607,16 +4466,25 @@ export interface UpdateNamedRangeRequest {
   fields?: string;
 }
 export const UpdateNamedRangeRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "namedRange": S.optional(NamedRange),
-  "fields": S.optional(S.String),
-}),
-).annotate({ identifier: "UpdateNamedRangeRequest" }) as any as S.Schema<UpdateNamedRangeRequest>;
+  S.Struct({
+    namedRange: S.optional(NamedRange),
+    fields: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateNamedRangeRequest",
+}) as any as S.Schema<UpdateNamedRangeRequest>;
 
 export type CopyPasteRequestPasteOrientationEnum = "NORMAL" | "TRANSPOSE";
 export const CopyPasteRequestPasteOrientationEnum = /*@__PURE__*/ S.String;
 
-export type CopyPasteRequestPasteTypeEnum = "PASTE_NORMAL" | "PASTE_VALUES" | "PASTE_FORMAT" | "PASTE_NO_BORDERS" | "PASTE_FORMULA" | "PASTE_DATA_VALIDATION" | "PASTE_CONDITIONAL_FORMATTING";
+export type CopyPasteRequestPasteTypeEnum =
+  | "PASTE_NORMAL"
+  | "PASTE_VALUES"
+  | "PASTE_FORMAT"
+  | "PASTE_NO_BORDERS"
+  | "PASTE_FORMULA"
+  | "PASTE_DATA_VALIDATION"
+  | "PASTE_CONDITIONAL_FORMATTING";
 export const CopyPasteRequestPasteTypeEnum = /*@__PURE__*/ S.String;
 
 /** Copies data from the source to the destination. */
@@ -3631,13 +4499,15 @@ export interface CopyPasteRequest {
   destination?: GridRange;
 }
 export const CopyPasteRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pasteOrientation": S.optional(CopyPasteRequestPasteOrientationEnum),
-  "pasteType": S.optional(CopyPasteRequestPasteTypeEnum),
-  "source": S.optional(GridRange),
-  "destination": S.optional(GridRange),
-}),
-).annotate({ identifier: "CopyPasteRequest" }) as any as S.Schema<CopyPasteRequest>;
+  S.Struct({
+    pasteOrientation: S.optional(CopyPasteRequestPasteOrientationEnum),
+    pasteType: S.optional(CopyPasteRequestPasteTypeEnum),
+    source: S.optional(GridRange),
+    destination: S.optional(GridRange),
+  }),
+).annotate({
+  identifier: "CopyPasteRequest",
+}) as any as S.Schema<CopyPasteRequest>;
 
 /** Adds a named range to the spreadsheet. */
 export interface AddNamedRangeRequest {
@@ -3645,10 +4515,12 @@ export interface AddNamedRangeRequest {
   namedRange?: NamedRange;
 }
 export const AddNamedRangeRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "namedRange": S.optional(NamedRange),
-}),
-).annotate({ identifier: "AddNamedRangeRequest" }) as any as S.Schema<AddNamedRangeRequest>;
+  S.Struct({
+    namedRange: S.optional(NamedRange),
+  }),
+).annotate({
+  identifier: "AddNamedRangeRequest",
+}) as any as S.Schema<AddNamedRangeRequest>;
 
 /** Unmerges cells in the given range. */
 export interface UnmergeCellsRequest {
@@ -3656,10 +4528,12 @@ export interface UnmergeCellsRequest {
   range?: GridRange;
 }
 export const UnmergeCellsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "range": S.optional(GridRange),
-}),
-).annotate({ identifier: "UnmergeCellsRequest" }) as any as S.Schema<UnmergeCellsRequest>;
+  S.Struct({
+    range: S.optional(GridRange),
+  }),
+).annotate({
+  identifier: "UnmergeCellsRequest",
+}) as any as S.Schema<UnmergeCellsRequest>;
 
 /** Moves one or more rows or columns. */
 export interface MoveDimensionRequest {
@@ -3669,13 +4543,18 @@ export interface MoveDimensionRequest {
   destinationIndex?: number;
 }
 export const MoveDimensionRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "source": S.optional(DimensionRange),
-  "destinationIndex": S.optional(S.Number),
-}),
-).annotate({ identifier: "MoveDimensionRequest" }) as any as S.Schema<MoveDimensionRequest>;
+  S.Struct({
+    source: S.optional(DimensionRange),
+    destinationIndex: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "MoveDimensionRequest",
+}) as any as S.Schema<MoveDimensionRequest>;
 
-export type DeveloperMetadataVisibilityEnum = "DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED" | "DOCUMENT" | "PROJECT";
+export type DeveloperMetadataVisibilityEnum =
+  | "DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED"
+  | "DOCUMENT"
+  | "PROJECT";
 export const DeveloperMetadataVisibilityEnum = /*@__PURE__*/ S.String;
 
 /** Developer metadata associated with a location or object in a spreadsheet. For more information, see [Read, write, and search metadata](https://developers.google.com/workspace/sheets/api/guides/metadata). Developer metadata may be used to associate arbitrary data with various parts of a spreadsheet and it will remain associated at those locations as they move around and the spreadsheet is edited. For example, if developer metadata is associated with row 5 and another row is then subsequently inserted above row 5, that original metadata is still associated with the row it was first associated with (what is now row 6). If the associated object is deleted then its metadata is deleted too. */
@@ -3692,14 +4571,16 @@ export interface DeveloperMetadata {
   location?: DeveloperMetadataLocation;
 }
 export const DeveloperMetadata = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "metadataId": S.optional(S.Number),
-  "metadataKey": S.optional(S.String),
-  "visibility": S.optional(DeveloperMetadataVisibilityEnum),
-  "metadataValue": S.optional(S.String),
-  "location": S.optional(DeveloperMetadataLocation),
-}),
-).annotate({ identifier: "DeveloperMetadata" }) as any as S.Schema<DeveloperMetadata>;
+  S.Struct({
+    metadataId: S.optional(S.Number),
+    metadataKey: S.optional(S.String),
+    visibility: S.optional(DeveloperMetadataVisibilityEnum),
+    metadataValue: S.optional(S.String),
+    location: S.optional(DeveloperMetadataLocation),
+  }),
+).annotate({
+  identifier: "DeveloperMetadata",
+}) as any as S.Schema<DeveloperMetadata>;
 
 /** A request to create developer metadata. */
 export interface CreateDeveloperMetadataRequest {
@@ -3707,10 +4588,12 @@ export interface CreateDeveloperMetadataRequest {
   developerMetadata?: DeveloperMetadata;
 }
 export const CreateDeveloperMetadataRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "developerMetadata": S.optional(DeveloperMetadata),
-}),
-).annotate({ identifier: "CreateDeveloperMetadataRequest" }) as any as S.Schema<CreateDeveloperMetadataRequest>;
+  S.Struct({
+    developerMetadata: S.optional(DeveloperMetadata),
+  }),
+).annotate({
+  identifier: "CreateDeveloperMetadataRequest",
+}) as any as S.Schema<CreateDeveloperMetadataRequest>;
 
 /** Randomizes the order of the rows in a range. */
 export interface RandomizeRangeRequest {
@@ -3718,10 +4601,12 @@ export interface RandomizeRangeRequest {
   range?: GridRange;
 }
 export const RandomizeRangeRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "range": S.optional(GridRange),
-}),
-).annotate({ identifier: "RandomizeRangeRequest" }) as any as S.Schema<RandomizeRangeRequest>;
+  S.Struct({
+    range: S.optional(GridRange),
+  }),
+).annotate({
+  identifier: "RandomizeRangeRequest",
+}) as any as S.Schema<RandomizeRangeRequest>;
 
 /** Updates an existing protected range with the specified protectedRangeId. */
 export interface UpdateProtectedRangeRequest {
@@ -3731,11 +4616,13 @@ export interface UpdateProtectedRangeRequest {
   protectedRange?: ProtectedRange;
 }
 export const UpdateProtectedRangeRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fields": S.optional(S.String),
-  "protectedRange": S.optional(ProtectedRange),
-}),
-).annotate({ identifier: "UpdateProtectedRangeRequest" }) as any as S.Schema<UpdateProtectedRangeRequest>;
+  S.Struct({
+    fields: S.optional(S.String),
+    protectedRange: S.optional(ProtectedRange),
+  }),
+).annotate({
+  identifier: "UpdateProtectedRangeRequest",
+}) as any as S.Schema<UpdateProtectedRangeRequest>;
 
 /** Properties referring a single dimension (either row or column). If both BandedRange.row_properties and BandedRange.column_properties are set, the fill colors are applied to cells according to the following rules: * header_color and footer_color take priority over band colors. * first_band_color takes priority over second_band_color. * row_properties takes priority over column_properties. For example, the first row color takes priority over the first column color, but the first column color takes priority over the second row color. Similarly, the row header takes priority over the column header in the top left cell, but the column header takes priority over the first row color if the row header is not set. */
 export interface BandingProperties {
@@ -3757,17 +4644,19 @@ export interface BandingProperties {
   secondBandColor?: Color;
 }
 export const BandingProperties = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "headerColorStyle": S.optional(ColorStyle),
-  "headerColor": S.optional(Color),
-  "secondBandColorStyle": S.optional(ColorStyle),
-  "footerColor": S.optional(Color),
-  "footerColorStyle": S.optional(ColorStyle),
-  "firstBandColor": S.optional(Color),
-  "firstBandColorStyle": S.optional(ColorStyle),
-  "secondBandColor": S.optional(Color),
-}),
-).annotate({ identifier: "BandingProperties" }) as any as S.Schema<BandingProperties>;
+  S.Struct({
+    headerColorStyle: S.optional(ColorStyle),
+    headerColor: S.optional(Color),
+    secondBandColorStyle: S.optional(ColorStyle),
+    footerColor: S.optional(Color),
+    footerColorStyle: S.optional(ColorStyle),
+    firstBandColor: S.optional(Color),
+    firstBandColorStyle: S.optional(ColorStyle),
+    secondBandColor: S.optional(Color),
+  }),
+).annotate({
+  identifier: "BandingProperties",
+}) as any as S.Schema<BandingProperties>;
 
 /** A banded (alternating colors) range in a sheet. */
 export interface BandedRange {
@@ -3783,13 +4672,13 @@ export interface BandedRange {
   range?: GridRange;
 }
 export const BandedRange = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bandedRangeReference": S.optional(S.String),
-  "bandedRangeId": S.optional(S.Number),
-  "rowProperties": S.optional(BandingProperties),
-  "columnProperties": S.optional(BandingProperties),
-  "range": S.optional(GridRange),
-}),
+  S.Struct({
+    bandedRangeReference: S.optional(S.String),
+    bandedRangeId: S.optional(S.Number),
+    rowProperties: S.optional(BandingProperties),
+    columnProperties: S.optional(BandingProperties),
+    range: S.optional(GridRange),
+  }),
 ).annotate({ identifier: "BandedRange" }) as any as S.Schema<BandedRange>;
 
 /** Updates properties of the supplied banded range. */
@@ -3800,11 +4689,13 @@ export interface UpdateBandingRequest {
   fields?: string;
 }
 export const UpdateBandingRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bandedRange": S.optional(BandedRange),
-  "fields": S.optional(S.String),
-}),
-).annotate({ identifier: "UpdateBandingRequest" }) as any as S.Schema<UpdateBandingRequest>;
+  S.Struct({
+    bandedRange: S.optional(BandedRange),
+    fields: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateBandingRequest",
+}) as any as S.Schema<UpdateBandingRequest>;
 
 /** Deletes the dimensions from the sheet. */
 export interface DeleteDimensionRequest {
@@ -3812,10 +4703,12 @@ export interface DeleteDimensionRequest {
   range?: DimensionRange;
 }
 export const DeleteDimensionRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "range": S.optional(DimensionRange),
-}),
-).annotate({ identifier: "DeleteDimensionRequest" }) as any as S.Schema<DeleteDimensionRequest>;
+  S.Struct({
+    range: S.optional(DimensionRange),
+  }),
+).annotate({
+  identifier: "DeleteDimensionRequest",
+}) as any as S.Schema<DeleteDimensionRequest>;
 
 /** Deletes a conditional format rule at the given index. All subsequent rules' indexes are decremented. */
 export interface DeleteConditionalFormatRuleRequest {
@@ -3825,11 +4718,13 @@ export interface DeleteConditionalFormatRuleRequest {
   index?: number;
 }
 export const DeleteConditionalFormatRuleRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sheetId": S.optional(S.Number),
-  "index": S.optional(S.Number),
-}),
-).annotate({ identifier: "DeleteConditionalFormatRuleRequest" }) as any as S.Schema<DeleteConditionalFormatRuleRequest>;
+  S.Struct({
+    sheetId: S.optional(S.Number),
+    index: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "DeleteConditionalFormatRuleRequest",
+}) as any as S.Schema<DeleteConditionalFormatRuleRequest>;
 
 /** Deletes a group over the specified range by decrementing the depth of the dimensions in the range. For example, assume the sheet has a depth-1 group over B:E and a depth-2 group over C:D. Deleting a group over D:E leaves the sheet with a depth-1 group over B:D and a depth-2 group over C:C. */
 export interface DeleteDimensionGroupRequest {
@@ -3837,10 +4732,12 @@ export interface DeleteDimensionGroupRequest {
   range?: DimensionRange;
 }
 export const DeleteDimensionGroupRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "range": S.optional(DimensionRange),
-}),
-).annotate({ identifier: "DeleteDimensionGroupRequest" }) as any as S.Schema<DeleteDimensionGroupRequest>;
+  S.Struct({
+    range: S.optional(DimensionRange),
+  }),
+).annotate({
+  identifier: "DeleteDimensionGroupRequest",
+}) as any as S.Schema<DeleteDimensionGroupRequest>;
 
 /** A range along a single dimension on a DATA_SOURCE sheet. */
 export interface DataSourceSheetDimensionRange {
@@ -3850,14 +4747,18 @@ export interface DataSourceSheetDimensionRange {
   columnReferences?: DataSourceColumnReferenceList;
 }
 export const DataSourceSheetDimensionRange = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sheetId": S.optional(S.Number),
-  "columnReferences": S.optional(DataSourceColumnReferenceList),
-}),
-).annotate({ identifier: "DataSourceSheetDimensionRange" }) as any as S.Schema<DataSourceSheetDimensionRange>;
+  S.Struct({
+    sheetId: S.optional(S.Number),
+    columnReferences: S.optional(DataSourceColumnReferenceList),
+  }),
+).annotate({
+  identifier: "DataSourceSheetDimensionRange",
+}) as any as S.Schema<DataSourceSheetDimensionRange>;
 
 export type DeveloperMetadataList = ReadonlyArray<DeveloperMetadata>;
-export const DeveloperMetadataList = /*@__PURE__*/ S.Array(DeveloperMetadata) as any as S.Schema<DeveloperMetadataList>;
+export const DeveloperMetadataList = /*@__PURE__*/ S.Array(
+  DeveloperMetadata,
+) as any as S.Schema<DeveloperMetadataList>;
 
 /** Properties about a dimension. */
 export interface DimensionProperties {
@@ -3873,14 +4774,16 @@ export interface DimensionProperties {
   hiddenByUser?: boolean;
 }
 export const DimensionProperties = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dataSourceColumnReference": S.optional(DataSourceColumnReference),
-  "pixelSize": S.optional(S.Number),
-  "developerMetadata": S.optional(DeveloperMetadataList),
-  "hiddenByFilter": S.optional(S.Boolean),
-  "hiddenByUser": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "DimensionProperties" }) as any as S.Schema<DimensionProperties>;
+  S.Struct({
+    dataSourceColumnReference: S.optional(DataSourceColumnReference),
+    pixelSize: S.optional(S.Number),
+    developerMetadata: S.optional(DeveloperMetadataList),
+    hiddenByFilter: S.optional(S.Boolean),
+    hiddenByUser: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "DimensionProperties",
+}) as any as S.Schema<DimensionProperties>;
 
 /** Updates properties of dimensions within the specified range. */
 export interface UpdateDimensionPropertiesRequest {
@@ -3894,13 +4797,15 @@ export interface UpdateDimensionPropertiesRequest {
   properties?: DimensionProperties;
 }
 export const UpdateDimensionPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dataSourceSheetRange": S.optional(DataSourceSheetDimensionRange),
-  "range": S.optional(DimensionRange),
-  "fields": S.optional(S.String),
-  "properties": S.optional(DimensionProperties),
-}),
-).annotate({ identifier: "UpdateDimensionPropertiesRequest" }) as any as S.Schema<UpdateDimensionPropertiesRequest>;
+  S.Struct({
+    dataSourceSheetRange: S.optional(DataSourceSheetDimensionRange),
+    range: S.optional(DimensionRange),
+    fields: S.optional(S.String),
+    properties: S.optional(DimensionProperties),
+  }),
+).annotate({
+  identifier: "UpdateDimensionPropertiesRequest",
+}) as any as S.Schema<UpdateDimensionPropertiesRequest>;
 
 /** A request to update properties of developer metadata. Updates the properties of the developer metadata selected by the filters to the values provided in the DeveloperMetadata resource. Callers must specify the properties they wish to update in the fields parameter, as well as specify at least one DataFilter matching the metadata they wish to update. */
 export interface UpdateDeveloperMetadataRequest {
@@ -3912,12 +4817,14 @@ export interface UpdateDeveloperMetadataRequest {
   fields?: string;
 }
 export const UpdateDeveloperMetadataRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dataFilters": S.optional(DataFilterList),
-  "developerMetadata": S.optional(DeveloperMetadata),
-  "fields": S.optional(S.String),
-}),
-).annotate({ identifier: "UpdateDeveloperMetadataRequest" }) as any as S.Schema<UpdateDeveloperMetadataRequest>;
+  S.Struct({
+    dataFilters: S.optional(DataFilterList),
+    developerMetadata: S.optional(DeveloperMetadata),
+    fields: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateDeveloperMetadataRequest",
+}) as any as S.Schema<UpdateDeveloperMetadataRequest>;
 
 /** Removes the banded range with the given ID from the spreadsheet. */
 export interface DeleteBandingRequest {
@@ -3925,10 +4832,12 @@ export interface DeleteBandingRequest {
   bandedRangeId?: number;
 }
 export const DeleteBandingRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bandedRangeId": S.optional(S.Number),
-}),
-).annotate({ identifier: "DeleteBandingRequest" }) as any as S.Schema<DeleteBandingRequest>;
+  S.Struct({
+    bandedRangeId: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "DeleteBandingRequest",
+}) as any as S.Schema<DeleteBandingRequest>;
 
 /** Automatically resizes one or more dimensions based on the contents of the cells in that dimension. */
 export interface AutoResizeDimensionsRequest {
@@ -3938,11 +4847,13 @@ export interface AutoResizeDimensionsRequest {
   dimensions?: DimensionRange;
 }
 export const AutoResizeDimensionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dataSourceSheetDimensions": S.optional(DataSourceSheetDimensionRange),
-  "dimensions": S.optional(DimensionRange),
-}),
-).annotate({ identifier: "AutoResizeDimensionsRequest" }) as any as S.Schema<AutoResizeDimensionsRequest>;
+  S.Struct({
+    dataSourceSheetDimensions: S.optional(DataSourceSheetDimensionRange),
+    dimensions: S.optional(DimensionRange),
+  }),
+).annotate({
+  identifier: "AutoResizeDimensionsRequest",
+}) as any as S.Schema<AutoResizeDimensionsRequest>;
 
 /** Deletes the requested sheet. */
 export interface DeleteSheetRequest {
@@ -3950,12 +4861,18 @@ export interface DeleteSheetRequest {
   sheetId?: number;
 }
 export const DeleteSheetRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sheetId": S.optional(S.Number),
-}),
-).annotate({ identifier: "DeleteSheetRequest" }) as any as S.Schema<DeleteSheetRequest>;
+  S.Struct({
+    sheetId: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "DeleteSheetRequest",
+}) as any as S.Schema<DeleteSheetRequest>;
 
-export type SlicerSpecHorizontalAlignmentEnum = "HORIZONTAL_ALIGN_UNSPECIFIED" | "LEFT" | "CENTER" | "RIGHT";
+export type SlicerSpecHorizontalAlignmentEnum =
+  | "HORIZONTAL_ALIGN_UNSPECIFIED"
+  | "LEFT"
+  | "CENTER"
+  | "RIGHT";
 export const SlicerSpecHorizontalAlignmentEnum = /*@__PURE__*/ S.String;
 
 /** The specifications of a slicer. */
@@ -3980,17 +4897,17 @@ export interface SlicerSpec {
   applyToPivotTables?: boolean;
 }
 export const SlicerSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dataRange": S.optional(GridRange),
-  "title": S.optional(S.String),
-  "textFormat": S.optional(TextFormat),
-  "backgroundColorStyle": S.optional(ColorStyle),
-  "columnIndex": S.optional(S.Number),
-  "horizontalAlignment": S.optional(SlicerSpecHorizontalAlignmentEnum),
-  "backgroundColor": S.optional(Color),
-  "filterCriteria": S.optional(FilterCriteria),
-  "applyToPivotTables": S.optional(S.Boolean),
-}),
+  S.Struct({
+    dataRange: S.optional(GridRange),
+    title: S.optional(S.String),
+    textFormat: S.optional(TextFormat),
+    backgroundColorStyle: S.optional(ColorStyle),
+    columnIndex: S.optional(S.Number),
+    horizontalAlignment: S.optional(SlicerSpecHorizontalAlignmentEnum),
+    backgroundColor: S.optional(Color),
+    filterCriteria: S.optional(FilterCriteria),
+    applyToPivotTables: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "SlicerSpec" }) as any as S.Schema<SlicerSpec>;
 
 /** A slicer in a sheet. */
@@ -4003,11 +4920,11 @@ export interface Slicer {
   position?: EmbeddedObjectPosition;
 }
 export const Slicer = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "slicerId": S.optional(S.Number),
-  "spec": S.optional(SlicerSpec),
-  "position": S.optional(EmbeddedObjectPosition),
-}),
+  S.Struct({
+    slicerId: S.optional(S.Number),
+    spec: S.optional(SlicerSpec),
+    position: S.optional(EmbeddedObjectPosition),
+  }),
 ).annotate({ identifier: "Slicer" }) as any as S.Schema<Slicer>;
 
 /** Adds a slicer to a sheet in the spreadsheet. */
@@ -4016,10 +4933,12 @@ export interface AddSlicerRequest {
   slicer?: Slicer;
 }
 export const AddSlicerRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "slicer": S.optional(Slicer),
-}),
-).annotate({ identifier: "AddSlicerRequest" }) as any as S.Schema<AddSlicerRequest>;
+  S.Struct({
+    slicer: S.optional(Slicer),
+  }),
+).annotate({
+  identifier: "AddSlicerRequest",
+}) as any as S.Schema<AddSlicerRequest>;
 
 /** A filter view. For more information, see [Manage data visibility with filters](https://developers.google.com/workspace/sheets/api/guides/filters). */
 export interface FilterView {
@@ -4041,16 +4960,16 @@ export interface FilterView {
   filterSpecs?: FilterSpecList;
 }
 export const FilterView = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "namedRangeId": S.optional(S.String),
-  "criteria": S.optional(FilterCriteriaMap),
-  "range": S.optional(GridRange),
-  "filterViewId": S.optional(S.Number),
-  "tableId": S.optional(S.String),
-  "sortSpecs": S.optional(SortSpecList),
-  "title": S.optional(S.String),
-  "filterSpecs": S.optional(FilterSpecList),
-}),
+  S.Struct({
+    namedRangeId: S.optional(S.String),
+    criteria: S.optional(FilterCriteriaMap),
+    range: S.optional(GridRange),
+    filterViewId: S.optional(S.Number),
+    tableId: S.optional(S.String),
+    sortSpecs: S.optional(SortSpecList),
+    title: S.optional(S.String),
+    filterSpecs: S.optional(FilterSpecList),
+  }),
 ).annotate({ identifier: "FilterView" }) as any as S.Schema<FilterView>;
 
 /** Updates properties of the filter view. */
@@ -4061,11 +4980,13 @@ export interface UpdateFilterViewRequest {
   fields?: string;
 }
 export const UpdateFilterViewRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(FilterView),
-  "fields": S.optional(S.String),
-}),
-).annotate({ identifier: "UpdateFilterViewRequest" }) as any as S.Schema<UpdateFilterViewRequest>;
+  S.Struct({
+    filter: S.optional(FilterView),
+    fields: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateFilterViewRequest",
+}) as any as S.Schema<UpdateFilterViewRequest>;
 
 /** Updates a table in the spreadsheet. */
 export interface UpdateTableRequest {
@@ -4075,11 +4996,13 @@ export interface UpdateTableRequest {
   fields?: string;
 }
 export const UpdateTableRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "table": S.optional(Table),
-  "fields": S.optional(S.String),
-}),
-).annotate({ identifier: "UpdateTableRequest" }) as any as S.Schema<UpdateTableRequest>;
+  S.Struct({
+    table: S.optional(Table),
+    fields: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateTableRequest",
+}) as any as S.Schema<UpdateTableRequest>;
 
 /** Updates all cells in the range to the values in the given Cell object. Only the fields listed in the fields field are updated; others are unchanged. If writing a cell with a formula, the formula's ranges will automatically increment for each field in the range. For example, if writing a cell with formula `=A1` into range B2:C4, B2 would be `=A1`, B3 would be `=A2`, B4 would be `=A3`, C2 would be `=B1`, C3 would be `=B2`, C4 would be `=B3`. To keep the formula's ranges static, use the `$` indicator. For example, use the formula `=$A$1` to prevent both the row and the column from incrementing. */
 export interface RepeatCellRequest {
@@ -4091,12 +5014,14 @@ export interface RepeatCellRequest {
   fields?: string;
 }
 export const RepeatCellRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "range": S.optional(GridRange),
-  "cell": S.optional(CellData),
-  "fields": S.optional(S.String),
-}),
-).annotate({ identifier: "RepeatCellRequest" }) as any as S.Schema<RepeatCellRequest>;
+  S.Struct({
+    range: S.optional(GridRange),
+    cell: S.optional(CellData),
+    fields: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RepeatCellRequest",
+}) as any as S.Schema<RepeatCellRequest>;
 
 /** Trims the whitespace (such as spaces, tabs, or new lines) in every cell in the specified range. This request removes all whitespace from the start and end of each cell's text, and reduces any subsequence of remaining whitespace characters to a single space. If the resulting trimmed text starts with a '+' or '=' character, the text remains as a string value and isn't interpreted as a formula. */
 export interface TrimWhitespaceRequest {
@@ -4104,10 +5029,12 @@ export interface TrimWhitespaceRequest {
   range?: GridRange;
 }
 export const TrimWhitespaceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "range": S.optional(GridRange),
-}),
-).annotate({ identifier: "TrimWhitespaceRequest" }) as any as S.Schema<TrimWhitespaceRequest>;
+  S.Struct({
+    range: S.optional(GridRange),
+  }),
+).annotate({
+  identifier: "TrimWhitespaceRequest",
+}) as any as S.Schema<TrimWhitespaceRequest>;
 
 /** Deletes a particular filter view. */
 export interface DeleteFilterViewRequest {
@@ -4115,10 +5042,12 @@ export interface DeleteFilterViewRequest {
   filterId?: number;
 }
 export const DeleteFilterViewRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filterId": S.optional(S.Number),
-}),
-).annotate({ identifier: "DeleteFilterViewRequest" }) as any as S.Schema<DeleteFilterViewRequest>;
+  S.Struct({
+    filterId: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "DeleteFilterViewRequest",
+}) as any as S.Schema<DeleteFilterViewRequest>;
 
 /** Duplicates a particular filter view. */
 export interface DuplicateFilterViewRequest {
@@ -4126,10 +5055,12 @@ export interface DuplicateFilterViewRequest {
   filterId?: number;
 }
 export const DuplicateFilterViewRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filterId": S.optional(S.Number),
-}),
-).annotate({ identifier: "DuplicateFilterViewRequest" }) as any as S.Schema<DuplicateFilterViewRequest>;
+  S.Struct({
+    filterId: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "DuplicateFilterViewRequest",
+}) as any as S.Schema<DuplicateFilterViewRequest>;
 
 /** Sorts data in rows based on a sort order per column. */
 export interface SortRangeRequest {
@@ -4139,11 +5070,13 @@ export interface SortRangeRequest {
   sortSpecs?: SortSpecList;
 }
 export const SortRangeRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "range": S.optional(GridRange),
-  "sortSpecs": S.optional(SortSpecList),
-}),
-).annotate({ identifier: "SortRangeRequest" }) as any as S.Schema<SortRangeRequest>;
+  S.Struct({
+    range: S.optional(GridRange),
+    sortSpecs: S.optional(SortSpecList),
+  }),
+).annotate({
+  identifier: "SortRangeRequest",
+}) as any as S.Schema<SortRangeRequest>;
 
 /** Adds a new banded range to the spreadsheet. */
 export interface AddBandingRequest {
@@ -4151,10 +5084,12 @@ export interface AddBandingRequest {
   bandedRange?: BandedRange;
 }
 export const AddBandingRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bandedRange": S.optional(BandedRange),
-}),
-).annotate({ identifier: "AddBandingRequest" }) as any as S.Schema<AddBandingRequest>;
+  S.Struct({
+    bandedRange: S.optional(BandedRange),
+  }),
+).annotate({
+  identifier: "AddBandingRequest",
+}) as any as S.Schema<AddBandingRequest>;
 
 /** Adds a filter view. */
 export interface AddFilterViewRequest {
@@ -4162,10 +5097,12 @@ export interface AddFilterViewRequest {
   filter?: FilterView;
 }
 export const AddFilterViewRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(FilterView),
-}),
-).annotate({ identifier: "AddFilterViewRequest" }) as any as S.Schema<AddFilterViewRequest>;
+  S.Struct({
+    filter: S.optional(FilterView),
+  }),
+).annotate({
+  identifier: "AddFilterViewRequest",
+}) as any as S.Schema<AddFilterViewRequest>;
 
 /** Update an embedded object's position (such as a moving or resizing a chart or image). */
 export interface UpdateEmbeddedObjectPositionRequest {
@@ -4177,12 +5114,14 @@ export interface UpdateEmbeddedObjectPositionRequest {
   fields?: string;
 }
 export const UpdateEmbeddedObjectPositionRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "objectId": S.optional(S.Number),
-  "newPosition": S.optional(EmbeddedObjectPosition),
-  "fields": S.optional(S.String),
-}),
-).annotate({ identifier: "UpdateEmbeddedObjectPositionRequest" }) as any as S.Schema<UpdateEmbeddedObjectPositionRequest>;
+  S.Struct({
+    objectId: S.optional(S.Number),
+    newPosition: S.optional(EmbeddedObjectPosition),
+    fields: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateEmbeddedObjectPositionRequest",
+}) as any as S.Schema<UpdateEmbeddedObjectPositionRequest>;
 
 /** Updates all cells in a range with new data. */
 export interface UpdateCellsRequest {
@@ -4196,13 +5135,15 @@ export interface UpdateCellsRequest {
   fields?: string;
 }
 export const UpdateCellsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "start": S.optional(GridCoordinate),
-  "range": S.optional(GridRange),
-  "rows": S.optional(RowDataList),
-  "fields": S.optional(S.String),
-}),
-).annotate({ identifier: "UpdateCellsRequest" }) as any as S.Schema<UpdateCellsRequest>;
+  S.Struct({
+    start: S.optional(GridCoordinate),
+    range: S.optional(GridRange),
+    rows: S.optional(RowDataList),
+    fields: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateCellsRequest",
+}) as any as S.Schema<UpdateCellsRequest>;
 
 /** Deletes a data source. The request also deletes the associated data source sheet, and unlinks all associated data source objects. */
 export interface DeleteDataSourceRequest {
@@ -4210,10 +5151,12 @@ export interface DeleteDataSourceRequest {
   dataSourceId?: string;
 }
 export const DeleteDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dataSourceId": S.optional(S.String),
-}),
-).annotate({ identifier: "DeleteDataSourceRequest" }) as any as S.Schema<DeleteDataSourceRequest>;
+  S.Struct({
+    dataSourceId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DeleteDataSourceRequest",
+}) as any as S.Schema<DeleteDataSourceRequest>;
 
 /** The specification of a Looker data source. */
 export interface LookerDataSourceSpec {
@@ -4225,12 +5168,14 @@ export interface LookerDataSourceSpec {
   instanceUri?: string;
 }
 export const LookerDataSourceSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "model": S.optional(S.String),
-  "explore": S.optional(S.String),
-  "instanceUri": S.optional(S.String),
-}),
-).annotate({ identifier: "LookerDataSourceSpec" }) as any as S.Schema<LookerDataSourceSpec>;
+  S.Struct({
+    model: S.optional(S.String),
+    explore: S.optional(S.String),
+    instanceUri: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "LookerDataSourceSpec",
+}) as any as S.Schema<LookerDataSourceSpec>;
 
 /** Specifies a BigQuery table definition. Only [native tables](https://cloud.google.com/bigquery/docs/tables-intro) are allowed. */
 export interface BigQueryTableSpec {
@@ -4242,12 +5187,14 @@ export interface BigQueryTableSpec {
   tableProjectId?: string;
 }
 export const BigQueryTableSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "datasetId": S.optional(S.String),
-  "tableId": S.optional(S.String),
-  "tableProjectId": S.optional(S.String),
-}),
-).annotate({ identifier: "BigQueryTableSpec" }) as any as S.Schema<BigQueryTableSpec>;
+  S.Struct({
+    datasetId: S.optional(S.String),
+    tableId: S.optional(S.String),
+    tableProjectId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BigQueryTableSpec",
+}) as any as S.Schema<BigQueryTableSpec>;
 
 /** Specifies a custom BigQuery query. */
 export interface BigQueryQuerySpec {
@@ -4255,10 +5202,12 @@ export interface BigQueryQuerySpec {
   rawQuery?: string;
 }
 export const BigQueryQuerySpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "rawQuery": S.optional(S.String),
-}),
-).annotate({ identifier: "BigQueryQuerySpec" }) as any as S.Schema<BigQueryQuerySpec>;
+  S.Struct({
+    rawQuery: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BigQueryQuerySpec",
+}) as any as S.Schema<BigQueryQuerySpec>;
 
 /** The specification of a BigQuery data source that's connected to a sheet. */
 export interface BigQueryDataSourceSpec {
@@ -4270,12 +5219,14 @@ export interface BigQueryDataSourceSpec {
   querySpec?: BigQueryQuerySpec;
 }
 export const BigQueryDataSourceSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "tableSpec": S.optional(BigQueryTableSpec),
-  "projectId": S.optional(S.String),
-  "querySpec": S.optional(BigQueryQuerySpec),
-}),
-).annotate({ identifier: "BigQueryDataSourceSpec" }) as any as S.Schema<BigQueryDataSourceSpec>;
+  S.Struct({
+    tableSpec: S.optional(BigQueryTableSpec),
+    projectId: S.optional(S.String),
+    querySpec: S.optional(BigQueryQuerySpec),
+  }),
+).annotate({
+  identifier: "BigQueryDataSourceSpec",
+}) as any as S.Schema<BigQueryDataSourceSpec>;
 
 /** A parameter in a data source's query. The parameter allows the user to pass in values from the spreadsheet into a query. */
 export interface DataSourceParameter {
@@ -4287,15 +5238,19 @@ export interface DataSourceParameter {
   name?: string;
 }
 export const DataSourceParameter = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "namedRangeId": S.optional(S.String),
-  "range": S.optional(GridRange),
-  "name": S.optional(S.String),
-}),
-).annotate({ identifier: "DataSourceParameter" }) as any as S.Schema<DataSourceParameter>;
+  S.Struct({
+    namedRangeId: S.optional(S.String),
+    range: S.optional(GridRange),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DataSourceParameter",
+}) as any as S.Schema<DataSourceParameter>;
 
 export type DataSourceParameterList = ReadonlyArray<DataSourceParameter>;
-export const DataSourceParameterList = /*@__PURE__*/ S.Array(DataSourceParameter) as any as S.Schema<DataSourceParameterList>;
+export const DataSourceParameterList = /*@__PURE__*/ S.Array(
+  DataSourceParameter,
+) as any as S.Schema<DataSourceParameterList>;
 
 /** This specifies the details of the data source. For example, for BigQuery, this specifies information about the BigQuery source. */
 export interface DataSourceSpec {
@@ -4307,11 +5262,11 @@ export interface DataSourceSpec {
   parameters?: DataSourceParameterList;
 }
 export const DataSourceSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "looker": S.optional(LookerDataSourceSpec),
-  "bigQuery": S.optional(BigQueryDataSourceSpec),
-  "parameters": S.optional(DataSourceParameterList),
-}),
+  S.Struct({
+    looker: S.optional(LookerDataSourceSpec),
+    bigQuery: S.optional(BigQueryDataSourceSpec),
+    parameters: S.optional(DataSourceParameterList),
+  }),
 ).annotate({ identifier: "DataSourceSpec" }) as any as S.Schema<DataSourceSpec>;
 
 /** Information about an external data source in the spreadsheet. */
@@ -4326,12 +5281,12 @@ export interface DataSource {
   sheetId?: number;
 }
 export const DataSource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dataSourceId": S.optional(S.String),
-  "spec": S.optional(DataSourceSpec),
-  "calculatedColumns": S.optional(DataSourceColumnList),
-  "sheetId": S.optional(S.Number),
-}),
+  S.Struct({
+    dataSourceId: S.optional(S.String),
+    spec: S.optional(DataSourceSpec),
+    calculatedColumns: S.optional(DataSourceColumnList),
+    sheetId: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "DataSource" }) as any as S.Schema<DataSource>;
 
 /** Adds a data source. After the data source is added successfully, an associated DATA_SOURCE sheet is created and an execution is triggered to refresh the sheet to read data from the data source. The request requires an additional `bigquery.readonly` OAuth scope if you are adding a BigQuery data source. */
@@ -4340,13 +5295,17 @@ export interface AddDataSourceRequest {
   dataSource?: DataSource;
 }
 export const AddDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dataSource": S.optional(DataSource),
-}),
-).annotate({ identifier: "AddDataSourceRequest" }) as any as S.Schema<AddDataSourceRequest>;
+  S.Struct({
+    dataSource: S.optional(DataSource),
+  }),
+).annotate({
+  identifier: "AddDataSourceRequest",
+}) as any as S.Schema<AddDataSourceRequest>;
 
 export type DimensionRangeList = ReadonlyArray<DimensionRange>;
-export const DimensionRangeList = /*@__PURE__*/ S.Array(DimensionRange) as any as S.Schema<DimensionRangeList>;
+export const DimensionRangeList = /*@__PURE__*/ S.Array(
+  DimensionRange,
+) as any as S.Schema<DimensionRangeList>;
 
 /** Removes rows within this range that contain values in the specified columns that are duplicates of values in any previous row. Rows with identical values but different letter cases, formatting, or formulas are considered to be duplicates. This request also removes duplicate rows hidden from view (for example, due to a filter). When removing duplicates, the first instance of each duplicate row scanning from the top downwards is kept in the resulting range. Content outside of the specified range isn't removed, and rows considered duplicates do not have to be adjacent to each other in the range. */
 export interface DeleteDuplicatesRequest {
@@ -4356,13 +5315,18 @@ export interface DeleteDuplicatesRequest {
   range?: GridRange;
 }
 export const DeleteDuplicatesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "comparisonColumns": S.optional(DimensionRangeList),
-  "range": S.optional(GridRange),
-}),
-).annotate({ identifier: "DeleteDuplicatesRequest" }) as any as S.Schema<DeleteDuplicatesRequest>;
+  S.Struct({
+    comparisonColumns: S.optional(DimensionRangeList),
+    range: S.optional(GridRange),
+  }),
+).annotate({
+  identifier: "DeleteDuplicatesRequest",
+}) as any as S.Schema<DeleteDuplicatesRequest>;
 
-export type MergeCellsRequestMergeTypeEnum = "MERGE_ALL" | "MERGE_COLUMNS" | "MERGE_ROWS";
+export type MergeCellsRequestMergeTypeEnum =
+  | "MERGE_ALL"
+  | "MERGE_COLUMNS"
+  | "MERGE_ROWS";
 export const MergeCellsRequestMergeTypeEnum = /*@__PURE__*/ S.String;
 
 /** Merges all cells in the range. */
@@ -4373,11 +5337,13 @@ export interface MergeCellsRequest {
   range?: GridRange;
 }
 export const MergeCellsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "mergeType": S.optional(MergeCellsRequestMergeTypeEnum),
-  "range": S.optional(GridRange),
-}),
-).annotate({ identifier: "MergeCellsRequest" }) as any as S.Schema<MergeCellsRequest>;
+  S.Struct({
+    mergeType: S.optional(MergeCellsRequestMergeTypeEnum),
+    range: S.optional(GridRange),
+  }),
+).annotate({
+  identifier: "MergeCellsRequest",
+}) as any as S.Schema<MergeCellsRequest>;
 
 /** Updates a slicer's specifications. (This does not move or resize a slicer. To move or resize a slicer use UpdateEmbeddedObjectPositionRequest. */
 export interface UpdateSlicerSpecRequest {
@@ -4389,12 +5355,14 @@ export interface UpdateSlicerSpecRequest {
   fields?: string;
 }
 export const UpdateSlicerSpecRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "slicerId": S.optional(S.Number),
-  "spec": S.optional(SlicerSpec),
-  "fields": S.optional(S.String),
-}),
-).annotate({ identifier: "UpdateSlicerSpecRequest" }) as any as S.Schema<UpdateSlicerSpecRequest>;
+  S.Struct({
+    slicerId: S.optional(S.Number),
+    spec: S.optional(SlicerSpec),
+    fields: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateSlicerSpecRequest",
+}) as any as S.Schema<UpdateSlicerSpecRequest>;
 
 /** Deletes the protected range with the given ID. */
 export interface DeleteProtectedRangeRequest {
@@ -4402,10 +5370,12 @@ export interface DeleteProtectedRangeRequest {
   protectedRangeId?: number;
 }
 export const DeleteProtectedRangeRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "protectedRangeId": S.optional(S.Number),
-}),
-).annotate({ identifier: "DeleteProtectedRangeRequest" }) as any as S.Schema<DeleteProtectedRangeRequest>;
+  S.Struct({
+    protectedRangeId: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "DeleteProtectedRangeRequest",
+}) as any as S.Schema<DeleteProtectedRangeRequest>;
 
 /** Updates a data source. After the data source is updated successfully, an execution is triggered to refresh the associated DATA_SOURCE sheet to read data from the updated data source. The request requires an additional `bigquery.readonly` OAuth scope if you are updating a BigQuery data source. */
 export interface UpdateDataSourceRequest {
@@ -4415,11 +5385,13 @@ export interface UpdateDataSourceRequest {
   fields?: string;
 }
 export const UpdateDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dataSource": S.optional(DataSource),
-  "fields": S.optional(S.String),
-}),
-).annotate({ identifier: "UpdateDataSourceRequest" }) as any as S.Schema<UpdateDataSourceRequest>;
+  S.Struct({
+    dataSource: S.optional(DataSource),
+    fields: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateDataSourceRequest",
+}) as any as S.Schema<UpdateDataSourceRequest>;
 
 /** Finds and replaces data in cells over a range, sheet, or all sheets. */
 export interface FindReplaceRequest {
@@ -4443,18 +5415,20 @@ export interface FindReplaceRequest {
   matchCase?: boolean;
 }
 export const FindReplaceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "searchByRegex": S.optional(S.Boolean),
-  "includeFormulas": S.optional(S.Boolean),
-  "matchEntireCell": S.optional(S.Boolean),
-  "sheetId": S.optional(S.Number),
-  "allSheets": S.optional(S.Boolean),
-  "find": S.optional(S.String),
-  "replacement": S.optional(S.String),
-  "range": S.optional(GridRange),
-  "matchCase": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "FindReplaceRequest" }) as any as S.Schema<FindReplaceRequest>;
+  S.Struct({
+    searchByRegex: S.optional(S.Boolean),
+    includeFormulas: S.optional(S.Boolean),
+    matchEntireCell: S.optional(S.Boolean),
+    sheetId: S.optional(S.Number),
+    allSheets: S.optional(S.Boolean),
+    find: S.optional(S.String),
+    replacement: S.optional(S.String),
+    range: S.optional(GridRange),
+    matchCase: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "FindReplaceRequest",
+}) as any as S.Schema<FindReplaceRequest>;
 
 /** A single kind of update to apply to a spreadsheet. */
 export interface Request {
@@ -4598,81 +5572,85 @@ export interface Request {
   findReplace?: FindReplaceRequest;
 }
 export const Request = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateSpreadsheetProperties": S.optional(UpdateSpreadsheetPropertiesRequest),
-  "setBasicFilter": S.optional(SetBasicFilterRequest),
-  "deleteTable": S.optional(DeleteTableRequest),
-  "pasteData": S.optional(PasteDataRequest),
-  "refreshDataSource": S.optional(RefreshDataSourceRequest),
-  "appendCells": S.optional(AppendCellsRequest),
-  "deleteNamedRange": S.optional(DeleteNamedRangeRequest),
-  "setDataValidation": S.optional(SetDataValidationRequest),
-  "appendDimension": S.optional(AppendDimensionRequest),
-  "clearBasicFilter": S.optional(ClearBasicFilterRequest),
-  "insertDimension": S.optional(InsertDimensionRequest),
-  "addSheet": S.optional(AddSheetRequest),
-  "addDimensionGroup": S.optional(AddDimensionGroupRequest),
-  "cancelDataSourceRefresh": S.optional(CancelDataSourceRefreshRequest),
-  "updateSheetProperties": S.optional(UpdateSheetPropertiesRequest),
-  "textToColumns": S.optional(TextToColumnsRequest),
-  "addChart": S.optional(AddChartRequest),
-  "updateConditionalFormatRule": S.optional(UpdateConditionalFormatRuleRequest),
-  "insertRange": S.optional(InsertRangeRequest),
-  "deleteEmbeddedObject": S.optional(DeleteEmbeddedObjectRequest),
-  "updateEmbeddedObjectBorder": S.optional(UpdateEmbeddedObjectBorderRequest),
-  "addProtectedRange": S.optional(AddProtectedRangeRequest),
-  "updateBorders": S.optional(UpdateBordersRequest),
-  "autoFill": S.optional(AutoFillRequest),
-  "addTable": S.optional(AddTableRequest),
-  "deleteRange": S.optional(DeleteRangeRequest),
-  "updateChartSpec": S.optional(UpdateChartSpecRequest),
-  "cutPaste": S.optional(CutPasteRequest),
-  "duplicateSheet": S.optional(DuplicateSheetRequest),
-  "updateDimensionGroup": S.optional(UpdateDimensionGroupRequest),
-  "deleteDeveloperMetadata": S.optional(DeleteDeveloperMetadataRequest),
-  "addConditionalFormatRule": S.optional(AddConditionalFormatRuleRequest),
-  "updateNamedRange": S.optional(UpdateNamedRangeRequest),
-  "copyPaste": S.optional(CopyPasteRequest),
-  "addNamedRange": S.optional(AddNamedRangeRequest),
-  "unmergeCells": S.optional(UnmergeCellsRequest),
-  "moveDimension": S.optional(MoveDimensionRequest),
-  "createDeveloperMetadata": S.optional(CreateDeveloperMetadataRequest),
-  "randomizeRange": S.optional(RandomizeRangeRequest),
-  "updateProtectedRange": S.optional(UpdateProtectedRangeRequest),
-  "updateBanding": S.optional(UpdateBandingRequest),
-  "deleteDimension": S.optional(DeleteDimensionRequest),
-  "deleteConditionalFormatRule": S.optional(DeleteConditionalFormatRuleRequest),
-  "deleteDimensionGroup": S.optional(DeleteDimensionGroupRequest),
-  "updateDimensionProperties": S.optional(UpdateDimensionPropertiesRequest),
-  "updateDeveloperMetadata": S.optional(UpdateDeveloperMetadataRequest),
-  "deleteBanding": S.optional(DeleteBandingRequest),
-  "autoResizeDimensions": S.optional(AutoResizeDimensionsRequest),
-  "deleteSheet": S.optional(DeleteSheetRequest),
-  "addSlicer": S.optional(AddSlicerRequest),
-  "updateFilterView": S.optional(UpdateFilterViewRequest),
-  "updateTable": S.optional(UpdateTableRequest),
-  "repeatCell": S.optional(RepeatCellRequest),
-  "trimWhitespace": S.optional(TrimWhitespaceRequest),
-  "deleteFilterView": S.optional(DeleteFilterViewRequest),
-  "duplicateFilterView": S.optional(DuplicateFilterViewRequest),
-  "sortRange": S.optional(SortRangeRequest),
-  "addBanding": S.optional(AddBandingRequest),
-  "addFilterView": S.optional(AddFilterViewRequest),
-  "updateEmbeddedObjectPosition": S.optional(UpdateEmbeddedObjectPositionRequest),
-  "updateCells": S.optional(UpdateCellsRequest),
-  "deleteDataSource": S.optional(DeleteDataSourceRequest),
-  "addDataSource": S.optional(AddDataSourceRequest),
-  "deleteDuplicates": S.optional(DeleteDuplicatesRequest),
-  "mergeCells": S.optional(MergeCellsRequest),
-  "updateSlicerSpec": S.optional(UpdateSlicerSpecRequest),
-  "deleteProtectedRange": S.optional(DeleteProtectedRangeRequest),
-  "updateDataSource": S.optional(UpdateDataSourceRequest),
-  "findReplace": S.optional(FindReplaceRequest),
-}),
+  S.Struct({
+    updateSpreadsheetProperties: S.optional(UpdateSpreadsheetPropertiesRequest),
+    setBasicFilter: S.optional(SetBasicFilterRequest),
+    deleteTable: S.optional(DeleteTableRequest),
+    pasteData: S.optional(PasteDataRequest),
+    refreshDataSource: S.optional(RefreshDataSourceRequest),
+    appendCells: S.optional(AppendCellsRequest),
+    deleteNamedRange: S.optional(DeleteNamedRangeRequest),
+    setDataValidation: S.optional(SetDataValidationRequest),
+    appendDimension: S.optional(AppendDimensionRequest),
+    clearBasicFilter: S.optional(ClearBasicFilterRequest),
+    insertDimension: S.optional(InsertDimensionRequest),
+    addSheet: S.optional(AddSheetRequest),
+    addDimensionGroup: S.optional(AddDimensionGroupRequest),
+    cancelDataSourceRefresh: S.optional(CancelDataSourceRefreshRequest),
+    updateSheetProperties: S.optional(UpdateSheetPropertiesRequest),
+    textToColumns: S.optional(TextToColumnsRequest),
+    addChart: S.optional(AddChartRequest),
+    updateConditionalFormatRule: S.optional(UpdateConditionalFormatRuleRequest),
+    insertRange: S.optional(InsertRangeRequest),
+    deleteEmbeddedObject: S.optional(DeleteEmbeddedObjectRequest),
+    updateEmbeddedObjectBorder: S.optional(UpdateEmbeddedObjectBorderRequest),
+    addProtectedRange: S.optional(AddProtectedRangeRequest),
+    updateBorders: S.optional(UpdateBordersRequest),
+    autoFill: S.optional(AutoFillRequest),
+    addTable: S.optional(AddTableRequest),
+    deleteRange: S.optional(DeleteRangeRequest),
+    updateChartSpec: S.optional(UpdateChartSpecRequest),
+    cutPaste: S.optional(CutPasteRequest),
+    duplicateSheet: S.optional(DuplicateSheetRequest),
+    updateDimensionGroup: S.optional(UpdateDimensionGroupRequest),
+    deleteDeveloperMetadata: S.optional(DeleteDeveloperMetadataRequest),
+    addConditionalFormatRule: S.optional(AddConditionalFormatRuleRequest),
+    updateNamedRange: S.optional(UpdateNamedRangeRequest),
+    copyPaste: S.optional(CopyPasteRequest),
+    addNamedRange: S.optional(AddNamedRangeRequest),
+    unmergeCells: S.optional(UnmergeCellsRequest),
+    moveDimension: S.optional(MoveDimensionRequest),
+    createDeveloperMetadata: S.optional(CreateDeveloperMetadataRequest),
+    randomizeRange: S.optional(RandomizeRangeRequest),
+    updateProtectedRange: S.optional(UpdateProtectedRangeRequest),
+    updateBanding: S.optional(UpdateBandingRequest),
+    deleteDimension: S.optional(DeleteDimensionRequest),
+    deleteConditionalFormatRule: S.optional(DeleteConditionalFormatRuleRequest),
+    deleteDimensionGroup: S.optional(DeleteDimensionGroupRequest),
+    updateDimensionProperties: S.optional(UpdateDimensionPropertiesRequest),
+    updateDeveloperMetadata: S.optional(UpdateDeveloperMetadataRequest),
+    deleteBanding: S.optional(DeleteBandingRequest),
+    autoResizeDimensions: S.optional(AutoResizeDimensionsRequest),
+    deleteSheet: S.optional(DeleteSheetRequest),
+    addSlicer: S.optional(AddSlicerRequest),
+    updateFilterView: S.optional(UpdateFilterViewRequest),
+    updateTable: S.optional(UpdateTableRequest),
+    repeatCell: S.optional(RepeatCellRequest),
+    trimWhitespace: S.optional(TrimWhitespaceRequest),
+    deleteFilterView: S.optional(DeleteFilterViewRequest),
+    duplicateFilterView: S.optional(DuplicateFilterViewRequest),
+    sortRange: S.optional(SortRangeRequest),
+    addBanding: S.optional(AddBandingRequest),
+    addFilterView: S.optional(AddFilterViewRequest),
+    updateEmbeddedObjectPosition: S.optional(
+      UpdateEmbeddedObjectPositionRequest,
+    ),
+    updateCells: S.optional(UpdateCellsRequest),
+    deleteDataSource: S.optional(DeleteDataSourceRequest),
+    addDataSource: S.optional(AddDataSourceRequest),
+    deleteDuplicates: S.optional(DeleteDuplicatesRequest),
+    mergeCells: S.optional(MergeCellsRequest),
+    updateSlicerSpec: S.optional(UpdateSlicerSpecRequest),
+    deleteProtectedRange: S.optional(DeleteProtectedRangeRequest),
+    updateDataSource: S.optional(UpdateDataSourceRequest),
+    findReplace: S.optional(FindReplaceRequest),
+  }),
 ).annotate({ identifier: "Request" }) as any as S.Schema<Request>;
 
 export type RequestList = ReadonlyArray<Request>;
-export const RequestList = /*@__PURE__*/ S.Array(Request) as any as S.Schema<RequestList>;
+export const RequestList = /*@__PURE__*/ S.Array(
+  Request,
+) as any as S.Schema<RequestList>;
 
 /** The request for updating any aspect of a spreadsheet. */
 export interface BatchUpdateSpreadsheetRequest {
@@ -4686,13 +5664,15 @@ export interface BatchUpdateSpreadsheetRequest {
   includeSpreadsheetInResponse?: boolean;
 }
 export const BatchUpdateSpreadsheetRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "responseIncludeGridData": S.optional(S.Boolean),
-  "requests": S.optional(RequestList),
-  "responseRanges": S.optional(StringList),
-  "includeSpreadsheetInResponse": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "BatchUpdateSpreadsheetRequest" }) as any as S.Schema<BatchUpdateSpreadsheetRequest>;
+  S.Struct({
+    responseIncludeGridData: S.optional(S.Boolean),
+    requests: S.optional(RequestList),
+    responseRanges: S.optional(StringList),
+    includeSpreadsheetInResponse: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "BatchUpdateSpreadsheetRequest",
+}) as any as S.Schema<BatchUpdateSpreadsheetRequest>;
 
 export interface BatchUpdateSpreadsheetsRequest {
   /** The spreadsheet to apply the updates to. */
@@ -4701,29 +5681,49 @@ export interface BatchUpdateSpreadsheetsRequest {
   body?: BatchUpdateSpreadsheetRequest;
 }
 export const BatchUpdateSpreadsheetsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "spreadsheetId": S.String.pipe(T.Label()),
-  "body": S.optional(BatchUpdateSpreadsheetRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v4/spreadsheets/{spreadsheetId}:batchUpdate","baseUrl":"https://sheets.googleapis.com/"})),
-).annotate({ identifier: "BatchUpdateSpreadsheetsRequest" }) as any as S.Schema<BatchUpdateSpreadsheetsRequest>;
+  S.Struct({
+    spreadsheetId: S.String.pipe(T.Label()),
+    body: S.optional(BatchUpdateSpreadsheetRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v4/spreadsheets/{spreadsheetId}:batchUpdate",
+      baseUrl: "https://sheets.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "BatchUpdateSpreadsheetsRequest",
+}) as any as S.Schema<BatchUpdateSpreadsheetsRequest>;
 
 export type EmbeddedChartList = ReadonlyArray<EmbeddedChart>;
-export const EmbeddedChartList = /*@__PURE__*/ S.Array(EmbeddedChart) as any as S.Schema<EmbeddedChartList>;
+export const EmbeddedChartList = /*@__PURE__*/ S.Array(
+  EmbeddedChart,
+) as any as S.Schema<EmbeddedChartList>;
 
 export type ProtectedRangeList = ReadonlyArray<ProtectedRange>;
-export const ProtectedRangeList = /*@__PURE__*/ S.Array(ProtectedRange) as any as S.Schema<ProtectedRangeList>;
+export const ProtectedRangeList = /*@__PURE__*/ S.Array(
+  ProtectedRange,
+) as any as S.Schema<ProtectedRangeList>;
 
 export type ConditionalFormatRuleList = ReadonlyArray<ConditionalFormatRule>;
-export const ConditionalFormatRuleList = /*@__PURE__*/ S.Array(ConditionalFormatRule) as any as S.Schema<ConditionalFormatRuleList>;
+export const ConditionalFormatRuleList = /*@__PURE__*/ S.Array(
+  ConditionalFormatRule,
+) as any as S.Schema<ConditionalFormatRuleList>;
 
 export type SlicerList = ReadonlyArray<Slicer>;
-export const SlicerList = /*@__PURE__*/ S.Array(Slicer) as any as S.Schema<SlicerList>;
+export const SlicerList = /*@__PURE__*/ S.Array(
+  Slicer,
+) as any as S.Schema<SlicerList>;
 
 export type BandedRangeList = ReadonlyArray<BandedRange>;
-export const BandedRangeList = /*@__PURE__*/ S.Array(BandedRange) as any as S.Schema<BandedRangeList>;
+export const BandedRangeList = /*@__PURE__*/ S.Array(
+  BandedRange,
+) as any as S.Schema<BandedRangeList>;
 
 export type DimensionPropertiesList = ReadonlyArray<DimensionProperties>;
-export const DimensionPropertiesList = /*@__PURE__*/ S.Array(DimensionProperties) as any as S.Schema<DimensionPropertiesList>;
+export const DimensionPropertiesList = /*@__PURE__*/ S.Array(
+  DimensionProperties,
+) as any as S.Schema<DimensionPropertiesList>;
 
 /** Data in the grid, as well as metadata about the dimensions. */
 export interface GridData {
@@ -4739,26 +5739,34 @@ export interface GridData {
   rowData?: RowDataList;
 }
 export const GridData = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "startColumn": S.optional(S.Number),
-  "rowMetadata": S.optional(DimensionPropertiesList),
-  "columnMetadata": S.optional(DimensionPropertiesList),
-  "startRow": S.optional(S.Number),
-  "rowData": S.optional(RowDataList),
-}),
+  S.Struct({
+    startColumn: S.optional(S.Number),
+    rowMetadata: S.optional(DimensionPropertiesList),
+    columnMetadata: S.optional(DimensionPropertiesList),
+    startRow: S.optional(S.Number),
+    rowData: S.optional(RowDataList),
+  }),
 ).annotate({ identifier: "GridData" }) as any as S.Schema<GridData>;
 
 export type GridDataList = ReadonlyArray<GridData>;
-export const GridDataList = /*@__PURE__*/ S.Array(GridData) as any as S.Schema<GridDataList>;
+export const GridDataList = /*@__PURE__*/ S.Array(
+  GridData,
+) as any as S.Schema<GridDataList>;
 
 export type FilterViewList = ReadonlyArray<FilterView>;
-export const FilterViewList = /*@__PURE__*/ S.Array(FilterView) as any as S.Schema<FilterViewList>;
+export const FilterViewList = /*@__PURE__*/ S.Array(
+  FilterView,
+) as any as S.Schema<FilterViewList>;
 
 export type DimensionGroupList = ReadonlyArray<DimensionGroup>;
-export const DimensionGroupList = /*@__PURE__*/ S.Array(DimensionGroup) as any as S.Schema<DimensionGroupList>;
+export const DimensionGroupList = /*@__PURE__*/ S.Array(
+  DimensionGroup,
+) as any as S.Schema<DimensionGroupList>;
 
 export type TableList = ReadonlyArray<Table>;
-export const TableList = /*@__PURE__*/ S.Array(Table) as any as S.Schema<TableList>;
+export const TableList = /*@__PURE__*/ S.Array(
+  Table,
+) as any as S.Schema<TableList>;
 
 /** A sheet in a spreadsheet. */
 export interface Sheet {
@@ -4792,32 +5800,38 @@ export interface Sheet {
   developerMetadata?: DeveloperMetadataList;
 }
 export const Sheet = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "charts": S.optional(EmbeddedChartList),
-  "protectedRanges": S.optional(ProtectedRangeList),
-  "basicFilter": S.optional(BasicFilter),
-  "conditionalFormats": S.optional(ConditionalFormatRuleList),
-  "merges": S.optional(GridRangeList),
-  "slicers": S.optional(SlicerList),
-  "bandedRanges": S.optional(BandedRangeList),
-  "data": S.optional(GridDataList),
-  "properties": S.optional(SheetProperties),
-  "filterViews": S.optional(FilterViewList),
-  "columnGroups": S.optional(DimensionGroupList),
-  "tables": S.optional(TableList),
-  "rowGroups": S.optional(DimensionGroupList),
-  "developerMetadata": S.optional(DeveloperMetadataList),
-}),
+  S.Struct({
+    charts: S.optional(EmbeddedChartList),
+    protectedRanges: S.optional(ProtectedRangeList),
+    basicFilter: S.optional(BasicFilter),
+    conditionalFormats: S.optional(ConditionalFormatRuleList),
+    merges: S.optional(GridRangeList),
+    slicers: S.optional(SlicerList),
+    bandedRanges: S.optional(BandedRangeList),
+    data: S.optional(GridDataList),
+    properties: S.optional(SheetProperties),
+    filterViews: S.optional(FilterViewList),
+    columnGroups: S.optional(DimensionGroupList),
+    tables: S.optional(TableList),
+    rowGroups: S.optional(DimensionGroupList),
+    developerMetadata: S.optional(DeveloperMetadataList),
+  }),
 ).annotate({ identifier: "Sheet" }) as any as S.Schema<Sheet>;
 
 export type SheetList = ReadonlyArray<Sheet>;
-export const SheetList = /*@__PURE__*/ S.Array(Sheet) as any as S.Schema<SheetList>;
+export const SheetList = /*@__PURE__*/ S.Array(
+  Sheet,
+) as any as S.Schema<SheetList>;
 
 export type DataSourceList = ReadonlyArray<DataSource>;
-export const DataSourceList = /*@__PURE__*/ S.Array(DataSource) as any as S.Schema<DataSourceList>;
+export const DataSourceList = /*@__PURE__*/ S.Array(
+  DataSource,
+) as any as S.Schema<DataSourceList>;
 
 export type NamedRangeList = ReadonlyArray<NamedRange>;
-export const NamedRangeList = /*@__PURE__*/ S.Array(NamedRange) as any as S.Schema<NamedRangeList>;
+export const NamedRangeList = /*@__PURE__*/ S.Array(
+  NamedRange,
+) as any as S.Schema<NamedRangeList>;
 
 /** Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive). The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time). When both start and end are unspecified, the interval matches any time. */
 export interface Interval {
@@ -4827,13 +5841,15 @@ export interface Interval {
   endTime?: string;
 }
 export const Interval = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "startTime": S.optional(S.String),
-  "endTime": S.optional(S.String),
-}),
+  S.Struct({
+    startTime: S.optional(S.String),
+    endTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Interval" }) as any as S.Schema<Interval>;
 
-export type DataSourceRefreshScheduleRefreshScopeEnum = "DATA_SOURCE_REFRESH_SCOPE_UNSPECIFIED" | "ALL_DATA_SOURCES";
+export type DataSourceRefreshScheduleRefreshScopeEnum =
+  | "DATA_SOURCE_REFRESH_SCOPE_UNSPECIFIED"
+  | "ALL_DATA_SOURCES";
 export const DataSourceRefreshScheduleRefreshScopeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
@@ -4848,12 +5864,12 @@ export interface TimeOfDay {
   nanos?: number;
 }
 export const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "hours": S.optional(S.Number),
-  "seconds": S.optional(S.Number),
-  "minutes": S.optional(S.Number),
-  "nanos": S.optional(S.Number),
-}),
+  S.Struct({
+    hours: S.optional(S.Number),
+    seconds: S.optional(S.Number),
+    minutes: S.optional(S.Number),
+    nanos: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "TimeOfDay" }) as any as S.Schema<TimeOfDay>;
 
 /** A schedule for data to refresh every day in a given time interval. */
@@ -4862,16 +5878,31 @@ export interface DataSourceRefreshDailySchedule {
   startTime?: TimeOfDay;
 }
 export const DataSourceRefreshDailySchedule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "startTime": S.optional(TimeOfDay),
-}),
-).annotate({ identifier: "DataSourceRefreshDailySchedule" }) as any as S.Schema<DataSourceRefreshDailySchedule>;
+  S.Struct({
+    startTime: S.optional(TimeOfDay),
+  }),
+).annotate({
+  identifier: "DataSourceRefreshDailySchedule",
+}) as any as S.Schema<DataSourceRefreshDailySchedule>;
 
-export type DataSourceRefreshWeeklyScheduleDaysOfWeekItemEnum = "DAY_OF_WEEK_UNSPECIFIED" | "MONDAY" | "TUESDAY" | "WEDNESDAY" | "THURSDAY" | "FRIDAY" | "SATURDAY" | "SUNDAY";
-export const DataSourceRefreshWeeklyScheduleDaysOfWeekItemEnum = /*@__PURE__*/ S.String;
+export type DataSourceRefreshWeeklyScheduleDaysOfWeekItemEnum =
+  | "DAY_OF_WEEK_UNSPECIFIED"
+  | "MONDAY"
+  | "TUESDAY"
+  | "WEDNESDAY"
+  | "THURSDAY"
+  | "FRIDAY"
+  | "SATURDAY"
+  | "SUNDAY";
+export const DataSourceRefreshWeeklyScheduleDaysOfWeekItemEnum =
+  /*@__PURE__*/ S.String;
 
-export type DataSourceRefreshWeeklyScheduleDaysOfWeekItemEnumList = ReadonlyArray<DataSourceRefreshWeeklyScheduleDaysOfWeekItemEnum>;
-export const DataSourceRefreshWeeklyScheduleDaysOfWeekItemEnumList = /*@__PURE__*/ S.Array(DataSourceRefreshWeeklyScheduleDaysOfWeekItemEnum) as any as S.Schema<DataSourceRefreshWeeklyScheduleDaysOfWeekItemEnumList>;
+export type DataSourceRefreshWeeklyScheduleDaysOfWeekItemEnumList =
+  ReadonlyArray<DataSourceRefreshWeeklyScheduleDaysOfWeekItemEnum>;
+export const DataSourceRefreshWeeklyScheduleDaysOfWeekItemEnumList =
+  /*@__PURE__*/ S.Array(
+    DataSourceRefreshWeeklyScheduleDaysOfWeekItemEnum,
+  ) as any as S.Schema<DataSourceRefreshWeeklyScheduleDaysOfWeekItemEnumList>;
 
 /** A weekly schedule for data to refresh on specific days in a given time interval. */
 export interface DataSourceRefreshWeeklySchedule {
@@ -4881,14 +5912,20 @@ export interface DataSourceRefreshWeeklySchedule {
   daysOfWeek?: DataSourceRefreshWeeklyScheduleDaysOfWeekItemEnumList;
 }
 export const DataSourceRefreshWeeklySchedule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "startTime": S.optional(TimeOfDay),
-  "daysOfWeek": S.optional(DataSourceRefreshWeeklyScheduleDaysOfWeekItemEnumList),
-}),
-).annotate({ identifier: "DataSourceRefreshWeeklySchedule" }) as any as S.Schema<DataSourceRefreshWeeklySchedule>;
+  S.Struct({
+    startTime: S.optional(TimeOfDay),
+    daysOfWeek: S.optional(
+      DataSourceRefreshWeeklyScheduleDaysOfWeekItemEnumList,
+    ),
+  }),
+).annotate({
+  identifier: "DataSourceRefreshWeeklySchedule",
+}) as any as S.Schema<DataSourceRefreshWeeklySchedule>;
 
 export type IntegerList = ReadonlyArray<number>;
-export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
+export const IntegerList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<IntegerList>;
 
 /** A monthly schedule for data to refresh on specific days in the month in a given time interval. */
 export interface DataSourceRefreshMonthlySchedule {
@@ -4898,11 +5935,13 @@ export interface DataSourceRefreshMonthlySchedule {
   daysOfMonth?: IntegerList;
 }
 export const DataSourceRefreshMonthlySchedule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "startTime": S.optional(TimeOfDay),
-  "daysOfMonth": S.optional(IntegerList),
-}),
-).annotate({ identifier: "DataSourceRefreshMonthlySchedule" }) as any as S.Schema<DataSourceRefreshMonthlySchedule>;
+  S.Struct({
+    startTime: S.optional(TimeOfDay),
+    daysOfMonth: S.optional(IntegerList),
+  }),
+).annotate({
+  identifier: "DataSourceRefreshMonthlySchedule",
+}) as any as S.Schema<DataSourceRefreshMonthlySchedule>;
 
 /** Schedule for refreshing the data source. Data sources in the spreadsheet are refreshed within a time interval. You can specify the start time by clicking the Scheduled Refresh button in the Sheets editor, but the interval is fixed at 4 hours. For example, if you specify a start time of 8 AM , the refresh will take place between 8 AM and 12 PM every day. */
 export interface DataSourceRefreshSchedule {
@@ -4920,18 +5959,23 @@ export interface DataSourceRefreshSchedule {
   monthlySchedule?: DataSourceRefreshMonthlySchedule;
 }
 export const DataSourceRefreshSchedule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "enabled": S.optional(S.Boolean),
-  "nextRun": S.optional(Interval),
-  "refreshScope": S.optional(DataSourceRefreshScheduleRefreshScopeEnum),
-  "dailySchedule": S.optional(DataSourceRefreshDailySchedule),
-  "weeklySchedule": S.optional(DataSourceRefreshWeeklySchedule),
-  "monthlySchedule": S.optional(DataSourceRefreshMonthlySchedule),
-}),
-).annotate({ identifier: "DataSourceRefreshSchedule" }) as any as S.Schema<DataSourceRefreshSchedule>;
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+    nextRun: S.optional(Interval),
+    refreshScope: S.optional(DataSourceRefreshScheduleRefreshScopeEnum),
+    dailySchedule: S.optional(DataSourceRefreshDailySchedule),
+    weeklySchedule: S.optional(DataSourceRefreshWeeklySchedule),
+    monthlySchedule: S.optional(DataSourceRefreshMonthlySchedule),
+  }),
+).annotate({
+  identifier: "DataSourceRefreshSchedule",
+}) as any as S.Schema<DataSourceRefreshSchedule>;
 
-export type DataSourceRefreshScheduleList = ReadonlyArray<DataSourceRefreshSchedule>;
-export const DataSourceRefreshScheduleList = /*@__PURE__*/ S.Array(DataSourceRefreshSchedule) as any as S.Schema<DataSourceRefreshScheduleList>;
+export type DataSourceRefreshScheduleList =
+  ReadonlyArray<DataSourceRefreshSchedule>;
+export const DataSourceRefreshScheduleList = /*@__PURE__*/ S.Array(
+  DataSourceRefreshSchedule,
+) as any as S.Schema<DataSourceRefreshScheduleList>;
 
 /** Resource that represents a spreadsheet. */
 export interface Spreadsheet {
@@ -4953,16 +5997,16 @@ export interface Spreadsheet {
   dataSourceSchedules?: DataSourceRefreshScheduleList;
 }
 export const Spreadsheet = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "spreadsheetUrl": S.optional(S.String),
-  "spreadsheetId": S.optional(S.String),
-  "properties": S.optional(SpreadsheetProperties),
-  "sheets": S.optional(SheetList),
-  "dataSources": S.optional(DataSourceList),
-  "namedRanges": S.optional(NamedRangeList),
-  "developerMetadata": S.optional(DeveloperMetadataList),
-  "dataSourceSchedules": S.optional(DataSourceRefreshScheduleList),
-}),
+  S.Struct({
+    spreadsheetUrl: S.optional(S.String),
+    spreadsheetId: S.optional(S.String),
+    properties: S.optional(SpreadsheetProperties),
+    sheets: S.optional(SheetList),
+    dataSources: S.optional(DataSourceList),
+    namedRanges: S.optional(NamedRangeList),
+    developerMetadata: S.optional(DeveloperMetadataList),
+    dataSourceSchedules: S.optional(DataSourceRefreshScheduleList),
+  }),
 ).annotate({ identifier: "Spreadsheet" }) as any as S.Schema<Spreadsheet>;
 
 /** The result of updating a conditional format rule. */
@@ -4977,13 +6021,15 @@ export interface UpdateConditionalFormatRuleResponse {
   oldIndex?: number;
 }
 export const UpdateConditionalFormatRuleResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "newRule": S.optional(ConditionalFormatRule),
-  "newIndex": S.optional(S.Number),
-  "oldRule": S.optional(ConditionalFormatRule),
-  "oldIndex": S.optional(S.Number),
-}),
-).annotate({ identifier: "UpdateConditionalFormatRuleResponse" }) as any as S.Schema<UpdateConditionalFormatRuleResponse>;
+  S.Struct({
+    newRule: S.optional(ConditionalFormatRule),
+    newIndex: S.optional(S.Number),
+    oldRule: S.optional(ConditionalFormatRule),
+    oldIndex: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "UpdateConditionalFormatRuleResponse",
+}) as any as S.Schema<UpdateConditionalFormatRuleResponse>;
 
 /** The result of adding a chart to a spreadsheet. */
 export interface AddChartResponse {
@@ -4991,10 +6037,12 @@ export interface AddChartResponse {
   chart?: EmbeddedChart;
 }
 export const AddChartResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "chart": S.optional(EmbeddedChart),
-}),
-).annotate({ identifier: "AddChartResponse" }) as any as S.Schema<AddChartResponse>;
+  S.Struct({
+    chart: S.optional(EmbeddedChart),
+  }),
+).annotate({
+  identifier: "AddChartResponse",
+}) as any as S.Schema<AddChartResponse>;
 
 /** The result of a filter view being duplicated. */
 export interface DuplicateFilterViewResponse {
@@ -5002,10 +6050,12 @@ export interface DuplicateFilterViewResponse {
   filter?: FilterView;
 }
 export const DuplicateFilterViewResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(FilterView),
-}),
-).annotate({ identifier: "DuplicateFilterViewResponse" }) as any as S.Schema<DuplicateFilterViewResponse>;
+  S.Struct({
+    filter: S.optional(FilterView),
+  }),
+).annotate({
+  identifier: "DuplicateFilterViewResponse",
+}) as any as S.Schema<DuplicateFilterViewResponse>;
 
 /** The result of adding a filter view. */
 export interface AddFilterViewResponse {
@@ -5013,21 +6063,26 @@ export interface AddFilterViewResponse {
   filter?: FilterView;
 }
 export const AddFilterViewResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(FilterView),
-}),
-).annotate({ identifier: "AddFilterViewResponse" }) as any as S.Schema<AddFilterViewResponse>;
+  S.Struct({
+    filter: S.optional(FilterView),
+  }),
+).annotate({
+  identifier: "AddFilterViewResponse",
+}) as any as S.Schema<AddFilterViewResponse>;
 
 /** The result of updating an embedded object's position. */
 export interface UpdateEmbeddedObjectPositionResponse {
   /** The new position of the embedded object. */
   position?: EmbeddedObjectPosition;
 }
-export const UpdateEmbeddedObjectPositionResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "position": S.optional(EmbeddedObjectPosition),
-}),
-).annotate({ identifier: "UpdateEmbeddedObjectPositionResponse" }) as any as S.Schema<UpdateEmbeddedObjectPositionResponse>;
+export const UpdateEmbeddedObjectPositionResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      position: S.optional(EmbeddedObjectPosition),
+    }),
+).annotate({
+  identifier: "UpdateEmbeddedObjectPositionResponse",
+}) as any as S.Schema<UpdateEmbeddedObjectPositionResponse>;
 
 /** The result of adding a new protected range. */
 export interface AddProtectedRangeResponse {
@@ -5035,10 +6090,12 @@ export interface AddProtectedRangeResponse {
   protectedRange?: ProtectedRange;
 }
 export const AddProtectedRangeResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "protectedRange": S.optional(ProtectedRange),
-}),
-).annotate({ identifier: "AddProtectedRangeResponse" }) as any as S.Schema<AddProtectedRangeResponse>;
+  S.Struct({
+    protectedRange: S.optional(ProtectedRange),
+  }),
+).annotate({
+  identifier: "AddProtectedRangeResponse",
+}) as any as S.Schema<AddProtectedRangeResponse>;
 
 /** The result of adding a banded range. */
 export interface AddBandingResponse {
@@ -5046,10 +6103,12 @@ export interface AddBandingResponse {
   bandedRange?: BandedRange;
 }
 export const AddBandingResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bandedRange": S.optional(BandedRange),
-}),
-).annotate({ identifier: "AddBandingResponse" }) as any as S.Schema<AddBandingResponse>;
+  S.Struct({
+    bandedRange: S.optional(BandedRange),
+  }),
+).annotate({
+  identifier: "AddBandingResponse",
+}) as any as S.Schema<AddBandingResponse>;
 
 /** The result of adding a table. */
 export interface AddTableResponse {
@@ -5057,10 +6116,12 @@ export interface AddTableResponse {
   table?: Table;
 }
 export const AddTableResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "table": S.optional(Table),
-}),
-).annotate({ identifier: "AddTableResponse" }) as any as S.Schema<AddTableResponse>;
+  S.Struct({
+    table: S.optional(Table),
+  }),
+).annotate({
+  identifier: "AddTableResponse",
+}) as any as S.Schema<AddTableResponse>;
 
 /** The result of adding a data source. */
 export interface AddDataSourceResponse {
@@ -5070,11 +6131,13 @@ export interface AddDataSourceResponse {
   dataExecutionStatus?: DataExecutionStatus;
 }
 export const AddDataSourceResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dataSource": S.optional(DataSource),
-  "dataExecutionStatus": S.optional(DataExecutionStatus),
-}),
-).annotate({ identifier: "AddDataSourceResponse" }) as any as S.Schema<AddDataSourceResponse>;
+  S.Struct({
+    dataSource: S.optional(DataSource),
+    dataExecutionStatus: S.optional(DataExecutionStatus),
+  }),
+).annotate({
+  identifier: "AddDataSourceResponse",
+}) as any as S.Schema<AddDataSourceResponse>;
 
 /** The result of removing duplicates in a range. */
 export interface DeleteDuplicatesResponse {
@@ -5082,10 +6145,12 @@ export interface DeleteDuplicatesResponse {
   duplicatesRemovedCount?: number;
 }
 export const DeleteDuplicatesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "duplicatesRemovedCount": S.optional(S.Number),
-}),
-).annotate({ identifier: "DeleteDuplicatesResponse" }) as any as S.Schema<DeleteDuplicatesResponse>;
+  S.Struct({
+    duplicatesRemovedCount: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "DeleteDuplicatesResponse",
+}) as any as S.Schema<DeleteDuplicatesResponse>;
 
 /** The result of duplicating a sheet. */
 export interface DuplicateSheetResponse {
@@ -5093,10 +6158,12 @@ export interface DuplicateSheetResponse {
   properties?: SheetProperties;
 }
 export const DuplicateSheetResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "properties": S.optional(SheetProperties),
-}),
-).annotate({ identifier: "DuplicateSheetResponse" }) as any as S.Schema<DuplicateSheetResponse>;
+  S.Struct({
+    properties: S.optional(SheetProperties),
+  }),
+).annotate({
+  identifier: "DuplicateSheetResponse",
+}) as any as S.Schema<DuplicateSheetResponse>;
 
 /** The response from deleting developer metadata. */
 export interface DeleteDeveloperMetadataResponse {
@@ -5104,10 +6171,12 @@ export interface DeleteDeveloperMetadataResponse {
   deletedDeveloperMetadata?: DeveloperMetadataList;
 }
 export const DeleteDeveloperMetadataResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "deletedDeveloperMetadata": S.optional(DeveloperMetadataList),
-}),
-).annotate({ identifier: "DeleteDeveloperMetadataResponse" }) as any as S.Schema<DeleteDeveloperMetadataResponse>;
+  S.Struct({
+    deletedDeveloperMetadata: S.optional(DeveloperMetadataList),
+  }),
+).annotate({
+  identifier: "DeleteDeveloperMetadataResponse",
+}) as any as S.Schema<DeleteDeveloperMetadataResponse>;
 
 /** The result of the find/replace. */
 export interface FindReplaceResponse {
@@ -5123,14 +6192,16 @@ export interface FindReplaceResponse {
   formulasChanged?: number;
 }
 export const FindReplaceResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sheetsChanged": S.optional(S.Number),
-  "rowsChanged": S.optional(S.Number),
-  "valuesChanged": S.optional(S.Number),
-  "occurrencesChanged": S.optional(S.Number),
-  "formulasChanged": S.optional(S.Number),
-}),
-).annotate({ identifier: "FindReplaceResponse" }) as any as S.Schema<FindReplaceResponse>;
+  S.Struct({
+    sheetsChanged: S.optional(S.Number),
+    rowsChanged: S.optional(S.Number),
+    valuesChanged: S.optional(S.Number),
+    occurrencesChanged: S.optional(S.Number),
+    formulasChanged: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "FindReplaceResponse",
+}) as any as S.Schema<FindReplaceResponse>;
 
 /** The response from updating data source. */
 export interface UpdateDataSourceResponse {
@@ -5140,11 +6211,13 @@ export interface UpdateDataSourceResponse {
   dataExecutionStatus?: DataExecutionStatus;
 }
 export const UpdateDataSourceResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dataSource": S.optional(DataSource),
-  "dataExecutionStatus": S.optional(DataExecutionStatus),
-}),
-).annotate({ identifier: "UpdateDataSourceResponse" }) as any as S.Schema<UpdateDataSourceResponse>;
+  S.Struct({
+    dataSource: S.optional(DataSource),
+    dataExecutionStatus: S.optional(DataExecutionStatus),
+  }),
+).annotate({
+  identifier: "UpdateDataSourceResponse",
+}) as any as S.Schema<UpdateDataSourceResponse>;
 
 /** The response from creating developer metadata. */
 export interface CreateDeveloperMetadataResponse {
@@ -5152,10 +6225,12 @@ export interface CreateDeveloperMetadataResponse {
   developerMetadata?: DeveloperMetadata;
 }
 export const CreateDeveloperMetadataResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "developerMetadata": S.optional(DeveloperMetadata),
-}),
-).annotate({ identifier: "CreateDeveloperMetadataResponse" }) as any as S.Schema<CreateDeveloperMetadataResponse>;
+  S.Struct({
+    developerMetadata: S.optional(DeveloperMetadata),
+  }),
+).annotate({
+  identifier: "CreateDeveloperMetadataResponse",
+}) as any as S.Schema<CreateDeveloperMetadataResponse>;
 
 /** The result of adding a named range. */
 export interface AddNamedRangeResponse {
@@ -5163,10 +6238,12 @@ export interface AddNamedRangeResponse {
   namedRange?: NamedRange;
 }
 export const AddNamedRangeResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "namedRange": S.optional(NamedRange),
-}),
-).annotate({ identifier: "AddNamedRangeResponse" }) as any as S.Schema<AddNamedRangeResponse>;
+  S.Struct({
+    namedRange: S.optional(NamedRange),
+  }),
+).annotate({
+  identifier: "AddNamedRangeResponse",
+}) as any as S.Schema<AddNamedRangeResponse>;
 
 /** The execution status of refreshing one data source object. */
 export interface RefreshDataSourceObjectExecutionStatus {
@@ -5175,15 +6252,21 @@ export interface RefreshDataSourceObjectExecutionStatus {
   /** Reference to a data source object being refreshed. */
   reference?: DataSourceObjectReference;
 }
-export const RefreshDataSourceObjectExecutionStatus = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dataExecutionStatus": S.optional(DataExecutionStatus),
-  "reference": S.optional(DataSourceObjectReference),
-}),
-).annotate({ identifier: "RefreshDataSourceObjectExecutionStatus" }) as any as S.Schema<RefreshDataSourceObjectExecutionStatus>;
+export const RefreshDataSourceObjectExecutionStatus = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      dataExecutionStatus: S.optional(DataExecutionStatus),
+      reference: S.optional(DataSourceObjectReference),
+    }),
+).annotate({
+  identifier: "RefreshDataSourceObjectExecutionStatus",
+}) as any as S.Schema<RefreshDataSourceObjectExecutionStatus>;
 
-export type RefreshDataSourceObjectExecutionStatusList = ReadonlyArray<RefreshDataSourceObjectExecutionStatus>;
-export const RefreshDataSourceObjectExecutionStatusList = /*@__PURE__*/ S.Array(RefreshDataSourceObjectExecutionStatus) as any as S.Schema<RefreshDataSourceObjectExecutionStatusList>;
+export type RefreshDataSourceObjectExecutionStatusList =
+  ReadonlyArray<RefreshDataSourceObjectExecutionStatus>;
+export const RefreshDataSourceObjectExecutionStatusList = /*@__PURE__*/ S.Array(
+  RefreshDataSourceObjectExecutionStatus,
+) as any as S.Schema<RefreshDataSourceObjectExecutionStatusList>;
 
 /** The response from refreshing one or multiple data source objects. */
 export interface RefreshDataSourceResponse {
@@ -5191,10 +6274,12 @@ export interface RefreshDataSourceResponse {
   statuses?: RefreshDataSourceObjectExecutionStatusList;
 }
 export const RefreshDataSourceResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "statuses": S.optional(RefreshDataSourceObjectExecutionStatusList),
-}),
-).annotate({ identifier: "RefreshDataSourceResponse" }) as any as S.Schema<RefreshDataSourceResponse>;
+  S.Struct({
+    statuses: S.optional(RefreshDataSourceObjectExecutionStatusList),
+  }),
+).annotate({
+  identifier: "RefreshDataSourceResponse",
+}) as any as S.Schema<RefreshDataSourceResponse>;
 
 /** The response from updating developer metadata. */
 export interface UpdateDeveloperMetadataResponse {
@@ -5202,10 +6287,12 @@ export interface UpdateDeveloperMetadataResponse {
   developerMetadata?: DeveloperMetadataList;
 }
 export const UpdateDeveloperMetadataResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "developerMetadata": S.optional(DeveloperMetadataList),
-}),
-).annotate({ identifier: "UpdateDeveloperMetadataResponse" }) as any as S.Schema<UpdateDeveloperMetadataResponse>;
+  S.Struct({
+    developerMetadata: S.optional(DeveloperMetadataList),
+  }),
+).annotate({
+  identifier: "UpdateDeveloperMetadataResponse",
+}) as any as S.Schema<UpdateDeveloperMetadataResponse>;
 
 /** The result of deleting a conditional format rule. */
 export interface DeleteConditionalFormatRuleResponse {
@@ -5213,10 +6300,12 @@ export interface DeleteConditionalFormatRuleResponse {
   rule?: ConditionalFormatRule;
 }
 export const DeleteConditionalFormatRuleResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "rule": S.optional(ConditionalFormatRule),
-}),
-).annotate({ identifier: "DeleteConditionalFormatRuleResponse" }) as any as S.Schema<DeleteConditionalFormatRuleResponse>;
+  S.Struct({
+    rule: S.optional(ConditionalFormatRule),
+  }),
+).annotate({
+  identifier: "DeleteConditionalFormatRuleResponse",
+}) as any as S.Schema<DeleteConditionalFormatRuleResponse>;
 
 /** The result of deleting a group. */
 export interface DeleteDimensionGroupResponse {
@@ -5224,10 +6313,12 @@ export interface DeleteDimensionGroupResponse {
   dimensionGroups?: DimensionGroupList;
 }
 export const DeleteDimensionGroupResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dimensionGroups": S.optional(DimensionGroupList),
-}),
-).annotate({ identifier: "DeleteDimensionGroupResponse" }) as any as S.Schema<DeleteDimensionGroupResponse>;
+  S.Struct({
+    dimensionGroups: S.optional(DimensionGroupList),
+  }),
+).annotate({
+  identifier: "DeleteDimensionGroupResponse",
+}) as any as S.Schema<DeleteDimensionGroupResponse>;
 
 /** The result of adding a slicer to a spreadsheet. */
 export interface AddSlicerResponse {
@@ -5235,10 +6326,12 @@ export interface AddSlicerResponse {
   slicer?: Slicer;
 }
 export const AddSlicerResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "slicer": S.optional(Slicer),
-}),
-).annotate({ identifier: "AddSlicerResponse" }) as any as S.Schema<AddSlicerResponse>;
+  S.Struct({
+    slicer: S.optional(Slicer),
+  }),
+).annotate({
+  identifier: "AddSlicerResponse",
+}) as any as S.Schema<AddSlicerResponse>;
 
 /** The result of adding a group. */
 export interface AddDimensionGroupResponse {
@@ -5246,15 +6339,26 @@ export interface AddDimensionGroupResponse {
   dimensionGroups?: DimensionGroupList;
 }
 export const AddDimensionGroupResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dimensionGroups": S.optional(DimensionGroupList),
-}),
-).annotate({ identifier: "AddDimensionGroupResponse" }) as any as S.Schema<AddDimensionGroupResponse>;
+  S.Struct({
+    dimensionGroups: S.optional(DimensionGroupList),
+  }),
+).annotate({
+  identifier: "AddDimensionGroupResponse",
+}) as any as S.Schema<AddDimensionGroupResponse>;
 
-export type RefreshCancellationStatusStateEnum = "REFRESH_CANCELLATION_STATE_UNSPECIFIED" | "CANCEL_SUCCEEDED" | "CANCEL_FAILED";
+export type RefreshCancellationStatusStateEnum =
+  | "REFRESH_CANCELLATION_STATE_UNSPECIFIED"
+  | "CANCEL_SUCCEEDED"
+  | "CANCEL_FAILED";
 export const RefreshCancellationStatusStateEnum = /*@__PURE__*/ S.String;
 
-export type RefreshCancellationStatusErrorCodeEnum = "REFRESH_CANCELLATION_ERROR_CODE_UNSPECIFIED" | "EXECUTION_NOT_FOUND" | "CANCEL_PERMISSION_DENIED" | "QUERY_EXECUTION_COMPLETED" | "CONCURRENT_CANCELLATION" | "CANCEL_OTHER_ERROR";
+export type RefreshCancellationStatusErrorCodeEnum =
+  | "REFRESH_CANCELLATION_ERROR_CODE_UNSPECIFIED"
+  | "EXECUTION_NOT_FOUND"
+  | "CANCEL_PERMISSION_DENIED"
+  | "QUERY_EXECUTION_COMPLETED"
+  | "CONCURRENT_CANCELLATION"
+  | "CANCEL_OTHER_ERROR";
 export const RefreshCancellationStatusErrorCodeEnum = /*@__PURE__*/ S.String;
 
 /** The status of a refresh cancellation. You can send a cancel request to explicitly cancel one or multiple data source object refreshes. */
@@ -5265,11 +6369,13 @@ export interface RefreshCancellationStatus {
   errorCode?: RefreshCancellationStatusErrorCodeEnum;
 }
 export const RefreshCancellationStatus = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "state": S.optional(RefreshCancellationStatusStateEnum),
-  "errorCode": S.optional(RefreshCancellationStatusErrorCodeEnum),
-}),
-).annotate({ identifier: "RefreshCancellationStatus" }) as any as S.Schema<RefreshCancellationStatus>;
+  S.Struct({
+    state: S.optional(RefreshCancellationStatusStateEnum),
+    errorCode: S.optional(RefreshCancellationStatusErrorCodeEnum),
+  }),
+).annotate({
+  identifier: "RefreshCancellationStatus",
+}) as any as S.Schema<RefreshCancellationStatus>;
 
 /** The status of cancelling a single data source object refresh. */
 export interface CancelDataSourceRefreshStatus {
@@ -5279,14 +6385,19 @@ export interface CancelDataSourceRefreshStatus {
   refreshCancellationStatus?: RefreshCancellationStatus;
 }
 export const CancelDataSourceRefreshStatus = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "reference": S.optional(DataSourceObjectReference),
-  "refreshCancellationStatus": S.optional(RefreshCancellationStatus),
-}),
-).annotate({ identifier: "CancelDataSourceRefreshStatus" }) as any as S.Schema<CancelDataSourceRefreshStatus>;
+  S.Struct({
+    reference: S.optional(DataSourceObjectReference),
+    refreshCancellationStatus: S.optional(RefreshCancellationStatus),
+  }),
+).annotate({
+  identifier: "CancelDataSourceRefreshStatus",
+}) as any as S.Schema<CancelDataSourceRefreshStatus>;
 
-export type CancelDataSourceRefreshStatusList = ReadonlyArray<CancelDataSourceRefreshStatus>;
-export const CancelDataSourceRefreshStatusList = /*@__PURE__*/ S.Array(CancelDataSourceRefreshStatus) as any as S.Schema<CancelDataSourceRefreshStatusList>;
+export type CancelDataSourceRefreshStatusList =
+  ReadonlyArray<CancelDataSourceRefreshStatus>;
+export const CancelDataSourceRefreshStatusList = /*@__PURE__*/ S.Array(
+  CancelDataSourceRefreshStatus,
+) as any as S.Schema<CancelDataSourceRefreshStatusList>;
 
 /** The response from cancelling one or multiple data source object refreshes. */
 export interface CancelDataSourceRefreshResponse {
@@ -5294,10 +6405,12 @@ export interface CancelDataSourceRefreshResponse {
   statuses?: CancelDataSourceRefreshStatusList;
 }
 export const CancelDataSourceRefreshResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "statuses": S.optional(CancelDataSourceRefreshStatusList),
-}),
-).annotate({ identifier: "CancelDataSourceRefreshResponse" }) as any as S.Schema<CancelDataSourceRefreshResponse>;
+  S.Struct({
+    statuses: S.optional(CancelDataSourceRefreshStatusList),
+  }),
+).annotate({
+  identifier: "CancelDataSourceRefreshResponse",
+}) as any as S.Schema<CancelDataSourceRefreshResponse>;
 
 /** The result of adding a sheet. */
 export interface AddSheetResponse {
@@ -5305,10 +6418,12 @@ export interface AddSheetResponse {
   properties?: SheetProperties;
 }
 export const AddSheetResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "properties": S.optional(SheetProperties),
-}),
-).annotate({ identifier: "AddSheetResponse" }) as any as S.Schema<AddSheetResponse>;
+  S.Struct({
+    properties: S.optional(SheetProperties),
+  }),
+).annotate({
+  identifier: "AddSheetResponse",
+}) as any as S.Schema<AddSheetResponse>;
 
 /** The result of trimming whitespace in cells. */
 export interface TrimWhitespaceResponse {
@@ -5316,10 +6431,12 @@ export interface TrimWhitespaceResponse {
   cellsChangedCount?: number;
 }
 export const TrimWhitespaceResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "cellsChangedCount": S.optional(S.Number),
-}),
-).annotate({ identifier: "TrimWhitespaceResponse" }) as any as S.Schema<TrimWhitespaceResponse>;
+  S.Struct({
+    cellsChangedCount: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "TrimWhitespaceResponse",
+}) as any as S.Schema<TrimWhitespaceResponse>;
 
 /** A single response from an update. */
 export interface Response {
@@ -5375,37 +6492,45 @@ export interface Response {
   trimWhitespace?: TrimWhitespaceResponse;
 }
 export const Response = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateConditionalFormatRule": S.optional(UpdateConditionalFormatRuleResponse),
-  "addChart": S.optional(AddChartResponse),
-  "duplicateFilterView": S.optional(DuplicateFilterViewResponse),
-  "addFilterView": S.optional(AddFilterViewResponse),
-  "updateEmbeddedObjectPosition": S.optional(UpdateEmbeddedObjectPositionResponse),
-  "addProtectedRange": S.optional(AddProtectedRangeResponse),
-  "addBanding": S.optional(AddBandingResponse),
-  "addTable": S.optional(AddTableResponse),
-  "addDataSource": S.optional(AddDataSourceResponse),
-  "deleteDuplicates": S.optional(DeleteDuplicatesResponse),
-  "duplicateSheet": S.optional(DuplicateSheetResponse),
-  "deleteDeveloperMetadata": S.optional(DeleteDeveloperMetadataResponse),
-  "findReplace": S.optional(FindReplaceResponse),
-  "updateDataSource": S.optional(UpdateDataSourceResponse),
-  "createDeveloperMetadata": S.optional(CreateDeveloperMetadataResponse),
-  "addNamedRange": S.optional(AddNamedRangeResponse),
-  "refreshDataSource": S.optional(RefreshDataSourceResponse),
-  "updateDeveloperMetadata": S.optional(UpdateDeveloperMetadataResponse),
-  "deleteConditionalFormatRule": S.optional(DeleteConditionalFormatRuleResponse),
-  "deleteDimensionGroup": S.optional(DeleteDimensionGroupResponse),
-  "addSlicer": S.optional(AddSlicerResponse),
-  "addDimensionGroup": S.optional(AddDimensionGroupResponse),
-  "cancelDataSourceRefresh": S.optional(CancelDataSourceRefreshResponse),
-  "addSheet": S.optional(AddSheetResponse),
-  "trimWhitespace": S.optional(TrimWhitespaceResponse),
-}),
+  S.Struct({
+    updateConditionalFormatRule: S.optional(
+      UpdateConditionalFormatRuleResponse,
+    ),
+    addChart: S.optional(AddChartResponse),
+    duplicateFilterView: S.optional(DuplicateFilterViewResponse),
+    addFilterView: S.optional(AddFilterViewResponse),
+    updateEmbeddedObjectPosition: S.optional(
+      UpdateEmbeddedObjectPositionResponse,
+    ),
+    addProtectedRange: S.optional(AddProtectedRangeResponse),
+    addBanding: S.optional(AddBandingResponse),
+    addTable: S.optional(AddTableResponse),
+    addDataSource: S.optional(AddDataSourceResponse),
+    deleteDuplicates: S.optional(DeleteDuplicatesResponse),
+    duplicateSheet: S.optional(DuplicateSheetResponse),
+    deleteDeveloperMetadata: S.optional(DeleteDeveloperMetadataResponse),
+    findReplace: S.optional(FindReplaceResponse),
+    updateDataSource: S.optional(UpdateDataSourceResponse),
+    createDeveloperMetadata: S.optional(CreateDeveloperMetadataResponse),
+    addNamedRange: S.optional(AddNamedRangeResponse),
+    refreshDataSource: S.optional(RefreshDataSourceResponse),
+    updateDeveloperMetadata: S.optional(UpdateDeveloperMetadataResponse),
+    deleteConditionalFormatRule: S.optional(
+      DeleteConditionalFormatRuleResponse,
+    ),
+    deleteDimensionGroup: S.optional(DeleteDimensionGroupResponse),
+    addSlicer: S.optional(AddSlicerResponse),
+    addDimensionGroup: S.optional(AddDimensionGroupResponse),
+    cancelDataSourceRefresh: S.optional(CancelDataSourceRefreshResponse),
+    addSheet: S.optional(AddSheetResponse),
+    trimWhitespace: S.optional(TrimWhitespaceResponse),
+  }),
 ).annotate({ identifier: "Response" }) as any as S.Schema<Response>;
 
 export type ResponseList = ReadonlyArray<Response>;
-export const ResponseList = /*@__PURE__*/ S.Array(Response) as any as S.Schema<ResponseList>;
+export const ResponseList = /*@__PURE__*/ S.Array(
+  Response,
+) as any as S.Schema<ResponseList>;
 
 /** The reply for batch updating a spreadsheet. */
 export interface BatchUpdateSpreadsheetResponse {
@@ -5417,44 +6542,69 @@ export interface BatchUpdateSpreadsheetResponse {
   replies?: ResponseList;
 }
 export const BatchUpdateSpreadsheetResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updatedSpreadsheet": S.optional(Spreadsheet),
-  "spreadsheetId": S.optional(S.String),
-  "replies": S.optional(ResponseList),
-}),
-).annotate({ identifier: "BatchUpdateSpreadsheetResponse" }) as any as S.Schema<BatchUpdateSpreadsheetResponse>;
+  S.Struct({
+    updatedSpreadsheet: S.optional(Spreadsheet),
+    spreadsheetId: S.optional(S.String),
+    replies: S.optional(ResponseList),
+  }),
+).annotate({
+  identifier: "BatchUpdateSpreadsheetResponse",
+}) as any as S.Schema<BatchUpdateSpreadsheetResponse>;
 
-export type BatchUpdateValuesRequestResponseValueRenderOptionEnum = "FORMATTED_VALUE" | "UNFORMATTED_VALUE" | "FORMULA";
-export const BatchUpdateValuesRequestResponseValueRenderOptionEnum = /*@__PURE__*/ S.String;
+export type BatchUpdateValuesRequestResponseValueRenderOptionEnum =
+  | "FORMATTED_VALUE"
+  | "UNFORMATTED_VALUE"
+  | "FORMULA";
+export const BatchUpdateValuesRequestResponseValueRenderOptionEnum =
+  /*@__PURE__*/ S.String;
 
-export type BatchUpdateValuesRequestResponseDateTimeRenderOptionEnum = "SERIAL_NUMBER" | "FORMATTED_STRING";
-export const BatchUpdateValuesRequestResponseDateTimeRenderOptionEnum = /*@__PURE__*/ S.String;
+export type BatchUpdateValuesRequestResponseDateTimeRenderOptionEnum =
+  | "SERIAL_NUMBER"
+  | "FORMATTED_STRING";
+export const BatchUpdateValuesRequestResponseDateTimeRenderOptionEnum =
+  /*@__PURE__*/ S.String;
 
-export type BatchUpdateValuesRequestValueInputOptionEnum = "INPUT_VALUE_OPTION_UNSPECIFIED" | "RAW" | "USER_ENTERED";
-export const BatchUpdateValuesRequestValueInputOptionEnum = /*@__PURE__*/ S.String;
+export type BatchUpdateValuesRequestValueInputOptionEnum =
+  | "INPUT_VALUE_OPTION_UNSPECIFIED"
+  | "RAW"
+  | "USER_ENTERED";
+export const BatchUpdateValuesRequestValueInputOptionEnum =
+  /*@__PURE__*/ S.String;
 
 /** The request for updating more than one range of values in a spreadsheet. */
 export interface BatchUpdateValuesRequest {
   /** The new values to apply to the spreadsheet. */
   data?: ValueRangeList;
   /** Determines how values in the response should be rendered. The default render option is FORMATTED_VALUE. */
-  responseValueRenderOption?: BatchUpdateValuesRequestResponseValueRenderOptionEnum | (string & {});
+  responseValueRenderOption?:
+    | BatchUpdateValuesRequestResponseValueRenderOptionEnum
+    | (string & {});
   /** Determines how dates, times, and durations in the response should be rendered. This is ignored if response_value_render_option is FORMATTED_VALUE. The default dateTime render option is SERIAL_NUMBER. */
-  responseDateTimeRenderOption?: BatchUpdateValuesRequestResponseDateTimeRenderOptionEnum | (string & {});
+  responseDateTimeRenderOption?:
+    | BatchUpdateValuesRequestResponseDateTimeRenderOptionEnum
+    | (string & {});
   /** How the input data should be interpreted. */
-  valueInputOption?: BatchUpdateValuesRequestValueInputOptionEnum | (string & {});
+  valueInputOption?:
+    | BatchUpdateValuesRequestValueInputOptionEnum
+    | (string & {});
   /** Determines if the update response should include the values of the cells that were updated. By default, responses do not include the updated values. The `updatedData` field within each of the BatchUpdateValuesResponse.responses contains the updated values. If the range to write was larger than the range actually written, the response includes all values in the requested range (excluding trailing empty rows and columns). */
   includeValuesInResponse?: boolean;
 }
 export const BatchUpdateValuesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "data": S.optional(ValueRangeList),
-  "responseValueRenderOption": S.optional(BatchUpdateValuesRequestResponseValueRenderOptionEnum),
-  "responseDateTimeRenderOption": S.optional(BatchUpdateValuesRequestResponseDateTimeRenderOptionEnum),
-  "valueInputOption": S.optional(BatchUpdateValuesRequestValueInputOptionEnum),
-  "includeValuesInResponse": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "BatchUpdateValuesRequest" }) as any as S.Schema<BatchUpdateValuesRequest>;
+  S.Struct({
+    data: S.optional(ValueRangeList),
+    responseValueRenderOption: S.optional(
+      BatchUpdateValuesRequestResponseValueRenderOptionEnum,
+    ),
+    responseDateTimeRenderOption: S.optional(
+      BatchUpdateValuesRequestResponseDateTimeRenderOptionEnum,
+    ),
+    valueInputOption: S.optional(BatchUpdateValuesRequestValueInputOptionEnum),
+    includeValuesInResponse: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "BatchUpdateValuesRequest",
+}) as any as S.Schema<BatchUpdateValuesRequest>;
 
 export interface BatchUpdateSpreadsheetsValuesRequest {
   /** The ID of the spreadsheet to update. */
@@ -5462,15 +6612,26 @@ export interface BatchUpdateSpreadsheetsValuesRequest {
   /** Request body */
   body?: BatchUpdateValuesRequest;
 }
-export const BatchUpdateSpreadsheetsValuesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "spreadsheetId": S.String.pipe(T.Label()),
-  "body": S.optional(BatchUpdateValuesRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v4/spreadsheets/{spreadsheetId}/values:batchUpdate","baseUrl":"https://sheets.googleapis.com/"})),
-).annotate({ identifier: "BatchUpdateSpreadsheetsValuesRequest" }) as any as S.Schema<BatchUpdateSpreadsheetsValuesRequest>;
+export const BatchUpdateSpreadsheetsValuesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      spreadsheetId: S.String.pipe(T.Label()),
+      body: S.optional(BatchUpdateValuesRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v4/spreadsheets/{spreadsheetId}/values:batchUpdate",
+        baseUrl: "https://sheets.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "BatchUpdateSpreadsheetsValuesRequest",
+}) as any as S.Schema<BatchUpdateSpreadsheetsValuesRequest>;
 
 export type UpdateValuesResponseList = ReadonlyArray<UpdateValuesResponse>;
-export const UpdateValuesResponseList = /*@__PURE__*/ S.Array(UpdateValuesResponse) as any as S.Schema<UpdateValuesResponseList>;
+export const UpdateValuesResponseList = /*@__PURE__*/ S.Array(
+  UpdateValuesResponse,
+) as any as S.Schema<UpdateValuesResponseList>;
 
 /** The response when updating a range of values in a spreadsheet. */
 export interface BatchUpdateValuesResponse {
@@ -5488,21 +6649,25 @@ export interface BatchUpdateValuesResponse {
   responses?: UpdateValuesResponseList;
 }
 export const BatchUpdateValuesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "spreadsheetId": S.optional(S.String),
-  "totalUpdatedCells": S.optional(S.Number),
-  "totalUpdatedSheets": S.optional(S.Number),
-  "totalUpdatedColumns": S.optional(S.Number),
-  "totalUpdatedRows": S.optional(S.Number),
-  "responses": S.optional(UpdateValuesResponseList),
-}),
-).annotate({ identifier: "BatchUpdateValuesResponse" }) as any as S.Schema<BatchUpdateValuesResponse>;
+  S.Struct({
+    spreadsheetId: S.optional(S.String),
+    totalUpdatedCells: S.optional(S.Number),
+    totalUpdatedSheets: S.optional(S.Number),
+    totalUpdatedColumns: S.optional(S.Number),
+    totalUpdatedRows: S.optional(S.Number),
+    responses: S.optional(UpdateValuesResponseList),
+  }),
+).annotate({
+  identifier: "BatchUpdateValuesResponse",
+}) as any as S.Schema<BatchUpdateValuesResponse>;
 
 /** The request for clearing a range of values in a spreadsheet. */
 export interface ClearValuesRequest {}
 export const ClearValuesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "ClearValuesRequest" }) as any as S.Schema<ClearValuesRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "ClearValuesRequest",
+}) as any as S.Schema<ClearValuesRequest>;
 
 export interface ClearSpreadsheetsValuesRequest {
   /** The [A1 notation or R1C1 notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell) of the values to clear. */
@@ -5513,12 +6678,20 @@ export interface ClearSpreadsheetsValuesRequest {
   body?: ClearValuesRequest;
 }
 export const ClearSpreadsheetsValuesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "range": S.String.pipe(T.Label()),
-  "spreadsheetId": S.String.pipe(T.Label()),
-  "body": S.optional(ClearValuesRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v4/spreadsheets/{spreadsheetId}/values/{range}:clear","baseUrl":"https://sheets.googleapis.com/"})),
-).annotate({ identifier: "ClearSpreadsheetsValuesRequest" }) as any as S.Schema<ClearSpreadsheetsValuesRequest>;
+  S.Struct({
+    range: S.String.pipe(T.Label()),
+    spreadsheetId: S.String.pipe(T.Label()),
+    body: S.optional(ClearValuesRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v4/spreadsheets/{spreadsheetId}/values/{range}:clear",
+      baseUrl: "https://sheets.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ClearSpreadsheetsValuesRequest",
+}) as any as S.Schema<ClearSpreadsheetsValuesRequest>;
 
 /** The response when clearing a range of values in a spreadsheet. */
 export interface ClearValuesResponse {
@@ -5528,22 +6701,27 @@ export interface ClearValuesResponse {
   clearedRange?: string;
 }
 export const ClearValuesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "spreadsheetId": S.optional(S.String),
-  "clearedRange": S.optional(S.String),
-}),
-).annotate({ identifier: "ClearValuesResponse" }) as any as S.Schema<ClearValuesResponse>;
+  S.Struct({
+    spreadsheetId: S.optional(S.String),
+    clearedRange: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ClearValuesResponse",
+}) as any as S.Schema<ClearValuesResponse>;
 
 /** The request to copy a sheet across spreadsheets. */
 export interface CopySheetToAnotherSpreadsheetRequest {
   /** The ID of the spreadsheet to copy the sheet to. */
   destinationSpreadsheetId?: string;
 }
-export const CopySheetToAnotherSpreadsheetRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "destinationSpreadsheetId": S.optional(S.String),
-}),
-).annotate({ identifier: "CopySheetToAnotherSpreadsheetRequest" }) as any as S.Schema<CopySheetToAnotherSpreadsheetRequest>;
+export const CopySheetToAnotherSpreadsheetRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      destinationSpreadsheetId: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "CopySheetToAnotherSpreadsheetRequest",
+}) as any as S.Schema<CopySheetToAnotherSpreadsheetRequest>;
 
 export interface CopyToSpreadsheetsSheetsRequest {
   /** The ID of the spreadsheet containing the sheet to copy. */
@@ -5554,22 +6732,38 @@ export interface CopyToSpreadsheetsSheetsRequest {
   body?: CopySheetToAnotherSpreadsheetRequest;
 }
 export const CopyToSpreadsheetsSheetsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "spreadsheetId": S.String.pipe(T.Label()),
-  "sheetId": S.Number.pipe(T.Label()),
-  "body": S.optional(CopySheetToAnotherSpreadsheetRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v4/spreadsheets/{spreadsheetId}/sheets/{sheetId}:copyTo","baseUrl":"https://sheets.googleapis.com/"})),
-).annotate({ identifier: "CopyToSpreadsheetsSheetsRequest" }) as any as S.Schema<CopyToSpreadsheetsSheetsRequest>;
+  S.Struct({
+    spreadsheetId: S.String.pipe(T.Label()),
+    sheetId: S.Number.pipe(T.Label()),
+    body: S.optional(CopySheetToAnotherSpreadsheetRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v4/spreadsheets/{spreadsheetId}/sheets/{sheetId}:copyTo",
+      baseUrl: "https://sheets.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CopyToSpreadsheetsSheetsRequest",
+}) as any as S.Schema<CopyToSpreadsheetsSheetsRequest>;
 
 export interface CreateSpreadsheetsRequest {
   /** Request body */
   body?: Spreadsheet;
 }
 export const CreateSpreadsheetsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(Spreadsheet.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v4/spreadsheets","baseUrl":"https://sheets.googleapis.com/"})),
-).annotate({ identifier: "CreateSpreadsheetsRequest" }) as any as S.Schema<CreateSpreadsheetsRequest>;
+  S.Struct({
+    body: S.optional(Spreadsheet.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v4/spreadsheets",
+      baseUrl: "https://sheets.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateSpreadsheetsRequest",
+}) as any as S.Schema<CreateSpreadsheetsRequest>;
 
 /** The request for retrieving a Spreadsheet. */
 export interface GetSpreadsheetByDataFilterRequest {
@@ -5581,12 +6775,14 @@ export interface GetSpreadsheetByDataFilterRequest {
   includeGridData?: boolean;
 }
 export const GetSpreadsheetByDataFilterRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "excludeTablesInBandedRanges": S.optional(S.Boolean),
-  "dataFilters": S.optional(DataFilterList),
-  "includeGridData": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "GetSpreadsheetByDataFilterRequest" }) as any as S.Schema<GetSpreadsheetByDataFilterRequest>;
+  S.Struct({
+    excludeTablesInBandedRanges: S.optional(S.Boolean),
+    dataFilters: S.optional(DataFilterList),
+    includeGridData: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "GetSpreadsheetByDataFilterRequest",
+}) as any as S.Schema<GetSpreadsheetByDataFilterRequest>;
 
 export interface GetByDataFilterSpreadsheetsRequest {
   /** The spreadsheet to request. */
@@ -5595,11 +6791,19 @@ export interface GetByDataFilterSpreadsheetsRequest {
   body?: GetSpreadsheetByDataFilterRequest;
 }
 export const GetByDataFilterSpreadsheetsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "spreadsheetId": S.String.pipe(T.Label()),
-  "body": S.optional(GetSpreadsheetByDataFilterRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v4/spreadsheets/{spreadsheetId}:getByDataFilter","baseUrl":"https://sheets.googleapis.com/"})),
-).annotate({ identifier: "GetByDataFilterSpreadsheetsRequest" }) as any as S.Schema<GetByDataFilterSpreadsheetsRequest>;
+  S.Struct({
+    spreadsheetId: S.String.pipe(T.Label()),
+    body: S.optional(GetSpreadsheetByDataFilterRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v4/spreadsheets/{spreadsheetId}:getByDataFilter",
+      baseUrl: "https://sheets.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetByDataFilterSpreadsheetsRequest",
+}) as any as S.Schema<GetByDataFilterSpreadsheetsRequest>;
 
 export interface GetSpreadsheetsRequest {
   /** True if grid data should be returned. This parameter is ignored if a field mask was set in the request. */
@@ -5612,13 +6816,21 @@ export interface GetSpreadsheetsRequest {
   ranges?: StringList;
 }
 export const GetSpreadsheetsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "includeGridData": S.optional(S.Boolean.pipe(T.Query())),
-  "excludeTablesInBandedRanges": S.optional(S.Boolean.pipe(T.Query())),
-  "spreadsheetId": S.String.pipe(T.Label()),
-  "ranges": S.optional(StringList.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v4/spreadsheets/{spreadsheetId}","baseUrl":"https://sheets.googleapis.com/"})),
-).annotate({ identifier: "GetSpreadsheetsRequest" }) as any as S.Schema<GetSpreadsheetsRequest>;
+  S.Struct({
+    includeGridData: S.optional(S.Boolean.pipe(T.Query())),
+    excludeTablesInBandedRanges: S.optional(S.Boolean.pipe(T.Query())),
+    spreadsheetId: S.String.pipe(T.Label()),
+    ranges: S.optional(StringList.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v4/spreadsheets/{spreadsheetId}",
+      baseUrl: "https://sheets.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetSpreadsheetsRequest",
+}) as any as S.Schema<GetSpreadsheetsRequest>;
 
 export interface GetSpreadsheetsDeveloperMetadataRequest {
   /** The ID of the spreadsheet to retrieve metadata from. */
@@ -5626,43 +6838,80 @@ export interface GetSpreadsheetsDeveloperMetadataRequest {
   /** The ID of the developer metadata to retrieve. */
   metadataId: number;
 }
-export const GetSpreadsheetsDeveloperMetadataRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "spreadsheetId": S.String.pipe(T.Label()),
-  "metadataId": S.Number.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v4/spreadsheets/{spreadsheetId}/developerMetadata/{metadataId}","baseUrl":"https://sheets.googleapis.com/"})),
-).annotate({ identifier: "GetSpreadsheetsDeveloperMetadataRequest" }) as any as S.Schema<GetSpreadsheetsDeveloperMetadataRequest>;
+export const GetSpreadsheetsDeveloperMetadataRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      spreadsheetId: S.String.pipe(T.Label()),
+      metadataId: S.Number.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v4/spreadsheets/{spreadsheetId}/developerMetadata/{metadataId}",
+        baseUrl: "https://sheets.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetSpreadsheetsDeveloperMetadataRequest",
+}) as any as S.Schema<GetSpreadsheetsDeveloperMetadataRequest>;
 
-export type GetSpreadsheetsValuesDateTimeRenderOptionEnum = "SERIAL_NUMBER" | "FORMATTED_STRING";
-export const GetSpreadsheetsValuesDateTimeRenderOptionEnum = /*@__PURE__*/ S.String;
+export type GetSpreadsheetsValuesDateTimeRenderOptionEnum =
+  | "SERIAL_NUMBER"
+  | "FORMATTED_STRING";
+export const GetSpreadsheetsValuesDateTimeRenderOptionEnum =
+  /*@__PURE__*/ S.String;
 
-export type GetSpreadsheetsValuesValueRenderOptionEnum = "FORMATTED_VALUE" | "UNFORMATTED_VALUE" | "FORMULA";
-export const GetSpreadsheetsValuesValueRenderOptionEnum = /*@__PURE__*/ S.String;
+export type GetSpreadsheetsValuesValueRenderOptionEnum =
+  | "FORMATTED_VALUE"
+  | "UNFORMATTED_VALUE"
+  | "FORMULA";
+export const GetSpreadsheetsValuesValueRenderOptionEnum =
+  /*@__PURE__*/ S.String;
 
-export type GetSpreadsheetsValuesMajorDimensionEnum = "DIMENSION_UNSPECIFIED" | "ROWS" | "COLUMNS";
+export type GetSpreadsheetsValuesMajorDimensionEnum =
+  | "DIMENSION_UNSPECIFIED"
+  | "ROWS"
+  | "COLUMNS";
 export const GetSpreadsheetsValuesMajorDimensionEnum = /*@__PURE__*/ S.String;
 
 export interface GetSpreadsheetsValuesRequest {
   /** The [A1 notation or R1C1 notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell) of the range to retrieve values from. */
   range: string;
   /** How dates, times, and durations should be represented in the output. This is ignored if value_render_option is FORMATTED_VALUE. The default dateTime render option is SERIAL_NUMBER. */
-  dateTimeRenderOption?: GetSpreadsheetsValuesDateTimeRenderOptionEnum | (string & {});
+  dateTimeRenderOption?:
+    | GetSpreadsheetsValuesDateTimeRenderOptionEnum
+    | (string & {});
   /** The ID of the spreadsheet to retrieve data from. */
   spreadsheetId: string;
   /** How values should be represented in the output. The default render option is FORMATTED_VALUE. */
-  valueRenderOption?: GetSpreadsheetsValuesValueRenderOptionEnum | (string & {});
+  valueRenderOption?:
+    | GetSpreadsheetsValuesValueRenderOptionEnum
+    | (string & {});
   /** The major dimension that results should use. For example, if the spreadsheet data in Sheet1 is: `A1=1,B1=2,A2=3,B2=4`, then requesting `range=Sheet1!A1:B2?majorDimension=ROWS` returns `[[1,2],[3,4]]`, whereas requesting `range=Sheet1!A1:B2?majorDimension=COLUMNS` returns `[[1,3],[2,4]]`. */
   majorDimension?: GetSpreadsheetsValuesMajorDimensionEnum | (string & {});
 }
 export const GetSpreadsheetsValuesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "range": S.String.pipe(T.Label()),
-  "dateTimeRenderOption": S.optional(GetSpreadsheetsValuesDateTimeRenderOptionEnum.pipe(T.Query())),
-  "spreadsheetId": S.String.pipe(T.Label()),
-  "valueRenderOption": S.optional(GetSpreadsheetsValuesValueRenderOptionEnum.pipe(T.Query())),
-  "majorDimension": S.optional(GetSpreadsheetsValuesMajorDimensionEnum.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v4/spreadsheets/{spreadsheetId}/values/{range}","baseUrl":"https://sheets.googleapis.com/"})),
-).annotate({ identifier: "GetSpreadsheetsValuesRequest" }) as any as S.Schema<GetSpreadsheetsValuesRequest>;
+  S.Struct({
+    range: S.String.pipe(T.Label()),
+    dateTimeRenderOption: S.optional(
+      GetSpreadsheetsValuesDateTimeRenderOptionEnum.pipe(T.Query()),
+    ),
+    spreadsheetId: S.String.pipe(T.Label()),
+    valueRenderOption: S.optional(
+      GetSpreadsheetsValuesValueRenderOptionEnum.pipe(T.Query()),
+    ),
+    majorDimension: S.optional(
+      GetSpreadsheetsValuesMajorDimensionEnum.pipe(T.Query()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v4/spreadsheets/{spreadsheetId}/values/{range}",
+      baseUrl: "https://sheets.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetSpreadsheetsValuesRequest",
+}) as any as S.Schema<GetSpreadsheetsValuesRequest>;
 
 /** A request to retrieve all developer metadata matching the set of specified criteria. */
 export interface SearchDeveloperMetadataRequest {
@@ -5670,10 +6919,12 @@ export interface SearchDeveloperMetadataRequest {
   dataFilters?: DataFilterList;
 }
 export const SearchDeveloperMetadataRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dataFilters": S.optional(DataFilterList),
-}),
-).annotate({ identifier: "SearchDeveloperMetadataRequest" }) as any as S.Schema<SearchDeveloperMetadataRequest>;
+  S.Struct({
+    dataFilters: S.optional(DataFilterList),
+  }),
+).annotate({
+  identifier: "SearchDeveloperMetadataRequest",
+}) as any as S.Schema<SearchDeveloperMetadataRequest>;
 
 export interface SearchSpreadsheetsDeveloperMetadataRequest {
   /** The ID of the spreadsheet to retrieve metadata from. */
@@ -5681,12 +6932,21 @@ export interface SearchSpreadsheetsDeveloperMetadataRequest {
   /** Request body */
   body?: SearchDeveloperMetadataRequest;
 }
-export const SearchSpreadsheetsDeveloperMetadataRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "spreadsheetId": S.String.pipe(T.Label()),
-  "body": S.optional(SearchDeveloperMetadataRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v4/spreadsheets/{spreadsheetId}/developerMetadata:search","baseUrl":"https://sheets.googleapis.com/"})),
-).annotate({ identifier: "SearchSpreadsheetsDeveloperMetadataRequest" }) as any as S.Schema<SearchSpreadsheetsDeveloperMetadataRequest>;
+export const SearchSpreadsheetsDeveloperMetadataRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      spreadsheetId: S.String.pipe(T.Label()),
+      body: S.optional(SearchDeveloperMetadataRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v4/spreadsheets/{spreadsheetId}/developerMetadata:search",
+        baseUrl: "https://sheets.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "SearchSpreadsheetsDeveloperMetadataRequest",
+  }) as any as S.Schema<SearchSpreadsheetsDeveloperMetadataRequest>;
 
 /** A developer metadata entry and the data filters specified in the original request that matched it. */
 export interface MatchedDeveloperMetadata {
@@ -5696,14 +6956,19 @@ export interface MatchedDeveloperMetadata {
   dataFilters?: DataFilterList;
 }
 export const MatchedDeveloperMetadata = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "developerMetadata": S.optional(DeveloperMetadata),
-  "dataFilters": S.optional(DataFilterList),
-}),
-).annotate({ identifier: "MatchedDeveloperMetadata" }) as any as S.Schema<MatchedDeveloperMetadata>;
+  S.Struct({
+    developerMetadata: S.optional(DeveloperMetadata),
+    dataFilters: S.optional(DataFilterList),
+  }),
+).annotate({
+  identifier: "MatchedDeveloperMetadata",
+}) as any as S.Schema<MatchedDeveloperMetadata>;
 
-export type MatchedDeveloperMetadataList = ReadonlyArray<MatchedDeveloperMetadata>;
-export const MatchedDeveloperMetadataList = /*@__PURE__*/ S.Array(MatchedDeveloperMetadata) as any as S.Schema<MatchedDeveloperMetadataList>;
+export type MatchedDeveloperMetadataList =
+  ReadonlyArray<MatchedDeveloperMetadata>;
+export const MatchedDeveloperMetadataList = /*@__PURE__*/ S.Array(
+  MatchedDeveloperMetadata,
+) as any as S.Schema<MatchedDeveloperMetadataList>;
 
 /** A reply to a developer metadata search request. */
 export interface SearchDeveloperMetadataResponse {
@@ -5711,27 +6976,46 @@ export interface SearchDeveloperMetadataResponse {
   matchedDeveloperMetadata?: MatchedDeveloperMetadataList;
 }
 export const SearchDeveloperMetadataResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "matchedDeveloperMetadata": S.optional(MatchedDeveloperMetadataList),
-}),
-).annotate({ identifier: "SearchDeveloperMetadataResponse" }) as any as S.Schema<SearchDeveloperMetadataResponse>;
+  S.Struct({
+    matchedDeveloperMetadata: S.optional(MatchedDeveloperMetadataList),
+  }),
+).annotate({
+  identifier: "SearchDeveloperMetadataResponse",
+}) as any as S.Schema<SearchDeveloperMetadataResponse>;
 
-export type UpdateSpreadsheetsValuesValueInputOptionEnum = "INPUT_VALUE_OPTION_UNSPECIFIED" | "RAW" | "USER_ENTERED";
-export const UpdateSpreadsheetsValuesValueInputOptionEnum = /*@__PURE__*/ S.String;
+export type UpdateSpreadsheetsValuesValueInputOptionEnum =
+  | "INPUT_VALUE_OPTION_UNSPECIFIED"
+  | "RAW"
+  | "USER_ENTERED";
+export const UpdateSpreadsheetsValuesValueInputOptionEnum =
+  /*@__PURE__*/ S.String;
 
-export type UpdateSpreadsheetsValuesResponseValueRenderOptionEnum = "FORMATTED_VALUE" | "UNFORMATTED_VALUE" | "FORMULA";
-export const UpdateSpreadsheetsValuesResponseValueRenderOptionEnum = /*@__PURE__*/ S.String;
+export type UpdateSpreadsheetsValuesResponseValueRenderOptionEnum =
+  | "FORMATTED_VALUE"
+  | "UNFORMATTED_VALUE"
+  | "FORMULA";
+export const UpdateSpreadsheetsValuesResponseValueRenderOptionEnum =
+  /*@__PURE__*/ S.String;
 
-export type UpdateSpreadsheetsValuesResponseDateTimeRenderOptionEnum = "SERIAL_NUMBER" | "FORMATTED_STRING";
-export const UpdateSpreadsheetsValuesResponseDateTimeRenderOptionEnum = /*@__PURE__*/ S.String;
+export type UpdateSpreadsheetsValuesResponseDateTimeRenderOptionEnum =
+  | "SERIAL_NUMBER"
+  | "FORMATTED_STRING";
+export const UpdateSpreadsheetsValuesResponseDateTimeRenderOptionEnum =
+  /*@__PURE__*/ S.String;
 
 export interface UpdateSpreadsheetsValuesRequest {
   /** How the input data should be interpreted. */
-  valueInputOption?: UpdateSpreadsheetsValuesValueInputOptionEnum | (string & {});
+  valueInputOption?:
+    | UpdateSpreadsheetsValuesValueInputOptionEnum
+    | (string & {});
   /** Determines how values in the response should be rendered. The default render option is FORMATTED_VALUE. */
-  responseValueRenderOption?: UpdateSpreadsheetsValuesResponseValueRenderOptionEnum | (string & {});
+  responseValueRenderOption?:
+    | UpdateSpreadsheetsValuesResponseValueRenderOptionEnum
+    | (string & {});
   /** Determines how dates, times, and durations in the response should be rendered. This is ignored if response_value_render_option is FORMATTED_VALUE. The default dateTime render option is SERIAL_NUMBER. */
-  responseDateTimeRenderOption?: UpdateSpreadsheetsValuesResponseDateTimeRenderOptionEnum | (string & {});
+  responseDateTimeRenderOption?:
+    | UpdateSpreadsheetsValuesResponseDateTimeRenderOptionEnum
+    | (string & {});
   /** The [A1 notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell) of the values to update. */
   range: string;
   /** The ID of the spreadsheet to update. */
@@ -5742,18 +7026,37 @@ export interface UpdateSpreadsheetsValuesRequest {
   body?: ValueRange;
 }
 export const UpdateSpreadsheetsValuesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "valueInputOption": S.optional(UpdateSpreadsheetsValuesValueInputOptionEnum.pipe(T.Query())),
-  "responseValueRenderOption": S.optional(UpdateSpreadsheetsValuesResponseValueRenderOptionEnum.pipe(T.Query())),
-  "responseDateTimeRenderOption": S.optional(UpdateSpreadsheetsValuesResponseDateTimeRenderOptionEnum.pipe(T.Query())),
-  "range": S.String.pipe(T.Label()),
-  "spreadsheetId": S.String.pipe(T.Label()),
-  "includeValuesInResponse": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(ValueRange.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"v4/spreadsheets/{spreadsheetId}/values/{range}","baseUrl":"https://sheets.googleapis.com/"})),
-).annotate({ identifier: "UpdateSpreadsheetsValuesRequest" }) as any as S.Schema<UpdateSpreadsheetsValuesRequest>;
+  S.Struct({
+    valueInputOption: S.optional(
+      UpdateSpreadsheetsValuesValueInputOptionEnum.pipe(T.Query()),
+    ),
+    responseValueRenderOption: S.optional(
+      UpdateSpreadsheetsValuesResponseValueRenderOptionEnum.pipe(T.Query()),
+    ),
+    responseDateTimeRenderOption: S.optional(
+      UpdateSpreadsheetsValuesResponseDateTimeRenderOptionEnum.pipe(T.Query()),
+    ),
+    range: S.String.pipe(T.Label()),
+    spreadsheetId: S.String.pipe(T.Label()),
+    includeValuesInResponse: S.optional(S.Boolean.pipe(T.Query())),
+    body: S.optional(ValueRange.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "v4/spreadsheets/{spreadsheetId}/values/{range}",
+      baseUrl: "https://sheets.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateSpreadsheetsValuesRequest",
+}) as any as S.Schema<UpdateSpreadsheetsValuesRequest>;
 
-export type AppendSpreadsheetsValuesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type AppendSpreadsheetsValuesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Appends values to a spreadsheet. The input range is used to search for existing data and find a "table" within that range. Values will be appended to the next row of the table, starting with the first column of the table. See the [guide](https://developers.google.com/workspace/sheets/api/guides/values#appending_values) and [sample code](https://developers.google.com/workspace/sheets/api/samples/writing#append_values) for specific details of how tables are detected and data is appended. The caller must specify the spreadsheet ID, range, and a valueInputOption. The `valueInputOption` only controls how the input data will be added to the sheet (column-wise or row-wise), it does not influence what cell the data starts being written to. */
 export const appendSpreadsheetsValues: API.OperationMethod<
   AppendSpreadsheetsValuesRequest,
@@ -5768,7 +7071,12 @@ export const appendSpreadsheetsValues: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BatchClearByDataFilterSpreadsheetsValuesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type BatchClearByDataFilterSpreadsheetsValuesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Clears one or more ranges of values from a spreadsheet. For more information, see [Read, write, and search metadata](https://developers.google.com/workspace/sheets/api/guides/metadata). The caller must specify the spreadsheet ID and one or more DataFilters. Ranges matching any of the specified data filters will be cleared. Only values are cleared -- all other properties of the cell (such as formatting, data validation, etc.) are kept. */
 export const batchClearByDataFilterSpreadsheetsValues: API.OperationMethod<
   BatchClearByDataFilterSpreadsheetsValuesRequest,
@@ -5783,7 +7091,12 @@ export const batchClearByDataFilterSpreadsheetsValues: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BatchClearSpreadsheetsValuesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type BatchClearSpreadsheetsValuesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Clears one or more ranges of values from a spreadsheet. The caller must specify the spreadsheet ID and one or more ranges. Only values are cleared -- all other properties of the cell (such as formatting and data validation) are kept. */
 export const batchClearSpreadsheetsValues: API.OperationMethod<
   BatchClearSpreadsheetsValuesRequest,
@@ -5798,7 +7111,12 @@ export const batchClearSpreadsheetsValues: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BatchGetByDataFilterSpreadsheetsValuesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type BatchGetByDataFilterSpreadsheetsValuesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Returns one or more ranges of values that match the specified data filters. For more information, see [Read, write, and search metadata](https://developers.google.com/workspace/sheets/api/guides/metadata). The caller must specify the spreadsheet ID and one or more DataFilters. Ranges that match any of the data filters in the request will be returned. */
 export const batchGetByDataFilterSpreadsheetsValues: API.OperationMethod<
   BatchGetByDataFilterSpreadsheetsValuesRequest,
@@ -5828,7 +7146,12 @@ export const batchGetSpreadsheetsValues: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BatchUpdateByDataFilterSpreadsheetsValuesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type BatchUpdateByDataFilterSpreadsheetsValuesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sets values in one or more ranges of a spreadsheet. For more information, see [Read, write, and search metadata](https://developers.google.com/workspace/sheets/api/guides/metadata). The caller must specify the spreadsheet ID, a valueInputOption, and one or more DataFilterValueRanges. */
 export const batchUpdateByDataFilterSpreadsheetsValues: API.OperationMethod<
   BatchUpdateByDataFilterSpreadsheetsValuesRequest,
@@ -5843,7 +7166,12 @@ export const batchUpdateByDataFilterSpreadsheetsValues: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BatchUpdateSpreadsheetsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type BatchUpdateSpreadsheetsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Applies one or more updates to the spreadsheet. Each request is validated before being applied. If any request is not valid then the entire request will fail and nothing will be applied. Some requests have replies to give you some information about how they are applied. The replies will mirror the requests. For example, if you applied 4 updates and the 3rd one had a reply, then the response will have 2 empty replies, the actual reply, and another empty reply, in that order. Due to the collaborative nature of spreadsheets, it is not guaranteed that the spreadsheet will reflect exactly your changes after this completes, however it is guaranteed that the updates in the request will be applied together atomically. Your changes may be altered with respect to collaborator changes. If there are no collaborators, the spreadsheet should reflect your changes. */
 export const batchUpdateSpreadsheets: API.OperationMethod<
   BatchUpdateSpreadsheetsRequest,
@@ -5858,7 +7186,12 @@ export const batchUpdateSpreadsheets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BatchUpdateSpreadsheetsValuesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type BatchUpdateSpreadsheetsValuesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sets values in one or more ranges of a spreadsheet. The caller must specify the spreadsheet ID, a valueInputOption, and one or more ValueRanges. */
 export const batchUpdateSpreadsheetsValues: API.OperationMethod<
   BatchUpdateSpreadsheetsValuesRequest,
@@ -5873,7 +7206,12 @@ export const batchUpdateSpreadsheetsValues: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ClearSpreadsheetsValuesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ClearSpreadsheetsValuesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Clears values from a spreadsheet. The caller must specify the spreadsheet ID and range. Only values are cleared -- all other properties of the cell (such as formatting, data validation, etc..) are kept. */
 export const clearSpreadsheetsValues: API.OperationMethod<
   ClearSpreadsheetsValuesRequest,
@@ -5888,7 +7226,12 @@ export const clearSpreadsheetsValues: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CopyToSpreadsheetsSheetsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CopyToSpreadsheetsSheetsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Copies a single sheet from a spreadsheet to another spreadsheet. Returns the properties of the newly created sheet. */
 export const copyToSpreadsheetsSheets: API.OperationMethod<
   CopyToSpreadsheetsSheetsRequest,
@@ -5903,7 +7246,12 @@ export const copyToSpreadsheetsSheets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateSpreadsheetsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateSpreadsheetsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a spreadsheet, returning the newly created spreadsheet. */
 export const createSpreadsheets: API.OperationMethod<
   CreateSpreadsheetsRequest,
@@ -5918,7 +7266,12 @@ export const createSpreadsheets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetByDataFilterSpreadsheetsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type GetByDataFilterSpreadsheetsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Returns the spreadsheet at the given ID. The caller must specify the spreadsheet ID. For more information, see [Read, write, and search metadata](https://developers.google.com/workspace/sheets/api/guides/metadata). This method differs from GetSpreadsheet in that it allows selecting which subsets of spreadsheet data to return by specifying a dataFilters parameter. Multiple DataFilters can be specified. Specifying one or more data filters returns the portions of the spreadsheet that intersect ranges matched by any of the filters. By default, data within grids is not returned. You can include grid data in one of two ways: * Specify a [field mask](https://developers.google.com/workspace/sheets/api/guides/field-masks) listing your desired fields using the `fields` URL parameter in HTTP. * Set the includeGridData parameter to `true`. If a field mask is set, the `includeGridData` parameter is ignored. For large spreadsheets, as a best practice, retrieve only the specific spreadsheet fields that you want. */
 export const getByDataFilterSpreadsheets: API.OperationMethod<
   GetByDataFilterSpreadsheetsRequest,
@@ -5948,7 +7301,10 @@ export const getSpreadsheets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetSpreadsheetsDeveloperMetadataError = NotFound | Forbidden | GcpOpError;
+export type GetSpreadsheetsDeveloperMetadataError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns the developer metadata with the specified ID. The caller must specify the spreadsheet ID and the developer metadata's unique metadataId. For more information, see [Read, write, and search metadata](https://developers.google.com/workspace/sheets/api/guides/metadata). */
 export const getSpreadsheetsDeveloperMetadata: API.OperationMethod<
   GetSpreadsheetsDeveloperMetadataRequest,
@@ -5978,7 +7334,12 @@ export const getSpreadsheetsValues: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SearchSpreadsheetsDeveloperMetadataError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SearchSpreadsheetsDeveloperMetadataError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Returns all developer metadata matching the specified DataFilter. For more information, see [Read, write, and search metadata](https://developers.google.com/workspace/sheets/api/guides/metadata). If the provided DataFilter represents a DeveloperMetadataLookup object, this will return all DeveloperMetadata entries selected by it. If the DataFilter represents a location in a spreadsheet, this will return all developer metadata associated with locations intersecting that region. */
 export const searchSpreadsheetsDeveloperMetadata: API.OperationMethod<
   SearchSpreadsheetsDeveloperMetadataRequest,
@@ -5993,7 +7354,12 @@ export const searchSpreadsheetsDeveloperMetadata: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateSpreadsheetsValuesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateSpreadsheetsValuesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sets values in a range of a spreadsheet. The caller must specify the spreadsheet ID, range, and a valueInputOption. */
 export const updateSpreadsheetsValues: API.OperationMethod<
   UpdateSpreadsheetsValuesRequest,
@@ -6007,4 +7373,3 @@ export const updateSpreadsheetsValues: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

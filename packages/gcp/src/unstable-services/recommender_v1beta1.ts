@@ -13,71 +13,91 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export interface GetBillingAccountsLocationsInsightTypesInsightsRequest {
   /** Required. Name of the insight. */
   name: string;
 }
-export const GetBillingAccountsLocationsInsightTypesInsightsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "GetBillingAccountsLocationsInsightTypesInsightsRequest" }) as any as S.Schema<GetBillingAccountsLocationsInsightTypesInsightsRequest>;
+export const GetBillingAccountsLocationsInsightTypesInsightsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://recommender.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetBillingAccountsLocationsInsightTypesInsightsRequest",
+  }) as any as S.Schema<GetBillingAccountsLocationsInsightTypesInsightsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
-export type GoogleCloudRecommenderV1beta1InsightStateInfoStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "ACCEPTED" | "DISMISSED";
-export const GoogleCloudRecommenderV1beta1InsightStateInfoStateEnum = /*@__PURE__*/ S.String;
+export type GoogleCloudRecommenderV1beta1InsightStateInfoStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "ACCEPTED"
+  | "DISMISSED";
+export const GoogleCloudRecommenderV1beta1InsightStateInfoStateEnum =
+  /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
 /** Information related to insight state. */
 export interface GoogleCloudRecommenderV1beta1InsightStateInfo {
@@ -86,35 +106,61 @@ export interface GoogleCloudRecommenderV1beta1InsightStateInfo {
   /** A map of metadata for the state, provided by user or automations systems. */
   stateMetadata?: StringMap;
 }
-export const GoogleCloudRecommenderV1beta1InsightStateInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "state": S.optional(GoogleCloudRecommenderV1beta1InsightStateInfoStateEnum),
-  "stateMetadata": S.optional(StringMap),
-}),
-).annotate({ identifier: "GoogleCloudRecommenderV1beta1InsightStateInfo" }) as any as S.Schema<GoogleCloudRecommenderV1beta1InsightStateInfo>;
+export const GoogleCloudRecommenderV1beta1InsightStateInfo =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      state: S.optional(GoogleCloudRecommenderV1beta1InsightStateInfoStateEnum),
+      stateMetadata: S.optional(StringMap),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudRecommenderV1beta1InsightStateInfo",
+  }) as any as S.Schema<GoogleCloudRecommenderV1beta1InsightStateInfo>;
 
-export type GoogleCloudRecommenderV1beta1InsightSeverityEnum = "SEVERITY_UNSPECIFIED" | "LOW" | "MEDIUM" | "HIGH" | "CRITICAL";
-export const GoogleCloudRecommenderV1beta1InsightSeverityEnum = /*@__PURE__*/ S.String;
+export type GoogleCloudRecommenderV1beta1InsightSeverityEnum =
+  | "SEVERITY_UNSPECIFIED"
+  | "LOW"
+  | "MEDIUM"
+  | "HIGH"
+  | "CRITICAL";
+export const GoogleCloudRecommenderV1beta1InsightSeverityEnum =
+  /*@__PURE__*/ S.String;
 
-export type GoogleCloudRecommenderV1beta1InsightCategoryEnum = "CATEGORY_UNSPECIFIED" | "COST" | "SECURITY" | "PERFORMANCE" | "MANAGEABILITY" | "SUSTAINABILITY" | "RELIABILITY";
-export const GoogleCloudRecommenderV1beta1InsightCategoryEnum = /*@__PURE__*/ S.String;
+export type GoogleCloudRecommenderV1beta1InsightCategoryEnum =
+  | "CATEGORY_UNSPECIFIED"
+  | "COST"
+  | "SECURITY"
+  | "PERFORMANCE"
+  | "MANAGEABILITY"
+  | "SUSTAINABILITY"
+  | "RELIABILITY";
+export const GoogleCloudRecommenderV1beta1InsightCategoryEnum =
+  /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** Reference to an associated recommendation. */
 export interface GoogleCloudRecommenderV1beta1InsightRecommendationReference {
   /** Recommendation resource name, e.g. projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/recommendations/[RECOMMENDATION_ID] */
   recommendation?: string;
 }
-export const GoogleCloudRecommenderV1beta1InsightRecommendationReference = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "recommendation": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudRecommenderV1beta1InsightRecommendationReference" }) as any as S.Schema<GoogleCloudRecommenderV1beta1InsightRecommendationReference>;
+export const GoogleCloudRecommenderV1beta1InsightRecommendationReference =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      recommendation: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudRecommenderV1beta1InsightRecommendationReference",
+  }) as any as S.Schema<GoogleCloudRecommenderV1beta1InsightRecommendationReference>;
 
-export type GoogleCloudRecommenderV1beta1InsightRecommendationReferenceList = ReadonlyArray<GoogleCloudRecommenderV1beta1InsightRecommendationReference>;
-export const GoogleCloudRecommenderV1beta1InsightRecommendationReferenceList = /*@__PURE__*/ S.Array(GoogleCloudRecommenderV1beta1InsightRecommendationReference) as any as S.Schema<GoogleCloudRecommenderV1beta1InsightRecommendationReferenceList>;
+export type GoogleCloudRecommenderV1beta1InsightRecommendationReferenceList =
+  ReadonlyArray<GoogleCloudRecommenderV1beta1InsightRecommendationReference>;
+export const GoogleCloudRecommenderV1beta1InsightRecommendationReferenceList =
+  /*@__PURE__*/ S.Array(
+    GoogleCloudRecommenderV1beta1InsightRecommendationReference,
+  ) as any as S.Schema<GoogleCloudRecommenderV1beta1InsightRecommendationReferenceList>;
 
 /** An insight along with the information used to derive the insight. The insight may have associated recommendations as well. */
 export interface GoogleCloudRecommenderV1beta1Insight {
@@ -143,52 +189,86 @@ export interface GoogleCloudRecommenderV1beta1Insight {
   /** Recommendations derived from this insight. */
   associatedRecommendations?: GoogleCloudRecommenderV1beta1InsightRecommendationReferenceList;
 }
-export const GoogleCloudRecommenderV1beta1Insight = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "etag": S.optional(S.String),
-  "description": S.optional(S.String),
-  "content": S.optional(DocumentMap),
-  "stateInfo": S.optional(GoogleCloudRecommenderV1beta1InsightStateInfo),
-  "insightSubtype": S.optional(S.String),
-  "observationPeriod": S.optional(S.String),
-  "severity": S.optional(GoogleCloudRecommenderV1beta1InsightSeverityEnum),
-  "name": S.optional(S.String),
-  "lastRefreshTime": S.optional(S.String),
-  "category": S.optional(GoogleCloudRecommenderV1beta1InsightCategoryEnum),
-  "targetResources": S.optional(StringList),
-  "associatedRecommendations": S.optional(GoogleCloudRecommenderV1beta1InsightRecommendationReferenceList),
-}),
-).annotate({ identifier: "GoogleCloudRecommenderV1beta1Insight" }) as any as S.Schema<GoogleCloudRecommenderV1beta1Insight>;
+export const GoogleCloudRecommenderV1beta1Insight = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      etag: S.optional(S.String),
+      description: S.optional(S.String),
+      content: S.optional(DocumentMap),
+      stateInfo: S.optional(GoogleCloudRecommenderV1beta1InsightStateInfo),
+      insightSubtype: S.optional(S.String),
+      observationPeriod: S.optional(S.String),
+      severity: S.optional(GoogleCloudRecommenderV1beta1InsightSeverityEnum),
+      name: S.optional(S.String),
+      lastRefreshTime: S.optional(S.String),
+      category: S.optional(GoogleCloudRecommenderV1beta1InsightCategoryEnum),
+      targetResources: S.optional(StringList),
+      associatedRecommendations: S.optional(
+        GoogleCloudRecommenderV1beta1InsightRecommendationReferenceList,
+      ),
+    }),
+).annotate({
+  identifier: "GoogleCloudRecommenderV1beta1Insight",
+}) as any as S.Schema<GoogleCloudRecommenderV1beta1Insight>;
 
 export interface GetBillingAccountsLocationsRecommendersRecommendationsRequest {
   /** Required. Name of the recommendation. */
   name: string;
 }
-export const GetBillingAccountsLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "GetBillingAccountsLocationsRecommendersRecommendationsRequest" }) as any as S.Schema<GetBillingAccountsLocationsRecommendersRecommendationsRequest>;
+export const GetBillingAccountsLocationsRecommendersRecommendationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://recommender.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetBillingAccountsLocationsRecommendersRecommendationsRequest",
+  }) as any as S.Schema<GetBillingAccountsLocationsRecommendersRecommendationsRequest>;
 
-export type GoogleCloudRecommenderV1beta1ImpactCategoryEnum = "CATEGORY_UNSPECIFIED" | "COST" | "SECURITY" | "PERFORMANCE" | "MANAGEABILITY" | "SUSTAINABILITY" | "RELIABILITY";
-export const GoogleCloudRecommenderV1beta1ImpactCategoryEnum = /*@__PURE__*/ S.String;
+export type GoogleCloudRecommenderV1beta1ImpactCategoryEnum =
+  | "CATEGORY_UNSPECIFIED"
+  | "COST"
+  | "SECURITY"
+  | "PERFORMANCE"
+  | "MANAGEABILITY"
+  | "SUSTAINABILITY"
+  | "RELIABILITY";
+export const GoogleCloudRecommenderV1beta1ImpactCategoryEnum =
+  /*@__PURE__*/ S.String;
 
 /** Contains various ways of describing the impact on Security. */
 export interface GoogleCloudRecommenderV1beta1SecurityProjection {
   /** This field can be used by the recommender to define details specific to security impact. */
   details?: DocumentMap;
 }
-export const GoogleCloudRecommenderV1beta1SecurityProjection = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "details": S.optional(DocumentMap),
-}),
-).annotate({ identifier: "GoogleCloudRecommenderV1beta1SecurityProjection" }) as any as S.Schema<GoogleCloudRecommenderV1beta1SecurityProjection>;
+export const GoogleCloudRecommenderV1beta1SecurityProjection =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      details: S.optional(DocumentMap),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudRecommenderV1beta1SecurityProjection",
+  }) as any as S.Schema<GoogleCloudRecommenderV1beta1SecurityProjection>;
 
-export type GoogleCloudRecommenderV1beta1ReliabilityProjectionRisksItemEnum = "RISK_TYPE_UNSPECIFIED" | "SERVICE_DISRUPTION" | "DATA_LOSS" | "ACCESS_DENY";
-export const GoogleCloudRecommenderV1beta1ReliabilityProjectionRisksItemEnum = /*@__PURE__*/ S.String;
+export type GoogleCloudRecommenderV1beta1ReliabilityProjectionRisksItemEnum =
+  | "RISK_TYPE_UNSPECIFIED"
+  | "SERVICE_DISRUPTION"
+  | "DATA_LOSS"
+  | "ACCESS_DENY";
+export const GoogleCloudRecommenderV1beta1ReliabilityProjectionRisksItemEnum =
+  /*@__PURE__*/ S.String;
 
-export type GoogleCloudRecommenderV1beta1ReliabilityProjectionRisksItemEnumList = ReadonlyArray<GoogleCloudRecommenderV1beta1ReliabilityProjectionRisksItemEnum>;
-export const GoogleCloudRecommenderV1beta1ReliabilityProjectionRisksItemEnumList = /*@__PURE__*/ S.Array(GoogleCloudRecommenderV1beta1ReliabilityProjectionRisksItemEnum) as any as S.Schema<GoogleCloudRecommenderV1beta1ReliabilityProjectionRisksItemEnumList>;
+export type GoogleCloudRecommenderV1beta1ReliabilityProjectionRisksItemEnumList =
+  ReadonlyArray<GoogleCloudRecommenderV1beta1ReliabilityProjectionRisksItemEnum>;
+export const GoogleCloudRecommenderV1beta1ReliabilityProjectionRisksItemEnumList =
+  /*@__PURE__*/ S.Array(
+    GoogleCloudRecommenderV1beta1ReliabilityProjectionRisksItemEnum,
+  ) as any as S.Schema<GoogleCloudRecommenderV1beta1ReliabilityProjectionRisksItemEnumList>;
 
 /** Contains information on the impact of a reliability recommendation. */
 export interface GoogleCloudRecommenderV1beta1ReliabilityProjection {
@@ -197,12 +277,17 @@ export interface GoogleCloudRecommenderV1beta1ReliabilityProjection {
   /** Per-recommender projection. */
   details?: DocumentMap;
 }
-export const GoogleCloudRecommenderV1beta1ReliabilityProjection = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "risks": S.optional(GoogleCloudRecommenderV1beta1ReliabilityProjectionRisksItemEnumList),
-  "details": S.optional(DocumentMap),
-}),
-).annotate({ identifier: "GoogleCloudRecommenderV1beta1ReliabilityProjection" }) as any as S.Schema<GoogleCloudRecommenderV1beta1ReliabilityProjection>;
+export const GoogleCloudRecommenderV1beta1ReliabilityProjection =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      risks: S.optional(
+        GoogleCloudRecommenderV1beta1ReliabilityProjectionRisksItemEnumList,
+      ),
+      details: S.optional(DocumentMap),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudRecommenderV1beta1ReliabilityProjection",
+  }) as any as S.Schema<GoogleCloudRecommenderV1beta1ReliabilityProjection>;
 
 /** Contains metadata about how much sustainability a recommendation can save or incur. */
 export interface GoogleCloudRecommenderV1beta1SustainabilityProjection {
@@ -211,12 +296,15 @@ export interface GoogleCloudRecommenderV1beta1SustainabilityProjection {
   /** Duration for which this sustanability applies. */
   duration?: string;
 }
-export const GoogleCloudRecommenderV1beta1SustainabilityProjection = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kgCO2e": S.optional(S.Number),
-  "duration": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudRecommenderV1beta1SustainabilityProjection" }) as any as S.Schema<GoogleCloudRecommenderV1beta1SustainabilityProjection>;
+export const GoogleCloudRecommenderV1beta1SustainabilityProjection =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      kgCO2e: S.optional(S.Number),
+      duration: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudRecommenderV1beta1SustainabilityProjection",
+  }) as any as S.Schema<GoogleCloudRecommenderV1beta1SustainabilityProjection>;
 
 /** Represents an amount of money with its currency type. */
 export interface GoogleTypeMoney {
@@ -228,15 +316,21 @@ export interface GoogleTypeMoney {
   units?: string;
 }
 export const GoogleTypeMoney = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "currencyCode": S.optional(S.String),
-  "nanos": S.optional(S.Number),
-  "units": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleTypeMoney" }) as any as S.Schema<GoogleTypeMoney>;
+  S.Struct({
+    currencyCode: S.optional(S.String),
+    nanos: S.optional(S.Number),
+    units: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleTypeMoney",
+}) as any as S.Schema<GoogleTypeMoney>;
 
-export type GoogleCloudRecommenderV1beta1CostProjectionPricingTypeEnum = "PRICING_TYPE_UNSPECIFIED" | "LIST_PRICE" | "CUSTOM_PRICE";
-export const GoogleCloudRecommenderV1beta1CostProjectionPricingTypeEnum = /*@__PURE__*/ S.String;
+export type GoogleCloudRecommenderV1beta1CostProjectionPricingTypeEnum =
+  | "PRICING_TYPE_UNSPECIFIED"
+  | "LIST_PRICE"
+  | "CUSTOM_PRICE";
+export const GoogleCloudRecommenderV1beta1CostProjectionPricingTypeEnum =
+  /*@__PURE__*/ S.String;
 
 /** Contains metadata about how much money a recommendation can save or incur. */
 export interface GoogleCloudRecommenderV1beta1CostProjection {
@@ -249,14 +343,19 @@ export interface GoogleCloudRecommenderV1beta1CostProjection {
   /** The approximate cost savings in the billing account's local currency. */
   costInLocalCurrency?: GoogleTypeMoney;
 }
-export const GoogleCloudRecommenderV1beta1CostProjection = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "cost": S.optional(GoogleTypeMoney),
-  "pricingType": S.optional(GoogleCloudRecommenderV1beta1CostProjectionPricingTypeEnum),
-  "duration": S.optional(S.String),
-  "costInLocalCurrency": S.optional(GoogleTypeMoney),
-}),
-).annotate({ identifier: "GoogleCloudRecommenderV1beta1CostProjection" }) as any as S.Schema<GoogleCloudRecommenderV1beta1CostProjection>;
+export const GoogleCloudRecommenderV1beta1CostProjection =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      cost: S.optional(GoogleTypeMoney),
+      pricingType: S.optional(
+        GoogleCloudRecommenderV1beta1CostProjectionPricingTypeEnum,
+      ),
+      duration: S.optional(S.String),
+      costInLocalCurrency: S.optional(GoogleTypeMoney),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudRecommenderV1beta1CostProjection",
+  }) as any as S.Schema<GoogleCloudRecommenderV1beta1CostProjection>;
 
 /** Contains the impact a recommendation can have for a given category. */
 export interface GoogleCloudRecommenderV1beta1Impact {
@@ -274,29 +373,46 @@ export interface GoogleCloudRecommenderV1beta1Impact {
   costProjection?: GoogleCloudRecommenderV1beta1CostProjection;
 }
 export const GoogleCloudRecommenderV1beta1Impact = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "category": S.optional(GoogleCloudRecommenderV1beta1ImpactCategoryEnum),
-  "securityProjection": S.optional(GoogleCloudRecommenderV1beta1SecurityProjection),
-  "reliabilityProjection": S.optional(GoogleCloudRecommenderV1beta1ReliabilityProjection),
-  "sustainabilityProjection": S.optional(GoogleCloudRecommenderV1beta1SustainabilityProjection),
-  "service": S.optional(S.String),
-  "costProjection": S.optional(GoogleCloudRecommenderV1beta1CostProjection),
-}),
-).annotate({ identifier: "GoogleCloudRecommenderV1beta1Impact" }) as any as S.Schema<GoogleCloudRecommenderV1beta1Impact>;
+  S.Struct({
+    category: S.optional(GoogleCloudRecommenderV1beta1ImpactCategoryEnum),
+    securityProjection: S.optional(
+      GoogleCloudRecommenderV1beta1SecurityProjection,
+    ),
+    reliabilityProjection: S.optional(
+      GoogleCloudRecommenderV1beta1ReliabilityProjection,
+    ),
+    sustainabilityProjection: S.optional(
+      GoogleCloudRecommenderV1beta1SustainabilityProjection,
+    ),
+    service: S.optional(S.String),
+    costProjection: S.optional(GoogleCloudRecommenderV1beta1CostProjection),
+  }),
+).annotate({
+  identifier: "GoogleCloudRecommenderV1beta1Impact",
+}) as any as S.Schema<GoogleCloudRecommenderV1beta1Impact>;
 
 /** Contains various matching options for values for a GCP resource field. */
 export interface GoogleCloudRecommenderV1beta1ValueMatcher {
   /** To be used for full regex matching. The regular expression is using the Google RE2 syntax (https://github.com/google/re2/wiki/Syntax), so to be used with RE2::FullMatch */
   matchesPattern?: string;
 }
-export const GoogleCloudRecommenderV1beta1ValueMatcher = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "matchesPattern": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudRecommenderV1beta1ValueMatcher" }) as any as S.Schema<GoogleCloudRecommenderV1beta1ValueMatcher>;
+export const GoogleCloudRecommenderV1beta1ValueMatcher =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      matchesPattern: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudRecommenderV1beta1ValueMatcher",
+  }) as any as S.Schema<GoogleCloudRecommenderV1beta1ValueMatcher>;
 
-export type GoogleCloudRecommenderV1beta1ValueMatcherMap = { [key: string]: GoogleCloudRecommenderV1beta1ValueMatcher | undefined };
-export const GoogleCloudRecommenderV1beta1ValueMatcherMap = /*@__PURE__*/ S.Record(S.String, GoogleCloudRecommenderV1beta1ValueMatcher) as any as S.Schema<GoogleCloudRecommenderV1beta1ValueMatcherMap>;
+export type GoogleCloudRecommenderV1beta1ValueMatcherMap = {
+  [key: string]: GoogleCloudRecommenderV1beta1ValueMatcher | undefined;
+};
+export const GoogleCloudRecommenderV1beta1ValueMatcherMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    GoogleCloudRecommenderV1beta1ValueMatcher,
+  ) as any as S.Schema<GoogleCloudRecommenderV1beta1ValueMatcherMap>;
 
 /** Contains an operation for a resource loosely based on the JSON-PATCH format with support for: * Custom filters for describing partial array patch. * Extended path values for describing nested arrays. * Custom fields for describing the resource for which the operation is being described. * Allows extension to custom operations not natively supported by RFC6902. See https://tools.ietf.org/html/rfc6902 for details on the original RFC. */
 export interface GoogleCloudRecommenderV1beta1Operation {
@@ -321,37 +437,52 @@ export interface GoogleCloudRecommenderV1beta1Operation {
   /** Set of filters to apply if `path` refers to array elements or nested array elements in order to narrow down to a single unique element that is being tested/modified. This is intended to be an exact match per filter. To perform advanced matching, use path_value_matchers. * Example: ``` { "/versions/*\/name" : "it-123" "/versions/*\/targetSize/percent": 20 } ``` * Example: ``` { "/bindings/*\/role": "roles/owner" "/bindings/*\/condition" : null } ``` * Example: ``` { "/bindings/*\/role": "roles/owner" "/bindings/*\/members/*" : ["x@example.com", "y@example.com"] } ``` When both path_filters and path_value_matchers are set, an implicit AND must be performed. */
   pathFilters?: DocumentMap;
 }
-export const GoogleCloudRecommenderV1beta1Operation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sourceResource": S.optional(S.String),
-  "resource": S.optional(S.String),
-  "sourcePath": S.optional(S.String),
-  "action": S.optional(S.String),
-  "path": S.optional(S.String),
-  "value": S.optional(S.Unknown),
-  "valueMatcher": S.optional(GoogleCloudRecommenderV1beta1ValueMatcher),
-  "pathValueMatchers": S.optional(GoogleCloudRecommenderV1beta1ValueMatcherMap),
-  "resourceType": S.optional(S.String),
-  "pathFilters": S.optional(DocumentMap),
-}),
-).annotate({ identifier: "GoogleCloudRecommenderV1beta1Operation" }) as any as S.Schema<GoogleCloudRecommenderV1beta1Operation>;
+export const GoogleCloudRecommenderV1beta1Operation = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      sourceResource: S.optional(S.String),
+      resource: S.optional(S.String),
+      sourcePath: S.optional(S.String),
+      action: S.optional(S.String),
+      path: S.optional(S.String),
+      value: S.optional(S.Unknown),
+      valueMatcher: S.optional(GoogleCloudRecommenderV1beta1ValueMatcher),
+      pathValueMatchers: S.optional(
+        GoogleCloudRecommenderV1beta1ValueMatcherMap,
+      ),
+      resourceType: S.optional(S.String),
+      pathFilters: S.optional(DocumentMap),
+    }),
+).annotate({
+  identifier: "GoogleCloudRecommenderV1beta1Operation",
+}) as any as S.Schema<GoogleCloudRecommenderV1beta1Operation>;
 
-export type GoogleCloudRecommenderV1beta1OperationList = ReadonlyArray<GoogleCloudRecommenderV1beta1Operation>;
-export const GoogleCloudRecommenderV1beta1OperationList = /*@__PURE__*/ S.Array(GoogleCloudRecommenderV1beta1Operation) as any as S.Schema<GoogleCloudRecommenderV1beta1OperationList>;
+export type GoogleCloudRecommenderV1beta1OperationList =
+  ReadonlyArray<GoogleCloudRecommenderV1beta1Operation>;
+export const GoogleCloudRecommenderV1beta1OperationList = /*@__PURE__*/ S.Array(
+  GoogleCloudRecommenderV1beta1Operation,
+) as any as S.Schema<GoogleCloudRecommenderV1beta1OperationList>;
 
 /** Group of operations that need to be performed atomically. */
 export interface GoogleCloudRecommenderV1beta1OperationGroup {
   /** List of operations across one or more resources that belong to this group. Loosely based on RFC6902 and should be performed in the order they appear. */
   operations?: GoogleCloudRecommenderV1beta1OperationList;
 }
-export const GoogleCloudRecommenderV1beta1OperationGroup = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "operations": S.optional(GoogleCloudRecommenderV1beta1OperationList),
-}),
-).annotate({ identifier: "GoogleCloudRecommenderV1beta1OperationGroup" }) as any as S.Schema<GoogleCloudRecommenderV1beta1OperationGroup>;
+export const GoogleCloudRecommenderV1beta1OperationGroup =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operations: S.optional(GoogleCloudRecommenderV1beta1OperationList),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudRecommenderV1beta1OperationGroup",
+  }) as any as S.Schema<GoogleCloudRecommenderV1beta1OperationGroup>;
 
-export type GoogleCloudRecommenderV1beta1OperationGroupList = ReadonlyArray<GoogleCloudRecommenderV1beta1OperationGroup>;
-export const GoogleCloudRecommenderV1beta1OperationGroupList = /*@__PURE__*/ S.Array(GoogleCloudRecommenderV1beta1OperationGroup) as any as S.Schema<GoogleCloudRecommenderV1beta1OperationGroupList>;
+export type GoogleCloudRecommenderV1beta1OperationGroupList =
+  ReadonlyArray<GoogleCloudRecommenderV1beta1OperationGroup>;
+export const GoogleCloudRecommenderV1beta1OperationGroupList =
+  /*@__PURE__*/ S.Array(
+    GoogleCloudRecommenderV1beta1OperationGroup,
+  ) as any as S.Schema<GoogleCloudRecommenderV1beta1OperationGroupList>;
 
 /** Contains what resources are changing and how they are changing. */
 export interface GoogleCloudRecommenderV1beta1RecommendationContent {
@@ -360,21 +491,42 @@ export interface GoogleCloudRecommenderV1beta1RecommendationContent {
   /** Condensed overview information about the recommendation. */
   overview?: DocumentMap;
 }
-export const GoogleCloudRecommenderV1beta1RecommendationContent = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "operationGroups": S.optional(GoogleCloudRecommenderV1beta1OperationGroupList),
-  "overview": S.optional(DocumentMap),
-}),
-).annotate({ identifier: "GoogleCloudRecommenderV1beta1RecommendationContent" }) as any as S.Schema<GoogleCloudRecommenderV1beta1RecommendationContent>;
+export const GoogleCloudRecommenderV1beta1RecommendationContent =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operationGroups: S.optional(
+        GoogleCloudRecommenderV1beta1OperationGroupList,
+      ),
+      overview: S.optional(DocumentMap),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudRecommenderV1beta1RecommendationContent",
+  }) as any as S.Schema<GoogleCloudRecommenderV1beta1RecommendationContent>;
 
-export type GoogleCloudRecommenderV1beta1RecommendationPriorityEnum = "PRIORITY_UNSPECIFIED" | "P4" | "P3" | "P2" | "P1";
-export const GoogleCloudRecommenderV1beta1RecommendationPriorityEnum = /*@__PURE__*/ S.String;
+export type GoogleCloudRecommenderV1beta1RecommendationPriorityEnum =
+  | "PRIORITY_UNSPECIFIED"
+  | "P4"
+  | "P3"
+  | "P2"
+  | "P1";
+export const GoogleCloudRecommenderV1beta1RecommendationPriorityEnum =
+  /*@__PURE__*/ S.String;
 
-export type GoogleCloudRecommenderV1beta1ImpactList = ReadonlyArray<GoogleCloudRecommenderV1beta1Impact>;
-export const GoogleCloudRecommenderV1beta1ImpactList = /*@__PURE__*/ S.Array(GoogleCloudRecommenderV1beta1Impact) as any as S.Schema<GoogleCloudRecommenderV1beta1ImpactList>;
+export type GoogleCloudRecommenderV1beta1ImpactList =
+  ReadonlyArray<GoogleCloudRecommenderV1beta1Impact>;
+export const GoogleCloudRecommenderV1beta1ImpactList = /*@__PURE__*/ S.Array(
+  GoogleCloudRecommenderV1beta1Impact,
+) as any as S.Schema<GoogleCloudRecommenderV1beta1ImpactList>;
 
-export type GoogleCloudRecommenderV1beta1RecommendationStateInfoStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "CLAIMED" | "SUCCEEDED" | "FAILED" | "DISMISSED";
-export const GoogleCloudRecommenderV1beta1RecommendationStateInfoStateEnum = /*@__PURE__*/ S.String;
+export type GoogleCloudRecommenderV1beta1RecommendationStateInfoStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "CLAIMED"
+  | "SUCCEEDED"
+  | "FAILED"
+  | "DISMISSED";
+export const GoogleCloudRecommenderV1beta1RecommendationStateInfoStateEnum =
+  /*@__PURE__*/ S.String;
 
 /** Information for state. Contains state and metadata. */
 export interface GoogleCloudRecommenderV1beta1RecommendationStateInfo {
@@ -383,26 +535,38 @@ export interface GoogleCloudRecommenderV1beta1RecommendationStateInfo {
   /** A map of metadata for the state, provided by user or automations systems. */
   stateMetadata?: StringMap;
 }
-export const GoogleCloudRecommenderV1beta1RecommendationStateInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "state": S.optional(GoogleCloudRecommenderV1beta1RecommendationStateInfoStateEnum),
-  "stateMetadata": S.optional(StringMap),
-}),
-).annotate({ identifier: "GoogleCloudRecommenderV1beta1RecommendationStateInfo" }) as any as S.Schema<GoogleCloudRecommenderV1beta1RecommendationStateInfo>;
+export const GoogleCloudRecommenderV1beta1RecommendationStateInfo =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      state: S.optional(
+        GoogleCloudRecommenderV1beta1RecommendationStateInfoStateEnum,
+      ),
+      stateMetadata: S.optional(StringMap),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudRecommenderV1beta1RecommendationStateInfo",
+  }) as any as S.Schema<GoogleCloudRecommenderV1beta1RecommendationStateInfo>;
 
 /** Reference to an associated insight. */
 export interface GoogleCloudRecommenderV1beta1RecommendationInsightReference {
   /** Insight resource name, e.g. projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/insights/[INSIGHT_ID] */
   insight?: string;
 }
-export const GoogleCloudRecommenderV1beta1RecommendationInsightReference = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "insight": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudRecommenderV1beta1RecommendationInsightReference" }) as any as S.Schema<GoogleCloudRecommenderV1beta1RecommendationInsightReference>;
+export const GoogleCloudRecommenderV1beta1RecommendationInsightReference =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      insight: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudRecommenderV1beta1RecommendationInsightReference",
+  }) as any as S.Schema<GoogleCloudRecommenderV1beta1RecommendationInsightReference>;
 
-export type GoogleCloudRecommenderV1beta1RecommendationInsightReferenceList = ReadonlyArray<GoogleCloudRecommenderV1beta1RecommendationInsightReference>;
-export const GoogleCloudRecommenderV1beta1RecommendationInsightReferenceList = /*@__PURE__*/ S.Array(GoogleCloudRecommenderV1beta1RecommendationInsightReference) as any as S.Schema<GoogleCloudRecommenderV1beta1RecommendationInsightReferenceList>;
+export type GoogleCloudRecommenderV1beta1RecommendationInsightReferenceList =
+  ReadonlyArray<GoogleCloudRecommenderV1beta1RecommendationInsightReference>;
+export const GoogleCloudRecommenderV1beta1RecommendationInsightReferenceList =
+  /*@__PURE__*/ S.Array(
+    GoogleCloudRecommenderV1beta1RecommendationInsightReference,
+  ) as any as S.Schema<GoogleCloudRecommenderV1beta1RecommendationInsightReferenceList>;
 
 /** A recommendation along with a suggested action. E.g., a rightsizing recommendation for an underutilized VM, IAM role recommendations, etc */
 export interface GoogleCloudRecommenderV1beta1Recommendation {
@@ -433,44 +597,65 @@ export interface GoogleCloudRecommenderV1beta1Recommendation {
   /** Corresponds to a mutually exclusive group ID within a recommender. A non-empty ID indicates that the recommendation belongs to a mutually exclusive group. This means that only one recommendation within the group is suggested to be applied. */
   xorGroupId?: string;
 }
-export const GoogleCloudRecommenderV1beta1Recommendation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "recommenderSubtype": S.optional(S.String),
-  "name": S.optional(S.String),
-  "etag": S.optional(S.String),
-  "description": S.optional(S.String),
-  "primaryImpact": S.optional(GoogleCloudRecommenderV1beta1Impact),
-  "content": S.optional(GoogleCloudRecommenderV1beta1RecommendationContent),
-  "targetResources": S.optional(StringList),
-  "priority": S.optional(GoogleCloudRecommenderV1beta1RecommendationPriorityEnum),
-  "additionalImpact": S.optional(GoogleCloudRecommenderV1beta1ImpactList),
-  "stateInfo": S.optional(GoogleCloudRecommenderV1beta1RecommendationStateInfo),
-  "associatedInsights": S.optional(GoogleCloudRecommenderV1beta1RecommendationInsightReferenceList),
-  "lastRefreshTime": S.optional(S.String),
-  "xorGroupId": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudRecommenderV1beta1Recommendation" }) as any as S.Schema<GoogleCloudRecommenderV1beta1Recommendation>;
+export const GoogleCloudRecommenderV1beta1Recommendation =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      recommenderSubtype: S.optional(S.String),
+      name: S.optional(S.String),
+      etag: S.optional(S.String),
+      description: S.optional(S.String),
+      primaryImpact: S.optional(GoogleCloudRecommenderV1beta1Impact),
+      content: S.optional(GoogleCloudRecommenderV1beta1RecommendationContent),
+      targetResources: S.optional(StringList),
+      priority: S.optional(
+        GoogleCloudRecommenderV1beta1RecommendationPriorityEnum,
+      ),
+      additionalImpact: S.optional(GoogleCloudRecommenderV1beta1ImpactList),
+      stateInfo: S.optional(
+        GoogleCloudRecommenderV1beta1RecommendationStateInfo,
+      ),
+      associatedInsights: S.optional(
+        GoogleCloudRecommenderV1beta1RecommendationInsightReferenceList,
+      ),
+      lastRefreshTime: S.optional(S.String),
+      xorGroupId: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudRecommenderV1beta1Recommendation",
+  }) as any as S.Schema<GoogleCloudRecommenderV1beta1Recommendation>;
 
 export interface GetConfigBillingAccountsLocationsInsightTypesRequest {
   /** Required. Name of the InsightTypeConfig to get. Acceptable formats: * `projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config` * `projects/[PROJECT_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config` * `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config` * `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config` */
   name: string;
 }
-export const GetConfigBillingAccountsLocationsInsightTypesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "GetConfigBillingAccountsLocationsInsightTypesRequest" }) as any as S.Schema<GetConfigBillingAccountsLocationsInsightTypesRequest>;
+export const GetConfigBillingAccountsLocationsInsightTypesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://recommender.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetConfigBillingAccountsLocationsInsightTypesRequest",
+  }) as any as S.Schema<GetConfigBillingAccountsLocationsInsightTypesRequest>;
 
 /** A configuration to customize the generation of insights. Eg, customizing the lookback period considered when generating a insight. */
 export interface GoogleCloudRecommenderV1beta1InsightTypeGenerationConfig {
   /** Parameters for this InsightTypeGenerationConfig. These configs can be used by or are applied to all subtypes. */
   params?: DocumentMap;
 }
-export const GoogleCloudRecommenderV1beta1InsightTypeGenerationConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "params": S.optional(DocumentMap),
-}),
-).annotate({ identifier: "GoogleCloudRecommenderV1beta1InsightTypeGenerationConfig" }) as any as S.Schema<GoogleCloudRecommenderV1beta1InsightTypeGenerationConfig>;
+export const GoogleCloudRecommenderV1beta1InsightTypeGenerationConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      params: S.optional(DocumentMap),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudRecommenderV1beta1InsightTypeGenerationConfig",
+  }) as any as S.Schema<GoogleCloudRecommenderV1beta1InsightTypeGenerationConfig>;
 
 /** Configuration for an InsightType. */
 export interface GoogleCloudRecommenderV1beta1InsightTypeConfig {
@@ -489,38 +674,55 @@ export interface GoogleCloudRecommenderV1beta1InsightTypeConfig {
   /** InsightTypeGenerationConfig which configures the generation of insights for this insight type. */
   insightTypeGenerationConfig?: GoogleCloudRecommenderV1beta1InsightTypeGenerationConfig;
 }
-export const GoogleCloudRecommenderV1beta1InsightTypeConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "revisionId": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "name": S.optional(S.String),
-  "annotations": S.optional(StringMap),
-  "etag": S.optional(S.String),
-  "insightTypeGenerationConfig": S.optional(GoogleCloudRecommenderV1beta1InsightTypeGenerationConfig),
-}),
-).annotate({ identifier: "GoogleCloudRecommenderV1beta1InsightTypeConfig" }) as any as S.Schema<GoogleCloudRecommenderV1beta1InsightTypeConfig>;
+export const GoogleCloudRecommenderV1beta1InsightTypeConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      revisionId: S.optional(S.String),
+      displayName: S.optional(S.String),
+      updateTime: S.optional(S.String),
+      name: S.optional(S.String),
+      annotations: S.optional(StringMap),
+      etag: S.optional(S.String),
+      insightTypeGenerationConfig: S.optional(
+        GoogleCloudRecommenderV1beta1InsightTypeGenerationConfig,
+      ),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudRecommenderV1beta1InsightTypeConfig",
+  }) as any as S.Schema<GoogleCloudRecommenderV1beta1InsightTypeConfig>;
 
 export interface GetConfigBillingAccountsLocationsRecommendersRequest {
   /** Required. Name of the Recommendation Config to get. Acceptable formats: * `projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config` * `projects/[PROJECT_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config` * `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config` * `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config` */
   name: string;
 }
-export const GetConfigBillingAccountsLocationsRecommendersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "GetConfigBillingAccountsLocationsRecommendersRequest" }) as any as S.Schema<GetConfigBillingAccountsLocationsRecommendersRequest>;
+export const GetConfigBillingAccountsLocationsRecommendersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://recommender.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetConfigBillingAccountsLocationsRecommendersRequest",
+  }) as any as S.Schema<GetConfigBillingAccountsLocationsRecommendersRequest>;
 
 /** A Configuration to customize the generation of recommendations. Eg, customizing the lookback period considered when generating a recommendation. */
 export interface GoogleCloudRecommenderV1beta1RecommenderGenerationConfig {
   /** Parameters for this RecommenderGenerationConfig. These configs can be used by or are applied to all subtypes. */
   params?: DocumentMap;
 }
-export const GoogleCloudRecommenderV1beta1RecommenderGenerationConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "params": S.optional(DocumentMap),
-}),
-).annotate({ identifier: "GoogleCloudRecommenderV1beta1RecommenderGenerationConfig" }) as any as S.Schema<GoogleCloudRecommenderV1beta1RecommenderGenerationConfig>;
+export const GoogleCloudRecommenderV1beta1RecommenderGenerationConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      params: S.optional(DocumentMap),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudRecommenderV1beta1RecommenderGenerationConfig",
+  }) as any as S.Schema<GoogleCloudRecommenderV1beta1RecommenderGenerationConfig>;
 
 /** Configuration for a Recommender. */
 export interface GoogleCloudRecommenderV1beta1RecommenderConfig {
@@ -539,117 +741,212 @@ export interface GoogleCloudRecommenderV1beta1RecommenderConfig {
   /** Last time when the config was updated. */
   updateTime?: string;
 }
-export const GoogleCloudRecommenderV1beta1RecommenderConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "etag": S.optional(S.String),
-  "recommenderGenerationConfig": S.optional(GoogleCloudRecommenderV1beta1RecommenderGenerationConfig),
-  "name": S.optional(S.String),
-  "annotations": S.optional(StringMap),
-  "revisionId": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudRecommenderV1beta1RecommenderConfig" }) as any as S.Schema<GoogleCloudRecommenderV1beta1RecommenderConfig>;
+export const GoogleCloudRecommenderV1beta1RecommenderConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      etag: S.optional(S.String),
+      recommenderGenerationConfig: S.optional(
+        GoogleCloudRecommenderV1beta1RecommenderGenerationConfig,
+      ),
+      name: S.optional(S.String),
+      annotations: S.optional(StringMap),
+      revisionId: S.optional(S.String),
+      displayName: S.optional(S.String),
+      updateTime: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudRecommenderV1beta1RecommenderConfig",
+  }) as any as S.Schema<GoogleCloudRecommenderV1beta1RecommenderConfig>;
 
 export interface GetConfigOrganizationsLocationsInsightTypesRequest {
   /** Required. Name of the InsightTypeConfig to get. Acceptable formats: * `projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config` * `projects/[PROJECT_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config` * `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config` * `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config` */
   name: string;
 }
-export const GetConfigOrganizationsLocationsInsightTypesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "GetConfigOrganizationsLocationsInsightTypesRequest" }) as any as S.Schema<GetConfigOrganizationsLocationsInsightTypesRequest>;
+export const GetConfigOrganizationsLocationsInsightTypesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://recommender.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetConfigOrganizationsLocationsInsightTypesRequest",
+  }) as any as S.Schema<GetConfigOrganizationsLocationsInsightTypesRequest>;
 
 export interface GetConfigOrganizationsLocationsRecommendersRequest {
   /** Required. Name of the Recommendation Config to get. Acceptable formats: * `projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config` * `projects/[PROJECT_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config` * `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config` * `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config` */
   name: string;
 }
-export const GetConfigOrganizationsLocationsRecommendersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "GetConfigOrganizationsLocationsRecommendersRequest" }) as any as S.Schema<GetConfigOrganizationsLocationsRecommendersRequest>;
+export const GetConfigOrganizationsLocationsRecommendersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://recommender.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetConfigOrganizationsLocationsRecommendersRequest",
+  }) as any as S.Schema<GetConfigOrganizationsLocationsRecommendersRequest>;
 
 export interface GetConfigProjectsLocationsInsightTypesRequest {
   /** Required. Name of the InsightTypeConfig to get. Acceptable formats: * `projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config` * `projects/[PROJECT_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config` * `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config` * `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config` */
   name: string;
 }
-export const GetConfigProjectsLocationsInsightTypesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "GetConfigProjectsLocationsInsightTypesRequest" }) as any as S.Schema<GetConfigProjectsLocationsInsightTypesRequest>;
+export const GetConfigProjectsLocationsInsightTypesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://recommender.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetConfigProjectsLocationsInsightTypesRequest",
+  }) as any as S.Schema<GetConfigProjectsLocationsInsightTypesRequest>;
 
 export interface GetConfigProjectsLocationsRecommendersRequest {
   /** Required. Name of the Recommendation Config to get. Acceptable formats: * `projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config` * `projects/[PROJECT_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config` * `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config` * `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config` */
   name: string;
 }
-export const GetConfigProjectsLocationsRecommendersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "GetConfigProjectsLocationsRecommendersRequest" }) as any as S.Schema<GetConfigProjectsLocationsRecommendersRequest>;
+export const GetConfigProjectsLocationsRecommendersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://recommender.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetConfigProjectsLocationsRecommendersRequest",
+  }) as any as S.Schema<GetConfigProjectsLocationsRecommendersRequest>;
 
 export interface GetFoldersLocationsInsightTypesInsightsRequest {
   /** Required. Name of the insight. */
   name: string;
 }
-export const GetFoldersLocationsInsightTypesInsightsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "GetFoldersLocationsInsightTypesInsightsRequest" }) as any as S.Schema<GetFoldersLocationsInsightTypesInsightsRequest>;
+export const GetFoldersLocationsInsightTypesInsightsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://recommender.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetFoldersLocationsInsightTypesInsightsRequest",
+  }) as any as S.Schema<GetFoldersLocationsInsightTypesInsightsRequest>;
 
 export interface GetFoldersLocationsRecommendersRecommendationsRequest {
   /** Required. Name of the recommendation. */
   name: string;
 }
-export const GetFoldersLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "GetFoldersLocationsRecommendersRecommendationsRequest" }) as any as S.Schema<GetFoldersLocationsRecommendersRecommendationsRequest>;
+export const GetFoldersLocationsRecommendersRecommendationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://recommender.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetFoldersLocationsRecommendersRecommendationsRequest",
+  }) as any as S.Schema<GetFoldersLocationsRecommendersRecommendationsRequest>;
 
 export interface GetOrganizationsLocationsInsightTypesInsightsRequest {
   /** Required. Name of the insight. */
   name: string;
 }
-export const GetOrganizationsLocationsInsightTypesInsightsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "GetOrganizationsLocationsInsightTypesInsightsRequest" }) as any as S.Schema<GetOrganizationsLocationsInsightTypesInsightsRequest>;
+export const GetOrganizationsLocationsInsightTypesInsightsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://recommender.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetOrganizationsLocationsInsightTypesInsightsRequest",
+  }) as any as S.Schema<GetOrganizationsLocationsInsightTypesInsightsRequest>;
 
 export interface GetOrganizationsLocationsRecommendersRecommendationsRequest {
   /** Required. Name of the recommendation. */
   name: string;
 }
-export const GetOrganizationsLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "GetOrganizationsLocationsRecommendersRecommendationsRequest" }) as any as S.Schema<GetOrganizationsLocationsRecommendersRecommendationsRequest>;
+export const GetOrganizationsLocationsRecommendersRecommendationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://recommender.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetOrganizationsLocationsRecommendersRecommendationsRequest",
+  }) as any as S.Schema<GetOrganizationsLocationsRecommendersRecommendationsRequest>;
 
 export interface GetProjectsLocationsInsightTypesInsightsRequest {
   /** Required. Name of the insight. */
   name: string;
 }
-export const GetProjectsLocationsInsightTypesInsightsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsInsightTypesInsightsRequest" }) as any as S.Schema<GetProjectsLocationsInsightTypesInsightsRequest>;
+export const GetProjectsLocationsInsightTypesInsightsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://recommender.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsInsightTypesInsightsRequest",
+  }) as any as S.Schema<GetProjectsLocationsInsightTypesInsightsRequest>;
 
 export interface GetProjectsLocationsRecommendersRecommendationsRequest {
   /** Required. Name of the recommendation. */
   name: string;
 }
-export const GetProjectsLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsRecommendersRecommendationsRequest" }) as any as S.Schema<GetProjectsLocationsRecommendersRecommendationsRequest>;
+export const GetProjectsLocationsRecommendersRecommendationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://recommender.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsRecommendersRecommendationsRequest",
+  }) as any as S.Schema<GetProjectsLocationsRecommendersRecommendationsRequest>;
 
 export interface ListBillingAccountsLocationsRequest {
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
@@ -664,14 +961,22 @@ export interface ListBillingAccountsLocationsRequest {
   pageSize?: number;
 }
 export const ListBillingAccountsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}/locations","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "ListBillingAccountsLocationsRequest" }) as any as S.Schema<ListBillingAccountsLocationsRequest>;
+  S.Struct({
+    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+name}/locations",
+      baseUrl: "https://recommender.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListBillingAccountsLocationsRequest",
+}) as any as S.Schema<ListBillingAccountsLocationsRequest>;
 
 /** A resource that represents a Google Cloud location. */
 export interface GoogleCloudLocationLocation {
@@ -687,17 +992,22 @@ export interface GoogleCloudLocationLocation {
   metadata?: DocumentMap;
 }
 export const GoogleCloudLocationLocation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locationId": S.optional(S.String),
-  "name": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "displayName": S.optional(S.String),
-  "metadata": S.optional(DocumentMap),
-}),
-).annotate({ identifier: "GoogleCloudLocationLocation" }) as any as S.Schema<GoogleCloudLocationLocation>;
+  S.Struct({
+    locationId: S.optional(S.String),
+    name: S.optional(S.String),
+    labels: S.optional(StringMap),
+    displayName: S.optional(S.String),
+    metadata: S.optional(DocumentMap),
+  }),
+).annotate({
+  identifier: "GoogleCloudLocationLocation",
+}) as any as S.Schema<GoogleCloudLocationLocation>;
 
-export type GoogleCloudLocationLocationList = ReadonlyArray<GoogleCloudLocationLocation>;
-export const GoogleCloudLocationLocationList = /*@__PURE__*/ S.Array(GoogleCloudLocationLocation) as any as S.Schema<GoogleCloudLocationLocationList>;
+export type GoogleCloudLocationLocationList =
+  ReadonlyArray<GoogleCloudLocationLocation>;
+export const GoogleCloudLocationLocationList = /*@__PURE__*/ S.Array(
+  GoogleCloudLocationLocation,
+) as any as S.Schema<GoogleCloudLocationLocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface GoogleCloudLocationListLocationsResponse {
@@ -706,12 +1016,15 @@ export interface GoogleCloudLocationListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: GoogleCloudLocationLocationList;
 }
-export const GoogleCloudLocationListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "locations": S.optional(GoogleCloudLocationLocationList),
-}),
-).annotate({ identifier: "GoogleCloudLocationListLocationsResponse" }) as any as S.Schema<GoogleCloudLocationListLocationsResponse>;
+export const GoogleCloudLocationListLocationsResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      nextPageToken: S.optional(S.String),
+      locations: S.optional(GoogleCloudLocationLocationList),
+    }),
+).annotate({
+  identifier: "GoogleCloudLocationListLocationsResponse",
+}) as any as S.Schema<GoogleCloudLocationListLocationsResponse>;
 
 export interface ListBillingAccountsLocationsInsightTypesInsightsRequest {
   /** Optional. The maximum number of results to return from this request. Non-positive values are ignored. If not specified, the server will determine the number of results to return. */
@@ -723,17 +1036,29 @@ export interface ListBillingAccountsLocationsInsightTypesInsightsRequest {
   /** Optional. If present, retrieves the next batch of results from the preceding call to this method. `page_token` must be the value of `next_page_token` from the previous response. The values of other method parameters must be identical to those in the previous call. */
   pageToken?: string;
 }
-export const ListBillingAccountsLocationsInsightTypesInsightsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/insights","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "ListBillingAccountsLocationsInsightTypesInsightsRequest" }) as any as S.Schema<ListBillingAccountsLocationsInsightTypesInsightsRequest>;
+export const ListBillingAccountsLocationsInsightTypesInsightsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+parent}/insights",
+        baseUrl: "https://recommender.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListBillingAccountsLocationsInsightTypesInsightsRequest",
+  }) as any as S.Schema<ListBillingAccountsLocationsInsightTypesInsightsRequest>;
 
-export type GoogleCloudRecommenderV1beta1InsightList = ReadonlyArray<GoogleCloudRecommenderV1beta1Insight>;
-export const GoogleCloudRecommenderV1beta1InsightList = /*@__PURE__*/ S.Array(GoogleCloudRecommenderV1beta1Insight) as any as S.Schema<GoogleCloudRecommenderV1beta1InsightList>;
+export type GoogleCloudRecommenderV1beta1InsightList =
+  ReadonlyArray<GoogleCloudRecommenderV1beta1Insight>;
+export const GoogleCloudRecommenderV1beta1InsightList = /*@__PURE__*/ S.Array(
+  GoogleCloudRecommenderV1beta1Insight,
+) as any as S.Schema<GoogleCloudRecommenderV1beta1InsightList>;
 
 /** Response to the `ListInsights` method. */
 export interface GoogleCloudRecommenderV1beta1ListInsightsResponse {
@@ -742,12 +1067,15 @@ export interface GoogleCloudRecommenderV1beta1ListInsightsResponse {
   /** The set of insights for the `parent` resource. */
   insights?: GoogleCloudRecommenderV1beta1InsightList;
 }
-export const GoogleCloudRecommenderV1beta1ListInsightsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "insights": S.optional(GoogleCloudRecommenderV1beta1InsightList),
-}),
-).annotate({ identifier: "GoogleCloudRecommenderV1beta1ListInsightsResponse" }) as any as S.Schema<GoogleCloudRecommenderV1beta1ListInsightsResponse>;
+export const GoogleCloudRecommenderV1beta1ListInsightsResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      nextPageToken: S.optional(S.String),
+      insights: S.optional(GoogleCloudRecommenderV1beta1InsightList),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudRecommenderV1beta1ListInsightsResponse",
+  }) as any as S.Schema<GoogleCloudRecommenderV1beta1ListInsightsResponse>;
 
 export interface ListBillingAccountsLocationsRecommendersRecommendationsRequest {
   /** Optional. If present, retrieves the next batch of results from the preceding call to this method. `page_token` must be the value of `next_page_token` from the previous response. The values of other method parameters must be identical to those in the previous call. */
@@ -759,17 +1087,31 @@ export interface ListBillingAccountsLocationsRecommendersRecommendationsRequest 
   /** Filter expression to restrict the recommendations returned. Supported filter fields: * `state_info.state` * `recommenderSubtype` * `priority` * `targetResources` Examples: * `stateInfo.state = ACTIVE OR stateInfo.state = DISMISSED` * `recommenderSubtype = REMOVE_ROLE OR recommenderSubtype = REPLACE_ROLE` * `priority = P1 OR priority = P2` * `targetResources : //compute.googleapis.com/projects/1234/zones/us-central1-a/instances/instance-1` * `stateInfo.state = ACTIVE AND (priority = P1 OR priority = P2)` The max allowed filter length is 500 characters. (These expressions are based on the filter language described at https://google.aip.dev/160) */
   filter?: string;
 }
-export const ListBillingAccountsLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/recommendations","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "ListBillingAccountsLocationsRecommendersRecommendationsRequest" }) as any as S.Schema<ListBillingAccountsLocationsRecommendersRecommendationsRequest>;
+export const ListBillingAccountsLocationsRecommendersRecommendationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+parent}/recommendations",
+        baseUrl: "https://recommender.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "ListBillingAccountsLocationsRecommendersRecommendationsRequest",
+  }) as any as S.Schema<ListBillingAccountsLocationsRecommendersRecommendationsRequest>;
 
-export type GoogleCloudRecommenderV1beta1RecommendationList = ReadonlyArray<GoogleCloudRecommenderV1beta1Recommendation>;
-export const GoogleCloudRecommenderV1beta1RecommendationList = /*@__PURE__*/ S.Array(GoogleCloudRecommenderV1beta1Recommendation) as any as S.Schema<GoogleCloudRecommenderV1beta1RecommendationList>;
+export type GoogleCloudRecommenderV1beta1RecommendationList =
+  ReadonlyArray<GoogleCloudRecommenderV1beta1Recommendation>;
+export const GoogleCloudRecommenderV1beta1RecommendationList =
+  /*@__PURE__*/ S.Array(
+    GoogleCloudRecommenderV1beta1Recommendation,
+  ) as any as S.Schema<GoogleCloudRecommenderV1beta1RecommendationList>;
 
 /** Response to the `ListRecommendations` method. */
 export interface GoogleCloudRecommenderV1beta1ListRecommendationsResponse {
@@ -778,12 +1120,17 @@ export interface GoogleCloudRecommenderV1beta1ListRecommendationsResponse {
   /** A token that can be used to request the next page of results. This field is empty if there are no additional results. */
   nextPageToken?: string;
 }
-export const GoogleCloudRecommenderV1beta1ListRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "recommendations": S.optional(GoogleCloudRecommenderV1beta1RecommendationList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudRecommenderV1beta1ListRecommendationsResponse" }) as any as S.Schema<GoogleCloudRecommenderV1beta1ListRecommendationsResponse>;
+export const GoogleCloudRecommenderV1beta1ListRecommendationsResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      recommendations: S.optional(
+        GoogleCloudRecommenderV1beta1RecommendationList,
+      ),
+      nextPageToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudRecommenderV1beta1ListRecommendationsResponse",
+  }) as any as S.Schema<GoogleCloudRecommenderV1beta1ListRecommendationsResponse>;
 
 export interface ListFoldersLocationsRequest {
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
@@ -798,14 +1145,22 @@ export interface ListFoldersLocationsRequest {
   pageSize?: number;
 }
 export const ListFoldersLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}/locations","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "ListFoldersLocationsRequest" }) as any as S.Schema<ListFoldersLocationsRequest>;
+  S.Struct({
+    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+name}/locations",
+      baseUrl: "https://recommender.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListFoldersLocationsRequest",
+}) as any as S.Schema<ListFoldersLocationsRequest>;
 
 export interface ListFoldersLocationsInsightTypesInsightsRequest {
   /** Optional. The maximum number of results to return from this request. Non-positive values are ignored. If not specified, the server will determine the number of results to return. */
@@ -817,14 +1172,23 @@ export interface ListFoldersLocationsInsightTypesInsightsRequest {
   /** Optional. If present, retrieves the next batch of results from the preceding call to this method. `page_token` must be the value of `next_page_token` from the previous response. The values of other method parameters must be identical to those in the previous call. */
   pageToken?: string;
 }
-export const ListFoldersLocationsInsightTypesInsightsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/insights","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "ListFoldersLocationsInsightTypesInsightsRequest" }) as any as S.Schema<ListFoldersLocationsInsightTypesInsightsRequest>;
+export const ListFoldersLocationsInsightTypesInsightsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+parent}/insights",
+        baseUrl: "https://recommender.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListFoldersLocationsInsightTypesInsightsRequest",
+  }) as any as S.Schema<ListFoldersLocationsInsightTypesInsightsRequest>;
 
 export interface ListFoldersLocationsRecommendersRecommendationsRequest {
   /** Optional. If present, retrieves the next batch of results from the preceding call to this method. `page_token` must be the value of `next_page_token` from the previous response. The values of other method parameters must be identical to those in the previous call. */
@@ -836,14 +1200,23 @@ export interface ListFoldersLocationsRecommendersRecommendationsRequest {
   /** Filter expression to restrict the recommendations returned. Supported filter fields: * `state_info.state` * `recommenderSubtype` * `priority` * `targetResources` Examples: * `stateInfo.state = ACTIVE OR stateInfo.state = DISMISSED` * `recommenderSubtype = REMOVE_ROLE OR recommenderSubtype = REPLACE_ROLE` * `priority = P1 OR priority = P2` * `targetResources : //compute.googleapis.com/projects/1234/zones/us-central1-a/instances/instance-1` * `stateInfo.state = ACTIVE AND (priority = P1 OR priority = P2)` The max allowed filter length is 500 characters. (These expressions are based on the filter language described at https://google.aip.dev/160) */
   filter?: string;
 }
-export const ListFoldersLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/recommendations","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "ListFoldersLocationsRecommendersRecommendationsRequest" }) as any as S.Schema<ListFoldersLocationsRecommendersRecommendationsRequest>;
+export const ListFoldersLocationsRecommendersRecommendationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+parent}/recommendations",
+        baseUrl: "https://recommender.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListFoldersLocationsRecommendersRecommendationsRequest",
+  }) as any as S.Schema<ListFoldersLocationsRecommendersRecommendationsRequest>;
 
 export interface ListInsightTypesRequest {
   /** Optional. The number of InsightTypes to return per page. The service may return fewer than this value. */
@@ -852,25 +1225,40 @@ export interface ListInsightTypesRequest {
   pageToken?: string;
 }
 export const ListInsightTypesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/insightTypes","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "ListInsightTypesRequest" }) as any as S.Schema<ListInsightTypesRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/insightTypes",
+      baseUrl: "https://recommender.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListInsightTypesRequest",
+}) as any as S.Schema<ListInsightTypesRequest>;
 
 /** The type of insight. */
 export interface GoogleCloudRecommenderV1beta1InsightType {
   /** The insight_type's name in format insightTypes/{insight_type} eg: insightTypes/google.iam.policy.Insight */
   name?: string;
 }
-export const GoogleCloudRecommenderV1beta1InsightType = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudRecommenderV1beta1InsightType" }) as any as S.Schema<GoogleCloudRecommenderV1beta1InsightType>;
+export const GoogleCloudRecommenderV1beta1InsightType = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "GoogleCloudRecommenderV1beta1InsightType",
+}) as any as S.Schema<GoogleCloudRecommenderV1beta1InsightType>;
 
-export type GoogleCloudRecommenderV1beta1InsightTypeList = ReadonlyArray<GoogleCloudRecommenderV1beta1InsightType>;
-export const GoogleCloudRecommenderV1beta1InsightTypeList = /*@__PURE__*/ S.Array(GoogleCloudRecommenderV1beta1InsightType) as any as S.Schema<GoogleCloudRecommenderV1beta1InsightTypeList>;
+export type GoogleCloudRecommenderV1beta1InsightTypeList =
+  ReadonlyArray<GoogleCloudRecommenderV1beta1InsightType>;
+export const GoogleCloudRecommenderV1beta1InsightTypeList =
+  /*@__PURE__*/ S.Array(
+    GoogleCloudRecommenderV1beta1InsightType,
+  ) as any as S.Schema<GoogleCloudRecommenderV1beta1InsightTypeList>;
 
 /** Response for the `ListInsightTypes` method. Next ID: 3 */
 export interface GoogleCloudRecommenderV1beta1ListInsightTypesResponse {
@@ -879,12 +1267,15 @@ export interface GoogleCloudRecommenderV1beta1ListInsightTypesResponse {
   /** The set of recommenders available */
   insightTypes?: GoogleCloudRecommenderV1beta1InsightTypeList;
 }
-export const GoogleCloudRecommenderV1beta1ListInsightTypesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "insightTypes": S.optional(GoogleCloudRecommenderV1beta1InsightTypeList),
-}),
-).annotate({ identifier: "GoogleCloudRecommenderV1beta1ListInsightTypesResponse" }) as any as S.Schema<GoogleCloudRecommenderV1beta1ListInsightTypesResponse>;
+export const GoogleCloudRecommenderV1beta1ListInsightTypesResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      nextPageToken: S.optional(S.String),
+      insightTypes: S.optional(GoogleCloudRecommenderV1beta1InsightTypeList),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudRecommenderV1beta1ListInsightTypesResponse",
+  }) as any as S.Schema<GoogleCloudRecommenderV1beta1ListInsightTypesResponse>;
 
 export interface ListOrganizationsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
@@ -899,14 +1290,22 @@ export interface ListOrganizationsLocationsRequest {
   extraLocationTypes?: StringList;
 }
 export const ListOrganizationsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}/locations","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "ListOrganizationsLocationsRequest" }) as any as S.Schema<ListOrganizationsLocationsRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    filter: S.optional(S.String.pipe(T.Query())),
+    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+name}/locations",
+      baseUrl: "https://recommender.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListOrganizationsLocationsRequest",
+}) as any as S.Schema<ListOrganizationsLocationsRequest>;
 
 export interface ListOrganizationsLocationsInsightTypesInsightsRequest {
   /** Optional. If present, retrieves the next batch of results from the preceding call to this method. `page_token` must be the value of `next_page_token` from the previous response. The values of other method parameters must be identical to those in the previous call. */
@@ -918,14 +1317,23 @@ export interface ListOrganizationsLocationsInsightTypesInsightsRequest {
   /** Required. The container resource on which to execute the request. Acceptable formats: * `projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` * `projects/[PROJECT_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` * `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` * `folders/[FOLDER_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` * `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/ INSIGHT_TYPE_ID refers to supported insight types: https://cloud.google.com/recommender/docs/insights/insight-types. */
   parent: string;
 }
-export const ListOrganizationsLocationsInsightTypesInsightsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/insights","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "ListOrganizationsLocationsInsightTypesInsightsRequest" }) as any as S.Schema<ListOrganizationsLocationsInsightTypesInsightsRequest>;
+export const ListOrganizationsLocationsInsightTypesInsightsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+parent}/insights",
+        baseUrl: "https://recommender.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListOrganizationsLocationsInsightTypesInsightsRequest",
+  }) as any as S.Schema<ListOrganizationsLocationsInsightTypesInsightsRequest>;
 
 export interface ListOrganizationsLocationsRecommendersRecommendationsRequest {
   /** Optional. If present, retrieves the next batch of results from the preceding call to this method. `page_token` must be the value of `next_page_token` from the previous response. The values of other method parameters must be identical to those in the previous call. */
@@ -937,14 +1345,23 @@ export interface ListOrganizationsLocationsRecommendersRecommendationsRequest {
   /** Required. The container resource on which to execute the request. Acceptable formats: * `projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` * `projects/[PROJECT_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` * `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` * `folders/[FOLDER_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` * `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/ RECOMMENDER_ID refers to supported recommenders: https://cloud.google.com/recommender/docs/recommenders. */
   parent: string;
 }
-export const ListOrganizationsLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/recommendations","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "ListOrganizationsLocationsRecommendersRecommendationsRequest" }) as any as S.Schema<ListOrganizationsLocationsRecommendersRecommendationsRequest>;
+export const ListOrganizationsLocationsRecommendersRecommendationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+parent}/recommendations",
+        baseUrl: "https://recommender.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListOrganizationsLocationsRecommendersRecommendationsRequest",
+  }) as any as S.Schema<ListOrganizationsLocationsRecommendersRecommendationsRequest>;
 
 export interface ListProjectsLocationsRequest {
   /** The resource that owns the locations collection, if applicable. */
@@ -959,14 +1376,22 @@ export interface ListProjectsLocationsRequest {
   pageToken?: string;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}/locations","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    filter: S.optional(S.String.pipe(T.Query())),
+    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+name}/locations",
+      baseUrl: "https://recommender.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsRequest",
+}) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export interface ListProjectsLocationsInsightTypesInsightsRequest {
   /** Optional. If present, retrieves the next batch of results from the preceding call to this method. `page_token` must be the value of `next_page_token` from the previous response. The values of other method parameters must be identical to those in the previous call. */
@@ -978,14 +1403,23 @@ export interface ListProjectsLocationsInsightTypesInsightsRequest {
   /** Optional. Filter expression to restrict the insights returned. Supported filter fields: * `stateInfo.state` * `insightSubtype` * `severity` * `targetResources` Examples: * `stateInfo.state = ACTIVE OR stateInfo.state = DISMISSED` * `insightSubtype = PERMISSIONS_USAGE` * `severity = CRITICAL OR severity = HIGH` * `targetResources : //compute.googleapis.com/projects/1234/zones/us-central1-a/instances/instance-1` * `stateInfo.state = ACTIVE AND (severity = CRITICAL OR severity = HIGH)` The max allowed filter length is 500 characters. (These expressions are based on the filter language described at https://google.aip.dev/160) */
   filter?: string;
 }
-export const ListProjectsLocationsInsightTypesInsightsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/insights","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsInsightTypesInsightsRequest" }) as any as S.Schema<ListProjectsLocationsInsightTypesInsightsRequest>;
+export const ListProjectsLocationsInsightTypesInsightsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+parent}/insights",
+        baseUrl: "https://recommender.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsInsightTypesInsightsRequest",
+  }) as any as S.Schema<ListProjectsLocationsInsightTypesInsightsRequest>;
 
 export interface ListProjectsLocationsRecommendersRecommendationsRequest {
   /** Optional. The maximum number of results to return from this request. Non-positive values are ignored. If not specified, the server will determine the number of results to return. */
@@ -997,14 +1431,23 @@ export interface ListProjectsLocationsRecommendersRecommendationsRequest {
   /** Optional. If present, retrieves the next batch of results from the preceding call to this method. `page_token` must be the value of `next_page_token` from the previous response. The values of other method parameters must be identical to those in the previous call. */
   pageToken?: string;
 }
-export const ListProjectsLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/recommendations","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsRecommendersRecommendationsRequest" }) as any as S.Schema<ListProjectsLocationsRecommendersRecommendationsRequest>;
+export const ListProjectsLocationsRecommendersRecommendationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+parent}/recommendations",
+        baseUrl: "https://recommender.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsRecommendersRecommendationsRequest",
+  }) as any as S.Schema<ListProjectsLocationsRecommendersRecommendationsRequest>;
 
 export interface ListRecommendersRequest {
   /** Optional. The number of RecommenderTypes to return per page. The service may return fewer than this value. */
@@ -1013,25 +1456,40 @@ export interface ListRecommendersRequest {
   pageToken?: string;
 }
 export const ListRecommendersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/recommenders","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "ListRecommendersRequest" }) as any as S.Schema<ListRecommendersRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/recommenders",
+      baseUrl: "https://recommender.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListRecommendersRequest",
+}) as any as S.Schema<ListRecommendersRequest>;
 
 /** The type of a recommender. */
 export interface GoogleCloudRecommenderV1beta1RecommenderType {
   /** The recommender's name in format RecommenderTypes/{recommender_type} eg: recommenderTypes/google.iam.policy.Recommender */
   name?: string;
 }
-export const GoogleCloudRecommenderV1beta1RecommenderType = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudRecommenderV1beta1RecommenderType" }) as any as S.Schema<GoogleCloudRecommenderV1beta1RecommenderType>;
+export const GoogleCloudRecommenderV1beta1RecommenderType =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudRecommenderV1beta1RecommenderType",
+  }) as any as S.Schema<GoogleCloudRecommenderV1beta1RecommenderType>;
 
-export type GoogleCloudRecommenderV1beta1RecommenderTypeList = ReadonlyArray<GoogleCloudRecommenderV1beta1RecommenderType>;
-export const GoogleCloudRecommenderV1beta1RecommenderTypeList = /*@__PURE__*/ S.Array(GoogleCloudRecommenderV1beta1RecommenderType) as any as S.Schema<GoogleCloudRecommenderV1beta1RecommenderTypeList>;
+export type GoogleCloudRecommenderV1beta1RecommenderTypeList =
+  ReadonlyArray<GoogleCloudRecommenderV1beta1RecommenderType>;
+export const GoogleCloudRecommenderV1beta1RecommenderTypeList =
+  /*@__PURE__*/ S.Array(
+    GoogleCloudRecommenderV1beta1RecommenderType,
+  ) as any as S.Schema<GoogleCloudRecommenderV1beta1RecommenderTypeList>;
 
 /** Response for the `ListRecommender` method. Next ID: 3 */
 export interface GoogleCloudRecommenderV1beta1ListRecommendersResponse {
@@ -1040,12 +1498,17 @@ export interface GoogleCloudRecommenderV1beta1ListRecommendersResponse {
   /** The set of recommenders available */
   recommenders?: GoogleCloudRecommenderV1beta1RecommenderTypeList;
 }
-export const GoogleCloudRecommenderV1beta1ListRecommendersResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "recommenders": S.optional(GoogleCloudRecommenderV1beta1RecommenderTypeList),
-}),
-).annotate({ identifier: "GoogleCloudRecommenderV1beta1ListRecommendersResponse" }) as any as S.Schema<GoogleCloudRecommenderV1beta1ListRecommendersResponse>;
+export const GoogleCloudRecommenderV1beta1ListRecommendersResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      nextPageToken: S.optional(S.String),
+      recommenders: S.optional(
+        GoogleCloudRecommenderV1beta1RecommenderTypeList,
+      ),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudRecommenderV1beta1ListRecommendersResponse",
+  }) as any as S.Schema<GoogleCloudRecommenderV1beta1ListRecommendersResponse>;
 
 /** Request for the `MarkInsightAccepted` method. */
 export interface GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest {
@@ -1054,12 +1517,15 @@ export interface GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest {
   /** Required. Fingerprint of the Insight. Provides optimistic locking. */
   etag?: string;
 }
-export const GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "stateMetadata": S.optional(StringMap),
-  "etag": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest" }) as any as S.Schema<GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest>;
+export const GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      stateMetadata: S.optional(StringMap),
+      etag: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest",
+  }) as any as S.Schema<GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest>;
 
 export interface MarkAcceptedBillingAccountsLocationsInsightTypesInsightsRequest {
   /** Required. Name of the insight. */
@@ -1067,12 +1533,26 @@ export interface MarkAcceptedBillingAccountsLocationsInsightTypesInsightsRequest
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest;
 }
-export const MarkAcceptedBillingAccountsLocationsInsightTypesInsightsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:markAccepted","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "MarkAcceptedBillingAccountsLocationsInsightTypesInsightsRequest" }) as any as S.Schema<MarkAcceptedBillingAccountsLocationsInsightTypesInsightsRequest>;
+export const MarkAcceptedBillingAccountsLocationsInsightTypesInsightsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest.pipe(
+          T.HttpBody(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+name}:markAccepted",
+        baseUrl: "https://recommender.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "MarkAcceptedBillingAccountsLocationsInsightTypesInsightsRequest",
+  }) as any as S.Schema<MarkAcceptedBillingAccountsLocationsInsightTypesInsightsRequest>;
 
 export interface MarkAcceptedFoldersLocationsInsightTypesInsightsRequest {
   /** Required. Name of the insight. */
@@ -1080,12 +1560,25 @@ export interface MarkAcceptedFoldersLocationsInsightTypesInsightsRequest {
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest;
 }
-export const MarkAcceptedFoldersLocationsInsightTypesInsightsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:markAccepted","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "MarkAcceptedFoldersLocationsInsightTypesInsightsRequest" }) as any as S.Schema<MarkAcceptedFoldersLocationsInsightTypesInsightsRequest>;
+export const MarkAcceptedFoldersLocationsInsightTypesInsightsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest.pipe(
+          T.HttpBody(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+name}:markAccepted",
+        baseUrl: "https://recommender.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "MarkAcceptedFoldersLocationsInsightTypesInsightsRequest",
+  }) as any as S.Schema<MarkAcceptedFoldersLocationsInsightTypesInsightsRequest>;
 
 export interface MarkAcceptedOrganizationsLocationsInsightTypesInsightsRequest {
   /** Required. Name of the insight. */
@@ -1093,12 +1586,25 @@ export interface MarkAcceptedOrganizationsLocationsInsightTypesInsightsRequest {
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest;
 }
-export const MarkAcceptedOrganizationsLocationsInsightTypesInsightsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:markAccepted","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "MarkAcceptedOrganizationsLocationsInsightTypesInsightsRequest" }) as any as S.Schema<MarkAcceptedOrganizationsLocationsInsightTypesInsightsRequest>;
+export const MarkAcceptedOrganizationsLocationsInsightTypesInsightsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest.pipe(
+          T.HttpBody(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+name}:markAccepted",
+        baseUrl: "https://recommender.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "MarkAcceptedOrganizationsLocationsInsightTypesInsightsRequest",
+  }) as any as S.Schema<MarkAcceptedOrganizationsLocationsInsightTypesInsightsRequest>;
 
 export interface MarkAcceptedProjectsLocationsInsightTypesInsightsRequest {
   /** Required. Name of the insight. */
@@ -1106,12 +1612,25 @@ export interface MarkAcceptedProjectsLocationsInsightTypesInsightsRequest {
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest;
 }
-export const MarkAcceptedProjectsLocationsInsightTypesInsightsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:markAccepted","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "MarkAcceptedProjectsLocationsInsightTypesInsightsRequest" }) as any as S.Schema<MarkAcceptedProjectsLocationsInsightTypesInsightsRequest>;
+export const MarkAcceptedProjectsLocationsInsightTypesInsightsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest.pipe(
+          T.HttpBody(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+name}:markAccepted",
+        baseUrl: "https://recommender.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "MarkAcceptedProjectsLocationsInsightTypesInsightsRequest",
+  }) as any as S.Schema<MarkAcceptedProjectsLocationsInsightTypesInsightsRequest>;
 
 /** Request for the `MarkRecommendationClaimed` Method. */
 export interface GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest {
@@ -1120,12 +1639,15 @@ export interface GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest {
   /** Required. Fingerprint of the Recommendation. Provides optimistic locking. */
   etag?: string;
 }
-export const GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "stateMetadata": S.optional(StringMap),
-  "etag": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest" }) as any as S.Schema<GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest>;
+export const GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      stateMetadata: S.optional(StringMap),
+      etag: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest",
+  }) as any as S.Schema<GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest>;
 
 export interface MarkClaimedBillingAccountsLocationsRecommendersRecommendationsRequest {
   /** Required. Name of the recommendation. */
@@ -1133,12 +1655,26 @@ export interface MarkClaimedBillingAccountsLocationsRecommendersRecommendationsR
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest;
 }
-export const MarkClaimedBillingAccountsLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:markClaimed","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "MarkClaimedBillingAccountsLocationsRecommendersRecommendationsRequest" }) as any as S.Schema<MarkClaimedBillingAccountsLocationsRecommendersRecommendationsRequest>;
+export const MarkClaimedBillingAccountsLocationsRecommendersRecommendationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest.pipe(
+          T.HttpBody(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+name}:markClaimed",
+        baseUrl: "https://recommender.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "MarkClaimedBillingAccountsLocationsRecommendersRecommendationsRequest",
+  }) as any as S.Schema<MarkClaimedBillingAccountsLocationsRecommendersRecommendationsRequest>;
 
 export interface MarkClaimedFoldersLocationsRecommendersRecommendationsRequest {
   /** Required. Name of the recommendation. */
@@ -1146,12 +1682,25 @@ export interface MarkClaimedFoldersLocationsRecommendersRecommendationsRequest {
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest;
 }
-export const MarkClaimedFoldersLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:markClaimed","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "MarkClaimedFoldersLocationsRecommendersRecommendationsRequest" }) as any as S.Schema<MarkClaimedFoldersLocationsRecommendersRecommendationsRequest>;
+export const MarkClaimedFoldersLocationsRecommendersRecommendationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest.pipe(
+          T.HttpBody(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+name}:markClaimed",
+        baseUrl: "https://recommender.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "MarkClaimedFoldersLocationsRecommendersRecommendationsRequest",
+  }) as any as S.Schema<MarkClaimedFoldersLocationsRecommendersRecommendationsRequest>;
 
 export interface MarkClaimedOrganizationsLocationsRecommendersRecommendationsRequest {
   /** Required. Name of the recommendation. */
@@ -1159,12 +1708,26 @@ export interface MarkClaimedOrganizationsLocationsRecommendersRecommendationsReq
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest;
 }
-export const MarkClaimedOrganizationsLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:markClaimed","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "MarkClaimedOrganizationsLocationsRecommendersRecommendationsRequest" }) as any as S.Schema<MarkClaimedOrganizationsLocationsRecommendersRecommendationsRequest>;
+export const MarkClaimedOrganizationsLocationsRecommendersRecommendationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest.pipe(
+          T.HttpBody(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+name}:markClaimed",
+        baseUrl: "https://recommender.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "MarkClaimedOrganizationsLocationsRecommendersRecommendationsRequest",
+  }) as any as S.Schema<MarkClaimedOrganizationsLocationsRecommendersRecommendationsRequest>;
 
 export interface MarkClaimedProjectsLocationsRecommendersRecommendationsRequest {
   /** Required. Name of the recommendation. */
@@ -1172,23 +1735,41 @@ export interface MarkClaimedProjectsLocationsRecommendersRecommendationsRequest 
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest;
 }
-export const MarkClaimedProjectsLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:markClaimed","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "MarkClaimedProjectsLocationsRecommendersRecommendationsRequest" }) as any as S.Schema<MarkClaimedProjectsLocationsRecommendersRecommendationsRequest>;
+export const MarkClaimedProjectsLocationsRecommendersRecommendationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest.pipe(
+          T.HttpBody(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+name}:markClaimed",
+        baseUrl: "https://recommender.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "MarkClaimedProjectsLocationsRecommendersRecommendationsRequest",
+  }) as any as S.Schema<MarkClaimedProjectsLocationsRecommendersRecommendationsRequest>;
 
 /** Request for the `MarkRecommendationDismissed` Method. */
 export interface GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest {
   /** Fingerprint of the Recommendation. Provides optimistic locking. */
   etag?: string;
 }
-export const GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "etag": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest" }) as any as S.Schema<GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest>;
+export const GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      etag: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest",
+  }) as any as S.Schema<GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest>;
 
 export interface MarkDismissedBillingAccountsLocationsRecommendersRecommendationsRequest {
   /** Required. Name of the recommendation. */
@@ -1196,12 +1777,26 @@ export interface MarkDismissedBillingAccountsLocationsRecommendersRecommendation
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest;
 }
-export const MarkDismissedBillingAccountsLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:markDismissed","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "MarkDismissedBillingAccountsLocationsRecommendersRecommendationsRequest" }) as any as S.Schema<MarkDismissedBillingAccountsLocationsRecommendersRecommendationsRequest>;
+export const MarkDismissedBillingAccountsLocationsRecommendersRecommendationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest.pipe(
+          T.HttpBody(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+name}:markDismissed",
+        baseUrl: "https://recommender.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "MarkDismissedBillingAccountsLocationsRecommendersRecommendationsRequest",
+  }) as any as S.Schema<MarkDismissedBillingAccountsLocationsRecommendersRecommendationsRequest>;
 
 export interface MarkDismissedFoldersLocationsRecommendersRecommendationsRequest {
   /** Required. Name of the recommendation. */
@@ -1209,12 +1804,26 @@ export interface MarkDismissedFoldersLocationsRecommendersRecommendationsRequest
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest;
 }
-export const MarkDismissedFoldersLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:markDismissed","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "MarkDismissedFoldersLocationsRecommendersRecommendationsRequest" }) as any as S.Schema<MarkDismissedFoldersLocationsRecommendersRecommendationsRequest>;
+export const MarkDismissedFoldersLocationsRecommendersRecommendationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest.pipe(
+          T.HttpBody(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+name}:markDismissed",
+        baseUrl: "https://recommender.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "MarkDismissedFoldersLocationsRecommendersRecommendationsRequest",
+  }) as any as S.Schema<MarkDismissedFoldersLocationsRecommendersRecommendationsRequest>;
 
 export interface MarkDismissedOrganizationsLocationsRecommendersRecommendationsRequest {
   /** Required. Name of the recommendation. */
@@ -1222,12 +1831,26 @@ export interface MarkDismissedOrganizationsLocationsRecommendersRecommendationsR
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest;
 }
-export const MarkDismissedOrganizationsLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:markDismissed","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "MarkDismissedOrganizationsLocationsRecommendersRecommendationsRequest" }) as any as S.Schema<MarkDismissedOrganizationsLocationsRecommendersRecommendationsRequest>;
+export const MarkDismissedOrganizationsLocationsRecommendersRecommendationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest.pipe(
+          T.HttpBody(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+name}:markDismissed",
+        baseUrl: "https://recommender.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "MarkDismissedOrganizationsLocationsRecommendersRecommendationsRequest",
+  }) as any as S.Schema<MarkDismissedOrganizationsLocationsRecommendersRecommendationsRequest>;
 
 export interface MarkDismissedProjectsLocationsRecommendersRecommendationsRequest {
   /** Required. Name of the recommendation. */
@@ -1235,12 +1858,26 @@ export interface MarkDismissedProjectsLocationsRecommendersRecommendationsReques
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest;
 }
-export const MarkDismissedProjectsLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:markDismissed","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "MarkDismissedProjectsLocationsRecommendersRecommendationsRequest" }) as any as S.Schema<MarkDismissedProjectsLocationsRecommendersRecommendationsRequest>;
+export const MarkDismissedProjectsLocationsRecommendersRecommendationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest.pipe(
+          T.HttpBody(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+name}:markDismissed",
+        baseUrl: "https://recommender.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "MarkDismissedProjectsLocationsRecommendersRecommendationsRequest",
+  }) as any as S.Schema<MarkDismissedProjectsLocationsRecommendersRecommendationsRequest>;
 
 /** Request for the `MarkRecommendationFailed` Method. */
 export interface GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest {
@@ -1249,12 +1886,15 @@ export interface GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest {
   /** Required. Fingerprint of the Recommendation. Provides optimistic locking. */
   etag?: string;
 }
-export const GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "stateMetadata": S.optional(StringMap),
-  "etag": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest" }) as any as S.Schema<GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest>;
+export const GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      stateMetadata: S.optional(StringMap),
+      etag: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest",
+  }) as any as S.Schema<GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest>;
 
 export interface MarkFailedBillingAccountsLocationsRecommendersRecommendationsRequest {
   /** Required. Name of the recommendation. */
@@ -1262,12 +1902,26 @@ export interface MarkFailedBillingAccountsLocationsRecommendersRecommendationsRe
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest;
 }
-export const MarkFailedBillingAccountsLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:markFailed","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "MarkFailedBillingAccountsLocationsRecommendersRecommendationsRequest" }) as any as S.Schema<MarkFailedBillingAccountsLocationsRecommendersRecommendationsRequest>;
+export const MarkFailedBillingAccountsLocationsRecommendersRecommendationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest.pipe(
+          T.HttpBody(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+name}:markFailed",
+        baseUrl: "https://recommender.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "MarkFailedBillingAccountsLocationsRecommendersRecommendationsRequest",
+  }) as any as S.Schema<MarkFailedBillingAccountsLocationsRecommendersRecommendationsRequest>;
 
 export interface MarkFailedFoldersLocationsRecommendersRecommendationsRequest {
   /** Required. Name of the recommendation. */
@@ -1275,12 +1929,25 @@ export interface MarkFailedFoldersLocationsRecommendersRecommendationsRequest {
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest;
 }
-export const MarkFailedFoldersLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:markFailed","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "MarkFailedFoldersLocationsRecommendersRecommendationsRequest" }) as any as S.Schema<MarkFailedFoldersLocationsRecommendersRecommendationsRequest>;
+export const MarkFailedFoldersLocationsRecommendersRecommendationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest.pipe(
+          T.HttpBody(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+name}:markFailed",
+        baseUrl: "https://recommender.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "MarkFailedFoldersLocationsRecommendersRecommendationsRequest",
+  }) as any as S.Schema<MarkFailedFoldersLocationsRecommendersRecommendationsRequest>;
 
 export interface MarkFailedOrganizationsLocationsRecommendersRecommendationsRequest {
   /** Required. Name of the recommendation. */
@@ -1288,12 +1955,26 @@ export interface MarkFailedOrganizationsLocationsRecommendersRecommendationsRequ
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest;
 }
-export const MarkFailedOrganizationsLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:markFailed","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "MarkFailedOrganizationsLocationsRecommendersRecommendationsRequest" }) as any as S.Schema<MarkFailedOrganizationsLocationsRecommendersRecommendationsRequest>;
+export const MarkFailedOrganizationsLocationsRecommendersRecommendationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest.pipe(
+          T.HttpBody(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+name}:markFailed",
+        baseUrl: "https://recommender.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "MarkFailedOrganizationsLocationsRecommendersRecommendationsRequest",
+  }) as any as S.Schema<MarkFailedOrganizationsLocationsRecommendersRecommendationsRequest>;
 
 export interface MarkFailedProjectsLocationsRecommendersRecommendationsRequest {
   /** Required. Name of the recommendation. */
@@ -1301,12 +1982,25 @@ export interface MarkFailedProjectsLocationsRecommendersRecommendationsRequest {
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest;
 }
-export const MarkFailedProjectsLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:markFailed","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "MarkFailedProjectsLocationsRecommendersRecommendationsRequest" }) as any as S.Schema<MarkFailedProjectsLocationsRecommendersRecommendationsRequest>;
+export const MarkFailedProjectsLocationsRecommendersRecommendationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest.pipe(
+          T.HttpBody(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+name}:markFailed",
+        baseUrl: "https://recommender.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "MarkFailedProjectsLocationsRecommendersRecommendationsRequest",
+  }) as any as S.Schema<MarkFailedProjectsLocationsRecommendersRecommendationsRequest>;
 
 /** Request for the `MarkRecommendationSucceeded` Method. */
 export interface GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest {
@@ -1315,12 +2009,16 @@ export interface GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest
   /** Required. Fingerprint of the Recommendation. Provides optimistic locking. */
   etag?: string;
 }
-export const GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "stateMetadata": S.optional(StringMap),
-  "etag": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest" }) as any as S.Schema<GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest>;
+export const GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      stateMetadata: S.optional(StringMap),
+      etag: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest",
+  }) as any as S.Schema<GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest>;
 
 export interface MarkSucceededBillingAccountsLocationsRecommendersRecommendationsRequest {
   /** Required. Name of the recommendation. */
@@ -1328,12 +2026,26 @@ export interface MarkSucceededBillingAccountsLocationsRecommendersRecommendation
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest;
 }
-export const MarkSucceededBillingAccountsLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:markSucceeded","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "MarkSucceededBillingAccountsLocationsRecommendersRecommendationsRequest" }) as any as S.Schema<MarkSucceededBillingAccountsLocationsRecommendersRecommendationsRequest>;
+export const MarkSucceededBillingAccountsLocationsRecommendersRecommendationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest.pipe(
+          T.HttpBody(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+name}:markSucceeded",
+        baseUrl: "https://recommender.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "MarkSucceededBillingAccountsLocationsRecommendersRecommendationsRequest",
+  }) as any as S.Schema<MarkSucceededBillingAccountsLocationsRecommendersRecommendationsRequest>;
 
 export interface MarkSucceededFoldersLocationsRecommendersRecommendationsRequest {
   /** Required. Name of the recommendation. */
@@ -1341,12 +2053,26 @@ export interface MarkSucceededFoldersLocationsRecommendersRecommendationsRequest
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest;
 }
-export const MarkSucceededFoldersLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:markSucceeded","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "MarkSucceededFoldersLocationsRecommendersRecommendationsRequest" }) as any as S.Schema<MarkSucceededFoldersLocationsRecommendersRecommendationsRequest>;
+export const MarkSucceededFoldersLocationsRecommendersRecommendationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest.pipe(
+          T.HttpBody(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+name}:markSucceeded",
+        baseUrl: "https://recommender.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "MarkSucceededFoldersLocationsRecommendersRecommendationsRequest",
+  }) as any as S.Schema<MarkSucceededFoldersLocationsRecommendersRecommendationsRequest>;
 
 export interface MarkSucceededOrganizationsLocationsRecommendersRecommendationsRequest {
   /** Required. Name of the recommendation. */
@@ -1354,12 +2080,26 @@ export interface MarkSucceededOrganizationsLocationsRecommendersRecommendationsR
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest;
 }
-export const MarkSucceededOrganizationsLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:markSucceeded","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "MarkSucceededOrganizationsLocationsRecommendersRecommendationsRequest" }) as any as S.Schema<MarkSucceededOrganizationsLocationsRecommendersRecommendationsRequest>;
+export const MarkSucceededOrganizationsLocationsRecommendersRecommendationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest.pipe(
+          T.HttpBody(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+name}:markSucceeded",
+        baseUrl: "https://recommender.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "MarkSucceededOrganizationsLocationsRecommendersRecommendationsRequest",
+  }) as any as S.Schema<MarkSucceededOrganizationsLocationsRecommendersRecommendationsRequest>;
 
 export interface MarkSucceededProjectsLocationsRecommendersRecommendationsRequest {
   /** Required. Name of the recommendation. */
@@ -1367,12 +2107,26 @@ export interface MarkSucceededProjectsLocationsRecommendersRecommendationsReques
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest;
 }
-export const MarkSucceededProjectsLocationsRecommendersRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:markSucceeded","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "MarkSucceededProjectsLocationsRecommendersRecommendationsRequest" }) as any as S.Schema<MarkSucceededProjectsLocationsRecommendersRecommendationsRequest>;
+export const MarkSucceededProjectsLocationsRecommendersRecommendationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest.pipe(
+          T.HttpBody(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+name}:markSucceeded",
+        baseUrl: "https://recommender.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "MarkSucceededProjectsLocationsRecommendersRecommendationsRequest",
+  }) as any as S.Schema<MarkSucceededProjectsLocationsRecommendersRecommendationsRequest>;
 
 export interface UpdateConfigBillingAccountsLocationsInsightTypesRequest {
   /** The list of fields to be updated. */
@@ -1384,14 +2138,25 @@ export interface UpdateConfigBillingAccountsLocationsInsightTypesRequest {
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1InsightTypeConfig;
 }
-export const UpdateConfigBillingAccountsLocationsInsightTypesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(GoogleCloudRecommenderV1beta1InsightTypeConfig.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "UpdateConfigBillingAccountsLocationsInsightTypesRequest" }) as any as S.Schema<UpdateConfigBillingAccountsLocationsInsightTypesRequest>;
+export const UpdateConfigBillingAccountsLocationsInsightTypesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      body: S.optional(
+        GoogleCloudRecommenderV1beta1InsightTypeConfig.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://recommender.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "UpdateConfigBillingAccountsLocationsInsightTypesRequest",
+  }) as any as S.Schema<UpdateConfigBillingAccountsLocationsInsightTypesRequest>;
 
 export interface UpdateConfigBillingAccountsLocationsRecommendersRequest {
   /** Identifier. Name of recommender config. Eg, projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config */
@@ -1403,14 +2168,25 @@ export interface UpdateConfigBillingAccountsLocationsRecommendersRequest {
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1RecommenderConfig;
 }
-export const UpdateConfigBillingAccountsLocationsRecommendersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(GoogleCloudRecommenderV1beta1RecommenderConfig.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "UpdateConfigBillingAccountsLocationsRecommendersRequest" }) as any as S.Schema<UpdateConfigBillingAccountsLocationsRecommendersRequest>;
+export const UpdateConfigBillingAccountsLocationsRecommendersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(
+        GoogleCloudRecommenderV1beta1RecommenderConfig.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://recommender.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "UpdateConfigBillingAccountsLocationsRecommendersRequest",
+  }) as any as S.Schema<UpdateConfigBillingAccountsLocationsRecommendersRequest>;
 
 export interface UpdateConfigOrganizationsLocationsInsightTypesRequest {
   /** The list of fields to be updated. */
@@ -1422,14 +2198,25 @@ export interface UpdateConfigOrganizationsLocationsInsightTypesRequest {
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1InsightTypeConfig;
 }
-export const UpdateConfigOrganizationsLocationsInsightTypesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(GoogleCloudRecommenderV1beta1InsightTypeConfig.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "UpdateConfigOrganizationsLocationsInsightTypesRequest" }) as any as S.Schema<UpdateConfigOrganizationsLocationsInsightTypesRequest>;
+export const UpdateConfigOrganizationsLocationsInsightTypesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      body: S.optional(
+        GoogleCloudRecommenderV1beta1InsightTypeConfig.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://recommender.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "UpdateConfigOrganizationsLocationsInsightTypesRequest",
+  }) as any as S.Schema<UpdateConfigOrganizationsLocationsInsightTypesRequest>;
 
 export interface UpdateConfigOrganizationsLocationsRecommendersRequest {
   /** Identifier. Name of recommender config. Eg, projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config */
@@ -1441,14 +2228,25 @@ export interface UpdateConfigOrganizationsLocationsRecommendersRequest {
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1RecommenderConfig;
 }
-export const UpdateConfigOrganizationsLocationsRecommendersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(GoogleCloudRecommenderV1beta1RecommenderConfig.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "UpdateConfigOrganizationsLocationsRecommendersRequest" }) as any as S.Schema<UpdateConfigOrganizationsLocationsRecommendersRequest>;
+export const UpdateConfigOrganizationsLocationsRecommendersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(
+        GoogleCloudRecommenderV1beta1RecommenderConfig.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://recommender.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "UpdateConfigOrganizationsLocationsRecommendersRequest",
+  }) as any as S.Schema<UpdateConfigOrganizationsLocationsRecommendersRequest>;
 
 export interface UpdateConfigProjectsLocationsInsightTypesRequest {
   /** Identifier. Name of insight type config. Eg, projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config */
@@ -1460,14 +2258,25 @@ export interface UpdateConfigProjectsLocationsInsightTypesRequest {
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1InsightTypeConfig;
 }
-export const UpdateConfigProjectsLocationsInsightTypesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(GoogleCloudRecommenderV1beta1InsightTypeConfig.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "UpdateConfigProjectsLocationsInsightTypesRequest" }) as any as S.Schema<UpdateConfigProjectsLocationsInsightTypesRequest>;
+export const UpdateConfigProjectsLocationsInsightTypesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(
+        GoogleCloudRecommenderV1beta1InsightTypeConfig.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://recommender.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "UpdateConfigProjectsLocationsInsightTypesRequest",
+  }) as any as S.Schema<UpdateConfigProjectsLocationsInsightTypesRequest>;
 
 export interface UpdateConfigProjectsLocationsRecommendersRequest {
   /** The list of fields to be updated. */
@@ -1479,16 +2288,30 @@ export interface UpdateConfigProjectsLocationsRecommendersRequest {
   /** Request body */
   body?: GoogleCloudRecommenderV1beta1RecommenderConfig;
 }
-export const UpdateConfigProjectsLocationsRecommendersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(GoogleCloudRecommenderV1beta1RecommenderConfig.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://recommender.googleapis.com/"})),
-).annotate({ identifier: "UpdateConfigProjectsLocationsRecommendersRequest" }) as any as S.Schema<UpdateConfigProjectsLocationsRecommendersRequest>;
+export const UpdateConfigProjectsLocationsRecommendersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      body: S.optional(
+        GoogleCloudRecommenderV1beta1RecommenderConfig.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://recommender.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "UpdateConfigProjectsLocationsRecommendersRequest",
+  }) as any as S.Schema<UpdateConfigProjectsLocationsRecommendersRequest>;
 
-export type GetBillingAccountsLocationsInsightTypesInsightsError = NotFound | Forbidden | GcpOpError;
+export type GetBillingAccountsLocationsInsightTypesInsightsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the requested insight. Requires the recommender.*.get IAM permission for the specified insight type. */
 export const getBillingAccountsLocationsInsightTypesInsights: API.OperationMethod<
   GetBillingAccountsLocationsInsightTypesInsightsRequest,
@@ -1503,7 +2326,10 @@ export const getBillingAccountsLocationsInsightTypesInsights: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type GetBillingAccountsLocationsRecommendersRecommendationsError = NotFound | Forbidden | GcpOpError;
+export type GetBillingAccountsLocationsRecommendersRecommendationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the requested recommendation. Requires the recommender.*.get IAM permission for the specified recommender. */
 export const getBillingAccountsLocationsRecommendersRecommendations: API.OperationMethod<
   GetBillingAccountsLocationsRecommendersRecommendationsRequest,
@@ -1518,7 +2344,10 @@ export const getBillingAccountsLocationsRecommendersRecommendations: API.Operati
   retry: Retry.Retry,
 }));
 
-export type GetConfigBillingAccountsLocationsInsightTypesError = NotFound | Forbidden | GcpOpError;
+export type GetConfigBillingAccountsLocationsInsightTypesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the requested InsightTypeConfig. There is only one instance of the config for each InsightType. */
 export const getConfigBillingAccountsLocationsInsightTypes: API.OperationMethod<
   GetConfigBillingAccountsLocationsInsightTypesRequest,
@@ -1533,7 +2362,10 @@ export const getConfigBillingAccountsLocationsInsightTypes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetConfigBillingAccountsLocationsRecommendersError = NotFound | Forbidden | GcpOpError;
+export type GetConfigBillingAccountsLocationsRecommendersError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the requested Recommender Config. There is only one instance of the config for each Recommender. */
 export const getConfigBillingAccountsLocationsRecommenders: API.OperationMethod<
   GetConfigBillingAccountsLocationsRecommendersRequest,
@@ -1548,7 +2380,10 @@ export const getConfigBillingAccountsLocationsRecommenders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetConfigOrganizationsLocationsInsightTypesError = NotFound | Forbidden | GcpOpError;
+export type GetConfigOrganizationsLocationsInsightTypesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the requested InsightTypeConfig. There is only one instance of the config for each InsightType. */
 export const getConfigOrganizationsLocationsInsightTypes: API.OperationMethod<
   GetConfigOrganizationsLocationsInsightTypesRequest,
@@ -1563,7 +2398,10 @@ export const getConfigOrganizationsLocationsInsightTypes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetConfigOrganizationsLocationsRecommendersError = NotFound | Forbidden | GcpOpError;
+export type GetConfigOrganizationsLocationsRecommendersError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the requested Recommender Config. There is only one instance of the config for each Recommender. */
 export const getConfigOrganizationsLocationsRecommenders: API.OperationMethod<
   GetConfigOrganizationsLocationsRecommendersRequest,
@@ -1578,7 +2416,10 @@ export const getConfigOrganizationsLocationsRecommenders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetConfigProjectsLocationsInsightTypesError = NotFound | Forbidden | GcpOpError;
+export type GetConfigProjectsLocationsInsightTypesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the requested InsightTypeConfig. There is only one instance of the config for each InsightType. */
 export const getConfigProjectsLocationsInsightTypes: API.OperationMethod<
   GetConfigProjectsLocationsInsightTypesRequest,
@@ -1593,7 +2434,10 @@ export const getConfigProjectsLocationsInsightTypes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetConfigProjectsLocationsRecommendersError = NotFound | Forbidden | GcpOpError;
+export type GetConfigProjectsLocationsRecommendersError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the requested Recommender Config. There is only one instance of the config for each Recommender. */
 export const getConfigProjectsLocationsRecommenders: API.OperationMethod<
   GetConfigProjectsLocationsRecommendersRequest,
@@ -1608,7 +2452,10 @@ export const getConfigProjectsLocationsRecommenders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetFoldersLocationsInsightTypesInsightsError = NotFound | Forbidden | GcpOpError;
+export type GetFoldersLocationsInsightTypesInsightsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the requested insight. Requires the recommender.*.get IAM permission for the specified insight type. */
 export const getFoldersLocationsInsightTypesInsights: API.OperationMethod<
   GetFoldersLocationsInsightTypesInsightsRequest,
@@ -1623,7 +2470,10 @@ export const getFoldersLocationsInsightTypesInsights: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetFoldersLocationsRecommendersRecommendationsError = NotFound | Forbidden | GcpOpError;
+export type GetFoldersLocationsRecommendersRecommendationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the requested recommendation. Requires the recommender.*.get IAM permission for the specified recommender. */
 export const getFoldersLocationsRecommendersRecommendations: API.OperationMethod<
   GetFoldersLocationsRecommendersRecommendationsRequest,
@@ -1638,7 +2488,10 @@ export const getFoldersLocationsRecommendersRecommendations: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type GetOrganizationsLocationsInsightTypesInsightsError = NotFound | Forbidden | GcpOpError;
+export type GetOrganizationsLocationsInsightTypesInsightsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the requested insight. Requires the recommender.*.get IAM permission for the specified insight type. */
 export const getOrganizationsLocationsInsightTypesInsights: API.OperationMethod<
   GetOrganizationsLocationsInsightTypesInsightsRequest,
@@ -1653,7 +2506,10 @@ export const getOrganizationsLocationsInsightTypesInsights: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetOrganizationsLocationsRecommendersRecommendationsError = NotFound | Forbidden | GcpOpError;
+export type GetOrganizationsLocationsRecommendersRecommendationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the requested recommendation. Requires the recommender.*.get IAM permission for the specified recommender. */
 export const getOrganizationsLocationsRecommendersRecommendations: API.OperationMethod<
   GetOrganizationsLocationsRecommendersRecommendationsRequest,
@@ -1668,7 +2524,10 @@ export const getOrganizationsLocationsRecommendersRecommendations: API.Operation
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsInsightTypesInsightsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsInsightTypesInsightsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the requested insight. Requires the recommender.*.get IAM permission for the specified insight type. */
 export const getProjectsLocationsInsightTypesInsights: API.OperationMethod<
   GetProjectsLocationsInsightTypesInsightsRequest,
@@ -1683,7 +2542,10 @@ export const getProjectsLocationsInsightTypesInsights: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsRecommendersRecommendationsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsRecommendersRecommendationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the requested recommendation. Requires the recommender.*.get IAM permission for the specified recommender. */
 export const getProjectsLocationsRecommendersRecommendations: API.OperationMethod<
   GetProjectsLocationsRecommendersRecommendationsRequest,
@@ -1698,7 +2560,10 @@ export const getProjectsLocationsRecommendersRecommendations: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type ListBillingAccountsLocationsError = NotFound | Forbidden | GcpOpError;
+export type ListBillingAccountsLocationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists locations with recommendations or insights. */
 export const listBillingAccountsLocations: API.PaginatedOperationMethod<
   ListBillingAccountsLocationsRequest,
@@ -1711,10 +2576,16 @@ export const listBillingAccountsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListBillingAccountsLocationsInsightTypesInsightsError = NotFound | Forbidden | GcpOpError;
+export type ListBillingAccountsLocationsInsightTypesInsightsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists insights for the specified Cloud Resource. Requires the recommender.*.list IAM permission for the specified insight type. */
 export const listBillingAccountsLocationsInsightTypesInsights: API.PaginatedOperationMethod<
   ListBillingAccountsLocationsInsightTypesInsightsRequest,
@@ -1727,10 +2598,16 @@ export const listBillingAccountsLocationsInsightTypesInsights: API.PaginatedOper
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListBillingAccountsLocationsRecommendersRecommendationsError = NotFound | Forbidden | GcpOpError;
+export type ListBillingAccountsLocationsRecommendersRecommendationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists recommendations for the specified Cloud Resource. Requires the recommender.*.list IAM permission for the specified recommender. */
 export const listBillingAccountsLocationsRecommendersRecommendations: API.PaginatedOperationMethod<
   ListBillingAccountsLocationsRecommendersRecommendationsRequest,
@@ -1743,7 +2620,10 @@ export const listBillingAccountsLocationsRecommendersRecommendations: API.Pagina
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListFoldersLocationsError = NotFound | Forbidden | GcpOpError;
@@ -1759,10 +2639,16 @@ export const listFoldersLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListFoldersLocationsInsightTypesInsightsError = NotFound | Forbidden | GcpOpError;
+export type ListFoldersLocationsInsightTypesInsightsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists insights for the specified Cloud Resource. Requires the recommender.*.list IAM permission for the specified insight type. */
 export const listFoldersLocationsInsightTypesInsights: API.PaginatedOperationMethod<
   ListFoldersLocationsInsightTypesInsightsRequest,
@@ -1775,10 +2661,16 @@ export const listFoldersLocationsInsightTypesInsights: API.PaginatedOperationMet
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListFoldersLocationsRecommendersRecommendationsError = NotFound | Forbidden | GcpOpError;
+export type ListFoldersLocationsRecommendersRecommendationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists recommendations for the specified Cloud Resource. Requires the recommender.*.list IAM permission for the specified recommender. */
 export const listFoldersLocationsRecommendersRecommendations: API.PaginatedOperationMethod<
   ListFoldersLocationsRecommendersRecommendationsRequest,
@@ -1791,7 +2683,10 @@ export const listFoldersLocationsRecommendersRecommendations: API.PaginatedOpera
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListInsightTypesError = NotFound | Forbidden | GcpOpError;
@@ -1807,7 +2702,10 @@ export const listInsightTypes: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListOrganizationsLocationsError = NotFound | Forbidden | GcpOpError;
@@ -1823,10 +2721,16 @@ export const listOrganizationsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListOrganizationsLocationsInsightTypesInsightsError = NotFound | Forbidden | GcpOpError;
+export type ListOrganizationsLocationsInsightTypesInsightsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists insights for the specified Cloud Resource. Requires the recommender.*.list IAM permission for the specified insight type. */
 export const listOrganizationsLocationsInsightTypesInsights: API.PaginatedOperationMethod<
   ListOrganizationsLocationsInsightTypesInsightsRequest,
@@ -1839,10 +2743,16 @@ export const listOrganizationsLocationsInsightTypesInsights: API.PaginatedOperat
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListOrganizationsLocationsRecommendersRecommendationsError = NotFound | Forbidden | GcpOpError;
+export type ListOrganizationsLocationsRecommendersRecommendationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists recommendations for the specified Cloud Resource. Requires the recommender.*.list IAM permission for the specified recommender. */
 export const listOrganizationsLocationsRecommendersRecommendations: API.PaginatedOperationMethod<
   ListOrganizationsLocationsRecommendersRecommendationsRequest,
@@ -1855,7 +2765,10 @@ export const listOrganizationsLocationsRecommendersRecommendations: API.Paginate
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListProjectsLocationsError = NotFound | Forbidden | GcpOpError;
@@ -1871,10 +2784,16 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsInsightTypesInsightsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsInsightTypesInsightsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists insights for the specified Cloud Resource. Requires the recommender.*.list IAM permission for the specified insight type. */
 export const listProjectsLocationsInsightTypesInsights: API.PaginatedOperationMethod<
   ListProjectsLocationsInsightTypesInsightsRequest,
@@ -1887,10 +2806,16 @@ export const listProjectsLocationsInsightTypesInsights: API.PaginatedOperationMe
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsRecommendersRecommendationsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsRecommendersRecommendationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists recommendations for the specified Cloud Resource. Requires the recommender.*.list IAM permission for the specified recommender. */
 export const listProjectsLocationsRecommendersRecommendations: API.PaginatedOperationMethod<
   ListProjectsLocationsRecommendersRecommendationsRequest,
@@ -1903,7 +2828,10 @@ export const listProjectsLocationsRecommendersRecommendations: API.PaginatedOper
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListRecommendersError = NotFound | Forbidden | GcpOpError;
@@ -1919,10 +2847,18 @@ export const listRecommenders: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type MarkAcceptedBillingAccountsLocationsInsightTypesInsightsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type MarkAcceptedBillingAccountsLocationsInsightTypesInsightsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Marks the Insight State as Accepted. Users can use this method to indicate to the Recommender API that they have applied some action based on the insight. This stops the insight content from being updated. MarkInsightAccepted can be applied to insights in ACTIVE state. Requires the recommender.*.update IAM permission for the specified insight. */
 export const markAcceptedBillingAccountsLocationsInsightTypesInsights: API.OperationMethod<
   MarkAcceptedBillingAccountsLocationsInsightTypesInsightsRequest,
@@ -1937,7 +2873,12 @@ export const markAcceptedBillingAccountsLocationsInsightTypesInsights: API.Opera
   retry: Retry.Retry,
 }));
 
-export type MarkAcceptedFoldersLocationsInsightTypesInsightsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type MarkAcceptedFoldersLocationsInsightTypesInsightsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Marks the Insight State as Accepted. Users can use this method to indicate to the Recommender API that they have applied some action based on the insight. This stops the insight content from being updated. MarkInsightAccepted can be applied to insights in ACTIVE state. Requires the recommender.*.update IAM permission for the specified insight. */
 export const markAcceptedFoldersLocationsInsightTypesInsights: API.OperationMethod<
   MarkAcceptedFoldersLocationsInsightTypesInsightsRequest,
@@ -1952,7 +2893,12 @@ export const markAcceptedFoldersLocationsInsightTypesInsights: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type MarkAcceptedOrganizationsLocationsInsightTypesInsightsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type MarkAcceptedOrganizationsLocationsInsightTypesInsightsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Marks the Insight State as Accepted. Users can use this method to indicate to the Recommender API that they have applied some action based on the insight. This stops the insight content from being updated. MarkInsightAccepted can be applied to insights in ACTIVE state. Requires the recommender.*.update IAM permission for the specified insight. */
 export const markAcceptedOrganizationsLocationsInsightTypesInsights: API.OperationMethod<
   MarkAcceptedOrganizationsLocationsInsightTypesInsightsRequest,
@@ -1967,7 +2913,12 @@ export const markAcceptedOrganizationsLocationsInsightTypesInsights: API.Operati
   retry: Retry.Retry,
 }));
 
-export type MarkAcceptedProjectsLocationsInsightTypesInsightsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type MarkAcceptedProjectsLocationsInsightTypesInsightsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Marks the Insight State as Accepted. Users can use this method to indicate to the Recommender API that they have applied some action based on the insight. This stops the insight content from being updated. MarkInsightAccepted can be applied to insights in ACTIVE state. Requires the recommender.*.update IAM permission for the specified insight. */
 export const markAcceptedProjectsLocationsInsightTypesInsights: API.OperationMethod<
   MarkAcceptedProjectsLocationsInsightTypesInsightsRequest,
@@ -1982,7 +2933,8 @@ export const markAcceptedProjectsLocationsInsightTypesInsights: API.OperationMet
   retry: Retry.Retry,
 }));
 
-export type MarkClaimedBillingAccountsLocationsRecommendersRecommendationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type MarkClaimedBillingAccountsLocationsRecommendersRecommendationsError =
+  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Marks the Recommendation State as Claimed. Users can use this method to indicate to the Recommender API that they are starting to apply the recommendation themselves. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationClaimed can be applied to recommendations in CLAIMED or ACTIVE state. Requires the recommender.*.update IAM permission for the specified recommender. */
 export const markClaimedBillingAccountsLocationsRecommendersRecommendations: API.OperationMethod<
   MarkClaimedBillingAccountsLocationsRecommendersRecommendationsRequest,
@@ -1997,7 +2949,12 @@ export const markClaimedBillingAccountsLocationsRecommendersRecommendations: API
   retry: Retry.Retry,
 }));
 
-export type MarkClaimedFoldersLocationsRecommendersRecommendationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type MarkClaimedFoldersLocationsRecommendersRecommendationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Marks the Recommendation State as Claimed. Users can use this method to indicate to the Recommender API that they are starting to apply the recommendation themselves. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationClaimed can be applied to recommendations in CLAIMED or ACTIVE state. Requires the recommender.*.update IAM permission for the specified recommender. */
 export const markClaimedFoldersLocationsRecommendersRecommendations: API.OperationMethod<
   MarkClaimedFoldersLocationsRecommendersRecommendationsRequest,
@@ -2012,7 +2969,12 @@ export const markClaimedFoldersLocationsRecommendersRecommendations: API.Operati
   retry: Retry.Retry,
 }));
 
-export type MarkClaimedOrganizationsLocationsRecommendersRecommendationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type MarkClaimedOrganizationsLocationsRecommendersRecommendationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Marks the Recommendation State as Claimed. Users can use this method to indicate to the Recommender API that they are starting to apply the recommendation themselves. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationClaimed can be applied to recommendations in CLAIMED or ACTIVE state. Requires the recommender.*.update IAM permission for the specified recommender. */
 export const markClaimedOrganizationsLocationsRecommendersRecommendations: API.OperationMethod<
   MarkClaimedOrganizationsLocationsRecommendersRecommendationsRequest,
@@ -2027,7 +2989,12 @@ export const markClaimedOrganizationsLocationsRecommendersRecommendations: API.O
   retry: Retry.Retry,
 }));
 
-export type MarkClaimedProjectsLocationsRecommendersRecommendationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type MarkClaimedProjectsLocationsRecommendersRecommendationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Marks the Recommendation State as Claimed. Users can use this method to indicate to the Recommender API that they are starting to apply the recommendation themselves. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationClaimed can be applied to recommendations in CLAIMED or ACTIVE state. Requires the recommender.*.update IAM permission for the specified recommender. */
 export const markClaimedProjectsLocationsRecommendersRecommendations: API.OperationMethod<
   MarkClaimedProjectsLocationsRecommendersRecommendationsRequest,
@@ -2042,7 +3009,8 @@ export const markClaimedProjectsLocationsRecommendersRecommendations: API.Operat
   retry: Retry.Retry,
 }));
 
-export type MarkDismissedBillingAccountsLocationsRecommendersRecommendationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type MarkDismissedBillingAccountsLocationsRecommendersRecommendationsError =
+  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Mark the Recommendation State as Dismissed. Users can use this method to indicate to the Recommender API that an ACTIVE recommendation has to be marked back as DISMISSED. MarkRecommendationDismissed can be applied to recommendations in ACTIVE state. Requires the recommender.*.update IAM permission for the specified recommender. */
 export const markDismissedBillingAccountsLocationsRecommendersRecommendations: API.OperationMethod<
   MarkDismissedBillingAccountsLocationsRecommendersRecommendationsRequest,
@@ -2050,14 +3018,20 @@ export const markDismissedBillingAccountsLocationsRecommendersRecommendations: A
   MarkDismissedBillingAccountsLocationsRecommendersRecommendationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MarkDismissedBillingAccountsLocationsRecommendersRecommendationsRequest,
+  input:
+    MarkDismissedBillingAccountsLocationsRecommendersRecommendationsRequest,
   output: GoogleCloudRecommenderV1beta1Recommendation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type MarkDismissedFoldersLocationsRecommendersRecommendationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type MarkDismissedFoldersLocationsRecommendersRecommendationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Mark the Recommendation State as Dismissed. Users can use this method to indicate to the Recommender API that an ACTIVE recommendation has to be marked back as DISMISSED. MarkRecommendationDismissed can be applied to recommendations in ACTIVE state. Requires the recommender.*.update IAM permission for the specified recommender. */
 export const markDismissedFoldersLocationsRecommendersRecommendations: API.OperationMethod<
   MarkDismissedFoldersLocationsRecommendersRecommendationsRequest,
@@ -2072,7 +3046,8 @@ export const markDismissedFoldersLocationsRecommendersRecommendations: API.Opera
   retry: Retry.Retry,
 }));
 
-export type MarkDismissedOrganizationsLocationsRecommendersRecommendationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type MarkDismissedOrganizationsLocationsRecommendersRecommendationsError =
+  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Mark the Recommendation State as Dismissed. Users can use this method to indicate to the Recommender API that an ACTIVE recommendation has to be marked back as DISMISSED. MarkRecommendationDismissed can be applied to recommendations in ACTIVE state. Requires the recommender.*.update IAM permission for the specified recommender. */
 export const markDismissedOrganizationsLocationsRecommendersRecommendations: API.OperationMethod<
   MarkDismissedOrganizationsLocationsRecommendersRecommendationsRequest,
@@ -2087,7 +3062,12 @@ export const markDismissedOrganizationsLocationsRecommendersRecommendations: API
   retry: Retry.Retry,
 }));
 
-export type MarkDismissedProjectsLocationsRecommendersRecommendationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type MarkDismissedProjectsLocationsRecommendersRecommendationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Mark the Recommendation State as Dismissed. Users can use this method to indicate to the Recommender API that an ACTIVE recommendation has to be marked back as DISMISSED. MarkRecommendationDismissed can be applied to recommendations in ACTIVE state. Requires the recommender.*.update IAM permission for the specified recommender. */
 export const markDismissedProjectsLocationsRecommendersRecommendations: API.OperationMethod<
   MarkDismissedProjectsLocationsRecommendersRecommendationsRequest,
@@ -2102,7 +3082,8 @@ export const markDismissedProjectsLocationsRecommendersRecommendations: API.Oper
   retry: Retry.Retry,
 }));
 
-export type MarkFailedBillingAccountsLocationsRecommendersRecommendationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type MarkFailedBillingAccountsLocationsRecommendersRecommendationsError =
+  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Marks the Recommendation State as Failed. Users can use this method to indicate to the Recommender API that they have applied the recommendation themselves, and the operation failed. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationFailed can be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or FAILED state. Requires the recommender.*.update IAM permission for the specified recommender. */
 export const markFailedBillingAccountsLocationsRecommendersRecommendations: API.OperationMethod<
   MarkFailedBillingAccountsLocationsRecommendersRecommendationsRequest,
@@ -2117,7 +3098,12 @@ export const markFailedBillingAccountsLocationsRecommendersRecommendations: API.
   retry: Retry.Retry,
 }));
 
-export type MarkFailedFoldersLocationsRecommendersRecommendationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type MarkFailedFoldersLocationsRecommendersRecommendationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Marks the Recommendation State as Failed. Users can use this method to indicate to the Recommender API that they have applied the recommendation themselves, and the operation failed. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationFailed can be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or FAILED state. Requires the recommender.*.update IAM permission for the specified recommender. */
 export const markFailedFoldersLocationsRecommendersRecommendations: API.OperationMethod<
   MarkFailedFoldersLocationsRecommendersRecommendationsRequest,
@@ -2132,7 +3118,12 @@ export const markFailedFoldersLocationsRecommendersRecommendations: API.Operatio
   retry: Retry.Retry,
 }));
 
-export type MarkFailedOrganizationsLocationsRecommendersRecommendationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type MarkFailedOrganizationsLocationsRecommendersRecommendationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Marks the Recommendation State as Failed. Users can use this method to indicate to the Recommender API that they have applied the recommendation themselves, and the operation failed. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationFailed can be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or FAILED state. Requires the recommender.*.update IAM permission for the specified recommender. */
 export const markFailedOrganizationsLocationsRecommendersRecommendations: API.OperationMethod<
   MarkFailedOrganizationsLocationsRecommendersRecommendationsRequest,
@@ -2147,7 +3138,12 @@ export const markFailedOrganizationsLocationsRecommendersRecommendations: API.Op
   retry: Retry.Retry,
 }));
 
-export type MarkFailedProjectsLocationsRecommendersRecommendationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type MarkFailedProjectsLocationsRecommendersRecommendationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Marks the Recommendation State as Failed. Users can use this method to indicate to the Recommender API that they have applied the recommendation themselves, and the operation failed. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationFailed can be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or FAILED state. Requires the recommender.*.update IAM permission for the specified recommender. */
 export const markFailedProjectsLocationsRecommendersRecommendations: API.OperationMethod<
   MarkFailedProjectsLocationsRecommendersRecommendationsRequest,
@@ -2162,7 +3158,8 @@ export const markFailedProjectsLocationsRecommendersRecommendations: API.Operati
   retry: Retry.Retry,
 }));
 
-export type MarkSucceededBillingAccountsLocationsRecommendersRecommendationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type MarkSucceededBillingAccountsLocationsRecommendersRecommendationsError =
+  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Marks the Recommendation State as Succeeded. Users can use this method to indicate to the Recommender API that they have applied the recommendation themselves, and the operation was successful. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationSucceeded can be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or FAILED state. Requires the recommender.*.update IAM permission for the specified recommender. */
 export const markSucceededBillingAccountsLocationsRecommendersRecommendations: API.OperationMethod<
   MarkSucceededBillingAccountsLocationsRecommendersRecommendationsRequest,
@@ -2170,14 +3167,20 @@ export const markSucceededBillingAccountsLocationsRecommendersRecommendations: A
   MarkSucceededBillingAccountsLocationsRecommendersRecommendationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MarkSucceededBillingAccountsLocationsRecommendersRecommendationsRequest,
+  input:
+    MarkSucceededBillingAccountsLocationsRecommendersRecommendationsRequest,
   output: GoogleCloudRecommenderV1beta1Recommendation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type MarkSucceededFoldersLocationsRecommendersRecommendationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type MarkSucceededFoldersLocationsRecommendersRecommendationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Marks the Recommendation State as Succeeded. Users can use this method to indicate to the Recommender API that they have applied the recommendation themselves, and the operation was successful. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationSucceeded can be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or FAILED state. Requires the recommender.*.update IAM permission for the specified recommender. */
 export const markSucceededFoldersLocationsRecommendersRecommendations: API.OperationMethod<
   MarkSucceededFoldersLocationsRecommendersRecommendationsRequest,
@@ -2192,7 +3195,8 @@ export const markSucceededFoldersLocationsRecommendersRecommendations: API.Opera
   retry: Retry.Retry,
 }));
 
-export type MarkSucceededOrganizationsLocationsRecommendersRecommendationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type MarkSucceededOrganizationsLocationsRecommendersRecommendationsError =
+  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Marks the Recommendation State as Succeeded. Users can use this method to indicate to the Recommender API that they have applied the recommendation themselves, and the operation was successful. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationSucceeded can be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or FAILED state. Requires the recommender.*.update IAM permission for the specified recommender. */
 export const markSucceededOrganizationsLocationsRecommendersRecommendations: API.OperationMethod<
   MarkSucceededOrganizationsLocationsRecommendersRecommendationsRequest,
@@ -2207,7 +3211,12 @@ export const markSucceededOrganizationsLocationsRecommendersRecommendations: API
   retry: Retry.Retry,
 }));
 
-export type MarkSucceededProjectsLocationsRecommendersRecommendationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type MarkSucceededProjectsLocationsRecommendersRecommendationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Marks the Recommendation State as Succeeded. Users can use this method to indicate to the Recommender API that they have applied the recommendation themselves, and the operation was successful. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationSucceeded can be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or FAILED state. Requires the recommender.*.update IAM permission for the specified recommender. */
 export const markSucceededProjectsLocationsRecommendersRecommendations: API.OperationMethod<
   MarkSucceededProjectsLocationsRecommendersRecommendationsRequest,
@@ -2222,7 +3231,12 @@ export const markSucceededProjectsLocationsRecommendersRecommendations: API.Oper
   retry: Retry.Retry,
 }));
 
-export type UpdateConfigBillingAccountsLocationsInsightTypesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateConfigBillingAccountsLocationsInsightTypesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates an InsightTypeConfig change. This will create a new revision of the config. */
 export const updateConfigBillingAccountsLocationsInsightTypes: API.OperationMethod<
   UpdateConfigBillingAccountsLocationsInsightTypesRequest,
@@ -2237,7 +3251,12 @@ export const updateConfigBillingAccountsLocationsInsightTypes: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type UpdateConfigBillingAccountsLocationsRecommendersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateConfigBillingAccountsLocationsRecommendersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a Recommender Config. This will create a new revision of the config. */
 export const updateConfigBillingAccountsLocationsRecommenders: API.OperationMethod<
   UpdateConfigBillingAccountsLocationsRecommendersRequest,
@@ -2252,7 +3271,12 @@ export const updateConfigBillingAccountsLocationsRecommenders: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type UpdateConfigOrganizationsLocationsInsightTypesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateConfigOrganizationsLocationsInsightTypesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates an InsightTypeConfig change. This will create a new revision of the config. */
 export const updateConfigOrganizationsLocationsInsightTypes: API.OperationMethod<
   UpdateConfigOrganizationsLocationsInsightTypesRequest,
@@ -2267,7 +3291,12 @@ export const updateConfigOrganizationsLocationsInsightTypes: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type UpdateConfigOrganizationsLocationsRecommendersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateConfigOrganizationsLocationsRecommendersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a Recommender Config. This will create a new revision of the config. */
 export const updateConfigOrganizationsLocationsRecommenders: API.OperationMethod<
   UpdateConfigOrganizationsLocationsRecommendersRequest,
@@ -2282,7 +3311,12 @@ export const updateConfigOrganizationsLocationsRecommenders: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type UpdateConfigProjectsLocationsInsightTypesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateConfigProjectsLocationsInsightTypesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates an InsightTypeConfig change. This will create a new revision of the config. */
 export const updateConfigProjectsLocationsInsightTypes: API.OperationMethod<
   UpdateConfigProjectsLocationsInsightTypesRequest,
@@ -2297,7 +3331,12 @@ export const updateConfigProjectsLocationsInsightTypes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateConfigProjectsLocationsRecommendersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateConfigProjectsLocationsRecommendersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a Recommender Config. This will create a new revision of the config. */
 export const updateConfigProjectsLocationsRecommenders: API.OperationMethod<
   UpdateConfigProjectsLocationsRecommendersRequest,
@@ -2311,4 +3350,3 @@ export const updateConfigProjectsLocationsRecommenders: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

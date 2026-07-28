@@ -13,27 +13,27 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export interface GetProjectsLocationsRequest {
@@ -41,16 +41,30 @@ export interface GetProjectsLocationsRequest {
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}","baseUrl":"https://cloudlocationfinder.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha/{+name}",
+      baseUrl: "https://cloudlocationfinder.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsRequest",
+}) as any as S.Schema<GetProjectsLocationsRequest>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -66,29 +80,47 @@ export interface Location {
   metadata?: DocumentMap;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "labels": S.optional(StringMap),
-  "displayName": S.optional(S.String),
-  "locationId": S.optional(S.String),
-  "name": S.optional(S.String),
-  "metadata": S.optional(DocumentMap),
-}),
+  S.Struct({
+    labels: S.optional(StringMap),
+    displayName: S.optional(S.String),
+    locationId: S.optional(S.String),
+    name: S.optional(S.String),
+    metadata: S.optional(DocumentMap),
+  }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export interface GetProjectsLocationsCloudLocationsRequest {
   /** Required. Name of the resource. */
   name: string;
 }
-export const GetProjectsLocationsCloudLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}","baseUrl":"https://cloudlocationfinder.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsCloudLocationsRequest" }) as any as S.Schema<GetProjectsLocationsCloudLocationsRequest>;
+export const GetProjectsLocationsCloudLocationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha/{+name}",
+        baseUrl: "https://cloudlocationfinder.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsCloudLocationsRequest",
+  }) as any as S.Schema<GetProjectsLocationsCloudLocationsRequest>;
 
-export type CloudLocationCloudLocationTypeEnum = "CLOUD_LOCATION_TYPE_UNSPECIFIED" | "CLOUD_LOCATION_TYPE_REGION" | "CLOUD_LOCATION_TYPE_ZONE" | "CLOUD_LOCATION_TYPE_GDCC_ZONE";
+export type CloudLocationCloudLocationTypeEnum =
+  | "CLOUD_LOCATION_TYPE_UNSPECIFIED"
+  | "CLOUD_LOCATION_TYPE_REGION"
+  | "CLOUD_LOCATION_TYPE_ZONE"
+  | "CLOUD_LOCATION_TYPE_GDCC_ZONE";
 export const CloudLocationCloudLocationTypeEnum = /*@__PURE__*/ S.String;
 
-export type CloudLocationCloudProviderEnum = "CLOUD_PROVIDER_UNSPECIFIED" | "CLOUD_PROVIDER_GCP" | "CLOUD_PROVIDER_AWS" | "CLOUD_PROVIDER_AZURE" | "CLOUD_PROVIDER_OCI";
+export type CloudLocationCloudProviderEnum =
+  | "CLOUD_PROVIDER_UNSPECIFIED"
+  | "CLOUD_PROVIDER_GCP"
+  | "CLOUD_PROVIDER_AWS"
+  | "CLOUD_PROVIDER_AZURE"
+  | "CLOUD_PROVIDER_OCI";
 export const CloudLocationCloudProviderEnum = /*@__PURE__*/ S.String;
 
 /** Represents resource cloud locations. */
@@ -109,19 +141,21 @@ export interface CloudLocation {
   displayName?: string;
 }
 export const CloudLocation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "cloudLocationType": S.optional(CloudLocationCloudLocationTypeEnum),
-  "territoryCode": S.optional(S.String),
-  "name": S.optional(S.String),
-  "containingCloudLocation": S.optional(S.String),
-  "cloudProvider": S.optional(CloudLocationCloudProviderEnum),
-  "carbonFreeEnergyPercentage": S.optional(S.Number),
-  "displayName": S.optional(S.String),
-}),
+  S.Struct({
+    cloudLocationType: S.optional(CloudLocationCloudLocationTypeEnum),
+    territoryCode: S.optional(S.String),
+    name: S.optional(S.String),
+    containingCloudLocation: S.optional(S.String),
+    cloudProvider: S.optional(CloudLocationCloudProviderEnum),
+    carbonFreeEnergyPercentage: S.optional(S.Number),
+    displayName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "CloudLocation" }) as any as S.Schema<CloudLocation>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 export interface ListProjectsLocationsRequest {
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
@@ -136,17 +170,27 @@ export interface ListProjectsLocationsRequest {
   pageSize?: number;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}/locations","baseUrl":"https://cloudlocationfinder.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha/{+name}/locations",
+      baseUrl: "https://cloudlocationfinder.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsRequest",
+}) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(
+  Location,
+) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -156,11 +200,13 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locations": S.optional(LocationList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
+  S.Struct({
+    locations: S.optional(LocationList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListLocationsResponse",
+}) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsLocationsCloudLocationsRequest {
   /** Required. The parent, which owns this collection of cloud locations. Format: projects/{project}/locations/{location} */
@@ -172,17 +218,28 @@ export interface ListProjectsLocationsCloudLocationsRequest {
   /** Optional. A filter expression that filters resources listed in the response. The expression is in the form of field=value. For example, 'cloud_location_type=CLOUD_LOCATION_TYPE_REGION'. Multiple filter queries are space-separated. For example, 'cloud_location_type=CLOUD_LOCATION_TYPE_REGION territory_code="US"' By default, each expression is an AND expression. However, you can include AND and OR expressions explicitly. */
   filter?: string;
 }
-export const ListProjectsLocationsCloudLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+parent}/cloudLocations","baseUrl":"https://cloudlocationfinder.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsCloudLocationsRequest" }) as any as S.Schema<ListProjectsLocationsCloudLocationsRequest>;
+export const ListProjectsLocationsCloudLocationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha/{+parent}/cloudLocations",
+        baseUrl: "https://cloudlocationfinder.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsCloudLocationsRequest",
+  }) as any as S.Schema<ListProjectsLocationsCloudLocationsRequest>;
 
 export type CloudLocationList = ReadonlyArray<CloudLocation>;
-export const CloudLocationList = /*@__PURE__*/ S.Array(CloudLocation) as any as S.Schema<CloudLocationList>;
+export const CloudLocationList = /*@__PURE__*/ S.Array(
+  CloudLocation,
+) as any as S.Schema<CloudLocationList>;
 
 /** Message for response to listing cloud locations. */
 export interface ListCloudLocationsResponse {
@@ -192,11 +249,13 @@ export interface ListCloudLocationsResponse {
   nextPageToken?: string;
 }
 export const ListCloudLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "cloudLocations": S.optional(CloudLocationList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListCloudLocationsResponse" }) as any as S.Schema<ListCloudLocationsResponse>;
+  S.Struct({
+    cloudLocations: S.optional(CloudLocationList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListCloudLocationsResponse",
+}) as any as S.Schema<ListCloudLocationsResponse>;
 
 export interface SearchProjectsLocationsCloudLocationsRequest {
   /** Optional. The query string in search query syntax. While filter is used to filter the search results by attributes, query is used to specify the search requirements. */
@@ -210,15 +269,24 @@ export interface SearchProjectsLocationsCloudLocationsRequest {
   /** Optional. A token identifying a page of results the server should return. Provide Page token returned by a previous 'ListCloudLocations' call to retrieve the next page of results. When paginating, all other parameters provided to 'ListCloudLocations' must match the call that provided the page token. */
   pageToken?: string;
 }
-export const SearchProjectsLocationsCloudLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "query": S.optional(S.String.pipe(T.Query())),
-  "sourceCloudLocation": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+parent}/cloudLocations:search","baseUrl":"https://cloudlocationfinder.googleapis.com/"})),
-).annotate({ identifier: "SearchProjectsLocationsCloudLocationsRequest" }) as any as S.Schema<SearchProjectsLocationsCloudLocationsRequest>;
+export const SearchProjectsLocationsCloudLocationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      query: S.optional(S.String.pipe(T.Query())),
+      sourceCloudLocation: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha/{+parent}/cloudLocations:search",
+        baseUrl: "https://cloudlocationfinder.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "SearchProjectsLocationsCloudLocationsRequest",
+  }) as any as S.Schema<SearchProjectsLocationsCloudLocationsRequest>;
 
 /** Message for response to searching cloud locations. */
 export interface SearchCloudLocationsResponse {
@@ -228,11 +296,13 @@ export interface SearchCloudLocationsResponse {
   nextPageToken?: string;
 }
 export const SearchCloudLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "cloudLocations": S.optional(CloudLocationList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "SearchCloudLocationsResponse" }) as any as S.Schema<SearchCloudLocationsResponse>;
+  S.Struct({
+    cloudLocations: S.optional(CloudLocationList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SearchCloudLocationsResponse",
+}) as any as S.Schema<SearchCloudLocationsResponse>;
 
 export type GetProjectsLocationsError = NotFound | Forbidden | GcpOpError;
 /** Gets information about a location. */
@@ -249,7 +319,10 @@ export const getProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsCloudLocationsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsCloudLocationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieves a resource containing information about a cloud location. */
 export const getProjectsLocationsCloudLocations: API.OperationMethod<
   GetProjectsLocationsCloudLocationsRequest,
@@ -277,10 +350,16 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsCloudLocationsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsCloudLocationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists cloud locations under a given project and location. */
 export const listProjectsLocationsCloudLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsCloudLocationsRequest,
@@ -293,10 +372,16 @@ export const listProjectsLocationsCloudLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type SearchProjectsLocationsCloudLocationsError = NotFound | Forbidden | GcpOpError;
+export type SearchProjectsLocationsCloudLocationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Searches for cloud locations from a given source location. */
 export const searchProjectsLocationsCloudLocations: API.PaginatedOperationMethod<
   SearchProjectsLocationsCloudLocationsRequest,
@@ -309,6 +394,8 @@ export const searchProjectsLocationsCloudLocations: API.PaginatedOperationMethod
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
-

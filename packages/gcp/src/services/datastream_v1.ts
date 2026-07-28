@@ -13,58 +13,60 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
 export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "CancelOperationRequest" }) as any as S.Schema<CancelOperationRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "CancelOperationRequest",
+}) as any as S.Schema<CancelOperationRequest>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -72,24 +74,35 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://datastream.googleapis.com/"})),
-).annotate({ identifier: "CancelProjectsLocationsOperationsRequest" }) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:cancel",
+        baseUrl: "https://datastream.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CancelProjectsLocationsOperationsRequest",
+}) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 /** Srv connection format. */
 export interface SrvConnectionFormat {}
 export const SrvConnectionFormat = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "SrvConnectionFormat" }) as any as S.Schema<SrvConnectionFormat>;
+  S.Struct({}),
+).annotate({
+  identifier: "SrvConnectionFormat",
+}) as any as S.Schema<SrvConnectionFormat>;
 
 /** A HostAddress represents a transport end point, which is the combination of an IP address or hostname and a port number. */
 export interface HostAddress {
@@ -99,17 +112,22 @@ export interface HostAddress {
   port?: number;
 }
 export const HostAddress = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "hostname": S.optional(S.String),
-  "port": S.optional(S.Number),
-}),
+  S.Struct({
+    hostname: S.optional(S.String),
+    port: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "HostAddress" }) as any as S.Schema<HostAddress>;
 
 export type HostAddressList = ReadonlyArray<HostAddress>;
-export const HostAddressList = /*@__PURE__*/ S.Array(HostAddress) as any as S.Schema<HostAddressList>;
+export const HostAddressList = /*@__PURE__*/ S.Array(
+  HostAddress,
+) as any as S.Schema<HostAddressList>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
 /** Standard connection format. */
 export interface StandardConnectionFormat {
@@ -117,10 +135,12 @@ export interface StandardConnectionFormat {
   directConnection?: boolean;
 }
 export const StandardConnectionFormat = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "directConnection": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "StandardConnectionFormat" }) as any as S.Schema<StandardConnectionFormat>;
+  S.Struct({
+    directConnection: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "StandardConnectionFormat",
+}) as any as S.Schema<StandardConnectionFormat>;
 
 /** MongoDB SSL configuration information. */
 export interface MongodbSslConfig {
@@ -140,16 +160,18 @@ export interface MongodbSslConfig {
   clientKeySet?: boolean;
 }
 export const MongodbSslConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "clientCertificateSet": S.optional(S.Boolean),
-  "secretManagerStoredClientKey": S.optional(S.String),
-  "caCertificate": S.optional(S.String),
-  "caCertificateSet": S.optional(S.Boolean),
-  "clientKey": S.optional(S.String),
-  "clientCertificate": S.optional(S.String),
-  "clientKeySet": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "MongodbSslConfig" }) as any as S.Schema<MongodbSslConfig>;
+  S.Struct({
+    clientCertificateSet: S.optional(S.Boolean),
+    secretManagerStoredClientKey: S.optional(S.String),
+    caCertificate: S.optional(S.String),
+    caCertificateSet: S.optional(S.Boolean),
+    clientKey: S.optional(S.String),
+    clientCertificate: S.optional(S.String),
+    clientKeySet: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "MongodbSslConfig",
+}) as any as S.Schema<MongodbSslConfig>;
 
 /** Profile for connecting to a MongoDB source. */
 export interface MongodbProfile {
@@ -173,17 +195,17 @@ export interface MongodbProfile {
   sslConfig?: MongodbSslConfig;
 }
 export const MongodbProfile = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "password": S.optional(S.String),
-  "srvConnectionFormat": S.optional(SrvConnectionFormat),
-  "hostAddresses": S.optional(HostAddressList),
-  "replicaSet": S.optional(S.String),
-  "secretManagerStoredPassword": S.optional(S.String),
-  "additionalOptions": S.optional(StringMap),
-  "username": S.optional(S.String),
-  "standardConnectionFormat": S.optional(StandardConnectionFormat),
-  "sslConfig": S.optional(MongodbSslConfig),
-}),
+  S.Struct({
+    password: S.optional(S.String),
+    srvConnectionFormat: S.optional(SrvConnectionFormat),
+    hostAddresses: S.optional(HostAddressList),
+    replicaSet: S.optional(S.String),
+    secretManagerStoredPassword: S.optional(S.String),
+    additionalOptions: S.optional(StringMap),
+    username: S.optional(S.String),
+    standardConnectionFormat: S.optional(StandardConnectionFormat),
+    sslConfig: S.optional(MongodbSslConfig),
+  }),
 ).annotate({ identifier: "MongodbProfile" }) as any as S.Schema<MongodbProfile>;
 
 /** Profile for connecting to a Spanner source. */
@@ -194,10 +216,10 @@ export interface SpannerProfile {
   database?: string;
 }
 export const SpannerProfile = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "host": S.optional(S.String),
-  "database": S.optional(S.String),
-}),
+  S.Struct({
+    host: S.optional(S.String),
+    database: S.optional(S.String),
+  }),
 ).annotate({ identifier: "SpannerProfile" }) as any as S.Schema<SpannerProfile>;
 
 /** MySQL SSL configuration information. */
@@ -216,14 +238,14 @@ export interface MysqlSslConfig {
   clientCertificateSet?: boolean;
 }
 export const MysqlSslConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "clientKey": S.optional(S.String),
-  "clientCertificate": S.optional(S.String),
-  "clientKeySet": S.optional(S.Boolean),
-  "caCertificate": S.optional(S.String),
-  "caCertificateSet": S.optional(S.Boolean),
-  "clientCertificateSet": S.optional(S.Boolean),
-}),
+  S.Struct({
+    clientKey: S.optional(S.String),
+    clientCertificate: S.optional(S.String),
+    clientKeySet: S.optional(S.Boolean),
+    caCertificate: S.optional(S.String),
+    caCertificateSet: S.optional(S.Boolean),
+    clientCertificateSet: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "MysqlSslConfig" }) as any as S.Schema<MysqlSslConfig>;
 
 /** Profile for connecting to a MySQL source. */
@@ -242,14 +264,14 @@ export interface MysqlProfile {
   password?: string;
 }
 export const MysqlProfile = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "hostname": S.optional(S.String),
-  "sslConfig": S.optional(MysqlSslConfig),
-  "port": S.optional(S.Number),
-  "username": S.optional(S.String),
-  "secretManagerStoredPassword": S.optional(S.String),
-  "password": S.optional(S.String),
-}),
+  S.Struct({
+    hostname: S.optional(S.String),
+    sslConfig: S.optional(MysqlSslConfig),
+    port: S.optional(S.Number),
+    username: S.optional(S.String),
+    secretManagerStoredPassword: S.optional(S.String),
+    password: S.optional(S.String),
+  }),
 ).annotate({ identifier: "MysqlProfile" }) as any as S.Schema<MysqlProfile>;
 
 /** OAuth2 Client Credentials. */
@@ -262,12 +284,14 @@ export interface Oauth2ClientCredentials {
   clientId?: string;
 }
 export const Oauth2ClientCredentials = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "clientSecret": S.optional(S.String),
-  "secretManagerStoredClientSecret": S.optional(S.String),
-  "clientId": S.optional(S.String),
-}),
-).annotate({ identifier: "Oauth2ClientCredentials" }) as any as S.Schema<Oauth2ClientCredentials>;
+  S.Struct({
+    clientSecret: S.optional(S.String),
+    secretManagerStoredClientSecret: S.optional(S.String),
+    clientId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "Oauth2ClientCredentials",
+}) as any as S.Schema<Oauth2ClientCredentials>;
 
 /** Deprecated: Salesforce is retiring Username-Password authentication. Use `Oauth2ClientCredentials` instead. */
 export interface UserCredentials {
@@ -283,14 +307,16 @@ export interface UserCredentials {
   securityToken?: string;
 }
 export const UserCredentials = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "secretManagerStoredPassword": S.optional(S.String),
-  "username": S.optional(S.String),
-  "password": S.optional(S.String),
-  "secretManagerStoredSecurityToken": S.optional(S.String),
-  "securityToken": S.optional(S.String),
-}),
-).annotate({ identifier: "UserCredentials" }) as any as S.Schema<UserCredentials>;
+  S.Struct({
+    secretManagerStoredPassword: S.optional(S.String),
+    username: S.optional(S.String),
+    password: S.optional(S.String),
+    secretManagerStoredSecurityToken: S.optional(S.String),
+    securityToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UserCredentials",
+}) as any as S.Schema<UserCredentials>;
 
 /** Profile for connecting to a Salesforce source. */
 export interface SalesforceProfile {
@@ -302,12 +328,14 @@ export interface SalesforceProfile {
   userCredentials?: UserCredentials;
 }
 export const SalesforceProfile = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "domain": S.optional(S.String),
-  "oauth2ClientCredentials": S.optional(Oauth2ClientCredentials),
-  "userCredentials": S.optional(UserCredentials),
-}),
-).annotate({ identifier: "SalesforceProfile" }) as any as S.Schema<SalesforceProfile>;
+  S.Struct({
+    domain: S.optional(S.String),
+    oauth2ClientCredentials: S.optional(Oauth2ClientCredentials),
+    userCredentials: S.optional(UserCredentials),
+  }),
+).annotate({
+  identifier: "SalesforceProfile",
+}) as any as S.Schema<SalesforceProfile>;
 
 /** Message represents the option where Datastream will enforce the encryption and authenticate the server identity as well as the client identity. ca_certificate, client_certificate and client_key must be set if user selects this option. */
 export interface ServerAndClientVerification {
@@ -321,13 +349,15 @@ export interface ServerAndClientVerification {
   caCertificate?: string;
 }
 export const ServerAndClientVerification = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "clientCertificate": S.optional(S.String),
-  "clientKey": S.optional(S.String),
-  "serverCertificateHostname": S.optional(S.String),
-  "caCertificate": S.optional(S.String),
-}),
-).annotate({ identifier: "ServerAndClientVerification" }) as any as S.Schema<ServerAndClientVerification>;
+  S.Struct({
+    clientCertificate: S.optional(S.String),
+    clientKey: S.optional(S.String),
+    serverCertificateHostname: S.optional(S.String),
+    caCertificate: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ServerAndClientVerification",
+}) as any as S.Schema<ServerAndClientVerification>;
 
 /** Message represents the option where Datastream will enforce the encryption and authenticate the server identity. ca_certificate must be set if user selects this option. */
 export interface ServerVerification {
@@ -337,11 +367,13 @@ export interface ServerVerification {
   caCertificate?: string;
 }
 export const ServerVerification = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "serverCertificateHostname": S.optional(S.String),
-  "caCertificate": S.optional(S.String),
-}),
-).annotate({ identifier: "ServerVerification" }) as any as S.Schema<ServerVerification>;
+  S.Struct({
+    serverCertificateHostname: S.optional(S.String),
+    caCertificate: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ServerVerification",
+}) as any as S.Schema<ServerVerification>;
 
 /** PostgreSQL SSL configuration information. */
 export interface PostgresqlSslConfig {
@@ -351,11 +383,13 @@ export interface PostgresqlSslConfig {
   serverVerification?: ServerVerification;
 }
 export const PostgresqlSslConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "serverAndClientVerification": S.optional(ServerAndClientVerification),
-  "serverVerification": S.optional(ServerVerification),
-}),
-).annotate({ identifier: "PostgresqlSslConfig" }) as any as S.Schema<PostgresqlSslConfig>;
+  S.Struct({
+    serverAndClientVerification: S.optional(ServerAndClientVerification),
+    serverVerification: S.optional(ServerVerification),
+  }),
+).annotate({
+  identifier: "PostgresqlSslConfig",
+}) as any as S.Schema<PostgresqlSslConfig>;
 
 /** Profile for connecting to a PostgreSQL source. */
 export interface PostgresqlProfile {
@@ -375,16 +409,18 @@ export interface PostgresqlProfile {
   secretManagerStoredPassword?: string;
 }
 export const PostgresqlProfile = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "database": S.optional(S.String),
-  "password": S.optional(S.String),
-  "hostname": S.optional(S.String),
-  "sslConfig": S.optional(PostgresqlSslConfig),
-  "port": S.optional(S.Number),
-  "username": S.optional(S.String),
-  "secretManagerStoredPassword": S.optional(S.String),
-}),
-).annotate({ identifier: "PostgresqlProfile" }) as any as S.Schema<PostgresqlProfile>;
+  S.Struct({
+    database: S.optional(S.String),
+    password: S.optional(S.String),
+    hostname: S.optional(S.String),
+    sslConfig: S.optional(PostgresqlSslConfig),
+    port: S.optional(S.Number),
+    username: S.optional(S.String),
+    secretManagerStoredPassword: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PostgresqlProfile",
+}) as any as S.Schema<PostgresqlProfile>;
 
 /** Profile for connecting to a Cloud Storage destination. */
 export interface GcsProfile {
@@ -394,10 +430,10 @@ export interface GcsProfile {
   bucket?: string;
 }
 export const GcsProfile = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "rootPath": S.optional(S.String),
-  "bucket": S.optional(S.String),
-}),
+  S.Struct({
+    rootPath: S.optional(S.String),
+    bucket: S.optional(S.String),
+  }),
 ).annotate({ identifier: "GcsProfile" }) as any as S.Schema<GcsProfile>;
 
 /** A confidential piece of information where the actual value is either directly specified in the message as a raw string or stored in GCP secret manager. */
@@ -408,10 +444,10 @@ export interface Secret {
   secretVersion?: string;
 }
 export const Secret = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "rawValue": S.optional(S.String),
-  "secretVersion": S.optional(S.String),
-}),
+  S.Struct({
+    rawValue: S.optional(S.String),
+    secretVersion: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Secret" }) as any as S.Schema<Secret>;
 
 /** OAuth Client Credentials. */
@@ -422,11 +458,13 @@ export interface OauthClientCredentials {
   clientId?: string;
 }
 export const OauthClientCredentials = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "clientSecret": S.optional(Secret),
-  "clientId": S.optional(S.String),
-}),
-).annotate({ identifier: "OauthClientCredentials" }) as any as S.Schema<OauthClientCredentials>;
+  S.Struct({
+    clientSecret: S.optional(Secret),
+    clientId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OauthClientCredentials",
+}) as any as S.Schema<OauthClientCredentials>;
 
 /** Profile for connecting to a Salesforce Marketing Cloud source. */
 export interface SalesforceMarketingCloudProfile {
@@ -436,23 +474,29 @@ export interface SalesforceMarketingCloudProfile {
   oauthClientCredentials?: OauthClientCredentials;
 }
 export const SalesforceMarketingCloudProfile = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "subdomain": S.optional(S.String),
-  "oauthClientCredentials": S.optional(OauthClientCredentials),
-}),
-).annotate({ identifier: "SalesforceMarketingCloudProfile" }) as any as S.Schema<SalesforceMarketingCloudProfile>;
+  S.Struct({
+    subdomain: S.optional(S.String),
+    oauthClientCredentials: S.optional(OauthClientCredentials),
+  }),
+).annotate({
+  identifier: "SalesforceMarketingCloudProfile",
+}) as any as S.Schema<SalesforceMarketingCloudProfile>;
 
 /** Profile for connecting to a BigQuery destination. */
 export interface BigQueryProfile {}
 export const BigQueryProfile = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "BigQueryProfile" }) as any as S.Schema<BigQueryProfile>;
+  S.Struct({}),
+).annotate({
+  identifier: "BigQueryProfile",
+}) as any as S.Schema<BigQueryProfile>;
 
 /** Message to represent the option where Datastream will enforce encryption without authenticating server identity. Server certificates will be trusted by default. */
 export interface BasicEncryption {}
 export const BasicEncryption = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "BasicEncryption" }) as any as S.Schema<BasicEncryption>;
+  S.Struct({}),
+).annotate({
+  identifier: "BasicEncryption",
+}) as any as S.Schema<BasicEncryption>;
 
 /** Message to represent the option where Datastream will enforce encryption and authenticate server identity. ca_certificate must be set if user selects this option. */
 export interface EncryptionAndServerValidation {
@@ -462,17 +506,21 @@ export interface EncryptionAndServerValidation {
   serverCertificateHostname?: string;
 }
 export const EncryptionAndServerValidation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "caCertificate": S.optional(S.String),
-  "serverCertificateHostname": S.optional(S.String),
-}),
-).annotate({ identifier: "EncryptionAndServerValidation" }) as any as S.Schema<EncryptionAndServerValidation>;
+  S.Struct({
+    caCertificate: S.optional(S.String),
+    serverCertificateHostname: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EncryptionAndServerValidation",
+}) as any as S.Schema<EncryptionAndServerValidation>;
 
 /** Message to represent the option where encryption is not enforced. An empty message right now to allow future extensibility. */
 export interface EncryptionNotEnforced {}
 export const EncryptionNotEnforced = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "EncryptionNotEnforced" }) as any as S.Schema<EncryptionNotEnforced>;
+  S.Struct({}),
+).annotate({
+  identifier: "EncryptionNotEnforced",
+}) as any as S.Schema<EncryptionNotEnforced>;
 
 /** SQL Server SSL configuration information. */
 export interface SqlServerSslConfig {
@@ -484,12 +532,14 @@ export interface SqlServerSslConfig {
   encryptionNotEnforced?: EncryptionNotEnforced;
 }
 export const SqlServerSslConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "basicEncryption": S.optional(BasicEncryption),
-  "encryptionAndServerValidation": S.optional(EncryptionAndServerValidation),
-  "encryptionNotEnforced": S.optional(EncryptionNotEnforced),
-}),
-).annotate({ identifier: "SqlServerSslConfig" }) as any as S.Schema<SqlServerSslConfig>;
+  S.Struct({
+    basicEncryption: S.optional(BasicEncryption),
+    encryptionAndServerValidation: S.optional(EncryptionAndServerValidation),
+    encryptionNotEnforced: S.optional(EncryptionNotEnforced),
+  }),
+).annotate({
+  identifier: "SqlServerSslConfig",
+}) as any as S.Schema<SqlServerSslConfig>;
 
 /** Profile for connecting to a SQLServer source. */
 export interface SqlServerProfile {
@@ -509,16 +559,18 @@ export interface SqlServerProfile {
   database?: string;
 }
 export const SqlServerProfile = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "secretManagerStoredPassword": S.optional(S.String),
-  "port": S.optional(S.Number),
-  "username": S.optional(S.String),
-  "hostname": S.optional(S.String),
-  "sslConfig": S.optional(SqlServerSslConfig),
-  "password": S.optional(S.String),
-  "database": S.optional(S.String),
-}),
-).annotate({ identifier: "SqlServerProfile" }) as any as S.Schema<SqlServerProfile>;
+  S.Struct({
+    secretManagerStoredPassword: S.optional(S.String),
+    port: S.optional(S.Number),
+    username: S.optional(S.String),
+    hostname: S.optional(S.String),
+    sslConfig: S.optional(SqlServerSslConfig),
+    password: S.optional(S.String),
+    database: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SqlServerProfile",
+}) as any as S.Schema<SqlServerProfile>;
 
 /** User-password credentials. */
 export interface UserPasswordCredentials {
@@ -528,11 +580,13 @@ export interface UserPasswordCredentials {
   password?: Secret;
 }
 export const UserPasswordCredentials = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "username": S.optional(S.String),
-  "password": S.optional(Secret),
-}),
-).annotate({ identifier: "UserPasswordCredentials" }) as any as S.Schema<UserPasswordCredentials>;
+  S.Struct({
+    username: S.optional(S.String),
+    password: S.optional(Secret),
+  }),
+).annotate({
+  identifier: "UserPasswordCredentials",
+}) as any as S.Schema<UserPasswordCredentials>;
 
 /** Profile for connecting to a ServiceNow source. */
 export interface ServiceNowProfile {
@@ -544,12 +598,14 @@ export interface ServiceNowProfile {
   oauthClientCredentials?: OauthClientCredentials;
 }
 export const ServiceNowProfile = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "instance": S.optional(S.String),
-  "userPasswordCredentials": S.optional(UserPasswordCredentials),
-  "oauthClientCredentials": S.optional(OauthClientCredentials),
-}),
-).annotate({ identifier: "ServiceNowProfile" }) as any as S.Schema<ServiceNowProfile>;
+  S.Struct({
+    instance: S.optional(S.String),
+    userPasswordCredentials: S.optional(UserPasswordCredentials),
+    oauthClientCredentials: S.optional(OauthClientCredentials),
+  }),
+).annotate({
+  identifier: "ServiceNowProfile",
+}) as any as S.Schema<ServiceNowProfile>;
 
 /** Oracle SSL configuration information. */
 export interface OracleSslConfig {
@@ -561,12 +617,14 @@ export interface OracleSslConfig {
   serverCertificateDistinguishedName?: string;
 }
 export const OracleSslConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "caCertificate": S.optional(S.String),
-  "caCertificateSet": S.optional(S.Boolean),
-  "serverCertificateDistinguishedName": S.optional(S.String),
-}),
-).annotate({ identifier: "OracleSslConfig" }) as any as S.Schema<OracleSslConfig>;
+  S.Struct({
+    caCertificate: S.optional(S.String),
+    caCertificateSet: S.optional(S.Boolean),
+    serverCertificateDistinguishedName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OracleSslConfig",
+}) as any as S.Schema<OracleSslConfig>;
 
 /** Configuration for Oracle Automatic Storage Management (ASM) connection. */
 export interface OracleAsmConfig {
@@ -588,17 +646,19 @@ export interface OracleAsmConfig {
   oracleSslConfig?: OracleSslConfig;
 }
 export const OracleAsmConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "secretManagerStoredPassword": S.optional(S.String),
-  "port": S.optional(S.Number),
-  "username": S.optional(S.String),
-  "connectionAttributes": S.optional(StringMap),
-  "hostname": S.optional(S.String),
-  "password": S.optional(S.String),
-  "asmService": S.optional(S.String),
-  "oracleSslConfig": S.optional(OracleSslConfig),
-}),
-).annotate({ identifier: "OracleAsmConfig" }) as any as S.Schema<OracleAsmConfig>;
+  S.Struct({
+    secretManagerStoredPassword: S.optional(S.String),
+    port: S.optional(S.Number),
+    username: S.optional(S.String),
+    connectionAttributes: S.optional(StringMap),
+    hostname: S.optional(S.String),
+    password: S.optional(S.String),
+    asmService: S.optional(S.String),
+    oracleSslConfig: S.optional(OracleSslConfig),
+  }),
+).annotate({
+  identifier: "OracleAsmConfig",
+}) as any as S.Schema<OracleAsmConfig>;
 
 /** Profile for connecting to an Oracle source. */
 export interface OracleProfile {
@@ -622,24 +682,26 @@ export interface OracleProfile {
   username?: string;
 }
 export const OracleProfile = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "password": S.optional(S.String),
-  "oracleSslConfig": S.optional(OracleSslConfig),
-  "databaseService": S.optional(S.String),
-  "oracleAsmConfig": S.optional(OracleAsmConfig),
-  "hostname": S.optional(S.String),
-  "connectionAttributes": S.optional(StringMap),
-  "secretManagerStoredPassword": S.optional(S.String),
-  "port": S.optional(S.Number),
-  "username": S.optional(S.String),
-}),
+  S.Struct({
+    password: S.optional(S.String),
+    oracleSslConfig: S.optional(OracleSslConfig),
+    databaseService: S.optional(S.String),
+    oracleAsmConfig: S.optional(OracleAsmConfig),
+    hostname: S.optional(S.String),
+    connectionAttributes: S.optional(StringMap),
+    secretManagerStoredPassword: S.optional(S.String),
+    port: S.optional(S.Number),
+    username: S.optional(S.String),
+  }),
 ).annotate({ identifier: "OracleProfile" }) as any as S.Schema<OracleProfile>;
 
 /** Static IP address connectivity. Used when the source database is configured to allow incoming connections from the Datastream public IP addresses for the region specified in the connection profile. */
 export interface StaticServiceIpConnectivity {}
 export const StaticServiceIpConnectivity = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "StaticServiceIpConnectivity" }) as any as S.Schema<StaticServiceIpConnectivity>;
+  S.Struct({}),
+).annotate({
+  identifier: "StaticServiceIpConnectivity",
+}) as any as S.Schema<StaticServiceIpConnectivity>;
 
 /** Profile for connecting to a Dataverse source. */
 export interface DataverseProfile {
@@ -651,12 +713,14 @@ export interface DataverseProfile {
   oauthClientCredentials?: OauthClientCredentials;
 }
 export const DataverseProfile = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "tenantId": S.optional(S.String),
-  "environmentUrl": S.optional(S.String),
-  "oauthClientCredentials": S.optional(OauthClientCredentials),
-}),
-).annotate({ identifier: "DataverseProfile" }) as any as S.Schema<DataverseProfile>;
+  S.Struct({
+    tenantId: S.optional(S.String),
+    environmentUrl: S.optional(S.String),
+    oauthClientCredentials: S.optional(OauthClientCredentials),
+  }),
+).annotate({
+  identifier: "DataverseProfile",
+}) as any as S.Schema<DataverseProfile>;
 
 /** Private Connectivity */
 export interface PrivateConnectivity {
@@ -664,10 +728,12 @@ export interface PrivateConnectivity {
   privateConnection?: string;
 }
 export const PrivateConnectivity = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "privateConnection": S.optional(S.String),
-}),
-).annotate({ identifier: "PrivateConnectivity" }) as any as S.Schema<PrivateConnectivity>;
+  S.Struct({
+    privateConnection: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PrivateConnectivity",
+}) as any as S.Schema<PrivateConnectivity>;
 
 /** Forward SSH Tunnel connectivity. */
 export interface ForwardSshTunnelConnectivity {
@@ -683,14 +749,16 @@ export interface ForwardSshTunnelConnectivity {
   port?: number;
 }
 export const ForwardSshTunnelConnectivity = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "privateKey": S.optional(S.String),
-  "password": S.optional(S.String),
-  "hostname": S.optional(S.String),
-  "username": S.optional(S.String),
-  "port": S.optional(S.Number),
-}),
-).annotate({ identifier: "ForwardSshTunnelConnectivity" }) as any as S.Schema<ForwardSshTunnelConnectivity>;
+  S.Struct({
+    privateKey: S.optional(S.String),
+    password: S.optional(S.String),
+    hostname: S.optional(S.String),
+    username: S.optional(S.String),
+    port: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ForwardSshTunnelConnectivity",
+}) as any as S.Schema<ForwardSshTunnelConnectivity>;
 
 /** A set of reusable connection configurations to be used as a source or destination for a stream. */
 export interface ConnectionProfile {
@@ -740,31 +808,35 @@ export interface ConnectionProfile {
   forwardSshConnectivity?: ForwardSshTunnelConnectivity;
 }
 export const ConnectionProfile = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "mongodbProfile": S.optional(MongodbProfile),
-  "spannerProfile": S.optional(SpannerProfile),
-  "mysqlProfile": S.optional(MysqlProfile),
-  "salesforceProfile": S.optional(SalesforceProfile),
-  "postgresqlProfile": S.optional(PostgresqlProfile),
-  "labels": S.optional(StringMap),
-  "gcsProfile": S.optional(GcsProfile),
-  "salesforceMarketingCloudProfile": S.optional(SalesforceMarketingCloudProfile),
-  "updateTime": S.optional(S.String),
-  "bigqueryProfile": S.optional(BigQueryProfile),
-  "sqlServerProfile": S.optional(SqlServerProfile),
-  "displayName": S.optional(S.String),
-  "satisfiesPzi": S.optional(S.Boolean),
-  "serviceNowProfile": S.optional(ServiceNowProfile),
-  "createTime": S.optional(S.String),
-  "oracleProfile": S.optional(OracleProfile),
-  "staticServiceIpConnectivity": S.optional(StaticServiceIpConnectivity),
-  "dataverseProfile": S.optional(DataverseProfile),
-  "privateConnectivity": S.optional(PrivateConnectivity),
-  "satisfiesPzs": S.optional(S.Boolean),
-  "name": S.optional(S.String),
-  "forwardSshConnectivity": S.optional(ForwardSshTunnelConnectivity),
-}),
-).annotate({ identifier: "ConnectionProfile" }) as any as S.Schema<ConnectionProfile>;
+  S.Struct({
+    mongodbProfile: S.optional(MongodbProfile),
+    spannerProfile: S.optional(SpannerProfile),
+    mysqlProfile: S.optional(MysqlProfile),
+    salesforceProfile: S.optional(SalesforceProfile),
+    postgresqlProfile: S.optional(PostgresqlProfile),
+    labels: S.optional(StringMap),
+    gcsProfile: S.optional(GcsProfile),
+    salesforceMarketingCloudProfile: S.optional(
+      SalesforceMarketingCloudProfile,
+    ),
+    updateTime: S.optional(S.String),
+    bigqueryProfile: S.optional(BigQueryProfile),
+    sqlServerProfile: S.optional(SqlServerProfile),
+    displayName: S.optional(S.String),
+    satisfiesPzi: S.optional(S.Boolean),
+    serviceNowProfile: S.optional(ServiceNowProfile),
+    createTime: S.optional(S.String),
+    oracleProfile: S.optional(OracleProfile),
+    staticServiceIpConnectivity: S.optional(StaticServiceIpConnectivity),
+    dataverseProfile: S.optional(DataverseProfile),
+    privateConnectivity: S.optional(PrivateConnectivity),
+    satisfiesPzs: S.optional(S.Boolean),
+    name: S.optional(S.String),
+    forwardSshConnectivity: S.optional(ForwardSshTunnelConnectivity),
+  }),
+).annotate({
+  identifier: "ConnectionProfile",
+}) as any as S.Schema<ConnectionProfile>;
 
 export interface CreateProjectsLocationsConnectionProfilesRequest {
   /** Required. The connection profile identifier. */
@@ -780,22 +852,36 @@ export interface CreateProjectsLocationsConnectionProfilesRequest {
   /** Request body */
   body?: ConnectionProfile;
 }
-export const CreateProjectsLocationsConnectionProfilesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "connectionProfileId": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "force": S.optional(S.Boolean.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(ConnectionProfile.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/connectionProfiles","baseUrl":"https://datastream.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsConnectionProfilesRequest" }) as any as S.Schema<CreateProjectsLocationsConnectionProfilesRequest>;
+export const CreateProjectsLocationsConnectionProfilesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      connectionProfileId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      force: S.optional(S.Boolean.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(ConnectionProfile.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/connectionProfiles",
+        baseUrl: "https://datastream.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsConnectionProfilesRequest",
+  }) as any as S.Schema<CreateProjectsLocationsConnectionProfilesRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -807,11 +893,11 @@ export interface Status {
   details?: DocumentMapList;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(S.Number),
-  "message": S.optional(S.String),
-  "details": S.optional(DocumentMapList),
-}),
+  S.Struct({
+    code: S.optional(S.Number),
+    message: S.optional(S.String),
+    details: S.optional(DocumentMapList),
+  }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -828,16 +914,22 @@ export interface Operation {
   error?: Status;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "response": S.optional(DocumentMap),
-  "done": S.optional(S.Boolean),
-  "name": S.optional(S.String),
-  "metadata": S.optional(DocumentMap),
-  "error": S.optional(Status),
-}),
+  S.Struct({
+    response: S.optional(DocumentMap),
+    done: S.optional(S.Boolean),
+    name: S.optional(S.String),
+    metadata: S.optional(DocumentMap),
+    error: S.optional(Status),
+  }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
-export type PrivateConnectionStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "CREATED" | "FAILED" | "DELETING" | "FAILED_TO_DELETE";
+export type PrivateConnectionStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "CREATING"
+  | "CREATED"
+  | "FAILED"
+  | "DELETING"
+  | "FAILED_TO_DELETE";
 export const PrivateConnectionStateEnum = /*@__PURE__*/ S.String;
 
 /** The VPC Peering configuration is used to create VPC peering between Datastream and the consumer's VPC. */
@@ -848,11 +940,13 @@ export interface VpcPeeringConfig {
   subnet?: string;
 }
 export const VpcPeeringConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "vpc": S.optional(S.String),
-  "subnet": S.optional(S.String),
-}),
-).annotate({ identifier: "VpcPeeringConfig" }) as any as S.Schema<VpcPeeringConfig>;
+  S.Struct({
+    vpc: S.optional(S.String),
+    subnet: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VpcPeeringConfig",
+}) as any as S.Schema<VpcPeeringConfig>;
 
 /** Represent a user-facing Error. */
 export interface Datastream_Error {
@@ -868,14 +962,16 @@ export interface Datastream_Error {
   message?: string;
 }
 export const Datastream_Error = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "details": S.optional(StringMap),
-  "errorTime": S.optional(S.String),
-  "reason": S.optional(S.String),
-  "errorUuid": S.optional(S.String),
-  "message": S.optional(S.String),
-}),
-).annotate({ identifier: "Datastream_Error" }) as any as S.Schema<Datastream_Error>;
+  S.Struct({
+    details: S.optional(StringMap),
+    errorTime: S.optional(S.String),
+    reason: S.optional(S.String),
+    errorUuid: S.optional(S.String),
+    message: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "Datastream_Error",
+}) as any as S.Schema<Datastream_Error>;
 
 /** The PSC Interface configuration is used to create PSC Interface between Datastream and the consumer's PSC. */
 export interface PscInterfaceConfig {
@@ -883,10 +979,12 @@ export interface PscInterfaceConfig {
   networkAttachment?: string;
 }
 export const PscInterfaceConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "networkAttachment": S.optional(S.String),
-}),
-).annotate({ identifier: "PscInterfaceConfig" }) as any as S.Schema<PscInterfaceConfig>;
+  S.Struct({
+    networkAttachment: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PscInterfaceConfig",
+}) as any as S.Schema<PscInterfaceConfig>;
 
 /** The PrivateConnection resource is used to establish private connectivity between Datastream and a customer's network. */
 export interface PrivateConnection {
@@ -914,20 +1012,22 @@ export interface PrivateConnection {
   pscInterfaceConfig?: PscInterfaceConfig;
 }
 export const PrivateConnection = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "satisfiesPzi": S.optional(S.Boolean),
-  "displayName": S.optional(S.String),
-  "state": S.optional(PrivateConnectionStateEnum),
-  "vpcPeeringConfig": S.optional(VpcPeeringConfig),
-  "updateTime": S.optional(S.String),
-  "error": S.optional(Datastream_Error),
-  "name": S.optional(S.String),
-  "satisfiesPzs": S.optional(S.Boolean),
-  "labels": S.optional(StringMap),
-  "createTime": S.optional(S.String),
-  "pscInterfaceConfig": S.optional(PscInterfaceConfig),
-}),
-).annotate({ identifier: "PrivateConnection" }) as any as S.Schema<PrivateConnection>;
+  S.Struct({
+    satisfiesPzi: S.optional(S.Boolean),
+    displayName: S.optional(S.String),
+    state: S.optional(PrivateConnectionStateEnum),
+    vpcPeeringConfig: S.optional(VpcPeeringConfig),
+    updateTime: S.optional(S.String),
+    error: S.optional(Datastream_Error),
+    name: S.optional(S.String),
+    satisfiesPzs: S.optional(S.Boolean),
+    labels: S.optional(StringMap),
+    createTime: S.optional(S.String),
+    pscInterfaceConfig: S.optional(PscInterfaceConfig),
+  }),
+).annotate({
+  identifier: "PrivateConnection",
+}) as any as S.Schema<PrivateConnection>;
 
 export interface CreateProjectsLocationsPrivateConnectionsRequest {
   /** Required. The private connectivity identifier. */
@@ -943,16 +1043,25 @@ export interface CreateProjectsLocationsPrivateConnectionsRequest {
   /** Request body */
   body?: PrivateConnection;
 }
-export const CreateProjectsLocationsPrivateConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "privateConnectionId": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "force": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(PrivateConnection.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/privateConnections","baseUrl":"https://datastream.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsPrivateConnectionsRequest" }) as any as S.Schema<CreateProjectsLocationsPrivateConnectionsRequest>;
+export const CreateProjectsLocationsPrivateConnectionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      privateConnectionId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      force: S.optional(S.Boolean.pipe(T.Query())),
+      body: S.optional(PrivateConnection.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/privateConnections",
+        baseUrl: "https://datastream.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsPrivateConnectionsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsPrivateConnectionsRequest>;
 
 /** The route resource is the child of the private connection resource, used for defining a route for a private connection. */
 export interface Route {
@@ -972,15 +1081,15 @@ export interface Route {
   displayName?: string;
 }
 export const Route = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateTime": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "destinationAddress": S.optional(S.String),
-  "destinationPort": S.optional(S.Number),
-  "name": S.optional(S.String),
-  "displayName": S.optional(S.String),
-}),
+  S.Struct({
+    updateTime: S.optional(S.String),
+    createTime: S.optional(S.String),
+    labels: S.optional(StringMap),
+    destinationAddress: S.optional(S.String),
+    destinationPort: S.optional(S.Number),
+    name: S.optional(S.String),
+    displayName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Route" }) as any as S.Schema<Route>;
 
 export interface CreateProjectsLocationsPrivateConnectionsRoutesRequest {
@@ -993,16 +1102,34 @@ export interface CreateProjectsLocationsPrivateConnectionsRoutesRequest {
   /** Request body */
   body?: Route;
 }
-export const CreateProjectsLocationsPrivateConnectionsRoutesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "routeId": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Route.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/routes","baseUrl":"https://datastream.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsPrivateConnectionsRoutesRequest" }) as any as S.Schema<CreateProjectsLocationsPrivateConnectionsRoutesRequest>;
+export const CreateProjectsLocationsPrivateConnectionsRoutesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      routeId: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Route.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/routes",
+        baseUrl: "https://datastream.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsPrivateConnectionsRoutesRequest",
+  }) as any as S.Schema<CreateProjectsLocationsPrivateConnectionsRoutesRequest>;
 
-export type StreamStateEnum = "STATE_UNSPECIFIED" | "NOT_STARTED" | "RUNNING" | "PAUSED" | "MAINTENANCE" | "FAILED" | "FAILED_PERMANENTLY" | "STARTING" | "DRAINING";
+export type StreamStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "NOT_STARTED"
+  | "RUNNING"
+  | "PAUSED"
+  | "MAINTENANCE"
+  | "FAILED"
+  | "FAILED_PERMANENTLY"
+  | "STARTING"
+  | "DRAINING";
 export const StreamStateEnum = /*@__PURE__*/ S.String;
 
 /** PostgreSQL Column. */
@@ -1025,20 +1152,24 @@ export interface PostgresqlColumn {
   ordinalPosition?: number;
 }
 export const PostgresqlColumn = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "column": S.optional(S.String),
-  "precision": S.optional(S.Number),
-  "dataType": S.optional(S.String),
-  "primaryKey": S.optional(S.Boolean),
-  "nullable": S.optional(S.Boolean),
-  "length": S.optional(S.Number),
-  "scale": S.optional(S.Number),
-  "ordinalPosition": S.optional(S.Number),
-}),
-).annotate({ identifier: "PostgresqlColumn" }) as any as S.Schema<PostgresqlColumn>;
+  S.Struct({
+    column: S.optional(S.String),
+    precision: S.optional(S.Number),
+    dataType: S.optional(S.String),
+    primaryKey: S.optional(S.Boolean),
+    nullable: S.optional(S.Boolean),
+    length: S.optional(S.Number),
+    scale: S.optional(S.Number),
+    ordinalPosition: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "PostgresqlColumn",
+}) as any as S.Schema<PostgresqlColumn>;
 
 export type PostgresqlColumnList = ReadonlyArray<PostgresqlColumn>;
-export const PostgresqlColumnList = /*@__PURE__*/ S.Array(PostgresqlColumn) as any as S.Schema<PostgresqlColumnList>;
+export const PostgresqlColumnList = /*@__PURE__*/ S.Array(
+  PostgresqlColumn,
+) as any as S.Schema<PostgresqlColumnList>;
 
 /** PostgreSQL table. */
 export interface PostgresqlTable {
@@ -1048,14 +1179,18 @@ export interface PostgresqlTable {
   postgresqlColumns?: PostgresqlColumnList;
 }
 export const PostgresqlTable = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "table": S.optional(S.String),
-  "postgresqlColumns": S.optional(PostgresqlColumnList),
-}),
-).annotate({ identifier: "PostgresqlTable" }) as any as S.Schema<PostgresqlTable>;
+  S.Struct({
+    table: S.optional(S.String),
+    postgresqlColumns: S.optional(PostgresqlColumnList),
+  }),
+).annotate({
+  identifier: "PostgresqlTable",
+}) as any as S.Schema<PostgresqlTable>;
 
 export type PostgresqlTableList = ReadonlyArray<PostgresqlTable>;
-export const PostgresqlTableList = /*@__PURE__*/ S.Array(PostgresqlTable) as any as S.Schema<PostgresqlTableList>;
+export const PostgresqlTableList = /*@__PURE__*/ S.Array(
+  PostgresqlTable,
+) as any as S.Schema<PostgresqlTableList>;
 
 /** PostgreSQL schema. */
 export interface PostgresqlSchema {
@@ -1065,14 +1200,18 @@ export interface PostgresqlSchema {
   schema?: string;
 }
 export const PostgresqlSchema = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "postgresqlTables": S.optional(PostgresqlTableList),
-  "schema": S.optional(S.String),
-}),
-).annotate({ identifier: "PostgresqlSchema" }) as any as S.Schema<PostgresqlSchema>;
+  S.Struct({
+    postgresqlTables: S.optional(PostgresqlTableList),
+    schema: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PostgresqlSchema",
+}) as any as S.Schema<PostgresqlSchema>;
 
 export type PostgresqlSchemaList = ReadonlyArray<PostgresqlSchema>;
-export const PostgresqlSchemaList = /*@__PURE__*/ S.Array(PostgresqlSchema) as any as S.Schema<PostgresqlSchemaList>;
+export const PostgresqlSchemaList = /*@__PURE__*/ S.Array(
+  PostgresqlSchema,
+) as any as S.Schema<PostgresqlSchemaList>;
 
 /** PostgreSQL database structure. */
 export interface PostgresqlRdbms {
@@ -1080,10 +1219,12 @@ export interface PostgresqlRdbms {
   postgresqlSchemas?: PostgresqlSchemaList;
 }
 export const PostgresqlRdbms = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "postgresqlSchemas": S.optional(PostgresqlSchemaList),
-}),
-).annotate({ identifier: "PostgresqlRdbms" }) as any as S.Schema<PostgresqlRdbms>;
+  S.Struct({
+    postgresqlSchemas: S.optional(PostgresqlSchemaList),
+  }),
+).annotate({
+  identifier: "PostgresqlRdbms",
+}) as any as S.Schema<PostgresqlRdbms>;
 
 /** MongoDB Field. */
 export interface MongodbField {
@@ -1091,13 +1232,15 @@ export interface MongodbField {
   field?: string;
 }
 export const MongodbField = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "field": S.optional(S.String),
-}),
+  S.Struct({
+    field: S.optional(S.String),
+  }),
 ).annotate({ identifier: "MongodbField" }) as any as S.Schema<MongodbField>;
 
 export type MongodbFieldList = ReadonlyArray<MongodbField>;
-export const MongodbFieldList = /*@__PURE__*/ S.Array(MongodbField) as any as S.Schema<MongodbFieldList>;
+export const MongodbFieldList = /*@__PURE__*/ S.Array(
+  MongodbField,
+) as any as S.Schema<MongodbFieldList>;
 
 /** MongoDB Collection. */
 export interface MongodbCollection {
@@ -1107,14 +1250,18 @@ export interface MongodbCollection {
   collection?: string;
 }
 export const MongodbCollection = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fields": S.optional(MongodbFieldList),
-  "collection": S.optional(S.String),
-}),
-).annotate({ identifier: "MongodbCollection" }) as any as S.Schema<MongodbCollection>;
+  S.Struct({
+    fields: S.optional(MongodbFieldList),
+    collection: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MongodbCollection",
+}) as any as S.Schema<MongodbCollection>;
 
 export type MongodbCollectionList = ReadonlyArray<MongodbCollection>;
-export const MongodbCollectionList = /*@__PURE__*/ S.Array(MongodbCollection) as any as S.Schema<MongodbCollectionList>;
+export const MongodbCollectionList = /*@__PURE__*/ S.Array(
+  MongodbCollection,
+) as any as S.Schema<MongodbCollectionList>;
 
 /** MongoDB Database. */
 export interface MongodbDatabase {
@@ -1124,14 +1271,18 @@ export interface MongodbDatabase {
   collections?: MongodbCollectionList;
 }
 export const MongodbDatabase = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "database": S.optional(S.String),
-  "collections": S.optional(MongodbCollectionList),
-}),
-).annotate({ identifier: "MongodbDatabase" }) as any as S.Schema<MongodbDatabase>;
+  S.Struct({
+    database: S.optional(S.String),
+    collections: S.optional(MongodbCollectionList),
+  }),
+).annotate({
+  identifier: "MongodbDatabase",
+}) as any as S.Schema<MongodbDatabase>;
 
 export type MongodbDatabaseList = ReadonlyArray<MongodbDatabase>;
-export const MongodbDatabaseList = /*@__PURE__*/ S.Array(MongodbDatabase) as any as S.Schema<MongodbDatabaseList>;
+export const MongodbDatabaseList = /*@__PURE__*/ S.Array(
+  MongodbDatabase,
+) as any as S.Schema<MongodbDatabaseList>;
 
 /** MongoDB Cluster structure. */
 export interface MongodbCluster {
@@ -1139,9 +1290,9 @@ export interface MongodbCluster {
   databases?: MongodbDatabaseList;
 }
 export const MongodbCluster = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "databases": S.optional(MongodbDatabaseList),
-}),
+  S.Struct({
+    databases: S.optional(MongodbDatabaseList),
+  }),
 ).annotate({ identifier: "MongodbCluster" }) as any as S.Schema<MongodbCluster>;
 
 /** SQLServer Column. */
@@ -1164,20 +1315,24 @@ export interface SqlServerColumn {
   precision?: number;
 }
 export const SqlServerColumn = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "scale": S.optional(S.Number),
-  "ordinalPosition": S.optional(S.Number),
-  "length": S.optional(S.Number),
-  "dataType": S.optional(S.String),
-  "primaryKey": S.optional(S.Boolean),
-  "nullable": S.optional(S.Boolean),
-  "column": S.optional(S.String),
-  "precision": S.optional(S.Number),
-}),
-).annotate({ identifier: "SqlServerColumn" }) as any as S.Schema<SqlServerColumn>;
+  S.Struct({
+    scale: S.optional(S.Number),
+    ordinalPosition: S.optional(S.Number),
+    length: S.optional(S.Number),
+    dataType: S.optional(S.String),
+    primaryKey: S.optional(S.Boolean),
+    nullable: S.optional(S.Boolean),
+    column: S.optional(S.String),
+    precision: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "SqlServerColumn",
+}) as any as S.Schema<SqlServerColumn>;
 
 export type SqlServerColumnList = ReadonlyArray<SqlServerColumn>;
-export const SqlServerColumnList = /*@__PURE__*/ S.Array(SqlServerColumn) as any as S.Schema<SqlServerColumnList>;
+export const SqlServerColumnList = /*@__PURE__*/ S.Array(
+  SqlServerColumn,
+) as any as S.Schema<SqlServerColumnList>;
 
 /** SQLServer table. */
 export interface SqlServerTable {
@@ -1187,14 +1342,16 @@ export interface SqlServerTable {
   columns?: SqlServerColumnList;
 }
 export const SqlServerTable = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "table": S.optional(S.String),
-  "columns": S.optional(SqlServerColumnList),
-}),
+  S.Struct({
+    table: S.optional(S.String),
+    columns: S.optional(SqlServerColumnList),
+  }),
 ).annotate({ identifier: "SqlServerTable" }) as any as S.Schema<SqlServerTable>;
 
 export type SqlServerTableList = ReadonlyArray<SqlServerTable>;
-export const SqlServerTableList = /*@__PURE__*/ S.Array(SqlServerTable) as any as S.Schema<SqlServerTableList>;
+export const SqlServerTableList = /*@__PURE__*/ S.Array(
+  SqlServerTable,
+) as any as S.Schema<SqlServerTableList>;
 
 /** SQLServer schema. */
 export interface SqlServerSchema {
@@ -1204,14 +1361,18 @@ export interface SqlServerSchema {
   tables?: SqlServerTableList;
 }
 export const SqlServerSchema = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "schema": S.optional(S.String),
-  "tables": S.optional(SqlServerTableList),
-}),
-).annotate({ identifier: "SqlServerSchema" }) as any as S.Schema<SqlServerSchema>;
+  S.Struct({
+    schema: S.optional(S.String),
+    tables: S.optional(SqlServerTableList),
+  }),
+).annotate({
+  identifier: "SqlServerSchema",
+}) as any as S.Schema<SqlServerSchema>;
 
 export type SqlServerSchemaList = ReadonlyArray<SqlServerSchema>;
-export const SqlServerSchemaList = /*@__PURE__*/ S.Array(SqlServerSchema) as any as S.Schema<SqlServerSchemaList>;
+export const SqlServerSchemaList = /*@__PURE__*/ S.Array(
+  SqlServerSchema,
+) as any as S.Schema<SqlServerSchemaList>;
 
 /** SQLServer database structure. */
 export interface SqlServerRdbms {
@@ -1219,9 +1380,9 @@ export interface SqlServerRdbms {
   schemas?: SqlServerSchemaList;
 }
 export const SqlServerRdbms = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "schemas": S.optional(SqlServerSchemaList),
-}),
+  S.Struct({
+    schemas: S.optional(SqlServerSchemaList),
+  }),
 ).annotate({ identifier: "SqlServerRdbms" }) as any as S.Schema<SqlServerRdbms>;
 
 /** Salesforce field. */
@@ -1234,15 +1395,19 @@ export interface SalesforceField {
   nillable?: boolean;
 }
 export const SalesforceField = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dataType": S.optional(S.String),
-  "name": S.optional(S.String),
-  "nillable": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "SalesforceField" }) as any as S.Schema<SalesforceField>;
+  S.Struct({
+    dataType: S.optional(S.String),
+    name: S.optional(S.String),
+    nillable: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "SalesforceField",
+}) as any as S.Schema<SalesforceField>;
 
 export type SalesforceFieldList = ReadonlyArray<SalesforceField>;
-export const SalesforceFieldList = /*@__PURE__*/ S.Array(SalesforceField) as any as S.Schema<SalesforceFieldList>;
+export const SalesforceFieldList = /*@__PURE__*/ S.Array(
+  SalesforceField,
+) as any as S.Schema<SalesforceFieldList>;
 
 /** Salesforce object. */
 export interface SalesforceObject {
@@ -1252,14 +1417,18 @@ export interface SalesforceObject {
   objectName?: string;
 }
 export const SalesforceObject = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fields": S.optional(SalesforceFieldList),
-  "objectName": S.optional(S.String),
-}),
-).annotate({ identifier: "SalesforceObject" }) as any as S.Schema<SalesforceObject>;
+  S.Struct({
+    fields: S.optional(SalesforceFieldList),
+    objectName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SalesforceObject",
+}) as any as S.Schema<SalesforceObject>;
 
 export type SalesforceObjectList = ReadonlyArray<SalesforceObject>;
-export const SalesforceObjectList = /*@__PURE__*/ S.Array(SalesforceObject) as any as S.Schema<SalesforceObjectList>;
+export const SalesforceObjectList = /*@__PURE__*/ S.Array(
+  SalesforceObject,
+) as any as S.Schema<SalesforceObjectList>;
 
 /** Salesforce organization structure. */
 export interface SalesforceOrg {
@@ -1267,9 +1436,9 @@ export interface SalesforceOrg {
   objects?: SalesforceObjectList;
 }
 export const SalesforceOrg = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "objects": S.optional(SalesforceObjectList),
-}),
+  S.Struct({
+    objects: S.optional(SalesforceObjectList),
+  }),
 ).annotate({ identifier: "SalesforceOrg" }) as any as S.Schema<SalesforceOrg>;
 
 /** Source property. */
@@ -1282,15 +1451,17 @@ export interface SourceProperty {
   primaryKey?: boolean;
 }
 export const SourceProperty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "propertyName": S.optional(S.String),
-  "properties": S.optional(S.suspend(() => SourcePropertyList)),
-  "primaryKey": S.optional(S.Boolean),
-}),
+  S.Struct({
+    propertyName: S.optional(S.String),
+    properties: S.optional(S.suspend(() => SourcePropertyList)),
+    primaryKey: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "SourceProperty" }) as any as S.Schema<SourceProperty>;
 
 export type SourcePropertyList = ReadonlyArray<SourceProperty>;
-export const SourcePropertyList = /*@__PURE__*/ S.Array(SourceProperty) as any as S.Schema<SourcePropertyList>;
+export const SourcePropertyList = /*@__PURE__*/ S.Array(
+  SourceProperty,
+) as any as S.Schema<SourcePropertyList>;
 
 /** Source object. */
 export interface SourceObject {
@@ -1300,14 +1471,16 @@ export interface SourceObject {
   properties?: SourcePropertyList;
 }
 export const SourceObject = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "objectName": S.optional(S.String),
-  "properties": S.optional(SourcePropertyList),
-}),
+  S.Struct({
+    objectName: S.optional(S.String),
+    properties: S.optional(SourcePropertyList),
+  }),
 ).annotate({ identifier: "SourceObject" }) as any as S.Schema<SourceObject>;
 
 export type SourceObjectList = ReadonlyArray<SourceObject>;
-export const SourceObjectList = /*@__PURE__*/ S.Array(SourceObject) as any as S.Schema<SourceObjectList>;
+export const SourceObjectList = /*@__PURE__*/ S.Array(
+  SourceObject,
+) as any as S.Schema<SourceObjectList>;
 
 /** Source catalog. */
 export interface SourceCatalog {
@@ -1315,9 +1488,9 @@ export interface SourceCatalog {
   objects?: SourceObjectList;
 }
 export const SourceCatalog = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "objects": S.optional(SourceObjectList),
-}),
+  S.Struct({
+    objects: S.optional(SourceObjectList),
+  }),
 ).annotate({ identifier: "SourceCatalog" }) as any as S.Schema<SourceCatalog>;
 
 /** Oracle Column. */
@@ -1342,21 +1515,23 @@ export interface OracleColumn {
   column?: string;
 }
 export const OracleColumn = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "scale": S.optional(S.Number),
-  "ordinalPosition": S.optional(S.Number),
-  "dataType": S.optional(S.String),
-  "nullable": S.optional(S.Boolean),
-  "precision": S.optional(S.Number),
-  "length": S.optional(S.Number),
-  "encoding": S.optional(S.String),
-  "primaryKey": S.optional(S.Boolean),
-  "column": S.optional(S.String),
-}),
+  S.Struct({
+    scale: S.optional(S.Number),
+    ordinalPosition: S.optional(S.Number),
+    dataType: S.optional(S.String),
+    nullable: S.optional(S.Boolean),
+    precision: S.optional(S.Number),
+    length: S.optional(S.Number),
+    encoding: S.optional(S.String),
+    primaryKey: S.optional(S.Boolean),
+    column: S.optional(S.String),
+  }),
 ).annotate({ identifier: "OracleColumn" }) as any as S.Schema<OracleColumn>;
 
 export type OracleColumnList = ReadonlyArray<OracleColumn>;
-export const OracleColumnList = /*@__PURE__*/ S.Array(OracleColumn) as any as S.Schema<OracleColumnList>;
+export const OracleColumnList = /*@__PURE__*/ S.Array(
+  OracleColumn,
+) as any as S.Schema<OracleColumnList>;
 
 /** Oracle table. */
 export interface OracleTable {
@@ -1366,14 +1541,16 @@ export interface OracleTable {
   table?: string;
 }
 export const OracleTable = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "oracleColumns": S.optional(OracleColumnList),
-  "table": S.optional(S.String),
-}),
+  S.Struct({
+    oracleColumns: S.optional(OracleColumnList),
+    table: S.optional(S.String),
+  }),
 ).annotate({ identifier: "OracleTable" }) as any as S.Schema<OracleTable>;
 
 export type OracleTableList = ReadonlyArray<OracleTable>;
-export const OracleTableList = /*@__PURE__*/ S.Array(OracleTable) as any as S.Schema<OracleTableList>;
+export const OracleTableList = /*@__PURE__*/ S.Array(
+  OracleTable,
+) as any as S.Schema<OracleTableList>;
 
 /** Oracle schema. */
 export interface OracleSchema {
@@ -1383,14 +1560,16 @@ export interface OracleSchema {
   oracleTables?: OracleTableList;
 }
 export const OracleSchema = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "schema": S.optional(S.String),
-  "oracleTables": S.optional(OracleTableList),
-}),
+  S.Struct({
+    schema: S.optional(S.String),
+    oracleTables: S.optional(OracleTableList),
+  }),
 ).annotate({ identifier: "OracleSchema" }) as any as S.Schema<OracleSchema>;
 
 export type OracleSchemaList = ReadonlyArray<OracleSchema>;
-export const OracleSchemaList = /*@__PURE__*/ S.Array(OracleSchema) as any as S.Schema<OracleSchemaList>;
+export const OracleSchemaList = /*@__PURE__*/ S.Array(
+  OracleSchema,
+) as any as S.Schema<OracleSchemaList>;
 
 /** Oracle database structure. */
 export interface OracleRdbms {
@@ -1398,9 +1577,9 @@ export interface OracleRdbms {
   oracleSchemas?: OracleSchemaList;
 }
 export const OracleRdbms = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "oracleSchemas": S.optional(OracleSchemaList),
-}),
+  S.Struct({
+    oracleSchemas: S.optional(OracleSchemaList),
+  }),
 ).annotate({ identifier: "OracleRdbms" }) as any as S.Schema<OracleRdbms>;
 
 /** Spanner column. */
@@ -1415,16 +1594,18 @@ export interface SpannerColumn {
   ordinalPosition?: string;
 }
 export const SpannerColumn = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "column": S.optional(S.String),
-  "isPrimaryKey": S.optional(S.Boolean),
-  "dataType": S.optional(S.String),
-  "ordinalPosition": S.optional(S.String),
-}),
+  S.Struct({
+    column: S.optional(S.String),
+    isPrimaryKey: S.optional(S.Boolean),
+    dataType: S.optional(S.String),
+    ordinalPosition: S.optional(S.String),
+  }),
 ).annotate({ identifier: "SpannerColumn" }) as any as S.Schema<SpannerColumn>;
 
 export type SpannerColumnList = ReadonlyArray<SpannerColumn>;
-export const SpannerColumnList = /*@__PURE__*/ S.Array(SpannerColumn) as any as S.Schema<SpannerColumnList>;
+export const SpannerColumnList = /*@__PURE__*/ S.Array(
+  SpannerColumn,
+) as any as S.Schema<SpannerColumnList>;
 
 /** Spanner table. */
 export interface SpannerTable {
@@ -1434,14 +1615,16 @@ export interface SpannerTable {
   columns?: SpannerColumnList;
 }
 export const SpannerTable = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "table": S.optional(S.String),
-  "columns": S.optional(SpannerColumnList),
-}),
+  S.Struct({
+    table: S.optional(S.String),
+    columns: S.optional(SpannerColumnList),
+  }),
 ).annotate({ identifier: "SpannerTable" }) as any as S.Schema<SpannerTable>;
 
 export type SpannerTableList = ReadonlyArray<SpannerTable>;
-export const SpannerTableList = /*@__PURE__*/ S.Array(SpannerTable) as any as S.Schema<SpannerTableList>;
+export const SpannerTableList = /*@__PURE__*/ S.Array(
+  SpannerTable,
+) as any as S.Schema<SpannerTableList>;
 
 /** Spanner schema. */
 export interface SpannerSchema {
@@ -1451,14 +1634,16 @@ export interface SpannerSchema {
   tables?: SpannerTableList;
 }
 export const SpannerSchema = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "schema": S.optional(S.String),
-  "tables": S.optional(SpannerTableList),
-}),
+  S.Struct({
+    schema: S.optional(S.String),
+    tables: S.optional(SpannerTableList),
+  }),
 ).annotate({ identifier: "SpannerSchema" }) as any as S.Schema<SpannerSchema>;
 
 export type SpannerSchemaList = ReadonlyArray<SpannerSchema>;
-export const SpannerSchemaList = /*@__PURE__*/ S.Array(SpannerSchema) as any as S.Schema<SpannerSchemaList>;
+export const SpannerSchemaList = /*@__PURE__*/ S.Array(
+  SpannerSchema,
+) as any as S.Schema<SpannerSchemaList>;
 
 /** Spanner database structure. */
 export interface SpannerDatabase {
@@ -1466,10 +1651,12 @@ export interface SpannerDatabase {
   schemas?: SpannerSchemaList;
 }
 export const SpannerDatabase = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "schemas": S.optional(SpannerSchemaList),
-}),
-).annotate({ identifier: "SpannerDatabase" }) as any as S.Schema<SpannerDatabase>;
+  S.Struct({
+    schemas: S.optional(SpannerSchemaList),
+  }),
+).annotate({
+  identifier: "SpannerDatabase",
+}) as any as S.Schema<SpannerDatabase>;
 
 /** MySQL Column. */
 export interface MysqlColumn {
@@ -1493,21 +1680,23 @@ export interface MysqlColumn {
   scale?: number;
 }
 export const MysqlColumn = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "column": S.optional(S.String),
-  "primaryKey": S.optional(S.Boolean),
-  "length": S.optional(S.Number),
-  "precision": S.optional(S.Number),
-  "dataType": S.optional(S.String),
-  "nullable": S.optional(S.Boolean),
-  "collation": S.optional(S.String),
-  "ordinalPosition": S.optional(S.Number),
-  "scale": S.optional(S.Number),
-}),
+  S.Struct({
+    column: S.optional(S.String),
+    primaryKey: S.optional(S.Boolean),
+    length: S.optional(S.Number),
+    precision: S.optional(S.Number),
+    dataType: S.optional(S.String),
+    nullable: S.optional(S.Boolean),
+    collation: S.optional(S.String),
+    ordinalPosition: S.optional(S.Number),
+    scale: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "MysqlColumn" }) as any as S.Schema<MysqlColumn>;
 
 export type MysqlColumnList = ReadonlyArray<MysqlColumn>;
-export const MysqlColumnList = /*@__PURE__*/ S.Array(MysqlColumn) as any as S.Schema<MysqlColumnList>;
+export const MysqlColumnList = /*@__PURE__*/ S.Array(
+  MysqlColumn,
+) as any as S.Schema<MysqlColumnList>;
 
 /** MySQL table. */
 export interface MysqlTable {
@@ -1517,14 +1706,16 @@ export interface MysqlTable {
   table?: string;
 }
 export const MysqlTable = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "mysqlColumns": S.optional(MysqlColumnList),
-  "table": S.optional(S.String),
-}),
+  S.Struct({
+    mysqlColumns: S.optional(MysqlColumnList),
+    table: S.optional(S.String),
+  }),
 ).annotate({ identifier: "MysqlTable" }) as any as S.Schema<MysqlTable>;
 
 export type MysqlTableList = ReadonlyArray<MysqlTable>;
-export const MysqlTableList = /*@__PURE__*/ S.Array(MysqlTable) as any as S.Schema<MysqlTableList>;
+export const MysqlTableList = /*@__PURE__*/ S.Array(
+  MysqlTable,
+) as any as S.Schema<MysqlTableList>;
 
 /** MySQL database. */
 export interface MysqlDatabase {
@@ -1534,14 +1725,16 @@ export interface MysqlDatabase {
   mysqlTables?: MysqlTableList;
 }
 export const MysqlDatabase = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "database": S.optional(S.String),
-  "mysqlTables": S.optional(MysqlTableList),
-}),
+  S.Struct({
+    database: S.optional(S.String),
+    mysqlTables: S.optional(MysqlTableList),
+  }),
 ).annotate({ identifier: "MysqlDatabase" }) as any as S.Schema<MysqlDatabase>;
 
 export type MysqlDatabaseList = ReadonlyArray<MysqlDatabase>;
-export const MysqlDatabaseList = /*@__PURE__*/ S.Array(MysqlDatabase) as any as S.Schema<MysqlDatabaseList>;
+export const MysqlDatabaseList = /*@__PURE__*/ S.Array(
+  MysqlDatabase,
+) as any as S.Schema<MysqlDatabaseList>;
 
 /** MySQL database structure */
 export interface MysqlRdbms {
@@ -1549,9 +1742,9 @@ export interface MysqlRdbms {
   mysqlDatabases?: MysqlDatabaseList;
 }
 export const MysqlRdbms = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "mysqlDatabases": S.optional(MysqlDatabaseList),
-}),
+  S.Struct({
+    mysqlDatabases: S.optional(MysqlDatabaseList),
+  }),
 ).annotate({ identifier: "MysqlRdbms" }) as any as S.Schema<MysqlRdbms>;
 
 /** Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded. */
@@ -1574,17 +1767,19 @@ export interface BackfillAllStrategy {
   mysqlExcludedObjects?: MysqlRdbms;
 }
 export const BackfillAllStrategy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "postgresqlExcludedObjects": S.optional(PostgresqlRdbms),
-  "mongodbExcludedObjects": S.optional(MongodbCluster),
-  "sqlServerExcludedObjects": S.optional(SqlServerRdbms),
-  "salesforceExcludedObjects": S.optional(SalesforceOrg),
-  "saasExcludedObjects": S.optional(SourceCatalog),
-  "oracleExcludedObjects": S.optional(OracleRdbms),
-  "spannerExcludedObjects": S.optional(SpannerDatabase),
-  "mysqlExcludedObjects": S.optional(MysqlRdbms),
-}),
-).annotate({ identifier: "BackfillAllStrategy" }) as any as S.Schema<BackfillAllStrategy>;
+  S.Struct({
+    postgresqlExcludedObjects: S.optional(PostgresqlRdbms),
+    mongodbExcludedObjects: S.optional(MongodbCluster),
+    sqlServerExcludedObjects: S.optional(SqlServerRdbms),
+    salesforceExcludedObjects: S.optional(SalesforceOrg),
+    saasExcludedObjects: S.optional(SourceCatalog),
+    oracleExcludedObjects: S.optional(OracleRdbms),
+    spannerExcludedObjects: S.optional(SpannerDatabase),
+    mysqlExcludedObjects: S.optional(MysqlRdbms),
+  }),
+).annotate({
+  identifier: "BackfillAllStrategy",
+}) as any as S.Schema<BackfillAllStrategy>;
 
 /** Configuration for syncing data from a ServiceNow source. */
 export interface ServiceNowSourceConfig {
@@ -1596,24 +1791,28 @@ export interface ServiceNowSourceConfig {
   pollingInterval?: string;
 }
 export const ServiceNowSourceConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "includeObjects": S.optional(SourceCatalog),
-  "excludeObjects": S.optional(SourceCatalog),
-  "pollingInterval": S.optional(S.String),
-}),
-).annotate({ identifier: "ServiceNowSourceConfig" }) as any as S.Schema<ServiceNowSourceConfig>;
+  S.Struct({
+    includeObjects: S.optional(SourceCatalog),
+    excludeObjects: S.optional(SourceCatalog),
+    pollingInterval: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ServiceNowSourceConfig",
+}) as any as S.Schema<ServiceNowSourceConfig>;
 
 /** Use Binary log position based replication. */
 export interface BinaryLogPosition {}
 export const BinaryLogPosition = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "BinaryLogPosition" }) as any as S.Schema<BinaryLogPosition>;
+  S.Struct({}),
+).annotate({
+  identifier: "BinaryLogPosition",
+}) as any as S.Schema<BinaryLogPosition>;
 
 /** Use GTID based replication. */
 export interface Gtid {}
-export const Gtid = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Gtid" }) as any as S.Schema<Gtid>;
+export const Gtid = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Gtid",
+}) as any as S.Schema<Gtid>;
 
 /** Configuration for syncing data from a MySQL source. */
 export interface MysqlSourceConfig {
@@ -1631,15 +1830,17 @@ export interface MysqlSourceConfig {
   maxConcurrentBackfillTasks?: number;
 }
 export const MysqlSourceConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "binaryLogPosition": S.optional(BinaryLogPosition),
-  "gtid": S.optional(Gtid),
-  "includeObjects": S.optional(MysqlRdbms),
-  "maxConcurrentCdcTasks": S.optional(S.Number),
-  "excludeObjects": S.optional(MysqlRdbms),
-  "maxConcurrentBackfillTasks": S.optional(S.Number),
-}),
-).annotate({ identifier: "MysqlSourceConfig" }) as any as S.Schema<MysqlSourceConfig>;
+  S.Struct({
+    binaryLogPosition: S.optional(BinaryLogPosition),
+    gtid: S.optional(Gtid),
+    includeObjects: S.optional(MysqlRdbms),
+    maxConcurrentCdcTasks: S.optional(S.Number),
+    excludeObjects: S.optional(MysqlRdbms),
+    maxConcurrentBackfillTasks: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "MysqlSourceConfig",
+}) as any as S.Schema<MysqlSourceConfig>;
 
 /** Configuration for syncing data from a Dataverse source. */
 export interface DataverseSourceConfig {
@@ -1651,24 +1852,30 @@ export interface DataverseSourceConfig {
   excludeObjects?: SourceCatalog;
 }
 export const DataverseSourceConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pollingInterval": S.optional(S.String),
-  "includeObjects": S.optional(SourceCatalog),
-  "excludeObjects": S.optional(SourceCatalog),
-}),
-).annotate({ identifier: "DataverseSourceConfig" }) as any as S.Schema<DataverseSourceConfig>;
+  S.Struct({
+    pollingInterval: S.optional(S.String),
+    includeObjects: S.optional(SourceCatalog),
+    excludeObjects: S.optional(SourceCatalog),
+  }),
+).annotate({
+  identifier: "DataverseSourceConfig",
+}) as any as S.Schema<DataverseSourceConfig>;
 
 /** Configuration to use Change Tables CDC read method. */
 export interface SqlServerChangeTables {}
 export const SqlServerChangeTables = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "SqlServerChangeTables" }) as any as S.Schema<SqlServerChangeTables>;
+  S.Struct({}),
+).annotate({
+  identifier: "SqlServerChangeTables",
+}) as any as S.Schema<SqlServerChangeTables>;
 
 /** Configuration to use Transaction Logs CDC read method. */
 export interface SqlServerTransactionLogs {}
 export const SqlServerTransactionLogs = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "SqlServerTransactionLogs" }) as any as S.Schema<SqlServerTransactionLogs>;
+  S.Struct({}),
+).annotate({
+  identifier: "SqlServerTransactionLogs",
+}) as any as S.Schema<SqlServerTransactionLogs>;
 
 /** Configuration for syncing data from a SQLServer source. */
 export interface SqlServerSourceConfig {
@@ -1686,15 +1893,17 @@ export interface SqlServerSourceConfig {
   transactionLogs?: SqlServerTransactionLogs;
 }
 export const SqlServerSourceConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "maxConcurrentCdcTasks": S.optional(S.Number),
-  "includeObjects": S.optional(SqlServerRdbms),
-  "changeTables": S.optional(SqlServerChangeTables),
-  "maxConcurrentBackfillTasks": S.optional(S.Number),
-  "excludeObjects": S.optional(SqlServerRdbms),
-  "transactionLogs": S.optional(SqlServerTransactionLogs),
-}),
-).annotate({ identifier: "SqlServerSourceConfig" }) as any as S.Schema<SqlServerSourceConfig>;
+  S.Struct({
+    maxConcurrentCdcTasks: S.optional(S.Number),
+    includeObjects: S.optional(SqlServerRdbms),
+    changeTables: S.optional(SqlServerChangeTables),
+    maxConcurrentBackfillTasks: S.optional(S.Number),
+    excludeObjects: S.optional(SqlServerRdbms),
+    transactionLogs: S.optional(SqlServerTransactionLogs),
+  }),
+).annotate({
+  identifier: "SqlServerSourceConfig",
+}) as any as S.Schema<SqlServerSourceConfig>;
 
 /** Configuration for syncing data from a Salesforce source. */
 export interface SalesforceSourceConfig {
@@ -1706,14 +1915,20 @@ export interface SalesforceSourceConfig {
   excludeObjects?: SalesforceOrg;
 }
 export const SalesforceSourceConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pollingInterval": S.optional(S.String),
-  "includeObjects": S.optional(SalesforceOrg),
-  "excludeObjects": S.optional(SalesforceOrg),
-}),
-).annotate({ identifier: "SalesforceSourceConfig" }) as any as S.Schema<SalesforceSourceConfig>;
+  S.Struct({
+    pollingInterval: S.optional(S.String),
+    includeObjects: S.optional(SalesforceOrg),
+    excludeObjects: S.optional(SalesforceOrg),
+  }),
+).annotate({
+  identifier: "SalesforceSourceConfig",
+}) as any as S.Schema<SalesforceSourceConfig>;
 
-export type SpannerSourceConfigSpannerRpcPriorityEnum = "SPANNER_RPC_PRIORITY_UNSPECIFIED" | "LOW" | "MEDIUM" | "HIGH";
+export type SpannerSourceConfigSpannerRpcPriorityEnum =
+  | "SPANNER_RPC_PRIORITY_UNSPECIFIED"
+  | "LOW"
+  | "MEDIUM"
+  | "HIGH";
 export const SpannerSourceConfigSpannerRpcPriorityEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for syncing data from a Spanner source. */
@@ -1736,17 +1951,19 @@ export interface SpannerSourceConfig {
   excludeObjects?: SpannerDatabase;
 }
 export const SpannerSourceConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "changeStreamName": S.optional(S.String),
-  "maxConcurrentCdcTasks": S.optional(S.Number),
-  "includeObjects": S.optional(SpannerDatabase),
-  "backfillDataBoostEnabled": S.optional(S.Boolean),
-  "spannerRpcPriority": S.optional(SpannerSourceConfigSpannerRpcPriorityEnum),
-  "fgacRole": S.optional(S.String),
-  "maxConcurrentBackfillTasks": S.optional(S.Number),
-  "excludeObjects": S.optional(SpannerDatabase),
-}),
-).annotate({ identifier: "SpannerSourceConfig" }) as any as S.Schema<SpannerSourceConfig>;
+  S.Struct({
+    changeStreamName: S.optional(S.String),
+    maxConcurrentCdcTasks: S.optional(S.Number),
+    includeObjects: S.optional(SpannerDatabase),
+    backfillDataBoostEnabled: S.optional(S.Boolean),
+    spannerRpcPriority: S.optional(SpannerSourceConfigSpannerRpcPriorityEnum),
+    fgacRole: S.optional(S.String),
+    maxConcurrentBackfillTasks: S.optional(S.Number),
+    excludeObjects: S.optional(SpannerDatabase),
+  }),
+).annotate({
+  identifier: "SpannerSourceConfig",
+}) as any as S.Schema<SpannerSourceConfig>;
 
 /** Configuration for syncing data from a PostgreSQL source. */
 export interface PostgresqlSourceConfig {
@@ -1762,16 +1979,21 @@ export interface PostgresqlSourceConfig {
   includeObjects?: PostgresqlRdbms;
 }
 export const PostgresqlSourceConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "publication": S.optional(S.String),
-  "maxConcurrentBackfillTasks": S.optional(S.Number),
-  "excludeObjects": S.optional(PostgresqlRdbms),
-  "replicationSlot": S.optional(S.String),
-  "includeObjects": S.optional(PostgresqlRdbms),
-}),
-).annotate({ identifier: "PostgresqlSourceConfig" }) as any as S.Schema<PostgresqlSourceConfig>;
+  S.Struct({
+    publication: S.optional(S.String),
+    maxConcurrentBackfillTasks: S.optional(S.Number),
+    excludeObjects: S.optional(PostgresqlRdbms),
+    replicationSlot: S.optional(S.String),
+    includeObjects: S.optional(PostgresqlRdbms),
+  }),
+).annotate({
+  identifier: "PostgresqlSourceConfig",
+}) as any as S.Schema<PostgresqlSourceConfig>;
 
-export type MongodbSourceConfigJsonModeEnum = "MONGODB_JSON_MODE_UNSPECIFIED" | "STRICT" | "CANONICAL";
+export type MongodbSourceConfigJsonModeEnum =
+  | "MONGODB_JSON_MODE_UNSPECIFIED"
+  | "STRICT"
+  | "CANONICAL";
 export const MongodbSourceConfigJsonModeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for syncing data from a MongoDB source. */
@@ -1786,13 +2008,15 @@ export interface MongodbSourceConfig {
   maxConcurrentBackfillTasks?: number;
 }
 export const MongodbSourceConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "includeObjects": S.optional(MongodbCluster),
-  "excludeObjects": S.optional(MongodbCluster),
-  "jsonMode": S.optional(MongodbSourceConfigJsonModeEnum),
-  "maxConcurrentBackfillTasks": S.optional(S.Number),
-}),
-).annotate({ identifier: "MongodbSourceConfig" }) as any as S.Schema<MongodbSourceConfig>;
+  S.Struct({
+    includeObjects: S.optional(MongodbCluster),
+    excludeObjects: S.optional(MongodbCluster),
+    jsonMode: S.optional(MongodbSourceConfigJsonModeEnum),
+    maxConcurrentBackfillTasks: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "MongodbSourceConfig",
+}) as any as S.Schema<MongodbSourceConfig>;
 
 /** Configuration for syncing data from a Salesforce Marketing Cloud source. */
 export interface SalesforceMarketingCloudSourceConfig {
@@ -1805,14 +2029,17 @@ export interface SalesforceMarketingCloudSourceConfig {
   /** Required. Incremental sync polling interval for all objects. If not set, a default value of `5 minutes` is used. The duration must be from `5 minutes` to `24 hours`, inclusive. */
   pollingInterval?: string;
 }
-export const SalesforceMarketingCloudSourceConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "includeObjects": S.optional(SourceCatalog),
-  "excludeObjects": S.optional(SourceCatalog),
-  "fullRefreshPollingInterval": S.optional(S.String),
-  "pollingInterval": S.optional(S.String),
-}),
-).annotate({ identifier: "SalesforceMarketingCloudSourceConfig" }) as any as S.Schema<SalesforceMarketingCloudSourceConfig>;
+export const SalesforceMarketingCloudSourceConfig = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      includeObjects: S.optional(SourceCatalog),
+      excludeObjects: S.optional(SourceCatalog),
+      fullRefreshPollingInterval: S.optional(S.String),
+      pollingInterval: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "SalesforceMarketingCloudSourceConfig",
+}) as any as S.Schema<SalesforceMarketingCloudSourceConfig>;
 
 /** Configuration to specify the Oracle directories to access the log files. */
 export interface LogFileDirectories {
@@ -1822,17 +2049,21 @@ export interface LogFileDirectories {
   archivedLogDirectory?: string;
 }
 export const LogFileDirectories = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "onlineLogDirectory": S.optional(S.String),
-  "archivedLogDirectory": S.optional(S.String),
-}),
-).annotate({ identifier: "LogFileDirectories" }) as any as S.Schema<LogFileDirectories>;
+  S.Struct({
+    onlineLogDirectory: S.optional(S.String),
+    archivedLogDirectory: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "LogFileDirectories",
+}) as any as S.Schema<LogFileDirectories>;
 
 /** Configuration to use Oracle ASM to access the log files. */
 export interface OracleAsmLogFileAccess {}
 export const OracleAsmLogFileAccess = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "OracleAsmLogFileAccess" }) as any as S.Schema<OracleAsmLogFileAccess>;
+  S.Struct({}),
+).annotate({
+  identifier: "OracleAsmLogFileAccess",
+}) as any as S.Schema<OracleAsmLogFileAccess>;
 
 /** Configuration to use Binary Log Parser CDC technique. */
 export interface BinaryLogParser {
@@ -1842,29 +2073,35 @@ export interface BinaryLogParser {
   oracleAsmLogFileAccess?: OracleAsmLogFileAccess;
 }
 export const BinaryLogParser = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "logFileDirectories": S.optional(LogFileDirectories),
-  "oracleAsmLogFileAccess": S.optional(OracleAsmLogFileAccess),
-}),
-).annotate({ identifier: "BinaryLogParser" }) as any as S.Schema<BinaryLogParser>;
+  S.Struct({
+    logFileDirectories: S.optional(LogFileDirectories),
+    oracleAsmLogFileAccess: S.optional(OracleAsmLogFileAccess),
+  }),
+).annotate({
+  identifier: "BinaryLogParser",
+}) as any as S.Schema<BinaryLogParser>;
 
 /** Configuration to use LogMiner CDC method. */
 export interface LogMiner {}
-export const LogMiner = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "LogMiner" }) as any as S.Schema<LogMiner>;
+export const LogMiner = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "LogMiner",
+}) as any as S.Schema<LogMiner>;
 
 /** Configuration to drop large object values. */
 export interface DropLargeObjects {}
 export const DropLargeObjects = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "DropLargeObjects" }) as any as S.Schema<DropLargeObjects>;
+  S.Struct({}),
+).annotate({
+  identifier: "DropLargeObjects",
+}) as any as S.Schema<DropLargeObjects>;
 
 /** Configuration to stream large object values. */
 export interface StreamLargeObjects {}
 export const StreamLargeObjects = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "StreamLargeObjects" }) as any as S.Schema<StreamLargeObjects>;
+  S.Struct({}),
+).annotate({
+  identifier: "StreamLargeObjects",
+}) as any as S.Schema<StreamLargeObjects>;
 
 /** Configuration for syncing data from an Oracle source. */
 export interface OracleSourceConfig {
@@ -1886,17 +2123,19 @@ export interface OracleSourceConfig {
   streamLargeObjects?: StreamLargeObjects;
 }
 export const OracleSourceConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "excludeObjects": S.optional(OracleRdbms),
-  "maxConcurrentBackfillTasks": S.optional(S.Number),
-  "binaryLogParser": S.optional(BinaryLogParser),
-  "includeObjects": S.optional(OracleRdbms),
-  "logMiner": S.optional(LogMiner),
-  "maxConcurrentCdcTasks": S.optional(S.Number),
-  "dropLargeObjects": S.optional(DropLargeObjects),
-  "streamLargeObjects": S.optional(StreamLargeObjects),
-}),
-).annotate({ identifier: "OracleSourceConfig" }) as any as S.Schema<OracleSourceConfig>;
+  S.Struct({
+    excludeObjects: S.optional(OracleRdbms),
+    maxConcurrentBackfillTasks: S.optional(S.Number),
+    binaryLogParser: S.optional(BinaryLogParser),
+    includeObjects: S.optional(OracleRdbms),
+    logMiner: S.optional(LogMiner),
+    maxConcurrentCdcTasks: S.optional(S.Number),
+    dropLargeObjects: S.optional(DropLargeObjects),
+    streamLargeObjects: S.optional(StreamLargeObjects),
+  }),
+).annotate({
+  identifier: "OracleSourceConfig",
+}) as any as S.Schema<OracleSourceConfig>;
 
 /** The configuration of the stream source. */
 export interface SourceConfig {
@@ -1924,34 +2163,44 @@ export interface SourceConfig {
   oracleSourceConfig?: OracleSourceConfig;
 }
 export const SourceConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sourceConnectionProfile": S.optional(S.String),
-  "serviceNowSourceConfig": S.optional(ServiceNowSourceConfig),
-  "mysqlSourceConfig": S.optional(MysqlSourceConfig),
-  "dataverseSourceConfig": S.optional(DataverseSourceConfig),
-  "sqlServerSourceConfig": S.optional(SqlServerSourceConfig),
-  "salesforceSourceConfig": S.optional(SalesforceSourceConfig),
-  "spannerSourceConfig": S.optional(SpannerSourceConfig),
-  "postgresqlSourceConfig": S.optional(PostgresqlSourceConfig),
-  "mongodbSourceConfig": S.optional(MongodbSourceConfig),
-  "salesforceMarketingCloudSourceConfig": S.optional(SalesforceMarketingCloudSourceConfig),
-  "oracleSourceConfig": S.optional(OracleSourceConfig),
-}),
+  S.Struct({
+    sourceConnectionProfile: S.optional(S.String),
+    serviceNowSourceConfig: S.optional(ServiceNowSourceConfig),
+    mysqlSourceConfig: S.optional(MysqlSourceConfig),
+    dataverseSourceConfig: S.optional(DataverseSourceConfig),
+    sqlServerSourceConfig: S.optional(SqlServerSourceConfig),
+    salesforceSourceConfig: S.optional(SalesforceSourceConfig),
+    spannerSourceConfig: S.optional(SpannerSourceConfig),
+    postgresqlSourceConfig: S.optional(PostgresqlSourceConfig),
+    mongodbSourceConfig: S.optional(MongodbSourceConfig),
+    salesforceMarketingCloudSourceConfig: S.optional(
+      SalesforceMarketingCloudSourceConfig,
+    ),
+    oracleSourceConfig: S.optional(OracleSourceConfig),
+  }),
 ).annotate({ identifier: "SourceConfig" }) as any as S.Schema<SourceConfig>;
 
 export type Datastream_ErrorList = ReadonlyArray<Datastream_Error>;
-export const Datastream_ErrorList = /*@__PURE__*/ S.Array(Datastream_Error) as any as S.Schema<Datastream_ErrorList>;
+export const Datastream_ErrorList = /*@__PURE__*/ S.Array(
+  Datastream_Error,
+) as any as S.Schema<Datastream_ErrorList>;
 
 /** AVRO file format configuration. */
 export interface AvroFileFormat {}
 export const AvroFileFormat = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
+  S.Struct({}),
 ).annotate({ identifier: "AvroFileFormat" }) as any as S.Schema<AvroFileFormat>;
 
-export type JsonFileFormatSchemaFileFormatEnum = "SCHEMA_FILE_FORMAT_UNSPECIFIED" | "NO_SCHEMA_FILE" | "AVRO_SCHEMA_FILE";
+export type JsonFileFormatSchemaFileFormatEnum =
+  | "SCHEMA_FILE_FORMAT_UNSPECIFIED"
+  | "NO_SCHEMA_FILE"
+  | "AVRO_SCHEMA_FILE";
 export const JsonFileFormatSchemaFileFormatEnum = /*@__PURE__*/ S.String;
 
-export type JsonFileFormatCompressionEnum = "JSON_COMPRESSION_UNSPECIFIED" | "NO_COMPRESSION" | "GZIP";
+export type JsonFileFormatCompressionEnum =
+  | "JSON_COMPRESSION_UNSPECIFIED"
+  | "NO_COMPRESSION"
+  | "GZIP";
 export const JsonFileFormatCompressionEnum = /*@__PURE__*/ S.String;
 
 /** JSON file format configuration. */
@@ -1962,10 +2211,10 @@ export interface JsonFileFormat {
   compression?: JsonFileFormatCompressionEnum;
 }
 export const JsonFileFormat = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "schemaFileFormat": S.optional(JsonFileFormatSchemaFileFormatEnum),
-  "compression": S.optional(JsonFileFormatCompressionEnum),
-}),
+  S.Struct({
+    schemaFileFormat: S.optional(JsonFileFormatSchemaFileFormatEnum),
+    compression: S.optional(JsonFileFormatCompressionEnum),
+  }),
 ).annotate({ identifier: "JsonFileFormat" }) as any as S.Schema<JsonFileFormat>;
 
 /** Google Cloud Storage destination configuration */
@@ -1982,14 +2231,16 @@ export interface GcsDestinationConfig {
   fileRotationInterval?: string;
 }
 export const GcsDestinationConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.optional(S.String),
-  "avroFileFormat": S.optional(AvroFileFormat),
-  "fileRotationMb": S.optional(S.Number),
-  "jsonFileFormat": S.optional(JsonFileFormat),
-  "fileRotationInterval": S.optional(S.String),
-}),
-).annotate({ identifier: "GcsDestinationConfig" }) as any as S.Schema<GcsDestinationConfig>;
+  S.Struct({
+    path: S.optional(S.String),
+    avroFileFormat: S.optional(AvroFileFormat),
+    fileRotationMb: S.optional(S.Number),
+    jsonFileFormat: S.optional(JsonFileFormat),
+    fileRotationInterval: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GcsDestinationConfig",
+}) as any as S.Schema<GcsDestinationConfig>;
 
 /** A single target dataset to which all data will be streamed. */
 export interface SingleTargetDataset {
@@ -1997,10 +2248,12 @@ export interface SingleTargetDataset {
   datasetId?: string;
 }
 export const SingleTargetDataset = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "datasetId": S.optional(S.String),
-}),
-).annotate({ identifier: "SingleTargetDataset" }) as any as S.Schema<SingleTargetDataset>;
+  S.Struct({
+    datasetId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SingleTargetDataset",
+}) as any as S.Schema<SingleTargetDataset>;
 
 export type BlmtConfigTableFormatEnum = "TABLE_FORMAT_UNSPECIFIED" | "ICEBERG";
 export const BlmtConfigTableFormatEnum = /*@__PURE__*/ S.String;
@@ -2022,20 +2275,20 @@ export interface BlmtConfig {
   fileFormat?: BlmtConfigFileFormatEnum;
 }
 export const BlmtConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "rootPath": S.optional(S.String),
-  "bucket": S.optional(S.String),
-  "tableFormat": S.optional(BlmtConfigTableFormatEnum),
-  "connectionName": S.optional(S.String),
-  "fileFormat": S.optional(BlmtConfigFileFormatEnum),
-}),
+  S.Struct({
+    rootPath: S.optional(S.String),
+    bucket: S.optional(S.String),
+    tableFormat: S.optional(BlmtConfigTableFormatEnum),
+    connectionName: S.optional(S.String),
+    fileFormat: S.optional(BlmtConfigFileFormatEnum),
+  }),
 ).annotate({ identifier: "BlmtConfig" }) as any as S.Schema<BlmtConfig>;
 
 /** Merge mode defines that all changes to a table will be merged at the destination table. */
 export interface Merge {}
-export const Merge = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Merge" }) as any as S.Schema<Merge>;
+export const Merge = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Merge",
+}) as any as S.Schema<Merge>;
 
 /** Dataset template used for dynamic dataset creation. */
 export interface DatasetTemplate {
@@ -2047,12 +2300,14 @@ export interface DatasetTemplate {
   kmsKeyName?: string;
 }
 export const DatasetTemplate = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "location": S.optional(S.String),
-  "datasetIdPrefix": S.optional(S.String),
-  "kmsKeyName": S.optional(S.String),
-}),
-).annotate({ identifier: "DatasetTemplate" }) as any as S.Schema<DatasetTemplate>;
+  S.Struct({
+    location: S.optional(S.String),
+    datasetIdPrefix: S.optional(S.String),
+    kmsKeyName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DatasetTemplate",
+}) as any as S.Schema<DatasetTemplate>;
 
 /** Destination datasets are created so that hierarchy of the destination data objects matches the source hierarchy. */
 export interface SourceHierarchyDatasets {
@@ -2062,17 +2317,19 @@ export interface SourceHierarchyDatasets {
   projectId?: string;
 }
 export const SourceHierarchyDatasets = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "datasetTemplate": S.optional(DatasetTemplate),
-  "projectId": S.optional(S.String),
-}),
-).annotate({ identifier: "SourceHierarchyDatasets" }) as any as S.Schema<SourceHierarchyDatasets>;
+  S.Struct({
+    datasetTemplate: S.optional(DatasetTemplate),
+    projectId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SourceHierarchyDatasets",
+}) as any as S.Schema<SourceHierarchyDatasets>;
 
 /** AppendOnly mode defines that all changes to a table will be written to the destination table. */
 export interface AppendOnly {}
-export const AppendOnly = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "AppendOnly" }) as any as S.Schema<AppendOnly>;
+export const AppendOnly = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "AppendOnly",
+}) as any as S.Schema<AppendOnly>;
 
 /** BigQuery destination configuration */
 export interface BigQueryDestinationConfig {
@@ -2090,15 +2347,17 @@ export interface BigQueryDestinationConfig {
   appendOnly?: AppendOnly;
 }
 export const BigQueryDestinationConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "singleTargetDataset": S.optional(SingleTargetDataset),
-  "blmtConfig": S.optional(BlmtConfig),
-  "dataFreshness": S.optional(S.String),
-  "merge": S.optional(Merge),
-  "sourceHierarchyDatasets": S.optional(SourceHierarchyDatasets),
-  "appendOnly": S.optional(AppendOnly),
-}),
-).annotate({ identifier: "BigQueryDestinationConfig" }) as any as S.Schema<BigQueryDestinationConfig>;
+  S.Struct({
+    singleTargetDataset: S.optional(SingleTargetDataset),
+    blmtConfig: S.optional(BlmtConfig),
+    dataFreshness: S.optional(S.String),
+    merge: S.optional(Merge),
+    sourceHierarchyDatasets: S.optional(SourceHierarchyDatasets),
+    appendOnly: S.optional(AppendOnly),
+  }),
+).annotate({
+  identifier: "BigQueryDestinationConfig",
+}) as any as S.Schema<BigQueryDestinationConfig>;
 
 /** The configuration of the stream destination. */
 export interface DestinationConfig {
@@ -2110,21 +2369,27 @@ export interface DestinationConfig {
   bigqueryDestinationConfig?: BigQueryDestinationConfig;
 }
 export const DestinationConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "gcsDestinationConfig": S.optional(GcsDestinationConfig),
-  "destinationConnectionProfile": S.optional(S.String),
-  "bigqueryDestinationConfig": S.optional(BigQueryDestinationConfig),
-}),
-).annotate({ identifier: "DestinationConfig" }) as any as S.Schema<DestinationConfig>;
+  S.Struct({
+    gcsDestinationConfig: S.optional(GcsDestinationConfig),
+    destinationConnectionProfile: S.optional(S.String),
+    bigqueryDestinationConfig: S.optional(BigQueryDestinationConfig),
+  }),
+).annotate({
+  identifier: "DestinationConfig",
+}) as any as S.Schema<DestinationConfig>;
 
 /** Backfill strategy to disable automatic backfill for the Stream's objects. */
 export interface BackfillNoneStrategy {}
 export const BackfillNoneStrategy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "BackfillNoneStrategy" }) as any as S.Schema<BackfillNoneStrategy>;
+  S.Struct({}),
+).annotate({
+  identifier: "BackfillNoneStrategy",
+}) as any as S.Schema<BackfillNoneStrategy>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** BigQuery clustering configuration. */
 export interface BigQueryClustering {
@@ -2132,10 +2397,12 @@ export interface BigQueryClustering {
   columns?: StringList;
 }
 export const BigQueryClustering = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "columns": S.optional(StringList),
-}),
-).annotate({ identifier: "BigQueryClustering" }) as any as S.Schema<BigQueryClustering>;
+  S.Struct({
+    columns: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "BigQueryClustering",
+}) as any as S.Schema<BigQueryClustering>;
 
 /** Integer range partitioning. see https://cloud.google.com/bigquery/docs/partitioned-tables#integer_range */
 export interface IntegerRangePartition {
@@ -2149,16 +2416,24 @@ export interface IntegerRangePartition {
   column?: string;
 }
 export const IntegerRangePartition = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "start": S.optional(S.String),
-  "interval": S.optional(S.String),
-  "end": S.optional(S.String),
-  "column": S.optional(S.String),
-}),
-).annotate({ identifier: "IntegerRangePartition" }) as any as S.Schema<IntegerRangePartition>;
+  S.Struct({
+    start: S.optional(S.String),
+    interval: S.optional(S.String),
+    end: S.optional(S.String),
+    column: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "IntegerRangePartition",
+}) as any as S.Schema<IntegerRangePartition>;
 
-export type TimeUnitPartitionPartitioningTimeGranularityEnum = "PARTITIONING_TIME_GRANULARITY_UNSPECIFIED" | "PARTITIONING_TIME_GRANULARITY_HOUR" | "PARTITIONING_TIME_GRANULARITY_DAY" | "PARTITIONING_TIME_GRANULARITY_MONTH" | "PARTITIONING_TIME_GRANULARITY_YEAR";
-export const TimeUnitPartitionPartitioningTimeGranularityEnum = /*@__PURE__*/ S.String;
+export type TimeUnitPartitionPartitioningTimeGranularityEnum =
+  | "PARTITIONING_TIME_GRANULARITY_UNSPECIFIED"
+  | "PARTITIONING_TIME_GRANULARITY_HOUR"
+  | "PARTITIONING_TIME_GRANULARITY_DAY"
+  | "PARTITIONING_TIME_GRANULARITY_MONTH"
+  | "PARTITIONING_TIME_GRANULARITY_YEAR";
+export const TimeUnitPartitionPartitioningTimeGranularityEnum =
+  /*@__PURE__*/ S.String;
 
 /** Time unit column partitioning. see https://cloud.google.com/bigquery/docs/partitioned-tables#date_timestamp_partitioned_tables */
 export interface TimeUnitPartition {
@@ -2168,14 +2443,24 @@ export interface TimeUnitPartition {
   partitioningTimeGranularity?: TimeUnitPartitionPartitioningTimeGranularityEnum;
 }
 export const TimeUnitPartition = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "column": S.optional(S.String),
-  "partitioningTimeGranularity": S.optional(TimeUnitPartitionPartitioningTimeGranularityEnum),
-}),
-).annotate({ identifier: "TimeUnitPartition" }) as any as S.Schema<TimeUnitPartition>;
+  S.Struct({
+    column: S.optional(S.String),
+    partitioningTimeGranularity: S.optional(
+      TimeUnitPartitionPartitioningTimeGranularityEnum,
+    ),
+  }),
+).annotate({
+  identifier: "TimeUnitPartition",
+}) as any as S.Schema<TimeUnitPartition>;
 
-export type IngestionTimePartitionPartitioningTimeGranularityEnum = "PARTITIONING_TIME_GRANULARITY_UNSPECIFIED" | "PARTITIONING_TIME_GRANULARITY_HOUR" | "PARTITIONING_TIME_GRANULARITY_DAY" | "PARTITIONING_TIME_GRANULARITY_MONTH" | "PARTITIONING_TIME_GRANULARITY_YEAR";
-export const IngestionTimePartitionPartitioningTimeGranularityEnum = /*@__PURE__*/ S.String;
+export type IngestionTimePartitionPartitioningTimeGranularityEnum =
+  | "PARTITIONING_TIME_GRANULARITY_UNSPECIFIED"
+  | "PARTITIONING_TIME_GRANULARITY_HOUR"
+  | "PARTITIONING_TIME_GRANULARITY_DAY"
+  | "PARTITIONING_TIME_GRANULARITY_MONTH"
+  | "PARTITIONING_TIME_GRANULARITY_YEAR";
+export const IngestionTimePartitionPartitioningTimeGranularityEnum =
+  /*@__PURE__*/ S.String;
 
 /** Ingestion time partitioning. see https://cloud.google.com/bigquery/docs/partitioned-tables#ingestion_time */
 export interface IngestionTimePartition {
@@ -2183,10 +2468,14 @@ export interface IngestionTimePartition {
   partitioningTimeGranularity?: IngestionTimePartitionPartitioningTimeGranularityEnum;
 }
 export const IngestionTimePartition = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "partitioningTimeGranularity": S.optional(IngestionTimePartitionPartitioningTimeGranularityEnum),
-}),
-).annotate({ identifier: "IngestionTimePartition" }) as any as S.Schema<IngestionTimePartition>;
+  S.Struct({
+    partitioningTimeGranularity: S.optional(
+      IngestionTimePartitionPartitioningTimeGranularityEnum,
+    ),
+  }),
+).annotate({
+  identifier: "IngestionTimePartition",
+}) as any as S.Schema<IngestionTimePartition>;
 
 /** BigQuery partitioning configuration. */
 export interface BigQueryPartitioning {
@@ -2200,13 +2489,15 @@ export interface BigQueryPartitioning {
   ingestionTimePartition?: IngestionTimePartition;
 }
 export const BigQueryPartitioning = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requirePartitionFilter": S.optional(S.Boolean),
-  "integerRangePartition": S.optional(IntegerRangePartition),
-  "timeUnitPartition": S.optional(TimeUnitPartition),
-  "ingestionTimePartition": S.optional(IngestionTimePartition),
-}),
-).annotate({ identifier: "BigQueryPartitioning" }) as any as S.Schema<BigQueryPartitioning>;
+  S.Struct({
+    requirePartitionFilter: S.optional(S.Boolean),
+    integerRangePartition: S.optional(IntegerRangePartition),
+    timeUnitPartition: S.optional(TimeUnitPartition),
+    ingestionTimePartition: S.optional(IngestionTimePartition),
+  }),
+).annotate({
+  identifier: "BigQueryPartitioning",
+}) as any as S.Schema<BigQueryPartitioning>;
 
 /** A customization rule to apply to a set of objects. */
 export interface CustomizationRule {
@@ -2216,14 +2507,18 @@ export interface CustomizationRule {
   bigqueryPartitioning?: BigQueryPartitioning;
 }
 export const CustomizationRule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bigqueryClustering": S.optional(BigQueryClustering),
-  "bigqueryPartitioning": S.optional(BigQueryPartitioning),
-}),
-).annotate({ identifier: "CustomizationRule" }) as any as S.Schema<CustomizationRule>;
+  S.Struct({
+    bigqueryClustering: S.optional(BigQueryClustering),
+    bigqueryPartitioning: S.optional(BigQueryPartitioning),
+  }),
+).annotate({
+  identifier: "CustomizationRule",
+}) as any as S.Schema<CustomizationRule>;
 
 export type CustomizationRuleList = ReadonlyArray<CustomizationRule>;
-export const CustomizationRuleList = /*@__PURE__*/ S.Array(CustomizationRule) as any as S.Schema<CustomizationRuleList>;
+export const CustomizationRuleList = /*@__PURE__*/ S.Array(
+  CustomizationRule,
+) as any as S.Schema<CustomizationRuleList>;
 
 /** MongoDB data source object identifier. */
 export interface MongodbObjectIdentifier {
@@ -2233,11 +2528,13 @@ export interface MongodbObjectIdentifier {
   collection?: string;
 }
 export const MongodbObjectIdentifier = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "database": S.optional(S.String),
-  "collection": S.optional(S.String),
-}),
-).annotate({ identifier: "MongodbObjectIdentifier" }) as any as S.Schema<MongodbObjectIdentifier>;
+  S.Struct({
+    database: S.optional(S.String),
+    collection: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MongodbObjectIdentifier",
+}) as any as S.Schema<MongodbObjectIdentifier>;
 
 /** SQLServer data source object identifier. */
 export interface SqlServerObjectIdentifier {
@@ -2247,11 +2544,13 @@ export interface SqlServerObjectIdentifier {
   schema?: string;
 }
 export const SqlServerObjectIdentifier = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "table": S.optional(S.String),
-  "schema": S.optional(S.String),
-}),
-).annotate({ identifier: "SqlServerObjectIdentifier" }) as any as S.Schema<SqlServerObjectIdentifier>;
+  S.Struct({
+    table: S.optional(S.String),
+    schema: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SqlServerObjectIdentifier",
+}) as any as S.Schema<SqlServerObjectIdentifier>;
 
 /** PostgreSQL data source object identifier. */
 export interface PostgresqlObjectIdentifier {
@@ -2261,11 +2560,13 @@ export interface PostgresqlObjectIdentifier {
   schema?: string;
 }
 export const PostgresqlObjectIdentifier = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "table": S.optional(S.String),
-  "schema": S.optional(S.String),
-}),
-).annotate({ identifier: "PostgresqlObjectIdentifier" }) as any as S.Schema<PostgresqlObjectIdentifier>;
+  S.Struct({
+    table: S.optional(S.String),
+    schema: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PostgresqlObjectIdentifier",
+}) as any as S.Schema<PostgresqlObjectIdentifier>;
 
 /** Salesforce data source object identifier. */
 export interface SalesforceObjectIdentifier {
@@ -2273,10 +2574,12 @@ export interface SalesforceObjectIdentifier {
   objectName?: string;
 }
 export const SalesforceObjectIdentifier = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "objectName": S.optional(S.String),
-}),
-).annotate({ identifier: "SalesforceObjectIdentifier" }) as any as S.Schema<SalesforceObjectIdentifier>;
+  S.Struct({
+    objectName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SalesforceObjectIdentifier",
+}) as any as S.Schema<SalesforceObjectIdentifier>;
 
 /** Oracle data source object identifier. */
 export interface OracleObjectIdentifier {
@@ -2286,11 +2589,13 @@ export interface OracleObjectIdentifier {
   schema?: string;
 }
 export const OracleObjectIdentifier = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "table": S.optional(S.String),
-  "schema": S.optional(S.String),
-}),
-).annotate({ identifier: "OracleObjectIdentifier" }) as any as S.Schema<OracleObjectIdentifier>;
+  S.Struct({
+    table: S.optional(S.String),
+    schema: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OracleObjectIdentifier",
+}) as any as S.Schema<OracleObjectIdentifier>;
 
 /** Mysql data source object identifier. */
 export interface MysqlObjectIdentifier {
@@ -2300,11 +2605,13 @@ export interface MysqlObjectIdentifier {
   database?: string;
 }
 export const MysqlObjectIdentifier = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "table": S.optional(S.String),
-  "database": S.optional(S.String),
-}),
-).annotate({ identifier: "MysqlObjectIdentifier" }) as any as S.Schema<MysqlObjectIdentifier>;
+  S.Struct({
+    table: S.optional(S.String),
+    database: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MysqlObjectIdentifier",
+}) as any as S.Schema<MysqlObjectIdentifier>;
 
 /** Spanner data source object identifier. */
 export interface SpannerObjectIdentifier {
@@ -2314,11 +2621,13 @@ export interface SpannerObjectIdentifier {
   table?: string;
 }
 export const SpannerObjectIdentifier = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "schema": S.optional(S.String),
-  "table": S.optional(S.String),
-}),
-).annotate({ identifier: "SpannerObjectIdentifier" }) as any as S.Schema<SpannerObjectIdentifier>;
+  S.Struct({
+    schema: S.optional(S.String),
+    table: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SpannerObjectIdentifier",
+}) as any as S.Schema<SpannerObjectIdentifier>;
 
 /** Represents an identifier of an object in the data source. */
 export interface SourceObjectIdentifier {
@@ -2338,16 +2647,18 @@ export interface SourceObjectIdentifier {
   spannerIdentifier?: SpannerObjectIdentifier;
 }
 export const SourceObjectIdentifier = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "mongodbIdentifier": S.optional(MongodbObjectIdentifier),
-  "sqlServerIdentifier": S.optional(SqlServerObjectIdentifier),
-  "postgresqlIdentifier": S.optional(PostgresqlObjectIdentifier),
-  "salesforceIdentifier": S.optional(SalesforceObjectIdentifier),
-  "oracleIdentifier": S.optional(OracleObjectIdentifier),
-  "mysqlIdentifier": S.optional(MysqlObjectIdentifier),
-  "spannerIdentifier": S.optional(SpannerObjectIdentifier),
-}),
-).annotate({ identifier: "SourceObjectIdentifier" }) as any as S.Schema<SourceObjectIdentifier>;
+  S.Struct({
+    mongodbIdentifier: S.optional(MongodbObjectIdentifier),
+    sqlServerIdentifier: S.optional(SqlServerObjectIdentifier),
+    postgresqlIdentifier: S.optional(PostgresqlObjectIdentifier),
+    salesforceIdentifier: S.optional(SalesforceObjectIdentifier),
+    oracleIdentifier: S.optional(OracleObjectIdentifier),
+    mysqlIdentifier: S.optional(MysqlObjectIdentifier),
+    spannerIdentifier: S.optional(SpannerObjectIdentifier),
+  }),
+).annotate({
+  identifier: "SourceObjectIdentifier",
+}) as any as S.Schema<SourceObjectIdentifier>;
 
 /** Object filter to apply the rules to. */
 export interface ObjectFilter {
@@ -2355,9 +2666,9 @@ export interface ObjectFilter {
   sourceObjectIdentifier?: SourceObjectIdentifier;
 }
 export const ObjectFilter = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sourceObjectIdentifier": S.optional(SourceObjectIdentifier),
-}),
+  S.Struct({
+    sourceObjectIdentifier: S.optional(SourceObjectIdentifier),
+  }),
 ).annotate({ identifier: "ObjectFilter" }) as any as S.Schema<ObjectFilter>;
 
 /** A set of rules to apply to a set of objects. */
@@ -2368,14 +2679,16 @@ export interface RuleSet {
   objectFilter?: ObjectFilter;
 }
 export const RuleSet = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "customizationRules": S.optional(CustomizationRuleList),
-  "objectFilter": S.optional(ObjectFilter),
-}),
+  S.Struct({
+    customizationRules: S.optional(CustomizationRuleList),
+    objectFilter: S.optional(ObjectFilter),
+  }),
 ).annotate({ identifier: "RuleSet" }) as any as S.Schema<RuleSet>;
 
 export type RuleSetList = ReadonlyArray<RuleSet>;
-export const RuleSetList = /*@__PURE__*/ S.Array(RuleSet) as any as S.Schema<RuleSetList>;
+export const RuleSetList = /*@__PURE__*/ S.Array(
+  RuleSet,
+) as any as S.Schema<RuleSetList>;
 
 /** A resource representing streaming data from a source to a destination. */
 export interface Stream {
@@ -2413,24 +2726,24 @@ export interface Stream {
   ruleSets?: RuleSetList;
 }
 export const Stream = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "state": S.optional(StreamStateEnum),
-  "backfillAll": S.optional(BackfillAllStrategy),
-  "lastRecoveryTime": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "customerManagedEncryptionKey": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "sourceConfig": S.optional(SourceConfig),
-  "displayName": S.optional(S.String),
-  "satisfiesPzi": S.optional(S.Boolean),
-  "createTime": S.optional(S.String),
-  "satisfiesPzs": S.optional(S.Boolean),
-  "name": S.optional(S.String),
-  "errors": S.optional(Datastream_ErrorList),
-  "destinationConfig": S.optional(DestinationConfig),
-  "backfillNone": S.optional(BackfillNoneStrategy),
-  "ruleSets": S.optional(RuleSetList),
-}),
+  S.Struct({
+    state: S.optional(StreamStateEnum),
+    backfillAll: S.optional(BackfillAllStrategy),
+    lastRecoveryTime: S.optional(S.String),
+    labels: S.optional(StringMap),
+    customerManagedEncryptionKey: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    sourceConfig: S.optional(SourceConfig),
+    displayName: S.optional(S.String),
+    satisfiesPzi: S.optional(S.Boolean),
+    createTime: S.optional(S.String),
+    satisfiesPzs: S.optional(S.Boolean),
+    name: S.optional(S.String),
+    errors: S.optional(Datastream_ErrorList),
+    destinationConfig: S.optional(DestinationConfig),
+    backfillNone: S.optional(BackfillNoneStrategy),
+    ruleSets: S.optional(RuleSetList),
+  }),
 ).annotate({ identifier: "Stream" }) as any as S.Schema<Stream>;
 
 export interface CreateProjectsLocationsStreamsRequest {
@@ -2447,16 +2760,25 @@ export interface CreateProjectsLocationsStreamsRequest {
   /** Request body */
   body?: Stream;
 }
-export const CreateProjectsLocationsStreamsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "force": S.optional(S.Boolean.pipe(T.Query())),
-  "streamId": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(Stream.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/streams","baseUrl":"https://datastream.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsStreamsRequest" }) as any as S.Schema<CreateProjectsLocationsStreamsRequest>;
+export const CreateProjectsLocationsStreamsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      requestId: S.optional(S.String.pipe(T.Query())),
+      force: S.optional(S.Boolean.pipe(T.Query())),
+      streamId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      body: S.optional(Stream.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/streams",
+        baseUrl: "https://datastream.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateProjectsLocationsStreamsRequest",
+}) as any as S.Schema<CreateProjectsLocationsStreamsRequest>;
 
 export interface DeleteProjectsLocationsConnectionProfilesRequest {
   /** Required. The name of the connection profile resource to delete. */
@@ -2464,22 +2786,40 @@ export interface DeleteProjectsLocationsConnectionProfilesRequest {
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsConnectionProfilesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://datastream.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsConnectionProfilesRequest" }) as any as S.Schema<DeleteProjectsLocationsConnectionProfilesRequest>;
+export const DeleteProjectsLocationsConnectionProfilesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://datastream.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsConnectionProfilesRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsConnectionProfilesRequest>;
 
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://datastream.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsOperationsRequest" }) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://datastream.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsOperationsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
 
 export interface DeleteProjectsLocationsPrivateConnectionsRequest {
   /** Optional. If set to true, any child routes that belong to this PrivateConnection will also be deleted. */
@@ -2489,13 +2829,22 @@ export interface DeleteProjectsLocationsPrivateConnectionsRequest {
   /** Required. The name of the private connectivity configuration to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsPrivateConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "force": S.optional(S.Boolean.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://datastream.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsPrivateConnectionsRequest" }) as any as S.Schema<DeleteProjectsLocationsPrivateConnectionsRequest>;
+export const DeleteProjectsLocationsPrivateConnectionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      force: S.optional(S.Boolean.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://datastream.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsPrivateConnectionsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsPrivateConnectionsRequest>;
 
 export interface DeleteProjectsLocationsPrivateConnectionsRoutesRequest {
   /** Required. The name of the Route resource to delete. */
@@ -2503,12 +2852,21 @@ export interface DeleteProjectsLocationsPrivateConnectionsRoutesRequest {
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsPrivateConnectionsRoutesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://datastream.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsPrivateConnectionsRoutesRequest" }) as any as S.Schema<DeleteProjectsLocationsPrivateConnectionsRoutesRequest>;
+export const DeleteProjectsLocationsPrivateConnectionsRoutesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://datastream.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsPrivateConnectionsRoutesRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsPrivateConnectionsRoutesRequest>;
 
 export interface DeleteProjectsLocationsStreamsRequest {
   /** Required. The name of the stream resource to delete. */
@@ -2516,12 +2874,21 @@ export interface DeleteProjectsLocationsStreamsRequest {
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsStreamsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://datastream.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsStreamsRequest" }) as any as S.Schema<DeleteProjectsLocationsStreamsRequest>;
+export const DeleteProjectsLocationsStreamsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://datastream.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsStreamsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsStreamsRequest>;
 
 /** Request message for 'discover' ConnectionProfile request. */
 export interface DiscoverConnectionProfileRequest {
@@ -2551,21 +2918,23 @@ export interface DiscoverConnectionProfileRequest {
   connectionProfile?: ConnectionProfile;
 }
 export const DiscoverConnectionProfileRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "connectionProfileName": S.optional(S.String),
-  "oracleRdbms": S.optional(OracleRdbms),
-  "salesforceOrg": S.optional(SalesforceOrg),
-  "hierarchyDepth": S.optional(S.Number),
-  "postgresqlRdbms": S.optional(PostgresqlRdbms),
-  "spannerDatabase": S.optional(SpannerDatabase),
-  "sourceCatalog": S.optional(SourceCatalog),
-  "fullHierarchy": S.optional(S.Boolean),
-  "sqlServerRdbms": S.optional(SqlServerRdbms),
-  "mysqlRdbms": S.optional(MysqlRdbms),
-  "mongodbCluster": S.optional(MongodbCluster),
-  "connectionProfile": S.optional(ConnectionProfile),
-}),
-).annotate({ identifier: "DiscoverConnectionProfileRequest" }) as any as S.Schema<DiscoverConnectionProfileRequest>;
+  S.Struct({
+    connectionProfileName: S.optional(S.String),
+    oracleRdbms: S.optional(OracleRdbms),
+    salesforceOrg: S.optional(SalesforceOrg),
+    hierarchyDepth: S.optional(S.Number),
+    postgresqlRdbms: S.optional(PostgresqlRdbms),
+    spannerDatabase: S.optional(SpannerDatabase),
+    sourceCatalog: S.optional(SourceCatalog),
+    fullHierarchy: S.optional(S.Boolean),
+    sqlServerRdbms: S.optional(SqlServerRdbms),
+    mysqlRdbms: S.optional(MysqlRdbms),
+    mongodbCluster: S.optional(MongodbCluster),
+    connectionProfile: S.optional(ConnectionProfile),
+  }),
+).annotate({
+  identifier: "DiscoverConnectionProfileRequest",
+}) as any as S.Schema<DiscoverConnectionProfileRequest>;
 
 export interface DiscoverProjectsLocationsConnectionProfilesRequest {
   /** Required. The parent resource of the connection profile type. Must be in the format `projects/*\/locations/*`. */
@@ -2573,12 +2942,21 @@ export interface DiscoverProjectsLocationsConnectionProfilesRequest {
   /** Request body */
   body?: DiscoverConnectionProfileRequest;
 }
-export const DiscoverProjectsLocationsConnectionProfilesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(DiscoverConnectionProfileRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/connectionProfiles:discover","baseUrl":"https://datastream.googleapis.com/"})),
-).annotate({ identifier: "DiscoverProjectsLocationsConnectionProfilesRequest" }) as any as S.Schema<DiscoverProjectsLocationsConnectionProfilesRequest>;
+export const DiscoverProjectsLocationsConnectionProfilesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(DiscoverConnectionProfileRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/connectionProfiles:discover",
+        baseUrl: "https://datastream.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DiscoverProjectsLocationsConnectionProfilesRequest",
+  }) as any as S.Schema<DiscoverProjectsLocationsConnectionProfilesRequest>;
 
 /** Response from a discover request. */
 export interface DiscoverConnectionProfileResponse {
@@ -2600,17 +2978,19 @@ export interface DiscoverConnectionProfileResponse {
   mongodbCluster?: MongodbCluster;
 }
 export const DiscoverConnectionProfileResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "spannerDatabase": S.optional(SpannerDatabase),
-  "postgresqlRdbms": S.optional(PostgresqlRdbms),
-  "sqlServerRdbms": S.optional(SqlServerRdbms),
-  "salesforceOrg": S.optional(SalesforceOrg),
-  "oracleRdbms": S.optional(OracleRdbms),
-  "sourceCatalog": S.optional(SourceCatalog),
-  "mysqlRdbms": S.optional(MysqlRdbms),
-  "mongodbCluster": S.optional(MongodbCluster),
-}),
-).annotate({ identifier: "DiscoverConnectionProfileResponse" }) as any as S.Schema<DiscoverConnectionProfileResponse>;
+  S.Struct({
+    spannerDatabase: S.optional(SpannerDatabase),
+    postgresqlRdbms: S.optional(PostgresqlRdbms),
+    sqlServerRdbms: S.optional(SqlServerRdbms),
+    salesforceOrg: S.optional(SalesforceOrg),
+    oracleRdbms: S.optional(OracleRdbms),
+    sourceCatalog: S.optional(SourceCatalog),
+    mysqlRdbms: S.optional(MysqlRdbms),
+    mongodbCluster: S.optional(MongodbCluster),
+  }),
+).annotate({
+  identifier: "DiscoverConnectionProfileResponse",
+}) as any as S.Schema<DiscoverConnectionProfileResponse>;
 
 export interface FetchStaticIpsProjectsLocationsRequest {
   /** Required. The resource name for the location for which static IPs should be returned. Must be in the format `projects/*\/locations/*`. */
@@ -2620,13 +3000,22 @@ export interface FetchStaticIpsProjectsLocationsRequest {
   /** Optional. A page token, received from a previous `ListStaticIps` call. will likely not be specified. */
   pageToken?: string;
 }
-export const FetchStaticIpsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:fetchStaticIps","baseUrl":"https://datastream.googleapis.com/"})),
-).annotate({ identifier: "FetchStaticIpsProjectsLocationsRequest" }) as any as S.Schema<FetchStaticIpsProjectsLocationsRequest>;
+export const FetchStaticIpsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}:fetchStaticIps",
+        baseUrl: "https://datastream.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "FetchStaticIpsProjectsLocationsRequest",
+}) as any as S.Schema<FetchStaticIpsProjectsLocationsRequest>;
 
 /** Response message for a 'FetchStaticIps' response. */
 export interface FetchStaticIpsResponse {
@@ -2636,21 +3025,31 @@ export interface FetchStaticIpsResponse {
   nextPageToken?: string;
 }
 export const FetchStaticIpsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "staticIps": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "FetchStaticIpsResponse" }) as any as S.Schema<FetchStaticIpsResponse>;
+  S.Struct({
+    staticIps: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "FetchStaticIpsResponse",
+}) as any as S.Schema<FetchStaticIpsResponse>;
 
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://datastream.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://datastream.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsRequest",
+}) as any as S.Schema<GetProjectsLocationsRequest>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -2666,74 +3065,127 @@ export interface Location {
   metadata?: DocumentMap;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "labels": S.optional(StringMap),
-  "displayName": S.optional(S.String),
-  "name": S.optional(S.String),
-  "locationId": S.optional(S.String),
-  "metadata": S.optional(DocumentMap),
-}),
+  S.Struct({
+    labels: S.optional(StringMap),
+    displayName: S.optional(S.String),
+    name: S.optional(S.String),
+    locationId: S.optional(S.String),
+    metadata: S.optional(DocumentMap),
+  }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export interface GetProjectsLocationsConnectionProfilesRequest {
   /** Required. The name of the connection profile resource to get. */
   name: string;
 }
-export const GetProjectsLocationsConnectionProfilesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://datastream.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsConnectionProfilesRequest" }) as any as S.Schema<GetProjectsLocationsConnectionProfilesRequest>;
+export const GetProjectsLocationsConnectionProfilesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://datastream.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsConnectionProfilesRequest",
+  }) as any as S.Schema<GetProjectsLocationsConnectionProfilesRequest>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://datastream.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://datastream.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsOperationsRequest",
+}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export interface GetProjectsLocationsPrivateConnectionsRequest {
   /** Required. The name of the private connectivity configuration to get. */
   name: string;
 }
-export const GetProjectsLocationsPrivateConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://datastream.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsPrivateConnectionsRequest" }) as any as S.Schema<GetProjectsLocationsPrivateConnectionsRequest>;
+export const GetProjectsLocationsPrivateConnectionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://datastream.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsPrivateConnectionsRequest",
+  }) as any as S.Schema<GetProjectsLocationsPrivateConnectionsRequest>;
 
 export interface GetProjectsLocationsPrivateConnectionsRoutesRequest {
   /** Required. The name of the Route resource to get. */
   name: string;
 }
-export const GetProjectsLocationsPrivateConnectionsRoutesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://datastream.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsPrivateConnectionsRoutesRequest" }) as any as S.Schema<GetProjectsLocationsPrivateConnectionsRoutesRequest>;
+export const GetProjectsLocationsPrivateConnectionsRoutesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://datastream.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsPrivateConnectionsRoutesRequest",
+  }) as any as S.Schema<GetProjectsLocationsPrivateConnectionsRoutesRequest>;
 
 export interface GetProjectsLocationsStreamsRequest {
   /** Required. The name of the stream resource to get. */
   name: string;
 }
 export const GetProjectsLocationsStreamsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://datastream.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsStreamsRequest" }) as any as S.Schema<GetProjectsLocationsStreamsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://datastream.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsStreamsRequest",
+}) as any as S.Schema<GetProjectsLocationsStreamsRequest>;
 
 export interface GetProjectsLocationsStreamsObjectsRequest {
   /** Required. The name of the stream object resource to get. */
   name: string;
 }
-export const GetProjectsLocationsStreamsObjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://datastream.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsStreamsObjectsRequest" }) as any as S.Schema<GetProjectsLocationsStreamsObjectsRequest>;
+export const GetProjectsLocationsStreamsObjectsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://datastream.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsStreamsObjectsRequest",
+  }) as any as S.Schema<GetProjectsLocationsStreamsObjectsRequest>;
 
 /** Represents a filter for included data on a stream object. */
 export interface EventFilter {
@@ -2741,15 +3193,26 @@ export interface EventFilter {
   sqlWhereClause?: string;
 }
 export const EventFilter = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sqlWhereClause": S.optional(S.String),
-}),
+  S.Struct({
+    sqlWhereClause: S.optional(S.String),
+  }),
 ).annotate({ identifier: "EventFilter" }) as any as S.Schema<EventFilter>;
 
-export type BackfillJobStateEnum = "STATE_UNSPECIFIED" | "NOT_STARTED" | "PENDING" | "ACTIVE" | "STOPPED" | "FAILED" | "COMPLETED" | "UNSUPPORTED";
+export type BackfillJobStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "NOT_STARTED"
+  | "PENDING"
+  | "ACTIVE"
+  | "STOPPED"
+  | "FAILED"
+  | "COMPLETED"
+  | "UNSUPPORTED";
 export const BackfillJobStateEnum = /*@__PURE__*/ S.String;
 
-export type BackfillJobTriggerEnum = "TRIGGER_UNSPECIFIED" | "AUTOMATIC" | "MANUAL";
+export type BackfillJobTriggerEnum =
+  | "TRIGGER_UNSPECIFIED"
+  | "AUTOMATIC"
+  | "MANUAL";
 export const BackfillJobTriggerEnum = /*@__PURE__*/ S.String;
 
 /** Represents a backfill job on a specific stream object. */
@@ -2768,14 +3231,14 @@ export interface BackfillJob {
   lastEndTime?: string;
 }
 export const BackfillJob = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "lastStartTime": S.optional(S.String),
-  "eventFilter": S.optional(EventFilter),
-  "errors": S.optional(Datastream_ErrorList),
-  "state": S.optional(BackfillJobStateEnum),
-  "trigger": S.optional(BackfillJobTriggerEnum),
-  "lastEndTime": S.optional(S.String),
-}),
+  S.Struct({
+    lastStartTime: S.optional(S.String),
+    eventFilter: S.optional(EventFilter),
+    errors: S.optional(Datastream_ErrorList),
+    state: S.optional(BackfillJobStateEnum),
+    trigger: S.optional(BackfillJobTriggerEnum),
+    lastEndTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "BackfillJob" }) as any as S.Schema<BackfillJob>;
 
 /** A specific stream object (e.g a specific DB table). */
@@ -2798,16 +3261,16 @@ export interface StreamObject {
   backfillJob?: BackfillJob;
 }
 export const StreamObject = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "errors": S.optional(Datastream_ErrorList),
-  "displayName": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "customizationRules": S.optional(CustomizationRuleList),
-  "sourceObject": S.optional(SourceObjectIdentifier),
-  "backfillJob": S.optional(BackfillJob),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    errors: S.optional(Datastream_ErrorList),
+    displayName: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    createTime: S.optional(S.String),
+    customizationRules: S.optional(CustomizationRuleList),
+    sourceObject: S.optional(SourceObjectIdentifier),
+    backfillJob: S.optional(BackfillJob),
+  }),
 ).annotate({ identifier: "StreamObject" }) as any as S.Schema<StreamObject>;
 
 export interface ListProjectsLocationsRequest {
@@ -2823,17 +3286,27 @@ export interface ListProjectsLocationsRequest {
   filter?: string;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/locations","baseUrl":"https://datastream.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
+  S.Struct({
+    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    filter: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}/locations",
+      baseUrl: "https://datastream.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsRequest",
+}) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(
+  Location,
+) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -2843,11 +3316,13 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locations": S.optional(LocationList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
+  S.Struct({
+    locations: S.optional(LocationList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListLocationsResponse",
+}) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsLocationsConnectionProfilesRequest {
   /** Optional. Maximum number of connection profiles to return. If unspecified, at most 50 connection profiles will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
@@ -2861,18 +3336,29 @@ export interface ListProjectsLocationsConnectionProfilesRequest {
   /** Optional. Filter request. */
   filter?: string;
 }
-export const ListProjectsLocationsConnectionProfilesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/connectionProfiles","baseUrl":"https://datastream.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsConnectionProfilesRequest" }) as any as S.Schema<ListProjectsLocationsConnectionProfilesRequest>;
+export const ListProjectsLocationsConnectionProfilesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/connectionProfiles",
+        baseUrl: "https://datastream.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsConnectionProfilesRequest",
+  }) as any as S.Schema<ListProjectsLocationsConnectionProfilesRequest>;
 
 export type ConnectionProfileList = ReadonlyArray<ConnectionProfile>;
-export const ConnectionProfileList = /*@__PURE__*/ S.Array(ConnectionProfile) as any as S.Schema<ConnectionProfileList>;
+export const ConnectionProfileList = /*@__PURE__*/ S.Array(
+  ConnectionProfile,
+) as any as S.Schema<ConnectionProfileList>;
 
 /** Response message for listing connection profiles. */
 export interface ListConnectionProfilesResponse {
@@ -2884,12 +3370,14 @@ export interface ListConnectionProfilesResponse {
   connectionProfiles?: ConnectionProfileList;
 }
 export const ListConnectionProfilesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-  "connectionProfiles": S.optional(ConnectionProfileList),
-}),
-).annotate({ identifier: "ListConnectionProfilesResponse" }) as any as S.Schema<ListConnectionProfilesResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+    connectionProfiles: S.optional(ConnectionProfileList),
+  }),
+).annotate({
+  identifier: "ListConnectionProfilesResponse",
+}) as any as S.Schema<ListConnectionProfilesResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page size. */
@@ -2903,18 +3391,29 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list filter. */
   filter?: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/operations","baseUrl":"https://datastream.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      filter: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}/operations",
+        baseUrl: "https://datastream.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsOperationsRequest",
+}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(
+  Operation,
+) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -2926,12 +3425,14 @@ export interface ListOperationsResponse {
   operations?: OperationList;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-  "operations": S.optional(OperationList),
-}),
-).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+    operations: S.optional(OperationList),
+  }),
+).annotate({
+  identifier: "ListOperationsResponse",
+}) as any as S.Schema<ListOperationsResponse>;
 
 export interface ListProjectsLocationsPrivateConnectionsRequest {
   /** Maximum number of private connectivity configurations to return. If unspecified, at most 50 private connectivity configurations that will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
@@ -2945,18 +3446,29 @@ export interface ListProjectsLocationsPrivateConnectionsRequest {
   /** Optional. Filter request. */
   filter?: string;
 }
-export const ListProjectsLocationsPrivateConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/privateConnections","baseUrl":"https://datastream.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsPrivateConnectionsRequest" }) as any as S.Schema<ListProjectsLocationsPrivateConnectionsRequest>;
+export const ListProjectsLocationsPrivateConnectionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/privateConnections",
+        baseUrl: "https://datastream.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsPrivateConnectionsRequest",
+  }) as any as S.Schema<ListProjectsLocationsPrivateConnectionsRequest>;
 
 export type PrivateConnectionList = ReadonlyArray<PrivateConnection>;
-export const PrivateConnectionList = /*@__PURE__*/ S.Array(PrivateConnection) as any as S.Schema<PrivateConnectionList>;
+export const PrivateConnectionList = /*@__PURE__*/ S.Array(
+  PrivateConnection,
+) as any as S.Schema<PrivateConnectionList>;
 
 /** Response containing a list of private connection configurations. */
 export interface ListPrivateConnectionsResponse {
@@ -2968,12 +3480,14 @@ export interface ListPrivateConnectionsResponse {
   unreachable?: StringList;
 }
 export const ListPrivateConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "privateConnections": S.optional(PrivateConnectionList),
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListPrivateConnectionsResponse" }) as any as S.Schema<ListPrivateConnectionsResponse>;
+  S.Struct({
+    privateConnections: S.optional(PrivateConnectionList),
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListPrivateConnectionsResponse",
+}) as any as S.Schema<ListPrivateConnectionsResponse>;
 
 export interface ListProjectsLocationsPrivateConnectionsRoutesRequest {
   /** Optional. Maximum number of Routes to return. The service may return fewer than this value. If unspecified, at most 50 Routes will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
@@ -2987,18 +3501,29 @@ export interface ListProjectsLocationsPrivateConnectionsRoutesRequest {
   /** Optional. Filter request. */
   filter?: string;
 }
-export const ListProjectsLocationsPrivateConnectionsRoutesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/routes","baseUrl":"https://datastream.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsPrivateConnectionsRoutesRequest" }) as any as S.Schema<ListProjectsLocationsPrivateConnectionsRoutesRequest>;
+export const ListProjectsLocationsPrivateConnectionsRoutesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/routes",
+        baseUrl: "https://datastream.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsPrivateConnectionsRoutesRequest",
+  }) as any as S.Schema<ListProjectsLocationsPrivateConnectionsRoutesRequest>;
 
 export type RouteList = ReadonlyArray<Route>;
-export const RouteList = /*@__PURE__*/ S.Array(Route) as any as S.Schema<RouteList>;
+export const RouteList = /*@__PURE__*/ S.Array(
+  Route,
+) as any as S.Schema<RouteList>;
 
 /** Route list response. */
 export interface ListRoutesResponse {
@@ -3010,12 +3535,14 @@ export interface ListRoutesResponse {
   unreachable?: StringList;
 }
 export const ListRoutesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "routes": S.optional(RouteList),
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListRoutesResponse" }) as any as S.Schema<ListRoutesResponse>;
+  S.Struct({
+    routes: S.optional(RouteList),
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListRoutesResponse",
+}) as any as S.Schema<ListRoutesResponse>;
 
 export interface ListProjectsLocationsStreamsRequest {
   /** Optional. Maximum number of streams to return. If unspecified, at most 50 streams will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
@@ -3030,17 +3557,27 @@ export interface ListProjectsLocationsStreamsRequest {
   orderBy?: string;
 }
 export const ListProjectsLocationsStreamsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/streams","baseUrl":"https://datastream.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsStreamsRequest" }) as any as S.Schema<ListProjectsLocationsStreamsRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/streams",
+      baseUrl: "https://datastream.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsStreamsRequest",
+}) as any as S.Schema<ListProjectsLocationsStreamsRequest>;
 
 export type StreamList = ReadonlyArray<Stream>;
-export const StreamList = /*@__PURE__*/ S.Array(Stream) as any as S.Schema<StreamList>;
+export const StreamList = /*@__PURE__*/ S.Array(
+  Stream,
+) as any as S.Schema<StreamList>;
 
 /** Response message for listing streams. */
 export interface ListStreamsResponse {
@@ -3052,12 +3589,14 @@ export interface ListStreamsResponse {
   streams?: StreamList;
 }
 export const ListStreamsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-  "streams": S.optional(StreamList),
-}),
-).annotate({ identifier: "ListStreamsResponse" }) as any as S.Schema<ListStreamsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+    streams: S.optional(StreamList),
+  }),
+).annotate({
+  identifier: "ListStreamsResponse",
+}) as any as S.Schema<ListStreamsResponse>;
 
 export interface ListProjectsLocationsStreamsObjectsRequest {
   /** Optional. Maximum number of objects to return. Default is 50. The maximum value is 1000; values above 1000 will be coerced to 1000. */
@@ -3067,16 +3606,27 @@ export interface ListProjectsLocationsStreamsObjectsRequest {
   /** Required. The parent stream that owns the collection of objects. */
   parent: string;
 }
-export const ListProjectsLocationsStreamsObjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/objects","baseUrl":"https://datastream.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsStreamsObjectsRequest" }) as any as S.Schema<ListProjectsLocationsStreamsObjectsRequest>;
+export const ListProjectsLocationsStreamsObjectsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/objects",
+        baseUrl: "https://datastream.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsStreamsObjectsRequest",
+  }) as any as S.Schema<ListProjectsLocationsStreamsObjectsRequest>;
 
 export type StreamObjectList = ReadonlyArray<StreamObject>;
-export const StreamObjectList = /*@__PURE__*/ S.Array(StreamObject) as any as S.Schema<StreamObjectList>;
+export const StreamObjectList = /*@__PURE__*/ S.Array(
+  StreamObject,
+) as any as S.Schema<StreamObjectList>;
 
 /** Response containing the objects for a stream. */
 export interface ListStreamObjectsResponse {
@@ -3086,11 +3636,13 @@ export interface ListStreamObjectsResponse {
   nextPageToken?: string;
 }
 export const ListStreamObjectsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "streamObjects": S.optional(StreamObjectList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListStreamObjectsResponse" }) as any as S.Schema<ListStreamObjectsResponse>;
+  S.Struct({
+    streamObjects: S.optional(StreamObjectList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListStreamObjectsResponse",
+}) as any as S.Schema<ListStreamObjectsResponse>;
 
 /** Request for looking up a specific stream object by its source object identifier. */
 export interface LookupStreamObjectRequest {
@@ -3098,10 +3650,12 @@ export interface LookupStreamObjectRequest {
   sourceObjectIdentifier?: SourceObjectIdentifier;
 }
 export const LookupStreamObjectRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sourceObjectIdentifier": S.optional(SourceObjectIdentifier),
-}),
-).annotate({ identifier: "LookupStreamObjectRequest" }) as any as S.Schema<LookupStreamObjectRequest>;
+  S.Struct({
+    sourceObjectIdentifier: S.optional(SourceObjectIdentifier),
+  }),
+).annotate({
+  identifier: "LookupStreamObjectRequest",
+}) as any as S.Schema<LookupStreamObjectRequest>;
 
 export interface LookupProjectsLocationsStreamsObjectsRequest {
   /** Required. The parent stream that owns the collection of objects. */
@@ -3109,12 +3663,21 @@ export interface LookupProjectsLocationsStreamsObjectsRequest {
   /** Request body */
   body?: LookupStreamObjectRequest;
 }
-export const LookupProjectsLocationsStreamsObjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(LookupStreamObjectRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/objects:lookup","baseUrl":"https://datastream.googleapis.com/"})),
-).annotate({ identifier: "LookupProjectsLocationsStreamsObjectsRequest" }) as any as S.Schema<LookupProjectsLocationsStreamsObjectsRequest>;
+export const LookupProjectsLocationsStreamsObjectsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(LookupStreamObjectRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/objects:lookup",
+        baseUrl: "https://datastream.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "LookupProjectsLocationsStreamsObjectsRequest",
+  }) as any as S.Schema<LookupProjectsLocationsStreamsObjectsRequest>;
 
 export interface PatchProjectsLocationsConnectionProfilesRequest {
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -3130,16 +3693,25 @@ export interface PatchProjectsLocationsConnectionProfilesRequest {
   /** Request body */
   body?: ConnectionProfile;
 }
-export const PatchProjectsLocationsConnectionProfilesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "force": S.optional(S.Boolean.pipe(T.Query())),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(ConnectionProfile.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://datastream.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsConnectionProfilesRequest" }) as any as S.Schema<PatchProjectsLocationsConnectionProfilesRequest>;
+export const PatchProjectsLocationsConnectionProfilesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      requestId: S.optional(S.String.pipe(T.Query())),
+      force: S.optional(S.Boolean.pipe(T.Query())),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      body: S.optional(ConnectionProfile.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://datastream.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsConnectionProfilesRequest",
+  }) as any as S.Schema<PatchProjectsLocationsConnectionProfilesRequest>;
 
 export interface PatchProjectsLocationsStreamsRequest {
   /** Optional. Only validate the stream with the changes, without actually updating it. The default is false. */
@@ -3155,16 +3727,25 @@ export interface PatchProjectsLocationsStreamsRequest {
   /** Request body */
   body?: Stream;
 }
-export const PatchProjectsLocationsStreamsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "force": S.optional(S.Boolean.pipe(T.Query())),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Stream.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://datastream.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsStreamsRequest" }) as any as S.Schema<PatchProjectsLocationsStreamsRequest>;
+export const PatchProjectsLocationsStreamsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      force: S.optional(S.Boolean.pipe(T.Query())),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Stream.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://datastream.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "PatchProjectsLocationsStreamsRequest",
+}) as any as S.Schema<PatchProjectsLocationsStreamsRequest>;
 
 /** MySQL log position */
 export interface MysqlLogPosition {
@@ -3174,11 +3755,13 @@ export interface MysqlLogPosition {
   logPosition?: number;
 }
 export const MysqlLogPosition = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "logFile": S.optional(S.String),
-  "logPosition": S.optional(S.Number),
-}),
-).annotate({ identifier: "MysqlLogPosition" }) as any as S.Schema<MysqlLogPosition>;
+  S.Struct({
+    logFile: S.optional(S.String),
+    logPosition: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "MysqlLogPosition",
+}) as any as S.Schema<MysqlLogPosition>;
 
 /** MySQL GTID position */
 export interface MysqlGtidPosition {
@@ -3186,10 +3769,12 @@ export interface MysqlGtidPosition {
   gtidSet?: string;
 }
 export const MysqlGtidPosition = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "gtidSet": S.optional(S.String),
-}),
-).annotate({ identifier: "MysqlGtidPosition" }) as any as S.Schema<MysqlGtidPosition>;
+  S.Struct({
+    gtidSet: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MysqlGtidPosition",
+}) as any as S.Schema<MysqlGtidPosition>;
 
 /** Oracle SCN position */
 export interface OracleScnPosition {
@@ -3197,10 +3782,12 @@ export interface OracleScnPosition {
   scn?: string;
 }
 export const OracleScnPosition = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "scn": S.optional(S.String),
-}),
-).annotate({ identifier: "OracleScnPosition" }) as any as S.Schema<OracleScnPosition>;
+  S.Struct({
+    scn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OracleScnPosition",
+}) as any as S.Schema<OracleScnPosition>;
 
 /** Represents a position in a Spanner change stream from which to start replicating. */
 export interface SpannerChangeStreamPosition {
@@ -3208,10 +3795,12 @@ export interface SpannerChangeStreamPosition {
   startTime?: string;
 }
 export const SpannerChangeStreamPosition = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "startTime": S.optional(S.String),
-}),
-).annotate({ identifier: "SpannerChangeStreamPosition" }) as any as S.Schema<SpannerChangeStreamPosition>;
+  S.Struct({
+    startTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SpannerChangeStreamPosition",
+}) as any as S.Schema<SpannerChangeStreamPosition>;
 
 /** MongoDB change stream position */
 export interface MongodbChangeStreamPosition {
@@ -3219,10 +3808,12 @@ export interface MongodbChangeStreamPosition {
   startTime?: string;
 }
 export const MongodbChangeStreamPosition = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "startTime": S.optional(S.String),
-}),
-).annotate({ identifier: "MongodbChangeStreamPosition" }) as any as S.Schema<MongodbChangeStreamPosition>;
+  S.Struct({
+    startTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MongodbChangeStreamPosition",
+}) as any as S.Schema<MongodbChangeStreamPosition>;
 
 /** SQL Server LSN position */
 export interface SqlServerLsnPosition {
@@ -3230,10 +3821,12 @@ export interface SqlServerLsnPosition {
   lsn?: string;
 }
 export const SqlServerLsnPosition = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "lsn": S.optional(S.String),
-}),
-).annotate({ identifier: "SqlServerLsnPosition" }) as any as S.Schema<SqlServerLsnPosition>;
+  S.Struct({
+    lsn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SqlServerLsnPosition",
+}) as any as S.Schema<SqlServerLsnPosition>;
 
 /** CDC strategy to start replicating from a specific position in the source. */
 export interface SpecificStartPosition {
@@ -3251,27 +3844,33 @@ export interface SpecificStartPosition {
   sqlServerLsnPosition?: SqlServerLsnPosition;
 }
 export const SpecificStartPosition = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "mysqlLogPosition": S.optional(MysqlLogPosition),
-  "mysqlGtidPosition": S.optional(MysqlGtidPosition),
-  "oracleScnPosition": S.optional(OracleScnPosition),
-  "spannerChangeStreamPosition": S.optional(SpannerChangeStreamPosition),
-  "mongodbChangeStreamPosition": S.optional(MongodbChangeStreamPosition),
-  "sqlServerLsnPosition": S.optional(SqlServerLsnPosition),
-}),
-).annotate({ identifier: "SpecificStartPosition" }) as any as S.Schema<SpecificStartPosition>;
+  S.Struct({
+    mysqlLogPosition: S.optional(MysqlLogPosition),
+    mysqlGtidPosition: S.optional(MysqlGtidPosition),
+    oracleScnPosition: S.optional(OracleScnPosition),
+    spannerChangeStreamPosition: S.optional(SpannerChangeStreamPosition),
+    mongodbChangeStreamPosition: S.optional(MongodbChangeStreamPosition),
+    sqlServerLsnPosition: S.optional(SqlServerLsnPosition),
+  }),
+).annotate({
+  identifier: "SpecificStartPosition",
+}) as any as S.Schema<SpecificStartPosition>;
 
 /** CDC strategy to resume replication from the next available position in the source. */
 export interface NextAvailableStartPosition {}
 export const NextAvailableStartPosition = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "NextAvailableStartPosition" }) as any as S.Schema<NextAvailableStartPosition>;
+  S.Struct({}),
+).annotate({
+  identifier: "NextAvailableStartPosition",
+}) as any as S.Schema<NextAvailableStartPosition>;
 
 /** CDC strategy to start replicating from the most recent position in the source. */
 export interface MostRecentStartPosition {}
 export const MostRecentStartPosition = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "MostRecentStartPosition" }) as any as S.Schema<MostRecentStartPosition>;
+  S.Struct({}),
+).annotate({
+  identifier: "MostRecentStartPosition",
+}) as any as S.Schema<MostRecentStartPosition>;
 
 /** The strategy that the stream uses for CDC replication. */
 export interface CdcStrategy {
@@ -3283,11 +3882,11 @@ export interface CdcStrategy {
   mostRecentStartPosition?: MostRecentStartPosition;
 }
 export const CdcStrategy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "specificStartPosition": S.optional(SpecificStartPosition),
-  "nextAvailableStartPosition": S.optional(NextAvailableStartPosition),
-  "mostRecentStartPosition": S.optional(MostRecentStartPosition),
-}),
+  S.Struct({
+    specificStartPosition: S.optional(SpecificStartPosition),
+    nextAvailableStartPosition: S.optional(NextAvailableStartPosition),
+    mostRecentStartPosition: S.optional(MostRecentStartPosition),
+  }),
 ).annotate({ identifier: "CdcStrategy" }) as any as S.Schema<CdcStrategy>;
 
 /** Request message for running a stream. */
@@ -3298,11 +3897,13 @@ export interface RunStreamRequest {
   force?: boolean;
 }
 export const RunStreamRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "cdcStrategy": S.optional(CdcStrategy),
-  "force": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "RunStreamRequest" }) as any as S.Schema<RunStreamRequest>;
+  S.Struct({
+    cdcStrategy: S.optional(CdcStrategy),
+    force: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "RunStreamRequest",
+}) as any as S.Schema<RunStreamRequest>;
 
 export interface RunProjectsLocationsStreamsRequest {
   /** Required. Name of the stream resource to start, in the format: projects/{project_id}/locations/{location}/streams/{stream_name} */
@@ -3311,11 +3912,19 @@ export interface RunProjectsLocationsStreamsRequest {
   body?: RunStreamRequest;
 }
 export const RunProjectsLocationsStreamsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(RunStreamRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:run","baseUrl":"https://datastream.googleapis.com/"})),
-).annotate({ identifier: "RunProjectsLocationsStreamsRequest" }) as any as S.Schema<RunProjectsLocationsStreamsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(RunStreamRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:run",
+      baseUrl: "https://datastream.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "RunProjectsLocationsStreamsRequest",
+}) as any as S.Schema<RunProjectsLocationsStreamsRequest>;
 
 /** Request for manually initiating a backfill job for a specific stream object. */
 export interface StartBackfillJobRequest {
@@ -3323,10 +3932,12 @@ export interface StartBackfillJobRequest {
   eventFilter?: EventFilter;
 }
 export const StartBackfillJobRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "eventFilter": S.optional(EventFilter),
-}),
-).annotate({ identifier: "StartBackfillJobRequest" }) as any as S.Schema<StartBackfillJobRequest>;
+  S.Struct({
+    eventFilter: S.optional(EventFilter),
+  }),
+).annotate({
+  identifier: "StartBackfillJobRequest",
+}) as any as S.Schema<StartBackfillJobRequest>;
 
 export interface StartBackfillJobProjectsLocationsStreamsObjectsRequest {
   /** Required. The name of the stream object resource to start a backfill job for. */
@@ -3334,12 +3945,21 @@ export interface StartBackfillJobProjectsLocationsStreamsObjectsRequest {
   /** Request body */
   body?: StartBackfillJobRequest;
 }
-export const StartBackfillJobProjectsLocationsStreamsObjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "object": S.String.pipe(T.Label()),
-  "body": S.optional(StartBackfillJobRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+object}:startBackfillJob","baseUrl":"https://datastream.googleapis.com/"})),
-).annotate({ identifier: "StartBackfillJobProjectsLocationsStreamsObjectsRequest" }) as any as S.Schema<StartBackfillJobProjectsLocationsStreamsObjectsRequest>;
+export const StartBackfillJobProjectsLocationsStreamsObjectsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      object: S.String.pipe(T.Label()),
+      body: S.optional(StartBackfillJobRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+object}:startBackfillJob",
+        baseUrl: "https://datastream.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "StartBackfillJobProjectsLocationsStreamsObjectsRequest",
+  }) as any as S.Schema<StartBackfillJobProjectsLocationsStreamsObjectsRequest>;
 
 /** Response for manually initiating a backfill job for a specific stream object. */
 export interface StartBackfillJobResponse {
@@ -3347,16 +3967,20 @@ export interface StartBackfillJobResponse {
   object?: StreamObject;
 }
 export const StartBackfillJobResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "object": S.optional(StreamObject),
-}),
-).annotate({ identifier: "StartBackfillJobResponse" }) as any as S.Schema<StartBackfillJobResponse>;
+  S.Struct({
+    object: S.optional(StreamObject),
+  }),
+).annotate({
+  identifier: "StartBackfillJobResponse",
+}) as any as S.Schema<StartBackfillJobResponse>;
 
 /** Request for manually stopping a running backfill job for a specific stream object. */
 export interface StopBackfillJobRequest {}
 export const StopBackfillJobRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "StopBackfillJobRequest" }) as any as S.Schema<StopBackfillJobRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "StopBackfillJobRequest",
+}) as any as S.Schema<StopBackfillJobRequest>;
 
 export interface StopBackfillJobProjectsLocationsStreamsObjectsRequest {
   /** Required. The name of the stream object resource to stop the backfill job for. */
@@ -3364,12 +3988,21 @@ export interface StopBackfillJobProjectsLocationsStreamsObjectsRequest {
   /** Request body */
   body?: StopBackfillJobRequest;
 }
-export const StopBackfillJobProjectsLocationsStreamsObjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "object": S.String.pipe(T.Label()),
-  "body": S.optional(StopBackfillJobRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+object}:stopBackfillJob","baseUrl":"https://datastream.googleapis.com/"})),
-).annotate({ identifier: "StopBackfillJobProjectsLocationsStreamsObjectsRequest" }) as any as S.Schema<StopBackfillJobProjectsLocationsStreamsObjectsRequest>;
+export const StopBackfillJobProjectsLocationsStreamsObjectsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      object: S.String.pipe(T.Label()),
+      body: S.optional(StopBackfillJobRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+object}:stopBackfillJob",
+        baseUrl: "https://datastream.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "StopBackfillJobProjectsLocationsStreamsObjectsRequest",
+  }) as any as S.Schema<StopBackfillJobProjectsLocationsStreamsObjectsRequest>;
 
 /** Response for manually stop a backfill job for a specific stream object. */
 export interface StopBackfillJobResponse {
@@ -3377,12 +4010,19 @@ export interface StopBackfillJobResponse {
   object?: StreamObject;
 }
 export const StopBackfillJobResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "object": S.optional(StreamObject),
-}),
-).annotate({ identifier: "StopBackfillJobResponse" }) as any as S.Schema<StopBackfillJobResponse>;
+  S.Struct({
+    object: S.optional(StreamObject),
+  }),
+).annotate({
+  identifier: "StopBackfillJobResponse",
+}) as any as S.Schema<StopBackfillJobResponse>;
 
-export type CancelProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CancelProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsRequest,
@@ -3397,7 +4037,12 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsConnectionProfilesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsConnectionProfilesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Use this method to create a connection profile in a project and location. */
 export const createProjectsLocationsConnectionProfiles: API.OperationMethod<
   CreateProjectsLocationsConnectionProfilesRequest,
@@ -3412,7 +4057,12 @@ export const createProjectsLocationsConnectionProfiles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsPrivateConnectionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsPrivateConnectionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Use this method to create a private connectivity configuration. */
 export const createProjectsLocationsPrivateConnections: API.OperationMethod<
   CreateProjectsLocationsPrivateConnectionsRequest,
@@ -3427,7 +4077,12 @@ export const createProjectsLocationsPrivateConnections: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsPrivateConnectionsRoutesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsPrivateConnectionsRoutesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Use this method to create a route for a private connectivity configuration in a project and location. */
 export const createProjectsLocationsPrivateConnectionsRoutes: API.OperationMethod<
   CreateProjectsLocationsPrivateConnectionsRoutesRequest,
@@ -3442,7 +4097,12 @@ export const createProjectsLocationsPrivateConnectionsRoutes: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsStreamsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsStreamsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Use this method to create a stream. */
 export const createProjectsLocationsStreams: API.OperationMethod<
   CreateProjectsLocationsStreamsRequest,
@@ -3457,7 +4117,12 @@ export const createProjectsLocationsStreams: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsConnectionProfilesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsConnectionProfilesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Use this method to delete a connection profile. */
 export const deleteProjectsLocationsConnectionProfiles: API.OperationMethod<
   DeleteProjectsLocationsConnectionProfilesRequest,
@@ -3472,7 +4137,12 @@ export const deleteProjectsLocationsConnectionProfiles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsRequest,
@@ -3487,7 +4157,12 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsPrivateConnectionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsPrivateConnectionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Use this method to delete a private connectivity configuration. */
 export const deleteProjectsLocationsPrivateConnections: API.OperationMethod<
   DeleteProjectsLocationsPrivateConnectionsRequest,
@@ -3502,7 +4177,12 @@ export const deleteProjectsLocationsPrivateConnections: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsPrivateConnectionsRoutesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsPrivateConnectionsRoutesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Use this method to delete a route. */
 export const deleteProjectsLocationsPrivateConnectionsRoutes: API.OperationMethod<
   DeleteProjectsLocationsPrivateConnectionsRoutesRequest,
@@ -3517,7 +4197,12 @@ export const deleteProjectsLocationsPrivateConnectionsRoutes: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsStreamsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsStreamsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Use this method to delete a stream. */
 export const deleteProjectsLocationsStreams: API.OperationMethod<
   DeleteProjectsLocationsStreamsRequest,
@@ -3532,7 +4217,12 @@ export const deleteProjectsLocationsStreams: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DiscoverProjectsLocationsConnectionProfilesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DiscoverProjectsLocationsConnectionProfilesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Use this method to discover a connection profile. The discover API call exposes the data objects and metadata belonging to the profile. Typically, a request returns children data objects of a parent data object that's optionally supplied in the request. */
 export const discoverProjectsLocationsConnectionProfiles: API.OperationMethod<
   DiscoverProjectsLocationsConnectionProfilesRequest,
@@ -3547,7 +4237,10 @@ export const discoverProjectsLocationsConnectionProfiles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type FetchStaticIpsProjectsLocationsError = NotFound | Forbidden | GcpOpError;
+export type FetchStaticIpsProjectsLocationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** The FetchStaticIps API call exposes the static IP addresses used by Datastream. */
 export const fetchStaticIpsProjectsLocations: API.PaginatedOperationMethod<
   FetchStaticIpsProjectsLocationsRequest,
@@ -3560,7 +4253,10 @@ export const fetchStaticIpsProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type GetProjectsLocationsError = NotFound | Forbidden | GcpOpError;
@@ -3578,7 +4274,10 @@ export const getProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsConnectionProfilesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsConnectionProfilesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Use this method to get details about a connection profile. */
 export const getProjectsLocationsConnectionProfiles: API.OperationMethod<
   GetProjectsLocationsConnectionProfilesRequest,
@@ -3593,7 +4292,10 @@ export const getProjectsLocationsConnectionProfiles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -3608,7 +4310,10 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsPrivateConnectionsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsPrivateConnectionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Use this method to get details about a private connectivity configuration. */
 export const getProjectsLocationsPrivateConnections: API.OperationMethod<
   GetProjectsLocationsPrivateConnectionsRequest,
@@ -3623,7 +4328,10 @@ export const getProjectsLocationsPrivateConnections: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsPrivateConnectionsRoutesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsPrivateConnectionsRoutesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Use this method to get details about a route. */
 export const getProjectsLocationsPrivateConnectionsRoutes: API.OperationMethod<
   GetProjectsLocationsPrivateConnectionsRoutesRequest,
@@ -3638,7 +4346,10 @@ export const getProjectsLocationsPrivateConnectionsRoutes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsStreamsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsStreamsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Use this method to get details about a stream. */
 export const getProjectsLocationsStreams: API.OperationMethod<
   GetProjectsLocationsStreamsRequest,
@@ -3653,7 +4364,10 @@ export const getProjectsLocationsStreams: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsStreamsObjectsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsStreamsObjectsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Use this method to get details about a stream object. */
 export const getProjectsLocationsStreamsObjects: API.OperationMethod<
   GetProjectsLocationsStreamsObjectsRequest,
@@ -3681,10 +4395,16 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsConnectionProfilesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsConnectionProfilesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Use this method to list connection profiles created in a project and location. */
 export const listProjectsLocationsConnectionProfiles: API.PaginatedOperationMethod<
   ListProjectsLocationsConnectionProfilesRequest,
@@ -3697,10 +4417,16 @@ export const listProjectsLocationsConnectionProfiles: API.PaginatedOperationMeth
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -3713,10 +4439,16 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsPrivateConnectionsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsPrivateConnectionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Use this method to list private connectivity configurations in a project and location. */
 export const listProjectsLocationsPrivateConnections: API.PaginatedOperationMethod<
   ListProjectsLocationsPrivateConnectionsRequest,
@@ -3729,10 +4461,16 @@ export const listProjectsLocationsPrivateConnections: API.PaginatedOperationMeth
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsPrivateConnectionsRoutesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsPrivateConnectionsRoutesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Use this method to list routes created for a private connectivity configuration in a project and location. */
 export const listProjectsLocationsPrivateConnectionsRoutes: API.PaginatedOperationMethod<
   ListProjectsLocationsPrivateConnectionsRoutesRequest,
@@ -3745,10 +4483,16 @@ export const listProjectsLocationsPrivateConnectionsRoutes: API.PaginatedOperati
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsStreamsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsStreamsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Use this method to list streams in a project and location. */
 export const listProjectsLocationsStreams: API.PaginatedOperationMethod<
   ListProjectsLocationsStreamsRequest,
@@ -3761,10 +4505,16 @@ export const listProjectsLocationsStreams: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsStreamsObjectsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsStreamsObjectsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Use this method to list the objects of a specific stream. */
 export const listProjectsLocationsStreamsObjects: API.PaginatedOperationMethod<
   ListProjectsLocationsStreamsObjectsRequest,
@@ -3777,10 +4527,18 @@ export const listProjectsLocationsStreamsObjects: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type LookupProjectsLocationsStreamsObjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type LookupProjectsLocationsStreamsObjectsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Use this method to look up a stream object by its source object identifier. */
 export const lookupProjectsLocationsStreamsObjects: API.OperationMethod<
   LookupProjectsLocationsStreamsObjectsRequest,
@@ -3795,7 +4553,12 @@ export const lookupProjectsLocationsStreamsObjects: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsConnectionProfilesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsConnectionProfilesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Use this method to update the parameters of a connection profile. */
 export const patchProjectsLocationsConnectionProfiles: API.OperationMethod<
   PatchProjectsLocationsConnectionProfilesRequest,
@@ -3810,7 +4573,12 @@ export const patchProjectsLocationsConnectionProfiles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsStreamsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsStreamsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Use this method to update the configuration of a stream. */
 export const patchProjectsLocationsStreams: API.OperationMethod<
   PatchProjectsLocationsStreamsRequest,
@@ -3825,7 +4593,12 @@ export const patchProjectsLocationsStreams: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RunProjectsLocationsStreamsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RunProjectsLocationsStreamsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Use this method to start, resume or recover a stream with a non default CDC strategy. */
 export const runProjectsLocationsStreams: API.OperationMethod<
   RunProjectsLocationsStreamsRequest,
@@ -3840,7 +4613,12 @@ export const runProjectsLocationsStreams: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type StartBackfillJobProjectsLocationsStreamsObjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type StartBackfillJobProjectsLocationsStreamsObjectsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Use this method to start a backfill job for the specified stream object. */
 export const startBackfillJobProjectsLocationsStreamsObjects: API.OperationMethod<
   StartBackfillJobProjectsLocationsStreamsObjectsRequest,
@@ -3855,7 +4633,12 @@ export const startBackfillJobProjectsLocationsStreamsObjects: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type StopBackfillJobProjectsLocationsStreamsObjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type StopBackfillJobProjectsLocationsStreamsObjectsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Use this method to stop a backfill job for the specified stream object. */
 export const stopBackfillJobProjectsLocationsStreamsObjects: API.OperationMethod<
   StopBackfillJobProjectsLocationsStreamsObjectsRequest,
@@ -3869,4 +4652,3 @@ export const stopBackfillJobProjectsLocationsStreamsObjects: API.OperationMethod
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

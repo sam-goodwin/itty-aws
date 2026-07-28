@@ -2405,61 +2405,439 @@ export const HubspotTicketSignalExtra = /*@__PURE__*/ S.suspend(() =>
   identifier: "HubspotTicketSignalExtra",
 }) as any as S.Schema<HubspotTicketSignalExtra>;
 
-export type SignalExtra =
-  | SessionProblemSignalExtra
-  | LlmEvalSignalExtra
-  | LlmEvalReportSignalExtra
-  | ZendeskTicketSignalExtra
-  | GithubIssueSignalExtra
-  | LinearIssueSignalExtra
-  | JiraIssueSignalExtra
-  | ConversationsTicketSignalExtra
-  | ErrorTrackingSignalExtra
-  | PgAnalyzeIssueSignalExtra
-  | EndpointExecutionFailedSignalExtra
-  | EndpointBreakdownLimitExceededSignalExtra
-  | SignalsScoutSignalExtra
-  | LogsAlertStateChangeSignalExtra
-  | ReplayVisionScannerFindingSignalExtra
-  | AnalyticsAnomalyInvestigationSignalExtra
-  | HealthCheckSignalExtra
-  | EngineeringAnalyticsCIFlakyCheckSignalExtra
-  | EngineeringAnalyticsCIBrokenDefaultBranchSignalExtra
-  | EngineeringAnalyticsCIDurationRegressionSignalExtra
-  | FreshdeskTicketSignalExtra
-  | FreshserviceTicketSignalExtra
-  | FrontConversationSignalExtra
-  | GorgiasTicketSignalExtra
-  | KustomerConversationSignalExtra
-  | DixaConversationSignalExtra
-  | PlainThreadSignalExtra
-  | GitlabIssueSignalExtra
-  | GiteaIssueSignalExtra
-  | ShortcutStorySignalExtra
-  | SentryIssueSignalExtra
-  | RollbarItemSignalExtra
-  | BugsnagErrorSignalExtra
-  | HoneybadgerFaultSignalExtra
-  | RaygunErrorGroupSignalExtra
-  | SnykScannerFindingSignalExtra
-  | SonarqubeScannerFindingSignalExtra
-  | SemgrepScannerFindingSignalExtra
-  | Rapid7InsightvmScannerFindingSignalExtra
-  | FeaturebaseFeedbackSignalExtra
-  | FrillFeedbackSignalExtra
-  | AhaFeedbackSignalExtra
-  | UservoiceFeedbackSignalExtra
-  | ProductboardFeedbackSignalExtra
-  | CannyFeedbackSignalExtra
-  | AsknicelyFeedbackSignalExtra
-  | RetentlyFeedbackSignalExtra
-  | AppfiguresReviewSignalExtra
-  | AppfollowReviewSignalExtra
-  | JudgemeReviewsReviewSignalExtra
-  | IntercomTicketSignalExtra
-  | HubspotTicketSignalExtra;
-export const SignalExtra =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<SignalExtra>;
+export interface SignalExtra {
+  session_id?: string;
+  segment_title?: string;
+  start_time?: string | number;
+  end_time?: string | number;
+  problem_type?: ProblemTypeEnum | string;
+  distinct_id?: string | null;
+  session_start_time?: string | null;
+  session_end_time?: string | null;
+  session_duration?: number | null;
+  session_active_seconds?: number | null;
+  exported_asset_id?: number | null;
+  event_history?: SessionProblemSignalExtraEventHistoryList | null;
+  evaluation_id?: string;
+  target_event_id?: string | null;
+  target_event_type?: string | null;
+  trace_id?: string;
+  model?: string | null;
+  provider?: string | null;
+  evaluation_name?: string;
+  evaluation_description?: string;
+  report_id?: string;
+  report_run_id?: string;
+  period_start?: string;
+  period_end?: string;
+  url?: string | null;
+  type?: string | null;
+  tags?:
+    | ZendeskTicketSignalExtraTagsList
+    | SignalsScoutSignalExtraTagsList
+    | FreshdeskTicketSignalExtraTagsList
+    | FreshserviceTicketSignalExtraTagsList
+    | FrontConversationSignalExtraTagsList
+    | GorgiasTicketSignalExtraTagsList
+    | KustomerConversationSignalExtraTagsList
+    | DixaConversationSignalExtraTagsList
+    | HoneybadgerFaultSignalExtraTagsList
+    | FeaturebaseFeedbackSignalExtraTagsList
+    | ProductboardFeedbackSignalExtraTagsList
+    | CannyFeedbackSignalExtraTagsList
+    | null;
+  created_at?: string | null;
+  priority?: string | number | null;
+  status?: string | null;
+  html_url?: string | null;
+  number?: number | string | null;
+  labels?:
+    | GithubIssueSignalExtraLabelsList
+    | LinearIssueSignalExtraLabelsList
+    | JiraIssueSignalExtraLabelsList
+    | PlainThreadSignalExtraLabelsList
+    | GitlabIssueSignalExtraLabelsList
+    | GiteaIssueSignalExtraLabelsList
+    | ShortcutStorySignalExtraLabelsList;
+  updated_at?: string;
+  locked?: boolean;
+  state?: string | null;
+  identifier?: string;
+  priority_label?: string;
+  state_name?: string | null;
+  state_type?: string | null;
+  team_name?: string | null;
+  key?: string;
+  assignee?: string | null;
+  created?: string | null;
+  updated?: string | null;
+  ticket_number?: number;
+  channel_source?: string;
+  channel_detail?: string | null;
+  email_subject?: string | null;
+  fingerprint?: string;
+  severity?:
+    | string
+    | ReportPriority
+    | HealthCheckSignalExtraSeverityEnum
+    | null;
+  references?: PgAnalyzeIssueSignalExtraReferencesList;
+  database_id?: string | null;
+  server_human_id?: string | null;
+  server_name?: string | null;
+  synced_at?: string;
+  endpoint_name?: string;
+  endpoint_version?: number | null;
+  materialized?: boolean;
+  saved_query_id?: string | null;
+  error_class?: string;
+  error_message?: string;
+  breakdown_limit?: number;
+  scout_run_id?: string;
+  task_run_id?: string;
+  task_id?: string | null;
+  finding_id?: string;
+  skill_name?: string;
+  skill_version?: number;
+  confidence?: number | string | null;
+  hypothesis?: string | null;
+  evidence?: SignalsScoutSignalExtraEvidenceList;
+  dedupe_keys?: SignalsScoutSignalExtraDedupeKeysList | null;
+  time_range?: SignalsScoutTimeRange | null;
+  mcp_trace_id?: string | null;
+  alert_id?: string;
+  alert_name?: string;
+  action?: LogsAlertStateChangeSignalExtraActionEnum | string | null;
+  threshold_count?: number;
+  threshold_operator?: LogsAlertStateChangeSignalExtraThresholdOperatorEnum;
+  window_minutes?: number;
+  result_count?: number | null;
+  consecutive_failures?: number;
+  filters?: LogsAlertStateChangeSignalExtraFiltersMap;
+  scanner_id?: string;
+  scanner_name?: string;
+  scanner_type?: string;
+  observation_id?: string;
+  recording_start_time?: string | null;
+  recording_end_time?: string | null;
+  recording_duration?: number | null;
+  recording_active_seconds?: number | null;
+  alert_check_id?: string;
+  insight_id?: string;
+  detector_type?: string;
+  verdict?: InvestigationVerdictEnum;
+  insight_name?: string | null;
+  insight_short_id?: string | null;
+  triggered_dates?: AnalyticsAnomalyInvestigationSignalExtraTriggeredDatesList | null;
+  notebook_short_id?: string | null;
+  kind?: string;
+  issue_id?: string;
+  title?: string;
+  summary?: string;
+  link?: string;
+  payload?: HealthCheckSignalExtraPayloadMap;
+  repo_owner?: string;
+  repo_name?: string;
+  workflow_name?: string;
+  job_name?: string;
+  run_id?: number;
+  head_sha?: string;
+  failed_attempt?: number;
+  passed_attempt?: number;
+  flaky_count?: number;
+  window_days?: number;
+  branch?: string;
+  conclusive_success_rate?: number;
+  conclusive_run_count?: number;
+  latest_conclusion?: string;
+  window_hours?: number;
+  current_p95_seconds?: number;
+  baseline_p95_seconds?: number;
+  pct_increase?: number;
+  current_p50_seconds?: number;
+  baseline_p50_seconds?: number;
+  category?: string | null;
+  channel?: string | null;
+  created_datetime?: string | null;
+  createdAt?: string | null;
+  iid?: string | null;
+  project_id?: string | null;
+  story_type?: string | null;
+  workflow_state_id?: string | null;
+  level?: string | null;
+  permalink?: string | null;
+  shortId?: string | null;
+  firstSeen?: string | null;
+  environment?: string | null;
+  framework?: string | null;
+  last_occurrence_timestamp?: string | null;
+  context?: string | null;
+  first_seen?: string | null;
+  last_seen?: string | null;
+  component?: string | null;
+  applicationUrl?: string | null;
+  lastOccurredAt?: string | null;
+  effective_severity_level?: string | null;
+  rule?: string | null;
+  creationDate?: string | null;
+  cvss_v3_score?: string | null;
+  published?: string | null;
+  added?: string | null;
+  upvotes?: string | null;
+  vote_count?: string | null;
+  topics?: FrillFeedbackSignalExtraTopicsList;
+  workflow_status?: string | null;
+  score?: string | null;
+  votes?: string | null;
+  category_name?: string | null;
+  displayUrl?: string | null;
+  voteCount?: string | null;
+  question_type?: string | null;
+  segment?: string | null;
+  ratingCategory?: string | null;
+  feedbackTopics?: RetentlyFeedbackSignalExtraFeedbackTopicsList;
+  resolved?: string | null;
+  createdDate?: string | null;
+  stars?: string | null;
+  version?: string | null;
+  product?: string | null;
+  date?: string | null;
+  rating?: string | null;
+  store?: string | null;
+  app_version?: string | null;
+  product_title?: string | null;
+  verified?: string | null;
+  admin_assignee_id?: string | null;
+  hs_ticket_priority?: string | null;
+  hs_pipeline_stage?: string | null;
+  hs_ticket_category?: string | null;
+  createdate?: string | null;
+}
+export const SignalExtra = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    session_id: S.optional(S.String),
+    segment_title: S.optional(S.String),
+    start_time: S.optional(S.Union(S.String, S.Number)),
+    end_time: S.optional(S.Union(S.String, S.Number)),
+    problem_type: S.optional(S.Union(ProblemTypeEnum, S.String)),
+    distinct_id: S.optional(S.NullOr(S.String)),
+    session_start_time: S.optional(S.NullOr(S.String)),
+    session_end_time: S.optional(S.NullOr(S.String)),
+    session_duration: S.optional(S.NullOr(S.Number)),
+    session_active_seconds: S.optional(S.NullOr(S.Number)),
+    exported_asset_id: S.optional(S.NullOr(S.Number)),
+    event_history: S.optional(
+      S.NullOr(SessionProblemSignalExtraEventHistoryList),
+    ),
+    evaluation_id: S.optional(S.String),
+    target_event_id: S.optional(S.NullOr(S.String)),
+    target_event_type: S.optional(S.NullOr(S.String)),
+    trace_id: S.optional(S.String),
+    model: S.optional(S.NullOr(S.String)),
+    provider: S.optional(S.NullOr(S.String)),
+    evaluation_name: S.optional(S.String),
+    evaluation_description: S.optional(S.String),
+    report_id: S.optional(S.String),
+    report_run_id: S.optional(S.String),
+    period_start: S.optional(S.String),
+    period_end: S.optional(S.String),
+    url: S.optional(S.NullOr(S.String)),
+    type: S.optional(S.NullOr(S.String)),
+    tags: S.optional(
+      S.NullOr(
+        S.Union(
+          ZendeskTicketSignalExtraTagsList,
+          SignalsScoutSignalExtraTagsList,
+          FreshdeskTicketSignalExtraTagsList,
+          FreshserviceTicketSignalExtraTagsList,
+          FrontConversationSignalExtraTagsList,
+          GorgiasTicketSignalExtraTagsList,
+          KustomerConversationSignalExtraTagsList,
+          DixaConversationSignalExtraTagsList,
+          HoneybadgerFaultSignalExtraTagsList,
+          FeaturebaseFeedbackSignalExtraTagsList,
+          ProductboardFeedbackSignalExtraTagsList,
+          CannyFeedbackSignalExtraTagsList,
+        ),
+      ),
+    ),
+    created_at: S.optional(S.NullOr(S.String)),
+    priority: S.optional(S.NullOr(S.Union(S.String, S.Number))),
+    status: S.optional(S.NullOr(S.String)),
+    html_url: S.optional(S.NullOr(S.String)),
+    number: S.optional(S.NullOr(S.Union(S.Number, S.String))),
+    labels: S.optional(
+      S.Union(
+        GithubIssueSignalExtraLabelsList,
+        LinearIssueSignalExtraLabelsList,
+        JiraIssueSignalExtraLabelsList,
+        PlainThreadSignalExtraLabelsList,
+        GitlabIssueSignalExtraLabelsList,
+        GiteaIssueSignalExtraLabelsList,
+        ShortcutStorySignalExtraLabelsList,
+      ),
+    ),
+    updated_at: S.optional(S.String),
+    locked: S.optional(S.Boolean),
+    state: S.optional(S.NullOr(S.String)),
+    identifier: S.optional(S.String),
+    priority_label: S.optional(S.String),
+    state_name: S.optional(S.NullOr(S.String)),
+    state_type: S.optional(S.NullOr(S.String)),
+    team_name: S.optional(S.NullOr(S.String)),
+    key: S.optional(S.String),
+    assignee: S.optional(S.NullOr(S.String)),
+    created: S.optional(S.NullOr(S.String)),
+    updated: S.optional(S.NullOr(S.String)),
+    ticket_number: S.optional(S.Number),
+    channel_source: S.optional(S.String),
+    channel_detail: S.optional(S.NullOr(S.String)),
+    email_subject: S.optional(S.NullOr(S.String)),
+    fingerprint: S.optional(S.String),
+    severity: S.optional(
+      S.NullOr(
+        S.Union(S.String, ReportPriority, HealthCheckSignalExtraSeverityEnum),
+      ),
+    ),
+    references: S.optional(PgAnalyzeIssueSignalExtraReferencesList),
+    database_id: S.optional(S.NullOr(S.String)),
+    server_human_id: S.optional(S.NullOr(S.String)),
+    server_name: S.optional(S.NullOr(S.String)),
+    synced_at: S.optional(S.String),
+    endpoint_name: S.optional(S.String),
+    endpoint_version: S.optional(S.NullOr(S.Number)),
+    materialized: S.optional(S.Boolean),
+    saved_query_id: S.optional(S.NullOr(S.String)),
+    error_class: S.optional(S.String),
+    error_message: S.optional(S.String),
+    breakdown_limit: S.optional(S.Number),
+    scout_run_id: S.optional(S.String),
+    task_run_id: S.optional(S.String),
+    task_id: S.optional(S.NullOr(S.String)),
+    finding_id: S.optional(S.String),
+    skill_name: S.optional(S.String),
+    skill_version: S.optional(S.Number),
+    confidence: S.optional(S.NullOr(S.Union(S.Number, S.String))),
+    hypothesis: S.optional(S.NullOr(S.String)),
+    evidence: S.optional(SignalsScoutSignalExtraEvidenceList),
+    dedupe_keys: S.optional(S.NullOr(SignalsScoutSignalExtraDedupeKeysList)),
+    time_range: S.optional(S.NullOr(SignalsScoutTimeRange)),
+    mcp_trace_id: S.optional(S.NullOr(S.String)),
+    alert_id: S.optional(S.String),
+    alert_name: S.optional(S.String),
+    action: S.optional(
+      S.NullOr(S.Union(LogsAlertStateChangeSignalExtraActionEnum, S.String)),
+    ),
+    threshold_count: S.optional(S.Number),
+    threshold_operator: S.optional(
+      LogsAlertStateChangeSignalExtraThresholdOperatorEnum,
+    ),
+    window_minutes: S.optional(S.Number),
+    result_count: S.optional(S.NullOr(S.Number)),
+    consecutive_failures: S.optional(S.Number),
+    filters: S.optional(LogsAlertStateChangeSignalExtraFiltersMap),
+    scanner_id: S.optional(S.String),
+    scanner_name: S.optional(S.String),
+    scanner_type: S.optional(S.String),
+    observation_id: S.optional(S.String),
+    recording_start_time: S.optional(S.NullOr(S.String)),
+    recording_end_time: S.optional(S.NullOr(S.String)),
+    recording_duration: S.optional(S.NullOr(S.Number)),
+    recording_active_seconds: S.optional(S.NullOr(S.Number)),
+    alert_check_id: S.optional(S.String),
+    insight_id: S.optional(S.String),
+    detector_type: S.optional(S.String),
+    verdict: S.optional(InvestigationVerdictEnum),
+    insight_name: S.optional(S.NullOr(S.String)),
+    insight_short_id: S.optional(S.NullOr(S.String)),
+    triggered_dates: S.optional(
+      S.NullOr(AnalyticsAnomalyInvestigationSignalExtraTriggeredDatesList),
+    ),
+    notebook_short_id: S.optional(S.NullOr(S.String)),
+    kind: S.optional(S.String),
+    issue_id: S.optional(S.String),
+    title: S.optional(S.String),
+    summary: S.optional(S.String),
+    link: S.optional(S.String),
+    payload: S.optional(HealthCheckSignalExtraPayloadMap),
+    repo_owner: S.optional(S.String),
+    repo_name: S.optional(S.String),
+    workflow_name: S.optional(S.String),
+    job_name: S.optional(S.String),
+    run_id: S.optional(S.Number),
+    head_sha: S.optional(S.String),
+    failed_attempt: S.optional(S.Number),
+    passed_attempt: S.optional(S.Number),
+    flaky_count: S.optional(S.Number),
+    window_days: S.optional(S.Number),
+    branch: S.optional(S.String),
+    conclusive_success_rate: S.optional(S.Number),
+    conclusive_run_count: S.optional(S.Number),
+    latest_conclusion: S.optional(S.String),
+    window_hours: S.optional(S.Number),
+    current_p95_seconds: S.optional(S.Number),
+    baseline_p95_seconds: S.optional(S.Number),
+    pct_increase: S.optional(S.Number),
+    current_p50_seconds: S.optional(S.Number),
+    baseline_p50_seconds: S.optional(S.Number),
+    category: S.optional(S.NullOr(S.String)),
+    channel: S.optional(S.NullOr(S.String)),
+    created_datetime: S.optional(S.NullOr(S.String)),
+    createdAt: S.optional(S.NullOr(S.String)),
+    iid: S.optional(S.NullOr(S.String)),
+    project_id: S.optional(S.NullOr(S.String)),
+    story_type: S.optional(S.NullOr(S.String)),
+    workflow_state_id: S.optional(S.NullOr(S.String)),
+    level: S.optional(S.NullOr(S.String)),
+    permalink: S.optional(S.NullOr(S.String)),
+    shortId: S.optional(S.NullOr(S.String)),
+    firstSeen: S.optional(S.NullOr(S.String)),
+    environment: S.optional(S.NullOr(S.String)),
+    framework: S.optional(S.NullOr(S.String)),
+    last_occurrence_timestamp: S.optional(S.NullOr(S.String)),
+    context: S.optional(S.NullOr(S.String)),
+    first_seen: S.optional(S.NullOr(S.String)),
+    last_seen: S.optional(S.NullOr(S.String)),
+    component: S.optional(S.NullOr(S.String)),
+    applicationUrl: S.optional(S.NullOr(S.String)),
+    lastOccurredAt: S.optional(S.NullOr(S.String)),
+    effective_severity_level: S.optional(S.NullOr(S.String)),
+    rule: S.optional(S.NullOr(S.String)),
+    creationDate: S.optional(S.NullOr(S.String)),
+    cvss_v3_score: S.optional(S.NullOr(S.String)),
+    published: S.optional(S.NullOr(S.String)),
+    added: S.optional(S.NullOr(S.String)),
+    upvotes: S.optional(S.NullOr(S.String)),
+    vote_count: S.optional(S.NullOr(S.String)),
+    topics: S.optional(FrillFeedbackSignalExtraTopicsList),
+    workflow_status: S.optional(S.NullOr(S.String)),
+    score: S.optional(S.NullOr(S.String)),
+    votes: S.optional(S.NullOr(S.String)),
+    category_name: S.optional(S.NullOr(S.String)),
+    displayUrl: S.optional(S.NullOr(S.String)),
+    voteCount: S.optional(S.NullOr(S.String)),
+    question_type: S.optional(S.NullOr(S.String)),
+    segment: S.optional(S.NullOr(S.String)),
+    ratingCategory: S.optional(S.NullOr(S.String)),
+    feedbackTopics: S.optional(RetentlyFeedbackSignalExtraFeedbackTopicsList),
+    resolved: S.optional(S.NullOr(S.String)),
+    createdDate: S.optional(S.NullOr(S.String)),
+    stars: S.optional(S.NullOr(S.String)),
+    version: S.optional(S.NullOr(S.String)),
+    product: S.optional(S.NullOr(S.String)),
+    date: S.optional(S.NullOr(S.String)),
+    rating: S.optional(S.NullOr(S.String)),
+    store: S.optional(S.NullOr(S.String)),
+    app_version: S.optional(S.NullOr(S.String)),
+    product_title: S.optional(S.NullOr(S.String)),
+    verified: S.optional(S.NullOr(S.String)),
+    admin_assignee_id: S.optional(S.NullOr(S.String)),
+    hs_ticket_priority: S.optional(S.NullOr(S.String)),
+    hs_pipeline_stage: S.optional(S.NullOr(S.String)),
+    hs_ticket_category: S.optional(S.NullOr(S.String)),
+    createdate: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({ identifier: "SignalExtra" }) as any as S.Schema<SignalExtra>;
 
 export interface SpecificityMetadata {
   /** Title of the PR the specificity gate evaluated. */
@@ -2524,9 +2902,32 @@ export const NoMatchMetadata = /*@__PURE__*/ S.suspend(() =>
   identifier: "NoMatchMetadata",
 }) as any as S.Schema<NoMatchMetadata>;
 
-export type SignalMatchMetadata = MatchedMetadata | NoMatchMetadata;
-export const SignalMatchMetadata =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<SignalMatchMetadata>;
+export interface SignalMatchMetadata {
+  /** Signal already in the report that this one matched. */
+  parent_signal_id?: string;
+  /** Query used to find the parent signal. */
+  match_query?: string;
+  /** Why the signals were judged to describe the same issue. */
+  reason: string;
+  /** PR-specificity gate result, when the gate ran. */
+  specificity?: SpecificityMetadata | null;
+  /** Candidate signals that were considered and rejected. */
+  rejected_signal_ids?: NoMatchMetadataRejectedSignalIdsList;
+  /** PR-specificity gate result that caused a rejection, when present. */
+  specificity_rejection?: SpecificityMetadata | null;
+}
+export const SignalMatchMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent_signal_id: S.optional(S.String),
+    match_query: S.optional(S.String),
+    reason: S.String,
+    specificity: S.optional(S.NullOr(SpecificityMetadata)),
+    rejected_signal_ids: S.optional(NoMatchMetadataRejectedSignalIdsList),
+    specificity_rejection: S.optional(S.NullOr(SpecificityMetadata)),
+  }),
+).annotate({
+  identifier: "SignalMatchMetadata",
+}) as any as S.Schema<SignalMatchMetadata>;
 
 export interface SignalNode {
   /** ClickHouse document id of the signal. */

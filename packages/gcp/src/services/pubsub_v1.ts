@@ -13,55 +13,57 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** Request for the Acknowledge method. */
 export interface AcknowledgeRequest {
@@ -69,10 +71,12 @@ export interface AcknowledgeRequest {
   ackIds?: StringList;
 }
 export const AcknowledgeRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "ackIds": S.optional(StringList),
-}),
-).annotate({ identifier: "AcknowledgeRequest" }) as any as S.Schema<AcknowledgeRequest>;
+  S.Struct({
+    ackIds: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "AcknowledgeRequest",
+}) as any as S.Schema<AcknowledgeRequest>;
 
 export interface AcknowledgeProjectsSubscriptionsRequest {
   /** Required. The subscription whose message is being acknowledged. Format is `projects/{project}/subscriptions/{sub}`. */
@@ -80,20 +84,32 @@ export interface AcknowledgeProjectsSubscriptionsRequest {
   /** Request body */
   body?: AcknowledgeRequest;
 }
-export const AcknowledgeProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "subscription": S.String.pipe(T.Label()),
-  "body": S.optional(AcknowledgeRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+subscription}:acknowledge","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "AcknowledgeProjectsSubscriptionsRequest" }) as any as S.Schema<AcknowledgeProjectsSubscriptionsRequest>;
+export const AcknowledgeProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscription: S.String.pipe(T.Label()),
+      body: S.optional(AcknowledgeRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+subscription}:acknowledge",
+        baseUrl: "https://pubsub.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "AcknowledgeProjectsSubscriptionsRequest",
+}) as any as S.Schema<AcknowledgeProjectsSubscriptionsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
-export type Pubsub_SchemaTypeEnum = "TYPE_UNSPECIFIED" | "PROTOCOL_BUFFER" | "AVRO";
+export type Pubsub_SchemaTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "PROTOCOL_BUFFER"
+  | "AVRO";
 export const Pubsub_SchemaTypeEnum = /*@__PURE__*/ S.String;
 
 /** A schema resource. */
@@ -110,13 +126,13 @@ export interface Pubsub_Schema {
   revisionCreateTime?: string;
 }
 export const Pubsub_Schema = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "type": S.optional(Pubsub_SchemaTypeEnum),
-  "revisionId": S.optional(S.String),
-  "definition": S.optional(S.String),
-  "revisionCreateTime": S.optional(S.String),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    type: S.optional(Pubsub_SchemaTypeEnum),
+    revisionId: S.optional(S.String),
+    definition: S.optional(S.String),
+    revisionCreateTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Pubsub_Schema" }) as any as S.Schema<Pubsub_Schema>;
 
 /** Request for CommitSchema method. */
@@ -125,10 +141,12 @@ export interface CommitSchemaRequest {
   schema?: Pubsub_Schema;
 }
 export const CommitSchemaRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "schema": S.optional(Pubsub_Schema),
-}),
-).annotate({ identifier: "CommitSchemaRequest" }) as any as S.Schema<CommitSchemaRequest>;
+  S.Struct({
+    schema: S.optional(Pubsub_Schema),
+  }),
+).annotate({
+  identifier: "CommitSchemaRequest",
+}) as any as S.Schema<CommitSchemaRequest>;
 
 export interface CommitProjectsSchemasRequest {
   /** Required. The name of the schema we are revising. Format is `projects/{project}/schemas/{schema}`. */
@@ -137,11 +155,19 @@ export interface CommitProjectsSchemasRequest {
   body?: CommitSchemaRequest;
 }
 export const CommitProjectsSchemasRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(CommitSchemaRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:commit","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "CommitProjectsSchemasRequest" }) as any as S.Schema<CommitProjectsSchemasRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(CommitSchemaRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:commit",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CommitProjectsSchemasRequest",
+}) as any as S.Schema<CommitProjectsSchemasRequest>;
 
 export interface CreateProjectsSchemasRequest {
   /** Required. The name of the project in which to create the schema. Format is `projects/{project-id}`. */
@@ -152,15 +178,26 @@ export interface CreateProjectsSchemasRequest {
   body?: Pubsub_Schema;
 }
 export const CreateProjectsSchemasRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "schemaId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Pubsub_Schema.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/schemas","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsSchemasRequest" }) as any as S.Schema<CreateProjectsSchemasRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    schemaId: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(Pubsub_Schema.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/schemas",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateProjectsSchemasRequest",
+}) as any as S.Schema<CreateProjectsSchemasRequest>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
 /** Request for the `CreateSnapshot` method. */
 export interface CreateSnapshotRequest {
@@ -172,12 +209,14 @@ export interface CreateSnapshotRequest {
   labels?: StringMap;
 }
 export const CreateSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "tags": S.optional(StringMap),
-  "subscription": S.optional(S.String),
-  "labels": S.optional(StringMap),
-}),
-).annotate({ identifier: "CreateSnapshotRequest" }) as any as S.Schema<CreateSnapshotRequest>;
+  S.Struct({
+    tags: S.optional(StringMap),
+    subscription: S.optional(S.String),
+    labels: S.optional(StringMap),
+  }),
+).annotate({
+  identifier: "CreateSnapshotRequest",
+}) as any as S.Schema<CreateSnapshotRequest>;
 
 export interface CreateProjectsSnapshotsRequest {
   /** Required. User-provided name for this snapshot. If the name is not provided in the request, the server will assign a random name for this snapshot on the same project as the subscription. Note that for REST API requests, you must specify a name. See the [resource name rules](https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names). Format is `projects/{project}/snapshots/{snap}`. */
@@ -186,11 +225,19 @@ export interface CreateProjectsSnapshotsRequest {
   body?: CreateSnapshotRequest;
 }
 export const CreateProjectsSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(CreateSnapshotRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"v1/{+name}","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsSnapshotsRequest" }) as any as S.Schema<CreateProjectsSnapshotsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(CreateSnapshotRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "v1/{+name}",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateProjectsSnapshotsRequest",
+}) as any as S.Schema<CreateProjectsSnapshotsRequest>;
 
 /** A snapshot resource. Snapshots are used in [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations, which allow you to manage message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an existing subscription to the state captured by a snapshot. */
 export interface Snapshot {
@@ -204,19 +251,19 @@ export interface Snapshot {
   topic?: string;
 }
 export const Snapshot = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "expireTime": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "name": S.optional(S.String),
-  "topic": S.optional(S.String),
-}),
+  S.Struct({
+    expireTime: S.optional(S.String),
+    labels: S.optional(StringMap),
+    name: S.optional(S.String),
+    topic: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Snapshot" }) as any as S.Schema<Snapshot>;
 
 /** Configuration for writing message data in text format. Message payloads will be written to files as raw text, separated by a newline. */
 export interface TextConfig {}
-export const TextConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "TextConfig" }) as any as S.Schema<TextConfig>;
+export const TextConfig = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "TextConfig",
+}) as any as S.Schema<TextConfig>;
 
 /** Configuration for writing message data in Avro format. Message payloads and metadata will be written to files as an Avro binary. */
 export interface AvroConfig {
@@ -226,13 +273,20 @@ export interface AvroConfig {
   useTopicSchema?: boolean;
 }
 export const AvroConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "writeMetadata": S.optional(S.Boolean),
-  "useTopicSchema": S.optional(S.Boolean),
-}),
+  S.Struct({
+    writeMetadata: S.optional(S.Boolean),
+    useTopicSchema: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "AvroConfig" }) as any as S.Schema<AvroConfig>;
 
-export type CloudStorageConfigStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "PERMISSION_DENIED" | "NOT_FOUND" | "IN_TRANSIT_LOCATION_RESTRICTION" | "SCHEMA_MISMATCH" | "VERTEX_AI_LOCATION_RESTRICTION";
+export type CloudStorageConfigStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "PERMISSION_DENIED"
+  | "NOT_FOUND"
+  | "IN_TRANSIT_LOCATION_RESTRICTION"
+  | "SCHEMA_MISMATCH"
+  | "VERTEX_AI_LOCATION_RESTRICTION";
 export const CloudStorageConfigStateEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for a Cloud Storage subscription. */
@@ -261,20 +315,22 @@ export interface CloudStorageConfig {
   state?: CloudStorageConfigStateEnum;
 }
 export const CloudStorageConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filenameSuffix": S.optional(S.String),
-  "filenamePrefix": S.optional(S.String),
-  "maxMessages": S.optional(S.String),
-  "maxBytes": S.optional(S.String),
-  "bucket": S.optional(S.String),
-  "serviceAccountEmail": S.optional(S.String),
-  "filenameDatetimeFormat": S.optional(S.String),
-  "maxDuration": S.optional(S.String),
-  "textConfig": S.optional(TextConfig),
-  "avroConfig": S.optional(AvroConfig),
-  "state": S.optional(CloudStorageConfigStateEnum),
-}),
-).annotate({ identifier: "CloudStorageConfig" }) as any as S.Schema<CloudStorageConfig>;
+  S.Struct({
+    filenameSuffix: S.optional(S.String),
+    filenamePrefix: S.optional(S.String),
+    maxMessages: S.optional(S.String),
+    maxBytes: S.optional(S.String),
+    bucket: S.optional(S.String),
+    serviceAccountEmail: S.optional(S.String),
+    filenameDatetimeFormat: S.optional(S.String),
+    maxDuration: S.optional(S.String),
+    textConfig: S.optional(TextConfig),
+    avroConfig: S.optional(AvroConfig),
+    state: S.optional(CloudStorageConfigStateEnum),
+  }),
+).annotate({
+  identifier: "CloudStorageConfig",
+}) as any as S.Schema<CloudStorageConfig>;
 
 /** A policy that specifies how Pub/Sub retries message delivery. Retry delay will be exponential based on provided minimum and maximum backoffs. https://en.wikipedia.org/wiki/Exponential_backoff. RetryPolicy will be triggered on NACKs or acknowledgment deadline exceeded events for a given message. Retry Policy is implemented on a best effort basis. At times, the delay between consecutive deliveries may not match the configuration. That is, delay can be more or less than configured backoff. */
 export interface RetryPolicy {
@@ -284,10 +340,10 @@ export interface RetryPolicy {
   minimumBackoff?: string;
 }
 export const RetryPolicy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "maximumBackoff": S.optional(S.String),
-  "minimumBackoff": S.optional(S.String),
-}),
+  S.Struct({
+    maximumBackoff: S.optional(S.String),
+    minimumBackoff: S.optional(S.String),
+  }),
 ).annotate({ identifier: "RetryPolicy" }) as any as S.Schema<RetryPolicy>;
 
 /** Dead lettering is done on a best effort basis. The same message might be dead lettered multiple times. If validation on any of the fields fails at subscription creation/updation, the create/update subscription request will fail. */
@@ -298,11 +354,13 @@ export interface DeadLetterPolicy {
   maxDeliveryAttempts?: number;
 }
 export const DeadLetterPolicy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "deadLetterTopic": S.optional(S.String),
-  "maxDeliveryAttempts": S.optional(S.Number),
-}),
-).annotate({ identifier: "DeadLetterPolicy" }) as any as S.Schema<DeadLetterPolicy>;
+  S.Struct({
+    deadLetterTopic: S.optional(S.String),
+    maxDeliveryAttempts: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "DeadLetterPolicy",
+}) as any as S.Schema<DeadLetterPolicy>;
 
 /** Information about an associated [Analytics Hub subscription](https://cloud.google.com/bigquery/docs/analytics-hub-manage-subscriptions). */
 export interface AnalyticsHubSubscriptionInfo {
@@ -312,13 +370,18 @@ export interface AnalyticsHubSubscriptionInfo {
   subscription?: string;
 }
 export const AnalyticsHubSubscriptionInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "listing": S.optional(S.String),
-  "subscription": S.optional(S.String),
-}),
-).annotate({ identifier: "AnalyticsHubSubscriptionInfo" }) as any as S.Schema<AnalyticsHubSubscriptionInfo>;
+  S.Struct({
+    listing: S.optional(S.String),
+    subscription: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AnalyticsHubSubscriptionInfo",
+}) as any as S.Schema<AnalyticsHubSubscriptionInfo>;
 
-export type SubscriptionStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "RESOURCE_ERROR";
+export type SubscriptionStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "RESOURCE_ERROR";
 export const SubscriptionStateEnum = /*@__PURE__*/ S.String;
 
 /** A policy that specifies the conditions for resource expiration (i.e., automatic resource deletion). */
@@ -327,12 +390,21 @@ export interface ExpirationPolicy {
   ttl?: string;
 }
 export const ExpirationPolicy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "ttl": S.optional(S.String),
-}),
-).annotate({ identifier: "ExpirationPolicy" }) as any as S.Schema<ExpirationPolicy>;
+  S.Struct({
+    ttl: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ExpirationPolicy",
+}) as any as S.Schema<ExpirationPolicy>;
 
-export type BigQueryConfigStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "PERMISSION_DENIED" | "NOT_FOUND" | "SCHEMA_MISMATCH" | "IN_TRANSIT_LOCATION_RESTRICTION" | "VERTEX_AI_LOCATION_RESTRICTION";
+export type BigQueryConfigStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "PERMISSION_DENIED"
+  | "NOT_FOUND"
+  | "SCHEMA_MISMATCH"
+  | "IN_TRANSIT_LOCATION_RESTRICTION"
+  | "VERTEX_AI_LOCATION_RESTRICTION";
 export const BigQueryConfigStateEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for a BigQuery subscription. */
@@ -353,15 +425,15 @@ export interface BigQueryConfig {
   state?: BigQueryConfigStateEnum;
 }
 export const BigQueryConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "table": S.optional(S.String),
-  "useTopicSchema": S.optional(S.Boolean),
-  "writeMetadata": S.optional(S.Boolean),
-  "dropUnknownFields": S.optional(S.Boolean),
-  "useTableSchema": S.optional(S.Boolean),
-  "serviceAccountEmail": S.optional(S.String),
-  "state": S.optional(BigQueryConfigStateEnum),
-}),
+  S.Struct({
+    table: S.optional(S.String),
+    useTopicSchema: S.optional(S.Boolean),
+    writeMetadata: S.optional(S.Boolean),
+    dropUnknownFields: S.optional(S.Boolean),
+    useTableSchema: S.optional(S.Boolean),
+    serviceAccountEmail: S.optional(S.String),
+    state: S.optional(BigQueryConfigStateEnum),
+  }),
 ).annotate({ identifier: "BigQueryConfig" }) as any as S.Schema<BigQueryConfig>;
 
 /** User-defined JavaScript function that can transform or filter a Pub/Sub message. */
@@ -372,16 +444,21 @@ export interface JavaScriptUDF {
   functionName?: string;
 }
 export const JavaScriptUDF = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(S.String),
-  "functionName": S.optional(S.String),
-}),
+  S.Struct({
+    code: S.optional(S.String),
+    functionName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "JavaScriptUDF" }) as any as S.Schema<JavaScriptUDF>;
 
-export type CompressionCompressionAlgorithmEnum = "COMPRESSION_ALGORITHM_UNSPECIFIED" | "ZLIB";
+export type CompressionCompressionAlgorithmEnum =
+  | "COMPRESSION_ALGORITHM_UNSPECIFIED"
+  | "ZLIB";
 export const CompressionCompressionAlgorithmEnum = /*@__PURE__*/ S.String;
 
-export type CompressionCompressionModeEnum = "COMPRESSION_MODE_UNSPECIFIED" | "COMPRESS" | "DECOMPRESS";
+export type CompressionCompressionModeEnum =
+  | "COMPRESSION_MODE_UNSPECIFIED"
+  | "COMPRESS"
+  | "DECOMPRESS";
 export const CompressionCompressionModeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for compressing/decompressing message data using a user-specified compression algorithm. */
@@ -392,14 +469,17 @@ export interface Compression {
   compressionMode?: CompressionCompressionModeEnum;
 }
 export const Compression = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "compressionAlgorithm": S.optional(CompressionCompressionAlgorithmEnum),
-  "compressionMode": S.optional(CompressionCompressionModeEnum),
-}),
+  S.Struct({
+    compressionAlgorithm: S.optional(CompressionCompressionAlgorithmEnum),
+    compressionMode: S.optional(CompressionCompressionModeEnum),
+  }),
 ).annotate({ identifier: "Compression" }) as any as S.Schema<Compression>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 /** Configuration for making inferences using arbitrary JSON payloads. */
 export interface UnstructuredInference {
@@ -407,10 +487,12 @@ export interface UnstructuredInference {
   parameters?: DocumentMap;
 }
 export const UnstructuredInference = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parameters": S.optional(DocumentMap),
-}),
-).annotate({ identifier: "UnstructuredInference" }) as any as S.Schema<UnstructuredInference>;
+  S.Struct({
+    parameters: S.optional(DocumentMap),
+  }),
+).annotate({
+  identifier: "UnstructuredInference",
+}) as any as S.Schema<UnstructuredInference>;
 
 /** Configuration for making inference requests against Vertex AI models. */
 export interface AIInference {
@@ -422,11 +504,11 @@ export interface AIInference {
   serviceAccountEmail?: string;
 }
 export const AIInference = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "unstructuredInference": S.optional(UnstructuredInference),
-  "endpoint": S.optional(S.String),
-  "serviceAccountEmail": S.optional(S.String),
-}),
+  S.Struct({
+    unstructuredInference: S.optional(UnstructuredInference),
+    endpoint: S.optional(S.String),
+    serviceAccountEmail: S.optional(S.String),
+  }),
 ).annotate({ identifier: "AIInference" }) as any as S.Schema<AIInference>;
 
 /** All supported message transforms types. */
@@ -443,17 +525,21 @@ export interface MessageTransform {
   enabled?: boolean;
 }
 export const MessageTransform = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "javascriptUdf": S.optional(JavaScriptUDF),
-  "compression": S.optional(Compression),
-  "aiInference": S.optional(AIInference),
-  "disabled": S.optional(S.Boolean),
-  "enabled": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "MessageTransform" }) as any as S.Schema<MessageTransform>;
+  S.Struct({
+    javascriptUdf: S.optional(JavaScriptUDF),
+    compression: S.optional(Compression),
+    aiInference: S.optional(AIInference),
+    disabled: S.optional(S.Boolean),
+    enabled: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "MessageTransform",
+}) as any as S.Schema<MessageTransform>;
 
 export type MessageTransformList = ReadonlyArray<MessageTransform>;
-export const MessageTransformList = /*@__PURE__*/ S.Array(MessageTransform) as any as S.Schema<MessageTransformList>;
+export const MessageTransformList = /*@__PURE__*/ S.Array(
+  MessageTransform,
+) as any as S.Schema<MessageTransformList>;
 
 /** Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect). */
 export interface OidcToken {
@@ -463,16 +549,16 @@ export interface OidcToken {
   audience?: string;
 }
 export const OidcToken = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "serviceAccountEmail": S.optional(S.String),
-  "audience": S.optional(S.String),
-}),
+  S.Struct({
+    serviceAccountEmail: S.optional(S.String),
+    audience: S.optional(S.String),
+  }),
 ).annotate({ identifier: "OidcToken" }) as any as S.Schema<OidcToken>;
 
 /** The payload to the push endpoint is in the form of the JSON representation of a PubsubMessage (https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#pubsubmessage). */
 export interface PubsubWrapper {}
 export const PubsubWrapper = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
+  S.Struct({}),
 ).annotate({ identifier: "PubsubWrapper" }) as any as S.Schema<PubsubWrapper>;
 
 /** Sets the `data` field as the HTTP body for delivery. */
@@ -481,9 +567,9 @@ export interface NoWrapper {
   writeMetadata?: boolean;
 }
 export const NoWrapper = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "writeMetadata": S.optional(S.Boolean),
-}),
+  S.Struct({
+    writeMetadata: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "NoWrapper" }) as any as S.Schema<NoWrapper>;
 
 /** Configuration for a push delivery endpoint. */
@@ -500,16 +586,24 @@ export interface PushConfig {
   noWrapper?: NoWrapper;
 }
 export const PushConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "attributes": S.optional(StringMap),
-  "pushEndpoint": S.optional(S.String),
-  "oidcToken": S.optional(OidcToken),
-  "pubsubWrapper": S.optional(PubsubWrapper),
-  "noWrapper": S.optional(NoWrapper),
-}),
+  S.Struct({
+    attributes: S.optional(StringMap),
+    pushEndpoint: S.optional(S.String),
+    oidcToken: S.optional(OidcToken),
+    pubsubWrapper: S.optional(PubsubWrapper),
+    noWrapper: S.optional(NoWrapper),
+  }),
 ).annotate({ identifier: "PushConfig" }) as any as S.Schema<PushConfig>;
 
-export type BigtableConfigStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "NOT_FOUND" | "APP_PROFILE_MISCONFIGURED" | "PERMISSION_DENIED" | "SCHEMA_MISMATCH" | "IN_TRANSIT_LOCATION_RESTRICTION" | "VERTEX_AI_LOCATION_RESTRICTION";
+export type BigtableConfigStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "NOT_FOUND"
+  | "APP_PROFILE_MISCONFIGURED"
+  | "PERMISSION_DENIED"
+  | "SCHEMA_MISMATCH"
+  | "IN_TRANSIT_LOCATION_RESTRICTION"
+  | "VERTEX_AI_LOCATION_RESTRICTION";
 export const BigtableConfigStateEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for a Bigtable subscription. The Pub/Sub message will be written to a Bigtable row as follows: - row key: subscription name, message ID hash, and message ID delimited by `#`. - columns: message bytes written to a single column family `data` with an empty-string column qualifier. - cell timestamp: the message publish timestamp. */
@@ -526,13 +620,13 @@ export interface BigtableConfig {
   writeMetadata?: boolean;
 }
 export const BigtableConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "state": S.optional(BigtableConfigStateEnum),
-  "appProfileId": S.optional(S.String),
-  "serviceAccountEmail": S.optional(S.String),
-  "table": S.optional(S.String),
-  "writeMetadata": S.optional(S.Boolean),
-}),
+  S.Struct({
+    state: S.optional(BigtableConfigStateEnum),
+    appProfileId: S.optional(S.String),
+    serviceAccountEmail: S.optional(S.String),
+    table: S.optional(S.String),
+    writeMetadata: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "BigtableConfig" }) as any as S.Schema<BigtableConfig>;
 
 /** A subscription resource. If none of `push_config`, `bigquery_config`, `cloud_storage_config`, or `bigtable_config` is set, then the subscriber will pull and ack messages using API methods. At most one of these fields may be set. */
@@ -583,30 +677,30 @@ export interface Subscription {
   labels?: StringMap;
 }
 export const Subscription = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "enableExactlyOnceDelivery": S.optional(S.Boolean),
-  "cloudStorageConfig": S.optional(CloudStorageConfig),
-  "ackDeadlineSeconds": S.optional(S.Number),
-  "detached": S.optional(S.Boolean),
-  "tags": S.optional(StringMap),
-  "topic": S.optional(S.String),
-  "retryPolicy": S.optional(RetryPolicy),
-  "topicMessageRetentionDuration": S.optional(S.String),
-  "deadLetterPolicy": S.optional(DeadLetterPolicy),
-  "analyticsHubSubscriptionInfo": S.optional(AnalyticsHubSubscriptionInfo),
-  "filter": S.optional(S.String),
-  "state": S.optional(SubscriptionStateEnum),
-  "expirationPolicy": S.optional(ExpirationPolicy),
-  "retainAckedMessages": S.optional(S.Boolean),
-  "bigqueryConfig": S.optional(BigQueryConfig),
-  "messageRetentionDuration": S.optional(S.String),
-  "messageTransforms": S.optional(MessageTransformList),
-  "name": S.optional(S.String),
-  "enableMessageOrdering": S.optional(S.Boolean),
-  "pushConfig": S.optional(PushConfig),
-  "bigtableConfig": S.optional(BigtableConfig),
-  "labels": S.optional(StringMap),
-}),
+  S.Struct({
+    enableExactlyOnceDelivery: S.optional(S.Boolean),
+    cloudStorageConfig: S.optional(CloudStorageConfig),
+    ackDeadlineSeconds: S.optional(S.Number),
+    detached: S.optional(S.Boolean),
+    tags: S.optional(StringMap),
+    topic: S.optional(S.String),
+    retryPolicy: S.optional(RetryPolicy),
+    topicMessageRetentionDuration: S.optional(S.String),
+    deadLetterPolicy: S.optional(DeadLetterPolicy),
+    analyticsHubSubscriptionInfo: S.optional(AnalyticsHubSubscriptionInfo),
+    filter: S.optional(S.String),
+    state: S.optional(SubscriptionStateEnum),
+    expirationPolicy: S.optional(ExpirationPolicy),
+    retainAckedMessages: S.optional(S.Boolean),
+    bigqueryConfig: S.optional(BigQueryConfig),
+    messageRetentionDuration: S.optional(S.String),
+    messageTransforms: S.optional(MessageTransformList),
+    name: S.optional(S.String),
+    enableMessageOrdering: S.optional(S.Boolean),
+    pushConfig: S.optional(PushConfig),
+    bigtableConfig: S.optional(BigtableConfig),
+    labels: S.optional(StringMap),
+  }),
 ).annotate({ identifier: "Subscription" }) as any as S.Schema<Subscription>;
 
 export interface CreateProjectsSubscriptionsRequest {
@@ -616,16 +710,30 @@ export interface CreateProjectsSubscriptionsRequest {
   body?: Subscription;
 }
 export const CreateProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(Subscription.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"v1/{+name}","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsSubscriptionsRequest" }) as any as S.Schema<CreateProjectsSubscriptionsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(Subscription.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "v1/{+name}",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateProjectsSubscriptionsRequest",
+}) as any as S.Schema<CreateProjectsSubscriptionsRequest>;
 
-export type TopicStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "INGESTION_RESOURCE_ERROR";
+export type TopicStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "INGESTION_RESOURCE_ERROR";
 export const TopicStateEnum = /*@__PURE__*/ S.String;
 
-export type SchemaSettingsEncodingEnum = "ENCODING_UNSPECIFIED" | "JSON" | "BINARY";
+export type SchemaSettingsEncodingEnum =
+  | "ENCODING_UNSPECIFIED"
+  | "JSON"
+  | "BINARY";
 export const SchemaSettingsEncodingEnum = /*@__PURE__*/ S.String;
 
 /** Settings for validating messages published against a schema. */
@@ -640,15 +748,21 @@ export interface SchemaSettings {
   firstRevisionId?: string;
 }
 export const SchemaSettings = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "lastRevisionId": S.optional(S.String),
-  "schema": S.optional(S.String),
-  "encoding": S.optional(SchemaSettingsEncodingEnum),
-  "firstRevisionId": S.optional(S.String),
-}),
+  S.Struct({
+    lastRevisionId: S.optional(S.String),
+    schema: S.optional(S.String),
+    encoding: S.optional(SchemaSettingsEncodingEnum),
+    firstRevisionId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "SchemaSettings" }) as any as S.Schema<SchemaSettings>;
 
-export type PlatformLogsSettingsSeverityEnum = "SEVERITY_UNSPECIFIED" | "DISABLED" | "DEBUG" | "INFO" | "WARNING" | "ERROR";
+export type PlatformLogsSettingsSeverityEnum =
+  | "SEVERITY_UNSPECIFIED"
+  | "DISABLED"
+  | "DEBUG"
+  | "INFO"
+  | "WARNING"
+  | "ERROR";
 export const PlatformLogsSettingsSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Settings for Platform Logs produced by Pub/Sub. */
@@ -657,12 +771,22 @@ export interface PlatformLogsSettings {
   severity?: PlatformLogsSettingsSeverityEnum;
 }
 export const PlatformLogsSettings = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "severity": S.optional(PlatformLogsSettingsSeverityEnum),
-}),
-).annotate({ identifier: "PlatformLogsSettings" }) as any as S.Schema<PlatformLogsSettings>;
+  S.Struct({
+    severity: S.optional(PlatformLogsSettingsSeverityEnum),
+  }),
+).annotate({
+  identifier: "PlatformLogsSettings",
+}) as any as S.Schema<PlatformLogsSettings>;
 
-export type ConfluentCloudStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "CONFLUENT_CLOUD_PERMISSION_DENIED" | "PUBLISH_PERMISSION_DENIED" | "UNREACHABLE_BOOTSTRAP_SERVER" | "CLUSTER_NOT_FOUND" | "TOPIC_NOT_FOUND" | "CONFLICTING_REGION_CONSTRAINTS";
+export type ConfluentCloudStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "CONFLUENT_CLOUD_PERMISSION_DENIED"
+  | "PUBLISH_PERMISSION_DENIED"
+  | "UNREACHABLE_BOOTSTRAP_SERVER"
+  | "CLUSTER_NOT_FOUND"
+  | "TOPIC_NOT_FOUND"
+  | "CONFLICTING_REGION_CONSTRAINTS";
 export const ConfluentCloudStateEnum = /*@__PURE__*/ S.String;
 
 /** Ingestion settings for Confluent Cloud. */
@@ -681,17 +805,26 @@ export interface ConfluentCloud {
   state?: ConfluentCloudStateEnum;
 }
 export const ConfluentCloud = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "clusterId": S.optional(S.String),
-  "topic": S.optional(S.String),
-  "identityPoolId": S.optional(S.String),
-  "bootstrapServer": S.optional(S.String),
-  "gcpServiceAccount": S.optional(S.String),
-  "state": S.optional(ConfluentCloudStateEnum),
-}),
+  S.Struct({
+    clusterId: S.optional(S.String),
+    topic: S.optional(S.String),
+    identityPoolId: S.optional(S.String),
+    bootstrapServer: S.optional(S.String),
+    gcpServiceAccount: S.optional(S.String),
+    state: S.optional(ConfluentCloudStateEnum),
+  }),
 ).annotate({ identifier: "ConfluentCloud" }) as any as S.Schema<ConfluentCloud>;
 
-export type AzureEventHubsStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "EVENT_HUBS_PERMISSION_DENIED" | "PUBLISH_PERMISSION_DENIED" | "NAMESPACE_NOT_FOUND" | "EVENT_HUB_NOT_FOUND" | "SUBSCRIPTION_NOT_FOUND" | "RESOURCE_GROUP_NOT_FOUND" | "CONFLICTING_REGION_CONSTRAINTS";
+export type AzureEventHubsStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "EVENT_HUBS_PERMISSION_DENIED"
+  | "PUBLISH_PERMISSION_DENIED"
+  | "NAMESPACE_NOT_FOUND"
+  | "EVENT_HUB_NOT_FOUND"
+  | "SUBSCRIPTION_NOT_FOUND"
+  | "RESOURCE_GROUP_NOT_FOUND"
+  | "CONFLICTING_REGION_CONSTRAINTS";
 export const AzureEventHubsStateEnum = /*@__PURE__*/ S.String;
 
 /** Ingestion settings for Azure Event Hubs. */
@@ -714,19 +847,26 @@ export interface AzureEventHubs {
   gcpServiceAccount?: string;
 }
 export const AzureEventHubs = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceGroup": S.optional(S.String),
-  "namespace": S.optional(S.String),
-  "eventHub": S.optional(S.String),
-  "state": S.optional(AzureEventHubsStateEnum),
-  "clientId": S.optional(S.String),
-  "tenantId": S.optional(S.String),
-  "subscriptionId": S.optional(S.String),
-  "gcpServiceAccount": S.optional(S.String),
-}),
+  S.Struct({
+    resourceGroup: S.optional(S.String),
+    namespace: S.optional(S.String),
+    eventHub: S.optional(S.String),
+    state: S.optional(AzureEventHubsStateEnum),
+    clientId: S.optional(S.String),
+    tenantId: S.optional(S.String),
+    subscriptionId: S.optional(S.String),
+    gcpServiceAccount: S.optional(S.String),
+  }),
 ).annotate({ identifier: "AzureEventHubs" }) as any as S.Schema<AzureEventHubs>;
 
-export type AwsKinesisStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "KINESIS_PERMISSION_DENIED" | "PUBLISH_PERMISSION_DENIED" | "STREAM_NOT_FOUND" | "CONSUMER_NOT_FOUND" | "CONFLICTING_REGION_CONSTRAINTS";
+export type AwsKinesisStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "KINESIS_PERMISSION_DENIED"
+  | "PUBLISH_PERMISSION_DENIED"
+  | "STREAM_NOT_FOUND"
+  | "CONSUMER_NOT_FOUND"
+  | "CONFLICTING_REGION_CONSTRAINTS";
 export const AwsKinesisStateEnum = /*@__PURE__*/ S.String;
 
 /** Ingestion settings for Amazon Kinesis Data Streams. */
@@ -743,13 +883,13 @@ export interface AwsKinesis {
   streamArn?: string;
 }
 export const AwsKinesis = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "gcpServiceAccount": S.optional(S.String),
-  "state": S.optional(AwsKinesisStateEnum),
-  "consumerArn": S.optional(S.String),
-  "awsRoleArn": S.optional(S.String),
-  "streamArn": S.optional(S.String),
-}),
+  S.Struct({
+    gcpServiceAccount: S.optional(S.String),
+    state: S.optional(AwsKinesisStateEnum),
+    consumerArn: S.optional(S.String),
+    awsRoleArn: S.optional(S.String),
+    streamArn: S.optional(S.String),
+  }),
 ).annotate({ identifier: "AwsKinesis" }) as any as S.Schema<AwsKinesis>;
 
 /** Configuration for reading Cloud Storage data in text format. Each line of text as specified by the delimiter will be set to the `data` field of a Pub/Sub message. */
@@ -758,25 +898,34 @@ export interface TextFormat {
   delimiter?: string;
 }
 export const TextFormat = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "delimiter": S.optional(S.String),
-}),
+  S.Struct({
+    delimiter: S.optional(S.String),
+  }),
 ).annotate({ identifier: "TextFormat" }) as any as S.Schema<TextFormat>;
 
 /** Configuration for reading Cloud Storage data in Avro binary format. The bytes of each object will be set to the `data` field of a Pub/Sub message. */
 export interface AvroFormat {}
-export const AvroFormat = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "AvroFormat" }) as any as S.Schema<AvroFormat>;
+export const AvroFormat = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "AvroFormat",
+}) as any as S.Schema<AvroFormat>;
 
-export type CloudStorageStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "CLOUD_STORAGE_PERMISSION_DENIED" | "PUBLISH_PERMISSION_DENIED" | "BUCKET_NOT_FOUND" | "TOO_MANY_OBJECTS" | "CONFLICTING_REGION_CONSTRAINTS";
+export type CloudStorageStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "CLOUD_STORAGE_PERMISSION_DENIED"
+  | "PUBLISH_PERMISSION_DENIED"
+  | "BUCKET_NOT_FOUND"
+  | "TOO_MANY_OBJECTS"
+  | "CONFLICTING_REGION_CONSTRAINTS";
 export const CloudStorageStateEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for reading Cloud Storage data written via [Cloud Storage subscriptions](https://cloud.google.com/pubsub/docs/cloudstorage). The data and attributes fields of the originally exported Pub/Sub message will be restored when publishing. */
 export interface PubSubAvroFormat {}
 export const PubSubAvroFormat = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "PubSubAvroFormat" }) as any as S.Schema<PubSubAvroFormat>;
+  S.Struct({}),
+).annotate({
+  identifier: "PubSubAvroFormat",
+}) as any as S.Schema<PubSubAvroFormat>;
 
 /** Ingestion settings for Cloud Storage. */
 export interface CloudStorage {
@@ -796,18 +945,25 @@ export interface CloudStorage {
   pubsubAvroFormat?: PubSubAvroFormat;
 }
 export const CloudStorage = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "minimumObjectCreateTime": S.optional(S.String),
-  "textFormat": S.optional(TextFormat),
-  "avroFormat": S.optional(AvroFormat),
-  "matchGlob": S.optional(S.String),
-  "bucket": S.optional(S.String),
-  "state": S.optional(CloudStorageStateEnum),
-  "pubsubAvroFormat": S.optional(PubSubAvroFormat),
-}),
+  S.Struct({
+    minimumObjectCreateTime: S.optional(S.String),
+    textFormat: S.optional(TextFormat),
+    avroFormat: S.optional(AvroFormat),
+    matchGlob: S.optional(S.String),
+    bucket: S.optional(S.String),
+    state: S.optional(CloudStorageStateEnum),
+    pubsubAvroFormat: S.optional(PubSubAvroFormat),
+  }),
 ).annotate({ identifier: "CloudStorage" }) as any as S.Schema<CloudStorage>;
 
-export type AwsMskStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "MSK_PERMISSION_DENIED" | "PUBLISH_PERMISSION_DENIED" | "CLUSTER_NOT_FOUND" | "TOPIC_NOT_FOUND" | "CONFLICTING_REGION_CONSTRAINTS";
+export type AwsMskStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "MSK_PERMISSION_DENIED"
+  | "PUBLISH_PERMISSION_DENIED"
+  | "CLUSTER_NOT_FOUND"
+  | "TOPIC_NOT_FOUND"
+  | "CONFLICTING_REGION_CONSTRAINTS";
 export const AwsMskStateEnum = /*@__PURE__*/ S.String;
 
 /** Ingestion settings for Amazon MSK. */
@@ -824,13 +980,13 @@ export interface AwsMsk {
   awsRoleArn?: string;
 }
 export const AwsMsk = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "state": S.optional(AwsMskStateEnum),
-  "gcpServiceAccount": S.optional(S.String),
-  "clusterArn": S.optional(S.String),
-  "topic": S.optional(S.String),
-  "awsRoleArn": S.optional(S.String),
-}),
+  S.Struct({
+    state: S.optional(AwsMskStateEnum),
+    gcpServiceAccount: S.optional(S.String),
+    clusterArn: S.optional(S.String),
+    topic: S.optional(S.String),
+    awsRoleArn: S.optional(S.String),
+  }),
 ).annotate({ identifier: "AwsMsk" }) as any as S.Schema<AwsMsk>;
 
 /** Settings for an ingestion data source on a topic. */
@@ -849,15 +1005,17 @@ export interface IngestionDataSourceSettings {
   awsMsk?: AwsMsk;
 }
 export const IngestionDataSourceSettings = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "platformLogsSettings": S.optional(PlatformLogsSettings),
-  "confluentCloud": S.optional(ConfluentCloud),
-  "azureEventHubs": S.optional(AzureEventHubs),
-  "awsKinesis": S.optional(AwsKinesis),
-  "cloudStorage": S.optional(CloudStorage),
-  "awsMsk": S.optional(AwsMsk),
-}),
-).annotate({ identifier: "IngestionDataSourceSettings" }) as any as S.Schema<IngestionDataSourceSettings>;
+  S.Struct({
+    platformLogsSettings: S.optional(PlatformLogsSettings),
+    confluentCloud: S.optional(ConfluentCloud),
+    azureEventHubs: S.optional(AzureEventHubs),
+    awsKinesis: S.optional(AwsKinesis),
+    cloudStorage: S.optional(CloudStorage),
+    awsMsk: S.optional(AwsMsk),
+  }),
+).annotate({
+  identifier: "IngestionDataSourceSettings",
+}) as any as S.Schema<IngestionDataSourceSettings>;
 
 /** A policy constraining the storage of messages published to the topic. */
 export interface MessageStoragePolicy {
@@ -867,11 +1025,13 @@ export interface MessageStoragePolicy {
   allowedPersistenceRegions?: StringList;
 }
 export const MessageStoragePolicy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "enforceInTransit": S.optional(S.Boolean),
-  "allowedPersistenceRegions": S.optional(StringList),
-}),
-).annotate({ identifier: "MessageStoragePolicy" }) as any as S.Schema<MessageStoragePolicy>;
+  S.Struct({
+    enforceInTransit: S.optional(S.Boolean),
+    allowedPersistenceRegions: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "MessageStoragePolicy",
+}) as any as S.Schema<MessageStoragePolicy>;
 
 /** A topic resource. */
 export interface Topic {
@@ -899,19 +1059,19 @@ export interface Topic {
   messageStoragePolicy?: MessageStoragePolicy;
 }
 export const Topic = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "messageRetentionDuration": S.optional(S.String),
-  "messageTransforms": S.optional(MessageTransformList),
-  "satisfiesPzs": S.optional(S.Boolean),
-  "name": S.optional(S.String),
-  "tags": S.optional(StringMap),
-  "labels": S.optional(StringMap),
-  "kmsKeyName": S.optional(S.String),
-  "state": S.optional(TopicStateEnum),
-  "schemaSettings": S.optional(SchemaSettings),
-  "ingestionDataSourceSettings": S.optional(IngestionDataSourceSettings),
-  "messageStoragePolicy": S.optional(MessageStoragePolicy),
-}),
+  S.Struct({
+    messageRetentionDuration: S.optional(S.String),
+    messageTransforms: S.optional(MessageTransformList),
+    satisfiesPzs: S.optional(S.Boolean),
+    name: S.optional(S.String),
+    tags: S.optional(StringMap),
+    labels: S.optional(StringMap),
+    kmsKeyName: S.optional(S.String),
+    state: S.optional(TopicStateEnum),
+    schemaSettings: S.optional(SchemaSettings),
+    ingestionDataSourceSettings: S.optional(IngestionDataSourceSettings),
+    messageStoragePolicy: S.optional(MessageStoragePolicy),
+  }),
 ).annotate({ identifier: "Topic" }) as any as S.Schema<Topic>;
 
 export interface CreateProjectsTopicsRequest {
@@ -921,51 +1081,91 @@ export interface CreateProjectsTopicsRequest {
   body?: Topic;
 }
 export const CreateProjectsTopicsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(Topic.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"v1/{+name}","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsTopicsRequest" }) as any as S.Schema<CreateProjectsTopicsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(Topic.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "v1/{+name}",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateProjectsTopicsRequest",
+}) as any as S.Schema<CreateProjectsTopicsRequest>;
 
 export interface DeleteProjectsSchemasRequest {
   /** Required. Name of the schema to delete. Format is `projects/{project}/schemas/{schema}`. */
   name: string;
 }
 export const DeleteProjectsSchemasRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsSchemasRequest" }) as any as S.Schema<DeleteProjectsSchemasRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteProjectsSchemasRequest",
+}) as any as S.Schema<DeleteProjectsSchemasRequest>;
 
 export interface DeleteProjectsSnapshotsRequest {
   /** Required. The name of the snapshot to delete. Format is `projects/{project}/snapshots/{snap}`. */
   snapshot: string;
 }
 export const DeleteProjectsSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "snapshot": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+snapshot}","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsSnapshotsRequest" }) as any as S.Schema<DeleteProjectsSnapshotsRequest>;
+  S.Struct({
+    snapshot: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+snapshot}",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteProjectsSnapshotsRequest",
+}) as any as S.Schema<DeleteProjectsSnapshotsRequest>;
 
 export interface DeleteProjectsSubscriptionsRequest {
   /** Required. The subscription to delete. Format is `projects/{project}/subscriptions/{sub}`. */
   subscription: string;
 }
 export const DeleteProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "subscription": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+subscription}","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsSubscriptionsRequest" }) as any as S.Schema<DeleteProjectsSubscriptionsRequest>;
+  S.Struct({
+    subscription: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+subscription}",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteProjectsSubscriptionsRequest",
+}) as any as S.Schema<DeleteProjectsSubscriptionsRequest>;
 
 export interface DeleteProjectsTopicsRequest {
   /** Required. Name of the topic to delete. Format is `projects/{project}/topics/{topic}`. */
   topic: string;
 }
 export const DeleteProjectsTopicsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "topic": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+topic}","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsTopicsRequest" }) as any as S.Schema<DeleteProjectsTopicsRequest>;
+  S.Struct({
+    topic: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+topic}",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteProjectsTopicsRequest",
+}) as any as S.Schema<DeleteProjectsTopicsRequest>;
 
 export interface DeleteRevisionProjectsSchemasRequest {
   /** Required. The name of the schema revision to be deleted, with a revision ID explicitly included. Example: `projects/123/schemas/my-schema@c7cfa2a8` */
@@ -973,28 +1173,47 @@ export interface DeleteRevisionProjectsSchemasRequest {
   /** Optional. This field is deprecated and should not be used for specifying the revision ID. The revision ID should be specified via the `name` parameter. */
   revisionId?: string;
 }
-export const DeleteRevisionProjectsSchemasRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "revisionId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}:deleteRevision","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "DeleteRevisionProjectsSchemasRequest" }) as any as S.Schema<DeleteRevisionProjectsSchemasRequest>;
+export const DeleteRevisionProjectsSchemasRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      revisionId: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}:deleteRevision",
+        baseUrl: "https://pubsub.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteRevisionProjectsSchemasRequest",
+}) as any as S.Schema<DeleteRevisionProjectsSchemasRequest>;
 
 export interface DetachProjectsSubscriptionsRequest {
   /** Required. The subscription to detach. Format is `projects/{project}/subscriptions/{subscription}`. */
   subscription: string;
 }
 export const DetachProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "subscription": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+subscription}:detach","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "DetachProjectsSubscriptionsRequest" }) as any as S.Schema<DetachProjectsSubscriptionsRequest>;
+  S.Struct({
+    subscription: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+subscription}:detach",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DetachProjectsSubscriptionsRequest",
+}) as any as S.Schema<DetachProjectsSubscriptionsRequest>;
 
 /** Response for the DetachSubscription method. Reserved for future use. */
 export interface DetachSubscriptionResponse {}
 export const DetachSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "DetachSubscriptionResponse" }) as any as S.Schema<DetachSubscriptionResponse>;
+  S.Struct({}),
+).annotate({
+  identifier: "DetachSubscriptionResponse",
+}) as any as S.Schema<DetachSubscriptionResponse>;
 
 export interface GetIamPolicyProjectsSchemasRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1003,11 +1222,19 @@ export interface GetIamPolicyProjectsSchemasRequest {
   "options.requestedPolicyVersion"?: number;
 }
 export const GetIamPolicyProjectsSchemasRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "GetIamPolicyProjectsSchemasRequest" }) as any as S.Schema<GetIamPolicyProjectsSchemasRequest>;
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+resource}:getIamPolicy",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetIamPolicyProjectsSchemasRequest",
+}) as any as S.Schema<GetIamPolicyProjectsSchemasRequest>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -1021,12 +1248,12 @@ export interface Expr {
   description?: string;
 }
 export const Expr = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "expression": S.optional(S.String),
-  "title": S.optional(S.String),
-  "location": S.optional(S.String),
-  "description": S.optional(S.String),
-}),
+  S.Struct({
+    expression: S.optional(S.String),
+    title: S.optional(S.String),
+    location: S.optional(S.String),
+    description: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
 /** Associates `members`, or principals, with a `role`. */
@@ -1039,15 +1266,17 @@ export interface Binding {
   condition?: Expr;
 }
 export const Binding = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "role": S.optional(S.String),
-  "members": S.optional(StringList),
-  "condition": S.optional(Expr),
-}),
+  S.Struct({
+    role: S.optional(S.String),
+    members: S.optional(StringList),
+    condition: S.optional(Expr),
+  }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = ReadonlyArray<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+export const BindingList = /*@__PURE__*/ S.Array(
+  Binding,
+) as any as S.Schema<BindingList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -1059,11 +1288,11 @@ export interface Policy {
   bindings?: BindingList;
 }
 export const Policy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "etag": S.optional(S.String),
-  "version": S.optional(S.Number),
-  "bindings": S.optional(BindingList),
-}),
+  S.Struct({
+    etag: S.optional(S.String),
+    version: S.optional(S.Number),
+    bindings: S.optional(BindingList),
+  }),
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
 
 export interface GetIamPolicyProjectsSnapshotsRequest {
@@ -1072,12 +1301,21 @@ export interface GetIamPolicyProjectsSnapshotsRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "GetIamPolicyProjectsSnapshotsRequest" }) as any as S.Schema<GetIamPolicyProjectsSnapshotsRequest>;
+export const GetIamPolicyProjectsSnapshotsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+resource}:getIamPolicy",
+        baseUrl: "https://pubsub.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetIamPolicyProjectsSnapshotsRequest",
+}) as any as S.Schema<GetIamPolicyProjectsSnapshotsRequest>;
 
 export interface GetIamPolicyProjectsSubscriptionsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1085,12 +1323,21 @@ export interface GetIamPolicyProjectsSubscriptionsRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "GetIamPolicyProjectsSubscriptionsRequest" }) as any as S.Schema<GetIamPolicyProjectsSubscriptionsRequest>;
+export const GetIamPolicyProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+resource}:getIamPolicy",
+        baseUrl: "https://pubsub.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetIamPolicyProjectsSubscriptionsRequest",
+}) as any as S.Schema<GetIamPolicyProjectsSubscriptionsRequest>;
 
 export interface GetIamPolicyProjectsTopicsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1099,13 +1346,24 @@ export interface GetIamPolicyProjectsTopicsRequest {
   "options.requestedPolicyVersion"?: number;
 }
 export const GetIamPolicyProjectsTopicsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "GetIamPolicyProjectsTopicsRequest" }) as any as S.Schema<GetIamPolicyProjectsTopicsRequest>;
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+resource}:getIamPolicy",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetIamPolicyProjectsTopicsRequest",
+}) as any as S.Schema<GetIamPolicyProjectsTopicsRequest>;
 
-export type GetProjectsSchemasViewEnum = "SCHEMA_VIEW_UNSPECIFIED" | "BASIC" | "FULL";
+export type GetProjectsSchemasViewEnum =
+  | "SCHEMA_VIEW_UNSPECIFIED"
+  | "BASIC"
+  | "FULL";
 export const GetProjectsSchemasViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsSchemasRequest {
@@ -1115,43 +1373,78 @@ export interface GetProjectsSchemasRequest {
   view?: GetProjectsSchemasViewEnum | (string & {});
 }
 export const GetProjectsSchemasRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "view": S.optional(GetProjectsSchemasViewEnum.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsSchemasRequest" }) as any as S.Schema<GetProjectsSchemasRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    view: S.optional(GetProjectsSchemasViewEnum.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsSchemasRequest",
+}) as any as S.Schema<GetProjectsSchemasRequest>;
 
 export interface GetProjectsSnapshotsRequest {
   /** Required. The name of the snapshot to get. Format is `projects/{project}/snapshots/{snap}`. */
   snapshot: string;
 }
 export const GetProjectsSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "snapshot": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+snapshot}","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsSnapshotsRequest" }) as any as S.Schema<GetProjectsSnapshotsRequest>;
+  S.Struct({
+    snapshot: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+snapshot}",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsSnapshotsRequest",
+}) as any as S.Schema<GetProjectsSnapshotsRequest>;
 
 export interface GetProjectsSubscriptionsRequest {
   /** Required. The name of the subscription to get. Format is `projects/{project}/subscriptions/{sub}`. */
   subscription: string;
 }
 export const GetProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "subscription": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+subscription}","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsSubscriptionsRequest" }) as any as S.Schema<GetProjectsSubscriptionsRequest>;
+  S.Struct({
+    subscription: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+subscription}",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsSubscriptionsRequest",
+}) as any as S.Schema<GetProjectsSubscriptionsRequest>;
 
 export interface GetProjectsTopicsRequest {
   /** Required. The name of the topic to get. Format is `projects/{project}/topics/{topic}`. */
   topic: string;
 }
 export const GetProjectsTopicsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "topic": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+topic}","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsTopicsRequest" }) as any as S.Schema<GetProjectsTopicsRequest>;
+  S.Struct({
+    topic: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+topic}",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsTopicsRequest",
+}) as any as S.Schema<GetProjectsTopicsRequest>;
 
-export type ListProjectsSchemasViewEnum = "SCHEMA_VIEW_UNSPECIFIED" | "BASIC" | "FULL";
+export type ListProjectsSchemasViewEnum =
+  | "SCHEMA_VIEW_UNSPECIFIED"
+  | "BASIC"
+  | "FULL";
 export const ListProjectsSchemasViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsSchemasRequest {
@@ -1165,16 +1458,26 @@ export interface ListProjectsSchemasRequest {
   pageSize?: number;
 }
 export const ListProjectsSchemasRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "view": S.optional(ListProjectsSchemasViewEnum.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/schemas","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsSchemasRequest" }) as any as S.Schema<ListProjectsSchemasRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    view: S.optional(ListProjectsSchemasViewEnum.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/schemas",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsSchemasRequest",
+}) as any as S.Schema<ListProjectsSchemasRequest>;
 
 export type Pubsub_SchemaList = ReadonlyArray<Pubsub_Schema>;
-export const Pubsub_SchemaList = /*@__PURE__*/ S.Array(Pubsub_Schema) as any as S.Schema<Pubsub_SchemaList>;
+export const Pubsub_SchemaList = /*@__PURE__*/ S.Array(
+  Pubsub_Schema,
+) as any as S.Schema<Pubsub_SchemaList>;
 
 /** Response for the `ListSchemas` method. */
 export interface ListSchemasResponse {
@@ -1184,11 +1487,13 @@ export interface ListSchemasResponse {
   schemas?: Pubsub_SchemaList;
 }
 export const ListSchemasResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "schemas": S.optional(Pubsub_SchemaList),
-}),
-).annotate({ identifier: "ListSchemasResponse" }) as any as S.Schema<ListSchemasResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    schemas: S.optional(Pubsub_SchemaList),
+  }),
+).annotate({
+  identifier: "ListSchemasResponse",
+}) as any as S.Schema<ListSchemasResponse>;
 
 export interface ListProjectsSnapshotsRequest {
   /** Required. The name of the project in which to list snapshots. Format is `projects/{project-id}`. */
@@ -1199,15 +1504,25 @@ export interface ListProjectsSnapshotsRequest {
   pageToken?: string;
 }
 export const ListProjectsSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "project": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+project}/snapshots","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsSnapshotsRequest" }) as any as S.Schema<ListProjectsSnapshotsRequest>;
+  S.Struct({
+    project: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+project}/snapshots",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsSnapshotsRequest",
+}) as any as S.Schema<ListProjectsSnapshotsRequest>;
 
 export type SnapshotList = ReadonlyArray<Snapshot>;
-export const SnapshotList = /*@__PURE__*/ S.Array(Snapshot) as any as S.Schema<SnapshotList>;
+export const SnapshotList = /*@__PURE__*/ S.Array(
+  Snapshot,
+) as any as S.Schema<SnapshotList>;
 
 /** Response for the `ListSnapshots` method. */
 export interface ListSnapshotsResponse {
@@ -1217,11 +1532,13 @@ export interface ListSnapshotsResponse {
   nextPageToken?: string;
 }
 export const ListSnapshotsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "snapshots": S.optional(SnapshotList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListSnapshotsResponse" }) as any as S.Schema<ListSnapshotsResponse>;
+  S.Struct({
+    snapshots: S.optional(SnapshotList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListSnapshotsResponse",
+}) as any as S.Schema<ListSnapshotsResponse>;
 
 export interface ListProjectsSubscriptionsRequest {
   /** Optional. The value returned by the last `ListSubscriptionsResponse`; indicates that this is a continuation of a prior `ListSubscriptions` call, and that the system should return the next page of data. */
@@ -1232,15 +1549,25 @@ export interface ListProjectsSubscriptionsRequest {
   pageSize?: number;
 }
 export const ListProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "project": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+project}/subscriptions","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsSubscriptionsRequest" }) as any as S.Schema<ListProjectsSubscriptionsRequest>;
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    project: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+project}/subscriptions",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsSubscriptionsRequest",
+}) as any as S.Schema<ListProjectsSubscriptionsRequest>;
 
 export type SubscriptionList = ReadonlyArray<Subscription>;
-export const SubscriptionList = /*@__PURE__*/ S.Array(Subscription) as any as S.Schema<SubscriptionList>;
+export const SubscriptionList = /*@__PURE__*/ S.Array(
+  Subscription,
+) as any as S.Schema<SubscriptionList>;
 
 /** Response for the `ListSubscriptions` method. */
 export interface ListSubscriptionsResponse {
@@ -1250,11 +1577,13 @@ export interface ListSubscriptionsResponse {
   nextPageToken?: string;
 }
 export const ListSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "subscriptions": S.optional(SubscriptionList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListSubscriptionsResponse" }) as any as S.Schema<ListSubscriptionsResponse>;
+  S.Struct({
+    subscriptions: S.optional(SubscriptionList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListSubscriptionsResponse",
+}) as any as S.Schema<ListSubscriptionsResponse>;
 
 export interface ListProjectsTopicsRequest {
   /** Required. The name of the project in which to list topics. Format is `projects/{project-id}`. */
@@ -1265,15 +1594,25 @@ export interface ListProjectsTopicsRequest {
   pageToken?: string;
 }
 export const ListProjectsTopicsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "project": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+project}/topics","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsTopicsRequest" }) as any as S.Schema<ListProjectsTopicsRequest>;
+  S.Struct({
+    project: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+project}/topics",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsTopicsRequest",
+}) as any as S.Schema<ListProjectsTopicsRequest>;
 
 export type TopicList = ReadonlyArray<Topic>;
-export const TopicList = /*@__PURE__*/ S.Array(Topic) as any as S.Schema<TopicList>;
+export const TopicList = /*@__PURE__*/ S.Array(
+  Topic,
+) as any as S.Schema<TopicList>;
 
 /** Response for the `ListTopics` method. */
 export interface ListTopicsResponse {
@@ -1283,11 +1622,13 @@ export interface ListTopicsResponse {
   topics?: TopicList;
 }
 export const ListTopicsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "topics": S.optional(TopicList),
-}),
-).annotate({ identifier: "ListTopicsResponse" }) as any as S.Schema<ListTopicsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    topics: S.optional(TopicList),
+  }),
+).annotate({
+  identifier: "ListTopicsResponse",
+}) as any as S.Schema<ListTopicsResponse>;
 
 export interface ListProjectsTopicsSnapshotsRequest {
   /** Optional. Maximum number of snapshot names to return. */
@@ -1298,12 +1639,20 @@ export interface ListProjectsTopicsSnapshotsRequest {
   pageToken?: string;
 }
 export const ListProjectsTopicsSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "topic": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+topic}/snapshots","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsTopicsSnapshotsRequest" }) as any as S.Schema<ListProjectsTopicsSnapshotsRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    topic: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+topic}/snapshots",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsTopicsSnapshotsRequest",
+}) as any as S.Schema<ListProjectsTopicsSnapshotsRequest>;
 
 /** Response for the `ListTopicSnapshots` method. */
 export interface ListTopicSnapshotsResponse {
@@ -1313,11 +1662,13 @@ export interface ListTopicSnapshotsResponse {
   nextPageToken?: string;
 }
 export const ListTopicSnapshotsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "snapshots": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListTopicSnapshotsResponse" }) as any as S.Schema<ListTopicSnapshotsResponse>;
+  S.Struct({
+    snapshots: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListTopicSnapshotsResponse",
+}) as any as S.Schema<ListTopicSnapshotsResponse>;
 
 export interface ListProjectsTopicsSubscriptionsRequest {
   /** Required. The name of the topic that subscriptions are attached to. Format is `projects/{project}/topics/{topic}`. */
@@ -1327,13 +1678,22 @@ export interface ListProjectsTopicsSubscriptionsRequest {
   /** Optional. Maximum number of subscription names to return. */
   pageSize?: number;
 }
-export const ListProjectsTopicsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "topic": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+topic}/subscriptions","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsTopicsSubscriptionsRequest" }) as any as S.Schema<ListProjectsTopicsSubscriptionsRequest>;
+export const ListProjectsTopicsSubscriptionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      topic: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+topic}/subscriptions",
+        baseUrl: "https://pubsub.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsTopicsSubscriptionsRequest",
+}) as any as S.Schema<ListProjectsTopicsSubscriptionsRequest>;
 
 /** Response for the `ListTopicSubscriptions` method. */
 export interface ListTopicSubscriptionsResponse {
@@ -1343,13 +1703,18 @@ export interface ListTopicSubscriptionsResponse {
   nextPageToken?: string;
 }
 export const ListTopicSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "subscriptions": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListTopicSubscriptionsResponse" }) as any as S.Schema<ListTopicSubscriptionsResponse>;
+  S.Struct({
+    subscriptions: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListTopicSubscriptionsResponse",
+}) as any as S.Schema<ListTopicSubscriptionsResponse>;
 
-export type ListRevisionsProjectsSchemasViewEnum = "SCHEMA_VIEW_UNSPECIFIED" | "BASIC" | "FULL";
+export type ListRevisionsProjectsSchemasViewEnum =
+  | "SCHEMA_VIEW_UNSPECIFIED"
+  | "BASIC"
+  | "FULL";
 export const ListRevisionsProjectsSchemasViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListRevisionsProjectsSchemasRequest {
@@ -1363,13 +1728,21 @@ export interface ListRevisionsProjectsSchemasRequest {
   pageToken?: string;
 }
 export const ListRevisionsProjectsSchemasRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "view": S.optional(ListRevisionsProjectsSchemasViewEnum.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:listRevisions","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "ListRevisionsProjectsSchemasRequest" }) as any as S.Schema<ListRevisionsProjectsSchemasRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    view: S.optional(ListRevisionsProjectsSchemasViewEnum.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}:listRevisions",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListRevisionsProjectsSchemasRequest",
+}) as any as S.Schema<ListRevisionsProjectsSchemasRequest>;
 
 /** Response for the `ListSchemaRevisions` method. */
 export interface ListSchemaRevisionsResponse {
@@ -1379,11 +1752,13 @@ export interface ListSchemaRevisionsResponse {
   nextPageToken?: string;
 }
 export const ListSchemaRevisionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "schemas": S.optional(Pubsub_SchemaList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListSchemaRevisionsResponse" }) as any as S.Schema<ListSchemaRevisionsResponse>;
+  S.Struct({
+    schemas: S.optional(Pubsub_SchemaList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListSchemaRevisionsResponse",
+}) as any as S.Schema<ListSchemaRevisionsResponse>;
 
 /** Request for the ModifyAckDeadline method. */
 export interface ModifyAckDeadlineRequest {
@@ -1393,11 +1768,13 @@ export interface ModifyAckDeadlineRequest {
   ackIds?: StringList;
 }
 export const ModifyAckDeadlineRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "ackDeadlineSeconds": S.optional(S.Number),
-  "ackIds": S.optional(StringList),
-}),
-).annotate({ identifier: "ModifyAckDeadlineRequest" }) as any as S.Schema<ModifyAckDeadlineRequest>;
+  S.Struct({
+    ackDeadlineSeconds: S.optional(S.Number),
+    ackIds: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ModifyAckDeadlineRequest",
+}) as any as S.Schema<ModifyAckDeadlineRequest>;
 
 export interface ModifyAckDeadlineProjectsSubscriptionsRequest {
   /** Required. The name of the subscription. Format is `projects/{project}/subscriptions/{sub}`. */
@@ -1405,12 +1782,21 @@ export interface ModifyAckDeadlineProjectsSubscriptionsRequest {
   /** Request body */
   body?: ModifyAckDeadlineRequest;
 }
-export const ModifyAckDeadlineProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "subscription": S.String.pipe(T.Label()),
-  "body": S.optional(ModifyAckDeadlineRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+subscription}:modifyAckDeadline","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "ModifyAckDeadlineProjectsSubscriptionsRequest" }) as any as S.Schema<ModifyAckDeadlineProjectsSubscriptionsRequest>;
+export const ModifyAckDeadlineProjectsSubscriptionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscription: S.String.pipe(T.Label()),
+      body: S.optional(ModifyAckDeadlineRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+subscription}:modifyAckDeadline",
+        baseUrl: "https://pubsub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ModifyAckDeadlineProjectsSubscriptionsRequest",
+  }) as any as S.Schema<ModifyAckDeadlineProjectsSubscriptionsRequest>;
 
 /** Request for the ModifyPushConfig method. */
 export interface ModifyPushConfigRequest {
@@ -1418,10 +1804,12 @@ export interface ModifyPushConfigRequest {
   pushConfig?: PushConfig;
 }
 export const ModifyPushConfigRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pushConfig": S.optional(PushConfig),
-}),
-).annotate({ identifier: "ModifyPushConfigRequest" }) as any as S.Schema<ModifyPushConfigRequest>;
+  S.Struct({
+    pushConfig: S.optional(PushConfig),
+  }),
+).annotate({
+  identifier: "ModifyPushConfigRequest",
+}) as any as S.Schema<ModifyPushConfigRequest>;
 
 export interface ModifyPushConfigProjectsSubscriptionsRequest {
   /** Required. The name of the subscription. Format is `projects/{project}/subscriptions/{sub}`. */
@@ -1429,12 +1817,21 @@ export interface ModifyPushConfigProjectsSubscriptionsRequest {
   /** Request body */
   body?: ModifyPushConfigRequest;
 }
-export const ModifyPushConfigProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "subscription": S.String.pipe(T.Label()),
-  "body": S.optional(ModifyPushConfigRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+subscription}:modifyPushConfig","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "ModifyPushConfigProjectsSubscriptionsRequest" }) as any as S.Schema<ModifyPushConfigProjectsSubscriptionsRequest>;
+export const ModifyPushConfigProjectsSubscriptionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscription: S.String.pipe(T.Label()),
+      body: S.optional(ModifyPushConfigRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+subscription}:modifyPushConfig",
+        baseUrl: "https://pubsub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ModifyPushConfigProjectsSubscriptionsRequest",
+  }) as any as S.Schema<ModifyPushConfigProjectsSubscriptionsRequest>;
 
 /** Request for the UpdateSnapshot method. */
 export interface UpdateSnapshotRequest {
@@ -1444,11 +1841,13 @@ export interface UpdateSnapshotRequest {
   updateMask?: string;
 }
 export const UpdateSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "snapshot": S.optional(Snapshot),
-  "updateMask": S.optional(S.String),
-}),
-).annotate({ identifier: "UpdateSnapshotRequest" }) as any as S.Schema<UpdateSnapshotRequest>;
+  S.Struct({
+    snapshot: S.optional(Snapshot),
+    updateMask: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateSnapshotRequest",
+}) as any as S.Schema<UpdateSnapshotRequest>;
 
 export interface PatchProjectsSnapshotsRequest {
   /** Optional. The name of the snapshot. */
@@ -1457,11 +1856,19 @@ export interface PatchProjectsSnapshotsRequest {
   body?: UpdateSnapshotRequest;
 }
 export const PatchProjectsSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(UpdateSnapshotRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsSnapshotsRequest" }) as any as S.Schema<PatchProjectsSnapshotsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(UpdateSnapshotRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+name}",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchProjectsSnapshotsRequest",
+}) as any as S.Schema<PatchProjectsSnapshotsRequest>;
 
 /** Request for the UpdateSubscription method. */
 export interface UpdateSubscriptionRequest {
@@ -1471,11 +1878,13 @@ export interface UpdateSubscriptionRequest {
   subscription?: Subscription;
 }
 export const UpdateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String),
-  "subscription": S.optional(Subscription),
-}),
-).annotate({ identifier: "UpdateSubscriptionRequest" }) as any as S.Schema<UpdateSubscriptionRequest>;
+  S.Struct({
+    updateMask: S.optional(S.String),
+    subscription: S.optional(Subscription),
+  }),
+).annotate({
+  identifier: "UpdateSubscriptionRequest",
+}) as any as S.Schema<UpdateSubscriptionRequest>;
 
 export interface PatchProjectsSubscriptionsRequest {
   /** Required. Identifier. The name of the subscription. It must have the format `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`. */
@@ -1484,11 +1893,19 @@ export interface PatchProjectsSubscriptionsRequest {
   body?: UpdateSubscriptionRequest;
 }
 export const PatchProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(UpdateSubscriptionRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsSubscriptionsRequest" }) as any as S.Schema<PatchProjectsSubscriptionsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(UpdateSubscriptionRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+name}",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchProjectsSubscriptionsRequest",
+}) as any as S.Schema<PatchProjectsSubscriptionsRequest>;
 
 /** Request for the UpdateTopic method. */
 export interface UpdateTopicRequest {
@@ -1498,11 +1915,13 @@ export interface UpdateTopicRequest {
   topic?: Topic;
 }
 export const UpdateTopicRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String),
-  "topic": S.optional(Topic),
-}),
-).annotate({ identifier: "UpdateTopicRequest" }) as any as S.Schema<UpdateTopicRequest>;
+  S.Struct({
+    updateMask: S.optional(S.String),
+    topic: S.optional(Topic),
+  }),
+).annotate({
+  identifier: "UpdateTopicRequest",
+}) as any as S.Schema<UpdateTopicRequest>;
 
 export interface PatchProjectsTopicsRequest {
   /** Required. Identifier. The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`. */
@@ -1511,11 +1930,19 @@ export interface PatchProjectsTopicsRequest {
   body?: UpdateTopicRequest;
 }
 export const PatchProjectsTopicsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(UpdateTopicRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsTopicsRequest" }) as any as S.Schema<PatchProjectsTopicsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(UpdateTopicRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+name}",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchProjectsTopicsRequest",
+}) as any as S.Schema<PatchProjectsTopicsRequest>;
 
 /** A message that is published by publishers and consumed by subscribers. The message must contain either a non-empty data field or at least one attribute. Note that client libraries represent this object differently depending on the language. See the corresponding [client library documentation](https://cloud.google.com/pubsub/docs/reference/libraries) for more information. See [quotas and limits] (https://cloud.google.com/pubsub/quotas) for more information about message limits. */
 export interface PubsubMessage {
@@ -1531,17 +1958,19 @@ export interface PubsubMessage {
   orderingKey?: string;
 }
 export const PubsubMessage = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "messageId": S.optional(S.String),
-  "attributes": S.optional(StringMap),
-  "publishTime": S.optional(S.String),
-  "data": S.optional(S.String),
-  "orderingKey": S.optional(S.String),
-}),
+  S.Struct({
+    messageId: S.optional(S.String),
+    attributes: S.optional(StringMap),
+    publishTime: S.optional(S.String),
+    data: S.optional(S.String),
+    orderingKey: S.optional(S.String),
+  }),
 ).annotate({ identifier: "PubsubMessage" }) as any as S.Schema<PubsubMessage>;
 
 export type PubsubMessageList = ReadonlyArray<PubsubMessage>;
-export const PubsubMessageList = /*@__PURE__*/ S.Array(PubsubMessage) as any as S.Schema<PubsubMessageList>;
+export const PubsubMessageList = /*@__PURE__*/ S.Array(
+  PubsubMessage,
+) as any as S.Schema<PubsubMessageList>;
 
 /** Request for the Publish method. */
 export interface PublishRequest {
@@ -1549,9 +1978,9 @@ export interface PublishRequest {
   messages?: PubsubMessageList;
 }
 export const PublishRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "messages": S.optional(PubsubMessageList),
-}),
+  S.Struct({
+    messages: S.optional(PubsubMessageList),
+  }),
 ).annotate({ identifier: "PublishRequest" }) as any as S.Schema<PublishRequest>;
 
 export interface PublishProjectsTopicsRequest {
@@ -1561,11 +1990,19 @@ export interface PublishProjectsTopicsRequest {
   body?: PublishRequest;
 }
 export const PublishProjectsTopicsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "topic": S.String.pipe(T.Label()),
-  "body": S.optional(PublishRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+topic}:publish","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "PublishProjectsTopicsRequest" }) as any as S.Schema<PublishProjectsTopicsRequest>;
+  S.Struct({
+    topic: S.String.pipe(T.Label()),
+    body: S.optional(PublishRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+topic}:publish",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PublishProjectsTopicsRequest",
+}) as any as S.Schema<PublishProjectsTopicsRequest>;
 
 /** Response for the `Publish` method. */
 export interface PublishResponse {
@@ -1573,10 +2010,12 @@ export interface PublishResponse {
   messageIds?: StringList;
 }
 export const PublishResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "messageIds": S.optional(StringList),
-}),
-).annotate({ identifier: "PublishResponse" }) as any as S.Schema<PublishResponse>;
+  S.Struct({
+    messageIds: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "PublishResponse",
+}) as any as S.Schema<PublishResponse>;
 
 /** Request for the `Pull` method. */
 export interface PullRequest {
@@ -1586,10 +2025,10 @@ export interface PullRequest {
   maxMessages?: number;
 }
 export const PullRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "returnImmediately": S.optional(S.Boolean),
-  "maxMessages": S.optional(S.Number),
-}),
+  S.Struct({
+    returnImmediately: S.optional(S.Boolean),
+    maxMessages: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "PullRequest" }) as any as S.Schema<PullRequest>;
 
 export interface PullProjectsSubscriptionsRequest {
@@ -1599,11 +2038,19 @@ export interface PullProjectsSubscriptionsRequest {
   body?: PullRequest;
 }
 export const PullProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "subscription": S.String.pipe(T.Label()),
-  "body": S.optional(PullRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+subscription}:pull","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "PullProjectsSubscriptionsRequest" }) as any as S.Schema<PullProjectsSubscriptionsRequest>;
+  S.Struct({
+    subscription: S.String.pipe(T.Label()),
+    body: S.optional(PullRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+subscription}:pull",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PullProjectsSubscriptionsRequest",
+}) as any as S.Schema<PullProjectsSubscriptionsRequest>;
 
 /** A message and its corresponding acknowledgment ID. */
 export interface ReceivedMessage {
@@ -1615,15 +2062,19 @@ export interface ReceivedMessage {
   message?: PubsubMessage;
 }
 export const ReceivedMessage = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "deliveryAttempt": S.optional(S.Number),
-  "ackId": S.optional(S.String),
-  "message": S.optional(PubsubMessage),
-}),
-).annotate({ identifier: "ReceivedMessage" }) as any as S.Schema<ReceivedMessage>;
+  S.Struct({
+    deliveryAttempt: S.optional(S.Number),
+    ackId: S.optional(S.String),
+    message: S.optional(PubsubMessage),
+  }),
+).annotate({
+  identifier: "ReceivedMessage",
+}) as any as S.Schema<ReceivedMessage>;
 
 export type ReceivedMessageList = ReadonlyArray<ReceivedMessage>;
-export const ReceivedMessageList = /*@__PURE__*/ S.Array(ReceivedMessage) as any as S.Schema<ReceivedMessageList>;
+export const ReceivedMessageList = /*@__PURE__*/ S.Array(
+  ReceivedMessage,
+) as any as S.Schema<ReceivedMessageList>;
 
 /** Response for the `Pull` method. */
 export interface PullResponse {
@@ -1631,9 +2082,9 @@ export interface PullResponse {
   receivedMessages?: ReceivedMessageList;
 }
 export const PullResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "receivedMessages": S.optional(ReceivedMessageList),
-}),
+  S.Struct({
+    receivedMessages: S.optional(ReceivedMessageList),
+  }),
 ).annotate({ identifier: "PullResponse" }) as any as S.Schema<PullResponse>;
 
 /** Request for the `RollbackSchema` method. */
@@ -1642,10 +2093,12 @@ export interface RollbackSchemaRequest {
   revisionId?: string;
 }
 export const RollbackSchemaRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "revisionId": S.optional(S.String),
-}),
-).annotate({ identifier: "RollbackSchemaRequest" }) as any as S.Schema<RollbackSchemaRequest>;
+  S.Struct({
+    revisionId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RollbackSchemaRequest",
+}) as any as S.Schema<RollbackSchemaRequest>;
 
 export interface RollbackProjectsSchemasRequest {
   /** Required. The schema being rolled back with revision id. */
@@ -1654,11 +2107,19 @@ export interface RollbackProjectsSchemasRequest {
   body?: RollbackSchemaRequest;
 }
 export const RollbackProjectsSchemasRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(RollbackSchemaRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:rollback","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "RollbackProjectsSchemasRequest" }) as any as S.Schema<RollbackProjectsSchemasRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(RollbackSchemaRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:rollback",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "RollbackProjectsSchemasRequest",
+}) as any as S.Schema<RollbackProjectsSchemasRequest>;
 
 /** Request for the `Seek` method. */
 export interface SeekRequest {
@@ -1668,10 +2129,10 @@ export interface SeekRequest {
   snapshot?: string;
 }
 export const SeekRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "time": S.optional(S.String),
-  "snapshot": S.optional(S.String),
-}),
+  S.Struct({
+    time: S.optional(S.String),
+    snapshot: S.optional(S.String),
+  }),
 ).annotate({ identifier: "SeekRequest" }) as any as S.Schema<SeekRequest>;
 
 export interface SeekProjectsSubscriptionsRequest {
@@ -1681,16 +2142,24 @@ export interface SeekProjectsSubscriptionsRequest {
   body?: SeekRequest;
 }
 export const SeekProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "subscription": S.String.pipe(T.Label()),
-  "body": S.optional(SeekRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+subscription}:seek","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "SeekProjectsSubscriptionsRequest" }) as any as S.Schema<SeekProjectsSubscriptionsRequest>;
+  S.Struct({
+    subscription: S.String.pipe(T.Label()),
+    body: S.optional(SeekRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+subscription}:seek",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SeekProjectsSubscriptionsRequest",
+}) as any as S.Schema<SeekProjectsSubscriptionsRequest>;
 
 /** Response for the `Seek` method (this response is empty). */
 export interface SeekResponse {}
 export const SeekResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
+  S.Struct({}),
 ).annotate({ identifier: "SeekResponse" }) as any as S.Schema<SeekResponse>;
 
 /** Request message for `SetIamPolicy` method. */
@@ -1699,10 +2168,12 @@ export interface SetIamPolicyRequest {
   policy?: Policy;
 }
 export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "policy": S.optional(Policy),
-}),
-).annotate({ identifier: "SetIamPolicyRequest" }) as any as S.Schema<SetIamPolicyRequest>;
+  S.Struct({
+    policy: S.optional(Policy),
+  }),
+).annotate({
+  identifier: "SetIamPolicyRequest",
+}) as any as S.Schema<SetIamPolicyRequest>;
 
 export interface SetIamPolicyProjectsSchemasRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1711,11 +2182,19 @@ export interface SetIamPolicyProjectsSchemasRequest {
   body?: SetIamPolicyRequest;
 }
 export const SetIamPolicyProjectsSchemasRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "SetIamPolicyProjectsSchemasRequest" }) as any as S.Schema<SetIamPolicyProjectsSchemasRequest>;
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+resource}:setIamPolicy",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SetIamPolicyProjectsSchemasRequest",
+}) as any as S.Schema<SetIamPolicyProjectsSchemasRequest>;
 
 export interface SetIamPolicyProjectsSnapshotsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1723,12 +2202,21 @@ export interface SetIamPolicyProjectsSnapshotsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "SetIamPolicyProjectsSnapshotsRequest" }) as any as S.Schema<SetIamPolicyProjectsSnapshotsRequest>;
+export const SetIamPolicyProjectsSnapshotsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+resource}:setIamPolicy",
+        baseUrl: "https://pubsub.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "SetIamPolicyProjectsSnapshotsRequest",
+}) as any as S.Schema<SetIamPolicyProjectsSnapshotsRequest>;
 
 export interface SetIamPolicyProjectsSubscriptionsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1736,12 +2224,21 @@ export interface SetIamPolicyProjectsSubscriptionsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "SetIamPolicyProjectsSubscriptionsRequest" }) as any as S.Schema<SetIamPolicyProjectsSubscriptionsRequest>;
+export const SetIamPolicyProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+resource}:setIamPolicy",
+        baseUrl: "https://pubsub.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "SetIamPolicyProjectsSubscriptionsRequest",
+}) as any as S.Schema<SetIamPolicyProjectsSubscriptionsRequest>;
 
 export interface SetIamPolicyProjectsTopicsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1750,11 +2247,19 @@ export interface SetIamPolicyProjectsTopicsRequest {
   body?: SetIamPolicyRequest;
 }
 export const SetIamPolicyProjectsTopicsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "SetIamPolicyProjectsTopicsRequest" }) as any as S.Schema<SetIamPolicyProjectsTopicsRequest>;
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+resource}:setIamPolicy",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SetIamPolicyProjectsTopicsRequest",
+}) as any as S.Schema<SetIamPolicyProjectsTopicsRequest>;
 
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
@@ -1762,10 +2267,12 @@ export interface TestIamPermissionsRequest {
   permissions?: StringList;
 }
 export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "permissions": S.optional(StringList),
-}),
-).annotate({ identifier: "TestIamPermissionsRequest" }) as any as S.Schema<TestIamPermissionsRequest>;
+  S.Struct({
+    permissions: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "TestIamPermissionsRequest",
+}) as any as S.Schema<TestIamPermissionsRequest>;
 
 export interface TestIamPermissionsProjectsSchemasRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1773,12 +2280,21 @@ export interface TestIamPermissionsProjectsSchemasRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsSchemasRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "TestIamPermissionsProjectsSchemasRequest" }) as any as S.Schema<TestIamPermissionsProjectsSchemasRequest>;
+export const TestIamPermissionsProjectsSchemasRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+resource}:testIamPermissions",
+        baseUrl: "https://pubsub.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "TestIamPermissionsProjectsSchemasRequest",
+}) as any as S.Schema<TestIamPermissionsProjectsSchemasRequest>;
 
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
@@ -1786,10 +2302,12 @@ export interface TestIamPermissionsResponse {
   permissions?: StringList;
 }
 export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "permissions": S.optional(StringList),
-}),
-).annotate({ identifier: "TestIamPermissionsResponse" }) as any as S.Schema<TestIamPermissionsResponse>;
+  S.Struct({
+    permissions: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "TestIamPermissionsResponse",
+}) as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsSnapshotsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1797,12 +2315,21 @@ export interface TestIamPermissionsProjectsSnapshotsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "TestIamPermissionsProjectsSnapshotsRequest" }) as any as S.Schema<TestIamPermissionsProjectsSnapshotsRequest>;
+export const TestIamPermissionsProjectsSnapshotsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+resource}:testIamPermissions",
+        baseUrl: "https://pubsub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "TestIamPermissionsProjectsSnapshotsRequest",
+  }) as any as S.Schema<TestIamPermissionsProjectsSnapshotsRequest>;
 
 export interface TestIamPermissionsProjectsSubscriptionsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1810,12 +2337,21 @@ export interface TestIamPermissionsProjectsSubscriptionsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "TestIamPermissionsProjectsSubscriptionsRequest" }) as any as S.Schema<TestIamPermissionsProjectsSubscriptionsRequest>;
+export const TestIamPermissionsProjectsSubscriptionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+resource}:testIamPermissions",
+        baseUrl: "https://pubsub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "TestIamPermissionsProjectsSubscriptionsRequest",
+  }) as any as S.Schema<TestIamPermissionsProjectsSubscriptionsRequest>;
 
 export interface TestIamPermissionsProjectsTopicsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1823,14 +2359,26 @@ export interface TestIamPermissionsProjectsTopicsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsTopicsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "TestIamPermissionsProjectsTopicsRequest" }) as any as S.Schema<TestIamPermissionsProjectsTopicsRequest>;
+export const TestIamPermissionsProjectsTopicsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+resource}:testIamPermissions",
+        baseUrl: "https://pubsub.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "TestIamPermissionsProjectsTopicsRequest",
+}) as any as S.Schema<TestIamPermissionsProjectsTopicsRequest>;
 
-export type ValidateMessageRequestEncodingEnum = "ENCODING_UNSPECIFIED" | "JSON" | "BINARY";
+export type ValidateMessageRequestEncodingEnum =
+  | "ENCODING_UNSPECIFIED"
+  | "JSON"
+  | "BINARY";
 export const ValidateMessageRequestEncodingEnum = /*@__PURE__*/ S.String;
 
 /** Request for the `ValidateMessage` method. */
@@ -1845,13 +2393,15 @@ export interface ValidateMessageRequest {
   encoding?: ValidateMessageRequestEncodingEnum | (string & {});
 }
 export const ValidateMessageRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "message": S.optional(S.String),
-  "schema": S.optional(Pubsub_Schema),
-  "encoding": S.optional(ValidateMessageRequestEncodingEnum),
-}),
-).annotate({ identifier: "ValidateMessageRequest" }) as any as S.Schema<ValidateMessageRequest>;
+  S.Struct({
+    name: S.optional(S.String),
+    message: S.optional(S.String),
+    schema: S.optional(Pubsub_Schema),
+    encoding: S.optional(ValidateMessageRequestEncodingEnum),
+  }),
+).annotate({
+  identifier: "ValidateMessageRequest",
+}) as any as S.Schema<ValidateMessageRequest>;
 
 export interface ValidateMessageProjectsSchemasRequest {
   /** Required. The name of the project in which to validate schemas. Format is `projects/{project-id}`. */
@@ -1859,18 +2409,29 @@ export interface ValidateMessageProjectsSchemasRequest {
   /** Request body */
   body?: ValidateMessageRequest;
 }
-export const ValidateMessageProjectsSchemasRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(ValidateMessageRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/schemas:validateMessage","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "ValidateMessageProjectsSchemasRequest" }) as any as S.Schema<ValidateMessageProjectsSchemasRequest>;
+export const ValidateMessageProjectsSchemasRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(ValidateMessageRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/schemas:validateMessage",
+        baseUrl: "https://pubsub.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ValidateMessageProjectsSchemasRequest",
+}) as any as S.Schema<ValidateMessageProjectsSchemasRequest>;
 
 /** Response for the `ValidateMessage` method. Empty for now. */
 export interface ValidateMessageResponse {}
 export const ValidateMessageResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "ValidateMessageResponse" }) as any as S.Schema<ValidateMessageResponse>;
+  S.Struct({}),
+).annotate({
+  identifier: "ValidateMessageResponse",
+}) as any as S.Schema<ValidateMessageResponse>;
 
 /** Request for the `ValidateSchema` method. */
 export interface ValidateSchemaRequest {
@@ -1878,10 +2439,12 @@ export interface ValidateSchemaRequest {
   schema?: Pubsub_Schema;
 }
 export const ValidateSchemaRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "schema": S.optional(Pubsub_Schema),
-}),
-).annotate({ identifier: "ValidateSchemaRequest" }) as any as S.Schema<ValidateSchemaRequest>;
+  S.Struct({
+    schema: S.optional(Pubsub_Schema),
+  }),
+).annotate({
+  identifier: "ValidateSchemaRequest",
+}) as any as S.Schema<ValidateSchemaRequest>;
 
 export interface ValidateProjectsSchemasRequest {
   /** Required. The name of the project in which to validate schemas. Format is `projects/{project-id}`. */
@@ -1890,19 +2453,34 @@ export interface ValidateProjectsSchemasRequest {
   body?: ValidateSchemaRequest;
 }
 export const ValidateProjectsSchemasRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(ValidateSchemaRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/schemas:validate","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "ValidateProjectsSchemasRequest" }) as any as S.Schema<ValidateProjectsSchemasRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(ValidateSchemaRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/schemas:validate",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ValidateProjectsSchemasRequest",
+}) as any as S.Schema<ValidateProjectsSchemasRequest>;
 
 /** Response for the `ValidateSchema` method. Empty for now. */
 export interface ValidateSchemaResponse {}
 export const ValidateSchemaResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "ValidateSchemaResponse" }) as any as S.Schema<ValidateSchemaResponse>;
+  S.Struct({}),
+).annotate({
+  identifier: "ValidateSchemaResponse",
+}) as any as S.Schema<ValidateSchemaResponse>;
 
-export type AcknowledgeProjectsSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type AcknowledgeProjectsSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Acknowledges the messages associated with the `ack_ids` in the `AcknowledgeRequest`. The Pub/Sub system can remove the relevant messages from the subscription. Acknowledging a message whose ack deadline has expired may succeed, but such a message may be redelivered later. Acknowledging a message more than once will not result in an error. */
 export const acknowledgeProjectsSubscriptions: API.OperationMethod<
   AcknowledgeProjectsSubscriptionsRequest,
@@ -1917,7 +2495,12 @@ export const acknowledgeProjectsSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CommitProjectsSchemasError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CommitProjectsSchemasError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Commits a new schema revision to an existing schema. */
 export const commitProjectsSchemas: API.OperationMethod<
   CommitProjectsSchemasRequest,
@@ -1932,7 +2515,12 @@ export const commitProjectsSchemas: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsSchemasError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsSchemasError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a schema. */
 export const createProjectsSchemas: API.OperationMethod<
   CreateProjectsSchemasRequest,
@@ -1947,7 +2535,12 @@ export const createProjectsSchemas: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsSnapshotsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsSnapshotsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a snapshot from the requested subscription. Snapshots are used in [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations, which allow you to manage message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an existing subscription to the state captured by a snapshot. If the snapshot already exists, returns `ALREADY_EXISTS`. If the requested subscription doesn't exist, returns `NOT_FOUND`. If the backlog in the subscription is too old -- and the resulting snapshot would expire in less than 1 hour -- then `FAILED_PRECONDITION` is returned. See also the `Snapshot.expire_time` field. If the name is not provided in the request, the server will assign a random name for this snapshot on the same project as the subscription, conforming to the [resource name format] (https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names). The generated name is populated in the returned Snapshot object. Note that for REST API requests, you must specify a name in the request. */
 export const createProjectsSnapshots: API.OperationMethod<
   CreateProjectsSnapshotsRequest,
@@ -1962,7 +2555,12 @@ export const createProjectsSnapshots: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a subscription to a given topic. See the [resource name rules] (https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names). If the subscription already exists, returns `ALREADY_EXISTS`. If the corresponding topic doesn't exist, returns `NOT_FOUND`. If the name is not provided in the request, the server will assign a random name for this subscription on the same project as the topic, conforming to the [resource name format] (https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names). The generated name is populated in the returned Subscription object. Note that for REST API requests, you must specify a name in the request. */
 export const createProjectsSubscriptions: API.OperationMethod<
   CreateProjectsSubscriptionsRequest,
@@ -1977,7 +2575,12 @@ export const createProjectsSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsTopicsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsTopicsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates the given topic with the given name. See the [resource name rules] (https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names). */
 export const createProjectsTopics: API.OperationMethod<
   CreateProjectsTopicsRequest,
@@ -1992,7 +2595,12 @@ export const createProjectsTopics: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsSchemasError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsSchemasError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a schema. */
 export const deleteProjectsSchemas: API.OperationMethod<
   DeleteProjectsSchemasRequest,
@@ -2007,7 +2615,12 @@ export const deleteProjectsSchemas: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsSnapshotsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsSnapshotsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Removes an existing snapshot. Snapshots are used in [Seek] (https://cloud.google.com/pubsub/docs/replay-overview) operations, which allow you to manage message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an existing subscription to the state captured by a snapshot. When the snapshot is deleted, all messages retained in the snapshot are immediately dropped. After a snapshot is deleted, a new one may be created with the same name, but the new one has no association with the old snapshot or its subscription, unless the same subscription is specified. */
 export const deleteProjectsSnapshots: API.OperationMethod<
   DeleteProjectsSnapshotsRequest,
@@ -2022,7 +2635,12 @@ export const deleteProjectsSnapshots: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes an existing subscription. All messages retained in the subscription are immediately dropped. Calls to `Pull` after deletion will return `NOT_FOUND`. After a subscription is deleted, a new one may be created with the same name, but the new one has no association with the old subscription or its topic unless the same topic is specified. */
 export const deleteProjectsSubscriptions: API.OperationMethod<
   DeleteProjectsSubscriptionsRequest,
@@ -2037,7 +2655,12 @@ export const deleteProjectsSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsTopicsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsTopicsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes the topic with the given name. Returns `NOT_FOUND` if the topic does not exist. After a topic is deleted, a new topic may be created with the same name; this is an entirely new topic with none of the old configuration or subscriptions. Existing subscriptions to this topic are not deleted, but their `topic` field is set to `_deleted-topic_`. */
 export const deleteProjectsTopics: API.OperationMethod<
   DeleteProjectsTopicsRequest,
@@ -2052,7 +2675,12 @@ export const deleteProjectsTopics: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteRevisionProjectsSchemasError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteRevisionProjectsSchemasError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a specific schema revision. */
 export const deleteRevisionProjectsSchemas: API.OperationMethod<
   DeleteRevisionProjectsSchemasRequest,
@@ -2067,7 +2695,12 @@ export const deleteRevisionProjectsSchemas: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DetachProjectsSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DetachProjectsSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Detaches a subscription from this topic. All messages retained in the subscription are dropped. Subsequent `Pull` and `StreamingPull` requests will return FAILED_PRECONDITION. If the subscription is a push subscription, pushes to the endpoint will stop. */
 export const detachProjectsSubscriptions: API.OperationMethod<
   DetachProjectsSubscriptionsRequest,
@@ -2082,7 +2715,10 @@ export const detachProjectsSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsSchemasError = NotFound | Forbidden | GcpOpError;
+export type GetIamPolicyProjectsSchemasError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsSchemas: API.OperationMethod<
   GetIamPolicyProjectsSchemasRequest,
@@ -2097,7 +2733,10 @@ export const getIamPolicyProjectsSchemas: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsSnapshotsError = NotFound | Forbidden | GcpOpError;
+export type GetIamPolicyProjectsSnapshotsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsSnapshots: API.OperationMethod<
   GetIamPolicyProjectsSnapshotsRequest,
@@ -2112,7 +2751,10 @@ export const getIamPolicyProjectsSnapshots: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsSubscriptionsError = NotFound | Forbidden | GcpOpError;
+export type GetIamPolicyProjectsSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsSubscriptions: API.OperationMethod<
   GetIamPolicyProjectsSubscriptionsRequest,
@@ -2215,7 +2857,10 @@ export const listProjectsSchemas: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListProjectsSnapshotsError = NotFound | Forbidden | GcpOpError;
@@ -2231,7 +2876,10 @@ export const listProjectsSnapshots: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListProjectsSubscriptionsError = NotFound | Forbidden | GcpOpError;
@@ -2247,7 +2895,10 @@ export const listProjectsSubscriptions: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListProjectsTopicsError = NotFound | Forbidden | GcpOpError;
@@ -2263,10 +2914,16 @@ export const listProjectsTopics: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsTopicsSnapshotsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsTopicsSnapshotsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists the names of the snapshots on this topic. Snapshots are used in [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations, which allow you to manage message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an existing subscription to the state captured by a snapshot. */
 export const listProjectsTopicsSnapshots: API.PaginatedOperationMethod<
   ListProjectsTopicsSnapshotsRequest,
@@ -2279,10 +2936,16 @@ export const listProjectsTopicsSnapshots: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsTopicsSubscriptionsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsTopicsSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists the names of the attached subscriptions on this topic. */
 export const listProjectsTopicsSubscriptions: API.PaginatedOperationMethod<
   ListProjectsTopicsSubscriptionsRequest,
@@ -2295,10 +2958,16 @@ export const listProjectsTopicsSubscriptions: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListRevisionsProjectsSchemasError = NotFound | Forbidden | GcpOpError;
+export type ListRevisionsProjectsSchemasError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all schema revisions for the named schema. */
 export const listRevisionsProjectsSchemas: API.PaginatedOperationMethod<
   ListRevisionsProjectsSchemasRequest,
@@ -2311,10 +2980,18 @@ export const listRevisionsProjectsSchemas: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ModifyAckDeadlineProjectsSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ModifyAckDeadlineProjectsSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Modifies the ack deadline for a specific message. This method is useful to indicate that more time is needed to process a message by the subscriber, or to make the message available for redelivery if the processing was interrupted. Note that this does not modify the subscription-level `ackDeadlineSeconds` used for subsequent messages. */
 export const modifyAckDeadlineProjectsSubscriptions: API.OperationMethod<
   ModifyAckDeadlineProjectsSubscriptionsRequest,
@@ -2329,7 +3006,12 @@ export const modifyAckDeadlineProjectsSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ModifyPushConfigProjectsSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ModifyPushConfigProjectsSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Modifies the `PushConfig` for a specified subscription. This may be used to change a push subscription to a pull one (signified by an empty `PushConfig`) or vice versa, or change the endpoint URL and other attributes of a push subscription. Messages will accumulate for delivery continuously through the call regardless of changes to the `PushConfig`. */
 export const modifyPushConfigProjectsSubscriptions: API.OperationMethod<
   ModifyPushConfigProjectsSubscriptionsRequest,
@@ -2344,7 +3026,12 @@ export const modifyPushConfigProjectsSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsSnapshotsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsSnapshotsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates an existing snapshot by updating the fields specified in the update mask. Snapshots are used in [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations, which allow you to manage message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an existing subscription to the state captured by a snapshot. */
 export const patchProjectsSnapshots: API.OperationMethod<
   PatchProjectsSnapshotsRequest,
@@ -2359,7 +3046,12 @@ export const patchProjectsSnapshots: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates an existing subscription by updating the fields specified in the update mask. Note that certain properties of a subscription, such as its topic, are not modifiable. */
 export const patchProjectsSubscriptions: API.OperationMethod<
   PatchProjectsSubscriptionsRequest,
@@ -2374,7 +3066,12 @@ export const patchProjectsSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsTopicsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsTopicsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates an existing topic by updating the fields specified in the update mask. Note that certain properties of a topic are not modifiable. */
 export const patchProjectsTopics: API.OperationMethod<
   PatchProjectsTopicsRequest,
@@ -2389,7 +3086,12 @@ export const patchProjectsTopics: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PublishProjectsTopicsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PublishProjectsTopicsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Adds one or more messages to the topic. Returns `NOT_FOUND` if the topic does not exist. */
 export const publishProjectsTopics: API.OperationMethod<
   PublishProjectsTopicsRequest,
@@ -2404,7 +3106,12 @@ export const publishProjectsTopics: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PullProjectsSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PullProjectsSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Pulls messages from the server. */
 export const pullProjectsSubscriptions: API.OperationMethod<
   PullProjectsSubscriptionsRequest,
@@ -2419,7 +3126,12 @@ export const pullProjectsSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RollbackProjectsSchemasError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RollbackProjectsSchemasError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new schema revision that is a copy of the provided revision_id. */
 export const rollbackProjectsSchemas: API.OperationMethod<
   RollbackProjectsSchemasRequest,
@@ -2434,7 +3146,12 @@ export const rollbackProjectsSchemas: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SeekProjectsSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SeekProjectsSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Seeks an existing subscription to a point in time or to a given snapshot, whichever is provided in the request. Snapshots are used in [Seek] (https://cloud.google.com/pubsub/docs/replay-overview) operations, which allow you to manage message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an existing subscription to the state captured by a snapshot. Note that both the subscription and the snapshot must be on the same topic. */
 export const seekProjectsSubscriptions: API.OperationMethod<
   SeekProjectsSubscriptionsRequest,
@@ -2449,7 +3166,12 @@ export const seekProjectsSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsSchemasError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetIamPolicyProjectsSchemasError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsSchemas: API.OperationMethod<
   SetIamPolicyProjectsSchemasRequest,
@@ -2464,7 +3186,12 @@ export const setIamPolicyProjectsSchemas: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsSnapshotsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetIamPolicyProjectsSnapshotsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsSnapshots: API.OperationMethod<
   SetIamPolicyProjectsSnapshotsRequest,
@@ -2479,7 +3206,12 @@ export const setIamPolicyProjectsSnapshots: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetIamPolicyProjectsSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsSubscriptions: API.OperationMethod<
   SetIamPolicyProjectsSubscriptionsRequest,
@@ -2494,7 +3226,12 @@ export const setIamPolicyProjectsSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsTopicsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetIamPolicyProjectsTopicsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsTopics: API.OperationMethod<
   SetIamPolicyProjectsTopicsRequest,
@@ -2509,7 +3246,12 @@ export const setIamPolicyProjectsTopics: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsSchemasError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TestIamPermissionsProjectsSchemasError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsSchemas: API.OperationMethod<
   TestIamPermissionsProjectsSchemasRequest,
@@ -2524,7 +3266,12 @@ export const testIamPermissionsProjectsSchemas: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsSnapshotsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TestIamPermissionsProjectsSnapshotsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsSnapshots: API.OperationMethod<
   TestIamPermissionsProjectsSnapshotsRequest,
@@ -2539,7 +3286,12 @@ export const testIamPermissionsProjectsSnapshots: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TestIamPermissionsProjectsSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsSubscriptions: API.OperationMethod<
   TestIamPermissionsProjectsSubscriptionsRequest,
@@ -2554,7 +3306,12 @@ export const testIamPermissionsProjectsSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsTopicsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TestIamPermissionsProjectsTopicsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsTopics: API.OperationMethod<
   TestIamPermissionsProjectsTopicsRequest,
@@ -2569,7 +3326,12 @@ export const testIamPermissionsProjectsTopics: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ValidateMessageProjectsSchemasError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ValidateMessageProjectsSchemasError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Validates a message against a schema. */
 export const validateMessageProjectsSchemas: API.OperationMethod<
   ValidateMessageProjectsSchemasRequest,
@@ -2584,7 +3346,12 @@ export const validateMessageProjectsSchemas: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ValidateProjectsSchemasError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ValidateProjectsSchemasError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Validates a schema. */
 export const validateProjectsSchemas: API.OperationMethod<
   ValidateProjectsSchemasRequest,
@@ -2598,4 +3365,3 @@ export const validateProjectsSchemas: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

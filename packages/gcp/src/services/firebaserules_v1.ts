@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 /** `Release` is a named reference to a `Ruleset`. Once a `Release` refers to a `Ruleset`, rules-enabled services will be able to enforce the `Ruleset`. */
@@ -72,12 +72,12 @@ export interface Release {
   name?: string;
 }
 export const Release = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "rulesetName": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    rulesetName: S.optional(S.String),
+    createTime: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Release" }) as any as S.Schema<Release>;
 
 export interface CreateProjectsReleasesRequest {
@@ -87,11 +87,19 @@ export interface CreateProjectsReleasesRequest {
   body?: Release;
 }
 export const CreateProjectsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(Release.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}/releases","baseUrl":"https://firebaserules.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsReleasesRequest" }) as any as S.Schema<CreateProjectsReleasesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(Release.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}/releases",
+      baseUrl: "https://firebaserules.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateProjectsReleasesRequest",
+}) as any as S.Schema<CreateProjectsReleasesRequest>;
 
 /** `File` containing source content. */
 export interface File {
@@ -103,15 +111,17 @@ export interface File {
   content?: string;
 }
 export const File = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "fingerprint": S.optional(S.String),
-  "content": S.optional(S.String),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    fingerprint: S.optional(S.String),
+    content: S.optional(S.String),
+  }),
 ).annotate({ identifier: "File" }) as any as S.Schema<File>;
 
 export type FileList = ReadonlyArray<File>;
-export const FileList = /*@__PURE__*/ S.Array(File) as any as S.Schema<FileList>;
+export const FileList = /*@__PURE__*/ S.Array(
+  File,
+) as any as S.Schema<FileList>;
 
 /** `Source` is one or more `File` messages comprising a logical set of rules. */
 export interface Source {
@@ -119,13 +129,15 @@ export interface Source {
   files?: FileList;
 }
 export const Source = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "files": S.optional(FileList),
-}),
+  S.Struct({
+    files: S.optional(FileList),
+  }),
 ).annotate({ identifier: "Source" }) as any as S.Schema<Source>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** Metadata for a Ruleset. */
 export interface Metadata {
@@ -133,9 +145,9 @@ export interface Metadata {
   services?: StringList;
 }
 export const Metadata = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "services": S.optional(StringList),
-}),
+  S.Struct({
+    services: S.optional(StringList),
+  }),
 ).annotate({ identifier: "Metadata" }) as any as S.Schema<Metadata>;
 
 /** `Ruleset` is an immutable copy of `Source` with a globally unique identifier and a creation time. */
@@ -152,13 +164,13 @@ export interface Ruleset {
   metadata?: Metadata;
 }
 export const Ruleset = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "attachmentPoint": S.optional(S.String),
-  "source": S.optional(Source),
-  "name": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "metadata": S.optional(Metadata),
-}),
+  S.Struct({
+    attachmentPoint: S.optional(S.String),
+    source: S.optional(Source),
+    name: S.optional(S.String),
+    createTime: S.optional(S.String),
+    metadata: S.optional(Metadata),
+  }),
 ).annotate({ identifier: "Ruleset" }) as any as S.Schema<Ruleset>;
 
 export interface CreateProjectsRulesetsRequest {
@@ -168,58 +180,106 @@ export interface CreateProjectsRulesetsRequest {
   body?: Ruleset;
 }
 export const CreateProjectsRulesetsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(Ruleset.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}/rulesets","baseUrl":"https://firebaserules.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsRulesetsRequest" }) as any as S.Schema<CreateProjectsRulesetsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(Ruleset.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}/rulesets",
+      baseUrl: "https://firebaserules.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateProjectsRulesetsRequest",
+}) as any as S.Schema<CreateProjectsRulesetsRequest>;
 
 export interface DeleteProjectsReleasesRequest {
   /** Required. Resource name for the `Release` to delete. Format: `projects/{project_id}/releases/{release_id}` */
   name: string;
 }
 export const DeleteProjectsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://firebaserules.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsReleasesRequest" }) as any as S.Schema<DeleteProjectsReleasesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://firebaserules.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteProjectsReleasesRequest",
+}) as any as S.Schema<DeleteProjectsReleasesRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 export interface DeleteProjectsRulesetsRequest {
   /** Required. Resource name for the ruleset to delete. Format: `projects/{project_id}/rulesets/{ruleset_id}` */
   name: string;
 }
 export const DeleteProjectsRulesetsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://firebaserules.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsRulesetsRequest" }) as any as S.Schema<DeleteProjectsRulesetsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://firebaserules.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteProjectsRulesetsRequest",
+}) as any as S.Schema<DeleteProjectsRulesetsRequest>;
 
-export type GetExecutableProjectsReleasesExecutableVersionEnum = "RELEASE_EXECUTABLE_VERSION_UNSPECIFIED" | "FIREBASE_RULES_EXECUTABLE_V1" | "FIREBASE_RULES_EXECUTABLE_V2";
-export const GetExecutableProjectsReleasesExecutableVersionEnum = /*@__PURE__*/ S.String;
+export type GetExecutableProjectsReleasesExecutableVersionEnum =
+  | "RELEASE_EXECUTABLE_VERSION_UNSPECIFIED"
+  | "FIREBASE_RULES_EXECUTABLE_V1"
+  | "FIREBASE_RULES_EXECUTABLE_V2";
+export const GetExecutableProjectsReleasesExecutableVersionEnum =
+  /*@__PURE__*/ S.String;
 
 export interface GetExecutableProjectsReleasesRequest {
   /** Required. Resource name of the `Release`. Format: `projects/{project_id}/releases/{release_id}` */
   name: string;
   /** Optional. The requested runtime executable version. Defaults to FIREBASE_RULES_EXECUTABLE_V1. */
-  executableVersion?: GetExecutableProjectsReleasesExecutableVersionEnum | (string & {});
+  executableVersion?:
+    | GetExecutableProjectsReleasesExecutableVersionEnum
+    | (string & {});
 }
-export const GetExecutableProjectsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "executableVersion": S.optional(GetExecutableProjectsReleasesExecutableVersionEnum.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:getExecutable","baseUrl":"https://firebaserules.googleapis.com/"})),
-).annotate({ identifier: "GetExecutableProjectsReleasesRequest" }) as any as S.Schema<GetExecutableProjectsReleasesRequest>;
+export const GetExecutableProjectsReleasesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      executableVersion: S.optional(
+        GetExecutableProjectsReleasesExecutableVersionEnum.pipe(T.Query()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}:getExecutable",
+        baseUrl: "https://firebaserules.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetExecutableProjectsReleasesRequest",
+}) as any as S.Schema<GetExecutableProjectsReleasesRequest>;
 
-export type GetReleaseExecutableResponseExecutableVersionEnum = "RELEASE_EXECUTABLE_VERSION_UNSPECIFIED" | "FIREBASE_RULES_EXECUTABLE_V1" | "FIREBASE_RULES_EXECUTABLE_V2";
-export const GetReleaseExecutableResponseExecutableVersionEnum = /*@__PURE__*/ S.String;
+export type GetReleaseExecutableResponseExecutableVersionEnum =
+  | "RELEASE_EXECUTABLE_VERSION_UNSPECIFIED"
+  | "FIREBASE_RULES_EXECUTABLE_V1"
+  | "FIREBASE_RULES_EXECUTABLE_V2";
+export const GetReleaseExecutableResponseExecutableVersionEnum =
+  /*@__PURE__*/ S.String;
 
-export type GetReleaseExecutableResponseLanguageEnum = "LANGUAGE_UNSPECIFIED" | "FIREBASE_RULES" | "EVENT_FLOW_TRIGGERS";
+export type GetReleaseExecutableResponseLanguageEnum =
+  | "LANGUAGE_UNSPECIFIED"
+  | "FIREBASE_RULES"
+  | "EVENT_FLOW_TRIGGERS";
 export const GetReleaseExecutableResponseLanguageEnum = /*@__PURE__*/ S.String;
 
 /** The response for FirebaseRulesService.GetReleaseExecutable */
@@ -238,35 +298,55 @@ export interface GetReleaseExecutableResponse {
   updateTime?: string;
 }
 export const GetReleaseExecutableResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "rulesetName": S.optional(S.String),
-  "executableVersion": S.optional(GetReleaseExecutableResponseExecutableVersionEnum),
-  "executable": S.optional(S.String),
-  "syncTime": S.optional(S.String),
-  "language": S.optional(GetReleaseExecutableResponseLanguageEnum),
-  "updateTime": S.optional(S.String),
-}),
-).annotate({ identifier: "GetReleaseExecutableResponse" }) as any as S.Schema<GetReleaseExecutableResponse>;
+  S.Struct({
+    rulesetName: S.optional(S.String),
+    executableVersion: S.optional(
+      GetReleaseExecutableResponseExecutableVersionEnum,
+    ),
+    executable: S.optional(S.String),
+    syncTime: S.optional(S.String),
+    language: S.optional(GetReleaseExecutableResponseLanguageEnum),
+    updateTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetReleaseExecutableResponse",
+}) as any as S.Schema<GetReleaseExecutableResponse>;
 
 export interface GetProjectsReleasesRequest {
   /** Required. Resource name of the `Release`. Format: `projects/{project_id}/releases/{release_id}` */
   name: string;
 }
 export const GetProjectsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://firebaserules.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsReleasesRequest" }) as any as S.Schema<GetProjectsReleasesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://firebaserules.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsReleasesRequest",
+}) as any as S.Schema<GetProjectsReleasesRequest>;
 
 export interface GetProjectsRulesetsRequest {
   /** Required. Resource name for the ruleset to get. Format: `projects/{project_id}/rulesets/{ruleset_id}` */
   name: string;
 }
 export const GetProjectsRulesetsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://firebaserules.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsRulesetsRequest" }) as any as S.Schema<GetProjectsRulesetsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://firebaserules.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsRulesetsRequest",
+}) as any as S.Schema<GetProjectsRulesetsRequest>;
 
 export interface ListProjectsReleasesRequest {
   /** Required. Resource name for the project. Format: `projects/{project_id}` */
@@ -279,16 +359,26 @@ export interface ListProjectsReleasesRequest {
   pageToken?: string;
 }
 export const ListProjectsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/releases","baseUrl":"https://firebaserules.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsReleasesRequest" }) as any as S.Schema<ListProjectsReleasesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}/releases",
+      baseUrl: "https://firebaserules.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsReleasesRequest",
+}) as any as S.Schema<ListProjectsReleasesRequest>;
 
 export type ReleaseList = ReadonlyArray<Release>;
-export const ReleaseList = /*@__PURE__*/ S.Array(Release) as any as S.Schema<ReleaseList>;
+export const ReleaseList = /*@__PURE__*/ S.Array(
+  Release,
+) as any as S.Schema<ReleaseList>;
 
 /** The response for FirebaseRulesService.ListReleases. */
 export interface ListReleasesResponse {
@@ -298,11 +388,13 @@ export interface ListReleasesResponse {
   nextPageToken?: string;
 }
 export const ListReleasesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "releases": S.optional(ReleaseList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListReleasesResponse" }) as any as S.Schema<ListReleasesResponse>;
+  S.Struct({
+    releases: S.optional(ReleaseList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListReleasesResponse",
+}) as any as S.Schema<ListReleasesResponse>;
 
 export interface ListProjectsRulesetsRequest {
   /** Optional. Page size to load. Maximum of 100. Defaults to 10. Note: `page_size` is just a hint and the service may choose to load less than `page_size` due to the size of the output. To traverse all of the releases, caller should iterate until the `page_token` is empty. */
@@ -315,16 +407,26 @@ export interface ListProjectsRulesetsRequest {
   filter?: string;
 }
 export const ListProjectsRulesetsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/rulesets","baseUrl":"https://firebaserules.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsRulesetsRequest" }) as any as S.Schema<ListProjectsRulesetsRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    filter: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}/rulesets",
+      baseUrl: "https://firebaserules.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsRulesetsRequest",
+}) as any as S.Schema<ListProjectsRulesetsRequest>;
 
 export type RulesetList = ReadonlyArray<Ruleset>;
-export const RulesetList = /*@__PURE__*/ S.Array(Ruleset) as any as S.Schema<RulesetList>;
+export const RulesetList = /*@__PURE__*/ S.Array(
+  Ruleset,
+) as any as S.Schema<RulesetList>;
 
 /** The response for FirebaseRulesService.ListRulesets. */
 export interface ListRulesetsResponse {
@@ -334,11 +436,13 @@ export interface ListRulesetsResponse {
   nextPageToken?: string;
 }
 export const ListRulesetsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "rulesets": S.optional(RulesetList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListRulesetsResponse" }) as any as S.Schema<ListRulesetsResponse>;
+  S.Struct({
+    rulesets: S.optional(RulesetList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListRulesetsResponse",
+}) as any as S.Schema<ListRulesetsResponse>;
 
 /** The request for FirebaseRulesService.UpdateRelease. */
 export interface UpdateReleaseRequest {
@@ -348,11 +452,13 @@ export interface UpdateReleaseRequest {
   updateMask?: string;
 }
 export const UpdateReleaseRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "release": S.optional(Release),
-  "updateMask": S.optional(S.String),
-}),
-).annotate({ identifier: "UpdateReleaseRequest" }) as any as S.Schema<UpdateReleaseRequest>;
+  S.Struct({
+    release: S.optional(Release),
+    updateMask: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateReleaseRequest",
+}) as any as S.Schema<UpdateReleaseRequest>;
 
 export interface PatchProjectsReleasesRequest {
   /** Required. Resource name for the project which owns this `Release`. Format: `projects/{project_id}` */
@@ -361,16 +467,31 @@ export interface PatchProjectsReleasesRequest {
   body?: UpdateReleaseRequest;
 }
 export const PatchProjectsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(UpdateReleaseRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://firebaserules.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsReleasesRequest" }) as any as S.Schema<PatchProjectsReleasesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(UpdateReleaseRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+name}",
+      baseUrl: "https://firebaserules.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchProjectsReleasesRequest",
+}) as any as S.Schema<PatchProjectsReleasesRequest>;
 
-export type TestCaseExpectationEnum = "EXPECTATION_UNSPECIFIED" | "ALLOW" | "DENY";
+export type TestCaseExpectationEnum =
+  | "EXPECTATION_UNSPECIFIED"
+  | "ALLOW"
+  | "DENY";
 export const TestCaseExpectationEnum = /*@__PURE__*/ S.String;
 
-export type TestCaseExpressionReportLevelEnum = "LEVEL_UNSPECIFIED" | "NONE" | "FULL" | "VISITED";
+export type TestCaseExpressionReportLevelEnum =
+  | "LEVEL_UNSPECIFIED"
+  | "NONE"
+  | "FULL"
+  | "VISITED";
 export const TestCaseExpressionReportLevelEnum = /*@__PURE__*/ S.String;
 
 /** Possible result values from the function mock invocation. */
@@ -381,10 +502,10 @@ export interface Result {
   undefined?: Empty;
 }
 export const Result = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "value": S.optional(S.Unknown),
-  "undefined": S.optional(Empty),
-}),
+  S.Struct({
+    value: S.optional(S.Unknown),
+    undefined: S.optional(Empty),
+  }),
 ).annotate({ identifier: "Result" }) as any as S.Schema<Result>;
 
 /** Arg matchers for the mock function. */
@@ -395,10 +516,10 @@ export interface Arg {
   exactValue?: unknown;
 }
 export const Arg = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "anyValue": S.optional(Empty),
-  "exactValue": S.optional(S.Unknown),
-}),
+  S.Struct({
+    anyValue: S.optional(Empty),
+    exactValue: S.optional(S.Unknown),
+  }),
 ).annotate({ identifier: "Arg" }) as any as S.Schema<Arg>;
 
 export type ArgList = ReadonlyArray<Arg>;
@@ -414,17 +535,22 @@ export interface FunctionMock {
   args?: ArgList;
 }
 export const FunctionMock = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "function": S.optional(S.String),
-  "result": S.optional(Result),
-  "args": S.optional(ArgList),
-}),
+  S.Struct({
+    function: S.optional(S.String),
+    result: S.optional(Result),
+    args: S.optional(ArgList),
+  }),
 ).annotate({ identifier: "FunctionMock" }) as any as S.Schema<FunctionMock>;
 
 export type FunctionMockList = ReadonlyArray<FunctionMock>;
-export const FunctionMockList = /*@__PURE__*/ S.Array(FunctionMock) as any as S.Schema<FunctionMockList>;
+export const FunctionMockList = /*@__PURE__*/ S.Array(
+  FunctionMock,
+) as any as S.Schema<FunctionMockList>;
 
-export type TestCasePathEncodingEnum = "ENCODING_UNSPECIFIED" | "URL_ENCODED" | "PLAIN";
+export type TestCasePathEncodingEnum =
+  | "ENCODING_UNSPECIFIED"
+  | "URL_ENCODED"
+  | "PLAIN";
 export const TestCasePathEncodingEnum = /*@__PURE__*/ S.String;
 
 /** `TestCase` messages provide the request context and an expectation as to whether the given context will be allowed or denied. Test cases may specify the `request`, `resource`, and `function_mocks` to mock a function call to a service-provided function. The `request` object represents context present at request-time. The `resource` is the value of the target resource as it appears in persistent storage before the request is executed. */
@@ -443,18 +569,20 @@ export interface TestCase {
   resource?: unknown;
 }
 export const TestCase = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "expectation": S.optional(TestCaseExpectationEnum),
-  "expressionReportLevel": S.optional(TestCaseExpressionReportLevelEnum),
-  "functionMocks": S.optional(FunctionMockList),
-  "request": S.optional(S.Unknown),
-  "pathEncoding": S.optional(TestCasePathEncodingEnum),
-  "resource": S.optional(S.Unknown),
-}),
+  S.Struct({
+    expectation: S.optional(TestCaseExpectationEnum),
+    expressionReportLevel: S.optional(TestCaseExpressionReportLevelEnum),
+    functionMocks: S.optional(FunctionMockList),
+    request: S.optional(S.Unknown),
+    pathEncoding: S.optional(TestCasePathEncodingEnum),
+    resource: S.optional(S.Unknown),
+  }),
 ).annotate({ identifier: "TestCase" }) as any as S.Schema<TestCase>;
 
 export type TestCaseList = ReadonlyArray<TestCase>;
-export const TestCaseList = /*@__PURE__*/ S.Array(TestCase) as any as S.Schema<TestCaseList>;
+export const TestCaseList = /*@__PURE__*/ S.Array(
+  TestCase,
+) as any as S.Schema<TestCaseList>;
 
 /** `TestSuite` is a collection of `TestCase` instances that validate the logical correctness of a `Ruleset`. The `TestSuite` may be referenced in-line within a `TestRuleset` invocation or as part of a `Release` object as a pre-release check. */
 export interface TestSuite {
@@ -462,9 +590,9 @@ export interface TestSuite {
   testCases?: TestCaseList;
 }
 export const TestSuite = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "testCases": S.optional(TestCaseList),
-}),
+  S.Struct({
+    testCases: S.optional(TestCaseList),
+  }),
 ).annotate({ identifier: "TestSuite" }) as any as S.Schema<TestSuite>;
 
 /** The request for FirebaseRulesService.TestRuleset. */
@@ -475,11 +603,13 @@ export interface TestRulesetRequest {
   testSuite?: TestSuite;
 }
 export const TestRulesetRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "source": S.optional(Source),
-  "testSuite": S.optional(TestSuite),
-}),
-).annotate({ identifier: "TestRulesetRequest" }) as any as S.Schema<TestRulesetRequest>;
+  S.Struct({
+    source: S.optional(Source),
+    testSuite: S.optional(TestSuite),
+  }),
+).annotate({
+  identifier: "TestRulesetRequest",
+}) as any as S.Schema<TestRulesetRequest>;
 
 export interface TestProjectsRequest {
   /** Required. Tests may either provide `source` or a `Ruleset` resource name. For tests against `source`, the resource name must refer to the project: Format: `projects/{project_id}` For tests against a `Ruleset`, this must be the `Ruleset` resource name: Format: `projects/{project_id}/rulesets/{ruleset_id}` */
@@ -488,11 +618,19 @@ export interface TestProjectsRequest {
   body?: TestRulesetRequest;
 }
 export const TestProjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(TestRulesetRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:test","baseUrl":"https://firebaserules.googleapis.com/"})),
-).annotate({ identifier: "TestProjectsRequest" }) as any as S.Schema<TestProjectsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(TestRulesetRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:test",
+      baseUrl: "https://firebaserules.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "TestProjectsRequest",
+}) as any as S.Schema<TestProjectsRequest>;
 
 /** Position in the `Source` content including its line, column number, and an index of the `File` in the `Source` message. Used for debug purposes. */
 export interface SourcePosition {
@@ -508,16 +646,20 @@ export interface SourcePosition {
   endOffset?: number;
 }
 export const SourcePosition = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fileName": S.optional(S.String),
-  "column": S.optional(S.Number),
-  "currentOffset": S.optional(S.Number),
-  "line": S.optional(S.Number),
-  "endOffset": S.optional(S.Number),
-}),
+  S.Struct({
+    fileName: S.optional(S.String),
+    column: S.optional(S.Number),
+    currentOffset: S.optional(S.Number),
+    line: S.optional(S.Number),
+    endOffset: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "SourcePosition" }) as any as S.Schema<SourcePosition>;
 
-export type IssueSeverityEnum = "SEVERITY_UNSPECIFIED" | "DEPRECATION" | "WARNING" | "ERROR";
+export type IssueSeverityEnum =
+  | "SEVERITY_UNSPECIFIED"
+  | "DEPRECATION"
+  | "WARNING"
+  | "ERROR";
 export const IssueSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Issues include warnings, errors, and deprecation notices. */
@@ -530,15 +672,17 @@ export interface Issue {
   description?: string;
 }
 export const Issue = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sourcePosition": S.optional(SourcePosition),
-  "severity": S.optional(IssueSeverityEnum),
-  "description": S.optional(S.String),
-}),
+  S.Struct({
+    sourcePosition: S.optional(SourcePosition),
+    severity: S.optional(IssueSeverityEnum),
+    description: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Issue" }) as any as S.Schema<Issue>;
 
 export type IssueList = ReadonlyArray<Issue>;
-export const IssueList = /*@__PURE__*/ S.Array(Issue) as any as S.Schema<IssueList>;
+export const IssueList = /*@__PURE__*/ S.Array(
+  Issue,
+) as any as S.Schema<IssueList>;
 
 /** Tuple for how many times an Expression was evaluated to a particular ExpressionValue. */
 export interface ValueCount {
@@ -548,14 +692,16 @@ export interface ValueCount {
   count?: number;
 }
 export const ValueCount = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "value": S.optional(S.Unknown),
-  "count": S.optional(S.Number),
-}),
+  S.Struct({
+    value: S.optional(S.Unknown),
+    count: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "ValueCount" }) as any as S.Schema<ValueCount>;
 
 export type ValueCountList = ReadonlyArray<ValueCount>;
-export const ValueCountList = /*@__PURE__*/ S.Array(ValueCount) as any as S.Schema<ValueCountList>;
+export const ValueCountList = /*@__PURE__*/ S.Array(
+  ValueCount,
+) as any as S.Schema<ValueCountList>;
 
 /** Describes where in a file an expression is found and what it was evaluated to over the course of its use. */
 export interface ExpressionReport {
@@ -567,18 +713,24 @@ export interface ExpressionReport {
   values?: ValueCountList;
 }
 export const ExpressionReport = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "children": S.optional(S.suspend(() => ExpressionReportList)),
-  "sourcePosition": S.optional(SourcePosition),
-  "values": S.optional(ValueCountList),
-}),
-).annotate({ identifier: "ExpressionReport" }) as any as S.Schema<ExpressionReport>;
+  S.Struct({
+    children: S.optional(S.suspend(() => ExpressionReportList)),
+    sourcePosition: S.optional(SourcePosition),
+    values: S.optional(ValueCountList),
+  }),
+).annotate({
+  identifier: "ExpressionReport",
+}) as any as S.Schema<ExpressionReport>;
 
 export type ExpressionReportList = ReadonlyArray<ExpressionReport>;
-export const ExpressionReportList = /*@__PURE__*/ S.Array(ExpressionReport) as any as S.Schema<ExpressionReportList>;
+export const ExpressionReportList = /*@__PURE__*/ S.Array(
+  ExpressionReport,
+) as any as S.Schema<ExpressionReportList>;
 
 export type DocumentList = ReadonlyArray<unknown>;
-export const DocumentList = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Schema<DocumentList>;
+export const DocumentList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<DocumentList>;
 
 /** Represents a service-defined function call that was invoked during test execution. */
 export interface FunctionCall {
@@ -588,14 +740,16 @@ export interface FunctionCall {
   args?: DocumentList;
 }
 export const FunctionCall = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "function": S.optional(S.String),
-  "args": S.optional(DocumentList),
-}),
+  S.Struct({
+    function: S.optional(S.String),
+    args: S.optional(DocumentList),
+  }),
 ).annotate({ identifier: "FunctionCall" }) as any as S.Schema<FunctionCall>;
 
 export type FunctionCallList = ReadonlyArray<FunctionCall>;
-export const FunctionCallList = /*@__PURE__*/ S.Array(FunctionCall) as any as S.Schema<FunctionCallList>;
+export const FunctionCallList = /*@__PURE__*/ S.Array(
+  FunctionCall,
+) as any as S.Schema<FunctionCallList>;
 
 export type TestResultStateEnum = "STATE_UNSPECIFIED" | "SUCCESS" | "FAILURE";
 export const TestResultStateEnum = /*@__PURE__*/ S.String;
@@ -608,14 +762,18 @@ export interface VisitedExpression {
   value?: unknown;
 }
 export const VisitedExpression = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sourcePosition": S.optional(SourcePosition),
-  "value": S.optional(S.Unknown),
-}),
-).annotate({ identifier: "VisitedExpression" }) as any as S.Schema<VisitedExpression>;
+  S.Struct({
+    sourcePosition: S.optional(SourcePosition),
+    value: S.optional(S.Unknown),
+  }),
+).annotate({
+  identifier: "VisitedExpression",
+}) as any as S.Schema<VisitedExpression>;
 
 export type VisitedExpressionList = ReadonlyArray<VisitedExpression>;
-export const VisitedExpressionList = /*@__PURE__*/ S.Array(VisitedExpression) as any as S.Schema<VisitedExpressionList>;
+export const VisitedExpressionList = /*@__PURE__*/ S.Array(
+  VisitedExpression,
+) as any as S.Schema<VisitedExpressionList>;
 
 /** Test result message containing the state of the test as well as a description and source position for test failures. */
 export interface TestResult {
@@ -633,18 +791,20 @@ export interface TestResult {
   visitedExpressions?: VisitedExpressionList;
 }
 export const TestResult = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "expressionReports": S.optional(ExpressionReportList),
-  "functionCalls": S.optional(FunctionCallList),
-  "debugMessages": S.optional(StringList),
-  "state": S.optional(TestResultStateEnum),
-  "errorPosition": S.optional(SourcePosition),
-  "visitedExpressions": S.optional(VisitedExpressionList),
-}),
+  S.Struct({
+    expressionReports: S.optional(ExpressionReportList),
+    functionCalls: S.optional(FunctionCallList),
+    debugMessages: S.optional(StringList),
+    state: S.optional(TestResultStateEnum),
+    errorPosition: S.optional(SourcePosition),
+    visitedExpressions: S.optional(VisitedExpressionList),
+  }),
 ).annotate({ identifier: "TestResult" }) as any as S.Schema<TestResult>;
 
 export type TestResultList = ReadonlyArray<TestResult>;
-export const TestResultList = /*@__PURE__*/ S.Array(TestResult) as any as S.Schema<TestResultList>;
+export const TestResultList = /*@__PURE__*/ S.Array(
+  TestResult,
+) as any as S.Schema<TestResultList>;
 
 /** The response for FirebaseRulesService.TestRuleset. */
 export interface TestRulesetResponse {
@@ -654,13 +814,20 @@ export interface TestRulesetResponse {
   testResults?: TestResultList;
 }
 export const TestRulesetResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "issues": S.optional(IssueList),
-  "testResults": S.optional(TestResultList),
-}),
-).annotate({ identifier: "TestRulesetResponse" }) as any as S.Schema<TestRulesetResponse>;
+  S.Struct({
+    issues: S.optional(IssueList),
+    testResults: S.optional(TestResultList),
+  }),
+).annotate({
+  identifier: "TestRulesetResponse",
+}) as any as S.Schema<TestRulesetResponse>;
 
-export type CreateProjectsReleasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsReleasesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Create a `Release`. Release names should reflect the developer's deployment practices. For example, the release name may include the environment name, application name, application version, or any other name meaningful to the developer. Once a `Release` refers to a `Ruleset`, the rules can be enforced by Firebase Rules-enabled services. More than one `Release` may be 'live' concurrently. Consider the following three `Release` names for `projects/foo` and the `Ruleset` to which they refer. Release Name -> Ruleset Name * projects/foo/releases/prod -> projects/foo/rulesets/uuid123 * projects/foo/releases/prod/beta -> projects/foo/rulesets/uuid123 * projects/foo/releases/prod/v23 -> projects/foo/rulesets/uuid456 The relationships reflect a `Ruleset` rollout in progress. The `prod` and `prod/beta` releases refer to the same `Ruleset`. However, `prod/v23` refers to a new `Ruleset`. The `Ruleset` reference for a `Release` may be updated using the UpdateRelease method. */
 export const createProjectsReleases: API.OperationMethod<
   CreateProjectsReleasesRequest,
@@ -675,7 +842,12 @@ export const createProjectsReleases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsRulesetsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsRulesetsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Create a `Ruleset` from `Source`. The `Ruleset` is given a unique generated name which is returned to the caller. `Source` containing syntactic or semantics errors will result in an error response indicating the first error encountered. For a detailed view of `Source` issues, use TestRuleset. */
 export const createProjectsRulesets: API.OperationMethod<
   CreateProjectsRulesetsRequest,
@@ -690,7 +862,12 @@ export const createProjectsRulesets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsReleasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsReleasesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Delete a `Release` by resource name. */
 export const deleteProjectsReleases: API.OperationMethod<
   DeleteProjectsReleasesRequest,
@@ -705,7 +882,12 @@ export const deleteProjectsReleases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsRulesetsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsRulesetsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Delete a `Ruleset` by resource name. If the `Ruleset` is referenced by a `Release` the operation will fail. */
 export const deleteProjectsRulesets: API.OperationMethod<
   DeleteProjectsRulesetsRequest,
@@ -720,7 +902,10 @@ export const deleteProjectsRulesets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetExecutableProjectsReleasesError = NotFound | Forbidden | GcpOpError;
+export type GetExecutableProjectsReleasesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Get the `Release` executable to use when enforcing rules. */
 export const getExecutableProjectsReleases: API.OperationMethod<
   GetExecutableProjectsReleasesRequest,
@@ -778,7 +963,10 @@ export const listProjectsReleases: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListProjectsRulesetsError = NotFound | Forbidden | GcpOpError;
@@ -794,10 +982,18 @@ export const listProjectsRulesets: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type PatchProjectsReleasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsReleasesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update a `Release` via PATCH. Only updates to `ruleset_name` will be honored. `Release` rename is not supported. To create a `Release` use the CreateRelease method. */
 export const patchProjectsReleases: API.OperationMethod<
   PatchProjectsReleasesRequest,
@@ -812,7 +1008,12 @@ export const patchProjectsReleases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestProjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TestProjectsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Test `Source` for syntactic and semantic correctness. Issues present, if any, will be returned to the caller with a description, severity, and source location. The test method may be executed with `Source` or a `Ruleset` name. Passing `Source` is useful for unit testing new rules. Passing a `Ruleset` name is useful for regression testing an existing rule. The following is an example of `Source` that permits users to upload images to a bucket bearing their user id and matching the correct metadata: _*Example*_ // Users are allowed to subscribe and unsubscribe to the blog. service firebase.storage { match /users/{userId}/images/{imageName} { allow write: if userId == request.auth.uid && (imageName.matches('*.png$') || imageName.matches('*.jpg$')) && resource.mimeType.matches('^image/') } } */
 export const testProjects: API.OperationMethod<
   TestProjectsRequest,
@@ -826,4 +1027,3 @@ export const testProjects: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

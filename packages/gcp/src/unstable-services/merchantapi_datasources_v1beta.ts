@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export interface RegionalInventoryDataSource {
@@ -67,11 +67,13 @@ export interface RegionalInventoryDataSource {
   contentLanguage?: string;
 }
 export const RegionalInventoryDataSource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "feedLabel": S.optional(S.String),
-  "contentLanguage": S.optional(S.String),
-}),
-).annotate({ identifier: "RegionalInventoryDataSource" }) as any as S.Schema<RegionalInventoryDataSource>;
+  S.Struct({
+    feedLabel: S.optional(S.String),
+    contentLanguage: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RegionalInventoryDataSource",
+}) as any as S.Schema<RegionalInventoryDataSource>;
 
 /** The local inventory data source type is only available for file inputs and can't be used to create API local inventory data sources. */
 export interface LocalInventoryDataSource {
@@ -81,13 +83,19 @@ export interface LocalInventoryDataSource {
   contentLanguage?: string;
 }
 export const LocalInventoryDataSource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "feedLabel": S.optional(S.String),
-  "contentLanguage": S.optional(S.String),
-}),
-).annotate({ identifier: "LocalInventoryDataSource" }) as any as S.Schema<LocalInventoryDataSource>;
+  S.Struct({
+    feedLabel: S.optional(S.String),
+    contentLanguage: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "LocalInventoryDataSource",
+}) as any as S.Schema<LocalInventoryDataSource>;
 
-export type FileInputFileInputTypeEnum = "FILE_INPUT_TYPE_UNSPECIFIED" | "UPLOAD" | "FETCH" | "GOOGLE_SHEETS";
+export type FileInputFileInputTypeEnum =
+  | "FILE_INPUT_TYPE_UNSPECIFIED"
+  | "UPLOAD"
+  | "FETCH"
+  | "GOOGLE_SHEETS";
 export const FileInputFileInputTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
@@ -102,18 +110,30 @@ export interface TimeOfDay {
   nanos?: number;
 }
 export const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "hours": S.optional(S.Number),
-  "seconds": S.optional(S.Number),
-  "minutes": S.optional(S.Number),
-  "nanos": S.optional(S.Number),
-}),
+  S.Struct({
+    hours: S.optional(S.Number),
+    seconds: S.optional(S.Number),
+    minutes: S.optional(S.Number),
+    nanos: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "TimeOfDay" }) as any as S.Schema<TimeOfDay>;
 
-export type FetchSettingsDayOfWeekEnum = "DAY_OF_WEEK_UNSPECIFIED" | "MONDAY" | "TUESDAY" | "WEDNESDAY" | "THURSDAY" | "FRIDAY" | "SATURDAY" | "SUNDAY";
+export type FetchSettingsDayOfWeekEnum =
+  | "DAY_OF_WEEK_UNSPECIFIED"
+  | "MONDAY"
+  | "TUESDAY"
+  | "WEDNESDAY"
+  | "THURSDAY"
+  | "FRIDAY"
+  | "SATURDAY"
+  | "SUNDAY";
 export const FetchSettingsDayOfWeekEnum = /*@__PURE__*/ S.String;
 
-export type FetchSettingsFrequencyEnum = "FREQUENCY_UNSPECIFIED" | "FREQUENCY_DAILY" | "FREQUENCY_WEEKLY" | "FREQUENCY_MONTHLY";
+export type FetchSettingsFrequencyEnum =
+  | "FREQUENCY_UNSPECIFIED"
+  | "FREQUENCY_DAILY"
+  | "FREQUENCY_WEEKLY"
+  | "FREQUENCY_MONTHLY";
 export const FetchSettingsFrequencyEnum = /*@__PURE__*/ S.String;
 
 /** Fetch details to deliver the data source. */
@@ -138,17 +158,17 @@ export interface FetchSettings {
   password?: string;
 }
 export const FetchSettings = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "timeOfDay": S.optional(TimeOfDay),
-  "timeZone": S.optional(S.String),
-  "fetchUri": S.optional(S.String),
-  "username": S.optional(S.String),
-  "enabled": S.optional(S.Boolean),
-  "dayOfWeek": S.optional(FetchSettingsDayOfWeekEnum),
-  "dayOfMonth": S.optional(S.Number),
-  "frequency": S.optional(FetchSettingsFrequencyEnum),
-  "password": S.optional(S.String),
-}),
+  S.Struct({
+    timeOfDay: S.optional(TimeOfDay),
+    timeZone: S.optional(S.String),
+    fetchUri: S.optional(S.String),
+    username: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    dayOfWeek: S.optional(FetchSettingsDayOfWeekEnum),
+    dayOfMonth: S.optional(S.Number),
+    frequency: S.optional(FetchSettingsFrequencyEnum),
+    password: S.optional(S.String),
+  }),
 ).annotate({ identifier: "FetchSettings" }) as any as S.Schema<FetchSettings>;
 
 /** The data specific for file data sources. This field is empty for other data source inputs. */
@@ -161,18 +181,20 @@ export interface FileInput {
   fileName?: string;
 }
 export const FileInput = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fileInputType": S.optional(FileInputFileInputTypeEnum),
-  "fetchSettings": S.optional(FetchSettings),
-  "fileName": S.optional(S.String),
-}),
+  S.Struct({
+    fileInputType: S.optional(FileInputFileInputTypeEnum),
+    fetchSettings: S.optional(FetchSettings),
+    fileName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "FileInput" }) as any as S.Schema<FileInput>;
 
 /** The product review data source. */
 export interface ProductReviewDataSource {}
 export const ProductReviewDataSource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "ProductReviewDataSource" }) as any as S.Schema<ProductReviewDataSource>;
+  S.Struct({}),
+).annotate({
+  identifier: "ProductReviewDataSource",
+}) as any as S.Schema<ProductReviewDataSource>;
 
 /** Data source reference can be used to manage related data sources within the data source service. */
 export interface DataSourceReference {
@@ -184,15 +206,19 @@ export interface DataSourceReference {
   primaryDataSourceName?: string;
 }
 export const DataSourceReference = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "self": S.optional(S.Boolean),
-  "supplementalDataSourceName": S.optional(S.String),
-  "primaryDataSourceName": S.optional(S.String),
-}),
-).annotate({ identifier: "DataSourceReference" }) as any as S.Schema<DataSourceReference>;
+  S.Struct({
+    self: S.optional(S.Boolean),
+    supplementalDataSourceName: S.optional(S.String),
+    primaryDataSourceName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DataSourceReference",
+}) as any as S.Schema<DataSourceReference>;
 
 export type DataSourceReferenceList = ReadonlyArray<DataSourceReference>;
-export const DataSourceReferenceList = /*@__PURE__*/ S.Array(DataSourceReference) as any as S.Schema<DataSourceReferenceList>;
+export const DataSourceReferenceList = /*@__PURE__*/ S.Array(
+  DataSourceReference,
+) as any as S.Schema<DataSourceReferenceList>;
 
 /** The [supplemental data source](https://developers.google.com/merchant/api/guides/data-sources/api-sources#link-supplemental-data-source) for local and online products. After creation,you should make sure to link the supplemental product data source into one or more primary product data sources. */
 export interface SupplementalProductDataSource {
@@ -204,26 +230,50 @@ export interface SupplementalProductDataSource {
   feedLabel?: string;
 }
 export const SupplementalProductDataSource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "referencingPrimaryDataSources": S.optional(DataSourceReferenceList),
-  "contentLanguage": S.optional(S.String),
-  "feedLabel": S.optional(S.String),
-}),
-).annotate({ identifier: "SupplementalProductDataSource" }) as any as S.Schema<SupplementalProductDataSource>;
+  S.Struct({
+    referencingPrimaryDataSources: S.optional(DataSourceReferenceList),
+    contentLanguage: S.optional(S.String),
+    feedLabel: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SupplementalProductDataSource",
+}) as any as S.Schema<SupplementalProductDataSource>;
 
-export type DataSourceInputEnum = "INPUT_UNSPECIFIED" | "API" | "FILE" | "UI" | "AUTOFEED";
+export type DataSourceInputEnum =
+  | "INPUT_UNSPECIFIED"
+  | "API"
+  | "FILE"
+  | "UI"
+  | "AUTOFEED";
 export const DataSourceInputEnum = /*@__PURE__*/ S.String;
 
 /** The merchant review data source. */
 export interface MerchantReviewDataSource {}
 export const MerchantReviewDataSource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "MerchantReviewDataSource" }) as any as S.Schema<MerchantReviewDataSource>;
+  S.Struct({}),
+).annotate({
+  identifier: "MerchantReviewDataSource",
+}) as any as S.Schema<MerchantReviewDataSource>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
-export type DestinationDestinationEnum = "DESTINATION_ENUM_UNSPECIFIED" | "SHOPPING_ADS" | "DISPLAY_ADS" | "LOCAL_INVENTORY_ADS" | "FREE_LISTINGS" | "FREE_LOCAL_LISTINGS" | "YOUTUBE_SHOPPING" | "YOUTUBE_SHOPPING_CHECKOUT" | "YOUTUBE_AFFILIATE" | "FREE_VEHICLE_LISTINGS" | "VEHICLE_ADS" | "CLOUD_RETAIL" | "LOCAL_CLOUD_RETAIL";
+export type DestinationDestinationEnum =
+  | "DESTINATION_ENUM_UNSPECIFIED"
+  | "SHOPPING_ADS"
+  | "DISPLAY_ADS"
+  | "LOCAL_INVENTORY_ADS"
+  | "FREE_LISTINGS"
+  | "FREE_LOCAL_LISTINGS"
+  | "YOUTUBE_SHOPPING"
+  | "YOUTUBE_SHOPPING_CHECKOUT"
+  | "YOUTUBE_AFFILIATE"
+  | "FREE_VEHICLE_LISTINGS"
+  | "VEHICLE_ADS"
+  | "CLOUD_RETAIL"
+  | "LOCAL_CLOUD_RETAIL";
 export const DestinationDestinationEnum = /*@__PURE__*/ S.String;
 
 export type DestinationStateEnum = "STATE_UNSPECIFIED" | "ENABLED" | "DISABLED";
@@ -237,16 +287,22 @@ export interface Destination {
   state?: DestinationStateEnum;
 }
 export const Destination = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "destination": S.optional(DestinationDestinationEnum),
-  "state": S.optional(DestinationStateEnum),
-}),
+  S.Struct({
+    destination: S.optional(DestinationDestinationEnum),
+    state: S.optional(DestinationStateEnum),
+  }),
 ).annotate({ identifier: "Destination" }) as any as S.Schema<Destination>;
 
 export type DestinationList = ReadonlyArray<Destination>;
-export const DestinationList = /*@__PURE__*/ S.Array(Destination) as any as S.Schema<DestinationList>;
+export const DestinationList = /*@__PURE__*/ S.Array(
+  Destination,
+) as any as S.Schema<DestinationList>;
 
-export type PrimaryProductDataSourceChannelEnum = "CHANNEL_UNSPECIFIED" | "ONLINE_PRODUCTS" | "LOCAL_PRODUCTS" | "PRODUCTS";
+export type PrimaryProductDataSourceChannelEnum =
+  | "CHANNEL_UNSPECIFIED"
+  | "ONLINE_PRODUCTS"
+  | "LOCAL_PRODUCTS"
+  | "PRODUCTS";
 export const PrimaryProductDataSourceChannelEnum = /*@__PURE__*/ S.String;
 
 /** Default rule management of the data source. */
@@ -255,9 +311,9 @@ export interface DefaultRule {
   takeFromDataSources?: DataSourceReferenceList;
 }
 export const DefaultRule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "takeFromDataSources": S.optional(DataSourceReferenceList),
-}),
+  S.Struct({
+    takeFromDataSources: S.optional(DataSourceReferenceList),
+  }),
 ).annotate({ identifier: "DefaultRule" }) as any as S.Schema<DefaultRule>;
 
 /** The primary data source for local and online products. */
@@ -276,15 +332,17 @@ export interface PrimaryProductDataSource {
   defaultRule?: DefaultRule;
 }
 export const PrimaryProductDataSource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "feedLabel": S.optional(S.String),
-  "countries": S.optional(StringList),
-  "destinations": S.optional(DestinationList),
-  "channel": S.optional(PrimaryProductDataSourceChannelEnum),
-  "contentLanguage": S.optional(S.String),
-  "defaultRule": S.optional(DefaultRule),
-}),
-).annotate({ identifier: "PrimaryProductDataSource" }) as any as S.Schema<PrimaryProductDataSource>;
+  S.Struct({
+    feedLabel: S.optional(S.String),
+    countries: S.optional(StringList),
+    destinations: S.optional(DestinationList),
+    channel: S.optional(PrimaryProductDataSourceChannelEnum),
+    contentLanguage: S.optional(S.String),
+    defaultRule: S.optional(DefaultRule),
+  }),
+).annotate({
+  identifier: "PrimaryProductDataSource",
+}) as any as S.Schema<PrimaryProductDataSource>;
 
 /** The promotion data source. */
 export interface PromotionDataSource {
@@ -294,11 +352,13 @@ export interface PromotionDataSource {
   targetCountry?: string;
 }
 export const PromotionDataSource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "contentLanguage": S.optional(S.String),
-  "targetCountry": S.optional(S.String),
-}),
-).annotate({ identifier: "PromotionDataSource" }) as any as S.Schema<PromotionDataSource>;
+  S.Struct({
+    contentLanguage: S.optional(S.String),
+    targetCountry: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PromotionDataSource",
+}) as any as S.Schema<PromotionDataSource>;
 
 /** The [data source](/merchant/api/guides/data-sources/overview) for the Merchant Center account. */
 export interface DataSource {
@@ -328,20 +388,20 @@ export interface DataSource {
   promotionDataSource?: PromotionDataSource;
 }
 export const DataSource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "regionalInventoryDataSource": S.optional(RegionalInventoryDataSource),
-  "localInventoryDataSource": S.optional(LocalInventoryDataSource),
-  "dataSourceId": S.optional(S.String),
-  "fileInput": S.optional(FileInput),
-  "displayName": S.optional(S.String),
-  "name": S.optional(S.String),
-  "productReviewDataSource": S.optional(ProductReviewDataSource),
-  "supplementalProductDataSource": S.optional(SupplementalProductDataSource),
-  "input": S.optional(DataSourceInputEnum),
-  "merchantReviewDataSource": S.optional(MerchantReviewDataSource),
-  "primaryProductDataSource": S.optional(PrimaryProductDataSource),
-  "promotionDataSource": S.optional(PromotionDataSource),
-}),
+  S.Struct({
+    regionalInventoryDataSource: S.optional(RegionalInventoryDataSource),
+    localInventoryDataSource: S.optional(LocalInventoryDataSource),
+    dataSourceId: S.optional(S.String),
+    fileInput: S.optional(FileInput),
+    displayName: S.optional(S.String),
+    name: S.optional(S.String),
+    productReviewDataSource: S.optional(ProductReviewDataSource),
+    supplementalProductDataSource: S.optional(SupplementalProductDataSource),
+    input: S.optional(DataSourceInputEnum),
+    merchantReviewDataSource: S.optional(MerchantReviewDataSource),
+    primaryProductDataSource: S.optional(PrimaryProductDataSource),
+    promotionDataSource: S.optional(PromotionDataSource),
+  }),
 ).annotate({ identifier: "DataSource" }) as any as S.Schema<DataSource>;
 
 export interface CreateAccountsDataSourcesRequest {
@@ -351,33 +411,51 @@ export interface CreateAccountsDataSourcesRequest {
   body?: DataSource;
 }
 export const CreateAccountsDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(DataSource.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"datasources/v1beta/{+parent}/dataSources","baseUrl":"https://merchantapi.googleapis.com/"})),
-).annotate({ identifier: "CreateAccountsDataSourcesRequest" }) as any as S.Schema<CreateAccountsDataSourcesRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(DataSource.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "datasources/v1beta/{+parent}/dataSources",
+      baseUrl: "https://merchantapi.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateAccountsDataSourcesRequest",
+}) as any as S.Schema<CreateAccountsDataSourcesRequest>;
 
 export interface DeleteAccountsDataSourcesRequest {
   /** Required. The name of the data source to delete. Format: `accounts/{account}/dataSources/{datasource}` */
   name: string;
 }
 export const DeleteAccountsDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"datasources/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
-).annotate({ identifier: "DeleteAccountsDataSourcesRequest" }) as any as S.Schema<DeleteAccountsDataSourcesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "datasources/v1beta/{+name}",
+      baseUrl: "https://merchantapi.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteAccountsDataSourcesRequest",
+}) as any as S.Schema<DeleteAccountsDataSourcesRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 /** Request message for the FetchDataSource method. */
 export interface FetchDataSourceRequest {}
 export const FetchDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "FetchDataSourceRequest" }) as any as S.Schema<FetchDataSourceRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "FetchDataSourceRequest",
+}) as any as S.Schema<FetchDataSourceRequest>;
 
 export interface FetchAccountsDataSourcesRequest {
   /** Required. The name of the data source resource to fetch. Format: `accounts/{account}/dataSources/{datasource}` */
@@ -386,31 +464,56 @@ export interface FetchAccountsDataSourcesRequest {
   body?: FetchDataSourceRequest;
 }
 export const FetchAccountsDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(FetchDataSourceRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"datasources/v1beta/{+name}:fetch","baseUrl":"https://merchantapi.googleapis.com/"})),
-).annotate({ identifier: "FetchAccountsDataSourcesRequest" }) as any as S.Schema<FetchAccountsDataSourcesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(FetchDataSourceRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "datasources/v1beta/{+name}:fetch",
+      baseUrl: "https://merchantapi.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "FetchAccountsDataSourcesRequest",
+}) as any as S.Schema<FetchAccountsDataSourcesRequest>;
 
 export interface GetAccountsDataSourcesRequest {
   /** Required. The name of the data source to retrieve. Format: `accounts/{account}/dataSources/{datasource}` */
   name: string;
 }
 export const GetAccountsDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"datasources/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
-).annotate({ identifier: "GetAccountsDataSourcesRequest" }) as any as S.Schema<GetAccountsDataSourcesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "datasources/v1beta/{+name}",
+      baseUrl: "https://merchantapi.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetAccountsDataSourcesRequest",
+}) as any as S.Schema<GetAccountsDataSourcesRequest>;
 
 export interface GetAccountsDataSourcesFileUploadsRequest {
   /** Required. The name of the data source file upload to retrieve. Format: `accounts/{account}/dataSources/{datasource}/fileUploads/latest` */
   name: string;
 }
-export const GetAccountsDataSourcesFileUploadsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"datasources/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
-).annotate({ identifier: "GetAccountsDataSourcesFileUploadsRequest" }) as any as S.Schema<GetAccountsDataSourcesFileUploadsRequest>;
+export const GetAccountsDataSourcesFileUploadsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "datasources/v1beta/{+name}",
+        baseUrl: "https://merchantapi.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetAccountsDataSourcesFileUploadsRequest",
+}) as any as S.Schema<GetAccountsDataSourcesFileUploadsRequest>;
 
 export type IssueSeverityEnum = "SEVERITY_UNSPECIFIED" | "WARNING" | "ERROR";
 export const IssueSeverityEnum = /*@__PURE__*/ S.String;
@@ -431,20 +534,26 @@ export interface Issue {
   documentationUri?: string;
 }
 export const Issue = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "description": S.optional(S.String),
-  "code": S.optional(S.String),
-  "count": S.optional(S.String),
-  "title": S.optional(S.String),
-  "severity": S.optional(IssueSeverityEnum),
-  "documentationUri": S.optional(S.String),
-}),
+  S.Struct({
+    description: S.optional(S.String),
+    code: S.optional(S.String),
+    count: S.optional(S.String),
+    title: S.optional(S.String),
+    severity: S.optional(IssueSeverityEnum),
+    documentationUri: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Issue" }) as any as S.Schema<Issue>;
 
 export type IssueList = ReadonlyArray<Issue>;
-export const IssueList = /*@__PURE__*/ S.Array(Issue) as any as S.Schema<IssueList>;
+export const IssueList = /*@__PURE__*/ S.Array(
+  Issue,
+) as any as S.Schema<IssueList>;
 
-export type FileUploadProcessingStateEnum = "PROCESSING_STATE_UNSPECIFIED" | "FAILED" | "IN_PROGRESS" | "SUCCEEDED";
+export type FileUploadProcessingStateEnum =
+  | "PROCESSING_STATE_UNSPECIFIED"
+  | "FAILED"
+  | "IN_PROGRESS"
+  | "SUCCEEDED";
 export const FileUploadProcessingStateEnum = /*@__PURE__*/ S.String;
 
 /** The file upload of a specific data source, that is, the result of the retrieval of the data source at a certain timestamp computed asynchronously when the data source processing is finished. Only applicable to file data sources. */
@@ -467,16 +576,16 @@ export interface FileUpload {
   itemsCreated?: string;
 }
 export const FileUpload = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "uploadTime": S.optional(S.String),
-  "itemsTotal": S.optional(S.String),
-  "dataSourceId": S.optional(S.String),
-  "issues": S.optional(IssueList),
-  "itemsUpdated": S.optional(S.String),
-  "name": S.optional(S.String),
-  "processingState": S.optional(FileUploadProcessingStateEnum),
-  "itemsCreated": S.optional(S.String),
-}),
+  S.Struct({
+    uploadTime: S.optional(S.String),
+    itemsTotal: S.optional(S.String),
+    dataSourceId: S.optional(S.String),
+    issues: S.optional(IssueList),
+    itemsUpdated: S.optional(S.String),
+    name: S.optional(S.String),
+    processingState: S.optional(FileUploadProcessingStateEnum),
+    itemsCreated: S.optional(S.String),
+  }),
 ).annotate({ identifier: "FileUpload" }) as any as S.Schema<FileUpload>;
 
 export interface ListAccountsDataSourcesRequest {
@@ -488,15 +597,25 @@ export interface ListAccountsDataSourcesRequest {
   pageToken?: string;
 }
 export const ListAccountsDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"datasources/v1beta/{+parent}/dataSources","baseUrl":"https://merchantapi.googleapis.com/"})),
-).annotate({ identifier: "ListAccountsDataSourcesRequest" }) as any as S.Schema<ListAccountsDataSourcesRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "datasources/v1beta/{+parent}/dataSources",
+      baseUrl: "https://merchantapi.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListAccountsDataSourcesRequest",
+}) as any as S.Schema<ListAccountsDataSourcesRequest>;
 
 export type DataSourceList = ReadonlyArray<DataSource>;
-export const DataSourceList = /*@__PURE__*/ S.Array(DataSource) as any as S.Schema<DataSourceList>;
+export const DataSourceList = /*@__PURE__*/ S.Array(
+  DataSource,
+) as any as S.Schema<DataSourceList>;
 
 /** Response message for the ListDataSources method. */
 export interface ListDataSourcesResponse {
@@ -506,11 +625,13 @@ export interface ListDataSourcesResponse {
   nextPageToken?: string;
 }
 export const ListDataSourcesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dataSources": S.optional(DataSourceList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListDataSourcesResponse" }) as any as S.Schema<ListDataSourcesResponse>;
+  S.Struct({
+    dataSources: S.optional(DataSourceList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListDataSourcesResponse",
+}) as any as S.Schema<ListDataSourcesResponse>;
 
 export interface PatchAccountsDataSourcesRequest {
   /** Required. Identifier. The name of the data source. Format: `accounts/{account}/dataSources/{datasource}` */
@@ -521,14 +642,27 @@ export interface PatchAccountsDataSourcesRequest {
   body?: DataSource;
 }
 export const PatchAccountsDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(DataSource.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"datasources/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
-).annotate({ identifier: "PatchAccountsDataSourcesRequest" }) as any as S.Schema<PatchAccountsDataSourcesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(DataSource.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "datasources/v1beta/{+name}",
+      baseUrl: "https://merchantapi.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchAccountsDataSourcesRequest",
+}) as any as S.Schema<PatchAccountsDataSourcesRequest>;
 
-export type CreateAccountsDataSourcesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateAccountsDataSourcesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates the new data source configuration for the given account. This method always creates a new data source. */
 export const createAccountsDataSources: API.OperationMethod<
   CreateAccountsDataSourcesRequest,
@@ -543,7 +677,12 @@ export const createAccountsDataSources: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAccountsDataSourcesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteAccountsDataSourcesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a data source from your Merchant Center account. */
 export const deleteAccountsDataSources: API.OperationMethod<
   DeleteAccountsDataSourcesRequest,
@@ -558,7 +697,12 @@ export const deleteAccountsDataSources: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type FetchAccountsDataSourcesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type FetchAccountsDataSourcesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Performs the data fetch immediately (even outside fetch schedule) on a data source from your Merchant Center Account. If you need to call this method more than once per day, you should use the Products service to update your product data instead. This method only works on data sources with a file input set. */
 export const fetchAccountsDataSources: API.OperationMethod<
   FetchAccountsDataSourcesRequest,
@@ -588,7 +732,10 @@ export const getAccountsDataSources: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAccountsDataSourcesFileUploadsError = NotFound | Forbidden | GcpOpError;
+export type GetAccountsDataSourcesFileUploadsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the latest data source file upload. Only the `latest` alias is accepted for a file upload. */
 export const getAccountsDataSourcesFileUploads: API.OperationMethod<
   GetAccountsDataSourcesFileUploadsRequest,
@@ -616,10 +763,18 @@ export const listAccountsDataSources: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type PatchAccountsDataSourcesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchAccountsDataSourcesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the existing data source configuration. The fields that are set in the update mask but not provided in the resource will be deleted. */
 export const patchAccountsDataSources: API.OperationMethod<
   PatchAccountsDataSourcesRequest,
@@ -633,4 +788,3 @@ export const patchAccountsDataSources: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

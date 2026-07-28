@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 /** Request message for AcquireShare. */
@@ -68,11 +68,13 @@ export interface AcquireShareRequest {
   capacityGb?: number;
 }
 export const AcquireShareRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String),
-  "capacityGb": S.optional(S.Number),
-}),
-).annotate({ identifier: "AcquireShareRequest" }) as any as S.Schema<AcquireShareRequest>;
+  S.Struct({
+    requestId: S.optional(S.String),
+    capacityGb: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "AcquireShareRequest",
+}) as any as S.Schema<AcquireShareRequest>;
 
 export interface AcquireShareProjectsLocationsSharePoolsRequest {
   /** Required. The parent share pool path, in the format `projects/{project}/locations/{location}/sharePools/{share_pool}`. */
@@ -80,12 +82,21 @@ export interface AcquireShareProjectsLocationsSharePoolsRequest {
   /** Request body */
   body?: AcquireShareRequest;
 }
-export const AcquireShareProjectsLocationsSharePoolsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(AcquireShareRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}:acquireShare","baseUrl":"https://file.googleapis.com/"})),
-).annotate({ identifier: "AcquireShareProjectsLocationsSharePoolsRequest" }) as any as S.Schema<AcquireShareProjectsLocationsSharePoolsRequest>;
+export const AcquireShareProjectsLocationsSharePoolsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(AcquireShareRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+parent}:acquireShare",
+        baseUrl: "https://file.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "AcquireShareProjectsLocationsSharePoolsRequest",
+  }) as any as S.Schema<AcquireShareProjectsLocationsSharePoolsRequest>;
 
 /** Output message for AcquireShare. */
 export interface AcquireShareResponse {
@@ -95,17 +106,21 @@ export interface AcquireShareResponse {
   ipAddress?: string;
 }
 export const AcquireShareResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "shareId": S.optional(S.String),
-  "ipAddress": S.optional(S.String),
-}),
-).annotate({ identifier: "AcquireShareResponse" }) as any as S.Schema<AcquireShareResponse>;
+  S.Struct({
+    shareId: S.optional(S.String),
+    ipAddress: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AcquireShareResponse",
+}) as any as S.Schema<AcquireShareResponse>;
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
 export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "CancelOperationRequest" }) as any as S.Schema<CancelOperationRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "CancelOperationRequest",
+}) as any as S.Schema<CancelOperationRequest>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -113,29 +128,59 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:cancel","baseUrl":"https://file.googleapis.com/"})),
-).annotate({ identifier: "CancelProjectsLocationsOperationsRequest" }) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+name}:cancel",
+        baseUrl: "https://file.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CancelProjectsLocationsOperationsRequest",
+}) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
-export type BackupFileSystemProtocolEnum = "FILE_PROTOCOL_UNSPECIFIED" | "NFS_V3" | "NFS_V4_1";
+export type BackupFileSystemProtocolEnum =
+  | "FILE_PROTOCOL_UNSPECIFIED"
+  | "NFS_V3"
+  | "NFS_V4_1";
 export const BackupFileSystemProtocolEnum = /*@__PURE__*/ S.String;
 
-export type BackupSourceInstanceTierEnum = "TIER_UNSPECIFIED" | "STANDARD" | "PREMIUM" | "BASIC_HDD" | "BASIC_SSD" | "HIGH_SCALE_SSD" | "ENTERPRISE" | "ZONAL" | "REGIONAL";
+export type BackupSourceInstanceTierEnum =
+  | "TIER_UNSPECIFIED"
+  | "STANDARD"
+  | "PREMIUM"
+  | "BASIC_HDD"
+  | "BASIC_SSD"
+  | "HIGH_SCALE_SSD"
+  | "ENTERPRISE"
+  | "ZONAL"
+  | "REGIONAL";
 export const BackupSourceInstanceTierEnum = /*@__PURE__*/ S.String;
 
-export type BackupStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "FINALIZING" | "READY" | "DELETING" | "INVALID";
+export type BackupStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "CREATING"
+  | "FINALIZING"
+  | "READY"
+  | "DELETING"
+  | "INVALID";
 export const BackupStateEnum = /*@__PURE__*/ S.String;
 
 /** A Filestore backup. */
@@ -174,24 +219,24 @@ export interface Backup {
   state?: BackupStateEnum;
 }
 export const Backup = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "fileSystemProtocol": S.optional(BackupFileSystemProtocolEnum),
-  "sourceInstance": S.optional(S.String),
-  "description": S.optional(S.String),
-  "downloadBytes": S.optional(S.String),
-  "satisfiesPzs": S.optional(S.Boolean),
-  "sourceFileShare": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "capacityGb": S.optional(S.String),
-  "tags": S.optional(StringMap),
-  "satisfiesPzi": S.optional(S.Boolean),
-  "storageBytes": S.optional(S.String),
-  "kmsKeyName": S.optional(S.String),
-  "sourceInstanceTier": S.optional(BackupSourceInstanceTierEnum),
-  "state": S.optional(BackupStateEnum),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    labels: S.optional(StringMap),
+    fileSystemProtocol: S.optional(BackupFileSystemProtocolEnum),
+    sourceInstance: S.optional(S.String),
+    description: S.optional(S.String),
+    downloadBytes: S.optional(S.String),
+    satisfiesPzs: S.optional(S.Boolean),
+    sourceFileShare: S.optional(S.String),
+    createTime: S.optional(S.String),
+    capacityGb: S.optional(S.String),
+    tags: S.optional(StringMap),
+    satisfiesPzi: S.optional(S.Boolean),
+    storageBytes: S.optional(S.String),
+    kmsKeyName: S.optional(S.String),
+    sourceInstanceTier: S.optional(BackupSourceInstanceTierEnum),
+    state: S.optional(BackupStateEnum),
+  }),
 ).annotate({ identifier: "Backup" }) as any as S.Schema<Backup>;
 
 export interface CreateProjectsLocationsBackupsRequest {
@@ -202,19 +247,33 @@ export interface CreateProjectsLocationsBackupsRequest {
   /** Request body */
   body?: Backup;
 }
-export const CreateProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "backupId": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(Backup.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/backups","baseUrl":"https://file.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsBackupsRequest" }) as any as S.Schema<CreateProjectsLocationsBackupsRequest>;
+export const CreateProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      backupId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(Backup.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+parent}/backups",
+        baseUrl: "https://file.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateProjectsLocationsBackupsRequest",
+}) as any as S.Schema<CreateProjectsLocationsBackupsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -226,11 +285,11 @@ export interface Status {
   details?: DocumentMapList;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(S.Number),
-  "message": S.optional(S.String),
-  "details": S.optional(DocumentMapList),
-}),
+  S.Struct({
+    code: S.optional(S.Number),
+    message: S.optional(S.String),
+    details: S.optional(DocumentMapList),
+  }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -247,29 +306,49 @@ export interface Operation {
   error?: Status;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "done": S.optional(S.Boolean),
-  "response": S.optional(DocumentMap),
-  "metadata": S.optional(DocumentMap),
-  "name": S.optional(S.String),
-  "error": S.optional(Status),
-}),
+  S.Struct({
+    done: S.optional(S.Boolean),
+    response: S.optional(DocumentMap),
+    metadata: S.optional(DocumentMap),
+    name: S.optional(S.String),
+    error: S.optional(Status),
+  }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
-export type InstanceProtocolEnum = "FILE_PROTOCOL_UNSPECIFIED" | "NFS_V3" | "NFS_V4_1";
+export type InstanceProtocolEnum =
+  | "FILE_PROTOCOL_UNSPECIFIED"
+  | "NFS_V3"
+  | "NFS_V4_1";
 export const InstanceProtocolEnum = /*@__PURE__*/ S.String;
 
 export type ReplicationRoleEnum = "ROLE_UNSPECIFIED" | "ACTIVE" | "STANDBY";
 export const ReplicationRoleEnum = /*@__PURE__*/ S.String;
 
-export type ReplicaConfigStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "READY" | "REMOVING" | "FAILED" | "PROMOTING" | "PAUSING" | "PAUSED" | "RESUMING";
+export type ReplicaConfigStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "CREATING"
+  | "READY"
+  | "REMOVING"
+  | "FAILED"
+  | "PROMOTING"
+  | "PAUSING"
+  | "PAUSED"
+  | "RESUMING";
 export const ReplicaConfigStateEnum = /*@__PURE__*/ S.String;
 
-export type ReplicaConfigStateReasonsItemEnum = "STATE_REASON_UNSPECIFIED" | "PEER_INSTANCE_UNREACHABLE" | "REMOVE_FAILED" | "PAUSE_FAILED" | "RESUME_FAILED";
+export type ReplicaConfigStateReasonsItemEnum =
+  | "STATE_REASON_UNSPECIFIED"
+  | "PEER_INSTANCE_UNREACHABLE"
+  | "REMOVE_FAILED"
+  | "PAUSE_FAILED"
+  | "RESUME_FAILED";
 export const ReplicaConfigStateReasonsItemEnum = /*@__PURE__*/ S.String;
 
-export type ReplicaConfigStateReasonsItemEnumList = ReadonlyArray<ReplicaConfigStateReasonsItemEnum>;
-export const ReplicaConfigStateReasonsItemEnumList = /*@__PURE__*/ S.Array(ReplicaConfigStateReasonsItemEnum) as any as S.Schema<ReplicaConfigStateReasonsItemEnumList>;
+export type ReplicaConfigStateReasonsItemEnumList =
+  ReadonlyArray<ReplicaConfigStateReasonsItemEnum>;
+export const ReplicaConfigStateReasonsItemEnumList = /*@__PURE__*/ S.Array(
+  ReplicaConfigStateReasonsItemEnum,
+) as any as S.Schema<ReplicaConfigStateReasonsItemEnumList>;
 
 /** Replica configuration for the instance. */
 export interface ReplicaConfig {
@@ -285,17 +364,19 @@ export interface ReplicaConfig {
   stateUpdateTime?: string;
 }
 export const ReplicaConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "state": S.optional(ReplicaConfigStateEnum),
-  "stateReasons": S.optional(ReplicaConfigStateReasonsItemEnumList),
-  "peerInstance": S.optional(S.String),
-  "lastActiveSyncTime": S.optional(S.String),
-  "stateUpdateTime": S.optional(S.String),
-}),
+  S.Struct({
+    state: S.optional(ReplicaConfigStateEnum),
+    stateReasons: S.optional(ReplicaConfigStateReasonsItemEnumList),
+    peerInstance: S.optional(S.String),
+    lastActiveSyncTime: S.optional(S.String),
+    stateUpdateTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ReplicaConfig" }) as any as S.Schema<ReplicaConfig>;
 
 export type ReplicaConfigList = ReadonlyArray<ReplicaConfig>;
-export const ReplicaConfigList = /*@__PURE__*/ S.Array(ReplicaConfig) as any as S.Schema<ReplicaConfigList>;
+export const ReplicaConfigList = /*@__PURE__*/ S.Array(
+  ReplicaConfig,
+) as any as S.Schema<ReplicaConfigList>;
 
 /** Optional. The configuration used to replicate an instance. */
 export interface Replication {
@@ -305,10 +386,10 @@ export interface Replication {
   replicas?: ReplicaConfigList;
 }
 export const Replication = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "role": S.optional(ReplicationRoleEnum),
-  "replicas": S.optional(ReplicaConfigList),
-}),
+  S.Struct({
+    role: S.optional(ReplicationRoleEnum),
+    replicas: S.optional(ReplicaConfigList),
+  }),
 ).annotate({ identifier: "Replication" }) as any as S.Schema<Replication>;
 
 /** IOPS per TB. Filestore defines TB as 1024^4 bytes (TiB). */
@@ -317,9 +398,9 @@ export interface IOPSPerTB {
   maxIopsPerTb?: string;
 }
 export const IOPSPerTB = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "maxIopsPerTb": S.optional(S.String),
-}),
+  S.Struct({
+    maxIopsPerTb: S.optional(S.String),
+  }),
 ).annotate({ identifier: "IOPSPerTB" }) as any as S.Schema<IOPSPerTB>;
 
 /** Fixed IOPS (input/output operations per second) parameters. */
@@ -328,9 +409,9 @@ export interface FixedIOPS {
   maxIops?: string;
 }
 export const FixedIOPS = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "maxIops": S.optional(S.String),
-}),
+  S.Struct({
+    maxIops: S.optional(S.String),
+  }),
 ).annotate({ identifier: "FixedIOPS" }) as any as S.Schema<FixedIOPS>;
 
 /** Used for setting the performance configuration. If the user doesn't specify PerformanceConfig, automatically provision the default performance settings as described in https://cloud.google.com/filestore/docs/performance. Larger instances will be linearly set to more IOPS. If the instance's capacity is increased or decreased, its performance will be automatically adjusted upwards or downwards accordingly (respectively). */
@@ -341,20 +422,29 @@ export interface PerformanceConfig {
   fixedIops?: FixedIOPS;
 }
 export const PerformanceConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "iopsPerTb": S.optional(IOPSPerTB),
-  "fixedIops": S.optional(FixedIOPS),
-}),
-).annotate({ identifier: "PerformanceConfig" }) as any as S.Schema<PerformanceConfig>;
+  S.Struct({
+    iopsPerTb: S.optional(IOPSPerTB),
+    fixedIops: S.optional(FixedIOPS),
+  }),
+).annotate({
+  identifier: "PerformanceConfig",
+}) as any as S.Schema<PerformanceConfig>;
 
-export type InstanceSuspensionReasonsItemEnum = "SUSPENSION_REASON_UNSPECIFIED" | "KMS_KEY_ISSUE";
+export type InstanceSuspensionReasonsItemEnum =
+  | "SUSPENSION_REASON_UNSPECIFIED"
+  | "KMS_KEY_ISSUE";
 export const InstanceSuspensionReasonsItemEnum = /*@__PURE__*/ S.String;
 
-export type InstanceSuspensionReasonsItemEnumList = ReadonlyArray<InstanceSuspensionReasonsItemEnum>;
-export const InstanceSuspensionReasonsItemEnumList = /*@__PURE__*/ S.Array(InstanceSuspensionReasonsItemEnum) as any as S.Schema<InstanceSuspensionReasonsItemEnumList>;
+export type InstanceSuspensionReasonsItemEnumList =
+  ReadonlyArray<InstanceSuspensionReasonsItemEnum>;
+export const InstanceSuspensionReasonsItemEnumList = /*@__PURE__*/ S.Array(
+  InstanceSuspensionReasonsItemEnum,
+) as any as S.Schema<InstanceSuspensionReasonsItemEnumList>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** Optional configuration for restore backup operations. */
 export interface RestoreConfig {
@@ -362,21 +452,36 @@ export interface RestoreConfig {
   pathPatterns?: StringList;
 }
 export const RestoreConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pathPatterns": S.optional(StringList),
-}),
+  S.Struct({
+    pathPatterns: S.optional(StringList),
+  }),
 ).annotate({ identifier: "RestoreConfig" }) as any as S.Schema<RestoreConfig>;
 
-export type NfsExportOptionsSecurityFlavorsItemEnum = "SECURITY_FLAVOR_UNSPECIFIED" | "AUTH_SYS" | "KRB5" | "KRB5I" | "KRB5P";
+export type NfsExportOptionsSecurityFlavorsItemEnum =
+  | "SECURITY_FLAVOR_UNSPECIFIED"
+  | "AUTH_SYS"
+  | "KRB5"
+  | "KRB5I"
+  | "KRB5P";
 export const NfsExportOptionsSecurityFlavorsItemEnum = /*@__PURE__*/ S.String;
 
-export type NfsExportOptionsSecurityFlavorsItemEnumList = ReadonlyArray<NfsExportOptionsSecurityFlavorsItemEnum>;
-export const NfsExportOptionsSecurityFlavorsItemEnumList = /*@__PURE__*/ S.Array(NfsExportOptionsSecurityFlavorsItemEnum) as any as S.Schema<NfsExportOptionsSecurityFlavorsItemEnumList>;
+export type NfsExportOptionsSecurityFlavorsItemEnumList =
+  ReadonlyArray<NfsExportOptionsSecurityFlavorsItemEnum>;
+export const NfsExportOptionsSecurityFlavorsItemEnumList =
+  /*@__PURE__*/ S.Array(
+    NfsExportOptionsSecurityFlavorsItemEnum,
+  ) as any as S.Schema<NfsExportOptionsSecurityFlavorsItemEnumList>;
 
-export type NfsExportOptionsSquashModeEnum = "SQUASH_MODE_UNSPECIFIED" | "NO_ROOT_SQUASH" | "ROOT_SQUASH";
+export type NfsExportOptionsSquashModeEnum =
+  | "SQUASH_MODE_UNSPECIFIED"
+  | "NO_ROOT_SQUASH"
+  | "ROOT_SQUASH";
 export const NfsExportOptionsSquashModeEnum = /*@__PURE__*/ S.String;
 
-export type NfsExportOptionsAccessModeEnum = "ACCESS_MODE_UNSPECIFIED" | "READ_ONLY" | "READ_WRITE";
+export type NfsExportOptionsAccessModeEnum =
+  | "ACCESS_MODE_UNSPECIFIED"
+  | "READ_ONLY"
+  | "READ_WRITE";
 export const NfsExportOptionsAccessModeEnum = /*@__PURE__*/ S.String;
 
 /** NFS export options specifications. */
@@ -397,19 +502,23 @@ export interface NfsExportOptions {
   accessMode?: NfsExportOptionsAccessModeEnum;
 }
 export const NfsExportOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "anonUid": S.optional(S.String),
-  "anonGid": S.optional(S.String),
-  "securityFlavors": S.optional(NfsExportOptionsSecurityFlavorsItemEnumList),
-  "ipRanges": S.optional(StringList),
-  "network": S.optional(S.String),
-  "squashMode": S.optional(NfsExportOptionsSquashModeEnum),
-  "accessMode": S.optional(NfsExportOptionsAccessModeEnum),
-}),
-).annotate({ identifier: "NfsExportOptions" }) as any as S.Schema<NfsExportOptions>;
+  S.Struct({
+    anonUid: S.optional(S.String),
+    anonGid: S.optional(S.String),
+    securityFlavors: S.optional(NfsExportOptionsSecurityFlavorsItemEnumList),
+    ipRanges: S.optional(StringList),
+    network: S.optional(S.String),
+    squashMode: S.optional(NfsExportOptionsSquashModeEnum),
+    accessMode: S.optional(NfsExportOptionsAccessModeEnum),
+  }),
+).annotate({
+  identifier: "NfsExportOptions",
+}) as any as S.Schema<NfsExportOptions>;
 
 export type NfsExportOptionsList = ReadonlyArray<NfsExportOptions>;
-export const NfsExportOptionsList = /*@__PURE__*/ S.Array(NfsExportOptions) as any as S.Schema<NfsExportOptionsList>;
+export const NfsExportOptionsList = /*@__PURE__*/ S.Array(
+  NfsExportOptions,
+) as any as S.Schema<NfsExportOptionsList>;
 
 /** File share configuration for the instance. */
 export interface FileShareConfig {
@@ -427,18 +536,22 @@ export interface FileShareConfig {
   nfsExportOptions?: NfsExportOptionsList;
 }
 export const FileShareConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "restoreConfig": S.optional(RestoreConfig),
-  "sourceBackupdrBackup": S.optional(S.String),
-  "name": S.optional(S.String),
-  "sourceBackup": S.optional(S.String),
-  "capacityGb": S.optional(S.String),
-  "nfsExportOptions": S.optional(NfsExportOptionsList),
-}),
-).annotate({ identifier: "FileShareConfig" }) as any as S.Schema<FileShareConfig>;
+  S.Struct({
+    restoreConfig: S.optional(RestoreConfig),
+    sourceBackupdrBackup: S.optional(S.String),
+    name: S.optional(S.String),
+    sourceBackup: S.optional(S.String),
+    capacityGb: S.optional(S.String),
+    nfsExportOptions: S.optional(NfsExportOptionsList),
+  }),
+).annotate({
+  identifier: "FileShareConfig",
+}) as any as S.Schema<FileShareConfig>;
 
 export type FileShareConfigList = ReadonlyArray<FileShareConfig>;
-export const FileShareConfigList = /*@__PURE__*/ S.Array(FileShareConfig) as any as S.Schema<FileShareConfigList>;
+export const FileShareConfigList = /*@__PURE__*/ S.Array(
+  FileShareConfig,
+) as any as S.Schema<FileShareConfigList>;
 
 /** The enforced performance limits, calculated from the instance's performance configuration. */
 export interface PerformanceLimits {
@@ -454,14 +567,16 @@ export interface PerformanceLimits {
   maxReadIops?: string;
 }
 export const PerformanceLimits = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "maxWriteIops": S.optional(S.String),
-  "maxWriteThroughputBps": S.optional(S.String),
-  "maxReadThroughputBps": S.optional(S.String),
-  "maxIops": S.optional(S.String),
-  "maxReadIops": S.optional(S.String),
-}),
-).annotate({ identifier: "PerformanceLimits" }) as any as S.Schema<PerformanceLimits>;
+  S.Struct({
+    maxWriteIops: S.optional(S.String),
+    maxWriteThroughputBps: S.optional(S.String),
+    maxReadThroughputBps: S.optional(S.String),
+    maxIops: S.optional(S.String),
+    maxReadIops: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PerformanceLimits",
+}) as any as S.Schema<PerformanceLimits>;
 
 /** ManagedActiveDirectoryConfig contains all the parameters for connecting to Managed Service for Microsoft Active Directory (Managed Microsoft AD). */
 export interface ManagedActiveDirectoryConfig {
@@ -471,11 +586,13 @@ export interface ManagedActiveDirectoryConfig {
   computer?: string;
 }
 export const ManagedActiveDirectoryConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "domain": S.optional(S.String),
-  "computer": S.optional(S.String),
-}),
-).annotate({ identifier: "ManagedActiveDirectoryConfig" }) as any as S.Schema<ManagedActiveDirectoryConfig>;
+  S.Struct({
+    domain: S.optional(S.String),
+    computer: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ManagedActiveDirectoryConfig",
+}) as any as S.Schema<ManagedActiveDirectoryConfig>;
 
 /** LdapConfig contains all the parameters for connecting to LDAP servers. */
 export interface LdapConfig {
@@ -489,12 +606,12 @@ export interface LdapConfig {
   usersOu?: string;
 }
 export const LdapConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "domain": S.optional(S.String),
-  "groupsOu": S.optional(S.String),
-  "servers": S.optional(StringList),
-  "usersOu": S.optional(S.String),
-}),
+  S.Struct({
+    domain: S.optional(S.String),
+    groupsOu: S.optional(S.String),
+    servers: S.optional(StringList),
+    usersOu: S.optional(S.String),
+  }),
 ).annotate({ identifier: "LdapConfig" }) as any as S.Schema<LdapConfig>;
 
 /** Directory Services configuration. */
@@ -505,23 +622,46 @@ export interface DirectoryServicesConfig {
   ldap?: LdapConfig;
 }
 export const DirectoryServicesConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "managedActiveDirectory": S.optional(ManagedActiveDirectoryConfig),
-  "ldap": S.optional(LdapConfig),
-}),
-).annotate({ identifier: "DirectoryServicesConfig" }) as any as S.Schema<DirectoryServicesConfig>;
+  S.Struct({
+    managedActiveDirectory: S.optional(ManagedActiveDirectoryConfig),
+    ldap: S.optional(LdapConfig),
+  }),
+).annotate({
+  identifier: "DirectoryServicesConfig",
+}) as any as S.Schema<DirectoryServicesConfig>;
 
-export type InstanceBackendTypeEnum = "BACKEND_TYPE_UNSPECIFIED" | "COMPUTE_BASED_BACKEND" | "FILESTORE_BACKEND";
+export type InstanceBackendTypeEnum =
+  | "BACKEND_TYPE_UNSPECIFIED"
+  | "COMPUTE_BASED_BACKEND"
+  | "FILESTORE_BACKEND";
 export const InstanceBackendTypeEnum = /*@__PURE__*/ S.String;
 
-export type InstanceStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "READY" | "REPAIRING" | "DELETING" | "ERROR" | "RESTORING" | "SUSPENDED" | "REVERTING" | "SUSPENDING" | "RESUMING" | "PROMOTING";
+export type InstanceStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "CREATING"
+  | "READY"
+  | "REPAIRING"
+  | "DELETING"
+  | "ERROR"
+  | "RESTORING"
+  | "SUSPENDED"
+  | "REVERTING"
+  | "SUSPENDING"
+  | "RESUMING"
+  | "PROMOTING";
 export const InstanceStateEnum = /*@__PURE__*/ S.String;
 
-export type NetworkConfigModesItemEnum = "ADDRESS_MODE_UNSPECIFIED" | "MODE_IPV4" | "MODE_IPV6";
+export type NetworkConfigModesItemEnum =
+  | "ADDRESS_MODE_UNSPECIFIED"
+  | "MODE_IPV4"
+  | "MODE_IPV6";
 export const NetworkConfigModesItemEnum = /*@__PURE__*/ S.String;
 
-export type NetworkConfigModesItemEnumList = ReadonlyArray<NetworkConfigModesItemEnum>;
-export const NetworkConfigModesItemEnumList = /*@__PURE__*/ S.Array(NetworkConfigModesItemEnum) as any as S.Schema<NetworkConfigModesItemEnumList>;
+export type NetworkConfigModesItemEnumList =
+  ReadonlyArray<NetworkConfigModesItemEnum>;
+export const NetworkConfigModesItemEnumList = /*@__PURE__*/ S.Array(
+  NetworkConfigModesItemEnum,
+) as any as S.Schema<NetworkConfigModesItemEnumList>;
 
 /** Private Service Connect configuration. */
 export interface PscConfig {
@@ -529,12 +669,16 @@ export interface PscConfig {
   endpointProject?: string;
 }
 export const PscConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "endpointProject": S.optional(S.String),
-}),
+  S.Struct({
+    endpointProject: S.optional(S.String),
+  }),
 ).annotate({ identifier: "PscConfig" }) as any as S.Schema<PscConfig>;
 
-export type NetworkConfigConnectModeEnum = "CONNECT_MODE_UNSPECIFIED" | "DIRECT_PEERING" | "PRIVATE_SERVICE_ACCESS" | "PRIVATE_SERVICE_CONNECT";
+export type NetworkConfigConnectModeEnum =
+  | "CONNECT_MODE_UNSPECIFIED"
+  | "DIRECT_PEERING"
+  | "PRIVATE_SERVICE_ACCESS"
+  | "PRIVATE_SERVICE_CONNECT";
 export const NetworkConfigConnectModeEnum = /*@__PURE__*/ S.String;
 
 /** Network configuration for the instance. */
@@ -553,20 +697,31 @@ export interface NetworkConfig {
   connectMode?: NetworkConfigConnectModeEnum;
 }
 export const NetworkConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "network": S.optional(S.String),
-  "modes": S.optional(NetworkConfigModesItemEnumList),
-  "pscConfig": S.optional(PscConfig),
-  "ipAddresses": S.optional(StringList),
-  "reservedIpRange": S.optional(S.String),
-  "connectMode": S.optional(NetworkConfigConnectModeEnum),
-}),
+  S.Struct({
+    network: S.optional(S.String),
+    modes: S.optional(NetworkConfigModesItemEnumList),
+    pscConfig: S.optional(PscConfig),
+    ipAddresses: S.optional(StringList),
+    reservedIpRange: S.optional(S.String),
+    connectMode: S.optional(NetworkConfigConnectModeEnum),
+  }),
 ).annotate({ identifier: "NetworkConfig" }) as any as S.Schema<NetworkConfig>;
 
 export type NetworkConfigList = ReadonlyArray<NetworkConfig>;
-export const NetworkConfigList = /*@__PURE__*/ S.Array(NetworkConfig) as any as S.Schema<NetworkConfigList>;
+export const NetworkConfigList = /*@__PURE__*/ S.Array(
+  NetworkConfig,
+) as any as S.Schema<NetworkConfigList>;
 
-export type InstanceTierEnum = "TIER_UNSPECIFIED" | "STANDARD" | "PREMIUM" | "BASIC_HDD" | "BASIC_SSD" | "HIGH_SCALE_SSD" | "ENTERPRISE" | "ZONAL" | "REGIONAL";
+export type InstanceTierEnum =
+  | "TIER_UNSPECIFIED"
+  | "STANDARD"
+  | "PREMIUM"
+  | "BASIC_HDD"
+  | "BASIC_SSD"
+  | "HIGH_SCALE_SSD"
+  | "ENTERPRISE"
+  | "ZONAL"
+  | "REGIONAL";
 export const InstanceTierEnum = /*@__PURE__*/ S.String;
 
 /** A Filestore instance. */
@@ -633,38 +788,38 @@ export interface Instance {
   maxCapacityGb?: string;
 }
 export const Instance = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "satisfiesPzs": S.optional(S.Boolean),
-  "protocol": S.optional(InstanceProtocolEnum),
-  "replication": S.optional(Replication),
-  "multiShareEnabled": S.optional(S.Boolean),
-  "performanceConfig": S.optional(PerformanceConfig),
-  "deletionProtectionEnabled": S.optional(S.Boolean),
-  "etag": S.optional(S.String),
-  "capacityStepSizeGb": S.optional(S.String),
-  "suspensionReasons": S.optional(InstanceSuspensionReasonsItemEnumList),
-  "statusMessage": S.optional(S.String),
-  "maxShareCount": S.optional(S.String),
-  "fileShares": S.optional(FileShareConfigList),
-  "name": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "deletionProtectionReason": S.optional(S.String),
-  "performanceLimits": S.optional(PerformanceLimits),
-  "satisfiesPzi": S.optional(S.Boolean),
-  "directoryServices": S.optional(DirectoryServicesConfig),
-  "backendType": S.optional(InstanceBackendTypeEnum),
-  "kmsKeyName": S.optional(S.String),
-  "minCapacityGb": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "capacityGb": S.optional(S.String),
-  "tags": S.optional(StringMap),
-  "state": S.optional(InstanceStateEnum),
-  "networks": S.optional(NetworkConfigList),
-  "customPerformanceSupported": S.optional(S.Boolean),
-  "tier": S.optional(InstanceTierEnum),
-  "description": S.optional(S.String),
-  "maxCapacityGb": S.optional(S.String),
-}),
+  S.Struct({
+    satisfiesPzs: S.optional(S.Boolean),
+    protocol: S.optional(InstanceProtocolEnum),
+    replication: S.optional(Replication),
+    multiShareEnabled: S.optional(S.Boolean),
+    performanceConfig: S.optional(PerformanceConfig),
+    deletionProtectionEnabled: S.optional(S.Boolean),
+    etag: S.optional(S.String),
+    capacityStepSizeGb: S.optional(S.String),
+    suspensionReasons: S.optional(InstanceSuspensionReasonsItemEnumList),
+    statusMessage: S.optional(S.String),
+    maxShareCount: S.optional(S.String),
+    fileShares: S.optional(FileShareConfigList),
+    name: S.optional(S.String),
+    labels: S.optional(StringMap),
+    deletionProtectionReason: S.optional(S.String),
+    performanceLimits: S.optional(PerformanceLimits),
+    satisfiesPzi: S.optional(S.Boolean),
+    directoryServices: S.optional(DirectoryServicesConfig),
+    backendType: S.optional(InstanceBackendTypeEnum),
+    kmsKeyName: S.optional(S.String),
+    minCapacityGb: S.optional(S.String),
+    createTime: S.optional(S.String),
+    capacityGb: S.optional(S.String),
+    tags: S.optional(StringMap),
+    state: S.optional(InstanceStateEnum),
+    networks: S.optional(NetworkConfigList),
+    customPerformanceSupported: S.optional(S.Boolean),
+    tier: S.optional(InstanceTierEnum),
+    description: S.optional(S.String),
+    maxCapacityGb: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Instance" }) as any as S.Schema<Instance>;
 
 export interface CreateProjectsLocationsInstancesRequest {
@@ -675,15 +830,28 @@ export interface CreateProjectsLocationsInstancesRequest {
   /** Request body */
   body?: Instance;
 }
-export const CreateProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "instanceId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Instance.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/instances","baseUrl":"https://file.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsInstancesRequest" }) as any as S.Schema<CreateProjectsLocationsInstancesRequest>;
+export const CreateProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      instanceId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Instance.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+parent}/instances",
+        baseUrl: "https://file.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateProjectsLocationsInstancesRequest",
+}) as any as S.Schema<CreateProjectsLocationsInstancesRequest>;
 
-export type ShareStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "READY" | "DELETING";
+export type ShareStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "CREATING"
+  | "READY"
+  | "DELETING";
 export const ShareStateEnum = /*@__PURE__*/ S.String;
 
 /** A Filestore share. */
@@ -708,17 +876,17 @@ export interface Share {
   nfsExportOptions?: NfsExportOptionsList;
 }
 export const Share = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "description": S.optional(S.String),
-  "state": S.optional(ShareStateEnum),
-  "capacityGb": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "backup": S.optional(S.String),
-  "mountName": S.optional(S.String),
-  "nfsExportOptions": S.optional(NfsExportOptionsList),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    labels: S.optional(StringMap),
+    description: S.optional(S.String),
+    state: S.optional(ShareStateEnum),
+    capacityGb: S.optional(S.String),
+    createTime: S.optional(S.String),
+    backup: S.optional(S.String),
+    mountName: S.optional(S.String),
+    nfsExportOptions: S.optional(NfsExportOptionsList),
+  }),
 ).annotate({ identifier: "Share" }) as any as S.Schema<Share>;
 
 export interface CreateProjectsLocationsInstancesSharesRequest {
@@ -729,15 +897,28 @@ export interface CreateProjectsLocationsInstancesSharesRequest {
   /** Request body */
   body?: Share;
 }
-export const CreateProjectsLocationsInstancesSharesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "shareId": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(Share.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/shares","baseUrl":"https://file.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsInstancesSharesRequest" }) as any as S.Schema<CreateProjectsLocationsInstancesSharesRequest>;
+export const CreateProjectsLocationsInstancesSharesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      shareId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(Share.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+parent}/shares",
+        baseUrl: "https://file.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsInstancesSharesRequest",
+  }) as any as S.Schema<CreateProjectsLocationsInstancesSharesRequest>;
 
-export type SnapshotStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "READY" | "DELETING";
+export type SnapshotStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "CREATING"
+  | "READY"
+  | "DELETING";
 export const SnapshotStateEnum = /*@__PURE__*/ S.String;
 
 /** A Filestore snapshot. */
@@ -758,15 +939,15 @@ export interface Snapshot {
   labels?: StringMap;
 }
 export const Snapshot = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "createTime": S.optional(S.String),
-  "tags": S.optional(StringMap),
-  "description": S.optional(S.String),
-  "state": S.optional(SnapshotStateEnum),
-  "filesystemUsedBytes": S.optional(S.String),
-  "name": S.optional(S.String),
-  "labels": S.optional(StringMap),
-}),
+  S.Struct({
+    createTime: S.optional(S.String),
+    tags: S.optional(StringMap),
+    description: S.optional(S.String),
+    state: S.optional(SnapshotStateEnum),
+    filesystemUsedBytes: S.optional(S.String),
+    name: S.optional(S.String),
+    labels: S.optional(StringMap),
+  }),
 ).annotate({ identifier: "Snapshot" }) as any as S.Schema<Snapshot>;
 
 export interface CreateProjectsLocationsInstancesSnapshotsRequest {
@@ -777,23 +958,41 @@ export interface CreateProjectsLocationsInstancesSnapshotsRequest {
   /** Request body */
   body?: Snapshot;
 }
-export const CreateProjectsLocationsInstancesSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "snapshotId": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(Snapshot.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/snapshots","baseUrl":"https://file.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsInstancesSnapshotsRequest" }) as any as S.Schema<CreateProjectsLocationsInstancesSnapshotsRequest>;
+export const CreateProjectsLocationsInstancesSnapshotsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      snapshotId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(Snapshot.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+parent}/snapshots",
+        baseUrl: "https://file.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsInstancesSnapshotsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsInstancesSnapshotsRequest>;
 
 export interface DeleteProjectsLocationsBackupsRequest {
   /** Required. The backup resource name, in the format `projects/{project_id}/locations/{location}/backups/{backup_id}` */
   name: string;
 }
-export const DeleteProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://file.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsBackupsRequest" }) as any as S.Schema<DeleteProjectsLocationsBackupsRequest>;
+export const DeleteProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://file.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsBackupsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsBackupsRequest>;
 
 export interface DeleteProjectsLocationsInstancesRequest {
   /** Required. The instance resource name, in the format `projects/{project_id}/locations/{location}/instances/{instance_id}` */
@@ -801,52 +1000,96 @@ export interface DeleteProjectsLocationsInstancesRequest {
   /** If set to true, any snapshots of the instance will also be deleted. (Otherwise, the request will only work if the instance has no snapshots.) */
   force?: boolean;
 }
-export const DeleteProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "force": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://file.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsInstancesRequest" }) as any as S.Schema<DeleteProjectsLocationsInstancesRequest>;
+export const DeleteProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      force: S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://file.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsInstancesRequest",
+}) as any as S.Schema<DeleteProjectsLocationsInstancesRequest>;
 
 export interface DeleteProjectsLocationsInstancesSharesRequest {
   /** Required. The share resource name, in the format `projects/{project_id}/locations/{location}/instances/{instance_id}/share/{share_id}` */
   name: string;
 }
-export const DeleteProjectsLocationsInstancesSharesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://file.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsInstancesSharesRequest" }) as any as S.Schema<DeleteProjectsLocationsInstancesSharesRequest>;
+export const DeleteProjectsLocationsInstancesSharesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://file.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsInstancesSharesRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsInstancesSharesRequest>;
 
 export interface DeleteProjectsLocationsInstancesSnapshotsRequest {
   /** Required. The snapshot resource name, in the format `projects/{project_id}/locations/{location}/instances/{instance_id}/snapshots/{snapshot_id}` */
   name: string;
 }
-export const DeleteProjectsLocationsInstancesSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://file.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsInstancesSnapshotsRequest" }) as any as S.Schema<DeleteProjectsLocationsInstancesSnapshotsRequest>;
+export const DeleteProjectsLocationsInstancesSnapshotsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://file.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsInstancesSnapshotsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsInstancesSnapshotsRequest>;
 
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://file.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsOperationsRequest" }) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://file.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsOperationsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
 
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://file.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+name}",
+      baseUrl: "https://file.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsRequest",
+}) as any as S.Schema<GetProjectsLocationsRequest>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -862,13 +1105,13 @@ export interface Location {
   labels?: StringMap;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "displayName": S.optional(S.String),
-  "metadata": S.optional(DocumentMap),
-  "name": S.optional(S.String),
-  "locationId": S.optional(S.String),
-  "labels": S.optional(StringMap),
-}),
+  S.Struct({
+    displayName: S.optional(S.String),
+    metadata: S.optional(DocumentMap),
+    name: S.optional(S.String),
+    locationId: S.optional(S.String),
+    labels: S.optional(StringMap),
+  }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export interface GetProjectsLocationsBackupsRequest {
@@ -876,50 +1119,94 @@ export interface GetProjectsLocationsBackupsRequest {
   name: string;
 }
 export const GetProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://file.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsBackupsRequest" }) as any as S.Schema<GetProjectsLocationsBackupsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+name}",
+      baseUrl: "https://file.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsBackupsRequest",
+}) as any as S.Schema<GetProjectsLocationsBackupsRequest>;
 
 export interface GetProjectsLocationsInstancesRequest {
   /** Required. The instance resource name, in the format `projects/{project_id}/locations/{location}/instances/{instance_id}`. */
   name: string;
 }
-export const GetProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://file.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsInstancesRequest" }) as any as S.Schema<GetProjectsLocationsInstancesRequest>;
+export const GetProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://file.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsInstancesRequest",
+}) as any as S.Schema<GetProjectsLocationsInstancesRequest>;
 
 export interface GetProjectsLocationsInstancesSharesRequest {
   /** Required. The share resource name, in the format `projects/{project_id}/locations/{location}/instances/{instance_id}/shares/{share_id}` */
   name: string;
 }
-export const GetProjectsLocationsInstancesSharesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://file.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsInstancesSharesRequest" }) as any as S.Schema<GetProjectsLocationsInstancesSharesRequest>;
+export const GetProjectsLocationsInstancesSharesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://file.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsInstancesSharesRequest",
+  }) as any as S.Schema<GetProjectsLocationsInstancesSharesRequest>;
 
 export interface GetProjectsLocationsInstancesSnapshotsRequest {
   /** Required. The snapshot resource name, in the format `projects/{project_id}/locations/{location}/instances/{instance_id}/snapshots/{snapshot_id}` */
   name: string;
 }
-export const GetProjectsLocationsInstancesSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://file.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsInstancesSnapshotsRequest" }) as any as S.Schema<GetProjectsLocationsInstancesSnapshotsRequest>;
+export const GetProjectsLocationsInstancesSnapshotsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://file.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsInstancesSnapshotsRequest",
+  }) as any as S.Schema<GetProjectsLocationsInstancesSnapshotsRequest>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://file.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://file.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsOperationsRequest",
+}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export interface ListProjectsLocationsRequest {
   /** The resource that owns the locations collection, if applicable. */
@@ -934,17 +1221,27 @@ export interface ListProjectsLocationsRequest {
   pageSize?: number;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}/locations","baseUrl":"https://file.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+name}/locations",
+      baseUrl: "https://file.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsRequest",
+}) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(
+  Location,
+) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -954,11 +1251,13 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locations": S.optional(LocationList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
+  S.Struct({
+    locations: S.optional(LocationList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListLocationsResponse",
+}) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsLocationsBackupsRequest {
   /** The next_page_token value to use if there are additional results to retrieve for this list request. */
@@ -973,17 +1272,27 @@ export interface ListProjectsLocationsBackupsRequest {
   pageSize?: number;
 }
 export const ListProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/backups","baseUrl":"https://file.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsBackupsRequest" }) as any as S.Schema<ListProjectsLocationsBackupsRequest>;
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+parent}/backups",
+      baseUrl: "https://file.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsBackupsRequest",
+}) as any as S.Schema<ListProjectsLocationsBackupsRequest>;
 
 export type BackupList = ReadonlyArray<Backup>;
-export const BackupList = /*@__PURE__*/ S.Array(Backup) as any as S.Schema<BackupList>;
+export const BackupList = /*@__PURE__*/ S.Array(
+  Backup,
+) as any as S.Schema<BackupList>;
 
 /** ListBackupsResponse is the result of ListBackupsRequest. */
 export interface ListBackupsResponse {
@@ -995,12 +1304,14 @@ export interface ListBackupsResponse {
   unreachable?: StringList;
 }
 export const ListBackupsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "backups": S.optional(BackupList),
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListBackupsResponse" }) as any as S.Schema<ListBackupsResponse>;
+  S.Struct({
+    backups: S.optional(BackupList),
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListBackupsResponse",
+}) as any as S.Schema<ListBackupsResponse>;
 
 export interface ListProjectsLocationsInstancesRequest {
   /** List filter. */
@@ -1014,18 +1325,29 @@ export interface ListProjectsLocationsInstancesRequest {
   /** Sort results. Supported values are "name", "name desc" or "" (unsorted). */
   orderBy?: string;
 }
-export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/instances","baseUrl":"https://file.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsInstancesRequest" }) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
+export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      filter: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+parent}/instances",
+        baseUrl: "https://file.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsInstancesRequest",
+}) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
 
 export type InstanceList = ReadonlyArray<Instance>;
-export const InstanceList = /*@__PURE__*/ S.Array(Instance) as any as S.Schema<InstanceList>;
+export const InstanceList = /*@__PURE__*/ S.Array(
+  Instance,
+) as any as S.Schema<InstanceList>;
 
 /** ListInstancesResponse is the result of ListInstancesRequest. */
 export interface ListInstancesResponse {
@@ -1037,12 +1359,14 @@ export interface ListInstancesResponse {
   unreachable?: StringList;
 }
 export const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "instances": S.optional(InstanceList),
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListInstancesResponse" }) as any as S.Schema<ListInstancesResponse>;
+  S.Struct({
+    instances: S.optional(InstanceList),
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListInstancesResponse",
+}) as any as S.Schema<ListInstancesResponse>;
 
 export interface ListProjectsLocationsInstancesSharesRequest {
   /** Required. The instance for which to retrieve share information, in the format `projects/{project_id}/locations/{location}/instances/{instance_id}`. */
@@ -1056,18 +1380,29 @@ export interface ListProjectsLocationsInstancesSharesRequest {
   /** Sort results. Supported values are "name", "name desc" or "" (unsorted). */
   orderBy?: string;
 }
-export const ListProjectsLocationsInstancesSharesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/shares","baseUrl":"https://file.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsInstancesSharesRequest" }) as any as S.Schema<ListProjectsLocationsInstancesSharesRequest>;
+export const ListProjectsLocationsInstancesSharesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+parent}/shares",
+        baseUrl: "https://file.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsInstancesSharesRequest",
+  }) as any as S.Schema<ListProjectsLocationsInstancesSharesRequest>;
 
 export type ShareList = ReadonlyArray<Share>;
-export const ShareList = /*@__PURE__*/ S.Array(Share) as any as S.Schema<ShareList>;
+export const ShareList = /*@__PURE__*/ S.Array(
+  Share,
+) as any as S.Schema<ShareList>;
 
 /** ListSharesResponse is the result of ListSharesRequest. */
 export interface ListSharesResponse {
@@ -1079,12 +1414,14 @@ export interface ListSharesResponse {
   unreachable?: StringList;
 }
 export const ListSharesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "shares": S.optional(ShareList),
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListSharesResponse" }) as any as S.Schema<ListSharesResponse>;
+  S.Struct({
+    shares: S.optional(ShareList),
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListSharesResponse",
+}) as any as S.Schema<ListSharesResponse>;
 
 export interface ListProjectsLocationsInstancesSnapshotsRequest {
   /** The next_page_token value to use if there are additional results to retrieve for this list request. */
@@ -1100,19 +1437,30 @@ export interface ListProjectsLocationsInstancesSnapshotsRequest {
   /** List filter. */
   filter?: string;
 }
-export const ListProjectsLocationsInstancesSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/snapshots","baseUrl":"https://file.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsInstancesSnapshotsRequest" }) as any as S.Schema<ListProjectsLocationsInstancesSnapshotsRequest>;
+export const ListProjectsLocationsInstancesSnapshotsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+parent}/snapshots",
+        baseUrl: "https://file.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsInstancesSnapshotsRequest",
+  }) as any as S.Schema<ListProjectsLocationsInstancesSnapshotsRequest>;
 
 export type SnapshotList = ReadonlyArray<Snapshot>;
-export const SnapshotList = /*@__PURE__*/ S.Array(Snapshot) as any as S.Schema<SnapshotList>;
+export const SnapshotList = /*@__PURE__*/ S.Array(
+  Snapshot,
+) as any as S.Schema<SnapshotList>;
 
 /** ListSnapshotsResponse is the result of ListSnapshotsRequest. */
 export interface ListSnapshotsResponse {
@@ -1124,12 +1472,14 @@ export interface ListSnapshotsResponse {
   snapshots?: SnapshotList;
 }
 export const ListSnapshotsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-  "snapshots": S.optional(SnapshotList),
-}),
-).annotate({ identifier: "ListSnapshotsResponse" }) as any as S.Schema<ListSnapshotsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+    snapshots: S.optional(SnapshotList),
+  }),
+).annotate({
+  identifier: "ListSnapshotsResponse",
+}) as any as S.Schema<ListSnapshotsResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list filter. */
@@ -1143,18 +1493,29 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}/operations","baseUrl":"https://file.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      filter: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+name}/operations",
+        baseUrl: "https://file.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsOperationsRequest",
+}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(
+  Operation,
+) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -1166,12 +1527,14 @@ export interface ListOperationsResponse {
   unreachable?: StringList;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "operations": S.optional(OperationList),
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
+  S.Struct({
+    operations: S.optional(OperationList),
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListOperationsResponse",
+}) as any as S.Schema<ListOperationsResponse>;
 
 export interface PatchProjectsLocationsBackupsRequest {
   /** Required. Mask of fields to update. At least one path must be supplied in this field. */
@@ -1181,13 +1544,22 @@ export interface PatchProjectsLocationsBackupsRequest {
   /** Request body */
   body?: Backup;
 }
-export const PatchProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(Backup.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://file.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsBackupsRequest" }) as any as S.Schema<PatchProjectsLocationsBackupsRequest>;
+export const PatchProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      body: S.optional(Backup.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://file.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "PatchProjectsLocationsBackupsRequest",
+}) as any as S.Schema<PatchProjectsLocationsBackupsRequest>;
 
 export interface PatchProjectsLocationsInstancesRequest {
   /** Required. Mask of fields to update. At least one path must be supplied in this field. The elements of the repeated paths field may only include these fields: * "description" * "directory_services" * "file_shares" * "labels" * "performance_config" * "deletion_protection_enabled" * "deletion_protection_reason" */
@@ -1197,13 +1569,22 @@ export interface PatchProjectsLocationsInstancesRequest {
   /** Request body */
   body?: Instance;
 }
-export const PatchProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(Instance.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://file.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsInstancesRequest" }) as any as S.Schema<PatchProjectsLocationsInstancesRequest>;
+export const PatchProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      body: S.optional(Instance.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://file.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "PatchProjectsLocationsInstancesRequest",
+}) as any as S.Schema<PatchProjectsLocationsInstancesRequest>;
 
 export interface PatchProjectsLocationsInstancesSharesRequest {
   /** Output only. The resource name of the share, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}/shares/{share_id}`. */
@@ -1213,13 +1594,22 @@ export interface PatchProjectsLocationsInstancesSharesRequest {
   /** Request body */
   body?: Share;
 }
-export const PatchProjectsLocationsInstancesSharesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Share.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://file.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsInstancesSharesRequest" }) as any as S.Schema<PatchProjectsLocationsInstancesSharesRequest>;
+export const PatchProjectsLocationsInstancesSharesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Share.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://file.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsInstancesSharesRequest",
+  }) as any as S.Schema<PatchProjectsLocationsInstancesSharesRequest>;
 
 export interface PatchProjectsLocationsInstancesSnapshotsRequest {
   /** Required. Mask of fields to update. At least one path must be supplied in this field. */
@@ -1229,19 +1619,30 @@ export interface PatchProjectsLocationsInstancesSnapshotsRequest {
   /** Request body */
   body?: Snapshot;
 }
-export const PatchProjectsLocationsInstancesSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(Snapshot.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://file.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsInstancesSnapshotsRequest" }) as any as S.Schema<PatchProjectsLocationsInstancesSnapshotsRequest>;
+export const PatchProjectsLocationsInstancesSnapshotsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      body: S.optional(Snapshot.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://file.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsInstancesSnapshotsRequest",
+  }) as any as S.Schema<PatchProjectsLocationsInstancesSnapshotsRequest>;
 
 /** PauseReplicaRequest pauses a Filestore standby instance (replica). */
 export interface PauseReplicaRequest {}
 export const PauseReplicaRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "PauseReplicaRequest" }) as any as S.Schema<PauseReplicaRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "PauseReplicaRequest",
+}) as any as S.Schema<PauseReplicaRequest>;
 
 export interface PauseReplicaProjectsLocationsInstancesRequest {
   /** Required. The resource name of the instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`. */
@@ -1249,12 +1650,21 @@ export interface PauseReplicaProjectsLocationsInstancesRequest {
   /** Request body */
   body?: PauseReplicaRequest;
 }
-export const PauseReplicaProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(PauseReplicaRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:pauseReplica","baseUrl":"https://file.googleapis.com/"})),
-).annotate({ identifier: "PauseReplicaProjectsLocationsInstancesRequest" }) as any as S.Schema<PauseReplicaProjectsLocationsInstancesRequest>;
+export const PauseReplicaProjectsLocationsInstancesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(PauseReplicaRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+name}:pauseReplica",
+        baseUrl: "https://file.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PauseReplicaProjectsLocationsInstancesRequest",
+  }) as any as S.Schema<PauseReplicaProjectsLocationsInstancesRequest>;
 
 /** PromoteReplicaRequest promotes a Filestore standby instance (replica). */
 export interface PromoteReplicaRequest {
@@ -1262,10 +1672,12 @@ export interface PromoteReplicaRequest {
   peerInstance?: string;
 }
 export const PromoteReplicaRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "peerInstance": S.optional(S.String),
-}),
-).annotate({ identifier: "PromoteReplicaRequest" }) as any as S.Schema<PromoteReplicaRequest>;
+  S.Struct({
+    peerInstance: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PromoteReplicaRequest",
+}) as any as S.Schema<PromoteReplicaRequest>;
 
 export interface PromoteReplicaProjectsLocationsInstancesRequest {
   /** Required. The resource name of the instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`. */
@@ -1273,12 +1685,21 @@ export interface PromoteReplicaProjectsLocationsInstancesRequest {
   /** Request body */
   body?: PromoteReplicaRequest;
 }
-export const PromoteReplicaProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(PromoteReplicaRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:promoteReplica","baseUrl":"https://file.googleapis.com/"})),
-).annotate({ identifier: "PromoteReplicaProjectsLocationsInstancesRequest" }) as any as S.Schema<PromoteReplicaProjectsLocationsInstancesRequest>;
+export const PromoteReplicaProjectsLocationsInstancesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(PromoteReplicaRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+name}:promoteReplica",
+        baseUrl: "https://file.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PromoteReplicaProjectsLocationsInstancesRequest",
+  }) as any as S.Schema<PromoteReplicaProjectsLocationsInstancesRequest>;
 
 /** Request message for ReleaseShare. */
 export interface ReleaseShareRequest {
@@ -1288,11 +1709,13 @@ export interface ReleaseShareRequest {
   shareId?: string;
 }
 export const ReleaseShareRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "ipAddress": S.optional(S.String),
-  "shareId": S.optional(S.String),
-}),
-).annotate({ identifier: "ReleaseShareRequest" }) as any as S.Schema<ReleaseShareRequest>;
+  S.Struct({
+    ipAddress: S.optional(S.String),
+    shareId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ReleaseShareRequest",
+}) as any as S.Schema<ReleaseShareRequest>;
 
 export interface ReleaseShareProjectsLocationsSharePoolsRequest {
   /** Required. The parent share pool path, in the format `projects/{project}/locations/{location}/sharePools/{share_pool}`. */
@@ -1300,18 +1723,29 @@ export interface ReleaseShareProjectsLocationsSharePoolsRequest {
   /** Request body */
   body?: ReleaseShareRequest;
 }
-export const ReleaseShareProjectsLocationsSharePoolsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(ReleaseShareRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}:releaseShare","baseUrl":"https://file.googleapis.com/"})),
-).annotate({ identifier: "ReleaseShareProjectsLocationsSharePoolsRequest" }) as any as S.Schema<ReleaseShareProjectsLocationsSharePoolsRequest>;
+export const ReleaseShareProjectsLocationsSharePoolsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(ReleaseShareRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+parent}:releaseShare",
+        baseUrl: "https://file.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ReleaseShareProjectsLocationsSharePoolsRequest",
+  }) as any as S.Schema<ReleaseShareProjectsLocationsSharePoolsRequest>;
 
 /** Response message for ReleaseShare. */
 export interface ReleaseShareResponse {}
 export const ReleaseShareResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "ReleaseShareResponse" }) as any as S.Schema<ReleaseShareResponse>;
+  S.Struct({}),
+).annotate({
+  identifier: "ReleaseShareResponse",
+}) as any as S.Schema<ReleaseShareResponse>;
 
 /** RestoreInstanceRequest restores an existing instance's file share from a backup. */
 export interface RestoreInstanceRequest {
@@ -1323,12 +1757,14 @@ export interface RestoreInstanceRequest {
   sourceSnapshot?: string;
 }
 export const RestoreInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fileShare": S.optional(S.String),
-  "sourceBackup": S.optional(S.String),
-  "sourceSnapshot": S.optional(S.String),
-}),
-).annotate({ identifier: "RestoreInstanceRequest" }) as any as S.Schema<RestoreInstanceRequest>;
+  S.Struct({
+    fileShare: S.optional(S.String),
+    sourceBackup: S.optional(S.String),
+    sourceSnapshot: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RestoreInstanceRequest",
+}) as any as S.Schema<RestoreInstanceRequest>;
 
 export interface RestoreProjectsLocationsInstancesRequest {
   /** Required. The resource name of the instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`. */
@@ -1336,18 +1772,29 @@ export interface RestoreProjectsLocationsInstancesRequest {
   /** Request body */
   body?: RestoreInstanceRequest;
 }
-export const RestoreProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(RestoreInstanceRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:restore","baseUrl":"https://file.googleapis.com/"})),
-).annotate({ identifier: "RestoreProjectsLocationsInstancesRequest" }) as any as S.Schema<RestoreProjectsLocationsInstancesRequest>;
+export const RestoreProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(RestoreInstanceRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+name}:restore",
+        baseUrl: "https://file.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "RestoreProjectsLocationsInstancesRequest",
+}) as any as S.Schema<RestoreProjectsLocationsInstancesRequest>;
 
 /** ResumeReplicaRequest resumes a Filestore standby instance (replica). */
 export interface ResumeReplicaRequest {}
 export const ResumeReplicaRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "ResumeReplicaRequest" }) as any as S.Schema<ResumeReplicaRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "ResumeReplicaRequest",
+}) as any as S.Schema<ResumeReplicaRequest>;
 
 export interface ResumeReplicaProjectsLocationsInstancesRequest {
   /** Required. The resource name of the instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`. */
@@ -1355,12 +1802,21 @@ export interface ResumeReplicaProjectsLocationsInstancesRequest {
   /** Request body */
   body?: ResumeReplicaRequest;
 }
-export const ResumeReplicaProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(ResumeReplicaRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:resumeReplica","baseUrl":"https://file.googleapis.com/"})),
-).annotate({ identifier: "ResumeReplicaProjectsLocationsInstancesRequest" }) as any as S.Schema<ResumeReplicaProjectsLocationsInstancesRequest>;
+export const ResumeReplicaProjectsLocationsInstancesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(ResumeReplicaRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+name}:resumeReplica",
+        baseUrl: "https://file.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ResumeReplicaProjectsLocationsInstancesRequest",
+  }) as any as S.Schema<ResumeReplicaProjectsLocationsInstancesRequest>;
 
 /** RevertInstanceRequest reverts the given instance's file share to the specified snapshot. */
 export interface RevertInstanceRequest {
@@ -1368,10 +1824,12 @@ export interface RevertInstanceRequest {
   targetSnapshotId?: string;
 }
 export const RevertInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "targetSnapshotId": S.optional(S.String),
-}),
-).annotate({ identifier: "RevertInstanceRequest" }) as any as S.Schema<RevertInstanceRequest>;
+  S.Struct({
+    targetSnapshotId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RevertInstanceRequest",
+}) as any as S.Schema<RevertInstanceRequest>;
 
 export interface RevertProjectsLocationsInstancesRequest {
   /** Required. The resource name of the instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`. */
@@ -1379,14 +1837,28 @@ export interface RevertProjectsLocationsInstancesRequest {
   /** Request body */
   body?: RevertInstanceRequest;
 }
-export const RevertProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(RevertInstanceRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:revert","baseUrl":"https://file.googleapis.com/"})),
-).annotate({ identifier: "RevertProjectsLocationsInstancesRequest" }) as any as S.Schema<RevertProjectsLocationsInstancesRequest>;
+export const RevertProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(RevertInstanceRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+name}:revert",
+        baseUrl: "https://file.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "RevertProjectsLocationsInstancesRequest",
+}) as any as S.Schema<RevertProjectsLocationsInstancesRequest>;
 
-export type AcquireShareProjectsLocationsSharePoolsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type AcquireShareProjectsLocationsSharePoolsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Acquires a share synchronously from the pre-provisioned share pool. */
 export const acquireShareProjectsLocationsSharePools: API.OperationMethod<
   AcquireShareProjectsLocationsSharePoolsRequest,
@@ -1401,7 +1873,12 @@ export const acquireShareProjectsLocationsSharePools: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CancelProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CancelProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsRequest,
@@ -1416,7 +1893,12 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsBackupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsBackupsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a backup. */
 export const createProjectsLocationsBackups: API.OperationMethod<
   CreateProjectsLocationsBackupsRequest,
@@ -1431,7 +1913,12 @@ export const createProjectsLocationsBackups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates an instance. When creating from a backup, the capacity of the new instance needs to be equal to or larger than the capacity of the backup (and also equal to or larger than the minimum capacity of the tier). */
 export const createProjectsLocationsInstances: API.OperationMethod<
   CreateProjectsLocationsInstancesRequest,
@@ -1446,7 +1933,12 @@ export const createProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsInstancesSharesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsInstancesSharesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a share. */
 export const createProjectsLocationsInstancesShares: API.OperationMethod<
   CreateProjectsLocationsInstancesSharesRequest,
@@ -1461,7 +1953,12 @@ export const createProjectsLocationsInstancesShares: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsInstancesSnapshotsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsInstancesSnapshotsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a snapshot. */
 export const createProjectsLocationsInstancesSnapshots: API.OperationMethod<
   CreateProjectsLocationsInstancesSnapshotsRequest,
@@ -1476,7 +1973,12 @@ export const createProjectsLocationsInstancesSnapshots: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsBackupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsBackupsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a backup. */
 export const deleteProjectsLocationsBackups: API.OperationMethod<
   DeleteProjectsLocationsBackupsRequest,
@@ -1491,7 +1993,12 @@ export const deleteProjectsLocationsBackups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes an instance. */
 export const deleteProjectsLocationsInstances: API.OperationMethod<
   DeleteProjectsLocationsInstancesRequest,
@@ -1506,7 +2013,12 @@ export const deleteProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsInstancesSharesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsInstancesSharesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a share. */
 export const deleteProjectsLocationsInstancesShares: API.OperationMethod<
   DeleteProjectsLocationsInstancesSharesRequest,
@@ -1521,7 +2033,12 @@ export const deleteProjectsLocationsInstancesShares: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsInstancesSnapshotsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsInstancesSnapshotsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a snapshot. */
 export const deleteProjectsLocationsInstancesSnapshots: API.OperationMethod<
   DeleteProjectsLocationsInstancesSnapshotsRequest,
@@ -1536,7 +2053,12 @@ export const deleteProjectsLocationsInstancesSnapshots: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsRequest,
@@ -1566,7 +2088,10 @@ export const getProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsBackupsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsBackupsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the details of a specific backup. */
 export const getProjectsLocationsBackups: API.OperationMethod<
   GetProjectsLocationsBackupsRequest,
@@ -1581,7 +2106,10 @@ export const getProjectsLocationsBackups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsInstancesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the details of a specific instance. */
 export const getProjectsLocationsInstances: API.OperationMethod<
   GetProjectsLocationsInstancesRequest,
@@ -1596,7 +2124,10 @@ export const getProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsInstancesSharesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsInstancesSharesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the details of a specific share. */
 export const getProjectsLocationsInstancesShares: API.OperationMethod<
   GetProjectsLocationsInstancesSharesRequest,
@@ -1611,7 +2142,10 @@ export const getProjectsLocationsInstancesShares: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsInstancesSnapshotsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsInstancesSnapshotsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the details of a specific snapshot. */
 export const getProjectsLocationsInstancesSnapshots: API.OperationMethod<
   GetProjectsLocationsInstancesSnapshotsRequest,
@@ -1626,7 +2160,10 @@ export const getProjectsLocationsInstancesSnapshots: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -1654,10 +2191,16 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsBackupsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsBackupsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all backups in a project for either a specified location or for all locations. */
 export const listProjectsLocationsBackups: API.PaginatedOperationMethod<
   ListProjectsLocationsBackupsRequest,
@@ -1670,10 +2213,16 @@ export const listProjectsLocationsBackups: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsInstancesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all instances in a project for either a specified location or for all locations. */
 export const listProjectsLocationsInstances: API.PaginatedOperationMethod<
   ListProjectsLocationsInstancesRequest,
@@ -1686,10 +2235,16 @@ export const listProjectsLocationsInstances: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsInstancesSharesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsInstancesSharesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all shares for a specified instance. */
 export const listProjectsLocationsInstancesShares: API.PaginatedOperationMethod<
   ListProjectsLocationsInstancesSharesRequest,
@@ -1702,10 +2257,16 @@ export const listProjectsLocationsInstancesShares: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsInstancesSnapshotsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsInstancesSnapshotsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all snapshots in a project for either a specified location or for all locations. */
 export const listProjectsLocationsInstancesSnapshots: API.PaginatedOperationMethod<
   ListProjectsLocationsInstancesSnapshotsRequest,
@@ -1718,10 +2279,16 @@ export const listProjectsLocationsInstancesSnapshots: API.PaginatedOperationMeth
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -1734,10 +2301,18 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type PatchProjectsLocationsBackupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsBackupsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the settings of a specific backup. */
 export const patchProjectsLocationsBackups: API.OperationMethod<
   PatchProjectsLocationsBackupsRequest,
@@ -1752,7 +2327,12 @@ export const patchProjectsLocationsBackups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the settings of a specific instance. */
 export const patchProjectsLocationsInstances: API.OperationMethod<
   PatchProjectsLocationsInstancesRequest,
@@ -1767,7 +2347,12 @@ export const patchProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsInstancesSharesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsInstancesSharesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the settings of a specific share. */
 export const patchProjectsLocationsInstancesShares: API.OperationMethod<
   PatchProjectsLocationsInstancesSharesRequest,
@@ -1782,7 +2367,12 @@ export const patchProjectsLocationsInstancesShares: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsInstancesSnapshotsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsInstancesSnapshotsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the settings of a specific snapshot. */
 export const patchProjectsLocationsInstancesSnapshots: API.OperationMethod<
   PatchProjectsLocationsInstancesSnapshotsRequest,
@@ -1797,7 +2387,12 @@ export const patchProjectsLocationsInstancesSnapshots: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PauseReplicaProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PauseReplicaProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Pause the standby instance (replica). WARNING: This operation makes the standby instance's NFS filesystem writable. Any data written to the standby instance while paused will be lost when the replica is resumed or promoted. */
 export const pauseReplicaProjectsLocationsInstances: API.OperationMethod<
   PauseReplicaProjectsLocationsInstancesRequest,
@@ -1812,7 +2407,12 @@ export const pauseReplicaProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PromoteReplicaProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PromoteReplicaProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Promote the standby instance (replica). */
 export const promoteReplicaProjectsLocationsInstances: API.OperationMethod<
   PromoteReplicaProjectsLocationsInstancesRequest,
@@ -1827,7 +2427,12 @@ export const promoteReplicaProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ReleaseShareProjectsLocationsSharePoolsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ReleaseShareProjectsLocationsSharePoolsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Releases a share synchronously, marking it for background scrubbing. */
 export const releaseShareProjectsLocationsSharePools: API.OperationMethod<
   ReleaseShareProjectsLocationsSharePoolsRequest,
@@ -1842,7 +2447,12 @@ export const releaseShareProjectsLocationsSharePools: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RestoreProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RestoreProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Restores an existing instance's file share from a backup. The capacity of the instance needs to be equal to or larger than the capacity of the backup (and also equal to or larger than the minimum capacity of the tier). */
 export const restoreProjectsLocationsInstances: API.OperationMethod<
   RestoreProjectsLocationsInstancesRequest,
@@ -1857,7 +2467,12 @@ export const restoreProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ResumeReplicaProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ResumeReplicaProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Resume the standby instance (replica). WARNING: Any data written to the standby instance while paused will be lost when the replica is resumed. */
 export const resumeReplicaProjectsLocationsInstances: API.OperationMethod<
   ResumeReplicaProjectsLocationsInstancesRequest,
@@ -1872,7 +2487,12 @@ export const resumeReplicaProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RevertProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RevertProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Revert an existing instance's file system to a specified snapshot. */
 export const revertProjectsLocationsInstances: API.OperationMethod<
   RevertProjectsLocationsInstancesRequest,
@@ -1886,4 +2506,3 @@ export const revertProjectsLocationsInstances: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

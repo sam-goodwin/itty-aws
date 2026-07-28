@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export interface ReportRequestReportScope {
@@ -77,16 +77,18 @@ export interface ReportRequestReportScope {
   engineAccountId?: string;
 }
 export const ReportRequestReportScope = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "adId": S.optional(S.String),
-  "advertiserId": S.optional(S.String),
-  "keywordId": S.optional(S.String),
-  "agencyId": S.optional(S.String),
-  "adGroupId": S.optional(S.String),
-  "campaignId": S.optional(S.String),
-  "engineAccountId": S.optional(S.String),
-}),
-).annotate({ identifier: "ReportRequestReportScope" }) as any as S.Schema<ReportRequestReportScope>;
+  S.Struct({
+    adId: S.optional(S.String),
+    advertiserId: S.optional(S.String),
+    keywordId: S.optional(S.String),
+    agencyId: S.optional(S.String),
+    adGroupId: S.optional(S.String),
+    campaignId: S.optional(S.String),
+    engineAccountId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ReportRequestReportScope",
+}) as any as S.Schema<ReportRequestReportScope>;
 
 /** A request object used to create a DoubleClick Search report. */
 export interface ReportApiColumnSpec {
@@ -112,19 +114,21 @@ export interface ReportApiColumnSpec {
   endDate?: string;
 }
 export const ReportApiColumnSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "groupByColumn": S.optional(S.Boolean),
-  "platformSource": S.optional(S.String),
-  "productReportPerspective": S.optional(S.String),
-  "startDate": S.optional(S.String),
-  "savedColumnName": S.optional(S.String),
-  "columnName": S.optional(S.String),
-  "headerText": S.optional(S.String),
-  "customDimensionName": S.optional(S.String),
-  "customMetricName": S.optional(S.String),
-  "endDate": S.optional(S.String),
-}),
-).annotate({ identifier: "ReportApiColumnSpec" }) as any as S.Schema<ReportApiColumnSpec>;
+  S.Struct({
+    groupByColumn: S.optional(S.Boolean),
+    platformSource: S.optional(S.String),
+    productReportPerspective: S.optional(S.String),
+    startDate: S.optional(S.String),
+    savedColumnName: S.optional(S.String),
+    columnName: S.optional(S.String),
+    headerText: S.optional(S.String),
+    customDimensionName: S.optional(S.String),
+    customMetricName: S.optional(S.String),
+    endDate: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ReportApiColumnSpec",
+}) as any as S.Schema<ReportApiColumnSpec>;
 
 export interface ReportRequestOrderByItem {
   /** The sort direction, which is either `ascending` or `descending`. */
@@ -133,14 +137,19 @@ export interface ReportRequestOrderByItem {
   column?: ReportApiColumnSpec;
 }
 export const ReportRequestOrderByItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sortOrder": S.optional(S.String),
-  "column": S.optional(ReportApiColumnSpec),
-}),
-).annotate({ identifier: "ReportRequestOrderByItem" }) as any as S.Schema<ReportRequestOrderByItem>;
+  S.Struct({
+    sortOrder: S.optional(S.String),
+    column: S.optional(ReportApiColumnSpec),
+  }),
+).annotate({
+  identifier: "ReportRequestOrderByItem",
+}) as any as S.Schema<ReportRequestOrderByItem>;
 
-export type ReportRequestOrderByItemList = ReadonlyArray<ReportRequestOrderByItem>;
-export const ReportRequestOrderByItemList = /*@__PURE__*/ S.Array(ReportRequestOrderByItem) as any as S.Schema<ReportRequestOrderByItemList>;
+export type ReportRequestOrderByItemList =
+  ReadonlyArray<ReportRequestOrderByItem>;
+export const ReportRequestOrderByItemList = /*@__PURE__*/ S.Array(
+  ReportRequestOrderByItem,
+) as any as S.Schema<ReportRequestOrderByItemList>;
 
 export interface ReportRequestTimeRange {
   /** Inclusive date in YYYY-MM-DD format. */
@@ -153,19 +162,25 @@ export interface ReportRequestTimeRange {
   changedAttributesSinceTimestamp?: string;
 }
 export const ReportRequestTimeRange = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "startDate": S.optional(S.String),
-  "endDate": S.optional(S.String),
-  "changedMetricsSinceTimestamp": S.optional(S.String),
-  "changedAttributesSinceTimestamp": S.optional(S.String),
-}),
-).annotate({ identifier: "ReportRequestTimeRange" }) as any as S.Schema<ReportRequestTimeRange>;
+  S.Struct({
+    startDate: S.optional(S.String),
+    endDate: S.optional(S.String),
+    changedMetricsSinceTimestamp: S.optional(S.String),
+    changedAttributesSinceTimestamp: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ReportRequestTimeRange",
+}) as any as S.Schema<ReportRequestTimeRange>;
 
 export type ReportApiColumnSpecList = ReadonlyArray<ReportApiColumnSpec>;
-export const ReportApiColumnSpecList = /*@__PURE__*/ S.Array(ReportApiColumnSpec) as any as S.Schema<ReportApiColumnSpecList>;
+export const ReportApiColumnSpecList = /*@__PURE__*/ S.Array(
+  ReportApiColumnSpec,
+) as any as S.Schema<ReportApiColumnSpecList>;
 
 export type DocumentList = ReadonlyArray<unknown>;
-export const DocumentList = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Schema<DocumentList>;
+export const DocumentList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<DocumentList>;
 
 export interface ReportRequestFiltersItem {
   /** Operator to use in the filter. See the filter reference for a list of available operators. */
@@ -176,15 +191,20 @@ export interface ReportRequestFiltersItem {
   values?: DocumentList;
 }
 export const ReportRequestFiltersItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "operator": S.optional(S.String),
-  "column": S.optional(ReportApiColumnSpec),
-  "values": S.optional(DocumentList),
-}),
-).annotate({ identifier: "ReportRequestFiltersItem" }) as any as S.Schema<ReportRequestFiltersItem>;
+  S.Struct({
+    operator: S.optional(S.String),
+    column: S.optional(ReportApiColumnSpec),
+    values: S.optional(DocumentList),
+  }),
+).annotate({
+  identifier: "ReportRequestFiltersItem",
+}) as any as S.Schema<ReportRequestFiltersItem>;
 
-export type ReportRequestFiltersItemList = ReadonlyArray<ReportRequestFiltersItem>;
-export const ReportRequestFiltersItemList = /*@__PURE__*/ S.Array(ReportRequestFiltersItem) as any as S.Schema<ReportRequestFiltersItemList>;
+export type ReportRequestFiltersItemList =
+  ReadonlyArray<ReportRequestFiltersItem>;
+export const ReportRequestFiltersItemList = /*@__PURE__*/ S.Array(
+  ReportRequestFiltersItem,
+) as any as S.Schema<ReportRequestFiltersItemList>;
 
 /** A request object used to create a DoubleClick Search report. */
 export interface ReportRequest {
@@ -218,22 +238,22 @@ export interface ReportRequest {
   statisticsCurrency?: string;
 }
 export const ReportRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "downloadFormat": S.optional(S.String),
-  "includeRemovedEntities": S.optional(S.Boolean),
-  "reportScope": S.optional(ReportRequestReportScope),
-  "rowCount": S.optional(S.Number),
-  "orderBy": S.optional(ReportRequestOrderByItemList),
-  "timeRange": S.optional(ReportRequestTimeRange),
-  "columns": S.optional(ReportApiColumnSpecList),
-  "startRow": S.optional(S.Number),
-  "maxRowsPerFile": S.optional(S.Number),
-  "includeDeletedEntities": S.optional(S.Boolean),
-  "reportType": S.optional(S.String),
-  "filters": S.optional(ReportRequestFiltersItemList),
-  "verifySingleTimeZone": S.optional(S.Boolean),
-  "statisticsCurrency": S.optional(S.String),
-}),
+  S.Struct({
+    downloadFormat: S.optional(S.String),
+    includeRemovedEntities: S.optional(S.Boolean),
+    reportScope: S.optional(ReportRequestReportScope),
+    rowCount: S.optional(S.Number),
+    orderBy: S.optional(ReportRequestOrderByItemList),
+    timeRange: S.optional(ReportRequestTimeRange),
+    columns: S.optional(ReportApiColumnSpecList),
+    startRow: S.optional(S.Number),
+    maxRowsPerFile: S.optional(S.Number),
+    includeDeletedEntities: S.optional(S.Boolean),
+    reportType: S.optional(S.String),
+    filters: S.optional(ReportRequestFiltersItemList),
+    verifySingleTimeZone: S.optional(S.Boolean),
+    statisticsCurrency: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ReportRequest" }) as any as S.Schema<ReportRequest>;
 
 export interface GenerateReportsRequest {
@@ -241,17 +261,30 @@ export interface GenerateReportsRequest {
   body?: ReportRequest;
 }
 export const GenerateReportsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(ReportRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"doubleclicksearch/v2/reports/generate","baseUrl":"https://doubleclicksearch.googleapis.com/"})),
-).annotate({ identifier: "GenerateReportsRequest" }) as any as S.Schema<GenerateReportsRequest>;
+  S.Struct({
+    body: S.optional(ReportRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "doubleclicksearch/v2/reports/generate",
+      baseUrl: "https://doubleclicksearch.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GenerateReportsRequest",
+}) as any as S.Schema<GenerateReportsRequest>;
 
 /** A row in a DoubleClick Search report. */
 export type ReportRow = { [key: string]: unknown | undefined };
-export const ReportRow = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<ReportRow>;
+export const ReportRow = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<ReportRow>;
 
 export type ReportRowList = ReadonlyArray<ReportRow>;
-export const ReportRowList = /*@__PURE__*/ S.Array(ReportRow) as any as S.Schema<ReportRowList>;
+export const ReportRowList = /*@__PURE__*/ S.Array(
+  ReportRow,
+) as any as S.Schema<ReportRowList>;
 
 export interface ReportFilesItem {
   /** Use this url to download the report file. */
@@ -260,14 +293,18 @@ export interface ReportFilesItem {
   byteCount?: string;
 }
 export const ReportFilesItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "url": S.optional(S.String),
-  "byteCount": S.optional(S.String),
-}),
-).annotate({ identifier: "ReportFilesItem" }) as any as S.Schema<ReportFilesItem>;
+  S.Struct({
+    url: S.optional(S.String),
+    byteCount: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ReportFilesItem",
+}) as any as S.Schema<ReportFilesItem>;
 
 export type ReportFilesItemList = ReadonlyArray<ReportFilesItem>;
-export const ReportFilesItemList = /*@__PURE__*/ S.Array(ReportFilesItem) as any as S.Schema<ReportFilesItemList>;
+export const ReportFilesItemList = /*@__PURE__*/ S.Array(
+  ReportFilesItem,
+) as any as S.Schema<ReportFilesItemList>;
 
 /** A DoubleClick Search report. This object contains the report request, some report metadata such as currency code, and the generated report rows or report files. */
 export interface Report {
@@ -291,17 +328,17 @@ export interface Report {
   id?: string;
 }
 export const Report = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "rowCount": S.optional(S.Number),
-  "kind": S.optional(S.String),
-  "rows": S.optional(ReportRowList),
-  "request": S.optional(ReportRequest),
-  "statisticsTimeZone": S.optional(S.String),
-  "statisticsCurrencyCode": S.optional(S.String),
-  "isReportReady": S.optional(S.Boolean),
-  "files": S.optional(ReportFilesItemList),
-  "id": S.optional(S.String),
-}),
+  S.Struct({
+    rowCount: S.optional(S.Number),
+    kind: S.optional(S.String),
+    rows: S.optional(ReportRowList),
+    request: S.optional(ReportRequest),
+    statisticsTimeZone: S.optional(S.String),
+    statisticsCurrencyCode: S.optional(S.String),
+    isReportReady: S.optional(S.Boolean),
+    files: S.optional(ReportFilesItemList),
+    id: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Report" }) as any as S.Schema<Report>;
 
 export interface GetByCustomerIdConversionRequest {
@@ -331,21 +368,29 @@ export interface GetByCustomerIdConversionRequest {
   campaignId?: string;
 }
 export const GetByCustomerIdConversionRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "adId": S.optional(S.String.pipe(T.Query())),
-  "rowCount": S.Number.pipe(T.Query()),
-  "criterionId": S.optional(S.String.pipe(T.Query())),
-  "startDate": S.Number.pipe(T.Query()),
-  "customerId": S.String.pipe(T.Label()),
-  "engineAccountId": S.optional(S.String.pipe(T.Query())),
-  "advertiserId": S.optional(S.String.pipe(T.Query())),
-  "startRow": S.Number.pipe(T.Query()),
-  "endDate": S.Number.pipe(T.Query()),
-  "adGroupId": S.optional(S.String.pipe(T.Query())),
-  "agencyId": S.optional(S.String.pipe(T.Query())),
-  "campaignId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"doubleclicksearch/v2/customer/{customerId}/conversion","baseUrl":"https://doubleclicksearch.googleapis.com/"})),
-).annotate({ identifier: "GetByCustomerIdConversionRequest" }) as any as S.Schema<GetByCustomerIdConversionRequest>;
+  S.Struct({
+    adId: S.optional(S.String.pipe(T.Query())),
+    rowCount: S.Number.pipe(T.Query()),
+    criterionId: S.optional(S.String.pipe(T.Query())),
+    startDate: S.Number.pipe(T.Query()),
+    customerId: S.String.pipe(T.Label()),
+    engineAccountId: S.optional(S.String.pipe(T.Query())),
+    advertiserId: S.optional(S.String.pipe(T.Query())),
+    startRow: S.Number.pipe(T.Query()),
+    endDate: S.Number.pipe(T.Query()),
+    adGroupId: S.optional(S.String.pipe(T.Query())),
+    agencyId: S.optional(S.String.pipe(T.Query())),
+    campaignId: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "doubleclicksearch/v2/customer/{customerId}/conversion",
+      baseUrl: "https://doubleclicksearch.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetByCustomerIdConversionRequest",
+}) as any as S.Schema<GetByCustomerIdConversionRequest>;
 
 export type ConversionAdUserDataConsentEnum = "UNKNOWN" | "GRANTED" | "DENIED";
 export const ConversionAdUserDataConsentEnum = /*@__PURE__*/ S.String;
@@ -358,14 +403,18 @@ export interface CustomDimension {
   value?: string;
 }
 export const CustomDimension = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "value": S.optional(S.String),
-}),
-).annotate({ identifier: "CustomDimension" }) as any as S.Schema<CustomDimension>;
+  S.Struct({
+    name: S.optional(S.String),
+    value: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CustomDimension",
+}) as any as S.Schema<CustomDimension>;
 
 export type CustomDimensionList = ReadonlyArray<CustomDimension>;
-export const CustomDimensionList = /*@__PURE__*/ S.Array(CustomDimension) as any as S.Schema<CustomDimensionList>;
+export const CustomDimensionList = /*@__PURE__*/ S.Array(
+  CustomDimension,
+) as any as S.Schema<CustomDimensionList>;
 
 /** A message containing the custom metric. */
 export interface CustomMetric {
@@ -375,14 +424,16 @@ export interface CustomMetric {
   value?: number;
 }
 export const CustomMetric = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "value": S.optional(S.Number),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    value: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "CustomMetric" }) as any as S.Schema<CustomMetric>;
 
 export type CustomMetricList = ReadonlyArray<CustomMetric>;
-export const CustomMetricList = /*@__PURE__*/ S.Array(CustomMetric) as any as S.Schema<CustomMetricList>;
+export const CustomMetricList = /*@__PURE__*/ S.Array(
+  CustomMetric,
+) as any as S.Schema<CustomMetricList>;
 
 /** A conversion containing data relevant to DoubleClick Search. Common DS3 API conversion fields: Id Range [1 - 2800]. Next Id to use: 33 */
 export interface Conversion {
@@ -458,47 +509,49 @@ export interface Conversion {
   conversionId?: string;
 }
 export const Conversion = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "storeId": S.optional(S.String),
-  "conversionModifiedTimestamp": S.optional(S.String),
-  "state": S.optional(S.String),
-  "revenueMicros": S.optional(S.String),
-  "customerId": S.optional(S.String),
-  "floodlightOrderId": S.optional(S.String),
-  "attributionModel": S.optional(S.String),
-  "campaignId": S.optional(S.String),
-  "dsConversionId": S.optional(S.String),
-  "productGroupId": S.optional(S.String),
-  "currencyCode": S.optional(S.String),
-  "criterionId": S.optional(S.String),
-  "channel": S.optional(S.String),
-  "engineAccountId": S.optional(S.String),
-  "segmentationType": S.optional(S.String),
-  "type": S.optional(S.String),
-  "clickId": S.optional(S.String),
-  "productId": S.optional(S.String),
-  "countMillis": S.optional(S.String),
-  "adUserDataConsent": S.optional(ConversionAdUserDataConsentEnum),
-  "conversionTimestamp": S.optional(S.String),
-  "deviceType": S.optional(S.String),
-  "productCountry": S.optional(S.String),
-  "productLanguage": S.optional(S.String),
-  "advertiserId": S.optional(S.String),
-  "quantityMillis": S.optional(S.String),
-  "agencyId": S.optional(S.String),
-  "inventoryAccountId": S.optional(S.String),
-  "segmentationId": S.optional(S.String),
-  "adId": S.optional(S.String),
-  "customDimension": S.optional(CustomDimensionList),
-  "segmentationName": S.optional(S.String),
-  "adGroupId": S.optional(S.String),
-  "customMetric": S.optional(CustomMetricList),
-  "conversionId": S.optional(S.String),
-}),
+  S.Struct({
+    storeId: S.optional(S.String),
+    conversionModifiedTimestamp: S.optional(S.String),
+    state: S.optional(S.String),
+    revenueMicros: S.optional(S.String),
+    customerId: S.optional(S.String),
+    floodlightOrderId: S.optional(S.String),
+    attributionModel: S.optional(S.String),
+    campaignId: S.optional(S.String),
+    dsConversionId: S.optional(S.String),
+    productGroupId: S.optional(S.String),
+    currencyCode: S.optional(S.String),
+    criterionId: S.optional(S.String),
+    channel: S.optional(S.String),
+    engineAccountId: S.optional(S.String),
+    segmentationType: S.optional(S.String),
+    type: S.optional(S.String),
+    clickId: S.optional(S.String),
+    productId: S.optional(S.String),
+    countMillis: S.optional(S.String),
+    adUserDataConsent: S.optional(ConversionAdUserDataConsentEnum),
+    conversionTimestamp: S.optional(S.String),
+    deviceType: S.optional(S.String),
+    productCountry: S.optional(S.String),
+    productLanguage: S.optional(S.String),
+    advertiserId: S.optional(S.String),
+    quantityMillis: S.optional(S.String),
+    agencyId: S.optional(S.String),
+    inventoryAccountId: S.optional(S.String),
+    segmentationId: S.optional(S.String),
+    adId: S.optional(S.String),
+    customDimension: S.optional(CustomDimensionList),
+    segmentationName: S.optional(S.String),
+    adGroupId: S.optional(S.String),
+    customMetric: S.optional(CustomMetricList),
+    conversionId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Conversion" }) as any as S.Schema<Conversion>;
 
 export type ConversionList_ = ReadonlyArray<Conversion>;
-export const ConversionList_ = /*@__PURE__*/ S.Array(Conversion) as any as S.Schema<ConversionList_>;
+export const ConversionList_ = /*@__PURE__*/ S.Array(
+  Conversion,
+) as any as S.Schema<ConversionList_>;
 
 /** A list of conversions. */
 export interface ConversionList {
@@ -508,10 +561,10 @@ export interface ConversionList {
   kind?: string;
 }
 export const ConversionList = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "conversion": S.optional(ConversionList_),
-  "kind": S.optional(S.String),
-}),
+  S.Struct({
+    conversion: S.optional(ConversionList_),
+    kind: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ConversionList" }) as any as S.Schema<ConversionList>;
 
 export interface GetConversionRequest {
@@ -541,21 +594,29 @@ export interface GetConversionRequest {
   startDate: number;
 }
 export const GetConversionRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "agencyId": S.String.pipe(T.Label()),
-  "adGroupId": S.optional(S.String.pipe(T.Query())),
-  "endDate": S.Number.pipe(T.Query()),
-  "advertiserId": S.String.pipe(T.Label()),
-  "startRow": S.Number.pipe(T.Query()),
-  "campaignId": S.optional(S.String.pipe(T.Query())),
-  "adId": S.optional(S.String.pipe(T.Query())),
-  "rowCount": S.Number.pipe(T.Query()),
-  "engineAccountId": S.String.pipe(T.Label()),
-  "customerId": S.optional(S.String.pipe(T.Query())),
-  "criterionId": S.optional(S.String.pipe(T.Query())),
-  "startDate": S.Number.pipe(T.Query()),
-}).pipe(T.Http({"method":"GET","uri":"doubleclicksearch/v2/agency/{agencyId}/advertiser/{advertiserId}/engine/{engineAccountId}/conversion","baseUrl":"https://doubleclicksearch.googleapis.com/"})),
-).annotate({ identifier: "GetConversionRequest" }) as any as S.Schema<GetConversionRequest>;
+  S.Struct({
+    agencyId: S.String.pipe(T.Label()),
+    adGroupId: S.optional(S.String.pipe(T.Query())),
+    endDate: S.Number.pipe(T.Query()),
+    advertiserId: S.String.pipe(T.Label()),
+    startRow: S.Number.pipe(T.Query()),
+    campaignId: S.optional(S.String.pipe(T.Query())),
+    adId: S.optional(S.String.pipe(T.Query())),
+    rowCount: S.Number.pipe(T.Query()),
+    engineAccountId: S.String.pipe(T.Label()),
+    customerId: S.optional(S.String.pipe(T.Query())),
+    criterionId: S.optional(S.String.pipe(T.Query())),
+    startDate: S.Number.pipe(T.Query()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "doubleclicksearch/v2/agency/{agencyId}/advertiser/{advertiserId}/engine/{engineAccountId}/conversion",
+      baseUrl: "https://doubleclicksearch.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetConversionRequest",
+}) as any as S.Schema<GetConversionRequest>;
 
 export interface GetFileReportsRequest {
   /** ID of the report. */
@@ -564,16 +625,26 @@ export interface GetFileReportsRequest {
   reportFragment: number;
 }
 export const GetFileReportsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "reportId": S.String.pipe(T.Label()),
-  "reportFragment": S.Number.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"doubleclicksearch/v2/reports/{reportId}/files/{reportFragment}","baseUrl":"https://doubleclicksearch.googleapis.com/"})),
-).annotate({ identifier: "GetFileReportsRequest" }) as any as S.Schema<GetFileReportsRequest>;
+  S.Struct({
+    reportId: S.String.pipe(T.Label()),
+    reportFragment: S.Number.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "doubleclicksearch/v2/reports/{reportId}/files/{reportFragment}",
+      baseUrl: "https://doubleclicksearch.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetFileReportsRequest",
+}) as any as S.Schema<GetFileReportsRequest>;
 
 export interface GetFileReportsResponse {}
 export const GetFileReportsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "GetFileReportsResponse" }) as any as S.Schema<GetFileReportsResponse>;
+  S.Struct({}),
+).annotate({
+  identifier: "GetFileReportsResponse",
+}) as any as S.Schema<GetFileReportsResponse>;
 
 export interface GetIdMappingFileReportsRequest {
   /** Legacy SA360 agency ID. */
@@ -582,16 +653,24 @@ export interface GetIdMappingFileReportsRequest {
   advertiserId: string;
 }
 export const GetIdMappingFileReportsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "agencyId": S.String.pipe(T.Label()),
-  "advertiserId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"doubleclicksearch/v2/agency/{agencyId}/advertiser/{advertiserId}/idmapping","baseUrl":"https://doubleclicksearch.googleapis.com/"})),
-).annotate({ identifier: "GetIdMappingFileReportsRequest" }) as any as S.Schema<GetIdMappingFileReportsRequest>;
+  S.Struct({
+    agencyId: S.String.pipe(T.Label()),
+    advertiserId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "doubleclicksearch/v2/agency/{agencyId}/advertiser/{advertiserId}/idmapping",
+      baseUrl: "https://doubleclicksearch.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetIdMappingFileReportsRequest",
+}) as any as S.Schema<GetIdMappingFileReportsRequest>;
 
 /** File returned to https://developers.google.com/search-ads/v2/reference/reports/getIdMappingFile. */
 export interface IdMappingFile {}
 export const IdMappingFile = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
+  S.Struct({}),
 ).annotate({ identifier: "IdMappingFile" }) as any as S.Schema<IdMappingFile>;
 
 export interface GetReportsRequest {
@@ -599,20 +678,36 @@ export interface GetReportsRequest {
   reportId: string;
 }
 export const GetReportsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "reportId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"doubleclicksearch/v2/reports/{reportId}","baseUrl":"https://doubleclicksearch.googleapis.com/"})),
-).annotate({ identifier: "GetReportsRequest" }) as any as S.Schema<GetReportsRequest>;
+  S.Struct({
+    reportId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "doubleclicksearch/v2/reports/{reportId}",
+      baseUrl: "https://doubleclicksearch.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetReportsRequest",
+}) as any as S.Schema<GetReportsRequest>;
 
 export interface InsertConversionRequest {
   /** Request body */
   body?: ConversionList;
 }
 export const InsertConversionRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(ConversionList.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"doubleclicksearch/v2/conversion","baseUrl":"https://doubleclicksearch.googleapis.com/"})),
-).annotate({ identifier: "InsertConversionRequest" }) as any as S.Schema<InsertConversionRequest>;
+  S.Struct({
+    body: S.optional(ConversionList.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "doubleclicksearch/v2/conversion",
+      baseUrl: "https://doubleclicksearch.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "InsertConversionRequest",
+}) as any as S.Schema<InsertConversionRequest>;
 
 export interface ListSavedColumnsRequest {
   /** DS ID of the agency. */
@@ -621,11 +716,19 @@ export interface ListSavedColumnsRequest {
   advertiserId: string;
 }
 export const ListSavedColumnsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "agencyId": S.String.pipe(T.Label()),
-  "advertiserId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"doubleclicksearch/v2/agency/{agencyId}/advertiser/{advertiserId}/savedcolumns","baseUrl":"https://doubleclicksearch.googleapis.com/"})),
-).annotate({ identifier: "ListSavedColumnsRequest" }) as any as S.Schema<ListSavedColumnsRequest>;
+  S.Struct({
+    agencyId: S.String.pipe(T.Label()),
+    advertiserId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "doubleclicksearch/v2/agency/{agencyId}/advertiser/{advertiserId}/savedcolumns",
+      baseUrl: "https://doubleclicksearch.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListSavedColumnsRequest",
+}) as any as S.Schema<ListSavedColumnsRequest>;
 
 /** A saved column */
 export interface SavedColumn {
@@ -637,15 +740,17 @@ export interface SavedColumn {
   kind?: string;
 }
 export const SavedColumn = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(S.String),
-  "savedColumnName": S.optional(S.String),
-  "kind": S.optional(S.String),
-}),
+  S.Struct({
+    type: S.optional(S.String),
+    savedColumnName: S.optional(S.String),
+    kind: S.optional(S.String),
+  }),
 ).annotate({ identifier: "SavedColumn" }) as any as S.Schema<SavedColumn>;
 
 export type SavedColumnList_ = ReadonlyArray<SavedColumn>;
-export const SavedColumnList_ = /*@__PURE__*/ S.Array(SavedColumn) as any as S.Schema<SavedColumnList_>;
+export const SavedColumnList_ = /*@__PURE__*/ S.Array(
+  SavedColumn,
+) as any as S.Schema<SavedColumnList_>;
 
 /** A list of saved columns. Advertisers create saved columns to report on Floodlight activities, Google Analytics goals, or custom KPIs. To request reports with saved columns, you'll need the saved column names that are available from this list. */
 export interface SavedColumnList {
@@ -655,21 +760,31 @@ export interface SavedColumnList {
   items?: SavedColumnList_;
 }
 export const SavedColumnList = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "items": S.optional(SavedColumnList_),
-}),
-).annotate({ identifier: "SavedColumnList" }) as any as S.Schema<SavedColumnList>;
+  S.Struct({
+    kind: S.optional(S.String),
+    items: S.optional(SavedColumnList_),
+  }),
+).annotate({
+  identifier: "SavedColumnList",
+}) as any as S.Schema<SavedColumnList>;
 
 export interface RequestReportsRequest {
   /** Request body */
   body?: ReportRequest;
 }
 export const RequestReportsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(ReportRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"doubleclicksearch/v2/reports","baseUrl":"https://doubleclicksearch.googleapis.com/"})),
-).annotate({ identifier: "RequestReportsRequest" }) as any as S.Schema<RequestReportsRequest>;
+  S.Struct({
+    body: S.optional(ReportRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "doubleclicksearch/v2/reports",
+      baseUrl: "https://doubleclicksearch.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "RequestReportsRequest",
+}) as any as S.Schema<RequestReportsRequest>;
 
 /** A message containing availability data relevant to DoubleClick Search. */
 export interface Availability {
@@ -689,19 +804,21 @@ export interface Availability {
   segmentationName?: string;
 }
 export const Availability = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "agencyId": S.optional(S.String),
-  "advertiserId": S.optional(S.String),
-  "availabilityTimestamp": S.optional(S.String),
-  "segmentationType": S.optional(S.String),
-  "segmentationId": S.optional(S.String),
-  "customerId": S.optional(S.String),
-  "segmentationName": S.optional(S.String),
-}),
+  S.Struct({
+    agencyId: S.optional(S.String),
+    advertiserId: S.optional(S.String),
+    availabilityTimestamp: S.optional(S.String),
+    segmentationType: S.optional(S.String),
+    segmentationId: S.optional(S.String),
+    customerId: S.optional(S.String),
+    segmentationName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Availability" }) as any as S.Schema<Availability>;
 
 export type AvailabilityList = ReadonlyArray<Availability>;
-export const AvailabilityList = /*@__PURE__*/ S.Array(Availability) as any as S.Schema<AvailabilityList>;
+export const AvailabilityList = /*@__PURE__*/ S.Array(
+  Availability,
+) as any as S.Schema<AvailabilityList>;
 
 /** The request to update availability. */
 export interface UpdateAvailabilityRequest {
@@ -709,20 +826,30 @@ export interface UpdateAvailabilityRequest {
   availabilities?: AvailabilityList;
 }
 export const UpdateAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "availabilities": S.optional(AvailabilityList),
-}),
-).annotate({ identifier: "UpdateAvailabilityRequest" }) as any as S.Schema<UpdateAvailabilityRequest>;
+  S.Struct({
+    availabilities: S.optional(AvailabilityList),
+  }),
+).annotate({
+  identifier: "UpdateAvailabilityRequest",
+}) as any as S.Schema<UpdateAvailabilityRequest>;
 
 export interface UpdateAvailabilityConversionRequest {
   /** Request body */
   body?: UpdateAvailabilityRequest;
 }
 export const UpdateAvailabilityConversionRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(UpdateAvailabilityRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"doubleclicksearch/v2/conversion/updateAvailability","baseUrl":"https://doubleclicksearch.googleapis.com/"})),
-).annotate({ identifier: "UpdateAvailabilityConversionRequest" }) as any as S.Schema<UpdateAvailabilityConversionRequest>;
+  S.Struct({
+    body: S.optional(UpdateAvailabilityRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "doubleclicksearch/v2/conversion/updateAvailability",
+      baseUrl: "https://doubleclicksearch.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateAvailabilityConversionRequest",
+}) as any as S.Schema<UpdateAvailabilityConversionRequest>;
 
 /** The response to a update availability request. */
 export interface UpdateAvailabilityResponse {
@@ -730,22 +857,37 @@ export interface UpdateAvailabilityResponse {
   availabilities?: AvailabilityList;
 }
 export const UpdateAvailabilityResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "availabilities": S.optional(AvailabilityList),
-}),
-).annotate({ identifier: "UpdateAvailabilityResponse" }) as any as S.Schema<UpdateAvailabilityResponse>;
+  S.Struct({
+    availabilities: S.optional(AvailabilityList),
+  }),
+).annotate({
+  identifier: "UpdateAvailabilityResponse",
+}) as any as S.Schema<UpdateAvailabilityResponse>;
 
 export interface UpdateConversionRequest {
   /** Request body */
   body?: ConversionList;
 }
 export const UpdateConversionRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(ConversionList.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"doubleclicksearch/v2/conversion","baseUrl":"https://doubleclicksearch.googleapis.com/"})),
-).annotate({ identifier: "UpdateConversionRequest" }) as any as S.Schema<UpdateConversionRequest>;
+  S.Struct({
+    body: S.optional(ConversionList.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "doubleclicksearch/v2/conversion",
+      baseUrl: "https://doubleclicksearch.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateConversionRequest",
+}) as any as S.Schema<UpdateConversionRequest>;
 
-export type GenerateReportsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type GenerateReportsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Generates and returns a report immediately. */
 export const generateReports: API.OperationMethod<
   GenerateReportsRequest,
@@ -835,7 +977,12 @@ export const getReports: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertConversionError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type InsertConversionError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Inserts a batch of new conversions into DoubleClick Search. */
 export const insertConversion: API.OperationMethod<
   InsertConversionRequest,
@@ -865,7 +1012,12 @@ export const listSavedColumns: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RequestReportsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RequestReportsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Inserts a report request into the reporting system. */
 export const requestReports: API.OperationMethod<
   RequestReportsRequest,
@@ -880,7 +1032,12 @@ export const requestReports: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateAvailabilityConversionError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateAvailabilityConversionError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the availabilities of a batch of floodlight activities in DoubleClick Search. */
 export const updateAvailabilityConversion: API.OperationMethod<
   UpdateAvailabilityConversionRequest,
@@ -895,7 +1052,12 @@ export const updateAvailabilityConversion: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateConversionError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateConversionError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a batch of conversions in DoubleClick Search. */
 export const updateConversion: API.OperationMethod<
   UpdateConversionRequest,
@@ -909,4 +1071,3 @@ export const updateConversion: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

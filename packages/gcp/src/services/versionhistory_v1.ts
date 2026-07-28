@@ -13,27 +13,27 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export interface ListPlatformsRequest {
@@ -45,14 +45,38 @@ export interface ListPlatformsRequest {
   parent: string;
 }
 export const ListPlatformsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/platforms","baseUrl":"https://versionhistory.googleapis.com/"})),
-).annotate({ identifier: "ListPlatformsRequest" }) as any as S.Schema<ListPlatformsRequest>;
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/platforms",
+      baseUrl: "https://versionhistory.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListPlatformsRequest",
+}) as any as S.Schema<ListPlatformsRequest>;
 
-export type PlatformPlatformTypeEnum = "PLATFORM_TYPE_UNSPECIFIED" | "WIN" | "WIN64" | "MAC" | "LINUX" | "ANDROID" | "WEBVIEW" | "IOS" | "ALL" | "MAC_ARM64" | "LACROS" | "LACROS_ARM32" | "CHROMEOS" | "LACROS_ARM64" | "FUCHSIA" | "WIN_ARM64";
+export type PlatformPlatformTypeEnum =
+  | "PLATFORM_TYPE_UNSPECIFIED"
+  | "WIN"
+  | "WIN64"
+  | "MAC"
+  | "LINUX"
+  | "ANDROID"
+  | "WEBVIEW"
+  | "IOS"
+  | "ALL"
+  | "MAC_ARM64"
+  | "LACROS"
+  | "LACROS_ARM32"
+  | "CHROMEOS"
+  | "LACROS_ARM64"
+  | "FUCHSIA"
+  | "WIN_ARM64";
 export const PlatformPlatformTypeEnum = /*@__PURE__*/ S.String;
 
 /** Each Platform is owned by a Product and owns a collection of channels. Available platforms are listed in Platform enum below. Not all Channels are available for every Platform (e.g. CANARY does not exist for LINUX). */
@@ -63,14 +87,16 @@ export interface Platform {
   name?: string;
 }
 export const Platform = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "platformType": S.optional(PlatformPlatformTypeEnum),
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    platformType: S.optional(PlatformPlatformTypeEnum),
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Platform" }) as any as S.Schema<Platform>;
 
 export type PlatformList = ReadonlyArray<Platform>;
-export const PlatformList = /*@__PURE__*/ S.Array(Platform) as any as S.Schema<PlatformList>;
+export const PlatformList = /*@__PURE__*/ S.Array(
+  Platform,
+) as any as S.Schema<PlatformList>;
 
 /** Response message for ListPlatforms. */
 export interface ListPlatformsResponse {
@@ -80,11 +106,13 @@ export interface ListPlatformsResponse {
   nextPageToken?: string;
 }
 export const ListPlatformsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "platforms": S.optional(PlatformList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListPlatformsResponse" }) as any as S.Schema<ListPlatformsResponse>;
+  S.Struct({
+    platforms: S.optional(PlatformList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListPlatformsResponse",
+}) as any as S.Schema<ListPlatformsResponse>;
 
 export interface ListPlatformsChannelsRequest {
   /** Optional. Optional limit on the number of channels to include in the response. If unspecified, the server will pick an appropriate default. */
@@ -95,14 +123,32 @@ export interface ListPlatformsChannelsRequest {
   pageToken?: string;
 }
 export const ListPlatformsChannelsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/channels","baseUrl":"https://versionhistory.googleapis.com/"})),
-).annotate({ identifier: "ListPlatformsChannelsRequest" }) as any as S.Schema<ListPlatformsChannelsRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/channels",
+      baseUrl: "https://versionhistory.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListPlatformsChannelsRequest",
+}) as any as S.Schema<ListPlatformsChannelsRequest>;
 
-export type ChannelChannelTypeEnum = "CHANNEL_TYPE_UNSPECIFIED" | "STABLE" | "BETA" | "DEV" | "CANARY" | "CANARY_ASAN" | "ALL" | "EXTENDED" | "LTS" | "LTC";
+export type ChannelChannelTypeEnum =
+  | "CHANNEL_TYPE_UNSPECIFIED"
+  | "STABLE"
+  | "BETA"
+  | "DEV"
+  | "CANARY"
+  | "CANARY_ASAN"
+  | "ALL"
+  | "EXTENDED"
+  | "LTS"
+  | "LTC";
 export const ChannelChannelTypeEnum = /*@__PURE__*/ S.String;
 
 /** Each Channel is owned by a Platform and owns a collection of versions. Possible Channels are listed in the Channel enum below. Not all Channels are available for every Platform (e.g. CANARY does not exist for LINUX). */
@@ -113,14 +159,16 @@ export interface Channel {
   channelType?: ChannelChannelTypeEnum;
 }
 export const Channel = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "channelType": S.optional(ChannelChannelTypeEnum),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    channelType: S.optional(ChannelChannelTypeEnum),
+  }),
 ).annotate({ identifier: "Channel" }) as any as S.Schema<Channel>;
 
 export type ChannelList = ReadonlyArray<Channel>;
-export const ChannelList = /*@__PURE__*/ S.Array(Channel) as any as S.Schema<ChannelList>;
+export const ChannelList = /*@__PURE__*/ S.Array(
+  Channel,
+) as any as S.Schema<ChannelList>;
 
 /** Response message for ListChannels. */
 export interface ListChannelsResponse {
@@ -130,11 +178,13 @@ export interface ListChannelsResponse {
   channels?: ChannelList;
 }
 export const ListChannelsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "channels": S.optional(ChannelList),
-}),
-).annotate({ identifier: "ListChannelsResponse" }) as any as S.Schema<ListChannelsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    channels: S.optional(ChannelList),
+  }),
+).annotate({
+  identifier: "ListChannelsResponse",
+}) as any as S.Schema<ListChannelsResponse>;
 
 export interface ListPlatformsChannelsVersionsRequest {
   /** Optional. Optional limit on the number of versions to include in the response. If unspecified, the server will pick an appropriate default. */
@@ -148,15 +198,24 @@ export interface ListPlatformsChannelsVersionsRequest {
   /** Optional. Filter string. Format is a comma separated list of All comma separated filter clauses are conjoined with a logical "and". Valid field_names are "version", "name", "platform", and "channel". Valid operators are "<", "<=", "=", ">=", and ">". Channel comparison is done by distance from stable. Ex) stable < beta, beta < dev, canary < canary_asan. Version comparison is done numerically. If version is not entirely written, the version will be appended with 0 in missing fields. Ex) version > 80 becoms version > 80.0.0.0 Name and platform are filtered by string comparison. Ex) "...?filter=channel<=beta, version >= 80 Ex) "...?filter=version > 80, version < 81 */
   filter?: string;
 }
-export const ListPlatformsChannelsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/versions","baseUrl":"https://versionhistory.googleapis.com/"})),
-).annotate({ identifier: "ListPlatformsChannelsVersionsRequest" }) as any as S.Schema<ListPlatformsChannelsVersionsRequest>;
+export const ListPlatformsChannelsVersionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      filter: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/versions",
+        baseUrl: "https://versionhistory.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListPlatformsChannelsVersionsRequest",
+}) as any as S.Schema<ListPlatformsChannelsVersionsRequest>;
 
 /** Each Version is owned by a Channel. A Version only displays the Version number (e.g. 84.0.4147.38). A Version owns a collection of releases. */
 export interface Version {
@@ -166,14 +225,16 @@ export interface Version {
   version?: string;
 }
 export const Version = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "version": S.optional(S.String),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    version: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Version" }) as any as S.Schema<Version>;
 
 export type VersionList = ReadonlyArray<Version>;
-export const VersionList = /*@__PURE__*/ S.Array(Version) as any as S.Schema<VersionList>;
+export const VersionList = /*@__PURE__*/ S.Array(
+  Version,
+) as any as S.Schema<VersionList>;
 
 /** Response message for ListVersions. */
 export interface ListVersionsResponse {
@@ -183,11 +244,13 @@ export interface ListVersionsResponse {
   versions?: VersionList;
 }
 export const ListVersionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "versions": S.optional(VersionList),
-}),
-).annotate({ identifier: "ListVersionsResponse" }) as any as S.Schema<ListVersionsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    versions: S.optional(VersionList),
+  }),
+).annotate({
+  identifier: "ListVersionsResponse",
+}) as any as S.Schema<ListVersionsResponse>;
 
 export interface ListPlatformsChannelsVersionsReleasesRequest {
   /** Optional. Optional limit on the number of releases to include in the response. If unspecified, the server will pick an appropriate default. */
@@ -201,18 +264,29 @@ export interface ListPlatformsChannelsVersionsReleasesRequest {
   /** Optional. Filter string. Format is a comma separated list of All comma separated filter clauses are conjoined with a logical "and". Valid field_names are "version", "name", "platform", "channel", "fraction" "starttime", and "endtime". Valid operators are "<", "<=", "=", ">=", and ">". Channel comparison is done by distance from stable. must be a valid channel when filtering by channel. Ex) stable < beta, beta < dev, canary < canary_asan. Version comparison is done numerically. Ex) 1.0.0.8 < 1.0.0.10. If version is not entirely written, the version will be appended with 0 for the missing fields. Ex) version > 80 becoms version > 80.0.0.0 When filtering by starttime or endtime, string must be in RFC 3339 date string format. Name and platform are filtered by string comparison. Ex) "...?filter=channel<=beta, version >= 80 Ex) "...?filter=version > 80, version < 81 Ex) "...?filter=starttime>2020-01-01T00:00:00Z */
   filter?: string;
 }
-export const ListPlatformsChannelsVersionsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/releases","baseUrl":"https://versionhistory.googleapis.com/"})),
-).annotate({ identifier: "ListPlatformsChannelsVersionsReleasesRequest" }) as any as S.Schema<ListPlatformsChannelsVersionsReleasesRequest>;
+export const ListPlatformsChannelsVersionsReleasesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      filter: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/releases",
+        baseUrl: "https://versionhistory.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListPlatformsChannelsVersionsReleasesRequest",
+  }) as any as S.Schema<ListPlatformsChannelsVersionsReleasesRequest>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** Rollout-related metadata for a release. */
 export interface RolloutData {
@@ -222,14 +296,16 @@ export interface RolloutData {
   tag?: StringList;
 }
 export const RolloutData = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "rolloutName": S.optional(S.String),
-  "tag": S.optional(StringList),
-}),
+  S.Struct({
+    rolloutName: S.optional(S.String),
+    tag: S.optional(StringList),
+  }),
 ).annotate({ identifier: "RolloutData" }) as any as S.Schema<RolloutData>;
 
 export type RolloutDataList = ReadonlyArray<RolloutData>;
-export const RolloutDataList = /*@__PURE__*/ S.Array(RolloutData) as any as S.Schema<RolloutDataList>;
+export const RolloutDataList = /*@__PURE__*/ S.Array(
+  RolloutData,
+) as any as S.Schema<RolloutDataList>;
 
 /** Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive). The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time). When both start and end are unspecified, the interval matches any time. */
 export interface Interval {
@@ -239,10 +315,10 @@ export interface Interval {
   startTime?: string;
 }
 export const Interval = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "endTime": S.optional(S.String),
-  "startTime": S.optional(S.String),
-}),
+  S.Struct({
+    endTime: S.optional(S.String),
+    startTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Interval" }) as any as S.Schema<Interval>;
 
 /** A Release is owned by a Version. A Release contains information about the release(s) of its parent version. This includes when the release began and ended, as well as what percentage it was released at. If the version is released again, or if the serving percentage changes, it will create another release under the version. */
@@ -263,19 +339,21 @@ export interface Release {
   serving?: Interval;
 }
 export const Release = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "fraction": S.optional(S.Number),
-  "version": S.optional(S.String),
-  "pinnable": S.optional(S.Boolean),
-  "fractionGroup": S.optional(S.String),
-  "rolloutData": S.optional(RolloutDataList),
-  "serving": S.optional(Interval),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    fraction: S.optional(S.Number),
+    version: S.optional(S.String),
+    pinnable: S.optional(S.Boolean),
+    fractionGroup: S.optional(S.String),
+    rolloutData: S.optional(RolloutDataList),
+    serving: S.optional(Interval),
+  }),
 ).annotate({ identifier: "Release" }) as any as S.Schema<Release>;
 
 export type ReleaseList = ReadonlyArray<Release>;
-export const ReleaseList = /*@__PURE__*/ S.Array(Release) as any as S.Schema<ReleaseList>;
+export const ReleaseList = /*@__PURE__*/ S.Array(
+  Release,
+) as any as S.Schema<ReleaseList>;
 
 /** Response message for ListReleases. */
 export interface ListReleasesResponse {
@@ -285,11 +363,13 @@ export interface ListReleasesResponse {
   nextPageToken?: string;
 }
 export const ListReleasesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "releases": S.optional(ReleaseList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListReleasesResponse" }) as any as S.Schema<ListReleasesResponse>;
+  S.Struct({
+    releases: S.optional(ReleaseList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListReleasesResponse",
+}) as any as S.Schema<ListReleasesResponse>;
 
 export type ListPlatformsError = NotFound | Forbidden | GcpOpError;
 /** Returns list of platforms that are available for a given product. The resource "product" has no resource name in its name. */
@@ -304,7 +384,10 @@ export const listPlatforms: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListPlatformsChannelsError = NotFound | Forbidden | GcpOpError;
@@ -320,10 +403,16 @@ export const listPlatformsChannels: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListPlatformsChannelsVersionsError = NotFound | Forbidden | GcpOpError;
+export type ListPlatformsChannelsVersionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns list of version for the given platform/channel. */
 export const listPlatformsChannelsVersions: API.PaginatedOperationMethod<
   ListPlatformsChannelsVersionsRequest,
@@ -336,10 +425,16 @@ export const listPlatformsChannelsVersions: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListPlatformsChannelsVersionsReleasesError = NotFound | Forbidden | GcpOpError;
+export type ListPlatformsChannelsVersionsReleasesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns list of releases of the given version. */
 export const listPlatformsChannelsVersionsReleases: API.PaginatedOperationMethod<
   ListPlatformsChannelsVersionsReleasesRequest,
@@ -352,6 +447,8 @@ export const listPlatformsChannelsVersionsReleases: API.PaginatedOperationMethod
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
-

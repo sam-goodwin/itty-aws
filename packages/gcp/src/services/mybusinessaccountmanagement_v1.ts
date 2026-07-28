@@ -13,58 +13,60 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 /** Request message for AccessControl.AcceptInvitation. */
 export interface AcceptInvitationRequest {}
 export const AcceptInvitationRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "AcceptInvitationRequest" }) as any as S.Schema<AcceptInvitationRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "AcceptInvitationRequest",
+}) as any as S.Schema<AcceptInvitationRequest>;
 
 export interface AcceptAccountsInvitationsRequest {
   /** Required. The name of the invitation that is being accepted. `accounts/{account_id}/invitations/{invitation_id}` */
@@ -73,32 +75,60 @@ export interface AcceptAccountsInvitationsRequest {
   body?: AcceptInvitationRequest;
 }
 export const AcceptAccountsInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(AcceptInvitationRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:accept","baseUrl":"https://mybusinessaccountmanagement.googleapis.com/"})),
-).annotate({ identifier: "AcceptAccountsInvitationsRequest" }) as any as S.Schema<AcceptAccountsInvitationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(AcceptInvitationRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:accept",
+      baseUrl: "https://mybusinessaccountmanagement.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "AcceptAccountsInvitationsRequest",
+}) as any as S.Schema<AcceptAccountsInvitationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
-export type AccountTypeEnum = "ACCOUNT_TYPE_UNSPECIFIED" | "PERSONAL" | "LOCATION_GROUP" | "USER_GROUP" | "ORGANIZATION";
+export type AccountTypeEnum =
+  | "ACCOUNT_TYPE_UNSPECIFIED"
+  | "PERSONAL"
+  | "LOCATION_GROUP"
+  | "USER_GROUP"
+  | "ORGANIZATION";
 export const AccountTypeEnum = /*@__PURE__*/ S.String;
 
-export type AccountVerificationStateEnum = "VERIFICATION_STATE_UNSPECIFIED" | "VERIFIED" | "UNVERIFIED" | "VERIFICATION_REQUESTED";
+export type AccountVerificationStateEnum =
+  | "VERIFICATION_STATE_UNSPECIFIED"
+  | "VERIFIED"
+  | "UNVERIFIED"
+  | "VERIFICATION_REQUESTED";
 export const AccountVerificationStateEnum = /*@__PURE__*/ S.String;
 
-export type AccountRoleEnum = "ACCOUNT_ROLE_UNSPECIFIED" | "PRIMARY_OWNER" | "OWNER" | "MANAGER" | "SITE_MANAGER";
+export type AccountRoleEnum =
+  | "ACCOUNT_ROLE_UNSPECIFIED"
+  | "PRIMARY_OWNER"
+  | "OWNER"
+  | "MANAGER"
+  | "SITE_MANAGER";
 export const AccountRoleEnum = /*@__PURE__*/ S.String;
 
-export type AccountVettedStateEnum = "VETTED_STATE_UNSPECIFIED" | "NOT_VETTED" | "VETTED" | "INVALID";
+export type AccountVettedStateEnum =
+  | "VETTED_STATE_UNSPECIFIED"
+  | "NOT_VETTED"
+  | "VETTED"
+  | "INVALID";
 export const AccountVettedStateEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** Represents a postal address, such as for postal delivery or payments addresses. With a postal address, a postal service can deliver items to a premise, P.O. box, or similar. A postal address is not intended to model geographical locations like roads, towns, or mountains. In typical usage, an address would be created by user input or from importing existing data, depending on the type of process. Advice on address input or editing: - Use an internationalization-ready address widget such as https://github.com/google/libaddressinput. - Users should not be presented with UI elements for input or editing of fields outside countries where that field is used. For more guidance on how to use this schema, see: https://support.google.com/business/answer/6397478. */
 export interface PostalAddress {
@@ -126,19 +156,19 @@ export interface PostalAddress {
   administrativeArea?: string;
 }
 export const PostalAddress = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "recipients": S.optional(StringList),
-  "locality": S.optional(S.String),
-  "sublocality": S.optional(S.String),
-  "regionCode": S.optional(S.String),
-  "languageCode": S.optional(S.String),
-  "organization": S.optional(S.String),
-  "sortingCode": S.optional(S.String),
-  "addressLines": S.optional(StringList),
-  "postalCode": S.optional(S.String),
-  "revision": S.optional(S.Number),
-  "administrativeArea": S.optional(S.String),
-}),
+  S.Struct({
+    recipients: S.optional(StringList),
+    locality: S.optional(S.String),
+    sublocality: S.optional(S.String),
+    regionCode: S.optional(S.String),
+    languageCode: S.optional(S.String),
+    organization: S.optional(S.String),
+    sortingCode: S.optional(S.String),
+    addressLines: S.optional(StringList),
+    postalCode: S.optional(S.String),
+    revision: S.optional(S.Number),
+    administrativeArea: S.optional(S.String),
+  }),
 ).annotate({ identifier: "PostalAddress" }) as any as S.Schema<PostalAddress>;
 
 /** Additional information stored for an organization. */
@@ -151,14 +181,19 @@ export interface OrganizationInfo {
   phoneNumber?: string;
 }
 export const OrganizationInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "registeredDomain": S.optional(S.String),
-  "address": S.optional(PostalAddress),
-  "phoneNumber": S.optional(S.String),
-}),
-).annotate({ identifier: "OrganizationInfo" }) as any as S.Schema<OrganizationInfo>;
+  S.Struct({
+    registeredDomain: S.optional(S.String),
+    address: S.optional(PostalAddress),
+    phoneNumber: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OrganizationInfo",
+}) as any as S.Schema<OrganizationInfo>;
 
-export type AccountPermissionLevelEnum = "PERMISSION_LEVEL_UNSPECIFIED" | "OWNER_LEVEL" | "MEMBER_LEVEL";
+export type AccountPermissionLevelEnum =
+  | "PERMISSION_LEVEL_UNSPECIFIED"
+  | "OWNER_LEVEL"
+  | "MEMBER_LEVEL";
 export const AccountPermissionLevelEnum = /*@__PURE__*/ S.String;
 
 /** An account is a container for your location. If you are the only user who manages locations for your business, you can use your personal Google Account. To share management of locations with multiple users, [create a business account] (https://support.google.com/business/answer/6085339?ref_topic=6085325). */
@@ -185,18 +220,18 @@ export interface Account {
   accountNumber?: string;
 }
 export const Account = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "primaryOwner": S.optional(S.String),
-  "type": S.optional(AccountTypeEnum),
-  "verificationState": S.optional(AccountVerificationStateEnum),
-  "role": S.optional(AccountRoleEnum),
-  "vettedState": S.optional(AccountVettedStateEnum),
-  "organizationInfo": S.optional(OrganizationInfo),
-  "accountName": S.optional(S.String),
-  "permissionLevel": S.optional(AccountPermissionLevelEnum),
-  "name": S.optional(S.String),
-  "accountNumber": S.optional(S.String),
-}),
+  S.Struct({
+    primaryOwner: S.optional(S.String),
+    type: S.optional(AccountTypeEnum),
+    verificationState: S.optional(AccountVerificationStateEnum),
+    role: S.optional(AccountRoleEnum),
+    vettedState: S.optional(AccountVettedStateEnum),
+    organizationInfo: S.optional(OrganizationInfo),
+    accountName: S.optional(S.String),
+    permissionLevel: S.optional(AccountPermissionLevelEnum),
+    name: S.optional(S.String),
+    accountNumber: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Account" }) as any as S.Schema<Account>;
 
 export interface CreateAccountsRequest {
@@ -204,12 +239,25 @@ export interface CreateAccountsRequest {
   body?: Account;
 }
 export const CreateAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(Account.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/accounts","baseUrl":"https://mybusinessaccountmanagement.googleapis.com/"})),
-).annotate({ identifier: "CreateAccountsRequest" }) as any as S.Schema<CreateAccountsRequest>;
+  S.Struct({
+    body: S.optional(Account.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/accounts",
+      baseUrl: "https://mybusinessaccountmanagement.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateAccountsRequest",
+}) as any as S.Schema<CreateAccountsRequest>;
 
-export type AdminRoleEnum = "ADMIN_ROLE_UNSPECIFIED" | "PRIMARY_OWNER" | "OWNER" | "MANAGER" | "SITE_MANAGER";
+export type AdminRoleEnum =
+  | "ADMIN_ROLE_UNSPECIFIED"
+  | "PRIMARY_OWNER"
+  | "OWNER"
+  | "MANAGER"
+  | "SITE_MANAGER";
 export const AdminRoleEnum = /*@__PURE__*/ S.String;
 
 /** An administrator of an Account or a location. */
@@ -226,13 +274,13 @@ export interface Admin {
   pendingInvitation?: boolean;
 }
 export const Admin = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "role": S.optional(AdminRoleEnum),
-  "admin": S.optional(S.String),
-  "account": S.optional(S.String),
-  "name": S.optional(S.String),
-  "pendingInvitation": S.optional(S.Boolean),
-}),
+  S.Struct({
+    role: S.optional(AdminRoleEnum),
+    admin: S.optional(S.String),
+    account: S.optional(S.String),
+    name: S.optional(S.String),
+    pendingInvitation: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "Admin" }) as any as S.Schema<Admin>;
 
 export interface CreateAccountsAdminsRequest {
@@ -242,11 +290,19 @@ export interface CreateAccountsAdminsRequest {
   body?: Admin;
 }
 export const CreateAccountsAdminsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(Admin.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/admins","baseUrl":"https://mybusinessaccountmanagement.googleapis.com/"})),
-).annotate({ identifier: "CreateAccountsAdminsRequest" }) as any as S.Schema<CreateAccountsAdminsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(Admin.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/admins",
+      baseUrl: "https://mybusinessaccountmanagement.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateAccountsAdminsRequest",
+}) as any as S.Schema<CreateAccountsAdminsRequest>;
 
 export interface CreateLocationsAdminsRequest {
   /** Required. The resource name of the location this admin is created for. `locations/{location_id}/admins`. */
@@ -255,17 +311,27 @@ export interface CreateLocationsAdminsRequest {
   body?: Admin;
 }
 export const CreateLocationsAdminsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(Admin.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/admins","baseUrl":"https://mybusinessaccountmanagement.googleapis.com/"})),
-).annotate({ identifier: "CreateLocationsAdminsRequest" }) as any as S.Schema<CreateLocationsAdminsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(Admin.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/admins",
+      baseUrl: "https://mybusinessaccountmanagement.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateLocationsAdminsRequest",
+}) as any as S.Schema<CreateLocationsAdminsRequest>;
 
 /** Request message for AccessControl.DeclineInvitation. */
 export interface DeclineInvitationRequest {}
 export const DeclineInvitationRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "DeclineInvitationRequest" }) as any as S.Schema<DeclineInvitationRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "DeclineInvitationRequest",
+}) as any as S.Schema<DeclineInvitationRequest>;
 
 export interface DeclineAccountsInvitationsRequest {
   /** Required. The name of the account invitation that is being declined. `accounts/{account_id}/invitations/{invitation_id}` */
@@ -274,41 +340,73 @@ export interface DeclineAccountsInvitationsRequest {
   body?: DeclineInvitationRequest;
 }
 export const DeclineAccountsInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(DeclineInvitationRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:decline","baseUrl":"https://mybusinessaccountmanagement.googleapis.com/"})),
-).annotate({ identifier: "DeclineAccountsInvitationsRequest" }) as any as S.Schema<DeclineAccountsInvitationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(DeclineInvitationRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:decline",
+      baseUrl: "https://mybusinessaccountmanagement.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeclineAccountsInvitationsRequest",
+}) as any as S.Schema<DeclineAccountsInvitationsRequest>;
 
 export interface DeleteAccountsAdminsRequest {
   /** Required. The resource name of the admin to remove from the account. `accounts/{account_id}/admins/{admin_id}`. */
   name: string;
 }
 export const DeleteAccountsAdminsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://mybusinessaccountmanagement.googleapis.com/"})),
-).annotate({ identifier: "DeleteAccountsAdminsRequest" }) as any as S.Schema<DeleteAccountsAdminsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://mybusinessaccountmanagement.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteAccountsAdminsRequest",
+}) as any as S.Schema<DeleteAccountsAdminsRequest>;
 
 export interface DeleteLocationsAdminsRequest {
   /** Required. The resource name of the admin to remove from the location. */
   name: string;
 }
 export const DeleteLocationsAdminsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://mybusinessaccountmanagement.googleapis.com/"})),
-).annotate({ identifier: "DeleteLocationsAdminsRequest" }) as any as S.Schema<DeleteLocationsAdminsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://mybusinessaccountmanagement.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteLocationsAdminsRequest",
+}) as any as S.Schema<DeleteLocationsAdminsRequest>;
 
 export interface GetAccountsRequest {
   /** Required. The name of the account to fetch. */
   name: string;
 }
 export const GetAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://mybusinessaccountmanagement.googleapis.com/"})),
-).annotate({ identifier: "GetAccountsRequest" }) as any as S.Schema<GetAccountsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://mybusinessaccountmanagement.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetAccountsRequest",
+}) as any as S.Schema<GetAccountsRequest>;
 
 export interface ListAccountsRequest {
   /** Optional. If specified, the next page of accounts is retrieved. The `pageToken` is returned when a call to `accounts.list` returns more results than can fit into the requested page size. */
@@ -321,16 +419,26 @@ export interface ListAccountsRequest {
   filter?: string;
 }
 export const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "parentAccount": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/accounts","baseUrl":"https://mybusinessaccountmanagement.googleapis.com/"})),
-).annotate({ identifier: "ListAccountsRequest" }) as any as S.Schema<ListAccountsRequest>;
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    parentAccount: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/accounts",
+      baseUrl: "https://mybusinessaccountmanagement.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListAccountsRequest",
+}) as any as S.Schema<ListAccountsRequest>;
 
 export type AccountList = ReadonlyArray<Account>;
-export const AccountList = /*@__PURE__*/ S.Array(Account) as any as S.Schema<AccountList>;
+export const AccountList = /*@__PURE__*/ S.Array(
+  Account,
+) as any as S.Schema<AccountList>;
 
 /** Response message for Accounts.ListAccounts. */
 export interface ListAccountsResponse {
@@ -340,24 +448,36 @@ export interface ListAccountsResponse {
   nextPageToken?: string;
 }
 export const ListAccountsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "accounts": S.optional(AccountList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListAccountsResponse" }) as any as S.Schema<ListAccountsResponse>;
+  S.Struct({
+    accounts: S.optional(AccountList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListAccountsResponse",
+}) as any as S.Schema<ListAccountsResponse>;
 
 export interface ListAccountsAdminsRequest {
   /** Required. The name of the account from which to retrieve a list of admins. `accounts/{account_id}/admins`. */
   parent: string;
 }
 export const ListAccountsAdminsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/admins","baseUrl":"https://mybusinessaccountmanagement.googleapis.com/"})),
-).annotate({ identifier: "ListAccountsAdminsRequest" }) as any as S.Schema<ListAccountsAdminsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/admins",
+      baseUrl: "https://mybusinessaccountmanagement.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListAccountsAdminsRequest",
+}) as any as S.Schema<ListAccountsAdminsRequest>;
 
 export type AdminList = ReadonlyArray<Admin>;
-export const AdminList = /*@__PURE__*/ S.Array(Admin) as any as S.Schema<AdminList>;
+export const AdminList = /*@__PURE__*/ S.Array(
+  Admin,
+) as any as S.Schema<AdminList>;
 
 /** Response message for AccessControl.ListAccountAdmins. */
 export interface ListAccountAdminsResponse {
@@ -365,10 +485,12 @@ export interface ListAccountAdminsResponse {
   accountAdmins?: AdminList;
 }
 export const ListAccountAdminsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "accountAdmins": S.optional(AdminList),
-}),
-).annotate({ identifier: "ListAccountAdminsResponse" }) as any as S.Schema<ListAccountAdminsResponse>;
+  S.Struct({
+    accountAdmins: S.optional(AdminList),
+  }),
+).annotate({
+  identifier: "ListAccountAdminsResponse",
+}) as any as S.Schema<ListAccountAdminsResponse>;
 
 export interface ListAccountsInvitationsRequest {
   /** Required. The name of the account from which the list of invitations is being retrieved. `accounts/{account_id}/invitations` */
@@ -377,13 +499,26 @@ export interface ListAccountsInvitationsRequest {
   filter?: string;
 }
 export const ListAccountsInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/invitations","baseUrl":"https://mybusinessaccountmanagement.googleapis.com/"})),
-).annotate({ identifier: "ListAccountsInvitationsRequest" }) as any as S.Schema<ListAccountsInvitationsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    filter: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/invitations",
+      baseUrl: "https://mybusinessaccountmanagement.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListAccountsInvitationsRequest",
+}) as any as S.Schema<ListAccountsInvitationsRequest>;
 
-export type InvitationRoleEnum = "ADMIN_ROLE_UNSPECIFIED" | "PRIMARY_OWNER" | "OWNER" | "MANAGER" | "SITE_MANAGER";
+export type InvitationRoleEnum =
+  | "ADMIN_ROLE_UNSPECIFIED"
+  | "PRIMARY_OWNER"
+  | "OWNER"
+  | "MANAGER"
+  | "SITE_MANAGER";
 export const InvitationRoleEnum = /*@__PURE__*/ S.String;
 
 /** Represents a target location for a pending invitation. */
@@ -396,14 +531,17 @@ export interface TargetLocation {
   address?: string;
 }
 export const TargetLocation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locationName": S.optional(S.String),
-  "placeId": S.optional(S.String),
-  "address": S.optional(S.String),
-}),
+  S.Struct({
+    locationName: S.optional(S.String),
+    placeId: S.optional(S.String),
+    address: S.optional(S.String),
+  }),
 ).annotate({ identifier: "TargetLocation" }) as any as S.Schema<TargetLocation>;
 
-export type InvitationTargetTypeEnum = "TARGET_TYPE_UNSPECIFIED" | "ACCOUNTS_ONLY" | "LOCATIONS_ONLY";
+export type InvitationTargetTypeEnum =
+  | "TARGET_TYPE_UNSPECIFIED"
+  | "ACCOUNTS_ONLY"
+  | "LOCATIONS_ONLY";
 export const InvitationTargetTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a pending invitation. */
@@ -420,17 +558,19 @@ export interface Invitation {
   name?: string;
 }
 export const Invitation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "targetAccount": S.optional(Account),
-  "role": S.optional(InvitationRoleEnum),
-  "targetLocation": S.optional(TargetLocation),
-  "targetType": S.optional(InvitationTargetTypeEnum),
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    targetAccount: S.optional(Account),
+    role: S.optional(InvitationRoleEnum),
+    targetLocation: S.optional(TargetLocation),
+    targetType: S.optional(InvitationTargetTypeEnum),
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Invitation" }) as any as S.Schema<Invitation>;
 
 export type InvitationList = ReadonlyArray<Invitation>;
-export const InvitationList = /*@__PURE__*/ S.Array(Invitation) as any as S.Schema<InvitationList>;
+export const InvitationList = /*@__PURE__*/ S.Array(
+  Invitation,
+) as any as S.Schema<InvitationList>;
 
 /** Response message for AccessControl.ListInvitations. */
 export interface ListInvitationsResponse {
@@ -438,20 +578,30 @@ export interface ListInvitationsResponse {
   invitations?: InvitationList;
 }
 export const ListInvitationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "invitations": S.optional(InvitationList),
-}),
-).annotate({ identifier: "ListInvitationsResponse" }) as any as S.Schema<ListInvitationsResponse>;
+  S.Struct({
+    invitations: S.optional(InvitationList),
+  }),
+).annotate({
+  identifier: "ListInvitationsResponse",
+}) as any as S.Schema<ListInvitationsResponse>;
 
 export interface ListLocationsAdminsRequest {
   /** Required. The name of the location to list admins of. `locations/{location_id}/admins`. */
   parent: string;
 }
 export const ListLocationsAdminsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/admins","baseUrl":"https://mybusinessaccountmanagement.googleapis.com/"})),
-).annotate({ identifier: "ListLocationsAdminsRequest" }) as any as S.Schema<ListLocationsAdminsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/admins",
+      baseUrl: "https://mybusinessaccountmanagement.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListLocationsAdminsRequest",
+}) as any as S.Schema<ListLocationsAdminsRequest>;
 
 /** Response message for AccessControl.ListLocationAdmins. */
 export interface ListLocationAdminsResponse {
@@ -459,10 +609,12 @@ export interface ListLocationAdminsResponse {
   admins?: AdminList;
 }
 export const ListLocationAdminsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "admins": S.optional(AdminList),
-}),
-).annotate({ identifier: "ListLocationAdminsResponse" }) as any as S.Schema<ListLocationAdminsResponse>;
+  S.Struct({
+    admins: S.optional(AdminList),
+  }),
+).annotate({
+  identifier: "ListLocationAdminsResponse",
+}) as any as S.Schema<ListLocationAdminsResponse>;
 
 export interface PatchAccountsRequest {
   /** Optional. If true, the request is validated without actually updating the account. */
@@ -475,13 +627,21 @@ export interface PatchAccountsRequest {
   body?: Account;
 }
 export const PatchAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Account.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://mybusinessaccountmanagement.googleapis.com/"})),
-).annotate({ identifier: "PatchAccountsRequest" }) as any as S.Schema<PatchAccountsRequest>;
+  S.Struct({
+    validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(Account.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+name}",
+      baseUrl: "https://mybusinessaccountmanagement.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchAccountsRequest",
+}) as any as S.Schema<PatchAccountsRequest>;
 
 export interface PatchAccountsAdminsRequest {
   /** Immutable. The resource name. For account admins, this is in the form: `accounts/{account_id}/admins/{admin_id}` For location admins, this is in the form: `locations/{location_id}/admins/{admin_id}` This field will be ignored if set during admin creation. */
@@ -492,12 +652,20 @@ export interface PatchAccountsAdminsRequest {
   body?: Admin;
 }
 export const PatchAccountsAdminsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Admin.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://mybusinessaccountmanagement.googleapis.com/"})),
-).annotate({ identifier: "PatchAccountsAdminsRequest" }) as any as S.Schema<PatchAccountsAdminsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(Admin.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+name}",
+      baseUrl: "https://mybusinessaccountmanagement.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchAccountsAdminsRequest",
+}) as any as S.Schema<PatchAccountsAdminsRequest>;
 
 export interface PatchLocationsAdminsRequest {
   /** Immutable. The resource name. For account admins, this is in the form: `accounts/{account_id}/admins/{admin_id}` For location admins, this is in the form: `locations/{location_id}/admins/{admin_id}` This field will be ignored if set during admin creation. */
@@ -508,12 +676,20 @@ export interface PatchLocationsAdminsRequest {
   body?: Admin;
 }
 export const PatchLocationsAdminsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Admin.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://mybusinessaccountmanagement.googleapis.com/"})),
-).annotate({ identifier: "PatchLocationsAdminsRequest" }) as any as S.Schema<PatchLocationsAdminsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(Admin.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+name}",
+      baseUrl: "https://mybusinessaccountmanagement.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchLocationsAdminsRequest",
+}) as any as S.Schema<PatchLocationsAdminsRequest>;
 
 /** Request message for AccessControl.TransferLocation. */
 export interface TransferLocationRequest {
@@ -521,10 +697,12 @@ export interface TransferLocationRequest {
   destinationAccount?: string;
 }
 export const TransferLocationRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "destinationAccount": S.optional(S.String),
-}),
-).annotate({ identifier: "TransferLocationRequest" }) as any as S.Schema<TransferLocationRequest>;
+  S.Struct({
+    destinationAccount: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "TransferLocationRequest",
+}) as any as S.Schema<TransferLocationRequest>;
 
 export interface TransferLocationsRequest {
   /** Required. The name of the location to transfer. `locations/{location_id}`. */
@@ -533,13 +711,26 @@ export interface TransferLocationsRequest {
   body?: TransferLocationRequest;
 }
 export const TransferLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(TransferLocationRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:transfer","baseUrl":"https://mybusinessaccountmanagement.googleapis.com/"})),
-).annotate({ identifier: "TransferLocationsRequest" }) as any as S.Schema<TransferLocationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(TransferLocationRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:transfer",
+      baseUrl: "https://mybusinessaccountmanagement.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "TransferLocationsRequest",
+}) as any as S.Schema<TransferLocationsRequest>;
 
-export type AcceptAccountsInvitationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type AcceptAccountsInvitationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Accepts the specified invitation. */
 export const acceptAccountsInvitations: API.OperationMethod<
   AcceptAccountsInvitationsRequest,
@@ -554,7 +745,12 @@ export const acceptAccountsInvitations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAccountsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateAccountsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates an account with the specified name and type under the given parent. - Personal accounts and Organizations cannot be created. - User Groups cannot be created with a Personal account as primary owner. - Location Groups cannot be created with a primary owner of a Personal account if the Personal account is in an Organization. - Location Groups cannot own Location Groups. */
 export const createAccounts: API.OperationMethod<
   CreateAccountsRequest,
@@ -569,7 +765,12 @@ export const createAccounts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAccountsAdminsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateAccountsAdminsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Invites the specified user to become an administrator for the specified account. The invitee must accept the invitation in order to be granted access to the account. See AcceptInvitation to programmatically accept an invitation. */
 export const createAccountsAdmins: API.OperationMethod<
   CreateAccountsAdminsRequest,
@@ -584,7 +785,12 @@ export const createAccountsAdmins: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateLocationsAdminsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateLocationsAdminsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Invites the specified user to become an administrator for the specified location. The invitee must accept the invitation in order to be granted access to the location. See AcceptInvitation to programmatically accept an invitation. */
 export const createLocationsAdmins: API.OperationMethod<
   CreateLocationsAdminsRequest,
@@ -599,7 +805,12 @@ export const createLocationsAdmins: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeclineAccountsInvitationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeclineAccountsInvitationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Declines the specified invitation. */
 export const declineAccountsInvitations: API.OperationMethod<
   DeclineAccountsInvitationsRequest,
@@ -614,7 +825,12 @@ export const declineAccountsInvitations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAccountsAdminsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteAccountsAdminsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Removes the specified admin from the specified account. */
 export const deleteAccountsAdmins: API.OperationMethod<
   DeleteAccountsAdminsRequest,
@@ -629,7 +845,12 @@ export const deleteAccountsAdmins: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteLocationsAdminsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteLocationsAdminsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Removes the specified admin as a manager of the specified location. */
 export const deleteLocationsAdmins: API.OperationMethod<
   DeleteLocationsAdminsRequest,
@@ -672,7 +893,10 @@ export const listAccounts: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListAccountsAdminsError = NotFound | Forbidden | GcpOpError;
@@ -720,7 +944,12 @@ export const listLocationsAdmins: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchAccountsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchAccountsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the specified business account. Personal accounts cannot be updated using this method. */
 export const patchAccounts: API.OperationMethod<
   PatchAccountsRequest,
@@ -735,7 +964,12 @@ export const patchAccounts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchAccountsAdminsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchAccountsAdminsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the Admin for the specified Account Admin. */
 export const patchAccountsAdmins: API.OperationMethod<
   PatchAccountsAdminsRequest,
@@ -750,7 +984,12 @@ export const patchAccountsAdmins: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchLocationsAdminsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchLocationsAdminsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the Admin for the specified location. Only the AdminRole of the Admin can be updated. */
 export const patchLocationsAdmins: API.OperationMethod<
   PatchLocationsAdminsRequest,
@@ -765,7 +1004,12 @@ export const patchLocationsAdmins: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TransferLocationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TransferLocationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Moves a location from an account that the user owns to another account that the same user administers. The user must be an owner of the account the location is currently associated with and must also be at least a manager of the destination account. */
 export const transferLocations: API.OperationMethod<
   TransferLocationsRequest,
@@ -779,4 +1023,3 @@ export const transferLocations: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

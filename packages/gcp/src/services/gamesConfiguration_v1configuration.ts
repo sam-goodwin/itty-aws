@@ -13,97 +13,134 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export interface DeleteAchievementConfigurationsRequest {
   /** The ID of the achievement used by this method. */
   achievementId: string;
 }
-export const DeleteAchievementConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "achievementId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"games/v1configuration/achievements/{achievementId}","baseUrl":"https://gamesconfiguration.googleapis.com/"})),
-).annotate({ identifier: "DeleteAchievementConfigurationsRequest" }) as any as S.Schema<DeleteAchievementConfigurationsRequest>;
+export const DeleteAchievementConfigurationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      achievementId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "games/v1configuration/achievements/{achievementId}",
+        baseUrl: "https://gamesconfiguration.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteAchievementConfigurationsRequest",
+}) as any as S.Schema<DeleteAchievementConfigurationsRequest>;
 
 export interface DeleteAchievementConfigurationsResponse {}
-export const DeleteAchievementConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "DeleteAchievementConfigurationsResponse" }) as any as S.Schema<DeleteAchievementConfigurationsResponse>;
+export const DeleteAchievementConfigurationsResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DeleteAchievementConfigurationsResponse",
+}) as any as S.Schema<DeleteAchievementConfigurationsResponse>;
 
 export interface DeleteLeaderboardConfigurationsRequest {
   /** The ID of the leaderboard. */
   leaderboardId: string;
 }
-export const DeleteLeaderboardConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "leaderboardId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"games/v1configuration/leaderboards/{leaderboardId}","baseUrl":"https://gamesconfiguration.googleapis.com/"})),
-).annotate({ identifier: "DeleteLeaderboardConfigurationsRequest" }) as any as S.Schema<DeleteLeaderboardConfigurationsRequest>;
+export const DeleteLeaderboardConfigurationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      leaderboardId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "games/v1configuration/leaderboards/{leaderboardId}",
+        baseUrl: "https://gamesconfiguration.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteLeaderboardConfigurationsRequest",
+}) as any as S.Schema<DeleteLeaderboardConfigurationsRequest>;
 
 export interface DeleteLeaderboardConfigurationsResponse {}
-export const DeleteLeaderboardConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "DeleteLeaderboardConfigurationsResponse" }) as any as S.Schema<DeleteLeaderboardConfigurationsResponse>;
+export const DeleteLeaderboardConfigurationsResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DeleteLeaderboardConfigurationsResponse",
+}) as any as S.Schema<DeleteLeaderboardConfigurationsResponse>;
 
 export interface GetAchievementConfigurationsRequest {
   /** The ID of the achievement used by this method. */
   achievementId: string;
 }
 export const GetAchievementConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "achievementId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"games/v1configuration/achievements/{achievementId}","baseUrl":"https://gamesconfiguration.googleapis.com/"})),
-).annotate({ identifier: "GetAchievementConfigurationsRequest" }) as any as S.Schema<GetAchievementConfigurationsRequest>;
+  S.Struct({
+    achievementId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "games/v1configuration/achievements/{achievementId}",
+      baseUrl: "https://gamesconfiguration.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetAchievementConfigurationsRequest",
+}) as any as S.Schema<GetAchievementConfigurationsRequest>;
 
-export type AchievementConfigurationAchievementTypeEnum = "ACHIEVEMENT_TYPE_UNSPECIFIED" | "STANDARD" | "INCREMENTAL";
-export const AchievementConfigurationAchievementTypeEnum = /*@__PURE__*/ S.String;
+export type AchievementConfigurationAchievementTypeEnum =
+  | "ACHIEVEMENT_TYPE_UNSPECIFIED"
+  | "STANDARD"
+  | "INCREMENTAL";
+export const AchievementConfigurationAchievementTypeEnum =
+  /*@__PURE__*/ S.String;
 
-export type AchievementConfigurationInitialStateEnum = "INITIAL_STATE_UNSPECIFIED" | "HIDDEN" | "REVEALED";
+export type AchievementConfigurationInitialStateEnum =
+  | "INITIAL_STATE_UNSPECIFIED"
+  | "HIDDEN"
+  | "REVEALED";
 export const AchievementConfigurationInitialStateEnum = /*@__PURE__*/ S.String;
 
 /** A localized string resource. */
@@ -116,15 +153,19 @@ export interface LocalizedString {
   locale?: string;
 }
 export const LocalizedString = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "value": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "locale": S.optional(S.String),
-}),
-).annotate({ identifier: "LocalizedString" }) as any as S.Schema<LocalizedString>;
+  S.Struct({
+    value: S.optional(S.String),
+    kind: S.optional(S.String),
+    locale: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "LocalizedString",
+}) as any as S.Schema<LocalizedString>;
 
 export type LocalizedStringList = ReadonlyArray<LocalizedString>;
-export const LocalizedStringList = /*@__PURE__*/ S.Array(LocalizedString) as any as S.Schema<LocalizedStringList>;
+export const LocalizedStringList = /*@__PURE__*/ S.Array(
+  LocalizedString,
+) as any as S.Schema<LocalizedStringList>;
 
 /** A localized string bundle resource. */
 export interface LocalizedStringBundle {
@@ -134,11 +175,13 @@ export interface LocalizedStringBundle {
   translations?: LocalizedStringList;
 }
 export const LocalizedStringBundle = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "translations": S.optional(LocalizedStringList),
-}),
-).annotate({ identifier: "LocalizedStringBundle" }) as any as S.Schema<LocalizedStringBundle>;
+  S.Struct({
+    kind: S.optional(S.String),
+    translations: S.optional(LocalizedStringList),
+  }),
+).annotate({
+  identifier: "LocalizedStringBundle",
+}) as any as S.Schema<LocalizedStringBundle>;
 
 /** An achievement configuration detail. */
 export interface AchievementConfigurationDetail {
@@ -156,15 +199,17 @@ export interface AchievementConfigurationDetail {
   kind?: string;
 }
 export const AchievementConfigurationDetail = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "description": S.optional(LocalizedStringBundle),
-  "pointValue": S.optional(S.Number),
-  "name": S.optional(LocalizedStringBundle),
-  "sortRank": S.optional(S.Number),
-  "iconUrl": S.optional(S.String),
-  "kind": S.optional(S.String),
-}),
-).annotate({ identifier: "AchievementConfigurationDetail" }) as any as S.Schema<AchievementConfigurationDetail>;
+  S.Struct({
+    description: S.optional(LocalizedStringBundle),
+    pointValue: S.optional(S.Number),
+    name: S.optional(LocalizedStringBundle),
+    sortRank: S.optional(S.Number),
+    iconUrl: S.optional(S.String),
+    kind: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AchievementConfigurationDetail",
+}) as any as S.Schema<AchievementConfigurationDetail>;
 
 /** An achievement configuration resource. */
 export interface AchievementConfiguration {
@@ -186,27 +231,37 @@ export interface AchievementConfiguration {
   published?: AchievementConfigurationDetail;
 }
 export const AchievementConfiguration = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "token": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "stepsToUnlock": S.optional(S.Number),
-  "achievementType": S.optional(AchievementConfigurationAchievementTypeEnum),
-  "id": S.optional(S.String),
-  "initialState": S.optional(AchievementConfigurationInitialStateEnum),
-  "draft": S.optional(AchievementConfigurationDetail),
-  "published": S.optional(AchievementConfigurationDetail),
-}),
-).annotate({ identifier: "AchievementConfiguration" }) as any as S.Schema<AchievementConfiguration>;
+  S.Struct({
+    token: S.optional(S.String),
+    kind: S.optional(S.String),
+    stepsToUnlock: S.optional(S.Number),
+    achievementType: S.optional(AchievementConfigurationAchievementTypeEnum),
+    id: S.optional(S.String),
+    initialState: S.optional(AchievementConfigurationInitialStateEnum),
+    draft: S.optional(AchievementConfigurationDetail),
+    published: S.optional(AchievementConfigurationDetail),
+  }),
+).annotate({
+  identifier: "AchievementConfiguration",
+}) as any as S.Schema<AchievementConfiguration>;
 
 export interface GetLeaderboardConfigurationsRequest {
   /** The ID of the leaderboard. */
   leaderboardId: string;
 }
 export const GetLeaderboardConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "leaderboardId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"games/v1configuration/leaderboards/{leaderboardId}","baseUrl":"https://gamesconfiguration.googleapis.com/"})),
-).annotate({ identifier: "GetLeaderboardConfigurationsRequest" }) as any as S.Schema<GetLeaderboardConfigurationsRequest>;
+  S.Struct({
+    leaderboardId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "games/v1configuration/leaderboards/{leaderboardId}",
+      baseUrl: "https://gamesconfiguration.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetLeaderboardConfigurationsRequest",
+}) as any as S.Schema<GetLeaderboardConfigurationsRequest>;
 
 /** A number affix resource. */
 export interface GamesNumberAffixConfiguration {
@@ -224,18 +279,25 @@ export interface GamesNumberAffixConfiguration {
   two?: LocalizedStringBundle;
 }
 export const GamesNumberAffixConfiguration = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "zero": S.optional(LocalizedStringBundle),
-  "few": S.optional(LocalizedStringBundle),
-  "many": S.optional(LocalizedStringBundle),
-  "one": S.optional(LocalizedStringBundle),
-  "other": S.optional(LocalizedStringBundle),
-  "two": S.optional(LocalizedStringBundle),
-}),
-).annotate({ identifier: "GamesNumberAffixConfiguration" }) as any as S.Schema<GamesNumberAffixConfiguration>;
+  S.Struct({
+    zero: S.optional(LocalizedStringBundle),
+    few: S.optional(LocalizedStringBundle),
+    many: S.optional(LocalizedStringBundle),
+    one: S.optional(LocalizedStringBundle),
+    other: S.optional(LocalizedStringBundle),
+    two: S.optional(LocalizedStringBundle),
+  }),
+).annotate({
+  identifier: "GamesNumberAffixConfiguration",
+}) as any as S.Schema<GamesNumberAffixConfiguration>;
 
-export type GamesNumberFormatConfigurationNumberFormatTypeEnum = "NUMBER_FORMAT_TYPE_UNSPECIFIED" | "NUMERIC" | "TIME_DURATION" | "CURRENCY";
-export const GamesNumberFormatConfigurationNumberFormatTypeEnum = /*@__PURE__*/ S.String;
+export type GamesNumberFormatConfigurationNumberFormatTypeEnum =
+  | "NUMBER_FORMAT_TYPE_UNSPECIFIED"
+  | "NUMERIC"
+  | "TIME_DURATION"
+  | "CURRENCY";
+export const GamesNumberFormatConfigurationNumberFormatTypeEnum =
+  /*@__PURE__*/ S.String;
 
 /** A number format resource. */
 export interface GamesNumberFormatConfiguration {
@@ -249,13 +311,17 @@ export interface GamesNumberFormatConfiguration {
   numberFormatType?: GamesNumberFormatConfigurationNumberFormatTypeEnum;
 }
 export const GamesNumberFormatConfiguration = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "numDecimalPlaces": S.optional(S.Number),
-  "suffix": S.optional(GamesNumberAffixConfiguration),
-  "currencyCode": S.optional(S.String),
-  "numberFormatType": S.optional(GamesNumberFormatConfigurationNumberFormatTypeEnum),
-}),
-).annotate({ identifier: "GamesNumberFormatConfiguration" }) as any as S.Schema<GamesNumberFormatConfiguration>;
+  S.Struct({
+    numDecimalPlaces: S.optional(S.Number),
+    suffix: S.optional(GamesNumberAffixConfiguration),
+    currencyCode: S.optional(S.String),
+    numberFormatType: S.optional(
+      GamesNumberFormatConfigurationNumberFormatTypeEnum,
+    ),
+  }),
+).annotate({
+  identifier: "GamesNumberFormatConfiguration",
+}) as any as S.Schema<GamesNumberFormatConfiguration>;
 
 /** A leaderboard configuration detail. */
 export interface LeaderboardConfigurationDetail {
@@ -271,16 +337,21 @@ export interface LeaderboardConfigurationDetail {
   scoreFormat?: GamesNumberFormatConfiguration;
 }
 export const LeaderboardConfigurationDetail = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "iconUrl": S.optional(S.String),
-  "name": S.optional(LocalizedStringBundle),
-  "sortRank": S.optional(S.Number),
-  "scoreFormat": S.optional(GamesNumberFormatConfiguration),
-}),
-).annotate({ identifier: "LeaderboardConfigurationDetail" }) as any as S.Schema<LeaderboardConfigurationDetail>;
+  S.Struct({
+    kind: S.optional(S.String),
+    iconUrl: S.optional(S.String),
+    name: S.optional(LocalizedStringBundle),
+    sortRank: S.optional(S.Number),
+    scoreFormat: S.optional(GamesNumberFormatConfiguration),
+  }),
+).annotate({
+  identifier: "LeaderboardConfigurationDetail",
+}) as any as S.Schema<LeaderboardConfigurationDetail>;
 
-export type LeaderboardConfigurationScoreOrderEnum = "SCORE_ORDER_UNSPECIFIED" | "LARGER_IS_BETTER" | "SMALLER_IS_BETTER";
+export type LeaderboardConfigurationScoreOrderEnum =
+  | "SCORE_ORDER_UNSPECIFIED"
+  | "LARGER_IS_BETTER"
+  | "SMALLER_IS_BETTER";
 export const LeaderboardConfigurationScoreOrderEnum = /*@__PURE__*/ S.String;
 
 /** An leaderboard configuration resource. */
@@ -302,17 +373,19 @@ export interface LeaderboardConfiguration {
   scoreOrder?: LeaderboardConfigurationScoreOrderEnum;
 }
 export const LeaderboardConfiguration = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "draft": S.optional(LeaderboardConfigurationDetail),
-  "published": S.optional(LeaderboardConfigurationDetail),
-  "id": S.optional(S.String),
-  "scoreMax": S.optional(S.String),
-  "scoreMin": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "token": S.optional(S.String),
-  "scoreOrder": S.optional(LeaderboardConfigurationScoreOrderEnum),
-}),
-).annotate({ identifier: "LeaderboardConfiguration" }) as any as S.Schema<LeaderboardConfiguration>;
+  S.Struct({
+    draft: S.optional(LeaderboardConfigurationDetail),
+    published: S.optional(LeaderboardConfigurationDetail),
+    id: S.optional(S.String),
+    scoreMax: S.optional(S.String),
+    scoreMin: S.optional(S.String),
+    kind: S.optional(S.String),
+    token: S.optional(S.String),
+    scoreOrder: S.optional(LeaderboardConfigurationScoreOrderEnum),
+  }),
+).annotate({
+  identifier: "LeaderboardConfiguration",
+}) as any as S.Schema<LeaderboardConfiguration>;
 
 export interface InsertAchievementConfigurationsRequest {
   /** The application ID from the Google Play developer console. */
@@ -320,12 +393,21 @@ export interface InsertAchievementConfigurationsRequest {
   /** Request body */
   body?: AchievementConfiguration;
 }
-export const InsertAchievementConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "applicationId": S.String.pipe(T.Label()),
-  "body": S.optional(AchievementConfiguration.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"games/v1configuration/applications/{applicationId}/achievements","baseUrl":"https://gamesconfiguration.googleapis.com/"})),
-).annotate({ identifier: "InsertAchievementConfigurationsRequest" }) as any as S.Schema<InsertAchievementConfigurationsRequest>;
+export const InsertAchievementConfigurationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      applicationId: S.String.pipe(T.Label()),
+      body: S.optional(AchievementConfiguration.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "games/v1configuration/applications/{applicationId}/achievements",
+        baseUrl: "https://gamesconfiguration.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "InsertAchievementConfigurationsRequest",
+}) as any as S.Schema<InsertAchievementConfigurationsRequest>;
 
 export interface InsertLeaderboardConfigurationsRequest {
   /** The application ID from the Google Play developer console. */
@@ -333,12 +415,21 @@ export interface InsertLeaderboardConfigurationsRequest {
   /** Request body */
   body?: LeaderboardConfiguration;
 }
-export const InsertLeaderboardConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "applicationId": S.String.pipe(T.Label()),
-  "body": S.optional(LeaderboardConfiguration.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"games/v1configuration/applications/{applicationId}/leaderboards","baseUrl":"https://gamesconfiguration.googleapis.com/"})),
-).annotate({ identifier: "InsertLeaderboardConfigurationsRequest" }) as any as S.Schema<InsertLeaderboardConfigurationsRequest>;
+export const InsertLeaderboardConfigurationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      applicationId: S.String.pipe(T.Label()),
+      body: S.optional(LeaderboardConfiguration.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "games/v1configuration/applications/{applicationId}/leaderboards",
+        baseUrl: "https://gamesconfiguration.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "InsertLeaderboardConfigurationsRequest",
+}) as any as S.Schema<InsertLeaderboardConfigurationsRequest>;
 
 export interface ListAchievementConfigurationsRequest {
   /** The token returned by the previous request. */
@@ -348,16 +439,28 @@ export interface ListAchievementConfigurationsRequest {
   /** The maximum number of resource configurations to return in the response, used for paging. For any response, the actual number of resources returned may be less than the specified `maxResults`. */
   maxResults?: number;
 }
-export const ListAchievementConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "applicationId": S.String.pipe(T.Label()),
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"games/v1configuration/applications/{applicationId}/achievements","baseUrl":"https://gamesconfiguration.googleapis.com/"})),
-).annotate({ identifier: "ListAchievementConfigurationsRequest" }) as any as S.Schema<ListAchievementConfigurationsRequest>;
+export const ListAchievementConfigurationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      applicationId: S.String.pipe(T.Label()),
+      maxResults: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "games/v1configuration/applications/{applicationId}/achievements",
+        baseUrl: "https://gamesconfiguration.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListAchievementConfigurationsRequest",
+}) as any as S.Schema<ListAchievementConfigurationsRequest>;
 
-export type AchievementConfigurationList = ReadonlyArray<AchievementConfiguration>;
-export const AchievementConfigurationList = /*@__PURE__*/ S.Array(AchievementConfiguration) as any as S.Schema<AchievementConfigurationList>;
+export type AchievementConfigurationList =
+  ReadonlyArray<AchievementConfiguration>;
+export const AchievementConfigurationList = /*@__PURE__*/ S.Array(
+  AchievementConfiguration,
+) as any as S.Schema<AchievementConfigurationList>;
 
 /** A ListConfigurations response. */
 export interface AchievementConfigurationListResponse {
@@ -368,13 +471,16 @@ export interface AchievementConfigurationListResponse {
   /** The achievement configurations. */
   items: AchievementConfigurationList;
 }
-export const AchievementConfigurationListResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "items": AchievementConfigurationList,
-}),
-).annotate({ identifier: "AchievementConfigurationListResponse" }) as any as S.Schema<AchievementConfigurationListResponse>;
+export const AchievementConfigurationListResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      nextPageToken: S.optional(S.String),
+      kind: S.optional(S.String),
+      items: AchievementConfigurationList,
+    }),
+).annotate({
+  identifier: "AchievementConfigurationListResponse",
+}) as any as S.Schema<AchievementConfigurationListResponse>;
 
 export interface ListLeaderboardConfigurationsRequest {
   /** The token returned by the previous request. */
@@ -384,16 +490,28 @@ export interface ListLeaderboardConfigurationsRequest {
   /** The maximum number of resource configurations to return in the response, used for paging. For any response, the actual number of resources returned may be less than the specified `maxResults`. */
   maxResults?: number;
 }
-export const ListLeaderboardConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "applicationId": S.String.pipe(T.Label()),
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"games/v1configuration/applications/{applicationId}/leaderboards","baseUrl":"https://gamesconfiguration.googleapis.com/"})),
-).annotate({ identifier: "ListLeaderboardConfigurationsRequest" }) as any as S.Schema<ListLeaderboardConfigurationsRequest>;
+export const ListLeaderboardConfigurationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      applicationId: S.String.pipe(T.Label()),
+      maxResults: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "games/v1configuration/applications/{applicationId}/leaderboards",
+        baseUrl: "https://gamesconfiguration.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListLeaderboardConfigurationsRequest",
+}) as any as S.Schema<ListLeaderboardConfigurationsRequest>;
 
-export type LeaderboardConfigurationList = ReadonlyArray<LeaderboardConfiguration>;
-export const LeaderboardConfigurationList = /*@__PURE__*/ S.Array(LeaderboardConfiguration) as any as S.Schema<LeaderboardConfigurationList>;
+export type LeaderboardConfigurationList =
+  ReadonlyArray<LeaderboardConfiguration>;
+export const LeaderboardConfigurationList = /*@__PURE__*/ S.Array(
+  LeaderboardConfiguration,
+) as any as S.Schema<LeaderboardConfigurationList>;
 
 /** A ListConfigurations response. */
 export interface LeaderboardConfigurationListResponse {
@@ -404,13 +522,16 @@ export interface LeaderboardConfigurationListResponse {
   /** The pagination token for the next page of results. */
   nextPageToken?: string;
 }
-export const LeaderboardConfigurationListResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "items": LeaderboardConfigurationList,
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "LeaderboardConfigurationListResponse" }) as any as S.Schema<LeaderboardConfigurationListResponse>;
+export const LeaderboardConfigurationListResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      kind: S.optional(S.String),
+      items: LeaderboardConfigurationList,
+      nextPageToken: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "LeaderboardConfigurationListResponse",
+}) as any as S.Schema<LeaderboardConfigurationListResponse>;
 
 export interface UpdateAchievementConfigurationsRequest {
   /** The ID of the achievement used by this method. */
@@ -418,12 +539,21 @@ export interface UpdateAchievementConfigurationsRequest {
   /** Request body */
   body?: AchievementConfiguration;
 }
-export const UpdateAchievementConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "achievementId": S.String.pipe(T.Label()),
-  "body": S.optional(AchievementConfiguration.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"games/v1configuration/achievements/{achievementId}","baseUrl":"https://gamesconfiguration.googleapis.com/"})),
-).annotate({ identifier: "UpdateAchievementConfigurationsRequest" }) as any as S.Schema<UpdateAchievementConfigurationsRequest>;
+export const UpdateAchievementConfigurationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      achievementId: S.String.pipe(T.Label()),
+      body: S.optional(AchievementConfiguration.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "games/v1configuration/achievements/{achievementId}",
+        baseUrl: "https://gamesconfiguration.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "UpdateAchievementConfigurationsRequest",
+}) as any as S.Schema<UpdateAchievementConfigurationsRequest>;
 
 export interface UpdateLeaderboardConfigurationsRequest {
   /** The ID of the leaderboard. */
@@ -431,14 +561,28 @@ export interface UpdateLeaderboardConfigurationsRequest {
   /** Request body */
   body?: LeaderboardConfiguration;
 }
-export const UpdateLeaderboardConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "leaderboardId": S.String.pipe(T.Label()),
-  "body": S.optional(LeaderboardConfiguration.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"games/v1configuration/leaderboards/{leaderboardId}","baseUrl":"https://gamesconfiguration.googleapis.com/"})),
-).annotate({ identifier: "UpdateLeaderboardConfigurationsRequest" }) as any as S.Schema<UpdateLeaderboardConfigurationsRequest>;
+export const UpdateLeaderboardConfigurationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      leaderboardId: S.String.pipe(T.Label()),
+      body: S.optional(LeaderboardConfiguration.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "games/v1configuration/leaderboards/{leaderboardId}",
+        baseUrl: "https://gamesconfiguration.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "UpdateLeaderboardConfigurationsRequest",
+}) as any as S.Schema<UpdateLeaderboardConfigurationsRequest>;
 
-export type DeleteAchievementConfigurationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteAchievementConfigurationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Delete the achievement configuration with the given ID. */
 export const deleteAchievementConfigurations: API.OperationMethod<
   DeleteAchievementConfigurationsRequest,
@@ -453,7 +597,12 @@ export const deleteAchievementConfigurations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteLeaderboardConfigurationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteLeaderboardConfigurationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Delete the leaderboard configuration with the given ID. */
 export const deleteLeaderboardConfigurations: API.OperationMethod<
   DeleteLeaderboardConfigurationsRequest,
@@ -468,7 +617,10 @@ export const deleteLeaderboardConfigurations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAchievementConfigurationsError = NotFound | Forbidden | GcpOpError;
+export type GetAchievementConfigurationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieves the metadata of the achievement configuration with the given ID. */
 export const getAchievementConfigurations: API.OperationMethod<
   GetAchievementConfigurationsRequest,
@@ -483,7 +635,10 @@ export const getAchievementConfigurations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetLeaderboardConfigurationsError = NotFound | Forbidden | GcpOpError;
+export type GetLeaderboardConfigurationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieves the metadata of the leaderboard configuration with the given ID. */
 export const getLeaderboardConfigurations: API.OperationMethod<
   GetLeaderboardConfigurationsRequest,
@@ -498,7 +653,12 @@ export const getLeaderboardConfigurations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertAchievementConfigurationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type InsertAchievementConfigurationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Insert a new achievement configuration in this application. */
 export const insertAchievementConfigurations: API.OperationMethod<
   InsertAchievementConfigurationsRequest,
@@ -513,7 +673,12 @@ export const insertAchievementConfigurations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertLeaderboardConfigurationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type InsertLeaderboardConfigurationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Insert a new leaderboard configuration in this application. */
 export const insertLeaderboardConfigurations: API.OperationMethod<
   InsertLeaderboardConfigurationsRequest,
@@ -528,7 +693,10 @@ export const insertLeaderboardConfigurations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListAchievementConfigurationsError = NotFound | Forbidden | GcpOpError;
+export type ListAchievementConfigurationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns a list of the achievement configurations in this application. */
 export const listAchievementConfigurations: API.PaginatedOperationMethod<
   ListAchievementConfigurationsRequest,
@@ -541,10 +709,17 @@ export const listAchievementConfigurations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken","items":"items"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+    items: "items",
+  } as const,
 }));
 
-export type ListLeaderboardConfigurationsError = NotFound | Forbidden | GcpOpError;
+export type ListLeaderboardConfigurationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns a list of the leaderboard configurations in this application. */
 export const listLeaderboardConfigurations: API.PaginatedOperationMethod<
   ListLeaderboardConfigurationsRequest,
@@ -557,10 +732,19 @@ export const listLeaderboardConfigurations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken","items":"items"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+    items: "items",
+  } as const,
 }));
 
-export type UpdateAchievementConfigurationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateAchievementConfigurationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update the metadata of the achievement configuration with the given ID. */
 export const updateAchievementConfigurations: API.OperationMethod<
   UpdateAchievementConfigurationsRequest,
@@ -575,7 +759,12 @@ export const updateAchievementConfigurations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateLeaderboardConfigurationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateLeaderboardConfigurationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update the metadata of the leaderboard configuration with the given ID. */
 export const updateLeaderboardConfigurations: API.OperationMethod<
   UpdateLeaderboardConfigurationsRequest,
@@ -589,4 +778,3 @@ export const updateLeaderboardConfigurations: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

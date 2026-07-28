@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export type StateErrorTypeEnum = "TYPE_UNSPECIFIED" | "KMS_ERROR";
@@ -71,22 +71,34 @@ export interface StateError {
   details?: string;
 }
 export const StateError = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(StateErrorTypeEnum),
-  "details": S.optional(S.String),
-}),
+  S.Struct({
+    type: S.optional(StateErrorTypeEnum),
+    details: S.optional(S.String),
+  }),
 ).annotate({ identifier: "StateError" }) as any as S.Schema<StateError>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
-export type WorkflowExecutionHistoryLevelEnum = "EXECUTION_HISTORY_LEVEL_UNSPECIFIED" | "EXECUTION_HISTORY_BASIC" | "EXECUTION_HISTORY_DETAILED";
+export type WorkflowExecutionHistoryLevelEnum =
+  | "EXECUTION_HISTORY_LEVEL_UNSPECIFIED"
+  | "EXECUTION_HISTORY_BASIC"
+  | "EXECUTION_HISTORY_DETAILED";
 export const WorkflowExecutionHistoryLevelEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
-export type WorkflowCallLogLevelEnum = "CALL_LOG_LEVEL_UNSPECIFIED" | "LOG_ALL_CALLS" | "LOG_ERRORS_ONLY" | "LOG_NONE";
+export type WorkflowCallLogLevelEnum =
+  | "CALL_LOG_LEVEL_UNSPECIFIED"
+  | "LOG_ALL_CALLS"
+  | "LOG_ERRORS_ONLY"
+  | "LOG_NONE";
 export const WorkflowCallLogLevelEnum = /*@__PURE__*/ S.String;
 
 export type WorkflowStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "UNAVAILABLE";
@@ -134,27 +146,27 @@ export interface Workflow {
   serviceAccount?: string;
 }
 export const Workflow = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "stateError": S.optional(StateError),
-  "tags": S.optional(StringMap),
-  "createTime": S.optional(S.String),
-  "executionHistoryLevel": S.optional(WorkflowExecutionHistoryLevelEnum),
-  "cryptoKeyName": S.optional(S.String),
-  "revisionId": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "allKmsKeysVersions": S.optional(StringList),
-  "description": S.optional(S.String),
-  "sourceContents": S.optional(S.String),
-  "userEnvVars": S.optional(StringMap),
-  "callLogLevel": S.optional(WorkflowCallLogLevelEnum),
-  "updateTime": S.optional(S.String),
-  "revisionCreateTime": S.optional(S.String),
-  "state": S.optional(WorkflowStateEnum),
-  "cryptoKeyVersion": S.optional(S.String),
-  "name": S.optional(S.String),
-  "allKmsKeys": S.optional(StringList),
-  "serviceAccount": S.optional(S.String),
-}),
+  S.Struct({
+    stateError: S.optional(StateError),
+    tags: S.optional(StringMap),
+    createTime: S.optional(S.String),
+    executionHistoryLevel: S.optional(WorkflowExecutionHistoryLevelEnum),
+    cryptoKeyName: S.optional(S.String),
+    revisionId: S.optional(S.String),
+    labels: S.optional(StringMap),
+    allKmsKeysVersions: S.optional(StringList),
+    description: S.optional(S.String),
+    sourceContents: S.optional(S.String),
+    userEnvVars: S.optional(StringMap),
+    callLogLevel: S.optional(WorkflowCallLogLevelEnum),
+    updateTime: S.optional(S.String),
+    revisionCreateTime: S.optional(S.String),
+    state: S.optional(WorkflowStateEnum),
+    cryptoKeyVersion: S.optional(S.String),
+    name: S.optional(S.String),
+    allKmsKeys: S.optional(StringList),
+    serviceAccount: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Workflow" }) as any as S.Schema<Workflow>;
 
 export interface CreateProjectsLocationsWorkflowsRequest {
@@ -165,19 +177,33 @@ export interface CreateProjectsLocationsWorkflowsRequest {
   /** Request body */
   body?: Workflow;
 }
-export const CreateProjectsLocationsWorkflowsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "workflowId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Workflow.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/workflows","baseUrl":"https://workflows.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsWorkflowsRequest" }) as any as S.Schema<CreateProjectsLocationsWorkflowsRequest>;
+export const CreateProjectsLocationsWorkflowsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      workflowId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Workflow.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/workflows",
+        baseUrl: "https://workflows.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateProjectsLocationsWorkflowsRequest",
+}) as any as S.Schema<CreateProjectsLocationsWorkflowsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -189,11 +215,11 @@ export interface Status {
   details?: DocumentMapList;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "message": S.optional(S.String),
-  "code": S.optional(S.Number),
-  "details": S.optional(DocumentMapList),
-}),
+  S.Struct({
+    message: S.optional(S.String),
+    code: S.optional(S.Number),
+    details: S.optional(DocumentMapList),
+  }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -210,50 +236,76 @@ export interface Operation {
   error?: Status;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "response": S.optional(DocumentMap),
-  "done": S.optional(S.Boolean),
-  "metadata": S.optional(DocumentMap),
-  "error": S.optional(Status),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    response: S.optional(DocumentMap),
+    done: S.optional(S.Boolean),
+    metadata: S.optional(DocumentMap),
+    error: S.optional(Status),
+  }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://workflows.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsOperationsRequest" }) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://workflows.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsOperationsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 export interface DeleteProjectsLocationsWorkflowsRequest {
   /** Required. Name of the workflow to be deleted. Format: projects/{project}/locations/{location}/workflows/{workflow} */
   name: string;
 }
-export const DeleteProjectsLocationsWorkflowsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://workflows.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsWorkflowsRequest" }) as any as S.Schema<DeleteProjectsLocationsWorkflowsRequest>;
+export const DeleteProjectsLocationsWorkflowsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://workflows.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsWorkflowsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsWorkflowsRequest>;
 
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://workflows.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://workflows.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsRequest",
+}) as any as S.Schema<GetProjectsLocationsRequest>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -269,24 +321,33 @@ export interface Location {
   metadata?: DocumentMap;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "locationId": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "metadata": S.optional(DocumentMap),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    displayName: S.optional(S.String),
+    locationId: S.optional(S.String),
+    labels: S.optional(StringMap),
+    metadata: S.optional(DocumentMap),
+  }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://workflows.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://workflows.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsOperationsRequest",
+}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export interface GetProjectsLocationsWorkflowsRequest {
   /** Required. Name of the workflow for which information should be retrieved. Format: projects/{project}/locations/{location}/workflows/{workflow} */
@@ -294,12 +355,21 @@ export interface GetProjectsLocationsWorkflowsRequest {
   /** Optional. The revision of the workflow to retrieve. If the revision_id is empty, the latest revision is retrieved. The format is "000001-a4d", where the first six characters define the zero-padded decimal revision number. They are followed by a hyphen and three hexadecimal characters. */
   revisionId?: string;
 }
-export const GetProjectsLocationsWorkflowsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "revisionId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://workflows.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsWorkflowsRequest" }) as any as S.Schema<GetProjectsLocationsWorkflowsRequest>;
+export const GetProjectsLocationsWorkflowsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      revisionId: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://workflows.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsWorkflowsRequest",
+}) as any as S.Schema<GetProjectsLocationsWorkflowsRequest>;
 
 export interface ListProjectsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
@@ -314,17 +384,27 @@ export interface ListProjectsLocationsRequest {
   name: string;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/locations","baseUrl":"https://workflows.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}/locations",
+      baseUrl: "https://workflows.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsRequest",
+}) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(
+  Location,
+) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -334,11 +414,13 @@ export interface ListLocationsResponse {
   locations?: LocationList;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "locations": S.optional(LocationList),
-}),
-).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    locations: S.optional(LocationList),
+  }),
+).annotate({
+  identifier: "ListLocationsResponse",
+}) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page size. */
@@ -352,18 +434,29 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/operations","baseUrl":"https://workflows.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}/operations",
+        baseUrl: "https://workflows.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsOperationsRequest",
+}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(
+  Operation,
+) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -375,12 +468,14 @@ export interface ListOperationsResponse {
   unreachable?: StringList;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "operations": S.optional(OperationList),
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
+  S.Struct({
+    operations: S.optional(OperationList),
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListOperationsResponse",
+}) as any as S.Schema<ListOperationsResponse>;
 
 export interface ListProjectsLocationsWorkflowsRequest {
   /** Filter to restrict results to specific workflows. For details, see AIP-160. For example, if you are using the Google APIs Explorer: `state="SUCCEEDED"` or `createTime>"2023-08-01" AND state="FAILED"` */
@@ -394,18 +489,29 @@ export interface ListProjectsLocationsWorkflowsRequest {
   /** A page token, received from a previous `ListWorkflows` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListWorkflows` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsWorkflowsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/workflows","baseUrl":"https://workflows.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsWorkflowsRequest" }) as any as S.Schema<ListProjectsLocationsWorkflowsRequest>;
+export const ListProjectsLocationsWorkflowsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      filter: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/workflows",
+        baseUrl: "https://workflows.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsWorkflowsRequest",
+}) as any as S.Schema<ListProjectsLocationsWorkflowsRequest>;
 
 export type WorkflowList = ReadonlyArray<Workflow>;
-export const WorkflowList = /*@__PURE__*/ S.Array(Workflow) as any as S.Schema<WorkflowList>;
+export const WorkflowList = /*@__PURE__*/ S.Array(
+  Workflow,
+) as any as S.Schema<WorkflowList>;
 
 /** Response for the ListWorkflows method. */
 export interface ListWorkflowsResponse {
@@ -417,12 +523,14 @@ export interface ListWorkflowsResponse {
   unreachable?: StringList;
 }
 export const ListWorkflowsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "workflows": S.optional(WorkflowList),
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListWorkflowsResponse" }) as any as S.Schema<ListWorkflowsResponse>;
+  S.Struct({
+    workflows: S.optional(WorkflowList),
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListWorkflowsResponse",
+}) as any as S.Schema<ListWorkflowsResponse>;
 
 export interface ListRevisionsProjectsLocationsWorkflowsRequest {
   /** The maximum number of revisions to return per page. If a value is not specified, a default value of 20 is used. The maximum permitted value is 100. Values greater than 100 are coerced down to 100. */
@@ -432,13 +540,22 @@ export interface ListRevisionsProjectsLocationsWorkflowsRequest {
   /** Required. Workflow for which the revisions should be listed. Format: projects/{project}/locations/{location}/workflows/{workflow} */
   name: string;
 }
-export const ListRevisionsProjectsLocationsWorkflowsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:listRevisions","baseUrl":"https://workflows.googleapis.com/"})),
-).annotate({ identifier: "ListRevisionsProjectsLocationsWorkflowsRequest" }) as any as S.Schema<ListRevisionsProjectsLocationsWorkflowsRequest>;
+export const ListRevisionsProjectsLocationsWorkflowsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}:listRevisions",
+        baseUrl: "https://workflows.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListRevisionsProjectsLocationsWorkflowsRequest",
+  }) as any as S.Schema<ListRevisionsProjectsLocationsWorkflowsRequest>;
 
 /** Response for the ListWorkflowRevisions method. */
 export interface ListWorkflowRevisionsResponse {
@@ -448,11 +565,13 @@ export interface ListWorkflowRevisionsResponse {
   nextPageToken?: string;
 }
 export const ListWorkflowRevisionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "workflows": S.optional(WorkflowList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListWorkflowRevisionsResponse" }) as any as S.Schema<ListWorkflowRevisionsResponse>;
+  S.Struct({
+    workflows: S.optional(WorkflowList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListWorkflowRevisionsResponse",
+}) as any as S.Schema<ListWorkflowRevisionsResponse>;
 
 export interface PatchProjectsLocationsWorkflowsRequest {
   /** The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}. This is a workflow-wide field and is not tied to a specific revision. */
@@ -462,15 +581,29 @@ export interface PatchProjectsLocationsWorkflowsRequest {
   /** Request body */
   body?: Workflow;
 }
-export const PatchProjectsLocationsWorkflowsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Workflow.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://workflows.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsWorkflowsRequest" }) as any as S.Schema<PatchProjectsLocationsWorkflowsRequest>;
+export const PatchProjectsLocationsWorkflowsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Workflow.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://workflows.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "PatchProjectsLocationsWorkflowsRequest",
+}) as any as S.Schema<PatchProjectsLocationsWorkflowsRequest>;
 
-export type CreateProjectsLocationsWorkflowsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsWorkflowsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new workflow. If a workflow with the specified name already exists in the specified project and location, the long running operation returns a ALREADY_EXISTS error. */
 export const createProjectsLocationsWorkflows: API.OperationMethod<
   CreateProjectsLocationsWorkflowsRequest,
@@ -485,7 +618,12 @@ export const createProjectsLocationsWorkflows: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsRequest,
@@ -500,7 +638,12 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsWorkflowsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsWorkflowsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a workflow with the specified name. This method also cancels and deletes all running executions of the workflow. */
 export const deleteProjectsLocationsWorkflows: API.OperationMethod<
   DeleteProjectsLocationsWorkflowsRequest,
@@ -530,7 +673,10 @@ export const getProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -545,7 +691,10 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsWorkflowsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsWorkflowsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a single workflow. */
 export const getProjectsLocationsWorkflows: API.OperationMethod<
   GetProjectsLocationsWorkflowsRequest,
@@ -573,10 +722,16 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -589,10 +744,16 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsWorkflowsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsWorkflowsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists workflows in a given project and location. The default order is not specified. */
 export const listProjectsLocationsWorkflows: API.PaginatedOperationMethod<
   ListProjectsLocationsWorkflowsRequest,
@@ -605,10 +766,16 @@ export const listProjectsLocationsWorkflows: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListRevisionsProjectsLocationsWorkflowsError = NotFound | Forbidden | GcpOpError;
+export type ListRevisionsProjectsLocationsWorkflowsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists revisions for a given workflow. */
 export const listRevisionsProjectsLocationsWorkflows: API.PaginatedOperationMethod<
   ListRevisionsProjectsLocationsWorkflowsRequest,
@@ -621,10 +788,18 @@ export const listRevisionsProjectsLocationsWorkflows: API.PaginatedOperationMeth
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type PatchProjectsLocationsWorkflowsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsWorkflowsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates an existing workflow. Running this method has no impact on already running executions of the workflow. A new revision of the workflow might be created as a result of a successful update operation. In that case, the new revision is used in new workflow executions. */
 export const patchProjectsLocationsWorkflows: API.OperationMethod<
   PatchProjectsLocationsWorkflowsRequest,
@@ -638,4 +813,3 @@ export const patchProjectsLocationsWorkflows: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

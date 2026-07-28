@@ -13,54 +13,74 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
-export type PkixPublicKeySignatureAlgorithmEnum = "SIGNATURE_ALGORITHM_UNSPECIFIED" | "RSA_PSS_2048_SHA256" | "RSA_SIGN_PSS_2048_SHA256" | "RSA_PSS_3072_SHA256" | "RSA_SIGN_PSS_3072_SHA256" | "RSA_PSS_4096_SHA256" | "RSA_SIGN_PSS_4096_SHA256" | "RSA_PSS_4096_SHA512" | "RSA_SIGN_PSS_4096_SHA512" | "RSA_SIGN_PKCS1_2048_SHA256" | "RSA_SIGN_PKCS1_3072_SHA256" | "RSA_SIGN_PKCS1_4096_SHA256" | "RSA_SIGN_PKCS1_4096_SHA512" | "ECDSA_P256_SHA256" | "EC_SIGN_P256_SHA256" | "ECDSA_P384_SHA384" | "EC_SIGN_P384_SHA384" | "ECDSA_P521_SHA512" | "EC_SIGN_P521_SHA512" | "ML_DSA_65";
+export type PkixPublicKeySignatureAlgorithmEnum =
+  | "SIGNATURE_ALGORITHM_UNSPECIFIED"
+  | "RSA_PSS_2048_SHA256"
+  | "RSA_SIGN_PSS_2048_SHA256"
+  | "RSA_PSS_3072_SHA256"
+  | "RSA_SIGN_PSS_3072_SHA256"
+  | "RSA_PSS_4096_SHA256"
+  | "RSA_SIGN_PSS_4096_SHA256"
+  | "RSA_PSS_4096_SHA512"
+  | "RSA_SIGN_PSS_4096_SHA512"
+  | "RSA_SIGN_PKCS1_2048_SHA256"
+  | "RSA_SIGN_PKCS1_3072_SHA256"
+  | "RSA_SIGN_PKCS1_4096_SHA256"
+  | "RSA_SIGN_PKCS1_4096_SHA512"
+  | "ECDSA_P256_SHA256"
+  | "EC_SIGN_P256_SHA256"
+  | "ECDSA_P384_SHA384"
+  | "EC_SIGN_P384_SHA384"
+  | "ECDSA_P521_SHA512"
+  | "EC_SIGN_P521_SHA512"
+  | "ML_DSA_65";
 export const PkixPublicKeySignatureAlgorithmEnum = /*@__PURE__*/ S.String;
 
 /** A public key in the PkixPublicKey format (see https://tools.ietf.org/html/rfc5280#section-4.1.2.7 for details). Public keys of this type are typically textually encoded using the PEM format. */
@@ -71,10 +91,10 @@ export interface PkixPublicKey {
   publicKeyPem?: string;
 }
 export const PkixPublicKey = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "signatureAlgorithm": S.optional(PkixPublicKeySignatureAlgorithmEnum),
-  "publicKeyPem": S.optional(S.String),
-}),
+  S.Struct({
+    signatureAlgorithm: S.optional(PkixPublicKeySignatureAlgorithmEnum),
+    publicKeyPem: S.optional(S.String),
+  }),
 ).annotate({ identifier: "PkixPublicKey" }) as any as S.Schema<PkixPublicKey>;
 
 /** An attestor public key that will be used to verify attestations signed by this attestor. */
@@ -89,16 +109,20 @@ export interface AttestorPublicKey {
   pkixPublicKey?: PkixPublicKey;
 }
 export const AttestorPublicKey = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.optional(S.String),
-  "asciiArmoredPgpPublicKey": S.optional(S.String),
-  "comment": S.optional(S.String),
-  "pkixPublicKey": S.optional(PkixPublicKey),
-}),
-).annotate({ identifier: "AttestorPublicKey" }) as any as S.Schema<AttestorPublicKey>;
+  S.Struct({
+    id: S.optional(S.String),
+    asciiArmoredPgpPublicKey: S.optional(S.String),
+    comment: S.optional(S.String),
+    pkixPublicKey: S.optional(PkixPublicKey),
+  }),
+).annotate({
+  identifier: "AttestorPublicKey",
+}) as any as S.Schema<AttestorPublicKey>;
 
 export type AttestorPublicKeyList = ReadonlyArray<AttestorPublicKey>;
-export const AttestorPublicKeyList = /*@__PURE__*/ S.Array(AttestorPublicKey) as any as S.Schema<AttestorPublicKeyList>;
+export const AttestorPublicKeyList = /*@__PURE__*/ S.Array(
+  AttestorPublicKey,
+) as any as S.Schema<AttestorPublicKeyList>;
 
 /** An user owned drydock note references a Drydock ATTESTATION_AUTHORITY Note created by the user. */
 export interface UserOwnedDrydockNote {
@@ -110,12 +134,14 @@ export interface UserOwnedDrydockNote {
   noteReference?: string;
 }
 export const UserOwnedDrydockNote = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "delegationServiceAccountEmail": S.optional(S.String),
-  "publicKeys": S.optional(AttestorPublicKeyList),
-  "noteReference": S.optional(S.String),
-}),
-).annotate({ identifier: "UserOwnedDrydockNote" }) as any as S.Schema<UserOwnedDrydockNote>;
+  S.Struct({
+    delegationServiceAccountEmail: S.optional(S.String),
+    publicKeys: S.optional(AttestorPublicKeyList),
+    noteReference: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UserOwnedDrydockNote",
+}) as any as S.Schema<UserOwnedDrydockNote>;
 
 /** An attestor that attests to container image artifacts. An existing attestor cannot be modified except where indicated. */
 export interface Attestor {
@@ -131,13 +157,13 @@ export interface Attestor {
   description?: string;
 }
 export const Attestor = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "userOwnedDrydockNote": S.optional(UserOwnedDrydockNote),
-  "updateTime": S.optional(S.String),
-  "name": S.optional(S.String),
-  "etag": S.optional(S.String),
-  "description": S.optional(S.String),
-}),
+  S.Struct({
+    userOwnedDrydockNote: S.optional(UserOwnedDrydockNote),
+    updateTime: S.optional(S.String),
+    name: S.optional(S.String),
+    etag: S.optional(S.String),
+    description: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Attestor" }) as any as S.Schema<Attestor>;
 
 export interface CreateProjectsAttestorsRequest {
@@ -149,28 +175,44 @@ export interface CreateProjectsAttestorsRequest {
   body?: Attestor;
 }
 export const CreateProjectsAttestorsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "attestorId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Attestor.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/attestors","baseUrl":"https://binaryauthorization.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsAttestorsRequest" }) as any as S.Schema<CreateProjectsAttestorsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    attestorId: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(Attestor.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1/{+parent}/attestors",
+      baseUrl: "https://binaryauthorization.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateProjectsAttestorsRequest",
+}) as any as S.Schema<CreateProjectsAttestorsRequest>;
 
 export interface DeleteProjectsAttestorsRequest {
   /** Required. The name of the attestors to delete, in the format `projects/*\/attestors/*`. */
   name: string;
 }
 export const DeleteProjectsAttestorsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://binaryauthorization.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsAttestorsRequest" }) as any as S.Schema<DeleteProjectsAttestorsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1beta1/{+name}",
+      baseUrl: "https://binaryauthorization.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteProjectsAttestorsRequest",
+}) as any as S.Schema<DeleteProjectsAttestorsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 export interface GetIamPolicyProjectsAttestorsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -178,12 +220,21 @@ export interface GetIamPolicyProjectsAttestorsRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsAttestorsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+resource}:getIamPolicy","baseUrl":"https://binaryauthorization.googleapis.com/"})),
-).annotate({ identifier: "GetIamPolicyProjectsAttestorsRequest" }) as any as S.Schema<GetIamPolicyProjectsAttestorsRequest>;
+export const GetIamPolicyProjectsAttestorsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+resource}:getIamPolicy",
+        baseUrl: "https://binaryauthorization.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetIamPolicyProjectsAttestorsRequest",
+}) as any as S.Schema<GetIamPolicyProjectsAttestorsRequest>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -197,16 +248,18 @@ export interface Expr {
   description?: string;
 }
 export const Expr = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "expression": S.optional(S.String),
-  "location": S.optional(S.String),
-  "title": S.optional(S.String),
-  "description": S.optional(S.String),
-}),
+  S.Struct({
+    expression: S.optional(S.String),
+    location: S.optional(S.String),
+    title: S.optional(S.String),
+    description: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** Associates `members`, or principals, with a `role`. */
 export interface Binding {
@@ -218,15 +271,17 @@ export interface Binding {
   members?: StringList;
 }
 export const Binding = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "condition": S.optional(Expr),
-  "role": S.optional(S.String),
-  "members": S.optional(StringList),
-}),
+  S.Struct({
+    condition: S.optional(Expr),
+    role: S.optional(S.String),
+    members: S.optional(StringList),
+  }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = ReadonlyArray<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+export const BindingList = /*@__PURE__*/ S.Array(
+  Binding,
+) as any as S.Schema<BindingList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface IamPolicy {
@@ -238,11 +293,11 @@ export interface IamPolicy {
   bindings?: BindingList;
 }
 export const IamPolicy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "etag": S.optional(S.String),
-  "version": S.optional(S.Number),
-  "bindings": S.optional(BindingList),
-}),
+  S.Struct({
+    etag: S.optional(S.String),
+    version: S.optional(S.Number),
+    bindings: S.optional(BindingList),
+  }),
 ).annotate({ identifier: "IamPolicy" }) as any as S.Schema<IamPolicy>;
 
 export interface GetIamPolicyProjectsPolicyRequest {
@@ -252,21 +307,37 @@ export interface GetIamPolicyProjectsPolicyRequest {
   "options.requestedPolicyVersion"?: number;
 }
 export const GetIamPolicyProjectsPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+resource}:getIamPolicy","baseUrl":"https://binaryauthorization.googleapis.com/"})),
-).annotate({ identifier: "GetIamPolicyProjectsPolicyRequest" }) as any as S.Schema<GetIamPolicyProjectsPolicyRequest>;
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+resource}:getIamPolicy",
+      baseUrl: "https://binaryauthorization.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetIamPolicyProjectsPolicyRequest",
+}) as any as S.Schema<GetIamPolicyProjectsPolicyRequest>;
 
 export interface GetPolicyProjectsRequest {
   /** Required. The resource name of the policy to retrieve, in the format `projects/*\/policy`. */
   name: string;
 }
 export const GetPolicyProjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://binaryauthorization.googleapis.com/"})),
-).annotate({ identifier: "GetPolicyProjectsRequest" }) as any as S.Schema<GetPolicyProjectsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+name}",
+      baseUrl: "https://binaryauthorization.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetPolicyProjectsRequest",
+}) as any as S.Schema<GetPolicyProjectsRequest>;
 
 /** An admission allowlist pattern exempts images from checks by admission rules. */
 export interface AdmissionWhitelistPattern {
@@ -274,18 +345,30 @@ export interface AdmissionWhitelistPattern {
   namePattern?: string;
 }
 export const AdmissionWhitelistPattern = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "namePattern": S.optional(S.String),
-}),
-).annotate({ identifier: "AdmissionWhitelistPattern" }) as any as S.Schema<AdmissionWhitelistPattern>;
+  S.Struct({
+    namePattern: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AdmissionWhitelistPattern",
+}) as any as S.Schema<AdmissionWhitelistPattern>;
 
-export type AdmissionWhitelistPatternList = ReadonlyArray<AdmissionWhitelistPattern>;
-export const AdmissionWhitelistPatternList = /*@__PURE__*/ S.Array(AdmissionWhitelistPattern) as any as S.Schema<AdmissionWhitelistPatternList>;
+export type AdmissionWhitelistPatternList =
+  ReadonlyArray<AdmissionWhitelistPattern>;
+export const AdmissionWhitelistPatternList = /*@__PURE__*/ S.Array(
+  AdmissionWhitelistPattern,
+) as any as S.Schema<AdmissionWhitelistPatternList>;
 
-export type AdmissionRuleEvaluationModeEnum = "EVALUATION_MODE_UNSPECIFIED" | "ALWAYS_ALLOW" | "REQUIRE_ATTESTATION" | "ALWAYS_DENY";
+export type AdmissionRuleEvaluationModeEnum =
+  | "EVALUATION_MODE_UNSPECIFIED"
+  | "ALWAYS_ALLOW"
+  | "REQUIRE_ATTESTATION"
+  | "ALWAYS_DENY";
 export const AdmissionRuleEvaluationModeEnum = /*@__PURE__*/ S.String;
 
-export type AdmissionRuleEnforcementModeEnum = "ENFORCEMENT_MODE_UNSPECIFIED" | "ENFORCED_BLOCK_AND_AUDIT_LOG" | "DRYRUN_AUDIT_LOG_ONLY";
+export type AdmissionRuleEnforcementModeEnum =
+  | "ENFORCEMENT_MODE_UNSPECIFIED"
+  | "ENFORCED_BLOCK_AND_AUDIT_LOG"
+  | "DRYRUN_AUDIT_LOG_ONLY";
 export const AdmissionRuleEnforcementModeEnum = /*@__PURE__*/ S.String;
 
 /** An admission rule specifies either that all container images used in a pod creation request must be attested to by one or more attestors, that all pod creations will be allowed, or that all pod creations will be denied. Images matching an admission allowlist pattern are exempted from admission rules and will never block a pod creation. */
@@ -297,17 +380,23 @@ export interface AdmissionRule {
   enforcementMode?: AdmissionRuleEnforcementModeEnum;
 }
 export const AdmissionRule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requireAttestationsBy": S.optional(StringList),
-  "evaluationMode": S.optional(AdmissionRuleEvaluationModeEnum),
-  "enforcementMode": S.optional(AdmissionRuleEnforcementModeEnum),
-}),
+  S.Struct({
+    requireAttestationsBy: S.optional(StringList),
+    evaluationMode: S.optional(AdmissionRuleEvaluationModeEnum),
+    enforcementMode: S.optional(AdmissionRuleEnforcementModeEnum),
+  }),
 ).annotate({ identifier: "AdmissionRule" }) as any as S.Schema<AdmissionRule>;
 
 export type AdmissionRuleMap = { [key: string]: AdmissionRule | undefined };
-export const AdmissionRuleMap = /*@__PURE__*/ S.Record(S.String, AdmissionRule) as any as S.Schema<AdmissionRuleMap>;
+export const AdmissionRuleMap = /*@__PURE__*/ S.Record(
+  S.String,
+  AdmissionRule,
+) as any as S.Schema<AdmissionRuleMap>;
 
-export type PolicyGlobalPolicyEvaluationModeEnum = "GLOBAL_POLICY_EVALUATION_MODE_UNSPECIFIED" | "ENABLE" | "DISABLE";
+export type PolicyGlobalPolicyEvaluationModeEnum =
+  | "GLOBAL_POLICY_EVALUATION_MODE_UNSPECIFIED"
+  | "ENABLE"
+  | "DISABLE";
 export const PolicyGlobalPolicyEvaluationModeEnum = /*@__PURE__*/ S.String;
 
 /** A policy for Binary Authorization. */
@@ -336,19 +425,21 @@ export interface Policy {
   defaultAdmissionRule?: AdmissionRule;
 }
 export const Policy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "admissionWhitelistPatterns": S.optional(AdmissionWhitelistPatternList),
-  "clusterAdmissionRules": S.optional(AdmissionRuleMap),
-  "updateTime": S.optional(S.String),
-  "name": S.optional(S.String),
-  "etag": S.optional(S.String),
-  "description": S.optional(S.String),
-  "globalPolicyEvaluationMode": S.optional(PolicyGlobalPolicyEvaluationModeEnum),
-  "kubernetesServiceAccountAdmissionRules": S.optional(AdmissionRuleMap),
-  "kubernetesNamespaceAdmissionRules": S.optional(AdmissionRuleMap),
-  "istioServiceIdentityAdmissionRules": S.optional(AdmissionRuleMap),
-  "defaultAdmissionRule": S.optional(AdmissionRule),
-}),
+  S.Struct({
+    admissionWhitelistPatterns: S.optional(AdmissionWhitelistPatternList),
+    clusterAdmissionRules: S.optional(AdmissionRuleMap),
+    updateTime: S.optional(S.String),
+    name: S.optional(S.String),
+    etag: S.optional(S.String),
+    description: S.optional(S.String),
+    globalPolicyEvaluationMode: S.optional(
+      PolicyGlobalPolicyEvaluationModeEnum,
+    ),
+    kubernetesServiceAccountAdmissionRules: S.optional(AdmissionRuleMap),
+    kubernetesNamespaceAdmissionRules: S.optional(AdmissionRuleMap),
+    istioServiceIdentityAdmissionRules: S.optional(AdmissionRuleMap),
+    defaultAdmissionRule: S.optional(AdmissionRule),
+  }),
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
 
 export interface GetPolicySystempolicyRequest {
@@ -356,20 +447,36 @@ export interface GetPolicySystempolicyRequest {
   name: string;
 }
 export const GetPolicySystempolicyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://binaryauthorization.googleapis.com/"})),
-).annotate({ identifier: "GetPolicySystempolicyRequest" }) as any as S.Schema<GetPolicySystempolicyRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+name}",
+      baseUrl: "https://binaryauthorization.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetPolicySystempolicyRequest",
+}) as any as S.Schema<GetPolicySystempolicyRequest>;
 
 export interface GetProjectsAttestorsRequest {
   /** Required. The name of the attestor to retrieve, in the format `projects/*\/attestors/*`. */
   name: string;
 }
 export const GetProjectsAttestorsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://binaryauthorization.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsAttestorsRequest" }) as any as S.Schema<GetProjectsAttestorsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+name}",
+      baseUrl: "https://binaryauthorization.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsAttestorsRequest",
+}) as any as S.Schema<GetProjectsAttestorsRequest>;
 
 export interface ListProjectsAttestorsRequest {
   /** Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. */
@@ -380,15 +487,25 @@ export interface ListProjectsAttestorsRequest {
   pageToken?: string;
 }
 export const ListProjectsAttestorsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/attestors","baseUrl":"https://binaryauthorization.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsAttestorsRequest" }) as any as S.Schema<ListProjectsAttestorsRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+parent}/attestors",
+      baseUrl: "https://binaryauthorization.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsAttestorsRequest",
+}) as any as S.Schema<ListProjectsAttestorsRequest>;
 
 export type AttestorList = ReadonlyArray<Attestor>;
-export const AttestorList = /*@__PURE__*/ S.Array(Attestor) as any as S.Schema<AttestorList>;
+export const AttestorList = /*@__PURE__*/ S.Array(
+  Attestor,
+) as any as S.Schema<AttestorList>;
 
 /** Response message for BinauthzManagementService.ListAttestors. */
 export interface ListAttestorsResponse {
@@ -398,11 +515,13 @@ export interface ListAttestorsResponse {
   attestors?: AttestorList;
 }
 export const ListAttestorsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "attestors": S.optional(AttestorList),
-}),
-).annotate({ identifier: "ListAttestorsResponse" }) as any as S.Schema<ListAttestorsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    attestors: S.optional(AttestorList),
+  }),
+).annotate({
+  identifier: "ListAttestorsResponse",
+}) as any as S.Schema<ListAttestorsResponse>;
 
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
@@ -410,10 +529,12 @@ export interface SetIamPolicyRequest {
   policy?: IamPolicy;
 }
 export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "policy": S.optional(IamPolicy),
-}),
-).annotate({ identifier: "SetIamPolicyRequest" }) as any as S.Schema<SetIamPolicyRequest>;
+  S.Struct({
+    policy: S.optional(IamPolicy),
+  }),
+).annotate({
+  identifier: "SetIamPolicyRequest",
+}) as any as S.Schema<SetIamPolicyRequest>;
 
 export interface SetIamPolicyProjectsAttestorsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -421,12 +542,21 @@ export interface SetIamPolicyProjectsAttestorsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsAttestorsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+resource}:setIamPolicy","baseUrl":"https://binaryauthorization.googleapis.com/"})),
-).annotate({ identifier: "SetIamPolicyProjectsAttestorsRequest" }) as any as S.Schema<SetIamPolicyProjectsAttestorsRequest>;
+export const SetIamPolicyProjectsAttestorsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+resource}:setIamPolicy",
+        baseUrl: "https://binaryauthorization.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "SetIamPolicyProjectsAttestorsRequest",
+}) as any as S.Schema<SetIamPolicyProjectsAttestorsRequest>;
 
 export interface SetIamPolicyProjectsPolicyRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -435,11 +565,19 @@ export interface SetIamPolicyProjectsPolicyRequest {
   body?: SetIamPolicyRequest;
 }
 export const SetIamPolicyProjectsPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+resource}:setIamPolicy","baseUrl":"https://binaryauthorization.googleapis.com/"})),
-).annotate({ identifier: "SetIamPolicyProjectsPolicyRequest" }) as any as S.Schema<SetIamPolicyProjectsPolicyRequest>;
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1/{+resource}:setIamPolicy",
+      baseUrl: "https://binaryauthorization.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SetIamPolicyProjectsPolicyRequest",
+}) as any as S.Schema<SetIamPolicyProjectsPolicyRequest>;
 
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
@@ -447,10 +585,12 @@ export interface TestIamPermissionsRequest {
   permissions?: StringList;
 }
 export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "permissions": S.optional(StringList),
-}),
-).annotate({ identifier: "TestIamPermissionsRequest" }) as any as S.Schema<TestIamPermissionsRequest>;
+  S.Struct({
+    permissions: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "TestIamPermissionsRequest",
+}) as any as S.Schema<TestIamPermissionsRequest>;
 
 export interface TestIamPermissionsProjectsAttestorsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -458,12 +598,21 @@ export interface TestIamPermissionsProjectsAttestorsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsAttestorsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+resource}:testIamPermissions","baseUrl":"https://binaryauthorization.googleapis.com/"})),
-).annotate({ identifier: "TestIamPermissionsProjectsAttestorsRequest" }) as any as S.Schema<TestIamPermissionsProjectsAttestorsRequest>;
+export const TestIamPermissionsProjectsAttestorsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+resource}:testIamPermissions",
+        baseUrl: "https://binaryauthorization.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "TestIamPermissionsProjectsAttestorsRequest",
+  }) as any as S.Schema<TestIamPermissionsProjectsAttestorsRequest>;
 
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
@@ -471,10 +620,12 @@ export interface TestIamPermissionsResponse {
   permissions?: StringList;
 }
 export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "permissions": S.optional(StringList),
-}),
-).annotate({ identifier: "TestIamPermissionsResponse" }) as any as S.Schema<TestIamPermissionsResponse>;
+  S.Struct({
+    permissions: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "TestIamPermissionsResponse",
+}) as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsPolicyRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -482,12 +633,21 @@ export interface TestIamPermissionsProjectsPolicyRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+resource}:testIamPermissions","baseUrl":"https://binaryauthorization.googleapis.com/"})),
-).annotate({ identifier: "TestIamPermissionsProjectsPolicyRequest" }) as any as S.Schema<TestIamPermissionsProjectsPolicyRequest>;
+export const TestIamPermissionsProjectsPolicyRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+resource}:testIamPermissions",
+        baseUrl: "https://binaryauthorization.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "TestIamPermissionsProjectsPolicyRequest",
+}) as any as S.Schema<TestIamPermissionsProjectsPolicyRequest>;
 
 export interface UpdatePolicyProjectsRequest {
   /** Output only. The resource name, in the format `projects/*\/policy`. There is at most one policy per project. */
@@ -496,11 +656,19 @@ export interface UpdatePolicyProjectsRequest {
   body?: Policy;
 }
 export const UpdatePolicyProjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(Policy.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"v1beta1/{+name}","baseUrl":"https://binaryauthorization.googleapis.com/"})),
-).annotate({ identifier: "UpdatePolicyProjectsRequest" }) as any as S.Schema<UpdatePolicyProjectsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(Policy.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "v1beta1/{+name}",
+      baseUrl: "https://binaryauthorization.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdatePolicyProjectsRequest",
+}) as any as S.Schema<UpdatePolicyProjectsRequest>;
 
 export interface UpdateProjectsAttestorsRequest {
   /** Required. The resource name, in the format: `projects/*\/attestors/*`. This field may not be updated. */
@@ -509,20 +677,28 @@ export interface UpdateProjectsAttestorsRequest {
   body?: Attestor;
 }
 export const UpdateProjectsAttestorsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(Attestor.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"v1beta1/{+name}","baseUrl":"https://binaryauthorization.googleapis.com/"})),
-).annotate({ identifier: "UpdateProjectsAttestorsRequest" }) as any as S.Schema<UpdateProjectsAttestorsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(Attestor.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "v1beta1/{+name}",
+      baseUrl: "https://binaryauthorization.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateProjectsAttestorsRequest",
+}) as any as S.Schema<UpdateProjectsAttestorsRequest>;
 
 export interface Jwt {
   /** The compact encoding of a JWS, which is always three base64 encoded strings joined by periods. For details, see: https://tools.ietf.org/html/rfc7515.html#section-3.1 */
   compactJwt?: string;
 }
 export const Jwt = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "compactJwt": S.optional(S.String),
-}),
+  S.Struct({
+    compactJwt: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Jwt" }) as any as S.Schema<Jwt>;
 
 export type JwtList = ReadonlyArray<Jwt>;
@@ -536,14 +712,16 @@ export interface Signature {
   publicKeyId?: string;
 }
 export const Signature = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "signature": S.optional(S.String),
-  "publicKeyId": S.optional(S.String),
-}),
+  S.Struct({
+    signature: S.optional(S.String),
+    publicKeyId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Signature" }) as any as S.Schema<Signature>;
 
 export type SignatureList = ReadonlyArray<Signature>;
-export const SignatureList = /*@__PURE__*/ S.Array(Signature) as any as S.Schema<SignatureList>;
+export const SignatureList = /*@__PURE__*/ S.Array(
+  Signature,
+) as any as S.Schema<SignatureList>;
 
 /** Occurrence that represents a single "attestation". The authenticity of an attestation can be verified using the attached signature. If the verifier trusts the public key of the signer, then verifying the signature is sufficient to establish trust. In this circumstance, the authority to which this attestation is attached is primarily useful for lookup (how to find this attestation if you already know the authority and artifact to be verified) and intent (for which authority this attestation was intended to sign. */
 export interface AttestationOccurrence {
@@ -555,12 +733,14 @@ export interface AttestationOccurrence {
   signatures?: SignatureList;
 }
 export const AttestationOccurrence = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "serializedPayload": S.optional(S.String),
-  "jwts": S.optional(JwtList),
-  "signatures": S.optional(SignatureList),
-}),
-).annotate({ identifier: "AttestationOccurrence" }) as any as S.Schema<AttestationOccurrence>;
+  S.Struct({
+    serializedPayload: S.optional(S.String),
+    jwts: S.optional(JwtList),
+    signatures: S.optional(SignatureList),
+  }),
+).annotate({
+  identifier: "AttestationOccurrence",
+}) as any as S.Schema<AttestationOccurrence>;
 
 /** Request message for ValidationHelperV1.ValidateAttestationOccurrence. */
 export interface ValidateAttestationOccurrenceRequest {
@@ -571,13 +751,16 @@ export interface ValidateAttestationOccurrenceRequest {
   /** Required. The resource name of the Note to which the containing Occurrence is associated. */
   occurrenceNote?: string;
 }
-export const ValidateAttestationOccurrenceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "occurrenceResourceUri": S.optional(S.String),
-  "attestation": S.optional(AttestationOccurrence),
-  "occurrenceNote": S.optional(S.String),
-}),
-).annotate({ identifier: "ValidateAttestationOccurrenceRequest" }) as any as S.Schema<ValidateAttestationOccurrenceRequest>;
+export const ValidateAttestationOccurrenceRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      occurrenceResourceUri: S.optional(S.String),
+      attestation: S.optional(AttestationOccurrence),
+      occurrenceNote: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ValidateAttestationOccurrenceRequest",
+}) as any as S.Schema<ValidateAttestationOccurrenceRequest>;
 
 export interface ValidateAttestationOccurrenceProjectsAttestorsRequest {
   /** Required. The resource name of the Attestor of the occurrence, in the format `projects/*\/attestors/*`. */
@@ -585,15 +768,28 @@ export interface ValidateAttestationOccurrenceProjectsAttestorsRequest {
   /** Request body */
   body?: ValidateAttestationOccurrenceRequest;
 }
-export const ValidateAttestationOccurrenceProjectsAttestorsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "attestor": S.String.pipe(T.Label()),
-  "body": S.optional(ValidateAttestationOccurrenceRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+attestor}:validateAttestationOccurrence","baseUrl":"https://binaryauthorization.googleapis.com/"})),
-).annotate({ identifier: "ValidateAttestationOccurrenceProjectsAttestorsRequest" }) as any as S.Schema<ValidateAttestationOccurrenceProjectsAttestorsRequest>;
+export const ValidateAttestationOccurrenceProjectsAttestorsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attestor: S.String.pipe(T.Label()),
+      body: S.optional(ValidateAttestationOccurrenceRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+attestor}:validateAttestationOccurrence",
+        baseUrl: "https://binaryauthorization.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ValidateAttestationOccurrenceProjectsAttestorsRequest",
+  }) as any as S.Schema<ValidateAttestationOccurrenceProjectsAttestorsRequest>;
 
-export type ValidateAttestationOccurrenceResponseResultEnum = "RESULT_UNSPECIFIED" | "VERIFIED" | "ATTESTATION_NOT_VERIFIABLE";
-export const ValidateAttestationOccurrenceResponseResultEnum = /*@__PURE__*/ S.String;
+export type ValidateAttestationOccurrenceResponseResultEnum =
+  | "RESULT_UNSPECIFIED"
+  | "VERIFIED"
+  | "ATTESTATION_NOT_VERIFIABLE";
+export const ValidateAttestationOccurrenceResponseResultEnum =
+  /*@__PURE__*/ S.String;
 
 /** Response message for ValidationHelperV1.ValidateAttestationOccurrence. */
 export interface ValidateAttestationOccurrenceResponse {
@@ -602,14 +798,22 @@ export interface ValidateAttestationOccurrenceResponse {
   /** The reason for denial if the Attestation couldn't be validated. */
   denialReason?: string;
 }
-export const ValidateAttestationOccurrenceResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "result": S.optional(ValidateAttestationOccurrenceResponseResultEnum),
-  "denialReason": S.optional(S.String),
-}),
-).annotate({ identifier: "ValidateAttestationOccurrenceResponse" }) as any as S.Schema<ValidateAttestationOccurrenceResponse>;
+export const ValidateAttestationOccurrenceResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      result: S.optional(ValidateAttestationOccurrenceResponseResultEnum),
+      denialReason: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ValidateAttestationOccurrenceResponse",
+}) as any as S.Schema<ValidateAttestationOccurrenceResponse>;
 
-export type CreateProjectsAttestorsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsAttestorsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates an attestor, and returns a copy of the new attestor. Returns NOT_FOUND if the project does not exist, INVALID_ARGUMENT if the request is malformed, ALREADY_EXISTS if the attestor already exists. */
 export const createProjectsAttestors: API.OperationMethod<
   CreateProjectsAttestorsRequest,
@@ -624,7 +828,12 @@ export const createProjectsAttestors: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsAttestorsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsAttestorsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes an attestor. Returns NOT_FOUND if the attestor does not exist. */
 export const deleteProjectsAttestors: API.OperationMethod<
   DeleteProjectsAttestorsRequest,
@@ -639,7 +848,10 @@ export const deleteProjectsAttestors: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsAttestorsError = NotFound | Forbidden | GcpOpError;
+export type GetIamPolicyProjectsAttestorsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsAttestors: API.OperationMethod<
   GetIamPolicyProjectsAttestorsRequest,
@@ -727,10 +939,18 @@ export const listProjectsAttestors: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type SetIamPolicyProjectsAttestorsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetIamPolicyProjectsAttestorsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsAttestors: API.OperationMethod<
   SetIamPolicyProjectsAttestorsRequest,
@@ -745,7 +965,12 @@ export const setIamPolicyProjectsAttestors: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsPolicyError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetIamPolicyProjectsPolicyError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsPolicy: API.OperationMethod<
   SetIamPolicyProjectsPolicyRequest,
@@ -760,7 +985,12 @@ export const setIamPolicyProjectsPolicy: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsAttestorsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TestIamPermissionsProjectsAttestorsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsAttestors: API.OperationMethod<
   TestIamPermissionsProjectsAttestorsRequest,
@@ -775,7 +1005,12 @@ export const testIamPermissionsProjectsAttestors: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsPolicyError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TestIamPermissionsProjectsPolicyError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsPolicy: API.OperationMethod<
   TestIamPermissionsProjectsPolicyRequest,
@@ -790,7 +1025,12 @@ export const testIamPermissionsProjectsPolicy: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdatePolicyProjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdatePolicyProjectsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates or updates a project's policy, and returns a copy of the new policy. A policy is always updated as a whole, to avoid race conditions with concurrent policy enforcement (or management!) requests. Returns NOT_FOUND if the project does not exist, INVALID_ARGUMENT if the request is malformed. */
 export const updatePolicyProjects: API.OperationMethod<
   UpdatePolicyProjectsRequest,
@@ -805,7 +1045,12 @@ export const updatePolicyProjects: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateProjectsAttestorsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateProjectsAttestorsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates an attestor. Returns NOT_FOUND if the attestor does not exist. */
 export const updateProjectsAttestors: API.OperationMethod<
   UpdateProjectsAttestorsRequest,
@@ -820,7 +1065,12 @@ export const updateProjectsAttestors: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ValidateAttestationOccurrenceProjectsAttestorsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ValidateAttestationOccurrenceProjectsAttestorsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Returns whether the given `Attestation` for the given image URI was signed by the given `Attestor` */
 export const validateAttestationOccurrenceProjectsAttestors: API.OperationMethod<
   ValidateAttestationOccurrenceProjectsAttestorsRequest,
@@ -834,4 +1084,3 @@ export const validateAttestationOccurrenceProjectsAttestors: API.OperationMethod
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

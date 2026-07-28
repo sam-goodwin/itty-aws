@@ -13,58 +13,60 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 /** The request message for Operations.CancelOperation. */
 export interface GoogleLongrunningCancelOperationRequest {}
-export const GoogleLongrunningCancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "GoogleLongrunningCancelOperationRequest" }) as any as S.Schema<GoogleLongrunningCancelOperationRequest>;
+export const GoogleLongrunningCancelOperationRequest = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "GoogleLongrunningCancelOperationRequest",
+}) as any as S.Schema<GoogleLongrunningCancelOperationRequest>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -72,21 +74,35 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: GoogleLongrunningCancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "CancelProjectsLocationsOperationsRequest" }) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:cancel",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CancelProjectsLocationsOperationsRequest",
+}) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
 /** A representation of the ChannelConnection resource. A ChannelConnection is a resource which event providers create during the activation process to establish a connection between the provider and the subscriber channel. */
 export interface ChannelConnection {
@@ -106,16 +122,18 @@ export interface ChannelConnection {
   channel?: string;
 }
 export const ChannelConnection = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "createTime": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "name": S.optional(S.String),
-  "activationToken": S.optional(S.String),
-  "uid": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "channel": S.optional(S.String),
-}),
-).annotate({ identifier: "ChannelConnection" }) as any as S.Schema<ChannelConnection>;
+  S.Struct({
+    createTime: S.optional(S.String),
+    labels: S.optional(StringMap),
+    name: S.optional(S.String),
+    activationToken: S.optional(S.String),
+    uid: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    channel: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ChannelConnection",
+}) as any as S.Schema<ChannelConnection>;
 
 export interface CreateProjectsLocationsChannelConnectionsRequest {
   /** Required. The parent collection in which to add this channel connection. */
@@ -125,19 +143,33 @@ export interface CreateProjectsLocationsChannelConnectionsRequest {
   /** Request body */
   body?: ChannelConnection;
 }
-export const CreateProjectsLocationsChannelConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "channelConnectionId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(ChannelConnection.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/channelConnections","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsChannelConnectionsRequest" }) as any as S.Schema<CreateProjectsLocationsChannelConnectionsRequest>;
+export const CreateProjectsLocationsChannelConnectionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      channelConnectionId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(ChannelConnection.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/channelConnections",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsChannelConnectionsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsChannelConnectionsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface GoogleRpcStatus {
@@ -149,12 +181,14 @@ export interface GoogleRpcStatus {
   message?: string;
 }
 export const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(S.Number),
-  "details": S.optional(DocumentMapList),
-  "message": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleRpcStatus" }) as any as S.Schema<GoogleRpcStatus>;
+  S.Struct({
+    code: S.optional(S.Number),
+    details: S.optional(DocumentMapList),
+    message: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleRpcStatus",
+}) as any as S.Schema<GoogleRpcStatus>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface GoogleLongrunningOperation {
@@ -170,16 +204,22 @@ export interface GoogleLongrunningOperation {
   response?: DocumentMap;
 }
 export const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "error": S.optional(GoogleRpcStatus),
-  "done": S.optional(S.Boolean),
-  "metadata": S.optional(DocumentMap),
-  "name": S.optional(S.String),
-  "response": S.optional(DocumentMap),
-}),
-).annotate({ identifier: "GoogleLongrunningOperation" }) as any as S.Schema<GoogleLongrunningOperation>;
+  S.Struct({
+    error: S.optional(GoogleRpcStatus),
+    done: S.optional(S.Boolean),
+    metadata: S.optional(DocumentMap),
+    name: S.optional(S.String),
+    response: S.optional(DocumentMap),
+  }),
+).annotate({
+  identifier: "GoogleLongrunningOperation",
+}) as any as S.Schema<GoogleLongrunningOperation>;
 
-export type ChannelStateEnum = "STATE_UNSPECIFIED" | "PENDING" | "ACTIVE" | "INACTIVE";
+export type ChannelStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "PENDING"
+  | "ACTIVE"
+  | "INACTIVE";
 export const ChannelStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a subscriber's intent to receive events from an event provider. Published events are delivered using the transport associated with the Channel resource. A channel is associated with exactly one event provider. */
@@ -208,19 +248,19 @@ export interface Channel {
   uid?: string;
 }
 export const Channel = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "activationToken": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "provider": S.optional(S.String),
-  "cryptoKeyName": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "state": S.optional(ChannelStateEnum),
-  "satisfiesPzs": S.optional(S.Boolean),
-  "updateTime": S.optional(S.String),
-  "pubsubTopic": S.optional(S.String),
-  "uid": S.optional(S.String),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    activationToken: S.optional(S.String),
+    createTime: S.optional(S.String),
+    provider: S.optional(S.String),
+    cryptoKeyName: S.optional(S.String),
+    labels: S.optional(StringMap),
+    state: S.optional(ChannelStateEnum),
+    satisfiesPzs: S.optional(S.Boolean),
+    updateTime: S.optional(S.String),
+    pubsubTopic: S.optional(S.String),
+    uid: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Channel" }) as any as S.Schema<Channel>;
 
 export interface CreateProjectsLocationsChannelsRequest {
@@ -233,14 +273,23 @@ export interface CreateProjectsLocationsChannelsRequest {
   /** Request body */
   body?: Channel;
 }
-export const CreateProjectsLocationsChannelsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "channelId": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(Channel.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/channels","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsChannelsRequest" }) as any as S.Schema<CreateProjectsLocationsChannelsRequest>;
+export const CreateProjectsLocationsChannelsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      channelId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(Channel.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/channels",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateProjectsLocationsChannelsRequest",
+}) as any as S.Schema<CreateProjectsLocationsChannelsRequest>;
 
 /** An enrollment represents a subscription for messages on a particular message bus. It defines a matching criteria for messages on the bus and the subscriber endpoint where matched messages should be delivered. */
 export interface Enrollment {
@@ -268,19 +317,19 @@ export interface Enrollment {
   celMatch?: string;
 }
 export const Enrollment = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "labels": S.optional(StringMap),
-  "displayName": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "uid": S.optional(S.String),
-  "annotations": S.optional(StringMap),
-  "etag": S.optional(S.String),
-  "name": S.optional(S.String),
-  "messageBus": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "destination": S.optional(S.String),
-  "celMatch": S.optional(S.String),
-}),
+  S.Struct({
+    labels: S.optional(StringMap),
+    displayName: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    uid: S.optional(S.String),
+    annotations: S.optional(StringMap),
+    etag: S.optional(S.String),
+    name: S.optional(S.String),
+    messageBus: S.optional(S.String),
+    createTime: S.optional(S.String),
+    destination: S.optional(S.String),
+    celMatch: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Enrollment" }) as any as S.Schema<Enrollment>;
 
 export interface CreateProjectsLocationsEnrollmentsRequest {
@@ -293,16 +342,35 @@ export interface CreateProjectsLocationsEnrollmentsRequest {
   /** Request body */
   body?: Enrollment;
 }
-export const CreateProjectsLocationsEnrollmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "enrollmentId": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(Enrollment.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/enrollments","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsEnrollmentsRequest" }) as any as S.Schema<CreateProjectsLocationsEnrollmentsRequest>;
+export const CreateProjectsLocationsEnrollmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      enrollmentId: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      body: S.optional(Enrollment.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/enrollments",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsEnrollmentsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsEnrollmentsRequest>;
 
-export type LoggingConfigLogSeverityEnum = "LOG_SEVERITY_UNSPECIFIED" | "NONE" | "DEBUG" | "INFO" | "NOTICE" | "WARNING" | "ERROR" | "CRITICAL" | "ALERT" | "EMERGENCY";
+export type LoggingConfigLogSeverityEnum =
+  | "LOG_SEVERITY_UNSPECIFIED"
+  | "NONE"
+  | "DEBUG"
+  | "INFO"
+  | "NOTICE"
+  | "WARNING"
+  | "ERROR"
+  | "CRITICAL"
+  | "ALERT"
+  | "EMERGENCY";
 export const LoggingConfigLogSeverityEnum = /*@__PURE__*/ S.String;
 
 /** The configuration for Platform Telemetry logging for Eventarc Advanced resources. */
@@ -311,9 +379,9 @@ export interface LoggingConfig {
   logSeverity?: LoggingConfigLogSeverityEnum;
 }
 export const LoggingConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "logSeverity": S.optional(LoggingConfigLogSeverityEnum),
-}),
+  S.Struct({
+    logSeverity: S.optional(LoggingConfigLogSeverityEnum),
+  }),
 ).annotate({ identifier: "LoggingConfig" }) as any as S.Schema<LoggingConfig>;
 
 /** Config to enabled subscribing to events from other projects in the org. */
@@ -322,13 +390,17 @@ export interface OrganizationSubscription {
   enabled?: boolean;
 }
 export const OrganizationSubscription = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "enabled": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "OrganizationSubscription" }) as any as S.Schema<OrganizationSubscription>;
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "OrganizationSubscription",
+}) as any as S.Schema<OrganizationSubscription>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** Config to enable subscribing to all events from a list of projects. */
 export interface ProjectSubscriptions {
@@ -336,10 +408,12 @@ export interface ProjectSubscriptions {
   list?: StringList;
 }
 export const ProjectSubscriptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "list": S.optional(StringList),
-}),
-).annotate({ identifier: "ProjectSubscriptions" }) as any as S.Schema<ProjectSubscriptions>;
+  S.Struct({
+    list: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ProjectSubscriptions",
+}) as any as S.Schema<ProjectSubscriptions>;
 
 /** Represents a subscription to first-party events for a MessageBus resource. A GoogleApiSource resource lets you configure the delivery of events from Google API sources to a designated bus. */
 export interface GoogleApiSource {
@@ -371,22 +445,24 @@ export interface GoogleApiSource {
   projectSubscriptions?: ProjectSubscriptions;
 }
 export const GoogleApiSource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "loggingConfig": S.optional(LoggingConfig),
-  "createTime": S.optional(S.String),
-  "organizationSubscription": S.optional(OrganizationSubscription),
-  "updateTime": S.optional(S.String),
-  "etag": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "destination": S.optional(S.String),
-  "uid": S.optional(S.String),
-  "annotations": S.optional(StringMap),
-  "cryptoKeyName": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "projectSubscriptions": S.optional(ProjectSubscriptions),
-}),
-).annotate({ identifier: "GoogleApiSource" }) as any as S.Schema<GoogleApiSource>;
+  S.Struct({
+    name: S.optional(S.String),
+    loggingConfig: S.optional(LoggingConfig),
+    createTime: S.optional(S.String),
+    organizationSubscription: S.optional(OrganizationSubscription),
+    updateTime: S.optional(S.String),
+    etag: S.optional(S.String),
+    displayName: S.optional(S.String),
+    destination: S.optional(S.String),
+    uid: S.optional(S.String),
+    annotations: S.optional(StringMap),
+    cryptoKeyName: S.optional(S.String),
+    labels: S.optional(StringMap),
+    projectSubscriptions: S.optional(ProjectSubscriptions),
+  }),
+).annotate({
+  identifier: "GoogleApiSource",
+}) as any as S.Schema<GoogleApiSource>;
 
 export interface CreateProjectsLocationsGoogleApiSourcesRequest {
   /** Required. The parent collection in which to add this google api source. */
@@ -398,14 +474,23 @@ export interface CreateProjectsLocationsGoogleApiSourcesRequest {
   /** Request body */
   body?: GoogleApiSource;
 }
-export const CreateProjectsLocationsGoogleApiSourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "googleApiSourceId": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(GoogleApiSource.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/googleApiSources","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsGoogleApiSourcesRequest" }) as any as S.Schema<CreateProjectsLocationsGoogleApiSourcesRequest>;
+export const CreateProjectsLocationsGoogleApiSourcesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      googleApiSourceId: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      body: S.optional(GoogleApiSource.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/googleApiSources",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsGoogleApiSourcesRequest",
+  }) as any as S.Schema<CreateProjectsLocationsGoogleApiSourcesRequest>;
 
 /** MessageBus for the messages flowing through the system. The admin has visibility and control over the messages being published and consumed and can restrict publishers and subscribers to only a subset of data available in the system by defining authorization policies. */
 export interface MessageBus {
@@ -431,18 +516,18 @@ export interface MessageBus {
   displayName?: string;
 }
 export const MessageBus = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "loggingConfig": S.optional(LoggingConfig),
-  "name": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "etag": S.optional(S.String),
-  "uid": S.optional(S.String),
-  "annotations": S.optional(StringMap),
-  "labels": S.optional(StringMap),
-  "cryptoKeyName": S.optional(S.String),
-  "displayName": S.optional(S.String),
-}),
+  S.Struct({
+    loggingConfig: S.optional(LoggingConfig),
+    name: S.optional(S.String),
+    createTime: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    etag: S.optional(S.String),
+    uid: S.optional(S.String),
+    annotations: S.optional(StringMap),
+    labels: S.optional(StringMap),
+    cryptoKeyName: S.optional(S.String),
+    displayName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "MessageBus" }) as any as S.Schema<MessageBus>;
 
 export interface CreateProjectsLocationsMessageBusesRequest {
@@ -455,42 +540,59 @@ export interface CreateProjectsLocationsMessageBusesRequest {
   /** Request body */
   body?: MessageBus;
 }
-export const CreateProjectsLocationsMessageBusesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "messageBusId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(MessageBus.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/messageBuses","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsMessageBusesRequest" }) as any as S.Schema<CreateProjectsLocationsMessageBusesRequest>;
+export const CreateProjectsLocationsMessageBusesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      messageBusId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(MessageBus.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/messageBuses",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsMessageBusesRequest",
+  }) as any as S.Schema<CreateProjectsLocationsMessageBusesRequest>;
 
 /** The format of a Protobuf message payload. */
 export interface GoogleCloudEventarcV1PipelineMessagePayloadFormatProtobufFormat {
   /** Optional. The entire schema definition is stored in this field. */
   schemaDefinition?: string;
 }
-export const GoogleCloudEventarcV1PipelineMessagePayloadFormatProtobufFormat = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "schemaDefinition": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudEventarcV1PipelineMessagePayloadFormatProtobufFormat" }) as any as S.Schema<GoogleCloudEventarcV1PipelineMessagePayloadFormatProtobufFormat>;
+export const GoogleCloudEventarcV1PipelineMessagePayloadFormatProtobufFormat =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      schemaDefinition: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudEventarcV1PipelineMessagePayloadFormatProtobufFormat",
+  }) as any as S.Schema<GoogleCloudEventarcV1PipelineMessagePayloadFormatProtobufFormat>;
 
 /** The format of an AVRO message payload. */
 export interface GoogleCloudEventarcV1PipelineMessagePayloadFormatAvroFormat {
   /** Optional. The entire schema definition is stored in this field. */
   schemaDefinition?: string;
 }
-export const GoogleCloudEventarcV1PipelineMessagePayloadFormatAvroFormat = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "schemaDefinition": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudEventarcV1PipelineMessagePayloadFormatAvroFormat" }) as any as S.Schema<GoogleCloudEventarcV1PipelineMessagePayloadFormatAvroFormat>;
+export const GoogleCloudEventarcV1PipelineMessagePayloadFormatAvroFormat =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      schemaDefinition: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudEventarcV1PipelineMessagePayloadFormatAvroFormat",
+  }) as any as S.Schema<GoogleCloudEventarcV1PipelineMessagePayloadFormatAvroFormat>;
 
 /** The format of a JSON message payload. */
 export interface GoogleCloudEventarcV1PipelineMessagePayloadFormatJsonFormat {}
-export const GoogleCloudEventarcV1PipelineMessagePayloadFormatJsonFormat = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "GoogleCloudEventarcV1PipelineMessagePayloadFormatJsonFormat" }) as any as S.Schema<GoogleCloudEventarcV1PipelineMessagePayloadFormatJsonFormat>;
+export const GoogleCloudEventarcV1PipelineMessagePayloadFormatJsonFormat =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "GoogleCloudEventarcV1PipelineMessagePayloadFormatJsonFormat",
+  }) as any as S.Schema<GoogleCloudEventarcV1PipelineMessagePayloadFormatJsonFormat>;
 
 /** Represents the format of message data. */
 export interface GoogleCloudEventarcV1PipelineMessagePayloadFormat {
@@ -501,38 +603,58 @@ export interface GoogleCloudEventarcV1PipelineMessagePayloadFormat {
   /** Optional. JSON format. */
   json?: GoogleCloudEventarcV1PipelineMessagePayloadFormatJsonFormat;
 }
-export const GoogleCloudEventarcV1PipelineMessagePayloadFormat = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "protobuf": S.optional(GoogleCloudEventarcV1PipelineMessagePayloadFormatProtobufFormat),
-  "avro": S.optional(GoogleCloudEventarcV1PipelineMessagePayloadFormatAvroFormat),
-  "json": S.optional(GoogleCloudEventarcV1PipelineMessagePayloadFormatJsonFormat),
-}),
-).annotate({ identifier: "GoogleCloudEventarcV1PipelineMessagePayloadFormat" }) as any as S.Schema<GoogleCloudEventarcV1PipelineMessagePayloadFormat>;
+export const GoogleCloudEventarcV1PipelineMessagePayloadFormat =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      protobuf: S.optional(
+        GoogleCloudEventarcV1PipelineMessagePayloadFormatProtobufFormat,
+      ),
+      avro: S.optional(
+        GoogleCloudEventarcV1PipelineMessagePayloadFormatAvroFormat,
+      ),
+      json: S.optional(
+        GoogleCloudEventarcV1PipelineMessagePayloadFormatJsonFormat,
+      ),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudEventarcV1PipelineMessagePayloadFormat",
+  }) as any as S.Schema<GoogleCloudEventarcV1PipelineMessagePayloadFormat>;
 
 /** Transformation defines the way to transform an incoming message. */
 export interface GoogleCloudEventarcV1PipelineMediationTransformation {
   /** Optional. The CEL expression template to apply to transform messages. The following CEL extension functions are provided for use in this CEL expression: - merge: map1.merge(map2) -> map3 - Merges the passed CEL map with the existing CEL map the function is applied to. - If the same key exists in both maps, if the key's value is type map both maps are merged else the value from the passed map is used. - denormalize: map.denormalize() -> map - Denormalizes a CEL map such that every value of type map or key in the map is expanded to return a single level map. - The resulting keys are "." separated indices of the map keys. - For example: { "a": 1, "b": { "c": 2, "d": 3 } "e": [4, 5] } .denormalize() -> { "a": 1, "b.c": 2, "b.d": 3, "e.0": 4, "e.1": 5 } - setField: map.setField(key, value) -> message - Sets the field of the message with the given key to the given value. - If the field is not present it will be added. - If the field is present it will be overwritten. - The key can be a dot separated path to set a field in a nested message. - Key must be of type string. - Value may be any valid type. - removeFields: map.removeFields([key1, key2, ...]) -> message - Removes the fields of the map with the given keys. - The keys can be a dot separated path to remove a field in a nested message. - If a key is not found it will be ignored. - Keys must be of type string. - toMap: [map1, map2, ...].toMap() -> map - Converts a CEL list of CEL maps to a single CEL map - toDestinationPayloadFormat(): message.data.toDestinationPayloadFormat() -> string or bytes - Converts the message data to the destination payload format specified in Pipeline.Destination.output_payload_format - This function is meant to be applied to the message.data field. - If the destination payload format is not set, the function will return the message data unchanged. - toCloudEventJsonWithPayloadFormat: message.toCloudEventJsonWithPayloadFormat() -> map - Converts a message to the corresponding structure of JSON format for CloudEvents - This function applies toDestinationPayloadFormat() to the message data. It also sets the corresponding datacontenttype of the CloudEvent, as indicated by Pipeline.Destination.output_payload_format. If no output_payload_format is set it will use the existing datacontenttype on the CloudEvent if present, else leave datacontenttype absent. - This function expects that the content of the message will adhere to the standard CloudEvent format. If it doesn't then this function will fail. - The result is a CEL map that corresponds to the JSON representation of the CloudEvent. To convert that data to a JSON string it can be chained with the toJsonString function. */
   transformationTemplate?: string;
 }
-export const GoogleCloudEventarcV1PipelineMediationTransformation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "transformationTemplate": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudEventarcV1PipelineMediationTransformation" }) as any as S.Schema<GoogleCloudEventarcV1PipelineMediationTransformation>;
+export const GoogleCloudEventarcV1PipelineMediationTransformation =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      transformationTemplate: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudEventarcV1PipelineMediationTransformation",
+  }) as any as S.Schema<GoogleCloudEventarcV1PipelineMediationTransformation>;
 
 /** Mediation defines different ways to modify the Pipeline. */
 export interface GoogleCloudEventarcV1PipelineMediation {
   /** Optional. How the Pipeline is to transform messages */
   transformation?: GoogleCloudEventarcV1PipelineMediationTransformation;
 }
-export const GoogleCloudEventarcV1PipelineMediation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "transformation": S.optional(GoogleCloudEventarcV1PipelineMediationTransformation),
-}),
-).annotate({ identifier: "GoogleCloudEventarcV1PipelineMediation" }) as any as S.Schema<GoogleCloudEventarcV1PipelineMediation>;
+export const GoogleCloudEventarcV1PipelineMediation = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      transformation: S.optional(
+        GoogleCloudEventarcV1PipelineMediationTransformation,
+      ),
+    }),
+).annotate({
+  identifier: "GoogleCloudEventarcV1PipelineMediation",
+}) as any as S.Schema<GoogleCloudEventarcV1PipelineMediation>;
 
-export type GoogleCloudEventarcV1PipelineMediationList = ReadonlyArray<GoogleCloudEventarcV1PipelineMediation>;
-export const GoogleCloudEventarcV1PipelineMediationList = /*@__PURE__*/ S.Array(GoogleCloudEventarcV1PipelineMediation) as any as S.Schema<GoogleCloudEventarcV1PipelineMediationList>;
+export type GoogleCloudEventarcV1PipelineMediationList =
+  ReadonlyArray<GoogleCloudEventarcV1PipelineMediation>;
+export const GoogleCloudEventarcV1PipelineMediationList = /*@__PURE__*/ S.Array(
+  GoogleCloudEventarcV1PipelineMediation,
+) as any as S.Schema<GoogleCloudEventarcV1PipelineMediationList>;
 
 /** Contains information needed for generating an [OAuth token](https://developers.google.com/identity/protocols/OAuth2). This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com. */
 export interface GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOAuthToken {
@@ -541,12 +663,16 @@ export interface GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOAu
   /** Optional. OAuth scope to be used for generating OAuth access token. If not specified, "https://www.googleapis.com/auth/cloud-platform" will be used. */
   scope?: string;
 }
-export const GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOAuthToken = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "serviceAccount": S.optional(S.String),
-  "scope": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOAuthToken" }) as any as S.Schema<GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOAuthToken>;
+export const GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOAuthToken =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      serviceAccount: S.optional(S.String),
+      scope: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOAuthToken",
+  }) as any as S.Schema<GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOAuthToken>;
 
 /** Represents a config used to authenticate with a Google OIDC token using a Google Cloud service account. Use this authentication method to invoke your Cloud Run and Cloud Functions destinations or HTTP endpoints that support Google OIDC. */
 export interface GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOidcToken {
@@ -555,12 +681,16 @@ export interface GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOid
   /** Required. Service account email used to generate the OIDC Token. The principal who calls this API must have iam.serviceAccounts.actAs permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts for more information. Eventarc service agents must have roles/roles/iam.serviceAccountTokenCreator role to allow the Pipeline to create OpenID tokens for authenticated requests. */
   serviceAccount?: string;
 }
-export const GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOidcToken = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "audience": S.optional(S.String),
-  "serviceAccount": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOidcToken" }) as any as S.Schema<GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOidcToken>;
+export const GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOidcToken =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      audience: S.optional(S.String),
+      serviceAccount: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOidcToken",
+  }) as any as S.Schema<GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOidcToken>;
 
 /** Represents a config used to authenticate message requests. */
 export interface GoogleCloudEventarcV1PipelineDestinationAuthenticationConfig {
@@ -569,12 +699,19 @@ export interface GoogleCloudEventarcV1PipelineDestinationAuthenticationConfig {
   /** Optional. This authenticate method will apply Google OIDC tokens signed by a Google Cloud service account to the requests. */
   googleOidc?: GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOidcToken;
 }
-export const GoogleCloudEventarcV1PipelineDestinationAuthenticationConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "oauthToken": S.optional(GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOAuthToken),
-  "googleOidc": S.optional(GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOidcToken),
-}),
-).annotate({ identifier: "GoogleCloudEventarcV1PipelineDestinationAuthenticationConfig" }) as any as S.Schema<GoogleCloudEventarcV1PipelineDestinationAuthenticationConfig>;
+export const GoogleCloudEventarcV1PipelineDestinationAuthenticationConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      oauthToken: S.optional(
+        GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOAuthToken,
+      ),
+      googleOidc: S.optional(
+        GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOidcToken,
+      ),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudEventarcV1PipelineDestinationAuthenticationConfig",
+  }) as any as S.Schema<GoogleCloudEventarcV1PipelineDestinationAuthenticationConfig>;
 
 /** Represents a HTTP endpoint destination. */
 export interface GoogleCloudEventarcV1PipelineDestinationHttpEndpoint {
@@ -583,23 +720,29 @@ export interface GoogleCloudEventarcV1PipelineDestinationHttpEndpoint {
   /** Optional. The CEL expression used to modify how the destination-bound HTTP request is constructed. If a binding expression is not specified here, the message is treated as a CloudEvent and is mapped to the HTTP request according to the CloudEvent HTTP Protocol Binding Binary Content Mode (https://github.com/cloudevents/spec/blob/main/cloudevents/bindings/http-protocol-binding.md#31-binary-content-mode). In this representation, all fields except the `data` and `datacontenttype` field on the message are mapped to HTTP request headers with a prefix of `ce-`. To construct the HTTP request payload and the value of the content-type HTTP header, the payload format is defined as follows: 1) Use the output_payload_format_type on the Pipeline.Destination if it is set, else: 2) Use the input_payload_format_type on the Pipeline if it is set, else: 3) Treat the payload as opaque binary data. The `data` field of the message is converted to the payload format or left as-is for case 3) and then attached as the payload of the HTTP request. The `content-type` header on the HTTP request is set to the payload format type or left empty for case 3). However, if a mediation has updated the `datacontenttype` field on the message so that it is not the same as the payload format type but it is still a prefix of the payload format type, then the `content-type` header on the HTTP request is set to this `datacontenttype` value. For example, if the `datacontenttype` is "application/json" and the payload format type is "application/json; charset=utf-8", then the `content-type` header on the HTTP request is set to "application/json; charset=utf-8". If a non-empty binding expression is specified then this expression is used to modify the default CloudEvent HTTP Protocol Binding Binary Content representation. The result of the CEL expression must be a map of key/value pairs which is used as follows: - If a map named `headers` exists on the result of the expression, then its key/value pairs are directly mapped to the HTTP request headers. The headers values are constructed from the corresponding value type's canonical representation. If the `headers` field doesn't exist then the resulting HTTP request will be the headers of the CloudEvent HTTP Binding Binary Content Mode representation of the final message. Note: If the specified binding expression, has updated the `datacontenttype` field on the message so that it is not the same as the payload format type but it is still a prefix of the payload format type, then the `content-type` header in the `headers` map is set to this `datacontenttype` value. - If a field named `body` exists on the result of the expression then its value is directly mapped to the body of the request. If the value of the `body` field is of type bytes or string then it is used for the HTTP request body as-is, with no conversion. If the body field is of any other type then it is converted to a JSON string. If the body field does not exist then the resulting payload of the HTTP request will be data value of the CloudEvent HTTP Binding Binary Content Mode representation of the final message as described earlier. - Any other fields in the resulting expression will be ignored. The CEL expression may access the incoming CloudEvent message in its definition, as follows: - The `data` field of the incoming CloudEvent message can be accessed using the `message.data` value. Subfields of `message.data` may also be accessed if an input_payload_format has been specified on the Pipeline. - Each attribute of the incoming CloudEvent message can be accessed using the `message.` value, where is replaced with the name of the attribute. - Existing headers can be accessed in the CEL expression using the `headers` variable. The `headers` variable defines a map of key/value pairs corresponding to the HTTP headers of the CloudEvent HTTP Binding Binary Content Mode representation of the final message as described earlier. For example, the following CEL expression can be used to construct an HTTP request by adding an additional header to the HTTP headers of the CloudEvent HTTP Binding Binary Content Mode representation of the final message and by overwriting the body of the request: ``` { "headers": headers.merge({"new-header-key": "new-header-value"}), "body": "new-body" } ``` - The default binding for the message payload can be accessed using the `body` variable. It conatins a string representation of the message payload in the format specified by the `output_payload_format` field. If the `input_payload_format` field is not set, the `body` variable contains the same message payload bytes that were published. Additionally, the following CEL extension functions are provided for use in this CEL expression: - toBase64Url: map.toBase64Url() -> string - Converts a CelValue to a base64url encoded string - toJsonString: map.toJsonString() -> string - Converts a CelValue to a JSON string - merge: map1.merge(map2) -> map3 - Merges the passed CEL map with the existing CEL map the function is applied to. - If the same key exists in both maps, if the key's value is type map both maps are merged else the value from the passed map is used. - denormalize: map.denormalize() -> map - Denormalizes a CEL map such that every value of type map or key in the map is expanded to return a single level map. - The resulting keys are "." separated indices of the map keys. - For example: { "a": 1, "b": { "c": 2, "d": 3 } "e": [4, 5] } .denormalize() -> { "a": 1, "b.c": 2, "b.d": 3, "e.0": 4, "e.1": 5 } - setField: map.setField(key, value) -> message - Sets the field of the message with the given key to the given value. - If the field is not present it will be added. - If the field is present it will be overwritten. - The key can be a dot separated path to set a field in a nested message. - Key must be of type string. - Value may be any valid type. - removeFields: map.removeFields([key1, key2, ...]) -> message - Removes the fields of the map with the given keys. - The keys can be a dot separated path to remove a field in a nested message. - If a key is not found it will be ignored. - Keys must be of type string. - toMap: [map1, map2, ...].toMap() -> map - Converts a CEL list of CEL maps to a single CEL map - toCloudEventJsonWithPayloadFormat: message.toCloudEventJsonWithPayloadFormat() -> map - Converts a message to the corresponding structure of JSON format for CloudEvents. - It converts `data` to destination payload format specified in `output_payload_format`. If `output_payload_format` is not set, the data will remain unchanged. - It also sets the corresponding datacontenttype of the CloudEvent, as indicated by `output_payload_format`. If no `output_payload_format` is set it will use the value of the "datacontenttype" attribute on the CloudEvent if present, else remove "datacontenttype" attribute. - This function expects that the content of the message will adhere to the standard CloudEvent format. If it doesn't then this function will fail. - The result is a CEL map that corresponds to the JSON representation of the CloudEvent. To convert that data to a JSON string it can be chained with the toJsonString function. The Pipeline expects that the message it receives adheres to the standard CloudEvent format. If it doesn't then the outgoing message request may fail with a persistent error. */
   messageBindingTemplate?: string;
 }
-export const GoogleCloudEventarcV1PipelineDestinationHttpEndpoint = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "uri": S.optional(S.String),
-  "messageBindingTemplate": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudEventarcV1PipelineDestinationHttpEndpoint" }) as any as S.Schema<GoogleCloudEventarcV1PipelineDestinationHttpEndpoint>;
+export const GoogleCloudEventarcV1PipelineDestinationHttpEndpoint =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      uri: S.optional(S.String),
+      messageBindingTemplate: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudEventarcV1PipelineDestinationHttpEndpoint",
+  }) as any as S.Schema<GoogleCloudEventarcV1PipelineDestinationHttpEndpoint>;
 
 /** Represents a network config to be used for destination resolution and connectivity. */
 export interface GoogleCloudEventarcV1PipelineDestinationNetworkConfig {
   /** Required. Name of the NetworkAttachment that allows access to the consumer VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}` */
   networkAttachment?: string;
 }
-export const GoogleCloudEventarcV1PipelineDestinationNetworkConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "networkAttachment": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudEventarcV1PipelineDestinationNetworkConfig" }) as any as S.Schema<GoogleCloudEventarcV1PipelineDestinationNetworkConfig>;
+export const GoogleCloudEventarcV1PipelineDestinationNetworkConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      networkAttachment: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudEventarcV1PipelineDestinationNetworkConfig",
+  }) as any as S.Schema<GoogleCloudEventarcV1PipelineDestinationNetworkConfig>;
 
 /** Represents a target of an invocation over HTTP. */
 export interface GoogleCloudEventarcV1PipelineDestination {
@@ -618,20 +761,35 @@ export interface GoogleCloudEventarcV1PipelineDestination {
   /** Optional. The resource name of the Message Bus to which events should be published. The Message Bus resource should exist in the same project as the Pipeline. Format: `projects/{project}/locations/{location}/messageBuses/{message_bus}` */
   messageBus?: string;
 }
-export const GoogleCloudEventarcV1PipelineDestination = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "authenticationConfig": S.optional(GoogleCloudEventarcV1PipelineDestinationAuthenticationConfig),
-  "topic": S.optional(S.String),
-  "workflow": S.optional(S.String),
-  "outputPayloadFormat": S.optional(GoogleCloudEventarcV1PipelineMessagePayloadFormat),
-  "httpEndpoint": S.optional(GoogleCloudEventarcV1PipelineDestinationHttpEndpoint),
-  "networkConfig": S.optional(GoogleCloudEventarcV1PipelineDestinationNetworkConfig),
-  "messageBus": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudEventarcV1PipelineDestination" }) as any as S.Schema<GoogleCloudEventarcV1PipelineDestination>;
+export const GoogleCloudEventarcV1PipelineDestination = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      authenticationConfig: S.optional(
+        GoogleCloudEventarcV1PipelineDestinationAuthenticationConfig,
+      ),
+      topic: S.optional(S.String),
+      workflow: S.optional(S.String),
+      outputPayloadFormat: S.optional(
+        GoogleCloudEventarcV1PipelineMessagePayloadFormat,
+      ),
+      httpEndpoint: S.optional(
+        GoogleCloudEventarcV1PipelineDestinationHttpEndpoint,
+      ),
+      networkConfig: S.optional(
+        GoogleCloudEventarcV1PipelineDestinationNetworkConfig,
+      ),
+      messageBus: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "GoogleCloudEventarcV1PipelineDestination",
+}) as any as S.Schema<GoogleCloudEventarcV1PipelineDestination>;
 
-export type GoogleCloudEventarcV1PipelineDestinationList = ReadonlyArray<GoogleCloudEventarcV1PipelineDestination>;
-export const GoogleCloudEventarcV1PipelineDestinationList = /*@__PURE__*/ S.Array(GoogleCloudEventarcV1PipelineDestination) as any as S.Schema<GoogleCloudEventarcV1PipelineDestinationList>;
+export type GoogleCloudEventarcV1PipelineDestinationList =
+  ReadonlyArray<GoogleCloudEventarcV1PipelineDestination>;
+export const GoogleCloudEventarcV1PipelineDestinationList =
+  /*@__PURE__*/ S.Array(
+    GoogleCloudEventarcV1PipelineDestination,
+  ) as any as S.Schema<GoogleCloudEventarcV1PipelineDestinationList>;
 
 /** The retry policy configuration for the Pipeline. The pipeline exponentially backs off in case the destination is non responsive or returns a retryable error code. The default semantics are as follows: The backoff starts with a 5 second delay and doubles the delay after each failed attempt (10 seconds, 20 seconds, 40 seconds, etc.). The delay is capped at 60 seconds by default. Please note that if you set the min_retry_delay and max_retry_delay fields to the same value this will make the duration between retries constant. */
 export interface GoogleCloudEventarcV1PipelineRetryPolicy {
@@ -642,13 +800,16 @@ export interface GoogleCloudEventarcV1PipelineRetryPolicy {
   /** Optional. The maximum number of delivery attempts for any message. The value must be between 1 and 100. The default value for this field is 5. */
   maxAttempts?: number;
 }
-export const GoogleCloudEventarcV1PipelineRetryPolicy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "minRetryDelay": S.optional(S.String),
-  "maxRetryDelay": S.optional(S.String),
-  "maxAttempts": S.optional(S.Number),
-}),
-).annotate({ identifier: "GoogleCloudEventarcV1PipelineRetryPolicy" }) as any as S.Schema<GoogleCloudEventarcV1PipelineRetryPolicy>;
+export const GoogleCloudEventarcV1PipelineRetryPolicy = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      minRetryDelay: S.optional(S.String),
+      maxRetryDelay: S.optional(S.String),
+      maxAttempts: S.optional(S.Number),
+    }),
+).annotate({
+  identifier: "GoogleCloudEventarcV1PipelineRetryPolicy",
+}) as any as S.Schema<GoogleCloudEventarcV1PipelineRetryPolicy>;
 
 /** A representation of the Pipeline resource. */
 export interface Pipeline {
@@ -684,23 +845,25 @@ export interface Pipeline {
   retryPolicy?: GoogleCloudEventarcV1PipelineRetryPolicy;
 }
 export const Pipeline = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "satisfiesPzs": S.optional(S.Boolean),
-  "cryptoKeyName": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "uid": S.optional(S.String),
-  "annotations": S.optional(StringMap),
-  "inputPayloadFormat": S.optional(GoogleCloudEventarcV1PipelineMessagePayloadFormat),
-  "mediations": S.optional(GoogleCloudEventarcV1PipelineMediationList),
-  "displayName": S.optional(S.String),
-  "destinations": S.optional(GoogleCloudEventarcV1PipelineDestinationList),
-  "etag": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "name": S.optional(S.String),
-  "loggingConfig": S.optional(LoggingConfig),
-  "retryPolicy": S.optional(GoogleCloudEventarcV1PipelineRetryPolicy),
-}),
+  S.Struct({
+    satisfiesPzs: S.optional(S.Boolean),
+    cryptoKeyName: S.optional(S.String),
+    labels: S.optional(StringMap),
+    uid: S.optional(S.String),
+    annotations: S.optional(StringMap),
+    inputPayloadFormat: S.optional(
+      GoogleCloudEventarcV1PipelineMessagePayloadFormat,
+    ),
+    mediations: S.optional(GoogleCloudEventarcV1PipelineMediationList),
+    displayName: S.optional(S.String),
+    destinations: S.optional(GoogleCloudEventarcV1PipelineDestinationList),
+    etag: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    createTime: S.optional(S.String),
+    name: S.optional(S.String),
+    loggingConfig: S.optional(LoggingConfig),
+    retryPolicy: S.optional(GoogleCloudEventarcV1PipelineRetryPolicy),
+  }),
 ).annotate({ identifier: "Pipeline" }) as any as S.Schema<Pipeline>;
 
 export interface CreateProjectsLocationsPipelinesRequest {
@@ -713,14 +876,23 @@ export interface CreateProjectsLocationsPipelinesRequest {
   /** Request body */
   body?: Pipeline;
 }
-export const CreateProjectsLocationsPipelinesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "pipelineId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Pipeline.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/pipelines","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsPipelinesRequest" }) as any as S.Schema<CreateProjectsLocationsPipelinesRequest>;
+export const CreateProjectsLocationsPipelinesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      pipelineId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Pipeline.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/pipelines",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateProjectsLocationsPipelinesRequest",
+}) as any as S.Schema<CreateProjectsLocationsPipelinesRequest>;
 
 /** The retry policy configuration for the Trigger. Can only be set with Cloud Run destinations. */
 export interface RetryPolicy {
@@ -728,12 +900,29 @@ export interface RetryPolicy {
   maxAttempts?: number;
 }
 export const RetryPolicy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "maxAttempts": S.optional(S.Number),
-}),
+  S.Struct({
+    maxAttempts: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "RetryPolicy" }) as any as S.Schema<RetryPolicy>;
 
-export type StateConditionCodeEnum = "OK" | "CANCELLED" | "UNKNOWN" | "INVALID_ARGUMENT" | "DEADLINE_EXCEEDED" | "NOT_FOUND" | "ALREADY_EXISTS" | "PERMISSION_DENIED" | "UNAUTHENTICATED" | "RESOURCE_EXHAUSTED" | "FAILED_PRECONDITION" | "ABORTED" | "OUT_OF_RANGE" | "UNIMPLEMENTED" | "INTERNAL" | "UNAVAILABLE" | "DATA_LOSS";
+export type StateConditionCodeEnum =
+  | "OK"
+  | "CANCELLED"
+  | "UNKNOWN"
+  | "INVALID_ARGUMENT"
+  | "DEADLINE_EXCEEDED"
+  | "NOT_FOUND"
+  | "ALREADY_EXISTS"
+  | "PERMISSION_DENIED"
+  | "UNAUTHENTICATED"
+  | "RESOURCE_EXHAUSTED"
+  | "FAILED_PRECONDITION"
+  | "ABORTED"
+  | "OUT_OF_RANGE"
+  | "UNIMPLEMENTED"
+  | "INTERNAL"
+  | "UNAVAILABLE"
+  | "DATA_LOSS";
 export const StateConditionCodeEnum = /*@__PURE__*/ S.String;
 
 /** A condition that is part of the trigger state computation. */
@@ -744,14 +933,17 @@ export interface StateCondition {
   message?: string;
 }
 export const StateCondition = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(StateConditionCodeEnum),
-  "message": S.optional(S.String),
-}),
+  S.Struct({
+    code: S.optional(StateConditionCodeEnum),
+    message: S.optional(S.String),
+  }),
 ).annotate({ identifier: "StateCondition" }) as any as S.Schema<StateCondition>;
 
 export type StateConditionMap = { [key: string]: StateCondition | undefined };
-export const StateConditionMap = /*@__PURE__*/ S.Record(S.String, StateCondition) as any as S.Schema<StateConditionMap>;
+export const StateConditionMap = /*@__PURE__*/ S.Record(
+  S.String,
+  StateCondition,
+) as any as S.Schema<StateConditionMap>;
 
 /** Represents a Pub/Sub transport. */
 export interface Pubsub {
@@ -761,10 +953,10 @@ export interface Pubsub {
   topic?: string;
 }
 export const Pubsub = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "subscription": S.optional(S.String),
-  "topic": S.optional(S.String),
-}),
+  S.Struct({
+    subscription: S.optional(S.String),
+    topic: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Pubsub" }) as any as S.Schema<Pubsub>;
 
 /** Represents the transport intermediaries created for the trigger to deliver events. */
@@ -773,9 +965,9 @@ export interface Transport {
   pubsub?: Pubsub;
 }
 export const Transport = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pubsub": S.optional(Pubsub),
-}),
+  S.Struct({
+    pubsub: S.optional(Pubsub),
+  }),
 ).annotate({ identifier: "Transport" }) as any as S.Schema<Transport>;
 
 /** Represents a Cloud Run destination. */
@@ -788,11 +980,11 @@ export interface CloudRun {
   region?: string;
 }
 export const CloudRun = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "service": S.optional(S.String),
-  "path": S.optional(S.String),
-  "region": S.optional(S.String),
-}),
+  S.Struct({
+    service: S.optional(S.String),
+    path: S.optional(S.String),
+    region: S.optional(S.String),
+  }),
 ).annotate({ identifier: "CloudRun" }) as any as S.Schema<CloudRun>;
 
 /** Represents a GKE destination. */
@@ -809,13 +1001,13 @@ export interface GKE {
   path?: string;
 }
 export const GKE = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "namespace": S.optional(S.String),
-  "location": S.optional(S.String),
-  "service": S.optional(S.String),
-  "cluster": S.optional(S.String),
-  "path": S.optional(S.String),
-}),
+  S.Struct({
+    namespace: S.optional(S.String),
+    location: S.optional(S.String),
+    service: S.optional(S.String),
+    cluster: S.optional(S.String),
+    path: S.optional(S.String),
+  }),
 ).annotate({ identifier: "GKE" }) as any as S.Schema<GKE>;
 
 /** Network Configuration that can be inherited by other protos. */
@@ -824,9 +1016,9 @@ export interface NetworkConfig {
   networkAttachment?: string;
 }
 export const NetworkConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "networkAttachment": S.optional(S.String),
-}),
+  S.Struct({
+    networkAttachment: S.optional(S.String),
+  }),
 ).annotate({ identifier: "NetworkConfig" }) as any as S.Schema<NetworkConfig>;
 
 /** Represents a HTTP endpoint destination. */
@@ -835,9 +1027,9 @@ export interface HttpEndpoint {
   uri?: string;
 }
 export const HttpEndpoint = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "uri": S.optional(S.String),
-}),
+  S.Struct({
+    uri: S.optional(S.String),
+  }),
 ).annotate({ identifier: "HttpEndpoint" }) as any as S.Schema<HttpEndpoint>;
 
 /** Represents a target of an invocation over HTTP. */
@@ -856,14 +1048,14 @@ export interface Destination {
   workflow?: string;
 }
 export const Destination = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "cloudRun": S.optional(CloudRun),
-  "gke": S.optional(GKE),
-  "networkConfig": S.optional(NetworkConfig),
-  "cloudFunction": S.optional(S.String),
-  "httpEndpoint": S.optional(HttpEndpoint),
-  "workflow": S.optional(S.String),
-}),
+  S.Struct({
+    cloudRun: S.optional(CloudRun),
+    gke: S.optional(GKE),
+    networkConfig: S.optional(NetworkConfig),
+    cloudFunction: S.optional(S.String),
+    httpEndpoint: S.optional(HttpEndpoint),
+    workflow: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Destination" }) as any as S.Schema<Destination>;
 
 /** Filters events based on exact matches on the CloudEvents attributes. */
@@ -876,15 +1068,17 @@ export interface EventFilter {
   value?: string;
 }
 export const EventFilter = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "operator": S.optional(S.String),
-  "attribute": S.optional(S.String),
-  "value": S.optional(S.String),
-}),
+  S.Struct({
+    operator: S.optional(S.String),
+    attribute: S.optional(S.String),
+    value: S.optional(S.String),
+  }),
 ).annotate({ identifier: "EventFilter" }) as any as S.Schema<EventFilter>;
 
 export type EventFilterList = ReadonlyArray<EventFilter>;
-export const EventFilterList = /*@__PURE__*/ S.Array(EventFilter) as any as S.Schema<EventFilterList>;
+export const EventFilterList = /*@__PURE__*/ S.Array(
+  EventFilter,
+) as any as S.Schema<EventFilterList>;
 
 /** A representation of the trigger resource. */
 export interface Trigger {
@@ -920,23 +1114,23 @@ export interface Trigger {
   satisfiesPzs?: boolean;
 }
 export const Trigger = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "channel": S.optional(S.String),
-  "retryPolicy": S.optional(RetryPolicy),
-  "name": S.optional(S.String),
-  "conditions": S.optional(StateConditionMap),
-  "eventDataContentType": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "serviceAccount": S.optional(S.String),
-  "etag": S.optional(S.String),
-  "transport": S.optional(Transport),
-  "destination": S.optional(Destination),
-  "uid": S.optional(S.String),
-  "eventFilters": S.optional(EventFilterList),
-  "labels": S.optional(StringMap),
-  "satisfiesPzs": S.optional(S.Boolean),
-}),
+  S.Struct({
+    channel: S.optional(S.String),
+    retryPolicy: S.optional(RetryPolicy),
+    name: S.optional(S.String),
+    conditions: S.optional(StateConditionMap),
+    eventDataContentType: S.optional(S.String),
+    createTime: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    serviceAccount: S.optional(S.String),
+    etag: S.optional(S.String),
+    transport: S.optional(Transport),
+    destination: S.optional(Destination),
+    uid: S.optional(S.String),
+    eventFilters: S.optional(EventFilterList),
+    labels: S.optional(StringMap),
+    satisfiesPzs: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "Trigger" }) as any as S.Schema<Trigger>;
 
 export interface CreateProjectsLocationsTriggersRequest {
@@ -949,24 +1143,42 @@ export interface CreateProjectsLocationsTriggersRequest {
   /** Request body */
   body?: Trigger;
 }
-export const CreateProjectsLocationsTriggersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "triggerId": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(Trigger.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/triggers","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsTriggersRequest" }) as any as S.Schema<CreateProjectsLocationsTriggersRequest>;
+export const CreateProjectsLocationsTriggersRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      triggerId: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      body: S.optional(Trigger.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/triggers",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateProjectsLocationsTriggersRequest",
+}) as any as S.Schema<CreateProjectsLocationsTriggersRequest>;
 
 export interface DeleteProjectsLocationsChannelConnectionsRequest {
   /** Required. The name of the channel connection to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsChannelConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsChannelConnectionsRequest" }) as any as S.Schema<DeleteProjectsLocationsChannelConnectionsRequest>;
+export const DeleteProjectsLocationsChannelConnectionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsChannelConnectionsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsChannelConnectionsRequest>;
 
 export interface DeleteProjectsLocationsChannelsRequest {
   /** Required. The name of the channel to be deleted. */
@@ -974,12 +1186,21 @@ export interface DeleteProjectsLocationsChannelsRequest {
   /** Optional. If set, validate the request and preview the review, but do not post it. */
   validateOnly?: boolean;
 }
-export const DeleteProjectsLocationsChannelsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsChannelsRequest" }) as any as S.Schema<DeleteProjectsLocationsChannelsRequest>;
+export const DeleteProjectsLocationsChannelsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsChannelsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsChannelsRequest>;
 
 export interface DeleteProjectsLocationsEnrollmentsRequest {
   /** Required. The name of the Enrollment to be deleted. */
@@ -991,14 +1212,23 @@ export interface DeleteProjectsLocationsEnrollmentsRequest {
   /** Optional. If set to true, and the Enrollment is not found, the request will succeed but no action will be taken on the server. */
   allowMissing?: boolean;
 }
-export const DeleteProjectsLocationsEnrollmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "etag": S.optional(S.String.pipe(T.Query())),
-  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsEnrollmentsRequest" }) as any as S.Schema<DeleteProjectsLocationsEnrollmentsRequest>;
+export const DeleteProjectsLocationsEnrollmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      etag: S.optional(S.String.pipe(T.Query())),
+      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsEnrollmentsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsEnrollmentsRequest>;
 
 export interface DeleteProjectsLocationsGoogleApiSourcesRequest {
   /** Optional. If provided, the GoogleApiSource will only be deleted if the etag matches the current etag on the resource. */
@@ -1010,14 +1240,23 @@ export interface DeleteProjectsLocationsGoogleApiSourcesRequest {
   /** Required. The name of the GoogleApiSource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsGoogleApiSourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "etag": S.optional(S.String.pipe(T.Query())),
-  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsGoogleApiSourcesRequest" }) as any as S.Schema<DeleteProjectsLocationsGoogleApiSourcesRequest>;
+export const DeleteProjectsLocationsGoogleApiSourcesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      etag: S.optional(S.String.pipe(T.Query())),
+      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsGoogleApiSourcesRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsGoogleApiSourcesRequest>;
 
 export interface DeleteProjectsLocationsMessageBusesRequest {
   /** Required. The name of the MessageBus to be deleted. */
@@ -1029,24 +1268,42 @@ export interface DeleteProjectsLocationsMessageBusesRequest {
   /** Optional. If set, validate the request and preview the review, but do not post it. */
   validateOnly?: boolean;
 }
-export const DeleteProjectsLocationsMessageBusesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "etag": S.optional(S.String.pipe(T.Query())),
-  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsMessageBusesRequest" }) as any as S.Schema<DeleteProjectsLocationsMessageBusesRequest>;
+export const DeleteProjectsLocationsMessageBusesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      etag: S.optional(S.String.pipe(T.Query())),
+      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsMessageBusesRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsMessageBusesRequest>;
 
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsOperationsRequest" }) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsOperationsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
 
 export interface DeleteProjectsLocationsPipelinesRequest {
   /** Required. The name of the Pipeline to be deleted. */
@@ -1058,14 +1315,23 @@ export interface DeleteProjectsLocationsPipelinesRequest {
   /** Optional. If set to true, and the Pipeline is not found, the request will succeed but no action will be taken on the server. */
   allowMissing?: boolean;
 }
-export const DeleteProjectsLocationsPipelinesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "etag": S.optional(S.String.pipe(T.Query())),
-  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsPipelinesRequest" }) as any as S.Schema<DeleteProjectsLocationsPipelinesRequest>;
+export const DeleteProjectsLocationsPipelinesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      etag: S.optional(S.String.pipe(T.Query())),
+      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsPipelinesRequest",
+}) as any as S.Schema<DeleteProjectsLocationsPipelinesRequest>;
 
 export interface DeleteProjectsLocationsTriggersRequest {
   /** Optional. If set, validate the request and preview the review, but do not post it. */
@@ -1077,24 +1343,42 @@ export interface DeleteProjectsLocationsTriggersRequest {
   /** Required. The name of the trigger to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsTriggersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "etag": S.optional(S.String.pipe(T.Query())),
-  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsTriggersRequest" }) as any as S.Schema<DeleteProjectsLocationsTriggersRequest>;
+export const DeleteProjectsLocationsTriggersRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      etag: S.optional(S.String.pipe(T.Query())),
+      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsTriggersRequest",
+}) as any as S.Schema<DeleteProjectsLocationsTriggersRequest>;
 
 export interface GetGoogleChannelConfigProjectsLocationsRequest {
   /** Required. The name of the config to get. */
   name: string;
 }
-export const GetGoogleChannelConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "GetGoogleChannelConfigProjectsLocationsRequest" }) as any as S.Schema<GetGoogleChannelConfigProjectsLocationsRequest>;
+export const GetGoogleChannelConfigProjectsLocationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetGoogleChannelConfigProjectsLocationsRequest",
+  }) as any as S.Schema<GetGoogleChannelConfigProjectsLocationsRequest>;
 
 /** Can be used to customize security settings for Eventarc first-party triggers in a specific region. Once the GoogleChannelConfig resource is configured, first-party event data is protected using the specified customer-managed encryption key instead of a Google-managed encryption key. */
 export interface GoogleChannelConfig {
@@ -1108,13 +1392,15 @@ export interface GoogleChannelConfig {
   labels?: StringMap;
 }
 export const GoogleChannelConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "cryptoKeyName": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "labels": S.optional(StringMap),
-}),
-).annotate({ identifier: "GoogleChannelConfig" }) as any as S.Schema<GoogleChannelConfig>;
+  S.Struct({
+    name: S.optional(S.String),
+    cryptoKeyName: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    labels: S.optional(StringMap),
+  }),
+).annotate({
+  identifier: "GoogleChannelConfig",
+}) as any as S.Schema<GoogleChannelConfig>;
 
 export interface GetIamPolicyProjectsLocationsChannelConnectionsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1122,12 +1408,21 @@ export interface GetIamPolicyProjectsLocationsChannelConnectionsRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsChannelConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "GetIamPolicyProjectsLocationsChannelConnectionsRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsChannelConnectionsRequest>;
+export const GetIamPolicyProjectsLocationsChannelConnectionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+resource}:getIamPolicy",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetIamPolicyProjectsLocationsChannelConnectionsRequest",
+  }) as any as S.Schema<GetIamPolicyProjectsLocationsChannelConnectionsRequest>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -1141,12 +1436,12 @@ export interface Expr {
   location?: string;
 }
 export const Expr = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "description": S.optional(S.String),
-  "expression": S.optional(S.String),
-  "title": S.optional(S.String),
-  "location": S.optional(S.String),
-}),
+  S.Struct({
+    description: S.optional(S.String),
+    expression: S.optional(S.String),
+    title: S.optional(S.String),
+    location: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
 /** Associates `members`, or principals, with a `role`. */
@@ -1159,17 +1454,23 @@ export interface Binding {
   members?: StringList;
 }
 export const Binding = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "condition": S.optional(Expr),
-  "role": S.optional(S.String),
-  "members": S.optional(StringList),
-}),
+  S.Struct({
+    condition: S.optional(Expr),
+    role: S.optional(S.String),
+    members: S.optional(StringList),
+  }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = ReadonlyArray<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+export const BindingList = /*@__PURE__*/ S.Array(
+  Binding,
+) as any as S.Schema<BindingList>;
 
-export type AuditLogConfigLogTypeEnum = "LOG_TYPE_UNSPECIFIED" | "ADMIN_READ" | "DATA_WRITE" | "DATA_READ";
+export type AuditLogConfigLogTypeEnum =
+  | "LOG_TYPE_UNSPECIFIED"
+  | "ADMIN_READ"
+  | "DATA_WRITE"
+  | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -1180,14 +1481,16 @@ export interface AuditLogConfig {
   exemptedMembers?: StringList;
 }
 export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "logType": S.optional(AuditLogConfigLogTypeEnum),
-  "exemptedMembers": S.optional(StringList),
-}),
+  S.Struct({
+    logType: S.optional(AuditLogConfigLogTypeEnum),
+    exemptedMembers: S.optional(StringList),
+  }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(AuditLogConfig) as any as S.Schema<AuditLogConfigList>;
+export const AuditLogConfigList = /*@__PURE__*/ S.Array(
+  AuditLogConfig,
+) as any as S.Schema<AuditLogConfigList>;
 
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface AuditConfig {
@@ -1197,14 +1500,16 @@ export interface AuditConfig {
   auditLogConfigs?: AuditLogConfigList;
 }
 export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "service": S.optional(S.String),
-  "auditLogConfigs": S.optional(AuditLogConfigList),
-}),
+  S.Struct({
+    service: S.optional(S.String),
+    auditLogConfigs: S.optional(AuditLogConfigList),
+  }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = ReadonlyArray<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
+export const AuditConfigList = /*@__PURE__*/ S.Array(
+  AuditConfig,
+) as any as S.Schema<AuditConfigList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -1218,12 +1523,12 @@ export interface Policy {
   etag?: string;
 }
 export const Policy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "version": S.optional(S.Number),
-  "bindings": S.optional(BindingList),
-  "auditConfigs": S.optional(AuditConfigList),
-  "etag": S.optional(S.String),
-}),
+  S.Struct({
+    version: S.optional(S.Number),
+    bindings: S.optional(BindingList),
+    auditConfigs: S.optional(AuditConfigList),
+    etag: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
 
 export interface GetIamPolicyProjectsLocationsChannelsRequest {
@@ -1232,12 +1537,21 @@ export interface GetIamPolicyProjectsLocationsChannelsRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsChannelsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "GetIamPolicyProjectsLocationsChannelsRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsChannelsRequest>;
+export const GetIamPolicyProjectsLocationsChannelsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+resource}:getIamPolicy",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetIamPolicyProjectsLocationsChannelsRequest",
+  }) as any as S.Schema<GetIamPolicyProjectsLocationsChannelsRequest>;
 
 export interface GetIamPolicyProjectsLocationsEnrollmentsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1245,12 +1559,21 @@ export interface GetIamPolicyProjectsLocationsEnrollmentsRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsEnrollmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "GetIamPolicyProjectsLocationsEnrollmentsRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsEnrollmentsRequest>;
+export const GetIamPolicyProjectsLocationsEnrollmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+resource}:getIamPolicy",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetIamPolicyProjectsLocationsEnrollmentsRequest",
+  }) as any as S.Schema<GetIamPolicyProjectsLocationsEnrollmentsRequest>;
 
 export interface GetIamPolicyProjectsLocationsGoogleApiSourcesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1258,12 +1581,21 @@ export interface GetIamPolicyProjectsLocationsGoogleApiSourcesRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsGoogleApiSourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "GetIamPolicyProjectsLocationsGoogleApiSourcesRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsGoogleApiSourcesRequest>;
+export const GetIamPolicyProjectsLocationsGoogleApiSourcesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+resource}:getIamPolicy",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetIamPolicyProjectsLocationsGoogleApiSourcesRequest",
+  }) as any as S.Schema<GetIamPolicyProjectsLocationsGoogleApiSourcesRequest>;
 
 export interface GetIamPolicyProjectsLocationsMessageBusesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1271,12 +1603,21 @@ export interface GetIamPolicyProjectsLocationsMessageBusesRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsMessageBusesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "GetIamPolicyProjectsLocationsMessageBusesRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsMessageBusesRequest>;
+export const GetIamPolicyProjectsLocationsMessageBusesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+resource}:getIamPolicy",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetIamPolicyProjectsLocationsMessageBusesRequest",
+  }) as any as S.Schema<GetIamPolicyProjectsLocationsMessageBusesRequest>;
 
 export interface GetIamPolicyProjectsLocationsPipelinesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1284,12 +1625,21 @@ export interface GetIamPolicyProjectsLocationsPipelinesRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsPipelinesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "GetIamPolicyProjectsLocationsPipelinesRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsPipelinesRequest>;
+export const GetIamPolicyProjectsLocationsPipelinesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+resource}:getIamPolicy",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetIamPolicyProjectsLocationsPipelinesRequest",
+  }) as any as S.Schema<GetIamPolicyProjectsLocationsPipelinesRequest>;
 
 export interface GetIamPolicyProjectsLocationsTriggersRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1297,22 +1647,39 @@ export interface GetIamPolicyProjectsLocationsTriggersRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsTriggersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "GetIamPolicyProjectsLocationsTriggersRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsTriggersRequest>;
+export const GetIamPolicyProjectsLocationsTriggersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+resource}:getIamPolicy",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetIamPolicyProjectsLocationsTriggersRequest",
+  }) as any as S.Schema<GetIamPolicyProjectsLocationsTriggersRequest>;
 
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://eventarc.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsRequest",
+}) as any as S.Schema<GetProjectsLocationsRequest>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -1328,94 +1695,165 @@ export interface Location {
   metadata?: DocumentMap;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locationId": S.optional(S.String),
-  "name": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "displayName": S.optional(S.String),
-  "metadata": S.optional(DocumentMap),
-}),
+  S.Struct({
+    locationId: S.optional(S.String),
+    name: S.optional(S.String),
+    labels: S.optional(StringMap),
+    displayName: S.optional(S.String),
+    metadata: S.optional(DocumentMap),
+  }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export interface GetProjectsLocationsChannelConnectionsRequest {
   /** Required. The name of the channel connection to get. */
   name: string;
 }
-export const GetProjectsLocationsChannelConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsChannelConnectionsRequest" }) as any as S.Schema<GetProjectsLocationsChannelConnectionsRequest>;
+export const GetProjectsLocationsChannelConnectionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsChannelConnectionsRequest",
+  }) as any as S.Schema<GetProjectsLocationsChannelConnectionsRequest>;
 
 export interface GetProjectsLocationsChannelsRequest {
   /** Required. The name of the channel to get. */
   name: string;
 }
 export const GetProjectsLocationsChannelsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsChannelsRequest" }) as any as S.Schema<GetProjectsLocationsChannelsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://eventarc.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsChannelsRequest",
+}) as any as S.Schema<GetProjectsLocationsChannelsRequest>;
 
 export interface GetProjectsLocationsEnrollmentsRequest {
   /** Required. The name of the Enrollment to get. */
   name: string;
 }
-export const GetProjectsLocationsEnrollmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsEnrollmentsRequest" }) as any as S.Schema<GetProjectsLocationsEnrollmentsRequest>;
+export const GetProjectsLocationsEnrollmentsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsEnrollmentsRequest",
+}) as any as S.Schema<GetProjectsLocationsEnrollmentsRequest>;
 
 export interface GetProjectsLocationsGoogleApiSourcesRequest {
   /** Required. The name of the google api source to get. */
   name: string;
 }
-export const GetProjectsLocationsGoogleApiSourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsGoogleApiSourcesRequest" }) as any as S.Schema<GetProjectsLocationsGoogleApiSourcesRequest>;
+export const GetProjectsLocationsGoogleApiSourcesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsGoogleApiSourcesRequest",
+  }) as any as S.Schema<GetProjectsLocationsGoogleApiSourcesRequest>;
 
 export interface GetProjectsLocationsMessageBusesRequest {
   /** Required. The name of the message bus to get. */
   name: string;
 }
-export const GetProjectsLocationsMessageBusesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsMessageBusesRequest" }) as any as S.Schema<GetProjectsLocationsMessageBusesRequest>;
+export const GetProjectsLocationsMessageBusesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsMessageBusesRequest",
+}) as any as S.Schema<GetProjectsLocationsMessageBusesRequest>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsOperationsRequest",
+}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export interface GetProjectsLocationsPipelinesRequest {
   /** Required. The name of the pipeline to get. */
   name: string;
 }
-export const GetProjectsLocationsPipelinesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsPipelinesRequest" }) as any as S.Schema<GetProjectsLocationsPipelinesRequest>;
+export const GetProjectsLocationsPipelinesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsPipelinesRequest",
+}) as any as S.Schema<GetProjectsLocationsPipelinesRequest>;
 
 export interface GetProjectsLocationsProvidersRequest {
   /** Required. The name of the provider to get. */
   name: string;
 }
-export const GetProjectsLocationsProvidersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsProvidersRequest" }) as any as S.Schema<GetProjectsLocationsProvidersRequest>;
+export const GetProjectsLocationsProvidersRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsProvidersRequest",
+}) as any as S.Schema<GetProjectsLocationsProvidersRequest>;
 
 /** A representation of the FilteringAttribute resource. Filtering attributes are per event type. */
 export interface FilteringAttribute {
@@ -1429,16 +1867,20 @@ export interface FilteringAttribute {
   description?: string;
 }
 export const FilteringAttribute = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "attribute": S.optional(S.String),
-  "required": S.optional(S.Boolean),
-  "pathPatternSupported": S.optional(S.Boolean),
-  "description": S.optional(S.String),
-}),
-).annotate({ identifier: "FilteringAttribute" }) as any as S.Schema<FilteringAttribute>;
+  S.Struct({
+    attribute: S.optional(S.String),
+    required: S.optional(S.Boolean),
+    pathPatternSupported: S.optional(S.Boolean),
+    description: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "FilteringAttribute",
+}) as any as S.Schema<FilteringAttribute>;
 
 export type FilteringAttributeList = ReadonlyArray<FilteringAttribute>;
-export const FilteringAttributeList = /*@__PURE__*/ S.Array(FilteringAttribute) as any as S.Schema<FilteringAttributeList>;
+export const FilteringAttributeList = /*@__PURE__*/ S.Array(
+  FilteringAttribute,
+) as any as S.Schema<FilteringAttributeList>;
 
 /** A representation of the event type resource. */
 export interface EventType {
@@ -1452,16 +1894,18 @@ export interface EventType {
   eventSchemaUri?: string;
 }
 export const EventType = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "description": S.optional(S.String),
-  "filteringAttributes": S.optional(FilteringAttributeList),
-  "type": S.optional(S.String),
-  "eventSchemaUri": S.optional(S.String),
-}),
+  S.Struct({
+    description: S.optional(S.String),
+    filteringAttributes: S.optional(FilteringAttributeList),
+    type: S.optional(S.String),
+    eventSchemaUri: S.optional(S.String),
+  }),
 ).annotate({ identifier: "EventType" }) as any as S.Schema<EventType>;
 
 export type EventTypeList = ReadonlyArray<EventType>;
-export const EventTypeList = /*@__PURE__*/ S.Array(EventType) as any as S.Schema<EventTypeList>;
+export const EventTypeList = /*@__PURE__*/ S.Array(
+  EventType,
+) as any as S.Schema<EventTypeList>;
 
 /** A representation of the Provider resource. */
 export interface Provider {
@@ -1473,11 +1917,11 @@ export interface Provider {
   name?: string;
 }
 export const Provider = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "displayName": S.optional(S.String),
-  "eventTypes": S.optional(EventTypeList),
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    displayName: S.optional(S.String),
+    eventTypes: S.optional(EventTypeList),
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Provider" }) as any as S.Schema<Provider>;
 
 export interface GetProjectsLocationsTriggersRequest {
@@ -1485,10 +1929,18 @@ export interface GetProjectsLocationsTriggersRequest {
   name: string;
 }
 export const GetProjectsLocationsTriggersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsTriggersRequest" }) as any as S.Schema<GetProjectsLocationsTriggersRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://eventarc.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsTriggersRequest",
+}) as any as S.Schema<GetProjectsLocationsTriggersRequest>;
 
 export interface ListEnrollmentsProjectsLocationsMessageBusesRequest {
   /** Required. The parent message bus to list enrollments on. */
@@ -1498,13 +1950,22 @@ export interface ListEnrollmentsProjectsLocationsMessageBusesRequest {
   /** Optional. The maximum number of results to return on each page. Note: The service may send fewer. */
   pageSize?: number;
 }
-export const ListEnrollmentsProjectsLocationsMessageBusesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}:listEnrollments","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "ListEnrollmentsProjectsLocationsMessageBusesRequest" }) as any as S.Schema<ListEnrollmentsProjectsLocationsMessageBusesRequest>;
+export const ListEnrollmentsProjectsLocationsMessageBusesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}:listEnrollments",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListEnrollmentsProjectsLocationsMessageBusesRequest",
+  }) as any as S.Schema<ListEnrollmentsProjectsLocationsMessageBusesRequest>;
 
 /** The response message for the `ListMessageBusEnrollments` method.` */
 export interface ListMessageBusEnrollmentsResponse {
@@ -1516,12 +1977,14 @@ export interface ListMessageBusEnrollmentsResponse {
   unreachable?: StringList;
 }
 export const ListMessageBusEnrollmentsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "enrollments": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListMessageBusEnrollmentsResponse" }) as any as S.Schema<ListMessageBusEnrollmentsResponse>;
+  S.Struct({
+    enrollments: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListMessageBusEnrollmentsResponse",
+}) as any as S.Schema<ListMessageBusEnrollmentsResponse>;
 
 export interface ListProjectsLocationsRequest {
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
@@ -1536,17 +1999,27 @@ export interface ListProjectsLocationsRequest {
   name: string;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/locations","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}/locations",
+      baseUrl: "https://eventarc.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsRequest",
+}) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(
+  Location,
+) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -1556,11 +2029,13 @@ export interface ListLocationsResponse {
   locations?: LocationList;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "locations": S.optional(LocationList),
-}),
-).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    locations: S.optional(LocationList),
+  }),
+).annotate({
+  identifier: "ListLocationsResponse",
+}) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsLocationsChannelConnectionsRequest {
   /** The page token; provide the value from the `next_page_token` field in a previous `ListChannelConnections` call to retrieve the subsequent page. When paginating, all other parameters provided to `ListChannelConnetions` match the call that provided the page token. */
@@ -1570,16 +2045,27 @@ export interface ListProjectsLocationsChannelConnectionsRequest {
   /** Required. The parent collection from which to list channel connections. */
   parent: string;
 }
-export const ListProjectsLocationsChannelConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/channelConnections","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsChannelConnectionsRequest" }) as any as S.Schema<ListProjectsLocationsChannelConnectionsRequest>;
+export const ListProjectsLocationsChannelConnectionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/channelConnections",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsChannelConnectionsRequest",
+  }) as any as S.Schema<ListProjectsLocationsChannelConnectionsRequest>;
 
 export type ChannelConnectionList = ReadonlyArray<ChannelConnection>;
-export const ChannelConnectionList = /*@__PURE__*/ S.Array(ChannelConnection) as any as S.Schema<ChannelConnectionList>;
+export const ChannelConnectionList = /*@__PURE__*/ S.Array(
+  ChannelConnection,
+) as any as S.Schema<ChannelConnectionList>;
 
 /** The response message for the `ListChannelConnections` method. */
 export interface ListChannelConnectionsResponse {
@@ -1591,12 +2077,14 @@ export interface ListChannelConnectionsResponse {
   unreachable?: StringList;
 }
 export const ListChannelConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "channelConnections": S.optional(ChannelConnectionList),
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListChannelConnectionsResponse" }) as any as S.Schema<ListChannelConnectionsResponse>;
+  S.Struct({
+    channelConnections: S.optional(ChannelConnectionList),
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListChannelConnectionsResponse",
+}) as any as S.Schema<ListChannelConnectionsResponse>;
 
 export interface ListProjectsLocationsChannelsRequest {
   /** The page token; provide the value from the `next_page_token` field in a previous `ListChannels` call to retrieve the subsequent page. When paginating, all other parameters provided to `ListChannels` must match the call that provided the page token. */
@@ -1608,17 +2096,28 @@ export interface ListProjectsLocationsChannelsRequest {
   /** The sorting order of the resources returned. Value should be a comma-separated list of fields. The default sorting order is ascending. To specify descending order for a field, append a `desc` suffix; for example: `name desc, channel_id`. */
   orderBy?: string;
 }
-export const ListProjectsLocationsChannelsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/channels","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsChannelsRequest" }) as any as S.Schema<ListProjectsLocationsChannelsRequest>;
+export const ListProjectsLocationsChannelsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/channels",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsChannelsRequest",
+}) as any as S.Schema<ListProjectsLocationsChannelsRequest>;
 
 export type ChannelList = ReadonlyArray<Channel>;
-export const ChannelList = /*@__PURE__*/ S.Array(Channel) as any as S.Schema<ChannelList>;
+export const ChannelList = /*@__PURE__*/ S.Array(
+  Channel,
+) as any as S.Schema<ChannelList>;
 
 /** The response message for the `ListChannels` method. */
 export interface ListChannelsResponse {
@@ -1630,12 +2129,14 @@ export interface ListChannelsResponse {
   unreachable?: StringList;
 }
 export const ListChannelsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "channels": S.optional(ChannelList),
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListChannelsResponse" }) as any as S.Schema<ListChannelsResponse>;
+  S.Struct({
+    channels: S.optional(ChannelList),
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListChannelsResponse",
+}) as any as S.Schema<ListChannelsResponse>;
 
 export interface ListProjectsLocationsEnrollmentsRequest {
   /** Optional. The page token; provide the value from the `next_page_token` field in a previous call to retrieve the subsequent page. When paginating, all other parameters provided must match the previous call that provided the page token. */
@@ -1649,18 +2150,29 @@ export interface ListProjectsLocationsEnrollmentsRequest {
   /** Required. The parent collection to list triggers on. */
   parent: string;
 }
-export const ListProjectsLocationsEnrollmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/enrollments","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsEnrollmentsRequest" }) as any as S.Schema<ListProjectsLocationsEnrollmentsRequest>;
+export const ListProjectsLocationsEnrollmentsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/enrollments",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsEnrollmentsRequest",
+}) as any as S.Schema<ListProjectsLocationsEnrollmentsRequest>;
 
 export type EnrollmentList = ReadonlyArray<Enrollment>;
-export const EnrollmentList = /*@__PURE__*/ S.Array(Enrollment) as any as S.Schema<EnrollmentList>;
+export const EnrollmentList = /*@__PURE__*/ S.Array(
+  Enrollment,
+) as any as S.Schema<EnrollmentList>;
 
 /** The response message for the `ListEnrollments` method. */
 export interface ListEnrollmentsResponse {
@@ -1672,12 +2184,14 @@ export interface ListEnrollmentsResponse {
   unreachable?: StringList;
 }
 export const ListEnrollmentsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "enrollments": S.optional(EnrollmentList),
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListEnrollmentsResponse" }) as any as S.Schema<ListEnrollmentsResponse>;
+  S.Struct({
+    enrollments: S.optional(EnrollmentList),
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListEnrollmentsResponse",
+}) as any as S.Schema<ListEnrollmentsResponse>;
 
 export interface ListProjectsLocationsGoogleApiSourcesRequest {
   /** Optional. The page token; provide the value from the `next_page_token` field in a previous call to retrieve the subsequent page. When paginating, all other parameters provided must match the previous call that provided the page token. */
@@ -1691,18 +2205,29 @@ export interface ListProjectsLocationsGoogleApiSourcesRequest {
   /** Required. The parent collection to list GoogleApiSources on. */
   parent: string;
 }
-export const ListProjectsLocationsGoogleApiSourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/googleApiSources","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsGoogleApiSourcesRequest" }) as any as S.Schema<ListProjectsLocationsGoogleApiSourcesRequest>;
+export const ListProjectsLocationsGoogleApiSourcesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/googleApiSources",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsGoogleApiSourcesRequest",
+  }) as any as S.Schema<ListProjectsLocationsGoogleApiSourcesRequest>;
 
 export type GoogleApiSourceList = ReadonlyArray<GoogleApiSource>;
-export const GoogleApiSourceList = /*@__PURE__*/ S.Array(GoogleApiSource) as any as S.Schema<GoogleApiSourceList>;
+export const GoogleApiSourceList = /*@__PURE__*/ S.Array(
+  GoogleApiSource,
+) as any as S.Schema<GoogleApiSourceList>;
 
 /** The response message for the `ListGoogleApiSources` method. */
 export interface ListGoogleApiSourcesResponse {
@@ -1714,12 +2239,14 @@ export interface ListGoogleApiSourcesResponse {
   unreachable?: StringList;
 }
 export const ListGoogleApiSourcesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "googleApiSources": S.optional(GoogleApiSourceList),
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListGoogleApiSourcesResponse" }) as any as S.Schema<ListGoogleApiSourcesResponse>;
+  S.Struct({
+    googleApiSources: S.optional(GoogleApiSourceList),
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListGoogleApiSourcesResponse",
+}) as any as S.Schema<ListGoogleApiSourcesResponse>;
 
 export interface ListProjectsLocationsMessageBusesRequest {
   /** Optional. The sorting order of the resources returned. Value should be a comma-separated list of fields. The default sorting order is ascending. To specify descending order for a field, append a `desc` suffix; for example: `name desc, update_time`. */
@@ -1733,18 +2260,29 @@ export interface ListProjectsLocationsMessageBusesRequest {
   /** Optional. The filter field that the list request will filter on. Possible filtersare described in https://google.aip.dev/160. */
   filter?: string;
 }
-export const ListProjectsLocationsMessageBusesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/messageBuses","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsMessageBusesRequest" }) as any as S.Schema<ListProjectsLocationsMessageBusesRequest>;
+export const ListProjectsLocationsMessageBusesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/messageBuses",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsMessageBusesRequest",
+}) as any as S.Schema<ListProjectsLocationsMessageBusesRequest>;
 
 export type MessageBusList = ReadonlyArray<MessageBus>;
-export const MessageBusList = /*@__PURE__*/ S.Array(MessageBus) as any as S.Schema<MessageBusList>;
+export const MessageBusList = /*@__PURE__*/ S.Array(
+  MessageBus,
+) as any as S.Schema<MessageBusList>;
 
 /** The response message for the `ListMessageBuses` method. */
 export interface ListMessageBusesResponse {
@@ -1756,12 +2294,14 @@ export interface ListMessageBusesResponse {
   messageBuses?: MessageBusList;
 }
 export const ListMessageBusesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-  "messageBuses": S.optional(MessageBusList),
-}),
-).annotate({ identifier: "ListMessageBusesResponse" }) as any as S.Schema<ListMessageBusesResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+    messageBuses: S.optional(MessageBusList),
+  }),
+).annotate({
+  identifier: "ListMessageBusesResponse",
+}) as any as S.Schema<ListMessageBusesResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list filter. */
@@ -1775,18 +2315,30 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/operations","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      filter: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}/operations",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsOperationsRequest",
+}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type GoogleLongrunningOperationList = ReadonlyArray<GoogleLongrunningOperation>;
-export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(GoogleLongrunningOperation) as any as S.Schema<GoogleLongrunningOperationList>;
+export type GoogleLongrunningOperationList =
+  ReadonlyArray<GoogleLongrunningOperation>;
+export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
+  GoogleLongrunningOperation,
+) as any as S.Schema<GoogleLongrunningOperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface GoogleLongrunningListOperationsResponse {
@@ -1797,13 +2349,16 @@ export interface GoogleLongrunningListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: GoogleLongrunningOperationList;
 }
-export const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-  "operations": S.optional(GoogleLongrunningOperationList),
-}),
-).annotate({ identifier: "GoogleLongrunningListOperationsResponse" }) as any as S.Schema<GoogleLongrunningListOperationsResponse>;
+export const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      nextPageToken: S.optional(S.String),
+      unreachable: S.optional(StringList),
+      operations: S.optional(GoogleLongrunningOperationList),
+    }),
+).annotate({
+  identifier: "GoogleLongrunningListOperationsResponse",
+}) as any as S.Schema<GoogleLongrunningListOperationsResponse>;
 
 export interface ListProjectsLocationsPipelinesRequest {
   /** Optional. The maximum number of results to return on each page. Note: The service may send fewer. */
@@ -1817,18 +2372,29 @@ export interface ListProjectsLocationsPipelinesRequest {
   /** Optional. The sorting order of the resources returned. Value should be a comma-separated list of fields. The default sorting order is ascending. To specify descending order for a field, append a `desc` suffix; for example: `name desc, update_time`. */
   orderBy?: string;
 }
-export const ListProjectsLocationsPipelinesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/pipelines","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsPipelinesRequest" }) as any as S.Schema<ListProjectsLocationsPipelinesRequest>;
+export const ListProjectsLocationsPipelinesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/pipelines",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsPipelinesRequest",
+}) as any as S.Schema<ListProjectsLocationsPipelinesRequest>;
 
 export type PipelineList = ReadonlyArray<Pipeline>;
-export const PipelineList = /*@__PURE__*/ S.Array(Pipeline) as any as S.Schema<PipelineList>;
+export const PipelineList = /*@__PURE__*/ S.Array(
+  Pipeline,
+) as any as S.Schema<PipelineList>;
 
 /** The response message for the ListPipelines method. */
 export interface ListPipelinesResponse {
@@ -1840,12 +2406,14 @@ export interface ListPipelinesResponse {
   pipelines?: PipelineList;
 }
 export const ListPipelinesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-  "pipelines": S.optional(PipelineList),
-}),
-).annotate({ identifier: "ListPipelinesResponse" }) as any as S.Schema<ListPipelinesResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+    pipelines: S.optional(PipelineList),
+  }),
+).annotate({
+  identifier: "ListPipelinesResponse",
+}) as any as S.Schema<ListPipelinesResponse>;
 
 export interface ListProjectsLocationsProvidersRequest {
   /** The maximum number of providers to return on each page. */
@@ -1859,18 +2427,29 @@ export interface ListProjectsLocationsProvidersRequest {
   /** The sorting order of the resources returned. Value should be a comma-separated list of fields. The default sorting oder is ascending. To specify descending order for a field, append a `desc` suffix; for example: `name desc, _id`. */
   orderBy?: string;
 }
-export const ListProjectsLocationsProvidersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/providers","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsProvidersRequest" }) as any as S.Schema<ListProjectsLocationsProvidersRequest>;
+export const ListProjectsLocationsProvidersRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/providers",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsProvidersRequest",
+}) as any as S.Schema<ListProjectsLocationsProvidersRequest>;
 
 export type ProviderList = ReadonlyArray<Provider>;
-export const ProviderList = /*@__PURE__*/ S.Array(Provider) as any as S.Schema<ProviderList>;
+export const ProviderList = /*@__PURE__*/ S.Array(
+  Provider,
+) as any as S.Schema<ProviderList>;
 
 /** The response message for the `ListProviders` method. */
 export interface ListProvidersResponse {
@@ -1882,12 +2461,14 @@ export interface ListProvidersResponse {
   providers?: ProviderList;
 }
 export const ListProvidersResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-  "providers": S.optional(ProviderList),
-}),
-).annotate({ identifier: "ListProvidersResponse" }) as any as S.Schema<ListProvidersResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+    providers: S.optional(ProviderList),
+  }),
+).annotate({
+  identifier: "ListProvidersResponse",
+}) as any as S.Schema<ListProvidersResponse>;
 
 export interface ListProjectsLocationsTriggersRequest {
   /** Required. The parent collection to list triggers on. */
@@ -1901,18 +2482,29 @@ export interface ListProjectsLocationsTriggersRequest {
   /** The page token; provide the value from the `next_page_token` field in a previous `ListTriggers` call to retrieve the subsequent page. When paginating, all other parameters provided to `ListTriggers` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsTriggersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/triggers","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsTriggersRequest" }) as any as S.Schema<ListProjectsLocationsTriggersRequest>;
+export const ListProjectsLocationsTriggersRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/triggers",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsTriggersRequest",
+}) as any as S.Schema<ListProjectsLocationsTriggersRequest>;
 
 export type TriggerList = ReadonlyArray<Trigger>;
-export const TriggerList = /*@__PURE__*/ S.Array(Trigger) as any as S.Schema<TriggerList>;
+export const TriggerList = /*@__PURE__*/ S.Array(
+  Trigger,
+) as any as S.Schema<TriggerList>;
 
 /** The response message for the `ListTriggers` method. */
 export interface ListTriggersResponse {
@@ -1924,12 +2516,14 @@ export interface ListTriggersResponse {
   unreachable?: StringList;
 }
 export const ListTriggersResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "triggers": S.optional(TriggerList),
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListTriggersResponse" }) as any as S.Schema<ListTriggersResponse>;
+  S.Struct({
+    triggers: S.optional(TriggerList),
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListTriggersResponse",
+}) as any as S.Schema<ListTriggersResponse>;
 
 export interface PatchProjectsLocationsChannelsRequest {
   /** Optional. If set, validate the request and preview the review, but do not post it. */
@@ -1941,14 +2535,23 @@ export interface PatchProjectsLocationsChannelsRequest {
   /** Request body */
   body?: Channel;
 }
-export const PatchProjectsLocationsChannelsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Channel.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsChannelsRequest" }) as any as S.Schema<PatchProjectsLocationsChannelsRequest>;
+export const PatchProjectsLocationsChannelsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Channel.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "PatchProjectsLocationsChannelsRequest",
+}) as any as S.Schema<PatchProjectsLocationsChannelsRequest>;
 
 export interface PatchProjectsLocationsEnrollmentsRequest {
   /** Identifier. Resource name of the form projects/{project}/locations/{location}/enrollments/{enrollment} */
@@ -1962,15 +2565,24 @@ export interface PatchProjectsLocationsEnrollmentsRequest {
   /** Request body */
   body?: Enrollment;
 }
-export const PatchProjectsLocationsEnrollmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(Enrollment.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsEnrollmentsRequest" }) as any as S.Schema<PatchProjectsLocationsEnrollmentsRequest>;
+export const PatchProjectsLocationsEnrollmentsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
+      body: S.optional(Enrollment.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "PatchProjectsLocationsEnrollmentsRequest",
+}) as any as S.Schema<PatchProjectsLocationsEnrollmentsRequest>;
 
 export interface PatchProjectsLocationsGoogleApiSourcesRequest {
   /** Identifier. Resource name of the form projects/{project}/locations/{location}/googleApiSources/{google_api_source} */
@@ -1984,15 +2596,24 @@ export interface PatchProjectsLocationsGoogleApiSourcesRequest {
   /** Request body */
   body?: GoogleApiSource;
 }
-export const PatchProjectsLocationsGoogleApiSourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(GoogleApiSource.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsGoogleApiSourcesRequest" }) as any as S.Schema<PatchProjectsLocationsGoogleApiSourcesRequest>;
+export const PatchProjectsLocationsGoogleApiSourcesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
+      body: S.optional(GoogleApiSource.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsGoogleApiSourcesRequest",
+  }) as any as S.Schema<PatchProjectsLocationsGoogleApiSourcesRequest>;
 
 export interface PatchProjectsLocationsMessageBusesRequest {
   /** Identifier. Resource name of the form projects/{project}/locations/{location}/messageBuses/{message_bus} */
@@ -2006,15 +2627,24 @@ export interface PatchProjectsLocationsMessageBusesRequest {
   /** Request body */
   body?: MessageBus;
 }
-export const PatchProjectsLocationsMessageBusesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(MessageBus.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsMessageBusesRequest" }) as any as S.Schema<PatchProjectsLocationsMessageBusesRequest>;
+export const PatchProjectsLocationsMessageBusesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      body: S.optional(MessageBus.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsMessageBusesRequest",
+  }) as any as S.Schema<PatchProjectsLocationsMessageBusesRequest>;
 
 export interface PatchProjectsLocationsPipelinesRequest {
   /** Optional. If set to true, and the Pipeline is not found, a new Pipeline will be created. In this situation, `update_mask` is ignored. */
@@ -2028,15 +2658,24 @@ export interface PatchProjectsLocationsPipelinesRequest {
   /** Request body */
   body?: Pipeline;
 }
-export const PatchProjectsLocationsPipelinesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Pipeline.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsPipelinesRequest" }) as any as S.Schema<PatchProjectsLocationsPipelinesRequest>;
+export const PatchProjectsLocationsPipelinesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Pipeline.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "PatchProjectsLocationsPipelinesRequest",
+}) as any as S.Schema<PatchProjectsLocationsPipelinesRequest>;
 
 export interface PatchProjectsLocationsTriggersRequest {
   /** Required. The resource name of the trigger. Must be unique within the location of the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format. */
@@ -2050,15 +2689,24 @@ export interface PatchProjectsLocationsTriggersRequest {
   /** Request body */
   body?: Trigger;
 }
-export const PatchProjectsLocationsTriggersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(Trigger.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsTriggersRequest" }) as any as S.Schema<PatchProjectsLocationsTriggersRequest>;
+export const PatchProjectsLocationsTriggersRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
+      body: S.optional(Trigger.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "PatchProjectsLocationsTriggersRequest",
+}) as any as S.Schema<PatchProjectsLocationsTriggersRequest>;
 
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
@@ -2068,11 +2716,13 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "policy": S.optional(Policy),
-  "updateMask": S.optional(S.String),
-}),
-).annotate({ identifier: "SetIamPolicyRequest" }) as any as S.Schema<SetIamPolicyRequest>;
+  S.Struct({
+    policy: S.optional(Policy),
+    updateMask: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SetIamPolicyRequest",
+}) as any as S.Schema<SetIamPolicyRequest>;
 
 export interface SetIamPolicyProjectsLocationsChannelConnectionsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -2080,12 +2730,21 @@ export interface SetIamPolicyProjectsLocationsChannelConnectionsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsChannelConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "SetIamPolicyProjectsLocationsChannelConnectionsRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsChannelConnectionsRequest>;
+export const SetIamPolicyProjectsLocationsChannelConnectionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+resource}:setIamPolicy",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "SetIamPolicyProjectsLocationsChannelConnectionsRequest",
+  }) as any as S.Schema<SetIamPolicyProjectsLocationsChannelConnectionsRequest>;
 
 export interface SetIamPolicyProjectsLocationsChannelsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -2093,12 +2752,21 @@ export interface SetIamPolicyProjectsLocationsChannelsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsChannelsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "SetIamPolicyProjectsLocationsChannelsRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsChannelsRequest>;
+export const SetIamPolicyProjectsLocationsChannelsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+resource}:setIamPolicy",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "SetIamPolicyProjectsLocationsChannelsRequest",
+  }) as any as S.Schema<SetIamPolicyProjectsLocationsChannelsRequest>;
 
 export interface SetIamPolicyProjectsLocationsEnrollmentsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -2106,12 +2774,21 @@ export interface SetIamPolicyProjectsLocationsEnrollmentsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsEnrollmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "SetIamPolicyProjectsLocationsEnrollmentsRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsEnrollmentsRequest>;
+export const SetIamPolicyProjectsLocationsEnrollmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+resource}:setIamPolicy",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "SetIamPolicyProjectsLocationsEnrollmentsRequest",
+  }) as any as S.Schema<SetIamPolicyProjectsLocationsEnrollmentsRequest>;
 
 export interface SetIamPolicyProjectsLocationsGoogleApiSourcesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -2119,12 +2796,21 @@ export interface SetIamPolicyProjectsLocationsGoogleApiSourcesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsGoogleApiSourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "SetIamPolicyProjectsLocationsGoogleApiSourcesRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsGoogleApiSourcesRequest>;
+export const SetIamPolicyProjectsLocationsGoogleApiSourcesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+resource}:setIamPolicy",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "SetIamPolicyProjectsLocationsGoogleApiSourcesRequest",
+  }) as any as S.Schema<SetIamPolicyProjectsLocationsGoogleApiSourcesRequest>;
 
 export interface SetIamPolicyProjectsLocationsMessageBusesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -2132,12 +2818,21 @@ export interface SetIamPolicyProjectsLocationsMessageBusesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsMessageBusesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "SetIamPolicyProjectsLocationsMessageBusesRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsMessageBusesRequest>;
+export const SetIamPolicyProjectsLocationsMessageBusesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+resource}:setIamPolicy",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "SetIamPolicyProjectsLocationsMessageBusesRequest",
+  }) as any as S.Schema<SetIamPolicyProjectsLocationsMessageBusesRequest>;
 
 export interface SetIamPolicyProjectsLocationsPipelinesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -2145,12 +2840,21 @@ export interface SetIamPolicyProjectsLocationsPipelinesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsPipelinesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "SetIamPolicyProjectsLocationsPipelinesRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsPipelinesRequest>;
+export const SetIamPolicyProjectsLocationsPipelinesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+resource}:setIamPolicy",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "SetIamPolicyProjectsLocationsPipelinesRequest",
+  }) as any as S.Schema<SetIamPolicyProjectsLocationsPipelinesRequest>;
 
 export interface SetIamPolicyProjectsLocationsTriggersRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -2158,12 +2862,21 @@ export interface SetIamPolicyProjectsLocationsTriggersRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsTriggersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "SetIamPolicyProjectsLocationsTriggersRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsTriggersRequest>;
+export const SetIamPolicyProjectsLocationsTriggersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+resource}:setIamPolicy",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "SetIamPolicyProjectsLocationsTriggersRequest",
+  }) as any as S.Schema<SetIamPolicyProjectsLocationsTriggersRequest>;
 
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
@@ -2171,10 +2884,12 @@ export interface TestIamPermissionsRequest {
   permissions?: StringList;
 }
 export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "permissions": S.optional(StringList),
-}),
-).annotate({ identifier: "TestIamPermissionsRequest" }) as any as S.Schema<TestIamPermissionsRequest>;
+  S.Struct({
+    permissions: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "TestIamPermissionsRequest",
+}) as any as S.Schema<TestIamPermissionsRequest>;
 
 export interface TestIamPermissionsProjectsLocationsChannelConnectionsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -2182,12 +2897,21 @@ export interface TestIamPermissionsProjectsLocationsChannelConnectionsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsChannelConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "TestIamPermissionsProjectsLocationsChannelConnectionsRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsChannelConnectionsRequest>;
+export const TestIamPermissionsProjectsLocationsChannelConnectionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+resource}:testIamPermissions",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "TestIamPermissionsProjectsLocationsChannelConnectionsRequest",
+  }) as any as S.Schema<TestIamPermissionsProjectsLocationsChannelConnectionsRequest>;
 
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
@@ -2195,10 +2919,12 @@ export interface TestIamPermissionsResponse {
   permissions?: StringList;
 }
 export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "permissions": S.optional(StringList),
-}),
-).annotate({ identifier: "TestIamPermissionsResponse" }) as any as S.Schema<TestIamPermissionsResponse>;
+  S.Struct({
+    permissions: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "TestIamPermissionsResponse",
+}) as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsChannelsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -2206,12 +2932,21 @@ export interface TestIamPermissionsProjectsLocationsChannelsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsChannelsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "TestIamPermissionsProjectsLocationsChannelsRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsChannelsRequest>;
+export const TestIamPermissionsProjectsLocationsChannelsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+resource}:testIamPermissions",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "TestIamPermissionsProjectsLocationsChannelsRequest",
+  }) as any as S.Schema<TestIamPermissionsProjectsLocationsChannelsRequest>;
 
 export interface TestIamPermissionsProjectsLocationsEnrollmentsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -2219,12 +2954,21 @@ export interface TestIamPermissionsProjectsLocationsEnrollmentsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsEnrollmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "TestIamPermissionsProjectsLocationsEnrollmentsRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsEnrollmentsRequest>;
+export const TestIamPermissionsProjectsLocationsEnrollmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+resource}:testIamPermissions",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "TestIamPermissionsProjectsLocationsEnrollmentsRequest",
+  }) as any as S.Schema<TestIamPermissionsProjectsLocationsEnrollmentsRequest>;
 
 export interface TestIamPermissionsProjectsLocationsGoogleApiSourcesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -2232,12 +2976,21 @@ export interface TestIamPermissionsProjectsLocationsGoogleApiSourcesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsGoogleApiSourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "TestIamPermissionsProjectsLocationsGoogleApiSourcesRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsGoogleApiSourcesRequest>;
+export const TestIamPermissionsProjectsLocationsGoogleApiSourcesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+resource}:testIamPermissions",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "TestIamPermissionsProjectsLocationsGoogleApiSourcesRequest",
+  }) as any as S.Schema<TestIamPermissionsProjectsLocationsGoogleApiSourcesRequest>;
 
 export interface TestIamPermissionsProjectsLocationsMessageBusesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -2245,12 +2998,21 @@ export interface TestIamPermissionsProjectsLocationsMessageBusesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsMessageBusesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "TestIamPermissionsProjectsLocationsMessageBusesRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsMessageBusesRequest>;
+export const TestIamPermissionsProjectsLocationsMessageBusesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+resource}:testIamPermissions",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "TestIamPermissionsProjectsLocationsMessageBusesRequest",
+  }) as any as S.Schema<TestIamPermissionsProjectsLocationsMessageBusesRequest>;
 
 export interface TestIamPermissionsProjectsLocationsPipelinesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -2258,12 +3020,21 @@ export interface TestIamPermissionsProjectsLocationsPipelinesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsPipelinesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "TestIamPermissionsProjectsLocationsPipelinesRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsPipelinesRequest>;
+export const TestIamPermissionsProjectsLocationsPipelinesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+resource}:testIamPermissions",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "TestIamPermissionsProjectsLocationsPipelinesRequest",
+  }) as any as S.Schema<TestIamPermissionsProjectsLocationsPipelinesRequest>;
 
 export interface TestIamPermissionsProjectsLocationsTriggersRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -2271,12 +3042,21 @@ export interface TestIamPermissionsProjectsLocationsTriggersRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsTriggersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "TestIamPermissionsProjectsLocationsTriggersRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsTriggersRequest>;
+export const TestIamPermissionsProjectsLocationsTriggersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+resource}:testIamPermissions",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "TestIamPermissionsProjectsLocationsTriggersRequest",
+  }) as any as S.Schema<TestIamPermissionsProjectsLocationsTriggersRequest>;
 
 export interface UpdateGoogleChannelConfigProjectsLocationsRequest {
   /** Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`. In API responses, the config name always includes the projectID, regardless of whether the projectID or projectNumber was provided. */
@@ -2286,15 +3066,29 @@ export interface UpdateGoogleChannelConfigProjectsLocationsRequest {
   /** Request body */
   body?: GoogleChannelConfig;
 }
-export const UpdateGoogleChannelConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(GoogleChannelConfig.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://eventarc.googleapis.com/"})),
-).annotate({ identifier: "UpdateGoogleChannelConfigProjectsLocationsRequest" }) as any as S.Schema<UpdateGoogleChannelConfigProjectsLocationsRequest>;
+export const UpdateGoogleChannelConfigProjectsLocationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(GoogleChannelConfig.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://eventarc.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "UpdateGoogleChannelConfigProjectsLocationsRequest",
+  }) as any as S.Schema<UpdateGoogleChannelConfigProjectsLocationsRequest>;
 
-export type CancelProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CancelProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsRequest,
@@ -2309,7 +3103,12 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsChannelConnectionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsChannelConnectionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Create a new ChannelConnection in a particular project and location. */
 export const createProjectsLocationsChannelConnections: API.OperationMethod<
   CreateProjectsLocationsChannelConnectionsRequest,
@@ -2324,7 +3123,12 @@ export const createProjectsLocationsChannelConnections: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsChannelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsChannelsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Create a new channel in a particular project and location. */
 export const createProjectsLocationsChannels: API.OperationMethod<
   CreateProjectsLocationsChannelsRequest,
@@ -2339,7 +3143,12 @@ export const createProjectsLocationsChannels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsEnrollmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsEnrollmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Create a new Enrollment in a particular project and location. */
 export const createProjectsLocationsEnrollments: API.OperationMethod<
   CreateProjectsLocationsEnrollmentsRequest,
@@ -2354,7 +3163,12 @@ export const createProjectsLocationsEnrollments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsGoogleApiSourcesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsGoogleApiSourcesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Create a new GoogleApiSource in a particular project and location. */
 export const createProjectsLocationsGoogleApiSources: API.OperationMethod<
   CreateProjectsLocationsGoogleApiSourcesRequest,
@@ -2369,7 +3183,12 @@ export const createProjectsLocationsGoogleApiSources: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsMessageBusesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsMessageBusesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Create a new MessageBus in a particular project and location. */
 export const createProjectsLocationsMessageBuses: API.OperationMethod<
   CreateProjectsLocationsMessageBusesRequest,
@@ -2384,7 +3203,12 @@ export const createProjectsLocationsMessageBuses: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsPipelinesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsPipelinesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Create a new Pipeline in a particular project and location. */
 export const createProjectsLocationsPipelines: API.OperationMethod<
   CreateProjectsLocationsPipelinesRequest,
@@ -2399,7 +3223,12 @@ export const createProjectsLocationsPipelines: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsTriggersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsTriggersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Create a new trigger in a particular project and location. */
 export const createProjectsLocationsTriggers: API.OperationMethod<
   CreateProjectsLocationsTriggersRequest,
@@ -2414,7 +3243,12 @@ export const createProjectsLocationsTriggers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsChannelConnectionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsChannelConnectionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Delete a single ChannelConnection. */
 export const deleteProjectsLocationsChannelConnections: API.OperationMethod<
   DeleteProjectsLocationsChannelConnectionsRequest,
@@ -2429,7 +3263,12 @@ export const deleteProjectsLocationsChannelConnections: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsChannelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsChannelsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Delete a single channel. */
 export const deleteProjectsLocationsChannels: API.OperationMethod<
   DeleteProjectsLocationsChannelsRequest,
@@ -2444,7 +3283,12 @@ export const deleteProjectsLocationsChannels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsEnrollmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsEnrollmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Delete a single Enrollment. */
 export const deleteProjectsLocationsEnrollments: API.OperationMethod<
   DeleteProjectsLocationsEnrollmentsRequest,
@@ -2459,7 +3303,12 @@ export const deleteProjectsLocationsEnrollments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsGoogleApiSourcesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsGoogleApiSourcesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Delete a single GoogleApiSource. */
 export const deleteProjectsLocationsGoogleApiSources: API.OperationMethod<
   DeleteProjectsLocationsGoogleApiSourcesRequest,
@@ -2474,7 +3323,12 @@ export const deleteProjectsLocationsGoogleApiSources: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsMessageBusesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsMessageBusesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Delete a single message bus. */
 export const deleteProjectsLocationsMessageBuses: API.OperationMethod<
   DeleteProjectsLocationsMessageBusesRequest,
@@ -2489,7 +3343,12 @@ export const deleteProjectsLocationsMessageBuses: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsRequest,
@@ -2504,7 +3363,12 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsPipelinesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsPipelinesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Delete a single pipeline. */
 export const deleteProjectsLocationsPipelines: API.OperationMethod<
   DeleteProjectsLocationsPipelinesRequest,
@@ -2519,7 +3383,12 @@ export const deleteProjectsLocationsPipelines: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsTriggersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsTriggersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Delete a single trigger. */
 export const deleteProjectsLocationsTriggers: API.OperationMethod<
   DeleteProjectsLocationsTriggersRequest,
@@ -2534,7 +3403,10 @@ export const deleteProjectsLocationsTriggers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetGoogleChannelConfigProjectsLocationsError = NotFound | Forbidden | GcpOpError;
+export type GetGoogleChannelConfigProjectsLocationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Get a GoogleChannelConfig. The name of the GoogleChannelConfig in the response is ALWAYS coded with projectID. */
 export const getGoogleChannelConfigProjectsLocations: API.OperationMethod<
   GetGoogleChannelConfigProjectsLocationsRequest,
@@ -2549,7 +3421,10 @@ export const getGoogleChannelConfigProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsChannelConnectionsError = NotFound | Forbidden | GcpOpError;
+export type GetIamPolicyProjectsLocationsChannelConnectionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsChannelConnections: API.OperationMethod<
   GetIamPolicyProjectsLocationsChannelConnectionsRequest,
@@ -2564,7 +3439,10 @@ export const getIamPolicyProjectsLocationsChannelConnections: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsChannelsError = NotFound | Forbidden | GcpOpError;
+export type GetIamPolicyProjectsLocationsChannelsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsChannels: API.OperationMethod<
   GetIamPolicyProjectsLocationsChannelsRequest,
@@ -2579,7 +3457,10 @@ export const getIamPolicyProjectsLocationsChannels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsEnrollmentsError = NotFound | Forbidden | GcpOpError;
+export type GetIamPolicyProjectsLocationsEnrollmentsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsEnrollments: API.OperationMethod<
   GetIamPolicyProjectsLocationsEnrollmentsRequest,
@@ -2594,7 +3475,10 @@ export const getIamPolicyProjectsLocationsEnrollments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsGoogleApiSourcesError = NotFound | Forbidden | GcpOpError;
+export type GetIamPolicyProjectsLocationsGoogleApiSourcesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsGoogleApiSources: API.OperationMethod<
   GetIamPolicyProjectsLocationsGoogleApiSourcesRequest,
@@ -2609,7 +3493,10 @@ export const getIamPolicyProjectsLocationsGoogleApiSources: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsMessageBusesError = NotFound | Forbidden | GcpOpError;
+export type GetIamPolicyProjectsLocationsMessageBusesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsMessageBuses: API.OperationMethod<
   GetIamPolicyProjectsLocationsMessageBusesRequest,
@@ -2624,7 +3511,10 @@ export const getIamPolicyProjectsLocationsMessageBuses: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsPipelinesError = NotFound | Forbidden | GcpOpError;
+export type GetIamPolicyProjectsLocationsPipelinesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsPipelines: API.OperationMethod<
   GetIamPolicyProjectsLocationsPipelinesRequest,
@@ -2639,7 +3529,10 @@ export const getIamPolicyProjectsLocationsPipelines: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsTriggersError = NotFound | Forbidden | GcpOpError;
+export type GetIamPolicyProjectsLocationsTriggersError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsTriggers: API.OperationMethod<
   GetIamPolicyProjectsLocationsTriggersRequest,
@@ -2669,7 +3562,10 @@ export const getProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsChannelConnectionsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsChannelConnectionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Get a single ChannelConnection. */
 export const getProjectsLocationsChannelConnections: API.OperationMethod<
   GetProjectsLocationsChannelConnectionsRequest,
@@ -2684,7 +3580,10 @@ export const getProjectsLocationsChannelConnections: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsChannelsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsChannelsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Get a single Channel. */
 export const getProjectsLocationsChannels: API.OperationMethod<
   GetProjectsLocationsChannelsRequest,
@@ -2699,7 +3598,10 @@ export const getProjectsLocationsChannels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsEnrollmentsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsEnrollmentsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Get a single Enrollment. */
 export const getProjectsLocationsEnrollments: API.OperationMethod<
   GetProjectsLocationsEnrollmentsRequest,
@@ -2714,7 +3616,10 @@ export const getProjectsLocationsEnrollments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsGoogleApiSourcesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsGoogleApiSourcesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Get a single GoogleApiSource. */
 export const getProjectsLocationsGoogleApiSources: API.OperationMethod<
   GetProjectsLocationsGoogleApiSourcesRequest,
@@ -2729,7 +3634,10 @@ export const getProjectsLocationsGoogleApiSources: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsMessageBusesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsMessageBusesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Get a single MessageBus. */
 export const getProjectsLocationsMessageBuses: API.OperationMethod<
   GetProjectsLocationsMessageBusesRequest,
@@ -2744,7 +3652,10 @@ export const getProjectsLocationsMessageBuses: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -2759,7 +3670,10 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsPipelinesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsPipelinesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Get a single Pipeline. */
 export const getProjectsLocationsPipelines: API.OperationMethod<
   GetProjectsLocationsPipelinesRequest,
@@ -2774,7 +3688,10 @@ export const getProjectsLocationsPipelines: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsProvidersError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsProvidersError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Get a single Provider. */
 export const getProjectsLocationsProviders: API.OperationMethod<
   GetProjectsLocationsProvidersRequest,
@@ -2789,7 +3706,10 @@ export const getProjectsLocationsProviders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsTriggersError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsTriggersError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Get a single trigger. */
 export const getProjectsLocationsTriggers: API.OperationMethod<
   GetProjectsLocationsTriggersRequest,
@@ -2804,7 +3724,10 @@ export const getProjectsLocationsTriggers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListEnrollmentsProjectsLocationsMessageBusesError = NotFound | Forbidden | GcpOpError;
+export type ListEnrollmentsProjectsLocationsMessageBusesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** List message bus enrollments. */
 export const listEnrollmentsProjectsLocationsMessageBuses: API.PaginatedOperationMethod<
   ListEnrollmentsProjectsLocationsMessageBusesRequest,
@@ -2817,7 +3740,10 @@ export const listEnrollmentsProjectsLocationsMessageBuses: API.PaginatedOperatio
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListProjectsLocationsError = NotFound | Forbidden | GcpOpError;
@@ -2833,10 +3759,16 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsChannelConnectionsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsChannelConnectionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** List channel connections. */
 export const listProjectsLocationsChannelConnections: API.PaginatedOperationMethod<
   ListProjectsLocationsChannelConnectionsRequest,
@@ -2849,10 +3781,16 @@ export const listProjectsLocationsChannelConnections: API.PaginatedOperationMeth
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsChannelsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsChannelsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** List channels. */
 export const listProjectsLocationsChannels: API.PaginatedOperationMethod<
   ListProjectsLocationsChannelsRequest,
@@ -2865,10 +3803,16 @@ export const listProjectsLocationsChannels: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsEnrollmentsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsEnrollmentsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** List Enrollments. */
 export const listProjectsLocationsEnrollments: API.PaginatedOperationMethod<
   ListProjectsLocationsEnrollmentsRequest,
@@ -2881,10 +3825,16 @@ export const listProjectsLocationsEnrollments: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsGoogleApiSourcesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsGoogleApiSourcesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** List GoogleApiSources. */
 export const listProjectsLocationsGoogleApiSources: API.PaginatedOperationMethod<
   ListProjectsLocationsGoogleApiSourcesRequest,
@@ -2897,10 +3847,16 @@ export const listProjectsLocationsGoogleApiSources: API.PaginatedOperationMethod
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsMessageBusesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsMessageBusesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** List message buses. */
 export const listProjectsLocationsMessageBuses: API.PaginatedOperationMethod<
   ListProjectsLocationsMessageBusesRequest,
@@ -2913,10 +3869,16 @@ export const listProjectsLocationsMessageBuses: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -2929,10 +3891,16 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsPipelinesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsPipelinesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** List pipelines. */
 export const listProjectsLocationsPipelines: API.PaginatedOperationMethod<
   ListProjectsLocationsPipelinesRequest,
@@ -2945,10 +3913,16 @@ export const listProjectsLocationsPipelines: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsProvidersError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsProvidersError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** List providers. */
 export const listProjectsLocationsProviders: API.PaginatedOperationMethod<
   ListProjectsLocationsProvidersRequest,
@@ -2961,10 +3935,16 @@ export const listProjectsLocationsProviders: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsTriggersError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsTriggersError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** List triggers. */
 export const listProjectsLocationsTriggers: API.PaginatedOperationMethod<
   ListProjectsLocationsTriggersRequest,
@@ -2977,10 +3957,18 @@ export const listProjectsLocationsTriggers: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type PatchProjectsLocationsChannelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsChannelsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update a single channel. */
 export const patchProjectsLocationsChannels: API.OperationMethod<
   PatchProjectsLocationsChannelsRequest,
@@ -2995,7 +3983,12 @@ export const patchProjectsLocationsChannels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsEnrollmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsEnrollmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update a single Enrollment. */
 export const patchProjectsLocationsEnrollments: API.OperationMethod<
   PatchProjectsLocationsEnrollmentsRequest,
@@ -3010,7 +4003,12 @@ export const patchProjectsLocationsEnrollments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsGoogleApiSourcesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsGoogleApiSourcesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update a single GoogleApiSource. */
 export const patchProjectsLocationsGoogleApiSources: API.OperationMethod<
   PatchProjectsLocationsGoogleApiSourcesRequest,
@@ -3025,7 +4023,12 @@ export const patchProjectsLocationsGoogleApiSources: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsMessageBusesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsMessageBusesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update a single message bus. */
 export const patchProjectsLocationsMessageBuses: API.OperationMethod<
   PatchProjectsLocationsMessageBusesRequest,
@@ -3040,7 +4043,12 @@ export const patchProjectsLocationsMessageBuses: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsPipelinesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsPipelinesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update a single pipeline. */
 export const patchProjectsLocationsPipelines: API.OperationMethod<
   PatchProjectsLocationsPipelinesRequest,
@@ -3055,7 +4063,12 @@ export const patchProjectsLocationsPipelines: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsTriggersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsTriggersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update a single trigger. */
 export const patchProjectsLocationsTriggers: API.OperationMethod<
   PatchProjectsLocationsTriggersRequest,
@@ -3070,7 +4083,12 @@ export const patchProjectsLocationsTriggers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsChannelConnectionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetIamPolicyProjectsLocationsChannelConnectionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsChannelConnections: API.OperationMethod<
   SetIamPolicyProjectsLocationsChannelConnectionsRequest,
@@ -3085,7 +4103,12 @@ export const setIamPolicyProjectsLocationsChannelConnections: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsChannelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetIamPolicyProjectsLocationsChannelsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsChannels: API.OperationMethod<
   SetIamPolicyProjectsLocationsChannelsRequest,
@@ -3100,7 +4123,12 @@ export const setIamPolicyProjectsLocationsChannels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsEnrollmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetIamPolicyProjectsLocationsEnrollmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsEnrollments: API.OperationMethod<
   SetIamPolicyProjectsLocationsEnrollmentsRequest,
@@ -3115,7 +4143,12 @@ export const setIamPolicyProjectsLocationsEnrollments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsGoogleApiSourcesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetIamPolicyProjectsLocationsGoogleApiSourcesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsGoogleApiSources: API.OperationMethod<
   SetIamPolicyProjectsLocationsGoogleApiSourcesRequest,
@@ -3130,7 +4163,12 @@ export const setIamPolicyProjectsLocationsGoogleApiSources: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsMessageBusesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetIamPolicyProjectsLocationsMessageBusesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsMessageBuses: API.OperationMethod<
   SetIamPolicyProjectsLocationsMessageBusesRequest,
@@ -3145,7 +4183,12 @@ export const setIamPolicyProjectsLocationsMessageBuses: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsPipelinesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetIamPolicyProjectsLocationsPipelinesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsPipelines: API.OperationMethod<
   SetIamPolicyProjectsLocationsPipelinesRequest,
@@ -3160,7 +4203,12 @@ export const setIamPolicyProjectsLocationsPipelines: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsTriggersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetIamPolicyProjectsLocationsTriggersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsTriggers: API.OperationMethod<
   SetIamPolicyProjectsLocationsTriggersRequest,
@@ -3175,7 +4223,12 @@ export const setIamPolicyProjectsLocationsTriggers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsChannelConnectionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TestIamPermissionsProjectsLocationsChannelConnectionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsChannelConnections: API.OperationMethod<
   TestIamPermissionsProjectsLocationsChannelConnectionsRequest,
@@ -3190,7 +4243,12 @@ export const testIamPermissionsProjectsLocationsChannelConnections: API.Operatio
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsChannelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TestIamPermissionsProjectsLocationsChannelsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsChannels: API.OperationMethod<
   TestIamPermissionsProjectsLocationsChannelsRequest,
@@ -3205,7 +4263,12 @@ export const testIamPermissionsProjectsLocationsChannels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsEnrollmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TestIamPermissionsProjectsLocationsEnrollmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsEnrollments: API.OperationMethod<
   TestIamPermissionsProjectsLocationsEnrollmentsRequest,
@@ -3220,7 +4283,12 @@ export const testIamPermissionsProjectsLocationsEnrollments: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsGoogleApiSourcesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TestIamPermissionsProjectsLocationsGoogleApiSourcesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsGoogleApiSources: API.OperationMethod<
   TestIamPermissionsProjectsLocationsGoogleApiSourcesRequest,
@@ -3235,7 +4303,12 @@ export const testIamPermissionsProjectsLocationsGoogleApiSources: API.OperationM
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsMessageBusesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TestIamPermissionsProjectsLocationsMessageBusesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsMessageBuses: API.OperationMethod<
   TestIamPermissionsProjectsLocationsMessageBusesRequest,
@@ -3250,7 +4323,12 @@ export const testIamPermissionsProjectsLocationsMessageBuses: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsPipelinesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TestIamPermissionsProjectsLocationsPipelinesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsPipelines: API.OperationMethod<
   TestIamPermissionsProjectsLocationsPipelinesRequest,
@@ -3265,7 +4343,12 @@ export const testIamPermissionsProjectsLocationsPipelines: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsTriggersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TestIamPermissionsProjectsLocationsTriggersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsTriggers: API.OperationMethod<
   TestIamPermissionsProjectsLocationsTriggersRequest,
@@ -3280,7 +4363,12 @@ export const testIamPermissionsProjectsLocationsTriggers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateGoogleChannelConfigProjectsLocationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateGoogleChannelConfigProjectsLocationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update a single GoogleChannelConfig */
 export const updateGoogleChannelConfigProjectsLocations: API.OperationMethod<
   UpdateGoogleChannelConfigProjectsLocationsRequest,
@@ -3294,4 +4382,3 @@ export const updateGoogleChannelConfigProjectsLocations: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

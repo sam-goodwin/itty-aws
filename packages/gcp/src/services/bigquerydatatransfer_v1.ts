@@ -13,58 +13,60 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 /** A request to determine whether the user has valid credentials. This method is used to limit the number of OAuth popups in the user interface. The user id is inferred from the API call context. If the data source has the Google+ authorization type, this method returns false, as it cannot be determined whether the credentials are already valid merely based on the user id. */
 export interface CheckValidCredsRequest {}
 export const CheckValidCredsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "CheckValidCredsRequest" }) as any as S.Schema<CheckValidCredsRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "CheckValidCredsRequest",
+}) as any as S.Schema<CheckValidCredsRequest>;
 
 export interface CheckValidCredsProjectsDataSourcesRequest {
   /** Required. The name of the data source. If you are using the regionless method, the location must be `US` and the name should be in the following form: * `projects/{project_id}/dataSources/{data_source_id}` If you are using the regionalized method, the name should be in the following form: * `projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}` */
@@ -72,12 +74,21 @@ export interface CheckValidCredsProjectsDataSourcesRequest {
   /** Request body */
   body?: CheckValidCredsRequest;
 }
-export const CheckValidCredsProjectsDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(CheckValidCredsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:checkValidCreds","baseUrl":"https://bigquerydatatransfer.googleapis.com/"})),
-).annotate({ identifier: "CheckValidCredsProjectsDataSourcesRequest" }) as any as S.Schema<CheckValidCredsProjectsDataSourcesRequest>;
+export const CheckValidCredsProjectsDataSourcesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(CheckValidCredsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:checkValidCreds",
+        baseUrl: "https://bigquerydatatransfer.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CheckValidCredsProjectsDataSourcesRequest",
+  }) as any as S.Schema<CheckValidCredsProjectsDataSourcesRequest>;
 
 /** A response indicating whether the credentials exist and are valid. */
 export interface CheckValidCredsResponse {
@@ -85,10 +96,12 @@ export interface CheckValidCredsResponse {
   hasValidCreds?: boolean;
 }
 export const CheckValidCredsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "hasValidCreds": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "CheckValidCredsResponse" }) as any as S.Schema<CheckValidCredsResponse>;
+  S.Struct({
+    hasValidCreds: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "CheckValidCredsResponse",
+}) as any as S.Schema<CheckValidCredsResponse>;
 
 export interface CheckValidCredsProjectsLocationsDataSourcesRequest {
   /** Required. The name of the data source. If you are using the regionless method, the location must be `US` and the name should be in the following form: * `projects/{project_id}/dataSources/{data_source_id}` If you are using the regionalized method, the name should be in the following form: * `projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}` */
@@ -96,12 +109,21 @@ export interface CheckValidCredsProjectsLocationsDataSourcesRequest {
   /** Request body */
   body?: CheckValidCredsRequest;
 }
-export const CheckValidCredsProjectsLocationsDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(CheckValidCredsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:checkValidCreds","baseUrl":"https://bigquerydatatransfer.googleapis.com/"})),
-).annotate({ identifier: "CheckValidCredsProjectsLocationsDataSourcesRequest" }) as any as S.Schema<CheckValidCredsProjectsLocationsDataSourcesRequest>;
+export const CheckValidCredsProjectsLocationsDataSourcesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(CheckValidCredsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:checkValidCreds",
+        baseUrl: "https://bigquerydatatransfer.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CheckValidCredsProjectsLocationsDataSourcesRequest",
+  }) as any as S.Schema<CheckValidCredsProjectsLocationsDataSourcesRequest>;
 
 /** Options customizing the data transfer schedule. */
 export interface ScheduleOptions {
@@ -113,12 +135,14 @@ export interface ScheduleOptions {
   endTime?: string;
 }
 export const ScheduleOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "disableAutoScheduling": S.optional(S.Boolean),
-  "startTime": S.optional(S.String),
-  "endTime": S.optional(S.String),
-}),
-).annotate({ identifier: "ScheduleOptions" }) as any as S.Schema<ScheduleOptions>;
+  S.Struct({
+    disableAutoScheduling: S.optional(S.Boolean),
+    startTime: S.optional(S.String),
+    endTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ScheduleOptions",
+}) as any as S.Schema<ScheduleOptions>;
 
 /** Configuration for Dataplex destination. */
 export interface DataplexConfiguration {
@@ -126,10 +150,12 @@ export interface DataplexConfiguration {
   entryGroup?: string;
 }
 export const DataplexConfiguration = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "entryGroup": S.optional(S.String),
-}),
-).annotate({ identifier: "DataplexConfiguration" }) as any as S.Schema<DataplexConfiguration>;
+  S.Struct({
+    entryGroup: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DataplexConfiguration",
+}) as any as S.Schema<DataplexConfiguration>;
 
 /** The metadata destination of the transfer config. */
 export interface MetadataDestination {
@@ -137,15 +163,17 @@ export interface MetadataDestination {
   dataplexConfiguration?: DataplexConfiguration;
 }
 export const MetadataDestination = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dataplexConfiguration": S.optional(DataplexConfiguration),
-}),
-).annotate({ identifier: "MetadataDestination" }) as any as S.Schema<MetadataDestination>;
+  S.Struct({
+    dataplexConfiguration: S.optional(DataplexConfiguration),
+  }),
+).annotate({
+  identifier: "MetadataDestination",
+}) as any as S.Schema<MetadataDestination>;
 
 /** Options customizing manual transfers schedule. */
 export interface ManualSchedule {}
 export const ManualSchedule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
+  S.Struct({}),
 ).annotate({ identifier: "ManualSchedule" }) as any as S.Schema<ManualSchedule>;
 
 /** Options customizing the time based transfer schedule. Options are migrated from the original ScheduleOptions message. */
@@ -158,12 +186,14 @@ export interface TimeBasedSchedule {
   schedule?: string;
 }
 export const TimeBasedSchedule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "endTime": S.optional(S.String),
-  "startTime": S.optional(S.String),
-  "schedule": S.optional(S.String),
-}),
-).annotate({ identifier: "TimeBasedSchedule" }) as any as S.Schema<TimeBasedSchedule>;
+  S.Struct({
+    endTime: S.optional(S.String),
+    startTime: S.optional(S.String),
+    schedule: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "TimeBasedSchedule",
+}) as any as S.Schema<TimeBasedSchedule>;
 
 /** Options customizing EventDriven transfers schedule. */
 export interface EventDrivenSchedule {
@@ -171,10 +201,12 @@ export interface EventDrivenSchedule {
   pubsubSubscription?: string;
 }
 export const EventDrivenSchedule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pubsubSubscription": S.optional(S.String),
-}),
-).annotate({ identifier: "EventDrivenSchedule" }) as any as S.Schema<EventDrivenSchedule>;
+  S.Struct({
+    pubsubSubscription: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EventDrivenSchedule",
+}) as any as S.Schema<EventDrivenSchedule>;
 
 /** V2 options customizing different types of data transfer schedule. This field supports existing time-based and manual transfer schedule. Also supports Event-Driven transfer schedule. ScheduleOptionsV2 cannot be used together with ScheduleOptions/Schedule. */
 export interface ScheduleOptionsV2 {
@@ -186,14 +218,22 @@ export interface ScheduleOptionsV2 {
   eventDrivenSchedule?: EventDrivenSchedule;
 }
 export const ScheduleOptionsV2 = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "manualSchedule": S.optional(ManualSchedule),
-  "timeBasedSchedule": S.optional(TimeBasedSchedule),
-  "eventDrivenSchedule": S.optional(EventDrivenSchedule),
-}),
-).annotate({ identifier: "ScheduleOptionsV2" }) as any as S.Schema<ScheduleOptionsV2>;
+  S.Struct({
+    manualSchedule: S.optional(ManualSchedule),
+    timeBasedSchedule: S.optional(TimeBasedSchedule),
+    eventDrivenSchedule: S.optional(EventDrivenSchedule),
+  }),
+).annotate({
+  identifier: "ScheduleOptionsV2",
+}) as any as S.Schema<ScheduleOptionsV2>;
 
-export type TransferConfigStateEnum = "TRANSFER_STATE_UNSPECIFIED" | "PENDING" | "RUNNING" | "SUCCEEDED" | "FAILED" | "CANCELLED";
+export type TransferConfigStateEnum =
+  | "TRANSFER_STATE_UNSPECIFIED"
+  | "PENDING"
+  | "RUNNING"
+  | "SUCCEEDED"
+  | "FAILED"
+  | "CANCELLED";
 export const TransferConfigStateEnum = /*@__PURE__*/ S.String;
 
 /** Information about a user. */
@@ -202,9 +242,9 @@ export interface UserInfo {
   email?: string;
 }
 export const UserInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "email": S.optional(S.String),
-}),
+  S.Struct({
+    email: S.optional(S.String),
+  }),
 ).annotate({ identifier: "UserInfo" }) as any as S.Schema<UserInfo>;
 
 /** Represents the encryption configuration for a transfer. */
@@ -213,16 +253,24 @@ export interface EncryptionConfiguration {
   kmsKeyName?: string;
 }
 export const EncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kmsKeyName": S.optional(S.String),
-}),
-).annotate({ identifier: "EncryptionConfiguration" }) as any as S.Schema<EncryptionConfiguration>;
+  S.Struct({
+    kmsKeyName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EncryptionConfiguration",
+}) as any as S.Schema<EncryptionConfiguration>;
 
-export type TransferConfigManagedTableTypeEnum = "MANAGED_TABLE_TYPE_UNSPECIFIED" | "NATIVE" | "BIGLAKE";
+export type TransferConfigManagedTableTypeEnum =
+  | "MANAGED_TABLE_TYPE_UNSPECIFIED"
+  | "NATIVE"
+  | "BIGLAKE";
 export const TransferConfigManagedTableTypeEnum = /*@__PURE__*/ S.String;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 /** Represents preferences for sending email notifications for transfer run events. */
 export interface EmailPreferences {
@@ -230,13 +278,17 @@ export interface EmailPreferences {
   enableFailureEmail?: boolean;
 }
 export const EmailPreferences = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "enableFailureEmail": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "EmailPreferences" }) as any as S.Schema<EmailPreferences>;
+  S.Struct({
+    enableFailureEmail: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "EmailPreferences",
+}) as any as S.Schema<EmailPreferences>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -248,11 +300,11 @@ export interface Status {
   details?: DocumentMapList;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(S.Number),
-  "message": S.optional(S.String),
-  "details": S.optional(DocumentMapList),
-}),
+  S.Struct({
+    code: S.optional(S.Number),
+    message: S.optional(S.String),
+    details: S.optional(DocumentMapList),
+  }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** Represents a data transfer configuration. A transfer configuration contains all metadata needed to perform a data transfer. For example, `destination_dataset_id` specifies where data should be stored. When a new transfer configuration is created, the specified `destination_dataset_id` is created when needed and shared with the appropriate data source service account. */
@@ -303,30 +355,30 @@ export interface TransferConfig {
   error?: Status;
 }
 export const TransferConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "notificationPubsubTopic": S.optional(S.String),
-  "nextRunTime": S.optional(S.String),
-  "scheduleOptions": S.optional(ScheduleOptions),
-  "metadataDestination": S.optional(MetadataDestination),
-  "scheduleOptionsV2": S.optional(ScheduleOptionsV2),
-  "state": S.optional(TransferConfigStateEnum),
-  "destinationDatasetId": S.optional(S.String),
-  "userId": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "dataRefreshWindowDays": S.optional(S.Number),
-  "ownerInfo": S.optional(UserInfo),
-  "name": S.optional(S.String),
-  "dataSourceId": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "encryptionConfiguration": S.optional(EncryptionConfiguration),
-  "managedTableType": S.optional(TransferConfigManagedTableTypeEnum),
-  "params": S.optional(DocumentMap),
-  "disabled": S.optional(S.Boolean),
-  "schedule": S.optional(S.String),
-  "datasetRegion": S.optional(S.String),
-  "emailPreferences": S.optional(EmailPreferences),
-  "error": S.optional(Status),
-}),
+  S.Struct({
+    notificationPubsubTopic: S.optional(S.String),
+    nextRunTime: S.optional(S.String),
+    scheduleOptions: S.optional(ScheduleOptions),
+    metadataDestination: S.optional(MetadataDestination),
+    scheduleOptionsV2: S.optional(ScheduleOptionsV2),
+    state: S.optional(TransferConfigStateEnum),
+    destinationDatasetId: S.optional(S.String),
+    userId: S.optional(S.String),
+    displayName: S.optional(S.String),
+    dataRefreshWindowDays: S.optional(S.Number),
+    ownerInfo: S.optional(UserInfo),
+    name: S.optional(S.String),
+    dataSourceId: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    encryptionConfiguration: S.optional(EncryptionConfiguration),
+    managedTableType: S.optional(TransferConfigManagedTableTypeEnum),
+    params: S.optional(DocumentMap),
+    disabled: S.optional(S.Boolean),
+    schedule: S.optional(S.String),
+    datasetRegion: S.optional(S.String),
+    emailPreferences: S.optional(EmailPreferences),
+    error: S.optional(Status),
+  }),
 ).annotate({ identifier: "TransferConfig" }) as any as S.Schema<TransferConfig>;
 
 export interface CreateProjectsLocationsTransferConfigsRequest {
@@ -341,15 +393,24 @@ export interface CreateProjectsLocationsTransferConfigsRequest {
   /** Request body */
   body?: TransferConfig;
 }
-export const CreateProjectsLocationsTransferConfigsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "authorizationCode": S.optional(S.String.pipe(T.Query())),
-  "versionInfo": S.optional(S.String.pipe(T.Query())),
-  "serviceAccountName": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(TransferConfig.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/transferConfigs","baseUrl":"https://bigquerydatatransfer.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsTransferConfigsRequest" }) as any as S.Schema<CreateProjectsLocationsTransferConfigsRequest>;
+export const CreateProjectsLocationsTransferConfigsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      authorizationCode: S.optional(S.String.pipe(T.Query())),
+      versionInfo: S.optional(S.String.pipe(T.Query())),
+      serviceAccountName: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(TransferConfig.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/transferConfigs",
+        baseUrl: "https://bigquerydatatransfer.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsTransferConfigsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsTransferConfigsRequest>;
 
 export interface CreateProjectsTransferConfigsRequest {
   /** Deprecated: Authorization code was required when `transferConfig.dataSourceId` is 'youtube_channel' but it is no longer used in any data sources. Use `version_info` instead. Optional OAuth2 authorization code to use with this transfer configuration. This is required only if `transferConfig.dataSourceId` is 'youtube_channel' and new credentials are needed, as indicated by `CheckValidCreds`. In order to obtain authorization_code, make a request to the following URL: https://bigquery.cloud.google.com/datatransfer/oauthz/auth?redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=authorization_code&client_id=client_id&scope=data_source_scopes * The client_id is the OAuth client_id of the data source as returned by ListDataSources method. * data_source_scopes are the scopes returned by ListDataSources method. Note that this should not be set when `service_account_name` is used to create the transfer config. */
@@ -363,64 +424,111 @@ export interface CreateProjectsTransferConfigsRequest {
   /** Request body */
   body?: TransferConfig;
 }
-export const CreateProjectsTransferConfigsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "authorizationCode": S.optional(S.String.pipe(T.Query())),
-  "versionInfo": S.optional(S.String.pipe(T.Query())),
-  "serviceAccountName": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(TransferConfig.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/transferConfigs","baseUrl":"https://bigquerydatatransfer.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsTransferConfigsRequest" }) as any as S.Schema<CreateProjectsTransferConfigsRequest>;
+export const CreateProjectsTransferConfigsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      authorizationCode: S.optional(S.String.pipe(T.Query())),
+      versionInfo: S.optional(S.String.pipe(T.Query())),
+      serviceAccountName: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(TransferConfig.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/transferConfigs",
+        baseUrl: "https://bigquerydatatransfer.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateProjectsTransferConfigsRequest",
+}) as any as S.Schema<CreateProjectsTransferConfigsRequest>;
 
 export interface DeleteProjectsLocationsTransferConfigsRequest {
   /** Required. The name of the resource to delete. If you are using the regionless method, the location must be `US` and the name should be in the following form: * `projects/{project_id}/transferConfigs/{config_id}` If you are using the regionalized method, the name should be in the following form: * `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}` */
   name: string;
 }
-export const DeleteProjectsLocationsTransferConfigsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://bigquerydatatransfer.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsTransferConfigsRequest" }) as any as S.Schema<DeleteProjectsLocationsTransferConfigsRequest>;
+export const DeleteProjectsLocationsTransferConfigsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://bigquerydatatransfer.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsTransferConfigsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsTransferConfigsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 export interface DeleteProjectsLocationsTransferConfigsRunsRequest {
   /** Required. The name of the resource requested. If you are using the regionless method, the location must be `US` and the name should be in the following form: * `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` If you are using the regionalized method, the name should be in the following form: * `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}` */
   name: string;
 }
-export const DeleteProjectsLocationsTransferConfigsRunsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://bigquerydatatransfer.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsTransferConfigsRunsRequest" }) as any as S.Schema<DeleteProjectsLocationsTransferConfigsRunsRequest>;
+export const DeleteProjectsLocationsTransferConfigsRunsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://bigquerydatatransfer.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsTransferConfigsRunsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsTransferConfigsRunsRequest>;
 
 export interface DeleteProjectsTransferConfigsRequest {
   /** Required. The name of the resource to delete. If you are using the regionless method, the location must be `US` and the name should be in the following form: * `projects/{project_id}/transferConfigs/{config_id}` If you are using the regionalized method, the name should be in the following form: * `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}` */
   name: string;
 }
-export const DeleteProjectsTransferConfigsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://bigquerydatatransfer.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsTransferConfigsRequest" }) as any as S.Schema<DeleteProjectsTransferConfigsRequest>;
+export const DeleteProjectsTransferConfigsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://bigquerydatatransfer.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsTransferConfigsRequest",
+}) as any as S.Schema<DeleteProjectsTransferConfigsRequest>;
 
 export interface DeleteProjectsTransferConfigsRunsRequest {
   /** Required. The name of the resource requested. If you are using the regionless method, the location must be `US` and the name should be in the following form: * `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` If you are using the regionalized method, the name should be in the following form: * `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}` */
   name: string;
 }
-export const DeleteProjectsTransferConfigsRunsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://bigquerydatatransfer.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsTransferConfigsRunsRequest" }) as any as S.Schema<DeleteProjectsTransferConfigsRunsRequest>;
+export const DeleteProjectsTransferConfigsRunsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://bigquerydatatransfer.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsTransferConfigsRunsRequest",
+}) as any as S.Schema<DeleteProjectsTransferConfigsRunsRequest>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** A request to enroll a set of data sources so they are visible in the BigQuery UI's `Transfer` tab. */
 export interface EnrollDataSourcesRequest {
@@ -428,10 +536,12 @@ export interface EnrollDataSourcesRequest {
   dataSourceIds?: StringList;
 }
 export const EnrollDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dataSourceIds": S.optional(StringList),
-}),
-).annotate({ identifier: "EnrollDataSourcesRequest" }) as any as S.Schema<EnrollDataSourcesRequest>;
+  S.Struct({
+    dataSourceIds: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "EnrollDataSourcesRequest",
+}) as any as S.Schema<EnrollDataSourcesRequest>;
 
 export interface EnrollDataSourcesProjectsRequest {
   /** Required. The name of the project resource in the form: `projects/{project_id}` */
@@ -440,11 +550,19 @@ export interface EnrollDataSourcesProjectsRequest {
   body?: EnrollDataSourcesRequest;
 }
 export const EnrollDataSourcesProjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(EnrollDataSourcesRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:enrollDataSources","baseUrl":"https://bigquerydatatransfer.googleapis.com/"})),
-).annotate({ identifier: "EnrollDataSourcesProjectsRequest" }) as any as S.Schema<EnrollDataSourcesProjectsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(EnrollDataSourcesRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:enrollDataSources",
+      baseUrl: "https://bigquerydatatransfer.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "EnrollDataSourcesProjectsRequest",
+}) as any as S.Schema<EnrollDataSourcesProjectsRequest>;
 
 export interface EnrollDataSourcesProjectsLocationsRequest {
   /** Required. The name of the project resource in the form: `projects/{project_id}` */
@@ -452,24 +570,49 @@ export interface EnrollDataSourcesProjectsLocationsRequest {
   /** Request body */
   body?: EnrollDataSourcesRequest;
 }
-export const EnrollDataSourcesProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(EnrollDataSourcesRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:enrollDataSources","baseUrl":"https://bigquerydatatransfer.googleapis.com/"})),
-).annotate({ identifier: "EnrollDataSourcesProjectsLocationsRequest" }) as any as S.Schema<EnrollDataSourcesProjectsLocationsRequest>;
+export const EnrollDataSourcesProjectsLocationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(EnrollDataSourcesRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:enrollDataSources",
+        baseUrl: "https://bigquerydatatransfer.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "EnrollDataSourcesProjectsLocationsRequest",
+  }) as any as S.Schema<EnrollDataSourcesProjectsLocationsRequest>;
 
 export interface GetProjectsDataSourcesRequest {
   /** Required. The name of the resource requested. If you are using the regionless method, the location must be `US` and the name should be in the following form: * `projects/{project_id}/dataSources/{data_source_id}` If you are using the regionalized method, the name should be in the following form: * `projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}` */
   name: string;
 }
 export const GetProjectsDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://bigquerydatatransfer.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsDataSourcesRequest" }) as any as S.Schema<GetProjectsDataSourcesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://bigquerydatatransfer.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsDataSourcesRequest",
+}) as any as S.Schema<GetProjectsDataSourcesRequest>;
 
-export type DataSourceParameterTypeEnum = "TYPE_UNSPECIFIED" | "STRING" | "INTEGER" | "DOUBLE" | "BOOLEAN" | "RECORD" | "PLUS_PAGE" | "LIST";
+export type DataSourceParameterTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "STRING"
+  | "INTEGER"
+  | "DOUBLE"
+  | "BOOLEAN"
+  | "RECORD"
+  | "PLUS_PAGE"
+  | "LIST";
 export const DataSourceParameterTypeEnum = /*@__PURE__*/ S.String;
 
 /** A parameter used to define custom fields in a data source definition. */
@@ -510,37 +653,51 @@ export interface DataSourceParameter {
   maxValue?: number;
 }
 export const DataSourceParameter = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fields": S.optional(S.suspend(() => DataSourceParameterList)),
-  "maxListSize": S.optional(S.String),
-  "validationRegex": S.optional(S.String),
-  "immutable": S.optional(S.Boolean),
-  "description": S.optional(S.String),
-  "validationDescription": S.optional(S.String),
-  "allowedValues": S.optional(StringList),
-  "validationHelpUrl": S.optional(S.String),
-  "recurse": S.optional(S.Boolean),
-  "displayName": S.optional(S.String),
-  "minValue": S.optional(S.Number),
-  "deprecated": S.optional(S.Boolean),
-  "required": S.optional(S.Boolean),
-  "repeated": S.optional(S.Boolean),
-  "paramId": S.optional(S.String),
-  "type": S.optional(DataSourceParameterTypeEnum),
-  "maxValue": S.optional(S.Number),
-}),
-).annotate({ identifier: "DataSourceParameter" }) as any as S.Schema<DataSourceParameter>;
+  S.Struct({
+    fields: S.optional(S.suspend(() => DataSourceParameterList)),
+    maxListSize: S.optional(S.String),
+    validationRegex: S.optional(S.String),
+    immutable: S.optional(S.Boolean),
+    description: S.optional(S.String),
+    validationDescription: S.optional(S.String),
+    allowedValues: S.optional(StringList),
+    validationHelpUrl: S.optional(S.String),
+    recurse: S.optional(S.Boolean),
+    displayName: S.optional(S.String),
+    minValue: S.optional(S.Number),
+    deprecated: S.optional(S.Boolean),
+    required: S.optional(S.Boolean),
+    repeated: S.optional(S.Boolean),
+    paramId: S.optional(S.String),
+    type: S.optional(DataSourceParameterTypeEnum),
+    maxValue: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "DataSourceParameter",
+}) as any as S.Schema<DataSourceParameter>;
 
 export type DataSourceParameterList = ReadonlyArray<DataSourceParameter>;
-export const DataSourceParameterList = /*@__PURE__*/ S.Array(DataSourceParameter) as any as S.Schema<DataSourceParameterList>;
+export const DataSourceParameterList = /*@__PURE__*/ S.Array(
+  DataSourceParameter,
+) as any as S.Schema<DataSourceParameterList>;
 
-export type DataSourceAuthorizationTypeEnum = "AUTHORIZATION_TYPE_UNSPECIFIED" | "AUTHORIZATION_CODE" | "GOOGLE_PLUS_AUTHORIZATION_CODE" | "FIRST_PARTY_OAUTH";
+export type DataSourceAuthorizationTypeEnum =
+  | "AUTHORIZATION_TYPE_UNSPECIFIED"
+  | "AUTHORIZATION_CODE"
+  | "GOOGLE_PLUS_AUTHORIZATION_CODE"
+  | "FIRST_PARTY_OAUTH";
 export const DataSourceAuthorizationTypeEnum = /*@__PURE__*/ S.String;
 
-export type DataSourceDataRefreshTypeEnum = "DATA_REFRESH_TYPE_UNSPECIFIED" | "SLIDING_WINDOW" | "CUSTOM_SLIDING_WINDOW";
+export type DataSourceDataRefreshTypeEnum =
+  | "DATA_REFRESH_TYPE_UNSPECIFIED"
+  | "SLIDING_WINDOW"
+  | "CUSTOM_SLIDING_WINDOW";
 export const DataSourceDataRefreshTypeEnum = /*@__PURE__*/ S.String;
 
-export type DataSourceTransferTypeEnum = "TRANSFER_TYPE_UNSPECIFIED" | "BATCH" | "STREAMING";
+export type DataSourceTransferTypeEnum =
+  | "TRANSFER_TYPE_UNSPECIFIED"
+  | "BATCH"
+  | "STREAMING";
 export const DataSourceTransferTypeEnum = /*@__PURE__*/ S.String;
 
 /** Defines the properties and custom parameters for a data source. */
@@ -583,26 +740,26 @@ export interface DataSource {
   supportsCustomSchedule?: boolean;
 }
 export const DataSource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "defaultDataRefreshWindowDays": S.optional(S.Number),
-  "name": S.optional(S.String),
-  "dataSourceId": S.optional(S.String),
-  "minimumScheduleInterval": S.optional(S.String),
-  "updateDeadlineSeconds": S.optional(S.Number),
-  "scopes": S.optional(StringList),
-  "displayName": S.optional(S.String),
-  "manualRunsDisabled": S.optional(S.Boolean),
-  "defaultSchedule": S.optional(S.String),
-  "parameters": S.optional(DataSourceParameterList),
-  "authorizationType": S.optional(DataSourceAuthorizationTypeEnum),
-  "clientId": S.optional(S.String),
-  "dataRefreshType": S.optional(DataSourceDataRefreshTypeEnum),
-  "transferType": S.optional(DataSourceTransferTypeEnum),
-  "supportsMultipleTransfers": S.optional(S.Boolean),
-  "description": S.optional(S.String),
-  "helpUrl": S.optional(S.String),
-  "supportsCustomSchedule": S.optional(S.Boolean),
-}),
+  S.Struct({
+    defaultDataRefreshWindowDays: S.optional(S.Number),
+    name: S.optional(S.String),
+    dataSourceId: S.optional(S.String),
+    minimumScheduleInterval: S.optional(S.String),
+    updateDeadlineSeconds: S.optional(S.Number),
+    scopes: S.optional(StringList),
+    displayName: S.optional(S.String),
+    manualRunsDisabled: S.optional(S.Boolean),
+    defaultSchedule: S.optional(S.String),
+    parameters: S.optional(DataSourceParameterList),
+    authorizationType: S.optional(DataSourceAuthorizationTypeEnum),
+    clientId: S.optional(S.String),
+    dataRefreshType: S.optional(DataSourceDataRefreshTypeEnum),
+    transferType: S.optional(DataSourceTransferTypeEnum),
+    supportsMultipleTransfers: S.optional(S.Boolean),
+    description: S.optional(S.String),
+    helpUrl: S.optional(S.String),
+    supportsCustomSchedule: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "DataSource" }) as any as S.Schema<DataSource>;
 
 export interface GetProjectsLocationsRequest {
@@ -610,13 +767,24 @@ export interface GetProjectsLocationsRequest {
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://bigquerydatatransfer.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://bigquerydatatransfer.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsRequest",
+}) as any as S.Schema<GetProjectsLocationsRequest>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -632,46 +800,79 @@ export interface Location {
   labels?: StringMap;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "displayName": S.optional(S.String),
-  "name": S.optional(S.String),
-  "metadata": S.optional(DocumentMap),
-  "locationId": S.optional(S.String),
-  "labels": S.optional(StringMap),
-}),
+  S.Struct({
+    displayName: S.optional(S.String),
+    name: S.optional(S.String),
+    metadata: S.optional(DocumentMap),
+    locationId: S.optional(S.String),
+    labels: S.optional(StringMap),
+  }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export interface GetProjectsLocationsDataSourcesRequest {
   /** Required. The name of the resource requested. If you are using the regionless method, the location must be `US` and the name should be in the following form: * `projects/{project_id}/dataSources/{data_source_id}` If you are using the regionalized method, the name should be in the following form: * `projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}` */
   name: string;
 }
-export const GetProjectsLocationsDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://bigquerydatatransfer.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsDataSourcesRequest" }) as any as S.Schema<GetProjectsLocationsDataSourcesRequest>;
+export const GetProjectsLocationsDataSourcesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://bigquerydatatransfer.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsDataSourcesRequest",
+}) as any as S.Schema<GetProjectsLocationsDataSourcesRequest>;
 
 export interface GetProjectsLocationsTransferConfigsRequest {
   /** Required. The name of the resource requested. If you are using the regionless method, the location must be `US` and the name should be in the following form: * `projects/{project_id}/transferConfigs/{config_id}` If you are using the regionalized method, the name should be in the following form: * `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}` */
   name: string;
 }
-export const GetProjectsLocationsTransferConfigsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://bigquerydatatransfer.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsTransferConfigsRequest" }) as any as S.Schema<GetProjectsLocationsTransferConfigsRequest>;
+export const GetProjectsLocationsTransferConfigsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://bigquerydatatransfer.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsTransferConfigsRequest",
+  }) as any as S.Schema<GetProjectsLocationsTransferConfigsRequest>;
 
 export interface GetProjectsLocationsTransferConfigsRunsRequest {
   /** Required. The name of the resource requested. If you are using the regionless method, the location must be `US` and the name should be in the following form: * `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` If you are using the regionalized method, the name should be in the following form: * `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}` */
   name: string;
 }
-export const GetProjectsLocationsTransferConfigsRunsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://bigquerydatatransfer.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsTransferConfigsRunsRequest" }) as any as S.Schema<GetProjectsLocationsTransferConfigsRunsRequest>;
+export const GetProjectsLocationsTransferConfigsRunsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://bigquerydatatransfer.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsTransferConfigsRunsRequest",
+  }) as any as S.Schema<GetProjectsLocationsTransferConfigsRunsRequest>;
 
-export type TransferRunStateEnum = "TRANSFER_STATE_UNSPECIFIED" | "PENDING" | "RUNNING" | "SUCCEEDED" | "FAILED" | "CANCELLED";
+export type TransferRunStateEnum =
+  | "TRANSFER_STATE_UNSPECIFIED"
+  | "PENDING"
+  | "RUNNING"
+  | "SUCCEEDED"
+  | "FAILED"
+  | "CANCELLED";
 export const TransferRunStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a data transfer run. */
@@ -708,39 +909,57 @@ export interface TransferRun {
   errorStatus?: Status;
 }
 export const TransferRun = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "params": S.optional(DocumentMap),
-  "startTime": S.optional(S.String),
-  "emailPreferences": S.optional(EmailPreferences),
-  "schedule": S.optional(S.String),
-  "notificationPubsubTopic": S.optional(S.String),
-  "runTime": S.optional(S.String),
-  "endTime": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "dataSourceId": S.optional(S.String),
-  "name": S.optional(S.String),
-  "scheduleTime": S.optional(S.String),
-  "destinationDatasetId": S.optional(S.String),
-  "userId": S.optional(S.String),
-  "state": S.optional(TransferRunStateEnum),
-  "errorStatus": S.optional(Status),
-}),
+  S.Struct({
+    params: S.optional(DocumentMap),
+    startTime: S.optional(S.String),
+    emailPreferences: S.optional(EmailPreferences),
+    schedule: S.optional(S.String),
+    notificationPubsubTopic: S.optional(S.String),
+    runTime: S.optional(S.String),
+    endTime: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    dataSourceId: S.optional(S.String),
+    name: S.optional(S.String),
+    scheduleTime: S.optional(S.String),
+    destinationDatasetId: S.optional(S.String),
+    userId: S.optional(S.String),
+    state: S.optional(TransferRunStateEnum),
+    errorStatus: S.optional(Status),
+  }),
 ).annotate({ identifier: "TransferRun" }) as any as S.Schema<TransferRun>;
 
 export interface GetProjectsLocationsTransferConfigsTransferResourcesRequest {
   /** Required. The name of the transfer resource in the form of: * `projects/{project}/transferConfigs/{transfer_config}/transferResources/{transfer_resource}` * `projects/{project}/locations/{location}/transferConfigs/{transfer_config}/transferResources/{transfer_resource}` */
   name: string;
 }
-export const GetProjectsLocationsTransferConfigsTransferResourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://bigquerydatatransfer.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsTransferConfigsTransferResourcesRequest" }) as any as S.Schema<GetProjectsLocationsTransferConfigsTransferResourcesRequest>;
+export const GetProjectsLocationsTransferConfigsTransferResourcesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://bigquerydatatransfer.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsTransferConfigsTransferResourcesRequest",
+  }) as any as S.Schema<GetProjectsLocationsTransferConfigsTransferResourcesRequest>;
 
-export type TransferResourceTypeEnum = "RESOURCE_TYPE_UNSPECIFIED" | "RESOURCE_TYPE_TABLE" | "RESOURCE_TYPE_PARTITION";
+export type TransferResourceTypeEnum =
+  | "RESOURCE_TYPE_UNSPECIFIED"
+  | "RESOURCE_TYPE_TABLE"
+  | "RESOURCE_TYPE_PARTITION";
 export const TransferResourceTypeEnum = /*@__PURE__*/ S.String;
 
-export type TransferResourceDestinationEnum = "RESOURCE_DESTINATION_UNSPECIFIED" | "RESOURCE_DESTINATION_BIGQUERY" | "RESOURCE_DESTINATION_DATAPROC_METASTORE" | "RESOURCE_DESTINATION_BIGLAKE_METASTORE" | "RESOURCE_DESTINATION_BIGLAKE_REST_CATALOG" | "RESOURCE_DESTINATION_BIGLAKE_HIVE_CATALOG";
+export type TransferResourceDestinationEnum =
+  | "RESOURCE_DESTINATION_UNSPECIFIED"
+  | "RESOURCE_DESTINATION_BIGQUERY"
+  | "RESOURCE_DESTINATION_DATAPROC_METASTORE"
+  | "RESOURCE_DESTINATION_BIGLAKE_METASTORE"
+  | "RESOURCE_DESTINATION_BIGLAKE_REST_CATALOG"
+  | "RESOURCE_DESTINATION_BIGLAKE_HIVE_CATALOG";
 export const TransferResourceDestinationEnum = /*@__PURE__*/ S.String;
 
 /** Basic information about a transfer run. */
@@ -751,16 +970,27 @@ export interface TransferRunBrief {
   startTime?: string;
 }
 export const TransferRunBrief = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "run": S.optional(S.String),
-  "startTime": S.optional(S.String),
-}),
-).annotate({ identifier: "TransferRunBrief" }) as any as S.Schema<TransferRunBrief>;
+  S.Struct({
+    run: S.optional(S.String),
+    startTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "TransferRunBrief",
+}) as any as S.Schema<TransferRunBrief>;
 
-export type TransferResourceStatusDetailStateEnum = "RESOURCE_TRANSFER_STATE_UNSPECIFIED" | "RESOURCE_TRANSFER_PENDING" | "RESOURCE_TRANSFER_RUNNING" | "RESOURCE_TRANSFER_SUCCEEDED" | "RESOURCE_TRANSFER_FAILED" | "RESOURCE_TRANSFER_CANCELLED";
+export type TransferResourceStatusDetailStateEnum =
+  | "RESOURCE_TRANSFER_STATE_UNSPECIFIED"
+  | "RESOURCE_TRANSFER_PENDING"
+  | "RESOURCE_TRANSFER_RUNNING"
+  | "RESOURCE_TRANSFER_SUCCEEDED"
+  | "RESOURCE_TRANSFER_FAILED"
+  | "RESOURCE_TRANSFER_CANCELLED";
 export const TransferResourceStatusDetailStateEnum = /*@__PURE__*/ S.String;
 
-export type TransferStatusMetricUnitEnum = "TRANSFER_STATUS_UNIT_UNSPECIFIED" | "TRANSFER_STATUS_UNIT_BYTES" | "TRANSFER_STATUS_UNIT_OBJECTS";
+export type TransferStatusMetricUnitEnum =
+  | "TRANSFER_STATUS_UNIT_UNSPECIFIED"
+  | "TRANSFER_STATUS_UNIT_BYTES"
+  | "TRANSFER_STATUS_UNIT_OBJECTS";
 export const TransferStatusMetricUnitEnum = /*@__PURE__*/ S.String;
 
 /** Metrics for tracking the transfer status. */
@@ -777,19 +1007,26 @@ export interface TransferStatusMetric {
   total?: string;
 }
 export const TransferStatusMetric = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pending": S.optional(S.String),
-  "unit": S.optional(TransferStatusMetricUnitEnum),
-  "failed": S.optional(S.String),
-  "completed": S.optional(S.String),
-  "total": S.optional(S.String),
-}),
-).annotate({ identifier: "TransferStatusMetric" }) as any as S.Schema<TransferStatusMetric>;
+  S.Struct({
+    pending: S.optional(S.String),
+    unit: S.optional(TransferStatusMetricUnitEnum),
+    failed: S.optional(S.String),
+    completed: S.optional(S.String),
+    total: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "TransferStatusMetric",
+}) as any as S.Schema<TransferStatusMetric>;
 
 export type TransferStatusMetricList = ReadonlyArray<TransferStatusMetric>;
-export const TransferStatusMetricList = /*@__PURE__*/ S.Array(TransferStatusMetric) as any as S.Schema<TransferStatusMetricList>;
+export const TransferStatusMetricList = /*@__PURE__*/ S.Array(
+  TransferStatusMetric,
+) as any as S.Schema<TransferStatusMetricList>;
 
-export type TransferStatusSummaryProgressUnitEnum = "TRANSFER_STATUS_UNIT_UNSPECIFIED" | "TRANSFER_STATUS_UNIT_BYTES" | "TRANSFER_STATUS_UNIT_OBJECTS";
+export type TransferStatusSummaryProgressUnitEnum =
+  | "TRANSFER_STATUS_UNIT_UNSPECIFIED"
+  | "TRANSFER_STATUS_UNIT_BYTES"
+  | "TRANSFER_STATUS_UNIT_OBJECTS";
 export const TransferStatusSummaryProgressUnitEnum = /*@__PURE__*/ S.String;
 
 /** Status summary of the resource being transferred. */
@@ -800,11 +1037,13 @@ export interface TransferStatusSummary {
   progressUnit?: TransferStatusSummaryProgressUnitEnum;
 }
 export const TransferStatusSummary = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "metrics": S.optional(TransferStatusMetricList),
-  "progressUnit": S.optional(TransferStatusSummaryProgressUnitEnum),
-}),
-).annotate({ identifier: "TransferStatusSummary" }) as any as S.Schema<TransferStatusSummary>;
+  S.Struct({
+    metrics: S.optional(TransferStatusMetricList),
+    progressUnit: S.optional(TransferStatusSummaryProgressUnitEnum),
+  }),
+).annotate({
+  identifier: "TransferStatusSummary",
+}) as any as S.Schema<TransferStatusSummary>;
 
 /** Status details of the resource being transferred. */
 export interface TransferResourceStatusDetail {
@@ -818,13 +1057,15 @@ export interface TransferResourceStatusDetail {
   summary?: TransferStatusSummary;
 }
 export const TransferResourceStatusDetail = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "state": S.optional(TransferResourceStatusDetailStateEnum),
-  "error": S.optional(Status),
-  "completedPercentage": S.optional(S.Number),
-  "summary": S.optional(TransferStatusSummary),
-}),
-).annotate({ identifier: "TransferResourceStatusDetail" }) as any as S.Schema<TransferResourceStatusDetail>;
+  S.Struct({
+    state: S.optional(TransferResourceStatusDetailStateEnum),
+    error: S.optional(Status),
+    completedPercentage: S.optional(S.Number),
+    summary: S.optional(TransferStatusSummary),
+  }),
+).annotate({
+  identifier: "TransferResourceStatusDetail",
+}) as any as S.Schema<TransferResourceStatusDetail>;
 
 /** Table details related to hierarchy. */
 export interface TableDetail {
@@ -832,9 +1073,9 @@ export interface TableDetail {
   partitionCount?: string;
 }
 export const TableDetail = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "partitionCount": S.optional(S.String),
-}),
+  S.Struct({
+    partitionCount: S.optional(S.String),
+  }),
 ).annotate({ identifier: "TableDetail" }) as any as S.Schema<TableDetail>;
 
 /** Partition details related to hierarchy. */
@@ -843,10 +1084,12 @@ export interface PartitionDetail {
   table?: string;
 }
 export const PartitionDetail = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "table": S.optional(S.String),
-}),
-).annotate({ identifier: "PartitionDetail" }) as any as S.Schema<PartitionDetail>;
+  S.Struct({
+    table: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PartitionDetail",
+}) as any as S.Schema<PartitionDetail>;
 
 /** Details about the hierarchy. */
 export interface HierarchyDetail {
@@ -856,11 +1099,13 @@ export interface HierarchyDetail {
   partitionDetail?: PartitionDetail;
 }
 export const HierarchyDetail = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "tableDetail": S.optional(TableDetail),
-  "partitionDetail": S.optional(PartitionDetail),
-}),
-).annotate({ identifier: "HierarchyDetail" }) as any as S.Schema<HierarchyDetail>;
+  S.Struct({
+    tableDetail: S.optional(TableDetail),
+    partitionDetail: S.optional(PartitionDetail),
+  }),
+).annotate({
+  identifier: "HierarchyDetail",
+}) as any as S.Schema<HierarchyDetail>;
 
 /** Resource (table/partition) that is being transferred. */
 export interface TransferResource {
@@ -882,47 +1127,75 @@ export interface TransferResource {
   hierarchyDetail?: HierarchyDetail;
 }
 export const TransferResource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(TransferResourceTypeEnum),
-  "destination": S.optional(TransferResourceDestinationEnum),
-  "lastSuccessfulRun": S.optional(TransferRunBrief),
-  "name": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "latestRun": S.optional(TransferRunBrief),
-  "latestStatusDetail": S.optional(TransferResourceStatusDetail),
-  "hierarchyDetail": S.optional(HierarchyDetail),
-}),
-).annotate({ identifier: "TransferResource" }) as any as S.Schema<TransferResource>;
+  S.Struct({
+    type: S.optional(TransferResourceTypeEnum),
+    destination: S.optional(TransferResourceDestinationEnum),
+    lastSuccessfulRun: S.optional(TransferRunBrief),
+    name: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    latestRun: S.optional(TransferRunBrief),
+    latestStatusDetail: S.optional(TransferResourceStatusDetail),
+    hierarchyDetail: S.optional(HierarchyDetail),
+  }),
+).annotate({
+  identifier: "TransferResource",
+}) as any as S.Schema<TransferResource>;
 
 export interface GetProjectsTransferConfigsRequest {
   /** Required. The name of the resource requested. If you are using the regionless method, the location must be `US` and the name should be in the following form: * `projects/{project_id}/transferConfigs/{config_id}` If you are using the regionalized method, the name should be in the following form: * `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}` */
   name: string;
 }
 export const GetProjectsTransferConfigsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://bigquerydatatransfer.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsTransferConfigsRequest" }) as any as S.Schema<GetProjectsTransferConfigsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://bigquerydatatransfer.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsTransferConfigsRequest",
+}) as any as S.Schema<GetProjectsTransferConfigsRequest>;
 
 export interface GetProjectsTransferConfigsRunsRequest {
   /** Required. The name of the resource requested. If you are using the regionless method, the location must be `US` and the name should be in the following form: * `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` If you are using the regionalized method, the name should be in the following form: * `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}` */
   name: string;
 }
-export const GetProjectsTransferConfigsRunsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://bigquerydatatransfer.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsTransferConfigsRunsRequest" }) as any as S.Schema<GetProjectsTransferConfigsRunsRequest>;
+export const GetProjectsTransferConfigsRunsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://bigquerydatatransfer.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsTransferConfigsRunsRequest",
+}) as any as S.Schema<GetProjectsTransferConfigsRunsRequest>;
 
 export interface GetProjectsTransferConfigsTransferResourcesRequest {
   /** Required. The name of the transfer resource in the form of: * `projects/{project}/transferConfigs/{transfer_config}/transferResources/{transfer_resource}` * `projects/{project}/locations/{location}/transferConfigs/{transfer_config}/transferResources/{transfer_resource}` */
   name: string;
 }
-export const GetProjectsTransferConfigsTransferResourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://bigquerydatatransfer.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsTransferConfigsTransferResourcesRequest" }) as any as S.Schema<GetProjectsTransferConfigsTransferResourcesRequest>;
+export const GetProjectsTransferConfigsTransferResourcesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://bigquerydatatransfer.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsTransferConfigsTransferResourcesRequest",
+  }) as any as S.Schema<GetProjectsTransferConfigsTransferResourcesRequest>;
 
 export interface ListProjectsDataSourcesRequest {
   /** Required. The BigQuery project id for which data sources should be returned. Must be in the form: `projects/{project_id}` or `projects/{project_id}/locations/{location_id}` */
@@ -933,15 +1206,25 @@ export interface ListProjectsDataSourcesRequest {
   pageSize?: number;
 }
 export const ListProjectsDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/dataSources","baseUrl":"https://bigquerydatatransfer.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsDataSourcesRequest" }) as any as S.Schema<ListProjectsDataSourcesRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/dataSources",
+      baseUrl: "https://bigquerydatatransfer.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsDataSourcesRequest",
+}) as any as S.Schema<ListProjectsDataSourcesRequest>;
 
 export type DataSourceList = ReadonlyArray<DataSource>;
-export const DataSourceList = /*@__PURE__*/ S.Array(DataSource) as any as S.Schema<DataSourceList>;
+export const DataSourceList = /*@__PURE__*/ S.Array(
+  DataSource,
+) as any as S.Schema<DataSourceList>;
 
 /** Returns list of supported data sources and their metadata. */
 export interface ListDataSourcesResponse {
@@ -951,11 +1234,13 @@ export interface ListDataSourcesResponse {
   nextPageToken?: string;
 }
 export const ListDataSourcesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dataSources": S.optional(DataSourceList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListDataSourcesResponse" }) as any as S.Schema<ListDataSourcesResponse>;
+  S.Struct({
+    dataSources: S.optional(DataSourceList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListDataSourcesResponse",
+}) as any as S.Schema<ListDataSourcesResponse>;
 
 export interface ListProjectsLocationsRequest {
   /** The resource that owns the locations collection, if applicable. */
@@ -970,17 +1255,27 @@ export interface ListProjectsLocationsRequest {
   extraLocationTypes?: StringList;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/locations","baseUrl":"https://bigquerydatatransfer.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}/locations",
+      baseUrl: "https://bigquerydatatransfer.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsRequest",
+}) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(
+  Location,
+) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -990,11 +1285,13 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locations": S.optional(LocationList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
+  S.Struct({
+    locations: S.optional(LocationList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListLocationsResponse",
+}) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsLocationsDataSourcesRequest {
   /** Page size. The default page size is the maximum value of 1000 results. */
@@ -1004,13 +1301,22 @@ export interface ListProjectsLocationsDataSourcesRequest {
   /** Required. The BigQuery project id for which data sources should be returned. Must be in the form: `projects/{project_id}` or `projects/{project_id}/locations/{location_id}` */
   parent: string;
 }
-export const ListProjectsLocationsDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/dataSources","baseUrl":"https://bigquerydatatransfer.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsDataSourcesRequest" }) as any as S.Schema<ListProjectsLocationsDataSourcesRequest>;
+export const ListProjectsLocationsDataSourcesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/dataSources",
+        baseUrl: "https://bigquerydatatransfer.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsDataSourcesRequest",
+}) as any as S.Schema<ListProjectsLocationsDataSourcesRequest>;
 
 export interface ListProjectsLocationsTransferConfigsRequest {
   /** Page size. The default page size is the maximum value of 1000 results. */
@@ -1022,17 +1328,28 @@ export interface ListProjectsLocationsTransferConfigsRequest {
   /** Pagination token, which can be used to request a specific page of `ListTransfersRequest` list results. For multiple-page results, `ListTransfersResponse` outputs a `next_page` token, which can be used as the `page_token` value to request the next page of list results. */
   pageToken?: string;
 }
-export const ListProjectsLocationsTransferConfigsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "dataSourceIds": S.optional(StringList.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/transferConfigs","baseUrl":"https://bigquerydatatransfer.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsTransferConfigsRequest" }) as any as S.Schema<ListProjectsLocationsTransferConfigsRequest>;
+export const ListProjectsLocationsTransferConfigsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      dataSourceIds: S.optional(StringList.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/transferConfigs",
+        baseUrl: "https://bigquerydatatransfer.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsTransferConfigsRequest",
+  }) as any as S.Schema<ListProjectsLocationsTransferConfigsRequest>;
 
 export type TransferConfigList = ReadonlyArray<TransferConfig>;
-export const TransferConfigList = /*@__PURE__*/ S.Array(TransferConfig) as any as S.Schema<TransferConfigList>;
+export const TransferConfigList = /*@__PURE__*/ S.Array(
+  TransferConfig,
+) as any as S.Schema<TransferConfigList>;
 
 /** The returned list of pipelines in the project. */
 export interface ListTransferConfigsResponse {
@@ -1042,20 +1359,38 @@ export interface ListTransferConfigsResponse {
   nextPageToken?: string;
 }
 export const ListTransferConfigsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "transferConfigs": S.optional(TransferConfigList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListTransferConfigsResponse" }) as any as S.Schema<ListTransferConfigsResponse>;
+  S.Struct({
+    transferConfigs: S.optional(TransferConfigList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListTransferConfigsResponse",
+}) as any as S.Schema<ListTransferConfigsResponse>;
 
-export type ListProjectsLocationsTransferConfigsRunsRunAttemptEnum = "RUN_ATTEMPT_UNSPECIFIED" | "LATEST";
-export const ListProjectsLocationsTransferConfigsRunsRunAttemptEnum = /*@__PURE__*/ S.String;
+export type ListProjectsLocationsTransferConfigsRunsRunAttemptEnum =
+  | "RUN_ATTEMPT_UNSPECIFIED"
+  | "LATEST";
+export const ListProjectsLocationsTransferConfigsRunsRunAttemptEnum =
+  /*@__PURE__*/ S.String;
 
-export type ListProjectsLocationsTransferConfigsRunsStatesEnum = "TRANSFER_STATE_UNSPECIFIED" | "PENDING" | "RUNNING" | "SUCCEEDED" | "FAILED" | "CANCELLED";
-export const ListProjectsLocationsTransferConfigsRunsStatesEnum = /*@__PURE__*/ S.String;
+export type ListProjectsLocationsTransferConfigsRunsStatesEnum =
+  | "TRANSFER_STATE_UNSPECIFIED"
+  | "PENDING"
+  | "RUNNING"
+  | "SUCCEEDED"
+  | "FAILED"
+  | "CANCELLED";
+export const ListProjectsLocationsTransferConfigsRunsStatesEnum =
+  /*@__PURE__*/ S.String;
 
-export type ListProjectsLocationsTransferConfigsRunsStatesEnumList = ReadonlyArray<ListProjectsLocationsTransferConfigsRunsStatesEnum | (string & {})>;
-export const ListProjectsLocationsTransferConfigsRunsStatesEnumList = /*@__PURE__*/ S.Array(ListProjectsLocationsTransferConfigsRunsStatesEnum) as any as S.Schema<ListProjectsLocationsTransferConfigsRunsStatesEnumList>;
+export type ListProjectsLocationsTransferConfigsRunsStatesEnumList =
+  ReadonlyArray<
+    ListProjectsLocationsTransferConfigsRunsStatesEnum | (string & {})
+  >;
+export const ListProjectsLocationsTransferConfigsRunsStatesEnumList =
+  /*@__PURE__*/ S.Array(
+    ListProjectsLocationsTransferConfigsRunsStatesEnum,
+  ) as any as S.Schema<ListProjectsLocationsTransferConfigsRunsStatesEnumList>;
 
 export interface ListProjectsLocationsTransferConfigsRunsRequest {
   /** Page size. The default page size is the maximum value of 1000 results. */
@@ -1063,24 +1398,41 @@ export interface ListProjectsLocationsTransferConfigsRunsRequest {
   /** Pagination token, which can be used to request a specific page of `ListTransferRunsRequest` list results. For multiple-page results, `ListTransferRunsResponse` outputs a `next_page` token, which can be used as the `page_token` value to request the next page of list results. */
   pageToken?: string;
   /** Indicates how run attempts are to be pulled. */
-  runAttempt?: ListProjectsLocationsTransferConfigsRunsRunAttemptEnum | (string & {});
+  runAttempt?:
+    | ListProjectsLocationsTransferConfigsRunsRunAttemptEnum
+    | (string & {});
   /** Required. Name of transfer configuration for which transfer runs should be retrieved. If you are using the regionless method, the location must be `US` and the name should be in the following form: * `projects/{project_id}/transferConfigs/{config_id}` If you are using the regionalized method, the name should be in the following form: * `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}` */
   parent: string;
   /** When specified, only transfer runs with requested states are returned. */
   states?: ListProjectsLocationsTransferConfigsRunsStatesEnumList;
 }
-export const ListProjectsLocationsTransferConfigsRunsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "runAttempt": S.optional(ListProjectsLocationsTransferConfigsRunsRunAttemptEnum.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "states": S.optional(ListProjectsLocationsTransferConfigsRunsStatesEnumList.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/runs","baseUrl":"https://bigquerydatatransfer.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsTransferConfigsRunsRequest" }) as any as S.Schema<ListProjectsLocationsTransferConfigsRunsRequest>;
+export const ListProjectsLocationsTransferConfigsRunsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      runAttempt: S.optional(
+        ListProjectsLocationsTransferConfigsRunsRunAttemptEnum.pipe(T.Query()),
+      ),
+      parent: S.String.pipe(T.Label()),
+      states: S.optional(
+        ListProjectsLocationsTransferConfigsRunsStatesEnumList.pipe(T.Query()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/runs",
+        baseUrl: "https://bigquerydatatransfer.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsTransferConfigsRunsRequest",
+  }) as any as S.Schema<ListProjectsLocationsTransferConfigsRunsRequest>;
 
 export type TransferRunList = ReadonlyArray<TransferRun>;
-export const TransferRunList = /*@__PURE__*/ S.Array(TransferRun) as any as S.Schema<TransferRunList>;
+export const TransferRunList = /*@__PURE__*/ S.Array(
+  TransferRun,
+) as any as S.Schema<TransferRunList>;
 
 /** The returned list of pipelines in the project. */
 export interface ListTransferRunsResponse {
@@ -1090,17 +1442,28 @@ export interface ListTransferRunsResponse {
   nextPageToken?: string;
 }
 export const ListTransferRunsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "transferRuns": S.optional(TransferRunList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListTransferRunsResponse" }) as any as S.Schema<ListTransferRunsResponse>;
+  S.Struct({
+    transferRuns: S.optional(TransferRunList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListTransferRunsResponse",
+}) as any as S.Schema<ListTransferRunsResponse>;
 
-export type ListProjectsLocationsTransferConfigsRunsTransferLogsMessageTypesEnum = "MESSAGE_SEVERITY_UNSPECIFIED" | "INFO" | "WARNING" | "ERROR";
-export const ListProjectsLocationsTransferConfigsRunsTransferLogsMessageTypesEnum = /*@__PURE__*/ S.String;
+export type ListProjectsLocationsTransferConfigsRunsTransferLogsMessageTypesEnum =
+  "MESSAGE_SEVERITY_UNSPECIFIED" | "INFO" | "WARNING" | "ERROR";
+export const ListProjectsLocationsTransferConfigsRunsTransferLogsMessageTypesEnum =
+  /*@__PURE__*/ S.String;
 
-export type ListProjectsLocationsTransferConfigsRunsTransferLogsMessageTypesEnumList = ReadonlyArray<ListProjectsLocationsTransferConfigsRunsTransferLogsMessageTypesEnum | (string & {})>;
-export const ListProjectsLocationsTransferConfigsRunsTransferLogsMessageTypesEnumList = /*@__PURE__*/ S.Array(ListProjectsLocationsTransferConfigsRunsTransferLogsMessageTypesEnum) as any as S.Schema<ListProjectsLocationsTransferConfigsRunsTransferLogsMessageTypesEnumList>;
+export type ListProjectsLocationsTransferConfigsRunsTransferLogsMessageTypesEnumList =
+  ReadonlyArray<
+    | ListProjectsLocationsTransferConfigsRunsTransferLogsMessageTypesEnum
+    | (string & {})
+  >;
+export const ListProjectsLocationsTransferConfigsRunsTransferLogsMessageTypesEnumList =
+  /*@__PURE__*/ S.Array(
+    ListProjectsLocationsTransferConfigsRunsTransferLogsMessageTypesEnum,
+  ) as any as S.Schema<ListProjectsLocationsTransferConfigsRunsTransferLogsMessageTypesEnumList>;
 
 export interface ListProjectsLocationsTransferConfigsRunsTransferLogsRequest {
   /** Page size. The default page size is the maximum value of 1000 results. */
@@ -1112,16 +1475,33 @@ export interface ListProjectsLocationsTransferConfigsRunsTransferLogsRequest {
   /** Required. Transfer run name. If you are using the regionless method, the location must be `US` and the name should be in the following form: * `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` If you are using the regionalized method, the name should be in the following form: * `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}` */
   parent: string;
 }
-export const ListProjectsLocationsTransferConfigsRunsTransferLogsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "messageTypes": S.optional(ListProjectsLocationsTransferConfigsRunsTransferLogsMessageTypesEnumList.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/transferLogs","baseUrl":"https://bigquerydatatransfer.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsTransferConfigsRunsTransferLogsRequest" }) as any as S.Schema<ListProjectsLocationsTransferConfigsRunsTransferLogsRequest>;
+export const ListProjectsLocationsTransferConfigsRunsTransferLogsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      messageTypes: S.optional(
+        ListProjectsLocationsTransferConfigsRunsTransferLogsMessageTypesEnumList.pipe(
+          T.Query(),
+        ),
+      ),
+      parent: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/transferLogs",
+        baseUrl: "https://bigquerydatatransfer.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsTransferConfigsRunsTransferLogsRequest",
+  }) as any as S.Schema<ListProjectsLocationsTransferConfigsRunsTransferLogsRequest>;
 
-export type TransferMessageSeverityEnum = "MESSAGE_SEVERITY_UNSPECIFIED" | "INFO" | "WARNING" | "ERROR";
+export type TransferMessageSeverityEnum =
+  | "MESSAGE_SEVERITY_UNSPECIFIED"
+  | "INFO"
+  | "WARNING"
+  | "ERROR";
 export const TransferMessageSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Represents a user facing message for a particular data transfer run. */
@@ -1134,15 +1514,19 @@ export interface TransferMessage {
   messageText?: string;
 }
 export const TransferMessage = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "messageTime": S.optional(S.String),
-  "severity": S.optional(TransferMessageSeverityEnum),
-  "messageText": S.optional(S.String),
-}),
-).annotate({ identifier: "TransferMessage" }) as any as S.Schema<TransferMessage>;
+  S.Struct({
+    messageTime: S.optional(S.String),
+    severity: S.optional(TransferMessageSeverityEnum),
+    messageText: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "TransferMessage",
+}) as any as S.Schema<TransferMessage>;
 
 export type TransferMessageList = ReadonlyArray<TransferMessage>;
-export const TransferMessageList = /*@__PURE__*/ S.Array(TransferMessage) as any as S.Schema<TransferMessageList>;
+export const TransferMessageList = /*@__PURE__*/ S.Array(
+  TransferMessage,
+) as any as S.Schema<TransferMessageList>;
 
 /** The returned list transfer run messages. */
 export interface ListTransferLogsResponse {
@@ -1152,11 +1536,13 @@ export interface ListTransferLogsResponse {
   nextPageToken?: string;
 }
 export const ListTransferLogsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "transferMessages": S.optional(TransferMessageList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListTransferLogsResponse" }) as any as S.Schema<ListTransferLogsResponse>;
+  S.Struct({
+    transferMessages: S.optional(TransferMessageList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListTransferLogsResponse",
+}) as any as S.Schema<ListTransferLogsResponse>;
 
 export interface ListProjectsLocationsTransferConfigsTransferResourcesRequest {
   /** Required. Name of transfer configuration for which transfer resources should be retrieved. The name should be in one of the following forms: * `projects/{project}/transferConfigs/{transfer_config}` * `projects/{project}/locations/{location_id}/transferConfigs/{transfer_config}` */
@@ -1168,17 +1554,28 @@ export interface ListProjectsLocationsTransferConfigsTransferResourcesRequest {
   /** Optional. The maximum number of transfer resources to return. The maximum value is 1000; values above 1000 will be coerced to 1000. The default page size is the maximum value of 1000 results. */
   pageSize?: number;
 }
-export const ListProjectsLocationsTransferConfigsTransferResourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/transferResources","baseUrl":"https://bigquerydatatransfer.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsTransferConfigsTransferResourcesRequest" }) as any as S.Schema<ListProjectsLocationsTransferConfigsTransferResourcesRequest>;
+export const ListProjectsLocationsTransferConfigsTransferResourcesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      filter: S.optional(S.String.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/transferResources",
+        baseUrl: "https://bigquerydatatransfer.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsTransferConfigsTransferResourcesRequest",
+  }) as any as S.Schema<ListProjectsLocationsTransferConfigsTransferResourcesRequest>;
 
 export type TransferResourceList = ReadonlyArray<TransferResource>;
-export const TransferResourceList = /*@__PURE__*/ S.Array(TransferResource) as any as S.Schema<TransferResourceList>;
+export const TransferResourceList = /*@__PURE__*/ S.Array(
+  TransferResource,
+) as any as S.Schema<TransferResourceList>;
 
 /** Response for the `ListTransferResources` RPC. */
 export interface ListTransferResourcesResponse {
@@ -1188,11 +1585,13 @@ export interface ListTransferResourcesResponse {
   nextPageToken?: string;
 }
 export const ListTransferResourcesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "transferResources": S.optional(TransferResourceList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListTransferResourcesResponse" }) as any as S.Schema<ListTransferResourcesResponse>;
+  S.Struct({
+    transferResources: S.optional(TransferResourceList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListTransferResourcesResponse",
+}) as any as S.Schema<ListTransferResourcesResponse>;
 
 export interface ListProjectsTransferConfigsRequest {
   /** Pagination token, which can be used to request a specific page of `ListTransfersRequest` list results. For multiple-page results, `ListTransfersResponse` outputs a `next_page` token, which can be used as the `page_token` value to request the next page of list results. */
@@ -1205,22 +1604,44 @@ export interface ListProjectsTransferConfigsRequest {
   pageSize?: number;
 }
 export const ListProjectsTransferConfigsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "dataSourceIds": S.optional(StringList.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/transferConfigs","baseUrl":"https://bigquerydatatransfer.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsTransferConfigsRequest" }) as any as S.Schema<ListProjectsTransferConfigsRequest>;
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    dataSourceIds: S.optional(StringList.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/transferConfigs",
+      baseUrl: "https://bigquerydatatransfer.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsTransferConfigsRequest",
+}) as any as S.Schema<ListProjectsTransferConfigsRequest>;
 
-export type ListProjectsTransferConfigsRunsRunAttemptEnum = "RUN_ATTEMPT_UNSPECIFIED" | "LATEST";
-export const ListProjectsTransferConfigsRunsRunAttemptEnum = /*@__PURE__*/ S.String;
+export type ListProjectsTransferConfigsRunsRunAttemptEnum =
+  | "RUN_ATTEMPT_UNSPECIFIED"
+  | "LATEST";
+export const ListProjectsTransferConfigsRunsRunAttemptEnum =
+  /*@__PURE__*/ S.String;
 
-export type ListProjectsTransferConfigsRunsStatesEnum = "TRANSFER_STATE_UNSPECIFIED" | "PENDING" | "RUNNING" | "SUCCEEDED" | "FAILED" | "CANCELLED";
+export type ListProjectsTransferConfigsRunsStatesEnum =
+  | "TRANSFER_STATE_UNSPECIFIED"
+  | "PENDING"
+  | "RUNNING"
+  | "SUCCEEDED"
+  | "FAILED"
+  | "CANCELLED";
 export const ListProjectsTransferConfigsRunsStatesEnum = /*@__PURE__*/ S.String;
 
-export type ListProjectsTransferConfigsRunsStatesEnumList = ReadonlyArray<ListProjectsTransferConfigsRunsStatesEnum | (string & {})>;
-export const ListProjectsTransferConfigsRunsStatesEnumList = /*@__PURE__*/ S.Array(ListProjectsTransferConfigsRunsStatesEnum) as any as S.Schema<ListProjectsTransferConfigsRunsStatesEnumList>;
+export type ListProjectsTransferConfigsRunsStatesEnumList = ReadonlyArray<
+  ListProjectsTransferConfigsRunsStatesEnum | (string & {})
+>;
+export const ListProjectsTransferConfigsRunsStatesEnumList =
+  /*@__PURE__*/ S.Array(
+    ListProjectsTransferConfigsRunsStatesEnum,
+  ) as any as S.Schema<ListProjectsTransferConfigsRunsStatesEnumList>;
 
 export interface ListProjectsTransferConfigsRunsRequest {
   /** Page size. The default page size is the maximum value of 1000 results. */
@@ -1234,21 +1655,45 @@ export interface ListProjectsTransferConfigsRunsRequest {
   /** When specified, only transfer runs with requested states are returned. */
   states?: ListProjectsTransferConfigsRunsStatesEnumList;
 }
-export const ListProjectsTransferConfigsRunsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "runAttempt": S.optional(ListProjectsTransferConfigsRunsRunAttemptEnum.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "states": S.optional(ListProjectsTransferConfigsRunsStatesEnumList.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/runs","baseUrl":"https://bigquerydatatransfer.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsTransferConfigsRunsRequest" }) as any as S.Schema<ListProjectsTransferConfigsRunsRequest>;
+export const ListProjectsTransferConfigsRunsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      runAttempt: S.optional(
+        ListProjectsTransferConfigsRunsRunAttemptEnum.pipe(T.Query()),
+      ),
+      parent: S.String.pipe(T.Label()),
+      states: S.optional(
+        ListProjectsTransferConfigsRunsStatesEnumList.pipe(T.Query()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/runs",
+        baseUrl: "https://bigquerydatatransfer.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsTransferConfigsRunsRequest",
+}) as any as S.Schema<ListProjectsTransferConfigsRunsRequest>;
 
-export type ListProjectsTransferConfigsRunsTransferLogsMessageTypesEnum = "MESSAGE_SEVERITY_UNSPECIFIED" | "INFO" | "WARNING" | "ERROR";
-export const ListProjectsTransferConfigsRunsTransferLogsMessageTypesEnum = /*@__PURE__*/ S.String;
+export type ListProjectsTransferConfigsRunsTransferLogsMessageTypesEnum =
+  | "MESSAGE_SEVERITY_UNSPECIFIED"
+  | "INFO"
+  | "WARNING"
+  | "ERROR";
+export const ListProjectsTransferConfigsRunsTransferLogsMessageTypesEnum =
+  /*@__PURE__*/ S.String;
 
-export type ListProjectsTransferConfigsRunsTransferLogsMessageTypesEnumList = ReadonlyArray<ListProjectsTransferConfigsRunsTransferLogsMessageTypesEnum | (string & {})>;
-export const ListProjectsTransferConfigsRunsTransferLogsMessageTypesEnumList = /*@__PURE__*/ S.Array(ListProjectsTransferConfigsRunsTransferLogsMessageTypesEnum) as any as S.Schema<ListProjectsTransferConfigsRunsTransferLogsMessageTypesEnumList>;
+export type ListProjectsTransferConfigsRunsTransferLogsMessageTypesEnumList =
+  ReadonlyArray<
+    ListProjectsTransferConfigsRunsTransferLogsMessageTypesEnum | (string & {})
+  >;
+export const ListProjectsTransferConfigsRunsTransferLogsMessageTypesEnumList =
+  /*@__PURE__*/ S.Array(
+    ListProjectsTransferConfigsRunsTransferLogsMessageTypesEnum,
+  ) as any as S.Schema<ListProjectsTransferConfigsRunsTransferLogsMessageTypesEnumList>;
 
 export interface ListProjectsTransferConfigsRunsTransferLogsRequest {
   /** Pagination token, which can be used to request a specific page of `ListTransferLogsRequest` list results. For multiple-page results, `ListTransferLogsResponse` outputs a `next_page` token, which can be used as the `page_token` value to request the next page of list results. */
@@ -1260,14 +1705,27 @@ export interface ListProjectsTransferConfigsRunsTransferLogsRequest {
   /** Page size. The default page size is the maximum value of 1000 results. */
   pageSize?: number;
 }
-export const ListProjectsTransferConfigsRunsTransferLogsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "messageTypes": S.optional(ListProjectsTransferConfigsRunsTransferLogsMessageTypesEnumList.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/transferLogs","baseUrl":"https://bigquerydatatransfer.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsTransferConfigsRunsTransferLogsRequest" }) as any as S.Schema<ListProjectsTransferConfigsRunsTransferLogsRequest>;
+export const ListProjectsTransferConfigsRunsTransferLogsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      messageTypes: S.optional(
+        ListProjectsTransferConfigsRunsTransferLogsMessageTypesEnumList.pipe(
+          T.Query(),
+        ),
+      ),
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/transferLogs",
+        baseUrl: "https://bigquerydatatransfer.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsTransferConfigsRunsTransferLogsRequest",
+  }) as any as S.Schema<ListProjectsTransferConfigsRunsTransferLogsRequest>;
 
 export interface ListProjectsTransferConfigsTransferResourcesRequest {
   /** Optional. The maximum number of transfer resources to return. The maximum value is 1000; values above 1000 will be coerced to 1000. The default page size is the maximum value of 1000 results. */
@@ -1279,14 +1737,23 @@ export interface ListProjectsTransferConfigsTransferResourcesRequest {
   /** Optional. A page token, received from a previous `ListTransferResources` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListTransferResources` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsTransferConfigsTransferResourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/transferResources","baseUrl":"https://bigquerydatatransfer.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsTransferConfigsTransferResourcesRequest" }) as any as S.Schema<ListProjectsTransferConfigsTransferResourcesRequest>;
+export const ListProjectsTransferConfigsTransferResourcesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      filter: S.optional(S.String.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/transferResources",
+        baseUrl: "https://bigquerydatatransfer.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsTransferConfigsTransferResourcesRequest",
+  }) as any as S.Schema<ListProjectsTransferConfigsTransferResourcesRequest>;
 
 export interface PatchProjectsLocationsTransferConfigsRequest {
   /** Required. Required list of fields to be updated in this request. */
@@ -1302,16 +1769,25 @@ export interface PatchProjectsLocationsTransferConfigsRequest {
   /** Request body */
   body?: TransferConfig;
 }
-export const PatchProjectsLocationsTransferConfigsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "versionInfo": S.optional(S.String.pipe(T.Query())),
-  "serviceAccountName": S.optional(S.String.pipe(T.Query())),
-  "authorizationCode": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(TransferConfig.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://bigquerydatatransfer.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsTransferConfigsRequest" }) as any as S.Schema<PatchProjectsLocationsTransferConfigsRequest>;
+export const PatchProjectsLocationsTransferConfigsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      versionInfo: S.optional(S.String.pipe(T.Query())),
+      serviceAccountName: S.optional(S.String.pipe(T.Query())),
+      authorizationCode: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(TransferConfig.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://bigquerydatatransfer.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsTransferConfigsRequest",
+  }) as any as S.Schema<PatchProjectsLocationsTransferConfigsRequest>;
 
 export interface PatchProjectsTransferConfigsRequest {
   /** Required. Required list of fields to be updated in this request. */
@@ -1328,15 +1804,23 @@ export interface PatchProjectsTransferConfigsRequest {
   body?: TransferConfig;
 }
 export const PatchProjectsTransferConfigsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "versionInfo": S.optional(S.String.pipe(T.Query())),
-  "serviceAccountName": S.optional(S.String.pipe(T.Query())),
-  "authorizationCode": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(TransferConfig.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://bigquerydatatransfer.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsTransferConfigsRequest" }) as any as S.Schema<PatchProjectsTransferConfigsRequest>;
+  S.Struct({
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    versionInfo: S.optional(S.String.pipe(T.Query())),
+    serviceAccountName: S.optional(S.String.pipe(T.Query())),
+    authorizationCode: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(TransferConfig.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+name}",
+      baseUrl: "https://bigquerydatatransfer.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchProjectsTransferConfigsRequest",
+}) as any as S.Schema<PatchProjectsTransferConfigsRequest>;
 
 /** A request to schedule transfer runs for a time range. */
 export interface ScheduleTransferRunsRequest {
@@ -1346,11 +1830,13 @@ export interface ScheduleTransferRunsRequest {
   startTime?: string;
 }
 export const ScheduleTransferRunsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "endTime": S.optional(S.String),
-  "startTime": S.optional(S.String),
-}),
-).annotate({ identifier: "ScheduleTransferRunsRequest" }) as any as S.Schema<ScheduleTransferRunsRequest>;
+  S.Struct({
+    endTime: S.optional(S.String),
+    startTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ScheduleTransferRunsRequest",
+}) as any as S.Schema<ScheduleTransferRunsRequest>;
 
 export interface ScheduleRunsProjectsLocationsTransferConfigsRequest {
   /** Required. Transfer configuration name. If you are using the regionless method, the location must be `US` and the name should be in the following form: * `projects/{project_id}/transferConfigs/{config_id}` If you are using the regionalized method, the name should be in the following form: * `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}` */
@@ -1358,12 +1844,21 @@ export interface ScheduleRunsProjectsLocationsTransferConfigsRequest {
   /** Request body */
   body?: ScheduleTransferRunsRequest;
 }
-export const ScheduleRunsProjectsLocationsTransferConfigsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(ScheduleTransferRunsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}:scheduleRuns","baseUrl":"https://bigquerydatatransfer.googleapis.com/"})),
-).annotate({ identifier: "ScheduleRunsProjectsLocationsTransferConfigsRequest" }) as any as S.Schema<ScheduleRunsProjectsLocationsTransferConfigsRequest>;
+export const ScheduleRunsProjectsLocationsTransferConfigsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(ScheduleTransferRunsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}:scheduleRuns",
+        baseUrl: "https://bigquerydatatransfer.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ScheduleRunsProjectsLocationsTransferConfigsRequest",
+  }) as any as S.Schema<ScheduleRunsProjectsLocationsTransferConfigsRequest>;
 
 /** A response to schedule transfer runs for a time range. */
 export interface ScheduleTransferRunsResponse {
@@ -1371,10 +1866,12 @@ export interface ScheduleTransferRunsResponse {
   runs?: TransferRunList;
 }
 export const ScheduleTransferRunsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "runs": S.optional(TransferRunList),
-}),
-).annotate({ identifier: "ScheduleTransferRunsResponse" }) as any as S.Schema<ScheduleTransferRunsResponse>;
+  S.Struct({
+    runs: S.optional(TransferRunList),
+  }),
+).annotate({
+  identifier: "ScheduleTransferRunsResponse",
+}) as any as S.Schema<ScheduleTransferRunsResponse>;
 
 export interface ScheduleRunsProjectsTransferConfigsRequest {
   /** Required. Transfer configuration name. If you are using the regionless method, the location must be `US` and the name should be in the following form: * `projects/{project_id}/transferConfigs/{config_id}` If you are using the regionalized method, the name should be in the following form: * `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}` */
@@ -1382,12 +1879,21 @@ export interface ScheduleRunsProjectsTransferConfigsRequest {
   /** Request body */
   body?: ScheduleTransferRunsRequest;
 }
-export const ScheduleRunsProjectsTransferConfigsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(ScheduleTransferRunsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}:scheduleRuns","baseUrl":"https://bigquerydatatransfer.googleapis.com/"})),
-).annotate({ identifier: "ScheduleRunsProjectsTransferConfigsRequest" }) as any as S.Schema<ScheduleRunsProjectsTransferConfigsRequest>;
+export const ScheduleRunsProjectsTransferConfigsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(ScheduleTransferRunsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}:scheduleRuns",
+        baseUrl: "https://bigquerydatatransfer.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ScheduleRunsProjectsTransferConfigsRequest",
+  }) as any as S.Schema<ScheduleRunsProjectsTransferConfigsRequest>;
 
 /** A specification for a time range, this will request transfer runs with run_time between start_time (inclusive) and end_time (exclusive). */
 export interface TimeRange {
@@ -1397,10 +1903,10 @@ export interface TimeRange {
   endTime?: string;
 }
 export const TimeRange = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "startTime": S.optional(S.String),
-  "endTime": S.optional(S.String),
-}),
+  S.Struct({
+    startTime: S.optional(S.String),
+    endTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "TimeRange" }) as any as S.Schema<TimeRange>;
 
 /** A request to start manual transfer runs. */
@@ -1411,11 +1917,13 @@ export interface StartManualTransferRunsRequest {
   requestedTimeRange?: TimeRange;
 }
 export const StartManualTransferRunsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestedRunTime": S.optional(S.String),
-  "requestedTimeRange": S.optional(TimeRange),
-}),
-).annotate({ identifier: "StartManualTransferRunsRequest" }) as any as S.Schema<StartManualTransferRunsRequest>;
+  S.Struct({
+    requestedRunTime: S.optional(S.String),
+    requestedTimeRange: S.optional(TimeRange),
+  }),
+).annotate({
+  identifier: "StartManualTransferRunsRequest",
+}) as any as S.Schema<StartManualTransferRunsRequest>;
 
 export interface StartManualRunsProjectsLocationsTransferConfigsRequest {
   /** Required. Transfer configuration name. If you are using the regionless method, the location must be `US` and the name should be in the following form: * `projects/{project_id}/transferConfigs/{config_id}` If you are using the regionalized method, the name should be in the following form: * `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}` */
@@ -1423,12 +1931,21 @@ export interface StartManualRunsProjectsLocationsTransferConfigsRequest {
   /** Request body */
   body?: StartManualTransferRunsRequest;
 }
-export const StartManualRunsProjectsLocationsTransferConfigsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(StartManualTransferRunsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}:startManualRuns","baseUrl":"https://bigquerydatatransfer.googleapis.com/"})),
-).annotate({ identifier: "StartManualRunsProjectsLocationsTransferConfigsRequest" }) as any as S.Schema<StartManualRunsProjectsLocationsTransferConfigsRequest>;
+export const StartManualRunsProjectsLocationsTransferConfigsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(StartManualTransferRunsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}:startManualRuns",
+        baseUrl: "https://bigquerydatatransfer.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "StartManualRunsProjectsLocationsTransferConfigsRequest",
+  }) as any as S.Schema<StartManualRunsProjectsLocationsTransferConfigsRequest>;
 
 /** A response to start manual transfer runs. */
 export interface StartManualTransferRunsResponse {
@@ -1436,10 +1953,12 @@ export interface StartManualTransferRunsResponse {
   runs?: TransferRunList;
 }
 export const StartManualTransferRunsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "runs": S.optional(TransferRunList),
-}),
-).annotate({ identifier: "StartManualTransferRunsResponse" }) as any as S.Schema<StartManualTransferRunsResponse>;
+  S.Struct({
+    runs: S.optional(TransferRunList),
+  }),
+).annotate({
+  identifier: "StartManualTransferRunsResponse",
+}) as any as S.Schema<StartManualTransferRunsResponse>;
 
 export interface StartManualRunsProjectsTransferConfigsRequest {
   /** Required. Transfer configuration name. If you are using the regionless method, the location must be `US` and the name should be in the following form: * `projects/{project_id}/transferConfigs/{config_id}` If you are using the regionalized method, the name should be in the following form: * `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}` */
@@ -1447,12 +1966,21 @@ export interface StartManualRunsProjectsTransferConfigsRequest {
   /** Request body */
   body?: StartManualTransferRunsRequest;
 }
-export const StartManualRunsProjectsTransferConfigsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(StartManualTransferRunsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}:startManualRuns","baseUrl":"https://bigquerydatatransfer.googleapis.com/"})),
-).annotate({ identifier: "StartManualRunsProjectsTransferConfigsRequest" }) as any as S.Schema<StartManualRunsProjectsTransferConfigsRequest>;
+export const StartManualRunsProjectsTransferConfigsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(StartManualTransferRunsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}:startManualRuns",
+        baseUrl: "https://bigquerydatatransfer.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "StartManualRunsProjectsTransferConfigsRequest",
+  }) as any as S.Schema<StartManualRunsProjectsTransferConfigsRequest>;
 
 /** A request to unenroll a set of data sources so they are no longer visible in the BigQuery UI's `Transfer` tab. */
 export interface UnenrollDataSourcesRequest {
@@ -1460,10 +1988,12 @@ export interface UnenrollDataSourcesRequest {
   dataSourceIds?: StringList;
 }
 export const UnenrollDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dataSourceIds": S.optional(StringList),
-}),
-).annotate({ identifier: "UnenrollDataSourcesRequest" }) as any as S.Schema<UnenrollDataSourcesRequest>;
+  S.Struct({
+    dataSourceIds: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "UnenrollDataSourcesRequest",
+}) as any as S.Schema<UnenrollDataSourcesRequest>;
 
 export interface UnenrollDataSourcesProjectsLocationsRequest {
   /** Required. The name of the project resource in the form: `projects/{project_id}` */
@@ -1471,14 +2001,28 @@ export interface UnenrollDataSourcesProjectsLocationsRequest {
   /** Request body */
   body?: UnenrollDataSourcesRequest;
 }
-export const UnenrollDataSourcesProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(UnenrollDataSourcesRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:unenrollDataSources","baseUrl":"https://bigquerydatatransfer.googleapis.com/"})),
-).annotate({ identifier: "UnenrollDataSourcesProjectsLocationsRequest" }) as any as S.Schema<UnenrollDataSourcesProjectsLocationsRequest>;
+export const UnenrollDataSourcesProjectsLocationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(UnenrollDataSourcesRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:unenrollDataSources",
+        baseUrl: "https://bigquerydatatransfer.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "UnenrollDataSourcesProjectsLocationsRequest",
+  }) as any as S.Schema<UnenrollDataSourcesProjectsLocationsRequest>;
 
-export type CheckValidCredsProjectsDataSourcesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CheckValidCredsProjectsDataSourcesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Returns true if valid credentials exist for the given data source and requesting user. */
 export const checkValidCredsProjectsDataSources: API.OperationMethod<
   CheckValidCredsProjectsDataSourcesRequest,
@@ -1493,7 +2037,12 @@ export const checkValidCredsProjectsDataSources: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CheckValidCredsProjectsLocationsDataSourcesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CheckValidCredsProjectsLocationsDataSourcesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Returns true if valid credentials exist for the given data source and requesting user. */
 export const checkValidCredsProjectsLocationsDataSources: API.OperationMethod<
   CheckValidCredsProjectsLocationsDataSourcesRequest,
@@ -1508,7 +2057,12 @@ export const checkValidCredsProjectsLocationsDataSources: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsTransferConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsTransferConfigsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new data transfer configuration. */
 export const createProjectsLocationsTransferConfigs: API.OperationMethod<
   CreateProjectsLocationsTransferConfigsRequest,
@@ -1523,7 +2077,12 @@ export const createProjectsLocationsTransferConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsTransferConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsTransferConfigsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new data transfer configuration. */
 export const createProjectsTransferConfigs: API.OperationMethod<
   CreateProjectsTransferConfigsRequest,
@@ -1538,7 +2097,12 @@ export const createProjectsTransferConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsTransferConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsTransferConfigsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a data transfer configuration, including any associated transfer runs and logs. */
 export const deleteProjectsLocationsTransferConfigs: API.OperationMethod<
   DeleteProjectsLocationsTransferConfigsRequest,
@@ -1553,7 +2117,12 @@ export const deleteProjectsLocationsTransferConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsTransferConfigsRunsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsTransferConfigsRunsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes the specified transfer run. */
 export const deleteProjectsLocationsTransferConfigsRuns: API.OperationMethod<
   DeleteProjectsLocationsTransferConfigsRunsRequest,
@@ -1568,7 +2137,12 @@ export const deleteProjectsLocationsTransferConfigsRuns: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsTransferConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsTransferConfigsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a data transfer configuration, including any associated transfer runs and logs. */
 export const deleteProjectsTransferConfigs: API.OperationMethod<
   DeleteProjectsTransferConfigsRequest,
@@ -1583,7 +2157,12 @@ export const deleteProjectsTransferConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsTransferConfigsRunsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsTransferConfigsRunsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes the specified transfer run. */
 export const deleteProjectsTransferConfigsRuns: API.OperationMethod<
   DeleteProjectsTransferConfigsRunsRequest,
@@ -1598,7 +2177,12 @@ export const deleteProjectsTransferConfigsRuns: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type EnrollDataSourcesProjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type EnrollDataSourcesProjectsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Enroll data sources in a user project. This allows users to create transfer configurations for these data sources. They will also appear in the ListDataSources RPC and as such, will appear in the [BigQuery UI](https://console.cloud.google.com/bigquery), and the documents can be found in the public guide for [BigQuery Web UI](https://cloud.google.com/bigquery/bigquery-web-ui) and [Data Transfer Service](https://cloud.google.com/bigquery/docs/working-with-transfers). */
 export const enrollDataSourcesProjects: API.OperationMethod<
   EnrollDataSourcesProjectsRequest,
@@ -1613,7 +2197,12 @@ export const enrollDataSourcesProjects: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type EnrollDataSourcesProjectsLocationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type EnrollDataSourcesProjectsLocationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Enroll data sources in a user project. This allows users to create transfer configurations for these data sources. They will also appear in the ListDataSources RPC and as such, will appear in the [BigQuery UI](https://console.cloud.google.com/bigquery), and the documents can be found in the public guide for [BigQuery Web UI](https://cloud.google.com/bigquery/bigquery-web-ui) and [Data Transfer Service](https://cloud.google.com/bigquery/docs/working-with-transfers). */
 export const enrollDataSourcesProjectsLocations: API.OperationMethod<
   EnrollDataSourcesProjectsLocationsRequest,
@@ -1658,7 +2247,10 @@ export const getProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsDataSourcesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsDataSourcesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieves a supported data source and returns its settings. */
 export const getProjectsLocationsDataSources: API.OperationMethod<
   GetProjectsLocationsDataSourcesRequest,
@@ -1673,7 +2265,10 @@ export const getProjectsLocationsDataSources: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsTransferConfigsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsTransferConfigsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns information about a data transfer config. */
 export const getProjectsLocationsTransferConfigs: API.OperationMethod<
   GetProjectsLocationsTransferConfigsRequest,
@@ -1688,7 +2283,10 @@ export const getProjectsLocationsTransferConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsTransferConfigsRunsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsTransferConfigsRunsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns information about the particular transfer run. */
 export const getProjectsLocationsTransferConfigsRuns: API.OperationMethod<
   GetProjectsLocationsTransferConfigsRunsRequest,
@@ -1703,7 +2301,10 @@ export const getProjectsLocationsTransferConfigsRuns: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsTransferConfigsTransferResourcesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsTransferConfigsTransferResourcesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns a transfer resource. */
 export const getProjectsLocationsTransferConfigsTransferResources: API.OperationMethod<
   GetProjectsLocationsTransferConfigsTransferResourcesRequest,
@@ -1733,7 +2334,10 @@ export const getProjectsTransferConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsTransferConfigsRunsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsTransferConfigsRunsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns information about the particular transfer run. */
 export const getProjectsTransferConfigsRuns: API.OperationMethod<
   GetProjectsTransferConfigsRunsRequest,
@@ -1748,7 +2352,10 @@ export const getProjectsTransferConfigsRuns: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsTransferConfigsTransferResourcesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsTransferConfigsTransferResourcesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns a transfer resource. */
 export const getProjectsTransferConfigsTransferResources: API.OperationMethod<
   GetProjectsTransferConfigsTransferResourcesRequest,
@@ -1776,7 +2383,10 @@ export const listProjectsDataSources: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListProjectsLocationsError = NotFound | Forbidden | GcpOpError;
@@ -1792,10 +2402,16 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsDataSourcesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsDataSourcesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists supported data sources and returns their settings. */
 export const listProjectsLocationsDataSources: API.PaginatedOperationMethod<
   ListProjectsLocationsDataSourcesRequest,
@@ -1808,10 +2424,16 @@ export const listProjectsLocationsDataSources: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsTransferConfigsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsTransferConfigsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns information about all transfer configs owned by a project in the specified location. */
 export const listProjectsLocationsTransferConfigs: API.PaginatedOperationMethod<
   ListProjectsLocationsTransferConfigsRequest,
@@ -1824,10 +2446,16 @@ export const listProjectsLocationsTransferConfigs: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsTransferConfigsRunsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsTransferConfigsRunsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns information about running and completed transfer runs. */
 export const listProjectsLocationsTransferConfigsRuns: API.PaginatedOperationMethod<
   ListProjectsLocationsTransferConfigsRunsRequest,
@@ -1840,10 +2468,16 @@ export const listProjectsLocationsTransferConfigsRuns: API.PaginatedOperationMet
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsTransferConfigsRunsTransferLogsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsTransferConfigsRunsTransferLogsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns log messages for the transfer run. */
 export const listProjectsLocationsTransferConfigsRunsTransferLogs: API.PaginatedOperationMethod<
   ListProjectsLocationsTransferConfigsRunsTransferLogsRequest,
@@ -1856,10 +2490,16 @@ export const listProjectsLocationsTransferConfigsRunsTransferLogs: API.Paginated
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsTransferConfigsTransferResourcesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsTransferConfigsTransferResourcesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns information about transfer resources. */
 export const listProjectsLocationsTransferConfigsTransferResources: API.PaginatedOperationMethod<
   ListProjectsLocationsTransferConfigsTransferResourcesRequest,
@@ -1872,10 +2512,16 @@ export const listProjectsLocationsTransferConfigsTransferResources: API.Paginate
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsTransferConfigsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsTransferConfigsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns information about all transfer configs owned by a project in the specified location. */
 export const listProjectsTransferConfigs: API.PaginatedOperationMethod<
   ListProjectsTransferConfigsRequest,
@@ -1888,10 +2534,16 @@ export const listProjectsTransferConfigs: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsTransferConfigsRunsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsTransferConfigsRunsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns information about running and completed transfer runs. */
 export const listProjectsTransferConfigsRuns: API.PaginatedOperationMethod<
   ListProjectsTransferConfigsRunsRequest,
@@ -1904,10 +2556,16 @@ export const listProjectsTransferConfigsRuns: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsTransferConfigsRunsTransferLogsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsTransferConfigsRunsTransferLogsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns log messages for the transfer run. */
 export const listProjectsTransferConfigsRunsTransferLogs: API.PaginatedOperationMethod<
   ListProjectsTransferConfigsRunsTransferLogsRequest,
@@ -1920,10 +2578,16 @@ export const listProjectsTransferConfigsRunsTransferLogs: API.PaginatedOperation
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsTransferConfigsTransferResourcesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsTransferConfigsTransferResourcesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns information about transfer resources. */
 export const listProjectsTransferConfigsTransferResources: API.PaginatedOperationMethod<
   ListProjectsTransferConfigsTransferResourcesRequest,
@@ -1936,10 +2600,18 @@ export const listProjectsTransferConfigsTransferResources: API.PaginatedOperatio
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type PatchProjectsLocationsTransferConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsTransferConfigsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a data transfer configuration. All fields must be set, even if they are not updated. */
 export const patchProjectsLocationsTransferConfigs: API.OperationMethod<
   PatchProjectsLocationsTransferConfigsRequest,
@@ -1954,7 +2626,12 @@ export const patchProjectsLocationsTransferConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsTransferConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsTransferConfigsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a data transfer configuration. All fields must be set, even if they are not updated. */
 export const patchProjectsTransferConfigs: API.OperationMethod<
   PatchProjectsTransferConfigsRequest,
@@ -1969,7 +2646,12 @@ export const patchProjectsTransferConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ScheduleRunsProjectsLocationsTransferConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ScheduleRunsProjectsLocationsTransferConfigsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates transfer runs for a time range [start_time, end_time]. For each date - or whatever granularity the data source supports - in the range, one transfer run is created. Note that runs are created per UTC time in the time range. DEPRECATED: use StartManualTransferRuns instead. */
 export const scheduleRunsProjectsLocationsTransferConfigs: API.OperationMethod<
   ScheduleRunsProjectsLocationsTransferConfigsRequest,
@@ -1984,7 +2666,12 @@ export const scheduleRunsProjectsLocationsTransferConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ScheduleRunsProjectsTransferConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ScheduleRunsProjectsTransferConfigsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates transfer runs for a time range [start_time, end_time]. For each date - or whatever granularity the data source supports - in the range, one transfer run is created. Note that runs are created per UTC time in the time range. DEPRECATED: use StartManualTransferRuns instead. */
 export const scheduleRunsProjectsTransferConfigs: API.OperationMethod<
   ScheduleRunsProjectsTransferConfigsRequest,
@@ -1999,7 +2686,12 @@ export const scheduleRunsProjectsTransferConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type StartManualRunsProjectsLocationsTransferConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type StartManualRunsProjectsLocationsTransferConfigsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Manually initiates transfer runs. You can schedule these runs in two ways: 1. For a specific point in time using the 'requested_run_time' parameter. 2. For a period between 'start_time' (inclusive) and 'end_time' (exclusive). If scheduling a single run, it is set to execute immediately (schedule_time equals the current time). When scheduling multiple runs within a time range, the first run starts now, and subsequent runs are delayed by 15 seconds each. */
 export const startManualRunsProjectsLocationsTransferConfigs: API.OperationMethod<
   StartManualRunsProjectsLocationsTransferConfigsRequest,
@@ -2014,7 +2706,12 @@ export const startManualRunsProjectsLocationsTransferConfigs: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type StartManualRunsProjectsTransferConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type StartManualRunsProjectsTransferConfigsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Manually initiates transfer runs. You can schedule these runs in two ways: 1. For a specific point in time using the 'requested_run_time' parameter. 2. For a period between 'start_time' (inclusive) and 'end_time' (exclusive). If scheduling a single run, it is set to execute immediately (schedule_time equals the current time). When scheduling multiple runs within a time range, the first run starts now, and subsequent runs are delayed by 15 seconds each. */
 export const startManualRunsProjectsTransferConfigs: API.OperationMethod<
   StartManualRunsProjectsTransferConfigsRequest,
@@ -2029,7 +2726,12 @@ export const startManualRunsProjectsTransferConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UnenrollDataSourcesProjectsLocationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UnenrollDataSourcesProjectsLocationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Unenroll data sources in a user project. This allows users to remove transfer configurations for these data sources. They will no longer appear in the ListDataSources RPC and will also no longer appear in the [BigQuery UI](https://console.cloud.google.com/bigquery). Data transfers configurations of unenrolled data sources will not be scheduled. */
 export const unenrollDataSourcesProjectsLocations: API.OperationMethod<
   UnenrollDataSourcesProjectsLocationsRequest,
@@ -2043,4 +2745,3 @@ export const unenrollDataSourcesProjectsLocations: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

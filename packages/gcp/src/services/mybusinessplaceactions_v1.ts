@@ -13,57 +13,69 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
-export type PlaceActionLinkProviderTypeEnum = "PROVIDER_TYPE_UNSPECIFIED" | "MERCHANT" | "AGGREGATOR_3P";
+export type PlaceActionLinkProviderTypeEnum =
+  | "PROVIDER_TYPE_UNSPECIFIED"
+  | "MERCHANT"
+  | "AGGREGATOR_3P";
 export const PlaceActionLinkProviderTypeEnum = /*@__PURE__*/ S.String;
 
-export type PlaceActionLinkPlaceActionTypeEnum = "PLACE_ACTION_TYPE_UNSPECIFIED" | "APPOINTMENT" | "ONLINE_APPOINTMENT" | "DINING_RESERVATION" | "FOOD_ORDERING" | "FOOD_DELIVERY" | "FOOD_TAKEOUT" | "SHOP_ONLINE" | "SOLOPRENEUR_APPOINTMENT";
+export type PlaceActionLinkPlaceActionTypeEnum =
+  | "PLACE_ACTION_TYPE_UNSPECIFIED"
+  | "APPOINTMENT"
+  | "ONLINE_APPOINTMENT"
+  | "DINING_RESERVATION"
+  | "FOOD_ORDERING"
+  | "FOOD_DELIVERY"
+  | "FOOD_TAKEOUT"
+  | "SHOP_ONLINE"
+  | "SOLOPRENEUR_APPOINTMENT";
 export const PlaceActionLinkPlaceActionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a place action link and its attributes. */
@@ -86,17 +98,19 @@ export interface PlaceActionLink {
   createTime?: string;
 }
 export const PlaceActionLink = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "providerType": S.optional(PlaceActionLinkProviderTypeEnum),
-  "uri": S.optional(S.String),
-  "placeActionType": S.optional(PlaceActionLinkPlaceActionTypeEnum),
-  "name": S.optional(S.String),
-  "isEditable": S.optional(S.Boolean),
-  "isPreferred": S.optional(S.Boolean),
-  "updateTime": S.optional(S.String),
-  "createTime": S.optional(S.String),
-}),
-).annotate({ identifier: "PlaceActionLink" }) as any as S.Schema<PlaceActionLink>;
+  S.Struct({
+    providerType: S.optional(PlaceActionLinkProviderTypeEnum),
+    uri: S.optional(S.String),
+    placeActionType: S.optional(PlaceActionLinkPlaceActionTypeEnum),
+    name: S.optional(S.String),
+    isEditable: S.optional(S.Boolean),
+    isPreferred: S.optional(S.Boolean),
+    updateTime: S.optional(S.String),
+    createTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PlaceActionLink",
+}) as any as S.Schema<PlaceActionLink>;
 
 export interface CreateLocationsPlaceActionLinksRequest {
   /** Required. The resource name of the location where to create this place action link. `locations/{location_id}`. */
@@ -104,38 +118,64 @@ export interface CreateLocationsPlaceActionLinksRequest {
   /** Request body */
   body?: PlaceActionLink;
 }
-export const CreateLocationsPlaceActionLinksRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(PlaceActionLink.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/placeActionLinks","baseUrl":"https://mybusinessplaceactions.googleapis.com/"})),
-).annotate({ identifier: "CreateLocationsPlaceActionLinksRequest" }) as any as S.Schema<CreateLocationsPlaceActionLinksRequest>;
+export const CreateLocationsPlaceActionLinksRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(PlaceActionLink.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/placeActionLinks",
+        baseUrl: "https://mybusinessplaceactions.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateLocationsPlaceActionLinksRequest",
+}) as any as S.Schema<CreateLocationsPlaceActionLinksRequest>;
 
 export interface DeleteLocationsPlaceActionLinksRequest {
   /** Required. The resource name of the place action link to remove from the location. */
   name: string;
 }
-export const DeleteLocationsPlaceActionLinksRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://mybusinessplaceactions.googleapis.com/"})),
-).annotate({ identifier: "DeleteLocationsPlaceActionLinksRequest" }) as any as S.Schema<DeleteLocationsPlaceActionLinksRequest>;
+export const DeleteLocationsPlaceActionLinksRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://mybusinessplaceactions.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteLocationsPlaceActionLinksRequest",
+}) as any as S.Schema<DeleteLocationsPlaceActionLinksRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 export interface GetLocationsPlaceActionLinksRequest {
   /** Required. The name of the place action link to fetch. */
   name: string;
 }
 export const GetLocationsPlaceActionLinksRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://mybusinessplaceactions.googleapis.com/"})),
-).annotate({ identifier: "GetLocationsPlaceActionLinksRequest" }) as any as S.Schema<GetLocationsPlaceActionLinksRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://mybusinessplaceactions.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetLocationsPlaceActionLinksRequest",
+}) as any as S.Schema<GetLocationsPlaceActionLinksRequest>;
 
 export interface ListLocationsPlaceActionLinksRequest {
   /** Required. The name of the location whose place action links will be listed. `locations/{location_id}`. */
@@ -147,17 +187,28 @@ export interface ListLocationsPlaceActionLinksRequest {
   /** Optional. How many place action links to return per page. Default of 10. The minimum is 1. */
   pageSize?: number;
 }
-export const ListLocationsPlaceActionLinksRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/placeActionLinks","baseUrl":"https://mybusinessplaceactions.googleapis.com/"})),
-).annotate({ identifier: "ListLocationsPlaceActionLinksRequest" }) as any as S.Schema<ListLocationsPlaceActionLinksRequest>;
+export const ListLocationsPlaceActionLinksRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/placeActionLinks",
+        baseUrl: "https://mybusinessplaceactions.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListLocationsPlaceActionLinksRequest",
+}) as any as S.Schema<ListLocationsPlaceActionLinksRequest>;
 
 export type PlaceActionLinkList = ReadonlyArray<PlaceActionLink>;
-export const PlaceActionLinkList = /*@__PURE__*/ S.Array(PlaceActionLink) as any as S.Schema<PlaceActionLinkList>;
+export const PlaceActionLinkList = /*@__PURE__*/ S.Array(
+  PlaceActionLink,
+) as any as S.Schema<PlaceActionLinkList>;
 
 /** Response message for PlaceActions.ListPlaceActionLinks. */
 export interface ListPlaceActionLinksResponse {
@@ -167,11 +218,13 @@ export interface ListPlaceActionLinksResponse {
   nextPageToken?: string;
 }
 export const ListPlaceActionLinksResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "placeActionLinks": S.optional(PlaceActionLinkList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListPlaceActionLinksResponse" }) as any as S.Schema<ListPlaceActionLinksResponse>;
+  S.Struct({
+    placeActionLinks: S.optional(PlaceActionLinkList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListPlaceActionLinksResponse",
+}) as any as S.Schema<ListPlaceActionLinksResponse>;
 
 export interface ListPlaceActionTypeMetadataRequest {
   /** Optional. The IETF BCP-47 code of language to get display names in. If this language is not available, they will be provided in English. */
@@ -184,16 +237,34 @@ export interface ListPlaceActionTypeMetadataRequest {
   pageToken?: string;
 }
 export const ListPlaceActionTypeMetadataRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "languageCode": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/placeActionTypeMetadata","baseUrl":"https://mybusinessplaceactions.googleapis.com/"})),
-).annotate({ identifier: "ListPlaceActionTypeMetadataRequest" }) as any as S.Schema<ListPlaceActionTypeMetadataRequest>;
+  S.Struct({
+    languageCode: S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/placeActionTypeMetadata",
+      baseUrl: "https://mybusinessplaceactions.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListPlaceActionTypeMetadataRequest",
+}) as any as S.Schema<ListPlaceActionTypeMetadataRequest>;
 
-export type PlaceActionTypeMetadataPlaceActionTypeEnum = "PLACE_ACTION_TYPE_UNSPECIFIED" | "APPOINTMENT" | "ONLINE_APPOINTMENT" | "DINING_RESERVATION" | "FOOD_ORDERING" | "FOOD_DELIVERY" | "FOOD_TAKEOUT" | "SHOP_ONLINE" | "SOLOPRENEUR_APPOINTMENT";
-export const PlaceActionTypeMetadataPlaceActionTypeEnum = /*@__PURE__*/ S.String;
+export type PlaceActionTypeMetadataPlaceActionTypeEnum =
+  | "PLACE_ACTION_TYPE_UNSPECIFIED"
+  | "APPOINTMENT"
+  | "ONLINE_APPOINTMENT"
+  | "DINING_RESERVATION"
+  | "FOOD_ORDERING"
+  | "FOOD_DELIVERY"
+  | "FOOD_TAKEOUT"
+  | "SHOP_ONLINE"
+  | "SOLOPRENEUR_APPOINTMENT";
+export const PlaceActionTypeMetadataPlaceActionTypeEnum =
+  /*@__PURE__*/ S.String;
 
 /** Metadata for supported place action types. */
 export interface PlaceActionTypeMetadata {
@@ -203,14 +274,19 @@ export interface PlaceActionTypeMetadata {
   displayName?: string;
 }
 export const PlaceActionTypeMetadata = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "placeActionType": S.optional(PlaceActionTypeMetadataPlaceActionTypeEnum),
-  "displayName": S.optional(S.String),
-}),
-).annotate({ identifier: "PlaceActionTypeMetadata" }) as any as S.Schema<PlaceActionTypeMetadata>;
+  S.Struct({
+    placeActionType: S.optional(PlaceActionTypeMetadataPlaceActionTypeEnum),
+    displayName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PlaceActionTypeMetadata",
+}) as any as S.Schema<PlaceActionTypeMetadata>;
 
-export type PlaceActionTypeMetadataList = ReadonlyArray<PlaceActionTypeMetadata>;
-export const PlaceActionTypeMetadataList = /*@__PURE__*/ S.Array(PlaceActionTypeMetadata) as any as S.Schema<PlaceActionTypeMetadataList>;
+export type PlaceActionTypeMetadataList =
+  ReadonlyArray<PlaceActionTypeMetadata>;
+export const PlaceActionTypeMetadataList = /*@__PURE__*/ S.Array(
+  PlaceActionTypeMetadata,
+) as any as S.Schema<PlaceActionTypeMetadataList>;
 
 /** Response message for PlaceActions.ListPlaceActionTypeMetadata. */
 export interface ListPlaceActionTypeMetadataResponse {
@@ -220,11 +296,13 @@ export interface ListPlaceActionTypeMetadataResponse {
   nextPageToken?: string;
 }
 export const ListPlaceActionTypeMetadataResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "placeActionTypeMetadata": S.optional(PlaceActionTypeMetadataList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListPlaceActionTypeMetadataResponse" }) as any as S.Schema<ListPlaceActionTypeMetadataResponse>;
+  S.Struct({
+    placeActionTypeMetadata: S.optional(PlaceActionTypeMetadataList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListPlaceActionTypeMetadataResponse",
+}) as any as S.Schema<ListPlaceActionTypeMetadataResponse>;
 
 export interface PatchLocationsPlaceActionLinksRequest {
   /** Optional. The resource name, in the format `locations/{location_id}/placeActionLinks/{place_action_link_id}`. The name field will only be considered in UpdatePlaceActionLink and DeletePlaceActionLink requests for updating and deleting links respectively. However, it will be ignored in CreatePlaceActionLink request, where `place_action_link_id` will be assigned by the server on successful creation of a new link and returned as part of the response. */
@@ -234,15 +312,29 @@ export interface PatchLocationsPlaceActionLinksRequest {
   /** Request body */
   body?: PlaceActionLink;
 }
-export const PatchLocationsPlaceActionLinksRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(PlaceActionLink.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://mybusinessplaceactions.googleapis.com/"})),
-).annotate({ identifier: "PatchLocationsPlaceActionLinksRequest" }) as any as S.Schema<PatchLocationsPlaceActionLinksRequest>;
+export const PatchLocationsPlaceActionLinksRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(PlaceActionLink.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://mybusinessplaceactions.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "PatchLocationsPlaceActionLinksRequest",
+}) as any as S.Schema<PatchLocationsPlaceActionLinksRequest>;
 
-export type CreateLocationsPlaceActionLinksError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateLocationsPlaceActionLinksError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a place action link associated with the specified location, and returns it. The request is considered duplicate if the `parent`, `place_action_link.uri` and `place_action_link.place_action_type` are the same as a previous request. */
 export const createLocationsPlaceActionLinks: API.OperationMethod<
   CreateLocationsPlaceActionLinksRequest,
@@ -257,7 +349,12 @@ export const createLocationsPlaceActionLinks: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteLocationsPlaceActionLinksError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteLocationsPlaceActionLinksError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a place action link from the specified location. */
 export const deleteLocationsPlaceActionLinks: API.OperationMethod<
   DeleteLocationsPlaceActionLinksRequest,
@@ -272,7 +369,10 @@ export const deleteLocationsPlaceActionLinks: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetLocationsPlaceActionLinksError = NotFound | Forbidden | GcpOpError;
+export type GetLocationsPlaceActionLinksError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the specified place action link. */
 export const getLocationsPlaceActionLinks: API.OperationMethod<
   GetLocationsPlaceActionLinksRequest,
@@ -287,7 +387,10 @@ export const getLocationsPlaceActionLinks: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListLocationsPlaceActionLinksError = NotFound | Forbidden | GcpOpError;
+export type ListLocationsPlaceActionLinksError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists the place action links for the specified location. */
 export const listLocationsPlaceActionLinks: API.PaginatedOperationMethod<
   ListLocationsPlaceActionLinksRequest,
@@ -300,10 +403,16 @@ export const listLocationsPlaceActionLinks: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListPlaceActionTypeMetadataError = NotFound | Forbidden | GcpOpError;
+export type ListPlaceActionTypeMetadataError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns the list of available place action types for a location or country. */
 export const listPlaceActionTypeMetadata: API.PaginatedOperationMethod<
   ListPlaceActionTypeMetadataRequest,
@@ -316,10 +425,18 @@ export const listPlaceActionTypeMetadata: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type PatchLocationsPlaceActionLinksError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchLocationsPlaceActionLinksError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the specified place action link and returns it. */
 export const patchLocationsPlaceActionLinks: API.OperationMethod<
   PatchLocationsPlaceActionLinksRequest,
@@ -333,4 +450,3 @@ export const patchLocationsPlaceActionLinks: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

@@ -737,15 +737,43 @@ export const InterconnectsListResponseItemsItemNscInterconnectGcpPartnerBody =
       "InterconnectsListResponseItemsItemNscInterconnectGcpPartnerBody",
   }) as any as S.Schema<InterconnectsListResponseItemsItemNscInterconnectGcpPartnerBody>;
 
-export type InterconnectsListResponseItemsItem =
-  | InterconnectsListResponseItemsItemNscInterconnectPhysicalBody
-  | InterconnectsListResponseItemsItemNscInterconnectGcpPartnerBody;
-export const InterconnectsListResponseItemsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["account", "facility", "name", "site", "slotId", "speed", "type", "owner"],
-    ["account", "name", "region", "type", "owner", "speed"],
-  ]),
-);
+export interface InterconnectsListResponseItemsItem {
+  account: string;
+  facility?: InterconnectsListResponseItemsItemNscInterconnectPhysicalBodyFacility;
+  name: string;
+  /** A Cloudflare site name. */
+  site?: string;
+  slotId?: string;
+  /** Bandwidth structure as visible through the customer-facing API. */
+  speed?:
+    | string
+    | InterconnectsListResponseItemsItemNscInterconnectGcpPartnerBodySpeed;
+  type: string;
+  owner?: string;
+  region?: string;
+}
+export const InterconnectsListResponseItemsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    account: S.String,
+    facility: S.optional(
+      InterconnectsListResponseItemsItemNscInterconnectPhysicalBodyFacility,
+    ),
+    name: S.String,
+    site: S.optional(S.String),
+    slotId: S.optional(S.String.pipe(T.Body("slot_id"))),
+    speed: S.optional(
+      S.Union(
+        S.String,
+        InterconnectsListResponseItemsItemNscInterconnectGcpPartnerBodySpeed,
+      ),
+    ),
+    type: S.String,
+    owner: S.optional(S.String),
+    region: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "InterconnectsListResponseItemsItem",
+}) as any as S.Schema<InterconnectsListResponseItemsItem>;
 
 export type InterconnectsListResponseItemsList =
   ReadonlyArray<InterconnectsListResponseItemsItem>;

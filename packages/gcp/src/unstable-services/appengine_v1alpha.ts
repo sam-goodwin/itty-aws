@@ -13,54 +13,62 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
-export type ManagedCertificateStatusEnum = "UNSPECIFIED_STATUS" | "OK" | "PENDING" | "FAILED_RETRYING_INTERNAL" | "FAILED_RETRYING_NOT_VISIBLE" | "FAILED_PERMANENTLY_NOT_VISIBLE" | "FAILED_RETRYING_CAA_FORBIDDEN" | "FAILED_RETRYING_CAA_CHECKING";
+export type ManagedCertificateStatusEnum =
+  | "UNSPECIFIED_STATUS"
+  | "OK"
+  | "PENDING"
+  | "FAILED_RETRYING_INTERNAL"
+  | "FAILED_RETRYING_NOT_VISIBLE"
+  | "FAILED_PERMANENTLY_NOT_VISIBLE"
+  | "FAILED_RETRYING_CAA_FORBIDDEN"
+  | "FAILED_RETRYING_CAA_CHECKING";
 export const ManagedCertificateStatusEnum = /*@__PURE__*/ S.String;
 
 /** A certificate managed by App Engine. */
@@ -71,14 +79,18 @@ export interface ManagedCertificate {
   status?: ManagedCertificateStatusEnum;
 }
 export const ManagedCertificate = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "lastRenewalTime": S.optional(S.String),
-  "status": S.optional(ManagedCertificateStatusEnum),
-}),
-).annotate({ identifier: "ManagedCertificate" }) as any as S.Schema<ManagedCertificate>;
+  S.Struct({
+    lastRenewalTime: S.optional(S.String),
+    status: S.optional(ManagedCertificateStatusEnum),
+  }),
+).annotate({
+  identifier: "ManagedCertificate",
+}) as any as S.Schema<ManagedCertificate>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** An SSL certificate obtained from a certificate authority. */
 export interface CertificateRawData {
@@ -88,11 +100,13 @@ export interface CertificateRawData {
   privateKey?: string;
 }
 export const CertificateRawData = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "publicCertificate": S.optional(S.String),
-  "privateKey": S.optional(S.String),
-}),
-).annotate({ identifier: "CertificateRawData" }) as any as S.Schema<CertificateRawData>;
+  S.Struct({
+    publicCertificate: S.optional(S.String),
+    privateKey: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CertificateRawData",
+}) as any as S.Schema<CertificateRawData>;
 
 /** An SSL certificate that a user has been authorized to administer. A user is authorized to administer any certificate that applies to one of their authorized domains. */
 export interface AuthorizedCertificate {
@@ -116,18 +130,20 @@ export interface AuthorizedCertificate {
   domainNames?: StringList;
 }
 export const AuthorizedCertificate = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "managedCertificate": S.optional(ManagedCertificate),
-  "visibleDomainMappings": S.optional(StringList),
-  "expireTime": S.optional(S.String),
-  "certificateRawData": S.optional(CertificateRawData),
-  "domainMappingsCount": S.optional(S.Number),
-  "displayName": S.optional(S.String),
-  "id": S.optional(S.String),
-  "name": S.optional(S.String),
-  "domainNames": S.optional(StringList),
-}),
-).annotate({ identifier: "AuthorizedCertificate" }) as any as S.Schema<AuthorizedCertificate>;
+  S.Struct({
+    managedCertificate: S.optional(ManagedCertificate),
+    visibleDomainMappings: S.optional(StringList),
+    expireTime: S.optional(S.String),
+    certificateRawData: S.optional(CertificateRawData),
+    domainMappingsCount: S.optional(S.Number),
+    displayName: S.optional(S.String),
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    domainNames: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "AuthorizedCertificate",
+}) as any as S.Schema<AuthorizedCertificate>;
 
 export interface CreateAppsAuthorizedCertificatesRequest {
   /** Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. */
@@ -135,15 +151,28 @@ export interface CreateAppsAuthorizedCertificatesRequest {
   /** Request body */
   body?: AuthorizedCertificate;
 }
-export const CreateAppsAuthorizedCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "appsId": S.String.pipe(T.Label()),
-  "body": S.optional(AuthorizedCertificate.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha/apps/{appsId}/authorizedCertificates","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "CreateAppsAuthorizedCertificatesRequest" }) as any as S.Schema<CreateAppsAuthorizedCertificatesRequest>;
+export const CreateAppsAuthorizedCertificatesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      appsId: S.String.pipe(T.Label()),
+      body: S.optional(AuthorizedCertificate.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1alpha/apps/{appsId}/authorizedCertificates",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateAppsAuthorizedCertificatesRequest",
+}) as any as S.Schema<CreateAppsAuthorizedCertificatesRequest>;
 
-export type CreateAppsDomainMappingsOverrideStrategyEnum = "UNSPECIFIED_DOMAIN_OVERRIDE_STRATEGY" | "STRICT" | "OVERRIDE";
-export const CreateAppsDomainMappingsOverrideStrategyEnum = /*@__PURE__*/ S.String;
+export type CreateAppsDomainMappingsOverrideStrategyEnum =
+  | "UNSPECIFIED_DOMAIN_OVERRIDE_STRATEGY"
+  | "STRICT"
+  | "OVERRIDE";
+export const CreateAppsDomainMappingsOverrideStrategyEnum =
+  /*@__PURE__*/ S.String;
 
 /** SSL configuration for a DomainMapping resource. */
 export interface SslSettings {
@@ -153,10 +182,10 @@ export interface SslSettings {
   isManagedCertificate?: boolean;
 }
 export const SslSettings = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "certificateId": S.optional(S.String),
-  "isManagedCertificate": S.optional(S.Boolean),
-}),
+  S.Struct({
+    certificateId: S.optional(S.String),
+    isManagedCertificate: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "SslSettings" }) as any as S.Schema<SslSettings>;
 
 export type ResourceRecordTypeEnum = "A" | "AAAA" | "CNAME";
@@ -172,15 +201,17 @@ export interface ResourceRecord {
   rrdata?: string;
 }
 export const ResourceRecord = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(ResourceRecordTypeEnum),
-  "name": S.optional(S.String),
-  "rrdata": S.optional(S.String),
-}),
+  S.Struct({
+    type: S.optional(ResourceRecordTypeEnum),
+    name: S.optional(S.String),
+    rrdata: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ResourceRecord" }) as any as S.Schema<ResourceRecord>;
 
 export type ResourceRecordList = ReadonlyArray<ResourceRecord>;
-export const ResourceRecordList = /*@__PURE__*/ S.Array(ResourceRecord) as any as S.Schema<ResourceRecordList>;
+export const ResourceRecordList = /*@__PURE__*/ S.Array(
+  ResourceRecord,
+) as any as S.Schema<ResourceRecordList>;
 
 /** A domain serving an App Engine application. */
 export interface DomainMapping {
@@ -194,12 +225,12 @@ export interface DomainMapping {
   resourceRecords?: ResourceRecordList;
 }
 export const DomainMapping = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "id": S.optional(S.String),
-  "sslSettings": S.optional(SslSettings),
-  "resourceRecords": S.optional(ResourceRecordList),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    id: S.optional(S.String),
+    sslSettings: S.optional(SslSettings),
+    resourceRecords: S.optional(ResourceRecordList),
+  }),
 ).annotate({ identifier: "DomainMapping" }) as any as S.Schema<DomainMapping>;
 
 export interface CreateAppsDomainMappingsRequest {
@@ -208,24 +239,41 @@ export interface CreateAppsDomainMappingsRequest {
   /** Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manaually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated. */
   noManagedCertificate?: boolean;
   /** Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected. */
-  overrideStrategy?: CreateAppsDomainMappingsOverrideStrategyEnum | (string & {});
+  overrideStrategy?:
+    | CreateAppsDomainMappingsOverrideStrategyEnum
+    | (string & {});
   /** Request body */
   body?: DomainMapping;
 }
 export const CreateAppsDomainMappingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "appsId": S.String.pipe(T.Label()),
-  "noManagedCertificate": S.optional(S.Boolean.pipe(T.Query())),
-  "overrideStrategy": S.optional(CreateAppsDomainMappingsOverrideStrategyEnum.pipe(T.Query())),
-  "body": S.optional(DomainMapping.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha/apps/{appsId}/domainMappings","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "CreateAppsDomainMappingsRequest" }) as any as S.Schema<CreateAppsDomainMappingsRequest>;
+  S.Struct({
+    appsId: S.String.pipe(T.Label()),
+    noManagedCertificate: S.optional(S.Boolean.pipe(T.Query())),
+    overrideStrategy: S.optional(
+      CreateAppsDomainMappingsOverrideStrategyEnum.pipe(T.Query()),
+    ),
+    body: S.optional(DomainMapping.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha/apps/{appsId}/domainMappings",
+      baseUrl: "https://appengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateAppsDomainMappingsRequest",
+}) as any as S.Schema<CreateAppsDomainMappingsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 /** The Status type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by gRPC (https://github.com/grpc). Each Status message contains three pieces of data: error code, error message, and error details.You can find out more about this error model and how to work with it in the API Design Guide (https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -237,11 +285,11 @@ export interface Status {
   details?: DocumentMapList;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(S.Number),
-  "message": S.optional(S.String),
-  "details": S.optional(DocumentMapList),
-}),
+  S.Struct({
+    code: S.optional(S.Number),
+    message: S.optional(S.String),
+    details: S.optional(DocumentMapList),
+  }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -258,13 +306,13 @@ export interface Operation {
   done?: boolean;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "metadata": S.optional(DocumentMap),
-  "response": S.optional(DocumentMap),
-  "name": S.optional(S.String),
-  "error": S.optional(Status),
-  "done": S.optional(S.Boolean),
-}),
+  S.Struct({
+    metadata: S.optional(DocumentMap),
+    response: S.optional(DocumentMap),
+    name: S.optional(S.String),
+    error: S.optional(Status),
+    done: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 export interface CreateProjectsLocationsApplicationsAuthorizedCertificatesRequest {
@@ -277,17 +325,29 @@ export interface CreateProjectsLocationsApplicationsAuthorizedCertificatesReques
   /** Request body */
   body?: AuthorizedCertificate;
 }
-export const CreateProjectsLocationsApplicationsAuthorizedCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectsId": S.String.pipe(T.Label()),
-  "applicationsId": S.String.pipe(T.Label()),
-  "locationsId": S.String.pipe(T.Label()),
-  "body": S.optional(AuthorizedCertificate.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsApplicationsAuthorizedCertificatesRequest" }) as any as S.Schema<CreateProjectsLocationsApplicationsAuthorizedCertificatesRequest>;
+export const CreateProjectsLocationsApplicationsAuthorizedCertificatesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      projectsId: S.String.pipe(T.Label()),
+      applicationsId: S.String.pipe(T.Label()),
+      locationsId: S.String.pipe(T.Label()),
+      body: S.optional(AuthorizedCertificate.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "CreateProjectsLocationsApplicationsAuthorizedCertificatesRequest",
+  }) as any as S.Schema<CreateProjectsLocationsApplicationsAuthorizedCertificatesRequest>;
 
-export type CreateProjectsLocationsApplicationsDomainMappingsOverrideStrategyEnum = "UNSPECIFIED_DOMAIN_OVERRIDE_STRATEGY" | "STRICT" | "OVERRIDE";
-export const CreateProjectsLocationsApplicationsDomainMappingsOverrideStrategyEnum = /*@__PURE__*/ S.String;
+export type CreateProjectsLocationsApplicationsDomainMappingsOverrideStrategyEnum =
+  "UNSPECIFIED_DOMAIN_OVERRIDE_STRATEGY" | "STRICT" | "OVERRIDE";
+export const CreateProjectsLocationsApplicationsDomainMappingsOverrideStrategyEnum =
+  /*@__PURE__*/ S.String;
 
 export interface CreateProjectsLocationsApplicationsDomainMappingsRequest {
   /** Part of `parent`. See documentation of `projectsId`. */
@@ -297,22 +357,37 @@ export interface CreateProjectsLocationsApplicationsDomainMappingsRequest {
   /** Part of `parent`. See documentation of `projectsId`. */
   locationsId: string;
   /** Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected. */
-  overrideStrategy?: CreateProjectsLocationsApplicationsDomainMappingsOverrideStrategyEnum | (string & {});
+  overrideStrategy?:
+    | CreateProjectsLocationsApplicationsDomainMappingsOverrideStrategyEnum
+    | (string & {});
   /** Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. */
   projectsId: string;
   /** Request body */
   body?: DomainMapping;
 }
-export const CreateProjectsLocationsApplicationsDomainMappingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "applicationsId": S.String.pipe(T.Label()),
-  "noManagedCertificate": S.optional(S.Boolean.pipe(T.Query())),
-  "locationsId": S.String.pipe(T.Label()),
-  "overrideStrategy": S.optional(CreateProjectsLocationsApplicationsDomainMappingsOverrideStrategyEnum.pipe(T.Query())),
-  "projectsId": S.String.pipe(T.Label()),
-  "body": S.optional(DomainMapping.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsApplicationsDomainMappingsRequest" }) as any as S.Schema<CreateProjectsLocationsApplicationsDomainMappingsRequest>;
+export const CreateProjectsLocationsApplicationsDomainMappingsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      applicationsId: S.String.pipe(T.Label()),
+      noManagedCertificate: S.optional(S.Boolean.pipe(T.Query())),
+      locationsId: S.String.pipe(T.Label()),
+      overrideStrategy: S.optional(
+        CreateProjectsLocationsApplicationsDomainMappingsOverrideStrategyEnum.pipe(
+          T.Query(),
+        ),
+      ),
+      projectsId: S.String.pipe(T.Label()),
+      body: S.optional(DomainMapping.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsApplicationsDomainMappingsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsApplicationsDomainMappingsRequest>;
 
 export interface DeleteAppsAuthorizedCertificatesRequest {
   /** Part of `name`. Required. Name of the resource to delete. Example: apps/myapp/authorizedCertificates/12345. */
@@ -320,18 +395,27 @@ export interface DeleteAppsAuthorizedCertificatesRequest {
   /** Part of `name`. See documentation of `appsId`. */
   authorizedCertificatesId: string;
 }
-export const DeleteAppsAuthorizedCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "appsId": S.String.pipe(T.Label()),
-  "authorizedCertificatesId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1alpha/apps/{appsId}/authorizedCertificates/{authorizedCertificatesId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "DeleteAppsAuthorizedCertificatesRequest" }) as any as S.Schema<DeleteAppsAuthorizedCertificatesRequest>;
+export const DeleteAppsAuthorizedCertificatesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      appsId: S.String.pipe(T.Label()),
+      authorizedCertificatesId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1alpha/apps/{appsId}/authorizedCertificates/{authorizedCertificatesId}",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteAppsAuthorizedCertificatesRequest",
+}) as any as S.Schema<DeleteAppsAuthorizedCertificatesRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 export interface DeleteAppsDomainMappingsRequest {
   /** Part of `name`. See documentation of `appsId`. */
@@ -340,11 +424,19 @@ export interface DeleteAppsDomainMappingsRequest {
   appsId: string;
 }
 export const DeleteAppsDomainMappingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "domainMappingsId": S.String.pipe(T.Label()),
-  "appsId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1alpha/apps/{appsId}/domainMappings/{domainMappingsId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "DeleteAppsDomainMappingsRequest" }) as any as S.Schema<DeleteAppsDomainMappingsRequest>;
+  S.Struct({
+    domainMappingsId: S.String.pipe(T.Label()),
+    appsId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1alpha/apps/{appsId}/domainMappings/{domainMappingsId}",
+      baseUrl: "https://appengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteAppsDomainMappingsRequest",
+}) as any as S.Schema<DeleteAppsDomainMappingsRequest>;
 
 export interface DeleteProjectsLocationsApplicationsAuthorizedCertificatesRequest {
   /** Part of `name`. See documentation of `projectsId`. */
@@ -356,14 +448,24 @@ export interface DeleteProjectsLocationsApplicationsAuthorizedCertificatesReques
   /** Part of `name`. See documentation of `projectsId`. */
   authorizedCertificatesId: string;
 }
-export const DeleteProjectsLocationsApplicationsAuthorizedCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locationsId": S.String.pipe(T.Label()),
-  "applicationsId": S.String.pipe(T.Label()),
-  "projectsId": S.String.pipe(T.Label()),
-  "authorizedCertificatesId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates/{authorizedCertificatesId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsApplicationsAuthorizedCertificatesRequest" }) as any as S.Schema<DeleteProjectsLocationsApplicationsAuthorizedCertificatesRequest>;
+export const DeleteProjectsLocationsApplicationsAuthorizedCertificatesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      locationsId: S.String.pipe(T.Label()),
+      applicationsId: S.String.pipe(T.Label()),
+      projectsId: S.String.pipe(T.Label()),
+      authorizedCertificatesId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates/{authorizedCertificatesId}",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "DeleteProjectsLocationsApplicationsAuthorizedCertificatesRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsApplicationsAuthorizedCertificatesRequest>;
 
 export interface DeleteProjectsLocationsApplicationsDomainMappingsRequest {
   /** Part of `name`. See documentation of `projectsId`. */
@@ -375,16 +477,27 @@ export interface DeleteProjectsLocationsApplicationsDomainMappingsRequest {
   /** Part of `name`. Required. Name of the resource to delete. Example: apps/myapp/domainMappings/example.com. */
   projectsId: string;
 }
-export const DeleteProjectsLocationsApplicationsDomainMappingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locationsId": S.String.pipe(T.Label()),
-  "domainMappingsId": S.String.pipe(T.Label()),
-  "applicationsId": S.String.pipe(T.Label()),
-  "projectsId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings/{domainMappingsId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsApplicationsDomainMappingsRequest" }) as any as S.Schema<DeleteProjectsLocationsApplicationsDomainMappingsRequest>;
+export const DeleteProjectsLocationsApplicationsDomainMappingsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      locationsId: S.String.pipe(T.Label()),
+      domainMappingsId: S.String.pipe(T.Label()),
+      applicationsId: S.String.pipe(T.Label()),
+      projectsId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings/{domainMappingsId}",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsApplicationsDomainMappingsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsApplicationsDomainMappingsRequest>;
 
-export type GetAppsAuthorizedCertificatesViewEnum = "BASIC_CERTIFICATE" | "FULL_CERTIFICATE";
+export type GetAppsAuthorizedCertificatesViewEnum =
+  | "BASIC_CERTIFICATE"
+  | "FULL_CERTIFICATE";
 export const GetAppsAuthorizedCertificatesViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetAppsAuthorizedCertificatesRequest {
@@ -395,13 +508,22 @@ export interface GetAppsAuthorizedCertificatesRequest {
   /** Controls the set of fields returned in the GET response. */
   view?: GetAppsAuthorizedCertificatesViewEnum | (string & {});
 }
-export const GetAppsAuthorizedCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "appsId": S.String.pipe(T.Label()),
-  "authorizedCertificatesId": S.String.pipe(T.Label()),
-  "view": S.optional(GetAppsAuthorizedCertificatesViewEnum.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha/apps/{appsId}/authorizedCertificates/{authorizedCertificatesId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "GetAppsAuthorizedCertificatesRequest" }) as any as S.Schema<GetAppsAuthorizedCertificatesRequest>;
+export const GetAppsAuthorizedCertificatesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      appsId: S.String.pipe(T.Label()),
+      authorizedCertificatesId: S.String.pipe(T.Label()),
+      view: S.optional(GetAppsAuthorizedCertificatesViewEnum.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha/apps/{appsId}/authorizedCertificates/{authorizedCertificatesId}",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetAppsAuthorizedCertificatesRequest",
+}) as any as S.Schema<GetAppsAuthorizedCertificatesRequest>;
 
 export interface GetAppsDomainMappingsRequest {
   /** Part of `name`. See documentation of `appsId`. */
@@ -410,11 +532,19 @@ export interface GetAppsDomainMappingsRequest {
   appsId: string;
 }
 export const GetAppsDomainMappingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "domainMappingsId": S.String.pipe(T.Label()),
-  "appsId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha/apps/{appsId}/domainMappings/{domainMappingsId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "GetAppsDomainMappingsRequest" }) as any as S.Schema<GetAppsDomainMappingsRequest>;
+  S.Struct({
+    domainMappingsId: S.String.pipe(T.Label()),
+    appsId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha/apps/{appsId}/domainMappings/{domainMappingsId}",
+      baseUrl: "https://appengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetAppsDomainMappingsRequest",
+}) as any as S.Schema<GetAppsDomainMappingsRequest>;
 
 export interface GetAppsLocationsRequest {
   /** Part of `name`. Resource name for the location. */
@@ -423,14 +553,25 @@ export interface GetAppsLocationsRequest {
   locationsId: string;
 }
 export const GetAppsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "appsId": S.String.pipe(T.Label()),
-  "locationsId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha/apps/{appsId}/locations/{locationsId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "GetAppsLocationsRequest" }) as any as S.Schema<GetAppsLocationsRequest>;
+  S.Struct({
+    appsId: S.String.pipe(T.Label()),
+    locationsId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha/apps/{appsId}/locations/{locationsId}",
+      baseUrl: "https://appengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetAppsLocationsRequest",
+}) as any as S.Schema<GetAppsLocationsRequest>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -446,13 +587,13 @@ export interface Location {
   locationId?: string;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "displayName": S.optional(S.String),
-  "metadata": S.optional(DocumentMap),
-  "locationId": S.optional(S.String),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    labels: S.optional(StringMap),
+    displayName: S.optional(S.String),
+    metadata: S.optional(DocumentMap),
+    locationId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export interface GetAppsOperationsRequest {
@@ -462,11 +603,19 @@ export interface GetAppsOperationsRequest {
   operationsId: string;
 }
 export const GetAppsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "appsId": S.String.pipe(T.Label()),
-  "operationsId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha/apps/{appsId}/operations/{operationsId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "GetAppsOperationsRequest" }) as any as S.Schema<GetAppsOperationsRequest>;
+  S.Struct({
+    appsId: S.String.pipe(T.Label()),
+    operationsId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha/apps/{appsId}/operations/{operationsId}",
+      baseUrl: "https://appengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetAppsOperationsRequest",
+}) as any as S.Schema<GetAppsOperationsRequest>;
 
 export interface GetProjectsLocationsRequest {
   /** Part of `name`. Resource name for the location. */
@@ -475,14 +624,25 @@ export interface GetProjectsLocationsRequest {
   locationsId: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectsId": S.String.pipe(T.Label()),
-  "locationsId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha/projects/{projectsId}/locations/{locationsId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
+  S.Struct({
+    projectsId: S.String.pipe(T.Label()),
+    locationsId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha/projects/{projectsId}/locations/{locationsId}",
+      baseUrl: "https://appengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsRequest",
+}) as any as S.Schema<GetProjectsLocationsRequest>;
 
-export type GetProjectsLocationsApplicationsAuthorizedCertificatesViewEnum = "BASIC_CERTIFICATE" | "FULL_CERTIFICATE";
-export const GetProjectsLocationsApplicationsAuthorizedCertificatesViewEnum = /*@__PURE__*/ S.String;
+export type GetProjectsLocationsApplicationsAuthorizedCertificatesViewEnum =
+  | "BASIC_CERTIFICATE"
+  | "FULL_CERTIFICATE";
+export const GetProjectsLocationsApplicationsAuthorizedCertificatesViewEnum =
+  /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsApplicationsAuthorizedCertificatesRequest {
   /** Part of `name`. Required. Name of the resource requested. Example: apps/myapp/authorizedCertificates/12345. */
@@ -494,17 +654,32 @@ export interface GetProjectsLocationsApplicationsAuthorizedCertificatesRequest {
   /** Part of `name`. See documentation of `projectsId`. */
   applicationsId: string;
   /** Controls the set of fields returned in the GET response. */
-  view?: GetProjectsLocationsApplicationsAuthorizedCertificatesViewEnum | (string & {});
+  view?:
+    | GetProjectsLocationsApplicationsAuthorizedCertificatesViewEnum
+    | (string & {});
 }
-export const GetProjectsLocationsApplicationsAuthorizedCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectsId": S.String.pipe(T.Label()),
-  "locationsId": S.String.pipe(T.Label()),
-  "authorizedCertificatesId": S.String.pipe(T.Label()),
-  "applicationsId": S.String.pipe(T.Label()),
-  "view": S.optional(GetProjectsLocationsApplicationsAuthorizedCertificatesViewEnum.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates/{authorizedCertificatesId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsApplicationsAuthorizedCertificatesRequest" }) as any as S.Schema<GetProjectsLocationsApplicationsAuthorizedCertificatesRequest>;
+export const GetProjectsLocationsApplicationsAuthorizedCertificatesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      projectsId: S.String.pipe(T.Label()),
+      locationsId: S.String.pipe(T.Label()),
+      authorizedCertificatesId: S.String.pipe(T.Label()),
+      applicationsId: S.String.pipe(T.Label()),
+      view: S.optional(
+        GetProjectsLocationsApplicationsAuthorizedCertificatesViewEnum.pipe(
+          T.Query(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates/{authorizedCertificatesId}",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsApplicationsAuthorizedCertificatesRequest",
+  }) as any as S.Schema<GetProjectsLocationsApplicationsAuthorizedCertificatesRequest>;
 
 export interface GetProjectsLocationsApplicationsDomainMappingsRequest {
   /** Part of `name`. See documentation of `projectsId`. */
@@ -516,14 +691,23 @@ export interface GetProjectsLocationsApplicationsDomainMappingsRequest {
   /** Part of `name`. Required. Name of the resource requested. Example: apps/myapp/domainMappings/example.com. */
   projectsId: string;
 }
-export const GetProjectsLocationsApplicationsDomainMappingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "applicationsId": S.String.pipe(T.Label()),
-  "locationsId": S.String.pipe(T.Label()),
-  "domainMappingsId": S.String.pipe(T.Label()),
-  "projectsId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings/{domainMappingsId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsApplicationsDomainMappingsRequest" }) as any as S.Schema<GetProjectsLocationsApplicationsDomainMappingsRequest>;
+export const GetProjectsLocationsApplicationsDomainMappingsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      applicationsId: S.String.pipe(T.Label()),
+      locationsId: S.String.pipe(T.Label()),
+      domainMappingsId: S.String.pipe(T.Label()),
+      projectsId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings/{domainMappingsId}",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsApplicationsDomainMappingsRequest",
+  }) as any as S.Schema<GetProjectsLocationsApplicationsDomainMappingsRequest>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** Part of `name`. The name of the operation resource. */
@@ -533,15 +717,26 @@ export interface GetProjectsLocationsOperationsRequest {
   /** Part of `name`. See documentation of `projectsId`. */
   locationsId: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectsId": S.String.pipe(T.Label()),
-  "operationsId": S.String.pipe(T.Label()),
-  "locationsId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      projectsId: S.String.pipe(T.Label()),
+      operationsId: S.String.pipe(T.Label()),
+      locationsId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsOperationsRequest",
+}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
-export type ListAppsAuthorizedCertificatesViewEnum = "BASIC_CERTIFICATE" | "FULL_CERTIFICATE";
+export type ListAppsAuthorizedCertificatesViewEnum =
+  | "BASIC_CERTIFICATE"
+  | "FULL_CERTIFICATE";
 export const ListAppsAuthorizedCertificatesViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListAppsAuthorizedCertificatesRequest {
@@ -554,17 +749,28 @@ export interface ListAppsAuthorizedCertificatesRequest {
   /** Controls the set of fields returned in the LIST response. */
   view?: ListAppsAuthorizedCertificatesViewEnum | (string & {});
 }
-export const ListAppsAuthorizedCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "appsId": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "view": S.optional(ListAppsAuthorizedCertificatesViewEnum.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha/apps/{appsId}/authorizedCertificates","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "ListAppsAuthorizedCertificatesRequest" }) as any as S.Schema<ListAppsAuthorizedCertificatesRequest>;
+export const ListAppsAuthorizedCertificatesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      appsId: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      view: S.optional(ListAppsAuthorizedCertificatesViewEnum.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha/apps/{appsId}/authorizedCertificates",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListAppsAuthorizedCertificatesRequest",
+}) as any as S.Schema<ListAppsAuthorizedCertificatesRequest>;
 
 export type AuthorizedCertificateList = ReadonlyArray<AuthorizedCertificate>;
-export const AuthorizedCertificateList = /*@__PURE__*/ S.Array(AuthorizedCertificate) as any as S.Schema<AuthorizedCertificateList>;
+export const AuthorizedCertificateList = /*@__PURE__*/ S.Array(
+  AuthorizedCertificate,
+) as any as S.Schema<AuthorizedCertificateList>;
 
 /** Response message for AuthorizedCertificates.ListAuthorizedCertificates. */
 export interface ListAuthorizedCertificatesResponse {
@@ -574,11 +780,13 @@ export interface ListAuthorizedCertificatesResponse {
   nextPageToken?: string;
 }
 export const ListAuthorizedCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "certificates": S.optional(AuthorizedCertificateList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListAuthorizedCertificatesResponse" }) as any as S.Schema<ListAuthorizedCertificatesResponse>;
+  S.Struct({
+    certificates: S.optional(AuthorizedCertificateList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListAuthorizedCertificatesResponse",
+}) as any as S.Schema<ListAuthorizedCertificatesResponse>;
 
 export interface ListAppsAuthorizedDomainsRequest {
   /** Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. */
@@ -589,12 +797,20 @@ export interface ListAppsAuthorizedDomainsRequest {
   pageToken?: string;
 }
 export const ListAppsAuthorizedDomainsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "appsId": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha/apps/{appsId}/authorizedDomains","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "ListAppsAuthorizedDomainsRequest" }) as any as S.Schema<ListAppsAuthorizedDomainsRequest>;
+  S.Struct({
+    appsId: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha/apps/{appsId}/authorizedDomains",
+      baseUrl: "https://appengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListAppsAuthorizedDomainsRequest",
+}) as any as S.Schema<ListAppsAuthorizedDomainsRequest>;
 
 /** A domain that a user has been authorized to administer. To authorize use of a domain, verify ownership via Search Console (https://search.google.com/search-console/welcome). */
 export interface AuthorizedDomain {
@@ -604,14 +820,18 @@ export interface AuthorizedDomain {
   name?: string;
 }
 export const AuthorizedDomain = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.optional(S.String),
-  "name": S.optional(S.String),
-}),
-).annotate({ identifier: "AuthorizedDomain" }) as any as S.Schema<AuthorizedDomain>;
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AuthorizedDomain",
+}) as any as S.Schema<AuthorizedDomain>;
 
 export type AuthorizedDomainList = ReadonlyArray<AuthorizedDomain>;
-export const AuthorizedDomainList = /*@__PURE__*/ S.Array(AuthorizedDomain) as any as S.Schema<AuthorizedDomainList>;
+export const AuthorizedDomainList = /*@__PURE__*/ S.Array(
+  AuthorizedDomain,
+) as any as S.Schema<AuthorizedDomainList>;
 
 /** Response message for AuthorizedDomains.ListAuthorizedDomains. */
 export interface ListAuthorizedDomainsResponse {
@@ -621,11 +841,13 @@ export interface ListAuthorizedDomainsResponse {
   domains?: AuthorizedDomainList;
 }
 export const ListAuthorizedDomainsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "domains": S.optional(AuthorizedDomainList),
-}),
-).annotate({ identifier: "ListAuthorizedDomainsResponse" }) as any as S.Schema<ListAuthorizedDomainsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    domains: S.optional(AuthorizedDomainList),
+  }),
+).annotate({
+  identifier: "ListAuthorizedDomainsResponse",
+}) as any as S.Schema<ListAuthorizedDomainsResponse>;
 
 export interface ListAppsDomainMappingsRequest {
   /** Maximum results to return per page. */
@@ -636,15 +858,25 @@ export interface ListAppsDomainMappingsRequest {
   appsId: string;
 }
 export const ListAppsDomainMappingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "appsId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha/apps/{appsId}/domainMappings","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "ListAppsDomainMappingsRequest" }) as any as S.Schema<ListAppsDomainMappingsRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    appsId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha/apps/{appsId}/domainMappings",
+      baseUrl: "https://appengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListAppsDomainMappingsRequest",
+}) as any as S.Schema<ListAppsDomainMappingsRequest>;
 
 export type DomainMappingList = ReadonlyArray<DomainMapping>;
-export const DomainMappingList = /*@__PURE__*/ S.Array(DomainMapping) as any as S.Schema<DomainMappingList>;
+export const DomainMappingList = /*@__PURE__*/ S.Array(
+  DomainMapping,
+) as any as S.Schema<DomainMappingList>;
 
 /** Response message for DomainMappings.ListDomainMappings. */
 export interface ListDomainMappingsResponse {
@@ -654,11 +886,13 @@ export interface ListDomainMappingsResponse {
   nextPageToken?: string;
 }
 export const ListDomainMappingsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "domainMappings": S.optional(DomainMappingList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListDomainMappingsResponse" }) as any as S.Schema<ListDomainMappingsResponse>;
+  S.Struct({
+    domainMappings: S.optional(DomainMappingList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListDomainMappingsResponse",
+}) as any as S.Schema<ListDomainMappingsResponse>;
 
 export interface ListAppsLocationsRequest {
   /** Part of `name`. The resource that owns the locations collection, if applicable. */
@@ -673,17 +907,27 @@ export interface ListAppsLocationsRequest {
   extraLocationTypes?: StringList;
 }
 export const ListAppsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "appsId": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha/apps/{appsId}/locations","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "ListAppsLocationsRequest" }) as any as S.Schema<ListAppsLocationsRequest>;
+  S.Struct({
+    appsId: S.String.pipe(T.Label()),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha/apps/{appsId}/locations",
+      baseUrl: "https://appengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListAppsLocationsRequest",
+}) as any as S.Schema<ListAppsLocationsRequest>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(
+  Location,
+) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -693,11 +937,13 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locations": S.optional(LocationList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
+  S.Struct({
+    locations: S.optional(LocationList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListLocationsResponse",
+}) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListAppsOperationsRequest {
   /** When set to true, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field.This can only be true when reading across collections. For example, when parent is set to "projects/example/locations/-".This field is not supported by default and will result in an UNIMPLEMENTED error if set unless explicitly documented otherwise in service or product specific documentation. */
@@ -712,17 +958,27 @@ export interface ListAppsOperationsRequest {
   appsId: string;
 }
 export const ListAppsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "appsId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha/apps/{appsId}/operations","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "ListAppsOperationsRequest" }) as any as S.Schema<ListAppsOperationsRequest>;
+  S.Struct({
+    returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    appsId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha/apps/{appsId}/operations",
+      baseUrl: "https://appengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListAppsOperationsRequest",
+}) as any as S.Schema<ListAppsOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(
+  Operation,
+) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -734,12 +990,14 @@ export interface ListOperationsResponse {
   operations?: OperationList;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-  "operations": S.optional(OperationList),
-}),
-).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+    operations: S.optional(OperationList),
+  }),
+).annotate({
+  identifier: "ListOperationsResponse",
+}) as any as S.Schema<ListOperationsResponse>;
 
 export interface ListProjectsLocationsRequest {
   /** Part of `name`. The resource that owns the locations collection, if applicable. */
@@ -754,17 +1012,28 @@ export interface ListProjectsLocationsRequest {
   filter?: string;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectsId": S.String.pipe(T.Label()),
-  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha/projects/{projectsId}/locations","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
+  S.Struct({
+    projectsId: S.String.pipe(T.Label()),
+    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha/projects/{projectsId}/locations",
+      baseUrl: "https://appengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsRequest",
+}) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type ListProjectsLocationsApplicationsAuthorizedCertificatesViewEnum = "BASIC_CERTIFICATE" | "FULL_CERTIFICATE";
-export const ListProjectsLocationsApplicationsAuthorizedCertificatesViewEnum = /*@__PURE__*/ S.String;
+export type ListProjectsLocationsApplicationsAuthorizedCertificatesViewEnum =
+  | "BASIC_CERTIFICATE"
+  | "FULL_CERTIFICATE";
+export const ListProjectsLocationsApplicationsAuthorizedCertificatesViewEnum =
+  /*@__PURE__*/ S.String;
 
 export interface ListProjectsLocationsApplicationsAuthorizedCertificatesRequest {
   /** Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. */
@@ -778,18 +1047,34 @@ export interface ListProjectsLocationsApplicationsAuthorizedCertificatesRequest 
   /** Part of `parent`. See documentation of `projectsId`. */
   applicationsId: string;
   /** Controls the set of fields returned in the LIST response. */
-  view?: ListProjectsLocationsApplicationsAuthorizedCertificatesViewEnum | (string & {});
+  view?:
+    | ListProjectsLocationsApplicationsAuthorizedCertificatesViewEnum
+    | (string & {});
 }
-export const ListProjectsLocationsApplicationsAuthorizedCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectsId": S.String.pipe(T.Label()),
-  "locationsId": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "applicationsId": S.String.pipe(T.Label()),
-  "view": S.optional(ListProjectsLocationsApplicationsAuthorizedCertificatesViewEnum.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsApplicationsAuthorizedCertificatesRequest" }) as any as S.Schema<ListProjectsLocationsApplicationsAuthorizedCertificatesRequest>;
+export const ListProjectsLocationsApplicationsAuthorizedCertificatesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      projectsId: S.String.pipe(T.Label()),
+      locationsId: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      applicationsId: S.String.pipe(T.Label()),
+      view: S.optional(
+        ListProjectsLocationsApplicationsAuthorizedCertificatesViewEnum.pipe(
+          T.Query(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "ListProjectsLocationsApplicationsAuthorizedCertificatesRequest",
+  }) as any as S.Schema<ListProjectsLocationsApplicationsAuthorizedCertificatesRequest>;
 
 export interface ListProjectsLocationsApplicationsAuthorizedDomainsRequest {
   /** Part of `parent`. See documentation of `projectsId`. */
@@ -803,15 +1088,24 @@ export interface ListProjectsLocationsApplicationsAuthorizedDomainsRequest {
   /** Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. */
   projectsId: string;
 }
-export const ListProjectsLocationsApplicationsAuthorizedDomainsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "applicationsId": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "locationsId": S.String.pipe(T.Label()),
-  "projectsId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedDomains","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsApplicationsAuthorizedDomainsRequest" }) as any as S.Schema<ListProjectsLocationsApplicationsAuthorizedDomainsRequest>;
+export const ListProjectsLocationsApplicationsAuthorizedDomainsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      applicationsId: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      locationsId: S.String.pipe(T.Label()),
+      projectsId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedDomains",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsApplicationsAuthorizedDomainsRequest",
+  }) as any as S.Schema<ListProjectsLocationsApplicationsAuthorizedDomainsRequest>;
 
 export interface ListProjectsLocationsApplicationsDomainMappingsRequest {
   /** Part of `parent`. See documentation of `projectsId`. */
@@ -825,15 +1119,24 @@ export interface ListProjectsLocationsApplicationsDomainMappingsRequest {
   /** Continuation token for fetching the next page of results. */
   pageToken?: string;
 }
-export const ListProjectsLocationsApplicationsDomainMappingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locationsId": S.String.pipe(T.Label()),
-  "projectsId": S.String.pipe(T.Label()),
-  "applicationsId": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsApplicationsDomainMappingsRequest" }) as any as S.Schema<ListProjectsLocationsApplicationsDomainMappingsRequest>;
+export const ListProjectsLocationsApplicationsDomainMappingsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      locationsId: S.String.pipe(T.Label()),
+      projectsId: S.String.pipe(T.Label()),
+      applicationsId: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsApplicationsDomainMappingsRequest",
+  }) as any as S.Schema<ListProjectsLocationsApplicationsDomainMappingsRequest>;
 
 export interface ListProjectsLocationsOperationsRequest {
   /** Part of `name`. See documentation of `projectsId`. */
@@ -849,16 +1152,25 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locationsId": S.String.pipe(T.Label()),
-  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
-  "projectsId": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha/projects/{projectsId}/locations/{locationsId}/operations","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      locationsId: S.String.pipe(T.Label()),
+      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+      projectsId: S.String.pipe(T.Label()),
+      filter: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha/projects/{projectsId}/locations/{locationsId}/operations",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsOperationsRequest",
+}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export interface PatchAppsAuthorizedCertificatesRequest {
   /** Standard field mask for the set of fields to be updated. Updates are only supported on the certificate_raw_data and display_name fields. */
@@ -870,14 +1182,23 @@ export interface PatchAppsAuthorizedCertificatesRequest {
   /** Request body */
   body?: AuthorizedCertificate;
 }
-export const PatchAppsAuthorizedCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "appsId": S.String.pipe(T.Label()),
-  "authorizedCertificatesId": S.String.pipe(T.Label()),
-  "body": S.optional(AuthorizedCertificate.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1alpha/apps/{appsId}/authorizedCertificates/{authorizedCertificatesId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "PatchAppsAuthorizedCertificatesRequest" }) as any as S.Schema<PatchAppsAuthorizedCertificatesRequest>;
+export const PatchAppsAuthorizedCertificatesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      appsId: S.String.pipe(T.Label()),
+      authorizedCertificatesId: S.String.pipe(T.Label()),
+      body: S.optional(AuthorizedCertificate.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1alpha/apps/{appsId}/authorizedCertificates/{authorizedCertificatesId}",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "PatchAppsAuthorizedCertificatesRequest",
+}) as any as S.Schema<PatchAppsAuthorizedCertificatesRequest>;
 
 export interface PatchAppsDomainMappingsRequest {
   /** Part of `name`. See documentation of `appsId`. */
@@ -892,14 +1213,22 @@ export interface PatchAppsDomainMappingsRequest {
   body?: DomainMapping;
 }
 export const PatchAppsDomainMappingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "domainMappingsId": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "appsId": S.String.pipe(T.Label()),
-  "noManagedCertificate": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(DomainMapping.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1alpha/apps/{appsId}/domainMappings/{domainMappingsId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "PatchAppsDomainMappingsRequest" }) as any as S.Schema<PatchAppsDomainMappingsRequest>;
+  S.Struct({
+    domainMappingsId: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    appsId: S.String.pipe(T.Label()),
+    noManagedCertificate: S.optional(S.Boolean.pipe(T.Query())),
+    body: S.optional(DomainMapping.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1alpha/apps/{appsId}/domainMappings/{domainMappingsId}",
+      baseUrl: "https://appengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchAppsDomainMappingsRequest",
+}) as any as S.Schema<PatchAppsDomainMappingsRequest>;
 
 export interface PatchProjectsLocationsApplicationsAuthorizedCertificatesRequest {
   /** Part of `name`. Required. Name of the resource to update. Example: apps/myapp/authorizedCertificates/12345. */
@@ -915,16 +1244,26 @@ export interface PatchProjectsLocationsApplicationsAuthorizedCertificatesRequest
   /** Request body */
   body?: AuthorizedCertificate;
 }
-export const PatchProjectsLocationsApplicationsAuthorizedCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectsId": S.String.pipe(T.Label()),
-  "locationsId": S.String.pipe(T.Label()),
-  "authorizedCertificatesId": S.String.pipe(T.Label()),
-  "applicationsId": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(AuthorizedCertificate.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates/{authorizedCertificatesId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsApplicationsAuthorizedCertificatesRequest" }) as any as S.Schema<PatchProjectsLocationsApplicationsAuthorizedCertificatesRequest>;
+export const PatchProjectsLocationsApplicationsAuthorizedCertificatesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      projectsId: S.String.pipe(T.Label()),
+      locationsId: S.String.pipe(T.Label()),
+      authorizedCertificatesId: S.String.pipe(T.Label()),
+      applicationsId: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(AuthorizedCertificate.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates/{authorizedCertificatesId}",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "PatchProjectsLocationsApplicationsAuthorizedCertificatesRequest",
+  }) as any as S.Schema<PatchProjectsLocationsApplicationsAuthorizedCertificatesRequest>;
 
 export interface PatchProjectsLocationsApplicationsDomainMappingsRequest {
   /** Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated. Only applicable if ssl_settings.certificate_id is specified in the update mask. */
@@ -942,19 +1281,33 @@ export interface PatchProjectsLocationsApplicationsDomainMappingsRequest {
   /** Request body */
   body?: DomainMapping;
 }
-export const PatchProjectsLocationsApplicationsDomainMappingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "noManagedCertificate": S.optional(S.Boolean.pipe(T.Query())),
-  "applicationsId": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "projectsId": S.String.pipe(T.Label()),
-  "locationsId": S.String.pipe(T.Label()),
-  "domainMappingsId": S.String.pipe(T.Label()),
-  "body": S.optional(DomainMapping.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings/{domainMappingsId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsApplicationsDomainMappingsRequest" }) as any as S.Schema<PatchProjectsLocationsApplicationsDomainMappingsRequest>;
+export const PatchProjectsLocationsApplicationsDomainMappingsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      noManagedCertificate: S.optional(S.Boolean.pipe(T.Query())),
+      applicationsId: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      projectsId: S.String.pipe(T.Label()),
+      locationsId: S.String.pipe(T.Label()),
+      domainMappingsId: S.String.pipe(T.Label()),
+      body: S.optional(DomainMapping.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings/{domainMappingsId}",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsApplicationsDomainMappingsRequest",
+  }) as any as S.Schema<PatchProjectsLocationsApplicationsDomainMappingsRequest>;
 
-export type CreateAppsAuthorizedCertificatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateAppsAuthorizedCertificatesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Uploads the specified SSL certificate. */
 export const createAppsAuthorizedCertificates: API.OperationMethod<
   CreateAppsAuthorizedCertificatesRequest,
@@ -969,7 +1322,12 @@ export const createAppsAuthorizedCertificates: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAppsDomainMappingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateAppsDomainMappingsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Maps a domain to an application. A user must be authorized to administer a domain in order to map it to an application. For a list of available authorized domains, see AuthorizedDomains.ListAuthorizedDomains. */
 export const createAppsDomainMappings: API.OperationMethod<
   CreateAppsDomainMappingsRequest,
@@ -984,7 +1342,12 @@ export const createAppsDomainMappings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsApplicationsAuthorizedCertificatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsApplicationsAuthorizedCertificatesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Uploads the specified SSL certificate. */
 export const createProjectsLocationsApplicationsAuthorizedCertificates: API.OperationMethod<
   CreateProjectsLocationsApplicationsAuthorizedCertificatesRequest,
@@ -999,7 +1362,12 @@ export const createProjectsLocationsApplicationsAuthorizedCertificates: API.Oper
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsApplicationsDomainMappingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsApplicationsDomainMappingsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Maps a domain to an application. A user must be authorized to administer a domain in order to map it to an application. For a list of available authorized domains, see AuthorizedDomains.ListAuthorizedDomains. */
 export const createProjectsLocationsApplicationsDomainMappings: API.OperationMethod<
   CreateProjectsLocationsApplicationsDomainMappingsRequest,
@@ -1014,7 +1382,12 @@ export const createProjectsLocationsApplicationsDomainMappings: API.OperationMet
   retry: Retry.Retry,
 }));
 
-export type DeleteAppsAuthorizedCertificatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteAppsAuthorizedCertificatesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes the specified SSL certificate. */
 export const deleteAppsAuthorizedCertificates: API.OperationMethod<
   DeleteAppsAuthorizedCertificatesRequest,
@@ -1029,7 +1402,12 @@ export const deleteAppsAuthorizedCertificates: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAppsDomainMappingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteAppsDomainMappingsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes the specified domain mapping. A user must be authorized to administer the associated domain in order to delete a DomainMapping resource. */
 export const deleteAppsDomainMappings: API.OperationMethod<
   DeleteAppsDomainMappingsRequest,
@@ -1044,7 +1422,12 @@ export const deleteAppsDomainMappings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsApplicationsAuthorizedCertificatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsApplicationsAuthorizedCertificatesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes the specified SSL certificate. */
 export const deleteProjectsLocationsApplicationsAuthorizedCertificates: API.OperationMethod<
   DeleteProjectsLocationsApplicationsAuthorizedCertificatesRequest,
@@ -1059,7 +1442,12 @@ export const deleteProjectsLocationsApplicationsAuthorizedCertificates: API.Oper
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsApplicationsDomainMappingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsApplicationsDomainMappingsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes the specified domain mapping. A user must be authorized to administer the associated domain in order to delete a DomainMapping resource. */
 export const deleteProjectsLocationsApplicationsDomainMappings: API.OperationMethod<
   DeleteProjectsLocationsApplicationsDomainMappingsRequest,
@@ -1074,7 +1462,10 @@ export const deleteProjectsLocationsApplicationsDomainMappings: API.OperationMet
   retry: Retry.Retry,
 }));
 
-export type GetAppsAuthorizedCertificatesError = NotFound | Forbidden | GcpOpError;
+export type GetAppsAuthorizedCertificatesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the specified SSL certificate. */
 export const getAppsAuthorizedCertificates: API.OperationMethod<
   GetAppsAuthorizedCertificatesRequest,
@@ -1149,7 +1540,10 @@ export const getProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsApplicationsAuthorizedCertificatesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsApplicationsAuthorizedCertificatesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the specified SSL certificate. */
 export const getProjectsLocationsApplicationsAuthorizedCertificates: API.OperationMethod<
   GetProjectsLocationsApplicationsAuthorizedCertificatesRequest,
@@ -1164,7 +1558,10 @@ export const getProjectsLocationsApplicationsAuthorizedCertificates: API.Operati
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsApplicationsDomainMappingsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsApplicationsDomainMappingsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the specified domain mapping. */
 export const getProjectsLocationsApplicationsDomainMappings: API.OperationMethod<
   GetProjectsLocationsApplicationsDomainMappingsRequest,
@@ -1179,7 +1576,10 @@ export const getProjectsLocationsApplicationsDomainMappings: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -1194,7 +1594,10 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListAppsAuthorizedCertificatesError = NotFound | Forbidden | GcpOpError;
+export type ListAppsAuthorizedCertificatesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all SSL certificates the user is authorized to administer. */
 export const listAppsAuthorizedCertificates: API.PaginatedOperationMethod<
   ListAppsAuthorizedCertificatesRequest,
@@ -1207,7 +1610,10 @@ export const listAppsAuthorizedCertificates: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListAppsAuthorizedDomainsError = NotFound | Forbidden | GcpOpError;
@@ -1223,7 +1629,10 @@ export const listAppsAuthorizedDomains: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListAppsDomainMappingsError = NotFound | Forbidden | GcpOpError;
@@ -1239,7 +1648,10 @@ export const listAppsDomainMappings: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListAppsLocationsError = NotFound | Forbidden | GcpOpError;
@@ -1255,7 +1667,10 @@ export const listAppsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListAppsOperationsError = NotFound | Forbidden | GcpOpError;
@@ -1271,7 +1686,10 @@ export const listAppsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListProjectsLocationsError = NotFound | Forbidden | GcpOpError;
@@ -1287,10 +1705,16 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsApplicationsAuthorizedCertificatesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsApplicationsAuthorizedCertificatesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all SSL certificates the user is authorized to administer. */
 export const listProjectsLocationsApplicationsAuthorizedCertificates: API.PaginatedOperationMethod<
   ListProjectsLocationsApplicationsAuthorizedCertificatesRequest,
@@ -1303,10 +1727,16 @@ export const listProjectsLocationsApplicationsAuthorizedCertificates: API.Pagina
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsApplicationsAuthorizedDomainsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsApplicationsAuthorizedDomainsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all domains the user is authorized to administer. */
 export const listProjectsLocationsApplicationsAuthorizedDomains: API.PaginatedOperationMethod<
   ListProjectsLocationsApplicationsAuthorizedDomainsRequest,
@@ -1319,10 +1749,16 @@ export const listProjectsLocationsApplicationsAuthorizedDomains: API.PaginatedOp
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsApplicationsDomainMappingsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsApplicationsDomainMappingsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists the domain mappings on an application. */
 export const listProjectsLocationsApplicationsDomainMappings: API.PaginatedOperationMethod<
   ListProjectsLocationsApplicationsDomainMappingsRequest,
@@ -1335,10 +1771,16 @@ export const listProjectsLocationsApplicationsDomainMappings: API.PaginatedOpera
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns UNIMPLEMENTED. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -1351,10 +1793,18 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type PatchAppsAuthorizedCertificatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchAppsAuthorizedCertificatesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the specified SSL certificate. To renew a certificate and maintain its existing domain mappings, update certificate_data with a new certificate. The new certificate must be applicable to the same domains as the original certificate. The certificate display_name may also be updated. */
 export const patchAppsAuthorizedCertificates: API.OperationMethod<
   PatchAppsAuthorizedCertificatesRequest,
@@ -1369,7 +1819,12 @@ export const patchAppsAuthorizedCertificates: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchAppsDomainMappingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchAppsDomainMappingsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the specified domain mapping. To map an SSL certificate to a domain mapping, update certificate_id to point to an AuthorizedCertificate resource. A user must be authorized to administer the associated domain in order to update a DomainMapping resource. */
 export const patchAppsDomainMappings: API.OperationMethod<
   PatchAppsDomainMappingsRequest,
@@ -1384,7 +1839,12 @@ export const patchAppsDomainMappings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsApplicationsAuthorizedCertificatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsApplicationsAuthorizedCertificatesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the specified SSL certificate. To renew a certificate and maintain its existing domain mappings, update certificate_data with a new certificate. The new certificate must be applicable to the same domains as the original certificate. The certificate display_name may also be updated. */
 export const patchProjectsLocationsApplicationsAuthorizedCertificates: API.OperationMethod<
   PatchProjectsLocationsApplicationsAuthorizedCertificatesRequest,
@@ -1399,7 +1859,12 @@ export const patchProjectsLocationsApplicationsAuthorizedCertificates: API.Opera
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsApplicationsDomainMappingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsApplicationsDomainMappingsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the specified domain mapping. To map an SSL certificate to a domain mapping, update certificate_id to point to an AuthorizedCertificate resource. A user must be authorized to administer the associated domain in order to update a DomainMapping resource. */
 export const patchProjectsLocationsApplicationsDomainMappings: API.OperationMethod<
   PatchProjectsLocationsApplicationsDomainMappingsRequest,
@@ -1413,4 +1878,3 @@ export const patchProjectsLocationsApplicationsDomainMappings: API.OperationMeth
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

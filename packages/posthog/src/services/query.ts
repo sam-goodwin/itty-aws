@@ -24369,11 +24369,39 @@ export const QueryResponseAlternative1UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative1UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative1WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative1WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative1WarningsItem>;
+export interface QueryResponseAlternative1WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative1WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative1WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative1WarningsItem>;
 
 export type QueryResponseAlternative1WarningsList =
   ReadonlyArray<QueryResponseAlternative1WarningsItem>;
@@ -24469,11 +24497,39 @@ export const QueryResponseAlternative2UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative2UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative2WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative2WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative2WarningsItem>;
+export interface QueryResponseAlternative2WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative2WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative2WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative2WarningsItem>;
 
 export type QueryResponseAlternative2WarningsList =
   ReadonlyArray<QueryResponseAlternative2WarningsItem>;
@@ -24566,11 +24622,39 @@ export const QueryResponseAlternative3UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative3UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative3WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative3WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative3WarningsItem>;
+export interface QueryResponseAlternative3WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative3WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative3WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative3WarningsItem>;
 
 export type QueryResponseAlternative3WarningsList =
   ReadonlyArray<QueryResponseAlternative3WarningsItem>;
@@ -24665,11 +24749,39 @@ export const QueryResponseAlternative4UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative4UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative4WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative4WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative4WarningsItem>;
+export interface QueryResponseAlternative4WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative4WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative4WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative4WarningsItem>;
 
 export type QueryResponseAlternative4WarningsList =
   ReadonlyArray<QueryResponseAlternative4WarningsItem>;
@@ -24817,11 +24929,39 @@ export const QueryResponseAlternative6UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative6UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative6WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative6WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative6WarningsItem>;
+export interface QueryResponseAlternative6WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative6WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative6WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative6WarningsItem>;
 
 export type QueryResponseAlternative6WarningsList =
   ReadonlyArray<QueryResponseAlternative6WarningsItem>;
@@ -24936,11 +25076,39 @@ export const QueryResponseAlternative8UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative8UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative8WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative8WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative8WarningsItem>;
+export interface QueryResponseAlternative8WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative8WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative8WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative8WarningsItem>;
 
 export type QueryResponseAlternative8WarningsList =
   ReadonlyArray<QueryResponseAlternative8WarningsItem>;
@@ -25116,11 +25284,39 @@ export const QueryResponseAlternative11UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative11UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative11WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative11WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative11WarningsItem>;
+export interface QueryResponseAlternative11WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative11WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative11WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative11WarningsItem>;
 
 export type QueryResponseAlternative11WarningsList =
   ReadonlyArray<QueryResponseAlternative11WarningsItem>;
@@ -25203,11 +25399,39 @@ export const QueryResponseAlternative14UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative14UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative14WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative14WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative14WarningsItem>;
+export interface QueryResponseAlternative14WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative14WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative14WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative14WarningsItem>;
 
 export type QueryResponseAlternative14WarningsList =
   ReadonlyArray<QueryResponseAlternative14WarningsItem>;
@@ -25282,11 +25506,39 @@ export const QueryResponseAlternative15UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative15UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative15WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative15WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative15WarningsItem>;
+export interface QueryResponseAlternative15WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative15WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative15WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative15WarningsItem>;
 
 export type QueryResponseAlternative15WarningsList =
   ReadonlyArray<QueryResponseAlternative15WarningsItem>;
@@ -25362,11 +25614,39 @@ export const QueryResponseAlternative16UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative16UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative16WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative16WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative16WarningsItem>;
+export interface QueryResponseAlternative16WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative16WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative16WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative16WarningsItem>;
 
 export type QueryResponseAlternative16WarningsList =
   ReadonlyArray<QueryResponseAlternative16WarningsItem>;
@@ -25439,11 +25719,39 @@ export const QueryResponseAlternative17UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative17UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative17WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative17WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative17WarningsItem>;
+export interface QueryResponseAlternative17WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative17WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative17WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative17WarningsItem>;
 
 export type QueryResponseAlternative17WarningsList =
   ReadonlyArray<QueryResponseAlternative17WarningsItem>;
@@ -25721,13 +26029,98 @@ export const QueryResponseAlternative20InsightList = /*@__PURE__*/ S.Array(
   QueryResponseAlternative20InsightItemMap,
 ) as any as S.Schema<QueryResponseAlternative20InsightList>;
 
-export type QueryResponseAlternative20Metric =
-  | ExperimentMeanMetric
-  | ExperimentFunnelMetric
-  | ExperimentRatioMetric
-  | ExperimentRetentionMetric;
-export const QueryResponseAlternative20Metric =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative20Metric>;
+export interface QueryResponseAlternative20Metric {
+  breakdownFilter?: BreakdownFilter | null;
+  conversion_window?: number | null;
+  conversion_window_unit?: FunnelConversionWindowTimeUnit | null;
+  fingerprint?: string | null;
+  goal?: ExperimentMetricGoal | null;
+  ignore_zeros?: boolean | null;
+  isSharedMetric?: boolean | null;
+  kind?: string;
+  /** Winsorization lower percentile bound, as a fraction in [0, 1] (e.g. 0.01 for the 1st percentile). */
+  lower_bound_percentile?: number | null;
+  metric_type?: string;
+  name?: string | null;
+  response?:
+    | ExperimentMeanMetricResponseMap
+    | ExperimentFunnelMetricResponseMap
+    | ExperimentRatioMetricResponseMap
+    | ExperimentRetentionMetricResponseMap
+    | null;
+  sharedMetricId?: number | null;
+  source?: ExperimentMeanMetricSource;
+  /** When set, reports the percentage of users whose per-user summed/counted value reaches or exceeds this threshold. Only meaningful for sum/count math types. */
+  threshold?: number | null;
+  /** Winsorization upper percentile bound, as a fraction in [0, 1] (e.g. 0.99 for the 99th percentile). */
+  upper_bound_percentile?: number | null;
+  uuid?: string | null;
+  /** version of the node, used for schema migrations */
+  version?: number | null;
+  funnel_order_type?: StepOrderValue | null;
+  series?: ExperimentFunnelMetricSeriesList;
+  denominator?: ExperimentRatioMetricDenominator;
+  denominator_outlier_handling?: ExperimentMetricOutlierHandling | null;
+  numerator?: ExperimentRatioMetricNumerator;
+  numerator_outlier_handling?: ExperimentMetricOutlierHandling | null;
+  completion_event?: ExperimentRetentionMetricCompletionEvent;
+  retention_window_end?: number;
+  retention_window_start?: number;
+  retention_window_unit?: FunnelConversionWindowTimeUnit;
+  start_event?: ExperimentRetentionMetricStartEvent;
+  start_handling?: StartHandling;
+}
+export const QueryResponseAlternative20Metric = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    breakdownFilter: S.optional(S.NullOr(BreakdownFilter)),
+    conversion_window: S.optional(S.NullOr(S.Number)),
+    conversion_window_unit: S.optional(
+      S.NullOr(FunnelConversionWindowTimeUnit),
+    ),
+    fingerprint: S.optional(S.NullOr(S.String)),
+    goal: S.optional(S.NullOr(ExperimentMetricGoal)),
+    ignore_zeros: S.optional(S.NullOr(S.Boolean)),
+    isSharedMetric: S.optional(S.NullOr(S.Boolean)),
+    kind: S.optional(S.String),
+    lower_bound_percentile: S.optional(S.NullOr(S.Number)),
+    metric_type: S.optional(S.String),
+    name: S.optional(S.NullOr(S.String)),
+    response: S.optional(
+      S.NullOr(
+        S.Union(
+          ExperimentMeanMetricResponseMap,
+          ExperimentFunnelMetricResponseMap,
+          ExperimentRatioMetricResponseMap,
+          ExperimentRetentionMetricResponseMap,
+        ),
+      ),
+    ),
+    sharedMetricId: S.optional(S.NullOr(S.Number)),
+    source: S.optional(ExperimentMeanMetricSource),
+    threshold: S.optional(S.NullOr(S.Number)),
+    upper_bound_percentile: S.optional(S.NullOr(S.Number)),
+    uuid: S.optional(S.NullOr(S.String)),
+    version: S.optional(S.NullOr(S.Number)),
+    funnel_order_type: S.optional(S.NullOr(StepOrderValue)),
+    series: S.optional(ExperimentFunnelMetricSeriesList),
+    denominator: S.optional(ExperimentRatioMetricDenominator),
+    denominator_outlier_handling: S.optional(
+      S.NullOr(ExperimentMetricOutlierHandling),
+    ),
+    numerator: S.optional(ExperimentRatioMetricNumerator),
+    numerator_outlier_handling: S.optional(
+      S.NullOr(ExperimentMetricOutlierHandling),
+    ),
+    completion_event: S.optional(ExperimentRetentionMetricCompletionEvent),
+    retention_window_end: S.optional(S.Number),
+    retention_window_start: S.optional(S.Number),
+    retention_window_unit: S.optional(FunnelConversionWindowTimeUnit),
+    start_event: S.optional(ExperimentRetentionMetricStartEvent),
+    start_handling: S.optional(StartHandling),
+  }),
+).annotate({
+  identifier: "QueryResponseAlternative20Metric",
+}) as any as S.Schema<QueryResponseAlternative20Metric>;
 
 export type QueryResponseAlternative20ProbabilityMap = {
   [key: string]: number | undefined;
@@ -25898,11 +26291,39 @@ export const QueryResponseAlternative22UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative22UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative22WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative22WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative22WarningsItem>;
+export interface QueryResponseAlternative22WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative22WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative22WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative22WarningsItem>;
 
 export type QueryResponseAlternative22WarningsList =
   ReadonlyArray<QueryResponseAlternative22WarningsItem>;
@@ -25976,11 +26397,39 @@ export const QueryResponseAlternative23UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative23UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative23WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative23WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative23WarningsItem>;
+export interface QueryResponseAlternative23WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative23WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative23WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative23WarningsItem>;
 
 export type QueryResponseAlternative23WarningsList =
   ReadonlyArray<QueryResponseAlternative23WarningsItem>;
@@ -26065,11 +26514,39 @@ export const QueryResponseAlternative24UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative24UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative24WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative24WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative24WarningsItem>;
+export interface QueryResponseAlternative24WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative24WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative24WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative24WarningsItem>;
 
 export type QueryResponseAlternative24WarningsList =
   ReadonlyArray<QueryResponseAlternative24WarningsItem>;
@@ -26163,11 +26640,39 @@ export const QueryResponseAlternative25UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative25UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative25WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative25WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative25WarningsItem>;
+export interface QueryResponseAlternative25WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative25WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative25WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative25WarningsItem>;
 
 export type QueryResponseAlternative25WarningsList =
   ReadonlyArray<QueryResponseAlternative25WarningsItem>;
@@ -26256,11 +26761,39 @@ export const QueryResponseAlternative26UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative26UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative26WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative26WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative26WarningsItem>;
+export interface QueryResponseAlternative26WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative26WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative26WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative26WarningsItem>;
 
 export type QueryResponseAlternative26WarningsList =
   ReadonlyArray<QueryResponseAlternative26WarningsItem>;
@@ -26342,11 +26875,39 @@ export const QueryResponseAlternative27UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative27UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative27WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative27WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative27WarningsItem>;
+export interface QueryResponseAlternative27WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative27WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative27WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative27WarningsItem>;
 
 export type QueryResponseAlternative27WarningsList =
   ReadonlyArray<QueryResponseAlternative27WarningsItem>;
@@ -26415,11 +26976,39 @@ export const QueryResponseAlternative28UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative28UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative28WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative28WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative28WarningsItem>;
+export interface QueryResponseAlternative28WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative28WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative28WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative28WarningsItem>;
 
 export type QueryResponseAlternative28WarningsList =
   ReadonlyArray<QueryResponseAlternative28WarningsItem>;
@@ -26516,11 +27105,39 @@ export const QueryResponseAlternative30UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative30UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative30WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative30WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative30WarningsItem>;
+export interface QueryResponseAlternative30WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative30WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative30WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative30WarningsItem>;
 
 export type QueryResponseAlternative30WarningsList =
   ReadonlyArray<QueryResponseAlternative30WarningsItem>;
@@ -26596,11 +27213,39 @@ export const QueryResponseAlternative31UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative31UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative31WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative31WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative31WarningsItem>;
+export interface QueryResponseAlternative31WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative31WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative31WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative31WarningsItem>;
 
 export type QueryResponseAlternative31WarningsList =
   ReadonlyArray<QueryResponseAlternative31WarningsItem>;
@@ -26669,11 +27314,39 @@ export const QueryResponseAlternative32UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative32UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative32WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative32WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative32WarningsItem>;
+export interface QueryResponseAlternative32WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative32WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative32WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative32WarningsItem>;
 
 export type QueryResponseAlternative32WarningsList =
   ReadonlyArray<QueryResponseAlternative32WarningsItem>;
@@ -26748,11 +27421,39 @@ export const QueryResponseAlternative33UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative33UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative33WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative33WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative33WarningsItem>;
+export interface QueryResponseAlternative33WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative33WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative33WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative33WarningsItem>;
 
 export type QueryResponseAlternative33WarningsList =
   ReadonlyArray<QueryResponseAlternative33WarningsItem>;
@@ -26822,11 +27523,39 @@ export const QueryResponseAlternative34UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative34UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative34WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative34WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative34WarningsItem>;
+export interface QueryResponseAlternative34WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative34WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative34WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative34WarningsItem>;
 
 export type QueryResponseAlternative34WarningsList =
   ReadonlyArray<QueryResponseAlternative34WarningsItem>;
@@ -26893,11 +27622,39 @@ export const QueryResponseAlternative35UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative35UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative35WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative35WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative35WarningsItem>;
+export interface QueryResponseAlternative35WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative35WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative35WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative35WarningsItem>;
 
 export type QueryResponseAlternative35WarningsList =
   ReadonlyArray<QueryResponseAlternative35WarningsItem>;
@@ -26983,11 +27740,39 @@ export const QueryResponseAlternative36UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative36UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative36WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative36WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative36WarningsItem>;
+export interface QueryResponseAlternative36WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative36WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative36WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative36WarningsItem>;
 
 export type QueryResponseAlternative36WarningsList =
   ReadonlyArray<QueryResponseAlternative36WarningsItem>;
@@ -27069,11 +27854,39 @@ export const QueryResponseAlternative37UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative37UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative37WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative37WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative37WarningsItem>;
+export interface QueryResponseAlternative37WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative37WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative37WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative37WarningsItem>;
 
 export type QueryResponseAlternative37WarningsList =
   ReadonlyArray<QueryResponseAlternative37WarningsItem>;
@@ -27159,11 +27972,39 @@ export const QueryResponseAlternative38UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative38UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative38WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative38WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative38WarningsItem>;
+export interface QueryResponseAlternative38WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative38WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative38WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative38WarningsItem>;
 
 export type QueryResponseAlternative38WarningsList =
   ReadonlyArray<QueryResponseAlternative38WarningsItem>;
@@ -27258,11 +28099,39 @@ export const QueryResponseAlternative39UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative39UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative39WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative39WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative39WarningsItem>;
+export interface QueryResponseAlternative39WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative39WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative39WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative39WarningsItem>;
 
 export type QueryResponseAlternative39WarningsList =
   ReadonlyArray<QueryResponseAlternative39WarningsItem>;
@@ -27358,11 +28227,39 @@ export const QueryResponseAlternative40UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative40UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative40WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative40WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative40WarningsItem>;
+export interface QueryResponseAlternative40WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative40WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative40WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative40WarningsItem>;
 
 export type QueryResponseAlternative40WarningsList =
   ReadonlyArray<QueryResponseAlternative40WarningsItem>;
@@ -27457,11 +28354,39 @@ export const QueryResponseAlternative41UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative41UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative41WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative41WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative41WarningsItem>;
+export interface QueryResponseAlternative41WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative41WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative41WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative41WarningsItem>;
 
 export type QueryResponseAlternative41WarningsList =
   ReadonlyArray<QueryResponseAlternative41WarningsItem>;
@@ -27555,11 +28480,39 @@ export const QueryResponseAlternative42UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative42UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative42WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative42WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative42WarningsItem>;
+export interface QueryResponseAlternative42WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative42WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative42WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative42WarningsItem>;
 
 export type QueryResponseAlternative42WarningsList =
   ReadonlyArray<QueryResponseAlternative42WarningsItem>;
@@ -27651,11 +28604,39 @@ export const QueryResponseAlternative43UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative43UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative43WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative43WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative43WarningsItem>;
+export interface QueryResponseAlternative43WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative43WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative43WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative43WarningsItem>;
 
 export type QueryResponseAlternative43WarningsList =
   ReadonlyArray<QueryResponseAlternative43WarningsItem>;
@@ -27740,11 +28721,39 @@ export const QueryResponseAlternative44UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative44UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative44WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative44WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative44WarningsItem>;
+export interface QueryResponseAlternative44WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative44WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative44WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative44WarningsItem>;
 
 export type QueryResponseAlternative44WarningsList =
   ReadonlyArray<QueryResponseAlternative44WarningsItem>;
@@ -27838,11 +28847,39 @@ export const QueryResponseAlternative45UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative45UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative45WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative45WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative45WarningsItem>;
+export interface QueryResponseAlternative45WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative45WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative45WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative45WarningsItem>;
 
 export type QueryResponseAlternative45WarningsList =
   ReadonlyArray<QueryResponseAlternative45WarningsItem>;
@@ -27931,11 +28968,39 @@ export const QueryResponseAlternative46UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative46UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative46WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative46WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative46WarningsItem>;
+export interface QueryResponseAlternative46WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative46WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative46WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative46WarningsItem>;
 
 export type QueryResponseAlternative46WarningsList =
   ReadonlyArray<QueryResponseAlternative46WarningsItem>;
@@ -28017,11 +29082,39 @@ export const QueryResponseAlternative47UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative47UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative47WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative47WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative47WarningsItem>;
+export interface QueryResponseAlternative47WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative47WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative47WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative47WarningsItem>;
 
 export type QueryResponseAlternative47WarningsList =
   ReadonlyArray<QueryResponseAlternative47WarningsItem>;
@@ -28095,11 +29188,39 @@ export const QueryResponseAlternative48UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative48UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative48WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative48WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative48WarningsItem>;
+export interface QueryResponseAlternative48WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative48WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative48WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative48WarningsItem>;
 
 export type QueryResponseAlternative48WarningsList =
   ReadonlyArray<QueryResponseAlternative48WarningsItem>;
@@ -28192,11 +29313,39 @@ export const QueryResponseAlternative49UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative49UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative49WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative49WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative49WarningsItem>;
+export interface QueryResponseAlternative49WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative49WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative49WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative49WarningsItem>;
 
 export type QueryResponseAlternative49WarningsList =
   ReadonlyArray<QueryResponseAlternative49WarningsItem>;
@@ -28278,11 +29427,39 @@ export const QueryResponseAlternative50UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative50UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative50WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative50WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative50WarningsItem>;
+export interface QueryResponseAlternative50WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative50WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative50WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative50WarningsItem>;
 
 export type QueryResponseAlternative50WarningsList =
   ReadonlyArray<QueryResponseAlternative50WarningsItem>;
@@ -28351,11 +29528,39 @@ export const QueryResponseAlternative51UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative51UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative51WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative51WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative51WarningsItem>;
+export interface QueryResponseAlternative51WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative51WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative51WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative51WarningsItem>;
 
 export type QueryResponseAlternative51WarningsList =
   ReadonlyArray<QueryResponseAlternative51WarningsItem>;
@@ -28430,11 +29635,39 @@ export const QueryResponseAlternative52UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative52UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative52WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative52WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative52WarningsItem>;
+export interface QueryResponseAlternative52WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative52WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative52WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative52WarningsItem>;
 
 export type QueryResponseAlternative52WarningsList =
   ReadonlyArray<QueryResponseAlternative52WarningsItem>;
@@ -28504,11 +29737,39 @@ export const QueryResponseAlternative53UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative53UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative53WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative53WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative53WarningsItem>;
+export interface QueryResponseAlternative53WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative53WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative53WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative53WarningsItem>;
 
 export type QueryResponseAlternative53WarningsList =
   ReadonlyArray<QueryResponseAlternative53WarningsItem>;
@@ -28575,11 +29836,39 @@ export const QueryResponseAlternative54UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative54UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative54WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative54WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative54WarningsItem>;
+export interface QueryResponseAlternative54WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative54WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative54WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative54WarningsItem>;
 
 export type QueryResponseAlternative54WarningsList =
   ReadonlyArray<QueryResponseAlternative54WarningsItem>;
@@ -28653,11 +29942,39 @@ export const QueryResponseAlternative55UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative55UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative55WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative55WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative55WarningsItem>;
+export interface QueryResponseAlternative55WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative55WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative55WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative55WarningsItem>;
 
 export type QueryResponseAlternative55WarningsList =
   ReadonlyArray<QueryResponseAlternative55WarningsItem>;
@@ -28751,11 +30068,39 @@ export const QueryResponseAlternative57UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative57UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative57WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative57WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative57WarningsItem>;
+export interface QueryResponseAlternative57WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative57WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative57WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative57WarningsItem>;
 
 export type QueryResponseAlternative57WarningsList =
   ReadonlyArray<QueryResponseAlternative57WarningsItem>;
@@ -28837,11 +30182,39 @@ export const QueryResponseAlternative58UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative58UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative58WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative58WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative58WarningsItem>;
+export interface QueryResponseAlternative58WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative58WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative58WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative58WarningsItem>;
 
 export type QueryResponseAlternative58WarningsList =
   ReadonlyArray<QueryResponseAlternative58WarningsItem>;
@@ -28927,11 +30300,39 @@ export const QueryResponseAlternative59UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative59UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative59WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative59WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative59WarningsItem>;
+export interface QueryResponseAlternative59WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative59WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative59WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative59WarningsItem>;
 
 export type QueryResponseAlternative59WarningsList =
   ReadonlyArray<QueryResponseAlternative59WarningsItem>;
@@ -29016,11 +30417,39 @@ export const QueryResponseAlternative60UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative60UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative60WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative60WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative60WarningsItem>;
+export interface QueryResponseAlternative60WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative60WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative60WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative60WarningsItem>;
 
 export type QueryResponseAlternative60WarningsList =
   ReadonlyArray<QueryResponseAlternative60WarningsItem>;
@@ -29281,11 +30710,39 @@ export const QueryResponseAlternative64UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative64UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative64WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative64WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative64WarningsItem>;
+export interface QueryResponseAlternative64WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative64WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative64WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative64WarningsItem>;
 
 export type QueryResponseAlternative64WarningsList =
   ReadonlyArray<QueryResponseAlternative64WarningsItem>;
@@ -29370,11 +30827,39 @@ export const QueryResponseAlternative66UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative66UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative66WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative66WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative66WarningsItem>;
+export interface QueryResponseAlternative66WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative66WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative66WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative66WarningsItem>;
 
 export type QueryResponseAlternative66WarningsList =
   ReadonlyArray<QueryResponseAlternative66WarningsItem>;
@@ -29474,11 +30959,39 @@ export const QueryResponseAlternative67UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative67UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative67WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative67WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative67WarningsItem>;
+export interface QueryResponseAlternative67WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative67WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative67WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative67WarningsItem>;
 
 export type QueryResponseAlternative67WarningsList =
   ReadonlyArray<QueryResponseAlternative67WarningsItem>;
@@ -29577,11 +31090,39 @@ export const QueryResponseAlternative68UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative68UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative68WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative68WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative68WarningsItem>;
+export interface QueryResponseAlternative68WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative68WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative68WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative68WarningsItem>;
 
 export type QueryResponseAlternative68WarningsList =
   ReadonlyArray<QueryResponseAlternative68WarningsItem>;
@@ -29650,11 +31191,39 @@ export const QueryResponseAlternative69UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative69UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative69WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative69WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative69WarningsItem>;
+export interface QueryResponseAlternative69WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative69WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative69WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative69WarningsItem>;
 
 export type QueryResponseAlternative69WarningsList =
   ReadonlyArray<QueryResponseAlternative69WarningsItem>;
@@ -29725,11 +31294,39 @@ export const QueryResponseAlternative70UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative70UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative70WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative70WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative70WarningsItem>;
+export interface QueryResponseAlternative70WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative70WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative70WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative70WarningsItem>;
 
 export type QueryResponseAlternative70WarningsList =
   ReadonlyArray<QueryResponseAlternative70WarningsItem>;
@@ -29796,11 +31393,39 @@ export const QueryResponseAlternative71UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative71UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative71WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative71WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative71WarningsItem>;
+export interface QueryResponseAlternative71WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative71WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative71WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative71WarningsItem>;
 
 export type QueryResponseAlternative71WarningsList =
   ReadonlyArray<QueryResponseAlternative71WarningsItem>;
@@ -29876,11 +31501,39 @@ export const QueryResponseAlternative72UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative72UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative72WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative72WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative72WarningsItem>;
+export interface QueryResponseAlternative72WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative72WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative72WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative72WarningsItem>;
 
 export type QueryResponseAlternative72WarningsList =
   ReadonlyArray<QueryResponseAlternative72WarningsItem>;
@@ -29952,11 +31605,39 @@ export const QueryResponseAlternative74UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative74UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative74WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative74WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative74WarningsItem>;
+export interface QueryResponseAlternative74WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative74WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative74WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative74WarningsItem>;
 
 export type QueryResponseAlternative74WarningsList =
   ReadonlyArray<QueryResponseAlternative74WarningsItem>;
@@ -30022,17 +31703,69 @@ export const QueryResponseAlternative75JoinsList = /*@__PURE__*/ S.Array(
   DataWarehouseViewLink,
 ) as any as S.Schema<QueryResponseAlternative75JoinsList>;
 
-export type QueryResponseAlternative75TablesValue =
-  | DatabaseSchemaPostHogTable
-  | DatabaseSchemaSystemTable
-  | DatabaseSchemaDataWarehouseTable
-  | DatabaseSchemaViewTable
-  | DatabaseSchemaManagedViewTable
-  | DatabaseSchemaBatchExportTable
-  | DatabaseSchemaMaterializedViewTable
-  | DatabaseSchemaEndpointTable;
-export const QueryResponseAlternative75TablesValue =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative75TablesValue>;
+export interface QueryResponseAlternative75TablesValue {
+  fields?:
+    | DatabaseSchemaPostHogTableFieldsMap
+    | DatabaseSchemaSystemTableFieldsMap
+    | DatabaseSchemaDataWarehouseTableFieldsMap
+    | DatabaseSchemaViewTableFieldsMap
+    | DatabaseSchemaManagedViewTableFieldsMap
+    | DatabaseSchemaBatchExportTableFieldsMap
+    | DatabaseSchemaMaterializedViewTableFieldsMap
+    | DatabaseSchemaEndpointTableFieldsMap;
+  id?: string;
+  name?: string;
+  row_count?: number | null;
+  type?: string;
+  /** Absent for a dual-mode source's virtual tables, which have no synced S3 backing. */
+  format?: string | null;
+  schema?: DatabaseSchemaSchema | null;
+  /** Alternate names the table is queryable by (e.g. the flat underscore form), in addition to `name`. */
+  search_aliases?: DatabaseSchemaDataWarehouseTableSearchAliasesList | null;
+  source?: DatabaseSchemaSource | null;
+  /** Absent for a dual-mode source's virtual tables, which have no synced S3 backing. */
+  url_pattern?: string | null;
+  query?: HogQLQuery;
+  kind?: DatabaseSchemaManagedViewTableKind;
+  source_id?: string | null;
+  last_run_at?: string | null;
+  status?: string | null;
+}
+export const QueryResponseAlternative75TablesValue = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      fields: S.optional(
+        S.Union(
+          DatabaseSchemaPostHogTableFieldsMap,
+          DatabaseSchemaSystemTableFieldsMap,
+          DatabaseSchemaDataWarehouseTableFieldsMap,
+          DatabaseSchemaViewTableFieldsMap,
+          DatabaseSchemaManagedViewTableFieldsMap,
+          DatabaseSchemaBatchExportTableFieldsMap,
+          DatabaseSchemaMaterializedViewTableFieldsMap,
+          DatabaseSchemaEndpointTableFieldsMap,
+        ),
+      ),
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      row_count: S.optional(S.NullOr(S.Number)),
+      type: S.optional(S.String),
+      format: S.optional(S.NullOr(S.String)),
+      schema: S.optional(S.NullOr(DatabaseSchemaSchema)),
+      search_aliases: S.optional(
+        S.NullOr(DatabaseSchemaDataWarehouseTableSearchAliasesList),
+      ),
+      source: S.optional(S.NullOr(DatabaseSchemaSource)),
+      url_pattern: S.optional(S.NullOr(S.String)),
+      query: S.optional(HogQLQuery),
+      kind: S.optional(DatabaseSchemaManagedViewTableKind),
+      source_id: S.optional(S.NullOr(S.String)),
+      last_run_at: S.optional(S.NullOr(S.String)),
+      status: S.optional(S.NullOr(S.String)),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative75TablesValue",
+}) as any as S.Schema<QueryResponseAlternative75TablesValue>;
 
 export type QueryResponseAlternative75TablesMap = {
   [key: string]: QueryResponseAlternative75TablesValue | undefined;
@@ -30073,11 +31806,39 @@ export const QueryResponseAlternative76UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative76UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative76WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative76WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative76WarningsItem>;
+export interface QueryResponseAlternative76WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative76WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative76WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative76WarningsItem>;
 
 export type QueryResponseAlternative76WarningsList =
   ReadonlyArray<QueryResponseAlternative76WarningsItem>;
@@ -30149,11 +31910,39 @@ export const QueryResponseAlternative77UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative77UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative77WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative77WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative77WarningsItem>;
+export interface QueryResponseAlternative77WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative77WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative77WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative77WarningsItem>;
 
 export type QueryResponseAlternative77WarningsList =
   ReadonlyArray<QueryResponseAlternative77WarningsItem>;
@@ -30232,11 +32021,39 @@ export const QueryResponseAlternative78UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative78UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative78WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative78WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative78WarningsItem>;
+export interface QueryResponseAlternative78WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative78WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative78WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative78WarningsItem>;
 
 export type QueryResponseAlternative78WarningsList =
   ReadonlyArray<QueryResponseAlternative78WarningsItem>;
@@ -30306,11 +32123,39 @@ export const QueryResponseAlternative79UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative79UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative79WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative79WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative79WarningsItem>;
+export interface QueryResponseAlternative79WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative79WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative79WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative79WarningsItem>;
 
 export type QueryResponseAlternative79WarningsList =
   ReadonlyArray<QueryResponseAlternative79WarningsItem>;
@@ -30378,11 +32223,39 @@ export const QueryResponseAlternative80UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative80UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative80WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative80WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative80WarningsItem>;
+export interface QueryResponseAlternative80WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative80WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative80WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative80WarningsItem>;
 
 export type QueryResponseAlternative80WarningsList =
   ReadonlyArray<QueryResponseAlternative80WarningsItem>;
@@ -30444,11 +32317,39 @@ export const QueryResponseAlternative81UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative81UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative81WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative81WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative81WarningsItem>;
+export interface QueryResponseAlternative81WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative81WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative81WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative81WarningsItem>;
 
 export type QueryResponseAlternative81WarningsList =
   ReadonlyArray<QueryResponseAlternative81WarningsItem>;
@@ -30531,11 +32432,39 @@ export const QueryResponseAlternative82UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative82UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative82WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative82WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative82WarningsItem>;
+export interface QueryResponseAlternative82WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative82WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative82WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative82WarningsItem>;
 
 export type QueryResponseAlternative82WarningsList =
   ReadonlyArray<QueryResponseAlternative82WarningsItem>;
@@ -30610,11 +32539,39 @@ export const QueryResponseAlternative83UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative83UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative83WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative83WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative83WarningsItem>;
+export interface QueryResponseAlternative83WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative83WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative83WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative83WarningsItem>;
 
 export type QueryResponseAlternative83WarningsList =
   ReadonlyArray<QueryResponseAlternative83WarningsItem>;
@@ -30691,11 +32648,39 @@ export const QueryResponseAlternative84UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative84UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative84WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative84WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative84WarningsItem>;
+export interface QueryResponseAlternative84WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative84WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative84WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative84WarningsItem>;
 
 export type QueryResponseAlternative84WarningsList =
   ReadonlyArray<QueryResponseAlternative84WarningsItem>;
@@ -30791,11 +32776,39 @@ export const QueryResponseAlternative86UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative86UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative86WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative86WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative86WarningsItem>;
+export interface QueryResponseAlternative86WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative86WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative86WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative86WarningsItem>;
 
 export type QueryResponseAlternative86WarningsList =
   ReadonlyArray<QueryResponseAlternative86WarningsItem>;
@@ -30869,11 +32882,39 @@ export const QueryResponseAlternative87UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative87UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative87WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative87WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative87WarningsItem>;
+export interface QueryResponseAlternative87WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative87WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative87WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative87WarningsItem>;
 
 export type QueryResponseAlternative87WarningsList =
   ReadonlyArray<QueryResponseAlternative87WarningsItem>;
@@ -30953,11 +32994,39 @@ export const QueryResponseAlternative88UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative88UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative88WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative88WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative88WarningsItem>;
+export interface QueryResponseAlternative88WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative88WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative88WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative88WarningsItem>;
 
 export type QueryResponseAlternative88WarningsList =
   ReadonlyArray<QueryResponseAlternative88WarningsItem>;
@@ -31029,11 +33098,39 @@ export const QueryResponseAlternative89UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative89UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative89WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative89WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative89WarningsItem>;
+export interface QueryResponseAlternative89WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative89WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative89WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative89WarningsItem>;
 
 export type QueryResponseAlternative89WarningsList =
   ReadonlyArray<QueryResponseAlternative89WarningsItem>;
@@ -31147,11 +33244,39 @@ export const QueryResponseAlternative93UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative93UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative93WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative93WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative93WarningsItem>;
+export interface QueryResponseAlternative93WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative93WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative93WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative93WarningsItem>;
 
 export type QueryResponseAlternative93WarningsList =
   ReadonlyArray<QueryResponseAlternative93WarningsItem>;
@@ -31218,11 +33343,39 @@ export const QueryResponseAlternative94UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative94UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative94WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative94WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative94WarningsItem>;
+export interface QueryResponseAlternative94WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative94WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative94WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative94WarningsItem>;
 
 export type QueryResponseAlternative94WarningsList =
   ReadonlyArray<QueryResponseAlternative94WarningsItem>;
@@ -31312,11 +33465,39 @@ export const QueryResponseAlternative95UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative95UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative95WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative95WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative95WarningsItem>;
+export interface QueryResponseAlternative95WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative95WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative95WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative95WarningsItem>;
 
 export type QueryResponseAlternative95WarningsList =
   ReadonlyArray<QueryResponseAlternative95WarningsItem>;
@@ -31401,11 +33582,39 @@ export const QueryResponseAlternative96UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative96UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative96WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative96WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative96WarningsItem>;
+export interface QueryResponseAlternative96WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative96WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative96WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative96WarningsItem>;
 
 export type QueryResponseAlternative96WarningsList =
   ReadonlyArray<QueryResponseAlternative96WarningsItem>;
@@ -31482,11 +33691,39 @@ export const QueryResponseAlternative97UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative97UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative97WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative97WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative97WarningsItem>;
+export interface QueryResponseAlternative97WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative97WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative97WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative97WarningsItem>;
 
 export type QueryResponseAlternative97WarningsList =
   ReadonlyArray<QueryResponseAlternative97WarningsItem>;
@@ -31572,11 +33809,39 @@ export const QueryResponseAlternative98UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative98UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative98WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative98WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative98WarningsItem>;
+export interface QueryResponseAlternative98WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative98WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative98WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative98WarningsItem>;
 
 export type QueryResponseAlternative98WarningsList =
   ReadonlyArray<QueryResponseAlternative98WarningsItem>;
@@ -31644,11 +33909,39 @@ export const QueryResponseAlternative99UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative99UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative99WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative99WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative99WarningsItem>;
+export interface QueryResponseAlternative99WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative99WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative99WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative99WarningsItem>;
 
 export type QueryResponseAlternative99WarningsList =
   ReadonlyArray<QueryResponseAlternative99WarningsItem>;
@@ -31716,11 +34009,39 @@ export const QueryResponseAlternative100UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative100UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative100WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative100WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative100WarningsItem>;
+export interface QueryResponseAlternative100WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative100WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative100WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative100WarningsItem>;
 
 export type QueryResponseAlternative100WarningsList =
   ReadonlyArray<QueryResponseAlternative100WarningsItem>;
@@ -31788,11 +34109,39 @@ export const QueryResponseAlternative101UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative101UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative101WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative101WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative101WarningsItem>;
+export interface QueryResponseAlternative101WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative101WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative101WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative101WarningsItem>;
 
 export type QueryResponseAlternative101WarningsList =
   ReadonlyArray<QueryResponseAlternative101WarningsItem>;
@@ -31860,11 +34209,39 @@ export const QueryResponseAlternative102UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative102UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative102WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative102WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative102WarningsItem>;
+export interface QueryResponseAlternative102WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative102WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative102WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative102WarningsItem>;
 
 export type QueryResponseAlternative102WarningsList =
   ReadonlyArray<QueryResponseAlternative102WarningsItem>;
@@ -31933,11 +34310,39 @@ export const QueryResponseAlternative103UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative103UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative103WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative103WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative103WarningsItem>;
+export interface QueryResponseAlternative103WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative103WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative103WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative103WarningsItem>;
 
 export type QueryResponseAlternative103WarningsList =
   ReadonlyArray<QueryResponseAlternative103WarningsItem>;
@@ -32006,11 +34411,39 @@ export const QueryResponseAlternative104UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative104UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative104WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative104WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative104WarningsItem>;
+export interface QueryResponseAlternative104WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative104WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative104WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative104WarningsItem>;
 
 export type QueryResponseAlternative104WarningsList =
   ReadonlyArray<QueryResponseAlternative104WarningsItem>;
@@ -32078,11 +34511,39 @@ export const QueryResponseAlternative105UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative105UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative105WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative105WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative105WarningsItem>;
+export interface QueryResponseAlternative105WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative105WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative105WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative105WarningsItem>;
 
 export type QueryResponseAlternative105WarningsList =
   ReadonlyArray<QueryResponseAlternative105WarningsItem>;
@@ -32150,11 +34611,39 @@ export const QueryResponseAlternative106UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative106UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative106WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative106WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative106WarningsItem>;
+export interface QueryResponseAlternative106WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative106WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative106WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative106WarningsItem>;
 
 export type QueryResponseAlternative106WarningsList =
   ReadonlyArray<QueryResponseAlternative106WarningsItem>;
@@ -32222,11 +34711,39 @@ export const QueryResponseAlternative107UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative107UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative107WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative107WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative107WarningsItem>;
+export interface QueryResponseAlternative107WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative107WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative107WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative107WarningsItem>;
 
 export type QueryResponseAlternative107WarningsList =
   ReadonlyArray<QueryResponseAlternative107WarningsItem>;
@@ -32294,11 +34811,39 @@ export const QueryResponseAlternative108UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative108UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative108WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative108WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative108WarningsItem>;
+export interface QueryResponseAlternative108WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative108WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative108WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative108WarningsItem>;
 
 export type QueryResponseAlternative108WarningsList =
   ReadonlyArray<QueryResponseAlternative108WarningsItem>;
@@ -32366,11 +34911,39 @@ export const QueryResponseAlternative109UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative109UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative109WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative109WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative109WarningsItem>;
+export interface QueryResponseAlternative109WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative109WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative109WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative109WarningsItem>;
 
 export type QueryResponseAlternative109WarningsList =
   ReadonlyArray<QueryResponseAlternative109WarningsItem>;
@@ -32438,11 +35011,39 @@ export const QueryResponseAlternative110UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative110UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative110WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative110WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative110WarningsItem>;
+export interface QueryResponseAlternative110WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative110WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative110WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative110WarningsItem>;
 
 export type QueryResponseAlternative110WarningsList =
   ReadonlyArray<QueryResponseAlternative110WarningsItem>;
@@ -32510,11 +35111,39 @@ export const QueryResponseAlternative111UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative111UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative111WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative111WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative111WarningsItem>;
+export interface QueryResponseAlternative111WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative111WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative111WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative111WarningsItem>;
 
 export type QueryResponseAlternative111WarningsList =
   ReadonlyArray<QueryResponseAlternative111WarningsItem>;
@@ -32582,11 +35211,39 @@ export const QueryResponseAlternative112UsedDataWarehouseSourcesList =
     DataWarehouseSourceUsage,
   ) as any as S.Schema<QueryResponseAlternative112UsedDataWarehouseSourcesList>;
 
-export type QueryResponseAlternative112WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const QueryResponseAlternative112WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryResponseAlternative112WarningsItem>;
+export interface QueryResponseAlternative112WarningsItem {
+  /** Human-readable warning shown to the user */
+  message: string;
+  /** Name of the ExternalDataSchema responsible for syncing the table */
+  schema_name?: string;
+  /** ID of the ExternalDataSource, used to link to its management page. Null for self-managed tables. */
+  source_id?: string | null;
+  /** Source type, e.g. "Stripe", "Hubspot" */
+  source_type?: string;
+  /** Sync status that triggered the warning, e.g. "Failed", "Paused", "BillingLimitReached" */
+  status?: string;
+  /** Name of the warehouse table the warning refers to */
+  table_name?: string;
+  /** Tells warning kinds apart in the shared `warnings` list */
+  type?: string;
+  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
+  resources?: AccessControlFilterWarningResourcesList;
+}
+export const QueryResponseAlternative112WarningsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+      schema_name: S.optional(S.String),
+      source_id: S.optional(S.NullOr(S.String)),
+      source_type: S.optional(S.String),
+      status: S.optional(S.String),
+      table_name: S.optional(S.String),
+      type: S.optional(S.String),
+      resources: S.optional(AccessControlFilterWarningResourcesList),
+    }),
+).annotate({
+  identifier: "QueryResponseAlternative112WarningsItem",
+}) as any as S.Schema<QueryResponseAlternative112WarningsItem>;
 
 export type QueryResponseAlternative112WarningsList =
   ReadonlyArray<QueryResponseAlternative112WarningsItem>;
@@ -33026,104 +35683,1278 @@ export const QueryUpgradeCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "QueryUpgradeCreateRequest",
 }) as any as S.Schema<QueryUpgradeCreateRequest>;
 
-export type QueryUpgradeResponseQuery =
-  | EventsNode
-  | ActionsNode
-  | PersonsNode
-  | DataWarehouseNode
-  | FunnelsDataWarehouseNode
-  | LifecycleDataWarehouseNode
-  | EventsQuery
-  | SessionsQuery
-  | ActorsQuery
-  | GroupsQuery
-  | InsightActorsQuery
-  | InsightActorsQueryOptions
-  | SessionsTimelineQuery
-  | HogQuery
-  | HogQLQuery
-  | HogQLMetadata
-  | HogQLAutocomplete
-  | SessionAttributionExplorerQuery
-  | RevenueExampleEventsQuery
-  | RevenueExampleDataWarehouseTablesQuery
-  | ErrorTrackingQuery
-  | ErrorTrackingSimilarIssuesQuery
-  | ErrorTrackingBreakdownsQuery
-  | ErrorTrackingIssueCorrelationQuery
-  | ExperimentFunnelsQuery
-  | ExperimentTrendsQuery
-  | ExperimentQuery
-  | ExperimentExposureQuery
-  | DocumentSimilarityQuery
-  | WebOverviewQuery
-  | WebStatsTableQuery
-  | WebExternalClicksTableQuery
-  | WebGoalsQuery
-  | WebVitalsQuery
-  | WebVitalsPathBreakdownQuery
-  | WebPageURLSearchQuery
-  | WebAnalyticsExternalSummaryQuery
-  | WebNotableChangesQuery
-  | RevenueAnalyticsGrossRevenueQuery
-  | RevenueAnalyticsMetricsQuery
-  | RevenueAnalyticsMRRQuery
-  | RevenueAnalyticsOverviewQuery
-  | RevenueAnalyticsTopCustomersQuery
-  | MarketingAnalyticsTableQuery
-  | MarketingAnalyticsAggregatedQuery
-  | NonIntegratedConversionsTableQuery
-  | DataVisualizationNode
-  | DataTableNode
-  | SavedInsightNode
-  | InsightVizNode
-  | TrendsQuery
-  | FunnelsQuery
-  | RetentionQuery
-  | PathsQuery
-  | StickinessQuery
-  | LifecycleQuery
-  | FunnelCorrelationQuery
-  | DatabaseSchemaQuery
-  | RecordingsQuery
-  | LogsQuery
-  | LogAttributesQuery
-  | LogValuesQuery
-  | MetricsQuery
-  | TraceSpansQuery
-  | TraceSpansAggregationQuery
-  | TraceSpansTreeQuery
-  | TraceSpansAttributeBreakdownQuery
-  | SuggestedQuestionsQuery
-  | TeamTaxonomyQuery
-  | EventTaxonomyQuery
-  | ActorsPropertyTaxonomyQuery
-  | TracesQuery
-  | TraceQuery
-  | SessionQuery
-  | TraceNeighborsQuery
-  | VectorSearchQuery
-  | UsageMetricsQuery
-  | AccountsQuery
-  | EndpointsUsageOverviewQuery
-  | EndpointsUsageTableQuery
-  | EndpointsUsageTrendsQuery
-  | MCPHarnessBreakdownQuery
-  | MCPToolTopUsersQuery
-  | MCPToolFailuresQuery
-  | MCPToolFailureOccurrencesQuery
-  | MCPToolStatsQuery
-  | MCPToolDailyStatsQuery
-  | MCPToolQualityRowsQuery
-  | MCPToolQualityDailyStatsQuery
-  | MCPToolCategoryCountsQuery
-  | MCPToolCategoriesQuery
-  | MCPToolDescriptionsQuery
-  | MCPToolSampleIntentsQuery
-  | MCPToolNeighborsQuery
-  | PropertyValuesQuery;
-export const QueryUpgradeResponseQuery =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryUpgradeResponseQuery>;
+export interface QueryUpgradeResponseQuery {
+  custom_name?: string | null;
+  /** The event or `null` for all events. */
+  event?: string | null;
+  /** Fixed properties in the query, can't be edited in the interface (e.g. scoping down by person) */
+  fixedProperties?:
+    | EventsNodeFixedPropertiesList
+    | ActionsNodeFixedPropertiesList
+    | PersonsNodeFixedPropertiesList
+    | DataWarehouseNodeFixedPropertiesList
+    | FunnelsDataWarehouseNodeFixedPropertiesList
+    | LifecycleDataWarehouseNodeFixedPropertiesList
+    | EventsQueryFixedPropertiesList
+    | SessionsQueryFixedPropertiesList
+    | ActorsQueryFixedPropertiesList
+    | null;
+  kind?: string;
+  /** Number of rows to return */
+  limit?: number | null;
+  math?:
+    | EventsNodeMath
+    | ActionsNodeMath
+    | DataWarehouseNodeMath
+    | FunnelsDataWarehouseNodeMath
+    | LifecycleDataWarehouseNodeMath
+    | null;
+  math_group_type_index?: MathGroupTypeIndex | null;
+  math_hogql?: string | null;
+  math_multiplier?: number | null;
+  math_property?: string | null;
+  math_property_revenue_currency?: RevenueCurrencyPropertyConfig | null;
+  math_property_type?: string | null;
+  /** Client provided name of the query */
+  name?: string | null;
+  optionalInFunnel?: boolean | null;
+  /** Columns to order by */
+  orderBy?:
+    | EventsNodeOrderByList
+    | EventsQueryOrderByList
+    | SessionsQueryOrderByList
+    | ActorsQueryOrderByList
+    | GroupsQueryOrderByList
+    | ErrorTrackingOrderBy
+    | WebOverviewQueryOrderByList
+    | WebStatsTableQueryOrderByList
+    | WebExternalClicksTableQueryOrderByList
+    | WebGoalsQueryOrderByList
+    | WebVitalsQueryOrderByList
+    | WebVitalsPathBreakdownQueryOrderByList
+    | WebPageURLSearchQueryOrderByList
+    | WebNotableChangesQueryOrderByList
+    | MarketingAnalyticsTableQueryOrderByList
+    | NonIntegratedConversionsTableQueryOrderByList
+    | LogsOrderBy
+    | TraceOrderColumn
+    | TraceSpanBreakdownOrderBy
+    | AccountsQueryOrderByList
+    | EndpointsUsageTableQueryOrderByList
+    | null;
+  /** Properties configurable in the interface */
+  properties?:
+    | EventsNodePropertiesList
+    | ActionsNodePropertiesList
+    | PersonsNodePropertiesList
+    | DataWarehouseNodePropertiesList
+    | FunnelsDataWarehouseNodePropertiesList
+    | LifecycleDataWarehouseNodePropertiesList
+    | EventsQueryPropertiesList
+    | SessionsQueryPropertiesList
+    | ActorsQueryProperties
+    | GroupsQueryPropertiesList
+    | WebOverviewQueryPropertiesList
+    | WebStatsTableQueryPropertiesList
+    | WebExternalClicksTableQueryPropertiesList
+    | WebGoalsQueryPropertiesList
+    | WebVitalsQueryPropertiesList
+    | WebVitalsPathBreakdownQueryPropertiesList
+    | WebPageURLSearchQueryPropertiesList
+    | WebAnalyticsExternalSummaryQueryPropertiesList
+    | WebNotableChangesQueryPropertiesList
+    | RevenueAnalyticsGrossRevenueQueryPropertiesList
+    | RevenueAnalyticsMetricsQueryPropertiesList
+    | RevenueAnalyticsMRRQueryPropertiesList
+    | RevenueAnalyticsOverviewQueryPropertiesList
+    | RevenueAnalyticsTopCustomersQueryPropertiesList
+    | MarketingAnalyticsTableQueryPropertiesList
+    | MarketingAnalyticsAggregatedQueryPropertiesList
+    | NonIntegratedConversionsTableQueryPropertiesList
+    | TrendsQueryProperties
+    | FunnelsQueryProperties
+    | RetentionQueryProperties
+    | PathsQueryProperties
+    | StickinessQueryProperties
+    | LifecycleQueryProperties
+    | RecordingsQueryPropertiesList
+    | EventTaxonomyQueryPropertiesList
+    | ActorsPropertyTaxonomyQueryPropertiesList
+    | TracesQueryPropertiesList
+    | TraceQueryPropertiesList
+    | TraceNeighborsQueryPropertiesList
+    | MCPHarnessBreakdownQueryPropertiesList
+    | null;
+  response?:
+    | EventsNodeResponseMap
+    | ActionsNodeResponseMap
+    | PersonsNodeResponseMap
+    | DataWarehouseNodeResponseMap
+    | FunnelsDataWarehouseNodeResponseMap
+    | LifecycleDataWarehouseNodeResponseMap
+    | EventsQueryResponse
+    | SessionsQueryResponse
+    | ActorsQueryResponse
+    | GroupsQueryResponse
+    | InsightActorsQueryOptionsResponse
+    | SessionsTimelineQueryResponse
+    | HogQueryResponse
+    | HogQLQueryResponse
+    | HogQLMetadataResponse
+    | HogQLAutocompleteResponse
+    | SessionAttributionExplorerQueryResponse
+    | RevenueExampleEventsQueryResponse
+    | RevenueExampleDataWarehouseTablesQueryResponse
+    | ErrorTrackingQueryResponse
+    | ErrorTrackingSimilarIssuesQueryResponse
+    | ErrorTrackingBreakdownsQueryResponse
+    | ErrorTrackingIssueCorrelationQueryResponse
+    | ExperimentFunnelsQueryResponse
+    | ExperimentTrendsQueryResponse
+    | ExperimentQueryResponse
+    | ExperimentExposureQueryResponse
+    | DocumentSimilarityQueryResponse
+    | WebOverviewQueryResponse
+    | WebStatsTableQueryResponse
+    | WebExternalClicksTableQueryResponse
+    | WebGoalsQueryResponse
+    | WebVitalsPathBreakdownQueryResponse
+    | WebPageURLSearchQueryResponse
+    | WebAnalyticsExternalSummaryQueryResponse
+    | WebNotableChangesQueryResponse
+    | RevenueAnalyticsGrossRevenueQueryResponse
+    | RevenueAnalyticsMetricsQueryResponse
+    | RevenueAnalyticsMRRQueryResponse
+    | RevenueAnalyticsOverviewQueryResponse
+    | RevenueAnalyticsTopCustomersQueryResponse
+    | MarketingAnalyticsTableQueryResponse
+    | MarketingAnalyticsAggregatedQueryResponse
+    | NonIntegratedConversionsTableQueryResponse
+    | DataTableNodeResponse
+    | TrendsQueryResponse
+    | FunnelsQueryResponse
+    | RetentionQueryResponse
+    | PathsQueryResponse
+    | StickinessQueryResponse
+    | LifecycleQueryResponse
+    | FunnelCorrelationResponse
+    | DatabaseSchemaQueryResponse
+    | RecordingsQueryResponse
+    | LogsQueryResponse
+    | LogAttributesQueryResponse
+    | LogValuesQueryResponse
+    | MetricsQueryResponse
+    | TraceSpansQueryResponse
+    | TraceSpansAggregationQueryResponse
+    | TraceSpansTreeQueryResponse
+    | TraceSpansAttributeBreakdownQueryResponse
+    | SuggestedQuestionsQueryResponse
+    | TeamTaxonomyQueryResponse
+    | EventTaxonomyQueryResponse
+    | ActorsPropertyTaxonomyQueryResponse
+    | TracesQueryResponse
+    | TraceQueryResponse
+    | SessionQueryResponse
+    | TraceNeighborsQueryResponse
+    | VectorSearchQueryResponse
+    | UsageMetricsQueryResponse
+    | AccountsQueryResponse
+    | EndpointsUsageOverviewQueryResponse
+    | EndpointsUsageTableQueryResponse
+    | EndpointsUsageTrendsQueryResponse
+    | MCPHarnessBreakdownQueryResponse
+    | MCPToolTopUsersQueryResponse
+    | MCPToolFailuresQueryResponse
+    | MCPToolFailureOccurrencesQueryResponse
+    | MCPToolStatsQueryResponse
+    | MCPToolDailyStatsQueryResponse
+    | MCPToolQualityRowsQueryResponse
+    | MCPToolQualityDailyStatsQueryResponse
+    | MCPToolCategoryCountsQueryResponse
+    | MCPToolCategoriesQueryResponse
+    | MCPToolDescriptionsQueryResponse
+    | MCPToolSampleIntentsQueryResponse
+    | MCPToolNeighborsQueryResponse
+    | PropertyValuesQueryResponse
+    | null;
+  /** version of the node, used for schema migrations */
+  version?: number | null;
+  id?: number | string;
+  cohort?: number | null;
+  distinctId?: string | null;
+  /** Modifiers used when performing the query */
+  modifiers?: HogQLQueryModifiers | null;
+  /** Number of rows to skip before returning rows */
+  offset?: number | null;
+  search?: string | null;
+  /** Tags that will be added to the Query log comment */
+  tags?: QueryLogTags | null;
+  distinct_id_field?: string;
+  dw_source_type?: string | null;
+  id_field?: string;
+  table_name?: string;
+  timestamp_field?: string;
+  aggregation_target_field?: string;
+  created_at_field?: string;
+  /** Show events matching a given action */
+  actionId?: number | null;
+  /** Show events matching action steps directly, used when no actionId is provided (e.g. previewing unsaved actions). Ignored if actionId is set. */
+  actionSteps?: EventsQueryActionStepsList | null;
+  /** Only fetch events that happened after this timestamp */
+  after?: string | null;
+  /** Only fetch events that happened before this timestamp */
+  before?: string | null;
+  /** Filter to events matching any of these event names */
+  events?:
+    | EventsQueryEventsList
+    | ErrorTrackingIssueCorrelationQueryEventsList
+    | RecordingsQueryEventsList
+    | null;
+  /** Filter test accounts */
+  filterTestAccounts?: boolean | null;
+  /** Show events for a given person */
+  personId?: string | null;
+  /** Return a limited set of data. Required. */
+  select?:
+    | EventsQuerySelectList
+    | SessionsQuerySelectList
+    | ActorsQuerySelectList
+    | GroupsQuerySelectList
+    | MarketingAnalyticsTableQuerySelectList
+    | MarketingAnalyticsAggregatedQuerySelectList
+    | NonIntegratedConversionsTableQuerySelectList
+    | AccountsQuerySelectList
+    | null;
+  /** source for querying events for insights */
+  source?:
+    | InsightActorsQuery
+    | ActorsQuerySource
+    | InsightActorsQuerySource
+    | InsightActorsQueryOptionsSource
+    | WebVitalsQuerySource
+    | HogQLQuery
+    | DataTableNodeSource
+    | InsightVizNodeSource
+    | FunnelsActorsQuery
+    | null;
+  /** HogQL filters to apply on returned data */
+  where?: EventsQueryWhereList | SessionsQueryWhereList | null;
+  /** Event property filters - filters sessions that contain events matching these properties */
+  eventProperties?: SessionsQueryEventPropertiesList | null;
+  /** Group type index. Required with group_key for group queries. */
+  group_type_index?: number | null;
+  breakdown?:
+    | InsightActorsQueryBreakdown
+    | RevenueAnalyticsGrossRevenueQueryBreakdownList
+    | RevenueAnalyticsMetricsQueryBreakdownList
+    | RevenueAnalyticsMRRQueryBreakdownList
+    | null;
+  compare?: Compare | null;
+  day?: InsightActorsQueryDay | null;
+  includeRecordings?: boolean | null;
+  /** An interval selected out of available intervals in source query. */
+  interval?: number | IntervalType | SimpleIntervalType | string | null;
+  /** Events and actions to include */
+  series?:
+    | number
+    | TrendsQuerySeriesList
+    | FunnelsQuerySeriesList
+    | StickinessQuerySeriesList
+    | LifecycleQuerySeriesList
+    | null;
+  /** Filter by issue status. */
+  status?: string | ErrorTrackingQueryStatus | null;
+  code?: string | null;
+  /** Optional id of a direct-query-capable external data source to run against instead of ClickHouse — a pure-direct source, or a synced source with direct query enabled. */
+  connectionId?: string | null;
+  explain?: boolean | null;
+  /** Extra filters applied to query via {filters} */
+  filters?: HogQLFilters | Filters | null;
+  /** Query to validate */
+  query?: string;
+  /** Run the selected connection query directly without translating it through HogQL first */
+  sendRawQuery?: boolean | null;
+  /** Constant values that can be referenced with the {placeholder} syntax in the query */
+  values?: HogQLQueryValuesMap | null;
+  /** Variables to be substituted into the query */
+  variables?: HogQLQueryVariablesMap | HogQLMetadataVariablesMap | null;
+  /** Enable more verbose output, usually run from the /debug page */
+  debug?: boolean | null;
+  /** Extra globals for the query */
+  globals?: HogQLMetadataGlobalsMap | HogQLAutocompleteGlobalsMap | null;
+  /** Language to validate */
+  language?: HogLanguage;
+  /** Query within which "expr" and "template" are validated. Defaults to "select * from events" */
+  sourceQuery?: HogQLMetadataSourceQuery | HogQLAutocompleteSourceQuery | null;
+  /** End position of the editor word */
+  endPosition?: number;
+  /** Start position of the editor word */
+  startPosition?: number;
+  groupBy?:
+    | SessionAttributionExplorerQueryGroupByList
+    | RevenueAnalyticsTopCustomersGroupBy;
+  assignee?: ErrorTrackingIssueAssignee | null;
+  /** Date range to filter results. */
+  dateRange?: DateRange | null;
+  filterGroup?: PropertyGroupFilter | null;
+  groupKey?: string | null;
+  groupTypeIndex?: number | null;
+  /** Filter to a specific error tracking issue by ID. */
+  issueId?: string | null;
+  /** Sort direction. */
+  orderDirection?: OrderDirection2 | null;
+  /** Pending fingerprint issue state updates UNIONed into the fingerprint issue state subquery. The backend caps the list at 50 entries; extras are dropped silently. */
+  pendingFingerprintIssueStateUpdates?: ErrorTrackingQueryPendingFingerprintIssueStateUpdatesList | null;
+  /** Free-text search across exception type, message, and stack frames. */
+  searchQuery?: string | null;
+  useQueryV2?: boolean | null;
+  useQueryV3?: boolean | null;
+  volumeResolution?: number;
+  withAggregations?: boolean | null;
+  withFirstEvent?: boolean | null;
+  withLastEvent?: boolean | null;
+  maxDistance?: number | null;
+  modelName?: EmbeddingModelName | null;
+  rendering?: string | null;
+  breakdownProperties?: ErrorTrackingBreakdownsQueryBreakdownPropertiesList;
+  maxValuesPerProperty?: number | null;
+  experiment_id?: number | null;
+  fingerprint?: string | null;
+  funnels_query?: FunnelsQuery;
+  uuid?: string | null;
+  count_query?: TrendsQuery;
+  exposure_query?: TrendsQuery | null;
+  /** Metric to trend */
+  metric?: ExperimentQueryMetric | WebVitalsMetric | Metric;
+  precomputation_mode?: PrecomputationMode | null;
+  end_date?: string | null;
+  experiment_name?: string;
+  exposure_criteria?: ExperimentExposureCriteria | null;
+  feature_flag?: ExperimentExposureQueryFeatureFlagMap;
+  holdout?: ExperimentHoldoutType | null;
+  start_date?: string | null;
+  distance_func?: DistanceFunc;
+  document_types?: DocumentSimilarityQueryDocumentTypesList;
+  model?: string;
+  order_by?: OrderBy;
+  /** Replay originally had all ordering as descending by specifying the field name, this runs counter to Django behavior where the field name specifies ascending sorting (e.g. the_field_name) and -the_field_name would indicate descending order to avoid invalidating or migrating all existing filters we keep DESC as the default or allow specification of an explicit order direction here */
+  order_direction?: OrderDirection1 | RecordingOrderDirection | null;
+  origin?: EmbeddedDocument;
+  products?: DocumentSimilarityQueryProductsList;
+  renderings?: DocumentSimilarityQueryRenderingsList;
+  threshold?: number | null;
+  /** Groups aggregation - not used in Web Analytics but required for type compatibility */
+  aggregation_group_type_index?: number | null;
+  /** Compare to date range */
+  compareFilter?: CompareFilter | null;
+  /** Whether we should be comparing against a specific conversion goal */
+  conversionGoal?:
+    | WebOverviewQueryConversionGoal
+    | WebStatsTableQueryConversionGoal
+    | WebExternalClicksTableQueryConversionGoal
+    | WebGoalsQueryConversionGoal
+    | WebVitalsQueryConversionGoal
+    | WebVitalsPathBreakdownQueryConversionGoal
+    | WebPageURLSearchQueryConversionGoal
+    | WebNotableChangesQueryConversionGoal
+    | MarketingAnalyticsTableQueryConversionGoal
+    | MarketingAnalyticsAggregatedQueryConversionGoal
+    | NonIntegratedConversionsTableQueryConversionGoal
+    | TrendsQueryConversionGoal
+    | null;
+  /** Colors used in the insight's visualization - not used in Web Analytics but required for type compatibility */
+  dataColorTheme?: number | null;
+  doPathCleaning?: boolean | null;
+  includeRevenue?: boolean | null;
+  sampling?: WebAnalyticsSampling | null;
+  /** Sampling rate */
+  samplingFactor?: number | null;
+  useSessionsTable?: boolean | null;
+  /** Opt this specific query into the web_overview_query precompute path. Requires the `web-analytics-precompute-toggle` PostHog feature flag to be on for the team's organization for the gate to pass. * */
+  useWebAnalyticsPrecompute?: boolean | null;
+  /** Optional breakdown for stacked charts */
+  breakdownBy?: WebStatsBreakdown | EndpointsUsageBreakdown | null;
+  includeAvgTimeOnPage?: boolean | null;
+  includeBounceRate?: boolean | null;
+  includeHost?: boolean | null;
+  includeScrollDepth?: boolean | null;
+  stripQueryParams?: boolean | null;
+  percentile?: WebVitalsPercentile;
+  thresholds?: WebVitalsPathBreakdownQueryThresholdsList;
+  searchTerm?: string | null;
+  /** Draft conversion goal that can be set in the UI without saving */
+  draftConversionGoal?:
+    | MarketingAnalyticsTableQueryDraftConversionGoal
+    | MarketingAnalyticsAggregatedQueryDraftConversionGoal
+    | NonIntegratedConversionsTableQueryDraftConversionGoal
+    | null;
+  /** Drill-down hierarchy level: channel, source, or campaign (default) */
+  drillDownLevel?: MarketingAnalyticsDrillDownLevel | null;
+  /** Filter by integration type */
+  integrationFilter?: IntegrationFilter | null;
+  chartSettings?: ChartSettings | null;
+  display?: ChartDisplayType | null;
+  tableSettings?: TableSettings | null;
+  /** Can the user click on column headers to sort the table? (default: true) */
+  allowSorting?: boolean | null;
+  /** Columns shown in the table, unless the `source` provides them. */
+  columns?: DataTableNodeColumnsList | null;
+  /** Context for the table, used by components like ColumnConfigurator */
+  context?: DataTableNodeViewPropsContext | null;
+  /** Context key for universal column configuration (e.g., "survey:123") */
+  contextKey?: string | null;
+  /** Default columns to use when resetting column configuration */
+  defaultColumns?:
+    | DataTableNodeDefaultColumnsList
+    | SavedInsightNodeDefaultColumnsList
+    | null;
+  /** Uses the embedded version of LemonTable */
+  embedded?: boolean | null;
+  /** Can expand row to show raw event data (default: true) */
+  expandable?: boolean | null;
+  /** Show with most visual options enabled. Used in scenes. */
+  full?: boolean | null;
+  /** Columns that aren't shown in the table, even if in columns or returned data */
+  hiddenColumns?: DataTableNodeHiddenColumnsList | null;
+  /** Columns that are sticky when scrolling horizontally */
+  pinnedColumns?: DataTableNodePinnedColumnsList | null;
+  /** Link properties via the URL (default: false) */
+  propertiesViaUrl?: boolean | null;
+  /** Render date-time columns (timestamp, created_at, last_seen, last_seen_at, session_start, session_end) as absolute date+time instead of relative ("X ago"). The toggle is exposed in the column header menu only on EventsQuery / ActorsQuery sources. */
+  showAbsoluteTime?: boolean | null;
+  /** Show the kebab menu at the end of the row */
+  showActions?: boolean | null;
+  /** Show a button to configure the table's columns if possible */
+  showColumnConfigurator?: boolean | null;
+  /** Show count of total and filtered results */
+  showCount?: boolean | null;
+  /** Show date range selector */
+  showDateRange?: boolean | null;
+  /** Show the time it takes to run a query */
+  showElapsedTime?: boolean | null;
+  /** Include an event filter above the table (EventsNode only) */
+  showEventFilter?: boolean | null;
+  /** Include an events filter above the table to filter by multiple events (EventsQuery only) */
+  showEventsFilter?: boolean | null;
+  /** Show the export button */
+  showExport?: boolean | null;
+  /** Include a HogQL query editor above HogQL tables */
+  showHogQLEditor?: boolean | null;
+  /** Show a button to open the current query as a new insight. (default: true) */
+  showOpenEditorButton?: boolean | null;
+  /** Show a button to configure and persist the table's default columns if possible */
+  showPersistentColumnConfigurator?: boolean | null;
+  /** Include a property filter above the table */
+  showPropertyFilter?:
+    | DataTableNodeShowPropertyFilter
+    | SavedInsightNodeShowPropertyFilter
+    | null;
+  /** Show a recording column for events with session recordings */
+  showRecordingColumn?: boolean | null;
+  /** Show a reload button */
+  showReload?: boolean | null;
+  /** Show a results table */
+  showResultsTable?: boolean | null;
+  /** Show saved filters feature for this table (requires uniqueKey) */
+  showSavedFilters?: boolean | null;
+  /** Shows a list of saved queries */
+  showSavedQueries?: boolean | null;
+  /** Include a free text search field (PersonsNode only) */
+  showSearch?: boolean | null;
+  /** Show actors query options and back to source */
+  showSourceQueryOptions?: boolean | null;
+  /** Show table views feature for this table (requires uniqueKey) */
+  showTableViews?: boolean | null;
+  /** Show filter to exclude test accounts */
+  showTestAccountFilters?: boolean | null;
+  /** Show a detailed query timing breakdown */
+  showTimings?: boolean | null;
+  hidePersonsModal?: boolean | null;
+  hideTooltipOnScroll?: boolean | null;
+  shortId?: string;
+  showCorrelationTable?: boolean | null;
+  showFilters?: boolean | null;
+  showHeader?: boolean | null;
+  showLastComputation?: boolean | null;
+  showLastComputationRefresh?: boolean | null;
+  showResults?: boolean | null;
+  showTable?: boolean | null;
+  suppressSessionAnalysisWarning?: boolean | null;
+  vizSpecificOptions?: VizSpecificOptions | null;
+  /** Breakdown of the events and actions */
+  breakdownFilter?: BreakdownFilter | null;
+  /** Properties specific to the calendar heatmap display variant. Only consulted when `trendsFilter.display === ChartDisplayType.CalendarHeatmap`; ignored otherwise. */
+  calendarHeatmapFilter?: CalendarHeatmapFilter | null;
+  /** Properties specific to the trends insight */
+  trendsFilter?: TrendsFilter | null;
+  /** Properties specific to the funnels insight */
+  funnelsFilter?: FunnelsFilter | null;
+  /** Properties specific to the retention insight */
+  retentionFilter?: RetentionFilter;
+  /** Used for displaying paths in relation to funnel steps. */
+  funnelPathsFilter?: FunnelPathsFilter | null;
+  /** Properties specific to the paths insight */
+  pathsFilter?: PathsFilter;
+  /** How many intervals comprise a period. Only used for cohorts, otherwise default 1. */
+  intervalCount?: number | null;
+  /** Properties specific to the stickiness insight */
+  stickinessFilter?: StickinessFilter | null;
+  /** For data warehouse based lifecycle insights when the aggregation target can't be mapped to persons or groups. */
+  customAggregationTarget?: boolean | null;
+  /** Properties specific to the lifecycle insight */
+  lifecycleFilter?: LifecycleFilter | null;
+  funnelCorrelationEventExcludePropertyNames?: FunnelCorrelationQueryFunnelCorrelationEventExcludePropertyNamesList | null;
+  funnelCorrelationEventNames?: FunnelCorrelationQueryFunnelCorrelationEventNamesList | null;
+  funnelCorrelationExcludeEventNames?: FunnelCorrelationQueryFunnelCorrelationExcludeEventNamesList | null;
+  funnelCorrelationExcludeNames?: FunnelCorrelationQueryFunnelCorrelationExcludeNamesList | null;
+  funnelCorrelationNames?: FunnelCorrelationQueryFunnelCorrelationNamesList | null;
+  funnelCorrelationType?: FunnelCorrelationResultsType;
+  actions?: RecordingsQueryActionsList | null;
+  comment_text?: RecordingPropertyFilter | null;
+  console_log_filters?: RecordingsQueryConsoleLogFiltersList | null;
+  date_from?: string | null;
+  date_to?: string | null;
+  distinct_ids?: RecordingsQueryDistinctIdsList | null;
+  filter_test_accounts?: boolean | null;
+  having_predicates?: RecordingsQueryHavingPredicatesList | null;
+  /** Exclude recordings already viewed by the current user ('current-user'), by any team member ('any-user'), or none (default). Applied server-side so pagination and the result cursor operate on the filtered set. */
+  hide_viewed_recordings?: HideViewedRecordings | null;
+  operand?: FilterLogicalOperator | null;
+  order?: RecordingOrder | null;
+  person_uuid?: string | null;
+  session_ids?: RecordingsQuerySessionIdsList | null;
+  /** If provided, this recording will be fetched and prepended to the results, even if it doesn't match the filters */
+  session_recording_id?: string | null;
+  user_modified_filters?: RecordingsQueryUserModifiedFiltersMap | null;
+  /** Custom column expressions evaluated per log row. Each entry is either a source-prefixed shorthand (`attributes.<key>`, `resource_attributes.<key>`, `body.<json.path>`) or a scalar HogQL expression (`upper(level)`, `coalesce(attributes['a'], attributes['b'])`). Values come back on each result row keyed by the aliases in `LogsQueryResponse.columns`. */
+  customColumns?: LogsQueryCustomColumnsList | null;
+  /** Omit the per-log `attributes` and `resource_attributes` maps from results to keep payloads compact */
+  excludeAttributes?: boolean | null;
+  liveLogsCheckpoint?: string | null;
+  resourceFingerprint?: string | null;
+  serviceNames?:
+    | LogsQueryServiceNamesList
+    | LogAttributesQueryServiceNamesList
+    | LogValuesQueryServiceNamesList
+    | TraceSpansQueryServiceNamesList
+    | TraceSpansAggregationQueryServiceNamesList
+    | TraceSpansTreeQueryServiceNamesList
+    | TraceSpansAttributeBreakdownQueryServiceNamesList
+    | null;
+  severityLevels?:
+    | LogsQuerySeverityLevelsList
+    | LogAttributesQuerySeverityLevelsList
+    | LogValuesQuerySeverityLevelsList
+    | null;
+  /** Field to break down sparkline data by (used only by sparkline endpoint) */
+  sparklineBreakdownBy?: LogsSparklineBreakdownBy | null;
+  attributeType?: string;
+  /** When true, the search query also matches attribute values (not just keys). */
+  searchValues?: boolean | null;
+  attributeKey?: string;
+  clauses?: MetricsQueryClausesList;
+  /** Arithmetic over clause aliases (e.g. "a / b"); when set, only the formula series are returned */
+  formula?: string | null;
+  /** Return the matching spans themselves, one row per span (root and child), instead of the whole-trace grouping. Streams the matches under `ORDER BY … LIMIT` rather than grouping every matching span by trace, so a filter on a hot child attribute (e.g. `code.filepath`) stays bounded. Distinct from `rootSpans`, which scopes whole-trace selection. The single-trace waterfall never sets this. */
+  flatSpans?: boolean | null;
+  /** Prefetch up to this many spans per trace and include them in results */
+  prefetchSpans?: number | null;
+  rootSpans?: boolean | null;
+  statusCodes?: TraceSpansQueryStatusCodesList | null;
+  /** ID of the current trace to find neighbors for */
+  traceId?: string | null;
+  /** Service name that scopes the returned tree. Applied to the spans CTE so the call-tree only contains spans from this service, even when matched traces span multiple services. */
+  serviceName?: string;
+  /** Span name to scope the matched trace set. Required because the `(trace_id, parent_span_id)` self-join is prohibitive without bounding the matched traces — at high name cardinality the query becomes unsafe to run. */
+  spanName?: string;
+  /** Attribute key to group by (e.g. `http.response.status_code`, `server.address`). For the `span` breakdown type, must be an allowlisted top-level column (`service_name`, `status_code`). */
+  breakdownKey?: string;
+  /** Where the key lives: an allowlisted top-level span column, span-level attributes, or resource-level attributes. */
+  breakdownType?: TraceSpanBreakdownType;
+  /** Drop filters targeting the breakdown key itself (including `serviceNames` for a `service_name` breakdown) so a facet's value list stays complete while one of its values is selected. */
+  excludeBreakdownFilter?: boolean | null;
+  /** Type-ahead filter over the breakdown field's own values (case-insensitive substring match). Lets a facet's value search reach past the row limit. */
+  facetSearch?: string | null;
+  maxPropertyValues?: number | null;
+  filterSupportTraces?: boolean | null;
+  /** Include stored sentiment evaluation results for returned traces and direct generation events. */
+  includeSentiment?: boolean | null;
+  /** Use random ordering instead of timestamp DESC. Useful for representative sampling to avoid recency bias. */
+  randomOrder?: boolean | null;
+  sessionId?: string;
+  /** Timestamp of the current trace to find neighbors for */
+  timestamp?: string;
+  embedding?: VectorSearchQueryEmbeddingList;
+  embeddingVersion?: number | null;
+  /** Group key. Required with group_type_index for group queries. */
+  group_key?: string | null;
+  /** Person ID to fetch metrics for. Mutually exclusive with group parameters. */
+  person_id?: string | null;
+  /** Match accounts with no active relationship of any definition. */
+  allRolesUnassigned?: boolean | null;
+  /** Match accounts where any of these user ids actively holds any relationship (CSM, Account executive, or a custom definition). Drives the "My accounts" shortcut (the current user's id) and the shareable "Assigned to" filter — the ids are explicit so a shared URL resolves identically for every viewer. */
+  assignedToUserIds?: AccountsQueryAssignedToUserIdsList | null;
+  /** Optional HogQL boolean expression AND-ed into the WHERE clause. Used by the overview tile click-to-filter affordance. */
+  filterExpression?: string | null;
+  /** Aggregation expressions evaluated against the filtered account set; one value per metric is returned in `metricsResults`. When `metrics` is set without a `select`, the runner skips the regular row fetch and returns only the aggregated values. */
+  metrics?: AccountsQueryMetricsList | null;
+  tagNames?: AccountsQueryTagNamesList | null;
+  /** Filter to specific endpoints by name */
+  endpointNames?:
+    | EndpointsUsageOverviewQueryEndpointNamesList
+    | EndpointsUsageTableQueryEndpointNamesList
+    | EndpointsUsageTrendsQueryEndpointNamesList
+    | null;
+  /** Filter by materialization type */
+  materializationType?: MaterializationType | null;
+  /** When set, scope to a single effective tool's new-SDK calls (the per-tool "By harness" table). */
+  toolName?: string | null;
+  /** When set, only events with this HTTP status match; when unset, only events without a status match. */
+  errorStatus?: string | null;
+  /** Raw $mcp_error_type bucket; "unknown" selects errored events without an error type. */
+  errorType?: string;
+  /** Restrict to these $mcp_tool_category values; empty or omitted means all categories. */
+  categories?:
+    | MCPToolQualityRowsQueryCategoriesList
+    | MCPToolQualityDailyStatsQueryCategoriesList
+    | null;
+  /** Whether to count tools called immediately before or after the target tool. */
+  neighborDirection?: NeighborDirection;
+  event_names?: PropertyValuesQueryEventNamesList | null;
+  is_column?: boolean | null;
+  property_key?: string;
+  property_type?: PropertyType;
+  search_value?: string | null;
+}
+export const QueryUpgradeResponseQuery = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    custom_name: S.optional(S.NullOr(S.String)),
+    event: S.optional(S.NullOr(S.String)),
+    fixedProperties: S.optional(
+      S.NullOr(
+        S.Union(
+          EventsNodeFixedPropertiesList,
+          ActionsNodeFixedPropertiesList,
+          PersonsNodeFixedPropertiesList,
+          DataWarehouseNodeFixedPropertiesList,
+          FunnelsDataWarehouseNodeFixedPropertiesList,
+          LifecycleDataWarehouseNodeFixedPropertiesList,
+          EventsQueryFixedPropertiesList,
+          SessionsQueryFixedPropertiesList,
+          ActorsQueryFixedPropertiesList,
+        ),
+      ),
+    ),
+    kind: S.optional(S.String),
+    limit: S.optional(S.NullOr(S.Number)),
+    math: S.optional(
+      S.NullOr(
+        S.Union(
+          EventsNodeMath,
+          ActionsNodeMath,
+          DataWarehouseNodeMath,
+          FunnelsDataWarehouseNodeMath,
+          LifecycleDataWarehouseNodeMath,
+        ),
+      ),
+    ),
+    math_group_type_index: S.optional(S.NullOr(MathGroupTypeIndex)),
+    math_hogql: S.optional(S.NullOr(S.String)),
+    math_multiplier: S.optional(S.NullOr(S.Number)),
+    math_property: S.optional(S.NullOr(S.String)),
+    math_property_revenue_currency: S.optional(
+      S.NullOr(RevenueCurrencyPropertyConfig),
+    ),
+    math_property_type: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
+    optionalInFunnel: S.optional(S.NullOr(S.Boolean)),
+    orderBy: S.optional(
+      S.NullOr(
+        S.Union(
+          EventsNodeOrderByList,
+          EventsQueryOrderByList,
+          SessionsQueryOrderByList,
+          ActorsQueryOrderByList,
+          GroupsQueryOrderByList,
+          ErrorTrackingOrderBy,
+          WebOverviewQueryOrderByList,
+          WebStatsTableQueryOrderByList,
+          WebExternalClicksTableQueryOrderByList,
+          WebGoalsQueryOrderByList,
+          WebVitalsQueryOrderByList,
+          WebVitalsPathBreakdownQueryOrderByList,
+          WebPageURLSearchQueryOrderByList,
+          WebNotableChangesQueryOrderByList,
+          MarketingAnalyticsTableQueryOrderByList,
+          NonIntegratedConversionsTableQueryOrderByList,
+          LogsOrderBy,
+          TraceOrderColumn,
+          TraceSpanBreakdownOrderBy,
+          AccountsQueryOrderByList,
+          EndpointsUsageTableQueryOrderByList,
+        ),
+      ),
+    ),
+    properties: S.optional(
+      S.NullOr(
+        S.Union(
+          EventsNodePropertiesList,
+          ActionsNodePropertiesList,
+          PersonsNodePropertiesList,
+          DataWarehouseNodePropertiesList,
+          FunnelsDataWarehouseNodePropertiesList,
+          LifecycleDataWarehouseNodePropertiesList,
+          EventsQueryPropertiesList,
+          SessionsQueryPropertiesList,
+          ActorsQueryProperties,
+          GroupsQueryPropertiesList,
+          WebOverviewQueryPropertiesList,
+          WebStatsTableQueryPropertiesList,
+          WebExternalClicksTableQueryPropertiesList,
+          WebGoalsQueryPropertiesList,
+          WebVitalsQueryPropertiesList,
+          WebVitalsPathBreakdownQueryPropertiesList,
+          WebPageURLSearchQueryPropertiesList,
+          WebAnalyticsExternalSummaryQueryPropertiesList,
+          WebNotableChangesQueryPropertiesList,
+          RevenueAnalyticsGrossRevenueQueryPropertiesList,
+          RevenueAnalyticsMetricsQueryPropertiesList,
+          RevenueAnalyticsMRRQueryPropertiesList,
+          RevenueAnalyticsOverviewQueryPropertiesList,
+          RevenueAnalyticsTopCustomersQueryPropertiesList,
+          MarketingAnalyticsTableQueryPropertiesList,
+          MarketingAnalyticsAggregatedQueryPropertiesList,
+          NonIntegratedConversionsTableQueryPropertiesList,
+          TrendsQueryProperties,
+          FunnelsQueryProperties,
+          RetentionQueryProperties,
+          PathsQueryProperties,
+          StickinessQueryProperties,
+          LifecycleQueryProperties,
+          RecordingsQueryPropertiesList,
+          EventTaxonomyQueryPropertiesList,
+          ActorsPropertyTaxonomyQueryPropertiesList,
+          TracesQueryPropertiesList,
+          TraceQueryPropertiesList,
+          TraceNeighborsQueryPropertiesList,
+          MCPHarnessBreakdownQueryPropertiesList,
+        ),
+      ),
+    ),
+    response: S.optional(
+      S.NullOr(
+        S.Union(
+          EventsNodeResponseMap,
+          ActionsNodeResponseMap,
+          PersonsNodeResponseMap,
+          DataWarehouseNodeResponseMap,
+          FunnelsDataWarehouseNodeResponseMap,
+          LifecycleDataWarehouseNodeResponseMap,
+          EventsQueryResponse,
+          SessionsQueryResponse,
+          ActorsQueryResponse,
+          GroupsQueryResponse,
+          InsightActorsQueryOptionsResponse,
+          SessionsTimelineQueryResponse,
+          HogQueryResponse,
+          HogQLQueryResponse,
+          HogQLMetadataResponse,
+          HogQLAutocompleteResponse,
+          SessionAttributionExplorerQueryResponse,
+          RevenueExampleEventsQueryResponse,
+          RevenueExampleDataWarehouseTablesQueryResponse,
+          ErrorTrackingQueryResponse,
+          ErrorTrackingSimilarIssuesQueryResponse,
+          ErrorTrackingBreakdownsQueryResponse,
+          ErrorTrackingIssueCorrelationQueryResponse,
+          ExperimentFunnelsQueryResponse,
+          ExperimentTrendsQueryResponse,
+          ExperimentQueryResponse,
+          ExperimentExposureQueryResponse,
+          DocumentSimilarityQueryResponse,
+          WebOverviewQueryResponse,
+          WebStatsTableQueryResponse,
+          WebExternalClicksTableQueryResponse,
+          WebGoalsQueryResponse,
+          WebVitalsPathBreakdownQueryResponse,
+          WebPageURLSearchQueryResponse,
+          WebAnalyticsExternalSummaryQueryResponse,
+          WebNotableChangesQueryResponse,
+          RevenueAnalyticsGrossRevenueQueryResponse,
+          RevenueAnalyticsMetricsQueryResponse,
+          RevenueAnalyticsMRRQueryResponse,
+          RevenueAnalyticsOverviewQueryResponse,
+          RevenueAnalyticsTopCustomersQueryResponse,
+          MarketingAnalyticsTableQueryResponse,
+          MarketingAnalyticsAggregatedQueryResponse,
+          NonIntegratedConversionsTableQueryResponse,
+          DataTableNodeResponse,
+          TrendsQueryResponse,
+          FunnelsQueryResponse,
+          RetentionQueryResponse,
+          PathsQueryResponse,
+          StickinessQueryResponse,
+          LifecycleQueryResponse,
+          FunnelCorrelationResponse,
+          DatabaseSchemaQueryResponse,
+          RecordingsQueryResponse,
+          LogsQueryResponse,
+          LogAttributesQueryResponse,
+          LogValuesQueryResponse,
+          MetricsQueryResponse,
+          TraceSpansQueryResponse,
+          TraceSpansAggregationQueryResponse,
+          TraceSpansTreeQueryResponse,
+          TraceSpansAttributeBreakdownQueryResponse,
+          SuggestedQuestionsQueryResponse,
+          TeamTaxonomyQueryResponse,
+          EventTaxonomyQueryResponse,
+          ActorsPropertyTaxonomyQueryResponse,
+          TracesQueryResponse,
+          TraceQueryResponse,
+          SessionQueryResponse,
+          TraceNeighborsQueryResponse,
+          VectorSearchQueryResponse,
+          UsageMetricsQueryResponse,
+          AccountsQueryResponse,
+          EndpointsUsageOverviewQueryResponse,
+          EndpointsUsageTableQueryResponse,
+          EndpointsUsageTrendsQueryResponse,
+          MCPHarnessBreakdownQueryResponse,
+          MCPToolTopUsersQueryResponse,
+          MCPToolFailuresQueryResponse,
+          MCPToolFailureOccurrencesQueryResponse,
+          MCPToolStatsQueryResponse,
+          MCPToolDailyStatsQueryResponse,
+          MCPToolQualityRowsQueryResponse,
+          MCPToolQualityDailyStatsQueryResponse,
+          MCPToolCategoryCountsQueryResponse,
+          MCPToolCategoriesQueryResponse,
+          MCPToolDescriptionsQueryResponse,
+          MCPToolSampleIntentsQueryResponse,
+          MCPToolNeighborsQueryResponse,
+          PropertyValuesQueryResponse,
+        ),
+      ),
+    ),
+    version: S.optional(S.NullOr(S.Number)),
+    id: S.optional(S.Union(S.Number, S.String)),
+    cohort: S.optional(S.NullOr(S.Number)),
+    distinctId: S.optional(S.NullOr(S.String)),
+    modifiers: S.optional(S.NullOr(HogQLQueryModifiers)),
+    offset: S.optional(S.NullOr(S.Number)),
+    search: S.optional(S.NullOr(S.String)),
+    tags: S.optional(S.NullOr(QueryLogTags)),
+    distinct_id_field: S.optional(S.String),
+    dw_source_type: S.optional(S.NullOr(S.String)),
+    id_field: S.optional(S.String),
+    table_name: S.optional(S.String),
+    timestamp_field: S.optional(S.String),
+    aggregation_target_field: S.optional(S.String),
+    created_at_field: S.optional(S.String),
+    actionId: S.optional(S.NullOr(S.Number)),
+    actionSteps: S.optional(S.NullOr(EventsQueryActionStepsList)),
+    after: S.optional(S.NullOr(S.String)),
+    before: S.optional(S.NullOr(S.String)),
+    events: S.optional(
+      S.NullOr(
+        S.Union(
+          EventsQueryEventsList,
+          ErrorTrackingIssueCorrelationQueryEventsList,
+          RecordingsQueryEventsList,
+        ),
+      ),
+    ),
+    filterTestAccounts: S.optional(S.NullOr(S.Boolean)),
+    personId: S.optional(S.NullOr(S.String)),
+    select: S.optional(
+      S.NullOr(
+        S.Union(
+          EventsQuerySelectList,
+          SessionsQuerySelectList,
+          ActorsQuerySelectList,
+          GroupsQuerySelectList,
+          MarketingAnalyticsTableQuerySelectList,
+          MarketingAnalyticsAggregatedQuerySelectList,
+          NonIntegratedConversionsTableQuerySelectList,
+          AccountsQuerySelectList,
+        ),
+      ),
+    ),
+    source: S.optional(
+      S.NullOr(
+        S.Union(
+          InsightActorsQuery,
+          ActorsQuerySource,
+          InsightActorsQuerySource,
+          InsightActorsQueryOptionsSource,
+          WebVitalsQuerySource,
+          HogQLQuery,
+          DataTableNodeSource,
+          InsightVizNodeSource,
+          FunnelsActorsQuery,
+        ),
+      ),
+    ),
+    where: S.optional(
+      S.NullOr(S.Union(EventsQueryWhereList, SessionsQueryWhereList)),
+    ),
+    eventProperties: S.optional(S.NullOr(SessionsQueryEventPropertiesList)),
+    group_type_index: S.optional(S.NullOr(S.Number)),
+    breakdown: S.optional(
+      S.NullOr(
+        S.Union(
+          InsightActorsQueryBreakdown,
+          RevenueAnalyticsGrossRevenueQueryBreakdownList,
+          RevenueAnalyticsMetricsQueryBreakdownList,
+          RevenueAnalyticsMRRQueryBreakdownList,
+        ),
+      ),
+    ),
+    compare: S.optional(S.NullOr(Compare)),
+    day: S.optional(S.NullOr(InsightActorsQueryDay)),
+    includeRecordings: S.optional(S.NullOr(S.Boolean)),
+    interval: S.optional(
+      S.NullOr(S.Union(S.Number, IntervalType, SimpleIntervalType, S.String)),
+    ),
+    series: S.optional(
+      S.NullOr(
+        S.Union(
+          S.Number,
+          TrendsQuerySeriesList,
+          FunnelsQuerySeriesList,
+          StickinessQuerySeriesList,
+          LifecycleQuerySeriesList,
+        ),
+      ),
+    ),
+    status: S.optional(S.NullOr(S.Union(S.String, ErrorTrackingQueryStatus))),
+    code: S.optional(S.NullOr(S.String)),
+    connectionId: S.optional(S.NullOr(S.String)),
+    explain: S.optional(S.NullOr(S.Boolean)),
+    filters: S.optional(S.NullOr(S.Union(HogQLFilters, Filters))),
+    query: S.optional(S.String),
+    sendRawQuery: S.optional(S.NullOr(S.Boolean)),
+    values: S.optional(S.NullOr(HogQLQueryValuesMap)),
+    variables: S.optional(
+      S.NullOr(S.Union(HogQLQueryVariablesMap, HogQLMetadataVariablesMap)),
+    ),
+    debug: S.optional(S.NullOr(S.Boolean)),
+    globals: S.optional(
+      S.NullOr(S.Union(HogQLMetadataGlobalsMap, HogQLAutocompleteGlobalsMap)),
+    ),
+    language: S.optional(HogLanguage),
+    sourceQuery: S.optional(
+      S.NullOr(S.Union(HogQLMetadataSourceQuery, HogQLAutocompleteSourceQuery)),
+    ),
+    endPosition: S.optional(S.Number),
+    startPosition: S.optional(S.Number),
+    groupBy: S.optional(
+      S.Union(
+        SessionAttributionExplorerQueryGroupByList,
+        RevenueAnalyticsTopCustomersGroupBy,
+      ),
+    ),
+    assignee: S.optional(S.NullOr(ErrorTrackingIssueAssignee)),
+    dateRange: S.optional(S.NullOr(DateRange)),
+    filterGroup: S.optional(S.NullOr(PropertyGroupFilter)),
+    groupKey: S.optional(S.NullOr(S.String)),
+    groupTypeIndex: S.optional(S.NullOr(S.Number)),
+    issueId: S.optional(S.NullOr(S.String)),
+    orderDirection: S.optional(S.NullOr(OrderDirection2)),
+    pendingFingerprintIssueStateUpdates: S.optional(
+      S.NullOr(ErrorTrackingQueryPendingFingerprintIssueStateUpdatesList),
+    ),
+    searchQuery: S.optional(S.NullOr(S.String)),
+    useQueryV2: S.optional(S.NullOr(S.Boolean)),
+    useQueryV3: S.optional(S.NullOr(S.Boolean)),
+    volumeResolution: S.optional(S.Number),
+    withAggregations: S.optional(S.NullOr(S.Boolean)),
+    withFirstEvent: S.optional(S.NullOr(S.Boolean)),
+    withLastEvent: S.optional(S.NullOr(S.Boolean)),
+    maxDistance: S.optional(S.NullOr(S.Number)),
+    modelName: S.optional(S.NullOr(EmbeddingModelName)),
+    rendering: S.optional(S.NullOr(S.String)),
+    breakdownProperties: S.optional(
+      ErrorTrackingBreakdownsQueryBreakdownPropertiesList,
+    ),
+    maxValuesPerProperty: S.optional(S.NullOr(S.Number)),
+    experiment_id: S.optional(S.NullOr(S.Number)),
+    fingerprint: S.optional(S.NullOr(S.String)),
+    funnels_query: S.optional(FunnelsQuery),
+    uuid: S.optional(S.NullOr(S.String)),
+    count_query: S.optional(TrendsQuery),
+    exposure_query: S.optional(S.NullOr(TrendsQuery)),
+    metric: S.optional(S.Union(ExperimentQueryMetric, WebVitalsMetric, Metric)),
+    precomputation_mode: S.optional(S.NullOr(PrecomputationMode)),
+    end_date: S.optional(S.NullOr(S.String)),
+    experiment_name: S.optional(S.String),
+    exposure_criteria: S.optional(S.NullOr(ExperimentExposureCriteria)),
+    feature_flag: S.optional(ExperimentExposureQueryFeatureFlagMap),
+    holdout: S.optional(S.NullOr(ExperimentHoldoutType)),
+    start_date: S.optional(S.NullOr(S.String)),
+    distance_func: S.optional(DistanceFunc),
+    document_types: S.optional(DocumentSimilarityQueryDocumentTypesList),
+    model: S.optional(S.String),
+    order_by: S.optional(OrderBy),
+    order_direction: S.optional(
+      S.NullOr(S.Union(OrderDirection1, RecordingOrderDirection)),
+    ),
+    origin: S.optional(EmbeddedDocument),
+    products: S.optional(DocumentSimilarityQueryProductsList),
+    renderings: S.optional(DocumentSimilarityQueryRenderingsList),
+    threshold: S.optional(S.NullOr(S.Number)),
+    aggregation_group_type_index: S.optional(S.NullOr(S.Number)),
+    compareFilter: S.optional(S.NullOr(CompareFilter)),
+    conversionGoal: S.optional(
+      S.NullOr(
+        S.Union(
+          WebOverviewQueryConversionGoal,
+          WebStatsTableQueryConversionGoal,
+          WebExternalClicksTableQueryConversionGoal,
+          WebGoalsQueryConversionGoal,
+          WebVitalsQueryConversionGoal,
+          WebVitalsPathBreakdownQueryConversionGoal,
+          WebPageURLSearchQueryConversionGoal,
+          WebNotableChangesQueryConversionGoal,
+          MarketingAnalyticsTableQueryConversionGoal,
+          MarketingAnalyticsAggregatedQueryConversionGoal,
+          NonIntegratedConversionsTableQueryConversionGoal,
+          TrendsQueryConversionGoal,
+        ),
+      ),
+    ),
+    dataColorTheme: S.optional(S.NullOr(S.Number)),
+    doPathCleaning: S.optional(S.NullOr(S.Boolean)),
+    includeRevenue: S.optional(S.NullOr(S.Boolean)),
+    sampling: S.optional(S.NullOr(WebAnalyticsSampling)),
+    samplingFactor: S.optional(S.NullOr(S.Number)),
+    useSessionsTable: S.optional(S.NullOr(S.Boolean)),
+    useWebAnalyticsPrecompute: S.optional(S.NullOr(S.Boolean)),
+    breakdownBy: S.optional(
+      S.NullOr(S.Union(WebStatsBreakdown, EndpointsUsageBreakdown)),
+    ),
+    includeAvgTimeOnPage: S.optional(S.NullOr(S.Boolean)),
+    includeBounceRate: S.optional(S.NullOr(S.Boolean)),
+    includeHost: S.optional(S.NullOr(S.Boolean)),
+    includeScrollDepth: S.optional(S.NullOr(S.Boolean)),
+    stripQueryParams: S.optional(S.NullOr(S.Boolean)),
+    percentile: S.optional(WebVitalsPercentile),
+    thresholds: S.optional(WebVitalsPathBreakdownQueryThresholdsList),
+    searchTerm: S.optional(S.NullOr(S.String)),
+    draftConversionGoal: S.optional(
+      S.NullOr(
+        S.Union(
+          MarketingAnalyticsTableQueryDraftConversionGoal,
+          MarketingAnalyticsAggregatedQueryDraftConversionGoal,
+          NonIntegratedConversionsTableQueryDraftConversionGoal,
+        ),
+      ),
+    ),
+    drillDownLevel: S.optional(S.NullOr(MarketingAnalyticsDrillDownLevel)),
+    integrationFilter: S.optional(S.NullOr(IntegrationFilter)),
+    chartSettings: S.optional(S.NullOr(ChartSettings)),
+    display: S.optional(S.NullOr(ChartDisplayType)),
+    tableSettings: S.optional(S.NullOr(TableSettings)),
+    allowSorting: S.optional(S.NullOr(S.Boolean)),
+    columns: S.optional(S.NullOr(DataTableNodeColumnsList)),
+    context: S.optional(S.NullOr(DataTableNodeViewPropsContext)),
+    contextKey: S.optional(S.NullOr(S.String)),
+    defaultColumns: S.optional(
+      S.NullOr(
+        S.Union(
+          DataTableNodeDefaultColumnsList,
+          SavedInsightNodeDefaultColumnsList,
+        ),
+      ),
+    ),
+    embedded: S.optional(S.NullOr(S.Boolean)),
+    expandable: S.optional(S.NullOr(S.Boolean)),
+    full: S.optional(S.NullOr(S.Boolean)),
+    hiddenColumns: S.optional(S.NullOr(DataTableNodeHiddenColumnsList)),
+    pinnedColumns: S.optional(S.NullOr(DataTableNodePinnedColumnsList)),
+    propertiesViaUrl: S.optional(S.NullOr(S.Boolean)),
+    showAbsoluteTime: S.optional(S.NullOr(S.Boolean)),
+    showActions: S.optional(S.NullOr(S.Boolean)),
+    showColumnConfigurator: S.optional(S.NullOr(S.Boolean)),
+    showCount: S.optional(S.NullOr(S.Boolean)),
+    showDateRange: S.optional(S.NullOr(S.Boolean)),
+    showElapsedTime: S.optional(S.NullOr(S.Boolean)),
+    showEventFilter: S.optional(S.NullOr(S.Boolean)),
+    showEventsFilter: S.optional(S.NullOr(S.Boolean)),
+    showExport: S.optional(S.NullOr(S.Boolean)),
+    showHogQLEditor: S.optional(S.NullOr(S.Boolean)),
+    showOpenEditorButton: S.optional(S.NullOr(S.Boolean)),
+    showPersistentColumnConfigurator: S.optional(S.NullOr(S.Boolean)),
+    showPropertyFilter: S.optional(
+      S.NullOr(
+        S.Union(
+          DataTableNodeShowPropertyFilter,
+          SavedInsightNodeShowPropertyFilter,
+        ),
+      ),
+    ),
+    showRecordingColumn: S.optional(S.NullOr(S.Boolean)),
+    showReload: S.optional(S.NullOr(S.Boolean)),
+    showResultsTable: S.optional(S.NullOr(S.Boolean)),
+    showSavedFilters: S.optional(S.NullOr(S.Boolean)),
+    showSavedQueries: S.optional(S.NullOr(S.Boolean)),
+    showSearch: S.optional(S.NullOr(S.Boolean)),
+    showSourceQueryOptions: S.optional(S.NullOr(S.Boolean)),
+    showTableViews: S.optional(S.NullOr(S.Boolean)),
+    showTestAccountFilters: S.optional(S.NullOr(S.Boolean)),
+    showTimings: S.optional(S.NullOr(S.Boolean)),
+    hidePersonsModal: S.optional(S.NullOr(S.Boolean)),
+    hideTooltipOnScroll: S.optional(S.NullOr(S.Boolean)),
+    shortId: S.optional(S.String),
+    showCorrelationTable: S.optional(S.NullOr(S.Boolean)),
+    showFilters: S.optional(S.NullOr(S.Boolean)),
+    showHeader: S.optional(S.NullOr(S.Boolean)),
+    showLastComputation: S.optional(S.NullOr(S.Boolean)),
+    showLastComputationRefresh: S.optional(S.NullOr(S.Boolean)),
+    showResults: S.optional(S.NullOr(S.Boolean)),
+    showTable: S.optional(S.NullOr(S.Boolean)),
+    suppressSessionAnalysisWarning: S.optional(S.NullOr(S.Boolean)),
+    vizSpecificOptions: S.optional(S.NullOr(VizSpecificOptions)),
+    breakdownFilter: S.optional(S.NullOr(BreakdownFilter)),
+    calendarHeatmapFilter: S.optional(S.NullOr(CalendarHeatmapFilter)),
+    trendsFilter: S.optional(S.NullOr(TrendsFilter)),
+    funnelsFilter: S.optional(S.NullOr(FunnelsFilter)),
+    retentionFilter: S.optional(RetentionFilter),
+    funnelPathsFilter: S.optional(S.NullOr(FunnelPathsFilter)),
+    pathsFilter: S.optional(PathsFilter),
+    intervalCount: S.optional(S.NullOr(S.Number)),
+    stickinessFilter: S.optional(S.NullOr(StickinessFilter)),
+    customAggregationTarget: S.optional(S.NullOr(S.Boolean)),
+    lifecycleFilter: S.optional(S.NullOr(LifecycleFilter)),
+    funnelCorrelationEventExcludePropertyNames: S.optional(
+      S.NullOr(
+        FunnelCorrelationQueryFunnelCorrelationEventExcludePropertyNamesList,
+      ),
+    ),
+    funnelCorrelationEventNames: S.optional(
+      S.NullOr(FunnelCorrelationQueryFunnelCorrelationEventNamesList),
+    ),
+    funnelCorrelationExcludeEventNames: S.optional(
+      S.NullOr(FunnelCorrelationQueryFunnelCorrelationExcludeEventNamesList),
+    ),
+    funnelCorrelationExcludeNames: S.optional(
+      S.NullOr(FunnelCorrelationQueryFunnelCorrelationExcludeNamesList),
+    ),
+    funnelCorrelationNames: S.optional(
+      S.NullOr(FunnelCorrelationQueryFunnelCorrelationNamesList),
+    ),
+    funnelCorrelationType: S.optional(FunnelCorrelationResultsType),
+    actions: S.optional(S.NullOr(RecordingsQueryActionsList)),
+    comment_text: S.optional(S.NullOr(RecordingPropertyFilter)),
+    console_log_filters: S.optional(
+      S.NullOr(RecordingsQueryConsoleLogFiltersList),
+    ),
+    date_from: S.optional(S.NullOr(S.String)),
+    date_to: S.optional(S.NullOr(S.String)),
+    distinct_ids: S.optional(S.NullOr(RecordingsQueryDistinctIdsList)),
+    filter_test_accounts: S.optional(S.NullOr(S.Boolean)),
+    having_predicates: S.optional(
+      S.NullOr(RecordingsQueryHavingPredicatesList),
+    ),
+    hide_viewed_recordings: S.optional(S.NullOr(HideViewedRecordings)),
+    operand: S.optional(S.NullOr(FilterLogicalOperator)),
+    order: S.optional(S.NullOr(RecordingOrder)),
+    person_uuid: S.optional(S.NullOr(S.String)),
+    session_ids: S.optional(S.NullOr(RecordingsQuerySessionIdsList)),
+    session_recording_id: S.optional(S.NullOr(S.String)),
+    user_modified_filters: S.optional(
+      S.NullOr(RecordingsQueryUserModifiedFiltersMap),
+    ),
+    customColumns: S.optional(S.NullOr(LogsQueryCustomColumnsList)),
+    excludeAttributes: S.optional(S.NullOr(S.Boolean)),
+    liveLogsCheckpoint: S.optional(S.NullOr(S.String)),
+    resourceFingerprint: S.optional(S.NullOr(S.String)),
+    serviceNames: S.optional(
+      S.NullOr(
+        S.Union(
+          LogsQueryServiceNamesList,
+          LogAttributesQueryServiceNamesList,
+          LogValuesQueryServiceNamesList,
+          TraceSpansQueryServiceNamesList,
+          TraceSpansAggregationQueryServiceNamesList,
+          TraceSpansTreeQueryServiceNamesList,
+          TraceSpansAttributeBreakdownQueryServiceNamesList,
+        ),
+      ),
+    ),
+    severityLevels: S.optional(
+      S.NullOr(
+        S.Union(
+          LogsQuerySeverityLevelsList,
+          LogAttributesQuerySeverityLevelsList,
+          LogValuesQuerySeverityLevelsList,
+        ),
+      ),
+    ),
+    sparklineBreakdownBy: S.optional(S.NullOr(LogsSparklineBreakdownBy)),
+    attributeType: S.optional(S.String),
+    searchValues: S.optional(S.NullOr(S.Boolean)),
+    attributeKey: S.optional(S.String),
+    clauses: S.optional(MetricsQueryClausesList),
+    formula: S.optional(S.NullOr(S.String)),
+    flatSpans: S.optional(S.NullOr(S.Boolean)),
+    prefetchSpans: S.optional(S.NullOr(S.Number)),
+    rootSpans: S.optional(S.NullOr(S.Boolean)),
+    statusCodes: S.optional(S.NullOr(TraceSpansQueryStatusCodesList)),
+    traceId: S.optional(S.NullOr(S.String)),
+    serviceName: S.optional(S.String),
+    spanName: S.optional(S.String),
+    breakdownKey: S.optional(S.String),
+    breakdownType: S.optional(TraceSpanBreakdownType),
+    excludeBreakdownFilter: S.optional(S.NullOr(S.Boolean)),
+    facetSearch: S.optional(S.NullOr(S.String)),
+    maxPropertyValues: S.optional(S.NullOr(S.Number)),
+    filterSupportTraces: S.optional(S.NullOr(S.Boolean)),
+    includeSentiment: S.optional(S.NullOr(S.Boolean)),
+    randomOrder: S.optional(S.NullOr(S.Boolean)),
+    sessionId: S.optional(S.String),
+    timestamp: S.optional(S.String),
+    embedding: S.optional(VectorSearchQueryEmbeddingList),
+    embeddingVersion: S.optional(S.NullOr(S.Number)),
+    group_key: S.optional(S.NullOr(S.String)),
+    person_id: S.optional(S.NullOr(S.String)),
+    allRolesUnassigned: S.optional(S.NullOr(S.Boolean)),
+    assignedToUserIds: S.optional(S.NullOr(AccountsQueryAssignedToUserIdsList)),
+    filterExpression: S.optional(S.NullOr(S.String)),
+    metrics: S.optional(S.NullOr(AccountsQueryMetricsList)),
+    tagNames: S.optional(S.NullOr(AccountsQueryTagNamesList)),
+    endpointNames: S.optional(
+      S.NullOr(
+        S.Union(
+          EndpointsUsageOverviewQueryEndpointNamesList,
+          EndpointsUsageTableQueryEndpointNamesList,
+          EndpointsUsageTrendsQueryEndpointNamesList,
+        ),
+      ),
+    ),
+    materializationType: S.optional(S.NullOr(MaterializationType)),
+    toolName: S.optional(S.NullOr(S.String)),
+    errorStatus: S.optional(S.NullOr(S.String)),
+    errorType: S.optional(S.String),
+    categories: S.optional(
+      S.NullOr(
+        S.Union(
+          MCPToolQualityRowsQueryCategoriesList,
+          MCPToolQualityDailyStatsQueryCategoriesList,
+        ),
+      ),
+    ),
+    neighborDirection: S.optional(NeighborDirection),
+    event_names: S.optional(S.NullOr(PropertyValuesQueryEventNamesList)),
+    is_column: S.optional(S.NullOr(S.Boolean)),
+    property_key: S.optional(S.String),
+    property_type: S.optional(PropertyType),
+    search_value: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "QueryUpgradeResponseQuery",
+}) as any as S.Schema<QueryUpgradeResponseQuery>;
 
 export interface QueryUpgradeResponse {
   query?: QueryUpgradeResponseQuery;

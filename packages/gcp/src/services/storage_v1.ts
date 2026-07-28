@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 /** An AdvanceRelocateBucketOperation request. */
@@ -67,12 +67,15 @@ export interface AdvanceRelocateBucketOperationRequest {
   /** Specifies the time when the relocation will revert to the sync stage if the relocation hasn't succeeded. */
   expireTime?: string;
 }
-export const AdvanceRelocateBucketOperationRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "ttl": S.optional(S.String),
-  "expireTime": S.optional(S.String),
-}),
-).annotate({ identifier: "AdvanceRelocateBucketOperationRequest" }) as any as S.Schema<AdvanceRelocateBucketOperationRequest>;
+export const AdvanceRelocateBucketOperationRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      ttl: S.optional(S.String),
+      expireTime: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "AdvanceRelocateBucketOperationRequest",
+}) as any as S.Schema<AdvanceRelocateBucketOperationRequest>;
 
 export interface AdvanceRelocateBucketOperationsRequest {
   /** Name of the bucket to advance the relocate for. */
@@ -82,21 +85,36 @@ export interface AdvanceRelocateBucketOperationsRequest {
   /** Request body */
   body?: AdvanceRelocateBucketOperationRequest;
 }
-export const AdvanceRelocateBucketOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "operationId": S.String.pipe(T.Label()),
-  "body": S.optional(AdvanceRelocateBucketOperationRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"b/{bucket}/operations/{operationId}/advanceRelocateBucket","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "AdvanceRelocateBucketOperationsRequest" }) as any as S.Schema<AdvanceRelocateBucketOperationsRequest>;
+export const AdvanceRelocateBucketOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      bucket: S.String.pipe(T.Label()),
+      operationId: S.String.pipe(T.Label()),
+      body: S.optional(
+        AdvanceRelocateBucketOperationRequest.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "b/{bucket}/operations/{operationId}/advanceRelocateBucket",
+        baseUrl: "https://storage.googleapis.com/storage/v1/",
+      }),
+    ),
+).annotate({
+  identifier: "AdvanceRelocateBucketOperationsRequest",
+}) as any as S.Schema<AdvanceRelocateBucketOperationsRequest>;
 
 export interface AdvanceRelocateBucketOperationsResponse {}
-export const AdvanceRelocateBucketOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "AdvanceRelocateBucketOperationsResponse" }) as any as S.Schema<AdvanceRelocateBucketOperationsResponse>;
+export const AdvanceRelocateBucketOperationsResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "AdvanceRelocateBucketOperationsResponse",
+}) as any as S.Schema<AdvanceRelocateBucketOperationsResponse>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** A bulk restore objects request. */
 export interface BulkRestoreObjectsRequest {
@@ -116,16 +134,18 @@ export interface BulkRestoreObjectsRequest {
   createdBeforeTime?: string;
 }
 export const BulkRestoreObjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "allowOverwrite": S.optional(S.Boolean),
-  "softDeletedAfterTime": S.optional(S.String),
-  "softDeletedBeforeTime": S.optional(S.String),
-  "matchGlobs": S.optional(StringList),
-  "copySourceAcl": S.optional(S.Boolean),
-  "createdAfterTime": S.optional(S.String),
-  "createdBeforeTime": S.optional(S.String),
-}),
-).annotate({ identifier: "BulkRestoreObjectsRequest" }) as any as S.Schema<BulkRestoreObjectsRequest>;
+  S.Struct({
+    allowOverwrite: S.optional(S.Boolean),
+    softDeletedAfterTime: S.optional(S.String),
+    softDeletedBeforeTime: S.optional(S.String),
+    matchGlobs: S.optional(StringList),
+    copySourceAcl: S.optional(S.Boolean),
+    createdAfterTime: S.optional(S.String),
+    createdBeforeTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BulkRestoreObjectsRequest",
+}) as any as S.Schema<BulkRestoreObjectsRequest>;
 
 export interface BulkRestoreObjectsRequest_ {
   /** Name of the bucket in which the object resides. */
@@ -134,17 +154,30 @@ export interface BulkRestoreObjectsRequest_ {
   body?: BulkRestoreObjectsRequest;
 }
 export const BulkRestoreObjectsRequest_ = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "body": S.optional(BulkRestoreObjectsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"b/{bucket}/o/bulkRestore","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "BulkRestoreObjectsRequest_" }) as any as S.Schema<BulkRestoreObjectsRequest_>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    body: S.optional(BulkRestoreObjectsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "b/{bucket}/o/bulkRestore",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "BulkRestoreObjectsRequest_",
+}) as any as S.Schema<BulkRestoreObjectsRequest_>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 /** The "Status" type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each "Status" message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface GoogleRpcStatus {
@@ -156,12 +189,14 @@ export interface GoogleRpcStatus {
   message?: string;
 }
 export const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(S.Number),
-  "details": S.optional(DocumentMapList),
-  "message": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleRpcStatus" }) as any as S.Schema<GoogleRpcStatus>;
+  S.Struct({
+    code: S.optional(S.Number),
+    details: S.optional(DocumentMapList),
+    message: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleRpcStatus",
+}) as any as S.Schema<GoogleRpcStatus>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface GoogleLongrunningOperation {
@@ -181,16 +216,18 @@ export interface GoogleLongrunningOperation {
   kind?: string;
 }
 export const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "done": S.optional(S.Boolean),
-  "error": S.optional(GoogleRpcStatus),
-  "metadata": S.optional(DocumentMap),
-  "name": S.optional(S.String),
-  "response": S.optional(DocumentMap),
-  "selfLink": S.optional(S.String),
-  "kind": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleLongrunningOperation" }) as any as S.Schema<GoogleLongrunningOperation>;
+  S.Struct({
+    done: S.optional(S.Boolean),
+    error: S.optional(GoogleRpcStatus),
+    metadata: S.optional(DocumentMap),
+    name: S.optional(S.String),
+    response: S.optional(DocumentMap),
+    selfLink: S.optional(S.String),
+    kind: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleLongrunningOperation",
+}) as any as S.Schema<GoogleLongrunningOperation>;
 
 export interface CancelOperationsRequest {
   /** The parent bucket of the operation resource. */
@@ -199,19 +236,36 @@ export interface CancelOperationsRequest {
   operationId: string;
 }
 export const CancelOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "operationId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"POST","uri":"b/{bucket}/operations/{operationId}/cancel","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "CancelOperationsRequest" }) as any as S.Schema<CancelOperationsRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    operationId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "b/{bucket}/operations/{operationId}/cancel",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "CancelOperationsRequest",
+}) as any as S.Schema<CancelOperationsRequest>;
 
 export interface CancelOperationsResponse {}
 export const CancelOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "CancelOperationsResponse" }) as any as S.Schema<CancelOperationsResponse>;
+  S.Struct({}),
+).annotate({
+  identifier: "CancelOperationsResponse",
+}) as any as S.Schema<CancelOperationsResponse>;
 
-export type ComposeObjectsDestinationPredefinedAclEnum = "authenticatedRead" | "bucketOwnerFullControl" | "bucketOwnerRead" | "private" | "projectPrivate" | "publicRead";
-export const ComposeObjectsDestinationPredefinedAclEnum = /*@__PURE__*/ S.String;
+export type ComposeObjectsDestinationPredefinedAclEnum =
+  | "authenticatedRead"
+  | "bucketOwnerFullControl"
+  | "bucketOwnerRead"
+  | "private"
+  | "projectPrivate"
+  | "publicRead";
+export const ComposeObjectsDestinationPredefinedAclEnum =
+  /*@__PURE__*/ S.String;
 
 export interface ObjectAccessControlProjectTeam {
   /** The project number. */
@@ -220,11 +274,13 @@ export interface ObjectAccessControlProjectTeam {
   team?: string;
 }
 export const ObjectAccessControlProjectTeam = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectNumber": S.optional(S.String),
-  "team": S.optional(S.String),
-}),
-).annotate({ identifier: "ObjectAccessControlProjectTeam" }) as any as S.Schema<ObjectAccessControlProjectTeam>;
+  S.Struct({
+    projectNumber: S.optional(S.String),
+    team: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ObjectAccessControlProjectTeam",
+}) as any as S.Schema<ObjectAccessControlProjectTeam>;
 
 /** An access-control entry. */
 export interface ObjectAccessControl {
@@ -256,25 +312,29 @@ export interface ObjectAccessControl {
   selfLink?: string;
 }
 export const ObjectAccessControl = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.optional(S.String),
-  "domain": S.optional(S.String),
-  "email": S.optional(S.String),
-  "entity": S.optional(S.String),
-  "entityId": S.optional(S.String),
-  "etag": S.optional(S.String),
-  "generation": S.optional(S.String),
-  "id": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "object": S.optional(S.String),
-  "projectTeam": S.optional(ObjectAccessControlProjectTeam),
-  "role": S.optional(S.String),
-  "selfLink": S.optional(S.String),
-}),
-).annotate({ identifier: "ObjectAccessControl" }) as any as S.Schema<ObjectAccessControl>;
+  S.Struct({
+    bucket: S.optional(S.String),
+    domain: S.optional(S.String),
+    email: S.optional(S.String),
+    entity: S.optional(S.String),
+    entityId: S.optional(S.String),
+    etag: S.optional(S.String),
+    generation: S.optional(S.String),
+    id: S.optional(S.String),
+    kind: S.optional(S.String),
+    object: S.optional(S.String),
+    projectTeam: S.optional(ObjectAccessControlProjectTeam),
+    role: S.optional(S.String),
+    selfLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ObjectAccessControl",
+}) as any as S.Schema<ObjectAccessControl>;
 
 export type ObjectAccessControlList = ReadonlyArray<ObjectAccessControl>;
-export const ObjectAccessControlList = /*@__PURE__*/ S.Array(ObjectAccessControl) as any as S.Schema<ObjectAccessControlList>;
+export const ObjectAccessControlList = /*@__PURE__*/ S.Array(
+  ObjectAccessControl,
+) as any as S.Schema<ObjectAccessControlList>;
 
 export interface Storage_ObjectCustomerEncryption {
   /** The encryption algorithm. */
@@ -283,14 +343,19 @@ export interface Storage_ObjectCustomerEncryption {
   keySha256?: string;
 }
 export const Storage_ObjectCustomerEncryption = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "encryptionAlgorithm": S.optional(S.String),
-  "keySha256": S.optional(S.String),
-}),
-).annotate({ identifier: "Storage_ObjectCustomerEncryption" }) as any as S.Schema<Storage_ObjectCustomerEncryption>;
+  S.Struct({
+    encryptionAlgorithm: S.optional(S.String),
+    keySha256: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "Storage_ObjectCustomerEncryption",
+}) as any as S.Schema<Storage_ObjectCustomerEncryption>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
 /** The payload of a single user-defined object context. */
 export interface ObjectCustomContextPayload {
@@ -302,25 +367,34 @@ export interface ObjectCustomContextPayload {
   updateTime?: string;
 }
 export const ObjectCustomContextPayload = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "value": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-}),
-).annotate({ identifier: "ObjectCustomContextPayload" }) as any as S.Schema<ObjectCustomContextPayload>;
+  S.Struct({
+    value: S.optional(S.String),
+    createTime: S.optional(S.String),
+    updateTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ObjectCustomContextPayload",
+}) as any as S.Schema<ObjectCustomContextPayload>;
 
-export type ObjectCustomContextPayloadMap = { [key: string]: ObjectCustomContextPayload | undefined };
-export const ObjectCustomContextPayloadMap = /*@__PURE__*/ S.Record(S.String, ObjectCustomContextPayload) as any as S.Schema<ObjectCustomContextPayloadMap>;
+export type ObjectCustomContextPayloadMap = {
+  [key: string]: ObjectCustomContextPayload | undefined;
+};
+export const ObjectCustomContextPayloadMap = /*@__PURE__*/ S.Record(
+  S.String,
+  ObjectCustomContextPayload,
+) as any as S.Schema<ObjectCustomContextPayloadMap>;
 
 export interface Storage_ObjectContexts {
   /** User-defined object contexts. */
   custom?: ObjectCustomContextPayloadMap;
 }
 export const Storage_ObjectContexts = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "custom": S.optional(ObjectCustomContextPayloadMap),
-}),
-).annotate({ identifier: "Storage_ObjectContexts" }) as any as S.Schema<Storage_ObjectContexts>;
+  S.Struct({
+    custom: S.optional(ObjectCustomContextPayloadMap),
+  }),
+).annotate({
+  identifier: "Storage_ObjectContexts",
+}) as any as S.Schema<Storage_ObjectContexts>;
 
 export interface Storage_ObjectOwner {
   /** The entity, in the form user-userId. */
@@ -329,11 +403,13 @@ export interface Storage_ObjectOwner {
   entityId?: string;
 }
 export const Storage_ObjectOwner = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "entity": S.optional(S.String),
-  "entityId": S.optional(S.String),
-}),
-).annotate({ identifier: "Storage_ObjectOwner" }) as any as S.Schema<Storage_ObjectOwner>;
+  S.Struct({
+    entity: S.optional(S.String),
+    entityId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "Storage_ObjectOwner",
+}) as any as S.Schema<Storage_ObjectOwner>;
 
 export interface Storage_ObjectRetention {
   /** A time in RFC 3339 format until which object retention protects this object. */
@@ -342,11 +418,13 @@ export interface Storage_ObjectRetention {
   mode?: string;
 }
 export const Storage_ObjectRetention = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "retainUntilTime": S.optional(S.String),
-  "mode": S.optional(S.String),
-}),
-).annotate({ identifier: "Storage_ObjectRetention" }) as any as S.Schema<Storage_ObjectRetention>;
+  S.Struct({
+    retainUntilTime: S.optional(S.String),
+    mode: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "Storage_ObjectRetention",
+}) as any as S.Schema<Storage_ObjectRetention>;
 
 /** An object. */
 export interface Storage_Object {
@@ -428,57 +506,60 @@ export interface Storage_Object {
   updated?: string;
 }
 export const Storage_Object = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "acl": S.optional(ObjectAccessControlList),
-  "bucket": S.optional(S.String),
-  "cacheControl": S.optional(S.String),
-  "componentCount": S.optional(S.Number),
-  "contentDisposition": S.optional(S.String),
-  "contentEncoding": S.optional(S.String),
-  "contentLanguage": S.optional(S.String),
-  "contentType": S.optional(S.String),
-  "crc32c": S.optional(S.String),
-  "customTime": S.optional(S.String),
-  "customerEncryption": S.optional(Storage_ObjectCustomerEncryption),
-  "etag": S.optional(S.String),
-  "eventBasedHold": S.optional(S.Boolean),
-  "generation": S.optional(S.String),
-  "id": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "kmsKeyName": S.optional(S.String),
-  "md5Hash": S.optional(S.String),
-  "mediaLink": S.optional(S.String),
-  "metadata": S.optional(StringMap),
-  "contexts": S.optional(Storage_ObjectContexts),
-  "restoreToken": S.optional(S.String),
-  "metageneration": S.optional(S.String),
-  "name": S.optional(S.String),
-  "owner": S.optional(Storage_ObjectOwner),
-  "retentionExpirationTime": S.optional(S.String),
-  "retention": S.optional(Storage_ObjectRetention),
-  "selfLink": S.optional(S.String),
-  "size": S.optional(S.String),
-  "storageClass": S.optional(S.String),
-  "temporaryHold": S.optional(S.Boolean),
-  "timeCreated": S.optional(S.String),
-  "timeDeleted": S.optional(S.String),
-  "timeFinalized": S.optional(S.String),
-  "softDeleteTime": S.optional(S.String),
-  "hardDeleteTime": S.optional(S.String),
-  "timeStorageClassUpdated": S.optional(S.String),
-  "updated": S.optional(S.String),
-}),
+  S.Struct({
+    acl: S.optional(ObjectAccessControlList),
+    bucket: S.optional(S.String),
+    cacheControl: S.optional(S.String),
+    componentCount: S.optional(S.Number),
+    contentDisposition: S.optional(S.String),
+    contentEncoding: S.optional(S.String),
+    contentLanguage: S.optional(S.String),
+    contentType: S.optional(S.String),
+    crc32c: S.optional(S.String),
+    customTime: S.optional(S.String),
+    customerEncryption: S.optional(Storage_ObjectCustomerEncryption),
+    etag: S.optional(S.String),
+    eventBasedHold: S.optional(S.Boolean),
+    generation: S.optional(S.String),
+    id: S.optional(S.String),
+    kind: S.optional(S.String),
+    kmsKeyName: S.optional(S.String),
+    md5Hash: S.optional(S.String),
+    mediaLink: S.optional(S.String),
+    metadata: S.optional(StringMap),
+    contexts: S.optional(Storage_ObjectContexts),
+    restoreToken: S.optional(S.String),
+    metageneration: S.optional(S.String),
+    name: S.optional(S.String),
+    owner: S.optional(Storage_ObjectOwner),
+    retentionExpirationTime: S.optional(S.String),
+    retention: S.optional(Storage_ObjectRetention),
+    selfLink: S.optional(S.String),
+    size: S.optional(S.String),
+    storageClass: S.optional(S.String),
+    temporaryHold: S.optional(S.Boolean),
+    timeCreated: S.optional(S.String),
+    timeDeleted: S.optional(S.String),
+    timeFinalized: S.optional(S.String),
+    softDeleteTime: S.optional(S.String),
+    hardDeleteTime: S.optional(S.String),
+    timeStorageClassUpdated: S.optional(S.String),
+    updated: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Storage_Object" }) as any as S.Schema<Storage_Object>;
 
 export interface ComposeRequestSourceObjectsItemObjectPreconditions {
   /** Only perform the composition if the generation of the source object that would be used matches this value. If this value and a generation are both specified, they must be the same value or the call will fail. */
   ifGenerationMatch?: string;
 }
-export const ComposeRequestSourceObjectsItemObjectPreconditions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "ifGenerationMatch": S.optional(S.String),
-}),
-).annotate({ identifier: "ComposeRequestSourceObjectsItemObjectPreconditions" }) as any as S.Schema<ComposeRequestSourceObjectsItemObjectPreconditions>;
+export const ComposeRequestSourceObjectsItemObjectPreconditions =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      ifGenerationMatch: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ComposeRequestSourceObjectsItemObjectPreconditions",
+  }) as any as S.Schema<ComposeRequestSourceObjectsItemObjectPreconditions>;
 
 export interface ComposeRequestSourceObjectsItem {
   /** The generation of this object to use as the source. */
@@ -489,15 +570,22 @@ export interface ComposeRequestSourceObjectsItem {
   objectPreconditions?: ComposeRequestSourceObjectsItemObjectPreconditions;
 }
 export const ComposeRequestSourceObjectsItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "generation": S.optional(S.String),
-  "name": S.optional(S.String),
-  "objectPreconditions": S.optional(ComposeRequestSourceObjectsItemObjectPreconditions),
-}),
-).annotate({ identifier: "ComposeRequestSourceObjectsItem" }) as any as S.Schema<ComposeRequestSourceObjectsItem>;
+  S.Struct({
+    generation: S.optional(S.String),
+    name: S.optional(S.String),
+    objectPreconditions: S.optional(
+      ComposeRequestSourceObjectsItemObjectPreconditions,
+    ),
+  }),
+).annotate({
+  identifier: "ComposeRequestSourceObjectsItem",
+}) as any as S.Schema<ComposeRequestSourceObjectsItem>;
 
-export type ComposeRequestSourceObjectsItemList = ReadonlyArray<ComposeRequestSourceObjectsItem>;
-export const ComposeRequestSourceObjectsItemList = /*@__PURE__*/ S.Array(ComposeRequestSourceObjectsItem) as any as S.Schema<ComposeRequestSourceObjectsItemList>;
+export type ComposeRequestSourceObjectsItemList =
+  ReadonlyArray<ComposeRequestSourceObjectsItem>;
+export const ComposeRequestSourceObjectsItemList = /*@__PURE__*/ S.Array(
+  ComposeRequestSourceObjectsItem,
+) as any as S.Schema<ComposeRequestSourceObjectsItemList>;
 
 /** A Compose request. */
 export interface ComposeRequest {
@@ -511,12 +599,12 @@ export interface ComposeRequest {
   deleteSourceObjects?: boolean;
 }
 export const ComposeRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "destination": S.optional(Storage_Object),
-  "kind": S.optional(S.String),
-  "sourceObjects": S.optional(ComposeRequestSourceObjectsItemList),
-  "deleteSourceObjects": S.optional(S.Boolean),
-}),
+  S.Struct({
+    destination: S.optional(Storage_Object),
+    kind: S.optional(S.String),
+    sourceObjects: S.optional(ComposeRequestSourceObjectsItemList),
+    deleteSourceObjects: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "ComposeRequest" }) as any as S.Schema<ComposeRequest>;
 
 export interface ComposeObjectsRequest {
@@ -525,7 +613,9 @@ export interface ComposeObjectsRequest {
   /** Name of the new object. For information about how to URL encode object names to be path safe, see [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding). */
   destinationObject: string;
   /** Apply a predefined set of access controls to the destination object. */
-  destinationPredefinedAcl?: ComposeObjectsDestinationPredefinedAclEnum | (string & {});
+  destinationPredefinedAcl?:
+    | ComposeObjectsDestinationPredefinedAclEnum
+    | (string & {});
   /** Specifies which groups of Object Contexts from the source object(s) should be dropped from the destination object. */
   dropContextGroups?: StringList;
   /** Makes the operation conditional on whether the object's current generation matches the given value. Setting to 0 makes the operation succeed only if there are no live versions of the object. */
@@ -540,20 +630,36 @@ export interface ComposeObjectsRequest {
   body?: ComposeRequest;
 }
 export const ComposeObjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "destinationBucket": S.String.pipe(T.Label()),
-  "destinationObject": S.String.pipe(T.Label()),
-  "destinationPredefinedAcl": S.optional(ComposeObjectsDestinationPredefinedAclEnum.pipe(T.Query())),
-  "dropContextGroups": S.optional(StringList.pipe(T.Query())),
-  "ifGenerationMatch": S.optional(S.String.pipe(T.Query())),
-  "ifMetagenerationMatch": S.optional(S.String.pipe(T.Query())),
-  "kmsKeyName": S.optional(S.String.pipe(T.Query())),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(ComposeRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"b/{destinationBucket}/o/{destinationObject}/compose","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "ComposeObjectsRequest" }) as any as S.Schema<ComposeObjectsRequest>;
+  S.Struct({
+    destinationBucket: S.String.pipe(T.Label()),
+    destinationObject: S.String.pipe(T.Label()),
+    destinationPredefinedAcl: S.optional(
+      ComposeObjectsDestinationPredefinedAclEnum.pipe(T.Query()),
+    ),
+    dropContextGroups: S.optional(StringList.pipe(T.Query())),
+    ifGenerationMatch: S.optional(S.String.pipe(T.Query())),
+    ifMetagenerationMatch: S.optional(S.String.pipe(T.Query())),
+    kmsKeyName: S.optional(S.String.pipe(T.Query())),
+    userProject: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(ComposeRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "b/{destinationBucket}/o/{destinationObject}/compose",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "ComposeObjectsRequest",
+}) as any as S.Schema<ComposeObjectsRequest>;
 
-export type CopyObjectsDestinationPredefinedAclEnum = "authenticatedRead" | "bucketOwnerFullControl" | "bucketOwnerRead" | "private" | "projectPrivate" | "publicRead";
+export type CopyObjectsDestinationPredefinedAclEnum =
+  | "authenticatedRead"
+  | "bucketOwnerFullControl"
+  | "bucketOwnerRead"
+  | "private"
+  | "projectPrivate"
+  | "publicRead";
 export const CopyObjectsDestinationPredefinedAclEnum = /*@__PURE__*/ S.String;
 
 export type CopyObjectsProjectionEnum = "full" | "noAcl";
@@ -567,7 +673,9 @@ export interface CopyObjectsRequest {
   /** Name of the new object. Required when the object metadata is not otherwise provided. Overrides the object metadata's name value, if any. */
   destinationObject: string;
   /** Apply a predefined set of access controls to the destination object. */
-  destinationPredefinedAcl?: CopyObjectsDestinationPredefinedAclEnum | (string & {});
+  destinationPredefinedAcl?:
+    | CopyObjectsDestinationPredefinedAclEnum
+    | (string & {});
   /** Makes the operation conditional on whether the destination object's current generation matches the given value. Setting to 0 makes the operation succeed only if there are no live versions of the object. */
   ifGenerationMatch?: string;
   /** Makes the operation conditional on whether the destination object's current generation does not match the given value. If no live object exists, the precondition fails. Setting to 0 makes the operation succeed only if there is a live version of the object. */
@@ -598,27 +706,37 @@ export interface CopyObjectsRequest {
   body?: Storage_Object;
 }
 export const CopyObjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "destinationBucket": S.String.pipe(T.Label()),
-  "destinationKmsKeyName": S.optional(S.String.pipe(T.Query())),
-  "destinationObject": S.String.pipe(T.Label()),
-  "destinationPredefinedAcl": S.optional(CopyObjectsDestinationPredefinedAclEnum.pipe(T.Query())),
-  "ifGenerationMatch": S.optional(S.String.pipe(T.Query())),
-  "ifGenerationNotMatch": S.optional(S.String.pipe(T.Query())),
-  "ifMetagenerationMatch": S.optional(S.String.pipe(T.Query())),
-  "ifMetagenerationNotMatch": S.optional(S.String.pipe(T.Query())),
-  "ifSourceGenerationMatch": S.optional(S.String.pipe(T.Query())),
-  "ifSourceGenerationNotMatch": S.optional(S.String.pipe(T.Query())),
-  "ifSourceMetagenerationMatch": S.optional(S.String.pipe(T.Query())),
-  "ifSourceMetagenerationNotMatch": S.optional(S.String.pipe(T.Query())),
-  "projection": S.optional(CopyObjectsProjectionEnum.pipe(T.Query())),
-  "sourceBucket": S.String.pipe(T.Label()),
-  "sourceGeneration": S.optional(S.String.pipe(T.Query())),
-  "sourceObject": S.String.pipe(T.Label()),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Storage_Object.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"b/{sourceBucket}/o/{sourceObject}/copyTo/b/{destinationBucket}/o/{destinationObject}","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "CopyObjectsRequest" }) as any as S.Schema<CopyObjectsRequest>;
+  S.Struct({
+    destinationBucket: S.String.pipe(T.Label()),
+    destinationKmsKeyName: S.optional(S.String.pipe(T.Query())),
+    destinationObject: S.String.pipe(T.Label()),
+    destinationPredefinedAcl: S.optional(
+      CopyObjectsDestinationPredefinedAclEnum.pipe(T.Query()),
+    ),
+    ifGenerationMatch: S.optional(S.String.pipe(T.Query())),
+    ifGenerationNotMatch: S.optional(S.String.pipe(T.Query())),
+    ifMetagenerationMatch: S.optional(S.String.pipe(T.Query())),
+    ifMetagenerationNotMatch: S.optional(S.String.pipe(T.Query())),
+    ifSourceGenerationMatch: S.optional(S.String.pipe(T.Query())),
+    ifSourceGenerationNotMatch: S.optional(S.String.pipe(T.Query())),
+    ifSourceMetagenerationMatch: S.optional(S.String.pipe(T.Query())),
+    ifSourceMetagenerationNotMatch: S.optional(S.String.pipe(T.Query())),
+    projection: S.optional(CopyObjectsProjectionEnum.pipe(T.Query())),
+    sourceBucket: S.String.pipe(T.Label()),
+    sourceGeneration: S.optional(S.String.pipe(T.Query())),
+    sourceObject: S.String.pipe(T.Label()),
+    userProject: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(Storage_Object.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "b/{sourceBucket}/o/{sourceObject}/copyTo/b/{destinationBucket}/o/{destinationObject}",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "CopyObjectsRequest",
+}) as any as S.Schema<CopyObjectsRequest>;
 
 export interface CreateProjectsHmacKeysRequest {
   /** Project ID owning the service account. */
@@ -629,12 +747,20 @@ export interface CreateProjectsHmacKeysRequest {
   userProject?: string;
 }
 export const CreateProjectsHmacKeysRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectId": S.String.pipe(T.Label()),
-  "serviceAccountEmail": S.String.pipe(T.Query()),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"POST","uri":"projects/{projectId}/hmacKeys","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "CreateProjectsHmacKeysRequest" }) as any as S.Schema<CreateProjectsHmacKeysRequest>;
+  S.Struct({
+    projectId: S.String.pipe(T.Label()),
+    serviceAccountEmail: S.String.pipe(T.Query()),
+    userProject: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "projects/{projectId}/hmacKeys",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateProjectsHmacKeysRequest",
+}) as any as S.Schema<CreateProjectsHmacKeysRequest>;
 
 /** JSON template to produce a JSON-style HMAC Key metadata resource. */
 export interface HmacKeyMetadata {
@@ -660,19 +786,21 @@ export interface HmacKeyMetadata {
   updated?: string;
 }
 export const HmacKeyMetadata = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "accessId": S.optional(S.String),
-  "etag": S.optional(S.String),
-  "id": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "projectId": S.optional(S.String),
-  "selfLink": S.optional(S.String),
-  "serviceAccountEmail": S.optional(S.String),
-  "state": S.optional(S.String),
-  "timeCreated": S.optional(S.String),
-  "updated": S.optional(S.String),
-}),
-).annotate({ identifier: "HmacKeyMetadata" }) as any as S.Schema<HmacKeyMetadata>;
+  S.Struct({
+    accessId: S.optional(S.String),
+    etag: S.optional(S.String),
+    id: S.optional(S.String),
+    kind: S.optional(S.String),
+    projectId: S.optional(S.String),
+    selfLink: S.optional(S.String),
+    serviceAccountEmail: S.optional(S.String),
+    state: S.optional(S.String),
+    timeCreated: S.optional(S.String),
+    updated: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "HmacKeyMetadata",
+}) as any as S.Schema<HmacKeyMetadata>;
 
 /** JSON template to produce a JSON-style HMAC Key resource for Create responses. */
 export interface HmacKey {
@@ -684,11 +812,11 @@ export interface HmacKey {
   secret?: string;
 }
 export const HmacKey = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "metadata": S.optional(HmacKeyMetadata),
-  "secret": S.optional(S.String),
-}),
+  S.Struct({
+    kind: S.optional(S.String),
+    metadata: S.optional(HmacKeyMetadata),
+    secret: S.optional(S.String),
+  }),
 ).annotate({ identifier: "HmacKey" }) as any as S.Schema<HmacKey>;
 
 export interface DeleteBucketAccessControlsRequest {
@@ -700,17 +828,27 @@ export interface DeleteBucketAccessControlsRequest {
   userProject?: string;
 }
 export const DeleteBucketAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "entity": S.String.pipe(T.Label()),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"b/{bucket}/acl/{entity}","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "DeleteBucketAccessControlsRequest" }) as any as S.Schema<DeleteBucketAccessControlsRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    entity: S.String.pipe(T.Label()),
+    userProject: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "b/{bucket}/acl/{entity}",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteBucketAccessControlsRequest",
+}) as any as S.Schema<DeleteBucketAccessControlsRequest>;
 
 export interface DeleteBucketAccessControlsResponse {}
 export const DeleteBucketAccessControlsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "DeleteBucketAccessControlsResponse" }) as any as S.Schema<DeleteBucketAccessControlsResponse>;
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteBucketAccessControlsResponse",
+}) as any as S.Schema<DeleteBucketAccessControlsResponse>;
 
 export interface DeleteBucketsRequest {
   /** Name of a bucket. */
@@ -723,18 +861,28 @@ export interface DeleteBucketsRequest {
   userProject?: string;
 }
 export const DeleteBucketsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "ifMetagenerationMatch": S.optional(S.String.pipe(T.Query())),
-  "ifMetagenerationNotMatch": S.optional(S.String.pipe(T.Query())),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"b/{bucket}","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "DeleteBucketsRequest" }) as any as S.Schema<DeleteBucketsRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    ifMetagenerationMatch: S.optional(S.String.pipe(T.Query())),
+    ifMetagenerationNotMatch: S.optional(S.String.pipe(T.Query())),
+    userProject: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "b/{bucket}",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteBucketsRequest",
+}) as any as S.Schema<DeleteBucketsRequest>;
 
 export interface DeleteBucketsResponse {}
 export const DeleteBucketsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "DeleteBucketsResponse" }) as any as S.Schema<DeleteBucketsResponse>;
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteBucketsResponse",
+}) as any as S.Schema<DeleteBucketsResponse>;
 
 export interface DeleteDefaultObjectAccessControlsRequest {
   /** Name of a bucket. */
@@ -744,18 +892,28 @@ export interface DeleteDefaultObjectAccessControlsRequest {
   /** The project to be billed for this request. Required for Requester Pays buckets. */
   userProject?: string;
 }
-export const DeleteDefaultObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "entity": S.String.pipe(T.Label()),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"b/{bucket}/defaultObjectAcl/{entity}","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "DeleteDefaultObjectAccessControlsRequest" }) as any as S.Schema<DeleteDefaultObjectAccessControlsRequest>;
+export const DeleteDefaultObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      bucket: S.String.pipe(T.Label()),
+      entity: S.String.pipe(T.Label()),
+      userProject: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "b/{bucket}/defaultObjectAcl/{entity}",
+        baseUrl: "https://storage.googleapis.com/storage/v1/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteDefaultObjectAccessControlsRequest",
+}) as any as S.Schema<DeleteDefaultObjectAccessControlsRequest>;
 
 export interface DeleteDefaultObjectAccessControlsResponse {}
-export const DeleteDefaultObjectAccessControlsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "DeleteDefaultObjectAccessControlsResponse" }) as any as S.Schema<DeleteDefaultObjectAccessControlsResponse>;
+export const DeleteDefaultObjectAccessControlsResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "DeleteDefaultObjectAccessControlsResponse",
+  }) as any as S.Schema<DeleteDefaultObjectAccessControlsResponse>;
 
 export interface DeleteFoldersRequest {
   /** Name of the bucket in which the folder resides. */
@@ -768,18 +926,28 @@ export interface DeleteFoldersRequest {
   ifMetagenerationNotMatch?: string;
 }
 export const DeleteFoldersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "folder": S.String.pipe(T.Label()),
-  "ifMetagenerationMatch": S.optional(S.String.pipe(T.Query())),
-  "ifMetagenerationNotMatch": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"b/{bucket}/folders/{folder}","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "DeleteFoldersRequest" }) as any as S.Schema<DeleteFoldersRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    folder: S.String.pipe(T.Label()),
+    ifMetagenerationMatch: S.optional(S.String.pipe(T.Query())),
+    ifMetagenerationNotMatch: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "b/{bucket}/folders/{folder}",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteFoldersRequest",
+}) as any as S.Schema<DeleteFoldersRequest>;
 
 export interface DeleteFoldersResponse {}
 export const DeleteFoldersResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "DeleteFoldersResponse" }) as any as S.Schema<DeleteFoldersResponse>;
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteFoldersResponse",
+}) as any as S.Schema<DeleteFoldersResponse>;
 
 export interface DeleteManagedFoldersRequest {
   /** Name of the bucket containing the managed folder. */
@@ -794,19 +962,29 @@ export interface DeleteManagedFoldersRequest {
   allowNonEmpty?: boolean;
 }
 export const DeleteManagedFoldersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "managedFolder": S.String.pipe(T.Label()),
-  "ifMetagenerationMatch": S.optional(S.String.pipe(T.Query())),
-  "ifMetagenerationNotMatch": S.optional(S.String.pipe(T.Query())),
-  "allowNonEmpty": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"b/{bucket}/managedFolders/{managedFolder}","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "DeleteManagedFoldersRequest" }) as any as S.Schema<DeleteManagedFoldersRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    managedFolder: S.String.pipe(T.Label()),
+    ifMetagenerationMatch: S.optional(S.String.pipe(T.Query())),
+    ifMetagenerationNotMatch: S.optional(S.String.pipe(T.Query())),
+    allowNonEmpty: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "b/{bucket}/managedFolders/{managedFolder}",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteManagedFoldersRequest",
+}) as any as S.Schema<DeleteManagedFoldersRequest>;
 
 export interface DeleteManagedFoldersResponse {}
 export const DeleteManagedFoldersResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "DeleteManagedFoldersResponse" }) as any as S.Schema<DeleteManagedFoldersResponse>;
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteManagedFoldersResponse",
+}) as any as S.Schema<DeleteManagedFoldersResponse>;
 
 export interface DeleteNotificationsRequest {
   /** The parent bucket of the notification. */
@@ -817,17 +995,27 @@ export interface DeleteNotificationsRequest {
   userProject?: string;
 }
 export const DeleteNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "notification": S.String.pipe(T.Label()),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"b/{bucket}/notificationConfigs/{notification}","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "DeleteNotificationsRequest" }) as any as S.Schema<DeleteNotificationsRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    notification: S.String.pipe(T.Label()),
+    userProject: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "b/{bucket}/notificationConfigs/{notification}",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteNotificationsRequest",
+}) as any as S.Schema<DeleteNotificationsRequest>;
 
 export interface DeleteNotificationsResponse {}
 export const DeleteNotificationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "DeleteNotificationsResponse" }) as any as S.Schema<DeleteNotificationsResponse>;
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteNotificationsResponse",
+}) as any as S.Schema<DeleteNotificationsResponse>;
 
 export interface DeleteObjectAccessControlsRequest {
   /** Name of a bucket. */
@@ -842,19 +1030,29 @@ export interface DeleteObjectAccessControlsRequest {
   userProject?: string;
 }
 export const DeleteObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "entity": S.String.pipe(T.Label()),
-  "generation": S.optional(S.String.pipe(T.Query())),
-  "object": S.String.pipe(T.Label()),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"b/{bucket}/o/{object}/acl/{entity}","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "DeleteObjectAccessControlsRequest" }) as any as S.Schema<DeleteObjectAccessControlsRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    entity: S.String.pipe(T.Label()),
+    generation: S.optional(S.String.pipe(T.Query())),
+    object: S.String.pipe(T.Label()),
+    userProject: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "b/{bucket}/o/{object}/acl/{entity}",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteObjectAccessControlsRequest",
+}) as any as S.Schema<DeleteObjectAccessControlsRequest>;
 
 export interface DeleteObjectAccessControlsResponse {}
 export const DeleteObjectAccessControlsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "DeleteObjectAccessControlsResponse" }) as any as S.Schema<DeleteObjectAccessControlsResponse>;
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteObjectAccessControlsResponse",
+}) as any as S.Schema<DeleteObjectAccessControlsResponse>;
 
 export interface DeleteObjectsRequest {
   /** Name of the bucket in which the object resides. */
@@ -875,22 +1073,32 @@ export interface DeleteObjectsRequest {
   userProject?: string;
 }
 export const DeleteObjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "generation": S.optional(S.String.pipe(T.Query())),
-  "ifGenerationMatch": S.optional(S.String.pipe(T.Query())),
-  "ifGenerationNotMatch": S.optional(S.String.pipe(T.Query())),
-  "ifMetagenerationMatch": S.optional(S.String.pipe(T.Query())),
-  "ifMetagenerationNotMatch": S.optional(S.String.pipe(T.Query())),
-  "object": S.String.pipe(T.Label()),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"b/{bucket}/o/{object}","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "DeleteObjectsRequest" }) as any as S.Schema<DeleteObjectsRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    generation: S.optional(S.String.pipe(T.Query())),
+    ifGenerationMatch: S.optional(S.String.pipe(T.Query())),
+    ifGenerationNotMatch: S.optional(S.String.pipe(T.Query())),
+    ifMetagenerationMatch: S.optional(S.String.pipe(T.Query())),
+    ifMetagenerationNotMatch: S.optional(S.String.pipe(T.Query())),
+    object: S.String.pipe(T.Label()),
+    userProject: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "b/{bucket}/o/{object}",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteObjectsRequest",
+}) as any as S.Schema<DeleteObjectsRequest>;
 
 export interface DeleteObjectsResponse {}
 export const DeleteObjectsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "DeleteObjectsResponse" }) as any as S.Schema<DeleteObjectsResponse>;
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteObjectsResponse",
+}) as any as S.Schema<DeleteObjectsResponse>;
 
 export interface DeleteProjectsHmacKeysRequest {
   /** Name of the HMAC key to be deleted. */
@@ -901,17 +1109,27 @@ export interface DeleteProjectsHmacKeysRequest {
   userProject?: string;
 }
 export const DeleteProjectsHmacKeysRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "accessId": S.String.pipe(T.Label()),
-  "projectId": S.String.pipe(T.Label()),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"projects/{projectId}/hmacKeys/{accessId}","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "DeleteProjectsHmacKeysRequest" }) as any as S.Schema<DeleteProjectsHmacKeysRequest>;
+  S.Struct({
+    accessId: S.String.pipe(T.Label()),
+    projectId: S.String.pipe(T.Label()),
+    userProject: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "projects/{projectId}/hmacKeys/{accessId}",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteProjectsHmacKeysRequest",
+}) as any as S.Schema<DeleteProjectsHmacKeysRequest>;
 
 export interface DeleteProjectsHmacKeysResponse {}
 export const DeleteProjectsHmacKeysResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "DeleteProjectsHmacKeysResponse" }) as any as S.Schema<DeleteProjectsHmacKeysResponse>;
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteProjectsHmacKeysResponse",
+}) as any as S.Schema<DeleteProjectsHmacKeysResponse>;
 
 export interface DeleteRecursiveFoldersRequest {
   /** Name of the bucket in which the folder resides. */
@@ -924,13 +1142,21 @@ export interface DeleteRecursiveFoldersRequest {
   ifMetagenerationNotMatch?: string;
 }
 export const DeleteRecursiveFoldersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "folder": S.String.pipe(T.Label()),
-  "ifMetagenerationMatch": S.optional(S.String.pipe(T.Query())),
-  "ifMetagenerationNotMatch": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"POST","uri":"b/{bucket}/folders/{folder}/deleteRecursive","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "DeleteRecursiveFoldersRequest" }) as any as S.Schema<DeleteRecursiveFoldersRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    folder: S.String.pipe(T.Label()),
+    ifMetagenerationMatch: S.optional(S.String.pipe(T.Query())),
+    ifMetagenerationNotMatch: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "b/{bucket}/folders/{folder}/deleteRecursive",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteRecursiveFoldersRequest",
+}) as any as S.Schema<DeleteRecursiveFoldersRequest>;
 
 export interface DisableAnywhereCachesRequest {
   /** Name of the parent bucket. */
@@ -939,11 +1165,19 @@ export interface DisableAnywhereCachesRequest {
   anywhereCacheId: string;
 }
 export const DisableAnywhereCachesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "anywhereCacheId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"POST","uri":"b/{bucket}/anywhereCaches/{anywhereCacheId}/disable","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "DisableAnywhereCachesRequest" }) as any as S.Schema<DisableAnywhereCachesRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    anywhereCacheId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "b/{bucket}/anywhereCaches/{anywhereCacheId}/disable",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "DisableAnywhereCachesRequest",
+}) as any as S.Schema<DisableAnywhereCachesRequest>;
 
 /** An Anywhere Cache instance. */
 export interface AnywhereCache {
@@ -975,21 +1209,21 @@ export interface AnywhereCache {
   ingestOnWrite?: boolean;
 }
 export const AnywhereCache = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "id": S.optional(S.String),
-  "selfLink": S.optional(S.String),
-  "bucket": S.optional(S.String),
-  "anywhereCacheId": S.optional(S.String),
-  "zone": S.optional(S.String),
-  "state": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "ttl": S.optional(S.String),
-  "admissionPolicy": S.optional(S.String),
-  "pendingUpdate": S.optional(S.Boolean),
-  "ingestOnWrite": S.optional(S.Boolean),
-}),
+  S.Struct({
+    kind: S.optional(S.String),
+    id: S.optional(S.String),
+    selfLink: S.optional(S.String),
+    bucket: S.optional(S.String),
+    anywhereCacheId: S.optional(S.String),
+    zone: S.optional(S.String),
+    state: S.optional(S.String),
+    createTime: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    ttl: S.optional(S.String),
+    admissionPolicy: S.optional(S.String),
+    pendingUpdate: S.optional(S.Boolean),
+    ingestOnWrite: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "AnywhereCache" }) as any as S.Schema<AnywhereCache>;
 
 export interface GetAnywhereCachesRequest {
@@ -999,11 +1233,19 @@ export interface GetAnywhereCachesRequest {
   anywhereCacheId: string;
 }
 export const GetAnywhereCachesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "anywhereCacheId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"b/{bucket}/anywhereCaches/{anywhereCacheId}","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "GetAnywhereCachesRequest" }) as any as S.Schema<GetAnywhereCachesRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    anywhereCacheId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "b/{bucket}/anywhereCaches/{anywhereCacheId}",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "GetAnywhereCachesRequest",
+}) as any as S.Schema<GetAnywhereCachesRequest>;
 
 export interface GetBucketAccessControlsRequest {
   /** Name of a bucket. */
@@ -1014,12 +1256,20 @@ export interface GetBucketAccessControlsRequest {
   userProject?: string;
 }
 export const GetBucketAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "entity": S.String.pipe(T.Label()),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"b/{bucket}/acl/{entity}","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "GetBucketAccessControlsRequest" }) as any as S.Schema<GetBucketAccessControlsRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    entity: S.String.pipe(T.Label()),
+    userProject: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "b/{bucket}/acl/{entity}",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "GetBucketAccessControlsRequest",
+}) as any as S.Schema<GetBucketAccessControlsRequest>;
 
 export interface BucketAccessControlProjectTeam {
   /** The project number. */
@@ -1028,11 +1278,13 @@ export interface BucketAccessControlProjectTeam {
   team?: string;
 }
 export const BucketAccessControlProjectTeam = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectNumber": S.optional(S.String),
-  "team": S.optional(S.String),
-}),
-).annotate({ identifier: "BucketAccessControlProjectTeam" }) as any as S.Schema<BucketAccessControlProjectTeam>;
+  S.Struct({
+    projectNumber: S.optional(S.String),
+    team: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BucketAccessControlProjectTeam",
+}) as any as S.Schema<BucketAccessControlProjectTeam>;
 
 /** An access-control entry. */
 export interface BucketAccessControl {
@@ -1060,20 +1312,22 @@ export interface BucketAccessControl {
   selfLink?: string;
 }
 export const BucketAccessControl = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.optional(S.String),
-  "domain": S.optional(S.String),
-  "email": S.optional(S.String),
-  "entity": S.optional(S.String),
-  "entityId": S.optional(S.String),
-  "etag": S.optional(S.String),
-  "id": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "projectTeam": S.optional(BucketAccessControlProjectTeam),
-  "role": S.optional(S.String),
-  "selfLink": S.optional(S.String),
-}),
-).annotate({ identifier: "BucketAccessControl" }) as any as S.Schema<BucketAccessControl>;
+  S.Struct({
+    bucket: S.optional(S.String),
+    domain: S.optional(S.String),
+    email: S.optional(S.String),
+    entity: S.optional(S.String),
+    entityId: S.optional(S.String),
+    etag: S.optional(S.String),
+    id: S.optional(S.String),
+    kind: S.optional(S.String),
+    projectTeam: S.optional(BucketAccessControlProjectTeam),
+    role: S.optional(S.String),
+    selfLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BucketAccessControl",
+}) as any as S.Schema<BucketAccessControl>;
 
 export type GetBucketsProjectionEnum = "full" | "noAcl";
 export const GetBucketsProjectionEnum = /*@__PURE__*/ S.String;
@@ -1095,28 +1349,38 @@ export interface GetBucketsRequest {
   userProject?: string;
 }
 export const GetBucketsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "generation": S.optional(S.String.pipe(T.Query())),
-  "softDeleted": S.optional(S.Boolean.pipe(T.Query())),
-  "ifMetagenerationMatch": S.optional(S.String.pipe(T.Query())),
-  "ifMetagenerationNotMatch": S.optional(S.String.pipe(T.Query())),
-  "projection": S.optional(GetBucketsProjectionEnum.pipe(T.Query())),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"b/{bucket}","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "GetBucketsRequest" }) as any as S.Schema<GetBucketsRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    generation: S.optional(S.String.pipe(T.Query())),
+    softDeleted: S.optional(S.Boolean.pipe(T.Query())),
+    ifMetagenerationMatch: S.optional(S.String.pipe(T.Query())),
+    ifMetagenerationNotMatch: S.optional(S.String.pipe(T.Query())),
+    projection: S.optional(GetBucketsProjectionEnum.pipe(T.Query())),
+    userProject: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "b/{bucket}",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "GetBucketsRequest",
+}) as any as S.Schema<GetBucketsRequest>;
 
 export type BucketAccessControlList = ReadonlyArray<BucketAccessControl>;
-export const BucketAccessControlList = /*@__PURE__*/ S.Array(BucketAccessControl) as any as S.Schema<BucketAccessControlList>;
+export const BucketAccessControlList = /*@__PURE__*/ S.Array(
+  BucketAccessControl,
+) as any as S.Schema<BucketAccessControlList>;
 
 export interface BucketBilling {
   /** When set to true, Requester Pays is enabled for this bucket. */
   requesterPays?: boolean;
 }
 export const BucketBilling = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requesterPays": S.optional(S.Boolean),
-}),
+  S.Struct({
+    requesterPays: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "BucketBilling" }) as any as S.Schema<BucketBilling>;
 
 export interface BucketCorsItem {
@@ -1130,29 +1394,35 @@ export interface BucketCorsItem {
   responseHeader?: StringList;
 }
 export const BucketCorsItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "maxAgeSeconds": S.optional(S.Number),
-  "method": S.optional(StringList),
-  "origin": S.optional(StringList),
-  "responseHeader": S.optional(StringList),
-}),
+  S.Struct({
+    maxAgeSeconds: S.optional(S.Number),
+    method: S.optional(StringList),
+    origin: S.optional(StringList),
+    responseHeader: S.optional(StringList),
+  }),
 ).annotate({ identifier: "BucketCorsItem" }) as any as S.Schema<BucketCorsItem>;
 
 export type BucketCorsItemList = ReadonlyArray<BucketCorsItem>;
-export const BucketCorsItemList = /*@__PURE__*/ S.Array(BucketCorsItem) as any as S.Schema<BucketCorsItemList>;
+export const BucketCorsItemList = /*@__PURE__*/ S.Array(
+  BucketCorsItem,
+) as any as S.Schema<BucketCorsItemList>;
 
 export interface BucketCustomPlacementConfig {
   /** The list of regional locations in which data is placed. */
   dataLocations?: StringList;
 }
 export const BucketCustomPlacementConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dataLocations": S.optional(StringList),
-}),
-).annotate({ identifier: "BucketCustomPlacementConfig" }) as any as S.Schema<BucketCustomPlacementConfig>;
+  S.Struct({
+    dataLocations: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "BucketCustomPlacementConfig",
+}) as any as S.Schema<BucketCustomPlacementConfig>;
 
-export type BucketEncryptionGoogleManagedEncryptionEnforcementConfigRestrictionModeEnum = "NotRestricted" | "FullyRestricted";
-export const BucketEncryptionGoogleManagedEncryptionEnforcementConfigRestrictionModeEnum = /*@__PURE__*/ S.String;
+export type BucketEncryptionGoogleManagedEncryptionEnforcementConfigRestrictionModeEnum =
+  "NotRestricted" | "FullyRestricted";
+export const BucketEncryptionGoogleManagedEncryptionEnforcementConfigRestrictionModeEnum =
+  /*@__PURE__*/ S.String;
 
 export interface BucketEncryptionGoogleManagedEncryptionEnforcementConfig {
   /** Restriction mode for Google-Managed Encryption Keys. Defaults to NotRestricted. */
@@ -1160,15 +1430,22 @@ export interface BucketEncryptionGoogleManagedEncryptionEnforcementConfig {
   /** Server-determined value that indicates the time from which configuration was enforced and effective. This value is in RFC 3339 format. */
   effectiveTime?: string;
 }
-export const BucketEncryptionGoogleManagedEncryptionEnforcementConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "restrictionMode": S.optional(BucketEncryptionGoogleManagedEncryptionEnforcementConfigRestrictionModeEnum),
-  "effectiveTime": S.optional(S.String),
-}),
-).annotate({ identifier: "BucketEncryptionGoogleManagedEncryptionEnforcementConfig" }) as any as S.Schema<BucketEncryptionGoogleManagedEncryptionEnforcementConfig>;
+export const BucketEncryptionGoogleManagedEncryptionEnforcementConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      restrictionMode: S.optional(
+        BucketEncryptionGoogleManagedEncryptionEnforcementConfigRestrictionModeEnum,
+      ),
+      effectiveTime: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "BucketEncryptionGoogleManagedEncryptionEnforcementConfig",
+  }) as any as S.Schema<BucketEncryptionGoogleManagedEncryptionEnforcementConfig>;
 
-export type BucketEncryptionCustomerManagedEncryptionEnforcementConfigRestrictionModeEnum = "NotRestricted" | "FullyRestricted";
-export const BucketEncryptionCustomerManagedEncryptionEnforcementConfigRestrictionModeEnum = /*@__PURE__*/ S.String;
+export type BucketEncryptionCustomerManagedEncryptionEnforcementConfigRestrictionModeEnum =
+  "NotRestricted" | "FullyRestricted";
+export const BucketEncryptionCustomerManagedEncryptionEnforcementConfigRestrictionModeEnum =
+  /*@__PURE__*/ S.String;
 
 export interface BucketEncryptionCustomerManagedEncryptionEnforcementConfig {
   /** Restriction mode for Customer-Managed Encryption Keys. Defaults to NotRestricted. */
@@ -1176,15 +1453,22 @@ export interface BucketEncryptionCustomerManagedEncryptionEnforcementConfig {
   /** Server-determined value that indicates the time from which configuration was enforced and effective. This value is in RFC 3339 format. */
   effectiveTime?: string;
 }
-export const BucketEncryptionCustomerManagedEncryptionEnforcementConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "restrictionMode": S.optional(BucketEncryptionCustomerManagedEncryptionEnforcementConfigRestrictionModeEnum),
-  "effectiveTime": S.optional(S.String),
-}),
-).annotate({ identifier: "BucketEncryptionCustomerManagedEncryptionEnforcementConfig" }) as any as S.Schema<BucketEncryptionCustomerManagedEncryptionEnforcementConfig>;
+export const BucketEncryptionCustomerManagedEncryptionEnforcementConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      restrictionMode: S.optional(
+        BucketEncryptionCustomerManagedEncryptionEnforcementConfigRestrictionModeEnum,
+      ),
+      effectiveTime: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "BucketEncryptionCustomerManagedEncryptionEnforcementConfig",
+  }) as any as S.Schema<BucketEncryptionCustomerManagedEncryptionEnforcementConfig>;
 
-export type BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigRestrictionModeEnum = "NotRestricted" | "FullyRestricted";
-export const BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigRestrictionModeEnum = /*@__PURE__*/ S.String;
+export type BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigRestrictionModeEnum =
+  "NotRestricted" | "FullyRestricted";
+export const BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigRestrictionModeEnum =
+  /*@__PURE__*/ S.String;
 
 export interface BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig {
   /** Restriction mode for Customer-Supplied Encryption Keys. Defaults to NotRestricted. */
@@ -1192,12 +1476,17 @@ export interface BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig {
   /** Server-determined value that indicates the time from which configuration was enforced and effective. This value is in RFC 3339 format. */
   effectiveTime?: string;
 }
-export const BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "restrictionMode": S.optional(BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigRestrictionModeEnum),
-  "effectiveTime": S.optional(S.String),
-}),
-).annotate({ identifier: "BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig" }) as any as S.Schema<BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig>;
+export const BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      restrictionMode: S.optional(
+        BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigRestrictionModeEnum,
+      ),
+      effectiveTime: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig",
+  }) as any as S.Schema<BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig>;
 
 export interface BucketEncryption {
   /** A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified. */
@@ -1210,23 +1499,33 @@ export interface BucketEncryption {
   customerSuppliedEncryptionEnforcementConfig?: BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig;
 }
 export const BucketEncryption = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "defaultKmsKeyName": S.optional(S.String),
-  "googleManagedEncryptionEnforcementConfig": S.optional(BucketEncryptionGoogleManagedEncryptionEnforcementConfig),
-  "customerManagedEncryptionEnforcementConfig": S.optional(BucketEncryptionCustomerManagedEncryptionEnforcementConfig),
-  "customerSuppliedEncryptionEnforcementConfig": S.optional(BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig),
-}),
-).annotate({ identifier: "BucketEncryption" }) as any as S.Schema<BucketEncryption>;
+  S.Struct({
+    defaultKmsKeyName: S.optional(S.String),
+    googleManagedEncryptionEnforcementConfig: S.optional(
+      BucketEncryptionGoogleManagedEncryptionEnforcementConfig,
+    ),
+    customerManagedEncryptionEnforcementConfig: S.optional(
+      BucketEncryptionCustomerManagedEncryptionEnforcementConfig,
+    ),
+    customerSuppliedEncryptionEnforcementConfig: S.optional(
+      BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig,
+    ),
+  }),
+).annotate({
+  identifier: "BucketEncryption",
+}) as any as S.Schema<BucketEncryption>;
 
 export interface BucketHierarchicalNamespace {
   /** When set to true, hierarchical namespace is enabled for this bucket. */
   enabled?: boolean;
 }
 export const BucketHierarchicalNamespace = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "enabled": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "BucketHierarchicalNamespace" }) as any as S.Schema<BucketHierarchicalNamespace>;
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "BucketHierarchicalNamespace",
+}) as any as S.Schema<BucketHierarchicalNamespace>;
 
 export interface BucketIamConfigurationBucketPolicyOnly {
   /** If set, access is controlled only by bucket-level or above IAM policies. */
@@ -1234,12 +1533,15 @@ export interface BucketIamConfigurationBucketPolicyOnly {
   /** The deadline for changing iamConfiguration.bucketPolicyOnly.enabled from true to false in RFC 3339 format. iamConfiguration.bucketPolicyOnly.enabled may be changed from true to false until the locked time, after which the field is immutable. */
   lockedTime?: string;
 }
-export const BucketIamConfigurationBucketPolicyOnly = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "enabled": S.optional(S.Boolean),
-  "lockedTime": S.optional(S.String),
-}),
-).annotate({ identifier: "BucketIamConfigurationBucketPolicyOnly" }) as any as S.Schema<BucketIamConfigurationBucketPolicyOnly>;
+export const BucketIamConfigurationBucketPolicyOnly = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      enabled: S.optional(S.Boolean),
+      lockedTime: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "BucketIamConfigurationBucketPolicyOnly",
+}) as any as S.Schema<BucketIamConfigurationBucketPolicyOnly>;
 
 export interface BucketIamConfigurationUniformBucketLevelAccess {
   /** If set, access is controlled only by bucket-level or above IAM policies. */
@@ -1247,12 +1549,15 @@ export interface BucketIamConfigurationUniformBucketLevelAccess {
   /** The deadline for changing iamConfiguration.uniformBucketLevelAccess.enabled from true to false in RFC 3339 format. iamConfiguration.uniformBucketLevelAccess.enabled may be changed from true to false until the locked time, after which the field is immutable. */
   lockedTime?: string;
 }
-export const BucketIamConfigurationUniformBucketLevelAccess = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "enabled": S.optional(S.Boolean),
-  "lockedTime": S.optional(S.String),
-}),
-).annotate({ identifier: "BucketIamConfigurationUniformBucketLevelAccess" }) as any as S.Schema<BucketIamConfigurationUniformBucketLevelAccess>;
+export const BucketIamConfigurationUniformBucketLevelAccess =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.Boolean),
+      lockedTime: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "BucketIamConfigurationUniformBucketLevelAccess",
+  }) as any as S.Schema<BucketIamConfigurationUniformBucketLevelAccess>;
 
 export interface BucketIamConfiguration {
   /** The bucket's uniform bucket-level access configuration. The feature was formerly known as Bucket Policy Only. For backward compatibility, this field will be populated with identical information as the uniformBucketLevelAccess field. We recommend using the uniformBucketLevelAccess field to enable and disable the feature. */
@@ -1263,22 +1568,28 @@ export interface BucketIamConfiguration {
   publicAccessPrevention?: string;
 }
 export const BucketIamConfiguration = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucketPolicyOnly": S.optional(BucketIamConfigurationBucketPolicyOnly),
-  "uniformBucketLevelAccess": S.optional(BucketIamConfigurationUniformBucketLevelAccess),
-  "publicAccessPrevention": S.optional(S.String),
-}),
-).annotate({ identifier: "BucketIamConfiguration" }) as any as S.Schema<BucketIamConfiguration>;
+  S.Struct({
+    bucketPolicyOnly: S.optional(BucketIamConfigurationBucketPolicyOnly),
+    uniformBucketLevelAccess: S.optional(
+      BucketIamConfigurationUniformBucketLevelAccess,
+    ),
+    publicAccessPrevention: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BucketIamConfiguration",
+}) as any as S.Schema<BucketIamConfiguration>;
 
 export interface BucketIpFilterPublicNetworkSource {
   /** The list of public IPv4, IPv6 cidr ranges that are allowed to access the bucket. */
   allowedIpCidrRanges?: StringList;
 }
 export const BucketIpFilterPublicNetworkSource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "allowedIpCidrRanges": S.optional(StringList),
-}),
-).annotate({ identifier: "BucketIpFilterPublicNetworkSource" }) as any as S.Schema<BucketIpFilterPublicNetworkSource>;
+  S.Struct({
+    allowedIpCidrRanges: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "BucketIpFilterPublicNetworkSource",
+}) as any as S.Schema<BucketIpFilterPublicNetworkSource>;
 
 export interface BucketIpFilterVpcNetworkSourcesItem {
   /** Name of the network. Format: projects/{PROJECT_ID}/global/networks/{NETWORK_NAME} */
@@ -1287,14 +1598,19 @@ export interface BucketIpFilterVpcNetworkSourcesItem {
   allowedIpCidrRanges?: StringList;
 }
 export const BucketIpFilterVpcNetworkSourcesItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "network": S.optional(S.String),
-  "allowedIpCidrRanges": S.optional(StringList),
-}),
-).annotate({ identifier: "BucketIpFilterVpcNetworkSourcesItem" }) as any as S.Schema<BucketIpFilterVpcNetworkSourcesItem>;
+  S.Struct({
+    network: S.optional(S.String),
+    allowedIpCidrRanges: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "BucketIpFilterVpcNetworkSourcesItem",
+}) as any as S.Schema<BucketIpFilterVpcNetworkSourcesItem>;
 
-export type BucketIpFilterVpcNetworkSourcesItemList = ReadonlyArray<BucketIpFilterVpcNetworkSourcesItem>;
-export const BucketIpFilterVpcNetworkSourcesItemList = /*@__PURE__*/ S.Array(BucketIpFilterVpcNetworkSourcesItem) as any as S.Schema<BucketIpFilterVpcNetworkSourcesItemList>;
+export type BucketIpFilterVpcNetworkSourcesItemList =
+  ReadonlyArray<BucketIpFilterVpcNetworkSourcesItem>;
+export const BucketIpFilterVpcNetworkSourcesItemList = /*@__PURE__*/ S.Array(
+  BucketIpFilterVpcNetworkSourcesItem,
+) as any as S.Schema<BucketIpFilterVpcNetworkSourcesItemList>;
 
 export interface BucketIpFilter {
   /** The mode of the IP filter. Valid values are 'Enabled' and 'Disabled'. */
@@ -1309,13 +1625,13 @@ export interface BucketIpFilter {
   allowAllServiceAgentAccess?: boolean;
 }
 export const BucketIpFilter = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "mode": S.optional(S.String),
-  "publicNetworkSource": S.optional(BucketIpFilterPublicNetworkSource),
-  "vpcNetworkSources": S.optional(BucketIpFilterVpcNetworkSourcesItemList),
-  "allowCrossOrgVpcs": S.optional(S.Boolean),
-  "allowAllServiceAgentAccess": S.optional(S.Boolean),
-}),
+  S.Struct({
+    mode: S.optional(S.String),
+    publicNetworkSource: S.optional(BucketIpFilterPublicNetworkSource),
+    vpcNetworkSources: S.optional(BucketIpFilterVpcNetworkSourcesItemList),
+    allowCrossOrgVpcs: S.optional(S.Boolean),
+    allowAllServiceAgentAccess: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "BucketIpFilter" }) as any as S.Schema<BucketIpFilter>;
 
 export interface BucketLifecycleRuleItemAction {
@@ -1325,11 +1641,13 @@ export interface BucketLifecycleRuleItemAction {
   type?: string;
 }
 export const BucketLifecycleRuleItemAction = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "storageClass": S.optional(S.String),
-  "type": S.optional(S.String),
-}),
-).annotate({ identifier: "BucketLifecycleRuleItemAction" }) as any as S.Schema<BucketLifecycleRuleItemAction>;
+  S.Struct({
+    storageClass: S.optional(S.String),
+    type: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BucketLifecycleRuleItemAction",
+}) as any as S.Schema<BucketLifecycleRuleItemAction>;
 
 export interface BucketLifecycleRuleItemCondition {
   /** Age of an object (in days). This condition is satisfied when an object reaches the specified age. */
@@ -1362,23 +1680,25 @@ export interface BucketLifecycleRuleItemCondition {
   numNewerVersions?: number;
 }
 export const BucketLifecycleRuleItemCondition = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "age": S.optional(S.Number),
-  "createdBefore": S.optional(S.String),
-  "customTimeBefore": S.optional(S.String),
-  "daysSinceCustomTime": S.optional(S.Number),
-  "daysSinceNoncurrentTime": S.optional(S.Number),
-  "isLive": S.optional(S.Boolean),
-  "matchesPattern": S.optional(S.String),
-  "matchesPrefix": S.optional(StringList),
-  "matchesSuffix": S.optional(StringList),
-  "matchesStorageClass": S.optional(StringList),
-  "noncurrentTimeBefore": S.optional(S.String),
-  "sizeAboveBytes": S.optional(S.String),
-  "sizeBelowBytes": S.optional(S.String),
-  "numNewerVersions": S.optional(S.Number),
-}),
-).annotate({ identifier: "BucketLifecycleRuleItemCondition" }) as any as S.Schema<BucketLifecycleRuleItemCondition>;
+  S.Struct({
+    age: S.optional(S.Number),
+    createdBefore: S.optional(S.String),
+    customTimeBefore: S.optional(S.String),
+    daysSinceCustomTime: S.optional(S.Number),
+    daysSinceNoncurrentTime: S.optional(S.Number),
+    isLive: S.optional(S.Boolean),
+    matchesPattern: S.optional(S.String),
+    matchesPrefix: S.optional(StringList),
+    matchesSuffix: S.optional(StringList),
+    matchesStorageClass: S.optional(StringList),
+    noncurrentTimeBefore: S.optional(S.String),
+    sizeAboveBytes: S.optional(S.String),
+    sizeBelowBytes: S.optional(S.String),
+    numNewerVersions: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "BucketLifecycleRuleItemCondition",
+}) as any as S.Schema<BucketLifecycleRuleItemCondition>;
 
 export interface BucketLifecycleRuleItem {
   /** The action to take. */
@@ -1387,24 +1707,31 @@ export interface BucketLifecycleRuleItem {
   condition?: BucketLifecycleRuleItemCondition;
 }
 export const BucketLifecycleRuleItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "action": S.optional(BucketLifecycleRuleItemAction),
-  "condition": S.optional(BucketLifecycleRuleItemCondition),
-}),
-).annotate({ identifier: "BucketLifecycleRuleItem" }) as any as S.Schema<BucketLifecycleRuleItem>;
+  S.Struct({
+    action: S.optional(BucketLifecycleRuleItemAction),
+    condition: S.optional(BucketLifecycleRuleItemCondition),
+  }),
+).annotate({
+  identifier: "BucketLifecycleRuleItem",
+}) as any as S.Schema<BucketLifecycleRuleItem>;
 
-export type BucketLifecycleRuleItemList = ReadonlyArray<BucketLifecycleRuleItem>;
-export const BucketLifecycleRuleItemList = /*@__PURE__*/ S.Array(BucketLifecycleRuleItem) as any as S.Schema<BucketLifecycleRuleItemList>;
+export type BucketLifecycleRuleItemList =
+  ReadonlyArray<BucketLifecycleRuleItem>;
+export const BucketLifecycleRuleItemList = /*@__PURE__*/ S.Array(
+  BucketLifecycleRuleItem,
+) as any as S.Schema<BucketLifecycleRuleItemList>;
 
 export interface BucketLifecycle {
   /** A lifecycle management rule, which is made of an action to take and the condition(s) under which the action will be taken. */
   rule?: BucketLifecycleRuleItemList;
 }
 export const BucketLifecycle = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "rule": S.optional(BucketLifecycleRuleItemList),
-}),
-).annotate({ identifier: "BucketLifecycle" }) as any as S.Schema<BucketLifecycle>;
+  S.Struct({
+    rule: S.optional(BucketLifecycleRuleItemList),
+  }),
+).annotate({
+  identifier: "BucketLifecycle",
+}) as any as S.Schema<BucketLifecycle>;
 
 export interface BucketAutoclass {
   /** Whether or not Autoclass is enabled on this bucket */
@@ -1417,13 +1744,15 @@ export interface BucketAutoclass {
   terminalStorageClassUpdateTime?: string;
 }
 export const BucketAutoclass = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "enabled": S.optional(S.Boolean),
-  "toggleTime": S.optional(S.String),
-  "terminalStorageClass": S.optional(S.String),
-  "terminalStorageClassUpdateTime": S.optional(S.String),
-}),
-).annotate({ identifier: "BucketAutoclass" }) as any as S.Schema<BucketAutoclass>;
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+    toggleTime: S.optional(S.String),
+    terminalStorageClass: S.optional(S.String),
+    terminalStorageClassUpdateTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BucketAutoclass",
+}) as any as S.Schema<BucketAutoclass>;
 
 export interface BucketLogging {
   /** The destination bucket where the current bucket's logs should be placed. */
@@ -1432,10 +1761,10 @@ export interface BucketLogging {
   logObjectPrefix?: string;
 }
 export const BucketLogging = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "logBucket": S.optional(S.String),
-  "logObjectPrefix": S.optional(S.String),
-}),
+  S.Struct({
+    logBucket: S.optional(S.String),
+    logObjectPrefix: S.optional(S.String),
+  }),
 ).annotate({ identifier: "BucketLogging" }) as any as S.Schema<BucketLogging>;
 
 export interface BucketOwner {
@@ -1445,10 +1774,10 @@ export interface BucketOwner {
   entityId?: string;
 }
 export const BucketOwner = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "entity": S.optional(S.String),
-  "entityId": S.optional(S.String),
-}),
+  S.Struct({
+    entity: S.optional(S.String),
+    entityId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "BucketOwner" }) as any as S.Schema<BucketOwner>;
 
 export interface BucketRetentionPolicy {
@@ -1460,22 +1789,26 @@ export interface BucketRetentionPolicy {
   retentionPeriod?: string;
 }
 export const BucketRetentionPolicy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "effectiveTime": S.optional(S.String),
-  "isLocked": S.optional(S.Boolean),
-  "retentionPeriod": S.optional(S.String),
-}),
-).annotate({ identifier: "BucketRetentionPolicy" }) as any as S.Schema<BucketRetentionPolicy>;
+  S.Struct({
+    effectiveTime: S.optional(S.String),
+    isLocked: S.optional(S.Boolean),
+    retentionPeriod: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BucketRetentionPolicy",
+}) as any as S.Schema<BucketRetentionPolicy>;
 
 export interface BucketObjectRetention {
   /** The bucket's object retention mode. Can be Enabled. */
   mode?: string;
 }
 export const BucketObjectRetention = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "mode": S.optional(S.String),
-}),
-).annotate({ identifier: "BucketObjectRetention" }) as any as S.Schema<BucketObjectRetention>;
+  S.Struct({
+    mode: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BucketObjectRetention",
+}) as any as S.Schema<BucketObjectRetention>;
 
 export interface BucketSoftDeletePolicy {
   /** The duration in seconds that soft-deleted objects in the bucket will be retained and cannot be permanently deleted. */
@@ -1484,21 +1817,25 @@ export interface BucketSoftDeletePolicy {
   effectiveTime?: string;
 }
 export const BucketSoftDeletePolicy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "retentionDurationSeconds": S.optional(S.String),
-  "effectiveTime": S.optional(S.String),
-}),
-).annotate({ identifier: "BucketSoftDeletePolicy" }) as any as S.Schema<BucketSoftDeletePolicy>;
+  S.Struct({
+    retentionDurationSeconds: S.optional(S.String),
+    effectiveTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BucketSoftDeletePolicy",
+}) as any as S.Schema<BucketSoftDeletePolicy>;
 
 export interface BucketVersioning {
   /** While set to true, versioning is fully enabled for this bucket. */
   enabled?: boolean;
 }
 export const BucketVersioning = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "enabled": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "BucketVersioning" }) as any as S.Schema<BucketVersioning>;
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "BucketVersioning",
+}) as any as S.Schema<BucketVersioning>;
 
 export interface BucketWebsite {
   /** If the requested object path is missing, the service will ensure the path has a trailing '/', append this suffix, and attempt to retrieve the resulting object. This allows the creation of index.html objects to represent directory pages. */
@@ -1507,10 +1844,10 @@ export interface BucketWebsite {
   notFoundPage?: string;
 }
 export const BucketWebsite = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "mainPageSuffix": S.optional(S.String),
-  "notFoundPage": S.optional(S.String),
-}),
+  S.Struct({
+    mainPageSuffix: S.optional(S.String),
+    notFoundPage: S.optional(S.String),
+  }),
 ).annotate({ identifier: "BucketWebsite" }) as any as S.Schema<BucketWebsite>;
 
 /** A bucket. */
@@ -1593,46 +1930,46 @@ export interface Bucket {
   satisfiesPZI?: boolean;
 }
 export const Bucket = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "acl": S.optional(BucketAccessControlList),
-  "billing": S.optional(BucketBilling),
-  "cors": S.optional(BucketCorsItemList),
-  "customPlacementConfig": S.optional(BucketCustomPlacementConfig),
-  "defaultEventBasedHold": S.optional(S.Boolean),
-  "defaultObjectAcl": S.optional(ObjectAccessControlList),
-  "encryption": S.optional(BucketEncryption),
-  "etag": S.optional(S.String),
-  "hierarchicalNamespace": S.optional(BucketHierarchicalNamespace),
-  "iamConfiguration": S.optional(BucketIamConfiguration),
-  "id": S.optional(S.String),
-  "ipFilter": S.optional(BucketIpFilter),
-  "kind": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "lifecycle": S.optional(BucketLifecycle),
-  "autoclass": S.optional(BucketAutoclass),
-  "location": S.optional(S.String),
-  "locationType": S.optional(S.String),
-  "logging": S.optional(BucketLogging),
-  "generation": S.optional(S.String),
-  "metageneration": S.optional(S.String),
-  "name": S.optional(S.String),
-  "owner": S.optional(BucketOwner),
-  "projectNumber": S.optional(S.String),
-  "retentionPolicy": S.optional(BucketRetentionPolicy),
-  "objectRetention": S.optional(BucketObjectRetention),
-  "rpo": S.optional(S.String),
-  "selfLink": S.optional(S.String),
-  "softDeletePolicy": S.optional(BucketSoftDeletePolicy),
-  "storageClass": S.optional(S.String),
-  "timeCreated": S.optional(S.String),
-  "updated": S.optional(S.String),
-  "softDeleteTime": S.optional(S.String),
-  "hardDeleteTime": S.optional(S.String),
-  "versioning": S.optional(BucketVersioning),
-  "website": S.optional(BucketWebsite),
-  "satisfiesPZS": S.optional(S.Boolean),
-  "satisfiesPZI": S.optional(S.Boolean),
-}),
+  S.Struct({
+    acl: S.optional(BucketAccessControlList),
+    billing: S.optional(BucketBilling),
+    cors: S.optional(BucketCorsItemList),
+    customPlacementConfig: S.optional(BucketCustomPlacementConfig),
+    defaultEventBasedHold: S.optional(S.Boolean),
+    defaultObjectAcl: S.optional(ObjectAccessControlList),
+    encryption: S.optional(BucketEncryption),
+    etag: S.optional(S.String),
+    hierarchicalNamespace: S.optional(BucketHierarchicalNamespace),
+    iamConfiguration: S.optional(BucketIamConfiguration),
+    id: S.optional(S.String),
+    ipFilter: S.optional(BucketIpFilter),
+    kind: S.optional(S.String),
+    labels: S.optional(StringMap),
+    lifecycle: S.optional(BucketLifecycle),
+    autoclass: S.optional(BucketAutoclass),
+    location: S.optional(S.String),
+    locationType: S.optional(S.String),
+    logging: S.optional(BucketLogging),
+    generation: S.optional(S.String),
+    metageneration: S.optional(S.String),
+    name: S.optional(S.String),
+    owner: S.optional(BucketOwner),
+    projectNumber: S.optional(S.String),
+    retentionPolicy: S.optional(BucketRetentionPolicy),
+    objectRetention: S.optional(BucketObjectRetention),
+    rpo: S.optional(S.String),
+    selfLink: S.optional(S.String),
+    softDeletePolicy: S.optional(BucketSoftDeletePolicy),
+    storageClass: S.optional(S.String),
+    timeCreated: S.optional(S.String),
+    updated: S.optional(S.String),
+    softDeleteTime: S.optional(S.String),
+    hardDeleteTime: S.optional(S.String),
+    versioning: S.optional(BucketVersioning),
+    website: S.optional(BucketWebsite),
+    satisfiesPZS: S.optional(S.Boolean),
+    satisfiesPZI: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "Bucket" }) as any as S.Schema<Bucket>;
 
 export interface GetDefaultObjectAccessControlsRequest {
@@ -1643,13 +1980,22 @@ export interface GetDefaultObjectAccessControlsRequest {
   /** The project to be billed for this request. Required for Requester Pays buckets. */
   userProject?: string;
 }
-export const GetDefaultObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "entity": S.String.pipe(T.Label()),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"b/{bucket}/defaultObjectAcl/{entity}","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "GetDefaultObjectAccessControlsRequest" }) as any as S.Schema<GetDefaultObjectAccessControlsRequest>;
+export const GetDefaultObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      bucket: S.String.pipe(T.Label()),
+      entity: S.String.pipe(T.Label()),
+      userProject: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "b/{bucket}/defaultObjectAcl/{entity}",
+        baseUrl: "https://storage.googleapis.com/storage/v1/",
+      }),
+    ),
+).annotate({
+  identifier: "GetDefaultObjectAccessControlsRequest",
+}) as any as S.Schema<GetDefaultObjectAccessControlsRequest>;
 
 export interface GetFoldersRequest {
   /** Name of the bucket in which the folder resides. */
@@ -1662,23 +2008,33 @@ export interface GetFoldersRequest {
   ifMetagenerationNotMatch?: string;
 }
 export const GetFoldersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "folder": S.String.pipe(T.Label()),
-  "ifMetagenerationMatch": S.optional(S.String.pipe(T.Query())),
-  "ifMetagenerationNotMatch": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"b/{bucket}/folders/{folder}","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "GetFoldersRequest" }) as any as S.Schema<GetFoldersRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    folder: S.String.pipe(T.Label()),
+    ifMetagenerationMatch: S.optional(S.String.pipe(T.Query())),
+    ifMetagenerationNotMatch: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "b/{bucket}/folders/{folder}",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "GetFoldersRequest",
+}) as any as S.Schema<GetFoldersRequest>;
 
 export interface FolderPendingRenameInfo {
   /** The ID of the rename folder operation. */
   operationId?: string;
 }
 export const FolderPendingRenameInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "operationId": S.optional(S.String),
-}),
-).annotate({ identifier: "FolderPendingRenameInfo" }) as any as S.Schema<FolderPendingRenameInfo>;
+  S.Struct({
+    operationId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "FolderPendingRenameInfo",
+}) as any as S.Schema<FolderPendingRenameInfo>;
 
 /** A folder. Only available in buckets with hierarchical namespace enabled. */
 export interface Folder {
@@ -1702,17 +2058,17 @@ export interface Folder {
   pendingRenameInfo?: FolderPendingRenameInfo;
 }
 export const Folder = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.optional(S.String),
-  "id": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "metageneration": S.optional(S.String),
-  "name": S.optional(S.String),
-  "selfLink": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "pendingRenameInfo": S.optional(FolderPendingRenameInfo),
-}),
+  S.Struct({
+    bucket: S.optional(S.String),
+    id: S.optional(S.String),
+    kind: S.optional(S.String),
+    metageneration: S.optional(S.String),
+    name: S.optional(S.String),
+    selfLink: S.optional(S.String),
+    createTime: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    pendingRenameInfo: S.optional(FolderPendingRenameInfo),
+  }),
 ).annotate({ identifier: "Folder" }) as any as S.Schema<Folder>;
 
 export interface GetIamPolicyBucketsRequest {
@@ -1724,12 +2080,20 @@ export interface GetIamPolicyBucketsRequest {
   userProject?: string;
 }
 export const GetIamPolicyBucketsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "optionsRequestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"b/{bucket}/iam","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "GetIamPolicyBucketsRequest" }) as any as S.Schema<GetIamPolicyBucketsRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    optionsRequestedPolicyVersion: S.optional(S.Number.pipe(T.Query())),
+    userProject: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "b/{bucket}/iam",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "GetIamPolicyBucketsRequest",
+}) as any as S.Schema<GetIamPolicyBucketsRequest>;
 
 /** Represents an expression text. Example: title: "User account presence" description: "Determines whether the request has a user account" expression: "size(request.user) > 0" */
 export interface Expr {
@@ -1743,12 +2107,12 @@ export interface Expr {
   title?: string;
 }
 export const Expr = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "description": S.optional(S.String),
-  "expression": S.optional(S.String),
-  "location": S.optional(S.String),
-  "title": S.optional(S.String),
-}),
+  S.Struct({
+    description: S.optional(S.String),
+    expression: S.optional(S.String),
+    location: S.optional(S.String),
+    title: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
 export interface PolicyBindingsItem {
@@ -1760,15 +2124,19 @@ export interface PolicyBindingsItem {
   role?: string;
 }
 export const PolicyBindingsItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "condition": S.optional(Expr),
-  "members": S.optional(StringList),
-  "role": S.optional(S.String),
-}),
-).annotate({ identifier: "PolicyBindingsItem" }) as any as S.Schema<PolicyBindingsItem>;
+  S.Struct({
+    condition: S.optional(Expr),
+    members: S.optional(StringList),
+    role: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PolicyBindingsItem",
+}) as any as S.Schema<PolicyBindingsItem>;
 
 export type PolicyBindingsItemList = ReadonlyArray<PolicyBindingsItem>;
-export const PolicyBindingsItemList = /*@__PURE__*/ S.Array(PolicyBindingsItem) as any as S.Schema<PolicyBindingsItemList>;
+export const PolicyBindingsItemList = /*@__PURE__*/ S.Array(
+  PolicyBindingsItem,
+) as any as S.Schema<PolicyBindingsItemList>;
 
 /** A bucket/object/managedFolder IAM policy. */
 export interface Policy {
@@ -1784,13 +2152,13 @@ export interface Policy {
   version?: number;
 }
 export const Policy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bindings": S.optional(PolicyBindingsItemList),
-  "etag": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "resourceId": S.optional(S.String),
-  "version": S.optional(S.Number),
-}),
+  S.Struct({
+    bindings: S.optional(PolicyBindingsItemList),
+    etag: S.optional(S.String),
+    kind: S.optional(S.String),
+    resourceId: S.optional(S.String),
+    version: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
 
 export interface GetIamPolicyManagedFoldersRequest {
@@ -1804,13 +2172,21 @@ export interface GetIamPolicyManagedFoldersRequest {
   userProject?: string;
 }
 export const GetIamPolicyManagedFoldersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "optionsRequestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-  "managedFolder": S.String.pipe(T.Label()),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"b/{bucket}/managedFolders/{managedFolder}/iam","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "GetIamPolicyManagedFoldersRequest" }) as any as S.Schema<GetIamPolicyManagedFoldersRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    optionsRequestedPolicyVersion: S.optional(S.Number.pipe(T.Query())),
+    managedFolder: S.String.pipe(T.Label()),
+    userProject: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "b/{bucket}/managedFolders/{managedFolder}/iam",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "GetIamPolicyManagedFoldersRequest",
+}) as any as S.Schema<GetIamPolicyManagedFoldersRequest>;
 
 export interface GetIamPolicyObjectsRequest {
   /** Name of the bucket in which the object resides. */
@@ -1823,13 +2199,21 @@ export interface GetIamPolicyObjectsRequest {
   userProject?: string;
 }
 export const GetIamPolicyObjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "generation": S.optional(S.String.pipe(T.Query())),
-  "object": S.String.pipe(T.Label()),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"b/{bucket}/o/{object}/iam","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "GetIamPolicyObjectsRequest" }) as any as S.Schema<GetIamPolicyObjectsRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    generation: S.optional(S.String.pipe(T.Query())),
+    object: S.String.pipe(T.Label()),
+    userProject: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "b/{bucket}/o/{object}/iam",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "GetIamPolicyObjectsRequest",
+}) as any as S.Schema<GetIamPolicyObjectsRequest>;
 
 export interface GetManagedFoldersRequest {
   /** Name of the bucket containing the managed folder. */
@@ -1842,13 +2226,21 @@ export interface GetManagedFoldersRequest {
   ifMetagenerationNotMatch?: string;
 }
 export const GetManagedFoldersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "managedFolder": S.String.pipe(T.Label()),
-  "ifMetagenerationMatch": S.optional(S.String.pipe(T.Query())),
-  "ifMetagenerationNotMatch": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"b/{bucket}/managedFolders/{managedFolder}","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "GetManagedFoldersRequest" }) as any as S.Schema<GetManagedFoldersRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    managedFolder: S.String.pipe(T.Label()),
+    ifMetagenerationMatch: S.optional(S.String.pipe(T.Query())),
+    ifMetagenerationNotMatch: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "b/{bucket}/managedFolders/{managedFolder}",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "GetManagedFoldersRequest",
+}) as any as S.Schema<GetManagedFoldersRequest>;
 
 /** A managed folder. */
 export interface ManagedFolder {
@@ -1870,16 +2262,16 @@ export interface ManagedFolder {
   updateTime?: string;
 }
 export const ManagedFolder = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.optional(S.String),
-  "id": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "metageneration": S.optional(S.String),
-  "name": S.optional(S.String),
-  "selfLink": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-}),
+  S.Struct({
+    bucket: S.optional(S.String),
+    id: S.optional(S.String),
+    kind: S.optional(S.String),
+    metageneration: S.optional(S.String),
+    name: S.optional(S.String),
+    selfLink: S.optional(S.String),
+    createTime: S.optional(S.String),
+    updateTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ManagedFolder" }) as any as S.Schema<ManagedFolder>;
 
 export interface GetNotificationsRequest {
@@ -1891,12 +2283,20 @@ export interface GetNotificationsRequest {
   userProject?: string;
 }
 export const GetNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "notification": S.String.pipe(T.Label()),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"b/{bucket}/notificationConfigs/{notification}","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "GetNotificationsRequest" }) as any as S.Schema<GetNotificationsRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    notification: S.String.pipe(T.Label()),
+    userProject: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "b/{bucket}/notificationConfigs/{notification}",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "GetNotificationsRequest",
+}) as any as S.Schema<GetNotificationsRequest>;
 
 /** A subscription to receive Google PubSub notifications. */
 export interface Notification {
@@ -1920,17 +2320,17 @@ export interface Notification {
   topic?: string;
 }
 export const Notification = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "custom_attributes": S.optional(StringMap),
-  "etag": S.optional(S.String),
-  "event_types": S.optional(StringList),
-  "id": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "object_name_prefix": S.optional(S.String),
-  "payload_format": S.optional(S.String),
-  "selfLink": S.optional(S.String),
-  "topic": S.optional(S.String),
-}),
+  S.Struct({
+    custom_attributes: S.optional(StringMap),
+    etag: S.optional(S.String),
+    event_types: S.optional(StringList),
+    id: S.optional(S.String),
+    kind: S.optional(S.String),
+    object_name_prefix: S.optional(S.String),
+    payload_format: S.optional(S.String),
+    selfLink: S.optional(S.String),
+    topic: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Notification" }) as any as S.Schema<Notification>;
 
 export interface GetObjectAccessControlsRequest {
@@ -1946,14 +2346,22 @@ export interface GetObjectAccessControlsRequest {
   userProject?: string;
 }
 export const GetObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "entity": S.String.pipe(T.Label()),
-  "generation": S.optional(S.String.pipe(T.Query())),
-  "object": S.String.pipe(T.Label()),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"b/{bucket}/o/{object}/acl/{entity}","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "GetObjectAccessControlsRequest" }) as any as S.Schema<GetObjectAccessControlsRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    entity: S.String.pipe(T.Label()),
+    generation: S.optional(S.String.pipe(T.Query())),
+    object: S.String.pipe(T.Label()),
+    userProject: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "b/{bucket}/o/{object}/acl/{entity}",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "GetObjectAccessControlsRequest",
+}) as any as S.Schema<GetObjectAccessControlsRequest>;
 
 export type GetObjectsProjectionEnum = "full" | "noAcl";
 export const GetObjectsProjectionEnum = /*@__PURE__*/ S.String;
@@ -1983,20 +2391,28 @@ export interface GetObjectsRequest {
   restoreToken?: string;
 }
 export const GetObjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "generation": S.optional(S.String.pipe(T.Query())),
-  "ifGenerationMatch": S.optional(S.String.pipe(T.Query())),
-  "ifGenerationNotMatch": S.optional(S.String.pipe(T.Query())),
-  "ifMetagenerationMatch": S.optional(S.String.pipe(T.Query())),
-  "ifMetagenerationNotMatch": S.optional(S.String.pipe(T.Query())),
-  "object": S.String.pipe(T.Label()),
-  "projection": S.optional(GetObjectsProjectionEnum.pipe(T.Query())),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-  "softDeleted": S.optional(S.Boolean.pipe(T.Query())),
-  "restoreToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"b/{bucket}/o/{object}","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "GetObjectsRequest" }) as any as S.Schema<GetObjectsRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    generation: S.optional(S.String.pipe(T.Query())),
+    ifGenerationMatch: S.optional(S.String.pipe(T.Query())),
+    ifGenerationNotMatch: S.optional(S.String.pipe(T.Query())),
+    ifMetagenerationMatch: S.optional(S.String.pipe(T.Query())),
+    ifMetagenerationNotMatch: S.optional(S.String.pipe(T.Query())),
+    object: S.String.pipe(T.Label()),
+    projection: S.optional(GetObjectsProjectionEnum.pipe(T.Query())),
+    userProject: S.optional(S.String.pipe(T.Query())),
+    softDeleted: S.optional(S.Boolean.pipe(T.Query())),
+    restoreToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "b/{bucket}/o/{object}",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "GetObjectsRequest",
+}) as any as S.Schema<GetObjectsRequest>;
 
 export interface GetOperationsRequest {
   /** The parent bucket of the operation resource. */
@@ -2005,11 +2421,19 @@ export interface GetOperationsRequest {
   operationId: string;
 }
 export const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "operationId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"b/{bucket}/operations/{operationId}","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "GetOperationsRequest" }) as any as S.Schema<GetOperationsRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    operationId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "b/{bucket}/operations/{operationId}",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "GetOperationsRequest",
+}) as any as S.Schema<GetOperationsRequest>;
 
 export interface GetProjectsHmacKeysRequest {
   /** Name of the HMAC key. */
@@ -2020,12 +2444,20 @@ export interface GetProjectsHmacKeysRequest {
   userProject?: string;
 }
 export const GetProjectsHmacKeysRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "accessId": S.String.pipe(T.Label()),
-  "projectId": S.String.pipe(T.Label()),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"projects/{projectId}/hmacKeys/{accessId}","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "GetProjectsHmacKeysRequest" }) as any as S.Schema<GetProjectsHmacKeysRequest>;
+  S.Struct({
+    accessId: S.String.pipe(T.Label()),
+    projectId: S.String.pipe(T.Label()),
+    userProject: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "projects/{projectId}/hmacKeys/{accessId}",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsHmacKeysRequest",
+}) as any as S.Schema<GetProjectsHmacKeysRequest>;
 
 export interface GetProjectsServiceAccountRequest {
   /** Project ID */
@@ -2034,11 +2466,19 @@ export interface GetProjectsServiceAccountRequest {
   userProject?: string;
 }
 export const GetProjectsServiceAccountRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectId": S.String.pipe(T.Label()),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"projects/{projectId}/serviceAccount","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "GetProjectsServiceAccountRequest" }) as any as S.Schema<GetProjectsServiceAccountRequest>;
+  S.Struct({
+    projectId: S.String.pipe(T.Label()),
+    userProject: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "projects/{projectId}/serviceAccount",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsServiceAccountRequest",
+}) as any as S.Schema<GetProjectsServiceAccountRequest>;
 
 /** A subscription to receive Google PubSub notifications. */
 export interface ServiceAccount {
@@ -2048,10 +2488,10 @@ export interface ServiceAccount {
   kind?: string;
 }
 export const ServiceAccount = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "email_address": S.optional(S.String),
-  "kind": S.optional(S.String),
-}),
+  S.Struct({
+    email_address: S.optional(S.String),
+    kind: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ServiceAccount" }) as any as S.Schema<ServiceAccount>;
 
 export interface GetStorageLayoutBucketsRequest {
@@ -2061,31 +2501,45 @@ export interface GetStorageLayoutBucketsRequest {
   prefix?: string;
 }
 export const GetStorageLayoutBucketsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "prefix": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"b/{bucket}/storageLayout","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "GetStorageLayoutBucketsRequest" }) as any as S.Schema<GetStorageLayoutBucketsRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    prefix: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "b/{bucket}/storageLayout",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "GetStorageLayoutBucketsRequest",
+}) as any as S.Schema<GetStorageLayoutBucketsRequest>;
 
 export interface BucketStorageLayoutCustomPlacementConfig {
   /** The list of regional locations in which data is placed. */
   dataLocations?: StringList;
 }
-export const BucketStorageLayoutCustomPlacementConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dataLocations": S.optional(StringList),
-}),
-).annotate({ identifier: "BucketStorageLayoutCustomPlacementConfig" }) as any as S.Schema<BucketStorageLayoutCustomPlacementConfig>;
+export const BucketStorageLayoutCustomPlacementConfig = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      dataLocations: S.optional(StringList),
+    }),
+).annotate({
+  identifier: "BucketStorageLayoutCustomPlacementConfig",
+}) as any as S.Schema<BucketStorageLayoutCustomPlacementConfig>;
 
 export interface BucketStorageLayoutHierarchicalNamespace {
   /** When set to true, hierarchical namespace is enabled for this bucket. */
   enabled?: boolean;
 }
-export const BucketStorageLayoutHierarchicalNamespace = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "enabled": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "BucketStorageLayoutHierarchicalNamespace" }) as any as S.Schema<BucketStorageLayoutHierarchicalNamespace>;
+export const BucketStorageLayoutHierarchicalNamespace = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      enabled: S.optional(S.Boolean),
+    }),
+).annotate({
+  identifier: "BucketStorageLayoutHierarchicalNamespace",
+}) as any as S.Schema<BucketStorageLayoutHierarchicalNamespace>;
 
 /** The storage layout configuration of a bucket. */
 export interface BucketStorageLayout {
@@ -2103,15 +2557,17 @@ export interface BucketStorageLayout {
   locationType?: string;
 }
 export const BucketStorageLayout = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.optional(S.String),
-  "customPlacementConfig": S.optional(BucketStorageLayoutCustomPlacementConfig),
-  "hierarchicalNamespace": S.optional(BucketStorageLayoutHierarchicalNamespace),
-  "kind": S.optional(S.String),
-  "location": S.optional(S.String),
-  "locationType": S.optional(S.String),
-}),
-).annotate({ identifier: "BucketStorageLayout" }) as any as S.Schema<BucketStorageLayout>;
+  S.Struct({
+    bucket: S.optional(S.String),
+    customPlacementConfig: S.optional(BucketStorageLayoutCustomPlacementConfig),
+    hierarchicalNamespace: S.optional(BucketStorageLayoutHierarchicalNamespace),
+    kind: S.optional(S.String),
+    location: S.optional(S.String),
+    locationType: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BucketStorageLayout",
+}) as any as S.Schema<BucketStorageLayout>;
 
 export interface InsertAnywhereCachesRequest {
   /** Name of the parent bucket. */
@@ -2120,11 +2576,19 @@ export interface InsertAnywhereCachesRequest {
   body?: AnywhereCache;
 }
 export const InsertAnywhereCachesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "body": S.optional(AnywhereCache.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"b/{bucket}/anywhereCaches","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "InsertAnywhereCachesRequest" }) as any as S.Schema<InsertAnywhereCachesRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    body: S.optional(AnywhereCache.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "b/{bucket}/anywhereCaches",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "InsertAnywhereCachesRequest",
+}) as any as S.Schema<InsertAnywhereCachesRequest>;
 
 export interface InsertBucketAccessControlsRequest {
   /** Name of a bucket. */
@@ -2135,18 +2599,38 @@ export interface InsertBucketAccessControlsRequest {
   body?: BucketAccessControl;
 }
 export const InsertBucketAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(BucketAccessControl.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"b/{bucket}/acl","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "InsertBucketAccessControlsRequest" }) as any as S.Schema<InsertBucketAccessControlsRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    userProject: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(BucketAccessControl.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "b/{bucket}/acl",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "InsertBucketAccessControlsRequest",
+}) as any as S.Schema<InsertBucketAccessControlsRequest>;
 
-export type InsertBucketsPredefinedAclEnum = "authenticatedRead" | "private" | "projectPrivate" | "publicRead" | "publicReadWrite";
+export type InsertBucketsPredefinedAclEnum =
+  | "authenticatedRead"
+  | "private"
+  | "projectPrivate"
+  | "publicRead"
+  | "publicReadWrite";
 export const InsertBucketsPredefinedAclEnum = /*@__PURE__*/ S.String;
 
-export type InsertBucketsPredefinedDefaultObjectAclEnum = "authenticatedRead" | "bucketOwnerFullControl" | "bucketOwnerRead" | "private" | "projectPrivate" | "publicRead";
-export const InsertBucketsPredefinedDefaultObjectAclEnum = /*@__PURE__*/ S.String;
+export type InsertBucketsPredefinedDefaultObjectAclEnum =
+  | "authenticatedRead"
+  | "bucketOwnerFullControl"
+  | "bucketOwnerRead"
+  | "private"
+  | "projectPrivate"
+  | "publicRead";
+export const InsertBucketsPredefinedDefaultObjectAclEnum =
+  /*@__PURE__*/ S.String;
 
 export type InsertBucketsProjectionEnum = "full" | "noAcl";
 export const InsertBucketsProjectionEnum = /*@__PURE__*/ S.String;
@@ -2155,7 +2639,9 @@ export interface InsertBucketsRequest {
   /** Apply a predefined set of access controls to this bucket. */
   predefinedAcl?: InsertBucketsPredefinedAclEnum | (string & {});
   /** Apply a predefined set of default object access controls to this bucket. */
-  predefinedDefaultObjectAcl?: InsertBucketsPredefinedDefaultObjectAclEnum | (string & {});
+  predefinedDefaultObjectAcl?:
+    | InsertBucketsPredefinedDefaultObjectAclEnum
+    | (string & {});
   /** A valid API project identifier. */
   project: string;
   /** Set of properties to return. Defaults to noAcl, unless the bucket resource specifies acl or defaultObjectAcl properties, when it defaults to full. */
@@ -2168,16 +2654,26 @@ export interface InsertBucketsRequest {
   body?: Bucket;
 }
 export const InsertBucketsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "predefinedAcl": S.optional(InsertBucketsPredefinedAclEnum.pipe(T.Query())),
-  "predefinedDefaultObjectAcl": S.optional(InsertBucketsPredefinedDefaultObjectAclEnum.pipe(T.Query())),
-  "project": S.String.pipe(T.Query()),
-  "projection": S.optional(InsertBucketsProjectionEnum.pipe(T.Query())),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-  "enableObjectRetention": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(Bucket.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"b","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "InsertBucketsRequest" }) as any as S.Schema<InsertBucketsRequest>;
+  S.Struct({
+    predefinedAcl: S.optional(InsertBucketsPredefinedAclEnum.pipe(T.Query())),
+    predefinedDefaultObjectAcl: S.optional(
+      InsertBucketsPredefinedDefaultObjectAclEnum.pipe(T.Query()),
+    ),
+    project: S.String.pipe(T.Query()),
+    projection: S.optional(InsertBucketsProjectionEnum.pipe(T.Query())),
+    userProject: S.optional(S.String.pipe(T.Query())),
+    enableObjectRetention: S.optional(S.Boolean.pipe(T.Query())),
+    body: S.optional(Bucket.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "b",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "InsertBucketsRequest",
+}) as any as S.Schema<InsertBucketsRequest>;
 
 export interface InsertDefaultObjectAccessControlsRequest {
   /** Name of a bucket. */
@@ -2187,13 +2683,22 @@ export interface InsertDefaultObjectAccessControlsRequest {
   /** Request body */
   body?: ObjectAccessControl;
 }
-export const InsertDefaultObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(ObjectAccessControl.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"b/{bucket}/defaultObjectAcl","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "InsertDefaultObjectAccessControlsRequest" }) as any as S.Schema<InsertDefaultObjectAccessControlsRequest>;
+export const InsertDefaultObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      bucket: S.String.pipe(T.Label()),
+      userProject: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(ObjectAccessControl.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "b/{bucket}/defaultObjectAcl",
+        baseUrl: "https://storage.googleapis.com/storage/v1/",
+      }),
+    ),
+).annotate({
+  identifier: "InsertDefaultObjectAccessControlsRequest",
+}) as any as S.Schema<InsertDefaultObjectAccessControlsRequest>;
 
 export interface InsertFoldersRequest {
   /** Name of the bucket in which the folder resides. */
@@ -2204,12 +2709,20 @@ export interface InsertFoldersRequest {
   body?: Folder;
 }
 export const InsertFoldersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "recursive": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(Folder.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"b/{bucket}/folders","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "InsertFoldersRequest" }) as any as S.Schema<InsertFoldersRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    recursive: S.optional(S.Boolean.pipe(T.Query())),
+    body: S.optional(Folder.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "b/{bucket}/folders",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "InsertFoldersRequest",
+}) as any as S.Schema<InsertFoldersRequest>;
 
 export interface InsertManagedFoldersRequest {
   /** Name of the bucket containing the managed folder. */
@@ -2218,11 +2731,19 @@ export interface InsertManagedFoldersRequest {
   body?: ManagedFolder;
 }
 export const InsertManagedFoldersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "body": S.optional(ManagedFolder.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"b/{bucket}/managedFolders","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "InsertManagedFoldersRequest" }) as any as S.Schema<InsertManagedFoldersRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    body: S.optional(ManagedFolder.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "b/{bucket}/managedFolders",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "InsertManagedFoldersRequest",
+}) as any as S.Schema<InsertManagedFoldersRequest>;
 
 export interface InsertNotificationsRequest {
   /** The parent bucket of the notification. */
@@ -2233,12 +2754,20 @@ export interface InsertNotificationsRequest {
   body?: Notification;
 }
 export const InsertNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Notification.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"b/{bucket}/notificationConfigs","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "InsertNotificationsRequest" }) as any as S.Schema<InsertNotificationsRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    userProject: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(Notification.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "b/{bucket}/notificationConfigs",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "InsertNotificationsRequest",
+}) as any as S.Schema<InsertNotificationsRequest>;
 
 export interface InsertObjectAccessControlsRequest {
   /** Name of a bucket. */
@@ -2253,16 +2782,30 @@ export interface InsertObjectAccessControlsRequest {
   body?: ObjectAccessControl;
 }
 export const InsertObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "generation": S.optional(S.String.pipe(T.Query())),
-  "object": S.String.pipe(T.Label()),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(ObjectAccessControl.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"b/{bucket}/o/{object}/acl","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "InsertObjectAccessControlsRequest" }) as any as S.Schema<InsertObjectAccessControlsRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    generation: S.optional(S.String.pipe(T.Query())),
+    object: S.String.pipe(T.Label()),
+    userProject: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(ObjectAccessControl.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "b/{bucket}/o/{object}/acl",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "InsertObjectAccessControlsRequest",
+}) as any as S.Schema<InsertObjectAccessControlsRequest>;
 
-export type InsertObjectsPredefinedAclEnum = "authenticatedRead" | "bucketOwnerFullControl" | "bucketOwnerRead" | "private" | "projectPrivate" | "publicRead";
+export type InsertObjectsPredefinedAclEnum =
+  | "authenticatedRead"
+  | "bucketOwnerFullControl"
+  | "bucketOwnerRead"
+  | "private"
+  | "projectPrivate"
+  | "publicRead";
 export const InsertObjectsPredefinedAclEnum = /*@__PURE__*/ S.String;
 
 export type InsertObjectsProjectionEnum = "full" | "noAcl";
@@ -2295,21 +2838,29 @@ export interface InsertObjectsRequest {
   body?: Storage_Object;
 }
 export const InsertObjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "contentEncoding": S.optional(S.String.pipe(T.Query())),
-  "ifGenerationMatch": S.optional(S.String.pipe(T.Query())),
-  "ifGenerationNotMatch": S.optional(S.String.pipe(T.Query())),
-  "ifMetagenerationMatch": S.optional(S.String.pipe(T.Query())),
-  "ifMetagenerationNotMatch": S.optional(S.String.pipe(T.Query())),
-  "kmsKeyName": S.optional(S.String.pipe(T.Query())),
-  "name": S.optional(S.String.pipe(T.Query())),
-  "predefinedAcl": S.optional(InsertObjectsPredefinedAclEnum.pipe(T.Query())),
-  "projection": S.optional(InsertObjectsProjectionEnum.pipe(T.Query())),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Storage_Object.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"b/{bucket}/o","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "InsertObjectsRequest" }) as any as S.Schema<InsertObjectsRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    contentEncoding: S.optional(S.String.pipe(T.Query())),
+    ifGenerationMatch: S.optional(S.String.pipe(T.Query())),
+    ifGenerationNotMatch: S.optional(S.String.pipe(T.Query())),
+    ifMetagenerationMatch: S.optional(S.String.pipe(T.Query())),
+    ifMetagenerationNotMatch: S.optional(S.String.pipe(T.Query())),
+    kmsKeyName: S.optional(S.String.pipe(T.Query())),
+    name: S.optional(S.String.pipe(T.Query())),
+    predefinedAcl: S.optional(InsertObjectsPredefinedAclEnum.pipe(T.Query())),
+    projection: S.optional(InsertObjectsProjectionEnum.pipe(T.Query())),
+    userProject: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(Storage_Object.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "b/{bucket}/o",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "InsertObjectsRequest",
+}) as any as S.Schema<InsertObjectsRequest>;
 
 export interface ListAnywhereCachesRequest {
   /** Name of the parent bucket. */
@@ -2320,15 +2871,25 @@ export interface ListAnywhereCachesRequest {
   pageToken?: string;
 }
 export const ListAnywhereCachesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"b/{bucket}/anywhereCaches","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "ListAnywhereCachesRequest" }) as any as S.Schema<ListAnywhereCachesRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "b/{bucket}/anywhereCaches",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "ListAnywhereCachesRequest",
+}) as any as S.Schema<ListAnywhereCachesRequest>;
 
 export type AnywhereCacheList = ReadonlyArray<AnywhereCache>;
-export const AnywhereCacheList = /*@__PURE__*/ S.Array(AnywhereCache) as any as S.Schema<AnywhereCacheList>;
+export const AnywhereCacheList = /*@__PURE__*/ S.Array(
+  AnywhereCache,
+) as any as S.Schema<AnywhereCacheList>;
 
 /** A list of Anywhere Caches. */
 export interface AnywhereCaches {
@@ -2340,11 +2901,11 @@ export interface AnywhereCaches {
   items: AnywhereCacheList;
 }
 export const AnywhereCaches = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "nextPageToken": S.optional(S.String),
-  "items": AnywhereCacheList,
-}),
+  S.Struct({
+    kind: S.optional(S.String),
+    nextPageToken: S.optional(S.String),
+    items: AnywhereCacheList,
+  }),
 ).annotate({ identifier: "AnywhereCaches" }) as any as S.Schema<AnywhereCaches>;
 
 export interface ListBucketAccessControlsRequest {
@@ -2354,11 +2915,19 @@ export interface ListBucketAccessControlsRequest {
   userProject?: string;
 }
 export const ListBucketAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"b/{bucket}/acl","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "ListBucketAccessControlsRequest" }) as any as S.Schema<ListBucketAccessControlsRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    userProject: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "b/{bucket}/acl",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "ListBucketAccessControlsRequest",
+}) as any as S.Schema<ListBucketAccessControlsRequest>;
 
 /** An access-control list. */
 export interface BucketAccessControls {
@@ -2368,11 +2937,13 @@ export interface BucketAccessControls {
   kind?: string;
 }
 export const BucketAccessControls = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "items": S.optional(BucketAccessControlList),
-  "kind": S.optional(S.String),
-}),
-).annotate({ identifier: "BucketAccessControls" }) as any as S.Schema<BucketAccessControls>;
+  S.Struct({
+    items: S.optional(BucketAccessControlList),
+    kind: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BucketAccessControls",
+}) as any as S.Schema<BucketAccessControls>;
 
 export type ListBucketsProjectionEnum = "full" | "noAcl";
 export const ListBucketsProjectionEnum = /*@__PURE__*/ S.String;
@@ -2396,20 +2967,30 @@ export interface ListBucketsRequest {
   returnPartialSuccess?: boolean;
 }
 export const ListBucketsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "prefix": S.optional(S.String.pipe(T.Query())),
-  "softDeleted": S.optional(S.Boolean.pipe(T.Query())),
-  "project": S.String.pipe(T.Query()),
-  "projection": S.optional(ListBucketsProjectionEnum.pipe(T.Query())),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"b","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "ListBucketsRequest" }) as any as S.Schema<ListBucketsRequest>;
+  S.Struct({
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    prefix: S.optional(S.String.pipe(T.Query())),
+    softDeleted: S.optional(S.Boolean.pipe(T.Query())),
+    project: S.String.pipe(T.Query()),
+    projection: S.optional(ListBucketsProjectionEnum.pipe(T.Query())),
+    userProject: S.optional(S.String.pipe(T.Query())),
+    returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "b",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "ListBucketsRequest",
+}) as any as S.Schema<ListBucketsRequest>;
 
 export type BucketList = ReadonlyArray<Bucket>;
-export const BucketList = /*@__PURE__*/ S.Array(Bucket) as any as S.Schema<BucketList>;
+export const BucketList = /*@__PURE__*/ S.Array(
+  Bucket,
+) as any as S.Schema<BucketList>;
 
 /** A list of buckets. */
 export interface Buckets {
@@ -2423,12 +3004,12 @@ export interface Buckets {
   unreachable?: StringList;
 }
 export const Buckets = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "items": BucketList,
-  "kind": S.optional(S.String),
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-}),
+  S.Struct({
+    items: BucketList,
+    kind: S.optional(S.String),
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+  }),
 ).annotate({ identifier: "Buckets" }) as any as S.Schema<Buckets>;
 
 export interface ListDefaultObjectAccessControlsRequest {
@@ -2441,14 +3022,23 @@ export interface ListDefaultObjectAccessControlsRequest {
   /** The project to be billed for this request. Required for Requester Pays buckets. */
   userProject?: string;
 }
-export const ListDefaultObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "ifMetagenerationMatch": S.optional(S.String.pipe(T.Query())),
-  "ifMetagenerationNotMatch": S.optional(S.String.pipe(T.Query())),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"b/{bucket}/defaultObjectAcl","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "ListDefaultObjectAccessControlsRequest" }) as any as S.Schema<ListDefaultObjectAccessControlsRequest>;
+export const ListDefaultObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      bucket: S.String.pipe(T.Label()),
+      ifMetagenerationMatch: S.optional(S.String.pipe(T.Query())),
+      ifMetagenerationNotMatch: S.optional(S.String.pipe(T.Query())),
+      userProject: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "b/{bucket}/defaultObjectAcl",
+        baseUrl: "https://storage.googleapis.com/storage/v1/",
+      }),
+    ),
+).annotate({
+  identifier: "ListDefaultObjectAccessControlsRequest",
+}) as any as S.Schema<ListDefaultObjectAccessControlsRequest>;
 
 /** An access-control list. */
 export interface ObjectAccessControls {
@@ -2458,11 +3048,13 @@ export interface ObjectAccessControls {
   kind?: string;
 }
 export const ObjectAccessControls = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "items": S.optional(ObjectAccessControlList),
-  "kind": S.optional(S.String),
-}),
-).annotate({ identifier: "ObjectAccessControls" }) as any as S.Schema<ObjectAccessControls>;
+  S.Struct({
+    items: S.optional(ObjectAccessControlList),
+    kind: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ObjectAccessControls",
+}) as any as S.Schema<ObjectAccessControls>;
 
 export interface ListFoldersRequest {
   /** Name of the bucket in which to look for folders. */
@@ -2481,19 +3073,29 @@ export interface ListFoldersRequest {
   startOffset?: string;
 }
 export const ListFoldersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "delimiter": S.optional(S.String.pipe(T.Query())),
-  "endOffset": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "prefix": S.optional(S.String.pipe(T.Query())),
-  "startOffset": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"b/{bucket}/folders","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "ListFoldersRequest" }) as any as S.Schema<ListFoldersRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    delimiter: S.optional(S.String.pipe(T.Query())),
+    endOffset: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    prefix: S.optional(S.String.pipe(T.Query())),
+    startOffset: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "b/{bucket}/folders",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "ListFoldersRequest",
+}) as any as S.Schema<ListFoldersRequest>;
 
 export type FolderList = ReadonlyArray<Folder>;
-export const FolderList = /*@__PURE__*/ S.Array(Folder) as any as S.Schema<FolderList>;
+export const FolderList = /*@__PURE__*/ S.Array(
+  Folder,
+) as any as S.Schema<FolderList>;
 
 /** A list of folders. */
 export interface Folders {
@@ -2505,11 +3107,11 @@ export interface Folders {
   nextPageToken?: string;
 }
 export const Folders = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "items": FolderList,
-  "kind": S.optional(S.String),
-  "nextPageToken": S.optional(S.String),
-}),
+  S.Struct({
+    items: FolderList,
+    kind: S.optional(S.String),
+    nextPageToken: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Folders" }) as any as S.Schema<Folders>;
 
 export interface ListManagedFoldersRequest {
@@ -2523,16 +3125,26 @@ export interface ListManagedFoldersRequest {
   prefix?: string;
 }
 export const ListManagedFoldersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "prefix": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"b/{bucket}/managedFolders","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "ListManagedFoldersRequest" }) as any as S.Schema<ListManagedFoldersRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    prefix: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "b/{bucket}/managedFolders",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "ListManagedFoldersRequest",
+}) as any as S.Schema<ListManagedFoldersRequest>;
 
 export type ManagedFolderList = ReadonlyArray<ManagedFolder>;
-export const ManagedFolderList = /*@__PURE__*/ S.Array(ManagedFolder) as any as S.Schema<ManagedFolderList>;
+export const ManagedFolderList = /*@__PURE__*/ S.Array(
+  ManagedFolder,
+) as any as S.Schema<ManagedFolderList>;
 
 /** A list of managed folders. */
 export interface ManagedFolders {
@@ -2544,11 +3156,11 @@ export interface ManagedFolders {
   nextPageToken?: string;
 }
 export const ManagedFolders = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "items": ManagedFolderList,
-  "kind": S.optional(S.String),
-  "nextPageToken": S.optional(S.String),
-}),
+  S.Struct({
+    items: ManagedFolderList,
+    kind: S.optional(S.String),
+    nextPageToken: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ManagedFolders" }) as any as S.Schema<ManagedFolders>;
 
 export interface ListNotificationsRequest {
@@ -2558,14 +3170,24 @@ export interface ListNotificationsRequest {
   userProject?: string;
 }
 export const ListNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"b/{bucket}/notificationConfigs","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "ListNotificationsRequest" }) as any as S.Schema<ListNotificationsRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    userProject: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "b/{bucket}/notificationConfigs",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "ListNotificationsRequest",
+}) as any as S.Schema<ListNotificationsRequest>;
 
 export type NotificationList = ReadonlyArray<Notification>;
-export const NotificationList = /*@__PURE__*/ S.Array(Notification) as any as S.Schema<NotificationList>;
+export const NotificationList = /*@__PURE__*/ S.Array(
+  Notification,
+) as any as S.Schema<NotificationList>;
 
 /** A list of notification subscriptions. */
 export interface Notifications {
@@ -2575,10 +3197,10 @@ export interface Notifications {
   kind?: string;
 }
 export const Notifications = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "items": S.optional(NotificationList),
-  "kind": S.optional(S.String),
-}),
+  S.Struct({
+    items: S.optional(NotificationList),
+    kind: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Notifications" }) as any as S.Schema<Notifications>;
 
 export interface ListObjectAccessControlsRequest {
@@ -2592,13 +3214,21 @@ export interface ListObjectAccessControlsRequest {
   userProject?: string;
 }
 export const ListObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "generation": S.optional(S.String.pipe(T.Query())),
-  "object": S.String.pipe(T.Label()),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"b/{bucket}/o/{object}/acl","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "ListObjectAccessControlsRequest" }) as any as S.Schema<ListObjectAccessControlsRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    generation: S.optional(S.String.pipe(T.Query())),
+    object: S.String.pipe(T.Label()),
+    userProject: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "b/{bucket}/o/{object}/acl",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "ListObjectAccessControlsRequest",
+}) as any as S.Schema<ListObjectAccessControlsRequest>;
 
 export type ListObjectsProjectionEnum = "full" | "noAcl";
 export const ListObjectsProjectionEnum = /*@__PURE__*/ S.String;
@@ -2636,27 +3266,37 @@ export interface ListObjectsRequest {
   includeFoldersAsPrefixes?: boolean;
 }
 export const ListObjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "delimiter": S.optional(S.String.pipe(T.Query())),
-  "endOffset": S.optional(S.String.pipe(T.Query())),
-  "includeTrailingDelimiter": S.optional(S.Boolean.pipe(T.Query())),
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "prefix": S.optional(S.String.pipe(T.Query())),
-  "projection": S.optional(ListObjectsProjectionEnum.pipe(T.Query())),
-  "startOffset": S.optional(S.String.pipe(T.Query())),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-  "versions": S.optional(S.Boolean.pipe(T.Query())),
-  "matchGlob": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "softDeleted": S.optional(S.Boolean.pipe(T.Query())),
-  "includeFoldersAsPrefixes": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"b/{bucket}/o","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "ListObjectsRequest" }) as any as S.Schema<ListObjectsRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    delimiter: S.optional(S.String.pipe(T.Query())),
+    endOffset: S.optional(S.String.pipe(T.Query())),
+    includeTrailingDelimiter: S.optional(S.Boolean.pipe(T.Query())),
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    prefix: S.optional(S.String.pipe(T.Query())),
+    projection: S.optional(ListObjectsProjectionEnum.pipe(T.Query())),
+    startOffset: S.optional(S.String.pipe(T.Query())),
+    userProject: S.optional(S.String.pipe(T.Query())),
+    versions: S.optional(S.Boolean.pipe(T.Query())),
+    matchGlob: S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    softDeleted: S.optional(S.Boolean.pipe(T.Query())),
+    includeFoldersAsPrefixes: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "b/{bucket}/o",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "ListObjectsRequest",
+}) as any as S.Schema<ListObjectsRequest>;
 
 export type Storage_ObjectList = ReadonlyArray<Storage_Object>;
-export const Storage_ObjectList = /*@__PURE__*/ S.Array(Storage_Object) as any as S.Schema<Storage_ObjectList>;
+export const Storage_ObjectList = /*@__PURE__*/ S.Array(
+  Storage_Object,
+) as any as S.Schema<Storage_ObjectList>;
 
 /** A list of objects. */
 export interface Objects {
@@ -2670,12 +3310,12 @@ export interface Objects {
   prefixes?: StringList;
 }
 export const Objects = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "items": Storage_ObjectList,
-  "kind": S.optional(S.String),
-  "nextPageToken": S.optional(S.String),
-  "prefixes": S.optional(StringList),
-}),
+  S.Struct({
+    items: Storage_ObjectList,
+    kind: S.optional(S.String),
+    nextPageToken: S.optional(S.String),
+    prefixes: S.optional(StringList),
+  }),
 ).annotate({ identifier: "Objects" }) as any as S.Schema<Objects>;
 
 export interface ListOperationsRequest {
@@ -2689,16 +3329,27 @@ export interface ListOperationsRequest {
   pageToken?: string;
 }
 export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "bucket": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"b/{bucket}/operations","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "ListOperationsRequest" }) as any as S.Schema<ListOperationsRequest>;
+  S.Struct({
+    filter: S.optional(S.String.pipe(T.Query())),
+    bucket: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "b/{bucket}/operations",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "ListOperationsRequest",
+}) as any as S.Schema<ListOperationsRequest>;
 
-export type GoogleLongrunningOperationList = ReadonlyArray<GoogleLongrunningOperation>;
-export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(GoogleLongrunningOperation) as any as S.Schema<GoogleLongrunningOperationList>;
+export type GoogleLongrunningOperationList =
+  ReadonlyArray<GoogleLongrunningOperation>;
+export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
+  GoogleLongrunningOperation,
+) as any as S.Schema<GoogleLongrunningOperationList>;
 
 /** The response message for storage.buckets.operations.list. */
 export interface GoogleLongrunningListOperationsResponse {
@@ -2709,13 +3360,16 @@ export interface GoogleLongrunningListOperationsResponse {
   /** The kind of item this is. For lists of operations, this is always storage#operations. */
   kind?: string;
 }
-export const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "operations": S.optional(GoogleLongrunningOperationList),
-  "kind": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleLongrunningListOperationsResponse" }) as any as S.Schema<GoogleLongrunningListOperationsResponse>;
+export const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      nextPageToken: S.optional(S.String),
+      operations: S.optional(GoogleLongrunningOperationList),
+      kind: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "GoogleLongrunningListOperationsResponse",
+}) as any as S.Schema<GoogleLongrunningListOperationsResponse>;
 
 export interface ListProjectsHmacKeysRequest {
   /** Maximum number of items to return in a single page of responses. The service uses this parameter or 250 items, whichever is smaller. The max number of items per page will also be limited by the number of distinct service accounts in the response. If the number of service accounts in a single response is too high, the page will truncated and a next page token will be returned. */
@@ -2732,18 +3386,28 @@ export interface ListProjectsHmacKeysRequest {
   userProject?: string;
 }
 export const ListProjectsHmacKeysRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "projectId": S.String.pipe(T.Label()),
-  "serviceAccountEmail": S.optional(S.String.pipe(T.Query())),
-  "showDeletedKeys": S.optional(S.Boolean.pipe(T.Query())),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"projects/{projectId}/hmacKeys","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "ListProjectsHmacKeysRequest" }) as any as S.Schema<ListProjectsHmacKeysRequest>;
+  S.Struct({
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    projectId: S.String.pipe(T.Label()),
+    serviceAccountEmail: S.optional(S.String.pipe(T.Query())),
+    showDeletedKeys: S.optional(S.Boolean.pipe(T.Query())),
+    userProject: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "projects/{projectId}/hmacKeys",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsHmacKeysRequest",
+}) as any as S.Schema<ListProjectsHmacKeysRequest>;
 
 export type HmacKeyMetadataList = ReadonlyArray<HmacKeyMetadata>;
-export const HmacKeyMetadataList = /*@__PURE__*/ S.Array(HmacKeyMetadata) as any as S.Schema<HmacKeyMetadataList>;
+export const HmacKeyMetadataList = /*@__PURE__*/ S.Array(
+  HmacKeyMetadata,
+) as any as S.Schema<HmacKeyMetadataList>;
 
 /** A list of hmacKeys. */
 export interface HmacKeysMetadata {
@@ -2755,12 +3419,14 @@ export interface HmacKeysMetadata {
   nextPageToken?: string;
 }
 export const HmacKeysMetadata = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "items": HmacKeyMetadataList,
-  "kind": S.optional(S.String),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "HmacKeysMetadata" }) as any as S.Schema<HmacKeysMetadata>;
+  S.Struct({
+    items: HmacKeyMetadataList,
+    kind: S.optional(S.String),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "HmacKeysMetadata",
+}) as any as S.Schema<HmacKeysMetadata>;
 
 export interface LockRetentionPolicyBucketsRequest {
   /** Name of a bucket. */
@@ -2771,12 +3437,20 @@ export interface LockRetentionPolicyBucketsRequest {
   userProject?: string;
 }
 export const LockRetentionPolicyBucketsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "ifMetagenerationMatch": S.String.pipe(T.Query()),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"POST","uri":"b/{bucket}/lockRetentionPolicy","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "LockRetentionPolicyBucketsRequest" }) as any as S.Schema<LockRetentionPolicyBucketsRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    ifMetagenerationMatch: S.String.pipe(T.Query()),
+    userProject: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "b/{bucket}/lockRetentionPolicy",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "LockRetentionPolicyBucketsRequest",
+}) as any as S.Schema<LockRetentionPolicyBucketsRequest>;
 
 export type MoveObjectsProjectionEnum = "full" | "noAcl";
 export const MoveObjectsProjectionEnum = /*@__PURE__*/ S.String;
@@ -2810,22 +3484,30 @@ export interface MoveObjectsRequest {
   userProject?: string;
 }
 export const MoveObjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "sourceObject": S.String.pipe(T.Label()),
-  "destinationObject": S.String.pipe(T.Label()),
-  "ifSourceGenerationMatch": S.optional(S.String.pipe(T.Query())),
-  "ifSourceGenerationNotMatch": S.optional(S.String.pipe(T.Query())),
-  "ifSourceMetagenerationMatch": S.optional(S.String.pipe(T.Query())),
-  "ifSourceMetagenerationNotMatch": S.optional(S.String.pipe(T.Query())),
-  "ifGenerationMatch": S.optional(S.String.pipe(T.Query())),
-  "ifGenerationNotMatch": S.optional(S.String.pipe(T.Query())),
-  "ifMetagenerationMatch": S.optional(S.String.pipe(T.Query())),
-  "ifMetagenerationNotMatch": S.optional(S.String.pipe(T.Query())),
-  "projection": S.optional(MoveObjectsProjectionEnum.pipe(T.Query())),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"POST","uri":"b/{bucket}/o/{sourceObject}/moveTo/o/{destinationObject}","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "MoveObjectsRequest" }) as any as S.Schema<MoveObjectsRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    sourceObject: S.String.pipe(T.Label()),
+    destinationObject: S.String.pipe(T.Label()),
+    ifSourceGenerationMatch: S.optional(S.String.pipe(T.Query())),
+    ifSourceGenerationNotMatch: S.optional(S.String.pipe(T.Query())),
+    ifSourceMetagenerationMatch: S.optional(S.String.pipe(T.Query())),
+    ifSourceMetagenerationNotMatch: S.optional(S.String.pipe(T.Query())),
+    ifGenerationMatch: S.optional(S.String.pipe(T.Query())),
+    ifGenerationNotMatch: S.optional(S.String.pipe(T.Query())),
+    ifMetagenerationMatch: S.optional(S.String.pipe(T.Query())),
+    ifMetagenerationNotMatch: S.optional(S.String.pipe(T.Query())),
+    projection: S.optional(MoveObjectsProjectionEnum.pipe(T.Query())),
+    userProject: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "b/{bucket}/o/{sourceObject}/moveTo/o/{destinationObject}",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "MoveObjectsRequest",
+}) as any as S.Schema<MoveObjectsRequest>;
 
 export interface PatchBucketAccessControlsRequest {
   /** Name of a bucket. */
@@ -2838,19 +3520,39 @@ export interface PatchBucketAccessControlsRequest {
   body?: BucketAccessControl;
 }
 export const PatchBucketAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "entity": S.String.pipe(T.Label()),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(BucketAccessControl.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"b/{bucket}/acl/{entity}","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "PatchBucketAccessControlsRequest" }) as any as S.Schema<PatchBucketAccessControlsRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    entity: S.String.pipe(T.Label()),
+    userProject: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(BucketAccessControl.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "b/{bucket}/acl/{entity}",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchBucketAccessControlsRequest",
+}) as any as S.Schema<PatchBucketAccessControlsRequest>;
 
-export type PatchBucketsPredefinedAclEnum = "authenticatedRead" | "private" | "projectPrivate" | "publicRead" | "publicReadWrite";
+export type PatchBucketsPredefinedAclEnum =
+  | "authenticatedRead"
+  | "private"
+  | "projectPrivate"
+  | "publicRead"
+  | "publicReadWrite";
 export const PatchBucketsPredefinedAclEnum = /*@__PURE__*/ S.String;
 
-export type PatchBucketsPredefinedDefaultObjectAclEnum = "authenticatedRead" | "bucketOwnerFullControl" | "bucketOwnerRead" | "private" | "projectPrivate" | "publicRead";
-export const PatchBucketsPredefinedDefaultObjectAclEnum = /*@__PURE__*/ S.String;
+export type PatchBucketsPredefinedDefaultObjectAclEnum =
+  | "authenticatedRead"
+  | "bucketOwnerFullControl"
+  | "bucketOwnerRead"
+  | "private"
+  | "projectPrivate"
+  | "publicRead";
+export const PatchBucketsPredefinedDefaultObjectAclEnum =
+  /*@__PURE__*/ S.String;
 
 export type PatchBucketsProjectionEnum = "full" | "noAcl";
 export const PatchBucketsProjectionEnum = /*@__PURE__*/ S.String;
@@ -2865,7 +3567,9 @@ export interface PatchBucketsRequest {
   /** Apply a predefined set of access controls to this bucket. */
   predefinedAcl?: PatchBucketsPredefinedAclEnum | (string & {});
   /** Apply a predefined set of default object access controls to this bucket. */
-  predefinedDefaultObjectAcl?: PatchBucketsPredefinedDefaultObjectAclEnum | (string & {});
+  predefinedDefaultObjectAcl?:
+    | PatchBucketsPredefinedDefaultObjectAclEnum
+    | (string & {});
   /** Set of properties to return. Defaults to full. */
   projection?: PatchBucketsProjectionEnum | (string & {});
   /** The project to be billed for this request. Required for Requester Pays buckets. */
@@ -2874,17 +3578,27 @@ export interface PatchBucketsRequest {
   body?: Bucket;
 }
 export const PatchBucketsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "ifMetagenerationMatch": S.optional(S.String.pipe(T.Query())),
-  "ifMetagenerationNotMatch": S.optional(S.String.pipe(T.Query())),
-  "predefinedAcl": S.optional(PatchBucketsPredefinedAclEnum.pipe(T.Query())),
-  "predefinedDefaultObjectAcl": S.optional(PatchBucketsPredefinedDefaultObjectAclEnum.pipe(T.Query())),
-  "projection": S.optional(PatchBucketsProjectionEnum.pipe(T.Query())),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Bucket.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"b/{bucket}","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "PatchBucketsRequest" }) as any as S.Schema<PatchBucketsRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    ifMetagenerationMatch: S.optional(S.String.pipe(T.Query())),
+    ifMetagenerationNotMatch: S.optional(S.String.pipe(T.Query())),
+    predefinedAcl: S.optional(PatchBucketsPredefinedAclEnum.pipe(T.Query())),
+    predefinedDefaultObjectAcl: S.optional(
+      PatchBucketsPredefinedDefaultObjectAclEnum.pipe(T.Query()),
+    ),
+    projection: S.optional(PatchBucketsProjectionEnum.pipe(T.Query())),
+    userProject: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(Bucket.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "b/{bucket}",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchBucketsRequest",
+}) as any as S.Schema<PatchBucketsRequest>;
 
 export interface PatchDefaultObjectAccessControlsRequest {
   /** Name of a bucket. */
@@ -2896,14 +3610,23 @@ export interface PatchDefaultObjectAccessControlsRequest {
   /** Request body */
   body?: ObjectAccessControl;
 }
-export const PatchDefaultObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "entity": S.String.pipe(T.Label()),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(ObjectAccessControl.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"b/{bucket}/defaultObjectAcl/{entity}","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "PatchDefaultObjectAccessControlsRequest" }) as any as S.Schema<PatchDefaultObjectAccessControlsRequest>;
+export const PatchDefaultObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      bucket: S.String.pipe(T.Label()),
+      entity: S.String.pipe(T.Label()),
+      userProject: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(ObjectAccessControl.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "b/{bucket}/defaultObjectAcl/{entity}",
+        baseUrl: "https://storage.googleapis.com/storage/v1/",
+      }),
+    ),
+).annotate({
+  identifier: "PatchDefaultObjectAccessControlsRequest",
+}) as any as S.Schema<PatchDefaultObjectAccessControlsRequest>;
 
 export interface PatchObjectAccessControlsRequest {
   /** Name of a bucket. */
@@ -2920,17 +3643,31 @@ export interface PatchObjectAccessControlsRequest {
   body?: ObjectAccessControl;
 }
 export const PatchObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "entity": S.String.pipe(T.Label()),
-  "generation": S.optional(S.String.pipe(T.Query())),
-  "object": S.String.pipe(T.Label()),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(ObjectAccessControl.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"b/{bucket}/o/{object}/acl/{entity}","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "PatchObjectAccessControlsRequest" }) as any as S.Schema<PatchObjectAccessControlsRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    entity: S.String.pipe(T.Label()),
+    generation: S.optional(S.String.pipe(T.Query())),
+    object: S.String.pipe(T.Label()),
+    userProject: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(ObjectAccessControl.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "b/{bucket}/o/{object}/acl/{entity}",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchObjectAccessControlsRequest",
+}) as any as S.Schema<PatchObjectAccessControlsRequest>;
 
-export type PatchObjectsPredefinedAclEnum = "authenticatedRead" | "bucketOwnerFullControl" | "bucketOwnerRead" | "private" | "projectPrivate" | "publicRead";
+export type PatchObjectsPredefinedAclEnum =
+  | "authenticatedRead"
+  | "bucketOwnerFullControl"
+  | "bucketOwnerRead"
+  | "private"
+  | "projectPrivate"
+  | "publicRead";
 export const PatchObjectsPredefinedAclEnum = /*@__PURE__*/ S.String;
 
 export type PatchObjectsProjectionEnum = "full" | "noAcl";
@@ -2963,21 +3700,29 @@ export interface PatchObjectsRequest {
   body?: Storage_Object;
 }
 export const PatchObjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "generation": S.optional(S.String.pipe(T.Query())),
-  "ifGenerationMatch": S.optional(S.String.pipe(T.Query())),
-  "ifGenerationNotMatch": S.optional(S.String.pipe(T.Query())),
-  "ifMetagenerationMatch": S.optional(S.String.pipe(T.Query())),
-  "ifMetagenerationNotMatch": S.optional(S.String.pipe(T.Query())),
-  "overrideUnlockedRetention": S.optional(S.Boolean.pipe(T.Query())),
-  "object": S.String.pipe(T.Label()),
-  "predefinedAcl": S.optional(PatchObjectsPredefinedAclEnum.pipe(T.Query())),
-  "projection": S.optional(PatchObjectsProjectionEnum.pipe(T.Query())),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Storage_Object.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"b/{bucket}/o/{object}","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "PatchObjectsRequest" }) as any as S.Schema<PatchObjectsRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    generation: S.optional(S.String.pipe(T.Query())),
+    ifGenerationMatch: S.optional(S.String.pipe(T.Query())),
+    ifGenerationNotMatch: S.optional(S.String.pipe(T.Query())),
+    ifMetagenerationMatch: S.optional(S.String.pipe(T.Query())),
+    ifMetagenerationNotMatch: S.optional(S.String.pipe(T.Query())),
+    overrideUnlockedRetention: S.optional(S.Boolean.pipe(T.Query())),
+    object: S.String.pipe(T.Label()),
+    predefinedAcl: S.optional(PatchObjectsPredefinedAclEnum.pipe(T.Query())),
+    projection: S.optional(PatchObjectsProjectionEnum.pipe(T.Query())),
+    userProject: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(Storage_Object.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "b/{bucket}/o/{object}",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchObjectsRequest",
+}) as any as S.Schema<PatchObjectsRequest>;
 
 export interface PauseAnywhereCachesRequest {
   /** Name of the parent bucket. */
@@ -2986,21 +3731,32 @@ export interface PauseAnywhereCachesRequest {
   anywhereCacheId: string;
 }
 export const PauseAnywhereCachesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "anywhereCacheId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"POST","uri":"b/{bucket}/anywhereCaches/{anywhereCacheId}/pause","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "PauseAnywhereCachesRequest" }) as any as S.Schema<PauseAnywhereCachesRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    anywhereCacheId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "b/{bucket}/anywhereCaches/{anywhereCacheId}/pause",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "PauseAnywhereCachesRequest",
+}) as any as S.Schema<PauseAnywhereCachesRequest>;
 
 export interface RelocateBucketRequestDestinationCustomPlacementConfig {
   /** The list of regional locations in which data is placed. */
   dataLocations?: StringList;
 }
-export const RelocateBucketRequestDestinationCustomPlacementConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dataLocations": S.optional(StringList),
-}),
-).annotate({ identifier: "RelocateBucketRequestDestinationCustomPlacementConfig" }) as any as S.Schema<RelocateBucketRequestDestinationCustomPlacementConfig>;
+export const RelocateBucketRequestDestinationCustomPlacementConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      dataLocations: S.optional(StringList),
+    }),
+  ).annotate({
+    identifier: "RelocateBucketRequestDestinationCustomPlacementConfig",
+  }) as any as S.Schema<RelocateBucketRequestDestinationCustomPlacementConfig>;
 
 /** A Relocate Bucket request. */
 export interface RelocateBucketRequest {
@@ -3014,13 +3770,17 @@ export interface RelocateBucketRequest {
   destinationKmsKeyName?: string;
 }
 export const RelocateBucketRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "destinationLocation": S.optional(S.String),
-  "destinationCustomPlacementConfig": S.optional(RelocateBucketRequestDestinationCustomPlacementConfig),
-  "validateOnly": S.optional(S.Boolean),
-  "destinationKmsKeyName": S.optional(S.String),
-}),
-).annotate({ identifier: "RelocateBucketRequest" }) as any as S.Schema<RelocateBucketRequest>;
+  S.Struct({
+    destinationLocation: S.optional(S.String),
+    destinationCustomPlacementConfig: S.optional(
+      RelocateBucketRequestDestinationCustomPlacementConfig,
+    ),
+    validateOnly: S.optional(S.Boolean),
+    destinationKmsKeyName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RelocateBucketRequest",
+}) as any as S.Schema<RelocateBucketRequest>;
 
 export interface RelocateBucketsRequest {
   /** Name of the bucket to be moved. */
@@ -3029,11 +3789,19 @@ export interface RelocateBucketsRequest {
   body?: RelocateBucketRequest;
 }
 export const RelocateBucketsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "body": S.optional(RelocateBucketRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"b/{bucket}/relocate","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "RelocateBucketsRequest" }) as any as S.Schema<RelocateBucketsRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    body: S.optional(RelocateBucketRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "b/{bucket}/relocate",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "RelocateBucketsRequest",
+}) as any as S.Schema<RelocateBucketsRequest>;
 
 export interface RenameFoldersRequest {
   /** Name of the bucket in which the folders are in. */
@@ -3048,14 +3816,22 @@ export interface RenameFoldersRequest {
   sourceFolder: string;
 }
 export const RenameFoldersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "destinationFolder": S.String.pipe(T.Label()),
-  "ifSourceMetagenerationMatch": S.optional(S.String.pipe(T.Query())),
-  "ifSourceMetagenerationNotMatch": S.optional(S.String.pipe(T.Query())),
-  "sourceFolder": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"POST","uri":"b/{bucket}/folders/{sourceFolder}/renameTo/folders/{destinationFolder}","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "RenameFoldersRequest" }) as any as S.Schema<RenameFoldersRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    destinationFolder: S.String.pipe(T.Label()),
+    ifSourceMetagenerationMatch: S.optional(S.String.pipe(T.Query())),
+    ifSourceMetagenerationNotMatch: S.optional(S.String.pipe(T.Query())),
+    sourceFolder: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "b/{bucket}/folders/{sourceFolder}/renameTo/folders/{destinationFolder}",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "RenameFoldersRequest",
+}) as any as S.Schema<RenameFoldersRequest>;
 
 export type RestoreBucketsProjectionEnum = "full" | "noAcl";
 export const RestoreBucketsProjectionEnum = /*@__PURE__*/ S.String;
@@ -3071,13 +3847,21 @@ export interface RestoreBucketsRequest {
   userProject?: string;
 }
 export const RestoreBucketsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "generation": S.String.pipe(T.Query()),
-  "projection": S.optional(RestoreBucketsProjectionEnum.pipe(T.Query())),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"POST","uri":"b/{bucket}/restore","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "RestoreBucketsRequest" }) as any as S.Schema<RestoreBucketsRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    generation: S.String.pipe(T.Query()),
+    projection: S.optional(RestoreBucketsProjectionEnum.pipe(T.Query())),
+    userProject: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "b/{bucket}/restore",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "RestoreBucketsRequest",
+}) as any as S.Schema<RestoreBucketsRequest>;
 
 export type RestoreObjectsProjectionEnum = "full" | "noAcl";
 export const RestoreObjectsProjectionEnum = /*@__PURE__*/ S.String;
@@ -3107,20 +3891,28 @@ export interface RestoreObjectsRequest {
   restoreToken?: string;
 }
 export const RestoreObjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "generation": S.String.pipe(T.Query()),
-  "object": S.String.pipe(T.Label()),
-  "ifGenerationMatch": S.optional(S.String.pipe(T.Query())),
-  "ifGenerationNotMatch": S.optional(S.String.pipe(T.Query())),
-  "ifMetagenerationMatch": S.optional(S.String.pipe(T.Query())),
-  "ifMetagenerationNotMatch": S.optional(S.String.pipe(T.Query())),
-  "copySourceAcl": S.optional(S.Boolean.pipe(T.Query())),
-  "projection": S.optional(RestoreObjectsProjectionEnum.pipe(T.Query())),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-  "restoreToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"POST","uri":"b/{bucket}/o/{object}/restore","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "RestoreObjectsRequest" }) as any as S.Schema<RestoreObjectsRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    generation: S.String.pipe(T.Query()),
+    object: S.String.pipe(T.Label()),
+    ifGenerationMatch: S.optional(S.String.pipe(T.Query())),
+    ifGenerationNotMatch: S.optional(S.String.pipe(T.Query())),
+    ifMetagenerationMatch: S.optional(S.String.pipe(T.Query())),
+    ifMetagenerationNotMatch: S.optional(S.String.pipe(T.Query())),
+    copySourceAcl: S.optional(S.Boolean.pipe(T.Query())),
+    projection: S.optional(RestoreObjectsProjectionEnum.pipe(T.Query())),
+    userProject: S.optional(S.String.pipe(T.Query())),
+    restoreToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "b/{bucket}/o/{object}/restore",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "RestoreObjectsRequest",
+}) as any as S.Schema<RestoreObjectsRequest>;
 
 export interface ResumeAnywhereCachesRequest {
   /** Name of the parent bucket. */
@@ -3129,14 +3921,29 @@ export interface ResumeAnywhereCachesRequest {
   anywhereCacheId: string;
 }
 export const ResumeAnywhereCachesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "anywhereCacheId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"POST","uri":"b/{bucket}/anywhereCaches/{anywhereCacheId}/resume","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "ResumeAnywhereCachesRequest" }) as any as S.Schema<ResumeAnywhereCachesRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    anywhereCacheId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "b/{bucket}/anywhereCaches/{anywhereCacheId}/resume",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "ResumeAnywhereCachesRequest",
+}) as any as S.Schema<ResumeAnywhereCachesRequest>;
 
-export type RewriteObjectsDestinationPredefinedAclEnum = "authenticatedRead" | "bucketOwnerFullControl" | "bucketOwnerRead" | "private" | "projectPrivate" | "publicRead";
-export const RewriteObjectsDestinationPredefinedAclEnum = /*@__PURE__*/ S.String;
+export type RewriteObjectsDestinationPredefinedAclEnum =
+  | "authenticatedRead"
+  | "bucketOwnerFullControl"
+  | "bucketOwnerRead"
+  | "private"
+  | "projectPrivate"
+  | "publicRead";
+export const RewriteObjectsDestinationPredefinedAclEnum =
+  /*@__PURE__*/ S.String;
 
 export type RewriteObjectsProjectionEnum = "full" | "noAcl";
 export const RewriteObjectsProjectionEnum = /*@__PURE__*/ S.String;
@@ -3149,7 +3956,9 @@ export interface RewriteObjectsRequest {
   /** Name of the new object. Required when the object metadata is not otherwise provided. Overrides the object metadata's name value, if any. For information about how to URL encode object names to be path safe, see [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding). */
   destinationObject: string;
   /** Apply a predefined set of access controls to the destination object. */
-  destinationPredefinedAcl?: RewriteObjectsDestinationPredefinedAclEnum | (string & {});
+  destinationPredefinedAcl?:
+    | RewriteObjectsDestinationPredefinedAclEnum
+    | (string & {});
   /** Specifies which groups of Object Contexts from the source object should be dropped from the destination object. */
   dropContextGroups?: StringList;
   /** Makes the operation conditional on whether the object's current generation matches the given value. Setting to 0 makes the operation succeed only if there are no live versions of the object. */
@@ -3186,30 +3995,40 @@ export interface RewriteObjectsRequest {
   body?: Storage_Object;
 }
 export const RewriteObjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "destinationBucket": S.String.pipe(T.Label()),
-  "destinationKmsKeyName": S.optional(S.String.pipe(T.Query())),
-  "destinationObject": S.String.pipe(T.Label()),
-  "destinationPredefinedAcl": S.optional(RewriteObjectsDestinationPredefinedAclEnum.pipe(T.Query())),
-  "dropContextGroups": S.optional(StringList.pipe(T.Query())),
-  "ifGenerationMatch": S.optional(S.String.pipe(T.Query())),
-  "ifGenerationNotMatch": S.optional(S.String.pipe(T.Query())),
-  "ifMetagenerationMatch": S.optional(S.String.pipe(T.Query())),
-  "ifMetagenerationNotMatch": S.optional(S.String.pipe(T.Query())),
-  "ifSourceGenerationMatch": S.optional(S.String.pipe(T.Query())),
-  "ifSourceGenerationNotMatch": S.optional(S.String.pipe(T.Query())),
-  "ifSourceMetagenerationMatch": S.optional(S.String.pipe(T.Query())),
-  "ifSourceMetagenerationNotMatch": S.optional(S.String.pipe(T.Query())),
-  "maxBytesRewrittenPerCall": S.optional(S.String.pipe(T.Query())),
-  "projection": S.optional(RewriteObjectsProjectionEnum.pipe(T.Query())),
-  "rewriteToken": S.optional(S.String.pipe(T.Query())),
-  "sourceBucket": S.String.pipe(T.Label()),
-  "sourceGeneration": S.optional(S.String.pipe(T.Query())),
-  "sourceObject": S.String.pipe(T.Label()),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Storage_Object.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"b/{sourceBucket}/o/{sourceObject}/rewriteTo/b/{destinationBucket}/o/{destinationObject}","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "RewriteObjectsRequest" }) as any as S.Schema<RewriteObjectsRequest>;
+  S.Struct({
+    destinationBucket: S.String.pipe(T.Label()),
+    destinationKmsKeyName: S.optional(S.String.pipe(T.Query())),
+    destinationObject: S.String.pipe(T.Label()),
+    destinationPredefinedAcl: S.optional(
+      RewriteObjectsDestinationPredefinedAclEnum.pipe(T.Query()),
+    ),
+    dropContextGroups: S.optional(StringList.pipe(T.Query())),
+    ifGenerationMatch: S.optional(S.String.pipe(T.Query())),
+    ifGenerationNotMatch: S.optional(S.String.pipe(T.Query())),
+    ifMetagenerationMatch: S.optional(S.String.pipe(T.Query())),
+    ifMetagenerationNotMatch: S.optional(S.String.pipe(T.Query())),
+    ifSourceGenerationMatch: S.optional(S.String.pipe(T.Query())),
+    ifSourceGenerationNotMatch: S.optional(S.String.pipe(T.Query())),
+    ifSourceMetagenerationMatch: S.optional(S.String.pipe(T.Query())),
+    ifSourceMetagenerationNotMatch: S.optional(S.String.pipe(T.Query())),
+    maxBytesRewrittenPerCall: S.optional(S.String.pipe(T.Query())),
+    projection: S.optional(RewriteObjectsProjectionEnum.pipe(T.Query())),
+    rewriteToken: S.optional(S.String.pipe(T.Query())),
+    sourceBucket: S.String.pipe(T.Label()),
+    sourceGeneration: S.optional(S.String.pipe(T.Query())),
+    sourceObject: S.String.pipe(T.Label()),
+    userProject: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(Storage_Object.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "b/{sourceBucket}/o/{sourceObject}/rewriteTo/b/{destinationBucket}/o/{destinationObject}",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "RewriteObjectsRequest",
+}) as any as S.Schema<RewriteObjectsRequest>;
 
 /** A rewrite response. */
 export interface RewriteResponse {
@@ -3227,15 +4046,17 @@ export interface RewriteResponse {
   totalBytesRewritten?: string;
 }
 export const RewriteResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "done": S.optional(S.Boolean),
-  "kind": S.optional(S.String),
-  "objectSize": S.optional(S.String),
-  "resource": S.optional(Storage_Object),
-  "rewriteToken": S.optional(S.String),
-  "totalBytesRewritten": S.optional(S.String),
-}),
-).annotate({ identifier: "RewriteResponse" }) as any as S.Schema<RewriteResponse>;
+  S.Struct({
+    done: S.optional(S.Boolean),
+    kind: S.optional(S.String),
+    objectSize: S.optional(S.String),
+    resource: S.optional(Storage_Object),
+    rewriteToken: S.optional(S.String),
+    totalBytesRewritten: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RewriteResponse",
+}) as any as S.Schema<RewriteResponse>;
 
 export interface SetIamPolicyBucketsRequest {
   /** Name of a bucket. */
@@ -3246,12 +4067,20 @@ export interface SetIamPolicyBucketsRequest {
   body?: Policy;
 }
 export const SetIamPolicyBucketsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Policy.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"b/{bucket}/iam","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "SetIamPolicyBucketsRequest" }) as any as S.Schema<SetIamPolicyBucketsRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    userProject: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(Policy.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "b/{bucket}/iam",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "SetIamPolicyBucketsRequest",
+}) as any as S.Schema<SetIamPolicyBucketsRequest>;
 
 export interface SetIamPolicyManagedFoldersRequest {
   /** Name of the bucket containing the managed folder. */
@@ -3264,13 +4093,21 @@ export interface SetIamPolicyManagedFoldersRequest {
   body?: Policy;
 }
 export const SetIamPolicyManagedFoldersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "managedFolder": S.String.pipe(T.Label()),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Policy.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"b/{bucket}/managedFolders/{managedFolder}/iam","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "SetIamPolicyManagedFoldersRequest" }) as any as S.Schema<SetIamPolicyManagedFoldersRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    managedFolder: S.String.pipe(T.Label()),
+    userProject: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(Policy.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "b/{bucket}/managedFolders/{managedFolder}/iam",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "SetIamPolicyManagedFoldersRequest",
+}) as any as S.Schema<SetIamPolicyManagedFoldersRequest>;
 
 export interface SetIamPolicyObjectsRequest {
   /** Name of the bucket in which the object resides. */
@@ -3285,14 +4122,22 @@ export interface SetIamPolicyObjectsRequest {
   body?: Policy;
 }
 export const SetIamPolicyObjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "generation": S.optional(S.String.pipe(T.Query())),
-  "object": S.String.pipe(T.Label()),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Policy.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"b/{bucket}/o/{object}/iam","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "SetIamPolicyObjectsRequest" }) as any as S.Schema<SetIamPolicyObjectsRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    generation: S.optional(S.String.pipe(T.Query())),
+    object: S.String.pipe(T.Label()),
+    userProject: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(Policy.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "b/{bucket}/o/{object}/iam",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "SetIamPolicyObjectsRequest",
+}) as any as S.Schema<SetIamPolicyObjectsRequest>;
 
 /** An notification channel used to watch for resource changes. */
 export interface Channel {
@@ -3318,18 +4163,18 @@ export interface Channel {
   type?: string;
 }
 export const Channel = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "address": S.optional(S.String),
-  "expiration": S.optional(S.String),
-  "id": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "params": S.optional(StringMap),
-  "payload": S.optional(S.Boolean),
-  "resourceId": S.optional(S.String),
-  "resourceUri": S.optional(S.String),
-  "token": S.optional(S.String),
-  "type": S.optional(S.String),
-}),
+  S.Struct({
+    address: S.optional(S.String),
+    expiration: S.optional(S.String),
+    id: S.optional(S.String),
+    kind: S.optional(S.String),
+    params: S.optional(StringMap),
+    payload: S.optional(S.Boolean),
+    resourceId: S.optional(S.String),
+    resourceUri: S.optional(S.String),
+    token: S.optional(S.String),
+    type: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Channel" }) as any as S.Schema<Channel>;
 
 export interface StopChannelsRequest {
@@ -3337,15 +4182,25 @@ export interface StopChannelsRequest {
   body?: Channel;
 }
 export const StopChannelsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(Channel.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"channels/stop","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "StopChannelsRequest" }) as any as S.Schema<StopChannelsRequest>;
+  S.Struct({
+    body: S.optional(Channel.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "channels/stop",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "StopChannelsRequest",
+}) as any as S.Schema<StopChannelsRequest>;
 
 export interface StopChannelsResponse {}
 export const StopChannelsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "StopChannelsResponse" }) as any as S.Schema<StopChannelsResponse>;
+  S.Struct({}),
+).annotate({
+  identifier: "StopChannelsResponse",
+}) as any as S.Schema<StopChannelsResponse>;
 
 export interface TestIamPermissionsBucketsRequest {
   /** Name of a bucket. */
@@ -3356,12 +4211,20 @@ export interface TestIamPermissionsBucketsRequest {
   userProject?: string;
 }
 export const TestIamPermissionsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "permissions": StringList.pipe(T.Query()),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"b/{bucket}/iam/testPermissions","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "TestIamPermissionsBucketsRequest" }) as any as S.Schema<TestIamPermissionsBucketsRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    permissions: StringList.pipe(T.Query()),
+    userProject: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "b/{bucket}/iam/testPermissions",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "TestIamPermissionsBucketsRequest",
+}) as any as S.Schema<TestIamPermissionsBucketsRequest>;
 
 /** A storage.(buckets|objects|managedFolders).testIamPermissions response. */
 export interface TestIamPermissionsResponse {
@@ -3371,11 +4234,13 @@ export interface TestIamPermissionsResponse {
   permissions?: StringList;
 }
 export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "permissions": S.optional(StringList),
-}),
-).annotate({ identifier: "TestIamPermissionsResponse" }) as any as S.Schema<TestIamPermissionsResponse>;
+  S.Struct({
+    kind: S.optional(S.String),
+    permissions: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "TestIamPermissionsResponse",
+}) as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsManagedFoldersRequest {
   /** Name of the bucket containing the managed folder. */
@@ -3387,14 +4252,23 @@ export interface TestIamPermissionsManagedFoldersRequest {
   /** The project to be billed for this request. Required for Requester Pays buckets. */
   userProject?: string;
 }
-export const TestIamPermissionsManagedFoldersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "managedFolder": S.String.pipe(T.Label()),
-  "permissions": StringList.pipe(T.Query()),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"b/{bucket}/managedFolders/{managedFolder}/iam/testPermissions","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "TestIamPermissionsManagedFoldersRequest" }) as any as S.Schema<TestIamPermissionsManagedFoldersRequest>;
+export const TestIamPermissionsManagedFoldersRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      bucket: S.String.pipe(T.Label()),
+      managedFolder: S.String.pipe(T.Label()),
+      permissions: StringList.pipe(T.Query()),
+      userProject: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "b/{bucket}/managedFolders/{managedFolder}/iam/testPermissions",
+        baseUrl: "https://storage.googleapis.com/storage/v1/",
+      }),
+    ),
+).annotate({
+  identifier: "TestIamPermissionsManagedFoldersRequest",
+}) as any as S.Schema<TestIamPermissionsManagedFoldersRequest>;
 
 export interface TestIamPermissionsObjectsRequest {
   /** Name of the bucket in which the object resides. */
@@ -3409,14 +4283,22 @@ export interface TestIamPermissionsObjectsRequest {
   userProject?: string;
 }
 export const TestIamPermissionsObjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "generation": S.optional(S.String.pipe(T.Query())),
-  "object": S.String.pipe(T.Label()),
-  "permissions": StringList.pipe(T.Query()),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"b/{bucket}/o/{object}/iam/testPermissions","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "TestIamPermissionsObjectsRequest" }) as any as S.Schema<TestIamPermissionsObjectsRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    generation: S.optional(S.String.pipe(T.Query())),
+    object: S.String.pipe(T.Label()),
+    permissions: StringList.pipe(T.Query()),
+    userProject: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "b/{bucket}/o/{object}/iam/testPermissions",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "TestIamPermissionsObjectsRequest",
+}) as any as S.Schema<TestIamPermissionsObjectsRequest>;
 
 export interface UpdateAnywhereCachesRequest {
   /** Name of the parent bucket. */
@@ -3427,12 +4309,20 @@ export interface UpdateAnywhereCachesRequest {
   body?: AnywhereCache;
 }
 export const UpdateAnywhereCachesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "anywhereCacheId": S.String.pipe(T.Label()),
-  "body": S.optional(AnywhereCache.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"b/{bucket}/anywhereCaches/{anywhereCacheId}","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "UpdateAnywhereCachesRequest" }) as any as S.Schema<UpdateAnywhereCachesRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    anywhereCacheId: S.String.pipe(T.Label()),
+    body: S.optional(AnywhereCache.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "b/{bucket}/anywhereCaches/{anywhereCacheId}",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateAnywhereCachesRequest",
+}) as any as S.Schema<UpdateAnywhereCachesRequest>;
 
 export interface UpdateBucketAccessControlsRequest {
   /** Name of a bucket. */
@@ -3445,19 +4335,39 @@ export interface UpdateBucketAccessControlsRequest {
   body?: BucketAccessControl;
 }
 export const UpdateBucketAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "entity": S.String.pipe(T.Label()),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(BucketAccessControl.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"b/{bucket}/acl/{entity}","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "UpdateBucketAccessControlsRequest" }) as any as S.Schema<UpdateBucketAccessControlsRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    entity: S.String.pipe(T.Label()),
+    userProject: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(BucketAccessControl.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "b/{bucket}/acl/{entity}",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateBucketAccessControlsRequest",
+}) as any as S.Schema<UpdateBucketAccessControlsRequest>;
 
-export type UpdateBucketsPredefinedAclEnum = "authenticatedRead" | "private" | "projectPrivate" | "publicRead" | "publicReadWrite";
+export type UpdateBucketsPredefinedAclEnum =
+  | "authenticatedRead"
+  | "private"
+  | "projectPrivate"
+  | "publicRead"
+  | "publicReadWrite";
 export const UpdateBucketsPredefinedAclEnum = /*@__PURE__*/ S.String;
 
-export type UpdateBucketsPredefinedDefaultObjectAclEnum = "authenticatedRead" | "bucketOwnerFullControl" | "bucketOwnerRead" | "private" | "projectPrivate" | "publicRead";
-export const UpdateBucketsPredefinedDefaultObjectAclEnum = /*@__PURE__*/ S.String;
+export type UpdateBucketsPredefinedDefaultObjectAclEnum =
+  | "authenticatedRead"
+  | "bucketOwnerFullControl"
+  | "bucketOwnerRead"
+  | "private"
+  | "projectPrivate"
+  | "publicRead";
+export const UpdateBucketsPredefinedDefaultObjectAclEnum =
+  /*@__PURE__*/ S.String;
 
 export type UpdateBucketsProjectionEnum = "full" | "noAcl";
 export const UpdateBucketsProjectionEnum = /*@__PURE__*/ S.String;
@@ -3472,7 +4382,9 @@ export interface UpdateBucketsRequest {
   /** Apply a predefined set of access controls to this bucket. */
   predefinedAcl?: UpdateBucketsPredefinedAclEnum | (string & {});
   /** Apply a predefined set of default object access controls to this bucket. */
-  predefinedDefaultObjectAcl?: UpdateBucketsPredefinedDefaultObjectAclEnum | (string & {});
+  predefinedDefaultObjectAcl?:
+    | UpdateBucketsPredefinedDefaultObjectAclEnum
+    | (string & {});
   /** Set of properties to return. Defaults to full. */
   projection?: UpdateBucketsProjectionEnum | (string & {});
   /** The project to be billed for this request. Required for Requester Pays buckets. */
@@ -3481,17 +4393,27 @@ export interface UpdateBucketsRequest {
   body?: Bucket;
 }
 export const UpdateBucketsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "ifMetagenerationMatch": S.optional(S.String.pipe(T.Query())),
-  "ifMetagenerationNotMatch": S.optional(S.String.pipe(T.Query())),
-  "predefinedAcl": S.optional(UpdateBucketsPredefinedAclEnum.pipe(T.Query())),
-  "predefinedDefaultObjectAcl": S.optional(UpdateBucketsPredefinedDefaultObjectAclEnum.pipe(T.Query())),
-  "projection": S.optional(UpdateBucketsProjectionEnum.pipe(T.Query())),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Bucket.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"b/{bucket}","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "UpdateBucketsRequest" }) as any as S.Schema<UpdateBucketsRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    ifMetagenerationMatch: S.optional(S.String.pipe(T.Query())),
+    ifMetagenerationNotMatch: S.optional(S.String.pipe(T.Query())),
+    predefinedAcl: S.optional(UpdateBucketsPredefinedAclEnum.pipe(T.Query())),
+    predefinedDefaultObjectAcl: S.optional(
+      UpdateBucketsPredefinedDefaultObjectAclEnum.pipe(T.Query()),
+    ),
+    projection: S.optional(UpdateBucketsProjectionEnum.pipe(T.Query())),
+    userProject: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(Bucket.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "b/{bucket}",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateBucketsRequest",
+}) as any as S.Schema<UpdateBucketsRequest>;
 
 export interface UpdateDefaultObjectAccessControlsRequest {
   /** Name of a bucket. */
@@ -3503,14 +4425,23 @@ export interface UpdateDefaultObjectAccessControlsRequest {
   /** Request body */
   body?: ObjectAccessControl;
 }
-export const UpdateDefaultObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "entity": S.String.pipe(T.Label()),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(ObjectAccessControl.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"b/{bucket}/defaultObjectAcl/{entity}","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "UpdateDefaultObjectAccessControlsRequest" }) as any as S.Schema<UpdateDefaultObjectAccessControlsRequest>;
+export const UpdateDefaultObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      bucket: S.String.pipe(T.Label()),
+      entity: S.String.pipe(T.Label()),
+      userProject: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(ObjectAccessControl.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "b/{bucket}/defaultObjectAcl/{entity}",
+        baseUrl: "https://storage.googleapis.com/storage/v1/",
+      }),
+    ),
+).annotate({
+  identifier: "UpdateDefaultObjectAccessControlsRequest",
+}) as any as S.Schema<UpdateDefaultObjectAccessControlsRequest>;
 
 export interface UpdateObjectAccessControlsRequest {
   /** Name of a bucket. */
@@ -3527,17 +4458,31 @@ export interface UpdateObjectAccessControlsRequest {
   body?: ObjectAccessControl;
 }
 export const UpdateObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "entity": S.String.pipe(T.Label()),
-  "generation": S.optional(S.String.pipe(T.Query())),
-  "object": S.String.pipe(T.Label()),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(ObjectAccessControl.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"b/{bucket}/o/{object}/acl/{entity}","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "UpdateObjectAccessControlsRequest" }) as any as S.Schema<UpdateObjectAccessControlsRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    entity: S.String.pipe(T.Label()),
+    generation: S.optional(S.String.pipe(T.Query())),
+    object: S.String.pipe(T.Label()),
+    userProject: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(ObjectAccessControl.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "b/{bucket}/o/{object}/acl/{entity}",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateObjectAccessControlsRequest",
+}) as any as S.Schema<UpdateObjectAccessControlsRequest>;
 
-export type UpdateObjectsPredefinedAclEnum = "authenticatedRead" | "bucketOwnerFullControl" | "bucketOwnerRead" | "private" | "projectPrivate" | "publicRead";
+export type UpdateObjectsPredefinedAclEnum =
+  | "authenticatedRead"
+  | "bucketOwnerFullControl"
+  | "bucketOwnerRead"
+  | "private"
+  | "projectPrivate"
+  | "publicRead";
 export const UpdateObjectsPredefinedAclEnum = /*@__PURE__*/ S.String;
 
 export type UpdateObjectsProjectionEnum = "full" | "noAcl";
@@ -3570,21 +4515,29 @@ export interface UpdateObjectsRequest {
   body?: Storage_Object;
 }
 export const UpdateObjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "generation": S.optional(S.String.pipe(T.Query())),
-  "ifGenerationMatch": S.optional(S.String.pipe(T.Query())),
-  "ifGenerationNotMatch": S.optional(S.String.pipe(T.Query())),
-  "ifMetagenerationMatch": S.optional(S.String.pipe(T.Query())),
-  "ifMetagenerationNotMatch": S.optional(S.String.pipe(T.Query())),
-  "overrideUnlockedRetention": S.optional(S.Boolean.pipe(T.Query())),
-  "object": S.String.pipe(T.Label()),
-  "predefinedAcl": S.optional(UpdateObjectsPredefinedAclEnum.pipe(T.Query())),
-  "projection": S.optional(UpdateObjectsProjectionEnum.pipe(T.Query())),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Storage_Object.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"b/{bucket}/o/{object}","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "UpdateObjectsRequest" }) as any as S.Schema<UpdateObjectsRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    generation: S.optional(S.String.pipe(T.Query())),
+    ifGenerationMatch: S.optional(S.String.pipe(T.Query())),
+    ifGenerationNotMatch: S.optional(S.String.pipe(T.Query())),
+    ifMetagenerationMatch: S.optional(S.String.pipe(T.Query())),
+    ifMetagenerationNotMatch: S.optional(S.String.pipe(T.Query())),
+    overrideUnlockedRetention: S.optional(S.Boolean.pipe(T.Query())),
+    object: S.String.pipe(T.Label()),
+    predefinedAcl: S.optional(UpdateObjectsPredefinedAclEnum.pipe(T.Query())),
+    projection: S.optional(UpdateObjectsProjectionEnum.pipe(T.Query())),
+    userProject: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(Storage_Object.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "b/{bucket}/o/{object}",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateObjectsRequest",
+}) as any as S.Schema<UpdateObjectsRequest>;
 
 export interface UpdateProjectsHmacKeysRequest {
   /** Name of the HMAC key being updated. */
@@ -3597,15 +4550,28 @@ export interface UpdateProjectsHmacKeysRequest {
   body?: HmacKeyMetadata;
 }
 export const UpdateProjectsHmacKeysRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "accessId": S.String.pipe(T.Label()),
-  "projectId": S.String.pipe(T.Label()),
-  "userProject": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(HmacKeyMetadata.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"projects/{projectId}/hmacKeys/{accessId}","baseUrl":"https://storage.googleapis.com/storage/v1/"})),
-).annotate({ identifier: "UpdateProjectsHmacKeysRequest" }) as any as S.Schema<UpdateProjectsHmacKeysRequest>;
+  S.Struct({
+    accessId: S.String.pipe(T.Label()),
+    projectId: S.String.pipe(T.Label()),
+    userProject: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(HmacKeyMetadata.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "projects/{projectId}/hmacKeys/{accessId}",
+      baseUrl: "https://storage.googleapis.com/storage/v1/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateProjectsHmacKeysRequest",
+}) as any as S.Schema<UpdateProjectsHmacKeysRequest>;
 
-export type AdvanceRelocateBucketOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type AdvanceRelocateBucketOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Starts asynchronous advancement of the relocate bucket operation in the case of required write downtime, to allow it to lock the bucket at the source location, and proceed with the bucket location swap. The server makes a best effort to advance the relocate bucket operation, but success is not guaranteed. */
 export const advanceRelocateBucketOperations: API.OperationMethod<
   AdvanceRelocateBucketOperationsRequest,
@@ -3620,7 +4586,12 @@ export const advanceRelocateBucketOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BulkRestoreObjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type BulkRestoreObjectsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Initiates a long-running bulk restore operation on the specified bucket. */
 export const bulkRestoreObjects: API.OperationMethod<
   BulkRestoreObjectsRequest_,
@@ -3635,7 +4606,12 @@ export const bulkRestoreObjects: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CancelOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CancelOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. */
 export const cancelOperations: API.OperationMethod<
   CancelOperationsRequest,
@@ -3650,7 +4626,12 @@ export const cancelOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ComposeObjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ComposeObjectsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Concatenates a list of existing objects into a new object in the same bucket. */
 export const composeObjects: API.OperationMethod<
   ComposeObjectsRequest,
@@ -3665,7 +4646,12 @@ export const composeObjects: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CopyObjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CopyObjectsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Copies a source object to a destination object. Optionally overrides metadata. */
 export const copyObjects: API.OperationMethod<
   CopyObjectsRequest,
@@ -3680,7 +4666,12 @@ export const copyObjects: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsHmacKeysError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsHmacKeysError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new HMAC key for the specified service account. */
 export const createProjectsHmacKeys: API.OperationMethod<
   CreateProjectsHmacKeysRequest,
@@ -3695,7 +4686,12 @@ export const createProjectsHmacKeys: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteBucketAccessControlsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteBucketAccessControlsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Permanently deletes the ACL entry for the specified entity on the specified bucket. */
 export const deleteBucketAccessControls: API.OperationMethod<
   DeleteBucketAccessControlsRequest,
@@ -3710,7 +4706,12 @@ export const deleteBucketAccessControls: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteBucketsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteBucketsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes an empty bucket. Deletions are permanent unless soft delete is enabled on the bucket. */
 export const deleteBuckets: API.OperationMethod<
   DeleteBucketsRequest,
@@ -3725,7 +4726,12 @@ export const deleteBuckets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteDefaultObjectAccessControlsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteDefaultObjectAccessControlsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Permanently deletes the default object ACL entry for the specified entity on the specified bucket. */
 export const deleteDefaultObjectAccessControls: API.OperationMethod<
   DeleteDefaultObjectAccessControlsRequest,
@@ -3740,7 +4746,12 @@ export const deleteDefaultObjectAccessControls: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteFoldersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteFoldersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Permanently deletes a folder. Only applicable to buckets with hierarchical namespace enabled. */
 export const deleteFolders: API.OperationMethod<
   DeleteFoldersRequest,
@@ -3755,7 +4766,12 @@ export const deleteFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteManagedFoldersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteManagedFoldersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Permanently deletes a managed folder. */
 export const deleteManagedFolders: API.OperationMethod<
   DeleteManagedFoldersRequest,
@@ -3770,7 +4786,12 @@ export const deleteManagedFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteNotificationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteNotificationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Permanently deletes a notification subscription. */
 export const deleteNotifications: API.OperationMethod<
   DeleteNotificationsRequest,
@@ -3785,7 +4806,12 @@ export const deleteNotifications: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteObjectAccessControlsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteObjectAccessControlsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Permanently deletes the ACL entry for the specified entity on the specified object. */
 export const deleteObjectAccessControls: API.OperationMethod<
   DeleteObjectAccessControlsRequest,
@@ -3800,7 +4826,12 @@ export const deleteObjectAccessControls: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteObjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteObjectsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes an object and its metadata. Deletions are permanent if versioning is not enabled for the bucket, or if the generation parameter is used. */
 export const deleteObjects: API.OperationMethod<
   DeleteObjectsRequest,
@@ -3815,7 +4846,12 @@ export const deleteObjects: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsHmacKeysError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsHmacKeysError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes an HMAC key. */
 export const deleteProjectsHmacKeys: API.OperationMethod<
   DeleteProjectsHmacKeysRequest,
@@ -3830,7 +4866,12 @@ export const deleteProjectsHmacKeys: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteRecursiveFoldersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteRecursiveFoldersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a folder recursively. Only applicable to buckets with hierarchical namespace enabled. */
 export const deleteRecursiveFolders: API.OperationMethod<
   DeleteRecursiveFoldersRequest,
@@ -3845,7 +4886,12 @@ export const deleteRecursiveFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DisableAnywhereCachesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DisableAnywhereCachesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Disables an Anywhere Cache instance. */
 export const disableAnywhereCaches: API.OperationMethod<
   DisableAnywhereCachesRequest,
@@ -3905,7 +4951,10 @@ export const getBuckets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetDefaultObjectAccessControlsError = NotFound | Forbidden | GcpOpError;
+export type GetDefaultObjectAccessControlsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns the default object ACL entry for the specified entity on the specified bucket. */
 export const getDefaultObjectAccessControls: API.OperationMethod<
   GetDefaultObjectAccessControlsRequest,
@@ -4100,7 +5149,12 @@ export const getStorageLayoutBuckets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertAnywhereCachesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type InsertAnywhereCachesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates an Anywhere Cache instance. */
 export const insertAnywhereCaches: API.OperationMethod<
   InsertAnywhereCachesRequest,
@@ -4115,7 +5169,12 @@ export const insertAnywhereCaches: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertBucketAccessControlsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type InsertBucketAccessControlsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new ACL entry on the specified bucket. */
 export const insertBucketAccessControls: API.OperationMethod<
   InsertBucketAccessControlsRequest,
@@ -4130,7 +5189,12 @@ export const insertBucketAccessControls: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertBucketsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type InsertBucketsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new bucket. */
 export const insertBuckets: API.OperationMethod<
   InsertBucketsRequest,
@@ -4145,7 +5209,12 @@ export const insertBuckets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertDefaultObjectAccessControlsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type InsertDefaultObjectAccessControlsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new default object ACL entry on the specified bucket. */
 export const insertDefaultObjectAccessControls: API.OperationMethod<
   InsertDefaultObjectAccessControlsRequest,
@@ -4160,7 +5229,12 @@ export const insertDefaultObjectAccessControls: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertFoldersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type InsertFoldersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new folder. Only applicable to buckets with hierarchical namespace enabled. */
 export const insertFolders: API.OperationMethod<
   InsertFoldersRequest,
@@ -4175,7 +5249,12 @@ export const insertFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertManagedFoldersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type InsertManagedFoldersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new managed folder. */
 export const insertManagedFolders: API.OperationMethod<
   InsertManagedFoldersRequest,
@@ -4190,7 +5269,12 @@ export const insertManagedFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertNotificationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type InsertNotificationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a notification subscription for a given bucket. */
 export const insertNotifications: API.OperationMethod<
   InsertNotificationsRequest,
@@ -4205,7 +5289,12 @@ export const insertNotifications: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertObjectAccessControlsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type InsertObjectAccessControlsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new ACL entry on the specified object. */
 export const insertObjectAccessControls: API.OperationMethod<
   InsertObjectAccessControlsRequest,
@@ -4220,7 +5309,12 @@ export const insertObjectAccessControls: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertObjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type InsertObjectsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Stores a new object and metadata. */
 export const insertObjects: API.OperationMethod<
   InsertObjectsRequest,
@@ -4248,7 +5342,11 @@ export const listAnywhereCaches: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken","items":"items"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+    items: "items",
+  } as const,
 }));
 
 export type ListBucketAccessControlsError = NotFound | Forbidden | GcpOpError;
@@ -4279,10 +5377,17 @@ export const listBuckets: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken","items":"items"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+    items: "items",
+  } as const,
 }));
 
-export type ListDefaultObjectAccessControlsError = NotFound | Forbidden | GcpOpError;
+export type ListDefaultObjectAccessControlsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieves default object ACL entries on the specified bucket. */
 export const listDefaultObjectAccessControls: API.OperationMethod<
   ListDefaultObjectAccessControlsRequest,
@@ -4310,7 +5415,11 @@ export const listFolders: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken","items":"items"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+    items: "items",
+  } as const,
 }));
 
 export type ListManagedFoldersError = NotFound | Forbidden | GcpOpError;
@@ -4326,7 +5435,11 @@ export const listManagedFolders: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken","items":"items"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+    items: "items",
+  } as const,
 }));
 
 export type ListNotificationsError = NotFound | Forbidden | GcpOpError;
@@ -4372,7 +5485,11 @@ export const listObjects: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken","items":"items"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+    items: "items",
+  } as const,
 }));
 
 export type ListOperationsError = NotFound | Forbidden | GcpOpError;
@@ -4388,7 +5505,10 @@ export const listOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListProjectsHmacKeysError = NotFound | Forbidden | GcpOpError;
@@ -4404,10 +5524,19 @@ export const listProjectsHmacKeys: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken","items":"items"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+    items: "items",
+  } as const,
 }));
 
-export type LockRetentionPolicyBucketsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type LockRetentionPolicyBucketsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Locks retention policy on a bucket. */
 export const lockRetentionPolicyBuckets: API.OperationMethod<
   LockRetentionPolicyBucketsRequest,
@@ -4422,7 +5551,12 @@ export const lockRetentionPolicyBuckets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type MoveObjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type MoveObjectsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Moves the source object to the destination object in the same bucket. */
 export const moveObjects: API.OperationMethod<
   MoveObjectsRequest,
@@ -4437,7 +5571,12 @@ export const moveObjects: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchBucketAccessControlsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchBucketAccessControlsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Patches an ACL entry on the specified bucket. */
 export const patchBucketAccessControls: API.OperationMethod<
   PatchBucketAccessControlsRequest,
@@ -4452,7 +5591,12 @@ export const patchBucketAccessControls: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchBucketsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchBucketsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Patches a bucket. Changes to the bucket will be readable immediately after writing, but configuration changes may take time to propagate. */
 export const patchBuckets: API.OperationMethod<
   PatchBucketsRequest,
@@ -4467,7 +5611,12 @@ export const patchBuckets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchDefaultObjectAccessControlsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchDefaultObjectAccessControlsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Patches a default object ACL entry on the specified bucket. */
 export const patchDefaultObjectAccessControls: API.OperationMethod<
   PatchDefaultObjectAccessControlsRequest,
@@ -4482,7 +5631,12 @@ export const patchDefaultObjectAccessControls: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchObjectAccessControlsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchObjectAccessControlsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Patches an ACL entry on the specified object. */
 export const patchObjectAccessControls: API.OperationMethod<
   PatchObjectAccessControlsRequest,
@@ -4497,7 +5651,12 @@ export const patchObjectAccessControls: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchObjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchObjectsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Patches an object's metadata. */
 export const patchObjects: API.OperationMethod<
   PatchObjectsRequest,
@@ -4512,7 +5671,12 @@ export const patchObjects: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PauseAnywhereCachesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PauseAnywhereCachesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Pauses an Anywhere Cache instance. */
 export const pauseAnywhereCaches: API.OperationMethod<
   PauseAnywhereCachesRequest,
@@ -4527,7 +5691,12 @@ export const pauseAnywhereCaches: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RelocateBucketsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RelocateBucketsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Initiates a long-running Relocate Bucket operation on the specified bucket. */
 export const relocateBuckets: API.OperationMethod<
   RelocateBucketsRequest,
@@ -4542,7 +5711,12 @@ export const relocateBuckets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RenameFoldersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RenameFoldersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Renames a source folder to a destination folder. Only applicable to buckets with hierarchical namespace enabled. */
 export const renameFolders: API.OperationMethod<
   RenameFoldersRequest,
@@ -4557,7 +5731,12 @@ export const renameFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RestoreBucketsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RestoreBucketsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Restores a soft-deleted bucket. */
 export const restoreBuckets: API.OperationMethod<
   RestoreBucketsRequest,
@@ -4572,7 +5751,12 @@ export const restoreBuckets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RestoreObjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RestoreObjectsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Restores a soft-deleted object. */
 export const restoreObjects: API.OperationMethod<
   RestoreObjectsRequest,
@@ -4587,7 +5771,12 @@ export const restoreObjects: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ResumeAnywhereCachesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ResumeAnywhereCachesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Resumes a paused or disabled Anywhere Cache instance. */
 export const resumeAnywhereCaches: API.OperationMethod<
   ResumeAnywhereCachesRequest,
@@ -4602,7 +5791,12 @@ export const resumeAnywhereCaches: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RewriteObjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RewriteObjectsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Rewrites a source object to a destination object. Optionally overrides metadata. */
 export const rewriteObjects: API.OperationMethod<
   RewriteObjectsRequest,
@@ -4617,7 +5811,12 @@ export const rewriteObjects: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyBucketsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetIamPolicyBucketsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates an IAM policy for the specified bucket. */
 export const setIamPolicyBuckets: API.OperationMethod<
   SetIamPolicyBucketsRequest,
@@ -4632,7 +5831,12 @@ export const setIamPolicyBuckets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyManagedFoldersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetIamPolicyManagedFoldersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates an IAM policy for the specified managed folder. */
 export const setIamPolicyManagedFolders: API.OperationMethod<
   SetIamPolicyManagedFoldersRequest,
@@ -4647,7 +5851,12 @@ export const setIamPolicyManagedFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyObjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetIamPolicyObjectsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates an IAM policy for the specified object. */
 export const setIamPolicyObjects: API.OperationMethod<
   SetIamPolicyObjectsRequest,
@@ -4662,7 +5871,12 @@ export const setIamPolicyObjects: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type StopChannelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type StopChannelsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Stop watching resources through this channel */
 export const stopChannels: API.OperationMethod<
   StopChannelsRequest,
@@ -4692,7 +5906,10 @@ export const testIamPermissionsBuckets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsManagedFoldersError = NotFound | Forbidden | GcpOpError;
+export type TestIamPermissionsManagedFoldersError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Tests a set of permissions on the given managed folder to see which, if any, are held by the caller. */
 export const testIamPermissionsManagedFolders: API.OperationMethod<
   TestIamPermissionsManagedFoldersRequest,
@@ -4722,7 +5939,12 @@ export const testIamPermissionsObjects: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateAnywhereCachesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateAnywhereCachesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the config of an Anywhere Cache instance. */
 export const updateAnywhereCaches: API.OperationMethod<
   UpdateAnywhereCachesRequest,
@@ -4737,7 +5959,12 @@ export const updateAnywhereCaches: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateBucketAccessControlsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateBucketAccessControlsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates an ACL entry on the specified bucket. */
 export const updateBucketAccessControls: API.OperationMethod<
   UpdateBucketAccessControlsRequest,
@@ -4752,7 +5979,12 @@ export const updateBucketAccessControls: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateBucketsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateBucketsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a bucket. Changes to the bucket will be readable immediately after writing, but configuration changes may take time to propagate. */
 export const updateBuckets: API.OperationMethod<
   UpdateBucketsRequest,
@@ -4767,7 +5999,12 @@ export const updateBuckets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateDefaultObjectAccessControlsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateDefaultObjectAccessControlsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a default object ACL entry on the specified bucket. */
 export const updateDefaultObjectAccessControls: API.OperationMethod<
   UpdateDefaultObjectAccessControlsRequest,
@@ -4782,7 +6019,12 @@ export const updateDefaultObjectAccessControls: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateObjectAccessControlsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateObjectAccessControlsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates an ACL entry on the specified object. */
 export const updateObjectAccessControls: API.OperationMethod<
   UpdateObjectAccessControlsRequest,
@@ -4797,7 +6039,12 @@ export const updateObjectAccessControls: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateObjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateObjectsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates an object's metadata. */
 export const updateObjects: API.OperationMethod<
   UpdateObjectsRequest,
@@ -4812,7 +6059,12 @@ export const updateObjects: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateProjectsHmacKeysError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateProjectsHmacKeysError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the state of an HMAC key. See the [HMAC Key resource descriptor](https://cloud.google.com/storage/docs/json_api/v1/projects/hmacKeys/update#request-body) for valid states. */
 export const updateProjectsHmacKeys: API.OperationMethod<
   UpdateProjectsHmacKeysRequest,
@@ -4826,4 +6078,3 @@ export const updateProjectsHmacKeys: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

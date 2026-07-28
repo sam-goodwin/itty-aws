@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export interface BorrowShelvesBooksRequest {
@@ -65,10 +65,18 @@ export interface BorrowShelvesBooksRequest {
   name: string;
 }
 export const BorrowShelvesBooksRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:borrow","baseUrl":"https://libraryagent.googleapis.com/"})),
-).annotate({ identifier: "BorrowShelvesBooksRequest" }) as any as S.Schema<BorrowShelvesBooksRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:borrow",
+      baseUrl: "https://libraryagent.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "BorrowShelvesBooksRequest",
+}) as any as S.Schema<BorrowShelvesBooksRequest>;
 
 /** A single book in the library. */
 export interface GoogleExampleLibraryagentV1Book {
@@ -82,23 +90,33 @@ export interface GoogleExampleLibraryagentV1Book {
   read?: boolean;
 }
 export const GoogleExampleLibraryagentV1Book = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "title": S.optional(S.String),
-  "name": S.optional(S.String),
-  "author": S.optional(S.String),
-  "read": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "GoogleExampleLibraryagentV1Book" }) as any as S.Schema<GoogleExampleLibraryagentV1Book>;
+  S.Struct({
+    title: S.optional(S.String),
+    name: S.optional(S.String),
+    author: S.optional(S.String),
+    read: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "GoogleExampleLibraryagentV1Book",
+}) as any as S.Schema<GoogleExampleLibraryagentV1Book>;
 
 export interface GetShelvesRequest {
   /** Required. The name of the shelf to retrieve. */
   name: string;
 }
 export const GetShelvesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://libraryagent.googleapis.com/"})),
-).annotate({ identifier: "GetShelvesRequest" }) as any as S.Schema<GetShelvesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://libraryagent.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetShelvesRequest",
+}) as any as S.Schema<GetShelvesRequest>;
 
 /** A Shelf contains a collection of books with a theme. */
 export interface GoogleExampleLibraryagentV1Shelf {
@@ -108,21 +126,31 @@ export interface GoogleExampleLibraryagentV1Shelf {
   name?: string;
 }
 export const GoogleExampleLibraryagentV1Shelf = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "theme": S.optional(S.String),
-  "name": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleExampleLibraryagentV1Shelf" }) as any as S.Schema<GoogleExampleLibraryagentV1Shelf>;
+  S.Struct({
+    theme: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleExampleLibraryagentV1Shelf",
+}) as any as S.Schema<GoogleExampleLibraryagentV1Shelf>;
 
 export interface GetShelvesBooksRequest {
   /** Required. The name of the book to retrieve. */
   name: string;
 }
 export const GetShelvesBooksRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://libraryagent.googleapis.com/"})),
-).annotate({ identifier: "GetShelvesBooksRequest" }) as any as S.Schema<GetShelvesBooksRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://libraryagent.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetShelvesBooksRequest",
+}) as any as S.Schema<GetShelvesBooksRequest>;
 
 export interface ListShelvesRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListShelvesResponse.next_page_token returned from the previous call to `ListShelves` method. */
@@ -131,14 +159,25 @@ export interface ListShelvesRequest {
   pageSize?: number;
 }
 export const ListShelvesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/shelves","baseUrl":"https://libraryagent.googleapis.com/"})),
-).annotate({ identifier: "ListShelvesRequest" }) as any as S.Schema<ListShelvesRequest>;
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/shelves",
+      baseUrl: "https://libraryagent.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListShelvesRequest",
+}) as any as S.Schema<ListShelvesRequest>;
 
-export type GoogleExampleLibraryagentV1ShelfList = ReadonlyArray<GoogleExampleLibraryagentV1Shelf>;
-export const GoogleExampleLibraryagentV1ShelfList = /*@__PURE__*/ S.Array(GoogleExampleLibraryagentV1Shelf) as any as S.Schema<GoogleExampleLibraryagentV1ShelfList>;
+export type GoogleExampleLibraryagentV1ShelfList =
+  ReadonlyArray<GoogleExampleLibraryagentV1Shelf>;
+export const GoogleExampleLibraryagentV1ShelfList = /*@__PURE__*/ S.Array(
+  GoogleExampleLibraryagentV1Shelf,
+) as any as S.Schema<GoogleExampleLibraryagentV1ShelfList>;
 
 /** Response message for LibraryAgent.ListShelves. */
 export interface GoogleExampleLibraryagentV1ListShelvesResponse {
@@ -147,12 +186,15 @@ export interface GoogleExampleLibraryagentV1ListShelvesResponse {
   /** The list of shelves. */
   shelves?: GoogleExampleLibraryagentV1ShelfList;
 }
-export const GoogleExampleLibraryagentV1ListShelvesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "shelves": S.optional(GoogleExampleLibraryagentV1ShelfList),
-}),
-).annotate({ identifier: "GoogleExampleLibraryagentV1ListShelvesResponse" }) as any as S.Schema<GoogleExampleLibraryagentV1ListShelvesResponse>;
+export const GoogleExampleLibraryagentV1ListShelvesResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      nextPageToken: S.optional(S.String),
+      shelves: S.optional(GoogleExampleLibraryagentV1ShelfList),
+    }),
+  ).annotate({
+    identifier: "GoogleExampleLibraryagentV1ListShelvesResponse",
+  }) as any as S.Schema<GoogleExampleLibraryagentV1ListShelvesResponse>;
 
 export interface ListShelvesBooksRequest {
   /** Required. The name of the shelf whose books we'd like to list. */
@@ -163,15 +205,26 @@ export interface ListShelvesBooksRequest {
   pageToken?: string;
 }
 export const ListShelvesBooksRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/books","baseUrl":"https://libraryagent.googleapis.com/"})),
-).annotate({ identifier: "ListShelvesBooksRequest" }) as any as S.Schema<ListShelvesBooksRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/books",
+      baseUrl: "https://libraryagent.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListShelvesBooksRequest",
+}) as any as S.Schema<ListShelvesBooksRequest>;
 
-export type GoogleExampleLibraryagentV1BookList = ReadonlyArray<GoogleExampleLibraryagentV1Book>;
-export const GoogleExampleLibraryagentV1BookList = /*@__PURE__*/ S.Array(GoogleExampleLibraryagentV1Book) as any as S.Schema<GoogleExampleLibraryagentV1BookList>;
+export type GoogleExampleLibraryagentV1BookList =
+  ReadonlyArray<GoogleExampleLibraryagentV1Book>;
+export const GoogleExampleLibraryagentV1BookList = /*@__PURE__*/ S.Array(
+  GoogleExampleLibraryagentV1Book,
+) as any as S.Schema<GoogleExampleLibraryagentV1BookList>;
 
 /** Response message for LibraryAgent.ListBooks. */
 export interface GoogleExampleLibraryagentV1ListBooksResponse {
@@ -180,24 +233,40 @@ export interface GoogleExampleLibraryagentV1ListBooksResponse {
   /** A token to retrieve next page of results. Pass this value in the ListBooksRequest.page_token field in the subsequent call to `ListBooks` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const GoogleExampleLibraryagentV1ListBooksResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "books": S.optional(GoogleExampleLibraryagentV1BookList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleExampleLibraryagentV1ListBooksResponse" }) as any as S.Schema<GoogleExampleLibraryagentV1ListBooksResponse>;
+export const GoogleExampleLibraryagentV1ListBooksResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      books: S.optional(GoogleExampleLibraryagentV1BookList),
+      nextPageToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleExampleLibraryagentV1ListBooksResponse",
+  }) as any as S.Schema<GoogleExampleLibraryagentV1ListBooksResponse>;
 
 export interface ReturnShelvesBooksRequest {
   /** Required. The name of the book to return. */
   name: string;
 }
 export const ReturnShelvesBooksRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:return","baseUrl":"https://libraryagent.googleapis.com/"})),
-).annotate({ identifier: "ReturnShelvesBooksRequest" }) as any as S.Schema<ReturnShelvesBooksRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:return",
+      baseUrl: "https://libraryagent.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ReturnShelvesBooksRequest",
+}) as any as S.Schema<ReturnShelvesBooksRequest>;
 
-export type BorrowShelvesBooksError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type BorrowShelvesBooksError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Borrow a book from the library. Returns the book if it is borrowed successfully. Returns NOT_FOUND if the book does not exist in the library. Returns quota exceeded error if the amount of books borrowed exceeds allocation quota in any dimensions. */
 export const borrowShelvesBooks: API.OperationMethod<
   BorrowShelvesBooksRequest,
@@ -255,7 +324,10 @@ export const listShelves: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListShelvesBooksError = NotFound | Forbidden | GcpOpError;
@@ -271,10 +343,18 @@ export const listShelvesBooks: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ReturnShelvesBooksError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ReturnShelvesBooksError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Return a book to the library. Returns the book if it is returned to the library successfully. Returns error if the book does not belong to the library or the users didn't borrow before. */
 export const returnShelvesBooks: API.OperationMethod<
   ReturnShelvesBooksRequest,
@@ -288,4 +368,3 @@ export const returnShelvesBooks: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

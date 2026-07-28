@@ -2964,38 +2964,79 @@ export const PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFull =
     identifier: "PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFull",
   }) as any as S.Schema<PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFull>;
 
-export type PcapsCreateResult =
-  | PcapsCreateResultPCAP
-  | PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFull;
-export const PcapsCreateResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    [
-      "id",
-      "filterV1",
-      "offsetTime",
-      "status",
-      "submitted",
-      "system",
-      "timeLimit",
-      "type",
-    ],
-    [
-      "id",
-      "byteLimit",
-      "coloName",
-      "destinationConf",
-      "errorMessage",
-      "filterV1",
-      "packetsCaptured",
-      "status",
-      "stopRequested",
-      "submitted",
-      "system",
-      "timeLimit",
-      "type",
-    ],
-  ]),
-);
+export interface PcapsCreateResult {
+  /** The ID for the packet capture. */
+  id?: string;
+  /** The packet capture filter. When this field is empty, all packets are captured. */
+  filterV1?: PcapsCreateResultPCAPFilterV1;
+  /** The RFC 3339 offset timestamp from which to query backwards for packets. Must be within the last 24h. When this field is empty, defaults to time of request. */
+  offsetTime?: string;
+  /** The status of the packet capture request. */
+  status?:
+    | PcapsCreateResultPCAPStatus
+    | PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFullStatus;
+  /** The RFC 3339 timestamp when the packet capture was created. */
+  submitted?: string;
+  /** The system used to collect packet captures. */
+  system?:
+    | PcapsCreateResultPCAPSystem
+    | PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFullSystem;
+  /** The packet capture duration in seconds. */
+  timeLimit?: number;
+  /** The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets. */
+  type?:
+    | PcapsCreateResultPCAPType
+    | PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFullType;
+  /** The maximum number of bytes to capture. This field only applies to `full` packet captures. */
+  byteLimit?: number;
+  /** The name of the data center used for the packet capture. This can be a specific colo (ord02) or a multi-colo name (ORD). This field only applies to `full` packet captures. */
+  coloName?: string;
+  /** The full URI for the bucket. This field only applies to `full` packet captures. */
+  destinationConf?: string;
+  /** An error message that describes why the packet capture failed. This field only applies to `full` packet captures. */
+  errorMessage?: string;
+  /** The number of packets captured. */
+  packetsCaptured?: number;
+  /** The RFC 3339 timestamp when stopping the packet capture was requested. This field only applies to `full` packet captures. */
+  stopRequested?: string;
+}
+export const PcapsCreateResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    filterV1: S.optional(
+      PcapsCreateResultPCAPFilterV1.pipe(T.Body("filter_v1")),
+    ),
+    offsetTime: S.optional(S.String.pipe(T.Body("offset_time"))),
+    status: S.optional(
+      S.Union(
+        PcapsCreateResultPCAPStatus,
+        PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFullStatus,
+      ),
+    ),
+    submitted: S.optional(S.String),
+    system: S.optional(
+      S.Union(
+        PcapsCreateResultPCAPSystem,
+        PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFullSystem,
+      ),
+    ),
+    timeLimit: S.optional(S.Number.pipe(T.Body("time_limit"))),
+    type: S.optional(
+      S.Union(
+        PcapsCreateResultPCAPType,
+        PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFullType,
+      ),
+    ),
+    byteLimit: S.optional(S.Number.pipe(T.Body("byte_limit"))),
+    coloName: S.optional(S.String.pipe(T.Body("colo_name"))),
+    destinationConf: S.optional(S.String.pipe(T.Body("destination_conf"))),
+    errorMessage: S.optional(S.String.pipe(T.Body("error_message"))),
+    packetsCaptured: S.optional(S.Number.pipe(T.Body("packets_captured"))),
+    stopRequested: S.optional(S.String.pipe(T.Body("stop_requested"))),
+  }),
+).annotate({
+  identifier: "PcapsCreateResult",
+}) as any as S.Schema<PcapsCreateResult>;
 
 export type CreatePcapResponse = PcapsCreateResult;
 export const CreatePcapResponse = /*@__PURE__*/ S.suspend(() =>
@@ -6684,53 +6725,66 @@ export const ConnectorsEventsGetResponseERekeyReset = /*@__PURE__*/ S.suspend(
   identifier: "ConnectorsEventsGetResponseERekeyReset",
 }) as any as S.Schema<ConnectorsEventsGetResponseERekeyReset>;
 
-export type ConnectorsEventsGetResponseE =
-  | ConnectorsEventsGetResponseEInit
-  | ConnectorsEventsGetResponseELeave
-  | ConnectorsEventsGetResponseEStartAttestation
-  | ConnectorsEventsGetResponseEFinishAttestationSuccess
-  | ConnectorsEventsGetResponseEFinishAttestationFailure
-  | ConnectorsEventsGetResponseEStartRotateCryptKey
-  | ConnectorsEventsGetResponseEFinishRotateCryptKeySuccess
-  | ConnectorsEventsGetResponseEFinishRotateCryptKeyFailure
-  | ConnectorsEventsGetResponseEStartRotatePki
-  | ConnectorsEventsGetResponseEFinishRotatePkiSuccess
-  | ConnectorsEventsGetResponseEFinishRotatePkiFailure
-  | ConnectorsEventsGetResponseEStartUpgrade
-  | ConnectorsEventsGetResponseEFinishUpgradeSuccess
-  | ConnectorsEventsGetResponseEFinishUpgradeFailure
-  | ConnectorsEventsGetResponseEReconcile
-  | ConnectorsEventsGetResponseEConfigureCloudflaredTunnel
-  | ConnectorsEventsGetResponseERekeyInstallBoth
-  | ConnectorsEventsGetResponseERekeyStart
-  | ConnectorsEventsGetResponseERekeyAdvance
-  | ConnectorsEventsGetResponseERekeyComplete
-  | ConnectorsEventsGetResponseERekeyReset;
-export const ConnectorsEventsGetResponseE = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["k"],
-    ["k"],
-    ["k"],
-    ["k"],
-    ["k"],
-    ["k"],
-    ["k"],
-    ["k"],
-    ["k"],
-    ["k"],
-    ["k"],
-    ["k", "url"],
-    ["k"],
-    ["k"],
-    ["k"],
-    ["k"],
-    ["k", "tunnelId"],
-    ["k", "tunnelId"],
-    ["k", "tunnelId"],
-    ["k", "tunnelId"],
-    ["k", "tunnelId"],
-  ]),
-);
+export interface ConnectorsEventsGetResponseE {
+  /** Initialized process */
+  k:
+    | ConnectorsEventsGetResponseEInitK
+    | ConnectorsEventsGetResponseELeaveK
+    | ConnectorsEventsGetResponseEStartAttestationK
+    | ConnectorsEventsGetResponseEFinishAttestationSuccessK
+    | ConnectorsEventsGetResponseEFinishAttestationFailureK
+    | ConnectorsEventsGetResponseEStartRotateCryptKeyK
+    | ConnectorsEventsGetResponseEFinishRotateCryptKeySuccessK
+    | ConnectorsEventsGetResponseEFinishRotateCryptKeyFailureK
+    | ConnectorsEventsGetResponseEStartRotatePkiK
+    | ConnectorsEventsGetResponseEFinishRotatePkiSuccessK
+    | ConnectorsEventsGetResponseEFinishRotatePkiFailureK
+    | ConnectorsEventsGetResponseEStartUpgradeK
+    | ConnectorsEventsGetResponseEFinishUpgradeSuccessK
+    | ConnectorsEventsGetResponseEFinishUpgradeFailureK
+    | ConnectorsEventsGetResponseEReconcileK
+    | ConnectorsEventsGetResponseEConfigureCloudflaredTunnelK
+    | ConnectorsEventsGetResponseERekeyInstallBothK
+    | ConnectorsEventsGetResponseERekeyStartK
+    | ConnectorsEventsGetResponseERekeyAdvanceK
+    | ConnectorsEventsGetResponseERekeyCompleteK
+    | ConnectorsEventsGetResponseERekeyResetK;
+  /** Location of upgrade bundle */
+  url?: string;
+  /** Tunnel identifier */
+  tunnelId?: string;
+}
+export const ConnectorsEventsGetResponseE = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    k: S.Union(
+      ConnectorsEventsGetResponseEInitK,
+      ConnectorsEventsGetResponseELeaveK,
+      ConnectorsEventsGetResponseEStartAttestationK,
+      ConnectorsEventsGetResponseEFinishAttestationSuccessK,
+      ConnectorsEventsGetResponseEFinishAttestationFailureK,
+      ConnectorsEventsGetResponseEStartRotateCryptKeyK,
+      ConnectorsEventsGetResponseEFinishRotateCryptKeySuccessK,
+      ConnectorsEventsGetResponseEFinishRotateCryptKeyFailureK,
+      ConnectorsEventsGetResponseEStartRotatePkiK,
+      ConnectorsEventsGetResponseEFinishRotatePkiSuccessK,
+      ConnectorsEventsGetResponseEFinishRotatePkiFailureK,
+      ConnectorsEventsGetResponseEStartUpgradeK,
+      ConnectorsEventsGetResponseEFinishUpgradeSuccessK,
+      ConnectorsEventsGetResponseEFinishUpgradeFailureK,
+      ConnectorsEventsGetResponseEReconcileK,
+      ConnectorsEventsGetResponseEConfigureCloudflaredTunnelK,
+      ConnectorsEventsGetResponseERekeyInstallBothK,
+      ConnectorsEventsGetResponseERekeyStartK,
+      ConnectorsEventsGetResponseERekeyAdvanceK,
+      ConnectorsEventsGetResponseERekeyCompleteK,
+      ConnectorsEventsGetResponseERekeyResetK,
+    ),
+    url: S.optional(S.String),
+    tunnelId: S.optional(S.String.pipe(T.Body("tunnel_id"))),
+  }),
+).annotate({
+  identifier: "ConnectorsEventsGetResponseE",
+}) as any as S.Schema<ConnectorsEventsGetResponseE>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetConnectorEventResponse {
@@ -8564,38 +8618,75 @@ export const PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFull =
     identifier: "PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFull",
   }) as any as S.Schema<PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFull>;
 
-export type PcapsGetResult =
-  | PcapsGetResultPCAP
-  | PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFull;
-export const PcapsGetResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    [
-      "id",
-      "filterV1",
-      "offsetTime",
-      "status",
-      "submitted",
-      "system",
-      "timeLimit",
-      "type",
-    ],
-    [
-      "id",
-      "byteLimit",
-      "coloName",
-      "destinationConf",
-      "errorMessage",
-      "filterV1",
-      "packetsCaptured",
-      "status",
-      "stopRequested",
-      "submitted",
-      "system",
-      "timeLimit",
-      "type",
-    ],
-  ]),
-);
+export interface PcapsGetResult {
+  /** The ID for the packet capture. */
+  id?: string;
+  /** The packet capture filter. When this field is empty, all packets are captured. */
+  filterV1?: PcapsGetResultPCAPFilterV1;
+  /** The RFC 3339 offset timestamp from which to query backwards for packets. Must be within the last 24h. When this field is empty, defaults to time of request. */
+  offsetTime?: string;
+  /** The status of the packet capture request. */
+  status?:
+    | PcapsGetResultPCAPStatus
+    | PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFullStatus;
+  /** The RFC 3339 timestamp when the packet capture was created. */
+  submitted?: string;
+  /** The system used to collect packet captures. */
+  system?:
+    | PcapsGetResultPCAPSystem
+    | PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFullSystem;
+  /** The packet capture duration in seconds. */
+  timeLimit?: number;
+  /** The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets. */
+  type?:
+    | PcapsGetResultPCAPType
+    | PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFullType;
+  /** The maximum number of bytes to capture. This field only applies to `full` packet captures. */
+  byteLimit?: number;
+  /** The name of the data center used for the packet capture. This can be a specific colo (ord02) or a multi-colo name (ORD). This field only applies to `full` packet captures. */
+  coloName?: string;
+  /** The full URI for the bucket. This field only applies to `full` packet captures. */
+  destinationConf?: string;
+  /** An error message that describes why the packet capture failed. This field only applies to `full` packet captures. */
+  errorMessage?: string;
+  /** The number of packets captured. */
+  packetsCaptured?: number;
+  /** The RFC 3339 timestamp when stopping the packet capture was requested. This field only applies to `full` packet captures. */
+  stopRequested?: string;
+}
+export const PcapsGetResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    filterV1: S.optional(PcapsGetResultPCAPFilterV1.pipe(T.Body("filter_v1"))),
+    offsetTime: S.optional(S.String.pipe(T.Body("offset_time"))),
+    status: S.optional(
+      S.Union(
+        PcapsGetResultPCAPStatus,
+        PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFullStatus,
+      ),
+    ),
+    submitted: S.optional(S.String),
+    system: S.optional(
+      S.Union(
+        PcapsGetResultPCAPSystem,
+        PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFullSystem,
+      ),
+    ),
+    timeLimit: S.optional(S.Number.pipe(T.Body("time_limit"))),
+    type: S.optional(
+      S.Union(
+        PcapsGetResultPCAPType,
+        PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFullType,
+      ),
+    ),
+    byteLimit: S.optional(S.Number.pipe(T.Body("byte_limit"))),
+    coloName: S.optional(S.String.pipe(T.Body("colo_name"))),
+    destinationConf: S.optional(S.String.pipe(T.Body("destination_conf"))),
+    errorMessage: S.optional(S.String.pipe(T.Body("error_message"))),
+    packetsCaptured: S.optional(S.Number.pipe(T.Body("packets_captured"))),
+    stopRequested: S.optional(S.String.pipe(T.Body("stop_requested"))),
+  }),
+).annotate({ identifier: "PcapsGetResult" }) as any as S.Schema<PcapsGetResult>;
 
 export type GetPcapResponse = PcapsGetResult;
 export const GetPcapResponse = /*@__PURE__*/ S.suspend(() =>
@@ -9450,15 +9541,56 @@ export const AppsListResultItemMagicManagedApp = /*@__PURE__*/ S.suspend(() =>
   identifier: "AppsListResultItemMagicManagedApp",
 }) as any as S.Schema<AppsListResultItemMagicManagedApp>;
 
-export type AppsListResultItem =
-  | AppsListResultItemMagicAccountApp
-  | AppsListResultItemMagicManagedApp;
-export const AppsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["accountAppId", "hostnames", "ipSubnets", "name", "sourceSubnets", "type"],
-    ["managedAppId", "hostnames", "ipSubnets", "name", "sourceSubnets", "type"],
-  ]),
-);
+export interface AppsListResultItem {
+  /** Magic account app ID. */
+  accountAppId?: string;
+  /** FQDNs to associate with traffic decisions. */
+  hostnames?:
+    | AppsListResultItemMagicAccountAppHostnamesList
+    | AppsListResultItemMagicManagedAppHostnamesList;
+  /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
+  ipSubnets?:
+    | AppsListResultItemMagicAccountAppIpSubnetsList
+    | AppsListResultItemMagicManagedAppIpSubnetsList;
+  /** Display name for the app. */
+  name?: string;
+  /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
+  sourceSubnets?:
+    | AppsListResultItemMagicAccountAppSourceSubnetsList
+    | AppsListResultItemMagicManagedAppSourceSubnetsList;
+  /** Category of the app. */
+  type?: string;
+  /** Managed app ID. */
+  managedAppId?: string;
+}
+export const AppsListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountAppId: S.optional(S.String.pipe(T.Body("account_app_id"))),
+    hostnames: S.optional(
+      S.Union(
+        AppsListResultItemMagicAccountAppHostnamesList,
+        AppsListResultItemMagicManagedAppHostnamesList,
+      ),
+    ),
+    ipSubnets: S.optional(
+      S.Union(
+        AppsListResultItemMagicAccountAppIpSubnetsList,
+        AppsListResultItemMagicManagedAppIpSubnetsList,
+      ).pipe(T.Body("ip_subnets")),
+    ),
+    name: S.optional(S.String),
+    sourceSubnets: S.optional(
+      S.Union(
+        AppsListResultItemMagicAccountAppSourceSubnetsList,
+        AppsListResultItemMagicManagedAppSourceSubnetsList,
+      ).pipe(T.Body("source_subnets")),
+    ),
+    type: S.optional(S.String),
+    managedAppId: S.optional(S.String.pipe(T.Body("managed_app_id"))),
+  }),
+).annotate({
+  identifier: "AppsListResultItem",
+}) as any as S.Schema<AppsListResultItem>;
 
 export type AppsListResultList = ReadonlyArray<AppsListResultItem>;
 export const AppsListResultList = /*@__PURE__*/ S.Array(
@@ -10325,54 +10457,67 @@ export const ConnectorsEventsLatestListResponseItemsItemERekeyReset =
     identifier: "ConnectorsEventsLatestListResponseItemsItemERekeyReset",
   }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemERekeyReset>;
 
-export type ConnectorsEventsLatestListResponseItemsItemE =
-  | ConnectorsEventsLatestListResponseItemsItemEInit
-  | ConnectorsEventsLatestListResponseItemsItemELeave
-  | ConnectorsEventsLatestListResponseItemsItemEStartAttestation
-  | ConnectorsEventsLatestListResponseItemsItemEFinishAttestationSuccess
-  | ConnectorsEventsLatestListResponseItemsItemEFinishAttestationFailure
-  | ConnectorsEventsLatestListResponseItemsItemEStartRotateCryptKey
-  | ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeySuccess
-  | ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeyFailure
-  | ConnectorsEventsLatestListResponseItemsItemEStartRotatePki
-  | ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiSuccess
-  | ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiFailure
-  | ConnectorsEventsLatestListResponseItemsItemEStartUpgrade
-  | ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeSuccess
-  | ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeFailure
-  | ConnectorsEventsLatestListResponseItemsItemEReconcile
-  | ConnectorsEventsLatestListResponseItemsItemEConfigureCloudflaredTunnel
-  | ConnectorsEventsLatestListResponseItemsItemERekeyInstallBoth
-  | ConnectorsEventsLatestListResponseItemsItemERekeyStart
-  | ConnectorsEventsLatestListResponseItemsItemERekeyAdvance
-  | ConnectorsEventsLatestListResponseItemsItemERekeyComplete
-  | ConnectorsEventsLatestListResponseItemsItemERekeyReset;
+export interface ConnectorsEventsLatestListResponseItemsItemE {
+  /** Initialized process */
+  k:
+    | ConnectorsEventsLatestListResponseItemsItemEInitK
+    | ConnectorsEventsLatestListResponseItemsItemELeaveK
+    | ConnectorsEventsLatestListResponseItemsItemEStartAttestationK
+    | ConnectorsEventsLatestListResponseItemsItemEFinishAttestationSuccessK
+    | ConnectorsEventsLatestListResponseItemsItemEFinishAttestationFailureK
+    | ConnectorsEventsLatestListResponseItemsItemEStartRotateCryptKeyK
+    | ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeySuccessK
+    | ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeyFailureK
+    | ConnectorsEventsLatestListResponseItemsItemEStartRotatePkiK
+    | ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiSuccessK
+    | ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiFailureK
+    | ConnectorsEventsLatestListResponseItemsItemEStartUpgradeK
+    | ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeSuccessK
+    | ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeFailureK
+    | ConnectorsEventsLatestListResponseItemsItemEReconcileK
+    | ConnectorsEventsLatestListResponseItemsItemEConfigureCloudflaredTunnelK
+    | ConnectorsEventsLatestListResponseItemsItemERekeyInstallBothK
+    | ConnectorsEventsLatestListResponseItemsItemERekeyStartK
+    | ConnectorsEventsLatestListResponseItemsItemERekeyAdvanceK
+    | ConnectorsEventsLatestListResponseItemsItemERekeyCompleteK
+    | ConnectorsEventsLatestListResponseItemsItemERekeyResetK;
+  /** Location of upgrade bundle */
+  url?: string;
+  /** Tunnel identifier */
+  tunnelId?: string;
+}
 export const ConnectorsEventsLatestListResponseItemsItemE =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["k"],
-      ["k"],
-      ["k"],
-      ["k"],
-      ["k"],
-      ["k"],
-      ["k"],
-      ["k"],
-      ["k"],
-      ["k"],
-      ["k"],
-      ["k", "url"],
-      ["k"],
-      ["k"],
-      ["k"],
-      ["k"],
-      ["k", "tunnelId"],
-      ["k", "tunnelId"],
-      ["k", "tunnelId"],
-      ["k", "tunnelId"],
-      ["k", "tunnelId"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      k: S.Union(
+        ConnectorsEventsLatestListResponseItemsItemEInitK,
+        ConnectorsEventsLatestListResponseItemsItemELeaveK,
+        ConnectorsEventsLatestListResponseItemsItemEStartAttestationK,
+        ConnectorsEventsLatestListResponseItemsItemEFinishAttestationSuccessK,
+        ConnectorsEventsLatestListResponseItemsItemEFinishAttestationFailureK,
+        ConnectorsEventsLatestListResponseItemsItemEStartRotateCryptKeyK,
+        ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeySuccessK,
+        ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeyFailureK,
+        ConnectorsEventsLatestListResponseItemsItemEStartRotatePkiK,
+        ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiSuccessK,
+        ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiFailureK,
+        ConnectorsEventsLatestListResponseItemsItemEStartUpgradeK,
+        ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeSuccessK,
+        ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeFailureK,
+        ConnectorsEventsLatestListResponseItemsItemEReconcileK,
+        ConnectorsEventsLatestListResponseItemsItemEConfigureCloudflaredTunnelK,
+        ConnectorsEventsLatestListResponseItemsItemERekeyInstallBothK,
+        ConnectorsEventsLatestListResponseItemsItemERekeyStartK,
+        ConnectorsEventsLatestListResponseItemsItemERekeyAdvanceK,
+        ConnectorsEventsLatestListResponseItemsItemERekeyCompleteK,
+        ConnectorsEventsLatestListResponseItemsItemERekeyResetK,
+      ),
+      url: S.optional(S.String),
+      tunnelId: S.optional(S.String.pipe(T.Body("tunnel_id"))),
+    }),
+  ).annotate({
+    identifier: "ConnectorsEventsLatestListResponseItemsItemE",
+  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemE>;
 
 export interface ConnectorsEventsLatestListResponseItemsItem {
   e: ConnectorsEventsLatestListResponseItemsItemE;
@@ -12612,38 +12757,79 @@ export const PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFull =
     identifier: "PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFull",
   }) as any as S.Schema<PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFull>;
 
-export type PcapsListResultItem =
-  | PcapsListResultItemPCAP
-  | PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFull;
-export const PcapsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    [
-      "id",
-      "filterV1",
-      "offsetTime",
-      "status",
-      "submitted",
-      "system",
-      "timeLimit",
-      "type",
-    ],
-    [
-      "id",
-      "byteLimit",
-      "coloName",
-      "destinationConf",
-      "errorMessage",
-      "filterV1",
-      "packetsCaptured",
-      "status",
-      "stopRequested",
-      "submitted",
-      "system",
-      "timeLimit",
-      "type",
-    ],
-  ]),
-);
+export interface PcapsListResultItem {
+  /** The ID for the packet capture. */
+  id?: string;
+  /** The packet capture filter. When this field is empty, all packets are captured. */
+  filterV1?: PcapsListResultItemPCAPFilterV1;
+  /** The RFC 3339 offset timestamp from which to query backwards for packets. Must be within the last 24h. When this field is empty, defaults to time of request. */
+  offsetTime?: string;
+  /** The status of the packet capture request. */
+  status?:
+    | PcapsListResultItemPCAPStatus
+    | PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFullStatus;
+  /** The RFC 3339 timestamp when the packet capture was created. */
+  submitted?: string;
+  /** The system used to collect packet captures. */
+  system?:
+    | PcapsListResultItemPCAPSystem
+    | PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFullSystem;
+  /** The packet capture duration in seconds. */
+  timeLimit?: number;
+  /** The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets. */
+  type?:
+    | PcapsListResultItemPCAPType
+    | PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFullType;
+  /** The maximum number of bytes to capture. This field only applies to `full` packet captures. */
+  byteLimit?: number;
+  /** The name of the data center used for the packet capture. This can be a specific colo (ord02) or a multi-colo name (ORD). This field only applies to `full` packet captures. */
+  coloName?: string;
+  /** The full URI for the bucket. This field only applies to `full` packet captures. */
+  destinationConf?: string;
+  /** An error message that describes why the packet capture failed. This field only applies to `full` packet captures. */
+  errorMessage?: string;
+  /** The number of packets captured. */
+  packetsCaptured?: number;
+  /** The RFC 3339 timestamp when stopping the packet capture was requested. This field only applies to `full` packet captures. */
+  stopRequested?: string;
+}
+export const PcapsListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    filterV1: S.optional(
+      PcapsListResultItemPCAPFilterV1.pipe(T.Body("filter_v1")),
+    ),
+    offsetTime: S.optional(S.String.pipe(T.Body("offset_time"))),
+    status: S.optional(
+      S.Union(
+        PcapsListResultItemPCAPStatus,
+        PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFullStatus,
+      ),
+    ),
+    submitted: S.optional(S.String),
+    system: S.optional(
+      S.Union(
+        PcapsListResultItemPCAPSystem,
+        PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFullSystem,
+      ),
+    ),
+    timeLimit: S.optional(S.Number.pipe(T.Body("time_limit"))),
+    type: S.optional(
+      S.Union(
+        PcapsListResultItemPCAPType,
+        PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFullType,
+      ),
+    ),
+    byteLimit: S.optional(S.Number.pipe(T.Body("byte_limit"))),
+    coloName: S.optional(S.String.pipe(T.Body("colo_name"))),
+    destinationConf: S.optional(S.String.pipe(T.Body("destination_conf"))),
+    errorMessage: S.optional(S.String.pipe(T.Body("error_message"))),
+    packetsCaptured: S.optional(S.Number.pipe(T.Body("packets_captured"))),
+    stopRequested: S.optional(S.String.pipe(T.Body("stop_requested"))),
+  }),
+).annotate({
+  identifier: "PcapsListResultItem",
+}) as any as S.Schema<PcapsListResultItem>;
 
 export type PcapsListResultList = ReadonlyArray<PcapsListResultItem>;
 export const PcapsListResultList = /*@__PURE__*/ S.Array(
@@ -15163,15 +15349,42 @@ export const SitesAppConfigurationCreateResultManagedApp =
     identifier: "SitesAppConfigurationCreateResultManagedApp",
   }) as any as S.Schema<SitesAppConfigurationCreateResultManagedApp>;
 
-export type SitesAppConfigurationCreateResult =
-  | SitesAppConfigurationCreateResultAccountApp
-  | SitesAppConfigurationCreateResultManagedApp;
-export const SitesAppConfigurationCreateResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["accountAppId", "id", "breakout", "preferredWans", "priority", "siteId"],
-    ["managedAppId", "id", "breakout", "preferredWans", "priority", "siteId"],
-  ]),
-);
+export interface SitesAppConfigurationCreateResult {
+  /** Magic account app ID. */
+  accountAppId?: string;
+  /** Identifier */
+  id?: string;
+  /** Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior. */
+  breakout?: boolean;
+  /** WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true). */
+  preferredWans?:
+    | SitesAppConfigurationCreateResultAccountAppPreferredWansList
+    | SitesAppConfigurationCreateResultManagedAppPreferredWansList;
+  /** Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported) */
+  priority?: number;
+  /** Identifier */
+  siteId?: string;
+  /** Managed app ID. */
+  managedAppId?: string;
+}
+export const SitesAppConfigurationCreateResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountAppId: S.optional(S.String.pipe(T.Body("account_app_id"))),
+    id: S.optional(S.String),
+    breakout: S.optional(S.Boolean),
+    preferredWans: S.optional(
+      S.Union(
+        SitesAppConfigurationCreateResultAccountAppPreferredWansList,
+        SitesAppConfigurationCreateResultManagedAppPreferredWansList,
+      ).pipe(T.Body("preferred_wans")),
+    ),
+    priority: S.optional(S.Number),
+    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
+    managedAppId: S.optional(S.String.pipe(T.Body("managed_app_id"))),
+  }),
+).annotate({
+  identifier: "SitesAppConfigurationCreateResult",
+}) as any as S.Schema<SitesAppConfigurationCreateResult>;
 
 export type SitesAppConfigurationCreateResponse =
   SitesAppConfigurationCreateResult;
@@ -15285,15 +15498,42 @@ export const SitesAppConfigurationDeleteResultManagedApp =
     identifier: "SitesAppConfigurationDeleteResultManagedApp",
   }) as any as S.Schema<SitesAppConfigurationDeleteResultManagedApp>;
 
-export type SitesAppConfigurationDeleteResult =
-  | SitesAppConfigurationDeleteResultAccountApp
-  | SitesAppConfigurationDeleteResultManagedApp;
-export const SitesAppConfigurationDeleteResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["accountAppId", "id", "breakout", "preferredWans", "priority", "siteId"],
-    ["managedAppId", "id", "breakout", "preferredWans", "priority", "siteId"],
-  ]),
-);
+export interface SitesAppConfigurationDeleteResult {
+  /** Magic account app ID. */
+  accountAppId?: string;
+  /** Identifier */
+  id?: string;
+  /** Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior. */
+  breakout?: boolean;
+  /** WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true). */
+  preferredWans?:
+    | SitesAppConfigurationDeleteResultAccountAppPreferredWansList
+    | SitesAppConfigurationDeleteResultManagedAppPreferredWansList;
+  /** Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported) */
+  priority?: number;
+  /** Identifier */
+  siteId?: string;
+  /** Managed app ID. */
+  managedAppId?: string;
+}
+export const SitesAppConfigurationDeleteResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountAppId: S.optional(S.String.pipe(T.Body("account_app_id"))),
+    id: S.optional(S.String),
+    breakout: S.optional(S.Boolean),
+    preferredWans: S.optional(
+      S.Union(
+        SitesAppConfigurationDeleteResultAccountAppPreferredWansList,
+        SitesAppConfigurationDeleteResultManagedAppPreferredWansList,
+      ).pipe(T.Body("preferred_wans")),
+    ),
+    priority: S.optional(S.Number),
+    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
+    managedAppId: S.optional(S.String.pipe(T.Body("managed_app_id"))),
+  }),
+).annotate({
+  identifier: "SitesAppConfigurationDeleteResult",
+}) as any as S.Schema<SitesAppConfigurationDeleteResult>;
 
 export type SitesAppConfigurationDeleteResponse =
   SitesAppConfigurationDeleteResult;
@@ -15433,15 +15673,42 @@ export const SitesAppConfigurationEditResultManagedApp =
     identifier: "SitesAppConfigurationEditResultManagedApp",
   }) as any as S.Schema<SitesAppConfigurationEditResultManagedApp>;
 
-export type SitesAppConfigurationEditResult =
-  | SitesAppConfigurationEditResultAccountApp
-  | SitesAppConfigurationEditResultManagedApp;
-export const SitesAppConfigurationEditResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["accountAppId", "id", "breakout", "preferredWans", "priority", "siteId"],
-    ["managedAppId", "id", "breakout", "preferredWans", "priority", "siteId"],
-  ]),
-);
+export interface SitesAppConfigurationEditResult {
+  /** Magic account app ID. */
+  accountAppId?: string;
+  /** Identifier */
+  id?: string;
+  /** Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior. */
+  breakout?: boolean;
+  /** WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true). */
+  preferredWans?:
+    | SitesAppConfigurationEditResultAccountAppPreferredWansList
+    | SitesAppConfigurationEditResultManagedAppPreferredWansList;
+  /** Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported) */
+  priority?: number;
+  /** Identifier */
+  siteId?: string;
+  /** Managed app ID. */
+  managedAppId?: string;
+}
+export const SitesAppConfigurationEditResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountAppId: S.optional(S.String.pipe(T.Body("account_app_id"))),
+    id: S.optional(S.String),
+    breakout: S.optional(S.Boolean),
+    preferredWans: S.optional(
+      S.Union(
+        SitesAppConfigurationEditResultAccountAppPreferredWansList,
+        SitesAppConfigurationEditResultManagedAppPreferredWansList,
+      ).pipe(T.Body("preferred_wans")),
+    ),
+    priority: S.optional(S.Number),
+    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
+    managedAppId: S.optional(S.String.pipe(T.Body("managed_app_id"))),
+  }),
+).annotate({
+  identifier: "SitesAppConfigurationEditResult",
+}) as any as S.Schema<SitesAppConfigurationEditResult>;
 
 export type SitesAppConfigurationEditResponse = SitesAppConfigurationEditResult;
 export const SitesAppConfigurationEditResponse = /*@__PURE__*/ S.suspend(() =>
@@ -15551,15 +15818,42 @@ export const SitesAppConfigurationListResultItemManagedApp =
     identifier: "SitesAppConfigurationListResultItemManagedApp",
   }) as any as S.Schema<SitesAppConfigurationListResultItemManagedApp>;
 
-export type SitesAppConfigurationListResultItem =
-  | SitesAppConfigurationListResultItemAccountApp
-  | SitesAppConfigurationListResultItemManagedApp;
-export const SitesAppConfigurationListResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["accountAppId", "id", "breakout", "preferredWans", "priority", "siteId"],
-    ["managedAppId", "id", "breakout", "preferredWans", "priority", "siteId"],
-  ]),
-);
+export interface SitesAppConfigurationListResultItem {
+  /** Magic account app ID. */
+  accountAppId?: string;
+  /** Identifier */
+  id?: string;
+  /** Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior. */
+  breakout?: boolean;
+  /** WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true). */
+  preferredWans?:
+    | SitesAppConfigurationListResultItemAccountAppPreferredWansList
+    | SitesAppConfigurationListResultItemManagedAppPreferredWansList;
+  /** Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported) */
+  priority?: number;
+  /** Identifier */
+  siteId?: string;
+  /** Managed app ID. */
+  managedAppId?: string;
+}
+export const SitesAppConfigurationListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountAppId: S.optional(S.String.pipe(T.Body("account_app_id"))),
+    id: S.optional(S.String),
+    breakout: S.optional(S.Boolean),
+    preferredWans: S.optional(
+      S.Union(
+        SitesAppConfigurationListResultItemAccountAppPreferredWansList,
+        SitesAppConfigurationListResultItemManagedAppPreferredWansList,
+      ).pipe(T.Body("preferred_wans")),
+    ),
+    priority: S.optional(S.Number),
+    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
+    managedAppId: S.optional(S.String.pipe(T.Body("managed_app_id"))),
+  }),
+).annotate({
+  identifier: "SitesAppConfigurationListResultItem",
+}) as any as S.Schema<SitesAppConfigurationListResultItem>;
 
 export type SitesAppConfigurationListResultList =
   ReadonlyArray<SitesAppConfigurationListResultItem>;
@@ -15705,15 +15999,42 @@ export const SitesAppConfigurationUpdateResultManagedApp =
     identifier: "SitesAppConfigurationUpdateResultManagedApp",
   }) as any as S.Schema<SitesAppConfigurationUpdateResultManagedApp>;
 
-export type SitesAppConfigurationUpdateResult =
-  | SitesAppConfigurationUpdateResultAccountApp
-  | SitesAppConfigurationUpdateResultManagedApp;
-export const SitesAppConfigurationUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["accountAppId", "id", "breakout", "preferredWans", "priority", "siteId"],
-    ["managedAppId", "id", "breakout", "preferredWans", "priority", "siteId"],
-  ]),
-);
+export interface SitesAppConfigurationUpdateResult {
+  /** Magic account app ID. */
+  accountAppId?: string;
+  /** Identifier */
+  id?: string;
+  /** Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior. */
+  breakout?: boolean;
+  /** WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true). */
+  preferredWans?:
+    | SitesAppConfigurationUpdateResultAccountAppPreferredWansList
+    | SitesAppConfigurationUpdateResultManagedAppPreferredWansList;
+  /** Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported) */
+  priority?: number;
+  /** Identifier */
+  siteId?: string;
+  /** Managed app ID. */
+  managedAppId?: string;
+}
+export const SitesAppConfigurationUpdateResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountAppId: S.optional(S.String.pipe(T.Body("account_app_id"))),
+    id: S.optional(S.String),
+    breakout: S.optional(S.Boolean),
+    preferredWans: S.optional(
+      S.Union(
+        SitesAppConfigurationUpdateResultAccountAppPreferredWansList,
+        SitesAppConfigurationUpdateResultManagedAppPreferredWansList,
+      ).pipe(T.Body("preferred_wans")),
+    ),
+    priority: S.optional(S.Number),
+    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
+    managedAppId: S.optional(S.String.pipe(T.Body("managed_app_id"))),
+  }),
+).annotate({
+  identifier: "SitesAppConfigurationUpdateResult",
+}) as any as S.Schema<SitesAppConfigurationUpdateResult>;
 
 export type SitesAppConfigurationUpdateResponse =
   SitesAppConfigurationUpdateResult;

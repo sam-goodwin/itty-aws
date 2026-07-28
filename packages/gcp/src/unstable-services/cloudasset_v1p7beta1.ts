@@ -13,58 +13,67 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
-export type GoogleCloudAssetV1p7beta1ExportAssetsRequestContentTypeEnum = "CONTENT_TYPE_UNSPECIFIED" | "RESOURCE" | "IAM_POLICY" | "ORG_POLICY" | "ACCESS_POLICY" | "RELATIONSHIP";
-export const GoogleCloudAssetV1p7beta1ExportAssetsRequestContentTypeEnum = /*@__PURE__*/ S.String;
+export type GoogleCloudAssetV1p7beta1ExportAssetsRequestContentTypeEnum =
+  | "CONTENT_TYPE_UNSPECIFIED"
+  | "RESOURCE"
+  | "IAM_POLICY"
+  | "ORG_POLICY"
+  | "ACCESS_POLICY"
+  | "RELATIONSHIP";
+export const GoogleCloudAssetV1p7beta1ExportAssetsRequestContentTypeEnum =
+  /*@__PURE__*/ S.String;
 
 /** A Cloud Storage location. */
 export interface GoogleCloudAssetV1p7beta1GcsDestination {
@@ -73,26 +82,40 @@ export interface GoogleCloudAssetV1p7beta1GcsDestination {
   /** The URI prefix of all generated Cloud Storage objects. Example: "gs://bucket_name/object_name_prefix". Each object URI is in format: "gs://bucket_name/object_name_prefix/{ASSET_TYPE}/{SHARD_NUMBER} and only contains assets for that type. starts from 0. Example: "gs://bucket_name/object_name_prefix/compute.googleapis.com/Disk/0" is the first shard of output objects containing all compute.googleapis.com/Disk assets. An INVALID_ARGUMENT error will be returned if file with the same name "gs://bucket_name/object_name_prefix" already exists. */
   uriPrefix?: string;
 }
-export const GoogleCloudAssetV1p7beta1GcsDestination = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "uri": S.optional(S.String),
-  "uriPrefix": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudAssetV1p7beta1GcsDestination" }) as any as S.Schema<GoogleCloudAssetV1p7beta1GcsDestination>;
+export const GoogleCloudAssetV1p7beta1GcsDestination = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      uri: S.optional(S.String),
+      uriPrefix: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "GoogleCloudAssetV1p7beta1GcsDestination",
+}) as any as S.Schema<GoogleCloudAssetV1p7beta1GcsDestination>;
 
-export type GoogleCloudAssetV1p7beta1PartitionSpecPartitionKeyEnum = "PARTITION_KEY_UNSPECIFIED" | "READ_TIME" | "REQUEST_TIME";
-export const GoogleCloudAssetV1p7beta1PartitionSpecPartitionKeyEnum = /*@__PURE__*/ S.String;
+export type GoogleCloudAssetV1p7beta1PartitionSpecPartitionKeyEnum =
+  | "PARTITION_KEY_UNSPECIFIED"
+  | "READ_TIME"
+  | "REQUEST_TIME";
+export const GoogleCloudAssetV1p7beta1PartitionSpecPartitionKeyEnum =
+  /*@__PURE__*/ S.String;
 
 /** Specifications of BigQuery partitioned table as export destination. */
 export interface GoogleCloudAssetV1p7beta1PartitionSpec {
   /** The partition key for BigQuery partitioned table. */
-  partitionKey?: GoogleCloudAssetV1p7beta1PartitionSpecPartitionKeyEnum | (string & {});
+  partitionKey?:
+    | GoogleCloudAssetV1p7beta1PartitionSpecPartitionKeyEnum
+    | (string & {});
 }
-export const GoogleCloudAssetV1p7beta1PartitionSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "partitionKey": S.optional(GoogleCloudAssetV1p7beta1PartitionSpecPartitionKeyEnum),
-}),
-).annotate({ identifier: "GoogleCloudAssetV1p7beta1PartitionSpec" }) as any as S.Schema<GoogleCloudAssetV1p7beta1PartitionSpec>;
+export const GoogleCloudAssetV1p7beta1PartitionSpec = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      partitionKey: S.optional(
+        GoogleCloudAssetV1p7beta1PartitionSpecPartitionKeyEnum,
+      ),
+    }),
+).annotate({
+  identifier: "GoogleCloudAssetV1p7beta1PartitionSpec",
+}) as any as S.Schema<GoogleCloudAssetV1p7beta1PartitionSpec>;
 
 /** A BigQuery destination for exporting assets to. */
 export interface GoogleCloudAssetV1p7beta1BigQueryDestination {
@@ -107,15 +130,18 @@ export interface GoogleCloudAssetV1p7beta1BigQueryDestination {
   /** If the destination table already exists and this flag is `TRUE`, the table will be overwritten by the contents of assets snapshot. If the flag is `FALSE` or unset and the destination table already exists, the export call returns an INVALID_ARGUMENT error. */
   force?: boolean;
 }
-export const GoogleCloudAssetV1p7beta1BigQueryDestination = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "partitionSpec": S.optional(GoogleCloudAssetV1p7beta1PartitionSpec),
-  "separateTablesPerAssetType": S.optional(S.Boolean),
-  "table": S.optional(S.String),
-  "dataset": S.optional(S.String),
-  "force": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "GoogleCloudAssetV1p7beta1BigQueryDestination" }) as any as S.Schema<GoogleCloudAssetV1p7beta1BigQueryDestination>;
+export const GoogleCloudAssetV1p7beta1BigQueryDestination =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      partitionSpec: S.optional(GoogleCloudAssetV1p7beta1PartitionSpec),
+      separateTablesPerAssetType: S.optional(S.Boolean),
+      table: S.optional(S.String),
+      dataset: S.optional(S.String),
+      force: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudAssetV1p7beta1BigQueryDestination",
+  }) as any as S.Schema<GoogleCloudAssetV1p7beta1BigQueryDestination>;
 
 /** Output configuration for export assets destination. */
 export interface GoogleCloudAssetV1p7beta1OutputConfig {
@@ -124,19 +150,26 @@ export interface GoogleCloudAssetV1p7beta1OutputConfig {
   /** Destination on BigQuery. The output table stores the fields in asset proto as columns in BigQuery. */
   bigqueryDestination?: GoogleCloudAssetV1p7beta1BigQueryDestination;
 }
-export const GoogleCloudAssetV1p7beta1OutputConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "gcsDestination": S.optional(GoogleCloudAssetV1p7beta1GcsDestination),
-  "bigqueryDestination": S.optional(GoogleCloudAssetV1p7beta1BigQueryDestination),
-}),
-).annotate({ identifier: "GoogleCloudAssetV1p7beta1OutputConfig" }) as any as S.Schema<GoogleCloudAssetV1p7beta1OutputConfig>;
+export const GoogleCloudAssetV1p7beta1OutputConfig = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      gcsDestination: S.optional(GoogleCloudAssetV1p7beta1GcsDestination),
+      bigqueryDestination: S.optional(
+        GoogleCloudAssetV1p7beta1BigQueryDestination,
+      ),
+    }),
+).annotate({
+  identifier: "GoogleCloudAssetV1p7beta1OutputConfig",
+}) as any as S.Schema<GoogleCloudAssetV1p7beta1OutputConfig>;
 
 /** Export asset request. */
 export interface GoogleCloudAssetV1p7beta1ExportAssetsRequest {
   /** A list of asset types to take a snapshot for. For example: "compute.googleapis.com/Disk". Regular expressions are also supported. For example: * "compute.googleapis.com.*" snapshots resources whose asset type starts with "compute.googleapis.com". * ".*Instance" snapshots resources whose asset type ends with "Instance". * ".*Instance.*" snapshots resources whose asset type contains "Instance". See [RE2](https://github.com/google/re2/wiki/Syntax) for all supported regular expression syntax. If the regular expression does not match any supported asset type, an INVALID_ARGUMENT error will be returned. If specified, only matching assets will be returned, otherwise, it will snapshot all asset types. See [Introduction to Cloud Asset Inventory](https://cloud.google.com/asset-inventory/docs/overview) for all supported asset types. */
   assetTypes?: StringList;
   /** Asset content type. If not specified, no content but the asset name will be returned. */
-  contentType?: GoogleCloudAssetV1p7beta1ExportAssetsRequestContentTypeEnum | (string & {});
+  contentType?:
+    | GoogleCloudAssetV1p7beta1ExportAssetsRequestContentTypeEnum
+    | (string & {});
   /** Timestamp to take an asset snapshot. This can only be set to a timestamp between the current time and the current time minus 35 days (inclusive). If not specified, the current time will be used. Due to delays in resource data collection and indexing, there is a volatile window during which running the same query may get different results. */
   readTime?: string;
   /** A list of relationship types to export, for example: `INSTANCE_TO_INSTANCEGROUP`. This field should only be specified if content_type=RELATIONSHIP. If specified, it will snapshot [asset_types]' specified relationships, or give errors if any relationship_types' supported types are not in [asset_types]. If not specified, it will snapshot all [asset_types]' supported relationships. An unspecified [asset_types] field means all supported asset_types. See [Introduction to Cloud Asset Inventory](https://cloud.google.com/asset-inventory/docs/overview) for all supported asset types and relationship types. */
@@ -144,15 +177,20 @@ export interface GoogleCloudAssetV1p7beta1ExportAssetsRequest {
   /** Required. Output configuration indicating where the results will be output to. */
   outputConfig?: GoogleCloudAssetV1p7beta1OutputConfig;
 }
-export const GoogleCloudAssetV1p7beta1ExportAssetsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "assetTypes": S.optional(StringList),
-  "contentType": S.optional(GoogleCloudAssetV1p7beta1ExportAssetsRequestContentTypeEnum),
-  "readTime": S.optional(S.String),
-  "relationshipTypes": S.optional(StringList),
-  "outputConfig": S.optional(GoogleCloudAssetV1p7beta1OutputConfig),
-}),
-).annotate({ identifier: "GoogleCloudAssetV1p7beta1ExportAssetsRequest" }) as any as S.Schema<GoogleCloudAssetV1p7beta1ExportAssetsRequest>;
+export const GoogleCloudAssetV1p7beta1ExportAssetsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      assetTypes: S.optional(StringList),
+      contentType: S.optional(
+        GoogleCloudAssetV1p7beta1ExportAssetsRequestContentTypeEnum,
+      ),
+      readTime: S.optional(S.String),
+      relationshipTypes: S.optional(StringList),
+      outputConfig: S.optional(GoogleCloudAssetV1p7beta1OutputConfig),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudAssetV1p7beta1ExportAssetsRequest",
+  }) as any as S.Schema<GoogleCloudAssetV1p7beta1ExportAssetsRequest>;
 
 export interface ExportAssetsV1p7beta1Request {
   /** Required. The relative name of the root asset. This can only be an organization number (such as "organizations/123"), a project ID (such as "projects/my-project-id"), or a project number (such as "projects/12345"), or a folder number (such as "folders/123"). */
@@ -161,17 +199,32 @@ export interface ExportAssetsV1p7beta1Request {
   body?: GoogleCloudAssetV1p7beta1ExportAssetsRequest;
 }
 export const ExportAssetsV1p7beta1Request = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleCloudAssetV1p7beta1ExportAssetsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1p7beta1/{+parent}:exportAssets","baseUrl":"https://cloudasset.googleapis.com/"})),
-).annotate({ identifier: "ExportAssetsV1p7beta1Request" }) as any as S.Schema<ExportAssetsV1p7beta1Request>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(
+      GoogleCloudAssetV1p7beta1ExportAssetsRequest.pipe(T.HttpBody()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1p7beta1/{+parent}:exportAssets",
+      baseUrl: "https://cloudasset.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ExportAssetsV1p7beta1Request",
+}) as any as S.Schema<ExportAssetsV1p7beta1Request>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -183,11 +236,11 @@ export interface Status {
   message?: string;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(S.Number),
-  "details": S.optional(DocumentMapList),
-  "message": S.optional(S.String),
-}),
+  S.Struct({
+    code: S.optional(S.Number),
+    details: S.optional(DocumentMapList),
+    message: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -204,13 +257,13 @@ export interface Operation {
   metadata?: DocumentMap;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "done": S.optional(S.Boolean),
-  "error": S.optional(Status),
-  "response": S.optional(DocumentMap),
-  "name": S.optional(S.String),
-  "metadata": S.optional(DocumentMap),
-}),
+  S.Struct({
+    done: S.optional(S.Boolean),
+    error: S.optional(Status),
+    response: S.optional(DocumentMap),
+    name: S.optional(S.String),
+    metadata: S.optional(DocumentMap),
+  }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 export interface GetOperationsRequest {
@@ -218,12 +271,25 @@ export interface GetOperationsRequest {
   name: string;
 }
 export const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1p7beta1/{+name}","baseUrl":"https://cloudasset.googleapis.com/"})),
-).annotate({ identifier: "GetOperationsRequest" }) as any as S.Schema<GetOperationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1p7beta1/{+name}",
+      baseUrl: "https://cloudasset.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetOperationsRequest",
+}) as any as S.Schema<GetOperationsRequest>;
 
-export type ExportAssetsV1p7beta1Error = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ExportAssetsV1p7beta1Error =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Exports assets with time and resource types to a given Cloud Storage location/BigQuery table. For Cloud Storage location destinations, the output format is newline-delimited JSON. Each line represents a google.cloud.asset.v1p7beta1.Asset in the JSON format; for BigQuery table destinations, the output table stores the fields in asset proto as columns. This API implements the google.longrunning.Operation API , which allows you to keep track of the export. We recommend intervals of at least 2 seconds with exponential retry to poll the export operation result. For regular-size resource parent, the export operation usually finishes within 5 minutes. */
 export const exportAssetsV1p7beta1: API.OperationMethod<
   ExportAssetsV1p7beta1Request,
@@ -252,4 +318,3 @@ export const getOperations: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

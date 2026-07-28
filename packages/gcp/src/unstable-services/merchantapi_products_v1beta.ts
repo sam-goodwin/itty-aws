@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export interface DeleteAccountsProductInputsRequest {
@@ -67,27 +67,43 @@ export interface DeleteAccountsProductInputsRequest {
   name: string;
 }
 export const DeleteAccountsProductInputsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dataSource": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"products/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
-).annotate({ identifier: "DeleteAccountsProductInputsRequest" }) as any as S.Schema<DeleteAccountsProductInputsRequest>;
+  S.Struct({
+    dataSource: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "products/v1beta/{+name}",
+      baseUrl: "https://merchantapi.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteAccountsProductInputsRequest",
+}) as any as S.Schema<DeleteAccountsProductInputsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 export interface GetAccountsProductsRequest {
   /** Required. The name of the product. Format: `accounts/{account}/products/{product}` The `{product}` segment is a unique identifier for the product. This identifier must be unique within a merchant account and generally follows the structure: `content_language~feed_label~offer_id`. Example: `en~US~sku123` For legacy local products, the structure is: `local~content_language~feed_label~offer_id`. Example: `local~en~US~sku123` The format of the `{product}` segment in the URL is automatically detected by the server, supporting two options: 1. **Encoded Format**: The `{product}` segment is an unpadded base64url encoded string (RFC 4648 Section 5). The decoded string must result in the `content_language~feed_label~offer_id` structure. This encoding MUST be used if any part of the product identifier (like `offer_id`) contains characters such as `/`, `%`, or `~`. * Example: To represent the product ID `en~US~sku/123`, the `{product}` segment must be the unpadded base64url encoding of this string, which is `ZW5-VVN-c2t1LzEyMw`. The full resource name for the product would be `accounts/123/products/ZW5-VVN-c2t1LzEyMw`. 2. **Plain Format**: The `{product}` segment is the tilde-separated string `content_language~feed_label~offer_id`. This format is suitable only when `content_language`, `feed_label`, and `offer_id` do not contain URL-problematic characters like `/`, `%`, or `~`. We recommend using the **Encoded Format** for all product IDs to ensure correct parsing, especially those containing special characters. The presence of tilde (`~`) characters in the `{product}` segment is used to differentiate between the two formats. Note: For calls to the v1beta version, the plain format is `channel~content_language~feed_label~offer_id`, for example: `accounts/123/products/online~en~US~sku123`. */
   name: string;
 }
 export const GetAccountsProductsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"products/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
-).annotate({ identifier: "GetAccountsProductsRequest" }) as any as S.Schema<GetAccountsProductsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "products/v1beta/{+name}",
+      baseUrl: "https://merchantapi.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetAccountsProductsRequest",
+}) as any as S.Schema<GetAccountsProductsRequest>;
 
 /** A message that represents custom attributes. Exactly one of `value` or `group_values` must not be empty. */
 export interface CustomAttribute {
@@ -99,15 +115,19 @@ export interface CustomAttribute {
   name?: string;
 }
 export const CustomAttribute = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "value": S.optional(S.String),
-  "groupValues": S.optional(S.suspend(() => CustomAttributeList)),
-  "name": S.optional(S.String),
-}),
-).annotate({ identifier: "CustomAttribute" }) as any as S.Schema<CustomAttribute>;
+  S.Struct({
+    value: S.optional(S.String),
+    groupValues: S.optional(S.suspend(() => CustomAttributeList)),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CustomAttribute",
+}) as any as S.Schema<CustomAttribute>;
 
 export type CustomAttributeList = ReadonlyArray<CustomAttribute>;
-export const CustomAttributeList = /*@__PURE__*/ S.Array(CustomAttribute) as any as S.Schema<CustomAttributeList>;
+export const CustomAttributeList = /*@__PURE__*/ S.Array(
+  CustomAttribute,
+) as any as S.Schema<CustomAttributeList>;
 
 /** The price represented as a number and currency. */
 export interface Price {
@@ -117,10 +137,10 @@ export interface Price {
   currencyCode?: string;
 }
 export const Price = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "amountMicros": S.optional(S.String),
-  "currencyCode": S.optional(S.String),
-}),
+  S.Struct({
+    amountMicros: S.optional(S.String),
+    currencyCode: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Price" }) as any as S.Schema<Price>;
 
 /** Information regarding Automated Discounts. */
@@ -133,23 +153,54 @@ export interface AutomatedDiscounts {
   gadPrice?: Price;
 }
 export const AutomatedDiscounts = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "priorPrice": S.optional(Price),
-  "priorPriceProgressive": S.optional(Price),
-  "gadPrice": S.optional(Price),
-}),
-).annotate({ identifier: "AutomatedDiscounts" }) as any as S.Schema<AutomatedDiscounts>;
+  S.Struct({
+    priorPrice: S.optional(Price),
+    priorPriceProgressive: S.optional(Price),
+    gadPrice: S.optional(Price),
+  }),
+).annotate({
+  identifier: "AutomatedDiscounts",
+}) as any as S.Schema<AutomatedDiscounts>;
 
-export type ProductChannelEnum = "CHANNEL_ENUM_UNSPECIFIED" | "ONLINE" | "LOCAL";
+export type ProductChannelEnum =
+  | "CHANNEL_ENUM_UNSPECIFIED"
+  | "ONLINE"
+  | "LOCAL";
 export const ProductChannelEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
-export type ItemLevelIssueSeverityEnum = "SEVERITY_UNSPECIFIED" | "NOT_IMPACTED" | "DEMOTED" | "DISAPPROVED";
+export type ItemLevelIssueSeverityEnum =
+  | "SEVERITY_UNSPECIFIED"
+  | "NOT_IMPACTED"
+  | "DEMOTED"
+  | "DISAPPROVED";
 export const ItemLevelIssueSeverityEnum = /*@__PURE__*/ S.String;
 
-export type ItemLevelIssueReportingContextEnum = "REPORTING_CONTEXT_ENUM_UNSPECIFIED" | "SHOPPING_ADS" | "DISCOVERY_ADS" | "DEMAND_GEN_ADS" | "DEMAND_GEN_ADS_DISCOVER_SURFACE" | "VIDEO_ADS" | "DISPLAY_ADS" | "LOCAL_INVENTORY_ADS" | "VEHICLE_INVENTORY_ADS" | "FREE_LISTINGS" | "FREE_LISTINGS_UCP_CHECKOUT" | "FREE_LOCAL_LISTINGS" | "FREE_LOCAL_VEHICLE_LISTINGS" | "YOUTUBE_AFFILIATE" | "YOUTUBE_SHOPPING" | "CLOUD_RETAIL" | "LOCAL_CLOUD_RETAIL" | "PRODUCT_REVIEWS" | "MERCHANT_REVIEWS" | "YOUTUBE_CHECKOUT";
+export type ItemLevelIssueReportingContextEnum =
+  | "REPORTING_CONTEXT_ENUM_UNSPECIFIED"
+  | "SHOPPING_ADS"
+  | "DISCOVERY_ADS"
+  | "DEMAND_GEN_ADS"
+  | "DEMAND_GEN_ADS_DISCOVER_SURFACE"
+  | "VIDEO_ADS"
+  | "DISPLAY_ADS"
+  | "LOCAL_INVENTORY_ADS"
+  | "VEHICLE_INVENTORY_ADS"
+  | "FREE_LISTINGS"
+  | "FREE_LISTINGS_UCP_CHECKOUT"
+  | "FREE_LOCAL_LISTINGS"
+  | "FREE_LOCAL_VEHICLE_LISTINGS"
+  | "YOUTUBE_AFFILIATE"
+  | "YOUTUBE_SHOPPING"
+  | "CLOUD_RETAIL"
+  | "LOCAL_CLOUD_RETAIL"
+  | "PRODUCT_REVIEWS"
+  | "MERCHANT_REVIEWS"
+  | "YOUTUBE_CHECKOUT";
 export const ItemLevelIssueReportingContextEnum = /*@__PURE__*/ S.String;
 
 /** The ItemLevelIssue of the product status. */
@@ -174,23 +225,45 @@ export interface ItemLevelIssue {
   resolution?: string;
 }
 export const ItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "attribute": S.optional(S.String),
-  "applicableCountries": S.optional(StringList),
-  "detail": S.optional(S.String),
-  "severity": S.optional(ItemLevelIssueSeverityEnum),
-  "reportingContext": S.optional(ItemLevelIssueReportingContextEnum),
-  "description": S.optional(S.String),
-  "documentation": S.optional(S.String),
-  "code": S.optional(S.String),
-  "resolution": S.optional(S.String),
-}),
+  S.Struct({
+    attribute: S.optional(S.String),
+    applicableCountries: S.optional(StringList),
+    detail: S.optional(S.String),
+    severity: S.optional(ItemLevelIssueSeverityEnum),
+    reportingContext: S.optional(ItemLevelIssueReportingContextEnum),
+    description: S.optional(S.String),
+    documentation: S.optional(S.String),
+    code: S.optional(S.String),
+    resolution: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ItemLevelIssue" }) as any as S.Schema<ItemLevelIssue>;
 
 export type ItemLevelIssueList = ReadonlyArray<ItemLevelIssue>;
-export const ItemLevelIssueList = /*@__PURE__*/ S.Array(ItemLevelIssue) as any as S.Schema<ItemLevelIssueList>;
+export const ItemLevelIssueList = /*@__PURE__*/ S.Array(
+  ItemLevelIssue,
+) as any as S.Schema<ItemLevelIssueList>;
 
-export type DestinationStatusReportingContextEnum = "REPORTING_CONTEXT_ENUM_UNSPECIFIED" | "SHOPPING_ADS" | "DISCOVERY_ADS" | "DEMAND_GEN_ADS" | "DEMAND_GEN_ADS_DISCOVER_SURFACE" | "VIDEO_ADS" | "DISPLAY_ADS" | "LOCAL_INVENTORY_ADS" | "VEHICLE_INVENTORY_ADS" | "FREE_LISTINGS" | "FREE_LISTINGS_UCP_CHECKOUT" | "FREE_LOCAL_LISTINGS" | "FREE_LOCAL_VEHICLE_LISTINGS" | "YOUTUBE_AFFILIATE" | "YOUTUBE_SHOPPING" | "CLOUD_RETAIL" | "LOCAL_CLOUD_RETAIL" | "PRODUCT_REVIEWS" | "MERCHANT_REVIEWS" | "YOUTUBE_CHECKOUT";
+export type DestinationStatusReportingContextEnum =
+  | "REPORTING_CONTEXT_ENUM_UNSPECIFIED"
+  | "SHOPPING_ADS"
+  | "DISCOVERY_ADS"
+  | "DEMAND_GEN_ADS"
+  | "DEMAND_GEN_ADS_DISCOVER_SURFACE"
+  | "VIDEO_ADS"
+  | "DISPLAY_ADS"
+  | "LOCAL_INVENTORY_ADS"
+  | "VEHICLE_INVENTORY_ADS"
+  | "FREE_LISTINGS"
+  | "FREE_LISTINGS_UCP_CHECKOUT"
+  | "FREE_LOCAL_LISTINGS"
+  | "FREE_LOCAL_VEHICLE_LISTINGS"
+  | "YOUTUBE_AFFILIATE"
+  | "YOUTUBE_SHOPPING"
+  | "CLOUD_RETAIL"
+  | "LOCAL_CLOUD_RETAIL"
+  | "PRODUCT_REVIEWS"
+  | "MERCHANT_REVIEWS"
+  | "YOUTUBE_CHECKOUT";
 export const DestinationStatusReportingContextEnum = /*@__PURE__*/ S.String;
 
 /** The destination status of the product status. Equivalent to `StatusPerReportingContext` in Reports API. */
@@ -205,16 +278,20 @@ export interface DestinationStatus {
   disapprovedCountries?: StringList;
 }
 export const DestinationStatus = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "reportingContext": S.optional(DestinationStatusReportingContextEnum),
-  "approvedCountries": S.optional(StringList),
-  "pendingCountries": S.optional(StringList),
-  "disapprovedCountries": S.optional(StringList),
-}),
-).annotate({ identifier: "DestinationStatus" }) as any as S.Schema<DestinationStatus>;
+  S.Struct({
+    reportingContext: S.optional(DestinationStatusReportingContextEnum),
+    approvedCountries: S.optional(StringList),
+    pendingCountries: S.optional(StringList),
+    disapprovedCountries: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "DestinationStatus",
+}) as any as S.Schema<DestinationStatus>;
 
 export type DestinationStatusList = ReadonlyArray<DestinationStatus>;
-export const DestinationStatusList = /*@__PURE__*/ S.Array(DestinationStatus) as any as S.Schema<DestinationStatusList>;
+export const DestinationStatusList = /*@__PURE__*/ S.Array(
+  DestinationStatus,
+) as any as S.Schema<DestinationStatusList>;
 
 /** The status of a product, data validation issues, that is, information about a product computed asynchronously. */
 export interface ProductStatus {
@@ -230,13 +307,13 @@ export interface ProductStatus {
   destinationStatuses?: DestinationStatusList;
 }
 export const ProductStatus = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "lastUpdateDate": S.optional(S.String),
-  "googleExpirationDate": S.optional(S.String),
-  "itemLevelIssues": S.optional(ItemLevelIssueList),
-  "creationDate": S.optional(S.String),
-  "destinationStatuses": S.optional(DestinationStatusList),
-}),
+  S.Struct({
+    lastUpdateDate: S.optional(S.String),
+    googleExpirationDate: S.optional(S.String),
+    itemLevelIssues: S.optional(ItemLevelIssueList),
+    creationDate: S.optional(S.String),
+    destinationStatuses: S.optional(DestinationStatusList),
+  }),
 ).annotate({ identifier: "ProductStatus" }) as any as S.Schema<ProductStatus>;
 
 /** The ShippingWeight of the product. */
@@ -247,10 +324,10 @@ export interface ShippingWeight {
   value?: number;
 }
 export const ShippingWeight = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "unit": S.optional(S.String),
-  "value": S.optional(S.Number),
-}),
+  S.Struct({
+    unit: S.optional(S.String),
+    value: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "ShippingWeight" }) as any as S.Schema<ShippingWeight>;
 
 /** The weight of the product. */
@@ -261,10 +338,10 @@ export interface ProductWeight {
   unit?: string;
 }
 export const ProductWeight = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "value": S.optional(S.Number),
-  "unit": S.optional(S.String),
-}),
+  S.Struct({
+    value: S.optional(S.Number),
+    unit: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ProductWeight" }) as any as S.Schema<ProductWeight>;
 
 /** The Tax of the product. */
@@ -283,14 +360,14 @@ export interface Tax {
   locationId?: string;
 }
 export const Tax = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "taxShip": S.optional(S.Boolean),
-  "rate": S.optional(S.Number),
-  "region": S.optional(S.String),
-  "postalCode": S.optional(S.String),
-  "country": S.optional(S.String),
-  "locationId": S.optional(S.String),
-}),
+  S.Struct({
+    taxShip: S.optional(S.Boolean),
+    rate: S.optional(S.Number),
+    region: S.optional(S.String),
+    postalCode: S.optional(S.String),
+    country: S.optional(S.String),
+    locationId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Tax" }) as any as S.Schema<Tax>;
 
 export type TaxList = ReadonlyArray<Tax>;
@@ -304,16 +381,23 @@ export interface FreeShippingThreshold {
   priceThreshold?: Price;
 }
 export const FreeShippingThreshold = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "country": S.optional(S.String),
-  "priceThreshold": S.optional(Price),
-}),
-).annotate({ identifier: "FreeShippingThreshold" }) as any as S.Schema<FreeShippingThreshold>;
+  S.Struct({
+    country: S.optional(S.String),
+    priceThreshold: S.optional(Price),
+  }),
+).annotate({
+  identifier: "FreeShippingThreshold",
+}) as any as S.Schema<FreeShippingThreshold>;
 
 export type FreeShippingThresholdList = ReadonlyArray<FreeShippingThreshold>;
-export const FreeShippingThresholdList = /*@__PURE__*/ S.Array(FreeShippingThreshold) as any as S.Schema<FreeShippingThresholdList>;
+export const FreeShippingThresholdList = /*@__PURE__*/ S.Array(
+  FreeShippingThreshold,
+) as any as S.Schema<FreeShippingThresholdList>;
 
-export type ProductSustainabilityIncentiveTypeEnum = "TYPE_UNSPECIFIED" | "EV_TAX_CREDIT" | "EV_PRICE_DISCOUNT";
+export type ProductSustainabilityIncentiveTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "EV_TAX_CREDIT"
+  | "EV_PRICE_DISCOUNT";
 export const ProductSustainabilityIncentiveTypeEnum = /*@__PURE__*/ S.String;
 
 /** Information regarding sustainability-related incentive programs such as rebates or tax relief. */
@@ -326,15 +410,20 @@ export interface ProductSustainabilityIncentive {
   type?: ProductSustainabilityIncentiveTypeEnum;
 }
 export const ProductSustainabilityIncentive = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "amount": S.optional(Price),
-  "percentage": S.optional(S.Number),
-  "type": S.optional(ProductSustainabilityIncentiveTypeEnum),
-}),
-).annotate({ identifier: "ProductSustainabilityIncentive" }) as any as S.Schema<ProductSustainabilityIncentive>;
+  S.Struct({
+    amount: S.optional(Price),
+    percentage: S.optional(S.Number),
+    type: S.optional(ProductSustainabilityIncentiveTypeEnum),
+  }),
+).annotate({
+  identifier: "ProductSustainabilityIncentive",
+}) as any as S.Schema<ProductSustainabilityIncentive>;
 
-export type ProductSustainabilityIncentiveList = ReadonlyArray<ProductSustainabilityIncentive>;
-export const ProductSustainabilityIncentiveList = /*@__PURE__*/ S.Array(ProductSustainabilityIncentive) as any as S.Schema<ProductSustainabilityIncentiveList>;
+export type ProductSustainabilityIncentiveList =
+  ReadonlyArray<ProductSustainabilityIncentive>;
+export const ProductSustainabilityIncentiveList = /*@__PURE__*/ S.Array(
+  ProductSustainabilityIncentive,
+) as any as S.Schema<ProductSustainabilityIncentiveList>;
 
 /** The ShippingDimension of the product. */
 export interface ShippingDimension {
@@ -344,11 +433,13 @@ export interface ShippingDimension {
   value?: number;
 }
 export const ShippingDimension = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "unit": S.optional(S.String),
-  "value": S.optional(S.Number),
-}),
-).annotate({ identifier: "ShippingDimension" }) as any as S.Schema<ShippingDimension>;
+  S.Struct({
+    unit: S.optional(S.String),
+    value: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ShippingDimension",
+}) as any as S.Schema<ShippingDimension>;
 
 /** The dimension of the product. */
 export interface ProductDimension {
@@ -358,11 +449,13 @@ export interface ProductDimension {
   value?: number;
 }
 export const ProductDimension = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "unit": S.optional(S.String),
-  "value": S.optional(S.Number),
-}),
-).annotate({ identifier: "ProductDimension" }) as any as S.Schema<ProductDimension>;
+  S.Struct({
+    unit: S.optional(S.String),
+    value: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ProductDimension",
+}) as any as S.Schema<ProductDimension>;
 
 /** The Shipping of the product. */
 export interface Shipping {
@@ -398,27 +491,29 @@ export interface Shipping {
   handlingCutoffTimezone?: string;
 }
 export const Shipping = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "handlingCutoffTime": S.optional(S.String),
-  "loyaltyTierLabel": S.optional(S.String),
-  "locationId": S.optional(S.String),
-  "region": S.optional(S.String),
-  "postalCode": S.optional(S.String),
-  "minHandlingTime": S.optional(S.String),
-  "maxHandlingTime": S.optional(S.String),
-  "minTransitTime": S.optional(S.String),
-  "service": S.optional(S.String),
-  "locationGroupName": S.optional(S.String),
-  "loyaltyProgramLabel": S.optional(S.String),
-  "country": S.optional(S.String),
-  "maxTransitTime": S.optional(S.String),
-  "price": S.optional(Price),
-  "handlingCutoffTimezone": S.optional(S.String),
-}),
+  S.Struct({
+    handlingCutoffTime: S.optional(S.String),
+    loyaltyTierLabel: S.optional(S.String),
+    locationId: S.optional(S.String),
+    region: S.optional(S.String),
+    postalCode: S.optional(S.String),
+    minHandlingTime: S.optional(S.String),
+    maxHandlingTime: S.optional(S.String),
+    minTransitTime: S.optional(S.String),
+    service: S.optional(S.String),
+    locationGroupName: S.optional(S.String),
+    loyaltyProgramLabel: S.optional(S.String),
+    country: S.optional(S.String),
+    maxTransitTime: S.optional(S.String),
+    price: S.optional(Price),
+    handlingCutoffTimezone: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Shipping" }) as any as S.Schema<Shipping>;
 
 export type ShippingList = ReadonlyArray<Shipping>;
-export const ShippingList = /*@__PURE__*/ S.Array(Shipping) as any as S.Schema<ShippingList>;
+export const ShippingList = /*@__PURE__*/ S.Array(
+  Shipping,
+) as any as S.Schema<ShippingList>;
 
 /** The UnitPricingMeasure of the product. */
 export interface UnitPricingMeasure {
@@ -428,11 +523,13 @@ export interface UnitPricingMeasure {
   unit?: string;
 }
 export const UnitPricingMeasure = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "value": S.optional(S.Number),
-  "unit": S.optional(S.String),
-}),
-).annotate({ identifier: "UnitPricingMeasure" }) as any as S.Schema<UnitPricingMeasure>;
+  S.Struct({
+    value: S.optional(S.Number),
+    unit: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UnitPricingMeasure",
+}) as any as S.Schema<UnitPricingMeasure>;
 
 /** Structured title, for algorithmically (AI)-generated titles. */
 export interface ProductStructuredTitle {
@@ -442,11 +539,13 @@ export interface ProductStructuredTitle {
   content?: string;
 }
 export const ProductStructuredTitle = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "digitalSourceType": S.optional(S.String),
-  "content": S.optional(S.String),
-}),
-).annotate({ identifier: "ProductStructuredTitle" }) as any as S.Schema<ProductStructuredTitle>;
+  S.Struct({
+    digitalSourceType: S.optional(S.String),
+    content: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ProductStructuredTitle",
+}) as any as S.Schema<ProductStructuredTitle>;
 
 /** A message that represents loyalty points. */
 export interface LoyaltyPoints {
@@ -458,11 +557,11 @@ export interface LoyaltyPoints {
   name?: string;
 }
 export const LoyaltyPoints = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pointsValue": S.optional(S.String),
-  "ratio": S.optional(S.Number),
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    pointsValue: S.optional(S.String),
+    ratio: S.optional(S.Number),
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "LoyaltyPoints" }) as any as S.Schema<LoyaltyPoints>;
 
 /** Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive). The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time). When both start and end are unspecified, the interval matches any time. */
@@ -473,14 +572,16 @@ export interface Interval {
   endTime?: string;
 }
 export const Interval = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "startTime": S.optional(S.String),
-  "endTime": S.optional(S.String),
-}),
+  S.Struct({
+    startTime: S.optional(S.String),
+    endTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Interval" }) as any as S.Schema<Interval>;
 
 export type DoubleList = ReadonlyArray<number>;
-export const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
+export const DoubleList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<DoubleList>;
 
 /** Product property for the Cloud Retail API. For example, properties for a TV product could be "Screen-Resolution" or "Screen-Size". */
 export interface CloudExportAdditionalProperties {
@@ -502,20 +603,25 @@ export interface CloudExportAdditionalProperties {
   unitCode?: string;
 }
 export const CloudExportAdditionalProperties = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "floatValue": S.optional(DoubleList),
-  "propertyName": S.optional(S.String),
-  "textValue": S.optional(StringList),
-  "boolValue": S.optional(S.Boolean),
-  "intValue": S.optional(StringList),
-  "minValue": S.optional(S.Number),
-  "maxValue": S.optional(S.Number),
-  "unitCode": S.optional(S.String),
-}),
-).annotate({ identifier: "CloudExportAdditionalProperties" }) as any as S.Schema<CloudExportAdditionalProperties>;
+  S.Struct({
+    floatValue: S.optional(DoubleList),
+    propertyName: S.optional(S.String),
+    textValue: S.optional(StringList),
+    boolValue: S.optional(S.Boolean),
+    intValue: S.optional(StringList),
+    minValue: S.optional(S.Number),
+    maxValue: S.optional(S.Number),
+    unitCode: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CloudExportAdditionalProperties",
+}) as any as S.Schema<CloudExportAdditionalProperties>;
 
-export type CloudExportAdditionalPropertiesList = ReadonlyArray<CloudExportAdditionalProperties>;
-export const CloudExportAdditionalPropertiesList = /*@__PURE__*/ S.Array(CloudExportAdditionalProperties) as any as S.Schema<CloudExportAdditionalPropertiesList>;
+export type CloudExportAdditionalPropertiesList =
+  ReadonlyArray<CloudExportAdditionalProperties>;
+export const CloudExportAdditionalPropertiesList = /*@__PURE__*/ S.Array(
+  CloudExportAdditionalProperties,
+) as any as S.Schema<CloudExportAdditionalPropertiesList>;
 
 /** Product [certification](https://support.google.com/merchants/answer/13528839), initially introduced for EU energy efficiency labeling compliance using the EU EPREL database. */
 export interface Certification {
@@ -529,16 +635,18 @@ export interface Certification {
   certificationAuthority?: string;
 }
 export const Certification = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "certificationValue": S.optional(S.String),
-  "certificationCode": S.optional(S.String),
-  "certificationName": S.optional(S.String),
-  "certificationAuthority": S.optional(S.String),
-}),
+  S.Struct({
+    certificationValue: S.optional(S.String),
+    certificationCode: S.optional(S.String),
+    certificationName: S.optional(S.String),
+    certificationAuthority: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Certification" }) as any as S.Schema<Certification>;
 
 export type CertificationList = ReadonlyArray<Certification>;
-export const CertificationList = /*@__PURE__*/ S.Array(Certification) as any as S.Schema<CertificationList>;
+export const CertificationList = /*@__PURE__*/ S.Array(
+  Certification,
+) as any as S.Schema<CertificationList>;
 
 /** The UnitPricingBaseMeasure of the product. */
 export interface UnitPricingBaseMeasure {
@@ -548,11 +656,13 @@ export interface UnitPricingBaseMeasure {
   value?: string;
 }
 export const UnitPricingBaseMeasure = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "unit": S.optional(S.String),
-  "value": S.optional(S.String),
-}),
-).annotate({ identifier: "UnitPricingBaseMeasure" }) as any as S.Schema<UnitPricingBaseMeasure>;
+  S.Struct({
+    unit: S.optional(S.String),
+    value: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UnitPricingBaseMeasure",
+}) as any as S.Schema<UnitPricingBaseMeasure>;
 
 /** Structured description, for algorithmically (AI)-generated descriptions. */
 export interface ProductStructuredDescription {
@@ -562,11 +672,13 @@ export interface ProductStructuredDescription {
   digitalSourceType?: string;
 }
 export const ProductStructuredDescription = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "content": S.optional(S.String),
-  "digitalSourceType": S.optional(S.String),
-}),
-).annotate({ identifier: "ProductStructuredDescription" }) as any as S.Schema<ProductStructuredDescription>;
+  S.Struct({
+    content: S.optional(S.String),
+    digitalSourceType: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ProductStructuredDescription",
+}) as any as S.Schema<ProductStructuredDescription>;
 
 /** The product details. */
 export interface ProductDetail {
@@ -578,17 +690,23 @@ export interface ProductDetail {
   attributeName?: string;
 }
 export const ProductDetail = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sectionName": S.optional(S.String),
-  "attributeValue": S.optional(S.String),
-  "attributeName": S.optional(S.String),
-}),
+  S.Struct({
+    sectionName: S.optional(S.String),
+    attributeValue: S.optional(S.String),
+    attributeName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ProductDetail" }) as any as S.Schema<ProductDetail>;
 
 export type ProductDetailList = ReadonlyArray<ProductDetail>;
-export const ProductDetailList = /*@__PURE__*/ S.Array(ProductDetail) as any as S.Schema<ProductDetailList>;
+export const ProductDetailList = /*@__PURE__*/ S.Array(
+  ProductDetail,
+) as any as S.Schema<ProductDetailList>;
 
-export type SubscriptionCostPeriodEnum = "SUBSCRIPTION_PERIOD_UNSPECIFIED" | "MONTH" | "YEAR" | "WEEK";
+export type SubscriptionCostPeriodEnum =
+  | "SUBSCRIPTION_PERIOD_UNSPECIFIED"
+  | "MONTH"
+  | "YEAR"
+  | "WEEK";
 export const SubscriptionCostPeriodEnum = /*@__PURE__*/ S.String;
 
 /** The SubscriptionCost of the product. */
@@ -601,12 +719,14 @@ export interface SubscriptionCost {
   period?: SubscriptionCostPeriodEnum;
 }
 export const SubscriptionCost = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "periodLength": S.optional(S.String),
-  "amount": S.optional(Price),
-  "period": S.optional(SubscriptionCostPeriodEnum),
-}),
-).annotate({ identifier: "SubscriptionCost" }) as any as S.Schema<SubscriptionCost>;
+  S.Struct({
+    periodLength: S.optional(S.String),
+    amount: S.optional(Price),
+    period: S.optional(SubscriptionCostPeriodEnum),
+  }),
+).annotate({
+  identifier: "SubscriptionCost",
+}) as any as S.Schema<SubscriptionCost>;
 
 /** A message that represents loyalty program. */
 export interface LoyaltyProgram {
@@ -626,19 +746,21 @@ export interface LoyaltyProgram {
   cashbackForFutureUse?: Price;
 }
 export const LoyaltyProgram = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "price": S.optional(Price),
-  "programLabel": S.optional(S.String),
-  "tierLabel": S.optional(S.String),
-  "loyaltyPoints": S.optional(S.String),
-  "memberPriceEffectiveDate": S.optional(Interval),
-  "shippingLabel": S.optional(S.String),
-  "cashbackForFutureUse": S.optional(Price),
-}),
+  S.Struct({
+    price: S.optional(Price),
+    programLabel: S.optional(S.String),
+    tierLabel: S.optional(S.String),
+    loyaltyPoints: S.optional(S.String),
+    memberPriceEffectiveDate: S.optional(Interval),
+    shippingLabel: S.optional(S.String),
+    cashbackForFutureUse: S.optional(Price),
+  }),
 ).annotate({ identifier: "LoyaltyProgram" }) as any as S.Schema<LoyaltyProgram>;
 
 export type LoyaltyProgramList = ReadonlyArray<LoyaltyProgram>;
-export const LoyaltyProgramList = /*@__PURE__*/ S.Array(LoyaltyProgram) as any as S.Schema<LoyaltyProgramList>;
+export const LoyaltyProgramList = /*@__PURE__*/ S.Array(
+  LoyaltyProgram,
+) as any as S.Schema<LoyaltyProgramList>;
 
 /** A message that represents installment. */
 export interface Installment {
@@ -652,12 +774,12 @@ export interface Installment {
   downpayment?: Price;
 }
 export const Installment = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "creditType": S.optional(S.String),
-  "months": S.optional(S.String),
-  "amount": S.optional(Price),
-  "downpayment": S.optional(Price),
-}),
+  S.Struct({
+    creditType: S.optional(S.String),
+    months: S.optional(S.String),
+    amount: S.optional(Price),
+    downpayment: S.optional(Price),
+  }),
 ).annotate({ identifier: "Installment" }) as any as S.Schema<Installment>;
 
 /** Attributes. */
@@ -854,103 +976,105 @@ export interface Attributes {
   installment?: Installment;
 }
 export const Attributes = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "shippingWeight": S.optional(ShippingWeight),
-  "maxHandlingTime": S.optional(S.String),
-  "disclosureDate": S.optional(S.String),
-  "adult": S.optional(S.Boolean),
-  "availabilityDate": S.optional(S.String),
-  "displayAdsTitle": S.optional(S.String),
-  "productWeight": S.optional(ProductWeight),
-  "pause": S.optional(S.String),
-  "displayAdsLink": S.optional(S.String),
-  "includedDestinations": S.optional(StringList),
-  "promotionIds": S.optional(StringList),
-  "ageGroup": S.optional(S.String),
-  "imageLink": S.optional(S.String),
-  "customLabel2": S.optional(S.String),
-  "pattern": S.optional(S.String),
-  "brand": S.optional(S.String),
-  "expirationDate": S.optional(S.String),
-  "itemGroupId": S.optional(S.String),
-  "customLabel0": S.optional(S.String),
-  "taxes": S.optional(TaxList),
-  "minEnergyEfficiencyClass": S.optional(S.String),
-  "sellOnGoogleQuantity": S.optional(S.String),
-  "mpn": S.optional(S.String),
-  "freeShippingThreshold": S.optional(FreeShippingThresholdList),
-  "isBundle": S.optional(S.Boolean),
-  "pickupSla": S.optional(S.String),
-  "customLabel3": S.optional(S.String),
-  "sustainabilityIncentives": S.optional(ProductSustainabilityIncentiveList),
-  "salePrice": S.optional(Price),
-  "shippingLength": S.optional(ShippingDimension),
-  "costOfGoodsSold": S.optional(Price),
-  "lifestyleImageLinks": S.optional(StringList),
-  "shippingLabel": S.optional(S.String),
-  "sizeTypes": S.optional(StringList),
-  "productWidth": S.optional(ProductDimension),
-  "customLabel4": S.optional(S.String),
-  "shippingWidth": S.optional(ShippingDimension),
-  "size": S.optional(S.String),
-  "multipack": S.optional(S.String),
-  "mobileLinkTemplate": S.optional(S.String),
-  "autoPricingMinPrice": S.optional(Price),
-  "additionalImageLinks": S.optional(StringList),
-  "shipping": S.optional(ShippingList),
-  "condition": S.optional(S.String),
-  "gtins": S.optional(StringList),
-  "title": S.optional(S.String),
-  "displayAdsId": S.optional(S.String),
-  "virtualModelLink": S.optional(S.String),
-  "displayAdsSimilarIds": S.optional(StringList),
-  "adsLabels": S.optional(StringList),
-  "linkTemplate": S.optional(S.String),
-  "productTypes": S.optional(StringList),
-  "unitPricingMeasure": S.optional(UnitPricingMeasure),
-  "adsGrouping": S.optional(S.String),
-  "structuredTitle": S.optional(ProductStructuredTitle),
-  "identifierExists": S.optional(S.Boolean),
-  "material": S.optional(S.String),
-  "googleProductCategory": S.optional(S.String),
-  "shoppingAdsExcludedCountries": S.optional(StringList),
-  "price": S.optional(Price),
-  "loyaltyPoints": S.optional(LoyaltyPoints),
-  "productHighlights": S.optional(StringList),
-  "salePriceEffectiveDate": S.optional(Interval),
-  "maxEnergyEfficiencyClass": S.optional(S.String),
-  "shippingHeight": S.optional(ShippingDimension),
-  "externalSellerId": S.optional(S.String),
-  "cloudExportAdditionalProperties": S.optional(CloudExportAdditionalPropertiesList),
-  "link": S.optional(S.String),
-  "certifications": S.optional(CertificationList),
-  "displayAdsValue": S.optional(S.Number),
-  "availability": S.optional(S.String),
-  "unitPricingBaseMeasure": S.optional(UnitPricingBaseMeasure),
-  "energyEfficiencyClass": S.optional(S.String),
-  "productHeight": S.optional(ProductDimension),
-  "structuredDescription": S.optional(ProductStructuredDescription),
-  "canonicalLink": S.optional(S.String),
-  "sizeSystem": S.optional(S.String),
-  "excludedDestinations": S.optional(StringList),
-  "mobileLink": S.optional(S.String),
-  "productDetails": S.optional(ProductDetailList),
-  "adsRedirect": S.optional(S.String),
-  "taxCategory": S.optional(S.String),
-  "pickupMethod": S.optional(S.String),
-  "minHandlingTime": S.optional(S.String),
-  "gtin": S.optional(StringList),
-  "productLength": S.optional(ProductDimension),
-  "customLabel1": S.optional(S.String),
-  "subscriptionCost": S.optional(SubscriptionCost),
-  "transitTimeLabel": S.optional(S.String),
-  "loyaltyPrograms": S.optional(LoyaltyProgramList),
-  "description": S.optional(S.String),
-  "gender": S.optional(S.String),
-  "maximumRetailPrice": S.optional(Price),
-  "color": S.optional(S.String),
-  "installment": S.optional(Installment),
-}),
+  S.Struct({
+    shippingWeight: S.optional(ShippingWeight),
+    maxHandlingTime: S.optional(S.String),
+    disclosureDate: S.optional(S.String),
+    adult: S.optional(S.Boolean),
+    availabilityDate: S.optional(S.String),
+    displayAdsTitle: S.optional(S.String),
+    productWeight: S.optional(ProductWeight),
+    pause: S.optional(S.String),
+    displayAdsLink: S.optional(S.String),
+    includedDestinations: S.optional(StringList),
+    promotionIds: S.optional(StringList),
+    ageGroup: S.optional(S.String),
+    imageLink: S.optional(S.String),
+    customLabel2: S.optional(S.String),
+    pattern: S.optional(S.String),
+    brand: S.optional(S.String),
+    expirationDate: S.optional(S.String),
+    itemGroupId: S.optional(S.String),
+    customLabel0: S.optional(S.String),
+    taxes: S.optional(TaxList),
+    minEnergyEfficiencyClass: S.optional(S.String),
+    sellOnGoogleQuantity: S.optional(S.String),
+    mpn: S.optional(S.String),
+    freeShippingThreshold: S.optional(FreeShippingThresholdList),
+    isBundle: S.optional(S.Boolean),
+    pickupSla: S.optional(S.String),
+    customLabel3: S.optional(S.String),
+    sustainabilityIncentives: S.optional(ProductSustainabilityIncentiveList),
+    salePrice: S.optional(Price),
+    shippingLength: S.optional(ShippingDimension),
+    costOfGoodsSold: S.optional(Price),
+    lifestyleImageLinks: S.optional(StringList),
+    shippingLabel: S.optional(S.String),
+    sizeTypes: S.optional(StringList),
+    productWidth: S.optional(ProductDimension),
+    customLabel4: S.optional(S.String),
+    shippingWidth: S.optional(ShippingDimension),
+    size: S.optional(S.String),
+    multipack: S.optional(S.String),
+    mobileLinkTemplate: S.optional(S.String),
+    autoPricingMinPrice: S.optional(Price),
+    additionalImageLinks: S.optional(StringList),
+    shipping: S.optional(ShippingList),
+    condition: S.optional(S.String),
+    gtins: S.optional(StringList),
+    title: S.optional(S.String),
+    displayAdsId: S.optional(S.String),
+    virtualModelLink: S.optional(S.String),
+    displayAdsSimilarIds: S.optional(StringList),
+    adsLabels: S.optional(StringList),
+    linkTemplate: S.optional(S.String),
+    productTypes: S.optional(StringList),
+    unitPricingMeasure: S.optional(UnitPricingMeasure),
+    adsGrouping: S.optional(S.String),
+    structuredTitle: S.optional(ProductStructuredTitle),
+    identifierExists: S.optional(S.Boolean),
+    material: S.optional(S.String),
+    googleProductCategory: S.optional(S.String),
+    shoppingAdsExcludedCountries: S.optional(StringList),
+    price: S.optional(Price),
+    loyaltyPoints: S.optional(LoyaltyPoints),
+    productHighlights: S.optional(StringList),
+    salePriceEffectiveDate: S.optional(Interval),
+    maxEnergyEfficiencyClass: S.optional(S.String),
+    shippingHeight: S.optional(ShippingDimension),
+    externalSellerId: S.optional(S.String),
+    cloudExportAdditionalProperties: S.optional(
+      CloudExportAdditionalPropertiesList,
+    ),
+    link: S.optional(S.String),
+    certifications: S.optional(CertificationList),
+    displayAdsValue: S.optional(S.Number),
+    availability: S.optional(S.String),
+    unitPricingBaseMeasure: S.optional(UnitPricingBaseMeasure),
+    energyEfficiencyClass: S.optional(S.String),
+    productHeight: S.optional(ProductDimension),
+    structuredDescription: S.optional(ProductStructuredDescription),
+    canonicalLink: S.optional(S.String),
+    sizeSystem: S.optional(S.String),
+    excludedDestinations: S.optional(StringList),
+    mobileLink: S.optional(S.String),
+    productDetails: S.optional(ProductDetailList),
+    adsRedirect: S.optional(S.String),
+    taxCategory: S.optional(S.String),
+    pickupMethod: S.optional(S.String),
+    minHandlingTime: S.optional(S.String),
+    gtin: S.optional(StringList),
+    productLength: S.optional(ProductDimension),
+    customLabel1: S.optional(S.String),
+    subscriptionCost: S.optional(SubscriptionCost),
+    transitTimeLabel: S.optional(S.String),
+    loyaltyPrograms: S.optional(LoyaltyProgramList),
+    description: S.optional(S.String),
+    gender: S.optional(S.String),
+    maximumRetailPrice: S.optional(Price),
+    color: S.optional(S.String),
+    installment: S.optional(Installment),
+  }),
 ).annotate({ identifier: "Attributes" }) as any as S.Schema<Attributes>;
 
 /** The processed product, built from multiple product inputs after applying rules and supplemental data sources. This processed product matches what is shown in your Merchant Center account. Each product is built from exactly one primary data source product input, and multiple supplemental data source inputs. After inserting, updating, or deleting a product input, it may take several minutes before the updated processed product can be retrieved. All fields in the processed product and its sub-messages match the name of their corresponding attribute in the [Product data specification](https://support.google.com/merchants/answer/7052112) with some exceptions. */
@@ -983,24 +1107,27 @@ export interface Product {
   versionNumber?: string;
 }
 export const Product = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "customAttributes": S.optional(CustomAttributeList),
-  "offerId": S.optional(S.String),
-  "automatedDiscounts": S.optional(AutomatedDiscounts),
-  "dataSource": S.optional(S.String),
-  "feedLabel": S.optional(S.String),
-  "channel": S.optional(ProductChannelEnum),
-  "contentLanguage": S.optional(S.String),
-  "name": S.optional(S.String),
-  "archived": S.optional(S.Boolean),
-  "productStatus": S.optional(ProductStatus),
-  "base64EncodedName": S.optional(S.String),
-  "attributes": S.optional(Attributes),
-  "versionNumber": S.optional(S.String),
-}),
+  S.Struct({
+    customAttributes: S.optional(CustomAttributeList),
+    offerId: S.optional(S.String),
+    automatedDiscounts: S.optional(AutomatedDiscounts),
+    dataSource: S.optional(S.String),
+    feedLabel: S.optional(S.String),
+    channel: S.optional(ProductChannelEnum),
+    contentLanguage: S.optional(S.String),
+    name: S.optional(S.String),
+    archived: S.optional(S.Boolean),
+    productStatus: S.optional(ProductStatus),
+    base64EncodedName: S.optional(S.String),
+    attributes: S.optional(Attributes),
+    versionNumber: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Product" }) as any as S.Schema<Product>;
 
-export type ProductInputChannelEnum = "CHANNEL_ENUM_UNSPECIFIED" | "ONLINE" | "LOCAL";
+export type ProductInputChannelEnum =
+  | "CHANNEL_ENUM_UNSPECIFIED"
+  | "ONLINE"
+  | "LOCAL";
 export const ProductInputChannelEnum = /*@__PURE__*/ S.String;
 
 /** This resource represents input data you submit for a product, not the processed product that you see in Merchant Center, in Shopping ads, or across Google surfaces. Product inputs, rules and supplemental data source data are combined to create the processed Product. For more information, see [Manage products](/merchant/api/guides/products/overview). Required product input attributes to pass data validation checks are primarily defined in the [Products Data Specification](https://support.google.com/merchants/answer/188494). The following attributes are required: feedLabel, contentLanguage and offerId. After inserting, updating, or deleting a product input, it may take several minutes before the processed product can be retrieved. All fields in the product input and its sub-messages match the English name of their corresponding attribute in the [Products Data Specification](https://support.google.com/merchants/answer/188494) with [some exceptions](https://support.google.com/merchants/answer/7052112). The following reference documentation lists the field names in the **camelCase** casing style while the Products Data Specification lists the names in the **snake_case** casing style. */
@@ -1029,19 +1156,19 @@ export interface ProductInput {
   name?: string;
 }
 export const ProductInput = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "feedLabel": S.optional(S.String),
-  "channel": S.optional(ProductInputChannelEnum),
-  "base64EncodedProduct": S.optional(S.String),
-  "base64EncodedName": S.optional(S.String),
-  "attributes": S.optional(Attributes),
-  "product": S.optional(S.String),
-  "versionNumber": S.optional(S.String),
-  "customAttributes": S.optional(CustomAttributeList),
-  "contentLanguage": S.optional(S.String),
-  "offerId": S.optional(S.String),
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    feedLabel: S.optional(S.String),
+    channel: S.optional(ProductInputChannelEnum),
+    base64EncodedProduct: S.optional(S.String),
+    base64EncodedName: S.optional(S.String),
+    attributes: S.optional(Attributes),
+    product: S.optional(S.String),
+    versionNumber: S.optional(S.String),
+    customAttributes: S.optional(CustomAttributeList),
+    contentLanguage: S.optional(S.String),
+    offerId: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ProductInput" }) as any as S.Schema<ProductInput>;
 
 export interface InsertAccountsProductInputsRequest {
@@ -1053,12 +1180,20 @@ export interface InsertAccountsProductInputsRequest {
   body?: ProductInput;
 }
 export const InsertAccountsProductInputsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dataSource": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(ProductInput.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"products/v1beta/{+parent}/productInputs:insert","baseUrl":"https://merchantapi.googleapis.com/"})),
-).annotate({ identifier: "InsertAccountsProductInputsRequest" }) as any as S.Schema<InsertAccountsProductInputsRequest>;
+  S.Struct({
+    dataSource: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(ProductInput.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "products/v1beta/{+parent}/productInputs:insert",
+      baseUrl: "https://merchantapi.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "InsertAccountsProductInputsRequest",
+}) as any as S.Schema<InsertAccountsProductInputsRequest>;
 
 export interface ListAccountsProductsRequest {
   /** The maximum number of products to return. The service may return fewer than this value. The maximum value is 1000; values above 1000 will be coerced to 1000. If unspecified, the default page size of 25 products will be returned. */
@@ -1069,15 +1204,25 @@ export interface ListAccountsProductsRequest {
   parent: string;
 }
 export const ListAccountsProductsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"products/v1beta/{+parent}/products","baseUrl":"https://merchantapi.googleapis.com/"})),
-).annotate({ identifier: "ListAccountsProductsRequest" }) as any as S.Schema<ListAccountsProductsRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "products/v1beta/{+parent}/products",
+      baseUrl: "https://merchantapi.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListAccountsProductsRequest",
+}) as any as S.Schema<ListAccountsProductsRequest>;
 
 export type ProductList = ReadonlyArray<Product>;
-export const ProductList = /*@__PURE__*/ S.Array(Product) as any as S.Schema<ProductList>;
+export const ProductList = /*@__PURE__*/ S.Array(
+  Product,
+) as any as S.Schema<ProductList>;
 
 /** Response message for the ListProducts method. */
 export interface ListProductsResponse {
@@ -1087,11 +1232,13 @@ export interface ListProductsResponse {
   products?: ProductList;
 }
 export const ListProductsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "products": S.optional(ProductList),
-}),
-).annotate({ identifier: "ListProductsResponse" }) as any as S.Schema<ListProductsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    products: S.optional(ProductList),
+  }),
+).annotate({
+  identifier: "ListProductsResponse",
+}) as any as S.Schema<ListProductsResponse>;
 
 export interface PatchAccountsProductInputsRequest {
   /** Required. The primary or supplemental product data source where `data_source` name identifies the product input to be updated. Only API data sources are supported. Format: `accounts/{account}/dataSources/{datasource}`. For example, `accounts/123456/dataSources/104628`. */
@@ -1104,15 +1251,28 @@ export interface PatchAccountsProductInputsRequest {
   body?: ProductInput;
 }
 export const PatchAccountsProductInputsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dataSource": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(ProductInput.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"products/v1beta/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
-).annotate({ identifier: "PatchAccountsProductInputsRequest" }) as any as S.Schema<PatchAccountsProductInputsRequest>;
+  S.Struct({
+    dataSource: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(ProductInput.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "products/v1beta/{+name}",
+      baseUrl: "https://merchantapi.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchAccountsProductInputsRequest",
+}) as any as S.Schema<PatchAccountsProductInputsRequest>;
 
-export type DeleteAccountsProductInputsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteAccountsProductInputsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a product input from your Merchant Center account. After inserting, updating, or deleting a product input, it may take several minutes before the processed product can be retrieved. */
 export const deleteAccountsProductInputs: API.OperationMethod<
   DeleteAccountsProductInputsRequest,
@@ -1142,7 +1302,12 @@ export const getAccountsProducts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertAccountsProductInputsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type InsertAccountsProductInputsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** [Uploads a product input to your Merchant Center account](/merchant/api/guides/products/add-manage#add_a_product). You must have a products [data source](/merchant/api/guides/data-sources/api-sources#create-primary-data-source) to be able to insert a product. The unique identifier of the data source is passed as a query parameter in the request URL. If a product input with the same contentLanguage, offerId, and dataSource already exists, then the product input inserted by this method replaces that entry. After inserting, updating, or deleting a product input, it may take several minutes before the processed product can be retrieved. */
 export const insertAccountsProductInputs: API.OperationMethod<
   InsertAccountsProductInputsRequest,
@@ -1170,10 +1335,18 @@ export const listAccountsProducts: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type PatchAccountsProductInputsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchAccountsProductInputsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the existing product input in your Merchant Center account. The name of the product input to update is taken from the `name` field within the `ProductInput` resource. After inserting, updating, or deleting a product input, it may take several minutes before the processed product can be retrieved. */
 export const patchAccountsProductInputs: API.OperationMethod<
   PatchAccountsProductInputsRequest,
@@ -1187,4 +1360,3 @@ export const patchAccountsProductInputs: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

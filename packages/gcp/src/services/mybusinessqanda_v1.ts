@@ -13,54 +13,58 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
-export type AuthorTypeEnum = "AUTHOR_TYPE_UNSPECIFIED" | "REGULAR_USER" | "LOCAL_GUIDE" | "MERCHANT";
+export type AuthorTypeEnum =
+  | "AUTHOR_TYPE_UNSPECIFIED"
+  | "REGULAR_USER"
+  | "LOCAL_GUIDE"
+  | "MERCHANT";
 export const AuthorTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents the author of a question or answer */
@@ -73,11 +77,11 @@ export interface Author {
   type?: AuthorTypeEnum;
 }
 export const Author = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "displayName": S.optional(S.String),
-  "profilePhotoUri": S.optional(S.String),
-  "type": S.optional(AuthorTypeEnum),
-}),
+  S.Struct({
+    displayName: S.optional(S.String),
+    profilePhotoUri: S.optional(S.String),
+    type: S.optional(AuthorTypeEnum),
+  }),
 ).annotate({ identifier: "Author" }) as any as S.Schema<Author>;
 
 /** Represents an answer to a question */
@@ -96,18 +100,20 @@ export interface Answer {
   name?: string;
 }
 export const Answer = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "upvoteCount": S.optional(S.Number),
-  "text": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "author": S.optional(Author),
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    upvoteCount: S.optional(S.Number),
+    text: S.optional(S.String),
+    createTime: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    author: S.optional(Author),
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Answer" }) as any as S.Schema<Answer>;
 
 export type AnswerList = ReadonlyArray<Answer>;
-export const AnswerList = /*@__PURE__*/ S.Array(Answer) as any as S.Schema<AnswerList>;
+export const AnswerList = /*@__PURE__*/ S.Array(
+  Answer,
+) as any as S.Schema<AnswerList>;
 
 /** Represents a single question and some of its answers. */
 export interface Question {
@@ -129,16 +135,16 @@ export interface Question {
   totalAnswerCount?: number;
 }
 export const Question = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "topAnswers": S.optional(AnswerList),
-  "author": S.optional(Author),
-  "text": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "upvoteCount": S.optional(S.Number),
-  "totalAnswerCount": S.optional(S.Number),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    topAnswers: S.optional(AnswerList),
+    author: S.optional(Author),
+    text: S.optional(S.String),
+    createTime: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    upvoteCount: S.optional(S.Number),
+    totalAnswerCount: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "Question" }) as any as S.Schema<Question>;
 
 export interface CreateLocationsQuestionsRequest {
@@ -148,37 +154,62 @@ export interface CreateLocationsQuestionsRequest {
   body?: Question;
 }
 export const CreateLocationsQuestionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(Question.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}","baseUrl":"https://mybusinessqanda.googleapis.com/"})),
-).annotate({ identifier: "CreateLocationsQuestionsRequest" }) as any as S.Schema<CreateLocationsQuestionsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(Question.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}",
+      baseUrl: "https://mybusinessqanda.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateLocationsQuestionsRequest",
+}) as any as S.Schema<CreateLocationsQuestionsRequest>;
 
 export interface DeleteLocationsQuestionsRequest {
   /** Required. The name of the question to delete. */
   name: string;
 }
 export const DeleteLocationsQuestionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://mybusinessqanda.googleapis.com/"})),
-).annotate({ identifier: "DeleteLocationsQuestionsRequest" }) as any as S.Schema<DeleteLocationsQuestionsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://mybusinessqanda.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteLocationsQuestionsRequest",
+}) as any as S.Schema<DeleteLocationsQuestionsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 export interface DeleteLocationsQuestionsAnswersRequest {
   /** Required. The name of the question to delete an answer for. */
   name: string;
 }
-export const DeleteLocationsQuestionsAnswersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}/answers:delete","baseUrl":"https://mybusinessqanda.googleapis.com/"})),
-).annotate({ identifier: "DeleteLocationsQuestionsAnswersRequest" }) as any as S.Schema<DeleteLocationsQuestionsAnswersRequest>;
+export const DeleteLocationsQuestionsAnswersRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}/answers:delete",
+        baseUrl: "https://mybusinessqanda.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteLocationsQuestionsAnswersRequest",
+}) as any as S.Schema<DeleteLocationsQuestionsAnswersRequest>;
 
 export interface ListLocationsQuestionsRequest {
   /** Optional. How many answers to fetch per question. The default and maximum `answers_per_question` values are 10. */
@@ -195,18 +226,28 @@ export interface ListLocationsQuestionsRequest {
   filter?: string;
 }
 export const ListLocationsQuestionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "answersPerQuestion": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}","baseUrl":"https://mybusinessqanda.googleapis.com/"})),
-).annotate({ identifier: "ListLocationsQuestionsRequest" }) as any as S.Schema<ListLocationsQuestionsRequest>;
+  S.Struct({
+    answersPerQuestion: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}",
+      baseUrl: "https://mybusinessqanda.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListLocationsQuestionsRequest",
+}) as any as S.Schema<ListLocationsQuestionsRequest>;
 
 export type QuestionList = ReadonlyArray<Question>;
-export const QuestionList = /*@__PURE__*/ S.Array(Question) as any as S.Schema<QuestionList>;
+export const QuestionList = /*@__PURE__*/ S.Array(
+  Question,
+) as any as S.Schema<QuestionList>;
 
 /** Response message for QuestionsAndAnswers.ListQuestions */
 export interface ListQuestionsResponse {
@@ -218,12 +259,14 @@ export interface ListQuestionsResponse {
   totalSize?: number;
 }
 export const ListQuestionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "questions": S.optional(QuestionList),
-  "nextPageToken": S.optional(S.String),
-  "totalSize": S.optional(S.Number),
-}),
-).annotate({ identifier: "ListQuestionsResponse" }) as any as S.Schema<ListQuestionsResponse>;
+  S.Struct({
+    questions: S.optional(QuestionList),
+    nextPageToken: S.optional(S.String),
+    totalSize: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ListQuestionsResponse",
+}) as any as S.Schema<ListQuestionsResponse>;
 
 export interface ListLocationsQuestionsAnswersRequest {
   /** Optional. How many answers to fetch per page. The default and maximum `page_size` values are 10. */
@@ -235,14 +278,23 @@ export interface ListLocationsQuestionsAnswersRequest {
   /** Optional. The order to return the answers. Valid options include 'update_time desc' and 'upvote_count desc', which will return the answers sorted descendingly by the requested field. The default sort order is 'update_time desc'. */
   orderBy?: string;
 }
-export const ListLocationsQuestionsAnswersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/answers","baseUrl":"https://mybusinessqanda.googleapis.com/"})),
-).annotate({ identifier: "ListLocationsQuestionsAnswersRequest" }) as any as S.Schema<ListLocationsQuestionsAnswersRequest>;
+export const ListLocationsQuestionsAnswersRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/answers",
+        baseUrl: "https://mybusinessqanda.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListLocationsQuestionsAnswersRequest",
+}) as any as S.Schema<ListLocationsQuestionsAnswersRequest>;
 
 /** Response message for QuestionsAndAnswers.ListAnswers */
 export interface ListAnswersResponse {
@@ -254,12 +306,14 @@ export interface ListAnswersResponse {
   nextPageToken?: string;
 }
 export const ListAnswersResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "totalSize": S.optional(S.Number),
-  "answers": S.optional(AnswerList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListAnswersResponse" }) as any as S.Schema<ListAnswersResponse>;
+  S.Struct({
+    totalSize: S.optional(S.Number),
+    answers: S.optional(AnswerList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListAnswersResponse",
+}) as any as S.Schema<ListAnswersResponse>;
 
 export interface PatchLocationsQuestionsRequest {
   /** Immutable. The unique name for the question. locations/*\/questions/* This field will be ignored if set during question creation. */
@@ -270,12 +324,20 @@ export interface PatchLocationsQuestionsRequest {
   body?: Question;
 }
 export const PatchLocationsQuestionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Question.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://mybusinessqanda.googleapis.com/"})),
-).annotate({ identifier: "PatchLocationsQuestionsRequest" }) as any as S.Schema<PatchLocationsQuestionsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(Question.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+name}",
+      baseUrl: "https://mybusinessqanda.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchLocationsQuestionsRequest",
+}) as any as S.Schema<PatchLocationsQuestionsRequest>;
 
 /** Request message for QuestionsAndAnswers.UpsertAnswer */
 export interface UpsertAnswerRequest {
@@ -283,10 +345,12 @@ export interface UpsertAnswerRequest {
   answer?: Answer;
 }
 export const UpsertAnswerRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "answer": S.optional(Answer),
-}),
-).annotate({ identifier: "UpsertAnswerRequest" }) as any as S.Schema<UpsertAnswerRequest>;
+  S.Struct({
+    answer: S.optional(Answer),
+  }),
+).annotate({
+  identifier: "UpsertAnswerRequest",
+}) as any as S.Schema<UpsertAnswerRequest>;
 
 export interface UpsertLocationsQuestionsAnswersRequest {
   /** Required. The name of the question to write an answer for. */
@@ -294,14 +358,28 @@ export interface UpsertLocationsQuestionsAnswersRequest {
   /** Request body */
   body?: UpsertAnswerRequest;
 }
-export const UpsertLocationsQuestionsAnswersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(UpsertAnswerRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/answers:upsert","baseUrl":"https://mybusinessqanda.googleapis.com/"})),
-).annotate({ identifier: "UpsertLocationsQuestionsAnswersRequest" }) as any as S.Schema<UpsertLocationsQuestionsAnswersRequest>;
+export const UpsertLocationsQuestionsAnswersRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(UpsertAnswerRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/answers:upsert",
+        baseUrl: "https://mybusinessqanda.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "UpsertLocationsQuestionsAnswersRequest",
+}) as any as S.Schema<UpsertLocationsQuestionsAnswersRequest>;
 
-export type CreateLocationsQuestionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateLocationsQuestionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Adds a question for the specified location. */
 export const createLocationsQuestions: API.OperationMethod<
   CreateLocationsQuestionsRequest,
@@ -316,7 +394,12 @@ export const createLocationsQuestions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteLocationsQuestionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteLocationsQuestionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a specific question written by the current user. */
 export const deleteLocationsQuestions: API.OperationMethod<
   DeleteLocationsQuestionsRequest,
@@ -331,7 +414,12 @@ export const deleteLocationsQuestions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteLocationsQuestionsAnswersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteLocationsQuestionsAnswersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes the answer written by the current user to a question. */
 export const deleteLocationsQuestionsAnswers: API.OperationMethod<
   DeleteLocationsQuestionsAnswersRequest,
@@ -359,10 +447,16 @@ export const listLocationsQuestions: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListLocationsQuestionsAnswersError = NotFound | Forbidden | GcpOpError;
+export type ListLocationsQuestionsAnswersError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns the paginated list of answers for a specified question. */
 export const listLocationsQuestionsAnswers: API.PaginatedOperationMethod<
   ListLocationsQuestionsAnswersRequest,
@@ -375,10 +469,18 @@ export const listLocationsQuestionsAnswers: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type PatchLocationsQuestionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchLocationsQuestionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a specific question written by the current user. */
 export const patchLocationsQuestions: API.OperationMethod<
   PatchLocationsQuestionsRequest,
@@ -393,7 +495,12 @@ export const patchLocationsQuestions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpsertLocationsQuestionsAnswersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpsertLocationsQuestionsAnswersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates an answer or updates the existing answer written by the user for the specified question. A user can only create one answer per question. */
 export const upsertLocationsQuestionsAnswers: API.OperationMethod<
   UpsertLocationsQuestionsAnswersRequest,
@@ -407,4 +514,3 @@ export const upsertLocationsQuestionsAnswers: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

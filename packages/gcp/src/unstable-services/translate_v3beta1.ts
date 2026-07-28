@@ -13,55 +13,57 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** The Google Cloud Storage location for the input content. */
 export interface GcsSource {
@@ -69,9 +71,9 @@ export interface GcsSource {
   inputUri?: string;
 }
 export const GcsSource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "inputUri": S.optional(S.String),
-}),
+  S.Struct({
+    inputUri: S.optional(S.String),
+  }),
 ).annotate({ identifier: "GcsSource" }) as any as S.Schema<GcsSource>;
 
 /** Input configuration for BatchTranslateDocument request. */
@@ -80,13 +82,18 @@ export interface BatchDocumentInputConfig {
   gcsSource?: GcsSource;
 }
 export const BatchDocumentInputConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "gcsSource": S.optional(GcsSource),
-}),
-).annotate({ identifier: "BatchDocumentInputConfig" }) as any as S.Schema<BatchDocumentInputConfig>;
+  S.Struct({
+    gcsSource: S.optional(GcsSource),
+  }),
+).annotate({
+  identifier: "BatchDocumentInputConfig",
+}) as any as S.Schema<BatchDocumentInputConfig>;
 
-export type BatchDocumentInputConfigList = ReadonlyArray<BatchDocumentInputConfig>;
-export const BatchDocumentInputConfigList = /*@__PURE__*/ S.Array(BatchDocumentInputConfig) as any as S.Schema<BatchDocumentInputConfigList>;
+export type BatchDocumentInputConfigList =
+  ReadonlyArray<BatchDocumentInputConfig>;
+export const BatchDocumentInputConfigList = /*@__PURE__*/ S.Array(
+  BatchDocumentInputConfig,
+) as any as S.Schema<BatchDocumentInputConfigList>;
 
 /** Configures which glossary should be used for a specific target language, and defines options for applying that glossary. */
 export interface TranslateTextGlossaryConfig {
@@ -98,15 +105,22 @@ export interface TranslateTextGlossaryConfig {
   contextualTranslationEnabled?: boolean;
 }
 export const TranslateTextGlossaryConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "glossary": S.optional(S.String),
-  "ignoreCase": S.optional(S.Boolean),
-  "contextualTranslationEnabled": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "TranslateTextGlossaryConfig" }) as any as S.Schema<TranslateTextGlossaryConfig>;
+  S.Struct({
+    glossary: S.optional(S.String),
+    ignoreCase: S.optional(S.Boolean),
+    contextualTranslationEnabled: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "TranslateTextGlossaryConfig",
+}) as any as S.Schema<TranslateTextGlossaryConfig>;
 
-export type TranslateTextGlossaryConfigMap = { [key: string]: TranslateTextGlossaryConfig | undefined };
-export const TranslateTextGlossaryConfigMap = /*@__PURE__*/ S.Record(S.String, TranslateTextGlossaryConfig) as any as S.Schema<TranslateTextGlossaryConfigMap>;
+export type TranslateTextGlossaryConfigMap = {
+  [key: string]: TranslateTextGlossaryConfig | undefined;
+};
+export const TranslateTextGlossaryConfigMap = /*@__PURE__*/ S.Record(
+  S.String,
+  TranslateTextGlossaryConfig,
+) as any as S.Schema<TranslateTextGlossaryConfigMap>;
 
 /** The Google Cloud Storage location for the output content. */
 export interface GcsDestination {
@@ -114,9 +128,9 @@ export interface GcsDestination {
   outputUriPrefix?: string;
 }
 export const GcsDestination = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "outputUriPrefix": S.optional(S.String),
-}),
+  S.Struct({
+    outputUriPrefix: S.optional(S.String),
+  }),
 ).annotate({ identifier: "GcsDestination" }) as any as S.Schema<GcsDestination>;
 
 /** Output configuration for BatchTranslateDocument request. */
@@ -125,13 +139,18 @@ export interface BatchDocumentOutputConfig {
   gcsDestination?: GcsDestination;
 }
 export const BatchDocumentOutputConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "gcsDestination": S.optional(GcsDestination),
-}),
-).annotate({ identifier: "BatchDocumentOutputConfig" }) as any as S.Schema<BatchDocumentOutputConfig>;
+  S.Struct({
+    gcsDestination: S.optional(GcsDestination),
+  }),
+).annotate({
+  identifier: "BatchDocumentOutputConfig",
+}) as any as S.Schema<BatchDocumentOutputConfig>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
 /** The BatchTranslateDocument request. */
 export interface BatchTranslateDocumentRequest {
@@ -159,20 +178,22 @@ export interface BatchTranslateDocumentRequest {
   formatConversions?: StringMap;
 }
 export const BatchTranslateDocumentRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "targetLanguageCodes": S.optional(StringList),
-  "enableRotationCorrection": S.optional(S.Boolean),
-  "inputConfigs": S.optional(BatchDocumentInputConfigList),
-  "glossaries": S.optional(TranslateTextGlossaryConfigMap),
-  "outputConfig": S.optional(BatchDocumentOutputConfig),
-  "sourceLanguageCode": S.optional(S.String),
-  "pdfNativeOnly": S.optional(S.Boolean),
-  "customizedAttribution": S.optional(S.String),
-  "enableShadowRemovalNativePdf": S.optional(S.Boolean),
-  "models": S.optional(StringMap),
-  "formatConversions": S.optional(StringMap),
-}),
-).annotate({ identifier: "BatchTranslateDocumentRequest" }) as any as S.Schema<BatchTranslateDocumentRequest>;
+  S.Struct({
+    targetLanguageCodes: S.optional(StringList),
+    enableRotationCorrection: S.optional(S.Boolean),
+    inputConfigs: S.optional(BatchDocumentInputConfigList),
+    glossaries: S.optional(TranslateTextGlossaryConfigMap),
+    outputConfig: S.optional(BatchDocumentOutputConfig),
+    sourceLanguageCode: S.optional(S.String),
+    pdfNativeOnly: S.optional(S.Boolean),
+    customizedAttribution: S.optional(S.String),
+    enableShadowRemovalNativePdf: S.optional(S.Boolean),
+    models: S.optional(StringMap),
+    formatConversions: S.optional(StringMap),
+  }),
+).annotate({
+  identifier: "BatchTranslateDocumentRequest",
+}) as any as S.Schema<BatchTranslateDocumentRequest>;
 
 export interface BatchTranslateDocumentProjectsLocationsRequest {
   /** Required. Location to make a regional call. Format: `projects/{project-number-or-id}/locations/{location-id}`. The `global` location is not supported for batch translation. Only AutoML Translation models or glossaries within the same region (have the same location-id) can be used, otherwise an INVALID_ARGUMENT (400) error is returned. */
@@ -180,18 +201,32 @@ export interface BatchTranslateDocumentProjectsLocationsRequest {
   /** Request body */
   body?: BatchTranslateDocumentRequest;
 }
-export const BatchTranslateDocumentProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(BatchTranslateDocumentRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v3beta1/{+parent}:batchTranslateDocument","baseUrl":"https://translation.googleapis.com/"})),
-).annotate({ identifier: "BatchTranslateDocumentProjectsLocationsRequest" }) as any as S.Schema<BatchTranslateDocumentProjectsLocationsRequest>;
+export const BatchTranslateDocumentProjectsLocationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(BatchTranslateDocumentRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v3beta1/{+parent}:batchTranslateDocument",
+        baseUrl: "https://translation.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "BatchTranslateDocumentProjectsLocationsRequest",
+  }) as any as S.Schema<BatchTranslateDocumentProjectsLocationsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -203,11 +238,11 @@ export interface Status {
   message?: string;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(S.Number),
-  "details": S.optional(DocumentMapList),
-  "message": S.optional(S.String),
-}),
+  S.Struct({
+    code: S.optional(S.Number),
+    details: S.optional(DocumentMapList),
+    message: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -224,13 +259,13 @@ export interface Operation {
   done?: boolean;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "metadata": S.optional(DocumentMap),
-  "error": S.optional(Status),
-  "response": S.optional(DocumentMap),
-  "done": S.optional(S.Boolean),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    metadata: S.optional(DocumentMap),
+    error: S.optional(Status),
+    response: S.optional(DocumentMap),
+    done: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** Output configuration for BatchTranslateText request. */
@@ -239,9 +274,9 @@ export interface OutputConfig {
   gcsDestination?: GcsDestination;
 }
 export const OutputConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "gcsDestination": S.optional(GcsDestination),
-}),
+  S.Struct({
+    gcsDestination: S.optional(GcsDestination),
+  }),
 ).annotate({ identifier: "OutputConfig" }) as any as S.Schema<OutputConfig>;
 
 /** Input configuration for BatchTranslateText request. */
@@ -252,14 +287,16 @@ export interface InputConfig {
   gcsSource?: GcsSource;
 }
 export const InputConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "mimeType": S.optional(S.String),
-  "gcsSource": S.optional(GcsSource),
-}),
+  S.Struct({
+    mimeType: S.optional(S.String),
+    gcsSource: S.optional(GcsSource),
+  }),
 ).annotate({ identifier: "InputConfig" }) as any as S.Schema<InputConfig>;
 
 export type InputConfigList = ReadonlyArray<InputConfig>;
-export const InputConfigList = /*@__PURE__*/ S.Array(InputConfig) as any as S.Schema<InputConfigList>;
+export const InputConfigList = /*@__PURE__*/ S.Array(
+  InputConfig,
+) as any as S.Schema<InputConfigList>;
 
 /** The batch translation request. */
 export interface BatchTranslateTextRequest {
@@ -279,16 +316,18 @@ export interface BatchTranslateTextRequest {
   inputConfigs?: InputConfigList;
 }
 export const BatchTranslateTextRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "models": S.optional(StringMap),
-  "glossaries": S.optional(TranslateTextGlossaryConfigMap),
-  "labels": S.optional(StringMap),
-  "sourceLanguageCode": S.optional(S.String),
-  "targetLanguageCodes": S.optional(StringList),
-  "outputConfig": S.optional(OutputConfig),
-  "inputConfigs": S.optional(InputConfigList),
-}),
-).annotate({ identifier: "BatchTranslateTextRequest" }) as any as S.Schema<BatchTranslateTextRequest>;
+  S.Struct({
+    models: S.optional(StringMap),
+    glossaries: S.optional(TranslateTextGlossaryConfigMap),
+    labels: S.optional(StringMap),
+    sourceLanguageCode: S.optional(S.String),
+    targetLanguageCodes: S.optional(StringList),
+    outputConfig: S.optional(OutputConfig),
+    inputConfigs: S.optional(InputConfigList),
+  }),
+).annotate({
+  identifier: "BatchTranslateTextRequest",
+}) as any as S.Schema<BatchTranslateTextRequest>;
 
 export interface BatchTranslateTextProjectsLocationsRequest {
   /** Required. Location to make a call. Must refer to a caller's project. Format: `projects/{project-number-or-id}/locations/{location-id}`. The `global` location is not supported for batch translation. Only AutoML Translation models or glossaries within the same region (have the same location-id) can be used, otherwise an INVALID_ARGUMENT (400) error is returned. */
@@ -296,18 +335,29 @@ export interface BatchTranslateTextProjectsLocationsRequest {
   /** Request body */
   body?: BatchTranslateTextRequest;
 }
-export const BatchTranslateTextProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(BatchTranslateTextRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v3beta1/{+parent}:batchTranslateText","baseUrl":"https://translation.googleapis.com/"})),
-).annotate({ identifier: "BatchTranslateTextProjectsLocationsRequest" }) as any as S.Schema<BatchTranslateTextProjectsLocationsRequest>;
+export const BatchTranslateTextProjectsLocationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(BatchTranslateTextRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v3beta1/{+parent}:batchTranslateText",
+        baseUrl: "https://translation.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "BatchTranslateTextProjectsLocationsRequest",
+  }) as any as S.Schema<BatchTranslateTextProjectsLocationsRequest>;
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
 export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "CancelOperationRequest" }) as any as S.Schema<CancelOperationRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "CancelOperationRequest",
+}) as any as S.Schema<CancelOperationRequest>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -315,18 +365,27 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v3beta1/{+name}:cancel","baseUrl":"https://translation.googleapis.com/"})),
-).annotate({ identifier: "CancelProjectsLocationsOperationsRequest" }) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v3beta1/{+name}:cancel",
+        baseUrl: "https://translation.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CancelProjectsLocationsOperationsRequest",
+}) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 /** Used with equivalent term set glossaries. */
 export interface LanguageCodesSet {
@@ -334,10 +393,12 @@ export interface LanguageCodesSet {
   languageCodes?: StringList;
 }
 export const LanguageCodesSet = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "languageCodes": S.optional(StringList),
-}),
-).annotate({ identifier: "LanguageCodesSet" }) as any as S.Schema<LanguageCodesSet>;
+  S.Struct({
+    languageCodes: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "LanguageCodesSet",
+}) as any as S.Schema<LanguageCodesSet>;
 
 /** Input configuration for glossaries. */
 export interface GlossaryInputConfig {
@@ -345,10 +406,12 @@ export interface GlossaryInputConfig {
   gcsSource?: GcsSource;
 }
 export const GlossaryInputConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "gcsSource": S.optional(GcsSource),
-}),
-).annotate({ identifier: "GlossaryInputConfig" }) as any as S.Schema<GlossaryInputConfig>;
+  S.Struct({
+    gcsSource: S.optional(GcsSource),
+  }),
+).annotate({
+  identifier: "GlossaryInputConfig",
+}) as any as S.Schema<GlossaryInputConfig>;
 
 /** Used with unidirectional glossaries. */
 export interface LanguageCodePair {
@@ -358,11 +421,13 @@ export interface LanguageCodePair {
   targetLanguageCode?: string;
 }
 export const LanguageCodePair = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sourceLanguageCode": S.optional(S.String),
-  "targetLanguageCode": S.optional(S.String),
-}),
-).annotate({ identifier: "LanguageCodePair" }) as any as S.Schema<LanguageCodePair>;
+  S.Struct({
+    sourceLanguageCode: S.optional(S.String),
+    targetLanguageCode: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "LanguageCodePair",
+}) as any as S.Schema<LanguageCodePair>;
 
 /** Represents a glossary built from user provided data. */
 export interface Glossary {
@@ -382,15 +447,15 @@ export interface Glossary {
   submitTime?: string;
 }
 export const Glossary = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "languageCodesSet": S.optional(LanguageCodesSet),
-  "endTime": S.optional(S.String),
-  "inputConfig": S.optional(GlossaryInputConfig),
-  "languagePair": S.optional(LanguageCodePair),
-  "entryCount": S.optional(S.Number),
-  "submitTime": S.optional(S.String),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    languageCodesSet: S.optional(LanguageCodesSet),
+    endTime: S.optional(S.String),
+    inputConfig: S.optional(GlossaryInputConfig),
+    languagePair: S.optional(LanguageCodePair),
+    entryCount: S.optional(S.Number),
+    submitTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Glossary" }) as any as S.Schema<Glossary>;
 
 export interface CreateProjectsLocationsGlossariesRequest {
@@ -399,32 +464,59 @@ export interface CreateProjectsLocationsGlossariesRequest {
   /** Request body */
   body?: Glossary;
 }
-export const CreateProjectsLocationsGlossariesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(Glossary.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v3beta1/{+parent}/glossaries","baseUrl":"https://translation.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsGlossariesRequest" }) as any as S.Schema<CreateProjectsLocationsGlossariesRequest>;
+export const CreateProjectsLocationsGlossariesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(Glossary.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v3beta1/{+parent}/glossaries",
+        baseUrl: "https://translation.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateProjectsLocationsGlossariesRequest",
+}) as any as S.Schema<CreateProjectsLocationsGlossariesRequest>;
 
 export interface DeleteProjectsLocationsGlossariesRequest {
   /** Required. The name of the glossary to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsGlossariesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v3beta1/{+name}","baseUrl":"https://translation.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsGlossariesRequest" }) as any as S.Schema<DeleteProjectsLocationsGlossariesRequest>;
+export const DeleteProjectsLocationsGlossariesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v3beta1/{+name}",
+        baseUrl: "https://translation.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsGlossariesRequest",
+}) as any as S.Schema<DeleteProjectsLocationsGlossariesRequest>;
 
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v3beta1/{+name}","baseUrl":"https://translation.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsOperationsRequest" }) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v3beta1/{+name}",
+        baseUrl: "https://translation.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsOperationsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
 
 /** The request message for language detection. */
 export interface DetectLanguageRequest {
@@ -438,13 +530,15 @@ export interface DetectLanguageRequest {
   labels?: StringMap;
 }
 export const DetectLanguageRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "model": S.optional(S.String),
-  "mimeType": S.optional(S.String),
-  "content": S.optional(S.String),
-  "labels": S.optional(StringMap),
-}),
-).annotate({ identifier: "DetectLanguageRequest" }) as any as S.Schema<DetectLanguageRequest>;
+  S.Struct({
+    model: S.optional(S.String),
+    mimeType: S.optional(S.String),
+    content: S.optional(S.String),
+    labels: S.optional(StringMap),
+  }),
+).annotate({
+  identifier: "DetectLanguageRequest",
+}) as any as S.Schema<DetectLanguageRequest>;
 
 export interface DetectLanguageProjectsRequest {
   /** Required. Project or location to make a call. Must refer to a caller's project. Format: `projects/{project-number-or-id}/locations/{location-id}` or `projects/{project-number-or-id}`. For global calls, use `projects/{project-number-or-id}/locations/global` or `projects/{project-number-or-id}`. Only models within the same region (has same location-id) can be used. Otherwise an INVALID_ARGUMENT (400) error is returned. */
@@ -453,11 +547,19 @@ export interface DetectLanguageProjectsRequest {
   body?: DetectLanguageRequest;
 }
 export const DetectLanguageProjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(DetectLanguageRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v3beta1/{+parent}:detectLanguage","baseUrl":"https://translation.googleapis.com/"})),
-).annotate({ identifier: "DetectLanguageProjectsRequest" }) as any as S.Schema<DetectLanguageProjectsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(DetectLanguageRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v3beta1/{+parent}:detectLanguage",
+      baseUrl: "https://translation.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DetectLanguageProjectsRequest",
+}) as any as S.Schema<DetectLanguageProjectsRequest>;
 
 /** The response message for language detection. */
 export interface DetectedLanguage {
@@ -467,14 +569,18 @@ export interface DetectedLanguage {
   confidence?: number;
 }
 export const DetectedLanguage = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "languageCode": S.optional(S.String),
-  "confidence": S.optional(S.Number),
-}),
-).annotate({ identifier: "DetectedLanguage" }) as any as S.Schema<DetectedLanguage>;
+  S.Struct({
+    languageCode: S.optional(S.String),
+    confidence: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "DetectedLanguage",
+}) as any as S.Schema<DetectedLanguage>;
 
 export type DetectedLanguageList = ReadonlyArray<DetectedLanguage>;
-export const DetectedLanguageList = /*@__PURE__*/ S.Array(DetectedLanguage) as any as S.Schema<DetectedLanguageList>;
+export const DetectedLanguageList = /*@__PURE__*/ S.Array(
+  DetectedLanguage,
+) as any as S.Schema<DetectedLanguageList>;
 
 /** The response message for language detection. */
 export interface DetectLanguageResponse {
@@ -482,10 +588,12 @@ export interface DetectLanguageResponse {
   languages?: DetectedLanguageList;
 }
 export const DetectLanguageResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "languages": S.optional(DetectedLanguageList),
-}),
-).annotate({ identifier: "DetectLanguageResponse" }) as any as S.Schema<DetectLanguageResponse>;
+  S.Struct({
+    languages: S.optional(DetectedLanguageList),
+  }),
+).annotate({
+  identifier: "DetectLanguageResponse",
+}) as any as S.Schema<DetectLanguageResponse>;
 
 export interface DetectLanguageProjectsLocationsRequest {
   /** Required. Project or location to make a call. Must refer to a caller's project. Format: `projects/{project-number-or-id}/locations/{location-id}` or `projects/{project-number-or-id}`. For global calls, use `projects/{project-number-or-id}/locations/global` or `projects/{project-number-or-id}`. Only models within the same region (has same location-id) can be used. Otherwise an INVALID_ARGUMENT (400) error is returned. */
@@ -493,22 +601,39 @@ export interface DetectLanguageProjectsLocationsRequest {
   /** Request body */
   body?: DetectLanguageRequest;
 }
-export const DetectLanguageProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(DetectLanguageRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v3beta1/{+parent}:detectLanguage","baseUrl":"https://translation.googleapis.com/"})),
-).annotate({ identifier: "DetectLanguageProjectsLocationsRequest" }) as any as S.Schema<DetectLanguageProjectsLocationsRequest>;
+export const DetectLanguageProjectsLocationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(DetectLanguageRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v3beta1/{+parent}:detectLanguage",
+        baseUrl: "https://translation.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DetectLanguageProjectsLocationsRequest",
+}) as any as S.Schema<DetectLanguageProjectsLocationsRequest>;
 
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v3beta1/{+name}","baseUrl":"https://translation.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v3beta1/{+name}",
+      baseUrl: "https://translation.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsRequest",
+}) as any as S.Schema<GetProjectsLocationsRequest>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -524,34 +649,52 @@ export interface Location {
   displayName?: string;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "labels": S.optional(StringMap),
-  "name": S.optional(S.String),
-  "locationId": S.optional(S.String),
-  "metadata": S.optional(DocumentMap),
-  "displayName": S.optional(S.String),
-}),
+  S.Struct({
+    labels: S.optional(StringMap),
+    name: S.optional(S.String),
+    locationId: S.optional(S.String),
+    metadata: S.optional(DocumentMap),
+    displayName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export interface GetProjectsLocationsGlossariesRequest {
   /** Required. The name of the glossary to retrieve. */
   name: string;
 }
-export const GetProjectsLocationsGlossariesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v3beta1/{+name}","baseUrl":"https://translation.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsGlossariesRequest" }) as any as S.Schema<GetProjectsLocationsGlossariesRequest>;
+export const GetProjectsLocationsGlossariesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v3beta1/{+name}",
+        baseUrl: "https://translation.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsGlossariesRequest",
+}) as any as S.Schema<GetProjectsLocationsGlossariesRequest>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v3beta1/{+name}","baseUrl":"https://translation.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v3beta1/{+name}",
+        baseUrl: "https://translation.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsOperationsRequest",
+}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export interface GetSupportedLanguagesProjectsRequest {
   /** Optional. The language to use to return localized, human readable names of supported languages. If missing, then display names are not returned in a response. */
@@ -561,13 +704,22 @@ export interface GetSupportedLanguagesProjectsRequest {
   /** Required. Project or location to make a call. Must refer to a caller's project. Format: `projects/{project-number-or-id}` or `projects/{project-number-or-id}/locations/{location-id}`. For global calls, use `projects/{project-number-or-id}/locations/global` or `projects/{project-number-or-id}`. Non-global location is required for AutoML models. Only models within the same region (have same location-id) can be used, otherwise an INVALID_ARGUMENT (400) error is returned. */
   parent: string;
 }
-export const GetSupportedLanguagesProjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "displayLanguageCode": S.optional(S.String.pipe(T.Query())),
-  "model": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v3beta1/{+parent}/supportedLanguages","baseUrl":"https://translation.googleapis.com/"})),
-).annotate({ identifier: "GetSupportedLanguagesProjectsRequest" }) as any as S.Schema<GetSupportedLanguagesProjectsRequest>;
+export const GetSupportedLanguagesProjectsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      displayLanguageCode: S.optional(S.String.pipe(T.Query())),
+      model: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v3beta1/{+parent}/supportedLanguages",
+        baseUrl: "https://translation.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetSupportedLanguagesProjectsRequest",
+}) as any as S.Schema<GetSupportedLanguagesProjectsRequest>;
 
 /** A single supported language response corresponds to information related to one supported language. */
 export interface SupportedLanguage {
@@ -581,16 +733,20 @@ export interface SupportedLanguage {
   displayName?: string;
 }
 export const SupportedLanguage = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "supportSource": S.optional(S.Boolean),
-  "languageCode": S.optional(S.String),
-  "supportTarget": S.optional(S.Boolean),
-  "displayName": S.optional(S.String),
-}),
-).annotate({ identifier: "SupportedLanguage" }) as any as S.Schema<SupportedLanguage>;
+  S.Struct({
+    supportSource: S.optional(S.Boolean),
+    languageCode: S.optional(S.String),
+    supportTarget: S.optional(S.Boolean),
+    displayName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SupportedLanguage",
+}) as any as S.Schema<SupportedLanguage>;
 
 export type SupportedLanguageList = ReadonlyArray<SupportedLanguage>;
-export const SupportedLanguageList = /*@__PURE__*/ S.Array(SupportedLanguage) as any as S.Schema<SupportedLanguageList>;
+export const SupportedLanguageList = /*@__PURE__*/ S.Array(
+  SupportedLanguage,
+) as any as S.Schema<SupportedLanguageList>;
 
 /** The response message for discovering supported languages. */
 export interface SupportedLanguages {
@@ -598,10 +754,12 @@ export interface SupportedLanguages {
   languages?: SupportedLanguageList;
 }
 export const SupportedLanguages = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "languages": S.optional(SupportedLanguageList),
-}),
-).annotate({ identifier: "SupportedLanguages" }) as any as S.Schema<SupportedLanguages>;
+  S.Struct({
+    languages: S.optional(SupportedLanguageList),
+  }),
+).annotate({
+  identifier: "SupportedLanguages",
+}) as any as S.Schema<SupportedLanguages>;
 
 export interface GetSupportedLanguagesProjectsLocationsRequest {
   /** Optional. The language to use to return localized, human readable names of supported languages. If missing, then display names are not returned in a response. */
@@ -611,13 +769,22 @@ export interface GetSupportedLanguagesProjectsLocationsRequest {
   /** Required. Project or location to make a call. Must refer to a caller's project. Format: `projects/{project-number-or-id}` or `projects/{project-number-or-id}/locations/{location-id}`. For global calls, use `projects/{project-number-or-id}/locations/global` or `projects/{project-number-or-id}`. Non-global location is required for AutoML models. Only models within the same region (have same location-id) can be used, otherwise an INVALID_ARGUMENT (400) error is returned. */
   parent: string;
 }
-export const GetSupportedLanguagesProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "displayLanguageCode": S.optional(S.String.pipe(T.Query())),
-  "model": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v3beta1/{+parent}/supportedLanguages","baseUrl":"https://translation.googleapis.com/"})),
-).annotate({ identifier: "GetSupportedLanguagesProjectsLocationsRequest" }) as any as S.Schema<GetSupportedLanguagesProjectsLocationsRequest>;
+export const GetSupportedLanguagesProjectsLocationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      displayLanguageCode: S.optional(S.String.pipe(T.Query())),
+      model: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v3beta1/{+parent}/supportedLanguages",
+        baseUrl: "https://translation.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetSupportedLanguagesProjectsLocationsRequest",
+  }) as any as S.Schema<GetSupportedLanguagesProjectsLocationsRequest>;
 
 export interface ListProjectsLocationsRequest {
   /** Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. */
@@ -632,17 +799,27 @@ export interface ListProjectsLocationsRequest {
   pageToken?: string;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v3beta1/{+name}/locations","baseUrl":"https://translation.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
+  S.Struct({
+    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v3beta1/{+name}/locations",
+      baseUrl: "https://translation.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsRequest",
+}) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(
+  Location,
+) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -652,11 +829,13 @@ export interface ListLocationsResponse {
   locations?: LocationList;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "locations": S.optional(LocationList),
-}),
-).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    locations: S.optional(LocationList),
+  }),
+).annotate({
+  identifier: "ListLocationsResponse",
+}) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsLocationsGlossariesRequest {
   /** Required. The name of the project from which to list all of the glossaries. */
@@ -668,17 +847,28 @@ export interface ListProjectsLocationsGlossariesRequest {
   /** Optional. A token identifying a page of results the server should return. Typically, this is the value of [ListGlossariesResponse.next_page_token] returned from the previous call to `ListGlossaries` method. The first page is returned if `page_token`is empty or missing. */
   pageToken?: string;
 }
-export const ListProjectsLocationsGlossariesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v3beta1/{+parent}/glossaries","baseUrl":"https://translation.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsGlossariesRequest" }) as any as S.Schema<ListProjectsLocationsGlossariesRequest>;
+export const ListProjectsLocationsGlossariesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      filter: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v3beta1/{+parent}/glossaries",
+        baseUrl: "https://translation.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsGlossariesRequest",
+}) as any as S.Schema<ListProjectsLocationsGlossariesRequest>;
 
 export type GlossaryList = ReadonlyArray<Glossary>;
-export const GlossaryList = /*@__PURE__*/ S.Array(Glossary) as any as S.Schema<GlossaryList>;
+export const GlossaryList = /*@__PURE__*/ S.Array(
+  Glossary,
+) as any as S.Schema<GlossaryList>;
 
 /** Response message for ListGlossaries. */
 export interface ListGlossariesResponse {
@@ -688,11 +878,13 @@ export interface ListGlossariesResponse {
   nextPageToken?: string;
 }
 export const ListGlossariesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "glossaries": S.optional(GlossaryList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListGlossariesResponse" }) as any as S.Schema<ListGlossariesResponse>;
+  S.Struct({
+    glossaries: S.optional(GlossaryList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListGlossariesResponse",
+}) as any as S.Schema<ListGlossariesResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
@@ -706,18 +898,29 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v3beta1/{+name}/operations","baseUrl":"https://translation.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v3beta1/{+name}/operations",
+        baseUrl: "https://translation.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsOperationsRequest",
+}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(
+  Operation,
+) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -729,12 +932,14 @@ export interface ListOperationsResponse {
   unreachable?: StringList;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "operations": S.optional(OperationList),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    operations: S.optional(OperationList),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListOperationsResponse",
+}) as any as S.Schema<ListOperationsResponse>;
 
 /** A single refinement entry for RefineTextRequest. */
 export interface RefinementEntry {
@@ -744,14 +949,18 @@ export interface RefinementEntry {
   sourceText?: string;
 }
 export const RefinementEntry = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "originalTranslation": S.optional(S.String),
-  "sourceText": S.optional(S.String),
-}),
-).annotate({ identifier: "RefinementEntry" }) as any as S.Schema<RefinementEntry>;
+  S.Struct({
+    originalTranslation: S.optional(S.String),
+    sourceText: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RefinementEntry",
+}) as any as S.Schema<RefinementEntry>;
 
 export type RefinementEntryList = ReadonlyArray<RefinementEntry>;
-export const RefinementEntryList = /*@__PURE__*/ S.Array(RefinementEntry) as any as S.Schema<RefinementEntryList>;
+export const RefinementEntryList = /*@__PURE__*/ S.Array(
+  RefinementEntry,
+) as any as S.Schema<RefinementEntryList>;
 
 /** Request message for RefineText. */
 export interface RefineTextRequest {
@@ -763,12 +972,14 @@ export interface RefineTextRequest {
   targetLanguageCode?: string;
 }
 export const RefineTextRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sourceLanguageCode": S.optional(S.String),
-  "refinementEntries": S.optional(RefinementEntryList),
-  "targetLanguageCode": S.optional(S.String),
-}),
-).annotate({ identifier: "RefineTextRequest" }) as any as S.Schema<RefineTextRequest>;
+  S.Struct({
+    sourceLanguageCode: S.optional(S.String),
+    refinementEntries: S.optional(RefinementEntryList),
+    targetLanguageCode: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RefineTextRequest",
+}) as any as S.Schema<RefineTextRequest>;
 
 export interface RefineTextProjectsLocationsRequest {
   /** Required. Project or location to make a call. Must refer to a caller's project. Format: `projects/{project-number-or-id}/locations/{location-id}`. For global calls, use `projects/{project-number-or-id}/locations/global` or `projects/{project-number-or-id}`. */
@@ -777,11 +988,19 @@ export interface RefineTextProjectsLocationsRequest {
   body?: RefineTextRequest;
 }
 export const RefineTextProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(RefineTextRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v3beta1/{+parent}:refineText","baseUrl":"https://translation.googleapis.com/"})),
-).annotate({ identifier: "RefineTextProjectsLocationsRequest" }) as any as S.Schema<RefineTextProjectsLocationsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(RefineTextRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v3beta1/{+parent}:refineText",
+      baseUrl: "https://translation.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "RefineTextProjectsLocationsRequest",
+}) as any as S.Schema<RefineTextProjectsLocationsRequest>;
 
 /** Response message for RefineText. */
 export interface RefineTextResponse {
@@ -789,10 +1008,12 @@ export interface RefineTextResponse {
   refinedTranslations?: StringList;
 }
 export const RefineTextResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "refinedTranslations": S.optional(StringList),
-}),
-).annotate({ identifier: "RefineTextResponse" }) as any as S.Schema<RefineTextResponse>;
+  S.Struct({
+    refinedTranslations: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "RefineTextResponse",
+}) as any as S.Schema<RefineTextResponse>;
 
 /** A document translation request input config. */
 export interface DocumentInputConfig {
@@ -804,12 +1025,14 @@ export interface DocumentInputConfig {
   gcsSource?: GcsSource;
 }
 export const DocumentInputConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "content": S.optional(S.String),
-  "mimeType": S.optional(S.String),
-  "gcsSource": S.optional(GcsSource),
-}),
-).annotate({ identifier: "DocumentInputConfig" }) as any as S.Schema<DocumentInputConfig>;
+  S.Struct({
+    content: S.optional(S.String),
+    mimeType: S.optional(S.String),
+    gcsSource: S.optional(GcsSource),
+  }),
+).annotate({
+  identifier: "DocumentInputConfig",
+}) as any as S.Schema<DocumentInputConfig>;
 
 /** A document translation request output config. */
 export interface DocumentOutputConfig {
@@ -819,11 +1042,13 @@ export interface DocumentOutputConfig {
   mimeType?: string;
 }
 export const DocumentOutputConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "gcsDestination": S.optional(GcsDestination),
-  "mimeType": S.optional(S.String),
-}),
-).annotate({ identifier: "DocumentOutputConfig" }) as any as S.Schema<DocumentOutputConfig>;
+  S.Struct({
+    gcsDestination: S.optional(GcsDestination),
+    mimeType: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DocumentOutputConfig",
+}) as any as S.Schema<DocumentOutputConfig>;
 
 /** A document translation request. */
 export interface TranslateDocumentRequest {
@@ -851,20 +1076,22 @@ export interface TranslateDocumentRequest {
   glossaryConfig?: TranslateTextGlossaryConfig;
 }
 export const TranslateDocumentRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "documentInputConfig": S.optional(DocumentInputConfig),
-  "isTranslateNativePdfOnly": S.optional(S.Boolean),
-  "targetLanguageCode": S.optional(S.String),
-  "customizedAttribution": S.optional(S.String),
-  "enableShadowRemovalNativePdf": S.optional(S.Boolean),
-  "sourceLanguageCode": S.optional(S.String),
-  "documentOutputConfig": S.optional(DocumentOutputConfig),
-  "labels": S.optional(StringMap),
-  "model": S.optional(S.String),
-  "enableRotationCorrection": S.optional(S.Boolean),
-  "glossaryConfig": S.optional(TranslateTextGlossaryConfig),
-}),
-).annotate({ identifier: "TranslateDocumentRequest" }) as any as S.Schema<TranslateDocumentRequest>;
+  S.Struct({
+    documentInputConfig: S.optional(DocumentInputConfig),
+    isTranslateNativePdfOnly: S.optional(S.Boolean),
+    targetLanguageCode: S.optional(S.String),
+    customizedAttribution: S.optional(S.String),
+    enableShadowRemovalNativePdf: S.optional(S.Boolean),
+    sourceLanguageCode: S.optional(S.String),
+    documentOutputConfig: S.optional(DocumentOutputConfig),
+    labels: S.optional(StringMap),
+    model: S.optional(S.String),
+    enableRotationCorrection: S.optional(S.Boolean),
+    glossaryConfig: S.optional(TranslateTextGlossaryConfig),
+  }),
+).annotate({
+  identifier: "TranslateDocumentRequest",
+}) as any as S.Schema<TranslateDocumentRequest>;
 
 export interface TranslateDocumentProjectsLocationsRequest {
   /** Required. Location to make a regional call. Format: `projects/{project-number-or-id}/locations/{location-id}`. For global calls, use `projects/{project-number-or-id}/locations/global`. Non-global location is required for requests using AutoML models or custom glossaries. Models and glossaries must be within the same region (have the same location-id), otherwise an INVALID_ARGUMENT (400) error is returned. */
@@ -872,12 +1099,21 @@ export interface TranslateDocumentProjectsLocationsRequest {
   /** Request body */
   body?: TranslateDocumentRequest;
 }
-export const TranslateDocumentProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(TranslateDocumentRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v3beta1/{+parent}:translateDocument","baseUrl":"https://translation.googleapis.com/"})),
-).annotate({ identifier: "TranslateDocumentProjectsLocationsRequest" }) as any as S.Schema<TranslateDocumentProjectsLocationsRequest>;
+export const TranslateDocumentProjectsLocationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(TranslateDocumentRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v3beta1/{+parent}:translateDocument",
+        baseUrl: "https://translation.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "TranslateDocumentProjectsLocationsRequest",
+  }) as any as S.Schema<TranslateDocumentProjectsLocationsRequest>;
 
 /** A translated document message. */
 export interface DocumentTranslation {
@@ -889,12 +1125,14 @@ export interface DocumentTranslation {
   mimeType?: string;
 }
 export const DocumentTranslation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "byteStreamOutputs": S.optional(StringList),
-  "detectedLanguageCode": S.optional(S.String),
-  "mimeType": S.optional(S.String),
-}),
-).annotate({ identifier: "DocumentTranslation" }) as any as S.Schema<DocumentTranslation>;
+  S.Struct({
+    byteStreamOutputs: S.optional(StringList),
+    detectedLanguageCode: S.optional(S.String),
+    mimeType: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DocumentTranslation",
+}) as any as S.Schema<DocumentTranslation>;
 
 /** A translated document response message. */
 export interface TranslateDocumentResponse {
@@ -908,13 +1146,15 @@ export interface TranslateDocumentResponse {
   glossaryConfig?: TranslateTextGlossaryConfig;
 }
 export const TranslateDocumentResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "glossaryDocumentTranslation": S.optional(DocumentTranslation),
-  "model": S.optional(S.String),
-  "documentTranslation": S.optional(DocumentTranslation),
-  "glossaryConfig": S.optional(TranslateTextGlossaryConfig),
-}),
-).annotate({ identifier: "TranslateDocumentResponse" }) as any as S.Schema<TranslateDocumentResponse>;
+  S.Struct({
+    glossaryDocumentTranslation: S.optional(DocumentTranslation),
+    model: S.optional(S.String),
+    documentTranslation: S.optional(DocumentTranslation),
+    glossaryConfig: S.optional(TranslateTextGlossaryConfig),
+  }),
+).annotate({
+  identifier: "TranslateDocumentResponse",
+}) as any as S.Schema<TranslateDocumentResponse>;
 
 /** The request message for synchronous translation. */
 export interface TranslateTextRequest {
@@ -934,16 +1174,18 @@ export interface TranslateTextRequest {
   glossaryConfig?: TranslateTextGlossaryConfig;
 }
 export const TranslateTextRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "mimeType": S.optional(S.String),
-  "model": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "contents": S.optional(StringList),
-  "targetLanguageCode": S.optional(S.String),
-  "sourceLanguageCode": S.optional(S.String),
-  "glossaryConfig": S.optional(TranslateTextGlossaryConfig),
-}),
-).annotate({ identifier: "TranslateTextRequest" }) as any as S.Schema<TranslateTextRequest>;
+  S.Struct({
+    mimeType: S.optional(S.String),
+    model: S.optional(S.String),
+    labels: S.optional(StringMap),
+    contents: S.optional(StringList),
+    targetLanguageCode: S.optional(S.String),
+    sourceLanguageCode: S.optional(S.String),
+    glossaryConfig: S.optional(TranslateTextGlossaryConfig),
+  }),
+).annotate({
+  identifier: "TranslateTextRequest",
+}) as any as S.Schema<TranslateTextRequest>;
 
 export interface TranslateTextProjectsRequest {
   /** Required. Project or location to make a call. Must refer to a caller's project. Format: `projects/{project-number-or-id}` or `projects/{project-number-or-id}/locations/{location-id}`. For global calls, use `projects/{project-number-or-id}/locations/global` or `projects/{project-number-or-id}`. Non-global location is required for requests using AutoML models or custom glossaries. Models and glossaries must be within the same region (have same location-id), otherwise an INVALID_ARGUMENT (400) error is returned. */
@@ -952,11 +1194,19 @@ export interface TranslateTextProjectsRequest {
   body?: TranslateTextRequest;
 }
 export const TranslateTextProjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(TranslateTextRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v3beta1/{+parent}:translateText","baseUrl":"https://translation.googleapis.com/"})),
-).annotate({ identifier: "TranslateTextProjectsRequest" }) as any as S.Schema<TranslateTextProjectsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(TranslateTextRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v3beta1/{+parent}:translateText",
+      baseUrl: "https://translation.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "TranslateTextProjectsRequest",
+}) as any as S.Schema<TranslateTextProjectsRequest>;
 
 /** A single translation response. */
 export interface Translation {
@@ -970,16 +1220,18 @@ export interface Translation {
   glossaryConfig?: TranslateTextGlossaryConfig;
 }
 export const Translation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "model": S.optional(S.String),
-  "detectedLanguageCode": S.optional(S.String),
-  "translatedText": S.optional(S.String),
-  "glossaryConfig": S.optional(TranslateTextGlossaryConfig),
-}),
+  S.Struct({
+    model: S.optional(S.String),
+    detectedLanguageCode: S.optional(S.String),
+    translatedText: S.optional(S.String),
+    glossaryConfig: S.optional(TranslateTextGlossaryConfig),
+  }),
 ).annotate({ identifier: "Translation" }) as any as S.Schema<Translation>;
 
 export type TranslationList = ReadonlyArray<Translation>;
-export const TranslationList = /*@__PURE__*/ S.Array(Translation) as any as S.Schema<TranslationList>;
+export const TranslationList = /*@__PURE__*/ S.Array(
+  Translation,
+) as any as S.Schema<TranslationList>;
 
 export interface TranslateTextResponse {
   /** Text translation responses with no glossary applied. This field has the same length as `contents`. */
@@ -988,11 +1240,13 @@ export interface TranslateTextResponse {
   glossaryTranslations?: TranslationList;
 }
 export const TranslateTextResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "translations": S.optional(TranslationList),
-  "glossaryTranslations": S.optional(TranslationList),
-}),
-).annotate({ identifier: "TranslateTextResponse" }) as any as S.Schema<TranslateTextResponse>;
+  S.Struct({
+    translations: S.optional(TranslationList),
+    glossaryTranslations: S.optional(TranslationList),
+  }),
+).annotate({
+  identifier: "TranslateTextResponse",
+}) as any as S.Schema<TranslateTextResponse>;
 
 export interface TranslateTextProjectsLocationsRequest {
   /** Required. Project or location to make a call. Must refer to a caller's project. Format: `projects/{project-number-or-id}` or `projects/{project-number-or-id}/locations/{location-id}`. For global calls, use `projects/{project-number-or-id}/locations/global` or `projects/{project-number-or-id}`. Non-global location is required for requests using AutoML models or custom glossaries. Models and glossaries must be within the same region (have same location-id), otherwise an INVALID_ARGUMENT (400) error is returned. */
@@ -1000,12 +1254,21 @@ export interface TranslateTextProjectsLocationsRequest {
   /** Request body */
   body?: TranslateTextRequest;
 }
-export const TranslateTextProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(TranslateTextRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v3beta1/{+parent}:translateText","baseUrl":"https://translation.googleapis.com/"})),
-).annotate({ identifier: "TranslateTextProjectsLocationsRequest" }) as any as S.Schema<TranslateTextProjectsLocationsRequest>;
+export const TranslateTextProjectsLocationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(TranslateTextRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v3beta1/{+parent}:translateText",
+        baseUrl: "https://translation.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "TranslateTextProjectsLocationsRequest",
+}) as any as S.Schema<TranslateTextProjectsLocationsRequest>;
 
 /** The request message for Operations.WaitOperation. */
 export interface WaitOperationRequest {
@@ -1013,10 +1276,12 @@ export interface WaitOperationRequest {
   timeout?: string;
 }
 export const WaitOperationRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "timeout": S.optional(S.String),
-}),
-).annotate({ identifier: "WaitOperationRequest" }) as any as S.Schema<WaitOperationRequest>;
+  S.Struct({
+    timeout: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "WaitOperationRequest",
+}) as any as S.Schema<WaitOperationRequest>;
 
 export interface WaitProjectsLocationsOperationsRequest {
   /** The name of the operation resource to wait on. */
@@ -1024,14 +1289,28 @@ export interface WaitProjectsLocationsOperationsRequest {
   /** Request body */
   body?: WaitOperationRequest;
 }
-export const WaitProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(WaitOperationRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v3beta1/{+name}:wait","baseUrl":"https://translation.googleapis.com/"})),
-).annotate({ identifier: "WaitProjectsLocationsOperationsRequest" }) as any as S.Schema<WaitProjectsLocationsOperationsRequest>;
+export const WaitProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(WaitOperationRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v3beta1/{+name}:wait",
+        baseUrl: "https://translation.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "WaitProjectsLocationsOperationsRequest",
+}) as any as S.Schema<WaitProjectsLocationsOperationsRequest>;
 
-export type BatchTranslateDocumentProjectsLocationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type BatchTranslateDocumentProjectsLocationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Translates a large volume of document in asynchronous batch mode. This function provides real-time output as the inputs are being processed. If caller cancels a request, the partial results (for an input file, it's all or nothing) may still be available on the specified output location. This call returns immediately and you can use google.longrunning.Operation.name to poll the status of the call. */
 export const batchTranslateDocumentProjectsLocations: API.OperationMethod<
   BatchTranslateDocumentProjectsLocationsRequest,
@@ -1046,7 +1325,12 @@ export const batchTranslateDocumentProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BatchTranslateTextProjectsLocationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type BatchTranslateTextProjectsLocationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Translates a large volume of text in asynchronous batch mode. This function provides real-time output as the inputs are being processed. If caller cancels a request, the partial results (for an input file, it's all or nothing) may still be available on the specified output location. This call returns immediately and you can use google.longrunning.Operation.name to poll the status of the call. */
 export const batchTranslateTextProjectsLocations: API.OperationMethod<
   BatchTranslateTextProjectsLocationsRequest,
@@ -1061,7 +1345,12 @@ export const batchTranslateTextProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CancelProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CancelProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsRequest,
@@ -1076,7 +1365,12 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsGlossariesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsGlossariesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a glossary and returns the long-running operation. Returns NOT_FOUND, if the project doesn't exist. */
 export const createProjectsLocationsGlossaries: API.OperationMethod<
   CreateProjectsLocationsGlossariesRequest,
@@ -1091,7 +1385,12 @@ export const createProjectsLocationsGlossaries: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsGlossariesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsGlossariesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a glossary, or cancels glossary construction if the glossary isn't created yet. Returns NOT_FOUND, if the glossary doesn't exist. */
 export const deleteProjectsLocationsGlossaries: API.OperationMethod<
   DeleteProjectsLocationsGlossariesRequest,
@@ -1106,7 +1405,12 @@ export const deleteProjectsLocationsGlossaries: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsRequest,
@@ -1121,7 +1425,12 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DetectLanguageProjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DetectLanguageProjectsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Detects the language of text within a request. */
 export const detectLanguageProjects: API.OperationMethod<
   DetectLanguageProjectsRequest,
@@ -1136,7 +1445,12 @@ export const detectLanguageProjects: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DetectLanguageProjectsLocationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DetectLanguageProjectsLocationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Detects the language of text within a request. */
 export const detectLanguageProjectsLocations: API.OperationMethod<
   DetectLanguageProjectsLocationsRequest,
@@ -1166,7 +1480,10 @@ export const getProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsGlossariesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsGlossariesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets a glossary. Returns NOT_FOUND, if the glossary doesn't exist. */
 export const getProjectsLocationsGlossaries: API.OperationMethod<
   GetProjectsLocationsGlossariesRequest,
@@ -1181,7 +1498,10 @@ export const getProjectsLocationsGlossaries: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -1196,7 +1516,10 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetSupportedLanguagesProjectsError = NotFound | Forbidden | GcpOpError;
+export type GetSupportedLanguagesProjectsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns a list of supported languages for translation. */
 export const getSupportedLanguagesProjects: API.OperationMethod<
   GetSupportedLanguagesProjectsRequest,
@@ -1211,7 +1534,10 @@ export const getSupportedLanguagesProjects: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetSupportedLanguagesProjectsLocationsError = NotFound | Forbidden | GcpOpError;
+export type GetSupportedLanguagesProjectsLocationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns a list of supported languages for translation. */
 export const getSupportedLanguagesProjectsLocations: API.OperationMethod<
   GetSupportedLanguagesProjectsLocationsRequest,
@@ -1239,10 +1565,16 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsGlossariesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsGlossariesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists glossaries in a project. Returns NOT_FOUND, if the project doesn't exist. */
 export const listProjectsLocationsGlossaries: API.PaginatedOperationMethod<
   ListProjectsLocationsGlossariesRequest,
@@ -1255,10 +1587,16 @@ export const listProjectsLocationsGlossaries: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -1271,10 +1609,18 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type RefineTextProjectsLocationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RefineTextProjectsLocationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Refines the input translated text to improve the quality. */
 export const refineTextProjectsLocations: API.OperationMethod<
   RefineTextProjectsLocationsRequest,
@@ -1289,7 +1635,12 @@ export const refineTextProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TranslateDocumentProjectsLocationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TranslateDocumentProjectsLocationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Translates documents in synchronous mode. */
 export const translateDocumentProjectsLocations: API.OperationMethod<
   TranslateDocumentProjectsLocationsRequest,
@@ -1304,7 +1655,12 @@ export const translateDocumentProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TranslateTextProjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TranslateTextProjectsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Translates input text and returns translated text. */
 export const translateTextProjects: API.OperationMethod<
   TranslateTextProjectsRequest,
@@ -1319,7 +1675,12 @@ export const translateTextProjects: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TranslateTextProjectsLocationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TranslateTextProjectsLocationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Translates input text and returns translated text. */
 export const translateTextProjectsLocations: API.OperationMethod<
   TranslateTextProjectsLocationsRequest,
@@ -1334,7 +1695,12 @@ export const translateTextProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type WaitProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type WaitProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done. */
 export const waitProjectsLocationsOperations: API.OperationMethod<
   WaitProjectsLocationsOperationsRequest,
@@ -1348,4 +1714,3 @@ export const waitProjectsLocationsOperations: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

@@ -13,58 +13,64 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
-export type QueryHistoryRequestFormFactorEnum = "ALL_FORM_FACTORS" | "PHONE" | "DESKTOP" | "TABLET";
+export type QueryHistoryRequestFormFactorEnum =
+  | "ALL_FORM_FACTORS"
+  | "PHONE"
+  | "DESKTOP"
+  | "TABLET";
 export const QueryHistoryRequestFormFactorEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** Request payload sent by a physical web client. This request includes all necessary context to load a particular user experience history record. */
 export interface QueryHistoryRequest {
@@ -80,24 +86,34 @@ export interface QueryHistoryRequest {
   origin?: string;
 }
 export const QueryHistoryRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "formFactor": S.optional(QueryHistoryRequestFormFactorEnum),
-  "metrics": S.optional(StringList),
-  "collectionPeriodCount": S.optional(S.Number),
-  "url": S.optional(S.String),
-  "origin": S.optional(S.String),
-}),
-).annotate({ identifier: "QueryHistoryRequest" }) as any as S.Schema<QueryHistoryRequest>;
+  S.Struct({
+    formFactor: S.optional(QueryHistoryRequestFormFactorEnum),
+    metrics: S.optional(StringList),
+    collectionPeriodCount: S.optional(S.Number),
+    url: S.optional(S.String),
+    origin: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "QueryHistoryRequest",
+}) as any as S.Schema<QueryHistoryRequest>;
 
 export interface QueryHistoryRecordRecordsRequest {
   /** Request body */
   body?: QueryHistoryRequest;
 }
 export const QueryHistoryRecordRecordsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(QueryHistoryRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/records:queryHistoryRecord","baseUrl":"https://chromeuxreport.googleapis.com/"})),
-).annotate({ identifier: "QueryHistoryRecordRecordsRequest" }) as any as S.Schema<QueryHistoryRecordRecordsRequest>;
+  S.Struct({
+    body: S.optional(QueryHistoryRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/records:queryHistoryRecord",
+      baseUrl: "https://chromeuxreport.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "QueryHistoryRecordRecordsRequest",
+}) as any as S.Schema<QueryHistoryRecordRecordsRequest>;
 
 /** Object representing the normalization actions taken to normalize a url to achieve a higher chance of successful lookup. These are simple automated changes that are taken when looking up the provided `url_patten` would be known to fail. Complex actions like following redirects are not handled. */
 export interface UrlNormalization {
@@ -107,13 +123,19 @@ export interface UrlNormalization {
   normalizedUrl?: string;
 }
 export const UrlNormalization = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "originalUrl": S.optional(S.String),
-  "normalizedUrl": S.optional(S.String),
-}),
-).annotate({ identifier: "UrlNormalization" }) as any as S.Schema<UrlNormalization>;
+  S.Struct({
+    originalUrl: S.optional(S.String),
+    normalizedUrl: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UrlNormalization",
+}) as any as S.Schema<UrlNormalization>;
 
-export type HistoryKeyFormFactorEnum = "ALL_FORM_FACTORS" | "PHONE" | "DESKTOP" | "TABLET";
+export type HistoryKeyFormFactorEnum =
+  | "ALL_FORM_FACTORS"
+  | "PHONE"
+  | "DESKTOP"
+  | "TABLET";
 export const HistoryKeyFormFactorEnum = /*@__PURE__*/ S.String;
 
 /** Key defines all the dimensions that identify this record as unique. */
@@ -126,11 +148,11 @@ export interface HistoryKey {
   formFactor?: HistoryKeyFormFactorEnum;
 }
 export const HistoryKey = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "url": S.optional(S.String),
-  "origin": S.optional(S.String),
-  "formFactor": S.optional(HistoryKeyFormFactorEnum),
-}),
+  S.Struct({
+    url: S.optional(S.String),
+    origin: S.optional(S.String),
+    formFactor: S.optional(HistoryKeyFormFactorEnum),
+  }),
 ).annotate({ identifier: "HistoryKey" }) as any as S.Schema<HistoryKey>;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
@@ -143,12 +165,14 @@ export interface Chromeuxreport_Date {
   month?: number;
 }
 export const Chromeuxreport_Date = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "day": S.optional(S.Number),
-  "year": S.optional(S.Number),
-  "month": S.optional(S.Number),
-}),
-).annotate({ identifier: "Chromeuxreport_Date" }) as any as S.Schema<Chromeuxreport_Date>;
+  S.Struct({
+    day: S.optional(S.Number),
+    year: S.optional(S.Number),
+    month: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "Chromeuxreport_Date",
+}) as any as S.Schema<Chromeuxreport_Date>;
 
 /** The collection period is a date range which includes the `first` and `last` day. */
 export interface CollectionPeriod {
@@ -158,17 +182,23 @@ export interface CollectionPeriod {
   lastDate?: Chromeuxreport_Date;
 }
 export const CollectionPeriod = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "firstDate": S.optional(Chromeuxreport_Date),
-  "lastDate": S.optional(Chromeuxreport_Date),
-}),
-).annotate({ identifier: "CollectionPeriod" }) as any as S.Schema<CollectionPeriod>;
+  S.Struct({
+    firstDate: S.optional(Chromeuxreport_Date),
+    lastDate: S.optional(Chromeuxreport_Date),
+  }),
+).annotate({
+  identifier: "CollectionPeriod",
+}) as any as S.Schema<CollectionPeriod>;
 
 export type CollectionPeriodList = ReadonlyArray<CollectionPeriod>;
-export const CollectionPeriodList = /*@__PURE__*/ S.Array(CollectionPeriod) as any as S.Schema<CollectionPeriodList>;
+export const CollectionPeriodList = /*@__PURE__*/ S.Array(
+  CollectionPeriod,
+) as any as S.Schema<CollectionPeriodList>;
 
 export type DoubleList = ReadonlyArray<number>;
-export const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
+export const DoubleList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<DoubleList>;
 
 /** A bin is a discrete portion of data spanning from start to end, or if no end is given, then from start to +inf. A bin's start and end values are given in the value type of the metric it represents. For example, "first contentful paint" is measured in milliseconds and exposed as ints, therefore its metric bins will use int32s for its start and end types. However, "cumulative layout shift" is measured in unitless decimals and is exposed as a decimal encoded as a string, therefore its metric bins will use strings for its value type. */
 export interface TimeseriesBin {
@@ -180,18 +210,22 @@ export interface TimeseriesBin {
   end?: unknown;
 }
 export const TimeseriesBin = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "start": S.optional(S.Unknown),
-  "densities": S.optional(DoubleList),
-  "end": S.optional(S.Unknown),
-}),
+  S.Struct({
+    start: S.optional(S.Unknown),
+    densities: S.optional(DoubleList),
+    end: S.optional(S.Unknown),
+  }),
 ).annotate({ identifier: "TimeseriesBin" }) as any as S.Schema<TimeseriesBin>;
 
 export type TimeseriesBinList = ReadonlyArray<TimeseriesBin>;
-export const TimeseriesBinList = /*@__PURE__*/ S.Array(TimeseriesBin) as any as S.Schema<TimeseriesBinList>;
+export const TimeseriesBinList = /*@__PURE__*/ S.Array(
+  TimeseriesBin,
+) as any as S.Schema<TimeseriesBinList>;
 
 export type DocumentList = ReadonlyArray<unknown>;
-export const DocumentList = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Schema<DocumentList>;
+export const DocumentList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<DocumentList>;
 
 /** Percentiles contains synthetic values of a metric at a given statistical percentile. These are used for estimating a metric's value as experienced by a percentage of users out of the total number of users. */
 export interface TimeseriesPercentiles {
@@ -199,10 +233,12 @@ export interface TimeseriesPercentiles {
   p75s?: DocumentList;
 }
 export const TimeseriesPercentiles = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "p75s": S.optional(DocumentList),
-}),
-).annotate({ identifier: "TimeseriesPercentiles" }) as any as S.Schema<TimeseriesPercentiles>;
+  S.Struct({
+    p75s: S.optional(DocumentList),
+  }),
+).annotate({
+  identifier: "TimeseriesPercentiles",
+}) as any as S.Schema<TimeseriesPercentiles>;
 
 /** For enum metrics, provides fraction timeseries which add up to approximately 1.0 per entry (k-th element into the repeated fractions field for any k <= len) across fraction_timeseries. */
 export interface FractionTimeseries {
@@ -210,13 +246,20 @@ export interface FractionTimeseries {
   fractions?: DoubleList;
 }
 export const FractionTimeseries = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fractions": S.optional(DoubleList),
-}),
-).annotate({ identifier: "FractionTimeseries" }) as any as S.Schema<FractionTimeseries>;
+  S.Struct({
+    fractions: S.optional(DoubleList),
+  }),
+).annotate({
+  identifier: "FractionTimeseries",
+}) as any as S.Schema<FractionTimeseries>;
 
-export type FractionTimeseriesMap = { [key: string]: FractionTimeseries | undefined };
-export const FractionTimeseriesMap = /*@__PURE__*/ S.Record(S.String, FractionTimeseries) as any as S.Schema<FractionTimeseriesMap>;
+export type FractionTimeseriesMap = {
+  [key: string]: FractionTimeseries | undefined;
+};
+export const FractionTimeseriesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  FractionTimeseries,
+) as any as S.Schema<FractionTimeseriesMap>;
 
 /** A `metric timeseries` is a set of user experience data for a single web performance metric, like "first contentful paint". It contains a summary histogram of real world Chrome usage as a series of `bins`, where each bin has density values for a particular time period. */
 export interface MetricTimeseries {
@@ -228,15 +271,22 @@ export interface MetricTimeseries {
   fractionTimeseries?: FractionTimeseriesMap;
 }
 export const MetricTimeseries = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "histogramTimeseries": S.optional(TimeseriesBinList),
-  "percentilesTimeseries": S.optional(TimeseriesPercentiles),
-  "fractionTimeseries": S.optional(FractionTimeseriesMap),
-}),
-).annotate({ identifier: "MetricTimeseries" }) as any as S.Schema<MetricTimeseries>;
+  S.Struct({
+    histogramTimeseries: S.optional(TimeseriesBinList),
+    percentilesTimeseries: S.optional(TimeseriesPercentiles),
+    fractionTimeseries: S.optional(FractionTimeseriesMap),
+  }),
+).annotate({
+  identifier: "MetricTimeseries",
+}) as any as S.Schema<MetricTimeseries>;
 
-export type MetricTimeseriesMap = { [key: string]: MetricTimeseries | undefined };
-export const MetricTimeseriesMap = /*@__PURE__*/ S.Record(S.String, MetricTimeseries) as any as S.Schema<MetricTimeseriesMap>;
+export type MetricTimeseriesMap = {
+  [key: string]: MetricTimeseries | undefined;
+};
+export const MetricTimeseriesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  MetricTimeseries,
+) as any as S.Schema<MetricTimeseriesMap>;
 
 /** HistoryRecord is a timeseries of Chrome UX Report data. It contains user experience statistics for a single url pattern and a set of dimensions. */
 export interface HistoryRecord {
@@ -248,11 +298,11 @@ export interface HistoryRecord {
   metrics?: MetricTimeseriesMap;
 }
 export const HistoryRecord = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "key": S.optional(HistoryKey),
-  "collectionPeriods": S.optional(CollectionPeriodList),
-  "metrics": S.optional(MetricTimeseriesMap),
-}),
+  S.Struct({
+    key: S.optional(HistoryKey),
+    collectionPeriods: S.optional(CollectionPeriodList),
+    metrics: S.optional(MetricTimeseriesMap),
+  }),
 ).annotate({ identifier: "HistoryRecord" }) as any as S.Schema<HistoryRecord>;
 
 /** Response payload sent back to a physical web client. This response contains the record found based on the identiers present in a `QueryHistoryRequest`. The returned response will have a history record, and sometimes details on normalization actions taken on the request that were necessary to make the request successful. */
@@ -263,13 +313,19 @@ export interface QueryHistoryResponse {
   record?: HistoryRecord;
 }
 export const QueryHistoryResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "urlNormalizationDetails": S.optional(UrlNormalization),
-  "record": S.optional(HistoryRecord),
-}),
-).annotate({ identifier: "QueryHistoryResponse" }) as any as S.Schema<QueryHistoryResponse>;
+  S.Struct({
+    urlNormalizationDetails: S.optional(UrlNormalization),
+    record: S.optional(HistoryRecord),
+  }),
+).annotate({
+  identifier: "QueryHistoryResponse",
+}) as any as S.Schema<QueryHistoryResponse>;
 
-export type QueryRequestFormFactorEnum = "ALL_FORM_FACTORS" | "PHONE" | "DESKTOP" | "TABLET";
+export type QueryRequestFormFactorEnum =
+  | "ALL_FORM_FACTORS"
+  | "PHONE"
+  | "DESKTOP"
+  | "TABLET";
 export const QueryRequestFormFactorEnum = /*@__PURE__*/ S.String;
 
 /** Request payload sent by a physical web client. This request includes all necessary context to load a particular user experience record. */
@@ -286,13 +342,13 @@ export interface QueryRequest {
   url?: string;
 }
 export const QueryRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "effectiveConnectionType": S.optional(S.String),
-  "formFactor": S.optional(QueryRequestFormFactorEnum),
-  "metrics": S.optional(StringList),
-  "origin": S.optional(S.String),
-  "url": S.optional(S.String),
-}),
+  S.Struct({
+    effectiveConnectionType: S.optional(S.String),
+    formFactor: S.optional(QueryRequestFormFactorEnum),
+    metrics: S.optional(StringList),
+    origin: S.optional(S.String),
+    url: S.optional(S.String),
+  }),
 ).annotate({ identifier: "QueryRequest" }) as any as S.Schema<QueryRequest>;
 
 export interface QueryRecordRecordsRequest {
@@ -300,10 +356,18 @@ export interface QueryRecordRecordsRequest {
   body?: QueryRequest;
 }
 export const QueryRecordRecordsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(QueryRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/records:queryRecord","baseUrl":"https://chromeuxreport.googleapis.com/"})),
-).annotate({ identifier: "QueryRecordRecordsRequest" }) as any as S.Schema<QueryRecordRecordsRequest>;
+  S.Struct({
+    body: S.optional(QueryRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/records:queryRecord",
+      baseUrl: "https://chromeuxreport.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "QueryRecordRecordsRequest",
+}) as any as S.Schema<QueryRecordRecordsRequest>;
 
 /** A bin is a discrete portion of data spanning from start to end, or if no end is given, then from start to +inf. A bin's start and end values are given in the value type of the metric it represents. For example, "first contentful paint" is measured in milliseconds and exposed as ints, therefore its metric bins will use int32s for its start and end types. However, "cumulative layout shift" is measured in unitless decimals and is exposed as a decimal encoded as a string, therefore its metric bins will use strings for its value type. */
 export interface Bin {
@@ -315,11 +379,11 @@ export interface Bin {
   start?: unknown;
 }
 export const Bin = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "end": S.optional(S.Unknown),
-  "density": S.optional(S.Unknown),
-  "start": S.optional(S.Unknown),
-}),
+  S.Struct({
+    end: S.optional(S.Unknown),
+    density: S.optional(S.Unknown),
+    start: S.optional(S.Unknown),
+  }),
 ).annotate({ identifier: "Bin" }) as any as S.Schema<Bin>;
 
 export type BinList = ReadonlyArray<Bin>;
@@ -331,13 +395,16 @@ export interface Percentiles {
   p75?: unknown;
 }
 export const Percentiles = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "p75": S.optional(S.Unknown),
-}),
+  S.Struct({
+    p75: S.optional(S.Unknown),
+  }),
 ).annotate({ identifier: "Percentiles" }) as any as S.Schema<Percentiles>;
 
 export type DoubleMap = { [key: string]: number | undefined };
-export const DoubleMap = /*@__PURE__*/ S.Record(S.String, S.Number) as any as S.Schema<DoubleMap>;
+export const DoubleMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Number,
+) as any as S.Schema<DoubleMap>;
 
 /** A `metric` is a set of user experience data for a single web performance metric, like "first contentful paint". It contains a summary histogram of real world Chrome usage as a series of `bins`. */
 export interface Metric {
@@ -349,17 +416,24 @@ export interface Metric {
   fractions?: DoubleMap;
 }
 export const Metric = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "histogram": S.optional(BinList),
-  "percentiles": S.optional(Percentiles),
-  "fractions": S.optional(DoubleMap),
-}),
+  S.Struct({
+    histogram: S.optional(BinList),
+    percentiles: S.optional(Percentiles),
+    fractions: S.optional(DoubleMap),
+  }),
 ).annotate({ identifier: "Metric" }) as any as S.Schema<Metric>;
 
 export type MetricMap = { [key: string]: Metric | undefined };
-export const MetricMap = /*@__PURE__*/ S.Record(S.String, Metric) as any as S.Schema<MetricMap>;
+export const MetricMap = /*@__PURE__*/ S.Record(
+  S.String,
+  Metric,
+) as any as S.Schema<MetricMap>;
 
-export type KeyFormFactorEnum = "ALL_FORM_FACTORS" | "PHONE" | "DESKTOP" | "TABLET";
+export type KeyFormFactorEnum =
+  | "ALL_FORM_FACTORS"
+  | "PHONE"
+  | "DESKTOP"
+  | "TABLET";
 export const KeyFormFactorEnum = /*@__PURE__*/ S.String;
 
 /** Key defines all the dimensions that identify this record as unique. */
@@ -374,12 +448,12 @@ export interface Key {
   origin?: string;
 }
 export const Key = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "formFactor": S.optional(KeyFormFactorEnum),
-  "effectiveConnectionType": S.optional(S.String),
-  "url": S.optional(S.String),
-  "origin": S.optional(S.String),
-}),
+  S.Struct({
+    formFactor: S.optional(KeyFormFactorEnum),
+    effectiveConnectionType: S.optional(S.String),
+    url: S.optional(S.String),
+    origin: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Key" }) as any as S.Schema<Key>;
 
 /** Record is a single Chrome UX report data record. It contains use experience statistics for a single url pattern and set of dimensions. */
@@ -392,12 +466,14 @@ export interface Chromeuxreport_Record {
   collectionPeriod?: CollectionPeriod;
 }
 export const Chromeuxreport_Record = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "metrics": S.optional(MetricMap),
-  "key": S.optional(Key),
-  "collectionPeriod": S.optional(CollectionPeriod),
-}),
-).annotate({ identifier: "Chromeuxreport_Record" }) as any as S.Schema<Chromeuxreport_Record>;
+  S.Struct({
+    metrics: S.optional(MetricMap),
+    key: S.optional(Key),
+    collectionPeriod: S.optional(CollectionPeriod),
+  }),
+).annotate({
+  identifier: "Chromeuxreport_Record",
+}) as any as S.Schema<Chromeuxreport_Record>;
 
 /** Response payload sent back to a physical web client. This response contains the record found based on the identiers present in a `QueryRequest`. The returned response will have a record, and sometimes details on normalization actions taken on the request that were necessary to make the request successful. */
 export interface QueryResponse {
@@ -407,13 +483,18 @@ export interface QueryResponse {
   urlNormalizationDetails?: UrlNormalization;
 }
 export const QueryResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "record": S.optional(Chromeuxreport_Record),
-  "urlNormalizationDetails": S.optional(UrlNormalization),
-}),
+  S.Struct({
+    record: S.optional(Chromeuxreport_Record),
+    urlNormalizationDetails: S.optional(UrlNormalization),
+  }),
 ).annotate({ identifier: "QueryResponse" }) as any as S.Schema<QueryResponse>;
 
-export type QueryHistoryRecordRecordsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type QueryHistoryRecordRecordsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Queries the Chrome User Experience Report for a timeseries `history record` for a given site. Returns a `history record` that contains one or more `metric timeseries` corresponding to performance data about the requested site. */
 export const queryHistoryRecordRecords: API.OperationMethod<
   QueryHistoryRecordRecordsRequest,
@@ -428,7 +509,12 @@ export const queryHistoryRecordRecords: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type QueryRecordRecordsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type QueryRecordRecordsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Queries the Chrome User Experience for a single `record` for a given site. Returns a `record` that contains one or more `metrics` corresponding to performance data about the requested site. */
 export const queryRecordRecords: API.OperationMethod<
   QueryRecordRecordsRequest,
@@ -442,4 +528,3 @@ export const queryRecordRecords: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

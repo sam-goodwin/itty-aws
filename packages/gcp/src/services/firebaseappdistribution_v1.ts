@@ -13,66 +13,71 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** The Request message for batch adding testers */
 export interface GoogleFirebaseAppdistroV1BatchAddTestersRequest {
   /** Required. The email addresses of the tester resources to create. A maximum of 999 and a minimum of 1 tester can be created in a batch. */
   emails?: StringList;
 }
-export const GoogleFirebaseAppdistroV1BatchAddTestersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "emails": S.optional(StringList),
-}),
-).annotate({ identifier: "GoogleFirebaseAppdistroV1BatchAddTestersRequest" }) as any as S.Schema<GoogleFirebaseAppdistroV1BatchAddTestersRequest>;
+export const GoogleFirebaseAppdistroV1BatchAddTestersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      emails: S.optional(StringList),
+    }),
+  ).annotate({
+    identifier: "GoogleFirebaseAppdistroV1BatchAddTestersRequest",
+  }) as any as S.Schema<GoogleFirebaseAppdistroV1BatchAddTestersRequest>;
 
 export interface BatchAddProjectsTestersRequest {
   /** Required. The name of the project resource. Format: `projects/{project_number}` */
@@ -81,11 +86,21 @@ export interface BatchAddProjectsTestersRequest {
   body?: GoogleFirebaseAppdistroV1BatchAddTestersRequest;
 }
 export const BatchAddProjectsTestersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "project": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleFirebaseAppdistroV1BatchAddTestersRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+project}/testers:batchAdd","baseUrl":"https://firebaseappdistribution.googleapis.com/"})),
-).annotate({ identifier: "BatchAddProjectsTestersRequest" }) as any as S.Schema<BatchAddProjectsTestersRequest>;
+  S.Struct({
+    project: S.String.pipe(T.Label()),
+    body: S.optional(
+      GoogleFirebaseAppdistroV1BatchAddTestersRequest.pipe(T.HttpBody()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+project}/testers:batchAdd",
+      baseUrl: "https://firebaseappdistribution.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "BatchAddProjectsTestersRequest",
+}) as any as S.Schema<BatchAddProjectsTestersRequest>;
 
 /** A person that can be invited to test apps in a Firebase project. */
 export interface GoogleFirebaseAppdistroV1Tester {
@@ -99,38 +114,49 @@ export interface GoogleFirebaseAppdistroV1Tester {
   name?: string;
 }
 export const GoogleFirebaseAppdistroV1Tester = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "groups": S.optional(StringList),
-  "lastActivityTime": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "name": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleFirebaseAppdistroV1Tester" }) as any as S.Schema<GoogleFirebaseAppdistroV1Tester>;
+  S.Struct({
+    groups: S.optional(StringList),
+    lastActivityTime: S.optional(S.String),
+    displayName: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleFirebaseAppdistroV1Tester",
+}) as any as S.Schema<GoogleFirebaseAppdistroV1Tester>;
 
-export type GoogleFirebaseAppdistroV1TesterList = ReadonlyArray<GoogleFirebaseAppdistroV1Tester>;
-export const GoogleFirebaseAppdistroV1TesterList = /*@__PURE__*/ S.Array(GoogleFirebaseAppdistroV1Tester) as any as S.Schema<GoogleFirebaseAppdistroV1TesterList>;
+export type GoogleFirebaseAppdistroV1TesterList =
+  ReadonlyArray<GoogleFirebaseAppdistroV1Tester>;
+export const GoogleFirebaseAppdistroV1TesterList = /*@__PURE__*/ S.Array(
+  GoogleFirebaseAppdistroV1Tester,
+) as any as S.Schema<GoogleFirebaseAppdistroV1TesterList>;
 
 /** The Response message for `BatchAddTesters`. */
 export interface GoogleFirebaseAppdistroV1BatchAddTestersResponse {
   /** The testers which are created and/or already exist */
   testers?: GoogleFirebaseAppdistroV1TesterList;
 }
-export const GoogleFirebaseAppdistroV1BatchAddTestersResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "testers": S.optional(GoogleFirebaseAppdistroV1TesterList),
-}),
-).annotate({ identifier: "GoogleFirebaseAppdistroV1BatchAddTestersResponse" }) as any as S.Schema<GoogleFirebaseAppdistroV1BatchAddTestersResponse>;
+export const GoogleFirebaseAppdistroV1BatchAddTestersResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      testers: S.optional(GoogleFirebaseAppdistroV1TesterList),
+    }),
+  ).annotate({
+    identifier: "GoogleFirebaseAppdistroV1BatchAddTestersResponse",
+  }) as any as S.Schema<GoogleFirebaseAppdistroV1BatchAddTestersResponse>;
 
 /** The request message for `BatchDeleteReleases`. */
 export interface GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest {
   /** Required. The names of the release resources to delete. Format: `projects/{project_number}/apps/{app}/releases/{release}` A maximum of 100 releases can be deleted per request. */
   names?: StringList;
 }
-export const GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "names": S.optional(StringList),
-}),
-).annotate({ identifier: "GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest" }) as any as S.Schema<GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest>;
+export const GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      names: S.optional(StringList),
+    }),
+  ).annotate({
+    identifier: "GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest",
+  }) as any as S.Schema<GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest>;
 
 export interface BatchDeleteProjectsAppsReleasesRequest {
   /** Required. The name of the app resource, which is the parent of the release resources. Format: `projects/{project_number}/apps/{app}` */
@@ -138,18 +164,31 @@ export interface BatchDeleteProjectsAppsReleasesRequest {
   /** Request body */
   body?: GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest;
 }
-export const BatchDeleteProjectsAppsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/releases:batchDelete","baseUrl":"https://firebaseappdistribution.googleapis.com/"})),
-).annotate({ identifier: "BatchDeleteProjectsAppsReleasesRequest" }) as any as S.Schema<BatchDeleteProjectsAppsReleasesRequest>;
+export const BatchDeleteProjectsAppsReleasesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/releases:batchDelete",
+        baseUrl: "https://firebaseappdistribution.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "BatchDeleteProjectsAppsReleasesRequest",
+}) as any as S.Schema<BatchDeleteProjectsAppsReleasesRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface GoogleProtobufEmpty {}
 export const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "GoogleProtobufEmpty" }) as any as S.Schema<GoogleProtobufEmpty>;
+  S.Struct({}),
+).annotate({
+  identifier: "GoogleProtobufEmpty",
+}) as any as S.Schema<GoogleProtobufEmpty>;
 
 /** The request message for `BatchJoinGroup` */
 export interface GoogleFirebaseAppdistroV1BatchJoinGroupRequest {
@@ -158,12 +197,15 @@ export interface GoogleFirebaseAppdistroV1BatchJoinGroupRequest {
   /** Indicates whether to create tester resources based on `emails` if they don't exist yet. */
   createMissingTesters?: boolean;
 }
-export const GoogleFirebaseAppdistroV1BatchJoinGroupRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "emails": S.optional(StringList),
-  "createMissingTesters": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "GoogleFirebaseAppdistroV1BatchJoinGroupRequest" }) as any as S.Schema<GoogleFirebaseAppdistroV1BatchJoinGroupRequest>;
+export const GoogleFirebaseAppdistroV1BatchJoinGroupRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      emails: S.optional(StringList),
+      createMissingTesters: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "GoogleFirebaseAppdistroV1BatchJoinGroupRequest",
+  }) as any as S.Schema<GoogleFirebaseAppdistroV1BatchJoinGroupRequest>;
 
 export interface BatchJoinProjectsGroupsRequest {
   /** Required. The name of the group resource to which testers are added. Format: `projects/{project_number}/groups/{group_alias}` */
@@ -172,22 +214,35 @@ export interface BatchJoinProjectsGroupsRequest {
   body?: GoogleFirebaseAppdistroV1BatchJoinGroupRequest;
 }
 export const BatchJoinProjectsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "group": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleFirebaseAppdistroV1BatchJoinGroupRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+group}:batchJoin","baseUrl":"https://firebaseappdistribution.googleapis.com/"})),
-).annotate({ identifier: "BatchJoinProjectsGroupsRequest" }) as any as S.Schema<BatchJoinProjectsGroupsRequest>;
+  S.Struct({
+    group: S.String.pipe(T.Label()),
+    body: S.optional(
+      GoogleFirebaseAppdistroV1BatchJoinGroupRequest.pipe(T.HttpBody()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+group}:batchJoin",
+      baseUrl: "https://firebaseappdistribution.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "BatchJoinProjectsGroupsRequest",
+}) as any as S.Schema<BatchJoinProjectsGroupsRequest>;
 
 /** Request message for `BatchLeaveGroup` */
 export interface GoogleFirebaseAppdistroV1BatchLeaveGroupRequest {
   /** Required. The email addresses of the testers to be removed from the group. A maximum of 999 and a minimum of 1 testers can be removed in a batch. */
   emails?: StringList;
 }
-export const GoogleFirebaseAppdistroV1BatchLeaveGroupRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "emails": S.optional(StringList),
-}),
-).annotate({ identifier: "GoogleFirebaseAppdistroV1BatchLeaveGroupRequest" }) as any as S.Schema<GoogleFirebaseAppdistroV1BatchLeaveGroupRequest>;
+export const GoogleFirebaseAppdistroV1BatchLeaveGroupRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      emails: S.optional(StringList),
+    }),
+  ).annotate({
+    identifier: "GoogleFirebaseAppdistroV1BatchLeaveGroupRequest",
+  }) as any as S.Schema<GoogleFirebaseAppdistroV1BatchLeaveGroupRequest>;
 
 export interface BatchLeaveProjectsGroupsRequest {
   /** Required. The name of the group resource from which testers are removed. Format: `projects/{project_number}/groups/{group_alias}` */
@@ -196,22 +251,35 @@ export interface BatchLeaveProjectsGroupsRequest {
   body?: GoogleFirebaseAppdistroV1BatchLeaveGroupRequest;
 }
 export const BatchLeaveProjectsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "group": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleFirebaseAppdistroV1BatchLeaveGroupRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+group}:batchLeave","baseUrl":"https://firebaseappdistribution.googleapis.com/"})),
-).annotate({ identifier: "BatchLeaveProjectsGroupsRequest" }) as any as S.Schema<BatchLeaveProjectsGroupsRequest>;
+  S.Struct({
+    group: S.String.pipe(T.Label()),
+    body: S.optional(
+      GoogleFirebaseAppdistroV1BatchLeaveGroupRequest.pipe(T.HttpBody()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+group}:batchLeave",
+      baseUrl: "https://firebaseappdistribution.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "BatchLeaveProjectsGroupsRequest",
+}) as any as S.Schema<BatchLeaveProjectsGroupsRequest>;
 
 /** The request message for `BatchRemoveTesters`. */
 export interface GoogleFirebaseAppdistroV1BatchRemoveTestersRequest {
   /** Required. The email addresses of the tester resources to removed. A maximum of 999 and a minimum of 1 testers can be deleted in a batch. */
   emails?: StringList;
 }
-export const GoogleFirebaseAppdistroV1BatchRemoveTestersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "emails": S.optional(StringList),
-}),
-).annotate({ identifier: "GoogleFirebaseAppdistroV1BatchRemoveTestersRequest" }) as any as S.Schema<GoogleFirebaseAppdistroV1BatchRemoveTestersRequest>;
+export const GoogleFirebaseAppdistroV1BatchRemoveTestersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      emails: S.optional(StringList),
+    }),
+  ).annotate({
+    identifier: "GoogleFirebaseAppdistroV1BatchRemoveTestersRequest",
+  }) as any as S.Schema<GoogleFirebaseAppdistroV1BatchRemoveTestersRequest>;
 
 export interface BatchRemoveProjectsTestersRequest {
   /** Required. The name of the project resource. Format: `projects/{project_number}` */
@@ -220,28 +288,43 @@ export interface BatchRemoveProjectsTestersRequest {
   body?: GoogleFirebaseAppdistroV1BatchRemoveTestersRequest;
 }
 export const BatchRemoveProjectsTestersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "project": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleFirebaseAppdistroV1BatchRemoveTestersRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+project}/testers:batchRemove","baseUrl":"https://firebaseappdistribution.googleapis.com/"})),
-).annotate({ identifier: "BatchRemoveProjectsTestersRequest" }) as any as S.Schema<BatchRemoveProjectsTestersRequest>;
+  S.Struct({
+    project: S.String.pipe(T.Label()),
+    body: S.optional(
+      GoogleFirebaseAppdistroV1BatchRemoveTestersRequest.pipe(T.HttpBody()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+project}/testers:batchRemove",
+      baseUrl: "https://firebaseappdistribution.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "BatchRemoveProjectsTestersRequest",
+}) as any as S.Schema<BatchRemoveProjectsTestersRequest>;
 
 /** The response message for `BatchRemoveTesters` */
 export interface GoogleFirebaseAppdistroV1BatchRemoveTestersResponse {
   /** List of deleted tester emails */
   emails?: StringList;
 }
-export const GoogleFirebaseAppdistroV1BatchRemoveTestersResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "emails": S.optional(StringList),
-}),
-).annotate({ identifier: "GoogleFirebaseAppdistroV1BatchRemoveTestersResponse" }) as any as S.Schema<GoogleFirebaseAppdistroV1BatchRemoveTestersResponse>;
+export const GoogleFirebaseAppdistroV1BatchRemoveTestersResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      emails: S.optional(StringList),
+    }),
+  ).annotate({
+    identifier: "GoogleFirebaseAppdistroV1BatchRemoveTestersResponse",
+  }) as any as S.Schema<GoogleFirebaseAppdistroV1BatchRemoveTestersResponse>;
 
 /** The request message for Operations.CancelOperation. */
 export interface GoogleLongrunningCancelOperationRequest {}
-export const GoogleLongrunningCancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "GoogleLongrunningCancelOperationRequest" }) as any as S.Schema<GoogleLongrunningCancelOperationRequest>;
+export const GoogleLongrunningCancelOperationRequest = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "GoogleLongrunningCancelOperationRequest",
+}) as any as S.Schema<GoogleLongrunningCancelOperationRequest>;
 
 export interface CancelProjectsAppsReleasesOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -249,12 +332,23 @@ export interface CancelProjectsAppsReleasesOperationsRequest {
   /** Request body */
   body?: GoogleLongrunningCancelOperationRequest;
 }
-export const CancelProjectsAppsReleasesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://firebaseappdistribution.googleapis.com/"})),
-).annotate({ identifier: "CancelProjectsAppsReleasesOperationsRequest" }) as any as S.Schema<CancelProjectsAppsReleasesOperationsRequest>;
+export const CancelProjectsAppsReleasesOperationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:cancel",
+        baseUrl: "https://firebaseappdistribution.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CancelProjectsAppsReleasesOperationsRequest",
+  }) as any as S.Schema<CancelProjectsAppsReleasesOperationsRequest>;
 
 /** A group which can contain testers. A group can be invited to test apps in a Firebase project. */
 export interface GoogleFirebaseAppdistroV1Group {
@@ -270,14 +364,16 @@ export interface GoogleFirebaseAppdistroV1Group {
   releaseCount?: number;
 }
 export const GoogleFirebaseAppdistroV1Group = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "inviteLinkCount": S.optional(S.Number),
-  "name": S.optional(S.String),
-  "testerCount": S.optional(S.Number),
-  "displayName": S.optional(S.String),
-  "releaseCount": S.optional(S.Number),
-}),
-).annotate({ identifier: "GoogleFirebaseAppdistroV1Group" }) as any as S.Schema<GoogleFirebaseAppdistroV1Group>;
+  S.Struct({
+    inviteLinkCount: S.optional(S.Number),
+    name: S.optional(S.String),
+    testerCount: S.optional(S.Number),
+    displayName: S.optional(S.String),
+    releaseCount: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "GoogleFirebaseAppdistroV1Group",
+}) as any as S.Schema<GoogleFirebaseAppdistroV1Group>;
 
 export interface CreateProjectsGroupsRequest {
   /** Required. The name of the project resource, which is the parent of the group resource. Format: `projects/{project_number}` */
@@ -288,42 +384,76 @@ export interface CreateProjectsGroupsRequest {
   body?: GoogleFirebaseAppdistroV1Group;
 }
 export const CreateProjectsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "groupId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(GoogleFirebaseAppdistroV1Group.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/groups","baseUrl":"https://firebaseappdistribution.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsGroupsRequest" }) as any as S.Schema<CreateProjectsGroupsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    groupId: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(GoogleFirebaseAppdistroV1Group.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/groups",
+      baseUrl: "https://firebaseappdistribution.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateProjectsGroupsRequest",
+}) as any as S.Schema<CreateProjectsGroupsRequest>;
 
 export interface DeleteProjectsAppsReleasesFeedbackReportsRequest {
   /** Required. The name of the feedback report to delete. Format: projects/{project_number}/apps/{app}/releases/{release}/feedbackReports/{feedback_report} */
   name: string;
 }
-export const DeleteProjectsAppsReleasesFeedbackReportsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://firebaseappdistribution.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsAppsReleasesFeedbackReportsRequest" }) as any as S.Schema<DeleteProjectsAppsReleasesFeedbackReportsRequest>;
+export const DeleteProjectsAppsReleasesFeedbackReportsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://firebaseappdistribution.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsAppsReleasesFeedbackReportsRequest",
+  }) as any as S.Schema<DeleteProjectsAppsReleasesFeedbackReportsRequest>;
 
 export interface DeleteProjectsAppsReleasesOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsAppsReleasesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://firebaseappdistribution.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsAppsReleasesOperationsRequest" }) as any as S.Schema<DeleteProjectsAppsReleasesOperationsRequest>;
+export const DeleteProjectsAppsReleasesOperationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://firebaseappdistribution.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsAppsReleasesOperationsRequest",
+  }) as any as S.Schema<DeleteProjectsAppsReleasesOperationsRequest>;
 
 export interface DeleteProjectsGroupsRequest {
   /** Required. The name of the group resource. Format: `projects/{project_number}/groups/{group_alias}` */
   name: string;
 }
 export const DeleteProjectsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://firebaseappdistribution.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsGroupsRequest" }) as any as S.Schema<DeleteProjectsGroupsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://firebaseappdistribution.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteProjectsGroupsRequest",
+}) as any as S.Schema<DeleteProjectsGroupsRequest>;
 
 /** The request message for `DistributeRelease`. */
 export interface GoogleFirebaseAppdistroV1DistributeReleaseRequest {
@@ -332,12 +462,15 @@ export interface GoogleFirebaseAppdistroV1DistributeReleaseRequest {
   /** Optional. A list of group aliases (IDs) to be given access to this release. A combined maximum of 999 `testerEmails` and `groupAliases` can be specified in a single request. */
   groupAliases?: StringList;
 }
-export const GoogleFirebaseAppdistroV1DistributeReleaseRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "testerEmails": S.optional(StringList),
-  "groupAliases": S.optional(StringList),
-}),
-).annotate({ identifier: "GoogleFirebaseAppdistroV1DistributeReleaseRequest" }) as any as S.Schema<GoogleFirebaseAppdistroV1DistributeReleaseRequest>;
+export const GoogleFirebaseAppdistroV1DistributeReleaseRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      testerEmails: S.optional(StringList),
+      groupAliases: S.optional(StringList),
+    }),
+  ).annotate({
+    identifier: "GoogleFirebaseAppdistroV1DistributeReleaseRequest",
+  }) as any as S.Schema<GoogleFirebaseAppdistroV1DistributeReleaseRequest>;
 
 export interface DistributeProjectsAppsReleasesRequest {
   /** Required. The name of the release resource to distribute. Format: `projects/{project_number}/apps/{app}/releases/{release}` */
@@ -345,31 +478,62 @@ export interface DistributeProjectsAppsReleasesRequest {
   /** Request body */
   body?: GoogleFirebaseAppdistroV1DistributeReleaseRequest;
 }
-export const DistributeProjectsAppsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleFirebaseAppdistroV1DistributeReleaseRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:distribute","baseUrl":"https://firebaseappdistribution.googleapis.com/"})),
-).annotate({ identifier: "DistributeProjectsAppsReleasesRequest" }) as any as S.Schema<DistributeProjectsAppsReleasesRequest>;
+export const DistributeProjectsAppsReleasesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleFirebaseAppdistroV1DistributeReleaseRequest.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:distribute",
+        baseUrl: "https://firebaseappdistribution.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DistributeProjectsAppsReleasesRequest",
+}) as any as S.Schema<DistributeProjectsAppsReleasesRequest>;
 
 /** The response message for `DistributeRelease`. */
 export interface GoogleFirebaseAppdistroV1DistributeReleaseResponse {}
-export const GoogleFirebaseAppdistroV1DistributeReleaseResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "GoogleFirebaseAppdistroV1DistributeReleaseResponse" }) as any as S.Schema<GoogleFirebaseAppdistroV1DistributeReleaseResponse>;
+export const GoogleFirebaseAppdistroV1DistributeReleaseResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "GoogleFirebaseAppdistroV1DistributeReleaseResponse",
+  }) as any as S.Schema<GoogleFirebaseAppdistroV1DistributeReleaseResponse>;
 
 export interface GetAabInfoProjectsAppsRequest {
   /** Required. The name of the `AabInfo` resource to retrieve. Format: `projects/{project_number}/apps/{app}/aabInfo` */
   name: string;
 }
 export const GetAabInfoProjectsAppsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://firebaseappdistribution.googleapis.com/"})),
-).annotate({ identifier: "GetAabInfoProjectsAppsRequest" }) as any as S.Schema<GetAabInfoProjectsAppsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://firebaseappdistribution.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetAabInfoProjectsAppsRequest",
+}) as any as S.Schema<GetAabInfoProjectsAppsRequest>;
 
-export type GoogleFirebaseAppdistroV1AabInfoIntegrationStateEnum = "AAB_INTEGRATION_STATE_UNSPECIFIED" | "INTEGRATED" | "PLAY_ACCOUNT_NOT_LINKED" | "NO_APP_WITH_GIVEN_BUNDLE_ID_IN_PLAY_ACCOUNT" | "APP_NOT_PUBLISHED" | "AAB_STATE_UNAVAILABLE" | "PLAY_IAS_TERMS_NOT_ACCEPTED" | "ADHOC_SHARING_KEY_NOT_GENERATED" | "ADHOC_SHARING_KEY_NOT_REGISTERED" | "PLAY_ANDROID_DEVELOPER_CONSOLE_ACCOUNT_NOT_FOUND";
-export const GoogleFirebaseAppdistroV1AabInfoIntegrationStateEnum = /*@__PURE__*/ S.String;
+export type GoogleFirebaseAppdistroV1AabInfoIntegrationStateEnum =
+  | "AAB_INTEGRATION_STATE_UNSPECIFIED"
+  | "INTEGRATED"
+  | "PLAY_ACCOUNT_NOT_LINKED"
+  | "NO_APP_WITH_GIVEN_BUNDLE_ID_IN_PLAY_ACCOUNT"
+  | "APP_NOT_PUBLISHED"
+  | "AAB_STATE_UNAVAILABLE"
+  | "PLAY_IAS_TERMS_NOT_ACCEPTED"
+  | "ADHOC_SHARING_KEY_NOT_GENERATED"
+  | "ADHOC_SHARING_KEY_NOT_REGISTERED"
+  | "PLAY_ANDROID_DEVELOPER_CONSOLE_ACCOUNT_NOT_FOUND";
+export const GoogleFirebaseAppdistroV1AabInfoIntegrationStateEnum =
+  /*@__PURE__*/ S.String;
 
 /** App bundle test certificate */
 export interface GoogleFirebaseAppdistroV1TestCertificate {
@@ -380,13 +544,16 @@ export interface GoogleFirebaseAppdistroV1TestCertificate {
   /** Hex string of SHA256 hash of the test certificate used to resign the AAB */
   hashSha256?: string;
 }
-export const GoogleFirebaseAppdistroV1TestCertificate = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "hashMd5": S.optional(S.String),
-  "hashSha1": S.optional(S.String),
-  "hashSha256": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleFirebaseAppdistroV1TestCertificate" }) as any as S.Schema<GoogleFirebaseAppdistroV1TestCertificate>;
+export const GoogleFirebaseAppdistroV1TestCertificate = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      hashMd5: S.optional(S.String),
+      hashSha1: S.optional(S.String),
+      hashSha256: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "GoogleFirebaseAppdistroV1TestCertificate",
+}) as any as S.Schema<GoogleFirebaseAppdistroV1TestCertificate>;
 
 /** Android App Bundle (AAB) information for a Firebase app. */
 export interface GoogleFirebaseAppdistroV1AabInfo {
@@ -398,42 +565,74 @@ export interface GoogleFirebaseAppdistroV1AabInfo {
   testCertificate?: GoogleFirebaseAppdistroV1TestCertificate;
 }
 export const GoogleFirebaseAppdistroV1AabInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "integrationState": S.optional(GoogleFirebaseAppdistroV1AabInfoIntegrationStateEnum),
-  "testCertificate": S.optional(GoogleFirebaseAppdistroV1TestCertificate),
-}),
-).annotate({ identifier: "GoogleFirebaseAppdistroV1AabInfo" }) as any as S.Schema<GoogleFirebaseAppdistroV1AabInfo>;
+  S.Struct({
+    name: S.optional(S.String),
+    integrationState: S.optional(
+      GoogleFirebaseAppdistroV1AabInfoIntegrationStateEnum,
+    ),
+    testCertificate: S.optional(GoogleFirebaseAppdistroV1TestCertificate),
+  }),
+).annotate({
+  identifier: "GoogleFirebaseAppdistroV1AabInfo",
+}) as any as S.Schema<GoogleFirebaseAppdistroV1AabInfo>;
 
 export interface GetProjectsAppsReleasesRequest {
   /** Required. The name of the release resource to retrieve. Format: projects/{project_number}/apps/{app}/releases/{release} */
   name: string;
 }
 export const GetProjectsAppsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://firebaseappdistribution.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsAppsReleasesRequest" }) as any as S.Schema<GetProjectsAppsReleasesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://firebaseappdistribution.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsAppsReleasesRequest",
+}) as any as S.Schema<GetProjectsAppsReleasesRequest>;
 
 /** Notes that belong to a release. */
 export interface GoogleFirebaseAppdistroV1ReleaseNotes {
   /** The text of the release notes. */
   text?: string;
 }
-export const GoogleFirebaseAppdistroV1ReleaseNotes = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "text": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleFirebaseAppdistroV1ReleaseNotes" }) as any as S.Schema<GoogleFirebaseAppdistroV1ReleaseNotes>;
+export const GoogleFirebaseAppdistroV1ReleaseNotes = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      text: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "GoogleFirebaseAppdistroV1ReleaseNotes",
+}) as any as S.Schema<GoogleFirebaseAppdistroV1ReleaseNotes>;
 
-export type GoogleFirebaseAppdistroV1ReleaseAndroidPackageRegistrationStateEnum = "ANDROID_PACKAGE_REGISTRATION_STATE_UNSPECIFIED" | "REGISTERED" | "NOT_REGISTERED" | "REGISTERED_WITH_ANOTHER_CERTIFICATE_FINGERPRINT";
-export const GoogleFirebaseAppdistroV1ReleaseAndroidPackageRegistrationStateEnum = /*@__PURE__*/ S.String;
+export type GoogleFirebaseAppdistroV1ReleaseAndroidPackageRegistrationStateEnum =
+    | "ANDROID_PACKAGE_REGISTRATION_STATE_UNSPECIFIED"
+    | "REGISTERED"
+    | "NOT_REGISTERED"
+    | "REGISTERED_WITH_ANOTHER_CERTIFICATE_FINGERPRINT";
+export const GoogleFirebaseAppdistroV1ReleaseAndroidPackageRegistrationStateEnum =
+  /*@__PURE__*/ S.String;
 
-export type GoogleFirebaseAppdistroV1ReleaseBinaryTypeEnum = "BINARY_TYPE_UNSPECIFIED" | "IPA" | "APK" | "AAB";
-export const GoogleFirebaseAppdistroV1ReleaseBinaryTypeEnum = /*@__PURE__*/ S.String;
+export type GoogleFirebaseAppdistroV1ReleaseBinaryTypeEnum =
+  | "BINARY_TYPE_UNSPECIFIED"
+  | "IPA"
+  | "APK"
+  | "AAB";
+export const GoogleFirebaseAppdistroV1ReleaseBinaryTypeEnum =
+  /*@__PURE__*/ S.String;
 
-export type GoogleFirebaseAppdistroV1ReleaseTestStateEnum = "TEST_STATE_UNSPECIFIED" | "NO_TESTS_REQUESTED" | "IN_PROGRESS" | "PASSED" | "FAILED" | "INCONCLUSIVE";
-export const GoogleFirebaseAppdistroV1ReleaseTestStateEnum = /*@__PURE__*/ S.String;
+export type GoogleFirebaseAppdistroV1ReleaseTestStateEnum =
+  | "TEST_STATE_UNSPECIFIED"
+  | "NO_TESTS_REQUESTED"
+  | "IN_PROGRESS"
+  | "PASSED"
+  | "FAILED"
+  | "INCONCLUSIVE";
+export const GoogleFirebaseAppdistroV1ReleaseTestStateEnum =
+  /*@__PURE__*/ S.String;
 
 /** A release of a Firebase app. */
 export interface GoogleFirebaseAppdistroV1Release {
@@ -473,36 +672,49 @@ export interface GoogleFirebaseAppdistroV1Release {
   testState?: GoogleFirebaseAppdistroV1ReleaseTestStateEnum;
 }
 export const GoogleFirebaseAppdistroV1Release = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "installationCount": S.optional(S.Number),
-  "releaseNotes": S.optional(GoogleFirebaseAppdistroV1ReleaseNotes),
-  "androidPackageRegistrationState": S.optional(GoogleFirebaseAppdistroV1ReleaseAndroidPackageRegistrationStateEnum),
-  "displayVersion": S.optional(S.String),
-  "binaryType": S.optional(GoogleFirebaseAppdistroV1ReleaseBinaryTypeEnum),
-  "feedbackCount": S.optional(S.Number),
-  "updateTime": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "buildVersion": S.optional(S.String),
-  "expireTime": S.optional(S.String),
-  "firebaseConsoleUri": S.optional(S.String),
-  "binaryDownloadUri": S.optional(S.String),
-  "testingUri": S.optional(S.String),
-  "openInvitationCount": S.optional(S.Number),
-  "acceptedInvitationCount": S.optional(S.Number),
-  "testState": S.optional(GoogleFirebaseAppdistroV1ReleaseTestStateEnum),
-}),
-).annotate({ identifier: "GoogleFirebaseAppdistroV1Release" }) as any as S.Schema<GoogleFirebaseAppdistroV1Release>;
+  S.Struct({
+    name: S.optional(S.String),
+    installationCount: S.optional(S.Number),
+    releaseNotes: S.optional(GoogleFirebaseAppdistroV1ReleaseNotes),
+    androidPackageRegistrationState: S.optional(
+      GoogleFirebaseAppdistroV1ReleaseAndroidPackageRegistrationStateEnum,
+    ),
+    displayVersion: S.optional(S.String),
+    binaryType: S.optional(GoogleFirebaseAppdistroV1ReleaseBinaryTypeEnum),
+    feedbackCount: S.optional(S.Number),
+    updateTime: S.optional(S.String),
+    createTime: S.optional(S.String),
+    buildVersion: S.optional(S.String),
+    expireTime: S.optional(S.String),
+    firebaseConsoleUri: S.optional(S.String),
+    binaryDownloadUri: S.optional(S.String),
+    testingUri: S.optional(S.String),
+    openInvitationCount: S.optional(S.Number),
+    acceptedInvitationCount: S.optional(S.Number),
+    testState: S.optional(GoogleFirebaseAppdistroV1ReleaseTestStateEnum),
+  }),
+).annotate({
+  identifier: "GoogleFirebaseAppdistroV1Release",
+}) as any as S.Schema<GoogleFirebaseAppdistroV1Release>;
 
 export interface GetProjectsAppsReleasesFeedbackReportsRequest {
   /** Required. The name of the feedback report to retrieve. Format: projects/{project_number}/apps/{app}/releases/{release}/feedbackReports/{feedback_report} */
   name: string;
 }
-export const GetProjectsAppsReleasesFeedbackReportsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://firebaseappdistribution.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsAppsReleasesFeedbackReportsRequest" }) as any as S.Schema<GetProjectsAppsReleasesFeedbackReportsRequest>;
+export const GetProjectsAppsReleasesFeedbackReportsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://firebaseappdistribution.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsAppsReleasesFeedbackReportsRequest",
+  }) as any as S.Schema<GetProjectsAppsReleasesFeedbackReportsRequest>;
 
 /** A feedback report submitted by a tester for a release. */
 export interface GoogleFirebaseAppdistroV1FeedbackReport {
@@ -519,32 +731,49 @@ export interface GoogleFirebaseAppdistroV1FeedbackReport {
   /** Output only. The time when the feedback report was created. */
   createTime?: string;
 }
-export const GoogleFirebaseAppdistroV1FeedbackReport = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "screenshotUri": S.optional(S.String),
-  "firebaseConsoleUri": S.optional(S.String),
-  "text": S.optional(S.String),
-  "tester": S.optional(S.String),
-  "createTime": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleFirebaseAppdistroV1FeedbackReport" }) as any as S.Schema<GoogleFirebaseAppdistroV1FeedbackReport>;
+export const GoogleFirebaseAppdistroV1FeedbackReport = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.optional(S.String),
+      screenshotUri: S.optional(S.String),
+      firebaseConsoleUri: S.optional(S.String),
+      text: S.optional(S.String),
+      tester: S.optional(S.String),
+      createTime: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "GoogleFirebaseAppdistroV1FeedbackReport",
+}) as any as S.Schema<GoogleFirebaseAppdistroV1FeedbackReport>;
 
 export interface GetProjectsAppsReleasesOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsAppsReleasesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://firebaseappdistribution.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsAppsReleasesOperationsRequest" }) as any as S.Schema<GetProjectsAppsReleasesOperationsRequest>;
+export const GetProjectsAppsReleasesOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://firebaseappdistribution.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsAppsReleasesOperationsRequest",
+}) as any as S.Schema<GetProjectsAppsReleasesOperationsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface GoogleRpcStatus {
@@ -556,12 +785,14 @@ export interface GoogleRpcStatus {
   details?: DocumentMapList;
 }
 export const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(S.Number),
-  "message": S.optional(S.String),
-  "details": S.optional(DocumentMapList),
-}),
-).annotate({ identifier: "GoogleRpcStatus" }) as any as S.Schema<GoogleRpcStatus>;
+  S.Struct({
+    code: S.optional(S.Number),
+    message: S.optional(S.String),
+    details: S.optional(DocumentMapList),
+  }),
+).annotate({
+  identifier: "GoogleRpcStatus",
+}) as any as S.Schema<GoogleRpcStatus>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface GoogleLongrunningOperation {
@@ -577,24 +808,34 @@ export interface GoogleLongrunningOperation {
   error?: GoogleRpcStatus;
 }
 export const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "metadata": S.optional(DocumentMap),
-  "name": S.optional(S.String),
-  "done": S.optional(S.Boolean),
-  "response": S.optional(DocumentMap),
-  "error": S.optional(GoogleRpcStatus),
-}),
-).annotate({ identifier: "GoogleLongrunningOperation" }) as any as S.Schema<GoogleLongrunningOperation>;
+  S.Struct({
+    metadata: S.optional(DocumentMap),
+    name: S.optional(S.String),
+    done: S.optional(S.Boolean),
+    response: S.optional(DocumentMap),
+    error: S.optional(GoogleRpcStatus),
+  }),
+).annotate({
+  identifier: "GoogleLongrunningOperation",
+}) as any as S.Schema<GoogleLongrunningOperation>;
 
 export interface GetProjectsGroupsRequest {
   /** Required. The name of the group resource to retrieve. Format: `projects/{project_number}/groups/{group_alias}` */
   name: string;
 }
 export const GetProjectsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://firebaseappdistribution.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsGroupsRequest" }) as any as S.Schema<GetProjectsGroupsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://firebaseappdistribution.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsGroupsRequest",
+}) as any as S.Schema<GetProjectsGroupsRequest>;
 
 export interface ListProjectsAppsReleasesRequest {
   /** Optional. A page token, received from a previous `ListReleases` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListReleases` must match the call that provided the page token. */
@@ -609,17 +850,28 @@ export interface ListProjectsAppsReleasesRequest {
   orderBy?: string;
 }
 export const ListProjectsAppsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/releases","baseUrl":"https://firebaseappdistribution.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsAppsReleasesRequest" }) as any as S.Schema<ListProjectsAppsReleasesRequest>;
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/releases",
+      baseUrl: "https://firebaseappdistribution.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsAppsReleasesRequest",
+}) as any as S.Schema<ListProjectsAppsReleasesRequest>;
 
-export type GoogleFirebaseAppdistroV1ReleaseList = ReadonlyArray<GoogleFirebaseAppdistroV1Release>;
-export const GoogleFirebaseAppdistroV1ReleaseList = /*@__PURE__*/ S.Array(GoogleFirebaseAppdistroV1Release) as any as S.Schema<GoogleFirebaseAppdistroV1ReleaseList>;
+export type GoogleFirebaseAppdistroV1ReleaseList =
+  ReadonlyArray<GoogleFirebaseAppdistroV1Release>;
+export const GoogleFirebaseAppdistroV1ReleaseList = /*@__PURE__*/ S.Array(
+  GoogleFirebaseAppdistroV1Release,
+) as any as S.Schema<GoogleFirebaseAppdistroV1ReleaseList>;
 
 /** The response message for `ListReleases`. */
 export interface GoogleFirebaseAppdistroV1ListReleasesResponse {
@@ -630,13 +882,16 @@ export interface GoogleFirebaseAppdistroV1ListReleasesResponse {
   /** The releases */
   releases?: GoogleFirebaseAppdistroV1ReleaseList;
 }
-export const GoogleFirebaseAppdistroV1ListReleasesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "totalSize": S.optional(S.Number),
-  "releases": S.optional(GoogleFirebaseAppdistroV1ReleaseList),
-}),
-).annotate({ identifier: "GoogleFirebaseAppdistroV1ListReleasesResponse" }) as any as S.Schema<GoogleFirebaseAppdistroV1ListReleasesResponse>;
+export const GoogleFirebaseAppdistroV1ListReleasesResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      nextPageToken: S.optional(S.String),
+      totalSize: S.optional(S.Number),
+      releases: S.optional(GoogleFirebaseAppdistroV1ReleaseList),
+    }),
+  ).annotate({
+    identifier: "GoogleFirebaseAppdistroV1ListReleasesResponse",
+  }) as any as S.Schema<GoogleFirebaseAppdistroV1ListReleasesResponse>;
 
 export interface ListProjectsAppsReleasesFeedbackReportsRequest {
   /** Output only. The maximum number of feedback reports to return. The service may return fewer than this value. The valid range is [1-100]; If unspecified (0), at most 25 feedback reports are returned. Values above 100 are coerced to 100. */
@@ -646,16 +901,29 @@ export interface ListProjectsAppsReleasesFeedbackReportsRequest {
   /** Required. The name of the release resource, which is the parent of the feedback report resources. Format: `projects/{project_number}/apps/{app}/releases/{release}` */
   parent: string;
 }
-export const ListProjectsAppsReleasesFeedbackReportsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/feedbackReports","baseUrl":"https://firebaseappdistribution.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsAppsReleasesFeedbackReportsRequest" }) as any as S.Schema<ListProjectsAppsReleasesFeedbackReportsRequest>;
+export const ListProjectsAppsReleasesFeedbackReportsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/feedbackReports",
+        baseUrl: "https://firebaseappdistribution.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsAppsReleasesFeedbackReportsRequest",
+  }) as any as S.Schema<ListProjectsAppsReleasesFeedbackReportsRequest>;
 
-export type GoogleFirebaseAppdistroV1FeedbackReportList = ReadonlyArray<GoogleFirebaseAppdistroV1FeedbackReport>;
-export const GoogleFirebaseAppdistroV1FeedbackReportList = /*@__PURE__*/ S.Array(GoogleFirebaseAppdistroV1FeedbackReport) as any as S.Schema<GoogleFirebaseAppdistroV1FeedbackReportList>;
+export type GoogleFirebaseAppdistroV1FeedbackReportList =
+  ReadonlyArray<GoogleFirebaseAppdistroV1FeedbackReport>;
+export const GoogleFirebaseAppdistroV1FeedbackReportList =
+  /*@__PURE__*/ S.Array(
+    GoogleFirebaseAppdistroV1FeedbackReport,
+  ) as any as S.Schema<GoogleFirebaseAppdistroV1FeedbackReportList>;
 
 /** The response message for `ListFeedbackReports`. */
 export interface GoogleFirebaseAppdistroV1ListFeedbackReportsResponse {
@@ -664,12 +932,15 @@ export interface GoogleFirebaseAppdistroV1ListFeedbackReportsResponse {
   /** A short-lived token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleFirebaseAppdistroV1ListFeedbackReportsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "feedbackReports": S.optional(GoogleFirebaseAppdistroV1FeedbackReportList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleFirebaseAppdistroV1ListFeedbackReportsResponse" }) as any as S.Schema<GoogleFirebaseAppdistroV1ListFeedbackReportsResponse>;
+export const GoogleFirebaseAppdistroV1ListFeedbackReportsResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      feedbackReports: S.optional(GoogleFirebaseAppdistroV1FeedbackReportList),
+      nextPageToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleFirebaseAppdistroV1ListFeedbackReportsResponse",
+  }) as any as S.Schema<GoogleFirebaseAppdistroV1ListFeedbackReportsResponse>;
 
 export interface ListProjectsAppsReleasesOperationsRequest {
   /** The standard list filter. */
@@ -683,18 +954,30 @@ export interface ListProjectsAppsReleasesOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
-export const ListProjectsAppsReleasesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/operations","baseUrl":"https://firebaseappdistribution.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsAppsReleasesOperationsRequest" }) as any as S.Schema<ListProjectsAppsReleasesOperationsRequest>;
+export const ListProjectsAppsReleasesOperationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      filter: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}/operations",
+        baseUrl: "https://firebaseappdistribution.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsAppsReleasesOperationsRequest",
+  }) as any as S.Schema<ListProjectsAppsReleasesOperationsRequest>;
 
-export type GoogleLongrunningOperationList = ReadonlyArray<GoogleLongrunningOperation>;
-export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(GoogleLongrunningOperation) as any as S.Schema<GoogleLongrunningOperationList>;
+export type GoogleLongrunningOperationList =
+  ReadonlyArray<GoogleLongrunningOperation>;
+export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
+  GoogleLongrunningOperation,
+) as any as S.Schema<GoogleLongrunningOperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface GoogleLongrunningListOperationsResponse {
@@ -705,13 +988,16 @@ export interface GoogleLongrunningListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-export const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "unreachable": S.optional(StringList),
-  "operations": S.optional(GoogleLongrunningOperationList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleLongrunningListOperationsResponse" }) as any as S.Schema<GoogleLongrunningListOperationsResponse>;
+export const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      unreachable: S.optional(StringList),
+      operations: S.optional(GoogleLongrunningOperationList),
+      nextPageToken: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "GoogleLongrunningListOperationsResponse",
+}) as any as S.Schema<GoogleLongrunningListOperationsResponse>;
 
 export interface ListProjectsGroupsRequest {
   /** Optional. The maximum number of groups to return. The service may return fewer than this value. The valid range is [1-1000]; If unspecified (0), at most 25 groups are returned. Values above 1000 are coerced to 1000. */
@@ -722,15 +1008,26 @@ export interface ListProjectsGroupsRequest {
   parent: string;
 }
 export const ListProjectsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/groups","baseUrl":"https://firebaseappdistribution.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsGroupsRequest" }) as any as S.Schema<ListProjectsGroupsRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/groups",
+      baseUrl: "https://firebaseappdistribution.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsGroupsRequest",
+}) as any as S.Schema<ListProjectsGroupsRequest>;
 
-export type GoogleFirebaseAppdistroV1GroupList = ReadonlyArray<GoogleFirebaseAppdistroV1Group>;
-export const GoogleFirebaseAppdistroV1GroupList = /*@__PURE__*/ S.Array(GoogleFirebaseAppdistroV1Group) as any as S.Schema<GoogleFirebaseAppdistroV1GroupList>;
+export type GoogleFirebaseAppdistroV1GroupList =
+  ReadonlyArray<GoogleFirebaseAppdistroV1Group>;
+export const GoogleFirebaseAppdistroV1GroupList = /*@__PURE__*/ S.Array(
+  GoogleFirebaseAppdistroV1Group,
+) as any as S.Schema<GoogleFirebaseAppdistroV1GroupList>;
 
 /** The response message for `ListGroups`. */
 export interface GoogleFirebaseAppdistroV1ListGroupsResponse {
@@ -739,12 +1036,15 @@ export interface GoogleFirebaseAppdistroV1ListGroupsResponse {
   /** A short-lived token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleFirebaseAppdistroV1ListGroupsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "groups": S.optional(GoogleFirebaseAppdistroV1GroupList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleFirebaseAppdistroV1ListGroupsResponse" }) as any as S.Schema<GoogleFirebaseAppdistroV1ListGroupsResponse>;
+export const GoogleFirebaseAppdistroV1ListGroupsResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      groups: S.optional(GoogleFirebaseAppdistroV1GroupList),
+      nextPageToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleFirebaseAppdistroV1ListGroupsResponse",
+  }) as any as S.Schema<GoogleFirebaseAppdistroV1ListGroupsResponse>;
 
 export interface ListProjectsTestersRequest {
   /** Required. The name of the project resource, which is the parent of the tester resources. Format: `projects/{project_number}` */
@@ -757,13 +1057,21 @@ export interface ListProjectsTestersRequest {
   filter?: string;
 }
 export const ListProjectsTestersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/testers","baseUrl":"https://firebaseappdistribution.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsTestersRequest" }) as any as S.Schema<ListProjectsTestersRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/testers",
+      baseUrl: "https://firebaseappdistribution.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsTestersRequest",
+}) as any as S.Schema<ListProjectsTestersRequest>;
 
 /** The response message for `ListTesters`. */
 export interface GoogleFirebaseAppdistroV1ListTestersResponse {
@@ -772,12 +1080,15 @@ export interface GoogleFirebaseAppdistroV1ListTestersResponse {
   /** The testers listed. */
   testers?: GoogleFirebaseAppdistroV1TesterList;
 }
-export const GoogleFirebaseAppdistroV1ListTestersResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "testers": S.optional(GoogleFirebaseAppdistroV1TesterList),
-}),
-).annotate({ identifier: "GoogleFirebaseAppdistroV1ListTestersResponse" }) as any as S.Schema<GoogleFirebaseAppdistroV1ListTestersResponse>;
+export const GoogleFirebaseAppdistroV1ListTestersResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      nextPageToken: S.optional(S.String),
+      testers: S.optional(GoogleFirebaseAppdistroV1TesterList),
+    }),
+  ).annotate({
+    identifier: "GoogleFirebaseAppdistroV1ListTestersResponse",
+  }) as any as S.Schema<GoogleFirebaseAppdistroV1ListTestersResponse>;
 
 export interface PatchProjectsAppsReleasesRequest {
   /** The name of the release resource. Format: `projects/{project_number}/apps/{app}/releases/{release}` */
@@ -788,12 +1099,20 @@ export interface PatchProjectsAppsReleasesRequest {
   body?: GoogleFirebaseAppdistroV1Release;
 }
 export const PatchProjectsAppsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(GoogleFirebaseAppdistroV1Release.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://firebaseappdistribution.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsAppsReleasesRequest" }) as any as S.Schema<PatchProjectsAppsReleasesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(GoogleFirebaseAppdistroV1Release.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+name}",
+      baseUrl: "https://firebaseappdistribution.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchProjectsAppsReleasesRequest",
+}) as any as S.Schema<PatchProjectsAppsReleasesRequest>;
 
 export interface PatchProjectsGroupsRequest {
   /** Optional. The list of fields to update. */
@@ -804,12 +1123,20 @@ export interface PatchProjectsGroupsRequest {
   body?: GoogleFirebaseAppdistroV1Group;
 }
 export const PatchProjectsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleFirebaseAppdistroV1Group.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://firebaseappdistribution.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsGroupsRequest" }) as any as S.Schema<PatchProjectsGroupsRequest>;
+  S.Struct({
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    body: S.optional(GoogleFirebaseAppdistroV1Group.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+name}",
+      baseUrl: "https://firebaseappdistribution.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchProjectsGroupsRequest",
+}) as any as S.Schema<PatchProjectsGroupsRequest>;
 
 export interface PatchProjectsTestersRequest {
   /** Optional. The list of fields to update. */
@@ -820,12 +1147,20 @@ export interface PatchProjectsTestersRequest {
   body?: GoogleFirebaseAppdistroV1Tester;
 }
 export const PatchProjectsTestersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleFirebaseAppdistroV1Tester.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://firebaseappdistribution.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsTestersRequest" }) as any as S.Schema<PatchProjectsTestersRequest>;
+  S.Struct({
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    body: S.optional(GoogleFirebaseAppdistroV1Tester.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+name}",
+      baseUrl: "https://firebaseappdistribution.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchProjectsTestersRequest",
+}) as any as S.Schema<PatchProjectsTestersRequest>;
 
 /** Backend response for a Diff get version response. For details on the Scotty Diff protocol, visit http://go/scotty-diff-protocol. */
 export interface GdataDiffVersionResponse {
@@ -835,13 +1170,20 @@ export interface GdataDiffVersionResponse {
   objectSizeBytes?: string;
 }
 export const GdataDiffVersionResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "objectVersion": S.optional(S.String),
-  "objectSizeBytes": S.optional(S.String),
-}),
-).annotate({ identifier: "GdataDiffVersionResponse" }) as any as S.Schema<GdataDiffVersionResponse>;
+  S.Struct({
+    objectVersion: S.optional(S.String),
+    objectSizeBytes: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GdataDiffVersionResponse",
+}) as any as S.Schema<GdataDiffVersionResponse>;
 
-export type GdataCompositeMediaReferenceTypeEnum = "PATH" | "BLOB_REF" | "INLINE" | "BIGSTORE_REF" | "COSMO_BINARY_REFERENCE";
+export type GdataCompositeMediaReferenceTypeEnum =
+  | "PATH"
+  | "BLOB_REF"
+  | "INLINE"
+  | "BIGSTORE_REF"
+  | "COSMO_BINARY_REFERENCE";
 export const GdataCompositeMediaReferenceTypeEnum = /*@__PURE__*/ S.String;
 
 /** This is a copy of the tech.blob.ObjectId proto, which could not be used directly here due to transitive closure issues with JavaScript support; see http://b/8801763. */
@@ -854,11 +1196,11 @@ export interface GdataObjectId {
   objectName?: string;
 }
 export const GdataObjectId = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucketName": S.optional(S.String),
-  "generation": S.optional(S.String),
-  "objectName": S.optional(S.String),
-}),
+  S.Struct({
+    bucketName: S.optional(S.String),
+    generation: S.optional(S.String),
+    objectName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "GdataObjectId" }) as any as S.Schema<GdataObjectId>;
 
 /** Information to read/write to blobstore2. */
@@ -879,16 +1221,18 @@ export interface GdataBlobstore2Info {
   downloadExternalReadToken?: string;
 }
 export const GdataBlobstore2Info = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "blobId": S.optional(S.String),
-  "blobGeneration": S.optional(S.String),
-  "downloadReadHandle": S.optional(S.String),
-  "readToken": S.optional(S.String),
-  "uploadFragmentListCreationInfo": S.optional(S.String),
-  "uploadMetadataContainer": S.optional(S.String),
-  "downloadExternalReadToken": S.optional(S.String),
-}),
-).annotate({ identifier: "GdataBlobstore2Info" }) as any as S.Schema<GdataBlobstore2Info>;
+  S.Struct({
+    blobId: S.optional(S.String),
+    blobGeneration: S.optional(S.String),
+    downloadReadHandle: S.optional(S.String),
+    readToken: S.optional(S.String),
+    uploadFragmentListCreationInfo: S.optional(S.String),
+    uploadMetadataContainer: S.optional(S.String),
+    downloadExternalReadToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GdataBlobstore2Info",
+}) as any as S.Schema<GdataBlobstore2Info>;
 
 /** A sequence of media data references representing composite data. Introduced to support Bigstore composite objects. For details, visit http://go/bigstore-composites. */
 export interface GdataCompositeMedia {
@@ -916,20 +1260,22 @@ export interface GdataCompositeMedia {
   cosmoBinaryReference?: string;
 }
 export const GdataCompositeMedia = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "referenceType": S.optional(GdataCompositeMediaReferenceTypeEnum),
-  "objectId": S.optional(GdataObjectId),
-  "blobstore2Info": S.optional(GdataBlobstore2Info),
-  "blobRef": S.optional(S.String),
-  "inline": S.optional(S.String),
-  "md5Hash": S.optional(S.String),
-  "crc32cHash": S.optional(S.Number),
-  "sha1Hash": S.optional(S.String),
-  "length": S.optional(S.String),
-  "path": S.optional(S.String),
-  "cosmoBinaryReference": S.optional(S.String),
-}),
-).annotate({ identifier: "GdataCompositeMedia" }) as any as S.Schema<GdataCompositeMedia>;
+  S.Struct({
+    referenceType: S.optional(GdataCompositeMediaReferenceTypeEnum),
+    objectId: S.optional(GdataObjectId),
+    blobstore2Info: S.optional(GdataBlobstore2Info),
+    blobRef: S.optional(S.String),
+    inline: S.optional(S.String),
+    md5Hash: S.optional(S.String),
+    crc32cHash: S.optional(S.Number),
+    sha1Hash: S.optional(S.String),
+    length: S.optional(S.String),
+    path: S.optional(S.String),
+    cosmoBinaryReference: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GdataCompositeMedia",
+}) as any as S.Schema<GdataCompositeMedia>;
 
 /** Backend response for a Diff get checksums response. For details on the Scotty Diff protocol, visit http://go/scotty-diff-protocol. */
 export interface GdataDiffChecksumsResponse {
@@ -945,14 +1291,16 @@ export interface GdataDiffChecksumsResponse {
   checksumsLocation?: GdataCompositeMedia;
 }
 export const GdataDiffChecksumsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "objectSizeBytes": S.optional(S.String),
-  "objectLocation": S.optional(GdataCompositeMedia),
-  "objectVersion": S.optional(S.String),
-  "chunkSizeBytes": S.optional(S.String),
-  "checksumsLocation": S.optional(GdataCompositeMedia),
-}),
-).annotate({ identifier: "GdataDiffChecksumsResponse" }) as any as S.Schema<GdataDiffChecksumsResponse>;
+  S.Struct({
+    objectSizeBytes: S.optional(S.String),
+    objectLocation: S.optional(GdataCompositeMedia),
+    objectVersion: S.optional(S.String),
+    chunkSizeBytes: S.optional(S.String),
+    checksumsLocation: S.optional(GdataCompositeMedia),
+  }),
+).annotate({
+  identifier: "GdataDiffChecksumsResponse",
+}) as any as S.Schema<GdataDiffChecksumsResponse>;
 
 /** Backend response for a Diff download response. For details on the Scotty Diff protocol, visit http://go/scotty-diff-protocol. */
 export interface GdataDiffDownloadResponse {
@@ -960,10 +1308,12 @@ export interface GdataDiffDownloadResponse {
   objectLocation?: GdataCompositeMedia;
 }
 export const GdataDiffDownloadResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "objectLocation": S.optional(GdataCompositeMedia),
-}),
-).annotate({ identifier: "GdataDiffDownloadResponse" }) as any as S.Schema<GdataDiffDownloadResponse>;
+  S.Struct({
+    objectLocation: S.optional(GdataCompositeMedia),
+  }),
+).annotate({
+  identifier: "GdataDiffDownloadResponse",
+}) as any as S.Schema<GdataDiffDownloadResponse>;
 
 /** Parameters specific to media downloads. */
 export interface GdataDownloadParameters {
@@ -973,11 +1323,13 @@ export interface GdataDownloadParameters {
   ignoreRange?: boolean;
 }
 export const GdataDownloadParameters = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "allowGzipCompression": S.optional(S.Boolean),
-  "ignoreRange": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "GdataDownloadParameters" }) as any as S.Schema<GdataDownloadParameters>;
+  S.Struct({
+    allowGzipCompression: S.optional(S.Boolean),
+    ignoreRange: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "GdataDownloadParameters",
+}) as any as S.Schema<GdataDownloadParameters>;
 
 /** Backend response for a Diff upload request. For details on the Scotty Diff protocol, visit http://go/scotty-diff-protocol. */
 export interface GdataDiffUploadResponse {
@@ -987,11 +1339,13 @@ export interface GdataDiffUploadResponse {
   objectVersion?: string;
 }
 export const GdataDiffUploadResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "originalObject": S.optional(GdataCompositeMedia),
-  "objectVersion": S.optional(S.String),
-}),
-).annotate({ identifier: "GdataDiffUploadResponse" }) as any as S.Schema<GdataDiffUploadResponse>;
+  S.Struct({
+    originalObject: S.optional(GdataCompositeMedia),
+    objectVersion: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GdataDiffUploadResponse",
+}) as any as S.Schema<GdataDiffUploadResponse>;
 
 /** A Diff upload request. For details on the Scotty Diff protocol, visit http://go/scotty-diff-protocol. */
 export interface GdataDiffUploadRequest {
@@ -1003,17 +1357,34 @@ export interface GdataDiffUploadRequest {
   objectInfo?: GdataCompositeMedia;
 }
 export const GdataDiffUploadRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "checksumsInfo": S.optional(GdataCompositeMedia),
-  "objectVersion": S.optional(S.String),
-  "objectInfo": S.optional(GdataCompositeMedia),
-}),
-).annotate({ identifier: "GdataDiffUploadRequest" }) as any as S.Schema<GdataDiffUploadRequest>;
+  S.Struct({
+    checksumsInfo: S.optional(GdataCompositeMedia),
+    objectVersion: S.optional(S.String),
+    objectInfo: S.optional(GdataCompositeMedia),
+  }),
+).annotate({
+  identifier: "GdataDiffUploadRequest",
+}) as any as S.Schema<GdataDiffUploadRequest>;
 
 export type GdataCompositeMediaList = ReadonlyArray<GdataCompositeMedia>;
-export const GdataCompositeMediaList = /*@__PURE__*/ S.Array(GdataCompositeMedia) as any as S.Schema<GdataCompositeMediaList>;
+export const GdataCompositeMediaList = /*@__PURE__*/ S.Array(
+  GdataCompositeMedia,
+) as any as S.Schema<GdataCompositeMediaList>;
 
-export type GdataMediaReferenceTypeEnum = "PATH" | "BLOB_REF" | "INLINE" | "GET_MEDIA" | "COMPOSITE_MEDIA" | "BIGSTORE_REF" | "DIFF_VERSION_RESPONSE" | "DIFF_CHECKSUMS_RESPONSE" | "DIFF_DOWNLOAD_RESPONSE" | "DIFF_UPLOAD_REQUEST" | "DIFF_UPLOAD_RESPONSE" | "COSMO_BINARY_REFERENCE" | "ARBITRARY_BYTES";
+export type GdataMediaReferenceTypeEnum =
+  | "PATH"
+  | "BLOB_REF"
+  | "INLINE"
+  | "GET_MEDIA"
+  | "COMPOSITE_MEDIA"
+  | "BIGSTORE_REF"
+  | "DIFF_VERSION_RESPONSE"
+  | "DIFF_CHECKSUMS_RESPONSE"
+  | "DIFF_DOWNLOAD_RESPONSE"
+  | "DIFF_UPLOAD_REQUEST"
+  | "DIFF_UPLOAD_RESPONSE"
+  | "COSMO_BINARY_REFERENCE"
+  | "ARBITRARY_BYTES";
 export const GdataMediaReferenceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Detailed Content-Type information from Scotty. The Content-Type of the media will typically be filled in by the header or Scotty's best_guess, but this extended information provides the backend with more information so that it can make a better decision if needed. This is only used on media upload requests from Scotty. */
@@ -1034,16 +1405,18 @@ export interface GdataContentTypeInfo {
   fromUrlPath?: string;
 }
 export const GdataContentTypeInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bestGuess": S.optional(S.String),
-  "fromBytes": S.optional(S.String),
-  "fromFusionId": S.optional(S.String),
-  "fusionIdDetectionMetadata": S.optional(S.String),
-  "fromHeader": S.optional(S.String),
-  "fromFileName": S.optional(S.String),
-  "fromUrlPath": S.optional(S.String),
-}),
-).annotate({ identifier: "GdataContentTypeInfo" }) as any as S.Schema<GdataContentTypeInfo>;
+  S.Struct({
+    bestGuess: S.optional(S.String),
+    fromBytes: S.optional(S.String),
+    fromFusionId: S.optional(S.String),
+    fusionIdDetectionMetadata: S.optional(S.String),
+    fromHeader: S.optional(S.String),
+    fromFileName: S.optional(S.String),
+    fromUrlPath: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GdataContentTypeInfo",
+}) as any as S.Schema<GdataContentTypeInfo>;
 
 /** A reference to data stored on the filesystem, on GFS or in blobstore. */
 export interface GdataMedia {
@@ -1111,39 +1484,39 @@ export interface GdataMedia {
   contentTypeInfo?: GdataContentTypeInfo;
 }
 export const GdataMedia = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "diffVersionResponse": S.optional(GdataDiffVersionResponse),
-  "mediaId": S.optional(S.String),
-  "filename": S.optional(S.String),
-  "diffChecksumsResponse": S.optional(GdataDiffChecksumsResponse),
-  "diffDownloadResponse": S.optional(GdataDiffDownloadResponse),
-  "downloadParameters": S.optional(GdataDownloadParameters),
-  "diffUploadResponse": S.optional(GdataDiffUploadResponse),
-  "hash": S.optional(S.String),
-  "md5Hash": S.optional(S.String),
-  "inline": S.optional(S.String),
-  "hashVerified": S.optional(S.Boolean),
-  "token": S.optional(S.String),
-  "diffUploadRequest": S.optional(GdataDiffUploadRequest),
-  "cosmoBinaryReference": S.optional(S.String),
-  "timestamp": S.optional(S.String),
-  "path": S.optional(S.String),
-  "crc32cHash": S.optional(S.Number),
-  "sha1Hash": S.optional(S.String),
-  "length": S.optional(S.String),
-  "contentType": S.optional(S.String),
-  "blobRef": S.optional(S.String),
-  "compositeMedia": S.optional(GdataCompositeMediaList),
-  "isPotentialRetry": S.optional(S.Boolean),
-  "bigstoreObjectRef": S.optional(S.String),
-  "objectId": S.optional(GdataObjectId),
-  "blobstore2Info": S.optional(GdataBlobstore2Info),
-  "sha256Hash": S.optional(S.String),
-  "sha512Hash": S.optional(S.String),
-  "referenceType": S.optional(GdataMediaReferenceTypeEnum),
-  "algorithm": S.optional(S.String),
-  "contentTypeInfo": S.optional(GdataContentTypeInfo),
-}),
+  S.Struct({
+    diffVersionResponse: S.optional(GdataDiffVersionResponse),
+    mediaId: S.optional(S.String),
+    filename: S.optional(S.String),
+    diffChecksumsResponse: S.optional(GdataDiffChecksumsResponse),
+    diffDownloadResponse: S.optional(GdataDiffDownloadResponse),
+    downloadParameters: S.optional(GdataDownloadParameters),
+    diffUploadResponse: S.optional(GdataDiffUploadResponse),
+    hash: S.optional(S.String),
+    md5Hash: S.optional(S.String),
+    inline: S.optional(S.String),
+    hashVerified: S.optional(S.Boolean),
+    token: S.optional(S.String),
+    diffUploadRequest: S.optional(GdataDiffUploadRequest),
+    cosmoBinaryReference: S.optional(S.String),
+    timestamp: S.optional(S.String),
+    path: S.optional(S.String),
+    crc32cHash: S.optional(S.Number),
+    sha1Hash: S.optional(S.String),
+    length: S.optional(S.String),
+    contentType: S.optional(S.String),
+    blobRef: S.optional(S.String),
+    compositeMedia: S.optional(GdataCompositeMediaList),
+    isPotentialRetry: S.optional(S.Boolean),
+    bigstoreObjectRef: S.optional(S.String),
+    objectId: S.optional(GdataObjectId),
+    blobstore2Info: S.optional(GdataBlobstore2Info),
+    sha256Hash: S.optional(S.String),
+    sha512Hash: S.optional(S.String),
+    referenceType: S.optional(GdataMediaReferenceTypeEnum),
+    algorithm: S.optional(S.String),
+    contentTypeInfo: S.optional(GdataContentTypeInfo),
+  }),
 ).annotate({ identifier: "GdataMedia" }) as any as S.Schema<GdataMedia>;
 
 /** Request message for `UploadRelease`. */
@@ -1151,11 +1524,14 @@ export interface GoogleFirebaseAppdistroV1UploadReleaseRequest {
   /** Binary to upload */
   blob?: GdataMedia;
 }
-export const GoogleFirebaseAppdistroV1UploadReleaseRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "blob": S.optional(GdataMedia),
-}),
-).annotate({ identifier: "GoogleFirebaseAppdistroV1UploadReleaseRequest" }) as any as S.Schema<GoogleFirebaseAppdistroV1UploadReleaseRequest>;
+export const GoogleFirebaseAppdistroV1UploadReleaseRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      blob: S.optional(GdataMedia),
+    }),
+  ).annotate({
+    identifier: "GoogleFirebaseAppdistroV1UploadReleaseRequest",
+  }) as any as S.Schema<GoogleFirebaseAppdistroV1UploadReleaseRequest>;
 
 export interface UploadMediaRequest {
   /** Required. The name of the app resource. Format: `projects/{project_number}/apps/{app}` */
@@ -1164,22 +1540,35 @@ export interface UploadMediaRequest {
   body?: GoogleFirebaseAppdistroV1UploadReleaseRequest;
 }
 export const UploadMediaRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "app": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleFirebaseAppdistroV1UploadReleaseRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+app}/releases:upload","baseUrl":"https://firebaseappdistribution.googleapis.com/"})),
-).annotate({ identifier: "UploadMediaRequest" }) as any as S.Schema<UploadMediaRequest>;
+  S.Struct({
+    app: S.String.pipe(T.Label()),
+    body: S.optional(
+      GoogleFirebaseAppdistroV1UploadReleaseRequest.pipe(T.HttpBody()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+app}/releases:upload",
+      baseUrl: "https://firebaseappdistribution.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UploadMediaRequest",
+}) as any as S.Schema<UploadMediaRequest>;
 
 /** The request message for Operations.WaitOperation. */
 export interface GoogleLongrunningWaitOperationRequest {
   /** The maximum duration to wait before timing out. If left blank, the wait will be at most the time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also specified, the shorter one will be used. */
   timeout?: string;
 }
-export const GoogleLongrunningWaitOperationRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "timeout": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleLongrunningWaitOperationRequest" }) as any as S.Schema<GoogleLongrunningWaitOperationRequest>;
+export const GoogleLongrunningWaitOperationRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      timeout: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "GoogleLongrunningWaitOperationRequest",
+}) as any as S.Schema<GoogleLongrunningWaitOperationRequest>;
 
 export interface WaitProjectsAppsReleasesOperationsRequest {
   /** The name of the operation resource to wait on. */
@@ -1187,14 +1576,30 @@ export interface WaitProjectsAppsReleasesOperationsRequest {
   /** Request body */
   body?: GoogleLongrunningWaitOperationRequest;
 }
-export const WaitProjectsAppsReleasesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleLongrunningWaitOperationRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:wait","baseUrl":"https://firebaseappdistribution.googleapis.com/"})),
-).annotate({ identifier: "WaitProjectsAppsReleasesOperationsRequest" }) as any as S.Schema<WaitProjectsAppsReleasesOperationsRequest>;
+export const WaitProjectsAppsReleasesOperationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleLongrunningWaitOperationRequest.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:wait",
+        baseUrl: "https://firebaseappdistribution.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "WaitProjectsAppsReleasesOperationsRequest",
+  }) as any as S.Schema<WaitProjectsAppsReleasesOperationsRequest>;
 
-export type BatchAddProjectsTestersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type BatchAddProjectsTestersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Batch adds testers. This call adds testers for the specified emails if they don't already exist. Returns all testers specified in the request, including newly created and previously existing testers. This action is idempotent. */
 export const batchAddProjectsTesters: API.OperationMethod<
   BatchAddProjectsTestersRequest,
@@ -1209,7 +1614,12 @@ export const batchAddProjectsTesters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BatchDeleteProjectsAppsReleasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type BatchDeleteProjectsAppsReleasesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes releases. A maximum of 100 releases can be deleted per request. */
 export const batchDeleteProjectsAppsReleases: API.OperationMethod<
   BatchDeleteProjectsAppsReleasesRequest,
@@ -1224,7 +1634,12 @@ export const batchDeleteProjectsAppsReleases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BatchJoinProjectsGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type BatchJoinProjectsGroupsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Batch adds members to a group. The testers will gain access to all releases that the groups have access to. */
 export const batchJoinProjectsGroups: API.OperationMethod<
   BatchJoinProjectsGroupsRequest,
@@ -1239,7 +1654,12 @@ export const batchJoinProjectsGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BatchLeaveProjectsGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type BatchLeaveProjectsGroupsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Batch removed members from a group. The testers will lose access to all releases that the groups have access to. */
 export const batchLeaveProjectsGroups: API.OperationMethod<
   BatchLeaveProjectsGroupsRequest,
@@ -1254,7 +1674,12 @@ export const batchLeaveProjectsGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BatchRemoveProjectsTestersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type BatchRemoveProjectsTestersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Batch removes testers. If found, this call deletes testers for the specified emails. Returns all deleted testers. */
 export const batchRemoveProjectsTesters: API.OperationMethod<
   BatchRemoveProjectsTestersRequest,
@@ -1269,7 +1694,12 @@ export const batchRemoveProjectsTesters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CancelProjectsAppsReleasesOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CancelProjectsAppsReleasesOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsAppsReleasesOperations: API.OperationMethod<
   CancelProjectsAppsReleasesOperationsRequest,
@@ -1284,7 +1714,12 @@ export const cancelProjectsAppsReleasesOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsGroupsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Create a group. */
 export const createProjectsGroups: API.OperationMethod<
   CreateProjectsGroupsRequest,
@@ -1299,7 +1734,12 @@ export const createProjectsGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsAppsReleasesFeedbackReportsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsAppsReleasesFeedbackReportsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a feedback report. */
 export const deleteProjectsAppsReleasesFeedbackReports: API.OperationMethod<
   DeleteProjectsAppsReleasesFeedbackReportsRequest,
@@ -1314,7 +1754,12 @@ export const deleteProjectsAppsReleasesFeedbackReports: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsAppsReleasesOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsAppsReleasesOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsAppsReleasesOperations: API.OperationMethod<
   DeleteProjectsAppsReleasesOperationsRequest,
@@ -1329,7 +1774,12 @@ export const deleteProjectsAppsReleasesOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsGroupsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Delete a group. */
 export const deleteProjectsGroups: API.OperationMethod<
   DeleteProjectsGroupsRequest,
@@ -1344,7 +1794,12 @@ export const deleteProjectsGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DistributeProjectsAppsReleasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DistributeProjectsAppsReleasesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Distributes a release to testers. This call does the following: 1. Creates testers for the specified emails, if none exist. 2. Adds the testers and groups to the release. 3. Sends new testers an invitation email. 4. Sends existing testers a new release email. The request will fail with a `INVALID_ARGUMENT` if it contains a group that doesn't exist. */
 export const distributeProjectsAppsReleases: API.OperationMethod<
   DistributeProjectsAppsReleasesRequest,
@@ -1389,7 +1844,10 @@ export const getProjectsAppsReleases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsAppsReleasesFeedbackReportsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsAppsReleasesFeedbackReportsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets a feedback report. */
 export const getProjectsAppsReleasesFeedbackReports: API.OperationMethod<
   GetProjectsAppsReleasesFeedbackReportsRequest,
@@ -1404,7 +1862,10 @@ export const getProjectsAppsReleasesFeedbackReports: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsAppsReleasesOperationsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsAppsReleasesOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsAppsReleasesOperations: API.OperationMethod<
   GetProjectsAppsReleasesOperationsRequest,
@@ -1447,10 +1908,16 @@ export const listProjectsAppsReleases: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsAppsReleasesFeedbackReportsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsAppsReleasesFeedbackReportsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists feedback reports. By default, sorts by `createTime` in descending order. */
 export const listProjectsAppsReleasesFeedbackReports: API.PaginatedOperationMethod<
   ListProjectsAppsReleasesFeedbackReportsRequest,
@@ -1463,10 +1930,16 @@ export const listProjectsAppsReleasesFeedbackReports: API.PaginatedOperationMeth
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsAppsReleasesOperationsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsAppsReleasesOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsAppsReleasesOperations: API.PaginatedOperationMethod<
   ListProjectsAppsReleasesOperationsRequest,
@@ -1479,7 +1952,10 @@ export const listProjectsAppsReleasesOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListProjectsGroupsError = NotFound | Forbidden | GcpOpError;
@@ -1495,7 +1971,10 @@ export const listProjectsGroups: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListProjectsTestersError = NotFound | Forbidden | GcpOpError;
@@ -1511,10 +1990,18 @@ export const listProjectsTesters: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type PatchProjectsAppsReleasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsAppsReleasesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a release. */
 export const patchProjectsAppsReleases: API.OperationMethod<
   PatchProjectsAppsReleasesRequest,
@@ -1529,7 +2016,12 @@ export const patchProjectsAppsReleases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsGroupsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update a group. */
 export const patchProjectsGroups: API.OperationMethod<
   PatchProjectsGroupsRequest,
@@ -1544,7 +2036,12 @@ export const patchProjectsGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsTestersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsTestersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update a tester. If the testers joins a group they gain access to all releases that the group has access to. */
 export const patchProjectsTesters: API.OperationMethod<
   PatchProjectsTestersRequest,
@@ -1559,7 +2056,12 @@ export const patchProjectsTesters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UploadMediaError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UploadMediaError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Uploads a binary. Uploading a binary can result in a new release being created, an update to an existing release, or a no-op if a release with the same binary already exists. */
 export const uploadMedia: API.OperationMethod<
   UploadMediaRequest,
@@ -1574,7 +2076,12 @@ export const uploadMedia: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type WaitProjectsAppsReleasesOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type WaitProjectsAppsReleasesOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done. */
 export const waitProjectsAppsReleasesOperations: API.OperationMethod<
   WaitProjectsAppsReleasesOperationsRequest,
@@ -1588,4 +2095,3 @@ export const waitProjectsAppsReleasesOperations: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

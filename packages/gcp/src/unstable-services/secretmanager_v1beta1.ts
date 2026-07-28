@@ -13,62 +13,71 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export interface AccessProjectsSecretsVersionsRequest {
   /** Required. The resource name of the SecretVersion in the format `projects/*\/secrets/*\/versions/*`. */
   name: string;
 }
-export const AccessProjectsSecretsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}:access","baseUrl":"https://secretmanager.googleapis.com/"})),
-).annotate({ identifier: "AccessProjectsSecretsVersionsRequest" }) as any as S.Schema<AccessProjectsSecretsVersionsRequest>;
+export const AccessProjectsSecretsVersionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+name}:access",
+        baseUrl: "https://secretmanager.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "AccessProjectsSecretsVersionsRequest",
+}) as any as S.Schema<AccessProjectsSecretsVersionsRequest>;
 
 /** A secret payload resource in the Secret Manager API. This contains the sensitive secret data that is associated with a SecretVersion. */
 export interface SecretPayload {
@@ -76,9 +85,9 @@ export interface SecretPayload {
   data?: string;
 }
 export const SecretPayload = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "data": S.optional(S.String),
-}),
+  S.Struct({
+    data: S.optional(S.String),
+  }),
 ).annotate({ identifier: "SecretPayload" }) as any as S.Schema<SecretPayload>;
 
 /** Response message for SecretManagerService.AccessSecretVersion. */
@@ -89,11 +98,13 @@ export interface AccessSecretVersionResponse {
   payload?: SecretPayload;
 }
 export const AccessSecretVersionResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "payload": S.optional(SecretPayload),
-}),
-).annotate({ identifier: "AccessSecretVersionResponse" }) as any as S.Schema<AccessSecretVersionResponse>;
+  S.Struct({
+    name: S.optional(S.String),
+    payload: S.optional(SecretPayload),
+  }),
+).annotate({
+  identifier: "AccessSecretVersionResponse",
+}) as any as S.Schema<AccessSecretVersionResponse>;
 
 /** Request message for SecretManagerService.AddSecretVersion. */
 export interface AddSecretVersionRequest {
@@ -101,10 +112,12 @@ export interface AddSecretVersionRequest {
   payload?: SecretPayload;
 }
 export const AddSecretVersionRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "payload": S.optional(SecretPayload),
-}),
-).annotate({ identifier: "AddSecretVersionRequest" }) as any as S.Schema<AddSecretVersionRequest>;
+  S.Struct({
+    payload: S.optional(SecretPayload),
+  }),
+).annotate({
+  identifier: "AddSecretVersionRequest",
+}) as any as S.Schema<AddSecretVersionRequest>;
 
 export interface AddVersionProjectsSecretsRequest {
   /** Required. The resource name of the Secret to associate with the SecretVersion in the format `projects/*\/secrets/*`. */
@@ -113,13 +126,25 @@ export interface AddVersionProjectsSecretsRequest {
   body?: AddSecretVersionRequest;
 }
 export const AddVersionProjectsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(AddSecretVersionRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}:addVersion","baseUrl":"https://secretmanager.googleapis.com/"})),
-).annotate({ identifier: "AddVersionProjectsSecretsRequest" }) as any as S.Schema<AddVersionProjectsSecretsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(AddSecretVersionRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1/{+parent}:addVersion",
+      baseUrl: "https://secretmanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "AddVersionProjectsSecretsRequest",
+}) as any as S.Schema<AddVersionProjectsSecretsRequest>;
 
-export type SecretVersionStateEnum = "STATE_UNSPECIFIED" | "ENABLED" | "DISABLED" | "DESTROYED";
+export type SecretVersionStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ENABLED"
+  | "DISABLED"
+  | "DESTROYED";
 export const SecretVersionStateEnum = /*@__PURE__*/ S.String;
 
 /** A secret version resource in the Secret Manager API. */
@@ -134,19 +159,19 @@ export interface SecretVersion {
   createTime?: string;
 }
 export const SecretVersion = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "state": S.optional(SecretVersionStateEnum),
-  "name": S.optional(S.String),
-  "destroyTime": S.optional(S.String),
-  "createTime": S.optional(S.String),
-}),
+  S.Struct({
+    state: S.optional(SecretVersionStateEnum),
+    name: S.optional(S.String),
+    destroyTime: S.optional(S.String),
+    createTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "SecretVersion" }) as any as S.Schema<SecretVersion>;
 
 /** A replication policy that replicates the Secret payload without any restrictions. */
 export interface Automatic {}
-export const Automatic = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Automatic" }) as any as S.Schema<Automatic>;
+export const Automatic = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Automatic",
+}) as any as S.Schema<Automatic>;
 
 /** Represents a Replica for this Secret. */
 export interface Replica {
@@ -154,13 +179,15 @@ export interface Replica {
   location?: string;
 }
 export const Replica = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "location": S.optional(S.String),
-}),
+  S.Struct({
+    location: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Replica" }) as any as S.Schema<Replica>;
 
 export type ReplicaList = ReadonlyArray<Replica>;
-export const ReplicaList = /*@__PURE__*/ S.Array(Replica) as any as S.Schema<ReplicaList>;
+export const ReplicaList = /*@__PURE__*/ S.Array(
+  Replica,
+) as any as S.Schema<ReplicaList>;
 
 /** A replication policy that replicates the Secret payload into the locations specified in Replication.UserManaged.replicas */
 export interface UserManaged {
@@ -168,9 +195,9 @@ export interface UserManaged {
   replicas?: ReplicaList;
 }
 export const UserManaged = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "replicas": S.optional(ReplicaList),
-}),
+  S.Struct({
+    replicas: S.optional(ReplicaList),
+  }),
 ).annotate({ identifier: "UserManaged" }) as any as S.Schema<UserManaged>;
 
 /** A policy that defines the replication configuration of data. */
@@ -181,14 +208,17 @@ export interface Replication {
   userManaged?: UserManaged;
 }
 export const Replication = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "automatic": S.optional(Automatic),
-  "userManaged": S.optional(UserManaged),
-}),
+  S.Struct({
+    automatic: S.optional(Automatic),
+    userManaged: S.optional(UserManaged),
+  }),
 ).annotate({ identifier: "Replication" }) as any as S.Schema<Replication>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
 /** A Secret is a logical secret whose value and versions can be accessed. A Secret is made up of zero or more SecretVersions that represent the secret data. */
 export interface Secret {
@@ -204,13 +234,13 @@ export interface Secret {
   tags?: StringMap;
 }
 export const Secret = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "replication": S.optional(Replication),
-  "createTime": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "tags": S.optional(StringMap),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    replication: S.optional(Replication),
+    createTime: S.optional(S.String),
+    labels: S.optional(StringMap),
+    tags: S.optional(StringMap),
+  }),
 ).annotate({ identifier: "Secret" }) as any as S.Schema<Secret>;
 
 export interface CreateProjectsSecretsRequest {
@@ -222,34 +252,52 @@ export interface CreateProjectsSecretsRequest {
   body?: Secret;
 }
 export const CreateProjectsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "secretId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Secret.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/secrets","baseUrl":"https://secretmanager.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsSecretsRequest" }) as any as S.Schema<CreateProjectsSecretsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    secretId: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(Secret.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1/{+parent}/secrets",
+      baseUrl: "https://secretmanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateProjectsSecretsRequest",
+}) as any as S.Schema<CreateProjectsSecretsRequest>;
 
 export interface DeleteProjectsSecretsRequest {
   /** Required. The resource name of the Secret to delete in the format `projects/*\/secrets/*`. */
   name: string;
 }
 export const DeleteProjectsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://secretmanager.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsSecretsRequest" }) as any as S.Schema<DeleteProjectsSecretsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1beta1/{+name}",
+      baseUrl: "https://secretmanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteProjectsSecretsRequest",
+}) as any as S.Schema<DeleteProjectsSecretsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 /** Request message for SecretManagerService.DestroySecretVersion. */
 export interface DestroySecretVersionRequest {}
 export const DestroySecretVersionRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "DestroySecretVersionRequest" }) as any as S.Schema<DestroySecretVersionRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "DestroySecretVersionRequest",
+}) as any as S.Schema<DestroySecretVersionRequest>;
 
 export interface DestroyProjectsSecretsVersionsRequest {
   /** Required. The resource name of the SecretVersion to destroy in the format `projects/*\/secrets/*\/versions/*`. */
@@ -257,18 +305,29 @@ export interface DestroyProjectsSecretsVersionsRequest {
   /** Request body */
   body?: DestroySecretVersionRequest;
 }
-export const DestroyProjectsSecretsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(DestroySecretVersionRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:destroy","baseUrl":"https://secretmanager.googleapis.com/"})),
-).annotate({ identifier: "DestroyProjectsSecretsVersionsRequest" }) as any as S.Schema<DestroyProjectsSecretsVersionsRequest>;
+export const DestroyProjectsSecretsVersionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(DestroySecretVersionRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+name}:destroy",
+        baseUrl: "https://secretmanager.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DestroyProjectsSecretsVersionsRequest",
+}) as any as S.Schema<DestroyProjectsSecretsVersionsRequest>;
 
 /** Request message for SecretManagerService.DisableSecretVersion. */
 export interface DisableSecretVersionRequest {}
 export const DisableSecretVersionRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "DisableSecretVersionRequest" }) as any as S.Schema<DisableSecretVersionRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "DisableSecretVersionRequest",
+}) as any as S.Schema<DisableSecretVersionRequest>;
 
 export interface DisableProjectsSecretsVersionsRequest {
   /** Required. The resource name of the SecretVersion to disable in the format `projects/*\/secrets/*\/versions/*`. */
@@ -276,18 +335,29 @@ export interface DisableProjectsSecretsVersionsRequest {
   /** Request body */
   body?: DisableSecretVersionRequest;
 }
-export const DisableProjectsSecretsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(DisableSecretVersionRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:disable","baseUrl":"https://secretmanager.googleapis.com/"})),
-).annotate({ identifier: "DisableProjectsSecretsVersionsRequest" }) as any as S.Schema<DisableProjectsSecretsVersionsRequest>;
+export const DisableProjectsSecretsVersionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(DisableSecretVersionRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+name}:disable",
+        baseUrl: "https://secretmanager.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DisableProjectsSecretsVersionsRequest",
+}) as any as S.Schema<DisableProjectsSecretsVersionsRequest>;
 
 /** Request message for SecretManagerService.EnableSecretVersion. */
 export interface EnableSecretVersionRequest {}
 export const EnableSecretVersionRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "EnableSecretVersionRequest" }) as any as S.Schema<EnableSecretVersionRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "EnableSecretVersionRequest",
+}) as any as S.Schema<EnableSecretVersionRequest>;
 
 export interface EnableProjectsSecretsVersionsRequest {
   /** Required. The resource name of the SecretVersion to enable in the format `projects/*\/secrets/*\/versions/*`. */
@@ -295,12 +365,21 @@ export interface EnableProjectsSecretsVersionsRequest {
   /** Request body */
   body?: EnableSecretVersionRequest;
 }
-export const EnableProjectsSecretsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(EnableSecretVersionRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:enable","baseUrl":"https://secretmanager.googleapis.com/"})),
-).annotate({ identifier: "EnableProjectsSecretsVersionsRequest" }) as any as S.Schema<EnableProjectsSecretsVersionsRequest>;
+export const EnableProjectsSecretsVersionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(EnableSecretVersionRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+name}:enable",
+        baseUrl: "https://secretmanager.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "EnableProjectsSecretsVersionsRequest",
+}) as any as S.Schema<EnableProjectsSecretsVersionsRequest>;
 
 export interface GetIamPolicyProjectsSecretsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -309,17 +388,31 @@ export interface GetIamPolicyProjectsSecretsRequest {
   "options.requestedPolicyVersion"?: number;
 }
 export const GetIamPolicyProjectsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+resource}:getIamPolicy","baseUrl":"https://secretmanager.googleapis.com/"})),
-).annotate({ identifier: "GetIamPolicyProjectsSecretsRequest" }) as any as S.Schema<GetIamPolicyProjectsSecretsRequest>;
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+resource}:getIamPolicy",
+      baseUrl: "https://secretmanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetIamPolicyProjectsSecretsRequest",
+}) as any as S.Schema<GetIamPolicyProjectsSecretsRequest>;
 
-export type AuditLogConfigLogTypeEnum = "LOG_TYPE_UNSPECIFIED" | "ADMIN_READ" | "DATA_WRITE" | "DATA_READ";
+export type AuditLogConfigLogTypeEnum =
+  | "LOG_TYPE_UNSPECIFIED"
+  | "ADMIN_READ"
+  | "DATA_WRITE"
+  | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
@@ -329,14 +422,16 @@ export interface AuditLogConfig {
   exemptedMembers?: StringList;
 }
 export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "logType": S.optional(AuditLogConfigLogTypeEnum),
-  "exemptedMembers": S.optional(StringList),
-}),
+  S.Struct({
+    logType: S.optional(AuditLogConfigLogTypeEnum),
+    exemptedMembers: S.optional(StringList),
+  }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(AuditLogConfig) as any as S.Schema<AuditLogConfigList>;
+export const AuditLogConfigList = /*@__PURE__*/ S.Array(
+  AuditLogConfig,
+) as any as S.Schema<AuditLogConfigList>;
 
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface AuditConfig {
@@ -346,14 +441,16 @@ export interface AuditConfig {
   auditLogConfigs?: AuditLogConfigList;
 }
 export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "service": S.optional(S.String),
-  "auditLogConfigs": S.optional(AuditLogConfigList),
-}),
+  S.Struct({
+    service: S.optional(S.String),
+    auditLogConfigs: S.optional(AuditLogConfigList),
+  }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = ReadonlyArray<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
+export const AuditConfigList = /*@__PURE__*/ S.Array(
+  AuditConfig,
+) as any as S.Schema<AuditConfigList>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -367,12 +464,12 @@ export interface Expr {
   description?: string;
 }
 export const Expr = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "title": S.optional(S.String),
-  "location": S.optional(S.String),
-  "expression": S.optional(S.String),
-  "description": S.optional(S.String),
-}),
+  S.Struct({
+    title: S.optional(S.String),
+    location: S.optional(S.String),
+    expression: S.optional(S.String),
+    description: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
 /** Associates `members`, or principals, with a `role`. */
@@ -385,15 +482,17 @@ export interface Binding {
   role?: string;
 }
 export const Binding = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "members": S.optional(StringList),
-  "condition": S.optional(Expr),
-  "role": S.optional(S.String),
-}),
+  S.Struct({
+    members: S.optional(StringList),
+    condition: S.optional(Expr),
+    role: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = ReadonlyArray<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+export const BindingList = /*@__PURE__*/ S.Array(
+  Binding,
+) as any as S.Schema<BindingList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -407,12 +506,12 @@ export interface Policy {
   etag?: string;
 }
 export const Policy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "auditConfigs": S.optional(AuditConfigList),
-  "version": S.optional(S.Number),
-  "bindings": S.optional(BindingList),
-  "etag": S.optional(S.String),
-}),
+  S.Struct({
+    auditConfigs: S.optional(AuditConfigList),
+    version: S.optional(S.Number),
+    bindings: S.optional(BindingList),
+    etag: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
 
 export interface GetProjectsLocationsRequest {
@@ -420,13 +519,24 @@ export interface GetProjectsLocationsRequest {
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://secretmanager.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+name}",
+      baseUrl: "https://secretmanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsRequest",
+}) as any as S.Schema<GetProjectsLocationsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -442,13 +552,13 @@ export interface Location {
   displayName?: string;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "metadata": S.optional(DocumentMap),
-  "locationId": S.optional(S.String),
-  "displayName": S.optional(S.String),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    labels: S.optional(StringMap),
+    metadata: S.optional(DocumentMap),
+    locationId: S.optional(S.String),
+    displayName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export interface GetProjectsSecretsRequest {
@@ -456,20 +566,36 @@ export interface GetProjectsSecretsRequest {
   name: string;
 }
 export const GetProjectsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://secretmanager.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsSecretsRequest" }) as any as S.Schema<GetProjectsSecretsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+name}",
+      baseUrl: "https://secretmanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsSecretsRequest",
+}) as any as S.Schema<GetProjectsSecretsRequest>;
 
 export interface GetProjectsSecretsVersionsRequest {
   /** Required. The resource name of the SecretVersion in the format `projects/*\/secrets/*\/versions/*`. `projects/*\/secrets/*\/versions/latest` is an alias to the `latest` SecretVersion. */
   name: string;
 }
 export const GetProjectsSecretsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://secretmanager.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsSecretsVersionsRequest" }) as any as S.Schema<GetProjectsSecretsVersionsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+name}",
+      baseUrl: "https://secretmanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsSecretsVersionsRequest",
+}) as any as S.Schema<GetProjectsSecretsVersionsRequest>;
 
 export interface ListProjectsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
@@ -484,17 +610,27 @@ export interface ListProjectsLocationsRequest {
   extraLocationTypes?: StringList;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}/locations","baseUrl":"https://secretmanager.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    filter: S.optional(S.String.pipe(T.Query())),
+    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+name}/locations",
+      baseUrl: "https://secretmanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsRequest",
+}) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(
+  Location,
+) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -504,11 +640,13 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locations": S.optional(LocationList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
+  S.Struct({
+    locations: S.optional(LocationList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListLocationsResponse",
+}) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsSecretsRequest {
   /** Required. The resource name of the project associated with the Secrets, in the format `projects/*`. */
@@ -519,15 +657,25 @@ export interface ListProjectsSecretsRequest {
   pageToken?: string;
 }
 export const ListProjectsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/secrets","baseUrl":"https://secretmanager.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsSecretsRequest" }) as any as S.Schema<ListProjectsSecretsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+parent}/secrets",
+      baseUrl: "https://secretmanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsSecretsRequest",
+}) as any as S.Schema<ListProjectsSecretsRequest>;
 
 export type SecretList = ReadonlyArray<Secret>;
-export const SecretList = /*@__PURE__*/ S.Array(Secret) as any as S.Schema<SecretList>;
+export const SecretList = /*@__PURE__*/ S.Array(
+  Secret,
+) as any as S.Schema<SecretList>;
 
 /** Response message for SecretManagerService.ListSecrets. */
 export interface ListSecretsResponse {
@@ -539,12 +687,14 @@ export interface ListSecretsResponse {
   totalSize?: number;
 }
 export const ListSecretsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "secrets": S.optional(SecretList),
-  "totalSize": S.optional(S.Number),
-}),
-).annotate({ identifier: "ListSecretsResponse" }) as any as S.Schema<ListSecretsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    secrets: S.optional(SecretList),
+    totalSize: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ListSecretsResponse",
+}) as any as S.Schema<ListSecretsResponse>;
 
 export interface ListProjectsSecretsVersionsRequest {
   /** Required. The resource name of the Secret associated with the SecretVersions to list, in the format `projects/*\/secrets/*`. */
@@ -555,15 +705,25 @@ export interface ListProjectsSecretsVersionsRequest {
   pageToken?: string;
 }
 export const ListProjectsSecretsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/versions","baseUrl":"https://secretmanager.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsSecretsVersionsRequest" }) as any as S.Schema<ListProjectsSecretsVersionsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+parent}/versions",
+      baseUrl: "https://secretmanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsSecretsVersionsRequest",
+}) as any as S.Schema<ListProjectsSecretsVersionsRequest>;
 
 export type SecretVersionList = ReadonlyArray<SecretVersion>;
-export const SecretVersionList = /*@__PURE__*/ S.Array(SecretVersion) as any as S.Schema<SecretVersionList>;
+export const SecretVersionList = /*@__PURE__*/ S.Array(
+  SecretVersion,
+) as any as S.Schema<SecretVersionList>;
 
 /** Response message for SecretManagerService.ListSecretVersions. */
 export interface ListSecretVersionsResponse {
@@ -575,12 +735,14 @@ export interface ListSecretVersionsResponse {
   totalSize?: number;
 }
 export const ListSecretVersionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "versions": S.optional(SecretVersionList),
-  "totalSize": S.optional(S.Number),
-}),
-).annotate({ identifier: "ListSecretVersionsResponse" }) as any as S.Schema<ListSecretVersionsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    versions: S.optional(SecretVersionList),
+    totalSize: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ListSecretVersionsResponse",
+}) as any as S.Schema<ListSecretVersionsResponse>;
 
 export interface PatchProjectsSecretsRequest {
   /** Output only. The resource name of the Secret in the format `projects/*\/secrets/*`. */
@@ -591,12 +753,20 @@ export interface PatchProjectsSecretsRequest {
   body?: Secret;
 }
 export const PatchProjectsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Secret.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://secretmanager.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsSecretsRequest" }) as any as S.Schema<PatchProjectsSecretsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(Secret.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1beta1/{+name}",
+      baseUrl: "https://secretmanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchProjectsSecretsRequest",
+}) as any as S.Schema<PatchProjectsSecretsRequest>;
 
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
@@ -606,11 +776,13 @@ export interface SetIamPolicyRequest {
   policy?: Policy;
 }
 export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String),
-  "policy": S.optional(Policy),
-}),
-).annotate({ identifier: "SetIamPolicyRequest" }) as any as S.Schema<SetIamPolicyRequest>;
+  S.Struct({
+    updateMask: S.optional(S.String),
+    policy: S.optional(Policy),
+  }),
+).annotate({
+  identifier: "SetIamPolicyRequest",
+}) as any as S.Schema<SetIamPolicyRequest>;
 
 export interface SetIamPolicyProjectsSecretsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -619,11 +791,19 @@ export interface SetIamPolicyProjectsSecretsRequest {
   body?: SetIamPolicyRequest;
 }
 export const SetIamPolicyProjectsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+resource}:setIamPolicy","baseUrl":"https://secretmanager.googleapis.com/"})),
-).annotate({ identifier: "SetIamPolicyProjectsSecretsRequest" }) as any as S.Schema<SetIamPolicyProjectsSecretsRequest>;
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1/{+resource}:setIamPolicy",
+      baseUrl: "https://secretmanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SetIamPolicyProjectsSecretsRequest",
+}) as any as S.Schema<SetIamPolicyProjectsSecretsRequest>;
 
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
@@ -631,10 +811,12 @@ export interface TestIamPermissionsRequest {
   permissions?: StringList;
 }
 export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "permissions": S.optional(StringList),
-}),
-).annotate({ identifier: "TestIamPermissionsRequest" }) as any as S.Schema<TestIamPermissionsRequest>;
+  S.Struct({
+    permissions: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "TestIamPermissionsRequest",
+}) as any as S.Schema<TestIamPermissionsRequest>;
 
 export interface TestIamPermissionsProjectsSecretsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -642,12 +824,21 @@ export interface TestIamPermissionsProjectsSecretsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+resource}:testIamPermissions","baseUrl":"https://secretmanager.googleapis.com/"})),
-).annotate({ identifier: "TestIamPermissionsProjectsSecretsRequest" }) as any as S.Schema<TestIamPermissionsProjectsSecretsRequest>;
+export const TestIamPermissionsProjectsSecretsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+resource}:testIamPermissions",
+        baseUrl: "https://secretmanager.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "TestIamPermissionsProjectsSecretsRequest",
+}) as any as S.Schema<TestIamPermissionsProjectsSecretsRequest>;
 
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
@@ -655,12 +846,17 @@ export interface TestIamPermissionsResponse {
   permissions?: StringList;
 }
 export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "permissions": S.optional(StringList),
-}),
-).annotate({ identifier: "TestIamPermissionsResponse" }) as any as S.Schema<TestIamPermissionsResponse>;
+  S.Struct({
+    permissions: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "TestIamPermissionsResponse",
+}) as any as S.Schema<TestIamPermissionsResponse>;
 
-export type AccessProjectsSecretsVersionsError = NotFound | Forbidden | GcpOpError;
+export type AccessProjectsSecretsVersionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Accesses a SecretVersion. This call returns the secret data. `projects/*\/secrets/*\/versions/latest` is an alias to the `latest` SecretVersion. */
 export const accessProjectsSecretsVersions: API.OperationMethod<
   AccessProjectsSecretsVersionsRequest,
@@ -675,7 +871,12 @@ export const accessProjectsSecretsVersions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AddVersionProjectsSecretsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type AddVersionProjectsSecretsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new SecretVersion containing secret data and attaches it to an existing Secret. */
 export const addVersionProjectsSecrets: API.OperationMethod<
   AddVersionProjectsSecretsRequest,
@@ -690,7 +891,12 @@ export const addVersionProjectsSecrets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsSecretsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsSecretsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new Secret containing no SecretVersions. */
 export const createProjectsSecrets: API.OperationMethod<
   CreateProjectsSecretsRequest,
@@ -705,7 +911,12 @@ export const createProjectsSecrets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsSecretsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsSecretsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a Secret. */
 export const deleteProjectsSecrets: API.OperationMethod<
   DeleteProjectsSecretsRequest,
@@ -720,7 +931,12 @@ export const deleteProjectsSecrets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DestroyProjectsSecretsVersionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DestroyProjectsSecretsVersionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Destroys a SecretVersion. Sets the state of the SecretVersion to DESTROYED and irrevocably destroys the secret data. */
 export const destroyProjectsSecretsVersions: API.OperationMethod<
   DestroyProjectsSecretsVersionsRequest,
@@ -735,7 +951,12 @@ export const destroyProjectsSecretsVersions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DisableProjectsSecretsVersionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DisableProjectsSecretsVersionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Disables a SecretVersion. Sets the state of the SecretVersion to DISABLED. */
 export const disableProjectsSecretsVersions: API.OperationMethod<
   DisableProjectsSecretsVersionsRequest,
@@ -750,7 +971,12 @@ export const disableProjectsSecretsVersions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type EnableProjectsSecretsVersionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type EnableProjectsSecretsVersionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Enables a SecretVersion. Sets the state of the SecretVersion to ENABLED. */
 export const enableProjectsSecretsVersions: API.OperationMethod<
   EnableProjectsSecretsVersionsRequest,
@@ -765,7 +991,10 @@ export const enableProjectsSecretsVersions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsSecretsError = NotFound | Forbidden | GcpOpError;
+export type GetIamPolicyProjectsSecretsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the access control policy for a secret. Returns empty policy if the secret exists and does not have a policy set. */
 export const getIamPolicyProjectsSecrets: API.OperationMethod<
   GetIamPolicyProjectsSecretsRequest,
@@ -838,7 +1067,10 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListProjectsSecretsError = NotFound | Forbidden | GcpOpError;
@@ -854,10 +1086,16 @@ export const listProjectsSecrets: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsSecretsVersionsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsSecretsVersionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists SecretVersions. This call does not return secret data. */
 export const listProjectsSecretsVersions: API.PaginatedOperationMethod<
   ListProjectsSecretsVersionsRequest,
@@ -870,10 +1108,18 @@ export const listProjectsSecretsVersions: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type PatchProjectsSecretsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsSecretsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates metadata of an existing Secret. */
 export const patchProjectsSecrets: API.OperationMethod<
   PatchProjectsSecretsRequest,
@@ -888,7 +1134,12 @@ export const patchProjectsSecrets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsSecretsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetIamPolicyProjectsSecretsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sets the access control policy on the specified secret. Replaces any existing policy. Permissions on SecretVersions are enforced according to the policy set on the associated Secret. */
 export const setIamPolicyProjectsSecrets: API.OperationMethod<
   SetIamPolicyProjectsSecretsRequest,
@@ -903,7 +1154,12 @@ export const setIamPolicyProjectsSecrets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsSecretsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TestIamPermissionsProjectsSecretsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Returns permissions that a caller has for the specified secret. If the secret does not exist, this call returns an empty set of permissions, not a NOT_FOUND error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsSecrets: API.OperationMethod<
   TestIamPermissionsProjectsSecretsRequest,
@@ -917,4 +1173,3 @@ export const testIamPermissionsProjectsSecrets: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

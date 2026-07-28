@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export interface GetProjectsTracesRequest {
@@ -67,17 +67,31 @@ export interface GetProjectsTracesRequest {
   projectId: string;
 }
 export const GetProjectsTracesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "traceId": S.String.pipe(T.Label()),
-  "projectId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/projects/{projectId}/traces/{traceId}","baseUrl":"https://cloudtrace.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsTracesRequest" }) as any as S.Schema<GetProjectsTracesRequest>;
+  S.Struct({
+    traceId: S.String.pipe(T.Label()),
+    projectId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/projects/{projectId}/traces/{traceId}",
+      baseUrl: "https://cloudtrace.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsTracesRequest",
+}) as any as S.Schema<GetProjectsTracesRequest>;
 
-export type TraceSpanKindEnum = "SPAN_KIND_UNSPECIFIED" | "RPC_SERVER" | "RPC_CLIENT";
+export type TraceSpanKindEnum =
+  | "SPAN_KIND_UNSPECIFIED"
+  | "RPC_SERVER"
+  | "RPC_CLIENT";
 export const TraceSpanKindEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
 /** A span represents a single timed event within a trace. Spans can be nested and form a trace tree. Often, a trace contains a root span that describes the end-to-end latency of an operation and, optionally, one or more subspans for its suboperations. Spans do not need to be contiguous. There may be gaps between spans in a trace. */
 export interface TraceSpan {
@@ -97,19 +111,21 @@ export interface TraceSpan {
   endTime?: string;
 }
 export const TraceSpan = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(TraceSpanKindEnum),
-  "parentSpanId": S.optional(S.String),
-  "name": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "spanId": S.optional(S.String),
-  "startTime": S.optional(S.String),
-  "endTime": S.optional(S.String),
-}),
+  S.Struct({
+    kind: S.optional(TraceSpanKindEnum),
+    parentSpanId: S.optional(S.String),
+    name: S.optional(S.String),
+    labels: S.optional(StringMap),
+    spanId: S.optional(S.String),
+    startTime: S.optional(S.String),
+    endTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "TraceSpan" }) as any as S.Schema<TraceSpan>;
 
 export type TraceSpanList = ReadonlyArray<TraceSpan>;
-export const TraceSpanList = /*@__PURE__*/ S.Array(TraceSpan) as any as S.Schema<TraceSpanList>;
+export const TraceSpanList = /*@__PURE__*/ S.Array(
+  TraceSpan,
+) as any as S.Schema<TraceSpanList>;
 
 /** A trace describes how long it takes for an application to perform an operation. It consists of a set of spans, each of which represent a single timed event within the operation. */
 export interface Trace {
@@ -121,14 +137,18 @@ export interface Trace {
   projectId?: string;
 }
 export const Trace = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "traceId": S.optional(S.String),
-  "spans": S.optional(TraceSpanList),
-  "projectId": S.optional(S.String),
-}),
+  S.Struct({
+    traceId: S.optional(S.String),
+    spans: S.optional(TraceSpanList),
+    projectId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Trace" }) as any as S.Schema<Trace>;
 
-export type ListProjectsTracesViewEnum = "VIEW_TYPE_UNSPECIFIED" | "MINIMAL" | "ROOTSPAN" | "COMPLETE";
+export type ListProjectsTracesViewEnum =
+  | "VIEW_TYPE_UNSPECIFIED"
+  | "MINIMAL"
+  | "ROOTSPAN"
+  | "COMPLETE";
 export const ListProjectsTracesViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsTracesRequest {
@@ -150,20 +170,30 @@ export interface ListProjectsTracesRequest {
   startTime?: string;
 }
 export const ListProjectsTracesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "view": S.optional(ListProjectsTracesViewEnum.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "projectId": S.String.pipe(T.Label()),
-  "endTime": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "startTime": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/projects/{projectId}/traces","baseUrl":"https://cloudtrace.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsTracesRequest" }) as any as S.Schema<ListProjectsTracesRequest>;
+  S.Struct({
+    view: S.optional(ListProjectsTracesViewEnum.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    projectId: S.String.pipe(T.Label()),
+    endTime: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    startTime: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/projects/{projectId}/traces",
+      baseUrl: "https://cloudtrace.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsTracesRequest",
+}) as any as S.Schema<ListProjectsTracesRequest>;
 
 export type TraceList = ReadonlyArray<Trace>;
-export const TraceList = /*@__PURE__*/ S.Array(Trace) as any as S.Schema<TraceList>;
+export const TraceList = /*@__PURE__*/ S.Array(
+  Trace,
+) as any as S.Schema<TraceList>;
 
 /** The response message for the `ListTraces` method. */
 export interface ListTracesResponse {
@@ -173,11 +203,13 @@ export interface ListTracesResponse {
   nextPageToken?: string;
 }
 export const ListTracesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "traces": S.optional(TraceList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListTracesResponse" }) as any as S.Schema<ListTracesResponse>;
+  S.Struct({
+    traces: S.optional(TraceList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListTracesResponse",
+}) as any as S.Schema<ListTracesResponse>;
 
 /** List of new or updated traces. */
 export interface Traces {
@@ -185,9 +217,9 @@ export interface Traces {
   traces?: TraceList;
 }
 export const Traces = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "traces": S.optional(TraceList),
-}),
+  S.Struct({
+    traces: S.optional(TraceList),
+  }),
 ).annotate({ identifier: "Traces" }) as any as S.Schema<Traces>;
 
 export interface PatchTracesProjectsRequest {
@@ -197,17 +229,25 @@ export interface PatchTracesProjectsRequest {
   body?: Traces;
 }
 export const PatchTracesProjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectId": S.String.pipe(T.Label()),
-  "body": S.optional(Traces.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/projects/{projectId}/traces","baseUrl":"https://cloudtrace.googleapis.com/"})),
-).annotate({ identifier: "PatchTracesProjectsRequest" }) as any as S.Schema<PatchTracesProjectsRequest>;
+  S.Struct({
+    projectId: S.String.pipe(T.Label()),
+    body: S.optional(Traces.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/projects/{projectId}/traces",
+      baseUrl: "https://cloudtrace.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchTracesProjectsRequest",
+}) as any as S.Schema<PatchTracesProjectsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 export type GetProjectsTracesError = NotFound | Forbidden | GcpOpError;
 /** Gets a single trace by its ID. */
@@ -237,10 +277,18 @@ export const listProjectsTraces: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type PatchTracesProjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchTracesProjectsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sends trace spans to Cloud Trace. Spans cannot be updated. If the trace ID and span ID already exist, an additional copy of the span will be stored. */
 export const patchTracesProjects: API.OperationMethod<
   PatchTracesProjectsRequest,
@@ -254,4 +302,3 @@ export const patchTracesProjects: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

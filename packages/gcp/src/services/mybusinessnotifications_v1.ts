@@ -13,68 +13,94 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export interface GetNotificationSettingAccountsRequest {
   /** Required. The resource name of the notification setting we are trying to fetch. */
   name: string;
 }
-export const GetNotificationSettingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://mybusinessnotifications.googleapis.com/"})),
-).annotate({ identifier: "GetNotificationSettingAccountsRequest" }) as any as S.Schema<GetNotificationSettingAccountsRequest>;
+export const GetNotificationSettingAccountsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://mybusinessnotifications.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetNotificationSettingAccountsRequest",
+}) as any as S.Schema<GetNotificationSettingAccountsRequest>;
 
-export type NotificationSettingNotificationTypesItemEnum = "NOTIFICATION_TYPE_UNSPECIFIED" | "GOOGLE_UPDATE" | "NEW_REVIEW" | "UPDATED_REVIEW" | "NEW_CUSTOMER_MEDIA" | "NEW_QUESTION" | "UPDATED_QUESTION" | "NEW_ANSWER" | "UPDATED_ANSWER" | "DUPLICATE_LOCATION" | "LOSS_OF_VOICE_OF_MERCHANT" | "VOICE_OF_MERCHANT_UPDATED";
-export const NotificationSettingNotificationTypesItemEnum = /*@__PURE__*/ S.String;
+export type NotificationSettingNotificationTypesItemEnum =
+  | "NOTIFICATION_TYPE_UNSPECIFIED"
+  | "GOOGLE_UPDATE"
+  | "NEW_REVIEW"
+  | "UPDATED_REVIEW"
+  | "NEW_CUSTOMER_MEDIA"
+  | "NEW_QUESTION"
+  | "UPDATED_QUESTION"
+  | "NEW_ANSWER"
+  | "UPDATED_ANSWER"
+  | "DUPLICATE_LOCATION"
+  | "LOSS_OF_VOICE_OF_MERCHANT"
+  | "VOICE_OF_MERCHANT_UPDATED";
+export const NotificationSettingNotificationTypesItemEnum =
+  /*@__PURE__*/ S.String;
 
-export type NotificationSettingNotificationTypesItemEnumList = ReadonlyArray<NotificationSettingNotificationTypesItemEnum>;
-export const NotificationSettingNotificationTypesItemEnumList = /*@__PURE__*/ S.Array(NotificationSettingNotificationTypesItemEnum) as any as S.Schema<NotificationSettingNotificationTypesItemEnumList>;
+export type NotificationSettingNotificationTypesItemEnumList =
+  ReadonlyArray<NotificationSettingNotificationTypesItemEnum>;
+export const NotificationSettingNotificationTypesItemEnumList =
+  /*@__PURE__*/ S.Array(
+    NotificationSettingNotificationTypesItemEnum,
+  ) as any as S.Schema<NotificationSettingNotificationTypesItemEnumList>;
 
 /** A Google Pub/Sub topic where notifications can be published when a location is updated or has a new review. There will be only one notification setting resource per-account. */
 export interface NotificationSetting {
@@ -86,12 +112,16 @@ export interface NotificationSetting {
   pubsubTopic?: string;
 }
 export const NotificationSetting = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "notificationTypes": S.optional(NotificationSettingNotificationTypesItemEnumList),
-  "pubsubTopic": S.optional(S.String),
-}),
-).annotate({ identifier: "NotificationSetting" }) as any as S.Schema<NotificationSetting>;
+  S.Struct({
+    name: S.optional(S.String),
+    notificationTypes: S.optional(
+      NotificationSettingNotificationTypesItemEnumList,
+    ),
+    pubsubTopic: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "NotificationSetting",
+}) as any as S.Schema<NotificationSetting>;
 
 export interface UpdateNotificationSettingAccountsRequest {
   /** Required. The specific fields that should be updated. The only editable field is notification_setting. */
@@ -101,15 +131,27 @@ export interface UpdateNotificationSettingAccountsRequest {
   /** Request body */
   body?: NotificationSetting;
 }
-export const UpdateNotificationSettingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(NotificationSetting.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://mybusinessnotifications.googleapis.com/"})),
-).annotate({ identifier: "UpdateNotificationSettingAccountsRequest" }) as any as S.Schema<UpdateNotificationSettingAccountsRequest>;
+export const UpdateNotificationSettingAccountsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      body: S.optional(NotificationSetting.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://mybusinessnotifications.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "UpdateNotificationSettingAccountsRequest",
+}) as any as S.Schema<UpdateNotificationSettingAccountsRequest>;
 
-export type GetNotificationSettingAccountsError = NotFound | Forbidden | GcpOpError;
+export type GetNotificationSettingAccountsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns the pubsub notification settings for the account. */
 export const getNotificationSettingAccounts: API.OperationMethod<
   GetNotificationSettingAccountsRequest,
@@ -124,7 +166,12 @@ export const getNotificationSettingAccounts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateNotificationSettingAccountsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateNotificationSettingAccountsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sets the pubsub notification setting for the account informing Google which topic to send pubsub notifications for. Use the notification_types field within notification_setting to manipulate the events an account wants to subscribe to. An account will only have one notification setting resource, and only one pubsub topic can be set. To delete the setting, update with an empty notification_types */
 export const updateNotificationSettingAccounts: API.OperationMethod<
   UpdateNotificationSettingAccountsRequest,
@@ -138,4 +185,3 @@ export const updateNotificationSettingAccounts: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 /** iOS related attributes to the Dynamic Link.. */
@@ -78,15 +78,15 @@ export interface IosInfo {
   iosIpadFallbackLink?: string;
 }
 export const IosInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "iosCustomScheme": S.optional(S.String),
-  "iosMinimumVersion": S.optional(S.String),
-  "iosFallbackLink": S.optional(S.String),
-  "iosIpadBundleId": S.optional(S.String),
-  "iosAppStoreId": S.optional(S.String),
-  "iosBundleId": S.optional(S.String),
-  "iosIpadFallbackLink": S.optional(S.String),
-}),
+  S.Struct({
+    iosCustomScheme: S.optional(S.String),
+    iosMinimumVersion: S.optional(S.String),
+    iosFallbackLink: S.optional(S.String),
+    iosIpadBundleId: S.optional(S.String),
+    iosAppStoreId: S.optional(S.String),
+    iosBundleId: S.optional(S.String),
+    iosIpadFallbackLink: S.optional(S.String),
+  }),
 ).annotate({ identifier: "IosInfo" }) as any as S.Schema<IosInfo>;
 
 /** Desktop related attributes to the Dynamic Link. */
@@ -95,9 +95,9 @@ export interface DesktopInfo {
   desktopFallbackLink?: string;
 }
 export const DesktopInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "desktopFallbackLink": S.optional(S.String),
-}),
+  S.Struct({
+    desktopFallbackLink: S.optional(S.String),
+  }),
 ).annotate({ identifier: "DesktopInfo" }) as any as S.Schema<DesktopInfo>;
 
 /** Parameters for social meta tag params. Used to set meta tag data for link previews on social sites. */
@@ -110,12 +110,14 @@ export interface SocialMetaTagInfo {
   socialTitle?: string;
 }
 export const SocialMetaTagInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "socialImageLink": S.optional(S.String),
-  "socialDescription": S.optional(S.String),
-  "socialTitle": S.optional(S.String),
-}),
-).annotate({ identifier: "SocialMetaTagInfo" }) as any as S.Schema<SocialMetaTagInfo>;
+  S.Struct({
+    socialImageLink: S.optional(S.String),
+    socialDescription: S.optional(S.String),
+    socialTitle: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SocialMetaTagInfo",
+}) as any as S.Schema<SocialMetaTagInfo>;
 
 /** Parameters for Google Play Campaign Measurements. [Learn more](https://developers.google.com/analytics/devguides/collection/android/v4/campaigns#campaign-params) */
 export interface GooglePlayAnalytics {
@@ -133,15 +135,17 @@ export interface GooglePlayAnalytics {
   utmCampaign?: string;
 }
 export const GooglePlayAnalytics = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "utmMedium": S.optional(S.String),
-  "utmSource": S.optional(S.String),
-  "utmContent": S.optional(S.String),
-  "gclid": S.optional(S.String),
-  "utmTerm": S.optional(S.String),
-  "utmCampaign": S.optional(S.String),
-}),
-).annotate({ identifier: "GooglePlayAnalytics" }) as any as S.Schema<GooglePlayAnalytics>;
+  S.Struct({
+    utmMedium: S.optional(S.String),
+    utmSource: S.optional(S.String),
+    utmContent: S.optional(S.String),
+    gclid: S.optional(S.String),
+    utmTerm: S.optional(S.String),
+    utmCampaign: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GooglePlayAnalytics",
+}) as any as S.Schema<GooglePlayAnalytics>;
 
 /** Parameters for iTunes Connect App Analytics. */
 export interface ITunesConnectAnalytics {
@@ -155,13 +159,15 @@ export interface ITunesConnectAnalytics {
   at?: string;
 }
 export const ITunesConnectAnalytics = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pt": S.optional(S.String),
-  "ct": S.optional(S.String),
-  "mt": S.optional(S.String),
-  "at": S.optional(S.String),
-}),
-).annotate({ identifier: "ITunesConnectAnalytics" }) as any as S.Schema<ITunesConnectAnalytics>;
+  S.Struct({
+    pt: S.optional(S.String),
+    ct: S.optional(S.String),
+    mt: S.optional(S.String),
+    at: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ITunesConnectAnalytics",
+}) as any as S.Schema<ITunesConnectAnalytics>;
 
 /** Tracking parameters supported by Dynamic Link. */
 export interface AnalyticsInfo {
@@ -171,10 +177,10 @@ export interface AnalyticsInfo {
   itunesConnectAnalytics?: ITunesConnectAnalytics;
 }
 export const AnalyticsInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "googlePlayAnalytics": S.optional(GooglePlayAnalytics),
-  "itunesConnectAnalytics": S.optional(ITunesConnectAnalytics),
-}),
+  S.Struct({
+    googlePlayAnalytics: S.optional(GooglePlayAnalytics),
+    itunesConnectAnalytics: S.optional(ITunesConnectAnalytics),
+  }),
 ).annotate({ identifier: "AnalyticsInfo" }) as any as S.Schema<AnalyticsInfo>;
 
 /** Information of navigation behavior. */
@@ -183,9 +189,9 @@ export interface NavigationInfo {
   enableForcedRedirect?: boolean;
 }
 export const NavigationInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "enableForcedRedirect": S.optional(S.Boolean),
-}),
+  S.Struct({
+    enableForcedRedirect: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "NavigationInfo" }) as any as S.Schema<NavigationInfo>;
 
 /** Android related attributes to the Dynamic Link. */
@@ -200,12 +206,12 @@ export interface AndroidInfo {
   androidMinPackageVersionCode?: string;
 }
 export const AndroidInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "androidFallbackLink": S.optional(S.String),
-  "androidLink": S.optional(S.String),
-  "androidPackageName": S.optional(S.String),
-  "androidMinPackageVersionCode": S.optional(S.String),
-}),
+  S.Struct({
+    androidFallbackLink: S.optional(S.String),
+    androidLink: S.optional(S.String),
+    androidPackageName: S.optional(S.String),
+    androidMinPackageVersionCode: S.optional(S.String),
+  }),
 ).annotate({ identifier: "AndroidInfo" }) as any as S.Schema<AndroidInfo>;
 
 /** Information about a Dynamic Link. */
@@ -230,20 +236,26 @@ export interface DynamicLinkInfo {
   androidInfo?: AndroidInfo;
 }
 export const DynamicLinkInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "domainUriPrefix": S.optional(S.String),
-  "iosInfo": S.optional(IosInfo),
-  "desktopInfo": S.optional(DesktopInfo),
-  "socialMetaTagInfo": S.optional(SocialMetaTagInfo),
-  "link": S.optional(S.String),
-  "dynamicLinkDomain": S.optional(S.String),
-  "analyticsInfo": S.optional(AnalyticsInfo),
-  "navigationInfo": S.optional(NavigationInfo),
-  "androidInfo": S.optional(AndroidInfo),
-}),
-).annotate({ identifier: "DynamicLinkInfo" }) as any as S.Schema<DynamicLinkInfo>;
+  S.Struct({
+    domainUriPrefix: S.optional(S.String),
+    iosInfo: S.optional(IosInfo),
+    desktopInfo: S.optional(DesktopInfo),
+    socialMetaTagInfo: S.optional(SocialMetaTagInfo),
+    link: S.optional(S.String),
+    dynamicLinkDomain: S.optional(S.String),
+    analyticsInfo: S.optional(AnalyticsInfo),
+    navigationInfo: S.optional(NavigationInfo),
+    androidInfo: S.optional(AndroidInfo),
+  }),
+).annotate({
+  identifier: "DynamicLinkInfo",
+}) as any as S.Schema<DynamicLinkInfo>;
 
-export type SuffixOptionEnum = "OPTION_UNSPECIFIED" | "UNGUESSABLE" | "SHORT" | "CUSTOM";
+export type SuffixOptionEnum =
+  | "OPTION_UNSPECIFIED"
+  | "UNGUESSABLE"
+  | "SHORT"
+  | "CUSTOM";
 export const SuffixOptionEnum = /*@__PURE__*/ S.String;
 
 /** Short Dynamic Link suffix. */
@@ -254,10 +266,10 @@ export interface Suffix {
   option?: SuffixOptionEnum | (string & {});
 }
 export const Suffix = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "customSuffix": S.optional(S.String),
-  "option": S.optional(SuffixOptionEnum),
-}),
+  S.Struct({
+    customSuffix: S.optional(S.String),
+    option: S.optional(SuffixOptionEnum),
+  }),
 ).annotate({ identifier: "Suffix" }) as any as S.Schema<Suffix>;
 
 /** Request to create a managed Short Dynamic Link. */
@@ -274,26 +286,66 @@ export interface CreateManagedShortLinkRequest {
   sdkVersion?: string;
 }
 export const CreateManagedShortLinkRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "longDynamicLink": S.optional(S.String),
-  "dynamicLinkInfo": S.optional(DynamicLinkInfo),
-  "suffix": S.optional(Suffix),
-  "name": S.optional(S.String),
-  "sdkVersion": S.optional(S.String),
-}),
-).annotate({ identifier: "CreateManagedShortLinkRequest" }) as any as S.Schema<CreateManagedShortLinkRequest>;
+  S.Struct({
+    longDynamicLink: S.optional(S.String),
+    dynamicLinkInfo: S.optional(DynamicLinkInfo),
+    suffix: S.optional(Suffix),
+    name: S.optional(S.String),
+    sdkVersion: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateManagedShortLinkRequest",
+}) as any as S.Schema<CreateManagedShortLinkRequest>;
 
 export interface CreateManagedShortLinksRequest {
   /** Request body */
   body?: CreateManagedShortLinkRequest;
 }
 export const CreateManagedShortLinksRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(CreateManagedShortLinkRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/managedShortLinks:create","baseUrl":"https://firebasedynamiclinks.googleapis.com/"})),
-).annotate({ identifier: "CreateManagedShortLinksRequest" }) as any as S.Schema<CreateManagedShortLinksRequest>;
+  S.Struct({
+    body: S.optional(CreateManagedShortLinkRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/managedShortLinks:create",
+      baseUrl: "https://firebasedynamiclinks.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateManagedShortLinksRequest",
+}) as any as S.Schema<CreateManagedShortLinksRequest>;
 
-export type DynamicLinkWarningWarningCodeEnum = "CODE_UNSPECIFIED" | "NOT_IN_PROJECT_ANDROID_PACKAGE_NAME" | "NOT_INTEGER_ANDROID_PACKAGE_MIN_VERSION" | "UNNECESSARY_ANDROID_PACKAGE_MIN_VERSION" | "NOT_URI_ANDROID_LINK" | "UNNECESSARY_ANDROID_LINK" | "NOT_URI_ANDROID_FALLBACK_LINK" | "BAD_URI_SCHEME_ANDROID_FALLBACK_LINK" | "NOT_IN_PROJECT_IOS_BUNDLE_ID" | "NOT_IN_PROJECT_IPAD_BUNDLE_ID" | "UNNECESSARY_IOS_URL_SCHEME" | "NOT_NUMERIC_IOS_APP_STORE_ID" | "UNNECESSARY_IOS_APP_STORE_ID" | "NOT_URI_IOS_FALLBACK_LINK" | "BAD_URI_SCHEME_IOS_FALLBACK_LINK" | "NOT_URI_IPAD_FALLBACK_LINK" | "BAD_URI_SCHEME_IPAD_FALLBACK_LINK" | "BAD_DEBUG_PARAM" | "BAD_AD_PARAM" | "DEPRECATED_PARAM" | "UNRECOGNIZED_PARAM" | "TOO_LONG_PARAM" | "NOT_URI_SOCIAL_IMAGE_LINK" | "BAD_URI_SCHEME_SOCIAL_IMAGE_LINK" | "NOT_URI_SOCIAL_URL" | "BAD_URI_SCHEME_SOCIAL_URL" | "LINK_LENGTH_TOO_LONG" | "LINK_WITH_FRAGMENTS" | "NOT_MATCHING_IOS_BUNDLE_ID_AND_STORE_ID" | "API_DEPRECATED";
+export type DynamicLinkWarningWarningCodeEnum =
+  | "CODE_UNSPECIFIED"
+  | "NOT_IN_PROJECT_ANDROID_PACKAGE_NAME"
+  | "NOT_INTEGER_ANDROID_PACKAGE_MIN_VERSION"
+  | "UNNECESSARY_ANDROID_PACKAGE_MIN_VERSION"
+  | "NOT_URI_ANDROID_LINK"
+  | "UNNECESSARY_ANDROID_LINK"
+  | "NOT_URI_ANDROID_FALLBACK_LINK"
+  | "BAD_URI_SCHEME_ANDROID_FALLBACK_LINK"
+  | "NOT_IN_PROJECT_IOS_BUNDLE_ID"
+  | "NOT_IN_PROJECT_IPAD_BUNDLE_ID"
+  | "UNNECESSARY_IOS_URL_SCHEME"
+  | "NOT_NUMERIC_IOS_APP_STORE_ID"
+  | "UNNECESSARY_IOS_APP_STORE_ID"
+  | "NOT_URI_IOS_FALLBACK_LINK"
+  | "BAD_URI_SCHEME_IOS_FALLBACK_LINK"
+  | "NOT_URI_IPAD_FALLBACK_LINK"
+  | "BAD_URI_SCHEME_IPAD_FALLBACK_LINK"
+  | "BAD_DEBUG_PARAM"
+  | "BAD_AD_PARAM"
+  | "DEPRECATED_PARAM"
+  | "UNRECOGNIZED_PARAM"
+  | "TOO_LONG_PARAM"
+  | "NOT_URI_SOCIAL_IMAGE_LINK"
+  | "BAD_URI_SCHEME_SOCIAL_IMAGE_LINK"
+  | "NOT_URI_SOCIAL_URL"
+  | "BAD_URI_SCHEME_SOCIAL_URL"
+  | "LINK_LENGTH_TOO_LONG"
+  | "LINK_WITH_FRAGMENTS"
+  | "NOT_MATCHING_IOS_BUNDLE_ID_AND_STORE_ID"
+  | "API_DEPRECATED";
 export const DynamicLinkWarningWarningCodeEnum = /*@__PURE__*/ S.String;
 
 /** Dynamic Links warning messages. */
@@ -306,23 +358,37 @@ export interface DynamicLinkWarning {
   warningMessage?: string;
 }
 export const DynamicLinkWarning = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "warningCode": S.optional(DynamicLinkWarningWarningCodeEnum),
-  "warningDocumentLink": S.optional(S.String),
-  "warningMessage": S.optional(S.String),
-}),
-).annotate({ identifier: "DynamicLinkWarning" }) as any as S.Schema<DynamicLinkWarning>;
+  S.Struct({
+    warningCode: S.optional(DynamicLinkWarningWarningCodeEnum),
+    warningDocumentLink: S.optional(S.String),
+    warningMessage: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DynamicLinkWarning",
+}) as any as S.Schema<DynamicLinkWarning>;
 
 export type DynamicLinkWarningList = ReadonlyArray<DynamicLinkWarning>;
-export const DynamicLinkWarningList = /*@__PURE__*/ S.Array(DynamicLinkWarning) as any as S.Schema<DynamicLinkWarningList>;
+export const DynamicLinkWarningList = /*@__PURE__*/ S.Array(
+  DynamicLinkWarning,
+) as any as S.Schema<DynamicLinkWarningList>;
 
-export type ManagedShortLinkFlaggedAttributeItemEnum = "UNSPECIFIED_ATTRIBUTE" | "SPAM";
+export type ManagedShortLinkFlaggedAttributeItemEnum =
+  | "UNSPECIFIED_ATTRIBUTE"
+  | "SPAM";
 export const ManagedShortLinkFlaggedAttributeItemEnum = /*@__PURE__*/ S.String;
 
-export type ManagedShortLinkFlaggedAttributeItemEnumList = ReadonlyArray<ManagedShortLinkFlaggedAttributeItemEnum>;
-export const ManagedShortLinkFlaggedAttributeItemEnumList = /*@__PURE__*/ S.Array(ManagedShortLinkFlaggedAttributeItemEnum) as any as S.Schema<ManagedShortLinkFlaggedAttributeItemEnumList>;
+export type ManagedShortLinkFlaggedAttributeItemEnumList =
+  ReadonlyArray<ManagedShortLinkFlaggedAttributeItemEnum>;
+export const ManagedShortLinkFlaggedAttributeItemEnumList =
+  /*@__PURE__*/ S.Array(
+    ManagedShortLinkFlaggedAttributeItemEnum,
+  ) as any as S.Schema<ManagedShortLinkFlaggedAttributeItemEnumList>;
 
-export type ManagedShortLinkVisibilityEnum = "UNSPECIFIED_VISIBILITY" | "UNARCHIVED" | "ARCHIVED" | "NEVER_SHOWN";
+export type ManagedShortLinkVisibilityEnum =
+  | "UNSPECIFIED_VISIBILITY"
+  | "UNARCHIVED"
+  | "ARCHIVED"
+  | "NEVER_SHOWN";
 export const ManagedShortLinkVisibilityEnum = /*@__PURE__*/ S.String;
 
 /** Managed Short Link. */
@@ -341,15 +407,17 @@ export interface ManagedShortLink {
   visibility?: ManagedShortLinkVisibilityEnum;
 }
 export const ManagedShortLink = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "creationTime": S.optional(S.String),
-  "link": S.optional(S.String),
-  "flaggedAttribute": S.optional(ManagedShortLinkFlaggedAttributeItemEnumList),
-  "info": S.optional(DynamicLinkInfo),
-  "linkName": S.optional(S.String),
-  "visibility": S.optional(ManagedShortLinkVisibilityEnum),
-}),
-).annotate({ identifier: "ManagedShortLink" }) as any as S.Schema<ManagedShortLink>;
+  S.Struct({
+    creationTime: S.optional(S.String),
+    link: S.optional(S.String),
+    flaggedAttribute: S.optional(ManagedShortLinkFlaggedAttributeItemEnumList),
+    info: S.optional(DynamicLinkInfo),
+    linkName: S.optional(S.String),
+    visibility: S.optional(ManagedShortLinkVisibilityEnum),
+  }),
+).annotate({
+  identifier: "ManagedShortLink",
+}) as any as S.Schema<ManagedShortLink>;
 
 /** Response to create a short Dynamic Link. */
 export interface CreateManagedShortLinkResponse {
@@ -361,12 +429,14 @@ export interface CreateManagedShortLinkResponse {
   previewLink?: string;
 }
 export const CreateManagedShortLinkResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "warning": S.optional(DynamicLinkWarningList),
-  "managedShortLink": S.optional(ManagedShortLink),
-  "previewLink": S.optional(S.String),
-}),
-).annotate({ identifier: "CreateManagedShortLinkResponse" }) as any as S.Schema<CreateManagedShortLinkResponse>;
+  S.Struct({
+    warning: S.optional(DynamicLinkWarningList),
+    managedShortLink: S.optional(ManagedShortLink),
+    previewLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateManagedShortLinkResponse",
+}) as any as S.Schema<CreateManagedShortLinkResponse>;
 
 /** Request to create a short Dynamic Link. */
 export interface CreateShortDynamicLinkRequest {
@@ -380,23 +450,33 @@ export interface CreateShortDynamicLinkRequest {
   longDynamicLink?: string;
 }
 export const CreateShortDynamicLinkRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "suffix": S.optional(Suffix),
-  "sdkVersion": S.optional(S.String),
-  "dynamicLinkInfo": S.optional(DynamicLinkInfo),
-  "longDynamicLink": S.optional(S.String),
-}),
-).annotate({ identifier: "CreateShortDynamicLinkRequest" }) as any as S.Schema<CreateShortDynamicLinkRequest>;
+  S.Struct({
+    suffix: S.optional(Suffix),
+    sdkVersion: S.optional(S.String),
+    dynamicLinkInfo: S.optional(DynamicLinkInfo),
+    longDynamicLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateShortDynamicLinkRequest",
+}) as any as S.Schema<CreateShortDynamicLinkRequest>;
 
 export interface CreateShortLinksRequest {
   /** Request body */
   body?: CreateShortDynamicLinkRequest;
 }
 export const CreateShortLinksRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(CreateShortDynamicLinkRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/shortLinks","baseUrl":"https://firebasedynamiclinks.googleapis.com/"})),
-).annotate({ identifier: "CreateShortLinksRequest" }) as any as S.Schema<CreateShortLinksRequest>;
+  S.Struct({
+    body: S.optional(CreateShortDynamicLinkRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/shortLinks",
+      baseUrl: "https://firebasedynamiclinks.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateShortLinksRequest",
+}) as any as S.Schema<CreateShortLinksRequest>;
 
 /** Response to create a short Dynamic Link. */
 export interface CreateShortDynamicLinkResponse {
@@ -408,12 +488,14 @@ export interface CreateShortDynamicLinkResponse {
   warning?: DynamicLinkWarningList;
 }
 export const CreateShortDynamicLinkResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "previewLink": S.optional(S.String),
-  "shortLink": S.optional(S.String),
-  "warning": S.optional(DynamicLinkWarningList),
-}),
-).annotate({ identifier: "CreateShortDynamicLinkResponse" }) as any as S.Schema<CreateShortDynamicLinkResponse>;
+  S.Struct({
+    previewLink: S.optional(S.String),
+    shortLink: S.optional(S.String),
+    warning: S.optional(DynamicLinkWarningList),
+  }),
+).annotate({
+  identifier: "CreateShortDynamicLinkResponse",
+}) as any as S.Schema<CreateShortDynamicLinkResponse>;
 
 export interface GetLinkStatsV1Request {
   /** The span of time requested in days. */
@@ -424,17 +506,36 @@ export interface GetLinkStatsV1Request {
   sdkVersion?: string;
 }
 export const GetLinkStatsV1Request = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "durationDays": S.optional(S.String.pipe(T.Query())),
-  "dynamicLink": S.String.pipe(T.Label()),
-  "sdkVersion": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{dynamicLink}/linkStats","baseUrl":"https://firebasedynamiclinks.googleapis.com/"})),
-).annotate({ identifier: "GetLinkStatsV1Request" }) as any as S.Schema<GetLinkStatsV1Request>;
+  S.Struct({
+    durationDays: S.optional(S.String.pipe(T.Query())),
+    dynamicLink: S.String.pipe(T.Label()),
+    sdkVersion: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{dynamicLink}/linkStats",
+      baseUrl: "https://firebasedynamiclinks.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetLinkStatsV1Request",
+}) as any as S.Schema<GetLinkStatsV1Request>;
 
-export type DynamicLinkEventStatEventEnum = "DYNAMIC_LINK_EVENT_UNSPECIFIED" | "CLICK" | "REDIRECT" | "APP_INSTALL" | "APP_FIRST_OPEN" | "APP_RE_OPEN";
+export type DynamicLinkEventStatEventEnum =
+  | "DYNAMIC_LINK_EVENT_UNSPECIFIED"
+  | "CLICK"
+  | "REDIRECT"
+  | "APP_INSTALL"
+  | "APP_FIRST_OPEN"
+  | "APP_RE_OPEN";
 export const DynamicLinkEventStatEventEnum = /*@__PURE__*/ S.String;
 
-export type DynamicLinkEventStatPlatformEnum = "DYNAMIC_LINK_PLATFORM_UNSPECIFIED" | "ANDROID" | "IOS" | "DESKTOP" | "OTHER";
+export type DynamicLinkEventStatPlatformEnum =
+  | "DYNAMIC_LINK_PLATFORM_UNSPECIFIED"
+  | "ANDROID"
+  | "IOS"
+  | "DESKTOP"
+  | "OTHER";
 export const DynamicLinkEventStatPlatformEnum = /*@__PURE__*/ S.String;
 
 /** Dynamic Link event stat. */
@@ -447,15 +548,19 @@ export interface DynamicLinkEventStat {
   platform?: DynamicLinkEventStatPlatformEnum;
 }
 export const DynamicLinkEventStat = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "count": S.optional(S.String),
-  "event": S.optional(DynamicLinkEventStatEventEnum),
-  "platform": S.optional(DynamicLinkEventStatPlatformEnum),
-}),
-).annotate({ identifier: "DynamicLinkEventStat" }) as any as S.Schema<DynamicLinkEventStat>;
+  S.Struct({
+    count: S.optional(S.String),
+    event: S.optional(DynamicLinkEventStatEventEnum),
+    platform: S.optional(DynamicLinkEventStatPlatformEnum),
+  }),
+).annotate({
+  identifier: "DynamicLinkEventStat",
+}) as any as S.Schema<DynamicLinkEventStat>;
 
 export type DynamicLinkEventStatList = ReadonlyArray<DynamicLinkEventStat>;
-export const DynamicLinkEventStatList = /*@__PURE__*/ S.Array(DynamicLinkEventStat) as any as S.Schema<DynamicLinkEventStatList>;
+export const DynamicLinkEventStatList = /*@__PURE__*/ S.Array(
+  DynamicLinkEventStat,
+) as any as S.Schema<DynamicLinkEventStatList>;
 
 /** Analytics stats of a Dynamic Link for a given timeframe. */
 export interface DynamicLinkStats {
@@ -465,17 +570,28 @@ export interface DynamicLinkStats {
   warnings?: DynamicLinkWarningList;
 }
 export const DynamicLinkStats = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "linkEventStats": S.optional(DynamicLinkEventStatList),
-  "warnings": S.optional(DynamicLinkWarningList),
-}),
-).annotate({ identifier: "DynamicLinkStats" }) as any as S.Schema<DynamicLinkStats>;
+  S.Struct({
+    linkEventStats: S.optional(DynamicLinkEventStatList),
+    warnings: S.optional(DynamicLinkWarningList),
+  }),
+).annotate({
+  identifier: "DynamicLinkStats",
+}) as any as S.Schema<DynamicLinkStats>;
 
-export type GetIosPostInstallAttributionRequestVisualStyleEnum = "UNKNOWN_VISUAL_STYLE" | "DEFAULT_STYLE" | "CUSTOM_STYLE";
-export const GetIosPostInstallAttributionRequestVisualStyleEnum = /*@__PURE__*/ S.String;
+export type GetIosPostInstallAttributionRequestVisualStyleEnum =
+  | "UNKNOWN_VISUAL_STYLE"
+  | "DEFAULT_STYLE"
+  | "CUSTOM_STYLE";
+export const GetIosPostInstallAttributionRequestVisualStyleEnum =
+  /*@__PURE__*/ S.String;
 
-export type GetIosPostInstallAttributionRequestRetrievalMethodEnum = "UNKNOWN_PAYLOAD_RETRIEVAL_METHOD" | "IMPLICIT_WEAK_MATCH" | "EXPLICIT_WEAK_MATCH" | "EXPLICIT_STRONG_AFTER_WEAK_MATCH";
-export const GetIosPostInstallAttributionRequestRetrievalMethodEnum = /*@__PURE__*/ S.String;
+export type GetIosPostInstallAttributionRequestRetrievalMethodEnum =
+  | "UNKNOWN_PAYLOAD_RETRIEVAL_METHOD"
+  | "IMPLICIT_WEAK_MATCH"
+  | "EXPLICIT_WEAK_MATCH"
+  | "EXPLICIT_STRONG_AFTER_WEAK_MATCH";
+export const GetIosPostInstallAttributionRequestRetrievalMethodEnum =
+  /*@__PURE__*/ S.String;
 
 /** Signals associated with the device making the request. */
 export interface DeviceInfo {
@@ -495,15 +611,15 @@ export interface DeviceInfo {
   screenResolutionWidth?: string;
 }
 export const DeviceInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "screenResolutionHeight": S.optional(S.String),
-  "languageCodeFromWebview": S.optional(S.String),
-  "languageCode": S.optional(S.String),
-  "deviceModelName": S.optional(S.String),
-  "languageCodeRaw": S.optional(S.String),
-  "timezone": S.optional(S.String),
-  "screenResolutionWidth": S.optional(S.String),
-}),
+  S.Struct({
+    screenResolutionHeight: S.optional(S.String),
+    languageCodeFromWebview: S.optional(S.String),
+    languageCode: S.optional(S.String),
+    deviceModelName: S.optional(S.String),
+    languageCodeRaw: S.optional(S.String),
+    timezone: S.optional(S.String),
+    screenResolutionWidth: S.optional(S.String),
+  }),
 ).annotate({ identifier: "DeviceInfo" }) as any as S.Schema<DeviceInfo>;
 
 /** Request for iSDK to execute strong match flow for post-install attribution. This is meant for iOS requests only. Requests from other platforms will not be honored. */
@@ -513,9 +629,13 @@ export interface GetIosPostInstallAttributionRequest {
   /** Google SDK version. Version takes the form "$major.$minor.$patch" */
   sdkVersion?: string;
   /** Strong match page information. Disambiguates between default UI and custom page to present when strong match succeeds/fails to find cookie. */
-  visualStyle?: GetIosPostInstallAttributionRequestVisualStyleEnum | (string & {});
+  visualStyle?:
+    | GetIosPostInstallAttributionRequestVisualStyleEnum
+    | (string & {});
   /** App post install attribution retrieval information. Disambiguates mechanism (iSDK or developer invoked) to retrieve payload from clicked link. */
-  retrievalMethod?: GetIosPostInstallAttributionRequestRetrievalMethodEnum | (string & {});
+  retrievalMethod?:
+    | GetIosPostInstallAttributionRequestRetrievalMethodEnum
+    | (string & {});
   /** App installation epoch time (https://en.wikipedia.org/wiki/Unix_time). This is a client signal for a more accurate weak match. */
   appInstallationTime?: string;
   /** Device information. */
@@ -526,33 +646,54 @@ export interface GetIosPostInstallAttributionRequest {
   uniqueMatchLinkToCheck?: string;
 }
 export const GetIosPostInstallAttributionRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bundleId": S.optional(S.String),
-  "sdkVersion": S.optional(S.String),
-  "visualStyle": S.optional(GetIosPostInstallAttributionRequestVisualStyleEnum),
-  "retrievalMethod": S.optional(GetIosPostInstallAttributionRequestRetrievalMethodEnum),
-  "appInstallationTime": S.optional(S.String),
-  "device": S.optional(DeviceInfo),
-  "iosVersion": S.optional(S.String),
-  "uniqueMatchLinkToCheck": S.optional(S.String),
-}),
-).annotate({ identifier: "GetIosPostInstallAttributionRequest" }) as any as S.Schema<GetIosPostInstallAttributionRequest>;
+  S.Struct({
+    bundleId: S.optional(S.String),
+    sdkVersion: S.optional(S.String),
+    visualStyle: S.optional(GetIosPostInstallAttributionRequestVisualStyleEnum),
+    retrievalMethod: S.optional(
+      GetIosPostInstallAttributionRequestRetrievalMethodEnum,
+    ),
+    appInstallationTime: S.optional(S.String),
+    device: S.optional(DeviceInfo),
+    iosVersion: S.optional(S.String),
+    uniqueMatchLinkToCheck: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetIosPostInstallAttributionRequest",
+}) as any as S.Schema<GetIosPostInstallAttributionRequest>;
 
 export interface InstallAttributionV1Request {
   /** Request body */
   body?: GetIosPostInstallAttributionRequest;
 }
 export const InstallAttributionV1Request = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(GetIosPostInstallAttributionRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/installAttribution","baseUrl":"https://firebasedynamiclinks.googleapis.com/"})),
-).annotate({ identifier: "InstallAttributionV1Request" }) as any as S.Schema<InstallAttributionV1Request>;
+  S.Struct({
+    body: S.optional(GetIosPostInstallAttributionRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/installAttribution",
+      baseUrl: "https://firebasedynamiclinks.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "InstallAttributionV1Request",
+}) as any as S.Schema<InstallAttributionV1Request>;
 
-export type GetIosPostInstallAttributionResponseRequestIpVersionEnum = "UNKNOWN_IP_VERSION" | "IP_V4" | "IP_V6";
-export const GetIosPostInstallAttributionResponseRequestIpVersionEnum = /*@__PURE__*/ S.String;
+export type GetIosPostInstallAttributionResponseRequestIpVersionEnum =
+  | "UNKNOWN_IP_VERSION"
+  | "IP_V4"
+  | "IP_V6";
+export const GetIosPostInstallAttributionResponseRequestIpVersionEnum =
+  /*@__PURE__*/ S.String;
 
-export type GetIosPostInstallAttributionResponseAttributionConfidenceEnum = "UNKNOWN_ATTRIBUTION_CONFIDENCE" | "WEAK" | "DEFAULT" | "UNIQUE";
-export const GetIosPostInstallAttributionResponseAttributionConfidenceEnum = /*@__PURE__*/ S.String;
+export type GetIosPostInstallAttributionResponseAttributionConfidenceEnum =
+  | "UNKNOWN_ATTRIBUTION_CONFIDENCE"
+  | "WEAK"
+  | "DEFAULT"
+  | "UNIQUE";
+export const GetIosPostInstallAttributionResponseAttributionConfidenceEnum =
+  /*@__PURE__*/ S.String;
 
 /** Response for iSDK to execute strong match flow for post-install attribution. Information of the resolved FDL link. */
 export interface GetIosPostInstallAttributionResponse {
@@ -589,26 +730,33 @@ export interface GetIosPostInstallAttributionResponse {
   /** The confidence of the returned attribution. */
   attributionConfidence?: GetIosPostInstallAttributionResponseAttributionConfidenceEnum;
 }
-export const GetIosPostInstallAttributionResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestIpVersion": S.optional(GetIosPostInstallAttributionResponseRequestIpVersionEnum),
-  "fallbackLink": S.optional(S.String),
-  "matchMessage": S.optional(S.String),
-  "invitationId": S.optional(S.String),
-  "deepLink": S.optional(S.String),
-  "utmMedium": S.optional(S.String),
-  "appMinimumVersion": S.optional(S.String),
-  "utmTerm": S.optional(S.String),
-  "isStrongMatchExecutable": S.optional(S.Boolean),
-  "requestedLink": S.optional(S.String),
-  "utmSource": S.optional(S.String),
-  "utmCampaign": S.optional(S.String),
-  "resolvedLink": S.optional(S.String),
-  "externalBrowserDestinationLink": S.optional(S.String),
-  "utmContent": S.optional(S.String),
-  "attributionConfidence": S.optional(GetIosPostInstallAttributionResponseAttributionConfidenceEnum),
-}),
-).annotate({ identifier: "GetIosPostInstallAttributionResponse" }) as any as S.Schema<GetIosPostInstallAttributionResponse>;
+export const GetIosPostInstallAttributionResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      requestIpVersion: S.optional(
+        GetIosPostInstallAttributionResponseRequestIpVersionEnum,
+      ),
+      fallbackLink: S.optional(S.String),
+      matchMessage: S.optional(S.String),
+      invitationId: S.optional(S.String),
+      deepLink: S.optional(S.String),
+      utmMedium: S.optional(S.String),
+      appMinimumVersion: S.optional(S.String),
+      utmTerm: S.optional(S.String),
+      isStrongMatchExecutable: S.optional(S.Boolean),
+      requestedLink: S.optional(S.String),
+      utmSource: S.optional(S.String),
+      utmCampaign: S.optional(S.String),
+      resolvedLink: S.optional(S.String),
+      externalBrowserDestinationLink: S.optional(S.String),
+      utmContent: S.optional(S.String),
+      attributionConfidence: S.optional(
+        GetIosPostInstallAttributionResponseAttributionConfidenceEnum,
+      ),
+    }),
+).annotate({
+  identifier: "GetIosPostInstallAttributionResponse",
+}) as any as S.Schema<GetIosPostInstallAttributionResponse>;
 
 /** Request for iSDK to get reopen attribution for app universal link open deeplinking. This endpoint is meant for only iOS requests. */
 export interface GetIosReopenAttributionRequest {
@@ -620,22 +768,32 @@ export interface GetIosReopenAttributionRequest {
   sdkVersion?: string;
 }
 export const GetIosReopenAttributionRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestedLink": S.optional(S.String),
-  "bundleId": S.optional(S.String),
-  "sdkVersion": S.optional(S.String),
-}),
-).annotate({ identifier: "GetIosReopenAttributionRequest" }) as any as S.Schema<GetIosReopenAttributionRequest>;
+  S.Struct({
+    requestedLink: S.optional(S.String),
+    bundleId: S.optional(S.String),
+    sdkVersion: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetIosReopenAttributionRequest",
+}) as any as S.Schema<GetIosReopenAttributionRequest>;
 
 export interface ReopenAttributionV1Request {
   /** Request body */
   body?: GetIosReopenAttributionRequest;
 }
 export const ReopenAttributionV1Request = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(GetIosReopenAttributionRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/reopenAttribution","baseUrl":"https://firebasedynamiclinks.googleapis.com/"})),
-).annotate({ identifier: "ReopenAttributionV1Request" }) as any as S.Schema<ReopenAttributionV1Request>;
+  S.Struct({
+    body: S.optional(GetIosReopenAttributionRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/reopenAttribution",
+      baseUrl: "https://firebasedynamiclinks.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ReopenAttributionV1Request",
+}) as any as S.Schema<ReopenAttributionV1Request>;
 
 /** Response for iSDK to get reopen attribution for app universal link open deeplinking. This endpoint is meant for only iOS requests. */
 export interface GetIosReopenAttributionResponse {
@@ -661,21 +819,28 @@ export interface GetIosReopenAttributionResponse {
   utmSource?: string;
 }
 export const GetIosReopenAttributionResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "utmTerm": S.optional(S.String),
-  "iosMinAppVersion": S.optional(S.String),
-  "warning": S.optional(DynamicLinkWarningList),
-  "utmContent": S.optional(S.String),
-  "utmMedium": S.optional(S.String),
-  "resolvedLink": S.optional(S.String),
-  "deepLink": S.optional(S.String),
-  "utmCampaign": S.optional(S.String),
-  "invitationId": S.optional(S.String),
-  "utmSource": S.optional(S.String),
-}),
-).annotate({ identifier: "GetIosReopenAttributionResponse" }) as any as S.Schema<GetIosReopenAttributionResponse>;
+  S.Struct({
+    utmTerm: S.optional(S.String),
+    iosMinAppVersion: S.optional(S.String),
+    warning: S.optional(DynamicLinkWarningList),
+    utmContent: S.optional(S.String),
+    utmMedium: S.optional(S.String),
+    resolvedLink: S.optional(S.String),
+    deepLink: S.optional(S.String),
+    utmCampaign: S.optional(S.String),
+    invitationId: S.optional(S.String),
+    utmSource: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetIosReopenAttributionResponse",
+}) as any as S.Schema<GetIosReopenAttributionResponse>;
 
-export type CreateManagedShortLinksError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateManagedShortLinksError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a managed short Dynamic Link given either a valid long Dynamic Link or details such as Dynamic Link domain, Android and iOS app information. The created short Dynamic Link will not expire. This differs from CreateShortDynamicLink in the following ways: - The request will also contain a name for the link (non unique name for the front end). - The response must be authenticated with an auth token (generated with the admin service account). - The link will appear in the FDL list of links in the console front end. The Dynamic Link domain in the request must be owned by requester's Firebase project. */
 export const createManagedShortLinks: API.OperationMethod<
   CreateManagedShortLinksRequest,
@@ -690,7 +855,12 @@ export const createManagedShortLinks: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateShortLinksError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateShortLinksError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a short Dynamic Link given either a valid long Dynamic Link or details such as Dynamic Link domain, Android and iOS app information. The created short Dynamic Link will not expire. Repeated calls with the same long Dynamic Link or Dynamic Link information will produce the same short Dynamic Link. The Dynamic Link domain in the request must be owned by requester's Firebase project. */
 export const createShortLinks: API.OperationMethod<
   CreateShortLinksRequest,
@@ -720,7 +890,12 @@ export const getLinkStatsV1: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InstallAttributionV1Error = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type InstallAttributionV1Error =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Get iOS strong/weak-match info for post-install attribution. */
 export const installAttributionV1: API.OperationMethod<
   InstallAttributionV1Request,
@@ -735,7 +910,12 @@ export const installAttributionV1: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ReopenAttributionV1Error = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ReopenAttributionV1Error =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Get iOS reopen attribution for app universal link open deeplinking. */
 export const reopenAttributionV1: API.OperationMethod<
   ReopenAttributionV1Request,
@@ -749,4 +929,3 @@ export const reopenAttributionV1: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

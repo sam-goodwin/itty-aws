@@ -13,69 +13,90 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
-export type GoogleCloudVideointelligenceV1_AnnotateVideoRequestFeaturesItemEnum = "FEATURE_UNSPECIFIED" | "LABEL_DETECTION" | "SHOT_CHANGE_DETECTION" | "EXPLICIT_CONTENT_DETECTION" | "FACE_DETECTION" | "SPEECH_TRANSCRIPTION" | "TEXT_DETECTION" | "OBJECT_TRACKING" | "LOGO_RECOGNITION" | "PERSON_DETECTION";
-export const GoogleCloudVideointelligenceV1_AnnotateVideoRequestFeaturesItemEnum = /*@__PURE__*/ S.String;
+export type GoogleCloudVideointelligenceV1_AnnotateVideoRequestFeaturesItemEnum =
+    | "FEATURE_UNSPECIFIED"
+    | "LABEL_DETECTION"
+    | "SHOT_CHANGE_DETECTION"
+    | "EXPLICIT_CONTENT_DETECTION"
+    | "FACE_DETECTION"
+    | "SPEECH_TRANSCRIPTION"
+    | "TEXT_DETECTION"
+    | "OBJECT_TRACKING"
+    | "LOGO_RECOGNITION"
+    | "PERSON_DETECTION";
+export const GoogleCloudVideointelligenceV1_AnnotateVideoRequestFeaturesItemEnum =
+  /*@__PURE__*/ S.String;
 
-export type GoogleCloudVideointelligenceV1_AnnotateVideoRequestFeaturesItemEnumList = ReadonlyArray<GoogleCloudVideointelligenceV1_AnnotateVideoRequestFeaturesItemEnum | (string & {})>;
-export const GoogleCloudVideointelligenceV1_AnnotateVideoRequestFeaturesItemEnumList = /*@__PURE__*/ S.Array(GoogleCloudVideointelligenceV1_AnnotateVideoRequestFeaturesItemEnum) as any as S.Schema<GoogleCloudVideointelligenceV1_AnnotateVideoRequestFeaturesItemEnumList>;
+export type GoogleCloudVideointelligenceV1_AnnotateVideoRequestFeaturesItemEnumList =
+  ReadonlyArray<
+    | GoogleCloudVideointelligenceV1_AnnotateVideoRequestFeaturesItemEnum
+    | (string & {})
+  >;
+export const GoogleCloudVideointelligenceV1_AnnotateVideoRequestFeaturesItemEnumList =
+  /*@__PURE__*/ S.Array(
+    GoogleCloudVideointelligenceV1_AnnotateVideoRequestFeaturesItemEnum,
+  ) as any as S.Schema<GoogleCloudVideointelligenceV1_AnnotateVideoRequestFeaturesItemEnumList>;
 
 /** Config for OBJECT_TRACKING. */
 export interface GoogleCloudVideointelligenceV1_ObjectTrackingConfig {
   /** Model to use for object tracking. Supported values: "builtin/stable" (the default if unset) and "builtin/latest". */
   model?: string;
 }
-export const GoogleCloudVideointelligenceV1_ObjectTrackingConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "model": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudVideointelligenceV1_ObjectTrackingConfig" }) as any as S.Schema<GoogleCloudVideointelligenceV1_ObjectTrackingConfig>;
+export const GoogleCloudVideointelligenceV1_ObjectTrackingConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      model: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudVideointelligenceV1_ObjectTrackingConfig",
+  }) as any as S.Schema<GoogleCloudVideointelligenceV1_ObjectTrackingConfig>;
 
 /** Config for FACE_DETECTION. */
 export interface GoogleCloudVideointelligenceV1_FaceDetectionConfig {
@@ -86,24 +107,30 @@ export interface GoogleCloudVideointelligenceV1_FaceDetectionConfig {
   /** Model to use for face detection. Supported values: "builtin/stable" (the default if unset) and "builtin/latest". */
   model?: string;
 }
-export const GoogleCloudVideointelligenceV1_FaceDetectionConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "includeAttributes": S.optional(S.Boolean),
-  "includeBoundingBoxes": S.optional(S.Boolean),
-  "model": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudVideointelligenceV1_FaceDetectionConfig" }) as any as S.Schema<GoogleCloudVideointelligenceV1_FaceDetectionConfig>;
+export const GoogleCloudVideointelligenceV1_FaceDetectionConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      includeAttributes: S.optional(S.Boolean),
+      includeBoundingBoxes: S.optional(S.Boolean),
+      model: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudVideointelligenceV1_FaceDetectionConfig",
+  }) as any as S.Schema<GoogleCloudVideointelligenceV1_FaceDetectionConfig>;
 
 /** Config for EXPLICIT_CONTENT_DETECTION. */
 export interface GoogleCloudVideointelligenceV1_ExplicitContentDetectionConfig {
   /** Model to use for explicit content detection. Supported values: "builtin/stable" (the default if unset) and "builtin/latest". */
   model?: string;
 }
-export const GoogleCloudVideointelligenceV1_ExplicitContentDetectionConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "model": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudVideointelligenceV1_ExplicitContentDetectionConfig" }) as any as S.Schema<GoogleCloudVideointelligenceV1_ExplicitContentDetectionConfig>;
+export const GoogleCloudVideointelligenceV1_ExplicitContentDetectionConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      model: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudVideointelligenceV1_ExplicitContentDetectionConfig",
+  }) as any as S.Schema<GoogleCloudVideointelligenceV1_ExplicitContentDetectionConfig>;
 
 /** Video segment. */
 export interface GoogleCloudVideointelligenceV1_VideoSegment {
@@ -112,18 +139,30 @@ export interface GoogleCloudVideointelligenceV1_VideoSegment {
   /** Time-offset, relative to the beginning of the video, corresponding to the end of the segment (inclusive). */
   endTimeOffset?: string;
 }
-export const GoogleCloudVideointelligenceV1_VideoSegment = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "startTimeOffset": S.optional(S.String),
-  "endTimeOffset": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudVideointelligenceV1_VideoSegment" }) as any as S.Schema<GoogleCloudVideointelligenceV1_VideoSegment>;
+export const GoogleCloudVideointelligenceV1_VideoSegment =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      startTimeOffset: S.optional(S.String),
+      endTimeOffset: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudVideointelligenceV1_VideoSegment",
+  }) as any as S.Schema<GoogleCloudVideointelligenceV1_VideoSegment>;
 
-export type GoogleCloudVideointelligenceV1_VideoSegmentList = ReadonlyArray<GoogleCloudVideointelligenceV1_VideoSegment>;
-export const GoogleCloudVideointelligenceV1_VideoSegmentList = /*@__PURE__*/ S.Array(GoogleCloudVideointelligenceV1_VideoSegment) as any as S.Schema<GoogleCloudVideointelligenceV1_VideoSegmentList>;
+export type GoogleCloudVideointelligenceV1_VideoSegmentList =
+  ReadonlyArray<GoogleCloudVideointelligenceV1_VideoSegment>;
+export const GoogleCloudVideointelligenceV1_VideoSegmentList =
+  /*@__PURE__*/ S.Array(
+    GoogleCloudVideointelligenceV1_VideoSegment,
+  ) as any as S.Schema<GoogleCloudVideointelligenceV1_VideoSegmentList>;
 
-export type GoogleCloudVideointelligenceV1_LabelDetectionConfigLabelDetectionModeEnum = "LABEL_DETECTION_MODE_UNSPECIFIED" | "SHOT_MODE" | "FRAME_MODE" | "SHOT_AND_FRAME_MODE";
-export const GoogleCloudVideointelligenceV1_LabelDetectionConfigLabelDetectionModeEnum = /*@__PURE__*/ S.String;
+export type GoogleCloudVideointelligenceV1_LabelDetectionConfigLabelDetectionModeEnum =
+    | "LABEL_DETECTION_MODE_UNSPECIFIED"
+    | "SHOT_MODE"
+    | "FRAME_MODE"
+    | "SHOT_AND_FRAME_MODE";
+export const GoogleCloudVideointelligenceV1_LabelDetectionConfigLabelDetectionModeEnum =
+  /*@__PURE__*/ S.String;
 
 /** Config for LABEL_DETECTION. */
 export interface GoogleCloudVideointelligenceV1_LabelDetectionConfig {
@@ -136,37 +175,55 @@ export interface GoogleCloudVideointelligenceV1_LabelDetectionConfig {
   /** The confidence threshold we perform filtering on the labels from video-level and shot-level detections. If not set, it's set to 0.3 by default. The valid range for this threshold is [0.1, 0.9]. Any value set outside of this range will be clipped. Note: For best results, follow the default threshold. We will update the default threshold everytime when we release a new model. */
   videoConfidenceThreshold?: number;
   /** What labels should be detected with LABEL_DETECTION, in addition to video-level labels or segment-level labels. If unspecified, defaults to `SHOT_MODE`. */
-  labelDetectionMode?: GoogleCloudVideointelligenceV1_LabelDetectionConfigLabelDetectionModeEnum | (string & {});
+  labelDetectionMode?:
+    | GoogleCloudVideointelligenceV1_LabelDetectionConfigLabelDetectionModeEnum
+    | (string & {});
 }
-export const GoogleCloudVideointelligenceV1_LabelDetectionConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "frameConfidenceThreshold": S.optional(S.Number),
-  "model": S.optional(S.String),
-  "stationaryCamera": S.optional(S.Boolean),
-  "videoConfidenceThreshold": S.optional(S.Number),
-  "labelDetectionMode": S.optional(GoogleCloudVideointelligenceV1_LabelDetectionConfigLabelDetectionModeEnum),
-}),
-).annotate({ identifier: "GoogleCloudVideointelligenceV1_LabelDetectionConfig" }) as any as S.Schema<GoogleCloudVideointelligenceV1_LabelDetectionConfig>;
+export const GoogleCloudVideointelligenceV1_LabelDetectionConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      frameConfidenceThreshold: S.optional(S.Number),
+      model: S.optional(S.String),
+      stationaryCamera: S.optional(S.Boolean),
+      videoConfidenceThreshold: S.optional(S.Number),
+      labelDetectionMode: S.optional(
+        GoogleCloudVideointelligenceV1_LabelDetectionConfigLabelDetectionModeEnum,
+      ),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudVideointelligenceV1_LabelDetectionConfig",
+  }) as any as S.Schema<GoogleCloudVideointelligenceV1_LabelDetectionConfig>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** Provides "hints" to the speech recognizer to favor specific words and phrases in the results. */
 export interface GoogleCloudVideointelligenceV1_SpeechContext {
   /** Optional. A list of strings containing words and phrases "hints" so that the speech recognition is more likely to recognize them. This can be used to improve the accuracy for specific words and phrases, for example, if specific commands are typically spoken by the user. This can also be used to add additional words to the vocabulary of the recognizer. See [usage limits](https://cloud.google.com/speech/limits#content). */
   phrases?: StringList;
 }
-export const GoogleCloudVideointelligenceV1_SpeechContext = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "phrases": S.optional(StringList),
-}),
-).annotate({ identifier: "GoogleCloudVideointelligenceV1_SpeechContext" }) as any as S.Schema<GoogleCloudVideointelligenceV1_SpeechContext>;
+export const GoogleCloudVideointelligenceV1_SpeechContext =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      phrases: S.optional(StringList),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudVideointelligenceV1_SpeechContext",
+  }) as any as S.Schema<GoogleCloudVideointelligenceV1_SpeechContext>;
 
-export type GoogleCloudVideointelligenceV1_SpeechContextList = ReadonlyArray<GoogleCloudVideointelligenceV1_SpeechContext>;
-export const GoogleCloudVideointelligenceV1_SpeechContextList = /*@__PURE__*/ S.Array(GoogleCloudVideointelligenceV1_SpeechContext) as any as S.Schema<GoogleCloudVideointelligenceV1_SpeechContextList>;
+export type GoogleCloudVideointelligenceV1_SpeechContextList =
+  ReadonlyArray<GoogleCloudVideointelligenceV1_SpeechContext>;
+export const GoogleCloudVideointelligenceV1_SpeechContextList =
+  /*@__PURE__*/ S.Array(
+    GoogleCloudVideointelligenceV1_SpeechContext,
+  ) as any as S.Schema<GoogleCloudVideointelligenceV1_SpeechContextList>;
 
 export type IntegerList = ReadonlyArray<number>;
-export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
+export const IntegerList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<IntegerList>;
 
 /** Config for SPEECH_TRANSCRIPTION. */
 export interface GoogleCloudVideointelligenceV1_SpeechTranscriptionConfig {
@@ -191,20 +248,25 @@ export interface GoogleCloudVideointelligenceV1_SpeechTranscriptionConfig {
   /** Optional. If set to `true`, the server will attempt to filter out profanities, replacing all but the initial character in each filtered word with asterisks, e.g. "f***". If set to `false` or omitted, profanities won't be filtered out. */
   filterProfanity?: boolean;
 }
-export const GoogleCloudVideointelligenceV1_SpeechTranscriptionConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "audioOutputUriPrefix": S.optional(S.String),
-  "enableWordConfidence": S.optional(S.Boolean),
-  "speechContexts": S.optional(GoogleCloudVideointelligenceV1_SpeechContextList),
-  "enableAutomaticPunctuation": S.optional(S.Boolean),
-  "diarizationSpeakerCount": S.optional(S.Number),
-  "audioTracks": S.optional(IntegerList),
-  "maxAlternatives": S.optional(S.Number),
-  "languageCode": S.optional(S.String),
-  "enableSpeakerDiarization": S.optional(S.Boolean),
-  "filterProfanity": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "GoogleCloudVideointelligenceV1_SpeechTranscriptionConfig" }) as any as S.Schema<GoogleCloudVideointelligenceV1_SpeechTranscriptionConfig>;
+export const GoogleCloudVideointelligenceV1_SpeechTranscriptionConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      audioOutputUriPrefix: S.optional(S.String),
+      enableWordConfidence: S.optional(S.Boolean),
+      speechContexts: S.optional(
+        GoogleCloudVideointelligenceV1_SpeechContextList,
+      ),
+      enableAutomaticPunctuation: S.optional(S.Boolean),
+      diarizationSpeakerCount: S.optional(S.Number),
+      audioTracks: S.optional(IntegerList),
+      maxAlternatives: S.optional(S.Number),
+      languageCode: S.optional(S.String),
+      enableSpeakerDiarization: S.optional(S.Boolean),
+      filterProfanity: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudVideointelligenceV1_SpeechTranscriptionConfig",
+  }) as any as S.Schema<GoogleCloudVideointelligenceV1_SpeechTranscriptionConfig>;
 
 /** Config for PERSON_DETECTION. */
 export interface GoogleCloudVideointelligenceV1_PersonDetectionConfig {
@@ -215,24 +277,30 @@ export interface GoogleCloudVideointelligenceV1_PersonDetectionConfig {
   /** Whether to enable person attributes detection, such as cloth color (black, blue, etc), type (coat, dress, etc), pattern (plain, floral, etc), hair, etc. Ignored if 'include_bounding_boxes' is set to false. */
   includeAttributes?: boolean;
 }
-export const GoogleCloudVideointelligenceV1_PersonDetectionConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "includeBoundingBoxes": S.optional(S.Boolean),
-  "includePoseLandmarks": S.optional(S.Boolean),
-  "includeAttributes": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "GoogleCloudVideointelligenceV1_PersonDetectionConfig" }) as any as S.Schema<GoogleCloudVideointelligenceV1_PersonDetectionConfig>;
+export const GoogleCloudVideointelligenceV1_PersonDetectionConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      includeBoundingBoxes: S.optional(S.Boolean),
+      includePoseLandmarks: S.optional(S.Boolean),
+      includeAttributes: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudVideointelligenceV1_PersonDetectionConfig",
+  }) as any as S.Schema<GoogleCloudVideointelligenceV1_PersonDetectionConfig>;
 
 /** Config for SHOT_CHANGE_DETECTION. */
 export interface GoogleCloudVideointelligenceV1_ShotChangeDetectionConfig {
   /** Model to use for shot change detection. Supported values: "builtin/stable" (the default if unset), "builtin/latest", and "builtin/legacy". */
   model?: string;
 }
-export const GoogleCloudVideointelligenceV1_ShotChangeDetectionConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "model": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudVideointelligenceV1_ShotChangeDetectionConfig" }) as any as S.Schema<GoogleCloudVideointelligenceV1_ShotChangeDetectionConfig>;
+export const GoogleCloudVideointelligenceV1_ShotChangeDetectionConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      model: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudVideointelligenceV1_ShotChangeDetectionConfig",
+  }) as any as S.Schema<GoogleCloudVideointelligenceV1_ShotChangeDetectionConfig>;
 
 /** Config for TEXT_DETECTION. */
 export interface GoogleCloudVideointelligenceV1_TextDetectionConfig {
@@ -241,12 +309,15 @@ export interface GoogleCloudVideointelligenceV1_TextDetectionConfig {
   /** Model to use for text detection. Supported values: "builtin/stable" (the default if unset) and "builtin/latest". */
   model?: string;
 }
-export const GoogleCloudVideointelligenceV1_TextDetectionConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "languageHints": S.optional(StringList),
-  "model": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudVideointelligenceV1_TextDetectionConfig" }) as any as S.Schema<GoogleCloudVideointelligenceV1_TextDetectionConfig>;
+export const GoogleCloudVideointelligenceV1_TextDetectionConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      languageHints: S.optional(StringList),
+      model: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudVideointelligenceV1_TextDetectionConfig",
+  }) as any as S.Schema<GoogleCloudVideointelligenceV1_TextDetectionConfig>;
 
 /** Video context and/or feature-specific parameters. */
 export interface GoogleCloudVideointelligenceV1_VideoContext {
@@ -269,19 +340,38 @@ export interface GoogleCloudVideointelligenceV1_VideoContext {
   /** Config for TEXT_DETECTION. */
   textDetectionConfig?: GoogleCloudVideointelligenceV1_TextDetectionConfig;
 }
-export const GoogleCloudVideointelligenceV1_VideoContext = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "objectTrackingConfig": S.optional(GoogleCloudVideointelligenceV1_ObjectTrackingConfig),
-  "faceDetectionConfig": S.optional(GoogleCloudVideointelligenceV1_FaceDetectionConfig),
-  "explicitContentDetectionConfig": S.optional(GoogleCloudVideointelligenceV1_ExplicitContentDetectionConfig),
-  "segments": S.optional(GoogleCloudVideointelligenceV1_VideoSegmentList),
-  "labelDetectionConfig": S.optional(GoogleCloudVideointelligenceV1_LabelDetectionConfig),
-  "speechTranscriptionConfig": S.optional(GoogleCloudVideointelligenceV1_SpeechTranscriptionConfig),
-  "personDetectionConfig": S.optional(GoogleCloudVideointelligenceV1_PersonDetectionConfig),
-  "shotChangeDetectionConfig": S.optional(GoogleCloudVideointelligenceV1_ShotChangeDetectionConfig),
-  "textDetectionConfig": S.optional(GoogleCloudVideointelligenceV1_TextDetectionConfig),
-}),
-).annotate({ identifier: "GoogleCloudVideointelligenceV1_VideoContext" }) as any as S.Schema<GoogleCloudVideointelligenceV1_VideoContext>;
+export const GoogleCloudVideointelligenceV1_VideoContext =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      objectTrackingConfig: S.optional(
+        GoogleCloudVideointelligenceV1_ObjectTrackingConfig,
+      ),
+      faceDetectionConfig: S.optional(
+        GoogleCloudVideointelligenceV1_FaceDetectionConfig,
+      ),
+      explicitContentDetectionConfig: S.optional(
+        GoogleCloudVideointelligenceV1_ExplicitContentDetectionConfig,
+      ),
+      segments: S.optional(GoogleCloudVideointelligenceV1_VideoSegmentList),
+      labelDetectionConfig: S.optional(
+        GoogleCloudVideointelligenceV1_LabelDetectionConfig,
+      ),
+      speechTranscriptionConfig: S.optional(
+        GoogleCloudVideointelligenceV1_SpeechTranscriptionConfig,
+      ),
+      personDetectionConfig: S.optional(
+        GoogleCloudVideointelligenceV1_PersonDetectionConfig,
+      ),
+      shotChangeDetectionConfig: S.optional(
+        GoogleCloudVideointelligenceV1_ShotChangeDetectionConfig,
+      ),
+      textDetectionConfig: S.optional(
+        GoogleCloudVideointelligenceV1_TextDetectionConfig,
+      ),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudVideointelligenceV1_VideoContext",
+  }) as any as S.Schema<GoogleCloudVideointelligenceV1_VideoContext>;
 
 /** Video annotation request. */
 export interface GoogleCloudVideointelligenceV1_AnnotateVideoRequest {
@@ -298,32 +388,52 @@ export interface GoogleCloudVideointelligenceV1_AnnotateVideoRequest {
   /** Additional video context and/or feature-specific parameters. */
   videoContext?: GoogleCloudVideointelligenceV1_VideoContext;
 }
-export const GoogleCloudVideointelligenceV1_AnnotateVideoRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "inputContent": S.optional(S.String),
-  "features": S.optional(GoogleCloudVideointelligenceV1_AnnotateVideoRequestFeaturesItemEnumList),
-  "inputUri": S.optional(S.String),
-  "locationId": S.optional(S.String),
-  "outputUri": S.optional(S.String),
-  "videoContext": S.optional(GoogleCloudVideointelligenceV1_VideoContext),
-}),
-).annotate({ identifier: "GoogleCloudVideointelligenceV1_AnnotateVideoRequest" }) as any as S.Schema<GoogleCloudVideointelligenceV1_AnnotateVideoRequest>;
+export const GoogleCloudVideointelligenceV1_AnnotateVideoRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      inputContent: S.optional(S.String),
+      features: S.optional(
+        GoogleCloudVideointelligenceV1_AnnotateVideoRequestFeaturesItemEnumList,
+      ),
+      inputUri: S.optional(S.String),
+      locationId: S.optional(S.String),
+      outputUri: S.optional(S.String),
+      videoContext: S.optional(GoogleCloudVideointelligenceV1_VideoContext),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudVideointelligenceV1_AnnotateVideoRequest",
+  }) as any as S.Schema<GoogleCloudVideointelligenceV1_AnnotateVideoRequest>;
 
 export interface AnnotateVideosRequest {
   /** Request body */
   body?: GoogleCloudVideointelligenceV1_AnnotateVideoRequest;
 }
 export const AnnotateVideosRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(GoogleCloudVideointelligenceV1_AnnotateVideoRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/videos:annotate","baseUrl":"https://videointelligence.googleapis.com/"})),
-).annotate({ identifier: "AnnotateVideosRequest" }) as any as S.Schema<AnnotateVideosRequest>;
+  S.Struct({
+    body: S.optional(
+      GoogleCloudVideointelligenceV1_AnnotateVideoRequest.pipe(T.HttpBody()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/videos:annotate",
+      baseUrl: "https://videointelligence.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "AnnotateVideosRequest",
+}) as any as S.Schema<AnnotateVideosRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface GoogleRpc_Status {
@@ -335,12 +445,14 @@ export interface GoogleRpc_Status {
   details?: DocumentMapList;
 }
 export const GoogleRpc_Status = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "message": S.optional(S.String),
-  "code": S.optional(S.Number),
-  "details": S.optional(DocumentMapList),
-}),
-).annotate({ identifier: "GoogleRpc_Status" }) as any as S.Schema<GoogleRpc_Status>;
+  S.Struct({
+    message: S.optional(S.String),
+    code: S.optional(S.Number),
+    details: S.optional(DocumentMapList),
+  }),
+).annotate({
+  identifier: "GoogleRpc_Status",
+}) as any as S.Schema<GoogleRpc_Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface GoogleLongrunning_Operation {
@@ -356,36 +468,51 @@ export interface GoogleLongrunning_Operation {
   done?: boolean;
 }
 export const GoogleLongrunning_Operation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "error": S.optional(GoogleRpc_Status),
-  "metadata": S.optional(DocumentMap),
-  "response": S.optional(DocumentMap),
-  "done": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "GoogleLongrunning_Operation" }) as any as S.Schema<GoogleLongrunning_Operation>;
+  S.Struct({
+    name: S.optional(S.String),
+    error: S.optional(GoogleRpc_Status),
+    metadata: S.optional(DocumentMap),
+    response: S.optional(DocumentMap),
+    done: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "GoogleLongrunning_Operation",
+}) as any as S.Schema<GoogleLongrunning_Operation>;
 
 export interface CancelOperationsProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
 }
-export const CancelOperationsProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"POST","uri":"v1/operations/{+name}:cancel","baseUrl":"https://videointelligence.googleapis.com/"})),
-).annotate({ identifier: "CancelOperationsProjectsLocationsOperationsRequest" }) as any as S.Schema<CancelOperationsProjectsLocationsOperationsRequest>;
+export const CancelOperationsProjectsLocationsOperationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/operations/{+name}:cancel",
+        baseUrl: "https://videointelligence.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CancelOperationsProjectsLocationsOperationsRequest",
+  }) as any as S.Schema<CancelOperationsProjectsLocationsOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface GoogleProtobuf_Empty {}
 export const GoogleProtobuf_Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "GoogleProtobuf_Empty" }) as any as S.Schema<GoogleProtobuf_Empty>;
+  S.Struct({}),
+).annotate({
+  identifier: "GoogleProtobuf_Empty",
+}) as any as S.Schema<GoogleProtobuf_Empty>;
 
 /** The request message for Operations.CancelOperation. */
 export interface GoogleLongrunning_CancelOperationRequest {}
-export const GoogleLongrunning_CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "GoogleLongrunning_CancelOperationRequest" }) as any as S.Schema<GoogleLongrunning_CancelOperationRequest>;
+export const GoogleLongrunning_CancelOperationRequest = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "GoogleLongrunning_CancelOperationRequest",
+}) as any as S.Schema<GoogleLongrunning_CancelOperationRequest>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -393,52 +520,99 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: GoogleLongrunning_CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleLongrunning_CancelOperationRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://videointelligence.googleapis.com/"})),
-).annotate({ identifier: "CancelProjectsLocationsOperationsRequest" }) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleLongrunning_CancelOperationRequest.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:cancel",
+        baseUrl: "https://videointelligence.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CancelProjectsLocationsOperationsRequest",
+}) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
 
 export interface DeleteOperationsProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteOperationsProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/operations/{+name}","baseUrl":"https://videointelligence.googleapis.com/"})),
-).annotate({ identifier: "DeleteOperationsProjectsLocationsOperationsRequest" }) as any as S.Schema<DeleteOperationsProjectsLocationsOperationsRequest>;
+export const DeleteOperationsProjectsLocationsOperationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/operations/{+name}",
+        baseUrl: "https://videointelligence.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteOperationsProjectsLocationsOperationsRequest",
+  }) as any as S.Schema<DeleteOperationsProjectsLocationsOperationsRequest>;
 
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://videointelligence.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsOperationsRequest" }) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://videointelligence.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsOperationsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
 
 export interface GetOperationsProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetOperationsProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/operations/{+name}","baseUrl":"https://videointelligence.googleapis.com/"})),
-).annotate({ identifier: "GetOperationsProjectsLocationsOperationsRequest" }) as any as S.Schema<GetOperationsProjectsLocationsOperationsRequest>;
+export const GetOperationsProjectsLocationsOperationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/operations/{+name}",
+        baseUrl: "https://videointelligence.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetOperationsProjectsLocationsOperationsRequest",
+  }) as any as S.Schema<GetOperationsProjectsLocationsOperationsRequest>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://videointelligence.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://videointelligence.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsOperationsRequest",
+}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page size. */
@@ -452,18 +626,30 @@ export interface ListProjectsLocationsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/operations","baseUrl":"https://videointelligence.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}/operations",
+        baseUrl: "https://videointelligence.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsOperationsRequest",
+}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type GoogleLongrunning_OperationList = ReadonlyArray<GoogleLongrunning_Operation>;
-export const GoogleLongrunning_OperationList = /*@__PURE__*/ S.Array(GoogleLongrunning_Operation) as any as S.Schema<GoogleLongrunning_OperationList>;
+export type GoogleLongrunning_OperationList =
+  ReadonlyArray<GoogleLongrunning_Operation>;
+export const GoogleLongrunning_OperationList = /*@__PURE__*/ S.Array(
+  GoogleLongrunning_Operation,
+) as any as S.Schema<GoogleLongrunning_OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface GoogleLongrunning_ListOperationsResponse {
@@ -474,15 +660,23 @@ export interface GoogleLongrunning_ListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-export const GoogleLongrunning_ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "operations": S.optional(GoogleLongrunning_OperationList),
-  "unreachable": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleLongrunning_ListOperationsResponse" }) as any as S.Schema<GoogleLongrunning_ListOperationsResponse>;
+export const GoogleLongrunning_ListOperationsResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      operations: S.optional(GoogleLongrunning_OperationList),
+      unreachable: S.optional(StringList),
+      nextPageToken: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "GoogleLongrunning_ListOperationsResponse",
+}) as any as S.Schema<GoogleLongrunning_ListOperationsResponse>;
 
-export type AnnotateVideosError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type AnnotateVideosError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Performs asynchronous video annotation. Progress and results can be retrieved through the `google.longrunning.Operations` interface. `Operation.metadata` contains `AnnotateVideoProgress` (progress). `Operation.response` contains `AnnotateVideoResponse` (results). */
 export const annotateVideos: API.OperationMethod<
   AnnotateVideosRequest,
@@ -497,7 +691,12 @@ export const annotateVideos: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CancelOperationsProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CancelOperationsProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelOperationsProjectsLocationsOperations: API.OperationMethod<
   CancelOperationsProjectsLocationsOperationsRequest,
@@ -512,7 +711,12 @@ export const cancelOperationsProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CancelProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CancelProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsRequest,
@@ -527,7 +731,12 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteOperationsProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteOperationsProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteOperationsProjectsLocationsOperations: API.OperationMethod<
   DeleteOperationsProjectsLocationsOperationsRequest,
@@ -542,7 +751,12 @@ export const deleteOperationsProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsRequest,
@@ -557,7 +771,10 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetOperationsProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type GetOperationsProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getOperationsProjectsLocationsOperations: API.OperationMethod<
   GetOperationsProjectsLocationsOperationsRequest,
@@ -572,7 +789,10 @@ export const getOperationsProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -587,7 +807,10 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -600,6 +823,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
-

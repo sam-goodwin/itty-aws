@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 /** Request message for ExchangeToken. */
@@ -77,27 +77,40 @@ export interface GoogleIdentityStsV1betaExchangeTokenRequest {
   /** Required. The type of security token. Must be `urn:ietf:params:oauth:token-type:access_token`, which indicates an OAuth 2.0 access token. */
   requestedTokenType?: string;
 }
-export const GoogleIdentityStsV1betaExchangeTokenRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "scope": S.optional(S.String),
-  "subjectTokenType": S.optional(S.String),
-  "options": S.optional(S.String),
-  "subjectToken": S.optional(S.String),
-  "grantType": S.optional(S.String),
-  "audience": S.optional(S.String),
-  "requestedTokenType": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleIdentityStsV1betaExchangeTokenRequest" }) as any as S.Schema<GoogleIdentityStsV1betaExchangeTokenRequest>;
+export const GoogleIdentityStsV1betaExchangeTokenRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      scope: S.optional(S.String),
+      subjectTokenType: S.optional(S.String),
+      options: S.optional(S.String),
+      subjectToken: S.optional(S.String),
+      grantType: S.optional(S.String),
+      audience: S.optional(S.String),
+      requestedTokenType: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleIdentityStsV1betaExchangeTokenRequest",
+  }) as any as S.Schema<GoogleIdentityStsV1betaExchangeTokenRequest>;
 
 export interface TokenV1betaRequest {
   /** Request body */
   body?: GoogleIdentityStsV1betaExchangeTokenRequest;
 }
 export const TokenV1betaRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(GoogleIdentityStsV1betaExchangeTokenRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/token","baseUrl":"https://sts.googleapis.com/"})),
-).annotate({ identifier: "TokenV1betaRequest" }) as any as S.Schema<TokenV1betaRequest>;
+  S.Struct({
+    body: S.optional(
+      GoogleIdentityStsV1betaExchangeTokenRequest.pipe(T.HttpBody()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/token",
+      baseUrl: "https://sts.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "TokenV1betaRequest",
+}) as any as S.Schema<TokenV1betaRequest>;
 
 /** Response message for ExchangeToken. */
 export interface GoogleIdentityStsV1betaExchangeTokenResponse {
@@ -110,16 +123,24 @@ export interface GoogleIdentityStsV1betaExchangeTokenResponse {
   /** The type of access token. Always has the value `Bearer`. */
   token_type?: string;
 }
-export const GoogleIdentityStsV1betaExchangeTokenResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "expires_in": S.optional(S.Number),
-  "access_token": S.optional(S.String),
-  "issued_token_type": S.optional(S.String),
-  "token_type": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleIdentityStsV1betaExchangeTokenResponse" }) as any as S.Schema<GoogleIdentityStsV1betaExchangeTokenResponse>;
+export const GoogleIdentityStsV1betaExchangeTokenResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      expires_in: S.optional(S.Number),
+      access_token: S.optional(S.String),
+      issued_token_type: S.optional(S.String),
+      token_type: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleIdentityStsV1betaExchangeTokenResponse",
+  }) as any as S.Schema<GoogleIdentityStsV1betaExchangeTokenResponse>;
 
-export type TokenV1betaError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TokenV1betaError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Exchanges a credential for a Google OAuth 2.0 access token. The token asserts an external identity within a workload identity pool, or it applies a Credential Access Boundary to a Google access token. When you call this method, do not send the `Authorization` HTTP header in the request. This method does not require the `Authorization` header, and using the header can cause the request to fail. */
 export const tokenV1beta: API.OperationMethod<
   TokenV1betaRequest,
@@ -133,4 +154,3 @@ export const tokenV1beta: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

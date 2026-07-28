@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 /** A message representing a metric in the measurement. */
@@ -68,14 +68,19 @@ export interface GoogleCloudMlV1_Measurement_Metric {
   metric?: string;
 }
 export const GoogleCloudMlV1_Measurement_Metric = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "value": S.optional(S.Number),
-  "metric": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudMlV1_Measurement_Metric" }) as any as S.Schema<GoogleCloudMlV1_Measurement_Metric>;
+  S.Struct({
+    value: S.optional(S.Number),
+    metric: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleCloudMlV1_Measurement_Metric",
+}) as any as S.Schema<GoogleCloudMlV1_Measurement_Metric>;
 
-export type GoogleCloudMlV1_Measurement_MetricList = ReadonlyArray<GoogleCloudMlV1_Measurement_Metric>;
-export const GoogleCloudMlV1_Measurement_MetricList = /*@__PURE__*/ S.Array(GoogleCloudMlV1_Measurement_Metric) as any as S.Schema<GoogleCloudMlV1_Measurement_MetricList>;
+export type GoogleCloudMlV1_Measurement_MetricList =
+  ReadonlyArray<GoogleCloudMlV1_Measurement_Metric>;
+export const GoogleCloudMlV1_Measurement_MetricList = /*@__PURE__*/ S.Array(
+  GoogleCloudMlV1_Measurement_Metric,
+) as any as S.Schema<GoogleCloudMlV1_Measurement_MetricList>;
 
 /** A message representing a measurement. */
 export interface GoogleCloudMlV1__Measurement {
@@ -87,23 +92,28 @@ export interface GoogleCloudMlV1__Measurement {
   stepCount?: string;
 }
 export const GoogleCloudMlV1__Measurement = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "elapsedTime": S.optional(S.String),
-  "metrics": S.optional(GoogleCloudMlV1_Measurement_MetricList),
-  "stepCount": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__Measurement" }) as any as S.Schema<GoogleCloudMlV1__Measurement>;
+  S.Struct({
+    elapsedTime: S.optional(S.String),
+    metrics: S.optional(GoogleCloudMlV1_Measurement_MetricList),
+    stepCount: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleCloudMlV1__Measurement",
+}) as any as S.Schema<GoogleCloudMlV1__Measurement>;
 
 /** The request message for the AddTrialMeasurement service method. */
 export interface GoogleCloudMlV1__AddTrialMeasurementRequest {
   /** Required. The measurement to be added to a trial. */
   measurement?: GoogleCloudMlV1__Measurement;
 }
-export const GoogleCloudMlV1__AddTrialMeasurementRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "measurement": S.optional(GoogleCloudMlV1__Measurement),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__AddTrialMeasurementRequest" }) as any as S.Schema<GoogleCloudMlV1__AddTrialMeasurementRequest>;
+export const GoogleCloudMlV1__AddTrialMeasurementRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      measurement: S.optional(GoogleCloudMlV1__Measurement),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudMlV1__AddTrialMeasurementRequest",
+  }) as any as S.Schema<GoogleCloudMlV1__AddTrialMeasurementRequest>;
 
 export interface AddMeasurementProjectsLocationsStudiesTrialsRequest {
   /** Required. The trial name. */
@@ -111,12 +121,23 @@ export interface AddMeasurementProjectsLocationsStudiesTrialsRequest {
   /** Request body */
   body?: GoogleCloudMlV1__AddTrialMeasurementRequest;
 }
-export const AddMeasurementProjectsLocationsStudiesTrialsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleCloudMlV1__AddTrialMeasurementRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:addMeasurement","baseUrl":"https://ml.googleapis.com/"})),
-).annotate({ identifier: "AddMeasurementProjectsLocationsStudiesTrialsRequest" }) as any as S.Schema<AddMeasurementProjectsLocationsStudiesTrialsRequest>;
+export const AddMeasurementProjectsLocationsStudiesTrialsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleCloudMlV1__AddTrialMeasurementRequest.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:addMeasurement",
+        baseUrl: "https://ml.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "AddMeasurementProjectsLocationsStudiesTrialsRequest",
+  }) as any as S.Schema<AddMeasurementProjectsLocationsStudiesTrialsRequest>;
 
 /** A message representing a parameter to be tuned. Contains the name of the parameter and the suggested value to use for this trial. */
 export interface GoogleCloudMlV1_Trial_Parameter {
@@ -130,22 +151,35 @@ export interface GoogleCloudMlV1_Trial_Parameter {
   intValue?: string;
 }
 export const GoogleCloudMlV1_Trial_Parameter = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "stringValue": S.optional(S.String),
-  "floatValue": S.optional(S.Number),
-  "parameter": S.optional(S.String),
-  "intValue": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudMlV1_Trial_Parameter" }) as any as S.Schema<GoogleCloudMlV1_Trial_Parameter>;
+  S.Struct({
+    stringValue: S.optional(S.String),
+    floatValue: S.optional(S.Number),
+    parameter: S.optional(S.String),
+    intValue: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleCloudMlV1_Trial_Parameter",
+}) as any as S.Schema<GoogleCloudMlV1_Trial_Parameter>;
 
-export type GoogleCloudMlV1_Trial_ParameterList = ReadonlyArray<GoogleCloudMlV1_Trial_Parameter>;
-export const GoogleCloudMlV1_Trial_ParameterList = /*@__PURE__*/ S.Array(GoogleCloudMlV1_Trial_Parameter) as any as S.Schema<GoogleCloudMlV1_Trial_ParameterList>;
+export type GoogleCloudMlV1_Trial_ParameterList =
+  ReadonlyArray<GoogleCloudMlV1_Trial_Parameter>;
+export const GoogleCloudMlV1_Trial_ParameterList = /*@__PURE__*/ S.Array(
+  GoogleCloudMlV1_Trial_Parameter,
+) as any as S.Schema<GoogleCloudMlV1_Trial_ParameterList>;
 
-export type GoogleCloudMlV1__TrialStateEnum = "STATE_UNSPECIFIED" | "REQUESTED" | "ACTIVE" | "COMPLETED" | "STOPPING";
+export type GoogleCloudMlV1__TrialStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "REQUESTED"
+  | "ACTIVE"
+  | "COMPLETED"
+  | "STOPPING";
 export const GoogleCloudMlV1__TrialStateEnum = /*@__PURE__*/ S.String;
 
-export type GoogleCloudMlV1__MeasurementList = ReadonlyArray<GoogleCloudMlV1__Measurement>;
-export const GoogleCloudMlV1__MeasurementList = /*@__PURE__*/ S.Array(GoogleCloudMlV1__Measurement) as any as S.Schema<GoogleCloudMlV1__MeasurementList>;
+export type GoogleCloudMlV1__MeasurementList =
+  ReadonlyArray<GoogleCloudMlV1__Measurement>;
+export const GoogleCloudMlV1__MeasurementList = /*@__PURE__*/ S.Array(
+  GoogleCloudMlV1__Measurement,
+) as any as S.Schema<GoogleCloudMlV1__MeasurementList>;
 
 /** A message representing a trial. */
 export interface GoogleCloudMlV1__Trial {
@@ -171,25 +205,29 @@ export interface GoogleCloudMlV1__Trial {
   name?: string;
 }
 export const GoogleCloudMlV1__Trial = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "trialInfeasible": S.optional(S.Boolean),
-  "startTime": S.optional(S.String),
-  "infeasibleReason": S.optional(S.String),
-  "parameters": S.optional(GoogleCloudMlV1_Trial_ParameterList),
-  "state": S.optional(GoogleCloudMlV1__TrialStateEnum),
-  "endTime": S.optional(S.String),
-  "measurements": S.optional(GoogleCloudMlV1__MeasurementList),
-  "finalMeasurement": S.optional(GoogleCloudMlV1__Measurement),
-  "clientId": S.optional(S.String),
-  "name": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__Trial" }) as any as S.Schema<GoogleCloudMlV1__Trial>;
+  S.Struct({
+    trialInfeasible: S.optional(S.Boolean),
+    startTime: S.optional(S.String),
+    infeasibleReason: S.optional(S.String),
+    parameters: S.optional(GoogleCloudMlV1_Trial_ParameterList),
+    state: S.optional(GoogleCloudMlV1__TrialStateEnum),
+    endTime: S.optional(S.String),
+    measurements: S.optional(GoogleCloudMlV1__MeasurementList),
+    finalMeasurement: S.optional(GoogleCloudMlV1__Measurement),
+    clientId: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleCloudMlV1__Trial",
+}) as any as S.Schema<GoogleCloudMlV1__Trial>;
 
 /** Request message for the CancelJob method. */
 export interface GoogleCloudMlV1__CancelJobRequest {}
 export const GoogleCloudMlV1__CancelJobRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "GoogleCloudMlV1__CancelJobRequest" }) as any as S.Schema<GoogleCloudMlV1__CancelJobRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "GoogleCloudMlV1__CancelJobRequest",
+}) as any as S.Schema<GoogleCloudMlV1__CancelJobRequest>;
 
 export interface CancelProjectsJobsRequest {
   /** Required. The name of the job to cancel. */
@@ -198,43 +236,71 @@ export interface CancelProjectsJobsRequest {
   body?: GoogleCloudMlV1__CancelJobRequest;
 }
 export const CancelProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleCloudMlV1__CancelJobRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://ml.googleapis.com/"})),
-).annotate({ identifier: "CancelProjectsJobsRequest" }) as any as S.Schema<CancelProjectsJobsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(GoogleCloudMlV1__CancelJobRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:cancel",
+      baseUrl: "https://ml.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CancelProjectsJobsRequest",
+}) as any as S.Schema<CancelProjectsJobsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface GoogleProtobuf__Empty {}
 export const GoogleProtobuf__Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "GoogleProtobuf__Empty" }) as any as S.Schema<GoogleProtobuf__Empty>;
+  S.Struct({}),
+).annotate({
+  identifier: "GoogleProtobuf__Empty",
+}) as any as S.Schema<GoogleProtobuf__Empty>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://ml.googleapis.com/"})),
-).annotate({ identifier: "CancelProjectsLocationsOperationsRequest" }) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:cancel",
+        baseUrl: "https://ml.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CancelProjectsLocationsOperationsRequest",
+}) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
 
 export interface CancelProjectsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
 }
 export const CancelProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://ml.googleapis.com/"})),
-).annotate({ identifier: "CancelProjectsOperationsRequest" }) as any as S.Schema<CancelProjectsOperationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:cancel",
+      baseUrl: "https://ml.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CancelProjectsOperationsRequest",
+}) as any as S.Schema<CancelProjectsOperationsRequest>;
 
 /** The request message for the CheckTrialEarlyStoppingState service method. */
 export interface GoogleCloudMlV1__CheckTrialEarlyStoppingStateRequest {}
-export const GoogleCloudMlV1__CheckTrialEarlyStoppingStateRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "GoogleCloudMlV1__CheckTrialEarlyStoppingStateRequest" }) as any as S.Schema<GoogleCloudMlV1__CheckTrialEarlyStoppingStateRequest>;
+export const GoogleCloudMlV1__CheckTrialEarlyStoppingStateRequest =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "GoogleCloudMlV1__CheckTrialEarlyStoppingStateRequest",
+  }) as any as S.Schema<GoogleCloudMlV1__CheckTrialEarlyStoppingStateRequest>;
 
 export interface CheckEarlyStoppingStateProjectsLocationsStudiesTrialsRequest {
   /** Required. The trial name. */
@@ -242,18 +308,34 @@ export interface CheckEarlyStoppingStateProjectsLocationsStudiesTrialsRequest {
   /** Request body */
   body?: GoogleCloudMlV1__CheckTrialEarlyStoppingStateRequest;
 }
-export const CheckEarlyStoppingStateProjectsLocationsStudiesTrialsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleCloudMlV1__CheckTrialEarlyStoppingStateRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:checkEarlyStoppingState","baseUrl":"https://ml.googleapis.com/"})),
-).annotate({ identifier: "CheckEarlyStoppingStateProjectsLocationsStudiesTrialsRequest" }) as any as S.Schema<CheckEarlyStoppingStateProjectsLocationsStudiesTrialsRequest>;
+export const CheckEarlyStoppingStateProjectsLocationsStudiesTrialsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleCloudMlV1__CheckTrialEarlyStoppingStateRequest.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:checkEarlyStoppingState",
+        baseUrl: "https://ml.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CheckEarlyStoppingStateProjectsLocationsStudiesTrialsRequest",
+  }) as any as S.Schema<CheckEarlyStoppingStateProjectsLocationsStudiesTrialsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface GoogleRpc__Status {
@@ -265,12 +347,14 @@ export interface GoogleRpc__Status {
   code?: number;
 }
 export const GoogleRpc__Status = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "message": S.optional(S.String),
-  "details": S.optional(DocumentMapList),
-  "code": S.optional(S.Number),
-}),
-).annotate({ identifier: "GoogleRpc__Status" }) as any as S.Schema<GoogleRpc__Status>;
+  S.Struct({
+    message: S.optional(S.String),
+    details: S.optional(DocumentMapList),
+    code: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "GoogleRpc__Status",
+}) as any as S.Schema<GoogleRpc__Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface GoogleLongrunning__Operation {
@@ -286,14 +370,16 @@ export interface GoogleLongrunning__Operation {
   metadata?: DocumentMap;
 }
 export const GoogleLongrunning__Operation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "done": S.optional(S.Boolean),
-  "error": S.optional(GoogleRpc__Status),
-  "response": S.optional(DocumentMap),
-  "name": S.optional(S.String),
-  "metadata": S.optional(DocumentMap),
-}),
-).annotate({ identifier: "GoogleLongrunning__Operation" }) as any as S.Schema<GoogleLongrunning__Operation>;
+  S.Struct({
+    done: S.optional(S.Boolean),
+    error: S.optional(GoogleRpc__Status),
+    response: S.optional(DocumentMap),
+    name: S.optional(S.String),
+    metadata: S.optional(DocumentMap),
+  }),
+).annotate({
+  identifier: "GoogleLongrunning__Operation",
+}) as any as S.Schema<GoogleLongrunning__Operation>;
 
 /** The request message for the CompleteTrial service method. */
 export interface GoogleCloudMlV1__CompleteTrialRequest {
@@ -304,13 +390,16 @@ export interface GoogleCloudMlV1__CompleteTrialRequest {
   /** Optional. If provided, it will be used as the completed trial's final_measurement; Otherwise, the service will auto-select a previously reported measurement as the final-measurement */
   finalMeasurement?: GoogleCloudMlV1__Measurement;
 }
-export const GoogleCloudMlV1__CompleteTrialRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "infeasibleReason": S.optional(S.String),
-  "trialInfeasible": S.optional(S.Boolean),
-  "finalMeasurement": S.optional(GoogleCloudMlV1__Measurement),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__CompleteTrialRequest" }) as any as S.Schema<GoogleCloudMlV1__CompleteTrialRequest>;
+export const GoogleCloudMlV1__CompleteTrialRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      infeasibleReason: S.optional(S.String),
+      trialInfeasible: S.optional(S.Boolean),
+      finalMeasurement: S.optional(GoogleCloudMlV1__Measurement),
+    }),
+).annotate({
+  identifier: "GoogleCloudMlV1__CompleteTrialRequest",
+}) as any as S.Schema<GoogleCloudMlV1__CompleteTrialRequest>;
 
 export interface CompleteProjectsLocationsStudiesTrialsRequest {
   /** Required. The trial name.metat */
@@ -318,12 +407,23 @@ export interface CompleteProjectsLocationsStudiesTrialsRequest {
   /** Request body */
   body?: GoogleCloudMlV1__CompleteTrialRequest;
 }
-export const CompleteProjectsLocationsStudiesTrialsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleCloudMlV1__CompleteTrialRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:complete","baseUrl":"https://ml.googleapis.com/"})),
-).annotate({ identifier: "CompleteProjectsLocationsStudiesTrialsRequest" }) as any as S.Schema<CompleteProjectsLocationsStudiesTrialsRequest>;
+export const CompleteProjectsLocationsStudiesTrialsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleCloudMlV1__CompleteTrialRequest.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:complete",
+        baseUrl: "https://ml.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CompleteProjectsLocationsStudiesTrialsRequest",
+  }) as any as S.Schema<CompleteProjectsLocationsStudiesTrialsRequest>;
 
 /** Represents results of a prediction job. */
 export interface GoogleCloudMlV1__PredictionOutput {
@@ -337,22 +437,40 @@ export interface GoogleCloudMlV1__PredictionOutput {
   nodeHours?: number;
 }
 export const GoogleCloudMlV1__PredictionOutput = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "outputPath": S.optional(S.String),
-  "errorCount": S.optional(S.String),
-  "predictionCount": S.optional(S.String),
-  "nodeHours": S.optional(S.Number),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__PredictionOutput" }) as any as S.Schema<GoogleCloudMlV1__PredictionOutput>;
+  S.Struct({
+    outputPath: S.optional(S.String),
+    errorCount: S.optional(S.String),
+    predictionCount: S.optional(S.String),
+    nodeHours: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "GoogleCloudMlV1__PredictionOutput",
+}) as any as S.Schema<GoogleCloudMlV1__PredictionOutput>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
-export type GoogleCloudMlV1__PredictionInputOutputDataFormatEnum = "DATA_FORMAT_UNSPECIFIED" | "JSON" | "TEXT" | "TF_RECORD" | "TF_RECORD_GZIP" | "CSV";
-export const GoogleCloudMlV1__PredictionInputOutputDataFormatEnum = /*@__PURE__*/ S.String;
+export type GoogleCloudMlV1__PredictionInputOutputDataFormatEnum =
+  | "DATA_FORMAT_UNSPECIFIED"
+  | "JSON"
+  | "TEXT"
+  | "TF_RECORD"
+  | "TF_RECORD_GZIP"
+  | "CSV";
+export const GoogleCloudMlV1__PredictionInputOutputDataFormatEnum =
+  /*@__PURE__*/ S.String;
 
-export type GoogleCloudMlV1__PredictionInputDataFormatEnum = "DATA_FORMAT_UNSPECIFIED" | "JSON" | "TEXT" | "TF_RECORD" | "TF_RECORD_GZIP" | "CSV";
-export const GoogleCloudMlV1__PredictionInputDataFormatEnum = /*@__PURE__*/ S.String;
+export type GoogleCloudMlV1__PredictionInputDataFormatEnum =
+  | "DATA_FORMAT_UNSPECIFIED"
+  | "JSON"
+  | "TEXT"
+  | "TF_RECORD"
+  | "TF_RECORD_GZIP"
+  | "CSV";
+export const GoogleCloudMlV1__PredictionInputDataFormatEnum =
+  /*@__PURE__*/ S.String;
 
 /** Represents input parameters for a prediction job. */
 export interface GoogleCloudMlV1__PredictionInput {
@@ -382,24 +500,31 @@ export interface GoogleCloudMlV1__PredictionInput {
   dataFormat?: GoogleCloudMlV1__PredictionInputDataFormatEnum;
 }
 export const GoogleCloudMlV1__PredictionInput = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "runtimeVersion": S.optional(S.String),
-  "region": S.optional(S.String),
-  "outputPath": S.optional(S.String),
-  "batchSize": S.optional(S.String),
-  "inputPaths": S.optional(StringList),
-  "uri": S.optional(S.String),
-  "versionName": S.optional(S.String),
-  "maxWorkerCount": S.optional(S.String),
-  "outputDataFormat": S.optional(GoogleCloudMlV1__PredictionInputOutputDataFormatEnum),
-  "signatureName": S.optional(S.String),
-  "modelName": S.optional(S.String),
-  "dataFormat": S.optional(GoogleCloudMlV1__PredictionInputDataFormatEnum),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__PredictionInput" }) as any as S.Schema<GoogleCloudMlV1__PredictionInput>;
+  S.Struct({
+    runtimeVersion: S.optional(S.String),
+    region: S.optional(S.String),
+    outputPath: S.optional(S.String),
+    batchSize: S.optional(S.String),
+    inputPaths: S.optional(StringList),
+    uri: S.optional(S.String),
+    versionName: S.optional(S.String),
+    maxWorkerCount: S.optional(S.String),
+    outputDataFormat: S.optional(
+      GoogleCloudMlV1__PredictionInputOutputDataFormatEnum,
+    ),
+    signatureName: S.optional(S.String),
+    modelName: S.optional(S.String),
+    dataFormat: S.optional(GoogleCloudMlV1__PredictionInputDataFormatEnum),
+  }),
+).annotate({
+  identifier: "GoogleCloudMlV1__PredictionInput",
+}) as any as S.Schema<GoogleCloudMlV1__PredictionInput>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
 /** Represents output related to a built-in algorithm Job. */
 export interface GoogleCloudMlV1__BuiltInAlgorithmOutput {
@@ -412,14 +537,17 @@ export interface GoogleCloudMlV1__BuiltInAlgorithmOutput {
   /** Framework on which the built-in algorithm was trained. */
   framework?: string;
 }
-export const GoogleCloudMlV1__BuiltInAlgorithmOutput = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "modelPath": S.optional(S.String),
-  "pythonVersion": S.optional(S.String),
-  "runtimeVersion": S.optional(S.String),
-  "framework": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__BuiltInAlgorithmOutput" }) as any as S.Schema<GoogleCloudMlV1__BuiltInAlgorithmOutput>;
+export const GoogleCloudMlV1__BuiltInAlgorithmOutput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      modelPath: S.optional(S.String),
+      pythonVersion: S.optional(S.String),
+      runtimeVersion: S.optional(S.String),
+      framework: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "GoogleCloudMlV1__BuiltInAlgorithmOutput",
+}) as any as S.Schema<GoogleCloudMlV1__BuiltInAlgorithmOutput>;
 
 /** An observed value of a metric. */
 export interface GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric {
@@ -428,18 +556,34 @@ export interface GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric {
   /** The global training step for this metric. */
   trainingStep?: string;
 }
-export const GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "objectiveValue": S.optional(S.Number),
-  "trainingStep": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric" }) as any as S.Schema<GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric>;
+export const GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      objectiveValue: S.optional(S.Number),
+      trainingStep: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric",
+  }) as any as S.Schema<GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric>;
 
-export type GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricList = ReadonlyArray<GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric>;
-export const GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricList = /*@__PURE__*/ S.Array(GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric) as any as S.Schema<GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricList>;
+export type GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricList =
+  ReadonlyArray<GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric>;
+export const GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricList =
+  /*@__PURE__*/ S.Array(
+    GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric,
+  ) as any as S.Schema<GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricList>;
 
-export type GoogleCloudMlV1__HyperparameterOutputStateEnum = "STATE_UNSPECIFIED" | "QUEUED" | "PREPARING" | "RUNNING" | "SUCCEEDED" | "FAILED" | "CANCELLING" | "CANCELLED";
-export const GoogleCloudMlV1__HyperparameterOutputStateEnum = /*@__PURE__*/ S.String;
+export type GoogleCloudMlV1__HyperparameterOutputStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "QUEUED"
+  | "PREPARING"
+  | "RUNNING"
+  | "SUCCEEDED"
+  | "FAILED"
+  | "CANCELLING"
+  | "CANCELLED";
+export const GoogleCloudMlV1__HyperparameterOutputStateEnum =
+  /*@__PURE__*/ S.String;
 
 /** Represents the result of a single hyperparameter tuning trial from a training job. The TrainingOutput object that is returned on successful completion of a training job with hyperparameter tuning includes a list of HyperparameterOutput objects, one for each successful trial. */
 export interface GoogleCloudMlV1__HyperparameterOutput {
@@ -464,23 +608,35 @@ export interface GoogleCloudMlV1__HyperparameterOutput {
   /** Details related to built-in algorithms jobs. Only set for trials of built-in algorithms jobs that have succeeded. */
   builtInAlgorithmOutput?: GoogleCloudMlV1__BuiltInAlgorithmOutput;
 }
-export const GoogleCloudMlV1__HyperparameterOutput = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "startTime": S.optional(S.String),
-  "trialId": S.optional(S.String),
-  "hyperparameters": S.optional(StringMap),
-  "allMetrics": S.optional(GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricList),
-  "state": S.optional(GoogleCloudMlV1__HyperparameterOutputStateEnum),
-  "isTrialStoppedEarly": S.optional(S.Boolean),
-  "finalMetric": S.optional(GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric),
-  "endTime": S.optional(S.String),
-  "webAccessUris": S.optional(StringMap),
-  "builtInAlgorithmOutput": S.optional(GoogleCloudMlV1__BuiltInAlgorithmOutput),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__HyperparameterOutput" }) as any as S.Schema<GoogleCloudMlV1__HyperparameterOutput>;
+export const GoogleCloudMlV1__HyperparameterOutput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      startTime: S.optional(S.String),
+      trialId: S.optional(S.String),
+      hyperparameters: S.optional(StringMap),
+      allMetrics: S.optional(
+        GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricList,
+      ),
+      state: S.optional(GoogleCloudMlV1__HyperparameterOutputStateEnum),
+      isTrialStoppedEarly: S.optional(S.Boolean),
+      finalMetric: S.optional(
+        GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric,
+      ),
+      endTime: S.optional(S.String),
+      webAccessUris: S.optional(StringMap),
+      builtInAlgorithmOutput: S.optional(
+        GoogleCloudMlV1__BuiltInAlgorithmOutput,
+      ),
+    }),
+).annotate({
+  identifier: "GoogleCloudMlV1__HyperparameterOutput",
+}) as any as S.Schema<GoogleCloudMlV1__HyperparameterOutput>;
 
-export type GoogleCloudMlV1__HyperparameterOutputList = ReadonlyArray<GoogleCloudMlV1__HyperparameterOutput>;
-export const GoogleCloudMlV1__HyperparameterOutputList = /*@__PURE__*/ S.Array(GoogleCloudMlV1__HyperparameterOutput) as any as S.Schema<GoogleCloudMlV1__HyperparameterOutputList>;
+export type GoogleCloudMlV1__HyperparameterOutputList =
+  ReadonlyArray<GoogleCloudMlV1__HyperparameterOutput>;
+export const GoogleCloudMlV1__HyperparameterOutputList = /*@__PURE__*/ S.Array(
+  GoogleCloudMlV1__HyperparameterOutput,
+) as any as S.Schema<GoogleCloudMlV1__HyperparameterOutputList>;
 
 /** Represents results of a training job. Output only. */
 export interface GoogleCloudMlV1__TrainingOutput {
@@ -502,17 +658,19 @@ export interface GoogleCloudMlV1__TrainingOutput {
   completedTrialCount?: string;
 }
 export const GoogleCloudMlV1__TrainingOutput = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "consumedMLUnits": S.optional(S.Number),
-  "hyperparameterMetricTag": S.optional(S.String),
-  "webAccessUris": S.optional(StringMap),
-  "isHyperparameterTuningJob": S.optional(S.Boolean),
-  "builtInAlgorithmOutput": S.optional(GoogleCloudMlV1__BuiltInAlgorithmOutput),
-  "trials": S.optional(GoogleCloudMlV1__HyperparameterOutputList),
-  "isBuiltInAlgorithmJob": S.optional(S.Boolean),
-  "completedTrialCount": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__TrainingOutput" }) as any as S.Schema<GoogleCloudMlV1__TrainingOutput>;
+  S.Struct({
+    consumedMLUnits: S.optional(S.Number),
+    hyperparameterMetricTag: S.optional(S.String),
+    webAccessUris: S.optional(StringMap),
+    isHyperparameterTuningJob: S.optional(S.Boolean),
+    builtInAlgorithmOutput: S.optional(GoogleCloudMlV1__BuiltInAlgorithmOutput),
+    trials: S.optional(GoogleCloudMlV1__HyperparameterOutputList),
+    isBuiltInAlgorithmJob: S.optional(S.Boolean),
+    completedTrialCount: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleCloudMlV1__TrainingOutput",
+}) as any as S.Schema<GoogleCloudMlV1__TrainingOutput>;
 
 /** All parameters related to scheduling of training jobs. */
 export interface GoogleCloudMlV1__Scheduling {
@@ -524,23 +682,41 @@ export interface GoogleCloudMlV1__Scheduling {
   maxRunningTime?: string;
 }
 export const GoogleCloudMlV1__Scheduling = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "maxWaitTime": S.optional(S.String),
-  "priority": S.optional(S.Number),
-  "maxRunningTime": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__Scheduling" }) as any as S.Schema<GoogleCloudMlV1__Scheduling>;
+  S.Struct({
+    maxWaitTime: S.optional(S.String),
+    priority: S.optional(S.Number),
+    maxRunningTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleCloudMlV1__Scheduling",
+}) as any as S.Schema<GoogleCloudMlV1__Scheduling>;
 
-export type GoogleCloudMlV1__HyperparameterSpecAlgorithmEnum = "ALGORITHM_UNSPECIFIED" | "GRID_SEARCH" | "RANDOM_SEARCH";
-export const GoogleCloudMlV1__HyperparameterSpecAlgorithmEnum = /*@__PURE__*/ S.String;
+export type GoogleCloudMlV1__HyperparameterSpecAlgorithmEnum =
+  | "ALGORITHM_UNSPECIFIED"
+  | "GRID_SEARCH"
+  | "RANDOM_SEARCH";
+export const GoogleCloudMlV1__HyperparameterSpecAlgorithmEnum =
+  /*@__PURE__*/ S.String;
 
-export type GoogleCloudMlV1__ParameterSpecScaleTypeEnum = "NONE" | "UNIT_LINEAR_SCALE" | "UNIT_LOG_SCALE" | "UNIT_REVERSE_LOG_SCALE";
-export const GoogleCloudMlV1__ParameterSpecScaleTypeEnum = /*@__PURE__*/ S.String;
+export type GoogleCloudMlV1__ParameterSpecScaleTypeEnum =
+  | "NONE"
+  | "UNIT_LINEAR_SCALE"
+  | "UNIT_LOG_SCALE"
+  | "UNIT_REVERSE_LOG_SCALE";
+export const GoogleCloudMlV1__ParameterSpecScaleTypeEnum =
+  /*@__PURE__*/ S.String;
 
 export type DoubleList = ReadonlyArray<number>;
-export const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
+export const DoubleList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<DoubleList>;
 
-export type GoogleCloudMlV1__ParameterSpecTypeEnum = "PARAMETER_TYPE_UNSPECIFIED" | "DOUBLE" | "INTEGER" | "CATEGORICAL" | "DISCRETE";
+export type GoogleCloudMlV1__ParameterSpecTypeEnum =
+  | "PARAMETER_TYPE_UNSPECIFIED"
+  | "DOUBLE"
+  | "INTEGER"
+  | "CATEGORICAL"
+  | "DISCRETE";
 export const GoogleCloudMlV1__ParameterSpecTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a single hyperparameter to optimize. */
@@ -561,22 +737,31 @@ export interface GoogleCloudMlV1__ParameterSpec {
   maxValue?: number;
 }
 export const GoogleCloudMlV1__ParameterSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "minValue": S.optional(S.Number),
-  "scaleType": S.optional(GoogleCloudMlV1__ParameterSpecScaleTypeEnum),
-  "categoricalValues": S.optional(StringList),
-  "discreteValues": S.optional(DoubleList),
-  "parameterName": S.optional(S.String),
-  "type": S.optional(GoogleCloudMlV1__ParameterSpecTypeEnum),
-  "maxValue": S.optional(S.Number),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__ParameterSpec" }) as any as S.Schema<GoogleCloudMlV1__ParameterSpec>;
+  S.Struct({
+    minValue: S.optional(S.Number),
+    scaleType: S.optional(GoogleCloudMlV1__ParameterSpecScaleTypeEnum),
+    categoricalValues: S.optional(StringList),
+    discreteValues: S.optional(DoubleList),
+    parameterName: S.optional(S.String),
+    type: S.optional(GoogleCloudMlV1__ParameterSpecTypeEnum),
+    maxValue: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "GoogleCloudMlV1__ParameterSpec",
+}) as any as S.Schema<GoogleCloudMlV1__ParameterSpec>;
 
-export type GoogleCloudMlV1__ParameterSpecList = ReadonlyArray<GoogleCloudMlV1__ParameterSpec>;
-export const GoogleCloudMlV1__ParameterSpecList = /*@__PURE__*/ S.Array(GoogleCloudMlV1__ParameterSpec) as any as S.Schema<GoogleCloudMlV1__ParameterSpecList>;
+export type GoogleCloudMlV1__ParameterSpecList =
+  ReadonlyArray<GoogleCloudMlV1__ParameterSpec>;
+export const GoogleCloudMlV1__ParameterSpecList = /*@__PURE__*/ S.Array(
+  GoogleCloudMlV1__ParameterSpec,
+) as any as S.Schema<GoogleCloudMlV1__ParameterSpecList>;
 
-export type GoogleCloudMlV1__HyperparameterSpecGoalEnum = "GOAL_TYPE_UNSPECIFIED" | "MAXIMIZE" | "MINIMIZE";
-export const GoogleCloudMlV1__HyperparameterSpecGoalEnum = /*@__PURE__*/ S.String;
+export type GoogleCloudMlV1__HyperparameterSpecGoalEnum =
+  | "GOAL_TYPE_UNSPECIFIED"
+  | "MAXIMIZE"
+  | "MINIMIZE";
+export const GoogleCloudMlV1__HyperparameterSpecGoalEnum =
+  /*@__PURE__*/ S.String;
 
 /** Represents a set of hyperparameters to optimize. */
 export interface GoogleCloudMlV1__HyperparameterSpec {
@@ -600,18 +785,20 @@ export interface GoogleCloudMlV1__HyperparameterSpec {
   enableTrialEarlyStopping?: boolean;
 }
 export const GoogleCloudMlV1__HyperparameterSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "algorithm": S.optional(GoogleCloudMlV1__HyperparameterSpecAlgorithmEnum),
-  "maxTrials": S.optional(S.Number),
-  "params": S.optional(GoogleCloudMlV1__ParameterSpecList),
-  "maxFailedTrials": S.optional(S.Number),
-  "goal": S.optional(GoogleCloudMlV1__HyperparameterSpecGoalEnum),
-  "hyperparameterMetricTag": S.optional(S.String),
-  "resumePreviousJobId": S.optional(S.String),
-  "maxParallelTrials": S.optional(S.Number),
-  "enableTrialEarlyStopping": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__HyperparameterSpec" }) as any as S.Schema<GoogleCloudMlV1__HyperparameterSpec>;
+  S.Struct({
+    algorithm: S.optional(GoogleCloudMlV1__HyperparameterSpecAlgorithmEnum),
+    maxTrials: S.optional(S.Number),
+    params: S.optional(GoogleCloudMlV1__ParameterSpecList),
+    maxFailedTrials: S.optional(S.Number),
+    goal: S.optional(GoogleCloudMlV1__HyperparameterSpecGoalEnum),
+    hyperparameterMetricTag: S.optional(S.String),
+    resumePreviousJobId: S.optional(S.String),
+    maxParallelTrials: S.optional(S.Number),
+    enableTrialEarlyStopping: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "GoogleCloudMlV1__HyperparameterSpec",
+}) as any as S.Schema<GoogleCloudMlV1__HyperparameterSpec>;
 
 /** Represents the config of disk options. */
 export interface GoogleCloudMlV1__DiskConfig {
@@ -621,14 +808,29 @@ export interface GoogleCloudMlV1__DiskConfig {
   bootDiskSizeGb?: number;
 }
 export const GoogleCloudMlV1__DiskConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bootDiskType": S.optional(S.String),
-  "bootDiskSizeGb": S.optional(S.Number),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__DiskConfig" }) as any as S.Schema<GoogleCloudMlV1__DiskConfig>;
+  S.Struct({
+    bootDiskType: S.optional(S.String),
+    bootDiskSizeGb: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "GoogleCloudMlV1__DiskConfig",
+}) as any as S.Schema<GoogleCloudMlV1__DiskConfig>;
 
-export type GoogleCloudMlV1__AcceleratorConfigTypeEnum = "ACCELERATOR_TYPE_UNSPECIFIED" | "NVIDIA_TESLA_K80" | "NVIDIA_TESLA_P100" | "NVIDIA_TESLA_V100" | "NVIDIA_TESLA_P4" | "NVIDIA_TESLA_T4" | "NVIDIA_TESLA_A100" | "TPU_V2" | "TPU_V3" | "TPU_V2_POD" | "TPU_V3_POD" | "TPU_V4_POD";
-export const GoogleCloudMlV1__AcceleratorConfigTypeEnum = /*@__PURE__*/ S.String;
+export type GoogleCloudMlV1__AcceleratorConfigTypeEnum =
+  | "ACCELERATOR_TYPE_UNSPECIFIED"
+  | "NVIDIA_TESLA_K80"
+  | "NVIDIA_TESLA_P100"
+  | "NVIDIA_TESLA_V100"
+  | "NVIDIA_TESLA_P4"
+  | "NVIDIA_TESLA_T4"
+  | "NVIDIA_TESLA_A100"
+  | "TPU_V2"
+  | "TPU_V3"
+  | "TPU_V2_POD"
+  | "TPU_V3_POD"
+  | "TPU_V4_POD";
+export const GoogleCloudMlV1__AcceleratorConfigTypeEnum =
+  /*@__PURE__*/ S.String;
 
 /** Represents a hardware accelerator request config. Note that the AcceleratorConfig can be used in both Jobs and Versions. Learn more about [accelerators for training](/ml-engine/docs/using-gpus) and [accelerators for online prediction](/ml-engine/docs/machine-types-online-prediction#gpus). */
 export interface GoogleCloudMlV1__AcceleratorConfig {
@@ -638,11 +840,13 @@ export interface GoogleCloudMlV1__AcceleratorConfig {
   type?: GoogleCloudMlV1__AcceleratorConfigTypeEnum;
 }
 export const GoogleCloudMlV1__AcceleratorConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "count": S.optional(S.String),
-  "type": S.optional(GoogleCloudMlV1__AcceleratorConfigTypeEnum),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__AcceleratorConfig" }) as any as S.Schema<GoogleCloudMlV1__AcceleratorConfig>;
+  S.Struct({
+    count: S.optional(S.String),
+    type: S.optional(GoogleCloudMlV1__AcceleratorConfigTypeEnum),
+  }),
+).annotate({
+  identifier: "GoogleCloudMlV1__AcceleratorConfig",
+}) as any as S.Schema<GoogleCloudMlV1__AcceleratorConfig>;
 
 /** Represents the configuration for a replica in a cluster. */
 export interface GoogleCloudMlV1__ReplicaConfig {
@@ -660,15 +864,17 @@ export interface GoogleCloudMlV1__ReplicaConfig {
   containerArgs?: StringList;
 }
 export const GoogleCloudMlV1__ReplicaConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "imageUri": S.optional(S.String),
-  "tpuTfVersion": S.optional(S.String),
-  "containerCommand": S.optional(StringList),
-  "diskConfig": S.optional(GoogleCloudMlV1__DiskConfig),
-  "acceleratorConfig": S.optional(GoogleCloudMlV1__AcceleratorConfig),
-  "containerArgs": S.optional(StringList),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__ReplicaConfig" }) as any as S.Schema<GoogleCloudMlV1__ReplicaConfig>;
+  S.Struct({
+    imageUri: S.optional(S.String),
+    tpuTfVersion: S.optional(S.String),
+    containerCommand: S.optional(StringList),
+    diskConfig: S.optional(GoogleCloudMlV1__DiskConfig),
+    acceleratorConfig: S.optional(GoogleCloudMlV1__AcceleratorConfig),
+    containerArgs: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "GoogleCloudMlV1__ReplicaConfig",
+}) as any as S.Schema<GoogleCloudMlV1__ReplicaConfig>;
 
 /** Represents a custom encryption key configuration that can be applied to a resource. */
 export interface GoogleCloudMlV1__EncryptionConfig {
@@ -676,13 +882,22 @@ export interface GoogleCloudMlV1__EncryptionConfig {
   kmsKeyName?: string;
 }
 export const GoogleCloudMlV1__EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kmsKeyName": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__EncryptionConfig" }) as any as S.Schema<GoogleCloudMlV1__EncryptionConfig>;
+  S.Struct({
+    kmsKeyName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleCloudMlV1__EncryptionConfig",
+}) as any as S.Schema<GoogleCloudMlV1__EncryptionConfig>;
 
-export type GoogleCloudMlV1__TrainingInputScaleTierEnum = "BASIC" | "STANDARD_1" | "PREMIUM_1" | "BASIC_GPU" | "BASIC_TPU" | "CUSTOM";
-export const GoogleCloudMlV1__TrainingInputScaleTierEnum = /*@__PURE__*/ S.String;
+export type GoogleCloudMlV1__TrainingInputScaleTierEnum =
+  | "BASIC"
+  | "STANDARD_1"
+  | "PREMIUM_1"
+  | "BASIC_GPU"
+  | "BASIC_TPU"
+  | "CUSTOM";
+export const GoogleCloudMlV1__TrainingInputScaleTierEnum =
+  /*@__PURE__*/ S.String;
 
 /** Represents input parameters for a training job. When using the gcloud command to submit your training job, you can specify the input parameters as command-line arguments and/or in a YAML configuration file referenced from the --config command-line argument. For details, see the guide to [submitting a training job](/ai-platform/training/docs/training-jobs). */
 export interface GoogleCloudMlV1__TrainingInput {
@@ -740,37 +955,47 @@ export interface GoogleCloudMlV1__TrainingInput {
   workerConfig?: GoogleCloudMlV1__ReplicaConfig;
 }
 export const GoogleCloudMlV1__TrainingInput = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "jobDir": S.optional(S.String),
-  "network": S.optional(S.String),
-  "runtimeVersion": S.optional(S.String),
-  "args": S.optional(StringList),
-  "scheduling": S.optional(GoogleCloudMlV1__Scheduling),
-  "packageUris": S.optional(StringList),
-  "enableWebAccess": S.optional(S.Boolean),
-  "workerType": S.optional(S.String),
-  "hyperparameters": S.optional(GoogleCloudMlV1__HyperparameterSpec),
-  "evaluatorCount": S.optional(S.String),
-  "serviceAccount": S.optional(S.String),
-  "region": S.optional(S.String),
-  "evaluatorType": S.optional(S.String),
-  "workerCount": S.optional(S.String),
-  "pythonModule": S.optional(S.String),
-  "parameterServerType": S.optional(S.String),
-  "useChiefInTfConfig": S.optional(S.Boolean),
-  "pythonVersion": S.optional(S.String),
-  "masterConfig": S.optional(GoogleCloudMlV1__ReplicaConfig),
-  "encryptionConfig": S.optional(GoogleCloudMlV1__EncryptionConfig),
-  "parameterServerConfig": S.optional(GoogleCloudMlV1__ReplicaConfig),
-  "parameterServerCount": S.optional(S.String),
-  "evaluatorConfig": S.optional(GoogleCloudMlV1__ReplicaConfig),
-  "scaleTier": S.optional(GoogleCloudMlV1__TrainingInputScaleTierEnum),
-  "masterType": S.optional(S.String),
-  "workerConfig": S.optional(GoogleCloudMlV1__ReplicaConfig),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__TrainingInput" }) as any as S.Schema<GoogleCloudMlV1__TrainingInput>;
+  S.Struct({
+    jobDir: S.optional(S.String),
+    network: S.optional(S.String),
+    runtimeVersion: S.optional(S.String),
+    args: S.optional(StringList),
+    scheduling: S.optional(GoogleCloudMlV1__Scheduling),
+    packageUris: S.optional(StringList),
+    enableWebAccess: S.optional(S.Boolean),
+    workerType: S.optional(S.String),
+    hyperparameters: S.optional(GoogleCloudMlV1__HyperparameterSpec),
+    evaluatorCount: S.optional(S.String),
+    serviceAccount: S.optional(S.String),
+    region: S.optional(S.String),
+    evaluatorType: S.optional(S.String),
+    workerCount: S.optional(S.String),
+    pythonModule: S.optional(S.String),
+    parameterServerType: S.optional(S.String),
+    useChiefInTfConfig: S.optional(S.Boolean),
+    pythonVersion: S.optional(S.String),
+    masterConfig: S.optional(GoogleCloudMlV1__ReplicaConfig),
+    encryptionConfig: S.optional(GoogleCloudMlV1__EncryptionConfig),
+    parameterServerConfig: S.optional(GoogleCloudMlV1__ReplicaConfig),
+    parameterServerCount: S.optional(S.String),
+    evaluatorConfig: S.optional(GoogleCloudMlV1__ReplicaConfig),
+    scaleTier: S.optional(GoogleCloudMlV1__TrainingInputScaleTierEnum),
+    masterType: S.optional(S.String),
+    workerConfig: S.optional(GoogleCloudMlV1__ReplicaConfig),
+  }),
+).annotate({
+  identifier: "GoogleCloudMlV1__TrainingInput",
+}) as any as S.Schema<GoogleCloudMlV1__TrainingInput>;
 
-export type GoogleCloudMlV1__JobStateEnum = "STATE_UNSPECIFIED" | "QUEUED" | "PREPARING" | "RUNNING" | "SUCCEEDED" | "FAILED" | "CANCELLING" | "CANCELLED";
+export type GoogleCloudMlV1__JobStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "QUEUED"
+  | "PREPARING"
+  | "RUNNING"
+  | "SUCCEEDED"
+  | "FAILED"
+  | "CANCELLING"
+  | "CANCELLED";
 export const GoogleCloudMlV1__JobStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a training or prediction job. */
@@ -803,22 +1028,24 @@ export interface GoogleCloudMlV1__Job {
   state?: GoogleCloudMlV1__JobStateEnum;
 }
 export const GoogleCloudMlV1__Job = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "etag": S.optional(S.String),
-  "predictionOutput": S.optional(GoogleCloudMlV1__PredictionOutput),
-  "predictionInput": S.optional(GoogleCloudMlV1__PredictionInput),
-  "trainingOutput": S.optional(GoogleCloudMlV1__TrainingOutput),
-  "startTime": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "createTime": S.optional(S.String),
-  "errorMessage": S.optional(S.String),
-  "jobPosition": S.optional(S.String),
-  "trainingInput": S.optional(GoogleCloudMlV1__TrainingInput),
-  "jobId": S.optional(S.String),
-  "endTime": S.optional(S.String),
-  "state": S.optional(GoogleCloudMlV1__JobStateEnum),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__Job" }) as any as S.Schema<GoogleCloudMlV1__Job>;
+  S.Struct({
+    etag: S.optional(S.String),
+    predictionOutput: S.optional(GoogleCloudMlV1__PredictionOutput),
+    predictionInput: S.optional(GoogleCloudMlV1__PredictionInput),
+    trainingOutput: S.optional(GoogleCloudMlV1__TrainingOutput),
+    startTime: S.optional(S.String),
+    labels: S.optional(StringMap),
+    createTime: S.optional(S.String),
+    errorMessage: S.optional(S.String),
+    jobPosition: S.optional(S.String),
+    trainingInput: S.optional(GoogleCloudMlV1__TrainingInput),
+    jobId: S.optional(S.String),
+    endTime: S.optional(S.String),
+    state: S.optional(GoogleCloudMlV1__JobStateEnum),
+  }),
+).annotate({
+  identifier: "GoogleCloudMlV1__Job",
+}) as any as S.Schema<GoogleCloudMlV1__Job>;
 
 export interface CreateProjectsJobsRequest {
   /** Required. The project name. */
@@ -827,13 +1054,25 @@ export interface CreateProjectsJobsRequest {
   body?: GoogleCloudMlV1__Job;
 }
 export const CreateProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleCloudMlV1__Job.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/jobs","baseUrl":"https://ml.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsJobsRequest" }) as any as S.Schema<CreateProjectsJobsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(GoogleCloudMlV1__Job.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/jobs",
+      baseUrl: "https://ml.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateProjectsJobsRequest",
+}) as any as S.Schema<CreateProjectsJobsRequest>;
 
-export type GoogleCloudMlV1__StudyStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "INACTIVE" | "COMPLETED";
+export type GoogleCloudMlV1__StudyStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "INACTIVE"
+  | "COMPLETED";
 export const GoogleCloudMlV1__StudyStateEnum = /*@__PURE__*/ S.String;
 
 /** The median automated stopping rule stops a pending trial if the trial's best objective_value is strictly below the median 'performance' of all completed trials reported up to the trial's last measurement. Currently, 'performance' refers to the running average of the objective values reported by the trial in each measurement. */
@@ -841,81 +1080,121 @@ export interface GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStopping
   /** If true, the median automated stopping rule applies to measurement.use_elapsed_time, which means the elapsed_time field of the current trial's latest measurement is used to compute the median objective value for each completed trial. */
   useElapsedTime?: boolean;
 }
-export const GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "useElapsedTime": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfig" }) as any as S.Schema<GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfig>;
+export const GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      useElapsedTime: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfig",
+  }) as any as S.Schema<GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfig>;
 
 export interface GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfig {
   /** If true, measurement.elapsed_time is used as the x-axis of each Trials Decay Curve. Otherwise, Measurement.steps will be used as the x-axis. */
   useElapsedTime?: boolean;
 }
-export const GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "useElapsedTime": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfig" }) as any as S.Schema<GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfig>;
+export const GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      useElapsedTime: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfig",
+  }) as any as S.Schema<GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfig>;
 
 /** Configuration for Automated Early Stopping of Trials. If no implementation_config is set, automated early stopping will not be run. */
 export interface GoogleCloudMlV1__AutomatedStoppingConfig {
   medianAutomatedStoppingConfig?: GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfig;
   decayCurveStoppingConfig?: GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfig;
 }
-export const GoogleCloudMlV1__AutomatedStoppingConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "medianAutomatedStoppingConfig": S.optional(GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfig),
-  "decayCurveStoppingConfig": S.optional(GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfig),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__AutomatedStoppingConfig" }) as any as S.Schema<GoogleCloudMlV1__AutomatedStoppingConfig>;
+export const GoogleCloudMlV1__AutomatedStoppingConfig = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      medianAutomatedStoppingConfig: S.optional(
+        GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfig,
+      ),
+      decayCurveStoppingConfig: S.optional(
+        GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfig,
+      ),
+    }),
+).annotate({
+  identifier: "GoogleCloudMlV1__AutomatedStoppingConfig",
+}) as any as S.Schema<GoogleCloudMlV1__AutomatedStoppingConfig>;
 
-export type GoogleCloudMlV1_StudyConfig_ParameterSpecTypeEnum = "PARAMETER_TYPE_UNSPECIFIED" | "DOUBLE" | "INTEGER" | "CATEGORICAL" | "DISCRETE";
-export const GoogleCloudMlV1_StudyConfig_ParameterSpecTypeEnum = /*@__PURE__*/ S.String;
+export type GoogleCloudMlV1_StudyConfig_ParameterSpecTypeEnum =
+  | "PARAMETER_TYPE_UNSPECIFIED"
+  | "DOUBLE"
+  | "INTEGER"
+  | "CATEGORICAL"
+  | "DISCRETE";
+export const GoogleCloudMlV1_StudyConfig_ParameterSpecTypeEnum =
+  /*@__PURE__*/ S.String;
 
-export type GoogleCloudMlV1_StudyConfig_ParameterSpecScaleTypeEnum = "SCALE_TYPE_UNSPECIFIED" | "UNIT_LINEAR_SCALE" | "UNIT_LOG_SCALE" | "UNIT_REVERSE_LOG_SCALE";
-export const GoogleCloudMlV1_StudyConfig_ParameterSpecScaleTypeEnum = /*@__PURE__*/ S.String;
+export type GoogleCloudMlV1_StudyConfig_ParameterSpecScaleTypeEnum =
+  | "SCALE_TYPE_UNSPECIFIED"
+  | "UNIT_LINEAR_SCALE"
+  | "UNIT_LOG_SCALE"
+  | "UNIT_REVERSE_LOG_SCALE";
+export const GoogleCloudMlV1_StudyConfig_ParameterSpecScaleTypeEnum =
+  /*@__PURE__*/ S.String;
 
 export interface GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpec {
   /** Must be specified if type is `CATEGORICAL`. The list of possible categories. */
   values?: StringList;
 }
-export const GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "values": S.optional(StringList),
-}),
-).annotate({ identifier: "GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpec" }) as any as S.Schema<GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpec>;
+export const GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpec =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      values: S.optional(StringList),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpec",
+  }) as any as S.Schema<GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpec>;
 
 /** Represents the spec to match integer values from parent parameter. */
 export interface GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpec {
   /** Matches values of the parent parameter with type 'INTEGER'. All values must lie in `integer_value_spec` of parent parameter. */
   values?: StringList;
 }
-export const GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "values": S.optional(StringList),
-}),
-).annotate({ identifier: "GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpec" }) as any as S.Schema<GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpec>;
+export const GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpec =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      values: S.optional(StringList),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpec",
+  }) as any as S.Schema<GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpec>;
 
 /** Represents the spec to match discrete values from parent parameter. */
 export interface GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpec {
   /** Matches values of the parent parameter with type 'DISCRETE'. All values must exist in `discrete_value_spec` of parent parameter. */
   values?: DoubleList;
 }
-export const GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "values": S.optional(DoubleList),
-}),
-).annotate({ identifier: "GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpec" }) as any as S.Schema<GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpec>;
+export const GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpec =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      values: S.optional(DoubleList),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpec",
+  }) as any as S.Schema<GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpec>;
 
 export interface GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpec {
   /** Must be specified if type is `DISCRETE`. A list of feasible points. The list should be in strictly increasing order. For instance, this parameter might have possible settings of 1.5, 2.5, and 4.0. This list should not contain more than 1,000 values. */
   values?: DoubleList;
 }
-export const GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "values": S.optional(DoubleList),
-}),
-).annotate({ identifier: "GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpec" }) as any as S.Schema<GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpec>;
+export const GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpec =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      values: S.optional(DoubleList),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpec",
+  }) as any as S.Schema<GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpec>;
 
 export interface GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpec {
   /** Must be specified if type is `INTEGER`. Maximum value of the parameter. */
@@ -923,23 +1202,30 @@ export interface GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpec {
   /** Must be specified if type is `INTEGER`. Minimum value of the parameter. */
   minValue?: string;
 }
-export const GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "maxValue": S.optional(S.String),
-  "minValue": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpec" }) as any as S.Schema<GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpec>;
+export const GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpec =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      maxValue: S.optional(S.String),
+      minValue: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpec",
+  }) as any as S.Schema<GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpec>;
 
 /** Represents the spec to match categorical values from parent parameter. */
 export interface GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpec {
   /** Matches values of the parent parameter with type 'CATEGORICAL'. All values must exist in `categorical_value_spec` of parent parameter. */
   values?: StringList;
 }
-export const GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "values": S.optional(StringList),
-}),
-).annotate({ identifier: "GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpec" }) as any as S.Schema<GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpec>;
+export const GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpec =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      values: S.optional(StringList),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpec",
+  }) as any as S.Schema<GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpec>;
 
 export interface GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpec {
   /** Must be specified if type is `DOUBLE`. Maximum value of the parameter. */
@@ -947,12 +1233,15 @@ export interface GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpec {
   /** Must be specified if type is `DOUBLE`. Minimum value of the parameter. */
   minValue?: number;
 }
-export const GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "maxValue": S.optional(S.Number),
-  "minValue": S.optional(S.Number),
-}),
-).annotate({ identifier: "GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpec" }) as any as S.Schema<GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpec>;
+export const GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpec =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      maxValue: S.optional(S.Number),
+      minValue: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpec",
+  }) as any as S.Schema<GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpec>;
 
 /** Represents a single parameter to optimize. */
 export interface GoogleCloudMlV1_StudyConfig_ParameterSpec {
@@ -976,30 +1265,63 @@ export interface GoogleCloudMlV1_StudyConfig_ParameterSpec {
   /** The value spec for a 'DOUBLE' parameter. */
   doubleValueSpec?: GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpec;
 }
-export const GoogleCloudMlV1_StudyConfig_ParameterSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(GoogleCloudMlV1_StudyConfig_ParameterSpecTypeEnum),
-  "scaleType": S.optional(GoogleCloudMlV1_StudyConfig_ParameterSpecScaleTypeEnum),
-  "childParameterSpecs": S.optional(S.suspend(() => GoogleCloudMlV1_StudyConfig_ParameterSpecList)),
-  "categoricalValueSpec": S.optional(GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpec),
-  "parentIntValues": S.optional(GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpec),
-  "parentDiscreteValues": S.optional(GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpec),
-  "discreteValueSpec": S.optional(GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpec),
-  "parameter": S.optional(S.String),
-  "integerValueSpec": S.optional(GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpec),
-  "parentCategoricalValues": S.optional(GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpec),
-  "doubleValueSpec": S.optional(GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpec),
-}),
-).annotate({ identifier: "GoogleCloudMlV1_StudyConfig_ParameterSpec" }) as any as S.Schema<GoogleCloudMlV1_StudyConfig_ParameterSpec>;
+export const GoogleCloudMlV1_StudyConfig_ParameterSpec =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(GoogleCloudMlV1_StudyConfig_ParameterSpecTypeEnum),
+      scaleType: S.optional(
+        GoogleCloudMlV1_StudyConfig_ParameterSpecScaleTypeEnum,
+      ),
+      childParameterSpecs: S.optional(
+        S.suspend(() => GoogleCloudMlV1_StudyConfig_ParameterSpecList),
+      ),
+      categoricalValueSpec: S.optional(
+        GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpec,
+      ),
+      parentIntValues: S.optional(
+        GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpec,
+      ),
+      parentDiscreteValues: S.optional(
+        GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpec,
+      ),
+      discreteValueSpec: S.optional(
+        GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpec,
+      ),
+      parameter: S.optional(S.String),
+      integerValueSpec: S.optional(
+        GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpec,
+      ),
+      parentCategoricalValues: S.optional(
+        GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpec,
+      ),
+      doubleValueSpec: S.optional(
+        GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpec,
+      ),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudMlV1_StudyConfig_ParameterSpec",
+  }) as any as S.Schema<GoogleCloudMlV1_StudyConfig_ParameterSpec>;
 
-export type GoogleCloudMlV1_StudyConfig_ParameterSpecList = ReadonlyArray<GoogleCloudMlV1_StudyConfig_ParameterSpec>;
-export const GoogleCloudMlV1_StudyConfig_ParameterSpecList = /*@__PURE__*/ S.Array(GoogleCloudMlV1_StudyConfig_ParameterSpec) as any as S.Schema<GoogleCloudMlV1_StudyConfig_ParameterSpecList>;
+export type GoogleCloudMlV1_StudyConfig_ParameterSpecList =
+  ReadonlyArray<GoogleCloudMlV1_StudyConfig_ParameterSpec>;
+export const GoogleCloudMlV1_StudyConfig_ParameterSpecList =
+  /*@__PURE__*/ S.Array(
+    GoogleCloudMlV1_StudyConfig_ParameterSpec,
+  ) as any as S.Schema<GoogleCloudMlV1_StudyConfig_ParameterSpecList>;
 
-export type GoogleCloudMlV1__StudyConfigAlgorithmEnum = "ALGORITHM_UNSPECIFIED" | "GAUSSIAN_PROCESS_BANDIT" | "GRID_SEARCH" | "RANDOM_SEARCH";
+export type GoogleCloudMlV1__StudyConfigAlgorithmEnum =
+  | "ALGORITHM_UNSPECIFIED"
+  | "GAUSSIAN_PROCESS_BANDIT"
+  | "GRID_SEARCH"
+  | "RANDOM_SEARCH";
 export const GoogleCloudMlV1__StudyConfigAlgorithmEnum = /*@__PURE__*/ S.String;
 
-export type GoogleCloudMlV1_StudyConfig_MetricSpecGoalEnum = "GOAL_TYPE_UNSPECIFIED" | "MAXIMIZE" | "MINIMIZE";
-export const GoogleCloudMlV1_StudyConfig_MetricSpecGoalEnum = /*@__PURE__*/ S.String;
+export type GoogleCloudMlV1_StudyConfig_MetricSpecGoalEnum =
+  | "GOAL_TYPE_UNSPECIFIED"
+  | "MAXIMIZE"
+  | "MINIMIZE";
+export const GoogleCloudMlV1_StudyConfig_MetricSpecGoalEnum =
+  /*@__PURE__*/ S.String;
 
 /** Represents a metric to optimize. */
 export interface GoogleCloudMlV1_StudyConfig_MetricSpec {
@@ -1008,15 +1330,21 @@ export interface GoogleCloudMlV1_StudyConfig_MetricSpec {
   /** Required. The name of the metric. */
   metric?: string;
 }
-export const GoogleCloudMlV1_StudyConfig_MetricSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "goal": S.optional(GoogleCloudMlV1_StudyConfig_MetricSpecGoalEnum),
-  "metric": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudMlV1_StudyConfig_MetricSpec" }) as any as S.Schema<GoogleCloudMlV1_StudyConfig_MetricSpec>;
+export const GoogleCloudMlV1_StudyConfig_MetricSpec = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      goal: S.optional(GoogleCloudMlV1_StudyConfig_MetricSpecGoalEnum),
+      metric: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "GoogleCloudMlV1_StudyConfig_MetricSpec",
+}) as any as S.Schema<GoogleCloudMlV1_StudyConfig_MetricSpec>;
 
-export type GoogleCloudMlV1_StudyConfig_MetricSpecList = ReadonlyArray<GoogleCloudMlV1_StudyConfig_MetricSpec>;
-export const GoogleCloudMlV1_StudyConfig_MetricSpecList = /*@__PURE__*/ S.Array(GoogleCloudMlV1_StudyConfig_MetricSpec) as any as S.Schema<GoogleCloudMlV1_StudyConfig_MetricSpecList>;
+export type GoogleCloudMlV1_StudyConfig_MetricSpecList =
+  ReadonlyArray<GoogleCloudMlV1_StudyConfig_MetricSpec>;
+export const GoogleCloudMlV1_StudyConfig_MetricSpecList = /*@__PURE__*/ S.Array(
+  GoogleCloudMlV1_StudyConfig_MetricSpec,
+) as any as S.Schema<GoogleCloudMlV1_StudyConfig_MetricSpecList>;
 
 /** Represents configuration of a study. */
 export interface GoogleCloudMlV1__StudyConfig {
@@ -1030,13 +1358,17 @@ export interface GoogleCloudMlV1__StudyConfig {
   metrics?: GoogleCloudMlV1_StudyConfig_MetricSpecList;
 }
 export const GoogleCloudMlV1__StudyConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "automatedStoppingConfig": S.optional(GoogleCloudMlV1__AutomatedStoppingConfig),
-  "parameters": S.optional(GoogleCloudMlV1_StudyConfig_ParameterSpecList),
-  "algorithm": S.optional(GoogleCloudMlV1__StudyConfigAlgorithmEnum),
-  "metrics": S.optional(GoogleCloudMlV1_StudyConfig_MetricSpecList),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__StudyConfig" }) as any as S.Schema<GoogleCloudMlV1__StudyConfig>;
+  S.Struct({
+    automatedStoppingConfig: S.optional(
+      GoogleCloudMlV1__AutomatedStoppingConfig,
+    ),
+    parameters: S.optional(GoogleCloudMlV1_StudyConfig_ParameterSpecList),
+    algorithm: S.optional(GoogleCloudMlV1__StudyConfigAlgorithmEnum),
+    metrics: S.optional(GoogleCloudMlV1_StudyConfig_MetricSpecList),
+  }),
+).annotate({
+  identifier: "GoogleCloudMlV1__StudyConfig",
+}) as any as S.Schema<GoogleCloudMlV1__StudyConfig>;
 
 /** A message representing a Study. */
 export interface GoogleCloudMlV1__Study {
@@ -1052,14 +1384,16 @@ export interface GoogleCloudMlV1__Study {
   studyConfig?: GoogleCloudMlV1__StudyConfig;
 }
 export const GoogleCloudMlV1__Study = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "createTime": S.optional(S.String),
-  "name": S.optional(S.String),
-  "inactiveReason": S.optional(S.String),
-  "state": S.optional(GoogleCloudMlV1__StudyStateEnum),
-  "studyConfig": S.optional(GoogleCloudMlV1__StudyConfig),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__Study" }) as any as S.Schema<GoogleCloudMlV1__Study>;
+  S.Struct({
+    createTime: S.optional(S.String),
+    name: S.optional(S.String),
+    inactiveReason: S.optional(S.String),
+    state: S.optional(GoogleCloudMlV1__StudyStateEnum),
+    studyConfig: S.optional(GoogleCloudMlV1__StudyConfig),
+  }),
+).annotate({
+  identifier: "GoogleCloudMlV1__Study",
+}) as any as S.Schema<GoogleCloudMlV1__Study>;
 
 export interface CreateProjectsLocationsStudiesRequest {
   /** Required. The ID to use for the study, which will become the final component of the study's resource name. */
@@ -1069,13 +1403,22 @@ export interface CreateProjectsLocationsStudiesRequest {
   /** Request body */
   body?: GoogleCloudMlV1__Study;
 }
-export const CreateProjectsLocationsStudiesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "studyId": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleCloudMlV1__Study.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/studies","baseUrl":"https://ml.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsStudiesRequest" }) as any as S.Schema<CreateProjectsLocationsStudiesRequest>;
+export const CreateProjectsLocationsStudiesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      studyId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(GoogleCloudMlV1__Study.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/studies",
+        baseUrl: "https://ml.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateProjectsLocationsStudiesRequest",
+}) as any as S.Schema<CreateProjectsLocationsStudiesRequest>;
 
 export interface CreateProjectsLocationsStudiesTrialsRequest {
   /** Required. The name of the study that the trial belongs to. */
@@ -1083,14 +1426,26 @@ export interface CreateProjectsLocationsStudiesTrialsRequest {
   /** Request body */
   body?: GoogleCloudMlV1__Trial;
 }
-export const CreateProjectsLocationsStudiesTrialsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleCloudMlV1__Trial.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/trials","baseUrl":"https://ml.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsStudiesTrialsRequest" }) as any as S.Schema<CreateProjectsLocationsStudiesTrialsRequest>;
+export const CreateProjectsLocationsStudiesTrialsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(GoogleCloudMlV1__Trial.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/trials",
+        baseUrl: "https://ml.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsStudiesTrialsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsStudiesTrialsRequest>;
 
-export type GoogleCloudMlV1__MetricSpecNameEnum = "METRIC_NAME_UNSPECIFIED" | "CPU_USAGE" | "GPU_DUTY_CYCLE";
+export type GoogleCloudMlV1__MetricSpecNameEnum =
+  | "METRIC_NAME_UNSPECIFIED"
+  | "CPU_USAGE"
+  | "GPU_DUTY_CYCLE";
 export const GoogleCloudMlV1__MetricSpecNameEnum = /*@__PURE__*/ S.String;
 
 /** MetricSpec contains the specifications to use to calculate the desired nodes count when autoscaling is enabled. */
@@ -1101,14 +1456,19 @@ export interface GoogleCloudMlV1__MetricSpec {
   name?: GoogleCloudMlV1__MetricSpecNameEnum;
 }
 export const GoogleCloudMlV1__MetricSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "target": S.optional(S.Number),
-  "name": S.optional(GoogleCloudMlV1__MetricSpecNameEnum),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__MetricSpec" }) as any as S.Schema<GoogleCloudMlV1__MetricSpec>;
+  S.Struct({
+    target: S.optional(S.Number),
+    name: S.optional(GoogleCloudMlV1__MetricSpecNameEnum),
+  }),
+).annotate({
+  identifier: "GoogleCloudMlV1__MetricSpec",
+}) as any as S.Schema<GoogleCloudMlV1__MetricSpec>;
 
-export type GoogleCloudMlV1__MetricSpecList = ReadonlyArray<GoogleCloudMlV1__MetricSpec>;
-export const GoogleCloudMlV1__MetricSpecList = /*@__PURE__*/ S.Array(GoogleCloudMlV1__MetricSpec) as any as S.Schema<GoogleCloudMlV1__MetricSpecList>;
+export type GoogleCloudMlV1__MetricSpecList =
+  ReadonlyArray<GoogleCloudMlV1__MetricSpec>;
+export const GoogleCloudMlV1__MetricSpecList = /*@__PURE__*/ S.Array(
+  GoogleCloudMlV1__MetricSpec,
+) as any as S.Schema<GoogleCloudMlV1__MetricSpecList>;
 
 /** Options for automatically scaling a model. */
 export interface GoogleCloudMlV1__AutoScaling {
@@ -1120,12 +1480,14 @@ export interface GoogleCloudMlV1__AutoScaling {
   metrics?: GoogleCloudMlV1__MetricSpecList;
 }
 export const GoogleCloudMlV1__AutoScaling = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "maxNodes": S.optional(S.Number),
-  "minNodes": S.optional(S.Number),
-  "metrics": S.optional(GoogleCloudMlV1__MetricSpecList),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__AutoScaling" }) as any as S.Schema<GoogleCloudMlV1__AutoScaling>;
+  S.Struct({
+    maxNodes: S.optional(S.Number),
+    minNodes: S.optional(S.Number),
+    metrics: S.optional(GoogleCloudMlV1__MetricSpecList),
+  }),
+).annotate({
+  identifier: "GoogleCloudMlV1__AutoScaling",
+}) as any as S.Schema<GoogleCloudMlV1__AutoScaling>;
 
 /** Configuration for logging request-response pairs to a BigQuery table. Online prediction requests to a model version and the responses to these requests are converted to raw strings and saved to the specified BigQuery table. Logging is constrained by [BigQuery quotas and limits](/bigquery/quotas). If your project exceeds BigQuery quotas or limits, AI Platform Prediction does not log request-response pairs, but it continues to serve predictions. If you are using [continuous evaluation](/ml-engine/docs/continuous-evaluation/), you do not need to specify this configuration manually. Setting up continuous evaluation automatically enables logging of request-response pairs. */
 export interface GoogleCloudMlV1__RequestLoggingConfig {
@@ -1134,12 +1496,15 @@ export interface GoogleCloudMlV1__RequestLoggingConfig {
   /** Required. Fully qualified BigQuery table name in the following format: " project_id.dataset_name.table_name" The specified table must already exist, and the "Cloud ML Service Agent" for your project must have permission to write to it. The table must have the following [schema](/bigquery/docs/schemas): Field name Type Mode model STRING REQUIRED model_version STRING REQUIRED time TIMESTAMP REQUIRED raw_data STRING REQUIRED raw_prediction STRING NULLABLE groundtruth STRING NULLABLE */
   bigqueryTableName?: string;
 }
-export const GoogleCloudMlV1__RequestLoggingConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "samplingPercentage": S.optional(S.Number),
-  "bigqueryTableName": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__RequestLoggingConfig" }) as any as S.Schema<GoogleCloudMlV1__RequestLoggingConfig>;
+export const GoogleCloudMlV1__RequestLoggingConfig = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      samplingPercentage: S.optional(S.Number),
+      bigqueryTableName: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "GoogleCloudMlV1__RequestLoggingConfig",
+}) as any as S.Schema<GoogleCloudMlV1__RequestLoggingConfig>;
 
 /** Attributes credit by computing the XRAI taking advantage of the model's fully differentiable structure. Refer to this paper for more details: https://arxiv.org/abs/1906.02825 Currently only implemented for models with natural image inputs. */
 export interface GoogleCloudMlV1__XraiAttribution {
@@ -1147,32 +1512,40 @@ export interface GoogleCloudMlV1__XraiAttribution {
   numIntegralSteps?: number;
 }
 export const GoogleCloudMlV1__XraiAttribution = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "numIntegralSteps": S.optional(S.Number),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__XraiAttribution" }) as any as S.Schema<GoogleCloudMlV1__XraiAttribution>;
+  S.Struct({
+    numIntegralSteps: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "GoogleCloudMlV1__XraiAttribution",
+}) as any as S.Schema<GoogleCloudMlV1__XraiAttribution>;
 
 /** Attributes credit by computing the Aumann-Shapley value taking advantage of the model's fully differentiable structure. Refer to this paper for more details: https://arxiv.org/abs/1703.01365 */
 export interface GoogleCloudMlV1__IntegratedGradientsAttribution {
   /** Number of steps for approximating the path integral. A good value to start is 50 and gradually increase until the sum to diff property is met within the desired error range. */
   numIntegralSteps?: number;
 }
-export const GoogleCloudMlV1__IntegratedGradientsAttribution = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "numIntegralSteps": S.optional(S.Number),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__IntegratedGradientsAttribution" }) as any as S.Schema<GoogleCloudMlV1__IntegratedGradientsAttribution>;
+export const GoogleCloudMlV1__IntegratedGradientsAttribution =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      numIntegralSteps: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudMlV1__IntegratedGradientsAttribution",
+  }) as any as S.Schema<GoogleCloudMlV1__IntegratedGradientsAttribution>;
 
 /** An attribution method that approximates Shapley values for features that contribute to the label being predicted. A sampling strategy is used to approximate the value rather than considering all subsets of features. */
 export interface GoogleCloudMlV1__SampledShapleyAttribution {
   /** The number of feature permutations to consider when approximating the Shapley values. */
   numPaths?: number;
 }
-export const GoogleCloudMlV1__SampledShapleyAttribution = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "numPaths": S.optional(S.Number),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__SampledShapleyAttribution" }) as any as S.Schema<GoogleCloudMlV1__SampledShapleyAttribution>;
+export const GoogleCloudMlV1__SampledShapleyAttribution =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      numPaths: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudMlV1__SampledShapleyAttribution",
+  }) as any as S.Schema<GoogleCloudMlV1__SampledShapleyAttribution>;
 
 /** Message holding configuration options for explaining model predictions. There are three feature attribution methods supported for TensorFlow models: integrated gradients, sampled Shapley, and XRAI. [Learn more about feature attributions.](/ai-platform/prediction/docs/ai-explanations/overview) */
 export interface GoogleCloudMlV1__ExplanationConfig {
@@ -1184,14 +1557,26 @@ export interface GoogleCloudMlV1__ExplanationConfig {
   sampledShapleyAttribution?: GoogleCloudMlV1__SampledShapleyAttribution;
 }
 export const GoogleCloudMlV1__ExplanationConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "xraiAttribution": S.optional(GoogleCloudMlV1__XraiAttribution),
-  "integratedGradientsAttribution": S.optional(GoogleCloudMlV1__IntegratedGradientsAttribution),
-  "sampledShapleyAttribution": S.optional(GoogleCloudMlV1__SampledShapleyAttribution),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__ExplanationConfig" }) as any as S.Schema<GoogleCloudMlV1__ExplanationConfig>;
+  S.Struct({
+    xraiAttribution: S.optional(GoogleCloudMlV1__XraiAttribution),
+    integratedGradientsAttribution: S.optional(
+      GoogleCloudMlV1__IntegratedGradientsAttribution,
+    ),
+    sampledShapleyAttribution: S.optional(
+      GoogleCloudMlV1__SampledShapleyAttribution,
+    ),
+  }),
+).annotate({
+  identifier: "GoogleCloudMlV1__ExplanationConfig",
+}) as any as S.Schema<GoogleCloudMlV1__ExplanationConfig>;
 
-export type GoogleCloudMlV1__VersionStateEnum = "UNKNOWN" | "READY" | "CREATING" | "FAILED" | "DELETING" | "UPDATING";
+export type GoogleCloudMlV1__VersionStateEnum =
+  | "UNKNOWN"
+  | "READY"
+  | "CREATING"
+  | "FAILED"
+  | "DELETING"
+  | "UPDATING";
 export const GoogleCloudMlV1__VersionStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents an environment variable to be made available in a container. This message is a subset of the [Kubernetes EnvVar v1 core specification](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#envvar-v1-core). */
@@ -1202,14 +1587,19 @@ export interface GoogleCloudMlV1__EnvVar {
   name?: string;
 }
 export const GoogleCloudMlV1__EnvVar = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "value": S.optional(S.String),
-  "name": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__EnvVar" }) as any as S.Schema<GoogleCloudMlV1__EnvVar>;
+  S.Struct({
+    value: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleCloudMlV1__EnvVar",
+}) as any as S.Schema<GoogleCloudMlV1__EnvVar>;
 
-export type GoogleCloudMlV1__EnvVarList = ReadonlyArray<GoogleCloudMlV1__EnvVar>;
-export const GoogleCloudMlV1__EnvVarList = /*@__PURE__*/ S.Array(GoogleCloudMlV1__EnvVar) as any as S.Schema<GoogleCloudMlV1__EnvVarList>;
+export type GoogleCloudMlV1__EnvVarList =
+  ReadonlyArray<GoogleCloudMlV1__EnvVar>;
+export const GoogleCloudMlV1__EnvVarList = /*@__PURE__*/ S.Array(
+  GoogleCloudMlV1__EnvVar,
+) as any as S.Schema<GoogleCloudMlV1__EnvVarList>;
 
 /** Represents a network port in a single container. This message is a subset of the [Kubernetes ContainerPort v1 core specification](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#containerport-v1-core). */
 export interface GoogleCloudMlV1__ContainerPort {
@@ -1217,13 +1607,18 @@ export interface GoogleCloudMlV1__ContainerPort {
   containerPort?: number;
 }
 export const GoogleCloudMlV1__ContainerPort = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "containerPort": S.optional(S.Number),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__ContainerPort" }) as any as S.Schema<GoogleCloudMlV1__ContainerPort>;
+  S.Struct({
+    containerPort: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "GoogleCloudMlV1__ContainerPort",
+}) as any as S.Schema<GoogleCloudMlV1__ContainerPort>;
 
-export type GoogleCloudMlV1__ContainerPortList = ReadonlyArray<GoogleCloudMlV1__ContainerPort>;
-export const GoogleCloudMlV1__ContainerPortList = /*@__PURE__*/ S.Array(GoogleCloudMlV1__ContainerPort) as any as S.Schema<GoogleCloudMlV1__ContainerPortList>;
+export type GoogleCloudMlV1__ContainerPortList =
+  ReadonlyArray<GoogleCloudMlV1__ContainerPort>;
+export const GoogleCloudMlV1__ContainerPortList = /*@__PURE__*/ S.Array(
+  GoogleCloudMlV1__ContainerPort,
+) as any as S.Schema<GoogleCloudMlV1__ContainerPortList>;
 
 /** Specification of a custom container for serving predictions. This message is a subset of the [Kubernetes Container v1 core specification](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#container-v1-core). */
 export interface GoogleCloudMlV1__ContainerSpec {
@@ -1239,16 +1634,22 @@ export interface GoogleCloudMlV1__ContainerSpec {
   ports?: GoogleCloudMlV1__ContainerPortList;
 }
 export const GoogleCloudMlV1__ContainerSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "env": S.optional(GoogleCloudMlV1__EnvVarList),
-  "command": S.optional(StringList),
-  "image": S.optional(S.String),
-  "args": S.optional(StringList),
-  "ports": S.optional(GoogleCloudMlV1__ContainerPortList),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__ContainerSpec" }) as any as S.Schema<GoogleCloudMlV1__ContainerSpec>;
+  S.Struct({
+    env: S.optional(GoogleCloudMlV1__EnvVarList),
+    command: S.optional(StringList),
+    image: S.optional(S.String),
+    args: S.optional(StringList),
+    ports: S.optional(GoogleCloudMlV1__ContainerPortList),
+  }),
+).annotate({
+  identifier: "GoogleCloudMlV1__ContainerSpec",
+}) as any as S.Schema<GoogleCloudMlV1__ContainerSpec>;
 
-export type GoogleCloudMlV1__VersionFrameworkEnum = "FRAMEWORK_UNSPECIFIED" | "TENSORFLOW" | "SCIKIT_LEARN" | "XGBOOST";
+export type GoogleCloudMlV1__VersionFrameworkEnum =
+  | "FRAMEWORK_UNSPECIFIED"
+  | "TENSORFLOW"
+  | "SCIKIT_LEARN"
+  | "XGBOOST";
 export const GoogleCloudMlV1__VersionFrameworkEnum = /*@__PURE__*/ S.String;
 
 /** Options for manually scaling a model. */
@@ -1257,10 +1658,12 @@ export interface GoogleCloudMlV1__ManualScaling {
   nodes?: number;
 }
 export const GoogleCloudMlV1__ManualScaling = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nodes": S.optional(S.Number),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__ManualScaling" }) as any as S.Schema<GoogleCloudMlV1__ManualScaling>;
+  S.Struct({
+    nodes: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "GoogleCloudMlV1__ManualScaling",
+}) as any as S.Schema<GoogleCloudMlV1__ManualScaling>;
 
 /** Specifies HTTP paths served by a custom container. AI Platform Prediction sends requests to these paths on the container; the custom container must run an HTTP server that responds to these requests with appropriate responses. Read [Custom container requirements](/ai-platform/prediction/docs/custom-container-requirements) for details on how to create your container image to meet these requirements. */
 export interface GoogleCloudMlV1__RouteMap {
@@ -1270,11 +1673,13 @@ export interface GoogleCloudMlV1__RouteMap {
   predict?: string;
 }
 export const GoogleCloudMlV1__RouteMap = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "health": S.optional(S.String),
-  "predict": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__RouteMap" }) as any as S.Schema<GoogleCloudMlV1__RouteMap>;
+  S.Struct({
+    health: S.optional(S.String),
+    predict: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleCloudMlV1__RouteMap",
+}) as any as S.Schema<GoogleCloudMlV1__RouteMap>;
 
 /** Represents a version of the model. Each version is a trained model deployed in the cloud, ready to handle prediction requests. A model can have multiple versions. You can get information about all of the versions of a given model by calling projects.models.versions.list. */
 export interface GoogleCloudMlV1__Version {
@@ -1332,35 +1737,37 @@ export interface GoogleCloudMlV1__Version {
   lastUseTime?: string;
 }
 export const GoogleCloudMlV1__Version = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "labels": S.optional(StringMap),
-  "description": S.optional(S.String),
-  "autoScaling": S.optional(GoogleCloudMlV1__AutoScaling),
-  "packageUris": S.optional(StringList),
-  "isDefault": S.optional(S.Boolean),
-  "requestLoggingConfig": S.optional(GoogleCloudMlV1__RequestLoggingConfig),
-  "lastMigrationModelId": S.optional(S.String),
-  "machineType": S.optional(S.String),
-  "etag": S.optional(S.String),
-  "serviceAccount": S.optional(S.String),
-  "deploymentUri": S.optional(S.String),
-  "predictionClass": S.optional(S.String),
-  "name": S.optional(S.String),
-  "acceleratorConfig": S.optional(GoogleCloudMlV1__AcceleratorConfig),
-  "explanationConfig": S.optional(GoogleCloudMlV1__ExplanationConfig),
-  "state": S.optional(GoogleCloudMlV1__VersionStateEnum),
-  "runtimeVersion": S.optional(S.String),
-  "container": S.optional(GoogleCloudMlV1__ContainerSpec),
-  "lastMigrationTime": S.optional(S.String),
-  "framework": S.optional(GoogleCloudMlV1__VersionFrameworkEnum),
-  "manualScaling": S.optional(GoogleCloudMlV1__ManualScaling),
-  "createTime": S.optional(S.String),
-  "errorMessage": S.optional(S.String),
-  "pythonVersion": S.optional(S.String),
-  "routes": S.optional(GoogleCloudMlV1__RouteMap),
-  "lastUseTime": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__Version" }) as any as S.Schema<GoogleCloudMlV1__Version>;
+  S.Struct({
+    labels: S.optional(StringMap),
+    description: S.optional(S.String),
+    autoScaling: S.optional(GoogleCloudMlV1__AutoScaling),
+    packageUris: S.optional(StringList),
+    isDefault: S.optional(S.Boolean),
+    requestLoggingConfig: S.optional(GoogleCloudMlV1__RequestLoggingConfig),
+    lastMigrationModelId: S.optional(S.String),
+    machineType: S.optional(S.String),
+    etag: S.optional(S.String),
+    serviceAccount: S.optional(S.String),
+    deploymentUri: S.optional(S.String),
+    predictionClass: S.optional(S.String),
+    name: S.optional(S.String),
+    acceleratorConfig: S.optional(GoogleCloudMlV1__AcceleratorConfig),
+    explanationConfig: S.optional(GoogleCloudMlV1__ExplanationConfig),
+    state: S.optional(GoogleCloudMlV1__VersionStateEnum),
+    runtimeVersion: S.optional(S.String),
+    container: S.optional(GoogleCloudMlV1__ContainerSpec),
+    lastMigrationTime: S.optional(S.String),
+    framework: S.optional(GoogleCloudMlV1__VersionFrameworkEnum),
+    manualScaling: S.optional(GoogleCloudMlV1__ManualScaling),
+    createTime: S.optional(S.String),
+    errorMessage: S.optional(S.String),
+    pythonVersion: S.optional(S.String),
+    routes: S.optional(GoogleCloudMlV1__RouteMap),
+    lastUseTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleCloudMlV1__Version",
+}) as any as S.Schema<GoogleCloudMlV1__Version>;
 
 /** Represents a machine learning solution. A model can have multiple versions, each of which is a deployed, trained model ready to receive prediction requests. The model itself is just a container. */
 export interface GoogleCloudMlV1__Model {
@@ -1382,17 +1789,19 @@ export interface GoogleCloudMlV1__Model {
   regions?: StringList;
 }
 export const GoogleCloudMlV1__Model = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "onlinePredictionConsoleLogging": S.optional(S.Boolean),
-  "description": S.optional(S.String),
-  "name": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "etag": S.optional(S.String),
-  "onlinePredictionLogging": S.optional(S.Boolean),
-  "defaultVersion": S.optional(GoogleCloudMlV1__Version),
-  "regions": S.optional(StringList),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__Model" }) as any as S.Schema<GoogleCloudMlV1__Model>;
+  S.Struct({
+    onlinePredictionConsoleLogging: S.optional(S.Boolean),
+    description: S.optional(S.String),
+    name: S.optional(S.String),
+    labels: S.optional(StringMap),
+    etag: S.optional(S.String),
+    onlinePredictionLogging: S.optional(S.Boolean),
+    defaultVersion: S.optional(GoogleCloudMlV1__Version),
+    regions: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "GoogleCloudMlV1__Model",
+}) as any as S.Schema<GoogleCloudMlV1__Model>;
 
 export interface CreateProjectsModelsRequest {
   /** Required. The project name. */
@@ -1401,11 +1810,19 @@ export interface CreateProjectsModelsRequest {
   body?: GoogleCloudMlV1__Model;
 }
 export const CreateProjectsModelsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleCloudMlV1__Model.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/models","baseUrl":"https://ml.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsModelsRequest" }) as any as S.Schema<CreateProjectsModelsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(GoogleCloudMlV1__Model.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/models",
+      baseUrl: "https://ml.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateProjectsModelsRequest",
+}) as any as S.Schema<CreateProjectsModelsRequest>;
 
 export interface CreateProjectsModelsVersionsRequest {
   /** Required. The name of the model. */
@@ -1414,51 +1831,93 @@ export interface CreateProjectsModelsVersionsRequest {
   body?: GoogleCloudMlV1__Version;
 }
 export const CreateProjectsModelsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleCloudMlV1__Version.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/versions","baseUrl":"https://ml.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsModelsVersionsRequest" }) as any as S.Schema<CreateProjectsModelsVersionsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(GoogleCloudMlV1__Version.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/versions",
+      baseUrl: "https://ml.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateProjectsModelsVersionsRequest",
+}) as any as S.Schema<CreateProjectsModelsVersionsRequest>;
 
 export interface DeleteProjectsLocationsStudiesRequest {
   /** Required. The study name. */
   name: string;
 }
-export const DeleteProjectsLocationsStudiesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://ml.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsStudiesRequest" }) as any as S.Schema<DeleteProjectsLocationsStudiesRequest>;
+export const DeleteProjectsLocationsStudiesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://ml.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsStudiesRequest",
+}) as any as S.Schema<DeleteProjectsLocationsStudiesRequest>;
 
 export interface DeleteProjectsLocationsStudiesTrialsRequest {
   /** Required. The trial name. */
   name: string;
 }
-export const DeleteProjectsLocationsStudiesTrialsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://ml.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsStudiesTrialsRequest" }) as any as S.Schema<DeleteProjectsLocationsStudiesTrialsRequest>;
+export const DeleteProjectsLocationsStudiesTrialsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://ml.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsStudiesTrialsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsStudiesTrialsRequest>;
 
 export interface DeleteProjectsModelsRequest {
   /** Required. The name of the model. */
   name: string;
 }
 export const DeleteProjectsModelsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://ml.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsModelsRequest" }) as any as S.Schema<DeleteProjectsModelsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://ml.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteProjectsModelsRequest",
+}) as any as S.Schema<DeleteProjectsModelsRequest>;
 
 export interface DeleteProjectsModelsVersionsRequest {
   /** Required. The name of the version. You can get the names of all the versions of a model by calling projects.models.versions.list. */
   name: string;
 }
 export const DeleteProjectsModelsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://ml.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsModelsVersionsRequest" }) as any as S.Schema<DeleteProjectsModelsVersionsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://ml.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteProjectsModelsVersionsRequest",
+}) as any as S.Schema<DeleteProjectsModelsVersionsRequest>;
 
 /** Message that represents an arbitrary HTTP body. It should only be used for payload formats that can't be represented as JSON, such as raw binary or an HTML page. This message can be used both in streaming and non-streaming API methods in the request as well as the response. It can be used as a top-level request field, which is convenient if one wants to extract parameters from either the URL or HTTP template into the request fields and also want access to the raw HTTP body. Example: message GetResourceRequest { // A unique request id. string request_id = 1; // The raw HTTP body is bound to this field. google.api.HttpBody http_body = 2; } service ResourceService { rpc GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); } Example with streaming methods: service CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); rpc UpdateCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); } Use of this type only changes how the request and response bodies are handled, all other features will continue to work unchanged. */
 export interface GoogleApi__HttpBody {
@@ -1470,12 +1929,14 @@ export interface GoogleApi__HttpBody {
   extensions?: DocumentMapList;
 }
 export const GoogleApi__HttpBody = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "contentType": S.optional(S.String),
-  "data": S.optional(S.String),
-  "extensions": S.optional(DocumentMapList),
-}),
-).annotate({ identifier: "GoogleApi__HttpBody" }) as any as S.Schema<GoogleApi__HttpBody>;
+  S.Struct({
+    contentType: S.optional(S.String),
+    data: S.optional(S.String),
+    extensions: S.optional(DocumentMapList),
+  }),
+).annotate({
+  identifier: "GoogleApi__HttpBody",
+}) as any as S.Schema<GoogleApi__HttpBody>;
 
 /** Request for explanations to be issued against a trained model. */
 export interface GoogleCloudMlV1__ExplainRequest {
@@ -1483,10 +1944,12 @@ export interface GoogleCloudMlV1__ExplainRequest {
   httpBody?: GoogleApi__HttpBody;
 }
 export const GoogleCloudMlV1__ExplainRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "httpBody": S.optional(GoogleApi__HttpBody),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__ExplainRequest" }) as any as S.Schema<GoogleCloudMlV1__ExplainRequest>;
+  S.Struct({
+    httpBody: S.optional(GoogleApi__HttpBody),
+  }),
+).annotate({
+  identifier: "GoogleCloudMlV1__ExplainRequest",
+}) as any as S.Schema<GoogleCloudMlV1__ExplainRequest>;
 
 export interface ExplainProjectsRequest {
   /** Required. The resource name of a model or a version. Authorization: requires the `predict` permission on the specified resource. */
@@ -1495,31 +1958,49 @@ export interface ExplainProjectsRequest {
   body?: GoogleCloudMlV1__ExplainRequest;
 }
 export const ExplainProjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleCloudMlV1__ExplainRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:explain","baseUrl":"https://ml.googleapis.com/"})),
-).annotate({ identifier: "ExplainProjectsRequest" }) as any as S.Schema<ExplainProjectsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(GoogleCloudMlV1__ExplainRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:explain",
+      baseUrl: "https://ml.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ExplainProjectsRequest",
+}) as any as S.Schema<ExplainProjectsRequest>;
 
 export interface GetConfigProjectsRequest {
   /** Required. The project name. */
   name: string;
 }
 export const GetConfigProjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:getConfig","baseUrl":"https://ml.googleapis.com/"})),
-).annotate({ identifier: "GetConfigProjectsRequest" }) as any as S.Schema<GetConfigProjectsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}:getConfig",
+      baseUrl: "https://ml.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetConfigProjectsRequest",
+}) as any as S.Schema<GetConfigProjectsRequest>;
 
 export interface GoogleCloudMlV1__Config {
   /** The service account Cloud ML uses to run on TPU node. */
   tpuServiceAccount?: string;
 }
 export const GoogleCloudMlV1__Config = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "tpuServiceAccount": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__Config" }) as any as S.Schema<GoogleCloudMlV1__Config>;
+  S.Struct({
+    tpuServiceAccount: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleCloudMlV1__Config",
+}) as any as S.Schema<GoogleCloudMlV1__Config>;
 
 /** Returns service account information associated with a project. */
 export interface GoogleCloudMlV1__GetConfigResponse {
@@ -1530,12 +2011,14 @@ export interface GoogleCloudMlV1__GetConfigResponse {
   serviceAccountProject?: string;
 }
 export const GoogleCloudMlV1__GetConfigResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "serviceAccount": S.optional(S.String),
-  "config": S.optional(GoogleCloudMlV1__Config),
-  "serviceAccountProject": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__GetConfigResponse" }) as any as S.Schema<GoogleCloudMlV1__GetConfigResponse>;
+  S.Struct({
+    serviceAccount: S.optional(S.String),
+    config: S.optional(GoogleCloudMlV1__Config),
+    serviceAccountProject: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleCloudMlV1__GetConfigResponse",
+}) as any as S.Schema<GoogleCloudMlV1__GetConfigResponse>;
 
 export interface GetIamPolicyProjectsJobsRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -1544,13 +2027,25 @@ export interface GetIamPolicyProjectsJobsRequest {
   resource: string;
 }
 export const GetIamPolicyProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-  "resource": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://ml.googleapis.com/"})),
-).annotate({ identifier: "GetIamPolicyProjectsJobsRequest" }) as any as S.Schema<GetIamPolicyProjectsJobsRequest>;
+  S.Struct({
+    "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+    resource: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+resource}:getIamPolicy",
+      baseUrl: "https://ml.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetIamPolicyProjectsJobsRequest",
+}) as any as S.Schema<GetIamPolicyProjectsJobsRequest>;
 
-export type GoogleIamV1__AuditLogConfigLogTypeEnum = "LOG_TYPE_UNSPECIFIED" | "ADMIN_READ" | "DATA_WRITE" | "DATA_READ";
+export type GoogleIamV1__AuditLogConfigLogTypeEnum =
+  | "LOG_TYPE_UNSPECIFIED"
+  | "ADMIN_READ"
+  | "DATA_WRITE"
+  | "DATA_READ";
 export const GoogleIamV1__AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -1561,14 +2056,19 @@ export interface GoogleIamV1__AuditLogConfig {
   logType?: GoogleIamV1__AuditLogConfigLogTypeEnum;
 }
 export const GoogleIamV1__AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "exemptedMembers": S.optional(StringList),
-  "logType": S.optional(GoogleIamV1__AuditLogConfigLogTypeEnum),
-}),
-).annotate({ identifier: "GoogleIamV1__AuditLogConfig" }) as any as S.Schema<GoogleIamV1__AuditLogConfig>;
+  S.Struct({
+    exemptedMembers: S.optional(StringList),
+    logType: S.optional(GoogleIamV1__AuditLogConfigLogTypeEnum),
+  }),
+).annotate({
+  identifier: "GoogleIamV1__AuditLogConfig",
+}) as any as S.Schema<GoogleIamV1__AuditLogConfig>;
 
-export type GoogleIamV1__AuditLogConfigList = ReadonlyArray<GoogleIamV1__AuditLogConfig>;
-export const GoogleIamV1__AuditLogConfigList = /*@__PURE__*/ S.Array(GoogleIamV1__AuditLogConfig) as any as S.Schema<GoogleIamV1__AuditLogConfigList>;
+export type GoogleIamV1__AuditLogConfigList =
+  ReadonlyArray<GoogleIamV1__AuditLogConfig>;
+export const GoogleIamV1__AuditLogConfigList = /*@__PURE__*/ S.Array(
+  GoogleIamV1__AuditLogConfig,
+) as any as S.Schema<GoogleIamV1__AuditLogConfigList>;
 
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface GoogleIamV1__AuditConfig {
@@ -1578,14 +2078,19 @@ export interface GoogleIamV1__AuditConfig {
   auditLogConfigs?: GoogleIamV1__AuditLogConfigList;
 }
 export const GoogleIamV1__AuditConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "service": S.optional(S.String),
-  "auditLogConfigs": S.optional(GoogleIamV1__AuditLogConfigList),
-}),
-).annotate({ identifier: "GoogleIamV1__AuditConfig" }) as any as S.Schema<GoogleIamV1__AuditConfig>;
+  S.Struct({
+    service: S.optional(S.String),
+    auditLogConfigs: S.optional(GoogleIamV1__AuditLogConfigList),
+  }),
+).annotate({
+  identifier: "GoogleIamV1__AuditConfig",
+}) as any as S.Schema<GoogleIamV1__AuditConfig>;
 
-export type GoogleIamV1__AuditConfigList = ReadonlyArray<GoogleIamV1__AuditConfig>;
-export const GoogleIamV1__AuditConfigList = /*@__PURE__*/ S.Array(GoogleIamV1__AuditConfig) as any as S.Schema<GoogleIamV1__AuditConfigList>;
+export type GoogleIamV1__AuditConfigList =
+  ReadonlyArray<GoogleIamV1__AuditConfig>;
+export const GoogleIamV1__AuditConfigList = /*@__PURE__*/ S.Array(
+  GoogleIamV1__AuditConfig,
+) as any as S.Schema<GoogleIamV1__AuditConfigList>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface GoogleType__Expr {
@@ -1599,13 +2104,15 @@ export interface GoogleType__Expr {
   expression?: string;
 }
 export const GoogleType__Expr = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "location": S.optional(S.String),
-  "title": S.optional(S.String),
-  "description": S.optional(S.String),
-  "expression": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleType__Expr" }) as any as S.Schema<GoogleType__Expr>;
+  S.Struct({
+    location: S.optional(S.String),
+    title: S.optional(S.String),
+    description: S.optional(S.String),
+    expression: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleType__Expr",
+}) as any as S.Schema<GoogleType__Expr>;
 
 /** Associates `members`, or principals, with a `role`. */
 export interface GoogleIamV1__Binding {
@@ -1617,15 +2124,19 @@ export interface GoogleIamV1__Binding {
   condition?: GoogleType__Expr;
 }
 export const GoogleIamV1__Binding = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "role": S.optional(S.String),
-  "members": S.optional(StringList),
-  "condition": S.optional(GoogleType__Expr),
-}),
-).annotate({ identifier: "GoogleIamV1__Binding" }) as any as S.Schema<GoogleIamV1__Binding>;
+  S.Struct({
+    role: S.optional(S.String),
+    members: S.optional(StringList),
+    condition: S.optional(GoogleType__Expr),
+  }),
+).annotate({
+  identifier: "GoogleIamV1__Binding",
+}) as any as S.Schema<GoogleIamV1__Binding>;
 
 export type GoogleIamV1__BindingList = ReadonlyArray<GoogleIamV1__Binding>;
-export const GoogleIamV1__BindingList = /*@__PURE__*/ S.Array(GoogleIamV1__Binding) as any as S.Schema<GoogleIamV1__BindingList>;
+export const GoogleIamV1__BindingList = /*@__PURE__*/ S.Array(
+  GoogleIamV1__Binding,
+) as any as S.Schema<GoogleIamV1__BindingList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface GoogleIamV1__Policy {
@@ -1639,13 +2150,15 @@ export interface GoogleIamV1__Policy {
   bindings?: GoogleIamV1__BindingList;
 }
 export const GoogleIamV1__Policy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "etag": S.optional(S.String),
-  "auditConfigs": S.optional(GoogleIamV1__AuditConfigList),
-  "version": S.optional(S.Number),
-  "bindings": S.optional(GoogleIamV1__BindingList),
-}),
-).annotate({ identifier: "GoogleIamV1__Policy" }) as any as S.Schema<GoogleIamV1__Policy>;
+  S.Struct({
+    etag: S.optional(S.String),
+    auditConfigs: S.optional(GoogleIamV1__AuditConfigList),
+    version: S.optional(S.Number),
+    bindings: S.optional(GoogleIamV1__BindingList),
+  }),
+).annotate({
+  identifier: "GoogleIamV1__Policy",
+}) as any as S.Schema<GoogleIamV1__Policy>;
 
 export interface GetIamPolicyProjectsModelsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1654,40 +2167,85 @@ export interface GetIamPolicyProjectsModelsRequest {
   "options.requestedPolicyVersion"?: number;
 }
 export const GetIamPolicyProjectsModelsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://ml.googleapis.com/"})),
-).annotate({ identifier: "GetIamPolicyProjectsModelsRequest" }) as any as S.Schema<GetIamPolicyProjectsModelsRequest>;
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+resource}:getIamPolicy",
+      baseUrl: "https://ml.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetIamPolicyProjectsModelsRequest",
+}) as any as S.Schema<GetIamPolicyProjectsModelsRequest>;
 
 export interface GetProjectsJobsRequest {
   /** Required. The name of the job to get the description of. */
   name: string;
 }
 export const GetProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://ml.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsJobsRequest" }) as any as S.Schema<GetProjectsJobsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://ml.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsJobsRequest",
+}) as any as S.Schema<GetProjectsJobsRequest>;
 
 export interface GetProjectsLocationsRequest {
   /** Required. The name of the location. */
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://ml.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://ml.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsRequest",
+}) as any as S.Schema<GetProjectsLocationsRequest>;
 
-export type GoogleCloudMlV1__CapabilityTypeEnum = "TYPE_UNSPECIFIED" | "TRAINING" | "BATCH_PREDICTION" | "ONLINE_PREDICTION";
+export type GoogleCloudMlV1__CapabilityTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "TRAINING"
+  | "BATCH_PREDICTION"
+  | "ONLINE_PREDICTION";
 export const GoogleCloudMlV1__CapabilityTypeEnum = /*@__PURE__*/ S.String;
 
-export type GoogleCloudMlV1__CapabilityAvailableAcceleratorsItemEnum = "ACCELERATOR_TYPE_UNSPECIFIED" | "NVIDIA_TESLA_K80" | "NVIDIA_TESLA_P100" | "NVIDIA_TESLA_V100" | "NVIDIA_TESLA_P4" | "NVIDIA_TESLA_T4" | "NVIDIA_TESLA_A100" | "TPU_V2" | "TPU_V3" | "TPU_V2_POD" | "TPU_V3_POD" | "TPU_V4_POD";
-export const GoogleCloudMlV1__CapabilityAvailableAcceleratorsItemEnum = /*@__PURE__*/ S.String;
+export type GoogleCloudMlV1__CapabilityAvailableAcceleratorsItemEnum =
+  | "ACCELERATOR_TYPE_UNSPECIFIED"
+  | "NVIDIA_TESLA_K80"
+  | "NVIDIA_TESLA_P100"
+  | "NVIDIA_TESLA_V100"
+  | "NVIDIA_TESLA_P4"
+  | "NVIDIA_TESLA_T4"
+  | "NVIDIA_TESLA_A100"
+  | "TPU_V2"
+  | "TPU_V3"
+  | "TPU_V2_POD"
+  | "TPU_V3_POD"
+  | "TPU_V4_POD";
+export const GoogleCloudMlV1__CapabilityAvailableAcceleratorsItemEnum =
+  /*@__PURE__*/ S.String;
 
-export type GoogleCloudMlV1__CapabilityAvailableAcceleratorsItemEnumList = ReadonlyArray<GoogleCloudMlV1__CapabilityAvailableAcceleratorsItemEnum>;
-export const GoogleCloudMlV1__CapabilityAvailableAcceleratorsItemEnumList = /*@__PURE__*/ S.Array(GoogleCloudMlV1__CapabilityAvailableAcceleratorsItemEnum) as any as S.Schema<GoogleCloudMlV1__CapabilityAvailableAcceleratorsItemEnumList>;
+export type GoogleCloudMlV1__CapabilityAvailableAcceleratorsItemEnumList =
+  ReadonlyArray<GoogleCloudMlV1__CapabilityAvailableAcceleratorsItemEnum>;
+export const GoogleCloudMlV1__CapabilityAvailableAcceleratorsItemEnumList =
+  /*@__PURE__*/ S.Array(
+    GoogleCloudMlV1__CapabilityAvailableAcceleratorsItemEnum,
+  ) as any as S.Schema<GoogleCloudMlV1__CapabilityAvailableAcceleratorsItemEnumList>;
 
 export interface GoogleCloudMlV1__Capability {
   type?: GoogleCloudMlV1__CapabilityTypeEnum;
@@ -1695,14 +2253,21 @@ export interface GoogleCloudMlV1__Capability {
   availableAccelerators?: GoogleCloudMlV1__CapabilityAvailableAcceleratorsItemEnumList;
 }
 export const GoogleCloudMlV1__Capability = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(GoogleCloudMlV1__CapabilityTypeEnum),
-  "availableAccelerators": S.optional(GoogleCloudMlV1__CapabilityAvailableAcceleratorsItemEnumList),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__Capability" }) as any as S.Schema<GoogleCloudMlV1__Capability>;
+  S.Struct({
+    type: S.optional(GoogleCloudMlV1__CapabilityTypeEnum),
+    availableAccelerators: S.optional(
+      GoogleCloudMlV1__CapabilityAvailableAcceleratorsItemEnumList,
+    ),
+  }),
+).annotate({
+  identifier: "GoogleCloudMlV1__Capability",
+}) as any as S.Schema<GoogleCloudMlV1__Capability>;
 
-export type GoogleCloudMlV1__CapabilityList = ReadonlyArray<GoogleCloudMlV1__Capability>;
-export const GoogleCloudMlV1__CapabilityList = /*@__PURE__*/ S.Array(GoogleCloudMlV1__Capability) as any as S.Schema<GoogleCloudMlV1__CapabilityList>;
+export type GoogleCloudMlV1__CapabilityList =
+  ReadonlyArray<GoogleCloudMlV1__Capability>;
+export const GoogleCloudMlV1__CapabilityList = /*@__PURE__*/ S.Array(
+  GoogleCloudMlV1__Capability,
+) as any as S.Schema<GoogleCloudMlV1__CapabilityList>;
 
 export interface GoogleCloudMlV1__Location {
   name?: string;
@@ -1710,77 +2275,130 @@ export interface GoogleCloudMlV1__Location {
   capabilities?: GoogleCloudMlV1__CapabilityList;
 }
 export const GoogleCloudMlV1__Location = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "capabilities": S.optional(GoogleCloudMlV1__CapabilityList),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__Location" }) as any as S.Schema<GoogleCloudMlV1__Location>;
+  S.Struct({
+    name: S.optional(S.String),
+    capabilities: S.optional(GoogleCloudMlV1__CapabilityList),
+  }),
+).annotate({
+  identifier: "GoogleCloudMlV1__Location",
+}) as any as S.Schema<GoogleCloudMlV1__Location>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://ml.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://ml.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsOperationsRequest",
+}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export interface GetProjectsLocationsStudiesRequest {
   /** Required. The study name. */
   name: string;
 }
 export const GetProjectsLocationsStudiesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://ml.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsStudiesRequest" }) as any as S.Schema<GetProjectsLocationsStudiesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://ml.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsStudiesRequest",
+}) as any as S.Schema<GetProjectsLocationsStudiesRequest>;
 
 export interface GetProjectsLocationsStudiesTrialsRequest {
   /** Required. The trial name. */
   name: string;
 }
-export const GetProjectsLocationsStudiesTrialsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://ml.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsStudiesTrialsRequest" }) as any as S.Schema<GetProjectsLocationsStudiesTrialsRequest>;
+export const GetProjectsLocationsStudiesTrialsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://ml.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsStudiesTrialsRequest",
+}) as any as S.Schema<GetProjectsLocationsStudiesTrialsRequest>;
 
 export interface GetProjectsModelsRequest {
   /** Required. The name of the model. */
   name: string;
 }
 export const GetProjectsModelsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://ml.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsModelsRequest" }) as any as S.Schema<GetProjectsModelsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://ml.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsModelsRequest",
+}) as any as S.Schema<GetProjectsModelsRequest>;
 
 export interface GetProjectsModelsVersionsRequest {
   /** Required. The name of the version. */
   name: string;
 }
 export const GetProjectsModelsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://ml.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsModelsVersionsRequest" }) as any as S.Schema<GetProjectsModelsVersionsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://ml.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsModelsVersionsRequest",
+}) as any as S.Schema<GetProjectsModelsVersionsRequest>;
 
 export interface GetProjectsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
 export const GetProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://ml.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsOperationsRequest" }) as any as S.Schema<GetProjectsOperationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://ml.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsOperationsRequest",
+}) as any as S.Schema<GetProjectsOperationsRequest>;
 
 /** The request message for the ListTrials service method. */
 export interface GoogleCloudMlV1__ListOptimalTrialsRequest {}
-export const GoogleCloudMlV1__ListOptimalTrialsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "GoogleCloudMlV1__ListOptimalTrialsRequest" }) as any as S.Schema<GoogleCloudMlV1__ListOptimalTrialsRequest>;
+export const GoogleCloudMlV1__ListOptimalTrialsRequest =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "GoogleCloudMlV1__ListOptimalTrialsRequest",
+  }) as any as S.Schema<GoogleCloudMlV1__ListOptimalTrialsRequest>;
 
 export interface ListOptimalTrialsProjectsLocationsStudiesTrialsRequest {
   /** Required. The name of the study that the pareto-optimal trial belongs to. */
@@ -1788,26 +2406,42 @@ export interface ListOptimalTrialsProjectsLocationsStudiesTrialsRequest {
   /** Request body */
   body?: GoogleCloudMlV1__ListOptimalTrialsRequest;
 }
-export const ListOptimalTrialsProjectsLocationsStudiesTrialsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleCloudMlV1__ListOptimalTrialsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/trials:listOptimalTrials","baseUrl":"https://ml.googleapis.com/"})),
-).annotate({ identifier: "ListOptimalTrialsProjectsLocationsStudiesTrialsRequest" }) as any as S.Schema<ListOptimalTrialsProjectsLocationsStudiesTrialsRequest>;
+export const ListOptimalTrialsProjectsLocationsStudiesTrialsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleCloudMlV1__ListOptimalTrialsRequest.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/trials:listOptimalTrials",
+        baseUrl: "https://ml.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListOptimalTrialsProjectsLocationsStudiesTrialsRequest",
+  }) as any as S.Schema<ListOptimalTrialsProjectsLocationsStudiesTrialsRequest>;
 
 export type GoogleCloudMlV1__TrialList = ReadonlyArray<GoogleCloudMlV1__Trial>;
-export const GoogleCloudMlV1__TrialList = /*@__PURE__*/ S.Array(GoogleCloudMlV1__Trial) as any as S.Schema<GoogleCloudMlV1__TrialList>;
+export const GoogleCloudMlV1__TrialList = /*@__PURE__*/ S.Array(
+  GoogleCloudMlV1__Trial,
+) as any as S.Schema<GoogleCloudMlV1__TrialList>;
 
 /** The response message for the ListOptimalTrials method. */
 export interface GoogleCloudMlV1__ListOptimalTrialsResponse {
   /** The pareto-optimal trials for multiple objective study or the optimal trial for single objective study. The definition of pareto-optimal can be checked in wiki page. https://en.wikipedia.org/wiki/Pareto_efficiency */
   trials?: GoogleCloudMlV1__TrialList;
 }
-export const GoogleCloudMlV1__ListOptimalTrialsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "trials": S.optional(GoogleCloudMlV1__TrialList),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__ListOptimalTrialsResponse" }) as any as S.Schema<GoogleCloudMlV1__ListOptimalTrialsResponse>;
+export const GoogleCloudMlV1__ListOptimalTrialsResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      trials: S.optional(GoogleCloudMlV1__TrialList),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudMlV1__ListOptimalTrialsResponse",
+  }) as any as S.Schema<GoogleCloudMlV1__ListOptimalTrialsResponse>;
 
 export interface ListProjectsJobsRequest {
   /** Optional. The number of jobs to retrieve per "page" of results. If there are more remaining results than this number, the response message will contain a valid value in the `next_page_token` field. The default value is 20, and the maximum page size is 100. */
@@ -1820,16 +2454,26 @@ export interface ListProjectsJobsRequest {
   filter?: string;
 }
 export const ListProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/jobs","baseUrl":"https://ml.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsJobsRequest" }) as any as S.Schema<ListProjectsJobsRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    filter: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/jobs",
+      baseUrl: "https://ml.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsJobsRequest",
+}) as any as S.Schema<ListProjectsJobsRequest>;
 
 export type GoogleCloudMlV1__JobList = ReadonlyArray<GoogleCloudMlV1__Job>;
-export const GoogleCloudMlV1__JobList = /*@__PURE__*/ S.Array(GoogleCloudMlV1__Job) as any as S.Schema<GoogleCloudMlV1__JobList>;
+export const GoogleCloudMlV1__JobList = /*@__PURE__*/ S.Array(
+  GoogleCloudMlV1__Job,
+) as any as S.Schema<GoogleCloudMlV1__JobList>;
 
 /** Response message for the ListJobs method. */
 export interface GoogleCloudMlV1__ListJobsResponse {
@@ -1839,11 +2483,13 @@ export interface GoogleCloudMlV1__ListJobsResponse {
   jobs?: GoogleCloudMlV1__JobList;
 }
 export const GoogleCloudMlV1__ListJobsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "jobs": S.optional(GoogleCloudMlV1__JobList),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__ListJobsResponse" }) as any as S.Schema<GoogleCloudMlV1__ListJobsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    jobs: S.optional(GoogleCloudMlV1__JobList),
+  }),
+).annotate({
+  identifier: "GoogleCloudMlV1__ListJobsResponse",
+}) as any as S.Schema<GoogleCloudMlV1__ListJobsResponse>;
 
 export interface ListProjectsLocationsRequest {
   /** Optional. A page token to request the next page of results. You get the token from the `next_page_token` field of the response from the previous call. */
@@ -1854,15 +2500,26 @@ export interface ListProjectsLocationsRequest {
   pageSize?: number;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/locations","baseUrl":"https://ml.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/locations",
+      baseUrl: "https://ml.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsRequest",
+}) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type GoogleCloudMlV1__LocationList = ReadonlyArray<GoogleCloudMlV1__Location>;
-export const GoogleCloudMlV1__LocationList = /*@__PURE__*/ S.Array(GoogleCloudMlV1__Location) as any as S.Schema<GoogleCloudMlV1__LocationList>;
+export type GoogleCloudMlV1__LocationList =
+  ReadonlyArray<GoogleCloudMlV1__Location>;
+export const GoogleCloudMlV1__LocationList = /*@__PURE__*/ S.Array(
+  GoogleCloudMlV1__Location,
+) as any as S.Schema<GoogleCloudMlV1__LocationList>;
 
 export interface GoogleCloudMlV1__ListLocationsResponse {
   /** Optional. Pass this token as the `page_token` field of the request for a subsequent call. */
@@ -1870,45 +2527,70 @@ export interface GoogleCloudMlV1__ListLocationsResponse {
   /** Locations where at least one type of CMLE capability is available. */
   locations?: GoogleCloudMlV1__LocationList;
 }
-export const GoogleCloudMlV1__ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "locations": S.optional(GoogleCloudMlV1__LocationList),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__ListLocationsResponse" }) as any as S.Schema<GoogleCloudMlV1__ListLocationsResponse>;
+export const GoogleCloudMlV1__ListLocationsResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      nextPageToken: S.optional(S.String),
+      locations: S.optional(GoogleCloudMlV1__LocationList),
+    }),
+).annotate({
+  identifier: "GoogleCloudMlV1__ListLocationsResponse",
+}) as any as S.Schema<GoogleCloudMlV1__ListLocationsResponse>;
 
 export interface ListProjectsLocationsStudiesRequest {
   /** Required. The project and location that the study belongs to. Format: projects/{project}/locations/{location} */
   parent: string;
 }
 export const ListProjectsLocationsStudiesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/studies","baseUrl":"https://ml.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsStudiesRequest" }) as any as S.Schema<ListProjectsLocationsStudiesRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/studies",
+      baseUrl: "https://ml.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsStudiesRequest",
+}) as any as S.Schema<ListProjectsLocationsStudiesRequest>;
 
 export type GoogleCloudMlV1__StudyList = ReadonlyArray<GoogleCloudMlV1__Study>;
-export const GoogleCloudMlV1__StudyList = /*@__PURE__*/ S.Array(GoogleCloudMlV1__Study) as any as S.Schema<GoogleCloudMlV1__StudyList>;
+export const GoogleCloudMlV1__StudyList = /*@__PURE__*/ S.Array(
+  GoogleCloudMlV1__Study,
+) as any as S.Schema<GoogleCloudMlV1__StudyList>;
 
 export interface GoogleCloudMlV1__ListStudiesResponse {
   /** The studies associated with the project. */
   studies?: GoogleCloudMlV1__StudyList;
 }
-export const GoogleCloudMlV1__ListStudiesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "studies": S.optional(GoogleCloudMlV1__StudyList),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__ListStudiesResponse" }) as any as S.Schema<GoogleCloudMlV1__ListStudiesResponse>;
+export const GoogleCloudMlV1__ListStudiesResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      studies: S.optional(GoogleCloudMlV1__StudyList),
+    }),
+).annotate({
+  identifier: "GoogleCloudMlV1__ListStudiesResponse",
+}) as any as S.Schema<GoogleCloudMlV1__ListStudiesResponse>;
 
 export interface ListProjectsLocationsStudiesTrialsRequest {
   /** Required. The name of the study that the trial belongs to. */
   parent: string;
 }
-export const ListProjectsLocationsStudiesTrialsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/trials","baseUrl":"https://ml.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsStudiesTrialsRequest" }) as any as S.Schema<ListProjectsLocationsStudiesTrialsRequest>;
+export const ListProjectsLocationsStudiesTrialsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/trials",
+        baseUrl: "https://ml.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsStudiesTrialsRequest",
+  }) as any as S.Schema<ListProjectsLocationsStudiesTrialsRequest>;
 
 /** The response message for the ListTrials method. */
 export interface GoogleCloudMlV1__ListTrialsResponse {
@@ -1916,10 +2598,12 @@ export interface GoogleCloudMlV1__ListTrialsResponse {
   trials?: GoogleCloudMlV1__TrialList;
 }
 export const GoogleCloudMlV1__ListTrialsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "trials": S.optional(GoogleCloudMlV1__TrialList),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__ListTrialsResponse" }) as any as S.Schema<GoogleCloudMlV1__ListTrialsResponse>;
+  S.Struct({
+    trials: S.optional(GoogleCloudMlV1__TrialList),
+  }),
+).annotate({
+  identifier: "GoogleCloudMlV1__ListTrialsResponse",
+}) as any as S.Schema<GoogleCloudMlV1__ListTrialsResponse>;
 
 export interface ListProjectsModelsRequest {
   /** Optional. Specifies the subset of models to retrieve. */
@@ -1932,16 +2616,26 @@ export interface ListProjectsModelsRequest {
   pageSize?: number;
 }
 export const ListProjectsModelsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/models","baseUrl":"https://ml.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsModelsRequest" }) as any as S.Schema<ListProjectsModelsRequest>;
+  S.Struct({
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/models",
+      baseUrl: "https://ml.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsModelsRequest",
+}) as any as S.Schema<ListProjectsModelsRequest>;
 
 export type GoogleCloudMlV1__ModelList = ReadonlyArray<GoogleCloudMlV1__Model>;
-export const GoogleCloudMlV1__ModelList = /*@__PURE__*/ S.Array(GoogleCloudMlV1__Model) as any as S.Schema<GoogleCloudMlV1__ModelList>;
+export const GoogleCloudMlV1__ModelList = /*@__PURE__*/ S.Array(
+  GoogleCloudMlV1__Model,
+) as any as S.Schema<GoogleCloudMlV1__ModelList>;
 
 /** Response message for the ListModels method. */
 export interface GoogleCloudMlV1__ListModelsResponse {
@@ -1951,11 +2645,13 @@ export interface GoogleCloudMlV1__ListModelsResponse {
   nextPageToken?: string;
 }
 export const GoogleCloudMlV1__ListModelsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "models": S.optional(GoogleCloudMlV1__ModelList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__ListModelsResponse" }) as any as S.Schema<GoogleCloudMlV1__ListModelsResponse>;
+  S.Struct({
+    models: S.optional(GoogleCloudMlV1__ModelList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleCloudMlV1__ListModelsResponse",
+}) as any as S.Schema<GoogleCloudMlV1__ListModelsResponse>;
 
 export interface ListProjectsModelsVersionsRequest {
   /** Optional. Specifies the subset of versions to retrieve. */
@@ -1968,16 +2664,27 @@ export interface ListProjectsModelsVersionsRequest {
   pageToken?: string;
 }
 export const ListProjectsModelsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/versions","baseUrl":"https://ml.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsModelsVersionsRequest" }) as any as S.Schema<ListProjectsModelsVersionsRequest>;
+  S.Struct({
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/versions",
+      baseUrl: "https://ml.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsModelsVersionsRequest",
+}) as any as S.Schema<ListProjectsModelsVersionsRequest>;
 
-export type GoogleCloudMlV1__VersionList = ReadonlyArray<GoogleCloudMlV1__Version>;
-export const GoogleCloudMlV1__VersionList = /*@__PURE__*/ S.Array(GoogleCloudMlV1__Version) as any as S.Schema<GoogleCloudMlV1__VersionList>;
+export type GoogleCloudMlV1__VersionList =
+  ReadonlyArray<GoogleCloudMlV1__Version>;
+export const GoogleCloudMlV1__VersionList = /*@__PURE__*/ S.Array(
+  GoogleCloudMlV1__Version,
+) as any as S.Schema<GoogleCloudMlV1__VersionList>;
 
 /** Response message for the ListVersions method. */
 export interface GoogleCloudMlV1__ListVersionsResponse {
@@ -1986,12 +2693,15 @@ export interface GoogleCloudMlV1__ListVersionsResponse {
   /** The list of versions. */
   versions?: GoogleCloudMlV1__VersionList;
 }
-export const GoogleCloudMlV1__ListVersionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "versions": S.optional(GoogleCloudMlV1__VersionList),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__ListVersionsResponse" }) as any as S.Schema<GoogleCloudMlV1__ListVersionsResponse>;
+export const GoogleCloudMlV1__ListVersionsResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      nextPageToken: S.optional(S.String),
+      versions: S.optional(GoogleCloudMlV1__VersionList),
+    }),
+).annotate({
+  identifier: "GoogleCloudMlV1__ListVersionsResponse",
+}) as any as S.Schema<GoogleCloudMlV1__ListVersionsResponse>;
 
 export interface ListProjectsOperationsRequest {
   /** The name of the operation's parent resource. */
@@ -2006,17 +2716,28 @@ export interface ListProjectsOperationsRequest {
   pageSize?: number;
 }
 export const ListProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/operations","baseUrl":"https://ml.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsOperationsRequest" }) as any as S.Schema<ListProjectsOperationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}/operations",
+      baseUrl: "https://ml.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsOperationsRequest",
+}) as any as S.Schema<ListProjectsOperationsRequest>;
 
-export type GoogleLongrunning__OperationList = ReadonlyArray<GoogleLongrunning__Operation>;
-export const GoogleLongrunning__OperationList = /*@__PURE__*/ S.Array(GoogleLongrunning__Operation) as any as S.Schema<GoogleLongrunning__OperationList>;
+export type GoogleLongrunning__OperationList =
+  ReadonlyArray<GoogleLongrunning__Operation>;
+export const GoogleLongrunning__OperationList = /*@__PURE__*/ S.Array(
+  GoogleLongrunning__Operation,
+) as any as S.Schema<GoogleLongrunning__OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface GoogleLongrunning__ListOperationsResponse {
@@ -2027,13 +2748,16 @@ export interface GoogleLongrunning__ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: GoogleLongrunning__OperationList;
 }
-export const GoogleLongrunning__ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-  "operations": S.optional(GoogleLongrunning__OperationList),
-}),
-).annotate({ identifier: "GoogleLongrunning__ListOperationsResponse" }) as any as S.Schema<GoogleLongrunning__ListOperationsResponse>;
+export const GoogleLongrunning__ListOperationsResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      nextPageToken: S.optional(S.String),
+      unreachable: S.optional(StringList),
+      operations: S.optional(GoogleLongrunning__OperationList),
+    }),
+  ).annotate({
+    identifier: "GoogleLongrunning__ListOperationsResponse",
+  }) as any as S.Schema<GoogleLongrunning__ListOperationsResponse>;
 
 export interface PatchProjectsJobsRequest {
   /** Required. Specifies the path, relative to `Job`, of the field to update. To adopt etag mechanism, include `etag` field in the mask, and include the `etag` value in your job resource. For example, to change the labels of a job, the `update_mask` parameter would be specified as `labels`, `etag`, and the `PATCH` request body would specify the new value, as follows: { "labels": { "owner": "Google", "color": "Blue" } "etag": "33a64df551425fcc55e4d42a148795d9f25f89d4" } If `etag` matches the one on the server, the labels of the job will be replaced with the given ones, and the server end `etag` will be recalculated. Currently the only supported update masks are `labels` and `etag`. */
@@ -2044,12 +2768,20 @@ export interface PatchProjectsJobsRequest {
   body?: GoogleCloudMlV1__Job;
 }
 export const PatchProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleCloudMlV1__Job.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://ml.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsJobsRequest" }) as any as S.Schema<PatchProjectsJobsRequest>;
+  S.Struct({
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    body: S.optional(GoogleCloudMlV1__Job.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+name}",
+      baseUrl: "https://ml.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchProjectsJobsRequest",
+}) as any as S.Schema<PatchProjectsJobsRequest>;
 
 export interface PatchProjectsModelsRequest {
   /** Required. Specifies the path, relative to `Model`, of the field to update. For example, to change the description of a model to "foo" and set its default version to "version_1", the `update_mask` parameter would be specified as `description`, `default_version.name`, and the `PATCH` request body would specify the new value, as follows: { "description": "foo", "defaultVersion": { "name":"version_1" } } Currently the supported update masks are `description` and `default_version.name`. */
@@ -2060,12 +2792,20 @@ export interface PatchProjectsModelsRequest {
   body?: GoogleCloudMlV1__Model;
 }
 export const PatchProjectsModelsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleCloudMlV1__Model.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://ml.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsModelsRequest" }) as any as S.Schema<PatchProjectsModelsRequest>;
+  S.Struct({
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    body: S.optional(GoogleCloudMlV1__Model.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+name}",
+      baseUrl: "https://ml.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchProjectsModelsRequest",
+}) as any as S.Schema<PatchProjectsModelsRequest>;
 
 export interface PatchProjectsModelsVersionsRequest {
   /** Required. The name of the model. */
@@ -2076,12 +2816,20 @@ export interface PatchProjectsModelsVersionsRequest {
   body?: GoogleCloudMlV1__Version;
 }
 export const PatchProjectsModelsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(GoogleCloudMlV1__Version.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://ml.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsModelsVersionsRequest" }) as any as S.Schema<PatchProjectsModelsVersionsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(GoogleCloudMlV1__Version.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+name}",
+      baseUrl: "https://ml.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchProjectsModelsVersionsRequest",
+}) as any as S.Schema<PatchProjectsModelsVersionsRequest>;
 
 /** Request for predictions to be issued against a trained model. */
 export interface GoogleCloudMlV1__PredictRequest {
@@ -2089,10 +2837,12 @@ export interface GoogleCloudMlV1__PredictRequest {
   httpBody?: GoogleApi__HttpBody;
 }
 export const GoogleCloudMlV1__PredictRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "httpBody": S.optional(GoogleApi__HttpBody),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__PredictRequest" }) as any as S.Schema<GoogleCloudMlV1__PredictRequest>;
+  S.Struct({
+    httpBody: S.optional(GoogleApi__HttpBody),
+  }),
+).annotate({
+  identifier: "GoogleCloudMlV1__PredictRequest",
+}) as any as S.Schema<GoogleCloudMlV1__PredictRequest>;
 
 export interface PredictProjectsRequest {
   /** Required. The resource name of a model or a version. Authorization: requires the `predict` permission on the specified resource. */
@@ -2101,17 +2851,26 @@ export interface PredictProjectsRequest {
   body?: GoogleCloudMlV1__PredictRequest;
 }
 export const PredictProjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleCloudMlV1__PredictRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:predict","baseUrl":"https://ml.googleapis.com/"})),
-).annotate({ identifier: "PredictProjectsRequest" }) as any as S.Schema<PredictProjectsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(GoogleCloudMlV1__PredictRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:predict",
+      baseUrl: "https://ml.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PredictProjectsRequest",
+}) as any as S.Schema<PredictProjectsRequest>;
 
 /** Request message for the SetDefaultVersion request. */
 export interface GoogleCloudMlV1__SetDefaultVersionRequest {}
-export const GoogleCloudMlV1__SetDefaultVersionRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "GoogleCloudMlV1__SetDefaultVersionRequest" }) as any as S.Schema<GoogleCloudMlV1__SetDefaultVersionRequest>;
+export const GoogleCloudMlV1__SetDefaultVersionRequest =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "GoogleCloudMlV1__SetDefaultVersionRequest",
+  }) as any as S.Schema<GoogleCloudMlV1__SetDefaultVersionRequest>;
 
 export interface SetDefaultProjectsModelsVersionsRequest {
   /** Required. The name of the version to make the default for the model. You can get the names of all the versions of a model by calling projects.models.versions.list. */
@@ -2119,12 +2878,23 @@ export interface SetDefaultProjectsModelsVersionsRequest {
   /** Request body */
   body?: GoogleCloudMlV1__SetDefaultVersionRequest;
 }
-export const SetDefaultProjectsModelsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleCloudMlV1__SetDefaultVersionRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:setDefault","baseUrl":"https://ml.googleapis.com/"})),
-).annotate({ identifier: "SetDefaultProjectsModelsVersionsRequest" }) as any as S.Schema<SetDefaultProjectsModelsVersionsRequest>;
+export const SetDefaultProjectsModelsVersionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleCloudMlV1__SetDefaultVersionRequest.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:setDefault",
+        baseUrl: "https://ml.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "SetDefaultProjectsModelsVersionsRequest",
+}) as any as S.Schema<SetDefaultProjectsModelsVersionsRequest>;
 
 /** Request message for `SetIamPolicy` method. */
 export interface GoogleIamV1__SetIamPolicyRequest {
@@ -2134,11 +2904,13 @@ export interface GoogleIamV1__SetIamPolicyRequest {
   updateMask?: string;
 }
 export const GoogleIamV1__SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "policy": S.optional(GoogleIamV1__Policy),
-  "updateMask": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleIamV1__SetIamPolicyRequest" }) as any as S.Schema<GoogleIamV1__SetIamPolicyRequest>;
+  S.Struct({
+    policy: S.optional(GoogleIamV1__Policy),
+    updateMask: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleIamV1__SetIamPolicyRequest",
+}) as any as S.Schema<GoogleIamV1__SetIamPolicyRequest>;
 
 export interface SetIamPolicyProjectsJobsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -2147,11 +2919,19 @@ export interface SetIamPolicyProjectsJobsRequest {
   body?: GoogleIamV1__SetIamPolicyRequest;
 }
 export const SetIamPolicyProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleIamV1__SetIamPolicyRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://ml.googleapis.com/"})),
-).annotate({ identifier: "SetIamPolicyProjectsJobsRequest" }) as any as S.Schema<SetIamPolicyProjectsJobsRequest>;
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(GoogleIamV1__SetIamPolicyRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+resource}:setIamPolicy",
+      baseUrl: "https://ml.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SetIamPolicyProjectsJobsRequest",
+}) as any as S.Schema<SetIamPolicyProjectsJobsRequest>;
 
 export interface SetIamPolicyProjectsModelsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -2160,16 +2940,26 @@ export interface SetIamPolicyProjectsModelsRequest {
   body?: GoogleIamV1__SetIamPolicyRequest;
 }
 export const SetIamPolicyProjectsModelsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleIamV1__SetIamPolicyRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://ml.googleapis.com/"})),
-).annotate({ identifier: "SetIamPolicyProjectsModelsRequest" }) as any as S.Schema<SetIamPolicyProjectsModelsRequest>;
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(GoogleIamV1__SetIamPolicyRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+resource}:setIamPolicy",
+      baseUrl: "https://ml.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SetIamPolicyProjectsModelsRequest",
+}) as any as S.Schema<SetIamPolicyProjectsModelsRequest>;
 
 export interface GoogleCloudMlV1__StopTrialRequest {}
 export const GoogleCloudMlV1__StopTrialRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "GoogleCloudMlV1__StopTrialRequest" }) as any as S.Schema<GoogleCloudMlV1__StopTrialRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "GoogleCloudMlV1__StopTrialRequest",
+}) as any as S.Schema<GoogleCloudMlV1__StopTrialRequest>;
 
 export interface StopProjectsLocationsStudiesTrialsRequest {
   /** Required. The trial name. */
@@ -2177,12 +2967,21 @@ export interface StopProjectsLocationsStudiesTrialsRequest {
   /** Request body */
   body?: GoogleCloudMlV1__StopTrialRequest;
 }
-export const StopProjectsLocationsStudiesTrialsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleCloudMlV1__StopTrialRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:stop","baseUrl":"https://ml.googleapis.com/"})),
-).annotate({ identifier: "StopProjectsLocationsStudiesTrialsRequest" }) as any as S.Schema<StopProjectsLocationsStudiesTrialsRequest>;
+export const StopProjectsLocationsStudiesTrialsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(GoogleCloudMlV1__StopTrialRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:stop",
+        baseUrl: "https://ml.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "StopProjectsLocationsStudiesTrialsRequest",
+  }) as any as S.Schema<StopProjectsLocationsStudiesTrialsRequest>;
 
 /** The request message for the SuggestTrial service method. */
 export interface GoogleCloudMlV1__SuggestTrialsRequest {
@@ -2191,12 +2990,15 @@ export interface GoogleCloudMlV1__SuggestTrialsRequest {
   /** Required. The identifier of the client that is requesting the suggestion. If multiple SuggestTrialsRequests have the same `client_id`, the service will return the identical suggested trial if the trial is pending, and provide a new trial if the last suggested trial was completed. */
   clientId?: string;
 }
-export const GoogleCloudMlV1__SuggestTrialsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "suggestionCount": S.optional(S.Number),
-  "clientId": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudMlV1__SuggestTrialsRequest" }) as any as S.Schema<GoogleCloudMlV1__SuggestTrialsRequest>;
+export const GoogleCloudMlV1__SuggestTrialsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      suggestionCount: S.optional(S.Number),
+      clientId: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "GoogleCloudMlV1__SuggestTrialsRequest",
+}) as any as S.Schema<GoogleCloudMlV1__SuggestTrialsRequest>;
 
 export interface SuggestProjectsLocationsStudiesTrialsRequest {
   /** Required. The name of the study that the trial belongs to. */
@@ -2204,23 +3006,37 @@ export interface SuggestProjectsLocationsStudiesTrialsRequest {
   /** Request body */
   body?: GoogleCloudMlV1__SuggestTrialsRequest;
 }
-export const SuggestProjectsLocationsStudiesTrialsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleCloudMlV1__SuggestTrialsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/trials:suggest","baseUrl":"https://ml.googleapis.com/"})),
-).annotate({ identifier: "SuggestProjectsLocationsStudiesTrialsRequest" }) as any as S.Schema<SuggestProjectsLocationsStudiesTrialsRequest>;
+export const SuggestProjectsLocationsStudiesTrialsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleCloudMlV1__SuggestTrialsRequest.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/trials:suggest",
+        baseUrl: "https://ml.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "SuggestProjectsLocationsStudiesTrialsRequest",
+  }) as any as S.Schema<SuggestProjectsLocationsStudiesTrialsRequest>;
 
 /** Request message for `TestIamPermissions` method. */
 export interface GoogleIamV1__TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-export const GoogleIamV1__TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "permissions": S.optional(StringList),
-}),
-).annotate({ identifier: "GoogleIamV1__TestIamPermissionsRequest" }) as any as S.Schema<GoogleIamV1__TestIamPermissionsRequest>;
+export const GoogleIamV1__TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      permissions: S.optional(StringList),
+    }),
+).annotate({
+  identifier: "GoogleIamV1__TestIamPermissionsRequest",
+}) as any as S.Schema<GoogleIamV1__TestIamPermissionsRequest>;
 
 export interface TestIamPermissionsProjectsJobsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -2228,23 +3044,37 @@ export interface TestIamPermissionsProjectsJobsRequest {
   /** Request body */
   body?: GoogleIamV1__TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleIamV1__TestIamPermissionsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://ml.googleapis.com/"})),
-).annotate({ identifier: "TestIamPermissionsProjectsJobsRequest" }) as any as S.Schema<TestIamPermissionsProjectsJobsRequest>;
+export const TestIamPermissionsProjectsJobsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleIamV1__TestIamPermissionsRequest.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+resource}:testIamPermissions",
+        baseUrl: "https://ml.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "TestIamPermissionsProjectsJobsRequest",
+}) as any as S.Schema<TestIamPermissionsProjectsJobsRequest>;
 
 /** Response message for `TestIamPermissions` method. */
 export interface GoogleIamV1__TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const GoogleIamV1__TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "permissions": S.optional(StringList),
-}),
-).annotate({ identifier: "GoogleIamV1__TestIamPermissionsResponse" }) as any as S.Schema<GoogleIamV1__TestIamPermissionsResponse>;
+export const GoogleIamV1__TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      permissions: S.optional(StringList),
+    }),
+).annotate({
+  identifier: "GoogleIamV1__TestIamPermissionsResponse",
+}) as any as S.Schema<GoogleIamV1__TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsModelsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -2252,14 +3082,30 @@ export interface TestIamPermissionsProjectsModelsRequest {
   /** Request body */
   body?: GoogleIamV1__TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsModelsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleIamV1__TestIamPermissionsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://ml.googleapis.com/"})),
-).annotate({ identifier: "TestIamPermissionsProjectsModelsRequest" }) as any as S.Schema<TestIamPermissionsProjectsModelsRequest>;
+export const TestIamPermissionsProjectsModelsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleIamV1__TestIamPermissionsRequest.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+resource}:testIamPermissions",
+        baseUrl: "https://ml.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "TestIamPermissionsProjectsModelsRequest",
+}) as any as S.Schema<TestIamPermissionsProjectsModelsRequest>;
 
-export type AddMeasurementProjectsLocationsStudiesTrialsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type AddMeasurementProjectsLocationsStudiesTrialsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Adds a measurement of the objective metrics to a trial. This measurement is assumed to have been taken before the trial is complete. */
 export const addMeasurementProjectsLocationsStudiesTrials: API.OperationMethod<
   AddMeasurementProjectsLocationsStudiesTrialsRequest,
@@ -2274,7 +3120,12 @@ export const addMeasurementProjectsLocationsStudiesTrials: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CancelProjectsJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CancelProjectsJobsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Cancels a running job. */
 export const cancelProjectsJobs: API.OperationMethod<
   CancelProjectsJobsRequest,
@@ -2289,7 +3140,12 @@ export const cancelProjectsJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CancelProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CancelProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsRequest,
@@ -2304,7 +3160,12 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CancelProjectsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CancelProjectsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsOperations: API.OperationMethod<
   CancelProjectsOperationsRequest,
@@ -2319,7 +3180,12 @@ export const cancelProjectsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CheckEarlyStoppingStateProjectsLocationsStudiesTrialsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CheckEarlyStoppingStateProjectsLocationsStudiesTrialsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Checks whether a trial should stop or not. Returns a long-running operation. When the operation is successful, it will contain a CheckTrialEarlyStoppingStateResponse. */
 export const checkEarlyStoppingStateProjectsLocationsStudiesTrials: API.OperationMethod<
   CheckEarlyStoppingStateProjectsLocationsStudiesTrialsRequest,
@@ -2334,7 +3200,12 @@ export const checkEarlyStoppingStateProjectsLocationsStudiesTrials: API.Operatio
   retry: Retry.Retry,
 }));
 
-export type CompleteProjectsLocationsStudiesTrialsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CompleteProjectsLocationsStudiesTrialsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Marks a trial as complete. */
 export const completeProjectsLocationsStudiesTrials: API.OperationMethod<
   CompleteProjectsLocationsStudiesTrialsRequest,
@@ -2349,7 +3220,12 @@ export const completeProjectsLocationsStudiesTrials: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsJobsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a training or a batch prediction job. */
 export const createProjectsJobs: API.OperationMethod<
   CreateProjectsJobsRequest,
@@ -2364,7 +3240,12 @@ export const createProjectsJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsStudiesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsStudiesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a study. */
 export const createProjectsLocationsStudies: API.OperationMethod<
   CreateProjectsLocationsStudiesRequest,
@@ -2379,7 +3260,12 @@ export const createProjectsLocationsStudies: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsStudiesTrialsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsStudiesTrialsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Adds a user provided trial to a study. */
 export const createProjectsLocationsStudiesTrials: API.OperationMethod<
   CreateProjectsLocationsStudiesTrialsRequest,
@@ -2394,7 +3280,12 @@ export const createProjectsLocationsStudiesTrials: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsModelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsModelsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a model which will later contain one or more versions. You must add at least one version before you can request predictions from the model. Add versions by calling projects.models.versions.create. */
 export const createProjectsModels: API.OperationMethod<
   CreateProjectsModelsRequest,
@@ -2409,7 +3300,12 @@ export const createProjectsModels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsModelsVersionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsModelsVersionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new version of a model from a trained TensorFlow model. If the version created in the cloud by this call is the first deployed version of the specified model, it will be made the default version of the model. When you add a version to a model that already has one or more versions, the default version does not automatically change. If you want a new version to be the default, you must call projects.models.versions.setDefault. */
 export const createProjectsModelsVersions: API.OperationMethod<
   CreateProjectsModelsVersionsRequest,
@@ -2424,7 +3320,12 @@ export const createProjectsModelsVersions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsStudiesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsStudiesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a study. */
 export const deleteProjectsLocationsStudies: API.OperationMethod<
   DeleteProjectsLocationsStudiesRequest,
@@ -2439,7 +3340,12 @@ export const deleteProjectsLocationsStudies: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsStudiesTrialsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsStudiesTrialsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a trial. */
 export const deleteProjectsLocationsStudiesTrials: API.OperationMethod<
   DeleteProjectsLocationsStudiesTrialsRequest,
@@ -2454,7 +3360,12 @@ export const deleteProjectsLocationsStudiesTrials: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsModelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsModelsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a model. You can only delete a model if there are no versions in it. You can delete versions by calling projects.models.versions.delete. */
 export const deleteProjectsModels: API.OperationMethod<
   DeleteProjectsModelsRequest,
@@ -2469,7 +3380,12 @@ export const deleteProjectsModels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsModelsVersionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsModelsVersionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a model version. Each model can have multiple versions deployed and in use at any given time. Use this method to remove a single version. Note: You cannot delete the version that is set as the default version of the model unless it is the only remaining version. */
 export const deleteProjectsModelsVersions: API.OperationMethod<
   DeleteProjectsModelsVersionsRequest,
@@ -2484,7 +3400,12 @@ export const deleteProjectsModelsVersions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ExplainProjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ExplainProjectsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Performs explanation on the data in the request. {% dynamic include "/ai-platform/includes/___explain-request" %} */
 export const explainProjects: API.OperationMethod<
   ExplainProjectsRequest,
@@ -2574,7 +3495,10 @@ export const getProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -2589,7 +3513,10 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsStudiesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsStudiesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets a study. */
 export const getProjectsLocationsStudies: API.OperationMethod<
   GetProjectsLocationsStudiesRequest,
@@ -2604,7 +3531,10 @@ export const getProjectsLocationsStudies: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsStudiesTrialsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsStudiesTrialsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets a trial. */
 export const getProjectsLocationsStudiesTrials: API.OperationMethod<
   GetProjectsLocationsStudiesTrialsRequest,
@@ -2664,7 +3594,12 @@ export const getProjectsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListOptimalTrialsProjectsLocationsStudiesTrialsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ListOptimalTrialsProjectsLocationsStudiesTrialsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Lists the pareto-optimal trials for multi-objective study or the optimal trials for single-objective study. The definition of pareto-optimal can be checked in wiki page. https://en.wikipedia.org/wiki/Pareto_efficiency */
 export const listOptimalTrialsProjectsLocationsStudiesTrials: API.OperationMethod<
   ListOptimalTrialsProjectsLocationsStudiesTrialsRequest,
@@ -2692,7 +3627,10 @@ export const listProjectsJobs: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListProjectsLocationsError = NotFound | Forbidden | GcpOpError;
@@ -2708,10 +3646,16 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsStudiesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsStudiesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all the studies in a region for an associated project. */
 export const listProjectsLocationsStudies: API.OperationMethod<
   ListProjectsLocationsStudiesRequest,
@@ -2726,7 +3670,10 @@ export const listProjectsLocationsStudies: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListProjectsLocationsStudiesTrialsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsStudiesTrialsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists the trials associated with a study. */
 export const listProjectsLocationsStudiesTrials: API.OperationMethod<
   ListProjectsLocationsStudiesTrialsRequest,
@@ -2754,7 +3701,10 @@ export const listProjectsModels: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListProjectsModelsVersionsError = NotFound | Forbidden | GcpOpError;
@@ -2770,7 +3720,10 @@ export const listProjectsModelsVersions: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListProjectsOperationsError = NotFound | Forbidden | GcpOpError;
@@ -2786,10 +3739,18 @@ export const listProjectsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type PatchProjectsJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsJobsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a specific job resource. Currently the only supported fields to update are `labels`. */
 export const patchProjectsJobs: API.OperationMethod<
   PatchProjectsJobsRequest,
@@ -2804,7 +3765,12 @@ export const patchProjectsJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsModelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsModelsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a specific model resource. Currently the only supported fields to update are `description` and `default_version.name`. */
 export const patchProjectsModels: API.OperationMethod<
   PatchProjectsModelsRequest,
@@ -2819,7 +3785,12 @@ export const patchProjectsModels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsModelsVersionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsModelsVersionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the specified Version resource. Currently the only update-able fields are `description`, `requestLoggingConfig`, `autoScaling.minNodes`, and `manualScaling.nodes`. */
 export const patchProjectsModelsVersions: API.OperationMethod<
   PatchProjectsModelsVersionsRequest,
@@ -2834,7 +3805,12 @@ export const patchProjectsModelsVersions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PredictProjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PredictProjectsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Performs online prediction on the data in the request. {% dynamic include "/ai-platform/includes/___predict-request" %} */
 export const predictProjects: API.OperationMethod<
   PredictProjectsRequest,
@@ -2849,7 +3825,12 @@ export const predictProjects: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetDefaultProjectsModelsVersionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetDefaultProjectsModelsVersionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Designates a version to be the default for the model. The default version is used for prediction requests made against the model that don't specify a version. The first version to be created for a model is automatically set as the default. You must make any subsequent changes to the default version setting manually using this method. */
 export const setDefaultProjectsModelsVersions: API.OperationMethod<
   SetDefaultProjectsModelsVersionsRequest,
@@ -2864,7 +3845,12 @@ export const setDefaultProjectsModelsVersions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetIamPolicyProjectsJobsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsJobs: API.OperationMethod<
   SetIamPolicyProjectsJobsRequest,
@@ -2879,7 +3865,12 @@ export const setIamPolicyProjectsJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsModelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetIamPolicyProjectsModelsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsModels: API.OperationMethod<
   SetIamPolicyProjectsModelsRequest,
@@ -2894,7 +3885,12 @@ export const setIamPolicyProjectsModels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type StopProjectsLocationsStudiesTrialsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type StopProjectsLocationsStudiesTrialsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Stops a trial. */
 export const stopProjectsLocationsStudiesTrials: API.OperationMethod<
   StopProjectsLocationsStudiesTrialsRequest,
@@ -2909,7 +3905,12 @@ export const stopProjectsLocationsStudiesTrials: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SuggestProjectsLocationsStudiesTrialsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SuggestProjectsLocationsStudiesTrialsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Adds one or more trials to a study, with parameter values suggested by AI Platform Vizier. Returns a long-running operation associated with the generation of trial suggestions. When this long-running operation succeeds, it will contain a SuggestTrialsResponse. */
 export const suggestProjectsLocationsStudiesTrials: API.OperationMethod<
   SuggestProjectsLocationsStudiesTrialsRequest,
@@ -2924,7 +3925,12 @@ export const suggestProjectsLocationsStudiesTrials: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TestIamPermissionsProjectsJobsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsJobs: API.OperationMethod<
   TestIamPermissionsProjectsJobsRequest,
@@ -2939,7 +3945,12 @@ export const testIamPermissionsProjectsJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsModelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TestIamPermissionsProjectsModelsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsModels: API.OperationMethod<
   TestIamPermissionsProjectsModelsRequest,
@@ -2953,4 +3964,3 @@ export const testIamPermissionsProjectsModels: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

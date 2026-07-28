@@ -13,54 +13,57 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
-export type CloudSqlPropertiesTypeEnum = "DATABASE_TYPE_UNSPECIFIED" | "POSTGRES" | "MYSQL";
+export type CloudSqlPropertiesTypeEnum =
+  | "DATABASE_TYPE_UNSPECIFIED"
+  | "POSTGRES"
+  | "MYSQL";
 export const CloudSqlPropertiesTypeEnum = /*@__PURE__*/ S.String;
 
 /** Credential info for the Cloud SQL. */
@@ -71,11 +74,13 @@ export interface CloudSqlCredential {
   password?: string;
 }
 export const CloudSqlCredential = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "username": S.optional(S.String),
-  "password": S.optional(S.String),
-}),
-).annotate({ identifier: "CloudSqlCredential" }) as any as S.Schema<CloudSqlCredential>;
+  S.Struct({
+    username: S.optional(S.String),
+    password: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CloudSqlCredential",
+}) as any as S.Schema<CloudSqlCredential>;
 
 /** Connection properties specific to the Cloud SQL. */
 export interface CloudSqlProperties {
@@ -91,14 +96,16 @@ export interface CloudSqlProperties {
   serviceAccountId?: string;
 }
 export const CloudSqlProperties = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "database": S.optional(S.String),
-  "type": S.optional(CloudSqlPropertiesTypeEnum),
-  "credential": S.optional(CloudSqlCredential),
-  "instanceId": S.optional(S.String),
-  "serviceAccountId": S.optional(S.String),
-}),
-).annotate({ identifier: "CloudSqlProperties" }) as any as S.Schema<CloudSqlProperties>;
+  S.Struct({
+    database: S.optional(S.String),
+    type: S.optional(CloudSqlPropertiesTypeEnum),
+    credential: S.optional(CloudSqlCredential),
+    instanceId: S.optional(S.String),
+    serviceAccountId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CloudSqlProperties",
+}) as any as S.Schema<CloudSqlProperties>;
 
 /** Configuration parameters to establish connection with an external data source, except the credential attributes. */
 export interface Connection {
@@ -118,15 +125,15 @@ export interface Connection {
   hasCredential?: boolean;
 }
 export const Connection = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "cloudSql": S.optional(CloudSqlProperties),
-  "description": S.optional(S.String),
-  "creationTime": S.optional(S.String),
-  "friendlyName": S.optional(S.String),
-  "lastModifiedTime": S.optional(S.String),
-  "name": S.optional(S.String),
-  "hasCredential": S.optional(S.Boolean),
-}),
+  S.Struct({
+    cloudSql: S.optional(CloudSqlProperties),
+    description: S.optional(S.String),
+    creationTime: S.optional(S.String),
+    friendlyName: S.optional(S.String),
+    lastModifiedTime: S.optional(S.String),
+    name: S.optional(S.String),
+    hasCredential: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "Connection" }) as any as S.Schema<Connection>;
 
 export interface CreateProjectsLocationsConnectionsRequest {
@@ -137,29 +144,47 @@ export interface CreateProjectsLocationsConnectionsRequest {
   /** Request body */
   body?: Connection;
 }
-export const CreateProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "connectionId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Connection.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/connections","baseUrl":"https://bigqueryconnection.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsConnectionsRequest" }) as any as S.Schema<CreateProjectsLocationsConnectionsRequest>;
+export const CreateProjectsLocationsConnectionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      connectionId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Connection.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+parent}/connections",
+        baseUrl: "https://bigqueryconnection.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsConnectionsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsConnectionsRequest>;
 
 export interface DeleteProjectsLocationsConnectionsRequest {
   /** Required. Name of the deleted connection, for example: `projects/{project_id}/locations/{location_id}/connections/{connection_id}` */
   name: string;
 }
-export const DeleteProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://bigqueryconnection.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsConnectionsRequest" }) as any as S.Schema<DeleteProjectsLocationsConnectionsRequest>;
+export const DeleteProjectsLocationsConnectionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://bigqueryconnection.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsConnectionsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsConnectionsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 /** Encapsulates settings provided to GetIamPolicy. */
 export interface GetPolicyOptions {
@@ -167,10 +192,12 @@ export interface GetPolicyOptions {
   requestedPolicyVersion?: number;
 }
 export const GetPolicyOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestedPolicyVersion": S.optional(S.Number),
-}),
-).annotate({ identifier: "GetPolicyOptions" }) as any as S.Schema<GetPolicyOptions>;
+  S.Struct({
+    requestedPolicyVersion: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "GetPolicyOptions",
+}) as any as S.Schema<GetPolicyOptions>;
 
 /** Request message for `GetIamPolicy` method. */
 export interface GetIamPolicyRequest {
@@ -178,10 +205,12 @@ export interface GetIamPolicyRequest {
   options?: GetPolicyOptions;
 }
 export const GetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "options": S.optional(GetPolicyOptions),
-}),
-).annotate({ identifier: "GetIamPolicyRequest" }) as any as S.Schema<GetIamPolicyRequest>;
+  S.Struct({
+    options: S.optional(GetPolicyOptions),
+  }),
+).annotate({
+  identifier: "GetIamPolicyRequest",
+}) as any as S.Schema<GetIamPolicyRequest>;
 
 export interface GetIamPolicyProjectsLocationsConnectionsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -189,12 +218,21 @@ export interface GetIamPolicyProjectsLocationsConnectionsRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+resource}:getIamPolicy","baseUrl":"https://bigqueryconnection.googleapis.com/"})),
-).annotate({ identifier: "GetIamPolicyProjectsLocationsConnectionsRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsConnectionsRequest>;
+export const GetIamPolicyProjectsLocationsConnectionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+resource}:getIamPolicy",
+        baseUrl: "https://bigqueryconnection.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetIamPolicyProjectsLocationsConnectionsRequest",
+  }) as any as S.Schema<GetIamPolicyProjectsLocationsConnectionsRequest>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -208,16 +246,18 @@ export interface Expr {
   description?: string;
 }
 export const Expr = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "expression": S.optional(S.String),
-  "title": S.optional(S.String),
-  "location": S.optional(S.String),
-  "description": S.optional(S.String),
-}),
+  S.Struct({
+    expression: S.optional(S.String),
+    title: S.optional(S.String),
+    location: S.optional(S.String),
+    description: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** Associates `members`, or principals, with a `role`. */
 export interface Binding {
@@ -229,17 +269,23 @@ export interface Binding {
   members?: StringList;
 }
 export const Binding = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "role": S.optional(S.String),
-  "condition": S.optional(Expr),
-  "members": S.optional(StringList),
-}),
+  S.Struct({
+    role: S.optional(S.String),
+    condition: S.optional(Expr),
+    members: S.optional(StringList),
+  }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = ReadonlyArray<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+export const BindingList = /*@__PURE__*/ S.Array(
+  Binding,
+) as any as S.Schema<BindingList>;
 
-export type AuditLogConfigLogTypeEnum = "LOG_TYPE_UNSPECIFIED" | "ADMIN_READ" | "DATA_WRITE" | "DATA_READ";
+export type AuditLogConfigLogTypeEnum =
+  | "LOG_TYPE_UNSPECIFIED"
+  | "ADMIN_READ"
+  | "DATA_WRITE"
+  | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -250,14 +296,16 @@ export interface AuditLogConfig {
   exemptedMembers?: StringList;
 }
 export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "logType": S.optional(AuditLogConfigLogTypeEnum),
-  "exemptedMembers": S.optional(StringList),
-}),
+  S.Struct({
+    logType: S.optional(AuditLogConfigLogTypeEnum),
+    exemptedMembers: S.optional(StringList),
+  }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(AuditLogConfig) as any as S.Schema<AuditLogConfigList>;
+export const AuditLogConfigList = /*@__PURE__*/ S.Array(
+  AuditLogConfig,
+) as any as S.Schema<AuditLogConfigList>;
 
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface AuditConfig {
@@ -267,14 +315,16 @@ export interface AuditConfig {
   auditLogConfigs?: AuditLogConfigList;
 }
 export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "service": S.optional(S.String),
-  "auditLogConfigs": S.optional(AuditLogConfigList),
-}),
+  S.Struct({
+    service: S.optional(S.String),
+    auditLogConfigs: S.optional(AuditLogConfigList),
+  }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = ReadonlyArray<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
+export const AuditConfigList = /*@__PURE__*/ S.Array(
+  AuditConfig,
+) as any as S.Schema<AuditConfigList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -288,23 +338,32 @@ export interface Policy {
   auditConfigs?: AuditConfigList;
 }
 export const Policy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "version": S.optional(S.Number),
-  "etag": S.optional(S.String),
-  "bindings": S.optional(BindingList),
-  "auditConfigs": S.optional(AuditConfigList),
-}),
+  S.Struct({
+    version: S.optional(S.Number),
+    etag: S.optional(S.String),
+    bindings: S.optional(BindingList),
+    auditConfigs: S.optional(AuditConfigList),
+  }),
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
 
 export interface GetProjectsLocationsConnectionsRequest {
   /** Required. Name of the requested connection, for example: `projects/{project_id}/locations/{location_id}/connections/{connection_id}` */
   name: string;
 }
-export const GetProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://bigqueryconnection.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsConnectionsRequest" }) as any as S.Schema<GetProjectsLocationsConnectionsRequest>;
+export const GetProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://bigqueryconnection.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsConnectionsRequest",
+}) as any as S.Schema<GetProjectsLocationsConnectionsRequest>;
 
 export interface ListProjectsLocationsConnectionsRequest {
   /** Required. Parent resource name. Must be in the form: `projects/{project_id}/locations/{location_id}` */
@@ -314,16 +373,27 @@ export interface ListProjectsLocationsConnectionsRequest {
   /** Page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/connections","baseUrl":"https://bigqueryconnection.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsConnectionsRequest" }) as any as S.Schema<ListProjectsLocationsConnectionsRequest>;
+export const ListProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      maxResults: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+parent}/connections",
+        baseUrl: "https://bigqueryconnection.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsConnectionsRequest",
+}) as any as S.Schema<ListProjectsLocationsConnectionsRequest>;
 
 export type ConnectionList = ReadonlyArray<Connection>;
-export const ConnectionList = /*@__PURE__*/ S.Array(Connection) as any as S.Schema<ConnectionList>;
+export const ConnectionList = /*@__PURE__*/ S.Array(
+  Connection,
+) as any as S.Schema<ConnectionList>;
 
 /** The response for ConnectionService.ListConnections. */
 export interface ListConnectionsResponse {
@@ -333,11 +403,13 @@ export interface ListConnectionsResponse {
   connections?: ConnectionList;
 }
 export const ListConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "connections": S.optional(ConnectionList),
-}),
-).annotate({ identifier: "ListConnectionsResponse" }) as any as S.Schema<ListConnectionsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    connections: S.optional(ConnectionList),
+  }),
+).annotate({
+  identifier: "ListConnectionsResponse",
+}) as any as S.Schema<ListConnectionsResponse>;
 
 export interface PatchProjectsLocationsConnectionsRequest {
   /** Required. Name of the connection to update, for example: `projects/{project_id}/locations/{location_id}/connections/{connection_id}` */
@@ -347,13 +419,22 @@ export interface PatchProjectsLocationsConnectionsRequest {
   /** Request body */
   body?: Connection;
 }
-export const PatchProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Connection.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://bigqueryconnection.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsConnectionsRequest" }) as any as S.Schema<PatchProjectsLocationsConnectionsRequest>;
+export const PatchProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Connection.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://bigqueryconnection.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "PatchProjectsLocationsConnectionsRequest",
+}) as any as S.Schema<PatchProjectsLocationsConnectionsRequest>;
 
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
@@ -363,11 +444,13 @@ export interface SetIamPolicyRequest {
   policy?: Policy;
 }
 export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String),
-  "policy": S.optional(Policy),
-}),
-).annotate({ identifier: "SetIamPolicyRequest" }) as any as S.Schema<SetIamPolicyRequest>;
+  S.Struct({
+    updateMask: S.optional(S.String),
+    policy: S.optional(Policy),
+  }),
+).annotate({
+  identifier: "SetIamPolicyRequest",
+}) as any as S.Schema<SetIamPolicyRequest>;
 
 export interface SetIamPolicyProjectsLocationsConnectionsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -375,12 +458,21 @@ export interface SetIamPolicyProjectsLocationsConnectionsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+resource}:setIamPolicy","baseUrl":"https://bigqueryconnection.googleapis.com/"})),
-).annotate({ identifier: "SetIamPolicyProjectsLocationsConnectionsRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsConnectionsRequest>;
+export const SetIamPolicyProjectsLocationsConnectionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+resource}:setIamPolicy",
+        baseUrl: "https://bigqueryconnection.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "SetIamPolicyProjectsLocationsConnectionsRequest",
+  }) as any as S.Schema<SetIamPolicyProjectsLocationsConnectionsRequest>;
 
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
@@ -388,10 +480,12 @@ export interface TestIamPermissionsRequest {
   permissions?: StringList;
 }
 export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "permissions": S.optional(StringList),
-}),
-).annotate({ identifier: "TestIamPermissionsRequest" }) as any as S.Schema<TestIamPermissionsRequest>;
+  S.Struct({
+    permissions: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "TestIamPermissionsRequest",
+}) as any as S.Schema<TestIamPermissionsRequest>;
 
 export interface TestIamPermissionsProjectsLocationsConnectionsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -399,12 +493,21 @@ export interface TestIamPermissionsProjectsLocationsConnectionsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+resource}:testIamPermissions","baseUrl":"https://bigqueryconnection.googleapis.com/"})),
-).annotate({ identifier: "TestIamPermissionsProjectsLocationsConnectionsRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsConnectionsRequest>;
+export const TestIamPermissionsProjectsLocationsConnectionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+resource}:testIamPermissions",
+        baseUrl: "https://bigqueryconnection.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "TestIamPermissionsProjectsLocationsConnectionsRequest",
+  }) as any as S.Schema<TestIamPermissionsProjectsLocationsConnectionsRequest>;
 
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
@@ -412,10 +515,12 @@ export interface TestIamPermissionsResponse {
   permissions?: StringList;
 }
 export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "permissions": S.optional(StringList),
-}),
-).annotate({ identifier: "TestIamPermissionsResponse" }) as any as S.Schema<TestIamPermissionsResponse>;
+  S.Struct({
+    permissions: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "TestIamPermissionsResponse",
+}) as any as S.Schema<TestIamPermissionsResponse>;
 
 /** Credential to use with a connection. */
 export interface ConnectionCredential {
@@ -423,10 +528,12 @@ export interface ConnectionCredential {
   cloudSql?: CloudSqlCredential;
 }
 export const ConnectionCredential = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "cloudSql": S.optional(CloudSqlCredential),
-}),
-).annotate({ identifier: "ConnectionCredential" }) as any as S.Schema<ConnectionCredential>;
+  S.Struct({
+    cloudSql: S.optional(CloudSqlCredential),
+  }),
+).annotate({
+  identifier: "ConnectionCredential",
+}) as any as S.Schema<ConnectionCredential>;
 
 export interface UpdateCredentialProjectsLocationsConnectionsRequest {
   /** Required. Name of the connection, for example: `projects/{project_id}/locations/{location_id}/connections/{connection_id}/credential` */
@@ -434,14 +541,28 @@ export interface UpdateCredentialProjectsLocationsConnectionsRequest {
   /** Request body */
   body?: ConnectionCredential;
 }
-export const UpdateCredentialProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(ConnectionCredential.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://bigqueryconnection.googleapis.com/"})),
-).annotate({ identifier: "UpdateCredentialProjectsLocationsConnectionsRequest" }) as any as S.Schema<UpdateCredentialProjectsLocationsConnectionsRequest>;
+export const UpdateCredentialProjectsLocationsConnectionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(ConnectionCredential.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://bigqueryconnection.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "UpdateCredentialProjectsLocationsConnectionsRequest",
+  }) as any as S.Schema<UpdateCredentialProjectsLocationsConnectionsRequest>;
 
-export type CreateProjectsLocationsConnectionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsConnectionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new connection. */
 export const createProjectsLocationsConnections: API.OperationMethod<
   CreateProjectsLocationsConnectionsRequest,
@@ -456,7 +577,12 @@ export const createProjectsLocationsConnections: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsConnectionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsConnectionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes connection and associated credential. */
 export const deleteProjectsLocationsConnections: API.OperationMethod<
   DeleteProjectsLocationsConnectionsRequest,
@@ -471,7 +597,12 @@ export const deleteProjectsLocationsConnections: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsConnectionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type GetIamPolicyProjectsLocationsConnectionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsConnections: API.OperationMethod<
   GetIamPolicyProjectsLocationsConnectionsRequest,
@@ -486,7 +617,10 @@ export const getIamPolicyProjectsLocationsConnections: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsConnectionsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsConnectionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns specified connection. */
 export const getProjectsLocationsConnections: API.OperationMethod<
   GetProjectsLocationsConnectionsRequest,
@@ -501,7 +635,10 @@ export const getProjectsLocationsConnections: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListProjectsLocationsConnectionsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsConnectionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns a list of connections in the given project. */
 export const listProjectsLocationsConnections: API.PaginatedOperationMethod<
   ListProjectsLocationsConnectionsRequest,
@@ -514,10 +651,18 @@ export const listProjectsLocationsConnections: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type PatchProjectsLocationsConnectionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsConnectionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the specified connection. For security reasons, also resets credential if connection properties are in the update field mask. */
 export const patchProjectsLocationsConnections: API.OperationMethod<
   PatchProjectsLocationsConnectionsRequest,
@@ -532,7 +677,12 @@ export const patchProjectsLocationsConnections: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsConnectionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetIamPolicyProjectsLocationsConnectionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsConnections: API.OperationMethod<
   SetIamPolicyProjectsLocationsConnectionsRequest,
@@ -547,7 +697,12 @@ export const setIamPolicyProjectsLocationsConnections: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsConnectionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TestIamPermissionsProjectsLocationsConnectionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsConnections: API.OperationMethod<
   TestIamPermissionsProjectsLocationsConnectionsRequest,
@@ -562,7 +717,12 @@ export const testIamPermissionsProjectsLocationsConnections: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type UpdateCredentialProjectsLocationsConnectionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateCredentialProjectsLocationsConnectionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sets the credential for the specified connection. */
 export const updateCredentialProjectsLocationsConnections: API.OperationMethod<
   UpdateCredentialProjectsLocationsConnectionsRequest,
@@ -576,4 +736,3 @@ export const updateCredentialProjectsLocationsConnections: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

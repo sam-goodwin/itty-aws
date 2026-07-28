@@ -13,61 +13,70 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
-export type CapacityCommitmentStateEnum = "STATE_UNSPECIFIED" | "PENDING" | "ACTIVE" | "FAILED";
+export type CapacityCommitmentStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "PENDING"
+  | "ACTIVE"
+  | "FAILED";
 export const CapacityCommitmentStateEnum = /*@__PURE__*/ S.String;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -79,20 +88,44 @@ export interface Status {
   details?: DocumentMapList;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(S.Number),
-  "message": S.optional(S.String),
-  "details": S.optional(DocumentMapList),
-}),
+  S.Struct({
+    code: S.optional(S.Number),
+    message: S.optional(S.String),
+    details: S.optional(DocumentMapList),
+  }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
-export type CapacityCommitmentPlanEnum = "COMMITMENT_PLAN_UNSPECIFIED" | "FLEX" | "FLEX_FLAT_RATE" | "TRIAL" | "MONTHLY" | "MONTHLY_FLAT_RATE" | "ANNUAL" | "ANNUAL_FLAT_RATE" | "THREE_YEAR" | "NONE";
+export type CapacityCommitmentPlanEnum =
+  | "COMMITMENT_PLAN_UNSPECIFIED"
+  | "FLEX"
+  | "FLEX_FLAT_RATE"
+  | "TRIAL"
+  | "MONTHLY"
+  | "MONTHLY_FLAT_RATE"
+  | "ANNUAL"
+  | "ANNUAL_FLAT_RATE"
+  | "THREE_YEAR"
+  | "NONE";
 export const CapacityCommitmentPlanEnum = /*@__PURE__*/ S.String;
 
-export type CapacityCommitmentRenewalPlanEnum = "COMMITMENT_PLAN_UNSPECIFIED" | "FLEX" | "FLEX_FLAT_RATE" | "TRIAL" | "MONTHLY" | "MONTHLY_FLAT_RATE" | "ANNUAL" | "ANNUAL_FLAT_RATE" | "THREE_YEAR" | "NONE";
+export type CapacityCommitmentRenewalPlanEnum =
+  | "COMMITMENT_PLAN_UNSPECIFIED"
+  | "FLEX"
+  | "FLEX_FLAT_RATE"
+  | "TRIAL"
+  | "MONTHLY"
+  | "MONTHLY_FLAT_RATE"
+  | "ANNUAL"
+  | "ANNUAL_FLAT_RATE"
+  | "THREE_YEAR"
+  | "NONE";
 export const CapacityCommitmentRenewalPlanEnum = /*@__PURE__*/ S.String;
 
-export type CapacityCommitmentEditionEnum = "EDITION_UNSPECIFIED" | "STANDARD" | "ENTERPRISE" | "ENTERPRISE_PLUS";
+export type CapacityCommitmentEditionEnum =
+  | "EDITION_UNSPECIFIED"
+  | "STANDARD"
+  | "ENTERPRISE"
+  | "ENTERPRISE_PLUS";
 export const CapacityCommitmentEditionEnum = /*@__PURE__*/ S.String;
 
 /** Capacity commitment is a way to purchase compute capacity for BigQuery jobs (in the form of slots) with some committed period of usage. Annual commitments renew by default. Commitments can be removed after their commitment end time passes. In order to remove annual commitment, its plan needs to be changed to monthly or flex first. A capacity commitment resource exists as a child resource of the admin project. */
@@ -121,20 +154,22 @@ export interface CapacityCommitment {
   edition?: CapacityCommitmentEditionEnum;
 }
 export const CapacityCommitment = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "state": S.optional(CapacityCommitmentStateEnum),
-  "failureStatus": S.optional(Status),
-  "plan": S.optional(CapacityCommitmentPlanEnum),
-  "commitmentEndTime": S.optional(S.String),
-  "renewalPlan": S.optional(CapacityCommitmentRenewalPlanEnum),
-  "multiRegionAuxiliary": S.optional(S.Boolean),
-  "name": S.optional(S.String),
-  "slotCount": S.optional(S.String),
-  "commitmentStartTime": S.optional(S.String),
-  "isFlatRate": S.optional(S.Boolean),
-  "edition": S.optional(CapacityCommitmentEditionEnum),
-}),
-).annotate({ identifier: "CapacityCommitment" }) as any as S.Schema<CapacityCommitment>;
+  S.Struct({
+    state: S.optional(CapacityCommitmentStateEnum),
+    failureStatus: S.optional(Status),
+    plan: S.optional(CapacityCommitmentPlanEnum),
+    commitmentEndTime: S.optional(S.String),
+    renewalPlan: S.optional(CapacityCommitmentRenewalPlanEnum),
+    multiRegionAuxiliary: S.optional(S.Boolean),
+    name: S.optional(S.String),
+    slotCount: S.optional(S.String),
+    commitmentStartTime: S.optional(S.String),
+    isFlatRate: S.optional(S.Boolean),
+    edition: S.optional(CapacityCommitmentEditionEnum),
+  }),
+).annotate({
+  identifier: "CapacityCommitment",
+}) as any as S.Schema<CapacityCommitment>;
 
 export interface CreateProjectsLocationsCapacityCommitmentsRequest {
   /** If true, fail the request if another project in the organization has a capacity commitment. */
@@ -146,14 +181,23 @@ export interface CreateProjectsLocationsCapacityCommitmentsRequest {
   /** Request body */
   body?: CapacityCommitment;
 }
-export const CreateProjectsLocationsCapacityCommitmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "enforceSingleAdminProjectPerOrg": S.optional(S.Boolean.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "capacityCommitmentId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(CapacityCommitment.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/capacityCommitments","baseUrl":"https://bigqueryreservation.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsCapacityCommitmentsRequest" }) as any as S.Schema<CreateProjectsLocationsCapacityCommitmentsRequest>;
+export const CreateProjectsLocationsCapacityCommitmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enforceSingleAdminProjectPerOrg: S.optional(S.Boolean.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      capacityCommitmentId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(CapacityCommitment.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/capacityCommitments",
+        baseUrl: "https://bigqueryreservation.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsCapacityCommitmentsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsCapacityCommitmentsRequest>;
 
 /** A reservation group is a container for reservations. */
 export interface ReservationGroup {
@@ -163,11 +207,13 @@ export interface ReservationGroup {
   name?: string;
 }
 export const ReservationGroup = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parentGroup": S.optional(S.String),
-  "name": S.optional(S.String),
-}),
-).annotate({ identifier: "ReservationGroup" }) as any as S.Schema<ReservationGroup>;
+  S.Struct({
+    parentGroup: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ReservationGroup",
+}) as any as S.Schema<ReservationGroup>;
 
 export interface CreateProjectsLocationsReservationGroupsRequest {
   /** Required. Project, location. E.g., `projects/myproject/locations/US` */
@@ -177,13 +223,22 @@ export interface CreateProjectsLocationsReservationGroupsRequest {
   /** Request body */
   body?: ReservationGroup;
 }
-export const CreateProjectsLocationsReservationGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "reservationGroupId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(ReservationGroup.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/reservationGroups","baseUrl":"https://bigqueryreservation.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsReservationGroupsRequest" }) as any as S.Schema<CreateProjectsLocationsReservationGroupsRequest>;
+export const CreateProjectsLocationsReservationGroupsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      reservationGroupId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(ReservationGroup.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/reservationGroups",
+        baseUrl: "https://bigqueryreservation.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsReservationGroupsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsReservationGroupsRequest>;
 
 /** Auto scaling settings. */
 export interface Autoscale {
@@ -193,16 +248,24 @@ export interface Autoscale {
   maxSlots?: string;
 }
 export const Autoscale = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "currentSlots": S.optional(S.String),
-  "maxSlots": S.optional(S.String),
-}),
+  S.Struct({
+    currentSlots: S.optional(S.String),
+    maxSlots: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Autoscale" }) as any as S.Schema<Autoscale>;
 
-export type ReservationScalingModeEnum = "SCALING_MODE_UNSPECIFIED" | "AUTOSCALE_ONLY" | "IDLE_SLOTS_ONLY" | "ALL_SLOTS";
+export type ReservationScalingModeEnum =
+  | "SCALING_MODE_UNSPECIFIED"
+  | "AUTOSCALE_ONLY"
+  | "IDLE_SLOTS_ONLY"
+  | "ALL_SLOTS";
 export const ReservationScalingModeEnum = /*@__PURE__*/ S.String;
 
-export type ReservationEditionEnum = "EDITION_UNSPECIFIED" | "STANDARD" | "ENTERPRISE" | "ENTERPRISE_PLUS";
+export type ReservationEditionEnum =
+  | "EDITION_UNSPECIFIED"
+  | "STANDARD"
+  | "ENTERPRISE"
+  | "ENTERPRISE_PLUS";
 export const ReservationEditionEnum = /*@__PURE__*/ S.String;
 
 /** Disaster Recovery(DR) replication status of the reservation. */
@@ -217,16 +280,21 @@ export interface ReplicationStatus {
   error?: Status;
 }
 export const ReplicationStatus = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "lastErrorTime": S.optional(S.String),
-  "softFailoverStartTime": S.optional(S.String),
-  "lastReplicationTime": S.optional(S.String),
-  "error": S.optional(Status),
-}),
-).annotate({ identifier: "ReplicationStatus" }) as any as S.Schema<ReplicationStatus>;
+  S.Struct({
+    lastErrorTime: S.optional(S.String),
+    softFailoverStartTime: S.optional(S.String),
+    lastReplicationTime: S.optional(S.String),
+    error: S.optional(Status),
+  }),
+).annotate({
+  identifier: "ReplicationStatus",
+}) as any as S.Schema<ReplicationStatus>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
 /** The scheduling policy controls how a reservation's resources are distributed. */
 export interface SchedulingPolicy {
@@ -236,11 +304,13 @@ export interface SchedulingPolicy {
   maxSlots?: string;
 }
 export const SchedulingPolicy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "concurrency": S.optional(S.String),
-  "maxSlots": S.optional(S.String),
-}),
-).annotate({ identifier: "SchedulingPolicy" }) as any as S.Schema<SchedulingPolicy>;
+  S.Struct({
+    concurrency: S.optional(S.String),
+    maxSlots: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SchedulingPolicy",
+}) as any as S.Schema<SchedulingPolicy>;
 
 /** A reservation is a mechanism used to guarantee slots to users. */
 export interface Reservation {
@@ -282,26 +352,26 @@ export interface Reservation {
   ignoreIdleSlots?: boolean;
 }
 export const Reservation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateTime": S.optional(S.String),
-  "autoscale": S.optional(Autoscale),
-  "slotCapacity": S.optional(S.String),
-  "name": S.optional(S.String),
-  "scalingMode": S.optional(ReservationScalingModeEnum),
-  "multiRegionAuxiliary": S.optional(S.Boolean),
-  "edition": S.optional(ReservationEditionEnum),
-  "replicationStatus": S.optional(ReplicationStatus),
-  "creationTime": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "primaryLocation": S.optional(S.String),
-  "originalPrimaryLocation": S.optional(S.String),
-  "secondaryLocation": S.optional(S.String),
-  "concurrency": S.optional(S.String),
-  "reservationGroup": S.optional(S.String),
-  "schedulingPolicy": S.optional(SchedulingPolicy),
-  "maxSlots": S.optional(S.String),
-  "ignoreIdleSlots": S.optional(S.Boolean),
-}),
+  S.Struct({
+    updateTime: S.optional(S.String),
+    autoscale: S.optional(Autoscale),
+    slotCapacity: S.optional(S.String),
+    name: S.optional(S.String),
+    scalingMode: S.optional(ReservationScalingModeEnum),
+    multiRegionAuxiliary: S.optional(S.Boolean),
+    edition: S.optional(ReservationEditionEnum),
+    replicationStatus: S.optional(ReplicationStatus),
+    creationTime: S.optional(S.String),
+    labels: S.optional(StringMap),
+    primaryLocation: S.optional(S.String),
+    originalPrimaryLocation: S.optional(S.String),
+    secondaryLocation: S.optional(S.String),
+    concurrency: S.optional(S.String),
+    reservationGroup: S.optional(S.String),
+    schedulingPolicy: S.optional(SchedulingPolicy),
+    maxSlots: S.optional(S.String),
+    ignoreIdleSlots: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "Reservation" }) as any as S.Schema<Reservation>;
 
 export interface CreateProjectsLocationsReservationsRequest {
@@ -312,15 +382,33 @@ export interface CreateProjectsLocationsReservationsRequest {
   /** Request body */
   body?: Reservation;
 }
-export const CreateProjectsLocationsReservationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "reservationId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Reservation.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/reservations","baseUrl":"https://bigqueryreservation.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsReservationsRequest" }) as any as S.Schema<CreateProjectsLocationsReservationsRequest>;
+export const CreateProjectsLocationsReservationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      reservationId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Reservation.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/reservations",
+        baseUrl: "https://bigqueryreservation.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsReservationsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsReservationsRequest>;
 
-export type AssignmentJobTypeEnum = "JOB_TYPE_UNSPECIFIED" | "PIPELINE" | "QUERY" | "ML_EXTERNAL" | "BACKGROUND" | "CONTINUOUS" | "BACKGROUND_CHANGE_DATA_CAPTURE" | "BACKGROUND_COLUMN_METADATA_INDEX" | "BACKGROUND_SEARCH_INDEX_REFRESH";
+export type AssignmentJobTypeEnum =
+  | "JOB_TYPE_UNSPECIFIED"
+  | "PIPELINE"
+  | "QUERY"
+  | "ML_EXTERNAL"
+  | "BACKGROUND"
+  | "CONTINUOUS"
+  | "BACKGROUND_CHANGE_DATA_CAPTURE"
+  | "BACKGROUND_COLUMN_METADATA_INDEX"
+  | "BACKGROUND_SEARCH_INDEX_REFRESH";
 export const AssignmentJobTypeEnum = /*@__PURE__*/ S.String;
 
 export type AssignmentStateEnum = "STATE_UNSPECIFIED" | "PENDING" | "ACTIVE";
@@ -344,15 +432,15 @@ export interface Assignment {
   state?: AssignmentStateEnum;
 }
 export const Assignment = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "principal": S.optional(S.String),
-  "enableGeminiInBigquery": S.optional(S.Boolean),
-  "schedulingPolicy": S.optional(SchedulingPolicy),
-  "jobType": S.optional(AssignmentJobTypeEnum),
-  "assignee": S.optional(S.String),
-  "state": S.optional(AssignmentStateEnum),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    principal: S.optional(S.String),
+    enableGeminiInBigquery: S.optional(S.Boolean),
+    schedulingPolicy: S.optional(SchedulingPolicy),
+    jobType: S.optional(AssignmentJobTypeEnum),
+    assignee: S.optional(S.String),
+    state: S.optional(AssignmentStateEnum),
+  }),
 ).annotate({ identifier: "Assignment" }) as any as S.Schema<Assignment>;
 
 export interface CreateProjectsLocationsReservationsAssignmentsRequest {
@@ -363,13 +451,22 @@ export interface CreateProjectsLocationsReservationsAssignmentsRequest {
   /** Request body */
   body?: Assignment;
 }
-export const CreateProjectsLocationsReservationsAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "assignmentId": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(Assignment.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/assignments","baseUrl":"https://bigqueryreservation.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsReservationsAssignmentsRequest" }) as any as S.Schema<CreateProjectsLocationsReservationsAssignmentsRequest>;
+export const CreateProjectsLocationsReservationsAssignmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      assignmentId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(Assignment.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/assignments",
+        baseUrl: "https://bigqueryreservation.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsReservationsAssignmentsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsReservationsAssignmentsRequest>;
 
 export interface DeleteProjectsLocationsCapacityCommitmentsRequest {
   /** Required. Resource name of the capacity commitment to delete. E.g., `projects/myproject/locations/US/capacityCommitments/123` */
@@ -377,51 +474,91 @@ export interface DeleteProjectsLocationsCapacityCommitmentsRequest {
   /** Can be used to force delete commitments even if assignments exist. Deleting commitments with assignments may cause queries to fail if they no longer have access to slots. */
   force?: boolean;
 }
-export const DeleteProjectsLocationsCapacityCommitmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "force": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://bigqueryreservation.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsCapacityCommitmentsRequest" }) as any as S.Schema<DeleteProjectsLocationsCapacityCommitmentsRequest>;
+export const DeleteProjectsLocationsCapacityCommitmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      force: S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://bigqueryreservation.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsCapacityCommitmentsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsCapacityCommitmentsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 export interface DeleteProjectsLocationsReservationGroupsRequest {
   /** Required. Resource name of the reservation group to retrieve. E.g., `projects/myproject/locations/US/reservationGroups/team1-prod` */
   name: string;
 }
-export const DeleteProjectsLocationsReservationGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://bigqueryreservation.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsReservationGroupsRequest" }) as any as S.Schema<DeleteProjectsLocationsReservationGroupsRequest>;
+export const DeleteProjectsLocationsReservationGroupsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://bigqueryreservation.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsReservationGroupsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsReservationGroupsRequest>;
 
 export interface DeleteProjectsLocationsReservationsRequest {
   /** Required. Resource name of the reservation to retrieve. E.g., `projects/myproject/locations/US/reservations/team1-prod` */
   name: string;
 }
-export const DeleteProjectsLocationsReservationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://bigqueryreservation.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsReservationsRequest" }) as any as S.Schema<DeleteProjectsLocationsReservationsRequest>;
+export const DeleteProjectsLocationsReservationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://bigqueryreservation.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsReservationsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsReservationsRequest>;
 
 export interface DeleteProjectsLocationsReservationsAssignmentsRequest {
   /** Required. Name of the resource, e.g. `projects/myproject/locations/US/reservations/team1-prod/assignments/123` */
   name: string;
 }
-export const DeleteProjectsLocationsReservationsAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://bigqueryreservation.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsReservationsAssignmentsRequest" }) as any as S.Schema<DeleteProjectsLocationsReservationsAssignmentsRequest>;
+export const DeleteProjectsLocationsReservationsAssignmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://bigqueryreservation.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsReservationsAssignmentsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsReservationsAssignmentsRequest>;
 
-export type FailoverReservationRequestFailoverModeEnum = "FAILOVER_MODE_UNSPECIFIED" | "SOFT" | "HARD";
-export const FailoverReservationRequestFailoverModeEnum = /*@__PURE__*/ S.String;
+export type FailoverReservationRequestFailoverModeEnum =
+  | "FAILOVER_MODE_UNSPECIFIED"
+  | "SOFT"
+  | "HARD";
+export const FailoverReservationRequestFailoverModeEnum =
+  /*@__PURE__*/ S.String;
 
 /** The request for ReservationService.FailoverReservation. */
 export interface FailoverReservationRequest {
@@ -429,10 +566,12 @@ export interface FailoverReservationRequest {
   failoverMode?: FailoverReservationRequestFailoverModeEnum | (string & {});
 }
 export const FailoverReservationRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "failoverMode": S.optional(FailoverReservationRequestFailoverModeEnum),
-}),
-).annotate({ identifier: "FailoverReservationRequest" }) as any as S.Schema<FailoverReservationRequest>;
+  S.Struct({
+    failoverMode: S.optional(FailoverReservationRequestFailoverModeEnum),
+  }),
+).annotate({
+  identifier: "FailoverReservationRequest",
+}) as any as S.Schema<FailoverReservationRequest>;
 
 export interface FailoverReservationProjectsLocationsReservationsRequest {
   /** Required. Resource name of the reservation to failover. E.g., `projects/myproject/locations/US/reservations/team1-prod` */
@@ -440,22 +579,40 @@ export interface FailoverReservationProjectsLocationsReservationsRequest {
   /** Request body */
   body?: FailoverReservationRequest;
 }
-export const FailoverReservationProjectsLocationsReservationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(FailoverReservationRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:failoverReservation","baseUrl":"https://bigqueryreservation.googleapis.com/"})),
-).annotate({ identifier: "FailoverReservationProjectsLocationsReservationsRequest" }) as any as S.Schema<FailoverReservationProjectsLocationsReservationsRequest>;
+export const FailoverReservationProjectsLocationsReservationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(FailoverReservationRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:failoverReservation",
+        baseUrl: "https://bigqueryreservation.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "FailoverReservationProjectsLocationsReservationsRequest",
+  }) as any as S.Schema<FailoverReservationProjectsLocationsReservationsRequest>;
 
 export interface GetBiReservationProjectsLocationsRequest {
   /** Required. Name of the requested reservation, for example: `projects/{project_id}/locations/{location_id}/biReservation` */
   name: string;
 }
-export const GetBiReservationProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://bigqueryreservation.googleapis.com/"})),
-).annotate({ identifier: "GetBiReservationProjectsLocationsRequest" }) as any as S.Schema<GetBiReservationProjectsLocationsRequest>;
+export const GetBiReservationProjectsLocationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://bigqueryreservation.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetBiReservationProjectsLocationsRequest",
+}) as any as S.Schema<GetBiReservationProjectsLocationsRequest>;
 
 /** Fully qualified reference to BigQuery table. Internally stored as google.cloud.bi.v1.BqTableReference. */
 export interface TableReference {
@@ -467,15 +624,17 @@ export interface TableReference {
   tableId?: string;
 }
 export const TableReference = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectId": S.optional(S.String),
-  "datasetId": S.optional(S.String),
-  "tableId": S.optional(S.String),
-}),
+  S.Struct({
+    projectId: S.optional(S.String),
+    datasetId: S.optional(S.String),
+    tableId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "TableReference" }) as any as S.Schema<TableReference>;
 
 export type TableReferenceList = ReadonlyArray<TableReference>;
-export const TableReferenceList = /*@__PURE__*/ S.Array(TableReference) as any as S.Schema<TableReferenceList>;
+export const TableReferenceList = /*@__PURE__*/ S.Array(
+  TableReference,
+) as any as S.Schema<TableReferenceList>;
 
 /** Represents a BI Reservation. */
 export interface BiReservation {
@@ -489,12 +648,12 @@ export interface BiReservation {
   updateTime?: string;
 }
 export const BiReservation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "size": S.optional(S.String),
-  "name": S.optional(S.String),
-  "preferredTables": S.optional(TableReferenceList),
-  "updateTime": S.optional(S.String),
-}),
+  S.Struct({
+    size: S.optional(S.String),
+    name: S.optional(S.String),
+    preferredTables: S.optional(TableReferenceList),
+    updateTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "BiReservation" }) as any as S.Schema<BiReservation>;
 
 export interface GetIamPolicyProjectsLocationsReservationsRequest {
@@ -503,17 +662,32 @@ export interface GetIamPolicyProjectsLocationsReservationsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-export const GetIamPolicyProjectsLocationsReservationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-  "resource": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://bigqueryreservation.googleapis.com/"})),
-).annotate({ identifier: "GetIamPolicyProjectsLocationsReservationsRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsReservationsRequest>;
+export const GetIamPolicyProjectsLocationsReservationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+      resource: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+resource}:getIamPolicy",
+        baseUrl: "https://bigqueryreservation.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetIamPolicyProjectsLocationsReservationsRequest",
+  }) as any as S.Schema<GetIamPolicyProjectsLocationsReservationsRequest>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
-export type AuditLogConfigLogTypeEnum = "LOG_TYPE_UNSPECIFIED" | "ADMIN_READ" | "DATA_WRITE" | "DATA_READ";
+export type AuditLogConfigLogTypeEnum =
+  | "LOG_TYPE_UNSPECIFIED"
+  | "ADMIN_READ"
+  | "DATA_WRITE"
+  | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -524,14 +698,16 @@ export interface AuditLogConfig {
   logType?: AuditLogConfigLogTypeEnum;
 }
 export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "exemptedMembers": S.optional(StringList),
-  "logType": S.optional(AuditLogConfigLogTypeEnum),
-}),
+  S.Struct({
+    exemptedMembers: S.optional(StringList),
+    logType: S.optional(AuditLogConfigLogTypeEnum),
+  }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(AuditLogConfig) as any as S.Schema<AuditLogConfigList>;
+export const AuditLogConfigList = /*@__PURE__*/ S.Array(
+  AuditLogConfig,
+) as any as S.Schema<AuditLogConfigList>;
 
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface AuditConfig {
@@ -541,14 +717,16 @@ export interface AuditConfig {
   auditLogConfigs?: AuditLogConfigList;
 }
 export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "service": S.optional(S.String),
-  "auditLogConfigs": S.optional(AuditLogConfigList),
-}),
+  S.Struct({
+    service: S.optional(S.String),
+    auditLogConfigs: S.optional(AuditLogConfigList),
+  }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = ReadonlyArray<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
+export const AuditConfigList = /*@__PURE__*/ S.Array(
+  AuditConfig,
+) as any as S.Schema<AuditConfigList>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -562,12 +740,12 @@ export interface Expr {
   location?: string;
 }
 export const Expr = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "expression": S.optional(S.String),
-  "title": S.optional(S.String),
-  "description": S.optional(S.String),
-  "location": S.optional(S.String),
-}),
+  S.Struct({
+    expression: S.optional(S.String),
+    title: S.optional(S.String),
+    description: S.optional(S.String),
+    location: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
 /** Associates `members`, or principals, with a `role`. */
@@ -580,15 +758,17 @@ export interface Binding {
   condition?: Expr;
 }
 export const Binding = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "members": S.optional(StringList),
-  "role": S.optional(S.String),
-  "condition": S.optional(Expr),
-}),
+  S.Struct({
+    members: S.optional(StringList),
+    role: S.optional(S.String),
+    condition: S.optional(Expr),
+  }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = ReadonlyArray<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+export const BindingList = /*@__PURE__*/ S.Array(
+  Binding,
+) as any as S.Schema<BindingList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -602,12 +782,12 @@ export interface Policy {
   etag?: string;
 }
 export const Policy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "version": S.optional(S.Number),
-  "auditConfigs": S.optional(AuditConfigList),
-  "bindings": S.optional(BindingList),
-  "etag": S.optional(S.String),
-}),
+  S.Struct({
+    version: S.optional(S.Number),
+    auditConfigs: S.optional(AuditConfigList),
+    bindings: S.optional(BindingList),
+    etag: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
 
 export interface GetIamPolicyProjectsLocationsReservationsAssignmentsRequest {
@@ -616,42 +796,78 @@ export interface GetIamPolicyProjectsLocationsReservationsAssignmentsRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsReservationsAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://bigqueryreservation.googleapis.com/"})),
-).annotate({ identifier: "GetIamPolicyProjectsLocationsReservationsAssignmentsRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsReservationsAssignmentsRequest>;
+export const GetIamPolicyProjectsLocationsReservationsAssignmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+resource}:getIamPolicy",
+        baseUrl: "https://bigqueryreservation.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetIamPolicyProjectsLocationsReservationsAssignmentsRequest",
+  }) as any as S.Schema<GetIamPolicyProjectsLocationsReservationsAssignmentsRequest>;
 
 export interface GetProjectsLocationsCapacityCommitmentsRequest {
   /** Required. Resource name of the capacity commitment to retrieve. E.g., `projects/myproject/locations/US/capacityCommitments/123` */
   name: string;
 }
-export const GetProjectsLocationsCapacityCommitmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://bigqueryreservation.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsCapacityCommitmentsRequest" }) as any as S.Schema<GetProjectsLocationsCapacityCommitmentsRequest>;
+export const GetProjectsLocationsCapacityCommitmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://bigqueryreservation.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsCapacityCommitmentsRequest",
+  }) as any as S.Schema<GetProjectsLocationsCapacityCommitmentsRequest>;
 
 export interface GetProjectsLocationsReservationGroupsRequest {
   /** Required. Resource name of the reservation group to retrieve. E.g., `projects/myproject/locations/US/reservationGroups/team1-prod` */
   name: string;
 }
-export const GetProjectsLocationsReservationGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://bigqueryreservation.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsReservationGroupsRequest" }) as any as S.Schema<GetProjectsLocationsReservationGroupsRequest>;
+export const GetProjectsLocationsReservationGroupsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://bigqueryreservation.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsReservationGroupsRequest",
+  }) as any as S.Schema<GetProjectsLocationsReservationGroupsRequest>;
 
 export interface GetProjectsLocationsReservationsRequest {
   /** Required. Resource name of the reservation to retrieve. E.g., `projects/myproject/locations/US/reservations/team1-prod` */
   name: string;
 }
-export const GetProjectsLocationsReservationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://bigqueryreservation.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsReservationsRequest" }) as any as S.Schema<GetProjectsLocationsReservationsRequest>;
+export const GetProjectsLocationsReservationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://bigqueryreservation.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsReservationsRequest",
+}) as any as S.Schema<GetProjectsLocationsReservationsRequest>;
 
 export interface ListProjectsLocationsCapacityCommitmentsRequest {
   /** Required. Resource name of the parent reservation. E.g., `projects/myproject/locations/US` */
@@ -661,16 +877,27 @@ export interface ListProjectsLocationsCapacityCommitmentsRequest {
   /** The maximum number of items to return. */
   pageSize?: number;
 }
-export const ListProjectsLocationsCapacityCommitmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/capacityCommitments","baseUrl":"https://bigqueryreservation.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsCapacityCommitmentsRequest" }) as any as S.Schema<ListProjectsLocationsCapacityCommitmentsRequest>;
+export const ListProjectsLocationsCapacityCommitmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/capacityCommitments",
+        baseUrl: "https://bigqueryreservation.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsCapacityCommitmentsRequest",
+  }) as any as S.Schema<ListProjectsLocationsCapacityCommitmentsRequest>;
 
 export type CapacityCommitmentList = ReadonlyArray<CapacityCommitment>;
-export const CapacityCommitmentList = /*@__PURE__*/ S.Array(CapacityCommitment) as any as S.Schema<CapacityCommitmentList>;
+export const CapacityCommitmentList = /*@__PURE__*/ S.Array(
+  CapacityCommitment,
+) as any as S.Schema<CapacityCommitmentList>;
 
 /** The response for ReservationService.ListCapacityCommitments. */
 export interface ListCapacityCommitmentsResponse {
@@ -680,11 +907,13 @@ export interface ListCapacityCommitmentsResponse {
   nextPageToken?: string;
 }
 export const ListCapacityCommitmentsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "capacityCommitments": S.optional(CapacityCommitmentList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListCapacityCommitmentsResponse" }) as any as S.Schema<ListCapacityCommitmentsResponse>;
+  S.Struct({
+    capacityCommitments: S.optional(CapacityCommitmentList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListCapacityCommitmentsResponse",
+}) as any as S.Schema<ListCapacityCommitmentsResponse>;
 
 export interface ListProjectsLocationsReservationGroupsRequest {
   /** Required. The parent resource name containing project and location, e.g.: `projects/myproject/locations/US` */
@@ -694,16 +923,27 @@ export interface ListProjectsLocationsReservationGroupsRequest {
   /** The maximum number of items to return per page. */
   pageSize?: number;
 }
-export const ListProjectsLocationsReservationGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/reservationGroups","baseUrl":"https://bigqueryreservation.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsReservationGroupsRequest" }) as any as S.Schema<ListProjectsLocationsReservationGroupsRequest>;
+export const ListProjectsLocationsReservationGroupsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/reservationGroups",
+        baseUrl: "https://bigqueryreservation.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsReservationGroupsRequest",
+  }) as any as S.Schema<ListProjectsLocationsReservationGroupsRequest>;
 
 export type ReservationGroupList = ReadonlyArray<ReservationGroup>;
-export const ReservationGroupList = /*@__PURE__*/ S.Array(ReservationGroup) as any as S.Schema<ReservationGroupList>;
+export const ReservationGroupList = /*@__PURE__*/ S.Array(
+  ReservationGroup,
+) as any as S.Schema<ReservationGroupList>;
 
 /** The response for ReservationService.ListReservationGroups. */
 export interface ListReservationGroupsResponse {
@@ -713,11 +953,13 @@ export interface ListReservationGroupsResponse {
   reservationGroups?: ReservationGroupList;
 }
 export const ListReservationGroupsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "reservationGroups": S.optional(ReservationGroupList),
-}),
-).annotate({ identifier: "ListReservationGroupsResponse" }) as any as S.Schema<ListReservationGroupsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    reservationGroups: S.optional(ReservationGroupList),
+  }),
+).annotate({
+  identifier: "ListReservationGroupsResponse",
+}) as any as S.Schema<ListReservationGroupsResponse>;
 
 export interface ListProjectsLocationsReservationsRequest {
   /** Required. The parent resource name containing project and location, e.g.: `projects/myproject/locations/US` */
@@ -727,16 +969,27 @@ export interface ListProjectsLocationsReservationsRequest {
   /** The maximum number of items to return per page. */
   pageSize?: number;
 }
-export const ListProjectsLocationsReservationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/reservations","baseUrl":"https://bigqueryreservation.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsReservationsRequest" }) as any as S.Schema<ListProjectsLocationsReservationsRequest>;
+export const ListProjectsLocationsReservationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/reservations",
+        baseUrl: "https://bigqueryreservation.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsReservationsRequest",
+}) as any as S.Schema<ListProjectsLocationsReservationsRequest>;
 
 export type ReservationList = ReadonlyArray<Reservation>;
-export const ReservationList = /*@__PURE__*/ S.Array(Reservation) as any as S.Schema<ReservationList>;
+export const ReservationList = /*@__PURE__*/ S.Array(
+  Reservation,
+) as any as S.Schema<ReservationList>;
 
 /** The response for ReservationService.ListReservations. */
 export interface ListReservationsResponse {
@@ -746,11 +999,13 @@ export interface ListReservationsResponse {
   nextPageToken?: string;
 }
 export const ListReservationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "reservations": S.optional(ReservationList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListReservationsResponse" }) as any as S.Schema<ListReservationsResponse>;
+  S.Struct({
+    reservations: S.optional(ReservationList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListReservationsResponse",
+}) as any as S.Schema<ListReservationsResponse>;
 
 export interface ListProjectsLocationsReservationsAssignmentsRequest {
   /** Required. The parent resource name e.g.: `projects/myproject/locations/US/reservations/team1-prod` Or: `projects/myproject/locations/US/reservations/-` */
@@ -760,16 +1015,27 @@ export interface ListProjectsLocationsReservationsAssignmentsRequest {
   /** The maximum number of items to return per page. */
   pageSize?: number;
 }
-export const ListProjectsLocationsReservationsAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/assignments","baseUrl":"https://bigqueryreservation.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsReservationsAssignmentsRequest" }) as any as S.Schema<ListProjectsLocationsReservationsAssignmentsRequest>;
+export const ListProjectsLocationsReservationsAssignmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/assignments",
+        baseUrl: "https://bigqueryreservation.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsReservationsAssignmentsRequest",
+  }) as any as S.Schema<ListProjectsLocationsReservationsAssignmentsRequest>;
 
 export type AssignmentList = ReadonlyArray<Assignment>;
-export const AssignmentList = /*@__PURE__*/ S.Array(Assignment) as any as S.Schema<AssignmentList>;
+export const AssignmentList = /*@__PURE__*/ S.Array(
+  Assignment,
+) as any as S.Schema<AssignmentList>;
 
 /** The response for ReservationService.ListAssignments. */
 export interface ListAssignmentsResponse {
@@ -779,11 +1045,13 @@ export interface ListAssignmentsResponse {
   assignments?: AssignmentList;
 }
 export const ListAssignmentsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "assignments": S.optional(AssignmentList),
-}),
-).annotate({ identifier: "ListAssignmentsResponse" }) as any as S.Schema<ListAssignmentsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    assignments: S.optional(AssignmentList),
+  }),
+).annotate({
+  identifier: "ListAssignmentsResponse",
+}) as any as S.Schema<ListAssignmentsResponse>;
 
 /** The request for ReservationService.MergeCapacityCommitments. */
 export interface MergeCapacityCommitmentsRequest {
@@ -793,11 +1061,13 @@ export interface MergeCapacityCommitmentsRequest {
   capacityCommitmentId?: string;
 }
 export const MergeCapacityCommitmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "capacityCommitmentIds": S.optional(StringList),
-  "capacityCommitmentId": S.optional(S.String),
-}),
-).annotate({ identifier: "MergeCapacityCommitmentsRequest" }) as any as S.Schema<MergeCapacityCommitmentsRequest>;
+  S.Struct({
+    capacityCommitmentIds: S.optional(StringList),
+    capacityCommitmentId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MergeCapacityCommitmentsRequest",
+}) as any as S.Schema<MergeCapacityCommitmentsRequest>;
 
 export interface MergeProjectsLocationsCapacityCommitmentsRequest {
   /** Parent resource that identifies admin project and location e.g., `projects/myproject/locations/us` */
@@ -805,12 +1075,21 @@ export interface MergeProjectsLocationsCapacityCommitmentsRequest {
   /** Request body */
   body?: MergeCapacityCommitmentsRequest;
 }
-export const MergeProjectsLocationsCapacityCommitmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(MergeCapacityCommitmentsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/capacityCommitments:merge","baseUrl":"https://bigqueryreservation.googleapis.com/"})),
-).annotate({ identifier: "MergeProjectsLocationsCapacityCommitmentsRequest" }) as any as S.Schema<MergeProjectsLocationsCapacityCommitmentsRequest>;
+export const MergeProjectsLocationsCapacityCommitmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(MergeCapacityCommitmentsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/capacityCommitments:merge",
+        baseUrl: "https://bigqueryreservation.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "MergeProjectsLocationsCapacityCommitmentsRequest",
+  }) as any as S.Schema<MergeProjectsLocationsCapacityCommitmentsRequest>;
 
 /** The request for ReservationService.MoveAssignment. **Note**: "bigquery.reservationAssignments.create" permission is required on the destination_id. **Note**: "bigquery.reservationAssignments.create" and "bigquery.reservationAssignments.delete" permission are required on the related assignee. */
 export interface MoveAssignmentRequest {
@@ -820,11 +1099,13 @@ export interface MoveAssignmentRequest {
   destinationId?: string;
 }
 export const MoveAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "assignmentId": S.optional(S.String),
-  "destinationId": S.optional(S.String),
-}),
-).annotate({ identifier: "MoveAssignmentRequest" }) as any as S.Schema<MoveAssignmentRequest>;
+  S.Struct({
+    assignmentId: S.optional(S.String),
+    destinationId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MoveAssignmentRequest",
+}) as any as S.Schema<MoveAssignmentRequest>;
 
 export interface MoveProjectsLocationsReservationsAssignmentsRequest {
   /** Required. The resource name of the assignment, e.g. `projects/myproject/locations/US/reservations/team1-prod/assignments/123` */
@@ -832,12 +1113,21 @@ export interface MoveProjectsLocationsReservationsAssignmentsRequest {
   /** Request body */
   body?: MoveAssignmentRequest;
 }
-export const MoveProjectsLocationsReservationsAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(MoveAssignmentRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:move","baseUrl":"https://bigqueryreservation.googleapis.com/"})),
-).annotate({ identifier: "MoveProjectsLocationsReservationsAssignmentsRequest" }) as any as S.Schema<MoveProjectsLocationsReservationsAssignmentsRequest>;
+export const MoveProjectsLocationsReservationsAssignmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(MoveAssignmentRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:move",
+        baseUrl: "https://bigqueryreservation.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "MoveProjectsLocationsReservationsAssignmentsRequest",
+  }) as any as S.Schema<MoveProjectsLocationsReservationsAssignmentsRequest>;
 
 export interface PatchProjectsLocationsCapacityCommitmentsRequest {
   /** Standard field mask for the set of fields to be updated. */
@@ -847,13 +1137,22 @@ export interface PatchProjectsLocationsCapacityCommitmentsRequest {
   /** Request body */
   body?: CapacityCommitment;
 }
-export const PatchProjectsLocationsCapacityCommitmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(CapacityCommitment.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://bigqueryreservation.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsCapacityCommitmentsRequest" }) as any as S.Schema<PatchProjectsLocationsCapacityCommitmentsRequest>;
+export const PatchProjectsLocationsCapacityCommitmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      body: S.optional(CapacityCommitment.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://bigqueryreservation.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsCapacityCommitmentsRequest",
+  }) as any as S.Schema<PatchProjectsLocationsCapacityCommitmentsRequest>;
 
 export interface PatchProjectsLocationsReservationGroupsRequest {
   /** Identifier. The resource name of the reservation group, e.g., `projects/*\/locations/*\/reservationGroups/team1-prod`. The reservation_group_id must only contain lower case alphanumeric characters or dashes. It must start with a letter and must not end with a dash. Its maximum length is 64 characters. */
@@ -863,13 +1162,22 @@ export interface PatchProjectsLocationsReservationGroupsRequest {
   /** Request body */
   body?: ReservationGroup;
 }
-export const PatchProjectsLocationsReservationGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(ReservationGroup.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://bigqueryreservation.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsReservationGroupsRequest" }) as any as S.Schema<PatchProjectsLocationsReservationGroupsRequest>;
+export const PatchProjectsLocationsReservationGroupsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(ReservationGroup.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://bigqueryreservation.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsReservationGroupsRequest",
+  }) as any as S.Schema<PatchProjectsLocationsReservationGroupsRequest>;
 
 export interface PatchProjectsLocationsReservationsRequest {
   /** Identifier. The resource name of the reservation, e.g., `projects/*\/locations/*\/reservations/team1-prod`. The reservation_id must only contain lower case alphanumeric characters or dashes. It must start with a letter and must not end with a dash. Its maximum length is 64 characters. */
@@ -879,13 +1187,22 @@ export interface PatchProjectsLocationsReservationsRequest {
   /** Request body */
   body?: Reservation;
 }
-export const PatchProjectsLocationsReservationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Reservation.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://bigqueryreservation.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsReservationsRequest" }) as any as S.Schema<PatchProjectsLocationsReservationsRequest>;
+export const PatchProjectsLocationsReservationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Reservation.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://bigqueryreservation.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsReservationsRequest",
+  }) as any as S.Schema<PatchProjectsLocationsReservationsRequest>;
 
 export interface PatchProjectsLocationsReservationsAssignmentsRequest {
   /** Standard field mask for the set of fields to be updated. */
@@ -895,13 +1212,22 @@ export interface PatchProjectsLocationsReservationsAssignmentsRequest {
   /** Request body */
   body?: Assignment;
 }
-export const PatchProjectsLocationsReservationsAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(Assignment.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://bigqueryreservation.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsReservationsAssignmentsRequest" }) as any as S.Schema<PatchProjectsLocationsReservationsAssignmentsRequest>;
+export const PatchProjectsLocationsReservationsAssignmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      body: S.optional(Assignment.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://bigqueryreservation.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsReservationsAssignmentsRequest",
+  }) as any as S.Schema<PatchProjectsLocationsReservationsAssignmentsRequest>;
 
 export interface SearchAllAssignmentsProjectsLocationsRequest {
   /** Please specify resource name as assignee in the query. Examples: * `assignee=projects/myproject` * `assignee=folders/123` * `assignee=organizations/456` */
@@ -913,14 +1239,23 @@ export interface SearchAllAssignmentsProjectsLocationsRequest {
   /** The next_page_token value returned from a previous List request, if any. */
   pageToken?: string;
 }
-export const SearchAllAssignmentsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "query": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}:searchAllAssignments","baseUrl":"https://bigqueryreservation.googleapis.com/"})),
-).annotate({ identifier: "SearchAllAssignmentsProjectsLocationsRequest" }) as any as S.Schema<SearchAllAssignmentsProjectsLocationsRequest>;
+export const SearchAllAssignmentsProjectsLocationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      query: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}:searchAllAssignments",
+        baseUrl: "https://bigqueryreservation.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "SearchAllAssignmentsProjectsLocationsRequest",
+  }) as any as S.Schema<SearchAllAssignmentsProjectsLocationsRequest>;
 
 /** The response for ReservationService.SearchAllAssignments. */
 export interface SearchAllAssignmentsResponse {
@@ -930,11 +1265,13 @@ export interface SearchAllAssignmentsResponse {
   nextPageToken?: string;
 }
 export const SearchAllAssignmentsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "assignments": S.optional(AssignmentList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "SearchAllAssignmentsResponse" }) as any as S.Schema<SearchAllAssignmentsResponse>;
+  S.Struct({
+    assignments: S.optional(AssignmentList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SearchAllAssignmentsResponse",
+}) as any as S.Schema<SearchAllAssignmentsResponse>;
 
 export interface SearchAssignmentsProjectsLocationsRequest {
   /** Required. The resource name of the admin project(containing project and location), e.g.: `projects/myproject/locations/US`. */
@@ -946,14 +1283,23 @@ export interface SearchAssignmentsProjectsLocationsRequest {
   /** The maximum number of items to return per page. */
   pageSize?: number;
 }
-export const SearchAssignmentsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "query": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}:searchAssignments","baseUrl":"https://bigqueryreservation.googleapis.com/"})),
-).annotate({ identifier: "SearchAssignmentsProjectsLocationsRequest" }) as any as S.Schema<SearchAssignmentsProjectsLocationsRequest>;
+export const SearchAssignmentsProjectsLocationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      query: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}:searchAssignments",
+        baseUrl: "https://bigqueryreservation.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "SearchAssignmentsProjectsLocationsRequest",
+  }) as any as S.Schema<SearchAssignmentsProjectsLocationsRequest>;
 
 /** The response for ReservationService.SearchAssignments. */
 export interface SearchAssignmentsResponse {
@@ -963,11 +1309,13 @@ export interface SearchAssignmentsResponse {
   assignments?: AssignmentList;
 }
 export const SearchAssignmentsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "assignments": S.optional(AssignmentList),
-}),
-).annotate({ identifier: "SearchAssignmentsResponse" }) as any as S.Schema<SearchAssignmentsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    assignments: S.optional(AssignmentList),
+  }),
+).annotate({
+  identifier: "SearchAssignmentsResponse",
+}) as any as S.Schema<SearchAssignmentsResponse>;
 
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
@@ -977,11 +1325,13 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "policy": S.optional(Policy),
-  "updateMask": S.optional(S.String),
-}),
-).annotate({ identifier: "SetIamPolicyRequest" }) as any as S.Schema<SetIamPolicyRequest>;
+  S.Struct({
+    policy: S.optional(Policy),
+    updateMask: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SetIamPolicyRequest",
+}) as any as S.Schema<SetIamPolicyRequest>;
 
 export interface SetIamPolicyProjectsLocationsReservationsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -989,12 +1339,21 @@ export interface SetIamPolicyProjectsLocationsReservationsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsReservationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://bigqueryreservation.googleapis.com/"})),
-).annotate({ identifier: "SetIamPolicyProjectsLocationsReservationsRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsReservationsRequest>;
+export const SetIamPolicyProjectsLocationsReservationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+resource}:setIamPolicy",
+        baseUrl: "https://bigqueryreservation.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "SetIamPolicyProjectsLocationsReservationsRequest",
+  }) as any as S.Schema<SetIamPolicyProjectsLocationsReservationsRequest>;
 
 export interface SetIamPolicyProjectsLocationsReservationsAssignmentsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1002,12 +1361,21 @@ export interface SetIamPolicyProjectsLocationsReservationsAssignmentsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsReservationsAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://bigqueryreservation.googleapis.com/"})),
-).annotate({ identifier: "SetIamPolicyProjectsLocationsReservationsAssignmentsRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsReservationsAssignmentsRequest>;
+export const SetIamPolicyProjectsLocationsReservationsAssignmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+resource}:setIamPolicy",
+        baseUrl: "https://bigqueryreservation.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "SetIamPolicyProjectsLocationsReservationsAssignmentsRequest",
+  }) as any as S.Schema<SetIamPolicyProjectsLocationsReservationsAssignmentsRequest>;
 
 /** The request for ReservationService.SplitCapacityCommitment. */
 export interface SplitCapacityCommitmentRequest {
@@ -1015,10 +1383,12 @@ export interface SplitCapacityCommitmentRequest {
   slotCount?: string;
 }
 export const SplitCapacityCommitmentRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "slotCount": S.optional(S.String),
-}),
-).annotate({ identifier: "SplitCapacityCommitmentRequest" }) as any as S.Schema<SplitCapacityCommitmentRequest>;
+  S.Struct({
+    slotCount: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SplitCapacityCommitmentRequest",
+}) as any as S.Schema<SplitCapacityCommitmentRequest>;
 
 export interface SplitProjectsLocationsCapacityCommitmentsRequest {
   /** Required. The resource name e.g.,: `projects/myproject/locations/US/capacityCommitments/123` */
@@ -1026,12 +1396,21 @@ export interface SplitProjectsLocationsCapacityCommitmentsRequest {
   /** Request body */
   body?: SplitCapacityCommitmentRequest;
 }
-export const SplitProjectsLocationsCapacityCommitmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(SplitCapacityCommitmentRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:split","baseUrl":"https://bigqueryreservation.googleapis.com/"})),
-).annotate({ identifier: "SplitProjectsLocationsCapacityCommitmentsRequest" }) as any as S.Schema<SplitProjectsLocationsCapacityCommitmentsRequest>;
+export const SplitProjectsLocationsCapacityCommitmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(SplitCapacityCommitmentRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:split",
+        baseUrl: "https://bigqueryreservation.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "SplitProjectsLocationsCapacityCommitmentsRequest",
+  }) as any as S.Schema<SplitProjectsLocationsCapacityCommitmentsRequest>;
 
 /** The response for ReservationService.SplitCapacityCommitment. */
 export interface SplitCapacityCommitmentResponse {
@@ -1041,11 +1420,13 @@ export interface SplitCapacityCommitmentResponse {
   second?: CapacityCommitment;
 }
 export const SplitCapacityCommitmentResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "first": S.optional(CapacityCommitment),
-  "second": S.optional(CapacityCommitment),
-}),
-).annotate({ identifier: "SplitCapacityCommitmentResponse" }) as any as S.Schema<SplitCapacityCommitmentResponse>;
+  S.Struct({
+    first: S.optional(CapacityCommitment),
+    second: S.optional(CapacityCommitment),
+  }),
+).annotate({
+  identifier: "SplitCapacityCommitmentResponse",
+}) as any as S.Schema<SplitCapacityCommitmentResponse>;
 
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
@@ -1053,10 +1434,12 @@ export interface TestIamPermissionsRequest {
   permissions?: StringList;
 }
 export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "permissions": S.optional(StringList),
-}),
-).annotate({ identifier: "TestIamPermissionsRequest" }) as any as S.Schema<TestIamPermissionsRequest>;
+  S.Struct({
+    permissions: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "TestIamPermissionsRequest",
+}) as any as S.Schema<TestIamPermissionsRequest>;
 
 export interface TestIamPermissionsProjectsLocationsReservationsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1064,12 +1447,21 @@ export interface TestIamPermissionsProjectsLocationsReservationsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsReservationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://bigqueryreservation.googleapis.com/"})),
-).annotate({ identifier: "TestIamPermissionsProjectsLocationsReservationsRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsReservationsRequest>;
+export const TestIamPermissionsProjectsLocationsReservationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+resource}:testIamPermissions",
+        baseUrl: "https://bigqueryreservation.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "TestIamPermissionsProjectsLocationsReservationsRequest",
+  }) as any as S.Schema<TestIamPermissionsProjectsLocationsReservationsRequest>;
 
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
@@ -1077,10 +1469,12 @@ export interface TestIamPermissionsResponse {
   permissions?: StringList;
 }
 export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "permissions": S.optional(StringList),
-}),
-).annotate({ identifier: "TestIamPermissionsResponse" }) as any as S.Schema<TestIamPermissionsResponse>;
+  S.Struct({
+    permissions: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "TestIamPermissionsResponse",
+}) as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsReservationsAssignmentsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1088,12 +1482,22 @@ export interface TestIamPermissionsProjectsLocationsReservationsAssignmentsReque
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsReservationsAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://bigqueryreservation.googleapis.com/"})),
-).annotate({ identifier: "TestIamPermissionsProjectsLocationsReservationsAssignmentsRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsReservationsAssignmentsRequest>;
+export const TestIamPermissionsProjectsLocationsReservationsAssignmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+resource}:testIamPermissions",
+        baseUrl: "https://bigqueryreservation.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "TestIamPermissionsProjectsLocationsReservationsAssignmentsRequest",
+  }) as any as S.Schema<TestIamPermissionsProjectsLocationsReservationsAssignmentsRequest>;
 
 export interface UpdateBiReservationProjectsLocationsRequest {
   /** Identifier. The resource name of the singleton BI reservation. Reservation names have the form `projects/{project_id}/locations/{location_id}/biReservation`. */
@@ -1103,15 +1507,29 @@ export interface UpdateBiReservationProjectsLocationsRequest {
   /** Request body */
   body?: BiReservation;
 }
-export const UpdateBiReservationProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(BiReservation.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://bigqueryreservation.googleapis.com/"})),
-).annotate({ identifier: "UpdateBiReservationProjectsLocationsRequest" }) as any as S.Schema<UpdateBiReservationProjectsLocationsRequest>;
+export const UpdateBiReservationProjectsLocationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(BiReservation.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://bigqueryreservation.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "UpdateBiReservationProjectsLocationsRequest",
+  }) as any as S.Schema<UpdateBiReservationProjectsLocationsRequest>;
 
-export type CreateProjectsLocationsCapacityCommitmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsCapacityCommitmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new capacity commitment resource. */
 export const createProjectsLocationsCapacityCommitments: API.OperationMethod<
   CreateProjectsLocationsCapacityCommitmentsRequest,
@@ -1126,7 +1544,12 @@ export const createProjectsLocationsCapacityCommitments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsReservationGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsReservationGroupsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new reservation group. */
 export const createProjectsLocationsReservationGroups: API.OperationMethod<
   CreateProjectsLocationsReservationGroupsRequest,
@@ -1141,7 +1564,12 @@ export const createProjectsLocationsReservationGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsReservationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsReservationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new reservation resource. */
 export const createProjectsLocationsReservations: API.OperationMethod<
   CreateProjectsLocationsReservationsRequest,
@@ -1156,7 +1584,12 @@ export const createProjectsLocationsReservations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsReservationsAssignmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsReservationsAssignmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates an assignment object which allows the given project to submit jobs of a certain type using slots from the specified reservation. Currently a resource (project, folder, organization) can only have one assignment per each (job_type, location) combination, and that reservation will be used for all jobs of the matching type. Different assignments can be created on different levels of the projects, folders or organization hierarchy. During query execution, the assignment is looked up at the project, folder and organization levels in that order. The first assignment found is applied to the query. When creating assignments, it does not matter if other assignments exist at higher levels. Example: * The organization `organizationA` contains two projects, `project1` and `project2`. * Assignments for all three entities (`organizationA`, `project1`, and `project2`) could all be created and mapped to the same or different reservations. "None" assignments represent an absence of the assignment. Projects assigned to None use on-demand pricing. To create a "None" assignment, use "none" as a reservation_id in the parent. Example parent: `projects/myproject/locations/US/reservations/none`. Returns `google.rpc.Code.PERMISSION_DENIED` if user does not have 'bigquery.admin' permissions on the project using the reservation and the project that owns this reservation. Returns `google.rpc.Code.INVALID_ARGUMENT` when location of the assignment does not match location of the reservation. */
 export const createProjectsLocationsReservationsAssignments: API.OperationMethod<
   CreateProjectsLocationsReservationsAssignmentsRequest,
@@ -1171,7 +1604,12 @@ export const createProjectsLocationsReservationsAssignments: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsCapacityCommitmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsCapacityCommitmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a capacity commitment. Attempting to delete capacity commitment before its commitment_end_time will fail with the error code `google.rpc.Code.FAILED_PRECONDITION`. */
 export const deleteProjectsLocationsCapacityCommitments: API.OperationMethod<
   DeleteProjectsLocationsCapacityCommitmentsRequest,
@@ -1186,7 +1624,12 @@ export const deleteProjectsLocationsCapacityCommitments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsReservationGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsReservationGroupsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a reservation. Returns `google.rpc.Code.FAILED_PRECONDITION` when reservation has assignments. */
 export const deleteProjectsLocationsReservationGroups: API.OperationMethod<
   DeleteProjectsLocationsReservationGroupsRequest,
@@ -1201,7 +1644,12 @@ export const deleteProjectsLocationsReservationGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsReservationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsReservationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a reservation. Returns `google.rpc.Code.FAILED_PRECONDITION` when reservation has assignments. */
 export const deleteProjectsLocationsReservations: API.OperationMethod<
   DeleteProjectsLocationsReservationsRequest,
@@ -1216,7 +1664,12 @@ export const deleteProjectsLocationsReservations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsReservationsAssignmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsReservationsAssignmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a assignment. No expansion will happen. Example: * Organization `organizationA` contains two projects, `project1` and `project2`. * Reservation `res1` exists and was created previously. * CreateAssignment was used previously to define the following associations between entities and reservations: `` and `` In this example, deletion of the `` assignment won't affect the other assignment ``. After said deletion, queries from `project1` will still use `res1` while queries from `project2` will switch to use on-demand mode. */
 export const deleteProjectsLocationsReservationsAssignments: API.OperationMethod<
   DeleteProjectsLocationsReservationsAssignmentsRequest,
@@ -1231,7 +1684,12 @@ export const deleteProjectsLocationsReservationsAssignments: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type FailoverReservationProjectsLocationsReservationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type FailoverReservationProjectsLocationsReservationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Fail over a reservation to the secondary location. The operation should be done in the current secondary location, which will be promoted to the new primary location for the reservation. Attempting to failover a reservation in the current primary location will fail with the error code `google.rpc.Code.FAILED_PRECONDITION`. */
 export const failoverReservationProjectsLocationsReservations: API.OperationMethod<
   FailoverReservationProjectsLocationsReservationsRequest,
@@ -1246,7 +1704,10 @@ export const failoverReservationProjectsLocationsReservations: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type GetBiReservationProjectsLocationsError = NotFound | Forbidden | GcpOpError;
+export type GetBiReservationProjectsLocationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieves a BI reservation. */
 export const getBiReservationProjectsLocations: API.OperationMethod<
   GetBiReservationProjectsLocationsRequest,
@@ -1261,7 +1722,10 @@ export const getBiReservationProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsReservationsError = NotFound | Forbidden | GcpOpError;
+export type GetIamPolicyProjectsLocationsReservationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the access control policy for a resource. May return: * A`NOT_FOUND` error if the resource doesn't exist or you don't have the permission to view it. * An empty policy if the resource exists but doesn't have a set policy. Supported resources are: - Reservations - ReservationAssignments To call this method, you must have the following Google IAM permissions: - `bigqueryreservation.reservations.getIamPolicy` to get policies on reservations. */
 export const getIamPolicyProjectsLocationsReservations: API.OperationMethod<
   GetIamPolicyProjectsLocationsReservationsRequest,
@@ -1276,7 +1740,10 @@ export const getIamPolicyProjectsLocationsReservations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsReservationsAssignmentsError = NotFound | Forbidden | GcpOpError;
+export type GetIamPolicyProjectsLocationsReservationsAssignmentsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the access control policy for a resource. May return: * A`NOT_FOUND` error if the resource doesn't exist or you don't have the permission to view it. * An empty policy if the resource exists but doesn't have a set policy. Supported resources are: - Reservations - ReservationAssignments To call this method, you must have the following Google IAM permissions: - `bigqueryreservation.reservations.getIamPolicy` to get policies on reservations. */
 export const getIamPolicyProjectsLocationsReservationsAssignments: API.OperationMethod<
   GetIamPolicyProjectsLocationsReservationsAssignmentsRequest,
@@ -1291,7 +1758,10 @@ export const getIamPolicyProjectsLocationsReservationsAssignments: API.Operation
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsCapacityCommitmentsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsCapacityCommitmentsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns information about the capacity commitment. */
 export const getProjectsLocationsCapacityCommitments: API.OperationMethod<
   GetProjectsLocationsCapacityCommitmentsRequest,
@@ -1306,7 +1776,10 @@ export const getProjectsLocationsCapacityCommitments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsReservationGroupsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsReservationGroupsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns information about the reservation group. */
 export const getProjectsLocationsReservationGroups: API.OperationMethod<
   GetProjectsLocationsReservationGroupsRequest,
@@ -1321,7 +1794,10 @@ export const getProjectsLocationsReservationGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsReservationsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsReservationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns information about the reservation. */
 export const getProjectsLocationsReservations: API.OperationMethod<
   GetProjectsLocationsReservationsRequest,
@@ -1336,7 +1812,10 @@ export const getProjectsLocationsReservations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListProjectsLocationsCapacityCommitmentsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsCapacityCommitmentsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all the capacity commitments for the admin project. */
 export const listProjectsLocationsCapacityCommitments: API.PaginatedOperationMethod<
   ListProjectsLocationsCapacityCommitmentsRequest,
@@ -1349,10 +1828,16 @@ export const listProjectsLocationsCapacityCommitments: API.PaginatedOperationMet
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsReservationGroupsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsReservationGroupsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all the reservation groups for the project in the specified location. */
 export const listProjectsLocationsReservationGroups: API.PaginatedOperationMethod<
   ListProjectsLocationsReservationGroupsRequest,
@@ -1365,10 +1850,16 @@ export const listProjectsLocationsReservationGroups: API.PaginatedOperationMetho
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsReservationsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsReservationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all the reservations for the project in the specified location. */
 export const listProjectsLocationsReservations: API.PaginatedOperationMethod<
   ListProjectsLocationsReservationsRequest,
@@ -1381,10 +1872,16 @@ export const listProjectsLocationsReservations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsReservationsAssignmentsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsReservationsAssignmentsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists assignments. Only explicitly created assignments will be returned. Example: * Organization `organizationA` contains two projects, `project1` and `project2`. * Reservation `res1` exists and was created previously. * CreateAssignment was used previously to define the following associations between entities and reservations: `` and `` In this example, ListAssignments will just return the above two assignments for reservation `res1`, and no expansion/merge will happen. The wildcard "-" can be used for reservations in the request. In that case all assignments belongs to the specified project and location will be listed. **Note** "-" cannot be used for projects nor locations. */
 export const listProjectsLocationsReservationsAssignments: API.PaginatedOperationMethod<
   ListProjectsLocationsReservationsAssignmentsRequest,
@@ -1397,10 +1894,18 @@ export const listProjectsLocationsReservationsAssignments: API.PaginatedOperatio
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type MergeProjectsLocationsCapacityCommitmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type MergeProjectsLocationsCapacityCommitmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Merges capacity commitments of the same plan into a single commitment. The resulting capacity commitment has the greater commitment_end_time out of the to-be-merged capacity commitments. Attempting to merge capacity commitments of different plan will fail with the error code `google.rpc.Code.FAILED_PRECONDITION`. */
 export const mergeProjectsLocationsCapacityCommitments: API.OperationMethod<
   MergeProjectsLocationsCapacityCommitmentsRequest,
@@ -1415,7 +1920,12 @@ export const mergeProjectsLocationsCapacityCommitments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type MoveProjectsLocationsReservationsAssignmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type MoveProjectsLocationsReservationsAssignmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Moves an assignment under a new reservation. This differs from removing an existing assignment and recreating a new one by providing a transactional change that ensures an assignee always has an associated reservation. */
 export const moveProjectsLocationsReservationsAssignments: API.OperationMethod<
   MoveProjectsLocationsReservationsAssignmentsRequest,
@@ -1430,7 +1940,12 @@ export const moveProjectsLocationsReservationsAssignments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsCapacityCommitmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsCapacityCommitmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates an existing capacity commitment. Only `plan` and `renewal_plan` fields can be updated. Plan can only be changed to a plan of a longer commitment period. Attempting to change to a plan with shorter commitment period will fail with the error code `google.rpc.Code.FAILED_PRECONDITION`. */
 export const patchProjectsLocationsCapacityCommitments: API.OperationMethod<
   PatchProjectsLocationsCapacityCommitmentsRequest,
@@ -1445,7 +1960,12 @@ export const patchProjectsLocationsCapacityCommitments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsReservationGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsReservationGroupsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates an existing reservation group resource. */
 export const patchProjectsLocationsReservationGroups: API.OperationMethod<
   PatchProjectsLocationsReservationGroupsRequest,
@@ -1460,7 +1980,12 @@ export const patchProjectsLocationsReservationGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsReservationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsReservationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates an existing reservation resource. */
 export const patchProjectsLocationsReservations: API.OperationMethod<
   PatchProjectsLocationsReservationsRequest,
@@ -1475,7 +2000,12 @@ export const patchProjectsLocationsReservations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsReservationsAssignmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsReservationsAssignmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates an existing assignment. Only the `priority` field can be updated. */
 export const patchProjectsLocationsReservationsAssignments: API.OperationMethod<
   PatchProjectsLocationsReservationsAssignmentsRequest,
@@ -1490,7 +2020,10 @@ export const patchProjectsLocationsReservationsAssignments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SearchAllAssignmentsProjectsLocationsError = NotFound | Forbidden | GcpOpError;
+export type SearchAllAssignmentsProjectsLocationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Looks up assignments for a specified resource for a particular region. If the request is about a project: 1. Assignments created on the project will be returned if they exist. 2. Otherwise assignments created on the closest ancestor will be returned. 3. Assignments for different JobTypes will all be returned. The same logic applies if the request is about a folder. If the request is about an organization, then assignments created on the organization will be returned (organization doesn't have ancestors). Comparing to ListAssignments, there are some behavior differences: 1. permission on the assignee will be verified in this API. 2. Hierarchy lookup (project->folder->organization) happens in this API. 3. Parent here is `projects/*\/locations/*`, instead of `projects/*\/locations/*reservations/*`. */
 export const searchAllAssignmentsProjectsLocations: API.PaginatedOperationMethod<
   SearchAllAssignmentsProjectsLocationsRequest,
@@ -1503,10 +2036,16 @@ export const searchAllAssignmentsProjectsLocations: API.PaginatedOperationMethod
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type SearchAssignmentsProjectsLocationsError = NotFound | Forbidden | GcpOpError;
+export type SearchAssignmentsProjectsLocationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Deprecated: Looks up assignments for a specified resource for a particular region. If the request is about a project: 1. Assignments created on the project will be returned if they exist. 2. Otherwise assignments created on the closest ancestor will be returned. 3. Assignments for different JobTypes will all be returned. The same logic applies if the request is about a folder. If the request is about an organization, then assignments created on the organization will be returned (organization doesn't have ancestors). Comparing to ListAssignments, there are some behavior differences: 1. permission on the assignee will be verified in this API. 2. Hierarchy lookup (project->folder->organization) happens in this API. 3. Parent here is `projects/*\/locations/*`, instead of `projects/*\/locations/*reservations/*`. **Note** "-" cannot be used for projects nor locations. */
 export const searchAssignmentsProjectsLocations: API.PaginatedOperationMethod<
   SearchAssignmentsProjectsLocationsRequest,
@@ -1519,10 +2058,18 @@ export const searchAssignmentsProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type SetIamPolicyProjectsLocationsReservationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetIamPolicyProjectsLocationsReservationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sets an access control policy for a resource. Replaces any existing policy. Supported resources are: - Reservations To call this method, you must have the following Google IAM permissions: - `bigqueryreservation.reservations.setIamPolicy` to set policies on reservations. */
 export const setIamPolicyProjectsLocationsReservations: API.OperationMethod<
   SetIamPolicyProjectsLocationsReservationsRequest,
@@ -1537,7 +2084,12 @@ export const setIamPolicyProjectsLocationsReservations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsReservationsAssignmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetIamPolicyProjectsLocationsReservationsAssignmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sets an access control policy for a resource. Replaces any existing policy. Supported resources are: - Reservations To call this method, you must have the following Google IAM permissions: - `bigqueryreservation.reservations.setIamPolicy` to set policies on reservations. */
 export const setIamPolicyProjectsLocationsReservationsAssignments: API.OperationMethod<
   SetIamPolicyProjectsLocationsReservationsAssignmentsRequest,
@@ -1552,7 +2104,12 @@ export const setIamPolicyProjectsLocationsReservationsAssignments: API.Operation
   retry: Retry.Retry,
 }));
 
-export type SplitProjectsLocationsCapacityCommitmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SplitProjectsLocationsCapacityCommitmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Splits capacity commitment to two commitments of the same plan and `commitment_end_time`. A common use case is to enable downgrading commitments. For example, in order to downgrade from 10000 slots to 8000, you might split a 10000 capacity commitment into commitments of 2000 and 8000. Then, you delete the first one after the commitment end time passes. */
 export const splitProjectsLocationsCapacityCommitments: API.OperationMethod<
   SplitProjectsLocationsCapacityCommitmentsRequest,
@@ -1567,7 +2124,12 @@ export const splitProjectsLocationsCapacityCommitments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsReservationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TestIamPermissionsProjectsLocationsReservationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Gets your permissions on a resource. Returns an empty set of permissions if the resource doesn't exist. Supported resources are: - Reservations No Google IAM permissions are required to call this method. */
 export const testIamPermissionsProjectsLocationsReservations: API.OperationMethod<
   TestIamPermissionsProjectsLocationsReservationsRequest,
@@ -1582,7 +2144,12 @@ export const testIamPermissionsProjectsLocationsReservations: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsReservationsAssignmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TestIamPermissionsProjectsLocationsReservationsAssignmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Gets your permissions on a resource. Returns an empty set of permissions if the resource doesn't exist. Supported resources are: - Reservations No Google IAM permissions are required to call this method. */
 export const testIamPermissionsProjectsLocationsReservationsAssignments: API.OperationMethod<
   TestIamPermissionsProjectsLocationsReservationsAssignmentsRequest,
@@ -1597,7 +2164,12 @@ export const testIamPermissionsProjectsLocationsReservationsAssignments: API.Ope
   retry: Retry.Retry,
 }));
 
-export type UpdateBiReservationProjectsLocationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateBiReservationProjectsLocationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a BI reservation. Only fields specified in the `field_mask` are updated. A singleton BI reservation always exists with default size 0. In order to reserve BI capacity it needs to be updated to an amount greater than 0. In order to release BI capacity reservation size must be set to 0. */
 export const updateBiReservationProjectsLocations: API.OperationMethod<
   UpdateBiReservationProjectsLocationsRequest,
@@ -1611,4 +2183,3 @@ export const updateBiReservationProjectsLocations: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

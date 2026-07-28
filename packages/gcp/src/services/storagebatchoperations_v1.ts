@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 /** Message for Job to Cancel */
@@ -66,10 +66,12 @@ export interface CancelJobRequest {
   requestId?: string;
 }
 export const CancelJobRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String),
-}),
-).annotate({ identifier: "CancelJobRequest" }) as any as S.Schema<CancelJobRequest>;
+  S.Struct({
+    requestId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CancelJobRequest",
+}) as any as S.Schema<CancelJobRequest>;
 
 export interface CancelProjectsLocationsJobsRequest {
   /** Required. The `name` of the job to cancel. Format: `projects/{project_id}/locations/global/jobs/{job_id}`. */
@@ -78,23 +80,35 @@ export interface CancelProjectsLocationsJobsRequest {
   body?: CancelJobRequest;
 }
 export const CancelProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(CancelJobRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://storagebatchoperations.googleapis.com/"})),
-).annotate({ identifier: "CancelProjectsLocationsJobsRequest" }) as any as S.Schema<CancelProjectsLocationsJobsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(CancelJobRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:cancel",
+      baseUrl: "https://storagebatchoperations.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CancelProjectsLocationsJobsRequest",
+}) as any as S.Schema<CancelProjectsLocationsJobsRequest>;
 
 /** Message for response to cancel Job. */
 export interface CancelJobResponse {}
 export const CancelJobResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "CancelJobResponse" }) as any as S.Schema<CancelJobResponse>;
+  S.Struct({}),
+).annotate({
+  identifier: "CancelJobResponse",
+}) as any as S.Schema<CancelJobResponse>;
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
 export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "CancelOperationRequest" }) as any as S.Schema<CancelOperationRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "CancelOperationRequest",
+}) as any as S.Schema<CancelOperationRequest>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -102,18 +116,27 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://storagebatchoperations.googleapis.com/"})),
-).annotate({ identifier: "CancelProjectsLocationsOperationsRequest" }) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:cancel",
+        baseUrl: "https://storagebatchoperations.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CancelProjectsLocationsOperationsRequest",
+}) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 /** Represents an access control entry on an object. */
 export interface ObjectAccessControl {
@@ -123,17 +146,23 @@ export interface ObjectAccessControl {
   role?: string;
 }
 export const ObjectAccessControl = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "entity": S.optional(S.String),
-  "role": S.optional(S.String),
-}),
-).annotate({ identifier: "ObjectAccessControl" }) as any as S.Schema<ObjectAccessControl>;
+  S.Struct({
+    entity: S.optional(S.String),
+    role: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ObjectAccessControl",
+}) as any as S.Schema<ObjectAccessControl>;
 
 export type ObjectAccessControlList = ReadonlyArray<ObjectAccessControl>;
-export const ObjectAccessControlList = /*@__PURE__*/ S.Array(ObjectAccessControl) as any as S.Schema<ObjectAccessControlList>;
+export const ObjectAccessControlList = /*@__PURE__*/ S.Array(
+  ObjectAccessControl,
+) as any as S.Schema<ObjectAccessControlList>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** Represents updates to existing access-control entries on an object. */
 export interface AccessControlsUpdates {
@@ -143,11 +172,13 @@ export interface AccessControlsUpdates {
   removeEntities?: StringList;
 }
 export const AccessControlsUpdates = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "grants": S.optional(ObjectAccessControlList),
-  "removeEntities": S.optional(StringList),
-}),
-).annotate({ identifier: "AccessControlsUpdates" }) as any as S.Schema<AccessControlsUpdates>;
+  S.Struct({
+    grants: S.optional(ObjectAccessControlList),
+    removeEntities: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "AccessControlsUpdates",
+}) as any as S.Schema<AccessControlsUpdates>;
 
 /** Describes options for setting object ACLs. */
 export interface SetObjectAcls {
@@ -155,9 +186,9 @@ export interface SetObjectAcls {
   accessControlsUpdates?: AccessControlsUpdates;
 }
 export const SetObjectAcls = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "accessControlsUpdates": S.optional(AccessControlsUpdates),
-}),
+  S.Struct({
+    accessControlsUpdates: S.optional(AccessControlsUpdates),
+  }),
 ).annotate({ identifier: "SetObjectAcls" }) as any as S.Schema<SetObjectAcls>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
@@ -172,12 +203,12 @@ export interface Expr {
   description?: string;
 }
 export const Expr = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "expression": S.optional(S.String),
-  "location": S.optional(S.String),
-  "title": S.optional(S.String),
-  "description": S.optional(S.String),
-}),
+  S.Struct({
+    expression: S.optional(S.String),
+    location: S.optional(S.String),
+    title: S.optional(S.String),
+    description: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
 /** Describes the Cloud Storage locations to include in a ProjectSource job. */
@@ -188,11 +219,13 @@ export interface TargetLocations {
   locations?: StringList;
 }
 export const TargetLocations = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "snapshotTime": S.optional(S.String),
-  "locations": S.optional(StringList),
-}),
-).annotate({ identifier: "TargetLocations" }) as any as S.Schema<TargetLocations>;
+  S.Struct({
+    snapshotTime: S.optional(S.String),
+    locations: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "TargetLocations",
+}) as any as S.Schema<TargetLocations>;
 
 /** Describes the project source where the objects satisfying the filters will be transformed. */
 export interface ProjectSource {
@@ -212,18 +245,23 @@ export interface ProjectSource {
   objectFilters?: Expr;
 }
 export const ProjectSource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "insightsDatasetConfig": S.optional(S.String),
-  "bucketFilters": S.optional(Expr),
-  "dryRunJobId": S.optional(S.String),
-  "snapshotTime": S.optional(S.String),
-  "targetLocations": S.optional(TargetLocations),
-  "project": S.optional(S.String),
-  "objectFilters": S.optional(Expr),
-}),
+  S.Struct({
+    insightsDatasetConfig: S.optional(S.String),
+    bucketFilters: S.optional(Expr),
+    dryRunJobId: S.optional(S.String),
+    snapshotTime: S.optional(S.String),
+    targetLocations: S.optional(TargetLocations),
+    project: S.optional(S.String),
+    objectFilters: S.optional(Expr),
+  }),
 ).annotate({ identifier: "ProjectSource" }) as any as S.Schema<ProjectSource>;
 
-export type RewriteObjectStorageClassEnum = "STORAGE_CLASS_UNSPECIFIED" | "STANDARD" | "NEARLINE" | "COLDLINE" | "ARCHIVE";
+export type RewriteObjectStorageClassEnum =
+  | "STORAGE_CLASS_UNSPECIFIED"
+  | "STANDARD"
+  | "NEARLINE"
+  | "COLDLINE"
+  | "ARCHIVE";
 export const RewriteObjectStorageClassEnum = /*@__PURE__*/ S.String;
 
 /** Describes options for object rewrite. */
@@ -234,23 +272,34 @@ export interface RewriteObject {
   storageClass?: RewriteObjectStorageClassEnum;
 }
 export const RewriteObject = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kmsKey": S.optional(S.String),
-  "storageClass": S.optional(RewriteObjectStorageClassEnum),
-}),
+  S.Struct({
+    kmsKey: S.optional(S.String),
+    storageClass: S.optional(RewriteObjectStorageClassEnum),
+  }),
 ).annotate({ identifier: "RewriteObject" }) as any as S.Schema<RewriteObject>;
 
-export type LoggingConfigLogActionsItemEnum = "LOGGABLE_ACTION_UNSPECIFIED" | "TRANSFORM";
+export type LoggingConfigLogActionsItemEnum =
+  | "LOGGABLE_ACTION_UNSPECIFIED"
+  | "TRANSFORM";
 export const LoggingConfigLogActionsItemEnum = /*@__PURE__*/ S.String;
 
-export type LoggingConfigLogActionsItemEnumList = ReadonlyArray<LoggingConfigLogActionsItemEnum>;
-export const LoggingConfigLogActionsItemEnumList = /*@__PURE__*/ S.Array(LoggingConfigLogActionsItemEnum) as any as S.Schema<LoggingConfigLogActionsItemEnumList>;
+export type LoggingConfigLogActionsItemEnumList =
+  ReadonlyArray<LoggingConfigLogActionsItemEnum>;
+export const LoggingConfigLogActionsItemEnumList = /*@__PURE__*/ S.Array(
+  LoggingConfigLogActionsItemEnum,
+) as any as S.Schema<LoggingConfigLogActionsItemEnumList>;
 
-export type LoggingConfigLogActionStatesItemEnum = "LOGGABLE_ACTION_STATE_UNSPECIFIED" | "SUCCEEDED" | "FAILED";
+export type LoggingConfigLogActionStatesItemEnum =
+  | "LOGGABLE_ACTION_STATE_UNSPECIFIED"
+  | "SUCCEEDED"
+  | "FAILED";
 export const LoggingConfigLogActionStatesItemEnum = /*@__PURE__*/ S.String;
 
-export type LoggingConfigLogActionStatesItemEnumList = ReadonlyArray<LoggingConfigLogActionStatesItemEnum>;
-export const LoggingConfigLogActionStatesItemEnumList = /*@__PURE__*/ S.Array(LoggingConfigLogActionStatesItemEnum) as any as S.Schema<LoggingConfigLogActionStatesItemEnumList>;
+export type LoggingConfigLogActionStatesItemEnumList =
+  ReadonlyArray<LoggingConfigLogActionStatesItemEnum>;
+export const LoggingConfigLogActionStatesItemEnumList = /*@__PURE__*/ S.Array(
+  LoggingConfigLogActionStatesItemEnum,
+) as any as S.Schema<LoggingConfigLogActionStatesItemEnumList>;
 
 /** Specifies the Cloud Logging behavior. */
 export interface LoggingConfig {
@@ -260,10 +309,10 @@ export interface LoggingConfig {
   logActionStates?: LoggingConfigLogActionStatesItemEnumList;
 }
 export const LoggingConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "logActions": S.optional(LoggingConfigLogActionsItemEnumList),
-  "logActionStates": S.optional(LoggingConfigLogActionStatesItemEnumList),
-}),
+  S.Struct({
+    logActions: S.optional(LoggingConfigLogActionsItemEnumList),
+    logActionStates: S.optional(LoggingConfigLogActionStatesItemEnumList),
+  }),
 ).annotate({ identifier: "LoggingConfig" }) as any as S.Schema<LoggingConfig>;
 
 /** Describes details about the progress of the job. */
@@ -286,22 +335,28 @@ export interface Counters {
   objectCustomContextsUpdated?: string;
 }
 export const Counters = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "totalBytesFound": S.optional(S.String),
-  "totalBytesTransformed": S.optional(S.String),
-  "succeededObjectCount": S.optional(S.String),
-  "totalObjectCount": S.optional(S.String),
-  "objectCustomContextsDeleted": S.optional(S.String),
-  "failedObjectCount": S.optional(S.String),
-  "objectCustomContextsCreated": S.optional(S.String),
-  "objectCustomContextsUpdated": S.optional(S.String),
-}),
+  S.Struct({
+    totalBytesFound: S.optional(S.String),
+    totalBytesTransformed: S.optional(S.String),
+    succeededObjectCount: S.optional(S.String),
+    totalObjectCount: S.optional(S.String),
+    objectCustomContextsDeleted: S.optional(S.String),
+    failedObjectCount: S.optional(S.String),
+    objectCustomContextsCreated: S.optional(S.String),
+    objectCustomContextsUpdated: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Counters" }) as any as S.Schema<Counters>;
 
-export type PutObjectHoldEventBasedHoldEnum = "HOLD_STATUS_UNSPECIFIED" | "SET" | "UNSET";
+export type PutObjectHoldEventBasedHoldEnum =
+  | "HOLD_STATUS_UNSPECIFIED"
+  | "SET"
+  | "UNSET";
 export const PutObjectHoldEventBasedHoldEnum = /*@__PURE__*/ S.String;
 
-export type PutObjectHoldTemporaryHoldEnum = "HOLD_STATUS_UNSPECIFIED" | "SET" | "UNSET";
+export type PutObjectHoldTemporaryHoldEnum =
+  | "HOLD_STATUS_UNSPECIFIED"
+  | "SET"
+  | "UNSET";
 export const PutObjectHoldTemporaryHoldEnum = /*@__PURE__*/ S.String;
 
 /** Describes options to update object hold. */
@@ -312,10 +367,10 @@ export interface PutObjectHold {
   temporaryHold?: PutObjectHoldTemporaryHoldEnum;
 }
 export const PutObjectHold = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "eventBasedHold": S.optional(PutObjectHoldEventBasedHoldEnum),
-  "temporaryHold": S.optional(PutObjectHoldTemporaryHoldEnum),
-}),
+  S.Struct({
+    eventBasedHold: S.optional(PutObjectHoldEventBasedHoldEnum),
+    temporaryHold: S.optional(PutObjectHoldTemporaryHoldEnum),
+  }),
 ).annotate({ identifier: "PutObjectHold" }) as any as S.Schema<PutObjectHold>;
 
 /** Describes options to delete an object. */
@@ -324,15 +379,21 @@ export interface DeleteObject {
   permanentObjectDeletionEnabled?: boolean;
 }
 export const DeleteObject = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "permanentObjectDeletionEnabled": S.optional(S.Boolean),
-}),
+  S.Struct({
+    permanentObjectDeletionEnabled: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "DeleteObject" }) as any as S.Schema<DeleteObject>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
-export type ObjectRetentionRetentionModeEnum = "RETENTION_MODE_UNSPECIFIED" | "LOCKED" | "UNLOCKED";
+export type ObjectRetentionRetentionModeEnum =
+  | "RETENTION_MODE_UNSPECIFIED"
+  | "LOCKED"
+  | "UNLOCKED";
 export const ObjectRetentionRetentionModeEnum = /*@__PURE__*/ S.String;
 
 /** Describes options for object retention update. */
@@ -343,11 +404,13 @@ export interface ObjectRetention {
   retainUntilTime?: string;
 }
 export const ObjectRetention = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "retentionMode": S.optional(ObjectRetentionRetentionModeEnum),
-  "retainUntilTime": S.optional(S.String),
-}),
-).annotate({ identifier: "ObjectRetention" }) as any as S.Schema<ObjectRetention>;
+  S.Struct({
+    retentionMode: S.optional(ObjectRetentionRetentionModeEnum),
+    retainUntilTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ObjectRetention",
+}) as any as S.Schema<ObjectRetention>;
 
 /** Describes options for object metadata update. */
 export interface PutMetadata {
@@ -369,16 +432,16 @@ export interface PutMetadata {
   customTime?: string;
 }
 export const PutMetadata = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "contentDisposition": S.optional(S.String),
-  "contentType": S.optional(S.String),
-  "cacheControl": S.optional(S.String),
-  "contentEncoding": S.optional(S.String),
-  "contentLanguage": S.optional(S.String),
-  "customMetadata": S.optional(StringMap),
-  "objectRetention": S.optional(ObjectRetention),
-  "customTime": S.optional(S.String),
-}),
+  S.Struct({
+    contentDisposition: S.optional(S.String),
+    contentType: S.optional(S.String),
+    cacheControl: S.optional(S.String),
+    contentEncoding: S.optional(S.String),
+    contentLanguage: S.optional(S.String),
+    customMetadata: S.optional(StringMap),
+    objectRetention: S.optional(ObjectRetention),
+    customTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "PutMetadata" }) as any as S.Schema<PutMetadata>;
 
 /** Describes the payload of a user-defined object custom context. */
@@ -387,13 +450,20 @@ export interface ObjectCustomContextPayload {
   value?: string;
 }
 export const ObjectCustomContextPayload = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "value": S.optional(S.String),
-}),
-).annotate({ identifier: "ObjectCustomContextPayload" }) as any as S.Schema<ObjectCustomContextPayload>;
+  S.Struct({
+    value: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ObjectCustomContextPayload",
+}) as any as S.Schema<ObjectCustomContextPayload>;
 
-export type ObjectCustomContextPayloadMap = { [key: string]: ObjectCustomContextPayload | undefined };
-export const ObjectCustomContextPayloadMap = /*@__PURE__*/ S.Record(S.String, ObjectCustomContextPayload) as any as S.Schema<ObjectCustomContextPayloadMap>;
+export type ObjectCustomContextPayloadMap = {
+  [key: string]: ObjectCustomContextPayload | undefined;
+};
+export const ObjectCustomContextPayloadMap = /*@__PURE__*/ S.Record(
+  S.String,
+  ObjectCustomContextPayload,
+) as any as S.Schema<ObjectCustomContextPayloadMap>;
 
 /** Describes a collection of updates to apply to custom contexts identified by key. */
 export interface CustomContextUpdates {
@@ -403,11 +473,13 @@ export interface CustomContextUpdates {
   keysToClear?: StringList;
 }
 export const CustomContextUpdates = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updates": S.optional(ObjectCustomContextPayloadMap),
-  "keysToClear": S.optional(StringList),
-}),
-).annotate({ identifier: "CustomContextUpdates" }) as any as S.Schema<CustomContextUpdates>;
+  S.Struct({
+    updates: S.optional(ObjectCustomContextPayloadMap),
+    keysToClear: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "CustomContextUpdates",
+}) as any as S.Schema<CustomContextUpdates>;
 
 /** Describes options to update object custom contexts. */
 export interface UpdateObjectCustomContext {
@@ -417,13 +489,21 @@ export interface UpdateObjectCustomContext {
   clearAll?: boolean;
 }
 export const UpdateObjectCustomContext = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "customContextUpdates": S.optional(CustomContextUpdates),
-  "clearAll": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "UpdateObjectCustomContext" }) as any as S.Schema<UpdateObjectCustomContext>;
+  S.Struct({
+    customContextUpdates: S.optional(CustomContextUpdates),
+    clearAll: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "UpdateObjectCustomContext",
+}) as any as S.Schema<UpdateObjectCustomContext>;
 
-export type JobStateEnum = "STATE_UNSPECIFIED" | "RUNNING" | "SUCCEEDED" | "CANCELED" | "FAILED" | "QUEUED";
+export type JobStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "RUNNING"
+  | "SUCCEEDED"
+  | "CANCELED"
+  | "FAILED"
+  | "QUEUED";
 export const JobStateEnum = /*@__PURE__*/ S.String;
 
 /** Describes list of objects to be transformed. */
@@ -432,9 +512,9 @@ export interface Manifest {
   manifestLocation?: string;
 }
 export const Manifest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "manifestLocation": S.optional(S.String),
-}),
+  S.Struct({
+    manifestLocation: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Manifest" }) as any as S.Schema<Manifest>;
 
 /** Describes prefixes of objects to be transformed. */
@@ -443,9 +523,9 @@ export interface PrefixList {
   includedObjectPrefixes?: StringList;
 }
 export const PrefixList = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "includedObjectPrefixes": S.optional(StringList),
-}),
+  S.Struct({
+    includedObjectPrefixes: S.optional(StringList),
+  }),
 ).annotate({ identifier: "PrefixList" }) as any as S.Schema<PrefixList>;
 
 /** Describes configuration of a single bucket and its objects to be transformed. */
@@ -458,15 +538,17 @@ export interface Bucket {
   prefixList?: PrefixList;
 }
 export const Bucket = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.optional(S.String),
-  "manifest": S.optional(Manifest),
-  "prefixList": S.optional(PrefixList),
-}),
+  S.Struct({
+    bucket: S.optional(S.String),
+    manifest: S.optional(Manifest),
+    prefixList: S.optional(PrefixList),
+  }),
 ).annotate({ identifier: "Bucket" }) as any as S.Schema<Bucket>;
 
 export type BucketList_ = ReadonlyArray<Bucket>;
-export const BucketList_ = /*@__PURE__*/ S.Array(Bucket) as any as S.Schema<BucketList_>;
+export const BucketList_ = /*@__PURE__*/ S.Array(
+  Bucket,
+) as any as S.Schema<BucketList_>;
 
 /** Describes list of buckets and their objects to be transformed. */
 export interface BucketList {
@@ -474,12 +556,29 @@ export interface BucketList {
   buckets?: BucketList_;
 }
 export const BucketList = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "buckets": S.optional(BucketList_),
-}),
+  S.Struct({
+    buckets: S.optional(BucketList_),
+  }),
 ).annotate({ identifier: "BucketList" }) as any as S.Schema<BucketList>;
 
-export type ErrorSummaryErrorCodeEnum = "OK" | "CANCELLED" | "UNKNOWN" | "INVALID_ARGUMENT" | "DEADLINE_EXCEEDED" | "NOT_FOUND" | "ALREADY_EXISTS" | "PERMISSION_DENIED" | "UNAUTHENTICATED" | "RESOURCE_EXHAUSTED" | "FAILED_PRECONDITION" | "ABORTED" | "OUT_OF_RANGE" | "UNIMPLEMENTED" | "INTERNAL" | "UNAVAILABLE" | "DATA_LOSS";
+export type ErrorSummaryErrorCodeEnum =
+  | "OK"
+  | "CANCELLED"
+  | "UNKNOWN"
+  | "INVALID_ARGUMENT"
+  | "DEADLINE_EXCEEDED"
+  | "NOT_FOUND"
+  | "ALREADY_EXISTS"
+  | "PERMISSION_DENIED"
+  | "UNAUTHENTICATED"
+  | "RESOURCE_EXHAUSTED"
+  | "FAILED_PRECONDITION"
+  | "ABORTED"
+  | "OUT_OF_RANGE"
+  | "UNIMPLEMENTED"
+  | "INTERNAL"
+  | "UNAVAILABLE"
+  | "DATA_LOSS";
 export const ErrorSummaryErrorCodeEnum = /*@__PURE__*/ S.String;
 
 /** An entry describing an error that has occurred. */
@@ -490,14 +589,16 @@ export interface ErrorLogEntry {
   objectUri?: string;
 }
 export const ErrorLogEntry = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "errorDetails": S.optional(StringList),
-  "objectUri": S.optional(S.String),
-}),
+  S.Struct({
+    errorDetails: S.optional(StringList),
+    objectUri: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ErrorLogEntry" }) as any as S.Schema<ErrorLogEntry>;
 
 export type ErrorLogEntryList = ReadonlyArray<ErrorLogEntry>;
-export const ErrorLogEntryList = /*@__PURE__*/ S.Array(ErrorLogEntry) as any as S.Schema<ErrorLogEntryList>;
+export const ErrorLogEntryList = /*@__PURE__*/ S.Array(
+  ErrorLogEntry,
+) as any as S.Schema<ErrorLogEntryList>;
 
 /** A summary of errors by error code, plus a count and sample error log entries. */
 export interface ErrorSummary {
@@ -509,15 +610,17 @@ export interface ErrorSummary {
   errorLogEntries?: ErrorLogEntryList;
 }
 export const ErrorSummary = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "errorCount": S.optional(S.String),
-  "errorCode": S.optional(ErrorSummaryErrorCodeEnum),
-  "errorLogEntries": S.optional(ErrorLogEntryList),
-}),
+  S.Struct({
+    errorCount: S.optional(S.String),
+    errorCode: S.optional(ErrorSummaryErrorCodeEnum),
+    errorLogEntries: S.optional(ErrorLogEntryList),
+  }),
 ).annotate({ identifier: "ErrorSummary" }) as any as S.Schema<ErrorSummary>;
 
 export type ErrorSummaryList = ReadonlyArray<ErrorSummary>;
-export const ErrorSummaryList = /*@__PURE__*/ S.Array(ErrorSummary) as any as S.Schema<ErrorSummaryList>;
+export const ErrorSummaryList = /*@__PURE__*/ S.Array(
+  ErrorSummary,
+) as any as S.Schema<ErrorSummaryList>;
 
 /** The storage batch operations job description. */
 export interface Job {
@@ -561,27 +664,27 @@ export interface Job {
   errorSummaries?: ErrorSummaryList;
 }
 export const Job = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "setObjectAcls": S.optional(SetObjectAcls),
-  "completeTime": S.optional(S.String),
-  "projectSource": S.optional(ProjectSource),
-  "name": S.optional(S.String),
-  "rewriteObject": S.optional(RewriteObject),
-  "loggingConfig": S.optional(LoggingConfig),
-  "scheduleTime": S.optional(S.String),
-  "counters": S.optional(Counters),
-  "dryRun": S.optional(S.Boolean),
-  "putObjectHold": S.optional(PutObjectHold),
-  "createTime": S.optional(S.String),
-  "deleteObject": S.optional(DeleteObject),
-  "putMetadata": S.optional(PutMetadata),
-  "updateObjectCustomContext": S.optional(UpdateObjectCustomContext),
-  "state": S.optional(JobStateEnum),
-  "isMultiBucketJob": S.optional(S.Boolean),
-  "description": S.optional(S.String),
-  "bucketList": S.optional(BucketList),
-  "errorSummaries": S.optional(ErrorSummaryList),
-}),
+  S.Struct({
+    setObjectAcls: S.optional(SetObjectAcls),
+    completeTime: S.optional(S.String),
+    projectSource: S.optional(ProjectSource),
+    name: S.optional(S.String),
+    rewriteObject: S.optional(RewriteObject),
+    loggingConfig: S.optional(LoggingConfig),
+    scheduleTime: S.optional(S.String),
+    counters: S.optional(Counters),
+    dryRun: S.optional(S.Boolean),
+    putObjectHold: S.optional(PutObjectHold),
+    createTime: S.optional(S.String),
+    deleteObject: S.optional(DeleteObject),
+    putMetadata: S.optional(PutMetadata),
+    updateObjectCustomContext: S.optional(UpdateObjectCustomContext),
+    state: S.optional(JobStateEnum),
+    isMultiBucketJob: S.optional(S.Boolean),
+    description: S.optional(S.String),
+    bucketList: S.optional(BucketList),
+    errorSummaries: S.optional(ErrorSummaryList),
+  }),
 ).annotate({ identifier: "Job" }) as any as S.Schema<Job>;
 
 export interface CreateProjectsLocationsJobsRequest {
@@ -595,19 +698,32 @@ export interface CreateProjectsLocationsJobsRequest {
   body?: Job;
 }
 export const CreateProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "jobId": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Job.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/jobs","baseUrl":"https://storagebatchoperations.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsJobsRequest" }) as any as S.Schema<CreateProjectsLocationsJobsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    jobId: S.optional(S.String.pipe(T.Query())),
+    requestId: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(Job.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/jobs",
+      baseUrl: "https://storagebatchoperations.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateProjectsLocationsJobsRequest",
+}) as any as S.Schema<CreateProjectsLocationsJobsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -619,11 +735,11 @@ export interface Status {
   message?: string;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "details": S.optional(DocumentMapList),
-  "code": S.optional(S.Number),
-  "message": S.optional(S.String),
-}),
+  S.Struct({
+    details: S.optional(DocumentMapList),
+    code: S.optional(S.Number),
+    message: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -640,13 +756,13 @@ export interface Operation {
   response?: DocumentMap;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "metadata": S.optional(DocumentMap),
-  "error": S.optional(Status),
-  "done": S.optional(S.Boolean),
-  "name": S.optional(S.String),
-  "response": S.optional(DocumentMap),
-}),
+  S.Struct({
+    metadata: S.optional(DocumentMap),
+    error: S.optional(Status),
+    done: S.optional(S.Boolean),
+    name: S.optional(S.String),
+    response: S.optional(DocumentMap),
+  }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 export interface DeleteProjectsLocationsJobsRequest {
@@ -658,32 +774,57 @@ export interface DeleteProjectsLocationsJobsRequest {
   force?: boolean;
 }
 export const DeleteProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "force": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://storagebatchoperations.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsJobsRequest" }) as any as S.Schema<DeleteProjectsLocationsJobsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    requestId: S.optional(S.String.pipe(T.Query())),
+    force: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://storagebatchoperations.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteProjectsLocationsJobsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsJobsRequest>;
 
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://storagebatchoperations.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsOperationsRequest" }) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://storagebatchoperations.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsOperationsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
 
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://storagebatchoperations.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://storagebatchoperations.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsRequest",
+}) as any as S.Schema<GetProjectsLocationsRequest>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -699,13 +840,13 @@ export interface Location {
   displayName?: string;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "locationId": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "metadata": S.optional(DocumentMap),
-  "displayName": S.optional(S.String),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    locationId: S.optional(S.String),
+    labels: S.optional(StringMap),
+    metadata: S.optional(DocumentMap),
+    displayName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export interface GetProjectsLocationsJobsRequest {
@@ -713,22 +854,45 @@ export interface GetProjectsLocationsJobsRequest {
   name: string;
 }
 export const GetProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://storagebatchoperations.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsJobsRequest" }) as any as S.Schema<GetProjectsLocationsJobsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://storagebatchoperations.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsJobsRequest",
+}) as any as S.Schema<GetProjectsLocationsJobsRequest>;
 
 export interface GetProjectsLocationsJobsBucketOperationsRequest {
   /** Required. The `name` of the bucket operation to retrieve. Format: `projects/{project_id}/locations/global/jobs/{job_id}/bucketOperations/{bucket_operation_id}`. */
   name: string;
 }
-export const GetProjectsLocationsJobsBucketOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://storagebatchoperations.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsJobsBucketOperationsRequest" }) as any as S.Schema<GetProjectsLocationsJobsBucketOperationsRequest>;
+export const GetProjectsLocationsJobsBucketOperationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://storagebatchoperations.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsJobsBucketOperationsRequest",
+  }) as any as S.Schema<GetProjectsLocationsJobsBucketOperationsRequest>;
 
-export type BucketOperationStateEnum = "STATE_UNSPECIFIED" | "QUEUED" | "RUNNING" | "SUCCEEDED" | "CANCELED" | "FAILED";
+export type BucketOperationStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "QUEUED"
+  | "RUNNING"
+  | "SUCCEEDED"
+  | "CANCELED"
+  | "FAILED";
 export const BucketOperationStateEnum = /*@__PURE__*/ S.String;
 
 /** BucketOperation represents a bucket-level breakdown of a Job. */
@@ -769,36 +933,47 @@ export interface BucketOperation {
   counters?: Counters;
 }
 export const BucketOperation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "prefixList": S.optional(PrefixList),
-  "deleteObject": S.optional(DeleteObject),
-  "putMetadata": S.optional(PutMetadata),
-  "startTime": S.optional(S.String),
-  "manifest": S.optional(Manifest),
-  "putObjectHold": S.optional(PutObjectHold),
-  "createTime": S.optional(S.String),
-  "updateObjectCustomContext": S.optional(UpdateObjectCustomContext),
-  "state": S.optional(BucketOperationStateEnum),
-  "errorSummaries": S.optional(ErrorSummaryList),
-  "bucketName": S.optional(S.String),
-  "projectSource": S.optional(ProjectSource),
-  "name": S.optional(S.String),
-  "rewriteObject": S.optional(RewriteObject),
-  "setObjectAcls": S.optional(SetObjectAcls),
-  "completeTime": S.optional(S.String),
-  "counters": S.optional(Counters),
-}),
-).annotate({ identifier: "BucketOperation" }) as any as S.Schema<BucketOperation>;
+  S.Struct({
+    prefixList: S.optional(PrefixList),
+    deleteObject: S.optional(DeleteObject),
+    putMetadata: S.optional(PutMetadata),
+    startTime: S.optional(S.String),
+    manifest: S.optional(Manifest),
+    putObjectHold: S.optional(PutObjectHold),
+    createTime: S.optional(S.String),
+    updateObjectCustomContext: S.optional(UpdateObjectCustomContext),
+    state: S.optional(BucketOperationStateEnum),
+    errorSummaries: S.optional(ErrorSummaryList),
+    bucketName: S.optional(S.String),
+    projectSource: S.optional(ProjectSource),
+    name: S.optional(S.String),
+    rewriteObject: S.optional(RewriteObject),
+    setObjectAcls: S.optional(SetObjectAcls),
+    completeTime: S.optional(S.String),
+    counters: S.optional(Counters),
+  }),
+).annotate({
+  identifier: "BucketOperation",
+}) as any as S.Schema<BucketOperation>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://storagebatchoperations.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://storagebatchoperations.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsOperationsRequest",
+}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export interface ListProjectsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
@@ -813,17 +988,27 @@ export interface ListProjectsLocationsRequest {
   pageToken?: string;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/locations","baseUrl":"https://storagebatchoperations.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}/locations",
+      baseUrl: "https://storagebatchoperations.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsRequest",
+}) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(
+  Location,
+) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -833,11 +1018,13 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locations": S.optional(LocationList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
+  S.Struct({
+    locations: S.optional(LocationList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListLocationsResponse",
+}) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsLocationsJobsRequest {
   /** Required. Format: projects/{project_id}/locations/global. */
@@ -852,14 +1039,22 @@ export interface ListProjectsLocationsJobsRequest {
   pageToken?: string;
 }
 export const ListProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/jobs","baseUrl":"https://storagebatchoperations.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsJobsRequest" }) as any as S.Schema<ListProjectsLocationsJobsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/jobs",
+      baseUrl: "https://storagebatchoperations.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsJobsRequest",
+}) as any as S.Schema<ListProjectsLocationsJobsRequest>;
 
 export type JobList = ReadonlyArray<Job>;
 export const JobList = /*@__PURE__*/ S.Array(Job) as any as S.Schema<JobList>;
@@ -874,12 +1069,14 @@ export interface ListJobsResponse {
   unreachable?: StringList;
 }
 export const ListJobsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "jobs": S.optional(JobList),
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListJobsResponse" }) as any as S.Schema<ListJobsResponse>;
+  S.Struct({
+    jobs: S.optional(JobList),
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListJobsResponse",
+}) as any as S.Schema<ListJobsResponse>;
 
 export interface ListProjectsLocationsJobsBucketOperationsRequest {
   /** Required. Format: `projects/{project_id}/locations/global/jobs/{job_id}`. */
@@ -893,18 +1090,29 @@ export interface ListProjectsLocationsJobsBucketOperationsRequest {
   /** Optional. The list page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsJobsBucketOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/bucketOperations","baseUrl":"https://storagebatchoperations.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsJobsBucketOperationsRequest" }) as any as S.Schema<ListProjectsLocationsJobsBucketOperationsRequest>;
+export const ListProjectsLocationsJobsBucketOperationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/bucketOperations",
+        baseUrl: "https://storagebatchoperations.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsJobsBucketOperationsRequest",
+  }) as any as S.Schema<ListProjectsLocationsJobsBucketOperationsRequest>;
 
 export type BucketOperationList = ReadonlyArray<BucketOperation>;
-export const BucketOperationList = /*@__PURE__*/ S.Array(BucketOperation) as any as S.Schema<BucketOperationList>;
+export const BucketOperationList = /*@__PURE__*/ S.Array(
+  BucketOperation,
+) as any as S.Schema<BucketOperationList>;
 
 /** Message for response to listing BucketOperations */
 export interface ListBucketOperationsResponse {
@@ -916,12 +1124,14 @@ export interface ListBucketOperationsResponse {
   nextPageToken?: string;
 }
 export const ListBucketOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "unreachable": S.optional(StringList),
-  "bucketOperations": S.optional(BucketOperationList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListBucketOperationsResponse" }) as any as S.Schema<ListBucketOperationsResponse>;
+  S.Struct({
+    unreachable: S.optional(StringList),
+    bucketOperations: S.optional(BucketOperationList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListBucketOperationsResponse",
+}) as any as S.Schema<ListBucketOperationsResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page size. */
@@ -935,18 +1145,29 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/operations","baseUrl":"https://storagebatchoperations.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}/operations",
+        baseUrl: "https://storagebatchoperations.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsOperationsRequest",
+}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(
+  Operation,
+) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -958,14 +1179,21 @@ export interface ListOperationsResponse {
   nextPageToken?: string;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "unreachable": S.optional(StringList),
-  "operations": S.optional(OperationList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
+  S.Struct({
+    unreachable: S.optional(StringList),
+    operations: S.optional(OperationList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListOperationsResponse",
+}) as any as S.Schema<ListOperationsResponse>;
 
-export type CancelProjectsLocationsJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CancelProjectsLocationsJobsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Cancels a batch job. */
 export const cancelProjectsLocationsJobs: API.OperationMethod<
   CancelProjectsLocationsJobsRequest,
@@ -980,7 +1208,12 @@ export const cancelProjectsLocationsJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CancelProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CancelProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsRequest,
@@ -995,7 +1228,12 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsJobsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a batch job. */
 export const createProjectsLocationsJobs: API.OperationMethod<
   CreateProjectsLocationsJobsRequest,
@@ -1010,7 +1248,12 @@ export const createProjectsLocationsJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsJobsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a batch job. */
 export const deleteProjectsLocationsJobs: API.OperationMethod<
   DeleteProjectsLocationsJobsRequest,
@@ -1025,7 +1268,12 @@ export const deleteProjectsLocationsJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsRequest,
@@ -1070,7 +1318,10 @@ export const getProjectsLocationsJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsJobsBucketOperationsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsJobsBucketOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets a BucketOperation. */
 export const getProjectsLocationsJobsBucketOperations: API.OperationMethod<
   GetProjectsLocationsJobsBucketOperationsRequest,
@@ -1085,7 +1336,10 @@ export const getProjectsLocationsJobsBucketOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -1113,7 +1367,10 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListProjectsLocationsJobsError = NotFound | Forbidden | GcpOpError;
@@ -1129,10 +1386,16 @@ export const listProjectsLocationsJobs: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsJobsBucketOperationsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsJobsBucketOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists BucketOperations in a given project and job. */
 export const listProjectsLocationsJobsBucketOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsJobsBucketOperationsRequest,
@@ -1145,10 +1408,16 @@ export const listProjectsLocationsJobsBucketOperations: API.PaginatedOperationMe
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -1161,6 +1430,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
-

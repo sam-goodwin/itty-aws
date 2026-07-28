@@ -13,61 +13,70 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
-export type ProjectLifecycleStateEnum = "LIFECYCLE_STATE_UNSPECIFIED" | "ACTIVE" | "DELETE_REQUESTED" | "DELETE_IN_PROGRESS";
+export type ProjectLifecycleStateEnum =
+  | "LIFECYCLE_STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "DELETE_REQUESTED"
+  | "DELETE_IN_PROGRESS";
 export const ProjectLifecycleStateEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
 /** A container to reference an id for any resource type. A `resource` in Google Cloud Platform is a generic term for something you (a developer) may want to interact with through one of our API's. Some examples are an App Engine app, a Compute Engine instance, a Cloud SQL database, and so on. */
 export interface ResourceId {
@@ -77,10 +86,10 @@ export interface ResourceId {
   id?: string;
 }
 export const ResourceId = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(S.String),
-  "id": S.optional(S.String),
-}),
+  S.Struct({
+    type: S.optional(S.String),
+    id: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ResourceId" }) as any as S.Schema<ResourceId>;
 
 /** A Project is a high-level Google Cloud Platform entity. It is a container for ACLs, APIs, App Engine Apps, VMs, and other Google Cloud Platform resources. */
@@ -103,16 +112,16 @@ export interface Project {
   parent?: ResourceId;
 }
 export const Project = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "projectNumber": S.optional(S.String),
-  "projectId": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "lifecycleState": S.optional(ProjectLifecycleStateEnum),
-  "configuredCapabilities": S.optional(StringList),
-  "labels": S.optional(StringMap),
-  "parent": S.optional(ResourceId),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    projectNumber: S.optional(S.String),
+    projectId: S.optional(S.String),
+    createTime: S.optional(S.String),
+    lifecycleState: S.optional(ProjectLifecycleStateEnum),
+    configuredCapabilities: S.optional(StringList),
+    labels: S.optional(StringMap),
+    parent: S.optional(ResourceId),
+  }),
 ).annotate({ identifier: "Project" }) as any as S.Schema<Project>;
 
 export interface CreateProjectsRequest {
@@ -122,33 +131,51 @@ export interface CreateProjectsRequest {
   body?: Project;
 }
 export const CreateProjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "useLegacyStack": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(Project.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/projects","baseUrl":"https://cloudresourcemanager.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsRequest" }) as any as S.Schema<CreateProjectsRequest>;
+  S.Struct({
+    useLegacyStack: S.optional(S.Boolean.pipe(T.Query())),
+    body: S.optional(Project.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1/projects",
+      baseUrl: "https://cloudresourcemanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateProjectsRequest",
+}) as any as S.Schema<CreateProjectsRequest>;
 
 export interface DeleteProjectsRequest {
   /** The Project ID (for example, `foo-bar-123`). */
   projectId: string;
 }
 export const DeleteProjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/projects/{projectId}","baseUrl":"https://cloudresourcemanager.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsRequest" }) as any as S.Schema<DeleteProjectsRequest>;
+  S.Struct({
+    projectId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1beta1/projects/{projectId}",
+      baseUrl: "https://cloudresourcemanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteProjectsRequest",
+}) as any as S.Schema<DeleteProjectsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 /** The request sent to the [google.cloudresourcemanager.projects.v1beta1.DeveloperProjects.GetAncestry] method. */
 export interface GetAncestryRequest {}
 export const GetAncestryRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "GetAncestryRequest" }) as any as S.Schema<GetAncestryRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "GetAncestryRequest",
+}) as any as S.Schema<GetAncestryRequest>;
 
 export interface GetAncestryProjectsRequest {
   /** Required. The Project ID (for example, `my-project-123`). */
@@ -157,11 +184,19 @@ export interface GetAncestryProjectsRequest {
   body?: GetAncestryRequest;
 }
 export const GetAncestryProjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectId": S.String.pipe(T.Label()),
-  "body": S.optional(GetAncestryRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/projects/{projectId}:getAncestry","baseUrl":"https://cloudresourcemanager.googleapis.com/"})),
-).annotate({ identifier: "GetAncestryProjectsRequest" }) as any as S.Schema<GetAncestryProjectsRequest>;
+  S.Struct({
+    projectId: S.String.pipe(T.Label()),
+    body: S.optional(GetAncestryRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1/projects/{projectId}:getAncestry",
+      baseUrl: "https://cloudresourcemanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetAncestryProjectsRequest",
+}) as any as S.Schema<GetAncestryProjectsRequest>;
 
 /** Identifying information for a single ancestor of a project. */
 export interface Ancestor {
@@ -169,13 +204,15 @@ export interface Ancestor {
   resourceId?: ResourceId;
 }
 export const Ancestor = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.optional(ResourceId),
-}),
+  S.Struct({
+    resourceId: S.optional(ResourceId),
+  }),
 ).annotate({ identifier: "Ancestor" }) as any as S.Schema<Ancestor>;
 
 export type AncestorList = ReadonlyArray<Ancestor>;
-export const AncestorList = /*@__PURE__*/ S.Array(Ancestor) as any as S.Schema<AncestorList>;
+export const AncestorList = /*@__PURE__*/ S.Array(
+  Ancestor,
+) as any as S.Schema<AncestorList>;
 
 /** Response from the projects.getAncestry method. */
 export interface GetAncestryResponse {
@@ -183,10 +220,12 @@ export interface GetAncestryResponse {
   ancestor?: AncestorList;
 }
 export const GetAncestryResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "ancestor": S.optional(AncestorList),
-}),
-).annotate({ identifier: "GetAncestryResponse" }) as any as S.Schema<GetAncestryResponse>;
+  S.Struct({
+    ancestor: S.optional(AncestorList),
+  }),
+).annotate({
+  identifier: "GetAncestryResponse",
+}) as any as S.Schema<GetAncestryResponse>;
 
 /** Encapsulates settings provided to GetIamPolicy. */
 export interface GetPolicyOptions {
@@ -194,10 +233,12 @@ export interface GetPolicyOptions {
   requestedPolicyVersion?: number;
 }
 export const GetPolicyOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestedPolicyVersion": S.optional(S.Number),
-}),
-).annotate({ identifier: "GetPolicyOptions" }) as any as S.Schema<GetPolicyOptions>;
+  S.Struct({
+    requestedPolicyVersion: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "GetPolicyOptions",
+}) as any as S.Schema<GetPolicyOptions>;
 
 /** Request message for `GetIamPolicy` method. */
 export interface GetIamPolicyRequest {
@@ -205,10 +246,12 @@ export interface GetIamPolicyRequest {
   options?: GetPolicyOptions;
 }
 export const GetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "options": S.optional(GetPolicyOptions),
-}),
-).annotate({ identifier: "GetIamPolicyRequest" }) as any as S.Schema<GetIamPolicyRequest>;
+  S.Struct({
+    options: S.optional(GetPolicyOptions),
+  }),
+).annotate({
+  identifier: "GetIamPolicyRequest",
+}) as any as S.Schema<GetIamPolicyRequest>;
 
 export interface GetIamPolicyOrganizationsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -217,11 +260,19 @@ export interface GetIamPolicyOrganizationsRequest {
   body?: GetIamPolicyRequest;
 }
 export const GetIamPolicyOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+resource}:getIamPolicy","baseUrl":"https://cloudresourcemanager.googleapis.com/"})),
-).annotate({ identifier: "GetIamPolicyOrganizationsRequest" }) as any as S.Schema<GetIamPolicyOrganizationsRequest>;
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1/{+resource}:getIamPolicy",
+      baseUrl: "https://cloudresourcemanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetIamPolicyOrganizationsRequest",
+}) as any as S.Schema<GetIamPolicyOrganizationsRequest>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -235,12 +286,12 @@ export interface Expr {
   description?: string;
 }
 export const Expr = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "title": S.optional(S.String),
-  "expression": S.optional(S.String),
-  "location": S.optional(S.String),
-  "description": S.optional(S.String),
-}),
+  S.Struct({
+    title: S.optional(S.String),
+    expression: S.optional(S.String),
+    location: S.optional(S.String),
+    description: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
 /** Associates `members`, or principals, with a `role`. */
@@ -253,17 +304,23 @@ export interface Binding {
   role?: string;
 }
 export const Binding = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "members": S.optional(StringList),
-  "condition": S.optional(Expr),
-  "role": S.optional(S.String),
-}),
+  S.Struct({
+    members: S.optional(StringList),
+    condition: S.optional(Expr),
+    role: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = ReadonlyArray<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+export const BindingList = /*@__PURE__*/ S.Array(
+  Binding,
+) as any as S.Schema<BindingList>;
 
-export type AuditLogConfigLogTypeEnum = "LOG_TYPE_UNSPECIFIED" | "ADMIN_READ" | "DATA_WRITE" | "DATA_READ";
+export type AuditLogConfigLogTypeEnum =
+  | "LOG_TYPE_UNSPECIFIED"
+  | "ADMIN_READ"
+  | "DATA_WRITE"
+  | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -274,14 +331,16 @@ export interface AuditLogConfig {
   logType?: AuditLogConfigLogTypeEnum;
 }
 export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "exemptedMembers": S.optional(StringList),
-  "logType": S.optional(AuditLogConfigLogTypeEnum),
-}),
+  S.Struct({
+    exemptedMembers: S.optional(StringList),
+    logType: S.optional(AuditLogConfigLogTypeEnum),
+  }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(AuditLogConfig) as any as S.Schema<AuditLogConfigList>;
+export const AuditLogConfigList = /*@__PURE__*/ S.Array(
+  AuditLogConfig,
+) as any as S.Schema<AuditLogConfigList>;
 
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface AuditConfig {
@@ -291,14 +350,16 @@ export interface AuditConfig {
   auditLogConfigs?: AuditLogConfigList;
 }
 export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "service": S.optional(S.String),
-  "auditLogConfigs": S.optional(AuditLogConfigList),
-}),
+  S.Struct({
+    service: S.optional(S.String),
+    auditLogConfigs: S.optional(AuditLogConfigList),
+  }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = ReadonlyArray<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
+export const AuditConfigList = /*@__PURE__*/ S.Array(
+  AuditConfig,
+) as any as S.Schema<AuditConfigList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -312,12 +373,12 @@ export interface Policy {
   version?: number;
 }
 export const Policy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bindings": S.optional(BindingList),
-  "auditConfigs": S.optional(AuditConfigList),
-  "etag": S.optional(S.String),
-  "version": S.optional(S.Number),
-}),
+  S.Struct({
+    bindings: S.optional(BindingList),
+    auditConfigs: S.optional(AuditConfigList),
+    etag: S.optional(S.String),
+    version: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
 
 export interface GetIamPolicyProjectsRequest {
@@ -327,11 +388,19 @@ export interface GetIamPolicyProjectsRequest {
   body?: GetIamPolicyRequest;
 }
 export const GetIamPolicyProjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/projects/{resource}:getIamPolicy","baseUrl":"https://cloudresourcemanager.googleapis.com/"})),
-).annotate({ identifier: "GetIamPolicyProjectsRequest" }) as any as S.Schema<GetIamPolicyProjectsRequest>;
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1/projects/{resource}:getIamPolicy",
+      baseUrl: "https://cloudresourcemanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetIamPolicyProjectsRequest",
+}) as any as S.Schema<GetIamPolicyProjectsRequest>;
 
 export interface GetOrganizationsRequest {
   /** The id of the Organization resource to fetch. This field is deprecated and will be removed in v1. Use name instead. */
@@ -340,13 +409,24 @@ export interface GetOrganizationsRequest {
   name: string;
 }
 export const GetOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "organizationId": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://cloudresourcemanager.googleapis.com/"})),
-).annotate({ identifier: "GetOrganizationsRequest" }) as any as S.Schema<GetOrganizationsRequest>;
+  S.Struct({
+    organizationId: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+name}",
+      baseUrl: "https://cloudresourcemanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetOrganizationsRequest",
+}) as any as S.Schema<GetOrganizationsRequest>;
 
-export type OrganizationLifecycleStateEnum = "LIFECYCLE_STATE_UNSPECIFIED" | "ACTIVE" | "DELETE_REQUESTED";
+export type OrganizationLifecycleStateEnum =
+  | "LIFECYCLE_STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "DELETE_REQUESTED";
 export const OrganizationLifecycleStateEnum = /*@__PURE__*/ S.String;
 
 /** The entity that owns an Organization. The lifetime of the Organization and all of its descendants are bound to the `OrganizationOwner`. If the `OrganizationOwner` is deleted, the Organization and all its descendants will be deleted. */
@@ -355,10 +435,12 @@ export interface OrganizationOwner {
   directoryCustomerId?: string;
 }
 export const OrganizationOwner = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "directoryCustomerId": S.optional(S.String),
-}),
-).annotate({ identifier: "OrganizationOwner" }) as any as S.Schema<OrganizationOwner>;
+  S.Struct({
+    directoryCustomerId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OrganizationOwner",
+}) as any as S.Schema<OrganizationOwner>;
 
 /** The root node in the resource hierarchy to which a particular entity's (e.g., company) resources belong. */
 export interface Organization {
@@ -376,14 +458,14 @@ export interface Organization {
   owner?: OrganizationOwner;
 }
 export const Organization = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "creationTime": S.optional(S.String),
-  "lifecycleState": S.optional(OrganizationLifecycleStateEnum),
-  "organizationId": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "name": S.optional(S.String),
-  "owner": S.optional(OrganizationOwner),
-}),
+  S.Struct({
+    creationTime: S.optional(S.String),
+    lifecycleState: S.optional(OrganizationLifecycleStateEnum),
+    organizationId: S.optional(S.String),
+    displayName: S.optional(S.String),
+    name: S.optional(S.String),
+    owner: S.optional(OrganizationOwner),
+  }),
 ).annotate({ identifier: "Organization" }) as any as S.Schema<Organization>;
 
 export interface GetProjectsRequest {
@@ -391,10 +473,18 @@ export interface GetProjectsRequest {
   projectId: string;
 }
 export const GetProjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/projects/{projectId}","baseUrl":"https://cloudresourcemanager.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsRequest" }) as any as S.Schema<GetProjectsRequest>;
+  S.Struct({
+    projectId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/projects/{projectId}",
+      baseUrl: "https://cloudresourcemanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsRequest",
+}) as any as S.Schema<GetProjectsRequest>;
 
 export interface ListOrganizationsRequest {
   /** The maximum number of Organizations to return in the response. This field is optional. */
@@ -405,15 +495,25 @@ export interface ListOrganizationsRequest {
   filter?: string;
 }
 export const ListOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/organizations","baseUrl":"https://cloudresourcemanager.googleapis.com/"})),
-).annotate({ identifier: "ListOrganizationsRequest" }) as any as S.Schema<ListOrganizationsRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/organizations",
+      baseUrl: "https://cloudresourcemanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListOrganizationsRequest",
+}) as any as S.Schema<ListOrganizationsRequest>;
 
 export type OrganizationList = ReadonlyArray<Organization>;
-export const OrganizationList = /*@__PURE__*/ S.Array(Organization) as any as S.Schema<OrganizationList>;
+export const OrganizationList = /*@__PURE__*/ S.Array(
+  Organization,
+) as any as S.Schema<OrganizationList>;
 
 /** The response returned from the `ListOrganizations` method. */
 export interface ListOrganizationsResponse {
@@ -423,11 +523,13 @@ export interface ListOrganizationsResponse {
   organizations?: OrganizationList;
 }
 export const ListOrganizationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "organizations": S.optional(OrganizationList),
-}),
-).annotate({ identifier: "ListOrganizationsResponse" }) as any as S.Schema<ListOrganizationsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    organizations: S.optional(OrganizationList),
+  }),
+).annotate({
+  identifier: "ListOrganizationsResponse",
+}) as any as S.Schema<ListOrganizationsResponse>;
 
 export interface ListProjectsRequest {
   /** A pagination token returned from a previous call to ListProjects that indicates from where listing should continue. Optional. */
@@ -438,15 +540,25 @@ export interface ListProjectsRequest {
   filter?: string;
 }
 export const ListProjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/projects","baseUrl":"https://cloudresourcemanager.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsRequest" }) as any as S.Schema<ListProjectsRequest>;
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/projects",
+      baseUrl: "https://cloudresourcemanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsRequest",
+}) as any as S.Schema<ListProjectsRequest>;
 
 export type ProjectList = ReadonlyArray<Project>;
-export const ProjectList = /*@__PURE__*/ S.Array(Project) as any as S.Schema<ProjectList>;
+export const ProjectList = /*@__PURE__*/ S.Array(
+  Project,
+) as any as S.Schema<ProjectList>;
 
 /** A page of the response received from the ListProjects method. A paginated response where more pages are available has `next_page_token` set. This token can be used in a subsequent request to retrieve the next request page. */
 export interface ListProjectsResponse {
@@ -456,11 +568,13 @@ export interface ListProjectsResponse {
   nextPageToken?: string;
 }
 export const ListProjectsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projects": S.optional(ProjectList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListProjectsResponse" }) as any as S.Schema<ListProjectsResponse>;
+  S.Struct({
+    projects: S.optional(ProjectList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListProjectsResponse",
+}) as any as S.Schema<ListProjectsResponse>;
 
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
@@ -470,11 +584,13 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "policy": S.optional(Policy),
-  "updateMask": S.optional(S.String),
-}),
-).annotate({ identifier: "SetIamPolicyRequest" }) as any as S.Schema<SetIamPolicyRequest>;
+  S.Struct({
+    policy: S.optional(Policy),
+    updateMask: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SetIamPolicyRequest",
+}) as any as S.Schema<SetIamPolicyRequest>;
 
 export interface SetIamPolicyOrganizationsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -483,11 +599,19 @@ export interface SetIamPolicyOrganizationsRequest {
   body?: SetIamPolicyRequest;
 }
 export const SetIamPolicyOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+resource}:setIamPolicy","baseUrl":"https://cloudresourcemanager.googleapis.com/"})),
-).annotate({ identifier: "SetIamPolicyOrganizationsRequest" }) as any as S.Schema<SetIamPolicyOrganizationsRequest>;
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1/{+resource}:setIamPolicy",
+      baseUrl: "https://cloudresourcemanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SetIamPolicyOrganizationsRequest",
+}) as any as S.Schema<SetIamPolicyOrganizationsRequest>;
 
 export interface SetIamPolicyProjectsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -496,11 +620,19 @@ export interface SetIamPolicyProjectsRequest {
   body?: SetIamPolicyRequest;
 }
 export const SetIamPolicyProjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/projects/{resource}:setIamPolicy","baseUrl":"https://cloudresourcemanager.googleapis.com/"})),
-).annotate({ identifier: "SetIamPolicyProjectsRequest" }) as any as S.Schema<SetIamPolicyProjectsRequest>;
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1/projects/{resource}:setIamPolicy",
+      baseUrl: "https://cloudresourcemanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SetIamPolicyProjectsRequest",
+}) as any as S.Schema<SetIamPolicyProjectsRequest>;
 
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
@@ -508,10 +640,12 @@ export interface TestIamPermissionsRequest {
   permissions?: StringList;
 }
 export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "permissions": S.optional(StringList),
-}),
-).annotate({ identifier: "TestIamPermissionsRequest" }) as any as S.Schema<TestIamPermissionsRequest>;
+  S.Struct({
+    permissions: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "TestIamPermissionsRequest",
+}) as any as S.Schema<TestIamPermissionsRequest>;
 
 export interface TestIamPermissionsOrganizationsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -519,12 +653,21 @@ export interface TestIamPermissionsOrganizationsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+resource}:testIamPermissions","baseUrl":"https://cloudresourcemanager.googleapis.com/"})),
-).annotate({ identifier: "TestIamPermissionsOrganizationsRequest" }) as any as S.Schema<TestIamPermissionsOrganizationsRequest>;
+export const TestIamPermissionsOrganizationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+resource}:testIamPermissions",
+        baseUrl: "https://cloudresourcemanager.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "TestIamPermissionsOrganizationsRequest",
+}) as any as S.Schema<TestIamPermissionsOrganizationsRequest>;
 
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
@@ -532,10 +675,12 @@ export interface TestIamPermissionsResponse {
   permissions?: StringList;
 }
 export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "permissions": S.optional(StringList),
-}),
-).annotate({ identifier: "TestIamPermissionsResponse" }) as any as S.Schema<TestIamPermissionsResponse>;
+  S.Struct({
+    permissions: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "TestIamPermissionsResponse",
+}) as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -544,17 +689,27 @@ export interface TestIamPermissionsProjectsRequest {
   body?: TestIamPermissionsRequest;
 }
 export const TestIamPermissionsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/projects/{resource}:testIamPermissions","baseUrl":"https://cloudresourcemanager.googleapis.com/"})),
-).annotate({ identifier: "TestIamPermissionsProjectsRequest" }) as any as S.Schema<TestIamPermissionsProjectsRequest>;
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1/projects/{resource}:testIamPermissions",
+      baseUrl: "https://cloudresourcemanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "TestIamPermissionsProjectsRequest",
+}) as any as S.Schema<TestIamPermissionsProjectsRequest>;
 
 /** The request sent to the UndeleteProject method. */
 export interface UndeleteProjectRequest {}
 export const UndeleteProjectRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "UndeleteProjectRequest" }) as any as S.Schema<UndeleteProjectRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "UndeleteProjectRequest",
+}) as any as S.Schema<UndeleteProjectRequest>;
 
 export interface UndeleteProjectsRequest {
   /** Required. The project ID (for example, `foo-bar-123`). */
@@ -563,11 +718,19 @@ export interface UndeleteProjectsRequest {
   body?: UndeleteProjectRequest;
 }
 export const UndeleteProjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectId": S.String.pipe(T.Label()),
-  "body": S.optional(UndeleteProjectRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/projects/{projectId}:undelete","baseUrl":"https://cloudresourcemanager.googleapis.com/"})),
-).annotate({ identifier: "UndeleteProjectsRequest" }) as any as S.Schema<UndeleteProjectsRequest>;
+  S.Struct({
+    projectId: S.String.pipe(T.Label()),
+    body: S.optional(UndeleteProjectRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1/projects/{projectId}:undelete",
+      baseUrl: "https://cloudresourcemanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UndeleteProjectsRequest",
+}) as any as S.Schema<UndeleteProjectsRequest>;
 
 export interface UpdateOrganizationsRequest {
   /** Output only. The resource name of the organization. This is the organization's relative path in the API. Its format is "organizations/[organization_id]". For example, "organizations/1234". */
@@ -576,11 +739,19 @@ export interface UpdateOrganizationsRequest {
   body?: Organization;
 }
 export const UpdateOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(Organization.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"v1beta1/{+name}","baseUrl":"https://cloudresourcemanager.googleapis.com/"})),
-).annotate({ identifier: "UpdateOrganizationsRequest" }) as any as S.Schema<UpdateOrganizationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(Organization.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "v1beta1/{+name}",
+      baseUrl: "https://cloudresourcemanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateOrganizationsRequest",
+}) as any as S.Schema<UpdateOrganizationsRequest>;
 
 export interface UpdateProjectsRequest {
   /** The project ID (for example, `my-project-123`). */
@@ -589,13 +760,26 @@ export interface UpdateProjectsRequest {
   body?: Project;
 }
 export const UpdateProjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectId": S.String.pipe(T.Label()),
-  "body": S.optional(Project.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"v1beta1/projects/{projectId}","baseUrl":"https://cloudresourcemanager.googleapis.com/"})),
-).annotate({ identifier: "UpdateProjectsRequest" }) as any as S.Schema<UpdateProjectsRequest>;
+  S.Struct({
+    projectId: S.String.pipe(T.Label()),
+    body: S.optional(Project.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "v1beta1/projects/{projectId}",
+      baseUrl: "https://cloudresourcemanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateProjectsRequest",
+}) as any as S.Schema<UpdateProjectsRequest>;
 
-export type CreateProjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a Project resource. Initially, the Project resource is owned by its creator exclusively. The creator can later grant permission to others to read or update the Project. Several APIs are activated automatically for the Project, including Google Cloud Storage. The parent is identified by a specified ResourceId, which must include both an ID and a type, such as project, folder, or organization. This method does not associate the new project with a billing account. You can set or update the billing account associated with a project using the [`projects.updateBillingInfo`] (/billing/reference/rest/v1/projects/updateBillingInfo) method. */
 export const createProjects: API.OperationMethod<
   CreateProjectsRequest,
@@ -610,7 +794,12 @@ export const createProjects: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Marks the Project identified by the specified `project_id` (for example, `my-project-123`) for deletion. This method will only affect the Project if it has a lifecycle state of ACTIVE. This method changes the Project's lifecycle state from ACTIVE to DELETE_REQUESTED. The deletion starts at an unspecified time, at which point the project is no longer accessible. Until the deletion completes, you can check the lifecycle state checked by retrieving the Project with GetProject, and the Project remains visible to ListProjects. However, you cannot update the project. After the deletion completes, the Project is not retrievable by the GetProject and ListProjects methods. The caller must have delete permissions for this Project. */
 export const deleteProjects: API.OperationMethod<
   DeleteProjectsRequest,
@@ -625,7 +814,12 @@ export const deleteProjects: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAncestryProjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type GetAncestryProjectsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Gets a list of ancestors in the resource hierarchy for the Project identified by the specified `project_id` (for example, `my-project-123`). The caller must have read permissions for this Project. */
 export const getAncestryProjects: API.OperationMethod<
   GetAncestryProjectsRequest,
@@ -640,7 +834,12 @@ export const getAncestryProjects: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyOrganizationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type GetIamPolicyOrganizationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Gets the access control policy for an Organization resource. May be empty if no such policy or resource exists. The `resource` field should be the organization's resource name, e.g. "organizations/123". */
 export const getIamPolicyOrganizations: API.OperationMethod<
   GetIamPolicyOrganizationsRequest,
@@ -655,7 +854,12 @@ export const getIamPolicyOrganizations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type GetIamPolicyProjectsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Returns the IAM access control policy for the specified Project. Permission is denied if the policy or the resource does not exist. For additional information about resource structure and identification, see [Resource Names](/apis/design/resource_names). */
 export const getIamPolicyProjects: API.OperationMethod<
   GetIamPolicyProjectsRequest,
@@ -713,7 +917,10 @@ export const listOrganizations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListProjectsError = NotFound | Forbidden | GcpOpError;
@@ -729,10 +936,18 @@ export const listProjects: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type SetIamPolicyOrganizationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetIamPolicyOrganizationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sets the access control policy on an Organization resource. Replaces any existing policy. The `resource` field should be the organization's resource name, e.g. "organizations/123". */
 export const setIamPolicyOrganizations: API.OperationMethod<
   SetIamPolicyOrganizationsRequest,
@@ -747,7 +962,12 @@ export const setIamPolicyOrganizations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetIamPolicyProjectsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sets the IAM access control policy for the specified Project. CAUTION: This method will replace the existing policy, and cannot be used to append additional IAM settings. NOTE: Removing service accounts from policies or changing their roles can render services completely inoperable. It is important to understand how the service account is being used before removing or updating its roles. The following constraints apply when using `setIamPolicy()`: + Project does not support `allUsers` and `allAuthenticatedUsers` as `members` in a `Binding` of a `Policy`. + The owner role can be granted to a `user`, `serviceAccount`, or a group that is part of an organization. For example, group@myownpersonaldomain.com could be added as an owner to a project in the myownpersonaldomain.com organization, but not the examplepetstore.com organization. + Service accounts can be made owners of a project directly without any restrictions. However, to be added as an owner, a user must be invited via Cloud Platform console and must accept the invitation. + A user cannot be granted the owner role using `setIamPolicy()`. The user must be granted the owner role using the Cloud Platform Console and must explicitly accept the invitation. + Invitations to grant the owner role cannot be sent using `setIamPolicy()`; they must be sent only using the Cloud Platform Console. + Membership changes that leave the project without any owners that have accepted the Terms of Service (ToS) will be rejected. + If the project is not part of an organization, there must be at least one owner who has accepted the Terms of Service (ToS) agreement in the policy. Calling `setIamPolicy()` to remove the last ToS-accepted owner from the policy will fail. This restriction also applies to legacy projects that no longer have owners who have accepted the ToS. Edits to IAM policies will be rejected until the lack of a ToS-accepting owner is rectified. Authorization requires the Google IAM permission `resourcemanager.projects.setIamPolicy` on the project */
 export const setIamPolicyProjects: API.OperationMethod<
   SetIamPolicyProjectsRequest,
@@ -762,7 +982,12 @@ export const setIamPolicyProjects: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsOrganizationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TestIamPermissionsOrganizationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Returns permissions that a caller has on the specified Organization. The `resource` field should be the organization's resource name, e.g. "organizations/123". */
 export const testIamPermissionsOrganizations: API.OperationMethod<
   TestIamPermissionsOrganizationsRequest,
@@ -777,7 +1002,12 @@ export const testIamPermissionsOrganizations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TestIamPermissionsProjectsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Returns permissions that a caller has on the specified Project. */
 export const testIamPermissionsProjects: API.OperationMethod<
   TestIamPermissionsProjectsRequest,
@@ -792,7 +1022,12 @@ export const testIamPermissionsProjects: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UndeleteProjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UndeleteProjectsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Restores the Project identified by the specified `project_id` (for example, `my-project-123`). You can only use this method for a Project that has a lifecycle state of DELETE_REQUESTED. After deletion starts, the Project cannot be restored. The caller must have undelete permissions for this Project. */
 export const undeleteProjects: API.OperationMethod<
   UndeleteProjectsRequest,
@@ -807,7 +1042,12 @@ export const undeleteProjects: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateOrganizationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateOrganizationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates an Organization resource identified by the specified resource name. */
 export const updateOrganizations: API.OperationMethod<
   UpdateOrganizationsRequest,
@@ -822,7 +1062,12 @@ export const updateOrganizations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateProjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateProjectsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the attributes of the Project identified by the specified `project_id` (for example, `my-project-123`). The caller must have modify permissions for this Project. */
 export const updateProjects: API.OperationMethod<
   UpdateProjectsRequest,
@@ -836,4 +1081,3 @@ export const updateProjects: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

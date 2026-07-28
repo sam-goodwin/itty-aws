@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export interface TranslatedString {
@@ -69,15 +69,19 @@ export interface TranslatedString {
   language?: string;
 }
 export const TranslatedString = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "value": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "language": S.optional(S.String),
-}),
-).annotate({ identifier: "TranslatedString" }) as any as S.Schema<TranslatedString>;
+  S.Struct({
+    value: S.optional(S.String),
+    kind: S.optional(S.String),
+    language: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "TranslatedString",
+}) as any as S.Schema<TranslatedString>;
 
 export type TranslatedStringList = ReadonlyArray<TranslatedString>;
-export const TranslatedStringList = /*@__PURE__*/ S.Array(TranslatedString) as any as S.Schema<TranslatedStringList>;
+export const TranslatedStringList = /*@__PURE__*/ S.Array(
+  TranslatedString,
+) as any as S.Schema<TranslatedStringList>;
 
 export interface LocalizedString {
   /** Contains the string to be displayed if no appropriate translation is available. */
@@ -88,21 +92,23 @@ export interface LocalizedString {
   translatedValues?: TranslatedStringList;
 }
 export const LocalizedString = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "defaultValue": S.optional(TranslatedString),
-  "kind": S.optional(S.String),
-  "translatedValues": S.optional(TranslatedStringList),
-}),
-).annotate({ identifier: "LocalizedString" }) as any as S.Schema<LocalizedString>;
+  S.Struct({
+    defaultValue: S.optional(TranslatedString),
+    kind: S.optional(S.String),
+    translatedValues: S.optional(TranslatedStringList),
+  }),
+).annotate({
+  identifier: "LocalizedString",
+}) as any as S.Schema<LocalizedString>;
 
 export interface DateTime {
   /** An ISO 8601 extended format date/time. Offset may or may not be required (refer to the parent field's documentation). Time may be specified up to nanosecond precision. Offsets may be specified with seconds precision (even though offset seconds is not part of ISO 8601). For example: `1985-04-12T23:20:50.52Z` would be 20 minutes and 50.52 seconds after the 23rd hour of April 12th, 1985 in UTC. `1985-04-12T19:20:50.52-04:00` would be 20 minutes and 50.52 seconds after the 19th hour of April 12th, 1985, 4 hours before UTC (same instant in time as the above example). If the date/time is intended for a physical location in New York, this would be the equivalent of Eastern Daylight Time (EDT). Remember that offset varies in regions that observe Daylight Saving Time (or Summer Time), depending on the time of the year. `1985-04-12T19:20:50.52` would be 20 minutes and 50.52 seconds after the 19th hour of April 12th, 1985 with no offset information. Providing an offset makes this an absolute instant in time around the world. The date/time will be adjusted based on the user's time zone. For example, a time of `2018-06-19T18:30:00-04:00` will be 18:30:00 for a user in New York and 15:30:00 for a user in Los Angeles. Omitting the offset makes this a local date/time, representing several instants in time around the world. The date/time will always be in the user's current time zone. For example, a time of `2018-06-19T18:30:00` will be 18:30:00 for a user in New York and also 18:30:00 for a user in Los Angeles. This is useful when the same local date/time should apply to many physical locations across several time zones. */
   date?: string;
 }
 export const DateTime = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "date": S.optional(S.String),
-}),
+  S.Struct({
+    date: S.optional(S.String),
+  }),
 ).annotate({ identifier: "DateTime" }) as any as S.Schema<DateTime>;
 
 export interface TimeInterval {
@@ -114,14 +120,20 @@ export interface TimeInterval {
   start?: DateTime;
 }
 export const TimeInterval = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "end": S.optional(DateTime),
-  "kind": S.optional(S.String),
-  "start": S.optional(DateTime),
-}),
+  S.Struct({
+    end: S.optional(DateTime),
+    kind: S.optional(S.String),
+    start: S.optional(DateTime),
+  }),
 ).annotate({ identifier: "TimeInterval" }) as any as S.Schema<TimeInterval>;
 
-export type MessageMessageTypeEnum = "MESSAGE_TYPE_UNSPECIFIED" | "TEXT" | "text" | "EXPIRATION_NOTIFICATION" | "expirationNotification" | "TEXT_AND_NOTIFY";
+export type MessageMessageTypeEnum =
+  | "MESSAGE_TYPE_UNSPECIFIED"
+  | "TEXT"
+  | "text"
+  | "EXPIRATION_NOTIFICATION"
+  | "expirationNotification"
+  | "TEXT_AND_NOTIFY";
 export const MessageMessageTypeEnum = /*@__PURE__*/ S.String;
 
 /** A message that will be displayed with a Valuable */
@@ -144,16 +156,16 @@ export interface Message {
   messageType?: MessageMessageTypeEnum;
 }
 export const Message = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "header": S.optional(S.String),
-  "body": S.optional(S.String),
-  "localizedHeader": S.optional(LocalizedString),
-  "localizedBody": S.optional(LocalizedString),
-  "kind": S.optional(S.String),
-  "id": S.optional(S.String),
-  "displayInterval": S.optional(TimeInterval),
-  "messageType": S.optional(MessageMessageTypeEnum),
-}),
+  S.Struct({
+    header: S.optional(S.String),
+    body: S.optional(S.String),
+    localizedHeader: S.optional(LocalizedString),
+    localizedBody: S.optional(LocalizedString),
+    kind: S.optional(S.String),
+    id: S.optional(S.String),
+    displayInterval: S.optional(TimeInterval),
+    messageType: S.optional(MessageMessageTypeEnum),
+  }),
 ).annotate({ identifier: "Message" }) as any as S.Schema<Message>;
 
 /** Resource used when the AddMessage endpoints are called. */
@@ -161,10 +173,12 @@ export interface AddMessageRequest {
   message?: Message;
 }
 export const AddMessageRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "message": S.optional(Message),
-}),
-).annotate({ identifier: "AddMessageRequest" }) as any as S.Schema<AddMessageRequest>;
+  S.Struct({
+    message: S.optional(Message),
+  }),
+).annotate({
+  identifier: "AddMessageRequest",
+}) as any as S.Schema<AddMessageRequest>;
 
 export interface AddmessageEventticketclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
@@ -173,13 +187,28 @@ export interface AddmessageEventticketclassRequest {
   body?: AddMessageRequest;
 }
 export const AddmessageEventticketclassRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-  "body": S.optional(AddMessageRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"walletobjects/v1/eventTicketClass/{resourceId}/addMessage","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "AddmessageEventticketclassRequest" }) as any as S.Schema<AddmessageEventticketclassRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    body: S.optional(AddMessageRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "walletobjects/v1/eventTicketClass/{resourceId}/addMessage",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "AddmessageEventticketclassRequest",
+}) as any as S.Schema<AddmessageEventticketclassRequest>;
 
-export type EventTicketClassGateLabelEnum = "GATE_LABEL_UNSPECIFIED" | "GATE" | "gate" | "DOOR" | "door" | "ENTRANCE" | "entrance";
+export type EventTicketClassGateLabelEnum =
+  | "GATE_LABEL_UNSPECIFIED"
+  | "GATE"
+  | "gate"
+  | "DOOR"
+  | "door"
+  | "ENTRANCE"
+  | "entrance";
 export const EventTicketClassGateLabelEnum = /*@__PURE__*/ S.String;
 
 /** Locations of interest for this class or object. Currently, this location is used for geofenced notifications. When a user is within a set radius of this lat/long, and dwells there, Google will trigger a notification. When a user exits this radius, the notification will be hidden. */
@@ -190,14 +219,18 @@ export interface MerchantLocation {
   longitude?: number;
 }
 export const MerchantLocation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "latitude": S.optional(S.Number),
-  "longitude": S.optional(S.Number),
-}),
-).annotate({ identifier: "MerchantLocation" }) as any as S.Schema<MerchantLocation>;
+  S.Struct({
+    latitude: S.optional(S.Number),
+    longitude: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "MerchantLocation",
+}) as any as S.Schema<MerchantLocation>;
 
 export type MerchantLocationList = ReadonlyArray<MerchantLocation>;
-export const MerchantLocationList = /*@__PURE__*/ S.Array(MerchantLocation) as any as S.Schema<MerchantLocationList>;
+export const MerchantLocationList = /*@__PURE__*/ S.Array(
+  MerchantLocation,
+) as any as S.Schema<MerchantLocationList>;
 
 /** A pair of text strings to be displayed in the details view. Note we no longer display LabelValue/LabelValueRow as a table, instead a list of items. */
 export interface LabelValue {
@@ -211,29 +244,33 @@ export interface LabelValue {
   label?: string;
 }
 export const LabelValue = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "value": S.optional(S.String),
-  "localizedLabel": S.optional(LocalizedString),
-  "localizedValue": S.optional(LocalizedString),
-  "label": S.optional(S.String),
-}),
+  S.Struct({
+    value: S.optional(S.String),
+    localizedLabel: S.optional(LocalizedString),
+    localizedValue: S.optional(LocalizedString),
+    label: S.optional(S.String),
+  }),
 ).annotate({ identifier: "LabelValue" }) as any as S.Schema<LabelValue>;
 
 export type LabelValueList = ReadonlyArray<LabelValue>;
-export const LabelValueList = /*@__PURE__*/ S.Array(LabelValue) as any as S.Schema<LabelValueList>;
+export const LabelValueList = /*@__PURE__*/ S.Array(
+  LabelValue,
+) as any as S.Schema<LabelValueList>;
 
 export interface LabelValueRow {
   /** A list of labels and values. These will be displayed in a singular column, one after the other, not in multiple columns, despite the field name. */
   columns?: LabelValueList;
 }
 export const LabelValueRow = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "columns": S.optional(LabelValueList),
-}),
+  S.Struct({
+    columns: S.optional(LabelValueList),
+  }),
 ).annotate({ identifier: "LabelValueRow" }) as any as S.Schema<LabelValueRow>;
 
 export type LabelValueRowList = ReadonlyArray<LabelValueRow>;
-export const LabelValueRowList = /*@__PURE__*/ S.Array(LabelValueRow) as any as S.Schema<LabelValueRowList>;
+export const LabelValueRowList = /*@__PURE__*/ S.Array(
+  LabelValueRow,
+) as any as S.Schema<LabelValueRowList>;
 
 export interface InfoModuleData {
   showLastUpdateTime?: boolean;
@@ -241,23 +278,45 @@ export interface InfoModuleData {
   labelValueRows?: LabelValueRowList;
 }
 export const InfoModuleData = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "showLastUpdateTime": S.optional(S.Boolean),
-  "labelValueRows": S.optional(LabelValueRowList),
-}),
+  S.Struct({
+    showLastUpdateTime: S.optional(S.Boolean),
+    labelValueRows: S.optional(LabelValueRowList),
+  }),
 ).annotate({ identifier: "InfoModuleData" }) as any as S.Schema<InfoModuleData>;
 
-export type EventTicketClassMultipleDevicesAndHoldersAllowedStatusEnum = "STATUS_UNSPECIFIED" | "MULTIPLE_HOLDERS" | "ONE_USER_ALL_DEVICES" | "ONE_USER_ONE_DEVICE" | "multipleHolders" | "oneUserAllDevices" | "oneUserOneDevice";
-export const EventTicketClassMultipleDevicesAndHoldersAllowedStatusEnum = /*@__PURE__*/ S.String;
+export type EventTicketClassMultipleDevicesAndHoldersAllowedStatusEnum =
+  | "STATUS_UNSPECIFIED"
+  | "MULTIPLE_HOLDERS"
+  | "ONE_USER_ALL_DEVICES"
+  | "ONE_USER_ONE_DEVICE"
+  | "multipleHolders"
+  | "oneUserAllDevices"
+  | "oneUserOneDevice";
+export const EventTicketClassMultipleDevicesAndHoldersAllowedStatusEnum =
+  /*@__PURE__*/ S.String;
 
-export type EventTicketClassConfirmationCodeLabelEnum = "CONFIRMATION_CODE_LABEL_UNSPECIFIED" | "CONFIRMATION_CODE" | "confirmationCode" | "CONFIRMATION_NUMBER" | "confirmationNumber" | "ORDER_NUMBER" | "orderNumber" | "RESERVATION_NUMBER" | "reservationNumber";
+export type EventTicketClassConfirmationCodeLabelEnum =
+  | "CONFIRMATION_CODE_LABEL_UNSPECIFIED"
+  | "CONFIRMATION_CODE"
+  | "confirmationCode"
+  | "CONFIRMATION_NUMBER"
+  | "confirmationNumber"
+  | "ORDER_NUMBER"
+  | "orderNumber"
+  | "RESERVATION_NUMBER"
+  | "reservationNumber";
 export const EventTicketClassConfirmationCodeLabelEnum = /*@__PURE__*/ S.String;
 
-export type EventTicketClassSeatLabelEnum = "SEAT_LABEL_UNSPECIFIED" | "SEAT" | "seat";
+export type EventTicketClassSeatLabelEnum =
+  | "SEAT_LABEL_UNSPECIFIED"
+  | "SEAT"
+  | "seat";
 export const EventTicketClassSeatLabelEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 export interface EventVenue {
   /** The address of the venue, such as "24 Willie Mays Plaza\nSan Francisco, CA 94107". Address lines are separated by line feed (`\n`) characters. This is required. */
@@ -268,11 +327,11 @@ export interface EventVenue {
   name?: LocalizedString;
 }
 export const EventVenue = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "address": S.optional(LocalizedString),
-  "kind": S.optional(S.String),
-  "name": S.optional(LocalizedString),
-}),
+  S.Struct({
+    address: S.optional(LocalizedString),
+    kind: S.optional(S.String),
+    name: S.optional(LocalizedString),
+  }),
 ).annotate({ identifier: "EventVenue" }) as any as S.Schema<EventVenue>;
 
 export interface ImageUri {
@@ -284,11 +343,11 @@ export interface ImageUri {
   description?: string;
 }
 export const ImageUri = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "localizedDescription": S.optional(LocalizedString),
-  "uri": S.optional(S.String),
-  "description": S.optional(S.String),
-}),
+  S.Struct({
+    localizedDescription: S.optional(LocalizedString),
+    uri: S.optional(S.String),
+    description: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ImageUri" }) as any as S.Schema<ImageUri>;
 
 /** Wrapping type for Google hosted images. */
@@ -303,15 +362,18 @@ export interface Image {
   contentDescription?: LocalizedString;
 }
 export const Image = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "privateImageId": S.optional(S.String),
-  "sourceUri": S.optional(ImageUri),
-  "contentDescription": S.optional(LocalizedString),
-}),
+  S.Struct({
+    kind: S.optional(S.String),
+    privateImageId: S.optional(S.String),
+    sourceUri: S.optional(ImageUri),
+    contentDescription: S.optional(LocalizedString),
+  }),
 ).annotate({ identifier: "Image" }) as any as S.Schema<Image>;
 
-export type SecurityAnimationAnimationTypeEnum = "ANIMATION_UNSPECIFIED" | "FOIL_SHIMMER" | "foilShimmer";
+export type SecurityAnimationAnimationTypeEnum =
+  | "ANIMATION_UNSPECIFIED"
+  | "FOIL_SHIMMER"
+  | "foilShimmer";
 export const SecurityAnimationAnimationTypeEnum = /*@__PURE__*/ S.String;
 
 export interface SecurityAnimation {
@@ -319,10 +381,12 @@ export interface SecurityAnimation {
   animationType?: SecurityAnimationAnimationTypeEnum;
 }
 export const SecurityAnimation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "animationType": S.optional(SecurityAnimationAnimationTypeEnum),
-}),
-).annotate({ identifier: "SecurityAnimation" }) as any as S.Schema<SecurityAnimation>;
+  S.Struct({
+    animationType: S.optional(SecurityAnimationAnimationTypeEnum),
+  }),
+).annotate({
+  identifier: "SecurityAnimation",
+}) as any as S.Schema<SecurityAnimation>;
 
 export interface ImageModuleData {
   /** A 100% width image. */
@@ -331,14 +395,18 @@ export interface ImageModuleData {
   id?: string;
 }
 export const ImageModuleData = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "mainImage": S.optional(Image),
-  "id": S.optional(S.String),
-}),
-).annotate({ identifier: "ImageModuleData" }) as any as S.Schema<ImageModuleData>;
+  S.Struct({
+    mainImage: S.optional(Image),
+    id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ImageModuleData",
+}) as any as S.Schema<ImageModuleData>;
 
 export type ImageModuleDataList = ReadonlyArray<ImageModuleData>;
-export const ImageModuleDataList = /*@__PURE__*/ S.Array(ImageModuleData) as any as S.Schema<ImageModuleDataList>;
+export const ImageModuleDataList = /*@__PURE__*/ S.Array(
+  ImageModuleData,
+) as any as S.Schema<ImageModuleDataList>;
 
 export interface Uri {
   /** Translated strings for the description. Recommended maximum is 20 characters to ensure full string is displayed on smaller screens. */
@@ -353,13 +421,13 @@ export interface Uri {
   description?: string;
 }
 export const Uri = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "localizedDescription": S.optional(LocalizedString),
-  "uri": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "id": S.optional(S.String),
-  "description": S.optional(S.String),
-}),
+  S.Struct({
+    localizedDescription: S.optional(LocalizedString),
+    uri: S.optional(S.String),
+    kind: S.optional(S.String),
+    id: S.optional(S.String),
+    description: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Uri" }) as any as S.Schema<Uri>;
 
 export interface AppLinkDataAppLinkInfoAppTarget {
@@ -369,11 +437,13 @@ export interface AppLinkDataAppLinkInfoAppTarget {
   packageName?: string;
 }
 export const AppLinkDataAppLinkInfoAppTarget = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "targetUri": S.optional(Uri),
-  "packageName": S.optional(S.String),
-}),
-).annotate({ identifier: "AppLinkDataAppLinkInfoAppTarget" }) as any as S.Schema<AppLinkDataAppLinkInfoAppTarget>;
+  S.Struct({
+    targetUri: S.optional(Uri),
+    packageName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AppLinkDataAppLinkInfoAppTarget",
+}) as any as S.Schema<AppLinkDataAppLinkInfoAppTarget>;
 
 export interface AppLinkDataAppLinkInfo {
   /** Deprecated. Image isn't supported in the app link module. */
@@ -386,13 +456,15 @@ export interface AppLinkDataAppLinkInfo {
   description?: LocalizedString;
 }
 export const AppLinkDataAppLinkInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "appLogoImage": S.optional(Image),
-  "title": S.optional(LocalizedString),
-  "appTarget": S.optional(AppLinkDataAppLinkInfoAppTarget),
-  "description": S.optional(LocalizedString),
-}),
-).annotate({ identifier: "AppLinkDataAppLinkInfo" }) as any as S.Schema<AppLinkDataAppLinkInfo>;
+  S.Struct({
+    appLogoImage: S.optional(Image),
+    title: S.optional(LocalizedString),
+    appTarget: S.optional(AppLinkDataAppLinkInfoAppTarget),
+    description: S.optional(LocalizedString),
+  }),
+).annotate({
+  identifier: "AppLinkDataAppLinkInfo",
+}) as any as S.Schema<AppLinkDataAppLinkInfo>;
 
 export interface AppLinkData {
   /** Optional information about the partner app link. */
@@ -405,27 +477,43 @@ export interface AppLinkData {
   webAppLinkInfo?: AppLinkDataAppLinkInfo;
 }
 export const AppLinkData = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "androidAppLinkInfo": S.optional(AppLinkDataAppLinkInfo),
-  "iosAppLinkInfo": S.optional(AppLinkDataAppLinkInfo),
-  "displayText": S.optional(LocalizedString),
-  "webAppLinkInfo": S.optional(AppLinkDataAppLinkInfo),
-}),
+  S.Struct({
+    androidAppLinkInfo: S.optional(AppLinkDataAppLinkInfo),
+    iosAppLinkInfo: S.optional(AppLinkDataAppLinkInfo),
+    displayText: S.optional(LocalizedString),
+    webAppLinkInfo: S.optional(AppLinkDataAppLinkInfo),
+  }),
 ).annotate({ identifier: "AppLinkData" }) as any as S.Schema<AppLinkData>;
 
 export interface Review {
   comments?: string;
 }
 export const Review = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "comments": S.optional(S.String),
-}),
+  S.Struct({
+    comments: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Review" }) as any as S.Schema<Review>;
 
-export type EventTicketClassViewUnlockRequirementEnum = "VIEW_UNLOCK_REQUIREMENT_UNSPECIFIED" | "UNLOCK_NOT_REQUIRED" | "UNLOCK_REQUIRED_TO_VIEW";
+export type EventTicketClassViewUnlockRequirementEnum =
+  | "VIEW_UNLOCK_REQUIREMENT_UNSPECIFIED"
+  | "UNLOCK_NOT_REQUIRED"
+  | "UNLOCK_REQUIRED_TO_VIEW";
 export const EventTicketClassViewUnlockRequirementEnum = /*@__PURE__*/ S.String;
 
-export type FieldReferenceDateFormatEnum = "DATE_FORMAT_UNSPECIFIED" | "DATE_TIME" | "dateTime" | "DATE_ONLY" | "dateOnly" | "TIME_ONLY" | "timeOnly" | "DATE_TIME_YEAR" | "dateTimeYear" | "DATE_YEAR" | "dateYear" | "YEAR_MONTH" | "YEAR_MONTH_DAY";
+export type FieldReferenceDateFormatEnum =
+  | "DATE_FORMAT_UNSPECIFIED"
+  | "DATE_TIME"
+  | "dateTime"
+  | "DATE_ONLY"
+  | "dateOnly"
+  | "TIME_ONLY"
+  | "timeOnly"
+  | "DATE_TIME_YEAR"
+  | "dateTimeYear"
+  | "DATE_YEAR"
+  | "dateYear"
+  | "YEAR_MONTH"
+  | "YEAR_MONTH_DAY";
 export const FieldReferenceDateFormatEnum = /*@__PURE__*/ S.String;
 
 /** Reference definition to use with field overrides. */
@@ -436,14 +524,16 @@ export interface FieldReference {
   dateFormat?: FieldReferenceDateFormatEnum;
 }
 export const FieldReference = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fieldPath": S.optional(S.String),
-  "dateFormat": S.optional(FieldReferenceDateFormatEnum),
-}),
+  S.Struct({
+    fieldPath: S.optional(S.String),
+    dateFormat: S.optional(FieldReferenceDateFormatEnum),
+  }),
 ).annotate({ identifier: "FieldReference" }) as any as S.Schema<FieldReference>;
 
 export type FieldReferenceList = ReadonlyArray<FieldReference>;
-export const FieldReferenceList = /*@__PURE__*/ S.Array(FieldReference) as any as S.Schema<FieldReferenceList>;
+export const FieldReferenceList = /*@__PURE__*/ S.Array(
+  FieldReference,
+) as any as S.Schema<FieldReferenceList>;
 
 /** Custom field selector to use with field overrides. */
 export interface FieldSelector {
@@ -451,12 +541,17 @@ export interface FieldSelector {
   fields?: FieldReferenceList;
 }
 export const FieldSelector = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fields": S.optional(FieldReferenceList),
-}),
+  S.Struct({
+    fields: S.optional(FieldReferenceList),
+  }),
 ).annotate({ identifier: "FieldSelector" }) as any as S.Schema<FieldSelector>;
 
-export type TemplateItemPredefinedItemEnum = "PREDEFINED_ITEM_UNSPECIFIED" | "FREQUENT_FLYER_PROGRAM_NAME_AND_NUMBER" | "frequentFlyerProgramNameAndNumber" | "FLIGHT_NUMBER_AND_OPERATING_FLIGHT_NUMBER" | "flightNumberAndOperatingFlightNumber";
+export type TemplateItemPredefinedItemEnum =
+  | "PREDEFINED_ITEM_UNSPECIFIED"
+  | "FREQUENT_FLYER_PROGRAM_NAME_AND_NUMBER"
+  | "frequentFlyerProgramNameAndNumber"
+  | "FLIGHT_NUMBER_AND_OPERATING_FLIGHT_NUMBER"
+  | "flightNumberAndOperatingFlightNumber";
 export const TemplateItemPredefinedItemEnum = /*@__PURE__*/ S.String;
 
 export interface TemplateItem {
@@ -468,11 +563,11 @@ export interface TemplateItem {
   firstValue?: FieldSelector;
 }
 export const TemplateItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "secondValue": S.optional(FieldSelector),
-  "predefinedItem": S.optional(TemplateItemPredefinedItemEnum),
-  "firstValue": S.optional(FieldSelector),
-}),
+  S.Struct({
+    secondValue: S.optional(FieldSelector),
+    predefinedItem: S.optional(TemplateItemPredefinedItemEnum),
+    firstValue: S.optional(FieldSelector),
+  }),
 ).annotate({ identifier: "TemplateItem" }) as any as S.Schema<TemplateItem>;
 
 export interface CardRowOneItem {
@@ -480,9 +575,9 @@ export interface CardRowOneItem {
   item?: TemplateItem;
 }
 export const CardRowOneItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "item": S.optional(TemplateItem),
-}),
+  S.Struct({
+    item: S.optional(TemplateItem),
+  }),
 ).annotate({ identifier: "CardRowOneItem" }) as any as S.Schema<CardRowOneItem>;
 
 export interface CardRowThreeItems {
@@ -494,12 +589,14 @@ export interface CardRowThreeItems {
   endItem?: TemplateItem;
 }
 export const CardRowThreeItems = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "startItem": S.optional(TemplateItem),
-  "middleItem": S.optional(TemplateItem),
-  "endItem": S.optional(TemplateItem),
-}),
-).annotate({ identifier: "CardRowThreeItems" }) as any as S.Schema<CardRowThreeItems>;
+  S.Struct({
+    startItem: S.optional(TemplateItem),
+    middleItem: S.optional(TemplateItem),
+    endItem: S.optional(TemplateItem),
+  }),
+).annotate({
+  identifier: "CardRowThreeItems",
+}) as any as S.Schema<CardRowThreeItems>;
 
 export interface CardRowTwoItems {
   /** The item to be displayed at the end of the row. This item will be aligned to the right. */
@@ -508,11 +605,13 @@ export interface CardRowTwoItems {
   startItem?: TemplateItem;
 }
 export const CardRowTwoItems = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "endItem": S.optional(TemplateItem),
-  "startItem": S.optional(TemplateItem),
-}),
-).annotate({ identifier: "CardRowTwoItems" }) as any as S.Schema<CardRowTwoItems>;
+  S.Struct({
+    endItem: S.optional(TemplateItem),
+    startItem: S.optional(TemplateItem),
+  }),
+).annotate({
+  identifier: "CardRowTwoItems",
+}) as any as S.Schema<CardRowTwoItems>;
 
 export interface CardRowTemplateInfo {
   /** Template for a row containing one item. Exactly one of "one_item", "two_items", "three_items" must be set. */
@@ -523,27 +622,40 @@ export interface CardRowTemplateInfo {
   twoItems?: CardRowTwoItems;
 }
 export const CardRowTemplateInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "oneItem": S.optional(CardRowOneItem),
-  "threeItems": S.optional(CardRowThreeItems),
-  "twoItems": S.optional(CardRowTwoItems),
-}),
-).annotate({ identifier: "CardRowTemplateInfo" }) as any as S.Schema<CardRowTemplateInfo>;
+  S.Struct({
+    oneItem: S.optional(CardRowOneItem),
+    threeItems: S.optional(CardRowThreeItems),
+    twoItems: S.optional(CardRowTwoItems),
+  }),
+).annotate({
+  identifier: "CardRowTemplateInfo",
+}) as any as S.Schema<CardRowTemplateInfo>;
 
 export type CardRowTemplateInfoList = ReadonlyArray<CardRowTemplateInfo>;
-export const CardRowTemplateInfoList = /*@__PURE__*/ S.Array(CardRowTemplateInfo) as any as S.Schema<CardRowTemplateInfoList>;
+export const CardRowTemplateInfoList = /*@__PURE__*/ S.Array(
+  CardRowTemplateInfo,
+) as any as S.Schema<CardRowTemplateInfoList>;
 
 export interface CardTemplateOverride {
   /** Template information for rows in the card view. At most three rows are allowed to be specified. */
   cardRowTemplateInfos?: CardRowTemplateInfoList;
 }
 export const CardTemplateOverride = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "cardRowTemplateInfos": S.optional(CardRowTemplateInfoList),
-}),
-).annotate({ identifier: "CardTemplateOverride" }) as any as S.Schema<CardTemplateOverride>;
+  S.Struct({
+    cardRowTemplateInfos: S.optional(CardRowTemplateInfoList),
+  }),
+).annotate({
+  identifier: "CardTemplateOverride",
+}) as any as S.Schema<CardTemplateOverride>;
 
-export type FirstRowOptionTransitOptionEnum = "TRANSIT_OPTION_UNSPECIFIED" | "ORIGIN_AND_DESTINATION_NAMES" | "originAndDestinationNames" | "ORIGIN_AND_DESTINATION_CODES" | "originAndDestinationCodes" | "ORIGIN_NAME" | "originName";
+export type FirstRowOptionTransitOptionEnum =
+  | "TRANSIT_OPTION_UNSPECIFIED"
+  | "ORIGIN_AND_DESTINATION_NAMES"
+  | "originAndDestinationNames"
+  | "ORIGIN_AND_DESTINATION_CODES"
+  | "originAndDestinationCodes"
+  | "ORIGIN_NAME"
+  | "originName";
 export const FirstRowOptionTransitOptionEnum = /*@__PURE__*/ S.String;
 
 export interface FirstRowOption {
@@ -552,10 +664,10 @@ export interface FirstRowOption {
   transitOption?: FirstRowOptionTransitOptionEnum;
 }
 export const FirstRowOption = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fieldOption": S.optional(FieldSelector),
-  "transitOption": S.optional(FirstRowOptionTransitOptionEnum),
-}),
+  S.Struct({
+    fieldOption: S.optional(FieldSelector),
+    transitOption: S.optional(FirstRowOptionTransitOptionEnum),
+  }),
 ).annotate({ identifier: "FirstRowOption" }) as any as S.Schema<FirstRowOption>;
 
 export interface ListTemplateOverride {
@@ -567,22 +679,26 @@ export interface ListTemplateOverride {
   thirdRowOption?: FieldSelector;
 }
 export const ListTemplateOverride = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "secondRowOption": S.optional(FieldSelector),
-  "firstRowOption": S.optional(FirstRowOption),
-  "thirdRowOption": S.optional(FieldSelector),
-}),
-).annotate({ identifier: "ListTemplateOverride" }) as any as S.Schema<ListTemplateOverride>;
+  S.Struct({
+    secondRowOption: S.optional(FieldSelector),
+    firstRowOption: S.optional(FirstRowOption),
+    thirdRowOption: S.optional(FieldSelector),
+  }),
+).annotate({
+  identifier: "ListTemplateOverride",
+}) as any as S.Schema<ListTemplateOverride>;
 
 export interface BarcodeSectionDetail {
   /** A reference to an existing text-based or image field to display. */
   fieldSelector?: FieldSelector;
 }
 export const BarcodeSectionDetail = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fieldSelector": S.optional(FieldSelector),
-}),
-).annotate({ identifier: "BarcodeSectionDetail" }) as any as S.Schema<BarcodeSectionDetail>;
+  S.Struct({
+    fieldSelector: S.optional(FieldSelector),
+  }),
+).annotate({
+  identifier: "BarcodeSectionDetail",
+}) as any as S.Schema<BarcodeSectionDetail>;
 
 export interface CardBarcodeSectionDetails {
   /** Optional second piece of information to display above the barcode. If `firstTopDetail` is defined, this will be displayed to the end side of this detail section. */
@@ -593,35 +709,43 @@ export interface CardBarcodeSectionDetails {
   firstBottomDetail?: BarcodeSectionDetail;
 }
 export const CardBarcodeSectionDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "secondTopDetail": S.optional(BarcodeSectionDetail),
-  "firstTopDetail": S.optional(BarcodeSectionDetail),
-  "firstBottomDetail": S.optional(BarcodeSectionDetail),
-}),
-).annotate({ identifier: "CardBarcodeSectionDetails" }) as any as S.Schema<CardBarcodeSectionDetails>;
+  S.Struct({
+    secondTopDetail: S.optional(BarcodeSectionDetail),
+    firstTopDetail: S.optional(BarcodeSectionDetail),
+    firstBottomDetail: S.optional(BarcodeSectionDetail),
+  }),
+).annotate({
+  identifier: "CardBarcodeSectionDetails",
+}) as any as S.Schema<CardBarcodeSectionDetails>;
 
 export interface DetailsItemInfo {
   /** The item to be displayed in the details list. */
   item?: TemplateItem;
 }
 export const DetailsItemInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "item": S.optional(TemplateItem),
-}),
-).annotate({ identifier: "DetailsItemInfo" }) as any as S.Schema<DetailsItemInfo>;
+  S.Struct({
+    item: S.optional(TemplateItem),
+  }),
+).annotate({
+  identifier: "DetailsItemInfo",
+}) as any as S.Schema<DetailsItemInfo>;
 
 export type DetailsItemInfoList = ReadonlyArray<DetailsItemInfo>;
-export const DetailsItemInfoList = /*@__PURE__*/ S.Array(DetailsItemInfo) as any as S.Schema<DetailsItemInfoList>;
+export const DetailsItemInfoList = /*@__PURE__*/ S.Array(
+  DetailsItemInfo,
+) as any as S.Schema<DetailsItemInfoList>;
 
 export interface DetailsTemplateOverride {
   /** Information for the "nth" item displayed in the details list. */
   detailsItemInfos?: DetailsItemInfoList;
 }
 export const DetailsTemplateOverride = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "detailsItemInfos": S.optional(DetailsItemInfoList),
-}),
-).annotate({ identifier: "DetailsTemplateOverride" }) as any as S.Schema<DetailsTemplateOverride>;
+  S.Struct({
+    detailsItemInfos: S.optional(DetailsItemInfoList),
+  }),
+).annotate({
+  identifier: "DetailsTemplateOverride",
+}) as any as S.Schema<DetailsTemplateOverride>;
 
 export interface ClassTemplateInfo {
   /** Override for the card view. */
@@ -634,13 +758,15 @@ export interface ClassTemplateInfo {
   detailsTemplateOverride?: DetailsTemplateOverride;
 }
 export const ClassTemplateInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "cardTemplateOverride": S.optional(CardTemplateOverride),
-  "listTemplateOverride": S.optional(ListTemplateOverride),
-  "cardBarcodeSectionDetails": S.optional(CardBarcodeSectionDetails),
-  "detailsTemplateOverride": S.optional(DetailsTemplateOverride),
-}),
-).annotate({ identifier: "ClassTemplateInfo" }) as any as S.Schema<ClassTemplateInfo>;
+  S.Struct({
+    cardTemplateOverride: S.optional(CardTemplateOverride),
+    listTemplateOverride: S.optional(ListTemplateOverride),
+    cardBarcodeSectionDetails: S.optional(CardBarcodeSectionDetails),
+    detailsTemplateOverride: S.optional(DetailsTemplateOverride),
+  }),
+).annotate({
+  identifier: "ClassTemplateInfo",
+}) as any as S.Schema<ClassTemplateInfo>;
 
 /** Data for Text module. All fields are optional. Header will be displayed if available, different types of bodies will be concatenated if they are defined. */
 export interface TextModuleData {
@@ -656,17 +782,19 @@ export interface TextModuleData {
   localizedBody?: LocalizedString;
 }
 export const TextModuleData = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.optional(S.String),
-  "header": S.optional(S.String),
-  "body": S.optional(S.String),
-  "localizedHeader": S.optional(LocalizedString),
-  "localizedBody": S.optional(LocalizedString),
-}),
+  S.Struct({
+    id: S.optional(S.String),
+    header: S.optional(S.String),
+    body: S.optional(S.String),
+    localizedHeader: S.optional(LocalizedString),
+    localizedBody: S.optional(LocalizedString),
+  }),
 ).annotate({ identifier: "TextModuleData" }) as any as S.Schema<TextModuleData>;
 
 export type TextModuleDataList = ReadonlyArray<TextModuleData>;
-export const TextModuleDataList = /*@__PURE__*/ S.Array(TextModuleData) as any as S.Schema<TextModuleDataList>;
+export const TextModuleDataList = /*@__PURE__*/ S.Array(
+  TextModuleData,
+) as any as S.Schema<TextModuleDataList>;
 
 export type UriList = ReadonlyArray<Uri>;
 export const UriList = /*@__PURE__*/ S.Array(Uri) as any as S.Schema<UriList>;
@@ -676,10 +804,12 @@ export interface LinksModuleData {
   uris?: UriList;
 }
 export const LinksModuleData = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "uris": S.optional(UriList),
-}),
-).annotate({ identifier: "LinksModuleData" }) as any as S.Schema<LinksModuleData>;
+  S.Struct({
+    uris: S.optional(UriList),
+  }),
+).annotate({
+  identifier: "LinksModuleData",
+}) as any as S.Schema<LinksModuleData>;
 
 export interface CallbackOptions {
   /** The HTTPS url configured by the merchant. The URL should be hosted on HTTPS and robots.txt should allow the URL path to be accessible by UserAgent:Googlebot. */
@@ -688,11 +818,13 @@ export interface CallbackOptions {
   updateRequestUrl?: string;
 }
 export const CallbackOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "url": S.optional(S.String),
-  "updateRequestUrl": S.optional(S.String),
-}),
-).annotate({ identifier: "CallbackOptions" }) as any as S.Schema<CallbackOptions>;
+  S.Struct({
+    url: S.optional(S.String),
+    updateRequestUrl: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CallbackOptions",
+}) as any as S.Schema<CallbackOptions>;
 
 /** Constraints that all must be met for the module to be shown. */
 export interface ModuleViewConstraints {
@@ -700,10 +832,12 @@ export interface ModuleViewConstraints {
   displayInterval?: TimeInterval;
 }
 export const ModuleViewConstraints = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "displayInterval": S.optional(TimeInterval),
-}),
-).annotate({ identifier: "ModuleViewConstraints" }) as any as S.Schema<ModuleViewConstraints>;
+  S.Struct({
+    displayInterval: S.optional(TimeInterval),
+  }),
+).annotate({
+  identifier: "ModuleViewConstraints",
+}) as any as S.Schema<ModuleViewConstraints>;
 
 /** Data for Value Added module. Required fields are header and uri. */
 export interface ValueAddedModuleData {
@@ -721,18 +855,22 @@ export interface ValueAddedModuleData {
   viewConstraints?: ModuleViewConstraints;
 }
 export const ValueAddedModuleData = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "header": S.optional(LocalizedString),
-  "body": S.optional(LocalizedString),
-  "uri": S.optional(S.String),
-  "sortIndex": S.optional(S.Number),
-  "image": S.optional(Image),
-  "viewConstraints": S.optional(ModuleViewConstraints),
-}),
-).annotate({ identifier: "ValueAddedModuleData" }) as any as S.Schema<ValueAddedModuleData>;
+  S.Struct({
+    header: S.optional(LocalizedString),
+    body: S.optional(LocalizedString),
+    uri: S.optional(S.String),
+    sortIndex: S.optional(S.Number),
+    image: S.optional(Image),
+    viewConstraints: S.optional(ModuleViewConstraints),
+  }),
+).annotate({
+  identifier: "ValueAddedModuleData",
+}) as any as S.Schema<ValueAddedModuleData>;
 
 export type ValueAddedModuleDataList = ReadonlyArray<ValueAddedModuleData>;
-export const ValueAddedModuleDataList = /*@__PURE__*/ S.Array(ValueAddedModuleData) as any as S.Schema<ValueAddedModuleDataList>;
+export const ValueAddedModuleDataList = /*@__PURE__*/ S.Array(
+  ValueAddedModuleData,
+) as any as S.Schema<ValueAddedModuleDataList>;
 
 export interface LatLongPoint {
   /** The latitude specified as any value in the range of -90.0 through +90.0, both inclusive. Values outside these bounds will be rejected. */
@@ -743,26 +881,40 @@ export interface LatLongPoint {
   longitude?: number;
 }
 export const LatLongPoint = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "latitude": S.optional(S.Number),
-  "kind": S.optional(S.String),
-  "longitude": S.optional(S.Number),
-}),
+  S.Struct({
+    latitude: S.optional(S.Number),
+    kind: S.optional(S.String),
+    longitude: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "LatLongPoint" }) as any as S.Schema<LatLongPoint>;
 
 export type LatLongPointList = ReadonlyArray<LatLongPoint>;
-export const LatLongPointList = /*@__PURE__*/ S.Array(LatLongPoint) as any as S.Schema<LatLongPointList>;
+export const LatLongPointList = /*@__PURE__*/ S.Array(
+  LatLongPoint,
+) as any as S.Schema<LatLongPointList>;
 
 export type MessageList = ReadonlyArray<Message>;
-export const MessageList = /*@__PURE__*/ S.Array(Message) as any as S.Schema<MessageList>;
+export const MessageList = /*@__PURE__*/ S.Array(
+  Message,
+) as any as S.Schema<MessageList>;
 
-export type EventTicketClassNotifyPreferenceEnum = "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED" | "NOTIFY_ON_UPDATE";
+export type EventTicketClassNotifyPreferenceEnum =
+  | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
+  | "NOTIFY_ON_UPDATE";
 export const EventTicketClassNotifyPreferenceEnum = /*@__PURE__*/ S.String;
 
-export type EventTicketClassRowLabelEnum = "ROW_LABEL_UNSPECIFIED" | "ROW" | "row";
+export type EventTicketClassRowLabelEnum =
+  | "ROW_LABEL_UNSPECIFIED"
+  | "ROW"
+  | "row";
 export const EventTicketClassRowLabelEnum = /*@__PURE__*/ S.String;
 
-export type EventDateTimeDoorsOpenLabelEnum = "DOORS_OPEN_LABEL_UNSPECIFIED" | "DOORS_OPEN" | "doorsOpen" | "GATES_OPEN" | "gatesOpen";
+export type EventDateTimeDoorsOpenLabelEnum =
+  | "DOORS_OPEN_LABEL_UNSPECIFIED"
+  | "DOORS_OPEN"
+  | "doorsOpen"
+  | "GATES_OPEN"
+  | "gatesOpen";
 export const EventDateTimeDoorsOpenLabelEnum = /*@__PURE__*/ S.String;
 
 export interface EventDateTime {
@@ -780,20 +932,34 @@ export interface EventDateTime {
   doorsOpenLabel?: EventDateTimeDoorsOpenLabelEnum;
 }
 export const EventDateTime = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "doorsOpen": S.optional(S.String),
-  "end": S.optional(S.String),
-  "start": S.optional(S.String),
-  "customDoorsOpenLabel": S.optional(LocalizedString),
-  "doorsOpenLabel": S.optional(EventDateTimeDoorsOpenLabelEnum),
-}),
+  S.Struct({
+    kind: S.optional(S.String),
+    doorsOpen: S.optional(S.String),
+    end: S.optional(S.String),
+    start: S.optional(S.String),
+    customDoorsOpenLabel: S.optional(LocalizedString),
+    doorsOpenLabel: S.optional(EventDateTimeDoorsOpenLabelEnum),
+  }),
 ).annotate({ identifier: "EventDateTime" }) as any as S.Schema<EventDateTime>;
 
-export type EventTicketClassReviewStatusEnum = "REVIEW_STATUS_UNSPECIFIED" | "UNDER_REVIEW" | "underReview" | "APPROVED" | "approved" | "REJECTED" | "rejected" | "DRAFT" | "draft";
+export type EventTicketClassReviewStatusEnum =
+  | "REVIEW_STATUS_UNSPECIFIED"
+  | "UNDER_REVIEW"
+  | "underReview"
+  | "APPROVED"
+  | "approved"
+  | "REJECTED"
+  | "rejected"
+  | "DRAFT"
+  | "draft";
 export const EventTicketClassReviewStatusEnum = /*@__PURE__*/ S.String;
 
-export type EventTicketClassSectionLabelEnum = "SECTION_LABEL_UNSPECIFIED" | "SECTION" | "section" | "THEATER" | "theater";
+export type EventTicketClassSectionLabelEnum =
+  | "SECTION_LABEL_UNSPECIFIED"
+  | "SECTION"
+  | "section"
+  | "THEATER"
+  | "theater";
 export const EventTicketClassSectionLabelEnum = /*@__PURE__*/ S.String;
 
 export interface EventTicketClass {
@@ -893,66 +1059,76 @@ export interface EventTicketClass {
   sectionLabel?: EventTicketClassSectionLabelEnum;
 }
 export const EventTicketClass = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "version": S.optional(S.String),
-  "gateLabel": S.optional(EventTicketClassGateLabelEnum),
-  "countryCode": S.optional(S.String),
-  "merchantLocations": S.optional(MerchantLocationList),
-  "infoModuleData": S.optional(InfoModuleData),
-  "id": S.optional(S.String),
-  "multipleDevicesAndHoldersAllowedStatus": S.optional(EventTicketClassMultipleDevicesAndHoldersAllowedStatusEnum),
-  "enableSmartTap": S.optional(S.Boolean),
-  "eventName": S.optional(LocalizedString),
-  "confirmationCodeLabel": S.optional(EventTicketClassConfirmationCodeLabelEnum),
-  "localizedIssuerName": S.optional(LocalizedString),
-  "seatLabel": S.optional(EventTicketClassSeatLabelEnum),
-  "customConfirmationCodeLabel": S.optional(LocalizedString),
-  "redemptionIssuers": S.optional(StringList),
-  "venue": S.optional(EventVenue),
-  "customRowLabel": S.optional(LocalizedString),
-  "logo": S.optional(Image),
-  "securityAnimation": S.optional(SecurityAnimation),
-  "allowMultipleUsersPerObject": S.optional(S.Boolean),
-  "imageModulesData": S.optional(ImageModuleDataList),
-  "appLinkData": S.optional(AppLinkData),
-  "wideLogo": S.optional(Image),
-  "review": S.optional(Review),
-  "issuerName": S.optional(S.String),
-  "customGateLabel": S.optional(LocalizedString),
-  "viewUnlockRequirement": S.optional(EventTicketClassViewUnlockRequirementEnum),
-  "hexBackgroundColor": S.optional(S.String),
-  "classTemplateInfo": S.optional(ClassTemplateInfo),
-  "textModulesData": S.optional(TextModuleDataList),
-  "linksModuleData": S.optional(LinksModuleData),
-  "heroImage": S.optional(Image),
-  "callbackOptions": S.optional(CallbackOptions),
-  "valueAddedModuleData": S.optional(ValueAddedModuleDataList),
-  "wordMark": S.optional(Image),
-  "customSectionLabel": S.optional(LocalizedString),
-  "locations": S.optional(LatLongPointList),
-  "finePrint": S.optional(LocalizedString),
-  "messages": S.optional(MessageList),
-  "notifyPreference": S.optional(EventTicketClassNotifyPreferenceEnum),
-  "kind": S.optional(S.String),
-  "customSeatLabel": S.optional(LocalizedString),
-  "eventId": S.optional(S.String),
-  "rowLabel": S.optional(EventTicketClassRowLabelEnum),
-  "dateTime": S.optional(EventDateTime),
-  "homepageUri": S.optional(Uri),
-  "reviewStatus": S.optional(EventTicketClassReviewStatusEnum),
-  "sectionLabel": S.optional(EventTicketClassSectionLabelEnum),
-}),
-).annotate({ identifier: "EventTicketClass" }) as any as S.Schema<EventTicketClass>;
+  S.Struct({
+    version: S.optional(S.String),
+    gateLabel: S.optional(EventTicketClassGateLabelEnum),
+    countryCode: S.optional(S.String),
+    merchantLocations: S.optional(MerchantLocationList),
+    infoModuleData: S.optional(InfoModuleData),
+    id: S.optional(S.String),
+    multipleDevicesAndHoldersAllowedStatus: S.optional(
+      EventTicketClassMultipleDevicesAndHoldersAllowedStatusEnum,
+    ),
+    enableSmartTap: S.optional(S.Boolean),
+    eventName: S.optional(LocalizedString),
+    confirmationCodeLabel: S.optional(
+      EventTicketClassConfirmationCodeLabelEnum,
+    ),
+    localizedIssuerName: S.optional(LocalizedString),
+    seatLabel: S.optional(EventTicketClassSeatLabelEnum),
+    customConfirmationCodeLabel: S.optional(LocalizedString),
+    redemptionIssuers: S.optional(StringList),
+    venue: S.optional(EventVenue),
+    customRowLabel: S.optional(LocalizedString),
+    logo: S.optional(Image),
+    securityAnimation: S.optional(SecurityAnimation),
+    allowMultipleUsersPerObject: S.optional(S.Boolean),
+    imageModulesData: S.optional(ImageModuleDataList),
+    appLinkData: S.optional(AppLinkData),
+    wideLogo: S.optional(Image),
+    review: S.optional(Review),
+    issuerName: S.optional(S.String),
+    customGateLabel: S.optional(LocalizedString),
+    viewUnlockRequirement: S.optional(
+      EventTicketClassViewUnlockRequirementEnum,
+    ),
+    hexBackgroundColor: S.optional(S.String),
+    classTemplateInfo: S.optional(ClassTemplateInfo),
+    textModulesData: S.optional(TextModuleDataList),
+    linksModuleData: S.optional(LinksModuleData),
+    heroImage: S.optional(Image),
+    callbackOptions: S.optional(CallbackOptions),
+    valueAddedModuleData: S.optional(ValueAddedModuleDataList),
+    wordMark: S.optional(Image),
+    customSectionLabel: S.optional(LocalizedString),
+    locations: S.optional(LatLongPointList),
+    finePrint: S.optional(LocalizedString),
+    messages: S.optional(MessageList),
+    notifyPreference: S.optional(EventTicketClassNotifyPreferenceEnum),
+    kind: S.optional(S.String),
+    customSeatLabel: S.optional(LocalizedString),
+    eventId: S.optional(S.String),
+    rowLabel: S.optional(EventTicketClassRowLabelEnum),
+    dateTime: S.optional(EventDateTime),
+    homepageUri: S.optional(Uri),
+    reviewStatus: S.optional(EventTicketClassReviewStatusEnum),
+    sectionLabel: S.optional(EventTicketClassSectionLabelEnum),
+  }),
+).annotate({
+  identifier: "EventTicketClass",
+}) as any as S.Schema<EventTicketClass>;
 
 export interface EventTicketClassAddMessageResponse {
   /** The updated EventTicketClass resource. */
   resource?: EventTicketClass;
 }
 export const EventTicketClassAddMessageResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.optional(EventTicketClass),
-}),
-).annotate({ identifier: "EventTicketClassAddMessageResponse" }) as any as S.Schema<EventTicketClassAddMessageResponse>;
+  S.Struct({
+    resource: S.optional(EventTicketClass),
+  }),
+).annotate({
+  identifier: "EventTicketClassAddMessageResponse",
+}) as any as S.Schema<EventTicketClassAddMessageResponse>;
 
 export interface AddmessageEventticketobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
@@ -961,11 +1137,19 @@ export interface AddmessageEventticketobjectRequest {
   body?: AddMessageRequest;
 }
 export const AddmessageEventticketobjectRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-  "body": S.optional(AddMessageRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"walletobjects/v1/eventTicketObject/{resourceId}/addMessage","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "AddmessageEventticketobjectRequest" }) as any as S.Schema<AddmessageEventticketobjectRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    body: S.optional(AddMessageRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "walletobjects/v1/eventTicketObject/{resourceId}/addMessage",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "AddmessageEventticketobjectRequest",
+}) as any as S.Schema<AddmessageEventticketobjectRequest>;
 
 export interface Money {
   /** Identifies what kind of resource this is. Value: the fixed string `"walletobjects#money"`. */
@@ -976,11 +1160,11 @@ export interface Money {
   currencyCode?: string;
 }
 export const Money = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "micros": S.optional(S.String),
-  "currencyCode": S.optional(S.String),
-}),
+  S.Struct({
+    kind: S.optional(S.String),
+    micros: S.optional(S.String),
+    currencyCode: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Money" }) as any as S.Schema<Money>;
 
 export interface GroupingInfo {
@@ -990,19 +1174,28 @@ export interface GroupingInfo {
   sortIndex?: number;
 }
 export const GroupingInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "groupingId": S.optional(S.String),
-  "sortIndex": S.optional(S.Number),
-}),
+  S.Struct({
+    groupingId: S.optional(S.String),
+    sortIndex: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "GroupingInfo" }) as any as S.Schema<GroupingInfo>;
 
-export type PassConstraintsNfcConstraintItemEnum = "NFC_CONSTRAINT_UNSPECIFIED" | "BLOCK_PAYMENT" | "BLOCK_CLOSED_LOOP_TRANSIT";
+export type PassConstraintsNfcConstraintItemEnum =
+  | "NFC_CONSTRAINT_UNSPECIFIED"
+  | "BLOCK_PAYMENT"
+  | "BLOCK_CLOSED_LOOP_TRANSIT";
 export const PassConstraintsNfcConstraintItemEnum = /*@__PURE__*/ S.String;
 
-export type PassConstraintsNfcConstraintItemEnumList = ReadonlyArray<PassConstraintsNfcConstraintItemEnum>;
-export const PassConstraintsNfcConstraintItemEnumList = /*@__PURE__*/ S.Array(PassConstraintsNfcConstraintItemEnum) as any as S.Schema<PassConstraintsNfcConstraintItemEnumList>;
+export type PassConstraintsNfcConstraintItemEnumList =
+  ReadonlyArray<PassConstraintsNfcConstraintItemEnum>;
+export const PassConstraintsNfcConstraintItemEnumList = /*@__PURE__*/ S.Array(
+  PassConstraintsNfcConstraintItemEnum,
+) as any as S.Schema<PassConstraintsNfcConstraintItemEnumList>;
 
-export type PassConstraintsScreenshotEligibilityEnum = "SCREENSHOT_ELIGIBILITY_UNSPECIFIED" | "ELIGIBLE" | "INELIGIBLE";
+export type PassConstraintsScreenshotEligibilityEnum =
+  | "SCREENSHOT_ELIGIBILITY_UNSPECIFIED"
+  | "ELIGIBLE"
+  | "INELIGIBLE";
 export const PassConstraintsScreenshotEligibilityEnum = /*@__PURE__*/ S.String;
 
 /** Container for any constraints that may be placed on passes. */
@@ -1013,11 +1206,13 @@ export interface PassConstraints {
   screenshotEligibility?: PassConstraintsScreenshotEligibilityEnum;
 }
 export const PassConstraints = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nfcConstraint": S.optional(PassConstraintsNfcConstraintItemEnumList),
-  "screenshotEligibility": S.optional(PassConstraintsScreenshotEligibilityEnum),
-}),
-).annotate({ identifier: "PassConstraints" }) as any as S.Schema<PassConstraints>;
+  S.Struct({
+    nfcConstraint: S.optional(PassConstraintsNfcConstraintItemEnumList),
+    screenshotEligibility: S.optional(PassConstraintsScreenshotEligibilityEnum),
+  }),
+).annotate({
+  identifier: "PassConstraints",
+}) as any as S.Schema<PassConstraints>;
 
 export interface EventReservationInfo {
   /** Identifies what kind of resource this is. Value: the fixed string `"walletobjects#eventReservationInfo"`. */
@@ -1026,16 +1221,46 @@ export interface EventReservationInfo {
   confirmationCode?: string;
 }
 export const EventReservationInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "confirmationCode": S.optional(S.String),
-}),
-).annotate({ identifier: "EventReservationInfo" }) as any as S.Schema<EventReservationInfo>;
+  S.Struct({
+    kind: S.optional(S.String),
+    confirmationCode: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EventReservationInfo",
+}) as any as S.Schema<EventReservationInfo>;
 
 export type BarcodeRenderEncodingEnum = "RENDER_ENCODING_UNSPECIFIED" | "UTF_8";
 export const BarcodeRenderEncodingEnum = /*@__PURE__*/ S.String;
 
-export type BarcodeTypeEnum = "BARCODE_TYPE_UNSPECIFIED" | "AZTEC" | "aztec" | "CODE_39" | "code39" | "CODE_128" | "code128" | "CODABAR" | "codabar" | "DATA_MATRIX" | "dataMatrix" | "EAN_8" | "ean8" | "EAN_13" | "ean13" | "EAN13" | "ITF_14" | "itf14" | "PDF_417" | "pdf417" | "PDF417" | "QR_CODE" | "qrCode" | "qrcode" | "UPC_A" | "upcA" | "TEXT_ONLY" | "textOnly";
+export type BarcodeTypeEnum =
+  | "BARCODE_TYPE_UNSPECIFIED"
+  | "AZTEC"
+  | "aztec"
+  | "CODE_39"
+  | "code39"
+  | "CODE_128"
+  | "code128"
+  | "CODABAR"
+  | "codabar"
+  | "DATA_MATRIX"
+  | "dataMatrix"
+  | "EAN_8"
+  | "ean8"
+  | "EAN_13"
+  | "ean13"
+  | "EAN13"
+  | "ITF_14"
+  | "itf14"
+  | "PDF_417"
+  | "pdf417"
+  | "PDF417"
+  | "QR_CODE"
+  | "qrCode"
+  | "qrcode"
+  | "UPC_A"
+  | "upcA"
+  | "TEXT_ONLY"
+  | "textOnly";
 export const BarcodeTypeEnum = /*@__PURE__*/ S.String;
 
 export interface Barcode {
@@ -1053,20 +1278,31 @@ export interface Barcode {
   type?: BarcodeTypeEnum;
 }
 export const Barcode = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "showCodeText": S.optional(LocalizedString),
-  "renderEncoding": S.optional(BarcodeRenderEncodingEnum),
-  "alternateText": S.optional(S.String),
-  "value": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "type": S.optional(BarcodeTypeEnum),
-}),
+  S.Struct({
+    showCodeText: S.optional(LocalizedString),
+    renderEncoding: S.optional(BarcodeRenderEncodingEnum),
+    alternateText: S.optional(S.String),
+    value: S.optional(S.String),
+    kind: S.optional(S.String),
+    type: S.optional(BarcodeTypeEnum),
+  }),
 ).annotate({ identifier: "Barcode" }) as any as S.Schema<Barcode>;
 
-export type EventTicketObjectStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "active" | "COMPLETED" | "completed" | "EXPIRED" | "expired" | "INACTIVE" | "inactive";
+export type EventTicketObjectStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "active"
+  | "COMPLETED"
+  | "completed"
+  | "EXPIRED"
+  | "expired"
+  | "INACTIVE"
+  | "inactive";
 export const EventTicketObjectStateEnum = /*@__PURE__*/ S.String;
 
-export type EventTicketObjectNotifyPreferenceEnum = "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED" | "NOTIFY_ON_UPDATE";
+export type EventTicketObjectNotifyPreferenceEnum =
+  | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
+  | "NOTIFY_ON_UPDATE";
 export const EventTicketObjectNotifyPreferenceEnum = /*@__PURE__*/ S.String;
 
 /** A payload containing many barcode values and start date/time. */
@@ -1079,17 +1315,23 @@ export interface RotatingBarcodeValues {
   values?: StringList;
 }
 export const RotatingBarcodeValues = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "periodMillis": S.optional(S.String),
-  "startDateTime": S.optional(S.String),
-  "values": S.optional(StringList),
-}),
-).annotate({ identifier: "RotatingBarcodeValues" }) as any as S.Schema<RotatingBarcodeValues>;
+  S.Struct({
+    periodMillis: S.optional(S.String),
+    startDateTime: S.optional(S.String),
+    values: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "RotatingBarcodeValues",
+}) as any as S.Schema<RotatingBarcodeValues>;
 
-export type RotatingBarcodeRenderEncodingEnum = "RENDER_ENCODING_UNSPECIFIED" | "UTF_8";
+export type RotatingBarcodeRenderEncodingEnum =
+  | "RENDER_ENCODING_UNSPECIFIED"
+  | "UTF_8";
 export const RotatingBarcodeRenderEncodingEnum = /*@__PURE__*/ S.String;
 
-export type RotatingBarcodeTotpDetailsAlgorithmEnum = "TOTP_ALGORITHM_UNSPECIFIED" | "TOTP_SHA1";
+export type RotatingBarcodeTotpDetailsAlgorithmEnum =
+  | "TOTP_ALGORITHM_UNSPECIFIED"
+  | "TOTP_SHA1";
 export const RotatingBarcodeTotpDetailsAlgorithmEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for the key and value length. See https://www.rfc-editor.org/rfc/rfc4226#section-5.3 */
@@ -1099,15 +1341,22 @@ export interface RotatingBarcodeTotpDetailsTotpParameters {
   /** The length of the TOTP value in decimal digits. */
   valueLength?: number;
 }
-export const RotatingBarcodeTotpDetailsTotpParameters = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "key": S.optional(S.String),
-  "valueLength": S.optional(S.Number),
-}),
-).annotate({ identifier: "RotatingBarcodeTotpDetailsTotpParameters" }) as any as S.Schema<RotatingBarcodeTotpDetailsTotpParameters>;
+export const RotatingBarcodeTotpDetailsTotpParameters = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      key: S.optional(S.String),
+      valueLength: S.optional(S.Number),
+    }),
+).annotate({
+  identifier: "RotatingBarcodeTotpDetailsTotpParameters",
+}) as any as S.Schema<RotatingBarcodeTotpDetailsTotpParameters>;
 
-export type RotatingBarcodeTotpDetailsTotpParametersList = ReadonlyArray<RotatingBarcodeTotpDetailsTotpParameters>;
-export const RotatingBarcodeTotpDetailsTotpParametersList = /*@__PURE__*/ S.Array(RotatingBarcodeTotpDetailsTotpParameters) as any as S.Schema<RotatingBarcodeTotpDetailsTotpParametersList>;
+export type RotatingBarcodeTotpDetailsTotpParametersList =
+  ReadonlyArray<RotatingBarcodeTotpDetailsTotpParameters>;
+export const RotatingBarcodeTotpDetailsTotpParametersList =
+  /*@__PURE__*/ S.Array(
+    RotatingBarcodeTotpDetailsTotpParameters,
+  ) as any as S.Schema<RotatingBarcodeTotpDetailsTotpParametersList>;
 
 /** Configuration for the time-based OTP substitutions. See https://tools.ietf.org/html/rfc6238 */
 export interface RotatingBarcodeTotpDetails {
@@ -1119,14 +1368,44 @@ export interface RotatingBarcodeTotpDetails {
   parameters?: RotatingBarcodeTotpDetailsTotpParametersList;
 }
 export const RotatingBarcodeTotpDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "periodMillis": S.optional(S.String),
-  "algorithm": S.optional(RotatingBarcodeTotpDetailsAlgorithmEnum),
-  "parameters": S.optional(RotatingBarcodeTotpDetailsTotpParametersList),
-}),
-).annotate({ identifier: "RotatingBarcodeTotpDetails" }) as any as S.Schema<RotatingBarcodeTotpDetails>;
+  S.Struct({
+    periodMillis: S.optional(S.String),
+    algorithm: S.optional(RotatingBarcodeTotpDetailsAlgorithmEnum),
+    parameters: S.optional(RotatingBarcodeTotpDetailsTotpParametersList),
+  }),
+).annotate({
+  identifier: "RotatingBarcodeTotpDetails",
+}) as any as S.Schema<RotatingBarcodeTotpDetails>;
 
-export type RotatingBarcodeTypeEnum = "BARCODE_TYPE_UNSPECIFIED" | "AZTEC" | "aztec" | "CODE_39" | "code39" | "CODE_128" | "code128" | "CODABAR" | "codabar" | "DATA_MATRIX" | "dataMatrix" | "EAN_8" | "ean8" | "EAN_13" | "ean13" | "EAN13" | "ITF_14" | "itf14" | "PDF_417" | "pdf417" | "PDF417" | "QR_CODE" | "qrCode" | "qrcode" | "UPC_A" | "upcA" | "TEXT_ONLY" | "textOnly";
+export type RotatingBarcodeTypeEnum =
+  | "BARCODE_TYPE_UNSPECIFIED"
+  | "AZTEC"
+  | "aztec"
+  | "CODE_39"
+  | "code39"
+  | "CODE_128"
+  | "code128"
+  | "CODABAR"
+  | "codabar"
+  | "DATA_MATRIX"
+  | "dataMatrix"
+  | "EAN_8"
+  | "ean8"
+  | "EAN_13"
+  | "ean13"
+  | "EAN13"
+  | "ITF_14"
+  | "itf14"
+  | "PDF_417"
+  | "pdf417"
+  | "PDF417"
+  | "QR_CODE"
+  | "qrCode"
+  | "qrcode"
+  | "UPC_A"
+  | "upcA"
+  | "TEXT_ONLY"
+  | "textOnly";
 export const RotatingBarcodeTypeEnum = /*@__PURE__*/ S.String;
 
 export interface RotatingBarcode {
@@ -1146,16 +1425,18 @@ export interface RotatingBarcode {
   valuePattern?: string;
 }
 export const RotatingBarcode = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "showCodeText": S.optional(LocalizedString),
-  "initialRotatingBarcodeValues": S.optional(RotatingBarcodeValues),
-  "renderEncoding": S.optional(RotatingBarcodeRenderEncodingEnum),
-  "alternateText": S.optional(S.String),
-  "totpDetails": S.optional(RotatingBarcodeTotpDetails),
-  "type": S.optional(RotatingBarcodeTypeEnum),
-  "valuePattern": S.optional(S.String),
-}),
-).annotate({ identifier: "RotatingBarcode" }) as any as S.Schema<RotatingBarcode>;
+  S.Struct({
+    showCodeText: S.optional(LocalizedString),
+    initialRotatingBarcodeValues: S.optional(RotatingBarcodeValues),
+    renderEncoding: S.optional(RotatingBarcodeRenderEncodingEnum),
+    alternateText: S.optional(S.String),
+    totpDetails: S.optional(RotatingBarcodeTotpDetails),
+    type: S.optional(RotatingBarcodeTypeEnum),
+    valuePattern: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RotatingBarcode",
+}) as any as S.Schema<RotatingBarcode>;
 
 export interface EventSeat {
   /** The section of the seat, such as "121". This field is localizable so you may translate words or use different alphabets for the characters in an identifier. */
@@ -1170,13 +1451,13 @@ export interface EventSeat {
   gate?: LocalizedString;
 }
 export const EventSeat = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "section": S.optional(LocalizedString),
-  "kind": S.optional(S.String),
-  "row": S.optional(LocalizedString),
-  "seat": S.optional(LocalizedString),
-  "gate": S.optional(LocalizedString),
-}),
+  S.Struct({
+    section: S.optional(LocalizedString),
+    kind: S.optional(S.String),
+    row: S.optional(LocalizedString),
+    seat: S.optional(LocalizedString),
+    gate: S.optional(LocalizedString),
+  }),
 ).annotate({ identifier: "EventSeat" }) as any as S.Schema<EventSeat>;
 
 /** Defines restrictions on the object that will be verified during save. Note: this is an advanced feature, please contact Google for implementation support. */
@@ -1185,10 +1466,12 @@ export interface SaveRestrictions {
   restrictToEmailSha256?: string;
 }
 export const SaveRestrictions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "restrictToEmailSha256": S.optional(S.String),
-}),
-).annotate({ identifier: "SaveRestrictions" }) as any as S.Schema<SaveRestrictions>;
+  S.Struct({
+    restrictToEmailSha256: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SaveRestrictions",
+}) as any as S.Schema<SaveRestrictions>;
 
 export interface EventTicketObject {
   /** The face value of the ticket, matching what would be printed on a physical version of the ticket. */
@@ -1265,55 +1548,59 @@ export interface EventTicketObject {
   classReference?: EventTicketClass;
 }
 export const EventTicketObject = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "faceValue": S.optional(Money),
-  "imageModulesData": S.optional(ImageModuleDataList),
-  "appLinkData": S.optional(AppLinkData),
-  "ticketType": S.optional(LocalizedString),
-  "validTimeInterval": S.optional(TimeInterval),
-  "groupingInfo": S.optional(GroupingInfo),
-  "linkedObjectIds": S.optional(StringList),
-  "disableExpirationNotification": S.optional(S.Boolean),
-  "passConstraints": S.optional(PassConstraints),
-  "version": S.optional(S.String),
-  "linkedOfferIds": S.optional(StringList),
-  "merchantLocations": S.optional(MerchantLocationList),
-  "id": S.optional(S.String),
-  "infoModuleData": S.optional(InfoModuleData),
-  "ticketNumber": S.optional(S.String),
-  "hasUsers": S.optional(S.Boolean),
-  "reservationInfo": S.optional(EventReservationInfo),
-  "barcode": S.optional(Barcode),
-  "smartTapRedemptionValue": S.optional(S.String),
-  "state": S.optional(EventTicketObjectStateEnum),
-  "locations": S.optional(LatLongPointList),
-  "messages": S.optional(MessageList),
-  "notifyPreference": S.optional(EventTicketObjectNotifyPreferenceEnum),
-  "kind": S.optional(S.String),
-  "rotatingBarcode": S.optional(RotatingBarcode),
-  "seatInfo": S.optional(EventSeat),
-  "ticketHolderName": S.optional(S.String),
-  "hexBackgroundColor": S.optional(S.String),
-  "classId": S.optional(S.String),
-  "saveRestrictions": S.optional(SaveRestrictions),
-  "textModulesData": S.optional(TextModuleDataList),
-  "valueAddedModuleData": S.optional(ValueAddedModuleDataList),
-  "linksModuleData": S.optional(LinksModuleData),
-  "heroImage": S.optional(Image),
-  "hasLinkedDevice": S.optional(S.Boolean),
-  "classReference": S.optional(EventTicketClass),
-}),
-).annotate({ identifier: "EventTicketObject" }) as any as S.Schema<EventTicketObject>;
+  S.Struct({
+    faceValue: S.optional(Money),
+    imageModulesData: S.optional(ImageModuleDataList),
+    appLinkData: S.optional(AppLinkData),
+    ticketType: S.optional(LocalizedString),
+    validTimeInterval: S.optional(TimeInterval),
+    groupingInfo: S.optional(GroupingInfo),
+    linkedObjectIds: S.optional(StringList),
+    disableExpirationNotification: S.optional(S.Boolean),
+    passConstraints: S.optional(PassConstraints),
+    version: S.optional(S.String),
+    linkedOfferIds: S.optional(StringList),
+    merchantLocations: S.optional(MerchantLocationList),
+    id: S.optional(S.String),
+    infoModuleData: S.optional(InfoModuleData),
+    ticketNumber: S.optional(S.String),
+    hasUsers: S.optional(S.Boolean),
+    reservationInfo: S.optional(EventReservationInfo),
+    barcode: S.optional(Barcode),
+    smartTapRedemptionValue: S.optional(S.String),
+    state: S.optional(EventTicketObjectStateEnum),
+    locations: S.optional(LatLongPointList),
+    messages: S.optional(MessageList),
+    notifyPreference: S.optional(EventTicketObjectNotifyPreferenceEnum),
+    kind: S.optional(S.String),
+    rotatingBarcode: S.optional(RotatingBarcode),
+    seatInfo: S.optional(EventSeat),
+    ticketHolderName: S.optional(S.String),
+    hexBackgroundColor: S.optional(S.String),
+    classId: S.optional(S.String),
+    saveRestrictions: S.optional(SaveRestrictions),
+    textModulesData: S.optional(TextModuleDataList),
+    valueAddedModuleData: S.optional(ValueAddedModuleDataList),
+    linksModuleData: S.optional(LinksModuleData),
+    heroImage: S.optional(Image),
+    hasLinkedDevice: S.optional(S.Boolean),
+    classReference: S.optional(EventTicketClass),
+  }),
+).annotate({
+  identifier: "EventTicketObject",
+}) as any as S.Schema<EventTicketObject>;
 
 export interface EventTicketObjectAddMessageResponse {
   /** The updated EventTicketObject resource. */
   resource?: EventTicketObject;
 }
 export const EventTicketObjectAddMessageResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.optional(EventTicketObject),
-}),
-).annotate({ identifier: "EventTicketObjectAddMessageResponse" }) as any as S.Schema<EventTicketObjectAddMessageResponse>;
+  S.Struct({
+    resource: S.optional(EventTicketObject),
+  }),
+).annotate({
+  identifier: "EventTicketObjectAddMessageResponse",
+}) as any as S.Schema<EventTicketObjectAddMessageResponse>;
 
 export interface AddmessageFlightclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
@@ -1322,20 +1609,55 @@ export interface AddmessageFlightclassRequest {
   body?: AddMessageRequest;
 }
 export const AddmessageFlightclassRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-  "body": S.optional(AddMessageRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"walletobjects/v1/flightClass/{resourceId}/addMessage","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "AddmessageFlightclassRequest" }) as any as S.Schema<AddmessageFlightclassRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    body: S.optional(AddMessageRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "walletobjects/v1/flightClass/{resourceId}/addMessage",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "AddmessageFlightclassRequest",
+}) as any as S.Schema<AddmessageFlightclassRequest>;
 
-export type FlightClassReviewStatusEnum = "REVIEW_STATUS_UNSPECIFIED" | "UNDER_REVIEW" | "underReview" | "APPROVED" | "approved" | "REJECTED" | "rejected" | "DRAFT" | "draft";
+export type FlightClassReviewStatusEnum =
+  | "REVIEW_STATUS_UNSPECIFIED"
+  | "UNDER_REVIEW"
+  | "underReview"
+  | "APPROVED"
+  | "approved"
+  | "REJECTED"
+  | "rejected"
+  | "DRAFT"
+  | "draft";
 export const FlightClassReviewStatusEnum = /*@__PURE__*/ S.String;
 
-export type BoardingAndSeatingPolicySeatClassPolicyEnum = "SEAT_CLASS_POLICY_UNSPECIFIED" | "CABIN_BASED" | "cabinBased" | "CLASS_BASED" | "classBased" | "TIER_BASED" | "tierBased" | "SEAT_CLASS_POLICY_OTHER" | "seatClassPolicyOther";
-export const BoardingAndSeatingPolicySeatClassPolicyEnum = /*@__PURE__*/ S.String;
+export type BoardingAndSeatingPolicySeatClassPolicyEnum =
+  | "SEAT_CLASS_POLICY_UNSPECIFIED"
+  | "CABIN_BASED"
+  | "cabinBased"
+  | "CLASS_BASED"
+  | "classBased"
+  | "TIER_BASED"
+  | "tierBased"
+  | "SEAT_CLASS_POLICY_OTHER"
+  | "seatClassPolicyOther";
+export const BoardingAndSeatingPolicySeatClassPolicyEnum =
+  /*@__PURE__*/ S.String;
 
-export type BoardingAndSeatingPolicyBoardingPolicyEnum = "BOARDING_POLICY_UNSPECIFIED" | "ZONE_BASED" | "zoneBased" | "GROUP_BASED" | "groupBased" | "BOARDING_POLICY_OTHER" | "boardingPolicyOther";
-export const BoardingAndSeatingPolicyBoardingPolicyEnum = /*@__PURE__*/ S.String;
+export type BoardingAndSeatingPolicyBoardingPolicyEnum =
+  | "BOARDING_POLICY_UNSPECIFIED"
+  | "ZONE_BASED"
+  | "zoneBased"
+  | "GROUP_BASED"
+  | "groupBased"
+  | "BOARDING_POLICY_OTHER"
+  | "boardingPolicyOther";
+export const BoardingAndSeatingPolicyBoardingPolicyEnum =
+  /*@__PURE__*/ S.String;
 
 export interface BoardingAndSeatingPolicy {
   /** Identifies what kind of resource this is. Value: the fixed string `"walletobjects#boardingAndSeatingPolicy"`. */
@@ -1346,12 +1668,14 @@ export interface BoardingAndSeatingPolicy {
   boardingPolicy?: BoardingAndSeatingPolicyBoardingPolicyEnum;
 }
 export const BoardingAndSeatingPolicy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "seatClassPolicy": S.optional(BoardingAndSeatingPolicySeatClassPolicyEnum),
-  "boardingPolicy": S.optional(BoardingAndSeatingPolicyBoardingPolicyEnum),
-}),
-).annotate({ identifier: "BoardingAndSeatingPolicy" }) as any as S.Schema<BoardingAndSeatingPolicy>;
+  S.Struct({
+    kind: S.optional(S.String),
+    seatClassPolicy: S.optional(BoardingAndSeatingPolicySeatClassPolicyEnum),
+    boardingPolicy: S.optional(BoardingAndSeatingPolicyBoardingPolicyEnum),
+  }),
+).annotate({
+  identifier: "BoardingAndSeatingPolicy",
+}) as any as S.Schema<BoardingAndSeatingPolicy>;
 
 export interface AirportInfo {
   /** Identifies what kind of resource this is. Value: the fixed string `"walletobjects#airportInfo"`. */
@@ -1366,23 +1690,36 @@ export interface AirportInfo {
   gate?: string;
 }
 export const AirportInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "airportIataCode": S.optional(S.String),
-  "airportNameOverride": S.optional(LocalizedString),
-  "terminal": S.optional(S.String),
-  "gate": S.optional(S.String),
-}),
+  S.Struct({
+    kind: S.optional(S.String),
+    airportIataCode: S.optional(S.String),
+    airportNameOverride: S.optional(LocalizedString),
+    terminal: S.optional(S.String),
+    gate: S.optional(S.String),
+  }),
 ).annotate({ identifier: "AirportInfo" }) as any as S.Schema<AirportInfo>;
 
-export type FlightClassNotifyPreferenceEnum = "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED" | "NOTIFY_ON_UPDATE";
+export type FlightClassNotifyPreferenceEnum =
+  | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
+  | "NOTIFY_ON_UPDATE";
 export const FlightClassNotifyPreferenceEnum = /*@__PURE__*/ S.String;
 
-export type FlightClassViewUnlockRequirementEnum = "VIEW_UNLOCK_REQUIREMENT_UNSPECIFIED" | "UNLOCK_NOT_REQUIRED" | "UNLOCK_REQUIRED_TO_VIEW";
+export type FlightClassViewUnlockRequirementEnum =
+  | "VIEW_UNLOCK_REQUIREMENT_UNSPECIFIED"
+  | "UNLOCK_NOT_REQUIRED"
+  | "UNLOCK_REQUIRED_TO_VIEW";
 export const FlightClassViewUnlockRequirementEnum = /*@__PURE__*/ S.String;
 
-export type FlightClassMultipleDevicesAndHoldersAllowedStatusEnum = "STATUS_UNSPECIFIED" | "MULTIPLE_HOLDERS" | "ONE_USER_ALL_DEVICES" | "ONE_USER_ONE_DEVICE" | "multipleHolders" | "oneUserAllDevices" | "oneUserOneDevice";
-export const FlightClassMultipleDevicesAndHoldersAllowedStatusEnum = /*@__PURE__*/ S.String;
+export type FlightClassMultipleDevicesAndHoldersAllowedStatusEnum =
+  | "STATUS_UNSPECIFIED"
+  | "MULTIPLE_HOLDERS"
+  | "ONE_USER_ALL_DEVICES"
+  | "ONE_USER_ONE_DEVICE"
+  | "multipleHolders"
+  | "oneUserAllDevices"
+  | "oneUserOneDevice";
+export const FlightClassMultipleDevicesAndHoldersAllowedStatusEnum =
+  /*@__PURE__*/ S.String;
 
 export interface FlightCarrier {
   /** A localized name of the airline specified by carrierIataCode. If unset, `issuer_name` or `localized_issuer_name` from `FlightClass` will be used for display purposes. eg: "Swiss Air" for "LX" */
@@ -1401,15 +1738,15 @@ export interface FlightCarrier {
   kind?: string;
 }
 export const FlightCarrier = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "airlineName": S.optional(LocalizedString),
-  "airlineLogo": S.optional(Image),
-  "carrierIataCode": S.optional(S.String),
-  "carrierIcaoCode": S.optional(S.String),
-  "airlineAllianceLogo": S.optional(Image),
-  "wideAirlineLogo": S.optional(Image),
-  "kind": S.optional(S.String),
-}),
+  S.Struct({
+    airlineName: S.optional(LocalizedString),
+    airlineLogo: S.optional(Image),
+    carrierIataCode: S.optional(S.String),
+    carrierIcaoCode: S.optional(S.String),
+    airlineAllianceLogo: S.optional(Image),
+    wideAirlineLogo: S.optional(Image),
+    kind: S.optional(S.String),
+  }),
 ).annotate({ identifier: "FlightCarrier" }) as any as S.Schema<FlightCarrier>;
 
 export interface FlightHeader {
@@ -1427,17 +1764,30 @@ export interface FlightHeader {
   carrier?: FlightCarrier;
 }
 export const FlightHeader = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "operatingFlightNumber": S.optional(S.String),
-  "operatingCarrier": S.optional(FlightCarrier),
-  "flightNumberDisplayOverride": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "flightNumber": S.optional(S.String),
-  "carrier": S.optional(FlightCarrier),
-}),
+  S.Struct({
+    operatingFlightNumber: S.optional(S.String),
+    operatingCarrier: S.optional(FlightCarrier),
+    flightNumberDisplayOverride: S.optional(S.String),
+    kind: S.optional(S.String),
+    flightNumber: S.optional(S.String),
+    carrier: S.optional(FlightCarrier),
+  }),
 ).annotate({ identifier: "FlightHeader" }) as any as S.Schema<FlightHeader>;
 
-export type FlightClassFlightStatusEnum = "FLIGHT_STATUS_UNSPECIFIED" | "SCHEDULED" | "scheduled" | "ACTIVE" | "active" | "LANDED" | "landed" | "CANCELLED" | "cancelled" | "REDIRECTED" | "redirected" | "DIVERTED" | "diverted";
+export type FlightClassFlightStatusEnum =
+  | "FLIGHT_STATUS_UNSPECIFIED"
+  | "SCHEDULED"
+  | "scheduled"
+  | "ACTIVE"
+  | "active"
+  | "LANDED"
+  | "landed"
+  | "CANCELLED"
+  | "cancelled"
+  | "REDIRECTED"
+  | "redirected"
+  | "DIVERTED"
+  | "diverted";
 export const FlightClassFlightStatusEnum = /*@__PURE__*/ S.String;
 
 export interface FlightClass {
@@ -1527,50 +1877,52 @@ export interface FlightClass {
   merchantLocations?: MerchantLocationList;
 }
 export const FlightClass = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "homepageUri": S.optional(Uri),
-  "reviewStatus": S.optional(FlightClassReviewStatusEnum),
-  "localScheduledDepartureDateTime": S.optional(S.String),
-  "locations": S.optional(LatLongPointList),
-  "boardingAndSeatingPolicy": S.optional(BoardingAndSeatingPolicy),
-  "destination": S.optional(AirportInfo),
-  "wordMark": S.optional(Image),
-  "kind": S.optional(S.String),
-  "messages": S.optional(MessageList),
-  "notifyPreference": S.optional(FlightClassNotifyPreferenceEnum),
-  "hexBackgroundColor": S.optional(S.String),
-  "classTemplateInfo": S.optional(ClassTemplateInfo),
-  "linksModuleData": S.optional(LinksModuleData),
-  "heroImage": S.optional(Image),
-  "callbackOptions": S.optional(CallbackOptions),
-  "valueAddedModuleData": S.optional(ValueAddedModuleDataList),
-  "localBoardingDateTime": S.optional(S.String),
-  "textModulesData": S.optional(TextModuleDataList),
-  "localGateClosingDateTime": S.optional(S.String),
-  "languageOverride": S.optional(S.String),
-  "viewUnlockRequirement": S.optional(FlightClassViewUnlockRequirementEnum),
-  "review": S.optional(Review),
-  "localEstimatedOrActualArrivalDateTime": S.optional(S.String),
-  "imageModulesData": S.optional(ImageModuleDataList),
-  "appLinkData": S.optional(AppLinkData),
-  "issuerName": S.optional(S.String),
-  "redemptionIssuers": S.optional(StringList),
-  "securityAnimation": S.optional(SecurityAnimation),
-  "allowMultipleUsersPerObject": S.optional(S.Boolean),
-  "localEstimatedOrActualDepartureDateTime": S.optional(S.String),
-  "localScheduledArrivalDateTime": S.optional(S.String),
-  "multipleDevicesAndHoldersAllowedStatus": S.optional(FlightClassMultipleDevicesAndHoldersAllowedStatusEnum),
-  "flightHeader": S.optional(FlightHeader),
-  "enableSmartTap": S.optional(S.Boolean),
-  "origin": S.optional(AirportInfo),
-  "localizedIssuerName": S.optional(LocalizedString),
-  "flightStatus": S.optional(FlightClassFlightStatusEnum),
-  "version": S.optional(S.String),
-  "infoModuleData": S.optional(InfoModuleData),
-  "id": S.optional(S.String),
-  "countryCode": S.optional(S.String),
-  "merchantLocations": S.optional(MerchantLocationList),
-}),
+  S.Struct({
+    homepageUri: S.optional(Uri),
+    reviewStatus: S.optional(FlightClassReviewStatusEnum),
+    localScheduledDepartureDateTime: S.optional(S.String),
+    locations: S.optional(LatLongPointList),
+    boardingAndSeatingPolicy: S.optional(BoardingAndSeatingPolicy),
+    destination: S.optional(AirportInfo),
+    wordMark: S.optional(Image),
+    kind: S.optional(S.String),
+    messages: S.optional(MessageList),
+    notifyPreference: S.optional(FlightClassNotifyPreferenceEnum),
+    hexBackgroundColor: S.optional(S.String),
+    classTemplateInfo: S.optional(ClassTemplateInfo),
+    linksModuleData: S.optional(LinksModuleData),
+    heroImage: S.optional(Image),
+    callbackOptions: S.optional(CallbackOptions),
+    valueAddedModuleData: S.optional(ValueAddedModuleDataList),
+    localBoardingDateTime: S.optional(S.String),
+    textModulesData: S.optional(TextModuleDataList),
+    localGateClosingDateTime: S.optional(S.String),
+    languageOverride: S.optional(S.String),
+    viewUnlockRequirement: S.optional(FlightClassViewUnlockRequirementEnum),
+    review: S.optional(Review),
+    localEstimatedOrActualArrivalDateTime: S.optional(S.String),
+    imageModulesData: S.optional(ImageModuleDataList),
+    appLinkData: S.optional(AppLinkData),
+    issuerName: S.optional(S.String),
+    redemptionIssuers: S.optional(StringList),
+    securityAnimation: S.optional(SecurityAnimation),
+    allowMultipleUsersPerObject: S.optional(S.Boolean),
+    localEstimatedOrActualDepartureDateTime: S.optional(S.String),
+    localScheduledArrivalDateTime: S.optional(S.String),
+    multipleDevicesAndHoldersAllowedStatus: S.optional(
+      FlightClassMultipleDevicesAndHoldersAllowedStatusEnum,
+    ),
+    flightHeader: S.optional(FlightHeader),
+    enableSmartTap: S.optional(S.Boolean),
+    origin: S.optional(AirportInfo),
+    localizedIssuerName: S.optional(LocalizedString),
+    flightStatus: S.optional(FlightClassFlightStatusEnum),
+    version: S.optional(S.String),
+    infoModuleData: S.optional(InfoModuleData),
+    id: S.optional(S.String),
+    countryCode: S.optional(S.String),
+    merchantLocations: S.optional(MerchantLocationList),
+  }),
 ).annotate({ identifier: "FlightClass" }) as any as S.Schema<FlightClass>;
 
 export interface FlightClassAddMessageResponse {
@@ -1578,10 +1930,12 @@ export interface FlightClassAddMessageResponse {
   resource?: FlightClass;
 }
 export const FlightClassAddMessageResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.optional(FlightClass),
-}),
-).annotate({ identifier: "FlightClassAddMessageResponse" }) as any as S.Schema<FlightClassAddMessageResponse>;
+  S.Struct({
+    resource: S.optional(FlightClass),
+  }),
+).annotate({
+  identifier: "FlightClassAddMessageResponse",
+}) as any as S.Schema<FlightClassAddMessageResponse>;
 
 export interface AddmessageFlightobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
@@ -1590,13 +1944,26 @@ export interface AddmessageFlightobjectRequest {
   body?: AddMessageRequest;
 }
 export const AddmessageFlightobjectRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-  "body": S.optional(AddMessageRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"walletobjects/v1/flightObject/{resourceId}/addMessage","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "AddmessageFlightobjectRequest" }) as any as S.Schema<AddmessageFlightobjectRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    body: S.optional(AddMessageRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "walletobjects/v1/flightObject/{resourceId}/addMessage",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "AddmessageFlightobjectRequest",
+}) as any as S.Schema<AddmessageFlightobjectRequest>;
 
-export type BoardingAndSeatingInfoBoardingDoorEnum = "BOARDING_DOOR_UNSPECIFIED" | "FRONT" | "front" | "BACK" | "back";
+export type BoardingAndSeatingInfoBoardingDoorEnum =
+  | "BOARDING_DOOR_UNSPECIFIED"
+  | "FRONT"
+  | "front"
+  | "BACK"
+  | "back";
 export const BoardingAndSeatingInfoBoardingDoorEnum = /*@__PURE__*/ S.String;
 
 export interface BoardingAndSeatingInfo {
@@ -1620,23 +1987,36 @@ export interface BoardingAndSeatingInfo {
   sequenceNumber?: string;
 }
 export const BoardingAndSeatingInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "boardingPrivilegeImage": S.optional(Image),
-  "seatClass": S.optional(S.String),
-  "boardingDoor": S.optional(BoardingAndSeatingInfoBoardingDoorEnum),
-  "seatNumber": S.optional(S.String),
-  "seatAssignment": S.optional(LocalizedString),
-  "boardingPosition": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "boardingGroup": S.optional(S.String),
-  "sequenceNumber": S.optional(S.String),
-}),
-).annotate({ identifier: "BoardingAndSeatingInfo" }) as any as S.Schema<BoardingAndSeatingInfo>;
+  S.Struct({
+    boardingPrivilegeImage: S.optional(Image),
+    seatClass: S.optional(S.String),
+    boardingDoor: S.optional(BoardingAndSeatingInfoBoardingDoorEnum),
+    seatNumber: S.optional(S.String),
+    seatAssignment: S.optional(LocalizedString),
+    boardingPosition: S.optional(S.String),
+    kind: S.optional(S.String),
+    boardingGroup: S.optional(S.String),
+    sequenceNumber: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BoardingAndSeatingInfo",
+}) as any as S.Schema<BoardingAndSeatingInfo>;
 
-export type FlightObjectNotifyPreferenceEnum = "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED" | "NOTIFY_ON_UPDATE";
+export type FlightObjectNotifyPreferenceEnum =
+  | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
+  | "NOTIFY_ON_UPDATE";
 export const FlightObjectNotifyPreferenceEnum = /*@__PURE__*/ S.String;
 
-export type FlightObjectStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "active" | "COMPLETED" | "completed" | "EXPIRED" | "expired" | "INACTIVE" | "inactive";
+export type FlightObjectStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "active"
+  | "COMPLETED"
+  | "completed"
+  | "EXPIRED"
+  | "expired"
+  | "INACTIVE"
+  | "inactive";
 export const FlightObjectStateEnum = /*@__PURE__*/ S.String;
 
 export interface FrequentFlyerInfo {
@@ -1648,12 +2028,14 @@ export interface FrequentFlyerInfo {
   frequentFlyerNumber?: string;
 }
 export const FrequentFlyerInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "frequentFlyerProgramName": S.optional(LocalizedString),
-  "frequentFlyerNumber": S.optional(S.String),
-}),
-).annotate({ identifier: "FrequentFlyerInfo" }) as any as S.Schema<FrequentFlyerInfo>;
+  S.Struct({
+    kind: S.optional(S.String),
+    frequentFlyerProgramName: S.optional(LocalizedString),
+    frequentFlyerNumber: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "FrequentFlyerInfo",
+}) as any as S.Schema<FrequentFlyerInfo>;
 
 export interface ReservationInfo {
   /** E-ticket number. */
@@ -1666,13 +2048,15 @@ export interface ReservationInfo {
   confirmationCode?: string;
 }
 export const ReservationInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "eticketNumber": S.optional(S.String),
-  "frequentFlyerInfo": S.optional(FrequentFlyerInfo),
-  "kind": S.optional(S.String),
-  "confirmationCode": S.optional(S.String),
-}),
-).annotate({ identifier: "ReservationInfo" }) as any as S.Schema<ReservationInfo>;
+  S.Struct({
+    eticketNumber: S.optional(S.String),
+    frequentFlyerInfo: S.optional(FrequentFlyerInfo),
+    kind: S.optional(S.String),
+    confirmationCode: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ReservationInfo",
+}) as any as S.Schema<ReservationInfo>;
 
 export interface FlightObject {
   /** Passenger specific information about boarding and seating. */
@@ -1743,41 +2127,41 @@ export interface FlightObject {
   hexBackgroundColor?: string;
 }
 export const FlightObject = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "boardingAndSeatingInfo": S.optional(BoardingAndSeatingInfo),
-  "groupingInfo": S.optional(GroupingInfo),
-  "validTimeInterval": S.optional(TimeInterval),
-  "imageModulesData": S.optional(ImageModuleDataList),
-  "appLinkData": S.optional(AppLinkData),
-  "infoModuleData": S.optional(InfoModuleData),
-  "id": S.optional(S.String),
-  "merchantLocations": S.optional(MerchantLocationList),
-  "version": S.optional(S.String),
-  "passConstraints": S.optional(PassConstraints),
-  "disableExpirationNotification": S.optional(S.Boolean),
-  "securityProgramLogo": S.optional(Image),
-  "linkedObjectIds": S.optional(StringList),
-  "rotatingBarcode": S.optional(RotatingBarcode),
-  "kind": S.optional(S.String),
-  "passengerName": S.optional(S.String),
-  "messages": S.optional(MessageList),
-  "notifyPreference": S.optional(FlightObjectNotifyPreferenceEnum),
-  "locations": S.optional(LatLongPointList),
-  "state": S.optional(FlightObjectStateEnum),
-  "smartTapRedemptionValue": S.optional(S.String),
-  "barcode": S.optional(Barcode),
-  "reservationInfo": S.optional(ReservationInfo),
-  "hasUsers": S.optional(S.Boolean),
-  "classReference": S.optional(FlightClass),
-  "hasLinkedDevice": S.optional(S.Boolean),
-  "linksModuleData": S.optional(LinksModuleData),
-  "heroImage": S.optional(Image),
-  "valueAddedModuleData": S.optional(ValueAddedModuleDataList),
-  "textModulesData": S.optional(TextModuleDataList),
-  "classId": S.optional(S.String),
-  "saveRestrictions": S.optional(SaveRestrictions),
-  "hexBackgroundColor": S.optional(S.String),
-}),
+  S.Struct({
+    boardingAndSeatingInfo: S.optional(BoardingAndSeatingInfo),
+    groupingInfo: S.optional(GroupingInfo),
+    validTimeInterval: S.optional(TimeInterval),
+    imageModulesData: S.optional(ImageModuleDataList),
+    appLinkData: S.optional(AppLinkData),
+    infoModuleData: S.optional(InfoModuleData),
+    id: S.optional(S.String),
+    merchantLocations: S.optional(MerchantLocationList),
+    version: S.optional(S.String),
+    passConstraints: S.optional(PassConstraints),
+    disableExpirationNotification: S.optional(S.Boolean),
+    securityProgramLogo: S.optional(Image),
+    linkedObjectIds: S.optional(StringList),
+    rotatingBarcode: S.optional(RotatingBarcode),
+    kind: S.optional(S.String),
+    passengerName: S.optional(S.String),
+    messages: S.optional(MessageList),
+    notifyPreference: S.optional(FlightObjectNotifyPreferenceEnum),
+    locations: S.optional(LatLongPointList),
+    state: S.optional(FlightObjectStateEnum),
+    smartTapRedemptionValue: S.optional(S.String),
+    barcode: S.optional(Barcode),
+    reservationInfo: S.optional(ReservationInfo),
+    hasUsers: S.optional(S.Boolean),
+    classReference: S.optional(FlightClass),
+    hasLinkedDevice: S.optional(S.Boolean),
+    linksModuleData: S.optional(LinksModuleData),
+    heroImage: S.optional(Image),
+    valueAddedModuleData: S.optional(ValueAddedModuleDataList),
+    textModulesData: S.optional(TextModuleDataList),
+    classId: S.optional(S.String),
+    saveRestrictions: S.optional(SaveRestrictions),
+    hexBackgroundColor: S.optional(S.String),
+  }),
 ).annotate({ identifier: "FlightObject" }) as any as S.Schema<FlightObject>;
 
 export interface FlightObjectAddMessageResponse {
@@ -1785,10 +2169,12 @@ export interface FlightObjectAddMessageResponse {
   resource?: FlightObject;
 }
 export const FlightObjectAddMessageResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.optional(FlightObject),
-}),
-).annotate({ identifier: "FlightObjectAddMessageResponse" }) as any as S.Schema<FlightObjectAddMessageResponse>;
+  S.Struct({
+    resource: S.optional(FlightObject),
+  }),
+).annotate({
+  identifier: "FlightObjectAddMessageResponse",
+}) as any as S.Schema<FlightObjectAddMessageResponse>;
 
 export interface AddmessageGenericclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
@@ -1797,16 +2183,35 @@ export interface AddmessageGenericclassRequest {
   body?: AddMessageRequest;
 }
 export const AddmessageGenericclassRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-  "body": S.optional(AddMessageRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"walletobjects/v1/genericClass/{resourceId}/addMessage","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "AddmessageGenericclassRequest" }) as any as S.Schema<AddmessageGenericclassRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    body: S.optional(AddMessageRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "walletobjects/v1/genericClass/{resourceId}/addMessage",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "AddmessageGenericclassRequest",
+}) as any as S.Schema<AddmessageGenericclassRequest>;
 
-export type GenericClassMultipleDevicesAndHoldersAllowedStatusEnum = "STATUS_UNSPECIFIED" | "MULTIPLE_HOLDERS" | "ONE_USER_ALL_DEVICES" | "ONE_USER_ONE_DEVICE" | "multipleHolders" | "oneUserAllDevices" | "oneUserOneDevice";
-export const GenericClassMultipleDevicesAndHoldersAllowedStatusEnum = /*@__PURE__*/ S.String;
+export type GenericClassMultipleDevicesAndHoldersAllowedStatusEnum =
+  | "STATUS_UNSPECIFIED"
+  | "MULTIPLE_HOLDERS"
+  | "ONE_USER_ALL_DEVICES"
+  | "ONE_USER_ONE_DEVICE"
+  | "multipleHolders"
+  | "oneUserAllDevices"
+  | "oneUserOneDevice";
+export const GenericClassMultipleDevicesAndHoldersAllowedStatusEnum =
+  /*@__PURE__*/ S.String;
 
-export type GenericClassViewUnlockRequirementEnum = "VIEW_UNLOCK_REQUIREMENT_UNSPECIFIED" | "UNLOCK_NOT_REQUIRED" | "UNLOCK_REQUIRED_TO_VIEW";
+export type GenericClassViewUnlockRequirementEnum =
+  | "VIEW_UNLOCK_REQUIREMENT_UNSPECIFIED"
+  | "UNLOCK_NOT_REQUIRED"
+  | "UNLOCK_REQUIRED_TO_VIEW";
 export const GenericClassViewUnlockRequirementEnum = /*@__PURE__*/ S.String;
 
 /** Generic Class */
@@ -1843,23 +2248,25 @@ export interface GenericClass {
   messages?: MessageList;
 }
 export const GenericClass = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "classTemplateInfo": S.optional(ClassTemplateInfo),
-  "multipleDevicesAndHoldersAllowedStatus": S.optional(GenericClassMultipleDevicesAndHoldersAllowedStatusEnum),
-  "enableSmartTap": S.optional(S.Boolean),
-  "linksModuleData": S.optional(LinksModuleData),
-  "callbackOptions": S.optional(CallbackOptions),
-  "valueAddedModuleData": S.optional(ValueAddedModuleDataList),
-  "textModulesData": S.optional(TextModuleDataList),
-  "id": S.optional(S.String),
-  "merchantLocations": S.optional(MerchantLocationList),
-  "viewUnlockRequirement": S.optional(GenericClassViewUnlockRequirementEnum),
-  "imageModulesData": S.optional(ImageModuleDataList),
-  "appLinkData": S.optional(AppLinkData),
-  "redemptionIssuers": S.optional(StringList),
-  "securityAnimation": S.optional(SecurityAnimation),
-  "messages": S.optional(MessageList),
-}),
+  S.Struct({
+    classTemplateInfo: S.optional(ClassTemplateInfo),
+    multipleDevicesAndHoldersAllowedStatus: S.optional(
+      GenericClassMultipleDevicesAndHoldersAllowedStatusEnum,
+    ),
+    enableSmartTap: S.optional(S.Boolean),
+    linksModuleData: S.optional(LinksModuleData),
+    callbackOptions: S.optional(CallbackOptions),
+    valueAddedModuleData: S.optional(ValueAddedModuleDataList),
+    textModulesData: S.optional(TextModuleDataList),
+    id: S.optional(S.String),
+    merchantLocations: S.optional(MerchantLocationList),
+    viewUnlockRequirement: S.optional(GenericClassViewUnlockRequirementEnum),
+    imageModulesData: S.optional(ImageModuleDataList),
+    appLinkData: S.optional(AppLinkData),
+    redemptionIssuers: S.optional(StringList),
+    securityAnimation: S.optional(SecurityAnimation),
+    messages: S.optional(MessageList),
+  }),
 ).annotate({ identifier: "GenericClass" }) as any as S.Schema<GenericClass>;
 
 /** Response to adding a new issuer message to the class. This contains the entire updated GenericClass. */
@@ -1868,10 +2275,12 @@ export interface GenericClassAddMessageResponse {
   resource?: GenericClass;
 }
 export const GenericClassAddMessageResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.optional(GenericClass),
-}),
-).annotate({ identifier: "GenericClassAddMessageResponse" }) as any as S.Schema<GenericClassAddMessageResponse>;
+  S.Struct({
+    resource: S.optional(GenericClass),
+  }),
+).annotate({
+  identifier: "GenericClassAddMessageResponse",
+}) as any as S.Schema<GenericClassAddMessageResponse>;
 
 export interface AddmessageGenericobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
@@ -1880,11 +2289,19 @@ export interface AddmessageGenericobjectRequest {
   body?: AddMessageRequest;
 }
 export const AddmessageGenericobjectRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-  "body": S.optional(AddMessageRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"walletobjects/v1/genericObject/{resourceId}/addMessage","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "AddmessageGenericobjectRequest" }) as any as S.Schema<AddmessageGenericobjectRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    body: S.optional(AddMessageRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "walletobjects/v1/genericObject/{resourceId}/addMessage",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "AddmessageGenericobjectRequest",
+}) as any as S.Schema<AddmessageGenericobjectRequest>;
 
 /** Indicates that the issuer would like Google Wallet to send expiry notifications 2 days prior to the card expiration. */
 export interface ExpiryNotification {
@@ -1892,10 +2309,12 @@ export interface ExpiryNotification {
   enableNotification?: boolean;
 }
 export const ExpiryNotification = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "enableNotification": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "ExpiryNotification" }) as any as S.Schema<ExpiryNotification>;
+  S.Struct({
+    enableNotification: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ExpiryNotification",
+}) as any as S.Schema<ExpiryNotification>;
 
 /** Indicates that the issuer would like Google Wallet to send an upcoming card validity notification 1 day before card becomes valid/usable. */
 export interface UpcomingNotification {
@@ -1903,10 +2322,12 @@ export interface UpcomingNotification {
   enableNotification?: boolean;
 }
 export const UpcomingNotification = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "enableNotification": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "UpcomingNotification" }) as any as S.Schema<UpcomingNotification>;
+  S.Struct({
+    enableNotification: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "UpcomingNotification",
+}) as any as S.Schema<UpcomingNotification>;
 
 /** Indicates if the object needs to have notification enabled. We support only one of ExpiryNotification/UpcomingNotification. `expiryNotification` takes precedence over `upcomingNotification`. In other words if `expiryNotification` is set, we ignore the `upcomingNotification` field. */
 export interface Notifications {
@@ -1916,16 +2337,45 @@ export interface Notifications {
   upcomingNotification?: UpcomingNotification;
 }
 export const Notifications = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "expiryNotification": S.optional(ExpiryNotification),
-  "upcomingNotification": S.optional(UpcomingNotification),
-}),
+  S.Struct({
+    expiryNotification: S.optional(ExpiryNotification),
+    upcomingNotification: S.optional(UpcomingNotification),
+  }),
 ).annotate({ identifier: "Notifications" }) as any as S.Schema<Notifications>;
 
-export type GenericObjectGenericTypeEnum = "GENERIC_TYPE_UNSPECIFIED" | "GENERIC_SEASON_PASS" | "GENERIC_UTILITY_BILLS" | "GENERIC_PARKING_PASS" | "GENERIC_VOUCHER" | "GENERIC_GYM_MEMBERSHIP" | "GENERIC_LIBRARY_MEMBERSHIP" | "GENERIC_RESERVATIONS" | "GENERIC_AUTO_INSURANCE" | "GENERIC_HOME_INSURANCE" | "GENERIC_ENTRY_TICKET" | "GENERIC_RECEIPT" | "GENERIC_LOYALTY_CARD" | "GENERIC_BUSINESS_CARD" | "GENERIC_BARCODE_PASS" | "GENERIC_MEMBERSHIP_CARD" | "GENERIC_STUDENT_CARD" | "GENERIC_TRANSIT_PASS" | "GENERIC_VEHICLE_REGISTRATION" | "GENERIC_OTHER";
+export type GenericObjectGenericTypeEnum =
+  | "GENERIC_TYPE_UNSPECIFIED"
+  | "GENERIC_SEASON_PASS"
+  | "GENERIC_UTILITY_BILLS"
+  | "GENERIC_PARKING_PASS"
+  | "GENERIC_VOUCHER"
+  | "GENERIC_GYM_MEMBERSHIP"
+  | "GENERIC_LIBRARY_MEMBERSHIP"
+  | "GENERIC_RESERVATIONS"
+  | "GENERIC_AUTO_INSURANCE"
+  | "GENERIC_HOME_INSURANCE"
+  | "GENERIC_ENTRY_TICKET"
+  | "GENERIC_RECEIPT"
+  | "GENERIC_LOYALTY_CARD"
+  | "GENERIC_BUSINESS_CARD"
+  | "GENERIC_BARCODE_PASS"
+  | "GENERIC_MEMBERSHIP_CARD"
+  | "GENERIC_STUDENT_CARD"
+  | "GENERIC_TRANSIT_PASS"
+  | "GENERIC_VEHICLE_REGISTRATION"
+  | "GENERIC_OTHER";
 export const GenericObjectGenericTypeEnum = /*@__PURE__*/ S.String;
 
-export type GenericObjectStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "active" | "COMPLETED" | "completed" | "EXPIRED" | "expired" | "INACTIVE" | "inactive";
+export type GenericObjectStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "active"
+  | "COMPLETED"
+  | "completed"
+  | "EXPIRED"
+  | "expired"
+  | "INACTIVE"
+  | "inactive";
 export const GenericObjectStateEnum = /*@__PURE__*/ S.String;
 
 /** Generic Object */
@@ -1988,36 +2438,36 @@ export interface GenericObject {
   hexBackgroundColor?: string;
 }
 export const GenericObject = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "wideLogo": S.optional(Image),
-  "imageModulesData": S.optional(ImageModuleDataList),
-  "appLinkData": S.optional(AppLinkData),
-  "notifications": S.optional(Notifications),
-  "groupingInfo": S.optional(GroupingInfo),
-  "logo": S.optional(Image),
-  "validTimeInterval": S.optional(TimeInterval),
-  "passConstraints": S.optional(PassConstraints),
-  "linkedObjectIds": S.optional(StringList),
-  "merchantLocations": S.optional(MerchantLocationList),
-  "id": S.optional(S.String),
-  "barcode": S.optional(Barcode),
-  "hasUsers": S.optional(S.Boolean),
-  "genericType": S.optional(GenericObjectGenericTypeEnum),
-  "messages": S.optional(MessageList),
-  "rotatingBarcode": S.optional(RotatingBarcode),
-  "smartTapRedemptionValue": S.optional(S.String),
-  "state": S.optional(GenericObjectStateEnum),
-  "subheader": S.optional(LocalizedString),
-  "classId": S.optional(S.String),
-  "saveRestrictions": S.optional(SaveRestrictions),
-  "textModulesData": S.optional(TextModuleDataList),
-  "valueAddedModuleData": S.optional(ValueAddedModuleDataList),
-  "heroImage": S.optional(Image),
-  "linksModuleData": S.optional(LinksModuleData),
-  "cardTitle": S.optional(LocalizedString),
-  "header": S.optional(LocalizedString),
-  "hexBackgroundColor": S.optional(S.String),
-}),
+  S.Struct({
+    wideLogo: S.optional(Image),
+    imageModulesData: S.optional(ImageModuleDataList),
+    appLinkData: S.optional(AppLinkData),
+    notifications: S.optional(Notifications),
+    groupingInfo: S.optional(GroupingInfo),
+    logo: S.optional(Image),
+    validTimeInterval: S.optional(TimeInterval),
+    passConstraints: S.optional(PassConstraints),
+    linkedObjectIds: S.optional(StringList),
+    merchantLocations: S.optional(MerchantLocationList),
+    id: S.optional(S.String),
+    barcode: S.optional(Barcode),
+    hasUsers: S.optional(S.Boolean),
+    genericType: S.optional(GenericObjectGenericTypeEnum),
+    messages: S.optional(MessageList),
+    rotatingBarcode: S.optional(RotatingBarcode),
+    smartTapRedemptionValue: S.optional(S.String),
+    state: S.optional(GenericObjectStateEnum),
+    subheader: S.optional(LocalizedString),
+    classId: S.optional(S.String),
+    saveRestrictions: S.optional(SaveRestrictions),
+    textModulesData: S.optional(TextModuleDataList),
+    valueAddedModuleData: S.optional(ValueAddedModuleDataList),
+    heroImage: S.optional(Image),
+    linksModuleData: S.optional(LinksModuleData),
+    cardTitle: S.optional(LocalizedString),
+    header: S.optional(LocalizedString),
+    hexBackgroundColor: S.optional(S.String),
+  }),
 ).annotate({ identifier: "GenericObject" }) as any as S.Schema<GenericObject>;
 
 /** Response to adding a new issuer message to the object. This contains the entire updated GenericObject. */
@@ -2026,10 +2476,12 @@ export interface GenericObjectAddMessageResponse {
   resource?: GenericObject;
 }
 export const GenericObjectAddMessageResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.optional(GenericObject),
-}),
-).annotate({ identifier: "GenericObjectAddMessageResponse" }) as any as S.Schema<GenericObjectAddMessageResponse>;
+  S.Struct({
+    resource: S.optional(GenericObject),
+  }),
+).annotate({
+  identifier: "GenericObjectAddMessageResponse",
+}) as any as S.Schema<GenericObjectAddMessageResponse>;
 
 export interface AddmessageGiftcardclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
@@ -2038,22 +2490,52 @@ export interface AddmessageGiftcardclassRequest {
   body?: AddMessageRequest;
 }
 export const AddmessageGiftcardclassRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-  "body": S.optional(AddMessageRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"walletobjects/v1/giftCardClass/{resourceId}/addMessage","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "AddmessageGiftcardclassRequest" }) as any as S.Schema<AddmessageGiftcardclassRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    body: S.optional(AddMessageRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "walletobjects/v1/giftCardClass/{resourceId}/addMessage",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "AddmessageGiftcardclassRequest",
+}) as any as S.Schema<AddmessageGiftcardclassRequest>;
 
-export type GiftCardClassMultipleDevicesAndHoldersAllowedStatusEnum = "STATUS_UNSPECIFIED" | "MULTIPLE_HOLDERS" | "ONE_USER_ALL_DEVICES" | "ONE_USER_ONE_DEVICE" | "multipleHolders" | "oneUserAllDevices" | "oneUserOneDevice";
-export const GiftCardClassMultipleDevicesAndHoldersAllowedStatusEnum = /*@__PURE__*/ S.String;
+export type GiftCardClassMultipleDevicesAndHoldersAllowedStatusEnum =
+  | "STATUS_UNSPECIFIED"
+  | "MULTIPLE_HOLDERS"
+  | "ONE_USER_ALL_DEVICES"
+  | "ONE_USER_ONE_DEVICE"
+  | "multipleHolders"
+  | "oneUserAllDevices"
+  | "oneUserOneDevice";
+export const GiftCardClassMultipleDevicesAndHoldersAllowedStatusEnum =
+  /*@__PURE__*/ S.String;
 
-export type GiftCardClassViewUnlockRequirementEnum = "VIEW_UNLOCK_REQUIREMENT_UNSPECIFIED" | "UNLOCK_NOT_REQUIRED" | "UNLOCK_REQUIRED_TO_VIEW";
+export type GiftCardClassViewUnlockRequirementEnum =
+  | "VIEW_UNLOCK_REQUIREMENT_UNSPECIFIED"
+  | "UNLOCK_NOT_REQUIRED"
+  | "UNLOCK_REQUIRED_TO_VIEW";
 export const GiftCardClassViewUnlockRequirementEnum = /*@__PURE__*/ S.String;
 
-export type GiftCardClassNotifyPreferenceEnum = "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED" | "NOTIFY_ON_UPDATE";
+export type GiftCardClassNotifyPreferenceEnum =
+  | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
+  | "NOTIFY_ON_UPDATE";
 export const GiftCardClassNotifyPreferenceEnum = /*@__PURE__*/ S.String;
 
-export type GiftCardClassReviewStatusEnum = "REVIEW_STATUS_UNSPECIFIED" | "UNDER_REVIEW" | "underReview" | "APPROVED" | "approved" | "REJECTED" | "rejected" | "DRAFT" | "draft";
+export type GiftCardClassReviewStatusEnum =
+  | "REVIEW_STATUS_UNSPECIFIED"
+  | "UNDER_REVIEW"
+  | "underReview"
+  | "APPROVED"
+  | "approved"
+  | "REJECTED"
+  | "rejected"
+  | "DRAFT"
+  | "draft";
 export const GiftCardClassReviewStatusEnum = /*@__PURE__*/ S.String;
 
 export interface GiftCardClass {
@@ -2141,49 +2623,51 @@ export interface GiftCardClass {
   allowBarcodeRedemption?: boolean;
 }
 export const GiftCardClass = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.optional(S.String),
-  "infoModuleData": S.optional(InfoModuleData),
-  "countryCode": S.optional(S.String),
-  "merchantLocations": S.optional(MerchantLocationList),
-  "version": S.optional(S.String),
-  "localizedIssuerName": S.optional(LocalizedString),
-  "cardNumberLabel": S.optional(S.String),
-  "localizedMerchantName": S.optional(LocalizedString),
-  "merchantName": S.optional(S.String),
-  "programLogo": S.optional(Image),
-  "enableSmartTap": S.optional(S.Boolean),
-  "multipleDevicesAndHoldersAllowedStatus": S.optional(GiftCardClassMultipleDevicesAndHoldersAllowedStatusEnum),
-  "allowMultipleUsersPerObject": S.optional(S.Boolean),
-  "securityAnimation": S.optional(SecurityAnimation),
-  "redemptionIssuers": S.optional(StringList),
-  "issuerName": S.optional(S.String),
-  "review": S.optional(Review),
-  "imageModulesData": S.optional(ImageModuleDataList),
-  "appLinkData": S.optional(AppLinkData),
-  "viewUnlockRequirement": S.optional(GiftCardClassViewUnlockRequirementEnum),
-  "callbackOptions": S.optional(CallbackOptions),
-  "valueAddedModuleData": S.optional(ValueAddedModuleDataList),
-  "linksModuleData": S.optional(LinksModuleData),
-  "heroImage": S.optional(Image),
-  "wideProgramLogo": S.optional(Image),
-  "localizedEventNumberLabel": S.optional(LocalizedString),
-  "textModulesData": S.optional(TextModuleDataList),
-  "classTemplateInfo": S.optional(ClassTemplateInfo),
-  "localizedCardNumberLabel": S.optional(LocalizedString),
-  "hexBackgroundColor": S.optional(S.String),
-  "localizedPinLabel": S.optional(LocalizedString),
-  "kind": S.optional(S.String),
-  "messages": S.optional(MessageList),
-  "notifyPreference": S.optional(GiftCardClassNotifyPreferenceEnum),
-  "locations": S.optional(LatLongPointList),
-  "eventNumberLabel": S.optional(S.String),
-  "wordMark": S.optional(Image),
-  "homepageUri": S.optional(Uri),
-  "reviewStatus": S.optional(GiftCardClassReviewStatusEnum),
-  "pinLabel": S.optional(S.String),
-  "allowBarcodeRedemption": S.optional(S.Boolean),
-}),
+  S.Struct({
+    id: S.optional(S.String),
+    infoModuleData: S.optional(InfoModuleData),
+    countryCode: S.optional(S.String),
+    merchantLocations: S.optional(MerchantLocationList),
+    version: S.optional(S.String),
+    localizedIssuerName: S.optional(LocalizedString),
+    cardNumberLabel: S.optional(S.String),
+    localizedMerchantName: S.optional(LocalizedString),
+    merchantName: S.optional(S.String),
+    programLogo: S.optional(Image),
+    enableSmartTap: S.optional(S.Boolean),
+    multipleDevicesAndHoldersAllowedStatus: S.optional(
+      GiftCardClassMultipleDevicesAndHoldersAllowedStatusEnum,
+    ),
+    allowMultipleUsersPerObject: S.optional(S.Boolean),
+    securityAnimation: S.optional(SecurityAnimation),
+    redemptionIssuers: S.optional(StringList),
+    issuerName: S.optional(S.String),
+    review: S.optional(Review),
+    imageModulesData: S.optional(ImageModuleDataList),
+    appLinkData: S.optional(AppLinkData),
+    viewUnlockRequirement: S.optional(GiftCardClassViewUnlockRequirementEnum),
+    callbackOptions: S.optional(CallbackOptions),
+    valueAddedModuleData: S.optional(ValueAddedModuleDataList),
+    linksModuleData: S.optional(LinksModuleData),
+    heroImage: S.optional(Image),
+    wideProgramLogo: S.optional(Image),
+    localizedEventNumberLabel: S.optional(LocalizedString),
+    textModulesData: S.optional(TextModuleDataList),
+    classTemplateInfo: S.optional(ClassTemplateInfo),
+    localizedCardNumberLabel: S.optional(LocalizedString),
+    hexBackgroundColor: S.optional(S.String),
+    localizedPinLabel: S.optional(LocalizedString),
+    kind: S.optional(S.String),
+    messages: S.optional(MessageList),
+    notifyPreference: S.optional(GiftCardClassNotifyPreferenceEnum),
+    locations: S.optional(LatLongPointList),
+    eventNumberLabel: S.optional(S.String),
+    wordMark: S.optional(Image),
+    homepageUri: S.optional(Uri),
+    reviewStatus: S.optional(GiftCardClassReviewStatusEnum),
+    pinLabel: S.optional(S.String),
+    allowBarcodeRedemption: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "GiftCardClass" }) as any as S.Schema<GiftCardClass>;
 
 export interface GiftCardClassAddMessageResponse {
@@ -2191,10 +2675,12 @@ export interface GiftCardClassAddMessageResponse {
   resource?: GiftCardClass;
 }
 export const GiftCardClassAddMessageResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.optional(GiftCardClass),
-}),
-).annotate({ identifier: "GiftCardClassAddMessageResponse" }) as any as S.Schema<GiftCardClassAddMessageResponse>;
+  S.Struct({
+    resource: S.optional(GiftCardClass),
+  }),
+).annotate({
+  identifier: "GiftCardClassAddMessageResponse",
+}) as any as S.Schema<GiftCardClassAddMessageResponse>;
 
 export interface AddmessageGiftcardobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
@@ -2203,16 +2689,35 @@ export interface AddmessageGiftcardobjectRequest {
   body?: AddMessageRequest;
 }
 export const AddmessageGiftcardobjectRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-  "body": S.optional(AddMessageRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"walletobjects/v1/giftCardObject/{resourceId}/addMessage","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "AddmessageGiftcardobjectRequest" }) as any as S.Schema<AddmessageGiftcardobjectRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    body: S.optional(AddMessageRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "walletobjects/v1/giftCardObject/{resourceId}/addMessage",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "AddmessageGiftcardobjectRequest",
+}) as any as S.Schema<AddmessageGiftcardobjectRequest>;
 
-export type GiftCardObjectStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "active" | "COMPLETED" | "completed" | "EXPIRED" | "expired" | "INACTIVE" | "inactive";
+export type GiftCardObjectStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "active"
+  | "COMPLETED"
+  | "completed"
+  | "EXPIRED"
+  | "expired"
+  | "INACTIVE"
+  | "inactive";
 export const GiftCardObjectStateEnum = /*@__PURE__*/ S.String;
 
-export type GiftCardObjectNotifyPreferenceEnum = "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED" | "NOTIFY_ON_UPDATE";
+export type GiftCardObjectNotifyPreferenceEnum =
+  | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
+  | "NOTIFY_ON_UPDATE";
 export const GiftCardObjectNotifyPreferenceEnum = /*@__PURE__*/ S.String;
 
 export interface GiftCardObject {
@@ -2284,41 +2789,41 @@ export interface GiftCardObject {
   cardNumber?: string;
 }
 export const GiftCardObject = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "imageModulesData": S.optional(ImageModuleDataList),
-  "appLinkData": S.optional(AppLinkData),
-  "validTimeInterval": S.optional(TimeInterval),
-  "groupingInfo": S.optional(GroupingInfo),
-  "linkedObjectIds": S.optional(StringList),
-  "passConstraints": S.optional(PassConstraints),
-  "balance": S.optional(Money),
-  "disableExpirationNotification": S.optional(S.Boolean),
-  "balanceUpdateTime": S.optional(DateTime),
-  "version": S.optional(S.String),
-  "pin": S.optional(S.String),
-  "id": S.optional(S.String),
-  "infoModuleData": S.optional(InfoModuleData),
-  "merchantLocations": S.optional(MerchantLocationList),
-  "hasUsers": S.optional(S.Boolean),
-  "barcode": S.optional(Barcode),
-  "state": S.optional(GiftCardObjectStateEnum),
-  "locations": S.optional(LatLongPointList),
-  "smartTapRedemptionValue": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "rotatingBarcode": S.optional(RotatingBarcode),
-  "messages": S.optional(MessageList),
-  "notifyPreference": S.optional(GiftCardObjectNotifyPreferenceEnum),
-  "eventNumber": S.optional(S.String),
-  "valueAddedModuleData": S.optional(ValueAddedModuleDataList),
-  "linksModuleData": S.optional(LinksModuleData),
-  "heroImage": S.optional(Image),
-  "classId": S.optional(S.String),
-  "saveRestrictions": S.optional(SaveRestrictions),
-  "textModulesData": S.optional(TextModuleDataList),
-  "hasLinkedDevice": S.optional(S.Boolean),
-  "classReference": S.optional(GiftCardClass),
-  "cardNumber": S.optional(S.String),
-}),
+  S.Struct({
+    imageModulesData: S.optional(ImageModuleDataList),
+    appLinkData: S.optional(AppLinkData),
+    validTimeInterval: S.optional(TimeInterval),
+    groupingInfo: S.optional(GroupingInfo),
+    linkedObjectIds: S.optional(StringList),
+    passConstraints: S.optional(PassConstraints),
+    balance: S.optional(Money),
+    disableExpirationNotification: S.optional(S.Boolean),
+    balanceUpdateTime: S.optional(DateTime),
+    version: S.optional(S.String),
+    pin: S.optional(S.String),
+    id: S.optional(S.String),
+    infoModuleData: S.optional(InfoModuleData),
+    merchantLocations: S.optional(MerchantLocationList),
+    hasUsers: S.optional(S.Boolean),
+    barcode: S.optional(Barcode),
+    state: S.optional(GiftCardObjectStateEnum),
+    locations: S.optional(LatLongPointList),
+    smartTapRedemptionValue: S.optional(S.String),
+    kind: S.optional(S.String),
+    rotatingBarcode: S.optional(RotatingBarcode),
+    messages: S.optional(MessageList),
+    notifyPreference: S.optional(GiftCardObjectNotifyPreferenceEnum),
+    eventNumber: S.optional(S.String),
+    valueAddedModuleData: S.optional(ValueAddedModuleDataList),
+    linksModuleData: S.optional(LinksModuleData),
+    heroImage: S.optional(Image),
+    classId: S.optional(S.String),
+    saveRestrictions: S.optional(SaveRestrictions),
+    textModulesData: S.optional(TextModuleDataList),
+    hasLinkedDevice: S.optional(S.Boolean),
+    classReference: S.optional(GiftCardClass),
+    cardNumber: S.optional(S.String),
+  }),
 ).annotate({ identifier: "GiftCardObject" }) as any as S.Schema<GiftCardObject>;
 
 export interface GiftCardObjectAddMessageResponse {
@@ -2326,10 +2831,12 @@ export interface GiftCardObjectAddMessageResponse {
   resource?: GiftCardObject;
 }
 export const GiftCardObjectAddMessageResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.optional(GiftCardObject),
-}),
-).annotate({ identifier: "GiftCardObjectAddMessageResponse" }) as any as S.Schema<GiftCardObjectAddMessageResponse>;
+  S.Struct({
+    resource: S.optional(GiftCardObject),
+  }),
+).annotate({
+  identifier: "GiftCardObjectAddMessageResponse",
+}) as any as S.Schema<GiftCardObjectAddMessageResponse>;
 
 export interface AddmessageLoyaltyclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
@@ -2338,29 +2845,77 @@ export interface AddmessageLoyaltyclassRequest {
   body?: AddMessageRequest;
 }
 export const AddmessageLoyaltyclassRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-  "body": S.optional(AddMessageRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"walletobjects/v1/loyaltyClass/{resourceId}/addMessage","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "AddmessageLoyaltyclassRequest" }) as any as S.Schema<AddmessageLoyaltyclassRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    body: S.optional(AddMessageRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "walletobjects/v1/loyaltyClass/{resourceId}/addMessage",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "AddmessageLoyaltyclassRequest",
+}) as any as S.Schema<AddmessageLoyaltyclassRequest>;
 
-export type LoyaltyClassViewUnlockRequirementEnum = "VIEW_UNLOCK_REQUIREMENT_UNSPECIFIED" | "UNLOCK_NOT_REQUIRED" | "UNLOCK_REQUIRED_TO_VIEW";
+export type LoyaltyClassViewUnlockRequirementEnum =
+  | "VIEW_UNLOCK_REQUIREMENT_UNSPECIFIED"
+  | "UNLOCK_NOT_REQUIRED"
+  | "UNLOCK_REQUIRED_TO_VIEW";
 export const LoyaltyClassViewUnlockRequirementEnum = /*@__PURE__*/ S.String;
 
-export type LoyaltyClassReviewStatusEnum = "REVIEW_STATUS_UNSPECIFIED" | "UNDER_REVIEW" | "underReview" | "APPROVED" | "approved" | "REJECTED" | "rejected" | "DRAFT" | "draft";
+export type LoyaltyClassReviewStatusEnum =
+  | "REVIEW_STATUS_UNSPECIFIED"
+  | "UNDER_REVIEW"
+  | "underReview"
+  | "APPROVED"
+  | "approved"
+  | "REJECTED"
+  | "rejected"
+  | "DRAFT"
+  | "draft";
 export const LoyaltyClassReviewStatusEnum = /*@__PURE__*/ S.String;
 
-export type LoyaltyClassNotifyPreferenceEnum = "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED" | "NOTIFY_ON_UPDATE";
+export type LoyaltyClassNotifyPreferenceEnum =
+  | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
+  | "NOTIFY_ON_UPDATE";
 export const LoyaltyClassNotifyPreferenceEnum = /*@__PURE__*/ S.String;
 
-export type LoyaltyClassMultipleDevicesAndHoldersAllowedStatusEnum = "STATUS_UNSPECIFIED" | "MULTIPLE_HOLDERS" | "ONE_USER_ALL_DEVICES" | "ONE_USER_ONE_DEVICE" | "multipleHolders" | "oneUserAllDevices" | "oneUserOneDevice";
-export const LoyaltyClassMultipleDevicesAndHoldersAllowedStatusEnum = /*@__PURE__*/ S.String;
+export type LoyaltyClassMultipleDevicesAndHoldersAllowedStatusEnum =
+  | "STATUS_UNSPECIFIED"
+  | "MULTIPLE_HOLDERS"
+  | "ONE_USER_ALL_DEVICES"
+  | "ONE_USER_ONE_DEVICE"
+  | "multipleHolders"
+  | "oneUserAllDevices"
+  | "oneUserOneDevice";
+export const LoyaltyClassMultipleDevicesAndHoldersAllowedStatusEnum =
+  /*@__PURE__*/ S.String;
 
-export type DiscoverableProgramMerchantSignupInfoSignupSharedDatasItemEnum = "SHARED_DATA_TYPE_UNSPECIFIED" | "FIRST_NAME" | "LAST_NAME" | "STREET_ADDRESS" | "ADDRESS_LINE_1" | "ADDRESS_LINE_2" | "ADDRESS_LINE_3" | "CITY" | "STATE" | "ZIPCODE" | "COUNTRY" | "EMAIL" | "PHONE";
-export const DiscoverableProgramMerchantSignupInfoSignupSharedDatasItemEnum = /*@__PURE__*/ S.String;
+export type DiscoverableProgramMerchantSignupInfoSignupSharedDatasItemEnum =
+  | "SHARED_DATA_TYPE_UNSPECIFIED"
+  | "FIRST_NAME"
+  | "LAST_NAME"
+  | "STREET_ADDRESS"
+  | "ADDRESS_LINE_1"
+  | "ADDRESS_LINE_2"
+  | "ADDRESS_LINE_3"
+  | "CITY"
+  | "STATE"
+  | "ZIPCODE"
+  | "COUNTRY"
+  | "EMAIL"
+  | "PHONE";
+export const DiscoverableProgramMerchantSignupInfoSignupSharedDatasItemEnum =
+  /*@__PURE__*/ S.String;
 
-export type DiscoverableProgramMerchantSignupInfoSignupSharedDatasItemEnumList = ReadonlyArray<DiscoverableProgramMerchantSignupInfoSignupSharedDatasItemEnum>;
-export const DiscoverableProgramMerchantSignupInfoSignupSharedDatasItemEnumList = /*@__PURE__*/ S.Array(DiscoverableProgramMerchantSignupInfoSignupSharedDatasItemEnum) as any as S.Schema<DiscoverableProgramMerchantSignupInfoSignupSharedDatasItemEnumList>;
+export type DiscoverableProgramMerchantSignupInfoSignupSharedDatasItemEnumList =
+  ReadonlyArray<DiscoverableProgramMerchantSignupInfoSignupSharedDatasItemEnum>;
+export const DiscoverableProgramMerchantSignupInfoSignupSharedDatasItemEnumList =
+  /*@__PURE__*/ S.Array(
+    DiscoverableProgramMerchantSignupInfoSignupSharedDatasItemEnum,
+  ) as any as S.Schema<DiscoverableProgramMerchantSignupInfoSignupSharedDatasItemEnumList>;
 
 /** Information about the merchant hosted signup flow for a program. */
 export interface DiscoverableProgramMerchantSignupInfo {
@@ -2369,25 +2924,40 @@ export interface DiscoverableProgramMerchantSignupInfo {
   /** User data that is sent in a POST request to the signup website URL. This information is encoded and then shared so that the merchant's website can prefill fields used to enroll the user for the discoverable program. */
   signupSharedDatas?: DiscoverableProgramMerchantSignupInfoSignupSharedDatasItemEnumList;
 }
-export const DiscoverableProgramMerchantSignupInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "signupWebsite": S.optional(Uri),
-  "signupSharedDatas": S.optional(DiscoverableProgramMerchantSignupInfoSignupSharedDatasItemEnumList),
-}),
-).annotate({ identifier: "DiscoverableProgramMerchantSignupInfo" }) as any as S.Schema<DiscoverableProgramMerchantSignupInfo>;
+export const DiscoverableProgramMerchantSignupInfo = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      signupWebsite: S.optional(Uri),
+      signupSharedDatas: S.optional(
+        DiscoverableProgramMerchantSignupInfoSignupSharedDatasItemEnumList,
+      ),
+    }),
+).annotate({
+  identifier: "DiscoverableProgramMerchantSignupInfo",
+}) as any as S.Schema<DiscoverableProgramMerchantSignupInfo>;
 
 /** Information about the merchant hosted signin flow for a program. */
 export interface DiscoverableProgramMerchantSigninInfo {
   /** The URL to direct the user to for the merchant's signin site. */
   signinWebsite?: Uri;
 }
-export const DiscoverableProgramMerchantSigninInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "signinWebsite": S.optional(Uri),
-}),
-).annotate({ identifier: "DiscoverableProgramMerchantSigninInfo" }) as any as S.Schema<DiscoverableProgramMerchantSigninInfo>;
+export const DiscoverableProgramMerchantSigninInfo = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      signinWebsite: S.optional(Uri),
+    }),
+).annotate({
+  identifier: "DiscoverableProgramMerchantSigninInfo",
+}) as any as S.Schema<DiscoverableProgramMerchantSigninInfo>;
 
-export type DiscoverableProgramStateEnum = "STATE_UNSPECIFIED" | "TRUSTED_TESTERS" | "trustedTesters" | "LIVE" | "live" | "DISABLED" | "disabled";
+export type DiscoverableProgramStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "TRUSTED_TESTERS"
+  | "trustedTesters"
+  | "LIVE"
+  | "live"
+  | "DISABLED"
+  | "disabled";
 export const DiscoverableProgramStateEnum = /*@__PURE__*/ S.String;
 
 /** Information about how a class may be discovered and instantiated from within the Google Wallet app. This is done by searching for a loyalty or gift card program and scanning or manually entering. */
@@ -2400,12 +2970,14 @@ export interface DiscoverableProgram {
   state?: DiscoverableProgramStateEnum;
 }
 export const DiscoverableProgram = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "merchantSignupInfo": S.optional(DiscoverableProgramMerchantSignupInfo),
-  "merchantSigninInfo": S.optional(DiscoverableProgramMerchantSigninInfo),
-  "state": S.optional(DiscoverableProgramStateEnum),
-}),
-).annotate({ identifier: "DiscoverableProgram" }) as any as S.Schema<DiscoverableProgram>;
+  S.Struct({
+    merchantSignupInfo: S.optional(DiscoverableProgramMerchantSignupInfo),
+    merchantSigninInfo: S.optional(DiscoverableProgramMerchantSigninInfo),
+    state: S.optional(DiscoverableProgramStateEnum),
+  }),
+).annotate({
+  identifier: "DiscoverableProgram",
+}) as any as S.Schema<DiscoverableProgram>;
 
 export interface LoyaltyClass {
   /** Callback options to be used to call the issuer back for every save/delete of an object for this class by the end-user. All objects of this class are eligible for the callback. */
@@ -2504,55 +3076,57 @@ export interface LoyaltyClass {
   redemptionIssuers?: StringList;
 }
 export const LoyaltyClass = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "callbackOptions": S.optional(CallbackOptions),
-  "valueAddedModuleData": S.optional(ValueAddedModuleDataList),
-  "linksModuleData": S.optional(LinksModuleData),
-  "heroImage": S.optional(Image),
-  "wideProgramLogo": S.optional(Image),
-  "textModulesData": S.optional(TextModuleDataList),
-  "classTemplateInfo": S.optional(ClassTemplateInfo),
-  "hexBackgroundColor": S.optional(S.String),
-  "localizedSecondaryRewardsTier": S.optional(LocalizedString),
-  "localizedAccountNameLabel": S.optional(LocalizedString),
-  "viewUnlockRequirement": S.optional(LoyaltyClassViewUnlockRequirementEnum),
-  "homepageUri": S.optional(Uri),
-  "reviewStatus": S.optional(LoyaltyClassReviewStatusEnum),
-  "localizedRewardsTierLabel": S.optional(LocalizedString),
-  "kind": S.optional(S.String),
-  "localizedSecondaryRewardsTierLabel": S.optional(LocalizedString),
-  "messages": S.optional(MessageList),
-  "notifyPreference": S.optional(LoyaltyClassNotifyPreferenceEnum),
-  "locations": S.optional(LatLongPointList),
-  "localizedAccountIdLabel": S.optional(LocalizedString),
-  "rewardsTier": S.optional(S.String),
-  "wordMark": S.optional(Image),
-  "secondaryRewardsTier": S.optional(S.String),
-  "localizedIssuerName": S.optional(LocalizedString),
-  "localizedRewardsTier": S.optional(LocalizedString),
-  "programLogo": S.optional(Image),
-  "enableSmartTap": S.optional(S.Boolean),
-  "multipleDevicesAndHoldersAllowedStatus": S.optional(LoyaltyClassMultipleDevicesAndHoldersAllowedStatusEnum),
-  "id": S.optional(S.String),
-  "infoModuleData": S.optional(InfoModuleData),
-  "programName": S.optional(S.String),
-  "countryCode": S.optional(S.String),
-  "merchantLocations": S.optional(MerchantLocationList),
-  "accountIdLabel": S.optional(S.String),
-  "version": S.optional(S.String),
-  "accountNameLabel": S.optional(S.String),
-  "issuerName": S.optional(S.String),
-  "secondaryRewardsTierLabel": S.optional(S.String),
-  "rewardsTierLabel": S.optional(S.String),
-  "review": S.optional(Review),
-  "localizedProgramName": S.optional(LocalizedString),
-  "imageModulesData": S.optional(ImageModuleDataList),
-  "appLinkData": S.optional(AppLinkData),
-  "allowMultipleUsersPerObject": S.optional(S.Boolean),
-  "securityAnimation": S.optional(SecurityAnimation),
-  "discoverableProgram": S.optional(DiscoverableProgram),
-  "redemptionIssuers": S.optional(StringList),
-}),
+  S.Struct({
+    callbackOptions: S.optional(CallbackOptions),
+    valueAddedModuleData: S.optional(ValueAddedModuleDataList),
+    linksModuleData: S.optional(LinksModuleData),
+    heroImage: S.optional(Image),
+    wideProgramLogo: S.optional(Image),
+    textModulesData: S.optional(TextModuleDataList),
+    classTemplateInfo: S.optional(ClassTemplateInfo),
+    hexBackgroundColor: S.optional(S.String),
+    localizedSecondaryRewardsTier: S.optional(LocalizedString),
+    localizedAccountNameLabel: S.optional(LocalizedString),
+    viewUnlockRequirement: S.optional(LoyaltyClassViewUnlockRequirementEnum),
+    homepageUri: S.optional(Uri),
+    reviewStatus: S.optional(LoyaltyClassReviewStatusEnum),
+    localizedRewardsTierLabel: S.optional(LocalizedString),
+    kind: S.optional(S.String),
+    localizedSecondaryRewardsTierLabel: S.optional(LocalizedString),
+    messages: S.optional(MessageList),
+    notifyPreference: S.optional(LoyaltyClassNotifyPreferenceEnum),
+    locations: S.optional(LatLongPointList),
+    localizedAccountIdLabel: S.optional(LocalizedString),
+    rewardsTier: S.optional(S.String),
+    wordMark: S.optional(Image),
+    secondaryRewardsTier: S.optional(S.String),
+    localizedIssuerName: S.optional(LocalizedString),
+    localizedRewardsTier: S.optional(LocalizedString),
+    programLogo: S.optional(Image),
+    enableSmartTap: S.optional(S.Boolean),
+    multipleDevicesAndHoldersAllowedStatus: S.optional(
+      LoyaltyClassMultipleDevicesAndHoldersAllowedStatusEnum,
+    ),
+    id: S.optional(S.String),
+    infoModuleData: S.optional(InfoModuleData),
+    programName: S.optional(S.String),
+    countryCode: S.optional(S.String),
+    merchantLocations: S.optional(MerchantLocationList),
+    accountIdLabel: S.optional(S.String),
+    version: S.optional(S.String),
+    accountNameLabel: S.optional(S.String),
+    issuerName: S.optional(S.String),
+    secondaryRewardsTierLabel: S.optional(S.String),
+    rewardsTierLabel: S.optional(S.String),
+    review: S.optional(Review),
+    localizedProgramName: S.optional(LocalizedString),
+    imageModulesData: S.optional(ImageModuleDataList),
+    appLinkData: S.optional(AppLinkData),
+    allowMultipleUsersPerObject: S.optional(S.Boolean),
+    securityAnimation: S.optional(SecurityAnimation),
+    discoverableProgram: S.optional(DiscoverableProgram),
+    redemptionIssuers: S.optional(StringList),
+  }),
 ).annotate({ identifier: "LoyaltyClass" }) as any as S.Schema<LoyaltyClass>;
 
 export interface LoyaltyClassAddMessageResponse {
@@ -2560,10 +3134,12 @@ export interface LoyaltyClassAddMessageResponse {
   resource?: LoyaltyClass;
 }
 export const LoyaltyClassAddMessageResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.optional(LoyaltyClass),
-}),
-).annotate({ identifier: "LoyaltyClassAddMessageResponse" }) as any as S.Schema<LoyaltyClassAddMessageResponse>;
+  S.Struct({
+    resource: S.optional(LoyaltyClass),
+  }),
+).annotate({
+  identifier: "LoyaltyClassAddMessageResponse",
+}) as any as S.Schema<LoyaltyClassAddMessageResponse>;
 
 export interface AddmessageLoyaltyobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
@@ -2572,16 +3148,35 @@ export interface AddmessageLoyaltyobjectRequest {
   body?: AddMessageRequest;
 }
 export const AddmessageLoyaltyobjectRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-  "body": S.optional(AddMessageRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"walletobjects/v1/loyaltyObject/{resourceId}/addMessage","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "AddmessageLoyaltyobjectRequest" }) as any as S.Schema<AddmessageLoyaltyobjectRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    body: S.optional(AddMessageRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "walletobjects/v1/loyaltyObject/{resourceId}/addMessage",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "AddmessageLoyaltyobjectRequest",
+}) as any as S.Schema<AddmessageLoyaltyobjectRequest>;
 
-export type LoyaltyObjectNotifyPreferenceEnum = "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED" | "NOTIFY_ON_UPDATE";
+export type LoyaltyObjectNotifyPreferenceEnum =
+  | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
+  | "NOTIFY_ON_UPDATE";
 export const LoyaltyObjectNotifyPreferenceEnum = /*@__PURE__*/ S.String;
 
-export type LoyaltyObjectStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "active" | "COMPLETED" | "completed" | "EXPIRED" | "expired" | "INACTIVE" | "inactive";
+export type LoyaltyObjectStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "active"
+  | "COMPLETED"
+  | "completed"
+  | "EXPIRED"
+  | "expired"
+  | "INACTIVE"
+  | "inactive";
 export const LoyaltyObjectStateEnum = /*@__PURE__*/ S.String;
 
 export interface LoyaltyPointsBalance {
@@ -2595,13 +3190,15 @@ export interface LoyaltyPointsBalance {
   double?: number;
 }
 export const LoyaltyPointsBalance = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "string": S.optional(S.String),
-  "money": S.optional(Money),
-  "int": S.optional(S.Number),
-  "double": S.optional(S.Number),
-}),
-).annotate({ identifier: "LoyaltyPointsBalance" }) as any as S.Schema<LoyaltyPointsBalance>;
+  S.Struct({
+    string: S.optional(S.String),
+    money: S.optional(Money),
+    int: S.optional(S.Number),
+    double: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "LoyaltyPointsBalance",
+}) as any as S.Schema<LoyaltyPointsBalance>;
 
 export interface LoyaltyPoints {
   /** The loyalty points label, such as "Points". Recommended maximum length is 9 characters. */
@@ -2612,11 +3209,11 @@ export interface LoyaltyPoints {
   localizedLabel?: LocalizedString;
 }
 export const LoyaltyPoints = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "label": S.optional(S.String),
-  "balance": S.optional(LoyaltyPointsBalance),
-  "localizedLabel": S.optional(LocalizedString),
-}),
+  S.Struct({
+    label: S.optional(S.String),
+    balance: S.optional(LoyaltyPointsBalance),
+    localizedLabel: S.optional(LocalizedString),
+  }),
 ).annotate({ identifier: "LoyaltyPoints" }) as any as S.Schema<LoyaltyPoints>;
 
 export interface LoyaltyObject {
@@ -2688,41 +3285,41 @@ export interface LoyaltyObject {
   linkedObjectIds?: StringList;
 }
 export const LoyaltyObject = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "messages": S.optional(MessageList),
-  "notifyPreference": S.optional(LoyaltyObjectNotifyPreferenceEnum),
-  "rotatingBarcode": S.optional(RotatingBarcode),
-  "kind": S.optional(S.String),
-  "smartTapRedemptionValue": S.optional(S.String),
-  "locations": S.optional(LatLongPointList),
-  "state": S.optional(LoyaltyObjectStateEnum),
-  "barcode": S.optional(Barcode),
-  "accountName": S.optional(S.String),
-  "hasUsers": S.optional(S.Boolean),
-  "classReference": S.optional(LoyaltyClass),
-  "accountId": S.optional(S.String),
-  "hasLinkedDevice": S.optional(S.Boolean),
-  "textModulesData": S.optional(TextModuleDataList),
-  "classId": S.optional(S.String),
-  "saveRestrictions": S.optional(SaveRestrictions),
-  "linksModuleData": S.optional(LinksModuleData),
-  "heroImage": S.optional(Image),
-  "valueAddedModuleData": S.optional(ValueAddedModuleDataList),
-  "groupingInfo": S.optional(GroupingInfo),
-  "loyaltyPoints": S.optional(LoyaltyPoints),
-  "validTimeInterval": S.optional(TimeInterval),
-  "imageModulesData": S.optional(ImageModuleDataList),
-  "appLinkData": S.optional(AppLinkData),
-  "linkedOfferIds": S.optional(StringList),
-  "merchantLocations": S.optional(MerchantLocationList),
-  "infoModuleData": S.optional(InfoModuleData),
-  "id": S.optional(S.String),
-  "version": S.optional(S.String),
-  "secondaryLoyaltyPoints": S.optional(LoyaltyPoints),
-  "disableExpirationNotification": S.optional(S.Boolean),
-  "passConstraints": S.optional(PassConstraints),
-  "linkedObjectIds": S.optional(StringList),
-}),
+  S.Struct({
+    messages: S.optional(MessageList),
+    notifyPreference: S.optional(LoyaltyObjectNotifyPreferenceEnum),
+    rotatingBarcode: S.optional(RotatingBarcode),
+    kind: S.optional(S.String),
+    smartTapRedemptionValue: S.optional(S.String),
+    locations: S.optional(LatLongPointList),
+    state: S.optional(LoyaltyObjectStateEnum),
+    barcode: S.optional(Barcode),
+    accountName: S.optional(S.String),
+    hasUsers: S.optional(S.Boolean),
+    classReference: S.optional(LoyaltyClass),
+    accountId: S.optional(S.String),
+    hasLinkedDevice: S.optional(S.Boolean),
+    textModulesData: S.optional(TextModuleDataList),
+    classId: S.optional(S.String),
+    saveRestrictions: S.optional(SaveRestrictions),
+    linksModuleData: S.optional(LinksModuleData),
+    heroImage: S.optional(Image),
+    valueAddedModuleData: S.optional(ValueAddedModuleDataList),
+    groupingInfo: S.optional(GroupingInfo),
+    loyaltyPoints: S.optional(LoyaltyPoints),
+    validTimeInterval: S.optional(TimeInterval),
+    imageModulesData: S.optional(ImageModuleDataList),
+    appLinkData: S.optional(AppLinkData),
+    linkedOfferIds: S.optional(StringList),
+    merchantLocations: S.optional(MerchantLocationList),
+    infoModuleData: S.optional(InfoModuleData),
+    id: S.optional(S.String),
+    version: S.optional(S.String),
+    secondaryLoyaltyPoints: S.optional(LoyaltyPoints),
+    disableExpirationNotification: S.optional(S.Boolean),
+    passConstraints: S.optional(PassConstraints),
+    linkedObjectIds: S.optional(StringList),
+  }),
 ).annotate({ identifier: "LoyaltyObject" }) as any as S.Schema<LoyaltyObject>;
 
 export interface LoyaltyObjectAddMessageResponse {
@@ -2730,10 +3327,12 @@ export interface LoyaltyObjectAddMessageResponse {
   resource?: LoyaltyObject;
 }
 export const LoyaltyObjectAddMessageResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.optional(LoyaltyObject),
-}),
-).annotate({ identifier: "LoyaltyObjectAddMessageResponse" }) as any as S.Schema<LoyaltyObjectAddMessageResponse>;
+  S.Struct({
+    resource: S.optional(LoyaltyObject),
+  }),
+).annotate({
+  identifier: "LoyaltyObjectAddMessageResponse",
+}) as any as S.Schema<LoyaltyObjectAddMessageResponse>;
 
 export interface AddmessageOfferclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
@@ -2742,25 +3341,64 @@ export interface AddmessageOfferclassRequest {
   body?: AddMessageRequest;
 }
 export const AddmessageOfferclassRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-  "body": S.optional(AddMessageRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"walletobjects/v1/offerClass/{resourceId}/addMessage","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "AddmessageOfferclassRequest" }) as any as S.Schema<AddmessageOfferclassRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    body: S.optional(AddMessageRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "walletobjects/v1/offerClass/{resourceId}/addMessage",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "AddmessageOfferclassRequest",
+}) as any as S.Schema<AddmessageOfferclassRequest>;
 
-export type OfferClassMultipleDevicesAndHoldersAllowedStatusEnum = "STATUS_UNSPECIFIED" | "MULTIPLE_HOLDERS" | "ONE_USER_ALL_DEVICES" | "ONE_USER_ONE_DEVICE" | "multipleHolders" | "oneUserAllDevices" | "oneUserOneDevice";
-export const OfferClassMultipleDevicesAndHoldersAllowedStatusEnum = /*@__PURE__*/ S.String;
+export type OfferClassMultipleDevicesAndHoldersAllowedStatusEnum =
+  | "STATUS_UNSPECIFIED"
+  | "MULTIPLE_HOLDERS"
+  | "ONE_USER_ALL_DEVICES"
+  | "ONE_USER_ONE_DEVICE"
+  | "multipleHolders"
+  | "oneUserAllDevices"
+  | "oneUserOneDevice";
+export const OfferClassMultipleDevicesAndHoldersAllowedStatusEnum =
+  /*@__PURE__*/ S.String;
 
-export type OfferClassRedemptionChannelEnum = "REDEMPTION_CHANNEL_UNSPECIFIED" | "INSTORE" | "instore" | "ONLINE" | "online" | "BOTH" | "both" | "TEMPORARY_PRICE_REDUCTION" | "temporaryPriceReduction";
+export type OfferClassRedemptionChannelEnum =
+  | "REDEMPTION_CHANNEL_UNSPECIFIED"
+  | "INSTORE"
+  | "instore"
+  | "ONLINE"
+  | "online"
+  | "BOTH"
+  | "both"
+  | "TEMPORARY_PRICE_REDUCTION"
+  | "temporaryPriceReduction";
 export const OfferClassRedemptionChannelEnum = /*@__PURE__*/ S.String;
 
-export type OfferClassViewUnlockRequirementEnum = "VIEW_UNLOCK_REQUIREMENT_UNSPECIFIED" | "UNLOCK_NOT_REQUIRED" | "UNLOCK_REQUIRED_TO_VIEW";
+export type OfferClassViewUnlockRequirementEnum =
+  | "VIEW_UNLOCK_REQUIREMENT_UNSPECIFIED"
+  | "UNLOCK_NOT_REQUIRED"
+  | "UNLOCK_REQUIRED_TO_VIEW";
 export const OfferClassViewUnlockRequirementEnum = /*@__PURE__*/ S.String;
 
-export type OfferClassNotifyPreferenceEnum = "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED" | "NOTIFY_ON_UPDATE";
+export type OfferClassNotifyPreferenceEnum =
+  | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
+  | "NOTIFY_ON_UPDATE";
 export const OfferClassNotifyPreferenceEnum = /*@__PURE__*/ S.String;
 
-export type OfferClassReviewStatusEnum = "REVIEW_STATUS_UNSPECIFIED" | "UNDER_REVIEW" | "underReview" | "APPROVED" | "approved" | "REJECTED" | "rejected" | "DRAFT" | "draft";
+export type OfferClassReviewStatusEnum =
+  | "REVIEW_STATUS_UNSPECIFIED"
+  | "UNDER_REVIEW"
+  | "underReview"
+  | "APPROVED"
+  | "approved"
+  | "REJECTED"
+  | "rejected"
+  | "DRAFT"
+  | "draft";
 export const OfferClassReviewStatusEnum = /*@__PURE__*/ S.String;
 
 export interface OfferClass {
@@ -2854,52 +3492,54 @@ export interface OfferClass {
   details?: string;
 }
 export const OfferClass = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "version": S.optional(S.String),
-  "localizedTitle": S.optional(LocalizedString),
-  "infoModuleData": S.optional(InfoModuleData),
-  "id": S.optional(S.String),
-  "countryCode": S.optional(S.String),
-  "merchantLocations": S.optional(MerchantLocationList),
-  "localizedDetails": S.optional(LocalizedString),
-  "title": S.optional(S.String),
-  "multipleDevicesAndHoldersAllowedStatus": S.optional(OfferClassMultipleDevicesAndHoldersAllowedStatusEnum),
-  "enableSmartTap": S.optional(S.Boolean),
-  "helpUri": S.optional(Uri),
-  "localizedIssuerName": S.optional(LocalizedString),
-  "wideTitleImage": S.optional(Image),
-  "provider": S.optional(S.String),
-  "redemptionChannel": S.optional(OfferClassRedemptionChannelEnum),
-  "redemptionIssuers": S.optional(StringList),
-  "securityAnimation": S.optional(SecurityAnimation),
-  "allowMultipleUsersPerObject": S.optional(S.Boolean),
-  "localizedProvider": S.optional(LocalizedString),
-  "review": S.optional(Review),
-  "imageModulesData": S.optional(ImageModuleDataList),
-  "appLinkData": S.optional(AppLinkData),
-  "issuerName": S.optional(S.String),
-  "viewUnlockRequirement": S.optional(OfferClassViewUnlockRequirementEnum),
-  "hexBackgroundColor": S.optional(S.String),
-  "classTemplateInfo": S.optional(ClassTemplateInfo),
-  "linksModuleData": S.optional(LinksModuleData),
-  "heroImage": S.optional(Image),
-  "localizedFinePrint": S.optional(LocalizedString),
-  "callbackOptions": S.optional(CallbackOptions),
-  "valueAddedModuleData": S.optional(ValueAddedModuleDataList),
-  "textModulesData": S.optional(TextModuleDataList),
-  "locations": S.optional(LatLongPointList),
-  "finePrint": S.optional(S.String),
-  "shortTitle": S.optional(S.String),
-  "wordMark": S.optional(Image),
-  "localizedShortTitle": S.optional(LocalizedString),
-  "kind": S.optional(S.String),
-  "messages": S.optional(MessageList),
-  "notifyPreference": S.optional(OfferClassNotifyPreferenceEnum),
-  "titleImage": S.optional(Image),
-  "homepageUri": S.optional(Uri),
-  "reviewStatus": S.optional(OfferClassReviewStatusEnum),
-  "details": S.optional(S.String),
-}),
+  S.Struct({
+    version: S.optional(S.String),
+    localizedTitle: S.optional(LocalizedString),
+    infoModuleData: S.optional(InfoModuleData),
+    id: S.optional(S.String),
+    countryCode: S.optional(S.String),
+    merchantLocations: S.optional(MerchantLocationList),
+    localizedDetails: S.optional(LocalizedString),
+    title: S.optional(S.String),
+    multipleDevicesAndHoldersAllowedStatus: S.optional(
+      OfferClassMultipleDevicesAndHoldersAllowedStatusEnum,
+    ),
+    enableSmartTap: S.optional(S.Boolean),
+    helpUri: S.optional(Uri),
+    localizedIssuerName: S.optional(LocalizedString),
+    wideTitleImage: S.optional(Image),
+    provider: S.optional(S.String),
+    redemptionChannel: S.optional(OfferClassRedemptionChannelEnum),
+    redemptionIssuers: S.optional(StringList),
+    securityAnimation: S.optional(SecurityAnimation),
+    allowMultipleUsersPerObject: S.optional(S.Boolean),
+    localizedProvider: S.optional(LocalizedString),
+    review: S.optional(Review),
+    imageModulesData: S.optional(ImageModuleDataList),
+    appLinkData: S.optional(AppLinkData),
+    issuerName: S.optional(S.String),
+    viewUnlockRequirement: S.optional(OfferClassViewUnlockRequirementEnum),
+    hexBackgroundColor: S.optional(S.String),
+    classTemplateInfo: S.optional(ClassTemplateInfo),
+    linksModuleData: S.optional(LinksModuleData),
+    heroImage: S.optional(Image),
+    localizedFinePrint: S.optional(LocalizedString),
+    callbackOptions: S.optional(CallbackOptions),
+    valueAddedModuleData: S.optional(ValueAddedModuleDataList),
+    textModulesData: S.optional(TextModuleDataList),
+    locations: S.optional(LatLongPointList),
+    finePrint: S.optional(S.String),
+    shortTitle: S.optional(S.String),
+    wordMark: S.optional(Image),
+    localizedShortTitle: S.optional(LocalizedString),
+    kind: S.optional(S.String),
+    messages: S.optional(MessageList),
+    notifyPreference: S.optional(OfferClassNotifyPreferenceEnum),
+    titleImage: S.optional(Image),
+    homepageUri: S.optional(Uri),
+    reviewStatus: S.optional(OfferClassReviewStatusEnum),
+    details: S.optional(S.String),
+  }),
 ).annotate({ identifier: "OfferClass" }) as any as S.Schema<OfferClass>;
 
 export interface OfferClassAddMessageResponse {
@@ -2907,10 +3547,12 @@ export interface OfferClassAddMessageResponse {
   resource?: OfferClass;
 }
 export const OfferClassAddMessageResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.optional(OfferClass),
-}),
-).annotate({ identifier: "OfferClassAddMessageResponse" }) as any as S.Schema<OfferClassAddMessageResponse>;
+  S.Struct({
+    resource: S.optional(OfferClass),
+  }),
+).annotate({
+  identifier: "OfferClassAddMessageResponse",
+}) as any as S.Schema<OfferClassAddMessageResponse>;
 
 export interface AddmessageOfferobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
@@ -2919,16 +3561,35 @@ export interface AddmessageOfferobjectRequest {
   body?: AddMessageRequest;
 }
 export const AddmessageOfferobjectRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-  "body": S.optional(AddMessageRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"walletobjects/v1/offerObject/{resourceId}/addMessage","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "AddmessageOfferobjectRequest" }) as any as S.Schema<AddmessageOfferobjectRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    body: S.optional(AddMessageRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "walletobjects/v1/offerObject/{resourceId}/addMessage",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "AddmessageOfferobjectRequest",
+}) as any as S.Schema<AddmessageOfferobjectRequest>;
 
-export type OfferObjectStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "active" | "COMPLETED" | "completed" | "EXPIRED" | "expired" | "INACTIVE" | "inactive";
+export type OfferObjectStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "active"
+  | "COMPLETED"
+  | "completed"
+  | "EXPIRED"
+  | "expired"
+  | "INACTIVE"
+  | "inactive";
 export const OfferObjectStateEnum = /*@__PURE__*/ S.String;
 
-export type OfferObjectNotifyPreferenceEnum = "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED" | "NOTIFY_ON_UPDATE";
+export type OfferObjectNotifyPreferenceEnum =
+  | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
+  | "NOTIFY_ON_UPDATE";
 export const OfferObjectNotifyPreferenceEnum = /*@__PURE__*/ S.String;
 
 export interface OfferObject {
@@ -2990,36 +3651,36 @@ export interface OfferObject {
   barcode?: Barcode;
 }
 export const OfferObject = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "version": S.optional(S.String),
-  "infoModuleData": S.optional(InfoModuleData),
-  "id": S.optional(S.String),
-  "merchantLocations": S.optional(MerchantLocationList),
-  "linkedObjectIds": S.optional(StringList),
-  "passConstraints": S.optional(PassConstraints),
-  "disableExpirationNotification": S.optional(S.Boolean),
-  "validTimeInterval": S.optional(TimeInterval),
-  "groupingInfo": S.optional(GroupingInfo),
-  "imageModulesData": S.optional(ImageModuleDataList),
-  "appLinkData": S.optional(AppLinkData),
-  "hasLinkedDevice": S.optional(S.Boolean),
-  "classReference": S.optional(OfferClass),
-  "linksModuleData": S.optional(LinksModuleData),
-  "heroImage": S.optional(Image),
-  "valueAddedModuleData": S.optional(ValueAddedModuleDataList),
-  "textModulesData": S.optional(TextModuleDataList),
-  "classId": S.optional(S.String),
-  "saveRestrictions": S.optional(SaveRestrictions),
-  "locations": S.optional(LatLongPointList),
-  "state": S.optional(OfferObjectStateEnum),
-  "smartTapRedemptionValue": S.optional(S.String),
-  "rotatingBarcode": S.optional(RotatingBarcode),
-  "kind": S.optional(S.String),
-  "messages": S.optional(MessageList),
-  "notifyPreference": S.optional(OfferObjectNotifyPreferenceEnum),
-  "hasUsers": S.optional(S.Boolean),
-  "barcode": S.optional(Barcode),
-}),
+  S.Struct({
+    version: S.optional(S.String),
+    infoModuleData: S.optional(InfoModuleData),
+    id: S.optional(S.String),
+    merchantLocations: S.optional(MerchantLocationList),
+    linkedObjectIds: S.optional(StringList),
+    passConstraints: S.optional(PassConstraints),
+    disableExpirationNotification: S.optional(S.Boolean),
+    validTimeInterval: S.optional(TimeInterval),
+    groupingInfo: S.optional(GroupingInfo),
+    imageModulesData: S.optional(ImageModuleDataList),
+    appLinkData: S.optional(AppLinkData),
+    hasLinkedDevice: S.optional(S.Boolean),
+    classReference: S.optional(OfferClass),
+    linksModuleData: S.optional(LinksModuleData),
+    heroImage: S.optional(Image),
+    valueAddedModuleData: S.optional(ValueAddedModuleDataList),
+    textModulesData: S.optional(TextModuleDataList),
+    classId: S.optional(S.String),
+    saveRestrictions: S.optional(SaveRestrictions),
+    locations: S.optional(LatLongPointList),
+    state: S.optional(OfferObjectStateEnum),
+    smartTapRedemptionValue: S.optional(S.String),
+    rotatingBarcode: S.optional(RotatingBarcode),
+    kind: S.optional(S.String),
+    messages: S.optional(MessageList),
+    notifyPreference: S.optional(OfferObjectNotifyPreferenceEnum),
+    hasUsers: S.optional(S.Boolean),
+    barcode: S.optional(Barcode),
+  }),
 ).annotate({ identifier: "OfferObject" }) as any as S.Schema<OfferObject>;
 
 export interface OfferObjectAddMessageResponse {
@@ -3027,10 +3688,12 @@ export interface OfferObjectAddMessageResponse {
   resource?: OfferObject;
 }
 export const OfferObjectAddMessageResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.optional(OfferObject),
-}),
-).annotate({ identifier: "OfferObjectAddMessageResponse" }) as any as S.Schema<OfferObjectAddMessageResponse>;
+  S.Struct({
+    resource: S.optional(OfferObject),
+  }),
+).annotate({
+  identifier: "OfferObjectAddMessageResponse",
+}) as any as S.Schema<OfferObjectAddMessageResponse>;
 
 export interface AddmessageTransitclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
@@ -3039,26 +3702,67 @@ export interface AddmessageTransitclassRequest {
   body?: AddMessageRequest;
 }
 export const AddmessageTransitclassRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-  "body": S.optional(AddMessageRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"walletobjects/v1/transitClass/{resourceId}/addMessage","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "AddmessageTransitclassRequest" }) as any as S.Schema<AddmessageTransitclassRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    body: S.optional(AddMessageRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "walletobjects/v1/transitClass/{resourceId}/addMessage",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "AddmessageTransitclassRequest",
+}) as any as S.Schema<AddmessageTransitclassRequest>;
 
-export type TransitClassTransitTypeEnum = "TRANSIT_TYPE_UNSPECIFIED" | "BUS" | "bus" | "RAIL" | "rail" | "TRAM" | "tram" | "FERRY" | "ferry" | "OTHER" | "other";
+export type TransitClassTransitTypeEnum =
+  | "TRANSIT_TYPE_UNSPECIFIED"
+  | "BUS"
+  | "bus"
+  | "RAIL"
+  | "rail"
+  | "TRAM"
+  | "tram"
+  | "FERRY"
+  | "ferry"
+  | "OTHER"
+  | "other";
 export const TransitClassTransitTypeEnum = /*@__PURE__*/ S.String;
 
-export type TransitClassViewUnlockRequirementEnum = "VIEW_UNLOCK_REQUIREMENT_UNSPECIFIED" | "UNLOCK_NOT_REQUIRED" | "UNLOCK_REQUIRED_TO_VIEW";
+export type TransitClassViewUnlockRequirementEnum =
+  | "VIEW_UNLOCK_REQUIREMENT_UNSPECIFIED"
+  | "UNLOCK_NOT_REQUIRED"
+  | "UNLOCK_REQUIRED_TO_VIEW";
 export const TransitClassViewUnlockRequirementEnum = /*@__PURE__*/ S.String;
 
-export type TransitClassReviewStatusEnum = "REVIEW_STATUS_UNSPECIFIED" | "UNDER_REVIEW" | "underReview" | "APPROVED" | "approved" | "REJECTED" | "rejected" | "DRAFT" | "draft";
+export type TransitClassReviewStatusEnum =
+  | "REVIEW_STATUS_UNSPECIFIED"
+  | "UNDER_REVIEW"
+  | "underReview"
+  | "APPROVED"
+  | "approved"
+  | "REJECTED"
+  | "rejected"
+  | "DRAFT"
+  | "draft";
 export const TransitClassReviewStatusEnum = /*@__PURE__*/ S.String;
 
-export type TransitClassNotifyPreferenceEnum = "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED" | "NOTIFY_ON_UPDATE";
+export type TransitClassNotifyPreferenceEnum =
+  | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
+  | "NOTIFY_ON_UPDATE";
 export const TransitClassNotifyPreferenceEnum = /*@__PURE__*/ S.String;
 
-export type TransitClassMultipleDevicesAndHoldersAllowedStatusEnum = "STATUS_UNSPECIFIED" | "MULTIPLE_HOLDERS" | "ONE_USER_ALL_DEVICES" | "ONE_USER_ONE_DEVICE" | "multipleHolders" | "oneUserAllDevices" | "oneUserOneDevice";
-export const TransitClassMultipleDevicesAndHoldersAllowedStatusEnum = /*@__PURE__*/ S.String;
+export type TransitClassMultipleDevicesAndHoldersAllowedStatusEnum =
+  | "STATUS_UNSPECIFIED"
+  | "MULTIPLE_HOLDERS"
+  | "ONE_USER_ALL_DEVICES"
+  | "ONE_USER_ONE_DEVICE"
+  | "multipleHolders"
+  | "oneUserAllDevices"
+  | "oneUserOneDevice";
+export const TransitClassMultipleDevicesAndHoldersAllowedStatusEnum =
+  /*@__PURE__*/ S.String;
 
 /** ActivationOptions for the class */
 export interface ActivationOptions {
@@ -3068,11 +3772,13 @@ export interface ActivationOptions {
   allowReactivation?: boolean;
 }
 export const ActivationOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "activationUrl": S.optional(S.String),
-  "allowReactivation": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "ActivationOptions" }) as any as S.Schema<ActivationOptions>;
+  S.Struct({
+    activationUrl: S.optional(S.String),
+    allowReactivation: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ActivationOptions",
+}) as any as S.Schema<ActivationOptions>;
 
 export interface TransitClass {
   /** Identifies whether this class supports Smart Tap. The `redemptionIssuers` and object level `smartTapRedemptionLevel` fields must also be set up correctly in order for a pass to support Smart Tap. */
@@ -3189,64 +3895,66 @@ export interface TransitClass {
   activationOptions?: ActivationOptions;
 }
 export const TransitClass = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "enableSmartTap": S.optional(S.Boolean),
-  "customRouteRestrictionsDetailsLabel": S.optional(LocalizedString),
-  "customFareClassLabel": S.optional(LocalizedString),
-  "localizedIssuerName": S.optional(LocalizedString),
-  "customCoachLabel": S.optional(LocalizedString),
-  "id": S.optional(S.String),
-  "customTimeRestrictionsLabel": S.optional(LocalizedString),
-  "transitType": S.optional(TransitClassTransitTypeEnum),
-  "review": S.optional(Review),
-  "wideLogo": S.optional(Image),
-  "imageModulesData": S.optional(ImageModuleDataList),
-  "appLinkData": S.optional(AppLinkData),
-  "customConfirmationCodeLabel": S.optional(LocalizedString),
-  "redemptionIssuers": S.optional(StringList),
-  "customDiscountMessageLabel": S.optional(LocalizedString),
-  "allowMultipleUsersPerObject": S.optional(S.Boolean),
-  "customPurchaseReceiptNumberLabel": S.optional(LocalizedString),
-  "securityAnimation": S.optional(SecurityAnimation),
-  "logo": S.optional(Image),
-  "watermark": S.optional(Image),
-  "customTicketNumberLabel": S.optional(LocalizedString),
-  "customRouteRestrictionsLabel": S.optional(LocalizedString),
-  "heroImage": S.optional(Image),
-  "languageOverride": S.optional(S.String),
-  "customFareNameLabel": S.optional(LocalizedString),
-  "customPurchasePriceLabel": S.optional(LocalizedString),
-  "viewUnlockRequirement": S.optional(TransitClassViewUnlockRequirementEnum),
-  "customCarriageLabel": S.optional(LocalizedString),
-  "customZoneLabel": S.optional(LocalizedString),
-  "customPurchaseFaceValueLabel": S.optional(LocalizedString),
-  "reviewStatus": S.optional(TransitClassReviewStatusEnum),
-  "messages": S.optional(MessageList),
-  "notifyPreference": S.optional(TransitClassNotifyPreferenceEnum),
-  "multipleDevicesAndHoldersAllowedStatus": S.optional(TransitClassMultipleDevicesAndHoldersAllowedStatusEnum),
-  "version": S.optional(S.String),
-  "enableSingleLegItinerary": S.optional(S.Boolean),
-  "infoModuleData": S.optional(InfoModuleData),
-  "countryCode": S.optional(S.String),
-  "merchantLocations": S.optional(MerchantLocationList),
-  "customConcessionCategoryLabel": S.optional(LocalizedString),
-  "issuerName": S.optional(S.String),
-  "transitOperatorName": S.optional(LocalizedString),
-  "customPlatformLabel": S.optional(LocalizedString),
-  "classTemplateInfo": S.optional(ClassTemplateInfo),
-  "hexBackgroundColor": S.optional(S.String),
-  "callbackOptions": S.optional(CallbackOptions),
-  "valueAddedModuleData": S.optional(ValueAddedModuleDataList),
-  "linksModuleData": S.optional(LinksModuleData),
-  "textModulesData": S.optional(TextModuleDataList),
-  "customTransitTerminusNameLabel": S.optional(LocalizedString),
-  "homepageUri": S.optional(Uri),
-  "customOtherRestrictionsLabel": S.optional(LocalizedString),
-  "locations": S.optional(LatLongPointList),
-  "wordMark": S.optional(Image),
-  "customSeatLabel": S.optional(LocalizedString),
-  "activationOptions": S.optional(ActivationOptions),
-}),
+  S.Struct({
+    enableSmartTap: S.optional(S.Boolean),
+    customRouteRestrictionsDetailsLabel: S.optional(LocalizedString),
+    customFareClassLabel: S.optional(LocalizedString),
+    localizedIssuerName: S.optional(LocalizedString),
+    customCoachLabel: S.optional(LocalizedString),
+    id: S.optional(S.String),
+    customTimeRestrictionsLabel: S.optional(LocalizedString),
+    transitType: S.optional(TransitClassTransitTypeEnum),
+    review: S.optional(Review),
+    wideLogo: S.optional(Image),
+    imageModulesData: S.optional(ImageModuleDataList),
+    appLinkData: S.optional(AppLinkData),
+    customConfirmationCodeLabel: S.optional(LocalizedString),
+    redemptionIssuers: S.optional(StringList),
+    customDiscountMessageLabel: S.optional(LocalizedString),
+    allowMultipleUsersPerObject: S.optional(S.Boolean),
+    customPurchaseReceiptNumberLabel: S.optional(LocalizedString),
+    securityAnimation: S.optional(SecurityAnimation),
+    logo: S.optional(Image),
+    watermark: S.optional(Image),
+    customTicketNumberLabel: S.optional(LocalizedString),
+    customRouteRestrictionsLabel: S.optional(LocalizedString),
+    heroImage: S.optional(Image),
+    languageOverride: S.optional(S.String),
+    customFareNameLabel: S.optional(LocalizedString),
+    customPurchasePriceLabel: S.optional(LocalizedString),
+    viewUnlockRequirement: S.optional(TransitClassViewUnlockRequirementEnum),
+    customCarriageLabel: S.optional(LocalizedString),
+    customZoneLabel: S.optional(LocalizedString),
+    customPurchaseFaceValueLabel: S.optional(LocalizedString),
+    reviewStatus: S.optional(TransitClassReviewStatusEnum),
+    messages: S.optional(MessageList),
+    notifyPreference: S.optional(TransitClassNotifyPreferenceEnum),
+    multipleDevicesAndHoldersAllowedStatus: S.optional(
+      TransitClassMultipleDevicesAndHoldersAllowedStatusEnum,
+    ),
+    version: S.optional(S.String),
+    enableSingleLegItinerary: S.optional(S.Boolean),
+    infoModuleData: S.optional(InfoModuleData),
+    countryCode: S.optional(S.String),
+    merchantLocations: S.optional(MerchantLocationList),
+    customConcessionCategoryLabel: S.optional(LocalizedString),
+    issuerName: S.optional(S.String),
+    transitOperatorName: S.optional(LocalizedString),
+    customPlatformLabel: S.optional(LocalizedString),
+    classTemplateInfo: S.optional(ClassTemplateInfo),
+    hexBackgroundColor: S.optional(S.String),
+    callbackOptions: S.optional(CallbackOptions),
+    valueAddedModuleData: S.optional(ValueAddedModuleDataList),
+    linksModuleData: S.optional(LinksModuleData),
+    textModulesData: S.optional(TextModuleDataList),
+    customTransitTerminusNameLabel: S.optional(LocalizedString),
+    homepageUri: S.optional(Uri),
+    customOtherRestrictionsLabel: S.optional(LocalizedString),
+    locations: S.optional(LatLongPointList),
+    wordMark: S.optional(Image),
+    customSeatLabel: S.optional(LocalizedString),
+    activationOptions: S.optional(ActivationOptions),
+  }),
 ).annotate({ identifier: "TransitClass" }) as any as S.Schema<TransitClass>;
 
 export interface TransitClassAddMessageResponse {
@@ -3254,10 +3962,12 @@ export interface TransitClassAddMessageResponse {
   resource?: TransitClass;
 }
 export const TransitClassAddMessageResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.optional(TransitClass),
-}),
-).annotate({ identifier: "TransitClassAddMessageResponse" }) as any as S.Schema<TransitClassAddMessageResponse>;
+  S.Struct({
+    resource: S.optional(TransitClass),
+  }),
+).annotate({
+  identifier: "TransitClassAddMessageResponse",
+}) as any as S.Schema<TransitClassAddMessageResponse>;
 
 export interface AddmessageTransitobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
@@ -3266,16 +3976,35 @@ export interface AddmessageTransitobjectRequest {
   body?: AddMessageRequest;
 }
 export const AddmessageTransitobjectRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-  "body": S.optional(AddMessageRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"walletobjects/v1/transitObject/{resourceId}/addMessage","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "AddmessageTransitobjectRequest" }) as any as S.Schema<AddmessageTransitobjectRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    body: S.optional(AddMessageRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "walletobjects/v1/transitObject/{resourceId}/addMessage",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "AddmessageTransitobjectRequest",
+}) as any as S.Schema<AddmessageTransitobjectRequest>;
 
-export type TransitObjectStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "active" | "COMPLETED" | "completed" | "EXPIRED" | "expired" | "INACTIVE" | "inactive";
+export type TransitObjectStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "active"
+  | "COMPLETED"
+  | "completed"
+  | "EXPIRED"
+  | "expired"
+  | "INACTIVE"
+  | "inactive";
 export const TransitObjectStateEnum = /*@__PURE__*/ S.String;
 
-export type TransitObjectNotifyPreferenceEnum = "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED" | "NOTIFY_ON_UPDATE";
+export type TransitObjectNotifyPreferenceEnum =
+  | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
+  | "NOTIFY_ON_UPDATE";
 export const TransitObjectNotifyPreferenceEnum = /*@__PURE__*/ S.String;
 
 /** Device context associated with the object. */
@@ -3284,9 +4013,9 @@ export interface DeviceContext {
   deviceToken?: string;
 }
 export const DeviceContext = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "deviceToken": S.optional(S.String),
-}),
+  S.Struct({
+    deviceToken: S.optional(S.String),
+  }),
 ).annotate({ identifier: "DeviceContext" }) as any as S.Schema<DeviceContext>;
 
 export interface TicketCost {
@@ -3298,11 +4027,11 @@ export interface TicketCost {
   faceValue?: Money;
 }
 export const TicketCost = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "purchasePrice": S.optional(Money),
-  "discountMessage": S.optional(LocalizedString),
-  "faceValue": S.optional(Money),
-}),
+  S.Struct({
+    purchasePrice: S.optional(Money),
+    discountMessage: S.optional(LocalizedString),
+    faceValue: S.optional(Money),
+  }),
 ).annotate({ identifier: "TicketCost" }) as any as S.Schema<TicketCost>;
 
 export interface PurchaseDetails {
@@ -3318,28 +4047,61 @@ export interface PurchaseDetails {
   accountId?: string;
 }
 export const PurchaseDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "ticketCost": S.optional(TicketCost),
-  "confirmationCode": S.optional(S.String),
-  "purchaseReceiptNumber": S.optional(S.String),
-  "purchaseDateTime": S.optional(S.String),
-  "accountId": S.optional(S.String),
-}),
-).annotate({ identifier: "PurchaseDetails" }) as any as S.Schema<PurchaseDetails>;
+  S.Struct({
+    ticketCost: S.optional(TicketCost),
+    confirmationCode: S.optional(S.String),
+    purchaseReceiptNumber: S.optional(S.String),
+    purchaseDateTime: S.optional(S.String),
+    accountId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PurchaseDetails",
+}) as any as S.Schema<PurchaseDetails>;
 
-export type TransitObjectTripTypeEnum = "TRIP_TYPE_UNSPECIFIED" | "ROUND_TRIP" | "roundTrip" | "ONE_WAY" | "oneWay";
+export type TransitObjectTripTypeEnum =
+  | "TRIP_TYPE_UNSPECIFIED"
+  | "ROUND_TRIP"
+  | "roundTrip"
+  | "ONE_WAY"
+  | "oneWay";
 export const TransitObjectTripTypeEnum = /*@__PURE__*/ S.String;
 
-export type TransitObjectConcessionCategoryEnum = "CONCESSION_CATEGORY_UNSPECIFIED" | "ADULT" | "adult" | "CHILD" | "child" | "SENIOR" | "senior";
+export type TransitObjectConcessionCategoryEnum =
+  | "CONCESSION_CATEGORY_UNSPECIFIED"
+  | "ADULT"
+  | "adult"
+  | "CHILD"
+  | "child"
+  | "SENIOR"
+  | "senior";
 export const TransitObjectConcessionCategoryEnum = /*@__PURE__*/ S.String;
 
-export type TransitObjectPassengerTypeEnum = "PASSENGER_TYPE_UNSPECIFIED" | "SINGLE_PASSENGER" | "singlePassenger" | "MULTIPLE_PASSENGERS" | "multiplePassengers";
+export type TransitObjectPassengerTypeEnum =
+  | "PASSENGER_TYPE_UNSPECIFIED"
+  | "SINGLE_PASSENGER"
+  | "singlePassenger"
+  | "MULTIPLE_PASSENGERS"
+  | "multiplePassengers";
 export const TransitObjectPassengerTypeEnum = /*@__PURE__*/ S.String;
 
-export type TransitObjectTicketStatusEnum = "TICKET_STATUS_UNSPECIFIED" | "USED" | "used" | "REFUNDED" | "refunded" | "EXCHANGED" | "exchanged";
+export type TransitObjectTicketStatusEnum =
+  | "TICKET_STATUS_UNSPECIFIED"
+  | "USED"
+  | "used"
+  | "REFUNDED"
+  | "refunded"
+  | "EXCHANGED"
+  | "exchanged";
 export const TransitObjectTicketStatusEnum = /*@__PURE__*/ S.String;
 
-export type TicketSeatFareClassEnum = "FARE_CLASS_UNSPECIFIED" | "ECONOMY" | "economy" | "FIRST" | "first" | "BUSINESS" | "business";
+export type TicketSeatFareClassEnum =
+  | "FARE_CLASS_UNSPECIFIED"
+  | "ECONOMY"
+  | "economy"
+  | "FIRST"
+  | "first"
+  | "BUSINESS"
+  | "business";
 export const TicketSeatFareClassEnum = /*@__PURE__*/ S.String;
 
 export interface TicketSeat {
@@ -3355,17 +4117,19 @@ export interface TicketSeat {
   coach?: string;
 }
 export const TicketSeat = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "seatAssignment": S.optional(LocalizedString),
-  "fareClass": S.optional(TicketSeatFareClassEnum),
-  "seat": S.optional(S.String),
-  "customFareClass": S.optional(LocalizedString),
-  "coach": S.optional(S.String),
-}),
+  S.Struct({
+    seatAssignment: S.optional(LocalizedString),
+    fareClass: S.optional(TicketSeatFareClassEnum),
+    seat: S.optional(S.String),
+    customFareClass: S.optional(LocalizedString),
+    coach: S.optional(S.String),
+  }),
 ).annotate({ identifier: "TicketSeat" }) as any as S.Schema<TicketSeat>;
 
 export type TicketSeatList = ReadonlyArray<TicketSeat>;
-export const TicketSeatList = /*@__PURE__*/ S.Array(TicketSeat) as any as S.Schema<TicketSeatList>;
+export const TicketSeatList = /*@__PURE__*/ S.Array(
+  TicketSeat,
+) as any as S.Schema<TicketSeatList>;
 
 export interface TicketLeg {
   /** The zone of boarding within the platform. */
@@ -3398,28 +4162,35 @@ export interface TicketLeg {
   destinationName?: LocalizedString;
 }
 export const TicketLeg = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "zone": S.optional(S.String),
-  "departureDateTime": S.optional(S.String),
-  "fareName": S.optional(LocalizedString),
-  "transitOperatorName": S.optional(LocalizedString),
-  "originName": S.optional(LocalizedString),
-  "originStationCode": S.optional(S.String),
-  "platform": S.optional(S.String),
-  "transitTerminusName": S.optional(LocalizedString),
-  "carriage": S.optional(S.String),
-  "ticketSeats": S.optional(TicketSeatList),
-  "destinationStationCode": S.optional(S.String),
-  "arrivalDateTime": S.optional(S.String),
-  "ticketSeat": S.optional(TicketSeat),
-  "destinationName": S.optional(LocalizedString),
-}),
+  S.Struct({
+    zone: S.optional(S.String),
+    departureDateTime: S.optional(S.String),
+    fareName: S.optional(LocalizedString),
+    transitOperatorName: S.optional(LocalizedString),
+    originName: S.optional(LocalizedString),
+    originStationCode: S.optional(S.String),
+    platform: S.optional(S.String),
+    transitTerminusName: S.optional(LocalizedString),
+    carriage: S.optional(S.String),
+    ticketSeats: S.optional(TicketSeatList),
+    destinationStationCode: S.optional(S.String),
+    arrivalDateTime: S.optional(S.String),
+    ticketSeat: S.optional(TicketSeat),
+    destinationName: S.optional(LocalizedString),
+  }),
 ).annotate({ identifier: "TicketLeg" }) as any as S.Schema<TicketLeg>;
 
 export type TicketLegList = ReadonlyArray<TicketLeg>;
-export const TicketLegList = /*@__PURE__*/ S.Array(TicketLeg) as any as S.Schema<TicketLegList>;
+export const TicketLegList = /*@__PURE__*/ S.Array(
+  TicketLeg,
+) as any as S.Schema<TicketLegList>;
 
-export type ActivationStatusStateEnum = "UNKNOWN_STATE" | "NOT_ACTIVATED" | "not_activated" | "ACTIVATED" | "activated";
+export type ActivationStatusStateEnum =
+  | "UNKNOWN_STATE"
+  | "NOT_ACTIVATED"
+  | "not_activated"
+  | "ACTIVATED"
+  | "activated";
 export const ActivationStatusStateEnum = /*@__PURE__*/ S.String;
 
 /** The activation status of the object. This field includes activation status if valuable supports activation. */
@@ -3427,10 +4198,12 @@ export interface ActivationStatus {
   state?: ActivationStatusStateEnum;
 }
 export const ActivationStatus = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "state": S.optional(ActivationStatusStateEnum),
-}),
-).annotate({ identifier: "ActivationStatus" }) as any as S.Schema<ActivationStatus>;
+  S.Struct({
+    state: S.optional(ActivationStatusStateEnum),
+  }),
+).annotate({
+  identifier: "ActivationStatus",
+}) as any as S.Schema<ActivationStatus>;
 
 export interface TicketRestrictions {
   /** Restrictions about times this ticket may be used. */
@@ -3443,13 +4216,15 @@ export interface TicketRestrictions {
   routeRestrictionsDetails?: LocalizedString;
 }
 export const TicketRestrictions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "timeRestrictions": S.optional(LocalizedString),
-  "routeRestrictions": S.optional(LocalizedString),
-  "otherRestrictions": S.optional(LocalizedString),
-  "routeRestrictionsDetails": S.optional(LocalizedString),
-}),
-).annotate({ identifier: "TicketRestrictions" }) as any as S.Schema<TicketRestrictions>;
+  S.Struct({
+    timeRestrictions: S.optional(LocalizedString),
+    routeRestrictions: S.optional(LocalizedString),
+    otherRestrictions: S.optional(LocalizedString),
+    routeRestrictionsDetails: S.optional(LocalizedString),
+  }),
+).annotate({
+  identifier: "TicketRestrictions",
+}) as any as S.Schema<TicketRestrictions>;
 
 export interface TransitObject {
   /** Note: This field is currently not supported to trigger geo notifications. */
@@ -3540,51 +4315,51 @@ export interface TransitObject {
   disableExpirationNotification?: boolean;
 }
 export const TransitObject = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locations": S.optional(LatLongPointList),
-  "state": S.optional(TransitObjectStateEnum),
-  "smartTapRedemptionValue": S.optional(S.String),
-  "customConcessionCategory": S.optional(LocalizedString),
-  "rotatingBarcode": S.optional(RotatingBarcode),
-  "messages": S.optional(MessageList),
-  "notifyPreference": S.optional(TransitObjectNotifyPreferenceEnum),
-  "hasUsers": S.optional(S.Boolean),
-  "deviceContext": S.optional(DeviceContext),
-  "ticketNumber": S.optional(S.String),
-  "barcode": S.optional(Barcode),
-  "purchaseDetails": S.optional(PurchaseDetails),
-  "hasLinkedDevice": S.optional(S.Boolean),
-  "tripType": S.optional(TransitObjectTripTypeEnum),
-  "classReference": S.optional(TransitClass),
-  "passengerNames": S.optional(S.String),
-  "hexBackgroundColor": S.optional(S.String),
-  "linksModuleData": S.optional(LinksModuleData),
-  "heroImage": S.optional(Image),
-  "customTicketStatus": S.optional(LocalizedString),
-  "concessionCategory": S.optional(TransitObjectConcessionCategoryEnum),
-  "valueAddedModuleData": S.optional(ValueAddedModuleDataList),
-  "textModulesData": S.optional(TextModuleDataList),
-  "classId": S.optional(S.String),
-  "saveRestrictions": S.optional(SaveRestrictions),
-  "validTimeInterval": S.optional(TimeInterval),
-  "tripId": S.optional(S.String),
-  "passengerType": S.optional(TransitObjectPassengerTypeEnum),
-  "groupingInfo": S.optional(GroupingInfo),
-  "ticketStatus": S.optional(TransitObjectTicketStatusEnum),
-  "imageModulesData": S.optional(ImageModuleDataList),
-  "appLinkData": S.optional(AppLinkData),
-  "ticketLeg": S.optional(TicketLeg),
-  "ticketLegs": S.optional(TicketLegList),
-  "version": S.optional(S.String),
-  "infoModuleData": S.optional(InfoModuleData),
-  "id": S.optional(S.String),
-  "activationStatus": S.optional(ActivationStatus),
-  "merchantLocations": S.optional(MerchantLocationList),
-  "linkedObjectIds": S.optional(StringList),
-  "ticketRestrictions": S.optional(TicketRestrictions),
-  "passConstraints": S.optional(PassConstraints),
-  "disableExpirationNotification": S.optional(S.Boolean),
-}),
+  S.Struct({
+    locations: S.optional(LatLongPointList),
+    state: S.optional(TransitObjectStateEnum),
+    smartTapRedemptionValue: S.optional(S.String),
+    customConcessionCategory: S.optional(LocalizedString),
+    rotatingBarcode: S.optional(RotatingBarcode),
+    messages: S.optional(MessageList),
+    notifyPreference: S.optional(TransitObjectNotifyPreferenceEnum),
+    hasUsers: S.optional(S.Boolean),
+    deviceContext: S.optional(DeviceContext),
+    ticketNumber: S.optional(S.String),
+    barcode: S.optional(Barcode),
+    purchaseDetails: S.optional(PurchaseDetails),
+    hasLinkedDevice: S.optional(S.Boolean),
+    tripType: S.optional(TransitObjectTripTypeEnum),
+    classReference: S.optional(TransitClass),
+    passengerNames: S.optional(S.String),
+    hexBackgroundColor: S.optional(S.String),
+    linksModuleData: S.optional(LinksModuleData),
+    heroImage: S.optional(Image),
+    customTicketStatus: S.optional(LocalizedString),
+    concessionCategory: S.optional(TransitObjectConcessionCategoryEnum),
+    valueAddedModuleData: S.optional(ValueAddedModuleDataList),
+    textModulesData: S.optional(TextModuleDataList),
+    classId: S.optional(S.String),
+    saveRestrictions: S.optional(SaveRestrictions),
+    validTimeInterval: S.optional(TimeInterval),
+    tripId: S.optional(S.String),
+    passengerType: S.optional(TransitObjectPassengerTypeEnum),
+    groupingInfo: S.optional(GroupingInfo),
+    ticketStatus: S.optional(TransitObjectTicketStatusEnum),
+    imageModulesData: S.optional(ImageModuleDataList),
+    appLinkData: S.optional(AppLinkData),
+    ticketLeg: S.optional(TicketLeg),
+    ticketLegs: S.optional(TicketLegList),
+    version: S.optional(S.String),
+    infoModuleData: S.optional(InfoModuleData),
+    id: S.optional(S.String),
+    activationStatus: S.optional(ActivationStatus),
+    merchantLocations: S.optional(MerchantLocationList),
+    linkedObjectIds: S.optional(StringList),
+    ticketRestrictions: S.optional(TicketRestrictions),
+    passConstraints: S.optional(PassConstraints),
+    disableExpirationNotification: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "TransitObject" }) as any as S.Schema<TransitObject>;
 
 export interface TransitObjectAddMessageResponse {
@@ -3592,20 +4367,30 @@ export interface TransitObjectAddMessageResponse {
   resource?: TransitObject;
 }
 export const TransitObjectAddMessageResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.optional(TransitObject),
-}),
-).annotate({ identifier: "TransitObjectAddMessageResponse" }) as any as S.Schema<TransitObjectAddMessageResponse>;
+  S.Struct({
+    resource: S.optional(TransitObject),
+  }),
+).annotate({
+  identifier: "TransitObjectAddMessageResponse",
+}) as any as S.Schema<TransitObjectAddMessageResponse>;
 
 export interface DownloadMediaRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
 }
 export const DownloadMediaRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"walletobjects/v1/transitObject/{resourceId}/downloadRotatingBarcodeValues","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "DownloadMediaRequest" }) as any as S.Schema<DownloadMediaRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "walletobjects/v1/transitObject/{resourceId}/downloadRotatingBarcodeValues",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DownloadMediaRequest",
+}) as any as S.Schema<DownloadMediaRequest>;
 
 /** This is a copy of the tech.blob.ObjectId proto, which could not be used directly here due to transitive closure issues with JavaScript support; see http://b/8801763. */
 export interface ObjectId {
@@ -3617,11 +4402,11 @@ export interface ObjectId {
   generation?: string;
 }
 export const ObjectId = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucketName": S.optional(S.String),
-  "objectName": S.optional(S.String),
-  "generation": S.optional(S.String),
-}),
+  S.Struct({
+    bucketName: S.optional(S.String),
+    objectName: S.optional(S.String),
+    generation: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ObjectId" }) as any as S.Schema<ObjectId>;
 
 /** Detailed Content-Type information from Scotty. The Content-Type of the media will typically be filled in by the header or Scotty's best_guess, but this extended information provides the backend with more information so that it can make a better decision if needed. This is only used on media upload requests from Scotty. */
@@ -3642,16 +4427,18 @@ export interface ContentTypeInfo {
   fusionIdDetectionMetadata?: string;
 }
 export const ContentTypeInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fromHeader": S.optional(S.String),
-  "bestGuess": S.optional(S.String),
-  "fromUrlPath": S.optional(S.String),
-  "fromFileName": S.optional(S.String),
-  "fromBytes": S.optional(S.String),
-  "fromFusionId": S.optional(S.String),
-  "fusionIdDetectionMetadata": S.optional(S.String),
-}),
-).annotate({ identifier: "ContentTypeInfo" }) as any as S.Schema<ContentTypeInfo>;
+  S.Struct({
+    fromHeader: S.optional(S.String),
+    bestGuess: S.optional(S.String),
+    fromUrlPath: S.optional(S.String),
+    fromFileName: S.optional(S.String),
+    fromBytes: S.optional(S.String),
+    fromFusionId: S.optional(S.String),
+    fusionIdDetectionMetadata: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ContentTypeInfo",
+}) as any as S.Schema<ContentTypeInfo>;
 
 /** Parameters specific to media downloads. */
 export interface DownloadParameters {
@@ -3661,11 +4448,13 @@ export interface DownloadParameters {
   allowGzipCompression?: boolean;
 }
 export const DownloadParameters = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "ignoreRange": S.optional(S.Boolean),
-  "allowGzipCompression": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "DownloadParameters" }) as any as S.Schema<DownloadParameters>;
+  S.Struct({
+    ignoreRange: S.optional(S.Boolean),
+    allowGzipCompression: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "DownloadParameters",
+}) as any as S.Schema<DownloadParameters>;
 
 /** Information to read/write to blobstore2. */
 export interface Blobstore2Info {
@@ -3685,18 +4474,23 @@ export interface Blobstore2Info {
   blobId?: string;
 }
 export const Blobstore2Info = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "downloadExternalReadToken": S.optional(S.String),
-  "blobGeneration": S.optional(S.String),
-  "readToken": S.optional(S.String),
-  "uploadMetadataContainer": S.optional(S.String),
-  "downloadReadHandle": S.optional(S.String),
-  "uploadFragmentListCreationInfo": S.optional(S.String),
-  "blobId": S.optional(S.String),
-}),
+  S.Struct({
+    downloadExternalReadToken: S.optional(S.String),
+    blobGeneration: S.optional(S.String),
+    readToken: S.optional(S.String),
+    uploadMetadataContainer: S.optional(S.String),
+    downloadReadHandle: S.optional(S.String),
+    uploadFragmentListCreationInfo: S.optional(S.String),
+    blobId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Blobstore2Info" }) as any as S.Schema<Blobstore2Info>;
 
-export type CompositeMediaReferenceTypeEnum = "PATH" | "BLOB_REF" | "INLINE" | "BIGSTORE_REF" | "COSMO_BINARY_REFERENCE";
+export type CompositeMediaReferenceTypeEnum =
+  | "PATH"
+  | "BLOB_REF"
+  | "INLINE"
+  | "BIGSTORE_REF"
+  | "COSMO_BINARY_REFERENCE";
 export const CompositeMediaReferenceTypeEnum = /*@__PURE__*/ S.String;
 
 /** A sequence of media data references representing composite data. Introduced to support Bigstore composite objects. For details, visit http://go/bigstore-composites. */
@@ -3725,19 +4519,19 @@ export interface CompositeMedia {
   md5Hash?: string;
 }
 export const CompositeMedia = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "cosmoBinaryReference": S.optional(S.String),
-  "path": S.optional(S.String),
-  "objectId": S.optional(ObjectId),
-  "sha1Hash": S.optional(S.String),
-  "crc32cHash": S.optional(S.Number),
-  "blobRef": S.optional(S.String),
-  "blobstore2Info": S.optional(Blobstore2Info),
-  "referenceType": S.optional(CompositeMediaReferenceTypeEnum),
-  "length": S.optional(S.String),
-  "inline": S.optional(S.String),
-  "md5Hash": S.optional(S.String),
-}),
+  S.Struct({
+    cosmoBinaryReference: S.optional(S.String),
+    path: S.optional(S.String),
+    objectId: S.optional(ObjectId),
+    sha1Hash: S.optional(S.String),
+    crc32cHash: S.optional(S.Number),
+    blobRef: S.optional(S.String),
+    blobstore2Info: S.optional(Blobstore2Info),
+    referenceType: S.optional(CompositeMediaReferenceTypeEnum),
+    length: S.optional(S.String),
+    inline: S.optional(S.String),
+    md5Hash: S.optional(S.String),
+  }),
 ).annotate({ identifier: "CompositeMedia" }) as any as S.Schema<CompositeMedia>;
 
 /** Backend response for a Diff get checksums response. For details on the Scotty Diff protocol, visit http://go/scotty-diff-protocol. */
@@ -3754,14 +4548,16 @@ export interface DiffChecksumsResponse {
   checksumsLocation?: CompositeMedia;
 }
 export const DiffChecksumsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "objectVersion": S.optional(S.String),
-  "chunkSizeBytes": S.optional(S.String),
-  "objectLocation": S.optional(CompositeMedia),
-  "objectSizeBytes": S.optional(S.String),
-  "checksumsLocation": S.optional(CompositeMedia),
-}),
-).annotate({ identifier: "DiffChecksumsResponse" }) as any as S.Schema<DiffChecksumsResponse>;
+  S.Struct({
+    objectVersion: S.optional(S.String),
+    chunkSizeBytes: S.optional(S.String),
+    objectLocation: S.optional(CompositeMedia),
+    objectSizeBytes: S.optional(S.String),
+    checksumsLocation: S.optional(CompositeMedia),
+  }),
+).annotate({
+  identifier: "DiffChecksumsResponse",
+}) as any as S.Schema<DiffChecksumsResponse>;
 
 /** Backend response for a Diff upload request. For details on the Scotty Diff protocol, visit http://go/scotty-diff-protocol. */
 export interface DiffUploadResponse {
@@ -3771,11 +4567,13 @@ export interface DiffUploadResponse {
   objectVersion?: string;
 }
 export const DiffUploadResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "originalObject": S.optional(CompositeMedia),
-  "objectVersion": S.optional(S.String),
-}),
-).annotate({ identifier: "DiffUploadResponse" }) as any as S.Schema<DiffUploadResponse>;
+  S.Struct({
+    originalObject: S.optional(CompositeMedia),
+    objectVersion: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DiffUploadResponse",
+}) as any as S.Schema<DiffUploadResponse>;
 
 /** A Diff upload request. For details on the Scotty Diff protocol, visit http://go/scotty-diff-protocol. */
 export interface DiffUploadRequest {
@@ -3787,12 +4585,14 @@ export interface DiffUploadRequest {
   checksumsInfo?: CompositeMedia;
 }
 export const DiffUploadRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "objectVersion": S.optional(S.String),
-  "objectInfo": S.optional(CompositeMedia),
-  "checksumsInfo": S.optional(CompositeMedia),
-}),
-).annotate({ identifier: "DiffUploadRequest" }) as any as S.Schema<DiffUploadRequest>;
+  S.Struct({
+    objectVersion: S.optional(S.String),
+    objectInfo: S.optional(CompositeMedia),
+    checksumsInfo: S.optional(CompositeMedia),
+  }),
+).annotate({
+  identifier: "DiffUploadRequest",
+}) as any as S.Schema<DiffUploadRequest>;
 
 /** Backend response for a Diff download response. For details on the Scotty Diff protocol, visit http://go/scotty-diff-protocol. */
 export interface DiffDownloadResponse {
@@ -3800,10 +4600,12 @@ export interface DiffDownloadResponse {
   objectLocation?: CompositeMedia;
 }
 export const DiffDownloadResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "objectLocation": S.optional(CompositeMedia),
-}),
-).annotate({ identifier: "DiffDownloadResponse" }) as any as S.Schema<DiffDownloadResponse>;
+  S.Struct({
+    objectLocation: S.optional(CompositeMedia),
+  }),
+).annotate({
+  identifier: "DiffDownloadResponse",
+}) as any as S.Schema<DiffDownloadResponse>;
 
 /** Backend response for a Diff get version response. For details on the Scotty Diff protocol, visit http://go/scotty-diff-protocol. */
 export interface DiffVersionResponse {
@@ -3813,16 +4615,33 @@ export interface DiffVersionResponse {
   objectVersion?: string;
 }
 export const DiffVersionResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "objectSizeBytes": S.optional(S.String),
-  "objectVersion": S.optional(S.String),
-}),
-).annotate({ identifier: "DiffVersionResponse" }) as any as S.Schema<DiffVersionResponse>;
+  S.Struct({
+    objectSizeBytes: S.optional(S.String),
+    objectVersion: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DiffVersionResponse",
+}) as any as S.Schema<DiffVersionResponse>;
 
 export type CompositeMediaList = ReadonlyArray<CompositeMedia>;
-export const CompositeMediaList = /*@__PURE__*/ S.Array(CompositeMedia) as any as S.Schema<CompositeMediaList>;
+export const CompositeMediaList = /*@__PURE__*/ S.Array(
+  CompositeMedia,
+) as any as S.Schema<CompositeMediaList>;
 
-export type MediaReferenceTypeEnum = "PATH" | "BLOB_REF" | "INLINE" | "GET_MEDIA" | "COMPOSITE_MEDIA" | "BIGSTORE_REF" | "DIFF_VERSION_RESPONSE" | "DIFF_CHECKSUMS_RESPONSE" | "DIFF_DOWNLOAD_RESPONSE" | "DIFF_UPLOAD_REQUEST" | "DIFF_UPLOAD_RESPONSE" | "COSMO_BINARY_REFERENCE" | "ARBITRARY_BYTES";
+export type MediaReferenceTypeEnum =
+  | "PATH"
+  | "BLOB_REF"
+  | "INLINE"
+  | "GET_MEDIA"
+  | "COMPOSITE_MEDIA"
+  | "BIGSTORE_REF"
+  | "DIFF_VERSION_RESPONSE"
+  | "DIFF_CHECKSUMS_RESPONSE"
+  | "DIFF_DOWNLOAD_RESPONSE"
+  | "DIFF_UPLOAD_REQUEST"
+  | "DIFF_UPLOAD_RESPONSE"
+  | "COSMO_BINARY_REFERENCE"
+  | "ARBITRARY_BYTES";
 export const MediaReferenceTypeEnum = /*@__PURE__*/ S.String;
 
 /** A reference to data stored on the filesystem, on GFS or in blobstore. */
@@ -3891,39 +4710,39 @@ export interface Media {
   sha256Hash?: string;
 }
 export const Media = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "objectId": S.optional(ObjectId),
-  "timestamp": S.optional(S.String),
-  "contentTypeInfo": S.optional(ContentTypeInfo),
-  "cosmoBinaryReference": S.optional(S.String),
-  "path": S.optional(S.String),
-  "bigstoreObjectRef": S.optional(S.String),
-  "length": S.optional(S.String),
-  "downloadParameters": S.optional(DownloadParameters),
-  "blobRef": S.optional(S.String),
-  "token": S.optional(S.String),
-  "diffChecksumsResponse": S.optional(DiffChecksumsResponse),
-  "diffUploadResponse": S.optional(DiffUploadResponse),
-  "hash": S.optional(S.String),
-  "algorithm": S.optional(S.String),
-  "diffUploadRequest": S.optional(DiffUploadRequest),
-  "contentType": S.optional(S.String),
-  "sha1Hash": S.optional(S.String),
-  "diffDownloadResponse": S.optional(DiffDownloadResponse),
-  "hashVerified": S.optional(S.Boolean),
-  "inline": S.optional(S.String),
-  "md5Hash": S.optional(S.String),
-  "filename": S.optional(S.String),
-  "crc32cHash": S.optional(S.Number),
-  "mediaId": S.optional(S.String),
-  "diffVersionResponse": S.optional(DiffVersionResponse),
-  "compositeMedia": S.optional(CompositeMediaList),
-  "sha512Hash": S.optional(S.String),
-  "isPotentialRetry": S.optional(S.Boolean),
-  "blobstore2Info": S.optional(Blobstore2Info),
-  "referenceType": S.optional(MediaReferenceTypeEnum),
-  "sha256Hash": S.optional(S.String),
-}),
+  S.Struct({
+    objectId: S.optional(ObjectId),
+    timestamp: S.optional(S.String),
+    contentTypeInfo: S.optional(ContentTypeInfo),
+    cosmoBinaryReference: S.optional(S.String),
+    path: S.optional(S.String),
+    bigstoreObjectRef: S.optional(S.String),
+    length: S.optional(S.String),
+    downloadParameters: S.optional(DownloadParameters),
+    blobRef: S.optional(S.String),
+    token: S.optional(S.String),
+    diffChecksumsResponse: S.optional(DiffChecksumsResponse),
+    diffUploadResponse: S.optional(DiffUploadResponse),
+    hash: S.optional(S.String),
+    algorithm: S.optional(S.String),
+    diffUploadRequest: S.optional(DiffUploadRequest),
+    contentType: S.optional(S.String),
+    sha1Hash: S.optional(S.String),
+    diffDownloadResponse: S.optional(DiffDownloadResponse),
+    hashVerified: S.optional(S.Boolean),
+    inline: S.optional(S.String),
+    md5Hash: S.optional(S.String),
+    filename: S.optional(S.String),
+    crc32cHash: S.optional(S.Number),
+    mediaId: S.optional(S.String),
+    diffVersionResponse: S.optional(DiffVersionResponse),
+    compositeMedia: S.optional(CompositeMediaList),
+    sha512Hash: S.optional(S.String),
+    isPotentialRetry: S.optional(S.Boolean),
+    blobstore2Info: S.optional(Blobstore2Info),
+    referenceType: S.optional(MediaReferenceTypeEnum),
+    sha256Hash: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Media" }) as any as S.Schema<Media>;
 
 export interface GetEventticketclassRequest {
@@ -3931,90 +4750,162 @@ export interface GetEventticketclassRequest {
   resourceId: string;
 }
 export const GetEventticketclassRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"walletobjects/v1/eventTicketClass/{resourceId}","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "GetEventticketclassRequest" }) as any as S.Schema<GetEventticketclassRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "walletobjects/v1/eventTicketClass/{resourceId}",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetEventticketclassRequest",
+}) as any as S.Schema<GetEventticketclassRequest>;
 
 export interface GetEventticketobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
 }
 export const GetEventticketobjectRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"walletobjects/v1/eventTicketObject/{resourceId}","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "GetEventticketobjectRequest" }) as any as S.Schema<GetEventticketobjectRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "walletobjects/v1/eventTicketObject/{resourceId}",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetEventticketobjectRequest",
+}) as any as S.Schema<GetEventticketobjectRequest>;
 
 export interface GetFlightclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
 }
 export const GetFlightclassRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"walletobjects/v1/flightClass/{resourceId}","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "GetFlightclassRequest" }) as any as S.Schema<GetFlightclassRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "walletobjects/v1/flightClass/{resourceId}",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetFlightclassRequest",
+}) as any as S.Schema<GetFlightclassRequest>;
 
 export interface GetFlightobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
 }
 export const GetFlightobjectRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"walletobjects/v1/flightObject/{resourceId}","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "GetFlightobjectRequest" }) as any as S.Schema<GetFlightobjectRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "walletobjects/v1/flightObject/{resourceId}",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetFlightobjectRequest",
+}) as any as S.Schema<GetFlightobjectRequest>;
 
 export interface GetGenericclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value needs to follow the format `issuerID.identifier` where `issuerID` is issued by Google and `identifier` is chosen by you. The unique identifier can only include alphanumeric characters, `.`, `_`, or `-`. */
   resourceId: string;
 }
 export const GetGenericclassRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"walletobjects/v1/genericClass/{resourceId}","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "GetGenericclassRequest" }) as any as S.Schema<GetGenericclassRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "walletobjects/v1/genericClass/{resourceId}",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetGenericclassRequest",
+}) as any as S.Schema<GetGenericclassRequest>;
 
 export interface GetGenericobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value needs to follow the format `issuerID.identifier` where `issuerID` is issued by Google and `identifier` is chosen by you. The unique identifier can only include alphanumeric characters, `.`, `_`, or `-`. */
   resourceId: string;
 }
 export const GetGenericobjectRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"walletobjects/v1/genericObject/{resourceId}","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "GetGenericobjectRequest" }) as any as S.Schema<GetGenericobjectRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "walletobjects/v1/genericObject/{resourceId}",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetGenericobjectRequest",
+}) as any as S.Schema<GetGenericobjectRequest>;
 
 export interface GetGiftcardclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
 }
 export const GetGiftcardclassRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"walletobjects/v1/giftCardClass/{resourceId}","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "GetGiftcardclassRequest" }) as any as S.Schema<GetGiftcardclassRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "walletobjects/v1/giftCardClass/{resourceId}",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetGiftcardclassRequest",
+}) as any as S.Schema<GetGiftcardclassRequest>;
 
 export interface GetGiftcardobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
 }
 export const GetGiftcardobjectRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"walletobjects/v1/giftCardObject/{resourceId}","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "GetGiftcardobjectRequest" }) as any as S.Schema<GetGiftcardobjectRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "walletobjects/v1/giftCardObject/{resourceId}",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetGiftcardobjectRequest",
+}) as any as S.Schema<GetGiftcardobjectRequest>;
 
 export interface GetIssuerRequest {
   /** The unique identifier for an issuer. */
   resourceId: string;
 }
 export const GetIssuerRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"walletobjects/v1/issuer/{resourceId}","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "GetIssuerRequest" }) as any as S.Schema<GetIssuerRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "walletobjects/v1/issuer/{resourceId}",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetIssuerRequest",
+}) as any as S.Schema<GetIssuerRequest>;
 
 export interface AuthenticationKey {
   /** Available only to Smart Tap enabled partners. Contact support for additional guidance. */
@@ -4023,14 +4914,18 @@ export interface AuthenticationKey {
   publicKeyPem?: string;
 }
 export const AuthenticationKey = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.optional(S.Number),
-  "publicKeyPem": S.optional(S.String),
-}),
-).annotate({ identifier: "AuthenticationKey" }) as any as S.Schema<AuthenticationKey>;
+  S.Struct({
+    id: S.optional(S.Number),
+    publicKeyPem: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AuthenticationKey",
+}) as any as S.Schema<AuthenticationKey>;
 
 export type AuthenticationKeyList = ReadonlyArray<AuthenticationKey>;
-export const AuthenticationKeyList = /*@__PURE__*/ S.Array(AuthenticationKey) as any as S.Schema<AuthenticationKeyList>;
+export const AuthenticationKeyList = /*@__PURE__*/ S.Array(
+  AuthenticationKey,
+) as any as S.Schema<AuthenticationKeyList>;
 
 export interface SmartTapMerchantData {
   /** Available only to Smart Tap enabled partners. Contact support for additional guidance. */
@@ -4039,11 +4934,13 @@ export interface SmartTapMerchantData {
   authenticationKeys?: AuthenticationKeyList;
 }
 export const SmartTapMerchantData = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "smartTapMerchantId": S.optional(S.String),
-  "authenticationKeys": S.optional(AuthenticationKeyList),
-}),
-).annotate({ identifier: "SmartTapMerchantData" }) as any as S.Schema<SmartTapMerchantData>;
+  S.Struct({
+    smartTapMerchantId: S.optional(S.String),
+    authenticationKeys: S.optional(AuthenticationKeyList),
+  }),
+).annotate({
+  identifier: "SmartTapMerchantData",
+}) as any as S.Schema<SmartTapMerchantData>;
 
 export interface IssuerContactInfo {
   /** The primary contact email address. */
@@ -4056,13 +4953,15 @@ export interface IssuerContactInfo {
   name?: string;
 }
 export const IssuerContactInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "email": S.optional(S.String),
-  "alertsEmails": S.optional(StringList),
-  "phone": S.optional(S.String),
-  "name": S.optional(S.String),
-}),
-).annotate({ identifier: "IssuerContactInfo" }) as any as S.Schema<IssuerContactInfo>;
+  S.Struct({
+    email: S.optional(S.String),
+    alertsEmails: S.optional(StringList),
+    phone: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "IssuerContactInfo",
+}) as any as S.Schema<IssuerContactInfo>;
 
 export interface Issuer {
   /** The unique identifier for an issuer account. This is automatically generated when the issuer is inserted. */
@@ -4079,14 +4978,14 @@ export interface Issuer {
   name?: string;
 }
 export const Issuer = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "issuerId": S.optional(S.String),
-  "smartTapMerchantData": S.optional(SmartTapMerchantData),
-  "contactInfo": S.optional(IssuerContactInfo),
-  "homepageUrl": S.optional(S.String),
-  "callbackOptions": S.optional(CallbackOptions),
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    issuerId: S.optional(S.String),
+    smartTapMerchantData: S.optional(SmartTapMerchantData),
+    contactInfo: S.optional(IssuerContactInfo),
+    homepageUrl: S.optional(S.String),
+    callbackOptions: S.optional(CallbackOptions),
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Issuer" }) as any as S.Schema<Issuer>;
 
 export interface GetLoyaltyclassRequest {
@@ -4094,52 +4993,99 @@ export interface GetLoyaltyclassRequest {
   resourceId: string;
 }
 export const GetLoyaltyclassRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"walletobjects/v1/loyaltyClass/{resourceId}","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "GetLoyaltyclassRequest" }) as any as S.Schema<GetLoyaltyclassRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "walletobjects/v1/loyaltyClass/{resourceId}",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetLoyaltyclassRequest",
+}) as any as S.Schema<GetLoyaltyclassRequest>;
 
 export interface GetLoyaltyobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
 }
 export const GetLoyaltyobjectRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"walletobjects/v1/loyaltyObject/{resourceId}","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "GetLoyaltyobjectRequest" }) as any as S.Schema<GetLoyaltyobjectRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "walletobjects/v1/loyaltyObject/{resourceId}",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetLoyaltyobjectRequest",
+}) as any as S.Schema<GetLoyaltyobjectRequest>;
 
 export interface GetOfferclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
 }
 export const GetOfferclassRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"walletobjects/v1/offerClass/{resourceId}","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "GetOfferclassRequest" }) as any as S.Schema<GetOfferclassRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "walletobjects/v1/offerClass/{resourceId}",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetOfferclassRequest",
+}) as any as S.Schema<GetOfferclassRequest>;
 
 export interface GetOfferobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
 }
 export const GetOfferobjectRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"walletobjects/v1/offerObject/{resourceId}","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "GetOfferobjectRequest" }) as any as S.Schema<GetOfferobjectRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "walletobjects/v1/offerObject/{resourceId}",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetOfferobjectRequest",
+}) as any as S.Schema<GetOfferobjectRequest>;
 
 export interface GetPermissionsRequest {
   /** The unique identifier for an issuer. This ID must be unique across all issuers. */
   resourceId: string;
 }
 export const GetPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"walletobjects/v1/permissions/{resourceId}","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "GetPermissionsRequest" }) as any as S.Schema<GetPermissionsRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "walletobjects/v1/permissions/{resourceId}",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetPermissionsRequest",
+}) as any as S.Schema<GetPermissionsRequest>;
 
-export type PermissionRoleEnum = "ROLE_UNSPECIFIED" | "OWNER" | "owner" | "READER" | "reader" | "WRITER" | "writer";
+export type PermissionRoleEnum =
+  | "ROLE_UNSPECIFIED"
+  | "OWNER"
+  | "owner"
+  | "READER"
+  | "reader"
+  | "WRITER"
+  | "writer";
 export const PermissionRoleEnum = /*@__PURE__*/ S.String;
 
 export interface Permission {
@@ -4149,14 +5095,16 @@ export interface Permission {
   role?: PermissionRoleEnum;
 }
 export const Permission = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "emailAddress": S.optional(S.String),
-  "role": S.optional(PermissionRoleEnum),
-}),
+  S.Struct({
+    emailAddress: S.optional(S.String),
+    role: S.optional(PermissionRoleEnum),
+  }),
 ).annotate({ identifier: "Permission" }) as any as S.Schema<Permission>;
 
 export type PermissionList = ReadonlyArray<Permission>;
-export const PermissionList = /*@__PURE__*/ S.Array(Permission) as any as S.Schema<PermissionList>;
+export const PermissionList = /*@__PURE__*/ S.Array(
+  Permission,
+) as any as S.Schema<PermissionList>;
 
 export interface Permissions {
   /** ID of the issuer the list of permissions refer to. */
@@ -4165,10 +5113,10 @@ export interface Permissions {
   permissions?: PermissionList;
 }
 export const Permissions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "issuerId": S.optional(S.String),
-  "permissions": S.optional(PermissionList),
-}),
+  S.Struct({
+    issuerId: S.optional(S.String),
+    permissions: S.optional(PermissionList),
+  }),
 ).annotate({ identifier: "Permissions" }) as any as S.Schema<Permissions>;
 
 export interface GetTransitclassRequest {
@@ -4176,110 +5124,198 @@ export interface GetTransitclassRequest {
   resourceId: string;
 }
 export const GetTransitclassRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"walletobjects/v1/transitClass/{resourceId}","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "GetTransitclassRequest" }) as any as S.Schema<GetTransitclassRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "walletobjects/v1/transitClass/{resourceId}",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetTransitclassRequest",
+}) as any as S.Schema<GetTransitclassRequest>;
 
 export interface GetTransitobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
 }
 export const GetTransitobjectRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"walletobjects/v1/transitObject/{resourceId}","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "GetTransitobjectRequest" }) as any as S.Schema<GetTransitobjectRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "walletobjects/v1/transitObject/{resourceId}",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetTransitobjectRequest",
+}) as any as S.Schema<GetTransitobjectRequest>;
 
 export interface InsertEventticketclassRequest {
   /** Request body */
   body?: EventTicketClass;
 }
 export const InsertEventticketclassRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(EventTicketClass.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"walletobjects/v1/eventTicketClass","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "InsertEventticketclassRequest" }) as any as S.Schema<InsertEventticketclassRequest>;
+  S.Struct({
+    body: S.optional(EventTicketClass.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "walletobjects/v1/eventTicketClass",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "InsertEventticketclassRequest",
+}) as any as S.Schema<InsertEventticketclassRequest>;
 
 export interface InsertEventticketobjectRequest {
   /** Request body */
   body?: EventTicketObject;
 }
 export const InsertEventticketobjectRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(EventTicketObject.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"walletobjects/v1/eventTicketObject","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "InsertEventticketobjectRequest" }) as any as S.Schema<InsertEventticketobjectRequest>;
+  S.Struct({
+    body: S.optional(EventTicketObject.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "walletobjects/v1/eventTicketObject",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "InsertEventticketobjectRequest",
+}) as any as S.Schema<InsertEventticketobjectRequest>;
 
 export interface InsertFlightclassRequest {
   /** Request body */
   body?: FlightClass;
 }
 export const InsertFlightclassRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(FlightClass.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"walletobjects/v1/flightClass","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "InsertFlightclassRequest" }) as any as S.Schema<InsertFlightclassRequest>;
+  S.Struct({
+    body: S.optional(FlightClass.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "walletobjects/v1/flightClass",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "InsertFlightclassRequest",
+}) as any as S.Schema<InsertFlightclassRequest>;
 
 export interface InsertFlightobjectRequest {
   /** Request body */
   body?: FlightObject;
 }
 export const InsertFlightobjectRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(FlightObject.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"walletobjects/v1/flightObject","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "InsertFlightobjectRequest" }) as any as S.Schema<InsertFlightobjectRequest>;
+  S.Struct({
+    body: S.optional(FlightObject.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "walletobjects/v1/flightObject",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "InsertFlightobjectRequest",
+}) as any as S.Schema<InsertFlightobjectRequest>;
 
 export interface InsertGenericclassRequest {
   /** Request body */
   body?: GenericClass;
 }
 export const InsertGenericclassRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(GenericClass.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"walletobjects/v1/genericClass","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "InsertGenericclassRequest" }) as any as S.Schema<InsertGenericclassRequest>;
+  S.Struct({
+    body: S.optional(GenericClass.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "walletobjects/v1/genericClass",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "InsertGenericclassRequest",
+}) as any as S.Schema<InsertGenericclassRequest>;
 
 export interface InsertGenericobjectRequest {
   /** Request body */
   body?: GenericObject;
 }
 export const InsertGenericobjectRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(GenericObject.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"walletobjects/v1/genericObject","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "InsertGenericobjectRequest" }) as any as S.Schema<InsertGenericobjectRequest>;
+  S.Struct({
+    body: S.optional(GenericObject.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "walletobjects/v1/genericObject",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "InsertGenericobjectRequest",
+}) as any as S.Schema<InsertGenericobjectRequest>;
 
 export interface InsertGiftcardclassRequest {
   /** Request body */
   body?: GiftCardClass;
 }
 export const InsertGiftcardclassRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(GiftCardClass.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"walletobjects/v1/giftCardClass","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "InsertGiftcardclassRequest" }) as any as S.Schema<InsertGiftcardclassRequest>;
+  S.Struct({
+    body: S.optional(GiftCardClass.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "walletobjects/v1/giftCardClass",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "InsertGiftcardclassRequest",
+}) as any as S.Schema<InsertGiftcardclassRequest>;
 
 export interface InsertGiftcardobjectRequest {
   /** Request body */
   body?: GiftCardObject;
 }
 export const InsertGiftcardobjectRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(GiftCardObject.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"walletobjects/v1/giftCardObject","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "InsertGiftcardobjectRequest" }) as any as S.Schema<InsertGiftcardobjectRequest>;
+  S.Struct({
+    body: S.optional(GiftCardObject.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "walletobjects/v1/giftCardObject",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "InsertGiftcardobjectRequest",
+}) as any as S.Schema<InsertGiftcardobjectRequest>;
 
 export interface InsertIssuerRequest {
   /** Request body */
   body?: Issuer;
 }
 export const InsertIssuerRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(Issuer.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"walletobjects/v1/issuer","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "InsertIssuerRequest" }) as any as S.Schema<InsertIssuerRequest>;
+  S.Struct({
+    body: S.optional(Issuer.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "walletobjects/v1/issuer",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "InsertIssuerRequest",
+}) as any as S.Schema<InsertIssuerRequest>;
 
 /** A JWT representation of a pass. */
 export interface JwtResource {
@@ -4287,9 +5323,9 @@ export interface JwtResource {
   jwt?: string;
 }
 export const JwtResource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "jwt": S.optional(S.String),
-}),
+  S.Struct({
+    jwt: S.optional(S.String),
+  }),
 ).annotate({ identifier: "JwtResource" }) as any as S.Schema<JwtResource>;
 
 export interface InsertJwtRequest {
@@ -4297,52 +5333,88 @@ export interface InsertJwtRequest {
   body?: JwtResource;
 }
 export const InsertJwtRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(JwtResource.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"walletobjects/v1/jwt","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "InsertJwtRequest" }) as any as S.Schema<InsertJwtRequest>;
+  S.Struct({
+    body: S.optional(JwtResource.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "walletobjects/v1/jwt",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "InsertJwtRequest",
+}) as any as S.Schema<InsertJwtRequest>;
 
 export type LoyaltyObjectList = ReadonlyArray<LoyaltyObject>;
-export const LoyaltyObjectList = /*@__PURE__*/ S.Array(LoyaltyObject) as any as S.Schema<LoyaltyObjectList>;
+export const LoyaltyObjectList = /*@__PURE__*/ S.Array(
+  LoyaltyObject,
+) as any as S.Schema<LoyaltyObjectList>;
 
 export type EventTicketClassList = ReadonlyArray<EventTicketClass>;
-export const EventTicketClassList = /*@__PURE__*/ S.Array(EventTicketClass) as any as S.Schema<EventTicketClassList>;
+export const EventTicketClassList = /*@__PURE__*/ S.Array(
+  EventTicketClass,
+) as any as S.Schema<EventTicketClassList>;
 
 export type GiftCardClassList = ReadonlyArray<GiftCardClass>;
-export const GiftCardClassList = /*@__PURE__*/ S.Array(GiftCardClass) as any as S.Schema<GiftCardClassList>;
+export const GiftCardClassList = /*@__PURE__*/ S.Array(
+  GiftCardClass,
+) as any as S.Schema<GiftCardClassList>;
 
 export type GenericClassList = ReadonlyArray<GenericClass>;
-export const GenericClassList = /*@__PURE__*/ S.Array(GenericClass) as any as S.Schema<GenericClassList>;
+export const GenericClassList = /*@__PURE__*/ S.Array(
+  GenericClass,
+) as any as S.Schema<GenericClassList>;
 
 export type GiftCardObjectList = ReadonlyArray<GiftCardObject>;
-export const GiftCardObjectList = /*@__PURE__*/ S.Array(GiftCardObject) as any as S.Schema<GiftCardObjectList>;
+export const GiftCardObjectList = /*@__PURE__*/ S.Array(
+  GiftCardObject,
+) as any as S.Schema<GiftCardObjectList>;
 
 export type LoyaltyClassList = ReadonlyArray<LoyaltyClass>;
-export const LoyaltyClassList = /*@__PURE__*/ S.Array(LoyaltyClass) as any as S.Schema<LoyaltyClassList>;
+export const LoyaltyClassList = /*@__PURE__*/ S.Array(
+  LoyaltyClass,
+) as any as S.Schema<LoyaltyClassList>;
 
 export type OfferClassList = ReadonlyArray<OfferClass>;
-export const OfferClassList = /*@__PURE__*/ S.Array(OfferClass) as any as S.Schema<OfferClassList>;
+export const OfferClassList = /*@__PURE__*/ S.Array(
+  OfferClass,
+) as any as S.Schema<OfferClassList>;
 
 export type OfferObjectList = ReadonlyArray<OfferObject>;
-export const OfferObjectList = /*@__PURE__*/ S.Array(OfferObject) as any as S.Schema<OfferObjectList>;
+export const OfferObjectList = /*@__PURE__*/ S.Array(
+  OfferObject,
+) as any as S.Schema<OfferObjectList>;
 
 export type GenericObjectList = ReadonlyArray<GenericObject>;
-export const GenericObjectList = /*@__PURE__*/ S.Array(GenericObject) as any as S.Schema<GenericObjectList>;
+export const GenericObjectList = /*@__PURE__*/ S.Array(
+  GenericObject,
+) as any as S.Schema<GenericObjectList>;
 
 export type FlightObjectList = ReadonlyArray<FlightObject>;
-export const FlightObjectList = /*@__PURE__*/ S.Array(FlightObject) as any as S.Schema<FlightObjectList>;
+export const FlightObjectList = /*@__PURE__*/ S.Array(
+  FlightObject,
+) as any as S.Schema<FlightObjectList>;
 
 export type FlightClassList = ReadonlyArray<FlightClass>;
-export const FlightClassList = /*@__PURE__*/ S.Array(FlightClass) as any as S.Schema<FlightClassList>;
+export const FlightClassList = /*@__PURE__*/ S.Array(
+  FlightClass,
+) as any as S.Schema<FlightClassList>;
 
 export type EventTicketObjectList = ReadonlyArray<EventTicketObject>;
-export const EventTicketObjectList = /*@__PURE__*/ S.Array(EventTicketObject) as any as S.Schema<EventTicketObjectList>;
+export const EventTicketObjectList = /*@__PURE__*/ S.Array(
+  EventTicketObject,
+) as any as S.Schema<EventTicketObjectList>;
 
 export type TransitClassList = ReadonlyArray<TransitClass>;
-export const TransitClassList = /*@__PURE__*/ S.Array(TransitClass) as any as S.Schema<TransitClassList>;
+export const TransitClassList = /*@__PURE__*/ S.Array(
+  TransitClass,
+) as any as S.Schema<TransitClassList>;
 
 export type TransitObjectList = ReadonlyArray<TransitObject>;
-export const TransitObjectList = /*@__PURE__*/ S.Array(TransitObject) as any as S.Schema<TransitObjectList>;
+export const TransitObjectList = /*@__PURE__*/ S.Array(
+  TransitObject,
+) as any as S.Schema<TransitObjectList>;
 
 export interface Resources {
   /** A list of loyalty objects. */
@@ -4375,22 +5447,22 @@ export interface Resources {
   transitObjects?: TransitObjectList;
 }
 export const Resources = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "loyaltyObjects": S.optional(LoyaltyObjectList),
-  "eventTicketClasses": S.optional(EventTicketClassList),
-  "giftCardClasses": S.optional(GiftCardClassList),
-  "genericClasses": S.optional(GenericClassList),
-  "giftCardObjects": S.optional(GiftCardObjectList),
-  "loyaltyClasses": S.optional(LoyaltyClassList),
-  "offerClasses": S.optional(OfferClassList),
-  "offerObjects": S.optional(OfferObjectList),
-  "genericObjects": S.optional(GenericObjectList),
-  "flightObjects": S.optional(FlightObjectList),
-  "flightClasses": S.optional(FlightClassList),
-  "eventTicketObjects": S.optional(EventTicketObjectList),
-  "transitClasses": S.optional(TransitClassList),
-  "transitObjects": S.optional(TransitObjectList),
-}),
+  S.Struct({
+    loyaltyObjects: S.optional(LoyaltyObjectList),
+    eventTicketClasses: S.optional(EventTicketClassList),
+    giftCardClasses: S.optional(GiftCardClassList),
+    genericClasses: S.optional(GenericClassList),
+    giftCardObjects: S.optional(GiftCardObjectList),
+    loyaltyClasses: S.optional(LoyaltyClassList),
+    offerClasses: S.optional(OfferClassList),
+    offerObjects: S.optional(OfferObjectList),
+    genericObjects: S.optional(GenericObjectList),
+    flightObjects: S.optional(FlightObjectList),
+    flightClasses: S.optional(FlightClassList),
+    eventTicketObjects: S.optional(EventTicketObjectList),
+    transitClasses: S.optional(TransitClassList),
+    transitObjects: S.optional(TransitObjectList),
+  }),
 ).annotate({ identifier: "Resources" }) as any as S.Schema<Resources>;
 
 export interface JwtInsertResponse {
@@ -4400,63 +5472,102 @@ export interface JwtInsertResponse {
   saveUri?: string;
 }
 export const JwtInsertResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resources": S.optional(Resources),
-  "saveUri": S.optional(S.String),
-}),
-).annotate({ identifier: "JwtInsertResponse" }) as any as S.Schema<JwtInsertResponse>;
+  S.Struct({
+    resources: S.optional(Resources),
+    saveUri: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "JwtInsertResponse",
+}) as any as S.Schema<JwtInsertResponse>;
 
 export interface InsertLoyaltyclassRequest {
   /** Request body */
   body?: LoyaltyClass;
 }
 export const InsertLoyaltyclassRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(LoyaltyClass.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"walletobjects/v1/loyaltyClass","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "InsertLoyaltyclassRequest" }) as any as S.Schema<InsertLoyaltyclassRequest>;
+  S.Struct({
+    body: S.optional(LoyaltyClass.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "walletobjects/v1/loyaltyClass",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "InsertLoyaltyclassRequest",
+}) as any as S.Schema<InsertLoyaltyclassRequest>;
 
 export interface InsertLoyaltyobjectRequest {
   /** Request body */
   body?: LoyaltyObject;
 }
 export const InsertLoyaltyobjectRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(LoyaltyObject.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"walletobjects/v1/loyaltyObject","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "InsertLoyaltyobjectRequest" }) as any as S.Schema<InsertLoyaltyobjectRequest>;
+  S.Struct({
+    body: S.optional(LoyaltyObject.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "walletobjects/v1/loyaltyObject",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "InsertLoyaltyobjectRequest",
+}) as any as S.Schema<InsertLoyaltyobjectRequest>;
 
 export interface InsertOfferclassRequest {
   /** Request body */
   body?: OfferClass;
 }
 export const InsertOfferclassRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(OfferClass.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"walletobjects/v1/offerClass","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "InsertOfferclassRequest" }) as any as S.Schema<InsertOfferclassRequest>;
+  S.Struct({
+    body: S.optional(OfferClass.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "walletobjects/v1/offerClass",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "InsertOfferclassRequest",
+}) as any as S.Schema<InsertOfferclassRequest>;
 
 export interface InsertOfferobjectRequest {
   /** Request body */
   body?: OfferObject;
 }
 export const InsertOfferobjectRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(OfferObject.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"walletobjects/v1/offerObject","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "InsertOfferobjectRequest" }) as any as S.Schema<InsertOfferobjectRequest>;
+  S.Struct({
+    body: S.optional(OfferObject.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "walletobjects/v1/offerObject",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "InsertOfferobjectRequest",
+}) as any as S.Schema<InsertOfferobjectRequest>;
 
 export interface SignUpInfo {
   /** ID of the class the user can sign up for. */
   classId?: string;
 }
 export const SignUpInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "classId": S.optional(S.String),
-}),
+  S.Struct({
+    classId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "SignUpInfo" }) as any as S.Schema<SignUpInfo>;
 
-export type IssuerToUserInfoActionEnum = "ACTION_UNSPECIFIED" | "S2AP" | "s2ap" | "SIGN_UP" | "signUp";
+export type IssuerToUserInfoActionEnum =
+  | "ACTION_UNSPECIFIED"
+  | "S2AP"
+  | "s2ap"
+  | "SIGN_UP"
+  | "signUp";
 export const IssuerToUserInfoActionEnum = /*@__PURE__*/ S.String;
 
 export interface IssuerToUserInfo {
@@ -4468,16 +5579,20 @@ export interface IssuerToUserInfo {
   value?: string;
 }
 export const IssuerToUserInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "signUpInfo": S.optional(SignUpInfo),
-  "url": S.optional(S.String),
-  "action": S.optional(IssuerToUserInfoActionEnum),
-  "value": S.optional(S.String),
-}),
-).annotate({ identifier: "IssuerToUserInfo" }) as any as S.Schema<IssuerToUserInfo>;
+  S.Struct({
+    signUpInfo: S.optional(SignUpInfo),
+    url: S.optional(S.String),
+    action: S.optional(IssuerToUserInfoActionEnum),
+    value: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "IssuerToUserInfo",
+}) as any as S.Schema<IssuerToUserInfo>;
 
 export type IssuerToUserInfoList = ReadonlyArray<IssuerToUserInfo>;
-export const IssuerToUserInfoList = /*@__PURE__*/ S.Array(IssuerToUserInfo) as any as S.Schema<IssuerToUserInfoList>;
+export const IssuerToUserInfoList = /*@__PURE__*/ S.Array(
+  IssuerToUserInfo,
+) as any as S.Schema<IssuerToUserInfoList>;
 
 export interface SmartTap {
   /** Identifies what kind of resource this is. Value: the fixed string `"walletobjects#smartTap"`. */
@@ -4490,12 +5605,12 @@ export interface SmartTap {
   infos?: IssuerToUserInfoList;
 }
 export const SmartTap = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "id": S.optional(S.String),
-  "merchantId": S.optional(S.String),
-  "infos": S.optional(IssuerToUserInfoList),
-}),
+  S.Struct({
+    kind: S.optional(S.String),
+    id: S.optional(S.String),
+    merchantId: S.optional(S.String),
+    infos: S.optional(IssuerToUserInfoList),
+  }),
 ).annotate({ identifier: "SmartTap" }) as any as S.Schema<SmartTap>;
 
 export interface InsertSmarttapRequest {
@@ -4503,30 +5618,54 @@ export interface InsertSmarttapRequest {
   body?: SmartTap;
 }
 export const InsertSmarttapRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(SmartTap.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"walletobjects/v1/smartTap","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "InsertSmarttapRequest" }) as any as S.Schema<InsertSmarttapRequest>;
+  S.Struct({
+    body: S.optional(SmartTap.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "walletobjects/v1/smartTap",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "InsertSmarttapRequest",
+}) as any as S.Schema<InsertSmarttapRequest>;
 
 export interface InsertTransitclassRequest {
   /** Request body */
   body?: TransitClass;
 }
 export const InsertTransitclassRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(TransitClass.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"walletobjects/v1/transitClass","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "InsertTransitclassRequest" }) as any as S.Schema<InsertTransitclassRequest>;
+  S.Struct({
+    body: S.optional(TransitClass.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "walletobjects/v1/transitClass",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "InsertTransitclassRequest",
+}) as any as S.Schema<InsertTransitclassRequest>;
 
 export interface InsertTransitobjectRequest {
   /** Request body */
   body?: TransitObject;
 }
 export const InsertTransitobjectRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(TransitObject.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"walletobjects/v1/transitObject","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "InsertTransitobjectRequest" }) as any as S.Schema<InsertTransitobjectRequest>;
+  S.Struct({
+    body: S.optional(TransitObject.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "walletobjects/v1/transitObject",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "InsertTransitobjectRequest",
+}) as any as S.Schema<InsertTransitobjectRequest>;
 
 export interface ListEventticketclassRequest {
   /** The ID of the issuer authorized to list classes. */
@@ -4537,12 +5676,20 @@ export interface ListEventticketclassRequest {
   maxResults?: number;
 }
 export const ListEventticketclassRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "issuerId": S.optional(S.String.pipe(T.Query())),
-  "token": S.optional(S.String.pipe(T.Query())),
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"walletobjects/v1/eventTicketClass","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "ListEventticketclassRequest" }) as any as S.Schema<ListEventticketclassRequest>;
+  S.Struct({
+    issuerId: S.optional(S.String.pipe(T.Query())),
+    token: S.optional(S.String.pipe(T.Query())),
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "walletobjects/v1/eventTicketClass",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListEventticketclassRequest",
+}) as any as S.Schema<ListEventticketclassRequest>;
 
 export interface Pagination {
   /** Identifies what kind of resource this is. Value: the fixed string `"walletobjects#pagination"`. */
@@ -4553,11 +5700,11 @@ export interface Pagination {
   nextPageToken?: string;
 }
 export const Pagination = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "resultsPerPage": S.optional(S.Number),
-  "nextPageToken": S.optional(S.String),
-}),
+  S.Struct({
+    kind: S.optional(S.String),
+    resultsPerPage: S.optional(S.Number),
+    nextPageToken: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Pagination" }) as any as S.Schema<Pagination>;
 
 export interface EventTicketClassListResponse {
@@ -4567,11 +5714,13 @@ export interface EventTicketClassListResponse {
   pagination?: Pagination;
 }
 export const EventTicketClassListResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resources": S.optional(EventTicketClassList),
-  "pagination": S.optional(Pagination),
-}),
-).annotate({ identifier: "EventTicketClassListResponse" }) as any as S.Schema<EventTicketClassListResponse>;
+  S.Struct({
+    resources: S.optional(EventTicketClassList),
+    pagination: S.optional(Pagination),
+  }),
+).annotate({
+  identifier: "EventTicketClassListResponse",
+}) as any as S.Schema<EventTicketClassListResponse>;
 
 export interface ListEventticketobjectRequest {
   /** The ID of the class whose objects will be listed. */
@@ -4582,12 +5731,20 @@ export interface ListEventticketobjectRequest {
   maxResults?: number;
 }
 export const ListEventticketobjectRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "classId": S.optional(S.String.pipe(T.Query())),
-  "token": S.optional(S.String.pipe(T.Query())),
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"walletobjects/v1/eventTicketObject","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "ListEventticketobjectRequest" }) as any as S.Schema<ListEventticketobjectRequest>;
+  S.Struct({
+    classId: S.optional(S.String.pipe(T.Query())),
+    token: S.optional(S.String.pipe(T.Query())),
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "walletobjects/v1/eventTicketObject",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListEventticketobjectRequest",
+}) as any as S.Schema<ListEventticketobjectRequest>;
 
 export interface EventTicketObjectListResponse {
   /** Resources corresponding to the list request. */
@@ -4596,11 +5753,13 @@ export interface EventTicketObjectListResponse {
   pagination?: Pagination;
 }
 export const EventTicketObjectListResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resources": S.optional(EventTicketObjectList),
-  "pagination": S.optional(Pagination),
-}),
-).annotate({ identifier: "EventTicketObjectListResponse" }) as any as S.Schema<EventTicketObjectListResponse>;
+  S.Struct({
+    resources: S.optional(EventTicketObjectList),
+    pagination: S.optional(Pagination),
+  }),
+).annotate({
+  identifier: "EventTicketObjectListResponse",
+}) as any as S.Schema<EventTicketObjectListResponse>;
 
 export interface ListFlightclassRequest {
   /** Identifies the max number of results returned by a list. All results are returned if `maxResults` isn't defined. */
@@ -4611,12 +5770,20 @@ export interface ListFlightclassRequest {
   token?: string;
 }
 export const ListFlightclassRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-  "issuerId": S.optional(S.String.pipe(T.Query())),
-  "token": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"walletobjects/v1/flightClass","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "ListFlightclassRequest" }) as any as S.Schema<ListFlightclassRequest>;
+  S.Struct({
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+    issuerId: S.optional(S.String.pipe(T.Query())),
+    token: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "walletobjects/v1/flightClass",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListFlightclassRequest",
+}) as any as S.Schema<ListFlightclassRequest>;
 
 export interface FlightClassListResponse {
   /** Resources corresponding to the list request. */
@@ -4625,11 +5792,13 @@ export interface FlightClassListResponse {
   pagination?: Pagination;
 }
 export const FlightClassListResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resources": S.optional(FlightClassList),
-  "pagination": S.optional(Pagination),
-}),
-).annotate({ identifier: "FlightClassListResponse" }) as any as S.Schema<FlightClassListResponse>;
+  S.Struct({
+    resources: S.optional(FlightClassList),
+    pagination: S.optional(Pagination),
+  }),
+).annotate({
+  identifier: "FlightClassListResponse",
+}) as any as S.Schema<FlightClassListResponse>;
 
 export interface ListFlightobjectRequest {
   /** The ID of the class whose objects will be listed. */
@@ -4640,12 +5809,20 @@ export interface ListFlightobjectRequest {
   maxResults?: number;
 }
 export const ListFlightobjectRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "classId": S.optional(S.String.pipe(T.Query())),
-  "token": S.optional(S.String.pipe(T.Query())),
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"walletobjects/v1/flightObject","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "ListFlightobjectRequest" }) as any as S.Schema<ListFlightobjectRequest>;
+  S.Struct({
+    classId: S.optional(S.String.pipe(T.Query())),
+    token: S.optional(S.String.pipe(T.Query())),
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "walletobjects/v1/flightObject",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListFlightobjectRequest",
+}) as any as S.Schema<ListFlightobjectRequest>;
 
 export interface FlightObjectListResponse {
   /** Resources corresponding to the list request. */
@@ -4654,11 +5831,13 @@ export interface FlightObjectListResponse {
   pagination?: Pagination;
 }
 export const FlightObjectListResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resources": S.optional(FlightObjectList),
-  "pagination": S.optional(Pagination),
-}),
-).annotate({ identifier: "FlightObjectListResponse" }) as any as S.Schema<FlightObjectListResponse>;
+  S.Struct({
+    resources: S.optional(FlightObjectList),
+    pagination: S.optional(Pagination),
+  }),
+).annotate({
+  identifier: "FlightObjectListResponse",
+}) as any as S.Schema<FlightObjectListResponse>;
 
 export interface ListGenericclassRequest {
   /** The ID of the issuer authorized to list classes. */
@@ -4669,12 +5848,20 @@ export interface ListGenericclassRequest {
   maxResults?: number;
 }
 export const ListGenericclassRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "issuerId": S.optional(S.String.pipe(T.Query())),
-  "token": S.optional(S.String.pipe(T.Query())),
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"walletobjects/v1/genericClass","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "ListGenericclassRequest" }) as any as S.Schema<ListGenericclassRequest>;
+  S.Struct({
+    issuerId: S.optional(S.String.pipe(T.Query())),
+    token: S.optional(S.String.pipe(T.Query())),
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "walletobjects/v1/genericClass",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListGenericclassRequest",
+}) as any as S.Schema<ListGenericclassRequest>;
 
 /** List response which contains the list of all generic classes for a given issuer ID. */
 export interface GenericClassListResponse {
@@ -4684,11 +5871,13 @@ export interface GenericClassListResponse {
   resources?: GenericClassList;
 }
 export const GenericClassListResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pagination": S.optional(Pagination),
-  "resources": S.optional(GenericClassList),
-}),
-).annotate({ identifier: "GenericClassListResponse" }) as any as S.Schema<GenericClassListResponse>;
+  S.Struct({
+    pagination: S.optional(Pagination),
+    resources: S.optional(GenericClassList),
+  }),
+).annotate({
+  identifier: "GenericClassListResponse",
+}) as any as S.Schema<GenericClassListResponse>;
 
 export interface ListGenericobjectRequest {
   /** Identifies the max number of results returned by a list. All results are returned if `maxResults` isn't defined. */
@@ -4699,12 +5888,20 @@ export interface ListGenericobjectRequest {
   token?: string;
 }
 export const ListGenericobjectRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-  "classId": S.optional(S.String.pipe(T.Query())),
-  "token": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"walletobjects/v1/genericObject","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "ListGenericobjectRequest" }) as any as S.Schema<ListGenericobjectRequest>;
+  S.Struct({
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+    classId: S.optional(S.String.pipe(T.Query())),
+    token: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "walletobjects/v1/genericObject",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListGenericobjectRequest",
+}) as any as S.Schema<ListGenericobjectRequest>;
 
 /** List response which contains the list of all generic objects for a given issuer ID. */
 export interface GenericObjectListResponse {
@@ -4714,11 +5911,13 @@ export interface GenericObjectListResponse {
   resources?: GenericObjectList;
 }
 export const GenericObjectListResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pagination": S.optional(Pagination),
-  "resources": S.optional(GenericObjectList),
-}),
-).annotate({ identifier: "GenericObjectListResponse" }) as any as S.Schema<GenericObjectListResponse>;
+  S.Struct({
+    pagination: S.optional(Pagination),
+    resources: S.optional(GenericObjectList),
+  }),
+).annotate({
+  identifier: "GenericObjectListResponse",
+}) as any as S.Schema<GenericObjectListResponse>;
 
 export interface ListGiftcardclassRequest {
   /** Identifies the max number of results returned by a list. All results are returned if `maxResults` isn't defined. */
@@ -4729,12 +5928,20 @@ export interface ListGiftcardclassRequest {
   token?: string;
 }
 export const ListGiftcardclassRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-  "issuerId": S.optional(S.String.pipe(T.Query())),
-  "token": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"walletobjects/v1/giftCardClass","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "ListGiftcardclassRequest" }) as any as S.Schema<ListGiftcardclassRequest>;
+  S.Struct({
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+    issuerId: S.optional(S.String.pipe(T.Query())),
+    token: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "walletobjects/v1/giftCardClass",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListGiftcardclassRequest",
+}) as any as S.Schema<ListGiftcardclassRequest>;
 
 export interface GiftCardClassListResponse {
   /** Pagination of the response. */
@@ -4743,11 +5950,13 @@ export interface GiftCardClassListResponse {
   resources?: GiftCardClassList;
 }
 export const GiftCardClassListResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pagination": S.optional(Pagination),
-  "resources": S.optional(GiftCardClassList),
-}),
-).annotate({ identifier: "GiftCardClassListResponse" }) as any as S.Schema<GiftCardClassListResponse>;
+  S.Struct({
+    pagination: S.optional(Pagination),
+    resources: S.optional(GiftCardClassList),
+  }),
+).annotate({
+  identifier: "GiftCardClassListResponse",
+}) as any as S.Schema<GiftCardClassListResponse>;
 
 export interface ListGiftcardobjectRequest {
   /** The ID of the class whose objects will be listed. */
@@ -4758,12 +5967,20 @@ export interface ListGiftcardobjectRequest {
   maxResults?: number;
 }
 export const ListGiftcardobjectRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "classId": S.optional(S.String.pipe(T.Query())),
-  "token": S.optional(S.String.pipe(T.Query())),
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"walletobjects/v1/giftCardObject","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "ListGiftcardobjectRequest" }) as any as S.Schema<ListGiftcardobjectRequest>;
+  S.Struct({
+    classId: S.optional(S.String.pipe(T.Query())),
+    token: S.optional(S.String.pipe(T.Query())),
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "walletobjects/v1/giftCardObject",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListGiftcardobjectRequest",
+}) as any as S.Schema<ListGiftcardobjectRequest>;
 
 export interface GiftCardObjectListResponse {
   /** Pagination of the response. */
@@ -4772,29 +5989,43 @@ export interface GiftCardObjectListResponse {
   resources?: GiftCardObjectList;
 }
 export const GiftCardObjectListResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pagination": S.optional(Pagination),
-  "resources": S.optional(GiftCardObjectList),
-}),
-).annotate({ identifier: "GiftCardObjectListResponse" }) as any as S.Schema<GiftCardObjectListResponse>;
+  S.Struct({
+    pagination: S.optional(Pagination),
+    resources: S.optional(GiftCardObjectList),
+  }),
+).annotate({
+  identifier: "GiftCardObjectListResponse",
+}) as any as S.Schema<GiftCardObjectListResponse>;
 
 export interface ListIssuerRequest {}
 export const ListIssuerRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}).pipe(T.Http({"method":"GET","uri":"walletobjects/v1/issuer","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "ListIssuerRequest" }) as any as S.Schema<ListIssuerRequest>;
+  S.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      uri: "walletobjects/v1/issuer",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListIssuerRequest",
+}) as any as S.Schema<ListIssuerRequest>;
 
 export type IssuerList = ReadonlyArray<Issuer>;
-export const IssuerList = /*@__PURE__*/ S.Array(Issuer) as any as S.Schema<IssuerList>;
+export const IssuerList = /*@__PURE__*/ S.Array(
+  Issuer,
+) as any as S.Schema<IssuerList>;
 
 export interface IssuerListResponse {
   /** Resources corresponding to the list request. */
   resources?: IssuerList;
 }
 export const IssuerListResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resources": S.optional(IssuerList),
-}),
-).annotate({ identifier: "IssuerListResponse" }) as any as S.Schema<IssuerListResponse>;
+  S.Struct({
+    resources: S.optional(IssuerList),
+  }),
+).annotate({
+  identifier: "IssuerListResponse",
+}) as any as S.Schema<IssuerListResponse>;
 
 export interface ListLoyaltyclassRequest {
   /** The ID of the issuer authorized to list classes. */
@@ -4805,12 +6036,20 @@ export interface ListLoyaltyclassRequest {
   maxResults?: number;
 }
 export const ListLoyaltyclassRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "issuerId": S.optional(S.String.pipe(T.Query())),
-  "token": S.optional(S.String.pipe(T.Query())),
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"walletobjects/v1/loyaltyClass","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "ListLoyaltyclassRequest" }) as any as S.Schema<ListLoyaltyclassRequest>;
+  S.Struct({
+    issuerId: S.optional(S.String.pipe(T.Query())),
+    token: S.optional(S.String.pipe(T.Query())),
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "walletobjects/v1/loyaltyClass",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListLoyaltyclassRequest",
+}) as any as S.Schema<ListLoyaltyclassRequest>;
 
 export interface LoyaltyClassListResponse {
   /** Pagination of the response. */
@@ -4819,11 +6058,13 @@ export interface LoyaltyClassListResponse {
   resources?: LoyaltyClassList;
 }
 export const LoyaltyClassListResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pagination": S.optional(Pagination),
-  "resources": S.optional(LoyaltyClassList),
-}),
-).annotate({ identifier: "LoyaltyClassListResponse" }) as any as S.Schema<LoyaltyClassListResponse>;
+  S.Struct({
+    pagination: S.optional(Pagination),
+    resources: S.optional(LoyaltyClassList),
+  }),
+).annotate({
+  identifier: "LoyaltyClassListResponse",
+}) as any as S.Schema<LoyaltyClassListResponse>;
 
 export interface ListLoyaltyobjectRequest {
   /** The ID of the class whose objects will be listed. */
@@ -4834,12 +6075,20 @@ export interface ListLoyaltyobjectRequest {
   maxResults?: number;
 }
 export const ListLoyaltyobjectRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "classId": S.optional(S.String.pipe(T.Query())),
-  "token": S.optional(S.String.pipe(T.Query())),
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"walletobjects/v1/loyaltyObject","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "ListLoyaltyobjectRequest" }) as any as S.Schema<ListLoyaltyobjectRequest>;
+  S.Struct({
+    classId: S.optional(S.String.pipe(T.Query())),
+    token: S.optional(S.String.pipe(T.Query())),
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "walletobjects/v1/loyaltyObject",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListLoyaltyobjectRequest",
+}) as any as S.Schema<ListLoyaltyobjectRequest>;
 
 export interface LoyaltyObjectListResponse {
   /** Pagination of the response. */
@@ -4848,11 +6097,13 @@ export interface LoyaltyObjectListResponse {
   resources?: LoyaltyObjectList;
 }
 export const LoyaltyObjectListResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pagination": S.optional(Pagination),
-  "resources": S.optional(LoyaltyObjectList),
-}),
-).annotate({ identifier: "LoyaltyObjectListResponse" }) as any as S.Schema<LoyaltyObjectListResponse>;
+  S.Struct({
+    pagination: S.optional(Pagination),
+    resources: S.optional(LoyaltyObjectList),
+  }),
+).annotate({
+  identifier: "LoyaltyObjectListResponse",
+}) as any as S.Schema<LoyaltyObjectListResponse>;
 
 export interface ListOfferclassRequest {
   /** The ID of the issuer authorized to list classes. */
@@ -4863,12 +6114,20 @@ export interface ListOfferclassRequest {
   maxResults?: number;
 }
 export const ListOfferclassRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "issuerId": S.optional(S.String.pipe(T.Query())),
-  "token": S.optional(S.String.pipe(T.Query())),
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"walletobjects/v1/offerClass","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "ListOfferclassRequest" }) as any as S.Schema<ListOfferclassRequest>;
+  S.Struct({
+    issuerId: S.optional(S.String.pipe(T.Query())),
+    token: S.optional(S.String.pipe(T.Query())),
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "walletobjects/v1/offerClass",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListOfferclassRequest",
+}) as any as S.Schema<ListOfferclassRequest>;
 
 export interface OfferClassListResponse {
   /** Pagination of the response. */
@@ -4877,11 +6136,13 @@ export interface OfferClassListResponse {
   resources?: OfferClassList;
 }
 export const OfferClassListResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pagination": S.optional(Pagination),
-  "resources": S.optional(OfferClassList),
-}),
-).annotate({ identifier: "OfferClassListResponse" }) as any as S.Schema<OfferClassListResponse>;
+  S.Struct({
+    pagination: S.optional(Pagination),
+    resources: S.optional(OfferClassList),
+  }),
+).annotate({
+  identifier: "OfferClassListResponse",
+}) as any as S.Schema<OfferClassListResponse>;
 
 export interface ListOfferobjectRequest {
   /** Identifies the max number of results returned by a list. All results are returned if `maxResults` isn't defined. */
@@ -4892,12 +6153,20 @@ export interface ListOfferobjectRequest {
   token?: string;
 }
 export const ListOfferobjectRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-  "classId": S.optional(S.String.pipe(T.Query())),
-  "token": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"walletobjects/v1/offerObject","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "ListOfferobjectRequest" }) as any as S.Schema<ListOfferobjectRequest>;
+  S.Struct({
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+    classId: S.optional(S.String.pipe(T.Query())),
+    token: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "walletobjects/v1/offerObject",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListOfferobjectRequest",
+}) as any as S.Schema<ListOfferobjectRequest>;
 
 export interface OfferObjectListResponse {
   /** Resources corresponding to the list request. */
@@ -4906,11 +6175,13 @@ export interface OfferObjectListResponse {
   pagination?: Pagination;
 }
 export const OfferObjectListResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resources": S.optional(OfferObjectList),
-  "pagination": S.optional(Pagination),
-}),
-).annotate({ identifier: "OfferObjectListResponse" }) as any as S.Schema<OfferObjectListResponse>;
+  S.Struct({
+    resources: S.optional(OfferObjectList),
+    pagination: S.optional(Pagination),
+  }),
+).annotate({
+  identifier: "OfferObjectListResponse",
+}) as any as S.Schema<OfferObjectListResponse>;
 
 export interface ListTransitclassRequest {
   /** The ID of the issuer authorized to list classes. */
@@ -4921,12 +6192,20 @@ export interface ListTransitclassRequest {
   maxResults?: number;
 }
 export const ListTransitclassRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "issuerId": S.optional(S.String.pipe(T.Query())),
-  "token": S.optional(S.String.pipe(T.Query())),
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"walletobjects/v1/transitClass","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "ListTransitclassRequest" }) as any as S.Schema<ListTransitclassRequest>;
+  S.Struct({
+    issuerId: S.optional(S.String.pipe(T.Query())),
+    token: S.optional(S.String.pipe(T.Query())),
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "walletobjects/v1/transitClass",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListTransitclassRequest",
+}) as any as S.Schema<ListTransitclassRequest>;
 
 export interface TransitClassListResponse {
   /** Pagination of the response. */
@@ -4935,11 +6214,13 @@ export interface TransitClassListResponse {
   resources?: TransitClassList;
 }
 export const TransitClassListResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pagination": S.optional(Pagination),
-  "resources": S.optional(TransitClassList),
-}),
-).annotate({ identifier: "TransitClassListResponse" }) as any as S.Schema<TransitClassListResponse>;
+  S.Struct({
+    pagination: S.optional(Pagination),
+    resources: S.optional(TransitClassList),
+  }),
+).annotate({
+  identifier: "TransitClassListResponse",
+}) as any as S.Schema<TransitClassListResponse>;
 
 export interface ListTransitobjectRequest {
   /** Identifies the max number of results returned by a list. All results are returned if `maxResults` isn't defined. */
@@ -4950,12 +6231,20 @@ export interface ListTransitobjectRequest {
   token?: string;
 }
 export const ListTransitobjectRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-  "classId": S.optional(S.String.pipe(T.Query())),
-  "token": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"walletobjects/v1/transitObject","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "ListTransitobjectRequest" }) as any as S.Schema<ListTransitobjectRequest>;
+  S.Struct({
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+    classId: S.optional(S.String.pipe(T.Query())),
+    token: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "walletobjects/v1/transitObject",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListTransitobjectRequest",
+}) as any as S.Schema<ListTransitobjectRequest>;
 
 export interface TransitObjectListResponse {
   /** Resources corresponding to the list request. */
@@ -4964,11 +6253,13 @@ export interface TransitObjectListResponse {
   pagination?: Pagination;
 }
 export const TransitObjectListResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resources": S.optional(TransitObjectList),
-  "pagination": S.optional(Pagination),
-}),
-).annotate({ identifier: "TransitObjectListResponse" }) as any as S.Schema<TransitObjectListResponse>;
+  S.Struct({
+    resources: S.optional(TransitObjectList),
+    pagination: S.optional(Pagination),
+  }),
+).annotate({
+  identifier: "TransitObjectListResponse",
+}) as any as S.Schema<TransitObjectListResponse>;
 
 export interface ModifyLinkedOfferObjects {
   /** The linked offer object ids to add to the object. */
@@ -4977,21 +6268,25 @@ export interface ModifyLinkedOfferObjects {
   removeLinkedOfferObjectIds?: StringList;
 }
 export const ModifyLinkedOfferObjects = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "addLinkedOfferObjectIds": S.optional(StringList),
-  "removeLinkedOfferObjectIds": S.optional(StringList),
-}),
-).annotate({ identifier: "ModifyLinkedOfferObjects" }) as any as S.Schema<ModifyLinkedOfferObjects>;
+  S.Struct({
+    addLinkedOfferObjectIds: S.optional(StringList),
+    removeLinkedOfferObjectIds: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ModifyLinkedOfferObjects",
+}) as any as S.Schema<ModifyLinkedOfferObjects>;
 
 export interface ModifyLinkedOfferObjectsRequest {
   /** The linked offer object ids to add or remove from the object. */
   linkedOfferObjectIds?: ModifyLinkedOfferObjects;
 }
 export const ModifyLinkedOfferObjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "linkedOfferObjectIds": S.optional(ModifyLinkedOfferObjects),
-}),
-).annotate({ identifier: "ModifyLinkedOfferObjectsRequest" }) as any as S.Schema<ModifyLinkedOfferObjectsRequest>;
+  S.Struct({
+    linkedOfferObjectIds: S.optional(ModifyLinkedOfferObjects),
+  }),
+).annotate({
+  identifier: "ModifyLinkedOfferObjectsRequest",
+}) as any as S.Schema<ModifyLinkedOfferObjectsRequest>;
 
 export interface ModifylinkedofferobjectsEventticketobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
@@ -4999,12 +6294,21 @@ export interface ModifylinkedofferobjectsEventticketobjectRequest {
   /** Request body */
   body?: ModifyLinkedOfferObjectsRequest;
 }
-export const ModifylinkedofferobjectsEventticketobjectRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-  "body": S.optional(ModifyLinkedOfferObjectsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"walletobjects/v1/eventTicketObject/{resourceId}/modifyLinkedOfferObjects","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "ModifylinkedofferobjectsEventticketobjectRequest" }) as any as S.Schema<ModifylinkedofferobjectsEventticketobjectRequest>;
+export const ModifylinkedofferobjectsEventticketobjectRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resourceId: S.String.pipe(T.Label()),
+      body: S.optional(ModifyLinkedOfferObjectsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "walletobjects/v1/eventTicketObject/{resourceId}/modifyLinkedOfferObjects",
+        baseUrl: "https://walletobjects.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ModifylinkedofferobjectsEventticketobjectRequest",
+  }) as any as S.Schema<ModifylinkedofferobjectsEventticketobjectRequest>;
 
 export interface ModifylinkedofferobjectsLoyaltyobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
@@ -5012,12 +6316,21 @@ export interface ModifylinkedofferobjectsLoyaltyobjectRequest {
   /** Request body */
   body?: ModifyLinkedOfferObjectsRequest;
 }
-export const ModifylinkedofferobjectsLoyaltyobjectRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-  "body": S.optional(ModifyLinkedOfferObjectsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"walletobjects/v1/loyaltyObject/{resourceId}/modifyLinkedOfferObjects","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "ModifylinkedofferobjectsLoyaltyobjectRequest" }) as any as S.Schema<ModifylinkedofferobjectsLoyaltyobjectRequest>;
+export const ModifylinkedofferobjectsLoyaltyobjectRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resourceId: S.String.pipe(T.Label()),
+      body: S.optional(ModifyLinkedOfferObjectsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "walletobjects/v1/loyaltyObject/{resourceId}/modifyLinkedOfferObjects",
+        baseUrl: "https://walletobjects.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ModifylinkedofferobjectsLoyaltyobjectRequest",
+  }) as any as S.Schema<ModifylinkedofferobjectsLoyaltyobjectRequest>;
 
 export interface PatchEventticketclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
@@ -5026,11 +6339,19 @@ export interface PatchEventticketclassRequest {
   body?: EventTicketClass;
 }
 export const PatchEventticketclassRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-  "body": S.optional(EventTicketClass.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"walletobjects/v1/eventTicketClass/{resourceId}","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "PatchEventticketclassRequest" }) as any as S.Schema<PatchEventticketclassRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    body: S.optional(EventTicketClass.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "walletobjects/v1/eventTicketClass/{resourceId}",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchEventticketclassRequest",
+}) as any as S.Schema<PatchEventticketclassRequest>;
 
 export interface PatchEventticketobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
@@ -5039,11 +6360,19 @@ export interface PatchEventticketobjectRequest {
   body?: EventTicketObject;
 }
 export const PatchEventticketobjectRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-  "body": S.optional(EventTicketObject.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"walletobjects/v1/eventTicketObject/{resourceId}","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "PatchEventticketobjectRequest" }) as any as S.Schema<PatchEventticketobjectRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    body: S.optional(EventTicketObject.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "walletobjects/v1/eventTicketObject/{resourceId}",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchEventticketobjectRequest",
+}) as any as S.Schema<PatchEventticketobjectRequest>;
 
 export interface PatchFlightclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
@@ -5052,11 +6381,19 @@ export interface PatchFlightclassRequest {
   body?: FlightClass;
 }
 export const PatchFlightclassRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-  "body": S.optional(FlightClass.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"walletobjects/v1/flightClass/{resourceId}","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "PatchFlightclassRequest" }) as any as S.Schema<PatchFlightclassRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    body: S.optional(FlightClass.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "walletobjects/v1/flightClass/{resourceId}",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchFlightclassRequest",
+}) as any as S.Schema<PatchFlightclassRequest>;
 
 export interface PatchFlightobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
@@ -5065,11 +6402,19 @@ export interface PatchFlightobjectRequest {
   body?: FlightObject;
 }
 export const PatchFlightobjectRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-  "body": S.optional(FlightObject.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"walletobjects/v1/flightObject/{resourceId}","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "PatchFlightobjectRequest" }) as any as S.Schema<PatchFlightobjectRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    body: S.optional(FlightObject.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "walletobjects/v1/flightObject/{resourceId}",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchFlightobjectRequest",
+}) as any as S.Schema<PatchFlightobjectRequest>;
 
 export interface PatchGenericclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value needs to follow the format `issuerID.identifier` where `issuerID` is issued by Google and `identifier` is chosen by you. The unique identifier can only include alphanumeric characters, `.`, `_`, or `-`. */
@@ -5078,11 +6423,19 @@ export interface PatchGenericclassRequest {
   body?: GenericClass;
 }
 export const PatchGenericclassRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-  "body": S.optional(GenericClass.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"walletobjects/v1/genericClass/{resourceId}","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "PatchGenericclassRequest" }) as any as S.Schema<PatchGenericclassRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    body: S.optional(GenericClass.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "walletobjects/v1/genericClass/{resourceId}",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchGenericclassRequest",
+}) as any as S.Schema<PatchGenericclassRequest>;
 
 export interface PatchGenericobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value needs to follow the format `issuerID.identifier` where `issuerID` is issued by Google and `identifier` is chosen by you. The unique identifier can only include alphanumeric characters, `.`, `_`, or `-`. */
@@ -5091,11 +6444,19 @@ export interface PatchGenericobjectRequest {
   body?: GenericObject;
 }
 export const PatchGenericobjectRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-  "body": S.optional(GenericObject.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"walletobjects/v1/genericObject/{resourceId}","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "PatchGenericobjectRequest" }) as any as S.Schema<PatchGenericobjectRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    body: S.optional(GenericObject.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "walletobjects/v1/genericObject/{resourceId}",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchGenericobjectRequest",
+}) as any as S.Schema<PatchGenericobjectRequest>;
 
 export interface PatchGiftcardclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
@@ -5104,11 +6465,19 @@ export interface PatchGiftcardclassRequest {
   body?: GiftCardClass;
 }
 export const PatchGiftcardclassRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-  "body": S.optional(GiftCardClass.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"walletobjects/v1/giftCardClass/{resourceId}","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "PatchGiftcardclassRequest" }) as any as S.Schema<PatchGiftcardclassRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    body: S.optional(GiftCardClass.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "walletobjects/v1/giftCardClass/{resourceId}",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchGiftcardclassRequest",
+}) as any as S.Schema<PatchGiftcardclassRequest>;
 
 export interface PatchGiftcardobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
@@ -5117,11 +6486,19 @@ export interface PatchGiftcardobjectRequest {
   body?: GiftCardObject;
 }
 export const PatchGiftcardobjectRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-  "body": S.optional(GiftCardObject.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"walletobjects/v1/giftCardObject/{resourceId}","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "PatchGiftcardobjectRequest" }) as any as S.Schema<PatchGiftcardobjectRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    body: S.optional(GiftCardObject.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "walletobjects/v1/giftCardObject/{resourceId}",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchGiftcardobjectRequest",
+}) as any as S.Schema<PatchGiftcardobjectRequest>;
 
 export interface PatchIssuerRequest {
   /** The unique identifier for an issuer. */
@@ -5130,11 +6507,19 @@ export interface PatchIssuerRequest {
   body?: Issuer;
 }
 export const PatchIssuerRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-  "body": S.optional(Issuer.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"walletobjects/v1/issuer/{resourceId}","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "PatchIssuerRequest" }) as any as S.Schema<PatchIssuerRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    body: S.optional(Issuer.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "walletobjects/v1/issuer/{resourceId}",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchIssuerRequest",
+}) as any as S.Schema<PatchIssuerRequest>;
 
 export interface PatchLoyaltyclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
@@ -5143,11 +6528,19 @@ export interface PatchLoyaltyclassRequest {
   body?: LoyaltyClass;
 }
 export const PatchLoyaltyclassRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-  "body": S.optional(LoyaltyClass.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"walletobjects/v1/loyaltyClass/{resourceId}","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "PatchLoyaltyclassRequest" }) as any as S.Schema<PatchLoyaltyclassRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    body: S.optional(LoyaltyClass.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "walletobjects/v1/loyaltyClass/{resourceId}",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchLoyaltyclassRequest",
+}) as any as S.Schema<PatchLoyaltyclassRequest>;
 
 export interface PatchLoyaltyobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
@@ -5156,11 +6549,19 @@ export interface PatchLoyaltyobjectRequest {
   body?: LoyaltyObject;
 }
 export const PatchLoyaltyobjectRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-  "body": S.optional(LoyaltyObject.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"walletobjects/v1/loyaltyObject/{resourceId}","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "PatchLoyaltyobjectRequest" }) as any as S.Schema<PatchLoyaltyobjectRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    body: S.optional(LoyaltyObject.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "walletobjects/v1/loyaltyObject/{resourceId}",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchLoyaltyobjectRequest",
+}) as any as S.Schema<PatchLoyaltyobjectRequest>;
 
 export interface PatchOfferclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
@@ -5169,11 +6570,19 @@ export interface PatchOfferclassRequest {
   body?: OfferClass;
 }
 export const PatchOfferclassRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-  "body": S.optional(OfferClass.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"walletobjects/v1/offerClass/{resourceId}","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "PatchOfferclassRequest" }) as any as S.Schema<PatchOfferclassRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    body: S.optional(OfferClass.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "walletobjects/v1/offerClass/{resourceId}",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchOfferclassRequest",
+}) as any as S.Schema<PatchOfferclassRequest>;
 
 export interface PatchOfferobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
@@ -5182,11 +6591,19 @@ export interface PatchOfferobjectRequest {
   body?: OfferObject;
 }
 export const PatchOfferobjectRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-  "body": S.optional(OfferObject.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"walletobjects/v1/offerObject/{resourceId}","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "PatchOfferobjectRequest" }) as any as S.Schema<PatchOfferobjectRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    body: S.optional(OfferObject.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "walletobjects/v1/offerObject/{resourceId}",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchOfferobjectRequest",
+}) as any as S.Schema<PatchOfferobjectRequest>;
 
 export interface PatchTransitclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
@@ -5195,11 +6612,19 @@ export interface PatchTransitclassRequest {
   body?: TransitClass;
 }
 export const PatchTransitclassRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-  "body": S.optional(TransitClass.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"walletobjects/v1/transitClass/{resourceId}","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "PatchTransitclassRequest" }) as any as S.Schema<PatchTransitclassRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    body: S.optional(TransitClass.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "walletobjects/v1/transitClass/{resourceId}",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchTransitclassRequest",
+}) as any as S.Schema<PatchTransitclassRequest>;
 
 export interface PatchTransitobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
@@ -5208,11 +6633,19 @@ export interface PatchTransitobjectRequest {
   body?: TransitObject;
 }
 export const PatchTransitobjectRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-  "body": S.optional(TransitObject.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"walletobjects/v1/transitObject/{resourceId}","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "PatchTransitobjectRequest" }) as any as S.Schema<PatchTransitobjectRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    body: S.optional(TransitObject.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "walletobjects/v1/transitObject/{resourceId}",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchTransitobjectRequest",
+}) as any as S.Schema<PatchTransitobjectRequest>;
 
 /** Request to send a private pass update notice information to Google, so that devices can then fetch the notice prompting the user to update a pass. */
 export interface SetPassUpdateNoticeRequest {
@@ -5224,28 +6657,41 @@ export interface SetPassUpdateNoticeRequest {
   updatedPassJwtSignature?: string;
 }
 export const SetPassUpdateNoticeRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateUri": S.optional(S.String),
-  "externalPassId": S.optional(S.String),
-  "updatedPassJwtSignature": S.optional(S.String),
-}),
-).annotate({ identifier: "SetPassUpdateNoticeRequest" }) as any as S.Schema<SetPassUpdateNoticeRequest>;
+  S.Struct({
+    updateUri: S.optional(S.String),
+    externalPassId: S.optional(S.String),
+    updatedPassJwtSignature: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SetPassUpdateNoticeRequest",
+}) as any as S.Schema<SetPassUpdateNoticeRequest>;
 
 export interface SetPassUpdateNoticeWalletobjectsV1PrivateContentRequest {
   /** Request body */
   body?: SetPassUpdateNoticeRequest;
 }
-export const SetPassUpdateNoticeWalletobjectsV1PrivateContentRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(SetPassUpdateNoticeRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"walletobjects/v1/privateContent/setPassUpdateNotice","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "SetPassUpdateNoticeWalletobjectsV1PrivateContentRequest" }) as any as S.Schema<SetPassUpdateNoticeWalletobjectsV1PrivateContentRequest>;
+export const SetPassUpdateNoticeWalletobjectsV1PrivateContentRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      body: S.optional(SetPassUpdateNoticeRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "walletobjects/v1/privateContent/setPassUpdateNotice",
+        baseUrl: "https://walletobjects.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "SetPassUpdateNoticeWalletobjectsV1PrivateContentRequest",
+  }) as any as S.Schema<SetPassUpdateNoticeWalletobjectsV1PrivateContentRequest>;
 
 /** A response to a request to notify Google of an awaiting update to a private pass. */
 export interface SetPassUpdateNoticeResponse {}
 export const SetPassUpdateNoticeResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "SetPassUpdateNoticeResponse" }) as any as S.Schema<SetPassUpdateNoticeResponse>;
+  S.Struct({}),
+).annotate({
+  identifier: "SetPassUpdateNoticeResponse",
+}) as any as S.Schema<SetPassUpdateNoticeResponse>;
 
 export interface UpdateEventticketclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
@@ -5254,11 +6700,19 @@ export interface UpdateEventticketclassRequest {
   body?: EventTicketClass;
 }
 export const UpdateEventticketclassRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-  "body": S.optional(EventTicketClass.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"walletobjects/v1/eventTicketClass/{resourceId}","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "UpdateEventticketclassRequest" }) as any as S.Schema<UpdateEventticketclassRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    body: S.optional(EventTicketClass.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "walletobjects/v1/eventTicketClass/{resourceId}",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateEventticketclassRequest",
+}) as any as S.Schema<UpdateEventticketclassRequest>;
 
 export interface UpdateEventticketobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
@@ -5267,11 +6721,19 @@ export interface UpdateEventticketobjectRequest {
   body?: EventTicketObject;
 }
 export const UpdateEventticketobjectRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-  "body": S.optional(EventTicketObject.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"walletobjects/v1/eventTicketObject/{resourceId}","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "UpdateEventticketobjectRequest" }) as any as S.Schema<UpdateEventticketobjectRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    body: S.optional(EventTicketObject.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "walletobjects/v1/eventTicketObject/{resourceId}",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateEventticketobjectRequest",
+}) as any as S.Schema<UpdateEventticketobjectRequest>;
 
 export interface UpdateFlightclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
@@ -5280,11 +6742,19 @@ export interface UpdateFlightclassRequest {
   body?: FlightClass;
 }
 export const UpdateFlightclassRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-  "body": S.optional(FlightClass.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"walletobjects/v1/flightClass/{resourceId}","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "UpdateFlightclassRequest" }) as any as S.Schema<UpdateFlightclassRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    body: S.optional(FlightClass.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "walletobjects/v1/flightClass/{resourceId}",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateFlightclassRequest",
+}) as any as S.Schema<UpdateFlightclassRequest>;
 
 export interface UpdateFlightobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
@@ -5293,11 +6763,19 @@ export interface UpdateFlightobjectRequest {
   body?: FlightObject;
 }
 export const UpdateFlightobjectRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-  "body": S.optional(FlightObject.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"walletobjects/v1/flightObject/{resourceId}","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "UpdateFlightobjectRequest" }) as any as S.Schema<UpdateFlightobjectRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    body: S.optional(FlightObject.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "walletobjects/v1/flightObject/{resourceId}",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateFlightobjectRequest",
+}) as any as S.Schema<UpdateFlightobjectRequest>;
 
 export interface UpdateGenericclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value needs to follow the format `issuerID.identifier` where `issuerID` is issued by Google and `identifier` is chosen by you. The unique identifier can only include alphanumeric characters, `.`, `_`, or `-`. */
@@ -5306,11 +6784,19 @@ export interface UpdateGenericclassRequest {
   body?: GenericClass;
 }
 export const UpdateGenericclassRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-  "body": S.optional(GenericClass.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"walletobjects/v1/genericClass/{resourceId}","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "UpdateGenericclassRequest" }) as any as S.Schema<UpdateGenericclassRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    body: S.optional(GenericClass.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "walletobjects/v1/genericClass/{resourceId}",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateGenericclassRequest",
+}) as any as S.Schema<UpdateGenericclassRequest>;
 
 export interface UpdateGenericobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value needs to follow the format `issuerID.identifier` where `issuerID` is issued by Google and `identifier` is chosen by you. The unique identifier can only include alphanumeric characters, `.`, `_`, or `-`. */
@@ -5319,11 +6805,19 @@ export interface UpdateGenericobjectRequest {
   body?: GenericObject;
 }
 export const UpdateGenericobjectRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-  "body": S.optional(GenericObject.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"walletobjects/v1/genericObject/{resourceId}","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "UpdateGenericobjectRequest" }) as any as S.Schema<UpdateGenericobjectRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    body: S.optional(GenericObject.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "walletobjects/v1/genericObject/{resourceId}",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateGenericobjectRequest",
+}) as any as S.Schema<UpdateGenericobjectRequest>;
 
 export interface UpdateGiftcardclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
@@ -5332,11 +6826,19 @@ export interface UpdateGiftcardclassRequest {
   body?: GiftCardClass;
 }
 export const UpdateGiftcardclassRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-  "body": S.optional(GiftCardClass.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"walletobjects/v1/giftCardClass/{resourceId}","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "UpdateGiftcardclassRequest" }) as any as S.Schema<UpdateGiftcardclassRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    body: S.optional(GiftCardClass.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "walletobjects/v1/giftCardClass/{resourceId}",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateGiftcardclassRequest",
+}) as any as S.Schema<UpdateGiftcardclassRequest>;
 
 export interface UpdateGiftcardobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
@@ -5345,11 +6847,19 @@ export interface UpdateGiftcardobjectRequest {
   body?: GiftCardObject;
 }
 export const UpdateGiftcardobjectRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-  "body": S.optional(GiftCardObject.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"walletobjects/v1/giftCardObject/{resourceId}","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "UpdateGiftcardobjectRequest" }) as any as S.Schema<UpdateGiftcardobjectRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    body: S.optional(GiftCardObject.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "walletobjects/v1/giftCardObject/{resourceId}",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateGiftcardobjectRequest",
+}) as any as S.Schema<UpdateGiftcardobjectRequest>;
 
 export interface UpdateIssuerRequest {
   /** The unique identifier for an issuer. */
@@ -5358,11 +6868,19 @@ export interface UpdateIssuerRequest {
   body?: Issuer;
 }
 export const UpdateIssuerRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-  "body": S.optional(Issuer.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"walletobjects/v1/issuer/{resourceId}","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "UpdateIssuerRequest" }) as any as S.Schema<UpdateIssuerRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    body: S.optional(Issuer.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "walletobjects/v1/issuer/{resourceId}",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateIssuerRequest",
+}) as any as S.Schema<UpdateIssuerRequest>;
 
 export interface UpdateLoyaltyclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
@@ -5371,11 +6889,19 @@ export interface UpdateLoyaltyclassRequest {
   body?: LoyaltyClass;
 }
 export const UpdateLoyaltyclassRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-  "body": S.optional(LoyaltyClass.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"walletobjects/v1/loyaltyClass/{resourceId}","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "UpdateLoyaltyclassRequest" }) as any as S.Schema<UpdateLoyaltyclassRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    body: S.optional(LoyaltyClass.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "walletobjects/v1/loyaltyClass/{resourceId}",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateLoyaltyclassRequest",
+}) as any as S.Schema<UpdateLoyaltyclassRequest>;
 
 export interface UpdateLoyaltyobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
@@ -5384,11 +6910,19 @@ export interface UpdateLoyaltyobjectRequest {
   body?: LoyaltyObject;
 }
 export const UpdateLoyaltyobjectRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-  "body": S.optional(LoyaltyObject.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"walletobjects/v1/loyaltyObject/{resourceId}","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "UpdateLoyaltyobjectRequest" }) as any as S.Schema<UpdateLoyaltyobjectRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    body: S.optional(LoyaltyObject.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "walletobjects/v1/loyaltyObject/{resourceId}",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateLoyaltyobjectRequest",
+}) as any as S.Schema<UpdateLoyaltyobjectRequest>;
 
 export interface UpdateOfferclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
@@ -5397,11 +6931,19 @@ export interface UpdateOfferclassRequest {
   body?: OfferClass;
 }
 export const UpdateOfferclassRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-  "body": S.optional(OfferClass.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"walletobjects/v1/offerClass/{resourceId}","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "UpdateOfferclassRequest" }) as any as S.Schema<UpdateOfferclassRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    body: S.optional(OfferClass.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "walletobjects/v1/offerClass/{resourceId}",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateOfferclassRequest",
+}) as any as S.Schema<UpdateOfferclassRequest>;
 
 export interface UpdateOfferobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
@@ -5410,11 +6952,19 @@ export interface UpdateOfferobjectRequest {
   body?: OfferObject;
 }
 export const UpdateOfferobjectRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-  "body": S.optional(OfferObject.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"walletobjects/v1/offerObject/{resourceId}","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "UpdateOfferobjectRequest" }) as any as S.Schema<UpdateOfferobjectRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    body: S.optional(OfferObject.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "walletobjects/v1/offerObject/{resourceId}",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateOfferobjectRequest",
+}) as any as S.Schema<UpdateOfferobjectRequest>;
 
 export interface UpdatePermissionsRequest {
   /** The unique identifier for an issuer. This ID must be unique across all issuers. */
@@ -5423,11 +6973,19 @@ export interface UpdatePermissionsRequest {
   body?: Permissions;
 }
 export const UpdatePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-  "body": S.optional(Permissions.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"walletobjects/v1/permissions/{resourceId}","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "UpdatePermissionsRequest" }) as any as S.Schema<UpdatePermissionsRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    body: S.optional(Permissions.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "walletobjects/v1/permissions/{resourceId}",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdatePermissionsRequest",
+}) as any as S.Schema<UpdatePermissionsRequest>;
 
 export interface UpdateTransitclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
@@ -5436,11 +6994,19 @@ export interface UpdateTransitclassRequest {
   body?: TransitClass;
 }
 export const UpdateTransitclassRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-  "body": S.optional(TransitClass.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"walletobjects/v1/transitClass/{resourceId}","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "UpdateTransitclassRequest" }) as any as S.Schema<UpdateTransitclassRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    body: S.optional(TransitClass.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "walletobjects/v1/transitClass/{resourceId}",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateTransitclassRequest",
+}) as any as S.Schema<UpdateTransitclassRequest>;
 
 export interface UpdateTransitobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
@@ -5449,13 +7015,26 @@ export interface UpdateTransitobjectRequest {
   body?: TransitObject;
 }
 export const UpdateTransitobjectRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-  "body": S.optional(TransitObject.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"walletobjects/v1/transitObject/{resourceId}","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "UpdateTransitobjectRequest" }) as any as S.Schema<UpdateTransitobjectRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    body: S.optional(TransitObject.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "walletobjects/v1/transitObject/{resourceId}",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateTransitobjectRequest",
+}) as any as S.Schema<UpdateTransitobjectRequest>;
 
-export type MediaRequestInfoNotificationTypeEnum = "START" | "PROGRESS" | "END" | "RESPONSE_SENT" | "ERROR";
+export type MediaRequestInfoNotificationTypeEnum =
+  | "START"
+  | "PROGRESS"
+  | "END"
+  | "RESPONSE_SENT"
+  | "ERROR";
 export const MediaRequestInfoNotificationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Extra information added to operations that support Scotty media requests. */
@@ -5482,19 +7061,21 @@ export interface MediaRequestInfo {
   physicalHeaders?: string;
 }
 export const MediaRequestInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "totalBytesIsEstimated": S.optional(S.Boolean),
-  "notificationType": S.optional(MediaRequestInfoNotificationTypeEnum),
-  "finalStatus": S.optional(S.Number),
-  "requestReceivedParamsServingInfo": S.optional(S.String),
-  "diffObjectVersion": S.optional(S.String),
-  "currentBytes": S.optional(S.String),
-  "requestId": S.optional(S.String),
-  "customData": S.optional(S.String),
-  "totalBytes": S.optional(S.String),
-  "physicalHeaders": S.optional(S.String),
-}),
-).annotate({ identifier: "MediaRequestInfo" }) as any as S.Schema<MediaRequestInfo>;
+  S.Struct({
+    totalBytesIsEstimated: S.optional(S.Boolean),
+    notificationType: S.optional(MediaRequestInfoNotificationTypeEnum),
+    finalStatus: S.optional(S.Number),
+    requestReceivedParamsServingInfo: S.optional(S.String),
+    diffObjectVersion: S.optional(S.String),
+    currentBytes: S.optional(S.String),
+    requestId: S.optional(S.String),
+    customData: S.optional(S.String),
+    totalBytes: S.optional(S.String),
+    physicalHeaders: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MediaRequestInfo",
+}) as any as S.Schema<MediaRequestInfo>;
 
 /** Request to upload rotating barcode values. */
 export interface TransitObjectUploadRotatingBarcodeValuesRequest {
@@ -5503,12 +7084,15 @@ export interface TransitObjectUploadRotatingBarcodeValuesRequest {
   /** Extra information about the uploaded media. */
   mediaRequestInfo?: MediaRequestInfo;
 }
-export const TransitObjectUploadRotatingBarcodeValuesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "blob": S.optional(Media),
-  "mediaRequestInfo": S.optional(MediaRequestInfo),
-}),
-).annotate({ identifier: "TransitObjectUploadRotatingBarcodeValuesRequest" }) as any as S.Schema<TransitObjectUploadRotatingBarcodeValuesRequest>;
+export const TransitObjectUploadRotatingBarcodeValuesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      blob: S.optional(Media),
+      mediaRequestInfo: S.optional(MediaRequestInfo),
+    }),
+  ).annotate({
+    identifier: "TransitObjectUploadRotatingBarcodeValuesRequest",
+  }) as any as S.Schema<TransitObjectUploadRotatingBarcodeValuesRequest>;
 
 export interface UploadMediaRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
@@ -5517,19 +7101,35 @@ export interface UploadMediaRequest {
   body?: TransitObjectUploadRotatingBarcodeValuesRequest;
 }
 export const UploadMediaRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceId": S.String.pipe(T.Label()),
-  "body": S.optional(TransitObjectUploadRotatingBarcodeValuesRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"walletobjects/v1/transitObject/{resourceId}/uploadRotatingBarcodeValues","baseUrl":"https://walletobjects.googleapis.com/"})),
-).annotate({ identifier: "UploadMediaRequest" }) as any as S.Schema<UploadMediaRequest>;
+  S.Struct({
+    resourceId: S.String.pipe(T.Label()),
+    body: S.optional(
+      TransitObjectUploadRotatingBarcodeValuesRequest.pipe(T.HttpBody()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "walletobjects/v1/transitObject/{resourceId}/uploadRotatingBarcodeValues",
+      baseUrl: "https://walletobjects.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UploadMediaRequest",
+}) as any as S.Schema<UploadMediaRequest>;
 
 /** Response for uploading rotating barcode values. */
 export interface TransitObjectUploadRotatingBarcodeValuesResponse {}
-export const TransitObjectUploadRotatingBarcodeValuesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "TransitObjectUploadRotatingBarcodeValuesResponse" }) as any as S.Schema<TransitObjectUploadRotatingBarcodeValuesResponse>;
+export const TransitObjectUploadRotatingBarcodeValuesResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "TransitObjectUploadRotatingBarcodeValuesResponse",
+  }) as any as S.Schema<TransitObjectUploadRotatingBarcodeValuesResponse>;
 
-export type AddmessageEventticketclassError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type AddmessageEventticketclassError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Adds a message to the event ticket class referenced by the given class ID. */
 export const addmessageEventticketclass: API.OperationMethod<
   AddmessageEventticketclassRequest,
@@ -5544,7 +7144,12 @@ export const addmessageEventticketclass: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AddmessageEventticketobjectError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type AddmessageEventticketobjectError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Adds a message to the event ticket object referenced by the given object ID. */
 export const addmessageEventticketobject: API.OperationMethod<
   AddmessageEventticketobjectRequest,
@@ -5559,7 +7164,12 @@ export const addmessageEventticketobject: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AddmessageFlightclassError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type AddmessageFlightclassError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Adds a message to the flight class referenced by the given class ID. */
 export const addmessageFlightclass: API.OperationMethod<
   AddmessageFlightclassRequest,
@@ -5574,7 +7184,12 @@ export const addmessageFlightclass: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AddmessageFlightobjectError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type AddmessageFlightobjectError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Adds a message to the flight object referenced by the given object ID. */
 export const addmessageFlightobject: API.OperationMethod<
   AddmessageFlightobjectRequest,
@@ -5589,7 +7204,12 @@ export const addmessageFlightobject: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AddmessageGenericclassError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type AddmessageGenericclassError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Adds a message to the generic class referenced by the given class ID. */
 export const addmessageGenericclass: API.OperationMethod<
   AddmessageGenericclassRequest,
@@ -5604,7 +7224,12 @@ export const addmessageGenericclass: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AddmessageGenericobjectError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type AddmessageGenericobjectError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Adds a message to the generic object referenced by the given object ID. */
 export const addmessageGenericobject: API.OperationMethod<
   AddmessageGenericobjectRequest,
@@ -5619,7 +7244,12 @@ export const addmessageGenericobject: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AddmessageGiftcardclassError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type AddmessageGiftcardclassError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Adds a message to the gift card class referenced by the given class ID. */
 export const addmessageGiftcardclass: API.OperationMethod<
   AddmessageGiftcardclassRequest,
@@ -5634,7 +7264,12 @@ export const addmessageGiftcardclass: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AddmessageGiftcardobjectError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type AddmessageGiftcardobjectError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Adds a message to the gift card object referenced by the given object ID. */
 export const addmessageGiftcardobject: API.OperationMethod<
   AddmessageGiftcardobjectRequest,
@@ -5649,7 +7284,12 @@ export const addmessageGiftcardobject: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AddmessageLoyaltyclassError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type AddmessageLoyaltyclassError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Adds a message to the loyalty class referenced by the given class ID. */
 export const addmessageLoyaltyclass: API.OperationMethod<
   AddmessageLoyaltyclassRequest,
@@ -5664,7 +7304,12 @@ export const addmessageLoyaltyclass: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AddmessageLoyaltyobjectError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type AddmessageLoyaltyobjectError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Adds a message to the loyalty object referenced by the given object ID. */
 export const addmessageLoyaltyobject: API.OperationMethod<
   AddmessageLoyaltyobjectRequest,
@@ -5679,7 +7324,12 @@ export const addmessageLoyaltyobject: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AddmessageOfferclassError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type AddmessageOfferclassError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Adds a message to the offer class referenced by the given class ID. */
 export const addmessageOfferclass: API.OperationMethod<
   AddmessageOfferclassRequest,
@@ -5694,7 +7344,12 @@ export const addmessageOfferclass: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AddmessageOfferobjectError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type AddmessageOfferobjectError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Adds a message to the offer object referenced by the given object ID. */
 export const addmessageOfferobject: API.OperationMethod<
   AddmessageOfferobjectRequest,
@@ -5709,7 +7364,12 @@ export const addmessageOfferobject: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AddmessageTransitclassError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type AddmessageTransitclassError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Adds a message to the transit class referenced by the given class ID. */
 export const addmessageTransitclass: API.OperationMethod<
   AddmessageTransitclassRequest,
@@ -5724,7 +7384,12 @@ export const addmessageTransitclass: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AddmessageTransitobjectError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type AddmessageTransitobjectError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Adds a message to the transit object referenced by the given object ID. */
 export const addmessageTransitobject: API.OperationMethod<
   AddmessageTransitobjectRequest,
@@ -5994,7 +7659,12 @@ export const getTransitobject: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertEventticketclassError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type InsertEventticketclassError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Inserts an event ticket class with the given ID and properties. */
 export const insertEventticketclass: API.OperationMethod<
   InsertEventticketclassRequest,
@@ -6009,7 +7679,12 @@ export const insertEventticketclass: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertEventticketobjectError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type InsertEventticketobjectError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Inserts an event ticket object with the given ID and properties. */
 export const insertEventticketobject: API.OperationMethod<
   InsertEventticketobjectRequest,
@@ -6024,7 +7699,12 @@ export const insertEventticketobject: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertFlightclassError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type InsertFlightclassError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Inserts an flight class with the given ID and properties. */
 export const insertFlightclass: API.OperationMethod<
   InsertFlightclassRequest,
@@ -6039,7 +7719,12 @@ export const insertFlightclass: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertFlightobjectError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type InsertFlightobjectError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Inserts an flight object with the given ID and properties. */
 export const insertFlightobject: API.OperationMethod<
   InsertFlightobjectRequest,
@@ -6054,7 +7739,12 @@ export const insertFlightobject: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertGenericclassError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type InsertGenericclassError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Inserts a generic class with the given ID and properties. */
 export const insertGenericclass: API.OperationMethod<
   InsertGenericclassRequest,
@@ -6069,7 +7759,12 @@ export const insertGenericclass: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertGenericobjectError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type InsertGenericobjectError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Inserts a generic object with the given ID and properties. */
 export const insertGenericobject: API.OperationMethod<
   InsertGenericobjectRequest,
@@ -6084,7 +7779,12 @@ export const insertGenericobject: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertGiftcardclassError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type InsertGiftcardclassError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Inserts an gift card class with the given ID and properties. */
 export const insertGiftcardclass: API.OperationMethod<
   InsertGiftcardclassRequest,
@@ -6099,7 +7799,12 @@ export const insertGiftcardclass: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertGiftcardobjectError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type InsertGiftcardobjectError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Inserts an gift card object with the given ID and properties. */
 export const insertGiftcardobject: API.OperationMethod<
   InsertGiftcardobjectRequest,
@@ -6114,7 +7819,12 @@ export const insertGiftcardobject: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertIssuerError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type InsertIssuerError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Inserts an issuer with the given ID and properties. */
 export const insertIssuer: API.OperationMethod<
   InsertIssuerRequest,
@@ -6129,7 +7839,12 @@ export const insertIssuer: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertJwtError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type InsertJwtError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Inserts the resources in the JWT. */
 export const insertJwt: API.OperationMethod<
   InsertJwtRequest,
@@ -6144,7 +7859,12 @@ export const insertJwt: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertLoyaltyclassError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type InsertLoyaltyclassError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Inserts an loyalty class with the given ID and properties. */
 export const insertLoyaltyclass: API.OperationMethod<
   InsertLoyaltyclassRequest,
@@ -6159,7 +7879,12 @@ export const insertLoyaltyclass: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertLoyaltyobjectError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type InsertLoyaltyobjectError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Inserts an loyalty object with the given ID and properties. */
 export const insertLoyaltyobject: API.OperationMethod<
   InsertLoyaltyobjectRequest,
@@ -6174,7 +7899,12 @@ export const insertLoyaltyobject: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertOfferclassError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type InsertOfferclassError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Inserts an offer class with the given ID and properties. */
 export const insertOfferclass: API.OperationMethod<
   InsertOfferclassRequest,
@@ -6189,7 +7919,12 @@ export const insertOfferclass: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertOfferobjectError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type InsertOfferobjectError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Inserts an offer object with the given ID and properties. */
 export const insertOfferobject: API.OperationMethod<
   InsertOfferobjectRequest,
@@ -6204,7 +7939,12 @@ export const insertOfferobject: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertSmarttapError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type InsertSmarttapError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Inserts the smart tap. */
 export const insertSmarttap: API.OperationMethod<
   InsertSmarttapRequest,
@@ -6219,7 +7959,12 @@ export const insertSmarttap: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertTransitclassError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type InsertTransitclassError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Inserts a transit class with the given ID and properties. */
 export const insertTransitclass: API.OperationMethod<
   InsertTransitclassRequest,
@@ -6234,7 +7979,12 @@ export const insertTransitclass: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertTransitobjectError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type InsertTransitobjectError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Inserts an transit object with the given ID and properties. */
 export const insertTransitobject: API.OperationMethod<
   InsertTransitobjectRequest,
@@ -6474,7 +8224,12 @@ export const listTransitobject: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ModifylinkedofferobjectsEventticketobjectError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ModifylinkedofferobjectsEventticketobjectError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deprecated: Use Auto Linked Passes instead. Modifies linked offer objects for the event ticket object with the given ID. */
 export const modifylinkedofferobjectsEventticketobject: API.OperationMethod<
   ModifylinkedofferobjectsEventticketobjectRequest,
@@ -6489,7 +8244,12 @@ export const modifylinkedofferobjectsEventticketobject: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ModifylinkedofferobjectsLoyaltyobjectError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ModifylinkedofferobjectsLoyaltyobjectError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deprecated: Use Auto Linked Passes instead. Modifies linked offer objects for the loyalty object with the given ID. */
 export const modifylinkedofferobjectsLoyaltyobject: API.OperationMethod<
   ModifylinkedofferobjectsLoyaltyobjectRequest,
@@ -6504,7 +8264,12 @@ export const modifylinkedofferobjectsLoyaltyobject: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchEventticketclassError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchEventticketclassError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the event ticket class referenced by the given class ID. This method supports patch semantics. */
 export const patchEventticketclass: API.OperationMethod<
   PatchEventticketclassRequest,
@@ -6519,7 +8284,12 @@ export const patchEventticketclass: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchEventticketobjectError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchEventticketobjectError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the event ticket object referenced by the given object ID. This method supports patch semantics. */
 export const patchEventticketobject: API.OperationMethod<
   PatchEventticketobjectRequest,
@@ -6534,7 +8304,12 @@ export const patchEventticketobject: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchFlightclassError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchFlightclassError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the flight class referenced by the given class ID. This method supports patch semantics. */
 export const patchFlightclass: API.OperationMethod<
   PatchFlightclassRequest,
@@ -6549,7 +8324,12 @@ export const patchFlightclass: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchFlightobjectError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchFlightobjectError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the flight object referenced by the given object ID. This method supports patch semantics. */
 export const patchFlightobject: API.OperationMethod<
   PatchFlightobjectRequest,
@@ -6564,7 +8344,12 @@ export const patchFlightobject: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchGenericclassError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchGenericclassError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the generic class referenced by the given class ID. This method supports patch semantics. */
 export const patchGenericclass: API.OperationMethod<
   PatchGenericclassRequest,
@@ -6579,7 +8364,12 @@ export const patchGenericclass: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchGenericobjectError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchGenericobjectError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the generic object referenced by the given object ID. This method supports patch semantics. */
 export const patchGenericobject: API.OperationMethod<
   PatchGenericobjectRequest,
@@ -6594,7 +8384,12 @@ export const patchGenericobject: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchGiftcardclassError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchGiftcardclassError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the gift card class referenced by the given class ID. This method supports patch semantics. */
 export const patchGiftcardclass: API.OperationMethod<
   PatchGiftcardclassRequest,
@@ -6609,7 +8404,12 @@ export const patchGiftcardclass: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchGiftcardobjectError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchGiftcardobjectError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the gift card object referenced by the given object ID. This method supports patch semantics. */
 export const patchGiftcardobject: API.OperationMethod<
   PatchGiftcardobjectRequest,
@@ -6624,7 +8424,12 @@ export const patchGiftcardobject: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchIssuerError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchIssuerError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the issuer referenced by the given issuer ID. This method supports patch semantics. */
 export const patchIssuer: API.OperationMethod<
   PatchIssuerRequest,
@@ -6639,7 +8444,12 @@ export const patchIssuer: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchLoyaltyclassError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchLoyaltyclassError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the loyalty class referenced by the given class ID. This method supports patch semantics. */
 export const patchLoyaltyclass: API.OperationMethod<
   PatchLoyaltyclassRequest,
@@ -6654,7 +8464,12 @@ export const patchLoyaltyclass: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchLoyaltyobjectError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchLoyaltyobjectError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the loyalty object referenced by the given object ID. This method supports patch semantics. */
 export const patchLoyaltyobject: API.OperationMethod<
   PatchLoyaltyobjectRequest,
@@ -6669,7 +8484,12 @@ export const patchLoyaltyobject: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchOfferclassError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchOfferclassError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the offer class referenced by the given class ID. This method supports patch semantics. */
 export const patchOfferclass: API.OperationMethod<
   PatchOfferclassRequest,
@@ -6684,7 +8504,12 @@ export const patchOfferclass: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchOfferobjectError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchOfferobjectError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the offer object referenced by the given object ID. This method supports patch semantics. */
 export const patchOfferobject: API.OperationMethod<
   PatchOfferobjectRequest,
@@ -6699,7 +8524,12 @@ export const patchOfferobject: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchTransitclassError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchTransitclassError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the transit class referenced by the given class ID. This method supports patch semantics. */
 export const patchTransitclass: API.OperationMethod<
   PatchTransitclassRequest,
@@ -6714,7 +8544,12 @@ export const patchTransitclass: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchTransitobjectError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchTransitobjectError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the transit object referenced by the given object ID. This method supports patch semantics. */
 export const patchTransitobject: API.OperationMethod<
   PatchTransitobjectRequest,
@@ -6729,7 +8564,12 @@ export const patchTransitobject: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetPassUpdateNoticeWalletobjectsV1PrivateContentError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetPassUpdateNoticeWalletobjectsV1PrivateContentError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Provide Google with information about awaiting private pass update. This will allow Google to provide the update notification to the device that currently holds this pass. */
 export const setPassUpdateNoticeWalletobjectsV1PrivateContent: API.OperationMethod<
   SetPassUpdateNoticeWalletobjectsV1PrivateContentRequest,
@@ -6744,7 +8584,12 @@ export const setPassUpdateNoticeWalletobjectsV1PrivateContent: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type UpdateEventticketclassError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateEventticketclassError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the event ticket class referenced by the given class ID. */
 export const updateEventticketclass: API.OperationMethod<
   UpdateEventticketclassRequest,
@@ -6759,7 +8604,12 @@ export const updateEventticketclass: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateEventticketobjectError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateEventticketobjectError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the event ticket object referenced by the given object ID. */
 export const updateEventticketobject: API.OperationMethod<
   UpdateEventticketobjectRequest,
@@ -6774,7 +8624,12 @@ export const updateEventticketobject: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateFlightclassError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateFlightclassError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the flight class referenced by the given class ID. */
 export const updateFlightclass: API.OperationMethod<
   UpdateFlightclassRequest,
@@ -6789,7 +8644,12 @@ export const updateFlightclass: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateFlightobjectError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateFlightobjectError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the flight object referenced by the given object ID. */
 export const updateFlightobject: API.OperationMethod<
   UpdateFlightobjectRequest,
@@ -6804,7 +8664,12 @@ export const updateFlightobject: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateGenericclassError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateGenericclassError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the Generic class referenced by the given class ID. */
 export const updateGenericclass: API.OperationMethod<
   UpdateGenericclassRequest,
@@ -6819,7 +8684,12 @@ export const updateGenericclass: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateGenericobjectError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateGenericobjectError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the generic object referenced by the given object ID. */
 export const updateGenericobject: API.OperationMethod<
   UpdateGenericobjectRequest,
@@ -6834,7 +8704,12 @@ export const updateGenericobject: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateGiftcardclassError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateGiftcardclassError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the gift card class referenced by the given class ID. */
 export const updateGiftcardclass: API.OperationMethod<
   UpdateGiftcardclassRequest,
@@ -6849,7 +8724,12 @@ export const updateGiftcardclass: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateGiftcardobjectError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateGiftcardobjectError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the gift card object referenced by the given object ID. */
 export const updateGiftcardobject: API.OperationMethod<
   UpdateGiftcardobjectRequest,
@@ -6864,7 +8744,12 @@ export const updateGiftcardobject: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateIssuerError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateIssuerError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the issuer referenced by the given issuer ID. */
 export const updateIssuer: API.OperationMethod<
   UpdateIssuerRequest,
@@ -6879,7 +8764,12 @@ export const updateIssuer: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateLoyaltyclassError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateLoyaltyclassError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the loyalty class referenced by the given class ID. */
 export const updateLoyaltyclass: API.OperationMethod<
   UpdateLoyaltyclassRequest,
@@ -6894,7 +8784,12 @@ export const updateLoyaltyclass: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateLoyaltyobjectError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateLoyaltyobjectError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the loyalty object referenced by the given object ID. */
 export const updateLoyaltyobject: API.OperationMethod<
   UpdateLoyaltyobjectRequest,
@@ -6909,7 +8804,12 @@ export const updateLoyaltyobject: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateOfferclassError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateOfferclassError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the offer class referenced by the given class ID. */
 export const updateOfferclass: API.OperationMethod<
   UpdateOfferclassRequest,
@@ -6924,7 +8824,12 @@ export const updateOfferclass: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateOfferobjectError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateOfferobjectError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the offer object referenced by the given object ID. */
 export const updateOfferobject: API.OperationMethod<
   UpdateOfferobjectRequest,
@@ -6939,7 +8844,12 @@ export const updateOfferobject: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdatePermissionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdatePermissionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the permissions for the given issuer. */
 export const updatePermissions: API.OperationMethod<
   UpdatePermissionsRequest,
@@ -6954,7 +8864,12 @@ export const updatePermissions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateTransitclassError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateTransitclassError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the transit class referenced by the given class ID. */
 export const updateTransitclass: API.OperationMethod<
   UpdateTransitclassRequest,
@@ -6969,7 +8884,12 @@ export const updateTransitclass: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateTransitobjectError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateTransitobjectError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the transit object referenced by the given object ID. */
 export const updateTransitobject: API.OperationMethod<
   UpdateTransitobjectRequest,
@@ -6984,7 +8904,12 @@ export const updateTransitobject: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UploadMediaError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UploadMediaError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Uploads rotating barcode values for the transit object referenced by the given object ID. Note the max upload size is specified in google3/production/config/cdd/apps-upload/customers/payments-consumer-passes/config.gcl and enforced by Scotty. */
 export const uploadMedia: API.OperationMethod<
   UploadMediaRequest,
@@ -6998,4 +8923,3 @@ export const uploadMedia: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

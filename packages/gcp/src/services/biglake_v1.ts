@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 /** Catalog is the container of databases. */
@@ -74,13 +74,13 @@ export interface Catalog {
   name?: string;
 }
 export const Catalog = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "expireTime": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "deleteTime": S.optional(S.String),
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    expireTime: S.optional(S.String),
+    createTime: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    deleteTime: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Catalog" }) as any as S.Schema<Catalog>;
 
 export interface CreateProjectsLocationsCatalogsRequest {
@@ -91,19 +91,31 @@ export interface CreateProjectsLocationsCatalogsRequest {
   /** Request body */
   body?: Catalog;
 }
-export const CreateProjectsLocationsCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "catalogId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Catalog.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/catalogs","baseUrl":"https://biglake.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsCatalogsRequest" }) as any as S.Schema<CreateProjectsLocationsCatalogsRequest>;
+export const CreateProjectsLocationsCatalogsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      catalogId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Catalog.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/catalogs",
+        baseUrl: "https://biglake.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateProjectsLocationsCatalogsRequest",
+}) as any as S.Schema<CreateProjectsLocationsCatalogsRequest>;
 
 export type DatabaseTypeEnum = "TYPE_UNSPECIFIED" | "HIVE";
 export const DatabaseTypeEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
 /** Options of a Hive database. */
 export interface HiveDatabaseOptions {
@@ -113,11 +125,13 @@ export interface HiveDatabaseOptions {
   parameters?: StringMap;
 }
 export const HiveDatabaseOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locationUri": S.optional(S.String),
-  "parameters": S.optional(StringMap),
-}),
-).annotate({ identifier: "HiveDatabaseOptions" }) as any as S.Schema<HiveDatabaseOptions>;
+  S.Struct({
+    locationUri: S.optional(S.String),
+    parameters: S.optional(StringMap),
+  }),
+).annotate({
+  identifier: "HiveDatabaseOptions",
+}) as any as S.Schema<HiveDatabaseOptions>;
 
 /** Database is the container of tables. */
 export interface Database {
@@ -137,15 +151,15 @@ export interface Database {
   hiveOptions?: HiveDatabaseOptions;
 }
 export const Database = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "deleteTime": S.optional(S.String),
-  "expireTime": S.optional(S.String),
-  "type": S.optional(DatabaseTypeEnum),
-  "hiveOptions": S.optional(HiveDatabaseOptions),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    createTime: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    deleteTime: S.optional(S.String),
+    expireTime: S.optional(S.String),
+    type: S.optional(DatabaseTypeEnum),
+    hiveOptions: S.optional(HiveDatabaseOptions),
+  }),
 ).annotate({ identifier: "Database" }) as any as S.Schema<Database>;
 
 export interface CreateProjectsLocationsCatalogsDatabasesRequest {
@@ -156,13 +170,22 @@ export interface CreateProjectsLocationsCatalogsDatabasesRequest {
   /** Request body */
   body?: Database;
 }
-export const CreateProjectsLocationsCatalogsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "databaseId": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(Database.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/databases","baseUrl":"https://biglake.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsCatalogsDatabasesRequest" }) as any as S.Schema<CreateProjectsLocationsCatalogsDatabasesRequest>;
+export const CreateProjectsLocationsCatalogsDatabasesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      databaseId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(Database.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/databases",
+        baseUrl: "https://biglake.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsCatalogsDatabasesRequest",
+  }) as any as S.Schema<CreateProjectsLocationsCatalogsDatabasesRequest>;
 
 /** Serializer and deserializer information. */
 export interface SerDeInfo {
@@ -170,9 +193,9 @@ export interface SerDeInfo {
   serializationLib?: string;
 }
 export const SerDeInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "serializationLib": S.optional(S.String),
-}),
+  S.Struct({
+    serializationLib: S.optional(S.String),
+  }),
 ).annotate({ identifier: "SerDeInfo" }) as any as S.Schema<SerDeInfo>;
 
 /** Stores physical storage information of the data. */
@@ -187,13 +210,15 @@ export interface StorageDescriptor {
   outputFormat?: string;
 }
 export const StorageDescriptor = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "serdeInfo": S.optional(SerDeInfo),
-  "locationUri": S.optional(S.String),
-  "inputFormat": S.optional(S.String),
-  "outputFormat": S.optional(S.String),
-}),
-).annotate({ identifier: "StorageDescriptor" }) as any as S.Schema<StorageDescriptor>;
+  S.Struct({
+    serdeInfo: S.optional(SerDeInfo),
+    locationUri: S.optional(S.String),
+    inputFormat: S.optional(S.String),
+    outputFormat: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "StorageDescriptor",
+}) as any as S.Schema<StorageDescriptor>;
 
 /** Options of a Hive table. */
 export interface HiveTableOptions {
@@ -205,12 +230,14 @@ export interface HiveTableOptions {
   storageDescriptor?: StorageDescriptor;
 }
 export const HiveTableOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "tableType": S.optional(S.String),
-  "parameters": S.optional(StringMap),
-  "storageDescriptor": S.optional(StorageDescriptor),
-}),
-).annotate({ identifier: "HiveTableOptions" }) as any as S.Schema<HiveTableOptions>;
+  S.Struct({
+    tableType: S.optional(S.String),
+    parameters: S.optional(StringMap),
+    storageDescriptor: S.optional(StorageDescriptor),
+  }),
+).annotate({
+  identifier: "HiveTableOptions",
+}) as any as S.Schema<HiveTableOptions>;
 
 export type TableTypeEnum = "TYPE_UNSPECIFIED" | "HIVE";
 export const TableTypeEnum = /*@__PURE__*/ S.String;
@@ -235,16 +262,16 @@ export interface Table {
   type?: TableTypeEnum;
 }
 export const Table = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "hiveOptions": S.optional(HiveTableOptions),
-  "name": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "deleteTime": S.optional(S.String),
-  "expireTime": S.optional(S.String),
-  "etag": S.optional(S.String),
-  "type": S.optional(TableTypeEnum),
-}),
+  S.Struct({
+    hiveOptions: S.optional(HiveTableOptions),
+    name: S.optional(S.String),
+    createTime: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    deleteTime: S.optional(S.String),
+    expireTime: S.optional(S.String),
+    etag: S.optional(S.String),
+    type: S.optional(TableTypeEnum),
+  }),
 ).annotate({ identifier: "Table" }) as any as S.Schema<Table>;
 
 export interface CreateProjectsLocationsCatalogsDatabasesTablesRequest {
@@ -255,43 +282,79 @@ export interface CreateProjectsLocationsCatalogsDatabasesTablesRequest {
   /** Request body */
   body?: Table;
 }
-export const CreateProjectsLocationsCatalogsDatabasesTablesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "tableId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Table.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/tables","baseUrl":"https://biglake.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsCatalogsDatabasesTablesRequest" }) as any as S.Schema<CreateProjectsLocationsCatalogsDatabasesTablesRequest>;
+export const CreateProjectsLocationsCatalogsDatabasesTablesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      tableId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Table.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/tables",
+        baseUrl: "https://biglake.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsCatalogsDatabasesTablesRequest",
+  }) as any as S.Schema<CreateProjectsLocationsCatalogsDatabasesTablesRequest>;
 
 export interface DeleteProjectsLocationsCatalogsRequest {
   /** Required. The name of the catalog to delete. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id} */
   name: string;
 }
-export const DeleteProjectsLocationsCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://biglake.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsCatalogsRequest" }) as any as S.Schema<DeleteProjectsLocationsCatalogsRequest>;
+export const DeleteProjectsLocationsCatalogsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://biglake.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsCatalogsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsCatalogsRequest>;
 
 export interface DeleteProjectsLocationsCatalogsDatabasesRequest {
   /** Required. The name of the database to delete. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id} */
   name: string;
 }
-export const DeleteProjectsLocationsCatalogsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://biglake.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsCatalogsDatabasesRequest" }) as any as S.Schema<DeleteProjectsLocationsCatalogsDatabasesRequest>;
+export const DeleteProjectsLocationsCatalogsDatabasesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://biglake.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsCatalogsDatabasesRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsCatalogsDatabasesRequest>;
 
 export interface DeleteProjectsLocationsCatalogsDatabasesTablesRequest {
   /** Required. The name of the table to delete. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id}/tables/{table_id} */
   name: string;
 }
-export const DeleteProjectsLocationsCatalogsDatabasesTablesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://biglake.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsCatalogsDatabasesTablesRequest" }) as any as S.Schema<DeleteProjectsLocationsCatalogsDatabasesTablesRequest>;
+export const DeleteProjectsLocationsCatalogsDatabasesTablesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://biglake.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsCatalogsDatabasesTablesRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsCatalogsDatabasesTablesRequest>;
 
 export interface GetIamPolicyProjectsCatalogsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -300,11 +363,19 @@ export interface GetIamPolicyProjectsCatalogsRequest {
   "options.requestedPolicyVersion"?: number;
 }
 export const GetIamPolicyProjectsCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://biglake.googleapis.com/"})),
-).annotate({ identifier: "GetIamPolicyProjectsCatalogsRequest" }) as any as S.Schema<GetIamPolicyProjectsCatalogsRequest>;
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+resource}:getIamPolicy",
+      baseUrl: "https://biglake.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetIamPolicyProjectsCatalogsRequest",
+}) as any as S.Schema<GetIamPolicyProjectsCatalogsRequest>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -318,16 +389,18 @@ export interface Expr {
   title?: string;
 }
 export const Expr = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "description": S.optional(S.String),
-  "location": S.optional(S.String),
-  "expression": S.optional(S.String),
-  "title": S.optional(S.String),
-}),
+  S.Struct({
+    description: S.optional(S.String),
+    location: S.optional(S.String),
+    expression: S.optional(S.String),
+    title: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** Associates `members`, or principals, with a `role`. */
 export interface Binding {
@@ -339,17 +412,23 @@ export interface Binding {
   members?: StringList;
 }
 export const Binding = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "role": S.optional(S.String),
-  "condition": S.optional(Expr),
-  "members": S.optional(StringList),
-}),
+  S.Struct({
+    role: S.optional(S.String),
+    condition: S.optional(Expr),
+    members: S.optional(StringList),
+  }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = ReadonlyArray<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+export const BindingList = /*@__PURE__*/ S.Array(
+  Binding,
+) as any as S.Schema<BindingList>;
 
-export type AuditLogConfigLogTypeEnum = "LOG_TYPE_UNSPECIFIED" | "ADMIN_READ" | "DATA_WRITE" | "DATA_READ";
+export type AuditLogConfigLogTypeEnum =
+  | "LOG_TYPE_UNSPECIFIED"
+  | "ADMIN_READ"
+  | "DATA_WRITE"
+  | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -360,14 +439,16 @@ export interface AuditLogConfig {
   exemptedMembers?: StringList;
 }
 export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "logType": S.optional(AuditLogConfigLogTypeEnum),
-  "exemptedMembers": S.optional(StringList),
-}),
+  S.Struct({
+    logType: S.optional(AuditLogConfigLogTypeEnum),
+    exemptedMembers: S.optional(StringList),
+  }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(AuditLogConfig) as any as S.Schema<AuditLogConfigList>;
+export const AuditLogConfigList = /*@__PURE__*/ S.Array(
+  AuditLogConfig,
+) as any as S.Schema<AuditLogConfigList>;
 
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface AuditConfig {
@@ -377,14 +458,16 @@ export interface AuditConfig {
   auditLogConfigs?: AuditLogConfigList;
 }
 export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "service": S.optional(S.String),
-  "auditLogConfigs": S.optional(AuditLogConfigList),
-}),
+  S.Struct({
+    service: S.optional(S.String),
+    auditLogConfigs: S.optional(AuditLogConfigList),
+  }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = ReadonlyArray<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
+export const AuditConfigList = /*@__PURE__*/ S.Array(
+  AuditConfig,
+) as any as S.Schema<AuditConfigList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -398,12 +481,12 @@ export interface Policy {
   etag?: string;
 }
 export const Policy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "version": S.optional(S.Number),
-  "bindings": S.optional(BindingList),
-  "auditConfigs": S.optional(AuditConfigList),
-  "etag": S.optional(S.String),
-}),
+  S.Struct({
+    version: S.optional(S.Number),
+    bindings: S.optional(BindingList),
+    auditConfigs: S.optional(AuditConfigList),
+    etag: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
 
 export interface GetIamPolicyProjectsCatalogsNamespacesRequest {
@@ -412,12 +495,21 @@ export interface GetIamPolicyProjectsCatalogsNamespacesRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsCatalogsNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://biglake.googleapis.com/"})),
-).annotate({ identifier: "GetIamPolicyProjectsCatalogsNamespacesRequest" }) as any as S.Schema<GetIamPolicyProjectsCatalogsNamespacesRequest>;
+export const GetIamPolicyProjectsCatalogsNamespacesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+resource}:getIamPolicy",
+        baseUrl: "https://biglake.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetIamPolicyProjectsCatalogsNamespacesRequest",
+  }) as any as S.Schema<GetIamPolicyProjectsCatalogsNamespacesRequest>;
 
 export interface GetIamPolicyProjectsCatalogsNamespacesTablesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -425,42 +517,77 @@ export interface GetIamPolicyProjectsCatalogsNamespacesTablesRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsCatalogsNamespacesTablesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://biglake.googleapis.com/"})),
-).annotate({ identifier: "GetIamPolicyProjectsCatalogsNamespacesTablesRequest" }) as any as S.Schema<GetIamPolicyProjectsCatalogsNamespacesTablesRequest>;
+export const GetIamPolicyProjectsCatalogsNamespacesTablesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+resource}:getIamPolicy",
+        baseUrl: "https://biglake.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetIamPolicyProjectsCatalogsNamespacesTablesRequest",
+  }) as any as S.Schema<GetIamPolicyProjectsCatalogsNamespacesTablesRequest>;
 
 export interface GetProjectsLocationsCatalogsRequest {
   /** Required. The name of the catalog to retrieve. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id} */
   name: string;
 }
 export const GetProjectsLocationsCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://biglake.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsCatalogsRequest" }) as any as S.Schema<GetProjectsLocationsCatalogsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://biglake.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsCatalogsRequest",
+}) as any as S.Schema<GetProjectsLocationsCatalogsRequest>;
 
 export interface GetProjectsLocationsCatalogsDatabasesRequest {
   /** Required. The name of the database to retrieve. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id} */
   name: string;
 }
-export const GetProjectsLocationsCatalogsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://biglake.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsCatalogsDatabasesRequest" }) as any as S.Schema<GetProjectsLocationsCatalogsDatabasesRequest>;
+export const GetProjectsLocationsCatalogsDatabasesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://biglake.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsCatalogsDatabasesRequest",
+  }) as any as S.Schema<GetProjectsLocationsCatalogsDatabasesRequest>;
 
 export interface GetProjectsLocationsCatalogsDatabasesTablesRequest {
   /** Required. The name of the table to retrieve. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id}/tables/{table_id} */
   name: string;
 }
-export const GetProjectsLocationsCatalogsDatabasesTablesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://biglake.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsCatalogsDatabasesTablesRequest" }) as any as S.Schema<GetProjectsLocationsCatalogsDatabasesTablesRequest>;
+export const GetProjectsLocationsCatalogsDatabasesTablesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://biglake.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsCatalogsDatabasesTablesRequest",
+  }) as any as S.Schema<GetProjectsLocationsCatalogsDatabasesTablesRequest>;
 
 export interface ListProjectsLocationsCatalogsRequest {
   /** The maximum number of catalogs to return. The service may return fewer than this value. If unspecified, at most 50 catalogs will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
@@ -470,16 +597,27 @@ export interface ListProjectsLocationsCatalogsRequest {
   /** A page token, received from a previous `ListCatalogs` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListCatalogs` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/catalogs","baseUrl":"https://biglake.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsCatalogsRequest" }) as any as S.Schema<ListProjectsLocationsCatalogsRequest>;
+export const ListProjectsLocationsCatalogsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/catalogs",
+        baseUrl: "https://biglake.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsCatalogsRequest",
+}) as any as S.Schema<ListProjectsLocationsCatalogsRequest>;
 
 export type CatalogList = ReadonlyArray<Catalog>;
-export const CatalogList = /*@__PURE__*/ S.Array(Catalog) as any as S.Schema<CatalogList>;
+export const CatalogList = /*@__PURE__*/ S.Array(
+  Catalog,
+) as any as S.Schema<CatalogList>;
 
 /** Response message for the ListCatalogs method. */
 export interface ListCatalogsResponse {
@@ -489,11 +627,13 @@ export interface ListCatalogsResponse {
   nextPageToken?: string;
 }
 export const ListCatalogsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "catalogs": S.optional(CatalogList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListCatalogsResponse" }) as any as S.Schema<ListCatalogsResponse>;
+  S.Struct({
+    catalogs: S.optional(CatalogList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListCatalogsResponse",
+}) as any as S.Schema<ListCatalogsResponse>;
 
 export interface ListProjectsLocationsCatalogsDatabasesRequest {
   /** Required. The parent, which owns this collection of databases. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id} */
@@ -503,16 +643,27 @@ export interface ListProjectsLocationsCatalogsDatabasesRequest {
   /** The maximum number of databases to return. The service may return fewer than this value. If unspecified, at most 50 databases will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-export const ListProjectsLocationsCatalogsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/databases","baseUrl":"https://biglake.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsCatalogsDatabasesRequest" }) as any as S.Schema<ListProjectsLocationsCatalogsDatabasesRequest>;
+export const ListProjectsLocationsCatalogsDatabasesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/databases",
+        baseUrl: "https://biglake.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsCatalogsDatabasesRequest",
+  }) as any as S.Schema<ListProjectsLocationsCatalogsDatabasesRequest>;
 
 export type DatabaseList = ReadonlyArray<Database>;
-export const DatabaseList = /*@__PURE__*/ S.Array(Database) as any as S.Schema<DatabaseList>;
+export const DatabaseList = /*@__PURE__*/ S.Array(
+  Database,
+) as any as S.Schema<DatabaseList>;
 
 /** Response message for the ListDatabases method. */
 export interface ListDatabasesResponse {
@@ -522,14 +673,20 @@ export interface ListDatabasesResponse {
   databases?: DatabaseList;
 }
 export const ListDatabasesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "databases": S.optional(DatabaseList),
-}),
-).annotate({ identifier: "ListDatabasesResponse" }) as any as S.Schema<ListDatabasesResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    databases: S.optional(DatabaseList),
+  }),
+).annotate({
+  identifier: "ListDatabasesResponse",
+}) as any as S.Schema<ListDatabasesResponse>;
 
-export type ListProjectsLocationsCatalogsDatabasesTablesViewEnum = "TABLE_VIEW_UNSPECIFIED" | "BASIC" | "FULL";
-export const ListProjectsLocationsCatalogsDatabasesTablesViewEnum = /*@__PURE__*/ S.String;
+export type ListProjectsLocationsCatalogsDatabasesTablesViewEnum =
+  | "TABLE_VIEW_UNSPECIFIED"
+  | "BASIC"
+  | "FULL";
+export const ListProjectsLocationsCatalogsDatabasesTablesViewEnum =
+  /*@__PURE__*/ S.String;
 
 export interface ListProjectsLocationsCatalogsDatabasesTablesRequest {
   /** The view for the returned tables. */
@@ -541,17 +698,30 @@ export interface ListProjectsLocationsCatalogsDatabasesTablesRequest {
   /** The maximum number of tables to return. The service may return fewer than this value. If unspecified, at most 50 tables will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-export const ListProjectsLocationsCatalogsDatabasesTablesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "view": S.optional(ListProjectsLocationsCatalogsDatabasesTablesViewEnum.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/tables","baseUrl":"https://biglake.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsCatalogsDatabasesTablesRequest" }) as any as S.Schema<ListProjectsLocationsCatalogsDatabasesTablesRequest>;
+export const ListProjectsLocationsCatalogsDatabasesTablesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      view: S.optional(
+        ListProjectsLocationsCatalogsDatabasesTablesViewEnum.pipe(T.Query()),
+      ),
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/tables",
+        baseUrl: "https://biglake.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsCatalogsDatabasesTablesRequest",
+  }) as any as S.Schema<ListProjectsLocationsCatalogsDatabasesTablesRequest>;
 
 export type TableList = ReadonlyArray<Table>;
-export const TableList = /*@__PURE__*/ S.Array(Table) as any as S.Schema<TableList>;
+export const TableList = /*@__PURE__*/ S.Array(
+  Table,
+) as any as S.Schema<TableList>;
 
 /** Response message for the ListTables method. */
 export interface ListTablesResponse {
@@ -561,11 +731,13 @@ export interface ListTablesResponse {
   nextPageToken?: string;
 }
 export const ListTablesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "tables": S.optional(TableList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListTablesResponse" }) as any as S.Schema<ListTablesResponse>;
+  S.Struct({
+    tables: S.optional(TableList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListTablesResponse",
+}) as any as S.Schema<ListTablesResponse>;
 
 export interface PatchProjectsLocationsCatalogsDatabasesRequest {
   /** Output only. The resource name. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id} */
@@ -575,13 +747,22 @@ export interface PatchProjectsLocationsCatalogsDatabasesRequest {
   /** Request body */
   body?: Database;
 }
-export const PatchProjectsLocationsCatalogsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Database.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://biglake.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsCatalogsDatabasesRequest" }) as any as S.Schema<PatchProjectsLocationsCatalogsDatabasesRequest>;
+export const PatchProjectsLocationsCatalogsDatabasesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Database.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://biglake.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsCatalogsDatabasesRequest",
+  }) as any as S.Schema<PatchProjectsLocationsCatalogsDatabasesRequest>;
 
 export interface PatchProjectsLocationsCatalogsDatabasesTablesRequest {
   /** Output only. The resource name. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id}/tables/{table_id} */
@@ -591,13 +772,22 @@ export interface PatchProjectsLocationsCatalogsDatabasesTablesRequest {
   /** Request body */
   body?: Table;
 }
-export const PatchProjectsLocationsCatalogsDatabasesTablesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Table.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://biglake.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsCatalogsDatabasesTablesRequest" }) as any as S.Schema<PatchProjectsLocationsCatalogsDatabasesTablesRequest>;
+export const PatchProjectsLocationsCatalogsDatabasesTablesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Table.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://biglake.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsCatalogsDatabasesTablesRequest",
+  }) as any as S.Schema<PatchProjectsLocationsCatalogsDatabasesTablesRequest>;
 
 /** Request message for the RenameTable method in MetastoreService */
 export interface RenameTableRequest {
@@ -605,10 +795,12 @@ export interface RenameTableRequest {
   newName?: string;
 }
 export const RenameTableRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "newName": S.optional(S.String),
-}),
-).annotate({ identifier: "RenameTableRequest" }) as any as S.Schema<RenameTableRequest>;
+  S.Struct({
+    newName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RenameTableRequest",
+}) as any as S.Schema<RenameTableRequest>;
 
 export interface RenameProjectsLocationsCatalogsDatabasesTablesRequest {
   /** Required. The table's `name` field is used to identify the table to rename. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id}/tables/{table_id} */
@@ -616,12 +808,21 @@ export interface RenameProjectsLocationsCatalogsDatabasesTablesRequest {
   /** Request body */
   body?: RenameTableRequest;
 }
-export const RenameProjectsLocationsCatalogsDatabasesTablesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(RenameTableRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:rename","baseUrl":"https://biglake.googleapis.com/"})),
-).annotate({ identifier: "RenameProjectsLocationsCatalogsDatabasesTablesRequest" }) as any as S.Schema<RenameProjectsLocationsCatalogsDatabasesTablesRequest>;
+export const RenameProjectsLocationsCatalogsDatabasesTablesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(RenameTableRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:rename",
+        baseUrl: "https://biglake.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "RenameProjectsLocationsCatalogsDatabasesTablesRequest",
+  }) as any as S.Schema<RenameProjectsLocationsCatalogsDatabasesTablesRequest>;
 
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
@@ -631,11 +832,13 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "policy": S.optional(Policy),
-  "updateMask": S.optional(S.String),
-}),
-).annotate({ identifier: "SetIamPolicyRequest" }) as any as S.Schema<SetIamPolicyRequest>;
+  S.Struct({
+    policy: S.optional(Policy),
+    updateMask: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SetIamPolicyRequest",
+}) as any as S.Schema<SetIamPolicyRequest>;
 
 export interface SetIamPolicyProjectsCatalogsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -644,11 +847,19 @@ export interface SetIamPolicyProjectsCatalogsRequest {
   body?: SetIamPolicyRequest;
 }
 export const SetIamPolicyProjectsCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://biglake.googleapis.com/"})),
-).annotate({ identifier: "SetIamPolicyProjectsCatalogsRequest" }) as any as S.Schema<SetIamPolicyProjectsCatalogsRequest>;
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+resource}:setIamPolicy",
+      baseUrl: "https://biglake.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SetIamPolicyProjectsCatalogsRequest",
+}) as any as S.Schema<SetIamPolicyProjectsCatalogsRequest>;
 
 export interface SetIamPolicyProjectsCatalogsNamespacesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -656,12 +867,21 @@ export interface SetIamPolicyProjectsCatalogsNamespacesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsCatalogsNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://biglake.googleapis.com/"})),
-).annotate({ identifier: "SetIamPolicyProjectsCatalogsNamespacesRequest" }) as any as S.Schema<SetIamPolicyProjectsCatalogsNamespacesRequest>;
+export const SetIamPolicyProjectsCatalogsNamespacesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+resource}:setIamPolicy",
+        baseUrl: "https://biglake.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "SetIamPolicyProjectsCatalogsNamespacesRequest",
+  }) as any as S.Schema<SetIamPolicyProjectsCatalogsNamespacesRequest>;
 
 export interface SetIamPolicyProjectsCatalogsNamespacesTablesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -669,12 +889,21 @@ export interface SetIamPolicyProjectsCatalogsNamespacesTablesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsCatalogsNamespacesTablesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://biglake.googleapis.com/"})),
-).annotate({ identifier: "SetIamPolicyProjectsCatalogsNamespacesTablesRequest" }) as any as S.Schema<SetIamPolicyProjectsCatalogsNamespacesTablesRequest>;
+export const SetIamPolicyProjectsCatalogsNamespacesTablesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+resource}:setIamPolicy",
+        baseUrl: "https://biglake.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "SetIamPolicyProjectsCatalogsNamespacesTablesRequest",
+  }) as any as S.Schema<SetIamPolicyProjectsCatalogsNamespacesTablesRequest>;
 
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
@@ -682,10 +911,12 @@ export interface TestIamPermissionsRequest {
   permissions?: StringList;
 }
 export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "permissions": S.optional(StringList),
-}),
-).annotate({ identifier: "TestIamPermissionsRequest" }) as any as S.Schema<TestIamPermissionsRequest>;
+  S.Struct({
+    permissions: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "TestIamPermissionsRequest",
+}) as any as S.Schema<TestIamPermissionsRequest>;
 
 export interface TestIamPermissionsProjectsCatalogsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -693,12 +924,21 @@ export interface TestIamPermissionsProjectsCatalogsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://biglake.googleapis.com/"})),
-).annotate({ identifier: "TestIamPermissionsProjectsCatalogsRequest" }) as any as S.Schema<TestIamPermissionsProjectsCatalogsRequest>;
+export const TestIamPermissionsProjectsCatalogsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+resource}:testIamPermissions",
+        baseUrl: "https://biglake.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "TestIamPermissionsProjectsCatalogsRequest",
+  }) as any as S.Schema<TestIamPermissionsProjectsCatalogsRequest>;
 
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
@@ -706,10 +946,12 @@ export interface TestIamPermissionsResponse {
   permissions?: StringList;
 }
 export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "permissions": S.optional(StringList),
-}),
-).annotate({ identifier: "TestIamPermissionsResponse" }) as any as S.Schema<TestIamPermissionsResponse>;
+  S.Struct({
+    permissions: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "TestIamPermissionsResponse",
+}) as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsCatalogsNamespacesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -717,12 +959,21 @@ export interface TestIamPermissionsProjectsCatalogsNamespacesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsCatalogsNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://biglake.googleapis.com/"})),
-).annotate({ identifier: "TestIamPermissionsProjectsCatalogsNamespacesRequest" }) as any as S.Schema<TestIamPermissionsProjectsCatalogsNamespacesRequest>;
+export const TestIamPermissionsProjectsCatalogsNamespacesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+resource}:testIamPermissions",
+        baseUrl: "https://biglake.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "TestIamPermissionsProjectsCatalogsNamespacesRequest",
+  }) as any as S.Schema<TestIamPermissionsProjectsCatalogsNamespacesRequest>;
 
 export interface TestIamPermissionsProjectsCatalogsNamespacesTablesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -730,14 +981,28 @@ export interface TestIamPermissionsProjectsCatalogsNamespacesTablesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsCatalogsNamespacesTablesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://biglake.googleapis.com/"})),
-).annotate({ identifier: "TestIamPermissionsProjectsCatalogsNamespacesTablesRequest" }) as any as S.Schema<TestIamPermissionsProjectsCatalogsNamespacesTablesRequest>;
+export const TestIamPermissionsProjectsCatalogsNamespacesTablesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+resource}:testIamPermissions",
+        baseUrl: "https://biglake.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "TestIamPermissionsProjectsCatalogsNamespacesTablesRequest",
+  }) as any as S.Schema<TestIamPermissionsProjectsCatalogsNamespacesTablesRequest>;
 
-export type CreateProjectsLocationsCatalogsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsCatalogsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new catalog. */
 export const createProjectsLocationsCatalogs: API.OperationMethod<
   CreateProjectsLocationsCatalogsRequest,
@@ -752,7 +1017,12 @@ export const createProjectsLocationsCatalogs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsCatalogsDatabasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsCatalogsDatabasesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new database. */
 export const createProjectsLocationsCatalogsDatabases: API.OperationMethod<
   CreateProjectsLocationsCatalogsDatabasesRequest,
@@ -767,7 +1037,12 @@ export const createProjectsLocationsCatalogsDatabases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsCatalogsDatabasesTablesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsCatalogsDatabasesTablesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new table. */
 export const createProjectsLocationsCatalogsDatabasesTables: API.OperationMethod<
   CreateProjectsLocationsCatalogsDatabasesTablesRequest,
@@ -782,7 +1057,12 @@ export const createProjectsLocationsCatalogsDatabasesTables: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsCatalogsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsCatalogsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes an existing catalog specified by the catalog ID. */
 export const deleteProjectsLocationsCatalogs: API.OperationMethod<
   DeleteProjectsLocationsCatalogsRequest,
@@ -797,7 +1077,12 @@ export const deleteProjectsLocationsCatalogs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsCatalogsDatabasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsCatalogsDatabasesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes an existing database specified by the database ID. */
 export const deleteProjectsLocationsCatalogsDatabases: API.OperationMethod<
   DeleteProjectsLocationsCatalogsDatabasesRequest,
@@ -812,7 +1097,12 @@ export const deleteProjectsLocationsCatalogsDatabases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsCatalogsDatabasesTablesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsCatalogsDatabasesTablesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes an existing table specified by the table ID. */
 export const deleteProjectsLocationsCatalogsDatabasesTables: API.OperationMethod<
   DeleteProjectsLocationsCatalogsDatabasesTablesRequest,
@@ -827,7 +1117,10 @@ export const deleteProjectsLocationsCatalogsDatabasesTables: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsCatalogsError = NotFound | Forbidden | GcpOpError;
+export type GetIamPolicyProjectsCatalogsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the IAM policy for the specified Catalog. */
 export const getIamPolicyProjectsCatalogs: API.OperationMethod<
   GetIamPolicyProjectsCatalogsRequest,
@@ -842,7 +1135,10 @@ export const getIamPolicyProjectsCatalogs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsCatalogsNamespacesError = NotFound | Forbidden | GcpOpError;
+export type GetIamPolicyProjectsCatalogsNamespacesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the IAM policy for the specified Catalog. */
 export const getIamPolicyProjectsCatalogsNamespaces: API.OperationMethod<
   GetIamPolicyProjectsCatalogsNamespacesRequest,
@@ -857,7 +1153,10 @@ export const getIamPolicyProjectsCatalogsNamespaces: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsCatalogsNamespacesTablesError = NotFound | Forbidden | GcpOpError;
+export type GetIamPolicyProjectsCatalogsNamespacesTablesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the IAM policy for the specified Catalog. */
 export const getIamPolicyProjectsCatalogsNamespacesTables: API.OperationMethod<
   GetIamPolicyProjectsCatalogsNamespacesTablesRequest,
@@ -872,7 +1171,10 @@ export const getIamPolicyProjectsCatalogsNamespacesTables: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsCatalogsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsCatalogsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the catalog specified by the resource name. */
 export const getProjectsLocationsCatalogs: API.OperationMethod<
   GetProjectsLocationsCatalogsRequest,
@@ -887,7 +1189,10 @@ export const getProjectsLocationsCatalogs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsCatalogsDatabasesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsCatalogsDatabasesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the database specified by the resource name. */
 export const getProjectsLocationsCatalogsDatabases: API.OperationMethod<
   GetProjectsLocationsCatalogsDatabasesRequest,
@@ -902,7 +1207,10 @@ export const getProjectsLocationsCatalogsDatabases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsCatalogsDatabasesTablesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsCatalogsDatabasesTablesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the table specified by the resource name. */
 export const getProjectsLocationsCatalogsDatabasesTables: API.OperationMethod<
   GetProjectsLocationsCatalogsDatabasesTablesRequest,
@@ -917,7 +1225,10 @@ export const getProjectsLocationsCatalogsDatabasesTables: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListProjectsLocationsCatalogsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsCatalogsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** List all catalogs in a specified project. */
 export const listProjectsLocationsCatalogs: API.PaginatedOperationMethod<
   ListProjectsLocationsCatalogsRequest,
@@ -930,10 +1241,16 @@ export const listProjectsLocationsCatalogs: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsCatalogsDatabasesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsCatalogsDatabasesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** List all databases in a specified catalog. */
 export const listProjectsLocationsCatalogsDatabases: API.PaginatedOperationMethod<
   ListProjectsLocationsCatalogsDatabasesRequest,
@@ -946,10 +1263,16 @@ export const listProjectsLocationsCatalogsDatabases: API.PaginatedOperationMetho
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsCatalogsDatabasesTablesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsCatalogsDatabasesTablesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** List all tables in a specified database. */
 export const listProjectsLocationsCatalogsDatabasesTables: API.PaginatedOperationMethod<
   ListProjectsLocationsCatalogsDatabasesTablesRequest,
@@ -962,10 +1285,18 @@ export const listProjectsLocationsCatalogsDatabasesTables: API.PaginatedOperatio
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type PatchProjectsLocationsCatalogsDatabasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsCatalogsDatabasesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates an existing database specified by the database ID. */
 export const patchProjectsLocationsCatalogsDatabases: API.OperationMethod<
   PatchProjectsLocationsCatalogsDatabasesRequest,
@@ -980,7 +1311,12 @@ export const patchProjectsLocationsCatalogsDatabases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsCatalogsDatabasesTablesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsCatalogsDatabasesTablesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates an existing table specified by the table ID. */
 export const patchProjectsLocationsCatalogsDatabasesTables: API.OperationMethod<
   PatchProjectsLocationsCatalogsDatabasesTablesRequest,
@@ -995,7 +1331,12 @@ export const patchProjectsLocationsCatalogsDatabasesTables: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RenameProjectsLocationsCatalogsDatabasesTablesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RenameProjectsLocationsCatalogsDatabasesTablesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Renames an existing table specified by the table ID. */
 export const renameProjectsLocationsCatalogsDatabasesTables: API.OperationMethod<
   RenameProjectsLocationsCatalogsDatabasesTablesRequest,
@@ -1010,7 +1351,12 @@ export const renameProjectsLocationsCatalogsDatabasesTables: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsCatalogsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetIamPolicyProjectsCatalogsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sets the IAM policy for the specified catalog. */
 export const setIamPolicyProjectsCatalogs: API.OperationMethod<
   SetIamPolicyProjectsCatalogsRequest,
@@ -1025,7 +1371,12 @@ export const setIamPolicyProjectsCatalogs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsCatalogsNamespacesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetIamPolicyProjectsCatalogsNamespacesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sets the IAM policy for the specified catalog. */
 export const setIamPolicyProjectsCatalogsNamespaces: API.OperationMethod<
   SetIamPolicyProjectsCatalogsNamespacesRequest,
@@ -1040,7 +1391,12 @@ export const setIamPolicyProjectsCatalogsNamespaces: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsCatalogsNamespacesTablesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetIamPolicyProjectsCatalogsNamespacesTablesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sets the IAM policy for the specified catalog. */
 export const setIamPolicyProjectsCatalogsNamespacesTables: API.OperationMethod<
   SetIamPolicyProjectsCatalogsNamespacesTablesRequest,
@@ -1055,7 +1411,12 @@ export const setIamPolicyProjectsCatalogsNamespacesTables: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsCatalogsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TestIamPermissionsProjectsCatalogsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Tests the IAM permissions for the specified catalog. */
 export const testIamPermissionsProjectsCatalogs: API.OperationMethod<
   TestIamPermissionsProjectsCatalogsRequest,
@@ -1070,7 +1431,12 @@ export const testIamPermissionsProjectsCatalogs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsCatalogsNamespacesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TestIamPermissionsProjectsCatalogsNamespacesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Tests the IAM permissions for the specified namespace. */
 export const testIamPermissionsProjectsCatalogsNamespaces: API.OperationMethod<
   TestIamPermissionsProjectsCatalogsNamespacesRequest,
@@ -1085,7 +1451,12 @@ export const testIamPermissionsProjectsCatalogsNamespaces: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsCatalogsNamespacesTablesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TestIamPermissionsProjectsCatalogsNamespacesTablesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Tests the IAM permissions for the specified table. */
 export const testIamPermissionsProjectsCatalogsNamespacesTables: API.OperationMethod<
   TestIamPermissionsProjectsCatalogsNamespacesTablesRequest,
@@ -1099,4 +1470,3 @@ export const testIamPermissionsProjectsCatalogsNamespacesTables: API.OperationMe
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

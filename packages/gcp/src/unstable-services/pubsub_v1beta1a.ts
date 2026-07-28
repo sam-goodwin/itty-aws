@@ -13,55 +13,57 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** Request for the Acknowledge method. */
 export interface AcknowledgeRequest {
@@ -71,27 +73,37 @@ export interface AcknowledgeRequest {
   ackId?: StringList;
 }
 export const AcknowledgeRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "subscription": S.optional(S.String),
-  "ackId": S.optional(StringList),
-}),
-).annotate({ identifier: "AcknowledgeRequest" }) as any as S.Schema<AcknowledgeRequest>;
+  S.Struct({
+    subscription: S.optional(S.String),
+    ackId: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "AcknowledgeRequest",
+}) as any as S.Schema<AcknowledgeRequest>;
 
 export interface AcknowledgeSubscriptionsRequest {
   /** Request body */
   body?: AcknowledgeRequest;
 }
 export const AcknowledgeSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(AcknowledgeRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1a/subscriptions/acknowledge","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "AcknowledgeSubscriptionsRequest" }) as any as S.Schema<AcknowledgeSubscriptionsRequest>;
+  S.Struct({
+    body: S.optional(AcknowledgeRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1a/subscriptions/acknowledge",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "AcknowledgeSubscriptionsRequest",
+}) as any as S.Schema<AcknowledgeSubscriptionsRequest>;
 
 /** An empty message that you can re-use to avoid defining duplicated empty messages in your project. A typical example is to use it as argument or the return value of a service API. For instance: service Foo { rpc Bar (proto2.Empty) returns (proto2.Empty) { }; }; BEGIN GOOGLE-INTERNAL The difference between this one and net/rpc/empty-message.proto is that 1) The generated message here is in proto2 C++ API. 2) The proto2.Empty has minimum dependencies (no message_set or net/rpc dependencies) END GOOGLE-INTERNAL */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 /** Configuration for a push delivery endpoint. */
 export interface PushConfig {
@@ -99,9 +111,9 @@ export interface PushConfig {
   pushEndpoint?: string;
 }
 export const PushConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pushEndpoint": S.optional(S.String),
-}),
+  S.Struct({
+    pushEndpoint: S.optional(S.String),
+  }),
 ).annotate({ identifier: "PushConfig" }) as any as S.Schema<PushConfig>;
 
 /** A subscription resource. */
@@ -116,12 +128,12 @@ export interface Subscription {
   topic?: string;
 }
 export const Subscription = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pushConfig": S.optional(PushConfig),
-  "name": S.optional(S.String),
-  "ackDeadlineSeconds": S.optional(S.Number),
-  "topic": S.optional(S.String),
-}),
+  S.Struct({
+    pushConfig: S.optional(PushConfig),
+    name: S.optional(S.String),
+    ackDeadlineSeconds: S.optional(S.Number),
+    topic: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Subscription" }) as any as S.Schema<Subscription>;
 
 export interface CreateSubscriptionsRequest {
@@ -129,10 +141,18 @@ export interface CreateSubscriptionsRequest {
   body?: Subscription;
 }
 export const CreateSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(Subscription.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1a/subscriptions","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "CreateSubscriptionsRequest" }) as any as S.Schema<CreateSubscriptionsRequest>;
+  S.Struct({
+    body: S.optional(Subscription.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1a/subscriptions",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateSubscriptionsRequest",
+}) as any as S.Schema<CreateSubscriptionsRequest>;
 
 /** A topic resource. */
 export interface Topic {
@@ -140,9 +160,9 @@ export interface Topic {
   name?: string;
 }
 export const Topic = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Topic" }) as any as S.Schema<Topic>;
 
 export interface CreateTopicsRequest {
@@ -150,50 +170,90 @@ export interface CreateTopicsRequest {
   body?: Topic;
 }
 export const CreateTopicsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(Topic.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1a/topics","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "CreateTopicsRequest" }) as any as S.Schema<CreateTopicsRequest>;
+  S.Struct({
+    body: S.optional(Topic.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1a/topics",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateTopicsRequest",
+}) as any as S.Schema<CreateTopicsRequest>;
 
 export interface DeleteSubscriptionsRequest {
   /** The subscription to delete. */
   subscription: string;
 }
 export const DeleteSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "subscription": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta1a/subscriptions/{+subscription}","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "DeleteSubscriptionsRequest" }) as any as S.Schema<DeleteSubscriptionsRequest>;
+  S.Struct({
+    subscription: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1beta1a/subscriptions/{+subscription}",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteSubscriptionsRequest",
+}) as any as S.Schema<DeleteSubscriptionsRequest>;
 
 export interface DeleteTopicsRequest {
   /** Name of the topic to delete. */
   topic: string;
 }
 export const DeleteTopicsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "topic": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta1a/topics/{+topic}","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "DeleteTopicsRequest" }) as any as S.Schema<DeleteTopicsRequest>;
+  S.Struct({
+    topic: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1beta1a/topics/{+topic}",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteTopicsRequest",
+}) as any as S.Schema<DeleteTopicsRequest>;
 
 export interface GetSubscriptionsRequest {
   /** The name of the subscription to get. */
   subscription: string;
 }
 export const GetSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "subscription": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1a/subscriptions/{+subscription}","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "GetSubscriptionsRequest" }) as any as S.Schema<GetSubscriptionsRequest>;
+  S.Struct({
+    subscription: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1a/subscriptions/{+subscription}",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetSubscriptionsRequest",
+}) as any as S.Schema<GetSubscriptionsRequest>;
 
 export interface GetTopicsRequest {
   /** The name of the topic to get. */
   topic: string;
 }
 export const GetTopicsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "topic": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1a/topics/{+topic}","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "GetTopicsRequest" }) as any as S.Schema<GetTopicsRequest>;
+  S.Struct({
+    topic: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1a/topics/{+topic}",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetTopicsRequest",
+}) as any as S.Schema<GetTopicsRequest>;
 
 export interface ListSubscriptionsRequest {
   /** Maximum number of subscriptions to return. */
@@ -204,15 +264,25 @@ export interface ListSubscriptionsRequest {
   query?: string;
 }
 export const ListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "query": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1a/subscriptions","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "ListSubscriptionsRequest" }) as any as S.Schema<ListSubscriptionsRequest>;
+  S.Struct({
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    query: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1a/subscriptions",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListSubscriptionsRequest",
+}) as any as S.Schema<ListSubscriptionsRequest>;
 
 export type SubscriptionList = ReadonlyArray<Subscription>;
-export const SubscriptionList = /*@__PURE__*/ S.Array(Subscription) as any as S.Schema<SubscriptionList>;
+export const SubscriptionList = /*@__PURE__*/ S.Array(
+  Subscription,
+) as any as S.Schema<SubscriptionList>;
 
 /** Response for the ListSubscriptions method. */
 export interface ListSubscriptionsResponse {
@@ -222,11 +292,13 @@ export interface ListSubscriptionsResponse {
   nextPageToken?: string;
 }
 export const ListSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "subscription": S.optional(SubscriptionList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListSubscriptionsResponse" }) as any as S.Schema<ListSubscriptionsResponse>;
+  S.Struct({
+    subscription: S.optional(SubscriptionList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListSubscriptionsResponse",
+}) as any as S.Schema<ListSubscriptionsResponse>;
 
 export interface ListTopicsRequest {
   /** A valid label query expression. */
@@ -237,15 +309,25 @@ export interface ListTopicsRequest {
   pageToken?: string;
 }
 export const ListTopicsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "query": S.optional(S.String.pipe(T.Query())),
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1a/topics","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "ListTopicsRequest" }) as any as S.Schema<ListTopicsRequest>;
+  S.Struct({
+    query: S.optional(S.String.pipe(T.Query())),
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1a/topics",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListTopicsRequest",
+}) as any as S.Schema<ListTopicsRequest>;
 
 export type TopicList = ReadonlyArray<Topic>;
-export const TopicList = /*@__PURE__*/ S.Array(Topic) as any as S.Schema<TopicList>;
+export const TopicList = /*@__PURE__*/ S.Array(
+  Topic,
+) as any as S.Schema<TopicList>;
 
 /** Response for the ListTopics method. */
 export interface ListTopicsResponse {
@@ -255,11 +337,13 @@ export interface ListTopicsResponse {
   nextPageToken?: string;
 }
 export const ListTopicsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "topic": S.optional(TopicList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListTopicsResponse" }) as any as S.Schema<ListTopicsResponse>;
+  S.Struct({
+    topic: S.optional(TopicList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListTopicsResponse",
+}) as any as S.Schema<ListTopicsResponse>;
 
 /** Request for the ModifyAckDeadline method. */
 export interface ModifyAckDeadlineRequest {
@@ -273,23 +357,34 @@ export interface ModifyAckDeadlineRequest {
   ackIds?: StringList;
 }
 export const ModifyAckDeadlineRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "ackId": S.optional(S.String),
-  "ackDeadlineSeconds": S.optional(S.Number),
-  "subscription": S.optional(S.String),
-  "ackIds": S.optional(StringList),
-}),
-).annotate({ identifier: "ModifyAckDeadlineRequest" }) as any as S.Schema<ModifyAckDeadlineRequest>;
+  S.Struct({
+    ackId: S.optional(S.String),
+    ackDeadlineSeconds: S.optional(S.Number),
+    subscription: S.optional(S.String),
+    ackIds: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ModifyAckDeadlineRequest",
+}) as any as S.Schema<ModifyAckDeadlineRequest>;
 
 export interface ModifyAckDeadlineSubscriptionsRequest {
   /** Request body */
   body?: ModifyAckDeadlineRequest;
 }
-export const ModifyAckDeadlineSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(ModifyAckDeadlineRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1a/subscriptions/modifyAckDeadline","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "ModifyAckDeadlineSubscriptionsRequest" }) as any as S.Schema<ModifyAckDeadlineSubscriptionsRequest>;
+export const ModifyAckDeadlineSubscriptionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      body: S.optional(ModifyAckDeadlineRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1a/subscriptions/modifyAckDeadline",
+        baseUrl: "https://pubsub.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ModifyAckDeadlineSubscriptionsRequest",
+}) as any as S.Schema<ModifyAckDeadlineSubscriptionsRequest>;
 
 /** Request for the ModifyPushConfig method. */
 export interface ModifyPushConfigRequest {
@@ -299,21 +394,32 @@ export interface ModifyPushConfigRequest {
   pushConfig?: PushConfig;
 }
 export const ModifyPushConfigRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "subscription": S.optional(S.String),
-  "pushConfig": S.optional(PushConfig),
-}),
-).annotate({ identifier: "ModifyPushConfigRequest" }) as any as S.Schema<ModifyPushConfigRequest>;
+  S.Struct({
+    subscription: S.optional(S.String),
+    pushConfig: S.optional(PushConfig),
+  }),
+).annotate({
+  identifier: "ModifyPushConfigRequest",
+}) as any as S.Schema<ModifyPushConfigRequest>;
 
 export interface ModifyPushConfigSubscriptionsRequest {
   /** Request body */
   body?: ModifyPushConfigRequest;
 }
-export const ModifyPushConfigSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(ModifyPushConfigRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1a/subscriptions/modifyPushConfig","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "ModifyPushConfigSubscriptionsRequest" }) as any as S.Schema<ModifyPushConfigSubscriptionsRequest>;
+export const ModifyPushConfigSubscriptionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      body: S.optional(ModifyPushConfigRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1a/subscriptions/modifyPushConfig",
+        baseUrl: "https://pubsub.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ModifyPushConfigSubscriptionsRequest",
+}) as any as S.Schema<ModifyPushConfigSubscriptionsRequest>;
 
 /** A key-value pair applied to a given object. */
 export interface Label {
@@ -325,15 +431,17 @@ export interface Label {
   key?: string;
 }
 export const Label = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "strValue": S.optional(S.String),
-  "numValue": S.optional(S.String),
-  "key": S.optional(S.String),
-}),
+  S.Struct({
+    strValue: S.optional(S.String),
+    numValue: S.optional(S.String),
+    key: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Label" }) as any as S.Schema<Label>;
 
 export type LabelList = ReadonlyArray<Label>;
-export const LabelList = /*@__PURE__*/ S.Array(Label) as any as S.Schema<LabelList>;
+export const LabelList = /*@__PURE__*/ S.Array(
+  Label,
+) as any as S.Schema<LabelList>;
 
 /** A message data and its labels. */
 export interface PubsubMessage {
@@ -347,16 +455,18 @@ export interface PubsubMessage {
   messageId?: string;
 }
 export const PubsubMessage = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "label": S.optional(LabelList),
-  "publishTime": S.optional(S.String),
-  "data": S.optional(S.String),
-  "messageId": S.optional(S.String),
-}),
+  S.Struct({
+    label: S.optional(LabelList),
+    publishTime: S.optional(S.String),
+    data: S.optional(S.String),
+    messageId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "PubsubMessage" }) as any as S.Schema<PubsubMessage>;
 
 export type PubsubMessageList = ReadonlyArray<PubsubMessage>;
-export const PubsubMessageList = /*@__PURE__*/ S.Array(PubsubMessage) as any as S.Schema<PubsubMessageList>;
+export const PubsubMessageList = /*@__PURE__*/ S.Array(
+  PubsubMessage,
+) as any as S.Schema<PubsubMessageList>;
 
 /** Request for the PublishBatch method. */
 export interface PublishBatchRequest {
@@ -366,21 +476,31 @@ export interface PublishBatchRequest {
   messages?: PubsubMessageList;
 }
 export const PublishBatchRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "topic": S.optional(S.String),
-  "messages": S.optional(PubsubMessageList),
-}),
-).annotate({ identifier: "PublishBatchRequest" }) as any as S.Schema<PublishBatchRequest>;
+  S.Struct({
+    topic: S.optional(S.String),
+    messages: S.optional(PubsubMessageList),
+  }),
+).annotate({
+  identifier: "PublishBatchRequest",
+}) as any as S.Schema<PublishBatchRequest>;
 
 export interface PublishBatchTopicsRequest {
   /** Request body */
   body?: PublishBatchRequest;
 }
 export const PublishBatchTopicsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(PublishBatchRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1a/topics/publishBatch","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "PublishBatchTopicsRequest" }) as any as S.Schema<PublishBatchTopicsRequest>;
+  S.Struct({
+    body: S.optional(PublishBatchRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1a/topics/publishBatch",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PublishBatchTopicsRequest",
+}) as any as S.Schema<PublishBatchTopicsRequest>;
 
 /** Response for the PublishBatch method. */
 export interface PublishBatchResponse {
@@ -388,10 +508,12 @@ export interface PublishBatchResponse {
   messageIds?: StringList;
 }
 export const PublishBatchResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "messageIds": S.optional(StringList),
-}),
-).annotate({ identifier: "PublishBatchResponse" }) as any as S.Schema<PublishBatchResponse>;
+  S.Struct({
+    messageIds: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "PublishBatchResponse",
+}) as any as S.Schema<PublishBatchResponse>;
 
 /** Request for the Publish method. */
 export interface PublishRequest {
@@ -401,10 +523,10 @@ export interface PublishRequest {
   topic?: string;
 }
 export const PublishRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "message": S.optional(PubsubMessage),
-  "topic": S.optional(S.String),
-}),
+  S.Struct({
+    message: S.optional(PubsubMessage),
+    topic: S.optional(S.String),
+  }),
 ).annotate({ identifier: "PublishRequest" }) as any as S.Schema<PublishRequest>;
 
 export interface PublishTopicsRequest {
@@ -412,10 +534,18 @@ export interface PublishTopicsRequest {
   body?: PublishRequest;
 }
 export const PublishTopicsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(PublishRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1a/topics/publish","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "PublishTopicsRequest" }) as any as S.Schema<PublishTopicsRequest>;
+  S.Struct({
+    body: S.optional(PublishRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1a/topics/publish",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PublishTopicsRequest",
+}) as any as S.Schema<PublishTopicsRequest>;
 
 /** Request for the PullBatch method. */
 export interface PullBatchRequest {
@@ -427,22 +557,32 @@ export interface PullBatchRequest {
   returnImmediately?: boolean;
 }
 export const PullBatchRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "maxEvents": S.optional(S.Number),
-  "subscription": S.optional(S.String),
-  "returnImmediately": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "PullBatchRequest" }) as any as S.Schema<PullBatchRequest>;
+  S.Struct({
+    maxEvents: S.optional(S.Number),
+    subscription: S.optional(S.String),
+    returnImmediately: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "PullBatchRequest",
+}) as any as S.Schema<PullBatchRequest>;
 
 export interface PullBatchSubscriptionsRequest {
   /** Request body */
   body?: PullBatchRequest;
 }
 export const PullBatchSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(PullBatchRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1a/subscriptions/pullBatch","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "PullBatchSubscriptionsRequest" }) as any as S.Schema<PullBatchSubscriptionsRequest>;
+  S.Struct({
+    body: S.optional(PullBatchRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1a/subscriptions/pullBatch",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PullBatchSubscriptionsRequest",
+}) as any as S.Schema<PullBatchSubscriptionsRequest>;
 
 /** An event indicating a received message or truncation event. */
 export interface PubsubEvent {
@@ -456,12 +596,12 @@ export interface PubsubEvent {
   message?: PubsubMessage;
 }
 export const PubsubEvent = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "truncated": S.optional(S.Boolean),
-  "deleted": S.optional(S.Boolean),
-  "subscription": S.optional(S.String),
-  "message": S.optional(PubsubMessage),
-}),
+  S.Struct({
+    truncated: S.optional(S.Boolean),
+    deleted: S.optional(S.Boolean),
+    subscription: S.optional(S.String),
+    message: S.optional(PubsubMessage),
+  }),
 ).annotate({ identifier: "PubsubEvent" }) as any as S.Schema<PubsubEvent>;
 
 /** Either a PubsubMessage or a truncation event. One of these two must be populated. */
@@ -472,14 +612,16 @@ export interface PullResponse {
   pubsubEvent?: PubsubEvent;
 }
 export const PullResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "ackId": S.optional(S.String),
-  "pubsubEvent": S.optional(PubsubEvent),
-}),
+  S.Struct({
+    ackId: S.optional(S.String),
+    pubsubEvent: S.optional(PubsubEvent),
+  }),
 ).annotate({ identifier: "PullResponse" }) as any as S.Schema<PullResponse>;
 
 export type PullResponseList = ReadonlyArray<PullResponse>;
-export const PullResponseList = /*@__PURE__*/ S.Array(PullResponse) as any as S.Schema<PullResponseList>;
+export const PullResponseList = /*@__PURE__*/ S.Array(
+  PullResponse,
+) as any as S.Schema<PullResponseList>;
 
 /** Response for the PullBatch method. */
 export interface PullBatchResponse {
@@ -487,10 +629,12 @@ export interface PullBatchResponse {
   pullResponses?: PullResponseList;
 }
 export const PullBatchResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pullResponses": S.optional(PullResponseList),
-}),
-).annotate({ identifier: "PullBatchResponse" }) as any as S.Schema<PullBatchResponse>;
+  S.Struct({
+    pullResponses: S.optional(PullResponseList),
+  }),
+).annotate({
+  identifier: "PullBatchResponse",
+}) as any as S.Schema<PullBatchResponse>;
 
 /** Request for the Pull method. */
 export interface PullRequest {
@@ -500,10 +644,10 @@ export interface PullRequest {
   returnImmediately?: boolean;
 }
 export const PullRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "subscription": S.optional(S.String),
-  "returnImmediately": S.optional(S.Boolean),
-}),
+  S.Struct({
+    subscription: S.optional(S.String),
+    returnImmediately: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "PullRequest" }) as any as S.Schema<PullRequest>;
 
 export interface PullSubscriptionsRequest {
@@ -511,12 +655,25 @@ export interface PullSubscriptionsRequest {
   body?: PullRequest;
 }
 export const PullSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(PullRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1a/subscriptions/pull","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "PullSubscriptionsRequest" }) as any as S.Schema<PullSubscriptionsRequest>;
+  S.Struct({
+    body: S.optional(PullRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1a/subscriptions/pull",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PullSubscriptionsRequest",
+}) as any as S.Schema<PullSubscriptionsRequest>;
 
-export type AcknowledgeSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type AcknowledgeSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Acknowledges a particular received message: the Pub/Sub system can remove the given message from the subscription. Acknowledging a message whose Ack deadline has expired may succeed, but the message could have been already redelivered. Acknowledging a message more than once will not result in an error. This is only used for messages received via pull. */
 export const acknowledgeSubscriptions: API.OperationMethod<
   AcknowledgeSubscriptionsRequest,
@@ -531,7 +688,12 @@ export const acknowledgeSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a subscription on a given topic for a given subscriber. If the subscription already exists, returns ALREADY_EXISTS. If the corresponding topic doesn't exist, returns NOT_FOUND. If the name is not provided in the request, the server will assign a random name for this subscription on the same project as the topic. */
 export const createSubscriptions: API.OperationMethod<
   CreateSubscriptionsRequest,
@@ -546,7 +708,12 @@ export const createSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateTopicsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateTopicsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates the given topic with the given name. */
 export const createTopics: API.OperationMethod<
   CreateTopicsRequest,
@@ -561,7 +728,12 @@ export const createTopics: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes an existing subscription. All pending messages in the subscription are immediately dropped. Calls to Pull after deletion will return NOT_FOUND. */
 export const deleteSubscriptions: API.OperationMethod<
   DeleteSubscriptionsRequest,
@@ -576,7 +748,12 @@ export const deleteSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteTopicsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteTopicsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes the topic with the given name. Returns NOT_FOUND if the topic does not exist. After a topic is deleted, a new topic may be created with the same name. */
 export const deleteTopics: API.OperationMethod<
   DeleteTopicsRequest,
@@ -634,7 +811,10 @@ export const listSubscriptions: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListTopicsError = NotFound | Forbidden | GcpOpError;
@@ -650,10 +830,18 @@ export const listTopics: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ModifyAckDeadlineSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ModifyAckDeadlineSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Modifies the Ack deadline for a message received from a pull request. */
 export const modifyAckDeadlineSubscriptions: API.OperationMethod<
   ModifyAckDeadlineSubscriptionsRequest,
@@ -668,7 +856,12 @@ export const modifyAckDeadlineSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ModifyPushConfigSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ModifyPushConfigSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Modifies the PushConfig for a specified subscription. This method can be used to suspend the flow of messages to an endpoint by clearing the PushConfig field in the request. Messages will be accumulated for delivery even if no push configuration is defined or while the configuration is modified. */
 export const modifyPushConfigSubscriptions: API.OperationMethod<
   ModifyPushConfigSubscriptionsRequest,
@@ -683,7 +876,12 @@ export const modifyPushConfigSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PublishBatchTopicsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PublishBatchTopicsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Adds one or more messages to the topic. Returns NOT_FOUND if the topic does not exist. */
 export const publishBatchTopics: API.OperationMethod<
   PublishBatchTopicsRequest,
@@ -698,7 +896,12 @@ export const publishBatchTopics: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PublishTopicsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PublishTopicsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Adds a message to the topic. Returns NOT_FOUND if the topic does not exist. */
 export const publishTopics: API.OperationMethod<
   PublishTopicsRequest,
@@ -713,7 +916,12 @@ export const publishTopics: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PullBatchSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PullBatchSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Pulls messages from the server. Returns an empty list if there are no messages available in the backlog. The system is free to return UNAVAILABLE if there are too many pull requests outstanding for the given subscription. */
 export const pullBatchSubscriptions: API.OperationMethod<
   PullBatchSubscriptionsRequest,
@@ -728,7 +936,12 @@ export const pullBatchSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PullSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PullSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Pulls a single message from the server. If return_immediately is true, and no messages are available in the subscription, this method returns FAILED_PRECONDITION. The system is free to return an UNAVAILABLE error if no messages are available in a reasonable amount of time (to reduce system load). */
 export const pullSubscriptions: API.OperationMethod<
   PullSubscriptionsRequest,
@@ -742,4 +955,3 @@ export const pullSubscriptions: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

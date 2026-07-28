@@ -2331,12 +2331,54 @@ export const AgentConversationToolResultMessage = /*@__PURE__*/ S.suspend(() =>
   identifier: "AgentConversationToolResultMessage",
 }) as any as S.Schema<AgentConversationToolResultMessage>;
 
-export type AgentConversationMessage =
-  | AgentConversationUserMessage
-  | AgentConversationAssistantMessage
-  | AgentConversationToolResultMessage;
-export const AgentConversationMessage =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<AgentConversationMessage>;
+export interface AgentConversationMessage {
+  role:
+    | AgentConversationUserMessageRoleEnum
+    | AgentConversationAssistantMessageRoleEnum
+    | AgentConversationToolResultMessageRoleEnum;
+  /** String shorthand, or array of {type:'text'|'image', ...} parts. */
+  content:
+    | unknown
+    | AgentConversationAssistantMessageContentList
+    | AgentConversationToolResultMessageContentList;
+  /** Epoch milliseconds. */
+  timestamp: number;
+  api?: string;
+  provider?: string;
+  model?: string;
+  usage?: AgentConversationAssistantMessageUsageMap;
+  stopReason?: StopReasonEnum;
+  errorMessage?: string;
+  toolCallId?: string;
+  toolName?: string;
+  isError?: boolean;
+}
+export const AgentConversationMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    role: S.Union(
+      AgentConversationUserMessageRoleEnum,
+      AgentConversationAssistantMessageRoleEnum,
+      AgentConversationToolResultMessageRoleEnum,
+    ),
+    content: S.Union(
+      S.Unknown,
+      AgentConversationAssistantMessageContentList,
+      AgentConversationToolResultMessageContentList,
+    ),
+    timestamp: S.Number,
+    api: S.optional(S.String),
+    provider: S.optional(S.String),
+    model: S.optional(S.String),
+    usage: S.optional(AgentConversationAssistantMessageUsageMap),
+    stopReason: S.optional(StopReasonEnum),
+    errorMessage: S.optional(S.String),
+    toolCallId: S.optional(S.String),
+    toolName: S.optional(S.String),
+    isError: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "AgentConversationMessage",
+}) as any as S.Schema<AgentConversationMessage>;
 
 /** Full transcript, or the trailing `last_n` messages if `?last_n=` was supplied. */
 export type AgentApplicationSessionsRetrieveResponseConversationList =

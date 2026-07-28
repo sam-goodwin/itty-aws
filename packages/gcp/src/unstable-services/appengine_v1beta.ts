@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export type FirewallRuleActionEnum = "UNSPECIFIED_ACTION" | "ALLOW" | "DENY";
@@ -74,16 +74,18 @@ export interface FirewallRule {
   action?: FirewallRuleActionEnum;
 }
 export const FirewallRule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "priority": S.optional(S.Number),
-  "sourceRange": S.optional(S.String),
-  "description": S.optional(S.String),
-  "action": S.optional(FirewallRuleActionEnum),
-}),
+  S.Struct({
+    priority: S.optional(S.Number),
+    sourceRange: S.optional(S.String),
+    description: S.optional(S.String),
+    action: S.optional(FirewallRuleActionEnum),
+  }),
 ).annotate({ identifier: "FirewallRule" }) as any as S.Schema<FirewallRule>;
 
 export type FirewallRuleList = ReadonlyArray<FirewallRule>;
-export const FirewallRuleList = /*@__PURE__*/ S.Array(FirewallRule) as any as S.Schema<FirewallRuleList>;
+export const FirewallRuleList = /*@__PURE__*/ S.Array(
+  FirewallRule,
+) as any as S.Schema<FirewallRuleList>;
 
 /** Request message for Firewall.BatchUpdateIngressRules. */
 export interface BatchUpdateIngressRulesRequest {
@@ -91,10 +93,12 @@ export interface BatchUpdateIngressRulesRequest {
   ingressRules?: FirewallRuleList;
 }
 export const BatchUpdateIngressRulesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "ingressRules": S.optional(FirewallRuleList),
-}),
-).annotate({ identifier: "BatchUpdateIngressRulesRequest" }) as any as S.Schema<BatchUpdateIngressRulesRequest>;
+  S.Struct({
+    ingressRules: S.optional(FirewallRuleList),
+  }),
+).annotate({
+  identifier: "BatchUpdateIngressRulesRequest",
+}) as any as S.Schema<BatchUpdateIngressRulesRequest>;
 
 export interface BatchUpdateAppsFirewallIngressRulesRequest {
   /** Part of `name`. Name of the Firewall collection to set. Example: apps/myapp/firewall/ingressRules. */
@@ -102,12 +106,21 @@ export interface BatchUpdateAppsFirewallIngressRulesRequest {
   /** Request body */
   body?: BatchUpdateIngressRulesRequest;
 }
-export const BatchUpdateAppsFirewallIngressRulesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "appsId": S.String.pipe(T.Label()),
-  "body": S.optional(BatchUpdateIngressRulesRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/apps/{appsId}/firewall/ingressRules:batchUpdate","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "BatchUpdateAppsFirewallIngressRulesRequest" }) as any as S.Schema<BatchUpdateAppsFirewallIngressRulesRequest>;
+export const BatchUpdateAppsFirewallIngressRulesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      appsId: S.String.pipe(T.Label()),
+      body: S.optional(BatchUpdateIngressRulesRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/apps/{appsId}/firewall/ingressRules:batchUpdate",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "BatchUpdateAppsFirewallIngressRulesRequest",
+  }) as any as S.Schema<BatchUpdateAppsFirewallIngressRulesRequest>;
 
 /** Response message for Firewall.UpdateAllIngressRules. */
 export interface BatchUpdateIngressRulesResponse {
@@ -115,12 +128,18 @@ export interface BatchUpdateIngressRulesResponse {
   ingressRules?: FirewallRuleList;
 }
 export const BatchUpdateIngressRulesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "ingressRules": S.optional(FirewallRuleList),
-}),
-).annotate({ identifier: "BatchUpdateIngressRulesResponse" }) as any as S.Schema<BatchUpdateIngressRulesResponse>;
+  S.Struct({
+    ingressRules: S.optional(FirewallRuleList),
+  }),
+).annotate({
+  identifier: "BatchUpdateIngressRulesResponse",
+}) as any as S.Schema<BatchUpdateIngressRulesResponse>;
 
-export type ApplicationServingStatusEnum = "UNSPECIFIED" | "SERVING" | "USER_DISABLED" | "SYSTEM_DISABLED";
+export type ApplicationServingStatusEnum =
+  | "UNSPECIFIED"
+  | "SERVING"
+  | "USER_DISABLED"
+  | "SYSTEM_DISABLED";
 export const ApplicationServingStatusEnum = /*@__PURE__*/ S.String;
 
 /** The feature specific settings to be used in the application. These define behaviors that are user configurable. */
@@ -131,16 +150,25 @@ export interface FeatureSettings {
   useContainerOptimizedOs?: boolean;
 }
 export const FeatureSettings = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "splitHealthChecks": S.optional(S.Boolean),
-  "useContainerOptimizedOs": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "FeatureSettings" }) as any as S.Schema<FeatureSettings>;
+  S.Struct({
+    splitHealthChecks: S.optional(S.Boolean),
+    useContainerOptimizedOs: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "FeatureSettings",
+}) as any as S.Schema<FeatureSettings>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
-export type ApplicationDatabaseTypeEnum = "DATABASE_TYPE_UNSPECIFIED" | "CLOUD_DATASTORE" | "CLOUD_FIRESTORE" | "CLOUD_DATASTORE_COMPATIBILITY";
+export type ApplicationDatabaseTypeEnum =
+  | "DATABASE_TYPE_UNSPECIFIED"
+  | "CLOUD_DATASTORE"
+  | "CLOUD_FIRESTORE"
+  | "CLOUD_DATASTORE_COMPATIBILITY";
 export const ApplicationDatabaseTypeEnum = /*@__PURE__*/ S.String;
 
 /** Rules to match an HTTP request and dispatch that request to a service. */
@@ -153,17 +181,24 @@ export interface UrlDispatchRule {
   path?: string;
 }
 export const UrlDispatchRule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "service": S.optional(S.String),
-  "domain": S.optional(S.String),
-  "path": S.optional(S.String),
-}),
-).annotate({ identifier: "UrlDispatchRule" }) as any as S.Schema<UrlDispatchRule>;
+  S.Struct({
+    service: S.optional(S.String),
+    domain: S.optional(S.String),
+    path: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UrlDispatchRule",
+}) as any as S.Schema<UrlDispatchRule>;
 
 export type UrlDispatchRuleList = ReadonlyArray<UrlDispatchRule>;
-export const UrlDispatchRuleList = /*@__PURE__*/ S.Array(UrlDispatchRule) as any as S.Schema<UrlDispatchRuleList>;
+export const UrlDispatchRuleList = /*@__PURE__*/ S.Array(
+  UrlDispatchRule,
+) as any as S.Schema<UrlDispatchRuleList>;
 
-export type ApplicationSslPolicyEnum = "SSL_POLICY_UNSPECIFIED" | "DEFAULT" | "MODERN";
+export type ApplicationSslPolicyEnum =
+  | "SSL_POLICY_UNSPECIFIED"
+  | "DEFAULT"
+  | "MODERN";
 export const ApplicationSslPolicyEnum = /*@__PURE__*/ S.String;
 
 /** Identity-Aware Proxy */
@@ -178,13 +213,15 @@ export interface IdentityAwareProxy {
   oauth2ClientSecretSha256?: string;
 }
 export const IdentityAwareProxy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "oauth2ClientId": S.optional(S.String),
-  "oauth2ClientSecret": S.optional(S.String),
-  "enabled": S.optional(S.Boolean),
-  "oauth2ClientSecretSha256": S.optional(S.String),
-}),
-).annotate({ identifier: "IdentityAwareProxy" }) as any as S.Schema<IdentityAwareProxy>;
+  S.Struct({
+    oauth2ClientId: S.optional(S.String),
+    oauth2ClientSecret: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    oauth2ClientSecretSha256: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "IdentityAwareProxy",
+}) as any as S.Schema<IdentityAwareProxy>;
 
 /** An Application resource contains the top-level configuration of an App Engine application. */
 export interface Application {
@@ -222,25 +259,25 @@ export interface Application {
   iap?: IdentityAwareProxy;
 }
 export const Application = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "defaultHostname": S.optional(S.String),
-  "codeBucket": S.optional(S.String),
-  "servingStatus": S.optional(ApplicationServingStatusEnum),
-  "featureSettings": S.optional(FeatureSettings),
-  "generatedCustomerMetadata": S.optional(DocumentMap),
-  "name": S.optional(S.String),
-  "serviceAccount": S.optional(S.String),
-  "defaultBucket": S.optional(S.String),
-  "id": S.optional(S.String),
-  "gcrDomain": S.optional(S.String),
-  "locationId": S.optional(S.String),
-  "databaseType": S.optional(ApplicationDatabaseTypeEnum),
-  "authDomain": S.optional(S.String),
-  "dispatchRules": S.optional(UrlDispatchRuleList),
-  "defaultCookieExpiration": S.optional(S.String),
-  "sslPolicy": S.optional(ApplicationSslPolicyEnum),
-  "iap": S.optional(IdentityAwareProxy),
-}),
+  S.Struct({
+    defaultHostname: S.optional(S.String),
+    codeBucket: S.optional(S.String),
+    servingStatus: S.optional(ApplicationServingStatusEnum),
+    featureSettings: S.optional(FeatureSettings),
+    generatedCustomerMetadata: S.optional(DocumentMap),
+    name: S.optional(S.String),
+    serviceAccount: S.optional(S.String),
+    defaultBucket: S.optional(S.String),
+    id: S.optional(S.String),
+    gcrDomain: S.optional(S.String),
+    locationId: S.optional(S.String),
+    databaseType: S.optional(ApplicationDatabaseTypeEnum),
+    authDomain: S.optional(S.String),
+    dispatchRules: S.optional(UrlDispatchRuleList),
+    defaultCookieExpiration: S.optional(S.String),
+    sslPolicy: S.optional(ApplicationSslPolicyEnum),
+    iap: S.optional(IdentityAwareProxy),
+  }),
 ).annotate({ identifier: "Application" }) as any as S.Schema<Application>;
 
 export interface CreateAppsRequest {
@@ -248,13 +285,23 @@ export interface CreateAppsRequest {
   body?: Application;
 }
 export const CreateAppsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(Application.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/apps","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "CreateAppsRequest" }) as any as S.Schema<CreateAppsRequest>;
+  S.Struct({
+    body: S.optional(Application.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/apps",
+      baseUrl: "https://appengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateAppsRequest",
+}) as any as S.Schema<CreateAppsRequest>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 /** The Status type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by gRPC (https://github.com/grpc). Each Status message contains three pieces of data: error code, error message, and error details.You can find out more about this error model and how to work with it in the API Design Guide (https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -266,11 +313,11 @@ export interface Status {
   details?: DocumentMapList;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(S.Number),
-  "message": S.optional(S.String),
-  "details": S.optional(DocumentMapList),
-}),
+  S.Struct({
+    code: S.optional(S.Number),
+    message: S.optional(S.String),
+    details: S.optional(DocumentMapList),
+  }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -287,16 +334,23 @@ export interface Operation {
   response?: DocumentMap;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "metadata": S.optional(DocumentMap),
-  "error": S.optional(Status),
-  "name": S.optional(S.String),
-  "done": S.optional(S.Boolean),
-  "response": S.optional(DocumentMap),
-}),
+  S.Struct({
+    metadata: S.optional(DocumentMap),
+    error: S.optional(Status),
+    name: S.optional(S.String),
+    done: S.optional(S.Boolean),
+    response: S.optional(DocumentMap),
+  }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
-export type ManagedCertificateStatusEnum = "MANAGEMENT_STATUS_UNSPECIFIED" | "OK" | "PENDING" | "FAILED_RETRYING_NOT_VISIBLE" | "FAILED_PERMANENT" | "FAILED_RETRYING_CAA_FORBIDDEN" | "FAILED_RETRYING_CAA_CHECKING";
+export type ManagedCertificateStatusEnum =
+  | "MANAGEMENT_STATUS_UNSPECIFIED"
+  | "OK"
+  | "PENDING"
+  | "FAILED_RETRYING_NOT_VISIBLE"
+  | "FAILED_PERMANENT"
+  | "FAILED_RETRYING_CAA_FORBIDDEN"
+  | "FAILED_RETRYING_CAA_CHECKING";
 export const ManagedCertificateStatusEnum = /*@__PURE__*/ S.String;
 
 /** A certificate managed by App Engine. */
@@ -307,14 +361,18 @@ export interface ManagedCertificate {
   status?: ManagedCertificateStatusEnum;
 }
 export const ManagedCertificate = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "lastRenewalTime": S.optional(S.String),
-  "status": S.optional(ManagedCertificateStatusEnum),
-}),
-).annotate({ identifier: "ManagedCertificate" }) as any as S.Schema<ManagedCertificate>;
+  S.Struct({
+    lastRenewalTime: S.optional(S.String),
+    status: S.optional(ManagedCertificateStatusEnum),
+  }),
+).annotate({
+  identifier: "ManagedCertificate",
+}) as any as S.Schema<ManagedCertificate>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** An SSL certificate obtained from a certificate authority. */
 export interface CertificateRawData {
@@ -324,11 +382,13 @@ export interface CertificateRawData {
   privateKey?: string;
 }
 export const CertificateRawData = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "publicCertificate": S.optional(S.String),
-  "privateKey": S.optional(S.String),
-}),
-).annotate({ identifier: "CertificateRawData" }) as any as S.Schema<CertificateRawData>;
+  S.Struct({
+    publicCertificate: S.optional(S.String),
+    privateKey: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CertificateRawData",
+}) as any as S.Schema<CertificateRawData>;
 
 /** An SSL certificate that a user has been authorized to administer. A user is authorized to administer any certificate that applies to one of their authorized domains. */
 export interface AuthorizedCertificate {
@@ -352,18 +412,20 @@ export interface AuthorizedCertificate {
   certificateRawData?: CertificateRawData;
 }
 export const AuthorizedCertificate = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.optional(S.String),
-  "expireTime": S.optional(S.String),
-  "domainMappingsCount": S.optional(S.Number),
-  "displayName": S.optional(S.String),
-  "managedCertificate": S.optional(ManagedCertificate),
-  "name": S.optional(S.String),
-  "visibleDomainMappings": S.optional(StringList),
-  "domainNames": S.optional(StringList),
-  "certificateRawData": S.optional(CertificateRawData),
-}),
-).annotate({ identifier: "AuthorizedCertificate" }) as any as S.Schema<AuthorizedCertificate>;
+  S.Struct({
+    id: S.optional(S.String),
+    expireTime: S.optional(S.String),
+    domainMappingsCount: S.optional(S.Number),
+    displayName: S.optional(S.String),
+    managedCertificate: S.optional(ManagedCertificate),
+    name: S.optional(S.String),
+    visibleDomainMappings: S.optional(StringList),
+    domainNames: S.optional(StringList),
+    certificateRawData: S.optional(CertificateRawData),
+  }),
+).annotate({
+  identifier: "AuthorizedCertificate",
+}) as any as S.Schema<AuthorizedCertificate>;
 
 export interface CreateAppsAuthorizedCertificatesRequest {
   /** Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. */
@@ -371,15 +433,28 @@ export interface CreateAppsAuthorizedCertificatesRequest {
   /** Request body */
   body?: AuthorizedCertificate;
 }
-export const CreateAppsAuthorizedCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "appsId": S.String.pipe(T.Label()),
-  "body": S.optional(AuthorizedCertificate.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/apps/{appsId}/authorizedCertificates","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "CreateAppsAuthorizedCertificatesRequest" }) as any as S.Schema<CreateAppsAuthorizedCertificatesRequest>;
+export const CreateAppsAuthorizedCertificatesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      appsId: S.String.pipe(T.Label()),
+      body: S.optional(AuthorizedCertificate.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/apps/{appsId}/authorizedCertificates",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateAppsAuthorizedCertificatesRequest",
+}) as any as S.Schema<CreateAppsAuthorizedCertificatesRequest>;
 
-export type CreateAppsDomainMappingsOverrideStrategyEnum = "UNSPECIFIED_DOMAIN_OVERRIDE_STRATEGY" | "STRICT" | "OVERRIDE";
-export const CreateAppsDomainMappingsOverrideStrategyEnum = /*@__PURE__*/ S.String;
+export type CreateAppsDomainMappingsOverrideStrategyEnum =
+  | "UNSPECIFIED_DOMAIN_OVERRIDE_STRATEGY"
+  | "STRICT"
+  | "OVERRIDE";
+export const CreateAppsDomainMappingsOverrideStrategyEnum =
+  /*@__PURE__*/ S.String;
 
 export type ResourceRecordTypeEnum = "A" | "AAAA" | "CNAME";
 export const ResourceRecordTypeEnum = /*@__PURE__*/ S.String;
@@ -394,15 +469,17 @@ export interface ResourceRecord {
   type?: ResourceRecordTypeEnum;
 }
 export const ResourceRecord = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "rrdata": S.optional(S.String),
-  "type": S.optional(ResourceRecordTypeEnum),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    rrdata: S.optional(S.String),
+    type: S.optional(ResourceRecordTypeEnum),
+  }),
 ).annotate({ identifier: "ResourceRecord" }) as any as S.Schema<ResourceRecord>;
 
 export type ResourceRecordList = ReadonlyArray<ResourceRecord>;
-export const ResourceRecordList = /*@__PURE__*/ S.Array(ResourceRecord) as any as S.Schema<ResourceRecordList>;
+export const ResourceRecordList = /*@__PURE__*/ S.Array(
+  ResourceRecord,
+) as any as S.Schema<ResourceRecordList>;
 
 export type SslSettingsSslManagementTypeEnum = "AUTOMATIC" | "MANUAL";
 export const SslSettingsSslManagementTypeEnum = /*@__PURE__*/ S.String;
@@ -417,11 +494,11 @@ export interface SslSettings {
   sslManagementType?: SslSettingsSslManagementTypeEnum;
 }
 export const SslSettings = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pendingManagedCertificateId": S.optional(S.String),
-  "certificateId": S.optional(S.String),
-  "sslManagementType": S.optional(SslSettingsSslManagementTypeEnum),
-}),
+  S.Struct({
+    pendingManagedCertificateId: S.optional(S.String),
+    certificateId: S.optional(S.String),
+    sslManagementType: S.optional(SslSettingsSslManagementTypeEnum),
+  }),
 ).annotate({ identifier: "SslSettings" }) as any as S.Schema<SslSettings>;
 
 /** A domain serving an App Engine application. */
@@ -436,29 +513,41 @@ export interface DomainMapping {
   sslSettings?: SslSettings;
 }
 export const DomainMapping = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.optional(S.String),
-  "name": S.optional(S.String),
-  "resourceRecords": S.optional(ResourceRecordList),
-  "sslSettings": S.optional(SslSettings),
-}),
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    resourceRecords: S.optional(ResourceRecordList),
+    sslSettings: S.optional(SslSettings),
+  }),
 ).annotate({ identifier: "DomainMapping" }) as any as S.Schema<DomainMapping>;
 
 export interface CreateAppsDomainMappingsRequest {
   /** Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. */
   appsId: string;
   /** Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected. */
-  overrideStrategy?: CreateAppsDomainMappingsOverrideStrategyEnum | (string & {});
+  overrideStrategy?:
+    | CreateAppsDomainMappingsOverrideStrategyEnum
+    | (string & {});
   /** Request body */
   body?: DomainMapping;
 }
 export const CreateAppsDomainMappingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "appsId": S.String.pipe(T.Label()),
-  "overrideStrategy": S.optional(CreateAppsDomainMappingsOverrideStrategyEnum.pipe(T.Query())),
-  "body": S.optional(DomainMapping.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/apps/{appsId}/domainMappings","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "CreateAppsDomainMappingsRequest" }) as any as S.Schema<CreateAppsDomainMappingsRequest>;
+  S.Struct({
+    appsId: S.String.pipe(T.Label()),
+    overrideStrategy: S.optional(
+      CreateAppsDomainMappingsOverrideStrategyEnum.pipe(T.Query()),
+    ),
+    body: S.optional(DomainMapping.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/apps/{appsId}/domainMappings",
+      baseUrl: "https://appengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateAppsDomainMappingsRequest",
+}) as any as S.Schema<CreateAppsDomainMappingsRequest>;
 
 export interface CreateAppsFirewallIngressRulesRequest {
   /** Part of `parent`. Required. Name of the parent Firewall collection in which to create a new rule. Example: apps/myapp/firewall/ingressRules. */
@@ -466,15 +555,27 @@ export interface CreateAppsFirewallIngressRulesRequest {
   /** Request body */
   body?: FirewallRule;
 }
-export const CreateAppsFirewallIngressRulesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "appsId": S.String.pipe(T.Label()),
-  "body": S.optional(FirewallRule.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/apps/{appsId}/firewall/ingressRules","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "CreateAppsFirewallIngressRulesRequest" }) as any as S.Schema<CreateAppsFirewallIngressRulesRequest>;
+export const CreateAppsFirewallIngressRulesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      appsId: S.String.pipe(T.Label()),
+      body: S.optional(FirewallRule.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/apps/{appsId}/firewall/ingressRules",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateAppsFirewallIngressRulesRequest",
+}) as any as S.Schema<CreateAppsFirewallIngressRulesRequest>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
 /** A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time. */
 export interface ManualScaling {
@@ -482,12 +583,15 @@ export interface ManualScaling {
   instances?: number;
 }
 export const ManualScaling = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "instances": S.optional(S.Number),
-}),
+  S.Struct({
+    instances: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "ManualScaling" }) as any as S.Schema<ManualScaling>;
 
-export type UrlMapAuthFailActionEnum = "AUTH_FAIL_ACTION_UNSPECIFIED" | "AUTH_FAIL_ACTION_REDIRECT" | "AUTH_FAIL_ACTION_UNAUTHORIZED";
+export type UrlMapAuthFailActionEnum =
+  | "AUTH_FAIL_ACTION_UNSPECIFIED"
+  | "AUTH_FAIL_ACTION_REDIRECT"
+  | "AUTH_FAIL_ACTION_UNAUTHORIZED";
 export const UrlMapAuthFailActionEnum = /*@__PURE__*/ S.String;
 
 /** Executes a script to handle the request that matches the URL pattern. */
@@ -496,9 +600,9 @@ export interface ScriptHandler {
   scriptPath?: string;
 }
 export const ScriptHandler = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "scriptPath": S.optional(S.String),
-}),
+  S.Struct({
+    scriptPath: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ScriptHandler" }) as any as S.Schema<ScriptHandler>;
 
 /** Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files. Static file handlers describe which files in the application directory are static files, and which URLs serve them. */
@@ -519,18 +623,25 @@ export interface StaticFilesHandler {
   path?: string;
 }
 export const StaticFilesHandler = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "httpHeaders": S.optional(StringMap),
-  "requireMatchingFile": S.optional(S.Boolean),
-  "applicationReadable": S.optional(S.Boolean),
-  "mimeType": S.optional(S.String),
-  "uploadPathRegex": S.optional(S.String),
-  "expiration": S.optional(S.String),
-  "path": S.optional(S.String),
-}),
-).annotate({ identifier: "StaticFilesHandler" }) as any as S.Schema<StaticFilesHandler>;
+  S.Struct({
+    httpHeaders: S.optional(StringMap),
+    requireMatchingFile: S.optional(S.Boolean),
+    applicationReadable: S.optional(S.Boolean),
+    mimeType: S.optional(S.String),
+    uploadPathRegex: S.optional(S.String),
+    expiration: S.optional(S.String),
+    path: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "StaticFilesHandler",
+}) as any as S.Schema<StaticFilesHandler>;
 
-export type UrlMapSecurityLevelEnum = "SECURE_UNSPECIFIED" | "SECURE_DEFAULT" | "SECURE_NEVER" | "SECURE_OPTIONAL" | "SECURE_ALWAYS";
+export type UrlMapSecurityLevelEnum =
+  | "SECURE_UNSPECIFIED"
+  | "SECURE_DEFAULT"
+  | "SECURE_NEVER"
+  | "SECURE_OPTIONAL"
+  | "SECURE_ALWAYS";
 export const UrlMapSecurityLevelEnum = /*@__PURE__*/ S.String;
 
 /** Uses Google Cloud Endpoints to handle requests. */
@@ -539,15 +650,26 @@ export interface ApiEndpointHandler {
   scriptPath?: string;
 }
 export const ApiEndpointHandler = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "scriptPath": S.optional(S.String),
-}),
-).annotate({ identifier: "ApiEndpointHandler" }) as any as S.Schema<ApiEndpointHandler>;
+  S.Struct({
+    scriptPath: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ApiEndpointHandler",
+}) as any as S.Schema<ApiEndpointHandler>;
 
-export type UrlMapLoginEnum = "LOGIN_UNSPECIFIED" | "LOGIN_OPTIONAL" | "LOGIN_ADMIN" | "LOGIN_REQUIRED";
+export type UrlMapLoginEnum =
+  | "LOGIN_UNSPECIFIED"
+  | "LOGIN_OPTIONAL"
+  | "LOGIN_ADMIN"
+  | "LOGIN_REQUIRED";
 export const UrlMapLoginEnum = /*@__PURE__*/ S.String;
 
-export type UrlMapRedirectHttpResponseCodeEnum = "REDIRECT_HTTP_RESPONSE_CODE_UNSPECIFIED" | "REDIRECT_HTTP_RESPONSE_CODE_301" | "REDIRECT_HTTP_RESPONSE_CODE_302" | "REDIRECT_HTTP_RESPONSE_CODE_303" | "REDIRECT_HTTP_RESPONSE_CODE_307";
+export type UrlMapRedirectHttpResponseCodeEnum =
+  | "REDIRECT_HTTP_RESPONSE_CODE_UNSPECIFIED"
+  | "REDIRECT_HTTP_RESPONSE_CODE_301"
+  | "REDIRECT_HTTP_RESPONSE_CODE_302"
+  | "REDIRECT_HTTP_RESPONSE_CODE_303"
+  | "REDIRECT_HTTP_RESPONSE_CODE_307";
 export const UrlMapRedirectHttpResponseCodeEnum = /*@__PURE__*/ S.String;
 
 /** URL pattern and description of how the URL should be handled. App Engine can handle URLs by executing application code or by serving static files uploaded with the version, such as images, CSS, or JavaScript. */
@@ -570,20 +692,22 @@ export interface UrlMap {
   redirectHttpResponseCode?: UrlMapRedirectHttpResponseCodeEnum;
 }
 export const UrlMap = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "authFailAction": S.optional(UrlMapAuthFailActionEnum),
-  "script": S.optional(ScriptHandler),
-  "urlRegex": S.optional(S.String),
-  "staticFiles": S.optional(StaticFilesHandler),
-  "securityLevel": S.optional(UrlMapSecurityLevelEnum),
-  "apiEndpoint": S.optional(ApiEndpointHandler),
-  "login": S.optional(UrlMapLoginEnum),
-  "redirectHttpResponseCode": S.optional(UrlMapRedirectHttpResponseCodeEnum),
-}),
+  S.Struct({
+    authFailAction: S.optional(UrlMapAuthFailActionEnum),
+    script: S.optional(ScriptHandler),
+    urlRegex: S.optional(S.String),
+    staticFiles: S.optional(StaticFilesHandler),
+    securityLevel: S.optional(UrlMapSecurityLevelEnum),
+    apiEndpoint: S.optional(ApiEndpointHandler),
+    login: S.optional(UrlMapLoginEnum),
+    redirectHttpResponseCode: S.optional(UrlMapRedirectHttpResponseCodeEnum),
+  }),
 ).annotate({ identifier: "UrlMap" }) as any as S.Schema<UrlMap>;
 
 export type UrlMapList = ReadonlyArray<UrlMap>;
-export const UrlMapList = /*@__PURE__*/ S.Array(UrlMap) as any as S.Schema<UrlMapList>;
+export const UrlMapList = /*@__PURE__*/ S.Array(
+  UrlMap,
+) as any as S.Schema<UrlMapList>;
 
 /** Runtime settings for the App Engine flexible environment. */
 export interface FlexibleRuntimeSettings {
@@ -593,11 +717,13 @@ export interface FlexibleRuntimeSettings {
   runtimeVersion?: string;
 }
 export const FlexibleRuntimeSettings = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "operatingSystem": S.optional(S.String),
-  "runtimeVersion": S.optional(S.String),
-}),
-).annotate({ identifier: "FlexibleRuntimeSettings" }) as any as S.Schema<FlexibleRuntimeSettings>;
+  S.Struct({
+    operatingSystem: S.optional(S.String),
+    runtimeVersion: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "FlexibleRuntimeSettings",
+}) as any as S.Schema<FlexibleRuntimeSettings>;
 
 /** Third-party Python runtime library that is required by the application. */
 export interface Library {
@@ -607,14 +733,16 @@ export interface Library {
   version?: string;
 }
 export const Library = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "version": S.optional(S.String),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    version: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Library" }) as any as S.Schema<Library>;
 
 export type LibraryList = ReadonlyArray<Library>;
-export const LibraryList = /*@__PURE__*/ S.Array(Library) as any as S.Schema<LibraryList>;
+export const LibraryList = /*@__PURE__*/ S.Array(
+  Library,
+) as any as S.Schema<LibraryList>;
 
 /** Target scaling by CPU usage. */
 export interface CpuUtilization {
@@ -624,10 +752,10 @@ export interface CpuUtilization {
   targetUtilization?: number;
 }
 export const CpuUtilization = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "aggregationWindowLength": S.optional(S.String),
-  "targetUtilization": S.optional(S.Number),
-}),
+  S.Struct({
+    aggregationWindowLength: S.optional(S.String),
+    targetUtilization: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "CpuUtilization" }) as any as S.Schema<CpuUtilization>;
 
 /** Scheduler settings for standard environment. */
@@ -642,13 +770,15 @@ export interface StandardSchedulerSettings {
   minInstances?: number;
 }
 export const StandardSchedulerSettings = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "targetThroughputUtilization": S.optional(S.Number),
-  "maxInstances": S.optional(S.Number),
-  "targetCpuUtilization": S.optional(S.Number),
-  "minInstances": S.optional(S.Number),
-}),
-).annotate({ identifier: "StandardSchedulerSettings" }) as any as S.Schema<StandardSchedulerSettings>;
+  S.Struct({
+    targetThroughputUtilization: S.optional(S.Number),
+    maxInstances: S.optional(S.Number),
+    targetCpuUtilization: S.optional(S.Number),
+    minInstances: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "StandardSchedulerSettings",
+}) as any as S.Schema<StandardSchedulerSettings>;
 
 /** Allows autoscaling based on Stackdriver metrics. */
 export interface CustomMetric {
@@ -664,17 +794,19 @@ export interface CustomMetric {
   filter?: string;
 }
 export const CustomMetric = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "targetType": S.optional(S.String),
-  "targetUtilization": S.optional(S.Number),
-  "singleInstanceAssignment": S.optional(S.Number),
-  "metricName": S.optional(S.String),
-  "filter": S.optional(S.String),
-}),
+  S.Struct({
+    targetType: S.optional(S.String),
+    targetUtilization: S.optional(S.Number),
+    singleInstanceAssignment: S.optional(S.Number),
+    metricName: S.optional(S.String),
+    filter: S.optional(S.String),
+  }),
 ).annotate({ identifier: "CustomMetric" }) as any as S.Schema<CustomMetric>;
 
 export type CustomMetricList = ReadonlyArray<CustomMetric>;
-export const CustomMetricList = /*@__PURE__*/ S.Array(CustomMetric) as any as S.Schema<CustomMetricList>;
+export const CustomMetricList = /*@__PURE__*/ S.Array(
+  CustomMetric,
+) as any as S.Schema<CustomMetricList>;
 
 /** Target scaling by request utilization. Only applicable in the App Engine flexible environment. */
 export interface RequestUtilization {
@@ -684,11 +816,13 @@ export interface RequestUtilization {
   targetConcurrentRequests?: number;
 }
 export const RequestUtilization = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "targetRequestCountPerSecond": S.optional(S.Number),
-  "targetConcurrentRequests": S.optional(S.Number),
-}),
-).annotate({ identifier: "RequestUtilization" }) as any as S.Schema<RequestUtilization>;
+  S.Struct({
+    targetRequestCountPerSecond: S.optional(S.Number),
+    targetConcurrentRequests: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "RequestUtilization",
+}) as any as S.Schema<RequestUtilization>;
 
 /** Target scaling by network usage. Only applicable in the App Engine flexible environment. */
 export interface NetworkUtilization {
@@ -702,13 +836,15 @@ export interface NetworkUtilization {
   targetReceivedBytesPerSecond?: number;
 }
 export const NetworkUtilization = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "targetSentPacketsPerSecond": S.optional(S.Number),
-  "targetReceivedPacketsPerSecond": S.optional(S.Number),
-  "targetSentBytesPerSecond": S.optional(S.Number),
-  "targetReceivedBytesPerSecond": S.optional(S.Number),
-}),
-).annotate({ identifier: "NetworkUtilization" }) as any as S.Schema<NetworkUtilization>;
+  S.Struct({
+    targetSentPacketsPerSecond: S.optional(S.Number),
+    targetReceivedPacketsPerSecond: S.optional(S.Number),
+    targetSentBytesPerSecond: S.optional(S.Number),
+    targetReceivedBytesPerSecond: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "NetworkUtilization",
+}) as any as S.Schema<NetworkUtilization>;
 
 /** Target scaling by disk usage. Only applicable in the App Engine flexible environment. */
 export interface DiskUtilization {
@@ -722,13 +858,15 @@ export interface DiskUtilization {
   targetReadBytesPerSecond?: number;
 }
 export const DiskUtilization = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "targetWriteOpsPerSecond": S.optional(S.Number),
-  "targetReadOpsPerSecond": S.optional(S.Number),
-  "targetWriteBytesPerSecond": S.optional(S.Number),
-  "targetReadBytesPerSecond": S.optional(S.Number),
-}),
-).annotate({ identifier: "DiskUtilization" }) as any as S.Schema<DiskUtilization>;
+  S.Struct({
+    targetWriteOpsPerSecond: S.optional(S.Number),
+    targetReadOpsPerSecond: S.optional(S.Number),
+    targetWriteBytesPerSecond: S.optional(S.Number),
+    targetReadBytesPerSecond: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "DiskUtilization",
+}) as any as S.Schema<DiskUtilization>;
 
 /** Automatic scaling is based on request rate, response latencies, and other application metrics. */
 export interface AutomaticScaling {
@@ -762,29 +900,43 @@ export interface AutomaticScaling {
   diskUtilization?: DiskUtilization;
 }
 export const AutomaticScaling = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "cpuUtilization": S.optional(CpuUtilization),
-  "standardSchedulerSettings": S.optional(StandardSchedulerSettings),
-  "maxTotalInstances": S.optional(S.Number),
-  "minPendingLatency": S.optional(S.String),
-  "coolDownPeriod": S.optional(S.String),
-  "maxIdleInstances": S.optional(S.Number),
-  "maxConcurrentRequests": S.optional(S.Number),
-  "customMetrics": S.optional(CustomMetricList),
-  "requestUtilization": S.optional(RequestUtilization),
-  "networkUtilization": S.optional(NetworkUtilization),
-  "minTotalInstances": S.optional(S.Number),
-  "maxPendingLatency": S.optional(S.String),
-  "minIdleInstances": S.optional(S.Number),
-  "diskUtilization": S.optional(DiskUtilization),
-}),
-).annotate({ identifier: "AutomaticScaling" }) as any as S.Schema<AutomaticScaling>;
+  S.Struct({
+    cpuUtilization: S.optional(CpuUtilization),
+    standardSchedulerSettings: S.optional(StandardSchedulerSettings),
+    maxTotalInstances: S.optional(S.Number),
+    minPendingLatency: S.optional(S.String),
+    coolDownPeriod: S.optional(S.String),
+    maxIdleInstances: S.optional(S.Number),
+    maxConcurrentRequests: S.optional(S.Number),
+    customMetrics: S.optional(CustomMetricList),
+    requestUtilization: S.optional(RequestUtilization),
+    networkUtilization: S.optional(NetworkUtilization),
+    minTotalInstances: S.optional(S.Number),
+    maxPendingLatency: S.optional(S.String),
+    minIdleInstances: S.optional(S.Number),
+    diskUtilization: S.optional(DiskUtilization),
+  }),
+).annotate({
+  identifier: "AutomaticScaling",
+}) as any as S.Schema<AutomaticScaling>;
 
-export type VersionInboundServicesItemEnum = "INBOUND_SERVICE_UNSPECIFIED" | "INBOUND_SERVICE_MAIL" | "INBOUND_SERVICE_MAIL_BOUNCE" | "INBOUND_SERVICE_XMPP_ERROR" | "INBOUND_SERVICE_XMPP_MESSAGE" | "INBOUND_SERVICE_XMPP_SUBSCRIBE" | "INBOUND_SERVICE_XMPP_PRESENCE" | "INBOUND_SERVICE_CHANNEL_PRESENCE" | "INBOUND_SERVICE_WARMUP";
+export type VersionInboundServicesItemEnum =
+  | "INBOUND_SERVICE_UNSPECIFIED"
+  | "INBOUND_SERVICE_MAIL"
+  | "INBOUND_SERVICE_MAIL_BOUNCE"
+  | "INBOUND_SERVICE_XMPP_ERROR"
+  | "INBOUND_SERVICE_XMPP_MESSAGE"
+  | "INBOUND_SERVICE_XMPP_SUBSCRIBE"
+  | "INBOUND_SERVICE_XMPP_PRESENCE"
+  | "INBOUND_SERVICE_CHANNEL_PRESENCE"
+  | "INBOUND_SERVICE_WARMUP";
 export const VersionInboundServicesItemEnum = /*@__PURE__*/ S.String;
 
-export type VersionInboundServicesItemEnumList = ReadonlyArray<VersionInboundServicesItemEnum>;
-export const VersionInboundServicesItemEnumList = /*@__PURE__*/ S.Array(VersionInboundServicesItemEnum) as any as S.Schema<VersionInboundServicesItemEnumList>;
+export type VersionInboundServicesItemEnumList =
+  ReadonlyArray<VersionInboundServicesItemEnum>;
+export const VersionInboundServicesItemEnumList = /*@__PURE__*/ S.Array(
+  VersionInboundServicesItemEnum,
+) as any as S.Schema<VersionInboundServicesItemEnumList>;
 
 /** Network interface key message. */
 export interface VpcNetworkInterface {
@@ -796,17 +948,24 @@ export interface VpcNetworkInterface {
   tags?: StringList;
 }
 export const VpcNetworkInterface = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "network": S.optional(S.String),
-  "subnet": S.optional(S.String),
-  "tags": S.optional(StringList),
-}),
-).annotate({ identifier: "VpcNetworkInterface" }) as any as S.Schema<VpcNetworkInterface>;
+  S.Struct({
+    network: S.optional(S.String),
+    subnet: S.optional(S.String),
+    tags: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "VpcNetworkInterface",
+}) as any as S.Schema<VpcNetworkInterface>;
 
 export type VpcNetworkInterfaceList = ReadonlyArray<VpcNetworkInterface>;
-export const VpcNetworkInterfaceList = /*@__PURE__*/ S.Array(VpcNetworkInterface) as any as S.Schema<VpcNetworkInterfaceList>;
+export const VpcNetworkInterfaceList = /*@__PURE__*/ S.Array(
+  VpcNetworkInterface,
+) as any as S.Schema<VpcNetworkInterfaceList>;
 
-export type VpcAccessVpcEgressEnum = "VPC_EGRESS_UNSPECIFIED" | "ALL_TRAFFIC" | "PRIVATE_IP_RANGES";
+export type VpcAccessVpcEgressEnum =
+  | "VPC_EGRESS_UNSPECIFIED"
+  | "ALL_TRAFFIC"
+  | "PRIVATE_IP_RANGES";
 export const VpcAccessVpcEgressEnum = /*@__PURE__*/ S.String;
 
 /** VPC Access settings */
@@ -817,13 +976,18 @@ export interface VpcAccess {
   vpcEgress?: VpcAccessVpcEgressEnum;
 }
 export const VpcAccess = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "networkInterfaces": S.optional(VpcNetworkInterfaceList),
-  "vpcEgress": S.optional(VpcAccessVpcEgressEnum),
-}),
+  S.Struct({
+    networkInterfaces: S.optional(VpcNetworkInterfaceList),
+    vpcEgress: S.optional(VpcAccessVpcEgressEnum),
+  }),
 ).annotate({ identifier: "VpcAccess" }) as any as S.Schema<VpcAccess>;
 
-export type ErrorHandlerErrorCodeEnum = "ERROR_CODE_UNSPECIFIED" | "ERROR_CODE_DEFAULT" | "ERROR_CODE_OVER_QUOTA" | "ERROR_CODE_DOS_API_DENIAL" | "ERROR_CODE_TIMEOUT";
+export type ErrorHandlerErrorCodeEnum =
+  | "ERROR_CODE_UNSPECIFIED"
+  | "ERROR_CODE_DEFAULT"
+  | "ERROR_CODE_OVER_QUOTA"
+  | "ERROR_CODE_DOS_API_DENIAL"
+  | "ERROR_CODE_TIMEOUT";
 export const ErrorHandlerErrorCodeEnum = /*@__PURE__*/ S.String;
 
 /** Custom static error page to be served when an error occurs. */
@@ -836,17 +1000,22 @@ export interface ErrorHandler {
   staticFile?: string;
 }
 export const ErrorHandler = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "mimeType": S.optional(S.String),
-  "errorCode": S.optional(ErrorHandlerErrorCodeEnum),
-  "staticFile": S.optional(S.String),
-}),
+  S.Struct({
+    mimeType: S.optional(S.String),
+    errorCode: S.optional(ErrorHandlerErrorCodeEnum),
+    staticFile: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ErrorHandler" }) as any as S.Schema<ErrorHandler>;
 
 export type ErrorHandlerList = ReadonlyArray<ErrorHandler>;
-export const ErrorHandlerList = /*@__PURE__*/ S.Array(ErrorHandler) as any as S.Schema<ErrorHandlerList>;
+export const ErrorHandlerList = /*@__PURE__*/ S.Array(
+  ErrorHandler,
+) as any as S.Schema<ErrorHandlerList>;
 
-export type NetworkInstanceIpModeEnum = "INSTANCE_IP_MODE_UNSPECIFIED" | "EXTERNAL" | "INTERNAL";
+export type NetworkInstanceIpModeEnum =
+  | "INSTANCE_IP_MODE_UNSPECIFIED"
+  | "EXTERNAL"
+  | "INTERNAL";
 export const NetworkInstanceIpModeEnum = /*@__PURE__*/ S.String;
 
 /** Extra network settings. Only applicable in the App Engine flexible environment. */
@@ -865,14 +1034,14 @@ export interface Network {
   name?: string;
 }
 export const Network = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "forwardedPorts": S.optional(StringList),
-  "instanceTag": S.optional(S.String),
-  "sessionAffinity": S.optional(S.Boolean),
-  "subnetworkName": S.optional(S.String),
-  "instanceIpMode": S.optional(NetworkInstanceIpModeEnum),
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    forwardedPorts: S.optional(StringList),
+    instanceTag: S.optional(S.String),
+    sessionAffinity: S.optional(S.Boolean),
+    subnetworkName: S.optional(S.String),
+    instanceIpMode: S.optional(NetworkInstanceIpModeEnum),
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Network" }) as any as S.Schema<Network>;
 
 /** A service with basic scaling will create an instance when the application receives a request. The instance will be turned down when the app becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity. */
@@ -883,13 +1052,16 @@ export interface BasicScaling {
   maxInstances?: number;
 }
 export const BasicScaling = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "idleTimeout": S.optional(S.String),
-  "maxInstances": S.optional(S.Number),
-}),
+  S.Struct({
+    idleTimeout: S.optional(S.String),
+    maxInstances: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "BasicScaling" }) as any as S.Schema<BasicScaling>;
 
-export type EndpointsApiServiceRolloutStrategyEnum = "UNSPECIFIED_ROLLOUT_STRATEGY" | "FIXED" | "MANAGED";
+export type EndpointsApiServiceRolloutStrategyEnum =
+  | "UNSPECIFIED_ROLLOUT_STRATEGY"
+  | "FIXED"
+  | "MANAGED";
 export const EndpointsApiServiceRolloutStrategyEnum = /*@__PURE__*/ S.String;
 
 /** Google Cloud Endpoints (https://cloud.google.com/endpoints) configuration. The Endpoints API Service provides tooling for serving Open API and gRPC endpoints via an NGINX proxy. Only valid for App Engine Flexible environment deployments.The fields here refer to the name and configuration ID of a "service" resource in the Service Management API (https://cloud.google.com/service-management/overview). */
@@ -904,13 +1076,15 @@ export interface EndpointsApiService {
   configId?: string;
 }
 export const EndpointsApiService = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "rolloutStrategy": S.optional(EndpointsApiServiceRolloutStrategyEnum),
-  "name": S.optional(S.String),
-  "disableTraceSampling": S.optional(S.Boolean),
-  "configId": S.optional(S.String),
-}),
-).annotate({ identifier: "EndpointsApiService" }) as any as S.Schema<EndpointsApiService>;
+  S.Struct({
+    rolloutStrategy: S.optional(EndpointsApiServiceRolloutStrategyEnum),
+    name: S.optional(S.String),
+    disableTraceSampling: S.optional(S.Boolean),
+    configId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EndpointsApiService",
+}) as any as S.Schema<EndpointsApiService>;
 
 /** Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances. Only applicable for instances in App Engine flexible environment. */
 export interface HealthCheck {
@@ -930,15 +1104,15 @@ export interface HealthCheck {
   restartThreshold?: number;
 }
 export const HealthCheck = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "host": S.optional(S.String),
-  "timeout": S.optional(S.String),
-  "checkInterval": S.optional(S.String),
-  "unhealthyThreshold": S.optional(S.Number),
-  "disableHealthCheck": S.optional(S.Boolean),
-  "healthyThreshold": S.optional(S.Number),
-  "restartThreshold": S.optional(S.Number),
-}),
+  S.Struct({
+    host: S.optional(S.String),
+    timeout: S.optional(S.String),
+    checkInterval: S.optional(S.String),
+    unhealthyThreshold: S.optional(S.Number),
+    disableHealthCheck: S.optional(S.Boolean),
+    healthyThreshold: S.optional(S.Number),
+    restartThreshold: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "HealthCheck" }) as any as S.Schema<HealthCheck>;
 
 /** The entrypoint for the application. */
@@ -947,18 +1121,30 @@ export interface Entrypoint {
   shell?: string;
 }
 export const Entrypoint = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "shell": S.optional(S.String),
-}),
+  S.Struct({
+    shell: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Entrypoint" }) as any as S.Schema<Entrypoint>;
 
-export type ApiConfigHandlerLoginEnum = "LOGIN_UNSPECIFIED" | "LOGIN_OPTIONAL" | "LOGIN_ADMIN" | "LOGIN_REQUIRED";
+export type ApiConfigHandlerLoginEnum =
+  | "LOGIN_UNSPECIFIED"
+  | "LOGIN_OPTIONAL"
+  | "LOGIN_ADMIN"
+  | "LOGIN_REQUIRED";
 export const ApiConfigHandlerLoginEnum = /*@__PURE__*/ S.String;
 
-export type ApiConfigHandlerSecurityLevelEnum = "SECURE_UNSPECIFIED" | "SECURE_DEFAULT" | "SECURE_NEVER" | "SECURE_OPTIONAL" | "SECURE_ALWAYS";
+export type ApiConfigHandlerSecurityLevelEnum =
+  | "SECURE_UNSPECIFIED"
+  | "SECURE_DEFAULT"
+  | "SECURE_NEVER"
+  | "SECURE_OPTIONAL"
+  | "SECURE_ALWAYS";
 export const ApiConfigHandlerSecurityLevelEnum = /*@__PURE__*/ S.String;
 
-export type ApiConfigHandlerAuthFailActionEnum = "AUTH_FAIL_ACTION_UNSPECIFIED" | "AUTH_FAIL_ACTION_REDIRECT" | "AUTH_FAIL_ACTION_UNAUTHORIZED";
+export type ApiConfigHandlerAuthFailActionEnum =
+  | "AUTH_FAIL_ACTION_UNSPECIFIED"
+  | "AUTH_FAIL_ACTION_REDIRECT"
+  | "AUTH_FAIL_ACTION_UNAUTHORIZED";
 export const ApiConfigHandlerAuthFailActionEnum = /*@__PURE__*/ S.String;
 
 /** Google Cloud Endpoints (https://cloud.google.com/endpoints) configuration for API handlers. */
@@ -975,14 +1161,16 @@ export interface ApiConfigHandler {
   url?: string;
 }
 export const ApiConfigHandler = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "login": S.optional(ApiConfigHandlerLoginEnum),
-  "securityLevel": S.optional(ApiConfigHandlerSecurityLevelEnum),
-  "script": S.optional(S.String),
-  "authFailAction": S.optional(ApiConfigHandlerAuthFailActionEnum),
-  "url": S.optional(S.String),
-}),
-).annotate({ identifier: "ApiConfigHandler" }) as any as S.Schema<ApiConfigHandler>;
+  S.Struct({
+    login: S.optional(ApiConfigHandlerLoginEnum),
+    securityLevel: S.optional(ApiConfigHandlerSecurityLevelEnum),
+    script: S.optional(S.String),
+    authFailAction: S.optional(ApiConfigHandlerAuthFailActionEnum),
+    url: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ApiConfigHandler",
+}) as any as S.Schema<ApiConfigHandler>;
 
 /** Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances. */
 export interface LivenessCheck {
@@ -1002,22 +1190,42 @@ export interface LivenessCheck {
   initialDelay?: string;
 }
 export const LivenessCheck = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "successThreshold": S.optional(S.Number),
-  "failureThreshold": S.optional(S.Number),
-  "checkInterval": S.optional(S.String),
-  "path": S.optional(S.String),
-  "host": S.optional(S.String),
-  "timeout": S.optional(S.String),
-  "initialDelay": S.optional(S.String),
-}),
+  S.Struct({
+    successThreshold: S.optional(S.Number),
+    failureThreshold: S.optional(S.Number),
+    checkInterval: S.optional(S.String),
+    path: S.optional(S.String),
+    host: S.optional(S.String),
+    timeout: S.optional(S.String),
+    initialDelay: S.optional(S.String),
+  }),
 ).annotate({ identifier: "LivenessCheck" }) as any as S.Schema<LivenessCheck>;
 
-export type VersionAppEngineBundledServicesItemEnum = "BUNDLED_SERVICE_TYPE_UNSPECIFIED" | "BUNDLED_SERVICE_TYPE_APP_IDENTITY_SERVICE" | "BUNDLED_SERVICE_TYPE_BLOBSTORE" | "BUNDLED_SERVICE_TYPE_CAPABILITY_SERVICE" | "BUNDLED_SERVICE_TYPE_DATASTORE_V3" | "BUNDLED_SERVICE_TYPE_DEFERRED" | "BUNDLED_SERVICE_TYPE_IMAGES" | "BUNDLED_SERVICE_TYPE_MAIL" | "BUNDLED_SERVICE_TYPE_MEMCACHE" | "BUNDLED_SERVICE_TYPE_MODULES" | "BUNDLED_SERVICE_TYPE_NAMESPACES" | "BUNDLED_SERVICE_TYPE_NDB" | "BUNDLED_SERVICE_TYPE_SEARCH" | "BUNDLED_SERVICE_TYPE_TASKQUEUES" | "BUNDLED_SERVICE_TYPE_URLFETCH" | "BUNDLED_SERVICE_TYPE_USERS";
+export type VersionAppEngineBundledServicesItemEnum =
+  | "BUNDLED_SERVICE_TYPE_UNSPECIFIED"
+  | "BUNDLED_SERVICE_TYPE_APP_IDENTITY_SERVICE"
+  | "BUNDLED_SERVICE_TYPE_BLOBSTORE"
+  | "BUNDLED_SERVICE_TYPE_CAPABILITY_SERVICE"
+  | "BUNDLED_SERVICE_TYPE_DATASTORE_V3"
+  | "BUNDLED_SERVICE_TYPE_DEFERRED"
+  | "BUNDLED_SERVICE_TYPE_IMAGES"
+  | "BUNDLED_SERVICE_TYPE_MAIL"
+  | "BUNDLED_SERVICE_TYPE_MEMCACHE"
+  | "BUNDLED_SERVICE_TYPE_MODULES"
+  | "BUNDLED_SERVICE_TYPE_NAMESPACES"
+  | "BUNDLED_SERVICE_TYPE_NDB"
+  | "BUNDLED_SERVICE_TYPE_SEARCH"
+  | "BUNDLED_SERVICE_TYPE_TASKQUEUES"
+  | "BUNDLED_SERVICE_TYPE_URLFETCH"
+  | "BUNDLED_SERVICE_TYPE_USERS";
 export const VersionAppEngineBundledServicesItemEnum = /*@__PURE__*/ S.String;
 
-export type VersionAppEngineBundledServicesItemEnumList = ReadonlyArray<VersionAppEngineBundledServicesItemEnum>;
-export const VersionAppEngineBundledServicesItemEnumList = /*@__PURE__*/ S.Array(VersionAppEngineBundledServicesItemEnum) as any as S.Schema<VersionAppEngineBundledServicesItemEnumList>;
+export type VersionAppEngineBundledServicesItemEnumList =
+  ReadonlyArray<VersionAppEngineBundledServicesItemEnum>;
+export const VersionAppEngineBundledServicesItemEnumList =
+  /*@__PURE__*/ S.Array(
+    VersionAppEngineBundledServicesItemEnum,
+  ) as any as S.Schema<VersionAppEngineBundledServicesItemEnumList>;
 
 /** Readiness checking configuration for VM instances. Unhealthy instances are removed from traffic rotation. */
 export interface ReadinessCheck {
@@ -1037,18 +1245,21 @@ export interface ReadinessCheck {
   appStartTimeout?: string;
 }
 export const ReadinessCheck = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "checkInterval": S.optional(S.String),
-  "failureThreshold": S.optional(S.Number),
-  "path": S.optional(S.String),
-  "host": S.optional(S.String),
-  "timeout": S.optional(S.String),
-  "successThreshold": S.optional(S.Number),
-  "appStartTimeout": S.optional(S.String),
-}),
+  S.Struct({
+    checkInterval: S.optional(S.String),
+    failureThreshold: S.optional(S.Number),
+    path: S.optional(S.String),
+    host: S.optional(S.String),
+    timeout: S.optional(S.String),
+    successThreshold: S.optional(S.Number),
+    appStartTimeout: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ReadinessCheck" }) as any as S.Schema<ReadinessCheck>;
 
-export type VpcAccessConnectorEgressSettingEnum = "EGRESS_SETTING_UNSPECIFIED" | "ALL_TRAFFIC" | "PRIVATE_IP_RANGES";
+export type VpcAccessConnectorEgressSettingEnum =
+  | "EGRESS_SETTING_UNSPECIFIED"
+  | "ALL_TRAFFIC"
+  | "PRIVATE_IP_RANGES";
 export const VpcAccessConnectorEgressSettingEnum = /*@__PURE__*/ S.String;
 
 /** VPC access connector specification. */
@@ -1059,11 +1270,13 @@ export interface VpcAccessConnector {
   name?: string;
 }
 export const VpcAccessConnector = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "egressSetting": S.optional(VpcAccessConnectorEgressSettingEnum),
-  "name": S.optional(S.String),
-}),
-).annotate({ identifier: "VpcAccessConnector" }) as any as S.Schema<VpcAccessConnector>;
+  S.Struct({
+    egressSetting: S.optional(VpcAccessConnectorEgressSettingEnum),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VpcAccessConnector",
+}) as any as S.Schema<VpcAccessConnector>;
 
 /** Volumes mounted within the app container. Only applicable in the App Engine flexible environment. */
 export interface Volume {
@@ -1075,15 +1288,17 @@ export interface Volume {
   name?: string;
 }
 export const Volume = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "volumeType": S.optional(S.String),
-  "sizeGb": S.optional(S.Number),
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    volumeType: S.optional(S.String),
+    sizeGb: S.optional(S.Number),
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Volume" }) as any as S.Schema<Volume>;
 
 export type VolumeList = ReadonlyArray<Volume>;
-export const VolumeList = /*@__PURE__*/ S.Array(Volume) as any as S.Schema<VolumeList>;
+export const VolumeList = /*@__PURE__*/ S.Array(
+  Volume,
+) as any as S.Schema<VolumeList>;
 
 /** Machine resources for a version. */
 export interface Resources {
@@ -1099,16 +1314,19 @@ export interface Resources {
   volumes?: VolumeList;
 }
 export const Resources = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kmsKeyReference": S.optional(S.String),
-  "cpu": S.optional(S.Number),
-  "memoryGb": S.optional(S.Number),
-  "diskGb": S.optional(S.Number),
-  "volumes": S.optional(VolumeList),
-}),
+  S.Struct({
+    kmsKeyReference: S.optional(S.String),
+    cpu: S.optional(S.Number),
+    memoryGb: S.optional(S.Number),
+    diskGb: S.optional(S.Number),
+    volumes: S.optional(VolumeList),
+  }),
 ).annotate({ identifier: "Resources" }) as any as S.Schema<Resources>;
 
-export type VersionServingStatusEnum = "SERVING_STATUS_UNSPECIFIED" | "SERVING" | "STOPPED";
+export type VersionServingStatusEnum =
+  | "SERVING_STATUS_UNSPECIFIED"
+  | "SERVING"
+  | "STOPPED";
 export const VersionServingStatusEnum = /*@__PURE__*/ S.String;
 
 /** The zip file information for a zip deployment. */
@@ -1119,10 +1337,10 @@ export interface ZipInfo {
   filesCount?: number;
 }
 export const ZipInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sourceUrl": S.optional(S.String),
-  "filesCount": S.optional(S.Number),
-}),
+  S.Struct({
+    sourceUrl: S.optional(S.String),
+    filesCount: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "ZipInfo" }) as any as S.Schema<ZipInfo>;
 
 /** Google Cloud Build information. */
@@ -1131,9 +1349,9 @@ export interface BuildInfo {
   cloudBuildId?: string;
 }
 export const BuildInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "cloudBuildId": S.optional(S.String),
-}),
+  S.Struct({
+    cloudBuildId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "BuildInfo" }) as any as S.Schema<BuildInfo>;
 
 /** Single source file that is part of the version to be deployed. Each source file that is deployed must be specified separately. */
@@ -1146,15 +1364,18 @@ export interface FileInfo {
   mimeType?: string;
 }
 export const FileInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sha1Sum": S.optional(S.String),
-  "sourceUrl": S.optional(S.String),
-  "mimeType": S.optional(S.String),
-}),
+  S.Struct({
+    sha1Sum: S.optional(S.String),
+    sourceUrl: S.optional(S.String),
+    mimeType: S.optional(S.String),
+  }),
 ).annotate({ identifier: "FileInfo" }) as any as S.Schema<FileInfo>;
 
 export type FileInfoMap = { [key: string]: FileInfo | undefined };
-export const FileInfoMap = /*@__PURE__*/ S.Record(S.String, FileInfo) as any as S.Schema<FileInfoMap>;
+export const FileInfoMap = /*@__PURE__*/ S.Record(
+  S.String,
+  FileInfo,
+) as any as S.Schema<FileInfoMap>;
 
 /** Docker image that is used to create a container and start a VM instance for the version that you deploy. Only applicable for instances running in the App Engine flexible environment. */
 export interface ContainerInfo {
@@ -1162,9 +1383,9 @@ export interface ContainerInfo {
   image?: string;
 }
 export const ContainerInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "image": S.optional(S.String),
-}),
+  S.Struct({
+    image: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ContainerInfo" }) as any as S.Schema<ContainerInfo>;
 
 /** Options for the build operations performed as a part of the version deployment. Only applicable for App Engine flexible environment when creating a version using source code directly. */
@@ -1175,11 +1396,13 @@ export interface CloudBuildOptions {
   cloudBuildTimeout?: string;
 }
 export const CloudBuildOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "appYamlPath": S.optional(S.String),
-  "cloudBuildTimeout": S.optional(S.String),
-}),
-).annotate({ identifier: "CloudBuildOptions" }) as any as S.Schema<CloudBuildOptions>;
+  S.Struct({
+    appYamlPath: S.optional(S.String),
+    cloudBuildTimeout: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CloudBuildOptions",
+}) as any as S.Schema<CloudBuildOptions>;
 
 /** Code and application artifacts used to deploy a version to App Engine. */
 export interface Deployment {
@@ -1195,13 +1418,13 @@ export interface Deployment {
   cloudBuildOptions?: CloudBuildOptions;
 }
 export const Deployment = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "zip": S.optional(ZipInfo),
-  "build": S.optional(BuildInfo),
-  "files": S.optional(FileInfoMap),
-  "container": S.optional(ContainerInfo),
-  "cloudBuildOptions": S.optional(CloudBuildOptions),
-}),
+  S.Struct({
+    zip: S.optional(ZipInfo),
+    build: S.optional(BuildInfo),
+    files: S.optional(FileInfoMap),
+    container: S.optional(ContainerInfo),
+    cloudBuildOptions: S.optional(CloudBuildOptions),
+  }),
 ).annotate({ identifier: "Deployment" }) as any as S.Schema<Deployment>;
 
 /** A Version resource is a specific set of source code and configuration files that are deployed into a service. */
@@ -1296,52 +1519,54 @@ export interface Version {
   serviceAccount?: string;
 }
 export const Version = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "betaSettings": S.optional(StringMap),
-  "runtimeChannel": S.optional(S.String),
-  "diskUsageBytes": S.optional(S.String),
-  "instanceClass": S.optional(S.String),
-  "threadsafe": S.optional(S.Boolean),
-  "nobuildFilesRegex": S.optional(S.String),
-  "manualScaling": S.optional(ManualScaling),
-  "generatedCustomerMetadata": S.optional(DocumentMap),
-  "handlers": S.optional(UrlMapList),
-  "versionUrl": S.optional(S.String),
-  "flexibleRuntimeSettings": S.optional(FlexibleRuntimeSettings),
-  "libraries": S.optional(LibraryList),
-  "automaticScaling": S.optional(AutomaticScaling),
-  "runtimeMainExecutablePath": S.optional(S.String),
-  "inboundServices": S.optional(VersionInboundServicesItemEnumList),
-  "env": S.optional(S.String),
-  "vpcAccess": S.optional(VpcAccess),
-  "id": S.optional(S.String),
-  "runtimeApiVersion": S.optional(S.String),
-  "envVariables": S.optional(StringMap),
-  "errorHandlers": S.optional(ErrorHandlerList),
-  "network": S.optional(Network),
-  "basicScaling": S.optional(BasicScaling),
-  "endpointsApiService": S.optional(EndpointsApiService),
-  "healthCheck": S.optional(HealthCheck),
-  "entrypoint": S.optional(Entrypoint),
-  "vm": S.optional(S.Boolean),
-  "appEngineApis": S.optional(S.Boolean),
-  "apiConfig": S.optional(ApiConfigHandler),
-  "defaultExpiration": S.optional(S.String),
-  "livenessCheck": S.optional(LivenessCheck),
-  "appEngineBundledServices": S.optional(VersionAppEngineBundledServicesItemEnumList),
-  "buildEnvVariables": S.optional(StringMap),
-  "readinessCheck": S.optional(ReadinessCheck),
-  "runtime": S.optional(S.String),
-  "vpcAccessConnector": S.optional(VpcAccessConnector),
-  "resources": S.optional(Resources),
-  "zones": S.optional(StringList),
-  "createdBy": S.optional(S.String),
-  "servingStatus": S.optional(VersionServingStatusEnum),
-  "createTime": S.optional(S.String),
-  "deployment": S.optional(Deployment),
-  "name": S.optional(S.String),
-  "serviceAccount": S.optional(S.String),
-}),
+  S.Struct({
+    betaSettings: S.optional(StringMap),
+    runtimeChannel: S.optional(S.String),
+    diskUsageBytes: S.optional(S.String),
+    instanceClass: S.optional(S.String),
+    threadsafe: S.optional(S.Boolean),
+    nobuildFilesRegex: S.optional(S.String),
+    manualScaling: S.optional(ManualScaling),
+    generatedCustomerMetadata: S.optional(DocumentMap),
+    handlers: S.optional(UrlMapList),
+    versionUrl: S.optional(S.String),
+    flexibleRuntimeSettings: S.optional(FlexibleRuntimeSettings),
+    libraries: S.optional(LibraryList),
+    automaticScaling: S.optional(AutomaticScaling),
+    runtimeMainExecutablePath: S.optional(S.String),
+    inboundServices: S.optional(VersionInboundServicesItemEnumList),
+    env: S.optional(S.String),
+    vpcAccess: S.optional(VpcAccess),
+    id: S.optional(S.String),
+    runtimeApiVersion: S.optional(S.String),
+    envVariables: S.optional(StringMap),
+    errorHandlers: S.optional(ErrorHandlerList),
+    network: S.optional(Network),
+    basicScaling: S.optional(BasicScaling),
+    endpointsApiService: S.optional(EndpointsApiService),
+    healthCheck: S.optional(HealthCheck),
+    entrypoint: S.optional(Entrypoint),
+    vm: S.optional(S.Boolean),
+    appEngineApis: S.optional(S.Boolean),
+    apiConfig: S.optional(ApiConfigHandler),
+    defaultExpiration: S.optional(S.String),
+    livenessCheck: S.optional(LivenessCheck),
+    appEngineBundledServices: S.optional(
+      VersionAppEngineBundledServicesItemEnumList,
+    ),
+    buildEnvVariables: S.optional(StringMap),
+    readinessCheck: S.optional(ReadinessCheck),
+    runtime: S.optional(S.String),
+    vpcAccessConnector: S.optional(VpcAccessConnector),
+    resources: S.optional(Resources),
+    zones: S.optional(StringList),
+    createdBy: S.optional(S.String),
+    servingStatus: S.optional(VersionServingStatusEnum),
+    createTime: S.optional(S.String),
+    deployment: S.optional(Deployment),
+    name: S.optional(S.String),
+    serviceAccount: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Version" }) as any as S.Schema<Version>;
 
 export interface CreateAppsServicesVersionsRequest {
@@ -1353,12 +1578,20 @@ export interface CreateAppsServicesVersionsRequest {
   body?: Version;
 }
 export const CreateAppsServicesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "servicesId": S.String.pipe(T.Label()),
-  "appsId": S.String.pipe(T.Label()),
-  "body": S.optional(Version.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/apps/{appsId}/services/{servicesId}/versions","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "CreateAppsServicesVersionsRequest" }) as any as S.Schema<CreateAppsServicesVersionsRequest>;
+  S.Struct({
+    servicesId: S.String.pipe(T.Label()),
+    appsId: S.String.pipe(T.Label()),
+    body: S.optional(Version.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/apps/{appsId}/services/{servicesId}/versions",
+      baseUrl: "https://appengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateAppsServicesVersionsRequest",
+}) as any as S.Schema<CreateAppsServicesVersionsRequest>;
 
 export interface CreateProjectsLocationsApplicationsAuthorizedCertificatesRequest {
   /** Part of `parent`. See documentation of `projectsId`. */
@@ -1370,17 +1603,29 @@ export interface CreateProjectsLocationsApplicationsAuthorizedCertificatesReques
   /** Request body */
   body?: AuthorizedCertificate;
 }
-export const CreateProjectsLocationsApplicationsAuthorizedCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "applicationsId": S.String.pipe(T.Label()),
-  "projectsId": S.String.pipe(T.Label()),
-  "locationsId": S.String.pipe(T.Label()),
-  "body": S.optional(AuthorizedCertificate.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsApplicationsAuthorizedCertificatesRequest" }) as any as S.Schema<CreateProjectsLocationsApplicationsAuthorizedCertificatesRequest>;
+export const CreateProjectsLocationsApplicationsAuthorizedCertificatesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      applicationsId: S.String.pipe(T.Label()),
+      projectsId: S.String.pipe(T.Label()),
+      locationsId: S.String.pipe(T.Label()),
+      body: S.optional(AuthorizedCertificate.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "CreateProjectsLocationsApplicationsAuthorizedCertificatesRequest",
+  }) as any as S.Schema<CreateProjectsLocationsApplicationsAuthorizedCertificatesRequest>;
 
-export type CreateProjectsLocationsApplicationsDomainMappingsOverrideStrategyEnum = "UNSPECIFIED_DOMAIN_OVERRIDE_STRATEGY" | "STRICT" | "OVERRIDE";
-export const CreateProjectsLocationsApplicationsDomainMappingsOverrideStrategyEnum = /*@__PURE__*/ S.String;
+export type CreateProjectsLocationsApplicationsDomainMappingsOverrideStrategyEnum =
+  "UNSPECIFIED_DOMAIN_OVERRIDE_STRATEGY" | "STRICT" | "OVERRIDE";
+export const CreateProjectsLocationsApplicationsDomainMappingsOverrideStrategyEnum =
+  /*@__PURE__*/ S.String;
 
 export interface CreateProjectsLocationsApplicationsDomainMappingsRequest {
   /** Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. */
@@ -1388,21 +1633,36 @@ export interface CreateProjectsLocationsApplicationsDomainMappingsRequest {
   /** Part of `parent`. See documentation of `projectsId`. */
   applicationsId: string;
   /** Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected. */
-  overrideStrategy?: CreateProjectsLocationsApplicationsDomainMappingsOverrideStrategyEnum | (string & {});
+  overrideStrategy?:
+    | CreateProjectsLocationsApplicationsDomainMappingsOverrideStrategyEnum
+    | (string & {});
   /** Part of `parent`. See documentation of `projectsId`. */
   locationsId: string;
   /** Request body */
   body?: DomainMapping;
 }
-export const CreateProjectsLocationsApplicationsDomainMappingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectsId": S.String.pipe(T.Label()),
-  "applicationsId": S.String.pipe(T.Label()),
-  "overrideStrategy": S.optional(CreateProjectsLocationsApplicationsDomainMappingsOverrideStrategyEnum.pipe(T.Query())),
-  "locationsId": S.String.pipe(T.Label()),
-  "body": S.optional(DomainMapping.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsApplicationsDomainMappingsRequest" }) as any as S.Schema<CreateProjectsLocationsApplicationsDomainMappingsRequest>;
+export const CreateProjectsLocationsApplicationsDomainMappingsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      projectsId: S.String.pipe(T.Label()),
+      applicationsId: S.String.pipe(T.Label()),
+      overrideStrategy: S.optional(
+        CreateProjectsLocationsApplicationsDomainMappingsOverrideStrategyEnum.pipe(
+          T.Query(),
+        ),
+      ),
+      locationsId: S.String.pipe(T.Label()),
+      body: S.optional(DomainMapping.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsApplicationsDomainMappingsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsApplicationsDomainMappingsRequest>;
 
 /** Request message for Instances.DebugInstance. */
 export interface DebugInstanceRequest {
@@ -1410,10 +1670,12 @@ export interface DebugInstanceRequest {
   sshKey?: string;
 }
 export const DebugInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sshKey": S.optional(S.String),
-}),
-).annotate({ identifier: "DebugInstanceRequest" }) as any as S.Schema<DebugInstanceRequest>;
+  S.Struct({
+    sshKey: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DebugInstanceRequest",
+}) as any as S.Schema<DebugInstanceRequest>;
 
 export interface DebugAppsServicesVersionsInstancesRequest {
   /** Part of `name`. See documentation of `appsId`. */
@@ -1427,15 +1689,24 @@ export interface DebugAppsServicesVersionsInstancesRequest {
   /** Request body */
   body?: DebugInstanceRequest;
 }
-export const DebugAppsServicesVersionsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "servicesId": S.String.pipe(T.Label()),
-  "versionsId": S.String.pipe(T.Label()),
-  "appsId": S.String.pipe(T.Label()),
-  "instancesId": S.String.pipe(T.Label()),
-  "body": S.optional(DebugInstanceRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}:debug","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "DebugAppsServicesVersionsInstancesRequest" }) as any as S.Schema<DebugAppsServicesVersionsInstancesRequest>;
+export const DebugAppsServicesVersionsInstancesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      servicesId: S.String.pipe(T.Label()),
+      versionsId: S.String.pipe(T.Label()),
+      appsId: S.String.pipe(T.Label()),
+      instancesId: S.String.pipe(T.Label()),
+      body: S.optional(DebugInstanceRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}:debug",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DebugAppsServicesVersionsInstancesRequest",
+  }) as any as S.Schema<DebugAppsServicesVersionsInstancesRequest>;
 
 export interface DebugProjectsLocationsApplicationsServicesVersionsInstancesRequest {
   /** Part of `name`. See documentation of `projectsId`. */
@@ -1453,17 +1724,27 @@ export interface DebugProjectsLocationsApplicationsServicesVersionsInstancesRequ
   /** Request body */
   body?: DebugInstanceRequest;
 }
-export const DebugProjectsLocationsApplicationsServicesVersionsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "versionsId": S.String.pipe(T.Label()),
-  "locationsId": S.String.pipe(T.Label()),
-  "applicationsId": S.String.pipe(T.Label()),
-  "instancesId": S.String.pipe(T.Label()),
-  "projectsId": S.String.pipe(T.Label()),
-  "servicesId": S.String.pipe(T.Label()),
-  "body": S.optional(DebugInstanceRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}:debug","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "DebugProjectsLocationsApplicationsServicesVersionsInstancesRequest" }) as any as S.Schema<DebugProjectsLocationsApplicationsServicesVersionsInstancesRequest>;
+export const DebugProjectsLocationsApplicationsServicesVersionsInstancesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      versionsId: S.String.pipe(T.Label()),
+      locationsId: S.String.pipe(T.Label()),
+      applicationsId: S.String.pipe(T.Label()),
+      instancesId: S.String.pipe(T.Label()),
+      projectsId: S.String.pipe(T.Label()),
+      servicesId: S.String.pipe(T.Label()),
+      body: S.optional(DebugInstanceRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}:debug",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "DebugProjectsLocationsApplicationsServicesVersionsInstancesRequest",
+  }) as any as S.Schema<DebugProjectsLocationsApplicationsServicesVersionsInstancesRequest>;
 
 export interface DeleteAppsAuthorizedCertificatesRequest {
   /** Part of `name`. Required. Name of the resource to delete. Example: apps/myapp/authorizedCertificates/12345. */
@@ -1471,18 +1752,27 @@ export interface DeleteAppsAuthorizedCertificatesRequest {
   /** Part of `name`. See documentation of `appsId`. */
   authorizedCertificatesId: string;
 }
-export const DeleteAppsAuthorizedCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "appsId": S.String.pipe(T.Label()),
-  "authorizedCertificatesId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta/apps/{appsId}/authorizedCertificates/{authorizedCertificatesId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "DeleteAppsAuthorizedCertificatesRequest" }) as any as S.Schema<DeleteAppsAuthorizedCertificatesRequest>;
+export const DeleteAppsAuthorizedCertificatesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      appsId: S.String.pipe(T.Label()),
+      authorizedCertificatesId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta/apps/{appsId}/authorizedCertificates/{authorizedCertificatesId}",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteAppsAuthorizedCertificatesRequest",
+}) as any as S.Schema<DeleteAppsAuthorizedCertificatesRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 export interface DeleteAppsDomainMappingsRequest {
   /** Part of `name`. Required. Name of the resource to delete. Example: apps/myapp/domainMappings/example.com. */
@@ -1491,11 +1781,19 @@ export interface DeleteAppsDomainMappingsRequest {
   domainMappingsId: string;
 }
 export const DeleteAppsDomainMappingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "appsId": S.String.pipe(T.Label()),
-  "domainMappingsId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta/apps/{appsId}/domainMappings/{domainMappingsId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "DeleteAppsDomainMappingsRequest" }) as any as S.Schema<DeleteAppsDomainMappingsRequest>;
+  S.Struct({
+    appsId: S.String.pipe(T.Label()),
+    domainMappingsId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1beta/apps/{appsId}/domainMappings/{domainMappingsId}",
+      baseUrl: "https://appengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteAppsDomainMappingsRequest",
+}) as any as S.Schema<DeleteAppsDomainMappingsRequest>;
 
 export interface DeleteAppsFirewallIngressRulesRequest {
   /** Part of `name`. Name of the Firewall resource to delete. Example: apps/myapp/firewall/ingressRules/100. */
@@ -1503,12 +1801,21 @@ export interface DeleteAppsFirewallIngressRulesRequest {
   /** Part of `name`. See documentation of `appsId`. */
   ingressRulesId: string;
 }
-export const DeleteAppsFirewallIngressRulesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "appsId": S.String.pipe(T.Label()),
-  "ingressRulesId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta/apps/{appsId}/firewall/ingressRules/{ingressRulesId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "DeleteAppsFirewallIngressRulesRequest" }) as any as S.Schema<DeleteAppsFirewallIngressRulesRequest>;
+export const DeleteAppsFirewallIngressRulesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      appsId: S.String.pipe(T.Label()),
+      ingressRulesId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta/apps/{appsId}/firewall/ingressRules/{ingressRulesId}",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteAppsFirewallIngressRulesRequest",
+}) as any as S.Schema<DeleteAppsFirewallIngressRulesRequest>;
 
 export interface DeleteAppsServicesRequest {
   /** Part of `name`. See documentation of `appsId`. */
@@ -1517,11 +1824,19 @@ export interface DeleteAppsServicesRequest {
   appsId: string;
 }
 export const DeleteAppsServicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "servicesId": S.String.pipe(T.Label()),
-  "appsId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta/apps/{appsId}/services/{servicesId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "DeleteAppsServicesRequest" }) as any as S.Schema<DeleteAppsServicesRequest>;
+  S.Struct({
+    servicesId: S.String.pipe(T.Label()),
+    appsId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1beta/apps/{appsId}/services/{servicesId}",
+      baseUrl: "https://appengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteAppsServicesRequest",
+}) as any as S.Schema<DeleteAppsServicesRequest>;
 
 export interface DeleteAppsServicesVersionsRequest {
   /** Part of `name`. See documentation of `appsId`. */
@@ -1532,12 +1847,20 @@ export interface DeleteAppsServicesVersionsRequest {
   servicesId: string;
 }
 export const DeleteAppsServicesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "versionsId": S.String.pipe(T.Label()),
-  "appsId": S.String.pipe(T.Label()),
-  "servicesId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "DeleteAppsServicesVersionsRequest" }) as any as S.Schema<DeleteAppsServicesVersionsRequest>;
+  S.Struct({
+    versionsId: S.String.pipe(T.Label()),
+    appsId: S.String.pipe(T.Label()),
+    servicesId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}",
+      baseUrl: "https://appengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteAppsServicesVersionsRequest",
+}) as any as S.Schema<DeleteAppsServicesVersionsRequest>;
 
 export interface DeleteAppsServicesVersionsInstancesRequest {
   /** Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default/versions/v1/instances/instance-1. */
@@ -1549,14 +1872,23 @@ export interface DeleteAppsServicesVersionsInstancesRequest {
   /** Part of `name`. See documentation of `appsId`. */
   servicesId: string;
 }
-export const DeleteAppsServicesVersionsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "appsId": S.String.pipe(T.Label()),
-  "instancesId": S.String.pipe(T.Label()),
-  "versionsId": S.String.pipe(T.Label()),
-  "servicesId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "DeleteAppsServicesVersionsInstancesRequest" }) as any as S.Schema<DeleteAppsServicesVersionsInstancesRequest>;
+export const DeleteAppsServicesVersionsInstancesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      appsId: S.String.pipe(T.Label()),
+      instancesId: S.String.pipe(T.Label()),
+      versionsId: S.String.pipe(T.Label()),
+      servicesId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteAppsServicesVersionsInstancesRequest",
+  }) as any as S.Schema<DeleteAppsServicesVersionsInstancesRequest>;
 
 export interface DeleteProjectsLocationsApplicationsAuthorizedCertificatesRequest {
   /** Part of `name`. See documentation of `projectsId`. */
@@ -1568,14 +1900,24 @@ export interface DeleteProjectsLocationsApplicationsAuthorizedCertificatesReques
   /** Part of `name`. See documentation of `projectsId`. */
   applicationsId: string;
 }
-export const DeleteProjectsLocationsApplicationsAuthorizedCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locationsId": S.String.pipe(T.Label()),
-  "projectsId": S.String.pipe(T.Label()),
-  "authorizedCertificatesId": S.String.pipe(T.Label()),
-  "applicationsId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates/{authorizedCertificatesId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsApplicationsAuthorizedCertificatesRequest" }) as any as S.Schema<DeleteProjectsLocationsApplicationsAuthorizedCertificatesRequest>;
+export const DeleteProjectsLocationsApplicationsAuthorizedCertificatesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      locationsId: S.String.pipe(T.Label()),
+      projectsId: S.String.pipe(T.Label()),
+      authorizedCertificatesId: S.String.pipe(T.Label()),
+      applicationsId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates/{authorizedCertificatesId}",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "DeleteProjectsLocationsApplicationsAuthorizedCertificatesRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsApplicationsAuthorizedCertificatesRequest>;
 
 export interface DeleteProjectsLocationsApplicationsDomainMappingsRequest {
   /** Part of `name`. See documentation of `projectsId`. */
@@ -1587,14 +1929,23 @@ export interface DeleteProjectsLocationsApplicationsDomainMappingsRequest {
   /** Part of `name`. See documentation of `projectsId`. */
   domainMappingsId: string;
 }
-export const DeleteProjectsLocationsApplicationsDomainMappingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "applicationsId": S.String.pipe(T.Label()),
-  "projectsId": S.String.pipe(T.Label()),
-  "locationsId": S.String.pipe(T.Label()),
-  "domainMappingsId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings/{domainMappingsId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsApplicationsDomainMappingsRequest" }) as any as S.Schema<DeleteProjectsLocationsApplicationsDomainMappingsRequest>;
+export const DeleteProjectsLocationsApplicationsDomainMappingsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      applicationsId: S.String.pipe(T.Label()),
+      projectsId: S.String.pipe(T.Label()),
+      locationsId: S.String.pipe(T.Label()),
+      domainMappingsId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings/{domainMappingsId}",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsApplicationsDomainMappingsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsApplicationsDomainMappingsRequest>;
 
 export interface DeleteProjectsLocationsApplicationsServicesRequest {
   /** Part of `name`. See documentation of `projectsId`. */
@@ -1606,14 +1957,23 @@ export interface DeleteProjectsLocationsApplicationsServicesRequest {
   /** Part of `name`. See documentation of `projectsId`. */
   applicationsId: string;
 }
-export const DeleteProjectsLocationsApplicationsServicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locationsId": S.String.pipe(T.Label()),
-  "projectsId": S.String.pipe(T.Label()),
-  "servicesId": S.String.pipe(T.Label()),
-  "applicationsId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsApplicationsServicesRequest" }) as any as S.Schema<DeleteProjectsLocationsApplicationsServicesRequest>;
+export const DeleteProjectsLocationsApplicationsServicesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      locationsId: S.String.pipe(T.Label()),
+      projectsId: S.String.pipe(T.Label()),
+      servicesId: S.String.pipe(T.Label()),
+      applicationsId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsApplicationsServicesRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsApplicationsServicesRequest>;
 
 export interface DeleteProjectsLocationsApplicationsServicesVersionsRequest {
   /** Part of `name`. See documentation of `projectsId`. */
@@ -1627,15 +1987,24 @@ export interface DeleteProjectsLocationsApplicationsServicesVersionsRequest {
   /** Part of `name`. See documentation of `projectsId`. */
   servicesId: string;
 }
-export const DeleteProjectsLocationsApplicationsServicesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locationsId": S.String.pipe(T.Label()),
-  "versionsId": S.String.pipe(T.Label()),
-  "applicationsId": S.String.pipe(T.Label()),
-  "projectsId": S.String.pipe(T.Label()),
-  "servicesId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}/versions/{versionsId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsApplicationsServicesVersionsRequest" }) as any as S.Schema<DeleteProjectsLocationsApplicationsServicesVersionsRequest>;
+export const DeleteProjectsLocationsApplicationsServicesVersionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      locationsId: S.String.pipe(T.Label()),
+      versionsId: S.String.pipe(T.Label()),
+      applicationsId: S.String.pipe(T.Label()),
+      projectsId: S.String.pipe(T.Label()),
+      servicesId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}/versions/{versionsId}",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsApplicationsServicesVersionsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsApplicationsServicesVersionsRequest>;
 
 export interface DeleteProjectsLocationsApplicationsServicesVersionsInstancesRequest {
   /** Part of `name`. See documentation of `projectsId`. */
@@ -1651,16 +2020,26 @@ export interface DeleteProjectsLocationsApplicationsServicesVersionsInstancesReq
   /** Part of `name`. See documentation of `projectsId`. */
   instancesId: string;
 }
-export const DeleteProjectsLocationsApplicationsServicesVersionsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "applicationsId": S.String.pipe(T.Label()),
-  "locationsId": S.String.pipe(T.Label()),
-  "versionsId": S.String.pipe(T.Label()),
-  "projectsId": S.String.pipe(T.Label()),
-  "servicesId": S.String.pipe(T.Label()),
-  "instancesId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsApplicationsServicesVersionsInstancesRequest" }) as any as S.Schema<DeleteProjectsLocationsApplicationsServicesVersionsInstancesRequest>;
+export const DeleteProjectsLocationsApplicationsServicesVersionsInstancesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      applicationsId: S.String.pipe(T.Label()),
+      locationsId: S.String.pipe(T.Label()),
+      versionsId: S.String.pipe(T.Label()),
+      projectsId: S.String.pipe(T.Label()),
+      servicesId: S.String.pipe(T.Label()),
+      instancesId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "DeleteProjectsLocationsApplicationsServicesVersionsInstancesRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsApplicationsServicesVersionsInstancesRequest>;
 
 /** Request message for Versions.ExportAppImage. */
 export interface ExportAppImageRequest {
@@ -1668,10 +2047,12 @@ export interface ExportAppImageRequest {
   destinationRepository?: string;
 }
 export const ExportAppImageRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "destinationRepository": S.optional(S.String),
-}),
-).annotate({ identifier: "ExportAppImageRequest" }) as any as S.Schema<ExportAppImageRequest>;
+  S.Struct({
+    destinationRepository: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ExportAppImageRequest",
+}) as any as S.Schema<ExportAppImageRequest>;
 
 export interface ExportAppImageAppsServicesVersionsRequest {
   /** Part of `name`. See documentation of `appsId`. */
@@ -1683,14 +2064,23 @@ export interface ExportAppImageAppsServicesVersionsRequest {
   /** Request body */
   body?: ExportAppImageRequest;
 }
-export const ExportAppImageAppsServicesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "servicesId": S.String.pipe(T.Label()),
-  "appsId": S.String.pipe(T.Label()),
-  "versionsId": S.String.pipe(T.Label()),
-  "body": S.optional(ExportAppImageRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}:exportAppImage","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "ExportAppImageAppsServicesVersionsRequest" }) as any as S.Schema<ExportAppImageAppsServicesVersionsRequest>;
+export const ExportAppImageAppsServicesVersionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      servicesId: S.String.pipe(T.Label()),
+      appsId: S.String.pipe(T.Label()),
+      versionsId: S.String.pipe(T.Label()),
+      body: S.optional(ExportAppImageRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}:exportAppImage",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ExportAppImageAppsServicesVersionsRequest",
+  }) as any as S.Schema<ExportAppImageAppsServicesVersionsRequest>;
 
 export interface ExportAppImageProjectsLocationsApplicationsServicesVersionsRequest {
   /** Part of `name`. Required. Name of the App Engine version resource. Format: apps/{app}/services/{service}/versions/{version} */
@@ -1706,18 +2096,31 @@ export interface ExportAppImageProjectsLocationsApplicationsServicesVersionsRequ
   /** Request body */
   body?: ExportAppImageRequest;
 }
-export const ExportAppImageProjectsLocationsApplicationsServicesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectsId": S.String.pipe(T.Label()),
-  "servicesId": S.String.pipe(T.Label()),
-  "applicationsId": S.String.pipe(T.Label()),
-  "locationsId": S.String.pipe(T.Label()),
-  "versionsId": S.String.pipe(T.Label()),
-  "body": S.optional(ExportAppImageRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}/versions/{versionsId}:exportAppImage","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "ExportAppImageProjectsLocationsApplicationsServicesVersionsRequest" }) as any as S.Schema<ExportAppImageProjectsLocationsApplicationsServicesVersionsRequest>;
+export const ExportAppImageProjectsLocationsApplicationsServicesVersionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      projectsId: S.String.pipe(T.Label()),
+      servicesId: S.String.pipe(T.Label()),
+      applicationsId: S.String.pipe(T.Label()),
+      locationsId: S.String.pipe(T.Label()),
+      versionsId: S.String.pipe(T.Label()),
+      body: S.optional(ExportAppImageRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}/versions/{versionsId}:exportAppImage",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "ExportAppImageProjectsLocationsApplicationsServicesVersionsRequest",
+  }) as any as S.Schema<ExportAppImageProjectsLocationsApplicationsServicesVersionsRequest>;
 
-export type GetAppsIncludeExtraDataEnum = "INCLUDE_EXTRA_DATA_UNSPECIFIED" | "INCLUDE_EXTRA_DATA_NONE" | "INCLUDE_GOOGLE_GENERATED_METADATA";
+export type GetAppsIncludeExtraDataEnum =
+  | "INCLUDE_EXTRA_DATA_UNSPECIFIED"
+  | "INCLUDE_EXTRA_DATA_NONE"
+  | "INCLUDE_GOOGLE_GENERATED_METADATA";
 export const GetAppsIncludeExtraDataEnum = /*@__PURE__*/ S.String;
 
 export interface GetAppsRequest {
@@ -1727,13 +2130,21 @@ export interface GetAppsRequest {
   includeExtraData?: GetAppsIncludeExtraDataEnum | (string & {});
 }
 export const GetAppsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "appsId": S.String.pipe(T.Label()),
-  "includeExtraData": S.optional(GetAppsIncludeExtraDataEnum.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/apps/{appsId}","baseUrl":"https://appengine.googleapis.com/"})),
+  S.Struct({
+    appsId: S.String.pipe(T.Label()),
+    includeExtraData: S.optional(GetAppsIncludeExtraDataEnum.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/apps/{appsId}",
+      baseUrl: "https://appengine.googleapis.com/",
+    }),
+  ),
 ).annotate({ identifier: "GetAppsRequest" }) as any as S.Schema<GetAppsRequest>;
 
-export type GetAppsAuthorizedCertificatesViewEnum = "BASIC_CERTIFICATE" | "FULL_CERTIFICATE";
+export type GetAppsAuthorizedCertificatesViewEnum =
+  | "BASIC_CERTIFICATE"
+  | "FULL_CERTIFICATE";
 export const GetAppsAuthorizedCertificatesViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetAppsAuthorizedCertificatesRequest {
@@ -1744,13 +2155,22 @@ export interface GetAppsAuthorizedCertificatesRequest {
   /** Part of `name`. See documentation of `appsId`. */
   authorizedCertificatesId: string;
 }
-export const GetAppsAuthorizedCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "appsId": S.String.pipe(T.Label()),
-  "view": S.optional(GetAppsAuthorizedCertificatesViewEnum.pipe(T.Query())),
-  "authorizedCertificatesId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/apps/{appsId}/authorizedCertificates/{authorizedCertificatesId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "GetAppsAuthorizedCertificatesRequest" }) as any as S.Schema<GetAppsAuthorizedCertificatesRequest>;
+export const GetAppsAuthorizedCertificatesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      appsId: S.String.pipe(T.Label()),
+      view: S.optional(GetAppsAuthorizedCertificatesViewEnum.pipe(T.Query())),
+      authorizedCertificatesId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/apps/{appsId}/authorizedCertificates/{authorizedCertificatesId}",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetAppsAuthorizedCertificatesRequest",
+}) as any as S.Schema<GetAppsAuthorizedCertificatesRequest>;
 
 export interface GetAppsDomainMappingsRequest {
   /** Part of `name`. Required. Name of the resource requested. Example: apps/myapp/domainMappings/example.com. */
@@ -1759,11 +2179,19 @@ export interface GetAppsDomainMappingsRequest {
   domainMappingsId: string;
 }
 export const GetAppsDomainMappingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "appsId": S.String.pipe(T.Label()),
-  "domainMappingsId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/apps/{appsId}/domainMappings/{domainMappingsId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "GetAppsDomainMappingsRequest" }) as any as S.Schema<GetAppsDomainMappingsRequest>;
+  S.Struct({
+    appsId: S.String.pipe(T.Label()),
+    domainMappingsId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/apps/{appsId}/domainMappings/{domainMappingsId}",
+      baseUrl: "https://appengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetAppsDomainMappingsRequest",
+}) as any as S.Schema<GetAppsDomainMappingsRequest>;
 
 export interface GetAppsFirewallIngressRulesRequest {
   /** Part of `name`. Name of the Firewall resource to retrieve. Example: apps/myapp/firewall/ingressRules/100. */
@@ -1772,11 +2200,19 @@ export interface GetAppsFirewallIngressRulesRequest {
   ingressRulesId: string;
 }
 export const GetAppsFirewallIngressRulesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "appsId": S.String.pipe(T.Label()),
-  "ingressRulesId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/apps/{appsId}/firewall/ingressRules/{ingressRulesId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "GetAppsFirewallIngressRulesRequest" }) as any as S.Schema<GetAppsFirewallIngressRulesRequest>;
+  S.Struct({
+    appsId: S.String.pipe(T.Label()),
+    ingressRulesId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/apps/{appsId}/firewall/ingressRules/{ingressRulesId}",
+      baseUrl: "https://appengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetAppsFirewallIngressRulesRequest",
+}) as any as S.Schema<GetAppsFirewallIngressRulesRequest>;
 
 export interface GetAppsLocationsRequest {
   /** Part of `name`. Resource name for the location. */
@@ -1785,11 +2221,19 @@ export interface GetAppsLocationsRequest {
   locationsId: string;
 }
 export const GetAppsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "appsId": S.String.pipe(T.Label()),
-  "locationsId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/apps/{appsId}/locations/{locationsId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "GetAppsLocationsRequest" }) as any as S.Schema<GetAppsLocationsRequest>;
+  S.Struct({
+    appsId: S.String.pipe(T.Label()),
+    locationsId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/apps/{appsId}/locations/{locationsId}",
+      baseUrl: "https://appengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetAppsLocationsRequest",
+}) as any as S.Schema<GetAppsLocationsRequest>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -1805,13 +2249,13 @@ export interface Location {
   name?: string;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "displayName": S.optional(S.String),
-  "metadata": S.optional(DocumentMap),
-  "locationId": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    displayName: S.optional(S.String),
+    metadata: S.optional(DocumentMap),
+    locationId: S.optional(S.String),
+    labels: S.optional(StringMap),
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export interface GetAppsOperationsRequest {
@@ -1821,13 +2265,24 @@ export interface GetAppsOperationsRequest {
   operationsId: string;
 }
 export const GetAppsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "appsId": S.String.pipe(T.Label()),
-  "operationsId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/apps/{appsId}/operations/{operationsId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "GetAppsOperationsRequest" }) as any as S.Schema<GetAppsOperationsRequest>;
+  S.Struct({
+    appsId: S.String.pipe(T.Label()),
+    operationsId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/apps/{appsId}/operations/{operationsId}",
+      baseUrl: "https://appengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetAppsOperationsRequest",
+}) as any as S.Schema<GetAppsOperationsRequest>;
 
-export type GetAppsServicesIncludeExtraDataEnum = "INCLUDE_EXTRA_DATA_UNSPECIFIED" | "INCLUDE_EXTRA_DATA_NONE" | "INCLUDE_GOOGLE_GENERATED_METADATA";
+export type GetAppsServicesIncludeExtraDataEnum =
+  | "INCLUDE_EXTRA_DATA_UNSPECIFIED"
+  | "INCLUDE_EXTRA_DATA_NONE"
+  | "INCLUDE_GOOGLE_GENERATED_METADATA";
 export const GetAppsServicesIncludeExtraDataEnum = /*@__PURE__*/ S.String;
 
 export interface GetAppsServicesRequest {
@@ -1839,18 +2294,35 @@ export interface GetAppsServicesRequest {
   includeExtraData?: GetAppsServicesIncludeExtraDataEnum | (string & {});
 }
 export const GetAppsServicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "appsId": S.String.pipe(T.Label()),
-  "servicesId": S.String.pipe(T.Label()),
-  "includeExtraData": S.optional(GetAppsServicesIncludeExtraDataEnum.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/apps/{appsId}/services/{servicesId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "GetAppsServicesRequest" }) as any as S.Schema<GetAppsServicesRequest>;
+  S.Struct({
+    appsId: S.String.pipe(T.Label()),
+    servicesId: S.String.pipe(T.Label()),
+    includeExtraData: S.optional(
+      GetAppsServicesIncludeExtraDataEnum.pipe(T.Query()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/apps/{appsId}/services/{servicesId}",
+      baseUrl: "https://appengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetAppsServicesRequest",
+}) as any as S.Schema<GetAppsServicesRequest>;
 
-export type TrafficSplitShardByEnum = "UNSPECIFIED" | "COOKIE" | "IP" | "RANDOM";
+export type TrafficSplitShardByEnum =
+  | "UNSPECIFIED"
+  | "COOKIE"
+  | "IP"
+  | "RANDOM";
 export const TrafficSplitShardByEnum = /*@__PURE__*/ S.String;
 
 export type DoubleMap = { [key: string]: number | undefined };
-export const DoubleMap = /*@__PURE__*/ S.Record(S.String, S.Number) as any as S.Schema<DoubleMap>;
+export const DoubleMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Number,
+) as any as S.Schema<DoubleMap>;
 
 /** Traffic routing configuration for versions within a single service. Traffic splits define how traffic directed to the service is assigned to versions. */
 export interface TrafficSplit {
@@ -1860,13 +2332,17 @@ export interface TrafficSplit {
   allocations?: DoubleMap;
 }
 export const TrafficSplit = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "shardBy": S.optional(TrafficSplitShardByEnum),
-  "allocations": S.optional(DoubleMap),
-}),
+  S.Struct({
+    shardBy: S.optional(TrafficSplitShardByEnum),
+    allocations: S.optional(DoubleMap),
+  }),
 ).annotate({ identifier: "TrafficSplit" }) as any as S.Schema<TrafficSplit>;
 
-export type NetworkSettingsIngressTrafficAllowedEnum = "INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED" | "INGRESS_TRAFFIC_ALLOWED_ALL" | "INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY" | "INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB";
+export type NetworkSettingsIngressTrafficAllowedEnum =
+  | "INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED"
+  | "INGRESS_TRAFFIC_ALLOWED_ALL"
+  | "INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY"
+  | "INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB";
 export const NetworkSettingsIngressTrafficAllowedEnum = /*@__PURE__*/ S.String;
 
 /** A NetworkSettings resource is a container for ingress settings for a version or service. */
@@ -1875,10 +2351,12 @@ export interface NetworkSettings {
   ingressTrafficAllowed?: NetworkSettingsIngressTrafficAllowedEnum;
 }
 export const NetworkSettings = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "ingressTrafficAllowed": S.optional(NetworkSettingsIngressTrafficAllowedEnum),
-}),
-).annotate({ identifier: "NetworkSettings" }) as any as S.Schema<NetworkSettings>;
+  S.Struct({
+    ingressTrafficAllowed: S.optional(NetworkSettingsIngressTrafficAllowedEnum),
+  }),
+).annotate({
+  identifier: "NetworkSettings",
+}) as any as S.Schema<NetworkSettings>;
 
 /** A Service resource is a logical component of an application that can share state and communicate in a secure fashion with other services. For example, an application that handles customer requests might include separate services to handle tasks such as backend data analysis or API requests from mobile devices. Each service has a collection of versions that define a specific set of code used to implement the functionality of that service. */
 export interface Service {
@@ -1896,21 +2374,25 @@ export interface Service {
   id?: string;
 }
 export const Service = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "split": S.optional(TrafficSplit),
-  "labels": S.optional(StringMap),
-  "name": S.optional(S.String),
-  "networkSettings": S.optional(NetworkSettings),
-  "generatedCustomerMetadata": S.optional(DocumentMap),
-  "id": S.optional(S.String),
-}),
+  S.Struct({
+    split: S.optional(TrafficSplit),
+    labels: S.optional(StringMap),
+    name: S.optional(S.String),
+    networkSettings: S.optional(NetworkSettings),
+    generatedCustomerMetadata: S.optional(DocumentMap),
+    id: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Service" }) as any as S.Schema<Service>;
 
 export type GetAppsServicesVersionsViewEnum = "BASIC" | "FULL";
 export const GetAppsServicesVersionsViewEnum = /*@__PURE__*/ S.String;
 
-export type GetAppsServicesVersionsIncludeExtraDataEnum = "INCLUDE_EXTRA_DATA_UNSPECIFIED" | "INCLUDE_EXTRA_DATA_NONE" | "INCLUDE_GOOGLE_GENERATED_METADATA";
-export const GetAppsServicesVersionsIncludeExtraDataEnum = /*@__PURE__*/ S.String;
+export type GetAppsServicesVersionsIncludeExtraDataEnum =
+  | "INCLUDE_EXTRA_DATA_UNSPECIFIED"
+  | "INCLUDE_EXTRA_DATA_NONE"
+  | "INCLUDE_GOOGLE_GENERATED_METADATA";
+export const GetAppsServicesVersionsIncludeExtraDataEnum =
+  /*@__PURE__*/ S.String;
 
 export interface GetAppsServicesVersionsRequest {
   /** Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default/versions/v1. */
@@ -1920,19 +2402,31 @@ export interface GetAppsServicesVersionsRequest {
   /** Part of `name`. See documentation of `appsId`. */
   servicesId: string;
   /** Optional. Options to include extra data */
-  includeExtraData?: GetAppsServicesVersionsIncludeExtraDataEnum | (string & {});
+  includeExtraData?:
+    | GetAppsServicesVersionsIncludeExtraDataEnum
+    | (string & {});
   /** Part of `name`. See documentation of `appsId`. */
   versionsId: string;
 }
 export const GetAppsServicesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "appsId": S.String.pipe(T.Label()),
-  "view": S.optional(GetAppsServicesVersionsViewEnum.pipe(T.Query())),
-  "servicesId": S.String.pipe(T.Label()),
-  "includeExtraData": S.optional(GetAppsServicesVersionsIncludeExtraDataEnum.pipe(T.Query())),
-  "versionsId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "GetAppsServicesVersionsRequest" }) as any as S.Schema<GetAppsServicesVersionsRequest>;
+  S.Struct({
+    appsId: S.String.pipe(T.Label()),
+    view: S.optional(GetAppsServicesVersionsViewEnum.pipe(T.Query())),
+    servicesId: S.String.pipe(T.Label()),
+    includeExtraData: S.optional(
+      GetAppsServicesVersionsIncludeExtraDataEnum.pipe(T.Query()),
+    ),
+    versionsId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}",
+      baseUrl: "https://appengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetAppsServicesVersionsRequest",
+}) as any as S.Schema<GetAppsServicesVersionsRequest>;
 
 export interface GetAppsServicesVersionsInstancesRequest {
   /** Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default/versions/v1/instances/instance-1. */
@@ -1944,16 +2438,31 @@ export interface GetAppsServicesVersionsInstancesRequest {
   /** Part of `name`. See documentation of `appsId`. */
   servicesId: string;
 }
-export const GetAppsServicesVersionsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "appsId": S.String.pipe(T.Label()),
-  "instancesId": S.String.pipe(T.Label()),
-  "versionsId": S.String.pipe(T.Label()),
-  "servicesId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "GetAppsServicesVersionsInstancesRequest" }) as any as S.Schema<GetAppsServicesVersionsInstancesRequest>;
+export const GetAppsServicesVersionsInstancesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      appsId: S.String.pipe(T.Label()),
+      instancesId: S.String.pipe(T.Label()),
+      versionsId: S.String.pipe(T.Label()),
+      servicesId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetAppsServicesVersionsInstancesRequest",
+}) as any as S.Schema<GetAppsServicesVersionsInstancesRequest>;
 
-export type InstanceVmLivenessEnum = "LIVENESS_STATE_UNSPECIFIED" | "UNKNOWN" | "HEALTHY" | "UNHEALTHY" | "DRAINING" | "TIMEOUT";
+export type InstanceVmLivenessEnum =
+  | "LIVENESS_STATE_UNSPECIFIED"
+  | "UNKNOWN"
+  | "HEALTHY"
+  | "UNHEALTHY"
+  | "DRAINING"
+  | "TIMEOUT";
 export const InstanceVmLivenessEnum = /*@__PURE__*/ S.String;
 
 export type InstanceAvailabilityEnum = "UNSPECIFIED" | "RESIDENT" | "DYNAMIC";
@@ -1997,25 +2506,25 @@ export interface Instance {
   startTime?: string;
 }
 export const Instance = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "vmName": S.optional(S.String),
-  "vmDebugEnabled": S.optional(S.Boolean),
-  "vmIp": S.optional(S.String),
-  "id": S.optional(S.String),
-  "vmStatus": S.optional(S.String),
-  "vmId": S.optional(S.String),
-  "qps": S.optional(S.Number),
-  "requests": S.optional(S.Number),
-  "vmLiveness": S.optional(InstanceVmLivenessEnum),
-  "memoryUsage": S.optional(S.String),
-  "averageLatency": S.optional(S.Number),
-  "appEngineRelease": S.optional(S.String),
-  "vmZoneName": S.optional(S.String),
-  "name": S.optional(S.String),
-  "availability": S.optional(InstanceAvailabilityEnum),
-  "errors": S.optional(S.Number),
-  "startTime": S.optional(S.String),
-}),
+  S.Struct({
+    vmName: S.optional(S.String),
+    vmDebugEnabled: S.optional(S.Boolean),
+    vmIp: S.optional(S.String),
+    id: S.optional(S.String),
+    vmStatus: S.optional(S.String),
+    vmId: S.optional(S.String),
+    qps: S.optional(S.Number),
+    requests: S.optional(S.Number),
+    vmLiveness: S.optional(InstanceVmLivenessEnum),
+    memoryUsage: S.optional(S.String),
+    averageLatency: S.optional(S.Number),
+    appEngineRelease: S.optional(S.String),
+    vmZoneName: S.optional(S.String),
+    name: S.optional(S.String),
+    availability: S.optional(InstanceAvailabilityEnum),
+    errors: S.optional(S.Number),
+    startTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Instance" }) as any as S.Schema<Instance>;
 
 export interface GetProjectsLocationsRequest {
@@ -2025,20 +2534,33 @@ export interface GetProjectsLocationsRequest {
   locationsId: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectsId": S.String.pipe(T.Label()),
-  "locationsId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/projects/{projectsId}/locations/{locationsId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
+  S.Struct({
+    projectsId: S.String.pipe(T.Label()),
+    locationsId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/projects/{projectsId}/locations/{locationsId}",
+      baseUrl: "https://appengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsRequest",
+}) as any as S.Schema<GetProjectsLocationsRequest>;
 
-export type GetProjectsLocationsApplicationsAuthorizedCertificatesViewEnum = "BASIC_CERTIFICATE" | "FULL_CERTIFICATE";
-export const GetProjectsLocationsApplicationsAuthorizedCertificatesViewEnum = /*@__PURE__*/ S.String;
+export type GetProjectsLocationsApplicationsAuthorizedCertificatesViewEnum =
+  | "BASIC_CERTIFICATE"
+  | "FULL_CERTIFICATE";
+export const GetProjectsLocationsApplicationsAuthorizedCertificatesViewEnum =
+  /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsApplicationsAuthorizedCertificatesRequest {
   /** Part of `name`. Required. Name of the resource requested. Example: apps/myapp/authorizedCertificates/12345. */
   projectsId: string;
   /** Controls the set of fields returned in the GET response. */
-  view?: GetProjectsLocationsApplicationsAuthorizedCertificatesViewEnum | (string & {});
+  view?:
+    | GetProjectsLocationsApplicationsAuthorizedCertificatesViewEnum
+    | (string & {});
   /** Part of `name`. See documentation of `projectsId`. */
   authorizedCertificatesId: string;
   /** Part of `name`. See documentation of `projectsId`. */
@@ -2046,15 +2568,28 @@ export interface GetProjectsLocationsApplicationsAuthorizedCertificatesRequest {
   /** Part of `name`. See documentation of `projectsId`. */
   locationsId: string;
 }
-export const GetProjectsLocationsApplicationsAuthorizedCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectsId": S.String.pipe(T.Label()),
-  "view": S.optional(GetProjectsLocationsApplicationsAuthorizedCertificatesViewEnum.pipe(T.Query())),
-  "authorizedCertificatesId": S.String.pipe(T.Label()),
-  "applicationsId": S.String.pipe(T.Label()),
-  "locationsId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates/{authorizedCertificatesId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsApplicationsAuthorizedCertificatesRequest" }) as any as S.Schema<GetProjectsLocationsApplicationsAuthorizedCertificatesRequest>;
+export const GetProjectsLocationsApplicationsAuthorizedCertificatesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      projectsId: S.String.pipe(T.Label()),
+      view: S.optional(
+        GetProjectsLocationsApplicationsAuthorizedCertificatesViewEnum.pipe(
+          T.Query(),
+        ),
+      ),
+      authorizedCertificatesId: S.String.pipe(T.Label()),
+      applicationsId: S.String.pipe(T.Label()),
+      locationsId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates/{authorizedCertificatesId}",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsApplicationsAuthorizedCertificatesRequest",
+  }) as any as S.Schema<GetProjectsLocationsApplicationsAuthorizedCertificatesRequest>;
 
 export interface GetProjectsLocationsApplicationsDomainMappingsRequest {
   /** Part of `name`. See documentation of `projectsId`. */
@@ -2066,14 +2601,23 @@ export interface GetProjectsLocationsApplicationsDomainMappingsRequest {
   /** Part of `name`. Required. Name of the resource requested. Example: apps/myapp/domainMappings/example.com. */
   projectsId: string;
 }
-export const GetProjectsLocationsApplicationsDomainMappingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locationsId": S.String.pipe(T.Label()),
-  "domainMappingsId": S.String.pipe(T.Label()),
-  "applicationsId": S.String.pipe(T.Label()),
-  "projectsId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings/{domainMappingsId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsApplicationsDomainMappingsRequest" }) as any as S.Schema<GetProjectsLocationsApplicationsDomainMappingsRequest>;
+export const GetProjectsLocationsApplicationsDomainMappingsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      locationsId: S.String.pipe(T.Label()),
+      domainMappingsId: S.String.pipe(T.Label()),
+      applicationsId: S.String.pipe(T.Label()),
+      projectsId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings/{domainMappingsId}",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsApplicationsDomainMappingsRequest",
+  }) as any as S.Schema<GetProjectsLocationsApplicationsDomainMappingsRequest>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** Part of `name`. The name of the operation resource. */
@@ -2083,15 +2627,26 @@ export interface GetProjectsLocationsOperationsRequest {
   /** Part of `name`. See documentation of `projectsId`. */
   locationsId: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectsId": S.String.pipe(T.Label()),
-  "operationsId": S.String.pipe(T.Label()),
-  "locationsId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      projectsId: S.String.pipe(T.Label()),
+      operationsId: S.String.pipe(T.Label()),
+      locationsId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsOperationsRequest",
+}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
-export type ListAppsAuthorizedCertificatesViewEnum = "BASIC_CERTIFICATE" | "FULL_CERTIFICATE";
+export type ListAppsAuthorizedCertificatesViewEnum =
+  | "BASIC_CERTIFICATE"
+  | "FULL_CERTIFICATE";
 export const ListAppsAuthorizedCertificatesViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListAppsAuthorizedCertificatesRequest {
@@ -2104,17 +2659,28 @@ export interface ListAppsAuthorizedCertificatesRequest {
   /** Maximum results to return per page. */
   pageSize?: number;
 }
-export const ListAppsAuthorizedCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "appsId": S.String.pipe(T.Label()),
-  "view": S.optional(ListAppsAuthorizedCertificatesViewEnum.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/apps/{appsId}/authorizedCertificates","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "ListAppsAuthorizedCertificatesRequest" }) as any as S.Schema<ListAppsAuthorizedCertificatesRequest>;
+export const ListAppsAuthorizedCertificatesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      appsId: S.String.pipe(T.Label()),
+      view: S.optional(ListAppsAuthorizedCertificatesViewEnum.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/apps/{appsId}/authorizedCertificates",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListAppsAuthorizedCertificatesRequest",
+}) as any as S.Schema<ListAppsAuthorizedCertificatesRequest>;
 
 export type AuthorizedCertificateList = ReadonlyArray<AuthorizedCertificate>;
-export const AuthorizedCertificateList = /*@__PURE__*/ S.Array(AuthorizedCertificate) as any as S.Schema<AuthorizedCertificateList>;
+export const AuthorizedCertificateList = /*@__PURE__*/ S.Array(
+  AuthorizedCertificate,
+) as any as S.Schema<AuthorizedCertificateList>;
 
 /** Response message for AuthorizedCertificates.ListAuthorizedCertificates. */
 export interface ListAuthorizedCertificatesResponse {
@@ -2124,11 +2690,13 @@ export interface ListAuthorizedCertificatesResponse {
   nextPageToken?: string;
 }
 export const ListAuthorizedCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "certificates": S.optional(AuthorizedCertificateList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListAuthorizedCertificatesResponse" }) as any as S.Schema<ListAuthorizedCertificatesResponse>;
+  S.Struct({
+    certificates: S.optional(AuthorizedCertificateList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListAuthorizedCertificatesResponse",
+}) as any as S.Schema<ListAuthorizedCertificatesResponse>;
 
 export interface ListAppsAuthorizedDomainsRequest {
   /** Maximum results to return per page. */
@@ -2139,12 +2707,20 @@ export interface ListAppsAuthorizedDomainsRequest {
   pageToken?: string;
 }
 export const ListAppsAuthorizedDomainsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "appsId": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/apps/{appsId}/authorizedDomains","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "ListAppsAuthorizedDomainsRequest" }) as any as S.Schema<ListAppsAuthorizedDomainsRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    appsId: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/apps/{appsId}/authorizedDomains",
+      baseUrl: "https://appengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListAppsAuthorizedDomainsRequest",
+}) as any as S.Schema<ListAppsAuthorizedDomainsRequest>;
 
 /** A domain that a user has been authorized to administer. To authorize use of a domain, verify ownership via Search Console (https://search.google.com/search-console/welcome). */
 export interface AuthorizedDomain {
@@ -2154,14 +2730,18 @@ export interface AuthorizedDomain {
   id?: string;
 }
 export const AuthorizedDomain = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "id": S.optional(S.String),
-}),
-).annotate({ identifier: "AuthorizedDomain" }) as any as S.Schema<AuthorizedDomain>;
+  S.Struct({
+    name: S.optional(S.String),
+    id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AuthorizedDomain",
+}) as any as S.Schema<AuthorizedDomain>;
 
 export type AuthorizedDomainList = ReadonlyArray<AuthorizedDomain>;
-export const AuthorizedDomainList = /*@__PURE__*/ S.Array(AuthorizedDomain) as any as S.Schema<AuthorizedDomainList>;
+export const AuthorizedDomainList = /*@__PURE__*/ S.Array(
+  AuthorizedDomain,
+) as any as S.Schema<AuthorizedDomainList>;
 
 /** Response message for AuthorizedDomains.ListAuthorizedDomains. */
 export interface ListAuthorizedDomainsResponse {
@@ -2171,11 +2751,13 @@ export interface ListAuthorizedDomainsResponse {
   domains?: AuthorizedDomainList;
 }
 export const ListAuthorizedDomainsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "domains": S.optional(AuthorizedDomainList),
-}),
-).annotate({ identifier: "ListAuthorizedDomainsResponse" }) as any as S.Schema<ListAuthorizedDomainsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    domains: S.optional(AuthorizedDomainList),
+  }),
+).annotate({
+  identifier: "ListAuthorizedDomainsResponse",
+}) as any as S.Schema<ListAuthorizedDomainsResponse>;
 
 export interface ListAppsDomainMappingsRequest {
   /** Maximum results to return per page. */
@@ -2186,15 +2768,25 @@ export interface ListAppsDomainMappingsRequest {
   pageToken?: string;
 }
 export const ListAppsDomainMappingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "appsId": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/apps/{appsId}/domainMappings","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "ListAppsDomainMappingsRequest" }) as any as S.Schema<ListAppsDomainMappingsRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    appsId: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/apps/{appsId}/domainMappings",
+      baseUrl: "https://appengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListAppsDomainMappingsRequest",
+}) as any as S.Schema<ListAppsDomainMappingsRequest>;
 
 export type DomainMappingList = ReadonlyArray<DomainMapping>;
-export const DomainMappingList = /*@__PURE__*/ S.Array(DomainMapping) as any as S.Schema<DomainMappingList>;
+export const DomainMappingList = /*@__PURE__*/ S.Array(
+  DomainMapping,
+) as any as S.Schema<DomainMappingList>;
 
 /** Response message for DomainMappings.ListDomainMappings. */
 export interface ListDomainMappingsResponse {
@@ -2204,11 +2796,13 @@ export interface ListDomainMappingsResponse {
   nextPageToken?: string;
 }
 export const ListDomainMappingsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "domainMappings": S.optional(DomainMappingList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListDomainMappingsResponse" }) as any as S.Schema<ListDomainMappingsResponse>;
+  S.Struct({
+    domainMappings: S.optional(DomainMappingList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListDomainMappingsResponse",
+}) as any as S.Schema<ListDomainMappingsResponse>;
 
 export interface ListAppsFirewallIngressRulesRequest {
   /** A valid IP Address. If set, only rules matching this address will be returned. The first returned rule will be the rule that fires on requests from this IP. */
@@ -2221,13 +2815,21 @@ export interface ListAppsFirewallIngressRulesRequest {
   pageToken?: string;
 }
 export const ListAppsFirewallIngressRulesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "matchingAddress": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "appsId": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/apps/{appsId}/firewall/ingressRules","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "ListAppsFirewallIngressRulesRequest" }) as any as S.Schema<ListAppsFirewallIngressRulesRequest>;
+  S.Struct({
+    matchingAddress: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    appsId: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/apps/{appsId}/firewall/ingressRules",
+      baseUrl: "https://appengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListAppsFirewallIngressRulesRequest",
+}) as any as S.Schema<ListAppsFirewallIngressRulesRequest>;
 
 /** Response message for Firewall.ListIngressRules. */
 export interface ListIngressRulesResponse {
@@ -2237,11 +2839,13 @@ export interface ListIngressRulesResponse {
   nextPageToken?: string;
 }
 export const ListIngressRulesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "ingressRules": S.optional(FirewallRuleList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListIngressRulesResponse" }) as any as S.Schema<ListIngressRulesResponse>;
+  S.Struct({
+    ingressRules: S.optional(FirewallRuleList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListIngressRulesResponse",
+}) as any as S.Schema<ListIngressRulesResponse>;
 
 export interface ListAppsLocationsRequest {
   /** Part of `name`. The resource that owns the locations collection, if applicable. */
@@ -2256,17 +2860,27 @@ export interface ListAppsLocationsRequest {
   extraLocationTypes?: StringList;
 }
 export const ListAppsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "appsId": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/apps/{appsId}/locations","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "ListAppsLocationsRequest" }) as any as S.Schema<ListAppsLocationsRequest>;
+  S.Struct({
+    appsId: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/apps/{appsId}/locations",
+      baseUrl: "https://appengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListAppsLocationsRequest",
+}) as any as S.Schema<ListAppsLocationsRequest>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(
+  Location,
+) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -2276,11 +2890,13 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locations": S.optional(LocationList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
+  S.Struct({
+    locations: S.optional(LocationList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListLocationsResponse",
+}) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListAppsOperationsRequest {
   /** When set to true, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field.This can only be true when reading across collections. For example, when parent is set to "projects/example/locations/-".This field is not supported by default and will result in an UNIMPLEMENTED error if set unless explicitly documented otherwise in service or product specific documentation. */
@@ -2295,17 +2911,27 @@ export interface ListAppsOperationsRequest {
   pageSize?: number;
 }
 export const ListAppsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "appsId": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/apps/{appsId}/operations","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "ListAppsOperationsRequest" }) as any as S.Schema<ListAppsOperationsRequest>;
+  S.Struct({
+    returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    appsId: S.String.pipe(T.Label()),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/apps/{appsId}/operations",
+      baseUrl: "https://appengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListAppsOperationsRequest",
+}) as any as S.Schema<ListAppsOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(
+  Operation,
+) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -2317,12 +2943,14 @@ export interface ListOperationsResponse {
   operations?: OperationList;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-  "operations": S.optional(OperationList),
-}),
-).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+    operations: S.optional(OperationList),
+  }),
+).annotate({
+  identifier: "ListOperationsResponse",
+}) as any as S.Schema<ListOperationsResponse>;
 
 export interface ListAppsServicesRequest {
   /** Continuation token for fetching the next page of results. */
@@ -2333,15 +2961,25 @@ export interface ListAppsServicesRequest {
   pageSize?: number;
 }
 export const ListAppsServicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "appsId": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/apps/{appsId}/services","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "ListAppsServicesRequest" }) as any as S.Schema<ListAppsServicesRequest>;
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    appsId: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/apps/{appsId}/services",
+      baseUrl: "https://appengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListAppsServicesRequest",
+}) as any as S.Schema<ListAppsServicesRequest>;
 
 export type ServiceList = ReadonlyArray<Service>;
-export const ServiceList = /*@__PURE__*/ S.Array(Service) as any as S.Schema<ServiceList>;
+export const ServiceList = /*@__PURE__*/ S.Array(
+  Service,
+) as any as S.Schema<ServiceList>;
 
 /** Response message for Services.ListServices. */
 export interface ListServicesResponse {
@@ -2351,11 +2989,13 @@ export interface ListServicesResponse {
   nextPageToken?: string;
 }
 export const ListServicesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "services": S.optional(ServiceList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListServicesResponse" }) as any as S.Schema<ListServicesResponse>;
+  S.Struct({
+    services: S.optional(ServiceList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListServicesResponse",
+}) as any as S.Schema<ListServicesResponse>;
 
 export type ListAppsServicesVersionsViewEnum = "BASIC" | "FULL";
 export const ListAppsServicesVersionsViewEnum = /*@__PURE__*/ S.String;
@@ -2373,17 +3013,27 @@ export interface ListAppsServicesVersionsRequest {
   pageToken?: string;
 }
 export const ListAppsServicesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "servicesId": S.String.pipe(T.Label()),
-  "appsId": S.String.pipe(T.Label()),
-  "view": S.optional(ListAppsServicesVersionsViewEnum.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/apps/{appsId}/services/{servicesId}/versions","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "ListAppsServicesVersionsRequest" }) as any as S.Schema<ListAppsServicesVersionsRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    servicesId: S.String.pipe(T.Label()),
+    appsId: S.String.pipe(T.Label()),
+    view: S.optional(ListAppsServicesVersionsViewEnum.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/apps/{appsId}/services/{servicesId}/versions",
+      baseUrl: "https://appengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListAppsServicesVersionsRequest",
+}) as any as S.Schema<ListAppsServicesVersionsRequest>;
 
 export type VersionList = ReadonlyArray<Version>;
-export const VersionList = /*@__PURE__*/ S.Array(Version) as any as S.Schema<VersionList>;
+export const VersionList = /*@__PURE__*/ S.Array(
+  Version,
+) as any as S.Schema<VersionList>;
 
 /** Response message for Versions.ListVersions. */
 export interface ListVersionsResponse {
@@ -2393,11 +3043,13 @@ export interface ListVersionsResponse {
   nextPageToken?: string;
 }
 export const ListVersionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "versions": S.optional(VersionList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListVersionsResponse" }) as any as S.Schema<ListVersionsResponse>;
+  S.Struct({
+    versions: S.optional(VersionList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListVersionsResponse",
+}) as any as S.Schema<ListVersionsResponse>;
 
 export interface ListAppsServicesVersionsInstancesRequest {
   /** Maximum results to return per page. */
@@ -2411,18 +3063,29 @@ export interface ListAppsServicesVersionsInstancesRequest {
   /** Part of `parent`. Required. Name of the parent Version resource. Example: apps/myapp/services/default/versions/v1. */
   appsId: string;
 }
-export const ListAppsServicesVersionsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "versionsId": S.String.pipe(T.Label()),
-  "servicesId": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "appsId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "ListAppsServicesVersionsInstancesRequest" }) as any as S.Schema<ListAppsServicesVersionsInstancesRequest>;
+export const ListAppsServicesVersionsInstancesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      versionsId: S.String.pipe(T.Label()),
+      servicesId: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      appsId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListAppsServicesVersionsInstancesRequest",
+}) as any as S.Schema<ListAppsServicesVersionsInstancesRequest>;
 
 export type InstanceList = ReadonlyArray<Instance>;
-export const InstanceList = /*@__PURE__*/ S.Array(Instance) as any as S.Schema<InstanceList>;
+export const InstanceList = /*@__PURE__*/ S.Array(
+  Instance,
+) as any as S.Schema<InstanceList>;
 
 /** Response message for Instances.ListInstances. */
 export interface ListInstancesResponse {
@@ -2432,11 +3095,13 @@ export interface ListInstancesResponse {
   nextPageToken?: string;
 }
 export const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "instances": S.optional(InstanceList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListInstancesResponse" }) as any as S.Schema<ListInstancesResponse>;
+  S.Struct({
+    instances: S.optional(InstanceList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListInstancesResponse",
+}) as any as S.Schema<ListInstancesResponse>;
 
 export interface ListProjectsLocationsRequest {
   /** A page token received from the next_page_token field in the response. Send that page token to receive the subsequent page. */
@@ -2451,17 +3116,28 @@ export interface ListProjectsLocationsRequest {
   extraLocationTypes?: StringList;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "projectsId": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/projects/{projectsId}/locations","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    projectsId: S.String.pipe(T.Label()),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/projects/{projectsId}/locations",
+      baseUrl: "https://appengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsRequest",
+}) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type ListProjectsLocationsApplicationsAuthorizedCertificatesViewEnum = "BASIC_CERTIFICATE" | "FULL_CERTIFICATE";
-export const ListProjectsLocationsApplicationsAuthorizedCertificatesViewEnum = /*@__PURE__*/ S.String;
+export type ListProjectsLocationsApplicationsAuthorizedCertificatesViewEnum =
+  | "BASIC_CERTIFICATE"
+  | "FULL_CERTIFICATE";
+export const ListProjectsLocationsApplicationsAuthorizedCertificatesViewEnum =
+  /*@__PURE__*/ S.String;
 
 export interface ListProjectsLocationsApplicationsAuthorizedCertificatesRequest {
   /** Part of `parent`. See documentation of `projectsId`. */
@@ -2471,22 +3147,38 @@ export interface ListProjectsLocationsApplicationsAuthorizedCertificatesRequest 
   /** Maximum results to return per page. */
   pageSize?: number;
   /** Controls the set of fields returned in the LIST response. */
-  view?: ListProjectsLocationsApplicationsAuthorizedCertificatesViewEnum | (string & {});
+  view?:
+    | ListProjectsLocationsApplicationsAuthorizedCertificatesViewEnum
+    | (string & {});
   /** Continuation token for fetching the next page of results. */
   pageToken?: string;
   /** Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. */
   projectsId: string;
 }
-export const ListProjectsLocationsApplicationsAuthorizedCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locationsId": S.String.pipe(T.Label()),
-  "applicationsId": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "view": S.optional(ListProjectsLocationsApplicationsAuthorizedCertificatesViewEnum.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "projectsId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsApplicationsAuthorizedCertificatesRequest" }) as any as S.Schema<ListProjectsLocationsApplicationsAuthorizedCertificatesRequest>;
+export const ListProjectsLocationsApplicationsAuthorizedCertificatesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      locationsId: S.String.pipe(T.Label()),
+      applicationsId: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      view: S.optional(
+        ListProjectsLocationsApplicationsAuthorizedCertificatesViewEnum.pipe(
+          T.Query(),
+        ),
+      ),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      projectsId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "ListProjectsLocationsApplicationsAuthorizedCertificatesRequest",
+  }) as any as S.Schema<ListProjectsLocationsApplicationsAuthorizedCertificatesRequest>;
 
 export interface ListProjectsLocationsApplicationsAuthorizedDomainsRequest {
   /** Part of `parent`. See documentation of `projectsId`. */
@@ -2500,15 +3192,24 @@ export interface ListProjectsLocationsApplicationsAuthorizedDomainsRequest {
   /** Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. */
   projectsId: string;
 }
-export const ListProjectsLocationsApplicationsAuthorizedDomainsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locationsId": S.String.pipe(T.Label()),
-  "applicationsId": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "projectsId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedDomains","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsApplicationsAuthorizedDomainsRequest" }) as any as S.Schema<ListProjectsLocationsApplicationsAuthorizedDomainsRequest>;
+export const ListProjectsLocationsApplicationsAuthorizedDomainsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      locationsId: S.String.pipe(T.Label()),
+      applicationsId: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      projectsId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedDomains",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsApplicationsAuthorizedDomainsRequest",
+  }) as any as S.Schema<ListProjectsLocationsApplicationsAuthorizedDomainsRequest>;
 
 export interface ListProjectsLocationsApplicationsDomainMappingsRequest {
   /** Continuation token for fetching the next page of results. */
@@ -2522,15 +3223,24 @@ export interface ListProjectsLocationsApplicationsDomainMappingsRequest {
   /** Maximum results to return per page. */
   pageSize?: number;
 }
-export const ListProjectsLocationsApplicationsDomainMappingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "projectsId": S.String.pipe(T.Label()),
-  "locationsId": S.String.pipe(T.Label()),
-  "applicationsId": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsApplicationsDomainMappingsRequest" }) as any as S.Schema<ListProjectsLocationsApplicationsDomainMappingsRequest>;
+export const ListProjectsLocationsApplicationsDomainMappingsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      projectsId: S.String.pipe(T.Label()),
+      locationsId: S.String.pipe(T.Label()),
+      applicationsId: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsApplicationsDomainMappingsRequest",
+  }) as any as S.Schema<ListProjectsLocationsApplicationsDomainMappingsRequest>;
 
 export interface ListProjectsLocationsOperationsRequest {
   /** Part of `name`. See documentation of `projectsId`. */
@@ -2546,18 +3256,30 @@ export interface ListProjectsLocationsOperationsRequest {
   /** When set to true, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field.This can only be true when reading across collections. For example, when parent is set to "projects/example/locations/-".This field is not supported by default and will result in an UNIMPLEMENTED error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locationsId": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "projectsId": S.String.pipe(T.Label()),
-  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/projects/{projectsId}/locations/{locationsId}/operations","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      locationsId: S.String.pipe(T.Label()),
+      filter: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      projectsId: S.String.pipe(T.Label()),
+      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/projects/{projectsId}/locations/{locationsId}/operations",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsOperationsRequest",
+}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type ListRuntimesAppsEnvironmentEnum = "ENVIRONMENT_UNSPECIFIED" | "STANDARD" | "FLEXIBLE";
+export type ListRuntimesAppsEnvironmentEnum =
+  | "ENVIRONMENT_UNSPECIFIED"
+  | "STANDARD"
+  | "FLEXIBLE";
 export const ListRuntimesAppsEnvironmentEnum = /*@__PURE__*/ S.String;
 
 export interface ListRuntimesAppsRequest {
@@ -2567,13 +3289,24 @@ export interface ListRuntimesAppsRequest {
   appsId: string;
 }
 export const ListRuntimesAppsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "environment": S.optional(ListRuntimesAppsEnvironmentEnum.pipe(T.Query())),
-  "appsId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/apps/{appsId}:listRuntimes","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "ListRuntimesAppsRequest" }) as any as S.Schema<ListRuntimesAppsRequest>;
+  S.Struct({
+    environment: S.optional(ListRuntimesAppsEnvironmentEnum.pipe(T.Query())),
+    appsId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/apps/{appsId}:listRuntimes",
+      baseUrl: "https://appengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListRuntimesAppsRequest",
+}) as any as S.Schema<ListRuntimesAppsRequest>;
 
-export type RuntimeEnvironmentEnum = "ENVIRONMENT_UNSPECIFIED" | "STANDARD" | "FLEXIBLE";
+export type RuntimeEnvironmentEnum =
+  | "ENVIRONMENT_UNSPECIFIED"
+  | "STANDARD"
+  | "FLEXIBLE";
 export const RuntimeEnvironmentEnum = /*@__PURE__*/ S.String;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: A full date, with non-zero year, month, and day values. A month and day, with a zero year (for example, an anniversary). A year on its own, with a zero month and a zero day. A year and month, with a zero day (for example, a credit card expiration date).Related types: google.type.TimeOfDay google.type.DateTime google.protobuf.Timestamp */
@@ -2586,14 +3319,22 @@ export interface Appengine_Date {
   year?: number;
 }
 export const Appengine_Date = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "month": S.optional(S.Number),
-  "day": S.optional(S.Number),
-  "year": S.optional(S.Number),
-}),
+  S.Struct({
+    month: S.optional(S.Number),
+    day: S.optional(S.Number),
+    year: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "Appengine_Date" }) as any as S.Schema<Appengine_Date>;
 
-export type RuntimeStageEnum = "RUNTIME_STAGE_UNSPECIFIED" | "DEVELOPMENT" | "ALPHA" | "BETA" | "GA" | "DEPRECATED" | "DECOMMISSIONED" | "END_OF_SUPPORT";
+export type RuntimeStageEnum =
+  | "RUNTIME_STAGE_UNSPECIFIED"
+  | "DEVELOPMENT"
+  | "ALPHA"
+  | "BETA"
+  | "GA"
+  | "DEPRECATED"
+  | "DECOMMISSIONED"
+  | "END_OF_SUPPORT";
 export const RuntimeStageEnum = /*@__PURE__*/ S.String;
 
 /** Runtime versions for App Engine. */
@@ -2618,21 +3359,23 @@ export interface Runtime {
   supportedOperatingSystems?: StringList;
 }
 export const Runtime = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "displayName": S.optional(S.String),
-  "warnings": S.optional(StringList),
-  "environment": S.optional(RuntimeEnvironmentEnum),
-  "endOfSupportDate": S.optional(Appengine_Date),
-  "decommissionedDate": S.optional(Appengine_Date),
-  "stage": S.optional(RuntimeStageEnum),
-  "deprecationDate": S.optional(Appengine_Date),
-  "name": S.optional(S.String),
-  "supportedOperatingSystems": S.optional(StringList),
-}),
+  S.Struct({
+    displayName: S.optional(S.String),
+    warnings: S.optional(StringList),
+    environment: S.optional(RuntimeEnvironmentEnum),
+    endOfSupportDate: S.optional(Appengine_Date),
+    decommissionedDate: S.optional(Appengine_Date),
+    stage: S.optional(RuntimeStageEnum),
+    deprecationDate: S.optional(Appengine_Date),
+    name: S.optional(S.String),
+    supportedOperatingSystems: S.optional(StringList),
+  }),
 ).annotate({ identifier: "Runtime" }) as any as S.Schema<Runtime>;
 
 export type RuntimeList = ReadonlyArray<Runtime>;
-export const RuntimeList = /*@__PURE__*/ S.Array(Runtime) as any as S.Schema<RuntimeList>;
+export const RuntimeList = /*@__PURE__*/ S.Array(
+  Runtime,
+) as any as S.Schema<RuntimeList>;
 
 /** Response message for Applications.ListRuntimes. */
 export interface ListRuntimesResponse {
@@ -2642,11 +3385,13 @@ export interface ListRuntimesResponse {
   nextPageToken?: string;
 }
 export const ListRuntimesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "runtimes": S.optional(RuntimeList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListRuntimesResponse" }) as any as S.Schema<ListRuntimesResponse>;
+  S.Struct({
+    runtimes: S.optional(RuntimeList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListRuntimesResponse",
+}) as any as S.Schema<ListRuntimesResponse>;
 
 export interface PatchAppsRequest {
   /** Part of `name`. Required. Name of the Application resource to update. Example: apps/myapp. */
@@ -2657,12 +3402,20 @@ export interface PatchAppsRequest {
   body?: Application;
 }
 export const PatchAppsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "appsId": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Application.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta/apps/{appsId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "PatchAppsRequest" }) as any as S.Schema<PatchAppsRequest>;
+  S.Struct({
+    appsId: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(Application.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1beta/apps/{appsId}",
+      baseUrl: "https://appengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchAppsRequest",
+}) as any as S.Schema<PatchAppsRequest>;
 
 export interface PatchAppsAuthorizedCertificatesRequest {
   /** Part of `name`. See documentation of `appsId`. */
@@ -2674,14 +3427,23 @@ export interface PatchAppsAuthorizedCertificatesRequest {
   /** Request body */
   body?: AuthorizedCertificate;
 }
-export const PatchAppsAuthorizedCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "authorizedCertificatesId": S.String.pipe(T.Label()),
-  "appsId": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(AuthorizedCertificate.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta/apps/{appsId}/authorizedCertificates/{authorizedCertificatesId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "PatchAppsAuthorizedCertificatesRequest" }) as any as S.Schema<PatchAppsAuthorizedCertificatesRequest>;
+export const PatchAppsAuthorizedCertificatesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      authorizedCertificatesId: S.String.pipe(T.Label()),
+      appsId: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(AuthorizedCertificate.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta/apps/{appsId}/authorizedCertificates/{authorizedCertificatesId}",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "PatchAppsAuthorizedCertificatesRequest",
+}) as any as S.Schema<PatchAppsAuthorizedCertificatesRequest>;
 
 export interface PatchAppsDomainMappingsRequest {
   /** Part of `name`. Required. Name of the resource to update. Example: apps/myapp/domainMappings/example.com. */
@@ -2694,13 +3456,21 @@ export interface PatchAppsDomainMappingsRequest {
   body?: DomainMapping;
 }
 export const PatchAppsDomainMappingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "appsId": S.String.pipe(T.Label()),
-  "domainMappingsId": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(DomainMapping.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta/apps/{appsId}/domainMappings/{domainMappingsId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "PatchAppsDomainMappingsRequest" }) as any as S.Schema<PatchAppsDomainMappingsRequest>;
+  S.Struct({
+    appsId: S.String.pipe(T.Label()),
+    domainMappingsId: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(DomainMapping.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1beta/apps/{appsId}/domainMappings/{domainMappingsId}",
+      baseUrl: "https://appengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchAppsDomainMappingsRequest",
+}) as any as S.Schema<PatchAppsDomainMappingsRequest>;
 
 export interface PatchAppsFirewallIngressRulesRequest {
   /** Part of `name`. Name of the Firewall resource to update. Example: apps/myapp/firewall/ingressRules/100. */
@@ -2712,14 +3482,23 @@ export interface PatchAppsFirewallIngressRulesRequest {
   /** Request body */
   body?: FirewallRule;
 }
-export const PatchAppsFirewallIngressRulesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "appsId": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "ingressRulesId": S.String.pipe(T.Label()),
-  "body": S.optional(FirewallRule.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta/apps/{appsId}/firewall/ingressRules/{ingressRulesId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "PatchAppsFirewallIngressRulesRequest" }) as any as S.Schema<PatchAppsFirewallIngressRulesRequest>;
+export const PatchAppsFirewallIngressRulesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      appsId: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      ingressRulesId: S.String.pipe(T.Label()),
+      body: S.optional(FirewallRule.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta/apps/{appsId}/firewall/ingressRules/{ingressRulesId}",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "PatchAppsFirewallIngressRulesRequest",
+}) as any as S.Schema<PatchAppsFirewallIngressRulesRequest>;
 
 export interface PatchAppsServicesRequest {
   /** Set to true to gradually shift traffic to one or more versions that you specify. By default, traffic is shifted immediately. For gradual traffic migration, the target versions must be located within instances that are configured for both warmup requests (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#InboundServiceType) and automatic scaling (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#AutomaticScaling). You must specify the shardBy (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services#ShardBy) field in the Service resource. Gradual traffic migration is not supported in the App Engine flexible environment. For examples, see Migrating and Splitting Traffic (https://cloud.google.com/appengine/docs/admin-api/migrating-splitting-traffic). */
@@ -2734,14 +3513,22 @@ export interface PatchAppsServicesRequest {
   body?: Service;
 }
 export const PatchAppsServicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "migrateTraffic": S.optional(S.Boolean.pipe(T.Query())),
-  "appsId": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "servicesId": S.String.pipe(T.Label()),
-  "body": S.optional(Service.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta/apps/{appsId}/services/{servicesId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "PatchAppsServicesRequest" }) as any as S.Schema<PatchAppsServicesRequest>;
+  S.Struct({
+    migrateTraffic: S.optional(S.Boolean.pipe(T.Query())),
+    appsId: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    servicesId: S.String.pipe(T.Label()),
+    body: S.optional(Service.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1beta/apps/{appsId}/services/{servicesId}",
+      baseUrl: "https://appengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchAppsServicesRequest",
+}) as any as S.Schema<PatchAppsServicesRequest>;
 
 export interface PatchAppsServicesVersionsRequest {
   /** Part of `name`. See documentation of `appsId`. */
@@ -2756,14 +3543,22 @@ export interface PatchAppsServicesVersionsRequest {
   body?: Version;
 }
 export const PatchAppsServicesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "versionsId": S.String.pipe(T.Label()),
-  "appsId": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "servicesId": S.String.pipe(T.Label()),
-  "body": S.optional(Version.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "PatchAppsServicesVersionsRequest" }) as any as S.Schema<PatchAppsServicesVersionsRequest>;
+  S.Struct({
+    versionsId: S.String.pipe(T.Label()),
+    appsId: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    servicesId: S.String.pipe(T.Label()),
+    body: S.optional(Version.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}",
+      baseUrl: "https://appengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchAppsServicesVersionsRequest",
+}) as any as S.Schema<PatchAppsServicesVersionsRequest>;
 
 export interface PatchProjectsLocationsApplicationsRequest {
   /** Part of `name`. See documentation of `projectsId`. */
@@ -2777,15 +3572,24 @@ export interface PatchProjectsLocationsApplicationsRequest {
   /** Request body */
   body?: Application;
 }
-export const PatchProjectsLocationsApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locationsId": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "projectsId": S.String.pipe(T.Label()),
-  "applicationsId": S.String.pipe(T.Label()),
-  "body": S.optional(Application.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsApplicationsRequest" }) as any as S.Schema<PatchProjectsLocationsApplicationsRequest>;
+export const PatchProjectsLocationsApplicationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      locationsId: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      projectsId: S.String.pipe(T.Label()),
+      applicationsId: S.String.pipe(T.Label()),
+      body: S.optional(Application.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsApplicationsRequest",
+  }) as any as S.Schema<PatchProjectsLocationsApplicationsRequest>;
 
 export interface PatchProjectsLocationsApplicationsAuthorizedCertificatesRequest {
   /** Part of `name`. See documentation of `projectsId`. */
@@ -2801,16 +3605,26 @@ export interface PatchProjectsLocationsApplicationsAuthorizedCertificatesRequest
   /** Request body */
   body?: AuthorizedCertificate;
 }
-export const PatchProjectsLocationsApplicationsAuthorizedCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "applicationsId": S.String.pipe(T.Label()),
-  "authorizedCertificatesId": S.String.pipe(T.Label()),
-  "locationsId": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "projectsId": S.String.pipe(T.Label()),
-  "body": S.optional(AuthorizedCertificate.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates/{authorizedCertificatesId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsApplicationsAuthorizedCertificatesRequest" }) as any as S.Schema<PatchProjectsLocationsApplicationsAuthorizedCertificatesRequest>;
+export const PatchProjectsLocationsApplicationsAuthorizedCertificatesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      applicationsId: S.String.pipe(T.Label()),
+      authorizedCertificatesId: S.String.pipe(T.Label()),
+      locationsId: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      projectsId: S.String.pipe(T.Label()),
+      body: S.optional(AuthorizedCertificate.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates/{authorizedCertificatesId}",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "PatchProjectsLocationsApplicationsAuthorizedCertificatesRequest",
+  }) as any as S.Schema<PatchProjectsLocationsApplicationsAuthorizedCertificatesRequest>;
 
 export interface PatchProjectsLocationsApplicationsDomainMappingsRequest {
   /** Part of `name`. See documentation of `projectsId`. */
@@ -2826,16 +3640,25 @@ export interface PatchProjectsLocationsApplicationsDomainMappingsRequest {
   /** Request body */
   body?: DomainMapping;
 }
-export const PatchProjectsLocationsApplicationsDomainMappingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locationsId": S.String.pipe(T.Label()),
-  "domainMappingsId": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "applicationsId": S.String.pipe(T.Label()),
-  "projectsId": S.String.pipe(T.Label()),
-  "body": S.optional(DomainMapping.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings/{domainMappingsId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsApplicationsDomainMappingsRequest" }) as any as S.Schema<PatchProjectsLocationsApplicationsDomainMappingsRequest>;
+export const PatchProjectsLocationsApplicationsDomainMappingsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      locationsId: S.String.pipe(T.Label()),
+      domainMappingsId: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      applicationsId: S.String.pipe(T.Label()),
+      projectsId: S.String.pipe(T.Label()),
+      body: S.optional(DomainMapping.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings/{domainMappingsId}",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsApplicationsDomainMappingsRequest",
+  }) as any as S.Schema<PatchProjectsLocationsApplicationsDomainMappingsRequest>;
 
 export interface PatchProjectsLocationsApplicationsServicesRequest {
   /** Part of `name`. See documentation of `projectsId`. */
@@ -2853,17 +3676,26 @@ export interface PatchProjectsLocationsApplicationsServicesRequest {
   /** Request body */
   body?: Service;
 }
-export const PatchProjectsLocationsApplicationsServicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "applicationsId": S.String.pipe(T.Label()),
-  "locationsId": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "projectsId": S.String.pipe(T.Label()),
-  "servicesId": S.String.pipe(T.Label()),
-  "migrateTraffic": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(Service.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsApplicationsServicesRequest" }) as any as S.Schema<PatchProjectsLocationsApplicationsServicesRequest>;
+export const PatchProjectsLocationsApplicationsServicesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      applicationsId: S.String.pipe(T.Label()),
+      locationsId: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      projectsId: S.String.pipe(T.Label()),
+      servicesId: S.String.pipe(T.Label()),
+      migrateTraffic: S.optional(S.Boolean.pipe(T.Query())),
+      body: S.optional(Service.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsApplicationsServicesRequest",
+  }) as any as S.Schema<PatchProjectsLocationsApplicationsServicesRequest>;
 
 export interface PatchProjectsLocationsApplicationsServicesVersionsRequest {
   /** Part of `name`. See documentation of `projectsId`. */
@@ -2881,23 +3713,34 @@ export interface PatchProjectsLocationsApplicationsServicesVersionsRequest {
   /** Request body */
   body?: Version;
 }
-export const PatchProjectsLocationsApplicationsServicesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locationsId": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "versionsId": S.String.pipe(T.Label()),
-  "applicationsId": S.String.pipe(T.Label()),
-  "projectsId": S.String.pipe(T.Label()),
-  "servicesId": S.String.pipe(T.Label()),
-  "body": S.optional(Version.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}/versions/{versionsId}","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsApplicationsServicesVersionsRequest" }) as any as S.Schema<PatchProjectsLocationsApplicationsServicesVersionsRequest>;
+export const PatchProjectsLocationsApplicationsServicesVersionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      locationsId: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      versionsId: S.String.pipe(T.Label()),
+      applicationsId: S.String.pipe(T.Label()),
+      projectsId: S.String.pipe(T.Label()),
+      servicesId: S.String.pipe(T.Label()),
+      body: S.optional(Version.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}/versions/{versionsId}",
+        baseUrl: "https://appengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsApplicationsServicesVersionsRequest",
+  }) as any as S.Schema<PatchProjectsLocationsApplicationsServicesVersionsRequest>;
 
 /** Request message for 'Applications.RepairApplication'. */
 export interface RepairApplicationRequest {}
 export const RepairApplicationRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "RepairApplicationRequest" }) as any as S.Schema<RepairApplicationRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "RepairApplicationRequest",
+}) as any as S.Schema<RepairApplicationRequest>;
 
 export interface RepairAppsRequest {
   /** Part of `name`. Required. Name of the application to repair. Example: apps/myapp */
@@ -2906,13 +3749,26 @@ export interface RepairAppsRequest {
   body?: RepairApplicationRequest;
 }
 export const RepairAppsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "appsId": S.String.pipe(T.Label()),
-  "body": S.optional(RepairApplicationRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/apps/{appsId}:repair","baseUrl":"https://appengine.googleapis.com/"})),
-).annotate({ identifier: "RepairAppsRequest" }) as any as S.Schema<RepairAppsRequest>;
+  S.Struct({
+    appsId: S.String.pipe(T.Label()),
+    body: S.optional(RepairApplicationRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/apps/{appsId}:repair",
+      baseUrl: "https://appengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "RepairAppsRequest",
+}) as any as S.Schema<RepairAppsRequest>;
 
-export type BatchUpdateAppsFirewallIngressRulesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type BatchUpdateAppsFirewallIngressRulesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Replaces the entire firewall ruleset in one bulk operation. This overrides and replaces the rules of an existing firewall with the new rules.If the final rule does not match traffic with the '*' wildcard IP range, then an "allow all" rule is explicitly added to the end of the list. */
 export const batchUpdateAppsFirewallIngressRules: API.OperationMethod<
   BatchUpdateAppsFirewallIngressRulesRequest,
@@ -2927,7 +3783,12 @@ export const batchUpdateAppsFirewallIngressRules: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAppsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateAppsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates an App Engine application for a Google Cloud Platform project. Required fields: id - The ID of the target Cloud Platform project. location - The region (https://cloud.google.com/appengine/docs/locations) where you want the App Engine application located.For more information about App Engine applications, see Managing Projects, Applications, and Billing (https://cloud.google.com/appengine/docs/standard/python/console/). */
 export const createApps: API.OperationMethod<
   CreateAppsRequest,
@@ -2942,7 +3803,12 @@ export const createApps: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAppsAuthorizedCertificatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateAppsAuthorizedCertificatesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Uploads the specified SSL certificate. */
 export const createAppsAuthorizedCertificates: API.OperationMethod<
   CreateAppsAuthorizedCertificatesRequest,
@@ -2957,7 +3823,12 @@ export const createAppsAuthorizedCertificates: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAppsDomainMappingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateAppsDomainMappingsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Maps a domain to an application. A user must be authorized to administer a domain in order to map it to an application. For a list of available authorized domains, see AuthorizedDomains.ListAuthorizedDomains. */
 export const createAppsDomainMappings: API.OperationMethod<
   CreateAppsDomainMappingsRequest,
@@ -2972,7 +3843,12 @@ export const createAppsDomainMappings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAppsFirewallIngressRulesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateAppsFirewallIngressRulesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a firewall rule for the application. */
 export const createAppsFirewallIngressRules: API.OperationMethod<
   CreateAppsFirewallIngressRulesRequest,
@@ -2987,7 +3863,12 @@ export const createAppsFirewallIngressRules: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAppsServicesVersionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateAppsServicesVersionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deploys code and resource files to a new version. */
 export const createAppsServicesVersions: API.OperationMethod<
   CreateAppsServicesVersionsRequest,
@@ -3002,7 +3883,12 @@ export const createAppsServicesVersions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsApplicationsAuthorizedCertificatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsApplicationsAuthorizedCertificatesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Uploads the specified SSL certificate. */
 export const createProjectsLocationsApplicationsAuthorizedCertificates: API.OperationMethod<
   CreateProjectsLocationsApplicationsAuthorizedCertificatesRequest,
@@ -3017,7 +3903,12 @@ export const createProjectsLocationsApplicationsAuthorizedCertificates: API.Oper
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsApplicationsDomainMappingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsApplicationsDomainMappingsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Maps a domain to an application. A user must be authorized to administer a domain in order to map it to an application. For a list of available authorized domains, see AuthorizedDomains.ListAuthorizedDomains. */
 export const createProjectsLocationsApplicationsDomainMappings: API.OperationMethod<
   CreateProjectsLocationsApplicationsDomainMappingsRequest,
@@ -3032,7 +3923,12 @@ export const createProjectsLocationsApplicationsDomainMappings: API.OperationMet
   retry: Retry.Retry,
 }));
 
-export type DebugAppsServicesVersionsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DebugAppsServicesVersionsInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Enables debugging on a VM instance. This allows you to use the SSH command to connect to the virtual machine where the instance lives. While in "debug mode", the instance continues to serve live traffic. You should delete the instance when you are done debugging and then allow the system to take over and determine if another instance should be started.Only applicable for instances in App Engine flexible environment. */
 export const debugAppsServicesVersionsInstances: API.OperationMethod<
   DebugAppsServicesVersionsInstancesRequest,
@@ -3047,7 +3943,12 @@ export const debugAppsServicesVersionsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DebugProjectsLocationsApplicationsServicesVersionsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DebugProjectsLocationsApplicationsServicesVersionsInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Enables debugging on a VM instance. This allows you to use the SSH command to connect to the virtual machine where the instance lives. While in "debug mode", the instance continues to serve live traffic. You should delete the instance when you are done debugging and then allow the system to take over and determine if another instance should be started.Only applicable for instances in App Engine flexible environment. */
 export const debugProjectsLocationsApplicationsServicesVersionsInstances: API.OperationMethod<
   DebugProjectsLocationsApplicationsServicesVersionsInstancesRequest,
@@ -3062,7 +3963,12 @@ export const debugProjectsLocationsApplicationsServicesVersionsInstances: API.Op
   retry: Retry.Retry,
 }));
 
-export type DeleteAppsAuthorizedCertificatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteAppsAuthorizedCertificatesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes the specified SSL certificate. */
 export const deleteAppsAuthorizedCertificates: API.OperationMethod<
   DeleteAppsAuthorizedCertificatesRequest,
@@ -3077,7 +3983,12 @@ export const deleteAppsAuthorizedCertificates: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAppsDomainMappingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteAppsDomainMappingsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes the specified domain mapping. A user must be authorized to administer the associated domain in order to delete a DomainMapping resource. */
 export const deleteAppsDomainMappings: API.OperationMethod<
   DeleteAppsDomainMappingsRequest,
@@ -3092,7 +4003,12 @@ export const deleteAppsDomainMappings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAppsFirewallIngressRulesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteAppsFirewallIngressRulesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes the specified firewall rule. */
 export const deleteAppsFirewallIngressRules: API.OperationMethod<
   DeleteAppsFirewallIngressRulesRequest,
@@ -3107,7 +4023,12 @@ export const deleteAppsFirewallIngressRules: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAppsServicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteAppsServicesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes the specified service and all enclosed versions. */
 export const deleteAppsServices: API.OperationMethod<
   DeleteAppsServicesRequest,
@@ -3122,7 +4043,12 @@ export const deleteAppsServices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAppsServicesVersionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteAppsServicesVersionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes an existing Version resource. */
 export const deleteAppsServicesVersions: API.OperationMethod<
   DeleteAppsServicesVersionsRequest,
@@ -3137,7 +4063,12 @@ export const deleteAppsServicesVersions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAppsServicesVersionsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteAppsServicesVersionsInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Stops a running instance.The instance might be automatically recreated based on the scaling settings of the version. For more information, see "How Instances are Managed" (standard environment (https://cloud.google.com/appengine/docs/standard/python/how-instances-are-managed) | flexible environment (https://cloud.google.com/appengine/docs/flexible/python/how-instances-are-managed)).To ensure that instances are not re-created and avoid getting billed, you can stop all instances within the target version by changing the serving status of the version to STOPPED with the apps.services.versions.patch (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions/patch) method. */
 export const deleteAppsServicesVersionsInstances: API.OperationMethod<
   DeleteAppsServicesVersionsInstancesRequest,
@@ -3152,7 +4083,12 @@ export const deleteAppsServicesVersionsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsApplicationsAuthorizedCertificatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsApplicationsAuthorizedCertificatesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes the specified SSL certificate. */
 export const deleteProjectsLocationsApplicationsAuthorizedCertificates: API.OperationMethod<
   DeleteProjectsLocationsApplicationsAuthorizedCertificatesRequest,
@@ -3167,7 +4103,12 @@ export const deleteProjectsLocationsApplicationsAuthorizedCertificates: API.Oper
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsApplicationsDomainMappingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsApplicationsDomainMappingsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes the specified domain mapping. A user must be authorized to administer the associated domain in order to delete a DomainMapping resource. */
 export const deleteProjectsLocationsApplicationsDomainMappings: API.OperationMethod<
   DeleteProjectsLocationsApplicationsDomainMappingsRequest,
@@ -3182,7 +4123,12 @@ export const deleteProjectsLocationsApplicationsDomainMappings: API.OperationMet
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsApplicationsServicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsApplicationsServicesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes the specified service and all enclosed versions. */
 export const deleteProjectsLocationsApplicationsServices: API.OperationMethod<
   DeleteProjectsLocationsApplicationsServicesRequest,
@@ -3197,7 +4143,12 @@ export const deleteProjectsLocationsApplicationsServices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsApplicationsServicesVersionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsApplicationsServicesVersionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes an existing Version resource. */
 export const deleteProjectsLocationsApplicationsServicesVersions: API.OperationMethod<
   DeleteProjectsLocationsApplicationsServicesVersionsRequest,
@@ -3212,7 +4163,12 @@ export const deleteProjectsLocationsApplicationsServicesVersions: API.OperationM
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsApplicationsServicesVersionsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsApplicationsServicesVersionsInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Stops a running instance.The instance might be automatically recreated based on the scaling settings of the version. For more information, see "How Instances are Managed" (standard environment (https://cloud.google.com/appengine/docs/standard/python/how-instances-are-managed) | flexible environment (https://cloud.google.com/appengine/docs/flexible/python/how-instances-are-managed)).To ensure that instances are not re-created and avoid getting billed, you can stop all instances within the target version by changing the serving status of the version to STOPPED with the apps.services.versions.patch (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions/patch) method. */
 export const deleteProjectsLocationsApplicationsServicesVersionsInstances: API.OperationMethod<
   DeleteProjectsLocationsApplicationsServicesVersionsInstancesRequest,
@@ -3227,7 +4183,12 @@ export const deleteProjectsLocationsApplicationsServicesVersionsInstances: API.O
   retry: Retry.Retry,
 }));
 
-export type ExportAppImageAppsServicesVersionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ExportAppImageAppsServicesVersionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Exports a user image to Artifact Registry. */
 export const exportAppImageAppsServicesVersions: API.OperationMethod<
   ExportAppImageAppsServicesVersionsRequest,
@@ -3242,7 +4203,12 @@ export const exportAppImageAppsServicesVersions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ExportAppImageProjectsLocationsApplicationsServicesVersionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ExportAppImageProjectsLocationsApplicationsServicesVersionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Exports a user image to Artifact Registry. */
 export const exportAppImageProjectsLocationsApplicationsServicesVersions: API.OperationMethod<
   ExportAppImageProjectsLocationsApplicationsServicesVersionsRequest,
@@ -3272,7 +4238,10 @@ export const getApps: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAppsAuthorizedCertificatesError = NotFound | Forbidden | GcpOpError;
+export type GetAppsAuthorizedCertificatesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the specified SSL certificate. */
 export const getAppsAuthorizedCertificates: API.OperationMethod<
   GetAppsAuthorizedCertificatesRequest,
@@ -3302,7 +4271,10 @@ export const getAppsDomainMappings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAppsFirewallIngressRulesError = NotFound | Forbidden | GcpOpError;
+export type GetAppsFirewallIngressRulesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the specified firewall rule. */
 export const getAppsFirewallIngressRules: API.OperationMethod<
   GetAppsFirewallIngressRulesRequest,
@@ -3377,7 +4349,10 @@ export const getAppsServicesVersions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAppsServicesVersionsInstancesError = NotFound | Forbidden | GcpOpError;
+export type GetAppsServicesVersionsInstancesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets instance information. */
 export const getAppsServicesVersionsInstances: API.OperationMethod<
   GetAppsServicesVersionsInstancesRequest,
@@ -3407,7 +4382,10 @@ export const getProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsApplicationsAuthorizedCertificatesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsApplicationsAuthorizedCertificatesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the specified SSL certificate. */
 export const getProjectsLocationsApplicationsAuthorizedCertificates: API.OperationMethod<
   GetProjectsLocationsApplicationsAuthorizedCertificatesRequest,
@@ -3422,7 +4400,10 @@ export const getProjectsLocationsApplicationsAuthorizedCertificates: API.Operati
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsApplicationsDomainMappingsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsApplicationsDomainMappingsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the specified domain mapping. */
 export const getProjectsLocationsApplicationsDomainMappings: API.OperationMethod<
   GetProjectsLocationsApplicationsDomainMappingsRequest,
@@ -3437,7 +4418,10 @@ export const getProjectsLocationsApplicationsDomainMappings: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -3452,7 +4436,10 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListAppsAuthorizedCertificatesError = NotFound | Forbidden | GcpOpError;
+export type ListAppsAuthorizedCertificatesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all SSL certificates the user is authorized to administer. */
 export const listAppsAuthorizedCertificates: API.PaginatedOperationMethod<
   ListAppsAuthorizedCertificatesRequest,
@@ -3465,7 +4452,10 @@ export const listAppsAuthorizedCertificates: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListAppsAuthorizedDomainsError = NotFound | Forbidden | GcpOpError;
@@ -3481,7 +4471,10 @@ export const listAppsAuthorizedDomains: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListAppsDomainMappingsError = NotFound | Forbidden | GcpOpError;
@@ -3497,10 +4490,16 @@ export const listAppsDomainMappings: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListAppsFirewallIngressRulesError = NotFound | Forbidden | GcpOpError;
+export type ListAppsFirewallIngressRulesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists the firewall rules of an application. */
 export const listAppsFirewallIngressRules: API.PaginatedOperationMethod<
   ListAppsFirewallIngressRulesRequest,
@@ -3513,7 +4512,10 @@ export const listAppsFirewallIngressRules: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListAppsLocationsError = NotFound | Forbidden | GcpOpError;
@@ -3529,7 +4531,10 @@ export const listAppsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListAppsOperationsError = NotFound | Forbidden | GcpOpError;
@@ -3545,7 +4550,10 @@ export const listAppsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListAppsServicesError = NotFound | Forbidden | GcpOpError;
@@ -3561,7 +4569,10 @@ export const listAppsServices: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListAppsServicesVersionsError = NotFound | Forbidden | GcpOpError;
@@ -3577,10 +4588,16 @@ export const listAppsServicesVersions: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListAppsServicesVersionsInstancesError = NotFound | Forbidden | GcpOpError;
+export type ListAppsServicesVersionsInstancesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists the instances of a version.Tip: To aggregate details about instances over time, see the Stackdriver Monitoring API (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list). */
 export const listAppsServicesVersionsInstances: API.PaginatedOperationMethod<
   ListAppsServicesVersionsInstancesRequest,
@@ -3593,7 +4610,10 @@ export const listAppsServicesVersionsInstances: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListProjectsLocationsError = NotFound | Forbidden | GcpOpError;
@@ -3609,10 +4629,16 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsApplicationsAuthorizedCertificatesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsApplicationsAuthorizedCertificatesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all SSL certificates the user is authorized to administer. */
 export const listProjectsLocationsApplicationsAuthorizedCertificates: API.PaginatedOperationMethod<
   ListProjectsLocationsApplicationsAuthorizedCertificatesRequest,
@@ -3625,10 +4651,16 @@ export const listProjectsLocationsApplicationsAuthorizedCertificates: API.Pagina
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsApplicationsAuthorizedDomainsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsApplicationsAuthorizedDomainsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all domains the user is authorized to administer. */
 export const listProjectsLocationsApplicationsAuthorizedDomains: API.PaginatedOperationMethod<
   ListProjectsLocationsApplicationsAuthorizedDomainsRequest,
@@ -3641,10 +4673,16 @@ export const listProjectsLocationsApplicationsAuthorizedDomains: API.PaginatedOp
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsApplicationsDomainMappingsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsApplicationsDomainMappingsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists the domain mappings on an application. */
 export const listProjectsLocationsApplicationsDomainMappings: API.PaginatedOperationMethod<
   ListProjectsLocationsApplicationsDomainMappingsRequest,
@@ -3657,10 +4695,16 @@ export const listProjectsLocationsApplicationsDomainMappings: API.PaginatedOpera
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns UNIMPLEMENTED. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -3673,7 +4717,10 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListRuntimesAppsError = NotFound | Forbidden | GcpOpError;
@@ -3691,7 +4738,12 @@ export const listRuntimesApps: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchAppsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchAppsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the specified Application resource. You can update the following fields: auth_domain - Google authentication domain for controlling user access to the application. default_cookie_expiration - Cookie expiration policy for the application. iap - Identity-Aware Proxy properties for the application. */
 export const patchApps: API.OperationMethod<
   PatchAppsRequest,
@@ -3706,7 +4758,12 @@ export const patchApps: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchAppsAuthorizedCertificatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchAppsAuthorizedCertificatesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the specified SSL certificate. To renew a certificate and maintain its existing domain mappings, update certificate_data with a new certificate. The new certificate must be applicable to the same domains as the original certificate. The certificate display_name may also be updated. */
 export const patchAppsAuthorizedCertificates: API.OperationMethod<
   PatchAppsAuthorizedCertificatesRequest,
@@ -3721,7 +4778,12 @@ export const patchAppsAuthorizedCertificates: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchAppsDomainMappingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchAppsDomainMappingsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the specified domain mapping. To map an SSL certificate to a domain mapping, update certificate_id to point to an AuthorizedCertificate resource. A user must be authorized to administer the associated domain in order to update a DomainMapping resource. */
 export const patchAppsDomainMappings: API.OperationMethod<
   PatchAppsDomainMappingsRequest,
@@ -3736,7 +4798,12 @@ export const patchAppsDomainMappings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchAppsFirewallIngressRulesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchAppsFirewallIngressRulesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the specified firewall rule. */
 export const patchAppsFirewallIngressRules: API.OperationMethod<
   PatchAppsFirewallIngressRulesRequest,
@@ -3751,7 +4818,12 @@ export const patchAppsFirewallIngressRules: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchAppsServicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchAppsServicesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the configuration of the specified service. */
 export const patchAppsServices: API.OperationMethod<
   PatchAppsServicesRequest,
@@ -3766,7 +4838,12 @@ export const patchAppsServices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchAppsServicesVersionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchAppsServicesVersionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the specified Version resource. You can specify the following fields depending on the App Engine environment and type of scaling that the version resource uses:Standard environment instance_class (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.instance_class)automatic scaling in the standard environment: automatic_scaling.min_idle_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling) automatic_scaling.max_idle_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling) automaticScaling.standard_scheduler_settings.max_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#StandardSchedulerSettings) automaticScaling.standard_scheduler_settings.min_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#StandardSchedulerSettings) automaticScaling.standard_scheduler_settings.target_cpu_utilization (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#StandardSchedulerSettings) automaticScaling.standard_scheduler_settings.target_throughput_utilization (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#StandardSchedulerSettings)basic scaling or manual scaling in the standard environment: serving_status (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.serving_status) manual_scaling.instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#manualscaling)Flexible environment serving_status (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.serving_status)automatic scaling in the flexible environment: automatic_scaling.min_total_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling) automatic_scaling.max_total_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling) automatic_scaling.cool_down_period_sec (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling) automatic_scaling.cpu_utilization.target_utilization (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling)manual scaling in the flexible environment: manual_scaling.instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#manualscaling) */
 export const patchAppsServicesVersions: API.OperationMethod<
   PatchAppsServicesVersionsRequest,
@@ -3781,7 +4858,12 @@ export const patchAppsServicesVersions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsApplicationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsApplicationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the specified Application resource. You can update the following fields: auth_domain - Google authentication domain for controlling user access to the application. default_cookie_expiration - Cookie expiration policy for the application. iap - Identity-Aware Proxy properties for the application. */
 export const patchProjectsLocationsApplications: API.OperationMethod<
   PatchProjectsLocationsApplicationsRequest,
@@ -3796,7 +4878,12 @@ export const patchProjectsLocationsApplications: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsApplicationsAuthorizedCertificatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsApplicationsAuthorizedCertificatesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the specified SSL certificate. To renew a certificate and maintain its existing domain mappings, update certificate_data with a new certificate. The new certificate must be applicable to the same domains as the original certificate. The certificate display_name may also be updated. */
 export const patchProjectsLocationsApplicationsAuthorizedCertificates: API.OperationMethod<
   PatchProjectsLocationsApplicationsAuthorizedCertificatesRequest,
@@ -3811,7 +4898,12 @@ export const patchProjectsLocationsApplicationsAuthorizedCertificates: API.Opera
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsApplicationsDomainMappingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsApplicationsDomainMappingsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the specified domain mapping. To map an SSL certificate to a domain mapping, update certificate_id to point to an AuthorizedCertificate resource. A user must be authorized to administer the associated domain in order to update a DomainMapping resource. */
 export const patchProjectsLocationsApplicationsDomainMappings: API.OperationMethod<
   PatchProjectsLocationsApplicationsDomainMappingsRequest,
@@ -3826,7 +4918,12 @@ export const patchProjectsLocationsApplicationsDomainMappings: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsApplicationsServicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsApplicationsServicesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the configuration of the specified service. */
 export const patchProjectsLocationsApplicationsServices: API.OperationMethod<
   PatchProjectsLocationsApplicationsServicesRequest,
@@ -3841,7 +4938,12 @@ export const patchProjectsLocationsApplicationsServices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsApplicationsServicesVersionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsApplicationsServicesVersionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the specified Version resource. You can specify the following fields depending on the App Engine environment and type of scaling that the version resource uses:Standard environment instance_class (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.instance_class)automatic scaling in the standard environment: automatic_scaling.min_idle_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling) automatic_scaling.max_idle_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling) automaticScaling.standard_scheduler_settings.max_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#StandardSchedulerSettings) automaticScaling.standard_scheduler_settings.min_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#StandardSchedulerSettings) automaticScaling.standard_scheduler_settings.target_cpu_utilization (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#StandardSchedulerSettings) automaticScaling.standard_scheduler_settings.target_throughput_utilization (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#StandardSchedulerSettings)basic scaling or manual scaling in the standard environment: serving_status (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.serving_status) manual_scaling.instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#manualscaling)Flexible environment serving_status (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.serving_status)automatic scaling in the flexible environment: automatic_scaling.min_total_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling) automatic_scaling.max_total_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling) automatic_scaling.cool_down_period_sec (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling) automatic_scaling.cpu_utilization.target_utilization (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling)manual scaling in the flexible environment: manual_scaling.instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#manualscaling) */
 export const patchProjectsLocationsApplicationsServicesVersions: API.OperationMethod<
   PatchProjectsLocationsApplicationsServicesVersionsRequest,
@@ -3856,7 +4958,12 @@ export const patchProjectsLocationsApplicationsServicesVersions: API.OperationMe
   retry: Retry.Retry,
 }));
 
-export type RepairAppsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RepairAppsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Recreates the required App Engine features for the specified App Engine application, for example a Cloud Storage bucket or App Engine service account. Use this method if you receive an error message about a missing feature, for example, Error retrieving the App Engine service account. If you have deleted your App Engine service account, this will not be able to recreate it. Instead, you should attempt to use the IAM undelete API if possible at https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts/undelete?apix_params=%7B"name"%3A"projects%2F-%2FserviceAccounts%2Funique_id"%2C"resource"%3A%7B%7D%7D . If the deletion was recent, the numeric ID can be found in the Cloud Console Activity Log. */
 export const repairApps: API.OperationMethod<
   RepairAppsRequest,
@@ -3870,4 +4977,3 @@ export const repairApps: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

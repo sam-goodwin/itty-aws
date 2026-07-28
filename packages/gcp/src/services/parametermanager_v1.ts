@@ -13,57 +13,64 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
-export type ParameterFormatEnum = "PARAMETER_FORMAT_UNSPECIFIED" | "UNFORMATTED" | "YAML" | "JSON";
+export type ParameterFormatEnum =
+  | "PARAMETER_FORMAT_UNSPECIFIED"
+  | "UNFORMATTED"
+  | "YAML"
+  | "JSON";
 export const ParameterFormatEnum = /*@__PURE__*/ S.String;
 
 /** Output-only policy member strings of a Google Cloud resource's built-in identity. */
@@ -74,11 +81,13 @@ export interface ResourcePolicyMember {
   iamPolicyNamePrincipal?: string;
 }
 export const ResourcePolicyMember = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "iamPolicyUidPrincipal": S.optional(S.String),
-  "iamPolicyNamePrincipal": S.optional(S.String),
-}),
-).annotate({ identifier: "ResourcePolicyMember" }) as any as S.Schema<ResourcePolicyMember>;
+  S.Struct({
+    iamPolicyUidPrincipal: S.optional(S.String),
+    iamPolicyNamePrincipal: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ResourcePolicyMember",
+}) as any as S.Schema<ResourcePolicyMember>;
 
 /** Message describing Parameter resource */
 export interface Parameter {
@@ -98,15 +107,15 @@ export interface Parameter {
   kmsKey?: string;
 }
 export const Parameter = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "labels": S.optional(StringMap),
-  "createTime": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "format": S.optional(ParameterFormatEnum),
-  "name": S.optional(S.String),
-  "policyMember": S.optional(ResourcePolicyMember),
-  "kmsKey": S.optional(S.String),
-}),
+  S.Struct({
+    labels: S.optional(StringMap),
+    createTime: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    format: S.optional(ParameterFormatEnum),
+    name: S.optional(S.String),
+    policyMember: S.optional(ResourcePolicyMember),
+    kmsKey: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Parameter" }) as any as S.Schema<Parameter>;
 
 export interface CreateProjectsLocationsParametersRequest {
@@ -119,14 +128,23 @@ export interface CreateProjectsLocationsParametersRequest {
   /** Request body */
   body?: Parameter;
 }
-export const CreateProjectsLocationsParametersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "parameterId": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Parameter.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/parameters","baseUrl":"https://parametermanager.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsParametersRequest" }) as any as S.Schema<CreateProjectsLocationsParametersRequest>;
+export const CreateProjectsLocationsParametersRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      parameterId: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Parameter.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/parameters",
+        baseUrl: "https://parametermanager.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateProjectsLocationsParametersRequest",
+}) as any as S.Schema<CreateProjectsLocationsParametersRequest>;
 
 /** Message for storing a ParameterVersion resource's payload data */
 export interface ParameterVersionPayload {
@@ -134,10 +152,12 @@ export interface ParameterVersionPayload {
   data?: string;
 }
 export const ParameterVersionPayload = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "data": S.optional(S.String),
-}),
-).annotate({ identifier: "ParameterVersionPayload" }) as any as S.Schema<ParameterVersionPayload>;
+  S.Struct({
+    data: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ParameterVersionPayload",
+}) as any as S.Schema<ParameterVersionPayload>;
 
 /** Message describing ParameterVersion resource */
 export interface ParameterVersion {
@@ -155,15 +175,17 @@ export interface ParameterVersion {
   name?: string;
 }
 export const ParameterVersion = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "disabled": S.optional(S.Boolean),
-  "kmsKeyVersion": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "payload": S.optional(ParameterVersionPayload),
-  "name": S.optional(S.String),
-}),
-).annotate({ identifier: "ParameterVersion" }) as any as S.Schema<ParameterVersion>;
+  S.Struct({
+    disabled: S.optional(S.Boolean),
+    kmsKeyVersion: S.optional(S.String),
+    createTime: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    payload: S.optional(ParameterVersionPayload),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ParameterVersion",
+}) as any as S.Schema<ParameterVersion>;
 
 export interface CreateProjectsLocationsParametersVersionsRequest {
   /** Required. Value for parent in the format `projects/*\/locations/*\/parameters/*`. */
@@ -175,16 +197,28 @@ export interface CreateProjectsLocationsParametersVersionsRequest {
   /** Request body */
   body?: ParameterVersion;
 }
-export const CreateProjectsLocationsParametersVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "parameterVersionId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(ParameterVersion.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/versions","baseUrl":"https://parametermanager.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsParametersVersionsRequest" }) as any as S.Schema<CreateProjectsLocationsParametersVersionsRequest>;
+export const CreateProjectsLocationsParametersVersionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      parameterVersionId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(ParameterVersion.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/versions",
+        baseUrl: "https://parametermanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsParametersVersionsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsParametersVersionsRequest>;
 
-export type TemplateFormatEnum = "TEMPLATE_FORMAT_UNSPECIFIED" | "TEMPLATE_FORMAT_YAML" | "TEMPLATE_FORMAT_JSON";
+export type TemplateFormatEnum =
+  | "TEMPLATE_FORMAT_UNSPECIFIED"
+  | "TEMPLATE_FORMAT_YAML"
+  | "TEMPLATE_FORMAT_JSON";
 export const TemplateFormatEnum = /*@__PURE__*/ S.String;
 
 /** Message describing Template resource */
@@ -201,13 +235,13 @@ export interface Template {
   labels?: StringMap;
 }
 export const Template = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "format": S.optional(TemplateFormatEnum),
-  "name": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "labels": S.optional(StringMap),
-}),
+  S.Struct({
+    format: S.optional(TemplateFormatEnum),
+    name: S.optional(S.String),
+    createTime: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    labels: S.optional(StringMap),
+  }),
 ).annotate({ identifier: "Template" }) as any as S.Schema<Template>;
 
 export interface CreateProjectsLocationsTemplatesRequest {
@@ -220,14 +254,23 @@ export interface CreateProjectsLocationsTemplatesRequest {
   /** Request body */
   body?: Template;
 }
-export const CreateProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "templateId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Template.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/templates","baseUrl":"https://parametermanager.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsTemplatesRequest" }) as any as S.Schema<CreateProjectsLocationsTemplatesRequest>;
+export const CreateProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      templateId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Template.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/templates",
+        baseUrl: "https://parametermanager.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateProjectsLocationsTemplatesRequest",
+}) as any as S.Schema<CreateProjectsLocationsTemplatesRequest>;
 
 /** Message for storing a TemplateVersion resource's payload data */
 export interface TemplateVersionPayload {
@@ -235,10 +278,12 @@ export interface TemplateVersionPayload {
   data?: string;
 }
 export const TemplateVersionPayload = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "data": S.optional(S.String),
-}),
-).annotate({ identifier: "TemplateVersionPayload" }) as any as S.Schema<TemplateVersionPayload>;
+  S.Struct({
+    data: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "TemplateVersionPayload",
+}) as any as S.Schema<TemplateVersionPayload>;
 
 /** Message describing TemplateVersion resource */
 export interface TemplateVersion {
@@ -254,14 +299,16 @@ export interface TemplateVersion {
   disabled?: boolean;
 }
 export const TemplateVersion = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "payload": S.optional(TemplateVersionPayload),
-  "name": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "disabled": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "TemplateVersion" }) as any as S.Schema<TemplateVersion>;
+  S.Struct({
+    payload: S.optional(TemplateVersionPayload),
+    name: S.optional(S.String),
+    createTime: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    disabled: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "TemplateVersion",
+}) as any as S.Schema<TemplateVersion>;
 
 export interface CreateProjectsLocationsTemplatesVersionsRequest {
   /** Required. Id of the TemplateVersion resource */
@@ -273,14 +320,23 @@ export interface CreateProjectsLocationsTemplatesVersionsRequest {
   /** Request body */
   body?: TemplateVersion;
 }
-export const CreateProjectsLocationsTemplatesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "templateVersionId": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(TemplateVersion.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/versions","baseUrl":"https://parametermanager.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsTemplatesVersionsRequest" }) as any as S.Schema<CreateProjectsLocationsTemplatesVersionsRequest>;
+export const CreateProjectsLocationsTemplatesVersionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      templateVersionId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(TemplateVersion.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/versions",
+        baseUrl: "https://parametermanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsTemplatesVersionsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsTemplatesVersionsRequest>;
 
 export interface DeleteProjectsLocationsParametersRequest {
   /** Required. Name of the resource in the format `projects/*\/locations/*\/parameters/*`. */
@@ -288,18 +344,27 @@ export interface DeleteProjectsLocationsParametersRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsParametersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://parametermanager.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsParametersRequest" }) as any as S.Schema<DeleteProjectsLocationsParametersRequest>;
+export const DeleteProjectsLocationsParametersRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://parametermanager.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsParametersRequest",
+}) as any as S.Schema<DeleteProjectsLocationsParametersRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 export interface DeleteProjectsLocationsParametersVersionsRequest {
   /** Required. Name of the resource in the format `projects/*\/locations/*\/parameters/*\/versions/*`. */
@@ -307,12 +372,21 @@ export interface DeleteProjectsLocationsParametersVersionsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsParametersVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://parametermanager.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsParametersVersionsRequest" }) as any as S.Schema<DeleteProjectsLocationsParametersVersionsRequest>;
+export const DeleteProjectsLocationsParametersVersionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://parametermanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsParametersVersionsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsParametersVersionsRequest>;
 
 export interface DeleteProjectsLocationsTemplatesRequest {
   /** Required. Name of the resource in the format `projects/*\/locations/*\/templates/*`. */
@@ -320,12 +394,21 @@ export interface DeleteProjectsLocationsTemplatesRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://parametermanager.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsTemplatesRequest" }) as any as S.Schema<DeleteProjectsLocationsTemplatesRequest>;
+export const DeleteProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://parametermanager.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsTemplatesRequest",
+}) as any as S.Schema<DeleteProjectsLocationsTemplatesRequest>;
 
 export interface DeleteProjectsLocationsTemplatesVersionsRequest {
   /** Required. Name of the resource in the format `projects/*\/locations/*\/templates/*\/versions/*`. */
@@ -333,25 +416,45 @@ export interface DeleteProjectsLocationsTemplatesVersionsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsTemplatesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://parametermanager.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsTemplatesVersionsRequest" }) as any as S.Schema<DeleteProjectsLocationsTemplatesVersionsRequest>;
+export const DeleteProjectsLocationsTemplatesVersionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://parametermanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsTemplatesVersionsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsTemplatesVersionsRequest>;
 
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://parametermanager.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://parametermanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsRequest",
+}) as any as S.Schema<GetProjectsLocationsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -367,27 +470,40 @@ export interface Location {
   displayName?: string;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "metadata": S.optional(DocumentMap),
-  "labels": S.optional(StringMap),
-  "locationId": S.optional(S.String),
-  "name": S.optional(S.String),
-  "displayName": S.optional(S.String),
-}),
+  S.Struct({
+    metadata: S.optional(DocumentMap),
+    labels: S.optional(StringMap),
+    locationId: S.optional(S.String),
+    name: S.optional(S.String),
+    displayName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export interface GetProjectsLocationsParametersRequest {
   /** Required. Name of the resource in the format `projects/*\/locations/*\/parameters/*`. */
   name: string;
 }
-export const GetProjectsLocationsParametersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://parametermanager.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsParametersRequest" }) as any as S.Schema<GetProjectsLocationsParametersRequest>;
+export const GetProjectsLocationsParametersRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://parametermanager.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsParametersRequest",
+}) as any as S.Schema<GetProjectsLocationsParametersRequest>;
 
-export type GetProjectsLocationsParametersVersionsViewEnum = "VIEW_UNSPECIFIED" | "BASIC" | "FULL";
-export const GetProjectsLocationsParametersVersionsViewEnum = /*@__PURE__*/ S.String;
+export type GetProjectsLocationsParametersVersionsViewEnum =
+  | "VIEW_UNSPECIFIED"
+  | "BASIC"
+  | "FULL";
+export const GetProjectsLocationsParametersVersionsViewEnum =
+  /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsParametersVersionsRequest {
   /** Required. Name of the resource in the format `projects/*\/locations/*\/parameters/*\/versions/*`. */
@@ -395,25 +511,49 @@ export interface GetProjectsLocationsParametersVersionsRequest {
   /** Optional. View of the ParameterVersion. In the default FULL view, all metadata & payload associated with the ParameterVersion will be returned. */
   view?: GetProjectsLocationsParametersVersionsViewEnum | (string & {});
 }
-export const GetProjectsLocationsParametersVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "view": S.optional(GetProjectsLocationsParametersVersionsViewEnum.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://parametermanager.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsParametersVersionsRequest" }) as any as S.Schema<GetProjectsLocationsParametersVersionsRequest>;
+export const GetProjectsLocationsParametersVersionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      view: S.optional(
+        GetProjectsLocationsParametersVersionsViewEnum.pipe(T.Query()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://parametermanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsParametersVersionsRequest",
+  }) as any as S.Schema<GetProjectsLocationsParametersVersionsRequest>;
 
 export interface GetProjectsLocationsTemplatesRequest {
   /** Required. Name of the resource in the format `projects/*\/locations/*\/templates/*`. */
   name: string;
 }
-export const GetProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://parametermanager.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsTemplatesRequest" }) as any as S.Schema<GetProjectsLocationsTemplatesRequest>;
+export const GetProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://parametermanager.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsTemplatesRequest",
+}) as any as S.Schema<GetProjectsLocationsTemplatesRequest>;
 
-export type GetProjectsLocationsTemplatesVersionsViewEnum = "VIEW_UNSPECIFIED" | "BASIC" | "FULL";
-export const GetProjectsLocationsTemplatesVersionsViewEnum = /*@__PURE__*/ S.String;
+export type GetProjectsLocationsTemplatesVersionsViewEnum =
+  | "VIEW_UNSPECIFIED"
+  | "BASIC"
+  | "FULL";
+export const GetProjectsLocationsTemplatesVersionsViewEnum =
+  /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsTemplatesVersionsRequest {
   /** Required. Name of the resource in the format `projects/*\/locations/*\/templates/*\/versions/*`. */
@@ -421,15 +561,28 @@ export interface GetProjectsLocationsTemplatesVersionsRequest {
   /** Optional. Specifies the view of the TemplateVersion to return. In the default FULL view, all metadata & payload associated with the TemplateVersion will be returned. */
   view?: GetProjectsLocationsTemplatesVersionsViewEnum | (string & {});
 }
-export const GetProjectsLocationsTemplatesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "view": S.optional(GetProjectsLocationsTemplatesVersionsViewEnum.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://parametermanager.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsTemplatesVersionsRequest" }) as any as S.Schema<GetProjectsLocationsTemplatesVersionsRequest>;
+export const GetProjectsLocationsTemplatesVersionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      view: S.optional(
+        GetProjectsLocationsTemplatesVersionsViewEnum.pipe(T.Query()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://parametermanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsTemplatesVersionsRequest",
+  }) as any as S.Schema<GetProjectsLocationsTemplatesVersionsRequest>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 export interface ListProjectsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
@@ -444,17 +597,27 @@ export interface ListProjectsLocationsRequest {
   extraLocationTypes?: StringList;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/locations","baseUrl":"https://parametermanager.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    filter: S.optional(S.String.pipe(T.Query())),
+    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}/locations",
+      baseUrl: "https://parametermanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsRequest",
+}) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(
+  Location,
+) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -464,11 +627,13 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locations": S.optional(LocationList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
+  S.Struct({
+    locations: S.optional(LocationList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListLocationsResponse",
+}) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsLocationsParametersRequest {
   /** Optional. Filtering results */
@@ -482,18 +647,29 @@ export interface ListProjectsLocationsParametersRequest {
   /** Optional. A page token, received from a previous `ListParameters` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListParameters` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsParametersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/parameters","baseUrl":"https://parametermanager.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsParametersRequest" }) as any as S.Schema<ListProjectsLocationsParametersRequest>;
+export const ListProjectsLocationsParametersRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      filter: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/parameters",
+        baseUrl: "https://parametermanager.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsParametersRequest",
+}) as any as S.Schema<ListProjectsLocationsParametersRequest>;
 
 export type ParameterList = ReadonlyArray<Parameter>;
-export const ParameterList = /*@__PURE__*/ S.Array(Parameter) as any as S.Schema<ParameterList>;
+export const ParameterList = /*@__PURE__*/ S.Array(
+  Parameter,
+) as any as S.Schema<ParameterList>;
 
 /** Message for response to listing Parameters */
 export interface ListParametersResponse {
@@ -505,12 +681,14 @@ export interface ListParametersResponse {
   unreachable?: StringList;
 }
 export const ListParametersResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "parameters": S.optional(ParameterList),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListParametersResponse" }) as any as S.Schema<ListParametersResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    parameters: S.optional(ParameterList),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListParametersResponse",
+}) as any as S.Schema<ListParametersResponse>;
 
 export interface ListProjectsLocationsParametersVersionsRequest {
   /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
@@ -524,18 +702,29 @@ export interface ListProjectsLocationsParametersVersionsRequest {
   /** Optional. Filtering results */
   filter?: string;
 }
-export const ListProjectsLocationsParametersVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/versions","baseUrl":"https://parametermanager.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsParametersVersionsRequest" }) as any as S.Schema<ListProjectsLocationsParametersVersionsRequest>;
+export const ListProjectsLocationsParametersVersionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/versions",
+        baseUrl: "https://parametermanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsParametersVersionsRequest",
+  }) as any as S.Schema<ListProjectsLocationsParametersVersionsRequest>;
 
 export type ParameterVersionList = ReadonlyArray<ParameterVersion>;
-export const ParameterVersionList = /*@__PURE__*/ S.Array(ParameterVersion) as any as S.Schema<ParameterVersionList>;
+export const ParameterVersionList = /*@__PURE__*/ S.Array(
+  ParameterVersion,
+) as any as S.Schema<ParameterVersionList>;
 
 /** Message for response to listing ParameterVersions */
 export interface ListParameterVersionsResponse {
@@ -547,12 +736,14 @@ export interface ListParameterVersionsResponse {
   nextPageToken?: string;
 }
 export const ListParameterVersionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parameterVersions": S.optional(ParameterVersionList),
-  "unreachable": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListParameterVersionsResponse" }) as any as S.Schema<ListParameterVersionsResponse>;
+  S.Struct({
+    parameterVersions: S.optional(ParameterVersionList),
+    unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListParameterVersionsResponse",
+}) as any as S.Schema<ListParameterVersionsResponse>;
 
 export interface ListProjectsLocationsTemplatesRequest {
   /** Optional. Filtering results */
@@ -566,18 +757,29 @@ export interface ListProjectsLocationsTemplatesRequest {
   /** Optional. Hint for how to order the results */
   orderBy?: string;
 }
-export const ListProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/templates","baseUrl":"https://parametermanager.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsTemplatesRequest" }) as any as S.Schema<ListProjectsLocationsTemplatesRequest>;
+export const ListProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      filter: S.optional(S.String.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/templates",
+        baseUrl: "https://parametermanager.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsTemplatesRequest",
+}) as any as S.Schema<ListProjectsLocationsTemplatesRequest>;
 
 export type TemplateList = ReadonlyArray<Template>;
-export const TemplateList = /*@__PURE__*/ S.Array(Template) as any as S.Schema<TemplateList>;
+export const TemplateList = /*@__PURE__*/ S.Array(
+  Template,
+) as any as S.Schema<TemplateList>;
 
 /** Message for response to listing Templates */
 export interface ListTemplatesResponse {
@@ -589,12 +791,14 @@ export interface ListTemplatesResponse {
   unreachable?: StringList;
 }
 export const ListTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "templates": S.optional(TemplateList),
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListTemplatesResponse" }) as any as S.Schema<ListTemplatesResponse>;
+  S.Struct({
+    templates: S.optional(TemplateList),
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListTemplatesResponse",
+}) as any as S.Schema<ListTemplatesResponse>;
 
 export interface ListProjectsLocationsTemplatesVersionsRequest {
   /** Optional. A page token, received from a previous `ListTemplateVersions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListTemplateVersions` must match the call that provided the page token. */
@@ -608,18 +812,29 @@ export interface ListProjectsLocationsTemplatesVersionsRequest {
   /** Optional. Filtering results */
   filter?: string;
 }
-export const ListProjectsLocationsTemplatesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/versions","baseUrl":"https://parametermanager.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsTemplatesVersionsRequest" }) as any as S.Schema<ListProjectsLocationsTemplatesVersionsRequest>;
+export const ListProjectsLocationsTemplatesVersionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/versions",
+        baseUrl: "https://parametermanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsTemplatesVersionsRequest",
+  }) as any as S.Schema<ListProjectsLocationsTemplatesVersionsRequest>;
 
 export type TemplateVersionList = ReadonlyArray<TemplateVersion>;
-export const TemplateVersionList = /*@__PURE__*/ S.Array(TemplateVersion) as any as S.Schema<TemplateVersionList>;
+export const TemplateVersionList = /*@__PURE__*/ S.Array(
+  TemplateVersion,
+) as any as S.Schema<TemplateVersionList>;
 
 /** Message for response to listing TemplateVersions */
 export interface ListTemplateVersionsResponse {
@@ -631,12 +846,14 @@ export interface ListTemplateVersionsResponse {
   nextPageToken?: string;
 }
 export const ListTemplateVersionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "unreachable": S.optional(StringList),
-  "templateVersions": S.optional(TemplateVersionList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListTemplateVersionsResponse" }) as any as S.Schema<ListTemplateVersionsResponse>;
+  S.Struct({
+    unreachable: S.optional(StringList),
+    templateVersions: S.optional(TemplateVersionList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListTemplateVersionsResponse",
+}) as any as S.Schema<ListTemplateVersionsResponse>;
 
 export interface PatchProjectsLocationsParametersRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -648,14 +865,23 @@ export interface PatchProjectsLocationsParametersRequest {
   /** Request body */
   body?: Parameter;
 }
-export const PatchProjectsLocationsParametersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Parameter.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://parametermanager.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsParametersRequest" }) as any as S.Schema<PatchProjectsLocationsParametersRequest>;
+export const PatchProjectsLocationsParametersRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      requestId: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Parameter.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://parametermanager.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "PatchProjectsLocationsParametersRequest",
+}) as any as S.Schema<PatchProjectsLocationsParametersRequest>;
 
 export interface PatchProjectsLocationsParametersVersionsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -667,14 +893,23 @@ export interface PatchProjectsLocationsParametersVersionsRequest {
   /** Request body */
   body?: ParameterVersion;
 }
-export const PatchProjectsLocationsParametersVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(ParameterVersion.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://parametermanager.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsParametersVersionsRequest" }) as any as S.Schema<PatchProjectsLocationsParametersVersionsRequest>;
+export const PatchProjectsLocationsParametersVersionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      requestId: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(ParameterVersion.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://parametermanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsParametersVersionsRequest",
+  }) as any as S.Schema<PatchProjectsLocationsParametersVersionsRequest>;
 
 export interface PatchProjectsLocationsTemplatesRequest {
   /** Optional. Field mask is used to specify the fields to be overwritten in the Template resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A mutable field will be overwritten if it is in the mask. If the user does not provide a mask then all mutable fields present in the request will be overwritten. */
@@ -686,14 +921,23 @@ export interface PatchProjectsLocationsTemplatesRequest {
   /** Request body */
   body?: Template;
 }
-export const PatchProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Template.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://parametermanager.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsTemplatesRequest" }) as any as S.Schema<PatchProjectsLocationsTemplatesRequest>;
+export const PatchProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Template.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://parametermanager.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "PatchProjectsLocationsTemplatesRequest",
+}) as any as S.Schema<PatchProjectsLocationsTemplatesRequest>;
 
 export interface PatchProjectsLocationsTemplatesVersionsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -705,24 +949,42 @@ export interface PatchProjectsLocationsTemplatesVersionsRequest {
   /** Request body */
   body?: TemplateVersion;
 }
-export const PatchProjectsLocationsTemplatesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(TemplateVersion.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://parametermanager.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsTemplatesVersionsRequest" }) as any as S.Schema<PatchProjectsLocationsTemplatesVersionsRequest>;
+export const PatchProjectsLocationsTemplatesVersionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      requestId: S.optional(S.String.pipe(T.Query())),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      body: S.optional(TemplateVersion.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://parametermanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsTemplatesVersionsRequest",
+  }) as any as S.Schema<PatchProjectsLocationsTemplatesVersionsRequest>;
 
 export interface RenderProjectsLocationsParametersVersionsRequest {
   /** Required. Name of the resource */
   name: string;
 }
-export const RenderProjectsLocationsParametersVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:render","baseUrl":"https://parametermanager.googleapis.com/"})),
-).annotate({ identifier: "RenderProjectsLocationsParametersVersionsRequest" }) as any as S.Schema<RenderProjectsLocationsParametersVersionsRequest>;
+export const RenderProjectsLocationsParametersVersionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}:render",
+        baseUrl: "https://parametermanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "RenderProjectsLocationsParametersVersionsRequest",
+  }) as any as S.Schema<RenderProjectsLocationsParametersVersionsRequest>;
 
 /** Message describing RenderParameterVersionResponse resource */
 export interface RenderParameterVersionResponse {
@@ -734,12 +996,14 @@ export interface RenderParameterVersionResponse {
   renderedPayload?: string;
 }
 export const RenderParameterVersionResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parameterVersion": S.optional(S.String),
-  "payload": S.optional(ParameterVersionPayload),
-  "renderedPayload": S.optional(S.String),
-}),
-).annotate({ identifier: "RenderParameterVersionResponse" }) as any as S.Schema<RenderParameterVersionResponse>;
+  S.Struct({
+    parameterVersion: S.optional(S.String),
+    payload: S.optional(ParameterVersionPayload),
+    renderedPayload: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RenderParameterVersionResponse",
+}) as any as S.Schema<RenderParameterVersionResponse>;
 
 export interface RenderProjectsLocationsTemplatesVersionsRequest {
   /** Required. Parameter version used to render the template version. */
@@ -747,15 +1011,28 @@ export interface RenderProjectsLocationsTemplatesVersionsRequest {
   /** Required. Name of the resource */
   name: string;
 }
-export const RenderProjectsLocationsTemplatesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parameterVersion": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:render","baseUrl":"https://parametermanager.googleapis.com/"})),
-).annotate({ identifier: "RenderProjectsLocationsTemplatesVersionsRequest" }) as any as S.Schema<RenderProjectsLocationsTemplatesVersionsRequest>;
+export const RenderProjectsLocationsTemplatesVersionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parameterVersion: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}:render",
+        baseUrl: "https://parametermanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "RenderProjectsLocationsTemplatesVersionsRequest",
+  }) as any as S.Schema<RenderProjectsLocationsTemplatesVersionsRequest>;
 
-export type RenderTemplateVersionResponseTemplateFormatEnum = "TEMPLATE_FORMAT_UNSPECIFIED" | "TEMPLATE_FORMAT_YAML" | "TEMPLATE_FORMAT_JSON";
-export const RenderTemplateVersionResponseTemplateFormatEnum = /*@__PURE__*/ S.String;
+export type RenderTemplateVersionResponseTemplateFormatEnum =
+  | "TEMPLATE_FORMAT_UNSPECIFIED"
+  | "TEMPLATE_FORMAT_YAML"
+  | "TEMPLATE_FORMAT_JSON";
+export const RenderTemplateVersionResponseTemplateFormatEnum =
+  /*@__PURE__*/ S.String;
 
 /** Message describing RenderTemplateVersionResponse resource */
 export interface RenderTemplateVersionResponse {
@@ -771,16 +1048,23 @@ export interface RenderTemplateVersionResponse {
   templateVersion?: string;
 }
 export const RenderTemplateVersionResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "payload": S.optional(TemplateVersionPayload),
-  "renderedPayload": S.optional(S.String),
-  "templateFormat": S.optional(RenderTemplateVersionResponseTemplateFormatEnum),
-  "parameterVersion": S.optional(S.String),
-  "templateVersion": S.optional(S.String),
-}),
-).annotate({ identifier: "RenderTemplateVersionResponse" }) as any as S.Schema<RenderTemplateVersionResponse>;
+  S.Struct({
+    payload: S.optional(TemplateVersionPayload),
+    renderedPayload: S.optional(S.String),
+    templateFormat: S.optional(RenderTemplateVersionResponseTemplateFormatEnum),
+    parameterVersion: S.optional(S.String),
+    templateVersion: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RenderTemplateVersionResponse",
+}) as any as S.Schema<RenderTemplateVersionResponse>;
 
-export type CreateProjectsLocationsParametersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsParametersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new Parameter in a given project and location. */
 export const createProjectsLocationsParameters: API.OperationMethod<
   CreateProjectsLocationsParametersRequest,
@@ -795,7 +1079,12 @@ export const createProjectsLocationsParameters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsParametersVersionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsParametersVersionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new ParameterVersion in a given project, location, and parameter. */
 export const createProjectsLocationsParametersVersions: API.OperationMethod<
   CreateProjectsLocationsParametersVersionsRequest,
@@ -810,7 +1099,12 @@ export const createProjectsLocationsParametersVersions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsTemplatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsTemplatesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new Template in a given project and location. */
 export const createProjectsLocationsTemplates: API.OperationMethod<
   CreateProjectsLocationsTemplatesRequest,
@@ -825,7 +1119,12 @@ export const createProjectsLocationsTemplates: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsTemplatesVersionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsTemplatesVersionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new TemplateVersion in a given project, location, and template. */
 export const createProjectsLocationsTemplatesVersions: API.OperationMethod<
   CreateProjectsLocationsTemplatesVersionsRequest,
@@ -840,7 +1139,12 @@ export const createProjectsLocationsTemplatesVersions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsParametersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsParametersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a single Parameter. */
 export const deleteProjectsLocationsParameters: API.OperationMethod<
   DeleteProjectsLocationsParametersRequest,
@@ -855,7 +1159,12 @@ export const deleteProjectsLocationsParameters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsParametersVersionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsParametersVersionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a single ParameterVersion. */
 export const deleteProjectsLocationsParametersVersions: API.OperationMethod<
   DeleteProjectsLocationsParametersVersionsRequest,
@@ -870,7 +1179,12 @@ export const deleteProjectsLocationsParametersVersions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsTemplatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsTemplatesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a single Template. */
 export const deleteProjectsLocationsTemplates: API.OperationMethod<
   DeleteProjectsLocationsTemplatesRequest,
@@ -885,7 +1199,12 @@ export const deleteProjectsLocationsTemplates: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsTemplatesVersionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsTemplatesVersionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a single TemplateVersion. */
 export const deleteProjectsLocationsTemplatesVersions: API.OperationMethod<
   DeleteProjectsLocationsTemplatesVersionsRequest,
@@ -915,7 +1234,10 @@ export const getProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsParametersError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsParametersError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a single Parameter. */
 export const getProjectsLocationsParameters: API.OperationMethod<
   GetProjectsLocationsParametersRequest,
@@ -930,7 +1252,10 @@ export const getProjectsLocationsParameters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsParametersVersionsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsParametersVersionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a single ParameterVersion. */
 export const getProjectsLocationsParametersVersions: API.OperationMethod<
   GetProjectsLocationsParametersVersionsRequest,
@@ -945,7 +1270,10 @@ export const getProjectsLocationsParametersVersions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsTemplatesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsTemplatesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a single Template. */
 export const getProjectsLocationsTemplates: API.OperationMethod<
   GetProjectsLocationsTemplatesRequest,
@@ -960,7 +1288,10 @@ export const getProjectsLocationsTemplates: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsTemplatesVersionsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsTemplatesVersionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a single TemplateVersion. */
 export const getProjectsLocationsTemplatesVersions: API.OperationMethod<
   GetProjectsLocationsTemplatesVersionsRequest,
@@ -988,10 +1319,16 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsParametersError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsParametersError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists Parameters in a given project and location. */
 export const listProjectsLocationsParameters: API.PaginatedOperationMethod<
   ListProjectsLocationsParametersRequest,
@@ -1004,10 +1341,16 @@ export const listProjectsLocationsParameters: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsParametersVersionsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsParametersVersionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists ParameterVersions in a given project, location, and parameter. */
 export const listProjectsLocationsParametersVersions: API.PaginatedOperationMethod<
   ListProjectsLocationsParametersVersionsRequest,
@@ -1020,10 +1363,16 @@ export const listProjectsLocationsParametersVersions: API.PaginatedOperationMeth
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsTemplatesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsTemplatesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists Templates in a given project and location. */
 export const listProjectsLocationsTemplates: API.PaginatedOperationMethod<
   ListProjectsLocationsTemplatesRequest,
@@ -1036,10 +1385,16 @@ export const listProjectsLocationsTemplates: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsTemplatesVersionsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsTemplatesVersionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists TemplateVersions in a given project, location, and template. */
 export const listProjectsLocationsTemplatesVersions: API.PaginatedOperationMethod<
   ListProjectsLocationsTemplatesVersionsRequest,
@@ -1052,10 +1407,18 @@ export const listProjectsLocationsTemplatesVersions: API.PaginatedOperationMetho
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type PatchProjectsLocationsParametersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsParametersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a single Parameter. */
 export const patchProjectsLocationsParameters: API.OperationMethod<
   PatchProjectsLocationsParametersRequest,
@@ -1070,7 +1433,12 @@ export const patchProjectsLocationsParameters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsParametersVersionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsParametersVersionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a single ParameterVersion. */
 export const patchProjectsLocationsParametersVersions: API.OperationMethod<
   PatchProjectsLocationsParametersVersionsRequest,
@@ -1085,7 +1453,12 @@ export const patchProjectsLocationsParametersVersions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsTemplatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsTemplatesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a single Template. */
 export const patchProjectsLocationsTemplates: API.OperationMethod<
   PatchProjectsLocationsTemplatesRequest,
@@ -1100,7 +1473,12 @@ export const patchProjectsLocationsTemplates: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsTemplatesVersionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsTemplatesVersionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a single TemplateVersion. */
 export const patchProjectsLocationsTemplatesVersions: API.OperationMethod<
   PatchProjectsLocationsTemplatesVersionsRequest,
@@ -1115,7 +1493,10 @@ export const patchProjectsLocationsTemplatesVersions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RenderProjectsLocationsParametersVersionsError = NotFound | Forbidden | GcpOpError;
+export type RenderProjectsLocationsParametersVersionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets rendered version of a ParameterVersion. */
 export const renderProjectsLocationsParametersVersions: API.OperationMethod<
   RenderProjectsLocationsParametersVersionsRequest,
@@ -1130,7 +1511,10 @@ export const renderProjectsLocationsParametersVersions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RenderProjectsLocationsTemplatesVersionsError = NotFound | Forbidden | GcpOpError;
+export type RenderProjectsLocationsTemplatesVersionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets rendered version of a TemplateVersion. */
 export const renderProjectsLocationsTemplatesVersions: API.OperationMethod<
   RenderProjectsLocationsTemplatesVersionsRequest,
@@ -1144,4 +1528,3 @@ export const renderProjectsLocationsTemplatesVersions: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

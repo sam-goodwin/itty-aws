@@ -13,55 +13,57 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** Add a list of accounts to a hold. */
 export interface AddHeldAccountsRequest {
@@ -71,11 +73,13 @@ export interface AddHeldAccountsRequest {
   accountIds?: StringList;
 }
 export const AddHeldAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "emails": S.optional(StringList),
-  "accountIds": S.optional(StringList),
-}),
-).annotate({ identifier: "AddHeldAccountsRequest" }) as any as S.Schema<AddHeldAccountsRequest>;
+  S.Struct({
+    emails: S.optional(StringList),
+    accountIds: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "AddHeldAccountsRequest",
+}) as any as S.Schema<AddHeldAccountsRequest>;
 
 export interface AddHeldAccountsMattersHoldsRequest {
   /** The matter ID. */
@@ -86,12 +90,20 @@ export interface AddHeldAccountsMattersHoldsRequest {
   body?: AddHeldAccountsRequest;
 }
 export const AddHeldAccountsMattersHoldsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "matterId": S.String.pipe(T.Label()),
-  "holdId": S.String.pipe(T.Label()),
-  "body": S.optional(AddHeldAccountsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/matters/{matterId}/holds/{holdId}:addHeldAccounts","baseUrl":"https://vault.googleapis.com/"})),
-).annotate({ identifier: "AddHeldAccountsMattersHoldsRequest" }) as any as S.Schema<AddHeldAccountsMattersHoldsRequest>;
+  S.Struct({
+    matterId: S.String.pipe(T.Label()),
+    holdId: S.String.pipe(T.Label()),
+    body: S.optional(AddHeldAccountsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/matters/{matterId}/holds/{holdId}:addHeldAccounts",
+      baseUrl: "https://vault.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "AddHeldAccountsMattersHoldsRequest",
+}) as any as S.Schema<AddHeldAccountsMattersHoldsRequest>;
 
 /** An account covered by a hold. This structure is immutable. It can be an individual account or a Google Group, depending on the service. To work with Vault resources, the account must have the [required Vault privileges] (https://support.google.com/vault/answer/2799699) and access to the matter. To access a matter, the account must have created the matter, have the matter shared with them, or have the **View All Matters** privilege. */
 export interface HeldAccount {
@@ -107,20 +119,25 @@ export interface HeldAccount {
   email?: string;
 }
 export const HeldAccount = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "lastName": S.optional(S.String),
-  "accountId": S.optional(S.String),
-  "holdTime": S.optional(S.String),
-  "firstName": S.optional(S.String),
-  "email": S.optional(S.String),
-}),
+  S.Struct({
+    lastName: S.optional(S.String),
+    accountId: S.optional(S.String),
+    holdTime: S.optional(S.String),
+    firstName: S.optional(S.String),
+    email: S.optional(S.String),
+  }),
 ).annotate({ identifier: "HeldAccount" }) as any as S.Schema<HeldAccount>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -132,11 +149,11 @@ export interface Status {
   message?: string;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "details": S.optional(DocumentMapList),
-  "code": S.optional(S.Number),
-  "message": S.optional(S.String),
-}),
+  S.Struct({
+    details: S.optional(DocumentMapList),
+    code: S.optional(S.Number),
+    message: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** The status of each account creation, and the **HeldAccount**, if successful. */
@@ -147,14 +164,18 @@ export interface AddHeldAccountResult {
   status?: Status;
 }
 export const AddHeldAccountResult = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "account": S.optional(HeldAccount),
-  "status": S.optional(Status),
-}),
-).annotate({ identifier: "AddHeldAccountResult" }) as any as S.Schema<AddHeldAccountResult>;
+  S.Struct({
+    account: S.optional(HeldAccount),
+    status: S.optional(Status),
+  }),
+).annotate({
+  identifier: "AddHeldAccountResult",
+}) as any as S.Schema<AddHeldAccountResult>;
 
 export type AddHeldAccountResultList = ReadonlyArray<AddHeldAccountResult>;
-export const AddHeldAccountResultList = /*@__PURE__*/ S.Array(AddHeldAccountResult) as any as S.Schema<AddHeldAccountResultList>;
+export const AddHeldAccountResultList = /*@__PURE__*/ S.Array(
+  AddHeldAccountResult,
+) as any as S.Schema<AddHeldAccountResultList>;
 
 /** Response for batch create held accounts. */
 export interface AddHeldAccountsResponse {
@@ -162,12 +183,17 @@ export interface AddHeldAccountsResponse {
   responses?: AddHeldAccountResultList;
 }
 export const AddHeldAccountsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "responses": S.optional(AddHeldAccountResultList),
-}),
-).annotate({ identifier: "AddHeldAccountsResponse" }) as any as S.Schema<AddHeldAccountsResponse>;
+  S.Struct({
+    responses: S.optional(AddHeldAccountResultList),
+  }),
+).annotate({
+  identifier: "AddHeldAccountsResponse",
+}) as any as S.Schema<AddHeldAccountsResponse>;
 
-export type MatterPermissionRoleEnum = "ROLE_UNSPECIFIED" | "COLLABORATOR" | "OWNER";
+export type MatterPermissionRoleEnum =
+  | "ROLE_UNSPECIFIED"
+  | "COLLABORATOR"
+  | "OWNER";
 export const MatterPermissionRoleEnum = /*@__PURE__*/ S.String;
 
 /** Users can be matter owners or collaborators. Each matter has only one owner. All others users who can access the matter are collaborators. When an account is purged, its corresponding MatterPermission resources cease to exist. */
@@ -178,11 +204,13 @@ export interface MatterPermission {
   accountId?: string;
 }
 export const MatterPermission = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "role": S.optional(MatterPermissionRoleEnum),
-  "accountId": S.optional(S.String),
-}),
-).annotate({ identifier: "MatterPermission" }) as any as S.Schema<MatterPermission>;
+  S.Struct({
+    role: S.optional(MatterPermissionRoleEnum),
+    accountId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MatterPermission",
+}) as any as S.Schema<MatterPermission>;
 
 /** Add an account with the permission specified. The role cannot be owner. If an account already has a role in the matter, the existing role is overwritten. */
 export interface AddMatterPermissionsRequest {
@@ -194,12 +222,14 @@ export interface AddMatterPermissionsRequest {
   sendEmails?: boolean;
 }
 export const AddMatterPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "ccMe": S.optional(S.Boolean),
-  "matterPermission": S.optional(MatterPermission),
-  "sendEmails": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "AddMatterPermissionsRequest" }) as any as S.Schema<AddMatterPermissionsRequest>;
+  S.Struct({
+    ccMe: S.optional(S.Boolean),
+    matterPermission: S.optional(MatterPermission),
+    sendEmails: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "AddMatterPermissionsRequest",
+}) as any as S.Schema<AddMatterPermissionsRequest>;
 
 export interface AddPermissionsMattersRequest {
   /** The matter ID. */
@@ -208,17 +238,27 @@ export interface AddPermissionsMattersRequest {
   body?: AddMatterPermissionsRequest;
 }
 export const AddPermissionsMattersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "matterId": S.String.pipe(T.Label()),
-  "body": S.optional(AddMatterPermissionsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/matters/{matterId}:addPermissions","baseUrl":"https://vault.googleapis.com/"})),
-).annotate({ identifier: "AddPermissionsMattersRequest" }) as any as S.Schema<AddPermissionsMattersRequest>;
+  S.Struct({
+    matterId: S.String.pipe(T.Label()),
+    body: S.optional(AddMatterPermissionsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/matters/{matterId}:addPermissions",
+      baseUrl: "https://vault.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "AddPermissionsMattersRequest",
+}) as any as S.Schema<AddPermissionsMattersRequest>;
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
 export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "CancelOperationRequest" }) as any as S.Schema<CancelOperationRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "CancelOperationRequest",
+}) as any as S.Schema<CancelOperationRequest>;
 
 export interface CancelOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -227,23 +267,33 @@ export interface CancelOperationsRequest {
   body?: CancelOperationRequest;
 }
 export const CancelOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://vault.googleapis.com/"})),
-).annotate({ identifier: "CancelOperationsRequest" }) as any as S.Schema<CancelOperationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:cancel",
+      baseUrl: "https://vault.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CancelOperationsRequest",
+}) as any as S.Schema<CancelOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 /** Close a matter by ID. */
 export interface CloseMatterRequest {}
 export const CloseMatterRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "CloseMatterRequest" }) as any as S.Schema<CloseMatterRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "CloseMatterRequest",
+}) as any as S.Schema<CloseMatterRequest>;
 
 export interface CloseMattersRequest {
   /** The matter ID. */
@@ -252,20 +302,38 @@ export interface CloseMattersRequest {
   body?: CloseMatterRequest;
 }
 export const CloseMattersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "matterId": S.String.pipe(T.Label()),
-  "body": S.optional(CloseMatterRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/matters/{matterId}:close","baseUrl":"https://vault.googleapis.com/"})),
-).annotate({ identifier: "CloseMattersRequest" }) as any as S.Schema<CloseMattersRequest>;
+  S.Struct({
+    matterId: S.String.pipe(T.Label()),
+    body: S.optional(CloseMatterRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/matters/{matterId}:close",
+      baseUrl: "https://vault.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CloseMattersRequest",
+}) as any as S.Schema<CloseMattersRequest>;
 
-export type MatterMatterRegionEnum = "MATTER_REGION_UNSPECIFIED" | "ANY" | "US" | "EUROPE";
+export type MatterMatterRegionEnum =
+  | "MATTER_REGION_UNSPECIFIED"
+  | "ANY"
+  | "US"
+  | "EUROPE";
 export const MatterMatterRegionEnum = /*@__PURE__*/ S.String;
 
-export type MatterStateEnum = "STATE_UNSPECIFIED" | "OPEN" | "CLOSED" | "DELETED";
+export type MatterStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "OPEN"
+  | "CLOSED"
+  | "DELETED";
 export const MatterStateEnum = /*@__PURE__*/ S.String;
 
 export type MatterPermissionList = ReadonlyArray<MatterPermission>;
-export const MatterPermissionList = /*@__PURE__*/ S.Array(MatterPermission) as any as S.Schema<MatterPermissionList>;
+export const MatterPermissionList = /*@__PURE__*/ S.Array(
+  MatterPermission,
+) as any as S.Schema<MatterPermissionList>;
 
 /** Represents a matter. To work with Vault resources, the account must have the [required Vault privileges] (https://support.google.com/vault/answer/2799699) and access to the matter. To access a matter, the account must have created the matter, have the matter shared with them, or have the **View All Matters** privilege. */
 export interface Matter {
@@ -283,14 +351,14 @@ export interface Matter {
   matterPermissions?: MatterPermissionList;
 }
 export const Matter = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "matterRegion": S.optional(MatterMatterRegionEnum),
-  "description": S.optional(S.String),
-  "state": S.optional(MatterStateEnum),
-  "matterId": S.optional(S.String),
-  "name": S.optional(S.String),
-  "matterPermissions": S.optional(MatterPermissionList),
-}),
+  S.Struct({
+    matterRegion: S.optional(MatterMatterRegionEnum),
+    description: S.optional(S.String),
+    state: S.optional(MatterStateEnum),
+    matterId: S.optional(S.String),
+    name: S.optional(S.String),
+    matterPermissions: S.optional(MatterPermissionList),
+  }),
 ).annotate({ identifier: "Matter" }) as any as S.Schema<Matter>;
 
 /** Response to a CloseMatterRequest. */
@@ -299,12 +367,18 @@ export interface CloseMatterResponse {
   matter?: Matter;
 }
 export const CloseMatterResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "matter": S.optional(Matter),
-}),
-).annotate({ identifier: "CloseMatterResponse" }) as any as S.Schema<CloseMatterResponse>;
+  S.Struct({
+    matter: S.optional(Matter),
+  }),
+).annotate({
+  identifier: "CloseMatterResponse",
+}) as any as S.Schema<CloseMatterResponse>;
 
-export type QueryDataScopeEnum = "DATA_SCOPE_UNSPECIFIED" | "ALL_DATA" | "HELD_DATA" | "UNPROCESSED_DATA";
+export type QueryDataScopeEnum =
+  | "DATA_SCOPE_UNSPECIFIED"
+  | "ALL_DATA"
+  | "HELD_DATA"
+  | "UNPROCESSED_DATA";
 export const QueryDataScopeEnum = /*@__PURE__*/ S.String;
 
 /** The organizational unit to search */
@@ -313,9 +387,9 @@ export interface OrgUnitInfo {
   orgUnitId?: string;
 }
 export const OrgUnitInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "orgUnitId": S.optional(S.String),
-}),
+  S.Struct({
+    orgUnitId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "OrgUnitInfo" }) as any as S.Schema<OrgUnitInfo>;
 
 /** The shared drives to search */
@@ -324,12 +398,23 @@ export interface SharedDriveInfo {
   sharedDriveIds?: StringList;
 }
 export const SharedDriveInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sharedDriveIds": S.optional(StringList),
-}),
-).annotate({ identifier: "SharedDriveInfo" }) as any as S.Schema<SharedDriveInfo>;
+  S.Struct({
+    sharedDriveIds: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "SharedDriveInfo",
+}) as any as S.Schema<SharedDriveInfo>;
 
-export type QueryMethodEnum = "SEARCH_METHOD_UNSPECIFIED" | "ACCOUNT" | "ORG_UNIT" | "TEAM_DRIVE" | "ENTIRE_ORG" | "ROOM" | "SITES_URL" | "SHARED_DRIVE" | "DRIVE_DOCUMENT";
+export type QueryMethodEnum =
+  | "SEARCH_METHOD_UNSPECIFIED"
+  | "ACCOUNT"
+  | "ORG_UNIT"
+  | "TEAM_DRIVE"
+  | "ENTIRE_ORG"
+  | "ROOM"
+  | "SITES_URL"
+  | "SHARED_DRIVE"
+  | "DRIVE_DOCUMENT";
 export const QueryMethodEnum = /*@__PURE__*/ S.String;
 
 /** Additional options for Google Chat search */
@@ -338,22 +423,33 @@ export interface HangoutsChatOptions {
   includeRooms?: boolean;
 }
 export const HangoutsChatOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "includeRooms": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "HangoutsChatOptions" }) as any as S.Schema<HangoutsChatOptions>;
+  S.Struct({
+    includeRooms: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "HangoutsChatOptions",
+}) as any as S.Schema<HangoutsChatOptions>;
 
 /** Additional options for Gemini search */
 export interface GeminiOptions {}
 export const GeminiOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
+  S.Struct({}),
 ).annotate({ identifier: "GeminiOptions" }) as any as S.Schema<GeminiOptions>;
 
-export type CalendarOptionsResponseStatusesItemEnum = "ATTENDEE_RESPONSE_UNSPECIFIED" | "ATTENDEE_RESPONSE_NEEDS_ACTION" | "ATTENDEE_RESPONSE_ACCEPTED" | "ATTENDEE_RESPONSE_DECLINED" | "ATTENDEE_RESPONSE_TENTATIVE";
+export type CalendarOptionsResponseStatusesItemEnum =
+  | "ATTENDEE_RESPONSE_UNSPECIFIED"
+  | "ATTENDEE_RESPONSE_NEEDS_ACTION"
+  | "ATTENDEE_RESPONSE_ACCEPTED"
+  | "ATTENDEE_RESPONSE_DECLINED"
+  | "ATTENDEE_RESPONSE_TENTATIVE";
 export const CalendarOptionsResponseStatusesItemEnum = /*@__PURE__*/ S.String;
 
-export type CalendarOptionsResponseStatusesItemEnumList = ReadonlyArray<CalendarOptionsResponseStatusesItemEnum>;
-export const CalendarOptionsResponseStatusesItemEnumList = /*@__PURE__*/ S.Array(CalendarOptionsResponseStatusesItemEnum) as any as S.Schema<CalendarOptionsResponseStatusesItemEnumList>;
+export type CalendarOptionsResponseStatusesItemEnumList =
+  ReadonlyArray<CalendarOptionsResponseStatusesItemEnum>;
+export const CalendarOptionsResponseStatusesItemEnumList =
+  /*@__PURE__*/ S.Array(
+    CalendarOptionsResponseStatusesItemEnum,
+  ) as any as S.Schema<CalendarOptionsResponseStatusesItemEnumList>;
 
 /** Additional options for Calendar search */
 export interface CalendarOptions {
@@ -369,19 +465,29 @@ export interface CalendarOptions {
   responseStatuses?: CalendarOptionsResponseStatusesItemEnumList;
 }
 export const CalendarOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locationQuery": S.optional(StringList),
-  "peopleQuery": S.optional(StringList),
-  "versionDate": S.optional(S.String),
-  "minusWords": S.optional(StringList),
-  "responseStatuses": S.optional(CalendarOptionsResponseStatusesItemEnumList),
-}),
-).annotate({ identifier: "CalendarOptions" }) as any as S.Schema<CalendarOptions>;
+  S.Struct({
+    locationQuery: S.optional(StringList),
+    peopleQuery: S.optional(StringList),
+    versionDate: S.optional(S.String),
+    minusWords: S.optional(StringList),
+    responseStatuses: S.optional(CalendarOptionsResponseStatusesItemEnumList),
+  }),
+).annotate({
+  identifier: "CalendarOptions",
+}) as any as S.Schema<CalendarOptions>;
 
-export type DriveOptionsClientSideEncryptedOptionEnum = "CLIENT_SIDE_ENCRYPTED_OPTION_UNSPECIFIED" | "CLIENT_SIDE_ENCRYPTED_OPTION_ANY" | "CLIENT_SIDE_ENCRYPTED_OPTION_ENCRYPTED" | "CLIENT_SIDE_ENCRYPTED_OPTION_UNENCRYPTED";
+export type DriveOptionsClientSideEncryptedOptionEnum =
+  | "CLIENT_SIDE_ENCRYPTED_OPTION_UNSPECIFIED"
+  | "CLIENT_SIDE_ENCRYPTED_OPTION_ANY"
+  | "CLIENT_SIDE_ENCRYPTED_OPTION_ENCRYPTED"
+  | "CLIENT_SIDE_ENCRYPTED_OPTION_UNENCRYPTED";
 export const DriveOptionsClientSideEncryptedOptionEnum = /*@__PURE__*/ S.String;
 
-export type DriveOptionsSharedDrivesOptionEnum = "SHARED_DRIVES_OPTION_UNSPECIFIED" | "NOT_INCLUDED" | "INCLUDED_IF_ACCOUNT_IS_NOT_A_MEMBER" | "INCLUDED";
+export type DriveOptionsSharedDrivesOptionEnum =
+  | "SHARED_DRIVES_OPTION_UNSPECIFIED"
+  | "NOT_INCLUDED"
+  | "INCLUDED_IF_ACCOUNT_IS_NOT_A_MEMBER"
+  | "INCLUDED";
 export const DriveOptionsSharedDrivesOptionEnum = /*@__PURE__*/ S.String;
 
 /** Additional options for Drive search. */
@@ -398,16 +504,22 @@ export interface DriveOptions {
   sharedDrivesOption?: DriveOptionsSharedDrivesOptionEnum;
 }
 export const DriveOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "includeTeamDrives": S.optional(S.Boolean),
-  "includeSharedDrives": S.optional(S.Boolean),
-  "clientSideEncryptedOption": S.optional(DriveOptionsClientSideEncryptedOptionEnum),
-  "versionDate": S.optional(S.String),
-  "sharedDrivesOption": S.optional(DriveOptionsSharedDrivesOptionEnum),
-}),
+  S.Struct({
+    includeTeamDrives: S.optional(S.Boolean),
+    includeSharedDrives: S.optional(S.Boolean),
+    clientSideEncryptedOption: S.optional(
+      DriveOptionsClientSideEncryptedOptionEnum,
+    ),
+    versionDate: S.optional(S.String),
+    sharedDrivesOption: S.optional(DriveOptionsSharedDrivesOptionEnum),
+  }),
 ).annotate({ identifier: "DriveOptions" }) as any as S.Schema<DriveOptions>;
 
-export type MailOptionsClientSideEncryptedOptionEnum = "CLIENT_SIDE_ENCRYPTED_OPTION_UNSPECIFIED" | "CLIENT_SIDE_ENCRYPTED_OPTION_ANY" | "CLIENT_SIDE_ENCRYPTED_OPTION_ENCRYPTED" | "CLIENT_SIDE_ENCRYPTED_OPTION_UNENCRYPTED";
+export type MailOptionsClientSideEncryptedOptionEnum =
+  | "CLIENT_SIDE_ENCRYPTED_OPTION_UNSPECIFIED"
+  | "CLIENT_SIDE_ENCRYPTED_OPTION_ANY"
+  | "CLIENT_SIDE_ENCRYPTED_OPTION_ENCRYPTED"
+  | "CLIENT_SIDE_ENCRYPTED_OPTION_UNENCRYPTED";
 export const MailOptionsClientSideEncryptedOptionEnum = /*@__PURE__*/ S.String;
 
 /** Additional options for Gmail search */
@@ -418,13 +530,24 @@ export interface MailOptions {
   clientSideEncryptedOption?: MailOptionsClientSideEncryptedOptionEnum;
 }
 export const MailOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "excludeDrafts": S.optional(S.Boolean),
-  "clientSideEncryptedOption": S.optional(MailOptionsClientSideEncryptedOptionEnum),
-}),
+  S.Struct({
+    excludeDrafts: S.optional(S.Boolean),
+    clientSideEncryptedOption: S.optional(
+      MailOptionsClientSideEncryptedOptionEnum,
+    ),
+  }),
 ).annotate({ identifier: "MailOptions" }) as any as S.Schema<MailOptions>;
 
-export type QuerySearchMethodEnum = "SEARCH_METHOD_UNSPECIFIED" | "ACCOUNT" | "ORG_UNIT" | "TEAM_DRIVE" | "ENTIRE_ORG" | "ROOM" | "SITES_URL" | "SHARED_DRIVE" | "DRIVE_DOCUMENT";
+export type QuerySearchMethodEnum =
+  | "SEARCH_METHOD_UNSPECIFIED"
+  | "ACCOUNT"
+  | "ORG_UNIT"
+  | "TEAM_DRIVE"
+  | "ENTIRE_ORG"
+  | "ROOM"
+  | "SITES_URL"
+  | "SHARED_DRIVE"
+  | "DRIVE_DOCUMENT";
 export const QuerySearchMethodEnum = /*@__PURE__*/ S.String;
 
 /** The Chat spaces to search */
@@ -433,10 +556,12 @@ export interface HangoutsChatInfo {
   roomId?: StringList;
 }
 export const HangoutsChatInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "roomId": S.optional(StringList),
-}),
-).annotate({ identifier: "HangoutsChatInfo" }) as any as S.Schema<HangoutsChatInfo>;
+  S.Struct({
+    roomId: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "HangoutsChatInfo",
+}) as any as S.Schema<HangoutsChatInfo>;
 
 /** The published site URLs of new Google Sites to search */
 export interface SitesUrlInfo {
@@ -444,12 +569,20 @@ export interface SitesUrlInfo {
   urls?: StringList;
 }
 export const SitesUrlInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "urls": S.optional(StringList),
-}),
+  S.Struct({
+    urls: S.optional(StringList),
+  }),
 ).annotate({ identifier: "SitesUrlInfo" }) as any as S.Schema<SitesUrlInfo>;
 
-export type QueryCorpusEnum = "CORPUS_TYPE_UNSPECIFIED" | "DRIVE" | "MAIL" | "GROUPS" | "HANGOUTS_CHAT" | "VOICE" | "CALENDAR" | "GEMINI";
+export type QueryCorpusEnum =
+  | "CORPUS_TYPE_UNSPECIFIED"
+  | "DRIVE"
+  | "MAIL"
+  | "GROUPS"
+  | "HANGOUTS_CHAT"
+  | "VOICE"
+  | "CALENDAR"
+  | "GEMINI";
 export const QueryCorpusEnum = /*@__PURE__*/ S.String;
 
 /** The accounts to search */
@@ -458,16 +591,23 @@ export interface AccountInfo {
   emails?: StringList;
 }
 export const AccountInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "emails": S.optional(StringList),
-}),
+  S.Struct({
+    emails: S.optional(StringList),
+  }),
 ).annotate({ identifier: "AccountInfo" }) as any as S.Schema<AccountInfo>;
 
-export type VoiceOptionsCoveredDataItemEnum = "COVERED_DATA_UNSPECIFIED" | "TEXT_MESSAGES" | "VOICEMAILS" | "CALL_LOGS";
+export type VoiceOptionsCoveredDataItemEnum =
+  | "COVERED_DATA_UNSPECIFIED"
+  | "TEXT_MESSAGES"
+  | "VOICEMAILS"
+  | "CALL_LOGS";
 export const VoiceOptionsCoveredDataItemEnum = /*@__PURE__*/ S.String;
 
-export type VoiceOptionsCoveredDataItemEnumList = ReadonlyArray<VoiceOptionsCoveredDataItemEnum>;
-export const VoiceOptionsCoveredDataItemEnumList = /*@__PURE__*/ S.Array(VoiceOptionsCoveredDataItemEnum) as any as S.Schema<VoiceOptionsCoveredDataItemEnumList>;
+export type VoiceOptionsCoveredDataItemEnumList =
+  ReadonlyArray<VoiceOptionsCoveredDataItemEnum>;
+export const VoiceOptionsCoveredDataItemEnumList = /*@__PURE__*/ S.Array(
+  VoiceOptionsCoveredDataItemEnum,
+) as any as S.Schema<VoiceOptionsCoveredDataItemEnumList>;
 
 /** Additional options for Voice search */
 export interface VoiceOptions {
@@ -475,9 +615,9 @@ export interface VoiceOptions {
   coveredData?: VoiceOptionsCoveredDataItemEnumList;
 }
 export const VoiceOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "coveredData": S.optional(VoiceOptionsCoveredDataItemEnumList),
-}),
+  S.Struct({
+    coveredData: S.optional(VoiceOptionsCoveredDataItemEnumList),
+  }),
 ).annotate({ identifier: "VoiceOptions" }) as any as S.Schema<VoiceOptions>;
 
 /** Team Drives to search */
@@ -486,9 +626,9 @@ export interface TeamDriveInfo {
   teamDriveIds?: StringList;
 }
 export const TeamDriveInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "teamDriveIds": S.optional(StringList),
-}),
+  S.Struct({
+    teamDriveIds: S.optional(StringList),
+  }),
 ).annotate({ identifier: "TeamDriveInfo" }) as any as S.Schema<TeamDriveInfo>;
 
 /** Specify Drive documents by document ID. */
@@ -497,10 +637,12 @@ export interface DriveDocumentIds {
   ids?: StringList;
 }
 export const DriveDocumentIds = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "ids": S.optional(StringList),
-}),
-).annotate({ identifier: "DriveDocumentIds" }) as any as S.Schema<DriveDocumentIds>;
+  S.Struct({
+    ids: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "DriveDocumentIds",
+}) as any as S.Schema<DriveDocumentIds>;
 
 /** The Drive documents to search. */
 export interface DriveDocumentInfo {
@@ -508,10 +650,12 @@ export interface DriveDocumentInfo {
   documentIds?: DriveDocumentIds;
 }
 export const DriveDocumentInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "documentIds": S.optional(DriveDocumentIds),
-}),
-).annotate({ identifier: "DriveDocumentInfo" }) as any as S.Schema<DriveDocumentInfo>;
+  S.Struct({
+    documentIds: S.optional(DriveDocumentIds),
+  }),
+).annotate({
+  identifier: "DriveDocumentInfo",
+}) as any as S.Schema<DriveDocumentInfo>;
 
 /** The query definition used for search and export. */
 export interface Query {
@@ -559,32 +703,35 @@ export interface Query {
   driveDocumentInfo?: DriveDocumentInfo;
 }
 export const Query = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dataScope": S.optional(QueryDataScopeEnum),
-  "orgUnitInfo": S.optional(OrgUnitInfo),
-  "timeZone": S.optional(S.String),
-  "sharedDriveInfo": S.optional(SharedDriveInfo),
-  "endTime": S.optional(S.String),
-  "method": S.optional(QueryMethodEnum),
-  "hangoutsChatOptions": S.optional(HangoutsChatOptions),
-  "geminiOptions": S.optional(GeminiOptions),
-  "calendarOptions": S.optional(CalendarOptions),
-  "startTime": S.optional(S.String),
-  "terms": S.optional(S.String),
-  "driveOptions": S.optional(DriveOptions),
-  "mailOptions": S.optional(MailOptions),
-  "searchMethod": S.optional(QuerySearchMethodEnum),
-  "hangoutsChatInfo": S.optional(HangoutsChatInfo),
-  "sitesUrlInfo": S.optional(SitesUrlInfo),
-  "corpus": S.optional(QueryCorpusEnum),
-  "accountInfo": S.optional(AccountInfo),
-  "voiceOptions": S.optional(VoiceOptions),
-  "teamDriveInfo": S.optional(TeamDriveInfo),
-  "driveDocumentInfo": S.optional(DriveDocumentInfo),
-}),
+  S.Struct({
+    dataScope: S.optional(QueryDataScopeEnum),
+    orgUnitInfo: S.optional(OrgUnitInfo),
+    timeZone: S.optional(S.String),
+    sharedDriveInfo: S.optional(SharedDriveInfo),
+    endTime: S.optional(S.String),
+    method: S.optional(QueryMethodEnum),
+    hangoutsChatOptions: S.optional(HangoutsChatOptions),
+    geminiOptions: S.optional(GeminiOptions),
+    calendarOptions: S.optional(CalendarOptions),
+    startTime: S.optional(S.String),
+    terms: S.optional(S.String),
+    driveOptions: S.optional(DriveOptions),
+    mailOptions: S.optional(MailOptions),
+    searchMethod: S.optional(QuerySearchMethodEnum),
+    hangoutsChatInfo: S.optional(HangoutsChatInfo),
+    sitesUrlInfo: S.optional(SitesUrlInfo),
+    corpus: S.optional(QueryCorpusEnum),
+    accountInfo: S.optional(AccountInfo),
+    voiceOptions: S.optional(VoiceOptions),
+    teamDriveInfo: S.optional(TeamDriveInfo),
+    driveDocumentInfo: S.optional(DriveDocumentInfo),
+  }),
 ).annotate({ identifier: "Query" }) as any as S.Schema<Query>;
 
-export type CountArtifactsRequestViewEnum = "COUNT_RESULT_VIEW_UNSPECIFIED" | "TOTAL_COUNT" | "ALL";
+export type CountArtifactsRequestViewEnum =
+  | "COUNT_RESULT_VIEW_UNSPECIFIED"
+  | "TOTAL_COUNT"
+  | "ALL";
 export const CountArtifactsRequestViewEnum = /*@__PURE__*/ S.String;
 
 /** Count artifacts request. */
@@ -595,11 +742,13 @@ export interface CountArtifactsRequest {
   view?: CountArtifactsRequestViewEnum | (string & {});
 }
 export const CountArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "query": S.optional(Query),
-  "view": S.optional(CountArtifactsRequestViewEnum),
-}),
-).annotate({ identifier: "CountArtifactsRequest" }) as any as S.Schema<CountArtifactsRequest>;
+  S.Struct({
+    query: S.optional(Query),
+    view: S.optional(CountArtifactsRequestViewEnum),
+  }),
+).annotate({
+  identifier: "CountArtifactsRequest",
+}) as any as S.Schema<CountArtifactsRequest>;
 
 export interface CountMattersRequest {
   /** The matter ID. */
@@ -608,11 +757,19 @@ export interface CountMattersRequest {
   body?: CountArtifactsRequest;
 }
 export const CountMattersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "matterId": S.String.pipe(T.Label()),
-  "body": S.optional(CountArtifactsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/matters/{matterId}:count","baseUrl":"https://vault.googleapis.com/"})),
-).annotate({ identifier: "CountMattersRequest" }) as any as S.Schema<CountMattersRequest>;
+  S.Struct({
+    matterId: S.String.pipe(T.Label()),
+    body: S.optional(CountArtifactsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/matters/{matterId}:count",
+      baseUrl: "https://vault.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CountMattersRequest",
+}) as any as S.Schema<CountMattersRequest>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
@@ -628,13 +785,13 @@ export interface Operation {
   done?: boolean;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "response": S.optional(DocumentMap),
-  "metadata": S.optional(DocumentMap),
-  "error": S.optional(Status),
-  "name": S.optional(S.String),
-  "done": S.optional(S.Boolean),
-}),
+  S.Struct({
+    response: S.optional(DocumentMap),
+    metadata: S.optional(DocumentMap),
+    error: S.optional(Status),
+    name: S.optional(S.String),
+    done: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 export interface CreateMattersRequest {
@@ -642,12 +799,24 @@ export interface CreateMattersRequest {
   body?: Matter;
 }
 export const CreateMattersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(Matter.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/matters","baseUrl":"https://vault.googleapis.com/"})),
-).annotate({ identifier: "CreateMattersRequest" }) as any as S.Schema<CreateMattersRequest>;
+  S.Struct({
+    body: S.optional(Matter.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/matters",
+      baseUrl: "https://vault.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateMattersRequest",
+}) as any as S.Schema<CreateMattersRequest>;
 
-export type ExportStatusEnum = "EXPORT_STATUS_UNSPECIFIED" | "COMPLETED" | "FAILED" | "IN_PROGRESS";
+export type ExportStatusEnum =
+  | "EXPORT_STATUS_UNSPECIFIED"
+  | "COMPLETED"
+  | "FAILED"
+  | "IN_PROGRESS";
 export const ExportStatusEnum = /*@__PURE__*/ S.String;
 
 /** Progress information for an export. */
@@ -660,11 +829,11 @@ export interface ExportStats {
   sizeInBytes?: string;
 }
 export const ExportStats = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "exportedArtifactCount": S.optional(S.String),
-  "totalArtifactCount": S.optional(S.String),
-  "sizeInBytes": S.optional(S.String),
-}),
+  S.Struct({
+    exportedArtifactCount: S.optional(S.String),
+    totalArtifactCount: S.optional(S.String),
+    sizeInBytes: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ExportStats" }) as any as S.Schema<ExportStats>;
 
 /** The export file in Cloud Storage */
@@ -679,16 +848,20 @@ export interface CloudStorageFile {
   md5Hash?: string;
 }
 export const CloudStorageFile = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucketName": S.optional(S.String),
-  "size": S.optional(S.String),
-  "objectName": S.optional(S.String),
-  "md5Hash": S.optional(S.String),
-}),
-).annotate({ identifier: "CloudStorageFile" }) as any as S.Schema<CloudStorageFile>;
+  S.Struct({
+    bucketName: S.optional(S.String),
+    size: S.optional(S.String),
+    objectName: S.optional(S.String),
+    md5Hash: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CloudStorageFile",
+}) as any as S.Schema<CloudStorageFile>;
 
 export type CloudStorageFileList = ReadonlyArray<CloudStorageFile>;
-export const CloudStorageFileList = /*@__PURE__*/ S.Array(CloudStorageFile) as any as S.Schema<CloudStorageFileList>;
+export const CloudStorageFileList = /*@__PURE__*/ S.Array(
+  CloudStorageFile,
+) as any as S.Schema<CloudStorageFileList>;
 
 /** Export sink for Cloud Storage files. */
 export interface CloudStorageSink {
@@ -696,12 +869,20 @@ export interface CloudStorageSink {
   files?: CloudStorageFileList;
 }
 export const CloudStorageSink = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "files": S.optional(CloudStorageFileList),
-}),
-).annotate({ identifier: "CloudStorageSink" }) as any as S.Schema<CloudStorageSink>;
+  S.Struct({
+    files: S.optional(CloudStorageFileList),
+  }),
+).annotate({
+  identifier: "CloudStorageSink",
+}) as any as S.Schema<CloudStorageSink>;
 
-export type HangoutsChatExportOptionsExportFormatEnum = "EXPORT_FORMAT_UNSPECIFIED" | "MBOX" | "PST" | "ICS" | "XML" | "JSON";
+export type HangoutsChatExportOptionsExportFormatEnum =
+  | "EXPORT_FORMAT_UNSPECIFIED"
+  | "MBOX"
+  | "PST"
+  | "ICS"
+  | "XML"
+  | "JSON";
 export const HangoutsChatExportOptionsExportFormatEnum = /*@__PURE__*/ S.String;
 
 /** Options for Chat exports. */
@@ -710,12 +891,20 @@ export interface HangoutsChatExportOptions {
   exportFormat?: HangoutsChatExportOptionsExportFormatEnum;
 }
 export const HangoutsChatExportOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "exportFormat": S.optional(HangoutsChatExportOptionsExportFormatEnum),
-}),
-).annotate({ identifier: "HangoutsChatExportOptions" }) as any as S.Schema<HangoutsChatExportOptions>;
+  S.Struct({
+    exportFormat: S.optional(HangoutsChatExportOptionsExportFormatEnum),
+  }),
+).annotate({
+  identifier: "HangoutsChatExportOptions",
+}) as any as S.Schema<HangoutsChatExportOptions>;
 
-export type VoiceExportOptionsExportFormatEnum = "EXPORT_FORMAT_UNSPECIFIED" | "MBOX" | "PST" | "ICS" | "XML" | "JSON";
+export type VoiceExportOptionsExportFormatEnum =
+  | "EXPORT_FORMAT_UNSPECIFIED"
+  | "MBOX"
+  | "PST"
+  | "ICS"
+  | "XML"
+  | "JSON";
 export const VoiceExportOptionsExportFormatEnum = /*@__PURE__*/ S.String;
 
 /** The options for Voice exports. */
@@ -724,12 +913,20 @@ export interface VoiceExportOptions {
   exportFormat?: VoiceExportOptionsExportFormatEnum;
 }
 export const VoiceExportOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "exportFormat": S.optional(VoiceExportOptionsExportFormatEnum),
-}),
-).annotate({ identifier: "VoiceExportOptions" }) as any as S.Schema<VoiceExportOptions>;
+  S.Struct({
+    exportFormat: S.optional(VoiceExportOptionsExportFormatEnum),
+  }),
+).annotate({
+  identifier: "VoiceExportOptions",
+}) as any as S.Schema<VoiceExportOptions>;
 
-export type GeminiExportOptionsExportFormatEnum = "EXPORT_FORMAT_UNSPECIFIED" | "MBOX" | "PST" | "ICS" | "XML" | "JSON";
+export type GeminiExportOptionsExportFormatEnum =
+  | "EXPORT_FORMAT_UNSPECIFIED"
+  | "MBOX"
+  | "PST"
+  | "ICS"
+  | "XML"
+  | "JSON";
 export const GeminiExportOptionsExportFormatEnum = /*@__PURE__*/ S.String;
 
 /** The options for Gemini exports. */
@@ -738,10 +935,12 @@ export interface GeminiExportOptions {
   exportFormat?: GeminiExportOptionsExportFormatEnum;
 }
 export const GeminiExportOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "exportFormat": S.optional(GeminiExportOptionsExportFormatEnum),
-}),
-).annotate({ identifier: "GeminiExportOptions" }) as any as S.Schema<GeminiExportOptions>;
+  S.Struct({
+    exportFormat: S.optional(GeminiExportOptionsExportFormatEnum),
+  }),
+).annotate({
+  identifier: "GeminiExportOptions",
+}) as any as S.Schema<GeminiExportOptions>;
 
 /** Options for Drive exports. */
 export interface DriveExportOptions {
@@ -749,12 +948,20 @@ export interface DriveExportOptions {
   includeAccessInfo?: boolean;
 }
 export const DriveExportOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "includeAccessInfo": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "DriveExportOptions" }) as any as S.Schema<DriveExportOptions>;
+  S.Struct({
+    includeAccessInfo: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "DriveExportOptions",
+}) as any as S.Schema<DriveExportOptions>;
 
-export type MailExportOptionsExportFormatEnum = "EXPORT_FORMAT_UNSPECIFIED" | "MBOX" | "PST" | "ICS" | "XML" | "JSON";
+export type MailExportOptionsExportFormatEnum =
+  | "EXPORT_FORMAT_UNSPECIFIED"
+  | "MBOX"
+  | "PST"
+  | "ICS"
+  | "XML"
+  | "JSON";
 export const MailExportOptionsExportFormatEnum = /*@__PURE__*/ S.String;
 
 /** Options for Gmail exports. */
@@ -769,18 +976,30 @@ export interface MailExportOptions {
   exportFormat?: MailExportOptionsExportFormatEnum;
 }
 export const MailExportOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "exportLinkedDriveFiles": S.optional(S.Boolean),
-  "showConfidentialModeContent": S.optional(S.Boolean),
-  "useNewExport": S.optional(S.Boolean),
-  "exportFormat": S.optional(MailExportOptionsExportFormatEnum),
-}),
-).annotate({ identifier: "MailExportOptions" }) as any as S.Schema<MailExportOptions>;
+  S.Struct({
+    exportLinkedDriveFiles: S.optional(S.Boolean),
+    showConfidentialModeContent: S.optional(S.Boolean),
+    useNewExport: S.optional(S.Boolean),
+    exportFormat: S.optional(MailExportOptionsExportFormatEnum),
+  }),
+).annotate({
+  identifier: "MailExportOptions",
+}) as any as S.Schema<MailExportOptions>;
 
-export type ExportOptionsRegionEnum = "EXPORT_REGION_UNSPECIFIED" | "ANY" | "US" | "EUROPE";
+export type ExportOptionsRegionEnum =
+  | "EXPORT_REGION_UNSPECIFIED"
+  | "ANY"
+  | "US"
+  | "EUROPE";
 export const ExportOptionsRegionEnum = /*@__PURE__*/ S.String;
 
-export type GroupsExportOptionsExportFormatEnum = "EXPORT_FORMAT_UNSPECIFIED" | "MBOX" | "PST" | "ICS" | "XML" | "JSON";
+export type GroupsExportOptionsExportFormatEnum =
+  | "EXPORT_FORMAT_UNSPECIFIED"
+  | "MBOX"
+  | "PST"
+  | "ICS"
+  | "XML"
+  | "JSON";
 export const GroupsExportOptionsExportFormatEnum = /*@__PURE__*/ S.String;
 
 /** Options for Groups exports. */
@@ -789,12 +1008,20 @@ export interface GroupsExportOptions {
   exportFormat?: GroupsExportOptionsExportFormatEnum;
 }
 export const GroupsExportOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "exportFormat": S.optional(GroupsExportOptionsExportFormatEnum),
-}),
-).annotate({ identifier: "GroupsExportOptions" }) as any as S.Schema<GroupsExportOptions>;
+  S.Struct({
+    exportFormat: S.optional(GroupsExportOptionsExportFormatEnum),
+  }),
+).annotate({
+  identifier: "GroupsExportOptions",
+}) as any as S.Schema<GroupsExportOptions>;
 
-export type CalendarExportOptionsExportFormatEnum = "EXPORT_FORMAT_UNSPECIFIED" | "MBOX" | "PST" | "ICS" | "XML" | "JSON";
+export type CalendarExportOptionsExportFormatEnum =
+  | "EXPORT_FORMAT_UNSPECIFIED"
+  | "MBOX"
+  | "PST"
+  | "ICS"
+  | "XML"
+  | "JSON";
 export const CalendarExportOptionsExportFormatEnum = /*@__PURE__*/ S.String;
 
 /** The options for Calendar exports. */
@@ -803,10 +1030,12 @@ export interface CalendarExportOptions {
   exportFormat?: CalendarExportOptionsExportFormatEnum;
 }
 export const CalendarExportOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "exportFormat": S.optional(CalendarExportOptionsExportFormatEnum),
-}),
-).annotate({ identifier: "CalendarExportOptions" }) as any as S.Schema<CalendarExportOptions>;
+  S.Struct({
+    exportFormat: S.optional(CalendarExportOptionsExportFormatEnum),
+  }),
+).annotate({
+  identifier: "CalendarExportOptions",
+}) as any as S.Schema<CalendarExportOptions>;
 
 /** Additional options for exports */
 export interface ExportOptions {
@@ -828,16 +1057,16 @@ export interface ExportOptions {
   calendarOptions?: CalendarExportOptions;
 }
 export const ExportOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "hangoutsChatOptions": S.optional(HangoutsChatExportOptions),
-  "voiceOptions": S.optional(VoiceExportOptions),
-  "geminiOptions": S.optional(GeminiExportOptions),
-  "driveOptions": S.optional(DriveExportOptions),
-  "mailOptions": S.optional(MailExportOptions),
-  "region": S.optional(ExportOptionsRegionEnum),
-  "groupsOptions": S.optional(GroupsExportOptions),
-  "calendarOptions": S.optional(CalendarExportOptions),
-}),
+  S.Struct({
+    hangoutsChatOptions: S.optional(HangoutsChatExportOptions),
+    voiceOptions: S.optional(VoiceExportOptions),
+    geminiOptions: S.optional(GeminiExportOptions),
+    driveOptions: S.optional(DriveExportOptions),
+    mailOptions: S.optional(MailExportOptions),
+    region: S.optional(ExportOptionsRegionEnum),
+    groupsOptions: S.optional(GroupsExportOptions),
+    calendarOptions: S.optional(CalendarExportOptions),
+  }),
 ).annotate({ identifier: "ExportOptions" }) as any as S.Schema<ExportOptions>;
 
 /** User's information. */
@@ -848,10 +1077,10 @@ export interface UserInfo {
   displayName?: string;
 }
 export const UserInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "email": S.optional(S.String),
-  "displayName": S.optional(S.String),
-}),
+  S.Struct({
+    email: S.optional(S.String),
+    displayName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "UserInfo" }) as any as S.Schema<UserInfo>;
 
 /** An export. To work with Vault resources, the account must have the [required Vault privileges](https://support.google.com/vault/answer/2799699) and access to the matter. To access a matter, the account must have created the matter, have the matter shared with them, or have the **View All Matters** privilege. */
@@ -880,19 +1109,19 @@ export interface Export {
   createTime?: string;
 }
 export const Export = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parentExportId": S.optional(S.String),
-  "query": S.optional(Query),
-  "status": S.optional(ExportStatusEnum),
-  "stats": S.optional(ExportStats),
-  "cloudStorageSink": S.optional(CloudStorageSink),
-  "exportOptions": S.optional(ExportOptions),
-  "requester": S.optional(UserInfo),
-  "matterId": S.optional(S.String),
-  "name": S.optional(S.String),
-  "id": S.optional(S.String),
-  "createTime": S.optional(S.String),
-}),
+  S.Struct({
+    parentExportId: S.optional(S.String),
+    query: S.optional(Query),
+    status: S.optional(ExportStatusEnum),
+    stats: S.optional(ExportStats),
+    cloudStorageSink: S.optional(CloudStorageSink),
+    exportOptions: S.optional(ExportOptions),
+    requester: S.optional(UserInfo),
+    matterId: S.optional(S.String),
+    name: S.optional(S.String),
+    id: S.optional(S.String),
+    createTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Export" }) as any as S.Schema<Export>;
 
 export interface CreateMattersExportsRequest {
@@ -902,11 +1131,19 @@ export interface CreateMattersExportsRequest {
   body?: Export;
 }
 export const CreateMattersExportsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "matterId": S.String.pipe(T.Label()),
-  "body": S.optional(Export.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/matters/{matterId}/exports","baseUrl":"https://vault.googleapis.com/"})),
-).annotate({ identifier: "CreateMattersExportsRequest" }) as any as S.Schema<CreateMattersExportsRequest>;
+  S.Struct({
+    matterId: S.String.pipe(T.Label()),
+    body: S.optional(Export.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/matters/{matterId}/exports",
+      baseUrl: "https://vault.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateMattersExportsRequest",
+}) as any as S.Schema<CreateMattersExportsRequest>;
 
 /** The organizational unit covered by a hold. This structure is immutable. */
 export interface HeldOrgUnit {
@@ -916,23 +1153,35 @@ export interface HeldOrgUnit {
   holdTime?: string;
 }
 export const HeldOrgUnit = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "orgUnitId": S.optional(S.String),
-  "holdTime": S.optional(S.String),
-}),
+  S.Struct({
+    orgUnitId: S.optional(S.String),
+    holdTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "HeldOrgUnit" }) as any as S.Schema<HeldOrgUnit>;
 
 export type HeldAccountList = ReadonlyArray<HeldAccount>;
-export const HeldAccountList = /*@__PURE__*/ S.Array(HeldAccount) as any as S.Schema<HeldAccountList>;
+export const HeldAccountList = /*@__PURE__*/ S.Array(
+  HeldAccount,
+) as any as S.Schema<HeldAccountList>;
 
-export type HoldCorpusEnum = "CORPUS_TYPE_UNSPECIFIED" | "DRIVE" | "MAIL" | "GROUPS" | "HANGOUTS_CHAT" | "VOICE" | "CALENDAR" | "GEMINI";
+export type HoldCorpusEnum =
+  | "CORPUS_TYPE_UNSPECIFIED"
+  | "DRIVE"
+  | "MAIL"
+  | "GROUPS"
+  | "HANGOUTS_CHAT"
+  | "VOICE"
+  | "CALENDAR"
+  | "GEMINI";
 export const HoldCorpusEnum = /*@__PURE__*/ S.String;
 
 /** Options for Calendar holds. */
 export interface HeldCalendarQuery {}
 export const HeldCalendarQuery = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "HeldCalendarQuery" }) as any as S.Schema<HeldCalendarQuery>;
+  S.Struct({}),
+).annotate({
+  identifier: "HeldCalendarQuery",
+}) as any as S.Schema<HeldCalendarQuery>;
 
 /** Query options for Gmail holds. */
 export interface HeldMailQuery {
@@ -944,11 +1193,11 @@ export interface HeldMailQuery {
   startTime?: string;
 }
 export const HeldMailQuery = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "terms": S.optional(S.String),
-  "endTime": S.optional(S.String),
-  "startTime": S.optional(S.String),
-}),
+  S.Struct({
+    terms: S.optional(S.String),
+    endTime: S.optional(S.String),
+    startTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "HeldMailQuery" }) as any as S.Schema<HeldMailQuery>;
 
 /** Options for Chat holds. */
@@ -957,10 +1206,12 @@ export interface HeldHangoutsChatQuery {
   includeRooms?: boolean;
 }
 export const HeldHangoutsChatQuery = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "includeRooms": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "HeldHangoutsChatQuery" }) as any as S.Schema<HeldHangoutsChatQuery>;
+  S.Struct({
+    includeRooms: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "HeldHangoutsChatQuery",
+}) as any as S.Schema<HeldHangoutsChatQuery>;
 
 /** Options for Drive holds. */
 export interface HeldDriveQuery {
@@ -970,17 +1221,24 @@ export interface HeldDriveQuery {
   includeTeamDriveFiles?: boolean;
 }
 export const HeldDriveQuery = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "includeSharedDriveFiles": S.optional(S.Boolean),
-  "includeTeamDriveFiles": S.optional(S.Boolean),
-}),
+  S.Struct({
+    includeSharedDriveFiles: S.optional(S.Boolean),
+    includeTeamDriveFiles: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "HeldDriveQuery" }) as any as S.Schema<HeldDriveQuery>;
 
-export type HeldVoiceQueryCoveredDataItemEnum = "COVERED_DATA_UNSPECIFIED" | "TEXT_MESSAGES" | "VOICEMAILS" | "CALL_LOGS";
+export type HeldVoiceQueryCoveredDataItemEnum =
+  | "COVERED_DATA_UNSPECIFIED"
+  | "TEXT_MESSAGES"
+  | "VOICEMAILS"
+  | "CALL_LOGS";
 export const HeldVoiceQueryCoveredDataItemEnum = /*@__PURE__*/ S.String;
 
-export type HeldVoiceQueryCoveredDataItemEnumList = ReadonlyArray<HeldVoiceQueryCoveredDataItemEnum>;
-export const HeldVoiceQueryCoveredDataItemEnumList = /*@__PURE__*/ S.Array(HeldVoiceQueryCoveredDataItemEnum) as any as S.Schema<HeldVoiceQueryCoveredDataItemEnumList>;
+export type HeldVoiceQueryCoveredDataItemEnumList =
+  ReadonlyArray<HeldVoiceQueryCoveredDataItemEnum>;
+export const HeldVoiceQueryCoveredDataItemEnumList = /*@__PURE__*/ S.Array(
+  HeldVoiceQueryCoveredDataItemEnum,
+) as any as S.Schema<HeldVoiceQueryCoveredDataItemEnumList>;
 
 /** Options for Voice holds. */
 export interface HeldVoiceQuery {
@@ -988,9 +1246,9 @@ export interface HeldVoiceQuery {
   coveredData?: HeldVoiceQueryCoveredDataItemEnumList;
 }
 export const HeldVoiceQuery = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "coveredData": S.optional(HeldVoiceQueryCoveredDataItemEnumList),
-}),
+  S.Struct({
+    coveredData: S.optional(HeldVoiceQueryCoveredDataItemEnumList),
+  }),
 ).annotate({ identifier: "HeldVoiceQuery" }) as any as S.Schema<HeldVoiceQuery>;
 
 /** Query options for group holds. */
@@ -1003,18 +1261,22 @@ export interface HeldGroupsQuery {
   startTime?: string;
 }
 export const HeldGroupsQuery = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "terms": S.optional(S.String),
-  "endTime": S.optional(S.String),
-  "startTime": S.optional(S.String),
-}),
-).annotate({ identifier: "HeldGroupsQuery" }) as any as S.Schema<HeldGroupsQuery>;
+  S.Struct({
+    terms: S.optional(S.String),
+    endTime: S.optional(S.String),
+    startTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "HeldGroupsQuery",
+}) as any as S.Schema<HeldGroupsQuery>;
 
 /** Options for Gemini holds. */
 export interface HeldGeminiQuery {}
 export const HeldGeminiQuery = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "HeldGeminiQuery" }) as any as S.Schema<HeldGeminiQuery>;
+  S.Struct({}),
+).annotate({
+  identifier: "HeldGeminiQuery",
+}) as any as S.Schema<HeldGeminiQuery>;
 
 /** Service-specific options for holds. */
 export interface CorpusQuery {
@@ -1034,15 +1296,15 @@ export interface CorpusQuery {
   geminiQuery?: HeldGeminiQuery;
 }
 export const CorpusQuery = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "calendarQuery": S.optional(HeldCalendarQuery),
-  "mailQuery": S.optional(HeldMailQuery),
-  "hangoutsChatQuery": S.optional(HeldHangoutsChatQuery),
-  "driveQuery": S.optional(HeldDriveQuery),
-  "voiceQuery": S.optional(HeldVoiceQuery),
-  "groupsQuery": S.optional(HeldGroupsQuery),
-  "geminiQuery": S.optional(HeldGeminiQuery),
-}),
+  S.Struct({
+    calendarQuery: S.optional(HeldCalendarQuery),
+    mailQuery: S.optional(HeldMailQuery),
+    hangoutsChatQuery: S.optional(HeldHangoutsChatQuery),
+    driveQuery: S.optional(HeldDriveQuery),
+    voiceQuery: S.optional(HeldVoiceQuery),
+    groupsQuery: S.optional(HeldGroupsQuery),
+    geminiQuery: S.optional(HeldGeminiQuery),
+  }),
 ).annotate({ identifier: "CorpusQuery" }) as any as S.Schema<CorpusQuery>;
 
 /** A hold. A hold prevents the specified Google Workspace service from purging data for specific accounts or all members of an organizational unit. To work with Vault resources, the account must have the [required Vault privileges] (https://support.google.com/vault/answer/2799699) and access to the matter. To access a matter, the account must have created the matter, have the matter shared with them, or have the **View All Matters** privilege. */
@@ -1063,15 +1325,15 @@ export interface Hold {
   holdId?: string;
 }
 export const Hold = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "orgUnit": S.optional(HeldOrgUnit),
-  "accounts": S.optional(HeldAccountList),
-  "updateTime": S.optional(S.String),
-  "corpus": S.optional(HoldCorpusEnum),
-  "query": S.optional(CorpusQuery),
-  "holdId": S.optional(S.String),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    orgUnit: S.optional(HeldOrgUnit),
+    accounts: S.optional(HeldAccountList),
+    updateTime: S.optional(S.String),
+    corpus: S.optional(HoldCorpusEnum),
+    query: S.optional(CorpusQuery),
+    holdId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Hold" }) as any as S.Schema<Hold>;
 
 export interface CreateMattersHoldsRequest {
@@ -1081,11 +1343,19 @@ export interface CreateMattersHoldsRequest {
   body?: Hold;
 }
 export const CreateMattersHoldsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "matterId": S.String.pipe(T.Label()),
-  "body": S.optional(Hold.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/matters/{matterId}/holds","baseUrl":"https://vault.googleapis.com/"})),
-).annotate({ identifier: "CreateMattersHoldsRequest" }) as any as S.Schema<CreateMattersHoldsRequest>;
+  S.Struct({
+    matterId: S.String.pipe(T.Label()),
+    body: S.optional(Hold.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/matters/{matterId}/holds",
+      baseUrl: "https://vault.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateMattersHoldsRequest",
+}) as any as S.Schema<CreateMattersHoldsRequest>;
 
 export interface CreateMattersHoldsAccountsRequest {
   /** The matter ID. */
@@ -1096,12 +1366,20 @@ export interface CreateMattersHoldsAccountsRequest {
   body?: HeldAccount;
 }
 export const CreateMattersHoldsAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "matterId": S.String.pipe(T.Label()),
-  "holdId": S.String.pipe(T.Label()),
-  "body": S.optional(HeldAccount.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/matters/{matterId}/holds/{holdId}/accounts","baseUrl":"https://vault.googleapis.com/"})),
-).annotate({ identifier: "CreateMattersHoldsAccountsRequest" }) as any as S.Schema<CreateMattersHoldsAccountsRequest>;
+  S.Struct({
+    matterId: S.String.pipe(T.Label()),
+    holdId: S.String.pipe(T.Label()),
+    body: S.optional(HeldAccount.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/matters/{matterId}/holds/{holdId}/accounts",
+      baseUrl: "https://vault.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateMattersHoldsAccountsRequest",
+}) as any as S.Schema<CreateMattersHoldsAccountsRequest>;
 
 /** The definition of a saved query. To work with Vault resources, the account must have the [required Vault privileges](https://support.google.com/vault/answer/2799699) and access to the matter. To access a matter, the account must have created the matter, have the matter shared with them, or have the **View All Matters** privilege. */
 export interface SavedQuery {
@@ -1117,13 +1395,13 @@ export interface SavedQuery {
   matterId?: string;
 }
 export const SavedQuery = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "savedQueryId": S.optional(S.String),
-  "query": S.optional(Query),
-  "createTime": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "matterId": S.optional(S.String),
-}),
+  S.Struct({
+    savedQueryId: S.optional(S.String),
+    query: S.optional(Query),
+    createTime: S.optional(S.String),
+    displayName: S.optional(S.String),
+    matterId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "SavedQuery" }) as any as S.Schema<SavedQuery>;
 
 export interface CreateMattersSavedQueriesRequest {
@@ -1133,21 +1411,37 @@ export interface CreateMattersSavedQueriesRequest {
   body?: SavedQuery;
 }
 export const CreateMattersSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "matterId": S.String.pipe(T.Label()),
-  "body": S.optional(SavedQuery.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/matters/{matterId}/savedQueries","baseUrl":"https://vault.googleapis.com/"})),
-).annotate({ identifier: "CreateMattersSavedQueriesRequest" }) as any as S.Schema<CreateMattersSavedQueriesRequest>;
+  S.Struct({
+    matterId: S.String.pipe(T.Label()),
+    body: S.optional(SavedQuery.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/matters/{matterId}/savedQueries",
+      baseUrl: "https://vault.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateMattersSavedQueriesRequest",
+}) as any as S.Schema<CreateMattersSavedQueriesRequest>;
 
 export interface DeleteMattersRequest {
   /** The matter ID */
   matterId: string;
 }
 export const DeleteMattersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "matterId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/matters/{matterId}","baseUrl":"https://vault.googleapis.com/"})),
-).annotate({ identifier: "DeleteMattersRequest" }) as any as S.Schema<DeleteMattersRequest>;
+  S.Struct({
+    matterId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/matters/{matterId}",
+      baseUrl: "https://vault.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteMattersRequest",
+}) as any as S.Schema<DeleteMattersRequest>;
 
 export interface DeleteMattersExportsRequest {
   /** The export ID. */
@@ -1156,11 +1450,19 @@ export interface DeleteMattersExportsRequest {
   matterId: string;
 }
 export const DeleteMattersExportsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "exportId": S.String.pipe(T.Label()),
-  "matterId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/matters/{matterId}/exports/{exportId}","baseUrl":"https://vault.googleapis.com/"})),
-).annotate({ identifier: "DeleteMattersExportsRequest" }) as any as S.Schema<DeleteMattersExportsRequest>;
+  S.Struct({
+    exportId: S.String.pipe(T.Label()),
+    matterId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/matters/{matterId}/exports/{exportId}",
+      baseUrl: "https://vault.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteMattersExportsRequest",
+}) as any as S.Schema<DeleteMattersExportsRequest>;
 
 export interface DeleteMattersHoldsRequest {
   /** The matter ID. */
@@ -1169,11 +1471,19 @@ export interface DeleteMattersHoldsRequest {
   holdId: string;
 }
 export const DeleteMattersHoldsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "matterId": S.String.pipe(T.Label()),
-  "holdId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/matters/{matterId}/holds/{holdId}","baseUrl":"https://vault.googleapis.com/"})),
-).annotate({ identifier: "DeleteMattersHoldsRequest" }) as any as S.Schema<DeleteMattersHoldsRequest>;
+  S.Struct({
+    matterId: S.String.pipe(T.Label()),
+    holdId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/matters/{matterId}/holds/{holdId}",
+      baseUrl: "https://vault.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteMattersHoldsRequest",
+}) as any as S.Schema<DeleteMattersHoldsRequest>;
 
 export interface DeleteMattersHoldsAccountsRequest {
   /** The hold ID. */
@@ -1184,12 +1494,20 @@ export interface DeleteMattersHoldsAccountsRequest {
   matterId: string;
 }
 export const DeleteMattersHoldsAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "holdId": S.String.pipe(T.Label()),
-  "accountId": S.String.pipe(T.Label()),
-  "matterId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/matters/{matterId}/holds/{holdId}/accounts/{accountId}","baseUrl":"https://vault.googleapis.com/"})),
-).annotate({ identifier: "DeleteMattersHoldsAccountsRequest" }) as any as S.Schema<DeleteMattersHoldsAccountsRequest>;
+  S.Struct({
+    holdId: S.String.pipe(T.Label()),
+    accountId: S.String.pipe(T.Label()),
+    matterId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/matters/{matterId}/holds/{holdId}/accounts/{accountId}",
+      baseUrl: "https://vault.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteMattersHoldsAccountsRequest",
+}) as any as S.Schema<DeleteMattersHoldsAccountsRequest>;
 
 export interface DeleteMattersSavedQueriesRequest {
   /** The ID of the matter to delete the saved query from. */
@@ -1198,21 +1516,37 @@ export interface DeleteMattersSavedQueriesRequest {
   savedQueryId: string;
 }
 export const DeleteMattersSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "matterId": S.String.pipe(T.Label()),
-  "savedQueryId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/matters/{matterId}/savedQueries/{savedQueryId}","baseUrl":"https://vault.googleapis.com/"})),
-).annotate({ identifier: "DeleteMattersSavedQueriesRequest" }) as any as S.Schema<DeleteMattersSavedQueriesRequest>;
+  S.Struct({
+    matterId: S.String.pipe(T.Label()),
+    savedQueryId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/matters/{matterId}/savedQueries/{savedQueryId}",
+      baseUrl: "https://vault.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteMattersSavedQueriesRequest",
+}) as any as S.Schema<DeleteMattersSavedQueriesRequest>;
 
 export interface DeleteOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
 export const DeleteOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://vault.googleapis.com/"})),
-).annotate({ identifier: "DeleteOperationsRequest" }) as any as S.Schema<DeleteOperationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://vault.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteOperationsRequest",
+}) as any as S.Schema<DeleteOperationsRequest>;
 
 export type GetMattersViewEnum = "VIEW_UNSPECIFIED" | "BASIC" | "FULL";
 export const GetMattersViewEnum = /*@__PURE__*/ S.String;
@@ -1224,11 +1558,19 @@ export interface GetMattersRequest {
   view?: GetMattersViewEnum | (string & {});
 }
 export const GetMattersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "matterId": S.String.pipe(T.Label()),
-  "view": S.optional(GetMattersViewEnum.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/matters/{matterId}","baseUrl":"https://vault.googleapis.com/"})),
-).annotate({ identifier: "GetMattersRequest" }) as any as S.Schema<GetMattersRequest>;
+  S.Struct({
+    matterId: S.String.pipe(T.Label()),
+    view: S.optional(GetMattersViewEnum.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/matters/{matterId}",
+      baseUrl: "https://vault.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetMattersRequest",
+}) as any as S.Schema<GetMattersRequest>;
 
 export interface GetMattersExportsRequest {
   /** The matter ID. */
@@ -1237,13 +1579,24 @@ export interface GetMattersExportsRequest {
   exportId: string;
 }
 export const GetMattersExportsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "matterId": S.String.pipe(T.Label()),
-  "exportId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/matters/{matterId}/exports/{exportId}","baseUrl":"https://vault.googleapis.com/"})),
-).annotate({ identifier: "GetMattersExportsRequest" }) as any as S.Schema<GetMattersExportsRequest>;
+  S.Struct({
+    matterId: S.String.pipe(T.Label()),
+    exportId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/matters/{matterId}/exports/{exportId}",
+      baseUrl: "https://vault.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetMattersExportsRequest",
+}) as any as S.Schema<GetMattersExportsRequest>;
 
-export type GetMattersHoldsViewEnum = "HOLD_VIEW_UNSPECIFIED" | "BASIC_HOLD" | "FULL_HOLD";
+export type GetMattersHoldsViewEnum =
+  | "HOLD_VIEW_UNSPECIFIED"
+  | "BASIC_HOLD"
+  | "FULL_HOLD";
 export const GetMattersHoldsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetMattersHoldsRequest {
@@ -1255,12 +1608,20 @@ export interface GetMattersHoldsRequest {
   matterId: string;
 }
 export const GetMattersHoldsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "holdId": S.String.pipe(T.Label()),
-  "view": S.optional(GetMattersHoldsViewEnum.pipe(T.Query())),
-  "matterId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/matters/{matterId}/holds/{holdId}","baseUrl":"https://vault.googleapis.com/"})),
-).annotate({ identifier: "GetMattersHoldsRequest" }) as any as S.Schema<GetMattersHoldsRequest>;
+  S.Struct({
+    holdId: S.String.pipe(T.Label()),
+    view: S.optional(GetMattersHoldsViewEnum.pipe(T.Query())),
+    matterId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/matters/{matterId}/holds/{holdId}",
+      baseUrl: "https://vault.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetMattersHoldsRequest",
+}) as any as S.Schema<GetMattersHoldsRequest>;
 
 export interface GetMattersSavedQueriesRequest {
   /** The ID of the matter to get the saved query from. */
@@ -1269,23 +1630,43 @@ export interface GetMattersSavedQueriesRequest {
   savedQueryId: string;
 }
 export const GetMattersSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "matterId": S.String.pipe(T.Label()),
-  "savedQueryId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/matters/{matterId}/savedQueries/{savedQueryId}","baseUrl":"https://vault.googleapis.com/"})),
-).annotate({ identifier: "GetMattersSavedQueriesRequest" }) as any as S.Schema<GetMattersSavedQueriesRequest>;
+  S.Struct({
+    matterId: S.String.pipe(T.Label()),
+    savedQueryId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/matters/{matterId}/savedQueries/{savedQueryId}",
+      baseUrl: "https://vault.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetMattersSavedQueriesRequest",
+}) as any as S.Schema<GetMattersSavedQueriesRequest>;
 
 export interface GetOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
 export const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://vault.googleapis.com/"})),
-).annotate({ identifier: "GetOperationsRequest" }) as any as S.Schema<GetOperationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://vault.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetOperationsRequest",
+}) as any as S.Schema<GetOperationsRequest>;
 
-export type ListMattersStateEnum = "STATE_UNSPECIFIED" | "OPEN" | "CLOSED" | "DELETED";
+export type ListMattersStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "OPEN"
+  | "CLOSED"
+  | "DELETED";
 export const ListMattersStateEnum = /*@__PURE__*/ S.String;
 
 export type ListMattersViewEnum = "VIEW_UNSPECIFIED" | "BASIC" | "FULL";
@@ -1302,16 +1683,26 @@ export interface ListMattersRequest {
   view?: ListMattersViewEnum | (string & {});
 }
 export const ListMattersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "state": S.optional(ListMattersStateEnum.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "view": S.optional(ListMattersViewEnum.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/matters","baseUrl":"https://vault.googleapis.com/"})),
-).annotate({ identifier: "ListMattersRequest" }) as any as S.Schema<ListMattersRequest>;
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    state: S.optional(ListMattersStateEnum.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    view: S.optional(ListMattersViewEnum.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/matters",
+      baseUrl: "https://vault.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListMattersRequest",
+}) as any as S.Schema<ListMattersRequest>;
 
 export type MatterList = ReadonlyArray<Matter>;
-export const MatterList = /*@__PURE__*/ S.Array(Matter) as any as S.Schema<MatterList>;
+export const MatterList = /*@__PURE__*/ S.Array(
+  Matter,
+) as any as S.Schema<MatterList>;
 
 /** Provides the list of matters. */
 export interface ListMattersResponse {
@@ -1321,11 +1712,13 @@ export interface ListMattersResponse {
   matters?: MatterList;
 }
 export const ListMattersResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "matters": S.optional(MatterList),
-}),
-).annotate({ identifier: "ListMattersResponse" }) as any as S.Schema<ListMattersResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    matters: S.optional(MatterList),
+  }),
+).annotate({
+  identifier: "ListMattersResponse",
+}) as any as S.Schema<ListMattersResponse>;
 
 export interface ListMattersExportsRequest {
   /** The matter ID. */
@@ -1336,15 +1729,25 @@ export interface ListMattersExportsRequest {
   pageSize?: number;
 }
 export const ListMattersExportsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "matterId": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/matters/{matterId}/exports","baseUrl":"https://vault.googleapis.com/"})),
-).annotate({ identifier: "ListMattersExportsRequest" }) as any as S.Schema<ListMattersExportsRequest>;
+  S.Struct({
+    matterId: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/matters/{matterId}/exports",
+      baseUrl: "https://vault.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListMattersExportsRequest",
+}) as any as S.Schema<ListMattersExportsRequest>;
 
 export type ExportList = ReadonlyArray<Export>;
-export const ExportList = /*@__PURE__*/ S.Array(Export) as any as S.Schema<ExportList>;
+export const ExportList = /*@__PURE__*/ S.Array(
+  Export,
+) as any as S.Schema<ExportList>;
 
 /** The exports for a matter. */
 export interface ListExportsResponse {
@@ -1354,13 +1757,18 @@ export interface ListExportsResponse {
   nextPageToken?: string;
 }
 export const ListExportsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "exports": S.optional(ExportList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListExportsResponse" }) as any as S.Schema<ListExportsResponse>;
+  S.Struct({
+    exports: S.optional(ExportList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListExportsResponse",
+}) as any as S.Schema<ListExportsResponse>;
 
-export type ListMattersHoldsViewEnum = "HOLD_VIEW_UNSPECIFIED" | "BASIC_HOLD" | "FULL_HOLD";
+export type ListMattersHoldsViewEnum =
+  | "HOLD_VIEW_UNSPECIFIED"
+  | "BASIC_HOLD"
+  | "FULL_HOLD";
 export const ListMattersHoldsViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListMattersHoldsRequest {
@@ -1374,16 +1782,26 @@ export interface ListMattersHoldsRequest {
   pageToken?: string;
 }
 export const ListMattersHoldsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "view": S.optional(ListMattersHoldsViewEnum.pipe(T.Query())),
-  "matterId": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/matters/{matterId}/holds","baseUrl":"https://vault.googleapis.com/"})),
-).annotate({ identifier: "ListMattersHoldsRequest" }) as any as S.Schema<ListMattersHoldsRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    view: S.optional(ListMattersHoldsViewEnum.pipe(T.Query())),
+    matterId: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/matters/{matterId}/holds",
+      baseUrl: "https://vault.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListMattersHoldsRequest",
+}) as any as S.Schema<ListMattersHoldsRequest>;
 
 export type HoldList = ReadonlyArray<Hold>;
-export const HoldList = /*@__PURE__*/ S.Array(Hold) as any as S.Schema<HoldList>;
+export const HoldList = /*@__PURE__*/ S.Array(
+  Hold,
+) as any as S.Schema<HoldList>;
 
 /** The holds for a matter. */
 export interface ListHoldsResponse {
@@ -1393,11 +1811,13 @@ export interface ListHoldsResponse {
   holds?: HoldList;
 }
 export const ListHoldsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "holds": S.optional(HoldList),
-}),
-).annotate({ identifier: "ListHoldsResponse" }) as any as S.Schema<ListHoldsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    holds: S.optional(HoldList),
+  }),
+).annotate({
+  identifier: "ListHoldsResponse",
+}) as any as S.Schema<ListHoldsResponse>;
 
 export interface ListMattersHoldsAccountsRequest {
   /** The matter ID. */
@@ -1406,11 +1826,19 @@ export interface ListMattersHoldsAccountsRequest {
   holdId: string;
 }
 export const ListMattersHoldsAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "matterId": S.String.pipe(T.Label()),
-  "holdId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/matters/{matterId}/holds/{holdId}/accounts","baseUrl":"https://vault.googleapis.com/"})),
-).annotate({ identifier: "ListMattersHoldsAccountsRequest" }) as any as S.Schema<ListMattersHoldsAccountsRequest>;
+  S.Struct({
+    matterId: S.String.pipe(T.Label()),
+    holdId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/matters/{matterId}/holds/{holdId}/accounts",
+      baseUrl: "https://vault.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListMattersHoldsAccountsRequest",
+}) as any as S.Schema<ListMattersHoldsAccountsRequest>;
 
 /** Returns a list of the accounts covered by a hold. */
 export interface ListHeldAccountsResponse {
@@ -1418,10 +1846,12 @@ export interface ListHeldAccountsResponse {
   accounts?: HeldAccountList;
 }
 export const ListHeldAccountsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "accounts": S.optional(HeldAccountList),
-}),
-).annotate({ identifier: "ListHeldAccountsResponse" }) as any as S.Schema<ListHeldAccountsResponse>;
+  S.Struct({
+    accounts: S.optional(HeldAccountList),
+  }),
+).annotate({
+  identifier: "ListHeldAccountsResponse",
+}) as any as S.Schema<ListHeldAccountsResponse>;
 
 export interface ListMattersSavedQueriesRequest {
   /** The ID of the matter to get the saved queries for. */
@@ -1432,15 +1862,25 @@ export interface ListMattersSavedQueriesRequest {
   pageSize?: number;
 }
 export const ListMattersSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "matterId": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/matters/{matterId}/savedQueries","baseUrl":"https://vault.googleapis.com/"})),
-).annotate({ identifier: "ListMattersSavedQueriesRequest" }) as any as S.Schema<ListMattersSavedQueriesRequest>;
+  S.Struct({
+    matterId: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/matters/{matterId}/savedQueries",
+      baseUrl: "https://vault.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListMattersSavedQueriesRequest",
+}) as any as S.Schema<ListMattersSavedQueriesRequest>;
 
 export type SavedQueryList = ReadonlyArray<SavedQuery>;
-export const SavedQueryList = /*@__PURE__*/ S.Array(SavedQuery) as any as S.Schema<SavedQueryList>;
+export const SavedQueryList = /*@__PURE__*/ S.Array(
+  SavedQuery,
+) as any as S.Schema<SavedQueryList>;
 
 /** Definition of the response for method ListSaveQuery. */
 export interface ListSavedQueriesResponse {
@@ -1450,11 +1890,13 @@ export interface ListSavedQueriesResponse {
   savedQueries?: SavedQueryList;
 }
 export const ListSavedQueriesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "savedQueries": S.optional(SavedQueryList),
-}),
-).annotate({ identifier: "ListSavedQueriesResponse" }) as any as S.Schema<ListSavedQueriesResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    savedQueries: S.optional(SavedQueryList),
+  }),
+).annotate({
+  identifier: "ListSavedQueriesResponse",
+}) as any as S.Schema<ListSavedQueriesResponse>;
 
 export interface ListOperationsRequest {
   /** The standard list page size. */
@@ -1469,17 +1911,27 @@ export interface ListOperationsRequest {
   filter?: string;
 }
 export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://vault.googleapis.com/"})),
-).annotate({ identifier: "ListOperationsRequest" }) as any as S.Schema<ListOperationsRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://vault.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListOperationsRequest",
+}) as any as S.Schema<ListOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(
+  Operation,
+) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -1491,12 +1943,14 @@ export interface ListOperationsResponse {
   operations?: OperationList;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-  "operations": S.optional(OperationList),
-}),
-).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+    operations: S.optional(OperationList),
+  }),
+).annotate({
+  identifier: "ListOperationsResponse",
+}) as any as S.Schema<ListOperationsResponse>;
 
 /** Remove a list of accounts from a hold. */
 export interface RemoveHeldAccountsRequest {
@@ -1504,10 +1958,12 @@ export interface RemoveHeldAccountsRequest {
   accountIds?: StringList;
 }
 export const RemoveHeldAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "accountIds": S.optional(StringList),
-}),
-).annotate({ identifier: "RemoveHeldAccountsRequest" }) as any as S.Schema<RemoveHeldAccountsRequest>;
+  S.Struct({
+    accountIds: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "RemoveHeldAccountsRequest",
+}) as any as S.Schema<RemoveHeldAccountsRequest>;
 
 export interface RemoveHeldAccountsMattersHoldsRequest {
   /** The matter ID. */
@@ -1517,16 +1973,27 @@ export interface RemoveHeldAccountsMattersHoldsRequest {
   /** Request body */
   body?: RemoveHeldAccountsRequest;
 }
-export const RemoveHeldAccountsMattersHoldsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "matterId": S.String.pipe(T.Label()),
-  "holdId": S.String.pipe(T.Label()),
-  "body": S.optional(RemoveHeldAccountsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/matters/{matterId}/holds/{holdId}:removeHeldAccounts","baseUrl":"https://vault.googleapis.com/"})),
-).annotate({ identifier: "RemoveHeldAccountsMattersHoldsRequest" }) as any as S.Schema<RemoveHeldAccountsMattersHoldsRequest>;
+export const RemoveHeldAccountsMattersHoldsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      matterId: S.String.pipe(T.Label()),
+      holdId: S.String.pipe(T.Label()),
+      body: S.optional(RemoveHeldAccountsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/matters/{matterId}/holds/{holdId}:removeHeldAccounts",
+        baseUrl: "https://vault.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "RemoveHeldAccountsMattersHoldsRequest",
+}) as any as S.Schema<RemoveHeldAccountsMattersHoldsRequest>;
 
 export type StatusList = ReadonlyArray<Status>;
-export const StatusList = /*@__PURE__*/ S.Array(Status) as any as S.Schema<StatusList>;
+export const StatusList = /*@__PURE__*/ S.Array(
+  Status,
+) as any as S.Schema<StatusList>;
 
 /** Response for batch delete held accounts. */
 export interface RemoveHeldAccountsResponse {
@@ -1534,10 +2001,12 @@ export interface RemoveHeldAccountsResponse {
   statuses?: StatusList;
 }
 export const RemoveHeldAccountsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "statuses": S.optional(StatusList),
-}),
-).annotate({ identifier: "RemoveHeldAccountsResponse" }) as any as S.Schema<RemoveHeldAccountsResponse>;
+  S.Struct({
+    statuses: S.optional(StatusList),
+  }),
+).annotate({
+  identifier: "RemoveHeldAccountsResponse",
+}) as any as S.Schema<RemoveHeldAccountsResponse>;
 
 /** Remove an account as a matter collaborator. */
 export interface RemoveMatterPermissionsRequest {
@@ -1545,10 +2014,12 @@ export interface RemoveMatterPermissionsRequest {
   accountId?: string;
 }
 export const RemoveMatterPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "accountId": S.optional(S.String),
-}),
-).annotate({ identifier: "RemoveMatterPermissionsRequest" }) as any as S.Schema<RemoveMatterPermissionsRequest>;
+  S.Struct({
+    accountId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RemoveMatterPermissionsRequest",
+}) as any as S.Schema<RemoveMatterPermissionsRequest>;
 
 export interface RemovePermissionsMattersRequest {
   /** The matter ID. */
@@ -1557,17 +2028,27 @@ export interface RemovePermissionsMattersRequest {
   body?: RemoveMatterPermissionsRequest;
 }
 export const RemovePermissionsMattersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "matterId": S.String.pipe(T.Label()),
-  "body": S.optional(RemoveMatterPermissionsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/matters/{matterId}:removePermissions","baseUrl":"https://vault.googleapis.com/"})),
-).annotate({ identifier: "RemovePermissionsMattersRequest" }) as any as S.Schema<RemovePermissionsMattersRequest>;
+  S.Struct({
+    matterId: S.String.pipe(T.Label()),
+    body: S.optional(RemoveMatterPermissionsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/matters/{matterId}:removePermissions",
+      baseUrl: "https://vault.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "RemovePermissionsMattersRequest",
+}) as any as S.Schema<RemovePermissionsMattersRequest>;
 
 /** Reopen a matter by ID. */
 export interface ReopenMatterRequest {}
 export const ReopenMatterRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "ReopenMatterRequest" }) as any as S.Schema<ReopenMatterRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "ReopenMatterRequest",
+}) as any as S.Schema<ReopenMatterRequest>;
 
 export interface ReopenMattersRequest {
   /** The matter ID. */
@@ -1576,11 +2057,19 @@ export interface ReopenMattersRequest {
   body?: ReopenMatterRequest;
 }
 export const ReopenMattersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "matterId": S.String.pipe(T.Label()),
-  "body": S.optional(ReopenMatterRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/matters/{matterId}:reopen","baseUrl":"https://vault.googleapis.com/"})),
-).annotate({ identifier: "ReopenMattersRequest" }) as any as S.Schema<ReopenMattersRequest>;
+  S.Struct({
+    matterId: S.String.pipe(T.Label()),
+    body: S.optional(ReopenMatterRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/matters/{matterId}:reopen",
+      baseUrl: "https://vault.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ReopenMattersRequest",
+}) as any as S.Schema<ReopenMattersRequest>;
 
 /** Response to a ReopenMatterRequest. */
 export interface ReopenMatterResponse {
@@ -1588,16 +2077,20 @@ export interface ReopenMatterResponse {
   matter?: Matter;
 }
 export const ReopenMatterResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "matter": S.optional(Matter),
-}),
-).annotate({ identifier: "ReopenMatterResponse" }) as any as S.Schema<ReopenMatterResponse>;
+  S.Struct({
+    matter: S.optional(Matter),
+  }),
+).annotate({
+  identifier: "ReopenMatterResponse",
+}) as any as S.Schema<ReopenMatterResponse>;
 
 /** Undelete a matter by ID. */
 export interface UndeleteMatterRequest {}
 export const UndeleteMatterRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "UndeleteMatterRequest" }) as any as S.Schema<UndeleteMatterRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "UndeleteMatterRequest",
+}) as any as S.Schema<UndeleteMatterRequest>;
 
 export interface UndeleteMattersRequest {
   /** The matter ID. */
@@ -1606,11 +2099,19 @@ export interface UndeleteMattersRequest {
   body?: UndeleteMatterRequest;
 }
 export const UndeleteMattersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "matterId": S.String.pipe(T.Label()),
-  "body": S.optional(UndeleteMatterRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/matters/{matterId}:undelete","baseUrl":"https://vault.googleapis.com/"})),
-).annotate({ identifier: "UndeleteMattersRequest" }) as any as S.Schema<UndeleteMattersRequest>;
+  S.Struct({
+    matterId: S.String.pipe(T.Label()),
+    body: S.optional(UndeleteMatterRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/matters/{matterId}:undelete",
+      baseUrl: "https://vault.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UndeleteMattersRequest",
+}) as any as S.Schema<UndeleteMattersRequest>;
 
 export interface UpdateMattersRequest {
   /** The matter ID. */
@@ -1619,11 +2120,19 @@ export interface UpdateMattersRequest {
   body?: Matter;
 }
 export const UpdateMattersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "matterId": S.String.pipe(T.Label()),
-  "body": S.optional(Matter.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"v1/matters/{matterId}","baseUrl":"https://vault.googleapis.com/"})),
-).annotate({ identifier: "UpdateMattersRequest" }) as any as S.Schema<UpdateMattersRequest>;
+  S.Struct({
+    matterId: S.String.pipe(T.Label()),
+    body: S.optional(Matter.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "v1/matters/{matterId}",
+      baseUrl: "https://vault.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateMattersRequest",
+}) as any as S.Schema<UpdateMattersRequest>;
 
 export interface UpdateMattersHoldsRequest {
   /** The matter ID. */
@@ -1634,14 +2143,27 @@ export interface UpdateMattersHoldsRequest {
   body?: Hold;
 }
 export const UpdateMattersHoldsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "matterId": S.String.pipe(T.Label()),
-  "holdId": S.String.pipe(T.Label()),
-  "body": S.optional(Hold.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"v1/matters/{matterId}/holds/{holdId}","baseUrl":"https://vault.googleapis.com/"})),
-).annotate({ identifier: "UpdateMattersHoldsRequest" }) as any as S.Schema<UpdateMattersHoldsRequest>;
+  S.Struct({
+    matterId: S.String.pipe(T.Label()),
+    holdId: S.String.pipe(T.Label()),
+    body: S.optional(Hold.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "v1/matters/{matterId}/holds/{holdId}",
+      baseUrl: "https://vault.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateMattersHoldsRequest",
+}) as any as S.Schema<UpdateMattersHoldsRequest>;
 
-export type AddHeldAccountsMattersHoldsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type AddHeldAccountsMattersHoldsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Adds accounts to a hold. Returns a list of accounts that have been successfully added. Accounts can be added only to an existing account-based hold. */
 export const addHeldAccountsMattersHolds: API.OperationMethod<
   AddHeldAccountsMattersHoldsRequest,
@@ -1656,7 +2178,12 @@ export const addHeldAccountsMattersHolds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AddPermissionsMattersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type AddPermissionsMattersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Adds an account as a matter collaborator. */
 export const addPermissionsMatters: API.OperationMethod<
   AddPermissionsMattersRequest,
@@ -1671,7 +2198,12 @@ export const addPermissionsMatters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CancelOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CancelOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelOperations: API.OperationMethod<
   CancelOperationsRequest,
@@ -1686,7 +2218,12 @@ export const cancelOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CloseMattersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CloseMattersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Closes the specified matter. Returns the matter with updated state. */
 export const closeMatters: API.OperationMethod<
   CloseMattersRequest,
@@ -1701,7 +2238,12 @@ export const closeMatters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CountMattersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CountMattersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Counts the accounts processed by the specified query. */
 export const countMatters: API.OperationMethod<
   CountMattersRequest,
@@ -1716,7 +2258,12 @@ export const countMatters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateMattersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateMattersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a matter with the given name and description. The initial state is open, and the owner is the method caller. Returns the created matter with default view. */
 export const createMatters: API.OperationMethod<
   CreateMattersRequest,
@@ -1731,7 +2278,12 @@ export const createMatters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateMattersExportsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateMattersExportsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates an export. */
 export const createMattersExports: API.OperationMethod<
   CreateMattersExportsRequest,
@@ -1746,7 +2298,12 @@ export const createMattersExports: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateMattersHoldsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateMattersHoldsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a hold in the specified matter. */
 export const createMattersHolds: API.OperationMethod<
   CreateMattersHoldsRequest,
@@ -1761,7 +2318,12 @@ export const createMattersHolds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateMattersHoldsAccountsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateMattersHoldsAccountsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Adds an account to a hold. Accounts can be added only to a hold that does not have an organizational unit set. If you try to add an account to an organizational unit-based hold, an error is returned. */
 export const createMattersHoldsAccounts: API.OperationMethod<
   CreateMattersHoldsAccountsRequest,
@@ -1776,7 +2338,12 @@ export const createMattersHoldsAccounts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateMattersSavedQueriesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateMattersSavedQueriesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a saved query. */
 export const createMattersSavedQueries: API.OperationMethod<
   CreateMattersSavedQueriesRequest,
@@ -1791,7 +2358,12 @@ export const createMattersSavedQueries: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteMattersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteMattersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes the specified matter. Returns the matter with updated state. */
 export const deleteMatters: API.OperationMethod<
   DeleteMattersRequest,
@@ -1806,7 +2378,12 @@ export const deleteMatters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteMattersExportsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteMattersExportsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes an export. */
 export const deleteMattersExports: API.OperationMethod<
   DeleteMattersExportsRequest,
@@ -1821,7 +2398,12 @@ export const deleteMattersExports: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteMattersHoldsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteMattersHoldsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Removes the specified hold and releases the accounts or organizational unit covered by the hold. If the data is not preserved by another hold or retention rule, it might be purged. */
 export const deleteMattersHolds: API.OperationMethod<
   DeleteMattersHoldsRequest,
@@ -1836,7 +2418,12 @@ export const deleteMattersHolds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteMattersHoldsAccountsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteMattersHoldsAccountsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Removes an account from a hold. */
 export const deleteMattersHoldsAccounts: API.OperationMethod<
   DeleteMattersHoldsAccountsRequest,
@@ -1851,7 +2438,12 @@ export const deleteMattersHoldsAccounts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteMattersSavedQueriesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteMattersSavedQueriesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes the specified saved query. */
 export const deleteMattersSavedQueries: API.OperationMethod<
   DeleteMattersSavedQueriesRequest,
@@ -1866,7 +2458,12 @@ export const deleteMattersSavedQueries: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteOperations: API.OperationMethod<
   DeleteOperationsRequest,
@@ -1969,7 +2566,10 @@ export const listMatters: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListMattersExportsError = NotFound | Forbidden | GcpOpError;
@@ -1985,7 +2585,10 @@ export const listMattersExports: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListMattersHoldsError = NotFound | Forbidden | GcpOpError;
@@ -2001,7 +2604,10 @@ export const listMattersHolds: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListMattersHoldsAccountsError = NotFound | Forbidden | GcpOpError;
@@ -2032,7 +2638,10 @@ export const listMattersSavedQueries: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListOperationsError = NotFound | Forbidden | GcpOpError;
@@ -2048,10 +2657,18 @@ export const listOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type RemoveHeldAccountsMattersHoldsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RemoveHeldAccountsMattersHoldsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Removes the specified accounts from a hold. Returns a list of statuses in the same order as the request. */
 export const removeHeldAccountsMattersHolds: API.OperationMethod<
   RemoveHeldAccountsMattersHoldsRequest,
@@ -2066,7 +2683,12 @@ export const removeHeldAccountsMattersHolds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RemovePermissionsMattersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RemovePermissionsMattersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Removes an account as a matter collaborator. */
 export const removePermissionsMatters: API.OperationMethod<
   RemovePermissionsMattersRequest,
@@ -2081,7 +2703,12 @@ export const removePermissionsMatters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ReopenMattersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ReopenMattersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Reopens the specified matter. Returns the matter with updated state. */
 export const reopenMatters: API.OperationMethod<
   ReopenMattersRequest,
@@ -2096,7 +2723,12 @@ export const reopenMatters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UndeleteMattersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UndeleteMattersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Undeletes the specified matter. Returns the matter with updated state. */
 export const undeleteMatters: API.OperationMethod<
   UndeleteMattersRequest,
@@ -2111,7 +2743,12 @@ export const undeleteMatters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateMattersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateMattersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the specified matter. This updates only the name and description of the matter, identified by matter ID. Changes to any other fields are ignored. Returns the default view of the matter. */
 export const updateMatters: API.OperationMethod<
   UpdateMattersRequest,
@@ -2126,7 +2763,12 @@ export const updateMatters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateMattersHoldsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateMattersHoldsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the scope (organizational unit or accounts) and query parameters of a hold. You cannot add accounts to a hold that covers an organizational unit, nor can you add organizational units to a hold that covers individual accounts. If you try, the unsupported values are ignored. */
 export const updateMattersHolds: API.OperationMethod<
   UpdateMattersHoldsRequest,
@@ -2140,4 +2782,3 @@ export const updateMattersHolds: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

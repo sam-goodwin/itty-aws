@@ -13,55 +13,57 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** Request for the Acknowledge method. */
 export interface AcknowledgeRequest {
@@ -69,10 +71,12 @@ export interface AcknowledgeRequest {
   ackIds?: StringList;
 }
 export const AcknowledgeRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "ackIds": S.optional(StringList),
-}),
-).annotate({ identifier: "AcknowledgeRequest" }) as any as S.Schema<AcknowledgeRequest>;
+  S.Struct({
+    ackIds: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "AcknowledgeRequest",
+}) as any as S.Schema<AcknowledgeRequest>;
 
 export interface AcknowledgeProjectsSubscriptionsRequest {
   /** The subscription whose message is being acknowledged. */
@@ -80,18 +84,27 @@ export interface AcknowledgeProjectsSubscriptionsRequest {
   /** Request body */
   body?: AcknowledgeRequest;
 }
-export const AcknowledgeProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "subscription": S.String.pipe(T.Label()),
-  "body": S.optional(AcknowledgeRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta2/{+subscription}:acknowledge","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "AcknowledgeProjectsSubscriptionsRequest" }) as any as S.Schema<AcknowledgeProjectsSubscriptionsRequest>;
+export const AcknowledgeProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscription: S.String.pipe(T.Label()),
+      body: S.optional(AcknowledgeRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta2/{+subscription}:acknowledge",
+        baseUrl: "https://pubsub.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "AcknowledgeProjectsSubscriptionsRequest",
+}) as any as S.Schema<AcknowledgeProjectsSubscriptionsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 /** Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect). */
 export interface OidcToken {
@@ -101,14 +114,17 @@ export interface OidcToken {
   serviceAccountEmail?: string;
 }
 export const OidcToken = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "audience": S.optional(S.String),
-  "serviceAccountEmail": S.optional(S.String),
-}),
+  S.Struct({
+    audience: S.optional(S.String),
+    serviceAccountEmail: S.optional(S.String),
+  }),
 ).annotate({ identifier: "OidcToken" }) as any as S.Schema<OidcToken>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
 /** Configuration for a push delivery endpoint. */
 export interface PushConfig {
@@ -120,11 +136,11 @@ export interface PushConfig {
   attributes?: StringMap;
 }
 export const PushConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pushEndpoint": S.optional(S.String),
-  "oidcToken": S.optional(OidcToken),
-  "attributes": S.optional(StringMap),
-}),
+  S.Struct({
+    pushEndpoint: S.optional(S.String),
+    oidcToken: S.optional(OidcToken),
+    attributes: S.optional(StringMap),
+  }),
 ).annotate({ identifier: "PushConfig" }) as any as S.Schema<PushConfig>;
 
 /** A subscription resource. */
@@ -139,12 +155,12 @@ export interface Subscription {
   topic?: string;
 }
 export const Subscription = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pushConfig": S.optional(PushConfig),
-  "ackDeadlineSeconds": S.optional(S.Number),
-  "name": S.optional(S.String),
-  "topic": S.optional(S.String),
-}),
+  S.Struct({
+    pushConfig: S.optional(PushConfig),
+    ackDeadlineSeconds: S.optional(S.Number),
+    name: S.optional(S.String),
+    topic: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Subscription" }) as any as S.Schema<Subscription>;
 
 export interface CreateProjectsSubscriptionsRequest {
@@ -154,11 +170,19 @@ export interface CreateProjectsSubscriptionsRequest {
   body?: Subscription;
 }
 export const CreateProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(Subscription.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"v1beta2/{+name}","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsSubscriptionsRequest" }) as any as S.Schema<CreateProjectsSubscriptionsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(Subscription.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "v1beta2/{+name}",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateProjectsSubscriptionsRequest",
+}) as any as S.Schema<CreateProjectsSubscriptionsRequest>;
 
 /** A topic resource. */
 export interface Topic {
@@ -166,9 +190,9 @@ export interface Topic {
   name?: string;
 }
 export const Topic = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Topic" }) as any as S.Schema<Topic>;
 
 export interface CreateProjectsTopicsRequest {
@@ -178,31 +202,55 @@ export interface CreateProjectsTopicsRequest {
   body?: Topic;
 }
 export const CreateProjectsTopicsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(Topic.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"v1beta2/{+name}","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsTopicsRequest" }) as any as S.Schema<CreateProjectsTopicsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(Topic.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "v1beta2/{+name}",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateProjectsTopicsRequest",
+}) as any as S.Schema<CreateProjectsTopicsRequest>;
 
 export interface DeleteProjectsSubscriptionsRequest {
   /** The subscription to delete. */
   subscription: string;
 }
 export const DeleteProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "subscription": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta2/{+subscription}","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsSubscriptionsRequest" }) as any as S.Schema<DeleteProjectsSubscriptionsRequest>;
+  S.Struct({
+    subscription: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1beta2/{+subscription}",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteProjectsSubscriptionsRequest",
+}) as any as S.Schema<DeleteProjectsSubscriptionsRequest>;
 
 export interface DeleteProjectsTopicsRequest {
   /** Name of the topic to delete. */
   topic: string;
 }
 export const DeleteProjectsTopicsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "topic": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta2/{+topic}","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsTopicsRequest" }) as any as S.Schema<DeleteProjectsTopicsRequest>;
+  S.Struct({
+    topic: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1beta2/{+topic}",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteProjectsTopicsRequest",
+}) as any as S.Schema<DeleteProjectsTopicsRequest>;
 
 export interface GetIamPolicyProjectsSubscriptionsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -210,12 +258,21 @@ export interface GetIamPolicyProjectsSubscriptionsRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+resource}:getIamPolicy","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "GetIamPolicyProjectsSubscriptionsRequest" }) as any as S.Schema<GetIamPolicyProjectsSubscriptionsRequest>;
+export const GetIamPolicyProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta2/{+resource}:getIamPolicy",
+        baseUrl: "https://pubsub.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetIamPolicyProjectsSubscriptionsRequest",
+}) as any as S.Schema<GetIamPolicyProjectsSubscriptionsRequest>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -229,12 +286,12 @@ export interface Expr {
   location?: string;
 }
 export const Expr = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "expression": S.optional(S.String),
-  "title": S.optional(S.String),
-  "description": S.optional(S.String),
-  "location": S.optional(S.String),
-}),
+  S.Struct({
+    expression: S.optional(S.String),
+    title: S.optional(S.String),
+    description: S.optional(S.String),
+    location: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
 /** Associates `members`, or principals, with a `role`. */
@@ -247,15 +304,17 @@ export interface Binding {
   condition?: Expr;
 }
 export const Binding = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "role": S.optional(S.String),
-  "members": S.optional(StringList),
-  "condition": S.optional(Expr),
-}),
+  S.Struct({
+    role: S.optional(S.String),
+    members: S.optional(StringList),
+    condition: S.optional(Expr),
+  }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = ReadonlyArray<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+export const BindingList = /*@__PURE__*/ S.Array(
+  Binding,
+) as any as S.Schema<BindingList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -267,11 +326,11 @@ export interface Policy {
   bindings?: BindingList;
 }
 export const Policy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "version": S.optional(S.Number),
-  "etag": S.optional(S.String),
-  "bindings": S.optional(BindingList),
-}),
+  S.Struct({
+    version: S.optional(S.Number),
+    etag: S.optional(S.String),
+    bindings: S.optional(BindingList),
+  }),
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
 
 export interface GetIamPolicyProjectsTopicsRequest {
@@ -281,31 +340,55 @@ export interface GetIamPolicyProjectsTopicsRequest {
   "options.requestedPolicyVersion"?: number;
 }
 export const GetIamPolicyProjectsTopicsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+resource}:getIamPolicy","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "GetIamPolicyProjectsTopicsRequest" }) as any as S.Schema<GetIamPolicyProjectsTopicsRequest>;
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta2/{+resource}:getIamPolicy",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetIamPolicyProjectsTopicsRequest",
+}) as any as S.Schema<GetIamPolicyProjectsTopicsRequest>;
 
 export interface GetProjectsSubscriptionsRequest {
   /** The name of the subscription to get. */
   subscription: string;
 }
 export const GetProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "subscription": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+subscription}","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsSubscriptionsRequest" }) as any as S.Schema<GetProjectsSubscriptionsRequest>;
+  S.Struct({
+    subscription: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta2/{+subscription}",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsSubscriptionsRequest",
+}) as any as S.Schema<GetProjectsSubscriptionsRequest>;
 
 export interface GetProjectsTopicsRequest {
   /** The name of the topic to get. */
   topic: string;
 }
 export const GetProjectsTopicsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "topic": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+topic}","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsTopicsRequest" }) as any as S.Schema<GetProjectsTopicsRequest>;
+  S.Struct({
+    topic: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta2/{+topic}",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsTopicsRequest",
+}) as any as S.Schema<GetProjectsTopicsRequest>;
 
 export interface ListProjectsSubscriptionsRequest {
   /** The name of the cloud project that subscriptions belong to. */
@@ -316,15 +399,25 @@ export interface ListProjectsSubscriptionsRequest {
   pageToken?: string;
 }
 export const ListProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "project": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+project}/subscriptions","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsSubscriptionsRequest" }) as any as S.Schema<ListProjectsSubscriptionsRequest>;
+  S.Struct({
+    project: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta2/{+project}/subscriptions",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsSubscriptionsRequest",
+}) as any as S.Schema<ListProjectsSubscriptionsRequest>;
 
 export type SubscriptionList = ReadonlyArray<Subscription>;
-export const SubscriptionList = /*@__PURE__*/ S.Array(Subscription) as any as S.Schema<SubscriptionList>;
+export const SubscriptionList = /*@__PURE__*/ S.Array(
+  Subscription,
+) as any as S.Schema<SubscriptionList>;
 
 /** Response for the `ListSubscriptions` method. */
 export interface ListSubscriptionsResponse {
@@ -334,11 +427,13 @@ export interface ListSubscriptionsResponse {
   nextPageToken?: string;
 }
 export const ListSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "subscriptions": S.optional(SubscriptionList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListSubscriptionsResponse" }) as any as S.Schema<ListSubscriptionsResponse>;
+  S.Struct({
+    subscriptions: S.optional(SubscriptionList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListSubscriptionsResponse",
+}) as any as S.Schema<ListSubscriptionsResponse>;
 
 export interface ListProjectsTopicsRequest {
   /** The value returned by the last `ListTopicsResponse`; indicates that this is a continuation of a prior `ListTopics` call, and that the system should return the next page of data. */
@@ -349,15 +444,25 @@ export interface ListProjectsTopicsRequest {
   project: string;
 }
 export const ListProjectsTopicsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "project": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+project}/topics","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsTopicsRequest" }) as any as S.Schema<ListProjectsTopicsRequest>;
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    project: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta2/{+project}/topics",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsTopicsRequest",
+}) as any as S.Schema<ListProjectsTopicsRequest>;
 
 export type TopicList = ReadonlyArray<Topic>;
-export const TopicList = /*@__PURE__*/ S.Array(Topic) as any as S.Schema<TopicList>;
+export const TopicList = /*@__PURE__*/ S.Array(
+  Topic,
+) as any as S.Schema<TopicList>;
 
 /** Response for the `ListTopics` method. */
 export interface ListTopicsResponse {
@@ -367,11 +472,13 @@ export interface ListTopicsResponse {
   nextPageToken?: string;
 }
 export const ListTopicsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "topics": S.optional(TopicList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListTopicsResponse" }) as any as S.Schema<ListTopicsResponse>;
+  S.Struct({
+    topics: S.optional(TopicList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListTopicsResponse",
+}) as any as S.Schema<ListTopicsResponse>;
 
 export interface ListProjectsTopicsSubscriptionsRequest {
   /** The name of the topic that subscriptions are attached to. */
@@ -381,13 +488,22 @@ export interface ListProjectsTopicsSubscriptionsRequest {
   /** Maximum number of subscription names to return. */
   pageSize?: number;
 }
-export const ListProjectsTopicsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "topic": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta2/{+topic}/subscriptions","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsTopicsSubscriptionsRequest" }) as any as S.Schema<ListProjectsTopicsSubscriptionsRequest>;
+export const ListProjectsTopicsSubscriptionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      topic: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta2/{+topic}/subscriptions",
+        baseUrl: "https://pubsub.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsTopicsSubscriptionsRequest",
+}) as any as S.Schema<ListProjectsTopicsSubscriptionsRequest>;
 
 /** Response for the `ListTopicSubscriptions` method. */
 export interface ListTopicSubscriptionsResponse {
@@ -397,11 +513,13 @@ export interface ListTopicSubscriptionsResponse {
   nextPageToken?: string;
 }
 export const ListTopicSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "subscriptions": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListTopicSubscriptionsResponse" }) as any as S.Schema<ListTopicSubscriptionsResponse>;
+  S.Struct({
+    subscriptions: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListTopicSubscriptionsResponse",
+}) as any as S.Schema<ListTopicSubscriptionsResponse>;
 
 /** Request for the ModifyAckDeadline method. */
 export interface ModifyAckDeadlineRequest {
@@ -413,12 +531,14 @@ export interface ModifyAckDeadlineRequest {
   ackIds?: StringList;
 }
 export const ModifyAckDeadlineRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "ackId": S.optional(S.String),
-  "ackDeadlineSeconds": S.optional(S.Number),
-  "ackIds": S.optional(StringList),
-}),
-).annotate({ identifier: "ModifyAckDeadlineRequest" }) as any as S.Schema<ModifyAckDeadlineRequest>;
+  S.Struct({
+    ackId: S.optional(S.String),
+    ackDeadlineSeconds: S.optional(S.Number),
+    ackIds: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ModifyAckDeadlineRequest",
+}) as any as S.Schema<ModifyAckDeadlineRequest>;
 
 export interface ModifyAckDeadlineProjectsSubscriptionsRequest {
   /** The name of the subscription. */
@@ -426,12 +546,21 @@ export interface ModifyAckDeadlineProjectsSubscriptionsRequest {
   /** Request body */
   body?: ModifyAckDeadlineRequest;
 }
-export const ModifyAckDeadlineProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "subscription": S.String.pipe(T.Label()),
-  "body": S.optional(ModifyAckDeadlineRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta2/{+subscription}:modifyAckDeadline","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "ModifyAckDeadlineProjectsSubscriptionsRequest" }) as any as S.Schema<ModifyAckDeadlineProjectsSubscriptionsRequest>;
+export const ModifyAckDeadlineProjectsSubscriptionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscription: S.String.pipe(T.Label()),
+      body: S.optional(ModifyAckDeadlineRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta2/{+subscription}:modifyAckDeadline",
+        baseUrl: "https://pubsub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ModifyAckDeadlineProjectsSubscriptionsRequest",
+  }) as any as S.Schema<ModifyAckDeadlineProjectsSubscriptionsRequest>;
 
 /** Request for the ModifyPushConfig method. */
 export interface ModifyPushConfigRequest {
@@ -439,10 +568,12 @@ export interface ModifyPushConfigRequest {
   pushConfig?: PushConfig;
 }
 export const ModifyPushConfigRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pushConfig": S.optional(PushConfig),
-}),
-).annotate({ identifier: "ModifyPushConfigRequest" }) as any as S.Schema<ModifyPushConfigRequest>;
+  S.Struct({
+    pushConfig: S.optional(PushConfig),
+  }),
+).annotate({
+  identifier: "ModifyPushConfigRequest",
+}) as any as S.Schema<ModifyPushConfigRequest>;
 
 export interface ModifyPushConfigProjectsSubscriptionsRequest {
   /** The name of the subscription. */
@@ -450,12 +581,21 @@ export interface ModifyPushConfigProjectsSubscriptionsRequest {
   /** Request body */
   body?: ModifyPushConfigRequest;
 }
-export const ModifyPushConfigProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "subscription": S.String.pipe(T.Label()),
-  "body": S.optional(ModifyPushConfigRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta2/{+subscription}:modifyPushConfig","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "ModifyPushConfigProjectsSubscriptionsRequest" }) as any as S.Schema<ModifyPushConfigProjectsSubscriptionsRequest>;
+export const ModifyPushConfigProjectsSubscriptionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscription: S.String.pipe(T.Label()),
+      body: S.optional(ModifyPushConfigRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta2/{+subscription}:modifyPushConfig",
+        baseUrl: "https://pubsub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ModifyPushConfigProjectsSubscriptionsRequest",
+  }) as any as S.Schema<ModifyPushConfigProjectsSubscriptionsRequest>;
 
 /** A message data and its attributes. The message payload must not be empty; it must contain either a non-empty data field, or at least one attribute. */
 export interface PubsubMessage {
@@ -469,16 +609,18 @@ export interface PubsubMessage {
   publishTime?: string;
 }
 export const PubsubMessage = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "attributes": S.optional(StringMap),
-  "messageId": S.optional(S.String),
-  "data": S.optional(S.String),
-  "publishTime": S.optional(S.String),
-}),
+  S.Struct({
+    attributes: S.optional(StringMap),
+    messageId: S.optional(S.String),
+    data: S.optional(S.String),
+    publishTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "PubsubMessage" }) as any as S.Schema<PubsubMessage>;
 
 export type PubsubMessageList = ReadonlyArray<PubsubMessage>;
-export const PubsubMessageList = /*@__PURE__*/ S.Array(PubsubMessage) as any as S.Schema<PubsubMessageList>;
+export const PubsubMessageList = /*@__PURE__*/ S.Array(
+  PubsubMessage,
+) as any as S.Schema<PubsubMessageList>;
 
 /** Request for the Publish method. */
 export interface PublishRequest {
@@ -486,9 +628,9 @@ export interface PublishRequest {
   messages?: PubsubMessageList;
 }
 export const PublishRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "messages": S.optional(PubsubMessageList),
-}),
+  S.Struct({
+    messages: S.optional(PubsubMessageList),
+  }),
 ).annotate({ identifier: "PublishRequest" }) as any as S.Schema<PublishRequest>;
 
 export interface PublishProjectsTopicsRequest {
@@ -498,11 +640,19 @@ export interface PublishProjectsTopicsRequest {
   body?: PublishRequest;
 }
 export const PublishProjectsTopicsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "topic": S.String.pipe(T.Label()),
-  "body": S.optional(PublishRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta2/{+topic}:publish","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "PublishProjectsTopicsRequest" }) as any as S.Schema<PublishProjectsTopicsRequest>;
+  S.Struct({
+    topic: S.String.pipe(T.Label()),
+    body: S.optional(PublishRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta2/{+topic}:publish",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PublishProjectsTopicsRequest",
+}) as any as S.Schema<PublishProjectsTopicsRequest>;
 
 /** Response for the `Publish` method. */
 export interface PublishResponse {
@@ -510,10 +660,12 @@ export interface PublishResponse {
   messageIds?: StringList;
 }
 export const PublishResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "messageIds": S.optional(StringList),
-}),
-).annotate({ identifier: "PublishResponse" }) as any as S.Schema<PublishResponse>;
+  S.Struct({
+    messageIds: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "PublishResponse",
+}) as any as S.Schema<PublishResponse>;
 
 /** Request for the `Pull` method. */
 export interface PullRequest {
@@ -523,10 +675,10 @@ export interface PullRequest {
   maxMessages?: number;
 }
 export const PullRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "returnImmediately": S.optional(S.Boolean),
-  "maxMessages": S.optional(S.Number),
-}),
+  S.Struct({
+    returnImmediately: S.optional(S.Boolean),
+    maxMessages: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "PullRequest" }) as any as S.Schema<PullRequest>;
 
 export interface PullProjectsSubscriptionsRequest {
@@ -536,11 +688,19 @@ export interface PullProjectsSubscriptionsRequest {
   body?: PullRequest;
 }
 export const PullProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "subscription": S.String.pipe(T.Label()),
-  "body": S.optional(PullRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta2/{+subscription}:pull","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "PullProjectsSubscriptionsRequest" }) as any as S.Schema<PullProjectsSubscriptionsRequest>;
+  S.Struct({
+    subscription: S.String.pipe(T.Label()),
+    body: S.optional(PullRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta2/{+subscription}:pull",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PullProjectsSubscriptionsRequest",
+}) as any as S.Schema<PullProjectsSubscriptionsRequest>;
 
 /** A message and its corresponding acknowledgment ID. */
 export interface ReceivedMessage {
@@ -550,14 +710,18 @@ export interface ReceivedMessage {
   message?: PubsubMessage;
 }
 export const ReceivedMessage = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "ackId": S.optional(S.String),
-  "message": S.optional(PubsubMessage),
-}),
-).annotate({ identifier: "ReceivedMessage" }) as any as S.Schema<ReceivedMessage>;
+  S.Struct({
+    ackId: S.optional(S.String),
+    message: S.optional(PubsubMessage),
+  }),
+).annotate({
+  identifier: "ReceivedMessage",
+}) as any as S.Schema<ReceivedMessage>;
 
 export type ReceivedMessageList = ReadonlyArray<ReceivedMessage>;
-export const ReceivedMessageList = /*@__PURE__*/ S.Array(ReceivedMessage) as any as S.Schema<ReceivedMessageList>;
+export const ReceivedMessageList = /*@__PURE__*/ S.Array(
+  ReceivedMessage,
+) as any as S.Schema<ReceivedMessageList>;
 
 /** Response for the `Pull` method. */
 export interface PullResponse {
@@ -565,9 +729,9 @@ export interface PullResponse {
   receivedMessages?: ReceivedMessageList;
 }
 export const PullResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "receivedMessages": S.optional(ReceivedMessageList),
-}),
+  S.Struct({
+    receivedMessages: S.optional(ReceivedMessageList),
+  }),
 ).annotate({ identifier: "PullResponse" }) as any as S.Schema<PullResponse>;
 
 /** Request message for `SetIamPolicy` method. */
@@ -576,10 +740,12 @@ export interface SetIamPolicyRequest {
   policy?: Policy;
 }
 export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "policy": S.optional(Policy),
-}),
-).annotate({ identifier: "SetIamPolicyRequest" }) as any as S.Schema<SetIamPolicyRequest>;
+  S.Struct({
+    policy: S.optional(Policy),
+  }),
+).annotate({
+  identifier: "SetIamPolicyRequest",
+}) as any as S.Schema<SetIamPolicyRequest>;
 
 export interface SetIamPolicyProjectsSubscriptionsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -587,12 +753,21 @@ export interface SetIamPolicyProjectsSubscriptionsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta2/{+resource}:setIamPolicy","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "SetIamPolicyProjectsSubscriptionsRequest" }) as any as S.Schema<SetIamPolicyProjectsSubscriptionsRequest>;
+export const SetIamPolicyProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta2/{+resource}:setIamPolicy",
+        baseUrl: "https://pubsub.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "SetIamPolicyProjectsSubscriptionsRequest",
+}) as any as S.Schema<SetIamPolicyProjectsSubscriptionsRequest>;
 
 export interface SetIamPolicyProjectsTopicsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -601,11 +776,19 @@ export interface SetIamPolicyProjectsTopicsRequest {
   body?: SetIamPolicyRequest;
 }
 export const SetIamPolicyProjectsTopicsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta2/{+resource}:setIamPolicy","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "SetIamPolicyProjectsTopicsRequest" }) as any as S.Schema<SetIamPolicyProjectsTopicsRequest>;
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta2/{+resource}:setIamPolicy",
+      baseUrl: "https://pubsub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SetIamPolicyProjectsTopicsRequest",
+}) as any as S.Schema<SetIamPolicyProjectsTopicsRequest>;
 
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
@@ -613,10 +796,12 @@ export interface TestIamPermissionsRequest {
   permissions?: StringList;
 }
 export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "permissions": S.optional(StringList),
-}),
-).annotate({ identifier: "TestIamPermissionsRequest" }) as any as S.Schema<TestIamPermissionsRequest>;
+  S.Struct({
+    permissions: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "TestIamPermissionsRequest",
+}) as any as S.Schema<TestIamPermissionsRequest>;
 
 export interface TestIamPermissionsProjectsSubscriptionsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -624,12 +809,21 @@ export interface TestIamPermissionsProjectsSubscriptionsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta2/{+resource}:testIamPermissions","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "TestIamPermissionsProjectsSubscriptionsRequest" }) as any as S.Schema<TestIamPermissionsProjectsSubscriptionsRequest>;
+export const TestIamPermissionsProjectsSubscriptionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta2/{+resource}:testIamPermissions",
+        baseUrl: "https://pubsub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "TestIamPermissionsProjectsSubscriptionsRequest",
+  }) as any as S.Schema<TestIamPermissionsProjectsSubscriptionsRequest>;
 
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
@@ -637,10 +831,12 @@ export interface TestIamPermissionsResponse {
   permissions?: StringList;
 }
 export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "permissions": S.optional(StringList),
-}),
-).annotate({ identifier: "TestIamPermissionsResponse" }) as any as S.Schema<TestIamPermissionsResponse>;
+  S.Struct({
+    permissions: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "TestIamPermissionsResponse",
+}) as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsTopicsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -648,14 +844,28 @@ export interface TestIamPermissionsProjectsTopicsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsTopicsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta2/{+resource}:testIamPermissions","baseUrl":"https://pubsub.googleapis.com/"})),
-).annotate({ identifier: "TestIamPermissionsProjectsTopicsRequest" }) as any as S.Schema<TestIamPermissionsProjectsTopicsRequest>;
+export const TestIamPermissionsProjectsTopicsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta2/{+resource}:testIamPermissions",
+        baseUrl: "https://pubsub.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "TestIamPermissionsProjectsTopicsRequest",
+}) as any as S.Schema<TestIamPermissionsProjectsTopicsRequest>;
 
-export type AcknowledgeProjectsSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type AcknowledgeProjectsSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Acknowledges the messages associated with the `ack_ids` in the `AcknowledgeRequest`. The Pub/Sub system can remove the relevant messages from the subscription. Acknowledging a message whose ack deadline has expired may succeed, but such a message may be redelivered later. Acknowledging a message more than once will not result in an error. */
 export const acknowledgeProjectsSubscriptions: API.OperationMethod<
   AcknowledgeProjectsSubscriptionsRequest,
@@ -670,7 +880,12 @@ export const acknowledgeProjectsSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a subscription to a given topic. If the subscription already exists, returns `ALREADY_EXISTS`. If the corresponding topic doesn't exist, returns `NOT_FOUND`. If the name is not provided in the request, the server will assign a random name for this subscription on the same project as the topic. Note that for REST API requests, you must specify a name. */
 export const createProjectsSubscriptions: API.OperationMethod<
   CreateProjectsSubscriptionsRequest,
@@ -685,7 +900,12 @@ export const createProjectsSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsTopicsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsTopicsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates the given topic with the given name. */
 export const createProjectsTopics: API.OperationMethod<
   CreateProjectsTopicsRequest,
@@ -700,7 +920,12 @@ export const createProjectsTopics: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes an existing subscription. All pending messages in the subscription are immediately dropped. Calls to `Pull` after deletion will return `NOT_FOUND`. After a subscription is deleted, a new one may be created with the same name, but the new one has no association with the old subscription, or its topic unless the same topic is specified. */
 export const deleteProjectsSubscriptions: API.OperationMethod<
   DeleteProjectsSubscriptionsRequest,
@@ -715,7 +940,12 @@ export const deleteProjectsSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsTopicsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsTopicsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes the topic with the given name. Returns `NOT_FOUND` if the topic does not exist. After a topic is deleted, a new topic may be created with the same name; this is an entirely new topic with none of the old configuration or subscriptions. Existing subscriptions to this topic are not deleted, but their `topic` field is set to `_deleted-topic_`. */
 export const deleteProjectsTopics: API.OperationMethod<
   DeleteProjectsTopicsRequest,
@@ -730,7 +960,10 @@ export const deleteProjectsTopics: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsSubscriptionsError = NotFound | Forbidden | GcpOpError;
+export type GetIamPolicyProjectsSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsSubscriptions: API.OperationMethod<
   GetIamPolicyProjectsSubscriptionsRequest,
@@ -803,7 +1036,10 @@ export const listProjectsSubscriptions: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListProjectsTopicsError = NotFound | Forbidden | GcpOpError;
@@ -819,10 +1055,16 @@ export const listProjectsTopics: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsTopicsSubscriptionsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsTopicsSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists the name of the subscriptions for this topic. */
 export const listProjectsTopicsSubscriptions: API.PaginatedOperationMethod<
   ListProjectsTopicsSubscriptionsRequest,
@@ -835,10 +1077,18 @@ export const listProjectsTopicsSubscriptions: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ModifyAckDeadlineProjectsSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ModifyAckDeadlineProjectsSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Modifies the ack deadline for a specific message. This method is useful to indicate that more time is needed to process a message by the subscriber, or to make the message available for redelivery if the processing was interrupted. Note that this does not modify the subscription-level `ackDeadlineSeconds` used for subsequent messages. */
 export const modifyAckDeadlineProjectsSubscriptions: API.OperationMethod<
   ModifyAckDeadlineProjectsSubscriptionsRequest,
@@ -853,7 +1103,12 @@ export const modifyAckDeadlineProjectsSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ModifyPushConfigProjectsSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ModifyPushConfigProjectsSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Modifies the `PushConfig` for a specified subscription. This may be used to change a push subscription to a pull one (signified by an empty `PushConfig`) or vice versa, or change the endpoint URL and other attributes of a push subscription. Messages will accumulate for delivery continuously through the call regardless of changes to the `PushConfig`. */
 export const modifyPushConfigProjectsSubscriptions: API.OperationMethod<
   ModifyPushConfigProjectsSubscriptionsRequest,
@@ -868,7 +1123,12 @@ export const modifyPushConfigProjectsSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PublishProjectsTopicsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PublishProjectsTopicsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Adds one or more messages to the topic. Returns `NOT_FOUND` if the topic does not exist. The message payload must not be empty; it must contain either a non-empty data field, or at least one attribute. */
 export const publishProjectsTopics: API.OperationMethod<
   PublishProjectsTopicsRequest,
@@ -883,7 +1143,12 @@ export const publishProjectsTopics: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PullProjectsSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PullProjectsSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Pulls messages from the server. Returns an empty list if there are no messages available in the backlog. The server may return `UNAVAILABLE` if there are too many concurrent pull requests pending for the given subscription. */
 export const pullProjectsSubscriptions: API.OperationMethod<
   PullProjectsSubscriptionsRequest,
@@ -898,7 +1163,12 @@ export const pullProjectsSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetIamPolicyProjectsSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsSubscriptions: API.OperationMethod<
   SetIamPolicyProjectsSubscriptionsRequest,
@@ -913,7 +1183,12 @@ export const setIamPolicyProjectsSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsTopicsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetIamPolicyProjectsTopicsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsTopics: API.OperationMethod<
   SetIamPolicyProjectsTopicsRequest,
@@ -928,7 +1203,12 @@ export const setIamPolicyProjectsTopics: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TestIamPermissionsProjectsSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsSubscriptions: API.OperationMethod<
   TestIamPermissionsProjectsSubscriptionsRequest,
@@ -943,7 +1223,12 @@ export const testIamPermissionsProjectsSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsTopicsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TestIamPermissionsProjectsTopicsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsTopics: API.OperationMethod<
   TestIamPermissionsProjectsTopicsRequest,
@@ -957,4 +1242,3 @@ export const testIamPermissionsProjectsTopics: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

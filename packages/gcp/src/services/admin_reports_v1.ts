@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export interface GetCustomerUsageReportsRequest {
@@ -71,13 +71,21 @@ export interface GetCustomerUsageReportsRequest {
   pageToken?: string;
 }
 export const GetCustomerUsageReportsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "date": S.String.pipe(T.Label()),
-  "parameters": S.optional(S.String.pipe(T.Query())),
-  "customerId": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"admin/reports/v1/usage/dates/{date}","baseUrl":"https://admin.googleapis.com/"})),
-).annotate({ identifier: "GetCustomerUsageReportsRequest" }) as any as S.Schema<GetCustomerUsageReportsRequest>;
+  S.Struct({
+    date: S.String.pipe(T.Label()),
+    parameters: S.optional(S.String.pipe(T.Query())),
+    customerId: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "admin/reports/v1/usage/dates/{date}",
+      baseUrl: "https://admin.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetCustomerUsageReportsRequest",
+}) as any as S.Schema<GetCustomerUsageReportsRequest>;
 
 export interface UsageReportEntity {
   /** Output only. The user's immutable Google Workspace profile identifier. */
@@ -92,20 +100,27 @@ export interface UsageReportEntity {
   entityId?: string;
 }
 export const UsageReportEntity = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "profileId": S.optional(S.String),
-  "customerId": S.optional(S.String),
-  "type": S.optional(S.String),
-  "userEmail": S.optional(S.String),
-  "entityId": S.optional(S.String),
-}),
-).annotate({ identifier: "UsageReportEntity" }) as any as S.Schema<UsageReportEntity>;
+  S.Struct({
+    profileId: S.optional(S.String),
+    customerId: S.optional(S.String),
+    type: S.optional(S.String),
+    userEmail: S.optional(S.String),
+    entityId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UsageReportEntity",
+}) as any as S.Schema<UsageReportEntity>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 export interface UsageReportParametersItem {
   /** Output only. String value of the parameter. */
@@ -122,18 +137,23 @@ export interface UsageReportParametersItem {
   msgValue?: DocumentMapList;
 }
 export const UsageReportParametersItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "stringValue": S.optional(S.String),
-  "intValue": S.optional(S.String),
-  "name": S.optional(S.String),
-  "boolValue": S.optional(S.Boolean),
-  "datetimeValue": S.optional(S.String),
-  "msgValue": S.optional(DocumentMapList),
-}),
-).annotate({ identifier: "UsageReportParametersItem" }) as any as S.Schema<UsageReportParametersItem>;
+  S.Struct({
+    stringValue: S.optional(S.String),
+    intValue: S.optional(S.String),
+    name: S.optional(S.String),
+    boolValue: S.optional(S.Boolean),
+    datetimeValue: S.optional(S.String),
+    msgValue: S.optional(DocumentMapList),
+  }),
+).annotate({
+  identifier: "UsageReportParametersItem",
+}) as any as S.Schema<UsageReportParametersItem>;
 
-export type UsageReportParametersItemList = ReadonlyArray<UsageReportParametersItem>;
-export const UsageReportParametersItemList = /*@__PURE__*/ S.Array(UsageReportParametersItem) as any as S.Schema<UsageReportParametersItemList>;
+export type UsageReportParametersItemList =
+  ReadonlyArray<UsageReportParametersItem>;
+export const UsageReportParametersItemList = /*@__PURE__*/ S.Array(
+  UsageReportParametersItem,
+) as any as S.Schema<UsageReportParametersItemList>;
 
 /** JSON template for a usage report. */
 export interface UsageReport {
@@ -149,17 +169,19 @@ export interface UsageReport {
   parameters?: UsageReportParametersItemList;
 }
 export const UsageReport = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "entity": S.optional(UsageReportEntity),
-  "etag": S.optional(S.String),
-  "date": S.optional(S.String),
-  "parameters": S.optional(UsageReportParametersItemList),
-}),
+  S.Struct({
+    kind: S.optional(S.String),
+    entity: S.optional(UsageReportEntity),
+    etag: S.optional(S.String),
+    date: S.optional(S.String),
+    parameters: S.optional(UsageReportParametersItemList),
+  }),
 ).annotate({ identifier: "UsageReport" }) as any as S.Schema<UsageReport>;
 
 export type UsageReportList = ReadonlyArray<UsageReport>;
-export const UsageReportList = /*@__PURE__*/ S.Array(UsageReport) as any as S.Schema<UsageReportList>;
+export const UsageReportList = /*@__PURE__*/ S.Array(
+  UsageReport,
+) as any as S.Schema<UsageReportList>;
 
 export interface UsageReportsWarningsItemDataItem {
   /** Key associated with a key-value pair to give detailed information on the warning. */
@@ -168,14 +190,19 @@ export interface UsageReportsWarningsItemDataItem {
   value?: string;
 }
 export const UsageReportsWarningsItemDataItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "key": S.optional(S.String),
-  "value": S.optional(S.String),
-}),
-).annotate({ identifier: "UsageReportsWarningsItemDataItem" }) as any as S.Schema<UsageReportsWarningsItemDataItem>;
+  S.Struct({
+    key: S.optional(S.String),
+    value: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UsageReportsWarningsItemDataItem",
+}) as any as S.Schema<UsageReportsWarningsItemDataItem>;
 
-export type UsageReportsWarningsItemDataItemList = ReadonlyArray<UsageReportsWarningsItemDataItem>;
-export const UsageReportsWarningsItemDataItemList = /*@__PURE__*/ S.Array(UsageReportsWarningsItemDataItem) as any as S.Schema<UsageReportsWarningsItemDataItemList>;
+export type UsageReportsWarningsItemDataItemList =
+  ReadonlyArray<UsageReportsWarningsItemDataItem>;
+export const UsageReportsWarningsItemDataItemList = /*@__PURE__*/ S.Array(
+  UsageReportsWarningsItemDataItem,
+) as any as S.Schema<UsageReportsWarningsItemDataItemList>;
 
 export interface UsageReportsWarningsItem {
   /** The human readable messages for a warning are: - Data is not available warning - Sorry, data for date yyyy-mm-dd for application "`application name`" is not available. - Partial data is available warning - Data for date yyyy-mm-dd for application "`application name`" is not available right now, please try again after a few hours. */
@@ -186,15 +213,20 @@ export interface UsageReportsWarningsItem {
   data?: UsageReportsWarningsItemDataItemList;
 }
 export const UsageReportsWarningsItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "message": S.optional(S.String),
-  "code": S.optional(S.String),
-  "data": S.optional(UsageReportsWarningsItemDataItemList),
-}),
-).annotate({ identifier: "UsageReportsWarningsItem" }) as any as S.Schema<UsageReportsWarningsItem>;
+  S.Struct({
+    message: S.optional(S.String),
+    code: S.optional(S.String),
+    data: S.optional(UsageReportsWarningsItemDataItemList),
+  }),
+).annotate({
+  identifier: "UsageReportsWarningsItem",
+}) as any as S.Schema<UsageReportsWarningsItem>;
 
-export type UsageReportsWarningsItemList = ReadonlyArray<UsageReportsWarningsItem>;
-export const UsageReportsWarningsItemList = /*@__PURE__*/ S.Array(UsageReportsWarningsItem) as any as S.Schema<UsageReportsWarningsItemList>;
+export type UsageReportsWarningsItemList =
+  ReadonlyArray<UsageReportsWarningsItem>;
+export const UsageReportsWarningsItemList = /*@__PURE__*/ S.Array(
+  UsageReportsWarningsItem,
+) as any as S.Schema<UsageReportsWarningsItemList>;
 
 export interface UsageReports {
   /** Token to specify next page. A report with multiple pages has a `nextPageToken` property in the response. For your follow-on requests getting all of the report's pages, enter the `nextPageToken` value in the `pageToken` query string. */
@@ -209,13 +241,13 @@ export interface UsageReports {
   kind?: string;
 }
 export const UsageReports = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "usageReports": S.optional(UsageReportList),
-  "etag": S.optional(S.String),
-  "warnings": S.optional(UsageReportsWarningsItemList),
-  "kind": S.optional(S.String),
-}),
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    usageReports: S.optional(UsageReportList),
+    etag: S.optional(S.String),
+    warnings: S.optional(UsageReportsWarningsItemList),
+    kind: S.optional(S.String),
+  }),
 ).annotate({ identifier: "UsageReports" }) as any as S.Schema<UsageReports>;
 
 export type GetEntityUsageReportsEntityTypeEnum = "gplus_communities";
@@ -240,17 +272,25 @@ export interface GetEntityUsageReportsRequest {
   entityType: GetEntityUsageReportsEntityTypeEnum | (string & {});
 }
 export const GetEntityUsageReportsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filters": S.optional(S.String.pipe(T.Query())),
-  "customerId": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "entityKey": S.String.pipe(T.Label()),
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-  "date": S.String.pipe(T.Label()),
-  "parameters": S.optional(S.String.pipe(T.Query())),
-  "entityType": GetEntityUsageReportsEntityTypeEnum.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"admin/reports/v1/usage/{entityType}/{entityKey}/dates/{date}","baseUrl":"https://admin.googleapis.com/"})),
-).annotate({ identifier: "GetEntityUsageReportsRequest" }) as any as S.Schema<GetEntityUsageReportsRequest>;
+  S.Struct({
+    filters: S.optional(S.String.pipe(T.Query())),
+    customerId: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    entityKey: S.String.pipe(T.Label()),
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+    date: S.String.pipe(T.Label()),
+    parameters: S.optional(S.String.pipe(T.Query())),
+    entityType: GetEntityUsageReportsEntityTypeEnum.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "admin/reports/v1/usage/{entityType}/{entityKey}/dates/{date}",
+      baseUrl: "https://admin.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetEntityUsageReportsRequest",
+}) as any as S.Schema<GetEntityUsageReportsRequest>;
 
 export interface GetUserUsageReportRequest {
   /** The unique ID of the customer to retrieve data for. */
@@ -273,20 +313,68 @@ export interface GetUserUsageReportRequest {
   groupIdFilter?: string;
 }
 export const GetUserUsageReportRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "customerId": S.optional(S.String.pipe(T.Query())),
-  "orgUnitID": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "filters": S.optional(S.String.pipe(T.Query())),
-  "date": S.String.pipe(T.Label()),
-  "parameters": S.optional(S.String.pipe(T.Query())),
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-  "userKey": S.String.pipe(T.Label()),
-  "groupIdFilter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"admin/reports/v1/usage/users/{userKey}/dates/{date}","baseUrl":"https://admin.googleapis.com/"})),
-).annotate({ identifier: "GetUserUsageReportRequest" }) as any as S.Schema<GetUserUsageReportRequest>;
+  S.Struct({
+    customerId: S.optional(S.String.pipe(T.Query())),
+    orgUnitID: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    filters: S.optional(S.String.pipe(T.Query())),
+    date: S.String.pipe(T.Label()),
+    parameters: S.optional(S.String.pipe(T.Query())),
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+    userKey: S.String.pipe(T.Label()),
+    groupIdFilter: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "admin/reports/v1/usage/users/{userKey}/dates/{date}",
+      baseUrl: "https://admin.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetUserUsageReportRequest",
+}) as any as S.Schema<GetUserUsageReportRequest>;
 
-export type ListActivitiesApplicationNameEnum = "access_transparency" | "admin" | "calendar" | "chat" | "drive" | "gcp" | "gmail" | "gplus" | "groups" | "groups_enterprise" | "jamboard" | "login" | "meet" | "mobile" | "rules" | "saml" | "token" | "user_accounts" | "context_aware_access" | "chrome" | "data_studio" | "keep" | "vault" | "gemini_in_workspace_apps" | "classroom" | "assignments" | "cloud_search" | "tasks" | "data_migration" | "meet_hardware" | "directory_sync" | "ldap" | "profile" | "access_evaluation" | "admin_data_action" | "contacts" | "takeout" | "graduation" | "voice" | "chrome_sync";
+export type ListActivitiesApplicationNameEnum =
+  | "access_transparency"
+  | "admin"
+  | "calendar"
+  | "chat"
+  | "drive"
+  | "gcp"
+  | "gmail"
+  | "gplus"
+  | "groups"
+  | "groups_enterprise"
+  | "jamboard"
+  | "login"
+  | "meet"
+  | "mobile"
+  | "rules"
+  | "saml"
+  | "token"
+  | "user_accounts"
+  | "context_aware_access"
+  | "chrome"
+  | "data_studio"
+  | "keep"
+  | "vault"
+  | "gemini_in_workspace_apps"
+  | "classroom"
+  | "assignments"
+  | "cloud_search"
+  | "tasks"
+  | "data_migration"
+  | "meet_hardware"
+  | "directory_sync"
+  | "ldap"
+  | "profile"
+  | "access_evaluation"
+  | "admin_data_action"
+  | "contacts"
+  | "takeout"
+  | "graduation"
+  | "voice"
+  | "chrome_sync";
 export const ListActivitiesApplicationNameEnum = /*@__PURE__*/ S.String;
 
 export interface ListActivitiesRequest {
@@ -326,26 +414,34 @@ export interface ListActivitiesRequest {
   groupIdFilter?: string;
 }
 export const ListActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "customerId": S.optional(S.String.pipe(T.Query())),
-  "actorIpAddress": S.optional(S.String.pipe(T.Query())),
-  "filters": S.optional(S.String.pipe(T.Query())),
-  "statusFilter": S.optional(S.String.pipe(T.Query())),
-  "applicationInfoFilter": S.optional(S.String.pipe(T.Query())),
-  "startTime": S.optional(S.String.pipe(T.Query())),
-  "endTime": S.optional(S.String.pipe(T.Query())),
-  "includeSensitiveData": S.optional(S.Boolean.pipe(T.Query())),
-  "resourceDetailsFilter": S.optional(S.String.pipe(T.Query())),
-  "networkInfoFilter": S.optional(S.String.pipe(T.Query())),
-  "orgUnitID": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-  "eventName": S.optional(S.String.pipe(T.Query())),
-  "userKey": S.String.pipe(T.Label()),
-  "applicationName": ListActivitiesApplicationNameEnum.pipe(T.Label()),
-  "groupIdFilter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"admin/reports/v1/activity/users/{userKey}/applications/{applicationName}","baseUrl":"https://admin.googleapis.com/"})),
-).annotate({ identifier: "ListActivitiesRequest" }) as any as S.Schema<ListActivitiesRequest>;
+  S.Struct({
+    customerId: S.optional(S.String.pipe(T.Query())),
+    actorIpAddress: S.optional(S.String.pipe(T.Query())),
+    filters: S.optional(S.String.pipe(T.Query())),
+    statusFilter: S.optional(S.String.pipe(T.Query())),
+    applicationInfoFilter: S.optional(S.String.pipe(T.Query())),
+    startTime: S.optional(S.String.pipe(T.Query())),
+    endTime: S.optional(S.String.pipe(T.Query())),
+    includeSensitiveData: S.optional(S.Boolean.pipe(T.Query())),
+    resourceDetailsFilter: S.optional(S.String.pipe(T.Query())),
+    networkInfoFilter: S.optional(S.String.pipe(T.Query())),
+    orgUnitID: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+    eventName: S.optional(S.String.pipe(T.Query())),
+    userKey: S.String.pipe(T.Label()),
+    applicationName: ListActivitiesApplicationNameEnum.pipe(T.Label()),
+    groupIdFilter: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "admin/reports/v1/activity/users/{userKey}/applications/{applicationName}",
+      baseUrl: "https://admin.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListActivitiesRequest",
+}) as any as S.Schema<ListActivitiesRequest>;
 
 /** Device details of the user doing the action. */
 export interface ActivityUserDeviceInfo {
@@ -357,15 +453,19 @@ export interface ActivityUserDeviceInfo {
   deviceId?: string;
 }
 export const ActivityUserDeviceInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "deviceOsVersion": S.optional(S.String),
-  "deviceType": S.optional(S.String),
-  "deviceId": S.optional(S.String),
-}),
-).annotate({ identifier: "ActivityUserDeviceInfo" }) as any as S.Schema<ActivityUserDeviceInfo>;
+  S.Struct({
+    deviceOsVersion: S.optional(S.String),
+    deviceType: S.optional(S.String),
+    deviceId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ActivityUserDeviceInfo",
+}) as any as S.Schema<ActivityUserDeviceInfo>;
 
 export type IntegerList = ReadonlyArray<number>;
-export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
+export const IntegerList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<IntegerList>;
 
 /** Network information of the user doing the action. */
 export interface ActivityNetworkInfo {
@@ -377,12 +477,14 @@ export interface ActivityNetworkInfo {
   ipAsn?: IntegerList;
 }
 export const ActivityNetworkInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "regionCode": S.optional(S.String),
-  "subdivisionCode": S.optional(S.String),
-  "ipAsn": S.optional(IntegerList),
-}),
-).annotate({ identifier: "ActivityNetworkInfo" }) as any as S.Schema<ActivityNetworkInfo>;
+  S.Struct({
+    regionCode: S.optional(S.String),
+    subdivisionCode: S.optional(S.String),
+    ipAsn: S.optional(IntegerList),
+  }),
+).annotate({
+  identifier: "ActivityNetworkInfo",
+}) as any as S.Schema<ActivityNetworkInfo>;
 
 export interface ActivityId {
   /** Unique qualifier if multiple events have the same time. */
@@ -395,12 +497,12 @@ export interface ActivityId {
   customerId?: string;
 }
 export const ActivityId = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "uniqueQualifier": S.optional(S.String),
-  "applicationName": S.optional(S.String),
-  "time": S.optional(S.String),
-  "customerId": S.optional(S.String),
-}),
+  S.Struct({
+    uniqueQualifier: S.optional(S.String),
+    applicationName: S.optional(S.String),
+    time: S.optional(S.String),
+    customerId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ActivityId" }) as any as S.Schema<ActivityId>;
 
 /** Identity of the Google Workspace customer who owns the resource. */
@@ -409,10 +511,12 @@ export interface CustomerIdentity {
   id?: string;
 }
 export const CustomerIdentity = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.optional(S.String),
-}),
-).annotate({ identifier: "CustomerIdentity" }) as any as S.Schema<CustomerIdentity>;
+  S.Struct({
+    id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CustomerIdentity",
+}) as any as S.Schema<CustomerIdentity>;
 
 /** Identity of the group who owns the resource. */
 export interface GroupIdentity {
@@ -422,10 +526,10 @@ export interface GroupIdentity {
   groupEmail?: string;
 }
 export const GroupIdentity = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.optional(S.String),
-  "groupEmail": S.optional(S.String),
-}),
+  S.Struct({
+    id: S.optional(S.String),
+    groupEmail: S.optional(S.String),
+  }),
 ).annotate({ identifier: "GroupIdentity" }) as any as S.Schema<GroupIdentity>;
 
 /** Identity of the user who owns the resource. */
@@ -436,10 +540,10 @@ export interface UserIdentity {
   userEmail?: string;
 }
 export const UserIdentity = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.optional(S.String),
-  "userEmail": S.optional(S.String),
-}),
+  S.Struct({
+    id: S.optional(S.String),
+    userEmail: S.optional(S.String),
+  }),
 ).annotate({ identifier: "UserIdentity" }) as any as S.Schema<UserIdentity>;
 
 /** Identity details of the owner of the resource. */
@@ -452,15 +556,17 @@ export interface OwnerIdentity {
   userIdentity?: UserIdentity;
 }
 export const OwnerIdentity = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "customerIdentity": S.optional(CustomerIdentity),
-  "groupIdentity": S.optional(GroupIdentity),
-  "userIdentity": S.optional(UserIdentity),
-}),
+  S.Struct({
+    customerIdentity: S.optional(CustomerIdentity),
+    groupIdentity: S.optional(GroupIdentity),
+    userIdentity: S.optional(UserIdentity),
+  }),
 ).annotate({ identifier: "OwnerIdentity" }) as any as S.Schema<OwnerIdentity>;
 
 export type OwnerIdentityList = ReadonlyArray<OwnerIdentity>;
-export const OwnerIdentityList = /*@__PURE__*/ S.Array(OwnerIdentity) as any as S.Schema<OwnerIdentityList>;
+export const OwnerIdentityList = /*@__PURE__*/ S.Array(
+  OwnerIdentity,
+) as any as S.Schema<OwnerIdentityList>;
 
 /** Details of the owner of the resource. */
 export interface OwnerDetails {
@@ -470,10 +576,10 @@ export interface OwnerDetails {
   ownerIdentity?: OwnerIdentityList;
 }
 export const OwnerDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "ownerType": S.optional(S.String),
-  "ownerIdentity": S.optional(OwnerIdentityList),
-}),
+  S.Struct({
+    ownerType: S.optional(S.String),
+    ownerIdentity: S.optional(OwnerIdentityList),
+  }),
 ).annotate({ identifier: "OwnerDetails" }) as any as S.Schema<OwnerDetails>;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
@@ -486,11 +592,11 @@ export interface Admin_Date {
   month?: number;
 }
 export const Admin_Date = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "day": S.optional(S.Number),
-  "year": S.optional(S.Number),
-  "month": S.optional(S.Number),
-}),
+  S.Struct({
+    day: S.optional(S.Number),
+    year: S.optional(S.Number),
+    month: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "Admin_Date" }) as any as S.Schema<Admin_Date>;
 
 /** Setting a user value by selecting a single user. */
@@ -499,13 +605,17 @@ export interface FieldValueUserValue {
   email?: string;
 }
 export const FieldValueUserValue = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "email": S.optional(S.String),
-}),
-).annotate({ identifier: "FieldValueUserValue" }) as any as S.Schema<FieldValueUserValue>;
+  S.Struct({
+    email: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "FieldValueUserValue",
+}) as any as S.Schema<FieldValueUserValue>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** Setting a text list value. */
 export interface FieldValueTextListValue {
@@ -513,10 +623,12 @@ export interface FieldValueTextListValue {
   values?: StringList;
 }
 export const FieldValueTextListValue = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "values": S.optional(StringList),
-}),
-).annotate({ identifier: "FieldValueTextListValue" }) as any as S.Schema<FieldValueTextListValue>;
+  S.Struct({
+    values: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "FieldValueTextListValue",
+}) as any as S.Schema<FieldValueTextListValue>;
 
 /** The reason why the label/field was applied. */
 export interface Reason {
@@ -524,9 +636,9 @@ export interface Reason {
   reasonType?: string;
 }
 export const Reason = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "reasonType": S.optional(S.String),
-}),
+  S.Struct({
+    reasonType: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Reason" }) as any as S.Schema<Reason>;
 
 /** Setting a selection value by selecting a single value from a dropdown. */
@@ -539,15 +651,20 @@ export interface FieldValueSelectionValue {
   displayName?: string;
 }
 export const FieldValueSelectionValue = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.optional(S.String),
-  "badged": S.optional(S.Boolean),
-  "displayName": S.optional(S.String),
-}),
-).annotate({ identifier: "FieldValueSelectionValue" }) as any as S.Schema<FieldValueSelectionValue>;
+  S.Struct({
+    id: S.optional(S.String),
+    badged: S.optional(S.Boolean),
+    displayName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "FieldValueSelectionValue",
+}) as any as S.Schema<FieldValueSelectionValue>;
 
-export type FieldValueSelectionValueList = ReadonlyArray<FieldValueSelectionValue>;
-export const FieldValueSelectionValueList = /*@__PURE__*/ S.Array(FieldValueSelectionValue) as any as S.Schema<FieldValueSelectionValueList>;
+export type FieldValueSelectionValueList =
+  ReadonlyArray<FieldValueSelectionValue>;
+export const FieldValueSelectionValueList = /*@__PURE__*/ S.Array(
+  FieldValueSelectionValue,
+) as any as S.Schema<FieldValueSelectionValueList>;
 
 /** Setting a selection list value by selecting multiple values from a dropdown. */
 export interface FieldValueSelectionListValue {
@@ -555,13 +672,17 @@ export interface FieldValueSelectionListValue {
   values?: FieldValueSelectionValueList;
 }
 export const FieldValueSelectionListValue = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "values": S.optional(FieldValueSelectionValueList),
-}),
-).annotate({ identifier: "FieldValueSelectionListValue" }) as any as S.Schema<FieldValueSelectionListValue>;
+  S.Struct({
+    values: S.optional(FieldValueSelectionValueList),
+  }),
+).annotate({
+  identifier: "FieldValueSelectionListValue",
+}) as any as S.Schema<FieldValueSelectionListValue>;
 
 export type FieldValueUserValueList = ReadonlyArray<FieldValueUserValue>;
-export const FieldValueUserValueList = /*@__PURE__*/ S.Array(FieldValueUserValue) as any as S.Schema<FieldValueUserValueList>;
+export const FieldValueUserValueList = /*@__PURE__*/ S.Array(
+  FieldValueUserValue,
+) as any as S.Schema<FieldValueUserValueList>;
 
 /** Setting a user list value by selecting multiple users. */
 export interface FieldValueUserListValue {
@@ -569,10 +690,12 @@ export interface FieldValueUserListValue {
   values?: FieldValueUserValueList;
 }
 export const FieldValueUserListValue = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "values": S.optional(FieldValueUserValueList),
-}),
-).annotate({ identifier: "FieldValueUserListValue" }) as any as S.Schema<FieldValueUserListValue>;
+  S.Struct({
+    values: S.optional(FieldValueUserValueList),
+  }),
+).annotate({
+  identifier: "FieldValueUserListValue",
+}) as any as S.Schema<FieldValueUserListValue>;
 
 /** Details of the field value set by the user for the particular label. */
 export interface FieldValue {
@@ -606,26 +729,28 @@ export interface FieldValue {
   selectionValue?: FieldValueSelectionValue;
 }
 export const FieldValue = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.optional(S.String),
-  "dateValue": S.optional(Admin_Date),
-  "userValue": S.optional(FieldValueUserValue),
-  "textListValue": S.optional(FieldValueTextListValue),
-  "integerValue": S.optional(S.String),
-  "reason": S.optional(Reason),
-  "type": S.optional(S.String),
-  "textValue": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "selectionListValue": S.optional(FieldValueSelectionListValue),
-  "unsetValue": S.optional(S.Boolean),
-  "longTextValue": S.optional(S.String),
-  "userListValue": S.optional(FieldValueUserListValue),
-  "selectionValue": S.optional(FieldValueSelectionValue),
-}),
+  S.Struct({
+    id: S.optional(S.String),
+    dateValue: S.optional(Admin_Date),
+    userValue: S.optional(FieldValueUserValue),
+    textListValue: S.optional(FieldValueTextListValue),
+    integerValue: S.optional(S.String),
+    reason: S.optional(Reason),
+    type: S.optional(S.String),
+    textValue: S.optional(S.String),
+    displayName: S.optional(S.String),
+    selectionListValue: S.optional(FieldValueSelectionListValue),
+    unsetValue: S.optional(S.Boolean),
+    longTextValue: S.optional(S.String),
+    userListValue: S.optional(FieldValueUserListValue),
+    selectionValue: S.optional(FieldValueSelectionValue),
+  }),
 ).annotate({ identifier: "FieldValue" }) as any as S.Schema<FieldValue>;
 
 export type FieldValueList = ReadonlyArray<FieldValue>;
-export const FieldValueList = /*@__PURE__*/ S.Array(FieldValue) as any as S.Schema<FieldValueList>;
+export const FieldValueList = /*@__PURE__*/ S.Array(
+  FieldValue,
+) as any as S.Schema<FieldValueList>;
 
 /** Details of the label applied on the resource. */
 export interface AppliedLabel {
@@ -639,16 +764,18 @@ export interface AppliedLabel {
   reason?: Reason;
 }
 export const AppliedLabel = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.optional(S.String),
-  "title": S.optional(S.String),
-  "fieldValues": S.optional(FieldValueList),
-  "reason": S.optional(Reason),
-}),
+  S.Struct({
+    id: S.optional(S.String),
+    title: S.optional(S.String),
+    fieldValues: S.optional(FieldValueList),
+    reason: S.optional(Reason),
+  }),
 ).annotate({ identifier: "AppliedLabel" }) as any as S.Schema<AppliedLabel>;
 
 export type AppliedLabelList = ReadonlyArray<AppliedLabel>;
-export const AppliedLabelList = /*@__PURE__*/ S.Array(AppliedLabel) as any as S.Schema<AppliedLabelList>;
+export const AppliedLabelList = /*@__PURE__*/ S.Array(
+  AppliedLabel,
+) as any as S.Schema<AppliedLabelList>;
 
 /** Details of the resource on which the action was performed. */
 export interface ResourceDetails {
@@ -666,21 +793,27 @@ export interface ResourceDetails {
   type?: string;
 }
 export const ResourceDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.optional(S.String),
-  "ownerDetails": S.optional(OwnerDetails),
-  "title": S.optional(S.String),
-  "appliedLabels": S.optional(AppliedLabelList),
-  "relation": S.optional(S.String),
-  "type": S.optional(S.String),
-}),
-).annotate({ identifier: "ResourceDetails" }) as any as S.Schema<ResourceDetails>;
+  S.Struct({
+    id: S.optional(S.String),
+    ownerDetails: S.optional(OwnerDetails),
+    title: S.optional(S.String),
+    appliedLabels: S.optional(AppliedLabelList),
+    relation: S.optional(S.String),
+    type: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ResourceDetails",
+}) as any as S.Schema<ResourceDetails>;
 
 export type ResourceDetailsList = ReadonlyArray<ResourceDetails>;
-export const ResourceDetailsList = /*@__PURE__*/ S.Array(ResourceDetails) as any as S.Schema<ResourceDetailsList>;
+export const ResourceDetailsList = /*@__PURE__*/ S.Array(
+  ResourceDetails,
+) as any as S.Schema<ResourceDetailsList>;
 
 export type BooleanList = ReadonlyArray<boolean>;
-export const BooleanList = /*@__PURE__*/ S.Array(S.Boolean) as any as S.Schema<BooleanList>;
+export const BooleanList = /*@__PURE__*/ S.Array(
+  S.Boolean,
+) as any as S.Schema<BooleanList>;
 
 /** JSON template for a parameter used in various reports. */
 export interface NestedParameter {
@@ -700,42 +833,56 @@ export interface NestedParameter {
   multiBoolValue?: BooleanList;
 }
 export const NestedParameter = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "value": S.optional(S.String),
-  "intValue": S.optional(S.String),
-  "name": S.optional(S.String),
-  "boolValue": S.optional(S.Boolean),
-  "multiValue": S.optional(StringList),
-  "multiIntValue": S.optional(StringList),
-  "multiBoolValue": S.optional(BooleanList),
-}),
-).annotate({ identifier: "NestedParameter" }) as any as S.Schema<NestedParameter>;
+  S.Struct({
+    value: S.optional(S.String),
+    intValue: S.optional(S.String),
+    name: S.optional(S.String),
+    boolValue: S.optional(S.Boolean),
+    multiValue: S.optional(StringList),
+    multiIntValue: S.optional(StringList),
+    multiBoolValue: S.optional(BooleanList),
+  }),
+).annotate({
+  identifier: "NestedParameter",
+}) as any as S.Schema<NestedParameter>;
 
 export type NestedParameterList = ReadonlyArray<NestedParameter>;
-export const NestedParameterList = /*@__PURE__*/ S.Array(NestedParameter) as any as S.Schema<NestedParameterList>;
+export const NestedParameterList = /*@__PURE__*/ S.Array(
+  NestedParameter,
+) as any as S.Schema<NestedParameterList>;
 
 export interface ActivityEventsItemParametersItemMessageValue {
   /** Parameter values */
   parameter?: NestedParameterList;
 }
-export const ActivityEventsItemParametersItemMessageValue = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parameter": S.optional(NestedParameterList),
-}),
-).annotate({ identifier: "ActivityEventsItemParametersItemMessageValue" }) as any as S.Schema<ActivityEventsItemParametersItemMessageValue>;
+export const ActivityEventsItemParametersItemMessageValue =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parameter: S.optional(NestedParameterList),
+    }),
+  ).annotate({
+    identifier: "ActivityEventsItemParametersItemMessageValue",
+  }) as any as S.Schema<ActivityEventsItemParametersItemMessageValue>;
 
 export interface ActivityEventsItemParametersItemMultiMessageValueItem {
   /** Parameter values */
   parameter?: NestedParameterList;
 }
-export const ActivityEventsItemParametersItemMultiMessageValueItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parameter": S.optional(NestedParameterList),
-}),
-).annotate({ identifier: "ActivityEventsItemParametersItemMultiMessageValueItem" }) as any as S.Schema<ActivityEventsItemParametersItemMultiMessageValueItem>;
+export const ActivityEventsItemParametersItemMultiMessageValueItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parameter: S.optional(NestedParameterList),
+    }),
+  ).annotate({
+    identifier: "ActivityEventsItemParametersItemMultiMessageValueItem",
+  }) as any as S.Schema<ActivityEventsItemParametersItemMultiMessageValueItem>;
 
-export type ActivityEventsItemParametersItemMultiMessageValueItemList = ReadonlyArray<ActivityEventsItemParametersItemMultiMessageValueItem>;
-export const ActivityEventsItemParametersItemMultiMessageValueItemList = /*@__PURE__*/ S.Array(ActivityEventsItemParametersItemMultiMessageValueItem) as any as S.Schema<ActivityEventsItemParametersItemMultiMessageValueItemList>;
+export type ActivityEventsItemParametersItemMultiMessageValueItemList =
+  ReadonlyArray<ActivityEventsItemParametersItemMultiMessageValueItem>;
+export const ActivityEventsItemParametersItemMultiMessageValueItemList =
+  /*@__PURE__*/ S.Array(
+    ActivityEventsItemParametersItemMultiMessageValueItem,
+  ) as any as S.Schema<ActivityEventsItemParametersItemMultiMessageValueItemList>;
 
 export interface ActivityEventsItemParametersItem {
   /** Nested parameter value pairs associated with this parameter. Complex value type for a parameter are returned as a list of parameter values. For example, the address parameter may have a value as `[{parameter: [{name: city, value: abc}]}]` */
@@ -756,43 +903,61 @@ export interface ActivityEventsItemParametersItem {
   value?: string;
 }
 export const ActivityEventsItemParametersItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "messageValue": S.optional(ActivityEventsItemParametersItemMessageValue),
-  "multiIntValue": S.optional(StringList),
-  "multiValue": S.optional(StringList),
-  "multiMessageValue": S.optional(ActivityEventsItemParametersItemMultiMessageValueItemList),
-  "name": S.optional(S.String),
-  "boolValue": S.optional(S.Boolean),
-  "intValue": S.optional(S.String),
-  "value": S.optional(S.String),
-}),
-).annotate({ identifier: "ActivityEventsItemParametersItem" }) as any as S.Schema<ActivityEventsItemParametersItem>;
+  S.Struct({
+    messageValue: S.optional(ActivityEventsItemParametersItemMessageValue),
+    multiIntValue: S.optional(StringList),
+    multiValue: S.optional(StringList),
+    multiMessageValue: S.optional(
+      ActivityEventsItemParametersItemMultiMessageValueItemList,
+    ),
+    name: S.optional(S.String),
+    boolValue: S.optional(S.Boolean),
+    intValue: S.optional(S.String),
+    value: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ActivityEventsItemParametersItem",
+}) as any as S.Schema<ActivityEventsItemParametersItem>;
 
-export type ActivityEventsItemParametersItemList = ReadonlyArray<ActivityEventsItemParametersItem>;
-export const ActivityEventsItemParametersItemList = /*@__PURE__*/ S.Array(ActivityEventsItemParametersItem) as any as S.Schema<ActivityEventsItemParametersItemList>;
+export type ActivityEventsItemParametersItemList =
+  ReadonlyArray<ActivityEventsItemParametersItem>;
+export const ActivityEventsItemParametersItemList = /*@__PURE__*/ S.Array(
+  ActivityEventsItemParametersItem,
+) as any as S.Schema<ActivityEventsItemParametersItemList>;
 
 export interface ActivityEventsItemSensitiveParametersItemMessageValue {
   /** Parameter values */
   parameter?: NestedParameterList;
 }
-export const ActivityEventsItemSensitiveParametersItemMessageValue = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parameter": S.optional(NestedParameterList),
-}),
-).annotate({ identifier: "ActivityEventsItemSensitiveParametersItemMessageValue" }) as any as S.Schema<ActivityEventsItemSensitiveParametersItemMessageValue>;
+export const ActivityEventsItemSensitiveParametersItemMessageValue =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parameter: S.optional(NestedParameterList),
+    }),
+  ).annotate({
+    identifier: "ActivityEventsItemSensitiveParametersItemMessageValue",
+  }) as any as S.Schema<ActivityEventsItemSensitiveParametersItemMessageValue>;
 
 export interface ActivityEventsItemSensitiveParametersItemMultiMessageValueItem {
   /** Parameter values */
   parameter?: NestedParameterList;
 }
-export const ActivityEventsItemSensitiveParametersItemMultiMessageValueItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parameter": S.optional(NestedParameterList),
-}),
-).annotate({ identifier: "ActivityEventsItemSensitiveParametersItemMultiMessageValueItem" }) as any as S.Schema<ActivityEventsItemSensitiveParametersItemMultiMessageValueItem>;
+export const ActivityEventsItemSensitiveParametersItemMultiMessageValueItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parameter: S.optional(NestedParameterList),
+    }),
+  ).annotate({
+    identifier:
+      "ActivityEventsItemSensitiveParametersItemMultiMessageValueItem",
+  }) as any as S.Schema<ActivityEventsItemSensitiveParametersItemMultiMessageValueItem>;
 
-export type ActivityEventsItemSensitiveParametersItemMultiMessageValueItemList = ReadonlyArray<ActivityEventsItemSensitiveParametersItemMultiMessageValueItem>;
-export const ActivityEventsItemSensitiveParametersItemMultiMessageValueItemList = /*@__PURE__*/ S.Array(ActivityEventsItemSensitiveParametersItemMultiMessageValueItem) as any as S.Schema<ActivityEventsItemSensitiveParametersItemMultiMessageValueItemList>;
+export type ActivityEventsItemSensitiveParametersItemMultiMessageValueItemList =
+  ReadonlyArray<ActivityEventsItemSensitiveParametersItemMultiMessageValueItem>;
+export const ActivityEventsItemSensitiveParametersItemMultiMessageValueItemList =
+  /*@__PURE__*/ S.Array(
+    ActivityEventsItemSensitiveParametersItemMultiMessageValueItem,
+  ) as any as S.Schema<ActivityEventsItemSensitiveParametersItemMultiMessageValueItemList>;
 
 export interface ActivityEventsItemSensitiveParametersItem {
   /** String values of the parameter. */
@@ -812,21 +977,32 @@ export interface ActivityEventsItemSensitiveParametersItem {
   /** String value of the parameter. */
   value?: string;
 }
-export const ActivityEventsItemSensitiveParametersItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "multiValue": S.optional(StringList),
-  "messageValue": S.optional(ActivityEventsItemSensitiveParametersItemMessageValue),
-  "multiIntValue": S.optional(StringList),
-  "multiMessageValue": S.optional(ActivityEventsItemSensitiveParametersItemMultiMessageValueItemList),
-  "intValue": S.optional(S.String),
-  "name": S.optional(S.String),
-  "boolValue": S.optional(S.Boolean),
-  "value": S.optional(S.String),
-}),
-).annotate({ identifier: "ActivityEventsItemSensitiveParametersItem" }) as any as S.Schema<ActivityEventsItemSensitiveParametersItem>;
+export const ActivityEventsItemSensitiveParametersItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      multiValue: S.optional(StringList),
+      messageValue: S.optional(
+        ActivityEventsItemSensitiveParametersItemMessageValue,
+      ),
+      multiIntValue: S.optional(StringList),
+      multiMessageValue: S.optional(
+        ActivityEventsItemSensitiveParametersItemMultiMessageValueItemList,
+      ),
+      intValue: S.optional(S.String),
+      name: S.optional(S.String),
+      boolValue: S.optional(S.Boolean),
+      value: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ActivityEventsItemSensitiveParametersItem",
+  }) as any as S.Schema<ActivityEventsItemSensitiveParametersItem>;
 
-export type ActivityEventsItemSensitiveParametersItemList = ReadonlyArray<ActivityEventsItemSensitiveParametersItem>;
-export const ActivityEventsItemSensitiveParametersItemList = /*@__PURE__*/ S.Array(ActivityEventsItemSensitiveParametersItem) as any as S.Schema<ActivityEventsItemSensitiveParametersItemList>;
+export type ActivityEventsItemSensitiveParametersItemList =
+  ReadonlyArray<ActivityEventsItemSensitiveParametersItem>;
+export const ActivityEventsItemSensitiveParametersItemList =
+  /*@__PURE__*/ S.Array(
+    ActivityEventsItemSensitiveParametersItem,
+  ) as any as S.Schema<ActivityEventsItemSensitiveParametersItemList>;
 
 /** Status of the event. Note: Not all events have status. */
 export interface ActivityEventsStatus {
@@ -840,13 +1016,15 @@ export interface ActivityEventsStatus {
   httpStatusCode?: number;
 }
 export const ActivityEventsStatus = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "eventStatus": S.optional(S.String),
-  "errorCode": S.optional(S.String),
-  "errorMessage": S.optional(S.String),
-  "httpStatusCode": S.optional(S.Number),
-}),
-).annotate({ identifier: "ActivityEventsStatus" }) as any as S.Schema<ActivityEventsStatus>;
+  S.Struct({
+    eventStatus: S.optional(S.String),
+    errorCode: S.optional(S.String),
+    errorMessage: S.optional(S.String),
+    httpStatusCode: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ActivityEventsStatus",
+}) as any as S.Schema<ActivityEventsStatus>;
 
 export interface ActivityEventsItem {
   /** Parameter value pairs for various applications. For more information about `eventName` parameters, see the list of event names for various applications above in `applicationName`. */
@@ -863,18 +1041,24 @@ export interface ActivityEventsItem {
   status?: ActivityEventsStatus;
 }
 export const ActivityEventsItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parameters": S.optional(ActivityEventsItemParametersItemList),
-  "sensitiveParameters": S.optional(ActivityEventsItemSensitiveParametersItemList),
-  "resourceIds": S.optional(StringList),
-  "type": S.optional(S.String),
-  "name": S.optional(S.String),
-  "status": S.optional(ActivityEventsStatus),
-}),
-).annotate({ identifier: "ActivityEventsItem" }) as any as S.Schema<ActivityEventsItem>;
+  S.Struct({
+    parameters: S.optional(ActivityEventsItemParametersItemList),
+    sensitiveParameters: S.optional(
+      ActivityEventsItemSensitiveParametersItemList,
+    ),
+    resourceIds: S.optional(StringList),
+    type: S.optional(S.String),
+    name: S.optional(S.String),
+    status: S.optional(ActivityEventsStatus),
+  }),
+).annotate({
+  identifier: "ActivityEventsItem",
+}) as any as S.Schema<ActivityEventsItem>;
 
 export type ActivityEventsItemList = ReadonlyArray<ActivityEventsItem>;
-export const ActivityEventsItemList = /*@__PURE__*/ S.Array(ActivityEventsItem) as any as S.Schema<ActivityEventsItemList>;
+export const ActivityEventsItemList = /*@__PURE__*/ S.Array(
+  ActivityEventsItem,
+) as any as S.Schema<ActivityEventsItemList>;
 
 /** Details of the owner of the AI agent. */
 export interface AgentAttributionInfoAgentOwner {
@@ -882,10 +1066,12 @@ export interface AgentAttributionInfoAgentOwner {
   email?: string;
 }
 export const AgentAttributionInfoAgentOwner = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "email": S.optional(S.String),
-}),
-).annotate({ identifier: "AgentAttributionInfoAgentOwner" }) as any as S.Schema<AgentAttributionInfoAgentOwner>;
+  S.Struct({
+    email: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AgentAttributionInfoAgentOwner",
+}) as any as S.Schema<AgentAttributionInfoAgentOwner>;
 
 /** Details of the AI agent that was the actor for the activity. */
 export interface AgentAttributionInfo {
@@ -899,13 +1085,15 @@ export interface AgentAttributionInfo {
   agentId?: string;
 }
 export const AgentAttributionInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "agentType": S.optional(S.String),
-  "agentName": S.optional(S.String),
-  "agentOwner": S.optional(AgentAttributionInfoAgentOwner),
-  "agentId": S.optional(S.String),
-}),
-).annotate({ identifier: "AgentAttributionInfo" }) as any as S.Schema<AgentAttributionInfo>;
+  S.Struct({
+    agentType: S.optional(S.String),
+    agentName: S.optional(S.String),
+    agentOwner: S.optional(AgentAttributionInfoAgentOwner),
+    agentId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AgentAttributionInfo",
+}) as any as S.Schema<AgentAttributionInfo>;
 
 export interface ActivityActorApplicationInfo {
   /** OAuth client id of the third party application used to perform the action. */
@@ -916,12 +1104,14 @@ export interface ActivityActorApplicationInfo {
   impersonation?: boolean;
 }
 export const ActivityActorApplicationInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "oauthClientId": S.optional(S.String),
-  "applicationName": S.optional(S.String),
-  "impersonation": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "ActivityActorApplicationInfo" }) as any as S.Schema<ActivityActorApplicationInfo>;
+  S.Struct({
+    oauthClientId: S.optional(S.String),
+    applicationName: S.optional(S.String),
+    impersonation: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ActivityActorApplicationInfo",
+}) as any as S.Schema<ActivityActorApplicationInfo>;
 
 export interface ActivityActor {
   /** Only present when `callerType` is `KEY`. Can be the `consumer_key` of the requestor for OAuth 2LO API requests or an identifier for robot accounts. */
@@ -938,14 +1128,14 @@ export interface ActivityActor {
   applicationInfo?: ActivityActorApplicationInfo;
 }
 export const ActivityActor = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "key": S.optional(S.String),
-  "agentAttributionInfo": S.optional(AgentAttributionInfo),
-  "profileId": S.optional(S.String),
-  "email": S.optional(S.String),
-  "callerType": S.optional(S.String),
-  "applicationInfo": S.optional(ActivityActorApplicationInfo),
-}),
+  S.Struct({
+    key: S.optional(S.String),
+    agentAttributionInfo: S.optional(AgentAttributionInfo),
+    profileId: S.optional(S.String),
+    email: S.optional(S.String),
+    callerType: S.optional(S.String),
+    applicationInfo: S.optional(ActivityActorApplicationInfo),
+  }),
 ).annotate({ identifier: "ActivityActor" }) as any as S.Schema<ActivityActor>;
 
 /** JSON template for the activity resource. */
@@ -974,23 +1164,25 @@ export interface Activity {
   kind?: string;
 }
 export const Activity = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "userDeviceInfo": S.optional(ActivityUserDeviceInfo),
-  "ownerDomain": S.optional(S.String),
-  "networkInfo": S.optional(ActivityNetworkInfo),
-  "ipAddress": S.optional(S.String),
-  "id": S.optional(ActivityId),
-  "resourceDetails": S.optional(ResourceDetailsList),
-  "etag": S.optional(S.String),
-  "events": S.optional(ActivityEventsItemList),
-  "actor": S.optional(ActivityActor),
-  "isAgenticAction": S.optional(S.Boolean),
-  "kind": S.optional(S.String),
-}),
+  S.Struct({
+    userDeviceInfo: S.optional(ActivityUserDeviceInfo),
+    ownerDomain: S.optional(S.String),
+    networkInfo: S.optional(ActivityNetworkInfo),
+    ipAddress: S.optional(S.String),
+    id: S.optional(ActivityId),
+    resourceDetails: S.optional(ResourceDetailsList),
+    etag: S.optional(S.String),
+    events: S.optional(ActivityEventsItemList),
+    actor: S.optional(ActivityActor),
+    isAgenticAction: S.optional(S.Boolean),
+    kind: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Activity" }) as any as S.Schema<Activity>;
 
 export type ActivityList = ReadonlyArray<Activity>;
-export const ActivityList = /*@__PURE__*/ S.Array(Activity) as any as S.Schema<ActivityList>;
+export const ActivityList = /*@__PURE__*/ S.Array(
+  Activity,
+) as any as S.Schema<ActivityList>;
 
 /** JSON template for a collection of activities. */
 export interface Activities {
@@ -1004,16 +1196,19 @@ export interface Activities {
   nextPageToken?: string;
 }
 export const Activities = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "etag": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "items": ActivityList,
-  "nextPageToken": S.optional(S.String),
-}),
+  S.Struct({
+    etag: S.optional(S.String),
+    kind: S.optional(S.String),
+    items: ActivityList,
+    nextPageToken: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Activities" }) as any as S.Schema<Activities>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
 /** A notification channel used to watch for resource changes. */
 export interface Channel {
@@ -1039,18 +1234,18 @@ export interface Channel {
   token?: string;
 }
 export const Channel = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "expiration": S.optional(S.String),
-  "id": S.optional(S.String),
-  "address": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "resourceUri": S.optional(S.String),
-  "params": S.optional(StringMap),
-  "resourceId": S.optional(S.String),
-  "type": S.optional(S.String),
-  "payload": S.optional(S.Boolean),
-  "token": S.optional(S.String),
-}),
+  S.Struct({
+    expiration: S.optional(S.String),
+    id: S.optional(S.String),
+    address: S.optional(S.String),
+    kind: S.optional(S.String),
+    resourceUri: S.optional(S.String),
+    params: S.optional(StringMap),
+    resourceId: S.optional(S.String),
+    type: S.optional(S.String),
+    payload: S.optional(S.Boolean),
+    token: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Channel" }) as any as S.Schema<Channel>;
 
 export interface StopChannelsRequest {
@@ -1058,17 +1253,49 @@ export interface StopChannelsRequest {
   body?: Channel;
 }
 export const StopChannelsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(Channel.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"admin/reports_v1/channels/stop","baseUrl":"https://admin.googleapis.com/"})),
-).annotate({ identifier: "StopChannelsRequest" }) as any as S.Schema<StopChannelsRequest>;
+  S.Struct({
+    body: S.optional(Channel.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "admin/reports_v1/channels/stop",
+      baseUrl: "https://admin.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "StopChannelsRequest",
+}) as any as S.Schema<StopChannelsRequest>;
 
 export interface StopChannelsResponse {}
 export const StopChannelsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "StopChannelsResponse" }) as any as S.Schema<StopChannelsResponse>;
+  S.Struct({}),
+).annotate({
+  identifier: "StopChannelsResponse",
+}) as any as S.Schema<StopChannelsResponse>;
 
-export type WatchActivitiesApplicationNameEnum = "access_transparency" | "admin" | "calendar" | "chat" | "drive" | "gcp" | "gplus" | "groups" | "groups_enterprise" | "jamboard" | "login" | "meet" | "mobile" | "rules" | "saml" | "token" | "user_accounts" | "context_aware_access" | "chrome" | "data_studio" | "keep" | "classroom";
+export type WatchActivitiesApplicationNameEnum =
+  | "access_transparency"
+  | "admin"
+  | "calendar"
+  | "chat"
+  | "drive"
+  | "gcp"
+  | "gplus"
+  | "groups"
+  | "groups_enterprise"
+  | "jamboard"
+  | "login"
+  | "meet"
+  | "mobile"
+  | "rules"
+  | "saml"
+  | "token"
+  | "user_accounts"
+  | "context_aware_access"
+  | "chrome"
+  | "data_studio"
+  | "keep"
+  | "classroom";
 export const WatchActivitiesApplicationNameEnum = /*@__PURE__*/ S.String;
 
 export interface WatchActivitiesRequest {
@@ -1100,22 +1327,30 @@ export interface WatchActivitiesRequest {
   body?: Channel;
 }
 export const WatchActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "customerId": S.optional(S.String.pipe(T.Query())),
-  "orgUnitID": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "actorIpAddress": S.optional(S.String.pipe(T.Query())),
-  "filters": S.optional(S.String.pipe(T.Query())),
-  "endTime": S.optional(S.String.pipe(T.Query())),
-  "groupIdFilter": S.optional(S.String.pipe(T.Query())),
-  "userKey": S.String.pipe(T.Label()),
-  "applicationName": WatchActivitiesApplicationNameEnum.pipe(T.Label()),
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-  "startTime": S.optional(S.String.pipe(T.Query())),
-  "eventName": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Channel.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"admin/reports/v1/activity/users/{userKey}/applications/{applicationName}/watch","baseUrl":"https://admin.googleapis.com/"})),
-).annotate({ identifier: "WatchActivitiesRequest" }) as any as S.Schema<WatchActivitiesRequest>;
+  S.Struct({
+    customerId: S.optional(S.String.pipe(T.Query())),
+    orgUnitID: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    actorIpAddress: S.optional(S.String.pipe(T.Query())),
+    filters: S.optional(S.String.pipe(T.Query())),
+    endTime: S.optional(S.String.pipe(T.Query())),
+    groupIdFilter: S.optional(S.String.pipe(T.Query())),
+    userKey: S.String.pipe(T.Label()),
+    applicationName: WatchActivitiesApplicationNameEnum.pipe(T.Label()),
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+    startTime: S.optional(S.String.pipe(T.Query())),
+    eventName: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(Channel.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "admin/reports/v1/activity/users/{userKey}/applications/{applicationName}/watch",
+      baseUrl: "https://admin.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "WatchActivitiesRequest",
+}) as any as S.Schema<WatchActivitiesRequest>;
 
 export type GetCustomerUsageReportsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a report which is a collection of properties and statistics for a specific customer's account. For more information, see the Customers Usage Report guide. For more information about the customer report's parameters, see the Customers Usage parameters reference guides. */
@@ -1130,7 +1365,10 @@ export const getCustomerUsageReports: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type GetEntityUsageReportsError = NotFound | Forbidden | GcpOpError;
@@ -1146,7 +1384,10 @@ export const getEntityUsageReports: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type GetUserUsageReportError = NotFound | Forbidden | GcpOpError;
@@ -1162,7 +1403,10 @@ export const getUserUsageReport: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListActivitiesError = NotFound | Forbidden | GcpOpError;
@@ -1178,10 +1422,19 @@ export const listActivities: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken","items":"items"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+    items: "items",
+  } as const,
 }));
 
-export type StopChannelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type StopChannelsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Stop watching resources through this channel. */
 export const stopChannels: API.OperationMethod<
   StopChannelsRequest,
@@ -1196,7 +1449,12 @@ export const stopChannels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type WatchActivitiesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type WatchActivitiesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Start receiving notifications for account activities. For more information, see Receiving Push Notifications. */
 export const watchActivities: API.OperationMethod<
   WatchActivitiesRequest,
@@ -1210,4 +1468,3 @@ export const watchActivities: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

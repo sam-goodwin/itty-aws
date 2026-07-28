@@ -13,55 +13,59 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
-export type AnalyticsAccountLinkLinkVerificationStateEnum = "LINK_VERIFICATION_STATE_UNSPECIFIED" | "LINK_VERIFICATION_STATE_VERIFIED" | "LINK_VERIFICATION_STATE_NOT_VERIFIED";
-export const AnalyticsAccountLinkLinkVerificationStateEnum = /*@__PURE__*/ S.String;
+export type AnalyticsAccountLinkLinkVerificationStateEnum =
+  | "LINK_VERIFICATION_STATE_UNSPECIFIED"
+  | "LINK_VERIFICATION_STATE_VERIFIED"
+  | "LINK_VERIFICATION_STATE_NOT_VERIFIED";
+export const AnalyticsAccountLinkLinkVerificationStateEnum =
+  /*@__PURE__*/ S.String;
 
 /** A resource message representing the link between a Google Analytics account and a Google Marketing Platform organization. */
 export interface AnalyticsAccountLink {
@@ -75,13 +79,17 @@ export interface AnalyticsAccountLink {
   linkVerificationState?: AnalyticsAccountLinkLinkVerificationStateEnum;
 }
 export const AnalyticsAccountLink = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "analyticsAccount": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "name": S.optional(S.String),
-  "linkVerificationState": S.optional(AnalyticsAccountLinkLinkVerificationStateEnum),
-}),
-).annotate({ identifier: "AnalyticsAccountLink" }) as any as S.Schema<AnalyticsAccountLink>;
+  S.Struct({
+    analyticsAccount: S.optional(S.String),
+    displayName: S.optional(S.String),
+    name: S.optional(S.String),
+    linkVerificationState: S.optional(
+      AnalyticsAccountLinkLinkVerificationStateEnum,
+    ),
+  }),
+).annotate({
+  identifier: "AnalyticsAccountLink",
+}) as any as S.Schema<AnalyticsAccountLink>;
 
 export interface CreateOrganizationsAnalyticsAccountLinksRequest {
   /** Required. The parent resource where this Analytics account link will be created. Format: organizations/{org_id} */
@@ -89,39 +97,60 @@ export interface CreateOrganizationsAnalyticsAccountLinksRequest {
   /** Request body */
   body?: AnalyticsAccountLink;
 }
-export const CreateOrganizationsAnalyticsAccountLinksRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(AnalyticsAccountLink.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha/{+parent}/analyticsAccountLinks","baseUrl":"https://marketingplatformadmin.googleapis.com/"})),
-).annotate({ identifier: "CreateOrganizationsAnalyticsAccountLinksRequest" }) as any as S.Schema<CreateOrganizationsAnalyticsAccountLinksRequest>;
+export const CreateOrganizationsAnalyticsAccountLinksRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(AnalyticsAccountLink.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1alpha/{+parent}/analyticsAccountLinks",
+        baseUrl: "https://marketingplatformadmin.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateOrganizationsAnalyticsAccountLinksRequest",
+  }) as any as S.Schema<CreateOrganizationsAnalyticsAccountLinksRequest>;
 
 export interface DeleteOrganizationsAnalyticsAccountLinksRequest {
   /** Required. The name of the Analytics account link to delete. Format: organizations/{org_id}/analyticsAccountLinks/{analytics_account_link_id} */
   name: string;
 }
-export const DeleteOrganizationsAnalyticsAccountLinksRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1alpha/{+name}","baseUrl":"https://marketingplatformadmin.googleapis.com/"})),
-).annotate({ identifier: "DeleteOrganizationsAnalyticsAccountLinksRequest" }) as any as S.Schema<DeleteOrganizationsAnalyticsAccountLinksRequest>;
+export const DeleteOrganizationsAnalyticsAccountLinksRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1alpha/{+name}",
+        baseUrl: "https://marketingplatformadmin.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteOrganizationsAnalyticsAccountLinksRequest",
+  }) as any as S.Schema<DeleteOrganizationsAnalyticsAccountLinksRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 /** Request message for FindSalesPartnerManagedClients RPC. */
 export interface FindSalesPartnerManagedClientsRequest {
   /** Optional. If set, only active and just ended clients will be returned. */
   isActive?: boolean;
 }
-export const FindSalesPartnerManagedClientsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "isActive": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "FindSalesPartnerManagedClientsRequest" }) as any as S.Schema<FindSalesPartnerManagedClientsRequest>;
+export const FindSalesPartnerManagedClientsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      isActive: S.optional(S.Boolean),
+    }),
+).annotate({
+  identifier: "FindSalesPartnerManagedClientsRequest",
+}) as any as S.Schema<FindSalesPartnerManagedClientsRequest>;
 
 export interface FindSalesPartnerManagedClientsOrganizationsRequest {
   /** Required. The name of the sales partner organization. Format: organizations/{org_id} */
@@ -129,12 +158,23 @@ export interface FindSalesPartnerManagedClientsOrganizationsRequest {
   /** Request body */
   body?: FindSalesPartnerManagedClientsRequest;
 }
-export const FindSalesPartnerManagedClientsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "organization": S.String.pipe(T.Label()),
-  "body": S.optional(FindSalesPartnerManagedClientsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha/{+organization}:findSalesPartnerManagedClients","baseUrl":"https://marketingplatformadmin.googleapis.com/"})),
-).annotate({ identifier: "FindSalesPartnerManagedClientsOrganizationsRequest" }) as any as S.Schema<FindSalesPartnerManagedClientsOrganizationsRequest>;
+export const FindSalesPartnerManagedClientsOrganizationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      organization: S.String.pipe(T.Label()),
+      body: S.optional(
+        FindSalesPartnerManagedClientsRequest.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1alpha/{+organization}:findSalesPartnerManagedClients",
+        baseUrl: "https://marketingplatformadmin.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "FindSalesPartnerManagedClientsOrganizationsRequest",
+  }) as any as S.Schema<FindSalesPartnerManagedClientsOrganizationsRequest>;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface Marketingplatformadmin_Date {
@@ -146,12 +186,14 @@ export interface Marketingplatformadmin_Date {
   day?: number;
 }
 export const Marketingplatformadmin_Date = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "month": S.optional(S.Number),
-  "year": S.optional(S.Number),
-  "day": S.optional(S.Number),
-}),
-).annotate({ identifier: "Marketingplatformadmin_Date" }) as any as S.Schema<Marketingplatformadmin_Date>;
+  S.Struct({
+    month: S.optional(S.Number),
+    year: S.optional(S.Number),
+    day: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "Marketingplatformadmin_Date",
+}) as any as S.Schema<Marketingplatformadmin_Date>;
 
 /** A resource message representing a Google Marketing Platform organization. */
 export interface Organization {
@@ -161,10 +203,10 @@ export interface Organization {
   name?: string;
 }
 export const Organization = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "displayName": S.optional(S.String),
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    displayName: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Organization" }) as any as S.Schema<Organization>;
 
 /** Contains the client data. */
@@ -177,36 +219,49 @@ export interface ClientData {
   endDate?: Marketingplatformadmin_Date;
 }
 export const ClientData = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "startDate": S.optional(Marketingplatformadmin_Date),
-  "organization": S.optional(Organization),
-  "endDate": S.optional(Marketingplatformadmin_Date),
-}),
+  S.Struct({
+    startDate: S.optional(Marketingplatformadmin_Date),
+    organization: S.optional(Organization),
+    endDate: S.optional(Marketingplatformadmin_Date),
+  }),
 ).annotate({ identifier: "ClientData" }) as any as S.Schema<ClientData>;
 
 export type ClientDataList = ReadonlyArray<ClientData>;
-export const ClientDataList = /*@__PURE__*/ S.Array(ClientData) as any as S.Schema<ClientDataList>;
+export const ClientDataList = /*@__PURE__*/ S.Array(
+  ClientData,
+) as any as S.Schema<ClientDataList>;
 
 /** Response message for FindSalesPartnerManagedClients RPC. */
 export interface FindSalesPartnerManagedClientsResponse {
   /** The clients managed by the sales org. */
   clientData?: ClientDataList;
 }
-export const FindSalesPartnerManagedClientsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "clientData": S.optional(ClientDataList),
-}),
-).annotate({ identifier: "FindSalesPartnerManagedClientsResponse" }) as any as S.Schema<FindSalesPartnerManagedClientsResponse>;
+export const FindSalesPartnerManagedClientsResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      clientData: S.optional(ClientDataList),
+    }),
+).annotate({
+  identifier: "FindSalesPartnerManagedClientsResponse",
+}) as any as S.Schema<FindSalesPartnerManagedClientsResponse>;
 
 export interface GetOrganizationsRequest {
   /** Required. The name of the Organization to retrieve. Format: organizations/{org_id} */
   name: string;
 }
 export const GetOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}","baseUrl":"https://marketingplatformadmin.googleapis.com/"})),
-).annotate({ identifier: "GetOrganizationsRequest" }) as any as S.Schema<GetOrganizationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha/{+name}",
+      baseUrl: "https://marketingplatformadmin.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetOrganizationsRequest",
+}) as any as S.Schema<GetOrganizationsRequest>;
 
 export interface ListOrganizationsRequest {
   /** Optional. The maximum number of organizations to return in one call. The service may return fewer than this value. If unspecified, at most 50 organizations will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
@@ -215,14 +270,24 @@ export interface ListOrganizationsRequest {
   pageToken?: string;
 }
 export const ListOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha/organizations","baseUrl":"https://marketingplatformadmin.googleapis.com/"})),
-).annotate({ identifier: "ListOrganizationsRequest" }) as any as S.Schema<ListOrganizationsRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha/organizations",
+      baseUrl: "https://marketingplatformadmin.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListOrganizationsRequest",
+}) as any as S.Schema<ListOrganizationsRequest>;
 
 export type OrganizationList = ReadonlyArray<Organization>;
-export const OrganizationList = /*@__PURE__*/ S.Array(Organization) as any as S.Schema<OrganizationList>;
+export const OrganizationList = /*@__PURE__*/ S.Array(
+  Organization,
+) as any as S.Schema<OrganizationList>;
 
 /** Response message for ListOrganizations RPC. */
 export interface ListOrganizationsResponse {
@@ -232,11 +297,13 @@ export interface ListOrganizationsResponse {
   nextPageToken?: string;
 }
 export const ListOrganizationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "organizations": S.optional(OrganizationList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListOrganizationsResponse" }) as any as S.Schema<ListOrganizationsResponse>;
+  S.Struct({
+    organizations: S.optional(OrganizationList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListOrganizationsResponse",
+}) as any as S.Schema<ListOrganizationsResponse>;
 
 export interface ListOrganizationsAnalyticsAccountLinksRequest {
   /** Required. The parent organization, which owns this collection of Analytics account links. Format: organizations/{org_id} */
@@ -246,16 +313,27 @@ export interface ListOrganizationsAnalyticsAccountLinksRequest {
   /** Optional. A page token, received from a previous ListAnalyticsAccountLinks call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAnalyticsAccountLinks` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListOrganizationsAnalyticsAccountLinksRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+parent}/analyticsAccountLinks","baseUrl":"https://marketingplatformadmin.googleapis.com/"})),
-).annotate({ identifier: "ListOrganizationsAnalyticsAccountLinksRequest" }) as any as S.Schema<ListOrganizationsAnalyticsAccountLinksRequest>;
+export const ListOrganizationsAnalyticsAccountLinksRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha/{+parent}/analyticsAccountLinks",
+        baseUrl: "https://marketingplatformadmin.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListOrganizationsAnalyticsAccountLinksRequest",
+  }) as any as S.Schema<ListOrganizationsAnalyticsAccountLinksRequest>;
 
 export type AnalyticsAccountLinkList = ReadonlyArray<AnalyticsAccountLink>;
-export const AnalyticsAccountLinkList = /*@__PURE__*/ S.Array(AnalyticsAccountLink) as any as S.Schema<AnalyticsAccountLinkList>;
+export const AnalyticsAccountLinkList = /*@__PURE__*/ S.Array(
+  AnalyticsAccountLink,
+) as any as S.Schema<AnalyticsAccountLinkList>;
 
 /** Response message for ListAnalyticsAccountLinks RPC. */
 export interface ListAnalyticsAccountLinksResponse {
@@ -265,11 +343,13 @@ export interface ListAnalyticsAccountLinksResponse {
   nextPageToken?: string;
 }
 export const ListAnalyticsAccountLinksResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "analyticsAccountLinks": S.optional(AnalyticsAccountLinkList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListAnalyticsAccountLinksResponse" }) as any as S.Schema<ListAnalyticsAccountLinksResponse>;
+  S.Struct({
+    analyticsAccountLinks: S.optional(AnalyticsAccountLinkList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListAnalyticsAccountLinksResponse",
+}) as any as S.Schema<ListAnalyticsAccountLinksResponse>;
 
 /** Request message for ReportPropertyUsage RPC. */
 export interface ReportPropertyUsageRequest {
@@ -277,10 +357,12 @@ export interface ReportPropertyUsageRequest {
   month?: string;
 }
 export const ReportPropertyUsageRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "month": S.optional(S.String),
-}),
-).annotate({ identifier: "ReportPropertyUsageRequest" }) as any as S.Schema<ReportPropertyUsageRequest>;
+  S.Struct({
+    month: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ReportPropertyUsageRequest",
+}) as any as S.Schema<ReportPropertyUsageRequest>;
 
 export interface ReportPropertyUsageOrganizationsRequest {
   /** Required. Specifies the organization whose property usage will be listed. Format: organizations/{org_id} */
@@ -288,17 +370,33 @@ export interface ReportPropertyUsageOrganizationsRequest {
   /** Request body */
   body?: ReportPropertyUsageRequest;
 }
-export const ReportPropertyUsageOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "organization": S.String.pipe(T.Label()),
-  "body": S.optional(ReportPropertyUsageRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha/{+organization}:reportPropertyUsage","baseUrl":"https://marketingplatformadmin.googleapis.com/"})),
-).annotate({ identifier: "ReportPropertyUsageOrganizationsRequest" }) as any as S.Schema<ReportPropertyUsageOrganizationsRequest>;
+export const ReportPropertyUsageOrganizationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      organization: S.String.pipe(T.Label()),
+      body: S.optional(ReportPropertyUsageRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1alpha/{+organization}:reportPropertyUsage",
+        baseUrl: "https://marketingplatformadmin.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ReportPropertyUsageOrganizationsRequest",
+}) as any as S.Schema<ReportPropertyUsageOrganizationsRequest>;
 
-export type PropertyUsageServiceLevelEnum = "ANALYTICS_SERVICE_LEVEL_UNSPECIFIED" | "ANALYTICS_SERVICE_LEVEL_STANDARD" | "ANALYTICS_SERVICE_LEVEL_360";
+export type PropertyUsageServiceLevelEnum =
+  | "ANALYTICS_SERVICE_LEVEL_UNSPECIFIED"
+  | "ANALYTICS_SERVICE_LEVEL_STANDARD"
+  | "ANALYTICS_SERVICE_LEVEL_360";
 export const PropertyUsageServiceLevelEnum = /*@__PURE__*/ S.String;
 
-export type PropertyUsagePropertyTypeEnum = "ANALYTICS_PROPERTY_TYPE_UNSPECIFIED" | "ANALYTICS_PROPERTY_TYPE_ORDINARY" | "ANALYTICS_PROPERTY_TYPE_SUBPROPERTY" | "ANALYTICS_PROPERTY_TYPE_ROLLUP";
+export type PropertyUsagePropertyTypeEnum =
+  | "ANALYTICS_PROPERTY_TYPE_UNSPECIFIED"
+  | "ANALYTICS_PROPERTY_TYPE_ORDINARY"
+  | "ANALYTICS_PROPERTY_TYPE_SUBPROPERTY"
+  | "ANALYTICS_PROPERTY_TYPE_ROLLUP";
 export const PropertyUsagePropertyTypeEnum = /*@__PURE__*/ S.String;
 
 /** Contains the count of events received by the property, along with metadata that influences the volume of `billable` events. */
@@ -319,19 +417,21 @@ export interface PropertyUsage {
   propertyType?: PropertyUsagePropertyTypeEnum;
 }
 export const PropertyUsage = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "displayName": S.optional(S.String),
-  "billableEventCount": S.optional(S.String),
-  "totalEventCount": S.optional(S.String),
-  "serviceLevel": S.optional(PropertyUsageServiceLevelEnum),
-  "property": S.optional(S.String),
-  "accountId": S.optional(S.String),
-  "propertyType": S.optional(PropertyUsagePropertyTypeEnum),
-}),
+  S.Struct({
+    displayName: S.optional(S.String),
+    billableEventCount: S.optional(S.String),
+    totalEventCount: S.optional(S.String),
+    serviceLevel: S.optional(PropertyUsageServiceLevelEnum),
+    property: S.optional(S.String),
+    accountId: S.optional(S.String),
+    propertyType: S.optional(PropertyUsagePropertyTypeEnum),
+  }),
 ).annotate({ identifier: "PropertyUsage" }) as any as S.Schema<PropertyUsage>;
 
 export type PropertyUsageList = ReadonlyArray<PropertyUsage>;
-export const PropertyUsageList = /*@__PURE__*/ S.Array(PropertyUsage) as any as S.Schema<PropertyUsageList>;
+export const PropertyUsageList = /*@__PURE__*/ S.Array(
+  PropertyUsage,
+) as any as S.Schema<PropertyUsageList>;
 
 /** Represents an amount of money with its currency type. */
 export interface Money {
@@ -343,11 +443,11 @@ export interface Money {
   nanos?: number;
 }
 export const Money = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "units": S.optional(S.String),
-  "currencyCode": S.optional(S.String),
-  "nanos": S.optional(S.Number),
-}),
+  S.Struct({
+    units: S.optional(S.String),
+    currencyCode: S.optional(S.String),
+    nanos: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "Money" }) as any as S.Schema<Money>;
 
 /** Contains the bill amount. */
@@ -362,12 +462,12 @@ export interface BillInfo {
   total?: Money;
 }
 export const BillInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "eventFee": S.optional(Money),
-  "priceProtectionCredit": S.optional(Money),
-  "baseFee": S.optional(Money),
-  "total": S.optional(Money),
-}),
+  S.Struct({
+    eventFee: S.optional(Money),
+    priceProtectionCredit: S.optional(Money),
+    baseFee: S.optional(Money),
+    total: S.optional(Money),
+  }),
 ).annotate({ identifier: "BillInfo" }) as any as S.Schema<BillInfo>;
 
 /** Response message for ReportPropertyUsage RPC. */
@@ -378,14 +478,20 @@ export interface ReportPropertyUsageResponse {
   billInfo?: BillInfo;
 }
 export const ReportPropertyUsageResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "propertyUsages": S.optional(PropertyUsageList),
-  "billInfo": S.optional(BillInfo),
-}),
-).annotate({ identifier: "ReportPropertyUsageResponse" }) as any as S.Schema<ReportPropertyUsageResponse>;
+  S.Struct({
+    propertyUsages: S.optional(PropertyUsageList),
+    billInfo: S.optional(BillInfo),
+  }),
+).annotate({
+  identifier: "ReportPropertyUsageResponse",
+}) as any as S.Schema<ReportPropertyUsageResponse>;
 
-export type SetPropertyServiceLevelRequestServiceLevelEnum = "ANALYTICS_SERVICE_LEVEL_UNSPECIFIED" | "ANALYTICS_SERVICE_LEVEL_STANDARD" | "ANALYTICS_SERVICE_LEVEL_360";
-export const SetPropertyServiceLevelRequestServiceLevelEnum = /*@__PURE__*/ S.String;
+export type SetPropertyServiceLevelRequestServiceLevelEnum =
+  | "ANALYTICS_SERVICE_LEVEL_UNSPECIFIED"
+  | "ANALYTICS_SERVICE_LEVEL_STANDARD"
+  | "ANALYTICS_SERVICE_LEVEL_360";
+export const SetPropertyServiceLevelRequestServiceLevelEnum =
+  /*@__PURE__*/ S.String;
 
 /** Request message for SetPropertyServiceLevel RPC. */
 export interface SetPropertyServiceLevelRequest {
@@ -395,11 +501,13 @@ export interface SetPropertyServiceLevelRequest {
   serviceLevel?: SetPropertyServiceLevelRequestServiceLevelEnum | (string & {});
 }
 export const SetPropertyServiceLevelRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "analyticsProperty": S.optional(S.String),
-  "serviceLevel": S.optional(SetPropertyServiceLevelRequestServiceLevelEnum),
-}),
-).annotate({ identifier: "SetPropertyServiceLevelRequest" }) as any as S.Schema<SetPropertyServiceLevelRequest>;
+  S.Struct({
+    analyticsProperty: S.optional(S.String),
+    serviceLevel: S.optional(SetPropertyServiceLevelRequestServiceLevelEnum),
+  }),
+).annotate({
+  identifier: "SetPropertyServiceLevelRequest",
+}) as any as S.Schema<SetPropertyServiceLevelRequest>;
 
 export interface SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksRequest {
   /** Required. The parent AnalyticsAccountLink scope where this property is in. Format: organizations/{org_id}/analyticsAccountLinks/{analytics_account_link_id} */
@@ -407,20 +515,37 @@ export interface SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksReques
   /** Request body */
   body?: SetPropertyServiceLevelRequest;
 }
-export const SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "analyticsAccountLink": S.String.pipe(T.Label()),
-  "body": S.optional(SetPropertyServiceLevelRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha/{+analyticsAccountLink}:setPropertyServiceLevel","baseUrl":"https://marketingplatformadmin.googleapis.com/"})),
-).annotate({ identifier: "SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksRequest" }) as any as S.Schema<SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksRequest>;
+export const SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      analyticsAccountLink: S.String.pipe(T.Label()),
+      body: S.optional(SetPropertyServiceLevelRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1alpha/{+analyticsAccountLink}:setPropertyServiceLevel",
+        baseUrl: "https://marketingplatformadmin.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksRequest",
+  }) as any as S.Schema<SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksRequest>;
 
 /** Response message for SetPropertyServiceLevel RPC. */
 export interface SetPropertyServiceLevelResponse {}
 export const SetPropertyServiceLevelResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "SetPropertyServiceLevelResponse" }) as any as S.Schema<SetPropertyServiceLevelResponse>;
+  S.Struct({}),
+).annotate({
+  identifier: "SetPropertyServiceLevelResponse",
+}) as any as S.Schema<SetPropertyServiceLevelResponse>;
 
-export type CreateOrganizationsAnalyticsAccountLinksError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateOrganizationsAnalyticsAccountLinksError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates the link between the Analytics account and the Google Marketing Platform organization. User needs to be an org user, and admin on the Analytics account to create the link. If the account is already linked to an organization, user needs to unlink the account from the current organization, then try link again. */
 export const createOrganizationsAnalyticsAccountLinks: API.OperationMethod<
   CreateOrganizationsAnalyticsAccountLinksRequest,
@@ -435,7 +560,12 @@ export const createOrganizationsAnalyticsAccountLinks: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteOrganizationsAnalyticsAccountLinksError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteOrganizationsAnalyticsAccountLinksError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes the AnalyticsAccountLink, which detaches the Analytics account from the Google Marketing Platform organization. User needs to be an org user, and admin on the Analytics account in order to delete the link. */
 export const deleteOrganizationsAnalyticsAccountLinks: API.OperationMethod<
   DeleteOrganizationsAnalyticsAccountLinksRequest,
@@ -450,7 +580,12 @@ export const deleteOrganizationsAnalyticsAccountLinks: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type FindSalesPartnerManagedClientsOrganizationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type FindSalesPartnerManagedClientsOrganizationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Returns a list of clients managed by the sales partner organization. User needs to be an OrgAdmin/BillingAdmin on the sales partner organization in order to view the end clients. */
 export const findSalesPartnerManagedClientsOrganizations: API.OperationMethod<
   FindSalesPartnerManagedClientsOrganizationsRequest,
@@ -493,10 +628,16 @@ export const listOrganizations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListOrganizationsAnalyticsAccountLinksError = NotFound | Forbidden | GcpOpError;
+export type ListOrganizationsAnalyticsAccountLinksError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists the Google Analytics accounts link to the specified Google Marketing Platform organization. */
 export const listOrganizationsAnalyticsAccountLinks: API.PaginatedOperationMethod<
   ListOrganizationsAnalyticsAccountLinksRequest,
@@ -509,10 +650,18 @@ export const listOrganizationsAnalyticsAccountLinks: API.PaginatedOperationMetho
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ReportPropertyUsageOrganizationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ReportPropertyUsageOrganizationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Gets the usage and billing data for properties within the organization for the specified month. Per direct client org, user needs to be OrgAdmin/BillingAdmin on the organization in order to view the billing and usage data. Per sales partner client org, user needs to be OrgAdmin/BillingAdmin on the sales partner org in order to view the billing and usage data, or OrgAdmin/BillingAdmin on the sales partner client org in order to view the usage data only. */
 export const reportPropertyUsageOrganizations: API.OperationMethod<
   ReportPropertyUsageOrganizationsRequest,
@@ -527,7 +676,12 @@ export const reportPropertyUsageOrganizations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the service level for an Analytics property. */
 export const setPropertyServiceLevelOrganizationsAnalyticsAccountLinks: API.OperationMethod<
   SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksRequest,
@@ -541,4 +695,3 @@ export const setPropertyServiceLevelOrganizationsAnalyticsAccountLinks: API.Oper
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

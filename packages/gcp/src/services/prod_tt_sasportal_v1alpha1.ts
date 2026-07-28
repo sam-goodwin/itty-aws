@@ -13,55 +13,57 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** The Deployment. */
 export interface SasPortalDeployment {
@@ -75,13 +77,15 @@ export interface SasPortalDeployment {
   sasUserIds?: StringList;
 }
 export const SasPortalDeployment = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "frns": S.optional(StringList),
-  "displayName": S.optional(S.String),
-  "sasUserIds": S.optional(StringList),
-}),
-).annotate({ identifier: "SasPortalDeployment" }) as any as S.Schema<SasPortalDeployment>;
+  S.Struct({
+    name: S.optional(S.String),
+    frns: S.optional(StringList),
+    displayName: S.optional(S.String),
+    sasUserIds: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "SasPortalDeployment",
+}) as any as S.Schema<SasPortalDeployment>;
 
 export interface CreateCustomersDeploymentsRequest {
   /** Required. The parent resource name where the deployment is to be created. */
@@ -90,11 +94,19 @@ export interface CreateCustomersDeploymentsRequest {
   body?: SasPortalDeployment;
 }
 export const CreateCustomersDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(SasPortalDeployment.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+parent}/deployments","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "CreateCustomersDeploymentsRequest" }) as any as S.Schema<CreateCustomersDeploymentsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(SasPortalDeployment.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha1/{+parent}/deployments",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateCustomersDeploymentsRequest",
+}) as any as S.Schema<CreateCustomersDeploymentsRequest>;
 
 /** Frequency range from `low_frequency` to `high_frequency`. */
 export interface SasPortalFrequencyRange {
@@ -104,13 +116,21 @@ export interface SasPortalFrequencyRange {
   highFrequencyMhz?: number;
 }
 export const SasPortalFrequencyRange = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "lowFrequencyMhz": S.optional(S.Number),
-  "highFrequencyMhz": S.optional(S.Number),
-}),
-).annotate({ identifier: "SasPortalFrequencyRange" }) as any as S.Schema<SasPortalFrequencyRange>;
+  S.Struct({
+    lowFrequencyMhz: S.optional(S.Number),
+    highFrequencyMhz: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "SasPortalFrequencyRange",
+}) as any as S.Schema<SasPortalFrequencyRange>;
 
-export type SasPortalDeviceGrantStateEnum = "GRANT_STATE_UNSPECIFIED" | "GRANT_STATE_GRANTED" | "GRANT_STATE_TERMINATED" | "GRANT_STATE_SUSPENDED" | "GRANT_STATE_AUTHORIZED" | "GRANT_STATE_EXPIRED";
+export type SasPortalDeviceGrantStateEnum =
+  | "GRANT_STATE_UNSPECIFIED"
+  | "GRANT_STATE_GRANTED"
+  | "GRANT_STATE_TERMINATED"
+  | "GRANT_STATE_SUSPENDED"
+  | "GRANT_STATE_AUTHORIZED"
+  | "GRANT_STATE_EXPIRED";
 export const SasPortalDeviceGrantStateEnum = /*@__PURE__*/ S.String;
 
 /** An entry in a DPA's move list. */
@@ -121,16 +141,23 @@ export interface SasPortalDpaMoveList {
   frequencyRange?: SasPortalFrequencyRange;
 }
 export const SasPortalDpaMoveList = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dpaId": S.optional(S.String),
-  "frequencyRange": S.optional(SasPortalFrequencyRange),
-}),
-).annotate({ identifier: "SasPortalDpaMoveList" }) as any as S.Schema<SasPortalDpaMoveList>;
+  S.Struct({
+    dpaId: S.optional(S.String),
+    frequencyRange: S.optional(SasPortalFrequencyRange),
+  }),
+).annotate({
+  identifier: "SasPortalDpaMoveList",
+}) as any as S.Schema<SasPortalDpaMoveList>;
 
 export type SasPortalDpaMoveListList = ReadonlyArray<SasPortalDpaMoveList>;
-export const SasPortalDpaMoveListList = /*@__PURE__*/ S.Array(SasPortalDpaMoveList) as any as S.Schema<SasPortalDpaMoveListList>;
+export const SasPortalDpaMoveListList = /*@__PURE__*/ S.Array(
+  SasPortalDpaMoveList,
+) as any as S.Schema<SasPortalDpaMoveListList>;
 
-export type SasPortalDeviceGrantChannelTypeEnum = "CHANNEL_TYPE_UNSPECIFIED" | "CHANNEL_TYPE_GAA" | "CHANNEL_TYPE_PAL";
+export type SasPortalDeviceGrantChannelTypeEnum =
+  | "CHANNEL_TYPE_UNSPECIFIED"
+  | "CHANNEL_TYPE_GAA"
+  | "CHANNEL_TYPE_PAL";
 export const SasPortalDeviceGrantChannelTypeEnum = /*@__PURE__*/ S.String;
 
 /** Device grant. It is an authorization provided by the Spectrum Access System to a device to transmit using specified operating parameters after a successful heartbeat by the device. */
@@ -155,21 +182,25 @@ export interface SasPortalDeviceGrant {
   expireTime?: string;
 }
 export const SasPortalDeviceGrant = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "frequencyRange": S.optional(SasPortalFrequencyRange),
-  "suspensionReason": S.optional(StringList),
-  "grantId": S.optional(S.String),
-  "lastHeartbeatTransmitExpireTime": S.optional(S.String),
-  "state": S.optional(SasPortalDeviceGrantStateEnum),
-  "moveList": S.optional(SasPortalDpaMoveListList),
-  "maxEirp": S.optional(S.Number),
-  "channelType": S.optional(SasPortalDeviceGrantChannelTypeEnum),
-  "expireTime": S.optional(S.String),
-}),
-).annotate({ identifier: "SasPortalDeviceGrant" }) as any as S.Schema<SasPortalDeviceGrant>;
+  S.Struct({
+    frequencyRange: S.optional(SasPortalFrequencyRange),
+    suspensionReason: S.optional(StringList),
+    grantId: S.optional(S.String),
+    lastHeartbeatTransmitExpireTime: S.optional(S.String),
+    state: S.optional(SasPortalDeviceGrantStateEnum),
+    moveList: S.optional(SasPortalDpaMoveListList),
+    maxEirp: S.optional(S.Number),
+    channelType: S.optional(SasPortalDeviceGrantChannelTypeEnum),
+    expireTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SasPortalDeviceGrant",
+}) as any as S.Schema<SasPortalDeviceGrant>;
 
 export type SasPortalDeviceGrantList = ReadonlyArray<SasPortalDeviceGrant>;
-export const SasPortalDeviceGrantList = /*@__PURE__*/ S.Array(SasPortalDeviceGrant) as any as S.Schema<SasPortalDeviceGrantList>;
+export const SasPortalDeviceGrantList = /*@__PURE__*/ S.Array(
+  SasPortalDeviceGrant,
+) as any as S.Schema<SasPortalDeviceGrantList>;
 
 /** The channel with score. */
 export interface SasPortalChannelWithScore {
@@ -179,16 +210,25 @@ export interface SasPortalChannelWithScore {
   frequencyRange?: SasPortalFrequencyRange;
 }
 export const SasPortalChannelWithScore = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "score": S.optional(S.Number),
-  "frequencyRange": S.optional(SasPortalFrequencyRange),
-}),
-).annotate({ identifier: "SasPortalChannelWithScore" }) as any as S.Schema<SasPortalChannelWithScore>;
+  S.Struct({
+    score: S.optional(S.Number),
+    frequencyRange: S.optional(SasPortalFrequencyRange),
+  }),
+).annotate({
+  identifier: "SasPortalChannelWithScore",
+}) as any as S.Schema<SasPortalChannelWithScore>;
 
-export type SasPortalChannelWithScoreList = ReadonlyArray<SasPortalChannelWithScore>;
-export const SasPortalChannelWithScoreList = /*@__PURE__*/ S.Array(SasPortalChannelWithScore) as any as S.Schema<SasPortalChannelWithScoreList>;
+export type SasPortalChannelWithScoreList =
+  ReadonlyArray<SasPortalChannelWithScore>;
+export const SasPortalChannelWithScoreList = /*@__PURE__*/ S.Array(
+  SasPortalChannelWithScore,
+) as any as S.Schema<SasPortalChannelWithScoreList>;
 
-export type SasPortalDeviceStateEnum = "DEVICE_STATE_UNSPECIFIED" | "RESERVED" | "REGISTERED" | "DEREGISTERED";
+export type SasPortalDeviceStateEnum =
+  | "DEVICE_STATE_UNSPECIFIED"
+  | "RESERVED"
+  | "REGISTERED"
+  | "DEREGISTERED";
 export const SasPortalDeviceStateEnum = /*@__PURE__*/ S.String;
 
 /** Information about the model of the device. */
@@ -205,17 +245,30 @@ export interface SasPortalDeviceModel {
   firmwareVersion?: string;
 }
 export const SasPortalDeviceModel = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "hardwareVersion": S.optional(S.String),
-  "softwareVersion": S.optional(S.String),
-  "vendor": S.optional(S.String),
-  "firmwareVersion": S.optional(S.String),
-}),
-).annotate({ identifier: "SasPortalDeviceModel" }) as any as S.Schema<SasPortalDeviceModel>;
+  S.Struct({
+    name: S.optional(S.String),
+    hardwareVersion: S.optional(S.String),
+    softwareVersion: S.optional(S.String),
+    vendor: S.optional(S.String),
+    firmwareVersion: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SasPortalDeviceModel",
+}) as any as S.Schema<SasPortalDeviceModel>;
 
-export type SasPortalDeviceAirInterfaceRadioTechnologyEnum = "RADIO_TECHNOLOGY_UNSPECIFIED" | "E_UTRA" | "CAMBIUM_NETWORKS" | "FOUR_G_BBW_SAA_1" | "NR" | "DOODLE_CBRS" | "CW" | "REDLINE" | "TARANA_WIRELESS" | "FAROS";
-export const SasPortalDeviceAirInterfaceRadioTechnologyEnum = /*@__PURE__*/ S.String;
+export type SasPortalDeviceAirInterfaceRadioTechnologyEnum =
+  | "RADIO_TECHNOLOGY_UNSPECIFIED"
+  | "E_UTRA"
+  | "CAMBIUM_NETWORKS"
+  | "FOUR_G_BBW_SAA_1"
+  | "NR"
+  | "DOODLE_CBRS"
+  | "CW"
+  | "REDLINE"
+  | "TARANA_WIRELESS"
+  | "FAROS";
+export const SasPortalDeviceAirInterfaceRadioTechnologyEnum =
+  /*@__PURE__*/ S.String;
 
 /** Information about the device's air interface. */
 export interface SasPortalDeviceAirInterface {
@@ -225,22 +278,38 @@ export interface SasPortalDeviceAirInterface {
   supportedSpec?: string;
 }
 export const SasPortalDeviceAirInterface = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "radioTechnology": S.optional(SasPortalDeviceAirInterfaceRadioTechnologyEnum),
-  "supportedSpec": S.optional(S.String),
-}),
-).annotate({ identifier: "SasPortalDeviceAirInterface" }) as any as S.Schema<SasPortalDeviceAirInterface>;
+  S.Struct({
+    radioTechnology: S.optional(SasPortalDeviceAirInterfaceRadioTechnologyEnum),
+    supportedSpec: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SasPortalDeviceAirInterface",
+}) as any as S.Schema<SasPortalDeviceAirInterface>;
 
-export type SasPortalDeviceConfigCategoryEnum = "DEVICE_CATEGORY_UNSPECIFIED" | "DEVICE_CATEGORY_A" | "DEVICE_CATEGORY_B";
+export type SasPortalDeviceConfigCategoryEnum =
+  | "DEVICE_CATEGORY_UNSPECIFIED"
+  | "DEVICE_CATEGORY_A"
+  | "DEVICE_CATEGORY_B";
 export const SasPortalDeviceConfigCategoryEnum = /*@__PURE__*/ S.String;
 
-export type SasPortalDeviceConfigMeasurementCapabilitiesItemEnum = "MEASUREMENT_CAPABILITY_UNSPECIFIED" | "MEASUREMENT_CAPABILITY_RECEIVED_POWER_WITH_GRANT" | "MEASUREMENT_CAPABILITY_RECEIVED_POWER_WITHOUT_GRANT";
-export const SasPortalDeviceConfigMeasurementCapabilitiesItemEnum = /*@__PURE__*/ S.String;
+export type SasPortalDeviceConfigMeasurementCapabilitiesItemEnum =
+  | "MEASUREMENT_CAPABILITY_UNSPECIFIED"
+  | "MEASUREMENT_CAPABILITY_RECEIVED_POWER_WITH_GRANT"
+  | "MEASUREMENT_CAPABILITY_RECEIVED_POWER_WITHOUT_GRANT";
+export const SasPortalDeviceConfigMeasurementCapabilitiesItemEnum =
+  /*@__PURE__*/ S.String;
 
-export type SasPortalDeviceConfigMeasurementCapabilitiesItemEnumList = ReadonlyArray<SasPortalDeviceConfigMeasurementCapabilitiesItemEnum>;
-export const SasPortalDeviceConfigMeasurementCapabilitiesItemEnumList = /*@__PURE__*/ S.Array(SasPortalDeviceConfigMeasurementCapabilitiesItemEnum) as any as S.Schema<SasPortalDeviceConfigMeasurementCapabilitiesItemEnumList>;
+export type SasPortalDeviceConfigMeasurementCapabilitiesItemEnumList =
+  ReadonlyArray<SasPortalDeviceConfigMeasurementCapabilitiesItemEnum>;
+export const SasPortalDeviceConfigMeasurementCapabilitiesItemEnumList =
+  /*@__PURE__*/ S.Array(
+    SasPortalDeviceConfigMeasurementCapabilitiesItemEnum,
+  ) as any as S.Schema<SasPortalDeviceConfigMeasurementCapabilitiesItemEnumList>;
 
-export type SasPortalInstallationParamsHeightTypeEnum = "HEIGHT_TYPE_UNSPECIFIED" | "HEIGHT_TYPE_AGL" | "HEIGHT_TYPE_AMSL";
+export type SasPortalInstallationParamsHeightTypeEnum =
+  | "HEIGHT_TYPE_UNSPECIFIED"
+  | "HEIGHT_TYPE_AGL"
+  | "HEIGHT_TYPE_AMSL";
 export const SasPortalInstallationParamsHeightTypeEnum = /*@__PURE__*/ S.String;
 
 /** Information about the device installation parameters. */
@@ -275,25 +344,30 @@ export interface SasPortalInstallationParams {
   cpeCbsdIndication?: boolean;
 }
 export const SasPortalInstallationParams = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "antennaGain": S.optional(S.Number),
-  "heightType": S.optional(SasPortalInstallationParamsHeightTypeEnum),
-  "horizontalAccuracy": S.optional(S.Number),
-  "antennaBeamwidth": S.optional(S.Number),
-  "indoorDeployment": S.optional(S.Boolean),
-  "latitude": S.optional(S.Number),
-  "verticalAccuracy": S.optional(S.Number),
-  "antennaAzimuth": S.optional(S.Number),
-  "longitude": S.optional(S.Number),
-  "height": S.optional(S.Number),
-  "antennaDowntilt": S.optional(S.Number),
-  "eirpCapability": S.optional(S.Number),
-  "antennaModel": S.optional(S.String),
-  "cpeCbsdIndication": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "SasPortalInstallationParams" }) as any as S.Schema<SasPortalInstallationParams>;
+  S.Struct({
+    antennaGain: S.optional(S.Number),
+    heightType: S.optional(SasPortalInstallationParamsHeightTypeEnum),
+    horizontalAccuracy: S.optional(S.Number),
+    antennaBeamwidth: S.optional(S.Number),
+    indoorDeployment: S.optional(S.Boolean),
+    latitude: S.optional(S.Number),
+    verticalAccuracy: S.optional(S.Number),
+    antennaAzimuth: S.optional(S.Number),
+    longitude: S.optional(S.Number),
+    height: S.optional(S.Number),
+    antennaDowntilt: S.optional(S.Number),
+    eirpCapability: S.optional(S.Number),
+    antennaModel: S.optional(S.String),
+    cpeCbsdIndication: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "SasPortalInstallationParams",
+}) as any as S.Schema<SasPortalInstallationParams>;
 
-export type SasPortalDeviceConfigStateEnum = "DEVICE_CONFIG_STATE_UNSPECIFIED" | "DRAFT" | "FINAL";
+export type SasPortalDeviceConfigStateEnum =
+  | "DEVICE_CONFIG_STATE_UNSPECIFIED"
+  | "DRAFT"
+  | "FINAL";
 export const SasPortalDeviceConfigStateEnum = /*@__PURE__*/ S.String;
 
 /** Information about the device configuration. */
@@ -320,24 +394,34 @@ export interface SasPortalDeviceConfig {
   state?: SasPortalDeviceConfigStateEnum;
 }
 export const SasPortalDeviceConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "model": S.optional(SasPortalDeviceModel),
-  "airInterface": S.optional(SasPortalDeviceAirInterface),
-  "category": S.optional(SasPortalDeviceConfigCategoryEnum),
-  "measurementCapabilities": S.optional(SasPortalDeviceConfigMeasurementCapabilitiesItemEnumList),
-  "isSigned": S.optional(S.Boolean),
-  "updateTime": S.optional(S.String),
-  "userId": S.optional(S.String),
-  "installationParams": S.optional(SasPortalInstallationParams),
-  "callSign": S.optional(S.String),
-  "state": S.optional(SasPortalDeviceConfigStateEnum),
-}),
-).annotate({ identifier: "SasPortalDeviceConfig" }) as any as S.Schema<SasPortalDeviceConfig>;
+  S.Struct({
+    model: S.optional(SasPortalDeviceModel),
+    airInterface: S.optional(SasPortalDeviceAirInterface),
+    category: S.optional(SasPortalDeviceConfigCategoryEnum),
+    measurementCapabilities: S.optional(
+      SasPortalDeviceConfigMeasurementCapabilitiesItemEnumList,
+    ),
+    isSigned: S.optional(S.Boolean),
+    updateTime: S.optional(S.String),
+    userId: S.optional(S.String),
+    installationParams: S.optional(SasPortalInstallationParams),
+    callSign: S.optional(S.String),
+    state: S.optional(SasPortalDeviceConfigStateEnum),
+  }),
+).annotate({
+  identifier: "SasPortalDeviceConfig",
+}) as any as S.Schema<SasPortalDeviceConfig>;
 
-export type SasPortalFrequencyRangeList = ReadonlyArray<SasPortalFrequencyRange>;
-export const SasPortalFrequencyRangeList = /*@__PURE__*/ S.Array(SasPortalFrequencyRange) as any as S.Schema<SasPortalFrequencyRangeList>;
+export type SasPortalFrequencyRangeList =
+  ReadonlyArray<SasPortalFrequencyRange>;
+export const SasPortalFrequencyRangeList = /*@__PURE__*/ S.Array(
+  SasPortalFrequencyRange,
+) as any as S.Schema<SasPortalFrequencyRangeList>;
 
-export type SasPortalNrqzValidationStateEnum = "STATE_UNSPECIFIED" | "DRAFT" | "FINAL";
+export type SasPortalNrqzValidationStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "DRAFT"
+  | "FINAL";
 export const SasPortalNrqzValidationStateEnum = /*@__PURE__*/ S.String;
 
 /** Information about National Radio Quiet Zone validation. */
@@ -354,14 +438,16 @@ export interface SasPortalNrqzValidation {
   longitude?: number;
 }
 export const SasPortalNrqzValidation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "caseId": S.optional(S.String),
-  "latitude": S.optional(S.Number),
-  "cpiId": S.optional(S.String),
-  "state": S.optional(SasPortalNrqzValidationStateEnum),
-  "longitude": S.optional(S.Number),
-}),
-).annotate({ identifier: "SasPortalNrqzValidation" }) as any as S.Schema<SasPortalNrqzValidation>;
+  S.Struct({
+    caseId: S.optional(S.String),
+    latitude: S.optional(S.Number),
+    cpiId: S.optional(S.String),
+    state: S.optional(SasPortalNrqzValidationStateEnum),
+    longitude: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "SasPortalNrqzValidation",
+}) as any as S.Schema<SasPortalNrqzValidation>;
 
 /** Device data overridable by both SAS Portal and registration requests. */
 export interface SasPortalDeviceMetadata {
@@ -377,14 +463,16 @@ export interface SasPortalDeviceMetadata {
   antennaModel?: string;
 }
 export const SasPortalDeviceMetadata = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "commonChannelGroup": S.optional(S.String),
-  "nrqzValidation": S.optional(SasPortalNrqzValidation),
-  "interferenceCoordinationGroup": S.optional(S.String),
-  "nrqzValidated": S.optional(S.Boolean),
-  "antennaModel": S.optional(S.String),
-}),
-).annotate({ identifier: "SasPortalDeviceMetadata" }) as any as S.Schema<SasPortalDeviceMetadata>;
+  S.Struct({
+    commonChannelGroup: S.optional(S.String),
+    nrqzValidation: S.optional(SasPortalNrqzValidation),
+    interferenceCoordinationGroup: S.optional(S.String),
+    nrqzValidated: S.optional(S.Boolean),
+    antennaModel: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SasPortalDeviceMetadata",
+}) as any as S.Schema<SasPortalDeviceMetadata>;
 
 export interface SasPortalDevice {
   /** Output only. Grants held by the device. */
@@ -411,20 +499,22 @@ export interface SasPortalDevice {
   deviceMetadata?: SasPortalDeviceMetadata;
 }
 export const SasPortalDevice = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "grants": S.optional(SasPortalDeviceGrantList),
-  "name": S.optional(S.String),
-  "currentChannels": S.optional(SasPortalChannelWithScoreList),
-  "state": S.optional(SasPortalDeviceStateEnum),
-  "fccId": S.optional(S.String),
-  "preloadedConfig": S.optional(SasPortalDeviceConfig),
-  "grantRangeAllowlists": S.optional(SasPortalFrequencyRangeList),
-  "displayName": S.optional(S.String),
-  "activeConfig": S.optional(SasPortalDeviceConfig),
-  "serialNumber": S.optional(S.String),
-  "deviceMetadata": S.optional(SasPortalDeviceMetadata),
-}),
-).annotate({ identifier: "SasPortalDevice" }) as any as S.Schema<SasPortalDevice>;
+  S.Struct({
+    grants: S.optional(SasPortalDeviceGrantList),
+    name: S.optional(S.String),
+    currentChannels: S.optional(SasPortalChannelWithScoreList),
+    state: S.optional(SasPortalDeviceStateEnum),
+    fccId: S.optional(S.String),
+    preloadedConfig: S.optional(SasPortalDeviceConfig),
+    grantRangeAllowlists: S.optional(SasPortalFrequencyRangeList),
+    displayName: S.optional(S.String),
+    activeConfig: S.optional(SasPortalDeviceConfig),
+    serialNumber: S.optional(S.String),
+    deviceMetadata: S.optional(SasPortalDeviceMetadata),
+  }),
+).annotate({
+  identifier: "SasPortalDevice",
+}) as any as S.Schema<SasPortalDevice>;
 
 export interface CreateCustomersDeploymentsDevicesRequest {
   /** Required. The name of the parent resource. */
@@ -432,12 +522,21 @@ export interface CreateCustomersDeploymentsDevicesRequest {
   /** Request body */
   body?: SasPortalDevice;
 }
-export const CreateCustomersDeploymentsDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(SasPortalDevice.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+parent}/devices","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "CreateCustomersDeploymentsDevicesRequest" }) as any as S.Schema<CreateCustomersDeploymentsDevicesRequest>;
+export const CreateCustomersDeploymentsDevicesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(SasPortalDevice.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1alpha1/{+parent}/devices",
+        baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateCustomersDeploymentsDevicesRequest",
+}) as any as S.Schema<CreateCustomersDeploymentsDevicesRequest>;
 
 export interface CreateCustomersDevicesRequest {
   /** Required. The name of the parent resource. */
@@ -446,11 +545,19 @@ export interface CreateCustomersDevicesRequest {
   body?: SasPortalDevice;
 }
 export const CreateCustomersDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(SasPortalDevice.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+parent}/devices","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "CreateCustomersDevicesRequest" }) as any as S.Schema<CreateCustomersDevicesRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(SasPortalDevice.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha1/{+parent}/devices",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateCustomersDevicesRequest",
+}) as any as S.Schema<CreateCustomersDevicesRequest>;
 
 /** The Node. */
 export interface SasPortalNode {
@@ -462,11 +569,11 @@ export interface SasPortalNode {
   name?: string;
 }
 export const SasPortalNode = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "displayName": S.optional(S.String),
-  "sasUserIds": S.optional(StringList),
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    displayName: S.optional(S.String),
+    sasUserIds: S.optional(StringList),
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "SasPortalNode" }) as any as S.Schema<SasPortalNode>;
 
 export interface CreateCustomersNodesRequest {
@@ -476,11 +583,19 @@ export interface CreateCustomersNodesRequest {
   body?: SasPortalNode;
 }
 export const CreateCustomersNodesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(SasPortalNode.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+parent}/nodes","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "CreateCustomersNodesRequest" }) as any as S.Schema<CreateCustomersNodesRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(SasPortalNode.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha1/{+parent}/nodes",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateCustomersNodesRequest",
+}) as any as S.Schema<CreateCustomersNodesRequest>;
 
 export interface CreateCustomersNodesDeploymentsRequest {
   /** Required. The parent resource name where the deployment is to be created. */
@@ -488,12 +603,21 @@ export interface CreateCustomersNodesDeploymentsRequest {
   /** Request body */
   body?: SasPortalDeployment;
 }
-export const CreateCustomersNodesDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(SasPortalDeployment.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+parent}/deployments","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "CreateCustomersNodesDeploymentsRequest" }) as any as S.Schema<CreateCustomersNodesDeploymentsRequest>;
+export const CreateCustomersNodesDeploymentsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(SasPortalDeployment.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1alpha1/{+parent}/deployments",
+        baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateCustomersNodesDeploymentsRequest",
+}) as any as S.Schema<CreateCustomersNodesDeploymentsRequest>;
 
 export interface CreateCustomersNodesDevicesRequest {
   /** Required. The name of the parent resource. */
@@ -502,11 +626,19 @@ export interface CreateCustomersNodesDevicesRequest {
   body?: SasPortalDevice;
 }
 export const CreateCustomersNodesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(SasPortalDevice.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+parent}/devices","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "CreateCustomersNodesDevicesRequest" }) as any as S.Schema<CreateCustomersNodesDevicesRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(SasPortalDevice.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha1/{+parent}/devices",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateCustomersNodesDevicesRequest",
+}) as any as S.Schema<CreateCustomersNodesDevicesRequest>;
 
 export interface CreateCustomersNodesNodesRequest {
   /** Required. The parent resource name where the node is to be created. */
@@ -515,11 +647,19 @@ export interface CreateCustomersNodesNodesRequest {
   body?: SasPortalNode;
 }
 export const CreateCustomersNodesNodesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(SasPortalNode.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+parent}/nodes","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "CreateCustomersNodesNodesRequest" }) as any as S.Schema<CreateCustomersNodesNodesRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(SasPortalNode.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha1/{+parent}/nodes",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateCustomersNodesNodesRequest",
+}) as any as S.Schema<CreateCustomersNodesNodesRequest>;
 
 export interface CreateNodesDeploymentsDevicesRequest {
   /** Required. The name of the parent resource. */
@@ -527,12 +667,21 @@ export interface CreateNodesDeploymentsDevicesRequest {
   /** Request body */
   body?: SasPortalDevice;
 }
-export const CreateNodesDeploymentsDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(SasPortalDevice.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+parent}/devices","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "CreateNodesDeploymentsDevicesRequest" }) as any as S.Schema<CreateNodesDeploymentsDevicesRequest>;
+export const CreateNodesDeploymentsDevicesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(SasPortalDevice.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1alpha1/{+parent}/devices",
+        baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateNodesDeploymentsDevicesRequest",
+}) as any as S.Schema<CreateNodesDeploymentsDevicesRequest>;
 
 export interface CreateNodesDevicesRequest {
   /** Required. The name of the parent resource. */
@@ -541,11 +690,19 @@ export interface CreateNodesDevicesRequest {
   body?: SasPortalDevice;
 }
 export const CreateNodesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(SasPortalDevice.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+parent}/devices","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "CreateNodesDevicesRequest" }) as any as S.Schema<CreateNodesDevicesRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(SasPortalDevice.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha1/{+parent}/devices",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateNodesDevicesRequest",
+}) as any as S.Schema<CreateNodesDevicesRequest>;
 
 export interface CreateNodesNodesRequest {
   /** Required. The parent resource name where the node is to be created. */
@@ -554,11 +711,19 @@ export interface CreateNodesNodesRequest {
   body?: SasPortalNode;
 }
 export const CreateNodesNodesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(SasPortalNode.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+parent}/nodes","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "CreateNodesNodesRequest" }) as any as S.Schema<CreateNodesNodesRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(SasPortalNode.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha1/{+parent}/nodes",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateNodesNodesRequest",
+}) as any as S.Schema<CreateNodesNodesRequest>;
 
 export interface CreateNodesNodesDeploymentsRequest {
   /** Required. The parent resource name where the deployment is to be created. */
@@ -567,11 +732,19 @@ export interface CreateNodesNodesDeploymentsRequest {
   body?: SasPortalDeployment;
 }
 export const CreateNodesNodesDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(SasPortalDeployment.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+parent}/deployments","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "CreateNodesNodesDeploymentsRequest" }) as any as S.Schema<CreateNodesNodesDeploymentsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(SasPortalDeployment.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha1/{+parent}/deployments",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateNodesNodesDeploymentsRequest",
+}) as any as S.Schema<CreateNodesNodesDeploymentsRequest>;
 
 export interface CreateNodesNodesDevicesRequest {
   /** Required. The name of the parent resource. */
@@ -580,11 +753,19 @@ export interface CreateNodesNodesDevicesRequest {
   body?: SasPortalDevice;
 }
 export const CreateNodesNodesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(SasPortalDevice.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+parent}/devices","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "CreateNodesNodesDevicesRequest" }) as any as S.Schema<CreateNodesNodesDevicesRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(SasPortalDevice.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha1/{+parent}/devices",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateNodesNodesDevicesRequest",
+}) as any as S.Schema<CreateNodesNodesDevicesRequest>;
 
 export interface CreateNodesNodesNodesRequest {
   /** Required. The parent resource name where the node is to be created. */
@@ -593,11 +774,19 @@ export interface CreateNodesNodesNodesRequest {
   body?: SasPortalNode;
 }
 export const CreateNodesNodesNodesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(SasPortalNode.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+parent}/nodes","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "CreateNodesNodesNodesRequest" }) as any as S.Schema<CreateNodesNodesNodesRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(SasPortalNode.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha1/{+parent}/nodes",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateNodesNodesNodesRequest",
+}) as any as S.Schema<CreateNodesNodesNodesRequest>;
 
 /** Request for CreateSignedDevice. */
 export interface SasPortalCreateSignedDeviceRequest {
@@ -607,11 +796,13 @@ export interface SasPortalCreateSignedDeviceRequest {
   installerId?: string;
 }
 export const SasPortalCreateSignedDeviceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "encodedDevice": S.optional(S.String),
-  "installerId": S.optional(S.String),
-}),
-).annotate({ identifier: "SasPortalCreateSignedDeviceRequest" }) as any as S.Schema<SasPortalCreateSignedDeviceRequest>;
+  S.Struct({
+    encodedDevice: S.optional(S.String),
+    installerId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SasPortalCreateSignedDeviceRequest",
+}) as any as S.Schema<SasPortalCreateSignedDeviceRequest>;
 
 export interface CreateSignedCustomersDeploymentsDevicesRequest {
   /** Required. The name of the parent resource. */
@@ -619,12 +810,21 @@ export interface CreateSignedCustomersDeploymentsDevicesRequest {
   /** Request body */
   body?: SasPortalCreateSignedDeviceRequest;
 }
-export const CreateSignedCustomersDeploymentsDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(SasPortalCreateSignedDeviceRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+parent}/devices:createSigned","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "CreateSignedCustomersDeploymentsDevicesRequest" }) as any as S.Schema<CreateSignedCustomersDeploymentsDevicesRequest>;
+export const CreateSignedCustomersDeploymentsDevicesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(SasPortalCreateSignedDeviceRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1alpha1/{+parent}/devices:createSigned",
+        baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateSignedCustomersDeploymentsDevicesRequest",
+  }) as any as S.Schema<CreateSignedCustomersDeploymentsDevicesRequest>;
 
 export interface CreateSignedCustomersDevicesRequest {
   /** Required. The name of the parent resource. */
@@ -633,11 +833,19 @@ export interface CreateSignedCustomersDevicesRequest {
   body?: SasPortalCreateSignedDeviceRequest;
 }
 export const CreateSignedCustomersDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(SasPortalCreateSignedDeviceRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+parent}/devices:createSigned","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "CreateSignedCustomersDevicesRequest" }) as any as S.Schema<CreateSignedCustomersDevicesRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(SasPortalCreateSignedDeviceRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha1/{+parent}/devices:createSigned",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateSignedCustomersDevicesRequest",
+}) as any as S.Schema<CreateSignedCustomersDevicesRequest>;
 
 export interface CreateSignedCustomersNodesDevicesRequest {
   /** Required. The name of the parent resource. */
@@ -645,12 +853,21 @@ export interface CreateSignedCustomersNodesDevicesRequest {
   /** Request body */
   body?: SasPortalCreateSignedDeviceRequest;
 }
-export const CreateSignedCustomersNodesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(SasPortalCreateSignedDeviceRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+parent}/devices:createSigned","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "CreateSignedCustomersNodesDevicesRequest" }) as any as S.Schema<CreateSignedCustomersNodesDevicesRequest>;
+export const CreateSignedCustomersNodesDevicesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(SasPortalCreateSignedDeviceRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1alpha1/{+parent}/devices:createSigned",
+        baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateSignedCustomersNodesDevicesRequest",
+}) as any as S.Schema<CreateSignedCustomersNodesDevicesRequest>;
 
 export interface CreateSignedNodesDeploymentsDevicesRequest {
   /** Required. The name of the parent resource. */
@@ -658,12 +875,21 @@ export interface CreateSignedNodesDeploymentsDevicesRequest {
   /** Request body */
   body?: SasPortalCreateSignedDeviceRequest;
 }
-export const CreateSignedNodesDeploymentsDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(SasPortalCreateSignedDeviceRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+parent}/devices:createSigned","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "CreateSignedNodesDeploymentsDevicesRequest" }) as any as S.Schema<CreateSignedNodesDeploymentsDevicesRequest>;
+export const CreateSignedNodesDeploymentsDevicesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(SasPortalCreateSignedDeviceRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1alpha1/{+parent}/devices:createSigned",
+        baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateSignedNodesDeploymentsDevicesRequest",
+  }) as any as S.Schema<CreateSignedNodesDeploymentsDevicesRequest>;
 
 export interface CreateSignedNodesDevicesRequest {
   /** Required. The name of the parent resource. */
@@ -672,11 +898,19 @@ export interface CreateSignedNodesDevicesRequest {
   body?: SasPortalCreateSignedDeviceRequest;
 }
 export const CreateSignedNodesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(SasPortalCreateSignedDeviceRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+parent}/devices:createSigned","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "CreateSignedNodesDevicesRequest" }) as any as S.Schema<CreateSignedNodesDevicesRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(SasPortalCreateSignedDeviceRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha1/{+parent}/devices:createSigned",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateSignedNodesDevicesRequest",
+}) as any as S.Schema<CreateSignedNodesDevicesRequest>;
 
 export interface CreateSignedNodesNodesDevicesRequest {
   /** Required. The name of the parent resource. */
@@ -684,27 +918,44 @@ export interface CreateSignedNodesNodesDevicesRequest {
   /** Request body */
   body?: SasPortalCreateSignedDeviceRequest;
 }
-export const CreateSignedNodesNodesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(SasPortalCreateSignedDeviceRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+parent}/devices:createSigned","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "CreateSignedNodesNodesDevicesRequest" }) as any as S.Schema<CreateSignedNodesNodesDevicesRequest>;
+export const CreateSignedNodesNodesDevicesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(SasPortalCreateSignedDeviceRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1alpha1/{+parent}/devices:createSigned",
+        baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateSignedNodesNodesDevicesRequest",
+}) as any as S.Schema<CreateSignedNodesNodesDevicesRequest>;
 
 export interface DeleteCustomersDeploymentsRequest {
   /** Required. The name of the deployment. */
   name: string;
 }
 export const DeleteCustomersDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1alpha1/{+name}","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "DeleteCustomersDeploymentsRequest" }) as any as S.Schema<DeleteCustomersDeploymentsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1alpha1/{+name}",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteCustomersDeploymentsRequest",
+}) as any as S.Schema<DeleteCustomersDeploymentsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface SasPortalEmpty {}
 export const SasPortalEmpty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
+  S.Struct({}),
 ).annotate({ identifier: "SasPortalEmpty" }) as any as S.Schema<SasPortalEmpty>;
 
 export interface DeleteCustomersDevicesRequest {
@@ -712,76 +963,134 @@ export interface DeleteCustomersDevicesRequest {
   name: string;
 }
 export const DeleteCustomersDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1alpha1/{+name}","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "DeleteCustomersDevicesRequest" }) as any as S.Schema<DeleteCustomersDevicesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1alpha1/{+name}",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteCustomersDevicesRequest",
+}) as any as S.Schema<DeleteCustomersDevicesRequest>;
 
 export interface DeleteCustomersNodesRequest {
   /** Required. The name of the node. */
   name: string;
 }
 export const DeleteCustomersNodesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1alpha1/{+name}","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "DeleteCustomersNodesRequest" }) as any as S.Schema<DeleteCustomersNodesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1alpha1/{+name}",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteCustomersNodesRequest",
+}) as any as S.Schema<DeleteCustomersNodesRequest>;
 
 export interface DeleteDeploymentsDevicesRequest {
   /** Required. The name of the device. */
   name: string;
 }
 export const DeleteDeploymentsDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1alpha1/{+name}","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "DeleteDeploymentsDevicesRequest" }) as any as S.Schema<DeleteDeploymentsDevicesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1alpha1/{+name}",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteDeploymentsDevicesRequest",
+}) as any as S.Schema<DeleteDeploymentsDevicesRequest>;
 
 export interface DeleteNodesDeploymentsRequest {
   /** Required. The name of the deployment. */
   name: string;
 }
 export const DeleteNodesDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1alpha1/{+name}","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "DeleteNodesDeploymentsRequest" }) as any as S.Schema<DeleteNodesDeploymentsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1alpha1/{+name}",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteNodesDeploymentsRequest",
+}) as any as S.Schema<DeleteNodesDeploymentsRequest>;
 
 export interface DeleteNodesDevicesRequest {
   /** Required. The name of the device. */
   name: string;
 }
 export const DeleteNodesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1alpha1/{+name}","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "DeleteNodesDevicesRequest" }) as any as S.Schema<DeleteNodesDevicesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1alpha1/{+name}",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteNodesDevicesRequest",
+}) as any as S.Schema<DeleteNodesDevicesRequest>;
 
 export interface DeleteNodesNodesRequest {
   /** Required. The name of the node. */
   name: string;
 }
 export const DeleteNodesNodesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1alpha1/{+name}","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "DeleteNodesNodesRequest" }) as any as S.Schema<DeleteNodesNodesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1alpha1/{+name}",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteNodesNodesRequest",
+}) as any as S.Schema<DeleteNodesNodesRequest>;
 
 /** Request for GenerateSecret. */
 export interface SasPortalGenerateSecretRequest {}
 export const SasPortalGenerateSecretRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "SasPortalGenerateSecretRequest" }) as any as S.Schema<SasPortalGenerateSecretRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "SasPortalGenerateSecretRequest",
+}) as any as S.Schema<SasPortalGenerateSecretRequest>;
 
 export interface GenerateSecretInstallerRequest {
   /** Request body */
   body?: SasPortalGenerateSecretRequest;
 }
 export const GenerateSecretInstallerRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(SasPortalGenerateSecretRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/installer:generateSecret","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "GenerateSecretInstallerRequest" }) as any as S.Schema<GenerateSecretInstallerRequest>;
+  S.Struct({
+    body: S.optional(SasPortalGenerateSecretRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha1/installer:generateSecret",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GenerateSecretInstallerRequest",
+}) as any as S.Schema<GenerateSecretInstallerRequest>;
 
 /** Response for GenerateSecret. */
 export interface SasPortalGenerateSecretResponse {
@@ -789,20 +1098,30 @@ export interface SasPortalGenerateSecretResponse {
   secret?: string;
 }
 export const SasPortalGenerateSecretResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "secret": S.optional(S.String),
-}),
-).annotate({ identifier: "SasPortalGenerateSecretResponse" }) as any as S.Schema<SasPortalGenerateSecretResponse>;
+  S.Struct({
+    secret: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SasPortalGenerateSecretResponse",
+}) as any as S.Schema<SasPortalGenerateSecretResponse>;
 
 export interface GetCustomersRequest {
   /** Required. The name of the customer. */
   name: string;
 }
 export const GetCustomersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+name}","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "GetCustomersRequest" }) as any as S.Schema<GetCustomersRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha1/{+name}",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetCustomersRequest",
+}) as any as S.Schema<GetCustomersRequest>;
 
 /** Entity representing a SAS customer. */
 export interface SasPortalCustomer {
@@ -814,102 +1133,176 @@ export interface SasPortalCustomer {
   name?: string;
 }
 export const SasPortalCustomer = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "displayName": S.optional(S.String),
-  "sasUserIds": S.optional(StringList),
-  "name": S.optional(S.String),
-}),
-).annotate({ identifier: "SasPortalCustomer" }) as any as S.Schema<SasPortalCustomer>;
+  S.Struct({
+    displayName: S.optional(S.String),
+    sasUserIds: S.optional(StringList),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SasPortalCustomer",
+}) as any as S.Schema<SasPortalCustomer>;
 
 export interface GetCustomersDeploymentsRequest {
   /** Required. The name of the deployment. */
   name: string;
 }
 export const GetCustomersDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+name}","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "GetCustomersDeploymentsRequest" }) as any as S.Schema<GetCustomersDeploymentsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha1/{+name}",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetCustomersDeploymentsRequest",
+}) as any as S.Schema<GetCustomersDeploymentsRequest>;
 
 export interface GetCustomersDevicesRequest {
   /** Required. The name of the device. */
   name: string;
 }
 export const GetCustomersDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+name}","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "GetCustomersDevicesRequest" }) as any as S.Schema<GetCustomersDevicesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha1/{+name}",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetCustomersDevicesRequest",
+}) as any as S.Schema<GetCustomersDevicesRequest>;
 
 export interface GetCustomersNodesRequest {
   /** Required. The name of the node. */
   name: string;
 }
 export const GetCustomersNodesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+name}","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "GetCustomersNodesRequest" }) as any as S.Schema<GetCustomersNodesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha1/{+name}",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetCustomersNodesRequest",
+}) as any as S.Schema<GetCustomersNodesRequest>;
 
 export interface GetDeploymentsRequest {
   /** Required. The name of the deployment. */
   name: string;
 }
 export const GetDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+name}","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "GetDeploymentsRequest" }) as any as S.Schema<GetDeploymentsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha1/{+name}",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetDeploymentsRequest",
+}) as any as S.Schema<GetDeploymentsRequest>;
 
 export interface GetDeploymentsDevicesRequest {
   /** Required. The name of the device. */
   name: string;
 }
 export const GetDeploymentsDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+name}","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "GetDeploymentsDevicesRequest" }) as any as S.Schema<GetDeploymentsDevicesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha1/{+name}",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetDeploymentsDevicesRequest",
+}) as any as S.Schema<GetDeploymentsDevicesRequest>;
 
 export interface GetNodesRequest {
   /** Required. The name of the node. */
   name: string;
 }
 export const GetNodesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+name}","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "GetNodesRequest" }) as any as S.Schema<GetNodesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha1/{+name}",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetNodesRequest",
+}) as any as S.Schema<GetNodesRequest>;
 
 export interface GetNodesDeploymentsRequest {
   /** Required. The name of the deployment. */
   name: string;
 }
 export const GetNodesDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+name}","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "GetNodesDeploymentsRequest" }) as any as S.Schema<GetNodesDeploymentsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha1/{+name}",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetNodesDeploymentsRequest",
+}) as any as S.Schema<GetNodesDeploymentsRequest>;
 
 export interface GetNodesDevicesRequest {
   /** Required. The name of the device. */
   name: string;
 }
 export const GetNodesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+name}","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "GetNodesDevicesRequest" }) as any as S.Schema<GetNodesDevicesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha1/{+name}",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetNodesDevicesRequest",
+}) as any as S.Schema<GetNodesDevicesRequest>;
 
 export interface GetNodesNodesRequest {
   /** Required. The name of the node. */
   name: string;
 }
 export const GetNodesNodesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+name}","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "GetNodesNodesRequest" }) as any as S.Schema<GetNodesNodesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha1/{+name}",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetNodesNodesRequest",
+}) as any as S.Schema<GetNodesNodesRequest>;
 
 /** Request message for `GetPolicy` method. */
 export interface SasPortalGetPolicyRequest {
@@ -917,20 +1310,30 @@ export interface SasPortalGetPolicyRequest {
   resource?: string;
 }
 export const SasPortalGetPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.optional(S.String),
-}),
-).annotate({ identifier: "SasPortalGetPolicyRequest" }) as any as S.Schema<SasPortalGetPolicyRequest>;
+  S.Struct({
+    resource: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SasPortalGetPolicyRequest",
+}) as any as S.Schema<SasPortalGetPolicyRequest>;
 
 export interface GetPoliciesRequest {
   /** Request body */
   body?: SasPortalGetPolicyRequest;
 }
 export const GetPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(SasPortalGetPolicyRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/policies:get","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "GetPoliciesRequest" }) as any as S.Schema<GetPoliciesRequest>;
+  S.Struct({
+    body: S.optional(SasPortalGetPolicyRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha1/policies:get",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetPoliciesRequest",
+}) as any as S.Schema<GetPoliciesRequest>;
 
 /** Associates `members` with a `role`. */
 export interface SasPortalAssignment {
@@ -940,14 +1343,18 @@ export interface SasPortalAssignment {
   members?: StringList;
 }
 export const SasPortalAssignment = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "role": S.optional(S.String),
-  "members": S.optional(StringList),
-}),
-).annotate({ identifier: "SasPortalAssignment" }) as any as S.Schema<SasPortalAssignment>;
+  S.Struct({
+    role: S.optional(S.String),
+    members: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "SasPortalAssignment",
+}) as any as S.Schema<SasPortalAssignment>;
 
 export type SasPortalAssignmentList = ReadonlyArray<SasPortalAssignment>;
-export const SasPortalAssignmentList = /*@__PURE__*/ S.Array(SasPortalAssignment) as any as S.Schema<SasPortalAssignmentList>;
+export const SasPortalAssignmentList = /*@__PURE__*/ S.Array(
+  SasPortalAssignment,
+) as any as S.Schema<SasPortalAssignmentList>;
 
 /** Defines an access control policy to the resources. */
 export interface SasPortalPolicy {
@@ -957,11 +1364,13 @@ export interface SasPortalPolicy {
   etag?: string;
 }
 export const SasPortalPolicy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "assignments": S.optional(SasPortalAssignmentList),
-  "etag": S.optional(S.String),
-}),
-).annotate({ identifier: "SasPortalPolicy" }) as any as S.Schema<SasPortalPolicy>;
+  S.Struct({
+    assignments: S.optional(SasPortalAssignmentList),
+    etag: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SasPortalPolicy",
+}) as any as S.Schema<SasPortalPolicy>;
 
 export interface ListCustomersRequest {
   /** The maximum number of customers to return in the response. */
@@ -970,14 +1379,24 @@ export interface ListCustomersRequest {
   pageToken?: string;
 }
 export const ListCustomersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/customers","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "ListCustomersRequest" }) as any as S.Schema<ListCustomersRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha1/customers",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListCustomersRequest",
+}) as any as S.Schema<ListCustomersRequest>;
 
 export type SasPortalCustomerList = ReadonlyArray<SasPortalCustomer>;
-export const SasPortalCustomerList = /*@__PURE__*/ S.Array(SasPortalCustomer) as any as S.Schema<SasPortalCustomerList>;
+export const SasPortalCustomerList = /*@__PURE__*/ S.Array(
+  SasPortalCustomer,
+) as any as S.Schema<SasPortalCustomerList>;
 
 /** Response for `ListCustomers`. */
 export interface SasPortalListCustomersResponse {
@@ -987,11 +1406,13 @@ export interface SasPortalListCustomersResponse {
   nextPageToken?: string;
 }
 export const SasPortalListCustomersResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "customers": S.optional(SasPortalCustomerList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "SasPortalListCustomersResponse" }) as any as S.Schema<SasPortalListCustomersResponse>;
+  S.Struct({
+    customers: S.optional(SasPortalCustomerList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SasPortalListCustomersResponse",
+}) as any as S.Schema<SasPortalListCustomersResponse>;
 
 export interface ListCustomersDeploymentsRequest {
   /** The maximum number of deployments to return in the response. */
@@ -1004,16 +1425,26 @@ export interface ListCustomersDeploymentsRequest {
   filter?: string;
 }
 export const ListCustomersDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+parent}/deployments","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "ListCustomersDeploymentsRequest" }) as any as S.Schema<ListCustomersDeploymentsRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha1/{+parent}/deployments",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListCustomersDeploymentsRequest",
+}) as any as S.Schema<ListCustomersDeploymentsRequest>;
 
 export type SasPortalDeploymentList = ReadonlyArray<SasPortalDeployment>;
-export const SasPortalDeploymentList = /*@__PURE__*/ S.Array(SasPortalDeployment) as any as S.Schema<SasPortalDeploymentList>;
+export const SasPortalDeploymentList = /*@__PURE__*/ S.Array(
+  SasPortalDeployment,
+) as any as S.Schema<SasPortalDeploymentList>;
 
 /** Response for ListDeployments. */
 export interface SasPortalListDeploymentsResponse {
@@ -1023,11 +1454,13 @@ export interface SasPortalListDeploymentsResponse {
   deployments?: SasPortalDeploymentList;
 }
 export const SasPortalListDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "deployments": S.optional(SasPortalDeploymentList),
-}),
-).annotate({ identifier: "SasPortalListDeploymentsResponse" }) as any as S.Schema<SasPortalListDeploymentsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    deployments: S.optional(SasPortalDeploymentList),
+  }),
+).annotate({
+  identifier: "SasPortalListDeploymentsResponse",
+}) as any as S.Schema<SasPortalListDeploymentsResponse>;
 
 export interface ListCustomersDeploymentsDevicesRequest {
   /** The filter expression. The filter should have one of the following formats: "sn=123454" or "display_name=MyDevice". sn corresponds to serial number of the device. The filter is case insensitive. */
@@ -1039,17 +1472,28 @@ export interface ListCustomersDeploymentsDevicesRequest {
   /** The maximum number of devices to return in the response. If empty or zero, all devices will be listed. Must be in the range [0, 1000]. */
   pageSize?: number;
 }
-export const ListCustomersDeploymentsDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+parent}/devices","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "ListCustomersDeploymentsDevicesRequest" }) as any as S.Schema<ListCustomersDeploymentsDevicesRequest>;
+export const ListCustomersDeploymentsDevicesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      filter: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha1/{+parent}/devices",
+        baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListCustomersDeploymentsDevicesRequest",
+}) as any as S.Schema<ListCustomersDeploymentsDevicesRequest>;
 
 export type SasPortalDeviceList = ReadonlyArray<SasPortalDevice>;
-export const SasPortalDeviceList = /*@__PURE__*/ S.Array(SasPortalDevice) as any as S.Schema<SasPortalDeviceList>;
+export const SasPortalDeviceList = /*@__PURE__*/ S.Array(
+  SasPortalDevice,
+) as any as S.Schema<SasPortalDeviceList>;
 
 /** Response for ListDevices. */
 export interface SasPortalListDevicesResponse {
@@ -1059,11 +1503,13 @@ export interface SasPortalListDevicesResponse {
   nextPageToken?: string;
 }
 export const SasPortalListDevicesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "devices": S.optional(SasPortalDeviceList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "SasPortalListDevicesResponse" }) as any as S.Schema<SasPortalListDevicesResponse>;
+  S.Struct({
+    devices: S.optional(SasPortalDeviceList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SasPortalListDevicesResponse",
+}) as any as S.Schema<SasPortalListDevicesResponse>;
 
 export interface ListCustomersDevicesRequest {
   /** The maximum number of devices to return in the response. If empty or zero, all devices will be listed. Must be in the range [0, 1000]. */
@@ -1076,13 +1522,21 @@ export interface ListCustomersDevicesRequest {
   filter?: string;
 }
 export const ListCustomersDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+parent}/devices","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "ListCustomersDevicesRequest" }) as any as S.Schema<ListCustomersDevicesRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha1/{+parent}/devices",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListCustomersDevicesRequest",
+}) as any as S.Schema<ListCustomersDevicesRequest>;
 
 export interface ListCustomersNodesRequest {
   /** The filter expression. The filter should have the following format: "DIRECT_CHILDREN" or format: "direct_children". The filter is case insensitive. If empty, then no nodes are filtered. */
@@ -1095,16 +1549,26 @@ export interface ListCustomersNodesRequest {
   pageSize?: number;
 }
 export const ListCustomersNodesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+parent}/nodes","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "ListCustomersNodesRequest" }) as any as S.Schema<ListCustomersNodesRequest>;
+  S.Struct({
+    filter: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha1/{+parent}/nodes",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListCustomersNodesRequest",
+}) as any as S.Schema<ListCustomersNodesRequest>;
 
 export type SasPortalNodeList = ReadonlyArray<SasPortalNode>;
-export const SasPortalNodeList = /*@__PURE__*/ S.Array(SasPortalNode) as any as S.Schema<SasPortalNodeList>;
+export const SasPortalNodeList = /*@__PURE__*/ S.Array(
+  SasPortalNode,
+) as any as S.Schema<SasPortalNodeList>;
 
 /** Response for ListNodes. */
 export interface SasPortalListNodesResponse {
@@ -1114,11 +1578,13 @@ export interface SasPortalListNodesResponse {
   nextPageToken?: string;
 }
 export const SasPortalListNodesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nodes": S.optional(SasPortalNodeList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "SasPortalListNodesResponse" }) as any as S.Schema<SasPortalListNodesResponse>;
+  S.Struct({
+    nodes: S.optional(SasPortalNodeList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SasPortalListNodesResponse",
+}) as any as S.Schema<SasPortalListNodesResponse>;
 
 export interface ListCustomersNodesDeploymentsRequest {
   /** The maximum number of deployments to return in the response. */
@@ -1130,14 +1596,23 @@ export interface ListCustomersNodesDeploymentsRequest {
   /** The filter expression. The filter should have the following format: "DIRECT_CHILDREN" or format: "direct_children". The filter is case insensitive. If empty, then no deployments are filtered. */
   filter?: string;
 }
-export const ListCustomersNodesDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+parent}/deployments","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "ListCustomersNodesDeploymentsRequest" }) as any as S.Schema<ListCustomersNodesDeploymentsRequest>;
+export const ListCustomersNodesDeploymentsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha1/{+parent}/deployments",
+        baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListCustomersNodesDeploymentsRequest",
+}) as any as S.Schema<ListCustomersNodesDeploymentsRequest>;
 
 export interface ListCustomersNodesDevicesRequest {
   /** Required. The name of the parent resource. */
@@ -1150,13 +1625,21 @@ export interface ListCustomersNodesDevicesRequest {
   filter?: string;
 }
 export const ListCustomersNodesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+parent}/devices","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "ListCustomersNodesDevicesRequest" }) as any as S.Schema<ListCustomersNodesDevicesRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha1/{+parent}/devices",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListCustomersNodesDevicesRequest",
+}) as any as S.Schema<ListCustomersNodesDevicesRequest>;
 
 export interface ListCustomersNodesNodesRequest {
   /** Required. The parent resource name, for example, "nodes/1". */
@@ -1169,18 +1652,35 @@ export interface ListCustomersNodesNodesRequest {
   filter?: string;
 }
 export const ListCustomersNodesNodesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+parent}/nodes","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "ListCustomersNodesNodesRequest" }) as any as S.Schema<ListCustomersNodesNodesRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha1/{+parent}/nodes",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListCustomersNodesNodesRequest",
+}) as any as S.Schema<ListCustomersNodesNodesRequest>;
 
 export interface ListGcpProjectDeploymentsCustomersRequest {}
-export const ListGcpProjectDeploymentsCustomersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}).pipe(T.Http({"method":"GET","uri":"v1alpha1/customers:listGcpProjectDeployments","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "ListGcpProjectDeploymentsCustomersRequest" }) as any as S.Schema<ListGcpProjectDeploymentsCustomersRequest>;
+export const ListGcpProjectDeploymentsCustomersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({}).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha1/customers:listGcpProjectDeployments",
+        baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListGcpProjectDeploymentsCustomersRequest",
+  }) as any as S.Schema<ListGcpProjectDeploymentsCustomersRequest>;
 
 /** Deployment associated with the GCP project. Includes whether SAS analytics has been enabled or not. */
 export interface SasPortalGcpProjectDeployment {
@@ -1190,30 +1690,47 @@ export interface SasPortalGcpProjectDeployment {
   deployment?: SasPortalDeployment;
 }
 export const SasPortalGcpProjectDeployment = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "hasEnabledAnalytics": S.optional(S.Boolean),
-  "deployment": S.optional(SasPortalDeployment),
-}),
-).annotate({ identifier: "SasPortalGcpProjectDeployment" }) as any as S.Schema<SasPortalGcpProjectDeployment>;
+  S.Struct({
+    hasEnabledAnalytics: S.optional(S.Boolean),
+    deployment: S.optional(SasPortalDeployment),
+  }),
+).annotate({
+  identifier: "SasPortalGcpProjectDeployment",
+}) as any as S.Schema<SasPortalGcpProjectDeployment>;
 
-export type SasPortalGcpProjectDeploymentList = ReadonlyArray<SasPortalGcpProjectDeployment>;
-export const SasPortalGcpProjectDeploymentList = /*@__PURE__*/ S.Array(SasPortalGcpProjectDeployment) as any as S.Schema<SasPortalGcpProjectDeploymentList>;
+export type SasPortalGcpProjectDeploymentList =
+  ReadonlyArray<SasPortalGcpProjectDeployment>;
+export const SasPortalGcpProjectDeploymentList = /*@__PURE__*/ S.Array(
+  SasPortalGcpProjectDeployment,
+) as any as S.Schema<SasPortalGcpProjectDeploymentList>;
 
 /** Response for [ListGcpProjectDeployments]. */
 export interface SasPortalListGcpProjectDeploymentsResponse {
   /** Optional. Deployments associated with the GCP project */
   deployments?: SasPortalGcpProjectDeploymentList;
 }
-export const SasPortalListGcpProjectDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "deployments": S.optional(SasPortalGcpProjectDeploymentList),
-}),
-).annotate({ identifier: "SasPortalListGcpProjectDeploymentsResponse" }) as any as S.Schema<SasPortalListGcpProjectDeploymentsResponse>;
+export const SasPortalListGcpProjectDeploymentsResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deployments: S.optional(SasPortalGcpProjectDeploymentList),
+    }),
+  ).annotate({
+    identifier: "SasPortalListGcpProjectDeploymentsResponse",
+  }) as any as S.Schema<SasPortalListGcpProjectDeploymentsResponse>;
 
 export interface ListLegacyOrganizationsCustomersRequest {}
-export const ListLegacyOrganizationsCustomersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}).pipe(T.Http({"method":"GET","uri":"v1alpha1/customers:listLegacyOrganizations","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "ListLegacyOrganizationsCustomersRequest" }) as any as S.Schema<ListLegacyOrganizationsCustomersRequest>;
+export const ListLegacyOrganizationsCustomersRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({}).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha1/customers:listLegacyOrganizations",
+        baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListLegacyOrganizationsCustomersRequest",
+}) as any as S.Schema<ListLegacyOrganizationsCustomersRequest>;
 
 /** Organization details. */
 export interface SasPortalOrganization {
@@ -1223,25 +1740,32 @@ export interface SasPortalOrganization {
   displayName?: string;
 }
 export const SasPortalOrganization = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.optional(S.String),
-  "displayName": S.optional(S.String),
-}),
-).annotate({ identifier: "SasPortalOrganization" }) as any as S.Schema<SasPortalOrganization>;
+  S.Struct({
+    id: S.optional(S.String),
+    displayName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SasPortalOrganization",
+}) as any as S.Schema<SasPortalOrganization>;
 
 export type SasPortalOrganizationList = ReadonlyArray<SasPortalOrganization>;
-export const SasPortalOrganizationList = /*@__PURE__*/ S.Array(SasPortalOrganization) as any as S.Schema<SasPortalOrganizationList>;
+export const SasPortalOrganizationList = /*@__PURE__*/ S.Array(
+  SasPortalOrganization,
+) as any as S.Schema<SasPortalOrganizationList>;
 
 /** Response for [ListLegacyOrganizations]. [spectrum.sas.portal.v1alpha1.Provisioning.ListLegacyOrganizations]. */
 export interface SasPortalListLegacyOrganizationsResponse {
   /** Optional. Legacy SAS organizations. */
   organizations?: SasPortalOrganizationList;
 }
-export const SasPortalListLegacyOrganizationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "organizations": S.optional(SasPortalOrganizationList),
-}),
-).annotate({ identifier: "SasPortalListLegacyOrganizationsResponse" }) as any as S.Schema<SasPortalListLegacyOrganizationsResponse>;
+export const SasPortalListLegacyOrganizationsResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      organizations: S.optional(SasPortalOrganizationList),
+    }),
+).annotate({
+  identifier: "SasPortalListLegacyOrganizationsResponse",
+}) as any as S.Schema<SasPortalListLegacyOrganizationsResponse>;
 
 export interface ListNodesDeploymentsRequest {
   /** The filter expression. The filter should have the following format: "DIRECT_CHILDREN" or format: "direct_children". The filter is case insensitive. If empty, then no deployments are filtered. */
@@ -1254,13 +1778,21 @@ export interface ListNodesDeploymentsRequest {
   pageSize?: number;
 }
 export const ListNodesDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+parent}/deployments","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "ListNodesDeploymentsRequest" }) as any as S.Schema<ListNodesDeploymentsRequest>;
+  S.Struct({
+    filter: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha1/{+parent}/deployments",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListNodesDeploymentsRequest",
+}) as any as S.Schema<ListNodesDeploymentsRequest>;
 
 export interface ListNodesDeploymentsDevicesRequest {
   /** Required. The name of the parent resource. */
@@ -1273,13 +1805,21 @@ export interface ListNodesDeploymentsDevicesRequest {
   filter?: string;
 }
 export const ListNodesDeploymentsDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+parent}/devices","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "ListNodesDeploymentsDevicesRequest" }) as any as S.Schema<ListNodesDeploymentsDevicesRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha1/{+parent}/devices",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListNodesDeploymentsDevicesRequest",
+}) as any as S.Schema<ListNodesDeploymentsDevicesRequest>;
 
 export interface ListNodesDevicesRequest {
   /** The filter expression. The filter should have one of the following formats: "sn=123454" or "display_name=MyDevice". sn corresponds to serial number of the device. The filter is case insensitive. */
@@ -1292,13 +1832,21 @@ export interface ListNodesDevicesRequest {
   pageSize?: number;
 }
 export const ListNodesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+parent}/devices","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "ListNodesDevicesRequest" }) as any as S.Schema<ListNodesDevicesRequest>;
+  S.Struct({
+    filter: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha1/{+parent}/devices",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListNodesDevicesRequest",
+}) as any as S.Schema<ListNodesDevicesRequest>;
 
 export interface ListNodesNodesRequest {
   /** Required. The parent resource name, for example, "nodes/1". */
@@ -1311,13 +1859,21 @@ export interface ListNodesNodesRequest {
   filter?: string;
 }
 export const ListNodesNodesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+parent}/nodes","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "ListNodesNodesRequest" }) as any as S.Schema<ListNodesNodesRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha1/{+parent}/nodes",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListNodesNodesRequest",
+}) as any as S.Schema<ListNodesNodesRequest>;
 
 export interface ListNodesNodesDeploymentsRequest {
   /** The maximum number of deployments to return in the response. */
@@ -1330,13 +1886,21 @@ export interface ListNodesNodesDeploymentsRequest {
   filter?: string;
 }
 export const ListNodesNodesDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+parent}/deployments","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "ListNodesNodesDeploymentsRequest" }) as any as S.Schema<ListNodesNodesDeploymentsRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha1/{+parent}/deployments",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListNodesNodesDeploymentsRequest",
+}) as any as S.Schema<ListNodesNodesDeploymentsRequest>;
 
 export interface ListNodesNodesDevicesRequest {
   /** The filter expression. The filter should have one of the following formats: "sn=123454" or "display_name=MyDevice". sn corresponds to serial number of the device. The filter is case insensitive. */
@@ -1349,13 +1913,21 @@ export interface ListNodesNodesDevicesRequest {
   pageToken?: string;
 }
 export const ListNodesNodesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+parent}/devices","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "ListNodesNodesDevicesRequest" }) as any as S.Schema<ListNodesNodesDevicesRequest>;
+  S.Struct({
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha1/{+parent}/devices",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListNodesNodesDevicesRequest",
+}) as any as S.Schema<ListNodesNodesDevicesRequest>;
 
 export interface ListNodesNodesNodesRequest {
   /** The filter expression. The filter should have the following format: "DIRECT_CHILDREN" or format: "direct_children". The filter is case insensitive. If empty, then no nodes are filtered. */
@@ -1368,13 +1940,21 @@ export interface ListNodesNodesNodesRequest {
   pageSize?: number;
 }
 export const ListNodesNodesNodesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+parent}/nodes","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "ListNodesNodesNodesRequest" }) as any as S.Schema<ListNodesNodesNodesRequest>;
+  S.Struct({
+    filter: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha1/{+parent}/nodes",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListNodesNodesNodesRequest",
+}) as any as S.Schema<ListNodesNodesNodesRequest>;
 
 /** Request for [MigrateOrganization]. [spectrum.sas.portal.v1alpha1.Provisioning.MigrateOrganization]. GCP Project, Organization Info, and caller's GAIA ID should be retrieved from the RPC handler, and used to check authorization on SAS Portal organization and to create GCP Projects. */
 export interface SasPortalMigrateOrganizationRequest {
@@ -1382,26 +1962,41 @@ export interface SasPortalMigrateOrganizationRequest {
   organizationId?: string;
 }
 export const SasPortalMigrateOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "organizationId": S.optional(S.String),
-}),
-).annotate({ identifier: "SasPortalMigrateOrganizationRequest" }) as any as S.Schema<SasPortalMigrateOrganizationRequest>;
+  S.Struct({
+    organizationId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SasPortalMigrateOrganizationRequest",
+}) as any as S.Schema<SasPortalMigrateOrganizationRequest>;
 
 export interface MigrateOrganizationCustomersRequest {
   /** Request body */
   body?: SasPortalMigrateOrganizationRequest;
 }
 export const MigrateOrganizationCustomersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(SasPortalMigrateOrganizationRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/customers:migrateOrganization","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "MigrateOrganizationCustomersRequest" }) as any as S.Schema<MigrateOrganizationCustomersRequest>;
+  S.Struct({
+    body: S.optional(SasPortalMigrateOrganizationRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha1/customers:migrateOrganization",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "MigrateOrganizationCustomersRequest",
+}) as any as S.Schema<MigrateOrganizationCustomersRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface SasPortalStatus {
@@ -1413,12 +2008,14 @@ export interface SasPortalStatus {
   message?: string;
 }
 export const SasPortalStatus = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(S.Number),
-  "details": S.optional(DocumentMapList),
-  "message": S.optional(S.String),
-}),
-).annotate({ identifier: "SasPortalStatus" }) as any as S.Schema<SasPortalStatus>;
+  S.Struct({
+    code: S.optional(S.Number),
+    details: S.optional(DocumentMapList),
+    message: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SasPortalStatus",
+}) as any as S.Schema<SasPortalStatus>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface SasPortalOperation {
@@ -1434,14 +2031,16 @@ export interface SasPortalOperation {
   done?: boolean;
 }
 export const SasPortalOperation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "error": S.optional(SasPortalStatus),
-  "metadata": S.optional(DocumentMap),
-  "name": S.optional(S.String),
-  "response": S.optional(DocumentMap),
-  "done": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "SasPortalOperation" }) as any as S.Schema<SasPortalOperation>;
+  S.Struct({
+    error: S.optional(SasPortalStatus),
+    metadata: S.optional(DocumentMap),
+    name: S.optional(S.String),
+    response: S.optional(DocumentMap),
+    done: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "SasPortalOperation",
+}) as any as S.Schema<SasPortalOperation>;
 
 /** Request for MoveDeployment. */
 export interface SasPortalMoveDeploymentRequest {
@@ -1449,10 +2048,12 @@ export interface SasPortalMoveDeploymentRequest {
   destination?: string;
 }
 export const SasPortalMoveDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "destination": S.optional(S.String),
-}),
-).annotate({ identifier: "SasPortalMoveDeploymentRequest" }) as any as S.Schema<SasPortalMoveDeploymentRequest>;
+  S.Struct({
+    destination: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SasPortalMoveDeploymentRequest",
+}) as any as S.Schema<SasPortalMoveDeploymentRequest>;
 
 export interface MoveCustomersDeploymentsRequest {
   /** Required. The name of the deployment to move. */
@@ -1461,11 +2062,19 @@ export interface MoveCustomersDeploymentsRequest {
   body?: SasPortalMoveDeploymentRequest;
 }
 export const MoveCustomersDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(SasPortalMoveDeploymentRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+name}:move","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "MoveCustomersDeploymentsRequest" }) as any as S.Schema<MoveCustomersDeploymentsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(SasPortalMoveDeploymentRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha1/{+name}:move",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "MoveCustomersDeploymentsRequest",
+}) as any as S.Schema<MoveCustomersDeploymentsRequest>;
 
 /** Request for MoveDevice. */
 export interface SasPortalMoveDeviceRequest {
@@ -1473,10 +2082,12 @@ export interface SasPortalMoveDeviceRequest {
   destination?: string;
 }
 export const SasPortalMoveDeviceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "destination": S.optional(S.String),
-}),
-).annotate({ identifier: "SasPortalMoveDeviceRequest" }) as any as S.Schema<SasPortalMoveDeviceRequest>;
+  S.Struct({
+    destination: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SasPortalMoveDeviceRequest",
+}) as any as S.Schema<SasPortalMoveDeviceRequest>;
 
 export interface MoveCustomersDevicesRequest {
   /** Required. The name of the device to move. */
@@ -1485,11 +2096,19 @@ export interface MoveCustomersDevicesRequest {
   body?: SasPortalMoveDeviceRequest;
 }
 export const MoveCustomersDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(SasPortalMoveDeviceRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+name}:move","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "MoveCustomersDevicesRequest" }) as any as S.Schema<MoveCustomersDevicesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(SasPortalMoveDeviceRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha1/{+name}:move",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "MoveCustomersDevicesRequest",
+}) as any as S.Schema<MoveCustomersDevicesRequest>;
 
 /** Request for MoveNode. */
 export interface SasPortalMoveNodeRequest {
@@ -1497,10 +2116,12 @@ export interface SasPortalMoveNodeRequest {
   destination?: string;
 }
 export const SasPortalMoveNodeRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "destination": S.optional(S.String),
-}),
-).annotate({ identifier: "SasPortalMoveNodeRequest" }) as any as S.Schema<SasPortalMoveNodeRequest>;
+  S.Struct({
+    destination: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SasPortalMoveNodeRequest",
+}) as any as S.Schema<SasPortalMoveNodeRequest>;
 
 export interface MoveCustomersNodesRequest {
   /** Required. The name of the node to move. */
@@ -1509,11 +2130,19 @@ export interface MoveCustomersNodesRequest {
   body?: SasPortalMoveNodeRequest;
 }
 export const MoveCustomersNodesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(SasPortalMoveNodeRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+name}:move","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "MoveCustomersNodesRequest" }) as any as S.Schema<MoveCustomersNodesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(SasPortalMoveNodeRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha1/{+name}:move",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "MoveCustomersNodesRequest",
+}) as any as S.Schema<MoveCustomersNodesRequest>;
 
 export interface MoveDeploymentsDevicesRequest {
   /** Required. The name of the device to move. */
@@ -1522,11 +2151,19 @@ export interface MoveDeploymentsDevicesRequest {
   body?: SasPortalMoveDeviceRequest;
 }
 export const MoveDeploymentsDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(SasPortalMoveDeviceRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+name}:move","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "MoveDeploymentsDevicesRequest" }) as any as S.Schema<MoveDeploymentsDevicesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(SasPortalMoveDeviceRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha1/{+name}:move",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "MoveDeploymentsDevicesRequest",
+}) as any as S.Schema<MoveDeploymentsDevicesRequest>;
 
 export interface MoveNodesDeploymentsRequest {
   /** Required. The name of the deployment to move. */
@@ -1535,11 +2172,19 @@ export interface MoveNodesDeploymentsRequest {
   body?: SasPortalMoveDeploymentRequest;
 }
 export const MoveNodesDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(SasPortalMoveDeploymentRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+name}:move","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "MoveNodesDeploymentsRequest" }) as any as S.Schema<MoveNodesDeploymentsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(SasPortalMoveDeploymentRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha1/{+name}:move",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "MoveNodesDeploymentsRequest",
+}) as any as S.Schema<MoveNodesDeploymentsRequest>;
 
 export interface MoveNodesDevicesRequest {
   /** Required. The name of the device to move. */
@@ -1548,11 +2193,19 @@ export interface MoveNodesDevicesRequest {
   body?: SasPortalMoveDeviceRequest;
 }
 export const MoveNodesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(SasPortalMoveDeviceRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+name}:move","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "MoveNodesDevicesRequest" }) as any as S.Schema<MoveNodesDevicesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(SasPortalMoveDeviceRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha1/{+name}:move",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "MoveNodesDevicesRequest",
+}) as any as S.Schema<MoveNodesDevicesRequest>;
 
 export interface MoveNodesNodesRequest {
   /** Required. The name of the node to move. */
@@ -1561,11 +2214,19 @@ export interface MoveNodesNodesRequest {
   body?: SasPortalMoveNodeRequest;
 }
 export const MoveNodesNodesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(SasPortalMoveNodeRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+name}:move","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "MoveNodesNodesRequest" }) as any as S.Schema<MoveNodesNodesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(SasPortalMoveNodeRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha1/{+name}:move",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "MoveNodesNodesRequest",
+}) as any as S.Schema<MoveNodesNodesRequest>;
 
 export interface PatchCustomersRequest {
   /** Output only. Resource name of the customer. */
@@ -1576,12 +2237,20 @@ export interface PatchCustomersRequest {
   body?: SasPortalCustomer;
 }
 export const PatchCustomersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(SasPortalCustomer.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1alpha1/{+name}","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "PatchCustomersRequest" }) as any as S.Schema<PatchCustomersRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(SasPortalCustomer.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1alpha1/{+name}",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchCustomersRequest",
+}) as any as S.Schema<PatchCustomersRequest>;
 
 export interface PatchCustomersDeploymentsRequest {
   /** Fields to be updated. */
@@ -1592,12 +2261,20 @@ export interface PatchCustomersDeploymentsRequest {
   body?: SasPortalDeployment;
 }
 export const PatchCustomersDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(SasPortalDeployment.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1alpha1/{+name}","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "PatchCustomersDeploymentsRequest" }) as any as S.Schema<PatchCustomersDeploymentsRequest>;
+  S.Struct({
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    body: S.optional(SasPortalDeployment.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1alpha1/{+name}",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchCustomersDeploymentsRequest",
+}) as any as S.Schema<PatchCustomersDeploymentsRequest>;
 
 export interface PatchCustomersDevicesRequest {
   /** Fields to be updated. */
@@ -1608,12 +2285,20 @@ export interface PatchCustomersDevicesRequest {
   body?: SasPortalDevice;
 }
 export const PatchCustomersDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(SasPortalDevice.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1alpha1/{+name}","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "PatchCustomersDevicesRequest" }) as any as S.Schema<PatchCustomersDevicesRequest>;
+  S.Struct({
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    body: S.optional(SasPortalDevice.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1alpha1/{+name}",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchCustomersDevicesRequest",
+}) as any as S.Schema<PatchCustomersDevicesRequest>;
 
 export interface PatchCustomersNodesRequest {
   /** Fields to be updated. */
@@ -1624,12 +2309,20 @@ export interface PatchCustomersNodesRequest {
   body?: SasPortalNode;
 }
 export const PatchCustomersNodesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(SasPortalNode.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1alpha1/{+name}","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "PatchCustomersNodesRequest" }) as any as S.Schema<PatchCustomersNodesRequest>;
+  S.Struct({
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    body: S.optional(SasPortalNode.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1alpha1/{+name}",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchCustomersNodesRequest",
+}) as any as S.Schema<PatchCustomersNodesRequest>;
 
 export interface PatchDeploymentsDevicesRequest {
   /** Fields to be updated. */
@@ -1640,12 +2333,20 @@ export interface PatchDeploymentsDevicesRequest {
   body?: SasPortalDevice;
 }
 export const PatchDeploymentsDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(SasPortalDevice.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1alpha1/{+name}","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "PatchDeploymentsDevicesRequest" }) as any as S.Schema<PatchDeploymentsDevicesRequest>;
+  S.Struct({
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    body: S.optional(SasPortalDevice.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1alpha1/{+name}",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchDeploymentsDevicesRequest",
+}) as any as S.Schema<PatchDeploymentsDevicesRequest>;
 
 export interface PatchNodesDeploymentsRequest {
   /** Fields to be updated. */
@@ -1656,12 +2357,20 @@ export interface PatchNodesDeploymentsRequest {
   body?: SasPortalDeployment;
 }
 export const PatchNodesDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(SasPortalDeployment.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1alpha1/{+name}","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "PatchNodesDeploymentsRequest" }) as any as S.Schema<PatchNodesDeploymentsRequest>;
+  S.Struct({
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    body: S.optional(SasPortalDeployment.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1alpha1/{+name}",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchNodesDeploymentsRequest",
+}) as any as S.Schema<PatchNodesDeploymentsRequest>;
 
 export interface PatchNodesDevicesRequest {
   /** Output only. The resource path name. */
@@ -1672,12 +2381,20 @@ export interface PatchNodesDevicesRequest {
   body?: SasPortalDevice;
 }
 export const PatchNodesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(SasPortalDevice.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1alpha1/{+name}","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "PatchNodesDevicesRequest" }) as any as S.Schema<PatchNodesDevicesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(SasPortalDevice.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1alpha1/{+name}",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchNodesDevicesRequest",
+}) as any as S.Schema<PatchNodesDevicesRequest>;
 
 export interface PatchNodesNodesRequest {
   /** Fields to be updated. */
@@ -1688,12 +2405,20 @@ export interface PatchNodesNodesRequest {
   body?: SasPortalNode;
 }
 export const PatchNodesNodesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(SasPortalNode.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1alpha1/{+name}","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "PatchNodesNodesRequest" }) as any as S.Schema<PatchNodesNodesRequest>;
+  S.Struct({
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    body: S.optional(SasPortalNode.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1alpha1/{+name}",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchNodesNodesRequest",
+}) as any as S.Schema<PatchNodesNodesRequest>;
 
 /** Request for [ProvisionDeployment]. [spectrum.sas.portal.v1alpha1.Provisioning.ProvisionDeployment]. GCP Project, Organization Info, and caller’s GAIA ID should be retrieved from the RPC handler, and used as inputs to create a new SAS organization (if not exists) and a new SAS deployment. */
 export interface SasPortalProvisionDeploymentRequest {
@@ -1705,33 +2430,46 @@ export interface SasPortalProvisionDeploymentRequest {
   organizationId?: string;
 }
 export const SasPortalProvisionDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "newOrganizationDisplayName": S.optional(S.String),
-  "newDeploymentDisplayName": S.optional(S.String),
-  "organizationId": S.optional(S.String),
-}),
-).annotate({ identifier: "SasPortalProvisionDeploymentRequest" }) as any as S.Schema<SasPortalProvisionDeploymentRequest>;
+  S.Struct({
+    newOrganizationDisplayName: S.optional(S.String),
+    newDeploymentDisplayName: S.optional(S.String),
+    organizationId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SasPortalProvisionDeploymentRequest",
+}) as any as S.Schema<SasPortalProvisionDeploymentRequest>;
 
 export interface ProvisionDeploymentCustomersRequest {
   /** Request body */
   body?: SasPortalProvisionDeploymentRequest;
 }
 export const ProvisionDeploymentCustomersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(SasPortalProvisionDeploymentRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/customers:provisionDeployment","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "ProvisionDeploymentCustomersRequest" }) as any as S.Schema<ProvisionDeploymentCustomersRequest>;
+  S.Struct({
+    body: S.optional(SasPortalProvisionDeploymentRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha1/customers:provisionDeployment",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ProvisionDeploymentCustomersRequest",
+}) as any as S.Schema<ProvisionDeploymentCustomersRequest>;
 
 /** Response for [ProvisionDeployment]. [spectrum.sas.portal.v1alpha1.Provisioning.ProvisionDeployment]. */
 export interface SasPortalProvisionDeploymentResponse {
   /** Optional. Optional error message if the provisioning request is not successful. */
   errorMessage?: string;
 }
-export const SasPortalProvisionDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "errorMessage": S.optional(S.String),
-}),
-).annotate({ identifier: "SasPortalProvisionDeploymentResponse" }) as any as S.Schema<SasPortalProvisionDeploymentResponse>;
+export const SasPortalProvisionDeploymentResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      errorMessage: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "SasPortalProvisionDeploymentResponse",
+}) as any as S.Schema<SasPortalProvisionDeploymentResponse>;
 
 /** Request message for `SetPolicy` method. */
 export interface SasPortalSetPolicyRequest {
@@ -1743,22 +2481,32 @@ export interface SasPortalSetPolicyRequest {
   disableNotification?: boolean;
 }
 export const SasPortalSetPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "policy": S.optional(SasPortalPolicy),
-  "resource": S.optional(S.String),
-  "disableNotification": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "SasPortalSetPolicyRequest" }) as any as S.Schema<SasPortalSetPolicyRequest>;
+  S.Struct({
+    policy: S.optional(SasPortalPolicy),
+    resource: S.optional(S.String),
+    disableNotification: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "SasPortalSetPolicyRequest",
+}) as any as S.Schema<SasPortalSetPolicyRequest>;
 
 export interface SetPoliciesRequest {
   /** Request body */
   body?: SasPortalSetPolicyRequest;
 }
 export const SetPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(SasPortalSetPolicyRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/policies:set","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "SetPoliciesRequest" }) as any as S.Schema<SetPoliciesRequest>;
+  S.Struct({
+    body: S.optional(SasPortalSetPolicyRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha1/policies:set",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SetPoliciesRequest",
+}) as any as S.Schema<SetPoliciesRequest>;
 
 /** Request for the SetupSasAnalytics rpc. */
 export interface SasPortalSetupSasAnalyticsRequest {
@@ -1766,20 +2514,30 @@ export interface SasPortalSetupSasAnalyticsRequest {
   userId?: string;
 }
 export const SasPortalSetupSasAnalyticsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "userId": S.optional(S.String),
-}),
-).annotate({ identifier: "SasPortalSetupSasAnalyticsRequest" }) as any as S.Schema<SasPortalSetupSasAnalyticsRequest>;
+  S.Struct({
+    userId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SasPortalSetupSasAnalyticsRequest",
+}) as any as S.Schema<SasPortalSetupSasAnalyticsRequest>;
 
 export interface SetupSasAnalyticsCustomersRequest {
   /** Request body */
   body?: SasPortalSetupSasAnalyticsRequest;
 }
 export const SetupSasAnalyticsCustomersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(SasPortalSetupSasAnalyticsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/customers:setupSasAnalytics","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "SetupSasAnalyticsCustomersRequest" }) as any as S.Schema<SetupSasAnalyticsCustomersRequest>;
+  S.Struct({
+    body: S.optional(SasPortalSetupSasAnalyticsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha1/customers:setupSasAnalytics",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SetupSasAnalyticsCustomersRequest",
+}) as any as S.Schema<SetupSasAnalyticsCustomersRequest>;
 
 /** Request for SignDevice. */
 export interface SasPortalSignDeviceRequest {
@@ -1787,10 +2545,12 @@ export interface SasPortalSignDeviceRequest {
   device?: SasPortalDevice;
 }
 export const SasPortalSignDeviceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "device": S.optional(SasPortalDevice),
-}),
-).annotate({ identifier: "SasPortalSignDeviceRequest" }) as any as S.Schema<SasPortalSignDeviceRequest>;
+  S.Struct({
+    device: S.optional(SasPortalDevice),
+  }),
+).annotate({
+  identifier: "SasPortalSignDeviceRequest",
+}) as any as S.Schema<SasPortalSignDeviceRequest>;
 
 export interface SignDeviceCustomersDevicesRequest {
   /** Output only. The resource path name. */
@@ -1799,11 +2559,19 @@ export interface SignDeviceCustomersDevicesRequest {
   body?: SasPortalSignDeviceRequest;
 }
 export const SignDeviceCustomersDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(SasPortalSignDeviceRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+name}:signDevice","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "SignDeviceCustomersDevicesRequest" }) as any as S.Schema<SignDeviceCustomersDevicesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(SasPortalSignDeviceRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha1/{+name}:signDevice",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SignDeviceCustomersDevicesRequest",
+}) as any as S.Schema<SignDeviceCustomersDevicesRequest>;
 
 export interface SignDeviceDeploymentsDevicesRequest {
   /** Output only. The resource path name. */
@@ -1812,11 +2580,19 @@ export interface SignDeviceDeploymentsDevicesRequest {
   body?: SasPortalSignDeviceRequest;
 }
 export const SignDeviceDeploymentsDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(SasPortalSignDeviceRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+name}:signDevice","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "SignDeviceDeploymentsDevicesRequest" }) as any as S.Schema<SignDeviceDeploymentsDevicesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(SasPortalSignDeviceRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha1/{+name}:signDevice",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SignDeviceDeploymentsDevicesRequest",
+}) as any as S.Schema<SignDeviceDeploymentsDevicesRequest>;
 
 export interface SignDeviceNodesDevicesRequest {
   /** Output only. The resource path name. */
@@ -1825,11 +2601,19 @@ export interface SignDeviceNodesDevicesRequest {
   body?: SasPortalSignDeviceRequest;
 }
 export const SignDeviceNodesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(SasPortalSignDeviceRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+name}:signDevice","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "SignDeviceNodesDevicesRequest" }) as any as S.Schema<SignDeviceNodesDevicesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(SasPortalSignDeviceRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha1/{+name}:signDevice",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SignDeviceNodesDevicesRequest",
+}) as any as S.Schema<SignDeviceNodesDevicesRequest>;
 
 /** Request message for `TestPermissions` method. */
 export interface SasPortalTestPermissionsRequest {
@@ -1839,21 +2623,31 @@ export interface SasPortalTestPermissionsRequest {
   permissions?: StringList;
 }
 export const SasPortalTestPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.optional(S.String),
-  "permissions": S.optional(StringList),
-}),
-).annotate({ identifier: "SasPortalTestPermissionsRequest" }) as any as S.Schema<SasPortalTestPermissionsRequest>;
+  S.Struct({
+    resource: S.optional(S.String),
+    permissions: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "SasPortalTestPermissionsRequest",
+}) as any as S.Schema<SasPortalTestPermissionsRequest>;
 
 export interface TestPoliciesRequest {
   /** Request body */
   body?: SasPortalTestPermissionsRequest;
 }
 export const TestPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(SasPortalTestPermissionsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/policies:test","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "TestPoliciesRequest" }) as any as S.Schema<TestPoliciesRequest>;
+  S.Struct({
+    body: S.optional(SasPortalTestPermissionsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha1/policies:test",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "TestPoliciesRequest",
+}) as any as S.Schema<TestPoliciesRequest>;
 
 /** Response message for `TestPermissions` method. */
 export interface SasPortalTestPermissionsResponse {
@@ -1861,10 +2655,12 @@ export interface SasPortalTestPermissionsResponse {
   permissions?: StringList;
 }
 export const SasPortalTestPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "permissions": S.optional(StringList),
-}),
-).annotate({ identifier: "SasPortalTestPermissionsResponse" }) as any as S.Schema<SasPortalTestPermissionsResponse>;
+  S.Struct({
+    permissions: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "SasPortalTestPermissionsResponse",
+}) as any as S.Schema<SasPortalTestPermissionsResponse>;
 
 /** Request for UpdateSignedDevice. */
 export interface SasPortalUpdateSignedDeviceRequest {
@@ -1874,11 +2670,13 @@ export interface SasPortalUpdateSignedDeviceRequest {
   installerId?: string;
 }
 export const SasPortalUpdateSignedDeviceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "encodedDevice": S.optional(S.String),
-  "installerId": S.optional(S.String),
-}),
-).annotate({ identifier: "SasPortalUpdateSignedDeviceRequest" }) as any as S.Schema<SasPortalUpdateSignedDeviceRequest>;
+  S.Struct({
+    encodedDevice: S.optional(S.String),
+    installerId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SasPortalUpdateSignedDeviceRequest",
+}) as any as S.Schema<SasPortalUpdateSignedDeviceRequest>;
 
 export interface UpdateSignedCustomersDevicesRequest {
   /** Required. The name of the device to update. */
@@ -1887,11 +2685,19 @@ export interface UpdateSignedCustomersDevicesRequest {
   body?: SasPortalUpdateSignedDeviceRequest;
 }
 export const UpdateSignedCustomersDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(SasPortalUpdateSignedDeviceRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1alpha1/{+name}:updateSigned","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "UpdateSignedCustomersDevicesRequest" }) as any as S.Schema<UpdateSignedCustomersDevicesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(SasPortalUpdateSignedDeviceRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1alpha1/{+name}:updateSigned",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateSignedCustomersDevicesRequest",
+}) as any as S.Schema<UpdateSignedCustomersDevicesRequest>;
 
 export interface UpdateSignedDeploymentsDevicesRequest {
   /** Required. The name of the device to update. */
@@ -1899,12 +2705,21 @@ export interface UpdateSignedDeploymentsDevicesRequest {
   /** Request body */
   body?: SasPortalUpdateSignedDeviceRequest;
 }
-export const UpdateSignedDeploymentsDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(SasPortalUpdateSignedDeviceRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1alpha1/{+name}:updateSigned","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "UpdateSignedDeploymentsDevicesRequest" }) as any as S.Schema<UpdateSignedDeploymentsDevicesRequest>;
+export const UpdateSignedDeploymentsDevicesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(SasPortalUpdateSignedDeviceRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1alpha1/{+name}:updateSigned",
+        baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "UpdateSignedDeploymentsDevicesRequest",
+}) as any as S.Schema<UpdateSignedDeploymentsDevicesRequest>;
 
 export interface UpdateSignedNodesDevicesRequest {
   /** Required. The name of the device to update. */
@@ -1913,11 +2728,19 @@ export interface UpdateSignedNodesDevicesRequest {
   body?: SasPortalUpdateSignedDeviceRequest;
 }
 export const UpdateSignedNodesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(SasPortalUpdateSignedDeviceRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1alpha1/{+name}:updateSigned","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "UpdateSignedNodesDevicesRequest" }) as any as S.Schema<UpdateSignedNodesDevicesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(SasPortalUpdateSignedDeviceRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1alpha1/{+name}:updateSigned",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateSignedNodesDevicesRequest",
+}) as any as S.Schema<UpdateSignedNodesDevicesRequest>;
 
 /** Request for ValidateInstaller. */
 export interface SasPortalValidateInstallerRequest {
@@ -1929,30 +2752,47 @@ export interface SasPortalValidateInstallerRequest {
   encodedSecret?: string;
 }
 export const SasPortalValidateInstallerRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "installerId": S.optional(S.String),
-  "secret": S.optional(S.String),
-  "encodedSecret": S.optional(S.String),
-}),
-).annotate({ identifier: "SasPortalValidateInstallerRequest" }) as any as S.Schema<SasPortalValidateInstallerRequest>;
+  S.Struct({
+    installerId: S.optional(S.String),
+    secret: S.optional(S.String),
+    encodedSecret: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SasPortalValidateInstallerRequest",
+}) as any as S.Schema<SasPortalValidateInstallerRequest>;
 
 export interface ValidateInstallerRequest {
   /** Request body */
   body?: SasPortalValidateInstallerRequest;
 }
 export const ValidateInstallerRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(SasPortalValidateInstallerRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/installer:validate","baseUrl":"https://prod-tt-sasportal.googleapis.com/"})),
-).annotate({ identifier: "ValidateInstallerRequest" }) as any as S.Schema<ValidateInstallerRequest>;
+  S.Struct({
+    body: S.optional(SasPortalValidateInstallerRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha1/installer:validate",
+      baseUrl: "https://prod-tt-sasportal.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ValidateInstallerRequest",
+}) as any as S.Schema<ValidateInstallerRequest>;
 
 /** Response for ValidateInstaller. */
 export interface SasPortalValidateInstallerResponse {}
 export const SasPortalValidateInstallerResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "SasPortalValidateInstallerResponse" }) as any as S.Schema<SasPortalValidateInstallerResponse>;
+  S.Struct({}),
+).annotate({
+  identifier: "SasPortalValidateInstallerResponse",
+}) as any as S.Schema<SasPortalValidateInstallerResponse>;
 
-export type CreateCustomersDeploymentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateCustomersDeploymentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new deployment. */
 export const createCustomersDeployments: API.OperationMethod<
   CreateCustomersDeploymentsRequest,
@@ -1967,7 +2807,12 @@ export const createCustomersDeployments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateCustomersDeploymentsDevicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateCustomersDeploymentsDevicesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a device under a node or customer. */
 export const createCustomersDeploymentsDevices: API.OperationMethod<
   CreateCustomersDeploymentsDevicesRequest,
@@ -1982,7 +2827,12 @@ export const createCustomersDeploymentsDevices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateCustomersDevicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateCustomersDevicesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a device under a node or customer. */
 export const createCustomersDevices: API.OperationMethod<
   CreateCustomersDevicesRequest,
@@ -1997,7 +2847,12 @@ export const createCustomersDevices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateCustomersNodesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateCustomersNodesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new node. */
 export const createCustomersNodes: API.OperationMethod<
   CreateCustomersNodesRequest,
@@ -2012,7 +2867,12 @@ export const createCustomersNodes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateCustomersNodesDeploymentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateCustomersNodesDeploymentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new deployment. */
 export const createCustomersNodesDeployments: API.OperationMethod<
   CreateCustomersNodesDeploymentsRequest,
@@ -2027,7 +2887,12 @@ export const createCustomersNodesDeployments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateCustomersNodesDevicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateCustomersNodesDevicesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a device under a node or customer. */
 export const createCustomersNodesDevices: API.OperationMethod<
   CreateCustomersNodesDevicesRequest,
@@ -2042,7 +2907,12 @@ export const createCustomersNodesDevices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateCustomersNodesNodesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateCustomersNodesNodesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new node. */
 export const createCustomersNodesNodes: API.OperationMethod<
   CreateCustomersNodesNodesRequest,
@@ -2057,7 +2927,12 @@ export const createCustomersNodesNodes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateNodesDeploymentsDevicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateNodesDeploymentsDevicesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a device under a node or customer. */
 export const createNodesDeploymentsDevices: API.OperationMethod<
   CreateNodesDeploymentsDevicesRequest,
@@ -2072,7 +2947,12 @@ export const createNodesDeploymentsDevices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateNodesDevicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateNodesDevicesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a device under a node or customer. */
 export const createNodesDevices: API.OperationMethod<
   CreateNodesDevicesRequest,
@@ -2087,7 +2967,12 @@ export const createNodesDevices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateNodesNodesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateNodesNodesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new node. */
 export const createNodesNodes: API.OperationMethod<
   CreateNodesNodesRequest,
@@ -2102,7 +2987,12 @@ export const createNodesNodes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateNodesNodesDeploymentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateNodesNodesDeploymentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new deployment. */
 export const createNodesNodesDeployments: API.OperationMethod<
   CreateNodesNodesDeploymentsRequest,
@@ -2117,7 +3007,12 @@ export const createNodesNodesDeployments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateNodesNodesDevicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateNodesNodesDevicesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a device under a node or customer. */
 export const createNodesNodesDevices: API.OperationMethod<
   CreateNodesNodesDevicesRequest,
@@ -2132,7 +3027,12 @@ export const createNodesNodesDevices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateNodesNodesNodesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateNodesNodesNodesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new node. */
 export const createNodesNodesNodes: API.OperationMethod<
   CreateNodesNodesNodesRequest,
@@ -2147,7 +3047,12 @@ export const createNodesNodesNodes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateSignedCustomersDeploymentsDevicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateSignedCustomersDeploymentsDevicesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a signed device under a node or customer. */
 export const createSignedCustomersDeploymentsDevices: API.OperationMethod<
   CreateSignedCustomersDeploymentsDevicesRequest,
@@ -2162,7 +3067,12 @@ export const createSignedCustomersDeploymentsDevices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateSignedCustomersDevicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateSignedCustomersDevicesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a signed device under a node or customer. */
 export const createSignedCustomersDevices: API.OperationMethod<
   CreateSignedCustomersDevicesRequest,
@@ -2177,7 +3087,12 @@ export const createSignedCustomersDevices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateSignedCustomersNodesDevicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateSignedCustomersNodesDevicesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a signed device under a node or customer. */
 export const createSignedCustomersNodesDevices: API.OperationMethod<
   CreateSignedCustomersNodesDevicesRequest,
@@ -2192,7 +3107,12 @@ export const createSignedCustomersNodesDevices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateSignedNodesDeploymentsDevicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateSignedNodesDeploymentsDevicesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a signed device under a node or customer. */
 export const createSignedNodesDeploymentsDevices: API.OperationMethod<
   CreateSignedNodesDeploymentsDevicesRequest,
@@ -2207,7 +3127,12 @@ export const createSignedNodesDeploymentsDevices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateSignedNodesDevicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateSignedNodesDevicesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a signed device under a node or customer. */
 export const createSignedNodesDevices: API.OperationMethod<
   CreateSignedNodesDevicesRequest,
@@ -2222,7 +3147,12 @@ export const createSignedNodesDevices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateSignedNodesNodesDevicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateSignedNodesNodesDevicesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a signed device under a node or customer. */
 export const createSignedNodesNodesDevices: API.OperationMethod<
   CreateSignedNodesNodesDevicesRequest,
@@ -2237,7 +3167,12 @@ export const createSignedNodesNodesDevices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteCustomersDeploymentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteCustomersDeploymentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a deployment. */
 export const deleteCustomersDeployments: API.OperationMethod<
   DeleteCustomersDeploymentsRequest,
@@ -2252,7 +3187,12 @@ export const deleteCustomersDeployments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteCustomersDevicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteCustomersDevicesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a device. */
 export const deleteCustomersDevices: API.OperationMethod<
   DeleteCustomersDevicesRequest,
@@ -2267,7 +3207,12 @@ export const deleteCustomersDevices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteCustomersNodesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteCustomersNodesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a node. */
 export const deleteCustomersNodes: API.OperationMethod<
   DeleteCustomersNodesRequest,
@@ -2282,7 +3227,12 @@ export const deleteCustomersNodes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteDeploymentsDevicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteDeploymentsDevicesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a device. */
 export const deleteDeploymentsDevices: API.OperationMethod<
   DeleteDeploymentsDevicesRequest,
@@ -2297,7 +3247,12 @@ export const deleteDeploymentsDevices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteNodesDeploymentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteNodesDeploymentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a deployment. */
 export const deleteNodesDeployments: API.OperationMethod<
   DeleteNodesDeploymentsRequest,
@@ -2312,7 +3267,12 @@ export const deleteNodesDeployments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteNodesDevicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteNodesDevicesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a device. */
 export const deleteNodesDevices: API.OperationMethod<
   DeleteNodesDevicesRequest,
@@ -2327,7 +3287,12 @@ export const deleteNodesDevices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteNodesNodesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteNodesNodesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a node. */
 export const deleteNodesNodes: API.OperationMethod<
   DeleteNodesNodesRequest,
@@ -2342,7 +3307,12 @@ export const deleteNodesNodes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GenerateSecretInstallerError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type GenerateSecretInstallerError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Generates a secret to be used with the ValidateInstaller. */
 export const generateSecretInstaller: API.OperationMethod<
   GenerateSecretInstallerRequest,
@@ -2507,7 +3477,12 @@ export const getNodesNodes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetPoliciesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type GetPoliciesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getPolicies: API.OperationMethod<
   GetPoliciesRequest,
@@ -2535,7 +3510,10 @@ export const listCustomers: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListCustomersDeploymentsError = NotFound | Forbidden | GcpOpError;
@@ -2551,10 +3529,16 @@ export const listCustomersDeployments: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListCustomersDeploymentsDevicesError = NotFound | Forbidden | GcpOpError;
+export type ListCustomersDeploymentsDevicesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists devices under a node or customer. */
 export const listCustomersDeploymentsDevices: API.PaginatedOperationMethod<
   ListCustomersDeploymentsDevicesRequest,
@@ -2567,7 +3551,10 @@ export const listCustomersDeploymentsDevices: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListCustomersDevicesError = NotFound | Forbidden | GcpOpError;
@@ -2583,7 +3570,10 @@ export const listCustomersDevices: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListCustomersNodesError = NotFound | Forbidden | GcpOpError;
@@ -2599,10 +3589,16 @@ export const listCustomersNodes: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListCustomersNodesDeploymentsError = NotFound | Forbidden | GcpOpError;
+export type ListCustomersNodesDeploymentsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists deployments. */
 export const listCustomersNodesDeployments: API.PaginatedOperationMethod<
   ListCustomersNodesDeploymentsRequest,
@@ -2615,7 +3611,10 @@ export const listCustomersNodesDeployments: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListCustomersNodesDevicesError = NotFound | Forbidden | GcpOpError;
@@ -2631,7 +3630,10 @@ export const listCustomersNodesDevices: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListCustomersNodesNodesError = NotFound | Forbidden | GcpOpError;
@@ -2647,10 +3649,16 @@ export const listCustomersNodesNodes: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListGcpProjectDeploymentsCustomersError = NotFound | Forbidden | GcpOpError;
+export type ListGcpProjectDeploymentsCustomersError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns a list of SAS deployments associated with current GCP project. Includes whether SAS analytics has been enabled or not. */
 export const listGcpProjectDeploymentsCustomers: API.OperationMethod<
   ListGcpProjectDeploymentsCustomersRequest,
@@ -2665,7 +3673,10 @@ export const listGcpProjectDeploymentsCustomers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListLegacyOrganizationsCustomersError = NotFound | Forbidden | GcpOpError;
+export type ListLegacyOrganizationsCustomersError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns a list of legacy organizations. */
 export const listLegacyOrganizationsCustomers: API.OperationMethod<
   ListLegacyOrganizationsCustomersRequest,
@@ -2693,10 +3704,16 @@ export const listNodesDeployments: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListNodesDeploymentsDevicesError = NotFound | Forbidden | GcpOpError;
+export type ListNodesDeploymentsDevicesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists devices under a node or customer. */
 export const listNodesDeploymentsDevices: API.PaginatedOperationMethod<
   ListNodesDeploymentsDevicesRequest,
@@ -2709,7 +3726,10 @@ export const listNodesDeploymentsDevices: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListNodesDevicesError = NotFound | Forbidden | GcpOpError;
@@ -2725,7 +3745,10 @@ export const listNodesDevices: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListNodesNodesError = NotFound | Forbidden | GcpOpError;
@@ -2741,7 +3764,10 @@ export const listNodesNodes: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListNodesNodesDeploymentsError = NotFound | Forbidden | GcpOpError;
@@ -2757,7 +3783,10 @@ export const listNodesNodesDeployments: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListNodesNodesDevicesError = NotFound | Forbidden | GcpOpError;
@@ -2773,7 +3802,10 @@ export const listNodesNodesDevices: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListNodesNodesNodesError = NotFound | Forbidden | GcpOpError;
@@ -2789,10 +3821,18 @@ export const listNodesNodesNodes: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type MigrateOrganizationCustomersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type MigrateOrganizationCustomersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Migrates a SAS organization to the cloud. This will create GCP projects for each deployment and associate them. The SAS Organization is linked to the gcp project that called the command. go/sas-legacy-customer-migration */
 export const migrateOrganizationCustomers: API.OperationMethod<
   MigrateOrganizationCustomersRequest,
@@ -2807,7 +3847,12 @@ export const migrateOrganizationCustomers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type MoveCustomersDeploymentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type MoveCustomersDeploymentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Moves a deployment under another node or customer. */
 export const moveCustomersDeployments: API.OperationMethod<
   MoveCustomersDeploymentsRequest,
@@ -2822,7 +3867,12 @@ export const moveCustomersDeployments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type MoveCustomersDevicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type MoveCustomersDevicesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Moves a device under another node or customer. */
 export const moveCustomersDevices: API.OperationMethod<
   MoveCustomersDevicesRequest,
@@ -2837,7 +3887,12 @@ export const moveCustomersDevices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type MoveCustomersNodesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type MoveCustomersNodesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Moves a node under another node or customer. */
 export const moveCustomersNodes: API.OperationMethod<
   MoveCustomersNodesRequest,
@@ -2852,7 +3907,12 @@ export const moveCustomersNodes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type MoveDeploymentsDevicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type MoveDeploymentsDevicesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Moves a device under another node or customer. */
 export const moveDeploymentsDevices: API.OperationMethod<
   MoveDeploymentsDevicesRequest,
@@ -2867,7 +3927,12 @@ export const moveDeploymentsDevices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type MoveNodesDeploymentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type MoveNodesDeploymentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Moves a deployment under another node or customer. */
 export const moveNodesDeployments: API.OperationMethod<
   MoveNodesDeploymentsRequest,
@@ -2882,7 +3947,12 @@ export const moveNodesDeployments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type MoveNodesDevicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type MoveNodesDevicesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Moves a device under another node or customer. */
 export const moveNodesDevices: API.OperationMethod<
   MoveNodesDevicesRequest,
@@ -2897,7 +3967,12 @@ export const moveNodesDevices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type MoveNodesNodesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type MoveNodesNodesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Moves a node under another node or customer. */
 export const moveNodesNodes: API.OperationMethod<
   MoveNodesNodesRequest,
@@ -2912,7 +3987,12 @@ export const moveNodesNodes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchCustomersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchCustomersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates an existing customer. */
 export const patchCustomers: API.OperationMethod<
   PatchCustomersRequest,
@@ -2927,7 +4007,12 @@ export const patchCustomers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchCustomersDeploymentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchCustomersDeploymentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates an existing deployment. */
 export const patchCustomersDeployments: API.OperationMethod<
   PatchCustomersDeploymentsRequest,
@@ -2942,7 +4027,12 @@ export const patchCustomersDeployments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchCustomersDevicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchCustomersDevicesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a device. */
 export const patchCustomersDevices: API.OperationMethod<
   PatchCustomersDevicesRequest,
@@ -2957,7 +4047,12 @@ export const patchCustomersDevices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchCustomersNodesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchCustomersNodesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates an existing node. */
 export const patchCustomersNodes: API.OperationMethod<
   PatchCustomersNodesRequest,
@@ -2972,7 +4067,12 @@ export const patchCustomersNodes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchDeploymentsDevicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchDeploymentsDevicesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a device. */
 export const patchDeploymentsDevices: API.OperationMethod<
   PatchDeploymentsDevicesRequest,
@@ -2987,7 +4087,12 @@ export const patchDeploymentsDevices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchNodesDeploymentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchNodesDeploymentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates an existing deployment. */
 export const patchNodesDeployments: API.OperationMethod<
   PatchNodesDeploymentsRequest,
@@ -3002,7 +4107,12 @@ export const patchNodesDeployments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchNodesDevicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchNodesDevicesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a device. */
 export const patchNodesDevices: API.OperationMethod<
   PatchNodesDevicesRequest,
@@ -3017,7 +4127,12 @@ export const patchNodesDevices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchNodesNodesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchNodesNodesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates an existing node. */
 export const patchNodesNodes: API.OperationMethod<
   PatchNodesNodesRequest,
@@ -3032,7 +4147,12 @@ export const patchNodesNodes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ProvisionDeploymentCustomersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ProvisionDeploymentCustomersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new SAS deployment through the GCP workflow. Creates a SAS organization if an organization match is not found. */
 export const provisionDeploymentCustomers: API.OperationMethod<
   ProvisionDeploymentCustomersRequest,
@@ -3047,7 +4167,12 @@ export const provisionDeploymentCustomers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetPoliciesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetPoliciesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. */
 export const setPolicies: API.OperationMethod<
   SetPoliciesRequest,
@@ -3062,7 +4187,12 @@ export const setPolicies: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetupSasAnalyticsCustomersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetupSasAnalyticsCustomersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Setups the a GCP Project to receive SAS Analytics messages via GCP Pub/Sub with a subscription to BigQuery. All the Pub/Sub topics and BigQuery tables are created automatically as part of this service. */
 export const setupSasAnalyticsCustomers: API.OperationMethod<
   SetupSasAnalyticsCustomersRequest,
@@ -3077,7 +4207,12 @@ export const setupSasAnalyticsCustomers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SignDeviceCustomersDevicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SignDeviceCustomersDevicesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Signs a device. */
 export const signDeviceCustomersDevices: API.OperationMethod<
   SignDeviceCustomersDevicesRequest,
@@ -3092,7 +4227,12 @@ export const signDeviceCustomersDevices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SignDeviceDeploymentsDevicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SignDeviceDeploymentsDevicesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Signs a device. */
 export const signDeviceDeploymentsDevices: API.OperationMethod<
   SignDeviceDeploymentsDevicesRequest,
@@ -3107,7 +4247,12 @@ export const signDeviceDeploymentsDevices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SignDeviceNodesDevicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SignDeviceNodesDevicesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Signs a device. */
 export const signDeviceNodesDevices: API.OperationMethod<
   SignDeviceNodesDevicesRequest,
@@ -3122,7 +4267,12 @@ export const signDeviceNodesDevices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestPoliciesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TestPoliciesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. */
 export const testPolicies: API.OperationMethod<
   TestPoliciesRequest,
@@ -3137,7 +4287,12 @@ export const testPolicies: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateSignedCustomersDevicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateSignedCustomersDevicesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a signed device. */
 export const updateSignedCustomersDevices: API.OperationMethod<
   UpdateSignedCustomersDevicesRequest,
@@ -3152,7 +4307,12 @@ export const updateSignedCustomersDevices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateSignedDeploymentsDevicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateSignedDeploymentsDevicesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a signed device. */
 export const updateSignedDeploymentsDevices: API.OperationMethod<
   UpdateSignedDeploymentsDevicesRequest,
@@ -3167,7 +4327,12 @@ export const updateSignedDeploymentsDevices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateSignedNodesDevicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateSignedNodesDevicesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a signed device. */
 export const updateSignedNodesDevices: API.OperationMethod<
   UpdateSignedNodesDevicesRequest,
@@ -3182,7 +4347,12 @@ export const updateSignedNodesDevices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ValidateInstallerError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ValidateInstallerError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Validates the identity of a Certified Professional Installer (CPI). */
 export const validateInstaller: API.OperationMethod<
   ValidateInstallerRequest,
@@ -3196,4 +4366,3 @@ export const validateInstaller: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

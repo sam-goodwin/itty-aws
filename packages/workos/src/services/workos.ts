@@ -427,9 +427,21 @@ export const ApiKeyOwnerCase1 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApiKeyOwnerCase1>;
 
 /** The entity that owns the API Key. */
-export type ApiKeyOwner = ApiKeyOwnerCase0 | ApiKeyOwnerCase1;
-export const ApiKeyOwner =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<ApiKeyOwner>;
+export interface ApiKeyOwner {
+  /** The type of the API Key owner. */
+  type: string;
+  /** Unique identifier of the API Key owner. */
+  id: string;
+  /** Unique identifier of the organization the API Key can access. */
+  organization_id?: string;
+}
+export const ApiKeyOwner = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.String,
+    id: S.String,
+    organization_id: S.optional(S.String),
+  }),
+).annotate({ identifier: "ApiKeyOwner" }) as any as S.Schema<ApiKeyOwner>;
 
 /** The permission slugs assigned to the API Key. */
 export type ApiKeyPermissionsList = ReadonlyArray<string>;
@@ -5551,11 +5563,25 @@ export const DataIntegrationAccessTokenResponseCase1 = /*@__PURE__*/ S.suspend(
   identifier: "DataIntegrationAccessTokenResponseCase1",
 }) as any as S.Schema<DataIntegrationAccessTokenResponseCase1>;
 
-export type DataIntegrationAccessTokenResponse =
-  | DataIntegrationAccessTokenResponseCase0
-  | DataIntegrationAccessTokenResponseCase1;
-export const DataIntegrationAccessTokenResponse =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<DataIntegrationAccessTokenResponse>;
+export interface DataIntegrationAccessTokenResponse {
+  /** Indicates whether the access token is valid and ready for use, or if reauthorization is required. */
+  active: boolean;
+  /** The [access token](/reference/pipes/access-token) object, present when `active` is `true`. */
+  access_token?: DataIntegrationAccessTokenResponseCase0AccessToken;
+  /** - `"not_installed"`: The user does not have the integration installed. - `"needs_reauthorization"`: The user needs to reauthorize the integration. */
+  error?: DataIntegrationAccessTokenResponseCase1Error;
+}
+export const DataIntegrationAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    active: S.Boolean,
+    access_token: S.optional(
+      DataIntegrationAccessTokenResponseCase0AccessToken,
+    ),
+    error: S.optional(DataIntegrationAccessTokenResponseCase1Error),
+  }),
+).annotate({
+  identifier: "DataIntegrationAccessTokenResponse",
+}) as any as S.Schema<DataIntegrationAccessTokenResponse>;
 
 export type DataIntegrationsControllerGetUserlandUserTokenResponse =
   DataIntegrationAccessTokenResponse;
@@ -5796,12 +5822,30 @@ export const DataIntegrationCredentialsResponseCase2 = /*@__PURE__*/ S.suspend(
   identifier: "DataIntegrationCredentialsResponseCase2",
 }) as any as S.Schema<DataIntegrationCredentialsResponseCase2>;
 
-export type DataIntegrationCredentialsResponse =
-  | DataIntegrationCredentialsResponseCase0
-  | DataIntegrationCredentialsResponseCase1
-  | DataIntegrationCredentialsResponseCase2;
-export const DataIntegrationCredentialsResponse =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<DataIntegrationCredentialsResponse>;
+export interface DataIntegrationCredentialsResponse {
+  /** Indicates credentials are available. */
+  active: boolean;
+  /** The credential object containing the vended secret. */
+  credential?:
+    | DataIntegrationCredentialsResponseCase0Credential
+    | DataIntegrationCredentialsResponseCase1Credential;
+  /** The reason credentials are unavailable. Additional values may be added in the future; handle unknown values gracefully. - `"not_installed"`: The user does not have the integration installed. - `"needs_reauthorization"`: The user needs to reauthorize the integration. */
+  error?: DataIntegrationCredentialsResponseCase2Error;
+}
+export const DataIntegrationCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    active: S.Boolean,
+    credential: S.optional(
+      S.Union(
+        DataIntegrationCredentialsResponseCase0Credential,
+        DataIntegrationCredentialsResponseCase1Credential,
+      ),
+    ),
+    error: S.optional(DataIntegrationCredentialsResponseCase2Error),
+  }),
+).annotate({
+  identifier: "DataIntegrationCredentialsResponse",
+}) as any as S.Schema<DataIntegrationCredentialsResponse>;
 
 export type DataIntegrationsControllerVendCredentialsResponse =
   DataIntegrationCredentialsResponse;

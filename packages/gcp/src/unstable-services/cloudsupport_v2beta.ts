@@ -13,58 +13,60 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 /** The request message for the CloseCase endpoint. */
 export interface CloseCaseRequest {}
 export const CloseCaseRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "CloseCaseRequest" }) as any as S.Schema<CloseCaseRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "CloseCaseRequest",
+}) as any as S.Schema<CloseCaseRequest>;
 
 export interface CloseCasesRequest {
   /** Required. The name of the case to close. */
@@ -73,25 +75,56 @@ export interface CloseCasesRequest {
   body?: CloseCaseRequest;
 }
 export const CloseCasesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(CloseCaseRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2beta/{+name}:close","baseUrl":"https://cloudsupport.googleapis.com/"})),
-).annotate({ identifier: "CloseCasesRequest" }) as any as S.Schema<CloseCasesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(CloseCaseRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v2beta/{+name}:close",
+      baseUrl: "https://cloudsupport.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CloseCasesRequest",
+}) as any as S.Schema<CloseCasesRequest>;
 
-export type CaseStateEnum = "STATE_UNSPECIFIED" | "NEW" | "IN_PROGRESS_GOOGLE_SUPPORT" | "ACTION_REQUIRED" | "SOLUTION_PROVIDED" | "CLOSED";
+export type CaseStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "NEW"
+  | "IN_PROGRESS_GOOGLE_SUPPORT"
+  | "ACTION_REQUIRED"
+  | "SOLUTION_PROVIDED"
+  | "CLOSED";
 export const CaseStateEnum = /*@__PURE__*/ S.String;
 
-export type CaseSeverityEnum = "SEVERITY_UNSPECIFIED" | "S0" | "S1" | "S2" | "S3" | "S4";
+export type CaseSeverityEnum =
+  | "SEVERITY_UNSPECIFIED"
+  | "S0"
+  | "S1"
+  | "S2"
+  | "S3"
+  | "S4";
 export const CaseSeverityEnum = /*@__PURE__*/ S.String;
 
-export type CasePriorityEnum = "PRIORITY_UNSPECIFIED" | "P0" | "P1" | "P2" | "P3" | "P4";
+export type CasePriorityEnum =
+  | "PRIORITY_UNSPECIFIED"
+  | "P0"
+  | "P1"
+  | "P2"
+  | "P3"
+  | "P4";
 export const CasePriorityEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
-export type ProductProductLineEnum = "PRODUCT_LINE_UNSPECIFIED" | "GOOGLE_CLOUD" | "GOOGLE_MAPS";
+export type ProductProductLineEnum =
+  | "PRODUCT_LINE_UNSPECIFIED"
+  | "GOOGLE_CLOUD"
+  | "GOOGLE_MAPS";
 export const ProductProductLineEnum = /*@__PURE__*/ S.String;
 
 /** The product a case may be associated with. */
@@ -100,9 +133,9 @@ export interface Product {
   productLine?: ProductProductLineEnum;
 }
 export const Product = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "productLine": S.optional(ProductProductLineEnum),
-}),
+  S.Struct({
+    productLine: S.optional(ProductProductLineEnum),
+  }),
 ).annotate({ identifier: "Product" }) as any as S.Schema<Product>;
 
 /** A Case Classification represents the topic that a case is about. It's very important to use accurate classifications, because they're used to route your cases to specialists who can help you. A classification always has an ID that is its unique identifier. A valid ID is required when creating a case. */
@@ -115,12 +148,14 @@ export interface CaseClassification {
   product?: Product;
 }
 export const CaseClassification = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "displayName": S.optional(S.String),
-  "id": S.optional(S.String),
-  "product": S.optional(Product),
-}),
-).annotate({ identifier: "CaseClassification" }) as any as S.Schema<CaseClassification>;
+  S.Struct({
+    displayName: S.optional(S.String),
+    id: S.optional(S.String),
+    product: S.optional(Product),
+  }),
+).annotate({
+  identifier: "CaseClassification",
+}) as any as S.Schema<CaseClassification>;
 
 /** An Actor represents an entity that performed an action. For example, an actor could be a user who posted a comment on a support case, a user who uploaded an attachment, or a service account that created a support case. */
 export interface Actor {
@@ -134,12 +169,12 @@ export interface Actor {
   username?: string;
 }
 export const Actor = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "displayName": S.optional(S.String),
-  "email": S.optional(S.String),
-  "googleSupport": S.optional(S.Boolean),
-  "username": S.optional(S.String),
-}),
+  S.Struct({
+    displayName: S.optional(S.String),
+    email: S.optional(S.String),
+    googleSupport: S.optional(S.Boolean),
+    username: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Actor" }) as any as S.Schema<Actor>;
 
 /** A Case is an object that contains the details of a support case. It contains fields for the time it was created, its priority, its classification, and more. Cases can also have comments and attachments that get added over time. A case is parented by a Google Cloud organization or project. Organizations are identified by a number, so the name of a case parented by an organization would look like this: ``` organizations/123/cases/456 ``` Projects have two unique identifiers, an ID and a number, and they look like this: ``` projects/abc/cases/456 ``` ``` projects/123/cases/456 ``` You can use either of them when calling the API. To learn more about project identifiers, see [AIP-2510](https://google.aip.dev/cloud/2510). */
@@ -178,24 +213,24 @@ export interface Case {
   escalated?: boolean;
 }
 export const Case = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "displayName": S.optional(S.String),
-  "languageCode": S.optional(S.String),
-  "state": S.optional(CaseStateEnum),
-  "severity": S.optional(CaseSeverityEnum),
-  "testCase": S.optional(S.Boolean),
-  "priority": S.optional(CasePriorityEnum),
-  "subscriberEmailAddresses": S.optional(StringList),
-  "updateTime": S.optional(S.String),
-  "name": S.optional(S.String),
-  "description": S.optional(S.String),
-  "timeZone": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "classification": S.optional(CaseClassification),
-  "contactEmail": S.optional(S.String),
-  "creator": S.optional(Actor),
-  "escalated": S.optional(S.Boolean),
-}),
+  S.Struct({
+    displayName: S.optional(S.String),
+    languageCode: S.optional(S.String),
+    state: S.optional(CaseStateEnum),
+    severity: S.optional(CaseSeverityEnum),
+    testCase: S.optional(S.Boolean),
+    priority: S.optional(CasePriorityEnum),
+    subscriberEmailAddresses: S.optional(StringList),
+    updateTime: S.optional(S.String),
+    name: S.optional(S.String),
+    description: S.optional(S.String),
+    timeZone: S.optional(S.String),
+    createTime: S.optional(S.String),
+    classification: S.optional(CaseClassification),
+    contactEmail: S.optional(S.String),
+    creator: S.optional(Actor),
+    escalated: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "Case" }) as any as S.Schema<Case>;
 
 export interface CreateCasesRequest {
@@ -205,11 +240,19 @@ export interface CreateCasesRequest {
   body?: Case;
 }
 export const CreateCasesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(Case.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2beta/{+parent}/cases","baseUrl":"https://cloudsupport.googleapis.com/"})),
-).annotate({ identifier: "CreateCasesRequest" }) as any as S.Schema<CreateCasesRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(Case.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v2beta/{+parent}/cases",
+      baseUrl: "https://cloudsupport.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateCasesRequest",
+}) as any as S.Schema<CreateCasesRequest>;
 
 /** A comment associated with a support case. Case comments are the primary way for Google Support to communicate with a user who has opened a case. When a user responds to Google Support, the user's responses also appear as comments. */
 export interface Comment {
@@ -225,13 +268,13 @@ export interface Comment {
   plainTextBody?: string;
 }
 export const Comment = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "body": S.optional(S.String),
-  "creator": S.optional(Actor),
-  "createTime": S.optional(S.String),
-  "plainTextBody": S.optional(S.String),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    body: S.optional(S.String),
+    creator: S.optional(Actor),
+    createTime: S.optional(S.String),
+    plainTextBody: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Comment" }) as any as S.Schema<Comment>;
 
 export interface CreateCasesCommentsRequest {
@@ -241,16 +284,32 @@ export interface CreateCasesCommentsRequest {
   body?: Comment;
 }
 export const CreateCasesCommentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(Comment.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2beta/{+parent}/comments","baseUrl":"https://cloudsupport.googleapis.com/"})),
-).annotate({ identifier: "CreateCasesCommentsRequest" }) as any as S.Schema<CreateCasesCommentsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(Comment.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v2beta/{+parent}/comments",
+      baseUrl: "https://cloudsupport.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateCasesCommentsRequest",
+}) as any as S.Schema<CreateCasesCommentsRequest>;
 
-export type SupportEventSubscriptionStateEnum = "STATE_UNSPECIFIED" | "WORKING" | "FAILING" | "DELETED";
+export type SupportEventSubscriptionStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "WORKING"
+  | "FAILING"
+  | "DELETED";
 export const SupportEventSubscriptionStateEnum = /*@__PURE__*/ S.String;
 
-export type SupportEventSubscriptionFailureReasonEnum = "FAILURE_REASON_UNSPECIFIED" | "PERMISSION_DENIED" | "TOPIC_NOT_FOUND" | "OTHER";
+export type SupportEventSubscriptionFailureReasonEnum =
+  | "FAILURE_REASON_UNSPECIFIED"
+  | "PERMISSION_DENIED"
+  | "TOPIC_NOT_FOUND"
+  | "OTHER";
 export const SupportEventSubscriptionFailureReasonEnum = /*@__PURE__*/ S.String;
 
 /** A support event subscription. */
@@ -273,17 +332,19 @@ export interface SupportEventSubscription {
   pubSubTopic?: string;
 }
 export const SupportEventSubscription = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateTime": S.optional(S.String),
-  "deleteTime": S.optional(S.String),
-  "purgeTime": S.optional(S.String),
-  "state": S.optional(SupportEventSubscriptionStateEnum),
-  "createTime": S.optional(S.String),
-  "name": S.optional(S.String),
-  "failureReason": S.optional(SupportEventSubscriptionFailureReasonEnum),
-  "pubSubTopic": S.optional(S.String),
-}),
-).annotate({ identifier: "SupportEventSubscription" }) as any as S.Schema<SupportEventSubscription>;
+  S.Struct({
+    updateTime: S.optional(S.String),
+    deleteTime: S.optional(S.String),
+    purgeTime: S.optional(S.String),
+    state: S.optional(SupportEventSubscriptionStateEnum),
+    createTime: S.optional(S.String),
+    name: S.optional(S.String),
+    failureReason: S.optional(SupportEventSubscriptionFailureReasonEnum),
+    pubSubTopic: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SupportEventSubscription",
+}) as any as S.Schema<SupportEventSubscription>;
 
 export interface CreateSupportEventSubscriptionsRequest {
   /** Required. The parent resource name where the support event subscription will be created. Format: organizations/{organization_id} */
@@ -291,32 +352,58 @@ export interface CreateSupportEventSubscriptionsRequest {
   /** Request body */
   body?: SupportEventSubscription;
 }
-export const CreateSupportEventSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(SupportEventSubscription.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2beta/{+parent}/supportEventSubscriptions","baseUrl":"https://cloudsupport.googleapis.com/"})),
-).annotate({ identifier: "CreateSupportEventSubscriptionsRequest" }) as any as S.Schema<CreateSupportEventSubscriptionsRequest>;
+export const CreateSupportEventSubscriptionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(SupportEventSubscription.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v2beta/{+parent}/supportEventSubscriptions",
+        baseUrl: "https://cloudsupport.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateSupportEventSubscriptionsRequest",
+}) as any as S.Schema<CreateSupportEventSubscriptionsRequest>;
 
 export interface DeleteSupportEventSubscriptionsRequest {
   /** Required. The name of the support event subscription to delete. Format: organizations/{organization_id}/supportEventSubscriptions/{subscription_id} */
   name: string;
 }
-export const DeleteSupportEventSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v2beta/{+name}","baseUrl":"https://cloudsupport.googleapis.com/"})),
-).annotate({ identifier: "DeleteSupportEventSubscriptionsRequest" }) as any as S.Schema<DeleteSupportEventSubscriptionsRequest>;
+export const DeleteSupportEventSubscriptionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v2beta/{+name}",
+        baseUrl: "https://cloudsupport.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteSupportEventSubscriptionsRequest",
+}) as any as S.Schema<DeleteSupportEventSubscriptionsRequest>;
 
 export interface DownloadMediaRequest {
   /** The name of the file attachment to download. */
   name: string;
 }
 export const DownloadMediaRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v2beta/{+name}:download","baseUrl":"https://cloudsupport.googleapis.com/"})),
-).annotate({ identifier: "DownloadMediaRequest" }) as any as S.Schema<DownloadMediaRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v2beta/{+name}:download",
+      baseUrl: "https://cloudsupport.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DownloadMediaRequest",
+}) as any as S.Schema<DownloadMediaRequest>;
 
 /** # gdata.* are outside protos with mising documentation */
 export interface ObjectId {
@@ -328,11 +415,11 @@ export interface ObjectId {
   generation?: string;
 }
 export const ObjectId = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucketName": S.optional(S.String),
-  "objectName": S.optional(S.String),
-  "generation": S.optional(S.String),
-}),
+  S.Struct({
+    bucketName: S.optional(S.String),
+    objectName: S.optional(S.String),
+    generation: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ObjectId" }) as any as S.Schema<ObjectId>;
 
 /** # gdata.* are outside protos with mising documentation */
@@ -353,18 +440,23 @@ export interface Blobstore2Info {
   readToken?: string;
 }
 export const Blobstore2Info = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "uploadMetadataContainer": S.optional(S.String),
-  "blobId": S.optional(S.String),
-  "blobGeneration": S.optional(S.String),
-  "uploadFragmentListCreationInfo": S.optional(S.String),
-  "downloadReadHandle": S.optional(S.String),
-  "downloadExternalReadToken": S.optional(S.String),
-  "readToken": S.optional(S.String),
-}),
+  S.Struct({
+    uploadMetadataContainer: S.optional(S.String),
+    blobId: S.optional(S.String),
+    blobGeneration: S.optional(S.String),
+    uploadFragmentListCreationInfo: S.optional(S.String),
+    downloadReadHandle: S.optional(S.String),
+    downloadExternalReadToken: S.optional(S.String),
+    readToken: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Blobstore2Info" }) as any as S.Schema<Blobstore2Info>;
 
-export type CompositeMediaReferenceTypeEnum = "PATH" | "BLOB_REF" | "INLINE" | "BIGSTORE_REF" | "COSMO_BINARY_REFERENCE";
+export type CompositeMediaReferenceTypeEnum =
+  | "PATH"
+  | "BLOB_REF"
+  | "INLINE"
+  | "BIGSTORE_REF"
+  | "COSMO_BINARY_REFERENCE";
 export const CompositeMediaReferenceTypeEnum = /*@__PURE__*/ S.String;
 
 /** # gdata.* are outside protos with mising documentation */
@@ -393,23 +485,25 @@ export interface CompositeMedia {
   sha1Hash?: string;
 }
 export const CompositeMedia = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "blobRef": S.optional(S.String),
-  "objectId": S.optional(ObjectId),
-  "inline": S.optional(S.String),
-  "blobstore2Info": S.optional(Blobstore2Info),
-  "path": S.optional(S.String),
-  "length": S.optional(S.String),
-  "cosmoBinaryReference": S.optional(S.String),
-  "referenceType": S.optional(CompositeMediaReferenceTypeEnum),
-  "crc32cHash": S.optional(S.Number),
-  "md5Hash": S.optional(S.String),
-  "sha1Hash": S.optional(S.String),
-}),
+  S.Struct({
+    blobRef: S.optional(S.String),
+    objectId: S.optional(ObjectId),
+    inline: S.optional(S.String),
+    blobstore2Info: S.optional(Blobstore2Info),
+    path: S.optional(S.String),
+    length: S.optional(S.String),
+    cosmoBinaryReference: S.optional(S.String),
+    referenceType: S.optional(CompositeMediaReferenceTypeEnum),
+    crc32cHash: S.optional(S.Number),
+    md5Hash: S.optional(S.String),
+    sha1Hash: S.optional(S.String),
+  }),
 ).annotate({ identifier: "CompositeMedia" }) as any as S.Schema<CompositeMedia>;
 
 export type CompositeMediaList = ReadonlyArray<CompositeMedia>;
-export const CompositeMediaList = /*@__PURE__*/ S.Array(CompositeMedia) as any as S.Schema<CompositeMediaList>;
+export const CompositeMediaList = /*@__PURE__*/ S.Array(
+  CompositeMedia,
+) as any as S.Schema<CompositeMediaList>;
 
 /** # gdata.* are outside protos with mising documentation */
 export interface DiffVersionResponse {
@@ -419,11 +513,13 @@ export interface DiffVersionResponse {
   objectSizeBytes?: string;
 }
 export const DiffVersionResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "objectVersion": S.optional(S.String),
-  "objectSizeBytes": S.optional(S.String),
-}),
-).annotate({ identifier: "DiffVersionResponse" }) as any as S.Schema<DiffVersionResponse>;
+  S.Struct({
+    objectVersion: S.optional(S.String),
+    objectSizeBytes: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DiffVersionResponse",
+}) as any as S.Schema<DiffVersionResponse>;
 
 /** # gdata.* are outside protos with mising documentation */
 export interface DownloadParameters {
@@ -433,11 +529,13 @@ export interface DownloadParameters {
   ignoreRange?: boolean;
 }
 export const DownloadParameters = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "allowGzipCompression": S.optional(S.Boolean),
-  "ignoreRange": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "DownloadParameters" }) as any as S.Schema<DownloadParameters>;
+  S.Struct({
+    allowGzipCompression: S.optional(S.Boolean),
+    ignoreRange: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "DownloadParameters",
+}) as any as S.Schema<DownloadParameters>;
 
 /** # gdata.* are outside protos with mising documentation */
 export interface DiffChecksumsResponse {
@@ -453,14 +551,16 @@ export interface DiffChecksumsResponse {
   objectSizeBytes?: string;
 }
 export const DiffChecksumsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "checksumsLocation": S.optional(CompositeMedia),
-  "objectLocation": S.optional(CompositeMedia),
-  "objectVersion": S.optional(S.String),
-  "chunkSizeBytes": S.optional(S.String),
-  "objectSizeBytes": S.optional(S.String),
-}),
-).annotate({ identifier: "DiffChecksumsResponse" }) as any as S.Schema<DiffChecksumsResponse>;
+  S.Struct({
+    checksumsLocation: S.optional(CompositeMedia),
+    objectLocation: S.optional(CompositeMedia),
+    objectVersion: S.optional(S.String),
+    chunkSizeBytes: S.optional(S.String),
+    objectSizeBytes: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DiffChecksumsResponse",
+}) as any as S.Schema<DiffChecksumsResponse>;
 
 /** # gdata.* are outside protos with mising documentation */
 export interface ContentTypeInfo {
@@ -480,16 +580,18 @@ export interface ContentTypeInfo {
   fromFusionId?: string;
 }
 export const ContentTypeInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fromHeader": S.optional(S.String),
-  "bestGuess": S.optional(S.String),
-  "fusionIdDetectionMetadata": S.optional(S.String),
-  "fromFileName": S.optional(S.String),
-  "fromBytes": S.optional(S.String),
-  "fromUrlPath": S.optional(S.String),
-  "fromFusionId": S.optional(S.String),
-}),
-).annotate({ identifier: "ContentTypeInfo" }) as any as S.Schema<ContentTypeInfo>;
+  S.Struct({
+    fromHeader: S.optional(S.String),
+    bestGuess: S.optional(S.String),
+    fusionIdDetectionMetadata: S.optional(S.String),
+    fromFileName: S.optional(S.String),
+    fromBytes: S.optional(S.String),
+    fromUrlPath: S.optional(S.String),
+    fromFusionId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ContentTypeInfo",
+}) as any as S.Schema<ContentTypeInfo>;
 
 /** # gdata.* are outside protos with mising documentation */
 export interface DiffUploadRequest {
@@ -501,14 +603,29 @@ export interface DiffUploadRequest {
   objectInfo?: CompositeMedia;
 }
 export const DiffUploadRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "checksumsInfo": S.optional(CompositeMedia),
-  "objectVersion": S.optional(S.String),
-  "objectInfo": S.optional(CompositeMedia),
-}),
-).annotate({ identifier: "DiffUploadRequest" }) as any as S.Schema<DiffUploadRequest>;
+  S.Struct({
+    checksumsInfo: S.optional(CompositeMedia),
+    objectVersion: S.optional(S.String),
+    objectInfo: S.optional(CompositeMedia),
+  }),
+).annotate({
+  identifier: "DiffUploadRequest",
+}) as any as S.Schema<DiffUploadRequest>;
 
-export type MediaReferenceTypeEnum = "PATH" | "BLOB_REF" | "INLINE" | "GET_MEDIA" | "COMPOSITE_MEDIA" | "BIGSTORE_REF" | "DIFF_VERSION_RESPONSE" | "DIFF_CHECKSUMS_RESPONSE" | "DIFF_DOWNLOAD_RESPONSE" | "DIFF_UPLOAD_REQUEST" | "DIFF_UPLOAD_RESPONSE" | "COSMO_BINARY_REFERENCE" | "ARBITRARY_BYTES";
+export type MediaReferenceTypeEnum =
+  | "PATH"
+  | "BLOB_REF"
+  | "INLINE"
+  | "GET_MEDIA"
+  | "COMPOSITE_MEDIA"
+  | "BIGSTORE_REF"
+  | "DIFF_VERSION_RESPONSE"
+  | "DIFF_CHECKSUMS_RESPONSE"
+  | "DIFF_DOWNLOAD_RESPONSE"
+  | "DIFF_UPLOAD_REQUEST"
+  | "DIFF_UPLOAD_RESPONSE"
+  | "COSMO_BINARY_REFERENCE"
+  | "ARBITRARY_BYTES";
 export const MediaReferenceTypeEnum = /*@__PURE__*/ S.String;
 
 /** # gdata.* are outside protos with mising documentation */
@@ -517,10 +634,12 @@ export interface DiffDownloadResponse {
   objectLocation?: CompositeMedia;
 }
 export const DiffDownloadResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "objectLocation": S.optional(CompositeMedia),
-}),
-).annotate({ identifier: "DiffDownloadResponse" }) as any as S.Schema<DiffDownloadResponse>;
+  S.Struct({
+    objectLocation: S.optional(CompositeMedia),
+  }),
+).annotate({
+  identifier: "DiffDownloadResponse",
+}) as any as S.Schema<DiffDownloadResponse>;
 
 /** # gdata.* are outside protos with mising documentation */
 export interface DiffUploadResponse {
@@ -530,11 +649,13 @@ export interface DiffUploadResponse {
   originalObject?: CompositeMedia;
 }
 export const DiffUploadResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "objectVersion": S.optional(S.String),
-  "originalObject": S.optional(CompositeMedia),
-}),
-).annotate({ identifier: "DiffUploadResponse" }) as any as S.Schema<DiffUploadResponse>;
+  S.Struct({
+    objectVersion: S.optional(S.String),
+    originalObject: S.optional(CompositeMedia),
+  }),
+).annotate({
+  identifier: "DiffUploadResponse",
+}) as any as S.Schema<DiffUploadResponse>;
 
 /** # gdata.* are outside protos with mising documentation */
 export interface Media {
@@ -602,42 +723,46 @@ export interface Media {
   path?: string;
 }
 export const Media = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filename": S.optional(S.String),
-  "compositeMedia": S.optional(CompositeMediaList),
-  "sha1Hash": S.optional(S.String),
-  "sha512Hash": S.optional(S.String),
-  "diffVersionResponse": S.optional(DiffVersionResponse),
-  "hashVerified": S.optional(S.Boolean),
-  "algorithm": S.optional(S.String),
-  "inline": S.optional(S.String),
-  "downloadParameters": S.optional(DownloadParameters),
-  "length": S.optional(S.String),
-  "mediaId": S.optional(S.String),
-  "cosmoBinaryReference": S.optional(S.String),
-  "diffChecksumsResponse": S.optional(DiffChecksumsResponse),
-  "contentTypeInfo": S.optional(ContentTypeInfo),
-  "bigstoreObjectRef": S.optional(S.String),
-  "isPotentialRetry": S.optional(S.Boolean),
-  "blobstore2Info": S.optional(Blobstore2Info),
-  "diffUploadRequest": S.optional(DiffUploadRequest),
-  "referenceType": S.optional(MediaReferenceTypeEnum),
-  "timestamp": S.optional(S.String),
-  "token": S.optional(S.String),
-  "diffDownloadResponse": S.optional(DiffDownloadResponse),
-  "blobRef": S.optional(S.String),
-  "contentType": S.optional(S.String),
-  "objectId": S.optional(ObjectId),
-  "diffUploadResponse": S.optional(DiffUploadResponse),
-  "crc32cHash": S.optional(S.Number),
-  "sha256Hash": S.optional(S.String),
-  "hash": S.optional(S.String),
-  "md5Hash": S.optional(S.String),
-  "path": S.optional(S.String),
-}),
+  S.Struct({
+    filename: S.optional(S.String),
+    compositeMedia: S.optional(CompositeMediaList),
+    sha1Hash: S.optional(S.String),
+    sha512Hash: S.optional(S.String),
+    diffVersionResponse: S.optional(DiffVersionResponse),
+    hashVerified: S.optional(S.Boolean),
+    algorithm: S.optional(S.String),
+    inline: S.optional(S.String),
+    downloadParameters: S.optional(DownloadParameters),
+    length: S.optional(S.String),
+    mediaId: S.optional(S.String),
+    cosmoBinaryReference: S.optional(S.String),
+    diffChecksumsResponse: S.optional(DiffChecksumsResponse),
+    contentTypeInfo: S.optional(ContentTypeInfo),
+    bigstoreObjectRef: S.optional(S.String),
+    isPotentialRetry: S.optional(S.Boolean),
+    blobstore2Info: S.optional(Blobstore2Info),
+    diffUploadRequest: S.optional(DiffUploadRequest),
+    referenceType: S.optional(MediaReferenceTypeEnum),
+    timestamp: S.optional(S.String),
+    token: S.optional(S.String),
+    diffDownloadResponse: S.optional(DiffDownloadResponse),
+    blobRef: S.optional(S.String),
+    contentType: S.optional(S.String),
+    objectId: S.optional(ObjectId),
+    diffUploadResponse: S.optional(DiffUploadResponse),
+    crc32cHash: S.optional(S.Number),
+    sha256Hash: S.optional(S.String),
+    hash: S.optional(S.String),
+    md5Hash: S.optional(S.String),
+    path: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Media" }) as any as S.Schema<Media>;
 
-export type EscalationReasonEnum = "REASON_UNSPECIFIED" | "RESOLUTION_TIME" | "TECHNICAL_EXPERTISE" | "BUSINESS_IMPACT";
+export type EscalationReasonEnum =
+  | "REASON_UNSPECIFIED"
+  | "RESOLUTION_TIME"
+  | "TECHNICAL_EXPERTISE"
+  | "BUSINESS_IMPACT";
 export const EscalationReasonEnum = /*@__PURE__*/ S.String;
 
 /** An escalation of a support case. */
@@ -648,10 +773,10 @@ export interface Escalation {
   justification?: string;
 }
 export const Escalation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "reason": S.optional(EscalationReasonEnum),
-  "justification": S.optional(S.String),
-}),
+  S.Struct({
+    reason: S.optional(EscalationReasonEnum),
+    justification: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Escalation" }) as any as S.Schema<Escalation>;
 
 /** The request message for the EscalateCase endpoint. */
@@ -660,10 +785,12 @@ export interface EscalateCaseRequest {
   escalation?: Escalation;
 }
 export const EscalateCaseRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "escalation": S.optional(Escalation),
-}),
-).annotate({ identifier: "EscalateCaseRequest" }) as any as S.Schema<EscalateCaseRequest>;
+  S.Struct({
+    escalation: S.optional(Escalation),
+  }),
+).annotate({
+  identifier: "EscalateCaseRequest",
+}) as any as S.Schema<EscalateCaseRequest>;
 
 export interface EscalateCasesRequest {
   /** Required. The name of the case to be escalated. */
@@ -672,17 +799,27 @@ export interface EscalateCasesRequest {
   body?: EscalateCaseRequest;
 }
 export const EscalateCasesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(EscalateCaseRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2beta/{+name}:escalate","baseUrl":"https://cloudsupport.googleapis.com/"})),
-).annotate({ identifier: "EscalateCasesRequest" }) as any as S.Schema<EscalateCasesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(EscalateCaseRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v2beta/{+name}:escalate",
+      baseUrl: "https://cloudsupport.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "EscalateCasesRequest",
+}) as any as S.Schema<EscalateCasesRequest>;
 
 /** Request message for ExpungeSupportEventSubscription. */
 export interface ExpungeSupportEventSubscriptionRequest {}
-export const ExpungeSupportEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "ExpungeSupportEventSubscriptionRequest" }) as any as S.Schema<ExpungeSupportEventSubscriptionRequest>;
+export const ExpungeSupportEventSubscriptionRequest = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "ExpungeSupportEventSubscriptionRequest",
+}) as any as S.Schema<ExpungeSupportEventSubscriptionRequest>;
 
 export interface ExpungeSupportEventSubscriptionsRequest {
   /** Required. The name of the support event subscription to expunge. Format: organizations/{organization_id}/supportEventSubscriptions/{subscription_id} */
@@ -690,38 +827,65 @@ export interface ExpungeSupportEventSubscriptionsRequest {
   /** Request body */
   body?: ExpungeSupportEventSubscriptionRequest;
 }
-export const ExpungeSupportEventSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(ExpungeSupportEventSubscriptionRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2beta/{+name}:expunge","baseUrl":"https://cloudsupport.googleapis.com/"})),
-).annotate({ identifier: "ExpungeSupportEventSubscriptionsRequest" }) as any as S.Schema<ExpungeSupportEventSubscriptionsRequest>;
+export const ExpungeSupportEventSubscriptionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(
+        ExpungeSupportEventSubscriptionRequest.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v2beta/{+name}:expunge",
+        baseUrl: "https://cloudsupport.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ExpungeSupportEventSubscriptionsRequest",
+}) as any as S.Schema<ExpungeSupportEventSubscriptionsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 export interface GetCasesRequest {
   /** Required. The full name of a case to be retrieved. */
   name: string;
 }
 export const GetCasesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v2beta/{+name}","baseUrl":"https://cloudsupport.googleapis.com/"})),
-).annotate({ identifier: "GetCasesRequest" }) as any as S.Schema<GetCasesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v2beta/{+name}",
+      baseUrl: "https://cloudsupport.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetCasesRequest",
+}) as any as S.Schema<GetCasesRequest>;
 
 export interface GetCasesAttachmentsRequest {
   /** Required. The name of the attachment to get. */
   name: string;
 }
 export const GetCasesAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v2beta/{+name}","baseUrl":"https://cloudsupport.googleapis.com/"})),
-).annotate({ identifier: "GetCasesAttachmentsRequest" }) as any as S.Schema<GetCasesAttachmentsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v2beta/{+name}",
+      baseUrl: "https://cloudsupport.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetCasesAttachmentsRequest",
+}) as any as S.Schema<GetCasesAttachmentsRequest>;
 
 /** An Attachment contains metadata about a file that was uploaded to a case - it is NOT a file itself. That being said, the name of an Attachment object can be used to download its accompanying file through the `media.download` endpoint. While attachments can be uploaded in the console at the same time as a comment, they're associated on a "case" level, not a "comment" level. */
 export interface Attachment {
@@ -739,14 +903,14 @@ export interface Attachment {
   mimeType?: string;
 }
 export const Attachment = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sizeBytes": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "creator": S.optional(Actor),
-  "name": S.optional(S.String),
-  "filename": S.optional(S.String),
-  "mimeType": S.optional(S.String),
-}),
+  S.Struct({
+    sizeBytes: S.optional(S.String),
+    createTime: S.optional(S.String),
+    creator: S.optional(Actor),
+    name: S.optional(S.String),
+    filename: S.optional(S.String),
+    mimeType: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Attachment" }) as any as S.Schema<Attachment>;
 
 export interface GetCasesCommentsRequest {
@@ -754,22 +918,41 @@ export interface GetCasesCommentsRequest {
   name: string;
 }
 export const GetCasesCommentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v2beta/{+name}","baseUrl":"https://cloudsupport.googleapis.com/"})),
-).annotate({ identifier: "GetCasesCommentsRequest" }) as any as S.Schema<GetCasesCommentsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v2beta/{+name}",
+      baseUrl: "https://cloudsupport.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetCasesCommentsRequest",
+}) as any as S.Schema<GetCasesCommentsRequest>;
 
 export interface GetSupportEventSubscriptionsRequest {
   /** Required. The name of the support event subscription to retrieve. Format: organizations/{organization_id}/supportEventSubscriptions/{subscription_id} */
   name: string;
 }
 export const GetSupportEventSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v2beta/{+name}","baseUrl":"https://cloudsupport.googleapis.com/"})),
-).annotate({ identifier: "GetSupportEventSubscriptionsRequest" }) as any as S.Schema<GetSupportEventSubscriptionsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v2beta/{+name}",
+      baseUrl: "https://cloudsupport.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetSupportEventSubscriptionsRequest",
+}) as any as S.Schema<GetSupportEventSubscriptionsRequest>;
 
-export type ListCasesProductLineEnum = "PRODUCT_LINE_UNSPECIFIED" | "GOOGLE_CLOUD" | "GOOGLE_MAPS";
+export type ListCasesProductLineEnum =
+  | "PRODUCT_LINE_UNSPECIFIED"
+  | "GOOGLE_CLOUD"
+  | "GOOGLE_MAPS";
 export const ListCasesProductLineEnum = /*@__PURE__*/ S.String;
 
 export interface ListCasesRequest {
@@ -785,17 +968,27 @@ export interface ListCasesRequest {
   filter?: string;
 }
 export const ListCasesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "productLine": S.optional(ListCasesProductLineEnum.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v2beta/{+parent}/cases","baseUrl":"https://cloudsupport.googleapis.com/"})),
-).annotate({ identifier: "ListCasesRequest" }) as any as S.Schema<ListCasesRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    productLine: S.optional(ListCasesProductLineEnum.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    filter: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v2beta/{+parent}/cases",
+      baseUrl: "https://cloudsupport.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListCasesRequest",
+}) as any as S.Schema<ListCasesRequest>;
 
 export type CaseList = ReadonlyArray<Case>;
-export const CaseList = /*@__PURE__*/ S.Array(Case) as any as S.Schema<CaseList>;
+export const CaseList = /*@__PURE__*/ S.Array(
+  Case,
+) as any as S.Schema<CaseList>;
 
 /** The response message for the ListCases endpoint. */
 export interface ListCasesResponse {
@@ -805,11 +998,13 @@ export interface ListCasesResponse {
   nextPageToken?: string;
 }
 export const ListCasesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "cases": S.optional(CaseList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListCasesResponse" }) as any as S.Schema<ListCasesResponse>;
+  S.Struct({
+    cases: S.optional(CaseList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListCasesResponse",
+}) as any as S.Schema<ListCasesResponse>;
 
 export interface ListCasesAttachmentsRequest {
   /** The maximum number of attachments fetched with each request. If not provided, the default is 10. The maximum page size that will be returned is 100. The size of each page can be smaller than the requested page size and can include zero. For example, you could request 100 attachments on one page, receive 0, and then on the next page, receive 90. */
@@ -820,15 +1015,25 @@ export interface ListCasesAttachmentsRequest {
   parent: string;
 }
 export const ListCasesAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v2beta/{+parent}/attachments","baseUrl":"https://cloudsupport.googleapis.com/"})),
-).annotate({ identifier: "ListCasesAttachmentsRequest" }) as any as S.Schema<ListCasesAttachmentsRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v2beta/{+parent}/attachments",
+      baseUrl: "https://cloudsupport.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListCasesAttachmentsRequest",
+}) as any as S.Schema<ListCasesAttachmentsRequest>;
 
 export type AttachmentList = ReadonlyArray<Attachment>;
-export const AttachmentList = /*@__PURE__*/ S.Array(Attachment) as any as S.Schema<AttachmentList>;
+export const AttachmentList = /*@__PURE__*/ S.Array(
+  Attachment,
+) as any as S.Schema<AttachmentList>;
 
 /** The response message for the ListAttachments endpoint. */
 export interface ListAttachmentsResponse {
@@ -838,11 +1043,13 @@ export interface ListAttachmentsResponse {
   nextPageToken?: string;
 }
 export const ListAttachmentsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "attachments": S.optional(AttachmentList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListAttachmentsResponse" }) as any as S.Schema<ListAttachmentsResponse>;
+  S.Struct({
+    attachments: S.optional(AttachmentList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListAttachmentsResponse",
+}) as any as S.Schema<ListAttachmentsResponse>;
 
 export interface ListCasesCommentsRequest {
   /** Required. The name of the case for which to list comments. */
@@ -853,15 +1060,25 @@ export interface ListCasesCommentsRequest {
   pageToken?: string;
 }
 export const ListCasesCommentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v2beta/{+parent}/comments","baseUrl":"https://cloudsupport.googleapis.com/"})),
-).annotate({ identifier: "ListCasesCommentsRequest" }) as any as S.Schema<ListCasesCommentsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v2beta/{+parent}/comments",
+      baseUrl: "https://cloudsupport.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListCasesCommentsRequest",
+}) as any as S.Schema<ListCasesCommentsRequest>;
 
 export type CommentList = ReadonlyArray<Comment>;
-export const CommentList = /*@__PURE__*/ S.Array(Comment) as any as S.Schema<CommentList>;
+export const CommentList = /*@__PURE__*/ S.Array(
+  Comment,
+) as any as S.Schema<CommentList>;
 
 /** The response message for the ListComments endpoint. */
 export interface ListCommentsResponse {
@@ -871,11 +1088,13 @@ export interface ListCommentsResponse {
   nextPageToken?: string;
 }
 export const ListCommentsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "comments": S.optional(CommentList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListCommentsResponse" }) as any as S.Schema<ListCommentsResponse>;
+  S.Struct({
+    comments: S.optional(CommentList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListCommentsResponse",
+}) as any as S.Schema<ListCommentsResponse>;
 
 export interface ListSupportEventSubscriptionsRequest {
   /** Optional. The maximum number of support event subscriptions to return. */
@@ -889,18 +1108,30 @@ export interface ListSupportEventSubscriptionsRequest {
   /** Optional. Whether to show deleted subscriptions. By default, deleted subscriptions are not returned. */
   showDeleted?: boolean;
 }
-export const ListSupportEventSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "showDeleted": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v2beta/{+parent}/supportEventSubscriptions","baseUrl":"https://cloudsupport.googleapis.com/"})),
-).annotate({ identifier: "ListSupportEventSubscriptionsRequest" }) as any as S.Schema<ListSupportEventSubscriptionsRequest>;
+export const ListSupportEventSubscriptionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      filter: S.optional(S.String.pipe(T.Query())),
+      showDeleted: S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v2beta/{+parent}/supportEventSubscriptions",
+        baseUrl: "https://cloudsupport.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListSupportEventSubscriptionsRequest",
+}) as any as S.Schema<ListSupportEventSubscriptionsRequest>;
 
-export type SupportEventSubscriptionList = ReadonlyArray<SupportEventSubscription>;
-export const SupportEventSubscriptionList = /*@__PURE__*/ S.Array(SupportEventSubscription) as any as S.Schema<SupportEventSubscriptionList>;
+export type SupportEventSubscriptionList =
+  ReadonlyArray<SupportEventSubscription>;
+export const SupportEventSubscriptionList = /*@__PURE__*/ S.Array(
+  SupportEventSubscription,
+) as any as S.Schema<SupportEventSubscriptionList>;
 
 /** Response message for ListSupportEventSubscriptions. */
 export interface ListSupportEventSubscriptionsResponse {
@@ -909,12 +1140,15 @@ export interface ListSupportEventSubscriptionsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListSupportEventSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "supportEventSubscriptions": S.optional(SupportEventSubscriptionList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListSupportEventSubscriptionsResponse" }) as any as S.Schema<ListSupportEventSubscriptionsResponse>;
+export const ListSupportEventSubscriptionsResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      supportEventSubscriptions: S.optional(SupportEventSubscriptionList),
+      nextPageToken: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ListSupportEventSubscriptionsResponse",
+}) as any as S.Schema<ListSupportEventSubscriptionsResponse>;
 
 export interface PatchCasesRequest {
   /** Identifier. The resource name for the case. */
@@ -925,12 +1159,20 @@ export interface PatchCasesRequest {
   body?: Case;
 }
 export const PatchCasesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Case.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v2beta/{+name}","baseUrl":"https://cloudsupport.googleapis.com/"})),
-).annotate({ identifier: "PatchCasesRequest" }) as any as S.Schema<PatchCasesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(Case.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v2beta/{+name}",
+      baseUrl: "https://cloudsupport.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchCasesRequest",
+}) as any as S.Schema<PatchCasesRequest>;
 
 export interface PatchSupportEventSubscriptionsRequest {
   /** Identifier. The resource name of the support event subscription. */
@@ -940,38 +1182,65 @@ export interface PatchSupportEventSubscriptionsRequest {
   /** Request body */
   body?: SupportEventSubscription;
 }
-export const PatchSupportEventSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(SupportEventSubscription.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v2beta/{+name}","baseUrl":"https://cloudsupport.googleapis.com/"})),
-).annotate({ identifier: "PatchSupportEventSubscriptionsRequest" }) as any as S.Schema<PatchSupportEventSubscriptionsRequest>;
+export const PatchSupportEventSubscriptionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(SupportEventSubscription.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v2beta/{+name}",
+        baseUrl: "https://cloudsupport.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "PatchSupportEventSubscriptionsRequest",
+}) as any as S.Schema<PatchSupportEventSubscriptionsRequest>;
 
-export type SearchCaseClassificationsProduct_productLineEnum = "PRODUCT_LINE_UNSPECIFIED" | "GOOGLE_CLOUD" | "GOOGLE_MAPS";
-export const SearchCaseClassificationsProduct_productLineEnum = /*@__PURE__*/ S.String;
+export type SearchCaseClassificationsProduct_productLineEnum =
+  | "PRODUCT_LINE_UNSPECIFIED"
+  | "GOOGLE_CLOUD"
+  | "GOOGLE_MAPS";
+export const SearchCaseClassificationsProduct_productLineEnum =
+  /*@__PURE__*/ S.String;
 
 export interface SearchCaseClassificationsRequest {
   /** An expression used to filter case classifications. If it's an empty string, then no filtering happens. Otherwise, case classifications will be returned that match the filter. */
   query?: string;
   /** The product line of the Product. */
-  "product.productLine"?: SearchCaseClassificationsProduct_productLineEnum | (string & {});
+  "product.productLine"?:
+    | SearchCaseClassificationsProduct_productLineEnum
+    | (string & {});
   /** The maximum number of classifications fetched with each request. */
   pageSize?: number;
   /** A token identifying the page of results to return. If unspecified, the first page is retrieved. */
   pageToken?: string;
 }
 export const SearchCaseClassificationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "query": S.optional(S.String.pipe(T.Query())),
-  "product.productLine": S.optional(SearchCaseClassificationsProduct_productLineEnum.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v2beta/caseClassifications:search","baseUrl":"https://cloudsupport.googleapis.com/"})),
-).annotate({ identifier: "SearchCaseClassificationsRequest" }) as any as S.Schema<SearchCaseClassificationsRequest>;
+  S.Struct({
+    query: S.optional(S.String.pipe(T.Query())),
+    "product.productLine": S.optional(
+      SearchCaseClassificationsProduct_productLineEnum.pipe(T.Query()),
+    ),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v2beta/caseClassifications:search",
+      baseUrl: "https://cloudsupport.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SearchCaseClassificationsRequest",
+}) as any as S.Schema<SearchCaseClassificationsRequest>;
 
 export type CaseClassificationList = ReadonlyArray<CaseClassification>;
-export const CaseClassificationList = /*@__PURE__*/ S.Array(CaseClassification) as any as S.Schema<CaseClassificationList>;
+export const CaseClassificationList = /*@__PURE__*/ S.Array(
+  CaseClassification,
+) as any as S.Schema<CaseClassificationList>;
 
 /** The response message for SearchCaseClassifications endpoint. */
 export interface SearchCaseClassificationsResponse {
@@ -981,11 +1250,13 @@ export interface SearchCaseClassificationsResponse {
   caseClassifications?: CaseClassificationList;
 }
 export const SearchCaseClassificationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "caseClassifications": S.optional(CaseClassificationList),
-}),
-).annotate({ identifier: "SearchCaseClassificationsResponse" }) as any as S.Schema<SearchCaseClassificationsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    caseClassifications: S.optional(CaseClassificationList),
+  }),
+).annotate({
+  identifier: "SearchCaseClassificationsResponse",
+}) as any as S.Schema<SearchCaseClassificationsResponse>;
 
 export interface SearchCasesRequest {
   /** The name of the parent resource to search for cases under. */
@@ -998,13 +1269,21 @@ export interface SearchCasesRequest {
   pageToken?: string;
 }
 export const SearchCasesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.optional(S.String.pipe(T.Query())),
-  "query": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v2beta/cases:search","baseUrl":"https://cloudsupport.googleapis.com/"})),
-).annotate({ identifier: "SearchCasesRequest" }) as any as S.Schema<SearchCasesRequest>;
+  S.Struct({
+    parent: S.optional(S.String.pipe(T.Query())),
+    query: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v2beta/cases:search",
+      baseUrl: "https://cloudsupport.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SearchCasesRequest",
+}) as any as S.Schema<SearchCasesRequest>;
 
 /** The response message for the SearchCases endpoint. */
 export interface SearchCasesResponse {
@@ -1014,11 +1293,13 @@ export interface SearchCasesResponse {
   nextPageToken?: string;
 }
 export const SearchCasesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "cases": S.optional(CaseList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "SearchCasesResponse" }) as any as S.Schema<SearchCasesResponse>;
+  S.Struct({
+    cases: S.optional(CaseList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SearchCasesResponse",
+}) as any as S.Schema<SearchCasesResponse>;
 
 export interface ShowFeedCasesRequest {
   /** Required. The resource name of the case for which feed items should be listed. */
@@ -1031,13 +1312,21 @@ export interface ShowFeedCasesRequest {
   orderBy?: string;
 }
 export const ShowFeedCasesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v2beta/{+parent}:showFeed","baseUrl":"https://cloudsupport.googleapis.com/"})),
-).annotate({ identifier: "ShowFeedCasesRequest" }) as any as S.Schema<ShowFeedCasesRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v2beta/{+parent}:showFeed",
+      baseUrl: "https://cloudsupport.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ShowFeedCasesRequest",
+}) as any as S.Schema<ShowFeedCasesRequest>;
 
 /** Stores text attached to a support object. */
 export interface TextContent {
@@ -1045,9 +1334,9 @@ export interface TextContent {
   plainText?: string;
 }
 export const TextContent = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "plainText": S.optional(S.String),
-}),
+  S.Struct({
+    plainText: S.optional(S.String),
+  }),
 ).annotate({ identifier: "TextContent" }) as any as S.Schema<TextContent>;
 
 /** An email associated with a support case. */
@@ -1068,15 +1357,15 @@ export interface EmailMessage {
   bodyContent?: TextContent;
 }
 export const EmailMessage = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "subject": S.optional(S.String),
-  "recipientEmailAddresses": S.optional(StringList),
-  "createTime": S.optional(S.String),
-  "name": S.optional(S.String),
-  "actor": S.optional(Actor),
-  "ccEmailAddresses": S.optional(StringList),
-  "bodyContent": S.optional(TextContent),
-}),
+  S.Struct({
+    subject: S.optional(S.String),
+    recipientEmailAddresses: S.optional(StringList),
+    createTime: S.optional(S.String),
+    name: S.optional(S.String),
+    actor: S.optional(Actor),
+    ccEmailAddresses: S.optional(StringList),
+    bodyContent: S.optional(TextContent),
+  }),
 ).annotate({ identifier: "EmailMessage" }) as any as S.Schema<EmailMessage>;
 
 /** A feed item associated with a support case. */
@@ -1093,17 +1382,19 @@ export interface FeedItem {
   eventTime?: string;
 }
 export const FeedItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "emailMessage": S.optional(EmailMessage),
-  "comment": S.optional(Comment),
-  "attachment": S.optional(Attachment),
-  "deletedAttachment": S.optional(Attachment),
-  "eventTime": S.optional(S.String),
-}),
+  S.Struct({
+    emailMessage: S.optional(EmailMessage),
+    comment: S.optional(Comment),
+    attachment: S.optional(Attachment),
+    deletedAttachment: S.optional(Attachment),
+    eventTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "FeedItem" }) as any as S.Schema<FeedItem>;
 
 export type FeedItemList = ReadonlyArray<FeedItem>;
-export const FeedItemList = /*@__PURE__*/ S.Array(FeedItem) as any as S.Schema<FeedItemList>;
+export const FeedItemList = /*@__PURE__*/ S.Array(
+  FeedItem,
+) as any as S.Schema<FeedItemList>;
 
 /** The response message for the ShowFeed endpoint. */
 export interface ShowFeedResponse {
@@ -1113,17 +1404,21 @@ export interface ShowFeedResponse {
   feedItems?: FeedItemList;
 }
 export const ShowFeedResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "feedItems": S.optional(FeedItemList),
-}),
-).annotate({ identifier: "ShowFeedResponse" }) as any as S.Schema<ShowFeedResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    feedItems: S.optional(FeedItemList),
+  }),
+).annotate({
+  identifier: "ShowFeedResponse",
+}) as any as S.Schema<ShowFeedResponse>;
 
 /** Request message for UndeleteSupportEventSubscription. */
 export interface UndeleteSupportEventSubscriptionRequest {}
-export const UndeleteSupportEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "UndeleteSupportEventSubscriptionRequest" }) as any as S.Schema<UndeleteSupportEventSubscriptionRequest>;
+export const UndeleteSupportEventSubscriptionRequest = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "UndeleteSupportEventSubscriptionRequest",
+}) as any as S.Schema<UndeleteSupportEventSubscriptionRequest>;
 
 export interface UndeleteSupportEventSubscriptionsRequest {
   /** Required. The name of the support event subscription to undelete. Format: organizations/{organization_id}/supportEventSubscriptions/{subscription_id} */
@@ -1131,12 +1426,23 @@ export interface UndeleteSupportEventSubscriptionsRequest {
   /** Request body */
   body?: UndeleteSupportEventSubscriptionRequest;
 }
-export const UndeleteSupportEventSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(UndeleteSupportEventSubscriptionRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2beta/{+name}:undelete","baseUrl":"https://cloudsupport.googleapis.com/"})),
-).annotate({ identifier: "UndeleteSupportEventSubscriptionsRequest" }) as any as S.Schema<UndeleteSupportEventSubscriptionsRequest>;
+export const UndeleteSupportEventSubscriptionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(
+        UndeleteSupportEventSubscriptionRequest.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v2beta/{+name}:undelete",
+        baseUrl: "https://cloudsupport.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "UndeleteSupportEventSubscriptionsRequest",
+}) as any as S.Schema<UndeleteSupportEventSubscriptionsRequest>;
 
 /** The request message for the CreateAttachment endpoint. */
 export interface CreateAttachmentRequest {
@@ -1144,10 +1450,12 @@ export interface CreateAttachmentRequest {
   attachment?: Attachment;
 }
 export const CreateAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "attachment": S.optional(Attachment),
-}),
-).annotate({ identifier: "CreateAttachmentRequest" }) as any as S.Schema<CreateAttachmentRequest>;
+  S.Struct({
+    attachment: S.optional(Attachment),
+  }),
+).annotate({
+  identifier: "CreateAttachmentRequest",
+}) as any as S.Schema<CreateAttachmentRequest>;
 
 export interface UploadMediaRequest {
   /** Required. The name of the case or Cloud resource to which the attachment should be attached. */
@@ -1156,13 +1464,26 @@ export interface UploadMediaRequest {
   body?: CreateAttachmentRequest;
 }
 export const UploadMediaRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(CreateAttachmentRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2beta/{+parent}/attachments","baseUrl":"https://cloudsupport.googleapis.com/"})),
-).annotate({ identifier: "UploadMediaRequest" }) as any as S.Schema<UploadMediaRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(CreateAttachmentRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v2beta/{+parent}/attachments",
+      baseUrl: "https://cloudsupport.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UploadMediaRequest",
+}) as any as S.Schema<UploadMediaRequest>;
 
-export type CloseCasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CloseCasesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Close a case. EXAMPLES: cURL: ```shell case="projects/some-project/cases/43595344" curl \ --request POST \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2beta/$case:close" ``` Python: ```python import googleapiclient.discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request = supportApiService.cases().close( name="projects/some-project/cases/43595344" ) print(request.execute()) ``` */
 export const closeCases: API.OperationMethod<
   CloseCasesRequest,
@@ -1177,7 +1498,12 @@ export const closeCases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateCasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateCasesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Create a new case and associate it with a parent. It must have the following fields set: `display_name`, `description`, `classification`, and `priority`. If you're just testing the API and don't want to route your case to an agent, set `testCase=true`. EXAMPLES: cURL: ```shell parent="projects/some-project" curl \ --request POST \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ --header 'Content-Type: application/json' \ --data '{ "display_name": "Test case created by me.", "description": "a random test case, feel free to close", "classification": { "id": "100IK2AKCLHMGRJ9CDGMOCGP8DM6UTB4BT262T31BT1M2T31DHNMENPO6KS36CPJ786L2TBFEHGN6NPI64R3CDHN8880G08I1H3MURR7DHII0GRCDTQM8" }, "time_zone": "-07:00", "subscriber_email_addresses": [ "foo@domain.com", "bar@domain.com" ], "testCase": true, "priority": "P3" }' \ "https://cloudsupport.googleapis.com/v2beta/$parent/cases" ``` Python: ```python import googleapiclient.discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request = supportApiService.cases().create( parent="projects/some-project", body={ "displayName": "A Test Case", "description": "This is a test case.", "testCase": True, "priority": "P2", "classification": { "id": "100IK2AKCLHMGRJ9CDGMOCGP8DM6UTB4BT262T31BT1M2T31DHNMENPO6KS36CPJ786L2TBFEHGN6NPI64R3CDHN8880G08I1H3MURR7DHII0GRCDTQM8" }, }, ) print(request.execute()) ``` */
 export const createCases: API.OperationMethod<
   CreateCasesRequest,
@@ -1192,7 +1518,12 @@ export const createCases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateCasesCommentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateCasesCommentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Add a new comment to a case. The comment must have the following fields set: `body`. EXAMPLES: cURL: ```shell case="projects/some-project/cases/43591344" curl \ --request POST \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ --header 'Content-Type: application/json' \ --data '{ "body": "This is a test comment." }' \ "https://cloudsupport.googleapis.com/v2beta/$case/comments" ``` Python: ```python import googleapiclient.discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request = ( supportApiService.cases() .comments() .create( parent="projects/some-project/cases/43595344", body={"body": "This is a test comment."}, ) ) print(request.execute()) ``` */
 export const createCasesComments: API.OperationMethod<
   CreateCasesCommentsRequest,
@@ -1207,7 +1538,12 @@ export const createCasesComments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateSupportEventSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateSupportEventSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a support event subscription for an organization. EXAMPLES: cURL: ```shell parent="organizations/123456789" curl \ --request POST \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ --header 'Content-Type: application/json' \ --data '{ "pub_sub_topic": "projects/my-project/topics/my-topic" }' \ "https://cloudsupport.googleapis.com/v2beta/$parent/supportEventSubscriptions" ``` Python: ```python import googleapiclient.discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request = supportApiService.supportEventSubscriptions().create( parent="organizations/123456789", body={ "pub_sub_topic": "projects/my-project/topics/my-topic" }, ) print(request.execute()) ``` */
 export const createSupportEventSubscriptions: API.OperationMethod<
   CreateSupportEventSubscriptionsRequest,
@@ -1222,7 +1558,12 @@ export const createSupportEventSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteSupportEventSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteSupportEventSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Soft deletes a support event subscription. EXAMPLES: cURL: ```shell support_event_subscription="organizations/123456789/supportEventSubscriptions/abcdef123456" curl \ --request DELETE \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2beta/$support_event_subscription" ``` Python: ```python import googleapiclient.discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request = supportApiService).supportEventSubscriptions().delete( name="organizations/123456789/supportEventSubscriptions/abcdef123456" ) print(request.execute()) ``` */
 export const deleteSupportEventSubscriptions: API.OperationMethod<
   DeleteSupportEventSubscriptionsRequest,
@@ -1252,7 +1593,12 @@ export const downloadMedia: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type EscalateCasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type EscalateCasesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Escalate a case, starting the Google Cloud Support escalation management process. This operation is only available for some support services. Go to https://cloud.google.com/support and look for 'Technical support escalations' in the feature list to find out which ones let you do that. EXAMPLES: cURL: ```shell case="projects/some-project/cases/43595344" curl \ --request POST \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ --header "Content-Type: application/json" \ --data '{ "escalation": { "reason": "BUSINESS_IMPACT", "justification": "This is a test escalation." } }' \ "https://cloudsupport.googleapis.com/v2beta/$case:escalate" ``` Python: ```python import googleapiclient.discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request = supportApiService.cases().escalate( name="projects/some-project/cases/43595344", body={ "escalation": { "reason": "BUSINESS_IMPACT", "justification": "This is a test escalation.", }, }, ) print(request.execute()) ``` */
 export const escalateCases: API.OperationMethod<
   EscalateCasesRequest,
@@ -1267,7 +1613,12 @@ export const escalateCases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ExpungeSupportEventSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ExpungeSupportEventSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Expunges a support event subscription. */
 export const expungeSupportEventSubscriptions: API.OperationMethod<
   ExpungeSupportEventSubscriptionsRequest,
@@ -1327,7 +1678,10 @@ export const getCasesComments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetSupportEventSubscriptionsError = NotFound | Forbidden | GcpOpError;
+export type GetSupportEventSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets a support event subscription. EXAMPLES: cURL: ```shell support_event_subscription="organizations/123456789/supportEventSubscriptions/abcdef123456" curl \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2beta/$support_event_subscription" ``` Python: ```python import googleapiclient.discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request = supportApiService.supportEventSubscriptions().get( name="organizations/123456789/supportEventSubscriptions/abcdef123456" ) print(request.execute()) ``` */
 export const getSupportEventSubscriptions: API.OperationMethod<
   GetSupportEventSubscriptionsRequest,
@@ -1355,7 +1709,10 @@ export const listCases: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListCasesAttachmentsError = NotFound | Forbidden | GcpOpError;
@@ -1371,7 +1728,10 @@ export const listCasesAttachments: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListCasesCommentsError = NotFound | Forbidden | GcpOpError;
@@ -1387,10 +1747,16 @@ export const listCasesComments: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListSupportEventSubscriptionsError = NotFound | Forbidden | GcpOpError;
+export type ListSupportEventSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists support event subscriptions. EXAMPLES: cURL: ```shell parent="organizations/123456789" curl \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2beta/$parent/supportEventSubscriptions" ``` Python: ```python import googleapiclient.discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request = supportApiService.supportEventSubscriptions().list( parent="organizations/123456789" ) print(request.execute()) ``` */
 export const listSupportEventSubscriptions: API.PaginatedOperationMethod<
   ListSupportEventSubscriptionsRequest,
@@ -1403,10 +1769,18 @@ export const listSupportEventSubscriptions: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type PatchCasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchCasesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update a case. Only some fields can be updated. EXAMPLES: cURL: ```shell case="projects/some-project/cases/43595344" curl \ --request PATCH \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ --header "Content-Type: application/json" \ --data '{ "priority": "P1" }' \ "https://cloudsupport.googleapis.com/v2beta/$case?updateMask=priority" ``` Python: ```python import googleapiclient.discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request = supportApiService.cases().patch( name="projects/some-project/cases/43112854", body={ "displayName": "This is Now a New Title", "priority": "P2", }, ) print(request.execute()) ``` */
 export const patchCases: API.OperationMethod<
   PatchCasesRequest,
@@ -1421,7 +1795,12 @@ export const patchCases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchSupportEventSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchSupportEventSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a support event subscription. EXAMPLES: cURL: ```shell support_event_subscription="organizations/123456789/supportEventSubscriptions/abcdef123456" curl \ --request PATCH \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ --header "Content-Type: application/json" \ --data '{ "pub_sub_topic": "projects/my-project/topics/new-topic" }' \ "https://cloudsupport.googleapis.com/v2beta/$support_event_subscription?updateMask=pub_sub_topic" ``` Python: ```python import googleapiclient.discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request = supportApiService.supportEventSubscriptions().patch( name="organizations/123456789/supportEventSubscriptions/abcdef123456", body={ "pub_sub_topic": "projects/my-project/topics/new-topic" }, ) print(request.execute()) ``` */
 export const patchSupportEventSubscriptions: API.OperationMethod<
   PatchSupportEventSubscriptionsRequest,
@@ -1449,7 +1828,10 @@ export const searchCaseClassifications: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type SearchCasesError = NotFound | Forbidden | GcpOpError;
@@ -1465,7 +1847,10 @@ export const searchCases: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ShowFeedCasesError = NotFound | Forbidden | GcpOpError;
@@ -1481,10 +1866,18 @@ export const showFeedCases: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type UndeleteSupportEventSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UndeleteSupportEventSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Undeletes a support event subscription. EXAMPLES: cURL: ```shell support_event_subscription="organizations/123456789/supportEventSubscriptions/abcdef123456" curl \ --request POST \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2beta/$support_event_subscription:undelete" ``` Python: ```python import googleapiclient.discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request = supportApiService.supportEventSubscriptions().undelete( name="organizations/123456789/supportEventSubscriptions/abcdef123456" ) print(request.execute()) ``` Undeletes a support event subscription. */
 export const undeleteSupportEventSubscriptions: API.OperationMethod<
   UndeleteSupportEventSubscriptionsRequest,
@@ -1499,7 +1892,12 @@ export const undeleteSupportEventSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UploadMediaError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UploadMediaError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Create a file attachment on a case or Cloud resource. The attachment must have the following fields set: `filename`. EXAMPLES: cURL: ```shell echo "This text is in a file I'm uploading using CSAPI." \ > "./example_file.txt" case="projects/some-project/cases/43594844" curl \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ --data-binary @"./example_file.txt" \ "https://cloudsupport.googleapis.com/upload/v2beta/$case/attachments?attachment.filename=uploaded_via_curl.txt" ``` Python: ```python import googleapiclient.discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) file_path = "./example_file.txt" with open(file_path, "w") as file: file.write( "This text is inside a file I'm going to upload using the Cloud Support API.", ) request = supportApiService.media().upload( parent="projects/some-project/cases/43595344", media_body=file_path ) request.uri = request.uri.split("?")[0] + "?attachment.filename=uploaded_via_python.txt" print(request.execute()) ``` */
 export const uploadMedia: API.OperationMethod<
   UploadMediaRequest,
@@ -1513,4 +1911,3 @@ export const uploadMedia: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

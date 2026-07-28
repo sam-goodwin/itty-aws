@@ -13,58 +13,60 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
 export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "CancelOperationRequest" }) as any as S.Schema<CancelOperationRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "CancelOperationRequest",
+}) as any as S.Schema<CancelOperationRequest>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -72,21 +74,33 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2/{+name}:cancel","baseUrl":"https://notebooks.googleapis.com/"})),
-).annotate({ identifier: "CancelProjectsLocationsOperationsRequest" }) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v2/{+name}:cancel",
+        baseUrl: "https://notebooks.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CancelProjectsLocationsOperationsRequest",
+}) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
 /** Request message for checking authorization for the instance owner. */
 export interface CheckAuthorizationRequest {
@@ -94,10 +108,12 @@ export interface CheckAuthorizationRequest {
   authorizationDetails?: StringMap;
 }
 export const CheckAuthorizationRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "authorizationDetails": S.optional(StringMap),
-}),
-).annotate({ identifier: "CheckAuthorizationRequest" }) as any as S.Schema<CheckAuthorizationRequest>;
+  S.Struct({
+    authorizationDetails: S.optional(StringMap),
+  }),
+).annotate({
+  identifier: "CheckAuthorizationRequest",
+}) as any as S.Schema<CheckAuthorizationRequest>;
 
 export interface CheckAuthorizationProjectsLocationsInstancesRequest {
   /** Required. The name of the Notebook Instance resource. Format: `projects/{project}/locations/{location}/instances/{instance}` */
@@ -105,12 +121,21 @@ export interface CheckAuthorizationProjectsLocationsInstancesRequest {
   /** Request body */
   body?: CheckAuthorizationRequest;
 }
-export const CheckAuthorizationProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(CheckAuthorizationRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2/{+name}:checkAuthorization","baseUrl":"https://notebooks.googleapis.com/"})),
-).annotate({ identifier: "CheckAuthorizationProjectsLocationsInstancesRequest" }) as any as S.Schema<CheckAuthorizationProjectsLocationsInstancesRequest>;
+export const CheckAuthorizationProjectsLocationsInstancesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(CheckAuthorizationRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v2/{+name}:checkAuthorization",
+        baseUrl: "https://notebooks.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CheckAuthorizationProjectsLocationsInstancesRequest",
+  }) as any as S.Schema<CheckAuthorizationProjectsLocationsInstancesRequest>;
 
 /** Response message for checking authorization for the instance owner. */
 export interface CheckAuthorizationResponse {
@@ -122,22 +147,33 @@ export interface CheckAuthorizationResponse {
   success?: boolean;
 }
 export const CheckAuthorizationResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "createTime": S.optional(S.String),
-  "oauth_uri": S.optional(S.String),
-  "success": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "CheckAuthorizationResponse" }) as any as S.Schema<CheckAuthorizationResponse>;
+  S.Struct({
+    createTime: S.optional(S.String),
+    oauth_uri: S.optional(S.String),
+    success: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "CheckAuthorizationResponse",
+}) as any as S.Schema<CheckAuthorizationResponse>;
 
 export interface CheckUpgradabilityProjectsLocationsInstancesRequest {
   /** Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}` */
   notebookInstance: string;
 }
-export const CheckUpgradabilityProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "notebookInstance": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v2/{+notebookInstance}:checkUpgradability","baseUrl":"https://notebooks.googleapis.com/"})),
-).annotate({ identifier: "CheckUpgradabilityProjectsLocationsInstancesRequest" }) as any as S.Schema<CheckUpgradabilityProjectsLocationsInstancesRequest>;
+export const CheckUpgradabilityProjectsLocationsInstancesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      notebookInstance: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v2/{+notebookInstance}:checkUpgradability",
+        baseUrl: "https://notebooks.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CheckUpgradabilityProjectsLocationsInstancesRequest",
+  }) as any as S.Schema<CheckUpgradabilityProjectsLocationsInstancesRequest>;
 
 /** Response for checking if a notebook instance is upgradeable. */
 export interface CheckInstanceUpgradabilityResponse {
@@ -151,22 +187,36 @@ export interface CheckInstanceUpgradabilityResponse {
   upgradeable?: boolean;
 }
 export const CheckInstanceUpgradabilityResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "upgradeImage": S.optional(S.String),
-  "upgradeInfo": S.optional(S.String),
-  "upgradeVersion": S.optional(S.String),
-  "upgradeable": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "CheckInstanceUpgradabilityResponse" }) as any as S.Schema<CheckInstanceUpgradabilityResponse>;
+  S.Struct({
+    upgradeImage: S.optional(S.String),
+    upgradeInfo: S.optional(S.String),
+    upgradeVersion: S.optional(S.String),
+    upgradeable: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "CheckInstanceUpgradabilityResponse",
+}) as any as S.Schema<CheckInstanceUpgradabilityResponse>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
-export type InstanceHealthStateEnum = "HEALTH_STATE_UNSPECIFIED" | "HEALTHY" | "UNHEALTHY" | "AGENT_NOT_INSTALLED" | "AGENT_NOT_RUNNING";
+export type InstanceHealthStateEnum =
+  | "HEALTH_STATE_UNSPECIFIED"
+  | "HEALTHY"
+  | "UNHEALTHY"
+  | "AGENT_NOT_INSTALLED"
+  | "AGENT_NOT_RUNNING";
 export const InstanceHealthStateEnum = /*@__PURE__*/ S.String;
 
-export type ReservationAffinityConsumeReservationTypeEnum = "RESERVATION_UNSPECIFIED" | "RESERVATION_NONE" | "RESERVATION_ANY" | "RESERVATION_SPECIFIC";
-export const ReservationAffinityConsumeReservationTypeEnum = /*@__PURE__*/ S.String;
+export type ReservationAffinityConsumeReservationTypeEnum =
+  | "RESERVATION_UNSPECIFIED"
+  | "RESERVATION_NONE"
+  | "RESERVATION_ANY"
+  | "RESERVATION_SPECIFIC";
+export const ReservationAffinityConsumeReservationTypeEnum =
+  /*@__PURE__*/ S.String;
 
 /** A reservation that an instance can consume from. */
 export interface ReservationAffinity {
@@ -178,12 +228,16 @@ export interface ReservationAffinity {
   values?: StringList;
 }
 export const ReservationAffinity = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "consumeReservationType": S.optional(ReservationAffinityConsumeReservationTypeEnum),
-  "key": S.optional(S.String),
-  "values": S.optional(StringList),
-}),
-).annotate({ identifier: "ReservationAffinity" }) as any as S.Schema<ReservationAffinity>;
+  S.Struct({
+    consumeReservationType: S.optional(
+      ReservationAffinityConsumeReservationTypeEnum,
+    ),
+    key: S.optional(S.String),
+    values: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ReservationAffinity",
+}) as any as S.Schema<ReservationAffinity>;
 
 /** A set of Shielded Instance options. See [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid. */
 export interface ShieldedInstanceConfig {
@@ -195,12 +249,14 @@ export interface ShieldedInstanceConfig {
   enableIntegrityMonitoring?: boolean;
 }
 export const ShieldedInstanceConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "enableSecureBoot": S.optional(S.Boolean),
-  "enableVtpm": S.optional(S.Boolean),
-  "enableIntegrityMonitoring": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "ShieldedInstanceConfig" }) as any as S.Schema<ShieldedInstanceConfig>;
+  S.Struct({
+    enableSecureBoot: S.optional(S.Boolean),
+    enableVtpm: S.optional(S.Boolean),
+    enableIntegrityMonitoring: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ShieldedInstanceConfig",
+}) as any as S.Schema<ShieldedInstanceConfig>;
 
 /** A GPU driver configuration */
 export interface GPUDriverConfig {
@@ -210,11 +266,13 @@ export interface GPUDriverConfig {
   enableGpuDriver?: boolean;
 }
 export const GPUDriverConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "customGpuDriverPath": S.optional(S.String),
-  "enableGpuDriver": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "GPUDriverConfig" }) as any as S.Schema<GPUDriverConfig>;
+  S.Struct({
+    customGpuDriverPath: S.optional(S.String),
+    enableGpuDriver: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "GPUDriverConfig",
+}) as any as S.Schema<GPUDriverConfig>;
 
 /** A service account that acts as an identity. */
 export interface ServiceAccount {
@@ -224,14 +282,16 @@ export interface ServiceAccount {
   email?: string;
 }
 export const ServiceAccount = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "scopes": S.optional(StringList),
-  "email": S.optional(S.String),
-}),
+  S.Struct({
+    scopes: S.optional(StringList),
+    email: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ServiceAccount" }) as any as S.Schema<ServiceAccount>;
 
 export type ServiceAccountList = ReadonlyArray<ServiceAccount>;
-export const ServiceAccountList = /*@__PURE__*/ S.Array(ServiceAccount) as any as S.Schema<ServiceAccountList>;
+export const ServiceAccountList = /*@__PURE__*/ S.Array(
+  ServiceAccount,
+) as any as S.Schema<ServiceAccountList>;
 
 /** Definition of a container image for starting a notebook instance with the environment installed in a container. */
 export interface ContainerImage {
@@ -241,10 +301,10 @@ export interface ContainerImage {
   tag?: string;
 }
 export const ContainerImage = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "repository": S.optional(S.String),
-  "tag": S.optional(S.String),
-}),
+  S.Struct({
+    repository: S.optional(S.String),
+    tag: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ContainerImage" }) as any as S.Schema<ContainerImage>;
 
 /** Definition of a custom Compute Engine virtual machine image for starting a notebook instance with the environment installed directly on the VM. */
@@ -257,17 +317,30 @@ export interface VmImage {
   family?: string;
 }
 export const VmImage = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "project": S.optional(S.String),
-  "name": S.optional(S.String),
-  "family": S.optional(S.String),
-}),
+  S.Struct({
+    project: S.optional(S.String),
+    name: S.optional(S.String),
+    family: S.optional(S.String),
+  }),
 ).annotate({ identifier: "VmImage" }) as any as S.Schema<VmImage>;
 
-export type DataDiskDiskTypeEnum = "DISK_TYPE_UNSPECIFIED" | "PD_STANDARD" | "PD_SSD" | "PD_BALANCED" | "PD_EXTREME" | "HYPERDISK_BALANCED" | "HYPERDISK_EXTREME" | "HYPERDISK_THROUGHPUT" | "HYPERDISK_BALANCED_HIGH_AVAILABILITY" | "HYPERDISK_ML";
+export type DataDiskDiskTypeEnum =
+  | "DISK_TYPE_UNSPECIFIED"
+  | "PD_STANDARD"
+  | "PD_SSD"
+  | "PD_BALANCED"
+  | "PD_EXTREME"
+  | "HYPERDISK_BALANCED"
+  | "HYPERDISK_EXTREME"
+  | "HYPERDISK_THROUGHPUT"
+  | "HYPERDISK_BALANCED_HIGH_AVAILABILITY"
+  | "HYPERDISK_ML";
 export const DataDiskDiskTypeEnum = /*@__PURE__*/ S.String;
 
-export type DataDiskDiskEncryptionEnum = "DISK_ENCRYPTION_UNSPECIFIED" | "GMEK" | "CMEK";
+export type DataDiskDiskEncryptionEnum =
+  | "DISK_ENCRYPTION_UNSPECIFIED"
+  | "GMEK"
+  | "CMEK";
 export const DataDiskDiskEncryptionEnum = /*@__PURE__*/ S.String;
 
 /** An instance-attached disk resource. */
@@ -284,17 +357,19 @@ export interface DataDisk {
   diskEncryption?: DataDiskDiskEncryptionEnum;
 }
 export const DataDisk = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourcePolicies": S.optional(StringList),
-  "diskSizeGb": S.optional(S.String),
-  "kmsKey": S.optional(S.String),
-  "diskType": S.optional(DataDiskDiskTypeEnum),
-  "diskEncryption": S.optional(DataDiskDiskEncryptionEnum),
-}),
+  S.Struct({
+    resourcePolicies: S.optional(StringList),
+    diskSizeGb: S.optional(S.String),
+    kmsKey: S.optional(S.String),
+    diskType: S.optional(DataDiskDiskTypeEnum),
+    diskEncryption: S.optional(DataDiskDiskEncryptionEnum),
+  }),
 ).annotate({ identifier: "DataDisk" }) as any as S.Schema<DataDisk>;
 
 export type DataDiskList = ReadonlyArray<DataDisk>;
-export const DataDiskList = /*@__PURE__*/ S.Array(DataDisk) as any as S.Schema<DataDiskList>;
+export const DataDiskList = /*@__PURE__*/ S.Array(
+  DataDisk,
+) as any as S.Schema<DataDiskList>;
 
 /** An access configuration attached to an instance's network interface. */
 export interface AccessConfig {
@@ -302,15 +377,20 @@ export interface AccessConfig {
   externalIp?: string;
 }
 export const AccessConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "externalIp": S.optional(S.String),
-}),
+  S.Struct({
+    externalIp: S.optional(S.String),
+  }),
 ).annotate({ identifier: "AccessConfig" }) as any as S.Schema<AccessConfig>;
 
 export type AccessConfigList = ReadonlyArray<AccessConfig>;
-export const AccessConfigList = /*@__PURE__*/ S.Array(AccessConfig) as any as S.Schema<AccessConfigList>;
+export const AccessConfigList = /*@__PURE__*/ S.Array(
+  AccessConfig,
+) as any as S.Schema<AccessConfigList>;
 
-export type NetworkInterfaceNicTypeEnum = "NIC_TYPE_UNSPECIFIED" | "VIRTIO_NET" | "GVNIC";
+export type NetworkInterfaceNicTypeEnum =
+  | "NIC_TYPE_UNSPECIFIED"
+  | "VIRTIO_NET"
+  | "GVNIC";
 export const NetworkInterfaceNicTypeEnum = /*@__PURE__*/ S.String;
 
 /** The definition of a network interface resource attached to a VM. */
@@ -325,18 +405,38 @@ export interface NetworkInterface {
   nicType?: NetworkInterfaceNicTypeEnum;
 }
 export const NetworkInterface = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "accessConfigs": S.optional(AccessConfigList),
-  "subnet": S.optional(S.String),
-  "network": S.optional(S.String),
-  "nicType": S.optional(NetworkInterfaceNicTypeEnum),
-}),
-).annotate({ identifier: "NetworkInterface" }) as any as S.Schema<NetworkInterface>;
+  S.Struct({
+    accessConfigs: S.optional(AccessConfigList),
+    subnet: S.optional(S.String),
+    network: S.optional(S.String),
+    nicType: S.optional(NetworkInterfaceNicTypeEnum),
+  }),
+).annotate({
+  identifier: "NetworkInterface",
+}) as any as S.Schema<NetworkInterface>;
 
 export type NetworkInterfaceList = ReadonlyArray<NetworkInterface>;
-export const NetworkInterfaceList = /*@__PURE__*/ S.Array(NetworkInterface) as any as S.Schema<NetworkInterfaceList>;
+export const NetworkInterfaceList = /*@__PURE__*/ S.Array(
+  NetworkInterface,
+) as any as S.Schema<NetworkInterfaceList>;
 
-export type AcceleratorConfigTypeEnum = "ACCELERATOR_TYPE_UNSPECIFIED" | "NVIDIA_TESLA_P100" | "NVIDIA_TESLA_V100" | "NVIDIA_TESLA_P4" | "NVIDIA_TESLA_T4" | "NVIDIA_TESLA_A100" | "NVIDIA_A100_80GB" | "NVIDIA_L4" | "NVIDIA_H100_80GB" | "NVIDIA_H100_MEGA_80GB" | "NVIDIA_H200_141GB" | "NVIDIA_TESLA_T4_VWS" | "NVIDIA_TESLA_P100_VWS" | "NVIDIA_TESLA_P4_VWS" | "NVIDIA_B200" | "NVIDIA_RTX6000";
+export type AcceleratorConfigTypeEnum =
+  | "ACCELERATOR_TYPE_UNSPECIFIED"
+  | "NVIDIA_TESLA_P100"
+  | "NVIDIA_TESLA_V100"
+  | "NVIDIA_TESLA_P4"
+  | "NVIDIA_TESLA_T4"
+  | "NVIDIA_TESLA_A100"
+  | "NVIDIA_A100_80GB"
+  | "NVIDIA_L4"
+  | "NVIDIA_H100_80GB"
+  | "NVIDIA_H100_MEGA_80GB"
+  | "NVIDIA_H200_141GB"
+  | "NVIDIA_TESLA_T4_VWS"
+  | "NVIDIA_TESLA_P100_VWS"
+  | "NVIDIA_TESLA_P4_VWS"
+  | "NVIDIA_B200"
+  | "NVIDIA_RTX6000";
 export const AcceleratorConfigTypeEnum = /*@__PURE__*/ S.String;
 
 /** An accelerator configuration for a VM instance Definition of a hardware accelerator. Note that there is no check on `type` and `core_count` combinations. TPUs are not supported. See [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus/#gpus-list) to find a valid combination. */
@@ -347,17 +447,24 @@ export interface AcceleratorConfig {
   type?: AcceleratorConfigTypeEnum;
 }
 export const AcceleratorConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "coreCount": S.optional(S.String),
-  "type": S.optional(AcceleratorConfigTypeEnum),
-}),
-).annotate({ identifier: "AcceleratorConfig" }) as any as S.Schema<AcceleratorConfig>;
+  S.Struct({
+    coreCount: S.optional(S.String),
+    type: S.optional(AcceleratorConfigTypeEnum),
+  }),
+).annotate({
+  identifier: "AcceleratorConfig",
+}) as any as S.Schema<AcceleratorConfig>;
 
 export type AcceleratorConfigList = ReadonlyArray<AcceleratorConfig>;
-export const AcceleratorConfigList = /*@__PURE__*/ S.Array(AcceleratorConfig) as any as S.Schema<AcceleratorConfigList>;
+export const AcceleratorConfigList = /*@__PURE__*/ S.Array(
+  AcceleratorConfig,
+) as any as S.Schema<AcceleratorConfigList>;
 
-export type ConfidentialInstanceConfigConfidentialInstanceTypeEnum = "CONFIDENTIAL_INSTANCE_TYPE_UNSPECIFIED" | "SEV";
-export const ConfidentialInstanceConfigConfidentialInstanceTypeEnum = /*@__PURE__*/ S.String;
+export type ConfidentialInstanceConfigConfidentialInstanceTypeEnum =
+  | "CONFIDENTIAL_INSTANCE_TYPE_UNSPECIFIED"
+  | "SEV";
+export const ConfidentialInstanceConfigConfidentialInstanceTypeEnum =
+  /*@__PURE__*/ S.String;
 
 /** A set of Confidential Instance options. */
 export interface ConfidentialInstanceConfig {
@@ -365,15 +472,32 @@ export interface ConfidentialInstanceConfig {
   confidentialInstanceType?: ConfidentialInstanceConfigConfidentialInstanceTypeEnum;
 }
 export const ConfidentialInstanceConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "confidentialInstanceType": S.optional(ConfidentialInstanceConfigConfidentialInstanceTypeEnum),
-}),
-).annotate({ identifier: "ConfidentialInstanceConfig" }) as any as S.Schema<ConfidentialInstanceConfig>;
+  S.Struct({
+    confidentialInstanceType: S.optional(
+      ConfidentialInstanceConfigConfidentialInstanceTypeEnum,
+    ),
+  }),
+).annotate({
+  identifier: "ConfidentialInstanceConfig",
+}) as any as S.Schema<ConfidentialInstanceConfig>;
 
-export type BootDiskDiskTypeEnum = "DISK_TYPE_UNSPECIFIED" | "PD_STANDARD" | "PD_SSD" | "PD_BALANCED" | "PD_EXTREME" | "HYPERDISK_BALANCED" | "HYPERDISK_EXTREME" | "HYPERDISK_THROUGHPUT" | "HYPERDISK_BALANCED_HIGH_AVAILABILITY" | "HYPERDISK_ML";
+export type BootDiskDiskTypeEnum =
+  | "DISK_TYPE_UNSPECIFIED"
+  | "PD_STANDARD"
+  | "PD_SSD"
+  | "PD_BALANCED"
+  | "PD_EXTREME"
+  | "HYPERDISK_BALANCED"
+  | "HYPERDISK_EXTREME"
+  | "HYPERDISK_THROUGHPUT"
+  | "HYPERDISK_BALANCED_HIGH_AVAILABILITY"
+  | "HYPERDISK_ML";
 export const BootDiskDiskTypeEnum = /*@__PURE__*/ S.String;
 
-export type BootDiskDiskEncryptionEnum = "DISK_ENCRYPTION_UNSPECIFIED" | "GMEK" | "CMEK";
+export type BootDiskDiskEncryptionEnum =
+  | "DISK_ENCRYPTION_UNSPECIFIED"
+  | "GMEK"
+  | "CMEK";
 export const BootDiskDiskEncryptionEnum = /*@__PURE__*/ S.String;
 
 /** The definition of a boot disk. */
@@ -388,12 +512,12 @@ export interface BootDisk {
   kmsKey?: string;
 }
 export const BootDisk = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "diskType": S.optional(BootDiskDiskTypeEnum),
-  "diskEncryption": S.optional(BootDiskDiskEncryptionEnum),
-  "diskSizeGb": S.optional(S.String),
-  "kmsKey": S.optional(S.String),
-}),
+  S.Struct({
+    diskType: S.optional(BootDiskDiskTypeEnum),
+    diskEncryption: S.optional(BootDiskDiskEncryptionEnum),
+    diskSizeGb: S.optional(S.String),
+    kmsKey: S.optional(S.String),
+  }),
 ).annotate({ identifier: "BootDisk" }) as any as S.Schema<BootDisk>;
 
 /** The definition of how to configure a VM instance outside of Resources and Identity. */
@@ -436,32 +560,39 @@ export interface GceSetup {
   bootDisk?: BootDisk;
 }
 export const GceSetup = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "reservationAffinity": S.optional(ReservationAffinity),
-  "enableIpForwarding": S.optional(S.Boolean),
-  "shieldedInstanceConfig": S.optional(ShieldedInstanceConfig),
-  "instanceId": S.optional(S.String),
-  "gpuDriverConfig": S.optional(GPUDriverConfig),
-  "serviceAccounts": S.optional(ServiceAccountList),
-  "containerImage": S.optional(ContainerImage),
-  "vmImage": S.optional(VmImage),
-  "dataDisks": S.optional(DataDiskList),
-  "networkInterfaces": S.optional(NetworkInterfaceList),
-  "tags": S.optional(StringList),
-  "minCpuPlatform": S.optional(S.String),
-  "acceleratorConfigs": S.optional(AcceleratorConfigList),
-  "confidentialInstanceConfig": S.optional(ConfidentialInstanceConfig),
-  "machineType": S.optional(S.String),
-  "metadata": S.optional(StringMap),
-  "disablePublicIp": S.optional(S.Boolean),
-  "bootDisk": S.optional(BootDisk),
-}),
+  S.Struct({
+    reservationAffinity: S.optional(ReservationAffinity),
+    enableIpForwarding: S.optional(S.Boolean),
+    shieldedInstanceConfig: S.optional(ShieldedInstanceConfig),
+    instanceId: S.optional(S.String),
+    gpuDriverConfig: S.optional(GPUDriverConfig),
+    serviceAccounts: S.optional(ServiceAccountList),
+    containerImage: S.optional(ContainerImage),
+    vmImage: S.optional(VmImage),
+    dataDisks: S.optional(DataDiskList),
+    networkInterfaces: S.optional(NetworkInterfaceList),
+    tags: S.optional(StringList),
+    minCpuPlatform: S.optional(S.String),
+    acceleratorConfigs: S.optional(AcceleratorConfigList),
+    confidentialInstanceConfig: S.optional(ConfidentialInstanceConfig),
+    machineType: S.optional(S.String),
+    metadata: S.optional(StringMap),
+    disablePublicIp: S.optional(S.Boolean),
+    bootDisk: S.optional(BootDisk),
+  }),
 ).annotate({ identifier: "GceSetup" }) as any as S.Schema<GceSetup>;
 
-export type UpgradeHistoryEntryStateEnum = "STATE_UNSPECIFIED" | "STARTED" | "SUCCEEDED" | "FAILED";
+export type UpgradeHistoryEntryStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "STARTED"
+  | "SUCCEEDED"
+  | "FAILED";
 export const UpgradeHistoryEntryStateEnum = /*@__PURE__*/ S.String;
 
-export type UpgradeHistoryEntryActionEnum = "ACTION_UNSPECIFIED" | "UPGRADE" | "ROLLBACK";
+export type UpgradeHistoryEntryActionEnum =
+  | "ACTION_UNSPECIFIED"
+  | "UPGRADE"
+  | "ROLLBACK";
 export const UpgradeHistoryEntryActionEnum = /*@__PURE__*/ S.String;
 
 /** The entry of VM image upgrade history. */
@@ -486,23 +617,38 @@ export interface UpgradeHistoryEntry {
   containerImage?: string;
 }
 export const UpgradeHistoryEntry = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "version": S.optional(S.String),
-  "vmImage": S.optional(S.String),
-  "state": S.optional(UpgradeHistoryEntryStateEnum),
-  "snapshot": S.optional(S.String),
-  "targetVersion": S.optional(S.String),
-  "action": S.optional(UpgradeHistoryEntryActionEnum),
-  "framework": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "containerImage": S.optional(S.String),
-}),
-).annotate({ identifier: "UpgradeHistoryEntry" }) as any as S.Schema<UpgradeHistoryEntry>;
+  S.Struct({
+    version: S.optional(S.String),
+    vmImage: S.optional(S.String),
+    state: S.optional(UpgradeHistoryEntryStateEnum),
+    snapshot: S.optional(S.String),
+    targetVersion: S.optional(S.String),
+    action: S.optional(UpgradeHistoryEntryActionEnum),
+    framework: S.optional(S.String),
+    createTime: S.optional(S.String),
+    containerImage: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpgradeHistoryEntry",
+}) as any as S.Schema<UpgradeHistoryEntry>;
 
 export type UpgradeHistoryEntryList = ReadonlyArray<UpgradeHistoryEntry>;
-export const UpgradeHistoryEntryList = /*@__PURE__*/ S.Array(UpgradeHistoryEntry) as any as S.Schema<UpgradeHistoryEntryList>;
+export const UpgradeHistoryEntryList = /*@__PURE__*/ S.Array(
+  UpgradeHistoryEntry,
+) as any as S.Schema<UpgradeHistoryEntryList>;
 
-export type InstanceStateEnum = "STATE_UNSPECIFIED" | "STARTING" | "PROVISIONING" | "ACTIVE" | "STOPPING" | "STOPPED" | "DELETED" | "UPGRADING" | "INITIALIZING" | "SUSPENDING" | "SUSPENDED";
+export type InstanceStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "STARTING"
+  | "PROVISIONING"
+  | "ACTIVE"
+  | "STOPPING"
+  | "STOPPED"
+  | "DELETED"
+  | "UPGRADING"
+  | "INITIALIZING"
+  | "SUSPENDING"
+  | "SUSPENDED";
 export const InstanceStateEnum = /*@__PURE__*/ S.String;
 
 /** The definition of a notebook instance. */
@@ -549,28 +695,28 @@ export interface Instance {
   updateTime?: string;
 }
 export const Instance = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "id": S.optional(S.String),
-  "instanceOwners": S.optional(StringList),
-  "enableThirdPartyIdentity": S.optional(S.Boolean),
-  "enableManagedEuc": S.optional(S.Boolean),
-  "healthState": S.optional(InstanceHealthStateEnum),
-  "gceSetup": S.optional(GceSetup),
-  "proxyUri": S.optional(S.String),
-  "healthInfo": S.optional(StringMap),
-  "enableDeletionProtection": S.optional(S.Boolean),
-  "createTime": S.optional(S.String),
-  "satisfiesPzs": S.optional(S.Boolean),
-  "disableProxyAccess": S.optional(S.Boolean),
-  "upgradeHistory": S.optional(UpgradeHistoryEntryList),
-  "labels": S.optional(StringMap),
-  "satisfiesPzi": S.optional(S.Boolean),
-  "thirdPartyProxyUrl": S.optional(S.String),
-  "creator": S.optional(S.String),
-  "state": S.optional(InstanceStateEnum),
-  "updateTime": S.optional(S.String),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    id: S.optional(S.String),
+    instanceOwners: S.optional(StringList),
+    enableThirdPartyIdentity: S.optional(S.Boolean),
+    enableManagedEuc: S.optional(S.Boolean),
+    healthState: S.optional(InstanceHealthStateEnum),
+    gceSetup: S.optional(GceSetup),
+    proxyUri: S.optional(S.String),
+    healthInfo: S.optional(StringMap),
+    enableDeletionProtection: S.optional(S.Boolean),
+    createTime: S.optional(S.String),
+    satisfiesPzs: S.optional(S.Boolean),
+    disableProxyAccess: S.optional(S.Boolean),
+    upgradeHistory: S.optional(UpgradeHistoryEntryList),
+    labels: S.optional(StringMap),
+    satisfiesPzi: S.optional(S.Boolean),
+    thirdPartyProxyUrl: S.optional(S.String),
+    creator: S.optional(S.String),
+    state: S.optional(InstanceStateEnum),
+    updateTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Instance" }) as any as S.Schema<Instance>;
 
 export interface CreateProjectsLocationsInstancesRequest {
@@ -583,20 +729,34 @@ export interface CreateProjectsLocationsInstancesRequest {
   /** Request body */
   body?: Instance;
 }
-export const CreateProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "instanceId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Instance.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2/{+parent}/instances","baseUrl":"https://notebooks.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsInstancesRequest" }) as any as S.Schema<CreateProjectsLocationsInstancesRequest>;
+export const CreateProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      requestId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      instanceId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Instance.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v2/{+parent}/instances",
+        baseUrl: "https://notebooks.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateProjectsLocationsInstancesRequest",
+}) as any as S.Schema<CreateProjectsLocationsInstancesRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -608,11 +768,11 @@ export interface Status {
   details?: DocumentMapList;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(S.Number),
-  "message": S.optional(S.String),
-  "details": S.optional(DocumentMapList),
-}),
+  S.Struct({
+    code: S.optional(S.Number),
+    message: S.optional(S.String),
+    details: S.optional(DocumentMapList),
+  }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -629,13 +789,13 @@ export interface Operation {
   error?: Status;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "done": S.optional(S.Boolean),
-  "metadata": S.optional(DocumentMap),
-  "name": S.optional(S.String),
-  "response": S.optional(DocumentMap),
-  "error": S.optional(Status),
-}),
+  S.Struct({
+    done: S.optional(S.Boolean),
+    metadata: S.optional(DocumentMap),
+    name: S.optional(S.String),
+    response: S.optional(DocumentMap),
+    error: S.optional(Status),
+  }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 export interface DeleteProjectsLocationsInstancesRequest {
@@ -644,22 +804,40 @@ export interface DeleteProjectsLocationsInstancesRequest {
   /** Optional. Idempotent request UUID. */
   requestId?: string;
 }
-export const DeleteProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v2/{+name}","baseUrl":"https://notebooks.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsInstancesRequest" }) as any as S.Schema<DeleteProjectsLocationsInstancesRequest>;
+export const DeleteProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v2/{+name}",
+        baseUrl: "https://notebooks.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsInstancesRequest",
+}) as any as S.Schema<DeleteProjectsLocationsInstancesRequest>;
 
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v2/{+name}","baseUrl":"https://notebooks.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsOperationsRequest" }) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v2/{+name}",
+        baseUrl: "https://notebooks.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsOperationsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
 
 /** Defines flags that are used to run the diagnostic tool */
 export interface DiagnosticConfig {
@@ -675,14 +853,16 @@ export interface DiagnosticConfig {
   enablePacketCaptureFlag?: boolean;
 }
 export const DiagnosticConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "gcsBucket": S.optional(S.String),
-  "enableCopyHomeFilesFlag": S.optional(S.Boolean),
-  "enableRepairFlag": S.optional(S.Boolean),
-  "relativePath": S.optional(S.String),
-  "enablePacketCaptureFlag": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "DiagnosticConfig" }) as any as S.Schema<DiagnosticConfig>;
+  S.Struct({
+    gcsBucket: S.optional(S.String),
+    enableCopyHomeFilesFlag: S.optional(S.Boolean),
+    enableRepairFlag: S.optional(S.Boolean),
+    relativePath: S.optional(S.String),
+    enablePacketCaptureFlag: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "DiagnosticConfig",
+}) as any as S.Schema<DiagnosticConfig>;
 
 /** Request for creating a notebook instance diagnostic file. */
 export interface DiagnoseInstanceRequest {
@@ -692,11 +872,13 @@ export interface DiagnoseInstanceRequest {
   timeoutMinutes?: number;
 }
 export const DiagnoseInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "diagnosticConfig": S.optional(DiagnosticConfig),
-  "timeoutMinutes": S.optional(S.Number),
-}),
-).annotate({ identifier: "DiagnoseInstanceRequest" }) as any as S.Schema<DiagnoseInstanceRequest>;
+  S.Struct({
+    diagnosticConfig: S.optional(DiagnosticConfig),
+    timeoutMinutes: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "DiagnoseInstanceRequest",
+}) as any as S.Schema<DiagnoseInstanceRequest>;
 
 export interface DiagnoseProjectsLocationsInstancesRequest {
   /** Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}` */
@@ -704,12 +886,21 @@ export interface DiagnoseProjectsLocationsInstancesRequest {
   /** Request body */
   body?: DiagnoseInstanceRequest;
 }
-export const DiagnoseProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(DiagnoseInstanceRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2/{+name}:diagnose","baseUrl":"https://notebooks.googleapis.com/"})),
-).annotate({ identifier: "DiagnoseProjectsLocationsInstancesRequest" }) as any as S.Schema<DiagnoseProjectsLocationsInstancesRequest>;
+export const DiagnoseProjectsLocationsInstancesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(DiagnoseInstanceRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v2/{+name}:diagnose",
+        baseUrl: "https://notebooks.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DiagnoseProjectsLocationsInstancesRequest",
+  }) as any as S.Schema<DiagnoseProjectsLocationsInstancesRequest>;
 
 /** Request message for generating an EUC for the instance owner. */
 export interface GenerateAccessTokenRequest {
@@ -717,10 +908,12 @@ export interface GenerateAccessTokenRequest {
   vmToken?: string;
 }
 export const GenerateAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "vmToken": S.optional(S.String),
-}),
-).annotate({ identifier: "GenerateAccessTokenRequest" }) as any as S.Schema<GenerateAccessTokenRequest>;
+  S.Struct({
+    vmToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GenerateAccessTokenRequest",
+}) as any as S.Schema<GenerateAccessTokenRequest>;
 
 export interface GenerateAccessTokenProjectsLocationsInstancesRequest {
   /** Required. Format: `projects/{project}/locations/{location}/instances/{instance_id}` */
@@ -728,12 +921,21 @@ export interface GenerateAccessTokenProjectsLocationsInstancesRequest {
   /** Request body */
   body?: GenerateAccessTokenRequest;
 }
-export const GenerateAccessTokenProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GenerateAccessTokenRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2/{+name}:generateAccessToken","baseUrl":"https://notebooks.googleapis.com/"})),
-).annotate({ identifier: "GenerateAccessTokenProjectsLocationsInstancesRequest" }) as any as S.Schema<GenerateAccessTokenProjectsLocationsInstancesRequest>;
+export const GenerateAccessTokenProjectsLocationsInstancesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(GenerateAccessTokenRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v2/{+name}:generateAccessToken",
+        baseUrl: "https://notebooks.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GenerateAccessTokenProjectsLocationsInstancesRequest",
+  }) as any as S.Schema<GenerateAccessTokenProjectsLocationsInstancesRequest>;
 
 /** Response message for generating an EUC for the instance owner. */
 export interface GenerateAccessTokenResponse {
@@ -747,23 +949,34 @@ export interface GenerateAccessTokenResponse {
   access_token?: string;
 }
 export const GenerateAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "scope": S.optional(S.String),
-  "expires_in": S.optional(S.Number),
-  "token_type": S.optional(S.String),
-  "access_token": S.optional(S.String),
-}),
-).annotate({ identifier: "GenerateAccessTokenResponse" }) as any as S.Schema<GenerateAccessTokenResponse>;
+  S.Struct({
+    scope: S.optional(S.String),
+    expires_in: S.optional(S.Number),
+    token_type: S.optional(S.String),
+    access_token: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GenerateAccessTokenResponse",
+}) as any as S.Schema<GenerateAccessTokenResponse>;
 
 export interface GetConfigProjectsLocationsInstancesRequest {
   /** Required. Format: `projects/{project_id}/locations/{location}` */
   name: string;
 }
-export const GetConfigProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v2/{+name}/instances:getConfig","baseUrl":"https://notebooks.googleapis.com/"})),
-).annotate({ identifier: "GetConfigProjectsLocationsInstancesRequest" }) as any as S.Schema<GetConfigProjectsLocationsInstancesRequest>;
+export const GetConfigProjectsLocationsInstancesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v2/{+name}/instances:getConfig",
+        baseUrl: "https://notebooks.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetConfigProjectsLocationsInstancesRequest",
+  }) as any as S.Schema<GetConfigProjectsLocationsInstancesRequest>;
 
 /** SupportedValues represents the values supported by the configuration. */
 export interface SupportedValues {
@@ -773,11 +986,13 @@ export interface SupportedValues {
   machineTypes?: StringList;
 }
 export const SupportedValues = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "acceleratorTypes": S.optional(StringList),
-  "machineTypes": S.optional(StringList),
-}),
-).annotate({ identifier: "SupportedValues" }) as any as S.Schema<SupportedValues>;
+  S.Struct({
+    acceleratorTypes: S.optional(StringList),
+    machineTypes: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "SupportedValues",
+}) as any as S.Schema<SupportedValues>;
 
 /** DefaultValues represents the default configuration values. */
 export interface DefaultValues {
@@ -785,9 +1000,9 @@ export interface DefaultValues {
   machineType?: string;
 }
 export const DefaultValues = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "machineType": S.optional(S.String),
-}),
+  S.Struct({
+    machineType: S.optional(S.String),
+  }),
 ).annotate({ identifier: "DefaultValues" }) as any as S.Schema<DefaultValues>;
 
 /** ConfigImage represents an image release available to create a WbI */
@@ -802,16 +1017,18 @@ export interface ImageRelease {
   imageName?: string;
 }
 export const ImageRelease = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "imageFamily": S.optional(S.String),
-  "description": S.optional(S.String),
-  "releaseName": S.optional(S.String),
-  "imageName": S.optional(S.String),
-}),
+  S.Struct({
+    imageFamily: S.optional(S.String),
+    description: S.optional(S.String),
+    releaseName: S.optional(S.String),
+    imageName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ImageRelease" }) as any as S.Schema<ImageRelease>;
 
 export type ImageReleaseList = ReadonlyArray<ImageRelease>;
-export const ImageReleaseList = /*@__PURE__*/ S.Array(ImageRelease) as any as S.Schema<ImageReleaseList>;
+export const ImageReleaseList = /*@__PURE__*/ S.Array(
+  ImageRelease,
+) as any as S.Schema<ImageReleaseList>;
 
 /** Response for getting WbI configurations in a location */
 export interface Config {
@@ -825,12 +1042,12 @@ export interface Config {
   availableImages?: ImageReleaseList;
 }
 export const Config = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "disableWorkbenchLegacyCreation": S.optional(S.Boolean),
-  "supportedValues": S.optional(SupportedValues),
-  "defaultValues": S.optional(DefaultValues),
-  "availableImages": S.optional(ImageReleaseList),
-}),
+  S.Struct({
+    disableWorkbenchLegacyCreation: S.optional(S.Boolean),
+    supportedValues: S.optional(SupportedValues),
+    defaultValues: S.optional(DefaultValues),
+    availableImages: S.optional(ImageReleaseList),
+  }),
 ).annotate({ identifier: "Config" }) as any as S.Schema<Config>;
 
 export interface GetIamPolicyProjectsLocationsInstancesRequest {
@@ -839,12 +1056,21 @@ export interface GetIamPolicyProjectsLocationsInstancesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-export const GetIamPolicyProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-  "resource": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v2/{+resource}:getIamPolicy","baseUrl":"https://notebooks.googleapis.com/"})),
-).annotate({ identifier: "GetIamPolicyProjectsLocationsInstancesRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsInstancesRequest>;
+export const GetIamPolicyProjectsLocationsInstancesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+      resource: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v2/{+resource}:getIamPolicy",
+        baseUrl: "https://notebooks.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetIamPolicyProjectsLocationsInstancesRequest",
+  }) as any as S.Schema<GetIamPolicyProjectsLocationsInstancesRequest>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -858,12 +1084,12 @@ export interface Expr {
   description?: string;
 }
 export const Expr = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "location": S.optional(S.String),
-  "title": S.optional(S.String),
-  "expression": S.optional(S.String),
-  "description": S.optional(S.String),
-}),
+  S.Struct({
+    location: S.optional(S.String),
+    title: S.optional(S.String),
+    expression: S.optional(S.String),
+    description: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
 /** Associates `members`, or principals, with a `role`. */
@@ -876,15 +1102,17 @@ export interface Binding {
   members?: StringList;
 }
 export const Binding = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "condition": S.optional(Expr),
-  "role": S.optional(S.String),
-  "members": S.optional(StringList),
-}),
+  S.Struct({
+    condition: S.optional(Expr),
+    role: S.optional(S.String),
+    members: S.optional(StringList),
+  }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = ReadonlyArray<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+export const BindingList = /*@__PURE__*/ S.Array(
+  Binding,
+) as any as S.Schema<BindingList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -896,11 +1124,11 @@ export interface Policy {
   etag?: string;
 }
 export const Policy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "version": S.optional(S.Number),
-  "bindings": S.optional(BindingList),
-  "etag": S.optional(S.String),
-}),
+  S.Struct({
+    version: S.optional(S.Number),
+    bindings: S.optional(BindingList),
+    etag: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
 
 export interface GetProjectsLocationsRequest {
@@ -908,10 +1136,18 @@ export interface GetProjectsLocationsRequest {
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v2/{+name}","baseUrl":"https://notebooks.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v2/{+name}",
+      baseUrl: "https://notebooks.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsRequest",
+}) as any as S.Schema<GetProjectsLocationsRequest>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -927,34 +1163,52 @@ export interface Location {
   metadata?: DocumentMap;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "displayName": S.optional(S.String),
-  "locationId": S.optional(S.String),
-  "metadata": S.optional(DocumentMap),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    labels: S.optional(StringMap),
+    displayName: S.optional(S.String),
+    locationId: S.optional(S.String),
+    metadata: S.optional(DocumentMap),
+  }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export interface GetProjectsLocationsInstancesRequest {
   /** Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}` */
   name: string;
 }
-export const GetProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v2/{+name}","baseUrl":"https://notebooks.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsInstancesRequest" }) as any as S.Schema<GetProjectsLocationsInstancesRequest>;
+export const GetProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v2/{+name}",
+        baseUrl: "https://notebooks.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsInstancesRequest",
+}) as any as S.Schema<GetProjectsLocationsInstancesRequest>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v2/{+name}","baseUrl":"https://notebooks.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v2/{+name}",
+        baseUrl: "https://notebooks.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsOperationsRequest",
+}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export interface ListProjectsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
@@ -969,17 +1223,27 @@ export interface ListProjectsLocationsRequest {
   extraLocationTypes?: StringList;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v2/{+name}/locations","baseUrl":"https://notebooks.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
+  S.Struct({
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v2/{+name}/locations",
+      baseUrl: "https://notebooks.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsRequest",
+}) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(
+  Location,
+) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -989,11 +1253,13 @@ export interface ListLocationsResponse {
   locations?: LocationList;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "locations": S.optional(LocationList),
-}),
-).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    locations: S.optional(LocationList),
+  }),
+).annotate({
+  identifier: "ListLocationsResponse",
+}) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsLocationsInstancesRequest {
   /** Optional. List filter. */
@@ -1007,18 +1273,29 @@ export interface ListProjectsLocationsInstancesRequest {
   /** Optional. A previous returned page token that can be used to continue listing from the last result. */
   pageToken?: string;
 }
-export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v2/{+parent}/instances","baseUrl":"https://notebooks.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsInstancesRequest" }) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
+export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      filter: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v2/{+parent}/instances",
+        baseUrl: "https://notebooks.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsInstancesRequest",
+}) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
 
 export type InstanceList = ReadonlyArray<Instance>;
-export const InstanceList = /*@__PURE__*/ S.Array(Instance) as any as S.Schema<InstanceList>;
+export const InstanceList = /*@__PURE__*/ S.Array(
+  Instance,
+) as any as S.Schema<InstanceList>;
 
 /** Response for listing notebook instances. */
 export interface ListInstancesResponse {
@@ -1030,12 +1307,14 @@ export interface ListInstancesResponse {
   instances?: InstanceList;
 }
 export const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-  "instances": S.optional(InstanceList),
-}),
-).annotate({ identifier: "ListInstancesResponse" }) as any as S.Schema<ListInstancesResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+    instances: S.optional(InstanceList),
+  }),
+).annotate({
+  identifier: "ListInstancesResponse",
+}) as any as S.Schema<ListInstancesResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page token. */
@@ -1049,18 +1328,29 @@ export interface ListProjectsLocationsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v2/{+name}/operations","baseUrl":"https://notebooks.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      filter: S.optional(S.String.pipe(T.Query())),
+      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v2/{+name}/operations",
+        baseUrl: "https://notebooks.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsOperationsRequest",
+}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(
+  Operation,
+) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -1072,12 +1362,14 @@ export interface ListOperationsResponse {
   unreachable?: StringList;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "operations": S.optional(OperationList),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    operations: S.optional(OperationList),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListOperationsResponse",
+}) as any as S.Schema<ListOperationsResponse>;
 
 export interface PatchProjectsLocationsInstancesRequest {
   /** Output only. Identifier. The name of this notebook instance. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}` */
@@ -1089,16 +1381,31 @@ export interface PatchProjectsLocationsInstancesRequest {
   /** Request body */
   body?: Instance;
 }
-export const PatchProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Instance.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v2/{+name}","baseUrl":"https://notebooks.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsInstancesRequest" }) as any as S.Schema<PatchProjectsLocationsInstancesRequest>;
+export const PatchProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Instance.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v2/{+name}",
+        baseUrl: "https://notebooks.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "PatchProjectsLocationsInstancesRequest",
+}) as any as S.Schema<PatchProjectsLocationsInstancesRequest>;
 
-export type EventTypeEnum = "EVENT_TYPE_UNSPECIFIED" | "IDLE" | "HEARTBEAT" | "HEALTH" | "MAINTENANCE" | "METADATA_CHANGE";
+export type EventTypeEnum =
+  | "EVENT_TYPE_UNSPECIFIED"
+  | "IDLE"
+  | "HEARTBEAT"
+  | "HEALTH"
+  | "MAINTENANCE"
+  | "METADATA_CHANGE";
 export const EventTypeEnum = /*@__PURE__*/ S.String;
 
 /** The definition of an Event for a managed / semi-managed notebook instance. */
@@ -1111,11 +1418,11 @@ export interface Event {
   type?: EventTypeEnum | (string & {});
 }
 export const Event = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "details": S.optional(StringMap),
-  "reportTime": S.optional(S.String),
-  "type": S.optional(EventTypeEnum),
-}),
+  S.Struct({
+    details: S.optional(StringMap),
+    reportTime: S.optional(S.String),
+    type: S.optional(EventTypeEnum),
+  }),
 ).annotate({ identifier: "Event" }) as any as S.Schema<Event>;
 
 /** Request for notebook instances to report information to Notebooks API. */
@@ -1126,11 +1433,13 @@ export interface ReportInstanceInfoSystemRequest {
   vmId?: string;
 }
 export const ReportInstanceInfoSystemRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "event": S.optional(Event),
-  "vmId": S.optional(S.String),
-}),
-).annotate({ identifier: "ReportInstanceInfoSystemRequest" }) as any as S.Schema<ReportInstanceInfoSystemRequest>;
+  S.Struct({
+    event: S.optional(Event),
+    vmId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ReportInstanceInfoSystemRequest",
+}) as any as S.Schema<ReportInstanceInfoSystemRequest>;
 
 export interface ReportInfoSystemProjectsLocationsInstancesRequest {
   /** Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}` */
@@ -1138,18 +1447,29 @@ export interface ReportInfoSystemProjectsLocationsInstancesRequest {
   /** Request body */
   body?: ReportInstanceInfoSystemRequest;
 }
-export const ReportInfoSystemProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(ReportInstanceInfoSystemRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2/{+name}:reportInfoSystem","baseUrl":"https://notebooks.googleapis.com/"})),
-).annotate({ identifier: "ReportInfoSystemProjectsLocationsInstancesRequest" }) as any as S.Schema<ReportInfoSystemProjectsLocationsInstancesRequest>;
+export const ReportInfoSystemProjectsLocationsInstancesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(ReportInstanceInfoSystemRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v2/{+name}:reportInfoSystem",
+        baseUrl: "https://notebooks.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ReportInfoSystemProjectsLocationsInstancesRequest",
+  }) as any as S.Schema<ReportInfoSystemProjectsLocationsInstancesRequest>;
 
 /** Request for resetting a notebook instance */
 export interface ResetInstanceRequest {}
 export const ResetInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "ResetInstanceRequest" }) as any as S.Schema<ResetInstanceRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "ResetInstanceRequest",
+}) as any as S.Schema<ResetInstanceRequest>;
 
 export interface ResetProjectsLocationsInstancesRequest {
   /** Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}` */
@@ -1157,12 +1477,21 @@ export interface ResetProjectsLocationsInstancesRequest {
   /** Request body */
   body?: ResetInstanceRequest;
 }
-export const ResetProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(ResetInstanceRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2/{+name}:reset","baseUrl":"https://notebooks.googleapis.com/"})),
-).annotate({ identifier: "ResetProjectsLocationsInstancesRequest" }) as any as S.Schema<ResetProjectsLocationsInstancesRequest>;
+export const ResetProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(ResetInstanceRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v2/{+name}:reset",
+        baseUrl: "https://notebooks.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ResetProjectsLocationsInstancesRequest",
+}) as any as S.Schema<ResetProjectsLocationsInstancesRequest>;
 
 /** Request for resizing the notebook instance disks */
 export interface ResizeDiskRequest {
@@ -1172,11 +1501,13 @@ export interface ResizeDiskRequest {
   bootDisk?: BootDisk;
 }
 export const ResizeDiskRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dataDisk": S.optional(DataDisk),
-  "bootDisk": S.optional(BootDisk),
-}),
-).annotate({ identifier: "ResizeDiskRequest" }) as any as S.Schema<ResizeDiskRequest>;
+  S.Struct({
+    dataDisk: S.optional(DataDisk),
+    bootDisk: S.optional(BootDisk),
+  }),
+).annotate({
+  identifier: "ResizeDiskRequest",
+}) as any as S.Schema<ResizeDiskRequest>;
 
 export interface ResizeDiskProjectsLocationsInstancesRequest {
   /** Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}` */
@@ -1184,12 +1515,21 @@ export interface ResizeDiskProjectsLocationsInstancesRequest {
   /** Request body */
   body?: ResizeDiskRequest;
 }
-export const ResizeDiskProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "notebookInstance": S.String.pipe(T.Label()),
-  "body": S.optional(ResizeDiskRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2/{+notebookInstance}:resizeDisk","baseUrl":"https://notebooks.googleapis.com/"})),
-).annotate({ identifier: "ResizeDiskProjectsLocationsInstancesRequest" }) as any as S.Schema<ResizeDiskProjectsLocationsInstancesRequest>;
+export const ResizeDiskProjectsLocationsInstancesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      notebookInstance: S.String.pipe(T.Label()),
+      body: S.optional(ResizeDiskRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v2/{+notebookInstance}:resizeDisk",
+        baseUrl: "https://notebooks.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ResizeDiskProjectsLocationsInstancesRequest",
+  }) as any as S.Schema<ResizeDiskProjectsLocationsInstancesRequest>;
 
 /** Snapshot represents the snapshot of the data disk used to restore the Workbench Instance from. Refers to: compute/v1/projects/{project_id}/global/snapshots/{snapshot_id} */
 export interface Snapshot {
@@ -1199,10 +1539,10 @@ export interface Snapshot {
   projectId?: string;
 }
 export const Snapshot = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "snapshotId": S.optional(S.String),
-  "projectId": S.optional(S.String),
-}),
+  S.Struct({
+    snapshotId: S.optional(S.String),
+    projectId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Snapshot" }) as any as S.Schema<Snapshot>;
 
 /** Request for restoring the notebook instance from a BackupSource. */
@@ -1211,10 +1551,12 @@ export interface RestoreInstanceRequest {
   snapshot?: Snapshot;
 }
 export const RestoreInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "snapshot": S.optional(Snapshot),
-}),
-).annotate({ identifier: "RestoreInstanceRequest" }) as any as S.Schema<RestoreInstanceRequest>;
+  S.Struct({
+    snapshot: S.optional(Snapshot),
+  }),
+).annotate({
+  identifier: "RestoreInstanceRequest",
+}) as any as S.Schema<RestoreInstanceRequest>;
 
 export interface RestoreProjectsLocationsInstancesRequest {
   /** Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}` */
@@ -1222,12 +1564,21 @@ export interface RestoreProjectsLocationsInstancesRequest {
   /** Request body */
   body?: RestoreInstanceRequest;
 }
-export const RestoreProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(RestoreInstanceRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2/{+name}:restore","baseUrl":"https://notebooks.googleapis.com/"})),
-).annotate({ identifier: "RestoreProjectsLocationsInstancesRequest" }) as any as S.Schema<RestoreProjectsLocationsInstancesRequest>;
+export const RestoreProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(RestoreInstanceRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v2/{+name}:restore",
+        baseUrl: "https://notebooks.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "RestoreProjectsLocationsInstancesRequest",
+}) as any as S.Schema<RestoreProjectsLocationsInstancesRequest>;
 
 /** Request for rollbacking a notebook instance */
 export interface RollbackInstanceRequest {
@@ -1237,11 +1588,13 @@ export interface RollbackInstanceRequest {
   revisionId?: string;
 }
 export const RollbackInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "targetSnapshot": S.optional(S.String),
-  "revisionId": S.optional(S.String),
-}),
-).annotate({ identifier: "RollbackInstanceRequest" }) as any as S.Schema<RollbackInstanceRequest>;
+  S.Struct({
+    targetSnapshot: S.optional(S.String),
+    revisionId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RollbackInstanceRequest",
+}) as any as S.Schema<RollbackInstanceRequest>;
 
 export interface RollbackProjectsLocationsInstancesRequest {
   /** Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}` */
@@ -1249,12 +1602,21 @@ export interface RollbackProjectsLocationsInstancesRequest {
   /** Request body */
   body?: RollbackInstanceRequest;
 }
-export const RollbackProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(RollbackInstanceRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2/{+name}:rollback","baseUrl":"https://notebooks.googleapis.com/"})),
-).annotate({ identifier: "RollbackProjectsLocationsInstancesRequest" }) as any as S.Schema<RollbackProjectsLocationsInstancesRequest>;
+export const RollbackProjectsLocationsInstancesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(RollbackInstanceRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v2/{+name}:rollback",
+        baseUrl: "https://notebooks.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "RollbackProjectsLocationsInstancesRequest",
+  }) as any as S.Schema<RollbackProjectsLocationsInstancesRequest>;
 
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
@@ -1262,10 +1624,12 @@ export interface SetIamPolicyRequest {
   policy?: Policy;
 }
 export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "policy": S.optional(Policy),
-}),
-).annotate({ identifier: "SetIamPolicyRequest" }) as any as S.Schema<SetIamPolicyRequest>;
+  S.Struct({
+    policy: S.optional(Policy),
+  }),
+).annotate({
+  identifier: "SetIamPolicyRequest",
+}) as any as S.Schema<SetIamPolicyRequest>;
 
 export interface SetIamPolicyProjectsLocationsInstancesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1273,18 +1637,29 @@ export interface SetIamPolicyProjectsLocationsInstancesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2/{+resource}:setIamPolicy","baseUrl":"https://notebooks.googleapis.com/"})),
-).annotate({ identifier: "SetIamPolicyProjectsLocationsInstancesRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsInstancesRequest>;
+export const SetIamPolicyProjectsLocationsInstancesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v2/{+resource}:setIamPolicy",
+        baseUrl: "https://notebooks.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "SetIamPolicyProjectsLocationsInstancesRequest",
+  }) as any as S.Schema<SetIamPolicyProjectsLocationsInstancesRequest>;
 
 /** Request for starting a notebook instance */
 export interface StartInstanceRequest {}
 export const StartInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "StartInstanceRequest" }) as any as S.Schema<StartInstanceRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "StartInstanceRequest",
+}) as any as S.Schema<StartInstanceRequest>;
 
 export interface StartProjectsLocationsInstancesRequest {
   /** Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}` */
@@ -1292,18 +1667,29 @@ export interface StartProjectsLocationsInstancesRequest {
   /** Request body */
   body?: StartInstanceRequest;
 }
-export const StartProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(StartInstanceRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2/{+name}:start","baseUrl":"https://notebooks.googleapis.com/"})),
-).annotate({ identifier: "StartProjectsLocationsInstancesRequest" }) as any as S.Schema<StartProjectsLocationsInstancesRequest>;
+export const StartProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(StartInstanceRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v2/{+name}:start",
+        baseUrl: "https://notebooks.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "StartProjectsLocationsInstancesRequest",
+}) as any as S.Schema<StartProjectsLocationsInstancesRequest>;
 
 /** Request for stopping a notebook instance */
 export interface StopInstanceRequest {}
 export const StopInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "StopInstanceRequest" }) as any as S.Schema<StopInstanceRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "StopInstanceRequest",
+}) as any as S.Schema<StopInstanceRequest>;
 
 export interface StopProjectsLocationsInstancesRequest {
   /** Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}` */
@@ -1311,12 +1697,21 @@ export interface StopProjectsLocationsInstancesRequest {
   /** Request body */
   body?: StopInstanceRequest;
 }
-export const StopProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(StopInstanceRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2/{+name}:stop","baseUrl":"https://notebooks.googleapis.com/"})),
-).annotate({ identifier: "StopProjectsLocationsInstancesRequest" }) as any as S.Schema<StopProjectsLocationsInstancesRequest>;
+export const StopProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(StopInstanceRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v2/{+name}:stop",
+        baseUrl: "https://notebooks.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "StopProjectsLocationsInstancesRequest",
+}) as any as S.Schema<StopProjectsLocationsInstancesRequest>;
 
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
@@ -1324,10 +1719,12 @@ export interface TestIamPermissionsRequest {
   permissions?: StringList;
 }
 export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "permissions": S.optional(StringList),
-}),
-).annotate({ identifier: "TestIamPermissionsRequest" }) as any as S.Schema<TestIamPermissionsRequest>;
+  S.Struct({
+    permissions: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "TestIamPermissionsRequest",
+}) as any as S.Schema<TestIamPermissionsRequest>;
 
 export interface TestIamPermissionsProjectsLocationsInstancesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1335,12 +1732,21 @@ export interface TestIamPermissionsProjectsLocationsInstancesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2/{+resource}:testIamPermissions","baseUrl":"https://notebooks.googleapis.com/"})),
-).annotate({ identifier: "TestIamPermissionsProjectsLocationsInstancesRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsInstancesRequest>;
+export const TestIamPermissionsProjectsLocationsInstancesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v2/{+resource}:testIamPermissions",
+        baseUrl: "https://notebooks.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "TestIamPermissionsProjectsLocationsInstancesRequest",
+  }) as any as S.Schema<TestIamPermissionsProjectsLocationsInstancesRequest>;
 
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
@@ -1348,10 +1754,12 @@ export interface TestIamPermissionsResponse {
   permissions?: StringList;
 }
 export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "permissions": S.optional(StringList),
-}),
-).annotate({ identifier: "TestIamPermissionsResponse" }) as any as S.Schema<TestIamPermissionsResponse>;
+  S.Struct({
+    permissions: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "TestIamPermissionsResponse",
+}) as any as S.Schema<TestIamPermissionsResponse>;
 
 /** Request for upgrading a notebook instance */
 export interface UpgradeInstanceRequest {
@@ -1359,10 +1767,12 @@ export interface UpgradeInstanceRequest {
   imageFamily?: string;
 }
 export const UpgradeInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "imageFamily": S.optional(S.String),
-}),
-).annotate({ identifier: "UpgradeInstanceRequest" }) as any as S.Schema<UpgradeInstanceRequest>;
+  S.Struct({
+    imageFamily: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpgradeInstanceRequest",
+}) as any as S.Schema<UpgradeInstanceRequest>;
 
 export interface UpgradeProjectsLocationsInstancesRequest {
   /** Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}` */
@@ -1370,12 +1780,21 @@ export interface UpgradeProjectsLocationsInstancesRequest {
   /** Request body */
   body?: UpgradeInstanceRequest;
 }
-export const UpgradeProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(UpgradeInstanceRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2/{+name}:upgrade","baseUrl":"https://notebooks.googleapis.com/"})),
-).annotate({ identifier: "UpgradeProjectsLocationsInstancesRequest" }) as any as S.Schema<UpgradeProjectsLocationsInstancesRequest>;
+export const UpgradeProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(UpgradeInstanceRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v2/{+name}:upgrade",
+        baseUrl: "https://notebooks.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "UpgradeProjectsLocationsInstancesRequest",
+}) as any as S.Schema<UpgradeProjectsLocationsInstancesRequest>;
 
 /** Request for upgrading a notebook instance from within the VM */
 export interface UpgradeInstanceSystemRequest {
@@ -1383,10 +1802,12 @@ export interface UpgradeInstanceSystemRequest {
   vmId?: string;
 }
 export const UpgradeInstanceSystemRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "vmId": S.optional(S.String),
-}),
-).annotate({ identifier: "UpgradeInstanceSystemRequest" }) as any as S.Schema<UpgradeInstanceSystemRequest>;
+  S.Struct({
+    vmId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpgradeInstanceSystemRequest",
+}) as any as S.Schema<UpgradeInstanceSystemRequest>;
 
 export interface UpgradeSystemProjectsLocationsInstancesRequest {
   /** Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}` */
@@ -1394,14 +1815,28 @@ export interface UpgradeSystemProjectsLocationsInstancesRequest {
   /** Request body */
   body?: UpgradeInstanceSystemRequest;
 }
-export const UpgradeSystemProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(UpgradeInstanceSystemRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2/{+name}:upgradeSystem","baseUrl":"https://notebooks.googleapis.com/"})),
-).annotate({ identifier: "UpgradeSystemProjectsLocationsInstancesRequest" }) as any as S.Schema<UpgradeSystemProjectsLocationsInstancesRequest>;
+export const UpgradeSystemProjectsLocationsInstancesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(UpgradeInstanceSystemRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v2/{+name}:upgradeSystem",
+        baseUrl: "https://notebooks.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "UpgradeSystemProjectsLocationsInstancesRequest",
+  }) as any as S.Schema<UpgradeSystemProjectsLocationsInstancesRequest>;
 
-export type CancelProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CancelProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsRequest,
@@ -1416,7 +1851,12 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CheckAuthorizationProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CheckAuthorizationProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Initiated by Cloud Console for Oauth consent flow for Workbench Instances. Do not use this method directly. Design doc: go/wbi-euc:auth-dd */
 export const checkAuthorizationProjectsLocationsInstances: API.OperationMethod<
   CheckAuthorizationProjectsLocationsInstancesRequest,
@@ -1431,7 +1871,10 @@ export const checkAuthorizationProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CheckUpgradabilityProjectsLocationsInstancesError = NotFound | Forbidden | GcpOpError;
+export type CheckUpgradabilityProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Checks whether a notebook instance is upgradable. */
 export const checkUpgradabilityProjectsLocationsInstances: API.OperationMethod<
   CheckUpgradabilityProjectsLocationsInstancesRequest,
@@ -1446,7 +1889,12 @@ export const checkUpgradabilityProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new Instance in a given project and location. */
 export const createProjectsLocationsInstances: API.OperationMethod<
   CreateProjectsLocationsInstancesRequest,
@@ -1461,7 +1909,12 @@ export const createProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a single Instance. */
 export const deleteProjectsLocationsInstances: API.OperationMethod<
   DeleteProjectsLocationsInstancesRequest,
@@ -1476,7 +1929,12 @@ export const deleteProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsRequest,
@@ -1491,7 +1949,12 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DiagnoseProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DiagnoseProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a Diagnostic File and runs Diagnostic Tool given an Instance. */
 export const diagnoseProjectsLocationsInstances: API.OperationMethod<
   DiagnoseProjectsLocationsInstancesRequest,
@@ -1506,7 +1969,12 @@ export const diagnoseProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GenerateAccessTokenProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type GenerateAccessTokenProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Called by VM to return an EUC for the instance owner. Do not use this method directly. Design doc: go/wbi-euc:dd */
 export const generateAccessTokenProjectsLocationsInstances: API.OperationMethod<
   GenerateAccessTokenProjectsLocationsInstancesRequest,
@@ -1521,7 +1989,10 @@ export const generateAccessTokenProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetConfigProjectsLocationsInstancesError = NotFound | Forbidden | GcpOpError;
+export type GetConfigProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns various configuration parameters. */
 export const getConfigProjectsLocationsInstances: API.OperationMethod<
   GetConfigProjectsLocationsInstancesRequest,
@@ -1536,7 +2007,10 @@ export const getConfigProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsInstancesError = NotFound | Forbidden | GcpOpError;
+export type GetIamPolicyProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsInstances: API.OperationMethod<
   GetIamPolicyProjectsLocationsInstancesRequest,
@@ -1566,7 +2040,10 @@ export const getProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsInstancesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a single Instance. */
 export const getProjectsLocationsInstances: API.OperationMethod<
   GetProjectsLocationsInstancesRequest,
@@ -1581,7 +2058,10 @@ export const getProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -1609,10 +2089,16 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsInstancesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists instances in a given project and location. */
 export const listProjectsLocationsInstances: API.PaginatedOperationMethod<
   ListProjectsLocationsInstancesRequest,
@@ -1625,10 +2111,16 @@ export const listProjectsLocationsInstances: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -1641,10 +2133,18 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type PatchProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** UpdateInstance updates an Instance. */
 export const patchProjectsLocationsInstances: API.OperationMethod<
   PatchProjectsLocationsInstancesRequest,
@@ -1659,7 +2159,12 @@ export const patchProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ReportInfoSystemProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ReportInfoSystemProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Allows notebook instances to report their latest instance information to the Notebooks API server. The server will merge the reported information to the instance metadata store. Do not use this method directly. */
 export const reportInfoSystemProjectsLocationsInstances: API.OperationMethod<
   ReportInfoSystemProjectsLocationsInstancesRequest,
@@ -1674,7 +2179,12 @@ export const reportInfoSystemProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ResetProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ResetProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Resets a notebook instance. */
 export const resetProjectsLocationsInstances: API.OperationMethod<
   ResetProjectsLocationsInstancesRequest,
@@ -1689,7 +2199,12 @@ export const resetProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ResizeDiskProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ResizeDiskProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Resize a notebook instance disk to a higher capacity. */
 export const resizeDiskProjectsLocationsInstances: API.OperationMethod<
   ResizeDiskProjectsLocationsInstancesRequest,
@@ -1704,7 +2219,12 @@ export const resizeDiskProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RestoreProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RestoreProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** RestoreInstance restores an Instance from a BackupSource. */
 export const restoreProjectsLocationsInstances: API.OperationMethod<
   RestoreProjectsLocationsInstancesRequest,
@@ -1719,7 +2239,12 @@ export const restoreProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RollbackProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RollbackProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Rollbacks a notebook instance to the previous version. */
 export const rollbackProjectsLocationsInstances: API.OperationMethod<
   RollbackProjectsLocationsInstancesRequest,
@@ -1734,7 +2259,12 @@ export const rollbackProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetIamPolicyProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsInstances: API.OperationMethod<
   SetIamPolicyProjectsLocationsInstancesRequest,
@@ -1749,7 +2279,12 @@ export const setIamPolicyProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type StartProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type StartProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Starts a notebook instance. */
 export const startProjectsLocationsInstances: API.OperationMethod<
   StartProjectsLocationsInstancesRequest,
@@ -1764,7 +2299,12 @@ export const startProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type StopProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type StopProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Stops a notebook instance. */
 export const stopProjectsLocationsInstances: API.OperationMethod<
   StopProjectsLocationsInstancesRequest,
@@ -1779,7 +2319,12 @@ export const stopProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TestIamPermissionsProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsInstances: API.OperationMethod<
   TestIamPermissionsProjectsLocationsInstancesRequest,
@@ -1794,7 +2339,12 @@ export const testIamPermissionsProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpgradeProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpgradeProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Upgrades a notebook instance to the latest version. */
 export const upgradeProjectsLocationsInstances: API.OperationMethod<
   UpgradeProjectsLocationsInstancesRequest,
@@ -1809,7 +2359,12 @@ export const upgradeProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpgradeSystemProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpgradeSystemProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Allows notebook instances to upgrade themselves. Do not use this method directly. */
 export const upgradeSystemProjectsLocationsInstances: API.OperationMethod<
   UpgradeSystemProjectsLocationsInstancesRequest,
@@ -1823,4 +2378,3 @@ export const upgradeSystemProjectsLocationsInstances: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

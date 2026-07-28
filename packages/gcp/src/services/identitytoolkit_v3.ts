@@ -13,55 +13,58 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
 /** Request to get the IDP authentication URL. */
 export interface IdentitytoolkitRelyingpartyCreateAuthUriRequest {
@@ -98,39 +101,54 @@ export interface IdentitytoolkitRelyingpartyCreateAuthUriRequest {
   /** The query parameter that client can customize by themselves in auth url. The following parameters are reserved for server so that they cannot be customized by clients: client_id, response_type, scope, redirect_uri, state, oauth_token. */
   customParameter?: StringMap;
 }
-export const IdentitytoolkitRelyingpartyCreateAuthUriRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "hostedDomain": S.optional(S.String),
-  "continueUri": S.optional(S.String),
-  "tenantId": S.optional(S.String),
-  "identifier": S.optional(S.String),
-  "oauthConsumerKey": S.optional(S.String),
-  "openidRealm": S.optional(S.String),
-  "tenantProjectNumber": S.optional(S.String),
-  "sessionId": S.optional(S.String),
-  "otaApp": S.optional(S.String),
-  "authFlowType": S.optional(S.String),
-  "oauthScope": S.optional(S.String),
-  "providerId": S.optional(S.String),
-  "context": S.optional(S.String),
-  "appId": S.optional(S.String),
-  "clientId": S.optional(S.String),
-  "customParameter": S.optional(StringMap),
-}),
-).annotate({ identifier: "IdentitytoolkitRelyingpartyCreateAuthUriRequest" }) as any as S.Schema<IdentitytoolkitRelyingpartyCreateAuthUriRequest>;
+export const IdentitytoolkitRelyingpartyCreateAuthUriRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      hostedDomain: S.optional(S.String),
+      continueUri: S.optional(S.String),
+      tenantId: S.optional(S.String),
+      identifier: S.optional(S.String),
+      oauthConsumerKey: S.optional(S.String),
+      openidRealm: S.optional(S.String),
+      tenantProjectNumber: S.optional(S.String),
+      sessionId: S.optional(S.String),
+      otaApp: S.optional(S.String),
+      authFlowType: S.optional(S.String),
+      oauthScope: S.optional(S.String),
+      providerId: S.optional(S.String),
+      context: S.optional(S.String),
+      appId: S.optional(S.String),
+      clientId: S.optional(S.String),
+      customParameter: S.optional(StringMap),
+    }),
+  ).annotate({
+    identifier: "IdentitytoolkitRelyingpartyCreateAuthUriRequest",
+  }) as any as S.Schema<IdentitytoolkitRelyingpartyCreateAuthUriRequest>;
 
 export interface CreateAuthUriRelyingpartyRequest {
   /** Request body */
   body?: IdentitytoolkitRelyingpartyCreateAuthUriRequest;
 }
 export const CreateAuthUriRelyingpartyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(IdentitytoolkitRelyingpartyCreateAuthUriRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"createAuthUri","baseUrl":"https://www.googleapis.com/identitytoolkit/v3/relyingparty/"})),
-).annotate({ identifier: "CreateAuthUriRelyingpartyRequest" }) as any as S.Schema<CreateAuthUriRelyingpartyRequest>;
+  S.Struct({
+    body: S.optional(
+      IdentitytoolkitRelyingpartyCreateAuthUriRequest.pipe(T.HttpBody()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "createAuthUri",
+      baseUrl: "https://www.googleapis.com/identitytoolkit/v3/relyingparty/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateAuthUriRelyingpartyRequest",
+}) as any as S.Schema<CreateAuthUriRelyingpartyRequest>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** Response of creating the IDP authentication URL. */
 export interface CreateAuthUriResponse {
@@ -154,18 +172,20 @@ export interface CreateAuthUriResponse {
   captchaRequired?: boolean;
 }
 export const CreateAuthUriResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "forExistingProvider": S.optional(S.Boolean),
-  "authUri": S.optional(S.String),
-  "sessionId": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "allProviders": S.optional(StringList),
-  "providerId": S.optional(S.String),
-  "registered": S.optional(S.Boolean),
-  "signinMethods": S.optional(StringList),
-  "captchaRequired": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "CreateAuthUriResponse" }) as any as S.Schema<CreateAuthUriResponse>;
+  S.Struct({
+    forExistingProvider: S.optional(S.Boolean),
+    authUri: S.optional(S.String),
+    sessionId: S.optional(S.String),
+    kind: S.optional(S.String),
+    allProviders: S.optional(StringList),
+    providerId: S.optional(S.String),
+    registered: S.optional(S.Boolean),
+    signinMethods: S.optional(StringList),
+    captchaRequired: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "CreateAuthUriResponse",
+}) as any as S.Schema<CreateAuthUriResponse>;
 
 /** Request to delete account. */
 export interface IdentitytoolkitRelyingpartyDeleteAccountRequest {
@@ -176,23 +196,36 @@ export interface IdentitytoolkitRelyingpartyDeleteAccountRequest {
   /** The local ID of the user. */
   localId?: string;
 }
-export const IdentitytoolkitRelyingpartyDeleteAccountRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "delegatedProjectNumber": S.optional(S.String),
-  "idToken": S.optional(S.String),
-  "localId": S.optional(S.String),
-}),
-).annotate({ identifier: "IdentitytoolkitRelyingpartyDeleteAccountRequest" }) as any as S.Schema<IdentitytoolkitRelyingpartyDeleteAccountRequest>;
+export const IdentitytoolkitRelyingpartyDeleteAccountRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      delegatedProjectNumber: S.optional(S.String),
+      idToken: S.optional(S.String),
+      localId: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "IdentitytoolkitRelyingpartyDeleteAccountRequest",
+  }) as any as S.Schema<IdentitytoolkitRelyingpartyDeleteAccountRequest>;
 
 export interface DeleteAccountRelyingpartyRequest {
   /** Request body */
   body?: IdentitytoolkitRelyingpartyDeleteAccountRequest;
 }
 export const DeleteAccountRelyingpartyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(IdentitytoolkitRelyingpartyDeleteAccountRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"deleteAccount","baseUrl":"https://www.googleapis.com/identitytoolkit/v3/relyingparty/"})),
-).annotate({ identifier: "DeleteAccountRelyingpartyRequest" }) as any as S.Schema<DeleteAccountRelyingpartyRequest>;
+  S.Struct({
+    body: S.optional(
+      IdentitytoolkitRelyingpartyDeleteAccountRequest.pipe(T.HttpBody()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "deleteAccount",
+      baseUrl: "https://www.googleapis.com/identitytoolkit/v3/relyingparty/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteAccountRelyingpartyRequest",
+}) as any as S.Schema<DeleteAccountRelyingpartyRequest>;
 
 /** Respone of deleting account. */
 export interface DeleteAccountResponse {
@@ -200,10 +233,12 @@ export interface DeleteAccountResponse {
   kind?: string;
 }
 export const DeleteAccountResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-}),
-).annotate({ identifier: "DeleteAccountResponse" }) as any as S.Schema<DeleteAccountResponse>;
+  S.Struct({
+    kind: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DeleteAccountResponse",
+}) as any as S.Schema<DeleteAccountResponse>;
 
 /** Request to download user account in batch. */
 export interface IdentitytoolkitRelyingpartyDownloadAccountRequest {
@@ -216,24 +251,37 @@ export interface IdentitytoolkitRelyingpartyDownloadAccountRequest {
   /** The max number of results to return in the response. */
   maxResults?: number;
 }
-export const IdentitytoolkitRelyingpartyDownloadAccountRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "targetProjectId": S.optional(S.String),
-  "delegatedProjectNumber": S.optional(S.String),
-  "maxResults": S.optional(S.Number),
-}),
-).annotate({ identifier: "IdentitytoolkitRelyingpartyDownloadAccountRequest" }) as any as S.Schema<IdentitytoolkitRelyingpartyDownloadAccountRequest>;
+export const IdentitytoolkitRelyingpartyDownloadAccountRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      nextPageToken: S.optional(S.String),
+      targetProjectId: S.optional(S.String),
+      delegatedProjectNumber: S.optional(S.String),
+      maxResults: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "IdentitytoolkitRelyingpartyDownloadAccountRequest",
+  }) as any as S.Schema<IdentitytoolkitRelyingpartyDownloadAccountRequest>;
 
 export interface DownloadAccountRelyingpartyRequest {
   /** Request body */
   body?: IdentitytoolkitRelyingpartyDownloadAccountRequest;
 }
 export const DownloadAccountRelyingpartyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(IdentitytoolkitRelyingpartyDownloadAccountRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"downloadAccount","baseUrl":"https://www.googleapis.com/identitytoolkit/v3/relyingparty/"})),
-).annotate({ identifier: "DownloadAccountRelyingpartyRequest" }) as any as S.Schema<DownloadAccountRelyingpartyRequest>;
+  S.Struct({
+    body: S.optional(
+      IdentitytoolkitRelyingpartyDownloadAccountRequest.pipe(T.HttpBody()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "downloadAccount",
+      baseUrl: "https://www.googleapis.com/identitytoolkit/v3/relyingparty/",
+    }),
+  ),
+).annotate({
+  identifier: "DownloadAccountRelyingpartyRequest",
+}) as any as S.Schema<DownloadAccountRelyingpartyRequest>;
 
 export interface UserInfoProviderUserInfoItem {
   /** User's email at IDP. */
@@ -254,20 +302,25 @@ export interface UserInfoProviderUserInfoItem {
   screenName?: string;
 }
 export const UserInfoProviderUserInfoItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "email": S.optional(S.String),
-  "federatedId": S.optional(S.String),
-  "photoUrl": S.optional(S.String),
-  "phoneNumber": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "providerId": S.optional(S.String),
-  "rawId": S.optional(S.String),
-  "screenName": S.optional(S.String),
-}),
-).annotate({ identifier: "UserInfoProviderUserInfoItem" }) as any as S.Schema<UserInfoProviderUserInfoItem>;
+  S.Struct({
+    email: S.optional(S.String),
+    federatedId: S.optional(S.String),
+    photoUrl: S.optional(S.String),
+    phoneNumber: S.optional(S.String),
+    displayName: S.optional(S.String),
+    providerId: S.optional(S.String),
+    rawId: S.optional(S.String),
+    screenName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UserInfoProviderUserInfoItem",
+}) as any as S.Schema<UserInfoProviderUserInfoItem>;
 
-export type UserInfoProviderUserInfoItemList = ReadonlyArray<UserInfoProviderUserInfoItem>;
-export const UserInfoProviderUserInfoItemList = /*@__PURE__*/ S.Array(UserInfoProviderUserInfoItem) as any as S.Schema<UserInfoProviderUserInfoItemList>;
+export type UserInfoProviderUserInfoItemList =
+  ReadonlyArray<UserInfoProviderUserInfoItem>;
+export const UserInfoProviderUserInfoItemList = /*@__PURE__*/ S.Array(
+  UserInfoProviderUserInfoItem,
+) as any as S.Schema<UserInfoProviderUserInfoItemList>;
 
 /** Template for an individual account info. */
 export interface UserInfo {
@@ -311,31 +364,33 @@ export interface UserInfo {
   createdAt?: string;
 }
 export const UserInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "disabled": S.optional(S.Boolean),
-  "rawPassword": S.optional(S.String),
-  "salt": S.optional(S.String),
-  "customAuth": S.optional(S.Boolean),
-  "displayName": S.optional(S.String),
-  "customAttributes": S.optional(S.String),
-  "localId": S.optional(S.String),
-  "screenName": S.optional(S.String),
-  "validSince": S.optional(S.String),
-  "email": S.optional(S.String),
-  "providerUserInfo": S.optional(UserInfoProviderUserInfoItemList),
-  "passwordHash": S.optional(S.String),
-  "phoneNumber": S.optional(S.String),
-  "version": S.optional(S.Number),
-  "lastLoginAt": S.optional(S.String),
-  "photoUrl": S.optional(S.String),
-  "passwordUpdatedAt": S.optional(S.Number),
-  "emailVerified": S.optional(S.Boolean),
-  "createdAt": S.optional(S.String),
-}),
+  S.Struct({
+    disabled: S.optional(S.Boolean),
+    rawPassword: S.optional(S.String),
+    salt: S.optional(S.String),
+    customAuth: S.optional(S.Boolean),
+    displayName: S.optional(S.String),
+    customAttributes: S.optional(S.String),
+    localId: S.optional(S.String),
+    screenName: S.optional(S.String),
+    validSince: S.optional(S.String),
+    email: S.optional(S.String),
+    providerUserInfo: S.optional(UserInfoProviderUserInfoItemList),
+    passwordHash: S.optional(S.String),
+    phoneNumber: S.optional(S.String),
+    version: S.optional(S.Number),
+    lastLoginAt: S.optional(S.String),
+    photoUrl: S.optional(S.String),
+    passwordUpdatedAt: S.optional(S.Number),
+    emailVerified: S.optional(S.Boolean),
+    createdAt: S.optional(S.String),
+  }),
 ).annotate({ identifier: "UserInfo" }) as any as S.Schema<UserInfo>;
 
 export type UserInfoList = ReadonlyArray<UserInfo>;
-export const UserInfoList = /*@__PURE__*/ S.Array(UserInfo) as any as S.Schema<UserInfoList>;
+export const UserInfoList = /*@__PURE__*/ S.Array(
+  UserInfo,
+) as any as S.Schema<UserInfoList>;
 
 /** Response of downloading accounts in batch. */
 export interface DownloadAccountResponse {
@@ -347,12 +402,14 @@ export interface DownloadAccountResponse {
   users?: UserInfoList;
 }
 export const DownloadAccountResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "nextPageToken": S.optional(S.String),
-  "users": S.optional(UserInfoList),
-}),
-).annotate({ identifier: "DownloadAccountResponse" }) as any as S.Schema<DownloadAccountResponse>;
+  S.Struct({
+    kind: S.optional(S.String),
+    nextPageToken: S.optional(S.String),
+    users: S.optional(UserInfoList),
+  }),
+).annotate({
+  identifier: "DownloadAccountResponse",
+}) as any as S.Schema<DownloadAccountResponse>;
 
 /** Request to sign in with email. */
 export interface IdentitytoolkitRelyingpartyEmailLinkSigninRequest {
@@ -363,23 +420,36 @@ export interface IdentitytoolkitRelyingpartyEmailLinkSigninRequest {
   /** The email address of the user. */
   email?: string;
 }
-export const IdentitytoolkitRelyingpartyEmailLinkSigninRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "idToken": S.optional(S.String),
-  "oobCode": S.optional(S.String),
-  "email": S.optional(S.String),
-}),
-).annotate({ identifier: "IdentitytoolkitRelyingpartyEmailLinkSigninRequest" }) as any as S.Schema<IdentitytoolkitRelyingpartyEmailLinkSigninRequest>;
+export const IdentitytoolkitRelyingpartyEmailLinkSigninRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      idToken: S.optional(S.String),
+      oobCode: S.optional(S.String),
+      email: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "IdentitytoolkitRelyingpartyEmailLinkSigninRequest",
+  }) as any as S.Schema<IdentitytoolkitRelyingpartyEmailLinkSigninRequest>;
 
 export interface EmailLinkSigninRelyingpartyRequest {
   /** Request body */
   body?: IdentitytoolkitRelyingpartyEmailLinkSigninRequest;
 }
 export const EmailLinkSigninRelyingpartyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(IdentitytoolkitRelyingpartyEmailLinkSigninRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"emailLinkSignin","baseUrl":"https://www.googleapis.com/identitytoolkit/v3/relyingparty/"})),
-).annotate({ identifier: "EmailLinkSigninRelyingpartyRequest" }) as any as S.Schema<EmailLinkSigninRelyingpartyRequest>;
+  S.Struct({
+    body: S.optional(
+      IdentitytoolkitRelyingpartyEmailLinkSigninRequest.pipe(T.HttpBody()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "emailLinkSignin",
+      baseUrl: "https://www.googleapis.com/identitytoolkit/v3/relyingparty/",
+    }),
+  ),
+).annotate({
+  identifier: "EmailLinkSigninRelyingpartyRequest",
+}) as any as S.Schema<EmailLinkSigninRelyingpartyRequest>;
 
 /** Response of email signIn. */
 export interface EmailLinkSigninResponse {
@@ -399,16 +469,18 @@ export interface EmailLinkSigninResponse {
   localId?: string;
 }
 export const EmailLinkSigninResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "expiresIn": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "refreshToken": S.optional(S.String),
-  "idToken": S.optional(S.String),
-  "isNewUser": S.optional(S.Boolean),
-  "email": S.optional(S.String),
-  "localId": S.optional(S.String),
-}),
-).annotate({ identifier: "EmailLinkSigninResponse" }) as any as S.Schema<EmailLinkSigninResponse>;
+  S.Struct({
+    expiresIn: S.optional(S.String),
+    kind: S.optional(S.String),
+    refreshToken: S.optional(S.String),
+    idToken: S.optional(S.String),
+    isNewUser: S.optional(S.Boolean),
+    email: S.optional(S.String),
+    localId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EmailLinkSigninResponse",
+}) as any as S.Schema<EmailLinkSigninResponse>;
 
 /** Request to get the account information. */
 export interface IdentitytoolkitRelyingpartyGetAccountInfoRequest {
@@ -423,25 +495,38 @@ export interface IdentitytoolkitRelyingpartyGetAccountInfoRequest {
   /** The GITKit token of the authenticated user. */
   idToken?: string;
 }
-export const IdentitytoolkitRelyingpartyGetAccountInfoRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "localId": S.optional(StringList),
-  "phoneNumber": S.optional(StringList),
-  "delegatedProjectNumber": S.optional(S.String),
-  "email": S.optional(StringList),
-  "idToken": S.optional(S.String),
-}),
-).annotate({ identifier: "IdentitytoolkitRelyingpartyGetAccountInfoRequest" }) as any as S.Schema<IdentitytoolkitRelyingpartyGetAccountInfoRequest>;
+export const IdentitytoolkitRelyingpartyGetAccountInfoRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      localId: S.optional(StringList),
+      phoneNumber: S.optional(StringList),
+      delegatedProjectNumber: S.optional(S.String),
+      email: S.optional(StringList),
+      idToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "IdentitytoolkitRelyingpartyGetAccountInfoRequest",
+  }) as any as S.Schema<IdentitytoolkitRelyingpartyGetAccountInfoRequest>;
 
 export interface GetAccountInfoRelyingpartyRequest {
   /** Request body */
   body?: IdentitytoolkitRelyingpartyGetAccountInfoRequest;
 }
 export const GetAccountInfoRelyingpartyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(IdentitytoolkitRelyingpartyGetAccountInfoRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"getAccountInfo","baseUrl":"https://www.googleapis.com/identitytoolkit/v3/relyingparty/"})),
-).annotate({ identifier: "GetAccountInfoRelyingpartyRequest" }) as any as S.Schema<GetAccountInfoRelyingpartyRequest>;
+  S.Struct({
+    body: S.optional(
+      IdentitytoolkitRelyingpartyGetAccountInfoRequest.pipe(T.HttpBody()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "getAccountInfo",
+      baseUrl: "https://www.googleapis.com/identitytoolkit/v3/relyingparty/",
+    }),
+  ),
+).annotate({
+  identifier: "GetAccountInfoRelyingpartyRequest",
+}) as any as S.Schema<GetAccountInfoRelyingpartyRequest>;
 
 /** Response of getting account information. */
 export interface GetAccountInfoResponse {
@@ -451,11 +536,13 @@ export interface GetAccountInfoResponse {
   users?: UserInfoList;
 }
 export const GetAccountInfoResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "users": S.optional(UserInfoList),
-}),
-).annotate({ identifier: "GetAccountInfoResponse" }) as any as S.Schema<GetAccountInfoResponse>;
+  S.Struct({
+    kind: S.optional(S.String),
+    users: S.optional(UserInfoList),
+  }),
+).annotate({
+  identifier: "GetAccountInfoResponse",
+}) as any as S.Schema<GetAccountInfoResponse>;
 
 /** Request of getting a code for user confirmation (reset password, change email etc.) */
 export interface Relyingparty {
@@ -491,34 +578,43 @@ export interface Relyingparty {
   email?: string;
 }
 export const Relyingparty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "androidPackageName": S.optional(S.String),
-  "challenge": S.optional(S.String),
-  "captchaResp": S.optional(S.String),
-  "userIp": S.optional(S.String),
-  "androidInstallApp": S.optional(S.Boolean),
-  "continueUrl": S.optional(S.String),
-  "idToken": S.optional(S.String),
-  "androidMinimumVersion": S.optional(S.String),
-  "canHandleCodeInApp": S.optional(S.Boolean),
-  "iOSBundleId": S.optional(S.String),
-  "iOSAppStoreId": S.optional(S.String),
-  "requestType": S.optional(S.String),
-  "newEmail": S.optional(S.String),
-  "email": S.optional(S.String),
-}),
+  S.Struct({
+    kind: S.optional(S.String),
+    androidPackageName: S.optional(S.String),
+    challenge: S.optional(S.String),
+    captchaResp: S.optional(S.String),
+    userIp: S.optional(S.String),
+    androidInstallApp: S.optional(S.Boolean),
+    continueUrl: S.optional(S.String),
+    idToken: S.optional(S.String),
+    androidMinimumVersion: S.optional(S.String),
+    canHandleCodeInApp: S.optional(S.Boolean),
+    iOSBundleId: S.optional(S.String),
+    iOSAppStoreId: S.optional(S.String),
+    requestType: S.optional(S.String),
+    newEmail: S.optional(S.String),
+    email: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Relyingparty" }) as any as S.Schema<Relyingparty>;
 
 export interface GetOobConfirmationCodeRelyingpartyRequest {
   /** Request body */
   body?: Relyingparty;
 }
-export const GetOobConfirmationCodeRelyingpartyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(Relyingparty.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"getOobConfirmationCode","baseUrl":"https://www.googleapis.com/identitytoolkit/v3/relyingparty/"})),
-).annotate({ identifier: "GetOobConfirmationCodeRelyingpartyRequest" }) as any as S.Schema<GetOobConfirmationCodeRelyingpartyRequest>;
+export const GetOobConfirmationCodeRelyingpartyRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      body: S.optional(Relyingparty.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "getOobConfirmationCode",
+        baseUrl: "https://www.googleapis.com/identitytoolkit/v3/relyingparty/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetOobConfirmationCodeRelyingpartyRequest",
+  }) as any as S.Schema<GetOobConfirmationCodeRelyingpartyRequest>;
 
 /** Response of getting a code for user confirmation (reset password, change email etc.). */
 export interface GetOobConfirmationCodeResponse {
@@ -530,12 +626,14 @@ export interface GetOobConfirmationCodeResponse {
   kind?: string;
 }
 export const GetOobConfirmationCodeResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "oobCode": S.optional(S.String),
-  "email": S.optional(S.String),
-  "kind": S.optional(S.String),
-}),
-).annotate({ identifier: "GetOobConfirmationCodeResponse" }) as any as S.Schema<GetOobConfirmationCodeResponse>;
+  S.Struct({
+    oobCode: S.optional(S.String),
+    email: S.optional(S.String),
+    kind: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetOobConfirmationCodeResponse",
+}) as any as S.Schema<GetOobConfirmationCodeResponse>;
 
 export interface GetProjectConfigRelyingpartyRequest {
   /** GCP project number of the request. */
@@ -544,11 +642,19 @@ export interface GetProjectConfigRelyingpartyRequest {
   delegatedProjectNumber?: string;
 }
 export const GetProjectConfigRelyingpartyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectNumber": S.optional(S.String.pipe(T.Query())),
-  "delegatedProjectNumber": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"getProjectConfig","baseUrl":"https://www.googleapis.com/identitytoolkit/v3/relyingparty/"})),
-).annotate({ identifier: "GetProjectConfigRelyingpartyRequest" }) as any as S.Schema<GetProjectConfigRelyingpartyRequest>;
+  S.Struct({
+    projectNumber: S.optional(S.String.pipe(T.Query())),
+    delegatedProjectNumber: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "getProjectConfig",
+      baseUrl: "https://www.googleapis.com/identitytoolkit/v3/relyingparty/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectConfigRelyingpartyRequest",
+}) as any as S.Schema<GetProjectConfigRelyingpartyRequest>;
 
 /** Template for an email template. */
 export interface EmailTemplate {
@@ -566,14 +672,14 @@ export interface EmailTemplate {
   subject?: string;
 }
 export const EmailTemplate = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "format": S.optional(S.String),
-  "fromDisplayName": S.optional(S.String),
-  "body": S.optional(S.String),
-  "replyTo": S.optional(S.String),
-  "from": S.optional(S.String),
-  "subject": S.optional(S.String),
-}),
+  S.Struct({
+    format: S.optional(S.String),
+    fromDisplayName: S.optional(S.String),
+    body: S.optional(S.String),
+    replyTo: S.optional(S.String),
+    from: S.optional(S.String),
+    subject: S.optional(S.String),
+  }),
 ).annotate({ identifier: "EmailTemplate" }) as any as S.Schema<EmailTemplate>;
 
 /** Template for a single idp configuration. */
@@ -592,18 +698,20 @@ export interface IdpConfig {
   experimentPercent?: number;
 }
 export const IdpConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "enabled": S.optional(S.Boolean),
-  "provider": S.optional(S.String),
-  "clientId": S.optional(S.String),
-  "whitelistedAudiences": S.optional(StringList),
-  "secret": S.optional(S.String),
-  "experimentPercent": S.optional(S.Number),
-}),
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+    provider: S.optional(S.String),
+    clientId: S.optional(S.String),
+    whitelistedAudiences: S.optional(StringList),
+    secret: S.optional(S.String),
+    experimentPercent: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "IdpConfig" }) as any as S.Schema<IdpConfig>;
 
 export type IdpConfigList = ReadonlyArray<IdpConfig>;
-export const IdpConfigList = /*@__PURE__*/ S.Array(IdpConfig) as any as S.Schema<IdpConfigList>;
+export const IdpConfigList = /*@__PURE__*/ S.Array(
+  IdpConfig,
+) as any as S.Schema<IdpConfigList>;
 
 /** Response of getting the project configuration. */
 export interface IdentitytoolkitRelyingpartyGetProjectConfigResponse {
@@ -631,36 +739,62 @@ export interface IdentitytoolkitRelyingpartyGetProjectConfigResponse {
   /** Whether to use email sending provided by Firebear. */
   useEmailSending?: boolean;
 }
-export const IdentitytoolkitRelyingpartyGetProjectConfigResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "changeEmailTemplate": S.optional(EmailTemplate),
-  "dynamicLinksDomain": S.optional(S.String),
-  "allowPasswordUser": S.optional(S.Boolean),
-  "enableAnonymousUser": S.optional(S.Boolean),
-  "verifyEmailTemplate": S.optional(EmailTemplate),
-  "legacyResetPasswordTemplate": S.optional(EmailTemplate),
-  "authorizedDomains": S.optional(StringList),
-  "apiKey": S.optional(S.String),
-  "projectId": S.optional(S.String),
-  "resetPasswordTemplate": S.optional(EmailTemplate),
-  "idpConfig": S.optional(IdpConfigList),
-  "useEmailSending": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "IdentitytoolkitRelyingpartyGetProjectConfigResponse" }) as any as S.Schema<IdentitytoolkitRelyingpartyGetProjectConfigResponse>;
+export const IdentitytoolkitRelyingpartyGetProjectConfigResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      changeEmailTemplate: S.optional(EmailTemplate),
+      dynamicLinksDomain: S.optional(S.String),
+      allowPasswordUser: S.optional(S.Boolean),
+      enableAnonymousUser: S.optional(S.Boolean),
+      verifyEmailTemplate: S.optional(EmailTemplate),
+      legacyResetPasswordTemplate: S.optional(EmailTemplate),
+      authorizedDomains: S.optional(StringList),
+      apiKey: S.optional(S.String),
+      projectId: S.optional(S.String),
+      resetPasswordTemplate: S.optional(EmailTemplate),
+      idpConfig: S.optional(IdpConfigList),
+      useEmailSending: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "IdentitytoolkitRelyingpartyGetProjectConfigResponse",
+  }) as any as S.Schema<IdentitytoolkitRelyingpartyGetProjectConfigResponse>;
 
 export interface GetPublicKeysRelyingpartyRequest {}
 export const GetPublicKeysRelyingpartyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}).pipe(T.Http({"method":"GET","uri":"publicKeys","baseUrl":"https://www.googleapis.com/identitytoolkit/v3/relyingparty/"})),
-).annotate({ identifier: "GetPublicKeysRelyingpartyRequest" }) as any as S.Schema<GetPublicKeysRelyingpartyRequest>;
+  S.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      uri: "publicKeys",
+      baseUrl: "https://www.googleapis.com/identitytoolkit/v3/relyingparty/",
+    }),
+  ),
+).annotate({
+  identifier: "GetPublicKeysRelyingpartyRequest",
+}) as any as S.Schema<GetPublicKeysRelyingpartyRequest>;
 
 /** Respone of getting public keys. */
-export type IdentitytoolkitRelyingpartyGetPublicKeysResponse = { [key: string]: string | undefined };
-export const IdentitytoolkitRelyingpartyGetPublicKeysResponse = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<IdentitytoolkitRelyingpartyGetPublicKeysResponse>;
+export type IdentitytoolkitRelyingpartyGetPublicKeysResponse = {
+  [key: string]: string | undefined;
+};
+export const IdentitytoolkitRelyingpartyGetPublicKeysResponse =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<IdentitytoolkitRelyingpartyGetPublicKeysResponse>;
 
 export interface GetRecaptchaParamRelyingpartyRequest {}
-export const GetRecaptchaParamRelyingpartyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}).pipe(T.Http({"method":"GET","uri":"getRecaptchaParam","baseUrl":"https://www.googleapis.com/identitytoolkit/v3/relyingparty/"})),
-).annotate({ identifier: "GetRecaptchaParamRelyingpartyRequest" }) as any as S.Schema<GetRecaptchaParamRelyingpartyRequest>;
+export const GetRecaptchaParamRelyingpartyRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({}).pipe(
+      T.Http({
+        method: "GET",
+        uri: "getRecaptchaParam",
+        baseUrl: "https://www.googleapis.com/identitytoolkit/v3/relyingparty/",
+      }),
+    ),
+).annotate({
+  identifier: "GetRecaptchaParamRelyingpartyRequest",
+}) as any as S.Schema<GetRecaptchaParamRelyingpartyRequest>;
 
 /** Response of getting recaptcha param. */
 export interface GetRecaptchaParamResponse {
@@ -672,12 +806,14 @@ export interface GetRecaptchaParamResponse {
   recaptchaSiteKey?: string;
 }
 export const GetRecaptchaParamResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "recaptchaStoken": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "recaptchaSiteKey": S.optional(S.String),
-}),
-).annotate({ identifier: "GetRecaptchaParamResponse" }) as any as S.Schema<GetRecaptchaParamResponse>;
+  S.Struct({
+    recaptchaStoken: S.optional(S.String),
+    kind: S.optional(S.String),
+    recaptchaSiteKey: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetRecaptchaParamResponse",
+}) as any as S.Schema<GetRecaptchaParamResponse>;
 
 /** Request to reset the password. */
 export interface IdentitytoolkitRelyingpartyResetPasswordRequest {
@@ -690,24 +826,37 @@ export interface IdentitytoolkitRelyingpartyResetPasswordRequest {
   /** The confirmation code. */
   oobCode?: string;
 }
-export const IdentitytoolkitRelyingpartyResetPasswordRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "email": S.optional(S.String),
-  "newPassword": S.optional(S.String),
-  "oldPassword": S.optional(S.String),
-  "oobCode": S.optional(S.String),
-}),
-).annotate({ identifier: "IdentitytoolkitRelyingpartyResetPasswordRequest" }) as any as S.Schema<IdentitytoolkitRelyingpartyResetPasswordRequest>;
+export const IdentitytoolkitRelyingpartyResetPasswordRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      email: S.optional(S.String),
+      newPassword: S.optional(S.String),
+      oldPassword: S.optional(S.String),
+      oobCode: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "IdentitytoolkitRelyingpartyResetPasswordRequest",
+  }) as any as S.Schema<IdentitytoolkitRelyingpartyResetPasswordRequest>;
 
 export interface ResetPasswordRelyingpartyRequest {
   /** Request body */
   body?: IdentitytoolkitRelyingpartyResetPasswordRequest;
 }
 export const ResetPasswordRelyingpartyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(IdentitytoolkitRelyingpartyResetPasswordRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"resetPassword","baseUrl":"https://www.googleapis.com/identitytoolkit/v3/relyingparty/"})),
-).annotate({ identifier: "ResetPasswordRelyingpartyRequest" }) as any as S.Schema<ResetPasswordRelyingpartyRequest>;
+  S.Struct({
+    body: S.optional(
+      IdentitytoolkitRelyingpartyResetPasswordRequest.pipe(T.HttpBody()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "resetPassword",
+      baseUrl: "https://www.googleapis.com/identitytoolkit/v3/relyingparty/",
+    }),
+  ),
+).annotate({
+  identifier: "ResetPasswordRelyingpartyRequest",
+}) as any as S.Schema<ResetPasswordRelyingpartyRequest>;
 
 /** Response of resetting the password. */
 export interface ResetPasswordResponse {
@@ -721,13 +870,15 @@ export interface ResetPasswordResponse {
   requestType?: string;
 }
 export const ResetPasswordResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "newEmail": S.optional(S.String),
-  "email": S.optional(S.String),
-  "requestType": S.optional(S.String),
-}),
-).annotate({ identifier: "ResetPasswordResponse" }) as any as S.Schema<ResetPasswordResponse>;
+  S.Struct({
+    kind: S.optional(S.String),
+    newEmail: S.optional(S.String),
+    email: S.optional(S.String),
+    requestType: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ResetPasswordResponse",
+}) as any as S.Schema<ResetPasswordResponse>;
 
 /** Request for Identitytoolkit-SendVerificationCode */
 export interface IdentitytoolkitRelyingpartySendVerificationCodeRequest {
@@ -740,35 +891,54 @@ export interface IdentitytoolkitRelyingpartySendVerificationCodeRequest {
   /** Recaptcha solution. */
   recaptchaToken?: string;
 }
-export const IdentitytoolkitRelyingpartySendVerificationCodeRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "iosReceipt": S.optional(S.String),
-  "iosSecret": S.optional(S.String),
-  "phoneNumber": S.optional(S.String),
-  "recaptchaToken": S.optional(S.String),
-}),
-).annotate({ identifier: "IdentitytoolkitRelyingpartySendVerificationCodeRequest" }) as any as S.Schema<IdentitytoolkitRelyingpartySendVerificationCodeRequest>;
+export const IdentitytoolkitRelyingpartySendVerificationCodeRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      iosReceipt: S.optional(S.String),
+      iosSecret: S.optional(S.String),
+      phoneNumber: S.optional(S.String),
+      recaptchaToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "IdentitytoolkitRelyingpartySendVerificationCodeRequest",
+  }) as any as S.Schema<IdentitytoolkitRelyingpartySendVerificationCodeRequest>;
 
 export interface SendVerificationCodeRelyingpartyRequest {
   /** Request body */
   body?: IdentitytoolkitRelyingpartySendVerificationCodeRequest;
 }
-export const SendVerificationCodeRelyingpartyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(IdentitytoolkitRelyingpartySendVerificationCodeRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"sendVerificationCode","baseUrl":"https://www.googleapis.com/identitytoolkit/v3/relyingparty/"})),
-).annotate({ identifier: "SendVerificationCodeRelyingpartyRequest" }) as any as S.Schema<SendVerificationCodeRelyingpartyRequest>;
+export const SendVerificationCodeRelyingpartyRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      body: S.optional(
+        IdentitytoolkitRelyingpartySendVerificationCodeRequest.pipe(
+          T.HttpBody(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "sendVerificationCode",
+        baseUrl: "https://www.googleapis.com/identitytoolkit/v3/relyingparty/",
+      }),
+    ),
+).annotate({
+  identifier: "SendVerificationCodeRelyingpartyRequest",
+}) as any as S.Schema<SendVerificationCodeRelyingpartyRequest>;
 
 /** Response for Identitytoolkit-SendVerificationCode */
 export interface IdentitytoolkitRelyingpartySendVerificationCodeResponse {
   /** Encrypted session information */
   sessionInfo?: string;
 }
-export const IdentitytoolkitRelyingpartySendVerificationCodeResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sessionInfo": S.optional(S.String),
-}),
-).annotate({ identifier: "IdentitytoolkitRelyingpartySendVerificationCodeResponse" }) as any as S.Schema<IdentitytoolkitRelyingpartySendVerificationCodeResponse>;
+export const IdentitytoolkitRelyingpartySendVerificationCodeResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      sessionInfo: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "IdentitytoolkitRelyingpartySendVerificationCodeResponse",
+  }) as any as S.Schema<IdentitytoolkitRelyingpartySendVerificationCodeResponse>;
 
 /** Request to set the account information. */
 export interface IdentitytoolkitRelyingpartySetAccountInfoRequest {
@@ -819,43 +989,56 @@ export interface IdentitytoolkitRelyingpartySetAccountInfoRequest {
   /** Privileged caller can update user with specified phone number. */
   phoneNumber?: string;
 }
-export const IdentitytoolkitRelyingpartySetAccountInfoRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "instanceId": S.optional(S.String),
-  "validSince": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "customAttributes": S.optional(S.String),
-  "localId": S.optional(S.String),
-  "deleteAttribute": S.optional(StringList),
-  "idToken": S.optional(S.String),
-  "captchaChallenge": S.optional(S.String),
-  "createdAt": S.optional(S.String),
-  "returnSecureToken": S.optional(S.Boolean),
-  "emailVerified": S.optional(S.Boolean),
-  "oobCode": S.optional(S.String),
-  "password": S.optional(S.String),
-  "deleteProvider": S.optional(StringList),
-  "lastLoginAt": S.optional(S.String),
-  "photoUrl": S.optional(S.String),
-  "upgradeToFederatedLogin": S.optional(S.Boolean),
-  "captchaResponse": S.optional(S.String),
-  "provider": S.optional(StringList),
-  "delegatedProjectNumber": S.optional(S.String),
-  "email": S.optional(S.String),
-  "disableUser": S.optional(S.Boolean),
-  "phoneNumber": S.optional(S.String),
-}),
-).annotate({ identifier: "IdentitytoolkitRelyingpartySetAccountInfoRequest" }) as any as S.Schema<IdentitytoolkitRelyingpartySetAccountInfoRequest>;
+export const IdentitytoolkitRelyingpartySetAccountInfoRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      instanceId: S.optional(S.String),
+      validSince: S.optional(S.String),
+      displayName: S.optional(S.String),
+      customAttributes: S.optional(S.String),
+      localId: S.optional(S.String),
+      deleteAttribute: S.optional(StringList),
+      idToken: S.optional(S.String),
+      captchaChallenge: S.optional(S.String),
+      createdAt: S.optional(S.String),
+      returnSecureToken: S.optional(S.Boolean),
+      emailVerified: S.optional(S.Boolean),
+      oobCode: S.optional(S.String),
+      password: S.optional(S.String),
+      deleteProvider: S.optional(StringList),
+      lastLoginAt: S.optional(S.String),
+      photoUrl: S.optional(S.String),
+      upgradeToFederatedLogin: S.optional(S.Boolean),
+      captchaResponse: S.optional(S.String),
+      provider: S.optional(StringList),
+      delegatedProjectNumber: S.optional(S.String),
+      email: S.optional(S.String),
+      disableUser: S.optional(S.Boolean),
+      phoneNumber: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "IdentitytoolkitRelyingpartySetAccountInfoRequest",
+  }) as any as S.Schema<IdentitytoolkitRelyingpartySetAccountInfoRequest>;
 
 export interface SetAccountInfoRelyingpartyRequest {
   /** Request body */
   body?: IdentitytoolkitRelyingpartySetAccountInfoRequest;
 }
 export const SetAccountInfoRelyingpartyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(IdentitytoolkitRelyingpartySetAccountInfoRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"setAccountInfo","baseUrl":"https://www.googleapis.com/identitytoolkit/v3/relyingparty/"})),
-).annotate({ identifier: "SetAccountInfoRelyingpartyRequest" }) as any as S.Schema<SetAccountInfoRelyingpartyRequest>;
+  S.Struct({
+    body: S.optional(
+      IdentitytoolkitRelyingpartySetAccountInfoRequest.pipe(T.HttpBody()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "setAccountInfo",
+      baseUrl: "https://www.googleapis.com/identitytoolkit/v3/relyingparty/",
+    }),
+  ),
+).annotate({
+  identifier: "SetAccountInfoRelyingpartyRequest",
+}) as any as S.Schema<SetAccountInfoRelyingpartyRequest>;
 
 export interface SetAccountInfoResponseProviderUserInfoItem {
   /** The user's display name at the IDP. */
@@ -867,17 +1050,24 @@ export interface SetAccountInfoResponseProviderUserInfoItem {
   /** The user's photo url at the IDP. */
   photoUrl?: string;
 }
-export const SetAccountInfoResponseProviderUserInfoItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "displayName": S.optional(S.String),
-  "providerId": S.optional(S.String),
-  "federatedId": S.optional(S.String),
-  "photoUrl": S.optional(S.String),
-}),
-).annotate({ identifier: "SetAccountInfoResponseProviderUserInfoItem" }) as any as S.Schema<SetAccountInfoResponseProviderUserInfoItem>;
+export const SetAccountInfoResponseProviderUserInfoItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      displayName: S.optional(S.String),
+      providerId: S.optional(S.String),
+      federatedId: S.optional(S.String),
+      photoUrl: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "SetAccountInfoResponseProviderUserInfoItem",
+  }) as any as S.Schema<SetAccountInfoResponseProviderUserInfoItem>;
 
-export type SetAccountInfoResponseProviderUserInfoItemList = ReadonlyArray<SetAccountInfoResponseProviderUserInfoItem>;
-export const SetAccountInfoResponseProviderUserInfoItemList = /*@__PURE__*/ S.Array(SetAccountInfoResponseProviderUserInfoItem) as any as S.Schema<SetAccountInfoResponseProviderUserInfoItemList>;
+export type SetAccountInfoResponseProviderUserInfoItemList =
+  ReadonlyArray<SetAccountInfoResponseProviderUserInfoItem>;
+export const SetAccountInfoResponseProviderUserInfoItemList =
+  /*@__PURE__*/ S.Array(
+    SetAccountInfoResponseProviderUserInfoItem,
+  ) as any as S.Schema<SetAccountInfoResponseProviderUserInfoItemList>;
 
 /** Respone of setting the account information. */
 export interface SetAccountInfoResponse {
@@ -907,21 +1097,25 @@ export interface SetAccountInfoResponse {
   refreshToken?: string;
 }
 export const SetAccountInfoResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "displayName": S.optional(S.String),
-  "localId": S.optional(S.String),
-  "photoUrl": S.optional(S.String),
-  "emailVerified": S.optional(S.Boolean),
-  "kind": S.optional(S.String),
-  "email": S.optional(S.String),
-  "providerUserInfo": S.optional(SetAccountInfoResponseProviderUserInfoItemList),
-  "newEmail": S.optional(S.String),
-  "passwordHash": S.optional(S.String),
-  "idToken": S.optional(S.String),
-  "expiresIn": S.optional(S.String),
-  "refreshToken": S.optional(S.String),
-}),
-).annotate({ identifier: "SetAccountInfoResponse" }) as any as S.Schema<SetAccountInfoResponse>;
+  S.Struct({
+    displayName: S.optional(S.String),
+    localId: S.optional(S.String),
+    photoUrl: S.optional(S.String),
+    emailVerified: S.optional(S.Boolean),
+    kind: S.optional(S.String),
+    email: S.optional(S.String),
+    providerUserInfo: S.optional(
+      SetAccountInfoResponseProviderUserInfoItemList,
+    ),
+    newEmail: S.optional(S.String),
+    passwordHash: S.optional(S.String),
+    idToken: S.optional(S.String),
+    expiresIn: S.optional(S.String),
+    refreshToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SetAccountInfoResponse",
+}) as any as S.Schema<SetAccountInfoResponse>;
 
 /** Request to set the project configuration. */
 export interface IdentitytoolkitRelyingpartySetProjectConfigRequest {
@@ -948,42 +1142,58 @@ export interface IdentitytoolkitRelyingpartySetProjectConfigRequest {
   /** Legacy reset password email template. */
   legacyResetPasswordTemplate?: EmailTemplate;
 }
-export const IdentitytoolkitRelyingpartySetProjectConfigRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "verifyEmailTemplate": S.optional(EmailTemplate),
-  "allowPasswordUser": S.optional(S.Boolean),
-  "enableAnonymousUser": S.optional(S.Boolean),
-  "changeEmailTemplate": S.optional(EmailTemplate),
-  "idpConfig": S.optional(IdpConfigList),
-  "useEmailSending": S.optional(S.Boolean),
-  "resetPasswordTemplate": S.optional(EmailTemplate),
-  "apiKey": S.optional(S.String),
-  "authorizedDomains": S.optional(StringList),
-  "delegatedProjectNumber": S.optional(S.String),
-  "legacyResetPasswordTemplate": S.optional(EmailTemplate),
-}),
-).annotate({ identifier: "IdentitytoolkitRelyingpartySetProjectConfigRequest" }) as any as S.Schema<IdentitytoolkitRelyingpartySetProjectConfigRequest>;
+export const IdentitytoolkitRelyingpartySetProjectConfigRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      verifyEmailTemplate: S.optional(EmailTemplate),
+      allowPasswordUser: S.optional(S.Boolean),
+      enableAnonymousUser: S.optional(S.Boolean),
+      changeEmailTemplate: S.optional(EmailTemplate),
+      idpConfig: S.optional(IdpConfigList),
+      useEmailSending: S.optional(S.Boolean),
+      resetPasswordTemplate: S.optional(EmailTemplate),
+      apiKey: S.optional(S.String),
+      authorizedDomains: S.optional(StringList),
+      delegatedProjectNumber: S.optional(S.String),
+      legacyResetPasswordTemplate: S.optional(EmailTemplate),
+    }),
+  ).annotate({
+    identifier: "IdentitytoolkitRelyingpartySetProjectConfigRequest",
+  }) as any as S.Schema<IdentitytoolkitRelyingpartySetProjectConfigRequest>;
 
 export interface SetProjectConfigRelyingpartyRequest {
   /** Request body */
   body?: IdentitytoolkitRelyingpartySetProjectConfigRequest;
 }
 export const SetProjectConfigRelyingpartyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(IdentitytoolkitRelyingpartySetProjectConfigRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"setProjectConfig","baseUrl":"https://www.googleapis.com/identitytoolkit/v3/relyingparty/"})),
-).annotate({ identifier: "SetProjectConfigRelyingpartyRequest" }) as any as S.Schema<SetProjectConfigRelyingpartyRequest>;
+  S.Struct({
+    body: S.optional(
+      IdentitytoolkitRelyingpartySetProjectConfigRequest.pipe(T.HttpBody()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "setProjectConfig",
+      baseUrl: "https://www.googleapis.com/identitytoolkit/v3/relyingparty/",
+    }),
+  ),
+).annotate({
+  identifier: "SetProjectConfigRelyingpartyRequest",
+}) as any as S.Schema<SetProjectConfigRelyingpartyRequest>;
 
 /** Response of setting the project configuration. */
 export interface IdentitytoolkitRelyingpartySetProjectConfigResponse {
   /** Project ID of the relying party. */
   projectId?: string;
 }
-export const IdentitytoolkitRelyingpartySetProjectConfigResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectId": S.optional(S.String),
-}),
-).annotate({ identifier: "IdentitytoolkitRelyingpartySetProjectConfigResponse" }) as any as S.Schema<IdentitytoolkitRelyingpartySetProjectConfigResponse>;
+export const IdentitytoolkitRelyingpartySetProjectConfigResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      projectId: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "IdentitytoolkitRelyingpartySetProjectConfigResponse",
+  }) as any as S.Schema<IdentitytoolkitRelyingpartySetProjectConfigResponse>;
 
 /** Request to sign out user. */
 export interface IdentitytoolkitRelyingpartySignOutUserRequest {
@@ -992,33 +1202,49 @@ export interface IdentitytoolkitRelyingpartySignOutUserRequest {
   /** The local ID of the user. */
   localId?: string;
 }
-export const IdentitytoolkitRelyingpartySignOutUserRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "instanceId": S.optional(S.String),
-  "localId": S.optional(S.String),
-}),
-).annotate({ identifier: "IdentitytoolkitRelyingpartySignOutUserRequest" }) as any as S.Schema<IdentitytoolkitRelyingpartySignOutUserRequest>;
+export const IdentitytoolkitRelyingpartySignOutUserRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      instanceId: S.optional(S.String),
+      localId: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "IdentitytoolkitRelyingpartySignOutUserRequest",
+  }) as any as S.Schema<IdentitytoolkitRelyingpartySignOutUserRequest>;
 
 export interface SignOutUserRelyingpartyRequest {
   /** Request body */
   body?: IdentitytoolkitRelyingpartySignOutUserRequest;
 }
 export const SignOutUserRelyingpartyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(IdentitytoolkitRelyingpartySignOutUserRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"signOutUser","baseUrl":"https://www.googleapis.com/identitytoolkit/v3/relyingparty/"})),
-).annotate({ identifier: "SignOutUserRelyingpartyRequest" }) as any as S.Schema<SignOutUserRelyingpartyRequest>;
+  S.Struct({
+    body: S.optional(
+      IdentitytoolkitRelyingpartySignOutUserRequest.pipe(T.HttpBody()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "signOutUser",
+      baseUrl: "https://www.googleapis.com/identitytoolkit/v3/relyingparty/",
+    }),
+  ),
+).annotate({
+  identifier: "SignOutUserRelyingpartyRequest",
+}) as any as S.Schema<SignOutUserRelyingpartyRequest>;
 
 /** Response of signing out user. */
 export interface IdentitytoolkitRelyingpartySignOutUserResponse {
   /** The local ID of the user. */
   localId?: string;
 }
-export const IdentitytoolkitRelyingpartySignOutUserResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "localId": S.optional(S.String),
-}),
-).annotate({ identifier: "IdentitytoolkitRelyingpartySignOutUserResponse" }) as any as S.Schema<IdentitytoolkitRelyingpartySignOutUserResponse>;
+export const IdentitytoolkitRelyingpartySignOutUserResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      localId: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "IdentitytoolkitRelyingpartySignOutUserResponse",
+  }) as any as S.Schema<IdentitytoolkitRelyingpartySignOutUserResponse>;
 
 /** Request to signup new user, create anonymous user or anonymous user reauth. */
 export interface IdentitytoolkitRelyingpartySignupNewUserRequest {
@@ -1051,34 +1277,47 @@ export interface IdentitytoolkitRelyingpartySignupNewUserRequest {
   /** The name of the user. */
   displayName?: string;
 }
-export const IdentitytoolkitRelyingpartySignupNewUserRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "captchaResponse": S.optional(S.String),
-  "phoneNumber": S.optional(S.String),
-  "email": S.optional(S.String),
-  "emailVerified": S.optional(S.Boolean),
-  "password": S.optional(S.String),
-  "tenantId": S.optional(S.String),
-  "tenantProjectNumber": S.optional(S.String),
-  "photoUrl": S.optional(S.String),
-  "idToken": S.optional(S.String),
-  "captchaChallenge": S.optional(S.String),
-  "disabled": S.optional(S.Boolean),
-  "instanceId": S.optional(S.String),
-  "localId": S.optional(S.String),
-  "displayName": S.optional(S.String),
-}),
-).annotate({ identifier: "IdentitytoolkitRelyingpartySignupNewUserRequest" }) as any as S.Schema<IdentitytoolkitRelyingpartySignupNewUserRequest>;
+export const IdentitytoolkitRelyingpartySignupNewUserRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      captchaResponse: S.optional(S.String),
+      phoneNumber: S.optional(S.String),
+      email: S.optional(S.String),
+      emailVerified: S.optional(S.Boolean),
+      password: S.optional(S.String),
+      tenantId: S.optional(S.String),
+      tenantProjectNumber: S.optional(S.String),
+      photoUrl: S.optional(S.String),
+      idToken: S.optional(S.String),
+      captchaChallenge: S.optional(S.String),
+      disabled: S.optional(S.Boolean),
+      instanceId: S.optional(S.String),
+      localId: S.optional(S.String),
+      displayName: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "IdentitytoolkitRelyingpartySignupNewUserRequest",
+  }) as any as S.Schema<IdentitytoolkitRelyingpartySignupNewUserRequest>;
 
 export interface SignupNewUserRelyingpartyRequest {
   /** Request body */
   body?: IdentitytoolkitRelyingpartySignupNewUserRequest;
 }
 export const SignupNewUserRelyingpartyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(IdentitytoolkitRelyingpartySignupNewUserRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"signupNewUser","baseUrl":"https://www.googleapis.com/identitytoolkit/v3/relyingparty/"})),
-).annotate({ identifier: "SignupNewUserRelyingpartyRequest" }) as any as S.Schema<SignupNewUserRelyingpartyRequest>;
+  S.Struct({
+    body: S.optional(
+      IdentitytoolkitRelyingpartySignupNewUserRequest.pipe(T.HttpBody()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "signupNewUser",
+      baseUrl: "https://www.googleapis.com/identitytoolkit/v3/relyingparty/",
+    }),
+  ),
+).annotate({
+  identifier: "SignupNewUserRelyingpartyRequest",
+}) as any as S.Schema<SignupNewUserRelyingpartyRequest>;
 
 /** Response of signing up new user, creating anonymous user or anonymous user reauth. */
 export interface SignupNewUserResponse {
@@ -1098,16 +1337,18 @@ export interface SignupNewUserResponse {
   idToken?: string;
 }
 export const SignupNewUserResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "email": S.optional(S.String),
-  "localId": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "refreshToken": S.optional(S.String),
-  "expiresIn": S.optional(S.String),
-  "idToken": S.optional(S.String),
-}),
-).annotate({ identifier: "SignupNewUserResponse" }) as any as S.Schema<SignupNewUserResponse>;
+  S.Struct({
+    email: S.optional(S.String),
+    localId: S.optional(S.String),
+    displayName: S.optional(S.String),
+    kind: S.optional(S.String),
+    refreshToken: S.optional(S.String),
+    expiresIn: S.optional(S.String),
+    idToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SignupNewUserResponse",
+}) as any as S.Schema<SignupNewUserResponse>;
 
 /** Request to upload user account in batch. */
 export interface IdentitytoolkitRelyingpartyUploadAccountRequest {
@@ -1137,34 +1378,47 @@ export interface IdentitytoolkitRelyingpartyUploadAccountRequest {
   /** The password hash algorithm. */
   hashAlgorithm?: string;
 }
-export const IdentitytoolkitRelyingpartyUploadAccountRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "memoryCost": S.optional(S.Number),
-  "targetProjectId": S.optional(S.String),
-  "cpuMemCost": S.optional(S.Number),
-  "signerKey": S.optional(S.String),
-  "sanityCheck": S.optional(S.Boolean),
-  "users": S.optional(UserInfoList),
-  "parallelization": S.optional(S.Number),
-  "dkLen": S.optional(S.Number),
-  "blockSize": S.optional(S.Number),
-  "delegatedProjectNumber": S.optional(S.String),
-  "allowOverwrite": S.optional(S.Boolean),
-  "rounds": S.optional(S.Number),
-  "saltSeparator": S.optional(S.String),
-  "hashAlgorithm": S.optional(S.String),
-}),
-).annotate({ identifier: "IdentitytoolkitRelyingpartyUploadAccountRequest" }) as any as S.Schema<IdentitytoolkitRelyingpartyUploadAccountRequest>;
+export const IdentitytoolkitRelyingpartyUploadAccountRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      memoryCost: S.optional(S.Number),
+      targetProjectId: S.optional(S.String),
+      cpuMemCost: S.optional(S.Number),
+      signerKey: S.optional(S.String),
+      sanityCheck: S.optional(S.Boolean),
+      users: S.optional(UserInfoList),
+      parallelization: S.optional(S.Number),
+      dkLen: S.optional(S.Number),
+      blockSize: S.optional(S.Number),
+      delegatedProjectNumber: S.optional(S.String),
+      allowOverwrite: S.optional(S.Boolean),
+      rounds: S.optional(S.Number),
+      saltSeparator: S.optional(S.String),
+      hashAlgorithm: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "IdentitytoolkitRelyingpartyUploadAccountRequest",
+  }) as any as S.Schema<IdentitytoolkitRelyingpartyUploadAccountRequest>;
 
 export interface UploadAccountRelyingpartyRequest {
   /** Request body */
   body?: IdentitytoolkitRelyingpartyUploadAccountRequest;
 }
 export const UploadAccountRelyingpartyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(IdentitytoolkitRelyingpartyUploadAccountRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"uploadAccount","baseUrl":"https://www.googleapis.com/identitytoolkit/v3/relyingparty/"})),
-).annotate({ identifier: "UploadAccountRelyingpartyRequest" }) as any as S.Schema<UploadAccountRelyingpartyRequest>;
+  S.Struct({
+    body: S.optional(
+      IdentitytoolkitRelyingpartyUploadAccountRequest.pipe(T.HttpBody()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "uploadAccount",
+      baseUrl: "https://www.googleapis.com/identitytoolkit/v3/relyingparty/",
+    }),
+  ),
+).annotate({
+  identifier: "UploadAccountRelyingpartyRequest",
+}) as any as S.Schema<UploadAccountRelyingpartyRequest>;
 
 export interface UploadAccountResponseErrorItem {
   /** The index of the malformed account, starting from 0. */
@@ -1173,14 +1427,19 @@ export interface UploadAccountResponseErrorItem {
   message?: string;
 }
 export const UploadAccountResponseErrorItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "index": S.optional(S.Number),
-  "message": S.optional(S.String),
-}),
-).annotate({ identifier: "UploadAccountResponseErrorItem" }) as any as S.Schema<UploadAccountResponseErrorItem>;
+  S.Struct({
+    index: S.optional(S.Number),
+    message: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UploadAccountResponseErrorItem",
+}) as any as S.Schema<UploadAccountResponseErrorItem>;
 
-export type UploadAccountResponseErrorItemList = ReadonlyArray<UploadAccountResponseErrorItem>;
-export const UploadAccountResponseErrorItemList = /*@__PURE__*/ S.Array(UploadAccountResponseErrorItem) as any as S.Schema<UploadAccountResponseErrorItemList>;
+export type UploadAccountResponseErrorItemList =
+  ReadonlyArray<UploadAccountResponseErrorItem>;
+export const UploadAccountResponseErrorItemList = /*@__PURE__*/ S.Array(
+  UploadAccountResponseErrorItem,
+) as any as S.Schema<UploadAccountResponseErrorItemList>;
 
 /** Respone of uploading accounts in batch. */
 export interface UploadAccountResponse {
@@ -1190,11 +1449,13 @@ export interface UploadAccountResponse {
   kind?: string;
 }
 export const UploadAccountResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "error": S.optional(UploadAccountResponseErrorItemList),
-  "kind": S.optional(S.String),
-}),
-).annotate({ identifier: "UploadAccountResponse" }) as any as S.Schema<UploadAccountResponse>;
+  S.Struct({
+    error: S.optional(UploadAccountResponseErrorItemList),
+    kind: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UploadAccountResponse",
+}) as any as S.Schema<UploadAccountResponse>;
 
 /** Request to verify the IDP assertion. */
 export interface IdentitytoolkitRelyingpartyVerifyAssertionRequest {
@@ -1225,33 +1486,46 @@ export interface IdentitytoolkitRelyingpartyVerifyAssertionRequest {
   /** Whether return 200 and IDP credential rather than throw exception when federated id is already linked. */
   returnIdpCredential?: boolean;
 }
-export const IdentitytoolkitRelyingpartyVerifyAssertionRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestUri": S.optional(S.String),
-  "returnRefreshToken": S.optional(S.Boolean),
-  "returnSecureToken": S.optional(S.Boolean),
-  "tenantId": S.optional(S.String),
-  "tenantProjectNumber": S.optional(S.String),
-  "sessionId": S.optional(S.String),
-  "pendingIdToken": S.optional(S.String),
-  "delegatedProjectNumber": S.optional(S.String),
-  "instanceId": S.optional(S.String),
-  "postBody": S.optional(S.String),
-  "idToken": S.optional(S.String),
-  "autoCreate": S.optional(S.Boolean),
-  "returnIdpCredential": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "IdentitytoolkitRelyingpartyVerifyAssertionRequest" }) as any as S.Schema<IdentitytoolkitRelyingpartyVerifyAssertionRequest>;
+export const IdentitytoolkitRelyingpartyVerifyAssertionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      requestUri: S.optional(S.String),
+      returnRefreshToken: S.optional(S.Boolean),
+      returnSecureToken: S.optional(S.Boolean),
+      tenantId: S.optional(S.String),
+      tenantProjectNumber: S.optional(S.String),
+      sessionId: S.optional(S.String),
+      pendingIdToken: S.optional(S.String),
+      delegatedProjectNumber: S.optional(S.String),
+      instanceId: S.optional(S.String),
+      postBody: S.optional(S.String),
+      idToken: S.optional(S.String),
+      autoCreate: S.optional(S.Boolean),
+      returnIdpCredential: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "IdentitytoolkitRelyingpartyVerifyAssertionRequest",
+  }) as any as S.Schema<IdentitytoolkitRelyingpartyVerifyAssertionRequest>;
 
 export interface VerifyAssertionRelyingpartyRequest {
   /** Request body */
   body?: IdentitytoolkitRelyingpartyVerifyAssertionRequest;
 }
 export const VerifyAssertionRelyingpartyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(IdentitytoolkitRelyingpartyVerifyAssertionRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"verifyAssertion","baseUrl":"https://www.googleapis.com/identitytoolkit/v3/relyingparty/"})),
-).annotate({ identifier: "VerifyAssertionRelyingpartyRequest" }) as any as S.Schema<VerifyAssertionRelyingpartyRequest>;
+  S.Struct({
+    body: S.optional(
+      IdentitytoolkitRelyingpartyVerifyAssertionRequest.pipe(T.HttpBody()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "verifyAssertion",
+      baseUrl: "https://www.googleapis.com/identitytoolkit/v3/relyingparty/",
+    }),
+  ),
+).annotate({
+  identifier: "VerifyAssertionRelyingpartyRequest",
+}) as any as S.Schema<VerifyAssertionRelyingpartyRequest>;
 
 /** Response of verifying the IDP assertion. */
 export interface VerifyAssertionResponse {
@@ -1335,48 +1609,50 @@ export interface VerifyAssertionResponse {
   oauthTokenSecret?: string;
 }
 export const VerifyAssertionResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nickName": S.optional(S.String),
-  "dateOfBirth": S.optional(S.String),
-  "localId": S.optional(S.String),
-  "oauthExpireIn": S.optional(S.Number),
-  "screenName": S.optional(S.String),
-  "timeZone": S.optional(S.String),
-  "oauthScope": S.optional(S.String),
-  "fullName": S.optional(S.String),
-  "originalEmail": S.optional(S.String),
-  "idToken": S.optional(S.String),
-  "isNewUser": S.optional(S.Boolean),
-  "firstName": S.optional(S.String),
-  "photoUrl": S.optional(S.String),
-  "needEmail": S.optional(S.Boolean),
-  "emailRecycled": S.optional(S.Boolean),
-  "action": S.optional(S.String),
-  "rawUserInfo": S.optional(S.String),
-  "refreshToken": S.optional(S.String),
-  "expiresIn": S.optional(S.String),
-  "oauthIdToken": S.optional(S.String),
-  "oauthAccessToken": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "lastName": S.optional(S.String),
-  "context": S.optional(S.String),
-  "appInstallationUrl": S.optional(S.String),
-  "providerId": S.optional(S.String),
-  "errorMessage": S.optional(S.String),
-  "federatedId": S.optional(S.String),
-  "needConfirmation": S.optional(S.Boolean),
-  "emailVerified": S.optional(S.Boolean),
-  "appScheme": S.optional(S.String),
-  "oauthAuthorizationCode": S.optional(S.String),
-  "email": S.optional(S.String),
-  "language": S.optional(S.String),
-  "inputEmail": S.optional(S.String),
-  "oauthRequestToken": S.optional(S.String),
-  "verifiedProvider": S.optional(StringList),
-  "oauthTokenSecret": S.optional(S.String),
-}),
-).annotate({ identifier: "VerifyAssertionResponse" }) as any as S.Schema<VerifyAssertionResponse>;
+  S.Struct({
+    nickName: S.optional(S.String),
+    dateOfBirth: S.optional(S.String),
+    localId: S.optional(S.String),
+    oauthExpireIn: S.optional(S.Number),
+    screenName: S.optional(S.String),
+    timeZone: S.optional(S.String),
+    oauthScope: S.optional(S.String),
+    fullName: S.optional(S.String),
+    originalEmail: S.optional(S.String),
+    idToken: S.optional(S.String),
+    isNewUser: S.optional(S.Boolean),
+    firstName: S.optional(S.String),
+    photoUrl: S.optional(S.String),
+    needEmail: S.optional(S.Boolean),
+    emailRecycled: S.optional(S.Boolean),
+    action: S.optional(S.String),
+    rawUserInfo: S.optional(S.String),
+    refreshToken: S.optional(S.String),
+    expiresIn: S.optional(S.String),
+    oauthIdToken: S.optional(S.String),
+    oauthAccessToken: S.optional(S.String),
+    displayName: S.optional(S.String),
+    kind: S.optional(S.String),
+    lastName: S.optional(S.String),
+    context: S.optional(S.String),
+    appInstallationUrl: S.optional(S.String),
+    providerId: S.optional(S.String),
+    errorMessage: S.optional(S.String),
+    federatedId: S.optional(S.String),
+    needConfirmation: S.optional(S.Boolean),
+    emailVerified: S.optional(S.Boolean),
+    appScheme: S.optional(S.String),
+    oauthAuthorizationCode: S.optional(S.String),
+    email: S.optional(S.String),
+    language: S.optional(S.String),
+    inputEmail: S.optional(S.String),
+    oauthRequestToken: S.optional(S.String),
+    verifiedProvider: S.optional(StringList),
+    oauthTokenSecret: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VerifyAssertionResponse",
+}) as any as S.Schema<VerifyAssertionResponse>;
 
 /** Request to verify a custom token */
 export interface IdentitytoolkitRelyingpartyVerifyCustomTokenRequest {
@@ -1389,24 +1665,38 @@ export interface IdentitytoolkitRelyingpartyVerifyCustomTokenRequest {
   /** Instance id token of the app. */
   instanceId?: string;
 }
-export const IdentitytoolkitRelyingpartyVerifyCustomTokenRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "returnSecureToken": S.optional(S.Boolean),
-  "token": S.optional(S.String),
-  "delegatedProjectNumber": S.optional(S.String),
-  "instanceId": S.optional(S.String),
-}),
-).annotate({ identifier: "IdentitytoolkitRelyingpartyVerifyCustomTokenRequest" }) as any as S.Schema<IdentitytoolkitRelyingpartyVerifyCustomTokenRequest>;
+export const IdentitytoolkitRelyingpartyVerifyCustomTokenRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      returnSecureToken: S.optional(S.Boolean),
+      token: S.optional(S.String),
+      delegatedProjectNumber: S.optional(S.String),
+      instanceId: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "IdentitytoolkitRelyingpartyVerifyCustomTokenRequest",
+  }) as any as S.Schema<IdentitytoolkitRelyingpartyVerifyCustomTokenRequest>;
 
 export interface VerifyCustomTokenRelyingpartyRequest {
   /** Request body */
   body?: IdentitytoolkitRelyingpartyVerifyCustomTokenRequest;
 }
-export const VerifyCustomTokenRelyingpartyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(IdentitytoolkitRelyingpartyVerifyCustomTokenRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"verifyCustomToken","baseUrl":"https://www.googleapis.com/identitytoolkit/v3/relyingparty/"})),
-).annotate({ identifier: "VerifyCustomTokenRelyingpartyRequest" }) as any as S.Schema<VerifyCustomTokenRelyingpartyRequest>;
+export const VerifyCustomTokenRelyingpartyRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      body: S.optional(
+        IdentitytoolkitRelyingpartyVerifyCustomTokenRequest.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "verifyCustomToken",
+        baseUrl: "https://www.googleapis.com/identitytoolkit/v3/relyingparty/",
+      }),
+    ),
+).annotate({
+  identifier: "VerifyCustomTokenRelyingpartyRequest",
+}) as any as S.Schema<VerifyCustomTokenRelyingpartyRequest>;
 
 /** Response from verifying a custom token */
 export interface VerifyCustomTokenResponse {
@@ -1422,14 +1712,16 @@ export interface VerifyCustomTokenResponse {
   isNewUser?: boolean;
 }
 export const VerifyCustomTokenResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "refreshToken": S.optional(S.String),
-  "expiresIn": S.optional(S.String),
-  "idToken": S.optional(S.String),
-  "isNewUser": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "VerifyCustomTokenResponse" }) as any as S.Schema<VerifyCustomTokenResponse>;
+  S.Struct({
+    kind: S.optional(S.String),
+    refreshToken: S.optional(S.String),
+    expiresIn: S.optional(S.String),
+    idToken: S.optional(S.String),
+    isNewUser: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "VerifyCustomTokenResponse",
+}) as any as S.Schema<VerifyCustomTokenResponse>;
 
 /** Request to verify the password. */
 export interface IdentitytoolkitRelyingpartyVerifyPasswordRequest {
@@ -1456,31 +1748,44 @@ export interface IdentitytoolkitRelyingpartyVerifyPasswordRequest {
   /** The email of the user. */
   email?: string;
 }
-export const IdentitytoolkitRelyingpartyVerifyPasswordRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "password": S.optional(S.String),
-  "returnSecureToken": S.optional(S.Boolean),
-  "tenantId": S.optional(S.String),
-  "instanceId": S.optional(S.String),
-  "tenantProjectNumber": S.optional(S.String),
-  "captchaResponse": S.optional(S.String),
-  "idToken": S.optional(S.String),
-  "pendingIdToken": S.optional(S.String),
-  "captchaChallenge": S.optional(S.String),
-  "delegatedProjectNumber": S.optional(S.String),
-  "email": S.optional(S.String),
-}),
-).annotate({ identifier: "IdentitytoolkitRelyingpartyVerifyPasswordRequest" }) as any as S.Schema<IdentitytoolkitRelyingpartyVerifyPasswordRequest>;
+export const IdentitytoolkitRelyingpartyVerifyPasswordRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      password: S.optional(S.String),
+      returnSecureToken: S.optional(S.Boolean),
+      tenantId: S.optional(S.String),
+      instanceId: S.optional(S.String),
+      tenantProjectNumber: S.optional(S.String),
+      captchaResponse: S.optional(S.String),
+      idToken: S.optional(S.String),
+      pendingIdToken: S.optional(S.String),
+      captchaChallenge: S.optional(S.String),
+      delegatedProjectNumber: S.optional(S.String),
+      email: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "IdentitytoolkitRelyingpartyVerifyPasswordRequest",
+  }) as any as S.Schema<IdentitytoolkitRelyingpartyVerifyPasswordRequest>;
 
 export interface VerifyPasswordRelyingpartyRequest {
   /** Request body */
   body?: IdentitytoolkitRelyingpartyVerifyPasswordRequest;
 }
 export const VerifyPasswordRelyingpartyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(IdentitytoolkitRelyingpartyVerifyPasswordRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"verifyPassword","baseUrl":"https://www.googleapis.com/identitytoolkit/v3/relyingparty/"})),
-).annotate({ identifier: "VerifyPasswordRelyingpartyRequest" }) as any as S.Schema<VerifyPasswordRelyingpartyRequest>;
+  S.Struct({
+    body: S.optional(
+      IdentitytoolkitRelyingpartyVerifyPasswordRequest.pipe(T.HttpBody()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "verifyPassword",
+      baseUrl: "https://www.googleapis.com/identitytoolkit/v3/relyingparty/",
+    }),
+  ),
+).annotate({
+  identifier: "VerifyPasswordRelyingpartyRequest",
+}) as any as S.Schema<VerifyPasswordRelyingpartyRequest>;
 
 /** Request of verifying the password. */
 export interface VerifyPasswordResponse {
@@ -1510,21 +1815,23 @@ export interface VerifyPasswordResponse {
   photoUrl?: string;
 }
 export const VerifyPasswordResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "idToken": S.optional(S.String),
-  "expiresIn": S.optional(S.String),
-  "refreshToken": S.optional(S.String),
-  "email": S.optional(S.String),
-  "oauthAuthorizationCode": S.optional(S.String),
-  "registered": S.optional(S.Boolean),
-  "kind": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "localId": S.optional(S.String),
-  "oauthAccessToken": S.optional(S.String),
-  "oauthExpireIn": S.optional(S.Number),
-  "photoUrl": S.optional(S.String),
-}),
-).annotate({ identifier: "VerifyPasswordResponse" }) as any as S.Schema<VerifyPasswordResponse>;
+  S.Struct({
+    idToken: S.optional(S.String),
+    expiresIn: S.optional(S.String),
+    refreshToken: S.optional(S.String),
+    email: S.optional(S.String),
+    oauthAuthorizationCode: S.optional(S.String),
+    registered: S.optional(S.Boolean),
+    kind: S.optional(S.String),
+    displayName: S.optional(S.String),
+    localId: S.optional(S.String),
+    oauthAccessToken: S.optional(S.String),
+    oauthExpireIn: S.optional(S.Number),
+    photoUrl: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VerifyPasswordResponse",
+}) as any as S.Schema<VerifyPasswordResponse>;
 
 /** Request for Identitytoolkit-VerifyPhoneNumber */
 export interface IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest {
@@ -1537,27 +1844,41 @@ export interface IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest {
   code?: string;
   phoneNumber?: string;
 }
-export const IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "idToken": S.optional(S.String),
-  "sessionInfo": S.optional(S.String),
-  "operation": S.optional(S.String),
-  "temporaryProof": S.optional(S.String),
-  "verificationProof": S.optional(S.String),
-  "code": S.optional(S.String),
-  "phoneNumber": S.optional(S.String),
-}),
-).annotate({ identifier: "IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest" }) as any as S.Schema<IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest>;
+export const IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      idToken: S.optional(S.String),
+      sessionInfo: S.optional(S.String),
+      operation: S.optional(S.String),
+      temporaryProof: S.optional(S.String),
+      verificationProof: S.optional(S.String),
+      code: S.optional(S.String),
+      phoneNumber: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest",
+  }) as any as S.Schema<IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest>;
 
 export interface VerifyPhoneNumberRelyingpartyRequest {
   /** Request body */
   body?: IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest;
 }
-export const VerifyPhoneNumberRelyingpartyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"verifyPhoneNumber","baseUrl":"https://www.googleapis.com/identitytoolkit/v3/relyingparty/"})),
-).annotate({ identifier: "VerifyPhoneNumberRelyingpartyRequest" }) as any as S.Schema<VerifyPhoneNumberRelyingpartyRequest>;
+export const VerifyPhoneNumberRelyingpartyRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      body: S.optional(
+        IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "verifyPhoneNumber",
+        baseUrl: "https://www.googleapis.com/identitytoolkit/v3/relyingparty/",
+      }),
+    ),
+).annotate({
+  identifier: "VerifyPhoneNumberRelyingpartyRequest",
+}) as any as S.Schema<VerifyPhoneNumberRelyingpartyRequest>;
 
 /** Response for Identitytoolkit-VerifyPhoneNumber */
 export interface IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse {
@@ -1572,22 +1893,30 @@ export interface IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse {
   verificationProofExpiresIn?: string;
   verificationProof?: string;
 }
-export const IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "phoneNumber": S.optional(S.String),
-  "idToken": S.optional(S.String),
-  "isNewUser": S.optional(S.Boolean),
-  "refreshToken": S.optional(S.String),
-  "expiresIn": S.optional(S.String),
-  "temporaryProof": S.optional(S.String),
-  "localId": S.optional(S.String),
-  "temporaryProofExpiresIn": S.optional(S.String),
-  "verificationProofExpiresIn": S.optional(S.String),
-  "verificationProof": S.optional(S.String),
-}),
-).annotate({ identifier: "IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse" }) as any as S.Schema<IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse>;
+export const IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      phoneNumber: S.optional(S.String),
+      idToken: S.optional(S.String),
+      isNewUser: S.optional(S.Boolean),
+      refreshToken: S.optional(S.String),
+      expiresIn: S.optional(S.String),
+      temporaryProof: S.optional(S.String),
+      localId: S.optional(S.String),
+      temporaryProofExpiresIn: S.optional(S.String),
+      verificationProofExpiresIn: S.optional(S.String),
+      verificationProof: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse",
+  }) as any as S.Schema<IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse>;
 
-export type CreateAuthUriRelyingpartyError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateAuthUriRelyingpartyError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates the URI used by the IdP to authenticate the user. */
 export const createAuthUriRelyingparty: API.OperationMethod<
   CreateAuthUriRelyingpartyRequest,
@@ -1602,7 +1931,12 @@ export const createAuthUriRelyingparty: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAccountRelyingpartyError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteAccountRelyingpartyError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Delete user account. */
 export const deleteAccountRelyingparty: API.OperationMethod<
   DeleteAccountRelyingpartyRequest,
@@ -1617,7 +1951,12 @@ export const deleteAccountRelyingparty: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DownloadAccountRelyingpartyError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DownloadAccountRelyingpartyError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Batch download user accounts. */
 export const downloadAccountRelyingparty: API.OperationMethod<
   DownloadAccountRelyingpartyRequest,
@@ -1632,7 +1971,12 @@ export const downloadAccountRelyingparty: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type EmailLinkSigninRelyingpartyError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type EmailLinkSigninRelyingpartyError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Reset password for a user. */
 export const emailLinkSigninRelyingparty: API.OperationMethod<
   EmailLinkSigninRelyingpartyRequest,
@@ -1647,7 +1991,12 @@ export const emailLinkSigninRelyingparty: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAccountInfoRelyingpartyError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type GetAccountInfoRelyingpartyError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Returns the account info. */
 export const getAccountInfoRelyingparty: API.OperationMethod<
   GetAccountInfoRelyingpartyRequest,
@@ -1662,7 +2011,12 @@ export const getAccountInfoRelyingparty: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetOobConfirmationCodeRelyingpartyError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type GetOobConfirmationCodeRelyingpartyError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Get a code for user action confirmation. */
 export const getOobConfirmationCodeRelyingparty: API.OperationMethod<
   GetOobConfirmationCodeRelyingpartyRequest,
@@ -1677,7 +2031,10 @@ export const getOobConfirmationCodeRelyingparty: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectConfigRelyingpartyError = NotFound | Forbidden | GcpOpError;
+export type GetProjectConfigRelyingpartyError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Get project configuration. */
 export const getProjectConfigRelyingparty: API.OperationMethod<
   GetProjectConfigRelyingpartyRequest,
@@ -1707,7 +2064,10 @@ export const getPublicKeysRelyingparty: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetRecaptchaParamRelyingpartyError = NotFound | Forbidden | GcpOpError;
+export type GetRecaptchaParamRelyingpartyError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Get recaptcha secure param. */
 export const getRecaptchaParamRelyingparty: API.OperationMethod<
   GetRecaptchaParamRelyingpartyRequest,
@@ -1722,7 +2082,12 @@ export const getRecaptchaParamRelyingparty: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ResetPasswordRelyingpartyError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ResetPasswordRelyingpartyError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Reset password for a user. */
 export const resetPasswordRelyingparty: API.OperationMethod<
   ResetPasswordRelyingpartyRequest,
@@ -1737,7 +2102,12 @@ export const resetPasswordRelyingparty: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SendVerificationCodeRelyingpartyError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SendVerificationCodeRelyingpartyError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Send SMS verification code. */
 export const sendVerificationCodeRelyingparty: API.OperationMethod<
   SendVerificationCodeRelyingpartyRequest,
@@ -1752,7 +2122,12 @@ export const sendVerificationCodeRelyingparty: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetAccountInfoRelyingpartyError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetAccountInfoRelyingpartyError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Set account info for a user. */
 export const setAccountInfoRelyingparty: API.OperationMethod<
   SetAccountInfoRelyingpartyRequest,
@@ -1767,7 +2142,12 @@ export const setAccountInfoRelyingparty: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetProjectConfigRelyingpartyError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetProjectConfigRelyingpartyError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Set project configuration. */
 export const setProjectConfigRelyingparty: API.OperationMethod<
   SetProjectConfigRelyingpartyRequest,
@@ -1782,7 +2162,12 @@ export const setProjectConfigRelyingparty: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SignOutUserRelyingpartyError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SignOutUserRelyingpartyError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sign out user. */
 export const signOutUserRelyingparty: API.OperationMethod<
   SignOutUserRelyingpartyRequest,
@@ -1797,7 +2182,12 @@ export const signOutUserRelyingparty: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SignupNewUserRelyingpartyError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SignupNewUserRelyingpartyError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Signup new user. */
 export const signupNewUserRelyingparty: API.OperationMethod<
   SignupNewUserRelyingpartyRequest,
@@ -1812,7 +2202,12 @@ export const signupNewUserRelyingparty: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UploadAccountRelyingpartyError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UploadAccountRelyingpartyError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Batch upload existing user accounts. */
 export const uploadAccountRelyingparty: API.OperationMethod<
   UploadAccountRelyingpartyRequest,
@@ -1827,7 +2222,12 @@ export const uploadAccountRelyingparty: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type VerifyAssertionRelyingpartyError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type VerifyAssertionRelyingpartyError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Verifies the assertion returned by the IdP. */
 export const verifyAssertionRelyingparty: API.OperationMethod<
   VerifyAssertionRelyingpartyRequest,
@@ -1842,7 +2242,12 @@ export const verifyAssertionRelyingparty: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type VerifyCustomTokenRelyingpartyError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type VerifyCustomTokenRelyingpartyError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Verifies the developer asserted ID token. */
 export const verifyCustomTokenRelyingparty: API.OperationMethod<
   VerifyCustomTokenRelyingpartyRequest,
@@ -1857,7 +2262,12 @@ export const verifyCustomTokenRelyingparty: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type VerifyPasswordRelyingpartyError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type VerifyPasswordRelyingpartyError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Verifies the user entered password. */
 export const verifyPasswordRelyingparty: API.OperationMethod<
   VerifyPasswordRelyingpartyRequest,
@@ -1872,7 +2282,12 @@ export const verifyPasswordRelyingparty: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type VerifyPhoneNumberRelyingpartyError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type VerifyPhoneNumberRelyingpartyError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Verifies ownership of a phone number and creates/updates the user account accordingly. */
 export const verifyPhoneNumberRelyingparty: API.OperationMethod<
   VerifyPhoneNumberRelyingpartyRequest,
@@ -1886,4 +2301,3 @@ export const verifyPhoneNumberRelyingparty: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

@@ -1643,16 +1643,27 @@ export const BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionConditio
       "BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionConditionR2LifecycleDateCondition",
   }) as any as S.Schema<BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionConditionR2LifecycleDateCondition>;
 
-export type BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionCondition =
-    | BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionConditionR2LifecycleAgeCondition
-    | BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionConditionR2LifecycleDateCondition;
+export interface BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionCondition {
+  maxAge?: number;
+  type:
+    | BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionConditionR2LifecycleAgeConditionType
+    | BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionConditionR2LifecycleDateConditionType;
+  date?: string;
+}
 export const BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionCondition =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["maxAge", "type"],
-      ["date", "type"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      maxAge: S.optional(S.Number),
+      type: S.Union(
+        BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionConditionR2LifecycleAgeConditionType,
+        BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionConditionR2LifecycleDateConditionType,
+      ),
+      date: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionCondition",
+  }) as any as S.Schema<BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionCondition>;
 
 export interface BucketsLifecycleGetResponseRulesItemDeleteObjectsTransition {
   /** Condition for lifecycle transitions to apply after an object reaches an age in seconds. */
@@ -1709,16 +1720,27 @@ export const BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemCond
       "BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemConditionR2LifecycleDateCondition",
   }) as any as S.Schema<BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemConditionR2LifecycleDateCondition>;
 
-export type BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemCondition =
-    | BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemConditionR2LifecycleAgeCondition
-    | BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemConditionR2LifecycleDateCondition;
+export interface BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemCondition {
+  maxAge?: number;
+  type:
+    | BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemConditionR2LifecycleAgeConditionType
+    | BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemConditionR2LifecycleDateConditionType;
+  date?: string;
+}
 export const BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemCondition =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["maxAge", "type"],
-      ["date", "type"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      maxAge: S.optional(S.Number),
+      type: S.Union(
+        BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemConditionR2LifecycleAgeConditionType,
+        BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemConditionR2LifecycleDateConditionType,
+      ),
+      date: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemCondition",
+  }) as any as S.Schema<BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemCondition>;
 
 export type BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemStorageClass =
   "InfrequentAccess";
@@ -1896,14 +1918,28 @@ export const BucketsLocksGetResponseRulesItemConditionR2LockRuleIndefiniteCondit
       "BucketsLocksGetResponseRulesItemConditionR2LockRuleIndefiniteCondition",
   }) as any as S.Schema<BucketsLocksGetResponseRulesItemConditionR2LockRuleIndefiniteCondition>;
 
-export type BucketsLocksGetResponseRulesItemCondition =
-  | BucketsLocksGetResponseRulesItemConditionR2LockRuleAgeCondition
-  | BucketsLocksGetResponseRulesItemConditionR2LockRuleDateCondition
-  | BucketsLocksGetResponseRulesItemConditionR2LockRuleIndefiniteCondition;
+export interface BucketsLocksGetResponseRulesItemCondition {
+  maxAgeSeconds?: number;
+  type:
+    | BucketsLocksGetResponseRulesItemConditionR2LockRuleAgeConditionType
+    | BucketsLocksGetResponseRulesItemConditionR2LockRuleDateConditionType
+    | BucketsLocksGetResponseRulesItemConditionR2LockRuleIndefiniteConditionType;
+  date?: string;
+}
 export const BucketsLocksGetResponseRulesItemCondition =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([["maxAgeSeconds", "type"], ["date", "type"], ["type"]]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      maxAgeSeconds: S.optional(S.Number),
+      type: S.Union(
+        BucketsLocksGetResponseRulesItemConditionR2LockRuleAgeConditionType,
+        BucketsLocksGetResponseRulesItemConditionR2LockRuleDateConditionType,
+        BucketsLocksGetResponseRulesItemConditionR2LockRuleIndefiniteConditionType,
+      ),
+      date: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "BucketsLocksGetResponseRulesItemCondition",
+  }) as any as S.Schema<BucketsLocksGetResponseRulesItemCondition>;
 
 export interface BucketsLocksGetResponseRulesItem {
   /** Unique identifier for this rule. */
@@ -2231,17 +2267,46 @@ export const SuperSlurperJobsGetResponseSourceR2SourceResponseSchema =
     identifier: "SuperSlurperJobsGetResponseSourceR2SourceResponseSchema",
   }) as any as S.Schema<SuperSlurperJobsGetResponseSourceR2SourceResponseSchema>;
 
-export type SuperSlurperJobsGetResponseSource =
-  | SuperSlurperJobsGetResponseSourceS3SourceResponseSchema
-  | SuperSlurperJobsGetResponseSourceGcsSourceResponseSchema
-  | SuperSlurperJobsGetResponseSourceR2SourceResponseSchema;
-export const SuperSlurperJobsGetResponseSource = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["bucket", "endpoint", "keys", "pathPrefix", "vendor"],
-    ["bucket", "keys", "pathPrefix", "vendor"],
-    ["bucket", "jurisdiction", "keys", "pathPrefix", "vendor"],
-  ]),
-);
+export interface SuperSlurperJobsGetResponseSource {
+  bucket?: string;
+  endpoint?: string;
+  keys?:
+    | SuperSlurperJobsGetResponseSourceS3SourceResponseSchemaKeysList
+    | SuperSlurperJobsGetResponseSourceGcsSourceResponseSchemaKeysList
+    | SuperSlurperJobsGetResponseSourceR2SourceResponseSchemaKeysList;
+  pathPrefix?: string;
+  vendor?:
+    | SuperSlurperJobsGetResponseSourceS3SourceResponseSchemaVendor
+    | SuperSlurperJobsGetResponseSourceGcsSourceResponseSchemaVendor
+    | SuperSlurperJobsGetResponseSourceR2SourceResponseSchemaVendor;
+  jurisdiction?: SuperSlurperJobsGetResponseSourceR2SourceResponseSchemaJurisdiction;
+}
+export const SuperSlurperJobsGetResponseSource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    bucket: S.optional(S.String),
+    endpoint: S.optional(S.String),
+    keys: S.optional(
+      S.Union(
+        SuperSlurperJobsGetResponseSourceS3SourceResponseSchemaKeysList,
+        SuperSlurperJobsGetResponseSourceGcsSourceResponseSchemaKeysList,
+        SuperSlurperJobsGetResponseSourceR2SourceResponseSchemaKeysList,
+      ),
+    ),
+    pathPrefix: S.optional(S.String),
+    vendor: S.optional(
+      S.Union(
+        SuperSlurperJobsGetResponseSourceS3SourceResponseSchemaVendor,
+        SuperSlurperJobsGetResponseSourceGcsSourceResponseSchemaVendor,
+        SuperSlurperJobsGetResponseSourceR2SourceResponseSchemaVendor,
+      ),
+    ),
+    jurisdiction: S.optional(
+      SuperSlurperJobsGetResponseSourceR2SourceResponseSchemaJurisdiction,
+    ),
+  }),
+).annotate({
+  identifier: "SuperSlurperJobsGetResponseSource",
+}) as any as S.Schema<SuperSlurperJobsGetResponseSource>;
 
 export type SuperSlurperJobsGetResponseStatus =
   | "running"
@@ -3269,18 +3334,47 @@ export const SuperSlurperJobsListResultItemSourceR2SourceResponseSchema =
     identifier: "SuperSlurperJobsListResultItemSourceR2SourceResponseSchema",
   }) as any as S.Schema<SuperSlurperJobsListResultItemSourceR2SourceResponseSchema>;
 
-export type SuperSlurperJobsListResultItemSource =
-  | SuperSlurperJobsListResultItemSourceS3SourceResponseSchema
-  | SuperSlurperJobsListResultItemSourceGcsSourceResponseSchema
-  | SuperSlurperJobsListResultItemSourceR2SourceResponseSchema;
-export const SuperSlurperJobsListResultItemSource =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["bucket", "endpoint", "keys", "pathPrefix", "vendor"],
-      ["bucket", "keys", "pathPrefix", "vendor"],
-      ["bucket", "jurisdiction", "keys", "pathPrefix", "vendor"],
-    ]),
-  );
+export interface SuperSlurperJobsListResultItemSource {
+  bucket?: string;
+  endpoint?: string;
+  keys?:
+    | SuperSlurperJobsListResultItemSourceS3SourceResponseSchemaKeysList
+    | SuperSlurperJobsListResultItemSourceGcsSourceResponseSchemaKeysList
+    | SuperSlurperJobsListResultItemSourceR2SourceResponseSchemaKeysList;
+  pathPrefix?: string;
+  vendor?:
+    | SuperSlurperJobsListResultItemSourceS3SourceResponseSchemaVendor
+    | SuperSlurperJobsListResultItemSourceGcsSourceResponseSchemaVendor
+    | SuperSlurperJobsListResultItemSourceR2SourceResponseSchemaVendor;
+  jurisdiction?: SuperSlurperJobsListResultItemSourceR2SourceResponseSchemaJurisdiction;
+}
+export const SuperSlurperJobsListResultItemSource = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      bucket: S.optional(S.String),
+      endpoint: S.optional(S.String),
+      keys: S.optional(
+        S.Union(
+          SuperSlurperJobsListResultItemSourceS3SourceResponseSchemaKeysList,
+          SuperSlurperJobsListResultItemSourceGcsSourceResponseSchemaKeysList,
+          SuperSlurperJobsListResultItemSourceR2SourceResponseSchemaKeysList,
+        ),
+      ),
+      pathPrefix: S.optional(S.String),
+      vendor: S.optional(
+        S.Union(
+          SuperSlurperJobsListResultItemSourceS3SourceResponseSchemaVendor,
+          SuperSlurperJobsListResultItemSourceGcsSourceResponseSchemaVendor,
+          SuperSlurperJobsListResultItemSourceR2SourceResponseSchemaVendor,
+        ),
+      ),
+      jurisdiction: S.optional(
+        SuperSlurperJobsListResultItemSourceR2SourceResponseSchemaJurisdiction,
+      ),
+    }),
+).annotate({
+  identifier: "SuperSlurperJobsListResultItemSource",
+}) as any as S.Schema<SuperSlurperJobsListResultItemSource>;
 
 export type SuperSlurperJobsListResultItemStatus =
   | "running"

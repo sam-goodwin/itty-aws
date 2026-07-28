@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 /** Request message for [PartnerProcurementService.ApproveEntitlementPlanChange[]. */
@@ -66,10 +66,12 @@ export interface ApproveEntitlementPlanChangeRequest {
   pendingPlanName?: string;
 }
 export const ApproveEntitlementPlanChangeRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pendingPlanName": S.optional(S.String),
-}),
-).annotate({ identifier: "ApproveEntitlementPlanChangeRequest" }) as any as S.Schema<ApproveEntitlementPlanChangeRequest>;
+  S.Struct({
+    pendingPlanName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ApproveEntitlementPlanChangeRequest",
+}) as any as S.Schema<ApproveEntitlementPlanChangeRequest>;
 
 export interface ApprovePlanChangeProvidersEntitlementsRequest {
   /** Required. The resource name of the entitlement. */
@@ -77,21 +79,33 @@ export interface ApprovePlanChangeProvidersEntitlementsRequest {
   /** Request body */
   body?: ApproveEntitlementPlanChangeRequest;
 }
-export const ApprovePlanChangeProvidersEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(ApproveEntitlementPlanChangeRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:approvePlanChange","baseUrl":"https://cloudcommerceprocurement.googleapis.com/"})),
-).annotate({ identifier: "ApprovePlanChangeProvidersEntitlementsRequest" }) as any as S.Schema<ApprovePlanChangeProvidersEntitlementsRequest>;
+export const ApprovePlanChangeProvidersEntitlementsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(ApproveEntitlementPlanChangeRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:approvePlanChange",
+        baseUrl: "https://cloudcommerceprocurement.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ApprovePlanChangeProvidersEntitlementsRequest",
+  }) as any as S.Schema<ApprovePlanChangeProvidersEntitlementsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
 /** Request message for PartnerProcurementService.ApproveAccount. */
 export interface ApproveAccountRequest {
@@ -103,12 +117,14 @@ export interface ApproveAccountRequest {
   approvalName?: string;
 }
 export const ApproveAccountRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "properties": S.optional(StringMap),
-  "reason": S.optional(S.String),
-  "approvalName": S.optional(S.String),
-}),
-).annotate({ identifier: "ApproveAccountRequest" }) as any as S.Schema<ApproveAccountRequest>;
+  S.Struct({
+    properties: S.optional(StringMap),
+    reason: S.optional(S.String),
+    approvalName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ApproveAccountRequest",
+}) as any as S.Schema<ApproveAccountRequest>;
 
 export interface ApproveProvidersAccountsRequest {
   /** Required. The resource name of the account, with the format `providers/{providerId}/accounts/{accountId}`. */
@@ -117,11 +133,19 @@ export interface ApproveProvidersAccountsRequest {
   body?: ApproveAccountRequest;
 }
 export const ApproveProvidersAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(ApproveAccountRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:approve","baseUrl":"https://cloudcommerceprocurement.googleapis.com/"})),
-).annotate({ identifier: "ApproveProvidersAccountsRequest" }) as any as S.Schema<ApproveProvidersAccountsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(ApproveAccountRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:approve",
+      baseUrl: "https://cloudcommerceprocurement.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ApproveProvidersAccountsRequest",
+}) as any as S.Schema<ApproveProvidersAccountsRequest>;
 
 /** Request message for [PartnerProcurementService.ApproveEntitlement[]. */
 export interface ApproveEntitlementRequest {
@@ -131,11 +155,13 @@ export interface ApproveEntitlementRequest {
   entitlementMigrated?: string;
 }
 export const ApproveEntitlementRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "properties": S.optional(StringMap),
-  "entitlementMigrated": S.optional(S.String),
-}),
-).annotate({ identifier: "ApproveEntitlementRequest" }) as any as S.Schema<ApproveEntitlementRequest>;
+  S.Struct({
+    properties: S.optional(StringMap),
+    entitlementMigrated: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ApproveEntitlementRequest",
+}) as any as S.Schema<ApproveEntitlementRequest>;
 
 export interface ApproveProvidersEntitlementsRequest {
   /** Required. The resource name of the entitlement, with the format `providers/{providerId}/entitlements/{entitlementId}`. */
@@ -144,13 +170,24 @@ export interface ApproveProvidersEntitlementsRequest {
   body?: ApproveEntitlementRequest;
 }
 export const ApproveProvidersEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(ApproveEntitlementRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:approve","baseUrl":"https://cloudcommerceprocurement.googleapis.com/"})),
-).annotate({ identifier: "ApproveProvidersEntitlementsRequest" }) as any as S.Schema<ApproveProvidersEntitlementsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(ApproveEntitlementRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:approve",
+      baseUrl: "https://cloudcommerceprocurement.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ApproveProvidersEntitlementsRequest",
+}) as any as S.Schema<ApproveProvidersEntitlementsRequest>;
 
-export type GetProvidersAccountsViewEnum = "ACCOUNT_VIEW_UNSPECIFIED" | "ACCOUNT_VIEW_BASIC" | "ACCOUNT_VIEW_FULL";
+export type GetProvidersAccountsViewEnum =
+  | "ACCOUNT_VIEW_UNSPECIFIED"
+  | "ACCOUNT_VIEW_BASIC"
+  | "ACCOUNT_VIEW_FULL";
 export const GetProvidersAccountsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProvidersAccountsRequest {
@@ -160,13 +197,25 @@ export interface GetProvidersAccountsRequest {
   view?: GetProvidersAccountsViewEnum | (string & {});
 }
 export const GetProvidersAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "view": S.optional(GetProvidersAccountsViewEnum.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://cloudcommerceprocurement.googleapis.com/"})),
-).annotate({ identifier: "GetProvidersAccountsRequest" }) as any as S.Schema<GetProvidersAccountsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    view: S.optional(GetProvidersAccountsViewEnum.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://cloudcommerceprocurement.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProvidersAccountsRequest",
+}) as any as S.Schema<GetProvidersAccountsRequest>;
 
-export type ApprovalStateEnum = "STATE_UNSPECIFIED" | "PENDING" | "APPROVED" | "REJECTED";
+export type ApprovalStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "PENDING"
+  | "APPROVED"
+  | "REJECTED";
 export const ApprovalStateEnum = /*@__PURE__*/ S.String;
 
 /** An approval for some action on an account. */
@@ -181,21 +230,29 @@ export interface Approval {
   state?: ApprovalStateEnum;
 }
 export const Approval = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "reason": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "name": S.optional(S.String),
-  "state": S.optional(ApprovalStateEnum),
-}),
+  S.Struct({
+    reason: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    name: S.optional(S.String),
+    state: S.optional(ApprovalStateEnum),
+  }),
 ).annotate({ identifier: "Approval" }) as any as S.Schema<Approval>;
 
 export type ApprovalList = ReadonlyArray<Approval>;
-export const ApprovalList = /*@__PURE__*/ S.Array(Approval) as any as S.Schema<ApprovalList>;
+export const ApprovalList = /*@__PURE__*/ S.Array(
+  Approval,
+) as any as S.Schema<ApprovalList>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
-export type AccountStateEnum = "ACCOUNT_STATE_UNSPECIFIED" | "ACCOUNT_ACTIVATION_REQUESTED" | "ACCOUNT_ACTIVE";
+export type AccountStateEnum =
+  | "ACCOUNT_STATE_UNSPECIFIED"
+  | "ACCOUNT_ACTIVATION_REQUESTED"
+  | "ACCOUNT_ACTIVE";
 export const AccountStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents an account that was established by the customer on the service provider's system. */
@@ -218,16 +275,16 @@ export interface Account {
   createTime?: string;
 }
 export const Account = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateTime": S.optional(S.String),
-  "name": S.optional(S.String),
-  "approvals": S.optional(ApprovalList),
-  "resellerParentBillingAccount": S.optional(S.String),
-  "provider": S.optional(S.String),
-  "inputProperties": S.optional(DocumentMap),
-  "state": S.optional(AccountStateEnum),
-  "createTime": S.optional(S.String),
-}),
+  S.Struct({
+    updateTime: S.optional(S.String),
+    name: S.optional(S.String),
+    approvals: S.optional(ApprovalList),
+    resellerParentBillingAccount: S.optional(S.String),
+    provider: S.optional(S.String),
+    inputProperties: S.optional(DocumentMap),
+    state: S.optional(AccountStateEnum),
+    createTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Account" }) as any as S.Schema<Account>;
 
 export interface GetProvidersEntitlementsRequest {
@@ -235,16 +292,34 @@ export interface GetProvidersEntitlementsRequest {
   name: string;
 }
 export const GetProvidersEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://cloudcommerceprocurement.googleapis.com/"})),
-).annotate({ identifier: "GetProvidersEntitlementsRequest" }) as any as S.Schema<GetProvidersEntitlementsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://cloudcommerceprocurement.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProvidersEntitlementsRequest",
+}) as any as S.Schema<GetProvidersEntitlementsRequest>;
 
-export type EntitlementStateEnum = "ENTITLEMENT_STATE_UNSPECIFIED" | "ENTITLEMENT_ACTIVATION_REQUESTED" | "ENTITLEMENT_ACTIVE" | "ENTITLEMENT_PENDING_CANCELLATION" | "ENTITLEMENT_CANCELLED" | "ENTITLEMENT_PENDING_PLAN_CHANGE" | "ENTITLEMENT_PENDING_PLAN_CHANGE_APPROVAL" | "ENTITLEMENT_SUSPENDED";
+export type EntitlementStateEnum =
+  | "ENTITLEMENT_STATE_UNSPECIFIED"
+  | "ENTITLEMENT_ACTIVATION_REQUESTED"
+  | "ENTITLEMENT_ACTIVE"
+  | "ENTITLEMENT_PENDING_CANCELLATION"
+  | "ENTITLEMENT_CANCELLED"
+  | "ENTITLEMENT_PENDING_PLAN_CHANGE"
+  | "ENTITLEMENT_PENDING_PLAN_CHANGE_APPROVAL"
+  | "ENTITLEMENT_SUSPENDED";
 export const EntitlementStateEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** A resource using (consuming) this entitlement. */
 export interface Consumer {
@@ -252,13 +327,15 @@ export interface Consumer {
   project?: string;
 }
 export const Consumer = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "project": S.optional(S.String),
-}),
+  S.Struct({
+    project: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Consumer" }) as any as S.Schema<Consumer>;
 
 export type ConsumerList = ReadonlyArray<Consumer>;
-export const ConsumerList = /*@__PURE__*/ S.Array(Consumer) as any as S.Schema<ConsumerList>;
+export const ConsumerList = /*@__PURE__*/ S.Array(
+  Consumer,
+) as any as S.Schema<ConsumerList>;
 
 /** Represents a procured product of a customer. */
 export interface Entitlement {
@@ -316,34 +393,34 @@ export interface Entitlement {
   updateTime?: string;
 }
 export const Entitlement = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "state": S.optional(EntitlementStateEnum),
-  "usageReportingId": S.optional(S.String),
-  "inputProperties": S.optional(DocumentMap),
-  "offerEndTime": S.optional(S.String),
-  "productExternalName": S.optional(S.String),
-  "newPendingPlan": S.optional(S.String),
-  "offer": S.optional(S.String),
-  "cancellationReason": S.optional(S.String),
-  "newPendingOfferDuration": S.optional(S.String),
-  "product": S.optional(S.String),
-  "orderId": S.optional(S.String),
-  "newOfferStartTime": S.optional(S.String),
-  "newPendingOffer": S.optional(S.String),
-  "newOfferEndTime": S.optional(S.String),
-  "name": S.optional(S.String),
-  "quoteExternalName": S.optional(S.String),
-  "subscriptionEndTime": S.optional(S.String),
-  "entitlementBenefitIds": S.optional(StringList),
-  "plan": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "provider": S.optional(S.String),
-  "account": S.optional(S.String),
-  "messageToUser": S.optional(S.String),
-  "offerDuration": S.optional(S.String),
-  "consumers": S.optional(ConsumerList),
-  "updateTime": S.optional(S.String),
-}),
+  S.Struct({
+    state: S.optional(EntitlementStateEnum),
+    usageReportingId: S.optional(S.String),
+    inputProperties: S.optional(DocumentMap),
+    offerEndTime: S.optional(S.String),
+    productExternalName: S.optional(S.String),
+    newPendingPlan: S.optional(S.String),
+    offer: S.optional(S.String),
+    cancellationReason: S.optional(S.String),
+    newPendingOfferDuration: S.optional(S.String),
+    product: S.optional(S.String),
+    orderId: S.optional(S.String),
+    newOfferStartTime: S.optional(S.String),
+    newPendingOffer: S.optional(S.String),
+    newOfferEndTime: S.optional(S.String),
+    name: S.optional(S.String),
+    quoteExternalName: S.optional(S.String),
+    subscriptionEndTime: S.optional(S.String),
+    entitlementBenefitIds: S.optional(StringList),
+    plan: S.optional(S.String),
+    createTime: S.optional(S.String),
+    provider: S.optional(S.String),
+    account: S.optional(S.String),
+    messageToUser: S.optional(S.String),
+    offerDuration: S.optional(S.String),
+    consumers: S.optional(ConsumerList),
+    updateTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Entitlement" }) as any as S.Schema<Entitlement>;
 
 export interface ListProvidersAccountsRequest {
@@ -355,15 +432,25 @@ export interface ListProvidersAccountsRequest {
   pageToken?: string;
 }
 export const ListProvidersAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/accounts","baseUrl":"https://cloudcommerceprocurement.googleapis.com/"})),
-).annotate({ identifier: "ListProvidersAccountsRequest" }) as any as S.Schema<ListProvidersAccountsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/accounts",
+      baseUrl: "https://cloudcommerceprocurement.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProvidersAccountsRequest",
+}) as any as S.Schema<ListProvidersAccountsRequest>;
 
 export type AccountList = ReadonlyArray<Account>;
-export const AccountList = /*@__PURE__*/ S.Array(Account) as any as S.Schema<AccountList>;
+export const AccountList = /*@__PURE__*/ S.Array(
+  Account,
+) as any as S.Schema<AccountList>;
 
 /** Response message for [PartnerProcurementService.ListAccounts[]. */
 export interface ListAccountsResponse {
@@ -373,11 +460,13 @@ export interface ListAccountsResponse {
   nextPageToken?: string;
 }
 export const ListAccountsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "accounts": S.optional(AccountList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListAccountsResponse" }) as any as S.Schema<ListAccountsResponse>;
+  S.Struct({
+    accounts: S.optional(AccountList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListAccountsResponse",
+}) as any as S.Schema<ListAccountsResponse>;
 
 export interface ListProvidersEntitlementsRequest {
   /** The token for fetching the next page. */
@@ -390,16 +479,26 @@ export interface ListProvidersEntitlementsRequest {
   pageSize?: number;
 }
 export const ListProvidersEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/entitlements","baseUrl":"https://cloudcommerceprocurement.googleapis.com/"})),
-).annotate({ identifier: "ListProvidersEntitlementsRequest" }) as any as S.Schema<ListProvidersEntitlementsRequest>;
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/entitlements",
+      baseUrl: "https://cloudcommerceprocurement.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProvidersEntitlementsRequest",
+}) as any as S.Schema<ListProvidersEntitlementsRequest>;
 
 export type EntitlementList = ReadonlyArray<Entitlement>;
-export const EntitlementList = /*@__PURE__*/ S.Array(Entitlement) as any as S.Schema<EntitlementList>;
+export const EntitlementList = /*@__PURE__*/ S.Array(
+  Entitlement,
+) as any as S.Schema<EntitlementList>;
 
 /** Response message for PartnerProcurementService.ListEntitlements. */
 export interface ListEntitlementsResponse {
@@ -409,11 +508,13 @@ export interface ListEntitlementsResponse {
   nextPageToken?: string;
 }
 export const ListEntitlementsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "entitlements": S.optional(EntitlementList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListEntitlementsResponse" }) as any as S.Schema<ListEntitlementsResponse>;
+  S.Struct({
+    entitlements: S.optional(EntitlementList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListEntitlementsResponse",
+}) as any as S.Schema<ListEntitlementsResponse>;
 
 export interface PatchProvidersEntitlementsRequest {
   /** Required. The name of the entitlement to update. */
@@ -424,12 +525,20 @@ export interface PatchProvidersEntitlementsRequest {
   body?: Entitlement;
 }
 export const PatchProvidersEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Entitlement.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://cloudcommerceprocurement.googleapis.com/"})),
-).annotate({ identifier: "PatchProvidersEntitlementsRequest" }) as any as S.Schema<PatchProvidersEntitlementsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(Entitlement.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+name}",
+      baseUrl: "https://cloudcommerceprocurement.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchProvidersEntitlementsRequest",
+}) as any as S.Schema<PatchProvidersEntitlementsRequest>;
 
 /** Request message for PartnerProcurementService.RejectEntitlementPlanChange. */
 export interface RejectEntitlementPlanChangeRequest {
@@ -439,11 +548,13 @@ export interface RejectEntitlementPlanChangeRequest {
   reason?: string;
 }
 export const RejectEntitlementPlanChangeRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pendingPlanName": S.optional(S.String),
-  "reason": S.optional(S.String),
-}),
-).annotate({ identifier: "RejectEntitlementPlanChangeRequest" }) as any as S.Schema<RejectEntitlementPlanChangeRequest>;
+  S.Struct({
+    pendingPlanName: S.optional(S.String),
+    reason: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RejectEntitlementPlanChangeRequest",
+}) as any as S.Schema<RejectEntitlementPlanChangeRequest>;
 
 export interface RejectPlanChangeProvidersEntitlementsRequest {
   /** Required. The resource name of the entitlement. */
@@ -451,12 +562,21 @@ export interface RejectPlanChangeProvidersEntitlementsRequest {
   /** Request body */
   body?: RejectEntitlementPlanChangeRequest;
 }
-export const RejectPlanChangeProvidersEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(RejectEntitlementPlanChangeRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:rejectPlanChange","baseUrl":"https://cloudcommerceprocurement.googleapis.com/"})),
-).annotate({ identifier: "RejectPlanChangeProvidersEntitlementsRequest" }) as any as S.Schema<RejectPlanChangeProvidersEntitlementsRequest>;
+export const RejectPlanChangeProvidersEntitlementsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(RejectEntitlementPlanChangeRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:rejectPlanChange",
+        baseUrl: "https://cloudcommerceprocurement.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "RejectPlanChangeProvidersEntitlementsRequest",
+  }) as any as S.Schema<RejectPlanChangeProvidersEntitlementsRequest>;
 
 /** Request message for PartnerProcurementService.RejectAccount. */
 export interface RejectAccountRequest {
@@ -466,11 +586,13 @@ export interface RejectAccountRequest {
   approvalName?: string;
 }
 export const RejectAccountRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "reason": S.optional(S.String),
-  "approvalName": S.optional(S.String),
-}),
-).annotate({ identifier: "RejectAccountRequest" }) as any as S.Schema<RejectAccountRequest>;
+  S.Struct({
+    reason: S.optional(S.String),
+    approvalName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RejectAccountRequest",
+}) as any as S.Schema<RejectAccountRequest>;
 
 export interface RejectProvidersAccountsRequest {
   /** Required. The resource name of the account. */
@@ -479,11 +601,19 @@ export interface RejectProvidersAccountsRequest {
   body?: RejectAccountRequest;
 }
 export const RejectProvidersAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(RejectAccountRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:reject","baseUrl":"https://cloudcommerceprocurement.googleapis.com/"})),
-).annotate({ identifier: "RejectProvidersAccountsRequest" }) as any as S.Schema<RejectProvidersAccountsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(RejectAccountRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:reject",
+      baseUrl: "https://cloudcommerceprocurement.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "RejectProvidersAccountsRequest",
+}) as any as S.Schema<RejectProvidersAccountsRequest>;
 
 /** Request message for PartnerProcurementService.RejectEntitlement. */
 export interface RejectEntitlementRequest {
@@ -491,10 +621,12 @@ export interface RejectEntitlementRequest {
   reason?: string;
 }
 export const RejectEntitlementRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "reason": S.optional(S.String),
-}),
-).annotate({ identifier: "RejectEntitlementRequest" }) as any as S.Schema<RejectEntitlementRequest>;
+  S.Struct({
+    reason: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RejectEntitlementRequest",
+}) as any as S.Schema<RejectEntitlementRequest>;
 
 export interface RejectProvidersEntitlementsRequest {
   /** Required. The resource name of the entitlement. */
@@ -503,17 +635,27 @@ export interface RejectProvidersEntitlementsRequest {
   body?: RejectEntitlementRequest;
 }
 export const RejectProvidersEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(RejectEntitlementRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:reject","baseUrl":"https://cloudcommerceprocurement.googleapis.com/"})),
-).annotate({ identifier: "RejectProvidersEntitlementsRequest" }) as any as S.Schema<RejectProvidersEntitlementsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(RejectEntitlementRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:reject",
+      baseUrl: "https://cloudcommerceprocurement.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "RejectProvidersEntitlementsRequest",
+}) as any as S.Schema<RejectProvidersEntitlementsRequest>;
 
 /** Request message for PartnerProcurementService.ResetAccount. */
 export interface ResetAccountRequest {}
 export const ResetAccountRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "ResetAccountRequest" }) as any as S.Schema<ResetAccountRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "ResetAccountRequest",
+}) as any as S.Schema<ResetAccountRequest>;
 
 export interface ResetProvidersAccountsRequest {
   /** Required. The resource name of the account. */
@@ -522,11 +664,19 @@ export interface ResetProvidersAccountsRequest {
   body?: ResetAccountRequest;
 }
 export const ResetProvidersAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(ResetAccountRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:reset","baseUrl":"https://cloudcommerceprocurement.googleapis.com/"})),
-).annotate({ identifier: "ResetProvidersAccountsRequest" }) as any as S.Schema<ResetProvidersAccountsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(ResetAccountRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:reset",
+      baseUrl: "https://cloudcommerceprocurement.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ResetProvidersAccountsRequest",
+}) as any as S.Schema<ResetProvidersAccountsRequest>;
 
 /** Request message for ParterProcurementService.SuspendEntitlement. This is not yet supported. */
 export interface SuspendEntitlementRequest {
@@ -534,10 +684,12 @@ export interface SuspendEntitlementRequest {
   reason?: string;
 }
 export const SuspendEntitlementRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "reason": S.optional(S.String),
-}),
-).annotate({ identifier: "SuspendEntitlementRequest" }) as any as S.Schema<SuspendEntitlementRequest>;
+  S.Struct({
+    reason: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SuspendEntitlementRequest",
+}) as any as S.Schema<SuspendEntitlementRequest>;
 
 export interface SuspendProvidersEntitlementsRequest {
   /** Required. The name of the entitlement to suspend. */
@@ -546,13 +698,26 @@ export interface SuspendProvidersEntitlementsRequest {
   body?: SuspendEntitlementRequest;
 }
 export const SuspendProvidersEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(SuspendEntitlementRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:suspend","baseUrl":"https://cloudcommerceprocurement.googleapis.com/"})),
-).annotate({ identifier: "SuspendProvidersEntitlementsRequest" }) as any as S.Schema<SuspendProvidersEntitlementsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(SuspendEntitlementRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:suspend",
+      baseUrl: "https://cloudcommerceprocurement.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SuspendProvidersEntitlementsRequest",
+}) as any as S.Schema<SuspendProvidersEntitlementsRequest>;
 
-export type ApprovePlanChangeProvidersEntitlementsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ApprovePlanChangeProvidersEntitlementsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Approves an entitlement plan change that is in the EntitlementState.ENTITLEMENT_PENDING_PLAN_CHANGE_APPROVAL state. This method is invoked by the provider to approve the plan change on the entitlement resource. */
 export const approvePlanChangeProvidersEntitlements: API.OperationMethod<
   ApprovePlanChangeProvidersEntitlementsRequest,
@@ -567,7 +732,12 @@ export const approvePlanChangeProvidersEntitlements: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ApproveProvidersAccountsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ApproveProvidersAccountsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Grants an approval on an Account. */
 export const approveProvidersAccounts: API.OperationMethod<
   ApproveProvidersAccountsRequest,
@@ -582,7 +752,12 @@ export const approveProvidersAccounts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ApproveProvidersEntitlementsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ApproveProvidersEntitlementsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Approves an entitlement that is in the EntitlementState.ENTITLEMENT_ACTIVATION_REQUESTED state. This method is invoked by the provider to approve the creation of the entitlement resource. */
 export const approveProvidersEntitlements: API.OperationMethod<
   ApproveProvidersEntitlementsRequest,
@@ -640,7 +815,10 @@ export const listProvidersAccounts: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListProvidersEntitlementsError = NotFound | Forbidden | GcpOpError;
@@ -656,10 +834,18 @@ export const listProvidersEntitlements: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type PatchProvidersEntitlementsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProvidersEntitlementsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates an existing Entitlement. */
 export const patchProvidersEntitlements: API.OperationMethod<
   PatchProvidersEntitlementsRequest,
@@ -674,7 +860,12 @@ export const patchProvidersEntitlements: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RejectPlanChangeProvidersEntitlementsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RejectPlanChangeProvidersEntitlementsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Rejects an entitlement plan change that is in the EntitlementState.ENTITLEMENT_PENDING_PLAN_CHANGE_APPROVAL state. This method is invoked by the provider to reject the plan change on the entitlement resource. */
 export const rejectPlanChangeProvidersEntitlements: API.OperationMethod<
   RejectPlanChangeProvidersEntitlementsRequest,
@@ -689,7 +880,12 @@ export const rejectPlanChangeProvidersEntitlements: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RejectProvidersAccountsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RejectProvidersAccountsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Rejects an approval on an Account. */
 export const rejectProvidersAccounts: API.OperationMethod<
   RejectProvidersAccountsRequest,
@@ -704,7 +900,12 @@ export const rejectProvidersAccounts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RejectProvidersEntitlementsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RejectProvidersEntitlementsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Rejects an entitlement that is in the EntitlementState.ENTITLEMENT_ACTIVATION_REQUESTED state. This method is invoked by the provider to reject the creation of the entitlement resource. */
 export const rejectProvidersEntitlements: API.OperationMethod<
   RejectProvidersEntitlementsRequest,
@@ -719,7 +920,12 @@ export const rejectProvidersEntitlements: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ResetProvidersAccountsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ResetProvidersAccountsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Resets an Account and cancels all associated Entitlements. Partner can only reset accounts they own rather than customer accounts. */
 export const resetProvidersAccounts: API.OperationMethod<
   ResetProvidersAccountsRequest,
@@ -734,7 +940,12 @@ export const resetProvidersAccounts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SuspendProvidersEntitlementsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SuspendProvidersEntitlementsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Requests suspension of an active Entitlement. This is not yet supported. */
 export const suspendProvidersEntitlements: API.OperationMethod<
   SuspendProvidersEntitlementsRequest,
@@ -748,4 +959,3 @@ export const suspendProvidersEntitlements: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

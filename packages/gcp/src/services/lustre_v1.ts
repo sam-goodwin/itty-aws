@@ -13,73 +13,96 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://lustre.googleapis.com/"})),
-).annotate({ identifier: "CancelProjectsLocationsOperationsRequest" }) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:cancel",
+        baseUrl: "https://lustre.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CancelProjectsLocationsOperationsRequest",
+}) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface GoogleProtobufEmpty {}
 export const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "GoogleProtobufEmpty" }) as any as S.Schema<GoogleProtobufEmpty>;
+  S.Struct({}),
+).annotate({
+  identifier: "GoogleProtobufEmpty",
+}) as any as S.Schema<GoogleProtobufEmpty>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
-export type InstanceStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "CREATING" | "DELETING" | "UPGRADING" | "REPAIRING" | "STOPPED" | "UPDATING" | "SUSPENDED";
+export type InstanceStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "CREATING"
+  | "DELETING"
+  | "UPGRADING"
+  | "REPAIRING"
+  | "STOPPED"
+  | "UPDATING"
+  | "SUSPENDED";
 export const InstanceStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a scheduled maintenance event. */
@@ -90,13 +113,18 @@ export interface MaintenanceSchedule {
   endTime?: string;
 }
 export const MaintenanceSchedule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "startTime": S.optional(S.String),
-  "endTime": S.optional(S.String),
-}),
-).annotate({ identifier: "MaintenanceSchedule" }) as any as S.Schema<MaintenanceSchedule>;
+  S.Struct({
+    startTime: S.optional(S.String),
+    endTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MaintenanceSchedule",
+}) as any as S.Schema<MaintenanceSchedule>;
 
-export type DynamicTierOptionsModeEnum = "MODE_UNSPECIFIED" | "DISABLED" | "DEFAULT_CACHE";
+export type DynamicTierOptionsModeEnum =
+  | "MODE_UNSPECIFIED"
+  | "DISABLED"
+  | "DEFAULT_CACHE";
 export const DynamicTierOptionsModeEnum = /*@__PURE__*/ S.String;
 
 /** Dynamic tier options for a Managed Lustre instance. */
@@ -105,10 +133,12 @@ export interface DynamicTierOptions {
   mode?: DynamicTierOptionsModeEnum;
 }
 export const DynamicTierOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "mode": S.optional(DynamicTierOptionsModeEnum),
-}),
-).annotate({ identifier: "DynamicTierOptions" }) as any as S.Schema<DynamicTierOptions>;
+  S.Struct({
+    mode: S.optional(DynamicTierOptionsModeEnum),
+  }),
+).annotate({
+  identifier: "DynamicTierOptions",
+}) as any as S.Schema<DynamicTierOptions>;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
 export interface TimeOfDay {
@@ -122,12 +152,12 @@ export interface TimeOfDay {
   hours?: number;
 }
 export const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "minutes": S.optional(S.Number),
-  "seconds": S.optional(S.Number),
-  "nanos": S.optional(S.Number),
-  "hours": S.optional(S.Number),
-}),
+  S.Struct({
+    minutes: S.optional(S.Number),
+    seconds: S.optional(S.Number),
+    nanos: S.optional(S.Number),
+    hours: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "TimeOfDay" }) as any as S.Schema<TimeOfDay>;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
@@ -140,11 +170,11 @@ export interface Lustre_Date {
   month?: number;
 }
 export const Lustre_Date = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "year": S.optional(S.Number),
-  "day": S.optional(S.Number),
-  "month": S.optional(S.Number),
-}),
+  S.Struct({
+    year: S.optional(S.Number),
+    day: S.optional(S.Number),
+    month: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "Lustre_Date" }) as any as S.Schema<Lustre_Date>;
 
 /** Exclusion period when maintenance updates should not occur. An exclusion window can be in either of the following two formats: * Non-recurring : A full date, with non-zero year, month and day values. * Recurring : A month and day value, with a zero year. Time zone is UTC. */
@@ -157,17 +187,30 @@ export interface MaintenanceExclusionWindow {
   endDate?: Lustre_Date;
 }
 export const MaintenanceExclusionWindow = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "time": S.optional(TimeOfDay),
-  "startDate": S.optional(Lustre_Date),
-  "endDate": S.optional(Lustre_Date),
-}),
-).annotate({ identifier: "MaintenanceExclusionWindow" }) as any as S.Schema<MaintenanceExclusionWindow>;
+  S.Struct({
+    time: S.optional(TimeOfDay),
+    startDate: S.optional(Lustre_Date),
+    endDate: S.optional(Lustre_Date),
+  }),
+).annotate({
+  identifier: "MaintenanceExclusionWindow",
+}) as any as S.Schema<MaintenanceExclusionWindow>;
 
-export type MaintenanceExclusionWindowList = ReadonlyArray<MaintenanceExclusionWindow>;
-export const MaintenanceExclusionWindowList = /*@__PURE__*/ S.Array(MaintenanceExclusionWindow) as any as S.Schema<MaintenanceExclusionWindowList>;
+export type MaintenanceExclusionWindowList =
+  ReadonlyArray<MaintenanceExclusionWindow>;
+export const MaintenanceExclusionWindowList = /*@__PURE__*/ S.Array(
+  MaintenanceExclusionWindow,
+) as any as S.Schema<MaintenanceExclusionWindowList>;
 
-export type WeeklyMaintenanceWindowDayOfWeekEnum = "DAY_OF_WEEK_UNSPECIFIED" | "MONDAY" | "TUESDAY" | "WEDNESDAY" | "THURSDAY" | "FRIDAY" | "SATURDAY" | "SUNDAY";
+export type WeeklyMaintenanceWindowDayOfWeekEnum =
+  | "DAY_OF_WEEK_UNSPECIFIED"
+  | "MONDAY"
+  | "TUESDAY"
+  | "WEDNESDAY"
+  | "THURSDAY"
+  | "FRIDAY"
+  | "SATURDAY"
+  | "SUNDAY";
 export const WeeklyMaintenanceWindowDayOfWeekEnum = /*@__PURE__*/ S.String;
 
 /** Weekly time window in which maintenance updates may occur. Duration of the window is currently fixed at 1 hour. Time zone is UTC. */
@@ -178,14 +221,19 @@ export interface WeeklyMaintenanceWindow {
   dayOfWeek?: WeeklyMaintenanceWindowDayOfWeekEnum;
 }
 export const WeeklyMaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "startTime": S.optional(TimeOfDay),
-  "dayOfWeek": S.optional(WeeklyMaintenanceWindowDayOfWeekEnum),
-}),
-).annotate({ identifier: "WeeklyMaintenanceWindow" }) as any as S.Schema<WeeklyMaintenanceWindow>;
+  S.Struct({
+    startTime: S.optional(TimeOfDay),
+    dayOfWeek: S.optional(WeeklyMaintenanceWindowDayOfWeekEnum),
+  }),
+).annotate({
+  identifier: "WeeklyMaintenanceWindow",
+}) as any as S.Schema<WeeklyMaintenanceWindow>;
 
-export type WeeklyMaintenanceWindowList = ReadonlyArray<WeeklyMaintenanceWindow>;
-export const WeeklyMaintenanceWindowList = /*@__PURE__*/ S.Array(WeeklyMaintenanceWindow) as any as S.Schema<WeeklyMaintenanceWindowList>;
+export type WeeklyMaintenanceWindowList =
+  ReadonlyArray<WeeklyMaintenanceWindow>;
+export const WeeklyMaintenanceWindowList = /*@__PURE__*/ S.Array(
+  WeeklyMaintenanceWindow,
+) as any as S.Schema<WeeklyMaintenanceWindowList>;
 
 /** Defines a maintenance policy for a resource. */
 export interface MaintenancePolicy {
@@ -195,17 +243,24 @@ export interface MaintenancePolicy {
   weeklyMaintenanceWindows?: WeeklyMaintenanceWindowList;
 }
 export const MaintenancePolicy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "maintenanceExclusionWindow": S.optional(MaintenanceExclusionWindowList),
-  "weeklyMaintenanceWindows": S.optional(WeeklyMaintenanceWindowList),
-}),
-).annotate({ identifier: "MaintenancePolicy" }) as any as S.Schema<MaintenancePolicy>;
+  S.Struct({
+    maintenanceExclusionWindow: S.optional(MaintenanceExclusionWindowList),
+    weeklyMaintenanceWindows: S.optional(WeeklyMaintenanceWindowList),
+  }),
+).annotate({
+  identifier: "MaintenancePolicy",
+}) as any as S.Schema<MaintenancePolicy>;
 
-export type AccessRuleSquashModeEnum = "SQUASH_MODE_UNSPECIFIED" | "NO_SQUASH" | "ROOT_SQUASH";
+export type AccessRuleSquashModeEnum =
+  | "SQUASH_MODE_UNSPECIFIED"
+  | "NO_SQUASH"
+  | "ROOT_SQUASH";
 export const AccessRuleSquashModeEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** A single policy group with IP-based access rules for the Managed Lustre instance. */
 export interface AccessRule {
@@ -217,17 +272,22 @@ export interface AccessRule {
   name?: string;
 }
 export const AccessRule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "squashMode": S.optional(AccessRuleSquashModeEnum),
-  "ipAddressRanges": S.optional(StringList),
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    squashMode: S.optional(AccessRuleSquashModeEnum),
+    ipAddressRanges: S.optional(StringList),
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "AccessRule" }) as any as S.Schema<AccessRule>;
 
 export type AccessRuleList = ReadonlyArray<AccessRule>;
-export const AccessRuleList = /*@__PURE__*/ S.Array(AccessRule) as any as S.Schema<AccessRuleList>;
+export const AccessRuleList = /*@__PURE__*/ S.Array(
+  AccessRule,
+) as any as S.Schema<AccessRuleList>;
 
-export type AccessRulesOptionsDefaultSquashModeEnum = "SQUASH_MODE_UNSPECIFIED" | "NO_SQUASH" | "ROOT_SQUASH";
+export type AccessRulesOptionsDefaultSquashModeEnum =
+  | "SQUASH_MODE_UNSPECIFIED"
+  | "NO_SQUASH"
+  | "ROOT_SQUASH";
 export const AccessRulesOptionsDefaultSquashModeEnum = /*@__PURE__*/ S.String;
 
 /** IP-based access rules for the Managed Lustre instance. These options define the root user squash configuration. */
@@ -242,13 +302,15 @@ export interface AccessRulesOptions {
   defaultSquashMode?: AccessRulesOptionsDefaultSquashModeEnum;
 }
 export const AccessRulesOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "defaultSquashUid": S.optional(S.Number),
-  "defaultSquashGid": S.optional(S.Number),
-  "accessRules": S.optional(AccessRuleList),
-  "defaultSquashMode": S.optional(AccessRulesOptionsDefaultSquashModeEnum),
-}),
-).annotate({ identifier: "AccessRulesOptions" }) as any as S.Schema<AccessRulesOptions>;
+  S.Struct({
+    defaultSquashUid: S.optional(S.Number),
+    defaultSquashGid: S.optional(S.Number),
+    accessRules: S.optional(AccessRuleList),
+    defaultSquashMode: S.optional(AccessRulesOptionsDefaultSquashModeEnum),
+  }),
+).annotate({
+  identifier: "AccessRulesOptions",
+}) as any as S.Schema<AccessRulesOptions>;
 
 /** A Managed Lustre instance. */
 export interface Instance {
@@ -294,28 +356,28 @@ export interface Instance {
   gkeSupportEnabled?: boolean;
 }
 export const Instance = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "labels": S.optional(StringMap),
-  "state": S.optional(InstanceStateEnum),
-  "uid": S.optional(S.String),
-  "upcomingMaintenanceSchedule": S.optional(MaintenanceSchedule),
-  "updateTime": S.optional(S.String),
-  "dynamicTierOptions": S.optional(DynamicTierOptions),
-  "name": S.optional(S.String),
-  "mountPoint": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "placementPolicy": S.optional(S.String),
-  "stateReason": S.optional(S.String),
-  "filesystem": S.optional(S.String),
-  "maintenancePolicy": S.optional(MaintenancePolicy),
-  "description": S.optional(S.String),
-  "capacityGib": S.optional(S.String),
-  "network": S.optional(S.String),
-  "perUnitStorageThroughput": S.optional(S.String),
-  "accessRulesOptions": S.optional(AccessRulesOptions),
-  "kmsKey": S.optional(S.String),
-  "gkeSupportEnabled": S.optional(S.Boolean),
-}),
+  S.Struct({
+    labels: S.optional(StringMap),
+    state: S.optional(InstanceStateEnum),
+    uid: S.optional(S.String),
+    upcomingMaintenanceSchedule: S.optional(MaintenanceSchedule),
+    updateTime: S.optional(S.String),
+    dynamicTierOptions: S.optional(DynamicTierOptions),
+    name: S.optional(S.String),
+    mountPoint: S.optional(S.String),
+    createTime: S.optional(S.String),
+    placementPolicy: S.optional(S.String),
+    stateReason: S.optional(S.String),
+    filesystem: S.optional(S.String),
+    maintenancePolicy: S.optional(MaintenancePolicy),
+    description: S.optional(S.String),
+    capacityGib: S.optional(S.String),
+    network: S.optional(S.String),
+    perUnitStorageThroughput: S.optional(S.String),
+    accessRulesOptions: S.optional(AccessRulesOptions),
+    kmsKey: S.optional(S.String),
+    gkeSupportEnabled: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "Instance" }) as any as S.Schema<Instance>;
 
 export interface CreateProjectsLocationsInstancesRequest {
@@ -328,20 +390,34 @@ export interface CreateProjectsLocationsInstancesRequest {
   /** Request body */
   body?: Instance;
 }
-export const CreateProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "instanceId": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Instance.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/instances","baseUrl":"https://lustre.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsInstancesRequest" }) as any as S.Schema<CreateProjectsLocationsInstancesRequest>;
+export const CreateProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      instanceId: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Instance.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/instances",
+        baseUrl: "https://lustre.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateProjectsLocationsInstancesRequest",
+}) as any as S.Schema<CreateProjectsLocationsInstancesRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -353,11 +429,11 @@ export interface Status {
   details?: DocumentMapList;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "message": S.optional(S.String),
-  "code": S.optional(S.Number),
-  "details": S.optional(DocumentMapList),
-}),
+  S.Struct({
+    message: S.optional(S.String),
+    code: S.optional(S.Number),
+    details: S.optional(DocumentMapList),
+  }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -374,13 +450,13 @@ export interface Operation {
   metadata?: DocumentMap;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "done": S.optional(S.Boolean),
-  "response": S.optional(DocumentMap),
-  "error": S.optional(Status),
-  "metadata": S.optional(DocumentMap),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    done: S.optional(S.Boolean),
+    response: S.optional(DocumentMap),
+    error: S.optional(Status),
+    metadata: S.optional(DocumentMap),
+  }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 export interface DeleteProjectsLocationsInstancesRequest {
@@ -391,23 +467,41 @@ export interface DeleteProjectsLocationsInstancesRequest {
   /** Optional. If set to true, any sub-resources from this instance will also be deleted. Otherwise, the request will only work if the instance has no sub-resources. */
   force?: boolean;
 }
-export const DeleteProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "force": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://lustre.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsInstancesRequest" }) as any as S.Schema<DeleteProjectsLocationsInstancesRequest>;
+export const DeleteProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      force: S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://lustre.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsInstancesRequest",
+}) as any as S.Schema<DeleteProjectsLocationsInstancesRequest>;
 
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://lustre.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsOperationsRequest" }) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://lustre.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsOperationsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
 
 /** The root directory path to the Lustre file system. */
 export interface LustrePath {
@@ -415,9 +509,9 @@ export interface LustrePath {
   path?: string;
 }
 export const LustrePath = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.optional(S.String),
-}),
+  S.Struct({
+    path: S.optional(S.String),
+  }),
 ).annotate({ identifier: "LustrePath" }) as any as S.Schema<LustrePath>;
 
 /** Specifies a Cloud Storage bucket and, optionally, a path inside the bucket. */
@@ -426,9 +520,9 @@ export interface GcsPath {
   uri?: string;
 }
 export const GcsPath = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "uri": S.optional(S.String),
-}),
+  S.Struct({
+    uri: S.optional(S.String),
+  }),
 ).annotate({ identifier: "GcsPath" }) as any as S.Schema<GcsPath>;
 
 /** Export data from Managed Lustre to a Cloud Storage bucket. */
@@ -443,13 +537,15 @@ export interface ExportDataRequest {
   gcsPath?: GcsPath;
 }
 export const ExportDataRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String),
-  "serviceAccount": S.optional(S.String),
-  "lustrePath": S.optional(LustrePath),
-  "gcsPath": S.optional(GcsPath),
-}),
-).annotate({ identifier: "ExportDataRequest" }) as any as S.Schema<ExportDataRequest>;
+  S.Struct({
+    requestId: S.optional(S.String),
+    serviceAccount: S.optional(S.String),
+    lustrePath: S.optional(LustrePath),
+    gcsPath: S.optional(GcsPath),
+  }),
+).annotate({
+  identifier: "ExportDataRequest",
+}) as any as S.Schema<ExportDataRequest>;
 
 export interface ExportDataProjectsLocationsInstancesRequest {
   /** Required. The name of the Managed Lustre instance in the format `projects/{project}/locations/{location}/instances/{instance}`. */
@@ -457,22 +553,39 @@ export interface ExportDataProjectsLocationsInstancesRequest {
   /** Request body */
   body?: ExportDataRequest;
 }
-export const ExportDataProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(ExportDataRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:exportData","baseUrl":"https://lustre.googleapis.com/"})),
-).annotate({ identifier: "ExportDataProjectsLocationsInstancesRequest" }) as any as S.Schema<ExportDataProjectsLocationsInstancesRequest>;
+export const ExportDataProjectsLocationsInstancesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(ExportDataRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:exportData",
+        baseUrl: "https://lustre.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ExportDataProjectsLocationsInstancesRequest",
+  }) as any as S.Schema<ExportDataProjectsLocationsInstancesRequest>;
 
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://lustre.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://lustre.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsRequest",
+}) as any as S.Schema<GetProjectsLocationsRequest>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -488,34 +601,52 @@ export interface Location {
   metadata?: DocumentMap;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "displayName": S.optional(S.String),
-  "name": S.optional(S.String),
-  "locationId": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "metadata": S.optional(DocumentMap),
-}),
+  S.Struct({
+    displayName: S.optional(S.String),
+    name: S.optional(S.String),
+    locationId: S.optional(S.String),
+    labels: S.optional(StringMap),
+    metadata: S.optional(DocumentMap),
+  }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export interface GetProjectsLocationsInstancesRequest {
   /** Required. The instance resource name, in the format `projects/{projectId}/locations/{location}/instances/{instanceId}`. */
   name: string;
 }
-export const GetProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://lustre.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsInstancesRequest" }) as any as S.Schema<GetProjectsLocationsInstancesRequest>;
+export const GetProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://lustre.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsInstancesRequest",
+}) as any as S.Schema<GetProjectsLocationsInstancesRequest>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://lustre.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://lustre.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsOperationsRequest",
+}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 /** Message for importing data to Lustre. */
 export interface ImportDataRequest {
@@ -529,13 +660,15 @@ export interface ImportDataRequest {
   serviceAccount?: string;
 }
 export const ImportDataRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "gcsPath": S.optional(GcsPath),
-  "lustrePath": S.optional(LustrePath),
-  "requestId": S.optional(S.String),
-  "serviceAccount": S.optional(S.String),
-}),
-).annotate({ identifier: "ImportDataRequest" }) as any as S.Schema<ImportDataRequest>;
+  S.Struct({
+    gcsPath: S.optional(GcsPath),
+    lustrePath: S.optional(LustrePath),
+    requestId: S.optional(S.String),
+    serviceAccount: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ImportDataRequest",
+}) as any as S.Schema<ImportDataRequest>;
 
 export interface ImportDataProjectsLocationsInstancesRequest {
   /** Required. The name of the Managed Lustre instance in the format `projects/{project}/locations/{location}/instances/{instance}`. */
@@ -543,12 +676,21 @@ export interface ImportDataProjectsLocationsInstancesRequest {
   /** Request body */
   body?: ImportDataRequest;
 }
-export const ImportDataProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(ImportDataRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:importData","baseUrl":"https://lustre.googleapis.com/"})),
-).annotate({ identifier: "ImportDataProjectsLocationsInstancesRequest" }) as any as S.Schema<ImportDataProjectsLocationsInstancesRequest>;
+export const ImportDataProjectsLocationsInstancesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(ImportDataRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:importData",
+        baseUrl: "https://lustre.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ImportDataProjectsLocationsInstancesRequest",
+  }) as any as S.Schema<ImportDataProjectsLocationsInstancesRequest>;
 
 export interface ListProjectsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
@@ -563,17 +705,27 @@ export interface ListProjectsLocationsRequest {
   name: string;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/locations","baseUrl":"https://lustre.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}/locations",
+      baseUrl: "https://lustre.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsRequest",
+}) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(
+  Location,
+) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -583,11 +735,13 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locations": S.optional(LocationList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
+  S.Struct({
+    locations: S.optional(LocationList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListLocationsResponse",
+}) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsLocationsInstancesRequest {
   /** Optional. A token identifying a page of results the server should return. */
@@ -601,18 +755,29 @@ export interface ListProjectsLocationsInstancesRequest {
   /** Required. The project and location for which to retrieve a list of instances, in the format `projects/{projectId}/locations/{location}`. To retrieve instance information for all locations, use "-" as the value of `{location}`. */
   parent: string;
 }
-export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/instances","baseUrl":"https://lustre.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsInstancesRequest" }) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
+export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/instances",
+        baseUrl: "https://lustre.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsInstancesRequest",
+}) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
 
 export type InstanceList = ReadonlyArray<Instance>;
-export const InstanceList = /*@__PURE__*/ S.Array(Instance) as any as S.Schema<InstanceList>;
+export const InstanceList = /*@__PURE__*/ S.Array(
+  Instance,
+) as any as S.Schema<InstanceList>;
 
 /** Message for response to listing Instances */
 export interface ListInstancesResponse {
@@ -624,12 +789,14 @@ export interface ListInstancesResponse {
   nextPageToken?: string;
 }
 export const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "instances": S.optional(InstanceList),
-  "unreachable": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListInstancesResponse" }) as any as S.Schema<ListInstancesResponse>;
+  S.Struct({
+    instances: S.optional(InstanceList),
+    unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListInstancesResponse",
+}) as any as S.Schema<ListInstancesResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page size. */
@@ -643,18 +810,29 @@ export interface ListProjectsLocationsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/operations","baseUrl":"https://lustre.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}/operations",
+        baseUrl: "https://lustre.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsOperationsRequest",
+}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(
+  Operation,
+) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -666,12 +844,14 @@ export interface ListOperationsResponse {
   unreachable?: StringList;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "operations": S.optional(OperationList),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    operations: S.optional(OperationList),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListOperationsResponse",
+}) as any as S.Schema<ListOperationsResponse>;
 
 export interface PatchProjectsLocationsInstancesRequest {
   /** Optional. Specifies the fields to be overwritten in the instance resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If no mask is provided then all fields present in the request are overwritten. */
@@ -683,16 +863,29 @@ export interface PatchProjectsLocationsInstancesRequest {
   /** Request body */
   body?: Instance;
 }
-export const PatchProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Instance.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://lustre.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsInstancesRequest" }) as any as S.Schema<PatchProjectsLocationsInstancesRequest>;
+export const PatchProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Instance.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://lustre.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "PatchProjectsLocationsInstancesRequest",
+}) as any as S.Schema<PatchProjectsLocationsInstancesRequest>;
 
-export type RescheduleRescheduleTypeEnum = "RESCHEDULE_TYPE_UNSPECIFIED" | "IMMEDIATE" | "NEXT_AVAILABLE_WINDOW" | "BY_TIME";
+export type RescheduleRescheduleTypeEnum =
+  | "RESCHEDULE_TYPE_UNSPECIFIED"
+  | "IMMEDIATE"
+  | "NEXT_AVAILABLE_WINDOW"
+  | "BY_TIME";
 export const RescheduleRescheduleTypeEnum = /*@__PURE__*/ S.String;
 
 /** The desired reschedule settings. */
@@ -703,10 +896,10 @@ export interface Reschedule {
   scheduleTime?: string;
 }
 export const Reschedule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "rescheduleType": S.optional(RescheduleRescheduleTypeEnum),
-  "scheduleTime": S.optional(S.String),
-}),
+  S.Struct({
+    rescheduleType: S.optional(RescheduleRescheduleTypeEnum),
+    scheduleTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Reschedule" }) as any as S.Schema<Reschedule>;
 
 /** Message for requesting to reschedule a maintenance event for a specific instance. */
@@ -717,11 +910,13 @@ export interface RescheduleMaintenanceRequest {
   requestId?: string;
 }
 export const RescheduleMaintenanceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "reschedule": S.optional(Reschedule),
-  "requestId": S.optional(S.String),
-}),
-).annotate({ identifier: "RescheduleMaintenanceRequest" }) as any as S.Schema<RescheduleMaintenanceRequest>;
+  S.Struct({
+    reschedule: S.optional(Reschedule),
+    requestId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RescheduleMaintenanceRequest",
+}) as any as S.Schema<RescheduleMaintenanceRequest>;
 
 export interface RescheduleMaintenanceProjectsLocationsInstancesRequest {
   /** Required. Format: projects/{project}/locations/{location}/instances/{instance} */
@@ -729,14 +924,28 @@ export interface RescheduleMaintenanceProjectsLocationsInstancesRequest {
   /** Request body */
   body?: RescheduleMaintenanceRequest;
 }
-export const RescheduleMaintenanceProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(RescheduleMaintenanceRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:rescheduleMaintenance","baseUrl":"https://lustre.googleapis.com/"})),
-).annotate({ identifier: "RescheduleMaintenanceProjectsLocationsInstancesRequest" }) as any as S.Schema<RescheduleMaintenanceProjectsLocationsInstancesRequest>;
+export const RescheduleMaintenanceProjectsLocationsInstancesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(RescheduleMaintenanceRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:rescheduleMaintenance",
+        baseUrl: "https://lustre.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "RescheduleMaintenanceProjectsLocationsInstancesRequest",
+  }) as any as S.Schema<RescheduleMaintenanceProjectsLocationsInstancesRequest>;
 
-export type CancelProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CancelProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsRequest,
@@ -751,7 +960,12 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new instance in a given project and location. */
 export const createProjectsLocationsInstances: API.OperationMethod<
   CreateProjectsLocationsInstancesRequest,
@@ -766,7 +980,12 @@ export const createProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a single instance. */
 export const deleteProjectsLocationsInstances: API.OperationMethod<
   DeleteProjectsLocationsInstancesRequest,
@@ -781,7 +1000,12 @@ export const deleteProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsRequest,
@@ -796,7 +1020,12 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ExportDataProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ExportDataProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Exports data from a Managed Lustre instance to Cloud Storage. */
 export const exportDataProjectsLocationsInstances: API.OperationMethod<
   ExportDataProjectsLocationsInstancesRequest,
@@ -826,7 +1055,10 @@ export const getProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsInstancesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a single instance. */
 export const getProjectsLocationsInstances: API.OperationMethod<
   GetProjectsLocationsInstancesRequest,
@@ -841,7 +1073,10 @@ export const getProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -856,7 +1091,12 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ImportDataProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ImportDataProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Imports data from Cloud Storage to a Managed Lustre instance. */
 export const importDataProjectsLocationsInstances: API.OperationMethod<
   ImportDataProjectsLocationsInstancesRequest,
@@ -884,10 +1124,16 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsInstancesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists instances in a given project and location. */
 export const listProjectsLocationsInstances: API.PaginatedOperationMethod<
   ListProjectsLocationsInstancesRequest,
@@ -900,10 +1146,16 @@ export const listProjectsLocationsInstances: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -916,10 +1168,18 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type PatchProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the parameters of a single instance. */
 export const patchProjectsLocationsInstances: API.OperationMethod<
   PatchProjectsLocationsInstancesRequest,
@@ -934,7 +1194,12 @@ export const patchProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RescheduleMaintenanceProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RescheduleMaintenanceProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Reschedules a planned maintenance event for a specific instance. */
 export const rescheduleMaintenanceProjectsLocationsInstances: API.OperationMethod<
   RescheduleMaintenanceProjectsLocationsInstancesRequest,
@@ -948,4 +1213,3 @@ export const rescheduleMaintenanceProjectsLocationsInstances: API.OperationMetho
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

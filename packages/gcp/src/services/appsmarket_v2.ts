@@ -13,27 +13,27 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export interface GetCustomerLicenseRequest {
@@ -43,11 +43,19 @@ export interface GetCustomerLicenseRequest {
   customerId: string;
 }
 export const GetCustomerLicenseRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "applicationId": S.String.pipe(T.Label()),
-  "customerId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"appsmarket/v2/customerLicense/{applicationId}/{customerId}","baseUrl":"https://appsmarket.googleapis.com/"})),
-).annotate({ identifier: "GetCustomerLicenseRequest" }) as any as S.Schema<GetCustomerLicenseRequest>;
+  S.Struct({
+    applicationId: S.String.pipe(T.Label()),
+    customerId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "appsmarket/v2/customerLicense/{applicationId}/{customerId}",
+      baseUrl: "https://appsmarket.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetCustomerLicenseRequest",
+}) as any as S.Schema<GetCustomerLicenseRequest>;
 
 export interface Editions {
   /** (Deprecated) */
@@ -58,15 +66,17 @@ export interface Editions {
   assignedSeats?: number;
 }
 export const Editions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "editionId": S.optional(S.String),
-  "seatCount": S.optional(S.Number),
-  "assignedSeats": S.optional(S.Number),
-}),
+  S.Struct({
+    editionId: S.optional(S.String),
+    seatCount: S.optional(S.Number),
+    assignedSeats: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "Editions" }) as any as S.Schema<Editions>;
 
 export type EditionsList = ReadonlyArray<Editions>;
-export const EditionsList = /*@__PURE__*/ S.Array(Editions) as any as S.Schema<EditionsList>;
+export const EditionsList = /*@__PURE__*/ S.Array(
+  Editions,
+) as any as S.Schema<EditionsList>;
 
 export interface CustomerLicense {
   /** The ID of the application corresponding to this license query. */
@@ -83,15 +93,17 @@ export interface CustomerLicense {
   editions?: EditionsList;
 }
 export const CustomerLicense = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "applicationId": S.optional(S.String),
-  "customerId": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "state": S.optional(S.String),
-  "id": S.optional(S.String),
-  "editions": S.optional(EditionsList),
-}),
-).annotate({ identifier: "CustomerLicense" }) as any as S.Schema<CustomerLicense>;
+  S.Struct({
+    applicationId: S.optional(S.String),
+    customerId: S.optional(S.String),
+    kind: S.optional(S.String),
+    state: S.optional(S.String),
+    id: S.optional(S.String),
+    editions: S.optional(EditionsList),
+  }),
+).annotate({
+  identifier: "CustomerLicense",
+}) as any as S.Schema<CustomerLicense>;
 
 export interface GetUserLicenseRequest {
   /** The ID of the user. */
@@ -100,11 +112,19 @@ export interface GetUserLicenseRequest {
   applicationId: string;
 }
 export const GetUserLicenseRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "userId": S.String.pipe(T.Label()),
-  "applicationId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"appsmarket/v2/userLicense/{applicationId}/{userId}","baseUrl":"https://appsmarket.googleapis.com/"})),
-).annotate({ identifier: "GetUserLicenseRequest" }) as any as S.Schema<GetUserLicenseRequest>;
+  S.Struct({
+    userId: S.String.pipe(T.Label()),
+    applicationId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "appsmarket/v2/userLicense/{applicationId}/{userId}",
+      baseUrl: "https://appsmarket.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetUserLicenseRequest",
+}) as any as S.Schema<GetUserLicenseRequest>;
 
 export interface UserLicense {
   /** The user's licensing status. One of: - `ACTIVE`: The user has a valid license and should be permitted to use the application. - `UNLICENSED`: The administrator of this user's domain never assigned a seat for the application to this user. - `EXPIRED`: The administrator assigned a seat to this user, but the license is expired. */
@@ -125,16 +145,16 @@ export interface UserLicense {
   kind?: string;
 }
 export const UserLicense = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "state": S.optional(S.String),
-  "id": S.optional(S.String),
-  "userId": S.optional(S.String),
-  "enabled": S.optional(S.Boolean),
-  "editionId": S.optional(S.String),
-  "customerId": S.optional(S.String),
-  "applicationId": S.optional(S.String),
-  "kind": S.optional(S.String),
-}),
+  S.Struct({
+    state: S.optional(S.String),
+    id: S.optional(S.String),
+    userId: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    editionId: S.optional(S.String),
+    customerId: S.optional(S.String),
+    applicationId: S.optional(S.String),
+    kind: S.optional(S.String),
+  }),
 ).annotate({ identifier: "UserLicense" }) as any as S.Schema<UserLicense>;
 
 export type GetCustomerLicenseError = NotFound | Forbidden | GcpOpError;
@@ -166,4 +186,3 @@ export const getUserLicense: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

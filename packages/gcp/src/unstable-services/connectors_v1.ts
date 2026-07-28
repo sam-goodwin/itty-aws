@@ -13,58 +13,60 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
 export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "CancelOperationRequest" }) as any as S.Schema<CancelOperationRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "CancelOperationRequest",
+}) as any as S.Schema<CancelOperationRequest>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -72,20 +74,32 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "CancelProjectsLocationsOperationsRequest" }) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:cancel",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CancelProjectsLocationsOperationsRequest",
+}) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
-export type EncryptionKeyTypeEnum = "TYPE_UNSPECIFIED" | "GOOGLE_MANAGED" | "CUSTOMER_MANAGED";
+export type EncryptionKeyTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "GOOGLE_MANAGED"
+  | "CUSTOMER_MANAGED";
 export const EncryptionKeyTypeEnum = /*@__PURE__*/ S.String;
 
 /** Encryption Key value. */
@@ -96,10 +110,10 @@ export interface EncryptionKey {
   kmsKeyName?: string;
 }
 export const EncryptionKey = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(EncryptionKeyTypeEnum),
-  "kmsKeyName": S.optional(S.String),
-}),
+  S.Struct({
+    type: S.optional(EncryptionKeyTypeEnum),
+    kmsKeyName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "EncryptionKey" }) as any as S.Schema<EncryptionKey>;
 
 /** Secret provides a reference to entries in Secret Manager. */
@@ -108,9 +122,9 @@ export interface Secret {
   secretVersion?: string;
 }
 export const Secret = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "secretVersion": S.optional(S.String),
-}),
+  S.Struct({
+    secretVersion: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Secret" }) as any as S.Schema<Secret>;
 
 /** ConfigVariable represents a configuration variable present in a Connection. or AuthConfig. */
@@ -129,21 +143,25 @@ export interface ConfigVariable {
   secretValue?: Secret;
 }
 export const ConfigVariable = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "intValue": S.optional(S.String),
-  "boolValue": S.optional(S.Boolean),
-  "key": S.optional(S.String),
-  "encryptionKeyValue": S.optional(EncryptionKey),
-  "stringValue": S.optional(S.String),
-  "secretValue": S.optional(Secret),
-}),
+  S.Struct({
+    intValue: S.optional(S.String),
+    boolValue: S.optional(S.Boolean),
+    key: S.optional(S.String),
+    encryptionKeyValue: S.optional(EncryptionKey),
+    stringValue: S.optional(S.String),
+    secretValue: S.optional(Secret),
+  }),
 ).annotate({ identifier: "ConfigVariable" }) as any as S.Schema<ConfigVariable>;
 
 export type ConfigVariableList = ReadonlyArray<ConfigVariable>;
-export const ConfigVariableList = /*@__PURE__*/ S.Array(ConfigVariable) as any as S.Schema<ConfigVariableList>;
+export const ConfigVariableList = /*@__PURE__*/ S.Array(
+  ConfigVariable,
+) as any as S.Schema<ConfigVariableList>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** Parameters to support Oauth 2.0 Auth Code Grant Authentication. See https://www.rfc-editor.org/rfc/rfc6749#section-1.3.1 for more details. */
 export interface Oauth2AuthCodeFlow {
@@ -165,17 +183,19 @@ export interface Oauth2AuthCodeFlow {
   authCode?: string;
 }
 export const Oauth2AuthCodeFlow = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "redirectUri": S.optional(S.String),
-  "clientSecret": S.optional(Secret),
-  "scopes": S.optional(StringList),
-  "enablePkce": S.optional(S.Boolean),
-  "authUri": S.optional(S.String),
-  "pkceVerifier": S.optional(S.String),
-  "clientId": S.optional(S.String),
-  "authCode": S.optional(S.String),
-}),
-).annotate({ identifier: "Oauth2AuthCodeFlow" }) as any as S.Schema<Oauth2AuthCodeFlow>;
+  S.Struct({
+    redirectUri: S.optional(S.String),
+    clientSecret: S.optional(Secret),
+    scopes: S.optional(StringList),
+    enablePkce: S.optional(S.Boolean),
+    authUri: S.optional(S.String),
+    pkceVerifier: S.optional(S.String),
+    clientId: S.optional(S.String),
+    authCode: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "Oauth2AuthCodeFlow",
+}) as any as S.Schema<Oauth2AuthCodeFlow>;
 
 /** Parameters to support Oauth 2.0 Auth Code Grant Authentication using Google Provided OAuth Client. See https://tools.ietf.org/html/rfc6749#section-1.3.1 for more details. */
 export interface Oauth2AuthCodeFlowGoogleManaged {
@@ -187,12 +207,14 @@ export interface Oauth2AuthCodeFlowGoogleManaged {
   scopes?: StringList;
 }
 export const Oauth2AuthCodeFlowGoogleManaged = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "redirectUri": S.optional(S.String),
-  "authCode": S.optional(S.String),
-  "scopes": S.optional(StringList),
-}),
-).annotate({ identifier: "Oauth2AuthCodeFlowGoogleManaged" }) as any as S.Schema<Oauth2AuthCodeFlowGoogleManaged>;
+  S.Struct({
+    redirectUri: S.optional(S.String),
+    authCode: S.optional(S.String),
+    scopes: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "Oauth2AuthCodeFlowGoogleManaged",
+}) as any as S.Schema<Oauth2AuthCodeFlowGoogleManaged>;
 
 /** Parameters to support Username and Password Authentication. */
 export interface UserPassword {
@@ -202,10 +224,10 @@ export interface UserPassword {
   username?: string;
 }
 export const UserPassword = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "password": S.optional(Secret),
-  "username": S.optional(S.String),
-}),
+  S.Struct({
+    password: S.optional(Secret),
+    username: S.optional(S.String),
+  }),
 ).annotate({ identifier: "UserPassword" }) as any as S.Schema<UserPassword>;
 
 /** Parameters to support Ssh public key Authentication. */
@@ -220,12 +242,12 @@ export interface SshPublicKey {
   sshClientCertPass?: Secret;
 }
 export const SshPublicKey = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "username": S.optional(S.String),
-  "certType": S.optional(S.String),
-  "sshClientCert": S.optional(Secret),
-  "sshClientCertPass": S.optional(Secret),
-}),
+  S.Struct({
+    username: S.optional(S.String),
+    certType: S.optional(S.String),
+    sshClientCert: S.optional(Secret),
+    sshClientCertPass: S.optional(Secret),
+  }),
 ).annotate({ identifier: "SshPublicKey" }) as any as S.Schema<SshPublicKey>;
 
 /** Parameters to support Oauth 2.0 Client Credentials Grant Authentication. See https://tools.ietf.org/html/rfc6749#section-1.3.4 for more details. */
@@ -236,13 +258,23 @@ export interface Oauth2ClientCredentials {
   clientId?: string;
 }
 export const Oauth2ClientCredentials = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "clientSecret": S.optional(Secret),
-  "clientId": S.optional(S.String),
-}),
-).annotate({ identifier: "Oauth2ClientCredentials" }) as any as S.Schema<Oauth2ClientCredentials>;
+  S.Struct({
+    clientSecret: S.optional(Secret),
+    clientId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "Oauth2ClientCredentials",
+}) as any as S.Schema<Oauth2ClientCredentials>;
 
-export type AuthConfigAuthTypeEnum = "AUTH_TYPE_UNSPECIFIED" | "USER_PASSWORD" | "OAUTH2_JWT_BEARER" | "OAUTH2_CLIENT_CREDENTIALS" | "SSH_PUBLIC_KEY" | "OAUTH2_AUTH_CODE_FLOW" | "GOOGLE_AUTHENTICATION" | "OAUTH2_AUTH_CODE_FLOW_GOOGLE_MANAGED";
+export type AuthConfigAuthTypeEnum =
+  | "AUTH_TYPE_UNSPECIFIED"
+  | "USER_PASSWORD"
+  | "OAUTH2_JWT_BEARER"
+  | "OAUTH2_CLIENT_CREDENTIALS"
+  | "SSH_PUBLIC_KEY"
+  | "OAUTH2_AUTH_CODE_FLOW"
+  | "GOOGLE_AUTHENTICATION"
+  | "OAUTH2_AUTH_CODE_FLOW_GOOGLE_MANAGED";
 export const AuthConfigAuthTypeEnum = /*@__PURE__*/ S.String;
 
 /** JWT claims used for the jwt-bearer authorization grant. */
@@ -255,11 +287,11 @@ export interface JwtClaims {
   issuer?: string;
 }
 export const JwtClaims = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "subject": S.optional(S.String),
-  "audience": S.optional(S.String),
-  "issuer": S.optional(S.String),
-}),
+  S.Struct({
+    subject: S.optional(S.String),
+    audience: S.optional(S.String),
+    issuer: S.optional(S.String),
+  }),
 ).annotate({ identifier: "JwtClaims" }) as any as S.Schema<JwtClaims>;
 
 /** Parameters to support JSON Web Token (JWT) Profile for Oauth 2.0 Authorization Grant based authentication. See https://tools.ietf.org/html/rfc7523 for more details. */
@@ -270,11 +302,13 @@ export interface Oauth2JwtBearer {
   clientKey?: Secret;
 }
 export const Oauth2JwtBearer = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "jwtClaims": S.optional(JwtClaims),
-  "clientKey": S.optional(Secret),
-}),
-).annotate({ identifier: "Oauth2JwtBearer" }) as any as S.Schema<Oauth2JwtBearer>;
+  S.Struct({
+    jwtClaims: S.optional(JwtClaims),
+    clientKey: S.optional(Secret),
+  }),
+).annotate({
+  identifier: "Oauth2JwtBearer",
+}) as any as S.Schema<Oauth2JwtBearer>;
 
 /** AuthConfig defines details of a authentication type. */
 export interface AuthConfig {
@@ -298,17 +332,19 @@ export interface AuthConfig {
   oauth2JwtBearer?: Oauth2JwtBearer;
 }
 export const AuthConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "additionalVariables": S.optional(ConfigVariableList),
-  "oauth2AuthCodeFlow": S.optional(Oauth2AuthCodeFlow),
-  "oauth2AuthCodeFlowGoogleManaged": S.optional(Oauth2AuthCodeFlowGoogleManaged),
-  "userPassword": S.optional(UserPassword),
-  "sshPublicKey": S.optional(SshPublicKey),
-  "oauth2ClientCredentials": S.optional(Oauth2ClientCredentials),
-  "authKey": S.optional(S.String),
-  "authType": S.optional(AuthConfigAuthTypeEnum),
-  "oauth2JwtBearer": S.optional(Oauth2JwtBearer),
-}),
+  S.Struct({
+    additionalVariables: S.optional(ConfigVariableList),
+    oauth2AuthCodeFlow: S.optional(Oauth2AuthCodeFlow),
+    oauth2AuthCodeFlowGoogleManaged: S.optional(
+      Oauth2AuthCodeFlowGoogleManaged,
+    ),
+    userPassword: S.optional(UserPassword),
+    sshPublicKey: S.optional(SshPublicKey),
+    oauth2ClientCredentials: S.optional(Oauth2ClientCredentials),
+    authKey: S.optional(S.String),
+    authType: S.optional(AuthConfigAuthTypeEnum),
+    oauth2JwtBearer: S.optional(Oauth2JwtBearer),
+  }),
 ).annotate({ identifier: "AuthConfig" }) as any as S.Schema<AuthConfig>;
 
 /** Determines whether or no a connection is locked. If locked, a reason must be specified. */
@@ -319,10 +355,10 @@ export interface LockConfig {
   locked?: boolean;
 }
 export const LockConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "reason": S.optional(S.String),
-  "locked": S.optional(S.Boolean),
-}),
+  S.Struct({
+    reason: S.optional(S.String),
+    locked: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "LockConfig" }) as any as S.Schema<LockConfig>;
 
 export interface Destination {
@@ -334,15 +370,17 @@ export interface Destination {
   host?: string;
 }
 export const Destination = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "port": S.optional(S.Number),
-  "serviceAttachment": S.optional(S.String),
-  "host": S.optional(S.String),
-}),
+  S.Struct({
+    port: S.optional(S.Number),
+    serviceAttachment: S.optional(S.String),
+    host: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Destination" }) as any as S.Schema<Destination>;
 
 export type DestinationList = ReadonlyArray<Destination>;
-export const DestinationList = /*@__PURE__*/ S.Array(Destination) as any as S.Schema<DestinationList>;
+export const DestinationList = /*@__PURE__*/ S.Array(
+  Destination,
+) as any as S.Schema<DestinationList>;
 
 /** Define the Connectors target endpoint. */
 export interface DestinationConfig {
@@ -352,16 +390,24 @@ export interface DestinationConfig {
   key?: string;
 }
 export const DestinationConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "destinations": S.optional(DestinationList),
-  "key": S.optional(S.String),
-}),
-).annotate({ identifier: "DestinationConfig" }) as any as S.Schema<DestinationConfig>;
+  S.Struct({
+    destinations: S.optional(DestinationList),
+    key: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DestinationConfig",
+}) as any as S.Schema<DestinationConfig>;
 
 export type DestinationConfigList = ReadonlyArray<DestinationConfig>;
-export const DestinationConfigList = /*@__PURE__*/ S.Array(DestinationConfig) as any as S.Schema<DestinationConfigList>;
+export const DestinationConfigList = /*@__PURE__*/ S.Array(
+  DestinationConfig,
+) as any as S.Schema<DestinationConfigList>;
 
-export type ConnectorsLogConfigLevelEnum = "LOG_LEVEL_UNSPECIFIED" | "ERROR" | "INFO" | "DEBUG";
+export type ConnectorsLogConfigLevelEnum =
+  | "LOG_LEVEL_UNSPECIFIED"
+  | "ERROR"
+  | "INFO"
+  | "DEBUG";
 export const ConnectorsLogConfigLevelEnum = /*@__PURE__*/ S.String;
 
 /** Log configuration for the connection. */
@@ -372,13 +418,18 @@ export interface ConnectorsLogConfig {
   level?: ConnectorsLogConfigLevelEnum;
 }
 export const ConnectorsLogConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "enabled": S.optional(S.Boolean),
-  "level": S.optional(ConnectorsLogConfigLevelEnum),
-}),
-).annotate({ identifier: "ConnectorsLogConfig" }) as any as S.Schema<ConnectorsLogConfig>;
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+    level: S.optional(ConnectorsLogConfigLevelEnum),
+  }),
+).annotate({
+  identifier: "ConnectorsLogConfig",
+}) as any as S.Schema<ConnectorsLogConfig>;
 
-export type ConnectionSubscriptionTypeEnum = "SUBSCRIPTION_TYPE_UNSPECIFIED" | "PAY_G" | "PAID";
+export type ConnectionSubscriptionTypeEnum =
+  | "SUBSCRIPTION_TYPE_UNSPECIFIED"
+  | "PAY_G"
+  | "PAID";
 export const ConnectionSubscriptionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Dead Letter configuration details provided by the user. */
@@ -389,11 +440,13 @@ export interface DeadLetterConfig {
   projectId?: string;
 }
 export const DeadLetterConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "topic": S.optional(S.String),
-  "projectId": S.optional(S.String),
-}),
-).annotate({ identifier: "DeadLetterConfig" }) as any as S.Schema<DeadLetterConfig>;
+  S.Struct({
+    topic: S.optional(S.String),
+    projectId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DeadLetterConfig",
+}) as any as S.Schema<DeadLetterConfig>;
 
 export type SslConfigServerCertTypeEnum = "CERT_TYPE_UNSPECIFIED" | "PEM";
 export const SslConfigServerCertTypeEnum = /*@__PURE__*/ S.String;
@@ -431,18 +484,18 @@ export interface SslConfig {
   clientPrivateKeyPass?: Secret;
 }
 export const SslConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "clientCertificate": S.optional(Secret),
-  "serverCertType": S.optional(SslConfigServerCertTypeEnum),
-  "privateServerCertificate": S.optional(Secret),
-  "trustModel": S.optional(SslConfigTrustModelEnum),
-  "type": S.optional(SslConfigTypeEnum),
-  "additionalVariables": S.optional(ConfigVariableList),
-  "clientCertType": S.optional(SslConfigClientCertTypeEnum),
-  "useSsl": S.optional(S.Boolean),
-  "clientPrivateKey": S.optional(Secret),
-  "clientPrivateKeyPass": S.optional(Secret),
-}),
+  S.Struct({
+    clientCertificate: S.optional(Secret),
+    serverCertType: S.optional(SslConfigServerCertTypeEnum),
+    privateServerCertificate: S.optional(Secret),
+    trustModel: S.optional(SslConfigTrustModelEnum),
+    type: S.optional(SslConfigTypeEnum),
+    additionalVariables: S.optional(ConfigVariableList),
+    clientCertType: S.optional(SslConfigClientCertTypeEnum),
+    useSsl: S.optional(S.Boolean),
+    clientPrivateKey: S.optional(Secret),
+    clientPrivateKeyPass: S.optional(Secret),
+  }),
 ).annotate({ identifier: "SslConfig" }) as any as S.Schema<SslConfig>;
 
 /** Data enrichment configuration. */
@@ -451,10 +504,12 @@ export interface EnrichmentConfig {
   appendAcl?: boolean;
 }
 export const EnrichmentConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "appendAcl": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "EnrichmentConfig" }) as any as S.Schema<EnrichmentConfig>;
+  S.Struct({
+    appendAcl: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "EnrichmentConfig",
+}) as any as S.Schema<EnrichmentConfig>;
 
 /** Eventing Configuration of a connection next: 21 */
 export interface EventingConfig {
@@ -488,25 +543,33 @@ export interface EventingConfig {
   enrichmentEnabled?: boolean;
 }
 export const EventingConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "listenerAuthConfig": S.optional(AuthConfig),
-  "allowedEventTypes": S.optional(StringList),
-  "deadLetterConfig": S.optional(DeadLetterConfig),
-  "authConfig": S.optional(AuthConfig),
-  "globalEventFilter": S.optional(S.String),
-  "privateConnectivityEnabled": S.optional(S.Boolean),
-  "privateConnectivityAllowlistedProjects": S.optional(StringList),
-  "additionalVariables": S.optional(ConfigVariableList),
-  "eventsListenerIngressEndpoint": S.optional(S.String),
-  "sslConfig": S.optional(SslConfig),
-  "proxyDestinationConfig": S.optional(DestinationConfig),
-  "registrationDestinationConfig": S.optional(DestinationConfig),
-  "enrichmentConfig": S.optional(EnrichmentConfig),
-  "enrichmentEnabled": S.optional(S.Boolean),
-}),
+  S.Struct({
+    listenerAuthConfig: S.optional(AuthConfig),
+    allowedEventTypes: S.optional(StringList),
+    deadLetterConfig: S.optional(DeadLetterConfig),
+    authConfig: S.optional(AuthConfig),
+    globalEventFilter: S.optional(S.String),
+    privateConnectivityEnabled: S.optional(S.Boolean),
+    privateConnectivityAllowlistedProjects: S.optional(StringList),
+    additionalVariables: S.optional(ConfigVariableList),
+    eventsListenerIngressEndpoint: S.optional(S.String),
+    sslConfig: S.optional(SslConfig),
+    proxyDestinationConfig: S.optional(DestinationConfig),
+    registrationDestinationConfig: S.optional(DestinationConfig),
+    enrichmentConfig: S.optional(EnrichmentConfig),
+    enrichmentEnabled: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "EventingConfig" }) as any as S.Schema<EventingConfig>;
 
-export type ConnectionStatusStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "ACTIVE" | "INACTIVE" | "DELETING" | "UPDATING" | "ERROR" | "AUTHORIZATION_REQUIRED";
+export type ConnectionStatusStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "CREATING"
+  | "ACTIVE"
+  | "INACTIVE"
+  | "DELETING"
+  | "UPDATING"
+  | "ERROR"
+  | "AUTHORIZATION_REQUIRED";
 export const ConnectionStatusStateEnum = /*@__PURE__*/ S.String;
 
 /** ConnectionStatus indicates the state of the connection. */
@@ -519,12 +582,14 @@ export interface ConnectionStatus {
   description?: string;
 }
 export const ConnectionStatus = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "status": S.optional(S.String),
-  "state": S.optional(ConnectionStatusStateEnum),
-  "description": S.optional(S.String),
-}),
-).annotate({ identifier: "ConnectionStatus" }) as any as S.Schema<ConnectionStatus>;
+  S.Struct({
+    status: S.optional(S.String),
+    state: S.optional(ConnectionStatusStateEnum),
+    description: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConnectionStatus",
+}) as any as S.Schema<ConnectionStatus>;
 
 /** Node configuration for the connection. */
 export interface NodeConfig {
@@ -534,14 +599,17 @@ export interface NodeConfig {
   maxNodeCount?: number;
 }
 export const NodeConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "minNodeCount": S.optional(S.Number),
-  "maxNodeCount": S.optional(S.Number),
-}),
+  S.Struct({
+    minNodeCount: S.optional(S.Number),
+    maxNodeCount: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "NodeConfig" }) as any as S.Schema<NodeConfig>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
 /** StringListValues is a message to store a list of string values. */
 export interface StringListValues {
@@ -549,12 +617,17 @@ export interface StringListValues {
   listValues?: StringList;
 }
 export const StringListValues = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "listValues": S.optional(StringList),
-}),
-).annotate({ identifier: "StringListValues" }) as any as S.Schema<StringListValues>;
+  S.Struct({
+    listValues: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "StringListValues",
+}) as any as S.Schema<StringListValues>;
 
-export type AdminFiltersFilterTypeEnum = "FILTER_TYPE_UNSPECIFIED" | "INCLUSION" | "EXCLUSION";
+export type AdminFiltersFilterTypeEnum =
+  | "FILTER_TYPE_UNSPECIFIED"
+  | "INCLUSION"
+  | "EXCLUSION";
 export const AdminFiltersFilterTypeEnum = /*@__PURE__*/ S.String;
 
 /** * AdminFilters defines a set of filters that can be applied to a connection. These are currently used by Gemini Enterprise connections. */
@@ -571,17 +644,19 @@ export interface AdminFilters {
   filterType?: AdminFiltersFilterTypeEnum;
 }
 export const AdminFilters = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filterKey": S.optional(S.String),
-  "stringValue": S.optional(S.String),
-  "stringListValues": S.optional(StringListValues),
-  "intValue": S.optional(S.String),
-  "filterType": S.optional(AdminFiltersFilterTypeEnum),
-}),
+  S.Struct({
+    filterKey: S.optional(S.String),
+    stringValue: S.optional(S.String),
+    stringListValues: S.optional(StringListValues),
+    intValue: S.optional(S.String),
+    filterType: S.optional(AdminFiltersFilterTypeEnum),
+  }),
 ).annotate({ identifier: "AdminFilters" }) as any as S.Schema<AdminFilters>;
 
 export type AdminFiltersList = ReadonlyArray<AdminFilters>;
-export const AdminFiltersList = /*@__PURE__*/ S.Array(AdminFilters) as any as S.Schema<AdminFiltersList>;
+export const AdminFiltersList = /*@__PURE__*/ S.Array(
+  AdminFilters,
+) as any as S.Schema<AdminFiltersList>;
 
 /** Resource limits defined for connection pods of a given connector type. */
 export interface ResourceLimits {
@@ -591,14 +666,18 @@ export interface ResourceLimits {
   cpu?: string;
 }
 export const ResourceLimits = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "memory": S.optional(S.String),
-  "cpu": S.optional(S.String),
-}),
+  S.Struct({
+    memory: S.optional(S.String),
+    cpu: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ResourceLimits" }) as any as S.Schema<ResourceLimits>;
 
-export type ConnectorVersionInfraConfigDeploymentModelEnum = "DEPLOYMENT_MODEL_UNSPECIFIED" | "GKE_MST" | "CLOUD_RUN_MST";
-export const ConnectorVersionInfraConfigDeploymentModelEnum = /*@__PURE__*/ S.String;
+export type ConnectorVersionInfraConfigDeploymentModelEnum =
+  | "DEPLOYMENT_MODEL_UNSPECIFIED"
+  | "GKE_MST"
+  | "CLOUD_RUN_MST";
+export const ConnectorVersionInfraConfigDeploymentModelEnum =
+  /*@__PURE__*/ S.String;
 
 /** Resource requests defined for connection pods of a given connector type. */
 export interface ResourceRequests {
@@ -608,14 +687,22 @@ export interface ResourceRequests {
   cpu?: string;
 }
 export const ResourceRequests = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "memory": S.optional(S.String),
-  "cpu": S.optional(S.String),
-}),
-).annotate({ identifier: "ResourceRequests" }) as any as S.Schema<ResourceRequests>;
+  S.Struct({
+    memory: S.optional(S.String),
+    cpu: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ResourceRequests",
+}) as any as S.Schema<ResourceRequests>;
 
-export type ConnectorVersionInfraConfigDeploymentModelMigrationStateEnum = "DEPLOYMENT_MODEL_MIGRATION_STATE_UNSPECIFIED" | "IN_PROGRESS" | "COMPLETED" | "ROLLEDBACK" | "ROLLBACK_IN_PROGRESS";
-export const ConnectorVersionInfraConfigDeploymentModelMigrationStateEnum = /*@__PURE__*/ S.String;
+export type ConnectorVersionInfraConfigDeploymentModelMigrationStateEnum =
+  | "DEPLOYMENT_MODEL_MIGRATION_STATE_UNSPECIFIED"
+  | "IN_PROGRESS"
+  | "COMPLETED"
+  | "ROLLEDBACK"
+  | "ROLLBACK_IN_PROGRESS";
+export const ConnectorVersionInfraConfigDeploymentModelMigrationStateEnum =
+  /*@__PURE__*/ S.String;
 
 /** Autoscaling config for connector deployment system metrics. */
 export interface HPAConfig {
@@ -625,14 +712,18 @@ export interface HPAConfig {
   cpuUtilizationThreshold?: string;
 }
 export const HPAConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "memoryUtilizationThreshold": S.optional(S.String),
-  "cpuUtilizationThreshold": S.optional(S.String),
-}),
+  S.Struct({
+    memoryUtilizationThreshold: S.optional(S.String),
+    cpuUtilizationThreshold: S.optional(S.String),
+  }),
 ).annotate({ identifier: "HPAConfig" }) as any as S.Schema<HPAConfig>;
 
-export type ConnectorVersionInfraConfigTlsMigrationStateEnum = "TLS_MIGRATION_STATE_UNSPECIFIED" | "TLS_MIGRATION_NOT_STARTED" | "TLS_MIGRATION_COMPLETED";
-export const ConnectorVersionInfraConfigTlsMigrationStateEnum = /*@__PURE__*/ S.String;
+export type ConnectorVersionInfraConfigTlsMigrationStateEnum =
+  | "TLS_MIGRATION_STATE_UNSPECIFIED"
+  | "TLS_MIGRATION_NOT_STARTED"
+  | "TLS_MIGRATION_COMPLETED";
+export const ConnectorVersionInfraConfigTlsMigrationStateEnum =
+  /*@__PURE__*/ S.String;
 
 /** This configuration provides infra configs like rate limit threshold which need to be configurable for every connector version */
 export interface ConnectorVersionInfraConfig {
@@ -660,22 +751,31 @@ export interface ConnectorVersionInfraConfig {
   tlsMigrationState?: ConnectorVersionInfraConfigTlsMigrationStateEnum;
 }
 export const ConnectorVersionInfraConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceLimits": S.optional(ResourceLimits),
-  "sharedDeployment": S.optional(S.String),
-  "ratelimitThreshold": S.optional(S.String),
-  "connectionRatelimitWindowSeconds": S.optional(S.String),
-  "deploymentModel": S.optional(ConnectorVersionInfraConfigDeploymentModelEnum),
-  "resourceRequests": S.optional(ResourceRequests),
-  "deploymentModelMigrationState": S.optional(ConnectorVersionInfraConfigDeploymentModelMigrationStateEnum),
-  "hpaConfig": S.optional(HPAConfig),
-  "maxInstanceRequestConcurrency": S.optional(S.Number),
-  "internalclientRatelimitThreshold": S.optional(S.String),
-  "tlsMigrationState": S.optional(ConnectorVersionInfraConfigTlsMigrationStateEnum),
-}),
-).annotate({ identifier: "ConnectorVersionInfraConfig" }) as any as S.Schema<ConnectorVersionInfraConfig>;
+  S.Struct({
+    resourceLimits: S.optional(ResourceLimits),
+    sharedDeployment: S.optional(S.String),
+    ratelimitThreshold: S.optional(S.String),
+    connectionRatelimitWindowSeconds: S.optional(S.String),
+    deploymentModel: S.optional(ConnectorVersionInfraConfigDeploymentModelEnum),
+    resourceRequests: S.optional(ResourceRequests),
+    deploymentModelMigrationState: S.optional(
+      ConnectorVersionInfraConfigDeploymentModelMigrationStateEnum,
+    ),
+    hpaConfig: S.optional(HPAConfig),
+    maxInstanceRequestConcurrency: S.optional(S.Number),
+    internalclientRatelimitThreshold: S.optional(S.String),
+    tlsMigrationState: S.optional(
+      ConnectorVersionInfraConfigTlsMigrationStateEnum,
+    ),
+  }),
+).annotate({
+  identifier: "ConnectorVersionInfraConfig",
+}) as any as S.Schema<ConnectorVersionInfraConfig>;
 
-export type BillingConfigBillingCategoryEnum = "BILLING_CATEGORY_UNSPECIFIED" | "GCP_AND_TECHNICAL_CONNECTOR" | "NON_GCP_CONNECTOR";
+export type BillingConfigBillingCategoryEnum =
+  | "BILLING_CATEGORY_UNSPECIFIED"
+  | "GCP_AND_TECHNICAL_CONNECTOR"
+  | "NON_GCP_CONNECTOR";
 export const BillingConfigBillingCategoryEnum = /*@__PURE__*/ S.String;
 
 /** Billing config for the connection. */
@@ -684,15 +784,22 @@ export interface BillingConfig {
   billingCategory?: BillingConfigBillingCategoryEnum;
 }
 export const BillingConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "billingCategory": S.optional(BillingConfigBillingCategoryEnum),
-}),
+  S.Struct({
+    billingCategory: S.optional(BillingConfigBillingCategoryEnum),
+  }),
 ).annotate({ identifier: "BillingConfig" }) as any as S.Schema<BillingConfig>;
 
-export type ConnectionEventingEnablementTypeEnum = "EVENTING_ENABLEMENT_TYPE_UNSPECIFIED" | "EVENTING_AND_CONNECTION" | "ONLY_EVENTING";
+export type ConnectionEventingEnablementTypeEnum =
+  | "EVENTING_ENABLEMENT_TYPE_UNSPECIFIED"
+  | "EVENTING_AND_CONNECTION"
+  | "ONLY_EVENTING";
 export const ConnectionEventingEnablementTypeEnum = /*@__PURE__*/ S.String;
 
-export type EventingStatusStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "ERROR" | "INGRESS_ENDPOINT_REQUIRED";
+export type EventingStatusStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "ERROR"
+  | "INGRESS_ENDPOINT_REQUIRED";
 export const EventingStatusStateEnum = /*@__PURE__*/ S.String;
 
 /** EventingStatus indicates the state of eventing. */
@@ -703,10 +810,10 @@ export interface EventingStatus {
   description?: string;
 }
 export const EventingStatus = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "state": S.optional(EventingStatusStateEnum),
-  "description": S.optional(S.String),
-}),
+  S.Struct({
+    state: S.optional(EventingStatusStateEnum),
+    description: S.optional(S.String),
+  }),
 ).annotate({ identifier: "EventingStatus" }) as any as S.Schema<EventingStatus>;
 
 /** WebhookData has details of webhook configuration. */
@@ -729,20 +836,22 @@ export interface WebhookData {
   nextRefreshTime?: string;
 }
 export const WebhookData = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.optional(S.String),
-  "additionalVariables": S.optional(ConfigVariableList),
-  "eventSubscriptions": S.optional(StringList),
-  "createTime": S.optional(S.String),
-  "name": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "eventTypes": S.optional(StringList),
-  "nextRefreshTime": S.optional(S.String),
-}),
+  S.Struct({
+    id: S.optional(S.String),
+    additionalVariables: S.optional(ConfigVariableList),
+    eventSubscriptions: S.optional(StringList),
+    createTime: S.optional(S.String),
+    name: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    eventTypes: S.optional(StringList),
+    nextRefreshTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "WebhookData" }) as any as S.Schema<WebhookData>;
 
 export type WebhookDataList = ReadonlyArray<WebhookData>;
-export const WebhookDataList = /*@__PURE__*/ S.Array(WebhookData) as any as S.Schema<WebhookDataList>;
+export const WebhookDataList = /*@__PURE__*/ S.Array(
+  WebhookData,
+) as any as S.Schema<WebhookDataList>;
 
 /** WebhookSubscriptions has details of webhook subscriptions. */
 export interface WebhookSubscriptions {
@@ -750,10 +859,12 @@ export interface WebhookSubscriptions {
   webhookData?: WebhookDataList;
 }
 export const WebhookSubscriptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "webhookData": S.optional(WebhookDataList),
-}),
-).annotate({ identifier: "WebhookSubscriptions" }) as any as S.Schema<WebhookSubscriptions>;
+  S.Struct({
+    webhookData: S.optional(WebhookDataList),
+  }),
+).annotate({
+  identifier: "WebhookSubscriptions",
+}) as any as S.Schema<WebhookSubscriptions>;
 
 /** Eventing runtime data has the details related to eventing managed by the system. */
 export interface EventingRuntimeData {
@@ -769,16 +880,24 @@ export interface EventingRuntimeData {
   eventsListenerEndpoint?: string;
 }
 export const EventingRuntimeData = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "status": S.optional(EventingStatus),
-  "eventsListenerPscSa": S.optional(S.String),
-  "webhookData": S.optional(WebhookData),
-  "webhookSubscriptions": S.optional(WebhookSubscriptions),
-  "eventsListenerEndpoint": S.optional(S.String),
-}),
-).annotate({ identifier: "EventingRuntimeData" }) as any as S.Schema<EventingRuntimeData>;
+  S.Struct({
+    status: S.optional(EventingStatus),
+    eventsListenerPscSa: S.optional(S.String),
+    webhookData: S.optional(WebhookData),
+    webhookSubscriptions: S.optional(WebhookSubscriptions),
+    eventsListenerEndpoint: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EventingRuntimeData",
+}) as any as S.Schema<EventingRuntimeData>;
 
-export type ConnectionConnectorVersionLaunchStageEnum = "LAUNCH_STAGE_UNSPECIFIED" | "PREVIEW" | "GA" | "DEPRECATED" | "TEST" | "PRIVATE_PREVIEW";
+export type ConnectionConnectorVersionLaunchStageEnum =
+  | "LAUNCH_STAGE_UNSPECIFIED"
+  | "PREVIEW"
+  | "GA"
+  | "DEPRECATED"
+  | "TEST"
+  | "PRIVATE_PREVIEW";
 export const ConnectionConnectorVersionLaunchStageEnum = /*@__PURE__*/ S.String;
 
 /** * TrafficShapingConfig defines the configuration for shaping API traffic by specifying a quota limit and the duration over which this limit is enforced. This configuration helps to control and manage the rate at which API calls are made on the client side, preventing service overload on the backend. For example: - if the quota limit is 100 calls per 10 seconds, then the message would be: { quota_limit: 100 duration: { seconds: 10 } } - if the quota limit is 100 calls per 5 minutes, then the message would be: { quota_limit: 100 duration: { seconds: 300 } } - if the quota limit is 10000 calls per day, then the message would be: { quota_limit: 10000 duration: { seconds: 86400 } and so on. */
@@ -789,14 +908,18 @@ export interface TrafficShapingConfig {
   duration?: string;
 }
 export const TrafficShapingConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "quotaLimit": S.optional(S.String),
-  "duration": S.optional(S.String),
-}),
-).annotate({ identifier: "TrafficShapingConfig" }) as any as S.Schema<TrafficShapingConfig>;
+  S.Struct({
+    quotaLimit: S.optional(S.String),
+    duration: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "TrafficShapingConfig",
+}) as any as S.Schema<TrafficShapingConfig>;
 
 export type TrafficShapingConfigList = ReadonlyArray<TrafficShapingConfig>;
-export const TrafficShapingConfigList = /*@__PURE__*/ S.Array(TrafficShapingConfig) as any as S.Schema<TrafficShapingConfigList>;
+export const TrafficShapingConfigList = /*@__PURE__*/ S.Array(
+  TrafficShapingConfig,
+) as any as S.Schema<TrafficShapingConfigList>;
 
 /** Connection represents an instance of connector. */
 export interface Connection {
@@ -874,44 +997,46 @@ export interface Connection {
   imageLocation?: string;
 }
 export const Connection = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "connectionRevision": S.optional(S.String),
-  "serviceDirectory": S.optional(S.String),
-  "euaOauthAuthConfig": S.optional(AuthConfig),
-  "authConfig": S.optional(AuthConfig),
-  "fallbackOnAdminCredentials": S.optional(S.Boolean),
-  "asyncOperationsEnabled": S.optional(S.Boolean),
-  "lockConfig": S.optional(LockConfig),
-  "host": S.optional(S.String),
-  "destinationConfigs": S.optional(DestinationConfigList),
-  "logConfig": S.optional(ConnectorsLogConfig),
-  "subscriptionType": S.optional(ConnectionSubscriptionTypeEnum),
-  "envoyImageLocation": S.optional(S.String),
-  "eventingConfig": S.optional(EventingConfig),
-  "status": S.optional(ConnectionStatus),
-  "nodeConfig": S.optional(NodeConfig),
-  "labels": S.optional(StringMap),
-  "configVariables": S.optional(ConfigVariableList),
-  "adminFilters": S.optional(AdminFiltersList),
-  "sslConfig": S.optional(SslConfig),
-  "connectorVersionInfraConfig": S.optional(ConnectorVersionInfraConfig),
-  "isTrustedTester": S.optional(S.Boolean),
-  "createTime": S.optional(S.String),
-  "billingConfig": S.optional(BillingConfig),
-  "eventingEnablementType": S.optional(ConnectionEventingEnablementTypeEnum),
-  "name": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "serviceAccount": S.optional(S.String),
-  "eventingRuntimeData": S.optional(EventingRuntimeData),
-  "tlsServiceDirectory": S.optional(S.String),
-  "authOverrideEnabled": S.optional(S.Boolean),
-  "connectorVersionLaunchStage": S.optional(ConnectionConnectorVersionLaunchStageEnum),
-  "connectorVersion": S.optional(S.String),
-  "description": S.optional(S.String),
-  "suspended": S.optional(S.Boolean),
-  "trafficShapingConfigs": S.optional(TrafficShapingConfigList),
-  "imageLocation": S.optional(S.String),
-}),
+  S.Struct({
+    connectionRevision: S.optional(S.String),
+    serviceDirectory: S.optional(S.String),
+    euaOauthAuthConfig: S.optional(AuthConfig),
+    authConfig: S.optional(AuthConfig),
+    fallbackOnAdminCredentials: S.optional(S.Boolean),
+    asyncOperationsEnabled: S.optional(S.Boolean),
+    lockConfig: S.optional(LockConfig),
+    host: S.optional(S.String),
+    destinationConfigs: S.optional(DestinationConfigList),
+    logConfig: S.optional(ConnectorsLogConfig),
+    subscriptionType: S.optional(ConnectionSubscriptionTypeEnum),
+    envoyImageLocation: S.optional(S.String),
+    eventingConfig: S.optional(EventingConfig),
+    status: S.optional(ConnectionStatus),
+    nodeConfig: S.optional(NodeConfig),
+    labels: S.optional(StringMap),
+    configVariables: S.optional(ConfigVariableList),
+    adminFilters: S.optional(AdminFiltersList),
+    sslConfig: S.optional(SslConfig),
+    connectorVersionInfraConfig: S.optional(ConnectorVersionInfraConfig),
+    isTrustedTester: S.optional(S.Boolean),
+    createTime: S.optional(S.String),
+    billingConfig: S.optional(BillingConfig),
+    eventingEnablementType: S.optional(ConnectionEventingEnablementTypeEnum),
+    name: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    serviceAccount: S.optional(S.String),
+    eventingRuntimeData: S.optional(EventingRuntimeData),
+    tlsServiceDirectory: S.optional(S.String),
+    authOverrideEnabled: S.optional(S.Boolean),
+    connectorVersionLaunchStage: S.optional(
+      ConnectionConnectorVersionLaunchStageEnum,
+    ),
+    connectorVersion: S.optional(S.String),
+    description: S.optional(S.String),
+    suspended: S.optional(S.Boolean),
+    trafficShapingConfigs: S.optional(TrafficShapingConfigList),
+    imageLocation: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Connection" }) as any as S.Schema<Connection>;
 
 export interface CreateProjectsLocationsConnectionsRequest {
@@ -922,19 +1047,33 @@ export interface CreateProjectsLocationsConnectionsRequest {
   /** Request body */
   body?: Connection;
 }
-export const CreateProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "connectionId": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(Connection.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/connections","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsConnectionsRequest" }) as any as S.Schema<CreateProjectsLocationsConnectionsRequest>;
+export const CreateProjectsLocationsConnectionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      connectionId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(Connection.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/connections",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsConnectionsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsConnectionsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -946,11 +1085,11 @@ export interface Status {
   message?: string;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "details": S.optional(DocumentMapList),
-  "code": S.optional(S.Number),
-  "message": S.optional(S.String),
-}),
+  S.Struct({
+    details: S.optional(DocumentMapList),
+    code: S.optional(S.Number),
+    message: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -967,17 +1106,21 @@ export interface Operation {
   done?: boolean;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "error": S.optional(Status),
-  "response": S.optional(DocumentMap),
-  "name": S.optional(S.String),
-  "metadata": S.optional(DocumentMap),
-  "done": S.optional(S.Boolean),
-}),
+  S.Struct({
+    error: S.optional(Status),
+    response: S.optional(DocumentMap),
+    name: S.optional(S.String),
+    metadata: S.optional(DocumentMap),
+    done: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
-export type EndUserAuthenticationEndUserAuthenticationStatusStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "ERROR";
-export const EndUserAuthenticationEndUserAuthenticationStatusStateEnum = /*@__PURE__*/ S.String;
+export type EndUserAuthenticationEndUserAuthenticationStatusStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "ERROR";
+export const EndUserAuthenticationEndUserAuthenticationStatusStateEnum =
+  /*@__PURE__*/ S.String;
 
 /** EndUserAuthentication Status denotes the status of the EndUserAuthentication resource. */
 export interface EndUserAuthenticationEndUserAuthenticationStatus {
@@ -986,12 +1129,17 @@ export interface EndUserAuthenticationEndUserAuthenticationStatus {
   /** Output only. Description of the state. */
   description?: string;
 }
-export const EndUserAuthenticationEndUserAuthenticationStatus = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "state": S.optional(EndUserAuthenticationEndUserAuthenticationStatusStateEnum),
-  "description": S.optional(S.String),
-}),
-).annotate({ identifier: "EndUserAuthenticationEndUserAuthenticationStatus" }) as any as S.Schema<EndUserAuthenticationEndUserAuthenticationStatus>;
+export const EndUserAuthenticationEndUserAuthenticationStatus =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      state: S.optional(
+        EndUserAuthenticationEndUserAuthenticationStatusStateEnum,
+      ),
+      description: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "EndUserAuthenticationEndUserAuthenticationStatus",
+  }) as any as S.Schema<EndUserAuthenticationEndUserAuthenticationStatus>;
 
 /** Header details for a given header to be added to Endpoint. */
 export interface EndUserAuthenticationNotifyEndpointDestinationEndPointHeader {
@@ -1000,15 +1148,22 @@ export interface EndUserAuthenticationNotifyEndpointDestinationEndPointHeader {
   /** Required. Value of Header. */
   value?: string;
 }
-export const EndUserAuthenticationNotifyEndpointDestinationEndPointHeader = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "key": S.optional(S.String),
-  "value": S.optional(S.String),
-}),
-).annotate({ identifier: "EndUserAuthenticationNotifyEndpointDestinationEndPointHeader" }) as any as S.Schema<EndUserAuthenticationNotifyEndpointDestinationEndPointHeader>;
+export const EndUserAuthenticationNotifyEndpointDestinationEndPointHeader =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      key: S.optional(S.String),
+      value: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "EndUserAuthenticationNotifyEndpointDestinationEndPointHeader",
+  }) as any as S.Schema<EndUserAuthenticationNotifyEndpointDestinationEndPointHeader>;
 
-export type EndUserAuthenticationNotifyEndpointDestinationEndPointHeaderList = ReadonlyArray<EndUserAuthenticationNotifyEndpointDestinationEndPointHeader>;
-export const EndUserAuthenticationNotifyEndpointDestinationEndPointHeaderList = /*@__PURE__*/ S.Array(EndUserAuthenticationNotifyEndpointDestinationEndPointHeader) as any as S.Schema<EndUserAuthenticationNotifyEndpointDestinationEndPointHeaderList>;
+export type EndUserAuthenticationNotifyEndpointDestinationEndPointHeaderList =
+  ReadonlyArray<EndUserAuthenticationNotifyEndpointDestinationEndPointHeader>;
+export const EndUserAuthenticationNotifyEndpointDestinationEndPointHeaderList =
+  /*@__PURE__*/ S.Array(
+    EndUserAuthenticationNotifyEndpointDestinationEndPointHeader,
+  ) as any as S.Schema<EndUserAuthenticationNotifyEndpointDestinationEndPointHeaderList>;
 
 /** Endpoint message includes details of the Destination endpoint. */
 export interface EndUserAuthenticationNotifyEndpointDestinationEndPoint {
@@ -1017,15 +1172,23 @@ export interface EndUserAuthenticationNotifyEndpointDestinationEndPoint {
   /** Optional. List of Header to be added to the Endpoint. */
   headers?: EndUserAuthenticationNotifyEndpointDestinationEndPointHeaderList;
 }
-export const EndUserAuthenticationNotifyEndpointDestinationEndPoint = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "endpointUri": S.optional(S.String),
-  "headers": S.optional(EndUserAuthenticationNotifyEndpointDestinationEndPointHeaderList),
-}),
-).annotate({ identifier: "EndUserAuthenticationNotifyEndpointDestinationEndPoint" }) as any as S.Schema<EndUserAuthenticationNotifyEndpointDestinationEndPoint>;
+export const EndUserAuthenticationNotifyEndpointDestinationEndPoint =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      endpointUri: S.optional(S.String),
+      headers: S.optional(
+        EndUserAuthenticationNotifyEndpointDestinationEndPointHeaderList,
+      ),
+    }),
+  ).annotate({
+    identifier: "EndUserAuthenticationNotifyEndpointDestinationEndPoint",
+  }) as any as S.Schema<EndUserAuthenticationNotifyEndpointDestinationEndPoint>;
 
-export type EndUserAuthenticationNotifyEndpointDestinationTypeEnum = "TYPE_UNSPECIFIED" | "ENDPOINT";
-export const EndUserAuthenticationNotifyEndpointDestinationTypeEnum = /*@__PURE__*/ S.String;
+export type EndUserAuthenticationNotifyEndpointDestinationTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "ENDPOINT";
+export const EndUserAuthenticationNotifyEndpointDestinationTypeEnum =
+  /*@__PURE__*/ S.String;
 
 /** Message for NotifyEndpointDestination Destination to hit when the refresh token is expired. */
 export interface EndUserAuthenticationNotifyEndpointDestination {
@@ -1036,13 +1199,18 @@ export interface EndUserAuthenticationNotifyEndpointDestination {
   /** Required. Service account needed for runtime plane to notify the backend. */
   serviceAccount?: string;
 }
-export const EndUserAuthenticationNotifyEndpointDestination = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "endpoint": S.optional(EndUserAuthenticationNotifyEndpointDestinationEndPoint),
-  "type": S.optional(EndUserAuthenticationNotifyEndpointDestinationTypeEnum),
-  "serviceAccount": S.optional(S.String),
-}),
-).annotate({ identifier: "EndUserAuthenticationNotifyEndpointDestination" }) as any as S.Schema<EndUserAuthenticationNotifyEndpointDestination>;
+export const EndUserAuthenticationNotifyEndpointDestination =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      endpoint: S.optional(
+        EndUserAuthenticationNotifyEndpointDestinationEndPoint,
+      ),
+      type: S.optional(EndUserAuthenticationNotifyEndpointDestinationTypeEnum),
+      serviceAccount: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "EndUserAuthenticationNotifyEndpointDestination",
+  }) as any as S.Schema<EndUserAuthenticationNotifyEndpointDestination>;
 
 /** EUASecret provides a reference to entries in Secret Manager. */
 export interface EUASecret {
@@ -1052,10 +1220,10 @@ export interface EUASecret {
   secretValue?: string;
 }
 export const EUASecret = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "secretVersion": S.optional(S.String),
-  "secretValue": S.optional(S.String),
-}),
+  S.Struct({
+    secretVersion: S.optional(S.String),
+    secretValue: S.optional(S.String),
+  }),
 ).annotate({ identifier: "EUASecret" }) as any as S.Schema<EUASecret>;
 
 /** Parameters to support Oauth 2.0 Client Credentials Grant Authentication. See https://tools.ietf.org/html/rfc6749#section-1.3.4 for more details. */
@@ -1065,14 +1233,25 @@ export interface EndUserAuthenticationConfigOauth2ClientCredentials {
   /** Required. string value or secret version containing the client secret. */
   clientSecret?: EUASecret;
 }
-export const EndUserAuthenticationConfigOauth2ClientCredentials = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "clientId": S.optional(S.String),
-  "clientSecret": S.optional(EUASecret),
-}),
-).annotate({ identifier: "EndUserAuthenticationConfigOauth2ClientCredentials" }) as any as S.Schema<EndUserAuthenticationConfigOauth2ClientCredentials>;
+export const EndUserAuthenticationConfigOauth2ClientCredentials =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      clientId: S.optional(S.String),
+      clientSecret: S.optional(EUASecret),
+    }),
+  ).annotate({
+    identifier: "EndUserAuthenticationConfigOauth2ClientCredentials",
+  }) as any as S.Schema<EndUserAuthenticationConfigOauth2ClientCredentials>;
 
-export type EndUserAuthenticationConfigAuthTypeEnum = "AUTH_TYPE_UNSPECIFIED" | "USER_PASSWORD" | "OAUTH2_JWT_BEARER" | "OAUTH2_CLIENT_CREDENTIALS" | "SSH_PUBLIC_KEY" | "OAUTH2_AUTH_CODE_FLOW" | "GOOGLE_AUTHENTICATION" | "OAUTH2_AUTH_CODE_FLOW_GOOGLE_MANAGED";
+export type EndUserAuthenticationConfigAuthTypeEnum =
+  | "AUTH_TYPE_UNSPECIFIED"
+  | "USER_PASSWORD"
+  | "OAUTH2_JWT_BEARER"
+  | "OAUTH2_CLIENT_CREDENTIALS"
+  | "SSH_PUBLIC_KEY"
+  | "OAUTH2_AUTH_CODE_FLOW"
+  | "GOOGLE_AUTHENTICATION"
+  | "OAUTH2_AUTH_CODE_FLOW_GOOGLE_MANAGED";
 export const EndUserAuthenticationConfigAuthTypeEnum = /*@__PURE__*/ S.String;
 
 /** JWT claims used for the jwt-bearer authorization grant. */
@@ -1084,13 +1263,16 @@ export interface EndUserAuthenticationConfigOauth2JwtBearerJwtClaims {
   /** Value for the "iss" claim. */
   issuer?: string;
 }
-export const EndUserAuthenticationConfigOauth2JwtBearerJwtClaims = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "subject": S.optional(S.String),
-  "audience": S.optional(S.String),
-  "issuer": S.optional(S.String),
-}),
-).annotate({ identifier: "EndUserAuthenticationConfigOauth2JwtBearerJwtClaims" }) as any as S.Schema<EndUserAuthenticationConfigOauth2JwtBearerJwtClaims>;
+export const EndUserAuthenticationConfigOauth2JwtBearerJwtClaims =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subject: S.optional(S.String),
+      audience: S.optional(S.String),
+      issuer: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "EndUserAuthenticationConfigOauth2JwtBearerJwtClaims",
+  }) as any as S.Schema<EndUserAuthenticationConfigOauth2JwtBearerJwtClaims>;
 
 /** Parameters to support JSON Web Token (JWT) Profile for Oauth 2.0 Authorization Grant based authentication. See https://tools.ietf.org/html/rfc7523 for more details. */
 export interface EndUserAuthenticationConfigOauth2JwtBearer {
@@ -1099,12 +1281,17 @@ export interface EndUserAuthenticationConfigOauth2JwtBearer {
   /** JwtClaims providers fields to generate the token. */
   jwtClaims?: EndUserAuthenticationConfigOauth2JwtBearerJwtClaims;
 }
-export const EndUserAuthenticationConfigOauth2JwtBearer = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "clientKey": S.optional(EUASecret),
-  "jwtClaims": S.optional(EndUserAuthenticationConfigOauth2JwtBearerJwtClaims),
-}),
-).annotate({ identifier: "EndUserAuthenticationConfigOauth2JwtBearer" }) as any as S.Schema<EndUserAuthenticationConfigOauth2JwtBearer>;
+export const EndUserAuthenticationConfigOauth2JwtBearer =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      clientKey: S.optional(EUASecret),
+      jwtClaims: S.optional(
+        EndUserAuthenticationConfigOauth2JwtBearerJwtClaims,
+      ),
+    }),
+  ).annotate({
+    identifier: "EndUserAuthenticationConfigOauth2JwtBearer",
+  }) as any as S.Schema<EndUserAuthenticationConfigOauth2JwtBearer>;
 
 /** EndUserAuthenticationConfigVariable represents a configuration variable present in a EndUserAuthentication. */
 export interface EndUserAuthenticationConfigVariable {
@@ -1120,17 +1307,22 @@ export interface EndUserAuthenticationConfigVariable {
   secretValue?: EUASecret;
 }
 export const EndUserAuthenticationConfigVariable = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "intValue": S.optional(S.String),
-  "boolValue": S.optional(S.Boolean),
-  "key": S.optional(S.String),
-  "stringValue": S.optional(S.String),
-  "secretValue": S.optional(EUASecret),
-}),
-).annotate({ identifier: "EndUserAuthenticationConfigVariable" }) as any as S.Schema<EndUserAuthenticationConfigVariable>;
+  S.Struct({
+    intValue: S.optional(S.String),
+    boolValue: S.optional(S.Boolean),
+    key: S.optional(S.String),
+    stringValue: S.optional(S.String),
+    secretValue: S.optional(EUASecret),
+  }),
+).annotate({
+  identifier: "EndUserAuthenticationConfigVariable",
+}) as any as S.Schema<EndUserAuthenticationConfigVariable>;
 
-export type EndUserAuthenticationConfigVariableList = ReadonlyArray<EndUserAuthenticationConfigVariable>;
-export const EndUserAuthenticationConfigVariableList = /*@__PURE__*/ S.Array(EndUserAuthenticationConfigVariable) as any as S.Schema<EndUserAuthenticationConfigVariableList>;
+export type EndUserAuthenticationConfigVariableList =
+  ReadonlyArray<EndUserAuthenticationConfigVariable>;
+export const EndUserAuthenticationConfigVariableList = /*@__PURE__*/ S.Array(
+  EndUserAuthenticationConfigVariable,
+) as any as S.Schema<EndUserAuthenticationConfigVariableList>;
 
 /** pass only at create and not update using updateMask Auth Code Data */
 export interface OAuthTokenData {
@@ -1144,12 +1336,12 @@ export interface OAuthTokenData {
   createTime?: string;
 }
 export const OAuthTokenData = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "expiry": S.optional(S.String),
-  "refreshToken": S.optional(EUASecret),
-  "accessToken": S.optional(EUASecret),
-  "createTime": S.optional(S.String),
-}),
+  S.Struct({
+    expiry: S.optional(S.String),
+    refreshToken: S.optional(EUASecret),
+    accessToken: S.optional(EUASecret),
+    createTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "OAuthTokenData" }) as any as S.Schema<OAuthTokenData>;
 
 /** Parameters to support Oauth 2.0 Auth Code Grant Authentication using Google Provided OAuth Client. See https://tools.ietf.org/html/rfc6749#section-1.3.1 for more details. */
@@ -1163,14 +1355,17 @@ export interface EndUserAuthenticationConfigOauth2AuthCodeFlowGoogleManaged {
   /** Optional. Redirect URI to be provided during the auth code exchange. */
   redirectUri?: string;
 }
-export const EndUserAuthenticationConfigOauth2AuthCodeFlowGoogleManaged = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "authCode": S.optional(S.String),
-  "oauthTokenData": S.optional(OAuthTokenData),
-  "scopes": S.optional(StringList),
-  "redirectUri": S.optional(S.String),
-}),
-).annotate({ identifier: "EndUserAuthenticationConfigOauth2AuthCodeFlowGoogleManaged" }) as any as S.Schema<EndUserAuthenticationConfigOauth2AuthCodeFlowGoogleManaged>;
+export const EndUserAuthenticationConfigOauth2AuthCodeFlowGoogleManaged =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      authCode: S.optional(S.String),
+      oauthTokenData: S.optional(OAuthTokenData),
+      scopes: S.optional(StringList),
+      redirectUri: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "EndUserAuthenticationConfigOauth2AuthCodeFlowGoogleManaged",
+  }) as any as S.Schema<EndUserAuthenticationConfigOauth2AuthCodeFlowGoogleManaged>;
 
 /** Parameters to support Oauth 2.0 Auth Code Grant Authentication. See https://www.rfc-editor.org/rfc/rfc6749#section-1.3.1 for more details. */
 export interface EndUserAuthenticationConfigOauth2AuthCodeFlow {
@@ -1193,19 +1388,22 @@ export interface EndUserAuthenticationConfigOauth2AuthCodeFlow {
   /** Optional. Auth Code Data */
   oauthTokenData?: OAuthTokenData;
 }
-export const EndUserAuthenticationConfigOauth2AuthCodeFlow = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pkceVerifier": S.optional(S.String),
-  "clientId": S.optional(S.String),
-  "clientSecret": S.optional(EUASecret),
-  "scopes": S.optional(StringList),
-  "authUri": S.optional(S.String),
-  "authCode": S.optional(S.String),
-  "redirectUri": S.optional(S.String),
-  "enablePkce": S.optional(S.Boolean),
-  "oauthTokenData": S.optional(OAuthTokenData),
-}),
-).annotate({ identifier: "EndUserAuthenticationConfigOauth2AuthCodeFlow" }) as any as S.Schema<EndUserAuthenticationConfigOauth2AuthCodeFlow>;
+export const EndUserAuthenticationConfigOauth2AuthCodeFlow =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pkceVerifier: S.optional(S.String),
+      clientId: S.optional(S.String),
+      clientSecret: S.optional(EUASecret),
+      scopes: S.optional(StringList),
+      authUri: S.optional(S.String),
+      authCode: S.optional(S.String),
+      redirectUri: S.optional(S.String),
+      enablePkce: S.optional(S.Boolean),
+      oauthTokenData: S.optional(OAuthTokenData),
+    }),
+  ).annotate({
+    identifier: "EndUserAuthenticationConfigOauth2AuthCodeFlow",
+  }) as any as S.Schema<EndUserAuthenticationConfigOauth2AuthCodeFlow>;
 
 /** Parameters to support Username and Password Authentication. */
 export interface EndUserAuthenticationConfigUserPassword {
@@ -1214,12 +1412,15 @@ export interface EndUserAuthenticationConfigUserPassword {
   /** Username. */
   username?: string;
 }
-export const EndUserAuthenticationConfigUserPassword = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "password": S.optional(EUASecret),
-  "username": S.optional(S.String),
-}),
-).annotate({ identifier: "EndUserAuthenticationConfigUserPassword" }) as any as S.Schema<EndUserAuthenticationConfigUserPassword>;
+export const EndUserAuthenticationConfigUserPassword = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      password: S.optional(EUASecret),
+      username: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "EndUserAuthenticationConfigUserPassword",
+}) as any as S.Schema<EndUserAuthenticationConfigUserPassword>;
 
 /** Parameters to support Ssh public key Authentication. */
 export interface EndUserAuthenticationConfigSshPublicKey {
@@ -1232,14 +1433,17 @@ export interface EndUserAuthenticationConfigSshPublicKey {
   /** Format of SSH Client cert. */
   certType?: string;
 }
-export const EndUserAuthenticationConfigSshPublicKey = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "username": S.optional(S.String),
-  "sshClientCert": S.optional(EUASecret),
-  "sshClientCertPass": S.optional(EUASecret),
-  "certType": S.optional(S.String),
-}),
-).annotate({ identifier: "EndUserAuthenticationConfigSshPublicKey" }) as any as S.Schema<EndUserAuthenticationConfigSshPublicKey>;
+export const EndUserAuthenticationConfigSshPublicKey = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      username: S.optional(S.String),
+      sshClientCert: S.optional(EUASecret),
+      sshClientCertPass: S.optional(EUASecret),
+      certType: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "EndUserAuthenticationConfigSshPublicKey",
+}) as any as S.Schema<EndUserAuthenticationConfigSshPublicKey>;
 
 /** EndUserAuthenticationConfig defines details of a authentication configuration for EUC */
 export interface EndUserAuthenticationConfig {
@@ -1263,24 +1467,38 @@ export interface EndUserAuthenticationConfig {
   sshPublicKey?: EndUserAuthenticationConfigSshPublicKey;
 }
 export const EndUserAuthenticationConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "oauth2ClientCredentials": S.optional(EndUserAuthenticationConfigOauth2ClientCredentials),
-  "authType": S.optional(EndUserAuthenticationConfigAuthTypeEnum),
-  "authKey": S.optional(S.String),
-  "oauth2JwtBearer": S.optional(EndUserAuthenticationConfigOauth2JwtBearer),
-  "additionalVariables": S.optional(EndUserAuthenticationConfigVariableList),
-  "oauth2AuthCodeFlowGoogleManaged": S.optional(EndUserAuthenticationConfigOauth2AuthCodeFlowGoogleManaged),
-  "oauth2AuthCodeFlow": S.optional(EndUserAuthenticationConfigOauth2AuthCodeFlow),
-  "userPassword": S.optional(EndUserAuthenticationConfigUserPassword),
-  "sshPublicKey": S.optional(EndUserAuthenticationConfigSshPublicKey),
-}),
-).annotate({ identifier: "EndUserAuthenticationConfig" }) as any as S.Schema<EndUserAuthenticationConfig>;
+  S.Struct({
+    oauth2ClientCredentials: S.optional(
+      EndUserAuthenticationConfigOauth2ClientCredentials,
+    ),
+    authType: S.optional(EndUserAuthenticationConfigAuthTypeEnum),
+    authKey: S.optional(S.String),
+    oauth2JwtBearer: S.optional(EndUserAuthenticationConfigOauth2JwtBearer),
+    additionalVariables: S.optional(EndUserAuthenticationConfigVariableList),
+    oauth2AuthCodeFlowGoogleManaged: S.optional(
+      EndUserAuthenticationConfigOauth2AuthCodeFlowGoogleManaged,
+    ),
+    oauth2AuthCodeFlow: S.optional(
+      EndUserAuthenticationConfigOauth2AuthCodeFlow,
+    ),
+    userPassword: S.optional(EndUserAuthenticationConfigUserPassword),
+    sshPublicKey: S.optional(EndUserAuthenticationConfigSshPublicKey),
+  }),
+).annotate({
+  identifier: "EndUserAuthenticationConfig",
+}) as any as S.Schema<EndUserAuthenticationConfig>;
 
-export type EndUserAuthenticationRolesItemEnum = "ROLE_UNSPECIFIED" | "READER" | "READER_DOMAIN_WIDE_ACCESSIBLE";
+export type EndUserAuthenticationRolesItemEnum =
+  | "ROLE_UNSPECIFIED"
+  | "READER"
+  | "READER_DOMAIN_WIDE_ACCESSIBLE";
 export const EndUserAuthenticationRolesItemEnum = /*@__PURE__*/ S.String;
 
-export type EndUserAuthenticationRolesItemEnumList = ReadonlyArray<EndUserAuthenticationRolesItemEnum>;
-export const EndUserAuthenticationRolesItemEnumList = /*@__PURE__*/ S.Array(EndUserAuthenticationRolesItemEnum) as any as S.Schema<EndUserAuthenticationRolesItemEnumList>;
+export type EndUserAuthenticationRolesItemEnumList =
+  ReadonlyArray<EndUserAuthenticationRolesItemEnum>;
+export const EndUserAuthenticationRolesItemEnumList = /*@__PURE__*/ S.Array(
+  EndUserAuthenticationRolesItemEnum,
+) as any as S.Schema<EndUserAuthenticationRolesItemEnumList>;
 
 /** AuthConfig defines details of a authentication type. */
 export interface EndUserAuthentication {
@@ -1308,20 +1526,24 @@ export interface EndUserAuthentication {
   roles?: EndUserAuthenticationRolesItemEnumList;
 }
 export const EndUserAuthentication = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "status": S.optional(EndUserAuthenticationEndUserAuthenticationStatus),
-  "notifyEndpointDestination": S.optional(EndUserAuthenticationNotifyEndpointDestination),
-  "labels": S.optional(StringList),
-  "createTime": S.optional(S.String),
-  "userId": S.optional(S.String),
-  "endUserAuthenticationConfig": S.optional(EndUserAuthenticationConfig),
-  "configVariables": S.optional(EndUserAuthenticationConfigVariableList),
-  "destinationConfigs": S.optional(DestinationConfigList),
-  "name": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "roles": S.optional(EndUserAuthenticationRolesItemEnumList),
-}),
-).annotate({ identifier: "EndUserAuthentication" }) as any as S.Schema<EndUserAuthentication>;
+  S.Struct({
+    status: S.optional(EndUserAuthenticationEndUserAuthenticationStatus),
+    notifyEndpointDestination: S.optional(
+      EndUserAuthenticationNotifyEndpointDestination,
+    ),
+    labels: S.optional(StringList),
+    createTime: S.optional(S.String),
+    userId: S.optional(S.String),
+    endUserAuthenticationConfig: S.optional(EndUserAuthenticationConfig),
+    configVariables: S.optional(EndUserAuthenticationConfigVariableList),
+    destinationConfigs: S.optional(DestinationConfigList),
+    name: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    roles: S.optional(EndUserAuthenticationRolesItemEnumList),
+  }),
+).annotate({
+  identifier: "EndUserAuthentication",
+}) as any as S.Schema<EndUserAuthentication>;
 
 export interface CreateProjectsLocationsConnectionsEndUserAuthenticationsRequest {
   /** Required. Identifier to assign to the EndUserAuthentication. Must be unique within scope of the parent resource. */
@@ -1331,15 +1553,29 @@ export interface CreateProjectsLocationsConnectionsEndUserAuthenticationsRequest
   /** Request body */
   body?: EndUserAuthentication;
 }
-export const CreateProjectsLocationsConnectionsEndUserAuthenticationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "endUserAuthenticationId": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(EndUserAuthentication.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/endUserAuthentications","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsConnectionsEndUserAuthenticationsRequest" }) as any as S.Schema<CreateProjectsLocationsConnectionsEndUserAuthenticationsRequest>;
+export const CreateProjectsLocationsConnectionsEndUserAuthenticationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      endUserAuthenticationId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(EndUserAuthentication.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/endUserAuthentications",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "CreateProjectsLocationsConnectionsEndUserAuthenticationsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsConnectionsEndUserAuthenticationsRequest>;
 
-export type EventSubscriptionDestinationTypeEnum = "TYPE_UNSPECIFIED" | "ENDPOINT" | "GCS" | "PUBSUB";
+export type EventSubscriptionDestinationTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "ENDPOINT"
+  | "GCS"
+  | "PUBSUB";
 export const EventSubscriptionDestinationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Header details for a given header to be added to Endpoint. */
@@ -1350,14 +1586,16 @@ export interface Header {
   value?: string;
 }
 export const Header = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "key": S.optional(S.String),
-  "value": S.optional(S.String),
-}),
+  S.Struct({
+    key: S.optional(S.String),
+    value: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Header" }) as any as S.Schema<Header>;
 
 export type HeaderList = ReadonlyArray<Header>;
-export const HeaderList = /*@__PURE__*/ S.Array(Header) as any as S.Schema<HeaderList>;
+export const HeaderList = /*@__PURE__*/ S.Array(
+  Header,
+) as any as S.Schema<HeaderList>;
 
 /** Endpoint message includes details of the Destination endpoint. */
 export interface EndPoint {
@@ -1367,10 +1605,10 @@ export interface EndPoint {
   endpointUri?: string;
 }
 export const EndPoint = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "headers": S.optional(HeaderList),
-  "endpointUri": S.optional(S.String),
-}),
+  S.Struct({
+    headers: S.optional(HeaderList),
+    endpointUri: S.optional(S.String),
+  }),
 ).annotate({ identifier: "EndPoint" }) as any as S.Schema<EndPoint>;
 
 /** Pub/Sub message includes details of the Destination Pub/Sub topic. */
@@ -1385,12 +1623,12 @@ export interface PubSub {
   projectId?: string;
 }
 export const PubSub = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "attributes": S.optional(StringMap),
-  "topicId": S.optional(S.String),
-  "configVariables": S.optional(ConfigVariableList),
-  "projectId": S.optional(S.String),
-}),
+  S.Struct({
+    attributes: S.optional(StringMap),
+    topicId: S.optional(S.String),
+    configVariables: S.optional(ConfigVariableList),
+    projectId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "PubSub" }) as any as S.Schema<PubSub>;
 
 /** Message for EventSubscription Destination to act on receiving an event */
@@ -1405,13 +1643,15 @@ export interface EventSubscriptionDestination {
   pubsub?: PubSub;
 }
 export const EventSubscriptionDestination = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(EventSubscriptionDestinationTypeEnum),
-  "serviceAccount": S.optional(S.String),
-  "endpoint": S.optional(EndPoint),
-  "pubsub": S.optional(PubSub),
-}),
-).annotate({ identifier: "EventSubscriptionDestination" }) as any as S.Schema<EventSubscriptionDestination>;
+  S.Struct({
+    type: S.optional(EventSubscriptionDestinationTypeEnum),
+    serviceAccount: S.optional(S.String),
+    endpoint: S.optional(EndPoint),
+    pubsub: S.optional(PubSub),
+  }),
+).annotate({
+  identifier: "EventSubscriptionDestination",
+}) as any as S.Schema<EventSubscriptionDestination>;
 
 export type JMSTypeEnum = "TYPE_UNSPECIFIED" | "QUEUE" | "TOPIC";
 export const JMSTypeEnum = /*@__PURE__*/ S.String;
@@ -1424,13 +1664,19 @@ export interface JMS {
   name?: string;
 }
 export const JMS = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(JMSTypeEnum),
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    type: S.optional(JMSTypeEnum),
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "JMS" }) as any as S.Schema<JMS>;
 
-export type EventSubscriptionStatusStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "UPDATING" | "ACTIVE" | "SUSPENDED" | "ERROR";
+export type EventSubscriptionStatusStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "CREATING"
+  | "UPDATING"
+  | "ACTIVE"
+  | "SUSPENDED"
+  | "ERROR";
 export const EventSubscriptionStatusStateEnum = /*@__PURE__*/ S.String;
 
 /** EventSubscription Status denotes the status of the EventSubscription resource. */
@@ -1441,11 +1687,13 @@ export interface EventSubscriptionStatus {
   description?: string;
 }
 export const EventSubscriptionStatus = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "state": S.optional(EventSubscriptionStatusStateEnum),
-  "description": S.optional(S.String),
-}),
-).annotate({ identifier: "EventSubscriptionStatus" }) as any as S.Schema<EventSubscriptionStatus>;
+  S.Struct({
+    state: S.optional(EventSubscriptionStatusStateEnum),
+    description: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EventSubscriptionStatus",
+}) as any as S.Schema<EventSubscriptionStatus>;
 
 /** represents the Connector's EventSubscription resource */
 export interface EventSubscription {
@@ -1473,20 +1721,22 @@ export interface EventSubscription {
   status?: EventSubscriptionStatus;
 }
 export const EventSubscription = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "createTime": S.optional(S.String),
-  "eventTypeId": S.optional(S.String),
-  "subscriber": S.optional(S.String),
-  "destinations": S.optional(EventSubscriptionDestination),
-  "triggerConfigVariables": S.optional(ConfigVariableList),
-  "name": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "jms": S.optional(JMS),
-  "subscriberLink": S.optional(S.String),
-  "filter": S.optional(S.String),
-  "status": S.optional(EventSubscriptionStatus),
-}),
-).annotate({ identifier: "EventSubscription" }) as any as S.Schema<EventSubscription>;
+  S.Struct({
+    createTime: S.optional(S.String),
+    eventTypeId: S.optional(S.String),
+    subscriber: S.optional(S.String),
+    destinations: S.optional(EventSubscriptionDestination),
+    triggerConfigVariables: S.optional(ConfigVariableList),
+    name: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    jms: S.optional(JMS),
+    subscriberLink: S.optional(S.String),
+    filter: S.optional(S.String),
+    status: S.optional(EventSubscriptionStatus),
+  }),
+).annotate({
+  identifier: "EventSubscription",
+}) as any as S.Schema<EventSubscription>;
 
 export interface CreateProjectsLocationsConnectionsEventSubscriptionsRequest {
   /** Required. Parent resource of the EventSubscription, of the form: `projects/*\/locations/*\/connections/*` */
@@ -1496,15 +1746,32 @@ export interface CreateProjectsLocationsConnectionsEventSubscriptionsRequest {
   /** Request body */
   body?: EventSubscription;
 }
-export const CreateProjectsLocationsConnectionsEventSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "eventSubscriptionId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(EventSubscription.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/eventSubscriptions","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsConnectionsEventSubscriptionsRequest" }) as any as S.Schema<CreateProjectsLocationsConnectionsEventSubscriptionsRequest>;
+export const CreateProjectsLocationsConnectionsEventSubscriptionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      eventSubscriptionId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(EventSubscription.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/eventSubscriptions",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsConnectionsEventSubscriptionsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsConnectionsEventSubscriptionsRequest>;
 
-export type EndpointAttachmentStateEnum = "STATE_UNSPECIFIED" | "PENDING" | "ACCEPTED" | "REJECTED" | "CLOSED" | "FROZEN" | "NEEDS_ATTENTION" | "ACCEPTED_NOT_PROGRAMMED";
+export type EndpointAttachmentStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "PENDING"
+  | "ACCEPTED"
+  | "REJECTED"
+  | "CLOSED"
+  | "FROZEN"
+  | "NEEDS_ATTENTION"
+  | "ACCEPTED_NOT_PROGRAMMED";
 export const EndpointAttachmentStateEnum = /*@__PURE__*/ S.String;
 
 /** represents the Connector's Endpoint Attachment resource */
@@ -1529,18 +1796,20 @@ export interface EndpointAttachment {
   endpointGlobalAccess?: boolean;
 }
 export const EndpointAttachment = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "state": S.optional(EndpointAttachmentStateEnum),
-  "labels": S.optional(StringMap),
-  "createTime": S.optional(S.String),
-  "description": S.optional(S.String),
-  "serviceAttachment": S.optional(S.String),
-  "name": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "endpointIp": S.optional(S.String),
-  "endpointGlobalAccess": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "EndpointAttachment" }) as any as S.Schema<EndpointAttachment>;
+  S.Struct({
+    state: S.optional(EndpointAttachmentStateEnum),
+    labels: S.optional(StringMap),
+    createTime: S.optional(S.String),
+    description: S.optional(S.String),
+    serviceAttachment: S.optional(S.String),
+    name: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    endpointIp: S.optional(S.String),
+    endpointGlobalAccess: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "EndpointAttachment",
+}) as any as S.Schema<EndpointAttachment>;
 
 export interface CreateProjectsLocationsEndpointAttachmentsRequest {
   /** Required. Parent resource of the EndpointAttachment, of the form: `projects/*\/locations/*` */
@@ -1550,15 +1819,28 @@ export interface CreateProjectsLocationsEndpointAttachmentsRequest {
   /** Request body */
   body?: EndpointAttachment;
 }
-export const CreateProjectsLocationsEndpointAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "endpointAttachmentId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(EndpointAttachment.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/endpointAttachments","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsEndpointAttachmentsRequest" }) as any as S.Schema<CreateProjectsLocationsEndpointAttachmentsRequest>;
+export const CreateProjectsLocationsEndpointAttachmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      endpointAttachmentId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(EndpointAttachment.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/endpointAttachments",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsEndpointAttachmentsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsEndpointAttachmentsRequest>;
 
-export type CustomConnectorCustomConnectorTypeEnum = "CUSTOM_CONNECTOR_TYPE_UNSPECIFIED" | "OPEN_API" | "PROTO" | "SDK";
+export type CustomConnectorCustomConnectorTypeEnum =
+  | "CUSTOM_CONNECTOR_TYPE_UNSPECIFIED"
+  | "OPEN_API"
+  | "PROTO"
+  | "SDK";
 export const CustomConnectorCustomConnectorTypeEnum = /*@__PURE__*/ S.String;
 
 /** CustomConnector represents the custom connector defined by the customer as part of byoc. */
@@ -1589,21 +1871,23 @@ export interface CustomConnector {
   allMarketplaceVersions?: StringList;
 }
 export const CustomConnector = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "displayName": S.optional(S.String),
-  "customConnectorType": S.optional(CustomConnectorCustomConnectorTypeEnum),
-  "name": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "allConnectorVersions": S.optional(StringList),
-  "publishedMarketplaceVersions": S.optional(StringList),
-  "activeConnectorVersions": S.optional(StringList),
-  "description": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "logo": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "allMarketplaceVersions": S.optional(StringList),
-}),
-).annotate({ identifier: "CustomConnector" }) as any as S.Schema<CustomConnector>;
+  S.Struct({
+    displayName: S.optional(S.String),
+    customConnectorType: S.optional(CustomConnectorCustomConnectorTypeEnum),
+    name: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    allConnectorVersions: S.optional(StringList),
+    publishedMarketplaceVersions: S.optional(StringList),
+    activeConnectorVersions: S.optional(StringList),
+    description: S.optional(S.String),
+    labels: S.optional(StringMap),
+    logo: S.optional(S.String),
+    createTime: S.optional(S.String),
+    allMarketplaceVersions: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "CustomConnector",
+}) as any as S.Schema<CustomConnector>;
 
 export interface CreateProjectsLocationsGlobalCustomConnectorsRequest {
   /** Required. Parent resource of the CreateCustomConnector, of the form: `projects/{project}/locations/*` */
@@ -1613,13 +1897,22 @@ export interface CreateProjectsLocationsGlobalCustomConnectorsRequest {
   /** Request body */
   body?: CustomConnector;
 }
-export const CreateProjectsLocationsGlobalCustomConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "customConnectorId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(CustomConnector.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/customConnectors","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsGlobalCustomConnectorsRequest" }) as any as S.Schema<CreateProjectsLocationsGlobalCustomConnectorsRequest>;
+export const CreateProjectsLocationsGlobalCustomConnectorsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      customConnectorId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(CustomConnector.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/customConnectors",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsGlobalCustomConnectorsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsGlobalCustomConnectorsRequest>;
 
 /** Partner metadata details. This will be populated when publishing the custom connector as a partner connector version. On publishing, parntner connector version will be created using the fields in PartnerMetadata. */
 export interface PartnerMetadata {
@@ -1659,34 +1952,46 @@ export interface PartnerMetadata {
   targetApplication?: string;
 }
 export const PartnerMetadata = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "hasDynamicSpecUri": S.optional(S.Boolean),
-  "marketplaceProduct": S.optional(S.String),
-  "marketplaceProductProjectId": S.optional(S.String),
-  "targetCustomerSegment": S.optional(S.String),
-  "marketplaceProductId": S.optional(S.String),
-  "localSpecPath": S.optional(S.String),
-  "marketplaceProductUri": S.optional(S.String),
-  "useCases": S.optional(S.String),
-  "confirmPartnerRequirements": S.optional(S.Boolean),
-  "partner": S.optional(S.String),
-  "demoUri": S.optional(S.String),
-  "additionalComments": S.optional(S.String),
-  "partnerConnectorDisplayName": S.optional(S.String),
-  "integrationTemplates": S.optional(S.String),
-  "publishRequestTime": S.optional(S.String),
-  "acceptGcpTos": S.optional(S.Boolean),
-  "targetApplication": S.optional(S.String),
-}),
-).annotate({ identifier: "PartnerMetadata" }) as any as S.Schema<PartnerMetadata>;
+  S.Struct({
+    hasDynamicSpecUri: S.optional(S.Boolean),
+    marketplaceProduct: S.optional(S.String),
+    marketplaceProductProjectId: S.optional(S.String),
+    targetCustomerSegment: S.optional(S.String),
+    marketplaceProductId: S.optional(S.String),
+    localSpecPath: S.optional(S.String),
+    marketplaceProductUri: S.optional(S.String),
+    useCases: S.optional(S.String),
+    confirmPartnerRequirements: S.optional(S.Boolean),
+    partner: S.optional(S.String),
+    demoUri: S.optional(S.String),
+    additionalComments: S.optional(S.String),
+    partnerConnectorDisplayName: S.optional(S.String),
+    integrationTemplates: S.optional(S.String),
+    publishRequestTime: S.optional(S.String),
+    acceptGcpTos: S.optional(S.Boolean),
+    targetApplication: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PartnerMetadata",
+}) as any as S.Schema<PartnerMetadata>;
 
-export type ConfigVariableTemplateLocationTypeEnum = "LOCATION_TYPE_UNSPECIFIED" | "HEADER" | "PAYLOAD" | "QUERY_PARAM" | "PATH_PARAM";
+export type ConfigVariableTemplateLocationTypeEnum =
+  | "LOCATION_TYPE_UNSPECIFIED"
+  | "HEADER"
+  | "PAYLOAD"
+  | "QUERY_PARAM"
+  | "PATH_PARAM";
 export const ConfigVariableTemplateLocationTypeEnum = /*@__PURE__*/ S.String;
 
 export type RoleGrantPrincipalEnum = "PRINCIPAL_UNSPECIFIED" | "CONNECTOR_SA";
 export const RoleGrantPrincipalEnum = /*@__PURE__*/ S.String;
 
-export type ResourceTypeEnum = "TYPE_UNSPECIFIED" | "GCP_PROJECT" | "GCP_RESOURCE" | "GCP_SECRETMANAGER_SECRET" | "GCP_SECRETMANAGER_SECRET_VERSION";
+export type ResourceTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "GCP_PROJECT"
+  | "GCP_RESOURCE"
+  | "GCP_SECRETMANAGER_SECRET"
+  | "GCP_SECRETMANAGER_SECRET_VERSION";
 export const ResourceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Resource definition */
@@ -1697,10 +2002,10 @@ export interface Resource {
   type?: ResourceTypeEnum;
 }
 export const Resource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pathTemplate": S.optional(S.String),
-  "type": S.optional(ResourceTypeEnum),
-}),
+  S.Struct({
+    pathTemplate: S.optional(S.String),
+    type: S.optional(ResourceTypeEnum),
+  }),
 ).annotate({ identifier: "Resource" }) as any as S.Schema<Resource>;
 
 /** This configuration defines all the Cloud IAM roles that needs to be granted to a particular Google Cloud resource for the selected principal like service account. These configurations will let UI display to customers what IAM roles need to be granted by them. Or these configurations can be used by the UI to render a 'grant' button to do the same on behalf of the user. */
@@ -1715,15 +2020,18 @@ export interface RoleGrant {
   resource?: Resource;
 }
 export const RoleGrant = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "principal": S.optional(RoleGrantPrincipalEnum),
-  "roles": S.optional(StringList),
-  "helperTextTemplate": S.optional(S.String),
-  "resource": S.optional(Resource),
-}),
+  S.Struct({
+    principal: S.optional(RoleGrantPrincipalEnum),
+    roles: S.optional(StringList),
+    helperTextTemplate: S.optional(S.String),
+    resource: S.optional(Resource),
+  }),
 ).annotate({ identifier: "RoleGrant" }) as any as S.Schema<RoleGrant>;
 
-export type ConfigVariableTemplateStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "DEPRECATED";
+export type ConfigVariableTemplateStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "DEPRECATED";
 export const ConfigVariableTemplateStateEnum = /*@__PURE__*/ S.String;
 
 /** MultiplSelecteOption represents the single option for a config variable. */
@@ -1738,16 +2046,20 @@ export interface MultipleSelectOption {
   key?: string;
 }
 export const MultipleSelectOption = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "preselected": S.optional(S.Boolean),
-  "description": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "key": S.optional(S.String),
-}),
-).annotate({ identifier: "MultipleSelectOption" }) as any as S.Schema<MultipleSelectOption>;
+  S.Struct({
+    preselected: S.optional(S.Boolean),
+    description: S.optional(S.String),
+    displayName: S.optional(S.String),
+    key: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MultipleSelectOption",
+}) as any as S.Schema<MultipleSelectOption>;
 
 export type MultipleSelectOptionList = ReadonlyArray<MultipleSelectOption>;
-export const MultipleSelectOptionList = /*@__PURE__*/ S.Array(MultipleSelectOption) as any as S.Schema<MultipleSelectOptionList>;
+export const MultipleSelectOptionList = /*@__PURE__*/ S.Array(
+  MultipleSelectOption,
+) as any as S.Schema<MultipleSelectOptionList>;
 
 /** MultipleSelectConfig represents the multiple options for a config variable. */
 export interface MultipleSelectConfig {
@@ -1759,12 +2071,14 @@ export interface MultipleSelectConfig {
   allowCustomValues?: boolean;
 }
 export const MultipleSelectConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "valueSeparator": S.optional(S.String),
-  "multipleSelectOptions": S.optional(MultipleSelectOptionList),
-  "allowCustomValues": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "MultipleSelectConfig" }) as any as S.Schema<MultipleSelectConfig>;
+  S.Struct({
+    valueSeparator: S.optional(S.String),
+    multipleSelectOptions: S.optional(MultipleSelectOptionList),
+    allowCustomValues: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "MultipleSelectConfig",
+}) as any as S.Schema<MultipleSelectConfig>;
 
 /** EnumOption definition */
 export interface EnumOption {
@@ -1774,14 +2088,16 @@ export interface EnumOption {
   displayName?: string;
 }
 export const EnumOption = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.optional(S.String),
-  "displayName": S.optional(S.String),
-}),
+  S.Struct({
+    id: S.optional(S.String),
+    displayName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "EnumOption" }) as any as S.Schema<EnumOption>;
 
 export type EnumOptionList = ReadonlyArray<EnumOption>;
-export const EnumOptionList = /*@__PURE__*/ S.Array(EnumOption) as any as S.Schema<EnumOptionList>;
+export const EnumOptionList = /*@__PURE__*/ S.Array(
+  EnumOption,
+) as any as S.Schema<EnumOptionList>;
 
 /** This configuration captures the details required to render an authorization link for the OAuth Authorization Code Flow. */
 export interface AuthorizationCodeLink {
@@ -1799,23 +2115,39 @@ export interface AuthorizationCodeLink {
   omitQueryParams?: boolean;
 }
 export const AuthorizationCodeLink = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "scopes": S.optional(StringList),
-  "enablePkce": S.optional(S.Boolean),
-  "clientSecret": S.optional(Secret),
-  "clientId": S.optional(S.String),
-  "uri": S.optional(S.String),
-  "omitQueryParams": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "AuthorizationCodeLink" }) as any as S.Schema<AuthorizationCodeLink>;
+  S.Struct({
+    scopes: S.optional(StringList),
+    enablePkce: S.optional(S.Boolean),
+    clientSecret: S.optional(Secret),
+    clientId: S.optional(S.String),
+    uri: S.optional(S.String),
+    omitQueryParams: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "AuthorizationCodeLink",
+}) as any as S.Schema<AuthorizationCodeLink>;
 
-export type ConfigVariableTemplateValueTypeEnum = "VALUE_TYPE_UNSPECIFIED" | "STRING" | "INT" | "BOOL" | "SECRET" | "ENUM" | "AUTHORIZATION_CODE" | "ENCRYPTION_KEY" | "MULTIPLE_SELECT";
+export type ConfigVariableTemplateValueTypeEnum =
+  | "VALUE_TYPE_UNSPECIFIED"
+  | "STRING"
+  | "INT"
+  | "BOOL"
+  | "SECRET"
+  | "ENUM"
+  | "AUTHORIZATION_CODE"
+  | "ENCRYPTION_KEY"
+  | "MULTIPLE_SELECT";
 export const ConfigVariableTemplateValueTypeEnum = /*@__PURE__*/ S.String;
 
 export type LogicalExpressionList = ReadonlyArray<LogicalExpression>;
-export const LogicalExpressionList = /*@__PURE__*/ S.Array(S.suspend(() => LogicalExpression)) as any as S.Schema<LogicalExpressionList>;
+export const LogicalExpressionList = /*@__PURE__*/ S.Array(
+  S.suspend(() => LogicalExpression),
+) as any as S.Schema<LogicalExpressionList>;
 
-export type FieldComparisonComparatorEnum = "COMPARATOR_UNSPECIFIED" | "EQUALS" | "NOT_EQUALS";
+export type FieldComparisonComparatorEnum =
+  | "COMPARATOR_UNSPECIFIED"
+  | "EQUALS"
+  | "NOT_EQUALS";
 export const FieldComparisonComparatorEnum = /*@__PURE__*/ S.String;
 
 /** Field that needs to be compared. */
@@ -1832,19 +2164,26 @@ export interface FieldComparison {
   boolValue?: boolean;
 }
 export const FieldComparison = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "key": S.optional(S.String),
-  "stringValue": S.optional(S.String),
-  "comparator": S.optional(FieldComparisonComparatorEnum),
-  "intValue": S.optional(S.String),
-  "boolValue": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "FieldComparison" }) as any as S.Schema<FieldComparison>;
+  S.Struct({
+    key: S.optional(S.String),
+    stringValue: S.optional(S.String),
+    comparator: S.optional(FieldComparisonComparatorEnum),
+    intValue: S.optional(S.String),
+    boolValue: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "FieldComparison",
+}) as any as S.Schema<FieldComparison>;
 
 export type FieldComparisonList = ReadonlyArray<FieldComparison>;
-export const FieldComparisonList = /*@__PURE__*/ S.Array(FieldComparison) as any as S.Schema<FieldComparisonList>;
+export const FieldComparisonList = /*@__PURE__*/ S.Array(
+  FieldComparison,
+) as any as S.Schema<FieldComparisonList>;
 
-export type LogicalExpressionLogicalOperatorEnum = "OPERATOR_UNSPECIFIED" | "AND" | "OR";
+export type LogicalExpressionLogicalOperatorEnum =
+  | "OPERATOR_UNSPECIFIED"
+  | "AND"
+  | "OR";
 export const LogicalExpressionLogicalOperatorEnum = /*@__PURE__*/ S.String;
 
 /** Struct for representing boolean expressions. */
@@ -1857,14 +2196,18 @@ export interface LogicalExpression {
   logicalOperator?: LogicalExpressionLogicalOperatorEnum;
 }
 export const LogicalExpression = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "logicalExpressions": S.optional(LogicalExpressionList),
-  "fieldComparisons": S.optional(FieldComparisonList),
-  "logicalOperator": S.optional(LogicalExpressionLogicalOperatorEnum),
-}),
-).annotate({ identifier: "LogicalExpression" }) as any as S.Schema<LogicalExpression>;
+  S.Struct({
+    logicalExpressions: S.optional(LogicalExpressionList),
+    fieldComparisons: S.optional(FieldComparisonList),
+    logicalOperator: S.optional(LogicalExpressionLogicalOperatorEnum),
+  }),
+).annotate({
+  identifier: "LogicalExpression",
+}) as any as S.Schema<LogicalExpression>;
 
-export type ConfigVariableTemplateEnumSourceEnum = "ENUM_SOURCE_UNSPECIFIED" | "EVENT_TYPES_API";
+export type ConfigVariableTemplateEnumSourceEnum =
+  | "ENUM_SOURCE_UNSPECIFIED"
+  | "EVENT_TYPES_API";
 export const ConfigVariableTemplateEnumSourceEnum = /*@__PURE__*/ S.String;
 
 /** ConfigVariableTemplate provides metadata about a `ConfigVariable` that is used in a Connection. */
@@ -1901,29 +2244,41 @@ export interface ConfigVariableTemplate {
   enumSource?: ConfigVariableTemplateEnumSourceEnum;
 }
 export const ConfigVariableTemplate = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "required": S.optional(S.Boolean),
-  "isAdvanced": S.optional(S.Boolean),
-  "locationType": S.optional(ConfigVariableTemplateLocationTypeEnum),
-  "roleGrant": S.optional(RoleGrant),
-  "state": S.optional(ConfigVariableTemplateStateEnum),
-  "multipleSelectConfig": S.optional(MultipleSelectConfig),
-  "validationRegex": S.optional(S.String),
-  "enumOptions": S.optional(EnumOptionList),
-  "description": S.optional(S.String),
-  "authorizationCodeLink": S.optional(AuthorizationCodeLink),
-  "key": S.optional(S.String),
-  "valueType": S.optional(ConfigVariableTemplateValueTypeEnum),
-  "displayName": S.optional(S.String),
-  "requiredCondition": S.optional(LogicalExpression),
-  "enumSource": S.optional(ConfigVariableTemplateEnumSourceEnum),
-}),
-).annotate({ identifier: "ConfigVariableTemplate" }) as any as S.Schema<ConfigVariableTemplate>;
+  S.Struct({
+    required: S.optional(S.Boolean),
+    isAdvanced: S.optional(S.Boolean),
+    locationType: S.optional(ConfigVariableTemplateLocationTypeEnum),
+    roleGrant: S.optional(RoleGrant),
+    state: S.optional(ConfigVariableTemplateStateEnum),
+    multipleSelectConfig: S.optional(MultipleSelectConfig),
+    validationRegex: S.optional(S.String),
+    enumOptions: S.optional(EnumOptionList),
+    description: S.optional(S.String),
+    authorizationCodeLink: S.optional(AuthorizationCodeLink),
+    key: S.optional(S.String),
+    valueType: S.optional(ConfigVariableTemplateValueTypeEnum),
+    displayName: S.optional(S.String),
+    requiredCondition: S.optional(LogicalExpression),
+    enumSource: S.optional(ConfigVariableTemplateEnumSourceEnum),
+  }),
+).annotate({
+  identifier: "ConfigVariableTemplate",
+}) as any as S.Schema<ConfigVariableTemplate>;
 
 export type ConfigVariableTemplateList = ReadonlyArray<ConfigVariableTemplate>;
-export const ConfigVariableTemplateList = /*@__PURE__*/ S.Array(ConfigVariableTemplate) as any as S.Schema<ConfigVariableTemplateList>;
+export const ConfigVariableTemplateList = /*@__PURE__*/ S.Array(
+  ConfigVariableTemplate,
+) as any as S.Schema<ConfigVariableTemplateList>;
 
-export type AuthConfigTemplateAuthTypeEnum = "AUTH_TYPE_UNSPECIFIED" | "USER_PASSWORD" | "OAUTH2_JWT_BEARER" | "OAUTH2_CLIENT_CREDENTIALS" | "SSH_PUBLIC_KEY" | "OAUTH2_AUTH_CODE_FLOW" | "GOOGLE_AUTHENTICATION" | "OAUTH2_AUTH_CODE_FLOW_GOOGLE_MANAGED";
+export type AuthConfigTemplateAuthTypeEnum =
+  | "AUTH_TYPE_UNSPECIFIED"
+  | "USER_PASSWORD"
+  | "OAUTH2_JWT_BEARER"
+  | "OAUTH2_CLIENT_CREDENTIALS"
+  | "SSH_PUBLIC_KEY"
+  | "OAUTH2_AUTH_CODE_FLOW"
+  | "GOOGLE_AUTHENTICATION"
+  | "OAUTH2_AUTH_CODE_FLOW_GOOGLE_MANAGED";
 export const AuthConfigTemplateAuthTypeEnum = /*@__PURE__*/ S.String;
 
 /** AuthConfigTemplate defines required field over an authentication type. */
@@ -1942,20 +2297,28 @@ export interface AuthConfigTemplate {
   isDefault?: boolean;
 }
 export const AuthConfigTemplate = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "configVariableTemplates": S.optional(ConfigVariableTemplateList),
-  "description": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "authType": S.optional(AuthConfigTemplateAuthTypeEnum),
-  "authKey": S.optional(S.String),
-  "isDefault": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "AuthConfigTemplate" }) as any as S.Schema<AuthConfigTemplate>;
+  S.Struct({
+    configVariableTemplates: S.optional(ConfigVariableTemplateList),
+    description: S.optional(S.String),
+    displayName: S.optional(S.String),
+    authType: S.optional(AuthConfigTemplateAuthTypeEnum),
+    authKey: S.optional(S.String),
+    isDefault: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "AuthConfigTemplate",
+}) as any as S.Schema<AuthConfigTemplate>;
 
 export type AuthConfigTemplateList = ReadonlyArray<AuthConfigTemplate>;
-export const AuthConfigTemplateList = /*@__PURE__*/ S.Array(AuthConfigTemplate) as any as S.Schema<AuthConfigTemplateList>;
+export const AuthConfigTemplateList = /*@__PURE__*/ S.Array(
+  AuthConfigTemplate,
+) as any as S.Schema<AuthConfigTemplateList>;
 
-export type PublishStatusPublishStateEnum = "PUBLISH_STATE_UNSPECIFIED" | "PUBLISHED" | "PUBLISH_IN_PROGRESS" | "UNPUBLISHED";
+export type PublishStatusPublishStateEnum =
+  | "PUBLISH_STATE_UNSPECIFIED"
+  | "PUBLISHED"
+  | "PUBLISH_IN_PROGRESS"
+  | "UNPUBLISHED";
 export const PublishStatusPublishStateEnum = /*@__PURE__*/ S.String;
 
 /** Publish status of a custom connector. */
@@ -1970,15 +2333,18 @@ export interface PublishStatus {
   publishState?: PublishStatusPublishStateEnum;
 }
 export const PublishStatus = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "publishedAs": S.optional(S.String),
-  "publishedSource": S.optional(S.String),
-  "publishTime": S.optional(S.String),
-  "publishState": S.optional(PublishStatusPublishStateEnum),
-}),
+  S.Struct({
+    publishedAs: S.optional(S.String),
+    publishedSource: S.optional(S.String),
+    publishTime: S.optional(S.String),
+    publishState: S.optional(PublishStatusPublishStateEnum),
+  }),
 ).annotate({ identifier: "PublishStatus" }) as any as S.Schema<PublishStatus>;
 
-export type CustomConnectorVersionStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "DEPRECATED";
+export type CustomConnectorVersionStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "DEPRECATED";
 export const CustomConnectorVersionStateEnum = /*@__PURE__*/ S.String;
 
 /** CustomConnectorVersion indicates a specific version of a connector. */
@@ -2019,26 +2385,28 @@ export interface CustomConnectorVersion {
   serviceAccount?: string;
 }
 export const CustomConnectorVersion = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "partnerMetadata": S.optional(PartnerMetadata),
-  "authConfigTemplates": S.optional(AuthConfigTemplateList),
-  "authOverrideSupport": S.optional(S.Boolean),
-  "labels": S.optional(StringMap),
-  "publishStatus": S.optional(PublishStatus),
-  "backendVariableTemplates": S.optional(ConfigVariableTemplateList),
-  "specServerUrls": S.optional(StringList),
-  "authConfig": S.optional(AuthConfig),
-  "asyncOperationsSupport": S.optional(S.Boolean),
-  "specLocation": S.optional(S.String),
-  "state": S.optional(CustomConnectorVersionStateEnum),
-  "createTime": S.optional(S.String),
-  "destinationConfigs": S.optional(DestinationConfigList),
-  "enableBackendDestinationConfig": S.optional(S.Boolean),
-  "name": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "serviceAccount": S.optional(S.String),
-}),
-).annotate({ identifier: "CustomConnectorVersion" }) as any as S.Schema<CustomConnectorVersion>;
+  S.Struct({
+    partnerMetadata: S.optional(PartnerMetadata),
+    authConfigTemplates: S.optional(AuthConfigTemplateList),
+    authOverrideSupport: S.optional(S.Boolean),
+    labels: S.optional(StringMap),
+    publishStatus: S.optional(PublishStatus),
+    backendVariableTemplates: S.optional(ConfigVariableTemplateList),
+    specServerUrls: S.optional(StringList),
+    authConfig: S.optional(AuthConfig),
+    asyncOperationsSupport: S.optional(S.Boolean),
+    specLocation: S.optional(S.String),
+    state: S.optional(CustomConnectorVersionStateEnum),
+    createTime: S.optional(S.String),
+    destinationConfigs: S.optional(DestinationConfigList),
+    enableBackendDestinationConfig: S.optional(S.Boolean),
+    name: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    serviceAccount: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CustomConnectorVersion",
+}) as any as S.Schema<CustomConnectorVersion>;
 
 export interface CreateProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRequest {
   /** Required. Identifier to assign to the CreateCustomConnectorVersion. Must be unique within scope of the parent resource. */
@@ -2048,13 +2416,23 @@ export interface CreateProjectsLocationsGlobalCustomConnectorsCustomConnectorVer
   /** Request body */
   body?: CustomConnectorVersion;
 }
-export const CreateProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "customConnectorVersionId": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(CustomConnectorVersion.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/customConnectorVersions","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRequest" }) as any as S.Schema<CreateProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRequest>;
+export const CreateProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      customConnectorVersionId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(CustomConnectorVersion.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/customConnectorVersions",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "CreateProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRequest>;
 
 /** represents the Connector's Managed Zone resource */
 export interface ManagedZone {
@@ -2076,16 +2454,16 @@ export interface ManagedZone {
   updateTime?: string;
 }
 export const ManagedZone = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "createTime": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "dns": S.optional(S.String),
-  "targetVpc": S.optional(S.String),
-  "description": S.optional(S.String),
-  "targetProject": S.optional(S.String),
-  "name": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-}),
+  S.Struct({
+    createTime: S.optional(S.String),
+    labels: S.optional(StringMap),
+    dns: S.optional(S.String),
+    targetVpc: S.optional(S.String),
+    description: S.optional(S.String),
+    targetProject: S.optional(S.String),
+    name: S.optional(S.String),
+    updateTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ManagedZone" }) as any as S.Schema<ManagedZone>;
 
 export interface CreateProjectsLocationsGlobalManagedZonesRequest {
@@ -2096,13 +2474,22 @@ export interface CreateProjectsLocationsGlobalManagedZonesRequest {
   /** Request body */
   body?: ManagedZone;
 }
-export const CreateProjectsLocationsGlobalManagedZonesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "managedZoneId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(ManagedZone.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/managedZones","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsGlobalManagedZonesRequest" }) as any as S.Schema<CreateProjectsLocationsGlobalManagedZonesRequest>;
+export const CreateProjectsLocationsGlobalManagedZonesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      managedZoneId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(ManagedZone.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/managedZones",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsGlobalManagedZonesRequest",
+  }) as any as S.Schema<CreateProjectsLocationsGlobalManagedZonesRequest>;
 
 export interface DeleteProjectsLocationsConnectionsRequest {
   /** Required. Resource name of the form: `projects/*\/locations/*\/connections/*` */
@@ -2110,52 +2497,99 @@ export interface DeleteProjectsLocationsConnectionsRequest {
   /** Optional. If set to true, any child EndUserAuthentication/EventSubscription resources will also be deleted. Otherwise, the request will fail if the connection has any children. Followed the best practice from https://aip.dev/135#cascading-delete */
   force?: boolean;
 }
-export const DeleteProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "force": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsConnectionsRequest" }) as any as S.Schema<DeleteProjectsLocationsConnectionsRequest>;
+export const DeleteProjectsLocationsConnectionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      force: S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsConnectionsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsConnectionsRequest>;
 
 export interface DeleteProjectsLocationsConnectionsEndUserAuthenticationsRequest {
   /** Required. Resource name of the form: `projects/*\/locations/*\/connections/*\/endUserAuthentication/*` */
   name: string;
 }
-export const DeleteProjectsLocationsConnectionsEndUserAuthenticationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsConnectionsEndUserAuthenticationsRequest" }) as any as S.Schema<DeleteProjectsLocationsConnectionsEndUserAuthenticationsRequest>;
+export const DeleteProjectsLocationsConnectionsEndUserAuthenticationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "DeleteProjectsLocationsConnectionsEndUserAuthenticationsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsConnectionsEndUserAuthenticationsRequest>;
 
 export interface DeleteProjectsLocationsConnectionsEventSubscriptionsRequest {
   /** Required. Resource name of the form: `projects/*\/locations/*\/connections/*\/eventsubscriptions/*` */
   name: string;
 }
-export const DeleteProjectsLocationsConnectionsEventSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsConnectionsEventSubscriptionsRequest" }) as any as S.Schema<DeleteProjectsLocationsConnectionsEventSubscriptionsRequest>;
+export const DeleteProjectsLocationsConnectionsEventSubscriptionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsConnectionsEventSubscriptionsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsConnectionsEventSubscriptionsRequest>;
 
 export interface DeleteProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest {
   /** Required. Resource name of the form: `projects/{project}/locations/{location}/customConnectors/{custom_connector}/customConnectorVersions/{custom_connector_version}` */
   name: string;
 }
-export const DeleteProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest" }) as any as S.Schema<DeleteProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest>;
+export const DeleteProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "DeleteProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest>;
 
 export interface DeleteProjectsLocationsEndpointAttachmentsRequest {
   /** Required. Resource name of the form: `projects/*\/locations/*\/endpointAttachments/*` */
   name: string;
 }
-export const DeleteProjectsLocationsEndpointAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsEndpointAttachmentsRequest" }) as any as S.Schema<DeleteProjectsLocationsEndpointAttachmentsRequest>;
+export const DeleteProjectsLocationsEndpointAttachmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsEndpointAttachmentsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsEndpointAttachmentsRequest>;
 
 export interface DeleteProjectsLocationsGlobalCustomConnectorsRequest {
   /** Required. Resource name of the form: `projects/{project}/locations/{location}/customConnectors/{connector}` */
@@ -2163,38 +2597,67 @@ export interface DeleteProjectsLocationsGlobalCustomConnectorsRequest {
   /** Optional. If set to true, any customConnectorVersion which is a child resource will also be deleted. https://aip.dev/135#cascading-delete */
   force?: boolean;
 }
-export const DeleteProjectsLocationsGlobalCustomConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "force": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsGlobalCustomConnectorsRequest" }) as any as S.Schema<DeleteProjectsLocationsGlobalCustomConnectorsRequest>;
+export const DeleteProjectsLocationsGlobalCustomConnectorsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      force: S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsGlobalCustomConnectorsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsGlobalCustomConnectorsRequest>;
 
 export interface DeleteProjectsLocationsGlobalManagedZonesRequest {
   /** Required. Resource name of the form: `projects/*\/locations/global/managedZones/*` */
   name: string;
 }
-export const DeleteProjectsLocationsGlobalManagedZonesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsGlobalManagedZonesRequest" }) as any as S.Schema<DeleteProjectsLocationsGlobalManagedZonesRequest>;
+export const DeleteProjectsLocationsGlobalManagedZonesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsGlobalManagedZonesRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsGlobalManagedZonesRequest>;
 
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsOperationsRequest" }) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsOperationsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
 
 /** Request message for ConnectorsService.DeprecateCustomConnectorVersion */
 export interface DeprecateCustomConnectorVersionRequest {}
-export const DeprecateCustomConnectorVersionRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "DeprecateCustomConnectorVersionRequest" }) as any as S.Schema<DeprecateCustomConnectorVersionRequest>;
+export const DeprecateCustomConnectorVersionRequest = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DeprecateCustomConnectorVersionRequest",
+}) as any as S.Schema<DeprecateCustomConnectorVersionRequest>;
 
 export interface DeprecateProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest {
   /** Required. Resource name of the form: `projects/{project}/locations/{location}/customConnectors/{custom_connector}/customConnectorVersions/{custom_connector_version}` */
@@ -2202,28 +2665,58 @@ export interface DeprecateProjectsLocationsCustomConnectorsCustomConnectorVersio
   /** Request body */
   body?: DeprecateCustomConnectorVersionRequest;
 }
-export const DeprecateProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(DeprecateCustomConnectorVersionRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:deprecate","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "DeprecateProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest" }) as any as S.Schema<DeprecateProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest>;
+export const DeprecateProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(
+        DeprecateCustomConnectorVersionRequest.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:deprecate",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "DeprecateProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest",
+  }) as any as S.Schema<DeprecateProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest>;
 
-export type FetchAuthSchemaProjectsLocationsProvidersConnectorsVersionsViewEnum = "AUTH_SCHEMA_VIEW_UNSPECIFIED" | "BASIC" | "JSON_SCHEMA" | "EUA_SCHEMA";
-export const FetchAuthSchemaProjectsLocationsProvidersConnectorsVersionsViewEnum = /*@__PURE__*/ S.String;
+export type FetchAuthSchemaProjectsLocationsProvidersConnectorsVersionsViewEnum =
+  "AUTH_SCHEMA_VIEW_UNSPECIFIED" | "BASIC" | "JSON_SCHEMA" | "EUA_SCHEMA";
+export const FetchAuthSchemaProjectsLocationsProvidersConnectorsVersionsViewEnum =
+  /*@__PURE__*/ S.String;
 
 export interface FetchAuthSchemaProjectsLocationsProvidersConnectorsVersionsRequest {
   /** Required. Parent resource of the Connector Version, of the form: `projects/*\/locations/*\/providers/*\/connectors/*\/versions/*` */
   name: string;
   /** Optional. View of the AuthSchema. The default value is BASIC. */
-  view?: FetchAuthSchemaProjectsLocationsProvidersConnectorsVersionsViewEnum | (string & {});
+  view?:
+    | FetchAuthSchemaProjectsLocationsProvidersConnectorsVersionsViewEnum
+    | (string & {});
 }
-export const FetchAuthSchemaProjectsLocationsProvidersConnectorsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "view": S.optional(FetchAuthSchemaProjectsLocationsProvidersConnectorsVersionsViewEnum.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:fetchAuthSchema","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "FetchAuthSchemaProjectsLocationsProvidersConnectorsVersionsRequest" }) as any as S.Schema<FetchAuthSchemaProjectsLocationsProvidersConnectorsVersionsRequest>;
+export const FetchAuthSchemaProjectsLocationsProvidersConnectorsVersionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      view: S.optional(
+        FetchAuthSchemaProjectsLocationsProvidersConnectorsVersionsViewEnum.pipe(
+          T.Query(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}:fetchAuthSchema",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "FetchAuthSchemaProjectsLocationsProvidersConnectorsVersionsRequest",
+  }) as any as S.Schema<FetchAuthSchemaProjectsLocationsProvidersConnectorsVersionsRequest>;
 
 /** AuthField defines a field in an authentication type. */
 export interface AuthField {
@@ -2235,17 +2728,27 @@ export interface AuthField {
   dataType?: string;
 }
 export const AuthField = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "description": S.optional(S.String),
-  "key": S.optional(S.String),
-  "dataType": S.optional(S.String),
-}),
+  S.Struct({
+    description: S.optional(S.String),
+    key: S.optional(S.String),
+    dataType: S.optional(S.String),
+  }),
 ).annotate({ identifier: "AuthField" }) as any as S.Schema<AuthField>;
 
 export type AuthFieldList = ReadonlyArray<AuthField>;
-export const AuthFieldList = /*@__PURE__*/ S.Array(AuthField) as any as S.Schema<AuthFieldList>;
+export const AuthFieldList = /*@__PURE__*/ S.Array(
+  AuthField,
+) as any as S.Schema<AuthFieldList>;
 
-export type AuthSchemaAuthTypeEnum = "AUTH_TYPE_UNSPECIFIED" | "USER_PASSWORD" | "OAUTH2_JWT_BEARER" | "OAUTH2_CLIENT_CREDENTIALS" | "SSH_PUBLIC_KEY" | "OAUTH2_AUTH_CODE_FLOW" | "GOOGLE_AUTHENTICATION" | "OAUTH2_AUTH_CODE_FLOW_GOOGLE_MANAGED";
+export type AuthSchemaAuthTypeEnum =
+  | "AUTH_TYPE_UNSPECIFIED"
+  | "USER_PASSWORD"
+  | "OAUTH2_JWT_BEARER"
+  | "OAUTH2_CLIENT_CREDENTIALS"
+  | "SSH_PUBLIC_KEY"
+  | "OAUTH2_AUTH_CODE_FLOW"
+  | "GOOGLE_AUTHENTICATION"
+  | "OAUTH2_AUTH_CODE_FLOW_GOOGLE_MANAGED";
 export const AuthSchemaAuthTypeEnum = /*@__PURE__*/ S.String;
 
 /** AuthSchema defines the schema of an authentication type. */
@@ -2264,18 +2767,20 @@ export interface AuthSchema {
   authKey?: string;
 }
 export const AuthSchema = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "description": S.optional(S.String),
-  "authFields": S.optional(AuthFieldList),
-  "displayName": S.optional(S.String),
-  "authType": S.optional(AuthSchemaAuthTypeEnum),
-  "isDefault": S.optional(S.Boolean),
-  "authKey": S.optional(S.String),
-}),
+  S.Struct({
+    description: S.optional(S.String),
+    authFields: S.optional(AuthFieldList),
+    displayName: S.optional(S.String),
+    authType: S.optional(AuthSchemaAuthTypeEnum),
+    isDefault: S.optional(S.Boolean),
+    authKey: S.optional(S.String),
+  }),
 ).annotate({ identifier: "AuthSchema" }) as any as S.Schema<AuthSchema>;
 
 export type AuthSchemaList = ReadonlyArray<AuthSchema>;
-export const AuthSchemaList = /*@__PURE__*/ S.Array(AuthSchema) as any as S.Schema<AuthSchemaList>;
+export const AuthSchemaList = /*@__PURE__*/ S.Array(
+  AuthSchema,
+) as any as S.Schema<AuthSchemaList>;
 
 /** AuthProperty defines a property of an authentication type. */
 export interface AuthProperty {
@@ -2285,14 +2790,17 @@ export interface AuthProperty {
   description?: string;
 }
 export const AuthProperty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(S.String),
-  "description": S.optional(S.String),
-}),
+  S.Struct({
+    type: S.optional(S.String),
+    description: S.optional(S.String),
+  }),
 ).annotate({ identifier: "AuthProperty" }) as any as S.Schema<AuthProperty>;
 
 export type AuthPropertyMap = { [key: string]: AuthProperty | undefined };
-export const AuthPropertyMap = /*@__PURE__*/ S.Record(S.String, AuthProperty) as any as S.Schema<AuthPropertyMap>;
+export const AuthPropertyMap = /*@__PURE__*/ S.Record(
+  S.String,
+  AuthProperty,
+) as any as S.Schema<AuthPropertyMap>;
 
 /** AuthObject defines a JSON schema of an authentication type. */
 export interface AuthObject {
@@ -2312,19 +2820,21 @@ export interface AuthObject {
   additionalProperties?: boolean;
 }
 export const AuthObject = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(S.String),
-  "description": S.optional(S.String),
-  "authType": S.optional(S.String),
-  "properties": S.optional(AuthPropertyMap),
-  "isDefault": S.optional(S.Boolean),
-  "authKey": S.optional(S.String),
-  "additionalProperties": S.optional(S.Boolean),
-}),
+  S.Struct({
+    type: S.optional(S.String),
+    description: S.optional(S.String),
+    authType: S.optional(S.String),
+    properties: S.optional(AuthPropertyMap),
+    isDefault: S.optional(S.Boolean),
+    authKey: S.optional(S.String),
+    additionalProperties: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "AuthObject" }) as any as S.Schema<AuthObject>;
 
 export type AuthObjectList = ReadonlyArray<AuthObject>;
-export const AuthObjectList = /*@__PURE__*/ S.Array(AuthObject) as any as S.Schema<AuthObjectList>;
+export const AuthObjectList = /*@__PURE__*/ S.Array(
+  AuthObject,
+) as any as S.Schema<AuthObjectList>;
 
 /** JsonAuthSchema defines the JSON schema of all authentication types. */
 export interface JsonAuthSchema {
@@ -2334,10 +2844,10 @@ export interface JsonAuthSchema {
   $schema?: string;
 }
 export const JsonAuthSchema = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "oneOf": S.optional(AuthObjectList),
-  "$schema": S.optional(S.String),
-}),
+  S.Struct({
+    oneOf: S.optional(AuthObjectList),
+    $schema: S.optional(S.String),
+  }),
 ).annotate({ identifier: "JsonAuthSchema" }) as any as S.Schema<JsonAuthSchema>;
 
 /** Response message for Connectors.GetAuthSchema. */
@@ -2348,13 +2858,21 @@ export interface FetchAuthSchemaResponse {
   jsonSchema?: JsonAuthSchema;
 }
 export const FetchAuthSchemaResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "authSchemas": S.optional(AuthSchemaList),
-  "jsonSchema": S.optional(JsonAuthSchema),
-}),
-).annotate({ identifier: "FetchAuthSchemaResponse" }) as any as S.Schema<FetchAuthSchemaResponse>;
+  S.Struct({
+    authSchemas: S.optional(AuthSchemaList),
+    jsonSchema: S.optional(JsonAuthSchema),
+  }),
+).annotate({
+  identifier: "FetchAuthSchemaResponse",
+}) as any as S.Schema<FetchAuthSchemaResponse>;
 
-export type ToolNameOperationEnum = "OPERATION_UNSPECIFIED" | "LIST" | "GET" | "CREATE" | "UPDATE" | "DELETE";
+export type ToolNameOperationEnum =
+  | "OPERATION_UNSPECIFIED"
+  | "LIST"
+  | "GET"
+  | "CREATE"
+  | "UPDATE"
+  | "DELETE";
 export const ToolNameOperationEnum = /*@__PURE__*/ S.String;
 
 /** Tool name for which the tool spec override is to be generated. */
@@ -2367,26 +2885,31 @@ export interface ToolName {
   entityType?: string;
 }
 export const ToolName = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "operation": S.optional(ToolNameOperationEnum),
-  "name": S.optional(S.String),
-  "entityType": S.optional(S.String),
-}),
+  S.Struct({
+    operation: S.optional(ToolNameOperationEnum),
+    name: S.optional(S.String),
+    entityType: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ToolName" }) as any as S.Schema<ToolName>;
 
 export type ToolNameList = ReadonlyArray<ToolName>;
-export const ToolNameList = /*@__PURE__*/ S.Array(ToolName) as any as S.Schema<ToolNameList>;
+export const ToolNameList = /*@__PURE__*/ S.Array(
+  ToolName,
+) as any as S.Schema<ToolNameList>;
 
 /** Request message for FetchConnectionToolspecOverride API. */
 export interface FetchConnectionToolspecOverrideRequest {
   /** Required. List of tools for which the tool spec override is to be generated. */
   toolNames?: ToolNameList;
 }
-export const FetchConnectionToolspecOverrideRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "toolNames": S.optional(ToolNameList),
-}),
-).annotate({ identifier: "FetchConnectionToolspecOverrideRequest" }) as any as S.Schema<FetchConnectionToolspecOverrideRequest>;
+export const FetchConnectionToolspecOverrideRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      toolNames: S.optional(ToolNameList),
+    }),
+).annotate({
+  identifier: "FetchConnectionToolspecOverrideRequest",
+}) as any as S.Schema<FetchConnectionToolspecOverrideRequest>;
 
 export interface FetchToolspecOverrideProjectsLocationsConnectionsRequest {
   /** Required. Resource name format: projects/{project}/locations/{location}/connections/{connection} */
@@ -2394,12 +2917,23 @@ export interface FetchToolspecOverrideProjectsLocationsConnectionsRequest {
   /** Request body */
   body?: FetchConnectionToolspecOverrideRequest;
 }
-export const FetchToolspecOverrideProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(FetchConnectionToolspecOverrideRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:fetchToolspecOverride","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "FetchToolspecOverrideProjectsLocationsConnectionsRequest" }) as any as S.Schema<FetchToolspecOverrideProjectsLocationsConnectionsRequest>;
+export const FetchToolspecOverrideProjectsLocationsConnectionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(
+        FetchConnectionToolspecOverrideRequest.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:fetchToolspecOverride",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "FetchToolspecOverrideProjectsLocationsConnectionsRequest",
+  }) as any as S.Schema<FetchToolspecOverrideProjectsLocationsConnectionsRequest>;
 
 /** Toolspec overrides for a connection only holds the information that is to be displayed in the UI for admins. */
 export interface ToolspecOverride {
@@ -2413,35 +2947,43 @@ export interface ToolspecOverride {
   baseVersion?: string;
 }
 export const ToolspecOverride = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "tools": S.optional(DocumentMapList),
-  "updateTime": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "baseVersion": S.optional(S.String),
-}),
-).annotate({ identifier: "ToolspecOverride" }) as any as S.Schema<ToolspecOverride>;
+  S.Struct({
+    tools: S.optional(DocumentMapList),
+    updateTime: S.optional(S.String),
+    createTime: S.optional(S.String),
+    baseVersion: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ToolspecOverride",
+}) as any as S.Schema<ToolspecOverride>;
 
 /** Response message for FetchConnectionToolspecOverride API. */
 export interface FetchConnectionToolspecOverrideResponse {
   /** Toolspec overrides for the connection. */
   toolspecOverride?: ToolspecOverride;
 }
-export const FetchConnectionToolspecOverrideResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "toolspecOverride": S.optional(ToolspecOverride),
-}),
-).annotate({ identifier: "FetchConnectionToolspecOverrideResponse" }) as any as S.Schema<FetchConnectionToolspecOverrideResponse>;
+export const FetchConnectionToolspecOverrideResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      toolspecOverride: S.optional(ToolspecOverride),
+    }),
+).annotate({
+  identifier: "FetchConnectionToolspecOverrideResponse",
+}) as any as S.Schema<FetchConnectionToolspecOverrideResponse>;
 
 /** Request message for GenerateConnectionToolspecOverride API. */
 export interface GenerateConnectionToolspecOverrideRequest {
   /** Required. List of tools for which the tool spec override is to be generated. */
   toolNames?: ToolNameList;
 }
-export const GenerateConnectionToolspecOverrideRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "toolNames": S.optional(ToolNameList),
-}),
-).annotate({ identifier: "GenerateConnectionToolspecOverrideRequest" }) as any as S.Schema<GenerateConnectionToolspecOverrideRequest>;
+export const GenerateConnectionToolspecOverrideRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      toolNames: S.optional(ToolNameList),
+    }),
+  ).annotate({
+    identifier: "GenerateConnectionToolspecOverrideRequest",
+  }) as any as S.Schema<GenerateConnectionToolspecOverrideRequest>;
 
 export interface GenerateToolspecOverrideProjectsLocationsConnectionsRequest {
   /** Required. Resource name format: projects/{project}/locations/{location}/connections/{connection} */
@@ -2449,23 +2991,37 @@ export interface GenerateToolspecOverrideProjectsLocationsConnectionsRequest {
   /** Request body */
   body?: GenerateConnectionToolspecOverrideRequest;
 }
-export const GenerateToolspecOverrideProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GenerateConnectionToolspecOverrideRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:generateToolspecOverride","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "GenerateToolspecOverrideProjectsLocationsConnectionsRequest" }) as any as S.Schema<GenerateToolspecOverrideProjectsLocationsConnectionsRequest>;
+export const GenerateToolspecOverrideProjectsLocationsConnectionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(
+        GenerateConnectionToolspecOverrideRequest.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:generateToolspecOverride",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GenerateToolspecOverrideProjectsLocationsConnectionsRequest",
+  }) as any as S.Schema<GenerateToolspecOverrideProjectsLocationsConnectionsRequest>;
 
 /** Response message for GenerateConnectionToolspecOverride API. */
 export interface GenerateConnectionToolspecOverrideResponse {
   /** Toolspec overrides for the connection. */
   toolspecOverride?: ToolspecOverride;
 }
-export const GenerateConnectionToolspecOverrideResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "toolspecOverride": S.optional(ToolspecOverride),
-}),
-).annotate({ identifier: "GenerateConnectionToolspecOverrideResponse" }) as any as S.Schema<GenerateConnectionToolspecOverrideResponse>;
+export const GenerateConnectionToolspecOverrideResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      toolspecOverride: S.optional(ToolspecOverride),
+    }),
+  ).annotate({
+    identifier: "GenerateConnectionToolspecOverrideResponse",
+  }) as any as S.Schema<GenerateConnectionToolspecOverrideResponse>;
 
 export interface GetActionProjectsLocationsConnectionsConnectionSchemaMetadataRequest {
   /** Required. Id of the action. */
@@ -2473,24 +3029,52 @@ export interface GetActionProjectsLocationsConnectionsConnectionSchemaMetadataRe
   /** Required. Resource name format: projects/{project}/locations/{location}/connections/{connection}/connectionSchemaMetadata */
   name: string;
 }
-export const GetActionProjectsLocationsConnectionsConnectionSchemaMetadataRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "actionId": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:getAction","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "GetActionProjectsLocationsConnectionsConnectionSchemaMetadataRequest" }) as any as S.Schema<GetActionProjectsLocationsConnectionsConnectionSchemaMetadataRequest>;
+export const GetActionProjectsLocationsConnectionsConnectionSchemaMetadataRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      actionId: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}:getAction",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "GetActionProjectsLocationsConnectionsConnectionSchemaMetadataRequest",
+  }) as any as S.Schema<GetActionProjectsLocationsConnectionsConnectionSchemaMetadataRequest>;
 
 export interface GetConnectionSchemaMetadataProjectsLocationsConnectionsRequest {
   /** Required. Connection name Format: projects/{project}/locations/{location}/connections/{connection}/connectionSchemaMetadata */
   name: string;
 }
-export const GetConnectionSchemaMetadataProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "GetConnectionSchemaMetadataProjectsLocationsConnectionsRequest" }) as any as S.Schema<GetConnectionSchemaMetadataProjectsLocationsConnectionsRequest>;
+export const GetConnectionSchemaMetadataProjectsLocationsConnectionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "GetConnectionSchemaMetadataProjectsLocationsConnectionsRequest",
+  }) as any as S.Schema<GetConnectionSchemaMetadataProjectsLocationsConnectionsRequest>;
 
-export type ConnectionSchemaMetadataStateEnum = "STATE_UNSPECIFIED" | "REFRESHING" | "UPDATED" | "REFRESHING_SCHEMA_METADATA" | "UPDATED_SCHEMA_METADATA" | "REFRESH_SCHEMA_METADATA_FAILED" | "REFRESHING_FULL_SCHEMA" | "UPDATED_FULL_SCHEMA";
+export type ConnectionSchemaMetadataStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "REFRESHING"
+  | "UPDATED"
+  | "REFRESHING_SCHEMA_METADATA"
+  | "UPDATED_SCHEMA_METADATA"
+  | "REFRESH_SCHEMA_METADATA_FAILED"
+  | "REFRESHING_FULL_SCHEMA"
+  | "UPDATED_FULL_SCHEMA";
 export const ConnectionSchemaMetadataStateEnum = /*@__PURE__*/ S.String;
 
 /** ConnectionSchemaMetadata is the singleton resource of each connection. It includes the entity and action names of runtime resources exposed by a connection backend. */
@@ -2511,16 +3095,18 @@ export interface ConnectionSchemaMetadata {
   entities?: StringList;
 }
 export const ConnectionSchemaMetadata = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "actions": S.optional(StringList),
-  "name": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "state": S.optional(ConnectionSchemaMetadataStateEnum),
-  "errorMessage": S.optional(S.String),
-  "refreshTime": S.optional(S.String),
-  "entities": S.optional(StringList),
-}),
-).annotate({ identifier: "ConnectionSchemaMetadata" }) as any as S.Schema<ConnectionSchemaMetadata>;
+  S.Struct({
+    actions: S.optional(StringList),
+    name: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    state: S.optional(ConnectionSchemaMetadataStateEnum),
+    errorMessage: S.optional(S.String),
+    refreshTime: S.optional(S.String),
+    entities: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ConnectionSchemaMetadata",
+}) as any as S.Schema<ConnectionSchemaMetadata>;
 
 export interface GetEntityTypeProjectsLocationsConnectionsConnectionSchemaMetadataRequest {
   /** Required. Resource name format: projects/{project}/locations/{location}/connections/{connection}/connectionSchemaMetadata */
@@ -2528,12 +3114,22 @@ export interface GetEntityTypeProjectsLocationsConnectionsConnectionSchemaMetada
   /** Required. Id of the entity type. */
   entityId?: string;
 }
-export const GetEntityTypeProjectsLocationsConnectionsConnectionSchemaMetadataRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "entityId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:getEntityType","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "GetEntityTypeProjectsLocationsConnectionsConnectionSchemaMetadataRequest" }) as any as S.Schema<GetEntityTypeProjectsLocationsConnectionsConnectionSchemaMetadataRequest>;
+export const GetEntityTypeProjectsLocationsConnectionsConnectionSchemaMetadataRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      entityId: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}:getEntityType",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "GetEntityTypeProjectsLocationsConnectionsConnectionSchemaMetadataRequest",
+  }) as any as S.Schema<GetEntityTypeProjectsLocationsConnectionsConnectionSchemaMetadataRequest>;
 
 export interface GetIamPolicyProjectsLocationsConnectionsRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -2541,12 +3137,21 @@ export interface GetIamPolicyProjectsLocationsConnectionsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-export const GetIamPolicyProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-  "resource": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "GetIamPolicyProjectsLocationsConnectionsRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsConnectionsRequest>;
+export const GetIamPolicyProjectsLocationsConnectionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+      resource: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+resource}:getIamPolicy",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetIamPolicyProjectsLocationsConnectionsRequest",
+  }) as any as S.Schema<GetIamPolicyProjectsLocationsConnectionsRequest>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -2560,12 +3165,12 @@ export interface Expr {
   title?: string;
 }
 export const Expr = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "expression": S.optional(S.String),
-  "description": S.optional(S.String),
-  "location": S.optional(S.String),
-  "title": S.optional(S.String),
-}),
+  S.Struct({
+    expression: S.optional(S.String),
+    description: S.optional(S.String),
+    location: S.optional(S.String),
+    title: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
 /** Associates `members`, or principals, with a `role`. */
@@ -2578,17 +3183,23 @@ export interface Binding {
   members?: StringList;
 }
 export const Binding = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "role": S.optional(S.String),
-  "condition": S.optional(Expr),
-  "members": S.optional(StringList),
-}),
+  S.Struct({
+    role: S.optional(S.String),
+    condition: S.optional(Expr),
+    members: S.optional(StringList),
+  }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = ReadonlyArray<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+export const BindingList = /*@__PURE__*/ S.Array(
+  Binding,
+) as any as S.Schema<BindingList>;
 
-export type AuditLogConfigLogTypeEnum = "LOG_TYPE_UNSPECIFIED" | "ADMIN_READ" | "DATA_WRITE" | "DATA_READ";
+export type AuditLogConfigLogTypeEnum =
+  | "LOG_TYPE_UNSPECIFIED"
+  | "ADMIN_READ"
+  | "DATA_WRITE"
+  | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -2599,14 +3210,16 @@ export interface AuditLogConfig {
   exemptedMembers?: StringList;
 }
 export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "logType": S.optional(AuditLogConfigLogTypeEnum),
-  "exemptedMembers": S.optional(StringList),
-}),
+  S.Struct({
+    logType: S.optional(AuditLogConfigLogTypeEnum),
+    exemptedMembers: S.optional(StringList),
+  }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(AuditLogConfig) as any as S.Schema<AuditLogConfigList>;
+export const AuditLogConfigList = /*@__PURE__*/ S.Array(
+  AuditLogConfig,
+) as any as S.Schema<AuditLogConfigList>;
 
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface AuditConfig {
@@ -2616,14 +3229,16 @@ export interface AuditConfig {
   service?: string;
 }
 export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "auditLogConfigs": S.optional(AuditLogConfigList),
-  "service": S.optional(S.String),
-}),
+  S.Struct({
+    auditLogConfigs: S.optional(AuditLogConfigList),
+    service: S.optional(S.String),
+  }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = ReadonlyArray<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
+export const AuditConfigList = /*@__PURE__*/ S.Array(
+  AuditConfig,
+) as any as S.Schema<AuditConfigList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -2637,12 +3252,12 @@ export interface Policy {
   auditConfigs?: AuditConfigList;
 }
 export const Policy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "etag": S.optional(S.String),
-  "version": S.optional(S.Number),
-  "bindings": S.optional(BindingList),
-  "auditConfigs": S.optional(AuditConfigList),
-}),
+  S.Struct({
+    etag: S.optional(S.String),
+    version: S.optional(S.Number),
+    bindings: S.optional(BindingList),
+    auditConfigs: S.optional(AuditConfigList),
+  }),
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
 
 export interface GetIamPolicyProjectsLocationsProvidersRequest {
@@ -2651,22 +3266,39 @@ export interface GetIamPolicyProjectsLocationsProvidersRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsProvidersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "GetIamPolicyProjectsLocationsProvidersRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsProvidersRequest>;
+export const GetIamPolicyProjectsLocationsProvidersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+resource}:getIamPolicy",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetIamPolicyProjectsLocationsProvidersRequest",
+  }) as any as S.Schema<GetIamPolicyProjectsLocationsProvidersRequest>;
 
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://connectors.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsRequest",
+}) as any as S.Schema<GetProjectsLocationsRequest>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -2682,16 +3314,19 @@ export interface Location {
   displayName?: string;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "labels": S.optional(StringMap),
-  "locationId": S.optional(S.String),
-  "metadata": S.optional(DocumentMap),
-  "name": S.optional(S.String),
-  "displayName": S.optional(S.String),
-}),
+  S.Struct({
+    labels: S.optional(StringMap),
+    locationId: S.optional(S.String),
+    metadata: S.optional(DocumentMap),
+    name: S.optional(S.String),
+    displayName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
-export type GetProjectsLocationsConnectionsViewEnum = "CONNECTION_VIEW_UNSPECIFIED" | "BASIC" | "FULL";
+export type GetProjectsLocationsConnectionsViewEnum =
+  | "CONNECTION_VIEW_UNSPECIFIED"
+  | "BASIC"
+  | "FULL";
 export const GetProjectsLocationsConnectionsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsConnectionsRequest {
@@ -2700,41 +3335,82 @@ export interface GetProjectsLocationsConnectionsRequest {
   /** Specifies which fields of the Connection are returned in the response. Defaults to `BASIC` view. */
   view?: GetProjectsLocationsConnectionsViewEnum | (string & {});
 }
-export const GetProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "view": S.optional(GetProjectsLocationsConnectionsViewEnum.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsConnectionsRequest" }) as any as S.Schema<GetProjectsLocationsConnectionsRequest>;
+export const GetProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      view: S.optional(GetProjectsLocationsConnectionsViewEnum.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsConnectionsRequest",
+}) as any as S.Schema<GetProjectsLocationsConnectionsRequest>;
 
-export type GetProjectsLocationsConnectionsEndUserAuthenticationsViewEnum = "END_USER_AUTHENTICATION_VIEW_UNSPECIFIED" | "BASIC_VIEW" | "FULL_VIEW";
-export const GetProjectsLocationsConnectionsEndUserAuthenticationsViewEnum = /*@__PURE__*/ S.String;
+export type GetProjectsLocationsConnectionsEndUserAuthenticationsViewEnum =
+  | "END_USER_AUTHENTICATION_VIEW_UNSPECIFIED"
+  | "BASIC_VIEW"
+  | "FULL_VIEW";
+export const GetProjectsLocationsConnectionsEndUserAuthenticationsViewEnum =
+  /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsConnectionsEndUserAuthenticationsRequest {
   /** Required. Resource name of the form: `projects/*\/locations/*\/connections/*\/EndUserAuthentications/*` */
   name: string;
   /** Optional. View of the EndUserAuthentication to return. */
-  view?: GetProjectsLocationsConnectionsEndUserAuthenticationsViewEnum | (string & {});
+  view?:
+    | GetProjectsLocationsConnectionsEndUserAuthenticationsViewEnum
+    | (string & {});
 }
-export const GetProjectsLocationsConnectionsEndUserAuthenticationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "view": S.optional(GetProjectsLocationsConnectionsEndUserAuthenticationsViewEnum.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsConnectionsEndUserAuthenticationsRequest" }) as any as S.Schema<GetProjectsLocationsConnectionsEndUserAuthenticationsRequest>;
+export const GetProjectsLocationsConnectionsEndUserAuthenticationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      view: S.optional(
+        GetProjectsLocationsConnectionsEndUserAuthenticationsViewEnum.pipe(
+          T.Query(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsConnectionsEndUserAuthenticationsRequest",
+  }) as any as S.Schema<GetProjectsLocationsConnectionsEndUserAuthenticationsRequest>;
 
 export interface GetProjectsLocationsConnectionsEventSubscriptionsRequest {
   /** Required. Resource name of the form: `projects/*\/locations/*\/connections/*\/eventSubscriptions/*` */
   name: string;
 }
-export const GetProjectsLocationsConnectionsEventSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsConnectionsEventSubscriptionsRequest" }) as any as S.Schema<GetProjectsLocationsConnectionsEventSubscriptionsRequest>;
+export const GetProjectsLocationsConnectionsEventSubscriptionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsConnectionsEventSubscriptionsRequest",
+  }) as any as S.Schema<GetProjectsLocationsConnectionsEventSubscriptionsRequest>;
 
-export type GetProjectsLocationsEndpointAttachmentsViewEnum = "ENDPOINT_ATTACHMENT_VIEW_UNSPECIFIED" | "ENDPOINT_ATTACHMENT_VIEW_BASIC" | "ENDPOINT_ATTACHMENT_VIEW_FULL";
-export const GetProjectsLocationsEndpointAttachmentsViewEnum = /*@__PURE__*/ S.String;
+export type GetProjectsLocationsEndpointAttachmentsViewEnum =
+  | "ENDPOINT_ATTACHMENT_VIEW_UNSPECIFIED"
+  | "ENDPOINT_ATTACHMENT_VIEW_BASIC"
+  | "ENDPOINT_ATTACHMENT_VIEW_FULL";
+export const GetProjectsLocationsEndpointAttachmentsViewEnum =
+  /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsEndpointAttachmentsRequest {
   /** Required. Resource name of the form: `projects/*\/locations/*\/endpointAttachments/*` */
@@ -2742,64 +3418,127 @@ export interface GetProjectsLocationsEndpointAttachmentsRequest {
   /** Optional. Specifies which fields of the EndpointAttachment are returned in the response. Defaults to `ENDPOINT_ATTACHMENT_VIEW_BASIC` view. */
   view?: GetProjectsLocationsEndpointAttachmentsViewEnum | (string & {});
 }
-export const GetProjectsLocationsEndpointAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "view": S.optional(GetProjectsLocationsEndpointAttachmentsViewEnum.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsEndpointAttachmentsRequest" }) as any as S.Schema<GetProjectsLocationsEndpointAttachmentsRequest>;
+export const GetProjectsLocationsEndpointAttachmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      view: S.optional(
+        GetProjectsLocationsEndpointAttachmentsViewEnum.pipe(T.Query()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsEndpointAttachmentsRequest",
+  }) as any as S.Schema<GetProjectsLocationsEndpointAttachmentsRequest>;
 
 export interface GetProjectsLocationsGlobalCustomConnectorsRequest {
   /** Required. Resource name of the form: `projects/*\/locations/*\/customConnectors/*` */
   name: string;
 }
-export const GetProjectsLocationsGlobalCustomConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsGlobalCustomConnectorsRequest" }) as any as S.Schema<GetProjectsLocationsGlobalCustomConnectorsRequest>;
+export const GetProjectsLocationsGlobalCustomConnectorsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsGlobalCustomConnectorsRequest",
+  }) as any as S.Schema<GetProjectsLocationsGlobalCustomConnectorsRequest>;
 
 export interface GetProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRequest {
   /** Required. Resource name of the form: `projects/*\/locations/{location}/customConnectors/*\/customConnectorVersions/*` */
   name: string;
 }
-export const GetProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRequest" }) as any as S.Schema<GetProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRequest>;
+export const GetProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "GetProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRequest",
+  }) as any as S.Schema<GetProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRequest>;
 
 export interface GetProjectsLocationsGlobalManagedZonesRequest {
   /** Required. Resource name of the form: `projects/*\/locations/global/managedZones/*` */
   name: string;
 }
-export const GetProjectsLocationsGlobalManagedZonesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsGlobalManagedZonesRequest" }) as any as S.Schema<GetProjectsLocationsGlobalManagedZonesRequest>;
+export const GetProjectsLocationsGlobalManagedZonesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsGlobalManagedZonesRequest",
+  }) as any as S.Schema<GetProjectsLocationsGlobalManagedZonesRequest>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsOperationsRequest",
+}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export interface GetProjectsLocationsProvidersRequest {
   /** Required. Resource name of the form: `projects/*\/locations/*\/providers/*` Only global location is supported for Provider resource. */
   name: string;
 }
-export const GetProjectsLocationsProvidersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsProvidersRequest" }) as any as S.Schema<GetProjectsLocationsProvidersRequest>;
+export const GetProjectsLocationsProvidersRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsProvidersRequest",
+}) as any as S.Schema<GetProjectsLocationsProvidersRequest>;
 
-export type ProviderLaunchStageEnum = "LAUNCH_STAGE_UNSPECIFIED" | "PREVIEW" | "GA" | "DEPRECATED" | "TEST" | "PRIVATE_PREVIEW";
+export type ProviderLaunchStageEnum =
+  | "LAUNCH_STAGE_UNSPECIFIED"
+  | "PREVIEW"
+  | "GA"
+  | "DEPRECATED"
+  | "TEST"
+  | "PRIVATE_PREVIEW";
 export const ProviderLaunchStageEnum = /*@__PURE__*/ S.String;
 
 /** Provider indicates the owner who provides the connectors. */
@@ -2826,40 +3565,62 @@ export interface Provider {
   launchStage?: ProviderLaunchStageEnum;
 }
 export const Provider = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "documentationUri": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "name": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "webAssetsLocation": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "externalUri": S.optional(S.String),
-  "description": S.optional(S.String),
-  "launchStage": S.optional(ProviderLaunchStageEnum),
-}),
+  S.Struct({
+    documentationUri: S.optional(S.String),
+    displayName: S.optional(S.String),
+    name: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    webAssetsLocation: S.optional(S.String),
+    createTime: S.optional(S.String),
+    labels: S.optional(StringMap),
+    externalUri: S.optional(S.String),
+    description: S.optional(S.String),
+    launchStage: S.optional(ProviderLaunchStageEnum),
+  }),
 ).annotate({ identifier: "Provider" }) as any as S.Schema<Provider>;
 
 export interface GetProjectsLocationsProvidersConnectorsRequest {
   /** Required. Resource name of the form: `projects/*\/locations/*\/providers/*\/connectors/*` Only global location is supported for Connector resource. */
   name: string;
 }
-export const GetProjectsLocationsProvidersConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsProvidersConnectorsRequest" }) as any as S.Schema<GetProjectsLocationsProvidersConnectorsRequest>;
+export const GetProjectsLocationsProvidersConnectorsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsProvidersConnectorsRequest",
+  }) as any as S.Schema<GetProjectsLocationsProvidersConnectorsRequest>;
 
-export type ConnectorConnectorTypeEnum = "CONNECTOR_TYPE_UNSPECIFIED" | "CONNECTOR_TYPE_GOOGLE" | "CONNECTOR_TYPE_TECHNICAL" | "CONNECTOR_TYPE_THIRD_PARTY";
+export type ConnectorConnectorTypeEnum =
+  | "CONNECTOR_TYPE_UNSPECIFIED"
+  | "CONNECTOR_TYPE_GOOGLE"
+  | "CONNECTOR_TYPE_TECHNICAL"
+  | "CONNECTOR_TYPE_THIRD_PARTY";
 export const ConnectorConnectorTypeEnum = /*@__PURE__*/ S.String;
 
-export type EventingDetailsSubscriptionTypeEnum = "SUBSCRIPTION_TYPE_UNSPECIFIED" | "SHARED" | "USER_SPECIFIC";
+export type EventingDetailsSubscriptionTypeEnum =
+  | "SUBSCRIPTION_TYPE_UNSPECIFIED"
+  | "SHARED"
+  | "USER_SPECIFIC";
 export const EventingDetailsSubscriptionTypeEnum = /*@__PURE__*/ S.String;
 
 export type EventingDetailsTypeEnum = "TYPE_UNSPECIFIED" | "WEBHOOK" | "JMS";
 export const EventingDetailsTypeEnum = /*@__PURE__*/ S.String;
 
-export type EventingDetailsLaunchStageEnum = "LAUNCH_STAGE_UNSPECIFIED" | "PREVIEW" | "GA" | "DEPRECATED" | "TEST" | "PRIVATE_PREVIEW";
+export type EventingDetailsLaunchStageEnum =
+  | "LAUNCH_STAGE_UNSPECIFIED"
+  | "PREVIEW"
+  | "GA"
+  | "DEPRECATED"
+  | "TEST"
+  | "PRIVATE_PREVIEW";
 export const EventingDetailsLaunchStageEnum = /*@__PURE__*/ S.String;
 
 /** Eventing Details message. */
@@ -2884,18 +3645,20 @@ export interface EventingDetails {
   launchStage?: EventingDetailsLaunchStageEnum;
 }
 export const EventingDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "documentationLink": S.optional(S.String),
-  "searchTags": S.optional(StringList),
-  "name": S.optional(S.String),
-  "customEventTypes": S.optional(S.Boolean),
-  "subscriptionType": S.optional(EventingDetailsSubscriptionTypeEnum),
-  "iconLocation": S.optional(S.String),
-  "type": S.optional(EventingDetailsTypeEnum),
-  "description": S.optional(S.String),
-  "launchStage": S.optional(EventingDetailsLaunchStageEnum),
-}),
-).annotate({ identifier: "EventingDetails" }) as any as S.Schema<EventingDetails>;
+  S.Struct({
+    documentationLink: S.optional(S.String),
+    searchTags: S.optional(StringList),
+    name: S.optional(S.String),
+    customEventTypes: S.optional(S.Boolean),
+    subscriptionType: S.optional(EventingDetailsSubscriptionTypeEnum),
+    iconLocation: S.optional(S.String),
+    type: S.optional(EventingDetailsTypeEnum),
+    description: S.optional(S.String),
+    launchStage: S.optional(EventingDetailsLaunchStageEnum),
+  }),
+).annotate({
+  identifier: "EventingDetails",
+}) as any as S.Schema<EventingDetails>;
 
 /** Marketplace connector details. */
 export interface MarketplaceConnectorDetails {
@@ -2909,15 +3672,23 @@ export interface MarketplaceConnectorDetails {
   marketplaceProductId?: string;
 }
 export const MarketplaceConnectorDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "partner": S.optional(S.String),
-  "marketplaceProduct": S.optional(S.String),
-  "marketplaceProductUri": S.optional(S.String),
-  "marketplaceProductId": S.optional(S.String),
-}),
-).annotate({ identifier: "MarketplaceConnectorDetails" }) as any as S.Schema<MarketplaceConnectorDetails>;
+  S.Struct({
+    partner: S.optional(S.String),
+    marketplaceProduct: S.optional(S.String),
+    marketplaceProductUri: S.optional(S.String),
+    marketplaceProductId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MarketplaceConnectorDetails",
+}) as any as S.Schema<MarketplaceConnectorDetails>;
 
-export type ConnectorLaunchStageEnum = "LAUNCH_STAGE_UNSPECIFIED" | "PREVIEW" | "GA" | "DEPRECATED" | "TEST" | "PRIVATE_PREVIEW";
+export type ConnectorLaunchStageEnum =
+  | "LAUNCH_STAGE_UNSPECIFIED"
+  | "PREVIEW"
+  | "GA"
+  | "DEPRECATED"
+  | "TEST"
+  | "PRIVATE_PREVIEW";
 export const ConnectorLaunchStageEnum = /*@__PURE__*/ S.String;
 
 /** Connectors indicates a specific connector type, e.x. Salesforce, SAP etc. */
@@ -2954,43 +3725,65 @@ export interface Connector {
   updateTime?: string;
 }
 export const Connector = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "connectorType": S.optional(ConnectorConnectorTypeEnum),
-  "tags": S.optional(StringList),
-  "documentationUri": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "externalUri": S.optional(S.String),
-  "description": S.optional(S.String),
-  "webAssetsLocation": S.optional(S.String),
-  "eventingDetails": S.optional(EventingDetails),
-  "category": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "marketplaceConnectorDetails": S.optional(MarketplaceConnectorDetails),
-  "launchStage": S.optional(ConnectorLaunchStageEnum),
-  "name": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-}),
+  S.Struct({
+    connectorType: S.optional(ConnectorConnectorTypeEnum),
+    tags: S.optional(StringList),
+    documentationUri: S.optional(S.String),
+    displayName: S.optional(S.String),
+    labels: S.optional(StringMap),
+    externalUri: S.optional(S.String),
+    description: S.optional(S.String),
+    webAssetsLocation: S.optional(S.String),
+    eventingDetails: S.optional(EventingDetails),
+    category: S.optional(S.String),
+    createTime: S.optional(S.String),
+    marketplaceConnectorDetails: S.optional(MarketplaceConnectorDetails),
+    launchStage: S.optional(ConnectorLaunchStageEnum),
+    name: S.optional(S.String),
+    updateTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Connector" }) as any as S.Schema<Connector>;
 
-export type GetProjectsLocationsProvidersConnectorsVersionsViewEnum = "CONNECTOR_VERSION_VIEW_UNSPECIFIED" | "CONNECTOR_VERSION_VIEW_BASIC" | "CONNECTOR_VERSION_VIEW_FULL";
-export const GetProjectsLocationsProvidersConnectorsVersionsViewEnum = /*@__PURE__*/ S.String;
+export type GetProjectsLocationsProvidersConnectorsVersionsViewEnum =
+  | "CONNECTOR_VERSION_VIEW_UNSPECIFIED"
+  | "CONNECTOR_VERSION_VIEW_BASIC"
+  | "CONNECTOR_VERSION_VIEW_FULL";
+export const GetProjectsLocationsProvidersConnectorsVersionsViewEnum =
+  /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsProvidersConnectorsVersionsRequest {
   /** Required. Resource name of the form: `projects/*\/locations/*\/providers/*\/connectors/*\/versions/*` Only global location is supported for ConnectorVersion resource. */
   name: string;
   /** Specifies which fields of the ConnectorVersion are returned in the response. Defaults to `CUSTOMER` view. */
-  view?: GetProjectsLocationsProvidersConnectorsVersionsViewEnum | (string & {});
+  view?:
+    | GetProjectsLocationsProvidersConnectorsVersionsViewEnum
+    | (string & {});
 }
-export const GetProjectsLocationsProvidersConnectorsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "view": S.optional(GetProjectsLocationsProvidersConnectorsVersionsViewEnum.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsProvidersConnectorsVersionsRequest" }) as any as S.Schema<GetProjectsLocationsProvidersConnectorsVersionsRequest>;
+export const GetProjectsLocationsProvidersConnectorsVersionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      view: S.optional(
+        GetProjectsLocationsProvidersConnectorsVersionsViewEnum.pipe(T.Query()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsProvidersConnectorsVersionsRequest",
+  }) as any as S.Schema<GetProjectsLocationsProvidersConnectorsVersionsRequest>;
 
-export type DestinationConfigTemplatePortFieldTypeEnum = "FIELD_TYPE_UNSPECIFIED" | "REQUIRED" | "OPTIONAL" | "NOT_USED";
-export const DestinationConfigTemplatePortFieldTypeEnum = /*@__PURE__*/ S.String;
+export type DestinationConfigTemplatePortFieldTypeEnum =
+  | "FIELD_TYPE_UNSPECIFIED"
+  | "REQUIRED"
+  | "OPTIONAL"
+  | "NOT_USED";
+export const DestinationConfigTemplatePortFieldTypeEnum =
+  /*@__PURE__*/ S.String;
 
 /** DestinationConfigTemplate defines required destinations supported by the Connector. */
 export interface DestinationConfigTemplate {
@@ -3016,33 +3809,50 @@ export interface DestinationConfigTemplate {
   key?: string;
 }
 export const DestinationConfigTemplate = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "description": S.optional(S.String),
-  "max": S.optional(S.Number),
-  "isAdvanced": S.optional(S.Boolean),
-  "autocompleteSuggestions": S.optional(StringList),
-  "portFieldType": S.optional(DestinationConfigTemplatePortFieldTypeEnum),
-  "defaultPort": S.optional(S.Number),
-  "regexPattern": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "min": S.optional(S.Number),
-  "key": S.optional(S.String),
-}),
-).annotate({ identifier: "DestinationConfigTemplate" }) as any as S.Schema<DestinationConfigTemplate>;
+  S.Struct({
+    description: S.optional(S.String),
+    max: S.optional(S.Number),
+    isAdvanced: S.optional(S.Boolean),
+    autocompleteSuggestions: S.optional(StringList),
+    portFieldType: S.optional(DestinationConfigTemplatePortFieldTypeEnum),
+    defaultPort: S.optional(S.Number),
+    regexPattern: S.optional(S.String),
+    displayName: S.optional(S.String),
+    min: S.optional(S.Number),
+    key: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DestinationConfigTemplate",
+}) as any as S.Schema<DestinationConfigTemplate>;
 
-export type SslConfigTemplateServerCertTypeItemEnum = "CERT_TYPE_UNSPECIFIED" | "PEM";
+export type SslConfigTemplateServerCertTypeItemEnum =
+  | "CERT_TYPE_UNSPECIFIED"
+  | "PEM";
 export const SslConfigTemplateServerCertTypeItemEnum = /*@__PURE__*/ S.String;
 
-export type SslConfigTemplateServerCertTypeItemEnumList = ReadonlyArray<SslConfigTemplateServerCertTypeItemEnum>;
-export const SslConfigTemplateServerCertTypeItemEnumList = /*@__PURE__*/ S.Array(SslConfigTemplateServerCertTypeItemEnum) as any as S.Schema<SslConfigTemplateServerCertTypeItemEnumList>;
+export type SslConfigTemplateServerCertTypeItemEnumList =
+  ReadonlyArray<SslConfigTemplateServerCertTypeItemEnum>;
+export const SslConfigTemplateServerCertTypeItemEnumList =
+  /*@__PURE__*/ S.Array(
+    SslConfigTemplateServerCertTypeItemEnum,
+  ) as any as S.Schema<SslConfigTemplateServerCertTypeItemEnumList>;
 
-export type SslConfigTemplateClientCertTypeItemEnum = "CERT_TYPE_UNSPECIFIED" | "PEM";
+export type SslConfigTemplateClientCertTypeItemEnum =
+  | "CERT_TYPE_UNSPECIFIED"
+  | "PEM";
 export const SslConfigTemplateClientCertTypeItemEnum = /*@__PURE__*/ S.String;
 
-export type SslConfigTemplateClientCertTypeItemEnumList = ReadonlyArray<SslConfigTemplateClientCertTypeItemEnum>;
-export const SslConfigTemplateClientCertTypeItemEnumList = /*@__PURE__*/ S.Array(SslConfigTemplateClientCertTypeItemEnum) as any as S.Schema<SslConfigTemplateClientCertTypeItemEnumList>;
+export type SslConfigTemplateClientCertTypeItemEnumList =
+  ReadonlyArray<SslConfigTemplateClientCertTypeItemEnum>;
+export const SslConfigTemplateClientCertTypeItemEnumList =
+  /*@__PURE__*/ S.Array(
+    SslConfigTemplateClientCertTypeItemEnum,
+  ) as any as S.Schema<SslConfigTemplateClientCertTypeItemEnumList>;
 
-export type SslConfigTemplateSslTypeEnum = "SSL_TYPE_UNSPECIFIED" | "TLS" | "MTLS";
+export type SslConfigTemplateSslTypeEnum =
+  | "SSL_TYPE_UNSPECIFIED"
+  | "TLS"
+  | "MTLS";
 export const SslConfigTemplateSslTypeEnum = /*@__PURE__*/ S.String;
 
 /** Ssl config details of a connector version */
@@ -3059,17 +3869,23 @@ export interface SslConfigTemplate {
   sslType?: SslConfigTemplateSslTypeEnum;
 }
 export const SslConfigTemplate = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "additionalVariables": S.optional(ConfigVariableTemplateList),
-  "serverCertType": S.optional(SslConfigTemplateServerCertTypeItemEnumList),
-  "clientCertType": S.optional(SslConfigTemplateClientCertTypeItemEnumList),
-  "isTlsMandatory": S.optional(S.Boolean),
-  "sslType": S.optional(SslConfigTemplateSslTypeEnum),
-}),
-).annotate({ identifier: "SslConfigTemplate" }) as any as S.Schema<SslConfigTemplate>;
+  S.Struct({
+    additionalVariables: S.optional(ConfigVariableTemplateList),
+    serverCertType: S.optional(SslConfigTemplateServerCertTypeItemEnumList),
+    clientCertType: S.optional(SslConfigTemplateClientCertTypeItemEnumList),
+    isTlsMandatory: S.optional(S.Boolean),
+    sslType: S.optional(SslConfigTemplateSslTypeEnum),
+  }),
+).annotate({
+  identifier: "SslConfigTemplate",
+}) as any as S.Schema<SslConfigTemplate>;
 
-export type EventingConfigTemplateEventListenerTypeEnum = "EVENT_LISTENER_TYPE_UNSPECIFIED" | "WEBHOOK_LISTENER" | "JMS_LISTENER";
-export const EventingConfigTemplateEventListenerTypeEnum = /*@__PURE__*/ S.String;
+export type EventingConfigTemplateEventListenerTypeEnum =
+  | "EVENT_LISTENER_TYPE_UNSPECIFIED"
+  | "WEBHOOK_LISTENER"
+  | "JMS_LISTENER";
+export const EventingConfigTemplateEventListenerTypeEnum =
+  /*@__PURE__*/ S.String;
 
 /** Eventing Config details of a connector version. next: 14 */
 export interface EventingConfigTemplate {
@@ -3101,22 +3917,24 @@ export interface EventingConfigTemplate {
   listenerAuthConfigTemplates?: AuthConfigTemplateList;
 }
 export const EventingConfigTemplate = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "additionalVariables": S.optional(ConfigVariableTemplateList),
-  "autoRegistrationSupported": S.optional(S.Boolean),
-  "proxyDestinationConfig": S.optional(DestinationConfigTemplate),
-  "triggerConfigVariables": S.optional(ConfigVariableTemplateList),
-  "registrationDestinationConfig": S.optional(DestinationConfigTemplate),
-  "authConfigTemplates": S.optional(AuthConfigTemplateList),
-  "encryptionKeyTemplate": S.optional(ConfigVariableTemplate),
-  "sslConfigTemplate": S.optional(SslConfigTemplate),
-  "isEventingSupported": S.optional(S.Boolean),
-  "enrichmentSupported": S.optional(S.Boolean),
-  "eventListenerType": S.optional(EventingConfigTemplateEventListenerTypeEnum),
-  "autoRefresh": S.optional(S.Boolean),
-  "listenerAuthConfigTemplates": S.optional(AuthConfigTemplateList),
-}),
-).annotate({ identifier: "EventingConfigTemplate" }) as any as S.Schema<EventingConfigTemplate>;
+  S.Struct({
+    additionalVariables: S.optional(ConfigVariableTemplateList),
+    autoRegistrationSupported: S.optional(S.Boolean),
+    proxyDestinationConfig: S.optional(DestinationConfigTemplate),
+    triggerConfigVariables: S.optional(ConfigVariableTemplateList),
+    registrationDestinationConfig: S.optional(DestinationConfigTemplate),
+    authConfigTemplates: S.optional(AuthConfigTemplateList),
+    encryptionKeyTemplate: S.optional(ConfigVariableTemplate),
+    sslConfigTemplate: S.optional(SslConfigTemplate),
+    isEventingSupported: S.optional(S.Boolean),
+    enrichmentSupported: S.optional(S.Boolean),
+    eventListenerType: S.optional(EventingConfigTemplateEventListenerTypeEnum),
+    autoRefresh: S.optional(S.Boolean),
+    listenerAuthConfigTemplates: S.optional(AuthConfigTemplateList),
+  }),
+).annotate({
+  identifier: "EventingConfigTemplate",
+}) as any as S.Schema<EventingConfigTemplate>;
 
 /** Standard action */
 export interface StandardAction {
@@ -3124,19 +3942,27 @@ export interface StandardAction {
   name?: string;
 }
 export const StandardAction = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "StandardAction" }) as any as S.Schema<StandardAction>;
 
 export type StandardActionList = ReadonlyArray<StandardAction>;
-export const StandardActionList = /*@__PURE__*/ S.Array(StandardAction) as any as S.Schema<StandardActionList>;
+export const StandardActionList = /*@__PURE__*/ S.Array(
+  StandardAction,
+) as any as S.Schema<StandardActionList>;
 
 export type RoleGrantList = ReadonlyArray<RoleGrant>;
-export const RoleGrantList = /*@__PURE__*/ S.Array(RoleGrant) as any as S.Schema<RoleGrantList>;
+export const RoleGrantList = /*@__PURE__*/ S.Array(
+  RoleGrant,
+) as any as S.Schema<RoleGrantList>;
 
-export type NetworkEgressModeOverrideNetworkEgressModeEnum = "NETWORK_EGRESS_MODE_UNSPECIFIED" | "SERVERLESS_VPC_ACCESS_CONNECTOR" | "DIRECT_VPC_EGRESS";
-export const NetworkEgressModeOverrideNetworkEgressModeEnum = /*@__PURE__*/ S.String;
+export type NetworkEgressModeOverrideNetworkEgressModeEnum =
+  | "NETWORK_EGRESS_MODE_UNSPECIFIED"
+  | "SERVERLESS_VPC_ACCESS_CONNECTOR"
+  | "DIRECT_VPC_EGRESS";
+export const NetworkEgressModeOverrideNetworkEgressModeEnum =
+  /*@__PURE__*/ S.String;
 
 /** NetworkEgressModeOverride provides the network egress mode override for a connector. */
 export interface NetworkEgressModeOverride {
@@ -3148,14 +3974,21 @@ export interface NetworkEgressModeOverride {
   isJobsOverrideEnabled?: boolean;
 }
 export const NetworkEgressModeOverride = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "networkEgressMode": S.optional(NetworkEgressModeOverrideNetworkEgressModeEnum),
-  "isEventingOverrideEnabled": S.optional(S.Boolean),
-  "isJobsOverrideEnabled": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "NetworkEgressModeOverride" }) as any as S.Schema<NetworkEgressModeOverride>;
+  S.Struct({
+    networkEgressMode: S.optional(
+      NetworkEgressModeOverrideNetworkEgressModeEnum,
+    ),
+    isEventingOverrideEnabled: S.optional(S.Boolean),
+    isJobsOverrideEnabled: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "NetworkEgressModeOverride",
+}) as any as S.Schema<NetworkEgressModeOverride>;
 
-export type ConnectorInfraConfigDeploymentModelEnum = "DEPLOYMENT_MODEL_UNSPECIFIED" | "GKE_MST" | "CLOUD_RUN_MST";
+export type ConnectorInfraConfigDeploymentModelEnum =
+  | "DEPLOYMENT_MODEL_UNSPECIFIED"
+  | "GKE_MST"
+  | "CLOUD_RUN_MST";
 export const ConnectorInfraConfigDeploymentModelEnum = /*@__PURE__*/ S.String;
 
 /** This cofiguration provides infra configs like rate limit threshold which need to be configurable for every connector version */
@@ -3198,27 +4031,29 @@ export interface ConnectorInfraConfig {
   alwaysAllocateCpu?: boolean;
 }
 export const ConnectorInfraConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "publicNetworkIngressEnabled": S.optional(S.Boolean),
-  "internalclientRatelimitThreshold": S.optional(S.String),
-  "hpaConfig": S.optional(HPAConfig),
-  "migrateDeploymentModel": S.optional(S.Boolean),
-  "resourceRequests": S.optional(ResourceRequests),
-  "provisionCloudSpanner": S.optional(S.Boolean),
-  "ratelimitThreshold": S.optional(S.String),
-  "networkEgressModeOverride": S.optional(NetworkEgressModeOverride),
-  "connectionServiceAccountEnabled": S.optional(S.Boolean),
-  "resourceLimits": S.optional(ResourceLimits),
-  "sharedDeployment": S.optional(S.String),
-  "connectorVersioningEnabled": S.optional(S.Boolean),
-  "maxInstanceRequestConcurrency": S.optional(S.Number),
-  "migrateTls": S.optional(S.Boolean),
-  "deploymentModel": S.optional(ConnectorInfraConfigDeploymentModelEnum),
-  "connectionRatelimitWindowSeconds": S.optional(S.String),
-  "provisionMemstore": S.optional(S.Boolean),
-  "alwaysAllocateCpu": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "ConnectorInfraConfig" }) as any as S.Schema<ConnectorInfraConfig>;
+  S.Struct({
+    publicNetworkIngressEnabled: S.optional(S.Boolean),
+    internalclientRatelimitThreshold: S.optional(S.String),
+    hpaConfig: S.optional(HPAConfig),
+    migrateDeploymentModel: S.optional(S.Boolean),
+    resourceRequests: S.optional(ResourceRequests),
+    provisionCloudSpanner: S.optional(S.Boolean),
+    ratelimitThreshold: S.optional(S.String),
+    networkEgressModeOverride: S.optional(NetworkEgressModeOverride),
+    connectionServiceAccountEnabled: S.optional(S.Boolean),
+    resourceLimits: S.optional(ResourceLimits),
+    sharedDeployment: S.optional(S.String),
+    connectorVersioningEnabled: S.optional(S.Boolean),
+    maxInstanceRequestConcurrency: S.optional(S.Number),
+    migrateTls: S.optional(S.Boolean),
+    deploymentModel: S.optional(ConnectorInfraConfigDeploymentModelEnum),
+    connectionRatelimitWindowSeconds: S.optional(S.String),
+    provisionMemstore: S.optional(S.Boolean),
+    alwaysAllocateCpu: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ConnectorInfraConfig",
+}) as any as S.Schema<ConnectorInfraConfig>;
 
 /** Standard entity */
 export interface StandardEntity {
@@ -3226,13 +4061,15 @@ export interface StandardEntity {
   name?: string;
 }
 export const StandardEntity = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "StandardEntity" }) as any as S.Schema<StandardEntity>;
 
 export type StandardEntityList = ReadonlyArray<StandardEntity>;
-export const StandardEntityList = /*@__PURE__*/ S.Array(StandardEntity) as any as S.Schema<StandardEntityList>;
+export const StandardEntityList = /*@__PURE__*/ S.Array(
+  StandardEntity,
+) as any as S.Schema<StandardEntityList>;
 
 /** This configuration provides VPCSC config for a connector. */
 export interface VpcscConfig {
@@ -3242,10 +4079,10 @@ export interface VpcscConfig {
   disableFirewallVpcscFlow?: boolean;
 }
 export const VpcscConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "defaultAllowlistedHost": S.optional(StringList),
-  "disableFirewallVpcscFlow": S.optional(S.Boolean),
-}),
+  S.Struct({
+    defaultAllowlistedHost: S.optional(StringList),
+    disableFirewallVpcscFlow: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "VpcscConfig" }) as any as S.Schema<VpcscConfig>;
 
 /** Config for connection schema refresh */
@@ -3256,13 +4093,21 @@ export interface SchemaRefreshConfig {
   useSynchronousSchemaRefresh?: boolean;
 }
 export const SchemaRefreshConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "useActionDisplayNames": S.optional(S.Boolean),
-  "useSynchronousSchemaRefresh": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "SchemaRefreshConfig" }) as any as S.Schema<SchemaRefreshConfig>;
+  S.Struct({
+    useActionDisplayNames: S.optional(S.Boolean),
+    useSynchronousSchemaRefresh: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "SchemaRefreshConfig",
+}) as any as S.Schema<SchemaRefreshConfig>;
 
-export type ConnectorVersionLaunchStageEnum = "LAUNCH_STAGE_UNSPECIFIED" | "PREVIEW" | "GA" | "DEPRECATED" | "TEST" | "PRIVATE_PREVIEW";
+export type ConnectorVersionLaunchStageEnum =
+  | "LAUNCH_STAGE_UNSPECIFIED"
+  | "PREVIEW"
+  | "GA"
+  | "DEPRECATED"
+  | "TEST"
+  | "PRIVATE_PREVIEW";
 export const ConnectorVersionLaunchStageEnum = /*@__PURE__*/ S.String;
 
 /** Supported runtime features of a connector version. */
@@ -3277,21 +4122,35 @@ export interface SupportedRuntimeFeatures {
   asyncOperations?: boolean;
 }
 export const SupportedRuntimeFeatures = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "entityApis": S.optional(S.Boolean),
-  "actionApis": S.optional(S.Boolean),
-  "sqlQuery": S.optional(S.Boolean),
-  "asyncOperations": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "SupportedRuntimeFeatures" }) as any as S.Schema<SupportedRuntimeFeatures>;
+  S.Struct({
+    entityApis: S.optional(S.Boolean),
+    actionApis: S.optional(S.Boolean),
+    sqlQuery: S.optional(S.Boolean),
+    asyncOperations: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "SupportedRuntimeFeatures",
+}) as any as S.Schema<SupportedRuntimeFeatures>;
 
-export type ConnectorVersionUnsupportedConnectionTypesItemEnum = "CONNECTION_TYPE_UNSPECIFIED" | "CONNECTION_WITH_EVENTING" | "ONLY_CONNECTION" | "ONLY_EVENTING";
-export const ConnectorVersionUnsupportedConnectionTypesItemEnum = /*@__PURE__*/ S.String;
+export type ConnectorVersionUnsupportedConnectionTypesItemEnum =
+  | "CONNECTION_TYPE_UNSPECIFIED"
+  | "CONNECTION_WITH_EVENTING"
+  | "ONLY_CONNECTION"
+  | "ONLY_EVENTING";
+export const ConnectorVersionUnsupportedConnectionTypesItemEnum =
+  /*@__PURE__*/ S.String;
 
-export type ConnectorVersionUnsupportedConnectionTypesItemEnumList = ReadonlyArray<ConnectorVersionUnsupportedConnectionTypesItemEnum>;
-export const ConnectorVersionUnsupportedConnectionTypesItemEnumList = /*@__PURE__*/ S.Array(ConnectorVersionUnsupportedConnectionTypesItemEnum) as any as S.Schema<ConnectorVersionUnsupportedConnectionTypesItemEnumList>;
+export type ConnectorVersionUnsupportedConnectionTypesItemEnumList =
+  ReadonlyArray<ConnectorVersionUnsupportedConnectionTypesItemEnum>;
+export const ConnectorVersionUnsupportedConnectionTypesItemEnumList =
+  /*@__PURE__*/ S.Array(
+    ConnectorVersionUnsupportedConnectionTypesItemEnum,
+  ) as any as S.Schema<ConnectorVersionUnsupportedConnectionTypesItemEnumList>;
 
-export type SourceSourceTypeEnum = "SOURCE_TYPE_UNSPECIFIED" | "CONFIG_VARIABLE" | "AUTH_CONFIG_VARIABLE";
+export type SourceSourceTypeEnum =
+  | "SOURCE_TYPE_UNSPECIFIED"
+  | "CONFIG_VARIABLE"
+  | "AUTH_CONFIG_VARIABLE";
 export const SourceSourceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Source to extract the backend from. */
@@ -3302,10 +4161,10 @@ export interface Source {
   fieldId?: string;
 }
 export const Source = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sourceType": S.optional(SourceSourceTypeEnum),
-  "fieldId": S.optional(S.String),
-}),
+  S.Struct({
+    sourceType: S.optional(SourceSourceTypeEnum),
+    fieldId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Source" }) as any as S.Schema<Source>;
 
 /** Extraction Rule. */
@@ -3318,15 +4177,17 @@ export interface ExtractionRule {
   formatString?: string;
 }
 export const ExtractionRule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "source": S.optional(Source),
-  "extractionRegex": S.optional(S.String),
-  "formatString": S.optional(S.String),
-}),
+  S.Struct({
+    source: S.optional(Source),
+    extractionRegex: S.optional(S.String),
+    formatString: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ExtractionRule" }) as any as S.Schema<ExtractionRule>;
 
 export type ExtractionRuleList = ReadonlyArray<ExtractionRule>;
-export const ExtractionRuleList = /*@__PURE__*/ S.Array(ExtractionRule) as any as S.Schema<ExtractionRuleList>;
+export const ExtractionRuleList = /*@__PURE__*/ S.Array(
+  ExtractionRule,
+) as any as S.Schema<ExtractionRuleList>;
 
 /** Extraction Rules to identity the backends from customer provided configuration in Connection resource. */
 export interface ExtractionRules {
@@ -3334,15 +4195,24 @@ export interface ExtractionRules {
   extractionRule?: ExtractionRuleList;
 }
 export const ExtractionRules = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "extractionRule": S.optional(ExtractionRuleList),
-}),
-).annotate({ identifier: "ExtractionRules" }) as any as S.Schema<ExtractionRules>;
+  S.Struct({
+    extractionRule: S.optional(ExtractionRuleList),
+  }),
+).annotate({
+  identifier: "ExtractionRules",
+}) as any as S.Schema<ExtractionRules>;
 
-export type EgressControlConfigLaunchEnvironmentEnum = "LAUNCH_ENVIRONMENT_UNSPECIFIED" | "AUTOPUSH" | "STAGING" | "PROD";
+export type EgressControlConfigLaunchEnvironmentEnum =
+  | "LAUNCH_ENVIRONMENT_UNSPECIFIED"
+  | "AUTOPUSH"
+  | "STAGING"
+  | "PROD";
 export const EgressControlConfigLaunchEnvironmentEnum = /*@__PURE__*/ S.String;
 
-export type EgressControlConfigAccessModeEnum = "ACCESS_MODE_UNSPECIFIED" | "RESTRICTED" | "ALLOW_ALL";
+export type EgressControlConfigAccessModeEnum =
+  | "ACCESS_MODE_UNSPECIFIED"
+  | "RESTRICTED"
+  | "ALLOW_ALL";
 export const EgressControlConfigAccessModeEnum = /*@__PURE__*/ S.String;
 
 /** Egress control config for connector runtime. These configurations define the rules to identify which outbound domains/hosts needs to be whitelisted. It may be a static information for a particular connector version or it is derived from the configurations provided by the customer in Connection resource. */
@@ -3361,18 +4231,23 @@ export interface EgressControlConfig {
   additionalExtractionRules?: ExtractionRules;
 }
 export const EgressControlConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "allowlistedProjectNumbers": S.optional(StringList),
-  "extractionRules": S.optional(ExtractionRules),
-  "backends": S.optional(S.String),
-  "launchEnvironment": S.optional(EgressControlConfigLaunchEnvironmentEnum),
-  "accessMode": S.optional(EgressControlConfigAccessModeEnum),
-  "additionalExtractionRules": S.optional(ExtractionRules),
-}),
-).annotate({ identifier: "EgressControlConfig" }) as any as S.Schema<EgressControlConfig>;
+  S.Struct({
+    allowlistedProjectNumbers: S.optional(StringList),
+    extractionRules: S.optional(ExtractionRules),
+    backends: S.optional(S.String),
+    launchEnvironment: S.optional(EgressControlConfigLaunchEnvironmentEnum),
+    accessMode: S.optional(EgressControlConfigAccessModeEnum),
+    additionalExtractionRules: S.optional(ExtractionRules),
+  }),
+).annotate({
+  identifier: "EgressControlConfig",
+}) as any as S.Schema<EgressControlConfig>;
 
-export type DestinationConfigTemplateList = ReadonlyArray<DestinationConfigTemplate>;
-export const DestinationConfigTemplateList = /*@__PURE__*/ S.Array(DestinationConfigTemplate) as any as S.Schema<DestinationConfigTemplateList>;
+export type DestinationConfigTemplateList =
+  ReadonlyArray<DestinationConfigTemplate>;
+export const DestinationConfigTemplateList = /*@__PURE__*/ S.Array(
+  DestinationConfigTemplate,
+) as any as S.Schema<DestinationConfigTemplateList>;
 
 /** ConnectorVersion indicates a specific version of a connector. */
 export interface ConnectorVersion {
@@ -3428,44 +4303,58 @@ export interface ConnectorVersion {
   createTime?: string;
 }
 export const ConnectorVersion = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "isCustomEntitiesSupported": S.optional(S.Boolean),
-  "eventingConfigTemplate": S.optional(EventingConfigTemplate),
-  "supportedStandardActions": S.optional(StandardActionList),
-  "sslConfigTemplate": S.optional(SslConfigTemplate),
-  "roleGrants": S.optional(RoleGrantList),
-  "labels": S.optional(StringMap),
-  "connectorInfraConfig": S.optional(ConnectorInfraConfig),
-  "supportedStandardEntities": S.optional(StandardEntityList),
-  "vpcscConfig": S.optional(VpcscConfig),
-  "isCustomActionsSupported": S.optional(S.Boolean),
-  "schemaRefreshConfig": S.optional(SchemaRefreshConfig),
-  "launchStage": S.optional(ConnectorVersionLaunchStageEnum),
-  "displayName": S.optional(S.String),
-  "releaseVersion": S.optional(S.String),
-  "authConfigTemplates": S.optional(AuthConfigTemplateList),
-  "authOverrideEnabled": S.optional(S.Boolean),
-  "supportedRuntimeFeatures": S.optional(SupportedRuntimeFeatures),
-  "roleGrant": S.optional(RoleGrant),
-  "unsupportedConnectionTypes": S.optional(ConnectorVersionUnsupportedConnectionTypesItemEnumList),
-  "configVariableTemplates": S.optional(ConfigVariableTemplateList),
-  "egressControlConfig": S.optional(EgressControlConfig),
-  "destinationConfigTemplates": S.optional(DestinationConfigTemplateList),
-  "name": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "createTime": S.optional(S.String),
-}),
-).annotate({ identifier: "ConnectorVersion" }) as any as S.Schema<ConnectorVersion>;
+  S.Struct({
+    isCustomEntitiesSupported: S.optional(S.Boolean),
+    eventingConfigTemplate: S.optional(EventingConfigTemplate),
+    supportedStandardActions: S.optional(StandardActionList),
+    sslConfigTemplate: S.optional(SslConfigTemplate),
+    roleGrants: S.optional(RoleGrantList),
+    labels: S.optional(StringMap),
+    connectorInfraConfig: S.optional(ConnectorInfraConfig),
+    supportedStandardEntities: S.optional(StandardEntityList),
+    vpcscConfig: S.optional(VpcscConfig),
+    isCustomActionsSupported: S.optional(S.Boolean),
+    schemaRefreshConfig: S.optional(SchemaRefreshConfig),
+    launchStage: S.optional(ConnectorVersionLaunchStageEnum),
+    displayName: S.optional(S.String),
+    releaseVersion: S.optional(S.String),
+    authConfigTemplates: S.optional(AuthConfigTemplateList),
+    authOverrideEnabled: S.optional(S.Boolean),
+    supportedRuntimeFeatures: S.optional(SupportedRuntimeFeatures),
+    roleGrant: S.optional(RoleGrant),
+    unsupportedConnectionTypes: S.optional(
+      ConnectorVersionUnsupportedConnectionTypesItemEnumList,
+    ),
+    configVariableTemplates: S.optional(ConfigVariableTemplateList),
+    egressControlConfig: S.optional(EgressControlConfig),
+    destinationConfigTemplates: S.optional(DestinationConfigTemplateList),
+    name: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    createTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConnectorVersion",
+}) as any as S.Schema<ConnectorVersion>;
 
 export interface GetProjectsLocationsProvidersConnectorsVersionsEventtypesRequest {
   /** Required. Resource name of the form: `projects/*\/locations/*\/providers/*\/connectors/*\/versions/*\/eventtypes/*` Only global location is supported for EventType resource. */
   name: string;
 }
-export const GetProjectsLocationsProvidersConnectorsVersionsEventtypesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsProvidersConnectorsVersionsEventtypesRequest" }) as any as S.Schema<GetProjectsLocationsProvidersConnectorsVersionsEventtypesRequest>;
+export const GetProjectsLocationsProvidersConnectorsVersionsEventtypesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "GetProjectsLocationsProvidersConnectorsVersionsEventtypesRequest",
+  }) as any as S.Schema<GetProjectsLocationsProvidersConnectorsVersionsEventtypesRequest>;
 
 /** EventType includes fields. */
 export interface EventType {
@@ -3487,29 +4376,41 @@ export interface EventType {
   enrichedEventPayloadSchema?: string;
 }
 export const EventType = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "idPath": S.optional(S.String),
-  "eventTypeId": S.optional(S.String),
-  "entityType": S.optional(S.String),
-  "eventPayloadSchema": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "enrichedEventPayloadSchema": S.optional(S.String),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    idPath: S.optional(S.String),
+    eventTypeId: S.optional(S.String),
+    entityType: S.optional(S.String),
+    eventPayloadSchema: S.optional(S.String),
+    createTime: S.optional(S.String),
+    enrichedEventPayloadSchema: S.optional(S.String),
+  }),
 ).annotate({ identifier: "EventType" }) as any as S.Schema<EventType>;
 
 export interface GetRegionalSettingsProjectsLocationsRequest {
   /** Required. The resource name of the Regional Settings. */
   name: string;
 }
-export const GetRegionalSettingsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "GetRegionalSettingsProjectsLocationsRequest" }) as any as S.Schema<GetRegionalSettingsProjectsLocationsRequest>;
+export const GetRegionalSettingsProjectsLocationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetRegionalSettingsProjectsLocationsRequest",
+  }) as any as S.Schema<GetRegionalSettingsProjectsLocationsRequest>;
 
-export type EncryptionConfigEncryptionTypeEnum = "ENCRYPTION_TYPE_UNSPECIFIED" | "GMEK" | "CMEK";
+export type EncryptionConfigEncryptionTypeEnum =
+  | "ENCRYPTION_TYPE_UNSPECIFIED"
+  | "GMEK"
+  | "CMEK";
 export const EncryptionConfigEncryptionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Regional encryption config for CMEK details. */
@@ -3520,13 +4421,18 @@ export interface EncryptionConfig {
   encryptionType?: EncryptionConfigEncryptionTypeEnum;
 }
 export const EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kmsKeyName": S.optional(S.String),
-  "encryptionType": S.optional(EncryptionConfigEncryptionTypeEnum),
-}),
-).annotate({ identifier: "EncryptionConfig" }) as any as S.Schema<EncryptionConfig>;
+  S.Struct({
+    kmsKeyName: S.optional(S.String),
+    encryptionType: S.optional(EncryptionConfigEncryptionTypeEnum),
+  }),
+).annotate({
+  identifier: "EncryptionConfig",
+}) as any as S.Schema<EncryptionConfig>;
 
-export type NetworkConfigEgressModeEnum = "NETWORK_EGRESS_MODE_UNSPECIFIED" | "AUTO_IP" | "STATIC_IP";
+export type NetworkConfigEgressModeEnum =
+  | "NETWORK_EGRESS_MODE_UNSPECIFIED"
+  | "AUTO_IP"
+  | "STATIC_IP";
 export const NetworkConfigEgressModeEnum = /*@__PURE__*/ S.String;
 
 /** Regional Network Config. */
@@ -3537,10 +4443,10 @@ export interface NetworkConfig {
   egressIps?: StringList;
 }
 export const NetworkConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "egressMode": S.optional(NetworkConfigEgressModeEnum),
-  "egressIps": S.optional(StringList),
-}),
+  S.Struct({
+    egressMode: S.optional(NetworkConfigEgressModeEnum),
+    egressIps: S.optional(StringList),
+  }),
 ).annotate({ identifier: "NetworkConfig" }) as any as S.Schema<NetworkConfig>;
 
 /** Regional Settings details. */
@@ -3557,26 +4463,44 @@ export interface RegionalSettings {
   networkConfig?: NetworkConfig;
 }
 export const RegionalSettings = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "encryptionConfig": S.optional(EncryptionConfig),
-  "provisioned": S.optional(S.Boolean),
-  "client": S.optional(S.String),
-  "networkConfig": S.optional(NetworkConfig),
-}),
-).annotate({ identifier: "RegionalSettings" }) as any as S.Schema<RegionalSettings>;
+  S.Struct({
+    name: S.optional(S.String),
+    encryptionConfig: S.optional(EncryptionConfig),
+    provisioned: S.optional(S.Boolean),
+    client: S.optional(S.String),
+    networkConfig: S.optional(NetworkConfig),
+  }),
+).annotate({
+  identifier: "RegionalSettings",
+}) as any as S.Schema<RegionalSettings>;
 
 export interface GetRuntimeConfigProjectsLocationsRequest {
   /** Required. Resource name of the form: `projects/*\/locations/*\/runtimeConfig` */
   name: string;
 }
-export const GetRuntimeConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "GetRuntimeConfigProjectsLocationsRequest" }) as any as S.Schema<GetRuntimeConfigProjectsLocationsRequest>;
+export const GetRuntimeConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetRuntimeConfigProjectsLocationsRequest",
+}) as any as S.Schema<GetRuntimeConfigProjectsLocationsRequest>;
 
-export type RuntimeConfigStateEnum = "STATE_UNSPECIFIED" | "INACTIVE" | "ACTIVATING" | "ACTIVE" | "CREATING" | "DELETING" | "UPDATING";
+export type RuntimeConfigStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "INACTIVE"
+  | "ACTIVATING"
+  | "ACTIVE"
+  | "CREATING"
+  | "DELETING"
+  | "UPDATING";
 export const RuntimeConfigStateEnum = /*@__PURE__*/ S.String;
 
 /** RuntimeConfig is the singleton resource of each location. It includes generic resource configs consumed by control plane and runtime plane like: pub/sub topic/subscription resource name, Cloud Storage location storing schema etc. */
@@ -3603,29 +4527,38 @@ export interface RuntimeConfig {
   locationId?: string;
 }
 export const RuntimeConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "runtimeEndpoint": S.optional(S.String),
-  "state": S.optional(RuntimeConfigStateEnum),
-  "conndSubscription": S.optional(S.String),
-  "controlPlaneSubscription": S.optional(S.String),
-  "schemaGcsBucket": S.optional(S.String),
-  "serviceDirectory": S.optional(S.String),
-  "controlPlaneTopic": S.optional(S.String),
-  "name": S.optional(S.String),
-  "conndTopic": S.optional(S.String),
-  "locationId": S.optional(S.String),
-}),
+  S.Struct({
+    runtimeEndpoint: S.optional(S.String),
+    state: S.optional(RuntimeConfigStateEnum),
+    conndSubscription: S.optional(S.String),
+    controlPlaneSubscription: S.optional(S.String),
+    schemaGcsBucket: S.optional(S.String),
+    serviceDirectory: S.optional(S.String),
+    controlPlaneTopic: S.optional(S.String),
+    name: S.optional(S.String),
+    conndTopic: S.optional(S.String),
+    locationId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "RuntimeConfig" }) as any as S.Schema<RuntimeConfig>;
 
 export interface GetSettingsProjectsLocationsGlobalRequest {
   /** Required. The resource name of the Settings. */
   name: string;
 }
-export const GetSettingsProjectsLocationsGlobalRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "GetSettingsProjectsLocationsGlobalRequest" }) as any as S.Schema<GetSettingsProjectsLocationsGlobalRequest>;
+export const GetSettingsProjectsLocationsGlobalRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetSettingsProjectsLocationsGlobalRequest",
+  }) as any as S.Schema<GetSettingsProjectsLocationsGlobalRequest>;
 
 /** Global Settings details. */
 export interface Settings {
@@ -3639,16 +4572,18 @@ export interface Settings {
   vpcsc?: boolean;
 }
 export const Settings = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "payg": S.optional(S.Boolean),
-  "name": S.optional(S.String),
-  "tenantProjectId": S.optional(S.String),
-  "vpcsc": S.optional(S.Boolean),
-}),
+  S.Struct({
+    payg: S.optional(S.Boolean),
+    name: S.optional(S.String),
+    tenantProjectId: S.optional(S.String),
+    vpcsc: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "Settings" }) as any as S.Schema<Settings>;
 
-export type ListActionsProjectsLocationsConnectionsConnectionSchemaMetadataViewEnum = "VIEW_UNSPECIFIED" | "BASIC";
-export const ListActionsProjectsLocationsConnectionsConnectionSchemaMetadataViewEnum = /*@__PURE__*/ S.String;
+export type ListActionsProjectsLocationsConnectionsConnectionSchemaMetadataViewEnum =
+  "VIEW_UNSPECIFIED" | "BASIC";
+export const ListActionsProjectsLocationsConnectionsConnectionSchemaMetadataViewEnum =
+  /*@__PURE__*/ S.String;
 
 export interface ListActionsProjectsLocationsConnectionsConnectionSchemaMetadataRequest {
   /** Page size. If unspecified, at most 50 actions will be returned. */
@@ -3656,33 +4591,101 @@ export interface ListActionsProjectsLocationsConnectionsConnectionSchemaMetadata
   /** Page token. */
   pageToken?: string;
   /** Specifies which fields are returned in response. Defaults to BASIC view. */
-  view?: ListActionsProjectsLocationsConnectionsConnectionSchemaMetadataViewEnum | (string & {});
+  view?:
+    | ListActionsProjectsLocationsConnectionsConnectionSchemaMetadataViewEnum
+    | (string & {});
   /** Required. Filter Wildcards are not supported in the filter currently. */
   filter?: string;
   /** Required. Resource name format. projects/{project}/locations/{location}/connections/{connection}/connectionSchemaMetadata */
   name: string;
 }
-export const ListActionsProjectsLocationsConnectionsConnectionSchemaMetadataRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "view": S.optional(ListActionsProjectsLocationsConnectionsConnectionSchemaMetadataViewEnum.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:listActions","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "ListActionsProjectsLocationsConnectionsConnectionSchemaMetadataRequest" }) as any as S.Schema<ListActionsProjectsLocationsConnectionsConnectionSchemaMetadataRequest>;
+export const ListActionsProjectsLocationsConnectionsConnectionSchemaMetadataRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      view: S.optional(
+        ListActionsProjectsLocationsConnectionsConnectionSchemaMetadataViewEnum.pipe(
+          T.Query(),
+        ),
+      ),
+      filter: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}:listActions",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "ListActionsProjectsLocationsConnectionsConnectionSchemaMetadataRequest",
+  }) as any as S.Schema<ListActionsProjectsLocationsConnectionsConnectionSchemaMetadataRequest>;
 
 export type JsonSchemaMap = { [key: string]: JsonSchema | undefined };
-export const JsonSchemaMap = /*@__PURE__*/ S.Record(S.String, S.suspend(() => JsonSchema)) as any as S.Schema<JsonSchemaMap>;
+export const JsonSchemaMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.suspend(() => JsonSchema),
+) as any as S.Schema<JsonSchemaMap>;
 
 export type DocumentList = ReadonlyArray<unknown>;
-export const DocumentList = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Schema<DocumentList>;
+export const DocumentList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<DocumentList>;
 
-export type JsonSchemaJdbcTypeEnum = "DATA_TYPE_UNSPECIFIED" | "DATA_TYPE_INT" | "DATA_TYPE_SMALLINT" | "DATA_TYPE_DOUBLE" | "DATA_TYPE_DATE" | "DATA_TYPE_DATETIME" | "DATA_TYPE_TIME" | "DATA_TYPE_STRING" | "DATA_TYPE_LONG" | "DATA_TYPE_BOOLEAN" | "DATA_TYPE_DECIMAL" | "DATA_TYPE_UUID" | "DATA_TYPE_BLOB" | "DATA_TYPE_BIT" | "DATA_TYPE_TINYINT" | "DATA_TYPE_INTEGER" | "DATA_TYPE_BIGINT" | "DATA_TYPE_FLOAT" | "DATA_TYPE_REAL" | "DATA_TYPE_NUMERIC" | "DATA_TYPE_CHAR" | "DATA_TYPE_VARCHAR" | "DATA_TYPE_LONGVARCHAR" | "DATA_TYPE_TIMESTAMP" | "DATA_TYPE_NCHAR" | "DATA_TYPE_NVARCHAR" | "DATA_TYPE_LONGNVARCHAR" | "DATA_TYPE_NULL" | "DATA_TYPE_OTHER" | "DATA_TYPE_JAVA_OBJECT" | "DATA_TYPE_DISTINCT" | "DATA_TYPE_STRUCT" | "DATA_TYPE_ARRAY" | "DATA_TYPE_CLOB" | "DATA_TYPE_REF" | "DATA_TYPE_DATALINK" | "DATA_TYPE_ROWID" | "DATA_TYPE_BINARY" | "DATA_TYPE_VARBINARY" | "DATA_TYPE_LONGVARBINARY" | "DATA_TYPE_NCLOB" | "DATA_TYPE_SQLXML" | "DATA_TYPE_REF_CURSOR" | "DATA_TYPE_TIME_WITH_TIMEZONE" | "DATA_TYPE_TIMESTAMP_WITH_TIMEZONE";
+export type JsonSchemaJdbcTypeEnum =
+  | "DATA_TYPE_UNSPECIFIED"
+  | "DATA_TYPE_INT"
+  | "DATA_TYPE_SMALLINT"
+  | "DATA_TYPE_DOUBLE"
+  | "DATA_TYPE_DATE"
+  | "DATA_TYPE_DATETIME"
+  | "DATA_TYPE_TIME"
+  | "DATA_TYPE_STRING"
+  | "DATA_TYPE_LONG"
+  | "DATA_TYPE_BOOLEAN"
+  | "DATA_TYPE_DECIMAL"
+  | "DATA_TYPE_UUID"
+  | "DATA_TYPE_BLOB"
+  | "DATA_TYPE_BIT"
+  | "DATA_TYPE_TINYINT"
+  | "DATA_TYPE_INTEGER"
+  | "DATA_TYPE_BIGINT"
+  | "DATA_TYPE_FLOAT"
+  | "DATA_TYPE_REAL"
+  | "DATA_TYPE_NUMERIC"
+  | "DATA_TYPE_CHAR"
+  | "DATA_TYPE_VARCHAR"
+  | "DATA_TYPE_LONGVARCHAR"
+  | "DATA_TYPE_TIMESTAMP"
+  | "DATA_TYPE_NCHAR"
+  | "DATA_TYPE_NVARCHAR"
+  | "DATA_TYPE_LONGNVARCHAR"
+  | "DATA_TYPE_NULL"
+  | "DATA_TYPE_OTHER"
+  | "DATA_TYPE_JAVA_OBJECT"
+  | "DATA_TYPE_DISTINCT"
+  | "DATA_TYPE_STRUCT"
+  | "DATA_TYPE_ARRAY"
+  | "DATA_TYPE_CLOB"
+  | "DATA_TYPE_REF"
+  | "DATA_TYPE_DATALINK"
+  | "DATA_TYPE_ROWID"
+  | "DATA_TYPE_BINARY"
+  | "DATA_TYPE_VARBINARY"
+  | "DATA_TYPE_LONGVARBINARY"
+  | "DATA_TYPE_NCLOB"
+  | "DATA_TYPE_SQLXML"
+  | "DATA_TYPE_REF_CURSOR"
+  | "DATA_TYPE_TIME_WITH_TIMEZONE"
+  | "DATA_TYPE_TIMESTAMP_WITH_TIMEZONE";
 export const JsonSchemaJdbcTypeEnum = /*@__PURE__*/ S.String;
 
 export type JsonSchemaList = ReadonlyArray<JsonSchema>;
-export const JsonSchemaList = /*@__PURE__*/ S.Array(S.suspend(() => JsonSchema)) as any as S.Schema<JsonSchemaList>;
+export const JsonSchemaList = /*@__PURE__*/ S.Array(
+  S.suspend(() => JsonSchema),
+) as any as S.Schema<JsonSchemaList>;
 
 /** JsonSchema representation of schema metadata */
 export interface JsonSchema {
@@ -3786,60 +4789,105 @@ export interface JsonSchema {
   allOf?: JsonSchemaList;
 }
 export const JsonSchema = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "not": S.optional(JsonSchema),
-  "maxProperties": S.optional(S.Number),
-  "description": S.optional(S.String),
-  "propertyNames": S.optional(JsonSchema),
-  "properties": S.optional(JsonSchemaMap),
-  "if": S.optional(JsonSchema),
-  "examples": S.optional(DocumentList),
-  "additionalDetails": S.optional(DocumentMap),
-  "required": S.optional(StringList),
-  "$id": S.optional(S.String),
-  "minProperties": S.optional(S.Number),
-  "readOnly": S.optional(S.Boolean),
-  "contentEncoding": S.optional(S.String),
-  "title": S.optional(S.String),
-  "contains": S.optional(JsonSchema),
-  "minimum": S.optional(S.Unknown),
-  "maxLength": S.optional(S.Number),
-  "exclusiveMaximum": S.optional(S.Unknown),
-  "$defs": S.optional(JsonSchemaMap),
-  "enum": S.optional(DocumentList),
-  "patternProperties": S.optional(JsonSchemaMap),
-  "type": S.optional(StringList),
-  "multipleOf": S.optional(S.Number),
-  "jdbcType": S.optional(JsonSchemaJdbcTypeEnum),
-  "$comment": S.optional(S.String),
-  "oneOf": S.optional(JsonSchemaList),
-  "then": S.optional(JsonSchema),
-  "maxItems": S.optional(S.Number),
-  "definitions": S.optional(JsonSchemaMap),
-  "dependencies": S.optional(DocumentMap),
-  "$ref": S.optional(S.String),
-  "$schema": S.optional(S.String),
-  "writeOnly": S.optional(S.Boolean),
-  "pattern": S.optional(S.String),
-  "additionalItems": S.optional(JsonSchema),
-  "additionalProperties": S.optional(JsonSchema),
-  "exclusiveMinimum": S.optional(S.Unknown),
-  "minItems": S.optional(S.Number),
-  "anyOf": S.optional(JsonSchemaList),
-  "items": S.optional(JsonSchema),
-  "const": S.optional(S.Unknown),
-  "else": S.optional(JsonSchema),
-  "contentMediaType": S.optional(S.String),
-  "format": S.optional(S.String),
-  "minLength": S.optional(S.Number),
-  "uniqueItems": S.optional(S.Boolean),
-  "maximum": S.optional(S.Unknown),
-  "default": S.optional(S.Unknown),
-  "allOf": S.optional(JsonSchemaList),
-}),
+  S.Struct({
+    not: S.optional(JsonSchema),
+    maxProperties: S.optional(S.Number),
+    description: S.optional(S.String),
+    propertyNames: S.optional(JsonSchema),
+    properties: S.optional(JsonSchemaMap),
+    if: S.optional(JsonSchema),
+    examples: S.optional(DocumentList),
+    additionalDetails: S.optional(DocumentMap),
+    required: S.optional(StringList),
+    $id: S.optional(S.String),
+    minProperties: S.optional(S.Number),
+    readOnly: S.optional(S.Boolean),
+    contentEncoding: S.optional(S.String),
+    title: S.optional(S.String),
+    contains: S.optional(JsonSchema),
+    minimum: S.optional(S.Unknown),
+    maxLength: S.optional(S.Number),
+    exclusiveMaximum: S.optional(S.Unknown),
+    $defs: S.optional(JsonSchemaMap),
+    enum: S.optional(DocumentList),
+    patternProperties: S.optional(JsonSchemaMap),
+    type: S.optional(StringList),
+    multipleOf: S.optional(S.Number),
+    jdbcType: S.optional(JsonSchemaJdbcTypeEnum),
+    $comment: S.optional(S.String),
+    oneOf: S.optional(JsonSchemaList),
+    then: S.optional(JsonSchema),
+    maxItems: S.optional(S.Number),
+    definitions: S.optional(JsonSchemaMap),
+    dependencies: S.optional(DocumentMap),
+    $ref: S.optional(S.String),
+    $schema: S.optional(S.String),
+    writeOnly: S.optional(S.Boolean),
+    pattern: S.optional(S.String),
+    additionalItems: S.optional(JsonSchema),
+    additionalProperties: S.optional(JsonSchema),
+    exclusiveMinimum: S.optional(S.Unknown),
+    minItems: S.optional(S.Number),
+    anyOf: S.optional(JsonSchemaList),
+    items: S.optional(JsonSchema),
+    const: S.optional(S.Unknown),
+    else: S.optional(JsonSchema),
+    contentMediaType: S.optional(S.String),
+    format: S.optional(S.String),
+    minLength: S.optional(S.Number),
+    uniqueItems: S.optional(S.Boolean),
+    maximum: S.optional(S.Unknown),
+    default: S.optional(S.Unknown),
+    allOf: S.optional(JsonSchemaList),
+  }),
 ).annotate({ identifier: "JsonSchema" }) as any as S.Schema<JsonSchema>;
 
-export type ResultMetadataDataTypeEnum = "DATA_TYPE_UNSPECIFIED" | "DATA_TYPE_INT" | "DATA_TYPE_SMALLINT" | "DATA_TYPE_DOUBLE" | "DATA_TYPE_DATE" | "DATA_TYPE_DATETIME" | "DATA_TYPE_TIME" | "DATA_TYPE_STRING" | "DATA_TYPE_LONG" | "DATA_TYPE_BOOLEAN" | "DATA_TYPE_DECIMAL" | "DATA_TYPE_UUID" | "DATA_TYPE_BLOB" | "DATA_TYPE_BIT" | "DATA_TYPE_TINYINT" | "DATA_TYPE_INTEGER" | "DATA_TYPE_BIGINT" | "DATA_TYPE_FLOAT" | "DATA_TYPE_REAL" | "DATA_TYPE_NUMERIC" | "DATA_TYPE_CHAR" | "DATA_TYPE_VARCHAR" | "DATA_TYPE_LONGVARCHAR" | "DATA_TYPE_TIMESTAMP" | "DATA_TYPE_NCHAR" | "DATA_TYPE_NVARCHAR" | "DATA_TYPE_LONGNVARCHAR" | "DATA_TYPE_NULL" | "DATA_TYPE_OTHER" | "DATA_TYPE_JAVA_OBJECT" | "DATA_TYPE_DISTINCT" | "DATA_TYPE_STRUCT" | "DATA_TYPE_ARRAY" | "DATA_TYPE_CLOB" | "DATA_TYPE_REF" | "DATA_TYPE_DATALINK" | "DATA_TYPE_ROWID" | "DATA_TYPE_BINARY" | "DATA_TYPE_VARBINARY" | "DATA_TYPE_LONGVARBINARY" | "DATA_TYPE_NCLOB" | "DATA_TYPE_SQLXML" | "DATA_TYPE_REF_CURSOR" | "DATA_TYPE_TIME_WITH_TIMEZONE" | "DATA_TYPE_TIMESTAMP_WITH_TIMEZONE";
+export type ResultMetadataDataTypeEnum =
+  | "DATA_TYPE_UNSPECIFIED"
+  | "DATA_TYPE_INT"
+  | "DATA_TYPE_SMALLINT"
+  | "DATA_TYPE_DOUBLE"
+  | "DATA_TYPE_DATE"
+  | "DATA_TYPE_DATETIME"
+  | "DATA_TYPE_TIME"
+  | "DATA_TYPE_STRING"
+  | "DATA_TYPE_LONG"
+  | "DATA_TYPE_BOOLEAN"
+  | "DATA_TYPE_DECIMAL"
+  | "DATA_TYPE_UUID"
+  | "DATA_TYPE_BLOB"
+  | "DATA_TYPE_BIT"
+  | "DATA_TYPE_TINYINT"
+  | "DATA_TYPE_INTEGER"
+  | "DATA_TYPE_BIGINT"
+  | "DATA_TYPE_FLOAT"
+  | "DATA_TYPE_REAL"
+  | "DATA_TYPE_NUMERIC"
+  | "DATA_TYPE_CHAR"
+  | "DATA_TYPE_VARCHAR"
+  | "DATA_TYPE_LONGVARCHAR"
+  | "DATA_TYPE_TIMESTAMP"
+  | "DATA_TYPE_NCHAR"
+  | "DATA_TYPE_NVARCHAR"
+  | "DATA_TYPE_LONGNVARCHAR"
+  | "DATA_TYPE_NULL"
+  | "DATA_TYPE_OTHER"
+  | "DATA_TYPE_JAVA_OBJECT"
+  | "DATA_TYPE_DISTINCT"
+  | "DATA_TYPE_STRUCT"
+  | "DATA_TYPE_ARRAY"
+  | "DATA_TYPE_CLOB"
+  | "DATA_TYPE_REF"
+  | "DATA_TYPE_DATALINK"
+  | "DATA_TYPE_ROWID"
+  | "DATA_TYPE_BINARY"
+  | "DATA_TYPE_VARBINARY"
+  | "DATA_TYPE_LONGVARBINARY"
+  | "DATA_TYPE_NCLOB"
+  | "DATA_TYPE_SQLXML"
+  | "DATA_TYPE_REF_CURSOR"
+  | "DATA_TYPE_TIME_WITH_TIMEZONE"
+  | "DATA_TYPE_TIMESTAMP_WITH_TIMEZONE";
 export const ResultMetadataDataTypeEnum = /*@__PURE__*/ S.String;
 
 /** Metadata of result field. */
@@ -3858,20 +4906,67 @@ export interface ResultMetadata {
   nullable?: boolean;
 }
 export const ResultMetadata = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "defaultValue": S.optional(S.Unknown),
-  "description": S.optional(S.String),
-  "jsonSchema": S.optional(JsonSchema),
-  "dataType": S.optional(ResultMetadataDataTypeEnum),
-  "field": S.optional(S.String),
-  "nullable": S.optional(S.Boolean),
-}),
+  S.Struct({
+    defaultValue: S.optional(S.Unknown),
+    description: S.optional(S.String),
+    jsonSchema: S.optional(JsonSchema),
+    dataType: S.optional(ResultMetadataDataTypeEnum),
+    field: S.optional(S.String),
+    nullable: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "ResultMetadata" }) as any as S.Schema<ResultMetadata>;
 
 export type ResultMetadataList = ReadonlyArray<ResultMetadata>;
-export const ResultMetadataList = /*@__PURE__*/ S.Array(ResultMetadata) as any as S.Schema<ResultMetadataList>;
+export const ResultMetadataList = /*@__PURE__*/ S.Array(
+  ResultMetadata,
+) as any as S.Schema<ResultMetadataList>;
 
-export type InputParameterDataTypeEnum = "DATA_TYPE_UNSPECIFIED" | "DATA_TYPE_INT" | "DATA_TYPE_SMALLINT" | "DATA_TYPE_DOUBLE" | "DATA_TYPE_DATE" | "DATA_TYPE_DATETIME" | "DATA_TYPE_TIME" | "DATA_TYPE_STRING" | "DATA_TYPE_LONG" | "DATA_TYPE_BOOLEAN" | "DATA_TYPE_DECIMAL" | "DATA_TYPE_UUID" | "DATA_TYPE_BLOB" | "DATA_TYPE_BIT" | "DATA_TYPE_TINYINT" | "DATA_TYPE_INTEGER" | "DATA_TYPE_BIGINT" | "DATA_TYPE_FLOAT" | "DATA_TYPE_REAL" | "DATA_TYPE_NUMERIC" | "DATA_TYPE_CHAR" | "DATA_TYPE_VARCHAR" | "DATA_TYPE_LONGVARCHAR" | "DATA_TYPE_TIMESTAMP" | "DATA_TYPE_NCHAR" | "DATA_TYPE_NVARCHAR" | "DATA_TYPE_LONGNVARCHAR" | "DATA_TYPE_NULL" | "DATA_TYPE_OTHER" | "DATA_TYPE_JAVA_OBJECT" | "DATA_TYPE_DISTINCT" | "DATA_TYPE_STRUCT" | "DATA_TYPE_ARRAY" | "DATA_TYPE_CLOB" | "DATA_TYPE_REF" | "DATA_TYPE_DATALINK" | "DATA_TYPE_ROWID" | "DATA_TYPE_BINARY" | "DATA_TYPE_VARBINARY" | "DATA_TYPE_LONGVARBINARY" | "DATA_TYPE_NCLOB" | "DATA_TYPE_SQLXML" | "DATA_TYPE_REF_CURSOR" | "DATA_TYPE_TIME_WITH_TIMEZONE" | "DATA_TYPE_TIMESTAMP_WITH_TIMEZONE";
+export type InputParameterDataTypeEnum =
+  | "DATA_TYPE_UNSPECIFIED"
+  | "DATA_TYPE_INT"
+  | "DATA_TYPE_SMALLINT"
+  | "DATA_TYPE_DOUBLE"
+  | "DATA_TYPE_DATE"
+  | "DATA_TYPE_DATETIME"
+  | "DATA_TYPE_TIME"
+  | "DATA_TYPE_STRING"
+  | "DATA_TYPE_LONG"
+  | "DATA_TYPE_BOOLEAN"
+  | "DATA_TYPE_DECIMAL"
+  | "DATA_TYPE_UUID"
+  | "DATA_TYPE_BLOB"
+  | "DATA_TYPE_BIT"
+  | "DATA_TYPE_TINYINT"
+  | "DATA_TYPE_INTEGER"
+  | "DATA_TYPE_BIGINT"
+  | "DATA_TYPE_FLOAT"
+  | "DATA_TYPE_REAL"
+  | "DATA_TYPE_NUMERIC"
+  | "DATA_TYPE_CHAR"
+  | "DATA_TYPE_VARCHAR"
+  | "DATA_TYPE_LONGVARCHAR"
+  | "DATA_TYPE_TIMESTAMP"
+  | "DATA_TYPE_NCHAR"
+  | "DATA_TYPE_NVARCHAR"
+  | "DATA_TYPE_LONGNVARCHAR"
+  | "DATA_TYPE_NULL"
+  | "DATA_TYPE_OTHER"
+  | "DATA_TYPE_JAVA_OBJECT"
+  | "DATA_TYPE_DISTINCT"
+  | "DATA_TYPE_STRUCT"
+  | "DATA_TYPE_ARRAY"
+  | "DATA_TYPE_CLOB"
+  | "DATA_TYPE_REF"
+  | "DATA_TYPE_DATALINK"
+  | "DATA_TYPE_ROWID"
+  | "DATA_TYPE_BINARY"
+  | "DATA_TYPE_VARBINARY"
+  | "DATA_TYPE_LONGVARBINARY"
+  | "DATA_TYPE_NCLOB"
+  | "DATA_TYPE_SQLXML"
+  | "DATA_TYPE_REF_CURSOR"
+  | "DATA_TYPE_TIME_WITH_TIMEZONE"
+  | "DATA_TYPE_TIMESTAMP_WITH_TIMEZONE";
 export const InputParameterDataTypeEnum = /*@__PURE__*/ S.String;
 
 /** Metadata of an input parameter. */
@@ -3890,18 +4985,20 @@ export interface InputParameter {
   nullable?: boolean;
 }
 export const InputParameter = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "defaultValue": S.optional(S.Unknown),
-  "description": S.optional(S.String),
-  "jsonSchema": S.optional(JsonSchema),
-  "parameter": S.optional(S.String),
-  "dataType": S.optional(InputParameterDataTypeEnum),
-  "nullable": S.optional(S.Boolean),
-}),
+  S.Struct({
+    defaultValue: S.optional(S.Unknown),
+    description: S.optional(S.String),
+    jsonSchema: S.optional(JsonSchema),
+    parameter: S.optional(S.String),
+    dataType: S.optional(InputParameterDataTypeEnum),
+    nullable: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "InputParameter" }) as any as S.Schema<InputParameter>;
 
 export type InputParameterList = ReadonlyArray<InputParameter>;
-export const InputParameterList = /*@__PURE__*/ S.Array(InputParameter) as any as S.Schema<InputParameterList>;
+export const InputParameterList = /*@__PURE__*/ S.Array(
+  InputParameter,
+) as any as S.Schema<InputParameterList>;
 
 /** Schema of a runtime action. */
 export interface RuntimeActionSchema {
@@ -3925,21 +5022,25 @@ export interface RuntimeActionSchema {
   inputSchemaAsString?: string;
 }
 export const RuntimeActionSchema = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "action": S.optional(S.String),
-  "resultMetadata": S.optional(ResultMetadataList),
-  "resultJsonSchema": S.optional(JsonSchema),
-  "resultSchemaAsString": S.optional(S.String),
-  "inputParameters": S.optional(InputParameterList),
-  "displayName": S.optional(S.String),
-  "inputJsonSchema": S.optional(JsonSchema),
-  "description": S.optional(S.String),
-  "inputSchemaAsString": S.optional(S.String),
-}),
-).annotate({ identifier: "RuntimeActionSchema" }) as any as S.Schema<RuntimeActionSchema>;
+  S.Struct({
+    action: S.optional(S.String),
+    resultMetadata: S.optional(ResultMetadataList),
+    resultJsonSchema: S.optional(JsonSchema),
+    resultSchemaAsString: S.optional(S.String),
+    inputParameters: S.optional(InputParameterList),
+    displayName: S.optional(S.String),
+    inputJsonSchema: S.optional(JsonSchema),
+    description: S.optional(S.String),
+    inputSchemaAsString: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RuntimeActionSchema",
+}) as any as S.Schema<RuntimeActionSchema>;
 
 export type RuntimeActionSchemaList = ReadonlyArray<RuntimeActionSchema>;
-export const RuntimeActionSchemaList = /*@__PURE__*/ S.Array(RuntimeActionSchema) as any as S.Schema<RuntimeActionSchemaList>;
+export const RuntimeActionSchemaList = /*@__PURE__*/ S.Array(
+  RuntimeActionSchema,
+) as any as S.Schema<RuntimeActionSchemaList>;
 
 /** Response message for ListActions API */
 export interface ListActionsResponse {
@@ -3949,11 +5050,13 @@ export interface ListActionsResponse {
   nextPageToken?: string;
 }
 export const ListActionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "actions": S.optional(RuntimeActionSchemaList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListActionsResponse" }) as any as S.Schema<ListActionsResponse>;
+  S.Struct({
+    actions: S.optional(RuntimeActionSchemaList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListActionsResponse",
+}) as any as S.Schema<ListActionsResponse>;
 
 /** Expected request for ListenEvent API. */
 export interface ListenEventRequest {
@@ -3961,10 +5064,12 @@ export interface ListenEventRequest {
   payload?: DocumentMap;
 }
 export const ListenEventRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "payload": S.optional(DocumentMap),
-}),
-).annotate({ identifier: "ListenEventRequest" }) as any as S.Schema<ListenEventRequest>;
+  S.Struct({
+    payload: S.optional(DocumentMap),
+  }),
+).annotate({
+  identifier: "ListenEventRequest",
+}) as any as S.Schema<ListenEventRequest>;
 
 export interface ListenEventProjectsLocationsConnectionsRequest {
   /** Required. Resource path for request. */
@@ -3972,21 +5077,34 @@ export interface ListenEventProjectsLocationsConnectionsRequest {
   /** Request body */
   body?: ListenEventRequest;
 }
-export const ListenEventProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourcePath": S.String.pipe(T.Label()),
-  "body": S.optional(ListenEventRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resourcePath}:listenEvent","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "ListenEventProjectsLocationsConnectionsRequest" }) as any as S.Schema<ListenEventProjectsLocationsConnectionsRequest>;
+export const ListenEventProjectsLocationsConnectionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resourcePath: S.String.pipe(T.Label()),
+      body: S.optional(ListenEventRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+resourcePath}:listenEvent",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListenEventProjectsLocationsConnectionsRequest",
+  }) as any as S.Schema<ListenEventProjectsLocationsConnectionsRequest>;
 
 /** Expected response for ListenEvent API. */
 export interface ListenEventResponse {}
 export const ListenEventResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "ListenEventResponse" }) as any as S.Schema<ListenEventResponse>;
+  S.Struct({}),
+).annotate({
+  identifier: "ListenEventResponse",
+}) as any as S.Schema<ListenEventResponse>;
 
-export type ListEntityTypesProjectsLocationsConnectionsConnectionSchemaMetadataViewEnum = "VIEW_UNSPECIFIED" | "BASIC";
-export const ListEntityTypesProjectsLocationsConnectionsConnectionSchemaMetadataViewEnum = /*@__PURE__*/ S.String;
+export type ListEntityTypesProjectsLocationsConnectionsConnectionSchemaMetadataViewEnum =
+  "VIEW_UNSPECIFIED" | "BASIC";
+export const ListEntityTypesProjectsLocationsConnectionsConnectionSchemaMetadataViewEnum =
+  /*@__PURE__*/ S.String;
 
 export interface ListEntityTypesProjectsLocationsConnectionsConnectionSchemaMetadataRequest {
   /** Page size. If unspecified, at most 50 entity types will be returned. */
@@ -3994,23 +5112,84 @@ export interface ListEntityTypesProjectsLocationsConnectionsConnectionSchemaMeta
   /** Page token. */
   pageToken?: string;
   /** Specifies which fields are returned in response. Defaults to BASIC view. */
-  view?: ListEntityTypesProjectsLocationsConnectionsConnectionSchemaMetadataViewEnum | (string & {});
+  view?:
+    | ListEntityTypesProjectsLocationsConnectionsConnectionSchemaMetadataViewEnum
+    | (string & {});
   /** Required. Filter Wildcards are not supported in the filter currently. */
   filter?: string;
   /** Required. Resource name format: projects/{project}/locations/{location}/connections/{connection}/connectionSchemaMetadata */
   name: string;
 }
-export const ListEntityTypesProjectsLocationsConnectionsConnectionSchemaMetadataRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "view": S.optional(ListEntityTypesProjectsLocationsConnectionsConnectionSchemaMetadataViewEnum.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:listEntityTypes","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "ListEntityTypesProjectsLocationsConnectionsConnectionSchemaMetadataRequest" }) as any as S.Schema<ListEntityTypesProjectsLocationsConnectionsConnectionSchemaMetadataRequest>;
+export const ListEntityTypesProjectsLocationsConnectionsConnectionSchemaMetadataRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      view: S.optional(
+        ListEntityTypesProjectsLocationsConnectionsConnectionSchemaMetadataViewEnum.pipe(
+          T.Query(),
+        ),
+      ),
+      filter: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}:listEntityTypes",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "ListEntityTypesProjectsLocationsConnectionsConnectionSchemaMetadataRequest",
+  }) as any as S.Schema<ListEntityTypesProjectsLocationsConnectionsConnectionSchemaMetadataRequest>;
 
-export type FieldDataTypeEnum = "DATA_TYPE_UNSPECIFIED" | "DATA_TYPE_INT" | "DATA_TYPE_SMALLINT" | "DATA_TYPE_DOUBLE" | "DATA_TYPE_DATE" | "DATA_TYPE_DATETIME" | "DATA_TYPE_TIME" | "DATA_TYPE_STRING" | "DATA_TYPE_LONG" | "DATA_TYPE_BOOLEAN" | "DATA_TYPE_DECIMAL" | "DATA_TYPE_UUID" | "DATA_TYPE_BLOB" | "DATA_TYPE_BIT" | "DATA_TYPE_TINYINT" | "DATA_TYPE_INTEGER" | "DATA_TYPE_BIGINT" | "DATA_TYPE_FLOAT" | "DATA_TYPE_REAL" | "DATA_TYPE_NUMERIC" | "DATA_TYPE_CHAR" | "DATA_TYPE_VARCHAR" | "DATA_TYPE_LONGVARCHAR" | "DATA_TYPE_TIMESTAMP" | "DATA_TYPE_NCHAR" | "DATA_TYPE_NVARCHAR" | "DATA_TYPE_LONGNVARCHAR" | "DATA_TYPE_NULL" | "DATA_TYPE_OTHER" | "DATA_TYPE_JAVA_OBJECT" | "DATA_TYPE_DISTINCT" | "DATA_TYPE_STRUCT" | "DATA_TYPE_ARRAY" | "DATA_TYPE_CLOB" | "DATA_TYPE_REF" | "DATA_TYPE_DATALINK" | "DATA_TYPE_ROWID" | "DATA_TYPE_BINARY" | "DATA_TYPE_VARBINARY" | "DATA_TYPE_LONGVARBINARY" | "DATA_TYPE_NCLOB" | "DATA_TYPE_SQLXML" | "DATA_TYPE_REF_CURSOR" | "DATA_TYPE_TIME_WITH_TIMEZONE" | "DATA_TYPE_TIMESTAMP_WITH_TIMEZONE";
+export type FieldDataTypeEnum =
+  | "DATA_TYPE_UNSPECIFIED"
+  | "DATA_TYPE_INT"
+  | "DATA_TYPE_SMALLINT"
+  | "DATA_TYPE_DOUBLE"
+  | "DATA_TYPE_DATE"
+  | "DATA_TYPE_DATETIME"
+  | "DATA_TYPE_TIME"
+  | "DATA_TYPE_STRING"
+  | "DATA_TYPE_LONG"
+  | "DATA_TYPE_BOOLEAN"
+  | "DATA_TYPE_DECIMAL"
+  | "DATA_TYPE_UUID"
+  | "DATA_TYPE_BLOB"
+  | "DATA_TYPE_BIT"
+  | "DATA_TYPE_TINYINT"
+  | "DATA_TYPE_INTEGER"
+  | "DATA_TYPE_BIGINT"
+  | "DATA_TYPE_FLOAT"
+  | "DATA_TYPE_REAL"
+  | "DATA_TYPE_NUMERIC"
+  | "DATA_TYPE_CHAR"
+  | "DATA_TYPE_VARCHAR"
+  | "DATA_TYPE_LONGVARCHAR"
+  | "DATA_TYPE_TIMESTAMP"
+  | "DATA_TYPE_NCHAR"
+  | "DATA_TYPE_NVARCHAR"
+  | "DATA_TYPE_LONGNVARCHAR"
+  | "DATA_TYPE_NULL"
+  | "DATA_TYPE_OTHER"
+  | "DATA_TYPE_JAVA_OBJECT"
+  | "DATA_TYPE_DISTINCT"
+  | "DATA_TYPE_STRUCT"
+  | "DATA_TYPE_ARRAY"
+  | "DATA_TYPE_CLOB"
+  | "DATA_TYPE_REF"
+  | "DATA_TYPE_DATALINK"
+  | "DATA_TYPE_ROWID"
+  | "DATA_TYPE_BINARY"
+  | "DATA_TYPE_VARBINARY"
+  | "DATA_TYPE_LONGVARBINARY"
+  | "DATA_TYPE_NCLOB"
+  | "DATA_TYPE_SQLXML"
+  | "DATA_TYPE_REF_CURSOR"
+  | "DATA_TYPE_TIME_WITH_TIMEZONE"
+  | "DATA_TYPE_TIMESTAMP_WITH_TIMEZONE";
 export const FieldDataTypeEnum = /*@__PURE__*/ S.String;
 
 /** Metadata of an entity field. */
@@ -4035,27 +5214,38 @@ export interface Field {
   field?: string;
 }
 export const Field = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "defaultValue": S.optional(S.Unknown),
-  "description": S.optional(S.String),
-  "jsonSchema": S.optional(JsonSchema),
-  "additionalDetails": S.optional(DocumentMap),
-  "readonly": S.optional(S.Boolean),
-  "nullable": S.optional(S.Boolean),
-  "dataType": S.optional(FieldDataTypeEnum),
-  "key": S.optional(S.Boolean),
-  "field": S.optional(S.String),
-}),
+  S.Struct({
+    defaultValue: S.optional(S.Unknown),
+    description: S.optional(S.String),
+    jsonSchema: S.optional(JsonSchema),
+    additionalDetails: S.optional(DocumentMap),
+    readonly: S.optional(S.Boolean),
+    nullable: S.optional(S.Boolean),
+    dataType: S.optional(FieldDataTypeEnum),
+    key: S.optional(S.Boolean),
+    field: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Field" }) as any as S.Schema<Field>;
 
 export type FieldList = ReadonlyArray<Field>;
-export const FieldList = /*@__PURE__*/ S.Array(Field) as any as S.Schema<FieldList>;
+export const FieldList = /*@__PURE__*/ S.Array(
+  Field,
+) as any as S.Schema<FieldList>;
 
-export type RuntimeEntitySchemaOperationsItemEnum = "OPERATION_UNSPECIFIED" | "LIST" | "GET" | "CREATE" | "UPDATE" | "DELETE";
+export type RuntimeEntitySchemaOperationsItemEnum =
+  | "OPERATION_UNSPECIFIED"
+  | "LIST"
+  | "GET"
+  | "CREATE"
+  | "UPDATE"
+  | "DELETE";
 export const RuntimeEntitySchemaOperationsItemEnum = /*@__PURE__*/ S.String;
 
-export type RuntimeEntitySchemaOperationsItemEnumList = ReadonlyArray<RuntimeEntitySchemaOperationsItemEnum>;
-export const RuntimeEntitySchemaOperationsItemEnumList = /*@__PURE__*/ S.Array(RuntimeEntitySchemaOperationsItemEnum) as any as S.Schema<RuntimeEntitySchemaOperationsItemEnumList>;
+export type RuntimeEntitySchemaOperationsItemEnumList =
+  ReadonlyArray<RuntimeEntitySchemaOperationsItemEnum>;
+export const RuntimeEntitySchemaOperationsItemEnumList = /*@__PURE__*/ S.Array(
+  RuntimeEntitySchemaOperationsItemEnum,
+) as any as S.Schema<RuntimeEntitySchemaOperationsItemEnumList>;
 
 /** Schema of a runtime entity. */
 export interface RuntimeEntitySchema {
@@ -4069,16 +5259,20 @@ export interface RuntimeEntitySchema {
   entity?: string;
 }
 export const RuntimeEntitySchema = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fields": S.optional(FieldList),
-  "jsonSchema": S.optional(JsonSchema),
-  "operations": S.optional(RuntimeEntitySchemaOperationsItemEnumList),
-  "entity": S.optional(S.String),
-}),
-).annotate({ identifier: "RuntimeEntitySchema" }) as any as S.Schema<RuntimeEntitySchema>;
+  S.Struct({
+    fields: S.optional(FieldList),
+    jsonSchema: S.optional(JsonSchema),
+    operations: S.optional(RuntimeEntitySchemaOperationsItemEnumList),
+    entity: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RuntimeEntitySchema",
+}) as any as S.Schema<RuntimeEntitySchema>;
 
 export type RuntimeEntitySchemaList = ReadonlyArray<RuntimeEntitySchema>;
-export const RuntimeEntitySchemaList = /*@__PURE__*/ S.Array(RuntimeEntitySchema) as any as S.Schema<RuntimeEntitySchemaList>;
+export const RuntimeEntitySchemaList = /*@__PURE__*/ S.Array(
+  RuntimeEntitySchema,
+) as any as S.Schema<RuntimeEntitySchemaList>;
 
 /** Response message for ListEntityTypes API */
 export interface ListEntityTypesResponse {
@@ -4088,11 +5282,13 @@ export interface ListEntityTypesResponse {
   nextPageToken?: string;
 }
 export const ListEntityTypesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "entityTypes": S.optional(RuntimeEntitySchemaList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListEntityTypesResponse" }) as any as S.Schema<ListEntityTypesResponse>;
+  S.Struct({
+    entityTypes: S.optional(RuntimeEntitySchemaList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListEntityTypesResponse",
+}) as any as S.Schema<ListEntityTypesResponse>;
 
 export interface ListProjectsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
@@ -4107,17 +5303,27 @@ export interface ListProjectsLocationsRequest {
   extraLocationTypes?: StringList;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/locations","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
+  S.Struct({
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}/locations",
+      baseUrl: "https://connectors.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsRequest",
+}) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(
+  Location,
+) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -4127,13 +5333,18 @@ export interface ListLocationsResponse {
   locations?: LocationList;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "locations": S.optional(LocationList),
-}),
-).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    locations: S.optional(LocationList),
+  }),
+).annotate({
+  identifier: "ListLocationsResponse",
+}) as any as S.Schema<ListLocationsResponse>;
 
-export type ListProjectsLocationsConnectionsViewEnum = "CONNECTION_VIEW_UNSPECIFIED" | "BASIC" | "FULL";
+export type ListProjectsLocationsConnectionsViewEnum =
+  | "CONNECTION_VIEW_UNSPECIFIED"
+  | "BASIC"
+  | "FULL";
 export const ListProjectsLocationsConnectionsViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsLocationsConnectionsRequest {
@@ -4150,19 +5361,32 @@ export interface ListProjectsLocationsConnectionsRequest {
   /** Order by parameters. */
   orderBy?: string;
 }
-export const ListProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "view": S.optional(ListProjectsLocationsConnectionsViewEnum.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/connections","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsConnectionsRequest" }) as any as S.Schema<ListProjectsLocationsConnectionsRequest>;
+export const ListProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      filter: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      view: S.optional(
+        ListProjectsLocationsConnectionsViewEnum.pipe(T.Query()),
+      ),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/connections",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsConnectionsRequest",
+}) as any as S.Schema<ListProjectsLocationsConnectionsRequest>;
 
 export type ConnectionList = ReadonlyArray<Connection>;
-export const ConnectionList = /*@__PURE__*/ S.Array(Connection) as any as S.Schema<ConnectionList>;
+export const ConnectionList = /*@__PURE__*/ S.Array(
+  Connection,
+) as any as S.Schema<ConnectionList>;
 
 /** Response message for ConnectorsService.ListConnections */
 export interface ListConnectionsResponse {
@@ -4174,12 +5398,14 @@ export interface ListConnectionsResponse {
   unreachable?: StringList;
 }
 export const ListConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "connections": S.optional(ConnectionList),
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListConnectionsResponse" }) as any as S.Schema<ListConnectionsResponse>;
+  S.Struct({
+    connections: S.optional(ConnectionList),
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListConnectionsResponse",
+}) as any as S.Schema<ListConnectionsResponse>;
 
 export interface ListProjectsLocationsConnectionsEndUserAuthenticationsRequest {
   /** Order by parameters. */
@@ -4193,18 +5419,29 @@ export interface ListProjectsLocationsConnectionsEndUserAuthenticationsRequest {
   /** Filter. */
   filter?: string;
 }
-export const ListProjectsLocationsConnectionsEndUserAuthenticationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/endUserAuthentications","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsConnectionsEndUserAuthenticationsRequest" }) as any as S.Schema<ListProjectsLocationsConnectionsEndUserAuthenticationsRequest>;
+export const ListProjectsLocationsConnectionsEndUserAuthenticationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/endUserAuthentications",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsConnectionsEndUserAuthenticationsRequest",
+  }) as any as S.Schema<ListProjectsLocationsConnectionsEndUserAuthenticationsRequest>;
 
 export type EndUserAuthenticationList = ReadonlyArray<EndUserAuthentication>;
-export const EndUserAuthenticationList = /*@__PURE__*/ S.Array(EndUserAuthentication) as any as S.Schema<EndUserAuthenticationList>;
+export const EndUserAuthenticationList = /*@__PURE__*/ S.Array(
+  EndUserAuthentication,
+) as any as S.Schema<EndUserAuthenticationList>;
 
 /** Response message for ConnectorsService.ListEndUserAuthentications */
 export interface ListEndUserAuthenticationsResponse {
@@ -4216,12 +5453,14 @@ export interface ListEndUserAuthenticationsResponse {
   unreachable?: StringList;
 }
 export const ListEndUserAuthenticationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "endUserAuthentications": S.optional(EndUserAuthenticationList),
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListEndUserAuthenticationsResponse" }) as any as S.Schema<ListEndUserAuthenticationsResponse>;
+  S.Struct({
+    endUserAuthentications: S.optional(EndUserAuthenticationList),
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListEndUserAuthenticationsResponse",
+}) as any as S.Schema<ListEndUserAuthenticationsResponse>;
 
 export interface ListProjectsLocationsConnectionsEventSubscriptionsRequest {
   /** Order by parameters. */
@@ -4235,18 +5474,29 @@ export interface ListProjectsLocationsConnectionsEventSubscriptionsRequest {
   /** Page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsConnectionsEventSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/eventSubscriptions","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsConnectionsEventSubscriptionsRequest" }) as any as S.Schema<ListProjectsLocationsConnectionsEventSubscriptionsRequest>;
+export const ListProjectsLocationsConnectionsEventSubscriptionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/eventSubscriptions",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsConnectionsEventSubscriptionsRequest",
+  }) as any as S.Schema<ListProjectsLocationsConnectionsEventSubscriptionsRequest>;
 
 export type EventSubscriptionList = ReadonlyArray<EventSubscription>;
-export const EventSubscriptionList = /*@__PURE__*/ S.Array(EventSubscription) as any as S.Schema<EventSubscriptionList>;
+export const EventSubscriptionList = /*@__PURE__*/ S.Array(
+  EventSubscription,
+) as any as S.Schema<EventSubscriptionList>;
 
 /** Response message for ConnectorsService.ListEventSubscriptions */
 export interface ListEventSubscriptionsResponse {
@@ -4258,12 +5508,14 @@ export interface ListEventSubscriptionsResponse {
   nextPageToken?: string;
 }
 export const ListEventSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "eventSubscriptions": S.optional(EventSubscriptionList),
-  "unreachable": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListEventSubscriptionsResponse" }) as any as S.Schema<ListEventSubscriptionsResponse>;
+  S.Struct({
+    eventSubscriptions: S.optional(EventSubscriptionList),
+    unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListEventSubscriptionsResponse",
+}) as any as S.Schema<ListEventSubscriptionsResponse>;
 
 export interface ListProjectsLocationsConnectionsRuntimeActionSchemasRequest {
   /** Required. Filter Format: action="{actionId}" Only action field is supported with literal equality operator. Accepted filter example: action="CancelOrder" Wildcards are not supported in the filter currently. */
@@ -4277,15 +5529,24 @@ export interface ListProjectsLocationsConnectionsRuntimeActionSchemasRequest {
   /** Optional. Flag to indicate if schema should be returned as string or not */
   schemaAsString?: boolean;
 }
-export const ListProjectsLocationsConnectionsRuntimeActionSchemasRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "schemaAsString": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/runtimeActionSchemas","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsConnectionsRuntimeActionSchemasRequest" }) as any as S.Schema<ListProjectsLocationsConnectionsRuntimeActionSchemasRequest>;
+export const ListProjectsLocationsConnectionsRuntimeActionSchemasRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      filter: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      schemaAsString: S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/runtimeActionSchemas",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsConnectionsRuntimeActionSchemasRequest",
+  }) as any as S.Schema<ListProjectsLocationsConnectionsRuntimeActionSchemasRequest>;
 
 /** Response message for ConnectorsService.ListRuntimeActionSchemas. */
 export interface ListRuntimeActionSchemasResponse {
@@ -4295,11 +5556,13 @@ export interface ListRuntimeActionSchemasResponse {
   nextPageToken?: string;
 }
 export const ListRuntimeActionSchemasResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "runtimeActionSchemas": S.optional(RuntimeActionSchemaList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListRuntimeActionSchemasResponse" }) as any as S.Schema<ListRuntimeActionSchemasResponse>;
+  S.Struct({
+    runtimeActionSchemas: S.optional(RuntimeActionSchemaList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListRuntimeActionSchemasResponse",
+}) as any as S.Schema<ListRuntimeActionSchemasResponse>;
 
 export interface ListProjectsLocationsConnectionsRuntimeEntitySchemasRequest {
   /** Required. Parent resource of RuntimeEntitySchema Format: projects/{project}/locations/{location}/connections/{connection} */
@@ -4311,14 +5574,23 @@ export interface ListProjectsLocationsConnectionsRuntimeEntitySchemasRequest {
   /** Required. Filter Format: entity="{entityId}" Only entity field is supported with literal equality operator. Accepted filter example: entity="Order" Wildcards are not supported in the filter currently. */
   filter?: string;
 }
-export const ListProjectsLocationsConnectionsRuntimeEntitySchemasRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/runtimeEntitySchemas","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsConnectionsRuntimeEntitySchemasRequest" }) as any as S.Schema<ListProjectsLocationsConnectionsRuntimeEntitySchemasRequest>;
+export const ListProjectsLocationsConnectionsRuntimeEntitySchemasRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/runtimeEntitySchemas",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsConnectionsRuntimeEntitySchemasRequest",
+  }) as any as S.Schema<ListProjectsLocationsConnectionsRuntimeEntitySchemasRequest>;
 
 /** Response message for ConnectorsService.ListRuntimeEntitySchemas. */
 export interface ListRuntimeEntitySchemasResponse {
@@ -4328,14 +5600,20 @@ export interface ListRuntimeEntitySchemasResponse {
   runtimeEntitySchemas?: RuntimeEntitySchemaList;
 }
 export const ListRuntimeEntitySchemasResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "runtimeEntitySchemas": S.optional(RuntimeEntitySchemaList),
-}),
-).annotate({ identifier: "ListRuntimeEntitySchemasResponse" }) as any as S.Schema<ListRuntimeEntitySchemasResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    runtimeEntitySchemas: S.optional(RuntimeEntitySchemaList),
+  }),
+).annotate({
+  identifier: "ListRuntimeEntitySchemasResponse",
+}) as any as S.Schema<ListRuntimeEntitySchemasResponse>;
 
-export type ListProjectsLocationsEndpointAttachmentsViewEnum = "ENDPOINT_ATTACHMENT_VIEW_UNSPECIFIED" | "ENDPOINT_ATTACHMENT_VIEW_BASIC" | "ENDPOINT_ATTACHMENT_VIEW_FULL";
-export const ListProjectsLocationsEndpointAttachmentsViewEnum = /*@__PURE__*/ S.String;
+export type ListProjectsLocationsEndpointAttachmentsViewEnum =
+  | "ENDPOINT_ATTACHMENT_VIEW_UNSPECIFIED"
+  | "ENDPOINT_ATTACHMENT_VIEW_BASIC"
+  | "ENDPOINT_ATTACHMENT_VIEW_FULL";
+export const ListProjectsLocationsEndpointAttachmentsViewEnum =
+  /*@__PURE__*/ S.String;
 
 export interface ListProjectsLocationsEndpointAttachmentsRequest {
   /** Required. Parent resource od the EndpointAttachment, of the form: `projects/*\/locations/*` */
@@ -4351,19 +5629,32 @@ export interface ListProjectsLocationsEndpointAttachmentsRequest {
   /** Order by parameters. */
   orderBy?: string;
 }
-export const ListProjectsLocationsEndpointAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "view": S.optional(ListProjectsLocationsEndpointAttachmentsViewEnum.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/endpointAttachments","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsEndpointAttachmentsRequest" }) as any as S.Schema<ListProjectsLocationsEndpointAttachmentsRequest>;
+export const ListProjectsLocationsEndpointAttachmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      view: S.optional(
+        ListProjectsLocationsEndpointAttachmentsViewEnum.pipe(T.Query()),
+      ),
+      filter: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/endpointAttachments",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsEndpointAttachmentsRequest",
+  }) as any as S.Schema<ListProjectsLocationsEndpointAttachmentsRequest>;
 
 export type EndpointAttachmentList = ReadonlyArray<EndpointAttachment>;
-export const EndpointAttachmentList = /*@__PURE__*/ S.Array(EndpointAttachment) as any as S.Schema<EndpointAttachmentList>;
+export const EndpointAttachmentList = /*@__PURE__*/ S.Array(
+  EndpointAttachment,
+) as any as S.Schema<EndpointAttachmentList>;
 
 /** Response message for ConnectorsService.ListEndpointAttachments */
 export interface ListEndpointAttachmentsResponse {
@@ -4375,12 +5666,14 @@ export interface ListEndpointAttachmentsResponse {
   nextPageToken?: string;
 }
 export const ListEndpointAttachmentsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "endpointAttachments": S.optional(EndpointAttachmentList),
-  "unreachable": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListEndpointAttachmentsResponse" }) as any as S.Schema<ListEndpointAttachmentsResponse>;
+  S.Struct({
+    endpointAttachments: S.optional(EndpointAttachmentList),
+    unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListEndpointAttachmentsResponse",
+}) as any as S.Schema<ListEndpointAttachmentsResponse>;
 
 export interface ListProjectsLocationsGlobalCustomConnectorsRequest {
   /** Filter string. */
@@ -4392,17 +5685,28 @@ export interface ListProjectsLocationsGlobalCustomConnectorsRequest {
   /** Page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsGlobalCustomConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/customConnectors","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsGlobalCustomConnectorsRequest" }) as any as S.Schema<ListProjectsLocationsGlobalCustomConnectorsRequest>;
+export const ListProjectsLocationsGlobalCustomConnectorsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      filter: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/customConnectors",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsGlobalCustomConnectorsRequest",
+  }) as any as S.Schema<ListProjectsLocationsGlobalCustomConnectorsRequest>;
 
 export type CustomConnectorList = ReadonlyArray<CustomConnector>;
-export const CustomConnectorList = /*@__PURE__*/ S.Array(CustomConnector) as any as S.Schema<CustomConnectorList>;
+export const CustomConnectorList = /*@__PURE__*/ S.Array(
+  CustomConnector,
+) as any as S.Schema<CustomConnectorList>;
 
 /** Response message for Connectors.ListCustomConnectors. */
 export interface ListCustomConnectorsResponse {
@@ -4414,12 +5718,14 @@ export interface ListCustomConnectorsResponse {
   customConnectors?: CustomConnectorList;
 }
 export const ListCustomConnectorsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "unreachable": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-  "customConnectors": S.optional(CustomConnectorList),
-}),
-).annotate({ identifier: "ListCustomConnectorsResponse" }) as any as S.Schema<ListCustomConnectorsResponse>;
+  S.Struct({
+    unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+    customConnectors: S.optional(CustomConnectorList),
+  }),
+).annotate({
+  identifier: "ListCustomConnectorsResponse",
+}) as any as S.Schema<ListCustomConnectorsResponse>;
 
 export interface ListProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRequest {
   /** Required. Parent resource of the connectors, of the form: `projects/*\/locations/{location}/customConnectors/*\/customConnectorVersions/*` */
@@ -4429,16 +5735,28 @@ export interface ListProjectsLocationsGlobalCustomConnectorsCustomConnectorVersi
   /** Page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/customConnectorVersions","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRequest" }) as any as S.Schema<ListProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRequest>;
+export const ListProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/customConnectorVersions",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "ListProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRequest",
+  }) as any as S.Schema<ListProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRequest>;
 
 export type CustomConnectorVersionList = ReadonlyArray<CustomConnectorVersion>;
-export const CustomConnectorVersionList = /*@__PURE__*/ S.Array(CustomConnectorVersion) as any as S.Schema<CustomConnectorVersionList>;
+export const CustomConnectorVersionList = /*@__PURE__*/ S.Array(
+  CustomConnectorVersion,
+) as any as S.Schema<CustomConnectorVersionList>;
 
 /** Response message for Connectors.ListCustomConnectorVersions. */
 export interface ListCustomConnectorVersionsResponse {
@@ -4450,12 +5768,14 @@ export interface ListCustomConnectorVersionsResponse {
   unreachable?: StringList;
 }
 export const ListCustomConnectorVersionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "customConnectorVersions": S.optional(CustomConnectorVersionList),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListCustomConnectorVersionsResponse" }) as any as S.Schema<ListCustomConnectorVersionsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    customConnectorVersions: S.optional(CustomConnectorVersionList),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListCustomConnectorVersionsResponse",
+}) as any as S.Schema<ListCustomConnectorVersionsResponse>;
 
 export interface ListProjectsLocationsGlobalManagedZonesRequest {
   /** Filter. */
@@ -4471,19 +5791,30 @@ export interface ListProjectsLocationsGlobalManagedZonesRequest {
   /** Optional. If true, allow partial responses for multi-regional Aggregated List requests. */
   returnPartialSuccess?: boolean;
 }
-export const ListProjectsLocationsGlobalManagedZonesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/managedZones","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsGlobalManagedZonesRequest" }) as any as S.Schema<ListProjectsLocationsGlobalManagedZonesRequest>;
+export const ListProjectsLocationsGlobalManagedZonesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      filter: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/managedZones",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsGlobalManagedZonesRequest",
+  }) as any as S.Schema<ListProjectsLocationsGlobalManagedZonesRequest>;
 
 export type ManagedZoneList = ReadonlyArray<ManagedZone>;
-export const ManagedZoneList = /*@__PURE__*/ S.Array(ManagedZone) as any as S.Schema<ManagedZoneList>;
+export const ManagedZoneList = /*@__PURE__*/ S.Array(
+  ManagedZone,
+) as any as S.Schema<ManagedZoneList>;
 
 /** Response message for ConnectorsService.ListManagedZones */
 export interface ListManagedZonesResponse {
@@ -4495,12 +5826,14 @@ export interface ListManagedZonesResponse {
   nextPageToken?: string;
 }
 export const ListManagedZonesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "managedZones": S.optional(ManagedZoneList),
-  "unreachable": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListManagedZonesResponse" }) as any as S.Schema<ListManagedZonesResponse>;
+  S.Struct({
+    managedZones: S.optional(ManagedZoneList),
+    unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListManagedZonesResponse",
+}) as any as S.Schema<ListManagedZonesResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
   /** The name of the operation's parent resource. */
@@ -4514,18 +5847,29 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/operations","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}/operations",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsOperationsRequest",
+}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(
+  Operation,
+) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -4537,12 +5881,14 @@ export interface ListOperationsResponse {
   nextPageToken?: string;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "operations": S.optional(OperationList),
-  "unreachable": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
+  S.Struct({
+    operations: S.optional(OperationList),
+    unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListOperationsResponse",
+}) as any as S.Schema<ListOperationsResponse>;
 
 export interface ListProjectsLocationsProvidersRequest {
   /** Required. Parent resource of the API, of the form: `projects/*\/locations/*` Only global location is supported for Provider resource. */
@@ -4552,16 +5898,27 @@ export interface ListProjectsLocationsProvidersRequest {
   /** Page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsProvidersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/providers","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsProvidersRequest" }) as any as S.Schema<ListProjectsLocationsProvidersRequest>;
+export const ListProjectsLocationsProvidersRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/providers",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsProvidersRequest",
+}) as any as S.Schema<ListProjectsLocationsProvidersRequest>;
 
 export type ProviderList = ReadonlyArray<Provider>;
-export const ProviderList = /*@__PURE__*/ S.Array(Provider) as any as S.Schema<ProviderList>;
+export const ProviderList = /*@__PURE__*/ S.Array(
+  Provider,
+) as any as S.Schema<ProviderList>;
 
 /** Response message for Connectors.ListProviders. */
 export interface ListProvidersResponse {
@@ -4573,12 +5930,14 @@ export interface ListProvidersResponse {
   unreachable?: StringList;
 }
 export const ListProvidersResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "providers": S.optional(ProviderList),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListProvidersResponse" }) as any as S.Schema<ListProvidersResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    providers: S.optional(ProviderList),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListProvidersResponse",
+}) as any as S.Schema<ListProvidersResponse>;
 
 export interface ListProjectsLocationsProvidersConnectorsRequest {
   /** Required. Parent resource of the connectors, of the form: `projects/*\/locations/*\/providers/*` Only global location is supported for Connector resource. */
@@ -4590,17 +5949,28 @@ export interface ListProjectsLocationsProvidersConnectorsRequest {
   /** Filter string. */
   filter?: string;
 }
-export const ListProjectsLocationsProvidersConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/connectors","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsProvidersConnectorsRequest" }) as any as S.Schema<ListProjectsLocationsProvidersConnectorsRequest>;
+export const ListProjectsLocationsProvidersConnectorsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/connectors",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsProvidersConnectorsRequest",
+  }) as any as S.Schema<ListProjectsLocationsProvidersConnectorsRequest>;
 
 export type ConnectorList = ReadonlyArray<Connector>;
-export const ConnectorList = /*@__PURE__*/ S.Array(Connector) as any as S.Schema<ConnectorList>;
+export const ConnectorList = /*@__PURE__*/ S.Array(
+  Connector,
+) as any as S.Schema<ConnectorList>;
 
 /** Response message for Connectors.ListConnectors. */
 export interface ListConnectorsResponse {
@@ -4612,15 +5982,21 @@ export interface ListConnectorsResponse {
   nextPageToken?: string;
 }
 export const ListConnectorsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "connectors": S.optional(ConnectorList),
-  "unreachable": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListConnectorsResponse" }) as any as S.Schema<ListConnectorsResponse>;
+  S.Struct({
+    connectors: S.optional(ConnectorList),
+    unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListConnectorsResponse",
+}) as any as S.Schema<ListConnectorsResponse>;
 
-export type ListProjectsLocationsProvidersConnectorsVersionsViewEnum = "CONNECTOR_VERSION_VIEW_UNSPECIFIED" | "CONNECTOR_VERSION_VIEW_BASIC" | "CONNECTOR_VERSION_VIEW_FULL";
-export const ListProjectsLocationsProvidersConnectorsVersionsViewEnum = /*@__PURE__*/ S.String;
+export type ListProjectsLocationsProvidersConnectorsVersionsViewEnum =
+  | "CONNECTOR_VERSION_VIEW_UNSPECIFIED"
+  | "CONNECTOR_VERSION_VIEW_BASIC"
+  | "CONNECTOR_VERSION_VIEW_FULL";
+export const ListProjectsLocationsProvidersConnectorsVersionsViewEnum =
+  /*@__PURE__*/ S.String;
 
 export interface ListProjectsLocationsProvidersConnectorsVersionsRequest {
   parent: string;
@@ -4629,19 +6005,36 @@ export interface ListProjectsLocationsProvidersConnectorsVersionsRequest {
   /** Page token. */
   pageToken?: string;
   /** Specifies which fields of the ConnectorVersion are returned in the response. Defaults to `BASIC` view. */
-  view?: ListProjectsLocationsProvidersConnectorsVersionsViewEnum | (string & {});
+  view?:
+    | ListProjectsLocationsProvidersConnectorsVersionsViewEnum
+    | (string & {});
 }
-export const ListProjectsLocationsProvidersConnectorsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "view": S.optional(ListProjectsLocationsProvidersConnectorsVersionsViewEnum.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/versions","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsProvidersConnectorsVersionsRequest" }) as any as S.Schema<ListProjectsLocationsProvidersConnectorsVersionsRequest>;
+export const ListProjectsLocationsProvidersConnectorsVersionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      view: S.optional(
+        ListProjectsLocationsProvidersConnectorsVersionsViewEnum.pipe(
+          T.Query(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/versions",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsProvidersConnectorsVersionsRequest",
+  }) as any as S.Schema<ListProjectsLocationsProvidersConnectorsVersionsRequest>;
 
 export type ConnectorVersionList = ReadonlyArray<ConnectorVersion>;
-export const ConnectorVersionList = /*@__PURE__*/ S.Array(ConnectorVersion) as any as S.Schema<ConnectorVersionList>;
+export const ConnectorVersionList = /*@__PURE__*/ S.Array(
+  ConnectorVersion,
+) as any as S.Schema<ConnectorVersionList>;
 
 /** Response message for Connectors.ListConnectorVersions. */
 export interface ListConnectorVersionsResponse {
@@ -4653,12 +6046,14 @@ export interface ListConnectorVersionsResponse {
   connectorVersions?: ConnectorVersionList;
 }
 export const ListConnectorVersionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "unreachable": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-  "connectorVersions": S.optional(ConnectorVersionList),
-}),
-).annotate({ identifier: "ListConnectorVersionsResponse" }) as any as S.Schema<ListConnectorVersionsResponse>;
+  S.Struct({
+    unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+    connectorVersions: S.optional(ConnectorVersionList),
+  }),
+).annotate({
+  identifier: "ListConnectorVersionsResponse",
+}) as any as S.Schema<ListConnectorVersionsResponse>;
 
 export interface ListProjectsLocationsProvidersConnectorsVersionsEventtypesRequest {
   /** Required. Parent resource of the connectors, of the form: `projects/*\/locations/*\/providers/*\/connectors/*\/versions/*` Only global location is supported for EventType resource. */
@@ -4668,16 +6063,28 @@ export interface ListProjectsLocationsProvidersConnectorsVersionsEventtypesReque
   /** Page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsProvidersConnectorsVersionsEventtypesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/eventtypes","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsProvidersConnectorsVersionsEventtypesRequest" }) as any as S.Schema<ListProjectsLocationsProvidersConnectorsVersionsEventtypesRequest>;
+export const ListProjectsLocationsProvidersConnectorsVersionsEventtypesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/eventtypes",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "ListProjectsLocationsProvidersConnectorsVersionsEventtypesRequest",
+  }) as any as S.Schema<ListProjectsLocationsProvidersConnectorsVersionsEventtypesRequest>;
 
 export type EventTypeList = ReadonlyArray<EventType>;
-export const EventTypeList = /*@__PURE__*/ S.Array(EventType) as any as S.Schema<EventTypeList>;
+export const EventTypeList = /*@__PURE__*/ S.Array(
+  EventType,
+) as any as S.Schema<EventTypeList>;
 
 /** Response message for Connectors.ListEventTypes. */
 export interface ListEventTypesResponse {
@@ -4687,22 +6094,27 @@ export interface ListEventTypesResponse {
   eventTypes?: EventTypeList;
 }
 export const ListEventTypesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "eventTypes": S.optional(EventTypeList),
-}),
-).annotate({ identifier: "ListEventTypesResponse" }) as any as S.Schema<ListEventTypesResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    eventTypes: S.optional(EventTypeList),
+  }),
+).annotate({
+  identifier: "ListEventTypesResponse",
+}) as any as S.Schema<ListEventTypesResponse>;
 
 /** Request message for ModifyConnectionToolspecOverride API. */
 export interface ModifyConnectionToolspecOverrideRequest {
   /** Required. Toolspec overrides to be modified. */
   toolspecOverride?: ToolspecOverride;
 }
-export const ModifyConnectionToolspecOverrideRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "toolspecOverride": S.optional(ToolspecOverride),
-}),
-).annotate({ identifier: "ModifyConnectionToolspecOverrideRequest" }) as any as S.Schema<ModifyConnectionToolspecOverrideRequest>;
+export const ModifyConnectionToolspecOverrideRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      toolspecOverride: S.optional(ToolspecOverride),
+    }),
+).annotate({
+  identifier: "ModifyConnectionToolspecOverrideRequest",
+}) as any as S.Schema<ModifyConnectionToolspecOverrideRequest>;
 
 export interface ModifyToolspecOverrideProjectsLocationsConnectionsRequest {
   /** Required. Resource name format: projects/{project}/locations/{location}/connections/{connection} */
@@ -4710,23 +6122,37 @@ export interface ModifyToolspecOverrideProjectsLocationsConnectionsRequest {
   /** Request body */
   body?: ModifyConnectionToolspecOverrideRequest;
 }
-export const ModifyToolspecOverrideProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(ModifyConnectionToolspecOverrideRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:modifyToolspecOverride","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "ModifyToolspecOverrideProjectsLocationsConnectionsRequest" }) as any as S.Schema<ModifyToolspecOverrideProjectsLocationsConnectionsRequest>;
+export const ModifyToolspecOverrideProjectsLocationsConnectionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(
+        ModifyConnectionToolspecOverrideRequest.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:modifyToolspecOverride",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ModifyToolspecOverrideProjectsLocationsConnectionsRequest",
+  }) as any as S.Schema<ModifyToolspecOverrideProjectsLocationsConnectionsRequest>;
 
 /** Response message for ModifyConnectionToolspecOverride API. */
 export interface ModifyConnectionToolspecOverrideResponse {
   /** Toolspec overrides for the connection. */
   toolspecOverrides?: ToolspecOverride;
 }
-export const ModifyConnectionToolspecOverrideResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "toolspecOverrides": S.optional(ToolspecOverride),
-}),
-).annotate({ identifier: "ModifyConnectionToolspecOverrideResponse" }) as any as S.Schema<ModifyConnectionToolspecOverrideResponse>;
+export const ModifyConnectionToolspecOverrideResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      toolspecOverrides: S.optional(ToolspecOverride),
+    }),
+).annotate({
+  identifier: "ModifyConnectionToolspecOverrideResponse",
+}) as any as S.Schema<ModifyConnectionToolspecOverrideResponse>;
 
 export interface PatchProjectsLocationsConnectionsRequest {
   /** Output only. Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection} */
@@ -4736,13 +6162,22 @@ export interface PatchProjectsLocationsConnectionsRequest {
   /** Request body */
   body?: Connection;
 }
-export const PatchProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Connection.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsConnectionsRequest" }) as any as S.Schema<PatchProjectsLocationsConnectionsRequest>;
+export const PatchProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Connection.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "PatchProjectsLocationsConnectionsRequest",
+}) as any as S.Schema<PatchProjectsLocationsConnectionsRequest>;
 
 export interface PatchProjectsLocationsConnectionsEndUserAuthenticationsRequest {
   /** Required. Identifier. Resource name of the EndUserAuthentication. Format: projects/{project}/locations/{location}/connections/{connection}/endUserAuthentications/{end_user_authentication} */
@@ -4752,13 +6187,23 @@ export interface PatchProjectsLocationsConnectionsEndUserAuthenticationsRequest 
   /** Request body */
   body?: EndUserAuthentication;
 }
-export const PatchProjectsLocationsConnectionsEndUserAuthenticationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(EndUserAuthentication.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsConnectionsEndUserAuthenticationsRequest" }) as any as S.Schema<PatchProjectsLocationsConnectionsEndUserAuthenticationsRequest>;
+export const PatchProjectsLocationsConnectionsEndUserAuthenticationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(EndUserAuthentication.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "PatchProjectsLocationsConnectionsEndUserAuthenticationsRequest",
+  }) as any as S.Schema<PatchProjectsLocationsConnectionsEndUserAuthenticationsRequest>;
 
 export interface PatchProjectsLocationsConnectionsEventSubscriptionsRequest {
   /** Required. The list of fields to update. Fields are specified relative to the Subscription. A field will be overwritten if it is in the mask. You can modify only the fields listed below. To update the EventSubscription details: * `serviceAccount` */
@@ -4768,13 +6213,22 @@ export interface PatchProjectsLocationsConnectionsEventSubscriptionsRequest {
   /** Request body */
   body?: EventSubscription;
 }
-export const PatchProjectsLocationsConnectionsEventSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(EventSubscription.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsConnectionsEventSubscriptionsRequest" }) as any as S.Schema<PatchProjectsLocationsConnectionsEventSubscriptionsRequest>;
+export const PatchProjectsLocationsConnectionsEventSubscriptionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      body: S.optional(EventSubscription.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsConnectionsEventSubscriptionsRequest",
+  }) as any as S.Schema<PatchProjectsLocationsConnectionsEventSubscriptionsRequest>;
 
 export interface PatchProjectsLocationsEndpointAttachmentsRequest {
   /** Output only. Resource name of the Endpoint Attachment. Format: projects/{project}/locations/{location}/endpointAttachments/{endpoint_attachment} */
@@ -4784,13 +6238,22 @@ export interface PatchProjectsLocationsEndpointAttachmentsRequest {
   /** Request body */
   body?: EndpointAttachment;
 }
-export const PatchProjectsLocationsEndpointAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(EndpointAttachment.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsEndpointAttachmentsRequest" }) as any as S.Schema<PatchProjectsLocationsEndpointAttachmentsRequest>;
+export const PatchProjectsLocationsEndpointAttachmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(EndpointAttachment.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsEndpointAttachmentsRequest",
+  }) as any as S.Schema<PatchProjectsLocationsEndpointAttachmentsRequest>;
 
 export interface PatchProjectsLocationsGlobalCustomConnectorsRequest {
   /** Required. Field mask is used to specify the fields to be overwritten in the Connector resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. Set the mask as "*" for full replacement, which means all fields will be overwritten. */
@@ -4800,13 +6263,22 @@ export interface PatchProjectsLocationsGlobalCustomConnectorsRequest {
   /** Request body */
   body?: CustomConnector;
 }
-export const PatchProjectsLocationsGlobalCustomConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(CustomConnector.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsGlobalCustomConnectorsRequest" }) as any as S.Schema<PatchProjectsLocationsGlobalCustomConnectorsRequest>;
+export const PatchProjectsLocationsGlobalCustomConnectorsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      body: S.optional(CustomConnector.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsGlobalCustomConnectorsRequest",
+  }) as any as S.Schema<PatchProjectsLocationsGlobalCustomConnectorsRequest>;
 
 export interface PatchProjectsLocationsGlobalManagedZonesRequest {
   /** Output only. Resource name of the Managed Zone. Format: projects/{project}/locations/global/managedZones/{managed_zone} */
@@ -4816,24 +6288,36 @@ export interface PatchProjectsLocationsGlobalManagedZonesRequest {
   /** Request body */
   body?: ManagedZone;
 }
-export const PatchProjectsLocationsGlobalManagedZonesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(ManagedZone.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsGlobalManagedZonesRequest" }) as any as S.Schema<PatchProjectsLocationsGlobalManagedZonesRequest>;
+export const PatchProjectsLocationsGlobalManagedZonesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(ManagedZone.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsGlobalManagedZonesRequest",
+  }) as any as S.Schema<PatchProjectsLocationsGlobalManagedZonesRequest>;
 
 /** Request message for ConnectorsService.PublishCustomConnectorVersion */
 export interface PublishCustomConnectorVersionRequest {
   /** Required. Partner metadata details for validating and publishing the custom connector as a partner connector version. */
   partnerMetadata?: PartnerMetadata;
 }
-export const PublishCustomConnectorVersionRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "partnerMetadata": S.optional(PartnerMetadata),
-}),
-).annotate({ identifier: "PublishCustomConnectorVersionRequest" }) as any as S.Schema<PublishCustomConnectorVersionRequest>;
+export const PublishCustomConnectorVersionRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      partnerMetadata: S.optional(PartnerMetadata),
+    }),
+).annotate({
+  identifier: "PublishCustomConnectorVersionRequest",
+}) as any as S.Schema<PublishCustomConnectorVersionRequest>;
 
 export interface PublishProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest {
   /** Required. Resource name of the form: `projects/{project}/locations/{location}/customConnectors/{custom_connector}/customConnectorVersions/{custom_connector_version}` */
@@ -4841,18 +6325,30 @@ export interface PublishProjectsLocationsCustomConnectorsCustomConnectorVersions
   /** Request body */
   body?: PublishCustomConnectorVersionRequest;
 }
-export const PublishProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(PublishCustomConnectorVersionRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:publish","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "PublishProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest" }) as any as S.Schema<PublishProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest>;
+export const PublishProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(PublishCustomConnectorVersionRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:publish",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "PublishProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest",
+  }) as any as S.Schema<PublishProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest>;
 
 /** Request message for ConnectorsService.RefreshConnectionSchemaMetadata. */
 export interface RefreshConnectionSchemaMetadataRequest {}
-export const RefreshConnectionSchemaMetadataRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "RefreshConnectionSchemaMetadataRequest" }) as any as S.Schema<RefreshConnectionSchemaMetadataRequest>;
+export const RefreshConnectionSchemaMetadataRequest = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "RefreshConnectionSchemaMetadataRequest",
+}) as any as S.Schema<RefreshConnectionSchemaMetadataRequest>;
 
 export interface RefreshProjectsLocationsConnectionsConnectionSchemaMetadataRequest {
   /** Required. Resource name. Format: projects/{project}/locations/{location}/connections/{connection}/connectionSchemaMetadata */
@@ -4860,18 +6356,32 @@ export interface RefreshProjectsLocationsConnectionsConnectionSchemaMetadataRequ
   /** Request body */
   body?: RefreshConnectionSchemaMetadataRequest;
 }
-export const RefreshProjectsLocationsConnectionsConnectionSchemaMetadataRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(RefreshConnectionSchemaMetadataRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:refresh","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "RefreshProjectsLocationsConnectionsConnectionSchemaMetadataRequest" }) as any as S.Schema<RefreshProjectsLocationsConnectionsConnectionSchemaMetadataRequest>;
+export const RefreshProjectsLocationsConnectionsConnectionSchemaMetadataRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(
+        RefreshConnectionSchemaMetadataRequest.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:refresh",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "RefreshProjectsLocationsConnectionsConnectionSchemaMetadataRequest",
+  }) as any as S.Schema<RefreshProjectsLocationsConnectionsConnectionSchemaMetadataRequest>;
 
 /** Request message for RemoveConnectionToolspecOverride API. */
 export interface RemoveConnectionToolspecOverrideRequest {}
-export const RemoveConnectionToolspecOverrideRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "RemoveConnectionToolspecOverrideRequest" }) as any as S.Schema<RemoveConnectionToolspecOverrideRequest>;
+export const RemoveConnectionToolspecOverrideRequest = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "RemoveConnectionToolspecOverrideRequest",
+}) as any as S.Schema<RemoveConnectionToolspecOverrideRequest>;
 
 export interface RemoveToolspecOverrideProjectsLocationsConnectionsRequest {
   /** Required. Resource name format: projects/{project}/locations/{location}/connections/{connection} */
@@ -4879,18 +6389,31 @@ export interface RemoveToolspecOverrideProjectsLocationsConnectionsRequest {
   /** Request body */
   body?: RemoveConnectionToolspecOverrideRequest;
 }
-export const RemoveToolspecOverrideProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(RemoveConnectionToolspecOverrideRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:removeToolspecOverride","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "RemoveToolspecOverrideProjectsLocationsConnectionsRequest" }) as any as S.Schema<RemoveToolspecOverrideProjectsLocationsConnectionsRequest>;
+export const RemoveToolspecOverrideProjectsLocationsConnectionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(
+        RemoveConnectionToolspecOverrideRequest.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:removeToolspecOverride",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "RemoveToolspecOverrideProjectsLocationsConnectionsRequest",
+  }) as any as S.Schema<RemoveToolspecOverrideProjectsLocationsConnectionsRequest>;
 
 /** Request message for ConnectorsService.RepairEventing */
 export interface RepairEventingRequest {}
 export const RepairEventingRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "RepairEventingRequest" }) as any as S.Schema<RepairEventingRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "RepairEventingRequest",
+}) as any as S.Schema<RepairEventingRequest>;
 
 export interface RepairEventingProjectsLocationsConnectionsRequest {
   /** Required. Resource name of the form: `projects/*\/locations/*\/connections/*` */
@@ -4898,18 +6421,29 @@ export interface RepairEventingProjectsLocationsConnectionsRequest {
   /** Request body */
   body?: RepairEventingRequest;
 }
-export const RepairEventingProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(RepairEventingRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:repairEventing","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "RepairEventingProjectsLocationsConnectionsRequest" }) as any as S.Schema<RepairEventingProjectsLocationsConnectionsRequest>;
+export const RepairEventingProjectsLocationsConnectionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(RepairEventingRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:repairEventing",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "RepairEventingProjectsLocationsConnectionsRequest",
+  }) as any as S.Schema<RepairEventingProjectsLocationsConnectionsRequest>;
 
 /** Request message for ConnectorsService.RefreshEventSubscription */
 export interface RetryEventSubscriptionRequest {}
 export const RetryEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "RetryEventSubscriptionRequest" }) as any as S.Schema<RetryEventSubscriptionRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "RetryEventSubscriptionRequest",
+}) as any as S.Schema<RetryEventSubscriptionRequest>;
 
 export interface RetryProjectsLocationsConnectionsEventSubscriptionsRequest {
   /** Required. Resource name of the form: `projects/*\/locations/*\/connections/*\/eventSubscriptions/*` */
@@ -4917,12 +6451,21 @@ export interface RetryProjectsLocationsConnectionsEventSubscriptionsRequest {
   /** Request body */
   body?: RetryEventSubscriptionRequest;
 }
-export const RetryProjectsLocationsConnectionsEventSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(RetryEventSubscriptionRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:retry","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "RetryProjectsLocationsConnectionsEventSubscriptionsRequest" }) as any as S.Schema<RetryProjectsLocationsConnectionsEventSubscriptionsRequest>;
+export const RetryProjectsLocationsConnectionsEventSubscriptionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(RetryEventSubscriptionRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:retry",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "RetryProjectsLocationsConnectionsEventSubscriptionsRequest",
+  }) as any as S.Schema<RetryProjectsLocationsConnectionsEventSubscriptionsRequest>;
 
 export interface SearchProjectsLocationsConnectionsRequest {
   /** Optional. The number of top matching connectors to return */
@@ -4934,14 +6477,23 @@ export interface SearchProjectsLocationsConnectionsRequest {
   /** Required. The query against which the search needs to be done. */
   query?: string;
 }
-export const SearchProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "query": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:search","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "SearchProjectsLocationsConnectionsRequest" }) as any as S.Schema<SearchProjectsLocationsConnectionsRequest>;
+export const SearchProjectsLocationsConnectionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      query: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}:search",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "SearchProjectsLocationsConnectionsRequest",
+  }) as any as S.Schema<SearchProjectsLocationsConnectionsRequest>;
 
 /** SearchConnectionInstance represents an instance of connector with specific fields */
 export interface SearchConnectionInstance {
@@ -4953,15 +6505,20 @@ export interface SearchConnectionInstance {
   entitySchema?: RuntimeEntitySchema;
 }
 export const SearchConnectionInstance = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "actionSchema": S.optional(RuntimeActionSchema),
-  "connection": S.optional(Connection),
-  "entitySchema": S.optional(RuntimeEntitySchema),
-}),
-).annotate({ identifier: "SearchConnectionInstance" }) as any as S.Schema<SearchConnectionInstance>;
+  S.Struct({
+    actionSchema: S.optional(RuntimeActionSchema),
+    connection: S.optional(Connection),
+    entitySchema: S.optional(RuntimeEntitySchema),
+  }),
+).annotate({
+  identifier: "SearchConnectionInstance",
+}) as any as S.Schema<SearchConnectionInstance>;
 
-export type SearchConnectionInstanceList = ReadonlyArray<SearchConnectionInstance>;
-export const SearchConnectionInstanceList = /*@__PURE__*/ S.Array(SearchConnectionInstance) as any as S.Schema<SearchConnectionInstanceList>;
+export type SearchConnectionInstanceList =
+  ReadonlyArray<SearchConnectionInstance>;
+export const SearchConnectionInstanceList = /*@__PURE__*/ S.Array(
+  SearchConnectionInstance,
+) as any as S.Schema<SearchConnectionInstanceList>;
 
 /** Response message for Connectors.SearchConnections. */
 export interface SearchConnectionsResponse {
@@ -4973,12 +6530,14 @@ export interface SearchConnectionsResponse {
   nextPageToken?: string;
 }
 export const SearchConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "connections": S.optional(SearchConnectionInstanceList),
-  "unreachable": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "SearchConnectionsResponse" }) as any as S.Schema<SearchConnectionsResponse>;
+  S.Struct({
+    connections: S.optional(SearchConnectionInstanceList),
+    unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SearchConnectionsResponse",
+}) as any as S.Schema<SearchConnectionsResponse>;
 
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
@@ -4988,11 +6547,13 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "policy": S.optional(Policy),
-  "updateMask": S.optional(S.String),
-}),
-).annotate({ identifier: "SetIamPolicyRequest" }) as any as S.Schema<SetIamPolicyRequest>;
+  S.Struct({
+    policy: S.optional(Policy),
+    updateMask: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SetIamPolicyRequest",
+}) as any as S.Schema<SetIamPolicyRequest>;
 
 export interface SetIamPolicyProjectsLocationsConnectionsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -5000,12 +6561,21 @@ export interface SetIamPolicyProjectsLocationsConnectionsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "SetIamPolicyProjectsLocationsConnectionsRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsConnectionsRequest>;
+export const SetIamPolicyProjectsLocationsConnectionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+resource}:setIamPolicy",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "SetIamPolicyProjectsLocationsConnectionsRequest",
+  }) as any as S.Schema<SetIamPolicyProjectsLocationsConnectionsRequest>;
 
 export interface SetIamPolicyProjectsLocationsProvidersRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -5013,12 +6583,21 @@ export interface SetIamPolicyProjectsLocationsProvidersRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsProvidersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "SetIamPolicyProjectsLocationsProvidersRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsProvidersRequest>;
+export const SetIamPolicyProjectsLocationsProvidersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+resource}:setIamPolicy",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "SetIamPolicyProjectsLocationsProvidersRequest",
+  }) as any as S.Schema<SetIamPolicyProjectsLocationsProvidersRequest>;
 
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
@@ -5026,10 +6605,12 @@ export interface TestIamPermissionsRequest {
   permissions?: StringList;
 }
 export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "permissions": S.optional(StringList),
-}),
-).annotate({ identifier: "TestIamPermissionsRequest" }) as any as S.Schema<TestIamPermissionsRequest>;
+  S.Struct({
+    permissions: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "TestIamPermissionsRequest",
+}) as any as S.Schema<TestIamPermissionsRequest>;
 
 export interface TestIamPermissionsProjectsLocationsConnectionsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -5037,12 +6618,21 @@ export interface TestIamPermissionsProjectsLocationsConnectionsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "TestIamPermissionsProjectsLocationsConnectionsRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsConnectionsRequest>;
+export const TestIamPermissionsProjectsLocationsConnectionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+resource}:testIamPermissions",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "TestIamPermissionsProjectsLocationsConnectionsRequest",
+  }) as any as S.Schema<TestIamPermissionsProjectsLocationsConnectionsRequest>;
 
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
@@ -5050,10 +6640,12 @@ export interface TestIamPermissionsResponse {
   permissions?: StringList;
 }
 export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "permissions": S.optional(StringList),
-}),
-).annotate({ identifier: "TestIamPermissionsResponse" }) as any as S.Schema<TestIamPermissionsResponse>;
+  S.Struct({
+    permissions: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "TestIamPermissionsResponse",
+}) as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsProvidersRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -5061,12 +6653,21 @@ export interface TestIamPermissionsProjectsLocationsProvidersRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsProvidersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "TestIamPermissionsProjectsLocationsProvidersRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsProvidersRequest>;
+export const TestIamPermissionsProjectsLocationsProvidersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+resource}:testIamPermissions",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "TestIamPermissionsProjectsLocationsProvidersRequest",
+  }) as any as S.Schema<TestIamPermissionsProjectsLocationsProvidersRequest>;
 
 export interface UpdateRegionalSettingsProjectsLocationsRequest {
   /** Output only. Resource name of the Connection. Format: projects/{project}/locations/{location}/regionalSettings */
@@ -5076,13 +6677,22 @@ export interface UpdateRegionalSettingsProjectsLocationsRequest {
   /** Request body */
   body?: RegionalSettings;
 }
-export const UpdateRegionalSettingsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(RegionalSettings.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "UpdateRegionalSettingsProjectsLocationsRequest" }) as any as S.Schema<UpdateRegionalSettingsProjectsLocationsRequest>;
+export const UpdateRegionalSettingsProjectsLocationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(RegionalSettings.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "UpdateRegionalSettingsProjectsLocationsRequest",
+  }) as any as S.Schema<UpdateRegionalSettingsProjectsLocationsRequest>;
 
 export interface UpdateSettingsProjectsLocationsGlobalRequest {
   /** Required. The list of fields to update. */
@@ -5092,16 +6702,30 @@ export interface UpdateSettingsProjectsLocationsGlobalRequest {
   /** Request body */
   body?: Settings;
 }
-export const UpdateSettingsProjectsLocationsGlobalRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(Settings.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "UpdateSettingsProjectsLocationsGlobalRequest" }) as any as S.Schema<UpdateSettingsProjectsLocationsGlobalRequest>;
+export const UpdateSettingsProjectsLocationsGlobalRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      body: S.optional(Settings.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "UpdateSettingsProjectsLocationsGlobalRequest",
+  }) as any as S.Schema<UpdateSettingsProjectsLocationsGlobalRequest>;
 
-export type ValidateCustomConnectorSpecRequestSpecTypeEnum = "CUSTOM_CONNECTOR_TYPE_UNSPECIFIED" | "OPEN_API" | "PROTO" | "SDK";
-export const ValidateCustomConnectorSpecRequestSpecTypeEnum = /*@__PURE__*/ S.String;
+export type ValidateCustomConnectorSpecRequestSpecTypeEnum =
+  | "CUSTOM_CONNECTOR_TYPE_UNSPECIFIED"
+  | "OPEN_API"
+  | "PROTO"
+  | "SDK";
+export const ValidateCustomConnectorSpecRequestSpecTypeEnum =
+  /*@__PURE__*/ S.String;
 
 /** Request message for ConnectorsService.ValidateCustomConnectorSpec */
 export interface ValidateCustomConnectorSpecRequest {
@@ -5113,12 +6737,14 @@ export interface ValidateCustomConnectorSpecRequest {
   serviceAccount?: string;
 }
 export const ValidateCustomConnectorSpecRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "specType": S.optional(ValidateCustomConnectorSpecRequestSpecTypeEnum),
-  "specLocation": S.optional(S.String),
-  "serviceAccount": S.optional(S.String),
-}),
-).annotate({ identifier: "ValidateCustomConnectorSpecRequest" }) as any as S.Schema<ValidateCustomConnectorSpecRequest>;
+  S.Struct({
+    specType: S.optional(ValidateCustomConnectorSpecRequestSpecTypeEnum),
+    specLocation: S.optional(S.String),
+    serviceAccount: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ValidateCustomConnectorSpecRequest",
+}) as any as S.Schema<ValidateCustomConnectorSpecRequest>;
 
 export interface ValidateCustomConnectorSpecProjectsLocationsCustomConnectorsRequest {
   /** Required. Location at which the custom connector is being created. */
@@ -5126,12 +6752,22 @@ export interface ValidateCustomConnectorSpecProjectsLocationsCustomConnectorsReq
   /** Request body */
   body?: ValidateCustomConnectorSpecRequest;
 }
-export const ValidateCustomConnectorSpecProjectsLocationsCustomConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(ValidateCustomConnectorSpecRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/customConnectors:validateCustomConnectorSpec","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "ValidateCustomConnectorSpecProjectsLocationsCustomConnectorsRequest" }) as any as S.Schema<ValidateCustomConnectorSpecProjectsLocationsCustomConnectorsRequest>;
+export const ValidateCustomConnectorSpecProjectsLocationsCustomConnectorsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(ValidateCustomConnectorSpecRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/customConnectors:validateCustomConnectorSpec",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "ValidateCustomConnectorSpecProjectsLocationsCustomConnectorsRequest",
+  }) as any as S.Schema<ValidateCustomConnectorSpecProjectsLocationsCustomConnectorsRequest>;
 
 /** Response message for ConnectorsService.ValidateCustomConnectorSpec */
 export interface ValidateCustomConnectorSpecResponse {
@@ -5139,16 +6775,20 @@ export interface ValidateCustomConnectorSpecResponse {
   errorMessage?: string;
 }
 export const ValidateCustomConnectorSpecResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "errorMessage": S.optional(S.String),
-}),
-).annotate({ identifier: "ValidateCustomConnectorSpecResponse" }) as any as S.Schema<ValidateCustomConnectorSpecResponse>;
+  S.Struct({
+    errorMessage: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ValidateCustomConnectorSpecResponse",
+}) as any as S.Schema<ValidateCustomConnectorSpecResponse>;
 
 /** Request message for ConnectorsService.WithdrawCustomConnectorVersion */
 export interface WithdrawCustomConnectorVersionRequest {}
-export const WithdrawCustomConnectorVersionRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "WithdrawCustomConnectorVersionRequest" }) as any as S.Schema<WithdrawCustomConnectorVersionRequest>;
+export const WithdrawCustomConnectorVersionRequest = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "WithdrawCustomConnectorVersionRequest",
+}) as any as S.Schema<WithdrawCustomConnectorVersionRequest>;
 
 export interface WithdrawProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest {
   /** Required. Resource name of the form: `projects/{project}/locations/{location}/customConnectors/{custom_connector}/customConnectorVersions/{custom_connector_version}` */
@@ -5156,14 +6796,31 @@ export interface WithdrawProjectsLocationsCustomConnectorsCustomConnectorVersion
   /** Request body */
   body?: WithdrawCustomConnectorVersionRequest;
 }
-export const WithdrawProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(WithdrawCustomConnectorVersionRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:withdraw","baseUrl":"https://connectors.googleapis.com/"})),
-).annotate({ identifier: "WithdrawProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest" }) as any as S.Schema<WithdrawProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest>;
+export const WithdrawProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(
+        WithdrawCustomConnectorVersionRequest.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:withdraw",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "WithdrawProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest",
+  }) as any as S.Schema<WithdrawProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest>;
 
-export type CancelProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CancelProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsRequest,
@@ -5178,7 +6835,12 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsConnectionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsConnectionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new Connection in a given project and location. */
 export const createProjectsLocationsConnections: API.OperationMethod<
   CreateProjectsLocationsConnectionsRequest,
@@ -5193,7 +6855,12 @@ export const createProjectsLocationsConnections: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsConnectionsEndUserAuthenticationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsConnectionsEndUserAuthenticationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new EndUserAuthentication in a given project,location and connection. */
 export const createProjectsLocationsConnectionsEndUserAuthentications: API.OperationMethod<
   CreateProjectsLocationsConnectionsEndUserAuthenticationsRequest,
@@ -5208,7 +6875,12 @@ export const createProjectsLocationsConnectionsEndUserAuthentications: API.Opera
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsConnectionsEventSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsConnectionsEventSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new EventSubscription in a given project,location and connection. */
 export const createProjectsLocationsConnectionsEventSubscriptions: API.OperationMethod<
   CreateProjectsLocationsConnectionsEventSubscriptionsRequest,
@@ -5223,7 +6895,12 @@ export const createProjectsLocationsConnectionsEventSubscriptions: API.Operation
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsEndpointAttachmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsEndpointAttachmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new EndpointAttachment in a given project and location. */
 export const createProjectsLocationsEndpointAttachments: API.OperationMethod<
   CreateProjectsLocationsEndpointAttachmentsRequest,
@@ -5238,7 +6915,12 @@ export const createProjectsLocationsEndpointAttachments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsGlobalCustomConnectorsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsGlobalCustomConnectorsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new CustomConnector in a given project and location. */
 export const createProjectsLocationsGlobalCustomConnectors: API.OperationMethod<
   CreateProjectsLocationsGlobalCustomConnectorsRequest,
@@ -5253,7 +6935,8 @@ export const createProjectsLocationsGlobalCustomConnectors: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsError =
+  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new CustomConnectorVersion in a given project and location. */
 export const createProjectsLocationsGlobalCustomConnectorsCustomConnectorVersions: API.OperationMethod<
   CreateProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRequest,
@@ -5261,14 +6944,20 @@ export const createProjectsLocationsGlobalCustomConnectorsCustomConnectorVersion
   CreateProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRequest,
+  input:
+    CreateProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRequest,
   output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsGlobalManagedZonesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsGlobalManagedZonesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new ManagedZone in a given project and location. */
 export const createProjectsLocationsGlobalManagedZones: API.OperationMethod<
   CreateProjectsLocationsGlobalManagedZonesRequest,
@@ -5283,7 +6972,12 @@ export const createProjectsLocationsGlobalManagedZones: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsConnectionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsConnectionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a single Connection. */
 export const deleteProjectsLocationsConnections: API.OperationMethod<
   DeleteProjectsLocationsConnectionsRequest,
@@ -5298,7 +6992,12 @@ export const deleteProjectsLocationsConnections: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsConnectionsEndUserAuthenticationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsConnectionsEndUserAuthenticationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a single EndUserAuthentication. */
 export const deleteProjectsLocationsConnectionsEndUserAuthentications: API.OperationMethod<
   DeleteProjectsLocationsConnectionsEndUserAuthenticationsRequest,
@@ -5313,7 +7012,12 @@ export const deleteProjectsLocationsConnectionsEndUserAuthentications: API.Opera
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsConnectionsEventSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsConnectionsEventSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a single EventSubscription. */
 export const deleteProjectsLocationsConnectionsEventSubscriptions: API.OperationMethod<
   DeleteProjectsLocationsConnectionsEventSubscriptionsRequest,
@@ -5328,7 +7032,8 @@ export const deleteProjectsLocationsConnectionsEventSubscriptions: API.Operation
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsCustomConnectorsCustomConnectorVersionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsCustomConnectorsCustomConnectorVersionsError =
+  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a single CustomConnectorVersion. */
 export const deleteProjectsLocationsCustomConnectorsCustomConnectorVersions: API.OperationMethod<
   DeleteProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest,
@@ -5343,7 +7048,12 @@ export const deleteProjectsLocationsCustomConnectorsCustomConnectorVersions: API
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsEndpointAttachmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsEndpointAttachmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a single EndpointAttachment. */
 export const deleteProjectsLocationsEndpointAttachments: API.OperationMethod<
   DeleteProjectsLocationsEndpointAttachmentsRequest,
@@ -5358,7 +7068,12 @@ export const deleteProjectsLocationsEndpointAttachments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsGlobalCustomConnectorsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsGlobalCustomConnectorsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a single CustomConnector. */
 export const deleteProjectsLocationsGlobalCustomConnectors: API.OperationMethod<
   DeleteProjectsLocationsGlobalCustomConnectorsRequest,
@@ -5373,7 +7088,12 @@ export const deleteProjectsLocationsGlobalCustomConnectors: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsGlobalManagedZonesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsGlobalManagedZonesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a single ManagedZone. */
 export const deleteProjectsLocationsGlobalManagedZones: API.OperationMethod<
   DeleteProjectsLocationsGlobalManagedZonesRequest,
@@ -5388,7 +7108,12 @@ export const deleteProjectsLocationsGlobalManagedZones: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsRequest,
@@ -5403,7 +7128,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeprecateProjectsLocationsCustomConnectorsCustomConnectorVersionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeprecateProjectsLocationsCustomConnectorsCustomConnectorVersionsError =
+  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deprecates a single CustomConnectorVersion. */
 export const deprecateProjectsLocationsCustomConnectorsCustomConnectorVersions: API.OperationMethod<
   DeprecateProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest,
@@ -5411,14 +7137,18 @@ export const deprecateProjectsLocationsCustomConnectorsCustomConnectorVersions: 
   DeprecateProjectsLocationsCustomConnectorsCustomConnectorVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeprecateProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest,
+  input:
+    DeprecateProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest,
   output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type FetchAuthSchemaProjectsLocationsProvidersConnectorsVersionsError = NotFound | Forbidden | GcpOpError;
+export type FetchAuthSchemaProjectsLocationsProvidersConnectorsVersionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** fetch and return the list of auth config variables required to override the connection backend auth. */
 export const fetchAuthSchemaProjectsLocationsProvidersConnectorsVersions: API.OperationMethod<
   FetchAuthSchemaProjectsLocationsProvidersConnectorsVersionsRequest,
@@ -5433,7 +7163,12 @@ export const fetchAuthSchemaProjectsLocationsProvidersConnectorsVersions: API.Op
   retry: Retry.Retry,
 }));
 
-export type FetchToolspecOverrideProjectsLocationsConnectionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type FetchToolspecOverrideProjectsLocationsConnectionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Fetches Toolspec Override for a connection for the given list of tools. Returns results from the db if the tool is already present. */
 export const fetchToolspecOverrideProjectsLocationsConnections: API.OperationMethod<
   FetchToolspecOverrideProjectsLocationsConnectionsRequest,
@@ -5448,7 +7183,12 @@ export const fetchToolspecOverrideProjectsLocationsConnections: API.OperationMet
   retry: Retry.Retry,
 }));
 
-export type GenerateToolspecOverrideProjectsLocationsConnectionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type GenerateToolspecOverrideProjectsLocationsConnectionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Generates Toolspec Override for a connection for the given list of entityTypes and operations. Returns results from the db if the entityType and operation are already present. */
 export const generateToolspecOverrideProjectsLocationsConnections: API.OperationMethod<
   GenerateToolspecOverrideProjectsLocationsConnectionsRequest,
@@ -5463,7 +7203,8 @@ export const generateToolspecOverrideProjectsLocationsConnections: API.Operation
   retry: Retry.Retry,
 }));
 
-export type GetActionProjectsLocationsConnectionsConnectionSchemaMetadataError = NotFound | Forbidden | GcpOpError;
+export type GetActionProjectsLocationsConnectionsConnectionSchemaMetadataError =
+  NotFound | Forbidden | GcpOpError;
 /** Get action. */
 export const getActionProjectsLocationsConnectionsConnectionSchemaMetadata: API.OperationMethod<
   GetActionProjectsLocationsConnectionsConnectionSchemaMetadataRequest,
@@ -5478,7 +7219,10 @@ export const getActionProjectsLocationsConnectionsConnectionSchemaMetadata: API.
   retry: Retry.Retry,
 }));
 
-export type GetConnectionSchemaMetadataProjectsLocationsConnectionsError = NotFound | Forbidden | GcpOpError;
+export type GetConnectionSchemaMetadataProjectsLocationsConnectionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets schema metadata of a connection. SchemaMetadata is a singleton resource for each connection. */
 export const getConnectionSchemaMetadataProjectsLocationsConnections: API.OperationMethod<
   GetConnectionSchemaMetadataProjectsLocationsConnectionsRequest,
@@ -5493,7 +7237,8 @@ export const getConnectionSchemaMetadataProjectsLocationsConnections: API.Operat
   retry: Retry.Retry,
 }));
 
-export type GetEntityTypeProjectsLocationsConnectionsConnectionSchemaMetadataError = NotFound | Forbidden | GcpOpError;
+export type GetEntityTypeProjectsLocationsConnectionsConnectionSchemaMetadataError =
+  NotFound | Forbidden | GcpOpError;
 /** Get entity type. */
 export const getEntityTypeProjectsLocationsConnectionsConnectionSchemaMetadata: API.OperationMethod<
   GetEntityTypeProjectsLocationsConnectionsConnectionSchemaMetadataRequest,
@@ -5501,14 +7246,18 @@ export const getEntityTypeProjectsLocationsConnectionsConnectionSchemaMetadata: 
   GetEntityTypeProjectsLocationsConnectionsConnectionSchemaMetadataError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEntityTypeProjectsLocationsConnectionsConnectionSchemaMetadataRequest,
+  input:
+    GetEntityTypeProjectsLocationsConnectionsConnectionSchemaMetadataRequest,
   output: Operation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsConnectionsError = NotFound | Forbidden | GcpOpError;
+export type GetIamPolicyProjectsLocationsConnectionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsConnections: API.OperationMethod<
   GetIamPolicyProjectsLocationsConnectionsRequest,
@@ -5523,7 +7272,10 @@ export const getIamPolicyProjectsLocationsConnections: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsProvidersError = NotFound | Forbidden | GcpOpError;
+export type GetIamPolicyProjectsLocationsProvidersError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsProviders: API.OperationMethod<
   GetIamPolicyProjectsLocationsProvidersRequest,
@@ -5553,7 +7305,10 @@ export const getProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsConnectionsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsConnectionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a single Connection. */
 export const getProjectsLocationsConnections: API.OperationMethod<
   GetProjectsLocationsConnectionsRequest,
@@ -5568,7 +7323,10 @@ export const getProjectsLocationsConnections: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsConnectionsEndUserAuthenticationsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsConnectionsEndUserAuthenticationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a single EndUserAuthentication. */
 export const getProjectsLocationsConnectionsEndUserAuthentications: API.OperationMethod<
   GetProjectsLocationsConnectionsEndUserAuthenticationsRequest,
@@ -5583,7 +7341,10 @@ export const getProjectsLocationsConnectionsEndUserAuthentications: API.Operatio
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsConnectionsEventSubscriptionsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsConnectionsEventSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a single EventSubscription. */
 export const getProjectsLocationsConnectionsEventSubscriptions: API.OperationMethod<
   GetProjectsLocationsConnectionsEventSubscriptionsRequest,
@@ -5598,7 +7359,10 @@ export const getProjectsLocationsConnectionsEventSubscriptions: API.OperationMet
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsEndpointAttachmentsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsEndpointAttachmentsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a single EndpointAttachment. */
 export const getProjectsLocationsEndpointAttachments: API.OperationMethod<
   GetProjectsLocationsEndpointAttachmentsRequest,
@@ -5613,7 +7377,10 @@ export const getProjectsLocationsEndpointAttachments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsGlobalCustomConnectorsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsGlobalCustomConnectorsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a single CustomConnector. */
 export const getProjectsLocationsGlobalCustomConnectors: API.OperationMethod<
   GetProjectsLocationsGlobalCustomConnectorsRequest,
@@ -5628,7 +7395,8 @@ export const getProjectsLocationsGlobalCustomConnectors: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsError =
+  NotFound | Forbidden | GcpOpError;
 /** Gets details of a single CustomConnectorVersion. */
 export const getProjectsLocationsGlobalCustomConnectorsCustomConnectorVersions: API.OperationMethod<
   GetProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRequest,
@@ -5636,14 +7404,18 @@ export const getProjectsLocationsGlobalCustomConnectorsCustomConnectorVersions: 
   GetProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRequest,
+  input:
+    GetProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRequest,
   output: CustomConnectorVersion,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsGlobalManagedZonesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsGlobalManagedZonesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a single ManagedZone. */
 export const getProjectsLocationsGlobalManagedZones: API.OperationMethod<
   GetProjectsLocationsGlobalManagedZonesRequest,
@@ -5658,7 +7430,10 @@ export const getProjectsLocationsGlobalManagedZones: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -5673,7 +7448,10 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsProvidersError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsProvidersError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a provider. */
 export const getProjectsLocationsProviders: API.OperationMethod<
   GetProjectsLocationsProvidersRequest,
@@ -5688,7 +7466,10 @@ export const getProjectsLocationsProviders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsProvidersConnectorsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsProvidersConnectorsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a single Connector. */
 export const getProjectsLocationsProvidersConnectors: API.OperationMethod<
   GetProjectsLocationsProvidersConnectorsRequest,
@@ -5703,7 +7484,10 @@ export const getProjectsLocationsProvidersConnectors: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsProvidersConnectorsVersionsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsProvidersConnectorsVersionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a single connector version. */
 export const getProjectsLocationsProvidersConnectorsVersions: API.OperationMethod<
   GetProjectsLocationsProvidersConnectorsVersionsRequest,
@@ -5718,7 +7502,10 @@ export const getProjectsLocationsProvidersConnectorsVersions: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsProvidersConnectorsVersionsEventtypesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsProvidersConnectorsVersionsEventtypesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a single event type. */
 export const getProjectsLocationsProvidersConnectorsVersionsEventtypes: API.OperationMethod<
   GetProjectsLocationsProvidersConnectorsVersionsEventtypesRequest,
@@ -5733,7 +7520,10 @@ export const getProjectsLocationsProvidersConnectorsVersionsEventtypes: API.Oper
   retry: Retry.Retry,
 }));
 
-export type GetRegionalSettingsProjectsLocationsError = NotFound | Forbidden | GcpOpError;
+export type GetRegionalSettingsProjectsLocationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** GetRegionalSettings gets settings of a region. RegionalSettings is a singleton resource. */
 export const getRegionalSettingsProjectsLocations: API.OperationMethod<
   GetRegionalSettingsProjectsLocationsRequest,
@@ -5748,7 +7538,10 @@ export const getRegionalSettingsProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetRuntimeConfigProjectsLocationsError = NotFound | Forbidden | GcpOpError;
+export type GetRuntimeConfigProjectsLocationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the runtimeConfig of a location. RuntimeConfig is a singleton resource for each location. */
 export const getRuntimeConfigProjectsLocations: API.OperationMethod<
   GetRuntimeConfigProjectsLocationsRequest,
@@ -5763,7 +7556,10 @@ export const getRuntimeConfigProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetSettingsProjectsLocationsGlobalError = NotFound | Forbidden | GcpOpError;
+export type GetSettingsProjectsLocationsGlobalError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** GetGlobalSettings gets settings of a project. GlobalSettings is a singleton resource. */
 export const getSettingsProjectsLocationsGlobal: API.OperationMethod<
   GetSettingsProjectsLocationsGlobalRequest,
@@ -5778,7 +7574,8 @@ export const getSettingsProjectsLocationsGlobal: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListActionsProjectsLocationsConnectionsConnectionSchemaMetadataError = NotFound | Forbidden | GcpOpError;
+export type ListActionsProjectsLocationsConnectionsConnectionSchemaMetadataError =
+  NotFound | Forbidden | GcpOpError;
 /** List actions. */
 export const listActionsProjectsLocationsConnectionsConnectionSchemaMetadata: API.PaginatedOperationMethod<
   ListActionsProjectsLocationsConnectionsConnectionSchemaMetadataRequest,
@@ -5791,10 +7588,18 @@ export const listActionsProjectsLocationsConnectionsConnectionSchemaMetadata: AP
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListenEventProjectsLocationsConnectionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ListenEventProjectsLocationsConnectionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** ListenEvent listens to the event. */
 export const listenEventProjectsLocationsConnections: API.OperationMethod<
   ListenEventProjectsLocationsConnectionsRequest,
@@ -5809,7 +7614,8 @@ export const listenEventProjectsLocationsConnections: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListEntityTypesProjectsLocationsConnectionsConnectionSchemaMetadataError = NotFound | Forbidden | GcpOpError;
+export type ListEntityTypesProjectsLocationsConnectionsConnectionSchemaMetadataError =
+  NotFound | Forbidden | GcpOpError;
 /** List entity types. */
 export const listEntityTypesProjectsLocationsConnectionsConnectionSchemaMetadata: API.PaginatedOperationMethod<
   ListEntityTypesProjectsLocationsConnectionsConnectionSchemaMetadataRequest,
@@ -5817,12 +7623,16 @@ export const listEntityTypesProjectsLocationsConnectionsConnectionSchemaMetadata
   ListEntityTypesProjectsLocationsConnectionsConnectionSchemaMetadataError,
   GcpOpContext
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListEntityTypesProjectsLocationsConnectionsConnectionSchemaMetadataRequest,
+  input:
+    ListEntityTypesProjectsLocationsConnectionsConnectionSchemaMetadataRequest,
   output: ListEntityTypesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListProjectsLocationsError = NotFound | Forbidden | GcpOpError;
@@ -5838,10 +7648,16 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsConnectionsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsConnectionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists Connections in a given project and location. */
 export const listProjectsLocationsConnections: API.PaginatedOperationMethod<
   ListProjectsLocationsConnectionsRequest,
@@ -5854,10 +7670,16 @@ export const listProjectsLocationsConnections: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsConnectionsEndUserAuthenticationsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsConnectionsEndUserAuthenticationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** List EndUserAuthentications in a given project,location and connection. */
 export const listProjectsLocationsConnectionsEndUserAuthentications: API.PaginatedOperationMethod<
   ListProjectsLocationsConnectionsEndUserAuthenticationsRequest,
@@ -5870,10 +7692,16 @@ export const listProjectsLocationsConnectionsEndUserAuthentications: API.Paginat
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsConnectionsEventSubscriptionsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsConnectionsEventSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** List EventSubscriptions in a given project,location and connection. */
 export const listProjectsLocationsConnectionsEventSubscriptions: API.PaginatedOperationMethod<
   ListProjectsLocationsConnectionsEventSubscriptionsRequest,
@@ -5886,10 +7714,16 @@ export const listProjectsLocationsConnectionsEventSubscriptions: API.PaginatedOp
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsConnectionsRuntimeActionSchemasError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsConnectionsRuntimeActionSchemasError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** List schema of a runtime actions filtered by action name. */
 export const listProjectsLocationsConnectionsRuntimeActionSchemas: API.PaginatedOperationMethod<
   ListProjectsLocationsConnectionsRuntimeActionSchemasRequest,
@@ -5902,10 +7736,16 @@ export const listProjectsLocationsConnectionsRuntimeActionSchemas: API.Paginated
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsConnectionsRuntimeEntitySchemasError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsConnectionsRuntimeEntitySchemasError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** List schema of a runtime entities filtered by entity name. */
 export const listProjectsLocationsConnectionsRuntimeEntitySchemas: API.PaginatedOperationMethod<
   ListProjectsLocationsConnectionsRuntimeEntitySchemasRequest,
@@ -5918,10 +7758,16 @@ export const listProjectsLocationsConnectionsRuntimeEntitySchemas: API.Paginated
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsEndpointAttachmentsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsEndpointAttachmentsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** List EndpointAttachments in a given project */
 export const listProjectsLocationsEndpointAttachments: API.PaginatedOperationMethod<
   ListProjectsLocationsEndpointAttachmentsRequest,
@@ -5934,10 +7780,16 @@ export const listProjectsLocationsEndpointAttachments: API.PaginatedOperationMet
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsGlobalCustomConnectorsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsGlobalCustomConnectorsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** List CustomConnectorVersions in a given project */
 export const listProjectsLocationsGlobalCustomConnectors: API.PaginatedOperationMethod<
   ListProjectsLocationsGlobalCustomConnectorsRequest,
@@ -5950,10 +7802,14 @@ export const listProjectsLocationsGlobalCustomConnectors: API.PaginatedOperation
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsError =
+  NotFound | Forbidden | GcpOpError;
 /** List CustomConnectorVersions in a given project */
 export const listProjectsLocationsGlobalCustomConnectorsCustomConnectorVersions: API.PaginatedOperationMethod<
   ListProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRequest,
@@ -5961,15 +7817,22 @@ export const listProjectsLocationsGlobalCustomConnectorsCustomConnectorVersions:
   ListProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRequest,
+  input:
+    ListProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRequest,
   output: ListCustomConnectorVersionsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsGlobalManagedZonesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsGlobalManagedZonesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** List ManagedZones in a given project */
 export const listProjectsLocationsGlobalManagedZones: API.PaginatedOperationMethod<
   ListProjectsLocationsGlobalManagedZonesRequest,
@@ -5982,10 +7845,16 @@ export const listProjectsLocationsGlobalManagedZones: API.PaginatedOperationMeth
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -5998,10 +7867,16 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsProvidersError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsProvidersError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists Providers in a given project and location. */
 export const listProjectsLocationsProviders: API.PaginatedOperationMethod<
   ListProjectsLocationsProvidersRequest,
@@ -6014,10 +7889,16 @@ export const listProjectsLocationsProviders: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsProvidersConnectorsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsProvidersConnectorsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists Connectors in a given project and location. */
 export const listProjectsLocationsProvidersConnectors: API.PaginatedOperationMethod<
   ListProjectsLocationsProvidersConnectorsRequest,
@@ -6030,10 +7911,16 @@ export const listProjectsLocationsProvidersConnectors: API.PaginatedOperationMet
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsProvidersConnectorsVersionsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsProvidersConnectorsVersionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists Connector Versions in a given project and location. */
 export const listProjectsLocationsProvidersConnectorsVersions: API.PaginatedOperationMethod<
   ListProjectsLocationsProvidersConnectorsVersionsRequest,
@@ -6046,10 +7933,16 @@ export const listProjectsLocationsProvidersConnectorsVersions: API.PaginatedOper
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsProvidersConnectorsVersionsEventtypesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsProvidersConnectorsVersionsEventtypesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists Event Types in a given Connector Version. */
 export const listProjectsLocationsProvidersConnectorsVersionsEventtypes: API.PaginatedOperationMethod<
   ListProjectsLocationsProvidersConnectorsVersionsEventtypesRequest,
@@ -6062,10 +7955,18 @@ export const listProjectsLocationsProvidersConnectorsVersionsEventtypes: API.Pag
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ModifyToolspecOverrideProjectsLocationsConnectionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ModifyToolspecOverrideProjectsLocationsConnectionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates Toolspec Override for a connection with the admin provided descriptions. */
 export const modifyToolspecOverrideProjectsLocationsConnections: API.OperationMethod<
   ModifyToolspecOverrideProjectsLocationsConnectionsRequest,
@@ -6080,7 +7981,12 @@ export const modifyToolspecOverrideProjectsLocationsConnections: API.OperationMe
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsConnectionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsConnectionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the parameters of a single Connection. */
 export const patchProjectsLocationsConnections: API.OperationMethod<
   PatchProjectsLocationsConnectionsRequest,
@@ -6095,7 +8001,12 @@ export const patchProjectsLocationsConnections: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsConnectionsEndUserAuthenticationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsConnectionsEndUserAuthenticationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the parameters of a single EndUserAuthentication. */
 export const patchProjectsLocationsConnectionsEndUserAuthentications: API.OperationMethod<
   PatchProjectsLocationsConnectionsEndUserAuthenticationsRequest,
@@ -6110,7 +8021,12 @@ export const patchProjectsLocationsConnectionsEndUserAuthentications: API.Operat
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsConnectionsEventSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsConnectionsEventSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the parameters of a single EventSubscription. */
 export const patchProjectsLocationsConnectionsEventSubscriptions: API.OperationMethod<
   PatchProjectsLocationsConnectionsEventSubscriptionsRequest,
@@ -6125,7 +8041,12 @@ export const patchProjectsLocationsConnectionsEventSubscriptions: API.OperationM
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsEndpointAttachmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsEndpointAttachmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the parameters of a single EndpointAttachment. */
 export const patchProjectsLocationsEndpointAttachments: API.OperationMethod<
   PatchProjectsLocationsEndpointAttachmentsRequest,
@@ -6140,7 +8061,12 @@ export const patchProjectsLocationsEndpointAttachments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsGlobalCustomConnectorsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsGlobalCustomConnectorsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the parameters of a CustomConnector. */
 export const patchProjectsLocationsGlobalCustomConnectors: API.OperationMethod<
   PatchProjectsLocationsGlobalCustomConnectorsRequest,
@@ -6155,7 +8081,12 @@ export const patchProjectsLocationsGlobalCustomConnectors: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsGlobalManagedZonesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsGlobalManagedZonesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the parameters of a single ManagedZone. */
 export const patchProjectsLocationsGlobalManagedZones: API.OperationMethod<
   PatchProjectsLocationsGlobalManagedZonesRequest,
@@ -6170,7 +8101,8 @@ export const patchProjectsLocationsGlobalManagedZones: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PublishProjectsLocationsCustomConnectorsCustomConnectorVersionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PublishProjectsLocationsCustomConnectorsCustomConnectorVersionsError =
+  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Publish request for the CustomConnectorVersion. Once approved, the CustomConnectorVersion will be published as PartnerConnector. */
 export const publishProjectsLocationsCustomConnectorsCustomConnectorVersions: API.OperationMethod<
   PublishProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest,
@@ -6185,7 +8117,12 @@ export const publishProjectsLocationsCustomConnectorsCustomConnectorVersions: AP
   retry: Retry.Retry,
 }));
 
-export type RefreshProjectsLocationsConnectionsConnectionSchemaMetadataError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RefreshProjectsLocationsConnectionsConnectionSchemaMetadataError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Refresh runtime schema of a connection. */
 export const refreshProjectsLocationsConnectionsConnectionSchemaMetadata: API.OperationMethod<
   RefreshProjectsLocationsConnectionsConnectionSchemaMetadataRequest,
@@ -6200,7 +8137,12 @@ export const refreshProjectsLocationsConnectionsConnectionSchemaMetadata: API.Op
   retry: Retry.Retry,
 }));
 
-export type RemoveToolspecOverrideProjectsLocationsConnectionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RemoveToolspecOverrideProjectsLocationsConnectionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes all Toolspec Override for a connection. */
 export const removeToolspecOverrideProjectsLocationsConnections: API.OperationMethod<
   RemoveToolspecOverrideProjectsLocationsConnectionsRequest,
@@ -6215,7 +8157,12 @@ export const removeToolspecOverrideProjectsLocationsConnections: API.OperationMe
   retry: Retry.Retry,
 }));
 
-export type RepairEventingProjectsLocationsConnectionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RepairEventingProjectsLocationsConnectionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** RepaiEventing tries to repair eventing related event subscriptions. */
 export const repairEventingProjectsLocationsConnections: API.OperationMethod<
   RepairEventingProjectsLocationsConnectionsRequest,
@@ -6230,7 +8177,12 @@ export const repairEventingProjectsLocationsConnections: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RetryProjectsLocationsConnectionsEventSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RetryProjectsLocationsConnectionsEventSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** RetryEventSubscription retries the registration of Subscription. */
 export const retryProjectsLocationsConnectionsEventSubscriptions: API.OperationMethod<
   RetryProjectsLocationsConnectionsEventSubscriptionsRequest,
@@ -6245,7 +8197,10 @@ export const retryProjectsLocationsConnectionsEventSubscriptions: API.OperationM
   retry: Retry.Retry,
 }));
 
-export type SearchProjectsLocationsConnectionsError = NotFound | Forbidden | GcpOpError;
+export type SearchProjectsLocationsConnectionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns Top matching Connections for a given query. */
 export const searchProjectsLocationsConnections: API.PaginatedOperationMethod<
   SearchProjectsLocationsConnectionsRequest,
@@ -6258,10 +8213,18 @@ export const searchProjectsLocationsConnections: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type SetIamPolicyProjectsLocationsConnectionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetIamPolicyProjectsLocationsConnectionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsConnections: API.OperationMethod<
   SetIamPolicyProjectsLocationsConnectionsRequest,
@@ -6276,7 +8239,12 @@ export const setIamPolicyProjectsLocationsConnections: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsProvidersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetIamPolicyProjectsLocationsProvidersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsProviders: API.OperationMethod<
   SetIamPolicyProjectsLocationsProvidersRequest,
@@ -6291,7 +8259,12 @@ export const setIamPolicyProjectsLocationsProviders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsConnectionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TestIamPermissionsProjectsLocationsConnectionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsConnections: API.OperationMethod<
   TestIamPermissionsProjectsLocationsConnectionsRequest,
@@ -6306,7 +8279,12 @@ export const testIamPermissionsProjectsLocationsConnections: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsProvidersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TestIamPermissionsProjectsLocationsProvidersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsProviders: API.OperationMethod<
   TestIamPermissionsProjectsLocationsProvidersRequest,
@@ -6321,7 +8299,12 @@ export const testIamPermissionsProjectsLocationsProviders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateRegionalSettingsProjectsLocationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateRegionalSettingsProjectsLocationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update the settings of a region. */
 export const updateRegionalSettingsProjectsLocations: API.OperationMethod<
   UpdateRegionalSettingsProjectsLocationsRequest,
@@ -6336,7 +8319,12 @@ export const updateRegionalSettingsProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateSettingsProjectsLocationsGlobalError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateSettingsProjectsLocationsGlobalError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update the global settings of a project. */
 export const updateSettingsProjectsLocationsGlobal: API.OperationMethod<
   UpdateSettingsProjectsLocationsGlobalRequest,
@@ -6351,7 +8339,12 @@ export const updateSettingsProjectsLocationsGlobal: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ValidateCustomConnectorSpecProjectsLocationsCustomConnectorsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ValidateCustomConnectorSpecProjectsLocationsCustomConnectorsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Validates a Custom Connector Spec. */
 export const validateCustomConnectorSpecProjectsLocationsCustomConnectors: API.OperationMethod<
   ValidateCustomConnectorSpecProjectsLocationsCustomConnectorsRequest,
@@ -6366,7 +8359,8 @@ export const validateCustomConnectorSpecProjectsLocationsCustomConnectors: API.O
   retry: Retry.Retry,
 }));
 
-export type WithdrawProjectsLocationsCustomConnectorsCustomConnectorVersionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type WithdrawProjectsLocationsCustomConnectorsCustomConnectorVersionsError =
+  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Withdraw the publish request for the CustomConnectorVersion. This can only be used before the CustomConnectorVersion is published. */
 export const withdrawProjectsLocationsCustomConnectorsCustomConnectorVersions: API.OperationMethod<
   WithdrawProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest,
@@ -6374,10 +8368,10 @@ export const withdrawProjectsLocationsCustomConnectorsCustomConnectorVersions: A
   WithdrawProjectsLocationsCustomConnectorsCustomConnectorVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WithdrawProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest,
+  input:
+    WithdrawProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest,
   output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

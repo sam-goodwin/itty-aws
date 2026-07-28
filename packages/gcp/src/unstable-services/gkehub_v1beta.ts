@@ -13,58 +13,60 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
 export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "CancelOperationRequest" }) as any as S.Schema<CancelOperationRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "CancelOperationRequest",
+}) as any as S.Schema<CancelOperationRequest>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -72,24 +74,35 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+name}:cancel","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "CancelProjectsLocationsOperationsRequest" }) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+name}:cancel",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CancelProjectsLocationsOperationsRequest",
+}) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 /** Request message for cancelling a rollout. */
 export interface CancelRolloutRequest {}
 export const CancelRolloutRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "CancelRolloutRequest" }) as any as S.Schema<CancelRolloutRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "CancelRolloutRequest",
+}) as any as S.Schema<CancelRolloutRequest>;
 
 export interface CancelProjectsLocationsRolloutsRequest {
   /** Required. The name of the rollout to cancel. projects/{project}/locations/{location}/rollouts/{rollout} */
@@ -97,18 +110,32 @@ export interface CancelProjectsLocationsRolloutsRequest {
   /** Request body */
   body?: CancelRolloutRequest;
 }
-export const CancelProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(CancelRolloutRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+name}:cancel","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "CancelProjectsLocationsRolloutsRequest" }) as any as S.Schema<CancelProjectsLocationsRolloutsRequest>;
+export const CancelProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(CancelRolloutRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+name}:cancel",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CancelProjectsLocationsRolloutsRequest",
+}) as any as S.Schema<CancelProjectsLocationsRolloutsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface GoogleRpcStatus {
@@ -120,12 +147,14 @@ export interface GoogleRpcStatus {
   details?: DocumentMapList;
 }
 export const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "message": S.optional(S.String),
-  "code": S.optional(S.Number),
-  "details": S.optional(DocumentMapList),
-}),
-).annotate({ identifier: "GoogleRpcStatus" }) as any as S.Schema<GoogleRpcStatus>;
+  S.Struct({
+    message: S.optional(S.String),
+    code: S.optional(S.Number),
+    details: S.optional(DocumentMapList),
+  }),
+).annotate({
+  identifier: "GoogleRpcStatus",
+}) as any as S.Schema<GoogleRpcStatus>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
@@ -141,34 +170,49 @@ export interface Operation {
   error?: GoogleRpcStatus;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "response": S.optional(DocumentMap),
-  "name": S.optional(S.String),
-  "metadata": S.optional(DocumentMap),
-  "done": S.optional(S.Boolean),
-  "error": S.optional(GoogleRpcStatus),
-}),
+  S.Struct({
+    response: S.optional(DocumentMap),
+    name: S.optional(S.String),
+    metadata: S.optional(DocumentMap),
+    done: S.optional(S.Boolean),
+    error: S.optional(GoogleRpcStatus),
+  }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
-export type ConfigManagementPolicyControllerMonitoringBackendsItemEnum = "MONITORING_BACKEND_UNSPECIFIED" | "PROMETHEUS" | "CLOUD_MONITORING";
-export const ConfigManagementPolicyControllerMonitoringBackendsItemEnum = /*@__PURE__*/ S.String;
+export type ConfigManagementPolicyControllerMonitoringBackendsItemEnum =
+  | "MONITORING_BACKEND_UNSPECIFIED"
+  | "PROMETHEUS"
+  | "CLOUD_MONITORING";
+export const ConfigManagementPolicyControllerMonitoringBackendsItemEnum =
+  /*@__PURE__*/ S.String;
 
-export type ConfigManagementPolicyControllerMonitoringBackendsItemEnumList = ReadonlyArray<ConfigManagementPolicyControllerMonitoringBackendsItemEnum>;
-export const ConfigManagementPolicyControllerMonitoringBackendsItemEnumList = /*@__PURE__*/ S.Array(ConfigManagementPolicyControllerMonitoringBackendsItemEnum) as any as S.Schema<ConfigManagementPolicyControllerMonitoringBackendsItemEnumList>;
+export type ConfigManagementPolicyControllerMonitoringBackendsItemEnumList =
+  ReadonlyArray<ConfigManagementPolicyControllerMonitoringBackendsItemEnum>;
+export const ConfigManagementPolicyControllerMonitoringBackendsItemEnumList =
+  /*@__PURE__*/ S.Array(
+    ConfigManagementPolicyControllerMonitoringBackendsItemEnum,
+  ) as any as S.Schema<ConfigManagementPolicyControllerMonitoringBackendsItemEnumList>;
 
 /** PolicyControllerMonitoring specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: ["cloudmonitoring", "prometheus"] */
 export interface ConfigManagementPolicyControllerMonitoring {
   /** Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export. */
   backends?: ConfigManagementPolicyControllerMonitoringBackendsItemEnumList;
 }
-export const ConfigManagementPolicyControllerMonitoring = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "backends": S.optional(ConfigManagementPolicyControllerMonitoringBackendsItemEnumList),
-}),
-).annotate({ identifier: "ConfigManagementPolicyControllerMonitoring" }) as any as S.Schema<ConfigManagementPolicyControllerMonitoring>;
+export const ConfigManagementPolicyControllerMonitoring =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      backends: S.optional(
+        ConfigManagementPolicyControllerMonitoringBackendsItemEnumList,
+      ),
+    }),
+  ).annotate({
+    identifier: "ConfigManagementPolicyControllerMonitoring",
+  }) as any as S.Schema<ConfigManagementPolicyControllerMonitoring>;
 
 /** Configuration for Policy Controller */
 export interface ConfigManagementPolicyController {
@@ -192,18 +236,20 @@ export interface ConfigManagementPolicyController {
   monitoring?: ConfigManagementPolicyControllerMonitoring;
 }
 export const ConfigManagementPolicyController = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "referentialRulesEnabled": S.optional(S.Boolean),
-  "mutationEnabled": S.optional(S.Boolean),
-  "updateTime": S.optional(S.String),
-  "enabled": S.optional(S.Boolean),
-  "auditIntervalSeconds": S.optional(S.String),
-  "templateLibraryInstalled": S.optional(S.Boolean),
-  "exemptableNamespaces": S.optional(StringList),
-  "logDeniesEnabled": S.optional(S.Boolean),
-  "monitoring": S.optional(ConfigManagementPolicyControllerMonitoring),
-}),
-).annotate({ identifier: "ConfigManagementPolicyController" }) as any as S.Schema<ConfigManagementPolicyController>;
+  S.Struct({
+    referentialRulesEnabled: S.optional(S.Boolean),
+    mutationEnabled: S.optional(S.Boolean),
+    updateTime: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    auditIntervalSeconds: S.optional(S.String),
+    templateLibraryInstalled: S.optional(S.Boolean),
+    exemptableNamespaces: S.optional(StringList),
+    logDeniesEnabled: S.optional(S.Boolean),
+    monitoring: S.optional(ConfigManagementPolicyControllerMonitoring),
+  }),
+).annotate({
+  identifier: "ConfigManagementPolicyController",
+}) as any as S.Schema<ConfigManagementPolicyController>;
 
 /** Configuration for Binauthz */
 export interface ConfigManagementBinauthzConfig {
@@ -211,10 +257,12 @@ export interface ConfigManagementBinauthzConfig {
   enabled?: boolean;
 }
 export const ConfigManagementBinauthzConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "enabled": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "ConfigManagementBinauthzConfig" }) as any as S.Schema<ConfigManagementBinauthzConfig>;
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ConfigManagementBinauthzConfig",
+}) as any as S.Schema<ConfigManagementBinauthzConfig>;
 
 /** Configuration for Hierarchy Controller */
 export interface ConfigManagementHierarchyControllerConfig {
@@ -225,16 +273,23 @@ export interface ConfigManagementHierarchyControllerConfig {
   /** Whether hierarchical resource quota is enabled in this cluster. */
   enableHierarchicalResourceQuota?: boolean;
 }
-export const ConfigManagementHierarchyControllerConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "enabled": S.optional(S.Boolean),
-  "enablePodTreeLabels": S.optional(S.Boolean),
-  "enableHierarchicalResourceQuota": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "ConfigManagementHierarchyControllerConfig" }) as any as S.Schema<ConfigManagementHierarchyControllerConfig>;
+export const ConfigManagementHierarchyControllerConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.Boolean),
+      enablePodTreeLabels: S.optional(S.Boolean),
+      enableHierarchicalResourceQuota: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "ConfigManagementHierarchyControllerConfig",
+  }) as any as S.Schema<ConfigManagementHierarchyControllerConfig>;
 
-export type ConfigManagementMembershipSpecManagementEnum = "MANAGEMENT_UNSPECIFIED" | "MANAGEMENT_AUTOMATIC" | "MANAGEMENT_MANUAL";
-export const ConfigManagementMembershipSpecManagementEnum = /*@__PURE__*/ S.String;
+export type ConfigManagementMembershipSpecManagementEnum =
+  | "MANAGEMENT_UNSPECIFIED"
+  | "MANAGEMENT_AUTOMATIC"
+  | "MANAGEMENT_MANUAL";
+export const ConfigManagementMembershipSpecManagementEnum =
+  /*@__PURE__*/ S.String;
 
 /** Git repo configuration for a single cluster. */
 export interface ConfigManagementGitConfig {
@@ -256,17 +311,19 @@ export interface ConfigManagementGitConfig {
   policyDir?: string;
 }
 export const ConfigManagementGitConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "syncRepo": S.optional(S.String),
-  "syncRev": S.optional(S.String),
-  "gcpServiceAccountEmail": S.optional(S.String),
-  "syncWaitSecs": S.optional(S.String),
-  "secretType": S.optional(S.String),
-  "httpsProxy": S.optional(S.String),
-  "syncBranch": S.optional(S.String),
-  "policyDir": S.optional(S.String),
-}),
-).annotate({ identifier: "ConfigManagementGitConfig" }) as any as S.Schema<ConfigManagementGitConfig>;
+  S.Struct({
+    syncRepo: S.optional(S.String),
+    syncRev: S.optional(S.String),
+    gcpServiceAccountEmail: S.optional(S.String),
+    syncWaitSecs: S.optional(S.String),
+    secretType: S.optional(S.String),
+    httpsProxy: S.optional(S.String),
+    syncBranch: S.optional(S.String),
+    policyDir: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConfigManagementGitConfig",
+}) as any as S.Schema<ConfigManagementGitConfig>;
 
 /** OCI repo configuration for a single cluster */
 export interface ConfigManagementOciConfig {
@@ -282,14 +339,16 @@ export interface ConfigManagementOciConfig {
   policyDir?: string;
 }
 export const ConfigManagementOciConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "syncRepo": S.optional(S.String),
-  "gcpServiceAccountEmail": S.optional(S.String),
-  "syncWaitSecs": S.optional(S.String),
-  "secretType": S.optional(S.String),
-  "policyDir": S.optional(S.String),
-}),
-).annotate({ identifier: "ConfigManagementOciConfig" }) as any as S.Schema<ConfigManagementOciConfig>;
+  S.Struct({
+    syncRepo: S.optional(S.String),
+    gcpServiceAccountEmail: S.optional(S.String),
+    syncWaitSecs: S.optional(S.String),
+    secretType: S.optional(S.String),
+    policyDir: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConfigManagementOciConfig",
+}) as any as S.Schema<ConfigManagementOciConfig>;
 
 /** Configuration for a container override. */
 export interface ConfigManagementContainerOverride {
@@ -305,17 +364,22 @@ export interface ConfigManagementContainerOverride {
   memoryLimit?: string;
 }
 export const ConfigManagementContainerOverride = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "containerName": S.optional(S.String),
-  "cpuLimit": S.optional(S.String),
-  "cpuRequest": S.optional(S.String),
-  "memoryRequest": S.optional(S.String),
-  "memoryLimit": S.optional(S.String),
-}),
-).annotate({ identifier: "ConfigManagementContainerOverride" }) as any as S.Schema<ConfigManagementContainerOverride>;
+  S.Struct({
+    containerName: S.optional(S.String),
+    cpuLimit: S.optional(S.String),
+    cpuRequest: S.optional(S.String),
+    memoryRequest: S.optional(S.String),
+    memoryLimit: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConfigManagementContainerOverride",
+}) as any as S.Schema<ConfigManagementContainerOverride>;
 
-export type ConfigManagementContainerOverrideList = ReadonlyArray<ConfigManagementContainerOverride>;
-export const ConfigManagementContainerOverrideList = /*@__PURE__*/ S.Array(ConfigManagementContainerOverride) as any as S.Schema<ConfigManagementContainerOverrideList>;
+export type ConfigManagementContainerOverrideList =
+  ReadonlyArray<ConfigManagementContainerOverride>;
+export const ConfigManagementContainerOverrideList = /*@__PURE__*/ S.Array(
+  ConfigManagementContainerOverride,
+) as any as S.Schema<ConfigManagementContainerOverrideList>;
 
 /** Configuration for a deployment override. */
 export interface ConfigManagementDeploymentOverride {
@@ -327,15 +391,20 @@ export interface ConfigManagementDeploymentOverride {
   deploymentNamespace?: string;
 }
 export const ConfigManagementDeploymentOverride = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "containers": S.optional(ConfigManagementContainerOverrideList),
-  "deploymentName": S.optional(S.String),
-  "deploymentNamespace": S.optional(S.String),
-}),
-).annotate({ identifier: "ConfigManagementDeploymentOverride" }) as any as S.Schema<ConfigManagementDeploymentOverride>;
+  S.Struct({
+    containers: S.optional(ConfigManagementContainerOverrideList),
+    deploymentName: S.optional(S.String),
+    deploymentNamespace: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConfigManagementDeploymentOverride",
+}) as any as S.Schema<ConfigManagementDeploymentOverride>;
 
-export type ConfigManagementDeploymentOverrideList = ReadonlyArray<ConfigManagementDeploymentOverride>;
-export const ConfigManagementDeploymentOverrideList = /*@__PURE__*/ S.Array(ConfigManagementDeploymentOverride) as any as S.Schema<ConfigManagementDeploymentOverrideList>;
+export type ConfigManagementDeploymentOverrideList =
+  ReadonlyArray<ConfigManagementDeploymentOverride>;
+export const ConfigManagementDeploymentOverrideList = /*@__PURE__*/ S.Array(
+  ConfigManagementDeploymentOverride,
+) as any as S.Schema<ConfigManagementDeploymentOverrideList>;
 
 /** Configuration for Config Sync */
 export interface ConfigManagementConfigSync {
@@ -357,17 +426,19 @@ export interface ConfigManagementConfigSync {
   preventDrift?: boolean;
 }
 export const ConfigManagementConfigSync = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "git": S.optional(ConfigManagementGitConfig),
-  "sourceFormat": S.optional(S.String),
-  "oci": S.optional(ConfigManagementOciConfig),
-  "metricsGcpServiceAccountEmail": S.optional(S.String),
-  "stopSyncing": S.optional(S.Boolean),
-  "enabled": S.optional(S.Boolean),
-  "deploymentOverrides": S.optional(ConfigManagementDeploymentOverrideList),
-  "preventDrift": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "ConfigManagementConfigSync" }) as any as S.Schema<ConfigManagementConfigSync>;
+  S.Struct({
+    git: S.optional(ConfigManagementGitConfig),
+    sourceFormat: S.optional(S.String),
+    oci: S.optional(ConfigManagementOciConfig),
+    metricsGcpServiceAccountEmail: S.optional(S.String),
+    stopSyncing: S.optional(S.Boolean),
+    enabled: S.optional(S.Boolean),
+    deploymentOverrides: S.optional(ConfigManagementDeploymentOverrideList),
+    preventDrift: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ConfigManagementConfigSync",
+}) as any as S.Schema<ConfigManagementConfigSync>;
 
 /** **Anthos Config Management**: Configuration for a single cluster. Intended to parallel the ConfigManagement CR. */
 export interface ConfigManagementMembershipSpec {
@@ -387,36 +458,59 @@ export interface ConfigManagementMembershipSpec {
   cluster?: string;
 }
 export const ConfigManagementMembershipSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "policyController": S.optional(ConfigManagementPolicyController),
-  "binauthz": S.optional(ConfigManagementBinauthzConfig),
-  "hierarchyController": S.optional(ConfigManagementHierarchyControllerConfig),
-  "version": S.optional(S.String),
-  "management": S.optional(ConfigManagementMembershipSpecManagementEnum),
-  "configSync": S.optional(ConfigManagementConfigSync),
-  "cluster": S.optional(S.String),
-}),
-).annotate({ identifier: "ConfigManagementMembershipSpec" }) as any as S.Schema<ConfigManagementMembershipSpec>;
+  S.Struct({
+    policyController: S.optional(ConfigManagementPolicyController),
+    binauthz: S.optional(ConfigManagementBinauthzConfig),
+    hierarchyController: S.optional(ConfigManagementHierarchyControllerConfig),
+    version: S.optional(S.String),
+    management: S.optional(ConfigManagementMembershipSpecManagementEnum),
+    configSync: S.optional(ConfigManagementConfigSync),
+    cluster: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConfigManagementMembershipSpec",
+}) as any as S.Schema<ConfigManagementMembershipSpec>;
 
 /** The build version of Gatekeeper Policy Controller is using. */
 export interface ConfigManagementPolicyControllerVersion {
   /** The gatekeeper image tag that is composed of ACM version, git tag, build number. */
   version?: string;
 }
-export const ConfigManagementPolicyControllerVersion = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "version": S.optional(S.String),
-}),
-).annotate({ identifier: "ConfigManagementPolicyControllerVersion" }) as any as S.Schema<ConfigManagementPolicyControllerVersion>;
+export const ConfigManagementPolicyControllerVersion = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      version: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ConfigManagementPolicyControllerVersion",
+}) as any as S.Schema<ConfigManagementPolicyControllerVersion>;
 
-export type ConfigManagementGatekeeperDeploymentStateGatekeeperAuditEnum = "DEPLOYMENT_STATE_UNSPECIFIED" | "NOT_INSTALLED" | "INSTALLED" | "ERROR" | "PENDING";
-export const ConfigManagementGatekeeperDeploymentStateGatekeeperAuditEnum = /*@__PURE__*/ S.String;
+export type ConfigManagementGatekeeperDeploymentStateGatekeeperAuditEnum =
+  | "DEPLOYMENT_STATE_UNSPECIFIED"
+  | "NOT_INSTALLED"
+  | "INSTALLED"
+  | "ERROR"
+  | "PENDING";
+export const ConfigManagementGatekeeperDeploymentStateGatekeeperAuditEnum =
+  /*@__PURE__*/ S.String;
 
-export type ConfigManagementGatekeeperDeploymentStateGatekeeperControllerManagerStateEnum = "DEPLOYMENT_STATE_UNSPECIFIED" | "NOT_INSTALLED" | "INSTALLED" | "ERROR" | "PENDING";
-export const ConfigManagementGatekeeperDeploymentStateGatekeeperControllerManagerStateEnum = /*@__PURE__*/ S.String;
+export type ConfigManagementGatekeeperDeploymentStateGatekeeperControllerManagerStateEnum =
+    | "DEPLOYMENT_STATE_UNSPECIFIED"
+    | "NOT_INSTALLED"
+    | "INSTALLED"
+    | "ERROR"
+    | "PENDING";
+export const ConfigManagementGatekeeperDeploymentStateGatekeeperControllerManagerStateEnum =
+  /*@__PURE__*/ S.String;
 
-export type ConfigManagementGatekeeperDeploymentStateGatekeeperMutationEnum = "DEPLOYMENT_STATE_UNSPECIFIED" | "NOT_INSTALLED" | "INSTALLED" | "ERROR" | "PENDING";
-export const ConfigManagementGatekeeperDeploymentStateGatekeeperMutationEnum = /*@__PURE__*/ S.String;
+export type ConfigManagementGatekeeperDeploymentStateGatekeeperMutationEnum =
+  | "DEPLOYMENT_STATE_UNSPECIFIED"
+  | "NOT_INSTALLED"
+  | "INSTALLED"
+  | "ERROR"
+  | "PENDING";
+export const ConfigManagementGatekeeperDeploymentStateGatekeeperMutationEnum =
+  /*@__PURE__*/ S.String;
 
 /** State of Policy Controller installation. */
 export interface ConfigManagementGatekeeperDeploymentState {
@@ -427,16 +521,29 @@ export interface ConfigManagementGatekeeperDeploymentState {
   /** Status of the pod serving the mutation webhook. */
   gatekeeperMutation?: ConfigManagementGatekeeperDeploymentStateGatekeeperMutationEnum;
 }
-export const ConfigManagementGatekeeperDeploymentState = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "gatekeeperAudit": S.optional(ConfigManagementGatekeeperDeploymentStateGatekeeperAuditEnum),
-  "gatekeeperControllerManagerState": S.optional(ConfigManagementGatekeeperDeploymentStateGatekeeperControllerManagerStateEnum),
-  "gatekeeperMutation": S.optional(ConfigManagementGatekeeperDeploymentStateGatekeeperMutationEnum),
-}),
-).annotate({ identifier: "ConfigManagementGatekeeperDeploymentState" }) as any as S.Schema<ConfigManagementGatekeeperDeploymentState>;
+export const ConfigManagementGatekeeperDeploymentState =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      gatekeeperAudit: S.optional(
+        ConfigManagementGatekeeperDeploymentStateGatekeeperAuditEnum,
+      ),
+      gatekeeperControllerManagerState: S.optional(
+        ConfigManagementGatekeeperDeploymentStateGatekeeperControllerManagerStateEnum,
+      ),
+      gatekeeperMutation: S.optional(
+        ConfigManagementGatekeeperDeploymentStateGatekeeperMutationEnum,
+      ),
+    }),
+  ).annotate({
+    identifier: "ConfigManagementGatekeeperDeploymentState",
+  }) as any as S.Schema<ConfigManagementGatekeeperDeploymentState>;
 
-export type ConfigManagementPolicyControllerMigrationStageEnum = "STAGE_UNSPECIFIED" | "ACM_MANAGED" | "POCO_MANAGED";
-export const ConfigManagementPolicyControllerMigrationStageEnum = /*@__PURE__*/ S.String;
+export type ConfigManagementPolicyControllerMigrationStageEnum =
+  | "STAGE_UNSPECIFIED"
+  | "ACM_MANAGED"
+  | "POCO_MANAGED";
+export const ConfigManagementPolicyControllerMigrationStageEnum =
+  /*@__PURE__*/ S.String;
 
 /** State for the migration of PolicyController from ACM -> PoCo Hub. */
 export interface ConfigManagementPolicyControllerMigration {
@@ -445,12 +552,15 @@ export interface ConfigManagementPolicyControllerMigration {
   /** Last time this membership spec was copied to PoCo feature. */
   copyTime?: string;
 }
-export const ConfigManagementPolicyControllerMigration = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "stage": S.optional(ConfigManagementPolicyControllerMigrationStageEnum),
-  "copyTime": S.optional(S.String),
-}),
-).annotate({ identifier: "ConfigManagementPolicyControllerMigration" }) as any as S.Schema<ConfigManagementPolicyControllerMigration>;
+export const ConfigManagementPolicyControllerMigration =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      stage: S.optional(ConfigManagementPolicyControllerMigrationStageEnum),
+      copyTime: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ConfigManagementPolicyControllerMigration",
+  }) as any as S.Schema<ConfigManagementPolicyControllerMigration>;
 
 /** State for PolicyControllerState. */
 export interface ConfigManagementPolicyControllerState {
@@ -461,19 +571,34 @@ export interface ConfigManagementPolicyControllerState {
   /** Record state of ACM -> PoCo Hub migration for this feature. */
   migration?: ConfigManagementPolicyControllerMigration;
 }
-export const ConfigManagementPolicyControllerState = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "version": S.optional(ConfigManagementPolicyControllerVersion),
-  "deploymentState": S.optional(ConfigManagementGatekeeperDeploymentState),
-  "migration": S.optional(ConfigManagementPolicyControllerMigration),
-}),
-).annotate({ identifier: "ConfigManagementPolicyControllerState" }) as any as S.Schema<ConfigManagementPolicyControllerState>;
+export const ConfigManagementPolicyControllerState = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      version: S.optional(ConfigManagementPolicyControllerVersion),
+      deploymentState: S.optional(ConfigManagementGatekeeperDeploymentState),
+      migration: S.optional(ConfigManagementPolicyControllerMigration),
+    }),
+).annotate({
+  identifier: "ConfigManagementPolicyControllerState",
+}) as any as S.Schema<ConfigManagementPolicyControllerState>;
 
-export type ConfigManagementHierarchyControllerDeploymentStateHncEnum = "DEPLOYMENT_STATE_UNSPECIFIED" | "NOT_INSTALLED" | "INSTALLED" | "ERROR" | "PENDING";
-export const ConfigManagementHierarchyControllerDeploymentStateHncEnum = /*@__PURE__*/ S.String;
+export type ConfigManagementHierarchyControllerDeploymentStateHncEnum =
+  | "DEPLOYMENT_STATE_UNSPECIFIED"
+  | "NOT_INSTALLED"
+  | "INSTALLED"
+  | "ERROR"
+  | "PENDING";
+export const ConfigManagementHierarchyControllerDeploymentStateHncEnum =
+  /*@__PURE__*/ S.String;
 
-export type ConfigManagementHierarchyControllerDeploymentStateExtensionEnum = "DEPLOYMENT_STATE_UNSPECIFIED" | "NOT_INSTALLED" | "INSTALLED" | "ERROR" | "PENDING";
-export const ConfigManagementHierarchyControllerDeploymentStateExtensionEnum = /*@__PURE__*/ S.String;
+export type ConfigManagementHierarchyControllerDeploymentStateExtensionEnum =
+  | "DEPLOYMENT_STATE_UNSPECIFIED"
+  | "NOT_INSTALLED"
+  | "INSTALLED"
+  | "ERROR"
+  | "PENDING";
+export const ConfigManagementHierarchyControllerDeploymentStateExtensionEnum =
+  /*@__PURE__*/ S.String;
 
 /** Deployment state for Hierarchy Controller */
 export interface ConfigManagementHierarchyControllerDeploymentState {
@@ -482,12 +607,19 @@ export interface ConfigManagementHierarchyControllerDeploymentState {
   /** The deployment state for Hierarchy Controller extension (e.g. v0.7.0-hc.1) */
   extension?: ConfigManagementHierarchyControllerDeploymentStateExtensionEnum;
 }
-export const ConfigManagementHierarchyControllerDeploymentState = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "hnc": S.optional(ConfigManagementHierarchyControllerDeploymentStateHncEnum),
-  "extension": S.optional(ConfigManagementHierarchyControllerDeploymentStateExtensionEnum),
-}),
-).annotate({ identifier: "ConfigManagementHierarchyControllerDeploymentState" }) as any as S.Schema<ConfigManagementHierarchyControllerDeploymentState>;
+export const ConfigManagementHierarchyControllerDeploymentState =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      hnc: S.optional(
+        ConfigManagementHierarchyControllerDeploymentStateHncEnum,
+      ),
+      extension: S.optional(
+        ConfigManagementHierarchyControllerDeploymentStateExtensionEnum,
+      ),
+    }),
+  ).annotate({
+    identifier: "ConfigManagementHierarchyControllerDeploymentState",
+  }) as any as S.Schema<ConfigManagementHierarchyControllerDeploymentState>;
 
 /** Version for Hierarchy Controller */
 export interface ConfigManagementHierarchyControllerVersion {
@@ -496,12 +628,15 @@ export interface ConfigManagementHierarchyControllerVersion {
   /** Version for open source HNC */
   hnc?: string;
 }
-export const ConfigManagementHierarchyControllerVersion = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "extension": S.optional(S.String),
-  "hnc": S.optional(S.String),
-}),
-).annotate({ identifier: "ConfigManagementHierarchyControllerVersion" }) as any as S.Schema<ConfigManagementHierarchyControllerVersion>;
+export const ConfigManagementHierarchyControllerVersion =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      extension: S.optional(S.String),
+      hnc: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ConfigManagementHierarchyControllerVersion",
+  }) as any as S.Schema<ConfigManagementHierarchyControllerVersion>;
 
 /** State for Hierarchy Controller */
 export interface ConfigManagementHierarchyControllerState {
@@ -510,12 +645,15 @@ export interface ConfigManagementHierarchyControllerState {
   /** The version for Hierarchy Controller */
   version?: ConfigManagementHierarchyControllerVersion;
 }
-export const ConfigManagementHierarchyControllerState = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "state": S.optional(ConfigManagementHierarchyControllerDeploymentState),
-  "version": S.optional(ConfigManagementHierarchyControllerVersion),
-}),
-).annotate({ identifier: "ConfigManagementHierarchyControllerState" }) as any as S.Schema<ConfigManagementHierarchyControllerState>;
+export const ConfigManagementHierarchyControllerState = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      state: S.optional(ConfigManagementHierarchyControllerDeploymentState),
+      version: S.optional(ConfigManagementHierarchyControllerVersion),
+    }),
+).annotate({
+  identifier: "ConfigManagementHierarchyControllerState",
+}) as any as S.Schema<ConfigManagementHierarchyControllerState>;
 
 /** The version of binauthz. */
 export interface ConfigManagementBinauthzVersion {
@@ -523,12 +661,19 @@ export interface ConfigManagementBinauthzVersion {
   webhookVersion?: string;
 }
 export const ConfigManagementBinauthzVersion = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "webhookVersion": S.optional(S.String),
-}),
-).annotate({ identifier: "ConfigManagementBinauthzVersion" }) as any as S.Schema<ConfigManagementBinauthzVersion>;
+  S.Struct({
+    webhookVersion: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConfigManagementBinauthzVersion",
+}) as any as S.Schema<ConfigManagementBinauthzVersion>;
 
-export type ConfigManagementBinauthzStateWebhookEnum = "DEPLOYMENT_STATE_UNSPECIFIED" | "NOT_INSTALLED" | "INSTALLED" | "ERROR" | "PENDING";
+export type ConfigManagementBinauthzStateWebhookEnum =
+  | "DEPLOYMENT_STATE_UNSPECIFIED"
+  | "NOT_INSTALLED"
+  | "INSTALLED"
+  | "ERROR"
+  | "PENDING";
 export const ConfigManagementBinauthzStateWebhookEnum = /*@__PURE__*/ S.String;
 
 /** State for Binauthz */
@@ -539,14 +684,22 @@ export interface ConfigManagementBinauthzState {
   webhook?: ConfigManagementBinauthzStateWebhookEnum;
 }
 export const ConfigManagementBinauthzState = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "version": S.optional(ConfigManagementBinauthzVersion),
-  "webhook": S.optional(ConfigManagementBinauthzStateWebhookEnum),
-}),
-).annotate({ identifier: "ConfigManagementBinauthzState" }) as any as S.Schema<ConfigManagementBinauthzState>;
+  S.Struct({
+    version: S.optional(ConfigManagementBinauthzVersion),
+    webhook: S.optional(ConfigManagementBinauthzStateWebhookEnum),
+  }),
+).annotate({
+  identifier: "ConfigManagementBinauthzState",
+}) as any as S.Schema<ConfigManagementBinauthzState>;
 
-export type ConfigManagementOperatorStateDeploymentStateEnum = "DEPLOYMENT_STATE_UNSPECIFIED" | "NOT_INSTALLED" | "INSTALLED" | "ERROR" | "PENDING";
-export const ConfigManagementOperatorStateDeploymentStateEnum = /*@__PURE__*/ S.String;
+export type ConfigManagementOperatorStateDeploymentStateEnum =
+  | "DEPLOYMENT_STATE_UNSPECIFIED"
+  | "NOT_INSTALLED"
+  | "INSTALLED"
+  | "ERROR"
+  | "PENDING";
+export const ConfigManagementOperatorStateDeploymentStateEnum =
+  /*@__PURE__*/ S.String;
 
 /** Errors pertaining to the installation of ACM */
 export interface ConfigManagementInstallError {
@@ -554,13 +707,18 @@ export interface ConfigManagementInstallError {
   errorMessage?: string;
 }
 export const ConfigManagementInstallError = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "errorMessage": S.optional(S.String),
-}),
-).annotate({ identifier: "ConfigManagementInstallError" }) as any as S.Schema<ConfigManagementInstallError>;
+  S.Struct({
+    errorMessage: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConfigManagementInstallError",
+}) as any as S.Schema<ConfigManagementInstallError>;
 
-export type ConfigManagementInstallErrorList = ReadonlyArray<ConfigManagementInstallError>;
-export const ConfigManagementInstallErrorList = /*@__PURE__*/ S.Array(ConfigManagementInstallError) as any as S.Schema<ConfigManagementInstallErrorList>;
+export type ConfigManagementInstallErrorList =
+  ReadonlyArray<ConfigManagementInstallError>;
+export const ConfigManagementInstallErrorList = /*@__PURE__*/ S.Array(
+  ConfigManagementInstallError,
+) as any as S.Schema<ConfigManagementInstallErrorList>;
 
 /** State information for an ACM's Operator */
 export interface ConfigManagementOperatorState {
@@ -572,14 +730,23 @@ export interface ConfigManagementOperatorState {
   errors?: ConfigManagementInstallErrorList;
 }
 export const ConfigManagementOperatorState = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "version": S.optional(S.String),
-  "deploymentState": S.optional(ConfigManagementOperatorStateDeploymentStateEnum),
-  "errors": S.optional(ConfigManagementInstallErrorList),
-}),
-).annotate({ identifier: "ConfigManagementOperatorState" }) as any as S.Schema<ConfigManagementOperatorState>;
+  S.Struct({
+    version: S.optional(S.String),
+    deploymentState: S.optional(
+      ConfigManagementOperatorStateDeploymentStateEnum,
+    ),
+    errors: S.optional(ConfigManagementInstallErrorList),
+  }),
+).annotate({
+  identifier: "ConfigManagementOperatorState",
+}) as any as S.Schema<ConfigManagementOperatorState>;
 
-export type ConfigManagementConfigSyncStateStateEnum = "STATE_UNSPECIFIED" | "CONFIG_SYNC_NOT_INSTALLED" | "CONFIG_SYNC_INSTALLED" | "CONFIG_SYNC_ERROR" | "CONFIG_SYNC_PENDING";
+export type ConfigManagementConfigSyncStateStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "CONFIG_SYNC_NOT_INSTALLED"
+  | "CONFIG_SYNC_INSTALLED"
+  | "CONFIG_SYNC_ERROR"
+  | "CONFIG_SYNC_PENDING";
 export const ConfigManagementConfigSyncStateStateEnum = /*@__PURE__*/ S.String;
 
 /** Errors pertaining to the installation of Config Sync */
@@ -588,16 +755,27 @@ export interface ConfigManagementConfigSyncError {
   errorMessage?: string;
 }
 export const ConfigManagementConfigSyncError = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "errorMessage": S.optional(S.String),
-}),
-).annotate({ identifier: "ConfigManagementConfigSyncError" }) as any as S.Schema<ConfigManagementConfigSyncError>;
+  S.Struct({
+    errorMessage: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConfigManagementConfigSyncError",
+}) as any as S.Schema<ConfigManagementConfigSyncError>;
 
-export type ConfigManagementConfigSyncErrorList = ReadonlyArray<ConfigManagementConfigSyncError>;
-export const ConfigManagementConfigSyncErrorList = /*@__PURE__*/ S.Array(ConfigManagementConfigSyncError) as any as S.Schema<ConfigManagementConfigSyncErrorList>;
+export type ConfigManagementConfigSyncErrorList =
+  ReadonlyArray<ConfigManagementConfigSyncError>;
+export const ConfigManagementConfigSyncErrorList = /*@__PURE__*/ S.Array(
+  ConfigManagementConfigSyncError,
+) as any as S.Schema<ConfigManagementConfigSyncErrorList>;
 
-export type ConfigManagementConfigSyncStateRootsyncCrdEnum = "CRD_STATE_UNSPECIFIED" | "NOT_INSTALLED" | "INSTALLED" | "TERMINATING" | "INSTALLING";
-export const ConfigManagementConfigSyncStateRootsyncCrdEnum = /*@__PURE__*/ S.String;
+export type ConfigManagementConfigSyncStateRootsyncCrdEnum =
+  | "CRD_STATE_UNSPECIFIED"
+  | "NOT_INSTALLED"
+  | "INSTALLED"
+  | "TERMINATING"
+  | "INSTALLING";
+export const ConfigManagementConfigSyncStateRootsyncCrdEnum =
+  /*@__PURE__*/ S.String;
 
 /** Specific versioning information pertaining to ConfigSync's Pods */
 export interface ConfigManagementConfigSyncVersion {
@@ -621,51 +799,118 @@ export interface ConfigManagementConfigSyncVersion {
   otelCollector?: string;
 }
 export const ConfigManagementConfigSyncVersion = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "syncer": S.optional(S.String),
-  "monitor": S.optional(S.String),
-  "importer": S.optional(S.String),
-  "resourceGroupControllerManager": S.optional(S.String),
-  "rootReconciler": S.optional(S.String),
-  "reconcilerManager": S.optional(S.String),
-  "admissionWebhook": S.optional(S.String),
-  "gitSync": S.optional(S.String),
-  "otelCollector": S.optional(S.String),
-}),
-).annotate({ identifier: "ConfigManagementConfigSyncVersion" }) as any as S.Schema<ConfigManagementConfigSyncVersion>;
+  S.Struct({
+    syncer: S.optional(S.String),
+    monitor: S.optional(S.String),
+    importer: S.optional(S.String),
+    resourceGroupControllerManager: S.optional(S.String),
+    rootReconciler: S.optional(S.String),
+    reconcilerManager: S.optional(S.String),
+    admissionWebhook: S.optional(S.String),
+    gitSync: S.optional(S.String),
+    otelCollector: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConfigManagementConfigSyncVersion",
+}) as any as S.Schema<ConfigManagementConfigSyncVersion>;
 
-export type ConfigManagementConfigSyncStateReposyncCrdEnum = "CRD_STATE_UNSPECIFIED" | "NOT_INSTALLED" | "INSTALLED" | "TERMINATING" | "INSTALLING";
-export const ConfigManagementConfigSyncStateReposyncCrdEnum = /*@__PURE__*/ S.String;
+export type ConfigManagementConfigSyncStateReposyncCrdEnum =
+  | "CRD_STATE_UNSPECIFIED"
+  | "NOT_INSTALLED"
+  | "INSTALLED"
+  | "TERMINATING"
+  | "INSTALLING";
+export const ConfigManagementConfigSyncStateReposyncCrdEnum =
+  /*@__PURE__*/ S.String;
 
-export type ConfigManagementConfigSyncStateClusterLevelStopSyncingStateEnum = "STOP_SYNCING_STATE_UNSPECIFIED" | "NOT_STOPPED" | "PENDING" | "STOPPED";
-export const ConfigManagementConfigSyncStateClusterLevelStopSyncingStateEnum = /*@__PURE__*/ S.String;
+export type ConfigManagementConfigSyncStateClusterLevelStopSyncingStateEnum =
+  | "STOP_SYNCING_STATE_UNSPECIFIED"
+  | "NOT_STOPPED"
+  | "PENDING"
+  | "STOPPED";
+export const ConfigManagementConfigSyncStateClusterLevelStopSyncingStateEnum =
+  /*@__PURE__*/ S.String;
 
-export type ConfigManagementConfigSyncDeploymentStateResourceGroupControllerManagerEnum = "DEPLOYMENT_STATE_UNSPECIFIED" | "NOT_INSTALLED" | "INSTALLED" | "ERROR" | "PENDING";
-export const ConfigManagementConfigSyncDeploymentStateResourceGroupControllerManagerEnum = /*@__PURE__*/ S.String;
+export type ConfigManagementConfigSyncDeploymentStateResourceGroupControllerManagerEnum =
+    | "DEPLOYMENT_STATE_UNSPECIFIED"
+    | "NOT_INSTALLED"
+    | "INSTALLED"
+    | "ERROR"
+    | "PENDING";
+export const ConfigManagementConfigSyncDeploymentStateResourceGroupControllerManagerEnum =
+  /*@__PURE__*/ S.String;
 
-export type ConfigManagementConfigSyncDeploymentStateSyncerEnum = "DEPLOYMENT_STATE_UNSPECIFIED" | "NOT_INSTALLED" | "INSTALLED" | "ERROR" | "PENDING";
-export const ConfigManagementConfigSyncDeploymentStateSyncerEnum = /*@__PURE__*/ S.String;
+export type ConfigManagementConfigSyncDeploymentStateSyncerEnum =
+  | "DEPLOYMENT_STATE_UNSPECIFIED"
+  | "NOT_INSTALLED"
+  | "INSTALLED"
+  | "ERROR"
+  | "PENDING";
+export const ConfigManagementConfigSyncDeploymentStateSyncerEnum =
+  /*@__PURE__*/ S.String;
 
-export type ConfigManagementConfigSyncDeploymentStateMonitorEnum = "DEPLOYMENT_STATE_UNSPECIFIED" | "NOT_INSTALLED" | "INSTALLED" | "ERROR" | "PENDING";
-export const ConfigManagementConfigSyncDeploymentStateMonitorEnum = /*@__PURE__*/ S.String;
+export type ConfigManagementConfigSyncDeploymentStateMonitorEnum =
+  | "DEPLOYMENT_STATE_UNSPECIFIED"
+  | "NOT_INSTALLED"
+  | "INSTALLED"
+  | "ERROR"
+  | "PENDING";
+export const ConfigManagementConfigSyncDeploymentStateMonitorEnum =
+  /*@__PURE__*/ S.String;
 
-export type ConfigManagementConfigSyncDeploymentStateImporterEnum = "DEPLOYMENT_STATE_UNSPECIFIED" | "NOT_INSTALLED" | "INSTALLED" | "ERROR" | "PENDING";
-export const ConfigManagementConfigSyncDeploymentStateImporterEnum = /*@__PURE__*/ S.String;
+export type ConfigManagementConfigSyncDeploymentStateImporterEnum =
+  | "DEPLOYMENT_STATE_UNSPECIFIED"
+  | "NOT_INSTALLED"
+  | "INSTALLED"
+  | "ERROR"
+  | "PENDING";
+export const ConfigManagementConfigSyncDeploymentStateImporterEnum =
+  /*@__PURE__*/ S.String;
 
-export type ConfigManagementConfigSyncDeploymentStateOtelCollectorEnum = "DEPLOYMENT_STATE_UNSPECIFIED" | "NOT_INSTALLED" | "INSTALLED" | "ERROR" | "PENDING";
-export const ConfigManagementConfigSyncDeploymentStateOtelCollectorEnum = /*@__PURE__*/ S.String;
+export type ConfigManagementConfigSyncDeploymentStateOtelCollectorEnum =
+  | "DEPLOYMENT_STATE_UNSPECIFIED"
+  | "NOT_INSTALLED"
+  | "INSTALLED"
+  | "ERROR"
+  | "PENDING";
+export const ConfigManagementConfigSyncDeploymentStateOtelCollectorEnum =
+  /*@__PURE__*/ S.String;
 
-export type ConfigManagementConfigSyncDeploymentStateRootReconcilerEnum = "DEPLOYMENT_STATE_UNSPECIFIED" | "NOT_INSTALLED" | "INSTALLED" | "ERROR" | "PENDING";
-export const ConfigManagementConfigSyncDeploymentStateRootReconcilerEnum = /*@__PURE__*/ S.String;
+export type ConfigManagementConfigSyncDeploymentStateRootReconcilerEnum =
+  | "DEPLOYMENT_STATE_UNSPECIFIED"
+  | "NOT_INSTALLED"
+  | "INSTALLED"
+  | "ERROR"
+  | "PENDING";
+export const ConfigManagementConfigSyncDeploymentStateRootReconcilerEnum =
+  /*@__PURE__*/ S.String;
 
-export type ConfigManagementConfigSyncDeploymentStateReconcilerManagerEnum = "DEPLOYMENT_STATE_UNSPECIFIED" | "NOT_INSTALLED" | "INSTALLED" | "ERROR" | "PENDING";
-export const ConfigManagementConfigSyncDeploymentStateReconcilerManagerEnum = /*@__PURE__*/ S.String;
+export type ConfigManagementConfigSyncDeploymentStateReconcilerManagerEnum =
+  | "DEPLOYMENT_STATE_UNSPECIFIED"
+  | "NOT_INSTALLED"
+  | "INSTALLED"
+  | "ERROR"
+  | "PENDING";
+export const ConfigManagementConfigSyncDeploymentStateReconcilerManagerEnum =
+  /*@__PURE__*/ S.String;
 
-export type ConfigManagementConfigSyncDeploymentStateAdmissionWebhookEnum = "DEPLOYMENT_STATE_UNSPECIFIED" | "NOT_INSTALLED" | "INSTALLED" | "ERROR" | "PENDING";
-export const ConfigManagementConfigSyncDeploymentStateAdmissionWebhookEnum = /*@__PURE__*/ S.String;
+export type ConfigManagementConfigSyncDeploymentStateAdmissionWebhookEnum =
+  | "DEPLOYMENT_STATE_UNSPECIFIED"
+  | "NOT_INSTALLED"
+  | "INSTALLED"
+  | "ERROR"
+  | "PENDING";
+export const ConfigManagementConfigSyncDeploymentStateAdmissionWebhookEnum =
+  /*@__PURE__*/ S.String;
 
-export type ConfigManagementConfigSyncDeploymentStateGitSyncEnum = "DEPLOYMENT_STATE_UNSPECIFIED" | "NOT_INSTALLED" | "INSTALLED" | "ERROR" | "PENDING";
-export const ConfigManagementConfigSyncDeploymentStateGitSyncEnum = /*@__PURE__*/ S.String;
+export type ConfigManagementConfigSyncDeploymentStateGitSyncEnum =
+  | "DEPLOYMENT_STATE_UNSPECIFIED"
+  | "NOT_INSTALLED"
+  | "INSTALLED"
+  | "ERROR"
+  | "PENDING";
+export const ConfigManagementConfigSyncDeploymentStateGitSyncEnum =
+  /*@__PURE__*/ S.String;
 
 /** The state of ConfigSync's deployment on a cluster */
 export interface ConfigManagementConfigSyncDeploymentState {
@@ -688,21 +933,44 @@ export interface ConfigManagementConfigSyncDeploymentState {
   /** Deployment state of the git-sync pod */
   gitSync?: ConfigManagementConfigSyncDeploymentStateGitSyncEnum;
 }
-export const ConfigManagementConfigSyncDeploymentState = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceGroupControllerManager": S.optional(ConfigManagementConfigSyncDeploymentStateResourceGroupControllerManagerEnum),
-  "syncer": S.optional(ConfigManagementConfigSyncDeploymentStateSyncerEnum),
-  "monitor": S.optional(ConfigManagementConfigSyncDeploymentStateMonitorEnum),
-  "importer": S.optional(ConfigManagementConfigSyncDeploymentStateImporterEnum),
-  "otelCollector": S.optional(ConfigManagementConfigSyncDeploymentStateOtelCollectorEnum),
-  "rootReconciler": S.optional(ConfigManagementConfigSyncDeploymentStateRootReconcilerEnum),
-  "reconcilerManager": S.optional(ConfigManagementConfigSyncDeploymentStateReconcilerManagerEnum),
-  "admissionWebhook": S.optional(ConfigManagementConfigSyncDeploymentStateAdmissionWebhookEnum),
-  "gitSync": S.optional(ConfigManagementConfigSyncDeploymentStateGitSyncEnum),
-}),
-).annotate({ identifier: "ConfigManagementConfigSyncDeploymentState" }) as any as S.Schema<ConfigManagementConfigSyncDeploymentState>;
+export const ConfigManagementConfigSyncDeploymentState =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resourceGroupControllerManager: S.optional(
+        ConfigManagementConfigSyncDeploymentStateResourceGroupControllerManagerEnum,
+      ),
+      syncer: S.optional(ConfigManagementConfigSyncDeploymentStateSyncerEnum),
+      monitor: S.optional(ConfigManagementConfigSyncDeploymentStateMonitorEnum),
+      importer: S.optional(
+        ConfigManagementConfigSyncDeploymentStateImporterEnum,
+      ),
+      otelCollector: S.optional(
+        ConfigManagementConfigSyncDeploymentStateOtelCollectorEnum,
+      ),
+      rootReconciler: S.optional(
+        ConfigManagementConfigSyncDeploymentStateRootReconcilerEnum,
+      ),
+      reconcilerManager: S.optional(
+        ConfigManagementConfigSyncDeploymentStateReconcilerManagerEnum,
+      ),
+      admissionWebhook: S.optional(
+        ConfigManagementConfigSyncDeploymentStateAdmissionWebhookEnum,
+      ),
+      gitSync: S.optional(ConfigManagementConfigSyncDeploymentStateGitSyncEnum),
+    }),
+  ).annotate({
+    identifier: "ConfigManagementConfigSyncDeploymentState",
+  }) as any as S.Schema<ConfigManagementConfigSyncDeploymentState>;
 
-export type ConfigManagementSyncStateCodeEnum = "SYNC_CODE_UNSPECIFIED" | "SYNCED" | "PENDING" | "ERROR" | "NOT_CONFIGURED" | "NOT_INSTALLED" | "UNAUTHORIZED" | "UNREACHABLE";
+export type ConfigManagementSyncStateCodeEnum =
+  | "SYNC_CODE_UNSPECIFIED"
+  | "SYNCED"
+  | "PENDING"
+  | "ERROR"
+  | "NOT_CONFIGURED"
+  | "NOT_INSTALLED"
+  | "UNAUTHORIZED"
+  | "UNREACHABLE";
 export const ConfigManagementSyncStateCodeEnum = /*@__PURE__*/ S.String;
 
 /** A Kubernetes object's GVK */
@@ -715,12 +983,14 @@ export interface ConfigManagementGroupVersionKind {
   group?: string;
 }
 export const ConfigManagementGroupVersionKind = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "version": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "group": S.optional(S.String),
-}),
-).annotate({ identifier: "ConfigManagementGroupVersionKind" }) as any as S.Schema<ConfigManagementGroupVersionKind>;
+  S.Struct({
+    version: S.optional(S.String),
+    kind: S.optional(S.String),
+    group: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConfigManagementGroupVersionKind",
+}) as any as S.Schema<ConfigManagementGroupVersionKind>;
 
 /** Model for a config file in the git repo with an associated Sync error */
 export interface ConfigManagementErrorResource {
@@ -734,16 +1004,21 @@ export interface ConfigManagementErrorResource {
   sourcePath?: string;
 }
 export const ConfigManagementErrorResource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceName": S.optional(S.String),
-  "resourceNamespace": S.optional(S.String),
-  "resourceGvk": S.optional(ConfigManagementGroupVersionKind),
-  "sourcePath": S.optional(S.String),
-}),
-).annotate({ identifier: "ConfigManagementErrorResource" }) as any as S.Schema<ConfigManagementErrorResource>;
+  S.Struct({
+    resourceName: S.optional(S.String),
+    resourceNamespace: S.optional(S.String),
+    resourceGvk: S.optional(ConfigManagementGroupVersionKind),
+    sourcePath: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConfigManagementErrorResource",
+}) as any as S.Schema<ConfigManagementErrorResource>;
 
-export type ConfigManagementErrorResourceList = ReadonlyArray<ConfigManagementErrorResource>;
-export const ConfigManagementErrorResourceList = /*@__PURE__*/ S.Array(ConfigManagementErrorResource) as any as S.Schema<ConfigManagementErrorResourceList>;
+export type ConfigManagementErrorResourceList =
+  ReadonlyArray<ConfigManagementErrorResource>;
+export const ConfigManagementErrorResourceList = /*@__PURE__*/ S.Array(
+  ConfigManagementErrorResource,
+) as any as S.Schema<ConfigManagementErrorResourceList>;
 
 /** An ACM created error representing a problem syncing configurations */
 export interface ConfigManagementSyncError {
@@ -755,15 +1030,20 @@ export interface ConfigManagementSyncError {
   errorResources?: ConfigManagementErrorResourceList;
 }
 export const ConfigManagementSyncError = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "errorMessage": S.optional(S.String),
-  "code": S.optional(S.String),
-  "errorResources": S.optional(ConfigManagementErrorResourceList),
-}),
-).annotate({ identifier: "ConfigManagementSyncError" }) as any as S.Schema<ConfigManagementSyncError>;
+  S.Struct({
+    errorMessage: S.optional(S.String),
+    code: S.optional(S.String),
+    errorResources: S.optional(ConfigManagementErrorResourceList),
+  }),
+).annotate({
+  identifier: "ConfigManagementSyncError",
+}) as any as S.Schema<ConfigManagementSyncError>;
 
-export type ConfigManagementSyncErrorList = ReadonlyArray<ConfigManagementSyncError>;
-export const ConfigManagementSyncErrorList = /*@__PURE__*/ S.Array(ConfigManagementSyncError) as any as S.Schema<ConfigManagementSyncErrorList>;
+export type ConfigManagementSyncErrorList =
+  ReadonlyArray<ConfigManagementSyncError>;
+export const ConfigManagementSyncErrorList = /*@__PURE__*/ S.Array(
+  ConfigManagementSyncError,
+) as any as S.Schema<ConfigManagementSyncErrorList>;
 
 /** State indicating an ACM's progress syncing configurations to a cluster */
 export interface ConfigManagementSyncState {
@@ -783,16 +1063,18 @@ export interface ConfigManagementSyncState {
   lastSyncTime?: string;
 }
 export const ConfigManagementSyncState = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sourceToken": S.optional(S.String),
-  "syncToken": S.optional(S.String),
-  "lastSync": S.optional(S.String),
-  "code": S.optional(ConfigManagementSyncStateCodeEnum),
-  "errors": S.optional(ConfigManagementSyncErrorList),
-  "importToken": S.optional(S.String),
-  "lastSyncTime": S.optional(S.String),
-}),
-).annotate({ identifier: "ConfigManagementSyncState" }) as any as S.Schema<ConfigManagementSyncState>;
+  S.Struct({
+    sourceToken: S.optional(S.String),
+    syncToken: S.optional(S.String),
+    lastSync: S.optional(S.String),
+    code: S.optional(ConfigManagementSyncStateCodeEnum),
+    errors: S.optional(ConfigManagementSyncErrorList),
+    importToken: S.optional(S.String),
+    lastSyncTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConfigManagementSyncState",
+}) as any as S.Schema<ConfigManagementSyncState>;
 
 /** State information for ConfigSync */
 export interface ConfigManagementConfigSyncState {
@@ -816,18 +1098,22 @@ export interface ConfigManagementConfigSyncState {
   syncState?: ConfigManagementSyncState;
 }
 export const ConfigManagementConfigSyncState = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "state": S.optional(ConfigManagementConfigSyncStateStateEnum),
-  "crCount": S.optional(S.Number),
-  "errors": S.optional(ConfigManagementConfigSyncErrorList),
-  "rootsyncCrd": S.optional(ConfigManagementConfigSyncStateRootsyncCrdEnum),
-  "version": S.optional(ConfigManagementConfigSyncVersion),
-  "reposyncCrd": S.optional(ConfigManagementConfigSyncStateReposyncCrdEnum),
-  "clusterLevelStopSyncingState": S.optional(ConfigManagementConfigSyncStateClusterLevelStopSyncingStateEnum),
-  "deploymentState": S.optional(ConfigManagementConfigSyncDeploymentState),
-  "syncState": S.optional(ConfigManagementSyncState),
-}),
-).annotate({ identifier: "ConfigManagementConfigSyncState" }) as any as S.Schema<ConfigManagementConfigSyncState>;
+  S.Struct({
+    state: S.optional(ConfigManagementConfigSyncStateStateEnum),
+    crCount: S.optional(S.Number),
+    errors: S.optional(ConfigManagementConfigSyncErrorList),
+    rootsyncCrd: S.optional(ConfigManagementConfigSyncStateRootsyncCrdEnum),
+    version: S.optional(ConfigManagementConfigSyncVersion),
+    reposyncCrd: S.optional(ConfigManagementConfigSyncStateReposyncCrdEnum),
+    clusterLevelStopSyncingState: S.optional(
+      ConfigManagementConfigSyncStateClusterLevelStopSyncingStateEnum,
+    ),
+    deploymentState: S.optional(ConfigManagementConfigSyncDeploymentState),
+    syncState: S.optional(ConfigManagementSyncState),
+  }),
+).annotate({
+  identifier: "ConfigManagementConfigSyncState",
+}) as any as S.Schema<ConfigManagementConfigSyncState>;
 
 /** **Anthos Config Management**: State for a single cluster. */
 export interface ConfigManagementMembershipState {
@@ -849,17 +1135,21 @@ export interface ConfigManagementMembershipState {
   configSyncState?: ConfigManagementConfigSyncState;
 }
 export const ConfigManagementMembershipState = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "membershipSpec": S.optional(ConfigManagementMembershipSpec),
-  "policyControllerState": S.optional(ConfigManagementPolicyControllerState),
-  "hierarchyControllerState": S.optional(ConfigManagementHierarchyControllerState),
-  "binauthzState": S.optional(ConfigManagementBinauthzState),
-  "kubernetesApiServerVersion": S.optional(S.String),
-  "clusterName": S.optional(S.String),
-  "operatorState": S.optional(ConfigManagementOperatorState),
-  "configSyncState": S.optional(ConfigManagementConfigSyncState),
-}),
-).annotate({ identifier: "ConfigManagementMembershipState" }) as any as S.Schema<ConfigManagementMembershipState>;
+  S.Struct({
+    membershipSpec: S.optional(ConfigManagementMembershipSpec),
+    policyControllerState: S.optional(ConfigManagementPolicyControllerState),
+    hierarchyControllerState: S.optional(
+      ConfigManagementHierarchyControllerState,
+    ),
+    binauthzState: S.optional(ConfigManagementBinauthzState),
+    kubernetesApiServerVersion: S.optional(S.String),
+    clusterName: S.optional(S.String),
+    operatorState: S.optional(ConfigManagementOperatorState),
+    configSyncState: S.optional(ConfigManagementConfigSyncState),
+  }),
+).annotate({
+  identifier: "ConfigManagementMembershipState",
+}) as any as S.Schema<ConfigManagementMembershipState>;
 
 /** IgnoredMembership represents a membership ignored by the feature. A membership can be ignored because it was manually upgraded to a newer version than RC default. */
 export interface ClusterUpgradeIgnoredMembership {
@@ -869,11 +1159,13 @@ export interface ClusterUpgradeIgnoredMembership {
   ignoredTime?: string;
 }
 export const ClusterUpgradeIgnoredMembership = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "reason": S.optional(S.String),
-  "ignoredTime": S.optional(S.String),
-}),
-).annotate({ identifier: "ClusterUpgradeIgnoredMembership" }) as any as S.Schema<ClusterUpgradeIgnoredMembership>;
+  S.Struct({
+    reason: S.optional(S.String),
+    ignoredTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ClusterUpgradeIgnoredMembership",
+}) as any as S.Schema<ClusterUpgradeIgnoredMembership>;
 
 /** GKEUpgrade represents a GKE provided upgrade, e.g., control plane upgrade. */
 export interface ClusterUpgradeGKEUpgrade {
@@ -883,13 +1175,22 @@ export interface ClusterUpgradeGKEUpgrade {
   name?: string;
 }
 export const ClusterUpgradeGKEUpgrade = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "version": S.optional(S.String),
-  "name": S.optional(S.String),
-}),
-).annotate({ identifier: "ClusterUpgradeGKEUpgrade" }) as any as S.Schema<ClusterUpgradeGKEUpgrade>;
+  S.Struct({
+    version: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ClusterUpgradeGKEUpgrade",
+}) as any as S.Schema<ClusterUpgradeGKEUpgrade>;
 
-export type ClusterUpgradeUpgradeStatusCodeEnum = "CODE_UNSPECIFIED" | "INELIGIBLE" | "PENDING" | "IN_PROGRESS" | "SOAKING" | "FORCED_SOAKING" | "COMPLETE";
+export type ClusterUpgradeUpgradeStatusCodeEnum =
+  | "CODE_UNSPECIFIED"
+  | "INELIGIBLE"
+  | "PENDING"
+  | "IN_PROGRESS"
+  | "SOAKING"
+  | "FORCED_SOAKING"
+  | "COMPLETE";
 export const ClusterUpgradeUpgradeStatusCodeEnum = /*@__PURE__*/ S.String;
 
 /** UpgradeStatus provides status information for each upgrade. */
@@ -902,12 +1203,14 @@ export interface ClusterUpgradeUpgradeStatus {
   reason?: string;
 }
 export const ClusterUpgradeUpgradeStatus = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateTime": S.optional(S.String),
-  "code": S.optional(ClusterUpgradeUpgradeStatusCodeEnum),
-  "reason": S.optional(S.String),
-}),
-).annotate({ identifier: "ClusterUpgradeUpgradeStatus" }) as any as S.Schema<ClusterUpgradeUpgradeStatus>;
+  S.Struct({
+    updateTime: S.optional(S.String),
+    code: S.optional(ClusterUpgradeUpgradeStatusCodeEnum),
+    reason: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ClusterUpgradeUpgradeStatus",
+}) as any as S.Schema<ClusterUpgradeUpgradeStatus>;
 
 /** ScopeGKEUpgradeState is a GKEUpgrade and its state per-membership. */
 export interface ClusterUpgradeMembershipGKEUpgradeState {
@@ -916,15 +1219,22 @@ export interface ClusterUpgradeMembershipGKEUpgradeState {
   /** Status of the upgrade. */
   status?: ClusterUpgradeUpgradeStatus;
 }
-export const ClusterUpgradeMembershipGKEUpgradeState = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "upgrade": S.optional(ClusterUpgradeGKEUpgrade),
-  "status": S.optional(ClusterUpgradeUpgradeStatus),
-}),
-).annotate({ identifier: "ClusterUpgradeMembershipGKEUpgradeState" }) as any as S.Schema<ClusterUpgradeMembershipGKEUpgradeState>;
+export const ClusterUpgradeMembershipGKEUpgradeState = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      upgrade: S.optional(ClusterUpgradeGKEUpgrade),
+      status: S.optional(ClusterUpgradeUpgradeStatus),
+    }),
+).annotate({
+  identifier: "ClusterUpgradeMembershipGKEUpgradeState",
+}) as any as S.Schema<ClusterUpgradeMembershipGKEUpgradeState>;
 
-export type ClusterUpgradeMembershipGKEUpgradeStateList = ReadonlyArray<ClusterUpgradeMembershipGKEUpgradeState>;
-export const ClusterUpgradeMembershipGKEUpgradeStateList = /*@__PURE__*/ S.Array(ClusterUpgradeMembershipGKEUpgradeState) as any as S.Schema<ClusterUpgradeMembershipGKEUpgradeStateList>;
+export type ClusterUpgradeMembershipGKEUpgradeStateList =
+  ReadonlyArray<ClusterUpgradeMembershipGKEUpgradeState>;
+export const ClusterUpgradeMembershipGKEUpgradeStateList =
+  /*@__PURE__*/ S.Array(
+    ClusterUpgradeMembershipGKEUpgradeState,
+  ) as any as S.Schema<ClusterUpgradeMembershipGKEUpgradeStateList>;
 
 /** Per-membership state for this feature. */
 export interface ClusterUpgradeMembershipState {
@@ -934,11 +1244,13 @@ export interface ClusterUpgradeMembershipState {
   upgrades?: ClusterUpgradeMembershipGKEUpgradeStateList;
 }
 export const ClusterUpgradeMembershipState = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "ignored": S.optional(ClusterUpgradeIgnoredMembership),
-  "upgrades": S.optional(ClusterUpgradeMembershipGKEUpgradeStateList),
-}),
-).annotate({ identifier: "ClusterUpgradeMembershipState" }) as any as S.Schema<ClusterUpgradeMembershipState>;
+  S.Struct({
+    ignored: S.optional(ClusterUpgradeIgnoredMembership),
+    upgrades: S.optional(ClusterUpgradeMembershipGKEUpgradeStateList),
+  }),
+).annotate({
+  identifier: "ClusterUpgradeMembershipState",
+}) as any as S.Schema<ClusterUpgradeMembershipState>;
 
 export type StatusCodeEnum = "CODE_UNSPECIFIED" | "OK" | "FAILED" | "UNKNOWN";
 export const StatusCodeEnum = /*@__PURE__*/ S.String;
@@ -951,10 +1263,10 @@ export interface Status {
   description?: string;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(StatusCodeEnum),
-  "description": S.optional(S.String),
-}),
+  S.Struct({
+    code: S.optional(StatusCodeEnum),
+    description: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** State for App Dev Exp Feature. */
@@ -963,16 +1275,20 @@ export interface AppDevExperienceFeatureState {
   networkingInstallSucceeded?: Status;
 }
 export const AppDevExperienceFeatureState = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "networkingInstallSucceeded": S.optional(Status),
-}),
-).annotate({ identifier: "AppDevExperienceFeatureState" }) as any as S.Schema<AppDevExperienceFeatureState>;
+  S.Struct({
+    networkingInstallSucceeded: S.optional(Status),
+  }),
+).annotate({
+  identifier: "AppDevExperienceFeatureState",
+}) as any as S.Schema<AppDevExperienceFeatureState>;
 
 /** **FleetObservability**: Membership-specific Feature state for fleetobservability. */
 export interface FleetObservabilityMembershipState {}
 export const FleetObservabilityMembershipState = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "FleetObservabilityMembershipState" }) as any as S.Schema<FleetObservabilityMembershipState>;
+  S.Struct({}),
+).annotate({
+  identifier: "FleetObservabilityMembershipState",
+}) as any as S.Schema<FleetObservabilityMembershipState>;
 
 /** Structured and human-readable details for a status. */
 export interface ServiceMeshStatusDetails {
@@ -982,16 +1298,30 @@ export interface ServiceMeshStatusDetails {
   code?: string;
 }
 export const ServiceMeshStatusDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "details": S.optional(S.String),
-  "code": S.optional(S.String),
-}),
-).annotate({ identifier: "ServiceMeshStatusDetails" }) as any as S.Schema<ServiceMeshStatusDetails>;
+  S.Struct({
+    details: S.optional(S.String),
+    code: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ServiceMeshStatusDetails",
+}) as any as S.Schema<ServiceMeshStatusDetails>;
 
-export type ServiceMeshStatusDetailsList = ReadonlyArray<ServiceMeshStatusDetails>;
-export const ServiceMeshStatusDetailsList = /*@__PURE__*/ S.Array(ServiceMeshStatusDetails) as any as S.Schema<ServiceMeshStatusDetailsList>;
+export type ServiceMeshStatusDetailsList =
+  ReadonlyArray<ServiceMeshStatusDetails>;
+export const ServiceMeshStatusDetailsList = /*@__PURE__*/ S.Array(
+  ServiceMeshStatusDetails,
+) as any as S.Schema<ServiceMeshStatusDetailsList>;
 
-export type ServiceMeshDataPlaneManagementStateEnum = "LIFECYCLE_STATE_UNSPECIFIED" | "DISABLED" | "FAILED_PRECONDITION" | "PROVISIONING" | "ACTIVE" | "STALLED" | "NEEDS_ATTENTION" | "DEGRADED" | "DEPROVISIONING";
+export type ServiceMeshDataPlaneManagementStateEnum =
+  | "LIFECYCLE_STATE_UNSPECIFIED"
+  | "DISABLED"
+  | "FAILED_PRECONDITION"
+  | "PROVISIONING"
+  | "ACTIVE"
+  | "STALLED"
+  | "NEEDS_ATTENTION"
+  | "DEGRADED"
+  | "DEPROVISIONING";
 export const ServiceMeshDataPlaneManagementStateEnum = /*@__PURE__*/ S.String;
 
 /** Status of data plane management. Only reported per-member. */
@@ -1002,17 +1332,34 @@ export interface ServiceMeshDataPlaneManagement {
   state?: ServiceMeshDataPlaneManagementStateEnum;
 }
 export const ServiceMeshDataPlaneManagement = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "details": S.optional(ServiceMeshStatusDetailsList),
-  "state": S.optional(ServiceMeshDataPlaneManagementStateEnum),
-}),
-).annotate({ identifier: "ServiceMeshDataPlaneManagement" }) as any as S.Schema<ServiceMeshDataPlaneManagement>;
+  S.Struct({
+    details: S.optional(ServiceMeshStatusDetailsList),
+    state: S.optional(ServiceMeshDataPlaneManagementStateEnum),
+  }),
+).annotate({
+  identifier: "ServiceMeshDataPlaneManagement",
+}) as any as S.Schema<ServiceMeshDataPlaneManagement>;
 
-export type ServiceMeshControlPlaneManagementStateEnum = "LIFECYCLE_STATE_UNSPECIFIED" | "DISABLED" | "FAILED_PRECONDITION" | "PROVISIONING" | "ACTIVE" | "STALLED" | "NEEDS_ATTENTION" | "DEGRADED" | "DEPROVISIONING";
-export const ServiceMeshControlPlaneManagementStateEnum = /*@__PURE__*/ S.String;
+export type ServiceMeshControlPlaneManagementStateEnum =
+  | "LIFECYCLE_STATE_UNSPECIFIED"
+  | "DISABLED"
+  | "FAILED_PRECONDITION"
+  | "PROVISIONING"
+  | "ACTIVE"
+  | "STALLED"
+  | "NEEDS_ATTENTION"
+  | "DEGRADED"
+  | "DEPROVISIONING";
+export const ServiceMeshControlPlaneManagementStateEnum =
+  /*@__PURE__*/ S.String;
 
-export type ServiceMeshControlPlaneManagementImplementationEnum = "IMPLEMENTATION_UNSPECIFIED" | "ISTIOD" | "TRAFFIC_DIRECTOR" | "UPDATING";
-export const ServiceMeshControlPlaneManagementImplementationEnum = /*@__PURE__*/ S.String;
+export type ServiceMeshControlPlaneManagementImplementationEnum =
+  | "IMPLEMENTATION_UNSPECIFIED"
+  | "ISTIOD"
+  | "TRAFFIC_DIRECTOR"
+  | "UPDATING";
+export const ServiceMeshControlPlaneManagementImplementationEnum =
+  /*@__PURE__*/ S.String;
 
 /** Status of control plane management. */
 export interface ServiceMeshControlPlaneManagement {
@@ -1024,17 +1371,89 @@ export interface ServiceMeshControlPlaneManagement {
   implementation?: ServiceMeshControlPlaneManagementImplementationEnum;
 }
 export const ServiceMeshControlPlaneManagement = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "state": S.optional(ServiceMeshControlPlaneManagementStateEnum),
-  "details": S.optional(ServiceMeshStatusDetailsList),
-  "implementation": S.optional(ServiceMeshControlPlaneManagementImplementationEnum),
-}),
-).annotate({ identifier: "ServiceMeshControlPlaneManagement" }) as any as S.Schema<ServiceMeshControlPlaneManagement>;
+  S.Struct({
+    state: S.optional(ServiceMeshControlPlaneManagementStateEnum),
+    details: S.optional(ServiceMeshStatusDetailsList),
+    implementation: S.optional(
+      ServiceMeshControlPlaneManagementImplementationEnum,
+    ),
+  }),
+).annotate({
+  identifier: "ServiceMeshControlPlaneManagement",
+}) as any as S.Schema<ServiceMeshControlPlaneManagement>;
 
-export type ServiceMeshConditionCodeEnum = "CODE_UNSPECIFIED" | "MESH_IAM_PERMISSION_DENIED" | "MESH_IAM_CROSS_PROJECT_PERMISSION_DENIED" | "CNI_CONFIG_UNSUPPORTED" | "GKE_SANDBOX_UNSUPPORTED" | "NODEPOOL_WORKLOAD_IDENTITY_FEDERATION_REQUIRED" | "CNI_INSTALLATION_FAILED" | "CNI_POD_UNSCHEDULABLE" | "CLUSTER_HAS_ZERO_NODES" | "CANONICAL_SERVICE_ERROR" | "UNSUPPORTED_MULTIPLE_CONTROL_PLANES" | "VPCSC_GA_SUPPORTED" | "DEPRECATED_SPEC_CONTROL_PLANE_MANAGEMENT" | "DEPRECATED_SPEC_CONTROL_PLANE_MANAGEMENT_SAFE" | "CONFIG_APPLY_INTERNAL_ERROR" | "CONFIG_VALIDATION_ERROR" | "CONFIG_VALIDATION_WARNING" | "QUOTA_EXCEEDED_BACKEND_SERVICES" | "QUOTA_EXCEEDED_HEALTH_CHECKS" | "QUOTA_EXCEEDED_HTTP_ROUTES" | "QUOTA_EXCEEDED_TCP_ROUTES" | "QUOTA_EXCEEDED_TLS_ROUTES" | "QUOTA_EXCEEDED_TRAFFIC_POLICIES" | "QUOTA_EXCEEDED_ENDPOINT_POLICIES" | "QUOTA_EXCEEDED_GATEWAYS" | "QUOTA_EXCEEDED_MESHES" | "QUOTA_EXCEEDED_SERVER_TLS_POLICIES" | "QUOTA_EXCEEDED_CLIENT_TLS_POLICIES" | "QUOTA_EXCEEDED_SERVICE_LB_POLICIES" | "QUOTA_EXCEEDED_HTTP_FILTERS" | "QUOTA_EXCEEDED_TCP_FILTERS" | "QUOTA_EXCEEDED_NETWORK_ENDPOINT_GROUPS" | "CONFIG_APPLY_BLOCKED" | "LEGACY_MC_SECRETS" | "WORKLOAD_IDENTITY_REQUIRED" | "NON_STANDARD_BINARY_USAGE" | "UNSUPPORTED_GATEWAY_CLASS" | "MANAGED_CNI_NOT_ENABLED" | "MISSING_CONTROL_PLANE_CONFIG" | "SHARED_VPC_MISSING_PERMISSIONS" | "REQUIRED_ORG_POLICY_DISABLED" | "MODERNIZATION_INCOMPATIBLE_POD_ANNOTATION" | "MODERNIZATION_INCOMPATIBLE_CONFIG" | "MODERNIZATION_INCOMPATIBLE_GATEWAY_POD_SCALE" | "MODERNIZATION_SCHEDULED" | "MODERNIZATION_IN_PROGRESS" | "MODERNIZATION_COMPLETED" | "MODERNIZATION_ABORTED" | "MODERNIZATION_PREPARING" | "MODERNIZATION_STALLED" | "MODERNIZATION_PREPARED" | "MODERNIZATION_MIGRATING_WORKLOADS" | "MODERNIZATION_ROLLING_BACK_CLUSTER" | "MODERNIZATION_WILL_BE_SCHEDULED" | "MODERNIZATION_MANUAL" | "MODERNIZATION_ELIGIBLE" | "MODERNIZATION_MODERNIZING" | "MODERNIZATION_MODERNIZED_SOAKING" | "MODERNIZATION_FINALIZED" | "MODERNIZATION_ROLLING_BACK_FLEET" | "MODERNIZATION_COMPATIBLE" | "MODERNIZATION_INCOMPATIBLE" | "MODERNIZATION_INCOMPATIBLE_FLEET_SCALE" | "MODERNIZATION_INCOMPATIBLE_FLEET_QUOTA";
+export type ServiceMeshConditionCodeEnum =
+  | "CODE_UNSPECIFIED"
+  | "MESH_IAM_PERMISSION_DENIED"
+  | "MESH_IAM_CROSS_PROJECT_PERMISSION_DENIED"
+  | "CNI_CONFIG_UNSUPPORTED"
+  | "GKE_SANDBOX_UNSUPPORTED"
+  | "NODEPOOL_WORKLOAD_IDENTITY_FEDERATION_REQUIRED"
+  | "CNI_INSTALLATION_FAILED"
+  | "CNI_POD_UNSCHEDULABLE"
+  | "CLUSTER_HAS_ZERO_NODES"
+  | "CANONICAL_SERVICE_ERROR"
+  | "UNSUPPORTED_MULTIPLE_CONTROL_PLANES"
+  | "VPCSC_GA_SUPPORTED"
+  | "DEPRECATED_SPEC_CONTROL_PLANE_MANAGEMENT"
+  | "DEPRECATED_SPEC_CONTROL_PLANE_MANAGEMENT_SAFE"
+  | "CONFIG_APPLY_INTERNAL_ERROR"
+  | "CONFIG_VALIDATION_ERROR"
+  | "CONFIG_VALIDATION_WARNING"
+  | "QUOTA_EXCEEDED_BACKEND_SERVICES"
+  | "QUOTA_EXCEEDED_HEALTH_CHECKS"
+  | "QUOTA_EXCEEDED_HTTP_ROUTES"
+  | "QUOTA_EXCEEDED_TCP_ROUTES"
+  | "QUOTA_EXCEEDED_TLS_ROUTES"
+  | "QUOTA_EXCEEDED_TRAFFIC_POLICIES"
+  | "QUOTA_EXCEEDED_ENDPOINT_POLICIES"
+  | "QUOTA_EXCEEDED_GATEWAYS"
+  | "QUOTA_EXCEEDED_MESHES"
+  | "QUOTA_EXCEEDED_SERVER_TLS_POLICIES"
+  | "QUOTA_EXCEEDED_CLIENT_TLS_POLICIES"
+  | "QUOTA_EXCEEDED_SERVICE_LB_POLICIES"
+  | "QUOTA_EXCEEDED_HTTP_FILTERS"
+  | "QUOTA_EXCEEDED_TCP_FILTERS"
+  | "QUOTA_EXCEEDED_NETWORK_ENDPOINT_GROUPS"
+  | "CONFIG_APPLY_BLOCKED"
+  | "LEGACY_MC_SECRETS"
+  | "WORKLOAD_IDENTITY_REQUIRED"
+  | "NON_STANDARD_BINARY_USAGE"
+  | "UNSUPPORTED_GATEWAY_CLASS"
+  | "MANAGED_CNI_NOT_ENABLED"
+  | "MISSING_CONTROL_PLANE_CONFIG"
+  | "SHARED_VPC_MISSING_PERMISSIONS"
+  | "REQUIRED_ORG_POLICY_DISABLED"
+  | "MODERNIZATION_INCOMPATIBLE_POD_ANNOTATION"
+  | "MODERNIZATION_INCOMPATIBLE_CONFIG"
+  | "MODERNIZATION_INCOMPATIBLE_GATEWAY_POD_SCALE"
+  | "MODERNIZATION_SCHEDULED"
+  | "MODERNIZATION_IN_PROGRESS"
+  | "MODERNIZATION_COMPLETED"
+  | "MODERNIZATION_ABORTED"
+  | "MODERNIZATION_PREPARING"
+  | "MODERNIZATION_STALLED"
+  | "MODERNIZATION_PREPARED"
+  | "MODERNIZATION_MIGRATING_WORKLOADS"
+  | "MODERNIZATION_ROLLING_BACK_CLUSTER"
+  | "MODERNIZATION_WILL_BE_SCHEDULED"
+  | "MODERNIZATION_MANUAL"
+  | "MODERNIZATION_ELIGIBLE"
+  | "MODERNIZATION_MODERNIZING"
+  | "MODERNIZATION_MODERNIZED_SOAKING"
+  | "MODERNIZATION_FINALIZED"
+  | "MODERNIZATION_ROLLING_BACK_FLEET"
+  | "MODERNIZATION_COMPATIBLE"
+  | "MODERNIZATION_INCOMPATIBLE"
+  | "MODERNIZATION_INCOMPATIBLE_FLEET_SCALE"
+  | "MODERNIZATION_INCOMPATIBLE_FLEET_QUOTA";
 export const ServiceMeshConditionCodeEnum = /*@__PURE__*/ S.String;
 
-export type ServiceMeshConditionSeverityEnum = "SEVERITY_UNSPECIFIED" | "ERROR" | "WARNING" | "INFO";
+export type ServiceMeshConditionSeverityEnum =
+  | "SEVERITY_UNSPECIFIED"
+  | "ERROR"
+  | "WARNING"
+  | "INFO";
 export const ServiceMeshConditionSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Condition being reported. */
@@ -1049,16 +1468,20 @@ export interface ServiceMeshCondition {
   details?: string;
 }
 export const ServiceMeshCondition = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "documentationLink": S.optional(S.String),
-  "code": S.optional(ServiceMeshConditionCodeEnum),
-  "severity": S.optional(ServiceMeshConditionSeverityEnum),
-  "details": S.optional(S.String),
-}),
-).annotate({ identifier: "ServiceMeshCondition" }) as any as S.Schema<ServiceMeshCondition>;
+  S.Struct({
+    documentationLink: S.optional(S.String),
+    code: S.optional(ServiceMeshConditionCodeEnum),
+    severity: S.optional(ServiceMeshConditionSeverityEnum),
+    details: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ServiceMeshCondition",
+}) as any as S.Schema<ServiceMeshCondition>;
 
 export type ServiceMeshConditionList = ReadonlyArray<ServiceMeshCondition>;
-export const ServiceMeshConditionList = /*@__PURE__*/ S.Array(ServiceMeshCondition) as any as S.Schema<ServiceMeshConditionList>;
+export const ServiceMeshConditionList = /*@__PURE__*/ S.Array(
+  ServiceMeshCondition,
+) as any as S.Schema<ServiceMeshConditionList>;
 
 /** **Service Mesh**: State for a single Membership, as analyzed by the Service Mesh Hub Controller. */
 export interface ServiceMeshMembershipState {
@@ -1070,18 +1493,26 @@ export interface ServiceMeshMembershipState {
   conditions?: ServiceMeshConditionList;
 }
 export const ServiceMeshMembershipState = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dataPlaneManagement": S.optional(ServiceMeshDataPlaneManagement),
-  "controlPlaneManagement": S.optional(ServiceMeshControlPlaneManagement),
-  "conditions": S.optional(ServiceMeshConditionList),
-}),
-).annotate({ identifier: "ServiceMeshMembershipState" }) as any as S.Schema<ServiceMeshMembershipState>;
+  S.Struct({
+    dataPlaneManagement: S.optional(ServiceMeshDataPlaneManagement),
+    controlPlaneManagement: S.optional(ServiceMeshControlPlaneManagement),
+    conditions: S.optional(ServiceMeshConditionList),
+  }),
+).annotate({
+  identifier: "ServiceMeshMembershipState",
+}) as any as S.Schema<ServiceMeshMembershipState>;
 
-export type IdentityServiceMembershipStateStateEnum = "DEPLOYMENT_STATE_UNSPECIFIED" | "OK" | "ERROR";
+export type IdentityServiceMembershipStateStateEnum =
+  | "DEPLOYMENT_STATE_UNSPECIFIED"
+  | "OK"
+  | "ERROR";
 export const IdentityServiceMembershipStateStateEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
 /** Configuration for the SAML Auth flow. */
 export interface IdentityServiceSamlConfig {
@@ -1103,17 +1534,19 @@ export interface IdentityServiceSamlConfig {
   groupPrefix?: string;
 }
 export const IdentityServiceSamlConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "groupsAttribute": S.optional(S.String),
-  "userAttribute": S.optional(S.String),
-  "userPrefix": S.optional(S.String),
-  "attributeMapping": S.optional(StringMap),
-  "identityProviderSsoUri": S.optional(S.String),
-  "identityProviderCertificates": S.optional(StringList),
-  "identityProviderId": S.optional(S.String),
-  "groupPrefix": S.optional(S.String),
-}),
-).annotate({ identifier: "IdentityServiceSamlConfig" }) as any as S.Schema<IdentityServiceSamlConfig>;
+  S.Struct({
+    groupsAttribute: S.optional(S.String),
+    userAttribute: S.optional(S.String),
+    userPrefix: S.optional(S.String),
+    attributeMapping: S.optional(StringMap),
+    identityProviderSsoUri: S.optional(S.String),
+    identityProviderCertificates: S.optional(StringList),
+    identityProviderId: S.optional(S.String),
+    groupPrefix: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "IdentityServiceSamlConfig",
+}) as any as S.Schema<IdentityServiceSamlConfig>;
 
 /** Configuration for the AzureAD Auth flow. */
 export interface IdentityServiceAzureADConfig {
@@ -1133,16 +1566,18 @@ export interface IdentityServiceAzureADConfig {
   encryptedClientSecret?: string;
 }
 export const IdentityServiceAzureADConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kubectlRedirectUri": S.optional(S.String),
-  "clientId": S.optional(S.String),
-  "userClaim": S.optional(S.String),
-  "groupFormat": S.optional(S.String),
-  "clientSecret": S.optional(S.String),
-  "tenant": S.optional(S.String),
-  "encryptedClientSecret": S.optional(S.String),
-}),
-).annotate({ identifier: "IdentityServiceAzureADConfig" }) as any as S.Schema<IdentityServiceAzureADConfig>;
+  S.Struct({
+    kubectlRedirectUri: S.optional(S.String),
+    clientId: S.optional(S.String),
+    userClaim: S.optional(S.String),
+    groupFormat: S.optional(S.String),
+    clientSecret: S.optional(S.String),
+    tenant: S.optional(S.String),
+    encryptedClientSecret: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "IdentityServiceAzureADConfig",
+}) as any as S.Schema<IdentityServiceAzureADConfig>;
 
 /** Configuration for OIDC Auth flow. */
 export interface IdentityServiceOidcConfig {
@@ -1176,23 +1611,25 @@ export interface IdentityServiceOidcConfig {
   clientSecret?: string;
 }
 export const IdentityServiceOidcConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "clientId": S.optional(S.String),
-  "issuerUri": S.optional(S.String),
-  "userClaim": S.optional(S.String),
-  "scopes": S.optional(S.String),
-  "groupPrefix": S.optional(S.String),
-  "deployCloudConsoleProxy": S.optional(S.Boolean),
-  "encryptedClientSecret": S.optional(S.String),
-  "certificateAuthorityData": S.optional(S.String),
-  "kubectlRedirectUri": S.optional(S.String),
-  "extraParams": S.optional(S.String),
-  "groupsClaim": S.optional(S.String),
-  "enableAccessToken": S.optional(S.Boolean),
-  "userPrefix": S.optional(S.String),
-  "clientSecret": S.optional(S.String),
-}),
-).annotate({ identifier: "IdentityServiceOidcConfig" }) as any as S.Schema<IdentityServiceOidcConfig>;
+  S.Struct({
+    clientId: S.optional(S.String),
+    issuerUri: S.optional(S.String),
+    userClaim: S.optional(S.String),
+    scopes: S.optional(S.String),
+    groupPrefix: S.optional(S.String),
+    deployCloudConsoleProxy: S.optional(S.Boolean),
+    encryptedClientSecret: S.optional(S.String),
+    certificateAuthorityData: S.optional(S.String),
+    kubectlRedirectUri: S.optional(S.String),
+    extraParams: S.optional(S.String),
+    groupsClaim: S.optional(S.String),
+    enableAccessToken: S.optional(S.Boolean),
+    userPrefix: S.optional(S.String),
+    clientSecret: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "IdentityServiceOidcConfig",
+}) as any as S.Schema<IdentityServiceOidcConfig>;
 
 /** Configuration for the Google Plugin Auth flow. */
 export interface IdentityServiceGoogleConfig {
@@ -1200,10 +1637,12 @@ export interface IdentityServiceGoogleConfig {
   disable?: boolean;
 }
 export const IdentityServiceGoogleConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "disable": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "IdentityServiceGoogleConfig" }) as any as S.Schema<IdentityServiceGoogleConfig>;
+  S.Struct({
+    disable: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "IdentityServiceGoogleConfig",
+}) as any as S.Schema<IdentityServiceGoogleConfig>;
 
 /** The structure holds the LDAP simple binding credential. */
 export interface IdentityServiceSimpleBindCredentials {
@@ -1214,13 +1653,16 @@ export interface IdentityServiceSimpleBindCredentials {
   /** Required. Input only. The password of the service account object/user. */
   password?: string;
 }
-export const IdentityServiceSimpleBindCredentials = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dn": S.optional(S.String),
-  "encryptedPassword": S.optional(S.String),
-  "password": S.optional(S.String),
-}),
-).annotate({ identifier: "IdentityServiceSimpleBindCredentials" }) as any as S.Schema<IdentityServiceSimpleBindCredentials>;
+export const IdentityServiceSimpleBindCredentials = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      dn: S.optional(S.String),
+      encryptedPassword: S.optional(S.String),
+      password: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "IdentityServiceSimpleBindCredentials",
+}) as any as S.Schema<IdentityServiceSimpleBindCredentials>;
 
 /** Contains the credentials of the service account which is authorized to perform the LDAP search in the directory. The credentials can be supplied by the combination of the DN and password or the client certificate. */
 export interface IdentityServiceServiceAccountConfig {
@@ -1228,10 +1670,12 @@ export interface IdentityServiceServiceAccountConfig {
   simpleBindCredentials?: IdentityServiceSimpleBindCredentials;
 }
 export const IdentityServiceServiceAccountConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "simpleBindCredentials": S.optional(IdentityServiceSimpleBindCredentials),
-}),
-).annotate({ identifier: "IdentityServiceServiceAccountConfig" }) as any as S.Schema<IdentityServiceServiceAccountConfig>;
+  S.Struct({
+    simpleBindCredentials: S.optional(IdentityServiceSimpleBindCredentials),
+  }),
+).annotate({
+  identifier: "IdentityServiceServiceAccountConfig",
+}) as any as S.Schema<IdentityServiceServiceAccountConfig>;
 
 /** Server settings for the external LDAP server. */
 export interface IdentityServiceServerConfig {
@@ -1243,12 +1687,14 @@ export interface IdentityServiceServerConfig {
   connectionType?: string;
 }
 export const IdentityServiceServerConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "certificateAuthorityData": S.optional(S.String),
-  "host": S.optional(S.String),
-  "connectionType": S.optional(S.String),
-}),
-).annotate({ identifier: "IdentityServiceServerConfig" }) as any as S.Schema<IdentityServiceServerConfig>;
+  S.Struct({
+    certificateAuthorityData: S.optional(S.String),
+    host: S.optional(S.String),
+    connectionType: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "IdentityServiceServerConfig",
+}) as any as S.Schema<IdentityServiceServerConfig>;
 
 /** Contains the properties for locating and authenticating groups in the directory. */
 export interface IdentityServiceGroupConfig {
@@ -1260,12 +1706,14 @@ export interface IdentityServiceGroupConfig {
   idAttribute?: string;
 }
 export const IdentityServiceGroupConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String),
-  "baseDn": S.optional(S.String),
-  "idAttribute": S.optional(S.String),
-}),
-).annotate({ identifier: "IdentityServiceGroupConfig" }) as any as S.Schema<IdentityServiceGroupConfig>;
+  S.Struct({
+    filter: S.optional(S.String),
+    baseDn: S.optional(S.String),
+    idAttribute: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "IdentityServiceGroupConfig",
+}) as any as S.Schema<IdentityServiceGroupConfig>;
 
 /** Defines where users exist in the LDAP directory. */
 export interface IdentityServiceUserConfig {
@@ -1279,13 +1727,15 @@ export interface IdentityServiceUserConfig {
   filter?: string;
 }
 export const IdentityServiceUserConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "idAttribute": S.optional(S.String),
-  "baseDn": S.optional(S.String),
-  "loginAttribute": S.optional(S.String),
-  "filter": S.optional(S.String),
-}),
-).annotate({ identifier: "IdentityServiceUserConfig" }) as any as S.Schema<IdentityServiceUserConfig>;
+  S.Struct({
+    idAttribute: S.optional(S.String),
+    baseDn: S.optional(S.String),
+    loginAttribute: S.optional(S.String),
+    filter: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "IdentityServiceUserConfig",
+}) as any as S.Schema<IdentityServiceUserConfig>;
 
 /** Configuration for the LDAP Auth flow. */
 export interface IdentityServiceLdapConfig {
@@ -1299,13 +1749,15 @@ export interface IdentityServiceLdapConfig {
   user?: IdentityServiceUserConfig;
 }
 export const IdentityServiceLdapConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "serviceAccount": S.optional(IdentityServiceServiceAccountConfig),
-  "server": S.optional(IdentityServiceServerConfig),
-  "group": S.optional(IdentityServiceGroupConfig),
-  "user": S.optional(IdentityServiceUserConfig),
-}),
-).annotate({ identifier: "IdentityServiceLdapConfig" }) as any as S.Schema<IdentityServiceLdapConfig>;
+  S.Struct({
+    serviceAccount: S.optional(IdentityServiceServiceAccountConfig),
+    server: S.optional(IdentityServiceServerConfig),
+    group: S.optional(IdentityServiceGroupConfig),
+    user: S.optional(IdentityServiceUserConfig),
+  }),
+).annotate({
+  identifier: "IdentityServiceLdapConfig",
+}) as any as S.Schema<IdentityServiceLdapConfig>;
 
 /** Configuration of an auth method for a member/cluster. Only one authentication method (e.g., OIDC and LDAP) can be set per AuthMethod. */
 export interface IdentityServiceAuthMethod {
@@ -1325,19 +1777,24 @@ export interface IdentityServiceAuthMethod {
   proxy?: string;
 }
 export const IdentityServiceAuthMethod = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "samlConfig": S.optional(IdentityServiceSamlConfig),
-  "azureadConfig": S.optional(IdentityServiceAzureADConfig),
-  "name": S.optional(S.String),
-  "oidcConfig": S.optional(IdentityServiceOidcConfig),
-  "googleConfig": S.optional(IdentityServiceGoogleConfig),
-  "ldapConfig": S.optional(IdentityServiceLdapConfig),
-  "proxy": S.optional(S.String),
-}),
-).annotate({ identifier: "IdentityServiceAuthMethod" }) as any as S.Schema<IdentityServiceAuthMethod>;
+  S.Struct({
+    samlConfig: S.optional(IdentityServiceSamlConfig),
+    azureadConfig: S.optional(IdentityServiceAzureADConfig),
+    name: S.optional(S.String),
+    oidcConfig: S.optional(IdentityServiceOidcConfig),
+    googleConfig: S.optional(IdentityServiceGoogleConfig),
+    ldapConfig: S.optional(IdentityServiceLdapConfig),
+    proxy: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "IdentityServiceAuthMethod",
+}) as any as S.Schema<IdentityServiceAuthMethod>;
 
-export type IdentityServiceAuthMethodList = ReadonlyArray<IdentityServiceAuthMethod>;
-export const IdentityServiceAuthMethodList = /*@__PURE__*/ S.Array(IdentityServiceAuthMethod) as any as S.Schema<IdentityServiceAuthMethodList>;
+export type IdentityServiceAuthMethodList =
+  ReadonlyArray<IdentityServiceAuthMethod>;
+export const IdentityServiceAuthMethodList = /*@__PURE__*/ S.Array(
+  IdentityServiceAuthMethod,
+) as any as S.Schema<IdentityServiceAuthMethodList>;
 
 /** Configuration options for the AIS diagnostic interface. */
 export interface IdentityServiceDiagnosticInterface {
@@ -1347,11 +1804,13 @@ export interface IdentityServiceDiagnosticInterface {
   expirationTime?: string;
 }
 export const IdentityServiceDiagnosticInterface = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "enabled": S.optional(S.Boolean),
-  "expirationTime": S.optional(S.String),
-}),
-).annotate({ identifier: "IdentityServiceDiagnosticInterface" }) as any as S.Schema<IdentityServiceDiagnosticInterface>;
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+    expirationTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "IdentityServiceDiagnosticInterface",
+}) as any as S.Schema<IdentityServiceDiagnosticInterface>;
 
 /** Holds non-protocol-related configuration options. */
 export interface IdentityServiceIdentityServiceOptions {
@@ -1360,12 +1819,15 @@ export interface IdentityServiceIdentityServiceOptions {
   /** Configuration options for the AIS diagnostic interface. */
   diagnosticInterface?: IdentityServiceDiagnosticInterface;
 }
-export const IdentityServiceIdentityServiceOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sessionDuration": S.optional(S.String),
-  "diagnosticInterface": S.optional(IdentityServiceDiagnosticInterface),
-}),
-).annotate({ identifier: "IdentityServiceIdentityServiceOptions" }) as any as S.Schema<IdentityServiceIdentityServiceOptions>;
+export const IdentityServiceIdentityServiceOptions = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      sessionDuration: S.optional(S.String),
+      diagnosticInterface: S.optional(IdentityServiceDiagnosticInterface),
+    }),
+).annotate({
+  identifier: "IdentityServiceIdentityServiceOptions",
+}) as any as S.Schema<IdentityServiceIdentityServiceOptions>;
 
 /** **Anthos Identity Service**: Configuration for a single Membership. */
 export interface IdentityServiceMembershipSpec {
@@ -1375,11 +1837,13 @@ export interface IdentityServiceMembershipSpec {
   identityServiceOptions?: IdentityServiceIdentityServiceOptions;
 }
 export const IdentityServiceMembershipSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "authMethods": S.optional(IdentityServiceAuthMethodList),
-  "identityServiceOptions": S.optional(IdentityServiceIdentityServiceOptions),
-}),
-).annotate({ identifier: "IdentityServiceMembershipSpec" }) as any as S.Schema<IdentityServiceMembershipSpec>;
+  S.Struct({
+    authMethods: S.optional(IdentityServiceAuthMethodList),
+    identityServiceOptions: S.optional(IdentityServiceIdentityServiceOptions),
+  }),
+).annotate({
+  identifier: "IdentityServiceMembershipSpec",
+}) as any as S.Schema<IdentityServiceMembershipSpec>;
 
 /** **Anthos Identity Service**: State for a single Membership. */
 export interface IdentityServiceMembershipState {
@@ -1393,15 +1857,27 @@ export interface IdentityServiceMembershipState {
   memberConfig?: IdentityServiceMembershipSpec;
 }
 export const IdentityServiceMembershipState = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "installedVersion": S.optional(S.String),
-  "failureReason": S.optional(S.String),
-  "state": S.optional(IdentityServiceMembershipStateStateEnum),
-  "memberConfig": S.optional(IdentityServiceMembershipSpec),
-}),
-).annotate({ identifier: "IdentityServiceMembershipState" }) as any as S.Schema<IdentityServiceMembershipState>;
+  S.Struct({
+    installedVersion: S.optional(S.String),
+    failureReason: S.optional(S.String),
+    state: S.optional(IdentityServiceMembershipStateStateEnum),
+    memberConfig: S.optional(IdentityServiceMembershipSpec),
+  }),
+).annotate({
+  identifier: "IdentityServiceMembershipState",
+}) as any as S.Schema<IdentityServiceMembershipState>;
 
-export type PolicyControllerOnClusterStateStateEnum = "LIFECYCLE_STATE_UNSPECIFIED" | "NOT_INSTALLED" | "INSTALLING" | "ACTIVE" | "UPDATING" | "DECOMMISSIONING" | "CLUSTER_ERROR" | "HUB_ERROR" | "SUSPENDED" | "DETACHED";
+export type PolicyControllerOnClusterStateStateEnum =
+  | "LIFECYCLE_STATE_UNSPECIFIED"
+  | "NOT_INSTALLED"
+  | "INSTALLING"
+  | "ACTIVE"
+  | "UPDATING"
+  | "DECOMMISSIONING"
+  | "CLUSTER_ERROR"
+  | "HUB_ERROR"
+  | "SUSPENDED"
+  | "DETACHED";
 export const PolicyControllerOnClusterStateStateEnum = /*@__PURE__*/ S.String;
 
 /** OnClusterState represents the state of a sub-component of Policy Controller. */
@@ -1412,16 +1888,33 @@ export interface PolicyControllerOnClusterState {
   state?: PolicyControllerOnClusterStateStateEnum;
 }
 export const PolicyControllerOnClusterState = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "details": S.optional(S.String),
-  "state": S.optional(PolicyControllerOnClusterStateStateEnum),
-}),
-).annotate({ identifier: "PolicyControllerOnClusterState" }) as any as S.Schema<PolicyControllerOnClusterState>;
+  S.Struct({
+    details: S.optional(S.String),
+    state: S.optional(PolicyControllerOnClusterStateStateEnum),
+  }),
+).annotate({
+  identifier: "PolicyControllerOnClusterState",
+}) as any as S.Schema<PolicyControllerOnClusterState>;
 
-export type PolicyControllerOnClusterStateMap = { [key: string]: PolicyControllerOnClusterState | undefined };
-export const PolicyControllerOnClusterStateMap = /*@__PURE__*/ S.Record(S.String, PolicyControllerOnClusterState) as any as S.Schema<PolicyControllerOnClusterStateMap>;
+export type PolicyControllerOnClusterStateMap = {
+  [key: string]: PolicyControllerOnClusterState | undefined;
+};
+export const PolicyControllerOnClusterStateMap = /*@__PURE__*/ S.Record(
+  S.String,
+  PolicyControllerOnClusterState,
+) as any as S.Schema<PolicyControllerOnClusterStateMap>;
 
-export type PolicyControllerMembershipStateStateEnum = "LIFECYCLE_STATE_UNSPECIFIED" | "NOT_INSTALLED" | "INSTALLING" | "ACTIVE" | "UPDATING" | "DECOMMISSIONING" | "CLUSTER_ERROR" | "HUB_ERROR" | "SUSPENDED" | "DETACHED";
+export type PolicyControllerMembershipStateStateEnum =
+  | "LIFECYCLE_STATE_UNSPECIFIED"
+  | "NOT_INSTALLED"
+  | "INSTALLING"
+  | "ACTIVE"
+  | "UPDATING"
+  | "DECOMMISSIONING"
+  | "CLUSTER_ERROR"
+  | "HUB_ERROR"
+  | "SUSPENDED"
+  | "DETACHED";
 export const PolicyControllerMembershipStateStateEnum = /*@__PURE__*/ S.String;
 
 /** The state of the policy controller policy content */
@@ -1434,12 +1927,14 @@ export interface PolicyControllerPolicyContentState {
   templateLibraryState?: PolicyControllerOnClusterState;
 }
 export const PolicyControllerPolicyContentState = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bundleStates": S.optional(PolicyControllerOnClusterStateMap),
-  "referentialSyncConfigState": S.optional(PolicyControllerOnClusterState),
-  "templateLibraryState": S.optional(PolicyControllerOnClusterState),
-}),
-).annotate({ identifier: "PolicyControllerPolicyContentState" }) as any as S.Schema<PolicyControllerPolicyContentState>;
+  S.Struct({
+    bundleStates: S.optional(PolicyControllerOnClusterStateMap),
+    referentialSyncConfigState: S.optional(PolicyControllerOnClusterState),
+    templateLibraryState: S.optional(PolicyControllerOnClusterState),
+  }),
+).annotate({
+  identifier: "PolicyControllerPolicyContentState",
+}) as any as S.Schema<PolicyControllerPolicyContentState>;
 
 /** **Policy Controller**: State for a single cluster. */
 export interface PolicyControllerMembershipState {
@@ -1451,15 +1946,21 @@ export interface PolicyControllerMembershipState {
   policyContentState?: PolicyControllerPolicyContentState;
 }
 export const PolicyControllerMembershipState = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "componentStates": S.optional(PolicyControllerOnClusterStateMap),
-  "state": S.optional(PolicyControllerMembershipStateStateEnum),
-  "policyContentState": S.optional(PolicyControllerPolicyContentState),
-}),
-).annotate({ identifier: "PolicyControllerMembershipState" }) as any as S.Schema<PolicyControllerMembershipState>;
+  S.Struct({
+    componentStates: S.optional(PolicyControllerOnClusterStateMap),
+    state: S.optional(PolicyControllerMembershipStateStateEnum),
+    policyContentState: S.optional(PolicyControllerPolicyContentState),
+  }),
+).annotate({
+  identifier: "PolicyControllerMembershipState",
+}) as any as S.Schema<PolicyControllerMembershipState>;
 
-export type WorkloadIdentityIdentityProviderStateDetailCodeEnum = "IDENTITY_PROVIDER_STATE_UNSPECIFIED" | "IDENTITY_PROVIDER_STATE_OK" | "IDENTITY_PROVIDER_STATE_ERROR";
-export const WorkloadIdentityIdentityProviderStateDetailCodeEnum = /*@__PURE__*/ S.String;
+export type WorkloadIdentityIdentityProviderStateDetailCodeEnum =
+  | "IDENTITY_PROVIDER_STATE_UNSPECIFIED"
+  | "IDENTITY_PROVIDER_STATE_OK"
+  | "IDENTITY_PROVIDER_STATE_ERROR";
+export const WorkloadIdentityIdentityProviderStateDetailCodeEnum =
+  /*@__PURE__*/ S.String;
 
 /** IdentityProviderStateDetail represents the state of an Identity Provider. */
 export interface WorkloadIdentityIdentityProviderStateDetail {
@@ -1468,15 +1969,24 @@ export interface WorkloadIdentityIdentityProviderStateDetail {
   /** A human-readable description of the current state or returned error. */
   description?: string;
 }
-export const WorkloadIdentityIdentityProviderStateDetail = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(WorkloadIdentityIdentityProviderStateDetailCodeEnum),
-  "description": S.optional(S.String),
-}),
-).annotate({ identifier: "WorkloadIdentityIdentityProviderStateDetail" }) as any as S.Schema<WorkloadIdentityIdentityProviderStateDetail>;
+export const WorkloadIdentityIdentityProviderStateDetail =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      code: S.optional(WorkloadIdentityIdentityProviderStateDetailCodeEnum),
+      description: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "WorkloadIdentityIdentityProviderStateDetail",
+  }) as any as S.Schema<WorkloadIdentityIdentityProviderStateDetail>;
 
-export type WorkloadIdentityIdentityProviderStateDetailMap = { [key: string]: WorkloadIdentityIdentityProviderStateDetail | undefined };
-export const WorkloadIdentityIdentityProviderStateDetailMap = /*@__PURE__*/ S.Record(S.String, WorkloadIdentityIdentityProviderStateDetail) as any as S.Schema<WorkloadIdentityIdentityProviderStateDetailMap>;
+export type WorkloadIdentityIdentityProviderStateDetailMap = {
+  [key: string]: WorkloadIdentityIdentityProviderStateDetail | undefined;
+};
+export const WorkloadIdentityIdentityProviderStateDetailMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    WorkloadIdentityIdentityProviderStateDetail,
+  ) as any as S.Schema<WorkloadIdentityIdentityProviderStateDetailMap>;
 
 /** **WorkloadIdentity**: The membership-specific state for WorkloadIdentity feature. */
 export interface WorkloadIdentityMembershipState {
@@ -1486,13 +1996,21 @@ export interface WorkloadIdentityMembershipState {
   identityProviderStateDetails?: WorkloadIdentityIdentityProviderStateDetailMap;
 }
 export const WorkloadIdentityMembershipState = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "description": S.optional(S.String),
-  "identityProviderStateDetails": S.optional(WorkloadIdentityIdentityProviderStateDetailMap),
-}),
-).annotate({ identifier: "WorkloadIdentityMembershipState" }) as any as S.Schema<WorkloadIdentityMembershipState>;
+  S.Struct({
+    description: S.optional(S.String),
+    identityProviderStateDetails: S.optional(
+      WorkloadIdentityIdentityProviderStateDetailMap,
+    ),
+  }),
+).annotate({
+  identifier: "WorkloadIdentityMembershipState",
+}) as any as S.Schema<WorkloadIdentityMembershipState>;
 
-export type FeatureStateCodeEnum = "CODE_UNSPECIFIED" | "OK" | "WARNING" | "ERROR";
+export type FeatureStateCodeEnum =
+  | "CODE_UNSPECIFIED"
+  | "OK"
+  | "WARNING"
+  | "ERROR";
 export const FeatureStateCodeEnum = /*@__PURE__*/ S.String;
 
 /** FeatureState describes the high-level state of a Feature. It may be used to describe a Feature's state at the environ-level, or per-membershop, depending on the context. */
@@ -1505,11 +2023,11 @@ export interface FeatureState {
   description?: string;
 }
 export const FeatureState = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateTime": S.optional(S.String),
-  "code": S.optional(FeatureStateCodeEnum),
-  "description": S.optional(S.String),
-}),
+  S.Struct({
+    updateTime: S.optional(S.String),
+    code: S.optional(FeatureStateCodeEnum),
+    description: S.optional(S.String),
+  }),
 ).annotate({ identifier: "FeatureState" }) as any as S.Schema<FeatureState>;
 
 /** **Metering**: Per-Membership Feature State. */
@@ -1520,11 +2038,13 @@ export interface MeteringMembershipState {
   preciseLastMeasuredClusterVcpuCapacity?: number;
 }
 export const MeteringMembershipState = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "lastMeasurementTime": S.optional(S.String),
-  "preciseLastMeasuredClusterVcpuCapacity": S.optional(S.Number),
-}),
-).annotate({ identifier: "MeteringMembershipState" }) as any as S.Schema<MeteringMembershipState>;
+  S.Struct({
+    lastMeasurementTime: S.optional(S.String),
+    preciseLastMeasuredClusterVcpuCapacity: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "MeteringMembershipState",
+}) as any as S.Schema<MeteringMembershipState>;
 
 /** MembershipFeatureState contains Feature status information for a single Membership. */
 export interface MembershipFeatureState {
@@ -1550,24 +2070,37 @@ export interface MembershipFeatureState {
   metering?: MeteringMembershipState;
 }
 export const MembershipFeatureState = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "configmanagement": S.optional(ConfigManagementMembershipState),
-  "clusterupgrade": S.optional(ClusterUpgradeMembershipState),
-  "appdevexperience": S.optional(AppDevExperienceFeatureState),
-  "fleetobservability": S.optional(FleetObservabilityMembershipState),
-  "servicemesh": S.optional(ServiceMeshMembershipState),
-  "identityservice": S.optional(IdentityServiceMembershipState),
-  "policycontroller": S.optional(PolicyControllerMembershipState),
-  "workloadidentity": S.optional(WorkloadIdentityMembershipState),
-  "state": S.optional(FeatureState),
-  "metering": S.optional(MeteringMembershipState),
-}),
-).annotate({ identifier: "MembershipFeatureState" }) as any as S.Schema<MembershipFeatureState>;
+  S.Struct({
+    configmanagement: S.optional(ConfigManagementMembershipState),
+    clusterupgrade: S.optional(ClusterUpgradeMembershipState),
+    appdevexperience: S.optional(AppDevExperienceFeatureState),
+    fleetobservability: S.optional(FleetObservabilityMembershipState),
+    servicemesh: S.optional(ServiceMeshMembershipState),
+    identityservice: S.optional(IdentityServiceMembershipState),
+    policycontroller: S.optional(PolicyControllerMembershipState),
+    workloadidentity: S.optional(WorkloadIdentityMembershipState),
+    state: S.optional(FeatureState),
+    metering: S.optional(MeteringMembershipState),
+  }),
+).annotate({
+  identifier: "MembershipFeatureState",
+}) as any as S.Schema<MembershipFeatureState>;
 
-export type MembershipFeatureStateMap = { [key: string]: MembershipFeatureState | undefined };
-export const MembershipFeatureStateMap = /*@__PURE__*/ S.Record(S.String, MembershipFeatureState) as any as S.Schema<MembershipFeatureStateMap>;
+export type MembershipFeatureStateMap = {
+  [key: string]: MembershipFeatureState | undefined;
+};
+export const MembershipFeatureStateMap = /*@__PURE__*/ S.Record(
+  S.String,
+  MembershipFeatureState,
+) as any as S.Schema<MembershipFeatureStateMap>;
 
-export type FeatureResourceStateStateEnum = "STATE_UNSPECIFIED" | "ENABLING" | "ACTIVE" | "DISABLING" | "UPDATING" | "SERVICE_UPDATING";
+export type FeatureResourceStateStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ENABLING"
+  | "ACTIVE"
+  | "DISABLING"
+  | "UPDATING"
+  | "SERVICE_UPDATING";
 export const FeatureResourceStateStateEnum = /*@__PURE__*/ S.String;
 
 /** FeatureResourceState describes the state of a Feature *resource* in the GkeHub API. See `FeatureState` for the "running state" of the Feature in the Fleet and across Memberships. */
@@ -1576,12 +2109,17 @@ export interface FeatureResourceState {
   state?: FeatureResourceStateStateEnum;
 }
 export const FeatureResourceState = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "state": S.optional(FeatureResourceStateStateEnum),
-}),
-).annotate({ identifier: "FeatureResourceState" }) as any as S.Schema<FeatureResourceState>;
+  S.Struct({
+    state: S.optional(FeatureResourceStateStateEnum),
+  }),
+).annotate({
+  identifier: "FeatureResourceState",
+}) as any as S.Schema<FeatureResourceState>;
 
-export type MultiClusterIngressFeatureSpecBillingEnum = "BILLING_UNSPECIFIED" | "PAY_AS_YOU_GO" | "ANTHOS_LICENSE";
+export type MultiClusterIngressFeatureSpecBillingEnum =
+  | "BILLING_UNSPECIFIED"
+  | "PAY_AS_YOU_GO"
+  | "ANTHOS_LICENSE";
 export const MultiClusterIngressFeatureSpecBillingEnum = /*@__PURE__*/ S.String;
 
 /** **Multi-cluster Ingress**: The configuration for the MultiClusterIngress feature. */
@@ -1592,17 +2130,21 @@ export interface MultiClusterIngressFeatureSpec {
   billing?: MultiClusterIngressFeatureSpecBillingEnum;
 }
 export const MultiClusterIngressFeatureSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "configMembership": S.optional(S.String),
-  "billing": S.optional(MultiClusterIngressFeatureSpecBillingEnum),
-}),
-).annotate({ identifier: "MultiClusterIngressFeatureSpec" }) as any as S.Schema<MultiClusterIngressFeatureSpec>;
+  S.Struct({
+    configMembership: S.optional(S.String),
+    billing: S.optional(MultiClusterIngressFeatureSpecBillingEnum),
+  }),
+).annotate({
+  identifier: "MultiClusterIngressFeatureSpec",
+}) as any as S.Schema<MultiClusterIngressFeatureSpec>;
 
 /** Spec for App Dev Experience Feature. */
 export interface AppDevExperienceFeatureSpec {}
 export const AppDevExperienceFeatureSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "AppDevExperienceFeatureSpec" }) as any as S.Schema<AppDevExperienceFeatureSpec>;
+  S.Struct({}),
+).annotate({
+  identifier: "AppDevExperienceFeatureSpec",
+}) as any as S.Schema<AppDevExperienceFeatureSpec>;
 
 /** **WorkloadIdentity**: Global feature specification. */
 export interface WorkloadIdentityFeatureSpec {
@@ -1610,12 +2152,17 @@ export interface WorkloadIdentityFeatureSpec {
   scopeTenancyPool?: string;
 }
 export const WorkloadIdentityFeatureSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "scopeTenancyPool": S.optional(S.String),
-}),
-).annotate({ identifier: "WorkloadIdentityFeatureSpec" }) as any as S.Schema<WorkloadIdentityFeatureSpec>;
+  S.Struct({
+    scopeTenancyPool: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "WorkloadIdentityFeatureSpec",
+}) as any as S.Schema<WorkloadIdentityFeatureSpec>;
 
-export type FleetObservabilityRoutingConfigModeEnum = "MODE_UNSPECIFIED" | "COPY" | "MOVE";
+export type FleetObservabilityRoutingConfigModeEnum =
+  | "MODE_UNSPECIFIED"
+  | "COPY"
+  | "MOVE";
 export const FleetObservabilityRoutingConfigModeEnum = /*@__PURE__*/ S.String;
 
 /** RoutingConfig configures the behaviour of fleet logging feature. */
@@ -1624,10 +2171,12 @@ export interface FleetObservabilityRoutingConfig {
   mode?: FleetObservabilityRoutingConfigModeEnum;
 }
 export const FleetObservabilityRoutingConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "mode": S.optional(FleetObservabilityRoutingConfigModeEnum),
-}),
-).annotate({ identifier: "FleetObservabilityRoutingConfig" }) as any as S.Schema<FleetObservabilityRoutingConfig>;
+  S.Struct({
+    mode: S.optional(FleetObservabilityRoutingConfigModeEnum),
+  }),
+).annotate({
+  identifier: "FleetObservabilityRoutingConfig",
+}) as any as S.Schema<FleetObservabilityRoutingConfig>;
 
 /** LoggingConfig defines the configuration for different types of logs. */
 export interface FleetObservabilityLoggingConfig {
@@ -1637,11 +2186,13 @@ export interface FleetObservabilityLoggingConfig {
   fleetScopeLogsConfig?: FleetObservabilityRoutingConfig;
 }
 export const FleetObservabilityLoggingConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "defaultConfig": S.optional(FleetObservabilityRoutingConfig),
-  "fleetScopeLogsConfig": S.optional(FleetObservabilityRoutingConfig),
-}),
-).annotate({ identifier: "FleetObservabilityLoggingConfig" }) as any as S.Schema<FleetObservabilityLoggingConfig>;
+  S.Struct({
+    defaultConfig: S.optional(FleetObservabilityRoutingConfig),
+    fleetScopeLogsConfig: S.optional(FleetObservabilityRoutingConfig),
+  }),
+).annotate({
+  identifier: "FleetObservabilityLoggingConfig",
+}) as any as S.Schema<FleetObservabilityLoggingConfig>;
 
 /** **Fleet Observability**: The Hub-wide input for the FleetObservability feature. */
 export interface FleetObservabilityFeatureSpec {
@@ -1649,10 +2200,12 @@ export interface FleetObservabilityFeatureSpec {
   loggingConfig?: FleetObservabilityLoggingConfig;
 }
 export const FleetObservabilityFeatureSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "loggingConfig": S.optional(FleetObservabilityLoggingConfig),
-}),
-).annotate({ identifier: "FleetObservabilityFeatureSpec" }) as any as S.Schema<FleetObservabilityFeatureSpec>;
+  S.Struct({
+    loggingConfig: S.optional(FleetObservabilityLoggingConfig),
+  }),
+).annotate({
+  identifier: "FleetObservabilityFeatureSpec",
+}) as any as S.Schema<FleetObservabilityFeatureSpec>;
 
 /** **Dataplane V2**: Spec */
 export interface DataplaneV2FeatureSpec {
@@ -1660,10 +2213,12 @@ export interface DataplaneV2FeatureSpec {
   enableEncryption?: boolean;
 }
 export const DataplaneV2FeatureSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "enableEncryption": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "DataplaneV2FeatureSpec" }) as any as S.Schema<DataplaneV2FeatureSpec>;
+  S.Struct({
+    enableEncryption: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "DataplaneV2FeatureSpec",
+}) as any as S.Schema<DataplaneV2FeatureSpec>;
 
 /** **RBAC RoleBinding Actuation**: The Hub-wide input for the RBACRoleBindingActuation feature. */
 export interface RBACRoleBindingActuationFeatureSpec {
@@ -1671,13 +2226,19 @@ export interface RBACRoleBindingActuationFeatureSpec {
   allowedCustomRoles?: StringList;
 }
 export const RBACRoleBindingActuationFeatureSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "allowedCustomRoles": S.optional(StringList),
-}),
-).annotate({ identifier: "RBACRoleBindingActuationFeatureSpec" }) as any as S.Schema<RBACRoleBindingActuationFeatureSpec>;
+  S.Struct({
+    allowedCustomRoles: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "RBACRoleBindingActuationFeatureSpec",
+}) as any as S.Schema<RBACRoleBindingActuationFeatureSpec>;
 
-export type ServiceMeshFeatureSpecModernizationCompatibilityEnum = "MODERNIZATION_COMPATIBILITY_UNSPECIFIED" | "VALIDATION_ENABLED" | "VALIDATION_DISABLED";
-export const ServiceMeshFeatureSpecModernizationCompatibilityEnum = /*@__PURE__*/ S.String;
+export type ServiceMeshFeatureSpecModernizationCompatibilityEnum =
+  | "MODERNIZATION_COMPATIBILITY_UNSPECIFIED"
+  | "VALIDATION_ENABLED"
+  | "VALIDATION_DISABLED";
+export const ServiceMeshFeatureSpecModernizationCompatibilityEnum =
+  /*@__PURE__*/ S.String;
 
 /** **Service Mesh**: Spec for the fleet for the servicemesh feature */
 export interface ServiceMeshFeatureSpec {
@@ -1685,10 +2246,14 @@ export interface ServiceMeshFeatureSpec {
   modernizationCompatibility?: ServiceMeshFeatureSpecModernizationCompatibilityEnum;
 }
 export const ServiceMeshFeatureSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "modernizationCompatibility": S.optional(ServiceMeshFeatureSpecModernizationCompatibilityEnum),
-}),
-).annotate({ identifier: "ServiceMeshFeatureSpec" }) as any as S.Schema<ServiceMeshFeatureSpec>;
+  S.Struct({
+    modernizationCompatibility: S.optional(
+      ServiceMeshFeatureSpecModernizationCompatibilityEnum,
+    ),
+  }),
+).annotate({
+  identifier: "ServiceMeshFeatureSpec",
+}) as any as S.Schema<ServiceMeshFeatureSpec>;
 
 /** Post conditional checks after an upgrade has been applied on all eligible clusters. */
 export interface ClusterUpgradePostConditions {
@@ -1696,10 +2261,12 @@ export interface ClusterUpgradePostConditions {
   soaking?: string;
 }
 export const ClusterUpgradePostConditions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "soaking": S.optional(S.String),
-}),
-).annotate({ identifier: "ClusterUpgradePostConditions" }) as any as S.Schema<ClusterUpgradePostConditions>;
+  S.Struct({
+    soaking: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ClusterUpgradePostConditions",
+}) as any as S.Schema<ClusterUpgradePostConditions>;
 
 /** Properties of a GKE upgrade that can be overridden by the user. For example, a user can skip soaking by overriding the soaking to 0. */
 export interface ClusterUpgradeGKEUpgradeOverride {
@@ -1709,14 +2276,19 @@ export interface ClusterUpgradeGKEUpgradeOverride {
   postConditions?: ClusterUpgradePostConditions;
 }
 export const ClusterUpgradeGKEUpgradeOverride = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "upgrade": S.optional(ClusterUpgradeGKEUpgrade),
-  "postConditions": S.optional(ClusterUpgradePostConditions),
-}),
-).annotate({ identifier: "ClusterUpgradeGKEUpgradeOverride" }) as any as S.Schema<ClusterUpgradeGKEUpgradeOverride>;
+  S.Struct({
+    upgrade: S.optional(ClusterUpgradeGKEUpgrade),
+    postConditions: S.optional(ClusterUpgradePostConditions),
+  }),
+).annotate({
+  identifier: "ClusterUpgradeGKEUpgradeOverride",
+}) as any as S.Schema<ClusterUpgradeGKEUpgradeOverride>;
 
-export type ClusterUpgradeGKEUpgradeOverrideList = ReadonlyArray<ClusterUpgradeGKEUpgradeOverride>;
-export const ClusterUpgradeGKEUpgradeOverrideList = /*@__PURE__*/ S.Array(ClusterUpgradeGKEUpgradeOverride) as any as S.Schema<ClusterUpgradeGKEUpgradeOverrideList>;
+export type ClusterUpgradeGKEUpgradeOverrideList =
+  ReadonlyArray<ClusterUpgradeGKEUpgradeOverride>;
+export const ClusterUpgradeGKEUpgradeOverrideList = /*@__PURE__*/ S.Array(
+  ClusterUpgradeGKEUpgradeOverride,
+) as any as S.Schema<ClusterUpgradeGKEUpgradeOverrideList>;
 
 /** **ClusterUpgrade**: The configuration for the fleet-level ClusterUpgrade feature. */
 export interface ClusterUpgradeFleetSpec {
@@ -1728,12 +2300,14 @@ export interface ClusterUpgradeFleetSpec {
   postConditions?: ClusterUpgradePostConditions;
 }
 export const ClusterUpgradeFleetSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "gkeUpgradeOverrides": S.optional(ClusterUpgradeGKEUpgradeOverrideList),
-  "upstreamFleets": S.optional(StringList),
-  "postConditions": S.optional(ClusterUpgradePostConditions),
-}),
-).annotate({ identifier: "ClusterUpgradeFleetSpec" }) as any as S.Schema<ClusterUpgradeFleetSpec>;
+  S.Struct({
+    gkeUpgradeOverrides: S.optional(ClusterUpgradeGKEUpgradeOverrideList),
+    upstreamFleets: S.optional(StringList),
+    postConditions: S.optional(ClusterUpgradePostConditions),
+  }),
+).annotate({
+  identifier: "ClusterUpgradeFleetSpec",
+}) as any as S.Schema<ClusterUpgradeFleetSpec>;
 
 /** CommonFeatureSpec contains Fleet-wide configuration information */
 export interface CommonFeatureSpec {
@@ -1755,17 +2329,19 @@ export interface CommonFeatureSpec {
   clusterupgrade?: ClusterUpgradeFleetSpec;
 }
 export const CommonFeatureSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "multiclusteringress": S.optional(MultiClusterIngressFeatureSpec),
-  "appdevexperience": S.optional(AppDevExperienceFeatureSpec),
-  "workloadidentity": S.optional(WorkloadIdentityFeatureSpec),
-  "fleetobservability": S.optional(FleetObservabilityFeatureSpec),
-  "dataplanev2": S.optional(DataplaneV2FeatureSpec),
-  "rbacrolebindingactuation": S.optional(RBACRoleBindingActuationFeatureSpec),
-  "mesh": S.optional(ServiceMeshFeatureSpec),
-  "clusterupgrade": S.optional(ClusterUpgradeFleetSpec),
-}),
-).annotate({ identifier: "CommonFeatureSpec" }) as any as S.Schema<CommonFeatureSpec>;
+  S.Struct({
+    multiclusteringress: S.optional(MultiClusterIngressFeatureSpec),
+    appdevexperience: S.optional(AppDevExperienceFeatureSpec),
+    workloadidentity: S.optional(WorkloadIdentityFeatureSpec),
+    fleetobservability: S.optional(FleetObservabilityFeatureSpec),
+    dataplanev2: S.optional(DataplaneV2FeatureSpec),
+    rbacrolebindingactuation: S.optional(RBACRoleBindingActuationFeatureSpec),
+    mesh: S.optional(ServiceMeshFeatureSpec),
+    clusterupgrade: S.optional(ClusterUpgradeFleetSpec),
+  }),
+).annotate({
+  identifier: "CommonFeatureSpec",
+}) as any as S.Schema<CommonFeatureSpec>;
 
 /** GKEUpgradeState is a GKEUpgrade and its state at the scope and fleet level. */
 export interface ClusterUpgradeGKEUpgradeState {
@@ -1777,15 +2353,20 @@ export interface ClusterUpgradeGKEUpgradeState {
   stats?: StringMap;
 }
 export const ClusterUpgradeGKEUpgradeState = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "status": S.optional(ClusterUpgradeUpgradeStatus),
-  "upgrade": S.optional(ClusterUpgradeGKEUpgrade),
-  "stats": S.optional(StringMap),
-}),
-).annotate({ identifier: "ClusterUpgradeGKEUpgradeState" }) as any as S.Schema<ClusterUpgradeGKEUpgradeState>;
+  S.Struct({
+    status: S.optional(ClusterUpgradeUpgradeStatus),
+    upgrade: S.optional(ClusterUpgradeGKEUpgrade),
+    stats: S.optional(StringMap),
+  }),
+).annotate({
+  identifier: "ClusterUpgradeGKEUpgradeState",
+}) as any as S.Schema<ClusterUpgradeGKEUpgradeState>;
 
-export type ClusterUpgradeGKEUpgradeStateList = ReadonlyArray<ClusterUpgradeGKEUpgradeState>;
-export const ClusterUpgradeGKEUpgradeStateList = /*@__PURE__*/ S.Array(ClusterUpgradeGKEUpgradeState) as any as S.Schema<ClusterUpgradeGKEUpgradeStateList>;
+export type ClusterUpgradeGKEUpgradeStateList =
+  ReadonlyArray<ClusterUpgradeGKEUpgradeState>;
+export const ClusterUpgradeGKEUpgradeStateList = /*@__PURE__*/ S.Array(
+  ClusterUpgradeGKEUpgradeState,
+) as any as S.Schema<ClusterUpgradeGKEUpgradeStateList>;
 
 /** GKEUpgradeFeatureCondition describes the condition of the feature for GKE clusters at a certain point of time. */
 export interface ClusterUpgradeGKEUpgradeFeatureCondition {
@@ -1798,17 +2379,24 @@ export interface ClusterUpgradeGKEUpgradeFeatureCondition {
   /** Reason why the feature is in this status. */
   reason?: string;
 }
-export const ClusterUpgradeGKEUpgradeFeatureCondition = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateTime": S.optional(S.String),
-  "status": S.optional(S.String),
-  "type": S.optional(S.String),
-  "reason": S.optional(S.String),
-}),
-).annotate({ identifier: "ClusterUpgradeGKEUpgradeFeatureCondition" }) as any as S.Schema<ClusterUpgradeGKEUpgradeFeatureCondition>;
+export const ClusterUpgradeGKEUpgradeFeatureCondition = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      updateTime: S.optional(S.String),
+      status: S.optional(S.String),
+      type: S.optional(S.String),
+      reason: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ClusterUpgradeGKEUpgradeFeatureCondition",
+}) as any as S.Schema<ClusterUpgradeGKEUpgradeFeatureCondition>;
 
-export type ClusterUpgradeGKEUpgradeFeatureConditionList = ReadonlyArray<ClusterUpgradeGKEUpgradeFeatureCondition>;
-export const ClusterUpgradeGKEUpgradeFeatureConditionList = /*@__PURE__*/ S.Array(ClusterUpgradeGKEUpgradeFeatureCondition) as any as S.Schema<ClusterUpgradeGKEUpgradeFeatureConditionList>;
+export type ClusterUpgradeGKEUpgradeFeatureConditionList =
+  ReadonlyArray<ClusterUpgradeGKEUpgradeFeatureCondition>;
+export const ClusterUpgradeGKEUpgradeFeatureConditionList =
+  /*@__PURE__*/ S.Array(
+    ClusterUpgradeGKEUpgradeFeatureCondition,
+  ) as any as S.Schema<ClusterUpgradeGKEUpgradeFeatureConditionList>;
 
 /** GKEUpgradeFeatureState contains feature states for GKE clusters in the scope. */
 export interface ClusterUpgradeGKEUpgradeFeatureState {
@@ -1817,15 +2405,23 @@ export interface ClusterUpgradeGKEUpgradeFeatureState {
   /** Current conditions of the feature. */
   conditions?: ClusterUpgradeGKEUpgradeFeatureConditionList;
 }
-export const ClusterUpgradeGKEUpgradeFeatureState = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "upgradeState": S.optional(ClusterUpgradeGKEUpgradeStateList),
-  "conditions": S.optional(ClusterUpgradeGKEUpgradeFeatureConditionList),
-}),
-).annotate({ identifier: "ClusterUpgradeGKEUpgradeFeatureState" }) as any as S.Schema<ClusterUpgradeGKEUpgradeFeatureState>;
+export const ClusterUpgradeGKEUpgradeFeatureState = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      upgradeState: S.optional(ClusterUpgradeGKEUpgradeStateList),
+      conditions: S.optional(ClusterUpgradeGKEUpgradeFeatureConditionList),
+    }),
+).annotate({
+  identifier: "ClusterUpgradeGKEUpgradeFeatureState",
+}) as any as S.Schema<ClusterUpgradeGKEUpgradeFeatureState>;
 
-export type ClusterUpgradeIgnoredMembershipMap = { [key: string]: ClusterUpgradeIgnoredMembership | undefined };
-export const ClusterUpgradeIgnoredMembershipMap = /*@__PURE__*/ S.Record(S.String, ClusterUpgradeIgnoredMembership) as any as S.Schema<ClusterUpgradeIgnoredMembershipMap>;
+export type ClusterUpgradeIgnoredMembershipMap = {
+  [key: string]: ClusterUpgradeIgnoredMembership | undefined;
+};
+export const ClusterUpgradeIgnoredMembershipMap = /*@__PURE__*/ S.Record(
+  S.String,
+  ClusterUpgradeIgnoredMembership,
+) as any as S.Schema<ClusterUpgradeIgnoredMembershipMap>;
 
 /** **ClusterUpgrade**: The state for the fleet-level ClusterUpgrade feature. */
 export interface ClusterUpgradeFleetState {
@@ -1837,18 +2433,22 @@ export interface ClusterUpgradeFleetState {
   ignored?: ClusterUpgradeIgnoredMembershipMap;
 }
 export const ClusterUpgradeFleetState = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "downstreamFleets": S.optional(StringList),
-  "gkeState": S.optional(ClusterUpgradeGKEUpgradeFeatureState),
-  "ignored": S.optional(ClusterUpgradeIgnoredMembershipMap),
-}),
-).annotate({ identifier: "ClusterUpgradeFleetState" }) as any as S.Schema<ClusterUpgradeFleetState>;
+  S.Struct({
+    downstreamFleets: S.optional(StringList),
+    gkeState: S.optional(ClusterUpgradeGKEUpgradeFeatureState),
+    ignored: S.optional(ClusterUpgradeIgnoredMembershipMap),
+  }),
+).annotate({
+  identifier: "ClusterUpgradeFleetState",
+}) as any as S.Schema<ClusterUpgradeFleetState>;
 
 /** **RBAC RoleBinding Actuation**: An empty state left as an example Hub-wide Feature state. */
 export interface RBACRoleBindingActuationFeatureState {}
-export const RBACRoleBindingActuationFeatureState = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "RBACRoleBindingActuationFeatureState" }) as any as S.Schema<RBACRoleBindingActuationFeatureState>;
+export const RBACRoleBindingActuationFeatureState = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "RBACRoleBindingActuationFeatureState",
+}) as any as S.Schema<RBACRoleBindingActuationFeatureState>;
 
 /** All error details of the fleet observability feature. */
 export interface FleetObservabilityFeatureError {
@@ -1858,17 +2458,26 @@ export interface FleetObservabilityFeatureError {
   description?: string;
 }
 export const FleetObservabilityFeatureError = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(S.String),
-  "description": S.optional(S.String),
-}),
-).annotate({ identifier: "FleetObservabilityFeatureError" }) as any as S.Schema<FleetObservabilityFeatureError>;
+  S.Struct({
+    code: S.optional(S.String),
+    description: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "FleetObservabilityFeatureError",
+}) as any as S.Schema<FleetObservabilityFeatureError>;
 
-export type FleetObservabilityFeatureErrorList = ReadonlyArray<FleetObservabilityFeatureError>;
-export const FleetObservabilityFeatureErrorList = /*@__PURE__*/ S.Array(FleetObservabilityFeatureError) as any as S.Schema<FleetObservabilityFeatureErrorList>;
+export type FleetObservabilityFeatureErrorList =
+  ReadonlyArray<FleetObservabilityFeatureError>;
+export const FleetObservabilityFeatureErrorList = /*@__PURE__*/ S.Array(
+  FleetObservabilityFeatureError,
+) as any as S.Schema<FleetObservabilityFeatureErrorList>;
 
-export type FleetObservabilityFleetObservabilityBaseFeatureStateCodeEnum = "CODE_UNSPECIFIED" | "OK" | "ERROR";
-export const FleetObservabilityFleetObservabilityBaseFeatureStateCodeEnum = /*@__PURE__*/ S.String;
+export type FleetObservabilityFleetObservabilityBaseFeatureStateCodeEnum =
+  | "CODE_UNSPECIFIED"
+  | "OK"
+  | "ERROR";
+export const FleetObservabilityFleetObservabilityBaseFeatureStateCodeEnum =
+  /*@__PURE__*/ S.String;
 
 /** Base state for fleet observability feature. */
 export interface FleetObservabilityFleetObservabilityBaseFeatureState {
@@ -1877,12 +2486,17 @@ export interface FleetObservabilityFleetObservabilityBaseFeatureState {
   /** The high-level, machine-readable status of this Feature. */
   code?: FleetObservabilityFleetObservabilityBaseFeatureStateCodeEnum;
 }
-export const FleetObservabilityFleetObservabilityBaseFeatureState = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "errors": S.optional(FleetObservabilityFeatureErrorList),
-  "code": S.optional(FleetObservabilityFleetObservabilityBaseFeatureStateCodeEnum),
-}),
-).annotate({ identifier: "FleetObservabilityFleetObservabilityBaseFeatureState" }) as any as S.Schema<FleetObservabilityFleetObservabilityBaseFeatureState>;
+export const FleetObservabilityFleetObservabilityBaseFeatureState =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      errors: S.optional(FleetObservabilityFeatureErrorList),
+      code: S.optional(
+        FleetObservabilityFleetObservabilityBaseFeatureStateCodeEnum,
+      ),
+    }),
+  ).annotate({
+    identifier: "FleetObservabilityFleetObservabilityBaseFeatureState",
+  }) as any as S.Schema<FleetObservabilityFleetObservabilityBaseFeatureState>;
 
 /** Feature state for logging feature. */
 export interface FleetObservabilityFleetObservabilityLoggingState {
@@ -1891,23 +2505,33 @@ export interface FleetObservabilityFleetObservabilityLoggingState {
   /** The base feature state of fleet default log. */
   defaultLog?: FleetObservabilityFleetObservabilityBaseFeatureState;
 }
-export const FleetObservabilityFleetObservabilityLoggingState = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "scopeLog": S.optional(FleetObservabilityFleetObservabilityBaseFeatureState),
-  "defaultLog": S.optional(FleetObservabilityFleetObservabilityBaseFeatureState),
-}),
-).annotate({ identifier: "FleetObservabilityFleetObservabilityLoggingState" }) as any as S.Schema<FleetObservabilityFleetObservabilityLoggingState>;
+export const FleetObservabilityFleetObservabilityLoggingState =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      scopeLog: S.optional(
+        FleetObservabilityFleetObservabilityBaseFeatureState,
+      ),
+      defaultLog: S.optional(
+        FleetObservabilityFleetObservabilityBaseFeatureState,
+      ),
+    }),
+  ).annotate({
+    identifier: "FleetObservabilityFleetObservabilityLoggingState",
+  }) as any as S.Schema<FleetObservabilityFleetObservabilityLoggingState>;
 
 /** Feature state for monitoring feature. */
 export interface FleetObservabilityFleetObservabilityMonitoringState {
   /** The base feature state of fleet monitoring feature. */
   state?: FleetObservabilityFleetObservabilityBaseFeatureState;
 }
-export const FleetObservabilityFleetObservabilityMonitoringState = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "state": S.optional(FleetObservabilityFleetObservabilityBaseFeatureState),
-}),
-).annotate({ identifier: "FleetObservabilityFleetObservabilityMonitoringState" }) as any as S.Schema<FleetObservabilityFleetObservabilityMonitoringState>;
+export const FleetObservabilityFleetObservabilityMonitoringState =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      state: S.optional(FleetObservabilityFleetObservabilityBaseFeatureState),
+    }),
+  ).annotate({
+    identifier: "FleetObservabilityFleetObservabilityMonitoringState",
+  }) as any as S.Schema<FleetObservabilityFleetObservabilityMonitoringState>;
 
 /** **FleetObservability**: Hub-wide Feature for FleetObservability feature. state. */
 export interface FleetObservabilityFeatureState {
@@ -1917,20 +2541,38 @@ export interface FleetObservabilityFeatureState {
   monitoring?: FleetObservabilityFleetObservabilityMonitoringState;
 }
 export const FleetObservabilityFeatureState = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "logging": S.optional(FleetObservabilityFleetObservabilityLoggingState),
-  "monitoring": S.optional(FleetObservabilityFleetObservabilityMonitoringState),
-}),
-).annotate({ identifier: "FleetObservabilityFeatureState" }) as any as S.Schema<FleetObservabilityFeatureState>;
+  S.Struct({
+    logging: S.optional(FleetObservabilityFleetObservabilityLoggingState),
+    monitoring: S.optional(FleetObservabilityFleetObservabilityMonitoringState),
+  }),
+).annotate({
+  identifier: "FleetObservabilityFeatureState",
+}) as any as S.Schema<FleetObservabilityFeatureState>;
 
-export type WorkloadIdentityFeatureStateNamespaceStatesValueEnum = "NAMESPACE_STATE_UNSPECIFIED" | "NAMESPACE_STATE_OK" | "NAMESPACE_STATE_ERROR";
-export const WorkloadIdentityFeatureStateNamespaceStatesValueEnum = /*@__PURE__*/ S.String;
+export type WorkloadIdentityFeatureStateNamespaceStatesValueEnum =
+  | "NAMESPACE_STATE_UNSPECIFIED"
+  | "NAMESPACE_STATE_OK"
+  | "NAMESPACE_STATE_ERROR";
+export const WorkloadIdentityFeatureStateNamespaceStatesValueEnum =
+  /*@__PURE__*/ S.String;
 
-export type WorkloadIdentityFeatureStateNamespaceStatesValueEnumMap = { [key: string]: WorkloadIdentityFeatureStateNamespaceStatesValueEnum | undefined };
-export const WorkloadIdentityFeatureStateNamespaceStatesValueEnumMap = /*@__PURE__*/ S.Record(S.String, WorkloadIdentityFeatureStateNamespaceStatesValueEnum) as any as S.Schema<WorkloadIdentityFeatureStateNamespaceStatesValueEnumMap>;
+export type WorkloadIdentityFeatureStateNamespaceStatesValueEnumMap = {
+  [key: string]:
+    | WorkloadIdentityFeatureStateNamespaceStatesValueEnum
+    | undefined;
+};
+export const WorkloadIdentityFeatureStateNamespaceStatesValueEnumMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    WorkloadIdentityFeatureStateNamespaceStatesValueEnum,
+  ) as any as S.Schema<WorkloadIdentityFeatureStateNamespaceStatesValueEnumMap>;
 
-export type WorkloadIdentityWorkloadIdentityPoolStateDetailCodeEnum = "WORKLOAD_IDENTITY_POOL_STATE_UNSPECIFIED" | "WORKLOAD_IDENTITY_POOL_STATE_OK" | "WORKLOAD_IDENTITY_POOL_STATE_ERROR";
-export const WorkloadIdentityWorkloadIdentityPoolStateDetailCodeEnum = /*@__PURE__*/ S.String;
+export type WorkloadIdentityWorkloadIdentityPoolStateDetailCodeEnum =
+  | "WORKLOAD_IDENTITY_POOL_STATE_UNSPECIFIED"
+  | "WORKLOAD_IDENTITY_POOL_STATE_OK"
+  | "WORKLOAD_IDENTITY_POOL_STATE_ERROR";
+export const WorkloadIdentityWorkloadIdentityPoolStateDetailCodeEnum =
+  /*@__PURE__*/ S.String;
 
 /** WorkloadIdentityPoolStateDetail represents the state of the Workload Identity Pools for the fleet. */
 export interface WorkloadIdentityWorkloadIdentityPoolStateDetail {
@@ -1939,18 +2581,31 @@ export interface WorkloadIdentityWorkloadIdentityPoolStateDetail {
   /** A human-readable description of the current state or returned error. */
   description?: string;
 }
-export const WorkloadIdentityWorkloadIdentityPoolStateDetail = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(WorkloadIdentityWorkloadIdentityPoolStateDetailCodeEnum),
-  "description": S.optional(S.String),
-}),
-).annotate({ identifier: "WorkloadIdentityWorkloadIdentityPoolStateDetail" }) as any as S.Schema<WorkloadIdentityWorkloadIdentityPoolStateDetail>;
+export const WorkloadIdentityWorkloadIdentityPoolStateDetail =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      code: S.optional(WorkloadIdentityWorkloadIdentityPoolStateDetailCodeEnum),
+      description: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "WorkloadIdentityWorkloadIdentityPoolStateDetail",
+  }) as any as S.Schema<WorkloadIdentityWorkloadIdentityPoolStateDetail>;
 
-export type WorkloadIdentityWorkloadIdentityPoolStateDetailMap = { [key: string]: WorkloadIdentityWorkloadIdentityPoolStateDetail | undefined };
-export const WorkloadIdentityWorkloadIdentityPoolStateDetailMap = /*@__PURE__*/ S.Record(S.String, WorkloadIdentityWorkloadIdentityPoolStateDetail) as any as S.Schema<WorkloadIdentityWorkloadIdentityPoolStateDetailMap>;
+export type WorkloadIdentityWorkloadIdentityPoolStateDetailMap = {
+  [key: string]: WorkloadIdentityWorkloadIdentityPoolStateDetail | undefined;
+};
+export const WorkloadIdentityWorkloadIdentityPoolStateDetailMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    WorkloadIdentityWorkloadIdentityPoolStateDetail,
+  ) as any as S.Schema<WorkloadIdentityWorkloadIdentityPoolStateDetailMap>;
 
-export type WorkloadIdentityNamespaceStateDetailCodeEnum = "NAMESPACE_STATE_UNSPECIFIED" | "NAMESPACE_STATE_OK" | "NAMESPACE_STATE_ERROR";
-export const WorkloadIdentityNamespaceStateDetailCodeEnum = /*@__PURE__*/ S.String;
+export type WorkloadIdentityNamespaceStateDetailCodeEnum =
+  | "NAMESPACE_STATE_UNSPECIFIED"
+  | "NAMESPACE_STATE_OK"
+  | "NAMESPACE_STATE_ERROR";
+export const WorkloadIdentityNamespaceStateDetailCodeEnum =
+  /*@__PURE__*/ S.String;
 
 /** NamespaceStateDetail represents the state of a IAM namespace. */
 export interface WorkloadIdentityNamespaceStateDetail {
@@ -1959,15 +2614,23 @@ export interface WorkloadIdentityNamespaceStateDetail {
   /** A human-readable description of the current state or returned error. */
   description?: string;
 }
-export const WorkloadIdentityNamespaceStateDetail = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(WorkloadIdentityNamespaceStateDetailCodeEnum),
-  "description": S.optional(S.String),
-}),
-).annotate({ identifier: "WorkloadIdentityNamespaceStateDetail" }) as any as S.Schema<WorkloadIdentityNamespaceStateDetail>;
+export const WorkloadIdentityNamespaceStateDetail = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      code: S.optional(WorkloadIdentityNamespaceStateDetailCodeEnum),
+      description: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "WorkloadIdentityNamespaceStateDetail",
+}) as any as S.Schema<WorkloadIdentityNamespaceStateDetail>;
 
-export type WorkloadIdentityNamespaceStateDetailMap = { [key: string]: WorkloadIdentityNamespaceStateDetail | undefined };
-export const WorkloadIdentityNamespaceStateDetailMap = /*@__PURE__*/ S.Record(S.String, WorkloadIdentityNamespaceStateDetail) as any as S.Schema<WorkloadIdentityNamespaceStateDetailMap>;
+export type WorkloadIdentityNamespaceStateDetailMap = {
+  [key: string]: WorkloadIdentityNamespaceStateDetail | undefined;
+};
+export const WorkloadIdentityNamespaceStateDetailMap = /*@__PURE__*/ S.Record(
+  S.String,
+  WorkloadIdentityNamespaceStateDetail,
+) as any as S.Schema<WorkloadIdentityNamespaceStateDetailMap>;
 
 /** **WorkloadIdentity**: Global feature state. */
 export interface WorkloadIdentityFeatureState {
@@ -1983,14 +2646,20 @@ export interface WorkloadIdentityFeatureState {
   namespaceStateDetails?: WorkloadIdentityNamespaceStateDetailMap;
 }
 export const WorkloadIdentityFeatureState = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "scopeTenancyWorkloadIdentityPool": S.optional(S.String),
-  "workloadIdentityPool": S.optional(S.String),
-  "namespaceStates": S.optional(WorkloadIdentityFeatureStateNamespaceStatesValueEnumMap),
-  "workloadIdentityPoolStateDetails": S.optional(WorkloadIdentityWorkloadIdentityPoolStateDetailMap),
-  "namespaceStateDetails": S.optional(WorkloadIdentityNamespaceStateDetailMap),
-}),
-).annotate({ identifier: "WorkloadIdentityFeatureState" }) as any as S.Schema<WorkloadIdentityFeatureState>;
+  S.Struct({
+    scopeTenancyWorkloadIdentityPool: S.optional(S.String),
+    workloadIdentityPool: S.optional(S.String),
+    namespaceStates: S.optional(
+      WorkloadIdentityFeatureStateNamespaceStatesValueEnumMap,
+    ),
+    workloadIdentityPoolStateDetails: S.optional(
+      WorkloadIdentityWorkloadIdentityPoolStateDetailMap,
+    ),
+    namespaceStateDetails: S.optional(WorkloadIdentityNamespaceStateDetailMap),
+  }),
+).annotate({
+  identifier: "WorkloadIdentityFeatureState",
+}) as any as S.Schema<WorkloadIdentityFeatureState>;
 
 /** CommonFeatureState contains Fleet-wide Feature status information. */
 export interface CommonFeatureState {
@@ -2008,15 +2677,17 @@ export interface CommonFeatureState {
   state?: FeatureState;
 }
 export const CommonFeatureState = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "clusterupgrade": S.optional(ClusterUpgradeFleetState),
-  "rbacrolebindingactuation": S.optional(RBACRoleBindingActuationFeatureState),
-  "fleetobservability": S.optional(FleetObservabilityFeatureState),
-  "appdevexperience": S.optional(AppDevExperienceFeatureState),
-  "workloadidentity": S.optional(WorkloadIdentityFeatureState),
-  "state": S.optional(FeatureState),
-}),
-).annotate({ identifier: "CommonFeatureState" }) as any as S.Schema<CommonFeatureState>;
+  S.Struct({
+    clusterupgrade: S.optional(ClusterUpgradeFleetState),
+    rbacrolebindingactuation: S.optional(RBACRoleBindingActuationFeatureState),
+    fleetobservability: S.optional(FleetObservabilityFeatureState),
+    appdevexperience: S.optional(AppDevExperienceFeatureState),
+    workloadidentity: S.optional(WorkloadIdentityFeatureState),
+    state: S.optional(FeatureState),
+  }),
+).annotate({
+  identifier: "CommonFeatureState",
+}) as any as S.Schema<CommonFeatureState>;
 
 /** ScopeFeatureState contains Scope-wide Feature status information. */
 export interface ScopeFeatureState {
@@ -2024,28 +2695,50 @@ export interface ScopeFeatureState {
   state?: FeatureState;
 }
 export const ScopeFeatureState = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "state": S.optional(FeatureState),
-}),
-).annotate({ identifier: "ScopeFeatureState" }) as any as S.Schema<ScopeFeatureState>;
+  S.Struct({
+    state: S.optional(FeatureState),
+  }),
+).annotate({
+  identifier: "ScopeFeatureState",
+}) as any as S.Schema<ScopeFeatureState>;
 
-export type ScopeFeatureStateMap = { [key: string]: ScopeFeatureState | undefined };
-export const ScopeFeatureStateMap = /*@__PURE__*/ S.Record(S.String, ScopeFeatureState) as any as S.Schema<ScopeFeatureStateMap>;
+export type ScopeFeatureStateMap = {
+  [key: string]: ScopeFeatureState | undefined;
+};
+export const ScopeFeatureStateMap = /*@__PURE__*/ S.Record(
+  S.String,
+  ScopeFeatureState,
+) as any as S.Schema<ScopeFeatureStateMap>;
 
 /** ScopeFeatureSpec contains feature specs for a fleet scope. */
 export interface ScopeFeatureSpec {}
 export const ScopeFeatureSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "ScopeFeatureSpec" }) as any as S.Schema<ScopeFeatureSpec>;
+  S.Struct({}),
+).annotate({
+  identifier: "ScopeFeatureSpec",
+}) as any as S.Schema<ScopeFeatureSpec>;
 
-export type ScopeFeatureSpecMap = { [key: string]: ScopeFeatureSpec | undefined };
-export const ScopeFeatureSpecMap = /*@__PURE__*/ S.Record(S.String, ScopeFeatureSpec) as any as S.Schema<ScopeFeatureSpecMap>;
+export type ScopeFeatureSpecMap = {
+  [key: string]: ScopeFeatureSpec | undefined;
+};
+export const ScopeFeatureSpecMap = /*@__PURE__*/ S.Record(
+  S.String,
+  ScopeFeatureSpec,
+) as any as S.Schema<ScopeFeatureSpecMap>;
 
-export type PolicyControllerMonitoringConfigBackendsItemEnum = "MONITORING_BACKEND_UNSPECIFIED" | "PROMETHEUS" | "CLOUD_MONITORING";
-export const PolicyControllerMonitoringConfigBackendsItemEnum = /*@__PURE__*/ S.String;
+export type PolicyControllerMonitoringConfigBackendsItemEnum =
+  | "MONITORING_BACKEND_UNSPECIFIED"
+  | "PROMETHEUS"
+  | "CLOUD_MONITORING";
+export const PolicyControllerMonitoringConfigBackendsItemEnum =
+  /*@__PURE__*/ S.String;
 
-export type PolicyControllerMonitoringConfigBackendsItemEnumList = ReadonlyArray<PolicyControllerMonitoringConfigBackendsItemEnum>;
-export const PolicyControllerMonitoringConfigBackendsItemEnumList = /*@__PURE__*/ S.Array(PolicyControllerMonitoringConfigBackendsItemEnum) as any as S.Schema<PolicyControllerMonitoringConfigBackendsItemEnumList>;
+export type PolicyControllerMonitoringConfigBackendsItemEnumList =
+  ReadonlyArray<PolicyControllerMonitoringConfigBackendsItemEnum>;
+export const PolicyControllerMonitoringConfigBackendsItemEnumList =
+  /*@__PURE__*/ S.Array(
+    PolicyControllerMonitoringConfigBackendsItemEnum,
+  ) as any as S.Schema<PolicyControllerMonitoringConfigBackendsItemEnumList>;
 
 /** MonitoringConfig specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: ["cloudmonitoring", "prometheus"] */
 export interface PolicyControllerMonitoringConfig {
@@ -2053,10 +2746,12 @@ export interface PolicyControllerMonitoringConfig {
   backends?: PolicyControllerMonitoringConfigBackendsItemEnumList;
 }
 export const PolicyControllerMonitoringConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "backends": S.optional(PolicyControllerMonitoringConfigBackendsItemEnumList),
-}),
-).annotate({ identifier: "PolicyControllerMonitoringConfig" }) as any as S.Schema<PolicyControllerMonitoringConfig>;
+  S.Struct({
+    backends: S.optional(PolicyControllerMonitoringConfigBackendsItemEnumList),
+  }),
+).annotate({
+  identifier: "PolicyControllerMonitoringConfig",
+}) as any as S.Schema<PolicyControllerMonitoringConfig>;
 
 /** ResourceList contains container resource requirements. */
 export interface PolicyControllerResourceList {
@@ -2066,11 +2761,13 @@ export interface PolicyControllerResourceList {
   cpu?: string;
 }
 export const PolicyControllerResourceList = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "memory": S.optional(S.String),
-  "cpu": S.optional(S.String),
-}),
-).annotate({ identifier: "PolicyControllerResourceList" }) as any as S.Schema<PolicyControllerResourceList>;
+  S.Struct({
+    memory: S.optional(S.String),
+    cpu: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PolicyControllerResourceList",
+}) as any as S.Schema<PolicyControllerResourceList>;
 
 /** ResourceRequirements describes the compute resource requirements. */
 export interface PolicyControllerResourceRequirements {
@@ -2079,12 +2776,15 @@ export interface PolicyControllerResourceRequirements {
   /** Requests describes the amount of compute resources reserved for the container by the kube-scheduler. */
   requests?: PolicyControllerResourceList;
 }
-export const PolicyControllerResourceRequirements = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "limits": S.optional(PolicyControllerResourceList),
-  "requests": S.optional(PolicyControllerResourceList),
-}),
-).annotate({ identifier: "PolicyControllerResourceRequirements" }) as any as S.Schema<PolicyControllerResourceRequirements>;
+export const PolicyControllerResourceRequirements = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      limits: S.optional(PolicyControllerResourceList),
+      requests: S.optional(PolicyControllerResourceList),
+    }),
+).annotate({
+  identifier: "PolicyControllerResourceRequirements",
+}) as any as S.Schema<PolicyControllerResourceRequirements>;
 
 /** Toleration of a node taint. */
 export interface PolicyControllerToleration {
@@ -2098,19 +2798,28 @@ export interface PolicyControllerToleration {
   operator?: string;
 }
 export const PolicyControllerToleration = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "value": S.optional(S.String),
-  "effect": S.optional(S.String),
-  "key": S.optional(S.String),
-  "operator": S.optional(S.String),
-}),
-).annotate({ identifier: "PolicyControllerToleration" }) as any as S.Schema<PolicyControllerToleration>;
+  S.Struct({
+    value: S.optional(S.String),
+    effect: S.optional(S.String),
+    key: S.optional(S.String),
+    operator: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PolicyControllerToleration",
+}) as any as S.Schema<PolicyControllerToleration>;
 
-export type PolicyControllerTolerationList = ReadonlyArray<PolicyControllerToleration>;
-export const PolicyControllerTolerationList = /*@__PURE__*/ S.Array(PolicyControllerToleration) as any as S.Schema<PolicyControllerTolerationList>;
+export type PolicyControllerTolerationList =
+  ReadonlyArray<PolicyControllerToleration>;
+export const PolicyControllerTolerationList = /*@__PURE__*/ S.Array(
+  PolicyControllerToleration,
+) as any as S.Schema<PolicyControllerTolerationList>;
 
-export type PolicyControllerPolicyControllerDeploymentConfigPodAffinityEnum = "AFFINITY_UNSPECIFIED" | "NO_AFFINITY" | "ANTI_AFFINITY";
-export const PolicyControllerPolicyControllerDeploymentConfigPodAffinityEnum = /*@__PURE__*/ S.String;
+export type PolicyControllerPolicyControllerDeploymentConfigPodAffinityEnum =
+  | "AFFINITY_UNSPECIFIED"
+  | "NO_AFFINITY"
+  | "ANTI_AFFINITY";
+export const PolicyControllerPolicyControllerDeploymentConfigPodAffinityEnum =
+  /*@__PURE__*/ S.String;
 
 /** Deployment-specific configuration. */
 export interface PolicyControllerPolicyControllerDeploymentConfig {
@@ -2125,20 +2834,36 @@ export interface PolicyControllerPolicyControllerDeploymentConfig {
   /** Pod replica count. */
   replicaCount?: string;
 }
-export const PolicyControllerPolicyControllerDeploymentConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "containerResources": S.optional(PolicyControllerResourceRequirements),
-  "podAntiAffinity": S.optional(S.Boolean),
-  "podTolerations": S.optional(PolicyControllerTolerationList),
-  "podAffinity": S.optional(PolicyControllerPolicyControllerDeploymentConfigPodAffinityEnum),
-  "replicaCount": S.optional(S.String),
-}),
-).annotate({ identifier: "PolicyControllerPolicyControllerDeploymentConfig" }) as any as S.Schema<PolicyControllerPolicyControllerDeploymentConfig>;
+export const PolicyControllerPolicyControllerDeploymentConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      containerResources: S.optional(PolicyControllerResourceRequirements),
+      podAntiAffinity: S.optional(S.Boolean),
+      podTolerations: S.optional(PolicyControllerTolerationList),
+      podAffinity: S.optional(
+        PolicyControllerPolicyControllerDeploymentConfigPodAffinityEnum,
+      ),
+      replicaCount: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "PolicyControllerPolicyControllerDeploymentConfig",
+  }) as any as S.Schema<PolicyControllerPolicyControllerDeploymentConfig>;
 
-export type PolicyControllerPolicyControllerDeploymentConfigMap = { [key: string]: PolicyControllerPolicyControllerDeploymentConfig | undefined };
-export const PolicyControllerPolicyControllerDeploymentConfigMap = /*@__PURE__*/ S.Record(S.String, PolicyControllerPolicyControllerDeploymentConfig) as any as S.Schema<PolicyControllerPolicyControllerDeploymentConfigMap>;
+export type PolicyControllerPolicyControllerDeploymentConfigMap = {
+  [key: string]: PolicyControllerPolicyControllerDeploymentConfig | undefined;
+};
+export const PolicyControllerPolicyControllerDeploymentConfigMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    PolicyControllerPolicyControllerDeploymentConfig,
+  ) as any as S.Schema<PolicyControllerPolicyControllerDeploymentConfigMap>;
 
-export type PolicyControllerHubConfigInstallSpecEnum = "INSTALL_SPEC_UNSPECIFIED" | "INSTALL_SPEC_NOT_INSTALLED" | "INSTALL_SPEC_ENABLED" | "INSTALL_SPEC_SUSPENDED" | "INSTALL_SPEC_DETACHED";
+export type PolicyControllerHubConfigInstallSpecEnum =
+  | "INSTALL_SPEC_UNSPECIFIED"
+  | "INSTALL_SPEC_NOT_INSTALLED"
+  | "INSTALL_SPEC_ENABLED"
+  | "INSTALL_SPEC_SUSPENDED"
+  | "INSTALL_SPEC_DETACHED";
 export const PolicyControllerHubConfigInstallSpecEnum = /*@__PURE__*/ S.String;
 
 /** BundleInstallSpec is the specification configuration for a single managed bundle. */
@@ -2147,27 +2872,43 @@ export interface PolicyControllerBundleInstallSpec {
   exemptedNamespaces?: StringList;
 }
 export const PolicyControllerBundleInstallSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "exemptedNamespaces": S.optional(StringList),
-}),
-).annotate({ identifier: "PolicyControllerBundleInstallSpec" }) as any as S.Schema<PolicyControllerBundleInstallSpec>;
+  S.Struct({
+    exemptedNamespaces: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "PolicyControllerBundleInstallSpec",
+}) as any as S.Schema<PolicyControllerBundleInstallSpec>;
 
-export type PolicyControllerBundleInstallSpecMap = { [key: string]: PolicyControllerBundleInstallSpec | undefined };
-export const PolicyControllerBundleInstallSpecMap = /*@__PURE__*/ S.Record(S.String, PolicyControllerBundleInstallSpec) as any as S.Schema<PolicyControllerBundleInstallSpecMap>;
+export type PolicyControllerBundleInstallSpecMap = {
+  [key: string]: PolicyControllerBundleInstallSpec | undefined;
+};
+export const PolicyControllerBundleInstallSpecMap = /*@__PURE__*/ S.Record(
+  S.String,
+  PolicyControllerBundleInstallSpec,
+) as any as S.Schema<PolicyControllerBundleInstallSpecMap>;
 
-export type PolicyControllerTemplateLibraryConfigInstallationEnum = "INSTALLATION_UNSPECIFIED" | "NOT_INSTALLED" | "ALL";
-export const PolicyControllerTemplateLibraryConfigInstallationEnum = /*@__PURE__*/ S.String;
+export type PolicyControllerTemplateLibraryConfigInstallationEnum =
+  | "INSTALLATION_UNSPECIFIED"
+  | "NOT_INSTALLED"
+  | "ALL";
+export const PolicyControllerTemplateLibraryConfigInstallationEnum =
+  /*@__PURE__*/ S.String;
 
 /** The config specifying which default library templates to install. */
 export interface PolicyControllerTemplateLibraryConfig {
   /** Configures the manner in which the template library is installed on the cluster. */
   installation?: PolicyControllerTemplateLibraryConfigInstallationEnum;
 }
-export const PolicyControllerTemplateLibraryConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "installation": S.optional(PolicyControllerTemplateLibraryConfigInstallationEnum),
-}),
-).annotate({ identifier: "PolicyControllerTemplateLibraryConfig" }) as any as S.Schema<PolicyControllerTemplateLibraryConfig>;
+export const PolicyControllerTemplateLibraryConfig = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      installation: S.optional(
+        PolicyControllerTemplateLibraryConfigInstallationEnum,
+      ),
+    }),
+).annotate({
+  identifier: "PolicyControllerTemplateLibraryConfig",
+}) as any as S.Schema<PolicyControllerTemplateLibraryConfig>;
 
 /** PolicyContentSpec defines the user's desired content configuration on the cluster. */
 export interface PolicyControllerPolicyContentSpec {
@@ -2177,11 +2918,13 @@ export interface PolicyControllerPolicyContentSpec {
   templateLibrary?: PolicyControllerTemplateLibraryConfig;
 }
 export const PolicyControllerPolicyContentSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bundles": S.optional(PolicyControllerBundleInstallSpecMap),
-  "templateLibrary": S.optional(PolicyControllerTemplateLibraryConfig),
-}),
-).annotate({ identifier: "PolicyControllerPolicyContentSpec" }) as any as S.Schema<PolicyControllerPolicyContentSpec>;
+  S.Struct({
+    bundles: S.optional(PolicyControllerBundleInstallSpecMap),
+    templateLibrary: S.optional(PolicyControllerTemplateLibraryConfig),
+  }),
+).annotate({
+  identifier: "PolicyControllerPolicyContentSpec",
+}) as any as S.Schema<PolicyControllerPolicyContentSpec>;
 
 /** Configuration for Policy Controller */
 export interface PolicyControllerHubConfig {
@@ -2207,19 +2950,23 @@ export interface PolicyControllerHubConfig {
   auditIntervalSeconds?: string;
 }
 export const PolicyControllerHubConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "logDeniesEnabled": S.optional(S.Boolean),
-  "exemptableNamespaces": S.optional(StringList),
-  "monitoring": S.optional(PolicyControllerMonitoringConfig),
-  "deploymentConfigs": S.optional(PolicyControllerPolicyControllerDeploymentConfigMap),
-  "installSpec": S.optional(PolicyControllerHubConfigInstallSpecEnum),
-  "policyContent": S.optional(PolicyControllerPolicyContentSpec),
-  "referentialRulesEnabled": S.optional(S.Boolean),
-  "constraintViolationLimit": S.optional(S.String),
-  "mutationEnabled": S.optional(S.Boolean),
-  "auditIntervalSeconds": S.optional(S.String),
-}),
-).annotate({ identifier: "PolicyControllerHubConfig" }) as any as S.Schema<PolicyControllerHubConfig>;
+  S.Struct({
+    logDeniesEnabled: S.optional(S.Boolean),
+    exemptableNamespaces: S.optional(StringList),
+    monitoring: S.optional(PolicyControllerMonitoringConfig),
+    deploymentConfigs: S.optional(
+      PolicyControllerPolicyControllerDeploymentConfigMap,
+    ),
+    installSpec: S.optional(PolicyControllerHubConfigInstallSpecEnum),
+    policyContent: S.optional(PolicyControllerPolicyContentSpec),
+    referentialRulesEnabled: S.optional(S.Boolean),
+    constraintViolationLimit: S.optional(S.String),
+    mutationEnabled: S.optional(S.Boolean),
+    auditIntervalSeconds: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PolicyControllerHubConfig",
+}) as any as S.Schema<PolicyControllerHubConfig>;
 
 /** **Policy Controller**: Configuration for a single cluster. Intended to parallel the PolicyController CR. */
 export interface PolicyControllerMembershipSpec {
@@ -2229,19 +2976,31 @@ export interface PolicyControllerMembershipSpec {
   version?: string;
 }
 export const PolicyControllerMembershipSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "policyControllerHubConfig": S.optional(PolicyControllerHubConfig),
-  "version": S.optional(S.String),
-}),
-).annotate({ identifier: "PolicyControllerMembershipSpec" }) as any as S.Schema<PolicyControllerMembershipSpec>;
+  S.Struct({
+    policyControllerHubConfig: S.optional(PolicyControllerHubConfig),
+    version: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PolicyControllerMembershipSpec",
+}) as any as S.Schema<PolicyControllerMembershipSpec>;
 
-export type ServiceMeshMembershipSpecConfigApiEnum = "CONFIG_API_UNSPECIFIED" | "CONFIG_API_ISTIO" | "CONFIG_API_GATEWAY";
+export type ServiceMeshMembershipSpecConfigApiEnum =
+  | "CONFIG_API_UNSPECIFIED"
+  | "CONFIG_API_ISTIO"
+  | "CONFIG_API_GATEWAY";
 export const ServiceMeshMembershipSpecConfigApiEnum = /*@__PURE__*/ S.String;
 
-export type ServiceMeshMembershipSpecManagementEnum = "MANAGEMENT_UNSPECIFIED" | "MANAGEMENT_AUTOMATIC" | "MANAGEMENT_MANUAL" | "MANAGEMENT_NOT_INSTALLED";
+export type ServiceMeshMembershipSpecManagementEnum =
+  | "MANAGEMENT_UNSPECIFIED"
+  | "MANAGEMENT_AUTOMATIC"
+  | "MANAGEMENT_MANUAL"
+  | "MANAGEMENT_NOT_INSTALLED";
 export const ServiceMeshMembershipSpecManagementEnum = /*@__PURE__*/ S.String;
 
-export type ServiceMeshMembershipSpecControlPlaneEnum = "CONTROL_PLANE_MANAGEMENT_UNSPECIFIED" | "AUTOMATIC" | "MANUAL";
+export type ServiceMeshMembershipSpecControlPlaneEnum =
+  | "CONTROL_PLANE_MANAGEMENT_UNSPECIFIED"
+  | "AUTOMATIC"
+  | "MANUAL";
 export const ServiceMeshMembershipSpecControlPlaneEnum = /*@__PURE__*/ S.String;
 
 /** **Service Mesh**: Spec for a single Membership for the servicemesh feature */
@@ -2254,12 +3013,14 @@ export interface ServiceMeshMembershipSpec {
   controlPlane?: ServiceMeshMembershipSpecControlPlaneEnum;
 }
 export const ServiceMeshMembershipSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "configApi": S.optional(ServiceMeshMembershipSpecConfigApiEnum),
-  "management": S.optional(ServiceMeshMembershipSpecManagementEnum),
-  "controlPlane": S.optional(ServiceMeshMembershipSpecControlPlaneEnum),
-}),
-).annotate({ identifier: "ServiceMeshMembershipSpec" }) as any as S.Schema<ServiceMeshMembershipSpec>;
+  S.Struct({
+    configApi: S.optional(ServiceMeshMembershipSpecConfigApiEnum),
+    management: S.optional(ServiceMeshMembershipSpecManagementEnum),
+    controlPlane: S.optional(ServiceMeshMembershipSpecControlPlaneEnum),
+  }),
+).annotate({
+  identifier: "ServiceMeshMembershipSpec",
+}) as any as S.Schema<ServiceMeshMembershipSpec>;
 
 /** CommonFleetDefaultMemberConfigSpec contains default configuration information for memberships of a fleet */
 export interface CommonFleetDefaultMemberConfigSpec {
@@ -2273,15 +3034,21 @@ export interface CommonFleetDefaultMemberConfigSpec {
   identityservice?: IdentityServiceMembershipSpec;
 }
 export const CommonFleetDefaultMemberConfigSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "configmanagement": S.optional(ConfigManagementMembershipSpec),
-  "policycontroller": S.optional(PolicyControllerMembershipSpec),
-  "mesh": S.optional(ServiceMeshMembershipSpec),
-  "identityservice": S.optional(IdentityServiceMembershipSpec),
-}),
-).annotate({ identifier: "CommonFleetDefaultMemberConfigSpec" }) as any as S.Schema<CommonFleetDefaultMemberConfigSpec>;
+  S.Struct({
+    configmanagement: S.optional(ConfigManagementMembershipSpec),
+    policycontroller: S.optional(PolicyControllerMembershipSpec),
+    mesh: S.optional(ServiceMeshMembershipSpec),
+    identityservice: S.optional(IdentityServiceMembershipSpec),
+  }),
+).annotate({
+  identifier: "CommonFleetDefaultMemberConfigSpec",
+}) as any as S.Schema<CommonFleetDefaultMemberConfigSpec>;
 
-export type OriginTypeEnum = "TYPE_UNSPECIFIED" | "FLEET" | "FLEET_OUT_OF_SYNC" | "USER";
+export type OriginTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "FLEET"
+  | "FLEET_OUT_OF_SYNC"
+  | "USER";
 export const OriginTypeEnum = /*@__PURE__*/ S.String;
 
 /** Origin defines where this MembershipFeatureSpec originated from. */
@@ -2290,18 +3057,23 @@ export interface Origin {
   type?: OriginTypeEnum;
 }
 export const Origin = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(OriginTypeEnum),
-}),
+  S.Struct({
+    type: S.optional(OriginTypeEnum),
+  }),
 ).annotate({ identifier: "Origin" }) as any as S.Schema<Origin>;
 
 /** **FleetObservability**: The membership-specific input for FleetObservability feature. */
 export interface FleetObservabilityMembershipSpec {}
 export const FleetObservabilityMembershipSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "FleetObservabilityMembershipSpec" }) as any as S.Schema<FleetObservabilityMembershipSpec>;
+  S.Struct({}),
+).annotate({
+  identifier: "FleetObservabilityMembershipSpec",
+}) as any as S.Schema<FleetObservabilityMembershipSpec>;
 
-export type MembershipSpecSecurityPolicyEnum = "SECURITY_POLICY_UNSPECIFIED" | "NON_PRIVILEGED" | "PRIVILEGED";
+export type MembershipSpecSecurityPolicyEnum =
+  | "SECURITY_POLICY_UNSPECIFIED"
+  | "NON_PRIVILEGED"
+  | "PRIVILEGED";
 export const MembershipSpecSecurityPolicyEnum = /*@__PURE__*/ S.String;
 
 /** **Cloud Build**: Configurations for each Cloud Build enabled cluster. */
@@ -2312,10 +3084,10 @@ export interface MembershipSpec {
   securityPolicy?: MembershipSpecSecurityPolicyEnum;
 }
 export const MembershipSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "version": S.optional(S.String),
-  "securityPolicy": S.optional(MembershipSpecSecurityPolicyEnum),
-}),
+  S.Struct({
+    version: S.optional(S.String),
+    securityPolicy: S.optional(MembershipSpecSecurityPolicyEnum),
+  }),
 ).annotate({ identifier: "MembershipSpec" }) as any as S.Schema<MembershipSpec>;
 
 /** MembershipFeatureSpec contains configuration information for a single Membership. */
@@ -2336,19 +3108,26 @@ export interface MembershipFeatureSpec {
   configmanagement?: ConfigManagementMembershipSpec;
 }
 export const MembershipFeatureSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "mesh": S.optional(ServiceMeshMembershipSpec),
-  "origin": S.optional(Origin),
-  "fleetobservability": S.optional(FleetObservabilityMembershipSpec),
-  "cloudbuild": S.optional(MembershipSpec),
-  "policycontroller": S.optional(PolicyControllerMembershipSpec),
-  "identityservice": S.optional(IdentityServiceMembershipSpec),
-  "configmanagement": S.optional(ConfigManagementMembershipSpec),
-}),
-).annotate({ identifier: "MembershipFeatureSpec" }) as any as S.Schema<MembershipFeatureSpec>;
+  S.Struct({
+    mesh: S.optional(ServiceMeshMembershipSpec),
+    origin: S.optional(Origin),
+    fleetobservability: S.optional(FleetObservabilityMembershipSpec),
+    cloudbuild: S.optional(MembershipSpec),
+    policycontroller: S.optional(PolicyControllerMembershipSpec),
+    identityservice: S.optional(IdentityServiceMembershipSpec),
+    configmanagement: S.optional(ConfigManagementMembershipSpec),
+  }),
+).annotate({
+  identifier: "MembershipFeatureSpec",
+}) as any as S.Schema<MembershipFeatureSpec>;
 
-export type MembershipFeatureSpecMap = { [key: string]: MembershipFeatureSpec | undefined };
-export const MembershipFeatureSpecMap = /*@__PURE__*/ S.Record(S.String, MembershipFeatureSpec) as any as S.Schema<MembershipFeatureSpecMap>;
+export type MembershipFeatureSpecMap = {
+  [key: string]: MembershipFeatureSpec | undefined;
+};
+export const MembershipFeatureSpecMap = /*@__PURE__*/ S.Record(
+  S.String,
+  MembershipFeatureSpec,
+) as any as S.Schema<MembershipFeatureSpecMap>;
 
 /** Feature represents the settings and status of any Fleet Feature. */
 export interface Feature {
@@ -2382,22 +3161,22 @@ export interface Feature {
   membershipSpecs?: MembershipFeatureSpecMap;
 }
 export const Feature = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "membershipStates": S.optional(MembershipFeatureStateMap),
-  "deleteTime": S.optional(S.String),
-  "resourceState": S.optional(FeatureResourceState),
-  "spec": S.optional(CommonFeatureSpec),
-  "labels": S.optional(StringMap),
-  "createTime": S.optional(S.String),
-  "state": S.optional(CommonFeatureState),
-  "updateTime": S.optional(S.String),
-  "name": S.optional(S.String),
-  "scopeStates": S.optional(ScopeFeatureStateMap),
-  "unreachable": S.optional(StringList),
-  "scopeSpecs": S.optional(ScopeFeatureSpecMap),
-  "fleetDefaultMemberConfig": S.optional(CommonFleetDefaultMemberConfigSpec),
-  "membershipSpecs": S.optional(MembershipFeatureSpecMap),
-}),
+  S.Struct({
+    membershipStates: S.optional(MembershipFeatureStateMap),
+    deleteTime: S.optional(S.String),
+    resourceState: S.optional(FeatureResourceState),
+    spec: S.optional(CommonFeatureSpec),
+    labels: S.optional(StringMap),
+    createTime: S.optional(S.String),
+    state: S.optional(CommonFeatureState),
+    updateTime: S.optional(S.String),
+    name: S.optional(S.String),
+    scopeStates: S.optional(ScopeFeatureStateMap),
+    unreachable: S.optional(StringList),
+    scopeSpecs: S.optional(ScopeFeatureSpecMap),
+    fleetDefaultMemberConfig: S.optional(CommonFleetDefaultMemberConfigSpec),
+    membershipSpecs: S.optional(MembershipFeatureSpecMap),
+  }),
 ).annotate({ identifier: "Feature" }) as any as S.Schema<Feature>;
 
 export interface CreateProjectsLocationsFeaturesRequest {
@@ -2410,16 +3189,30 @@ export interface CreateProjectsLocationsFeaturesRequest {
   /** Request body */
   body?: Feature;
 }
-export const CreateProjectsLocationsFeaturesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "featureId": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Feature.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+parent}/features","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsFeaturesRequest" }) as any as S.Schema<CreateProjectsLocationsFeaturesRequest>;
+export const CreateProjectsLocationsFeaturesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      featureId: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Feature.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+parent}/features",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateProjectsLocationsFeaturesRequest",
+}) as any as S.Schema<CreateProjectsLocationsFeaturesRequest>;
 
-export type FleetLifecycleStateCodeEnum = "CODE_UNSPECIFIED" | "CREATING" | "READY" | "DELETING" | "UPDATING";
+export type FleetLifecycleStateCodeEnum =
+  | "CODE_UNSPECIFIED"
+  | "CREATING"
+  | "READY"
+  | "DELETING"
+  | "UPDATING";
 export const FleetLifecycleStateCodeEnum = /*@__PURE__*/ S.String;
 
 /** FleetLifecycleState describes the state of a Fleet resource. */
@@ -2428,12 +3221,17 @@ export interface FleetLifecycleState {
   code?: FleetLifecycleStateCodeEnum;
 }
 export const FleetLifecycleState = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(FleetLifecycleStateCodeEnum),
-}),
-).annotate({ identifier: "FleetLifecycleState" }) as any as S.Schema<FleetLifecycleState>;
+  S.Struct({
+    code: S.optional(FleetLifecycleStateCodeEnum),
+  }),
+).annotate({
+  identifier: "FleetLifecycleState",
+}) as any as S.Schema<FleetLifecycleState>;
 
-export type CompliancePostureConfigModeEnum = "MODE_UNSPECIFIED" | "DISABLED" | "ENABLED";
+export type CompliancePostureConfigModeEnum =
+  | "MODE_UNSPECIFIED"
+  | "DISABLED"
+  | "ENABLED";
 export const CompliancePostureConfigModeEnum = /*@__PURE__*/ S.String;
 
 export interface ComplianceStandard {
@@ -2441,13 +3239,17 @@ export interface ComplianceStandard {
   standard?: string;
 }
 export const ComplianceStandard = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "standard": S.optional(S.String),
-}),
-).annotate({ identifier: "ComplianceStandard" }) as any as S.Schema<ComplianceStandard>;
+  S.Struct({
+    standard: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ComplianceStandard",
+}) as any as S.Schema<ComplianceStandard>;
 
 export type ComplianceStandardList = ReadonlyArray<ComplianceStandard>;
-export const ComplianceStandardList = /*@__PURE__*/ S.Array(ComplianceStandard) as any as S.Schema<ComplianceStandardList>;
+export const ComplianceStandardList = /*@__PURE__*/ S.Array(
+  ComplianceStandard,
+) as any as S.Schema<ComplianceStandardList>;
 
 /** Deprecated: Compliance Posture is no longer supported. For more details, see https://cloud.google.com/kubernetes-engine/docs/deprecations/posture-management-deprecation. CompliancePostureConfig defines the settings needed to enable/disable features for the Compliance Posture. */
 export interface CompliancePostureConfig {
@@ -2457,14 +3259,20 @@ export interface CompliancePostureConfig {
   complianceStandards?: ComplianceStandardList;
 }
 export const CompliancePostureConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "mode": S.optional(CompliancePostureConfigModeEnum),
-  "complianceStandards": S.optional(ComplianceStandardList),
-}),
-).annotate({ identifier: "CompliancePostureConfig" }) as any as S.Schema<CompliancePostureConfig>;
+  S.Struct({
+    mode: S.optional(CompliancePostureConfigModeEnum),
+    complianceStandards: S.optional(ComplianceStandardList),
+  }),
+).annotate({
+  identifier: "CompliancePostureConfig",
+}) as any as S.Schema<CompliancePostureConfig>;
 
-export type BinaryAuthorizationConfigEvaluationModeEnum = "EVALUATION_MODE_UNSPECIFIED" | "DISABLED" | "POLICY_BINDINGS";
-export const BinaryAuthorizationConfigEvaluationModeEnum = /*@__PURE__*/ S.String;
+export type BinaryAuthorizationConfigEvaluationModeEnum =
+  | "EVALUATION_MODE_UNSPECIFIED"
+  | "DISABLED"
+  | "POLICY_BINDINGS";
+export const BinaryAuthorizationConfigEvaluationModeEnum =
+  /*@__PURE__*/ S.String;
 
 /** Binauthz policy that applies to this cluster. */
 export interface PolicyBinding {
@@ -2472,13 +3280,15 @@ export interface PolicyBinding {
   name?: string;
 }
 export const PolicyBinding = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "PolicyBinding" }) as any as S.Schema<PolicyBinding>;
 
 export type PolicyBindingList = ReadonlyArray<PolicyBinding>;
-export const PolicyBindingList = /*@__PURE__*/ S.Array(PolicyBinding) as any as S.Schema<PolicyBindingList>;
+export const PolicyBindingList = /*@__PURE__*/ S.Array(
+  PolicyBinding,
+) as any as S.Schema<PolicyBindingList>;
 
 /** BinaryAuthorizationConfig defines the fleet level configuration of binary authorization feature. */
 export interface BinaryAuthorizationConfig {
@@ -2488,17 +3298,28 @@ export interface BinaryAuthorizationConfig {
   policyBindings?: PolicyBindingList;
 }
 export const BinaryAuthorizationConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "evaluationMode": S.optional(BinaryAuthorizationConfigEvaluationModeEnum),
-  "policyBindings": S.optional(PolicyBindingList),
-}),
-).annotate({ identifier: "BinaryAuthorizationConfig" }) as any as S.Schema<BinaryAuthorizationConfig>;
+  S.Struct({
+    evaluationMode: S.optional(BinaryAuthorizationConfigEvaluationModeEnum),
+    policyBindings: S.optional(PolicyBindingList),
+  }),
+).annotate({
+  identifier: "BinaryAuthorizationConfig",
+}) as any as S.Schema<BinaryAuthorizationConfig>;
 
-export type SecurityPostureConfigModeEnum = "MODE_UNSPECIFIED" | "DISABLED" | "BASIC" | "ENTERPRISE";
+export type SecurityPostureConfigModeEnum =
+  | "MODE_UNSPECIFIED"
+  | "DISABLED"
+  | "BASIC"
+  | "ENTERPRISE";
 export const SecurityPostureConfigModeEnum = /*@__PURE__*/ S.String;
 
-export type SecurityPostureConfigVulnerabilityModeEnum = "VULNERABILITY_MODE_UNSPECIFIED" | "VULNERABILITY_DISABLED" | "VULNERABILITY_BASIC" | "VULNERABILITY_ENTERPRISE";
-export const SecurityPostureConfigVulnerabilityModeEnum = /*@__PURE__*/ S.String;
+export type SecurityPostureConfigVulnerabilityModeEnum =
+  | "VULNERABILITY_MODE_UNSPECIFIED"
+  | "VULNERABILITY_DISABLED"
+  | "VULNERABILITY_BASIC"
+  | "VULNERABILITY_ENTERPRISE";
+export const SecurityPostureConfigVulnerabilityModeEnum =
+  /*@__PURE__*/ S.String;
 
 /** SecurityPostureConfig defines the flags needed to enable/disable features for the Security Posture API. */
 export interface SecurityPostureConfig {
@@ -2508,11 +3329,13 @@ export interface SecurityPostureConfig {
   vulnerabilityMode?: SecurityPostureConfigVulnerabilityModeEnum;
 }
 export const SecurityPostureConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "mode": S.optional(SecurityPostureConfigModeEnum),
-  "vulnerabilityMode": S.optional(SecurityPostureConfigVulnerabilityModeEnum),
-}),
-).annotate({ identifier: "SecurityPostureConfig" }) as any as S.Schema<SecurityPostureConfig>;
+  S.Struct({
+    mode: S.optional(SecurityPostureConfigModeEnum),
+    vulnerabilityMode: S.optional(SecurityPostureConfigVulnerabilityModeEnum),
+  }),
+).annotate({
+  identifier: "SecurityPostureConfig",
+}) as any as S.Schema<SecurityPostureConfig>;
 
 /** DefaultClusterConfig describes the default cluster configurations to be applied to all clusters born-in-fleet. */
 export interface DefaultClusterConfig {
@@ -2524,12 +3347,14 @@ export interface DefaultClusterConfig {
   securityPostureConfig?: SecurityPostureConfig;
 }
 export const DefaultClusterConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "compliancePostureConfig": S.optional(CompliancePostureConfig),
-  "binaryAuthorizationConfig": S.optional(BinaryAuthorizationConfig),
-  "securityPostureConfig": S.optional(SecurityPostureConfig),
-}),
-).annotate({ identifier: "DefaultClusterConfig" }) as any as S.Schema<DefaultClusterConfig>;
+  S.Struct({
+    compliancePostureConfig: S.optional(CompliancePostureConfig),
+    binaryAuthorizationConfig: S.optional(BinaryAuthorizationConfig),
+    securityPostureConfig: S.optional(SecurityPostureConfig),
+  }),
+).annotate({
+  identifier: "DefaultClusterConfig",
+}) as any as S.Schema<DefaultClusterConfig>;
 
 /** Fleet contains the Fleet-wide metadata and configuration. */
 export interface Fleet {
@@ -2553,17 +3378,17 @@ export interface Fleet {
   defaultClusterConfig?: DefaultClusterConfig;
 }
 export const Fleet = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateTime": S.optional(S.String),
-  "state": S.optional(FleetLifecycleState),
-  "createTime": S.optional(S.String),
-  "uid": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "deleteTime": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "name": S.optional(S.String),
-  "defaultClusterConfig": S.optional(DefaultClusterConfig),
-}),
+  S.Struct({
+    updateTime: S.optional(S.String),
+    state: S.optional(FleetLifecycleState),
+    createTime: S.optional(S.String),
+    uid: S.optional(S.String),
+    labels: S.optional(StringMap),
+    deleteTime: S.optional(S.String),
+    displayName: S.optional(S.String),
+    name: S.optional(S.String),
+    defaultClusterConfig: S.optional(DefaultClusterConfig),
+  }),
 ).annotate({ identifier: "Fleet" }) as any as S.Schema<Fleet>;
 
 export interface CreateProjectsLocationsFleetsRequest {
@@ -2572,12 +3397,21 @@ export interface CreateProjectsLocationsFleetsRequest {
   /** Request body */
   body?: Fleet;
 }
-export const CreateProjectsLocationsFleetsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(Fleet.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+parent}/fleets","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsFleetsRequest" }) as any as S.Schema<CreateProjectsLocationsFleetsRequest>;
+export const CreateProjectsLocationsFleetsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(Fleet.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+parent}/fleets",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateProjectsLocationsFleetsRequest",
+}) as any as S.Schema<CreateProjectsLocationsFleetsRequest>;
 
 /** MonitoringConfig informs Fleet-based applications/services/UIs how the metrics for the underlying cluster is reported to cloud monitoring services. It can be set from empty to non-empty, but can't be mutated directly to prevent accidentally breaking the constinousty of metrics. */
 export interface MonitoringConfig {
@@ -2593,19 +3427,29 @@ export interface MonitoringConfig {
   kubernetesMetricsPrefix?: string;
 }
 export const MonitoringConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "clusterHash": S.optional(S.String),
-  "location": S.optional(S.String),
-  "cluster": S.optional(S.String),
-  "projectId": S.optional(S.String),
-  "kubernetesMetricsPrefix": S.optional(S.String),
-}),
-).annotate({ identifier: "MonitoringConfig" }) as any as S.Schema<MonitoringConfig>;
+  S.Struct({
+    clusterHash: S.optional(S.String),
+    location: S.optional(S.String),
+    cluster: S.optional(S.String),
+    projectId: S.optional(S.String),
+    kubernetesMetricsPrefix: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MonitoringConfig",
+}) as any as S.Schema<MonitoringConfig>;
 
-export type MembershipMembershipTypeEnum = "MEMBERSHIP_TYPE_UNSPECIFIED" | "LIGHTWEIGHT";
+export type MembershipMembershipTypeEnum =
+  | "MEMBERSHIP_TYPE_UNSPECIFIED"
+  | "LIGHTWEIGHT";
 export const MembershipMembershipTypeEnum = /*@__PURE__*/ S.String;
 
-export type MembershipStateCodeEnum = "CODE_UNSPECIFIED" | "CREATING" | "READY" | "DELETING" | "UPDATING" | "SERVICE_UPDATING";
+export type MembershipStateCodeEnum =
+  | "CODE_UNSPECIFIED"
+  | "CREATING"
+  | "READY"
+  | "DELETING"
+  | "UPDATING"
+  | "SERVICE_UPDATING";
 export const MembershipStateCodeEnum = /*@__PURE__*/ S.String;
 
 /** MembershipState describes the state of a Membership resource. */
@@ -2614,10 +3458,12 @@ export interface MembershipState {
   code?: MembershipStateCodeEnum;
 }
 export const MembershipState = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(MembershipStateCodeEnum),
-}),
-).annotate({ identifier: "MembershipState" }) as any as S.Schema<MembershipState>;
+  S.Struct({
+    code: S.optional(MembershipStateCodeEnum),
+  }),
+).annotate({
+  identifier: "MembershipState",
+}) as any as S.Schema<MembershipState>;
 
 /** ResourceManifest represents a single Kubernetes resource to be applied to the cluster. */
 export interface ResourceManifest {
@@ -2627,14 +3473,18 @@ export interface ResourceManifest {
   clusterScoped?: boolean;
 }
 export const ResourceManifest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "manifest": S.optional(S.String),
-  "clusterScoped": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "ResourceManifest" }) as any as S.Schema<ResourceManifest>;
+  S.Struct({
+    manifest: S.optional(S.String),
+    clusterScoped: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ResourceManifest",
+}) as any as S.Schema<ResourceManifest>;
 
 export type ResourceManifestList = ReadonlyArray<ResourceManifest>;
-export const ResourceManifestList = /*@__PURE__*/ S.Array(ResourceManifest) as any as S.Schema<ResourceManifestList>;
+export const ResourceManifestList = /*@__PURE__*/ S.Array(
+  ResourceManifest,
+) as any as S.Schema<ResourceManifestList>;
 
 /** ResourceOptions represent options for Kubernetes resource generation. */
 export interface ResourceOptions {
@@ -2648,13 +3498,15 @@ export interface ResourceOptions {
   v1beta1Crd?: boolean;
 }
 export const ResourceOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "k8sVersion": S.optional(S.String),
-  "k8sGitVersion": S.optional(S.String),
-  "connectVersion": S.optional(S.String),
-  "v1beta1Crd": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "ResourceOptions" }) as any as S.Schema<ResourceOptions>;
+  S.Struct({
+    k8sVersion: S.optional(S.String),
+    k8sGitVersion: S.optional(S.String),
+    connectVersion: S.optional(S.String),
+    v1beta1Crd: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ResourceOptions",
+}) as any as S.Schema<ResourceOptions>;
 
 /** KubernetesResource contains the YAML manifests and configuration for Membership Kubernetes resources in the cluster. After CreateMembership or UpdateMembership, these resources should be re-applied in the cluster. */
 export interface KubernetesResource {
@@ -2668,13 +3520,15 @@ export interface KubernetesResource {
   connectResources?: ResourceManifestList;
 }
 export const KubernetesResource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "membershipCrManifest": S.optional(S.String),
-  "membershipResources": S.optional(ResourceManifestList),
-  "resourceOptions": S.optional(ResourceOptions),
-  "connectResources": S.optional(ResourceManifestList),
-}),
-).annotate({ identifier: "KubernetesResource" }) as any as S.Schema<KubernetesResource>;
+  S.Struct({
+    membershipCrManifest: S.optional(S.String),
+    membershipResources: S.optional(ResourceManifestList),
+    resourceOptions: S.optional(ResourceOptions),
+    connectResources: S.optional(ResourceManifestList),
+  }),
+).annotate({
+  identifier: "KubernetesResource",
+}) as any as S.Schema<KubernetesResource>;
 
 /** EdgeCluster contains information specific to Google Edge Clusters. */
 export interface EdgeCluster {
@@ -2682,9 +3536,9 @@ export interface EdgeCluster {
   resourceLink?: string;
 }
 export const EdgeCluster = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceLink": S.optional(S.String),
-}),
+  S.Struct({
+    resourceLink: S.optional(S.String),
+  }),
 ).annotate({ identifier: "EdgeCluster" }) as any as S.Schema<EdgeCluster>;
 
 /** ApplianceCluster contains information specific to GDC Edge Appliance Clusters. */
@@ -2693,10 +3547,12 @@ export interface ApplianceCluster {
   resourceLink?: string;
 }
 export const ApplianceCluster = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceLink": S.optional(S.String),
-}),
-).annotate({ identifier: "ApplianceCluster" }) as any as S.Schema<ApplianceCluster>;
+  S.Struct({
+    resourceLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ApplianceCluster",
+}) as any as S.Schema<ApplianceCluster>;
 
 /** GkeCluster contains information specific to GKE clusters. */
 export interface GkeCluster {
@@ -2706,10 +3562,10 @@ export interface GkeCluster {
   clusterMissing?: boolean;
 }
 export const GkeCluster = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceLink": S.optional(S.String),
-  "clusterMissing": S.optional(S.Boolean),
-}),
+  S.Struct({
+    resourceLink: S.optional(S.String),
+    clusterMissing: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "GkeCluster" }) as any as S.Schema<GkeCluster>;
 
 /** KubernetesMetadata provides informational metadata for Memberships representing Kubernetes clusters. */
@@ -2728,17 +3584,24 @@ export interface KubernetesMetadata {
   nodeProviderId?: string;
 }
 export const KubernetesMetadata = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "vcpuCount": S.optional(S.Number),
-  "memoryMb": S.optional(S.Number),
-  "nodeCount": S.optional(S.Number),
-  "kubernetesApiServerVersion": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "nodeProviderId": S.optional(S.String),
-}),
-).annotate({ identifier: "KubernetesMetadata" }) as any as S.Schema<KubernetesMetadata>;
+  S.Struct({
+    vcpuCount: S.optional(S.Number),
+    memoryMb: S.optional(S.Number),
+    nodeCount: S.optional(S.Number),
+    kubernetesApiServerVersion: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    nodeProviderId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "KubernetesMetadata",
+}) as any as S.Schema<KubernetesMetadata>;
 
-export type OnPremClusterClusterTypeEnum = "CLUSTERTYPE_UNSPECIFIED" | "BOOTSTRAP" | "HYBRID" | "STANDALONE" | "USER";
+export type OnPremClusterClusterTypeEnum =
+  | "CLUSTERTYPE_UNSPECIFIED"
+  | "BOOTSTRAP"
+  | "HYBRID"
+  | "STANDALONE"
+  | "USER";
 export const OnPremClusterClusterTypeEnum = /*@__PURE__*/ S.String;
 
 /** OnPremCluster contains information specific to GKE On-Prem clusters. */
@@ -2753,12 +3616,12 @@ export interface OnPremCluster {
   adminCluster?: boolean;
 }
 export const OnPremCluster = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceLink": S.optional(S.String),
-  "clusterMissing": S.optional(S.Boolean),
-  "clusterType": S.optional(OnPremClusterClusterTypeEnum),
-  "adminCluster": S.optional(S.Boolean),
-}),
+  S.Struct({
+    resourceLink: S.optional(S.String),
+    clusterMissing: S.optional(S.Boolean),
+    clusterType: S.optional(OnPremClusterClusterTypeEnum),
+    adminCluster: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "OnPremCluster" }) as any as S.Schema<OnPremCluster>;
 
 /** MultiCloudCluster contains information specific to GKE Multi-Cloud clusters. */
@@ -2769,11 +3632,13 @@ export interface MultiCloudCluster {
   clusterMissing?: boolean;
 }
 export const MultiCloudCluster = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceLink": S.optional(S.String),
-  "clusterMissing": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "MultiCloudCluster" }) as any as S.Schema<MultiCloudCluster>;
+  S.Struct({
+    resourceLink: S.optional(S.String),
+    clusterMissing: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "MultiCloudCluster",
+}) as any as S.Schema<MultiCloudCluster>;
 
 /** MembershipEndpoint contains information needed to contact a Kubernetes API, endpoint and any additional Kubernetes metadata. */
 export interface MembershipEndpoint {
@@ -2795,17 +3660,19 @@ export interface MembershipEndpoint {
   googleManaged?: boolean;
 }
 export const MembershipEndpoint = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kubernetesResource": S.optional(KubernetesResource),
-  "edgeCluster": S.optional(EdgeCluster),
-  "applianceCluster": S.optional(ApplianceCluster),
-  "gkeCluster": S.optional(GkeCluster),
-  "kubernetesMetadata": S.optional(KubernetesMetadata),
-  "onPremCluster": S.optional(OnPremCluster),
-  "multiCloudCluster": S.optional(MultiCloudCluster),
-  "googleManaged": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "MembershipEndpoint" }) as any as S.Schema<MembershipEndpoint>;
+  S.Struct({
+    kubernetesResource: S.optional(KubernetesResource),
+    edgeCluster: S.optional(EdgeCluster),
+    applianceCluster: S.optional(ApplianceCluster),
+    gkeCluster: S.optional(GkeCluster),
+    kubernetesMetadata: S.optional(KubernetesMetadata),
+    onPremCluster: S.optional(OnPremCluster),
+    multiCloudCluster: S.optional(MultiCloudCluster),
+    googleManaged: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "MembershipEndpoint",
+}) as any as S.Schema<MembershipEndpoint>;
 
 /** Authority encodes how Google will recognize identities from this Membership. See the workload identity documentation for more details: https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity */
 export interface Authority {
@@ -2823,17 +3690,20 @@ export interface Authority {
   issuer?: string;
 }
 export const Authority = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "scopeTenancyIdentityProvider": S.optional(S.String),
-  "oidcJwks": S.optional(S.String),
-  "scopeTenancyWorkloadIdentityPool": S.optional(S.String),
-  "workloadIdentityPool": S.optional(S.String),
-  "identityProvider": S.optional(S.String),
-  "issuer": S.optional(S.String),
-}),
+  S.Struct({
+    scopeTenancyIdentityProvider: S.optional(S.String),
+    oidcJwks: S.optional(S.String),
+    scopeTenancyWorkloadIdentityPool: S.optional(S.String),
+    workloadIdentityPool: S.optional(S.String),
+    identityProvider: S.optional(S.String),
+    issuer: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Authority" }) as any as S.Schema<Authority>;
 
-export type MembershipClusterTierEnum = "CLUSTER_TIER_UNSPECIFIED" | "STANDARD" | "ENTERPRISE";
+export type MembershipClusterTierEnum =
+  | "CLUSTER_TIER_UNSPECIFIED"
+  | "STANDARD"
+  | "ENTERPRISE";
 export const MembershipClusterTierEnum = /*@__PURE__*/ S.String;
 
 /** Membership contains information about a member cluster. */
@@ -2870,23 +3740,23 @@ export interface Membership {
   clusterTier?: MembershipClusterTierEnum;
 }
 export const Membership = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "description": S.optional(S.String),
-  "monitoringConfig": S.optional(MonitoringConfig),
-  "membershipType": S.optional(MembershipMembershipTypeEnum),
-  "deleteTime": S.optional(S.String),
-  "state": S.optional(MembershipState),
-  "updateTime": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "createTime": S.optional(S.String),
-  "externalId": S.optional(S.String),
-  "endpoint": S.optional(MembershipEndpoint),
-  "name": S.optional(S.String),
-  "uniqueId": S.optional(S.String),
-  "lastConnectionTime": S.optional(S.String),
-  "authority": S.optional(Authority),
-  "clusterTier": S.optional(MembershipClusterTierEnum),
-}),
+  S.Struct({
+    description: S.optional(S.String),
+    monitoringConfig: S.optional(MonitoringConfig),
+    membershipType: S.optional(MembershipMembershipTypeEnum),
+    deleteTime: S.optional(S.String),
+    state: S.optional(MembershipState),
+    updateTime: S.optional(S.String),
+    labels: S.optional(StringMap),
+    createTime: S.optional(S.String),
+    externalId: S.optional(S.String),
+    endpoint: S.optional(MembershipEndpoint),
+    name: S.optional(S.String),
+    uniqueId: S.optional(S.String),
+    lastConnectionTime: S.optional(S.String),
+    authority: S.optional(Authority),
+    clusterTier: S.optional(MembershipClusterTierEnum),
+  }),
 ).annotate({ identifier: "Membership" }) as any as S.Schema<Membership>;
 
 export interface CreateProjectsLocationsMembershipsRequest {
@@ -2899,16 +3769,30 @@ export interface CreateProjectsLocationsMembershipsRequest {
   /** Request body */
   body?: Membership;
 }
-export const CreateProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "membershipId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Membership.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+parent}/memberships","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsMembershipsRequest" }) as any as S.Schema<CreateProjectsLocationsMembershipsRequest>;
+export const CreateProjectsLocationsMembershipsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      requestId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      membershipId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Membership.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+parent}/memberships",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsMembershipsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsMembershipsRequest>;
 
-export type MembershipBindingLifecycleStateCodeEnum = "CODE_UNSPECIFIED" | "CREATING" | "READY" | "DELETING" | "UPDATING";
+export type MembershipBindingLifecycleStateCodeEnum =
+  | "CODE_UNSPECIFIED"
+  | "CREATING"
+  | "READY"
+  | "DELETING"
+  | "UPDATING";
 export const MembershipBindingLifecycleStateCodeEnum = /*@__PURE__*/ S.String;
 
 /** MembershipBindingLifecycleState describes the state of a Binding resource. */
@@ -2917,10 +3801,12 @@ export interface MembershipBindingLifecycleState {
   code?: MembershipBindingLifecycleStateCodeEnum;
 }
 export const MembershipBindingLifecycleState = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(MembershipBindingLifecycleStateCodeEnum),
-}),
-).annotate({ identifier: "MembershipBindingLifecycleState" }) as any as S.Schema<MembershipBindingLifecycleState>;
+  S.Struct({
+    code: S.optional(MembershipBindingLifecycleStateCodeEnum),
+  }),
+).annotate({
+  identifier: "MembershipBindingLifecycleState",
+}) as any as S.Schema<MembershipBindingLifecycleState>;
 
 /** MembershipBinding is a subresource of a Membership, representing what Fleet Scopes (or other, future Fleet resources) a Membership is bound to. */
 export interface MembershipBinding {
@@ -2942,17 +3828,19 @@ export interface MembershipBinding {
   labels?: StringMap;
 }
 export const MembershipBinding = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "deleteTime": S.optional(S.String),
-  "scope": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "state": S.optional(MembershipBindingLifecycleState),
-  "uid": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "labels": S.optional(StringMap),
-}),
-).annotate({ identifier: "MembershipBinding" }) as any as S.Schema<MembershipBinding>;
+  S.Struct({
+    name: S.optional(S.String),
+    deleteTime: S.optional(S.String),
+    scope: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    state: S.optional(MembershipBindingLifecycleState),
+    uid: S.optional(S.String),
+    createTime: S.optional(S.String),
+    labels: S.optional(StringMap),
+  }),
+).annotate({
+  identifier: "MembershipBinding",
+}) as any as S.Schema<MembershipBinding>;
 
 export interface CreateProjectsLocationsMembershipsBindingsRequest {
   /** Required. The ID to use for the MembershipBinding. */
@@ -2962,15 +3850,29 @@ export interface CreateProjectsLocationsMembershipsBindingsRequest {
   /** Request body */
   body?: MembershipBinding;
 }
-export const CreateProjectsLocationsMembershipsBindingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "membershipBindingId": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(MembershipBinding.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+parent}/bindings","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsMembershipsBindingsRequest" }) as any as S.Schema<CreateProjectsLocationsMembershipsBindingsRequest>;
+export const CreateProjectsLocationsMembershipsBindingsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      membershipBindingId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(MembershipBinding.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+parent}/bindings",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsMembershipsBindingsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsMembershipsBindingsRequest>;
 
-export type RBACRoleBindingLifecycleStateCodeEnum = "CODE_UNSPECIFIED" | "CREATING" | "READY" | "DELETING" | "UPDATING";
+export type RBACRoleBindingLifecycleStateCodeEnum =
+  | "CODE_UNSPECIFIED"
+  | "CREATING"
+  | "READY"
+  | "DELETING"
+  | "UPDATING";
 export const RBACRoleBindingLifecycleStateCodeEnum = /*@__PURE__*/ S.String;
 
 /** RBACRoleBindingLifecycleState describes the state of a RbacRoleBinding resource. */
@@ -2979,12 +3881,19 @@ export interface RBACRoleBindingLifecycleState {
   code?: RBACRoleBindingLifecycleStateCodeEnum;
 }
 export const RBACRoleBindingLifecycleState = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(RBACRoleBindingLifecycleStateCodeEnum),
-}),
-).annotate({ identifier: "RBACRoleBindingLifecycleState" }) as any as S.Schema<RBACRoleBindingLifecycleState>;
+  S.Struct({
+    code: S.optional(RBACRoleBindingLifecycleStateCodeEnum),
+  }),
+).annotate({
+  identifier: "RBACRoleBindingLifecycleState",
+}) as any as S.Schema<RBACRoleBindingLifecycleState>;
 
-export type RolePredefinedRoleEnum = "UNKNOWN" | "ADMIN" | "EDIT" | "VIEW" | "ANTHOS_SUPPORT";
+export type RolePredefinedRoleEnum =
+  | "UNKNOWN"
+  | "ADMIN"
+  | "EDIT"
+  | "VIEW"
+  | "ANTHOS_SUPPORT";
 export const RolePredefinedRoleEnum = /*@__PURE__*/ S.String;
 
 /** Role is the type for Kubernetes roles */
@@ -2995,10 +3904,10 @@ export interface Role {
   customRole?: string;
 }
 export const Role = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "predefinedRole": S.optional(RolePredefinedRoleEnum),
-  "customRole": S.optional(S.String),
-}),
+  S.Struct({
+    predefinedRole: S.optional(RolePredefinedRoleEnum),
+    customRole: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Role" }) as any as S.Schema<Role>;
 
 /** RBACRoleBinding represents a rbacrolebinding across the Fleet */
@@ -3025,19 +3934,21 @@ export interface RBACRoleBinding {
   name?: string;
 }
 export const RBACRoleBinding = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "uid": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "updateTime": S.optional(S.String),
-  "state": S.optional(RBACRoleBindingLifecycleState),
-  "deleteTime": S.optional(S.String),
-  "user": S.optional(S.String),
-  "role": S.optional(Role),
-  "group": S.optional(S.String),
-  "name": S.optional(S.String),
-}),
-).annotate({ identifier: "RBACRoleBinding" }) as any as S.Schema<RBACRoleBinding>;
+  S.Struct({
+    uid: S.optional(S.String),
+    createTime: S.optional(S.String),
+    labels: S.optional(StringMap),
+    updateTime: S.optional(S.String),
+    state: S.optional(RBACRoleBindingLifecycleState),
+    deleteTime: S.optional(S.String),
+    user: S.optional(S.String),
+    role: S.optional(Role),
+    group: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RBACRoleBinding",
+}) as any as S.Schema<RBACRoleBinding>;
 
 export interface CreateProjectsLocationsMembershipsRbacrolebindingsRequest {
   /** Required. The parent (project and location) where the RBACRoleBinding will be created. Specified in the format `projects/*\/locations/*\/memberships/*`. */
@@ -3047,15 +3958,30 @@ export interface CreateProjectsLocationsMembershipsRbacrolebindingsRequest {
   /** Request body */
   body?: RBACRoleBinding;
 }
-export const CreateProjectsLocationsMembershipsRbacrolebindingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "rbacrolebindingId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(RBACRoleBinding.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+parent}/rbacrolebindings","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsMembershipsRbacrolebindingsRequest" }) as any as S.Schema<CreateProjectsLocationsMembershipsRbacrolebindingsRequest>;
+export const CreateProjectsLocationsMembershipsRbacrolebindingsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      rbacrolebindingId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(RBACRoleBinding.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+parent}/rbacrolebindings",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsMembershipsRbacrolebindingsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsMembershipsRbacrolebindingsRequest>;
 
-export type RolloutSequenceComputedReleaseChannelEnum = "GKE_RELEASE_CHANNEL_UNSPECIFIED" | "RAPID" | "REGULAR" | "STABLE" | "EXTENDED" | "NO_CHANNEL";
+export type RolloutSequenceComputedReleaseChannelEnum =
+  | "GKE_RELEASE_CHANNEL_UNSPECIFIED"
+  | "RAPID"
+  | "REGULAR"
+  | "STABLE"
+  | "EXTENDED"
+  | "NO_CHANNEL";
 export const RolloutSequenceComputedReleaseChannelEnum = /*@__PURE__*/ S.String;
 
 /** Selector for clusters. */
@@ -3064,10 +3990,12 @@ export interface ClusterSelector {
   labelSelector?: string;
 }
 export const ClusterSelector = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "labelSelector": S.optional(S.String),
-}),
-).annotate({ identifier: "ClusterSelector" }) as any as S.Schema<ClusterSelector>;
+  S.Struct({
+    labelSelector: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ClusterSelector",
+}) as any as S.Schema<ClusterSelector>;
 
 /** Rollout stage. */
 export interface Stage {
@@ -3079,24 +4007,41 @@ export interface Stage {
   soakDuration?: string;
 }
 export const Stage = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fleetProjects": S.optional(StringList),
-  "clusterSelector": S.optional(ClusterSelector),
-  "soakDuration": S.optional(S.String),
-}),
+  S.Struct({
+    fleetProjects: S.optional(StringList),
+    clusterSelector: S.optional(ClusterSelector),
+    soakDuration: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Stage" }) as any as S.Schema<Stage>;
 
 export type StageList = ReadonlyArray<Stage>;
-export const StageList = /*@__PURE__*/ S.Array(Stage) as any as S.Schema<StageList>;
+export const StageList = /*@__PURE__*/ S.Array(
+  Stage,
+) as any as S.Schema<StageList>;
 
-export type OperationalStateStateEnum = "STATE_CODE_UNSPECIFIED" | "ACTIVE" | "WARNING" | "ERROR" | "INITIALIZING";
+export type OperationalStateStateEnum =
+  | "STATE_CODE_UNSPECIFIED"
+  | "ACTIVE"
+  | "WARNING"
+  | "ERROR"
+  | "INITIALIZING";
 export const OperationalStateStateEnum = /*@__PURE__*/ S.String;
 
-export type OperationalStateReasonsItemEnum = "REASON_UNSPECIFIED" | "FLEET_FEATURE_DELETED_ERROR" | "FLEET_DELETED_ERROR" | "EMPTY_STAGE_WARNING" | "MIXED_RELEASE_CHANNELS_WARNING" | "INTERNAL_ERROR" | "NO_CLUSTERS_IN_SEQUENCE";
+export type OperationalStateReasonsItemEnum =
+  | "REASON_UNSPECIFIED"
+  | "FLEET_FEATURE_DELETED_ERROR"
+  | "FLEET_DELETED_ERROR"
+  | "EMPTY_STAGE_WARNING"
+  | "MIXED_RELEASE_CHANNELS_WARNING"
+  | "INTERNAL_ERROR"
+  | "NO_CLUSTERS_IN_SEQUENCE";
 export const OperationalStateReasonsItemEnum = /*@__PURE__*/ S.String;
 
-export type OperationalStateReasonsItemEnumList = ReadonlyArray<OperationalStateReasonsItemEnum>;
-export const OperationalStateReasonsItemEnumList = /*@__PURE__*/ S.Array(OperationalStateReasonsItemEnum) as any as S.Schema<OperationalStateReasonsItemEnumList>;
+export type OperationalStateReasonsItemEnumList =
+  ReadonlyArray<OperationalStateReasonsItemEnum>;
+export const OperationalStateReasonsItemEnumList = /*@__PURE__*/ S.Array(
+  OperationalStateReasonsItemEnum,
+) as any as S.Schema<OperationalStateReasonsItemEnumList>;
 
 /** Operational state of the Rollout Sequence. */
 export interface OperationalState {
@@ -3108,18 +4053,29 @@ export interface OperationalState {
   stateChangeTime?: string;
 }
 export const OperationalState = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "state": S.optional(OperationalStateStateEnum),
-  "reasons": S.optional(OperationalStateReasonsItemEnumList),
-  "stateChangeTime": S.optional(S.String),
-}),
-).annotate({ identifier: "OperationalState" }) as any as S.Schema<OperationalState>;
+  S.Struct({
+    state: S.optional(OperationalStateStateEnum),
+    reasons: S.optional(OperationalStateReasonsItemEnumList),
+    stateChangeTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OperationalState",
+}) as any as S.Schema<OperationalState>;
 
-export type RolloutCreationScopeUpgradeTypesItemEnum = "UPGRADE_TYPE_UNSPECIFIED" | "CONTROL_PLANE_MINOR" | "CONTROL_PLANE_PATCH" | "NODE_MINOR" | "NODE_PATCH";
+export type RolloutCreationScopeUpgradeTypesItemEnum =
+  | "UPGRADE_TYPE_UNSPECIFIED"
+  | "CONTROL_PLANE_MINOR"
+  | "CONTROL_PLANE_PATCH"
+  | "NODE_MINOR"
+  | "NODE_PATCH";
 export const RolloutCreationScopeUpgradeTypesItemEnum = /*@__PURE__*/ S.String;
 
-export type RolloutCreationScopeUpgradeTypesItemEnumList = ReadonlyArray<RolloutCreationScopeUpgradeTypesItemEnum>;
-export const RolloutCreationScopeUpgradeTypesItemEnumList = /*@__PURE__*/ S.Array(RolloutCreationScopeUpgradeTypesItemEnum) as any as S.Schema<RolloutCreationScopeUpgradeTypesItemEnumList>;
+export type RolloutCreationScopeUpgradeTypesItemEnumList =
+  ReadonlyArray<RolloutCreationScopeUpgradeTypesItemEnum>;
+export const RolloutCreationScopeUpgradeTypesItemEnumList =
+  /*@__PURE__*/ S.Array(
+    RolloutCreationScopeUpgradeTypesItemEnum,
+  ) as any as S.Schema<RolloutCreationScopeUpgradeTypesItemEnumList>;
 
 /** The scope for automatic rollout creation. */
 export interface RolloutCreationScope {
@@ -3127,10 +4083,12 @@ export interface RolloutCreationScope {
   upgradeTypes?: RolloutCreationScopeUpgradeTypesItemEnumList;
 }
 export const RolloutCreationScope = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "upgradeTypes": S.optional(RolloutCreationScopeUpgradeTypesItemEnumList),
-}),
-).annotate({ identifier: "RolloutCreationScope" }) as any as S.Schema<RolloutCreationScope>;
+  S.Struct({
+    upgradeTypes: S.optional(RolloutCreationScopeUpgradeTypesItemEnumList),
+  }),
+).annotate({
+  identifier: "RolloutCreationScope",
+}) as any as S.Schema<RolloutCreationScope>;
 
 /** Configuration for automatic upgrades. */
 export interface AutoUpgradeConfig {
@@ -3140,11 +4098,13 @@ export interface AutoUpgradeConfig {
   enforcedRollouts?: StringMap;
 }
 export const AutoUpgradeConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "rolloutCreationScope": S.optional(RolloutCreationScope),
-  "enforcedRollouts": S.optional(StringMap),
-}),
-).annotate({ identifier: "AutoUpgradeConfig" }) as any as S.Schema<AutoUpgradeConfig>;
+  S.Struct({
+    rolloutCreationScope: S.optional(RolloutCreationScope),
+    enforcedRollouts: S.optional(StringMap),
+  }),
+).annotate({
+  identifier: "AutoUpgradeConfig",
+}) as any as S.Schema<AutoUpgradeConfig>;
 
 /** RolloutSequence defines the desired order of upgrades. Next ID: 20 */
 export interface RolloutSequence {
@@ -3186,27 +4146,31 @@ export interface RolloutSequence {
   deleteTime?: string;
 }
 export const RolloutSequence = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "lastQualifiedNodeVersion": S.optional(S.String),
-  "computedReleaseChannel": S.optional(RolloutSequenceComputedReleaseChannelEnum),
-  "stages": S.optional(StageList),
-  "name": S.optional(S.String),
-  "operationalState": S.optional(OperationalState),
-  "targetNodeVersion": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "uid": S.optional(S.String),
-  "ignoredClustersSelector": S.optional(ClusterSelector),
-  "etag": S.optional(S.String),
-  "targetControlPlaneVersion": S.optional(S.String),
-  "effectiveAutoUpgradeConfig": S.optional(AutoUpgradeConfig),
-  "lastQualifiedControlPlaneVersion": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "autoUpgradeConfig": S.optional(AutoUpgradeConfig),
-  "updateTime": S.optional(S.String),
-  "deleteTime": S.optional(S.String),
-}),
-).annotate({ identifier: "RolloutSequence" }) as any as S.Schema<RolloutSequence>;
+  S.Struct({
+    lastQualifiedNodeVersion: S.optional(S.String),
+    computedReleaseChannel: S.optional(
+      RolloutSequenceComputedReleaseChannelEnum,
+    ),
+    stages: S.optional(StageList),
+    name: S.optional(S.String),
+    operationalState: S.optional(OperationalState),
+    targetNodeVersion: S.optional(S.String),
+    displayName: S.optional(S.String),
+    uid: S.optional(S.String),
+    ignoredClustersSelector: S.optional(ClusterSelector),
+    etag: S.optional(S.String),
+    targetControlPlaneVersion: S.optional(S.String),
+    effectiveAutoUpgradeConfig: S.optional(AutoUpgradeConfig),
+    lastQualifiedControlPlaneVersion: S.optional(S.String),
+    createTime: S.optional(S.String),
+    labels: S.optional(StringMap),
+    autoUpgradeConfig: S.optional(AutoUpgradeConfig),
+    updateTime: S.optional(S.String),
+    deleteTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RolloutSequence",
+}) as any as S.Schema<RolloutSequence>;
 
 export interface CreateProjectsLocationsRolloutSequencesRequest {
   /** Required. The parent resource where this rollout sequence will be created. projects/{project}/locations/{location} */
@@ -3216,15 +4180,29 @@ export interface CreateProjectsLocationsRolloutSequencesRequest {
   /** Request body */
   body?: RolloutSequence;
 }
-export const CreateProjectsLocationsRolloutSequencesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "rolloutSequenceId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(RolloutSequence.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+parent}/rolloutSequences","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsRolloutSequencesRequest" }) as any as S.Schema<CreateProjectsLocationsRolloutSequencesRequest>;
+export const CreateProjectsLocationsRolloutSequencesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      rolloutSequenceId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(RolloutSequence.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+parent}/rolloutSequences",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsRolloutSequencesRequest",
+  }) as any as S.Schema<CreateProjectsLocationsRolloutSequencesRequest>;
 
-export type ScopeLifecycleStateCodeEnum = "CODE_UNSPECIFIED" | "CREATING" | "READY" | "DELETING" | "UPDATING";
+export type ScopeLifecycleStateCodeEnum =
+  | "CODE_UNSPECIFIED"
+  | "CREATING"
+  | "READY"
+  | "DELETING"
+  | "UPDATING";
 export const ScopeLifecycleStateCodeEnum = /*@__PURE__*/ S.String;
 
 /** ScopeLifecycleState describes the state of a Scope resource. */
@@ -3233,10 +4211,12 @@ export interface ScopeLifecycleState {
   code?: ScopeLifecycleStateCodeEnum;
 }
 export const ScopeLifecycleState = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(ScopeLifecycleStateCodeEnum),
-}),
-).annotate({ identifier: "ScopeLifecycleState" }) as any as S.Schema<ScopeLifecycleState>;
+  S.Struct({
+    code: S.optional(ScopeLifecycleStateCodeEnum),
+  }),
+).annotate({
+  identifier: "ScopeLifecycleState",
+}) as any as S.Schema<ScopeLifecycleState>;
 
 /** Scope represents a Scope in a Fleet. */
 export interface Scope {
@@ -3258,16 +4238,16 @@ export interface Scope {
   namespaceLabels?: StringMap;
 }
 export const Scope = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateTime": S.optional(S.String),
-  "state": S.optional(ScopeLifecycleState),
-  "uid": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "name": S.optional(S.String),
-  "deleteTime": S.optional(S.String),
-  "namespaceLabels": S.optional(StringMap),
-}),
+  S.Struct({
+    updateTime: S.optional(S.String),
+    state: S.optional(ScopeLifecycleState),
+    uid: S.optional(S.String),
+    createTime: S.optional(S.String),
+    labels: S.optional(StringMap),
+    name: S.optional(S.String),
+    deleteTime: S.optional(S.String),
+    namespaceLabels: S.optional(StringMap),
+  }),
 ).annotate({ identifier: "Scope" }) as any as S.Schema<Scope>;
 
 export interface CreateProjectsLocationsScopesRequest {
@@ -3278,15 +4258,29 @@ export interface CreateProjectsLocationsScopesRequest {
   /** Request body */
   body?: Scope;
 }
-export const CreateProjectsLocationsScopesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "scopeId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Scope.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+parent}/scopes","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsScopesRequest" }) as any as S.Schema<CreateProjectsLocationsScopesRequest>;
+export const CreateProjectsLocationsScopesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      scopeId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Scope.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+parent}/scopes",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateProjectsLocationsScopesRequest",
+}) as any as S.Schema<CreateProjectsLocationsScopesRequest>;
 
-export type NamespaceLifecycleStateCodeEnum = "CODE_UNSPECIFIED" | "CREATING" | "READY" | "DELETING" | "UPDATING";
+export type NamespaceLifecycleStateCodeEnum =
+  | "CODE_UNSPECIFIED"
+  | "CREATING"
+  | "READY"
+  | "DELETING"
+  | "UPDATING";
 export const NamespaceLifecycleStateCodeEnum = /*@__PURE__*/ S.String;
 
 /** NamespaceLifecycleState describes the state of a Namespace resource. */
@@ -3295,10 +4289,12 @@ export interface NamespaceLifecycleState {
   code?: NamespaceLifecycleStateCodeEnum;
 }
 export const NamespaceLifecycleState = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(NamespaceLifecycleStateCodeEnum),
-}),
-).annotate({ identifier: "NamespaceLifecycleState" }) as any as S.Schema<NamespaceLifecycleState>;
+  S.Struct({
+    code: S.optional(NamespaceLifecycleStateCodeEnum),
+  }),
+).annotate({
+  identifier: "NamespaceLifecycleState",
+}) as any as S.Schema<NamespaceLifecycleState>;
 
 /** Namespace represents a namespace across the Fleet */
 export interface Namespace {
@@ -3322,17 +4318,17 @@ export interface Namespace {
   scope?: string;
 }
 export const Namespace = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "deleteTime": S.optional(S.String),
-  "namespaceLabels": S.optional(StringMap),
-  "uid": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "updateTime": S.optional(S.String),
-  "state": S.optional(NamespaceLifecycleState),
-  "name": S.optional(S.String),
-  "scope": S.optional(S.String),
-}),
+  S.Struct({
+    deleteTime: S.optional(S.String),
+    namespaceLabels: S.optional(StringMap),
+    uid: S.optional(S.String),
+    createTime: S.optional(S.String),
+    labels: S.optional(StringMap),
+    updateTime: S.optional(S.String),
+    state: S.optional(NamespaceLifecycleState),
+    name: S.optional(S.String),
+    scope: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Namespace" }) as any as S.Schema<Namespace>;
 
 export interface CreateProjectsLocationsScopesNamespacesRequest {
@@ -3343,13 +4339,22 @@ export interface CreateProjectsLocationsScopesNamespacesRequest {
   /** Request body */
   body?: Namespace;
 }
-export const CreateProjectsLocationsScopesNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "scopeNamespaceId": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(Namespace.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+parent}/namespaces","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsScopesNamespacesRequest" }) as any as S.Schema<CreateProjectsLocationsScopesNamespacesRequest>;
+export const CreateProjectsLocationsScopesNamespacesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      scopeNamespaceId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(Namespace.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+parent}/namespaces",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsScopesNamespacesRequest",
+  }) as any as S.Schema<CreateProjectsLocationsScopesNamespacesRequest>;
 
 export interface CreateProjectsLocationsScopesRbacrolebindingsRequest {
   /** Required. The parent (project and location) where the RBACRoleBinding will be created. Specified in the format `projects/*\/locations/*\/scopes/*`. */
@@ -3359,13 +4364,22 @@ export interface CreateProjectsLocationsScopesRbacrolebindingsRequest {
   /** Request body */
   body?: RBACRoleBinding;
 }
-export const CreateProjectsLocationsScopesRbacrolebindingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "rbacrolebindingId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(RBACRoleBinding.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+parent}/rbacrolebindings","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsScopesRbacrolebindingsRequest" }) as any as S.Schema<CreateProjectsLocationsScopesRbacrolebindingsRequest>;
+export const CreateProjectsLocationsScopesRbacrolebindingsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      rbacrolebindingId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(RBACRoleBinding.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+parent}/rbacrolebindings",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsScopesRbacrolebindingsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsScopesRbacrolebindingsRequest>;
 
 export interface DeleteProjectsLocationsFeaturesRequest {
   /** Required. The Feature resource name in the format `projects/*\/locations/*\/features/*`. */
@@ -3375,23 +4389,41 @@ export interface DeleteProjectsLocationsFeaturesRequest {
   /** If set to true, the delete will ignore any outstanding resources for this Feature (that is, `FeatureState.has_resources` is set to true). These resources will NOT be cleaned up or modified in any way. */
   force?: boolean;
 }
-export const DeleteProjectsLocationsFeaturesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "force": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta/{+name}","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsFeaturesRequest" }) as any as S.Schema<DeleteProjectsLocationsFeaturesRequest>;
+export const DeleteProjectsLocationsFeaturesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      force: S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta/{+name}",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsFeaturesRequest",
+}) as any as S.Schema<DeleteProjectsLocationsFeaturesRequest>;
 
 export interface DeleteProjectsLocationsFleetsRequest {
   /** Required. The Fleet resource name in the format `projects/*\/locations/*\/fleets/*`. */
   name: string;
 }
-export const DeleteProjectsLocationsFleetsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta/{+name}","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsFleetsRequest" }) as any as S.Schema<DeleteProjectsLocationsFleetsRequest>;
+export const DeleteProjectsLocationsFleetsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta/{+name}",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsFleetsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsFleetsRequest>;
 
 export interface DeleteProjectsLocationsMembershipsRequest {
   /** Optional. If set to true, any subresource from this Membership will also be deleted. Otherwise, the request will only work if the Membership has no subresource. */
@@ -3401,43 +4433,79 @@ export interface DeleteProjectsLocationsMembershipsRequest {
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "force": S.optional(S.Boolean.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta/{+name}","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsMembershipsRequest" }) as any as S.Schema<DeleteProjectsLocationsMembershipsRequest>;
+export const DeleteProjectsLocationsMembershipsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      force: S.optional(S.Boolean.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta/{+name}",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsMembershipsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsMembershipsRequest>;
 
 export interface DeleteProjectsLocationsMembershipsBindingsRequest {
   /** Required. The MembershipBinding resource name in the format `projects/*\/locations/*\/memberships/*\/bindings/*`. */
   name: string;
 }
-export const DeleteProjectsLocationsMembershipsBindingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta/{+name}","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsMembershipsBindingsRequest" }) as any as S.Schema<DeleteProjectsLocationsMembershipsBindingsRequest>;
+export const DeleteProjectsLocationsMembershipsBindingsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta/{+name}",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsMembershipsBindingsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsMembershipsBindingsRequest>;
 
 export interface DeleteProjectsLocationsMembershipsRbacrolebindingsRequest {
   /** Required. The RBACRoleBinding resource name in the format `projects/*\/locations/*\/memberships/*\/rbacrolebindings/*`. */
   name: string;
 }
-export const DeleteProjectsLocationsMembershipsRbacrolebindingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta/{+name}","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsMembershipsRbacrolebindingsRequest" }) as any as S.Schema<DeleteProjectsLocationsMembershipsRbacrolebindingsRequest>;
+export const DeleteProjectsLocationsMembershipsRbacrolebindingsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta/{+name}",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsMembershipsRbacrolebindingsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsMembershipsRbacrolebindingsRequest>;
 
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta/{+name}","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsOperationsRequest" }) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta/{+name}",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsOperationsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
 
 export interface DeleteProjectsLocationsRolloutsRequest {
   /** Required. The name of the rollout to delete. projects/{project}/locations/{location}/rollouts/{rollout} */
@@ -3445,52 +4513,97 @@ export interface DeleteProjectsLocationsRolloutsRequest {
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta/{+name}","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsRolloutsRequest" }) as any as S.Schema<DeleteProjectsLocationsRolloutsRequest>;
+export const DeleteProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta/{+name}",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsRolloutsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsRolloutsRequest>;
 
 export interface DeleteProjectsLocationsRolloutSequencesRequest {
   /** Required. The name of the rollout sequence to delete. projects/{project}/locations/{location}/rolloutSequences/{rollout_sequence} */
   name: string;
 }
-export const DeleteProjectsLocationsRolloutSequencesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta/{+name}","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsRolloutSequencesRequest" }) as any as S.Schema<DeleteProjectsLocationsRolloutSequencesRequest>;
+export const DeleteProjectsLocationsRolloutSequencesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta/{+name}",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsRolloutSequencesRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsRolloutSequencesRequest>;
 
 export interface DeleteProjectsLocationsScopesRequest {
   /** Required. The Scope resource name in the format `projects/*\/locations/*\/scopes/*`. */
   name: string;
 }
-export const DeleteProjectsLocationsScopesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta/{+name}","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsScopesRequest" }) as any as S.Schema<DeleteProjectsLocationsScopesRequest>;
+export const DeleteProjectsLocationsScopesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta/{+name}",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsScopesRequest",
+}) as any as S.Schema<DeleteProjectsLocationsScopesRequest>;
 
 export interface DeleteProjectsLocationsScopesNamespacesRequest {
   /** Required. The Namespace resource name in the format `projects/*\/locations/*\/scopes/*\/namespaces/*`. */
   name: string;
 }
-export const DeleteProjectsLocationsScopesNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta/{+name}","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsScopesNamespacesRequest" }) as any as S.Schema<DeleteProjectsLocationsScopesNamespacesRequest>;
+export const DeleteProjectsLocationsScopesNamespacesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta/{+name}",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsScopesNamespacesRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsScopesNamespacesRequest>;
 
 export interface DeleteProjectsLocationsScopesRbacrolebindingsRequest {
   /** Required. The RBACRoleBinding resource name in the format `projects/*\/locations/*\/scopes/*\/rbacrolebindings/*`. */
   name: string;
 }
-export const DeleteProjectsLocationsScopesRbacrolebindingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta/{+name}","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsScopesRbacrolebindingsRequest" }) as any as S.Schema<DeleteProjectsLocationsScopesRbacrolebindingsRequest>;
+export const DeleteProjectsLocationsScopesRbacrolebindingsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta/{+name}",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsScopesRbacrolebindingsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsScopesRbacrolebindingsRequest>;
 
 /** Request message for force-completing a rollout stage. */
 export interface ForceCompleteRolloutStageRequest {
@@ -3498,10 +4611,12 @@ export interface ForceCompleteRolloutStageRequest {
   stageNumber?: number;
 }
 export const ForceCompleteRolloutStageRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "stageNumber": S.optional(S.Number),
-}),
-).annotate({ identifier: "ForceCompleteRolloutStageRequest" }) as any as S.Schema<ForceCompleteRolloutStageRequest>;
+  S.Struct({
+    stageNumber: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ForceCompleteRolloutStageRequest",
+}) as any as S.Schema<ForceCompleteRolloutStageRequest>;
 
 export interface ForceCompleteStageProjectsLocationsRolloutsRequest {
   /** Required. The name of the rollout. Format: projects/{project}/locations/{location}/rollouts/{rollout} */
@@ -3509,12 +4624,21 @@ export interface ForceCompleteStageProjectsLocationsRolloutsRequest {
   /** Request body */
   body?: ForceCompleteRolloutStageRequest;
 }
-export const ForceCompleteStageProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(ForceCompleteRolloutStageRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+name}:forceCompleteStage","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "ForceCompleteStageProjectsLocationsRolloutsRequest" }) as any as S.Schema<ForceCompleteStageProjectsLocationsRolloutsRequest>;
+export const ForceCompleteStageProjectsLocationsRolloutsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(ForceCompleteRolloutStageRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+name}:forceCompleteStage",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ForceCompleteStageProjectsLocationsRolloutsRequest",
+  }) as any as S.Schema<ForceCompleteStageProjectsLocationsRolloutsRequest>;
 
 export interface GenerateConnectManifestProjectsLocationsMembershipsRequest {
   /** Optional. The Connect agent version to use. Defaults to the most current version. */
@@ -3532,17 +4656,26 @@ export interface GenerateConnectManifestProjectsLocationsMembershipsRequest {
   /** Required. The Membership resource name the Agent will associate with, in the format `projects/*\/locations/*\/memberships/*`. */
   name: string;
 }
-export const GenerateConnectManifestProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "version": S.optional(S.String.pipe(T.Query())),
-  "isUpgrade": S.optional(S.Boolean.pipe(T.Query())),
-  "registry": S.optional(S.String.pipe(T.Query())),
-  "imagePullSecretContent": S.optional(S.String.pipe(T.Query())),
-  "proxy": S.optional(S.String.pipe(T.Query())),
-  "namespace": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}:generateConnectManifest","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "GenerateConnectManifestProjectsLocationsMembershipsRequest" }) as any as S.Schema<GenerateConnectManifestProjectsLocationsMembershipsRequest>;
+export const GenerateConnectManifestProjectsLocationsMembershipsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      version: S.optional(S.String.pipe(T.Query())),
+      isUpgrade: S.optional(S.Boolean.pipe(T.Query())),
+      registry: S.optional(S.String.pipe(T.Query())),
+      imagePullSecretContent: S.optional(S.String.pipe(T.Query())),
+      proxy: S.optional(S.String.pipe(T.Query())),
+      namespace: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/{+name}:generateConnectManifest",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GenerateConnectManifestProjectsLocationsMembershipsRequest",
+  }) as any as S.Schema<GenerateConnectManifestProjectsLocationsMembershipsRequest>;
 
 /** TypeMeta is the type information needed for content unmarshalling of Kubernetes resources in the manifest. */
 export interface TypeMeta {
@@ -3552,10 +4685,10 @@ export interface TypeMeta {
   apiVersion?: string;
 }
 export const TypeMeta = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "apiVersion": S.optional(S.String),
-}),
+  S.Struct({
+    kind: S.optional(S.String),
+    apiVersion: S.optional(S.String),
+  }),
 ).annotate({ identifier: "TypeMeta" }) as any as S.Schema<TypeMeta>;
 
 /** ConnectAgentResource represents a Kubernetes resource manifest for Connect Agent deployment. */
@@ -3566,14 +4699,18 @@ export interface ConnectAgentResource {
   manifest?: string;
 }
 export const ConnectAgentResource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(TypeMeta),
-  "manifest": S.optional(S.String),
-}),
-).annotate({ identifier: "ConnectAgentResource" }) as any as S.Schema<ConnectAgentResource>;
+  S.Struct({
+    type: S.optional(TypeMeta),
+    manifest: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConnectAgentResource",
+}) as any as S.Schema<ConnectAgentResource>;
 
 export type ConnectAgentResourceList = ReadonlyArray<ConnectAgentResource>;
-export const ConnectAgentResourceList = /*@__PURE__*/ S.Array(ConnectAgentResource) as any as S.Schema<ConnectAgentResourceList>;
+export const ConnectAgentResourceList = /*@__PURE__*/ S.Array(
+  ConnectAgentResource,
+) as any as S.Schema<ConnectAgentResourceList>;
 
 /** GenerateConnectManifestResponse contains manifest information for installing/upgrading a Connect agent. */
 export interface GenerateConnectManifestResponse {
@@ -3581,10 +4718,12 @@ export interface GenerateConnectManifestResponse {
   manifest?: ConnectAgentResourceList;
 }
 export const GenerateConnectManifestResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "manifest": S.optional(ConnectAgentResourceList),
-}),
-).annotate({ identifier: "GenerateConnectManifestResponse" }) as any as S.Schema<GenerateConnectManifestResponse>;
+  S.Struct({
+    manifest: S.optional(ConnectAgentResourceList),
+  }),
+).annotate({
+  identifier: "GenerateConnectManifestResponse",
+}) as any as S.Schema<GenerateConnectManifestResponse>;
 
 export interface GenerateMembershipRBACRoleBindingYAMLProjectsLocationsMembershipsRbacrolebindingsRequest {
   /** Required. Client chosen ID for the RBACRoleBinding. `rbacrolebinding_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters. */
@@ -3594,24 +4733,37 @@ export interface GenerateMembershipRBACRoleBindingYAMLProjectsLocationsMembershi
   /** Request body */
   body?: RBACRoleBinding;
 }
-export const GenerateMembershipRBACRoleBindingYAMLProjectsLocationsMembershipsRbacrolebindingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "rbacrolebindingId": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(RBACRoleBinding.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+parent}/rbacrolebindings:generateMembershipRBACRoleBindingYAML","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "GenerateMembershipRBACRoleBindingYAMLProjectsLocationsMembershipsRbacrolebindingsRequest" }) as any as S.Schema<GenerateMembershipRBACRoleBindingYAMLProjectsLocationsMembershipsRbacrolebindingsRequest>;
+export const GenerateMembershipRBACRoleBindingYAMLProjectsLocationsMembershipsRbacrolebindingsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      rbacrolebindingId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(RBACRoleBinding.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+parent}/rbacrolebindings:generateMembershipRBACRoleBindingYAML",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "GenerateMembershipRBACRoleBindingYAMLProjectsLocationsMembershipsRbacrolebindingsRequest",
+  }) as any as S.Schema<GenerateMembershipRBACRoleBindingYAMLProjectsLocationsMembershipsRbacrolebindingsRequest>;
 
 /** Response for GenerateRBACRoleBindingYAML. */
 export interface GenerateMembershipRBACRoleBindingYAMLResponse {
   /** a yaml text blob including the RBAC policies. */
   roleBindingsYaml?: string;
 }
-export const GenerateMembershipRBACRoleBindingYAMLResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "roleBindingsYaml": S.optional(S.String),
-}),
-).annotate({ identifier: "GenerateMembershipRBACRoleBindingYAMLResponse" }) as any as S.Schema<GenerateMembershipRBACRoleBindingYAMLResponse>;
+export const GenerateMembershipRBACRoleBindingYAMLResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      roleBindingsYaml: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GenerateMembershipRBACRoleBindingYAMLResponse",
+  }) as any as S.Schema<GenerateMembershipRBACRoleBindingYAMLResponse>;
 
 export interface GetIamPolicyProjectsLocationsFeaturesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -3619,14 +4771,27 @@ export interface GetIamPolicyProjectsLocationsFeaturesRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsFeaturesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+resource}:getIamPolicy","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "GetIamPolicyProjectsLocationsFeaturesRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsFeaturesRequest>;
+export const GetIamPolicyProjectsLocationsFeaturesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/{+resource}:getIamPolicy",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetIamPolicyProjectsLocationsFeaturesRequest",
+  }) as any as S.Schema<GetIamPolicyProjectsLocationsFeaturesRequest>;
 
-export type AuditLogConfigLogTypeEnum = "LOG_TYPE_UNSPECIFIED" | "ADMIN_READ" | "DATA_WRITE" | "DATA_READ";
+export type AuditLogConfigLogTypeEnum =
+  | "LOG_TYPE_UNSPECIFIED"
+  | "ADMIN_READ"
+  | "DATA_WRITE"
+  | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -3637,14 +4802,16 @@ export interface AuditLogConfig {
   exemptedMembers?: StringList;
 }
 export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "logType": S.optional(AuditLogConfigLogTypeEnum),
-  "exemptedMembers": S.optional(StringList),
-}),
+  S.Struct({
+    logType: S.optional(AuditLogConfigLogTypeEnum),
+    exemptedMembers: S.optional(StringList),
+  }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(AuditLogConfig) as any as S.Schema<AuditLogConfigList>;
+export const AuditLogConfigList = /*@__PURE__*/ S.Array(
+  AuditLogConfig,
+) as any as S.Schema<AuditLogConfigList>;
 
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface AuditConfig {
@@ -3654,14 +4821,16 @@ export interface AuditConfig {
   auditLogConfigs?: AuditLogConfigList;
 }
 export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "service": S.optional(S.String),
-  "auditLogConfigs": S.optional(AuditLogConfigList),
-}),
+  S.Struct({
+    service: S.optional(S.String),
+    auditLogConfigs: S.optional(AuditLogConfigList),
+  }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = ReadonlyArray<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
+export const AuditConfigList = /*@__PURE__*/ S.Array(
+  AuditConfig,
+) as any as S.Schema<AuditConfigList>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -3675,12 +4844,12 @@ export interface Expr {
   location?: string;
 }
 export const Expr = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "expression": S.optional(S.String),
-  "description": S.optional(S.String),
-  "title": S.optional(S.String),
-  "location": S.optional(S.String),
-}),
+  S.Struct({
+    expression: S.optional(S.String),
+    description: S.optional(S.String),
+    title: S.optional(S.String),
+    location: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
 /** Associates `members`, or principals, with a `role`. */
@@ -3693,15 +4862,17 @@ export interface Binding {
   condition?: Expr;
 }
 export const Binding = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "role": S.optional(S.String),
-  "members": S.optional(StringList),
-  "condition": S.optional(Expr),
-}),
+  S.Struct({
+    role: S.optional(S.String),
+    members: S.optional(StringList),
+    condition: S.optional(Expr),
+  }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = ReadonlyArray<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+export const BindingList = /*@__PURE__*/ S.Array(
+  Binding,
+) as any as S.Schema<BindingList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -3715,12 +4886,12 @@ export interface Policy {
   version?: number;
 }
 export const Policy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "auditConfigs": S.optional(AuditConfigList),
-  "etag": S.optional(S.String),
-  "bindings": S.optional(BindingList),
-  "version": S.optional(S.Number),
-}),
+  S.Struct({
+    auditConfigs: S.optional(AuditConfigList),
+    etag: S.optional(S.String),
+    bindings: S.optional(BindingList),
+    version: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
 
 export interface GetIamPolicyProjectsLocationsMembershipsRequest {
@@ -3729,12 +4900,21 @@ export interface GetIamPolicyProjectsLocationsMembershipsRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+resource}:getIamPolicy","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "GetIamPolicyProjectsLocationsMembershipsRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsMembershipsRequest>;
+export const GetIamPolicyProjectsLocationsMembershipsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/{+resource}:getIamPolicy",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetIamPolicyProjectsLocationsMembershipsRequest",
+  }) as any as S.Schema<GetIamPolicyProjectsLocationsMembershipsRequest>;
 
 export interface GetIamPolicyProjectsLocationsScopesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -3742,22 +4922,39 @@ export interface GetIamPolicyProjectsLocationsScopesRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsScopesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+resource}:getIamPolicy","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "GetIamPolicyProjectsLocationsScopesRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsScopesRequest>;
+export const GetIamPolicyProjectsLocationsScopesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/{+resource}:getIamPolicy",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetIamPolicyProjectsLocationsScopesRequest",
+  }) as any as S.Schema<GetIamPolicyProjectsLocationsScopesRequest>;
 
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://gkehub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsRequest",
+}) as any as S.Schema<GetProjectsLocationsRequest>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -3773,13 +4970,13 @@ export interface Location {
   displayName?: string;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "labels": S.optional(StringMap),
-  "metadata": S.optional(DocumentMap),
-  "name": S.optional(S.String),
-  "locationId": S.optional(S.String),
-  "displayName": S.optional(S.String),
-}),
+  S.Struct({
+    labels: S.optional(StringMap),
+    metadata: S.optional(DocumentMap),
+    name: S.optional(S.String),
+    locationId: S.optional(S.String),
+    displayName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export interface GetProjectsLocationsFeaturesRequest {
@@ -3789,73 +4986,136 @@ export interface GetProjectsLocationsFeaturesRequest {
   returnPartialSuccess?: boolean;
 }
 export const GetProjectsLocationsFeaturesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsFeaturesRequest" }) as any as S.Schema<GetProjectsLocationsFeaturesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://gkehub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsFeaturesRequest",
+}) as any as S.Schema<GetProjectsLocationsFeaturesRequest>;
 
 export interface GetProjectsLocationsFleetsRequest {
   /** Required. The Fleet resource name in the format `projects/*\/locations/*\/fleets/*`. */
   name: string;
 }
 export const GetProjectsLocationsFleetsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsFleetsRequest" }) as any as S.Schema<GetProjectsLocationsFleetsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://gkehub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsFleetsRequest",
+}) as any as S.Schema<GetProjectsLocationsFleetsRequest>;
 
 export interface GetProjectsLocationsMembershipsRequest {
   /** Required. The Membership resource name in the format `projects/*\/locations/*\/memberships/*`. */
   name: string;
 }
-export const GetProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsMembershipsRequest" }) as any as S.Schema<GetProjectsLocationsMembershipsRequest>;
+export const GetProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/{+name}",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsMembershipsRequest",
+}) as any as S.Schema<GetProjectsLocationsMembershipsRequest>;
 
 export interface GetProjectsLocationsMembershipsBindingsRequest {
   /** Required. The MembershipBinding resource name in the format `projects/*\/locations/*\/memberships/*\/bindings/*`. */
   name: string;
 }
-export const GetProjectsLocationsMembershipsBindingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsMembershipsBindingsRequest" }) as any as S.Schema<GetProjectsLocationsMembershipsBindingsRequest>;
+export const GetProjectsLocationsMembershipsBindingsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/{+name}",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsMembershipsBindingsRequest",
+  }) as any as S.Schema<GetProjectsLocationsMembershipsBindingsRequest>;
 
 export interface GetProjectsLocationsMembershipsRbacrolebindingsRequest {
   /** Required. The RBACRoleBinding resource name in the format `projects/*\/locations/*\/memberships/*\/rbacrolebindings/*`. */
   name: string;
 }
-export const GetProjectsLocationsMembershipsRbacrolebindingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsMembershipsRbacrolebindingsRequest" }) as any as S.Schema<GetProjectsLocationsMembershipsRbacrolebindingsRequest>;
+export const GetProjectsLocationsMembershipsRbacrolebindingsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/{+name}",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsMembershipsRbacrolebindingsRequest",
+  }) as any as S.Schema<GetProjectsLocationsMembershipsRbacrolebindingsRequest>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/{+name}",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsOperationsRequest",
+}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export interface GetProjectsLocationsRolloutsRequest {
   /** Required. The name of the rollout to retrieve. projects/{project}/locations/{location}/rollouts/{rollout} */
   name: string;
 }
 export const GetProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsRolloutsRequest" }) as any as S.Schema<GetProjectsLocationsRolloutsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://gkehub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsRolloutsRequest",
+}) as any as S.Schema<GetProjectsLocationsRolloutsRequest>;
 
-export type VersionUpgradeTypeEnum = "TYPE_UNSPECIFIED" | "TYPE_CONTROL_PLANE" | "TYPE_NODE_POOL";
+export type VersionUpgradeTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "TYPE_CONTROL_PLANE"
+  | "TYPE_NODE_POOL";
 export const VersionUpgradeTypeEnum = /*@__PURE__*/ S.String;
 
 /** Config for version upgrade of clusters. */
@@ -3866,13 +5126,19 @@ export interface VersionUpgrade {
   desiredVersion?: string;
 }
 export const VersionUpgrade = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(VersionUpgradeTypeEnum),
-  "desiredVersion": S.optional(S.String),
-}),
+  S.Struct({
+    type: S.optional(VersionUpgradeTypeEnum),
+    desiredVersion: S.optional(S.String),
+  }),
 ).annotate({ identifier: "VersionUpgrade" }) as any as S.Schema<VersionUpgrade>;
 
-export type RolloutStageStateEnum = "STATE_UNSPECIFIED" | "PENDING" | "RUNNING" | "SOAKING" | "COMPLETED" | "PAUSED";
+export type RolloutStageStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "PENDING"
+  | "RUNNING"
+  | "SOAKING"
+  | "COMPLETED"
+  | "PAUSED";
 export const RolloutStageStateEnum = /*@__PURE__*/ S.String;
 
 /** Stage represents a single stage in the Rollout. */
@@ -3893,30 +5159,54 @@ export interface RolloutStage {
   fleetProjects?: StringList;
 }
 export const RolloutStage = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "state": S.optional(RolloutStageStateEnum),
-  "startTime": S.optional(S.String),
-  "endTime": S.optional(S.String),
-  "soakDuration": S.optional(S.String),
-  "clusterSelector": S.optional(ClusterSelector),
-  "stageNumber": S.optional(S.Number),
-  "fleetProjects": S.optional(StringList),
-}),
+  S.Struct({
+    state: S.optional(RolloutStageStateEnum),
+    startTime: S.optional(S.String),
+    endTime: S.optional(S.String),
+    soakDuration: S.optional(S.String),
+    clusterSelector: S.optional(ClusterSelector),
+    stageNumber: S.optional(S.Number),
+    fleetProjects: S.optional(StringList),
+  }),
 ).annotate({ identifier: "RolloutStage" }) as any as S.Schema<RolloutStage>;
 
 export type RolloutStageList = ReadonlyArray<RolloutStage>;
-export const RolloutStageList = /*@__PURE__*/ S.Array(RolloutStage) as any as S.Schema<RolloutStageList>;
+export const RolloutStageList = /*@__PURE__*/ S.Array(
+  RolloutStage,
+) as any as S.Schema<RolloutStageList>;
 
 export type RolloutTriggerEnum = "ROLLOUT_TRIGGER_UNSPECIFIED" | "USER" | "GKE";
 export const RolloutTriggerEnum = /*@__PURE__*/ S.String;
 
-export type RolloutStateReasonTypeEnum = "STATE_REASON_TYPE_UNSPECIFIED" | "PAUSED_BY_USER" | "PAUSED_BY_SYSTEM_CONFIG" | "PAUSED_WAITING_FOR_NEXT_STAGE" | "CANCELLED_BY_USER" | "CANCELLED_PAUSED_TOO_LONG" | "CANCELLED_SUPERSEDED" | "CANCELLED_INCOMPATIBLE_ROLLOUT_SEQUENCE" | "CANCELLED_SUPERSEDED_BY_USER_ROLLOUT";
+export type RolloutStateReasonTypeEnum =
+  | "STATE_REASON_TYPE_UNSPECIFIED"
+  | "PAUSED_BY_USER"
+  | "PAUSED_BY_SYSTEM_CONFIG"
+  | "PAUSED_WAITING_FOR_NEXT_STAGE"
+  | "CANCELLED_BY_USER"
+  | "CANCELLED_PAUSED_TOO_LONG"
+  | "CANCELLED_SUPERSEDED"
+  | "CANCELLED_INCOMPATIBLE_ROLLOUT_SEQUENCE"
+  | "CANCELLED_SUPERSEDED_BY_USER_ROLLOUT";
 export const RolloutStateReasonTypeEnum = /*@__PURE__*/ S.String;
 
-export type RolloutIntentEnum = "ROLLOUT_INTENT_UNSPECIFIED" | "REGULAR_UPGRADE" | "CONTROL_PLANE_PATCH_ENFORCEMENT" | "END_OF_SUPPORT_ENFORCEMENT";
+export type RolloutIntentEnum =
+  | "ROLLOUT_INTENT_UNSPECIFIED"
+  | "REGULAR_UPGRADE"
+  | "CONTROL_PLANE_PATCH_ENFORCEMENT"
+  | "END_OF_SUPPORT_ENFORCEMENT";
 export const RolloutIntentEnum = /*@__PURE__*/ S.String;
 
-export type RolloutTargetStateEnum = "STATE_UNSPECIFIED" | "PENDING" | "RUNNING" | "FAILED" | "SUCCEEDED" | "PAUSED" | "REMOVED" | "INELIGIBLE" | "SKIPPED";
+export type RolloutTargetStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "PENDING"
+  | "RUNNING"
+  | "FAILED"
+  | "SUCCEEDED"
+  | "PAUSED"
+  | "REMOVED"
+  | "INELIGIBLE"
+  | "SKIPPED";
 export const RolloutTargetStateEnum = /*@__PURE__*/ S.String;
 
 /** Metadata about the status of targets (clusters or node pools) involved in the Rollout. */
@@ -3933,17 +5223,19 @@ export interface RolloutTarget {
   reason?: string;
 }
 export const RolloutTarget = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "cluster": S.optional(S.String),
-  "state": S.optional(RolloutTargetStateEnum),
-  "operation": S.optional(S.String),
-  "nodePool": S.optional(S.String),
-  "reason": S.optional(S.String),
-}),
+  S.Struct({
+    cluster: S.optional(S.String),
+    state: S.optional(RolloutTargetStateEnum),
+    operation: S.optional(S.String),
+    nodePool: S.optional(S.String),
+    reason: S.optional(S.String),
+  }),
 ).annotate({ identifier: "RolloutTarget" }) as any as S.Schema<RolloutTarget>;
 
 export type RolloutTargetList = ReadonlyArray<RolloutTarget>;
-export const RolloutTargetList = /*@__PURE__*/ S.Array(RolloutTarget) as any as S.Schema<RolloutTargetList>;
+export const RolloutTargetList = /*@__PURE__*/ S.Array(
+  RolloutTarget,
+) as any as S.Schema<RolloutTargetList>;
 
 /** Metadata about single cluster (GKE Hub membership) that's part of this Rollout. */
 export interface RolloutMembershipState {
@@ -3955,17 +5247,29 @@ export interface RolloutMembershipState {
   stageAssignment?: number;
 }
 export const RolloutMembershipState = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "targets": S.optional(RolloutTargetList),
-  "lastUpdateTime": S.optional(S.String),
-  "stageAssignment": S.optional(S.Number),
-}),
-).annotate({ identifier: "RolloutMembershipState" }) as any as S.Schema<RolloutMembershipState>;
+  S.Struct({
+    targets: S.optional(RolloutTargetList),
+    lastUpdateTime: S.optional(S.String),
+    stageAssignment: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "RolloutMembershipState",
+}) as any as S.Schema<RolloutMembershipState>;
 
-export type RolloutMembershipStateMap = { [key: string]: RolloutMembershipState | undefined };
-export const RolloutMembershipStateMap = /*@__PURE__*/ S.Record(S.String, RolloutMembershipState) as any as S.Schema<RolloutMembershipStateMap>;
+export type RolloutMembershipStateMap = {
+  [key: string]: RolloutMembershipState | undefined;
+};
+export const RolloutMembershipStateMap = /*@__PURE__*/ S.Record(
+  S.String,
+  RolloutMembershipState,
+) as any as S.Schema<RolloutMembershipStateMap>;
 
-export type RolloutStateEnum = "STATE_UNSPECIFIED" | "RUNNING" | "PAUSED" | "CANCELLED" | "COMPLETED";
+export type RolloutStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "RUNNING"
+  | "PAUSED"
+  | "CANCELLED"
+  | "COMPLETED";
 export const RolloutStateEnum = /*@__PURE__*/ S.String;
 
 /** Rollout contains the Rollout metadata and configuration. Next ID: 28 */
@@ -4008,67 +5312,102 @@ export interface Rollout {
   labels?: StringMap;
 }
 export const Rollout = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "versionUpgrade": S.optional(VersionUpgrade),
-  "stateReason": S.optional(S.String),
-  "stages": S.optional(RolloutStageList),
-  "rolloutSequence": S.optional(S.String),
-  "name": S.optional(S.String),
-  "trigger": S.optional(RolloutTriggerEnum),
-  "displayName": S.optional(S.String),
-  "stateReasonType": S.optional(RolloutStateReasonTypeEnum),
-  "intent": S.optional(RolloutIntentEnum),
-  "uid": S.optional(S.String),
-  "completeTime": S.optional(S.String),
-  "membershipStates": S.optional(RolloutMembershipStateMap),
-  "etag": S.optional(S.String),
-  "deleteTime": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "state": S.optional(RolloutStateEnum),
-  "createTime": S.optional(S.String),
-  "labels": S.optional(StringMap),
-}),
+  S.Struct({
+    versionUpgrade: S.optional(VersionUpgrade),
+    stateReason: S.optional(S.String),
+    stages: S.optional(RolloutStageList),
+    rolloutSequence: S.optional(S.String),
+    name: S.optional(S.String),
+    trigger: S.optional(RolloutTriggerEnum),
+    displayName: S.optional(S.String),
+    stateReasonType: S.optional(RolloutStateReasonTypeEnum),
+    intent: S.optional(RolloutIntentEnum),
+    uid: S.optional(S.String),
+    completeTime: S.optional(S.String),
+    membershipStates: S.optional(RolloutMembershipStateMap),
+    etag: S.optional(S.String),
+    deleteTime: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    state: S.optional(RolloutStateEnum),
+    createTime: S.optional(S.String),
+    labels: S.optional(StringMap),
+  }),
 ).annotate({ identifier: "Rollout" }) as any as S.Schema<Rollout>;
 
 export interface GetProjectsLocationsRolloutSequencesRequest {
   /** Required. The name of the rollout sequence to retrieve. projects/{project}/locations/{location}/rolloutSequences/{rollout_sequence} */
   name: string;
 }
-export const GetProjectsLocationsRolloutSequencesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsRolloutSequencesRequest" }) as any as S.Schema<GetProjectsLocationsRolloutSequencesRequest>;
+export const GetProjectsLocationsRolloutSequencesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/{+name}",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsRolloutSequencesRequest",
+  }) as any as S.Schema<GetProjectsLocationsRolloutSequencesRequest>;
 
 export interface GetProjectsLocationsScopesRequest {
   /** Required. The Scope resource name in the format `projects/*\/locations/*\/scopes/*`. */
   name: string;
 }
 export const GetProjectsLocationsScopesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsScopesRequest" }) as any as S.Schema<GetProjectsLocationsScopesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://gkehub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsScopesRequest",
+}) as any as S.Schema<GetProjectsLocationsScopesRequest>;
 
 export interface GetProjectsLocationsScopesNamespacesRequest {
   /** Required. The Namespace resource name in the format `projects/*\/locations/*\/scopes/*\/namespaces/*`. */
   name: string;
 }
-export const GetProjectsLocationsScopesNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsScopesNamespacesRequest" }) as any as S.Schema<GetProjectsLocationsScopesNamespacesRequest>;
+export const GetProjectsLocationsScopesNamespacesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/{+name}",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsScopesNamespacesRequest",
+  }) as any as S.Schema<GetProjectsLocationsScopesNamespacesRequest>;
 
 export interface GetProjectsLocationsScopesRbacrolebindingsRequest {
   /** Required. The RBACRoleBinding resource name in the format `projects/*\/locations/*\/scopes/*\/rbacrolebindings/*`. */
   name: string;
 }
-export const GetProjectsLocationsScopesRbacrolebindingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsScopesRbacrolebindingsRequest" }) as any as S.Schema<GetProjectsLocationsScopesRbacrolebindingsRequest>;
+export const GetProjectsLocationsScopesRbacrolebindingsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/{+name}",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsScopesRbacrolebindingsRequest",
+  }) as any as S.Schema<GetProjectsLocationsScopesRbacrolebindingsRequest>;
 
 export interface ListMembershipsProjectsLocationsScopesRequest {
   /** Optional. Lists Memberships that match the filter expression, following the syntax outlined in https://google.aip.dev/160. Currently, filtering can be done only based on Memberships's `name`, `labels`, `create_time`, `update_time`, and `unique_id`. */
@@ -4080,17 +5419,28 @@ export interface ListMembershipsProjectsLocationsScopesRequest {
   /** Optional. When requesting a 'page' of resources, `page_size` specifies number of resources to return. If unspecified or set to 0, all resources will be returned. Pagination is currently not supported; therefore, setting this field does not have any impact for now. */
   pageSize?: number;
 }
-export const ListMembershipsProjectsLocationsScopesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "scopeName": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+scopeName}:listMemberships","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "ListMembershipsProjectsLocationsScopesRequest" }) as any as S.Schema<ListMembershipsProjectsLocationsScopesRequest>;
+export const ListMembershipsProjectsLocationsScopesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      filter: S.optional(S.String.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      scopeName: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/{+scopeName}:listMemberships",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListMembershipsProjectsLocationsScopesRequest",
+  }) as any as S.Schema<ListMembershipsProjectsLocationsScopesRequest>;
 
 export type MembershipList = ReadonlyArray<Membership>;
-export const MembershipList = /*@__PURE__*/ S.Array(Membership) as any as S.Schema<MembershipList>;
+export const MembershipList = /*@__PURE__*/ S.Array(
+  Membership,
+) as any as S.Schema<MembershipList>;
 
 /** List of Memberships bound to a Scope. */
 export interface ListBoundMembershipsResponse {
@@ -4102,12 +5452,14 @@ export interface ListBoundMembershipsResponse {
   memberships?: MembershipList;
 }
 export const ListBoundMembershipsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "unreachable": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-  "memberships": S.optional(MembershipList),
-}),
-).annotate({ identifier: "ListBoundMembershipsResponse" }) as any as S.Schema<ListBoundMembershipsResponse>;
+  S.Struct({
+    unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+    memberships: S.optional(MembershipList),
+  }),
+).annotate({
+  identifier: "ListBoundMembershipsResponse",
+}) as any as S.Schema<ListBoundMembershipsResponse>;
 
 export interface ListOrganizationsLocationsFleetsRequest {
   /** Optional. The maximum number of fleets to return. The service may return fewer than this value. If unspecified, at most 200 fleets will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
@@ -4117,16 +5469,27 @@ export interface ListOrganizationsLocationsFleetsRequest {
   /** Optional. A page token, received from a previous `ListFleets` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListFleets` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListOrganizationsLocationsFleetsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+parent}/fleets","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "ListOrganizationsLocationsFleetsRequest" }) as any as S.Schema<ListOrganizationsLocationsFleetsRequest>;
+export const ListOrganizationsLocationsFleetsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/{+parent}/fleets",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListOrganizationsLocationsFleetsRequest",
+}) as any as S.Schema<ListOrganizationsLocationsFleetsRequest>;
 
 export type FleetList = ReadonlyArray<Fleet>;
-export const FleetList = /*@__PURE__*/ S.Array(Fleet) as any as S.Schema<FleetList>;
+export const FleetList = /*@__PURE__*/ S.Array(
+  Fleet,
+) as any as S.Schema<FleetList>;
 
 /** Response message for the `GkeHub.ListFleetsResponse` method. */
 export interface ListFleetsResponse {
@@ -4136,11 +5499,13 @@ export interface ListFleetsResponse {
   fleets?: FleetList;
 }
 export const ListFleetsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "fleets": S.optional(FleetList),
-}),
-).annotate({ identifier: "ListFleetsResponse" }) as any as S.Schema<ListFleetsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    fleets: S.optional(FleetList),
+  }),
+).annotate({
+  identifier: "ListFleetsResponse",
+}) as any as S.Schema<ListFleetsResponse>;
 
 export interface ListPermittedProjectsLocationsScopesRequest {
   /** Optional. Token returned by previous call to `ListPermittedScopes` which specifies the position in the list from where to continue listing the resources. */
@@ -4150,16 +5515,27 @@ export interface ListPermittedProjectsLocationsScopesRequest {
   /** Optional. When requesting a 'page' of resources, `page_size` specifies number of resources to return. If unspecified or set to 0, all resources will be returned. */
   pageSize?: number;
 }
-export const ListPermittedProjectsLocationsScopesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+parent}/scopes:listPermitted","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "ListPermittedProjectsLocationsScopesRequest" }) as any as S.Schema<ListPermittedProjectsLocationsScopesRequest>;
+export const ListPermittedProjectsLocationsScopesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/{+parent}/scopes:listPermitted",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListPermittedProjectsLocationsScopesRequest",
+  }) as any as S.Schema<ListPermittedProjectsLocationsScopesRequest>;
 
 export type ScopeList = ReadonlyArray<Scope>;
-export const ScopeList = /*@__PURE__*/ S.Array(Scope) as any as S.Schema<ScopeList>;
+export const ScopeList = /*@__PURE__*/ S.Array(
+  Scope,
+) as any as S.Schema<ScopeList>;
 
 /** List of permitted Scopes. */
 export interface ListPermittedScopesResponse {
@@ -4169,11 +5545,13 @@ export interface ListPermittedScopesResponse {
   scopes?: ScopeList;
 }
 export const ListPermittedScopesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "scopes": S.optional(ScopeList),
-}),
-).annotate({ identifier: "ListPermittedScopesResponse" }) as any as S.Schema<ListPermittedScopesResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    scopes: S.optional(ScopeList),
+  }),
+).annotate({
+  identifier: "ListPermittedScopesResponse",
+}) as any as S.Schema<ListPermittedScopesResponse>;
 
 export interface ListProjectsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
@@ -4188,17 +5566,27 @@ export interface ListProjectsLocationsRequest {
   extraLocationTypes?: StringList;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}/locations","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+name}/locations",
+      baseUrl: "https://gkehub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsRequest",
+}) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(
+  Location,
+) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -4208,11 +5596,13 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locations": S.optional(LocationList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
+  S.Struct({
+    locations: S.optional(LocationList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListLocationsResponse",
+}) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsLocationsFeaturesRequest {
   /** Optional. If set to true, the response will return partial results when some regions are unreachable and the unreachable field in Feature proto will be populated. If set to false, the request will fail when some regions are unreachable. */
@@ -4228,19 +5618,30 @@ export interface ListProjectsLocationsFeaturesRequest {
   /** Required. The parent (project and location) where the Features will be listed. Specified in the format `projects/*\/locations/*`. */
   parent: string;
 }
-export const ListProjectsLocationsFeaturesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+parent}/features","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsFeaturesRequest" }) as any as S.Schema<ListProjectsLocationsFeaturesRequest>;
+export const ListProjectsLocationsFeaturesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/{+parent}/features",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsFeaturesRequest",
+}) as any as S.Schema<ListProjectsLocationsFeaturesRequest>;
 
 export type FeatureList = ReadonlyArray<Feature>;
-export const FeatureList = /*@__PURE__*/ S.Array(Feature) as any as S.Schema<FeatureList>;
+export const FeatureList = /*@__PURE__*/ S.Array(
+  Feature,
+) as any as S.Schema<FeatureList>;
 
 /** Response message for the `GkeHub.ListFeatures` method. */
 export interface ListFeaturesResponse {
@@ -4250,11 +5651,13 @@ export interface ListFeaturesResponse {
   nextPageToken?: string;
 }
 export const ListFeaturesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resources": S.optional(FeatureList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListFeaturesResponse" }) as any as S.Schema<ListFeaturesResponse>;
+  S.Struct({
+    resources: S.optional(FeatureList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListFeaturesResponse",
+}) as any as S.Schema<ListFeaturesResponse>;
 
 export interface ListProjectsLocationsFleetsRequest {
   /** Required. The organization or project to list for Fleets under, in the format `organizations/*\/locations/*` or `projects/*\/locations/*`. */
@@ -4265,12 +5668,20 @@ export interface ListProjectsLocationsFleetsRequest {
   pageToken?: string;
 }
 export const ListProjectsLocationsFleetsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+parent}/fleets","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsFleetsRequest" }) as any as S.Schema<ListProjectsLocationsFleetsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+parent}/fleets",
+      baseUrl: "https://gkehub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsFleetsRequest",
+}) as any as S.Schema<ListProjectsLocationsFleetsRequest>;
 
 export interface ListProjectsLocationsMembershipsRequest {
   /** Required. The parent (project and location) where the Memberships will be listed. Specified in the format `projects/*\/locations/*`. `projects/*\/locations/-` list memberships in all the regions. */
@@ -4284,15 +5695,24 @@ export interface ListProjectsLocationsMembershipsRequest {
   /** Optional. Token returned by previous call to `ListMemberships` which specifies the position in the list from where to continue listing the resources. */
   pageToken?: string;
 }
-export const ListProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+parent}/memberships","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsMembershipsRequest" }) as any as S.Schema<ListProjectsLocationsMembershipsRequest>;
+export const ListProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      filter: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/{+parent}/memberships",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsMembershipsRequest",
+}) as any as S.Schema<ListProjectsLocationsMembershipsRequest>;
 
 /** Response message for the `GkeHub.ListMemberships` method. */
 export interface ListMembershipsResponse {
@@ -4304,12 +5724,14 @@ export interface ListMembershipsResponse {
   unreachable?: StringList;
 }
 export const ListMembershipsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resources": S.optional(MembershipList),
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListMembershipsResponse" }) as any as S.Schema<ListMembershipsResponse>;
+  S.Struct({
+    resources: S.optional(MembershipList),
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListMembershipsResponse",
+}) as any as S.Schema<ListMembershipsResponse>;
 
 export interface ListProjectsLocationsMembershipsBindingsRequest {
   /** Optional. When requesting a 'page' of resources, `page_size` specifies number of resources to return. If unspecified or set to 0, all resources will be returned. */
@@ -4321,17 +5743,28 @@ export interface ListProjectsLocationsMembershipsBindingsRequest {
   /** Optional. Lists MembershipBindings that match the filter expression, following the syntax outlined in https://google.aip.dev/160. */
   filter?: string;
 }
-export const ListProjectsLocationsMembershipsBindingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+parent}/bindings","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsMembershipsBindingsRequest" }) as any as S.Schema<ListProjectsLocationsMembershipsBindingsRequest>;
+export const ListProjectsLocationsMembershipsBindingsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/{+parent}/bindings",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsMembershipsBindingsRequest",
+  }) as any as S.Schema<ListProjectsLocationsMembershipsBindingsRequest>;
 
 export type MembershipBindingList = ReadonlyArray<MembershipBinding>;
-export const MembershipBindingList = /*@__PURE__*/ S.Array(MembershipBinding) as any as S.Schema<MembershipBindingList>;
+export const MembershipBindingList = /*@__PURE__*/ S.Array(
+  MembershipBinding,
+) as any as S.Schema<MembershipBindingList>;
 
 /** List of MembershipBindings. */
 export interface ListMembershipBindingsResponse {
@@ -4343,12 +5776,14 @@ export interface ListMembershipBindingsResponse {
   nextPageToken?: string;
 }
 export const ListMembershipBindingsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "membershipBindings": S.optional(MembershipBindingList),
-  "unreachable": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListMembershipBindingsResponse" }) as any as S.Schema<ListMembershipBindingsResponse>;
+  S.Struct({
+    membershipBindings: S.optional(MembershipBindingList),
+    unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListMembershipBindingsResponse",
+}) as any as S.Schema<ListMembershipBindingsResponse>;
 
 export interface ListProjectsLocationsMembershipsRbacrolebindingsRequest {
   /** Optional. Token returned by previous call to `ListMembershipRBACRoleBindings` which specifies the position in the list from where to continue listing the resources. */
@@ -4358,16 +5793,27 @@ export interface ListProjectsLocationsMembershipsRbacrolebindingsRequest {
   /** Optional. When requesting a 'page' of resources, `page_size` specifies number of resources to return. If unspecified or set to 0, all resources will be returned. */
   pageSize?: number;
 }
-export const ListProjectsLocationsMembershipsRbacrolebindingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+parent}/rbacrolebindings","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsMembershipsRbacrolebindingsRequest" }) as any as S.Schema<ListProjectsLocationsMembershipsRbacrolebindingsRequest>;
+export const ListProjectsLocationsMembershipsRbacrolebindingsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/{+parent}/rbacrolebindings",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsMembershipsRbacrolebindingsRequest",
+  }) as any as S.Schema<ListProjectsLocationsMembershipsRbacrolebindingsRequest>;
 
 export type RBACRoleBindingList = ReadonlyArray<RBACRoleBinding>;
-export const RBACRoleBindingList = /*@__PURE__*/ S.Array(RBACRoleBinding) as any as S.Schema<RBACRoleBindingList>;
+export const RBACRoleBindingList = /*@__PURE__*/ S.Array(
+  RBACRoleBinding,
+) as any as S.Schema<RBACRoleBindingList>;
 
 /** List of Membership RBACRoleBindings. */
 export interface ListMembershipRBACRoleBindingsResponse {
@@ -4378,13 +5824,16 @@ export interface ListMembershipRBACRoleBindingsResponse {
   /** List of locations that could not be reached while fetching this list. */
   unreachable?: StringList;
 }
-export const ListMembershipRBACRoleBindingsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "rbacrolebindings": S.optional(RBACRoleBindingList),
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListMembershipRBACRoleBindingsResponse" }) as any as S.Schema<ListMembershipRBACRoleBindingsResponse>;
+export const ListMembershipRBACRoleBindingsResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      rbacrolebindings: S.optional(RBACRoleBindingList),
+      nextPageToken: S.optional(S.String),
+      unreachable: S.optional(StringList),
+    }),
+).annotate({
+  identifier: "ListMembershipRBACRoleBindingsResponse",
+}) as any as S.Schema<ListMembershipRBACRoleBindingsResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page size. */
@@ -4398,18 +5847,29 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}/operations","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/{+name}/operations",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsOperationsRequest",
+}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(
+  Operation,
+) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -4421,12 +5881,14 @@ export interface ListOperationsResponse {
   nextPageToken?: string;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "operations": S.optional(OperationList),
-  "unreachable": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
+  S.Struct({
+    operations: S.optional(OperationList),
+    unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListOperationsResponse",
+}) as any as S.Schema<ListOperationsResponse>;
 
 export interface ListProjectsLocationsRolloutsRequest {
   /** A page token, received from a previous `ListRollouts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListRollouts` must match the call that provided the page token. */
@@ -4438,17 +5900,28 @@ export interface ListProjectsLocationsRolloutsRequest {
   /** Required. The parent, which owns this collection of rollout. Format: projects/{project}/locations/{location} */
   parent: string;
 }
-export const ListProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+parent}/rollouts","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsRolloutsRequest" }) as any as S.Schema<ListProjectsLocationsRolloutsRequest>;
+export const ListProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/{+parent}/rollouts",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsRolloutsRequest",
+}) as any as S.Schema<ListProjectsLocationsRolloutsRequest>;
 
 export type RolloutList = ReadonlyArray<Rollout>;
-export const RolloutList = /*@__PURE__*/ S.Array(Rollout) as any as S.Schema<RolloutList>;
+export const RolloutList = /*@__PURE__*/ S.Array(
+  Rollout,
+) as any as S.Schema<RolloutList>;
 
 /** Response message for listing rollouts. */
 export interface ListRolloutsResponse {
@@ -4458,11 +5931,13 @@ export interface ListRolloutsResponse {
   nextPageToken?: string;
 }
 export const ListRolloutsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "rollouts": S.optional(RolloutList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListRolloutsResponse" }) as any as S.Schema<ListRolloutsResponse>;
+  S.Struct({
+    rollouts: S.optional(RolloutList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListRolloutsResponse",
+}) as any as S.Schema<ListRolloutsResponse>;
 
 export interface ListProjectsLocationsRolloutSequencesRequest {
   /** Optional. A page token, received from a previous `ListRolloutSequences` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListRolloutSequences` must match the call that provided the page token. */
@@ -4474,17 +5949,28 @@ export interface ListProjectsLocationsRolloutSequencesRequest {
   /** Required. The parent, which owns this collection of rollout sequences. Format: projects/{project}/locations/{location} */
   parent: string;
 }
-export const ListProjectsLocationsRolloutSequencesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+parent}/rolloutSequences","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsRolloutSequencesRequest" }) as any as S.Schema<ListProjectsLocationsRolloutSequencesRequest>;
+export const ListProjectsLocationsRolloutSequencesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/{+parent}/rolloutSequences",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsRolloutSequencesRequest",
+  }) as any as S.Schema<ListProjectsLocationsRolloutSequencesRequest>;
 
 export type RolloutSequenceList = ReadonlyArray<RolloutSequence>;
-export const RolloutSequenceList = /*@__PURE__*/ S.Array(RolloutSequence) as any as S.Schema<RolloutSequenceList>;
+export const RolloutSequenceList = /*@__PURE__*/ S.Array(
+  RolloutSequence,
+) as any as S.Schema<RolloutSequenceList>;
 
 /** Response message for listing rollout sequences. */
 export interface ListRolloutSequencesResponse {
@@ -4494,11 +5980,13 @@ export interface ListRolloutSequencesResponse {
   nextPageToken?: string;
 }
 export const ListRolloutSequencesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "rolloutSequences": S.optional(RolloutSequenceList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListRolloutSequencesResponse" }) as any as S.Schema<ListRolloutSequencesResponse>;
+  S.Struct({
+    rolloutSequences: S.optional(RolloutSequenceList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListRolloutSequencesResponse",
+}) as any as S.Schema<ListRolloutSequencesResponse>;
 
 export interface ListProjectsLocationsScopesRequest {
   /** Optional. When requesting a 'page' of resources, `page_size` specifies number of resources to return. If unspecified or set to 0, all resources will be returned. */
@@ -4509,12 +5997,20 @@ export interface ListProjectsLocationsScopesRequest {
   pageToken?: string;
 }
 export const ListProjectsLocationsScopesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+parent}/scopes","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsScopesRequest" }) as any as S.Schema<ListProjectsLocationsScopesRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+parent}/scopes",
+      baseUrl: "https://gkehub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsScopesRequest",
+}) as any as S.Schema<ListProjectsLocationsScopesRequest>;
 
 /** List of Scopes. */
 export interface ListScopesResponse {
@@ -4524,11 +6020,13 @@ export interface ListScopesResponse {
   scopes?: ScopeList;
 }
 export const ListScopesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "scopes": S.optional(ScopeList),
-}),
-).annotate({ identifier: "ListScopesResponse" }) as any as S.Schema<ListScopesResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    scopes: S.optional(ScopeList),
+  }),
+).annotate({
+  identifier: "ListScopesResponse",
+}) as any as S.Schema<ListScopesResponse>;
 
 export interface ListProjectsLocationsScopesNamespacesRequest {
   /** Optional. When requesting a 'page' of resources, `page_size` specifies number of resources to return. If unspecified or set to 0, all resources will be returned. */
@@ -4538,16 +6036,27 @@ export interface ListProjectsLocationsScopesNamespacesRequest {
   /** Optional. Token returned by previous call to `ListFeatures` which specifies the position in the list from where to continue listing the resources. */
   pageToken?: string;
 }
-export const ListProjectsLocationsScopesNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+parent}/namespaces","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsScopesNamespacesRequest" }) as any as S.Schema<ListProjectsLocationsScopesNamespacesRequest>;
+export const ListProjectsLocationsScopesNamespacesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/{+parent}/namespaces",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsScopesNamespacesRequest",
+  }) as any as S.Schema<ListProjectsLocationsScopesNamespacesRequest>;
 
 export type NamespaceList = ReadonlyArray<Namespace>;
-export const NamespaceList = /*@__PURE__*/ S.Array(Namespace) as any as S.Schema<NamespaceList>;
+export const NamespaceList = /*@__PURE__*/ S.Array(
+  Namespace,
+) as any as S.Schema<NamespaceList>;
 
 /** List of fleet namespaces. */
 export interface ListScopeNamespacesResponse {
@@ -4557,11 +6066,13 @@ export interface ListScopeNamespacesResponse {
   nextPageToken?: string;
 }
 export const ListScopeNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "scopeNamespaces": S.optional(NamespaceList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListScopeNamespacesResponse" }) as any as S.Schema<ListScopeNamespacesResponse>;
+  S.Struct({
+    scopeNamespaces: S.optional(NamespaceList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListScopeNamespacesResponse",
+}) as any as S.Schema<ListScopeNamespacesResponse>;
 
 export interface ListProjectsLocationsScopesRbacrolebindingsRequest {
   /** Optional. When requesting a 'page' of resources, `page_size` specifies number of resources to return. If unspecified or set to 0, all resources will be returned. */
@@ -4571,13 +6082,22 @@ export interface ListProjectsLocationsScopesRbacrolebindingsRequest {
   /** Optional. Token returned by previous call to `ListScopeRBACRoleBindings` which specifies the position in the list from where to continue listing the resources. */
   pageToken?: string;
 }
-export const ListProjectsLocationsScopesRbacrolebindingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+parent}/rbacrolebindings","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsScopesRbacrolebindingsRequest" }) as any as S.Schema<ListProjectsLocationsScopesRbacrolebindingsRequest>;
+export const ListProjectsLocationsScopesRbacrolebindingsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/{+parent}/rbacrolebindings",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsScopesRbacrolebindingsRequest",
+  }) as any as S.Schema<ListProjectsLocationsScopesRbacrolebindingsRequest>;
 
 /** List of Scope RBACRoleBindings. */
 export interface ListScopeRBACRoleBindingsResponse {
@@ -4587,11 +6107,13 @@ export interface ListScopeRBACRoleBindingsResponse {
   nextPageToken?: string;
 }
 export const ListScopeRBACRoleBindingsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "rbacrolebindings": S.optional(RBACRoleBindingList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListScopeRBACRoleBindingsResponse" }) as any as S.Schema<ListScopeRBACRoleBindingsResponse>;
+  S.Struct({
+    rbacrolebindings: S.optional(RBACRoleBindingList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListScopeRBACRoleBindingsResponse",
+}) as any as S.Schema<ListScopeRBACRoleBindingsResponse>;
 
 export interface PatchProjectsLocationsFeaturesRequest {
   /** Mask of fields to update. */
@@ -4603,14 +6125,23 @@ export interface PatchProjectsLocationsFeaturesRequest {
   /** Request body */
   body?: Feature;
 }
-export const PatchProjectsLocationsFeaturesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Feature.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta/{+name}","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsFeaturesRequest" }) as any as S.Schema<PatchProjectsLocationsFeaturesRequest>;
+export const PatchProjectsLocationsFeaturesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Feature.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta/{+name}",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "PatchProjectsLocationsFeaturesRequest",
+}) as any as S.Schema<PatchProjectsLocationsFeaturesRequest>;
 
 export interface PatchProjectsLocationsFleetsRequest {
   /** Output only. The full, unique resource name of this fleet in the format of `projects/{project}/locations/{location}/fleets/{fleet}`. Each Google Cloud project can have at most one fleet resource, named "default". */
@@ -4621,12 +6152,20 @@ export interface PatchProjectsLocationsFleetsRequest {
   body?: Fleet;
 }
 export const PatchProjectsLocationsFleetsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Fleet.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta/{+name}","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsFleetsRequest" }) as any as S.Schema<PatchProjectsLocationsFleetsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(Fleet.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://gkehub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchProjectsLocationsFleetsRequest",
+}) as any as S.Schema<PatchProjectsLocationsFleetsRequest>;
 
 export interface PatchProjectsLocationsMembershipsRequest {
   /** Required. Mask of fields to update. */
@@ -4638,14 +6177,23 @@ export interface PatchProjectsLocationsMembershipsRequest {
   /** Request body */
   body?: Membership;
 }
-export const PatchProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Membership.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta/{+name}","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsMembershipsRequest" }) as any as S.Schema<PatchProjectsLocationsMembershipsRequest>;
+export const PatchProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Membership.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta/{+name}",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "PatchProjectsLocationsMembershipsRequest",
+}) as any as S.Schema<PatchProjectsLocationsMembershipsRequest>;
 
 export interface PatchProjectsLocationsMembershipsBindingsRequest {
   /** The resource name for the membershipbinding itself `projects/{project}/locations/{location}/memberships/{membership}/bindings/{membershipbinding}` */
@@ -4655,13 +6203,22 @@ export interface PatchProjectsLocationsMembershipsBindingsRequest {
   /** Request body */
   body?: MembershipBinding;
 }
-export const PatchProjectsLocationsMembershipsBindingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(MembershipBinding.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta/{+name}","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsMembershipsBindingsRequest" }) as any as S.Schema<PatchProjectsLocationsMembershipsBindingsRequest>;
+export const PatchProjectsLocationsMembershipsBindingsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(MembershipBinding.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta/{+name}",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsMembershipsBindingsRequest",
+  }) as any as S.Schema<PatchProjectsLocationsMembershipsBindingsRequest>;
 
 export interface PatchProjectsLocationsMembershipsRbacrolebindingsRequest {
   /** The resource name for the rbacrolebinding `projects/{project}/locations/{location}/scopes/{scope}/rbacrolebindings/{rbacrolebinding}` or `projects/{project}/locations/{location}/memberships/{membership}/rbacrolebindings/{rbacrolebinding}` */
@@ -4671,13 +6228,22 @@ export interface PatchProjectsLocationsMembershipsRbacrolebindingsRequest {
   /** Request body */
   body?: RBACRoleBinding;
 }
-export const PatchProjectsLocationsMembershipsRbacrolebindingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(RBACRoleBinding.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta/{+name}","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsMembershipsRbacrolebindingsRequest" }) as any as S.Schema<PatchProjectsLocationsMembershipsRbacrolebindingsRequest>;
+export const PatchProjectsLocationsMembershipsRbacrolebindingsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(RBACRoleBinding.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta/{+name}",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsMembershipsRbacrolebindingsRequest",
+  }) as any as S.Schema<PatchProjectsLocationsMembershipsRbacrolebindingsRequest>;
 
 export interface PatchProjectsLocationsRolloutSequencesRequest {
   /** Identifier. Name of the rollout sequence in the format of: projects/{PROJECT_ID}/locations/global/rolloutSequences/{NAME} */
@@ -4687,13 +6253,22 @@ export interface PatchProjectsLocationsRolloutSequencesRequest {
   /** Request body */
   body?: RolloutSequence;
 }
-export const PatchProjectsLocationsRolloutSequencesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(RolloutSequence.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta/{+name}","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsRolloutSequencesRequest" }) as any as S.Schema<PatchProjectsLocationsRolloutSequencesRequest>;
+export const PatchProjectsLocationsRolloutSequencesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(RolloutSequence.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta/{+name}",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsRolloutSequencesRequest",
+  }) as any as S.Schema<PatchProjectsLocationsRolloutSequencesRequest>;
 
 export interface PatchProjectsLocationsScopesRequest {
   /** The resource name for the scope `projects/{project}/locations/{location}/scopes/{scope}` */
@@ -4704,12 +6279,20 @@ export interface PatchProjectsLocationsScopesRequest {
   body?: Scope;
 }
 export const PatchProjectsLocationsScopesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Scope.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta/{+name}","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsScopesRequest" }) as any as S.Schema<PatchProjectsLocationsScopesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(Scope.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://gkehub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchProjectsLocationsScopesRequest",
+}) as any as S.Schema<PatchProjectsLocationsScopesRequest>;
 
 export interface PatchProjectsLocationsScopesNamespacesRequest {
   /** The resource name for the namespace `projects/{project}/locations/{location}/namespaces/{namespace}` */
@@ -4719,13 +6302,22 @@ export interface PatchProjectsLocationsScopesNamespacesRequest {
   /** Request body */
   body?: Namespace;
 }
-export const PatchProjectsLocationsScopesNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Namespace.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta/{+name}","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsScopesNamespacesRequest" }) as any as S.Schema<PatchProjectsLocationsScopesNamespacesRequest>;
+export const PatchProjectsLocationsScopesNamespacesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Namespace.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta/{+name}",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsScopesNamespacesRequest",
+  }) as any as S.Schema<PatchProjectsLocationsScopesNamespacesRequest>;
 
 export interface PatchProjectsLocationsScopesRbacrolebindingsRequest {
   /** The resource name for the rbacrolebinding `projects/{project}/locations/{location}/scopes/{scope}/rbacrolebindings/{rbacrolebinding}` or `projects/{project}/locations/{location}/memberships/{membership}/rbacrolebindings/{rbacrolebinding}` */
@@ -4735,19 +6327,30 @@ export interface PatchProjectsLocationsScopesRbacrolebindingsRequest {
   /** Request body */
   body?: RBACRoleBinding;
 }
-export const PatchProjectsLocationsScopesRbacrolebindingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(RBACRoleBinding.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta/{+name}","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsScopesRbacrolebindingsRequest" }) as any as S.Schema<PatchProjectsLocationsScopesRbacrolebindingsRequest>;
+export const PatchProjectsLocationsScopesRbacrolebindingsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(RBACRoleBinding.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta/{+name}",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsScopesRbacrolebindingsRequest",
+  }) as any as S.Schema<PatchProjectsLocationsScopesRbacrolebindingsRequest>;
 
 /** Request message for pausing a rollout. */
 export interface PauseRolloutRequest {}
 export const PauseRolloutRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "PauseRolloutRequest" }) as any as S.Schema<PauseRolloutRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "PauseRolloutRequest",
+}) as any as S.Schema<PauseRolloutRequest>;
 
 export interface PauseProjectsLocationsRolloutsRequest {
   /** Required. The name of the rollout to pause. projects/{project}/locations/{location}/rollouts/{rollout} */
@@ -4755,12 +6358,21 @@ export interface PauseProjectsLocationsRolloutsRequest {
   /** Request body */
   body?: PauseRolloutRequest;
 }
-export const PauseProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(PauseRolloutRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+name}:pause","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "PauseProjectsLocationsRolloutsRequest" }) as any as S.Schema<PauseProjectsLocationsRolloutsRequest>;
+export const PauseProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(PauseRolloutRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+name}:pause",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "PauseProjectsLocationsRolloutsRequest",
+}) as any as S.Schema<PauseProjectsLocationsRolloutsRequest>;
 
 /** Request message for resuming a rollout. */
 export interface ResumeRolloutRequest {
@@ -4770,11 +6382,13 @@ export interface ResumeRolloutRequest {
   validateOnly?: boolean;
 }
 export const ResumeRolloutRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "scheduleOffset": S.optional(S.String),
-  "validateOnly": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "ResumeRolloutRequest" }) as any as S.Schema<ResumeRolloutRequest>;
+  S.Struct({
+    scheduleOffset: S.optional(S.String),
+    validateOnly: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ResumeRolloutRequest",
+}) as any as S.Schema<ResumeRolloutRequest>;
 
 export interface ResumeProjectsLocationsRolloutsRequest {
   /** Required. The name of the rollout to resume. projects/{project}/locations/{location}/rollouts/{rollout} */
@@ -4782,12 +6396,21 @@ export interface ResumeProjectsLocationsRolloutsRequest {
   /** Request body */
   body?: ResumeRolloutRequest;
 }
-export const ResumeProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(ResumeRolloutRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+name}:resume","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "ResumeProjectsLocationsRolloutsRequest" }) as any as S.Schema<ResumeProjectsLocationsRolloutsRequest>;
+export const ResumeProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(ResumeRolloutRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+name}:resume",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ResumeProjectsLocationsRolloutsRequest",
+}) as any as S.Schema<ResumeProjectsLocationsRolloutsRequest>;
 
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
@@ -4797,11 +6420,13 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "policy": S.optional(Policy),
-  "updateMask": S.optional(S.String),
-}),
-).annotate({ identifier: "SetIamPolicyRequest" }) as any as S.Schema<SetIamPolicyRequest>;
+  S.Struct({
+    policy: S.optional(Policy),
+    updateMask: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SetIamPolicyRequest",
+}) as any as S.Schema<SetIamPolicyRequest>;
 
 export interface SetIamPolicyProjectsLocationsFeaturesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -4809,12 +6434,21 @@ export interface SetIamPolicyProjectsLocationsFeaturesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsFeaturesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+resource}:setIamPolicy","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "SetIamPolicyProjectsLocationsFeaturesRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsFeaturesRequest>;
+export const SetIamPolicyProjectsLocationsFeaturesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+resource}:setIamPolicy",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "SetIamPolicyProjectsLocationsFeaturesRequest",
+  }) as any as S.Schema<SetIamPolicyProjectsLocationsFeaturesRequest>;
 
 export interface SetIamPolicyProjectsLocationsMembershipsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -4822,12 +6456,21 @@ export interface SetIamPolicyProjectsLocationsMembershipsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+resource}:setIamPolicy","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "SetIamPolicyProjectsLocationsMembershipsRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsMembershipsRequest>;
+export const SetIamPolicyProjectsLocationsMembershipsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+resource}:setIamPolicy",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "SetIamPolicyProjectsLocationsMembershipsRequest",
+  }) as any as S.Schema<SetIamPolicyProjectsLocationsMembershipsRequest>;
 
 export interface SetIamPolicyProjectsLocationsScopesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -4835,12 +6478,21 @@ export interface SetIamPolicyProjectsLocationsScopesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsScopesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+resource}:setIamPolicy","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "SetIamPolicyProjectsLocationsScopesRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsScopesRequest>;
+export const SetIamPolicyProjectsLocationsScopesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+resource}:setIamPolicy",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "SetIamPolicyProjectsLocationsScopesRequest",
+  }) as any as S.Schema<SetIamPolicyProjectsLocationsScopesRequest>;
 
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
@@ -4848,10 +6500,12 @@ export interface TestIamPermissionsRequest {
   permissions?: StringList;
 }
 export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "permissions": S.optional(StringList),
-}),
-).annotate({ identifier: "TestIamPermissionsRequest" }) as any as S.Schema<TestIamPermissionsRequest>;
+  S.Struct({
+    permissions: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "TestIamPermissionsRequest",
+}) as any as S.Schema<TestIamPermissionsRequest>;
 
 export interface TestIamPermissionsProjectsLocationsFeaturesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -4859,12 +6513,21 @@ export interface TestIamPermissionsProjectsLocationsFeaturesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsFeaturesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+resource}:testIamPermissions","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "TestIamPermissionsProjectsLocationsFeaturesRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsFeaturesRequest>;
+export const TestIamPermissionsProjectsLocationsFeaturesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+resource}:testIamPermissions",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "TestIamPermissionsProjectsLocationsFeaturesRequest",
+  }) as any as S.Schema<TestIamPermissionsProjectsLocationsFeaturesRequest>;
 
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
@@ -4872,10 +6535,12 @@ export interface TestIamPermissionsResponse {
   permissions?: StringList;
 }
 export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "permissions": S.optional(StringList),
-}),
-).annotate({ identifier: "TestIamPermissionsResponse" }) as any as S.Schema<TestIamPermissionsResponse>;
+  S.Struct({
+    permissions: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "TestIamPermissionsResponse",
+}) as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsMembershipsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -4883,12 +6548,21 @@ export interface TestIamPermissionsProjectsLocationsMembershipsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+resource}:testIamPermissions","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "TestIamPermissionsProjectsLocationsMembershipsRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsMembershipsRequest>;
+export const TestIamPermissionsProjectsLocationsMembershipsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+resource}:testIamPermissions",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "TestIamPermissionsProjectsLocationsMembershipsRequest",
+  }) as any as S.Schema<TestIamPermissionsProjectsLocationsMembershipsRequest>;
 
 export interface TestIamPermissionsProjectsLocationsScopesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -4896,15 +6570,28 @@ export interface TestIamPermissionsProjectsLocationsScopesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsScopesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+resource}:testIamPermissions","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "TestIamPermissionsProjectsLocationsScopesRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsScopesRequest>;
+export const TestIamPermissionsProjectsLocationsScopesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+resource}:testIamPermissions",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "TestIamPermissionsProjectsLocationsScopesRequest",
+  }) as any as S.Schema<TestIamPermissionsProjectsLocationsScopesRequest>;
 
-export type UpgradeRolloutSequenceRequestUpgradeTypeEnum = "UPGRADE_TYPE_UNSPECIFIED" | "CONTROL_PLANE" | "NODE";
-export const UpgradeRolloutSequenceRequestUpgradeTypeEnum = /*@__PURE__*/ S.String;
+export type UpgradeRolloutSequenceRequestUpgradeTypeEnum =
+  | "UPGRADE_TYPE_UNSPECIFIED"
+  | "CONTROL_PLANE"
+  | "NODE";
+export const UpgradeRolloutSequenceRequestUpgradeTypeEnum =
+  /*@__PURE__*/ S.String;
 
 /** Request message for upgrading a rollout sequence. */
 export interface UpgradeRolloutSequenceRequest {
@@ -4916,12 +6603,14 @@ export interface UpgradeRolloutSequenceRequest {
   version?: string;
 }
 export const UpgradeRolloutSequenceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "force": S.optional(S.Boolean),
-  "upgradeType": S.optional(UpgradeRolloutSequenceRequestUpgradeTypeEnum),
-  "version": S.optional(S.String),
-}),
-).annotate({ identifier: "UpgradeRolloutSequenceRequest" }) as any as S.Schema<UpgradeRolloutSequenceRequest>;
+  S.Struct({
+    force: S.optional(S.Boolean),
+    upgradeType: S.optional(UpgradeRolloutSequenceRequestUpgradeTypeEnum),
+    version: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpgradeRolloutSequenceRequest",
+}) as any as S.Schema<UpgradeRolloutSequenceRequest>;
 
 export interface UpgradeProjectsLocationsRolloutSequencesRequest {
   /** Required. The name of the rollout sequence. Format: projects/{project}/locations/{location}/rolloutSequences/{rollout_sequence} */
@@ -4929,14 +6618,28 @@ export interface UpgradeProjectsLocationsRolloutSequencesRequest {
   /** Request body */
   body?: UpgradeRolloutSequenceRequest;
 }
-export const UpgradeProjectsLocationsRolloutSequencesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(UpgradeRolloutSequenceRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+name}:upgrade","baseUrl":"https://gkehub.googleapis.com/"})),
-).annotate({ identifier: "UpgradeProjectsLocationsRolloutSequencesRequest" }) as any as S.Schema<UpgradeProjectsLocationsRolloutSequencesRequest>;
+export const UpgradeProjectsLocationsRolloutSequencesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(UpgradeRolloutSequenceRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+name}:upgrade",
+        baseUrl: "https://gkehub.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "UpgradeProjectsLocationsRolloutSequencesRequest",
+  }) as any as S.Schema<UpgradeProjectsLocationsRolloutSequencesRequest>;
 
-export type CancelProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CancelProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsRequest,
@@ -4951,7 +6654,12 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CancelProjectsLocationsRolloutsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CancelProjectsLocationsRolloutsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Cancels a Rollout. The rollout will not be started on new clusters, however the rollout running on the cluster will be allowed to finish. */
 export const cancelProjectsLocationsRollouts: API.OperationMethod<
   CancelProjectsLocationsRolloutsRequest,
@@ -4966,7 +6674,12 @@ export const cancelProjectsLocationsRollouts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsFeaturesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsFeaturesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Adds a new Feature. */
 export const createProjectsLocationsFeatures: API.OperationMethod<
   CreateProjectsLocationsFeaturesRequest,
@@ -4981,7 +6694,12 @@ export const createProjectsLocationsFeatures: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsFleetsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsFleetsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a fleet. */
 export const createProjectsLocationsFleets: API.OperationMethod<
   CreateProjectsLocationsFleetsRequest,
@@ -4996,7 +6714,12 @@ export const createProjectsLocationsFleets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsMembershipsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsMembershipsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new Membership. **This is currently only supported for GKE clusters on Google Cloud**. To register other clusters, follow the instructions at https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster. */
 export const createProjectsLocationsMemberships: API.OperationMethod<
   CreateProjectsLocationsMembershipsRequest,
@@ -5011,7 +6734,12 @@ export const createProjectsLocationsMemberships: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsMembershipsBindingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsMembershipsBindingsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a MembershipBinding. */
 export const createProjectsLocationsMembershipsBindings: API.OperationMethod<
   CreateProjectsLocationsMembershipsBindingsRequest,
@@ -5026,7 +6754,12 @@ export const createProjectsLocationsMembershipsBindings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsMembershipsRbacrolebindingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsMembershipsRbacrolebindingsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a Membership RBACRoleBinding. */
 export const createProjectsLocationsMembershipsRbacrolebindings: API.OperationMethod<
   CreateProjectsLocationsMembershipsRbacrolebindingsRequest,
@@ -5041,7 +6774,12 @@ export const createProjectsLocationsMembershipsRbacrolebindings: API.OperationMe
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsRolloutSequencesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsRolloutSequencesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new rollout sequence resource. */
 export const createProjectsLocationsRolloutSequences: API.OperationMethod<
   CreateProjectsLocationsRolloutSequencesRequest,
@@ -5056,7 +6794,12 @@ export const createProjectsLocationsRolloutSequences: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsScopesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsScopesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a Scope. */
 export const createProjectsLocationsScopes: API.OperationMethod<
   CreateProjectsLocationsScopesRequest,
@@ -5071,7 +6814,12 @@ export const createProjectsLocationsScopes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsScopesNamespacesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsScopesNamespacesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a fleet namespace. */
 export const createProjectsLocationsScopesNamespaces: API.OperationMethod<
   CreateProjectsLocationsScopesNamespacesRequest,
@@ -5086,7 +6834,12 @@ export const createProjectsLocationsScopesNamespaces: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsScopesRbacrolebindingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsScopesRbacrolebindingsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a Scope RBACRoleBinding. */
 export const createProjectsLocationsScopesRbacrolebindings: API.OperationMethod<
   CreateProjectsLocationsScopesRbacrolebindingsRequest,
@@ -5101,7 +6854,12 @@ export const createProjectsLocationsScopesRbacrolebindings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsFeaturesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsFeaturesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Removes a Feature. */
 export const deleteProjectsLocationsFeatures: API.OperationMethod<
   DeleteProjectsLocationsFeaturesRequest,
@@ -5116,7 +6874,12 @@ export const deleteProjectsLocationsFeatures: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsFleetsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsFleetsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Removes a Fleet. There must be no memberships remaining in the Fleet. */
 export const deleteProjectsLocationsFleets: API.OperationMethod<
   DeleteProjectsLocationsFleetsRequest,
@@ -5131,7 +6894,12 @@ export const deleteProjectsLocationsFleets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsMembershipsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsMembershipsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Removes a Membership. **This is currently only supported for GKE clusters on Google Cloud**. To unregister other clusters, follow the instructions at https://cloud.google.com/anthos/multicluster-management/connect/unregistering-a-cluster. */
 export const deleteProjectsLocationsMemberships: API.OperationMethod<
   DeleteProjectsLocationsMembershipsRequest,
@@ -5146,7 +6914,12 @@ export const deleteProjectsLocationsMemberships: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsMembershipsBindingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsMembershipsBindingsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a MembershipBinding. */
 export const deleteProjectsLocationsMembershipsBindings: API.OperationMethod<
   DeleteProjectsLocationsMembershipsBindingsRequest,
@@ -5161,7 +6934,12 @@ export const deleteProjectsLocationsMembershipsBindings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsMembershipsRbacrolebindingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsMembershipsRbacrolebindingsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a Membership RBACRoleBinding. */
 export const deleteProjectsLocationsMembershipsRbacrolebindings: API.OperationMethod<
   DeleteProjectsLocationsMembershipsRbacrolebindingsRequest,
@@ -5176,7 +6954,12 @@ export const deleteProjectsLocationsMembershipsRbacrolebindings: API.OperationMe
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsRequest,
@@ -5191,7 +6974,12 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsRolloutsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsRolloutsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Removes a Rollout. */
 export const deleteProjectsLocationsRollouts: API.OperationMethod<
   DeleteProjectsLocationsRolloutsRequest,
@@ -5206,7 +6994,12 @@ export const deleteProjectsLocationsRollouts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsRolloutSequencesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsRolloutSequencesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Removes a RolloutSequence. */
 export const deleteProjectsLocationsRolloutSequences: API.OperationMethod<
   DeleteProjectsLocationsRolloutSequencesRequest,
@@ -5221,7 +7014,12 @@ export const deleteProjectsLocationsRolloutSequences: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsScopesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsScopesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a Scope. */
 export const deleteProjectsLocationsScopes: API.OperationMethod<
   DeleteProjectsLocationsScopesRequest,
@@ -5236,7 +7034,12 @@ export const deleteProjectsLocationsScopes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsScopesNamespacesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsScopesNamespacesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a fleet namespace. */
 export const deleteProjectsLocationsScopesNamespaces: API.OperationMethod<
   DeleteProjectsLocationsScopesNamespacesRequest,
@@ -5251,7 +7054,12 @@ export const deleteProjectsLocationsScopesNamespaces: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsScopesRbacrolebindingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsScopesRbacrolebindingsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a Scope RBACRoleBinding. */
 export const deleteProjectsLocationsScopesRbacrolebindings: API.OperationMethod<
   DeleteProjectsLocationsScopesRbacrolebindingsRequest,
@@ -5266,7 +7074,12 @@ export const deleteProjectsLocationsScopesRbacrolebindings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ForceCompleteStageProjectsLocationsRolloutsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ForceCompleteStageProjectsLocationsRolloutsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Force-completes a rollout stage. Only the active stage of an active rollout can be force-completed. */
 export const forceCompleteStageProjectsLocationsRollouts: API.OperationMethod<
   ForceCompleteStageProjectsLocationsRolloutsRequest,
@@ -5281,7 +7094,10 @@ export const forceCompleteStageProjectsLocationsRollouts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GenerateConnectManifestProjectsLocationsMembershipsError = NotFound | Forbidden | GcpOpError;
+export type GenerateConnectManifestProjectsLocationsMembershipsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Generates the manifest for deployment of the GKE connect agent. **This method is used internally by Google-provided libraries.** Most clients should not need to call this method directly. */
 export const generateConnectManifestProjectsLocationsMemberships: API.OperationMethod<
   GenerateConnectManifestProjectsLocationsMembershipsRequest,
@@ -5296,7 +7112,8 @@ export const generateConnectManifestProjectsLocationsMemberships: API.OperationM
   retry: Retry.Retry,
 }));
 
-export type GenerateMembershipRBACRoleBindingYAMLProjectsLocationsMembershipsRbacrolebindingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type GenerateMembershipRBACRoleBindingYAMLProjectsLocationsMembershipsRbacrolebindingsError =
+  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Generates a YAML of the RBAC policies for the specified RoleBinding and its associated impersonation resources. */
 export const generateMembershipRBACRoleBindingYAMLProjectsLocationsMembershipsRbacrolebindings: API.OperationMethod<
   GenerateMembershipRBACRoleBindingYAMLProjectsLocationsMembershipsRbacrolebindingsRequest,
@@ -5304,14 +7121,18 @@ export const generateMembershipRBACRoleBindingYAMLProjectsLocationsMembershipsRb
   GenerateMembershipRBACRoleBindingYAMLProjectsLocationsMembershipsRbacrolebindingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GenerateMembershipRBACRoleBindingYAMLProjectsLocationsMembershipsRbacrolebindingsRequest,
+  input:
+    GenerateMembershipRBACRoleBindingYAMLProjectsLocationsMembershipsRbacrolebindingsRequest,
   output: GenerateMembershipRBACRoleBindingYAMLResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsFeaturesError = NotFound | Forbidden | GcpOpError;
+export type GetIamPolicyProjectsLocationsFeaturesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsFeatures: API.OperationMethod<
   GetIamPolicyProjectsLocationsFeaturesRequest,
@@ -5326,7 +7147,10 @@ export const getIamPolicyProjectsLocationsFeatures: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsMembershipsError = NotFound | Forbidden | GcpOpError;
+export type GetIamPolicyProjectsLocationsMembershipsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsMemberships: API.OperationMethod<
   GetIamPolicyProjectsLocationsMembershipsRequest,
@@ -5341,7 +7165,10 @@ export const getIamPolicyProjectsLocationsMemberships: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsScopesError = NotFound | Forbidden | GcpOpError;
+export type GetIamPolicyProjectsLocationsScopesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsScopes: API.OperationMethod<
   GetIamPolicyProjectsLocationsScopesRequest,
@@ -5371,7 +7198,10 @@ export const getProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsFeaturesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsFeaturesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a single Feature. */
 export const getProjectsLocationsFeatures: API.OperationMethod<
   GetProjectsLocationsFeaturesRequest,
@@ -5401,7 +7231,10 @@ export const getProjectsLocationsFleets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsMembershipsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsMembershipsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the details of a Membership. */
 export const getProjectsLocationsMemberships: API.OperationMethod<
   GetProjectsLocationsMembershipsRequest,
@@ -5416,7 +7249,10 @@ export const getProjectsLocationsMemberships: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsMembershipsBindingsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsMembershipsBindingsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns the details of a MembershipBinding. */
 export const getProjectsLocationsMembershipsBindings: API.OperationMethod<
   GetProjectsLocationsMembershipsBindingsRequest,
@@ -5431,7 +7267,10 @@ export const getProjectsLocationsMembershipsBindings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsMembershipsRbacrolebindingsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsMembershipsRbacrolebindingsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns the details of a Membership RBACRoleBinding. */
 export const getProjectsLocationsMembershipsRbacrolebindings: API.OperationMethod<
   GetProjectsLocationsMembershipsRbacrolebindingsRequest,
@@ -5446,7 +7285,10 @@ export const getProjectsLocationsMembershipsRbacrolebindings: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -5461,7 +7303,10 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsRolloutsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsRolloutsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieves a single rollout. */
 export const getProjectsLocationsRollouts: API.OperationMethod<
   GetProjectsLocationsRolloutsRequest,
@@ -5476,7 +7321,10 @@ export const getProjectsLocationsRollouts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsRolloutSequencesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsRolloutSequencesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieve a single rollout sequence. */
 export const getProjectsLocationsRolloutSequences: API.OperationMethod<
   GetProjectsLocationsRolloutSequencesRequest,
@@ -5506,7 +7354,10 @@ export const getProjectsLocationsScopes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsScopesNamespacesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsScopesNamespacesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns the details of a fleet namespace. */
 export const getProjectsLocationsScopesNamespaces: API.OperationMethod<
   GetProjectsLocationsScopesNamespacesRequest,
@@ -5521,7 +7372,10 @@ export const getProjectsLocationsScopesNamespaces: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsScopesRbacrolebindingsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsScopesRbacrolebindingsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns the details of a Scope RBACRoleBinding. */
 export const getProjectsLocationsScopesRbacrolebindings: API.OperationMethod<
   GetProjectsLocationsScopesRbacrolebindingsRequest,
@@ -5536,7 +7390,10 @@ export const getProjectsLocationsScopesRbacrolebindings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListMembershipsProjectsLocationsScopesError = NotFound | Forbidden | GcpOpError;
+export type ListMembershipsProjectsLocationsScopesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists Memberships bound to a Scope. The response includes relevant Memberships from all regions. */
 export const listMembershipsProjectsLocationsScopes: API.PaginatedOperationMethod<
   ListMembershipsProjectsLocationsScopesRequest,
@@ -5549,10 +7406,16 @@ export const listMembershipsProjectsLocationsScopes: API.PaginatedOperationMetho
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListOrganizationsLocationsFleetsError = NotFound | Forbidden | GcpOpError;
+export type ListOrganizationsLocationsFleetsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns all fleets within an organization or a project that the caller has access to. */
 export const listOrganizationsLocationsFleets: API.PaginatedOperationMethod<
   ListOrganizationsLocationsFleetsRequest,
@@ -5565,10 +7428,16 @@ export const listOrganizationsLocationsFleets: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListPermittedProjectsLocationsScopesError = NotFound | Forbidden | GcpOpError;
+export type ListPermittedProjectsLocationsScopesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists permitted Scopes. */
 export const listPermittedProjectsLocationsScopes: API.PaginatedOperationMethod<
   ListPermittedProjectsLocationsScopesRequest,
@@ -5581,7 +7450,10 @@ export const listPermittedProjectsLocationsScopes: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListProjectsLocationsError = NotFound | Forbidden | GcpOpError;
@@ -5597,10 +7469,16 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsFeaturesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsFeaturesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists Features in a given project and location. */
 export const listProjectsLocationsFeatures: API.PaginatedOperationMethod<
   ListProjectsLocationsFeaturesRequest,
@@ -5613,10 +7491,16 @@ export const listProjectsLocationsFeatures: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsFleetsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsFleetsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns all fleets within an organization or a project that the caller has access to. */
 export const listProjectsLocationsFleets: API.PaginatedOperationMethod<
   ListProjectsLocationsFleetsRequest,
@@ -5629,10 +7513,16 @@ export const listProjectsLocationsFleets: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsMembershipsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsMembershipsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists Memberships in a given project and location. */
 export const listProjectsLocationsMemberships: API.PaginatedOperationMethod<
   ListProjectsLocationsMembershipsRequest,
@@ -5645,10 +7535,16 @@ export const listProjectsLocationsMemberships: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsMembershipsBindingsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsMembershipsBindingsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists MembershipBindings. */
 export const listProjectsLocationsMembershipsBindings: API.PaginatedOperationMethod<
   ListProjectsLocationsMembershipsBindingsRequest,
@@ -5661,10 +7557,16 @@ export const listProjectsLocationsMembershipsBindings: API.PaginatedOperationMet
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsMembershipsRbacrolebindingsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsMembershipsRbacrolebindingsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all Membership RBACRoleBindings. */
 export const listProjectsLocationsMembershipsRbacrolebindings: API.PaginatedOperationMethod<
   ListProjectsLocationsMembershipsRbacrolebindingsRequest,
@@ -5677,10 +7579,16 @@ export const listProjectsLocationsMembershipsRbacrolebindings: API.PaginatedOper
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -5693,10 +7601,16 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsRolloutsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsRolloutsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieves the list of all rollouts. */
 export const listProjectsLocationsRollouts: API.PaginatedOperationMethod<
   ListProjectsLocationsRolloutsRequest,
@@ -5709,10 +7623,16 @@ export const listProjectsLocationsRollouts: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsRolloutSequencesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsRolloutSequencesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieves the list of all rollout sequences. */
 export const listProjectsLocationsRolloutSequences: API.PaginatedOperationMethod<
   ListProjectsLocationsRolloutSequencesRequest,
@@ -5725,10 +7645,16 @@ export const listProjectsLocationsRolloutSequences: API.PaginatedOperationMethod
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsScopesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsScopesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists Scopes. */
 export const listProjectsLocationsScopes: API.PaginatedOperationMethod<
   ListProjectsLocationsScopesRequest,
@@ -5741,10 +7667,16 @@ export const listProjectsLocationsScopes: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsScopesNamespacesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsScopesNamespacesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists fleet namespaces. */
 export const listProjectsLocationsScopesNamespaces: API.PaginatedOperationMethod<
   ListProjectsLocationsScopesNamespacesRequest,
@@ -5757,10 +7689,16 @@ export const listProjectsLocationsScopesNamespaces: API.PaginatedOperationMethod
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsScopesRbacrolebindingsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsScopesRbacrolebindingsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all Scope RBACRoleBindings. */
 export const listProjectsLocationsScopesRbacrolebindings: API.PaginatedOperationMethod<
   ListProjectsLocationsScopesRbacrolebindingsRequest,
@@ -5773,10 +7711,18 @@ export const listProjectsLocationsScopesRbacrolebindings: API.PaginatedOperation
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type PatchProjectsLocationsFeaturesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsFeaturesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates an existing Feature. */
 export const patchProjectsLocationsFeatures: API.OperationMethod<
   PatchProjectsLocationsFeaturesRequest,
@@ -5791,7 +7737,12 @@ export const patchProjectsLocationsFeatures: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsFleetsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsFleetsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a fleet. */
 export const patchProjectsLocationsFleets: API.OperationMethod<
   PatchProjectsLocationsFleetsRequest,
@@ -5806,7 +7757,12 @@ export const patchProjectsLocationsFleets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsMembershipsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsMembershipsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates an existing Membership. */
 export const patchProjectsLocationsMemberships: API.OperationMethod<
   PatchProjectsLocationsMembershipsRequest,
@@ -5821,7 +7777,12 @@ export const patchProjectsLocationsMemberships: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsMembershipsBindingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsMembershipsBindingsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a MembershipBinding. */
 export const patchProjectsLocationsMembershipsBindings: API.OperationMethod<
   PatchProjectsLocationsMembershipsBindingsRequest,
@@ -5836,7 +7797,12 @@ export const patchProjectsLocationsMembershipsBindings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsMembershipsRbacrolebindingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsMembershipsRbacrolebindingsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a Membership RBACRoleBinding. */
 export const patchProjectsLocationsMembershipsRbacrolebindings: API.OperationMethod<
   PatchProjectsLocationsMembershipsRbacrolebindingsRequest,
@@ -5851,7 +7817,12 @@ export const patchProjectsLocationsMembershipsRbacrolebindings: API.OperationMet
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsRolloutSequencesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsRolloutSequencesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a rollout sequence. */
 export const patchProjectsLocationsRolloutSequences: API.OperationMethod<
   PatchProjectsLocationsRolloutSequencesRequest,
@@ -5866,7 +7837,12 @@ export const patchProjectsLocationsRolloutSequences: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsScopesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsScopesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a scopes. */
 export const patchProjectsLocationsScopes: API.OperationMethod<
   PatchProjectsLocationsScopesRequest,
@@ -5881,7 +7857,12 @@ export const patchProjectsLocationsScopes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsScopesNamespacesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsScopesNamespacesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a fleet namespace. */
 export const patchProjectsLocationsScopesNamespaces: API.OperationMethod<
   PatchProjectsLocationsScopesNamespacesRequest,
@@ -5896,7 +7877,12 @@ export const patchProjectsLocationsScopesNamespaces: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsScopesRbacrolebindingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsScopesRbacrolebindingsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a Scope RBACRoleBinding. */
 export const patchProjectsLocationsScopesRbacrolebindings: API.OperationMethod<
   PatchProjectsLocationsScopesRbacrolebindingsRequest,
@@ -5911,7 +7897,12 @@ export const patchProjectsLocationsScopesRbacrolebindings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PauseProjectsLocationsRolloutsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PauseProjectsLocationsRolloutsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Pauses a running Rollout. The rollout will not be started on new clusters, however the rollout running on the cluster will be allowed to finish. */
 export const pauseProjectsLocationsRollouts: API.OperationMethod<
   PauseProjectsLocationsRolloutsRequest,
@@ -5926,7 +7917,12 @@ export const pauseProjectsLocationsRollouts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ResumeProjectsLocationsRolloutsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ResumeProjectsLocationsRolloutsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Resume a paused Rollout. The rollout will be resumed and allowed to be started on clusters. */
 export const resumeProjectsLocationsRollouts: API.OperationMethod<
   ResumeProjectsLocationsRolloutsRequest,
@@ -5941,7 +7937,12 @@ export const resumeProjectsLocationsRollouts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsFeaturesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetIamPolicyProjectsLocationsFeaturesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsFeatures: API.OperationMethod<
   SetIamPolicyProjectsLocationsFeaturesRequest,
@@ -5956,7 +7957,12 @@ export const setIamPolicyProjectsLocationsFeatures: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsMembershipsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetIamPolicyProjectsLocationsMembershipsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsMemberships: API.OperationMethod<
   SetIamPolicyProjectsLocationsMembershipsRequest,
@@ -5971,7 +7977,12 @@ export const setIamPolicyProjectsLocationsMemberships: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsScopesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetIamPolicyProjectsLocationsScopesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsScopes: API.OperationMethod<
   SetIamPolicyProjectsLocationsScopesRequest,
@@ -5986,7 +7997,12 @@ export const setIamPolicyProjectsLocationsScopes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsFeaturesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TestIamPermissionsProjectsLocationsFeaturesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsFeatures: API.OperationMethod<
   TestIamPermissionsProjectsLocationsFeaturesRequest,
@@ -6001,7 +8017,12 @@ export const testIamPermissionsProjectsLocationsFeatures: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsMembershipsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TestIamPermissionsProjectsLocationsMembershipsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsMemberships: API.OperationMethod<
   TestIamPermissionsProjectsLocationsMembershipsRequest,
@@ -6016,7 +8037,12 @@ export const testIamPermissionsProjectsLocationsMemberships: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsScopesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TestIamPermissionsProjectsLocationsScopesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsScopes: API.OperationMethod<
   TestIamPermissionsProjectsLocationsScopesRequest,
@@ -6031,7 +8057,12 @@ export const testIamPermissionsProjectsLocationsScopes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpgradeProjectsLocationsRolloutSequencesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpgradeProjectsLocationsRolloutSequencesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Upgrades a rollout sequence. */
 export const upgradeProjectsLocationsRolloutSequences: API.OperationMethod<
   UpgradeProjectsLocationsRolloutSequencesRequest,
@@ -6045,4 +8076,3 @@ export const upgradeProjectsLocationsRolloutSequences: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

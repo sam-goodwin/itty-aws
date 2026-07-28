@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export interface DeleteAccountsLfpStoresRequest {
@@ -65,28 +65,47 @@ export interface DeleteAccountsLfpStoresRequest {
   name: string;
 }
 export const DeleteAccountsLfpStoresRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"lfp/v1/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
-).annotate({ identifier: "DeleteAccountsLfpStoresRequest" }) as any as S.Schema<DeleteAccountsLfpStoresRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "lfp/v1/{+name}",
+      baseUrl: "https://merchantapi.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteAccountsLfpStoresRequest",
+}) as any as S.Schema<DeleteAccountsLfpStoresRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 export interface GetAccountsLfpMerchantStatesRequest {
   /** Required. The name of the state to retrieve. Format: `accounts/{account}/lfpMerchantStates/{target_merchant}`. For example, `accounts/123456/lfpMerchantStates/567890`. */
   name: string;
 }
 export const GetAccountsLfpMerchantStatesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"lfp/v1/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
-).annotate({ identifier: "GetAccountsLfpMerchantStatesRequest" }) as any as S.Schema<GetAccountsLfpMerchantStatesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "lfp/v1/{+name}",
+      baseUrl: "https://merchantapi.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetAccountsLfpMerchantStatesRequest",
+}) as any as S.Schema<GetAccountsLfpMerchantStatesRequest>;
 
-export type LfpStoreStateMatchingStateEnum = "STORE_MATCHING_STATE_UNSPECIFIED" | "STORE_MATCHING_STATE_MATCHED" | "STORE_MATCHING_STATE_FAILED";
+export type LfpStoreStateMatchingStateEnum =
+  | "STORE_MATCHING_STATE_UNSPECIFIED"
+  | "STORE_MATCHING_STATE_MATCHED"
+  | "STORE_MATCHING_STATE_FAILED";
 export const LfpStoreStateMatchingStateEnum = /*@__PURE__*/ S.String;
 
 /** The state of a specific merchant's store. */
@@ -99,26 +118,47 @@ export interface LfpStoreState {
   matchingState?: LfpStoreStateMatchingStateEnum;
 }
 export const LfpStoreState = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "storeCode": S.optional(S.String),
-  "matchingStateHint": S.optional(S.String),
-  "matchingState": S.optional(LfpStoreStateMatchingStateEnum),
-}),
+  S.Struct({
+    storeCode: S.optional(S.String),
+    matchingStateHint: S.optional(S.String),
+    matchingState: S.optional(LfpStoreStateMatchingStateEnum),
+  }),
 ).annotate({ identifier: "LfpStoreState" }) as any as S.Schema<LfpStoreState>;
 
 export type LfpStoreStateList = ReadonlyArray<LfpStoreState>;
-export const LfpStoreStateList = /*@__PURE__*/ S.Array(LfpStoreState) as any as S.Schema<LfpStoreStateList>;
+export const LfpStoreStateList = /*@__PURE__*/ S.Array(
+  LfpStoreState,
+) as any as S.Schema<LfpStoreStateList>;
 
-export type CountrySettingsInventoryVerificationStateEnum = "VERIFICATION_STATE_UNSPECIFIED" | "VERIFICATION_STATE_NOT_APPROVED" | "VERIFICATION_STATE_IN_PROGRESS" | "VERIFICATION_STATE_APPROVED";
-export const CountrySettingsInventoryVerificationStateEnum = /*@__PURE__*/ S.String;
+export type CountrySettingsInventoryVerificationStateEnum =
+  | "VERIFICATION_STATE_UNSPECIFIED"
+  | "VERIFICATION_STATE_NOT_APPROVED"
+  | "VERIFICATION_STATE_IN_PROGRESS"
+  | "VERIFICATION_STATE_APPROVED";
+export const CountrySettingsInventoryVerificationStateEnum =
+  /*@__PURE__*/ S.String;
 
-export type CountrySettingsPickupServingVerificationStateEnum = "VERIFICATION_STATE_UNSPECIFIED" | "VERIFICATION_STATE_NOT_APPROVED" | "VERIFICATION_STATE_IN_PROGRESS" | "VERIFICATION_STATE_APPROVED";
-export const CountrySettingsPickupServingVerificationStateEnum = /*@__PURE__*/ S.String;
+export type CountrySettingsPickupServingVerificationStateEnum =
+  | "VERIFICATION_STATE_UNSPECIFIED"
+  | "VERIFICATION_STATE_NOT_APPROVED"
+  | "VERIFICATION_STATE_IN_PROGRESS"
+  | "VERIFICATION_STATE_APPROVED";
+export const CountrySettingsPickupServingVerificationStateEnum =
+  /*@__PURE__*/ S.String;
 
-export type CountrySettingsInstockServingVerificationStateEnum = "VERIFICATION_STATE_UNSPECIFIED" | "VERIFICATION_STATE_NOT_APPROVED" | "VERIFICATION_STATE_IN_PROGRESS" | "VERIFICATION_STATE_APPROVED";
-export const CountrySettingsInstockServingVerificationStateEnum = /*@__PURE__*/ S.String;
+export type CountrySettingsInstockServingVerificationStateEnum =
+  | "VERIFICATION_STATE_UNSPECIFIED"
+  | "VERIFICATION_STATE_NOT_APPROVED"
+  | "VERIFICATION_STATE_IN_PROGRESS"
+  | "VERIFICATION_STATE_APPROVED";
+export const CountrySettingsInstockServingVerificationStateEnum =
+  /*@__PURE__*/ S.String;
 
-export type CountrySettingsProductPageTypeEnum = "PRODUCT_PAGE_TYPE_UNSPECIFIED" | "GOOGLE_HOSTED" | "MERCHANT_HOSTED" | "MERCHANT_HOSTED_STORE_SPECIFIC";
+export type CountrySettingsProductPageTypeEnum =
+  | "PRODUCT_PAGE_TYPE_UNSPECIFIED"
+  | "GOOGLE_HOSTED"
+  | "MERCHANT_HOSTED"
+  | "MERCHANT_HOSTED_STORE_SPECIFIC";
 export const CountrySettingsProductPageTypeEnum = /*@__PURE__*/ S.String;
 
 /** Country-specific settings for the merchant. */
@@ -139,19 +179,29 @@ export interface CountrySettings {
   freeLocalListingsEnabled?: boolean;
 }
 export const CountrySettings = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "localInventoryAdsEnabled": S.optional(S.Boolean),
-  "inventoryVerificationState": S.optional(CountrySettingsInventoryVerificationStateEnum),
-  "pickupServingVerificationState": S.optional(CountrySettingsPickupServingVerificationStateEnum),
-  "instockServingVerificationState": S.optional(CountrySettingsInstockServingVerificationStateEnum),
-  "regionCode": S.optional(S.String),
-  "productPageType": S.optional(CountrySettingsProductPageTypeEnum),
-  "freeLocalListingsEnabled": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "CountrySettings" }) as any as S.Schema<CountrySettings>;
+  S.Struct({
+    localInventoryAdsEnabled: S.optional(S.Boolean),
+    inventoryVerificationState: S.optional(
+      CountrySettingsInventoryVerificationStateEnum,
+    ),
+    pickupServingVerificationState: S.optional(
+      CountrySettingsPickupServingVerificationStateEnum,
+    ),
+    instockServingVerificationState: S.optional(
+      CountrySettingsInstockServingVerificationStateEnum,
+    ),
+    regionCode: S.optional(S.String),
+    productPageType: S.optional(CountrySettingsProductPageTypeEnum),
+    freeLocalListingsEnabled: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "CountrySettings",
+}) as any as S.Schema<CountrySettings>;
 
 export type CountrySettingsList = ReadonlyArray<CountrySettings>;
-export const CountrySettingsList = /*@__PURE__*/ S.Array(CountrySettings) as any as S.Schema<CountrySettingsList>;
+export const CountrySettingsList = /*@__PURE__*/ S.Array(
+  CountrySettings,
+) as any as S.Schema<CountrySettingsList>;
 
 /** The inventory statistics for a merchant. */
 export interface InventoryStats {
@@ -165,12 +215,12 @@ export interface InventoryStats {
   submittedProducts?: string;
 }
 export const InventoryStats = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "submittedInStockEntries": S.optional(S.String),
-  "submittedEntries": S.optional(S.String),
-  "unsubmittedEntries": S.optional(S.String),
-  "submittedProducts": S.optional(S.String),
-}),
+  S.Struct({
+    submittedInStockEntries: S.optional(S.String),
+    submittedEntries: S.optional(S.String),
+    unsubmittedEntries: S.optional(S.String),
+    submittedProducts: S.optional(S.String),
+  }),
 ).annotate({ identifier: "InventoryStats" }) as any as S.Schema<InventoryStats>;
 
 /** The LFP state of a merchant. */
@@ -187,29 +237,44 @@ export interface LfpMerchantState {
   inventoryStats?: InventoryStats;
 }
 export const LfpMerchantState = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "storeStates": S.optional(LfpStoreStateList),
-  "linkedGbps": S.optional(S.String),
-  "countrySettings": S.optional(CountrySettingsList),
-  "name": S.optional(S.String),
-  "inventoryStats": S.optional(InventoryStats),
-}),
-).annotate({ identifier: "LfpMerchantState" }) as any as S.Schema<LfpMerchantState>;
+  S.Struct({
+    storeStates: S.optional(LfpStoreStateList),
+    linkedGbps: S.optional(S.String),
+    countrySettings: S.optional(CountrySettingsList),
+    name: S.optional(S.String),
+    inventoryStats: S.optional(InventoryStats),
+  }),
+).annotate({
+  identifier: "LfpMerchantState",
+}) as any as S.Schema<LfpMerchantState>;
 
 export interface GetAccountsLfpStoresRequest {
   /** Required. The name of the store to retrieve. Format: `accounts/{account}/lfpStores/{target_merchant}~{store_code}` */
   name: string;
 }
 export const GetAccountsLfpStoresRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"lfp/v1/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
-).annotate({ identifier: "GetAccountsLfpStoresRequest" }) as any as S.Schema<GetAccountsLfpStoresRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "lfp/v1/{+name}",
+      baseUrl: "https://merchantapi.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetAccountsLfpStoresRequest",
+}) as any as S.Schema<GetAccountsLfpStoresRequest>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
-export type LfpStoreMatchingStateEnum = "STORE_MATCHING_STATE_UNSPECIFIED" | "STORE_MATCHING_STATE_MATCHED" | "STORE_MATCHING_STATE_FAILED";
+export type LfpStoreMatchingStateEnum =
+  | "STORE_MATCHING_STATE_UNSPECIFIED"
+  | "STORE_MATCHING_STATE_MATCHED"
+  | "STORE_MATCHING_STATE_FAILED";
 export const LfpStoreMatchingStateEnum = /*@__PURE__*/ S.String;
 
 /** A store for the merchant. This will be used to match to a store under the Google Business Profile of the target merchant. If a matching store can't be found, the inventories or sales submitted with the store code will not be used. */
@@ -238,19 +303,19 @@ export interface LfpStore {
   matchingState?: LfpStoreMatchingStateEnum;
 }
 export const LfpStore = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "storeCode": S.optional(S.String),
-  "targetAccount": S.optional(S.String),
-  "phoneNumber": S.optional(S.String),
-  "name": S.optional(S.String),
-  "placeId": S.optional(S.String),
-  "storeName": S.optional(S.String),
-  "storeAddress": S.optional(S.String),
-  "gcidCategory": S.optional(StringList),
-  "matchingStateHint": S.optional(S.String),
-  "websiteUri": S.optional(S.String),
-  "matchingState": S.optional(LfpStoreMatchingStateEnum),
-}),
+  S.Struct({
+    storeCode: S.optional(S.String),
+    targetAccount: S.optional(S.String),
+    phoneNumber: S.optional(S.String),
+    name: S.optional(S.String),
+    placeId: S.optional(S.String),
+    storeName: S.optional(S.String),
+    storeAddress: S.optional(S.String),
+    gcidCategory: S.optional(StringList),
+    matchingStateHint: S.optional(S.String),
+    websiteUri: S.optional(S.String),
+    matchingState: S.optional(LfpStoreMatchingStateEnum),
+  }),
 ).annotate({ identifier: "LfpStore" }) as any as S.Schema<LfpStore>;
 
 /** The price represented as a number and currency. */
@@ -261,10 +326,10 @@ export interface Price {
   currencyCode?: string;
 }
 export const Price = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "amountMicros": S.optional(S.String),
-  "currencyCode": S.optional(S.String),
-}),
+  S.Struct({
+    amountMicros: S.optional(S.String),
+    currencyCode: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Price" }) as any as S.Schema<Price>;
 
 /** Local Inventory for the merchant. */
@@ -299,22 +364,22 @@ export interface LfpInventory {
   pickupSla?: string;
 }
 export const LfpInventory = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "targetAccount": S.optional(S.String),
-  "price": S.optional(Price),
-  "storeCode": S.optional(S.String),
-  "regionCode": S.optional(S.String),
-  "contentLanguage": S.optional(S.String),
-  "offerId": S.optional(S.String),
-  "availability": S.optional(S.String),
-  "gtin": S.optional(S.String),
-  "quantity": S.optional(S.String),
-  "collectionTime": S.optional(S.String),
-  "name": S.optional(S.String),
-  "feedLabel": S.optional(S.String),
-  "pickupMethod": S.optional(S.String),
-  "pickupSla": S.optional(S.String),
-}),
+  S.Struct({
+    targetAccount: S.optional(S.String),
+    price: S.optional(Price),
+    storeCode: S.optional(S.String),
+    regionCode: S.optional(S.String),
+    contentLanguage: S.optional(S.String),
+    offerId: S.optional(S.String),
+    availability: S.optional(S.String),
+    gtin: S.optional(S.String),
+    quantity: S.optional(S.String),
+    collectionTime: S.optional(S.String),
+    name: S.optional(S.String),
+    feedLabel: S.optional(S.String),
+    pickupMethod: S.optional(S.String),
+    pickupSla: S.optional(S.String),
+  }),
 ).annotate({ identifier: "LfpInventory" }) as any as S.Schema<LfpInventory>;
 
 export interface InsertAccountsLfpInventoriesRequest {
@@ -324,11 +389,19 @@ export interface InsertAccountsLfpInventoriesRequest {
   body?: LfpInventory;
 }
 export const InsertAccountsLfpInventoriesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(LfpInventory.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"lfp/v1/{+parent}/lfpInventories:insert","baseUrl":"https://merchantapi.googleapis.com/"})),
-).annotate({ identifier: "InsertAccountsLfpInventoriesRequest" }) as any as S.Schema<InsertAccountsLfpInventoriesRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(LfpInventory.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "lfp/v1/{+parent}/lfpInventories:insert",
+      baseUrl: "https://merchantapi.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "InsertAccountsLfpInventoriesRequest",
+}) as any as S.Schema<InsertAccountsLfpInventoriesRequest>;
 
 /** A sale for the merchant. */
 export interface LfpSale {
@@ -358,20 +431,20 @@ export interface LfpSale {
   feedLabel?: string;
 }
 export const LfpSale = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "offerId": S.optional(S.String),
-  "name": S.optional(S.String),
-  "gtin": S.optional(S.String),
-  "quantity": S.optional(S.String),
-  "storeCode": S.optional(S.String),
-  "regionCode": S.optional(S.String),
-  "contentLanguage": S.optional(S.String),
-  "uid": S.optional(S.String),
-  "targetAccount": S.optional(S.String),
-  "price": S.optional(Price),
-  "saleTime": S.optional(S.String),
-  "feedLabel": S.optional(S.String),
-}),
+  S.Struct({
+    offerId: S.optional(S.String),
+    name: S.optional(S.String),
+    gtin: S.optional(S.String),
+    quantity: S.optional(S.String),
+    storeCode: S.optional(S.String),
+    regionCode: S.optional(S.String),
+    contentLanguage: S.optional(S.String),
+    uid: S.optional(S.String),
+    targetAccount: S.optional(S.String),
+    price: S.optional(Price),
+    saleTime: S.optional(S.String),
+    feedLabel: S.optional(S.String),
+  }),
 ).annotate({ identifier: "LfpSale" }) as any as S.Schema<LfpSale>;
 
 export interface InsertAccountsLfpSalesRequest {
@@ -381,11 +454,19 @@ export interface InsertAccountsLfpSalesRequest {
   body?: LfpSale;
 }
 export const InsertAccountsLfpSalesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(LfpSale.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"lfp/v1/{+parent}/lfpSales:insert","baseUrl":"https://merchantapi.googleapis.com/"})),
-).annotate({ identifier: "InsertAccountsLfpSalesRequest" }) as any as S.Schema<InsertAccountsLfpSalesRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(LfpSale.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "lfp/v1/{+parent}/lfpSales:insert",
+      baseUrl: "https://merchantapi.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "InsertAccountsLfpSalesRequest",
+}) as any as S.Schema<InsertAccountsLfpSalesRequest>;
 
 export interface InsertAccountsLfpStoresRequest {
   /** Required. The LFP provider account Format: `accounts/{account}` */
@@ -394,11 +475,19 @@ export interface InsertAccountsLfpStoresRequest {
   body?: LfpStore;
 }
 export const InsertAccountsLfpStoresRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(LfpStore.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"lfp/v1/{+parent}/lfpStores:insert","baseUrl":"https://merchantapi.googleapis.com/"})),
-).annotate({ identifier: "InsertAccountsLfpStoresRequest" }) as any as S.Schema<InsertAccountsLfpStoresRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(LfpStore.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "lfp/v1/{+parent}/lfpStores:insert",
+      baseUrl: "https://merchantapi.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "InsertAccountsLfpStoresRequest",
+}) as any as S.Schema<InsertAccountsLfpStoresRequest>;
 
 export interface ListAccountsLfpStoresRequest {
   /** Required. The LFP partner. Format: `accounts/{account}` */
@@ -411,16 +500,26 @@ export interface ListAccountsLfpStoresRequest {
   pageToken?: string;
 }
 export const ListAccountsLfpStoresRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "targetAccount": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"lfp/v1/{+parent}/lfpStores","baseUrl":"https://merchantapi.googleapis.com/"})),
-).annotate({ identifier: "ListAccountsLfpStoresRequest" }) as any as S.Schema<ListAccountsLfpStoresRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    targetAccount: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "lfp/v1/{+parent}/lfpStores",
+      baseUrl: "https://merchantapi.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListAccountsLfpStoresRequest",
+}) as any as S.Schema<ListAccountsLfpStoresRequest>;
 
 export type LfpStoreList = ReadonlyArray<LfpStore>;
-export const LfpStoreList = /*@__PURE__*/ S.Array(LfpStore) as any as S.Schema<LfpStoreList>;
+export const LfpStoreList = /*@__PURE__*/ S.Array(
+  LfpStore,
+) as any as S.Schema<LfpStoreList>;
 
 /** Response message for the ListLfpStores method. */
 export interface ListLfpStoresResponse {
@@ -430,13 +529,20 @@ export interface ListLfpStoresResponse {
   nextPageToken?: string;
 }
 export const ListLfpStoresResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "lfpStores": S.optional(LfpStoreList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListLfpStoresResponse" }) as any as S.Schema<ListLfpStoresResponse>;
+  S.Struct({
+    lfpStores: S.optional(LfpStoreList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListLfpStoresResponse",
+}) as any as S.Schema<ListLfpStoresResponse>;
 
-export type DeleteAccountsLfpStoresError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteAccountsLfpStoresError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a store for a target merchant. */
 export const deleteAccountsLfpStores: API.OperationMethod<
   DeleteAccountsLfpStoresRequest,
@@ -451,7 +557,10 @@ export const deleteAccountsLfpStores: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAccountsLfpMerchantStatesError = NotFound | Forbidden | GcpOpError;
+export type GetAccountsLfpMerchantStatesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the LFP state of a merchant */
 export const getAccountsLfpMerchantStates: API.OperationMethod<
   GetAccountsLfpMerchantStatesRequest,
@@ -481,7 +590,12 @@ export const getAccountsLfpStores: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertAccountsLfpInventoriesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type InsertAccountsLfpInventoriesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Inserts a `LfpInventory` resource for the given target merchant account. If the resource already exists, it will be replaced. The inventory automatically expires after 30 days. */
 export const insertAccountsLfpInventories: API.OperationMethod<
   InsertAccountsLfpInventoriesRequest,
@@ -496,7 +610,12 @@ export const insertAccountsLfpInventories: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertAccountsLfpSalesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type InsertAccountsLfpSalesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Inserts a `LfpSale` for the given merchant. */
 export const insertAccountsLfpSales: API.OperationMethod<
   InsertAccountsLfpSalesRequest,
@@ -511,7 +630,12 @@ export const insertAccountsLfpSales: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertAccountsLfpStoresError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type InsertAccountsLfpStoresError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Inserts a store for the target merchant. If the store with the same store code already exists, it will be replaced. */
 export const insertAccountsLfpStores: API.OperationMethod<
   InsertAccountsLfpStoresRequest,
@@ -539,6 +663,8 @@ export const listAccountsLfpStores: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
-

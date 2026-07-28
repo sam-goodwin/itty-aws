@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 /** CancelJob Request. */
@@ -66,10 +66,12 @@ export interface CancelJobRequest {
   requestId?: string;
 }
 export const CancelJobRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String),
-}),
-).annotate({ identifier: "CancelJobRequest" }) as any as S.Schema<CancelJobRequest>;
+  S.Struct({
+    requestId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CancelJobRequest",
+}) as any as S.Schema<CancelJobRequest>;
 
 export interface CancelProjectsLocationsJobsRequest {
   /** Required. Job name. */
@@ -78,17 +80,30 @@ export interface CancelProjectsLocationsJobsRequest {
   body?: CancelJobRequest;
 }
 export const CancelProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(CancelJobRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://batch.googleapis.com/"})),
-).annotate({ identifier: "CancelProjectsLocationsJobsRequest" }) as any as S.Schema<CancelProjectsLocationsJobsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(CancelJobRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:cancel",
+      baseUrl: "https://batch.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CancelProjectsLocationsJobsRequest",
+}) as any as S.Schema<CancelProjectsLocationsJobsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -100,11 +115,11 @@ export interface Status {
   details?: DocumentMapList;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(S.Number),
-  "message": S.optional(S.String),
-  "details": S.optional(DocumentMapList),
-}),
+  S.Struct({
+    code: S.optional(S.Number),
+    message: S.optional(S.String),
+    details: S.optional(DocumentMapList),
+  }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -121,20 +136,22 @@ export interface Operation {
   done?: boolean;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "response": S.optional(DocumentMap),
-  "error": S.optional(Status),
-  "metadata": S.optional(DocumentMap),
-  "done": S.optional(S.Boolean),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    response: S.optional(DocumentMap),
+    error: S.optional(Status),
+    metadata: S.optional(DocumentMap),
+    done: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
 export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "CancelOperationRequest" }) as any as S.Schema<CancelOperationRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "CancelOperationRequest",
+}) as any as S.Schema<CancelOperationRequest>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -142,26 +159,54 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://batch.googleapis.com/"})),
-).annotate({ identifier: "CancelProjectsLocationsOperationsRequest" }) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:cancel",
+        baseUrl: "https://batch.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CancelProjectsLocationsOperationsRequest",
+}) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
-export type MessageNewTaskStateEnum = "STATE_UNSPECIFIED" | "PENDING" | "ASSIGNED" | "RUNNING" | "FAILED" | "SUCCEEDED" | "UNEXECUTED";
+export type MessageNewTaskStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "PENDING"
+  | "ASSIGNED"
+  | "RUNNING"
+  | "FAILED"
+  | "SUCCEEDED"
+  | "UNEXECUTED";
 export const MessageNewTaskStateEnum = /*@__PURE__*/ S.String;
 
-export type MessageTypeEnum = "TYPE_UNSPECIFIED" | "JOB_STATE_CHANGED" | "TASK_STATE_CHANGED";
+export type MessageTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "JOB_STATE_CHANGED"
+  | "TASK_STATE_CHANGED";
 export const MessageTypeEnum = /*@__PURE__*/ S.String;
 
-export type MessageNewJobStateEnum = "STATE_UNSPECIFIED" | "QUEUED" | "SCHEDULED" | "RUNNING" | "SUCCEEDED" | "FAILED" | "DELETION_IN_PROGRESS" | "CANCELLATION_IN_PROGRESS" | "CANCELLED";
+export type MessageNewJobStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "QUEUED"
+  | "SCHEDULED"
+  | "RUNNING"
+  | "SUCCEEDED"
+  | "FAILED"
+  | "DELETION_IN_PROGRESS"
+  | "CANCELLATION_IN_PROGRESS"
+  | "CANCELLED";
 export const MessageNewJobStateEnum = /*@__PURE__*/ S.String;
 
 /** Message details. Describe the conditions under which messages will be sent. If no attribute is defined, no message will be sent by default. One message should specify either the job or the task level attributes, but not both. For example, job level: JOB_STATE_CHANGED and/or a specified new_job_state; task level: TASK_STATE_CHANGED and/or a specified new_task_state. */
@@ -174,11 +219,11 @@ export interface Message {
   newJobState?: MessageNewJobStateEnum;
 }
 export const Message = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "newTaskState": S.optional(MessageNewTaskStateEnum),
-  "type": S.optional(MessageTypeEnum),
-  "newJobState": S.optional(MessageNewJobStateEnum),
-}),
+  S.Struct({
+    newTaskState: S.optional(MessageNewTaskStateEnum),
+    type: S.optional(MessageTypeEnum),
+    newJobState: S.optional(MessageNewJobStateEnum),
+  }),
 ).annotate({ identifier: "Message" }) as any as S.Schema<Message>;
 
 /** Notification configurations. */
@@ -189,14 +234,18 @@ export interface JobNotification {
   pubsubTopic?: string;
 }
 export const JobNotification = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "message": S.optional(Message),
-  "pubsubTopic": S.optional(S.String),
-}),
-).annotate({ identifier: "JobNotification" }) as any as S.Schema<JobNotification>;
+  S.Struct({
+    message: S.optional(Message),
+    pubsubTopic: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "JobNotification",
+}) as any as S.Schema<JobNotification>;
 
 export type JobNotificationList = ReadonlyArray<JobNotification>;
-export const JobNotificationList = /*@__PURE__*/ S.Array(JobNotification) as any as S.Schema<JobNotificationList>;
+export const JobNotificationList = /*@__PURE__*/ S.Array(
+  JobNotification,
+) as any as S.Schema<JobNotificationList>;
 
 /** Script runnable. */
 export interface Script {
@@ -206,14 +255,16 @@ export interface Script {
   path?: string;
 }
 export const Script = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "text": S.optional(S.String),
-  "path": S.optional(S.String),
-}),
+  S.Struct({
+    text: S.optional(S.String),
+    path: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Script" }) as any as S.Schema<Script>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** Container runnable. */
 export interface Container {
@@ -237,21 +288,24 @@ export interface Container {
   blockExternalNetwork?: boolean;
 }
 export const Container = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "commands": S.optional(StringList),
-  "username": S.optional(S.String),
-  "password": S.optional(S.String),
-  "enableImageStreaming": S.optional(S.Boolean),
-  "entrypoint": S.optional(S.String),
-  "volumes": S.optional(StringList),
-  "options": S.optional(S.String),
-  "imageUri": S.optional(S.String),
-  "blockExternalNetwork": S.optional(S.Boolean),
-}),
+  S.Struct({
+    commands: S.optional(StringList),
+    username: S.optional(S.String),
+    password: S.optional(S.String),
+    enableImageStreaming: S.optional(S.Boolean),
+    entrypoint: S.optional(S.String),
+    volumes: S.optional(StringList),
+    options: S.optional(S.String),
+    imageUri: S.optional(S.String),
+    blockExternalNetwork: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "Container" }) as any as S.Schema<Container>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
 export interface KMSEnvMap {
   /** The name of the KMS key that will be used to decrypt the cipher text. */
@@ -260,10 +314,10 @@ export interface KMSEnvMap {
   cipherText?: string;
 }
 export const KMSEnvMap = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "keyName": S.optional(S.String),
-  "cipherText": S.optional(S.String),
-}),
+  S.Struct({
+    keyName: S.optional(S.String),
+    cipherText: S.optional(S.String),
+  }),
 ).annotate({ identifier: "KMSEnvMap" }) as any as S.Schema<KMSEnvMap>;
 
 /** An Environment describes a collection of environment variables to set when executing Tasks. */
@@ -276,11 +330,11 @@ export interface Environment {
   encryptedVariables?: KMSEnvMap;
 }
 export const Environment = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "secretVariables": S.optional(StringMap),
-  "variables": S.optional(StringMap),
-  "encryptedVariables": S.optional(KMSEnvMap),
-}),
+  S.Struct({
+    secretVariables: S.optional(StringMap),
+    variables: S.optional(StringMap),
+    encryptedVariables: S.optional(KMSEnvMap),
+  }),
 ).annotate({ identifier: "Environment" }) as any as S.Schema<Environment>;
 
 /** A barrier runnable automatically blocks the execution of subsequent runnables until all the tasks in the task group reach the barrier. */
@@ -289,9 +343,9 @@ export interface Barrier {
   name?: string;
 }
 export const Barrier = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Barrier" }) as any as S.Schema<Barrier>;
 
 /** Runnable describes instructions for executing a specific script or container as part of a Task. */
@@ -318,22 +372,24 @@ export interface Runnable {
   labels?: StringMap;
 }
 export const Runnable = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "script": S.optional(Script),
-  "displayName": S.optional(S.String),
-  "container": S.optional(Container),
-  "alwaysRun": S.optional(S.Boolean),
-  "timeout": S.optional(S.String),
-  "environment": S.optional(Environment),
-  "barrier": S.optional(Barrier),
-  "ignoreExitStatus": S.optional(S.Boolean),
-  "background": S.optional(S.Boolean),
-  "labels": S.optional(StringMap),
-}),
+  S.Struct({
+    script: S.optional(Script),
+    displayName: S.optional(S.String),
+    container: S.optional(Container),
+    alwaysRun: S.optional(S.Boolean),
+    timeout: S.optional(S.String),
+    environment: S.optional(Environment),
+    barrier: S.optional(Barrier),
+    ignoreExitStatus: S.optional(S.Boolean),
+    background: S.optional(S.Boolean),
+    labels: S.optional(StringMap),
+  }),
 ).annotate({ identifier: "Runnable" }) as any as S.Schema<Runnable>;
 
 export type RunnableList = ReadonlyArray<Runnable>;
-export const RunnableList = /*@__PURE__*/ S.Array(Runnable) as any as S.Schema<RunnableList>;
+export const RunnableList = /*@__PURE__*/ S.Array(
+  Runnable,
+) as any as S.Schema<RunnableList>;
 
 /** Compute resource requirements. ComputeResource defines the amount of resources required for each task. Make sure your tasks have enough resources to successfully run. If you also define the types of resources for a job to use with the [InstancePolicyOrTemplate](https://cloud.google.com/batch/docs/reference/rest/v1/projects.locations.jobs#instancepolicyortemplate) field, make sure both fields are compatible with each other. */
 export interface ComputeResource {
@@ -345,18 +401,25 @@ export interface ComputeResource {
   cpuMilli?: string;
 }
 export const ComputeResource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bootDiskMib": S.optional(S.String),
-  "memoryMib": S.optional(S.String),
-  "cpuMilli": S.optional(S.String),
-}),
-).annotate({ identifier: "ComputeResource" }) as any as S.Schema<ComputeResource>;
+  S.Struct({
+    bootDiskMib: S.optional(S.String),
+    memoryMib: S.optional(S.String),
+    cpuMilli: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ComputeResource",
+}) as any as S.Schema<ComputeResource>;
 
-export type LifecyclePolicyActionEnum = "ACTION_UNSPECIFIED" | "RETRY_TASK" | "FAIL_TASK";
+export type LifecyclePolicyActionEnum =
+  | "ACTION_UNSPECIFIED"
+  | "RETRY_TASK"
+  | "FAIL_TASK";
 export const LifecyclePolicyActionEnum = /*@__PURE__*/ S.String;
 
 export type IntegerList = ReadonlyArray<number>;
-export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
+export const IntegerList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<IntegerList>;
 
 /** Conditions for actions to deal with task failures. */
 export interface ActionCondition {
@@ -364,10 +427,12 @@ export interface ActionCondition {
   exitCodes?: IntegerList;
 }
 export const ActionCondition = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "exitCodes": S.optional(IntegerList),
-}),
-).annotate({ identifier: "ActionCondition" }) as any as S.Schema<ActionCondition>;
+  S.Struct({
+    exitCodes: S.optional(IntegerList),
+  }),
+).annotate({
+  identifier: "ActionCondition",
+}) as any as S.Schema<ActionCondition>;
 
 /** LifecyclePolicy describes how to deal with task failures based on different conditions. */
 export interface LifecyclePolicy {
@@ -377,14 +442,18 @@ export interface LifecyclePolicy {
   actionCondition?: ActionCondition;
 }
 export const LifecyclePolicy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "action": S.optional(LifecyclePolicyActionEnum),
-  "actionCondition": S.optional(ActionCondition),
-}),
-).annotate({ identifier: "LifecyclePolicy" }) as any as S.Schema<LifecyclePolicy>;
+  S.Struct({
+    action: S.optional(LifecyclePolicyActionEnum),
+    actionCondition: S.optional(ActionCondition),
+  }),
+).annotate({
+  identifier: "LifecyclePolicy",
+}) as any as S.Schema<LifecyclePolicy>;
 
 export type LifecyclePolicyList = ReadonlyArray<LifecyclePolicy>;
-export const LifecyclePolicyList = /*@__PURE__*/ S.Array(LifecyclePolicy) as any as S.Schema<LifecyclePolicyList>;
+export const LifecyclePolicyList = /*@__PURE__*/ S.Array(
+  LifecyclePolicy,
+) as any as S.Schema<LifecyclePolicyList>;
 
 /** Represents an NFS volume. */
 export interface NFS {
@@ -394,10 +463,10 @@ export interface NFS {
   remotePath?: string;
 }
 export const NFS = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "server": S.optional(S.String),
-  "remotePath": S.optional(S.String),
-}),
+  S.Struct({
+    server: S.optional(S.String),
+    remotePath: S.optional(S.String),
+  }),
 ).annotate({ identifier: "NFS" }) as any as S.Schema<NFS>;
 
 /** Represents a Google Cloud Storage volume. */
@@ -406,9 +475,9 @@ export interface GCS {
   remotePath?: string;
 }
 export const GCS = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "remotePath": S.optional(S.String),
-}),
+  S.Struct({
+    remotePath: S.optional(S.String),
+  }),
 ).annotate({ identifier: "GCS" }) as any as S.Schema<GCS>;
 
 /** Volume describes a volume and parameters for it to be mounted to a VM. */
@@ -425,17 +494,19 @@ export interface Volume {
   mountOptions?: StringList;
 }
 export const Volume = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "deviceName": S.optional(S.String),
-  "nfs": S.optional(NFS),
-  "mountPath": S.optional(S.String),
-  "gcs": S.optional(GCS),
-  "mountOptions": S.optional(StringList),
-}),
+  S.Struct({
+    deviceName: S.optional(S.String),
+    nfs: S.optional(NFS),
+    mountPath: S.optional(S.String),
+    gcs: S.optional(GCS),
+    mountOptions: S.optional(StringList),
+  }),
 ).annotate({ identifier: "Volume" }) as any as S.Schema<Volume>;
 
 export type VolumeList = ReadonlyArray<Volume>;
-export const VolumeList = /*@__PURE__*/ S.Array(Volume) as any as S.Schema<VolumeList>;
+export const VolumeList = /*@__PURE__*/ S.Array(
+  Volume,
+) as any as S.Schema<VolumeList>;
 
 /** Spec of a task */
 export interface TaskSpec {
@@ -457,22 +528,27 @@ export interface TaskSpec {
   maxRunDuration?: string;
 }
 export const TaskSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "runnables": S.optional(RunnableList),
-  "computeResource": S.optional(ComputeResource),
-  "lifecyclePolicies": S.optional(LifecyclePolicyList),
-  "environments": S.optional(StringMap),
-  "volumes": S.optional(VolumeList),
-  "maxRetryCount": S.optional(S.Number),
-  "environment": S.optional(Environment),
-  "maxRunDuration": S.optional(S.String),
-}),
+  S.Struct({
+    runnables: S.optional(RunnableList),
+    computeResource: S.optional(ComputeResource),
+    lifecyclePolicies: S.optional(LifecyclePolicyList),
+    environments: S.optional(StringMap),
+    volumes: S.optional(VolumeList),
+    maxRetryCount: S.optional(S.Number),
+    environment: S.optional(Environment),
+    maxRunDuration: S.optional(S.String),
+  }),
 ).annotate({ identifier: "TaskSpec" }) as any as S.Schema<TaskSpec>;
 
 export type EnvironmentList = ReadonlyArray<Environment>;
-export const EnvironmentList = /*@__PURE__*/ S.Array(Environment) as any as S.Schema<EnvironmentList>;
+export const EnvironmentList = /*@__PURE__*/ S.Array(
+  Environment,
+) as any as S.Schema<EnvironmentList>;
 
-export type TaskGroupSchedulingPolicyEnum = "SCHEDULING_POLICY_UNSPECIFIED" | "AS_SOON_AS_POSSIBLE" | "IN_ORDER";
+export type TaskGroupSchedulingPolicyEnum =
+  | "SCHEDULING_POLICY_UNSPECIFIED"
+  | "AS_SOON_AS_POSSIBLE"
+  | "IN_ORDER";
 export const TaskGroupSchedulingPolicyEnum = /*@__PURE__*/ S.String;
 
 /** A TaskGroup defines one or more Tasks that all share the same TaskSpec. */
@@ -499,24 +575,32 @@ export interface TaskGroup {
   taskCount?: string;
 }
 export const TaskGroup = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "taskCountPerNode": S.optional(S.String),
-  "taskSpec": S.optional(TaskSpec),
-  "parallelism": S.optional(S.String),
-  "taskEnvironments": S.optional(EnvironmentList),
-  "requireHostsFile": S.optional(S.Boolean),
-  "permissiveSsh": S.optional(S.Boolean),
-  "runAsNonRoot": S.optional(S.Boolean),
-  "name": S.optional(S.String),
-  "schedulingPolicy": S.optional(TaskGroupSchedulingPolicyEnum),
-  "taskCount": S.optional(S.String),
-}),
+  S.Struct({
+    taskCountPerNode: S.optional(S.String),
+    taskSpec: S.optional(TaskSpec),
+    parallelism: S.optional(S.String),
+    taskEnvironments: S.optional(EnvironmentList),
+    requireHostsFile: S.optional(S.Boolean),
+    permissiveSsh: S.optional(S.Boolean),
+    runAsNonRoot: S.optional(S.Boolean),
+    name: S.optional(S.String),
+    schedulingPolicy: S.optional(TaskGroupSchedulingPolicyEnum),
+    taskCount: S.optional(S.String),
+  }),
 ).annotate({ identifier: "TaskGroup" }) as any as S.Schema<TaskGroup>;
 
 export type TaskGroupList = ReadonlyArray<TaskGroup>;
-export const TaskGroupList = /*@__PURE__*/ S.Array(TaskGroup) as any as S.Schema<TaskGroupList>;
+export const TaskGroupList = /*@__PURE__*/ S.Array(
+  TaskGroup,
+) as any as S.Schema<TaskGroupList>;
 
-export type InstanceStatusProvisioningModelEnum = "PROVISIONING_MODEL_UNSPECIFIED" | "STANDARD" | "SPOT" | "PREEMPTIBLE" | "RESERVATION_BOUND" | "FLEX_START";
+export type InstanceStatusProvisioningModelEnum =
+  | "PROVISIONING_MODEL_UNSPECIFIED"
+  | "STANDARD"
+  | "SPOT"
+  | "PREEMPTIBLE"
+  | "RESERVATION_BOUND"
+  | "FLEX_START";
 export const InstanceStatusProvisioningModelEnum = /*@__PURE__*/ S.String;
 
 /** A new persistent disk or a local ssd. A VM can only have one local SSD setting but multiple local SSD partitions. See https://cloud.google.com/compute/docs/disks#pdspecs and https://cloud.google.com/compute/docs/disks#localssds. */
@@ -533,13 +617,13 @@ export interface Disk {
   type?: string;
 }
 export const Disk = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sizeGb": S.optional(S.String),
-  "diskInterface": S.optional(S.String),
-  "image": S.optional(S.String),
-  "snapshot": S.optional(S.String),
-  "type": S.optional(S.String),
-}),
+  S.Struct({
+    sizeGb: S.optional(S.String),
+    diskInterface: S.optional(S.String),
+    image: S.optional(S.String),
+    snapshot: S.optional(S.String),
+    type: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Disk" }) as any as S.Schema<Disk>;
 
 /** VM instance status. */
@@ -554,16 +638,18 @@ export interface InstanceStatus {
   bootDisk?: Disk;
 }
 export const InstanceStatus = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "machineType": S.optional(S.String),
-  "taskPack": S.optional(S.String),
-  "provisioningModel": S.optional(InstanceStatusProvisioningModelEnum),
-  "bootDisk": S.optional(Disk),
-}),
+  S.Struct({
+    machineType: S.optional(S.String),
+    taskPack: S.optional(S.String),
+    provisioningModel: S.optional(InstanceStatusProvisioningModelEnum),
+    bootDisk: S.optional(Disk),
+  }),
 ).annotate({ identifier: "InstanceStatus" }) as any as S.Schema<InstanceStatus>;
 
 export type InstanceStatusList = ReadonlyArray<InstanceStatus>;
-export const InstanceStatusList = /*@__PURE__*/ S.Array(InstanceStatus) as any as S.Schema<InstanceStatusList>;
+export const InstanceStatusList = /*@__PURE__*/ S.Array(
+  InstanceStatus,
+) as any as S.Schema<InstanceStatusList>;
 
 /** Aggregated task status for a TaskGroup. */
 export interface TaskGroupStatus {
@@ -573,16 +659,30 @@ export interface TaskGroupStatus {
   instances?: InstanceStatusList;
 }
 export const TaskGroupStatus = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "counts": S.optional(StringMap),
-  "instances": S.optional(InstanceStatusList),
-}),
-).annotate({ identifier: "TaskGroupStatus" }) as any as S.Schema<TaskGroupStatus>;
+  S.Struct({
+    counts: S.optional(StringMap),
+    instances: S.optional(InstanceStatusList),
+  }),
+).annotate({
+  identifier: "TaskGroupStatus",
+}) as any as S.Schema<TaskGroupStatus>;
 
 export type TaskGroupStatusMap = { [key: string]: TaskGroupStatus | undefined };
-export const TaskGroupStatusMap = /*@__PURE__*/ S.Record(S.String, TaskGroupStatus) as any as S.Schema<TaskGroupStatusMap>;
+export const TaskGroupStatusMap = /*@__PURE__*/ S.Record(
+  S.String,
+  TaskGroupStatus,
+) as any as S.Schema<TaskGroupStatusMap>;
 
-export type JobStatusStateEnum = "STATE_UNSPECIFIED" | "QUEUED" | "SCHEDULED" | "RUNNING" | "SUCCEEDED" | "FAILED" | "DELETION_IN_PROGRESS" | "CANCELLATION_IN_PROGRESS" | "CANCELLED";
+export type JobStatusStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "QUEUED"
+  | "SCHEDULED"
+  | "RUNNING"
+  | "SUCCEEDED"
+  | "FAILED"
+  | "DELETION_IN_PROGRESS"
+  | "CANCELLATION_IN_PROGRESS"
+  | "CANCELLED";
 export const JobStatusStateEnum = /*@__PURE__*/ S.String;
 
 /** This Task Execution field includes detail information for task execution procedures, based on StatusEvent types. */
@@ -591,12 +691,19 @@ export interface TaskExecution {
   exitCode?: number;
 }
 export const TaskExecution = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "exitCode": S.optional(S.Number),
-}),
+  S.Struct({
+    exitCode: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "TaskExecution" }) as any as S.Schema<TaskExecution>;
 
-export type StatusEventTaskStateEnum = "STATE_UNSPECIFIED" | "PENDING" | "ASSIGNED" | "RUNNING" | "FAILED" | "SUCCEEDED" | "UNEXECUTED";
+export type StatusEventTaskStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "PENDING"
+  | "ASSIGNED"
+  | "RUNNING"
+  | "FAILED"
+  | "SUCCEEDED"
+  | "UNEXECUTED";
 export const StatusEventTaskStateEnum = /*@__PURE__*/ S.String;
 
 /** Status event. */
@@ -613,17 +720,19 @@ export interface StatusEvent {
   taskState?: StatusEventTaskStateEnum;
 }
 export const StatusEvent = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "eventTime": S.optional(S.String),
-  "taskExecution": S.optional(TaskExecution),
-  "description": S.optional(S.String),
-  "type": S.optional(S.String),
-  "taskState": S.optional(StatusEventTaskStateEnum),
-}),
+  S.Struct({
+    eventTime: S.optional(S.String),
+    taskExecution: S.optional(TaskExecution),
+    description: S.optional(S.String),
+    type: S.optional(S.String),
+    taskState: S.optional(StatusEventTaskStateEnum),
+  }),
 ).annotate({ identifier: "StatusEvent" }) as any as S.Schema<StatusEvent>;
 
 export type StatusEventList = ReadonlyArray<StatusEvent>;
-export const StatusEventList = /*@__PURE__*/ S.Array(StatusEvent) as any as S.Schema<StatusEventList>;
+export const StatusEventList = /*@__PURE__*/ S.Array(
+  StatusEvent,
+) as any as S.Schema<StatusEventList>;
 
 /** Job status. */
 export interface JobStatus {
@@ -637,12 +746,12 @@ export interface JobStatus {
   statusEvents?: StatusEventList;
 }
 export const JobStatus = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "taskGroups": S.optional(TaskGroupStatusMap),
-  "runDuration": S.optional(S.String),
-  "state": S.optional(JobStatusStateEnum),
-  "statusEvents": S.optional(StatusEventList),
-}),
+  S.Struct({
+    taskGroups: S.optional(TaskGroupStatusMap),
+    runDuration: S.optional(S.String),
+    state: S.optional(JobStatusStateEnum),
+    statusEvents: S.optional(StatusEventList),
+  }),
 ).annotate({ identifier: "JobStatus" }) as any as S.Schema<JobStatus>;
 
 export interface LocationPolicy {
@@ -650,12 +759,18 @@ export interface LocationPolicy {
   allowedLocations?: StringList;
 }
 export const LocationPolicy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "allowedLocations": S.optional(StringList),
-}),
+  S.Struct({
+    allowedLocations: S.optional(StringList),
+  }),
 ).annotate({ identifier: "LocationPolicy" }) as any as S.Schema<LocationPolicy>;
 
-export type InstancePolicyProvisioningModelEnum = "PROVISIONING_MODEL_UNSPECIFIED" | "STANDARD" | "SPOT" | "PREEMPTIBLE" | "RESERVATION_BOUND" | "FLEX_START";
+export type InstancePolicyProvisioningModelEnum =
+  | "PROVISIONING_MODEL_UNSPECIFIED"
+  | "STANDARD"
+  | "SPOT"
+  | "PREEMPTIBLE"
+  | "RESERVATION_BOUND"
+  | "FLEX_START";
 export const InstancePolicyProvisioningModelEnum = /*@__PURE__*/ S.String;
 
 /** A new or an existing persistent disk (PD) or a local ssd attached to a VM instance. */
@@ -667,15 +782,17 @@ export interface AttachedDisk {
   deviceName?: string;
 }
 export const AttachedDisk = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "existingDisk": S.optional(S.String),
-  "newDisk": S.optional(Disk),
-  "deviceName": S.optional(S.String),
-}),
+  S.Struct({
+    existingDisk: S.optional(S.String),
+    newDisk: S.optional(Disk),
+    deviceName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "AttachedDisk" }) as any as S.Schema<AttachedDisk>;
 
 export type AttachedDiskList = ReadonlyArray<AttachedDisk>;
-export const AttachedDiskList = /*@__PURE__*/ S.Array(AttachedDisk) as any as S.Schema<AttachedDiskList>;
+export const AttachedDiskList = /*@__PURE__*/ S.Array(
+  AttachedDisk,
+) as any as S.Schema<AttachedDiskList>;
 
 /** Accelerator describes Compute Engine accelerators to be attached to the VM. */
 export interface Accelerator {
@@ -689,16 +806,18 @@ export interface Accelerator {
   installGpuDrivers?: boolean;
 }
 export const Accelerator = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(S.String),
-  "count": S.optional(S.String),
-  "driverVersion": S.optional(S.String),
-  "installGpuDrivers": S.optional(S.Boolean),
-}),
+  S.Struct({
+    type: S.optional(S.String),
+    count: S.optional(S.String),
+    driverVersion: S.optional(S.String),
+    installGpuDrivers: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "Accelerator" }) as any as S.Schema<Accelerator>;
 
 export type AcceleratorList = ReadonlyArray<Accelerator>;
-export const AcceleratorList = /*@__PURE__*/ S.Array(Accelerator) as any as S.Schema<AcceleratorList>;
+export const AcceleratorList = /*@__PURE__*/ S.Array(
+  Accelerator,
+) as any as S.Schema<AcceleratorList>;
 
 /** InstancePolicy describes an instance type and resources attached to each VM created by this InstancePolicy. */
 export interface InstancePolicy {
@@ -718,15 +837,15 @@ export interface InstancePolicy {
   minCpuPlatform?: string;
 }
 export const InstancePolicy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "provisioningModel": S.optional(InstancePolicyProvisioningModelEnum),
-  "bootDisk": S.optional(Disk),
-  "disks": S.optional(AttachedDiskList),
-  "reservation": S.optional(S.String),
-  "accelerators": S.optional(AcceleratorList),
-  "machineType": S.optional(S.String),
-  "minCpuPlatform": S.optional(S.String),
-}),
+  S.Struct({
+    provisioningModel: S.optional(InstancePolicyProvisioningModelEnum),
+    bootDisk: S.optional(Disk),
+    disks: S.optional(AttachedDiskList),
+    reservation: S.optional(S.String),
+    accelerators: S.optional(AcceleratorList),
+    machineType: S.optional(S.String),
+    minCpuPlatform: S.optional(S.String),
+  }),
 ).annotate({ identifier: "InstancePolicy" }) as any as S.Schema<InstancePolicy>;
 
 /** InstancePolicyOrTemplate lets you define the type of resources to use for this job either with an InstancePolicy or an instance template. If undefined, Batch picks the type of VM to use and doesn't include optional VM resources such as GPUs and extra disks. */
@@ -743,17 +862,22 @@ export interface InstancePolicyOrTemplate {
   policy?: InstancePolicy;
 }
 export const InstancePolicyOrTemplate = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "instanceTemplate": S.optional(S.String),
-  "installGpuDrivers": S.optional(S.Boolean),
-  "blockProjectSshKeys": S.optional(S.Boolean),
-  "installOpsAgent": S.optional(S.Boolean),
-  "policy": S.optional(InstancePolicy),
-}),
-).annotate({ identifier: "InstancePolicyOrTemplate" }) as any as S.Schema<InstancePolicyOrTemplate>;
+  S.Struct({
+    instanceTemplate: S.optional(S.String),
+    installGpuDrivers: S.optional(S.Boolean),
+    blockProjectSshKeys: S.optional(S.Boolean),
+    installOpsAgent: S.optional(S.Boolean),
+    policy: S.optional(InstancePolicy),
+  }),
+).annotate({
+  identifier: "InstancePolicyOrTemplate",
+}) as any as S.Schema<InstancePolicyOrTemplate>;
 
-export type InstancePolicyOrTemplateList = ReadonlyArray<InstancePolicyOrTemplate>;
-export const InstancePolicyOrTemplateList = /*@__PURE__*/ S.Array(InstancePolicyOrTemplate) as any as S.Schema<InstancePolicyOrTemplateList>;
+export type InstancePolicyOrTemplateList =
+  ReadonlyArray<InstancePolicyOrTemplate>;
+export const InstancePolicyOrTemplateList = /*@__PURE__*/ S.Array(
+  InstancePolicyOrTemplate,
+) as any as S.Schema<InstancePolicyOrTemplateList>;
 
 /** A network interface. */
 export interface NetworkInterface {
@@ -765,15 +889,19 @@ export interface NetworkInterface {
   subnetwork?: string;
 }
 export const NetworkInterface = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "noExternalIpAddress": S.optional(S.Boolean),
-  "network": S.optional(S.String),
-  "subnetwork": S.optional(S.String),
-}),
-).annotate({ identifier: "NetworkInterface" }) as any as S.Schema<NetworkInterface>;
+  S.Struct({
+    noExternalIpAddress: S.optional(S.Boolean),
+    network: S.optional(S.String),
+    subnetwork: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "NetworkInterface",
+}) as any as S.Schema<NetworkInterface>;
 
 export type NetworkInterfaceList = ReadonlyArray<NetworkInterface>;
-export const NetworkInterfaceList = /*@__PURE__*/ S.Array(NetworkInterface) as any as S.Schema<NetworkInterfaceList>;
+export const NetworkInterfaceList = /*@__PURE__*/ S.Array(
+  NetworkInterface,
+) as any as S.Schema<NetworkInterfaceList>;
 
 /** NetworkPolicy describes VM instance network configurations. */
 export interface NetworkPolicy {
@@ -781,9 +909,9 @@ export interface NetworkPolicy {
   networkInterfaces?: NetworkInterfaceList;
 }
 export const NetworkPolicy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "networkInterfaces": S.optional(NetworkInterfaceList),
-}),
+  S.Struct({
+    networkInterfaces: S.optional(NetworkInterfaceList),
+  }),
 ).annotate({ identifier: "NetworkPolicy" }) as any as S.Schema<NetworkPolicy>;
 
 /** PlacementPolicy describes a group placement policy for the VMs controlled by this AllocationPolicy. */
@@ -794,11 +922,13 @@ export interface PlacementPolicy {
   maxDistance?: string;
 }
 export const PlacementPolicy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "collocation": S.optional(S.String),
-  "maxDistance": S.optional(S.String),
-}),
-).annotate({ identifier: "PlacementPolicy" }) as any as S.Schema<PlacementPolicy>;
+  S.Struct({
+    collocation: S.optional(S.String),
+    maxDistance: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PlacementPolicy",
+}) as any as S.Schema<PlacementPolicy>;
 
 /** Carries information about a Google Cloud service account. */
 export interface ServiceAccount {
@@ -808,10 +938,10 @@ export interface ServiceAccount {
   email?: string;
 }
 export const ServiceAccount = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "scopes": S.optional(StringList),
-  "email": S.optional(S.String),
-}),
+  S.Struct({
+    scopes: S.optional(StringList),
+    email: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ServiceAccount" }) as any as S.Schema<ServiceAccount>;
 
 /** A Job's resource allocation policy describes when, where, and how compute resources should be allocated for the Job. */
@@ -832,16 +962,18 @@ export interface AllocationPolicy {
   tags?: StringList;
 }
 export const AllocationPolicy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "location": S.optional(LocationPolicy),
-  "instances": S.optional(InstancePolicyOrTemplateList),
-  "network": S.optional(NetworkPolicy),
-  "placement": S.optional(PlacementPolicy),
-  "serviceAccount": S.optional(ServiceAccount),
-  "labels": S.optional(StringMap),
-  "tags": S.optional(StringList),
-}),
-).annotate({ identifier: "AllocationPolicy" }) as any as S.Schema<AllocationPolicy>;
+  S.Struct({
+    location: S.optional(LocationPolicy),
+    instances: S.optional(InstancePolicyOrTemplateList),
+    network: S.optional(NetworkPolicy),
+    placement: S.optional(PlacementPolicy),
+    serviceAccount: S.optional(ServiceAccount),
+    labels: S.optional(StringMap),
+    tags: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "AllocationPolicy",
+}) as any as S.Schema<AllocationPolicy>;
 
 /** `CloudLoggingOption` contains additional settings for Cloud Logging logs generated by Batch job. */
 export interface CloudLoggingOption {
@@ -849,12 +981,17 @@ export interface CloudLoggingOption {
   useGenericTaskMonitoredResource?: boolean;
 }
 export const CloudLoggingOption = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "useGenericTaskMonitoredResource": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "CloudLoggingOption" }) as any as S.Schema<CloudLoggingOption>;
+  S.Struct({
+    useGenericTaskMonitoredResource: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "CloudLoggingOption",
+}) as any as S.Schema<CloudLoggingOption>;
 
-export type LogsPolicyDestinationEnum = "DESTINATION_UNSPECIFIED" | "CLOUD_LOGGING" | "PATH";
+export type LogsPolicyDestinationEnum =
+  | "DESTINATION_UNSPECIFIED"
+  | "CLOUD_LOGGING"
+  | "PATH";
 export const LogsPolicyDestinationEnum = /*@__PURE__*/ S.String;
 
 /** LogsPolicy describes if and how a job's logs are preserved. Logs include information that is automatically written by the Batch service agent and any information that you configured the job's runnables to write to the `stdout` or `stderr` streams. */
@@ -867,11 +1004,11 @@ export interface LogsPolicy {
   destination?: LogsPolicyDestinationEnum;
 }
 export const LogsPolicy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "logsPath": S.optional(S.String),
-  "cloudLoggingOption": S.optional(CloudLoggingOption),
-  "destination": S.optional(LogsPolicyDestinationEnum),
-}),
+  S.Struct({
+    logsPath: S.optional(S.String),
+    cloudLoggingOption: S.optional(CloudLoggingOption),
+    destination: S.optional(LogsPolicyDestinationEnum),
+  }),
 ).annotate({ identifier: "LogsPolicy" }) as any as S.Schema<LogsPolicy>;
 
 /** The Cloud Batch Job description. */
@@ -900,19 +1037,19 @@ export interface Job {
   logsPolicy?: LogsPolicy;
 }
 export const Job = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "createTime": S.optional(S.String),
-  "notifications": S.optional(JobNotificationList),
-  "taskGroups": S.optional(TaskGroupList),
-  "status": S.optional(JobStatus),
-  "name": S.optional(S.String),
-  "priority": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "updateTime": S.optional(S.String),
-  "uid": S.optional(S.String),
-  "allocationPolicy": S.optional(AllocationPolicy),
-  "logsPolicy": S.optional(LogsPolicy),
-}),
+  S.Struct({
+    createTime: S.optional(S.String),
+    notifications: S.optional(JobNotificationList),
+    taskGroups: S.optional(TaskGroupList),
+    status: S.optional(JobStatus),
+    name: S.optional(S.String),
+    priority: S.optional(S.String),
+    labels: S.optional(StringMap),
+    updateTime: S.optional(S.String),
+    uid: S.optional(S.String),
+    allocationPolicy: S.optional(AllocationPolicy),
+    logsPolicy: S.optional(LogsPolicy),
+  }),
 ).annotate({ identifier: "Job" }) as any as S.Schema<Job>;
 
 export interface CreateProjectsLocationsJobsRequest {
@@ -926,13 +1063,21 @@ export interface CreateProjectsLocationsJobsRequest {
   body?: Job;
 }
 export const CreateProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "jobId": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(Job.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/jobs","baseUrl":"https://batch.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsJobsRequest" }) as any as S.Schema<CreateProjectsLocationsJobsRequest>;
+  S.Struct({
+    jobId: S.optional(S.String.pipe(T.Query())),
+    requestId: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(Job.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/jobs",
+      baseUrl: "https://batch.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateProjectsLocationsJobsRequest",
+}) as any as S.Schema<CreateProjectsLocationsJobsRequest>;
 
 export interface DeleteProjectsLocationsJobsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -943,32 +1088,57 @@ export interface DeleteProjectsLocationsJobsRequest {
   reason?: string;
 }
 export const DeleteProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "reason": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://batch.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsJobsRequest" }) as any as S.Schema<DeleteProjectsLocationsJobsRequest>;
+  S.Struct({
+    requestId: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    reason: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://batch.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteProjectsLocationsJobsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsJobsRequest>;
 
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://batch.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsOperationsRequest" }) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://batch.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsOperationsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
 
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://batch.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://batch.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsRequest",
+}) as any as S.Schema<GetProjectsLocationsRequest>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -984,13 +1154,13 @@ export interface Location {
   labels?: StringMap;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "displayName": S.optional(S.String),
-  "locationId": S.optional(S.String),
-  "metadata": S.optional(DocumentMap),
-  "name": S.optional(S.String),
-  "labels": S.optional(StringMap),
-}),
+  S.Struct({
+    displayName: S.optional(S.String),
+    locationId: S.optional(S.String),
+    metadata: S.optional(DocumentMap),
+    name: S.optional(S.String),
+    labels: S.optional(StringMap),
+  }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export interface GetProjectsLocationsJobsRequest {
@@ -998,22 +1168,46 @@ export interface GetProjectsLocationsJobsRequest {
   name: string;
 }
 export const GetProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://batch.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsJobsRequest" }) as any as S.Schema<GetProjectsLocationsJobsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://batch.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsJobsRequest",
+}) as any as S.Schema<GetProjectsLocationsJobsRequest>;
 
 export interface GetProjectsLocationsJobsTaskGroupsTasksRequest {
   /** Required. Task name. */
   name: string;
 }
-export const GetProjectsLocationsJobsTaskGroupsTasksRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://batch.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsJobsTaskGroupsTasksRequest" }) as any as S.Schema<GetProjectsLocationsJobsTaskGroupsTasksRequest>;
+export const GetProjectsLocationsJobsTaskGroupsTasksRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://batch.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsJobsTaskGroupsTasksRequest",
+  }) as any as S.Schema<GetProjectsLocationsJobsTaskGroupsTasksRequest>;
 
-export type TaskStatusStateEnum = "STATE_UNSPECIFIED" | "PENDING" | "ASSIGNED" | "RUNNING" | "FAILED" | "SUCCEEDED" | "UNEXECUTED";
+export type TaskStatusStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "PENDING"
+  | "ASSIGNED"
+  | "RUNNING"
+  | "FAILED"
+  | "SUCCEEDED"
+  | "UNEXECUTED";
 export const TaskStatusStateEnum = /*@__PURE__*/ S.String;
 
 /** Status of a task. */
@@ -1024,10 +1218,10 @@ export interface TaskStatus {
   statusEvents?: StatusEventList;
 }
 export const TaskStatus = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "state": S.optional(TaskStatusStateEnum),
-  "statusEvents": S.optional(StatusEventList),
-}),
+  S.Struct({
+    state: S.optional(TaskStatusStateEnum),
+    statusEvents: S.optional(StatusEventList),
+  }),
 ).annotate({ identifier: "TaskStatus" }) as any as S.Schema<TaskStatus>;
 
 /** A Cloud Batch task. */
@@ -1038,21 +1232,30 @@ export interface Task {
   status?: TaskStatus;
 }
 export const Task = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "status": S.optional(TaskStatus),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    status: S.optional(TaskStatus),
+  }),
 ).annotate({ identifier: "Task" }) as any as S.Schema<Task>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://batch.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://batch.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsOperationsRequest",
+}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export interface ListProjectsLocationsRequest {
   /** The resource that owns the locations collection, if applicable. */
@@ -1067,17 +1270,27 @@ export interface ListProjectsLocationsRequest {
   pageSize?: number;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/locations","baseUrl":"https://batch.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}/locations",
+      baseUrl: "https://batch.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsRequest",
+}) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(
+  Location,
+) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -1087,11 +1300,13 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locations": S.optional(LocationList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
+  S.Struct({
+    locations: S.optional(LocationList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListLocationsResponse",
+}) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsLocationsJobsRequest {
   /** List filter. */
@@ -1106,14 +1321,22 @@ export interface ListProjectsLocationsJobsRequest {
   parent: string;
 }
 export const ListProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/jobs","baseUrl":"https://batch.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsJobsRequest" }) as any as S.Schema<ListProjectsLocationsJobsRequest>;
+  S.Struct({
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/jobs",
+      baseUrl: "https://batch.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsJobsRequest",
+}) as any as S.Schema<ListProjectsLocationsJobsRequest>;
 
 export type JobList = ReadonlyArray<Job>;
 export const JobList = /*@__PURE__*/ S.Array(Job) as any as S.Schema<JobList>;
@@ -1128,12 +1351,14 @@ export interface ListJobsResponse {
   unreachable?: StringList;
 }
 export const ListJobsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "jobs": S.optional(JobList),
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListJobsResponse" }) as any as S.Schema<ListJobsResponse>;
+  S.Struct({
+    jobs: S.optional(JobList),
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListJobsResponse",
+}) as any as S.Schema<ListJobsResponse>;
 
 export interface ListProjectsLocationsJobsTaskGroupsTasksRequest {
   /** Page token. */
@@ -1145,17 +1370,28 @@ export interface ListProjectsLocationsJobsTaskGroupsTasksRequest {
   /** Page size. */
   pageSize?: number;
 }
-export const ListProjectsLocationsJobsTaskGroupsTasksRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/tasks","baseUrl":"https://batch.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsJobsTaskGroupsTasksRequest" }) as any as S.Schema<ListProjectsLocationsJobsTaskGroupsTasksRequest>;
+export const ListProjectsLocationsJobsTaskGroupsTasksRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      filter: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/tasks",
+        baseUrl: "https://batch.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsJobsTaskGroupsTasksRequest",
+  }) as any as S.Schema<ListProjectsLocationsJobsTaskGroupsTasksRequest>;
 
 export type TaskList = ReadonlyArray<Task>;
-export const TaskList = /*@__PURE__*/ S.Array(Task) as any as S.Schema<TaskList>;
+export const TaskList = /*@__PURE__*/ S.Array(
+  Task,
+) as any as S.Schema<TaskList>;
 
 /** ListTasks Response. */
 export interface ListTasksResponse {
@@ -1167,12 +1403,14 @@ export interface ListTasksResponse {
   nextPageToken?: string;
 }
 export const ListTasksResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "unreachable": S.optional(StringList),
-  "tasks": S.optional(TaskList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListTasksResponse" }) as any as S.Schema<ListTasksResponse>;
+  S.Struct({
+    unreachable: S.optional(StringList),
+    tasks: S.optional(TaskList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListTasksResponse",
+}) as any as S.Schema<ListTasksResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
   /** The name of the operation's parent resource. */
@@ -1186,18 +1424,29 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/operations","baseUrl":"https://batch.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      filter: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}/operations",
+        baseUrl: "https://batch.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsOperationsRequest",
+}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(
+  Operation,
+) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -1209,14 +1458,20 @@ export interface ListOperationsResponse {
   nextPageToken?: string;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "unreachable": S.optional(StringList),
-  "operations": S.optional(OperationList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
+  S.Struct({
+    unreachable: S.optional(StringList),
+    operations: S.optional(OperationList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListOperationsResponse",
+}) as any as S.Schema<ListOperationsResponse>;
 
-export type AgentInfoStateEnum = "AGENT_STATE_UNSPECIFIED" | "AGENT_STARTING" | "AGENT_RUNNING" | "AGENT_STOPPED";
+export type AgentInfoStateEnum =
+  | "AGENT_STATE_UNSPECIFIED"
+  | "AGENT_STARTING"
+  | "AGENT_RUNNING"
+  | "AGENT_STOPPED";
 export const AgentInfoStateEnum = /*@__PURE__*/ S.String;
 
 /** Task Info */
@@ -1229,15 +1484,17 @@ export interface AgentTaskInfo {
   taskStatus?: TaskStatus;
 }
 export const AgentTaskInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "runnable": S.optional(S.String),
-  "taskId": S.optional(S.String),
-  "taskStatus": S.optional(TaskStatus),
-}),
+  S.Struct({
+    runnable: S.optional(S.String),
+    taskId: S.optional(S.String),
+    taskStatus: S.optional(TaskStatus),
+  }),
 ).annotate({ identifier: "AgentTaskInfo" }) as any as S.Schema<AgentTaskInfo>;
 
 export type AgentTaskInfoList = ReadonlyArray<AgentTaskInfo>;
-export const AgentTaskInfoList = /*@__PURE__*/ S.Array(AgentTaskInfo) as any as S.Schema<AgentTaskInfoList>;
+export const AgentTaskInfoList = /*@__PURE__*/ S.Array(
+  AgentTaskInfo,
+) as any as S.Schema<AgentTaskInfoList>;
 
 /** VM Agent Info. */
 export interface AgentInfo {
@@ -1253,13 +1510,13 @@ export interface AgentInfo {
   taskGroupId?: string;
 }
 export const AgentInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "state": S.optional(AgentInfoStateEnum),
-  "tasks": S.optional(AgentTaskInfoList),
-  "jobId": S.optional(S.String),
-  "reportTime": S.optional(S.String),
-  "taskGroupId": S.optional(S.String),
-}),
+  S.Struct({
+    state: S.optional(AgentInfoStateEnum),
+    tasks: S.optional(AgentTaskInfoList),
+    jobId: S.optional(S.String),
+    reportTime: S.optional(S.String),
+    taskGroupId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "AgentInfo" }) as any as S.Schema<AgentInfo>;
 
 /** VM Agent Metadata. */
@@ -1286,18 +1543,18 @@ export interface AgentMetadata {
   instance?: string;
 }
 export const AgentMetadata = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "creationTime": S.optional(S.String),
-  "version": S.optional(S.String),
-  "creator": S.optional(S.String),
-  "imageVersion": S.optional(S.String),
-  "instancePreemptionNoticeReceived": S.optional(S.Boolean),
-  "zone": S.optional(S.String),
-  "instanceId": S.optional(S.String),
-  "osRelease": S.optional(StringMap),
-  "machineType": S.optional(S.String),
-  "instance": S.optional(S.String),
-}),
+  S.Struct({
+    creationTime: S.optional(S.String),
+    version: S.optional(S.String),
+    creator: S.optional(S.String),
+    imageVersion: S.optional(S.String),
+    instancePreemptionNoticeReceived: S.optional(S.Boolean),
+    zone: S.optional(S.String),
+    instanceId: S.optional(S.String),
+    osRelease: S.optional(StringMap),
+    machineType: S.optional(S.String),
+    instance: S.optional(S.String),
+  }),
 ).annotate({ identifier: "AgentMetadata" }) as any as S.Schema<AgentMetadata>;
 
 /** VM timing information */
@@ -1310,12 +1567,14 @@ export interface AgentTimingInfo {
   bootTime?: string;
 }
 export const AgentTimingInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "agentStartupTime": S.optional(S.String),
-  "scriptStartupTime": S.optional(S.String),
-  "bootTime": S.optional(S.String),
-}),
-).annotate({ identifier: "AgentTimingInfo" }) as any as S.Schema<AgentTimingInfo>;
+  S.Struct({
+    agentStartupTime: S.optional(S.String),
+    scriptStartupTime: S.optional(S.String),
+    bootTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AgentTimingInfo",
+}) as any as S.Schema<AgentTimingInfo>;
 
 /** Request to report agent's state. The Request itself implies the agent is healthy. */
 export interface ReportAgentStateRequest {
@@ -1327,12 +1586,14 @@ export interface ReportAgentStateRequest {
   agentTimingInfo?: AgentTimingInfo;
 }
 export const ReportAgentStateRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "agentInfo": S.optional(AgentInfo),
-  "metadata": S.optional(AgentMetadata),
-  "agentTimingInfo": S.optional(AgentTimingInfo),
-}),
-).annotate({ identifier: "ReportAgentStateRequest" }) as any as S.Schema<ReportAgentStateRequest>;
+  S.Struct({
+    agentInfo: S.optional(AgentInfo),
+    metadata: S.optional(AgentMetadata),
+    agentTimingInfo: S.optional(AgentTimingInfo),
+  }),
+).annotate({
+  identifier: "ReportAgentStateRequest",
+}) as any as S.Schema<ReportAgentStateRequest>;
 
 export interface ReportProjectsLocationsStateRequest {
   /** Required. Format: projects/{project}/locations/{location} {project} should be a project number. */
@@ -1341,11 +1602,19 @@ export interface ReportProjectsLocationsStateRequest {
   body?: ReportAgentStateRequest;
 }
 export const ReportProjectsLocationsStateRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(ReportAgentStateRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/state:report","baseUrl":"https://batch.googleapis.com/"})),
-).annotate({ identifier: "ReportProjectsLocationsStateRequest" }) as any as S.Schema<ReportProjectsLocationsStateRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(ReportAgentStateRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/state:report",
+      baseUrl: "https://batch.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ReportProjectsLocationsStateRequest",
+}) as any as S.Schema<ReportProjectsLocationsStateRequest>;
 
 /** AgentTaskUserAccount contains the information of a POSIX account on the guest os which is used to execute the runnables. */
 export interface AgentTaskUserAccount {
@@ -1355,11 +1624,13 @@ export interface AgentTaskUserAccount {
   gid?: string;
 }
 export const AgentTaskUserAccount = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "uid": S.optional(S.String),
-  "gid": S.optional(S.String),
-}),
-).annotate({ identifier: "AgentTaskUserAccount" }) as any as S.Schema<AgentTaskUserAccount>;
+  S.Struct({
+    uid: S.optional(S.String),
+    gid: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AgentTaskUserAccount",
+}) as any as S.Schema<AgentTaskUserAccount>;
 
 /** Container runnable representation on the agent side. */
 export interface AgentContainer {
@@ -1375,13 +1646,13 @@ export interface AgentContainer {
   imageUri?: string;
 }
 export const AgentContainer = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "entrypoint": S.optional(S.String),
-  "commands": S.optional(StringList),
-  "volumes": S.optional(StringList),
-  "options": S.optional(S.String),
-  "imageUri": S.optional(S.String),
-}),
+  S.Struct({
+    entrypoint: S.optional(S.String),
+    commands: S.optional(StringList),
+    volumes: S.optional(StringList),
+    options: S.optional(S.String),
+    imageUri: S.optional(S.String),
+  }),
 ).annotate({ identifier: "AgentContainer" }) as any as S.Schema<AgentContainer>;
 
 /** Script runnable representation on the agent side. */
@@ -1392,10 +1663,10 @@ export interface AgentScript {
   text?: string;
 }
 export const AgentScript = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.optional(S.String),
-  "text": S.optional(S.String),
-}),
+  S.Struct({
+    path: S.optional(S.String),
+    text: S.optional(S.String),
+  }),
 ).annotate({ identifier: "AgentScript" }) as any as S.Schema<AgentScript>;
 
 /** AgentKMSEnvMap contains the encrypted key/value pair to be used in the environment on the Agent side. */
@@ -1406,10 +1677,10 @@ export interface AgentKMSEnvMap {
   keyName?: string;
 }
 export const AgentKMSEnvMap = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "cipherText": S.optional(S.String),
-  "keyName": S.optional(S.String),
-}),
+  S.Struct({
+    cipherText: S.optional(S.String),
+    keyName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "AgentKMSEnvMap" }) as any as S.Schema<AgentKMSEnvMap>;
 
 /** AgentEnvironment is the Environment representation between Agent and CLH communication. The environment is used in both task level and agent level. */
@@ -1422,12 +1693,14 @@ export interface AgentEnvironment {
   encryptedVariables?: AgentKMSEnvMap;
 }
 export const AgentEnvironment = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "secretVariables": S.optional(StringMap),
-  "variables": S.optional(StringMap),
-  "encryptedVariables": S.optional(AgentKMSEnvMap),
-}),
-).annotate({ identifier: "AgentEnvironment" }) as any as S.Schema<AgentEnvironment>;
+  S.Struct({
+    secretVariables: S.optional(StringMap),
+    variables: S.optional(StringMap),
+    encryptedVariables: S.optional(AgentKMSEnvMap),
+  }),
+).annotate({
+  identifier: "AgentEnvironment",
+}) as any as S.Schema<AgentEnvironment>;
 
 /** AgentTaskRunnable is the Runnable representation between Agent and CLH communication. */
 export interface AgentTaskRunnable {
@@ -1447,19 +1720,23 @@ export interface AgentTaskRunnable {
   alwaysRun?: boolean;
 }
 export const AgentTaskRunnable = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "container": S.optional(AgentContainer),
-  "ignoreExitStatus": S.optional(S.Boolean),
-  "background": S.optional(S.Boolean),
-  "script": S.optional(AgentScript),
-  "environment": S.optional(AgentEnvironment),
-  "timeout": S.optional(S.String),
-  "alwaysRun": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "AgentTaskRunnable" }) as any as S.Schema<AgentTaskRunnable>;
+  S.Struct({
+    container: S.optional(AgentContainer),
+    ignoreExitStatus: S.optional(S.Boolean),
+    background: S.optional(S.Boolean),
+    script: S.optional(AgentScript),
+    environment: S.optional(AgentEnvironment),
+    timeout: S.optional(S.String),
+    alwaysRun: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "AgentTaskRunnable",
+}) as any as S.Schema<AgentTaskRunnable>;
 
 export type AgentTaskRunnableList = ReadonlyArray<AgentTaskRunnable>;
-export const AgentTaskRunnableList = /*@__PURE__*/ S.Array(AgentTaskRunnable) as any as S.Schema<AgentTaskRunnableList>;
+export const AgentTaskRunnableList = /*@__PURE__*/ S.Array(
+  AgentTaskRunnable,
+) as any as S.Schema<AgentTaskRunnableList>;
 
 /** AgentTaskLoggingOption contains the options for the logging of the task. */
 export interface AgentTaskLoggingOption {
@@ -1467,10 +1744,12 @@ export interface AgentTaskLoggingOption {
   labels?: StringMap;
 }
 export const AgentTaskLoggingOption = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "labels": S.optional(StringMap),
-}),
-).annotate({ identifier: "AgentTaskLoggingOption" }) as any as S.Schema<AgentTaskLoggingOption>;
+  S.Struct({
+    labels: S.optional(StringMap),
+  }),
+).annotate({
+  identifier: "AgentTaskLoggingOption",
+}) as any as S.Schema<AgentTaskLoggingOption>;
 
 /** AgentTaskSpec is the user's TaskSpec representation between Agent and CLH communication. */
 export interface AgentTaskSpec {
@@ -1486,19 +1765,26 @@ export interface AgentTaskSpec {
   environment?: AgentEnvironment;
 }
 export const AgentTaskSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "maxRunDuration": S.optional(S.String),
-  "userAccount": S.optional(AgentTaskUserAccount),
-  "runnables": S.optional(AgentTaskRunnableList),
-  "loggingOption": S.optional(AgentTaskLoggingOption),
-  "environment": S.optional(AgentEnvironment),
-}),
+  S.Struct({
+    maxRunDuration: S.optional(S.String),
+    userAccount: S.optional(AgentTaskUserAccount),
+    runnables: S.optional(AgentTaskRunnableList),
+    loggingOption: S.optional(AgentTaskLoggingOption),
+    environment: S.optional(AgentEnvironment),
+  }),
 ).annotate({ identifier: "AgentTaskSpec" }) as any as S.Schema<AgentTaskSpec>;
 
-export type AgentTaskTaskSourceEnum = "TASK_SOURCE_UNSPECIFIED" | "BATCH_INTERNAL" | "USER";
+export type AgentTaskTaskSourceEnum =
+  | "TASK_SOURCE_UNSPECIFIED"
+  | "BATCH_INTERNAL"
+  | "USER";
 export const AgentTaskTaskSourceEnum = /*@__PURE__*/ S.String;
 
-export type AgentTaskIntendedStateEnum = "INTENDED_STATE_UNSPECIFIED" | "ASSIGNED" | "CANCELLED" | "DELETED";
+export type AgentTaskIntendedStateEnum =
+  | "INTENDED_STATE_UNSPECIFIED"
+  | "ASSIGNED"
+  | "CANCELLED"
+  | "DELETED";
 export const AgentTaskIntendedStateEnum = /*@__PURE__*/ S.String;
 
 /** TODO(b/182501497) The message needs to be redefined when the Agent API server updates data in storage per the backend design. */
@@ -1519,19 +1805,21 @@ export interface AgentTask {
   reachedBarrier?: string;
 }
 export const AgentTask = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "task": S.optional(S.String),
-  "status": S.optional(TaskStatus),
-  "agentTaskSpec": S.optional(AgentTaskSpec),
-  "spec": S.optional(TaskSpec),
-  "taskSource": S.optional(AgentTaskTaskSourceEnum),
-  "intendedState": S.optional(AgentTaskIntendedStateEnum),
-  "reachedBarrier": S.optional(S.String),
-}),
+  S.Struct({
+    task: S.optional(S.String),
+    status: S.optional(TaskStatus),
+    agentTaskSpec: S.optional(AgentTaskSpec),
+    spec: S.optional(TaskSpec),
+    taskSource: S.optional(AgentTaskTaskSourceEnum),
+    intendedState: S.optional(AgentTaskIntendedStateEnum),
+    reachedBarrier: S.optional(S.String),
+  }),
 ).annotate({ identifier: "AgentTask" }) as any as S.Schema<AgentTask>;
 
 export type AgentTaskList = ReadonlyArray<AgentTask>;
-export const AgentTaskList = /*@__PURE__*/ S.Array(AgentTask) as any as S.Schema<AgentTaskList>;
+export const AgentTaskList = /*@__PURE__*/ S.Array(
+  AgentTask,
+) as any as S.Schema<AgentTaskList>;
 
 /** Response to ReportAgentStateRequest. */
 export interface ReportAgentStateResponse {
@@ -1545,15 +1833,22 @@ export interface ReportAgentStateResponse {
   defaultReportInterval?: string;
 }
 export const ReportAgentStateResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "minReportInterval": S.optional(S.String),
-  "useBatchMonitoredResource": S.optional(S.Boolean),
-  "tasks": S.optional(AgentTaskList),
-  "defaultReportInterval": S.optional(S.String),
-}),
-).annotate({ identifier: "ReportAgentStateResponse" }) as any as S.Schema<ReportAgentStateResponse>;
+  S.Struct({
+    minReportInterval: S.optional(S.String),
+    useBatchMonitoredResource: S.optional(S.Boolean),
+    tasks: S.optional(AgentTaskList),
+    defaultReportInterval: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ReportAgentStateResponse",
+}) as any as S.Schema<ReportAgentStateResponse>;
 
-export type CancelProjectsLocationsJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CancelProjectsLocationsJobsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Cancel a Job. */
 export const cancelProjectsLocationsJobs: API.OperationMethod<
   CancelProjectsLocationsJobsRequest,
@@ -1568,7 +1863,12 @@ export const cancelProjectsLocationsJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CancelProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CancelProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsRequest,
@@ -1583,7 +1883,12 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsJobsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Create a Job. */
 export const createProjectsLocationsJobs: API.OperationMethod<
   CreateProjectsLocationsJobsRequest,
@@ -1598,7 +1903,12 @@ export const createProjectsLocationsJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsJobsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Delete a Job. */
 export const deleteProjectsLocationsJobs: API.OperationMethod<
   DeleteProjectsLocationsJobsRequest,
@@ -1613,7 +1923,12 @@ export const deleteProjectsLocationsJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsRequest,
@@ -1658,7 +1973,10 @@ export const getProjectsLocationsJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsJobsTaskGroupsTasksError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsJobsTaskGroupsTasksError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Return a single Task. */
 export const getProjectsLocationsJobsTaskGroupsTasks: API.OperationMethod<
   GetProjectsLocationsJobsTaskGroupsTasksRequest,
@@ -1673,7 +1991,10 @@ export const getProjectsLocationsJobsTaskGroupsTasks: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -1701,7 +2022,10 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListProjectsLocationsJobsError = NotFound | Forbidden | GcpOpError;
@@ -1717,10 +2041,16 @@ export const listProjectsLocationsJobs: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsJobsTaskGroupsTasksError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsJobsTaskGroupsTasksError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** List Tasks associated with a job. */
 export const listProjectsLocationsJobsTaskGroupsTasks: API.PaginatedOperationMethod<
   ListProjectsLocationsJobsTaskGroupsTasksRequest,
@@ -1733,10 +2063,16 @@ export const listProjectsLocationsJobsTaskGroupsTasks: API.PaginatedOperationMet
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -1749,10 +2085,18 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ReportProjectsLocationsStateError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ReportProjectsLocationsStateError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Report agent's state, e.g. agent status and tasks information */
 export const reportProjectsLocationsState: API.OperationMethod<
   ReportProjectsLocationsStateRequest,
@@ -1766,4 +2110,3 @@ export const reportProjectsLocationsState: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

@@ -13,61 +13,69 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
-export type FolderLifecycleStateEnum = "LIFECYCLE_STATE_UNSPECIFIED" | "ACTIVE" | "DELETE_REQUESTED";
+export type FolderLifecycleStateEnum =
+  | "LIFECYCLE_STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "DELETE_REQUESTED";
 export const FolderLifecycleStateEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
 /** A Folder in an Organization's resource hierarchy, used to organize that Organization's resources. */
 export interface Folder {
@@ -89,16 +97,16 @@ export interface Folder {
   createTime?: string;
 }
 export const Folder = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "displayName": S.optional(S.String),
-  "lifecycleState": S.optional(FolderLifecycleStateEnum),
-  "configuredCapabilities": S.optional(StringList),
-  "managementProject": S.optional(S.String),
-  "tags": S.optional(StringMap),
-  "parent": S.optional(S.String),
-  "name": S.optional(S.String),
-  "createTime": S.optional(S.String),
-}),
+  S.Struct({
+    displayName: S.optional(S.String),
+    lifecycleState: S.optional(FolderLifecycleStateEnum),
+    configuredCapabilities: S.optional(StringList),
+    managementProject: S.optional(S.String),
+    tags: S.optional(StringMap),
+    parent: S.optional(S.String),
+    name: S.optional(S.String),
+    createTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Folder" }) as any as S.Schema<Folder>;
 
 export interface CreateFoldersRequest {
@@ -108,17 +116,30 @@ export interface CreateFoldersRequest {
   body?: Folder;
 }
 export const CreateFoldersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Folder.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2/folders","baseUrl":"https://cloudresourcemanager.googleapis.com/"})),
-).annotate({ identifier: "CreateFoldersRequest" }) as any as S.Schema<CreateFoldersRequest>;
+  S.Struct({
+    parent: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(Folder.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v2/folders",
+      baseUrl: "https://cloudresourcemanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateFoldersRequest",
+}) as any as S.Schema<CreateFoldersRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -130,11 +151,11 @@ export interface Status {
   details?: DocumentMapList;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(S.Number),
-  "message": S.optional(S.String),
-  "details": S.optional(DocumentMapList),
-}),
+  S.Struct({
+    code: S.optional(S.Number),
+    message: S.optional(S.String),
+    details: S.optional(DocumentMapList),
+  }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -151,13 +172,13 @@ export interface Operation {
   error?: Status;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "metadata": S.optional(DocumentMap),
-  "done": S.optional(S.Boolean),
-  "response": S.optional(DocumentMap),
-  "name": S.optional(S.String),
-  "error": S.optional(Status),
-}),
+  S.Struct({
+    metadata: S.optional(DocumentMap),
+    done: S.optional(S.Boolean),
+    response: S.optional(DocumentMap),
+    name: S.optional(S.String),
+    error: S.optional(Status),
+  }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 export interface DeleteFoldersRequest {
@@ -165,20 +186,36 @@ export interface DeleteFoldersRequest {
   name: string;
 }
 export const DeleteFoldersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v2/{+name}","baseUrl":"https://cloudresourcemanager.googleapis.com/"})),
-).annotate({ identifier: "DeleteFoldersRequest" }) as any as S.Schema<DeleteFoldersRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v2/{+name}",
+      baseUrl: "https://cloudresourcemanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteFoldersRequest",
+}) as any as S.Schema<DeleteFoldersRequest>;
 
 export interface GetFoldersRequest {
   /** Required. The resource name of the Folder to retrieve. Must be of the form `folders/{folder_id}`. */
   name: string;
 }
 export const GetFoldersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v2/{+name}","baseUrl":"https://cloudresourcemanager.googleapis.com/"})),
-).annotate({ identifier: "GetFoldersRequest" }) as any as S.Schema<GetFoldersRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v2/{+name}",
+      baseUrl: "https://cloudresourcemanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetFoldersRequest",
+}) as any as S.Schema<GetFoldersRequest>;
 
 /** Encapsulates settings provided to GetIamPolicy. */
 export interface GetPolicyOptions {
@@ -186,10 +223,12 @@ export interface GetPolicyOptions {
   requestedPolicyVersion?: number;
 }
 export const GetPolicyOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestedPolicyVersion": S.optional(S.Number),
-}),
-).annotate({ identifier: "GetPolicyOptions" }) as any as S.Schema<GetPolicyOptions>;
+  S.Struct({
+    requestedPolicyVersion: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "GetPolicyOptions",
+}) as any as S.Schema<GetPolicyOptions>;
 
 /** Request message for `GetIamPolicy` method. */
 export interface GetIamPolicyRequest {
@@ -197,10 +236,12 @@ export interface GetIamPolicyRequest {
   options?: GetPolicyOptions;
 }
 export const GetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "options": S.optional(GetPolicyOptions),
-}),
-).annotate({ identifier: "GetIamPolicyRequest" }) as any as S.Schema<GetIamPolicyRequest>;
+  S.Struct({
+    options: S.optional(GetPolicyOptions),
+  }),
+).annotate({
+  identifier: "GetIamPolicyRequest",
+}) as any as S.Schema<GetIamPolicyRequest>;
 
 export interface GetIamPolicyFoldersRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -209,11 +250,19 @@ export interface GetIamPolicyFoldersRequest {
   body?: GetIamPolicyRequest;
 }
 export const GetIamPolicyFoldersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2/{+resource}:getIamPolicy","baseUrl":"https://cloudresourcemanager.googleapis.com/"})),
-).annotate({ identifier: "GetIamPolicyFoldersRequest" }) as any as S.Schema<GetIamPolicyFoldersRequest>;
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v2/{+resource}:getIamPolicy",
+      baseUrl: "https://cloudresourcemanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetIamPolicyFoldersRequest",
+}) as any as S.Schema<GetIamPolicyFoldersRequest>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -227,12 +276,12 @@ export interface Expr {
   location?: string;
 }
 export const Expr = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "description": S.optional(S.String),
-  "expression": S.optional(S.String),
-  "title": S.optional(S.String),
-  "location": S.optional(S.String),
-}),
+  S.Struct({
+    description: S.optional(S.String),
+    expression: S.optional(S.String),
+    title: S.optional(S.String),
+    location: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
 /** Associates `members`, or principals, with a `role`. */
@@ -245,17 +294,23 @@ export interface Binding {
   role?: string;
 }
 export const Binding = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "members": S.optional(StringList),
-  "condition": S.optional(Expr),
-  "role": S.optional(S.String),
-}),
+  S.Struct({
+    members: S.optional(StringList),
+    condition: S.optional(Expr),
+    role: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = ReadonlyArray<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+export const BindingList = /*@__PURE__*/ S.Array(
+  Binding,
+) as any as S.Schema<BindingList>;
 
-export type AuditLogConfigLogTypeEnum = "LOG_TYPE_UNSPECIFIED" | "ADMIN_READ" | "DATA_WRITE" | "DATA_READ";
+export type AuditLogConfigLogTypeEnum =
+  | "LOG_TYPE_UNSPECIFIED"
+  | "ADMIN_READ"
+  | "DATA_WRITE"
+  | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -266,14 +321,16 @@ export interface AuditLogConfig {
   exemptedMembers?: StringList;
 }
 export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "logType": S.optional(AuditLogConfigLogTypeEnum),
-  "exemptedMembers": S.optional(StringList),
-}),
+  S.Struct({
+    logType: S.optional(AuditLogConfigLogTypeEnum),
+    exemptedMembers: S.optional(StringList),
+  }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(AuditLogConfig) as any as S.Schema<AuditLogConfigList>;
+export const AuditLogConfigList = /*@__PURE__*/ S.Array(
+  AuditLogConfig,
+) as any as S.Schema<AuditLogConfigList>;
 
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface AuditConfig {
@@ -283,14 +340,16 @@ export interface AuditConfig {
   auditLogConfigs?: AuditLogConfigList;
 }
 export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "service": S.optional(S.String),
-  "auditLogConfigs": S.optional(AuditLogConfigList),
-}),
+  S.Struct({
+    service: S.optional(S.String),
+    auditLogConfigs: S.optional(AuditLogConfigList),
+  }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = ReadonlyArray<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
+export const AuditConfigList = /*@__PURE__*/ S.Array(
+  AuditConfig,
+) as any as S.Schema<AuditConfigList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -304,12 +363,12 @@ export interface Policy {
   auditConfigs?: AuditConfigList;
 }
 export const Policy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "version": S.optional(S.Number),
-  "etag": S.optional(S.String),
-  "bindings": S.optional(BindingList),
-  "auditConfigs": S.optional(AuditConfigList),
-}),
+  S.Struct({
+    version: S.optional(S.Number),
+    etag: S.optional(S.String),
+    bindings: S.optional(BindingList),
+    auditConfigs: S.optional(AuditConfigList),
+  }),
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
 
 export interface GetOperationsRequest {
@@ -317,10 +376,18 @@ export interface GetOperationsRequest {
   name: string;
 }
 export const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://cloudresourcemanager.googleapis.com/"})),
-).annotate({ identifier: "GetOperationsRequest" }) as any as S.Schema<GetOperationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://cloudresourcemanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetOperationsRequest",
+}) as any as S.Schema<GetOperationsRequest>;
 
 export interface ListFoldersRequest {
   /** Optional. A pagination token returned from a previous call to `ListFolders` that indicates where this listing should continue from. */
@@ -333,16 +400,26 @@ export interface ListFoldersRequest {
   showDeleted?: boolean;
 }
 export const ListFoldersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "parent": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "showDeleted": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v2/folders","baseUrl":"https://cloudresourcemanager.googleapis.com/"})),
-).annotate({ identifier: "ListFoldersRequest" }) as any as S.Schema<ListFoldersRequest>;
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    showDeleted: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v2/folders",
+      baseUrl: "https://cloudresourcemanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListFoldersRequest",
+}) as any as S.Schema<ListFoldersRequest>;
 
 export type FolderList = ReadonlyArray<Folder>;
-export const FolderList = /*@__PURE__*/ S.Array(Folder) as any as S.Schema<FolderList>;
+export const FolderList = /*@__PURE__*/ S.Array(
+  Folder,
+) as any as S.Schema<FolderList>;
 
 /** The ListFolders response message. */
 export interface ListFoldersResponse {
@@ -352,11 +429,13 @@ export interface ListFoldersResponse {
   folders?: FolderList;
 }
 export const ListFoldersResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "folders": S.optional(FolderList),
-}),
-).annotate({ identifier: "ListFoldersResponse" }) as any as S.Schema<ListFoldersResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    folders: S.optional(FolderList),
+  }),
+).annotate({
+  identifier: "ListFoldersResponse",
+}) as any as S.Schema<ListFoldersResponse>;
 
 /** The MoveFolder request message. */
 export interface MoveFolderRequest {
@@ -364,10 +443,12 @@ export interface MoveFolderRequest {
   destinationParent?: string;
 }
 export const MoveFolderRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "destinationParent": S.optional(S.String),
-}),
-).annotate({ identifier: "MoveFolderRequest" }) as any as S.Schema<MoveFolderRequest>;
+  S.Struct({
+    destinationParent: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MoveFolderRequest",
+}) as any as S.Schema<MoveFolderRequest>;
 
 export interface MoveFoldersRequest {
   /** Required. The resource name of the Folder to move. Must be of the form folders/{folder_id} */
@@ -376,11 +457,19 @@ export interface MoveFoldersRequest {
   body?: MoveFolderRequest;
 }
 export const MoveFoldersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(MoveFolderRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2/{+name}:move","baseUrl":"https://cloudresourcemanager.googleapis.com/"})),
-).annotate({ identifier: "MoveFoldersRequest" }) as any as S.Schema<MoveFoldersRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(MoveFolderRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v2/{+name}:move",
+      baseUrl: "https://cloudresourcemanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "MoveFoldersRequest",
+}) as any as S.Schema<MoveFoldersRequest>;
 
 export interface PatchFoldersRequest {
   /** Required. Fields to be updated. Only the `display_name` can be updated. */
@@ -391,12 +480,20 @@ export interface PatchFoldersRequest {
   body?: Folder;
 }
 export const PatchFoldersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(Folder.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v2/{+name}","baseUrl":"https://cloudresourcemanager.googleapis.com/"})),
-).annotate({ identifier: "PatchFoldersRequest" }) as any as S.Schema<PatchFoldersRequest>;
+  S.Struct({
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    body: S.optional(Folder.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v2/{+name}",
+      baseUrl: "https://cloudresourcemanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchFoldersRequest",
+}) as any as S.Schema<PatchFoldersRequest>;
 
 /** The request message for searching folders. */
 export interface SearchFoldersRequest {
@@ -408,22 +505,32 @@ export interface SearchFoldersRequest {
   pageToken?: string;
 }
 export const SearchFoldersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number),
-  "query": S.optional(S.String),
-  "pageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "SearchFoldersRequest" }) as any as S.Schema<SearchFoldersRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number),
+    query: S.optional(S.String),
+    pageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SearchFoldersRequest",
+}) as any as S.Schema<SearchFoldersRequest>;
 
 export interface SearchFoldersRequest_ {
   /** Request body */
   body?: SearchFoldersRequest;
 }
 export const SearchFoldersRequest_ = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(SearchFoldersRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2/folders:search","baseUrl":"https://cloudresourcemanager.googleapis.com/"})),
-).annotate({ identifier: "SearchFoldersRequest_" }) as any as S.Schema<SearchFoldersRequest_>;
+  S.Struct({
+    body: S.optional(SearchFoldersRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v2/folders:search",
+      baseUrl: "https://cloudresourcemanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SearchFoldersRequest_",
+}) as any as S.Schema<SearchFoldersRequest_>;
 
 /** The response message for searching folders. */
 export interface SearchFoldersResponse {
@@ -433,11 +540,13 @@ export interface SearchFoldersResponse {
   nextPageToken?: string;
 }
 export const SearchFoldersResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "folders": S.optional(FolderList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "SearchFoldersResponse" }) as any as S.Schema<SearchFoldersResponse>;
+  S.Struct({
+    folders: S.optional(FolderList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SearchFoldersResponse",
+}) as any as S.Schema<SearchFoldersResponse>;
 
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
@@ -447,11 +556,13 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "policy": S.optional(Policy),
-  "updateMask": S.optional(S.String),
-}),
-).annotate({ identifier: "SetIamPolicyRequest" }) as any as S.Schema<SetIamPolicyRequest>;
+  S.Struct({
+    policy: S.optional(Policy),
+    updateMask: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SetIamPolicyRequest",
+}) as any as S.Schema<SetIamPolicyRequest>;
 
 export interface SetIamPolicyFoldersRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -460,11 +571,19 @@ export interface SetIamPolicyFoldersRequest {
   body?: SetIamPolicyRequest;
 }
 export const SetIamPolicyFoldersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2/{+resource}:setIamPolicy","baseUrl":"https://cloudresourcemanager.googleapis.com/"})),
-).annotate({ identifier: "SetIamPolicyFoldersRequest" }) as any as S.Schema<SetIamPolicyFoldersRequest>;
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v2/{+resource}:setIamPolicy",
+      baseUrl: "https://cloudresourcemanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SetIamPolicyFoldersRequest",
+}) as any as S.Schema<SetIamPolicyFoldersRequest>;
 
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
@@ -472,10 +591,12 @@ export interface TestIamPermissionsRequest {
   permissions?: StringList;
 }
 export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "permissions": S.optional(StringList),
-}),
-).annotate({ identifier: "TestIamPermissionsRequest" }) as any as S.Schema<TestIamPermissionsRequest>;
+  S.Struct({
+    permissions: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "TestIamPermissionsRequest",
+}) as any as S.Schema<TestIamPermissionsRequest>;
 
 export interface TestIamPermissionsFoldersRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -484,11 +605,19 @@ export interface TestIamPermissionsFoldersRequest {
   body?: TestIamPermissionsRequest;
 }
 export const TestIamPermissionsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2/{+resource}:testIamPermissions","baseUrl":"https://cloudresourcemanager.googleapis.com/"})),
-).annotate({ identifier: "TestIamPermissionsFoldersRequest" }) as any as S.Schema<TestIamPermissionsFoldersRequest>;
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v2/{+resource}:testIamPermissions",
+      baseUrl: "https://cloudresourcemanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "TestIamPermissionsFoldersRequest",
+}) as any as S.Schema<TestIamPermissionsFoldersRequest>;
 
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
@@ -496,16 +625,20 @@ export interface TestIamPermissionsResponse {
   permissions?: StringList;
 }
 export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "permissions": S.optional(StringList),
-}),
-).annotate({ identifier: "TestIamPermissionsResponse" }) as any as S.Schema<TestIamPermissionsResponse>;
+  S.Struct({
+    permissions: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "TestIamPermissionsResponse",
+}) as any as S.Schema<TestIamPermissionsResponse>;
 
 /** The UndeleteFolder request message. */
 export interface UndeleteFolderRequest {}
 export const UndeleteFolderRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "UndeleteFolderRequest" }) as any as S.Schema<UndeleteFolderRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "UndeleteFolderRequest",
+}) as any as S.Schema<UndeleteFolderRequest>;
 
 export interface UndeleteFoldersRequest {
   /** Required. The resource name of the Folder to undelete. Must be of the form `folders/{folder_id}`. */
@@ -514,13 +647,26 @@ export interface UndeleteFoldersRequest {
   body?: UndeleteFolderRequest;
 }
 export const UndeleteFoldersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(UndeleteFolderRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2/{+name}:undelete","baseUrl":"https://cloudresourcemanager.googleapis.com/"})),
-).annotate({ identifier: "UndeleteFoldersRequest" }) as any as S.Schema<UndeleteFoldersRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(UndeleteFolderRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v2/{+name}:undelete",
+      baseUrl: "https://cloudresourcemanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UndeleteFoldersRequest",
+}) as any as S.Schema<UndeleteFoldersRequest>;
 
-export type CreateFoldersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateFoldersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a Folder in the resource hierarchy. Returns an Operation which can be used to track the progress of the folder creation workflow. Upon success the Operation.response field will be populated with the created Folder. In order to succeed, the addition of this new Folder must not violate the Folder naming, height or fanout constraints. + The Folder's display_name must be distinct from all other Folders that share its parent. + The addition of the Folder must not cause the active Folder hierarchy to exceed a height of 10. Note, the full active + deleted Folder hierarchy is allowed to reach a height of 20; this provides additional headroom when moving folders that contain deleted folders. + The addition of the Folder must not cause the total number of Folders under its parent to exceed 300. If the operation fails due to a folder constraint violation, some errors may be returned by the CreateFolder request, with status code FAILED_PRECONDITION and an error description. Other folder constraint violations will be communicated in the Operation, with the specific PreconditionFailure returned via the details list in the Operation.error field. The caller must have `resourcemanager.folders.create` permission on the identified parent. */
 export const createFolders: API.OperationMethod<
   CreateFoldersRequest,
@@ -535,7 +681,12 @@ export const createFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteFoldersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteFoldersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Requests deletion of a Folder. The Folder is moved into the DELETE_REQUESTED state immediately, and is deleted approximately 30 days later. This method may only be called on an empty Folder in the ACTIVE state, where a Folder is empty if it doesn't contain any Folders or Projects in the ACTIVE state. The caller must have `resourcemanager.folders.delete` permission on the identified folder. */
 export const deleteFolders: API.OperationMethod<
   DeleteFoldersRequest,
@@ -565,7 +716,12 @@ export const getFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyFoldersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type GetIamPolicyFoldersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Gets the access control policy for a Folder. The returned policy may be empty if no such policy or resource exists. The `resource` field should be the Folder's resource name, e.g. "folders/1234". The caller must have `resourcemanager.folders.getIamPolicy` permission on the identified folder. */
 export const getIamPolicyFolders: API.OperationMethod<
   GetIamPolicyFoldersRequest,
@@ -608,10 +764,18 @@ export const listFolders: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type MoveFoldersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type MoveFoldersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Moves a Folder under a new resource parent. Returns an Operation which can be used to track the progress of the folder move workflow. Upon success the Operation.response field will be populated with the moved Folder. Upon failure, a FolderOperationError categorizing the failure cause will be returned - if the failure occurs synchronously then the FolderOperationError will be returned via the Status.details field and if it occurs asynchronously then the FolderOperation will be returned via the Operation.error field. In addition, the Operation.metadata field will be populated with a FolderOperation message as an aid to stateless clients. Folder moves will be rejected if they violate either the naming, height or fanout constraints described in the CreateFolder documentation. The caller must have `resourcemanager.folders.move` permission on the folder's current and proposed new parent. */
 export const moveFolders: API.OperationMethod<
   MoveFoldersRequest,
@@ -626,7 +790,12 @@ export const moveFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchFoldersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchFoldersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a Folder, changing its display_name. Changes to the folder display_name will be rejected if they violate either the display_name formatting rules or naming constraints described in the CreateFolder documentation. The Folder's display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be between 3 and 30 characters. This is captured by the regular expression: `\p{L}\p{N}{1,28}[\p{L}\p{N}]`. The caller must have `resourcemanager.folders.update` permission on the identified folder. If the update fails due to the unique name constraint then a PreconditionFailure explaining this violation will be returned in the Status.details field. */
 export const patchFolders: API.OperationMethod<
   PatchFoldersRequest,
@@ -641,7 +810,12 @@ export const patchFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SearchFoldersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SearchFoldersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Search for folders that match specific filter criteria. Search provides an eventually consistent view of the folders a user has access to which meet the specified filter criteria. This will only return folders on which the caller has the permission `resourcemanager.folders.get`. */
 export const searchFolders: API.OperationMethod<
   SearchFoldersRequest_,
@@ -656,7 +830,12 @@ export const searchFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyFoldersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetIamPolicyFoldersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sets the access control policy on a Folder, replacing any existing policy. The `resource` field should be the Folder's resource name, e.g. "folders/1234". The caller must have `resourcemanager.folders.setIamPolicy` permission on the identified folder. */
 export const setIamPolicyFolders: API.OperationMethod<
   SetIamPolicyFoldersRequest,
@@ -671,7 +850,12 @@ export const setIamPolicyFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsFoldersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TestIamPermissionsFoldersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Returns permissions that a caller has on the specified Folder. The `resource` field should be the Folder's resource name, e.g. "folders/1234". There are no permissions required for making this API call. */
 export const testIamPermissionsFolders: API.OperationMethod<
   TestIamPermissionsFoldersRequest,
@@ -686,7 +870,12 @@ export const testIamPermissionsFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UndeleteFoldersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UndeleteFoldersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Cancels the deletion request for a Folder. This method may only be called on a Folder in the DELETE_REQUESTED state. In order to succeed, the Folder's parent must be in the ACTIVE state. In addition, reintroducing the folder into the tree must not violate folder naming, height and fanout constraints described in the CreateFolder documentation. The caller must have `resourcemanager.folders.undelete` permission on the identified folder. */
 export const undeleteFolders: API.OperationMethod<
   UndeleteFoldersRequest,
@@ -700,4 +889,3 @@ export const undeleteFolders: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

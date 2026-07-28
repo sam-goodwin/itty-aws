@@ -13,34 +13,53 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
-export type FetchMultiDailyMetricsTimeSeriesLocationsDailyMetricsEnum = "DAILY_METRIC_UNKNOWN" | "BUSINESS_IMPRESSIONS_DESKTOP_MAPS" | "BUSINESS_IMPRESSIONS_DESKTOP_SEARCH" | "BUSINESS_IMPRESSIONS_MOBILE_MAPS" | "BUSINESS_IMPRESSIONS_MOBILE_SEARCH" | "BUSINESS_CONVERSATIONS" | "BUSINESS_DIRECTION_REQUESTS" | "CALL_CLICKS" | "WEBSITE_CLICKS" | "BUSINESS_BOOKINGS" | "BUSINESS_FOOD_ORDERS" | "BUSINESS_FOOD_MENU_CLICKS";
-export const FetchMultiDailyMetricsTimeSeriesLocationsDailyMetricsEnum = /*@__PURE__*/ S.String;
+export type FetchMultiDailyMetricsTimeSeriesLocationsDailyMetricsEnum =
+  | "DAILY_METRIC_UNKNOWN"
+  | "BUSINESS_IMPRESSIONS_DESKTOP_MAPS"
+  | "BUSINESS_IMPRESSIONS_DESKTOP_SEARCH"
+  | "BUSINESS_IMPRESSIONS_MOBILE_MAPS"
+  | "BUSINESS_IMPRESSIONS_MOBILE_SEARCH"
+  | "BUSINESS_CONVERSATIONS"
+  | "BUSINESS_DIRECTION_REQUESTS"
+  | "CALL_CLICKS"
+  | "WEBSITE_CLICKS"
+  | "BUSINESS_BOOKINGS"
+  | "BUSINESS_FOOD_ORDERS"
+  | "BUSINESS_FOOD_MENU_CLICKS";
+export const FetchMultiDailyMetricsTimeSeriesLocationsDailyMetricsEnum =
+  /*@__PURE__*/ S.String;
 
-export type FetchMultiDailyMetricsTimeSeriesLocationsDailyMetricsEnumList = ReadonlyArray<FetchMultiDailyMetricsTimeSeriesLocationsDailyMetricsEnum | (string & {})>;
-export const FetchMultiDailyMetricsTimeSeriesLocationsDailyMetricsEnumList = /*@__PURE__*/ S.Array(FetchMultiDailyMetricsTimeSeriesLocationsDailyMetricsEnum) as any as S.Schema<FetchMultiDailyMetricsTimeSeriesLocationsDailyMetricsEnumList>;
+export type FetchMultiDailyMetricsTimeSeriesLocationsDailyMetricsEnumList =
+  ReadonlyArray<
+    FetchMultiDailyMetricsTimeSeriesLocationsDailyMetricsEnum | (string & {})
+  >;
+export const FetchMultiDailyMetricsTimeSeriesLocationsDailyMetricsEnumList =
+  /*@__PURE__*/ S.Array(
+    FetchMultiDailyMetricsTimeSeriesLocationsDailyMetricsEnum,
+  ) as any as S.Schema<FetchMultiDailyMetricsTimeSeriesLocationsDailyMetricsEnumList>;
 
 export interface FetchMultiDailyMetricsTimeSeriesLocationsRequest {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
@@ -60,20 +79,45 @@ export interface FetchMultiDailyMetricsTimeSeriesLocationsRequest {
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
   "dailyRange.startDate.day"?: number;
 }
-export const FetchMultiDailyMetricsTimeSeriesLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dailyRange.startDate.year": S.optional(S.Number.pipe(T.Query())),
-  "dailyRange.startDate.month": S.optional(S.Number.pipe(T.Query())),
-  "dailyMetrics": S.optional(FetchMultiDailyMetricsTimeSeriesLocationsDailyMetricsEnumList.pipe(T.Query())),
-  "dailyRange.endDate.month": S.optional(S.Number.pipe(T.Query())),
-  "dailyRange.endDate.day": S.optional(S.Number.pipe(T.Query())),
-  "location": S.String.pipe(T.Label()),
-  "dailyRange.endDate.year": S.optional(S.Number.pipe(T.Query())),
-  "dailyRange.startDate.day": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+location}:fetchMultiDailyMetricsTimeSeries","baseUrl":"https://businessprofileperformance.googleapis.com/"})),
-).annotate({ identifier: "FetchMultiDailyMetricsTimeSeriesLocationsRequest" }) as any as S.Schema<FetchMultiDailyMetricsTimeSeriesLocationsRequest>;
+export const FetchMultiDailyMetricsTimeSeriesLocationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      "dailyRange.startDate.year": S.optional(S.Number.pipe(T.Query())),
+      "dailyRange.startDate.month": S.optional(S.Number.pipe(T.Query())),
+      dailyMetrics: S.optional(
+        FetchMultiDailyMetricsTimeSeriesLocationsDailyMetricsEnumList.pipe(
+          T.Query(),
+        ),
+      ),
+      "dailyRange.endDate.month": S.optional(S.Number.pipe(T.Query())),
+      "dailyRange.endDate.day": S.optional(S.Number.pipe(T.Query())),
+      location: S.String.pipe(T.Label()),
+      "dailyRange.endDate.year": S.optional(S.Number.pipe(T.Query())),
+      "dailyRange.startDate.day": S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+location}:fetchMultiDailyMetricsTimeSeries",
+        baseUrl: "https://businessprofileperformance.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "FetchMultiDailyMetricsTimeSeriesLocationsRequest",
+  }) as any as S.Schema<FetchMultiDailyMetricsTimeSeriesLocationsRequest>;
 
-export type DailyMetricTimeSeriesDailyMetricEnum = "DAILY_METRIC_UNKNOWN" | "BUSINESS_IMPRESSIONS_DESKTOP_MAPS" | "BUSINESS_IMPRESSIONS_DESKTOP_SEARCH" | "BUSINESS_IMPRESSIONS_MOBILE_MAPS" | "BUSINESS_IMPRESSIONS_MOBILE_SEARCH" | "BUSINESS_CONVERSATIONS" | "BUSINESS_DIRECTION_REQUESTS" | "CALL_CLICKS" | "WEBSITE_CLICKS" | "BUSINESS_BOOKINGS" | "BUSINESS_FOOD_ORDERS" | "BUSINESS_FOOD_MENU_CLICKS";
+export type DailyMetricTimeSeriesDailyMetricEnum =
+  | "DAILY_METRIC_UNKNOWN"
+  | "BUSINESS_IMPRESSIONS_DESKTOP_MAPS"
+  | "BUSINESS_IMPRESSIONS_DESKTOP_SEARCH"
+  | "BUSINESS_IMPRESSIONS_MOBILE_MAPS"
+  | "BUSINESS_IMPRESSIONS_MOBILE_SEARCH"
+  | "BUSINESS_CONVERSATIONS"
+  | "BUSINESS_DIRECTION_REQUESTS"
+  | "CALL_CLICKS"
+  | "WEBSITE_CLICKS"
+  | "BUSINESS_BOOKINGS"
+  | "BUSINESS_FOOD_ORDERS"
+  | "BUSINESS_FOOD_MENU_CLICKS";
 export const DailyMetricTimeSeriesDailyMetricEnum = /*@__PURE__*/ S.String;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
@@ -86,12 +130,14 @@ export interface Businessprofileperformance_Date {
   year?: number;
 }
 export const Businessprofileperformance_Date = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "day": S.optional(S.Number),
-  "month": S.optional(S.Number),
-  "year": S.optional(S.Number),
-}),
-).annotate({ identifier: "Businessprofileperformance_Date" }) as any as S.Schema<Businessprofileperformance_Date>;
+  S.Struct({
+    day: S.optional(S.Number),
+    month: S.optional(S.Number),
+    year: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "Businessprofileperformance_Date",
+}) as any as S.Schema<Businessprofileperformance_Date>;
 
 /** Represents a single datapoint in the timeseries, where each datapoint is a date-value pair. */
 export interface DatedValue {
@@ -101,14 +147,16 @@ export interface DatedValue {
   value?: string;
 }
 export const DatedValue = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "date": S.optional(Businessprofileperformance_Date),
-  "value": S.optional(S.String),
-}),
+  S.Struct({
+    date: S.optional(Businessprofileperformance_Date),
+    value: S.optional(S.String),
+  }),
 ).annotate({ identifier: "DatedValue" }) as any as S.Schema<DatedValue>;
 
 export type DatedValueList = ReadonlyArray<DatedValue>;
-export const DatedValueList = /*@__PURE__*/ S.Array(DatedValue) as any as S.Schema<DatedValueList>;
+export const DatedValueList = /*@__PURE__*/ S.Array(
+  DatedValue,
+) as any as S.Schema<DatedValueList>;
 
 /** Represents a timeseries. */
 export interface TimeSeries {
@@ -116,12 +164,20 @@ export interface TimeSeries {
   datedValues?: DatedValueList;
 }
 export const TimeSeries = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "datedValues": S.optional(DatedValueList),
-}),
+  S.Struct({
+    datedValues: S.optional(DatedValueList),
+  }),
 ).annotate({ identifier: "TimeSeries" }) as any as S.Schema<TimeSeries>;
 
-export type DailySubEntityTypeDayOfWeekEnum = "DAY_OF_WEEK_UNSPECIFIED" | "MONDAY" | "TUESDAY" | "WEDNESDAY" | "THURSDAY" | "FRIDAY" | "SATURDAY" | "SUNDAY";
+export type DailySubEntityTypeDayOfWeekEnum =
+  | "DAY_OF_WEEK_UNSPECIFIED"
+  | "MONDAY"
+  | "TUESDAY"
+  | "WEDNESDAY"
+  | "THURSDAY"
+  | "FRIDAY"
+  | "SATURDAY"
+  | "SUNDAY";
 export const DailySubEntityTypeDayOfWeekEnum = /*@__PURE__*/ S.String;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
@@ -136,12 +192,12 @@ export interface TimeOfDay {
   seconds?: number;
 }
 export const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "hours": S.optional(S.Number),
-  "nanos": S.optional(S.Number),
-  "minutes": S.optional(S.Number),
-  "seconds": S.optional(S.Number),
-}),
+  S.Struct({
+    hours: S.optional(S.Number),
+    nanos: S.optional(S.Number),
+    minutes: S.optional(S.Number),
+    seconds: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "TimeOfDay" }) as any as S.Schema<TimeOfDay>;
 
 /** Represents all possible subentity types that are associated with DailyMetrics. Note: Currently, all metrics are returned as daily aggregates and sub-entity breakdowns are not supported. */
@@ -152,11 +208,13 @@ export interface DailySubEntityType {
   timeOfDay?: TimeOfDay;
 }
 export const DailySubEntityType = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dayOfWeek": S.optional(DailySubEntityTypeDayOfWeekEnum),
-  "timeOfDay": S.optional(TimeOfDay),
-}),
-).annotate({ identifier: "DailySubEntityType" }) as any as S.Schema<DailySubEntityType>;
+  S.Struct({
+    dayOfWeek: S.optional(DailySubEntityTypeDayOfWeekEnum),
+    timeOfDay: S.optional(TimeOfDay),
+  }),
+).annotate({
+  identifier: "DailySubEntityType",
+}) as any as S.Schema<DailySubEntityType>;
 
 /** Represents a single datapoint, where each datapoint is a DailyMetric-DailySubEntityType-TimeSeries tuple. */
 export interface DailyMetricTimeSeries {
@@ -168,15 +226,19 @@ export interface DailyMetricTimeSeries {
   dailySubEntityType?: DailySubEntityType;
 }
 export const DailyMetricTimeSeries = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dailyMetric": S.optional(DailyMetricTimeSeriesDailyMetricEnum),
-  "timeSeries": S.optional(TimeSeries),
-  "dailySubEntityType": S.optional(DailySubEntityType),
-}),
-).annotate({ identifier: "DailyMetricTimeSeries" }) as any as S.Schema<DailyMetricTimeSeries>;
+  S.Struct({
+    dailyMetric: S.optional(DailyMetricTimeSeriesDailyMetricEnum),
+    timeSeries: S.optional(TimeSeries),
+    dailySubEntityType: S.optional(DailySubEntityType),
+  }),
+).annotate({
+  identifier: "DailyMetricTimeSeries",
+}) as any as S.Schema<DailyMetricTimeSeries>;
 
 export type DailyMetricTimeSeriesList = ReadonlyArray<DailyMetricTimeSeries>;
-export const DailyMetricTimeSeriesList = /*@__PURE__*/ S.Array(DailyMetricTimeSeries) as any as S.Schema<DailyMetricTimeSeriesList>;
+export const DailyMetricTimeSeriesList = /*@__PURE__*/ S.Array(
+  DailyMetricTimeSeries,
+) as any as S.Schema<DailyMetricTimeSeriesList>;
 
 /** Represents a list of tuples of DailyMetric-DailySubEntityType-TimeSeries. */
 export interface MultiDailyMetricTimeSeries {
@@ -184,34 +246,66 @@ export interface MultiDailyMetricTimeSeries {
   dailyMetricTimeSeries?: DailyMetricTimeSeriesList;
 }
 export const MultiDailyMetricTimeSeries = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dailyMetricTimeSeries": S.optional(DailyMetricTimeSeriesList),
-}),
-).annotate({ identifier: "MultiDailyMetricTimeSeries" }) as any as S.Schema<MultiDailyMetricTimeSeries>;
+  S.Struct({
+    dailyMetricTimeSeries: S.optional(DailyMetricTimeSeriesList),
+  }),
+).annotate({
+  identifier: "MultiDailyMetricTimeSeries",
+}) as any as S.Schema<MultiDailyMetricTimeSeries>;
 
-export type MultiDailyMetricTimeSeriesList = ReadonlyArray<MultiDailyMetricTimeSeries>;
-export const MultiDailyMetricTimeSeriesList = /*@__PURE__*/ S.Array(MultiDailyMetricTimeSeries) as any as S.Schema<MultiDailyMetricTimeSeriesList>;
+export type MultiDailyMetricTimeSeriesList =
+  ReadonlyArray<MultiDailyMetricTimeSeries>;
+export const MultiDailyMetricTimeSeriesList = /*@__PURE__*/ S.Array(
+  MultiDailyMetricTimeSeries,
+) as any as S.Schema<MultiDailyMetricTimeSeriesList>;
 
 /** Represents the response for FetchMultiDailyMetricsTimeSeries. */
 export interface FetchMultiDailyMetricsTimeSeriesResponse {
   /** DailyMetrics and their corresponding time series. */
   multiDailyMetricTimeSeries?: MultiDailyMetricTimeSeriesList;
 }
-export const FetchMultiDailyMetricsTimeSeriesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "multiDailyMetricTimeSeries": S.optional(MultiDailyMetricTimeSeriesList),
-}),
-).annotate({ identifier: "FetchMultiDailyMetricsTimeSeriesResponse" }) as any as S.Schema<FetchMultiDailyMetricsTimeSeriesResponse>;
+export const FetchMultiDailyMetricsTimeSeriesResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      multiDailyMetricTimeSeries: S.optional(MultiDailyMetricTimeSeriesList),
+    }),
+).annotate({
+  identifier: "FetchMultiDailyMetricsTimeSeriesResponse",
+}) as any as S.Schema<FetchMultiDailyMetricsTimeSeriesResponse>;
 
-export type GetDailyMetricsTimeSeriesLocationsDailySubEntityType_dayOfWeekEnum = "DAY_OF_WEEK_UNSPECIFIED" | "MONDAY" | "TUESDAY" | "WEDNESDAY" | "THURSDAY" | "FRIDAY" | "SATURDAY" | "SUNDAY";
-export const GetDailyMetricsTimeSeriesLocationsDailySubEntityType_dayOfWeekEnum = /*@__PURE__*/ S.String;
+export type GetDailyMetricsTimeSeriesLocationsDailySubEntityType_dayOfWeekEnum =
+    | "DAY_OF_WEEK_UNSPECIFIED"
+    | "MONDAY"
+    | "TUESDAY"
+    | "WEDNESDAY"
+    | "THURSDAY"
+    | "FRIDAY"
+    | "SATURDAY"
+    | "SUNDAY";
+export const GetDailyMetricsTimeSeriesLocationsDailySubEntityType_dayOfWeekEnum =
+  /*@__PURE__*/ S.String;
 
-export type GetDailyMetricsTimeSeriesLocationsDailyMetricEnum = "DAILY_METRIC_UNKNOWN" | "BUSINESS_IMPRESSIONS_DESKTOP_MAPS" | "BUSINESS_IMPRESSIONS_DESKTOP_SEARCH" | "BUSINESS_IMPRESSIONS_MOBILE_MAPS" | "BUSINESS_IMPRESSIONS_MOBILE_SEARCH" | "BUSINESS_CONVERSATIONS" | "BUSINESS_DIRECTION_REQUESTS" | "CALL_CLICKS" | "WEBSITE_CLICKS" | "BUSINESS_BOOKINGS" | "BUSINESS_FOOD_ORDERS" | "BUSINESS_FOOD_MENU_CLICKS";
-export const GetDailyMetricsTimeSeriesLocationsDailyMetricEnum = /*@__PURE__*/ S.String;
+export type GetDailyMetricsTimeSeriesLocationsDailyMetricEnum =
+  | "DAILY_METRIC_UNKNOWN"
+  | "BUSINESS_IMPRESSIONS_DESKTOP_MAPS"
+  | "BUSINESS_IMPRESSIONS_DESKTOP_SEARCH"
+  | "BUSINESS_IMPRESSIONS_MOBILE_MAPS"
+  | "BUSINESS_IMPRESSIONS_MOBILE_SEARCH"
+  | "BUSINESS_CONVERSATIONS"
+  | "BUSINESS_DIRECTION_REQUESTS"
+  | "CALL_CLICKS"
+  | "WEBSITE_CLICKS"
+  | "BUSINESS_BOOKINGS"
+  | "BUSINESS_FOOD_ORDERS"
+  | "BUSINESS_FOOD_MENU_CLICKS";
+export const GetDailyMetricsTimeSeriesLocationsDailyMetricEnum =
+  /*@__PURE__*/ S.String;
 
 export interface GetDailyMetricsTimeSeriesLocationsRequest {
   /** Represents the day of the week. Eg: MONDAY. Currently supported DailyMetrics = NONE. */
-  "dailySubEntityType.dayOfWeek"?: GetDailyMetricsTimeSeriesLocationsDailySubEntityType_dayOfWeekEnum | (string & {});
+  "dailySubEntityType.dayOfWeek"?:
+    | GetDailyMetricsTimeSeriesLocationsDailySubEntityType_dayOfWeekEnum
+    | (string & {});
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
   "dailyRange.endDate.day"?: number;
   /** Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59. */
@@ -233,27 +327,52 @@ export interface GetDailyMetricsTimeSeriesLocationsRequest {
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
   "dailyRange.endDate.month"?: number;
   /** Required. The metric to retrieve time series. */
-  dailyMetric?: GetDailyMetricsTimeSeriesLocationsDailyMetricEnum | (string & {});
+  dailyMetric?:
+    | GetDailyMetricsTimeSeriesLocationsDailyMetricEnum
+    | (string & {});
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
   "dailyRange.startDate.day"?: number;
 }
-export const GetDailyMetricsTimeSeriesLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dailySubEntityType.dayOfWeek": S.optional(GetDailyMetricsTimeSeriesLocationsDailySubEntityType_dayOfWeekEnum.pipe(T.Query())),
-  "dailyRange.endDate.day": S.optional(S.Number.pipe(T.Query())),
-  "dailySubEntityType.timeOfDay.minutes": S.optional(S.Number.pipe(T.Query())),
-  "dailyRange.endDate.year": S.optional(S.Number.pipe(T.Query())),
-  "dailyRange.startDate.month": S.optional(S.Number.pipe(T.Query())),
-  "dailySubEntityType.timeOfDay.hours": S.optional(S.Number.pipe(T.Query())),
-  "dailySubEntityType.timeOfDay.seconds": S.optional(S.Number.pipe(T.Query())),
-  "dailyRange.startDate.year": S.optional(S.Number.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "dailySubEntityType.timeOfDay.nanos": S.optional(S.Number.pipe(T.Query())),
-  "dailyRange.endDate.month": S.optional(S.Number.pipe(T.Query())),
-  "dailyMetric": S.optional(GetDailyMetricsTimeSeriesLocationsDailyMetricEnum.pipe(T.Query())),
-  "dailyRange.startDate.day": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:getDailyMetricsTimeSeries","baseUrl":"https://businessprofileperformance.googleapis.com/"})),
-).annotate({ identifier: "GetDailyMetricsTimeSeriesLocationsRequest" }) as any as S.Schema<GetDailyMetricsTimeSeriesLocationsRequest>;
+export const GetDailyMetricsTimeSeriesLocationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      "dailySubEntityType.dayOfWeek": S.optional(
+        GetDailyMetricsTimeSeriesLocationsDailySubEntityType_dayOfWeekEnum.pipe(
+          T.Query(),
+        ),
+      ),
+      "dailyRange.endDate.day": S.optional(S.Number.pipe(T.Query())),
+      "dailySubEntityType.timeOfDay.minutes": S.optional(
+        S.Number.pipe(T.Query()),
+      ),
+      "dailyRange.endDate.year": S.optional(S.Number.pipe(T.Query())),
+      "dailyRange.startDate.month": S.optional(S.Number.pipe(T.Query())),
+      "dailySubEntityType.timeOfDay.hours": S.optional(
+        S.Number.pipe(T.Query()),
+      ),
+      "dailySubEntityType.timeOfDay.seconds": S.optional(
+        S.Number.pipe(T.Query()),
+      ),
+      "dailyRange.startDate.year": S.optional(S.Number.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      "dailySubEntityType.timeOfDay.nanos": S.optional(
+        S.Number.pipe(T.Query()),
+      ),
+      "dailyRange.endDate.month": S.optional(S.Number.pipe(T.Query())),
+      dailyMetric: S.optional(
+        GetDailyMetricsTimeSeriesLocationsDailyMetricEnum.pipe(T.Query()),
+      ),
+      "dailyRange.startDate.day": S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}:getDailyMetricsTimeSeries",
+        baseUrl: "https://businessprofileperformance.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetDailyMetricsTimeSeriesLocationsRequest",
+  }) as any as S.Schema<GetDailyMetricsTimeSeriesLocationsRequest>;
 
 /** Represents the response for GetDailyMetricsTimeSeries. */
 export interface GetDailyMetricsTimeSeriesResponse {
@@ -261,10 +380,12 @@ export interface GetDailyMetricsTimeSeriesResponse {
   timeSeries?: TimeSeries;
 }
 export const GetDailyMetricsTimeSeriesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "timeSeries": S.optional(TimeSeries),
-}),
-).annotate({ identifier: "GetDailyMetricsTimeSeriesResponse" }) as any as S.Schema<GetDailyMetricsTimeSeriesResponse>;
+  S.Struct({
+    timeSeries: S.optional(TimeSeries),
+  }),
+).annotate({
+  identifier: "GetDailyMetricsTimeSeriesResponse",
+}) as any as S.Schema<GetDailyMetricsTimeSeriesResponse>;
 
 export interface ListLocationsSearchkeywordsImpressionsMonthlyRequest {
   /** Required. The location for which the time series should be fetched. Format: locations/{location_id} where location_id is an unobfuscated listing id. */
@@ -286,19 +407,28 @@ export interface ListLocationsSearchkeywordsImpressionsMonthlyRequest {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
   "monthlyRange.endMonth.year"?: number;
 }
-export const ListLocationsSearchkeywordsImpressionsMonthlyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "monthlyRange.startMonth.month": S.optional(S.Number.pipe(T.Query())),
-  "monthlyRange.endMonth.month": S.optional(S.Number.pipe(T.Query())),
-  "monthlyRange.endMonth.day": S.optional(S.Number.pipe(T.Query())),
-  "monthlyRange.startMonth.day": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "monthlyRange.startMonth.year": S.optional(S.Number.pipe(T.Query())),
-  "monthlyRange.endMonth.year": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/searchkeywords/impressions/monthly","baseUrl":"https://businessprofileperformance.googleapis.com/"})),
-).annotate({ identifier: "ListLocationsSearchkeywordsImpressionsMonthlyRequest" }) as any as S.Schema<ListLocationsSearchkeywordsImpressionsMonthlyRequest>;
+export const ListLocationsSearchkeywordsImpressionsMonthlyRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      "monthlyRange.startMonth.month": S.optional(S.Number.pipe(T.Query())),
+      "monthlyRange.endMonth.month": S.optional(S.Number.pipe(T.Query())),
+      "monthlyRange.endMonth.day": S.optional(S.Number.pipe(T.Query())),
+      "monthlyRange.startMonth.day": S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      "monthlyRange.startMonth.year": S.optional(S.Number.pipe(T.Query())),
+      "monthlyRange.endMonth.year": S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/searchkeywords/impressions/monthly",
+        baseUrl: "https://businessprofileperformance.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListLocationsSearchkeywordsImpressionsMonthlyRequest",
+  }) as any as S.Schema<ListLocationsSearchkeywordsImpressionsMonthlyRequest>;
 
 /** Represents an insights value. */
 export interface InsightsValue {
@@ -308,10 +438,10 @@ export interface InsightsValue {
   value?: string;
 }
 export const InsightsValue = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "threshold": S.optional(S.String),
-  "value": S.optional(S.String),
-}),
+  S.Struct({
+    threshold: S.optional(S.String),
+    value: S.optional(S.String),
+  }),
 ).annotate({ identifier: "InsightsValue" }) as any as S.Schema<InsightsValue>;
 
 /** Represents a single search keyword and its value. */
@@ -322,14 +452,18 @@ export interface SearchKeywordCount {
   insightsValue?: InsightsValue;
 }
 export const SearchKeywordCount = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "searchKeyword": S.optional(S.String),
-  "insightsValue": S.optional(InsightsValue),
-}),
-).annotate({ identifier: "SearchKeywordCount" }) as any as S.Schema<SearchKeywordCount>;
+  S.Struct({
+    searchKeyword: S.optional(S.String),
+    insightsValue: S.optional(InsightsValue),
+  }),
+).annotate({
+  identifier: "SearchKeywordCount",
+}) as any as S.Schema<SearchKeywordCount>;
 
 export type SearchKeywordCountList = ReadonlyArray<SearchKeywordCount>;
-export const SearchKeywordCountList = /*@__PURE__*/ S.Array(SearchKeywordCount) as any as S.Schema<SearchKeywordCountList>;
+export const SearchKeywordCountList = /*@__PURE__*/ S.Array(
+  SearchKeywordCount,
+) as any as S.Schema<SearchKeywordCountList>;
 
 /** Represents the response for ListSearchKeywordImpressionsMonthly. */
 export interface ListSearchKeywordImpressionsMonthlyResponse {
@@ -338,14 +472,20 @@ export interface ListSearchKeywordImpressionsMonthlyResponse {
   /** A token indicating the last paginated result returned. This can be used by succeeding requests to get the next "page" of keywords. It will only be present when there are more results to be returned. */
   nextPageToken?: string;
 }
-export const ListSearchKeywordImpressionsMonthlyResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "searchKeywordsCounts": S.optional(SearchKeywordCountList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListSearchKeywordImpressionsMonthlyResponse" }) as any as S.Schema<ListSearchKeywordImpressionsMonthlyResponse>;
+export const ListSearchKeywordImpressionsMonthlyResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      searchKeywordsCounts: S.optional(SearchKeywordCountList),
+      nextPageToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ListSearchKeywordImpressionsMonthlyResponse",
+  }) as any as S.Schema<ListSearchKeywordImpressionsMonthlyResponse>;
 
-export type FetchMultiDailyMetricsTimeSeriesLocationsError = NotFound | Forbidden | GcpOpError;
+export type FetchMultiDailyMetricsTimeSeriesLocationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns the values for each date from a given time range that are associated with the specific daily metrics. Note: Only daily data is available. Hourly metrics are not supported. Example request: `GET https://businessprofileperformance.googleapis.com/v1/locations/12345:fetchMultiDailyMetricsTimeSeries?dailyMetrics=WEBSITE_CLICKS&dailyMetrics=CALL_CLICKS&daily_range.start_date.year=2022&daily_range.start_date.month=1&daily_range.start_date.day=1&daily_range.end_date.year=2022&daily_range.end_date.month=3&daily_range.end_date.day=31` */
 export const fetchMultiDailyMetricsTimeSeriesLocations: API.OperationMethod<
   FetchMultiDailyMetricsTimeSeriesLocationsRequest,
@@ -360,7 +500,10 @@ export const fetchMultiDailyMetricsTimeSeriesLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetDailyMetricsTimeSeriesLocationsError = NotFound | Forbidden | GcpOpError;
+export type GetDailyMetricsTimeSeriesLocationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns the values for each date from a given time range that are associated with the specific daily metric. Note: Only daily data is available. Hourly metrics are not supported. Example request: `GET https://businessprofileperformance.googleapis.com/v1/locations/12345:getDailyMetricsTimeSeries?dailyMetric=WEBSITE_CLICKS&daily_range.start_date.year=2022&daily_range.start_date.month=1&daily_range.start_date.day=1&daily_range.end_date.year=2022&daily_range.end_date.month=3&daily_range.end_date.day=31` */
 export const getDailyMetricsTimeSeriesLocations: API.OperationMethod<
   GetDailyMetricsTimeSeriesLocationsRequest,
@@ -375,7 +518,10 @@ export const getDailyMetricsTimeSeriesLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListLocationsSearchkeywordsImpressionsMonthlyError = NotFound | Forbidden | GcpOpError;
+export type ListLocationsSearchkeywordsImpressionsMonthlyError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns the search keywords used to find a business in search or maps. Each search keyword is accompanied by impressions which are aggregated on a monthly basis. Example request: `GET https://businessprofileperformance.googleapis.com/v1/locations/12345/searchkeywords/impressions/monthly?monthly_range.start_month.year=2022&monthly_range.start_month.month=1&monthly_range.end_month.year=2022&monthly_range.end_month.month=3` */
 export const listLocationsSearchkeywordsImpressionsMonthly: API.PaginatedOperationMethod<
   ListLocationsSearchkeywordsImpressionsMonthlyRequest,
@@ -388,6 +534,8 @@ export const listLocationsSearchkeywordsImpressionsMonthly: API.PaginatedOperati
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
-

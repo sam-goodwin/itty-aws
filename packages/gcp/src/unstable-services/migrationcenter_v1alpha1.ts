@@ -13,55 +13,57 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** Lists the asset IDs of all assets. */
 export interface AssetList {
@@ -69,9 +71,9 @@ export interface AssetList {
   assetIds?: StringList;
 }
 export const AssetList = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "assetIds": S.optional(StringList),
-}),
+  S.Struct({
+    assetIds: S.optional(StringList),
+  }),
 ).annotate({ identifier: "AssetList" }) as any as S.Schema<AssetList>;
 
 /** A request to add assets to a group. */
@@ -84,12 +86,14 @@ export interface AddAssetsToGroupRequest {
   assets?: AssetList;
 }
 export const AddAssetsToGroupRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "allowExisting": S.optional(S.Boolean),
-  "requestId": S.optional(S.String),
-  "assets": S.optional(AssetList),
-}),
-).annotate({ identifier: "AddAssetsToGroupRequest" }) as any as S.Schema<AddAssetsToGroupRequest>;
+  S.Struct({
+    allowExisting: S.optional(S.Boolean),
+    requestId: S.optional(S.String),
+    assets: S.optional(AssetList),
+  }),
+).annotate({
+  identifier: "AddAssetsToGroupRequest",
+}) as any as S.Schema<AddAssetsToGroupRequest>;
 
 export interface AddAssetsProjectsLocationsGroupsRequest {
   /** Required. Group reference. */
@@ -97,18 +101,32 @@ export interface AddAssetsProjectsLocationsGroupsRequest {
   /** Request body */
   body?: AddAssetsToGroupRequest;
 }
-export const AddAssetsProjectsLocationsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "group": S.String.pipe(T.Label()),
-  "body": S.optional(AddAssetsToGroupRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+group}:addAssets","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "AddAssetsProjectsLocationsGroupsRequest" }) as any as S.Schema<AddAssetsProjectsLocationsGroupsRequest>;
+export const AddAssetsProjectsLocationsGroupsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      group: S.String.pipe(T.Label()),
+      body: S.optional(AddAssetsToGroupRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1alpha1/{+group}:addAssets",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "AddAssetsProjectsLocationsGroupsRequest",
+}) as any as S.Schema<AddAssetsProjectsLocationsGroupsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -120,11 +138,11 @@ export interface Status {
   details?: DocumentMapList;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(S.Number),
-  "message": S.optional(S.String),
-  "details": S.optional(DocumentMapList),
-}),
+  S.Struct({
+    code: S.optional(S.Number),
+    message: S.optional(S.String),
+    details: S.optional(DocumentMapList),
+  }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -141,35 +159,41 @@ export interface Operation {
   error?: Status;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "done": S.optional(S.Boolean),
-  "response": S.optional(DocumentMap),
-  "name": S.optional(S.String),
-  "metadata": S.optional(DocumentMap),
-  "error": S.optional(Status),
-}),
+  S.Struct({
+    done: S.optional(S.Boolean),
+    response: S.optional(DocumentMap),
+    name: S.optional(S.String),
+    metadata: S.optional(DocumentMap),
+    error: S.optional(Status),
+  }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** Sum of field values. */
 export interface AggregationSum {}
 export const AggregationSum = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
+  S.Struct({}),
 ).annotate({ identifier: "AggregationSum" }) as any as S.Schema<AggregationSum>;
 
 /** Object count. */
 export interface AggregationCount {}
 export const AggregationCount = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "AggregationCount" }) as any as S.Schema<AggregationCount>;
+  S.Struct({}),
+).annotate({
+  identifier: "AggregationCount",
+}) as any as S.Schema<AggregationCount>;
 
 /** Frequency distribution of all field values. */
 export interface AggregationFrequency {}
 export const AggregationFrequency = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "AggregationFrequency" }) as any as S.Schema<AggregationFrequency>;
+  S.Struct({}),
+).annotate({
+  identifier: "AggregationFrequency",
+}) as any as S.Schema<AggregationFrequency>;
 
 export type DoubleList = ReadonlyArray<number>;
-export const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
+export const DoubleList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<DoubleList>;
 
 /** Histogram of bucketed assets counts by field value. */
 export interface AggregationHistogram {
@@ -177,10 +201,12 @@ export interface AggregationHistogram {
   lowerBounds?: DoubleList;
 }
 export const AggregationHistogram = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "lowerBounds": S.optional(DoubleList),
-}),
-).annotate({ identifier: "AggregationHistogram" }) as any as S.Schema<AggregationHistogram>;
+  S.Struct({
+    lowerBounds: S.optional(DoubleList),
+  }),
+).annotate({
+  identifier: "AggregationHistogram",
+}) as any as S.Schema<AggregationHistogram>;
 
 /** Message describing an aggregation. The message includes the aggregation type, parameters, and the field on which to perform the aggregation. */
 export interface Aggregation {
@@ -196,17 +222,19 @@ export interface Aggregation {
   histogram?: AggregationHistogram;
 }
 export const Aggregation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sum": S.optional(AggregationSum),
-  "field": S.optional(S.String),
-  "count": S.optional(AggregationCount),
-  "frequency": S.optional(AggregationFrequency),
-  "histogram": S.optional(AggregationHistogram),
-}),
+  S.Struct({
+    sum: S.optional(AggregationSum),
+    field: S.optional(S.String),
+    count: S.optional(AggregationCount),
+    frequency: S.optional(AggregationFrequency),
+    histogram: S.optional(AggregationHistogram),
+  }),
 ).annotate({ identifier: "Aggregation" }) as any as S.Schema<Aggregation>;
 
 export type AggregationList = ReadonlyArray<Aggregation>;
-export const AggregationList = /*@__PURE__*/ S.Array(Aggregation) as any as S.Schema<AggregationList>;
+export const AggregationList = /*@__PURE__*/ S.Array(
+  Aggregation,
+) as any as S.Schema<AggregationList>;
 
 /** A request to aggregate one or more values. */
 export interface AggregateAssetsValuesRequest {
@@ -218,12 +246,14 @@ export interface AggregateAssetsValuesRequest {
   showHidden?: boolean;
 }
 export const AggregateAssetsValuesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "aggregations": S.optional(AggregationList),
-  "filter": S.optional(S.String),
-  "showHidden": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "AggregateAssetsValuesRequest" }) as any as S.Schema<AggregateAssetsValuesRequest>;
+  S.Struct({
+    aggregations: S.optional(AggregationList),
+    filter: S.optional(S.String),
+    showHidden: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "AggregateAssetsValuesRequest",
+}) as any as S.Schema<AggregateAssetsValuesRequest>;
 
 export interface AggregateValuesProjectsLocationsAssetsRequest {
   /** Required. Parent value for `AggregateAssetsValuesRequest`. */
@@ -231,12 +261,21 @@ export interface AggregateValuesProjectsLocationsAssetsRequest {
   /** Request body */
   body?: AggregateAssetsValuesRequest;
 }
-export const AggregateValuesProjectsLocationsAssetsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(AggregateAssetsValuesRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+parent}/assets:aggregateValues","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "AggregateValuesProjectsLocationsAssetsRequest" }) as any as S.Schema<AggregateValuesProjectsLocationsAssetsRequest>;
+export const AggregateValuesProjectsLocationsAssetsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(AggregateAssetsValuesRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1alpha1/{+parent}/assets:aggregateValues",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "AggregateValuesProjectsLocationsAssetsRequest",
+  }) as any as S.Schema<AggregateValuesProjectsLocationsAssetsRequest>;
 
 /** A histogram bucket with a lower and upper bound, and a count of items with a field value between those bounds. The lower bound is inclusive and the upper bound is exclusive. Lower bound may be -infinity and upper bound may be infinity. */
 export interface AggregationResultHistogramBucket {
@@ -248,15 +287,20 @@ export interface AggregationResultHistogramBucket {
   upperBound?: number;
 }
 export const AggregationResultHistogramBucket = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "count": S.optional(S.String),
-  "lowerBound": S.optional(S.Number),
-  "upperBound": S.optional(S.Number),
-}),
-).annotate({ identifier: "AggregationResultHistogramBucket" }) as any as S.Schema<AggregationResultHistogramBucket>;
+  S.Struct({
+    count: S.optional(S.String),
+    lowerBound: S.optional(S.Number),
+    upperBound: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "AggregationResultHistogramBucket",
+}) as any as S.Schema<AggregationResultHistogramBucket>;
 
-export type AggregationResultHistogramBucketList = ReadonlyArray<AggregationResultHistogramBucket>;
-export const AggregationResultHistogramBucketList = /*@__PURE__*/ S.Array(AggregationResultHistogramBucket) as any as S.Schema<AggregationResultHistogramBucketList>;
+export type AggregationResultHistogramBucketList =
+  ReadonlyArray<AggregationResultHistogramBucket>;
+export const AggregationResultHistogramBucketList = /*@__PURE__*/ S.Array(
+  AggregationResultHistogramBucket,
+) as any as S.Schema<AggregationResultHistogramBucketList>;
 
 /** The result of a bucketed histogram aggregation. */
 export interface AggregationResultHistogram {
@@ -264,43 +308,54 @@ export interface AggregationResultHistogram {
   buckets?: AggregationResultHistogramBucketList;
 }
 export const AggregationResultHistogram = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "buckets": S.optional(AggregationResultHistogramBucketList),
-}),
-).annotate({ identifier: "AggregationResultHistogram" }) as any as S.Schema<AggregationResultHistogram>;
+  S.Struct({
+    buckets: S.optional(AggregationResultHistogramBucketList),
+  }),
+).annotate({
+  identifier: "AggregationResultHistogram",
+}) as any as S.Schema<AggregationResultHistogram>;
 
 /** The result of a sum aggregation. */
 export interface AggregationResultSum {
   value?: number;
 }
 export const AggregationResultSum = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "value": S.optional(S.Number),
-}),
-).annotate({ identifier: "AggregationResultSum" }) as any as S.Schema<AggregationResultSum>;
+  S.Struct({
+    value: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "AggregationResultSum",
+}) as any as S.Schema<AggregationResultSum>;
 
 /** The result of a count aggregation. */
 export interface AggregationResultCount {
   value?: string;
 }
 export const AggregationResultCount = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "value": S.optional(S.String),
-}),
-).annotate({ identifier: "AggregationResultCount" }) as any as S.Schema<AggregationResultCount>;
+  S.Struct({
+    value: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AggregationResultCount",
+}) as any as S.Schema<AggregationResultCount>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
 /** The result of a frequency distribution aggregation. */
 export interface AggregationResultFrequency {
   values?: StringMap;
 }
 export const AggregationResultFrequency = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "values": S.optional(StringMap),
-}),
-).annotate({ identifier: "AggregationResultFrequency" }) as any as S.Schema<AggregationResultFrequency>;
+  S.Struct({
+    values: S.optional(StringMap),
+  }),
+).annotate({
+  identifier: "AggregationResultFrequency",
+}) as any as S.Schema<AggregationResultFrequency>;
 
 /** Message describing a result of an aggregation. */
 export interface AggregationResult {
@@ -311,17 +366,21 @@ export interface AggregationResult {
   frequency?: AggregationResultFrequency;
 }
 export const AggregationResult = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "histogram": S.optional(AggregationResultHistogram),
-  "sum": S.optional(AggregationResultSum),
-  "field": S.optional(S.String),
-  "count": S.optional(AggregationResultCount),
-  "frequency": S.optional(AggregationResultFrequency),
-}),
-).annotate({ identifier: "AggregationResult" }) as any as S.Schema<AggregationResult>;
+  S.Struct({
+    histogram: S.optional(AggregationResultHistogram),
+    sum: S.optional(AggregationResultSum),
+    field: S.optional(S.String),
+    count: S.optional(AggregationResultCount),
+    frequency: S.optional(AggregationResultFrequency),
+  }),
+).annotate({
+  identifier: "AggregationResult",
+}) as any as S.Schema<AggregationResult>;
 
 export type AggregationResultList = ReadonlyArray<AggregationResult>;
-export const AggregationResultList = /*@__PURE__*/ S.Array(AggregationResult) as any as S.Schema<AggregationResultList>;
+export const AggregationResultList = /*@__PURE__*/ S.Array(
+  AggregationResult,
+) as any as S.Schema<AggregationResultList>;
 
 /** A response to a request to aggregated assets values. */
 export interface AggregateAssetsValuesResponse {
@@ -329,16 +388,20 @@ export interface AggregateAssetsValuesResponse {
   results?: AggregationResultList;
 }
 export const AggregateAssetsValuesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "results": S.optional(AggregationResultList),
-}),
-).annotate({ identifier: "AggregateAssetsValuesResponse" }) as any as S.Schema<AggregateAssetsValuesResponse>;
+  S.Struct({
+    results: S.optional(AggregationResultList),
+  }),
+).annotate({
+  identifier: "AggregateAssetsValuesResponse",
+}) as any as S.Schema<AggregateAssetsValuesResponse>;
 
 /** Cascading rule for related logical DBs. */
 export interface CascadeLogicalDBsRule {}
 export const CascadeLogicalDBsRule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "CascadeLogicalDBsRule" }) as any as S.Schema<CascadeLogicalDBsRule>;
+  S.Struct({}),
+).annotate({
+  identifier: "CascadeLogicalDBsRule",
+}) as any as S.Schema<CascadeLogicalDBsRule>;
 
 /** Specifies cascading rules for traversing relations. */
 export interface CascadingRule {
@@ -346,13 +409,15 @@ export interface CascadingRule {
   cascadeLogicalDbs?: CascadeLogicalDBsRule;
 }
 export const CascadingRule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "cascadeLogicalDbs": S.optional(CascadeLogicalDBsRule),
-}),
+  S.Struct({
+    cascadeLogicalDbs: S.optional(CascadeLogicalDBsRule),
+  }),
 ).annotate({ identifier: "CascadingRule" }) as any as S.Schema<CascadingRule>;
 
 export type CascadingRuleList = ReadonlyArray<CascadingRule>;
-export const CascadingRuleList = /*@__PURE__*/ S.Array(CascadingRule) as any as S.Schema<CascadingRuleList>;
+export const CascadingRuleList = /*@__PURE__*/ S.Array(
+  CascadingRule,
+) as any as S.Schema<CascadingRuleList>;
 
 /** A request to delete a list of asset. */
 export interface BatchDeleteAssetsRequest {
@@ -364,12 +429,14 @@ export interface BatchDeleteAssetsRequest {
   cascadingRules?: CascadingRuleList;
 }
 export const BatchDeleteAssetsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "names": S.optional(StringList),
-  "allowMissing": S.optional(S.Boolean),
-  "cascadingRules": S.optional(CascadingRuleList),
-}),
-).annotate({ identifier: "BatchDeleteAssetsRequest" }) as any as S.Schema<BatchDeleteAssetsRequest>;
+  S.Struct({
+    names: S.optional(StringList),
+    allowMissing: S.optional(S.Boolean),
+    cascadingRules: S.optional(CascadingRuleList),
+  }),
+).annotate({
+  identifier: "BatchDeleteAssetsRequest",
+}) as any as S.Schema<BatchDeleteAssetsRequest>;
 
 export interface BatchDeleteProjectsLocationsAssetsRequest {
   /** Required. Parent value for batch asset delete. */
@@ -377,20 +444,39 @@ export interface BatchDeleteProjectsLocationsAssetsRequest {
   /** Request body */
   body?: BatchDeleteAssetsRequest;
 }
-export const BatchDeleteProjectsLocationsAssetsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(BatchDeleteAssetsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+parent}/assets:batchDelete","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "BatchDeleteProjectsLocationsAssetsRequest" }) as any as S.Schema<BatchDeleteProjectsLocationsAssetsRequest>;
+export const BatchDeleteProjectsLocationsAssetsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(BatchDeleteAssetsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1alpha1/{+parent}/assets:batchDelete",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "BatchDeleteProjectsLocationsAssetsRequest",
+  }) as any as S.Schema<BatchDeleteProjectsLocationsAssetsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
-export type AwsS3BucketDetailsStorageClassTypeEnum = "STORAGE_CLASS_TYPE_UNSPECIFIED" | "STANDARD" | "INTELLIGENT_TIERING" | "STANDARD_IA" | "ONE_ZONE_IA" | "GLACIER" | "DEEP_ARCHIVE" | "GLACIER_IR" | "REDUCED_REDUNDANCY" | "EXPRESS_ONEZONE";
+export type AwsS3BucketDetailsStorageClassTypeEnum =
+  | "STORAGE_CLASS_TYPE_UNSPECIFIED"
+  | "STANDARD"
+  | "INTELLIGENT_TIERING"
+  | "STANDARD_IA"
+  | "ONE_ZONE_IA"
+  | "GLACIER"
+  | "DEEP_ARCHIVE"
+  | "GLACIER_IR"
+  | "REDUCED_REDUNDANCY"
+  | "EXPRESS_ONEZONE";
 export const AwsS3BucketDetailsStorageClassTypeEnum = /*@__PURE__*/ S.String;
 
 /** Details about storage class. */
@@ -401,14 +487,19 @@ export interface AwsS3BucketDetailsStorageClass {
   totalBytes?: string;
 }
 export const AwsS3BucketDetailsStorageClass = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(AwsS3BucketDetailsStorageClassTypeEnum),
-  "totalBytes": S.optional(S.String),
-}),
-).annotate({ identifier: "AwsS3BucketDetailsStorageClass" }) as any as S.Schema<AwsS3BucketDetailsStorageClass>;
+  S.Struct({
+    type: S.optional(AwsS3BucketDetailsStorageClassTypeEnum),
+    totalBytes: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AwsS3BucketDetailsStorageClass",
+}) as any as S.Schema<AwsS3BucketDetailsStorageClass>;
 
-export type AwsS3BucketDetailsStorageClassList = ReadonlyArray<AwsS3BucketDetailsStorageClass>;
-export const AwsS3BucketDetailsStorageClassList = /*@__PURE__*/ S.Array(AwsS3BucketDetailsStorageClass) as any as S.Schema<AwsS3BucketDetailsStorageClassList>;
+export type AwsS3BucketDetailsStorageClassList =
+  ReadonlyArray<AwsS3BucketDetailsStorageClass>;
+export const AwsS3BucketDetailsStorageClassList = /*@__PURE__*/ S.Array(
+  AwsS3BucketDetailsStorageClass,
+) as any as S.Schema<AwsS3BucketDetailsStorageClassList>;
 
 /** Versioning configuration of the bucket. */
 export interface AwsS3BucketDetailsVersioning {
@@ -416,21 +507,26 @@ export interface AwsS3BucketDetailsVersioning {
   enabled?: boolean;
 }
 export const AwsS3BucketDetailsVersioning = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "enabled": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "AwsS3BucketDetailsVersioning" }) as any as S.Schema<AwsS3BucketDetailsVersioning>;
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "AwsS3BucketDetailsVersioning",
+}) as any as S.Schema<AwsS3BucketDetailsVersioning>;
 
 /** Information about the total number of objects in the bucket. */
 export interface AwsS3BucketDetailsObjectsMetadataTotalObjects {
   /** Optional. The total number of objects in the bucket. */
   value?: number;
 }
-export const AwsS3BucketDetailsObjectsMetadataTotalObjects = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "value": S.optional(S.Number),
-}),
-).annotate({ identifier: "AwsS3BucketDetailsObjectsMetadataTotalObjects" }) as any as S.Schema<AwsS3BucketDetailsObjectsMetadataTotalObjects>;
+export const AwsS3BucketDetailsObjectsMetadataTotalObjects =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      value: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "AwsS3BucketDetailsObjectsMetadataTotalObjects",
+  }) as any as S.Schema<AwsS3BucketDetailsObjectsMetadataTotalObjects>;
 
 /** The metadata of the objects in the bucket. */
 export interface AwsS3BucketDetailsObjectsMetadata {
@@ -438,10 +534,12 @@ export interface AwsS3BucketDetailsObjectsMetadata {
   totalObjects?: AwsS3BucketDetailsObjectsMetadataTotalObjects;
 }
 export const AwsS3BucketDetailsObjectsMetadata = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "totalObjects": S.optional(AwsS3BucketDetailsObjectsMetadataTotalObjects),
-}),
-).annotate({ identifier: "AwsS3BucketDetailsObjectsMetadata" }) as any as S.Schema<AwsS3BucketDetailsObjectsMetadata>;
+  S.Struct({
+    totalObjects: S.optional(AwsS3BucketDetailsObjectsMetadataTotalObjects),
+  }),
+).annotate({
+  identifier: "AwsS3BucketDetailsObjectsMetadata",
+}) as any as S.Schema<AwsS3BucketDetailsObjectsMetadata>;
 
 /** Asset information specific for AWS S3 buckets. */
 export interface AwsS3BucketDetails {
@@ -453,23 +551,27 @@ export interface AwsS3BucketDetails {
   objectsMetadata?: AwsS3BucketDetailsObjectsMetadata;
 }
 export const AwsS3BucketDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "storageClasses": S.optional(AwsS3BucketDetailsStorageClassList),
-  "versioning": S.optional(AwsS3BucketDetailsVersioning),
-  "objectsMetadata": S.optional(AwsS3BucketDetailsObjectsMetadata),
-}),
-).annotate({ identifier: "AwsS3BucketDetails" }) as any as S.Schema<AwsS3BucketDetails>;
+  S.Struct({
+    storageClasses: S.optional(AwsS3BucketDetailsStorageClassList),
+    versioning: S.optional(AwsS3BucketDetailsVersioning),
+    objectsMetadata: S.optional(AwsS3BucketDetailsObjectsMetadata),
+  }),
+).annotate({
+  identifier: "AwsS3BucketDetails",
+}) as any as S.Schema<AwsS3BucketDetails>;
 
 /** Asset information specific for AWS SNS Topics. */
 export interface AwsSnsTopicDetails {}
 export const AwsSnsTopicDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "AwsSnsTopicDetails" }) as any as S.Schema<AwsSnsTopicDetails>;
+  S.Struct({}),
+).annotate({
+  identifier: "AwsSnsTopicDetails",
+}) as any as S.Schema<AwsSnsTopicDetails>;
 
 /** Asset information specific for AWS VPCs. */
 export interface AwsVpcDetails {}
 export const AwsVpcDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
+  S.Struct({}),
 ).annotate({ identifier: "AwsVpcDetails" }) as any as S.Schema<AwsVpcDetails>;
 
 /** Location of a resource. */
@@ -478,10 +580,12 @@ export interface ResourceLocation {
   region?: string;
 }
 export const ResourceLocation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "region": S.optional(S.String),
-}),
-).annotate({ identifier: "ResourceLocation" }) as any as S.Schema<ResourceLocation>;
+  S.Struct({
+    region: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ResourceLocation",
+}) as any as S.Schema<ResourceLocation>;
 
 /** Details for AWS platform. */
 export interface HostingProviderDetailsAws {
@@ -489,10 +593,12 @@ export interface HostingProviderDetailsAws {
   owningAccountId?: string;
 }
 export const HostingProviderDetailsAws = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "owningAccountId": S.optional(S.String),
-}),
-).annotate({ identifier: "HostingProviderDetailsAws" }) as any as S.Schema<HostingProviderDetailsAws>;
+  S.Struct({
+    owningAccountId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "HostingProviderDetailsAws",
+}) as any as S.Schema<HostingProviderDetailsAws>;
 
 /** Details about the hosting platform of the asset. */
 export interface HostingProviderDetails {
@@ -508,20 +614,24 @@ export interface HostingProviderDetails {
   aws?: HostingProviderDetailsAws;
 }
 export const HostingProviderDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "displayName": S.optional(S.String),
-  "location": S.optional(ResourceLocation),
-  "originalId": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "aws": S.optional(HostingProviderDetailsAws),
-}),
-).annotate({ identifier: "HostingProviderDetails" }) as any as S.Schema<HostingProviderDetails>;
+  S.Struct({
+    displayName: S.optional(S.String),
+    location: S.optional(ResourceLocation),
+    originalId: S.optional(S.String),
+    createTime: S.optional(S.String),
+    aws: S.optional(HostingProviderDetailsAws),
+  }),
+).annotate({
+  identifier: "HostingProviderDetails",
+}) as any as S.Schema<HostingProviderDetails>;
 
 /** Details of an AWS CloudFront distribution. */
 export interface AwsCloudFrontDistributionDetails {}
 export const AwsCloudFrontDistributionDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "AwsCloudFrontDistributionDetails" }) as any as S.Schema<AwsCloudFrontDistributionDetails>;
+  S.Struct({}),
+).annotate({
+  identifier: "AwsCloudFrontDistributionDetails",
+}) as any as S.Schema<AwsCloudFrontDistributionDetails>;
 
 /** Information about software detected on an asset. */
 export interface DetectedSoftware {
@@ -531,11 +641,13 @@ export interface DetectedSoftware {
   softwareName?: string;
 }
 export const DetectedSoftware = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "softwareFamily": S.optional(S.String),
-  "softwareName": S.optional(S.String),
-}),
-).annotate({ identifier: "DetectedSoftware" }) as any as S.Schema<DetectedSoftware>;
+  S.Struct({
+    softwareFamily: S.optional(S.String),
+    softwareName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DetectedSoftware",
+}) as any as S.Schema<DetectedSoftware>;
 
 /** An insight regarding software detected on an asset. */
 export interface SoftwareInsight {
@@ -543,24 +655,34 @@ export interface SoftwareInsight {
   detectedSoftware?: DetectedSoftware;
 }
 export const SoftwareInsight = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "detectedSoftware": S.optional(DetectedSoftware),
-}),
-).annotate({ identifier: "SoftwareInsight" }) as any as S.Schema<SoftwareInsight>;
+  S.Struct({
+    detectedSoftware: S.optional(DetectedSoftware),
+  }),
+).annotate({
+  identifier: "SoftwareInsight",
+}) as any as S.Schema<SoftwareInsight>;
 
 /** VMWare engine migration target. */
 export interface VmwareEngineMigrationTarget {}
 export const VmwareEngineMigrationTarget = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "VmwareEngineMigrationTarget" }) as any as S.Schema<VmwareEngineMigrationTarget>;
+  S.Struct({}),
+).annotate({
+  identifier: "VmwareEngineMigrationTarget",
+}) as any as S.Schema<VmwareEngineMigrationTarget>;
 
 /** GKE migration target. */
 export interface GoogleKubernetesEngineMigrationTarget {}
-export const GoogleKubernetesEngineMigrationTarget = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "GoogleKubernetesEngineMigrationTarget" }) as any as S.Schema<GoogleKubernetesEngineMigrationTarget>;
+export const GoogleKubernetesEngineMigrationTarget = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "GoogleKubernetesEngineMigrationTarget",
+}) as any as S.Schema<GoogleKubernetesEngineMigrationTarget>;
 
-export type FitDescriptorFitLevelEnum = "FIT_LEVEL_UNSPECIFIED" | "FIT" | "NO_FIT" | "REQUIRES_EFFORT";
+export type FitDescriptorFitLevelEnum =
+  | "FIT_LEVEL_UNSPECIFIED"
+  | "FIT"
+  | "NO_FIT"
+  | "REQUIRES_EFFORT";
 export const FitDescriptorFitLevelEnum = /*@__PURE__*/ S.String;
 
 /** Describes the fit level of an asset for migration to a specific target. */
@@ -569,16 +691,24 @@ export interface FitDescriptor {
   fitLevel?: FitDescriptorFitLevelEnum;
 }
 export const FitDescriptor = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fitLevel": S.optional(FitDescriptorFitLevelEnum),
-}),
+  S.Struct({
+    fitLevel: S.optional(FitDescriptorFitLevelEnum),
+  }),
 ).annotate({ identifier: "FitDescriptor" }) as any as S.Schema<FitDescriptor>;
 
-export type IssueCompatibilityIssueCategoryEnum = "CATEGORY_UNSPECIFIED" | "DATABASE_FLAG" | "DATABASE_FEATURE";
+export type IssueCompatibilityIssueCategoryEnum =
+  | "CATEGORY_UNSPECIFIED"
+  | "DATABASE_FLAG"
+  | "DATABASE_FEATURE";
 export const IssueCompatibilityIssueCategoryEnum = /*@__PURE__*/ S.String;
 
-export type IssueCompatibilityIssueAssociatedObjectTypeEnum = "OBJECT_TYPE_UNSPECIFIED" | "DATABASE_DEPLOYMENT" | "DATABASE" | "SCHEMA";
-export const IssueCompatibilityIssueAssociatedObjectTypeEnum = /*@__PURE__*/ S.String;
+export type IssueCompatibilityIssueAssociatedObjectTypeEnum =
+  | "OBJECT_TYPE_UNSPECIFIED"
+  | "DATABASE_DEPLOYMENT"
+  | "DATABASE"
+  | "SCHEMA";
+export const IssueCompatibilityIssueAssociatedObjectTypeEnum =
+  /*@__PURE__*/ S.String;
 
 /** Details about a compatibility issue. */
 export interface IssueCompatibilityIssue {
@@ -592,13 +722,17 @@ export interface IssueCompatibilityIssue {
   associatedValue?: string;
 }
 export const IssueCompatibilityIssue = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "associatedObject": S.optional(S.String),
-  "category": S.optional(IssueCompatibilityIssueCategoryEnum),
-  "associatedObjectType": S.optional(IssueCompatibilityIssueAssociatedObjectTypeEnum),
-  "associatedValue": S.optional(S.String),
-}),
-).annotate({ identifier: "IssueCompatibilityIssue" }) as any as S.Schema<IssueCompatibilityIssue>;
+  S.Struct({
+    associatedObject: S.optional(S.String),
+    category: S.optional(IssueCompatibilityIssueCategoryEnum),
+    associatedObjectType: S.optional(
+      IssueCompatibilityIssueAssociatedObjectTypeEnum,
+    ),
+    associatedValue: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "IssueCompatibilityIssue",
+}) as any as S.Schema<IssueCompatibilityIssue>;
 
 /** An issue associated with a migration. */
 export interface Issue {
@@ -610,17 +744,23 @@ export interface Issue {
   description?: string;
 }
 export const Issue = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "issueCode": S.optional(S.String),
-  "compatibilityIssue": S.optional(IssueCompatibilityIssue),
-  "description": S.optional(S.String),
-}),
+  S.Struct({
+    issueCode: S.optional(S.String),
+    compatibilityIssue: S.optional(IssueCompatibilityIssue),
+    description: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Issue" }) as any as S.Schema<Issue>;
 
 export type IssueList = ReadonlyArray<Issue>;
-export const IssueList = /*@__PURE__*/ S.Array(Issue) as any as S.Schema<IssueList>;
+export const IssueList = /*@__PURE__*/ S.Array(
+  Issue,
+) as any as S.Schema<IssueList>;
 
-export type ComputeStorageDescriptorTypeEnum = "PERSISTENT_DISK_TYPE_UNSPECIFIED" | "PERSISTENT_DISK_TYPE_STANDARD" | "PERSISTENT_DISK_TYPE_BALANCED" | "PERSISTENT_DISK_TYPE_SSD";
+export type ComputeStorageDescriptorTypeEnum =
+  | "PERSISTENT_DISK_TYPE_UNSPECIFIED"
+  | "PERSISTENT_DISK_TYPE_STANDARD"
+  | "PERSISTENT_DISK_TYPE_BALANCED"
+  | "PERSISTENT_DISK_TYPE_SSD";
 export const ComputeStorageDescriptorTypeEnum = /*@__PURE__*/ S.String;
 
 /** Compute Engine storage option descriptor. */
@@ -631,14 +771,19 @@ export interface ComputeStorageDescriptor {
   sizeGb?: number;
 }
 export const ComputeStorageDescriptor = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(ComputeStorageDescriptorTypeEnum),
-  "sizeGb": S.optional(S.Number),
-}),
-).annotate({ identifier: "ComputeStorageDescriptor" }) as any as S.Schema<ComputeStorageDescriptor>;
+  S.Struct({
+    type: S.optional(ComputeStorageDescriptorTypeEnum),
+    sizeGb: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ComputeStorageDescriptor",
+}) as any as S.Schema<ComputeStorageDescriptor>;
 
-export type ComputeStorageDescriptorList = ReadonlyArray<ComputeStorageDescriptor>;
-export const ComputeStorageDescriptorList = /*@__PURE__*/ S.Array(ComputeStorageDescriptor) as any as S.Schema<ComputeStorageDescriptorList>;
+export type ComputeStorageDescriptorList =
+  ReadonlyArray<ComputeStorageDescriptor>;
+export const ComputeStorageDescriptorList = /*@__PURE__*/ S.Array(
+  ComputeStorageDescriptor,
+) as any as S.Schema<ComputeStorageDescriptorList>;
 
 /** Compute Engine target shape descriptor. */
 export interface ComputeEngineShapeDescriptor {
@@ -658,16 +803,18 @@ export interface ComputeEngineShapeDescriptor {
   machineType?: string;
 }
 export const ComputeEngineShapeDescriptor = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "storage": S.optional(ComputeStorageDescriptorList),
-  "smtEnabled": S.optional(S.Boolean),
-  "memoryMb": S.optional(S.Number),
-  "physicalCoreCount": S.optional(S.Number),
-  "logicalCoreCount": S.optional(S.Number),
-  "series": S.optional(S.String),
-  "machineType": S.optional(S.String),
-}),
-).annotate({ identifier: "ComputeEngineShapeDescriptor" }) as any as S.Schema<ComputeEngineShapeDescriptor>;
+  S.Struct({
+    storage: S.optional(ComputeStorageDescriptorList),
+    smtEnabled: S.optional(S.Boolean),
+    memoryMb: S.optional(S.Number),
+    physicalCoreCount: S.optional(S.Number),
+    logicalCoreCount: S.optional(S.Number),
+    series: S.optional(S.String),
+    machineType: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ComputeEngineShapeDescriptor",
+}) as any as S.Schema<ComputeEngineShapeDescriptor>;
 
 /** Compute engine migration target. */
 export interface ComputeEngineMigrationTarget {
@@ -675,24 +822,48 @@ export interface ComputeEngineMigrationTarget {
   shape?: ComputeEngineShapeDescriptor;
 }
 export const ComputeEngineMigrationTarget = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "shape": S.optional(ComputeEngineShapeDescriptor),
-}),
-).annotate({ identifier: "ComputeEngineMigrationTarget" }) as any as S.Schema<ComputeEngineMigrationTarget>;
+  S.Struct({
+    shape: S.optional(ComputeEngineShapeDescriptor),
+  }),
+).annotate({
+  identifier: "ComputeEngineMigrationTarget",
+}) as any as S.Schema<ComputeEngineMigrationTarget>;
 
 /** Compute engine sole tenant migration target. */
 export interface ComputeEngineSoleTenantMigrationTarget {}
-export const ComputeEngineSoleTenantMigrationTarget = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "ComputeEngineSoleTenantMigrationTarget" }) as any as S.Schema<ComputeEngineSoleTenantMigrationTarget>;
+export const ComputeEngineSoleTenantMigrationTarget = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "ComputeEngineSoleTenantMigrationTarget",
+}) as any as S.Schema<ComputeEngineSoleTenantMigrationTarget>;
 
-export type CloudSqlForSqlServerShapeVersionEnum = "SQL_SERVER_VERSION_UNSPECIFIED" | "SQL_SERVER_VERSION_2017_EXPRESS" | "SQL_SERVER_VERSION_2017_WEB" | "SQL_SERVER_VERSION_2017_STANDARD" | "SQL_SERVER_VERSION_2017_ENTERPRISE" | "SQL_SERVER_VERSION_2019_EXPRESS" | "SQL_SERVER_VERSION_2019_WEB" | "SQL_SERVER_VERSION_2019_STANDARD" | "SQL_SERVER_VERSION_2019_ENTERPRISE" | "SQL_SERVER_VERSION_2022_EXPRESS" | "SQL_SERVER_VERSION_2022_WEB" | "SQL_SERVER_VERSION_2022_STANDARD" | "SQL_SERVER_VERSION_2022_ENTERPRISE";
+export type CloudSqlForSqlServerShapeVersionEnum =
+  | "SQL_SERVER_VERSION_UNSPECIFIED"
+  | "SQL_SERVER_VERSION_2017_EXPRESS"
+  | "SQL_SERVER_VERSION_2017_WEB"
+  | "SQL_SERVER_VERSION_2017_STANDARD"
+  | "SQL_SERVER_VERSION_2017_ENTERPRISE"
+  | "SQL_SERVER_VERSION_2019_EXPRESS"
+  | "SQL_SERVER_VERSION_2019_WEB"
+  | "SQL_SERVER_VERSION_2019_STANDARD"
+  | "SQL_SERVER_VERSION_2019_ENTERPRISE"
+  | "SQL_SERVER_VERSION_2022_EXPRESS"
+  | "SQL_SERVER_VERSION_2022_WEB"
+  | "SQL_SERVER_VERSION_2022_STANDARD"
+  | "SQL_SERVER_VERSION_2022_ENTERPRISE";
 export const CloudSqlForSqlServerShapeVersionEnum = /*@__PURE__*/ S.String;
 
-export type CloudSqlForSqlServerShapeZoneAvailabilityEnum = "CLOUD_SQL_ZONE_AVAILABILITY_UNSPECIFIED" | "CLOUD_SQL_ZONE_AVAILABILITY_ZONAL" | "CLOUD_SQL_ZONE_AVAILABILITY_REGIONAL";
-export const CloudSqlForSqlServerShapeZoneAvailabilityEnum = /*@__PURE__*/ S.String;
+export type CloudSqlForSqlServerShapeZoneAvailabilityEnum =
+  | "CLOUD_SQL_ZONE_AVAILABILITY_UNSPECIFIED"
+  | "CLOUD_SQL_ZONE_AVAILABILITY_ZONAL"
+  | "CLOUD_SQL_ZONE_AVAILABILITY_REGIONAL";
+export const CloudSqlForSqlServerShapeZoneAvailabilityEnum =
+  /*@__PURE__*/ S.String;
 
-export type CloudSqlForSqlServerShapeEditionEnum = "CLOUD_SQL_EDITION_UNSPECIFIED" | "CLOUD_SQL_EDITION_ENTERPRISE" | "CLOUD_SQL_EDITION_ENTERPRISE_PLUS";
+export type CloudSqlForSqlServerShapeEditionEnum =
+  | "CLOUD_SQL_EDITION_UNSPECIFIED"
+  | "CLOUD_SQL_EDITION_ENTERPRISE"
+  | "CLOUD_SQL_EDITION_ENTERPRISE_PLUS";
 export const CloudSqlForSqlServerShapeEditionEnum = /*@__PURE__*/ S.String;
 
 /** Cloud SQL for SQL Server database shape. */
@@ -717,26 +888,38 @@ export interface CloudSqlForSqlServerShape {
   backupStorageGb?: number;
 }
 export const CloudSqlForSqlServerShape = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "smtEnabled": S.optional(S.Boolean),
-  "version": S.optional(CloudSqlForSqlServerShapeVersionEnum),
-  "storage": S.optional(ComputeStorageDescriptor),
-  "egressGbPerMonth": S.optional(S.String),
-  "logicalCoreCount": S.optional(S.Number),
-  "memoryMb": S.optional(S.Number),
-  "zoneAvailability": S.optional(CloudSqlForSqlServerShapeZoneAvailabilityEnum),
-  "edition": S.optional(CloudSqlForSqlServerShapeEditionEnum),
-  "backupStorageGb": S.optional(S.Number),
-}),
-).annotate({ identifier: "CloudSqlForSqlServerShape" }) as any as S.Schema<CloudSqlForSqlServerShape>;
+  S.Struct({
+    smtEnabled: S.optional(S.Boolean),
+    version: S.optional(CloudSqlForSqlServerShapeVersionEnum),
+    storage: S.optional(ComputeStorageDescriptor),
+    egressGbPerMonth: S.optional(S.String),
+    logicalCoreCount: S.optional(S.Number),
+    memoryMb: S.optional(S.Number),
+    zoneAvailability: S.optional(CloudSqlForSqlServerShapeZoneAvailabilityEnum),
+    edition: S.optional(CloudSqlForSqlServerShapeEditionEnum),
+    backupStorageGb: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "CloudSqlForSqlServerShape",
+}) as any as S.Schema<CloudSqlForSqlServerShape>;
 
-export type CloudSqlForMySqlShapeZoneAvailabilityEnum = "CLOUD_SQL_ZONE_AVAILABILITY_UNSPECIFIED" | "CLOUD_SQL_ZONE_AVAILABILITY_ZONAL" | "CLOUD_SQL_ZONE_AVAILABILITY_REGIONAL";
+export type CloudSqlForMySqlShapeZoneAvailabilityEnum =
+  | "CLOUD_SQL_ZONE_AVAILABILITY_UNSPECIFIED"
+  | "CLOUD_SQL_ZONE_AVAILABILITY_ZONAL"
+  | "CLOUD_SQL_ZONE_AVAILABILITY_REGIONAL";
 export const CloudSqlForMySqlShapeZoneAvailabilityEnum = /*@__PURE__*/ S.String;
 
-export type CloudSqlForMySqlShapeEditionEnum = "CLOUD_SQL_EDITION_UNSPECIFIED" | "CLOUD_SQL_EDITION_ENTERPRISE" | "CLOUD_SQL_EDITION_ENTERPRISE_PLUS";
+export type CloudSqlForMySqlShapeEditionEnum =
+  | "CLOUD_SQL_EDITION_UNSPECIFIED"
+  | "CLOUD_SQL_EDITION_ENTERPRISE"
+  | "CLOUD_SQL_EDITION_ENTERPRISE_PLUS";
 export const CloudSqlForMySqlShapeEditionEnum = /*@__PURE__*/ S.String;
 
-export type CloudSqlForMySqlShapeVersionEnum = "MY_SQL_VERSION_UNSPECIFIED" | "MY_SQL_VERSION_5_6" | "MY_SQL_VERSION_5_7" | "MY_SQL_VERSION_8_0";
+export type CloudSqlForMySqlShapeVersionEnum =
+  | "MY_SQL_VERSION_UNSPECIFIED"
+  | "MY_SQL_VERSION_5_6"
+  | "MY_SQL_VERSION_5_7"
+  | "MY_SQL_VERSION_8_0";
 export const CloudSqlForMySqlShapeVersionEnum = /*@__PURE__*/ S.String;
 
 /** Cloud SQL for MySQL database shape. */
@@ -759,25 +942,42 @@ export interface CloudSqlForMySqlShape {
   version?: CloudSqlForMySqlShapeVersionEnum;
 }
 export const CloudSqlForMySqlShape = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "egressGbPerMonth": S.optional(S.String),
-  "logicalCoreCount": S.optional(S.Number),
-  "memoryMb": S.optional(S.Number),
-  "zoneAvailability": S.optional(CloudSqlForMySqlShapeZoneAvailabilityEnum),
-  "storage": S.optional(ComputeStorageDescriptor),
-  "backupStorageGb": S.optional(S.Number),
-  "edition": S.optional(CloudSqlForMySqlShapeEditionEnum),
-  "version": S.optional(CloudSqlForMySqlShapeVersionEnum),
-}),
-).annotate({ identifier: "CloudSqlForMySqlShape" }) as any as S.Schema<CloudSqlForMySqlShape>;
+  S.Struct({
+    egressGbPerMonth: S.optional(S.String),
+    logicalCoreCount: S.optional(S.Number),
+    memoryMb: S.optional(S.Number),
+    zoneAvailability: S.optional(CloudSqlForMySqlShapeZoneAvailabilityEnum),
+    storage: S.optional(ComputeStorageDescriptor),
+    backupStorageGb: S.optional(S.Number),
+    edition: S.optional(CloudSqlForMySqlShapeEditionEnum),
+    version: S.optional(CloudSqlForMySqlShapeVersionEnum),
+  }),
+).annotate({
+  identifier: "CloudSqlForMySqlShape",
+}) as any as S.Schema<CloudSqlForMySqlShape>;
 
-export type CloudSqlForPostgreSqlShapeZoneAvailabilityEnum = "CLOUD_SQL_ZONE_AVAILABILITY_UNSPECIFIED" | "CLOUD_SQL_ZONE_AVAILABILITY_ZONAL" | "CLOUD_SQL_ZONE_AVAILABILITY_REGIONAL";
-export const CloudSqlForPostgreSqlShapeZoneAvailabilityEnum = /*@__PURE__*/ S.String;
+export type CloudSqlForPostgreSqlShapeZoneAvailabilityEnum =
+  | "CLOUD_SQL_ZONE_AVAILABILITY_UNSPECIFIED"
+  | "CLOUD_SQL_ZONE_AVAILABILITY_ZONAL"
+  | "CLOUD_SQL_ZONE_AVAILABILITY_REGIONAL";
+export const CloudSqlForPostgreSqlShapeZoneAvailabilityEnum =
+  /*@__PURE__*/ S.String;
 
-export type CloudSqlForPostgreSqlShapeEditionEnum = "CLOUD_SQL_EDITION_UNSPECIFIED" | "CLOUD_SQL_EDITION_ENTERPRISE" | "CLOUD_SQL_EDITION_ENTERPRISE_PLUS";
+export type CloudSqlForPostgreSqlShapeEditionEnum =
+  | "CLOUD_SQL_EDITION_UNSPECIFIED"
+  | "CLOUD_SQL_EDITION_ENTERPRISE"
+  | "CLOUD_SQL_EDITION_ENTERPRISE_PLUS";
 export const CloudSqlForPostgreSqlShapeEditionEnum = /*@__PURE__*/ S.String;
 
-export type CloudSqlForPostgreSqlShapeVersionEnum = "POSTGRESQL_VERSION_UNSPECIFIED" | "POSTGRESQL_VERSION_9_6" | "POSTGRESQL_VERSION_10" | "POSTGRESQL_VERSION_11" | "POSTGRESQL_VERSION_12" | "POSTGRESQL_VERSION_13" | "POSTGRESQL_VERSION_14" | "POSTGRESQL_VERSION_15";
+export type CloudSqlForPostgreSqlShapeVersionEnum =
+  | "POSTGRESQL_VERSION_UNSPECIFIED"
+  | "POSTGRESQL_VERSION_9_6"
+  | "POSTGRESQL_VERSION_10"
+  | "POSTGRESQL_VERSION_11"
+  | "POSTGRESQL_VERSION_12"
+  | "POSTGRESQL_VERSION_13"
+  | "POSTGRESQL_VERSION_14"
+  | "POSTGRESQL_VERSION_15";
 export const CloudSqlForPostgreSqlShapeVersionEnum = /*@__PURE__*/ S.String;
 
 /** Cloud SQL for PostgreSQL database shape. */
@@ -800,17 +1000,21 @@ export interface CloudSqlForPostgreSqlShape {
   backupStorageGb?: number;
 }
 export const CloudSqlForPostgreSqlShape = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "logicalCoreCount": S.optional(S.Number),
-  "memoryMb": S.optional(S.Number),
-  "zoneAvailability": S.optional(CloudSqlForPostgreSqlShapeZoneAvailabilityEnum),
-  "egressGbPerMonth": S.optional(S.String),
-  "edition": S.optional(CloudSqlForPostgreSqlShapeEditionEnum),
-  "version": S.optional(CloudSqlForPostgreSqlShapeVersionEnum),
-  "storage": S.optional(ComputeStorageDescriptor),
-  "backupStorageGb": S.optional(S.Number),
-}),
-).annotate({ identifier: "CloudSqlForPostgreSqlShape" }) as any as S.Schema<CloudSqlForPostgreSqlShape>;
+  S.Struct({
+    logicalCoreCount: S.optional(S.Number),
+    memoryMb: S.optional(S.Number),
+    zoneAvailability: S.optional(
+      CloudSqlForPostgreSqlShapeZoneAvailabilityEnum,
+    ),
+    egressGbPerMonth: S.optional(S.String),
+    edition: S.optional(CloudSqlForPostgreSqlShapeEditionEnum),
+    version: S.optional(CloudSqlForPostgreSqlShapeVersionEnum),
+    storage: S.optional(ComputeStorageDescriptor),
+    backupStorageGb: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "CloudSqlForPostgreSqlShape",
+}) as any as S.Schema<CloudSqlForPostgreSqlShape>;
 
 /** Cloud database migration target. */
 export interface CloudDatabaseMigrationTarget {
@@ -822,12 +1026,14 @@ export interface CloudDatabaseMigrationTarget {
   cloudSqlForPostgresqlShape?: CloudSqlForPostgreSqlShape;
 }
 export const CloudDatabaseMigrationTarget = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "cloudSqlShape": S.optional(CloudSqlForSqlServerShape),
-  "cloudSqlForMysqlShape": S.optional(CloudSqlForMySqlShape),
-  "cloudSqlForPostgresqlShape": S.optional(CloudSqlForPostgreSqlShape),
-}),
-).annotate({ identifier: "CloudDatabaseMigrationTarget" }) as any as S.Schema<CloudDatabaseMigrationTarget>;
+  S.Struct({
+    cloudSqlShape: S.optional(CloudSqlForSqlServerShape),
+    cloudSqlForMysqlShape: S.optional(CloudSqlForMySqlShape),
+    cloudSqlForPostgresqlShape: S.optional(CloudSqlForPostgreSqlShape),
+  }),
+).annotate({
+  identifier: "CloudDatabaseMigrationTarget",
+}) as any as S.Schema<CloudDatabaseMigrationTarget>;
 
 /** An insight about potential migrations for an asset. */
 export interface MigrationInsight {
@@ -847,16 +1053,20 @@ export interface MigrationInsight {
   cloudDatabaseTarget?: CloudDatabaseMigrationTarget;
 }
 export const MigrationInsight = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "vmwareEngineTarget": S.optional(VmwareEngineMigrationTarget),
-  "gkeTarget": S.optional(GoogleKubernetesEngineMigrationTarget),
-  "fit": S.optional(FitDescriptor),
-  "issues": S.optional(IssueList),
-  "computeEngineTarget": S.optional(ComputeEngineMigrationTarget),
-  "computeEngineSoleTenantTarget": S.optional(ComputeEngineSoleTenantMigrationTarget),
-  "cloudDatabaseTarget": S.optional(CloudDatabaseMigrationTarget),
-}),
-).annotate({ identifier: "MigrationInsight" }) as any as S.Schema<MigrationInsight>;
+  S.Struct({
+    vmwareEngineTarget: S.optional(VmwareEngineMigrationTarget),
+    gkeTarget: S.optional(GoogleKubernetesEngineMigrationTarget),
+    fit: S.optional(FitDescriptor),
+    issues: S.optional(IssueList),
+    computeEngineTarget: S.optional(ComputeEngineMigrationTarget),
+    computeEngineSoleTenantTarget: S.optional(
+      ComputeEngineSoleTenantMigrationTarget,
+    ),
+    cloudDatabaseTarget: S.optional(CloudDatabaseMigrationTarget),
+  }),
+).annotate({
+  identifier: "MigrationInsight",
+}) as any as S.Schema<MigrationInsight>;
 
 /** A generic insight about an asset. */
 export interface GenericInsight {
@@ -868,11 +1078,11 @@ export interface GenericInsight {
   additionalInformation?: StringList;
 }
 export const GenericInsight = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "messageId": S.optional(S.String),
-  "defaultMessage": S.optional(S.String),
-  "additionalInformation": S.optional(StringList),
-}),
+  S.Struct({
+    messageId: S.optional(S.String),
+    defaultMessage: S.optional(S.String),
+    additionalInformation: S.optional(StringList),
+  }),
 ).annotate({ identifier: "GenericInsight" }) as any as S.Schema<GenericInsight>;
 
 /** An insight about an asset. */
@@ -885,15 +1095,17 @@ export interface Insight {
   genericInsight?: GenericInsight;
 }
 export const Insight = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "softwareInsight": S.optional(SoftwareInsight),
-  "migrationInsight": S.optional(MigrationInsight),
-  "genericInsight": S.optional(GenericInsight),
-}),
+  S.Struct({
+    softwareInsight: S.optional(SoftwareInsight),
+    migrationInsight: S.optional(MigrationInsight),
+    genericInsight: S.optional(GenericInsight),
+  }),
 ).annotate({ identifier: "Insight" }) as any as S.Schema<Insight>;
 
 export type InsightList_ = ReadonlyArray<Insight>;
-export const InsightList_ = /*@__PURE__*/ S.Array(Insight) as any as S.Schema<InsightList_>;
+export const InsightList_ = /*@__PURE__*/ S.Array(
+  Insight,
+) as any as S.Schema<InsightList_>;
 
 /** Message containing insights list. */
 export interface InsightList {
@@ -903,41 +1115,51 @@ export interface InsightList {
   updateTime?: string;
 }
 export const InsightList = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "insights": S.optional(InsightList_),
-  "updateTime": S.optional(S.String),
-}),
+  S.Struct({
+    insights: S.optional(InsightList_),
+    updateTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "InsightList" }) as any as S.Schema<InsightList>;
 
 /** Contains details for an AWS EMR Cluster asset. */
 export interface AwsEmrClusterDetails {}
 export const AwsEmrClusterDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "AwsEmrClusterDetails" }) as any as S.Schema<AwsEmrClusterDetails>;
+  S.Struct({}),
+).annotate({
+  identifier: "AwsEmrClusterDetails",
+}) as any as S.Schema<AwsEmrClusterDetails>;
 
 /** Details of an AWS ECS cluster. */
 export interface AwsEcsClusterDetails {}
 export const AwsEcsClusterDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "AwsEcsClusterDetails" }) as any as S.Schema<AwsEcsClusterDetails>;
+  S.Struct({}),
+).annotate({
+  identifier: "AwsEcsClusterDetails",
+}) as any as S.Schema<AwsEcsClusterDetails>;
 
 /** Asset information specific for AWS ECR Repository. */
 export interface AwsEcrRepositoryDetails {}
 export const AwsEcrRepositoryDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "AwsEcrRepositoryDetails" }) as any as S.Schema<AwsEcrRepositoryDetails>;
+  S.Struct({}),
+).annotate({
+  identifier: "AwsEcrRepositoryDetails",
+}) as any as S.Schema<AwsEcrRepositoryDetails>;
 
 /** Asset information specific for AWS Internet Gateways. */
 export interface AwsInternetGatewayDetails {}
 export const AwsInternetGatewayDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "AwsInternetGatewayDetails" }) as any as S.Schema<AwsInternetGatewayDetails>;
+  S.Struct({}),
+).annotate({
+  identifier: "AwsInternetGatewayDetails",
+}) as any as S.Schema<AwsInternetGatewayDetails>;
 
 /** Asset information specific for AWS AppSync GraphQL APIs. */
 export interface AwsAppSyncGraphqlApiDetails {}
 export const AwsAppSyncGraphqlApiDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "AwsAppSyncGraphqlApiDetails" }) as any as S.Schema<AwsAppSyncGraphqlApiDetails>;
+  S.Struct({}),
+).annotate({
+  identifier: "AwsAppSyncGraphqlApiDetails",
+}) as any as S.Schema<AwsAppSyncGraphqlApiDetails>;
 
 /** Specific details for a SqlServer database. */
 export interface SqlServerSchemaDetails {
@@ -945,10 +1167,12 @@ export interface SqlServerSchemaDetails {
   clrObjectCount?: number;
 }
 export const SqlServerSchemaDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "clrObjectCount": S.optional(S.Number),
-}),
-).annotate({ identifier: "SqlServerSchemaDetails" }) as any as S.Schema<SqlServerSchemaDetails>;
+  S.Struct({
+    clrObjectCount: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "SqlServerSchemaDetails",
+}) as any as S.Schema<SqlServerSchemaDetails>;
 
 /** PostgreSql extension. */
 export interface PostgreSqlExtension {
@@ -958,14 +1182,18 @@ export interface PostgreSqlExtension {
   version?: string;
 }
 export const PostgreSqlExtension = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "extension": S.optional(S.String),
-  "version": S.optional(S.String),
-}),
-).annotate({ identifier: "PostgreSqlExtension" }) as any as S.Schema<PostgreSqlExtension>;
+  S.Struct({
+    extension: S.optional(S.String),
+    version: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PostgreSqlExtension",
+}) as any as S.Schema<PostgreSqlExtension>;
 
 export type PostgreSqlExtensionList = ReadonlyArray<PostgreSqlExtension>;
-export const PostgreSqlExtensionList = /*@__PURE__*/ S.Array(PostgreSqlExtension) as any as S.Schema<PostgreSqlExtensionList>;
+export const PostgreSqlExtensionList = /*@__PURE__*/ S.Array(
+  PostgreSqlExtension,
+) as any as S.Schema<PostgreSqlExtensionList>;
 
 /** Specific details for a PostgreSql schema. */
 export interface PostgreSqlSchemaDetails {
@@ -975,13 +1203,22 @@ export interface PostgreSqlSchemaDetails {
   postgresqlExtensions?: PostgreSqlExtensionList;
 }
 export const PostgreSqlSchemaDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "foreignTablesCount": S.optional(S.Number),
-  "postgresqlExtensions": S.optional(PostgreSqlExtensionList),
-}),
-).annotate({ identifier: "PostgreSqlSchemaDetails" }) as any as S.Schema<PostgreSqlSchemaDetails>;
+  S.Struct({
+    foreignTablesCount: S.optional(S.Number),
+    postgresqlExtensions: S.optional(PostgreSqlExtensionList),
+  }),
+).annotate({
+  identifier: "PostgreSqlSchemaDetails",
+}) as any as S.Schema<PostgreSqlSchemaDetails>;
 
-export type DatabaseObjectsCategoryEnum = "CATEGORY_UNSPECIFIED" | "TABLE" | "INDEX" | "CONSTRAINTS" | "VIEWS" | "SOURCE_CODE" | "OTHER";
+export type DatabaseObjectsCategoryEnum =
+  | "CATEGORY_UNSPECIFIED"
+  | "TABLE"
+  | "INDEX"
+  | "CONSTRAINTS"
+  | "VIEWS"
+  | "SOURCE_CODE"
+  | "OTHER";
 export const DatabaseObjectsCategoryEnum = /*@__PURE__*/ S.String;
 
 /** Details of a group of database objects. */
@@ -992,16 +1229,32 @@ export interface DatabaseObjects {
   count?: string;
 }
 export const DatabaseObjects = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "category": S.optional(DatabaseObjectsCategoryEnum),
-  "count": S.optional(S.String),
-}),
-).annotate({ identifier: "DatabaseObjects" }) as any as S.Schema<DatabaseObjects>;
+  S.Struct({
+    category: S.optional(DatabaseObjectsCategoryEnum),
+    count: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DatabaseObjects",
+}) as any as S.Schema<DatabaseObjects>;
 
 export type DatabaseObjectsList = ReadonlyArray<DatabaseObjects>;
-export const DatabaseObjectsList = /*@__PURE__*/ S.Array(DatabaseObjects) as any as S.Schema<DatabaseObjectsList>;
+export const DatabaseObjectsList = /*@__PURE__*/ S.Array(
+  DatabaseObjects,
+) as any as S.Schema<DatabaseObjectsList>;
 
-export type MySqlStorageEngineDetailsEngineEnum = "ENGINE_UNSPECIFIED" | "INNODB" | "MYISAM" | "MEMORY" | "CSV" | "ARCHIVE" | "BLACKHOLE" | "NDB" | "MERGE" | "FEDERATED" | "EXAMPLE" | "OTHER";
+export type MySqlStorageEngineDetailsEngineEnum =
+  | "ENGINE_UNSPECIFIED"
+  | "INNODB"
+  | "MYISAM"
+  | "MEMORY"
+  | "CSV"
+  | "ARCHIVE"
+  | "BLACKHOLE"
+  | "NDB"
+  | "MERGE"
+  | "FEDERATED"
+  | "EXAMPLE"
+  | "OTHER";
 export const MySqlStorageEngineDetailsEngineEnum = /*@__PURE__*/ S.String;
 
 /** Mysql storage engine tables. */
@@ -1014,15 +1267,20 @@ export interface MySqlStorageEngineDetails {
   encryptedTableCount?: number;
 }
 export const MySqlStorageEngineDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "engine": S.optional(MySqlStorageEngineDetailsEngineEnum),
-  "tableCount": S.optional(S.Number),
-  "encryptedTableCount": S.optional(S.Number),
-}),
-).annotate({ identifier: "MySqlStorageEngineDetails" }) as any as S.Schema<MySqlStorageEngineDetails>;
+  S.Struct({
+    engine: S.optional(MySqlStorageEngineDetailsEngineEnum),
+    tableCount: S.optional(S.Number),
+    encryptedTableCount: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "MySqlStorageEngineDetails",
+}) as any as S.Schema<MySqlStorageEngineDetails>;
 
-export type MySqlStorageEngineDetailsList = ReadonlyArray<MySqlStorageEngineDetails>;
-export const MySqlStorageEngineDetailsList = /*@__PURE__*/ S.Array(MySqlStorageEngineDetails) as any as S.Schema<MySqlStorageEngineDetailsList>;
+export type MySqlStorageEngineDetailsList =
+  ReadonlyArray<MySqlStorageEngineDetails>;
+export const MySqlStorageEngineDetailsList = /*@__PURE__*/ S.Array(
+  MySqlStorageEngineDetails,
+) as any as S.Schema<MySqlStorageEngineDetailsList>;
 
 /** Specific details for a Mysql database. */
 export interface MySqlSchemaDetails {
@@ -1030,10 +1288,12 @@ export interface MySqlSchemaDetails {
   storageEngines?: MySqlStorageEngineDetailsList;
 }
 export const MySqlSchemaDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "storageEngines": S.optional(MySqlStorageEngineDetailsList),
-}),
-).annotate({ identifier: "MySqlSchemaDetails" }) as any as S.Schema<MySqlSchemaDetails>;
+  S.Struct({
+    storageEngines: S.optional(MySqlStorageEngineDetailsList),
+  }),
+).annotate({
+  identifier: "MySqlSchemaDetails",
+}) as any as S.Schema<MySqlSchemaDetails>;
 
 /** Details of a database schema. */
 export interface DatabaseSchema {
@@ -1051,18 +1311,20 @@ export interface DatabaseSchema {
   mysql?: MySqlSchemaDetails;
 }
 export const DatabaseSchema = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "schemaName": S.optional(S.String),
-  "sqlServer": S.optional(SqlServerSchemaDetails),
-  "postgresql": S.optional(PostgreSqlSchemaDetails),
-  "objects": S.optional(DatabaseObjectsList),
-  "tablesSizeBytes": S.optional(S.String),
-  "mysql": S.optional(MySqlSchemaDetails),
-}),
+  S.Struct({
+    schemaName: S.optional(S.String),
+    sqlServer: S.optional(SqlServerSchemaDetails),
+    postgresql: S.optional(PostgreSqlSchemaDetails),
+    objects: S.optional(DatabaseObjectsList),
+    tablesSizeBytes: S.optional(S.String),
+    mysql: S.optional(MySqlSchemaDetails),
+  }),
 ).annotate({ identifier: "DatabaseSchema" }) as any as S.Schema<DatabaseSchema>;
 
 export type DatabaseSchemaList = ReadonlyArray<DatabaseSchema>;
-export const DatabaseSchemaList = /*@__PURE__*/ S.Array(DatabaseSchema) as any as S.Schema<DatabaseSchemaList>;
+export const DatabaseSchemaList = /*@__PURE__*/ S.Array(
+  DatabaseSchema,
+) as any as S.Schema<DatabaseSchemaList>;
 
 /** The identifiers of the parent database deployment. */
 export interface DatabaseDetailsParentDatabaseDeployment {
@@ -1071,12 +1333,15 @@ export interface DatabaseDetailsParentDatabaseDeployment {
   /** The parent database deployment generated ID. */
   generatedId?: string;
 }
-export const DatabaseDetailsParentDatabaseDeployment = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "manualUniqueId": S.optional(S.String),
-  "generatedId": S.optional(S.String),
-}),
-).annotate({ identifier: "DatabaseDetailsParentDatabaseDeployment" }) as any as S.Schema<DatabaseDetailsParentDatabaseDeployment>;
+export const DatabaseDetailsParentDatabaseDeployment = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      manualUniqueId: S.optional(S.String),
+      generatedId: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "DatabaseDetailsParentDatabaseDeployment",
+}) as any as S.Schema<DatabaseDetailsParentDatabaseDeployment>;
 
 /** Details of a logical database. */
 export interface DatabaseDetails {
@@ -1090,31 +1355,41 @@ export interface DatabaseDetails {
   allocatedStorageBytes?: string;
 }
 export const DatabaseDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "schemas": S.optional(DatabaseSchemaList),
-  "databaseName": S.optional(S.String),
-  "parentDatabaseDeployment": S.optional(DatabaseDetailsParentDatabaseDeployment),
-  "allocatedStorageBytes": S.optional(S.String),
-}),
-).annotate({ identifier: "DatabaseDetails" }) as any as S.Schema<DatabaseDetails>;
+  S.Struct({
+    schemas: S.optional(DatabaseSchemaList),
+    databaseName: S.optional(S.String),
+    parentDatabaseDeployment: S.optional(
+      DatabaseDetailsParentDatabaseDeployment,
+    ),
+    allocatedStorageBytes: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DatabaseDetails",
+}) as any as S.Schema<DatabaseDetails>;
 
 /** Asset information specific for AWS Elastic Network Interfaces. */
 export interface AwsElasticNetworkInterfaceDetails {}
 export const AwsElasticNetworkInterfaceDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "AwsElasticNetworkInterfaceDetails" }) as any as S.Schema<AwsElasticNetworkInterfaceDetails>;
+  S.Struct({}),
+).annotate({
+  identifier: "AwsElasticNetworkInterfaceDetails",
+}) as any as S.Schema<AwsElasticNetworkInterfaceDetails>;
 
 /** Contains details for an AWS Athena Work Group asset. */
 export interface AwsAthenaWorkGroupDetails {}
 export const AwsAthenaWorkGroupDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "AwsAthenaWorkGroupDetails" }) as any as S.Schema<AwsAthenaWorkGroupDetails>;
+  S.Struct({}),
+).annotate({
+  identifier: "AwsAthenaWorkGroupDetails",
+}) as any as S.Schema<AwsAthenaWorkGroupDetails>;
 
 /** Contains details for an AWS Glue Job asset. */
 export interface AwsGlueJobDetails {}
 export const AwsGlueJobDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "AwsGlueJobDetails" }) as any as S.Schema<AwsGlueJobDetails>;
+  S.Struct({}),
+).annotate({
+  identifier: "AwsGlueJobDetails",
+}) as any as S.Schema<AwsGlueJobDetails>;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface Migrationcenter_Date {
@@ -1126,12 +1401,14 @@ export interface Migrationcenter_Date {
   month?: number;
 }
 export const Migrationcenter_Date = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "day": S.optional(S.Number),
-  "year": S.optional(S.Number),
-  "month": S.optional(S.Number),
-}),
-).annotate({ identifier: "Migrationcenter_Date" }) as any as S.Schema<Migrationcenter_Date>;
+  S.Struct({
+    day: S.optional(S.Number),
+    year: S.optional(S.Number),
+    month: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "Migrationcenter_Date",
+}) as any as S.Schema<Migrationcenter_Date>;
 
 /** Statistical aggregation of samples for a single resource usage. */
 export interface DailyResourceUsageAggregationStats {
@@ -1145,13 +1422,15 @@ export interface DailyResourceUsageAggregationStats {
   ninteyFifthPercentile?: number;
 }
 export const DailyResourceUsageAggregationStats = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "peak": S.optional(S.Number),
-  "average": S.optional(S.Number),
-  "median": S.optional(S.Number),
-  "ninteyFifthPercentile": S.optional(S.Number),
-}),
-).annotate({ identifier: "DailyResourceUsageAggregationStats" }) as any as S.Schema<DailyResourceUsageAggregationStats>;
+  S.Struct({
+    peak: S.optional(S.Number),
+    average: S.optional(S.Number),
+    median: S.optional(S.Number),
+    ninteyFifthPercentile: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "DailyResourceUsageAggregationStats",
+}) as any as S.Schema<DailyResourceUsageAggregationStats>;
 
 /** Statistical aggregation of memory usage. */
 export interface DailyResourceUsageAggregationMemory {
@@ -1159,10 +1438,12 @@ export interface DailyResourceUsageAggregationMemory {
   utilizationPercentage?: DailyResourceUsageAggregationStats;
 }
 export const DailyResourceUsageAggregationMemory = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "utilizationPercentage": S.optional(DailyResourceUsageAggregationStats),
-}),
-).annotate({ identifier: "DailyResourceUsageAggregationMemory" }) as any as S.Schema<DailyResourceUsageAggregationMemory>;
+  S.Struct({
+    utilizationPercentage: S.optional(DailyResourceUsageAggregationStats),
+  }),
+).annotate({
+  identifier: "DailyResourceUsageAggregationMemory",
+}) as any as S.Schema<DailyResourceUsageAggregationMemory>;
 
 /** Statistical aggregation of disk usage. */
 export interface DailyResourceUsageAggregationDisk {
@@ -1174,12 +1455,14 @@ export interface DailyResourceUsageAggregationDisk {
   writeIops?: DailyResourceUsageAggregationStats;
 }
 export const DailyResourceUsageAggregationDisk = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "iops": S.optional(DailyResourceUsageAggregationStats),
-  "readIops": S.optional(DailyResourceUsageAggregationStats),
-  "writeIops": S.optional(DailyResourceUsageAggregationStats),
-}),
-).annotate({ identifier: "DailyResourceUsageAggregationDisk" }) as any as S.Schema<DailyResourceUsageAggregationDisk>;
+  S.Struct({
+    iops: S.optional(DailyResourceUsageAggregationStats),
+    readIops: S.optional(DailyResourceUsageAggregationStats),
+    writeIops: S.optional(DailyResourceUsageAggregationStats),
+  }),
+).annotate({
+  identifier: "DailyResourceUsageAggregationDisk",
+}) as any as S.Schema<DailyResourceUsageAggregationDisk>;
 
 /** Statistical aggregation of CPU usage. */
 export interface DailyResourceUsageAggregationCPU {
@@ -1187,10 +1470,12 @@ export interface DailyResourceUsageAggregationCPU {
   utilizationPercentage?: DailyResourceUsageAggregationStats;
 }
 export const DailyResourceUsageAggregationCPU = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "utilizationPercentage": S.optional(DailyResourceUsageAggregationStats),
-}),
-).annotate({ identifier: "DailyResourceUsageAggregationCPU" }) as any as S.Schema<DailyResourceUsageAggregationCPU>;
+  S.Struct({
+    utilizationPercentage: S.optional(DailyResourceUsageAggregationStats),
+  }),
+).annotate({
+  identifier: "DailyResourceUsageAggregationCPU",
+}) as any as S.Schema<DailyResourceUsageAggregationCPU>;
 
 /** Statistical aggregation of network usage. */
 export interface DailyResourceUsageAggregationNetwork {
@@ -1199,12 +1484,15 @@ export interface DailyResourceUsageAggregationNetwork {
   /** Network egress in B/s. */
   egressBps?: DailyResourceUsageAggregationStats;
 }
-export const DailyResourceUsageAggregationNetwork = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "ingressBps": S.optional(DailyResourceUsageAggregationStats),
-  "egressBps": S.optional(DailyResourceUsageAggregationStats),
-}),
-).annotate({ identifier: "DailyResourceUsageAggregationNetwork" }) as any as S.Schema<DailyResourceUsageAggregationNetwork>;
+export const DailyResourceUsageAggregationNetwork = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      ingressBps: S.optional(DailyResourceUsageAggregationStats),
+      egressBps: S.optional(DailyResourceUsageAggregationStats),
+    }),
+).annotate({
+  identifier: "DailyResourceUsageAggregationNetwork",
+}) as any as S.Schema<DailyResourceUsageAggregationNetwork>;
 
 /** Usage data aggregation for a single day. */
 export interface DailyResourceUsageAggregation {
@@ -1220,17 +1508,22 @@ export interface DailyResourceUsageAggregation {
   network?: DailyResourceUsageAggregationNetwork;
 }
 export const DailyResourceUsageAggregation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "date": S.optional(Migrationcenter_Date),
-  "memory": S.optional(DailyResourceUsageAggregationMemory),
-  "disk": S.optional(DailyResourceUsageAggregationDisk),
-  "cpu": S.optional(DailyResourceUsageAggregationCPU),
-  "network": S.optional(DailyResourceUsageAggregationNetwork),
-}),
-).annotate({ identifier: "DailyResourceUsageAggregation" }) as any as S.Schema<DailyResourceUsageAggregation>;
+  S.Struct({
+    date: S.optional(Migrationcenter_Date),
+    memory: S.optional(DailyResourceUsageAggregationMemory),
+    disk: S.optional(DailyResourceUsageAggregationDisk),
+    cpu: S.optional(DailyResourceUsageAggregationCPU),
+    network: S.optional(DailyResourceUsageAggregationNetwork),
+  }),
+).annotate({
+  identifier: "DailyResourceUsageAggregation",
+}) as any as S.Schema<DailyResourceUsageAggregation>;
 
-export type DailyResourceUsageAggregationList = ReadonlyArray<DailyResourceUsageAggregation>;
-export const DailyResourceUsageAggregationList = /*@__PURE__*/ S.Array(DailyResourceUsageAggregation) as any as S.Schema<DailyResourceUsageAggregationList>;
+export type DailyResourceUsageAggregationList =
+  ReadonlyArray<DailyResourceUsageAggregation>;
+export const DailyResourceUsageAggregationList = /*@__PURE__*/ S.Array(
+  DailyResourceUsageAggregation,
+) as any as S.Schema<DailyResourceUsageAggregationList>;
 
 /** Performance data for an asset. */
 export interface AssetPerformanceData {
@@ -1238,60 +1531,83 @@ export interface AssetPerformanceData {
   dailyResourceUsageAggregations?: DailyResourceUsageAggregationList;
 }
 export const AssetPerformanceData = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dailyResourceUsageAggregations": S.optional(DailyResourceUsageAggregationList),
-}),
-).annotate({ identifier: "AssetPerformanceData" }) as any as S.Schema<AssetPerformanceData>;
+  S.Struct({
+    dailyResourceUsageAggregations: S.optional(
+      DailyResourceUsageAggregationList,
+    ),
+  }),
+).annotate({
+  identifier: "AssetPerformanceData",
+}) as any as S.Schema<AssetPerformanceData>;
 
 /** Details of an AWS Route 53 Hosted Zone. */
 export interface AwsRoute53HostedZoneDetails {}
 export const AwsRoute53HostedZoneDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "AwsRoute53HostedZoneDetails" }) as any as S.Schema<AwsRoute53HostedZoneDetails>;
+  S.Struct({}),
+).annotate({
+  identifier: "AwsRoute53HostedZoneDetails",
+}) as any as S.Schema<AwsRoute53HostedZoneDetails>;
 
 /** Contains details for an AWS Firehose asset. */
 export interface AwsFirehoseDetails {}
 export const AwsFirehoseDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "AwsFirehoseDetails" }) as any as S.Schema<AwsFirehoseDetails>;
+  S.Struct({}),
+).annotate({
+  identifier: "AwsFirehoseDetails",
+}) as any as S.Schema<AwsFirehoseDetails>;
 
 /** Details of an AWS DynamoDB table. */
 export interface AwsDynamoDBTableDetails {}
 export const AwsDynamoDBTableDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "AwsDynamoDBTableDetails" }) as any as S.Schema<AwsDynamoDBTableDetails>;
+  S.Struct({}),
+).annotate({
+  identifier: "AwsDynamoDBTableDetails",
+}) as any as S.Schema<AwsDynamoDBTableDetails>;
 
 /** Asset information specific for AWS Elastic IP Addresses. */
 export interface AwsElasticIpAddressDetails {}
 export const AwsElasticIpAddressDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "AwsElasticIpAddressDetails" }) as any as S.Schema<AwsElasticIpAddressDetails>;
+  S.Struct({}),
+).annotate({
+  identifier: "AwsElasticIpAddressDetails",
+}) as any as S.Schema<AwsElasticIpAddressDetails>;
 
 /** Asset information specific for AWS EKS clusters. */
 export interface AwsEksClusterDetails {}
 export const AwsEksClusterDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "AwsEksClusterDetails" }) as any as S.Schema<AwsEksClusterDetails>;
+  S.Struct({}),
+).annotate({
+  identifier: "AwsEksClusterDetails",
+}) as any as S.Schema<AwsEksClusterDetails>;
 
 /** Details of an AWS Redshift cluster. */
 export interface AwsRedshiftDetails {}
 export const AwsRedshiftDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "AwsRedshiftDetails" }) as any as S.Schema<AwsRedshiftDetails>;
+  S.Struct({}),
+).annotate({
+  identifier: "AwsRedshiftDetails",
+}) as any as S.Schema<AwsRedshiftDetails>;
 
 /** Details of an AWS EFS file system. */
 export interface AwsEfsFileSystemDetails {}
 export const AwsEfsFileSystemDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "AwsEfsFileSystemDetails" }) as any as S.Schema<AwsEfsFileSystemDetails>;
+  S.Struct({}),
+).annotate({
+  identifier: "AwsEfsFileSystemDetails",
+}) as any as S.Schema<AwsEfsFileSystemDetails>;
 
 /** Details of an AWS NAT Gateway. */
 export interface AwsNatGatewayDetails {}
 export const AwsNatGatewayDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "AwsNatGatewayDetails" }) as any as S.Schema<AwsNatGatewayDetails>;
+  S.Struct({}),
+).annotate({
+  identifier: "AwsNatGatewayDetails",
+}) as any as S.Schema<AwsNatGatewayDetails>;
 
-export type NetworkAddressAssignmentEnum = "ADDRESS_ASSIGNMENT_UNSPECIFIED" | "ADDRESS_ASSIGNMENT_STATIC" | "ADDRESS_ASSIGNMENT_DHCP";
+export type NetworkAddressAssignmentEnum =
+  | "ADDRESS_ASSIGNMENT_UNSPECIFIED"
+  | "ADDRESS_ASSIGNMENT_STATIC"
+  | "ADDRESS_ASSIGNMENT_DHCP";
 export const NetworkAddressAssignmentEnum = /*@__PURE__*/ S.String;
 
 /** Details of network address. */
@@ -1308,17 +1624,19 @@ export interface NetworkAddress {
   subnetMask?: string;
 }
 export const NetworkAddress = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "assignment": S.optional(NetworkAddressAssignmentEnum),
-  "fqdn": S.optional(S.String),
-  "ipAddress": S.optional(S.String),
-  "bcast": S.optional(S.String),
-  "subnetMask": S.optional(S.String),
-}),
+  S.Struct({
+    assignment: S.optional(NetworkAddressAssignmentEnum),
+    fqdn: S.optional(S.String),
+    ipAddress: S.optional(S.String),
+    bcast: S.optional(S.String),
+    subnetMask: S.optional(S.String),
+  }),
 ).annotate({ identifier: "NetworkAddress" }) as any as S.Schema<NetworkAddress>;
 
 export type NetworkAddressList_ = ReadonlyArray<NetworkAddress>;
-export const NetworkAddressList_ = /*@__PURE__*/ S.Array(NetworkAddress) as any as S.Schema<NetworkAddressList_>;
+export const NetworkAddressList_ = /*@__PURE__*/ S.Array(
+  NetworkAddress,
+) as any as S.Schema<NetworkAddressList_>;
 
 /** List of allocated/assigned network addresses. */
 export interface NetworkAddressList {
@@ -1328,11 +1646,13 @@ export interface NetworkAddressList {
   entries?: NetworkAddressList_;
 }
 export const NetworkAddressList = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "addresses": S.optional(NetworkAddressList_),
-  "entries": S.optional(NetworkAddressList_),
-}),
-).annotate({ identifier: "NetworkAddressList" }) as any as S.Schema<NetworkAddressList>;
+  S.Struct({
+    addresses: S.optional(NetworkAddressList_),
+    entries: S.optional(NetworkAddressList_),
+  }),
+).annotate({
+  identifier: "NetworkAddressList",
+}) as any as S.Schema<NetworkAddressList>;
 
 /** Details of network adapter. */
 export interface NetworkAdapterDetails {
@@ -1344,15 +1664,19 @@ export interface NetworkAdapterDetails {
   adapterType?: string;
 }
 export const NetworkAdapterDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "addresses": S.optional(NetworkAddressList),
-  "macAddress": S.optional(S.String),
-  "adapterType": S.optional(S.String),
-}),
-).annotate({ identifier: "NetworkAdapterDetails" }) as any as S.Schema<NetworkAdapterDetails>;
+  S.Struct({
+    addresses: S.optional(NetworkAddressList),
+    macAddress: S.optional(S.String),
+    adapterType: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "NetworkAdapterDetails",
+}) as any as S.Schema<NetworkAdapterDetails>;
 
 export type NetworkAdapterDetailsList = ReadonlyArray<NetworkAdapterDetails>;
-export const NetworkAdapterDetailsList = /*@__PURE__*/ S.Array(NetworkAdapterDetails) as any as S.Schema<NetworkAdapterDetailsList>;
+export const NetworkAdapterDetailsList = /*@__PURE__*/ S.Array(
+  NetworkAdapterDetails,
+) as any as S.Schema<NetworkAdapterDetailsList>;
 
 /** List of network adapters. */
 export interface NetworkAdapterList {
@@ -1362,11 +1686,13 @@ export interface NetworkAdapterList {
   entries?: NetworkAdapterDetailsList;
 }
 export const NetworkAdapterList = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "networkAdapters": S.optional(NetworkAdapterDetailsList),
-  "entries": S.optional(NetworkAdapterDetailsList),
-}),
-).annotate({ identifier: "NetworkAdapterList" }) as any as S.Schema<NetworkAdapterList>;
+  S.Struct({
+    networkAdapters: S.optional(NetworkAdapterDetailsList),
+    entries: S.optional(NetworkAdapterDetailsList),
+  }),
+).annotate({
+  identifier: "NetworkAdapterList",
+}) as any as S.Schema<NetworkAdapterList>;
 
 /** Details of network adapters and settings. */
 export interface MachineNetworkDetails {
@@ -1382,14 +1708,16 @@ export interface MachineNetworkDetails {
   networkAdapters?: NetworkAdapterList;
 }
 export const MachineNetworkDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "publicIpAddress": S.optional(S.String),
-  "primaryMacAddress": S.optional(S.String),
-  "primaryIpAddress": S.optional(S.String),
-  "defaultGateway": S.optional(S.String),
-  "networkAdapters": S.optional(NetworkAdapterList),
-}),
-).annotate({ identifier: "MachineNetworkDetails" }) as any as S.Schema<MachineNetworkDetails>;
+  S.Struct({
+    publicIpAddress: S.optional(S.String),
+    primaryMacAddress: S.optional(S.String),
+    primaryIpAddress: S.optional(S.String),
+    defaultGateway: S.optional(S.String),
+    networkAdapters: S.optional(NetworkAdapterList),
+  }),
+).annotate({
+  identifier: "MachineNetworkDetails",
+}) as any as S.Schema<MachineNetworkDetails>;
 
 /** Disk Partition details. */
 export interface DiskPartition {
@@ -1409,19 +1737,21 @@ export interface DiskPartition {
   uuid?: string;
 }
 export const DiskPartition = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fileSystem": S.optional(S.String),
-  "capacityBytes": S.optional(S.String),
-  "type": S.optional(S.String),
-  "freeBytes": S.optional(S.String),
-  "subPartitions": S.optional(S.suspend(() => DiskPartitionList)),
-  "mountPoint": S.optional(S.String),
-  "uuid": S.optional(S.String),
-}),
+  S.Struct({
+    fileSystem: S.optional(S.String),
+    capacityBytes: S.optional(S.String),
+    type: S.optional(S.String),
+    freeBytes: S.optional(S.String),
+    subPartitions: S.optional(S.suspend(() => DiskPartitionList)),
+    mountPoint: S.optional(S.String),
+    uuid: S.optional(S.String),
+  }),
 ).annotate({ identifier: "DiskPartition" }) as any as S.Schema<DiskPartition>;
 
 export type DiskPartitionList_ = ReadonlyArray<DiskPartition>;
-export const DiskPartitionList_ = /*@__PURE__*/ S.Array(DiskPartition) as any as S.Schema<DiskPartitionList_>;
+export const DiskPartitionList_ = /*@__PURE__*/ S.Array(
+  DiskPartition,
+) as any as S.Schema<DiskPartitionList_>;
 
 /** Disk partition list. */
 export interface DiskPartitionList {
@@ -1429,10 +1759,12 @@ export interface DiskPartitionList {
   entries?: DiskPartitionList_;
 }
 export const DiskPartitionList = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "entries": S.optional(DiskPartitionList_),
-}),
-).annotate({ identifier: "DiskPartitionList" }) as any as S.Schema<DiskPartitionList>;
+  S.Struct({
+    entries: S.optional(DiskPartitionList_),
+  }),
+).annotate({
+  identifier: "DiskPartitionList",
+}) as any as S.Schema<DiskPartitionList>;
 
 /** Disk partition details. */
 export interface DiskPartitionDetails {
@@ -1444,14 +1776,19 @@ export interface DiskPartitionDetails {
   partitions?: DiskPartitionList;
 }
 export const DiskPartitionDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "totalCapacityBytes": S.optional(S.String),
-  "freeSpaceBytes": S.optional(S.String),
-  "partitions": S.optional(DiskPartitionList),
-}),
-).annotate({ identifier: "DiskPartitionDetails" }) as any as S.Schema<DiskPartitionDetails>;
+  S.Struct({
+    totalCapacityBytes: S.optional(S.String),
+    freeSpaceBytes: S.optional(S.String),
+    partitions: S.optional(DiskPartitionList),
+  }),
+).annotate({
+  identifier: "DiskPartitionDetails",
+}) as any as S.Schema<DiskPartitionDetails>;
 
-export type AwsEc2PlatformDetailsHyperthreadingEnum = "HYPERTHREADING_STATUS_UNSPECIFIED" | "HYPERTHREADING_STATUS_DISABLED" | "HYPERTHREADING_STATUS_ENABLED";
+export type AwsEc2PlatformDetailsHyperthreadingEnum =
+  | "HYPERTHREADING_STATUS_UNSPECIFIED"
+  | "HYPERTHREADING_STATUS_DISABLED"
+  | "HYPERTHREADING_STATUS_ENABLED";
 export const AwsEc2PlatformDetailsHyperthreadingEnum = /*@__PURE__*/ S.String;
 
 /** AWS EC2 specific details. */
@@ -1464,14 +1801,19 @@ export interface AwsEc2PlatformDetails {
   hyperthreading?: AwsEc2PlatformDetailsHyperthreadingEnum;
 }
 export const AwsEc2PlatformDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "machineTypeLabel": S.optional(S.String),
-  "location": S.optional(S.String),
-  "hyperthreading": S.optional(AwsEc2PlatformDetailsHyperthreadingEnum),
-}),
-).annotate({ identifier: "AwsEc2PlatformDetails" }) as any as S.Schema<AwsEc2PlatformDetails>;
+  S.Struct({
+    machineTypeLabel: S.optional(S.String),
+    location: S.optional(S.String),
+    hyperthreading: S.optional(AwsEc2PlatformDetailsHyperthreadingEnum),
+  }),
+).annotate({
+  identifier: "AwsEc2PlatformDetails",
+}) as any as S.Schema<AwsEc2PlatformDetails>;
 
-export type PhysicalPlatformDetailsHyperthreadingEnum = "HYPERTHREADING_STATUS_UNSPECIFIED" | "HYPERTHREADING_STATUS_DISABLED" | "HYPERTHREADING_STATUS_ENABLED";
+export type PhysicalPlatformDetailsHyperthreadingEnum =
+  | "HYPERTHREADING_STATUS_UNSPECIFIED"
+  | "HYPERTHREADING_STATUS_DISABLED"
+  | "HYPERTHREADING_STATUS_ENABLED";
 export const PhysicalPlatformDetailsHyperthreadingEnum = /*@__PURE__*/ S.String;
 
 /** Platform specific details for Physical Machines. */
@@ -1482,14 +1824,20 @@ export interface PhysicalPlatformDetails {
   location?: string;
 }
 export const PhysicalPlatformDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "hyperthreading": S.optional(PhysicalPlatformDetailsHyperthreadingEnum),
-  "location": S.optional(S.String),
-}),
-).annotate({ identifier: "PhysicalPlatformDetails" }) as any as S.Schema<PhysicalPlatformDetails>;
+  S.Struct({
+    hyperthreading: S.optional(PhysicalPlatformDetailsHyperthreadingEnum),
+    location: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PhysicalPlatformDetails",
+}) as any as S.Schema<PhysicalPlatformDetails>;
 
-export type VmwarePlatformDetailsEsxHyperthreadingEnum = "HYPERTHREADING_STATUS_UNSPECIFIED" | "HYPERTHREADING_STATUS_DISABLED" | "HYPERTHREADING_STATUS_ENABLED";
-export const VmwarePlatformDetailsEsxHyperthreadingEnum = /*@__PURE__*/ S.String;
+export type VmwarePlatformDetailsEsxHyperthreadingEnum =
+  | "HYPERTHREADING_STATUS_UNSPECIFIED"
+  | "HYPERTHREADING_STATUS_DISABLED"
+  | "HYPERTHREADING_STATUS_ENABLED";
+export const VmwarePlatformDetailsEsxHyperthreadingEnum =
+  /*@__PURE__*/ S.String;
 
 /** VMware specific details. */
 export interface VmwarePlatformDetails {
@@ -1509,18 +1857,23 @@ export interface VmwarePlatformDetails {
   esxHyperthreading?: VmwarePlatformDetailsEsxHyperthreadingEnum;
 }
 export const VmwarePlatformDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "vcenterVersion": S.optional(S.String),
-  "osid": S.optional(S.String),
-  "vcenterFolder": S.optional(S.String),
-  "vcenterUri": S.optional(S.String),
-  "esxVersion": S.optional(S.String),
-  "vcenterVmId": S.optional(S.String),
-  "esxHyperthreading": S.optional(VmwarePlatformDetailsEsxHyperthreadingEnum),
-}),
-).annotate({ identifier: "VmwarePlatformDetails" }) as any as S.Schema<VmwarePlatformDetails>;
+  S.Struct({
+    vcenterVersion: S.optional(S.String),
+    osid: S.optional(S.String),
+    vcenterFolder: S.optional(S.String),
+    vcenterUri: S.optional(S.String),
+    esxVersion: S.optional(S.String),
+    vcenterVmId: S.optional(S.String),
+    esxHyperthreading: S.optional(VmwarePlatformDetailsEsxHyperthreadingEnum),
+  }),
+).annotate({
+  identifier: "VmwarePlatformDetails",
+}) as any as S.Schema<VmwarePlatformDetails>;
 
-export type AzureVmPlatformDetailsHyperthreadingEnum = "HYPERTHREADING_STATUS_UNSPECIFIED" | "HYPERTHREADING_STATUS_DISABLED" | "HYPERTHREADING_STATUS_ENABLED";
+export type AzureVmPlatformDetailsHyperthreadingEnum =
+  | "HYPERTHREADING_STATUS_UNSPECIFIED"
+  | "HYPERTHREADING_STATUS_DISABLED"
+  | "HYPERTHREADING_STATUS_ENABLED";
 export const AzureVmPlatformDetailsHyperthreadingEnum = /*@__PURE__*/ S.String;
 
 /** Azure VM specific details. */
@@ -1535,15 +1888,20 @@ export interface AzureVmPlatformDetails {
   location?: string;
 }
 export const AzureVmPlatformDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "provisioningState": S.optional(S.String),
-  "hyperthreading": S.optional(AzureVmPlatformDetailsHyperthreadingEnum),
-  "machineTypeLabel": S.optional(S.String),
-  "location": S.optional(S.String),
-}),
-).annotate({ identifier: "AzureVmPlatformDetails" }) as any as S.Schema<AzureVmPlatformDetails>;
+  S.Struct({
+    provisioningState: S.optional(S.String),
+    hyperthreading: S.optional(AzureVmPlatformDetailsHyperthreadingEnum),
+    machineTypeLabel: S.optional(S.String),
+    location: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AzureVmPlatformDetails",
+}) as any as S.Schema<AzureVmPlatformDetails>;
 
-export type GenericPlatformDetailsHyperthreadingEnum = "HYPERTHREADING_STATUS_UNSPECIFIED" | "HYPERTHREADING_STATUS_DISABLED" | "HYPERTHREADING_STATUS_ENABLED";
+export type GenericPlatformDetailsHyperthreadingEnum =
+  | "HYPERTHREADING_STATUS_UNSPECIFIED"
+  | "HYPERTHREADING_STATUS_DISABLED"
+  | "HYPERTHREADING_STATUS_ENABLED";
 export const GenericPlatformDetailsHyperthreadingEnum = /*@__PURE__*/ S.String;
 
 /** Generic platform details. */
@@ -1554,11 +1912,13 @@ export interface GenericPlatformDetails {
   hyperthreading?: GenericPlatformDetailsHyperthreadingEnum;
 }
 export const GenericPlatformDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "location": S.optional(S.String),
-  "hyperthreading": S.optional(GenericPlatformDetailsHyperthreadingEnum),
-}),
-).annotate({ identifier: "GenericPlatformDetails" }) as any as S.Schema<GenericPlatformDetails>;
+  S.Struct({
+    location: S.optional(S.String),
+    hyperthreading: S.optional(GenericPlatformDetailsHyperthreadingEnum),
+  }),
+).annotate({
+  identifier: "GenericPlatformDetails",
+}) as any as S.Schema<GenericPlatformDetails>;
 
 /** Information about the platform. */
 export interface PlatformDetails {
@@ -1574,16 +1934,25 @@ export interface PlatformDetails {
   genericDetails?: GenericPlatformDetails;
 }
 export const PlatformDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "awsEc2Details": S.optional(AwsEc2PlatformDetails),
-  "physicalDetails": S.optional(PhysicalPlatformDetails),
-  "vmwareDetails": S.optional(VmwarePlatformDetails),
-  "azureVmDetails": S.optional(AzureVmPlatformDetails),
-  "genericDetails": S.optional(GenericPlatformDetails),
-}),
-).annotate({ identifier: "PlatformDetails" }) as any as S.Schema<PlatformDetails>;
+  S.Struct({
+    awsEc2Details: S.optional(AwsEc2PlatformDetails),
+    physicalDetails: S.optional(PhysicalPlatformDetails),
+    vmwareDetails: S.optional(VmwarePlatformDetails),
+    azureVmDetails: S.optional(AzureVmPlatformDetails),
+    genericDetails: S.optional(GenericPlatformDetails),
+  }),
+).annotate({
+  identifier: "PlatformDetails",
+}) as any as S.Schema<PlatformDetails>;
 
-export type MachineDetailsPowerStateEnum = "POWER_STATE_UNSPECIFIED" | "PENDING" | "ACTIVE" | "SUSPENDING" | "SUSPENDED" | "DELETING" | "DELETED";
+export type MachineDetailsPowerStateEnum =
+  | "POWER_STATE_UNSPECIFIED"
+  | "PENDING"
+  | "ACTIVE"
+  | "SUSPENDING"
+  | "SUSPENDED"
+  | "DELETING"
+  | "DELETED";
 export const MachineDetailsPowerStateEnum = /*@__PURE__*/ S.String;
 
 /** Single disk entry. */
@@ -1610,22 +1979,24 @@ export interface DiskEntry {
   status?: string;
 }
 export const DiskEntry = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "freeSpaceBytes": S.optional(S.String),
-  "totalCapacityBytes": S.optional(S.String),
-  "interfaceType": S.optional(S.String),
-  "diskLabelType": S.optional(S.String),
-  "totalFreeBytes": S.optional(S.String),
-  "partitions": S.optional(DiskPartitionList),
-  "hwAddress": S.optional(S.String),
-  "diskLabel": S.optional(S.String),
-  "capacityBytes": S.optional(S.String),
-  "status": S.optional(S.String),
-}),
+  S.Struct({
+    freeSpaceBytes: S.optional(S.String),
+    totalCapacityBytes: S.optional(S.String),
+    interfaceType: S.optional(S.String),
+    diskLabelType: S.optional(S.String),
+    totalFreeBytes: S.optional(S.String),
+    partitions: S.optional(DiskPartitionList),
+    hwAddress: S.optional(S.String),
+    diskLabel: S.optional(S.String),
+    capacityBytes: S.optional(S.String),
+    status: S.optional(S.String),
+  }),
 ).annotate({ identifier: "DiskEntry" }) as any as S.Schema<DiskEntry>;
 
 export type DiskEntryList_ = ReadonlyArray<DiskEntry>;
-export const DiskEntryList_ = /*@__PURE__*/ S.Array(DiskEntry) as any as S.Schema<DiskEntryList_>;
+export const DiskEntryList_ = /*@__PURE__*/ S.Array(
+  DiskEntry,
+) as any as S.Schema<DiskEntryList_>;
 
 /** VM disks. */
 export interface DiskEntryList {
@@ -1633,9 +2004,9 @@ export interface DiskEntryList {
   entries?: DiskEntryList_;
 }
 export const DiskEntryList = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "entries": S.optional(DiskEntryList_),
-}),
+  S.Struct({
+    entries: S.optional(DiskEntryList_),
+  }),
 ).annotate({ identifier: "DiskEntryList" }) as any as S.Schema<DiskEntryList>;
 
 /** Details of machine disks. */
@@ -1650,19 +2021,29 @@ export interface MachineDiskDetails {
   rawScanResult?: string;
 }
 export const MachineDiskDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "disks": S.optional(DiskEntryList),
-  "totalCapacityBytes": S.optional(S.String),
-  "totalFreeBytes": S.optional(S.String),
-  "rawScanResult": S.optional(S.String),
-}),
-).annotate({ identifier: "MachineDiskDetails" }) as any as S.Schema<MachineDiskDetails>;
+  S.Struct({
+    disks: S.optional(DiskEntryList),
+    totalCapacityBytes: S.optional(S.String),
+    totalFreeBytes: S.optional(S.String),
+    rawScanResult: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MachineDiskDetails",
+}) as any as S.Schema<MachineDiskDetails>;
 
-export type MachineArchitectureDetailsFirmwareTypeEnum = "FIRMWARE_TYPE_UNSPECIFIED" | "BIOS" | "EFI";
-export const MachineArchitectureDetailsFirmwareTypeEnum = /*@__PURE__*/ S.String;
+export type MachineArchitectureDetailsFirmwareTypeEnum =
+  | "FIRMWARE_TYPE_UNSPECIFIED"
+  | "BIOS"
+  | "EFI";
+export const MachineArchitectureDetailsFirmwareTypeEnum =
+  /*@__PURE__*/ S.String;
 
-export type MachineArchitectureDetailsHyperthreadingEnum = "CPU_HYPER_THREADING_UNSPECIFIED" | "DISABLED" | "ENABLED";
-export const MachineArchitectureDetailsHyperthreadingEnum = /*@__PURE__*/ S.String;
+export type MachineArchitectureDetailsHyperthreadingEnum =
+  | "CPU_HYPER_THREADING_UNSPECIFIED"
+  | "DISABLED"
+  | "ENABLED";
+export const MachineArchitectureDetailsHyperthreadingEnum =
+  /*@__PURE__*/ S.String;
 
 /** Details about the BIOS. */
 export interface BiosDetails {
@@ -1686,17 +2067,17 @@ export interface BiosDetails {
   biosManufacturer?: string;
 }
 export const BiosDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.optional(S.String),
-  "version": S.optional(S.String),
-  "manufacturer": S.optional(S.String),
-  "biosVersion": S.optional(S.String),
-  "biosReleaseDate": S.optional(S.String),
-  "releaseTime": S.optional(S.String),
-  "biosName": S.optional(S.String),
-  "smbiosUuid": S.optional(S.String),
-  "biosManufacturer": S.optional(S.String),
-}),
+  S.Struct({
+    id: S.optional(S.String),
+    version: S.optional(S.String),
+    manufacturer: S.optional(S.String),
+    biosVersion: S.optional(S.String),
+    biosReleaseDate: S.optional(S.String),
+    releaseTime: S.optional(S.String),
+    biosName: S.optional(S.String),
+    smbiosUuid: S.optional(S.String),
+    biosManufacturer: S.optional(S.String),
+  }),
 ).annotate({ identifier: "BiosDetails" }) as any as S.Schema<BiosDetails>;
 
 /** Details of the machine architecture. */
@@ -1719,22 +2100,32 @@ export interface MachineArchitectureDetails {
   vendor?: string;
 }
 export const MachineArchitectureDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "cpuName": S.optional(S.String),
-  "firmwareType": S.optional(MachineArchitectureDetailsFirmwareTypeEnum),
-  "hyperthreading": S.optional(MachineArchitectureDetailsHyperthreadingEnum),
-  "cpuArchitecture": S.optional(S.String),
-  "bios": S.optional(BiosDetails),
-  "cpuManufacturer": S.optional(S.String),
-  "cpuSocketCount": S.optional(S.Number),
-  "vendor": S.optional(S.String),
-}),
-).annotate({ identifier: "MachineArchitectureDetails" }) as any as S.Schema<MachineArchitectureDetails>;
+  S.Struct({
+    cpuName: S.optional(S.String),
+    firmwareType: S.optional(MachineArchitectureDetailsFirmwareTypeEnum),
+    hyperthreading: S.optional(MachineArchitectureDetailsHyperthreadingEnum),
+    cpuArchitecture: S.optional(S.String),
+    bios: S.optional(BiosDetails),
+    cpuManufacturer: S.optional(S.String),
+    cpuSocketCount: S.optional(S.Number),
+    vendor: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MachineArchitectureDetails",
+}) as any as S.Schema<MachineArchitectureDetails>;
 
-export type GuestOsDetailsFamilyEnum = "OS_FAMILY_UNKNOWN" | "OS_FAMILY_WINDOWS" | "OS_FAMILY_LINUX" | "OS_FAMILY_UNIX";
+export type GuestOsDetailsFamilyEnum =
+  | "OS_FAMILY_UNKNOWN"
+  | "OS_FAMILY_WINDOWS"
+  | "OS_FAMILY_LINUX"
+  | "OS_FAMILY_UNIX";
 export const GuestOsDetailsFamilyEnum = /*@__PURE__*/ S.String;
 
-export type GuestConfigDetailsSelinuxModeEnum = "SE_LINUX_MODE_UNSPECIFIED" | "SE_LINUX_MODE_DISABLED" | "SE_LINUX_MODE_PERMISSIVE" | "SE_LINUX_MODE_ENFORCING";
+export type GuestConfigDetailsSelinuxModeEnum =
+  | "SE_LINUX_MODE_UNSPECIFIED"
+  | "SE_LINUX_MODE_DISABLED"
+  | "SE_LINUX_MODE_PERMISSIVE"
+  | "SE_LINUX_MODE_ENFORCING";
 export const GuestConfigDetailsSelinuxModeEnum = /*@__PURE__*/ S.String;
 
 /** Single /etc/hosts entry. */
@@ -1745,14 +2136,16 @@ export interface HostsEntry {
   hostNames?: StringList;
 }
 export const HostsEntry = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "ip": S.optional(S.String),
-  "hostNames": S.optional(StringList),
-}),
+  S.Struct({
+    ip: S.optional(S.String),
+    hostNames: S.optional(StringList),
+  }),
 ).annotate({ identifier: "HostsEntry" }) as any as S.Schema<HostsEntry>;
 
 export type HostsEntryList_ = ReadonlyArray<HostsEntry>;
-export const HostsEntryList_ = /*@__PURE__*/ S.Array(HostsEntry) as any as S.Schema<HostsEntryList_>;
+export const HostsEntryList_ = /*@__PURE__*/ S.Array(
+  HostsEntry,
+) as any as S.Schema<HostsEntryList_>;
 
 /** Hosts content. */
 export interface HostsEntryList {
@@ -1760,9 +2153,9 @@ export interface HostsEntryList {
   entries?: HostsEntryList_;
 }
 export const HostsEntryList = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "entries": S.optional(HostsEntryList_),
-}),
+  S.Struct({
+    entries: S.optional(HostsEntryList_),
+  }),
 ).annotate({ identifier: "HostsEntryList" }) as any as S.Schema<HostsEntryList>;
 
 /** Single fstab entry. */
@@ -1781,18 +2174,20 @@ export interface FstabEntry {
   passno?: number;
 }
 export const FstabEntry = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "file": S.optional(S.String),
-  "vfstype": S.optional(S.String),
-  "spec": S.optional(S.String),
-  "mntops": S.optional(S.String),
-  "freq": S.optional(S.Number),
-  "passno": S.optional(S.Number),
-}),
+  S.Struct({
+    file: S.optional(S.String),
+    vfstype: S.optional(S.String),
+    spec: S.optional(S.String),
+    mntops: S.optional(S.String),
+    freq: S.optional(S.Number),
+    passno: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "FstabEntry" }) as any as S.Schema<FstabEntry>;
 
 export type FstabEntryList_ = ReadonlyArray<FstabEntry>;
-export const FstabEntryList_ = /*@__PURE__*/ S.Array(FstabEntry) as any as S.Schema<FstabEntryList_>;
+export const FstabEntryList_ = /*@__PURE__*/ S.Array(
+  FstabEntry,
+) as any as S.Schema<FstabEntryList_>;
 
 /** Fstab content. */
 export interface FstabEntryList {
@@ -1800,9 +2195,9 @@ export interface FstabEntryList {
   entries?: FstabEntryList_;
 }
 export const FstabEntryList = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "entries": S.optional(FstabEntryList_),
-}),
+  S.Struct({
+    entries: S.optional(FstabEntryList_),
+  }),
 ).annotate({ identifier: "FstabEntryList" }) as any as S.Schema<FstabEntryList>;
 
 /** NFS export. */
@@ -1813,14 +2208,16 @@ export interface NfsExport {
   hosts?: StringList;
 }
 export const NfsExport = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "exportDirectory": S.optional(S.String),
-  "hosts": S.optional(StringList),
-}),
+  S.Struct({
+    exportDirectory: S.optional(S.String),
+    hosts: S.optional(StringList),
+  }),
 ).annotate({ identifier: "NfsExport" }) as any as S.Schema<NfsExport>;
 
 export type NfsExportList_ = ReadonlyArray<NfsExport>;
-export const NfsExportList_ = /*@__PURE__*/ S.Array(NfsExport) as any as S.Schema<NfsExportList_>;
+export const NfsExportList_ = /*@__PURE__*/ S.Array(
+  NfsExport,
+) as any as S.Schema<NfsExportList_>;
 
 /** NFS exports. */
 export interface NfsExportList {
@@ -1828,9 +2225,9 @@ export interface NfsExportList {
   entries?: NfsExportList_;
 }
 export const NfsExportList = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "entries": S.optional(NfsExportList_),
-}),
+  S.Struct({
+    entries: S.optional(NfsExportList_),
+  }),
 ).annotate({ identifier: "NfsExportList" }) as any as S.Schema<NfsExportList>;
 
 /** SELinux details. */
@@ -1841,10 +2238,10 @@ export interface Selinux {
   mode?: string;
 }
 export const Selinux = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "enabled": S.optional(S.Boolean),
-  "mode": S.optional(S.String),
-}),
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+    mode: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Selinux" }) as any as S.Schema<Selinux>;
 
 /** Guest OS config information. */
@@ -1863,15 +2260,17 @@ export interface GuestConfigDetails {
   selinux?: Selinux;
 }
 export const GuestConfigDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "selinuxMode": S.optional(GuestConfigDetailsSelinuxModeEnum),
-  "hosts": S.optional(HostsEntryList),
-  "fstab": S.optional(FstabEntryList),
-  "issue": S.optional(S.String),
-  "nfsExports": S.optional(NfsExportList),
-  "selinux": S.optional(Selinux),
-}),
-).annotate({ identifier: "GuestConfigDetails" }) as any as S.Schema<GuestConfigDetails>;
+  S.Struct({
+    selinuxMode: S.optional(GuestConfigDetailsSelinuxModeEnum),
+    hosts: S.optional(HostsEntryList),
+    fstab: S.optional(FstabEntryList),
+    issue: S.optional(S.String),
+    nfsExports: S.optional(NfsExportList),
+    selinux: S.optional(Selinux),
+  }),
+).annotate({
+  identifier: "GuestConfigDetails",
+}) as any as S.Schema<GuestConfigDetails>;
 
 /** Guest OS running process details. */
 export interface RunningProcess {
@@ -1887,17 +2286,19 @@ export interface RunningProcess {
   user?: string;
 }
 export const RunningProcess = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "exePath": S.optional(S.String),
-  "attributes": S.optional(StringMap),
-  "cmdline": S.optional(S.String),
-  "pid": S.optional(S.String),
-  "user": S.optional(S.String),
-}),
+  S.Struct({
+    exePath: S.optional(S.String),
+    attributes: S.optional(StringMap),
+    cmdline: S.optional(S.String),
+    pid: S.optional(S.String),
+    user: S.optional(S.String),
+  }),
 ).annotate({ identifier: "RunningProcess" }) as any as S.Schema<RunningProcess>;
 
 export type RunningProcessList_ = ReadonlyArray<RunningProcess>;
-export const RunningProcessList_ = /*@__PURE__*/ S.Array(RunningProcess) as any as S.Schema<RunningProcessList_>;
+export const RunningProcessList_ = /*@__PURE__*/ S.Array(
+  RunningProcess,
+) as any as S.Schema<RunningProcessList_>;
 
 /** List of running guest OS processes. */
 export interface RunningProcessList {
@@ -1907,11 +2308,13 @@ export interface RunningProcessList {
   entries?: RunningProcessList_;
 }
 export const RunningProcessList = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "processes": S.optional(RunningProcessList_),
-  "entries": S.optional(RunningProcessList_),
-}),
-).annotate({ identifier: "RunningProcessList" }) as any as S.Schema<RunningProcessList>;
+  S.Struct({
+    processes: S.optional(RunningProcessList_),
+    entries: S.optional(RunningProcessList_),
+  }),
+).annotate({
+  identifier: "RunningProcessList",
+}) as any as S.Schema<RunningProcessList>;
 
 /** Guest installed application information. */
 export interface GuestInstalledApplication {
@@ -1933,20 +2336,25 @@ export interface GuestInstalledApplication {
   licenses?: StringList;
 }
 export const GuestInstalledApplication = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "installTime": S.optional(S.String),
-  "applicationName": S.optional(S.String),
-  "time": S.optional(S.String),
-  "path": S.optional(S.String),
-  "vendor": S.optional(S.String),
-  "version": S.optional(S.String),
-  "licenses": S.optional(StringList),
-}),
-).annotate({ identifier: "GuestInstalledApplication" }) as any as S.Schema<GuestInstalledApplication>;
+  S.Struct({
+    name: S.optional(S.String),
+    installTime: S.optional(S.String),
+    applicationName: S.optional(S.String),
+    time: S.optional(S.String),
+    path: S.optional(S.String),
+    vendor: S.optional(S.String),
+    version: S.optional(S.String),
+    licenses: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "GuestInstalledApplication",
+}) as any as S.Schema<GuestInstalledApplication>;
 
-export type GuestInstalledApplicationList_ = ReadonlyArray<GuestInstalledApplication>;
-export const GuestInstalledApplicationList_ = /*@__PURE__*/ S.Array(GuestInstalledApplication) as any as S.Schema<GuestInstalledApplicationList_>;
+export type GuestInstalledApplicationList_ =
+  ReadonlyArray<GuestInstalledApplication>;
+export const GuestInstalledApplicationList_ = /*@__PURE__*/ S.Array(
+  GuestInstalledApplication,
+) as any as S.Schema<GuestInstalledApplicationList_>;
 
 /** Guest installed application list. */
 export interface GuestInstalledApplicationList {
@@ -1954,10 +2362,12 @@ export interface GuestInstalledApplicationList {
   entries?: GuestInstalledApplicationList_;
 }
 export const GuestInstalledApplicationList = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "entries": S.optional(GuestInstalledApplicationList_),
-}),
-).annotate({ identifier: "GuestInstalledApplicationList" }) as any as S.Schema<GuestInstalledApplicationList>;
+  S.Struct({
+    entries: S.optional(GuestInstalledApplicationList_),
+  }),
+).annotate({
+  identifier: "GuestInstalledApplicationList",
+}) as any as S.Schema<GuestInstalledApplicationList>;
 
 /** Open file Information. */
 export interface OpenFileDetails {
@@ -1971,16 +2381,20 @@ export interface OpenFileDetails {
   fileType?: string;
 }
 export const OpenFileDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filePath": S.optional(S.String),
-  "command": S.optional(S.String),
-  "user": S.optional(S.String),
-  "fileType": S.optional(S.String),
-}),
-).annotate({ identifier: "OpenFileDetails" }) as any as S.Schema<OpenFileDetails>;
+  S.Struct({
+    filePath: S.optional(S.String),
+    command: S.optional(S.String),
+    user: S.optional(S.String),
+    fileType: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OpenFileDetails",
+}) as any as S.Schema<OpenFileDetails>;
 
 export type OpenFileDetailsList = ReadonlyArray<OpenFileDetails>;
-export const OpenFileDetailsList = /*@__PURE__*/ S.Array(OpenFileDetails) as any as S.Schema<OpenFileDetailsList>;
+export const OpenFileDetailsList = /*@__PURE__*/ S.Array(
+  OpenFileDetails,
+) as any as S.Schema<OpenFileDetailsList>;
 
 /** Open file list. */
 export interface OpenFileList {
@@ -1988,9 +2402,9 @@ export interface OpenFileList {
   entries?: OpenFileDetailsList;
 }
 export const OpenFileList = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "entries": S.optional(OpenFileDetailsList),
-}),
+  S.Struct({
+    entries: S.optional(OpenFileDetailsList),
+  }),
 ).annotate({ identifier: "OpenFileList" }) as any as S.Schema<OpenFileList>;
 
 /** Guest OS running service details. */
@@ -2013,20 +2427,22 @@ export interface RunningService {
   serviceName?: string;
 }
 export const RunningService = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "state": S.optional(S.String),
-  "cmdline": S.optional(S.String),
-  "status": S.optional(S.String),
-  "exePath": S.optional(S.String),
-  "pid": S.optional(S.String),
-  "name": S.optional(S.String),
-  "startMode": S.optional(S.String),
-  "serviceName": S.optional(S.String),
-}),
+  S.Struct({
+    state: S.optional(S.String),
+    cmdline: S.optional(S.String),
+    status: S.optional(S.String),
+    exePath: S.optional(S.String),
+    pid: S.optional(S.String),
+    name: S.optional(S.String),
+    startMode: S.optional(S.String),
+    serviceName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "RunningService" }) as any as S.Schema<RunningService>;
 
 export type RunningServiceList_ = ReadonlyArray<RunningService>;
-export const RunningServiceList_ = /*@__PURE__*/ S.Array(RunningService) as any as S.Schema<RunningServiceList_>;
+export const RunningServiceList_ = /*@__PURE__*/ S.Array(
+  RunningService,
+) as any as S.Schema<RunningServiceList_>;
 
 /** List of running guest OS services. */
 export interface RunningServiceList {
@@ -2036,11 +2452,13 @@ export interface RunningServiceList {
   entries?: RunningServiceList_;
 }
 export const RunningServiceList = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "services": S.optional(RunningServiceList_),
-  "entries": S.optional(RunningServiceList_),
-}),
-).annotate({ identifier: "RunningServiceList" }) as any as S.Schema<RunningServiceList>;
+  S.Struct({
+    services: S.optional(RunningServiceList_),
+    entries: S.optional(RunningServiceList_),
+  }),
+).annotate({
+  identifier: "RunningServiceList",
+}) as any as S.Schema<RunningServiceList>;
 
 export interface NetworkConnection {
   /** Remote IP address. */
@@ -2061,20 +2479,24 @@ export interface NetworkConnection {
   localPort?: number;
 }
 export const NetworkConnection = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "remoteIpAddress": S.optional(S.String),
-  "state": S.optional(S.String),
-  "processName": S.optional(S.String),
-  "protocol": S.optional(S.String),
-  "pid": S.optional(S.String),
-  "remotePort": S.optional(S.Number),
-  "localIpAddress": S.optional(S.String),
-  "localPort": S.optional(S.Number),
-}),
-).annotate({ identifier: "NetworkConnection" }) as any as S.Schema<NetworkConnection>;
+  S.Struct({
+    remoteIpAddress: S.optional(S.String),
+    state: S.optional(S.String),
+    processName: S.optional(S.String),
+    protocol: S.optional(S.String),
+    pid: S.optional(S.String),
+    remotePort: S.optional(S.Number),
+    localIpAddress: S.optional(S.String),
+    localPort: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "NetworkConnection",
+}) as any as S.Schema<NetworkConnection>;
 
 export type NetworkConnectionList_ = ReadonlyArray<NetworkConnection>;
-export const NetworkConnectionList_ = /*@__PURE__*/ S.Array(NetworkConnection) as any as S.Schema<NetworkConnectionList_>;
+export const NetworkConnectionList_ = /*@__PURE__*/ S.Array(
+  NetworkConnection,
+) as any as S.Schema<NetworkConnectionList_>;
 
 /** Network connection list. */
 export interface NetworkConnectionList {
@@ -2082,10 +2504,12 @@ export interface NetworkConnectionList {
   entries?: NetworkConnectionList_;
 }
 export const NetworkConnectionList = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "entries": S.optional(NetworkConnectionList_),
-}),
-).annotate({ identifier: "NetworkConnectionList" }) as any as S.Schema<NetworkConnectionList>;
+  S.Struct({
+    entries: S.optional(NetworkConnectionList_),
+  }),
+).annotate({
+  identifier: "NetworkConnectionList",
+}) as any as S.Schema<NetworkConnectionList>;
 
 /** Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones). */
 export interface TimeZone {
@@ -2095,10 +2519,10 @@ export interface TimeZone {
   version?: string;
 }
 export const TimeZone = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.optional(S.String),
-  "version": S.optional(S.String),
-}),
+  S.Struct({
+    id: S.optional(S.String),
+    version: S.optional(S.String),
+  }),
 ).annotate({ identifier: "TimeZone" }) as any as S.Schema<TimeZone>;
 
 /** Represents civil time (or occasionally physical time). This type can represent a civil time in one of a few possible ways: * When utc_offset is set and time_zone is unset: a civil time on a calendar day with a particular offset from UTC. * When time_zone is set and utc_offset is unset: a civil time on a calendar day in a particular time zone. * When neither time_zone nor utc_offset is set: a civil time on a calendar day in local time. The date is relative to the Proleptic Gregorian Calendar. If year, month, or day are 0, the DateTime is considered not to have a specific year, month, or day respectively. This type may also be used to represent a physical time if all the date and time fields are set and either case of the `time_offset` oneof is set. Consider using `Timestamp` message for physical time instead. If your use case also would like to store the user's timezone, that can be done in another field. This type is more flexible than some applications may want. Make sure to document and validate your application's limitations. */
@@ -2123,17 +2547,17 @@ export interface DateTime {
   seconds?: number;
 }
 export const DateTime = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "month": S.optional(S.Number),
-  "day": S.optional(S.Number),
-  "year": S.optional(S.Number),
-  "utcOffset": S.optional(S.String),
-  "hours": S.optional(S.Number),
-  "nanos": S.optional(S.Number),
-  "timeZone": S.optional(TimeZone),
-  "minutes": S.optional(S.Number),
-  "seconds": S.optional(S.Number),
-}),
+  S.Struct({
+    month: S.optional(S.Number),
+    day: S.optional(S.Number),
+    year: S.optional(S.Number),
+    utcOffset: S.optional(S.String),
+    hours: S.optional(S.Number),
+    nanos: S.optional(S.Number),
+    timeZone: S.optional(TimeZone),
+    minutes: S.optional(S.Number),
+    seconds: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "DateTime" }) as any as S.Schema<DateTime>;
 
 /** Runtime networking information. */
@@ -2150,14 +2574,16 @@ export interface RuntimeNetworkInfo {
   netstatTime?: DateTime;
 }
 export const RuntimeNetworkInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "rawScanResult": S.optional(S.String),
-  "connections": S.optional(NetworkConnectionList),
-  "scanTime": S.optional(S.String),
-  "netstat": S.optional(S.String),
-  "netstatTime": S.optional(DateTime),
-}),
-).annotate({ identifier: "RuntimeNetworkInfo" }) as any as S.Schema<RuntimeNetworkInfo>;
+  S.Struct({
+    rawScanResult: S.optional(S.String),
+    connections: S.optional(NetworkConnectionList),
+    scanTime: S.optional(S.String),
+    netstat: S.optional(S.String),
+    netstatTime: S.optional(DateTime),
+  }),
+).annotate({
+  identifier: "RuntimeNetworkInfo",
+}) as any as S.Schema<RuntimeNetworkInfo>;
 
 /** Guest OS runtime information. */
 export interface GuestRuntimeDetails {
@@ -2181,18 +2607,20 @@ export interface GuestRuntimeDetails {
   networkInfo?: RuntimeNetworkInfo;
 }
 export const GuestRuntimeDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "domain": S.optional(S.String),
-  "processes": S.optional(RunningProcessList),
-  "installedApps": S.optional(GuestInstalledApplicationList),
-  "machineName": S.optional(S.String),
-  "openFileList": S.optional(OpenFileList),
-  "services": S.optional(RunningServiceList),
-  "lastUptime": S.optional(Migrationcenter_Date),
-  "lastBootTime": S.optional(S.String),
-  "networkInfo": S.optional(RuntimeNetworkInfo),
-}),
-).annotate({ identifier: "GuestRuntimeDetails" }) as any as S.Schema<GuestRuntimeDetails>;
+  S.Struct({
+    domain: S.optional(S.String),
+    processes: S.optional(RunningProcessList),
+    installedApps: S.optional(GuestInstalledApplicationList),
+    machineName: S.optional(S.String),
+    openFileList: S.optional(OpenFileList),
+    services: S.optional(RunningServiceList),
+    lastUptime: S.optional(Migrationcenter_Date),
+    lastBootTime: S.optional(S.String),
+    networkInfo: S.optional(RuntimeNetworkInfo),
+  }),
+).annotate({
+  identifier: "GuestRuntimeDetails",
+}) as any as S.Schema<GuestRuntimeDetails>;
 
 /** Information from Guest-level collections. */
 export interface GuestOsDetails {
@@ -2208,13 +2636,13 @@ export interface GuestOsDetails {
   version?: string;
 }
 export const GuestOsDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "family": S.optional(GuestOsDetailsFamilyEnum),
-  "config": S.optional(GuestConfigDetails),
-  "osName": S.optional(S.String),
-  "runtime": S.optional(GuestRuntimeDetails),
-  "version": S.optional(S.String),
-}),
+  S.Struct({
+    family: S.optional(GuestOsDetailsFamilyEnum),
+    config: S.optional(GuestConfigDetails),
+    osName: S.optional(S.String),
+    runtime: S.optional(GuestRuntimeDetails),
+    version: S.optional(S.String),
+  }),
 ).annotate({ identifier: "GuestOsDetails" }) as any as S.Schema<GuestOsDetails>;
 
 /** Details of a machine. */
@@ -2245,20 +2673,20 @@ export interface MachineDetails {
   guestOs?: GuestOsDetails;
 }
 export const MachineDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "memoryMb": S.optional(S.Number),
-  "network": S.optional(MachineNetworkDetails),
-  "diskPartitions": S.optional(DiskPartitionDetails),
-  "coreCount": S.optional(S.Number),
-  "uuid": S.optional(S.String),
-  "platform": S.optional(PlatformDetails),
-  "createTime": S.optional(S.String),
-  "powerState": S.optional(MachineDetailsPowerStateEnum),
-  "disks": S.optional(MachineDiskDetails),
-  "machineName": S.optional(S.String),
-  "architecture": S.optional(MachineArchitectureDetails),
-  "guestOs": S.optional(GuestOsDetails),
-}),
+  S.Struct({
+    memoryMb: S.optional(S.Number),
+    network: S.optional(MachineNetworkDetails),
+    diskPartitions: S.optional(DiskPartitionDetails),
+    coreCount: S.optional(S.Number),
+    uuid: S.optional(S.String),
+    platform: S.optional(PlatformDetails),
+    createTime: S.optional(S.String),
+    powerState: S.optional(MachineDetailsPowerStateEnum),
+    disks: S.optional(MachineDiskDetails),
+    machineName: S.optional(S.String),
+    architecture: S.optional(MachineArchitectureDetails),
+    guestOs: S.optional(GuestOsDetails),
+  }),
 ).annotate({ identifier: "MachineDetails" }) as any as S.Schema<MachineDetails>;
 
 /** SQL Server server flag details. */
@@ -2271,15 +2699,19 @@ export interface SqlServerServerFlag {
   valueInUse?: string;
 }
 export const SqlServerServerFlag = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "serverFlagName": S.optional(S.String),
-  "value": S.optional(S.String),
-  "valueInUse": S.optional(S.String),
-}),
-).annotate({ identifier: "SqlServerServerFlag" }) as any as S.Schema<SqlServerServerFlag>;
+  S.Struct({
+    serverFlagName: S.optional(S.String),
+    value: S.optional(S.String),
+    valueInUse: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SqlServerServerFlag",
+}) as any as S.Schema<SqlServerServerFlag>;
 
 export type SqlServerServerFlagList = ReadonlyArray<SqlServerServerFlag>;
-export const SqlServerServerFlagList = /*@__PURE__*/ S.Array(SqlServerServerFlag) as any as S.Schema<SqlServerServerFlagList>;
+export const SqlServerServerFlagList = /*@__PURE__*/ S.Array(
+  SqlServerServerFlag,
+) as any as S.Schema<SqlServerServerFlagList>;
 
 /** SQL Server feature details. */
 export interface SqlServerFeature {
@@ -2289,16 +2721,24 @@ export interface SqlServerFeature {
   enabled?: boolean;
 }
 export const SqlServerFeature = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "featureName": S.optional(S.String),
-  "enabled": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "SqlServerFeature" }) as any as S.Schema<SqlServerFeature>;
+  S.Struct({
+    featureName: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "SqlServerFeature",
+}) as any as S.Schema<SqlServerFeature>;
 
 export type SqlServerFeatureList = ReadonlyArray<SqlServerFeature>;
-export const SqlServerFeatureList = /*@__PURE__*/ S.Array(SqlServerFeature) as any as S.Schema<SqlServerFeatureList>;
+export const SqlServerFeatureList = /*@__PURE__*/ S.Array(
+  SqlServerFeature,
+) as any as S.Schema<SqlServerFeatureList>;
 
-export type SqlServerTraceFlagScopeEnum = "SCOPE_UNSPECIFIED" | "OFF" | "GLOBAL" | "SESSION";
+export type SqlServerTraceFlagScopeEnum =
+  | "SCOPE_UNSPECIFIED"
+  | "OFF"
+  | "GLOBAL"
+  | "SESSION";
 export const SqlServerTraceFlagScopeEnum = /*@__PURE__*/ S.String;
 
 /** SQL Server trace flag details. */
@@ -2309,14 +2749,18 @@ export interface SqlServerTraceFlag {
   traceFlagName?: string;
 }
 export const SqlServerTraceFlag = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "scope": S.optional(SqlServerTraceFlagScopeEnum),
-  "traceFlagName": S.optional(S.String),
-}),
-).annotate({ identifier: "SqlServerTraceFlag" }) as any as S.Schema<SqlServerTraceFlag>;
+  S.Struct({
+    scope: S.optional(SqlServerTraceFlagScopeEnum),
+    traceFlagName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SqlServerTraceFlag",
+}) as any as S.Schema<SqlServerTraceFlag>;
 
 export type SqlServerTraceFlagList = ReadonlyArray<SqlServerTraceFlag>;
-export const SqlServerTraceFlagList = /*@__PURE__*/ S.Array(SqlServerTraceFlag) as any as S.Schema<SqlServerTraceFlagList>;
+export const SqlServerTraceFlagList = /*@__PURE__*/ S.Array(
+  SqlServerTraceFlag,
+) as any as S.Schema<SqlServerTraceFlagList>;
 
 /** Specific details for a Microsoft SQL Server database deployment. */
 export interface SqlServerDatabaseDeployment {
@@ -2328,14 +2772,20 @@ export interface SqlServerDatabaseDeployment {
   traceFlags?: SqlServerTraceFlagList;
 }
 export const SqlServerDatabaseDeployment = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "serverFlags": S.optional(SqlServerServerFlagList),
-  "features": S.optional(SqlServerFeatureList),
-  "traceFlags": S.optional(SqlServerTraceFlagList),
-}),
-).annotate({ identifier: "SqlServerDatabaseDeployment" }) as any as S.Schema<SqlServerDatabaseDeployment>;
+  S.Struct({
+    serverFlags: S.optional(SqlServerServerFlagList),
+    features: S.optional(SqlServerFeatureList),
+    traceFlags: S.optional(SqlServerTraceFlagList),
+  }),
+).annotate({
+  identifier: "SqlServerDatabaseDeployment",
+}) as any as S.Schema<SqlServerDatabaseDeployment>;
 
-export type DatabaseInstanceRoleEnum = "ROLE_UNSPECIFIED" | "PRIMARY" | "SECONDARY" | "ARBITER";
+export type DatabaseInstanceRoleEnum =
+  | "ROLE_UNSPECIFIED"
+  | "PRIMARY"
+  | "SECONDARY"
+  | "ARBITER";
 export const DatabaseInstanceRoleEnum = /*@__PURE__*/ S.String;
 
 /** Network details of a database instance. */
@@ -2348,12 +2798,14 @@ export interface DatabaseInstanceNetwork {
   primaryMacAddress?: string;
 }
 export const DatabaseInstanceNetwork = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "hostNames": S.optional(StringList),
-  "ipAddresses": S.optional(StringList),
-  "primaryMacAddress": S.optional(S.String),
-}),
-).annotate({ identifier: "DatabaseInstanceNetwork" }) as any as S.Schema<DatabaseInstanceNetwork>;
+  S.Struct({
+    hostNames: S.optional(StringList),
+    ipAddresses: S.optional(StringList),
+    primaryMacAddress: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DatabaseInstanceNetwork",
+}) as any as S.Schema<DatabaseInstanceNetwork>;
 
 /** Details of a database instance. */
 export interface DatabaseInstance {
@@ -2365,15 +2817,19 @@ export interface DatabaseInstance {
   network?: DatabaseInstanceNetwork;
 }
 export const DatabaseInstance = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "instanceName": S.optional(S.String),
-  "role": S.optional(DatabaseInstanceRoleEnum),
-  "network": S.optional(DatabaseInstanceNetwork),
-}),
-).annotate({ identifier: "DatabaseInstance" }) as any as S.Schema<DatabaseInstance>;
+  S.Struct({
+    instanceName: S.optional(S.String),
+    role: S.optional(DatabaseInstanceRoleEnum),
+    network: S.optional(DatabaseInstanceNetwork),
+  }),
+).annotate({
+  identifier: "DatabaseInstance",
+}) as any as S.Schema<DatabaseInstance>;
 
 export type DatabaseInstanceList = ReadonlyArray<DatabaseInstance>;
-export const DatabaseInstanceList = /*@__PURE__*/ S.Array(DatabaseInstance) as any as S.Schema<DatabaseInstanceList>;
+export const DatabaseInstanceList = /*@__PURE__*/ S.Array(
+  DatabaseInstance,
+) as any as S.Schema<DatabaseInstanceList>;
 
 /** Details of database deployment's topology. */
 export interface DatabaseDeploymentTopology {
@@ -2397,18 +2853,20 @@ export interface DatabaseDeploymentTopology {
   coreLimit?: number;
 }
 export const DatabaseDeploymentTopology = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "coreCount": S.optional(S.Number),
-  "physicalCoreLimit": S.optional(S.Number),
-  "diskAllocatedBytes": S.optional(S.String),
-  "memoryLimitBytes": S.optional(S.String),
-  "instances": S.optional(DatabaseInstanceList),
-  "physicalCoreCount": S.optional(S.Number),
-  "memoryBytes": S.optional(S.String),
-  "diskUsedBytes": S.optional(S.String),
-  "coreLimit": S.optional(S.Number),
-}),
-).annotate({ identifier: "DatabaseDeploymentTopology" }) as any as S.Schema<DatabaseDeploymentTopology>;
+  S.Struct({
+    coreCount: S.optional(S.Number),
+    physicalCoreLimit: S.optional(S.Number),
+    diskAllocatedBytes: S.optional(S.String),
+    memoryLimitBytes: S.optional(S.String),
+    instances: S.optional(DatabaseInstanceList),
+    physicalCoreCount: S.optional(S.Number),
+    memoryBytes: S.optional(S.String),
+    diskUsedBytes: S.optional(S.String),
+    coreLimit: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "DatabaseDeploymentTopology",
+}) as any as S.Schema<DatabaseDeploymentTopology>;
 
 /** MySql property. */
 export interface MySqlProperty {
@@ -2420,15 +2878,17 @@ export interface MySqlProperty {
   enabled?: boolean;
 }
 export const MySqlProperty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "numericValue": S.optional(S.String),
-  "property": S.optional(S.String),
-  "enabled": S.optional(S.Boolean),
-}),
+  S.Struct({
+    numericValue: S.optional(S.String),
+    property: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "MySqlProperty" }) as any as S.Schema<MySqlProperty>;
 
 export type MySqlPropertyList = ReadonlyArray<MySqlProperty>;
-export const MySqlPropertyList = /*@__PURE__*/ S.Array(MySqlProperty) as any as S.Schema<MySqlPropertyList>;
+export const MySqlPropertyList = /*@__PURE__*/ S.Array(
+  MySqlProperty,
+) as any as S.Schema<MySqlPropertyList>;
 
 /** MySql plugin. */
 export interface MySqlPlugin {
@@ -2440,15 +2900,17 @@ export interface MySqlPlugin {
   version?: string;
 }
 export const MySqlPlugin = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "plugin": S.optional(S.String),
-  "enabled": S.optional(S.Boolean),
-  "version": S.optional(S.String),
-}),
+  S.Struct({
+    plugin: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    version: S.optional(S.String),
+  }),
 ).annotate({ identifier: "MySqlPlugin" }) as any as S.Schema<MySqlPlugin>;
 
 export type MySqlPluginList = ReadonlyArray<MySqlPlugin>;
-export const MySqlPluginList = /*@__PURE__*/ S.Array(MySqlPlugin) as any as S.Schema<MySqlPluginList>;
+export const MySqlPluginList = /*@__PURE__*/ S.Array(
+  MySqlPlugin,
+) as any as S.Schema<MySqlPluginList>;
 
 /** MySql variable. */
 export interface MySqlVariable {
@@ -2460,15 +2922,17 @@ export interface MySqlVariable {
   value?: string;
 }
 export const MySqlVariable = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "variable": S.optional(S.String),
-  "category": S.optional(S.String),
-  "value": S.optional(S.String),
-}),
+  S.Struct({
+    variable: S.optional(S.String),
+    category: S.optional(S.String),
+    value: S.optional(S.String),
+  }),
 ).annotate({ identifier: "MySqlVariable" }) as any as S.Schema<MySqlVariable>;
 
 export type MySqlVariableList = ReadonlyArray<MySqlVariable>;
-export const MySqlVariableList = /*@__PURE__*/ S.Array(MySqlVariable) as any as S.Schema<MySqlVariableList>;
+export const MySqlVariableList = /*@__PURE__*/ S.Array(
+  MySqlVariable,
+) as any as S.Schema<MySqlVariableList>;
 
 /** Specific details for a Mysql database deployment. */
 export interface MysqlDatabaseDeployment {
@@ -2482,30 +2946,35 @@ export interface MysqlDatabaseDeployment {
   variables?: MySqlVariableList;
 }
 export const MysqlDatabaseDeployment = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "properties": S.optional(MySqlPropertyList),
-  "plugins": S.optional(MySqlPluginList),
-  "resourceGroupsCount": S.optional(S.Number),
-  "variables": S.optional(MySqlVariableList),
-}),
-).annotate({ identifier: "MysqlDatabaseDeployment" }) as any as S.Schema<MysqlDatabaseDeployment>;
+  S.Struct({
+    properties: S.optional(MySqlPropertyList),
+    plugins: S.optional(MySqlPluginList),
+    resourceGroupsCount: S.optional(S.Number),
+    variables: S.optional(MySqlVariableList),
+  }),
+).annotate({
+  identifier: "MysqlDatabaseDeployment",
+}) as any as S.Schema<MysqlDatabaseDeployment>;
 
 /** Specific details for an AWS RDS database deployment. */
 export interface AwsRds {}
-export const AwsRds = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "AwsRds" }) as any as S.Schema<AwsRds>;
+export const AwsRds = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "AwsRds",
+}) as any as S.Schema<AwsRds>;
 
 /** Aggregated stats for the database deployment. */
 export interface DatabaseDeploymentDetailsAggregatedStats {
   /** Output only. The number of databases in the deployment. */
   databaseCount?: number;
 }
-export const DatabaseDeploymentDetailsAggregatedStats = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "databaseCount": S.optional(S.Number),
-}),
-).annotate({ identifier: "DatabaseDeploymentDetailsAggregatedStats" }) as any as S.Schema<DatabaseDeploymentDetailsAggregatedStats>;
+export const DatabaseDeploymentDetailsAggregatedStats = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      databaseCount: S.optional(S.Number),
+    }),
+).annotate({
+  identifier: "DatabaseDeploymentDetailsAggregatedStats",
+}) as any as S.Schema<DatabaseDeploymentDetailsAggregatedStats>;
 
 /** PostgreSql property. */
 export interface PostgreSqlProperty {
@@ -2517,15 +2986,19 @@ export interface PostgreSqlProperty {
   enabled?: boolean;
 }
 export const PostgreSqlProperty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "property": S.optional(S.String),
-  "numericValue": S.optional(S.String),
-  "enabled": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "PostgreSqlProperty" }) as any as S.Schema<PostgreSqlProperty>;
+  S.Struct({
+    property: S.optional(S.String),
+    numericValue: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "PostgreSqlProperty",
+}) as any as S.Schema<PostgreSqlProperty>;
 
 export type PostgreSqlPropertyList = ReadonlyArray<PostgreSqlProperty>;
-export const PostgreSqlPropertyList = /*@__PURE__*/ S.Array(PostgreSqlProperty) as any as S.Schema<PostgreSqlPropertyList>;
+export const PostgreSqlPropertyList = /*@__PURE__*/ S.Array(
+  PostgreSqlProperty,
+) as any as S.Schema<PostgreSqlPropertyList>;
 
 /** PostgreSql setting. */
 export interface PostgreSqlSetting {
@@ -2545,19 +3018,23 @@ export interface PostgreSqlSetting {
   realValue?: number;
 }
 export const PostgreSqlSetting = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "boolValue": S.optional(S.Boolean),
-  "intValue": S.optional(S.String),
-  "source": S.optional(S.String),
-  "unit": S.optional(S.String),
-  "stringValue": S.optional(S.String),
-  "setting": S.optional(S.String),
-  "realValue": S.optional(S.Number),
-}),
-).annotate({ identifier: "PostgreSqlSetting" }) as any as S.Schema<PostgreSqlSetting>;
+  S.Struct({
+    boolValue: S.optional(S.Boolean),
+    intValue: S.optional(S.String),
+    source: S.optional(S.String),
+    unit: S.optional(S.String),
+    stringValue: S.optional(S.String),
+    setting: S.optional(S.String),
+    realValue: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "PostgreSqlSetting",
+}) as any as S.Schema<PostgreSqlSetting>;
 
 export type PostgreSqlSettingList = ReadonlyArray<PostgreSqlSetting>;
-export const PostgreSqlSettingList = /*@__PURE__*/ S.Array(PostgreSqlSetting) as any as S.Schema<PostgreSqlSettingList>;
+export const PostgreSqlSettingList = /*@__PURE__*/ S.Array(
+  PostgreSqlSetting,
+) as any as S.Schema<PostgreSqlSettingList>;
 
 /** Specific details for a PostgreSQL database deployment. */
 export interface PostgreSqlDatabaseDeployment {
@@ -2567,11 +3044,13 @@ export interface PostgreSqlDatabaseDeployment {
   settings?: PostgreSqlSettingList;
 }
 export const PostgreSqlDatabaseDeployment = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "properties": S.optional(PostgreSqlPropertyList),
-  "settings": S.optional(PostgreSqlSettingList),
-}),
-).annotate({ identifier: "PostgreSqlDatabaseDeployment" }) as any as S.Schema<PostgreSqlDatabaseDeployment>;
+  S.Struct({
+    properties: S.optional(PostgreSqlPropertyList),
+    settings: S.optional(PostgreSqlSettingList),
+  }),
+).annotate({
+  identifier: "PostgreSqlDatabaseDeployment",
+}) as any as S.Schema<PostgreSqlDatabaseDeployment>;
 
 /** The details of a database deployment asset. */
 export interface DatabaseDeploymentDetails {
@@ -2597,61 +3076,77 @@ export interface DatabaseDeploymentDetails {
   manualUniqueId?: string;
 }
 export const DatabaseDeploymentDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "edition": S.optional(S.String),
-  "sqlServer": S.optional(SqlServerDatabaseDeployment),
-  "topology": S.optional(DatabaseDeploymentTopology),
-  "mysql": S.optional(MysqlDatabaseDeployment),
-  "awsRds": S.optional(AwsRds),
-  "version": S.optional(S.String),
-  "aggregatedStats": S.optional(DatabaseDeploymentDetailsAggregatedStats),
-  "generatedId": S.optional(S.String),
-  "postgresql": S.optional(PostgreSqlDatabaseDeployment),
-  "manualUniqueId": S.optional(S.String),
-}),
-).annotate({ identifier: "DatabaseDeploymentDetails" }) as any as S.Schema<DatabaseDeploymentDetails>;
+  S.Struct({
+    edition: S.optional(S.String),
+    sqlServer: S.optional(SqlServerDatabaseDeployment),
+    topology: S.optional(DatabaseDeploymentTopology),
+    mysql: S.optional(MysqlDatabaseDeployment),
+    awsRds: S.optional(AwsRds),
+    version: S.optional(S.String),
+    aggregatedStats: S.optional(DatabaseDeploymentDetailsAggregatedStats),
+    generatedId: S.optional(S.String),
+    postgresql: S.optional(PostgreSqlDatabaseDeployment),
+    manualUniqueId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DatabaseDeploymentDetails",
+}) as any as S.Schema<DatabaseDeploymentDetails>;
 
 /** Asset information specific for AWS Application Load Balancers. */
 export interface AwsApplicationLoadBalancerDetails {}
 export const AwsApplicationLoadBalancerDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "AwsApplicationLoadBalancerDetails" }) as any as S.Schema<AwsApplicationLoadBalancerDetails>;
+  S.Struct({}),
+).annotate({
+  identifier: "AwsApplicationLoadBalancerDetails",
+}) as any as S.Schema<AwsApplicationLoadBalancerDetails>;
 
 /** Asset information specific for AWS Lambda functions. */
 export interface AwsLambdaFunctionDetails {}
 export const AwsLambdaFunctionDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "AwsLambdaFunctionDetails" }) as any as S.Schema<AwsLambdaFunctionDetails>;
+  S.Struct({}),
+).annotate({
+  identifier: "AwsLambdaFunctionDetails",
+}) as any as S.Schema<AwsLambdaFunctionDetails>;
 
 /** Asset information specific for AWS Load Balancers. */
 export interface AwsElbLoadBalancerDetails {}
 export const AwsElbLoadBalancerDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "AwsElbLoadBalancerDetails" }) as any as S.Schema<AwsElbLoadBalancerDetails>;
+  S.Struct({}),
+).annotate({
+  identifier: "AwsElbLoadBalancerDetails",
+}) as any as S.Schema<AwsElbLoadBalancerDetails>;
 
 /** Details of an AWS ElastiCache Cluster. */
 export interface AwsElastiCacheClusterDetails {}
 export const AwsElastiCacheClusterDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "AwsElastiCacheClusterDetails" }) as any as S.Schema<AwsElastiCacheClusterDetails>;
+  S.Struct({}),
+).annotate({
+  identifier: "AwsElastiCacheClusterDetails",
+}) as any as S.Schema<AwsElastiCacheClusterDetails>;
 
 /** Asset information specific for AWS Autoscaling Group. */
 export interface AwsAutoscalingGroupDetails {}
 export const AwsAutoscalingGroupDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "AwsAutoscalingGroupDetails" }) as any as S.Schema<AwsAutoscalingGroupDetails>;
+  S.Struct({}),
+).annotate({
+  identifier: "AwsAutoscalingGroupDetails",
+}) as any as S.Schema<AwsAutoscalingGroupDetails>;
 
 /** Asset information specific for AWS Batch Compute Environments. */
 export interface AwsBatchComputeEnvironmentDetails {}
 export const AwsBatchComputeEnvironmentDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "AwsBatchComputeEnvironmentDetails" }) as any as S.Schema<AwsBatchComputeEnvironmentDetails>;
+  S.Struct({}),
+).annotate({
+  identifier: "AwsBatchComputeEnvironmentDetails",
+}) as any as S.Schema<AwsBatchComputeEnvironmentDetails>;
 
 /** Contains details for an AWS Kinesis Stream asset. */
 export interface AwsKinesisStreamDetails {}
 export const AwsKinesisStreamDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "AwsKinesisStreamDetails" }) as any as S.Schema<AwsKinesisStreamDetails>;
+  S.Struct({}),
+).annotate({
+  identifier: "AwsKinesisStreamDetails",
+}) as any as S.Schema<AwsKinesisStreamDetails>;
 
 /** Details of network adapters and settings. */
 export interface VirtualMachineNetworkDetails {
@@ -2667,17 +3162,23 @@ export interface VirtualMachineNetworkDetails {
   publicIpAddress?: string;
 }
 export const VirtualMachineNetworkDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "primaryIpAddress": S.optional(S.String),
-  "networkAdapters": S.optional(NetworkAdapterList),
-  "primaryMacAddress": S.optional(S.String),
-  "defaultGw": S.optional(S.String),
-  "publicIpAddress": S.optional(S.String),
-}),
-).annotate({ identifier: "VirtualMachineNetworkDetails" }) as any as S.Schema<VirtualMachineNetworkDetails>;
+  S.Struct({
+    primaryIpAddress: S.optional(S.String),
+    networkAdapters: S.optional(NetworkAdapterList),
+    primaryMacAddress: S.optional(S.String),
+    defaultGw: S.optional(S.String),
+    publicIpAddress: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VirtualMachineNetworkDetails",
+}) as any as S.Schema<VirtualMachineNetworkDetails>;
 
-export type VirtualMachineArchitectureDetailsHyperthreadingEnum = "HYPER_THREADING_UNSPECIFIED" | "HYPER_THREADING_DISABLED" | "HYPER_THREADING_ENABLED";
-export const VirtualMachineArchitectureDetailsHyperthreadingEnum = /*@__PURE__*/ S.String;
+export type VirtualMachineArchitectureDetailsHyperthreadingEnum =
+  | "HYPER_THREADING_UNSPECIFIED"
+  | "HYPER_THREADING_DISABLED"
+  | "HYPER_THREADING_ENABLED";
+export const VirtualMachineArchitectureDetailsHyperthreadingEnum =
+  /*@__PURE__*/ S.String;
 
 /** Details of the VM architecture. */
 export interface VirtualMachineArchitectureDetails {
@@ -2701,18 +3202,22 @@ export interface VirtualMachineArchitectureDetails {
   vendor?: string;
 }
 export const VirtualMachineArchitectureDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "cpuArchitecture": S.optional(S.String),
-  "firmware": S.optional(S.String),
-  "cpuName": S.optional(S.String),
-  "cpuThreadCount": S.optional(S.Number),
-  "cpuSocketCount": S.optional(S.Number),
-  "cpuManufacturer": S.optional(S.String),
-  "bios": S.optional(BiosDetails),
-  "hyperthreading": S.optional(VirtualMachineArchitectureDetailsHyperthreadingEnum),
-  "vendor": S.optional(S.String),
-}),
-).annotate({ identifier: "VirtualMachineArchitectureDetails" }) as any as S.Schema<VirtualMachineArchitectureDetails>;
+  S.Struct({
+    cpuArchitecture: S.optional(S.String),
+    firmware: S.optional(S.String),
+    cpuName: S.optional(S.String),
+    cpuThreadCount: S.optional(S.Number),
+    cpuSocketCount: S.optional(S.Number),
+    cpuManufacturer: S.optional(S.String),
+    bios: S.optional(BiosDetails),
+    hyperthreading: S.optional(
+      VirtualMachineArchitectureDetailsHyperthreadingEnum,
+    ),
+    vendor: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VirtualMachineArchitectureDetails",
+}) as any as S.Schema<VirtualMachineArchitectureDetails>;
 
 /** Details of VM disks. */
 export interface VirtualMachineDiskDetails {
@@ -2726,15 +3231,21 @@ export interface VirtualMachineDiskDetails {
   lsblkJson?: string;
 }
 export const VirtualMachineDiskDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "disks": S.optional(DiskEntryList),
-  "hddTotalCapacityBytes": S.optional(S.String),
-  "hddTotalFreeBytes": S.optional(S.String),
-  "lsblkJson": S.optional(S.String),
-}),
-).annotate({ identifier: "VirtualMachineDiskDetails" }) as any as S.Schema<VirtualMachineDiskDetails>;
+  S.Struct({
+    disks: S.optional(DiskEntryList),
+    hddTotalCapacityBytes: S.optional(S.String),
+    hddTotalFreeBytes: S.optional(S.String),
+    lsblkJson: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VirtualMachineDiskDetails",
+}) as any as S.Schema<VirtualMachineDiskDetails>;
 
-export type VirtualMachineDetailsOsFamilyEnum = "OS_FAMILY_UNKNOWN" | "OS_FAMILY_WINDOWS" | "OS_FAMILY_LINUX" | "OS_FAMILY_UNIX";
+export type VirtualMachineDetailsOsFamilyEnum =
+  | "OS_FAMILY_UNKNOWN"
+  | "OS_FAMILY_WINDOWS"
+  | "OS_FAMILY_LINUX"
+  | "OS_FAMILY_UNIX";
 export const VirtualMachineDetailsOsFamilyEnum = /*@__PURE__*/ S.String;
 
 /** Details of a VirtualMachine. */
@@ -2777,39 +3288,45 @@ export interface VirtualMachineDetails {
   guestOs?: GuestOsDetails;
 }
 export const VirtualMachineDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "memoryMb": S.optional(S.Number),
-  "vcenterVmId": S.optional(S.String),
-  "coreCount": S.optional(S.Number),
-  "platform": S.optional(PlatformDetails),
-  "vmNetwork": S.optional(VirtualMachineNetworkDetails),
-  "vcenterUrl": S.optional(S.String),
-  "vmArchitecture": S.optional(VirtualMachineArchitectureDetails),
-  "osVersion": S.optional(S.String),
-  "vmDisks": S.optional(VirtualMachineDiskDetails),
-  "diskPartitions": S.optional(DiskPartitionDetails),
-  "vmName": S.optional(S.String),
-  "vcenterFolder": S.optional(S.String),
-  "osFamily": S.optional(VirtualMachineDetailsOsFamilyEnum),
-  "powerState": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "osName": S.optional(S.String),
-  "vmUuid": S.optional(S.String),
-  "guestOs": S.optional(GuestOsDetails),
-}),
-).annotate({ identifier: "VirtualMachineDetails" }) as any as S.Schema<VirtualMachineDetails>;
+  S.Struct({
+    memoryMb: S.optional(S.Number),
+    vcenterVmId: S.optional(S.String),
+    coreCount: S.optional(S.Number),
+    platform: S.optional(PlatformDetails),
+    vmNetwork: S.optional(VirtualMachineNetworkDetails),
+    vcenterUrl: S.optional(S.String),
+    vmArchitecture: S.optional(VirtualMachineArchitectureDetails),
+    osVersion: S.optional(S.String),
+    vmDisks: S.optional(VirtualMachineDiskDetails),
+    diskPartitions: S.optional(DiskPartitionDetails),
+    vmName: S.optional(S.String),
+    vcenterFolder: S.optional(S.String),
+    osFamily: S.optional(VirtualMachineDetailsOsFamilyEnum),
+    powerState: S.optional(S.String),
+    createTime: S.optional(S.String),
+    osName: S.optional(S.String),
+    vmUuid: S.optional(S.String),
+    guestOs: S.optional(GuestOsDetails),
+  }),
+).annotate({
+  identifier: "VirtualMachineDetails",
+}) as any as S.Schema<VirtualMachineDetails>;
 
 /** Asset information specific for AWS EBS Volumes. */
 export interface AwsEbsVolumeDetails {}
 export const AwsEbsVolumeDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "AwsEbsVolumeDetails" }) as any as S.Schema<AwsEbsVolumeDetails>;
+  S.Struct({}),
+).annotate({
+  identifier: "AwsEbsVolumeDetails",
+}) as any as S.Schema<AwsEbsVolumeDetails>;
 
 /** Asset information specific for AWS API Gateway REST APIs. */
 export interface AwsApiGatewayRestApiDetails {}
 export const AwsApiGatewayRestApiDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "AwsApiGatewayRestApiDetails" }) as any as S.Schema<AwsApiGatewayRestApiDetails>;
+  S.Struct({}),
+).annotate({
+  identifier: "AwsApiGatewayRestApiDetails",
+}) as any as S.Schema<AwsApiGatewayRestApiDetails>;
 
 /** An asset represents a resource in your environment. Asset types include virtual machines and databases. */
 export interface Asset {
@@ -2911,56 +3428,64 @@ export interface Asset {
   awsApiGatewayRestApiDetails?: AwsApiGatewayRestApiDetails;
 }
 export const Asset = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "awsS3BucketDetails": S.optional(AwsS3BucketDetails),
-  "awsSnsTopicDetails": S.optional(AwsSnsTopicDetails),
-  "awsVpcDetails": S.optional(AwsVpcDetails),
-  "title": S.optional(S.String),
-  "hostingProviderDetails": S.optional(HostingProviderDetails),
-  "awsCloudFrontDistributionDetails": S.optional(AwsCloudFrontDistributionDetails),
-  "insightList": S.optional(InsightList),
-  "awsEmrClusterDetails": S.optional(AwsEmrClusterDetails),
-  "labels": S.optional(StringMap),
-  "hideTime": S.optional(S.String),
-  "awsEcsClusterDetails": S.optional(AwsEcsClusterDetails),
-  "awsEcrRepositoryDetails": S.optional(AwsEcrRepositoryDetails),
-  "attributes": S.optional(StringMap),
-  "awsInternetGatewayDetails": S.optional(AwsInternetGatewayDetails),
-  "awsAppSyncGraphqlApiDetails": S.optional(AwsAppSyncGraphqlApiDetails),
-  "databaseDetails": S.optional(DatabaseDetails),
-  "awsElasticNetworkInterfaceDetails": S.optional(AwsElasticNetworkInterfaceDetails),
-  "awsAthenaWorkGroupDetails": S.optional(AwsAthenaWorkGroupDetails),
-  "hideReason": S.optional(S.String),
-  "awsGlueJobDetails": S.optional(AwsGlueJobDetails),
-  "performanceData": S.optional(AssetPerformanceData),
-  "createTime": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "awsRoute53HostedZoneDetails": S.optional(AwsRoute53HostedZoneDetails),
-  "awsFirehoseDetails": S.optional(AwsFirehoseDetails),
-  "sources": S.optional(StringList),
-  "awsDynamodbTableDetails": S.optional(AwsDynamoDBTableDetails),
-  "awsElasticIpAddressDetails": S.optional(AwsElasticIpAddressDetails),
-  "structuredAttributes": S.optional(DocumentMap),
-  "awsEksClusterDetails": S.optional(AwsEksClusterDetails),
-  "awsRedshiftDetails": S.optional(AwsRedshiftDetails),
-  "awsEfsFileSystemDetails": S.optional(AwsEfsFileSystemDetails),
-  "awsNatGatewayDetails": S.optional(AwsNatGatewayDetails),
-  "machineDetails": S.optional(MachineDetails),
-  "databaseDeploymentDetails": S.optional(DatabaseDeploymentDetails),
-  "assignedGroups": S.optional(StringList),
-  "awsApplicationLoadBalancerDetails": S.optional(AwsApplicationLoadBalancerDetails),
-  "awsLambdaFunctionDetails": S.optional(AwsLambdaFunctionDetails),
-  "name": S.optional(S.String),
-  "awsElbLoadBalancerDetails": S.optional(AwsElbLoadBalancerDetails),
-  "awsElasticacheClusterDetails": S.optional(AwsElastiCacheClusterDetails),
-  "awsAutoscalingGroupDetails": S.optional(AwsAutoscalingGroupDetails),
-  "awsBatchComputeEnvironmentDetails": S.optional(AwsBatchComputeEnvironmentDetails),
-  "hidden": S.optional(S.Boolean),
-  "awsKinesisStreamDetails": S.optional(AwsKinesisStreamDetails),
-  "virtualMachineDetails": S.optional(VirtualMachineDetails),
-  "awsEbsVolumeDetails": S.optional(AwsEbsVolumeDetails),
-  "awsApiGatewayRestApiDetails": S.optional(AwsApiGatewayRestApiDetails),
-}),
+  S.Struct({
+    awsS3BucketDetails: S.optional(AwsS3BucketDetails),
+    awsSnsTopicDetails: S.optional(AwsSnsTopicDetails),
+    awsVpcDetails: S.optional(AwsVpcDetails),
+    title: S.optional(S.String),
+    hostingProviderDetails: S.optional(HostingProviderDetails),
+    awsCloudFrontDistributionDetails: S.optional(
+      AwsCloudFrontDistributionDetails,
+    ),
+    insightList: S.optional(InsightList),
+    awsEmrClusterDetails: S.optional(AwsEmrClusterDetails),
+    labels: S.optional(StringMap),
+    hideTime: S.optional(S.String),
+    awsEcsClusterDetails: S.optional(AwsEcsClusterDetails),
+    awsEcrRepositoryDetails: S.optional(AwsEcrRepositoryDetails),
+    attributes: S.optional(StringMap),
+    awsInternetGatewayDetails: S.optional(AwsInternetGatewayDetails),
+    awsAppSyncGraphqlApiDetails: S.optional(AwsAppSyncGraphqlApiDetails),
+    databaseDetails: S.optional(DatabaseDetails),
+    awsElasticNetworkInterfaceDetails: S.optional(
+      AwsElasticNetworkInterfaceDetails,
+    ),
+    awsAthenaWorkGroupDetails: S.optional(AwsAthenaWorkGroupDetails),
+    hideReason: S.optional(S.String),
+    awsGlueJobDetails: S.optional(AwsGlueJobDetails),
+    performanceData: S.optional(AssetPerformanceData),
+    createTime: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    awsRoute53HostedZoneDetails: S.optional(AwsRoute53HostedZoneDetails),
+    awsFirehoseDetails: S.optional(AwsFirehoseDetails),
+    sources: S.optional(StringList),
+    awsDynamodbTableDetails: S.optional(AwsDynamoDBTableDetails),
+    awsElasticIpAddressDetails: S.optional(AwsElasticIpAddressDetails),
+    structuredAttributes: S.optional(DocumentMap),
+    awsEksClusterDetails: S.optional(AwsEksClusterDetails),
+    awsRedshiftDetails: S.optional(AwsRedshiftDetails),
+    awsEfsFileSystemDetails: S.optional(AwsEfsFileSystemDetails),
+    awsNatGatewayDetails: S.optional(AwsNatGatewayDetails),
+    machineDetails: S.optional(MachineDetails),
+    databaseDeploymentDetails: S.optional(DatabaseDeploymentDetails),
+    assignedGroups: S.optional(StringList),
+    awsApplicationLoadBalancerDetails: S.optional(
+      AwsApplicationLoadBalancerDetails,
+    ),
+    awsLambdaFunctionDetails: S.optional(AwsLambdaFunctionDetails),
+    name: S.optional(S.String),
+    awsElbLoadBalancerDetails: S.optional(AwsElbLoadBalancerDetails),
+    awsElasticacheClusterDetails: S.optional(AwsElastiCacheClusterDetails),
+    awsAutoscalingGroupDetails: S.optional(AwsAutoscalingGroupDetails),
+    awsBatchComputeEnvironmentDetails: S.optional(
+      AwsBatchComputeEnvironmentDetails,
+    ),
+    hidden: S.optional(S.Boolean),
+    awsKinesisStreamDetails: S.optional(AwsKinesisStreamDetails),
+    virtualMachineDetails: S.optional(VirtualMachineDetails),
+    awsEbsVolumeDetails: S.optional(AwsEbsVolumeDetails),
+    awsApiGatewayRestApiDetails: S.optional(AwsApiGatewayRestApiDetails),
+  }),
 ).annotate({ identifier: "Asset" }) as any as S.Schema<Asset>;
 
 /** A request to update an asset. */
@@ -2973,15 +3498,19 @@ export interface UpdateAssetRequest {
   requestId?: string;
 }
 export const UpdateAssetRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String),
-  "asset": S.optional(Asset),
-  "requestId": S.optional(S.String),
-}),
-).annotate({ identifier: "UpdateAssetRequest" }) as any as S.Schema<UpdateAssetRequest>;
+  S.Struct({
+    updateMask: S.optional(S.String),
+    asset: S.optional(Asset),
+    requestId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateAssetRequest",
+}) as any as S.Schema<UpdateAssetRequest>;
 
 export type UpdateAssetRequestList = ReadonlyArray<UpdateAssetRequest>;
-export const UpdateAssetRequestList = /*@__PURE__*/ S.Array(UpdateAssetRequest) as any as S.Schema<UpdateAssetRequestList>;
+export const UpdateAssetRequestList = /*@__PURE__*/ S.Array(
+  UpdateAssetRequest,
+) as any as S.Schema<UpdateAssetRequestList>;
 
 /** A request to update a list of assets. */
 export interface BatchUpdateAssetsRequest {
@@ -2989,10 +3518,12 @@ export interface BatchUpdateAssetsRequest {
   requests?: UpdateAssetRequestList;
 }
 export const BatchUpdateAssetsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requests": S.optional(UpdateAssetRequestList),
-}),
-).annotate({ identifier: "BatchUpdateAssetsRequest" }) as any as S.Schema<BatchUpdateAssetsRequest>;
+  S.Struct({
+    requests: S.optional(UpdateAssetRequestList),
+  }),
+).annotate({
+  identifier: "BatchUpdateAssetsRequest",
+}) as any as S.Schema<BatchUpdateAssetsRequest>;
 
 export interface BatchUpdateProjectsLocationsAssetsRequest {
   /** Required. Parent value for batch asset update. */
@@ -3000,15 +3531,26 @@ export interface BatchUpdateProjectsLocationsAssetsRequest {
   /** Request body */
   body?: BatchUpdateAssetsRequest;
 }
-export const BatchUpdateProjectsLocationsAssetsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(BatchUpdateAssetsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+parent}/assets:batchUpdate","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "BatchUpdateProjectsLocationsAssetsRequest" }) as any as S.Schema<BatchUpdateProjectsLocationsAssetsRequest>;
+export const BatchUpdateProjectsLocationsAssetsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(BatchUpdateAssetsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1alpha1/{+parent}/assets:batchUpdate",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "BatchUpdateProjectsLocationsAssetsRequest",
+  }) as any as S.Schema<BatchUpdateProjectsLocationsAssetsRequest>;
 
 export type AssetList_ = ReadonlyArray<Asset>;
-export const AssetList_ = /*@__PURE__*/ S.Array(Asset) as any as S.Schema<AssetList_>;
+export const AssetList_ = /*@__PURE__*/ S.Array(
+  Asset,
+) as any as S.Schema<AssetList_>;
 
 /** Response for updating a list of assets. */
 export interface BatchUpdateAssetsResponse {
@@ -3016,16 +3558,20 @@ export interface BatchUpdateAssetsResponse {
   assets?: AssetList_;
 }
 export const BatchUpdateAssetsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "assets": S.optional(AssetList_),
-}),
-).annotate({ identifier: "BatchUpdateAssetsResponse" }) as any as S.Schema<BatchUpdateAssetsResponse>;
+  S.Struct({
+    assets: S.optional(AssetList_),
+  }),
+).annotate({
+  identifier: "BatchUpdateAssetsResponse",
+}) as any as S.Schema<BatchUpdateAssetsResponse>;
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
 export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "CancelOperationRequest" }) as any as S.Schema<CancelOperationRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "CancelOperationRequest",
+}) as any as S.Schema<CancelOperationRequest>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -3033,20 +3579,34 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+name}:cancel","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "CancelProjectsLocationsOperationsRequest" }) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1alpha1/{+name}:cancel",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CancelProjectsLocationsOperationsRequest",
+}) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
 
 /** Configuration for asset inventory details exports. */
 export interface AssetsExportJobInventory {}
 export const AssetsExportJobInventory = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "AssetsExportJobInventory" }) as any as S.Schema<AssetsExportJobInventory>;
+  S.Struct({}),
+).annotate({
+  identifier: "AssetsExportJobInventory",
+}) as any as S.Schema<AssetsExportJobInventory>;
 
-export type SignedUriDestinationFileFormatEnum = "FILE_FORMAT_UNSPECIFIED" | "CSV" | "XLSX";
+export type SignedUriDestinationFileFormatEnum =
+  | "FILE_FORMAT_UNSPECIFIED"
+  | "CSV"
+  | "XLSX";
 export const SignedUriDestinationFileFormatEnum = /*@__PURE__*/ S.String;
 
 /** Signed URI destination configuration. */
@@ -3055,10 +3615,12 @@ export interface SignedUriDestination {
   fileFormat?: SignedUriDestinationFileFormatEnum;
 }
 export const SignedUriDestination = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fileFormat": S.optional(SignedUriDestinationFileFormatEnum),
-}),
-).annotate({ identifier: "SignedUriDestination" }) as any as S.Schema<SignedUriDestination>;
+  S.Struct({
+    fileFormat: S.optional(SignedUriDestinationFileFormatEnum),
+  }),
+).annotate({
+  identifier: "SignedUriDestination",
+}) as any as S.Schema<SignedUriDestination>;
 
 /** Configuration for performance data exports. */
 export interface AssetsExportJobPerformanceData {
@@ -3066,10 +3628,12 @@ export interface AssetsExportJobPerformanceData {
   maxDays?: number;
 }
 export const AssetsExportJobPerformanceData = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "maxDays": S.optional(S.Number),
-}),
-).annotate({ identifier: "AssetsExportJobPerformanceData" }) as any as S.Schema<AssetsExportJobPerformanceData>;
+  S.Struct({
+    maxDays: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "AssetsExportJobPerformanceData",
+}) as any as S.Schema<AssetsExportJobPerformanceData>;
 
 /** Contains a signed URI. */
 export interface SignedUri {
@@ -3079,10 +3643,10 @@ export interface SignedUri {
   file?: string;
 }
 export const SignedUri = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "uri": S.optional(S.String),
-  "file": S.optional(S.String),
-}),
+  S.Struct({
+    uri: S.optional(S.String),
+    file: S.optional(S.String),
+  }),
 ).annotate({ identifier: "SignedUri" }) as any as S.Schema<SignedUri>;
 
 /** Contains a single output file of type CSV. */
@@ -3095,11 +3659,11 @@ export interface CsvOutputFile {
   rowCount?: number;
 }
 export const CsvOutputFile = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "columnsCount": S.optional(S.Number),
-  "signedUri": S.optional(SignedUri),
-  "rowCount": S.optional(S.Number),
-}),
+  S.Struct({
+    columnsCount: S.optional(S.Number),
+    signedUri: S.optional(SignedUri),
+    rowCount: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "CsvOutputFile" }) as any as S.Schema<CsvOutputFile>;
 
 /** Contains a single output file of type XLSX. */
@@ -3108,9 +3672,9 @@ export interface XlsxOutputFile {
   signedUri?: SignedUri;
 }
 export const XlsxOutputFile = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "signedUri": S.optional(SignedUri),
-}),
+  S.Struct({
+    signedUri: S.optional(SignedUri),
+  }),
 ).annotate({ identifier: "XlsxOutputFile" }) as any as S.Schema<XlsxOutputFile>;
 
 /** Contains a single output file. */
@@ -3123,15 +3687,17 @@ export interface OutputFile {
   fileSizeBytes?: string;
 }
 export const OutputFile = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "csvOutputFile": S.optional(CsvOutputFile),
-  "xlsxOutputFile": S.optional(XlsxOutputFile),
-  "fileSizeBytes": S.optional(S.String),
-}),
+  S.Struct({
+    csvOutputFile: S.optional(CsvOutputFile),
+    xlsxOutputFile: S.optional(XlsxOutputFile),
+    fileSizeBytes: S.optional(S.String),
+  }),
 ).annotate({ identifier: "OutputFile" }) as any as S.Schema<OutputFile>;
 
 export type OutputFileList_ = ReadonlyArray<OutputFile>;
-export const OutputFileList_ = /*@__PURE__*/ S.Array(OutputFile) as any as S.Schema<OutputFileList_>;
+export const OutputFileList_ = /*@__PURE__*/ S.Array(
+  OutputFile,
+) as any as S.Schema<OutputFileList_>;
 
 /** Contains a list of output files. */
 export interface OutputFileList {
@@ -3139,13 +3705,15 @@ export interface OutputFileList {
   entries?: OutputFileList_;
 }
 export const OutputFileList = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "entries": S.optional(OutputFileList_),
-}),
+  S.Struct({
+    entries: S.optional(OutputFileList_),
+  }),
 ).annotate({ identifier: "OutputFileList" }) as any as S.Schema<OutputFileList>;
 
 export type SignedUriList = ReadonlyArray<SignedUri>;
-export const SignedUriList = /*@__PURE__*/ S.Array(SignedUri) as any as S.Schema<SignedUriList>;
+export const SignedUriList = /*@__PURE__*/ S.Array(
+  SignedUri,
+) as any as S.Schema<SignedUriList>;
 
 /** Contains a list of Signed URIs. */
 export interface SignedUris {
@@ -3153,9 +3721,9 @@ export interface SignedUris {
   signedUris?: SignedUriList;
 }
 export const SignedUris = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "signedUris": S.optional(SignedUriList),
-}),
+  S.Struct({
+    signedUris: S.optional(SignedUriList),
+  }),
 ).annotate({ identifier: "SignedUris" }) as any as S.Schema<SignedUris>;
 
 /** Contains the result of the assets export. */
@@ -3168,12 +3736,14 @@ export interface AssetsExportJobExecutionResult {
   error?: Status;
 }
 export const AssetsExportJobExecutionResult = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "outputFiles": S.optional(OutputFileList),
-  "signedUris": S.optional(SignedUris),
-  "error": S.optional(Status),
-}),
-).annotate({ identifier: "AssetsExportJobExecutionResult" }) as any as S.Schema<AssetsExportJobExecutionResult>;
+  S.Struct({
+    outputFiles: S.optional(OutputFileList),
+    signedUris: S.optional(SignedUris),
+    error: S.optional(Status),
+  }),
+).annotate({
+  identifier: "AssetsExportJobExecutionResult",
+}) as any as S.Schema<AssetsExportJobExecutionResult>;
 
 /** Execution status of assets export job. */
 export interface AssetsExportJobExecution {
@@ -3191,24 +3761,31 @@ export interface AssetsExportJobExecution {
   result?: AssetsExportJobExecutionResult;
 }
 export const AssetsExportJobExecution = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "startTime": S.optional(S.String),
-  "endTime": S.optional(S.String),
-  "requestedAssetCount": S.optional(S.Number),
-  "expireTime": S.optional(S.String),
-  "executionId": S.optional(S.String),
-  "result": S.optional(AssetsExportJobExecutionResult),
-}),
-).annotate({ identifier: "AssetsExportJobExecution" }) as any as S.Schema<AssetsExportJobExecution>;
+  S.Struct({
+    startTime: S.optional(S.String),
+    endTime: S.optional(S.String),
+    requestedAssetCount: S.optional(S.Number),
+    expireTime: S.optional(S.String),
+    executionId: S.optional(S.String),
+    result: S.optional(AssetsExportJobExecutionResult),
+  }),
+).annotate({
+  identifier: "AssetsExportJobExecution",
+}) as any as S.Schema<AssetsExportJobExecution>;
 
-export type AssetsExportJobExecutionList = ReadonlyArray<AssetsExportJobExecution>;
-export const AssetsExportJobExecutionList = /*@__PURE__*/ S.Array(AssetsExportJobExecution) as any as S.Schema<AssetsExportJobExecutionList>;
+export type AssetsExportJobExecutionList =
+  ReadonlyArray<AssetsExportJobExecution>;
+export const AssetsExportJobExecutionList = /*@__PURE__*/ S.Array(
+  AssetsExportJobExecution,
+) as any as S.Schema<AssetsExportJobExecutionList>;
 
 /** Configuration for network dependencies exports. */
 export interface AssetsExportJobNetworkDependencies {}
 export const AssetsExportJobNetworkDependencies = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "AssetsExportJobNetworkDependencies" }) as any as S.Schema<AssetsExportJobNetworkDependencies>;
+  S.Struct({}),
+).annotate({
+  identifier: "AssetsExportJobNetworkDependencies",
+}) as any as S.Schema<AssetsExportJobNetworkDependencies>;
 
 /** Conditions for selecting assets to export. */
 export interface AssetsExportJobExportCondition {
@@ -3216,10 +3793,12 @@ export interface AssetsExportJobExportCondition {
   filter?: string;
 }
 export const AssetsExportJobExportCondition = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String),
-}),
-).annotate({ identifier: "AssetsExportJobExportCondition" }) as any as S.Schema<AssetsExportJobExportCondition>;
+  S.Struct({
+    filter: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AssetsExportJobExportCondition",
+}) as any as S.Schema<AssetsExportJobExportCondition>;
 
 /** Assets export job message. */
 export interface AssetsExportJob {
@@ -3247,20 +3826,22 @@ export interface AssetsExportJob {
   labels?: StringMap;
 }
 export const AssetsExportJob = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "inventory": S.optional(AssetsExportJobInventory),
-  "signedUriDestination": S.optional(SignedUriDestination),
-  "createTime": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "showHidden": S.optional(S.Boolean),
-  "performanceData": S.optional(AssetsExportJobPerformanceData),
-  "name": S.optional(S.String),
-  "recentExecutions": S.optional(AssetsExportJobExecutionList),
-  "networkDependencies": S.optional(AssetsExportJobNetworkDependencies),
-  "condition": S.optional(AssetsExportJobExportCondition),
-  "labels": S.optional(StringMap),
-}),
-).annotate({ identifier: "AssetsExportJob" }) as any as S.Schema<AssetsExportJob>;
+  S.Struct({
+    inventory: S.optional(AssetsExportJobInventory),
+    signedUriDestination: S.optional(SignedUriDestination),
+    createTime: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    showHidden: S.optional(S.Boolean),
+    performanceData: S.optional(AssetsExportJobPerformanceData),
+    name: S.optional(S.String),
+    recentExecutions: S.optional(AssetsExportJobExecutionList),
+    networkDependencies: S.optional(AssetsExportJobNetworkDependencies),
+    condition: S.optional(AssetsExportJobExportCondition),
+    labels: S.optional(StringMap),
+  }),
+).annotate({
+  identifier: "AssetsExportJob",
+}) as any as S.Schema<AssetsExportJob>;
 
 export interface CreateProjectsLocationsAssetsExportJobsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -3272,14 +3853,23 @@ export interface CreateProjectsLocationsAssetsExportJobsRequest {
   /** Request body */
   body?: AssetsExportJob;
 }
-export const CreateProjectsLocationsAssetsExportJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "assetsExportJobId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(AssetsExportJob.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+parent}/assetsExportJobs","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsAssetsExportJobsRequest" }) as any as S.Schema<CreateProjectsLocationsAssetsExportJobsRequest>;
+export const CreateProjectsLocationsAssetsExportJobsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      requestId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      assetsExportJobId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(AssetsExportJob.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1alpha1/{+parent}/assetsExportJobs",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsAssetsExportJobsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsAssetsExportJobsRequest>;
 
 /** Discovery client recommended version. */
 export interface DiscoveryClientDiscoveryClientRecommendedVersion {
@@ -3288,20 +3878,34 @@ export interface DiscoveryClientDiscoveryClientRecommendedVersion {
   /** Output only. The version of the discovery client. */
   version?: string;
 }
-export const DiscoveryClientDiscoveryClientRecommendedVersion = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "uri": S.optional(S.String),
-  "version": S.optional(S.String),
-}),
-).annotate({ identifier: "DiscoveryClientDiscoveryClientRecommendedVersion" }) as any as S.Schema<DiscoveryClientDiscoveryClientRecommendedVersion>;
+export const DiscoveryClientDiscoveryClientRecommendedVersion =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      uri: S.optional(S.String),
+      version: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DiscoveryClientDiscoveryClientRecommendedVersion",
+  }) as any as S.Schema<DiscoveryClientDiscoveryClientRecommendedVersion>;
 
-export type DiscoveryClientDiscoveryClientRecommendedVersionList = ReadonlyArray<DiscoveryClientDiscoveryClientRecommendedVersion>;
-export const DiscoveryClientDiscoveryClientRecommendedVersionList = /*@__PURE__*/ S.Array(DiscoveryClientDiscoveryClientRecommendedVersion) as any as S.Schema<DiscoveryClientDiscoveryClientRecommendedVersionList>;
+export type DiscoveryClientDiscoveryClientRecommendedVersionList =
+  ReadonlyArray<DiscoveryClientDiscoveryClientRecommendedVersion>;
+export const DiscoveryClientDiscoveryClientRecommendedVersionList =
+  /*@__PURE__*/ S.Array(
+    DiscoveryClientDiscoveryClientRecommendedVersion,
+  ) as any as S.Schema<DiscoveryClientDiscoveryClientRecommendedVersionList>;
 
 export type StatusList = ReadonlyArray<Status>;
-export const StatusList = /*@__PURE__*/ S.Array(Status) as any as S.Schema<StatusList>;
+export const StatusList = /*@__PURE__*/ S.Array(
+  Status,
+) as any as S.Schema<StatusList>;
 
-export type DiscoveryClientStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "OFFLINE" | "DEGRADED" | "EXPIRED";
+export type DiscoveryClientStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "OFFLINE"
+  | "DEGRADED"
+  | "EXPIRED";
 export const DiscoveryClientStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents an installed Migration Center Discovery Client instance. */
@@ -3340,25 +3944,29 @@ export interface DiscoveryClient {
   displayName?: string;
 }
 export const DiscoveryClient = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "recommendedVersions": S.optional(DiscoveryClientDiscoveryClientRecommendedVersionList),
-  "name": S.optional(S.String),
-  "heartbeatTime": S.optional(S.String),
-  "serviceAccount": S.optional(S.String),
-  "version": S.optional(S.String),
-  "signalsEndpoint": S.optional(S.String),
-  "description": S.optional(S.String),
-  "errors": S.optional(StatusList),
-  "state": S.optional(DiscoveryClientStateEnum),
-  "ttl": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "source": S.optional(S.String),
-  "expireTime": S.optional(S.String),
-  "displayName": S.optional(S.String),
-}),
-).annotate({ identifier: "DiscoveryClient" }) as any as S.Schema<DiscoveryClient>;
+  S.Struct({
+    recommendedVersions: S.optional(
+      DiscoveryClientDiscoveryClientRecommendedVersionList,
+    ),
+    name: S.optional(S.String),
+    heartbeatTime: S.optional(S.String),
+    serviceAccount: S.optional(S.String),
+    version: S.optional(S.String),
+    signalsEndpoint: S.optional(S.String),
+    description: S.optional(S.String),
+    errors: S.optional(StatusList),
+    state: S.optional(DiscoveryClientStateEnum),
+    ttl: S.optional(S.String),
+    createTime: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    labels: S.optional(StringMap),
+    source: S.optional(S.String),
+    expireTime: S.optional(S.String),
+    displayName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DiscoveryClient",
+}) as any as S.Schema<DiscoveryClient>;
 
 export interface CreateProjectsLocationsDiscoveryClientsRequest {
   /** Required. Parent resource. */
@@ -3370,14 +3978,23 @@ export interface CreateProjectsLocationsDiscoveryClientsRequest {
   /** Request body */
   body?: DiscoveryClient;
 }
-export const CreateProjectsLocationsDiscoveryClientsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "discoveryClientId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(DiscoveryClient.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+parent}/discoveryClients","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsDiscoveryClientsRequest" }) as any as S.Schema<CreateProjectsLocationsDiscoveryClientsRequest>;
+export const CreateProjectsLocationsDiscoveryClientsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      discoveryClientId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(DiscoveryClient.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1alpha1/{+parent}/discoveryClients",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsDiscoveryClientsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsDiscoveryClientsRequest>;
 
 /** A resource that represents an asset group. The purpose of an asset group is to bundle a set of assets that have something in common, while allowing users to add annotations to the group. An asset can belong to multiple groups. */
 export interface Group {
@@ -3395,14 +4012,14 @@ export interface Group {
   description?: string;
 }
 export const Group = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "displayName": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "name": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "description": S.optional(S.String),
-}),
+  S.Struct({
+    displayName: S.optional(S.String),
+    createTime: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    name: S.optional(S.String),
+    labels: S.optional(StringMap),
+    description: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Group" }) as any as S.Schema<Group>;
 
 export interface CreateProjectsLocationsGroupsRequest {
@@ -3415,16 +4032,33 @@ export interface CreateProjectsLocationsGroupsRequest {
   /** Request body */
   body?: Group;
 }
-export const CreateProjectsLocationsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "groupId": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Group.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+parent}/groups","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsGroupsRequest" }) as any as S.Schema<CreateProjectsLocationsGroupsRequest>;
+export const CreateProjectsLocationsGroupsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      groupId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Group.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1alpha1/{+parent}/groups",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateProjectsLocationsGroupsRequest",
+}) as any as S.Schema<CreateProjectsLocationsGroupsRequest>;
 
-export type GCSPayloadInfoFormatEnum = "IMPORT_JOB_FORMAT_UNSPECIFIED" | "IMPORT_JOB_FORMAT_CMDB" | "IMPORT_JOB_FORMAT_RVTOOLS_XLSX" | "IMPORT_JOB_FORMAT_RVTOOLS_CSV" | "IMPORT_JOB_FORMAT_EXPORTED_AWS_CSV" | "IMPORT_JOB_FORMAT_EXPORTED_AZURE_CSV" | "IMPORT_JOB_FORMAT_MANUAL_CSV" | "IMPORT_JOB_FORMAT_DATABASE_ZIP";
+export type GCSPayloadInfoFormatEnum =
+  | "IMPORT_JOB_FORMAT_UNSPECIFIED"
+  | "IMPORT_JOB_FORMAT_CMDB"
+  | "IMPORT_JOB_FORMAT_RVTOOLS_XLSX"
+  | "IMPORT_JOB_FORMAT_RVTOOLS_CSV"
+  | "IMPORT_JOB_FORMAT_EXPORTED_AWS_CSV"
+  | "IMPORT_JOB_FORMAT_EXPORTED_AZURE_CSV"
+  | "IMPORT_JOB_FORMAT_MANUAL_CSV"
+  | "IMPORT_JOB_FORMAT_DATABASE_ZIP";
 export const GCSPayloadInfoFormatEnum = /*@__PURE__*/ S.String;
 
 /** A resource that represents a payload hosted on Google Cloud Storage. */
@@ -3435,16 +4069,28 @@ export interface GCSPayloadInfo {
   path?: string;
 }
 export const GCSPayloadInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "format": S.optional(GCSPayloadInfoFormatEnum),
-  "path": S.optional(S.String),
-}),
+  S.Struct({
+    format: S.optional(GCSPayloadInfoFormatEnum),
+    path: S.optional(S.String),
+  }),
 ).annotate({ identifier: "GCSPayloadInfo" }) as any as S.Schema<GCSPayloadInfo>;
 
-export type ImportJobStateEnum = "IMPORT_JOB_STATE_UNSPECIFIED" | "IMPORT_JOB_STATE_PENDING" | "IMPORT_JOB_STATE_RUNNING" | "IMPORT_JOB_STATE_COMPLETED" | "IMPORT_JOB_STATE_FAILED" | "IMPORT_JOB_STATE_VALIDATING" | "IMPORT_JOB_STATE_FAILED_VALIDATION" | "IMPORT_JOB_STATE_READY";
+export type ImportJobStateEnum =
+  | "IMPORT_JOB_STATE_UNSPECIFIED"
+  | "IMPORT_JOB_STATE_PENDING"
+  | "IMPORT_JOB_STATE_RUNNING"
+  | "IMPORT_JOB_STATE_COMPLETED"
+  | "IMPORT_JOB_STATE_FAILED"
+  | "IMPORT_JOB_STATE_VALIDATING"
+  | "IMPORT_JOB_STATE_FAILED_VALIDATION"
+  | "IMPORT_JOB_STATE_READY";
 export const ImportJobStateEnum = /*@__PURE__*/ S.String;
 
-export type ImportErrorSeverityEnum = "SEVERITY_UNSPECIFIED" | "ERROR" | "WARNING" | "INFO";
+export type ImportErrorSeverityEnum =
+  | "SEVERITY_UNSPECIFIED"
+  | "ERROR"
+  | "WARNING"
+  | "INFO";
 export const ImportErrorSeverityEnum = /*@__PURE__*/ S.String;
 
 /** A resource that reports the errors encountered while processing an import job. */
@@ -3455,14 +4101,16 @@ export interface ImportError {
   severity?: ImportErrorSeverityEnum;
 }
 export const ImportError = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "errorDetails": S.optional(S.String),
-  "severity": S.optional(ImportErrorSeverityEnum),
-}),
+  S.Struct({
+    errorDetails: S.optional(S.String),
+    severity: S.optional(ImportErrorSeverityEnum),
+  }),
 ).annotate({ identifier: "ImportError" }) as any as S.Schema<ImportError>;
 
 export type ImportErrorList = ReadonlyArray<ImportError>;
-export const ImportErrorList = /*@__PURE__*/ S.Array(ImportError) as any as S.Schema<ImportErrorList>;
+export const ImportErrorList = /*@__PURE__*/ S.Array(
+  ImportError,
+) as any as S.Schema<ImportErrorList>;
 
 /** Error details for a CSV file. */
 export interface ImportRowErrorCsvErrorDetails {
@@ -3470,10 +4118,12 @@ export interface ImportRowErrorCsvErrorDetails {
   rowNumber?: number;
 }
 export const ImportRowErrorCsvErrorDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "rowNumber": S.optional(S.Number),
-}),
-).annotate({ identifier: "ImportRowErrorCsvErrorDetails" }) as any as S.Schema<ImportRowErrorCsvErrorDetails>;
+  S.Struct({
+    rowNumber: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ImportRowErrorCsvErrorDetails",
+}) as any as S.Schema<ImportRowErrorCsvErrorDetails>;
 
 /** Error details for an XLSX file. */
 export interface ImportRowErrorXlsxErrorDetails {
@@ -3483,11 +4133,13 @@ export interface ImportRowErrorXlsxErrorDetails {
   rowNumber?: number;
 }
 export const ImportRowErrorXlsxErrorDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sheet": S.optional(S.String),
-  "rowNumber": S.optional(S.Number),
-}),
-).annotate({ identifier: "ImportRowErrorXlsxErrorDetails" }) as any as S.Schema<ImportRowErrorXlsxErrorDetails>;
+  S.Struct({
+    sheet: S.optional(S.String),
+    rowNumber: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ImportRowErrorXlsxErrorDetails",
+}) as any as S.Schema<ImportRowErrorXlsxErrorDetails>;
 
 /** Error details for an archive file. */
 export interface ImportRowErrorArchiveErrorDetails {
@@ -3497,11 +4149,13 @@ export interface ImportRowErrorArchiveErrorDetails {
   csvError?: ImportRowErrorCsvErrorDetails;
 }
 export const ImportRowErrorArchiveErrorDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filePath": S.optional(S.String),
-  "csvError": S.optional(ImportRowErrorCsvErrorDetails),
-}),
-).annotate({ identifier: "ImportRowErrorArchiveErrorDetails" }) as any as S.Schema<ImportRowErrorArchiveErrorDetails>;
+  S.Struct({
+    filePath: S.optional(S.String),
+    csvError: S.optional(ImportRowErrorCsvErrorDetails),
+  }),
+).annotate({
+  identifier: "ImportRowErrorArchiveErrorDetails",
+}) as any as S.Schema<ImportRowErrorArchiveErrorDetails>;
 
 /** A resource that reports the import job errors at row level. */
 export interface ImportRowError {
@@ -3523,20 +4177,22 @@ export interface ImportRowError {
   archiveError?: ImportRowErrorArchiveErrorDetails;
 }
 export const ImportRowError = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "vmName": S.optional(S.String),
-  "errors": S.optional(ImportErrorList),
-  "csvError": S.optional(ImportRowErrorCsvErrorDetails),
-  "xlsxError": S.optional(ImportRowErrorXlsxErrorDetails),
-  "vmUuid": S.optional(S.String),
-  "rowNumber": S.optional(S.Number),
-  "assetTitle": S.optional(S.String),
-  "archiveError": S.optional(ImportRowErrorArchiveErrorDetails),
-}),
+  S.Struct({
+    vmName: S.optional(S.String),
+    errors: S.optional(ImportErrorList),
+    csvError: S.optional(ImportRowErrorCsvErrorDetails),
+    xlsxError: S.optional(ImportRowErrorXlsxErrorDetails),
+    vmUuid: S.optional(S.String),
+    rowNumber: S.optional(S.Number),
+    assetTitle: S.optional(S.String),
+    archiveError: S.optional(ImportRowErrorArchiveErrorDetails),
+  }),
 ).annotate({ identifier: "ImportRowError" }) as any as S.Schema<ImportRowError>;
 
 export type ImportRowErrorList = ReadonlyArray<ImportRowError>;
-export const ImportRowErrorList = /*@__PURE__*/ S.Array(ImportRowError) as any as S.Schema<ImportRowErrorList>;
+export const ImportRowErrorList = /*@__PURE__*/ S.Array(
+  ImportRowError,
+) as any as S.Schema<ImportRowErrorList>;
 
 /** A resource that aggregates the validation errors found in an import job file. */
 export interface FileValidationReport {
@@ -3550,16 +4206,20 @@ export interface FileValidationReport {
   fileErrors?: ImportErrorList;
 }
 export const FileValidationReport = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fileName": S.optional(S.String),
-  "partialReport": S.optional(S.Boolean),
-  "rowErrors": S.optional(ImportRowErrorList),
-  "fileErrors": S.optional(ImportErrorList),
-}),
-).annotate({ identifier: "FileValidationReport" }) as any as S.Schema<FileValidationReport>;
+  S.Struct({
+    fileName: S.optional(S.String),
+    partialReport: S.optional(S.Boolean),
+    rowErrors: S.optional(ImportRowErrorList),
+    fileErrors: S.optional(ImportErrorList),
+  }),
+).annotate({
+  identifier: "FileValidationReport",
+}) as any as S.Schema<FileValidationReport>;
 
 export type FileValidationReportList = ReadonlyArray<FileValidationReport>;
-export const FileValidationReportList = /*@__PURE__*/ S.Array(FileValidationReport) as any as S.Schema<FileValidationReportList>;
+export const FileValidationReportList = /*@__PURE__*/ S.Array(
+  FileValidationReport,
+) as any as S.Schema<FileValidationReportList>;
 
 /** A resource that aggregates errors across import job files. */
 export interface ValidationReport {
@@ -3569,11 +4229,13 @@ export interface ValidationReport {
   fileValidations?: FileValidationReportList;
 }
 export const ValidationReport = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "jobErrors": S.optional(ImportErrorList),
-  "fileValidations": S.optional(FileValidationReportList),
-}),
-).annotate({ identifier: "ValidationReport" }) as any as S.Schema<ValidationReport>;
+  S.Struct({
+    jobErrors: S.optional(ImportErrorList),
+    fileValidations: S.optional(FileValidationReportList),
+  }),
+).annotate({
+  identifier: "ValidationReport",
+}) as any as S.Schema<ValidationReport>;
 
 /** A resource that reports result of the import job execution. */
 export interface ExecutionReport {
@@ -3587,15 +4249,25 @@ export interface ExecutionReport {
   totalRowsCount?: number;
 }
 export const ExecutionReport = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "jobErrors": S.optional(ImportErrorList),
-  "framesReported": S.optional(S.Number),
-  "executionErrors": S.optional(ValidationReport),
-  "totalRowsCount": S.optional(S.Number),
-}),
-).annotate({ identifier: "ExecutionReport" }) as any as S.Schema<ExecutionReport>;
+  S.Struct({
+    jobErrors: S.optional(ImportErrorList),
+    framesReported: S.optional(S.Number),
+    executionErrors: S.optional(ValidationReport),
+    totalRowsCount: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ExecutionReport",
+}) as any as S.Schema<ExecutionReport>;
 
-export type InlinePayloadInfoFormatEnum = "IMPORT_JOB_FORMAT_UNSPECIFIED" | "IMPORT_JOB_FORMAT_CMDB" | "IMPORT_JOB_FORMAT_RVTOOLS_XLSX" | "IMPORT_JOB_FORMAT_RVTOOLS_CSV" | "IMPORT_JOB_FORMAT_EXPORTED_AWS_CSV" | "IMPORT_JOB_FORMAT_EXPORTED_AZURE_CSV" | "IMPORT_JOB_FORMAT_MANUAL_CSV" | "IMPORT_JOB_FORMAT_DATABASE_ZIP";
+export type InlinePayloadInfoFormatEnum =
+  | "IMPORT_JOB_FORMAT_UNSPECIFIED"
+  | "IMPORT_JOB_FORMAT_CMDB"
+  | "IMPORT_JOB_FORMAT_RVTOOLS_XLSX"
+  | "IMPORT_JOB_FORMAT_RVTOOLS_CSV"
+  | "IMPORT_JOB_FORMAT_EXPORTED_AWS_CSV"
+  | "IMPORT_JOB_FORMAT_EXPORTED_AZURE_CSV"
+  | "IMPORT_JOB_FORMAT_MANUAL_CSV"
+  | "IMPORT_JOB_FORMAT_DATABASE_ZIP";
 export const InlinePayloadInfoFormatEnum = /*@__PURE__*/ S.String;
 
 /** Payload file for inline import job payload. */
@@ -3606,14 +4278,16 @@ export interface PayloadFile {
   name?: string;
 }
 export const PayloadFile = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "data": S.optional(S.String),
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    data: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "PayloadFile" }) as any as S.Schema<PayloadFile>;
 
 export type PayloadFileList = ReadonlyArray<PayloadFile>;
-export const PayloadFileList = /*@__PURE__*/ S.Array(PayloadFile) as any as S.Schema<PayloadFileList>;
+export const PayloadFileList = /*@__PURE__*/ S.Array(
+  PayloadFile,
+) as any as S.Schema<PayloadFileList>;
 
 /** A resource that represents the inline import job payload. */
 export interface InlinePayloadInfo {
@@ -3623,11 +4297,13 @@ export interface InlinePayloadInfo {
   payload?: PayloadFileList;
 }
 export const InlinePayloadInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "format": S.optional(InlinePayloadInfoFormatEnum),
-  "payload": S.optional(PayloadFileList),
-}),
-).annotate({ identifier: "InlinePayloadInfo" }) as any as S.Schema<InlinePayloadInfo>;
+  S.Struct({
+    format: S.optional(InlinePayloadInfoFormatEnum),
+    payload: S.optional(PayloadFileList),
+  }),
+).annotate({
+  identifier: "InlinePayloadInfo",
+}) as any as S.Schema<InlinePayloadInfo>;
 
 /** A resource that represents the background job that imports asset frames. */
 export interface ImportJob {
@@ -3657,20 +4333,20 @@ export interface ImportJob {
   assetSource?: string;
 }
 export const ImportJob = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "createTime": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "gcsPayload": S.optional(GCSPayloadInfo),
-  "state": S.optional(ImportJobStateEnum),
-  "name": S.optional(S.String),
-  "validationReport": S.optional(ValidationReport),
-  "completeTime": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "executionReport": S.optional(ExecutionReport),
-  "inlinePayload": S.optional(InlinePayloadInfo),
-  "assetSource": S.optional(S.String),
-}),
+  S.Struct({
+    createTime: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    gcsPayload: S.optional(GCSPayloadInfo),
+    state: S.optional(ImportJobStateEnum),
+    name: S.optional(S.String),
+    validationReport: S.optional(ValidationReport),
+    completeTime: S.optional(S.String),
+    displayName: S.optional(S.String),
+    labels: S.optional(StringMap),
+    executionReport: S.optional(ExecutionReport),
+    inlinePayload: S.optional(InlinePayloadInfo),
+    assetSource: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ImportJob" }) as any as S.Schema<ImportJob>;
 
 export interface CreateProjectsLocationsImportJobsRequest {
@@ -3683,14 +4359,23 @@ export interface CreateProjectsLocationsImportJobsRequest {
   /** Request body */
   body?: ImportJob;
 }
-export const CreateProjectsLocationsImportJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "importJobId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(ImportJob.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+parent}/importJobs","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsImportJobsRequest" }) as any as S.Schema<CreateProjectsLocationsImportJobsRequest>;
+export const CreateProjectsLocationsImportJobsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      importJobId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(ImportJob.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1alpha1/{+parent}/importJobs",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateProjectsLocationsImportJobsRequest",
+}) as any as S.Schema<CreateProjectsLocationsImportJobsRequest>;
 
 /** A resource that contains a URI to which a data file can be uploaded. */
 export interface UploadFileInfo {
@@ -3702,17 +4387,28 @@ export interface UploadFileInfo {
   uriExpirationTime?: string;
 }
 export const UploadFileInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "signedUri": S.optional(S.String),
-  "headers": S.optional(StringMap),
-  "uriExpirationTime": S.optional(S.String),
-}),
+  S.Struct({
+    signedUri: S.optional(S.String),
+    headers: S.optional(StringMap),
+    uriExpirationTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "UploadFileInfo" }) as any as S.Schema<UploadFileInfo>;
 
-export type ImportDataFileStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "ACTIVE";
+export type ImportDataFileStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "CREATING"
+  | "ACTIVE";
 export const ImportDataFileStateEnum = /*@__PURE__*/ S.String;
 
-export type ImportDataFileFormatEnum = "IMPORT_JOB_FORMAT_UNSPECIFIED" | "IMPORT_JOB_FORMAT_CMDB" | "IMPORT_JOB_FORMAT_RVTOOLS_XLSX" | "IMPORT_JOB_FORMAT_RVTOOLS_CSV" | "IMPORT_JOB_FORMAT_EXPORTED_AWS_CSV" | "IMPORT_JOB_FORMAT_EXPORTED_AZURE_CSV" | "IMPORT_JOB_FORMAT_MANUAL_CSV" | "IMPORT_JOB_FORMAT_DATABASE_ZIP";
+export type ImportDataFileFormatEnum =
+  | "IMPORT_JOB_FORMAT_UNSPECIFIED"
+  | "IMPORT_JOB_FORMAT_CMDB"
+  | "IMPORT_JOB_FORMAT_RVTOOLS_XLSX"
+  | "IMPORT_JOB_FORMAT_RVTOOLS_CSV"
+  | "IMPORT_JOB_FORMAT_EXPORTED_AWS_CSV"
+  | "IMPORT_JOB_FORMAT_EXPORTED_AZURE_CSV"
+  | "IMPORT_JOB_FORMAT_MANUAL_CSV"
+  | "IMPORT_JOB_FORMAT_DATABASE_ZIP";
 export const ImportDataFileFormatEnum = /*@__PURE__*/ S.String;
 
 /** A resource that represents a payload file in an import job. */
@@ -3731,14 +4427,14 @@ export interface ImportDataFile {
   format?: ImportDataFileFormatEnum;
 }
 export const ImportDataFile = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "uploadFileInfo": S.optional(UploadFileInfo),
-  "displayName": S.optional(S.String),
-  "state": S.optional(ImportDataFileStateEnum),
-  "createTime": S.optional(S.String),
-  "name": S.optional(S.String),
-  "format": S.optional(ImportDataFileFormatEnum),
-}),
+  S.Struct({
+    uploadFileInfo: S.optional(UploadFileInfo),
+    displayName: S.optional(S.String),
+    state: S.optional(ImportDataFileStateEnum),
+    createTime: S.optional(S.String),
+    name: S.optional(S.String),
+    format: S.optional(ImportDataFileFormatEnum),
+  }),
 ).annotate({ identifier: "ImportDataFile" }) as any as S.Schema<ImportDataFile>;
 
 export interface CreateProjectsLocationsImportJobsImportDataFilesRequest {
@@ -3751,17 +4447,33 @@ export interface CreateProjectsLocationsImportJobsImportDataFilesRequest {
   /** Request body */
   body?: ImportDataFile;
 }
-export const CreateProjectsLocationsImportJobsImportDataFilesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "importDataFileId": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(ImportDataFile.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+parent}/importDataFiles","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsImportJobsImportDataFilesRequest" }) as any as S.Schema<CreateProjectsLocationsImportJobsImportDataFilesRequest>;
+export const CreateProjectsLocationsImportJobsImportDataFilesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      importDataFileId: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(ImportDataFile.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1alpha1/{+parent}/importDataFiles",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsImportJobsImportDataFilesRequest",
+  }) as any as S.Schema<CreateProjectsLocationsImportJobsImportDataFilesRequest>;
 
-export type VirtualMachinePreferencesCommitmentPlanEnum = "COMMITMENT_PLAN_UNSPECIFIED" | "COMMITMENT_PLAN_NONE" | "COMMITMENT_PLAN_ONE_YEAR" | "COMMITMENT_PLAN_THREE_YEARS" | "COMMITMENT_PLAN_FLEXIBLE_ONE_YEAR" | "COMMITMENT_PLAN_FLEXIBLE_THREE_YEARS";
-export const VirtualMachinePreferencesCommitmentPlanEnum = /*@__PURE__*/ S.String;
+export type VirtualMachinePreferencesCommitmentPlanEnum =
+  | "COMMITMENT_PLAN_UNSPECIFIED"
+  | "COMMITMENT_PLAN_NONE"
+  | "COMMITMENT_PLAN_ONE_YEAR"
+  | "COMMITMENT_PLAN_THREE_YEARS"
+  | "COMMITMENT_PLAN_FLEXIBLE_ONE_YEAR"
+  | "COMMITMENT_PLAN_FLEXIBLE_THREE_YEARS";
+export const VirtualMachinePreferencesCommitmentPlanEnum =
+  /*@__PURE__*/ S.String;
 
 /** Estimated usage data. */
 export interface EstimatedUsage {
@@ -3773,11 +4485,11 @@ export interface EstimatedUsage {
   estimatedMemoryPercentage?: number;
 }
 export const EstimatedUsage = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "estimatedCpuPercentage": S.optional(S.Number),
-  "estimatedDiskPercentage": S.optional(S.Number),
-  "estimatedMemoryPercentage": S.optional(S.Number),
-}),
+  S.Struct({
+    estimatedCpuPercentage: S.optional(S.Number),
+    estimatedDiskPercentage: S.optional(S.Number),
+    estimatedMemoryPercentage: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "EstimatedUsage" }) as any as S.Schema<EstimatedUsage>;
 
 /** The user preferences relating to target regions. */
@@ -3786,13 +4498,21 @@ export interface RegionPreferences {
   preferredRegions?: StringList;
 }
 export const RegionPreferences = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "preferredRegions": S.optional(StringList),
-}),
-).annotate({ identifier: "RegionPreferences" }) as any as S.Schema<RegionPreferences>;
+  S.Struct({
+    preferredRegions: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "RegionPreferences",
+}) as any as S.Schema<RegionPreferences>;
 
-export type VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodEnum = "AGGREGATION_METHOD_UNSPECIFIED" | "AGGREGATION_METHOD_AVERAGE" | "AGGREGATION_METHOD_MEDIAN" | "AGGREGATION_METHOD_NINETY_FIFTH_PERCENTILE" | "AGGREGATION_METHOD_PEAK";
-export const VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodEnum = /*@__PURE__*/ S.String;
+export type VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodEnum =
+    | "AGGREGATION_METHOD_UNSPECIFIED"
+    | "AGGREGATION_METHOD_AVERAGE"
+    | "AGGREGATION_METHOD_MEDIAN"
+    | "AGGREGATION_METHOD_NINETY_FIFTH_PERCENTILE"
+    | "AGGREGATION_METHOD_PEAK";
+export const VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodEnum =
+  /*@__PURE__*/ S.String;
 
 /** Custom data to use for sizing optimizations. */
 export interface VirtualMachinePreferencesSizingOptimizationCustomParameters {
@@ -3805,31 +4525,47 @@ export interface VirtualMachinePreferencesSizingOptimizationCustomParameters {
   /** Optional. Desired percentage of CPU usage. Must be in the interval [1, 100] (or 0 for default value). */
   cpuUsagePercentage?: number;
 }
-export const VirtualMachinePreferencesSizingOptimizationCustomParameters = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "aggregationMethod": S.optional(VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodEnum),
-  "memoryUsagePercentage": S.optional(S.Number),
-  "storageMultiplier": S.optional(S.Number),
-  "cpuUsagePercentage": S.optional(S.Number),
-}),
-).annotate({ identifier: "VirtualMachinePreferencesSizingOptimizationCustomParameters" }) as any as S.Schema<VirtualMachinePreferencesSizingOptimizationCustomParameters>;
+export const VirtualMachinePreferencesSizingOptimizationCustomParameters =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      aggregationMethod: S.optional(
+        VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodEnum,
+      ),
+      memoryUsagePercentage: S.optional(S.Number),
+      storageMultiplier: S.optional(S.Number),
+      cpuUsagePercentage: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "VirtualMachinePreferencesSizingOptimizationCustomParameters",
+  }) as any as S.Schema<VirtualMachinePreferencesSizingOptimizationCustomParameters>;
 
 /** Parameters that affect network cost estimations. */
 export interface VirtualMachinePreferencesNetworkCostParameters {
   /** Optional. An estimated percentage of priced outbound traffic (egress traffic) from the measured outbound traffic. Must be in the interval [0, 100]. */
   estimatedEgressTrafficPercentage?: number;
 }
-export const VirtualMachinePreferencesNetworkCostParameters = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "estimatedEgressTrafficPercentage": S.optional(S.Number),
-}),
-).annotate({ identifier: "VirtualMachinePreferencesNetworkCostParameters" }) as any as S.Schema<VirtualMachinePreferencesNetworkCostParameters>;
+export const VirtualMachinePreferencesNetworkCostParameters =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      estimatedEgressTrafficPercentage: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "VirtualMachinePreferencesNetworkCostParameters",
+  }) as any as S.Schema<VirtualMachinePreferencesNetworkCostParameters>;
 
-export type VMwareEngineMachinePreferencesStorageOnlyNodesEnum = "STORAGE_ONLY_NODES_UNSPECIFIED" | "STORAGE_ONLY_NODES_ENABLED" | "STORAGE_ONLY_NODES_DISABLED";
-export const VMwareEngineMachinePreferencesStorageOnlyNodesEnum = /*@__PURE__*/ S.String;
+export type VMwareEngineMachinePreferencesStorageOnlyNodesEnum =
+  | "STORAGE_ONLY_NODES_UNSPECIFIED"
+  | "STORAGE_ONLY_NODES_ENABLED"
+  | "STORAGE_ONLY_NODES_DISABLED";
+export const VMwareEngineMachinePreferencesStorageOnlyNodesEnum =
+  /*@__PURE__*/ S.String;
 
-export type VMwareEngineMachinePreferencesProtectedNodesEnum = "PROTECTED_NODES_UNSPECIFIED" | "PROTECTED_NODES_ENABLED" | "PROTECTED_NODES_DISABLED";
-export const VMwareEngineMachinePreferencesProtectedNodesEnum = /*@__PURE__*/ S.String;
+export type VMwareEngineMachinePreferencesProtectedNodesEnum =
+  | "PROTECTED_NODES_UNSPECIFIED"
+  | "PROTECTED_NODES_ENABLED"
+  | "PROTECTED_NODES_DISABLED";
+export const VMwareEngineMachinePreferencesProtectedNodesEnum =
+  /*@__PURE__*/ S.String;
 
 /** A machine series, for a target product (e.g. Compute Engine, Google Cloud VMware Engine). */
 export interface MachineSeries {
@@ -3837,13 +4573,15 @@ export interface MachineSeries {
   code?: string;
 }
 export const MachineSeries = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(S.String),
-}),
+  S.Struct({
+    code: S.optional(S.String),
+  }),
 ).annotate({ identifier: "MachineSeries" }) as any as S.Schema<MachineSeries>;
 
 export type MachineSeriesList = ReadonlyArray<MachineSeries>;
-export const MachineSeriesList = /*@__PURE__*/ S.Array(MachineSeries) as any as S.Schema<MachineSeriesList>;
+export const MachineSeriesList = /*@__PURE__*/ S.Array(
+  MachineSeries,
+) as any as S.Schema<MachineSeriesList>;
 
 /** The type of machines to consider when calculating virtual machine migration insights and recommendations for VMware Engine. Not all machine types are available in all zones and regions. */
 export interface VMwareEngineMachinePreferences {
@@ -3855,17 +4593,34 @@ export interface VMwareEngineMachinePreferences {
   allowedMachineSeries?: MachineSeriesList;
 }
 export const VMwareEngineMachinePreferences = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "storageOnlyNodes": S.optional(VMwareEngineMachinePreferencesStorageOnlyNodesEnum),
-  "protectedNodes": S.optional(VMwareEngineMachinePreferencesProtectedNodesEnum),
-  "allowedMachineSeries": S.optional(MachineSeriesList),
-}),
-).annotate({ identifier: "VMwareEngineMachinePreferences" }) as any as S.Schema<VMwareEngineMachinePreferences>;
+  S.Struct({
+    storageOnlyNodes: S.optional(
+      VMwareEngineMachinePreferencesStorageOnlyNodesEnum,
+    ),
+    protectedNodes: S.optional(
+      VMwareEngineMachinePreferencesProtectedNodesEnum,
+    ),
+    allowedMachineSeries: S.optional(MachineSeriesList),
+  }),
+).annotate({
+  identifier: "VMwareEngineMachinePreferences",
+}) as any as S.Schema<VMwareEngineMachinePreferences>;
 
-export type VmwareEnginePreferencesServiceTypeEnum = "SERVICE_TYPE_UNSPECIFIED" | "SERVICE_TYPE_FULLY_LICENSED" | "SERVICE_TYPE_PORTABLE_LICENSE";
+export type VmwareEnginePreferencesServiceTypeEnum =
+  | "SERVICE_TYPE_UNSPECIFIED"
+  | "SERVICE_TYPE_FULLY_LICENSED"
+  | "SERVICE_TYPE_PORTABLE_LICENSE";
 export const VmwareEnginePreferencesServiceTypeEnum = /*@__PURE__*/ S.String;
 
-export type VmwareEnginePreferencesCommitmentPlanEnum = "COMMITMENT_PLAN_UNSPECIFIED" | "ON_DEMAND" | "COMMITMENT_1_YEAR_MONTHLY_PAYMENTS" | "COMMITMENT_3_YEAR_MONTHLY_PAYMENTS" | "COMMITMENT_1_YEAR_UPFRONT_PAYMENT" | "COMMITMENT_3_YEAR_UPFRONT_PAYMENT" | "COMMITMENT_FLEXIBLE_3_YEAR_MONTHLY_PAYMENTS" | "COMMITMENT_FLEXIBLE_3_YEAR_UPFRONT_PAYMENT";
+export type VmwareEnginePreferencesCommitmentPlanEnum =
+  | "COMMITMENT_PLAN_UNSPECIFIED"
+  | "ON_DEMAND"
+  | "COMMITMENT_1_YEAR_MONTHLY_PAYMENTS"
+  | "COMMITMENT_3_YEAR_MONTHLY_PAYMENTS"
+  | "COMMITMENT_1_YEAR_UPFRONT_PAYMENT"
+  | "COMMITMENT_3_YEAR_UPFRONT_PAYMENT"
+  | "COMMITMENT_FLEXIBLE_3_YEAR_MONTHLY_PAYMENTS"
+  | "COMMITMENT_FLEXIBLE_3_YEAR_UPFRONT_PAYMENT";
 export const VmwareEnginePreferencesCommitmentPlanEnum = /*@__PURE__*/ S.String;
 
 /** The user preferences relating to Google Cloud VMware Engine target platform. */
@@ -3886,28 +4641,50 @@ export interface VmwareEnginePreferences {
   commitmentPlan?: VmwareEnginePreferencesCommitmentPlanEnum;
 }
 export const VmwareEnginePreferences = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "machinePreferences": S.optional(VMwareEngineMachinePreferences),
-  "memoryOvercommitRatio": S.optional(S.Number),
-  "storageDeduplicationCompressionRatio": S.optional(S.Number),
-  "serviceType": S.optional(VmwareEnginePreferencesServiceTypeEnum),
-  "licenseDiscountPercentage": S.optional(S.Number),
-  "cpuOvercommitRatio": S.optional(S.Number),
-  "commitmentPlan": S.optional(VmwareEnginePreferencesCommitmentPlanEnum),
-}),
-).annotate({ identifier: "VmwareEnginePreferences" }) as any as S.Schema<VmwareEnginePreferences>;
+  S.Struct({
+    machinePreferences: S.optional(VMwareEngineMachinePreferences),
+    memoryOvercommitRatio: S.optional(S.Number),
+    storageDeduplicationCompressionRatio: S.optional(S.Number),
+    serviceType: S.optional(VmwareEnginePreferencesServiceTypeEnum),
+    licenseDiscountPercentage: S.optional(S.Number),
+    cpuOvercommitRatio: S.optional(S.Number),
+    commitmentPlan: S.optional(VmwareEnginePreferencesCommitmentPlanEnum),
+  }),
+).annotate({
+  identifier: "VmwareEnginePreferences",
+}) as any as S.Schema<VmwareEnginePreferences>;
 
-export type VirtualMachinePreferencesTargetProductEnum = "COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED" | "COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE" | "COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE" | "COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY";
-export const VirtualMachinePreferencesTargetProductEnum = /*@__PURE__*/ S.String;
+export type VirtualMachinePreferencesTargetProductEnum =
+  | "COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED"
+  | "COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE"
+  | "COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE"
+  | "COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY";
+export const VirtualMachinePreferencesTargetProductEnum =
+  /*@__PURE__*/ S.String;
 
-export type VirtualMachinePreferencesSizingOptimizationStrategyEnum = "SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED" | "SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE" | "SIZING_OPTIMIZATION_STRATEGY_MODERATE" | "SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE" | "SIZING_OPTIMIZATION_STRATEGY_CUSTOM";
-export const VirtualMachinePreferencesSizingOptimizationStrategyEnum = /*@__PURE__*/ S.String;
+export type VirtualMachinePreferencesSizingOptimizationStrategyEnum =
+  | "SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED"
+  | "SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE"
+  | "SIZING_OPTIMIZATION_STRATEGY_MODERATE"
+  | "SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE"
+  | "SIZING_OPTIMIZATION_STRATEGY_CUSTOM";
+export const VirtualMachinePreferencesSizingOptimizationStrategyEnum =
+  /*@__PURE__*/ S.String;
 
-export type OperatingSystemPricingPreferencesOperatingSystemPricingCommitmentPlanEnum = "COMMITMENT_PLAN_UNSPECIFIED" | "COMMITMENT_PLAN_ON_DEMAND" | "COMMITMENT_PLAN_1_YEAR" | "COMMITMENT_PLAN_3_YEAR";
-export const OperatingSystemPricingPreferencesOperatingSystemPricingCommitmentPlanEnum = /*@__PURE__*/ S.String;
+export type OperatingSystemPricingPreferencesOperatingSystemPricingCommitmentPlanEnum =
+    | "COMMITMENT_PLAN_UNSPECIFIED"
+    | "COMMITMENT_PLAN_ON_DEMAND"
+    | "COMMITMENT_PLAN_1_YEAR"
+    | "COMMITMENT_PLAN_3_YEAR";
+export const OperatingSystemPricingPreferencesOperatingSystemPricingCommitmentPlanEnum =
+  /*@__PURE__*/ S.String;
 
-export type OperatingSystemPricingPreferencesOperatingSystemPricingLicenseTypeEnum = "LICENSE_TYPE_UNSPECIFIED" | "LICENSE_TYPE_DEFAULT" | "LICENSE_TYPE_BRING_YOUR_OWN_LICENSE";
-export const OperatingSystemPricingPreferencesOperatingSystemPricingLicenseTypeEnum = /*@__PURE__*/ S.String;
+export type OperatingSystemPricingPreferencesOperatingSystemPricingLicenseTypeEnum =
+    | "LICENSE_TYPE_UNSPECIFIED"
+    | "LICENSE_TYPE_DEFAULT"
+    | "LICENSE_TYPE_BRING_YOUR_OWN_LICENSE";
+export const OperatingSystemPricingPreferencesOperatingSystemPricingLicenseTypeEnum =
+  /*@__PURE__*/ S.String;
 
 /** Pricing options of an OS image. */
 export interface OperatingSystemPricingPreferencesOperatingSystemPricing {
@@ -3916,12 +4693,19 @@ export interface OperatingSystemPricingPreferencesOperatingSystemPricing {
   /** Optional. License type for premium images (RHEL, RHEL for SAP, SLES, SLES for SAP, Windows Server). */
   licenseType?: OperatingSystemPricingPreferencesOperatingSystemPricingLicenseTypeEnum;
 }
-export const OperatingSystemPricingPreferencesOperatingSystemPricing = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "commitmentPlan": S.optional(OperatingSystemPricingPreferencesOperatingSystemPricingCommitmentPlanEnum),
-  "licenseType": S.optional(OperatingSystemPricingPreferencesOperatingSystemPricingLicenseTypeEnum),
-}),
-).annotate({ identifier: "OperatingSystemPricingPreferencesOperatingSystemPricing" }) as any as S.Schema<OperatingSystemPricingPreferencesOperatingSystemPricing>;
+export const OperatingSystemPricingPreferencesOperatingSystemPricing =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      commitmentPlan: S.optional(
+        OperatingSystemPricingPreferencesOperatingSystemPricingCommitmentPlanEnum,
+      ),
+      licenseType: S.optional(
+        OperatingSystemPricingPreferencesOperatingSystemPricingLicenseTypeEnum,
+      ),
+    }),
+  ).annotate({
+    identifier: "OperatingSystemPricingPreferencesOperatingSystemPricing",
+  }) as any as S.Schema<OperatingSystemPricingPreferencesOperatingSystemPricing>;
 
 /** Pricing options for OS images. */
 export interface OperatingSystemPricingPreferences {
@@ -3935,18 +4719,35 @@ export interface OperatingSystemPricingPreferences {
   rhel?: OperatingSystemPricingPreferencesOperatingSystemPricing;
 }
 export const OperatingSystemPricingPreferences = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "windows": S.optional(OperatingSystemPricingPreferencesOperatingSystemPricing),
-  "slesForSap": S.optional(OperatingSystemPricingPreferencesOperatingSystemPricing),
-  "sles": S.optional(OperatingSystemPricingPreferencesOperatingSystemPricing),
-  "rhel": S.optional(OperatingSystemPricingPreferencesOperatingSystemPricing),
-}),
-).annotate({ identifier: "OperatingSystemPricingPreferences" }) as any as S.Schema<OperatingSystemPricingPreferences>;
+  S.Struct({
+    windows: S.optional(
+      OperatingSystemPricingPreferencesOperatingSystemPricing,
+    ),
+    slesForSap: S.optional(
+      OperatingSystemPricingPreferencesOperatingSystemPricing,
+    ),
+    sles: S.optional(OperatingSystemPricingPreferencesOperatingSystemPricing),
+    rhel: S.optional(OperatingSystemPricingPreferencesOperatingSystemPricing),
+  }),
+).annotate({
+  identifier: "OperatingSystemPricingPreferences",
+}) as any as S.Schema<OperatingSystemPricingPreferences>;
 
-export type SoleTenancyPreferencesHostMaintenancePolicyEnum = "HOST_MAINTENANCE_POLICY_UNSPECIFIED" | "HOST_MAINTENANCE_POLICY_DEFAULT" | "HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE" | "HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP";
-export const SoleTenancyPreferencesHostMaintenancePolicyEnum = /*@__PURE__*/ S.String;
+export type SoleTenancyPreferencesHostMaintenancePolicyEnum =
+  | "HOST_MAINTENANCE_POLICY_UNSPECIFIED"
+  | "HOST_MAINTENANCE_POLICY_DEFAULT"
+  | "HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE"
+  | "HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP";
+export const SoleTenancyPreferencesHostMaintenancePolicyEnum =
+  /*@__PURE__*/ S.String;
 
-export type SoleTenancyPreferencesCommitmentPlanEnum = "COMMITMENT_PLAN_UNSPECIFIED" | "ON_DEMAND" | "COMMITMENT_1_YEAR" | "COMMITMENT_3_YEAR" | "COMMITMENT_FLEXIBLE_1_YEAR" | "COMMITMENT_FLEXIBLE_3_YEAR";
+export type SoleTenancyPreferencesCommitmentPlanEnum =
+  | "COMMITMENT_PLAN_UNSPECIFIED"
+  | "ON_DEMAND"
+  | "COMMITMENT_1_YEAR"
+  | "COMMITMENT_3_YEAR"
+  | "COMMITMENT_FLEXIBLE_1_YEAR"
+  | "COMMITMENT_FLEXIBLE_3_YEAR";
 export const SoleTenancyPreferencesCommitmentPlanEnum = /*@__PURE__*/ S.String;
 
 /** A Sole Tenant node type. */
@@ -3955,13 +4756,17 @@ export interface SoleTenantNodeType {
   nodeName?: string;
 }
 export const SoleTenantNodeType = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nodeName": S.optional(S.String),
-}),
-).annotate({ identifier: "SoleTenantNodeType" }) as any as S.Schema<SoleTenantNodeType>;
+  S.Struct({
+    nodeName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SoleTenantNodeType",
+}) as any as S.Schema<SoleTenantNodeType>;
 
 export type SoleTenantNodeTypeList = ReadonlyArray<SoleTenantNodeType>;
-export const SoleTenantNodeTypeList = /*@__PURE__*/ S.Array(SoleTenantNodeType) as any as S.Schema<SoleTenantNodeTypeList>;
+export const SoleTenantNodeTypeList = /*@__PURE__*/ S.Array(
+  SoleTenantNodeType,
+) as any as S.Schema<SoleTenantNodeTypeList>;
 
 /** Preferences concerning Sole Tenancy nodes and VMs. */
 export interface SoleTenancyPreferences {
@@ -3977,19 +4782,31 @@ export interface SoleTenancyPreferences {
   nodeTypes?: SoleTenantNodeTypeList;
 }
 export const SoleTenancyPreferences = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "osPricingPreferences": S.optional(OperatingSystemPricingPreferences),
-  "hostMaintenancePolicy": S.optional(SoleTenancyPreferencesHostMaintenancePolicyEnum),
-  "cpuOvercommitRatio": S.optional(S.Number),
-  "commitmentPlan": S.optional(SoleTenancyPreferencesCommitmentPlanEnum),
-  "nodeTypes": S.optional(SoleTenantNodeTypeList),
-}),
-).annotate({ identifier: "SoleTenancyPreferences" }) as any as S.Schema<SoleTenancyPreferences>;
+  S.Struct({
+    osPricingPreferences: S.optional(OperatingSystemPricingPreferences),
+    hostMaintenancePolicy: S.optional(
+      SoleTenancyPreferencesHostMaintenancePolicyEnum,
+    ),
+    cpuOvercommitRatio: S.optional(S.Number),
+    commitmentPlan: S.optional(SoleTenancyPreferencesCommitmentPlanEnum),
+    nodeTypes: S.optional(SoleTenantNodeTypeList),
+  }),
+).annotate({
+  identifier: "SoleTenancyPreferences",
+}) as any as S.Schema<SoleTenancyPreferences>;
 
-export type ComputeEnginePreferencesPersistentDiskTypeEnum = "PERSISTENT_DISK_TYPE_UNSPECIFIED" | "PERSISTENT_DISK_TYPE_STANDARD" | "PERSISTENT_DISK_TYPE_BALANCED" | "PERSISTENT_DISK_TYPE_SSD";
-export const ComputeEnginePreferencesPersistentDiskTypeEnum = /*@__PURE__*/ S.String;
+export type ComputeEnginePreferencesPersistentDiskTypeEnum =
+  | "PERSISTENT_DISK_TYPE_UNSPECIFIED"
+  | "PERSISTENT_DISK_TYPE_STANDARD"
+  | "PERSISTENT_DISK_TYPE_BALANCED"
+  | "PERSISTENT_DISK_TYPE_SSD";
+export const ComputeEnginePreferencesPersistentDiskTypeEnum =
+  /*@__PURE__*/ S.String;
 
-export type ComputeEnginePreferencesLicenseTypeEnum = "LICENSE_TYPE_UNSPECIFIED" | "LICENSE_TYPE_DEFAULT" | "LICENSE_TYPE_BRING_YOUR_OWN_LICENSE";
+export type ComputeEnginePreferencesLicenseTypeEnum =
+  | "LICENSE_TYPE_UNSPECIFIED"
+  | "LICENSE_TYPE_DEFAULT"
+  | "LICENSE_TYPE_BRING_YOUR_OWN_LICENSE";
 export const ComputeEnginePreferencesLicenseTypeEnum = /*@__PURE__*/ S.String;
 
 /** The type of machines to consider when calculating virtual machine migration insights and recommendations for Compute Engine. Not all machine types are available in all zones and regions. */
@@ -3998,13 +4815,20 @@ export interface MachinePreferences {
   allowedMachineSeries?: MachineSeriesList;
 }
 export const MachinePreferences = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "allowedMachineSeries": S.optional(MachineSeriesList),
-}),
-).annotate({ identifier: "MachinePreferences" }) as any as S.Schema<MachinePreferences>;
+  S.Struct({
+    allowedMachineSeries: S.optional(MachineSeriesList),
+  }),
+).annotate({
+  identifier: "MachinePreferences",
+}) as any as S.Schema<MachinePreferences>;
 
-export type ComputeEnginePreferencesMultithreadingEnum = "MULTITHREADING_UNSPECIFIED" | "MULTITHREADING_DISABLED" | "MULTITHREADING_ENABLED" | "MULTITHREADING_DISABLED_WITH_COMPENSATION";
-export const ComputeEnginePreferencesMultithreadingEnum = /*@__PURE__*/ S.String;
+export type ComputeEnginePreferencesMultithreadingEnum =
+  | "MULTITHREADING_UNSPECIFIED"
+  | "MULTITHREADING_DISABLED"
+  | "MULTITHREADING_ENABLED"
+  | "MULTITHREADING_DISABLED_WITH_COMPENSATION";
+export const ComputeEnginePreferencesMultithreadingEnum =
+  /*@__PURE__*/ S.String;
 
 /** The user preferences relating to Compute Engine target platform. */
 export interface ComputeEnginePreferences {
@@ -4020,14 +4844,18 @@ export interface ComputeEnginePreferences {
   multithreading?: ComputeEnginePreferencesMultithreadingEnum;
 }
 export const ComputeEnginePreferences = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "persistentDiskType": S.optional(ComputeEnginePreferencesPersistentDiskTypeEnum),
-  "licenseType": S.optional(ComputeEnginePreferencesLicenseTypeEnum),
-  "machinePreferences": S.optional(MachinePreferences),
-  "osPricingPreferences": S.optional(OperatingSystemPricingPreferences),
-  "multithreading": S.optional(ComputeEnginePreferencesMultithreadingEnum),
-}),
-).annotate({ identifier: "ComputeEnginePreferences" }) as any as S.Schema<ComputeEnginePreferences>;
+  S.Struct({
+    persistentDiskType: S.optional(
+      ComputeEnginePreferencesPersistentDiskTypeEnum,
+    ),
+    licenseType: S.optional(ComputeEnginePreferencesLicenseTypeEnum),
+    machinePreferences: S.optional(MachinePreferences),
+    osPricingPreferences: S.optional(OperatingSystemPricingPreferences),
+    multithreading: S.optional(ComputeEnginePreferencesMultithreadingEnum),
+  }),
+).annotate({
+  identifier: "ComputeEnginePreferences",
+}) as any as S.Schema<ComputeEnginePreferences>;
 
 /** VirtualMachinePreferences enables you to create sets of preferences, for example, a geographical location and pricing track, for your migrated virtual machines. The set of preferences influence recommendations for migrating virtual machine assets. */
 export interface VirtualMachinePreferences {
@@ -4053,48 +4881,91 @@ export interface VirtualMachinePreferences {
   computeEnginePreferences?: ComputeEnginePreferences;
 }
 export const VirtualMachinePreferences = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "commitmentPlan": S.optional(VirtualMachinePreferencesCommitmentPlanEnum),
-  "estimatedUsage": S.optional(EstimatedUsage),
-  "regionPreferences": S.optional(RegionPreferences),
-  "sizingOptimizationCustomParameters": S.optional(VirtualMachinePreferencesSizingOptimizationCustomParameters),
-  "networkCostParameters": S.optional(VirtualMachinePreferencesNetworkCostParameters),
-  "vmwareEnginePreferences": S.optional(VmwareEnginePreferences),
-  "targetProduct": S.optional(VirtualMachinePreferencesTargetProductEnum),
-  "sizingOptimizationStrategy": S.optional(VirtualMachinePreferencesSizingOptimizationStrategyEnum),
-  "soleTenancyPreferences": S.optional(SoleTenancyPreferences),
-  "computeEnginePreferences": S.optional(ComputeEnginePreferences),
-}),
-).annotate({ identifier: "VirtualMachinePreferences" }) as any as S.Schema<VirtualMachinePreferences>;
+  S.Struct({
+    commitmentPlan: S.optional(VirtualMachinePreferencesCommitmentPlanEnum),
+    estimatedUsage: S.optional(EstimatedUsage),
+    regionPreferences: S.optional(RegionPreferences),
+    sizingOptimizationCustomParameters: S.optional(
+      VirtualMachinePreferencesSizingOptimizationCustomParameters,
+    ),
+    networkCostParameters: S.optional(
+      VirtualMachinePreferencesNetworkCostParameters,
+    ),
+    vmwareEnginePreferences: S.optional(VmwareEnginePreferences),
+    targetProduct: S.optional(VirtualMachinePreferencesTargetProductEnum),
+    sizingOptimizationStrategy: S.optional(
+      VirtualMachinePreferencesSizingOptimizationStrategyEnum,
+    ),
+    soleTenancyPreferences: S.optional(SoleTenancyPreferences),
+    computeEnginePreferences: S.optional(ComputeEnginePreferences),
+  }),
+).annotate({
+  identifier: "VirtualMachinePreferences",
+}) as any as S.Schema<VirtualMachinePreferences>;
 
-export type DatabasePreferencesCloudSqlCommonBackupBackupModeEnum = "BACKUP_MODE_UNSPECIFIED" | "BACKUP_MODE_DISABLED" | "BACKUP_MODE_ENABLED";
-export const DatabasePreferencesCloudSqlCommonBackupBackupModeEnum = /*@__PURE__*/ S.String;
+export type DatabasePreferencesCloudSqlCommonBackupBackupModeEnum =
+  | "BACKUP_MODE_UNSPECIFIED"
+  | "BACKUP_MODE_DISABLED"
+  | "BACKUP_MODE_ENABLED";
+export const DatabasePreferencesCloudSqlCommonBackupBackupModeEnum =
+  /*@__PURE__*/ S.String;
 
 /** Preferences for database backups. */
 export interface DatabasePreferencesCloudSqlCommonBackup {
   /** Optional. Automated backup mode. */
   backupMode?: DatabasePreferencesCloudSqlCommonBackupBackupModeEnum;
 }
-export const DatabasePreferencesCloudSqlCommonBackup = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "backupMode": S.optional(DatabasePreferencesCloudSqlCommonBackupBackupModeEnum),
-}),
-).annotate({ identifier: "DatabasePreferencesCloudSqlCommonBackup" }) as any as S.Schema<DatabasePreferencesCloudSqlCommonBackup>;
+export const DatabasePreferencesCloudSqlCommonBackup = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      backupMode: S.optional(
+        DatabasePreferencesCloudSqlCommonBackupBackupModeEnum,
+      ),
+    }),
+).annotate({
+  identifier: "DatabasePreferencesCloudSqlCommonBackup",
+}) as any as S.Schema<DatabasePreferencesCloudSqlCommonBackup>;
 
-export type DatabasePreferencesCloudSqlCommonSizingOptimizationStrategyEnum = "SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED" | "SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE" | "SIZING_OPTIMIZATION_STRATEGY_MODERATE" | "SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE" | "SIZING_OPTIMIZATION_STRATEGY_CUSTOM";
-export const DatabasePreferencesCloudSqlCommonSizingOptimizationStrategyEnum = /*@__PURE__*/ S.String;
+export type DatabasePreferencesCloudSqlCommonSizingOptimizationStrategyEnum =
+  | "SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED"
+  | "SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE"
+  | "SIZING_OPTIMIZATION_STRATEGY_MODERATE"
+  | "SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE"
+  | "SIZING_OPTIMIZATION_STRATEGY_CUSTOM";
+export const DatabasePreferencesCloudSqlCommonSizingOptimizationStrategyEnum =
+  /*@__PURE__*/ S.String;
 
-export type DatabasePreferencesCloudSqlCommonCommitmentPlanEnum = "COMMITMENT_PLAN_UNSPECIFIED" | "COMMITMENT_PLAN_NONE" | "COMMITMENT_PLAN_ONE_YEAR" | "COMMITMENT_PLAN_THREE_YEARS" | "COMMITMENT_PLAN_FLEXIBLE_ONE_YEAR" | "COMMITMENT_PLAN_FLEXIBLE_THREE_YEARS";
-export const DatabasePreferencesCloudSqlCommonCommitmentPlanEnum = /*@__PURE__*/ S.String;
+export type DatabasePreferencesCloudSqlCommonCommitmentPlanEnum =
+  | "COMMITMENT_PLAN_UNSPECIFIED"
+  | "COMMITMENT_PLAN_NONE"
+  | "COMMITMENT_PLAN_ONE_YEAR"
+  | "COMMITMENT_PLAN_THREE_YEARS"
+  | "COMMITMENT_PLAN_FLEXIBLE_ONE_YEAR"
+  | "COMMITMENT_PLAN_FLEXIBLE_THREE_YEARS";
+export const DatabasePreferencesCloudSqlCommonCommitmentPlanEnum =
+  /*@__PURE__*/ S.String;
 
-export type DatabasePreferencesCloudSqlCommonEditionEnum = "CLOUD_SQL_EDITION_UNSPECIFIED" | "CLOUD_SQL_EDITION_ENTERPRISE" | "CLOUD_SQL_EDITION_ENTERPRISE_PLUS";
-export const DatabasePreferencesCloudSqlCommonEditionEnum = /*@__PURE__*/ S.String;
+export type DatabasePreferencesCloudSqlCommonEditionEnum =
+  | "CLOUD_SQL_EDITION_UNSPECIFIED"
+  | "CLOUD_SQL_EDITION_ENTERPRISE"
+  | "CLOUD_SQL_EDITION_ENTERPRISE_PLUS";
+export const DatabasePreferencesCloudSqlCommonEditionEnum =
+  /*@__PURE__*/ S.String;
 
-export type DatabasePreferencesCloudSqlCommonPersistentDiskTypeEnum = "PERSISTENT_DISK_TYPE_UNSPECIFIED" | "PERSISTENT_DISK_TYPE_STANDARD" | "PERSISTENT_DISK_TYPE_BALANCED" | "PERSISTENT_DISK_TYPE_SSD";
-export const DatabasePreferencesCloudSqlCommonPersistentDiskTypeEnum = /*@__PURE__*/ S.String;
+export type DatabasePreferencesCloudSqlCommonPersistentDiskTypeEnum =
+  | "PERSISTENT_DISK_TYPE_UNSPECIFIED"
+  | "PERSISTENT_DISK_TYPE_STANDARD"
+  | "PERSISTENT_DISK_TYPE_BALANCED"
+  | "PERSISTENT_DISK_TYPE_SSD";
+export const DatabasePreferencesCloudSqlCommonPersistentDiskTypeEnum =
+  /*@__PURE__*/ S.String;
 
-export type DatabasePreferencesCloudSqlCommonZoneAvailabilityEnum = "CLOUD_SQL_ZONE_AVAILABILITY_UNSPECIFIED" | "CLOUD_SQL_ZONE_AVAILABILITY_ZONAL" | "CLOUD_SQL_ZONE_AVAILABILITY_REGIONAL";
-export const DatabasePreferencesCloudSqlCommonZoneAvailabilityEnum = /*@__PURE__*/ S.String;
+export type DatabasePreferencesCloudSqlCommonZoneAvailabilityEnum =
+  | "CLOUD_SQL_ZONE_AVAILABILITY_UNSPECIFIED"
+  | "CLOUD_SQL_ZONE_AVAILABILITY_ZONAL"
+  | "CLOUD_SQL_ZONE_AVAILABILITY_REGIONAL";
+export const DatabasePreferencesCloudSqlCommonZoneAvailabilityEnum =
+  /*@__PURE__*/ S.String;
 
 /** Preferences common to Cloud SQL databases. */
 export interface DatabasePreferencesCloudSqlCommon {
@@ -4112,15 +4983,25 @@ export interface DatabasePreferencesCloudSqlCommon {
   zoneAvailability?: DatabasePreferencesCloudSqlCommonZoneAvailabilityEnum;
 }
 export const DatabasePreferencesCloudSqlCommon = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "backup": S.optional(DatabasePreferencesCloudSqlCommonBackup),
-  "sizingOptimizationStrategy": S.optional(DatabasePreferencesCloudSqlCommonSizingOptimizationStrategyEnum),
-  "commitmentPlan": S.optional(DatabasePreferencesCloudSqlCommonCommitmentPlanEnum),
-  "edition": S.optional(DatabasePreferencesCloudSqlCommonEditionEnum),
-  "persistentDiskType": S.optional(DatabasePreferencesCloudSqlCommonPersistentDiskTypeEnum),
-  "zoneAvailability": S.optional(DatabasePreferencesCloudSqlCommonZoneAvailabilityEnum),
-}),
-).annotate({ identifier: "DatabasePreferencesCloudSqlCommon" }) as any as S.Schema<DatabasePreferencesCloudSqlCommon>;
+  S.Struct({
+    backup: S.optional(DatabasePreferencesCloudSqlCommonBackup),
+    sizingOptimizationStrategy: S.optional(
+      DatabasePreferencesCloudSqlCommonSizingOptimizationStrategyEnum,
+    ),
+    commitmentPlan: S.optional(
+      DatabasePreferencesCloudSqlCommonCommitmentPlanEnum,
+    ),
+    edition: S.optional(DatabasePreferencesCloudSqlCommonEditionEnum),
+    persistentDiskType: S.optional(
+      DatabasePreferencesCloudSqlCommonPersistentDiskTypeEnum,
+    ),
+    zoneAvailability: S.optional(
+      DatabasePreferencesCloudSqlCommonZoneAvailabilityEnum,
+    ),
+  }),
+).annotate({
+  identifier: "DatabasePreferencesCloudSqlCommon",
+}) as any as S.Schema<DatabasePreferencesCloudSqlCommon>;
 
 /** Preferences for MySQL on Cloud SQL. */
 export interface DatabasePreferencesCloudSqlMySql {
@@ -4128,16 +5009,30 @@ export interface DatabasePreferencesCloudSqlMySql {
   common?: DatabasePreferencesCloudSqlCommon;
 }
 export const DatabasePreferencesCloudSqlMySql = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "common": S.optional(DatabasePreferencesCloudSqlCommon),
-}),
-).annotate({ identifier: "DatabasePreferencesCloudSqlMySql" }) as any as S.Schema<DatabasePreferencesCloudSqlMySql>;
+  S.Struct({
+    common: S.optional(DatabasePreferencesCloudSqlCommon),
+  }),
+).annotate({
+  identifier: "DatabasePreferencesCloudSqlMySql",
+}) as any as S.Schema<DatabasePreferencesCloudSqlMySql>;
 
-export type DatabasePreferencesCloudSqlSqlServerMultithreadingEnum = "MULTITHREADING_UNSPECIFIED" | "MULTITHREADING_DISABLED" | "MULTITHREADING_ENABLED" | "MULTITHREADING_DISABLED_WITH_COMPENSATION";
-export const DatabasePreferencesCloudSqlSqlServerMultithreadingEnum = /*@__PURE__*/ S.String;
+export type DatabasePreferencesCloudSqlSqlServerMultithreadingEnum =
+  | "MULTITHREADING_UNSPECIFIED"
+  | "MULTITHREADING_DISABLED"
+  | "MULTITHREADING_ENABLED"
+  | "MULTITHREADING_DISABLED_WITH_COMPENSATION";
+export const DatabasePreferencesCloudSqlSqlServerMultithreadingEnum =
+  /*@__PURE__*/ S.String;
 
-export type DatabasePreferencesCloudSqlSqlServerVersionTypeEnum = "VERSION_TYPE_UNSPECIFIED" | "VERSION_TYPE_AUTO" | "VERSION_TYPE_EXPRESS" | "VERSION_TYPE_WEB" | "VERSION_TYPE_STANDARD" | "VERSION_TYPE_ENTERPRISE";
-export const DatabasePreferencesCloudSqlSqlServerVersionTypeEnum = /*@__PURE__*/ S.String;
+export type DatabasePreferencesCloudSqlSqlServerVersionTypeEnum =
+  | "VERSION_TYPE_UNSPECIFIED"
+  | "VERSION_TYPE_AUTO"
+  | "VERSION_TYPE_EXPRESS"
+  | "VERSION_TYPE_WEB"
+  | "VERSION_TYPE_STANDARD"
+  | "VERSION_TYPE_ENTERPRISE";
+export const DatabasePreferencesCloudSqlSqlServerVersionTypeEnum =
+  /*@__PURE__*/ S.String;
 
 /** Preferences for SQL Server on Cloud SQL. */
 export interface DatabasePreferencesCloudSqlSqlServer {
@@ -4148,24 +5043,34 @@ export interface DatabasePreferencesCloudSqlSqlServer {
   /** Optional. Edition of Microsoft SQL version that is used on a Cloud SQL for SQL server instance. */
   versionType?: DatabasePreferencesCloudSqlSqlServerVersionTypeEnum;
 }
-export const DatabasePreferencesCloudSqlSqlServer = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "multithreading": S.optional(DatabasePreferencesCloudSqlSqlServerMultithreadingEnum),
-  "common": S.optional(DatabasePreferencesCloudSqlCommon),
-  "versionType": S.optional(DatabasePreferencesCloudSqlSqlServerVersionTypeEnum),
-}),
-).annotate({ identifier: "DatabasePreferencesCloudSqlSqlServer" }) as any as S.Schema<DatabasePreferencesCloudSqlSqlServer>;
+export const DatabasePreferencesCloudSqlSqlServer = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      multithreading: S.optional(
+        DatabasePreferencesCloudSqlSqlServerMultithreadingEnum,
+      ),
+      common: S.optional(DatabasePreferencesCloudSqlCommon),
+      versionType: S.optional(
+        DatabasePreferencesCloudSqlSqlServerVersionTypeEnum,
+      ),
+    }),
+).annotate({
+  identifier: "DatabasePreferencesCloudSqlSqlServer",
+}) as any as S.Schema<DatabasePreferencesCloudSqlSqlServer>;
 
 /** Preferences for PostgreSQL on Cloud SQL. */
 export interface DatabasePreferencesCloudSqlPostgreSql {
   /** Optional. Preferences to Cloud SQL databases. */
   common?: DatabasePreferencesCloudSqlCommon;
 }
-export const DatabasePreferencesCloudSqlPostgreSql = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "common": S.optional(DatabasePreferencesCloudSqlCommon),
-}),
-).annotate({ identifier: "DatabasePreferencesCloudSqlPostgreSql" }) as any as S.Schema<DatabasePreferencesCloudSqlPostgreSql>;
+export const DatabasePreferencesCloudSqlPostgreSql = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      common: S.optional(DatabasePreferencesCloudSqlCommon),
+    }),
+).annotate({
+  identifier: "DatabasePreferencesCloudSqlPostgreSql",
+}) as any as S.Schema<DatabasePreferencesCloudSqlPostgreSql>;
 
 /** DatabasePreferences enables you to create sets of preferences for your migrated databases. */
 export interface DatabasePreferences {
@@ -4177,12 +5082,20 @@ export interface DatabasePreferences {
   postgresqlToCloudSqlForPostgresqlPreferences?: DatabasePreferencesCloudSqlPostgreSql;
 }
 export const DatabasePreferences = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "mysqlToCloudSqlForMysqlPreferences": S.optional(DatabasePreferencesCloudSqlMySql),
-  "mssqlToCloudSqlForSqlServerPreferences": S.optional(DatabasePreferencesCloudSqlSqlServer),
-  "postgresqlToCloudSqlForPostgresqlPreferences": S.optional(DatabasePreferencesCloudSqlPostgreSql),
-}),
-).annotate({ identifier: "DatabasePreferences" }) as any as S.Schema<DatabasePreferences>;
+  S.Struct({
+    mysqlToCloudSqlForMysqlPreferences: S.optional(
+      DatabasePreferencesCloudSqlMySql,
+    ),
+    mssqlToCloudSqlForSqlServerPreferences: S.optional(
+      DatabasePreferencesCloudSqlSqlServer,
+    ),
+    postgresqlToCloudSqlForPostgresqlPreferences: S.optional(
+      DatabasePreferencesCloudSqlPostgreSql,
+    ),
+  }),
+).annotate({
+  identifier: "DatabasePreferences",
+}) as any as S.Schema<DatabasePreferences>;
 
 /** The preferences that apply to all assets in a given context. */
 export interface PreferenceSet {
@@ -4204,16 +5117,16 @@ export interface PreferenceSet {
   databasePreferences?: DatabasePreferences;
 }
 export const PreferenceSet = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "displayName": S.optional(S.String),
-  "virtualMachinePreferences": S.optional(VirtualMachinePreferences),
-  "regionPreferences": S.optional(RegionPreferences),
-  "createTime": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "description": S.optional(S.String),
-  "name": S.optional(S.String),
-  "databasePreferences": S.optional(DatabasePreferences),
-}),
+  S.Struct({
+    displayName: S.optional(S.String),
+    virtualMachinePreferences: S.optional(VirtualMachinePreferences),
+    regionPreferences: S.optional(RegionPreferences),
+    createTime: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    description: S.optional(S.String),
+    name: S.optional(S.String),
+    databasePreferences: S.optional(DatabasePreferences),
+  }),
 ).annotate({ identifier: "PreferenceSet" }) as any as S.Schema<PreferenceSet>;
 
 export interface CreateProjectsLocationsPreferenceSetsRequest {
@@ -4225,14 +5138,23 @@ export interface CreateProjectsLocationsPreferenceSetsRequest {
   /** Request body */
   body?: PreferenceSet;
 }
-export const CreateProjectsLocationsPreferenceSetsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "preferenceSetId": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(PreferenceSet.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+parent}/preferenceSets","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsPreferenceSetsRequest" }) as any as S.Schema<CreateProjectsLocationsPreferenceSetsRequest>;
+export const CreateProjectsLocationsPreferenceSetsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      preferenceSetId: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(PreferenceSet.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1alpha1/{+parent}/preferenceSets",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsPreferenceSetsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsPreferenceSetsRequest>;
 
 /** Represents a combination of a group with a preference set. */
 export interface ReportConfigGroupPreferenceSetAssignment {
@@ -4241,15 +5163,22 @@ export interface ReportConfigGroupPreferenceSetAssignment {
   /** Required. Name of the Preference Set. */
   preferenceSet?: string;
 }
-export const ReportConfigGroupPreferenceSetAssignment = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "group": S.optional(S.String),
-  "preferenceSet": S.optional(S.String),
-}),
-).annotate({ identifier: "ReportConfigGroupPreferenceSetAssignment" }) as any as S.Schema<ReportConfigGroupPreferenceSetAssignment>;
+export const ReportConfigGroupPreferenceSetAssignment = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      group: S.optional(S.String),
+      preferenceSet: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ReportConfigGroupPreferenceSetAssignment",
+}) as any as S.Schema<ReportConfigGroupPreferenceSetAssignment>;
 
-export type ReportConfigGroupPreferenceSetAssignmentList = ReadonlyArray<ReportConfigGroupPreferenceSetAssignment>;
-export const ReportConfigGroupPreferenceSetAssignmentList = /*@__PURE__*/ S.Array(ReportConfigGroupPreferenceSetAssignment) as any as S.Schema<ReportConfigGroupPreferenceSetAssignmentList>;
+export type ReportConfigGroupPreferenceSetAssignmentList =
+  ReadonlyArray<ReportConfigGroupPreferenceSetAssignment>;
+export const ReportConfigGroupPreferenceSetAssignmentList =
+  /*@__PURE__*/ S.Array(
+    ReportConfigGroupPreferenceSetAssignment,
+  ) as any as S.Schema<ReportConfigGroupPreferenceSetAssignmentList>;
 
 /** The groups and associated preference sets on which we can generate reports. */
 export interface ReportConfig {
@@ -4267,14 +5196,16 @@ export interface ReportConfig {
   groupPreferencesetAssignments?: ReportConfigGroupPreferenceSetAssignmentList;
 }
 export const ReportConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "description": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "groupPreferencesetAssignments": S.optional(ReportConfigGroupPreferenceSetAssignmentList),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    description: S.optional(S.String),
+    displayName: S.optional(S.String),
+    createTime: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    groupPreferencesetAssignments: S.optional(
+      ReportConfigGroupPreferenceSetAssignmentList,
+    ),
+  }),
 ).annotate({ identifier: "ReportConfig" }) as any as S.Schema<ReportConfig>;
 
 export interface CreateProjectsLocationsReportConfigsRequest {
@@ -4287,19 +5218,32 @@ export interface CreateProjectsLocationsReportConfigsRequest {
   /** Request body */
   body?: ReportConfig;
 }
-export const CreateProjectsLocationsReportConfigsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "reportConfigId": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(ReportConfig.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+parent}/reportConfigs","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsReportConfigsRequest" }) as any as S.Schema<CreateProjectsLocationsReportConfigsRequest>;
+export const CreateProjectsLocationsReportConfigsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      reportConfigId: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(ReportConfig.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1alpha1/{+parent}/reportConfigs",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsReportConfigsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsReportConfigsRequest>;
 
 export type ReportTypeEnum = "TYPE_UNSPECIFIED" | "TOTAL_COST_OF_OWNERSHIP";
 export const ReportTypeEnum = /*@__PURE__*/ S.String;
 
-export type ReportStateEnum = "STATE_UNSPECIFIED" | "PENDING" | "SUCCEEDED" | "FAILED";
+export type ReportStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "PENDING"
+  | "SUCCEEDED"
+  | "FAILED";
 export const ReportStateEnum = /*@__PURE__*/ S.String;
 
 /** A histogram bucket with a lower and upper bound, and a count of items with a field value between those bounds. The lower bound is inclusive and the upper bound is exclusive. Lower bound may be -infinity and upper bound may be infinity. */
@@ -4311,16 +5255,22 @@ export interface ReportSummaryHistogramChartDataBucket {
   /** Upper bound - exclusive. */
   upperBound?: string;
 }
-export const ReportSummaryHistogramChartDataBucket = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "count": S.optional(S.String),
-  "lowerBound": S.optional(S.String),
-  "upperBound": S.optional(S.String),
-}),
-).annotate({ identifier: "ReportSummaryHistogramChartDataBucket" }) as any as S.Schema<ReportSummaryHistogramChartDataBucket>;
+export const ReportSummaryHistogramChartDataBucket = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      count: S.optional(S.String),
+      lowerBound: S.optional(S.String),
+      upperBound: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ReportSummaryHistogramChartDataBucket",
+}) as any as S.Schema<ReportSummaryHistogramChartDataBucket>;
 
-export type ReportSummaryHistogramChartDataBucketList = ReadonlyArray<ReportSummaryHistogramChartDataBucket>;
-export const ReportSummaryHistogramChartDataBucketList = /*@__PURE__*/ S.Array(ReportSummaryHistogramChartDataBucket) as any as S.Schema<ReportSummaryHistogramChartDataBucketList>;
+export type ReportSummaryHistogramChartDataBucketList =
+  ReadonlyArray<ReportSummaryHistogramChartDataBucket>;
+export const ReportSummaryHistogramChartDataBucketList = /*@__PURE__*/ S.Array(
+  ReportSummaryHistogramChartDataBucket,
+) as any as S.Schema<ReportSummaryHistogramChartDataBucketList>;
 
 /** A Histogram Chart shows a distribution of values into buckets, showing a count of values which fall into a bucket. */
 export interface ReportSummaryHistogramChartData {
@@ -4328,10 +5278,12 @@ export interface ReportSummaryHistogramChartData {
   buckets?: ReportSummaryHistogramChartDataBucketList;
 }
 export const ReportSummaryHistogramChartData = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "buckets": S.optional(ReportSummaryHistogramChartDataBucketList),
-}),
-).annotate({ identifier: "ReportSummaryHistogramChartData" }) as any as S.Schema<ReportSummaryHistogramChartData>;
+  S.Struct({
+    buckets: S.optional(ReportSummaryHistogramChartDataBucketList),
+  }),
+).annotate({
+  identifier: "ReportSummaryHistogramChartData",
+}) as any as S.Schema<ReportSummaryHistogramChartData>;
 
 /** Describes a single data point in the Chart. */
 export interface ReportSummaryChartDataDataPoint {
@@ -4341,14 +5293,19 @@ export interface ReportSummaryChartDataDataPoint {
   label?: string;
 }
 export const ReportSummaryChartDataDataPoint = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "value": S.optional(S.Number),
-  "label": S.optional(S.String),
-}),
-).annotate({ identifier: "ReportSummaryChartDataDataPoint" }) as any as S.Schema<ReportSummaryChartDataDataPoint>;
+  S.Struct({
+    value: S.optional(S.Number),
+    label: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ReportSummaryChartDataDataPoint",
+}) as any as S.Schema<ReportSummaryChartDataDataPoint>;
 
-export type ReportSummaryChartDataDataPointList = ReadonlyArray<ReportSummaryChartDataDataPoint>;
-export const ReportSummaryChartDataDataPointList = /*@__PURE__*/ S.Array(ReportSummaryChartDataDataPoint) as any as S.Schema<ReportSummaryChartDataDataPointList>;
+export type ReportSummaryChartDataDataPointList =
+  ReadonlyArray<ReportSummaryChartDataDataPoint>;
+export const ReportSummaryChartDataDataPointList = /*@__PURE__*/ S.Array(
+  ReportSummaryChartDataDataPoint,
+) as any as S.Schema<ReportSummaryChartDataDataPointList>;
 
 /** Describes a collection of data points rendered as a Chart. */
 export interface ReportSummaryChartData {
@@ -4356,10 +5313,12 @@ export interface ReportSummaryChartData {
   dataPoints?: ReportSummaryChartDataDataPointList;
 }
 export const ReportSummaryChartData = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dataPoints": S.optional(ReportSummaryChartDataDataPointList),
-}),
-).annotate({ identifier: "ReportSummaryChartData" }) as any as S.Schema<ReportSummaryChartData>;
+  S.Struct({
+    dataPoints: S.optional(ReportSummaryChartDataDataPointList),
+  }),
+).annotate({
+  identifier: "ReportSummaryChartData",
+}) as any as S.Schema<ReportSummaryChartData>;
 
 /** Estimated usage stats for the assets in this collection. */
 export interface ReportSummaryAssetAggregateStatsEstimatedUsageStats {
@@ -4368,12 +5327,15 @@ export interface ReportSummaryAssetAggregateStatsEstimatedUsageStats {
   /** Output only. The number of virtual machines in this finding that are using at least one estimated usage metric for rightsizing. */
   totalVirtualMachinesUsingEstimatedUsage?: string;
 }
-export const ReportSummaryAssetAggregateStatsEstimatedUsageStats = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "totalAssetsUsingEstimatedUsage": S.optional(S.String),
-  "totalVirtualMachinesUsingEstimatedUsage": S.optional(S.String),
-}),
-).annotate({ identifier: "ReportSummaryAssetAggregateStatsEstimatedUsageStats" }) as any as S.Schema<ReportSummaryAssetAggregateStatsEstimatedUsageStats>;
+export const ReportSummaryAssetAggregateStatsEstimatedUsageStats =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      totalAssetsUsingEstimatedUsage: S.optional(S.String),
+      totalVirtualMachinesUsingEstimatedUsage: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ReportSummaryAssetAggregateStatsEstimatedUsageStats",
+  }) as any as S.Schema<ReportSummaryAssetAggregateStatsEstimatedUsageStats>;
 
 /** Utilization Chart is a specific type of visualization which displays a metric classified into "Used" and "Free" buckets. */
 export interface ReportSummaryUtilizationChartData {
@@ -4383,11 +5345,13 @@ export interface ReportSummaryUtilizationChartData {
   free?: string;
 }
 export const ReportSummaryUtilizationChartData = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "used": S.optional(S.String),
-  "free": S.optional(S.String),
-}),
-).annotate({ identifier: "ReportSummaryUtilizationChartData" }) as any as S.Schema<ReportSummaryUtilizationChartData>;
+  S.Struct({
+    used: S.optional(S.String),
+    free: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ReportSummaryUtilizationChartData",
+}) as any as S.Schema<ReportSummaryUtilizationChartData>;
 
 /** Aggregate statistics for a collection of assets. */
 export interface ReportSummaryAssetAggregateStats {
@@ -4425,30 +5389,41 @@ export interface ReportSummaryAssetAggregateStats {
   storageUtilizationChart?: ReportSummaryUtilizationChartData;
 }
 export const ReportSummaryAssetAggregateStats = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "memoryBytesHistogram": S.optional(ReportSummaryHistogramChartData),
-  "assetAge": S.optional(ReportSummaryChartData),
-  "storageBytesHistogram": S.optional(ReportSummaryHistogramChartData),
-  "totalCores": S.optional(S.String),
-  "coreCountHistogram": S.optional(ReportSummaryHistogramChartData),
-  "storageUtilization": S.optional(ReportSummaryChartData),
-  "operatingSystem": S.optional(ReportSummaryChartData),
-  "totalMemoryBytes": S.optional(S.String),
-  "totalAssets": S.optional(S.String),
-  "totalStorageBytes": S.optional(S.String),
-  "estimatedUsageStats": S.optional(ReportSummaryAssetAggregateStatsEstimatedUsageStats),
-  "softwareInstances": S.optional(ReportSummaryChartData),
-  "memoryUtilization": S.optional(ReportSummaryChartData),
-  "memoryUtilizationChart": S.optional(ReportSummaryUtilizationChartData),
-  "databaseTypes": S.optional(ReportSummaryChartData),
-  "storageUtilizationChart": S.optional(ReportSummaryUtilizationChartData),
-}),
-).annotate({ identifier: "ReportSummaryAssetAggregateStats" }) as any as S.Schema<ReportSummaryAssetAggregateStats>;
+  S.Struct({
+    memoryBytesHistogram: S.optional(ReportSummaryHistogramChartData),
+    assetAge: S.optional(ReportSummaryChartData),
+    storageBytesHistogram: S.optional(ReportSummaryHistogramChartData),
+    totalCores: S.optional(S.String),
+    coreCountHistogram: S.optional(ReportSummaryHistogramChartData),
+    storageUtilization: S.optional(ReportSummaryChartData),
+    operatingSystem: S.optional(ReportSummaryChartData),
+    totalMemoryBytes: S.optional(S.String),
+    totalAssets: S.optional(S.String),
+    totalStorageBytes: S.optional(S.String),
+    estimatedUsageStats: S.optional(
+      ReportSummaryAssetAggregateStatsEstimatedUsageStats,
+    ),
+    softwareInstances: S.optional(ReportSummaryChartData),
+    memoryUtilization: S.optional(ReportSummaryChartData),
+    memoryUtilizationChart: S.optional(ReportSummaryUtilizationChartData),
+    databaseTypes: S.optional(ReportSummaryChartData),
+    storageUtilizationChart: S.optional(ReportSummaryUtilizationChartData),
+  }),
+).annotate({
+  identifier: "ReportSummaryAssetAggregateStats",
+}) as any as S.Schema<ReportSummaryAssetAggregateStats>;
 
-export type ReportSummaryGroupFindingAssetTypeEnum = "ASSET_TYPE_UNSPECIFIED" | "VIRTUAL_MACHINE" | "DATABASE";
+export type ReportSummaryGroupFindingAssetTypeEnum =
+  | "ASSET_TYPE_UNSPECIFIED"
+  | "VIRTUAL_MACHINE"
+  | "DATABASE";
 export const ReportSummaryGroupFindingAssetTypeEnum = /*@__PURE__*/ S.String;
 
-export type ReportSummaryGroupFindingDatabaseTypeEnum = "DATABASE_TYPE_UNSPECIFIED" | "SQL_SERVER" | "MYSQL" | "POSTGRES";
+export type ReportSummaryGroupFindingDatabaseTypeEnum =
+  | "DATABASE_TYPE_UNSPECIFIED"
+  | "SQL_SERVER"
+  | "MYSQL"
+  | "POSTGRES";
 export const ReportSummaryGroupFindingDatabaseTypeEnum = /*@__PURE__*/ S.String;
 
 /** DatabaseFinding contains an aggregate costs and shapes for a single database type. */
@@ -4459,11 +5434,13 @@ export interface ReportSummaryDatabaseFinding {
   totalAssets?: string;
 }
 export const ReportSummaryDatabaseFinding = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "allocatedAssetCount": S.optional(S.String),
-  "totalAssets": S.optional(S.String),
-}),
-).annotate({ identifier: "ReportSummaryDatabaseFinding" }) as any as S.Schema<ReportSummaryDatabaseFinding>;
+  S.Struct({
+    allocatedAssetCount: S.optional(S.String),
+    totalAssets: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ReportSummaryDatabaseFinding",
+}) as any as S.Schema<ReportSummaryDatabaseFinding>;
 
 /** Represents an amount of money with its currency type. */
 export interface Money {
@@ -4475,11 +5452,11 @@ export interface Money {
   nanos?: number;
 }
 export const Money = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "currencyCode": S.optional(S.String),
-  "units": S.optional(S.String),
-  "nanos": S.optional(S.Number),
-}),
+  S.Struct({
+    currencyCode: S.optional(S.String),
+    units: S.optional(S.String),
+    nanos: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "Money" }) as any as S.Schema<Money>;
 
 /** Represents a data point tracking the count of assets allocated for a specific Machine Series. */
@@ -4489,21 +5466,36 @@ export interface ReportSummaryMachineSeriesAllocation {
   /** The Machine Series (e.g. "E2", "N2") */
   machineSeries?: MachineSeries;
 }
-export const ReportSummaryMachineSeriesAllocation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "allocatedAssetCount": S.optional(S.String),
-  "machineSeries": S.optional(MachineSeries),
-}),
-).annotate({ identifier: "ReportSummaryMachineSeriesAllocation" }) as any as S.Schema<ReportSummaryMachineSeriesAllocation>;
+export const ReportSummaryMachineSeriesAllocation = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      allocatedAssetCount: S.optional(S.String),
+      machineSeries: S.optional(MachineSeries),
+    }),
+).annotate({
+  identifier: "ReportSummaryMachineSeriesAllocation",
+}) as any as S.Schema<ReportSummaryMachineSeriesAllocation>;
 
-export type ReportSummaryMachineSeriesAllocationList = ReadonlyArray<ReportSummaryMachineSeriesAllocation>;
-export const ReportSummaryMachineSeriesAllocationList = /*@__PURE__*/ S.Array(ReportSummaryMachineSeriesAllocation) as any as S.Schema<ReportSummaryMachineSeriesAllocationList>;
+export type ReportSummaryMachineSeriesAllocationList =
+  ReadonlyArray<ReportSummaryMachineSeriesAllocation>;
+export const ReportSummaryMachineSeriesAllocationList = /*@__PURE__*/ S.Array(
+  ReportSummaryMachineSeriesAllocation,
+) as any as S.Schema<ReportSummaryMachineSeriesAllocationList>;
 
-export type ReportSummaryMachineFindingAllocatedDiskTypesItemEnum = "PERSISTENT_DISK_TYPE_UNSPECIFIED" | "PERSISTENT_DISK_TYPE_STANDARD" | "PERSISTENT_DISK_TYPE_BALANCED" | "PERSISTENT_DISK_TYPE_SSD";
-export const ReportSummaryMachineFindingAllocatedDiskTypesItemEnum = /*@__PURE__*/ S.String;
+export type ReportSummaryMachineFindingAllocatedDiskTypesItemEnum =
+  | "PERSISTENT_DISK_TYPE_UNSPECIFIED"
+  | "PERSISTENT_DISK_TYPE_STANDARD"
+  | "PERSISTENT_DISK_TYPE_BALANCED"
+  | "PERSISTENT_DISK_TYPE_SSD";
+export const ReportSummaryMachineFindingAllocatedDiskTypesItemEnum =
+  /*@__PURE__*/ S.String;
 
-export type ReportSummaryMachineFindingAllocatedDiskTypesItemEnumList = ReadonlyArray<ReportSummaryMachineFindingAllocatedDiskTypesItemEnum>;
-export const ReportSummaryMachineFindingAllocatedDiskTypesItemEnumList = /*@__PURE__*/ S.Array(ReportSummaryMachineFindingAllocatedDiskTypesItemEnum) as any as S.Schema<ReportSummaryMachineFindingAllocatedDiskTypesItemEnumList>;
+export type ReportSummaryMachineFindingAllocatedDiskTypesItemEnumList =
+  ReadonlyArray<ReportSummaryMachineFindingAllocatedDiskTypesItemEnum>;
+export const ReportSummaryMachineFindingAllocatedDiskTypesItemEnumList =
+  /*@__PURE__*/ S.Array(
+    ReportSummaryMachineFindingAllocatedDiskTypesItemEnum,
+  ) as any as S.Schema<ReportSummaryMachineFindingAllocatedDiskTypesItemEnumList>;
 
 /** A set of findings that applies to assets of type Virtual/Physical Machine. */
 export interface ReportSummaryMachineFinding {
@@ -4517,13 +5509,19 @@ export interface ReportSummaryMachineFinding {
   allocatedDiskTypes?: ReportSummaryMachineFindingAllocatedDiskTypesItemEnumList;
 }
 export const ReportSummaryMachineFinding = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "allocatedRegions": S.optional(StringList),
-  "machineSeriesAllocations": S.optional(ReportSummaryMachineSeriesAllocationList),
-  "allocatedAssetCount": S.optional(S.String),
-  "allocatedDiskTypes": S.optional(ReportSummaryMachineFindingAllocatedDiskTypesItemEnumList),
-}),
-).annotate({ identifier: "ReportSummaryMachineFinding" }) as any as S.Schema<ReportSummaryMachineFinding>;
+  S.Struct({
+    allocatedRegions: S.optional(StringList),
+    machineSeriesAllocations: S.optional(
+      ReportSummaryMachineSeriesAllocationList,
+    ),
+    allocatedAssetCount: S.optional(S.String),
+    allocatedDiskTypes: S.optional(
+      ReportSummaryMachineFindingAllocatedDiskTypesItemEnumList,
+    ),
+  }),
+).annotate({
+  identifier: "ReportSummaryMachineFinding",
+}) as any as S.Schema<ReportSummaryMachineFinding>;
 
 /** Represents the assets allocated to a specific Sole-Tenant node type. */
 export interface ReportSummarySoleTenantNodeAllocation {
@@ -4534,16 +5532,22 @@ export interface ReportSummarySoleTenantNodeAllocation {
   /** Count of assets allocated to these nodes */
   allocatedAssetCount?: string;
 }
-export const ReportSummarySoleTenantNodeAllocation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "node": S.optional(SoleTenantNodeType),
-  "nodeCount": S.optional(S.String),
-  "allocatedAssetCount": S.optional(S.String),
-}),
-).annotate({ identifier: "ReportSummarySoleTenantNodeAllocation" }) as any as S.Schema<ReportSummarySoleTenantNodeAllocation>;
+export const ReportSummarySoleTenantNodeAllocation = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      node: S.optional(SoleTenantNodeType),
+      nodeCount: S.optional(S.String),
+      allocatedAssetCount: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ReportSummarySoleTenantNodeAllocation",
+}) as any as S.Schema<ReportSummarySoleTenantNodeAllocation>;
 
-export type ReportSummarySoleTenantNodeAllocationList = ReadonlyArray<ReportSummarySoleTenantNodeAllocation>;
-export const ReportSummarySoleTenantNodeAllocationList = /*@__PURE__*/ S.Array(ReportSummarySoleTenantNodeAllocation) as any as S.Schema<ReportSummarySoleTenantNodeAllocationList>;
+export type ReportSummarySoleTenantNodeAllocationList =
+  ReadonlyArray<ReportSummarySoleTenantNodeAllocation>;
+export const ReportSummarySoleTenantNodeAllocationList = /*@__PURE__*/ S.Array(
+  ReportSummarySoleTenantNodeAllocation,
+) as any as S.Schema<ReportSummarySoleTenantNodeAllocationList>;
 
 /** A set of findings that applies to assets destined for Sole-Tenant nodes. */
 export interface ReportSummarySoleTenantFinding {
@@ -4555,12 +5559,14 @@ export interface ReportSummarySoleTenantFinding {
   nodeAllocations?: ReportSummarySoleTenantNodeAllocationList;
 }
 export const ReportSummarySoleTenantFinding = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "allocatedAssetCount": S.optional(S.String),
-  "allocatedRegions": S.optional(StringList),
-  "nodeAllocations": S.optional(ReportSummarySoleTenantNodeAllocationList),
-}),
-).annotate({ identifier: "ReportSummarySoleTenantFinding" }) as any as S.Schema<ReportSummarySoleTenantFinding>;
+  S.Struct({
+    allocatedAssetCount: S.optional(S.String),
+    allocatedRegions: S.optional(StringList),
+    nodeAllocations: S.optional(ReportSummarySoleTenantNodeAllocationList),
+  }),
+).annotate({
+  identifier: "ReportSummarySoleTenantFinding",
+}) as any as S.Schema<ReportSummarySoleTenantFinding>;
 
 /** A VMWare Engine Node */
 export interface ReportSummaryVMWareNode {
@@ -4568,10 +5574,12 @@ export interface ReportSummaryVMWareNode {
   code?: string;
 }
 export const ReportSummaryVMWareNode = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(S.String),
-}),
-).annotate({ identifier: "ReportSummaryVMWareNode" }) as any as S.Schema<ReportSummaryVMWareNode>;
+  S.Struct({
+    code: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ReportSummaryVMWareNode",
+}) as any as S.Schema<ReportSummaryVMWareNode>;
 
 /** Represents assets allocated to a specific VMWare Node type. */
 export interface ReportSummaryVMWareNodeAllocation {
@@ -4583,15 +5591,20 @@ export interface ReportSummaryVMWareNodeAllocation {
   allocatedAssetCount?: string;
 }
 export const ReportSummaryVMWareNodeAllocation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nodeCount": S.optional(S.String),
-  "vmwareNode": S.optional(ReportSummaryVMWareNode),
-  "allocatedAssetCount": S.optional(S.String),
-}),
-).annotate({ identifier: "ReportSummaryVMWareNodeAllocation" }) as any as S.Schema<ReportSummaryVMWareNodeAllocation>;
+  S.Struct({
+    nodeCount: S.optional(S.String),
+    vmwareNode: S.optional(ReportSummaryVMWareNode),
+    allocatedAssetCount: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ReportSummaryVMWareNodeAllocation",
+}) as any as S.Schema<ReportSummaryVMWareNodeAllocation>;
 
-export type ReportSummaryVMWareNodeAllocationList = ReadonlyArray<ReportSummaryVMWareNodeAllocation>;
-export const ReportSummaryVMWareNodeAllocationList = /*@__PURE__*/ S.Array(ReportSummaryVMWareNodeAllocation) as any as S.Schema<ReportSummaryVMWareNodeAllocationList>;
+export type ReportSummaryVMWareNodeAllocationList =
+  ReadonlyArray<ReportSummaryVMWareNodeAllocation>;
+export const ReportSummaryVMWareNodeAllocationList = /*@__PURE__*/ S.Array(
+  ReportSummaryVMWareNodeAllocation,
+) as any as S.Schema<ReportSummaryVMWareNodeAllocationList>;
 
 /** A set of findings that applies to assets destined for VMWare Engine. */
 export interface ReportSummaryVMWareEngineFinding {
@@ -4603,12 +5616,14 @@ export interface ReportSummaryVMWareEngineFinding {
   allocatedAssetCount?: string;
 }
 export const ReportSummaryVMWareEngineFinding = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "allocatedRegions": S.optional(StringList),
-  "nodeAllocations": S.optional(ReportSummaryVMWareNodeAllocationList),
-  "allocatedAssetCount": S.optional(S.String),
-}),
-).annotate({ identifier: "ReportSummaryVMWareEngineFinding" }) as any as S.Schema<ReportSummaryVMWareEngineFinding>;
+  S.Struct({
+    allocatedRegions: S.optional(StringList),
+    nodeAllocations: S.optional(ReportSummaryVMWareNodeAllocationList),
+    allocatedAssetCount: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ReportSummaryVMWareEngineFinding",
+}) as any as S.Schema<ReportSummaryVMWareEngineFinding>;
 
 /** Summary Findings for a specific Group/PreferenceSet combination. */
 export interface ReportSummaryGroupPreferenceSetFinding {
@@ -4655,34 +5670,40 @@ export interface ReportSummaryGroupPreferenceSetFinding {
   /** Display Name of the Preference Set */
   displayName?: string;
 }
-export const ReportSummaryGroupPreferenceSetFinding = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "databaseFinding": S.optional(ReportSummaryDatabaseFinding),
-  "monthlyCostPortableVmwareLicense": S.optional(Money),
-  "preferenceSet": S.optional(PreferenceSet),
-  "preferredRegion": S.optional(S.String),
-  "monthlyCostGcveProtected": S.optional(Money),
-  "monthlyCostDatabaseLicensing": S.optional(Money),
-  "monthlyCostOther": S.optional(Money),
-  "machineFinding": S.optional(ReportSummaryMachineFinding),
-  "monthlyCostTotal": S.optional(Money),
-  "monthlyCostNetworkEgress": S.optional(Money),
-  "pricingTrack": S.optional(S.String),
-  "topPriority": S.optional(S.String),
-  "monthlyCostStorage": S.optional(Money),
-  "description": S.optional(S.String),
-  "soleTenantFinding": S.optional(ReportSummarySoleTenantFinding),
-  "monthlyCostOsLicense": S.optional(Money),
-  "vmwareEngineFinding": S.optional(ReportSummaryVMWareEngineFinding),
-  "monthlyCostCompute": S.optional(Money),
-  "monthlyCostDatabaseBackup": S.optional(Money),
-  "machinePreferences": S.optional(VirtualMachinePreferences),
-  "displayName": S.optional(S.String),
-}),
-).annotate({ identifier: "ReportSummaryGroupPreferenceSetFinding" }) as any as S.Schema<ReportSummaryGroupPreferenceSetFinding>;
+export const ReportSummaryGroupPreferenceSetFinding = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      databaseFinding: S.optional(ReportSummaryDatabaseFinding),
+      monthlyCostPortableVmwareLicense: S.optional(Money),
+      preferenceSet: S.optional(PreferenceSet),
+      preferredRegion: S.optional(S.String),
+      monthlyCostGcveProtected: S.optional(Money),
+      monthlyCostDatabaseLicensing: S.optional(Money),
+      monthlyCostOther: S.optional(Money),
+      machineFinding: S.optional(ReportSummaryMachineFinding),
+      monthlyCostTotal: S.optional(Money),
+      monthlyCostNetworkEgress: S.optional(Money),
+      pricingTrack: S.optional(S.String),
+      topPriority: S.optional(S.String),
+      monthlyCostStorage: S.optional(Money),
+      description: S.optional(S.String),
+      soleTenantFinding: S.optional(ReportSummarySoleTenantFinding),
+      monthlyCostOsLicense: S.optional(Money),
+      vmwareEngineFinding: S.optional(ReportSummaryVMWareEngineFinding),
+      monthlyCostCompute: S.optional(Money),
+      monthlyCostDatabaseBackup: S.optional(Money),
+      machinePreferences: S.optional(VirtualMachinePreferences),
+      displayName: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ReportSummaryGroupPreferenceSetFinding",
+}) as any as S.Schema<ReportSummaryGroupPreferenceSetFinding>;
 
-export type ReportSummaryGroupPreferenceSetFindingList = ReadonlyArray<ReportSummaryGroupPreferenceSetFinding>;
-export const ReportSummaryGroupPreferenceSetFindingList = /*@__PURE__*/ S.Array(ReportSummaryGroupPreferenceSetFinding) as any as S.Schema<ReportSummaryGroupPreferenceSetFindingList>;
+export type ReportSummaryGroupPreferenceSetFindingList =
+  ReadonlyArray<ReportSummaryGroupPreferenceSetFinding>;
+export const ReportSummaryGroupPreferenceSetFindingList = /*@__PURE__*/ S.Array(
+  ReportSummaryGroupPreferenceSetFinding,
+) as any as S.Schema<ReportSummaryGroupPreferenceSetFindingList>;
 
 /** Summary Findings for a specific Group. */
 export interface ReportSummaryGroupFinding {
@@ -4704,20 +5725,27 @@ export interface ReportSummaryGroupFinding {
   description?: string;
 }
 export const ReportSummaryGroupFinding = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "overlappingAssetCount": S.optional(S.String),
-  "assetType": S.optional(ReportSummaryGroupFindingAssetTypeEnum),
-  "displayName": S.optional(S.String),
-  "assetAggregateStats": S.optional(ReportSummaryAssetAggregateStats),
-  "group": S.optional(S.String),
-  "databaseType": S.optional(ReportSummaryGroupFindingDatabaseTypeEnum),
-  "preferenceSetFindings": S.optional(ReportSummaryGroupPreferenceSetFindingList),
-  "description": S.optional(S.String),
-}),
-).annotate({ identifier: "ReportSummaryGroupFinding" }) as any as S.Schema<ReportSummaryGroupFinding>;
+  S.Struct({
+    overlappingAssetCount: S.optional(S.String),
+    assetType: S.optional(ReportSummaryGroupFindingAssetTypeEnum),
+    displayName: S.optional(S.String),
+    assetAggregateStats: S.optional(ReportSummaryAssetAggregateStats),
+    group: S.optional(S.String),
+    databaseType: S.optional(ReportSummaryGroupFindingDatabaseTypeEnum),
+    preferenceSetFindings: S.optional(
+      ReportSummaryGroupPreferenceSetFindingList,
+    ),
+    description: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ReportSummaryGroupFinding",
+}) as any as S.Schema<ReportSummaryGroupFinding>;
 
-export type ReportSummaryGroupFindingList = ReadonlyArray<ReportSummaryGroupFinding>;
-export const ReportSummaryGroupFindingList = /*@__PURE__*/ S.Array(ReportSummaryGroupFinding) as any as S.Schema<ReportSummaryGroupFindingList>;
+export type ReportSummaryGroupFindingList =
+  ReadonlyArray<ReportSummaryGroupFinding>;
+export const ReportSummaryGroupFindingList = /*@__PURE__*/ S.Array(
+  ReportSummaryGroupFinding,
+) as any as S.Schema<ReportSummaryGroupFindingList>;
 
 /** Describes the Summary view of a Report, which contains aggregated values for all the groups and preference sets included in this Report. */
 export interface ReportSummary {
@@ -4731,12 +5759,12 @@ export interface ReportSummary {
   groupFindings?: ReportSummaryGroupFindingList;
 }
 export const ReportSummary = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "allAssetsStats": S.optional(ReportSummaryAssetAggregateStats),
-  "virtualMachineStats": S.optional(ReportSummaryAssetAggregateStats),
-  "databaseStats": S.optional(ReportSummaryAssetAggregateStats),
-  "groupFindings": S.optional(ReportSummaryGroupFindingList),
-}),
+  S.Struct({
+    allAssetsStats: S.optional(ReportSummaryAssetAggregateStats),
+    virtualMachineStats: S.optional(ReportSummaryAssetAggregateStats),
+    databaseStats: S.optional(ReportSummaryAssetAggregateStats),
+    groupFindings: S.optional(ReportSummaryGroupFindingList),
+  }),
 ).annotate({ identifier: "ReportSummary" }) as any as S.Schema<ReportSummary>;
 
 /** Report represents a point-in-time rendering of the ReportConfig results. */
@@ -4759,16 +5787,16 @@ export interface Report {
   description?: string;
 }
 export const Report = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "createTime": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "type": S.optional(ReportTypeEnum),
-  "state": S.optional(ReportStateEnum),
-  "summary": S.optional(ReportSummary),
-  "name": S.optional(S.String),
-  "description": S.optional(S.String),
-}),
+  S.Struct({
+    createTime: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    displayName: S.optional(S.String),
+    type: S.optional(ReportTypeEnum),
+    state: S.optional(ReportStateEnum),
+    summary: S.optional(ReportSummary),
+    name: S.optional(S.String),
+    description: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Report" }) as any as S.Schema<Report>;
 
 export interface CreateProjectsLocationsReportConfigsReportsRequest {
@@ -4781,14 +5809,23 @@ export interface CreateProjectsLocationsReportConfigsReportsRequest {
   /** Request body */
   body?: Report;
 }
-export const CreateProjectsLocationsReportConfigsReportsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "reportId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Report.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+parent}/reports","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsReportConfigsReportsRequest" }) as any as S.Schema<CreateProjectsLocationsReportConfigsReportsRequest>;
+export const CreateProjectsLocationsReportConfigsReportsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      requestId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      reportId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Report.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1alpha1/{+parent}/reports",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsReportConfigsReportsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsReportConfigsReportsRequest>;
 
 /** Contains the result of the report export. */
 export interface ReportExportExecutionResult {
@@ -4800,12 +5837,14 @@ export interface ReportExportExecutionResult {
   error?: Status;
 }
 export const ReportExportExecutionResult = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "signedUris": S.optional(SignedUris),
-  "outputFiles": S.optional(OutputFileList),
-  "error": S.optional(Status),
-}),
-).annotate({ identifier: "ReportExportExecutionResult" }) as any as S.Schema<ReportExportExecutionResult>;
+  S.Struct({
+    signedUris: S.optional(SignedUris),
+    outputFiles: S.optional(OutputFileList),
+    error: S.optional(Status),
+  }),
+).annotate({
+  identifier: "ReportExportExecutionResult",
+}) as any as S.Schema<ReportExportExecutionResult>;
 
 /** Execution status of report export operation. */
 export interface ReportExportExecution {
@@ -4823,18 +5862,22 @@ export interface ReportExportExecution {
   result?: ReportExportExecutionResult;
 }
 export const ReportExportExecution = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "startTime": S.optional(S.String),
-  "endTime": S.optional(S.String),
-  "progressPercentage": S.optional(S.Number),
-  "executionId": S.optional(S.String),
-  "expireTime": S.optional(S.String),
-  "result": S.optional(ReportExportExecutionResult),
-}),
-).annotate({ identifier: "ReportExportExecution" }) as any as S.Schema<ReportExportExecution>;
+  S.Struct({
+    startTime: S.optional(S.String),
+    endTime: S.optional(S.String),
+    progressPercentage: S.optional(S.Number),
+    executionId: S.optional(S.String),
+    expireTime: S.optional(S.String),
+    result: S.optional(ReportExportExecutionResult),
+  }),
+).annotate({
+  identifier: "ReportExportExecution",
+}) as any as S.Schema<ReportExportExecution>;
 
 export type ReportExportExecutionList = ReadonlyArray<ReportExportExecution>;
-export const ReportExportExecutionList = /*@__PURE__*/ S.Array(ReportExportExecution) as any as S.Schema<ReportExportExecutionList>;
+export const ReportExportExecutionList = /*@__PURE__*/ S.Array(
+  ReportExportExecution,
+) as any as S.Schema<ReportExportExecutionList>;
 
 /** Report export job message. */
 export interface ReportExportJob {
@@ -4846,12 +5889,14 @@ export interface ReportExportJob {
   signedUriDestination?: SignedUriDestination;
 }
 export const ReportExportJob = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "recentExecutions": S.optional(ReportExportExecutionList),
-  "name": S.optional(S.String),
-  "signedUriDestination": S.optional(SignedUriDestination),
-}),
-).annotate({ identifier: "ReportExportJob" }) as any as S.Schema<ReportExportJob>;
+  S.Struct({
+    recentExecutions: S.optional(ReportExportExecutionList),
+    name: S.optional(S.String),
+    signedUriDestination: S.optional(SignedUriDestination),
+  }),
+).annotate({
+  identifier: "ReportExportJob",
+}) as any as S.Schema<ReportExportJob>;
 
 export interface CreateProjectsLocationsReportConfigsReportsReportExportJobsRequest {
   /** Required. The ID to use for the report export job. */
@@ -4863,19 +5908,39 @@ export interface CreateProjectsLocationsReportConfigsReportsReportExportJobsRequ
   /** Request body */
   body?: ReportExportJob;
 }
-export const CreateProjectsLocationsReportConfigsReportsReportExportJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "reportExportJobId": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(ReportExportJob.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+parent}/reportExportJobs","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsReportConfigsReportsReportExportJobsRequest" }) as any as S.Schema<CreateProjectsLocationsReportConfigsReportsReportExportJobsRequest>;
+export const CreateProjectsLocationsReportConfigsReportsReportExportJobsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      reportExportJobId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(ReportExportJob.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1alpha1/{+parent}/reportExportJobs",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "CreateProjectsLocationsReportConfigsReportsReportExportJobsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsReportConfigsReportsReportExportJobsRequest>;
 
-export type SourceStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "DELETING" | "INVALID";
+export type SourceStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "DELETING"
+  | "INVALID";
 export const SourceStateEnum = /*@__PURE__*/ S.String;
 
-export type SourceTypeEnum = "SOURCE_TYPE_UNKNOWN" | "SOURCE_TYPE_UPLOAD" | "SOURCE_TYPE_GUEST_OS_SCAN" | "SOURCE_TYPE_INVENTORY_SCAN" | "SOURCE_TYPE_CUSTOM" | "SOURCE_TYPE_DISCOVERY_CLIENT";
+export type SourceTypeEnum =
+  | "SOURCE_TYPE_UNKNOWN"
+  | "SOURCE_TYPE_UPLOAD"
+  | "SOURCE_TYPE_GUEST_OS_SCAN"
+  | "SOURCE_TYPE_INVENTORY_SCAN"
+  | "SOURCE_TYPE_CUSTOM"
+  | "SOURCE_TYPE_DISCOVERY_CLIENT";
 export const SourceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Source represents an object from which asset information is streamed to Migration Center. */
@@ -4904,19 +5969,19 @@ export interface Source {
   type?: SourceTypeEnum;
 }
 export const Source = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "createTime": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "priority": S.optional(S.Number),
-  "state": S.optional(SourceStateEnum),
-  "description": S.optional(S.String),
-  "isManaged": S.optional(S.Boolean),
-  "name": S.optional(S.String),
-  "errorFrameCount": S.optional(S.Number),
-  "pendingFrameCount": S.optional(S.Number),
-  "displayName": S.optional(S.String),
-  "type": S.optional(SourceTypeEnum),
-}),
+  S.Struct({
+    createTime: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    priority: S.optional(S.Number),
+    state: S.optional(SourceStateEnum),
+    description: S.optional(S.String),
+    isManaged: S.optional(S.Boolean),
+    name: S.optional(S.String),
+    errorFrameCount: S.optional(S.Number),
+    pendingFrameCount: S.optional(S.Number),
+    displayName: S.optional(S.String),
+    type: S.optional(SourceTypeEnum),
+  }),
 ).annotate({ identifier: "Source" }) as any as S.Schema<Source>;
 
 export interface CreateProjectsLocationsSourcesRequest {
@@ -4929,14 +5994,23 @@ export interface CreateProjectsLocationsSourcesRequest {
   /** Request body */
   body?: Source;
 }
-export const CreateProjectsLocationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "sourceId": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Source.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+parent}/sources","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsSourcesRequest" }) as any as S.Schema<CreateProjectsLocationsSourcesRequest>;
+export const CreateProjectsLocationsSourcesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      sourceId: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Source.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1alpha1/{+parent}/sources",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateProjectsLocationsSourcesRequest",
+}) as any as S.Schema<CreateProjectsLocationsSourcesRequest>;
 
 export interface DeleteProjectsLocationsAssetsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -4944,22 +6018,40 @@ export interface DeleteProjectsLocationsAssetsRequest {
   /** Required. Name of the resource. */
   name: string;
 }
-export const DeleteProjectsLocationsAssetsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1alpha1/{+name}","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsAssetsRequest" }) as any as S.Schema<DeleteProjectsLocationsAssetsRequest>;
+export const DeleteProjectsLocationsAssetsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      requestId: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1alpha1/{+name}",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsAssetsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsAssetsRequest>;
 
 export interface DeleteProjectsLocationsAssetsExportJobsRequest {
   /** Required. The name of the assets export job to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsAssetsExportJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1alpha1/{+name}","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsAssetsExportJobsRequest" }) as any as S.Schema<DeleteProjectsLocationsAssetsExportJobsRequest>;
+export const DeleteProjectsLocationsAssetsExportJobsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1alpha1/{+name}",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsAssetsExportJobsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsAssetsExportJobsRequest>;
 
 export interface DeleteProjectsLocationsDiscoveryClientsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -4967,12 +6059,21 @@ export interface DeleteProjectsLocationsDiscoveryClientsRequest {
   /** Required. The discovery client name. */
   name: string;
 }
-export const DeleteProjectsLocationsDiscoveryClientsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1alpha1/{+name}","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsDiscoveryClientsRequest" }) as any as S.Schema<DeleteProjectsLocationsDiscoveryClientsRequest>;
+export const DeleteProjectsLocationsDiscoveryClientsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      requestId: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1alpha1/{+name}",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsDiscoveryClientsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsDiscoveryClientsRequest>;
 
 export interface DeleteProjectsLocationsGroupsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -4980,12 +6081,21 @@ export interface DeleteProjectsLocationsGroupsRequest {
   /** Required. Name of the group resource. */
   name: string;
 }
-export const DeleteProjectsLocationsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1alpha1/{+name}","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsGroupsRequest" }) as any as S.Schema<DeleteProjectsLocationsGroupsRequest>;
+export const DeleteProjectsLocationsGroupsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      requestId: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1alpha1/{+name}",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsGroupsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsGroupsRequest>;
 
 export interface DeleteProjectsLocationsImportJobsRequest {
   /** Required. Name of the resource. */
@@ -4995,13 +6105,22 @@ export interface DeleteProjectsLocationsImportJobsRequest {
   /** Optional. If set to `true`, any `ImportDataFiles` of this job will also be deleted If set to `false`, the request only works if the job has no data files. */
   force?: boolean;
 }
-export const DeleteProjectsLocationsImportJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "force": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1alpha1/{+name}","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsImportJobsRequest" }) as any as S.Schema<DeleteProjectsLocationsImportJobsRequest>;
+export const DeleteProjectsLocationsImportJobsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      force: S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1alpha1/{+name}",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsImportJobsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsImportJobsRequest>;
 
 export interface DeleteProjectsLocationsImportJobsImportDataFilesRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -5009,22 +6128,40 @@ export interface DeleteProjectsLocationsImportJobsImportDataFilesRequest {
   /** Required. Name of the ImportDataFile to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsImportJobsImportDataFilesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1alpha1/{+name}","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsImportJobsImportDataFilesRequest" }) as any as S.Schema<DeleteProjectsLocationsImportJobsImportDataFilesRequest>;
+export const DeleteProjectsLocationsImportJobsImportDataFilesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      requestId: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1alpha1/{+name}",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsImportJobsImportDataFilesRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsImportJobsImportDataFilesRequest>;
 
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1alpha1/{+name}","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsOperationsRequest" }) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1alpha1/{+name}",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsOperationsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
 
 export interface DeleteProjectsLocationsPreferenceSetsRequest {
   /** Required. Name of the group resource. */
@@ -5032,12 +6169,21 @@ export interface DeleteProjectsLocationsPreferenceSetsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsPreferenceSetsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1alpha1/{+name}","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsPreferenceSetsRequest" }) as any as S.Schema<DeleteProjectsLocationsPreferenceSetsRequest>;
+export const DeleteProjectsLocationsPreferenceSetsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1alpha1/{+name}",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsPreferenceSetsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsPreferenceSetsRequest>;
 
 export interface DeleteProjectsLocationsReportConfigsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -5047,13 +6193,22 @@ export interface DeleteProjectsLocationsReportConfigsRequest {
   /** Required. Name of the resource. */
   name: string;
 }
-export const DeleteProjectsLocationsReportConfigsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "force": S.optional(S.Boolean.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1alpha1/{+name}","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsReportConfigsRequest" }) as any as S.Schema<DeleteProjectsLocationsReportConfigsRequest>;
+export const DeleteProjectsLocationsReportConfigsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      requestId: S.optional(S.String.pipe(T.Query())),
+      force: S.optional(S.Boolean.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1alpha1/{+name}",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsReportConfigsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsReportConfigsRequest>;
 
 export interface DeleteProjectsLocationsReportConfigsReportsRequest {
   /** Required. Name of the resource. */
@@ -5061,12 +6216,21 @@ export interface DeleteProjectsLocationsReportConfigsReportsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsReportConfigsReportsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1alpha1/{+name}","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsReportConfigsReportsRequest" }) as any as S.Schema<DeleteProjectsLocationsReportConfigsReportsRequest>;
+export const DeleteProjectsLocationsReportConfigsReportsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1alpha1/{+name}",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsReportConfigsReportsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsReportConfigsReportsRequest>;
 
 export interface DeleteProjectsLocationsReportConfigsReportsReportExportJobsRequest {
   /** Required. Name of the resource. */
@@ -5074,12 +6238,22 @@ export interface DeleteProjectsLocationsReportConfigsReportsReportExportJobsRequ
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsReportConfigsReportsReportExportJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1alpha1/{+name}","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsReportConfigsReportsReportExportJobsRequest" }) as any as S.Schema<DeleteProjectsLocationsReportConfigsReportsReportExportJobsRequest>;
+export const DeleteProjectsLocationsReportConfigsReportsReportExportJobsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1alpha1/{+name}",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "DeleteProjectsLocationsReportConfigsReportsReportExportJobsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsReportConfigsReportsReportExportJobsRequest>;
 
 export interface DeleteProjectsLocationsSourcesRequest {
   /** Required. Name of the resource. */
@@ -5087,22 +6261,39 @@ export interface DeleteProjectsLocationsSourcesRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1alpha1/{+name}","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsSourcesRequest" }) as any as S.Schema<DeleteProjectsLocationsSourcesRequest>;
+export const DeleteProjectsLocationsSourcesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1alpha1/{+name}",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsSourcesRequest",
+}) as any as S.Schema<DeleteProjectsLocationsSourcesRequest>;
 
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+name}","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha1/{+name}",
+      baseUrl: "https://migrationcenter.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsRequest",
+}) as any as S.Schema<GetProjectsLocationsRequest>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -5118,16 +6309,20 @@ export interface Location {
   metadata?: DocumentMap;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "displayName": S.optional(S.String),
-  "locationId": S.optional(S.String),
-  "name": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "metadata": S.optional(DocumentMap),
-}),
+  S.Struct({
+    displayName: S.optional(S.String),
+    locationId: S.optional(S.String),
+    name: S.optional(S.String),
+    labels: S.optional(StringMap),
+    metadata: S.optional(DocumentMap),
+  }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
-export type GetProjectsLocationsAssetsViewEnum = "ASSET_VIEW_UNSPECIFIED" | "ASSET_VIEW_BASIC" | "ASSET_VIEW_FULL" | "ASSET_VIEW_STANDARD";
+export type GetProjectsLocationsAssetsViewEnum =
+  | "ASSET_VIEW_UNSPECIFIED"
+  | "ASSET_VIEW_BASIC"
+  | "ASSET_VIEW_FULL"
+  | "ASSET_VIEW_STANDARD";
 export const GetProjectsLocationsAssetsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsAssetsRequest {
@@ -5137,43 +6332,80 @@ export interface GetProjectsLocationsAssetsRequest {
   name: string;
 }
 export const GetProjectsLocationsAssetsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "view": S.optional(GetProjectsLocationsAssetsViewEnum.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+name}","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsAssetsRequest" }) as any as S.Schema<GetProjectsLocationsAssetsRequest>;
+  S.Struct({
+    view: S.optional(GetProjectsLocationsAssetsViewEnum.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha1/{+name}",
+      baseUrl: "https://migrationcenter.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsAssetsRequest",
+}) as any as S.Schema<GetProjectsLocationsAssetsRequest>;
 
 export interface GetProjectsLocationsAssetsExportJobsRequest {
   /** Required. Name of the resource. */
   name: string;
 }
-export const GetProjectsLocationsAssetsExportJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+name}","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsAssetsExportJobsRequest" }) as any as S.Schema<GetProjectsLocationsAssetsExportJobsRequest>;
+export const GetProjectsLocationsAssetsExportJobsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha1/{+name}",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsAssetsExportJobsRequest",
+  }) as any as S.Schema<GetProjectsLocationsAssetsExportJobsRequest>;
 
 export interface GetProjectsLocationsDiscoveryClientsRequest {
   /** Required. The discovery client name. */
   name: string;
 }
-export const GetProjectsLocationsDiscoveryClientsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+name}","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsDiscoveryClientsRequest" }) as any as S.Schema<GetProjectsLocationsDiscoveryClientsRequest>;
+export const GetProjectsLocationsDiscoveryClientsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha1/{+name}",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsDiscoveryClientsRequest",
+  }) as any as S.Schema<GetProjectsLocationsDiscoveryClientsRequest>;
 
 export interface GetProjectsLocationsGroupsRequest {
   /** Required. Name of the resource. */
   name: string;
 }
 export const GetProjectsLocationsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+name}","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsGroupsRequest" }) as any as S.Schema<GetProjectsLocationsGroupsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha1/{+name}",
+      baseUrl: "https://migrationcenter.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsGroupsRequest",
+}) as any as S.Schema<GetProjectsLocationsGroupsRequest>;
 
-export type GetProjectsLocationsImportJobsViewEnum = "IMPORT_JOB_VIEW_UNSPECIFIED" | "IMPORT_JOB_VIEW_BASIC" | "IMPORT_JOB_VIEW_FULL";
+export type GetProjectsLocationsImportJobsViewEnum =
+  | "IMPORT_JOB_VIEW_UNSPECIFIED"
+  | "IMPORT_JOB_VIEW_BASIC"
+  | "IMPORT_JOB_VIEW_FULL";
 export const GetProjectsLocationsImportJobsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsImportJobsRequest {
@@ -5182,54 +6414,102 @@ export interface GetProjectsLocationsImportJobsRequest {
   /** Optional. The level of details of the import job. Default value is FULL. */
   view?: GetProjectsLocationsImportJobsViewEnum | (string & {});
 }
-export const GetProjectsLocationsImportJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "view": S.optional(GetProjectsLocationsImportJobsViewEnum.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+name}","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsImportJobsRequest" }) as any as S.Schema<GetProjectsLocationsImportJobsRequest>;
+export const GetProjectsLocationsImportJobsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      view: S.optional(GetProjectsLocationsImportJobsViewEnum.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha1/{+name}",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsImportJobsRequest",
+}) as any as S.Schema<GetProjectsLocationsImportJobsRequest>;
 
 export interface GetProjectsLocationsImportJobsImportDataFilesRequest {
   /** Required. Name of the ImportDataFile. */
   name: string;
 }
-export const GetProjectsLocationsImportJobsImportDataFilesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+name}","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsImportJobsImportDataFilesRequest" }) as any as S.Schema<GetProjectsLocationsImportJobsImportDataFilesRequest>;
+export const GetProjectsLocationsImportJobsImportDataFilesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha1/{+name}",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsImportJobsImportDataFilesRequest",
+  }) as any as S.Schema<GetProjectsLocationsImportJobsImportDataFilesRequest>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+name}","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha1/{+name}",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsOperationsRequest",
+}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export interface GetProjectsLocationsPreferenceSetsRequest {
   /** Required. Name of the resource. */
   name: string;
 }
-export const GetProjectsLocationsPreferenceSetsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+name}","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsPreferenceSetsRequest" }) as any as S.Schema<GetProjectsLocationsPreferenceSetsRequest>;
+export const GetProjectsLocationsPreferenceSetsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha1/{+name}",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsPreferenceSetsRequest",
+  }) as any as S.Schema<GetProjectsLocationsPreferenceSetsRequest>;
 
 export interface GetProjectsLocationsRelationsRequest {
   /** Required. Name of the resource. */
   name: string;
 }
-export const GetProjectsLocationsRelationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+name}","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsRelationsRequest" }) as any as S.Schema<GetProjectsLocationsRelationsRequest>;
+export const GetProjectsLocationsRelationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha1/{+name}",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsRelationsRequest",
+}) as any as S.Schema<GetProjectsLocationsRelationsRequest>;
 
-export type RelationTypeEnum = "TYPE_UNSPECIFIED" | "LOGICAL_DATABASE" | "DATABASE_DEPLOYMENT_HOSTING_SERVER";
+export type RelationTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "LOGICAL_DATABASE"
+  | "DATABASE_DEPLOYMENT_HOSTING_SERVER";
 export const RelationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Message representing a relation between 2 resource. */
@@ -5246,27 +6526,41 @@ export interface Relation {
   srcAsset?: string;
 }
 export const Relation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "createTime": S.optional(S.String),
-  "type": S.optional(RelationTypeEnum),
-  "dstAsset": S.optional(S.String),
-  "name": S.optional(S.String),
-  "srcAsset": S.optional(S.String),
-}),
+  S.Struct({
+    createTime: S.optional(S.String),
+    type: S.optional(RelationTypeEnum),
+    dstAsset: S.optional(S.String),
+    name: S.optional(S.String),
+    srcAsset: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Relation" }) as any as S.Schema<Relation>;
 
 export interface GetProjectsLocationsReportConfigsRequest {
   /** Required. Name of the resource. */
   name: string;
 }
-export const GetProjectsLocationsReportConfigsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+name}","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsReportConfigsRequest" }) as any as S.Schema<GetProjectsLocationsReportConfigsRequest>;
+export const GetProjectsLocationsReportConfigsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha1/{+name}",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsReportConfigsRequest",
+}) as any as S.Schema<GetProjectsLocationsReportConfigsRequest>;
 
-export type GetProjectsLocationsReportConfigsReportsViewEnum = "REPORT_VIEW_UNSPECIFIED" | "REPORT_VIEW_BASIC" | "REPORT_VIEW_FULL" | "REPORT_VIEW_STANDARD";
-export const GetProjectsLocationsReportConfigsReportsViewEnum = /*@__PURE__*/ S.String;
+export type GetProjectsLocationsReportConfigsReportsViewEnum =
+  | "REPORT_VIEW_UNSPECIFIED"
+  | "REPORT_VIEW_BASIC"
+  | "REPORT_VIEW_FULL"
+  | "REPORT_VIEW_STANDARD";
+export const GetProjectsLocationsReportConfigsReportsViewEnum =
+  /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsReportConfigsReportsRequest {
   /** Required. Name of the resource. */
@@ -5274,35 +6568,68 @@ export interface GetProjectsLocationsReportConfigsReportsRequest {
   /** Determines what information to retrieve for the Report. */
   view?: GetProjectsLocationsReportConfigsReportsViewEnum | (string & {});
 }
-export const GetProjectsLocationsReportConfigsReportsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "view": S.optional(GetProjectsLocationsReportConfigsReportsViewEnum.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+name}","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsReportConfigsReportsRequest" }) as any as S.Schema<GetProjectsLocationsReportConfigsReportsRequest>;
+export const GetProjectsLocationsReportConfigsReportsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      view: S.optional(
+        GetProjectsLocationsReportConfigsReportsViewEnum.pipe(T.Query()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha1/{+name}",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsReportConfigsReportsRequest",
+  }) as any as S.Schema<GetProjectsLocationsReportConfigsReportsRequest>;
 
 export interface GetProjectsLocationsReportConfigsReportsReportExportJobsRequest {
   /** Required. Name of the resource. */
   name: string;
 }
-export const GetProjectsLocationsReportConfigsReportsReportExportJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+name}","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsReportConfigsReportsReportExportJobsRequest" }) as any as S.Schema<GetProjectsLocationsReportConfigsReportsReportExportJobsRequest>;
+export const GetProjectsLocationsReportConfigsReportsReportExportJobsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha1/{+name}",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "GetProjectsLocationsReportConfigsReportsReportExportJobsRequest",
+  }) as any as S.Schema<GetProjectsLocationsReportConfigsReportsReportExportJobsRequest>;
 
 export interface GetProjectsLocationsSourcesRequest {
   /** Required. Name of the resource. */
   name: string;
 }
 export const GetProjectsLocationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+name}","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsSourcesRequest" }) as any as S.Schema<GetProjectsLocationsSourcesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha1/{+name}",
+      baseUrl: "https://migrationcenter.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsSourcesRequest",
+}) as any as S.Schema<GetProjectsLocationsSourcesRequest>;
 
-export type GetProjectsLocationsSourcesErrorFramesViewEnum = "ERROR_FRAME_VIEW_UNSPECIFIED" | "ERROR_FRAME_VIEW_BASIC" | "ERROR_FRAME_VIEW_FULL";
-export const GetProjectsLocationsSourcesErrorFramesViewEnum = /*@__PURE__*/ S.String;
+export type GetProjectsLocationsSourcesErrorFramesViewEnum =
+  | "ERROR_FRAME_VIEW_UNSPECIFIED"
+  | "ERROR_FRAME_VIEW_BASIC"
+  | "ERROR_FRAME_VIEW_FULL";
+export const GetProjectsLocationsSourcesErrorFramesViewEnum =
+  /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsSourcesErrorFramesRequest {
   /** Required. The name of the frame to retrieve. Format: projects/{project}/locations/{location}/sources/{source}/errorFrames/{error_frame} */
@@ -5310,12 +6637,23 @@ export interface GetProjectsLocationsSourcesErrorFramesRequest {
   /** Optional. An optional view mode to control the level of details for the frame. The default is a basic frame view. */
   view?: GetProjectsLocationsSourcesErrorFramesViewEnum | (string & {});
 }
-export const GetProjectsLocationsSourcesErrorFramesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "view": S.optional(GetProjectsLocationsSourcesErrorFramesViewEnum.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+name}","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsSourcesErrorFramesRequest" }) as any as S.Schema<GetProjectsLocationsSourcesErrorFramesRequest>;
+export const GetProjectsLocationsSourcesErrorFramesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      view: S.optional(
+        GetProjectsLocationsSourcesErrorFramesViewEnum.pipe(T.Query()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha1/{+name}",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsSourcesErrorFramesRequest",
+  }) as any as S.Schema<GetProjectsLocationsSourcesErrorFramesRequest>;
 
 /** CPU usage sample. */
 export interface CpuUsageSample {
@@ -5323,9 +6661,9 @@ export interface CpuUsageSample {
   utilizedPercentage?: number;
 }
 export const CpuUsageSample = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "utilizedPercentage": S.optional(S.Number),
-}),
+  S.Struct({
+    utilizedPercentage: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "CpuUsageSample" }) as any as S.Schema<CpuUsageSample>;
 
 /** Network usage sample. Values are across all network interfaces. */
@@ -5336,11 +6674,13 @@ export interface NetworkUsageSample {
   averageIngressBps?: number;
 }
 export const NetworkUsageSample = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "averageEgressBps": S.optional(S.Number),
-  "averageIngressBps": S.optional(S.Number),
-}),
-).annotate({ identifier: "NetworkUsageSample" }) as any as S.Schema<NetworkUsageSample>;
+  S.Struct({
+    averageEgressBps: S.optional(S.Number),
+    averageIngressBps: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "NetworkUsageSample",
+}) as any as S.Schema<NetworkUsageSample>;
 
 /** Memory usage sample. */
 export interface MemoryUsageSample {
@@ -5348,10 +6688,12 @@ export interface MemoryUsageSample {
   utilizedPercentage?: number;
 }
 export const MemoryUsageSample = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "utilizedPercentage": S.optional(S.Number),
-}),
-).annotate({ identifier: "MemoryUsageSample" }) as any as S.Schema<MemoryUsageSample>;
+  S.Struct({
+    utilizedPercentage: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "MemoryUsageSample",
+}) as any as S.Schema<MemoryUsageSample>;
 
 /** Disk usage sample. Values are across all disks. */
 export interface DiskUsageSample {
@@ -5363,12 +6705,14 @@ export interface DiskUsageSample {
   averageReadIops?: number;
 }
 export const DiskUsageSample = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "averageWriteIops": S.optional(S.Number),
-  "averageIops": S.optional(S.Number),
-  "averageReadIops": S.optional(S.Number),
-}),
-).annotate({ identifier: "DiskUsageSample" }) as any as S.Schema<DiskUsageSample>;
+  S.Struct({
+    averageWriteIops: S.optional(S.Number),
+    averageIops: S.optional(S.Number),
+    averageReadIops: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "DiskUsageSample",
+}) as any as S.Schema<DiskUsageSample>;
 
 /** Performance data sample. */
 export interface PerformanceSample {
@@ -5384,19 +6728,29 @@ export interface PerformanceSample {
   disk?: DiskUsageSample;
 }
 export const PerformanceSample = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "cpu": S.optional(CpuUsageSample),
-  "network": S.optional(NetworkUsageSample),
-  "sampleTime": S.optional(S.String),
-  "memory": S.optional(MemoryUsageSample),
-  "disk": S.optional(DiskUsageSample),
-}),
-).annotate({ identifier: "PerformanceSample" }) as any as S.Schema<PerformanceSample>;
+  S.Struct({
+    cpu: S.optional(CpuUsageSample),
+    network: S.optional(NetworkUsageSample),
+    sampleTime: S.optional(S.String),
+    memory: S.optional(MemoryUsageSample),
+    disk: S.optional(DiskUsageSample),
+  }),
+).annotate({
+  identifier: "PerformanceSample",
+}) as any as S.Schema<PerformanceSample>;
 
 export type PerformanceSampleList = ReadonlyArray<PerformanceSample>;
-export const PerformanceSampleList = /*@__PURE__*/ S.Array(PerformanceSample) as any as S.Schema<PerformanceSampleList>;
+export const PerformanceSampleList = /*@__PURE__*/ S.Array(
+  PerformanceSample,
+) as any as S.Schema<PerformanceSampleList>;
 
-export type AssetFrameCollectionTypeEnum = "SOURCE_TYPE_UNKNOWN" | "SOURCE_TYPE_UPLOAD" | "SOURCE_TYPE_GUEST_OS_SCAN" | "SOURCE_TYPE_INVENTORY_SCAN" | "SOURCE_TYPE_CUSTOM" | "SOURCE_TYPE_DISCOVERY_CLIENT";
+export type AssetFrameCollectionTypeEnum =
+  | "SOURCE_TYPE_UNKNOWN"
+  | "SOURCE_TYPE_UPLOAD"
+  | "SOURCE_TYPE_GUEST_OS_SCAN"
+  | "SOURCE_TYPE_INVENTORY_SCAN"
+  | "SOURCE_TYPE_CUSTOM"
+  | "SOURCE_TYPE_DISCOVERY_CLIENT";
 export const AssetFrameCollectionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Contains data reported from an inventory source on an asset. */
@@ -5485,49 +6839,57 @@ export interface AssetFrame {
   awsEmrClusterDetails?: AwsEmrClusterDetails;
 }
 export const AssetFrame = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "awsAutoscalingGroupDetails": S.optional(AwsAutoscalingGroupDetails),
-  "awsBatchComputeEnvironmentDetails": S.optional(AwsBatchComputeEnvironmentDetails),
-  "awsElbLoadBalancerDetails": S.optional(AwsElbLoadBalancerDetails),
-  "awsElasticacheClusterDetails": S.optional(AwsElastiCacheClusterDetails),
-  "awsLambdaFunctionDetails": S.optional(AwsLambdaFunctionDetails),
-  "virtualMachineDetails": S.optional(VirtualMachineDetails),
-  "awsEbsVolumeDetails": S.optional(AwsEbsVolumeDetails),
-  "awsApiGatewayRestApiDetails": S.optional(AwsApiGatewayRestApiDetails),
-  "awsKinesisStreamDetails": S.optional(AwsKinesisStreamDetails),
-  "awsFirehoseDetails": S.optional(AwsFirehoseDetails),
-  "awsGlueJobDetails": S.optional(AwsGlueJobDetails),
-  "awsRoute53HostedZoneDetails": S.optional(AwsRoute53HostedZoneDetails),
-  "awsAthenaWorkGroupDetails": S.optional(AwsAthenaWorkGroupDetails),
-  "traceToken": S.optional(S.String),
-  "awsApplicationLoadBalancerDetails": S.optional(AwsApplicationLoadBalancerDetails),
-  "databaseDeploymentDetails": S.optional(DatabaseDeploymentDetails),
-  "awsEfsFileSystemDetails": S.optional(AwsEfsFileSystemDetails),
-  "awsNatGatewayDetails": S.optional(AwsNatGatewayDetails),
-  "machineDetails": S.optional(MachineDetails),
-  "performanceSamples": S.optional(PerformanceSampleList),
-  "awsDynamodbTableDetails": S.optional(AwsDynamoDBTableDetails),
-  "awsElasticIpAddressDetails": S.optional(AwsElasticIpAddressDetails),
-  "awsEksClusterDetails": S.optional(AwsEksClusterDetails),
-  "awsRedshiftDetails": S.optional(AwsRedshiftDetails),
-  "structuredAttributes": S.optional(DocumentMap),
-  "awsInternetGatewayDetails": S.optional(AwsInternetGatewayDetails),
-  "attributes": S.optional(StringMap),
-  "awsElasticNetworkInterfaceDetails": S.optional(AwsElasticNetworkInterfaceDetails),
-  "awsAppSyncGraphqlApiDetails": S.optional(AwsAppSyncGraphqlApiDetails),
-  "databaseDetails": S.optional(DatabaseDetails),
-  "reportTime": S.optional(S.String),
-  "hostingProviderDetails": S.optional(HostingProviderDetails),
-  "awsCloudFrontDistributionDetails": S.optional(AwsCloudFrontDistributionDetails),
-  "awsVpcDetails": S.optional(AwsVpcDetails),
-  "awsS3BucketDetails": S.optional(AwsS3BucketDetails),
-  "awsSnsTopicDetails": S.optional(AwsSnsTopicDetails),
-  "collectionType": S.optional(AssetFrameCollectionTypeEnum),
-  "awsEcsClusterDetails": S.optional(AwsEcsClusterDetails),
-  "awsEcrRepositoryDetails": S.optional(AwsEcrRepositoryDetails),
-  "labels": S.optional(StringMap),
-  "awsEmrClusterDetails": S.optional(AwsEmrClusterDetails),
-}),
+  S.Struct({
+    awsAutoscalingGroupDetails: S.optional(AwsAutoscalingGroupDetails),
+    awsBatchComputeEnvironmentDetails: S.optional(
+      AwsBatchComputeEnvironmentDetails,
+    ),
+    awsElbLoadBalancerDetails: S.optional(AwsElbLoadBalancerDetails),
+    awsElasticacheClusterDetails: S.optional(AwsElastiCacheClusterDetails),
+    awsLambdaFunctionDetails: S.optional(AwsLambdaFunctionDetails),
+    virtualMachineDetails: S.optional(VirtualMachineDetails),
+    awsEbsVolumeDetails: S.optional(AwsEbsVolumeDetails),
+    awsApiGatewayRestApiDetails: S.optional(AwsApiGatewayRestApiDetails),
+    awsKinesisStreamDetails: S.optional(AwsKinesisStreamDetails),
+    awsFirehoseDetails: S.optional(AwsFirehoseDetails),
+    awsGlueJobDetails: S.optional(AwsGlueJobDetails),
+    awsRoute53HostedZoneDetails: S.optional(AwsRoute53HostedZoneDetails),
+    awsAthenaWorkGroupDetails: S.optional(AwsAthenaWorkGroupDetails),
+    traceToken: S.optional(S.String),
+    awsApplicationLoadBalancerDetails: S.optional(
+      AwsApplicationLoadBalancerDetails,
+    ),
+    databaseDeploymentDetails: S.optional(DatabaseDeploymentDetails),
+    awsEfsFileSystemDetails: S.optional(AwsEfsFileSystemDetails),
+    awsNatGatewayDetails: S.optional(AwsNatGatewayDetails),
+    machineDetails: S.optional(MachineDetails),
+    performanceSamples: S.optional(PerformanceSampleList),
+    awsDynamodbTableDetails: S.optional(AwsDynamoDBTableDetails),
+    awsElasticIpAddressDetails: S.optional(AwsElasticIpAddressDetails),
+    awsEksClusterDetails: S.optional(AwsEksClusterDetails),
+    awsRedshiftDetails: S.optional(AwsRedshiftDetails),
+    structuredAttributes: S.optional(DocumentMap),
+    awsInternetGatewayDetails: S.optional(AwsInternetGatewayDetails),
+    attributes: S.optional(StringMap),
+    awsElasticNetworkInterfaceDetails: S.optional(
+      AwsElasticNetworkInterfaceDetails,
+    ),
+    awsAppSyncGraphqlApiDetails: S.optional(AwsAppSyncGraphqlApiDetails),
+    databaseDetails: S.optional(DatabaseDetails),
+    reportTime: S.optional(S.String),
+    hostingProviderDetails: S.optional(HostingProviderDetails),
+    awsCloudFrontDistributionDetails: S.optional(
+      AwsCloudFrontDistributionDetails,
+    ),
+    awsVpcDetails: S.optional(AwsVpcDetails),
+    awsS3BucketDetails: S.optional(AwsS3BucketDetails),
+    awsSnsTopicDetails: S.optional(AwsSnsTopicDetails),
+    collectionType: S.optional(AssetFrameCollectionTypeEnum),
+    awsEcsClusterDetails: S.optional(AwsEcsClusterDetails),
+    awsEcrRepositoryDetails: S.optional(AwsEcrRepositoryDetails),
+    labels: S.optional(StringMap),
+    awsEmrClusterDetails: S.optional(AwsEmrClusterDetails),
+  }),
 ).annotate({ identifier: "AssetFrame" }) as any as S.Schema<AssetFrame>;
 
 /** A resource that contains a single violation of a reported `AssetFrame` resource. */
@@ -5538,14 +6900,18 @@ export interface FrameViolationEntry {
   violation?: string;
 }
 export const FrameViolationEntry = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "field": S.optional(S.String),
-  "violation": S.optional(S.String),
-}),
-).annotate({ identifier: "FrameViolationEntry" }) as any as S.Schema<FrameViolationEntry>;
+  S.Struct({
+    field: S.optional(S.String),
+    violation: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "FrameViolationEntry",
+}) as any as S.Schema<FrameViolationEntry>;
 
 export type FrameViolationEntryList = ReadonlyArray<FrameViolationEntry>;
-export const FrameViolationEntryList = /*@__PURE__*/ S.Array(FrameViolationEntry) as any as S.Schema<FrameViolationEntryList>;
+export const FrameViolationEntryList = /*@__PURE__*/ S.Array(
+  FrameViolationEntry,
+) as any as S.Schema<FrameViolationEntryList>;
 
 /** Message representing a frame which failed to be processed due to an error. */
 export interface ErrorFrame {
@@ -5559,12 +6925,12 @@ export interface ErrorFrame {
   violations?: FrameViolationEntryList;
 }
 export const ErrorFrame = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "originalFrame": S.optional(AssetFrame),
-  "ingestionTime": S.optional(S.String),
-  "name": S.optional(S.String),
-  "violations": S.optional(FrameViolationEntryList),
-}),
+  S.Struct({
+    originalFrame: S.optional(AssetFrame),
+    ingestionTime: S.optional(S.String),
+    name: S.optional(S.String),
+    violations: S.optional(FrameViolationEntryList),
+  }),
 ).annotate({ identifier: "ErrorFrame" }) as any as S.Schema<ErrorFrame>;
 
 export interface GetSettingsProjectsLocationsRequest {
@@ -5572,10 +6938,18 @@ export interface GetSettingsProjectsLocationsRequest {
   name: string;
 }
 export const GetSettingsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+name}","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "GetSettingsProjectsLocationsRequest" }) as any as S.Schema<GetSettingsProjectsLocationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha1/{+name}",
+      baseUrl: "https://migrationcenter.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetSettingsProjectsLocationsRequest",
+}) as any as S.Schema<GetSettingsProjectsLocationsRequest>;
 
 /** Describes the Migration Center settings related to the project. */
 export interface Settings {
@@ -5589,12 +6963,12 @@ export interface Settings {
   preferenceSet?: string;
 }
 export const Settings = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "customerConsentForGoogleSalesToAccessMigrationCenter": S.optional(S.Boolean),
-  "disableCloudLogging": S.optional(S.Boolean),
-  "name": S.optional(S.String),
-  "preferenceSet": S.optional(S.String),
-}),
+  S.Struct({
+    customerConsentForGoogleSalesToAccessMigrationCenter: S.optional(S.Boolean),
+    disableCloudLogging: S.optional(S.Boolean),
+    name: S.optional(S.String),
+    preferenceSet: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Settings" }) as any as S.Schema<Settings>;
 
 export interface ListProjectsLocationsRequest {
@@ -5610,17 +6984,27 @@ export interface ListProjectsLocationsRequest {
   filter?: string;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+name}/locations","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
+  S.Struct({
+    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha1/{+name}/locations",
+      baseUrl: "https://migrationcenter.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsRequest",
+}) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(
+  Location,
+) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -5630,13 +7014,19 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locations": S.optional(LocationList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
+  S.Struct({
+    locations: S.optional(LocationList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListLocationsResponse",
+}) as any as S.Schema<ListLocationsResponse>;
 
-export type ListProjectsLocationsAssetsViewEnum = "ASSET_VIEW_UNSPECIFIED" | "ASSET_VIEW_BASIC" | "ASSET_VIEW_FULL" | "ASSET_VIEW_STANDARD";
+export type ListProjectsLocationsAssetsViewEnum =
+  | "ASSET_VIEW_UNSPECIFIED"
+  | "ASSET_VIEW_BASIC"
+  | "ASSET_VIEW_FULL"
+  | "ASSET_VIEW_STANDARD";
 export const ListProjectsLocationsAssetsViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsLocationsAssetsRequest {
@@ -5656,16 +7046,24 @@ export interface ListProjectsLocationsAssetsRequest {
   showHidden?: boolean;
 }
 export const ListProjectsLocationsAssetsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "view": S.optional(ListProjectsLocationsAssetsViewEnum.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "showHidden": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+parent}/assets","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsAssetsRequest" }) as any as S.Schema<ListProjectsLocationsAssetsRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    filter: S.optional(S.String.pipe(T.Query())),
+    view: S.optional(ListProjectsLocationsAssetsViewEnum.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+    showHidden: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha1/{+parent}/assets",
+      baseUrl: "https://migrationcenter.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsAssetsRequest",
+}) as any as S.Schema<ListProjectsLocationsAssetsRequest>;
 
 /** Response message for listing assets. */
 export interface ListAssetsResponse {
@@ -5677,12 +7075,14 @@ export interface ListAssetsResponse {
   unreachable?: StringList;
 }
 export const ListAssetsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "assets": S.optional(AssetList_),
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListAssetsResponse" }) as any as S.Schema<ListAssetsResponse>;
+  S.Struct({
+    assets: S.optional(AssetList_),
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListAssetsResponse",
+}) as any as S.Schema<ListAssetsResponse>;
 
 export interface ListProjectsLocationsAssetsExportJobsRequest {
   /** Required. Parent resource. */
@@ -5692,16 +7092,27 @@ export interface ListProjectsLocationsAssetsExportJobsRequest {
   /** Optional. Requested page size. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default value. */
   pageSize?: number;
 }
-export const ListProjectsLocationsAssetsExportJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+parent}/assetsExportJobs","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsAssetsExportJobsRequest" }) as any as S.Schema<ListProjectsLocationsAssetsExportJobsRequest>;
+export const ListProjectsLocationsAssetsExportJobsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha1/{+parent}/assetsExportJobs",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsAssetsExportJobsRequest",
+  }) as any as S.Schema<ListProjectsLocationsAssetsExportJobsRequest>;
 
 export type AssetsExportJobList = ReadonlyArray<AssetsExportJob>;
-export const AssetsExportJobList = /*@__PURE__*/ S.Array(AssetsExportJob) as any as S.Schema<AssetsExportJobList>;
+export const AssetsExportJobList = /*@__PURE__*/ S.Array(
+  AssetsExportJob,
+) as any as S.Schema<AssetsExportJobList>;
 
 /** Response message for listing assets export jobs. */
 export interface ListAssetsExportJobsResponse {
@@ -5711,11 +7122,13 @@ export interface ListAssetsExportJobsResponse {
   nextPageToken?: string;
 }
 export const ListAssetsExportJobsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "assetsExportJobs": S.optional(AssetsExportJobList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListAssetsExportJobsResponse" }) as any as S.Schema<ListAssetsExportJobsResponse>;
+  S.Struct({
+    assetsExportJobs: S.optional(AssetsExportJobList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListAssetsExportJobsResponse",
+}) as any as S.Schema<ListAssetsExportJobsResponse>;
 
 export interface ListProjectsLocationsDiscoveryClientsRequest {
   /** Optional. The maximum number of items to return. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default value. */
@@ -5729,18 +7142,29 @@ export interface ListProjectsLocationsDiscoveryClientsRequest {
   /** Optional. Field to sort by. */
   orderBy?: string;
 }
-export const ListProjectsLocationsDiscoveryClientsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+parent}/discoveryClients","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsDiscoveryClientsRequest" }) as any as S.Schema<ListProjectsLocationsDiscoveryClientsRequest>;
+export const ListProjectsLocationsDiscoveryClientsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      filter: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha1/{+parent}/discoveryClients",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsDiscoveryClientsRequest",
+  }) as any as S.Schema<ListProjectsLocationsDiscoveryClientsRequest>;
 
 export type DiscoveryClientList = ReadonlyArray<DiscoveryClient>;
-export const DiscoveryClientList = /*@__PURE__*/ S.Array(DiscoveryClient) as any as S.Schema<DiscoveryClientList>;
+export const DiscoveryClientList = /*@__PURE__*/ S.Array(
+  DiscoveryClient,
+) as any as S.Schema<DiscoveryClientList>;
 
 /** Response message for listing discovery clients. */
 export interface ListDiscoveryClientsResponse {
@@ -5752,12 +7176,14 @@ export interface ListDiscoveryClientsResponse {
   discoveryClients?: DiscoveryClientList;
 }
 export const ListDiscoveryClientsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-  "discoveryClients": S.optional(DiscoveryClientList),
-}),
-).annotate({ identifier: "ListDiscoveryClientsResponse" }) as any as S.Schema<ListDiscoveryClientsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+    discoveryClients: S.optional(DiscoveryClientList),
+  }),
+).annotate({
+  identifier: "ListDiscoveryClientsResponse",
+}) as any as S.Schema<ListDiscoveryClientsResponse>;
 
 export interface ListProjectsLocationsGroupsRequest {
   /** Field to sort by. See https://google.aip.dev/132#ordering for more details. */
@@ -5772,17 +7198,27 @@ export interface ListProjectsLocationsGroupsRequest {
   pageSize?: number;
 }
 export const ListProjectsLocationsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+parent}/groups","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsGroupsRequest" }) as any as S.Schema<ListProjectsLocationsGroupsRequest>;
+  S.Struct({
+    orderBy: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha1/{+parent}/groups",
+      baseUrl: "https://migrationcenter.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsGroupsRequest",
+}) as any as S.Schema<ListProjectsLocationsGroupsRequest>;
 
 export type GroupList = ReadonlyArray<Group>;
-export const GroupList = /*@__PURE__*/ S.Array(Group) as any as S.Schema<GroupList>;
+export const GroupList = /*@__PURE__*/ S.Array(
+  Group,
+) as any as S.Schema<GroupList>;
 
 /** A response for listing groups. */
 export interface ListGroupsResponse {
@@ -5794,14 +7230,19 @@ export interface ListGroupsResponse {
   nextPageToken?: string;
 }
 export const ListGroupsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "unreachable": S.optional(StringList),
-  "groups": S.optional(GroupList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListGroupsResponse" }) as any as S.Schema<ListGroupsResponse>;
+  S.Struct({
+    unreachable: S.optional(StringList),
+    groups: S.optional(GroupList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListGroupsResponse",
+}) as any as S.Schema<ListGroupsResponse>;
 
-export type ListProjectsLocationsImportJobsViewEnum = "IMPORT_JOB_VIEW_UNSPECIFIED" | "IMPORT_JOB_VIEW_BASIC" | "IMPORT_JOB_VIEW_FULL";
+export type ListProjectsLocationsImportJobsViewEnum =
+  | "IMPORT_JOB_VIEW_UNSPECIFIED"
+  | "IMPORT_JOB_VIEW_BASIC"
+  | "IMPORT_JOB_VIEW_FULL";
 export const ListProjectsLocationsImportJobsViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsLocationsImportJobsRequest {
@@ -5818,19 +7259,30 @@ export interface ListProjectsLocationsImportJobsRequest {
   /** Field to sort by. See https://google.aip.dev/132#ordering for more details. */
   orderBy?: string;
 }
-export const ListProjectsLocationsImportJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "view": S.optional(ListProjectsLocationsImportJobsViewEnum.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+parent}/importJobs","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsImportJobsRequest" }) as any as S.Schema<ListProjectsLocationsImportJobsRequest>;
+export const ListProjectsLocationsImportJobsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      view: S.optional(ListProjectsLocationsImportJobsViewEnum.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      filter: S.optional(S.String.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha1/{+parent}/importJobs",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsImportJobsRequest",
+}) as any as S.Schema<ListProjectsLocationsImportJobsRequest>;
 
 export type ImportJobList = ReadonlyArray<ImportJob>;
-export const ImportJobList = /*@__PURE__*/ S.Array(ImportJob) as any as S.Schema<ImportJobList>;
+export const ImportJobList = /*@__PURE__*/ S.Array(
+  ImportJob,
+) as any as S.Schema<ImportJobList>;
 
 /** A response for listing import jobs. */
 export interface ListImportJobsResponse {
@@ -5842,12 +7294,14 @@ export interface ListImportJobsResponse {
   nextPageToken?: string;
 }
 export const ListImportJobsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "importJobs": S.optional(ImportJobList),
-  "unreachable": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListImportJobsResponse" }) as any as S.Schema<ListImportJobsResponse>;
+  S.Struct({
+    importJobs: S.optional(ImportJobList),
+    unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListImportJobsResponse",
+}) as any as S.Schema<ListImportJobsResponse>;
 
 export interface ListProjectsLocationsImportJobsImportDataFilesRequest {
   /** The maximum number of data files to return. The service may return fewer than this value. If unspecified, at most 500 data files will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
@@ -5861,18 +7315,29 @@ export interface ListProjectsLocationsImportJobsImportDataFilesRequest {
   /** Field to sort by. See https://google.aip.dev/132#ordering for more details. */
   orderBy?: string;
 }
-export const ListProjectsLocationsImportJobsImportDataFilesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+parent}/importDataFiles","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsImportJobsImportDataFilesRequest" }) as any as S.Schema<ListProjectsLocationsImportJobsImportDataFilesRequest>;
+export const ListProjectsLocationsImportJobsImportDataFilesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      filter: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha1/{+parent}/importDataFiles",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsImportJobsImportDataFilesRequest",
+  }) as any as S.Schema<ListProjectsLocationsImportJobsImportDataFilesRequest>;
 
 export type ImportDataFileList = ReadonlyArray<ImportDataFile>;
-export const ImportDataFileList = /*@__PURE__*/ S.Array(ImportDataFile) as any as S.Schema<ImportDataFileList>;
+export const ImportDataFileList = /*@__PURE__*/ S.Array(
+  ImportDataFile,
+) as any as S.Schema<ImportDataFileList>;
 
 /** Response for listing payload files of an import job. */
 export interface ListImportDataFilesResponse {
@@ -5884,12 +7349,14 @@ export interface ListImportDataFilesResponse {
   nextPageToken?: string;
 }
 export const ListImportDataFilesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "importDataFiles": S.optional(ImportDataFileList),
-  "unreachable": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListImportDataFilesResponse" }) as any as S.Schema<ListImportDataFilesResponse>;
+  S.Struct({
+    importDataFiles: S.optional(ImportDataFileList),
+    unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListImportDataFilesResponse",
+}) as any as S.Schema<ListImportDataFilesResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list filter. */
@@ -5903,18 +7370,29 @@ export interface ListProjectsLocationsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+name}/operations","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      filter: S.optional(S.String.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha1/{+name}/operations",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsOperationsRequest",
+}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(
+  Operation,
+) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -5926,12 +7404,14 @@ export interface ListOperationsResponse {
   unreachable?: StringList;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "operations": S.optional(OperationList),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    operations: S.optional(OperationList),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListOperationsResponse",
+}) as any as S.Schema<ListOperationsResponse>;
 
 export interface ListProjectsLocationsPreferenceSetsRequest {
   /** Required. Parent value for `ListPreferenceSetsRequest`. */
@@ -5943,17 +7423,28 @@ export interface ListProjectsLocationsPreferenceSetsRequest {
   /** A token identifying a page of results the server should return. */
   pageToken?: string;
 }
-export const ListProjectsLocationsPreferenceSetsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+parent}/preferenceSets","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsPreferenceSetsRequest" }) as any as S.Schema<ListProjectsLocationsPreferenceSetsRequest>;
+export const ListProjectsLocationsPreferenceSetsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha1/{+parent}/preferenceSets",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsPreferenceSetsRequest",
+  }) as any as S.Schema<ListProjectsLocationsPreferenceSetsRequest>;
 
 export type PreferenceSetList = ReadonlyArray<PreferenceSet>;
-export const PreferenceSetList = /*@__PURE__*/ S.Array(PreferenceSet) as any as S.Schema<PreferenceSetList>;
+export const PreferenceSetList = /*@__PURE__*/ S.Array(
+  PreferenceSet,
+) as any as S.Schema<PreferenceSetList>;
 
 /** Response message for listing preference sets. */
 export interface ListPreferenceSetsResponse {
@@ -5965,12 +7456,14 @@ export interface ListPreferenceSetsResponse {
   nextPageToken?: string;
 }
 export const ListPreferenceSetsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "unreachable": S.optional(StringList),
-  "preferenceSets": S.optional(PreferenceSetList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListPreferenceSetsResponse" }) as any as S.Schema<ListPreferenceSetsResponse>;
+  S.Struct({
+    unreachable: S.optional(StringList),
+    preferenceSets: S.optional(PreferenceSetList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListPreferenceSetsResponse",
+}) as any as S.Schema<ListPreferenceSetsResponse>;
 
 export interface ListProjectsLocationsRelationsRequest {
   /** Field to sort by. See https://google.aip.dev/132#ordering for more details. */
@@ -5984,18 +7477,29 @@ export interface ListProjectsLocationsRelationsRequest {
   /** A token identifying a page of results the server should return. */
   pageToken?: string;
 }
-export const ListProjectsLocationsRelationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+parent}/relations","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsRelationsRequest" }) as any as S.Schema<ListProjectsLocationsRelationsRequest>;
+export const ListProjectsLocationsRelationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      filter: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha1/{+parent}/relations",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsRelationsRequest",
+}) as any as S.Schema<ListProjectsLocationsRelationsRequest>;
 
 export type RelationList = ReadonlyArray<Relation>;
-export const RelationList = /*@__PURE__*/ S.Array(Relation) as any as S.Schema<RelationList>;
+export const RelationList = /*@__PURE__*/ S.Array(
+  Relation,
+) as any as S.Schema<RelationList>;
 
 /** Response message for listing relations. */
 export interface ListRelationsResponse {
@@ -6005,11 +7509,13 @@ export interface ListRelationsResponse {
   nextPageToken?: string;
 }
 export const ListRelationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "relations": S.optional(RelationList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListRelationsResponse" }) as any as S.Schema<ListRelationsResponse>;
+  S.Struct({
+    relations: S.optional(RelationList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListRelationsResponse",
+}) as any as S.Schema<ListRelationsResponse>;
 
 export interface ListProjectsLocationsReportConfigsRequest {
   /** Field to sort by. See https://google.aip.dev/132#ordering for more details. */
@@ -6023,18 +7529,29 @@ export interface ListProjectsLocationsReportConfigsRequest {
   /** Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
 }
-export const ListProjectsLocationsReportConfigsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+parent}/reportConfigs","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsReportConfigsRequest" }) as any as S.Schema<ListProjectsLocationsReportConfigsRequest>;
+export const ListProjectsLocationsReportConfigsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      filter: S.optional(S.String.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha1/{+parent}/reportConfigs",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsReportConfigsRequest",
+  }) as any as S.Schema<ListProjectsLocationsReportConfigsRequest>;
 
 export type ReportConfigList = ReadonlyArray<ReportConfig>;
-export const ReportConfigList = /*@__PURE__*/ S.Array(ReportConfig) as any as S.Schema<ReportConfigList>;
+export const ReportConfigList = /*@__PURE__*/ S.Array(
+  ReportConfig,
+) as any as S.Schema<ReportConfigList>;
 
 /** Response message for listing report configs. */
 export interface ListReportConfigsResponse {
@@ -6046,15 +7563,22 @@ export interface ListReportConfigsResponse {
   nextPageToken?: string;
 }
 export const ListReportConfigsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "reportConfigs": S.optional(ReportConfigList),
-  "unreachable": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListReportConfigsResponse" }) as any as S.Schema<ListReportConfigsResponse>;
+  S.Struct({
+    reportConfigs: S.optional(ReportConfigList),
+    unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListReportConfigsResponse",
+}) as any as S.Schema<ListReportConfigsResponse>;
 
-export type ListProjectsLocationsReportConfigsReportsViewEnum = "REPORT_VIEW_UNSPECIFIED" | "REPORT_VIEW_BASIC" | "REPORT_VIEW_FULL" | "REPORT_VIEW_STANDARD";
-export const ListProjectsLocationsReportConfigsReportsViewEnum = /*@__PURE__*/ S.String;
+export type ListProjectsLocationsReportConfigsReportsViewEnum =
+  | "REPORT_VIEW_UNSPECIFIED"
+  | "REPORT_VIEW_BASIC"
+  | "REPORT_VIEW_FULL"
+  | "REPORT_VIEW_STANDARD";
+export const ListProjectsLocationsReportConfigsReportsViewEnum =
+  /*@__PURE__*/ S.String;
 
 export interface ListProjectsLocationsReportConfigsReportsRequest {
   /** A token identifying a page of results that the server should return. */
@@ -6070,19 +7594,32 @@ export interface ListProjectsLocationsReportConfigsReportsRequest {
   /** Field to sort by. See https://google.aip.dev/132#ordering for more details. */
   orderBy?: string;
 }
-export const ListProjectsLocationsReportConfigsReportsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "view": S.optional(ListProjectsLocationsReportConfigsReportsViewEnum.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+parent}/reports","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsReportConfigsReportsRequest" }) as any as S.Schema<ListProjectsLocationsReportConfigsReportsRequest>;
+export const ListProjectsLocationsReportConfigsReportsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      view: S.optional(
+        ListProjectsLocationsReportConfigsReportsViewEnum.pipe(T.Query()),
+      ),
+      parent: S.String.pipe(T.Label()),
+      filter: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha1/{+parent}/reports",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsReportConfigsReportsRequest",
+  }) as any as S.Schema<ListProjectsLocationsReportConfigsReportsRequest>;
 
 export type ReportList = ReadonlyArray<Report>;
-export const ReportList = /*@__PURE__*/ S.Array(Report) as any as S.Schema<ReportList>;
+export const ReportList = /*@__PURE__*/ S.Array(
+  Report,
+) as any as S.Schema<ReportList>;
 
 /** Response message for listing Reports. */
 export interface ListReportsResponse {
@@ -6094,12 +7631,14 @@ export interface ListReportsResponse {
   unreachable?: StringList;
 }
 export const ListReportsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "reports": S.optional(ReportList),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListReportsResponse" }) as any as S.Schema<ListReportsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    reports: S.optional(ReportList),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListReportsResponse",
+}) as any as S.Schema<ListReportsResponse>;
 
 export interface ListProjectsLocationsReportConfigsReportsReportExportJobsRequest {
   /** Required. Parent report owning the export jobs. */
@@ -6109,16 +7648,28 @@ export interface ListProjectsLocationsReportConfigsReportsReportExportJobsReques
   /** Optional. Requested page size. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default value. */
   pageSize?: number;
 }
-export const ListProjectsLocationsReportConfigsReportsReportExportJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+parent}/reportExportJobs","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsReportConfigsReportsReportExportJobsRequest" }) as any as S.Schema<ListProjectsLocationsReportConfigsReportsReportExportJobsRequest>;
+export const ListProjectsLocationsReportConfigsReportsReportExportJobsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha1/{+parent}/reportExportJobs",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "ListProjectsLocationsReportConfigsReportsReportExportJobsRequest",
+  }) as any as S.Schema<ListProjectsLocationsReportConfigsReportsReportExportJobsRequest>;
 
 export type ReportExportJobList = ReadonlyArray<ReportExportJob>;
-export const ReportExportJobList = /*@__PURE__*/ S.Array(ReportExportJob) as any as S.Schema<ReportExportJobList>;
+export const ReportExportJobList = /*@__PURE__*/ S.Array(
+  ReportExportJob,
+) as any as S.Schema<ReportExportJobList>;
 
 /** Response message for listing report export jobs. */
 export interface ListReportExportJobsResponse {
@@ -6128,11 +7679,13 @@ export interface ListReportExportJobsResponse {
   nextPageToken?: string;
 }
 export const ListReportExportJobsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "reportExportJobs": S.optional(ReportExportJobList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListReportExportJobsResponse" }) as any as S.Schema<ListReportExportJobsResponse>;
+  S.Struct({
+    reportExportJobs: S.optional(ReportExportJobList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListReportExportJobsResponse",
+}) as any as S.Schema<ListReportExportJobsResponse>;
 
 export interface ListProjectsLocationsSourcesRequest {
   /** Required. Parent value for `ListSourcesRequest`. */
@@ -6147,17 +7700,27 @@ export interface ListProjectsLocationsSourcesRequest {
   orderBy?: string;
 }
 export const ListProjectsLocationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+parent}/sources","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsSourcesRequest" }) as any as S.Schema<ListProjectsLocationsSourcesRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha1/{+parent}/sources",
+      baseUrl: "https://migrationcenter.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsSourcesRequest",
+}) as any as S.Schema<ListProjectsLocationsSourcesRequest>;
 
 export type SourceList = ReadonlyArray<Source>;
-export const SourceList = /*@__PURE__*/ S.Array(Source) as any as S.Schema<SourceList>;
+export const SourceList = /*@__PURE__*/ S.Array(
+  Source,
+) as any as S.Schema<SourceList>;
 
 /** Response message for listing sources. */
 export interface ListSourcesResponse {
@@ -6169,15 +7732,21 @@ export interface ListSourcesResponse {
   unreachable?: StringList;
 }
 export const ListSourcesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "sources": S.optional(SourceList),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListSourcesResponse" }) as any as S.Schema<ListSourcesResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    sources: S.optional(SourceList),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListSourcesResponse",
+}) as any as S.Schema<ListSourcesResponse>;
 
-export type ListProjectsLocationsSourcesErrorFramesViewEnum = "ERROR_FRAME_VIEW_UNSPECIFIED" | "ERROR_FRAME_VIEW_BASIC" | "ERROR_FRAME_VIEW_FULL";
-export const ListProjectsLocationsSourcesErrorFramesViewEnum = /*@__PURE__*/ S.String;
+export type ListProjectsLocationsSourcesErrorFramesViewEnum =
+  | "ERROR_FRAME_VIEW_UNSPECIFIED"
+  | "ERROR_FRAME_VIEW_BASIC"
+  | "ERROR_FRAME_VIEW_FULL";
+export const ListProjectsLocationsSourcesErrorFramesViewEnum =
+  /*@__PURE__*/ S.String;
 
 export interface ListProjectsLocationsSourcesErrorFramesRequest {
   /** Optional. An optional view mode to control the level of details of each error frame. The default is a BASIC frame view. */
@@ -6189,17 +7758,30 @@ export interface ListProjectsLocationsSourcesErrorFramesRequest {
   /** Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
 }
-export const ListProjectsLocationsSourcesErrorFramesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "view": S.optional(ListProjectsLocationsSourcesErrorFramesViewEnum.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+parent}/errorFrames","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsSourcesErrorFramesRequest" }) as any as S.Schema<ListProjectsLocationsSourcesErrorFramesRequest>;
+export const ListProjectsLocationsSourcesErrorFramesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      view: S.optional(
+        ListProjectsLocationsSourcesErrorFramesViewEnum.pipe(T.Query()),
+      ),
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha1/{+parent}/errorFrames",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsSourcesErrorFramesRequest",
+  }) as any as S.Schema<ListProjectsLocationsSourcesErrorFramesRequest>;
 
 export type ErrorFrameList = ReadonlyArray<ErrorFrame>;
-export const ErrorFrameList = /*@__PURE__*/ S.Array(ErrorFrame) as any as S.Schema<ErrorFrameList>;
+export const ErrorFrameList = /*@__PURE__*/ S.Array(
+  ErrorFrame,
+) as any as S.Schema<ErrorFrameList>;
 
 /** A response for listing error frames. */
 export interface ListErrorFramesResponse {
@@ -6211,12 +7793,14 @@ export interface ListErrorFramesResponse {
   unreachable?: StringList;
 }
 export const ListErrorFramesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "errorFrames": S.optional(ErrorFrameList),
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListErrorFramesResponse" }) as any as S.Schema<ListErrorFramesResponse>;
+  S.Struct({
+    errorFrames: S.optional(ErrorFrameList),
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListErrorFramesResponse",
+}) as any as S.Schema<ListErrorFramesResponse>;
 
 export interface PatchProjectsLocationsAssetsRequest {
   /** Output only. The full name of the asset. */
@@ -6229,13 +7813,21 @@ export interface PatchProjectsLocationsAssetsRequest {
   body?: Asset;
 }
 export const PatchProjectsLocationsAssetsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Asset.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1alpha1/{+name}","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsAssetsRequest" }) as any as S.Schema<PatchProjectsLocationsAssetsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    requestId: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(Asset.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1alpha1/{+name}",
+      baseUrl: "https://migrationcenter.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchProjectsLocationsAssetsRequest",
+}) as any as S.Schema<PatchProjectsLocationsAssetsRequest>;
 
 export interface PatchProjectsLocationsDiscoveryClientsRequest {
   /** Output only. Identifier. Full name of this discovery client. */
@@ -6247,14 +7839,23 @@ export interface PatchProjectsLocationsDiscoveryClientsRequest {
   /** Request body */
   body?: DiscoveryClient;
 }
-export const PatchProjectsLocationsDiscoveryClientsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(DiscoveryClient.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1alpha1/{+name}","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsDiscoveryClientsRequest" }) as any as S.Schema<PatchProjectsLocationsDiscoveryClientsRequest>;
+export const PatchProjectsLocationsDiscoveryClientsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(DiscoveryClient.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1alpha1/{+name}",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsDiscoveryClientsRequest",
+  }) as any as S.Schema<PatchProjectsLocationsDiscoveryClientsRequest>;
 
 export interface PatchProjectsLocationsGroupsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -6267,13 +7868,21 @@ export interface PatchProjectsLocationsGroupsRequest {
   body?: Group;
 }
 export const PatchProjectsLocationsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Group.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1alpha1/{+name}","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsGroupsRequest" }) as any as S.Schema<PatchProjectsLocationsGroupsRequest>;
+  S.Struct({
+    requestId: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(Group.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1alpha1/{+name}",
+      baseUrl: "https://migrationcenter.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchProjectsLocationsGroupsRequest",
+}) as any as S.Schema<PatchProjectsLocationsGroupsRequest>;
 
 export interface PatchProjectsLocationsImportJobsRequest {
   /** Output only. The full name of the import job. */
@@ -6285,14 +7894,23 @@ export interface PatchProjectsLocationsImportJobsRequest {
   /** Request body */
   body?: ImportJob;
 }
-export const PatchProjectsLocationsImportJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(ImportJob.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1alpha1/{+name}","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsImportJobsRequest" }) as any as S.Schema<PatchProjectsLocationsImportJobsRequest>;
+export const PatchProjectsLocationsImportJobsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(ImportJob.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1alpha1/{+name}",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "PatchProjectsLocationsImportJobsRequest",
+}) as any as S.Schema<PatchProjectsLocationsImportJobsRequest>;
 
 export interface PatchProjectsLocationsPreferenceSetsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -6304,14 +7922,23 @@ export interface PatchProjectsLocationsPreferenceSetsRequest {
   /** Request body */
   body?: PreferenceSet;
 }
-export const PatchProjectsLocationsPreferenceSetsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(PreferenceSet.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1alpha1/{+name}","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsPreferenceSetsRequest" }) as any as S.Schema<PatchProjectsLocationsPreferenceSetsRequest>;
+export const PatchProjectsLocationsPreferenceSetsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      requestId: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(PreferenceSet.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1alpha1/{+name}",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsPreferenceSetsRequest",
+  }) as any as S.Schema<PatchProjectsLocationsPreferenceSetsRequest>;
 
 export interface PatchProjectsLocationsSourcesRequest {
   /** Output only. The full name of the source. */
@@ -6323,14 +7950,23 @@ export interface PatchProjectsLocationsSourcesRequest {
   /** Request body */
   body?: Source;
 }
-export const PatchProjectsLocationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Source.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1alpha1/{+name}","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsSourcesRequest" }) as any as S.Schema<PatchProjectsLocationsSourcesRequest>;
+export const PatchProjectsLocationsSourcesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Source.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1alpha1/{+name}",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "PatchProjectsLocationsSourcesRequest",
+}) as any as S.Schema<PatchProjectsLocationsSourcesRequest>;
 
 /** A request to remove assets from a group. */
 export interface RemoveAssetsFromGroupRequest {
@@ -6342,12 +7978,14 @@ export interface RemoveAssetsFromGroupRequest {
   allowMissing?: boolean;
 }
 export const RemoveAssetsFromGroupRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String),
-  "assets": S.optional(AssetList),
-  "allowMissing": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "RemoveAssetsFromGroupRequest" }) as any as S.Schema<RemoveAssetsFromGroupRequest>;
+  S.Struct({
+    requestId: S.optional(S.String),
+    assets: S.optional(AssetList),
+    allowMissing: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "RemoveAssetsFromGroupRequest",
+}) as any as S.Schema<RemoveAssetsFromGroupRequest>;
 
 export interface RemoveAssetsProjectsLocationsGroupsRequest {
   /** Required. Group reference. */
@@ -6355,15 +7993,26 @@ export interface RemoveAssetsProjectsLocationsGroupsRequest {
   /** Request body */
   body?: RemoveAssetsFromGroupRequest;
 }
-export const RemoveAssetsProjectsLocationsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "group": S.String.pipe(T.Label()),
-  "body": S.optional(RemoveAssetsFromGroupRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+group}:removeAssets","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "RemoveAssetsProjectsLocationsGroupsRequest" }) as any as S.Schema<RemoveAssetsProjectsLocationsGroupsRequest>;
+export const RemoveAssetsProjectsLocationsGroupsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      group: S.String.pipe(T.Label()),
+      body: S.optional(RemoveAssetsFromGroupRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1alpha1/{+group}:removeAssets",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "RemoveAssetsProjectsLocationsGroupsRequest",
+  }) as any as S.Schema<RemoveAssetsProjectsLocationsGroupsRequest>;
 
 export type AssetFrameList = ReadonlyArray<AssetFrame>;
-export const AssetFrameList = /*@__PURE__*/ S.Array(AssetFrame) as any as S.Schema<AssetFrameList>;
+export const AssetFrameList = /*@__PURE__*/ S.Array(
+  AssetFrame,
+) as any as S.Schema<AssetFrameList>;
 
 /** Collection of frame data. */
 export interface Frames {
@@ -6371,9 +8020,9 @@ export interface Frames {
   framesData?: AssetFrameList;
 }
 export const Frames = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "framesData": S.optional(AssetFrameList),
-}),
+  S.Struct({
+    framesData: S.optional(AssetFrameList),
+  }),
 ).annotate({ identifier: "Frames" }) as any as S.Schema<Frames>;
 
 export interface ReportAssetFramesProjectsLocationsAssetsRequest {
@@ -6384,19 +8033,30 @@ export interface ReportAssetFramesProjectsLocationsAssetsRequest {
   /** Request body */
   body?: Frames;
 }
-export const ReportAssetFramesProjectsLocationsAssetsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "source": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(Frames.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+parent}/assets:reportAssetFrames","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "ReportAssetFramesProjectsLocationsAssetsRequest" }) as any as S.Schema<ReportAssetFramesProjectsLocationsAssetsRequest>;
+export const ReportAssetFramesProjectsLocationsAssetsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      source: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(Frames.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1alpha1/{+parent}/assets:reportAssetFrames",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ReportAssetFramesProjectsLocationsAssetsRequest",
+  }) as any as S.Schema<ReportAssetFramesProjectsLocationsAssetsRequest>;
 
 /** A response to a call to `ReportAssetFrame`. */
 export interface ReportAssetFramesResponse {}
 export const ReportAssetFramesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "ReportAssetFramesResponse" }) as any as S.Schema<ReportAssetFramesResponse>;
+  S.Struct({}),
+).annotate({
+  identifier: "ReportAssetFramesResponse",
+}) as any as S.Schema<ReportAssetFramesResponse>;
 
 /** A request to run an assets export job. */
 export interface RunAssetsExportJobRequest {
@@ -6404,10 +8064,12 @@ export interface RunAssetsExportJobRequest {
   requestId?: string;
 }
 export const RunAssetsExportJobRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String),
-}),
-).annotate({ identifier: "RunAssetsExportJobRequest" }) as any as S.Schema<RunAssetsExportJobRequest>;
+  S.Struct({
+    requestId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RunAssetsExportJobRequest",
+}) as any as S.Schema<RunAssetsExportJobRequest>;
 
 export interface RunProjectsLocationsAssetsExportJobsRequest {
   /** Required. Name of the resource. */
@@ -6415,12 +8077,21 @@ export interface RunProjectsLocationsAssetsExportJobsRequest {
   /** Request body */
   body?: RunAssetsExportJobRequest;
 }
-export const RunProjectsLocationsAssetsExportJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(RunAssetsExportJobRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+name}:run","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "RunProjectsLocationsAssetsExportJobsRequest" }) as any as S.Schema<RunProjectsLocationsAssetsExportJobsRequest>;
+export const RunProjectsLocationsAssetsExportJobsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(RunAssetsExportJobRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1alpha1/{+name}:run",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "RunProjectsLocationsAssetsExportJobsRequest",
+  }) as any as S.Schema<RunProjectsLocationsAssetsExportJobsRequest>;
 
 /** A request to run an import job. */
 export interface RunImportJobRequest {
@@ -6428,10 +8099,12 @@ export interface RunImportJobRequest {
   requestId?: string;
 }
 export const RunImportJobRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String),
-}),
-).annotate({ identifier: "RunImportJobRequest" }) as any as S.Schema<RunImportJobRequest>;
+  S.Struct({
+    requestId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RunImportJobRequest",
+}) as any as S.Schema<RunImportJobRequest>;
 
 export interface RunProjectsLocationsImportJobsRequest {
   /** Required. The name of the import job to run. */
@@ -6439,12 +8112,21 @@ export interface RunProjectsLocationsImportJobsRequest {
   /** Request body */
   body?: RunImportJobRequest;
 }
-export const RunProjectsLocationsImportJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(RunImportJobRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+name}:run","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "RunProjectsLocationsImportJobsRequest" }) as any as S.Schema<RunProjectsLocationsImportJobsRequest>;
+export const RunProjectsLocationsImportJobsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(RunImportJobRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1alpha1/{+name}:run",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "RunProjectsLocationsImportJobsRequest",
+}) as any as S.Schema<RunProjectsLocationsImportJobsRequest>;
 
 /** A request to run a report export job. */
 export interface RunReportExportJobRequest {
@@ -6452,10 +8134,12 @@ export interface RunReportExportJobRequest {
   requestId?: string;
 }
 export const RunReportExportJobRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String),
-}),
-).annotate({ identifier: "RunReportExportJobRequest" }) as any as S.Schema<RunReportExportJobRequest>;
+  S.Struct({
+    requestId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RunReportExportJobRequest",
+}) as any as S.Schema<RunReportExportJobRequest>;
 
 export interface RunProjectsLocationsReportConfigsReportsReportExportJobsRequest {
   /** Required. Name of the resource. */
@@ -6463,12 +8147,22 @@ export interface RunProjectsLocationsReportConfigsReportsReportExportJobsRequest
   /** Request body */
   body?: RunReportExportJobRequest;
 }
-export const RunProjectsLocationsReportConfigsReportsReportExportJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(RunReportExportJobRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+name}:run","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "RunProjectsLocationsReportConfigsReportsReportExportJobsRequest" }) as any as S.Schema<RunProjectsLocationsReportConfigsReportsReportExportJobsRequest>;
+export const RunProjectsLocationsReportConfigsReportsReportExportJobsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(RunReportExportJobRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1alpha1/{+name}:run",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "RunProjectsLocationsReportConfigsReportsReportExportJobsRequest",
+  }) as any as S.Schema<RunProjectsLocationsReportConfigsReportsReportExportJobsRequest>;
 
 /** A request to send a discovery client heartbeat. */
 export interface SendDiscoveryClientHeartbeatRequest {
@@ -6478,11 +8172,13 @@ export interface SendDiscoveryClientHeartbeatRequest {
   version?: string;
 }
 export const SendDiscoveryClientHeartbeatRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "errors": S.optional(StatusList),
-  "version": S.optional(S.String),
-}),
-).annotate({ identifier: "SendDiscoveryClientHeartbeatRequest" }) as any as S.Schema<SendDiscoveryClientHeartbeatRequest>;
+  S.Struct({
+    errors: S.optional(StatusList),
+    version: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SendDiscoveryClientHeartbeatRequest",
+}) as any as S.Schema<SendDiscoveryClientHeartbeatRequest>;
 
 export interface SendHeartbeatProjectsLocationsDiscoveryClientsRequest {
   /** Required. The discovery client name. */
@@ -6490,12 +8186,21 @@ export interface SendHeartbeatProjectsLocationsDiscoveryClientsRequest {
   /** Request body */
   body?: SendDiscoveryClientHeartbeatRequest;
 }
-export const SendHeartbeatProjectsLocationsDiscoveryClientsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(SendDiscoveryClientHeartbeatRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+name}:sendHeartbeat","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "SendHeartbeatProjectsLocationsDiscoveryClientsRequest" }) as any as S.Schema<SendHeartbeatProjectsLocationsDiscoveryClientsRequest>;
+export const SendHeartbeatProjectsLocationsDiscoveryClientsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(SendDiscoveryClientHeartbeatRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1alpha1/{+name}:sendHeartbeat",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "SendHeartbeatProjectsLocationsDiscoveryClientsRequest",
+  }) as any as S.Schema<SendHeartbeatProjectsLocationsDiscoveryClientsRequest>;
 
 export interface UpdateSettingsProjectsLocationsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -6507,14 +8212,23 @@ export interface UpdateSettingsProjectsLocationsRequest {
   /** Request body */
   body?: Settings;
 }
-export const UpdateSettingsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Settings.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1alpha1/{+name}","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "UpdateSettingsProjectsLocationsRequest" }) as any as S.Schema<UpdateSettingsProjectsLocationsRequest>;
+export const UpdateSettingsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      requestId: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Settings.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1alpha1/{+name}",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "UpdateSettingsProjectsLocationsRequest",
+}) as any as S.Schema<UpdateSettingsProjectsLocationsRequest>;
 
 /** A request to validate an import job. */
 export interface ValidateImportJobRequest {
@@ -6522,10 +8236,12 @@ export interface ValidateImportJobRequest {
   requestId?: string;
 }
 export const ValidateImportJobRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String),
-}),
-).annotate({ identifier: "ValidateImportJobRequest" }) as any as S.Schema<ValidateImportJobRequest>;
+  S.Struct({
+    requestId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ValidateImportJobRequest",
+}) as any as S.Schema<ValidateImportJobRequest>;
 
 export interface ValidateProjectsLocationsImportJobsRequest {
   /** Required. The name of the import job to validate. */
@@ -6533,14 +8249,28 @@ export interface ValidateProjectsLocationsImportJobsRequest {
   /** Request body */
   body?: ValidateImportJobRequest;
 }
-export const ValidateProjectsLocationsImportJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(ValidateImportJobRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+name}:validate","baseUrl":"https://migrationcenter.googleapis.com/"})),
-).annotate({ identifier: "ValidateProjectsLocationsImportJobsRequest" }) as any as S.Schema<ValidateProjectsLocationsImportJobsRequest>;
+export const ValidateProjectsLocationsImportJobsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(ValidateImportJobRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1alpha1/{+name}:validate",
+        baseUrl: "https://migrationcenter.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ValidateProjectsLocationsImportJobsRequest",
+  }) as any as S.Schema<ValidateProjectsLocationsImportJobsRequest>;
 
-export type AddAssetsProjectsLocationsGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type AddAssetsProjectsLocationsGroupsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Adds assets to a group. */
 export const addAssetsProjectsLocationsGroups: API.OperationMethod<
   AddAssetsProjectsLocationsGroupsRequest,
@@ -6555,7 +8285,12 @@ export const addAssetsProjectsLocationsGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AggregateValuesProjectsLocationsAssetsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type AggregateValuesProjectsLocationsAssetsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Aggregates the requested fields based on provided function. */
 export const aggregateValuesProjectsLocationsAssets: API.OperationMethod<
   AggregateValuesProjectsLocationsAssetsRequest,
@@ -6570,7 +8305,12 @@ export const aggregateValuesProjectsLocationsAssets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BatchDeleteProjectsLocationsAssetsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type BatchDeleteProjectsLocationsAssetsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes list of Assets. */
 export const batchDeleteProjectsLocationsAssets: API.OperationMethod<
   BatchDeleteProjectsLocationsAssetsRequest,
@@ -6585,7 +8325,12 @@ export const batchDeleteProjectsLocationsAssets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BatchUpdateProjectsLocationsAssetsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type BatchUpdateProjectsLocationsAssetsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the parameters of a list of assets. */
 export const batchUpdateProjectsLocationsAssets: API.OperationMethod<
   BatchUpdateProjectsLocationsAssetsRequest,
@@ -6600,7 +8345,12 @@ export const batchUpdateProjectsLocationsAssets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CancelProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CancelProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsRequest,
@@ -6615,7 +8365,12 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsAssetsExportJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsAssetsExportJobsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new assets export job. */
 export const createProjectsLocationsAssetsExportJobs: API.OperationMethod<
   CreateProjectsLocationsAssetsExportJobsRequest,
@@ -6630,7 +8385,12 @@ export const createProjectsLocationsAssetsExportJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsDiscoveryClientsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsDiscoveryClientsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new discovery client. */
 export const createProjectsLocationsDiscoveryClients: API.OperationMethod<
   CreateProjectsLocationsDiscoveryClientsRequest,
@@ -6645,7 +8405,12 @@ export const createProjectsLocationsDiscoveryClients: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsGroupsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new group in a given project and location. */
 export const createProjectsLocationsGroups: API.OperationMethod<
   CreateProjectsLocationsGroupsRequest,
@@ -6660,7 +8425,12 @@ export const createProjectsLocationsGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsImportJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsImportJobsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates an import job. */
 export const createProjectsLocationsImportJobs: API.OperationMethod<
   CreateProjectsLocationsImportJobsRequest,
@@ -6675,7 +8445,12 @@ export const createProjectsLocationsImportJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsImportJobsImportDataFilesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsImportJobsImportDataFilesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates an import data file. */
 export const createProjectsLocationsImportJobsImportDataFiles: API.OperationMethod<
   CreateProjectsLocationsImportJobsImportDataFilesRequest,
@@ -6690,7 +8465,12 @@ export const createProjectsLocationsImportJobsImportDataFiles: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsPreferenceSetsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsPreferenceSetsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new preference set in a given project and location. */
 export const createProjectsLocationsPreferenceSets: API.OperationMethod<
   CreateProjectsLocationsPreferenceSetsRequest,
@@ -6705,7 +8485,12 @@ export const createProjectsLocationsPreferenceSets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsReportConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsReportConfigsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a report configuration. */
 export const createProjectsLocationsReportConfigs: API.OperationMethod<
   CreateProjectsLocationsReportConfigsRequest,
@@ -6720,7 +8505,12 @@ export const createProjectsLocationsReportConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsReportConfigsReportsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsReportConfigsReportsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a report. */
 export const createProjectsLocationsReportConfigsReports: API.OperationMethod<
   CreateProjectsLocationsReportConfigsReportsRequest,
@@ -6735,7 +8525,12 @@ export const createProjectsLocationsReportConfigsReports: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsReportConfigsReportsReportExportJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsReportConfigsReportsReportExportJobsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Export a Report into a supported destination. */
 export const createProjectsLocationsReportConfigsReportsReportExportJobs: API.OperationMethod<
   CreateProjectsLocationsReportConfigsReportsReportExportJobsRequest,
@@ -6750,7 +8545,12 @@ export const createProjectsLocationsReportConfigsReportsReportExportJobs: API.Op
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsSourcesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsSourcesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new source in a given project and location. */
 export const createProjectsLocationsSources: API.OperationMethod<
   CreateProjectsLocationsSourcesRequest,
@@ -6765,7 +8565,12 @@ export const createProjectsLocationsSources: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsAssetsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsAssetsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes an asset. */
 export const deleteProjectsLocationsAssets: API.OperationMethod<
   DeleteProjectsLocationsAssetsRequest,
@@ -6780,7 +8585,12 @@ export const deleteProjectsLocationsAssets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsAssetsExportJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsAssetsExportJobsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes an assets export job. */
 export const deleteProjectsLocationsAssetsExportJobs: API.OperationMethod<
   DeleteProjectsLocationsAssetsExportJobsRequest,
@@ -6795,7 +8605,12 @@ export const deleteProjectsLocationsAssetsExportJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsDiscoveryClientsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsDiscoveryClientsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a discovery client. */
 export const deleteProjectsLocationsDiscoveryClients: API.OperationMethod<
   DeleteProjectsLocationsDiscoveryClientsRequest,
@@ -6810,7 +8625,12 @@ export const deleteProjectsLocationsDiscoveryClients: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsGroupsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a group. */
 export const deleteProjectsLocationsGroups: API.OperationMethod<
   DeleteProjectsLocationsGroupsRequest,
@@ -6825,7 +8645,12 @@ export const deleteProjectsLocationsGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsImportJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsImportJobsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes an import job. */
 export const deleteProjectsLocationsImportJobs: API.OperationMethod<
   DeleteProjectsLocationsImportJobsRequest,
@@ -6840,7 +8665,12 @@ export const deleteProjectsLocationsImportJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsImportJobsImportDataFilesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsImportJobsImportDataFilesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Delete an import data file. */
 export const deleteProjectsLocationsImportJobsImportDataFiles: API.OperationMethod<
   DeleteProjectsLocationsImportJobsImportDataFilesRequest,
@@ -6855,7 +8685,12 @@ export const deleteProjectsLocationsImportJobsImportDataFiles: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsRequest,
@@ -6870,7 +8705,12 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsPreferenceSetsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsPreferenceSetsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a preference set. */
 export const deleteProjectsLocationsPreferenceSets: API.OperationMethod<
   DeleteProjectsLocationsPreferenceSetsRequest,
@@ -6885,7 +8725,12 @@ export const deleteProjectsLocationsPreferenceSets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsReportConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsReportConfigsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a ReportConfig. */
 export const deleteProjectsLocationsReportConfigs: API.OperationMethod<
   DeleteProjectsLocationsReportConfigsRequest,
@@ -6900,7 +8745,12 @@ export const deleteProjectsLocationsReportConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsReportConfigsReportsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsReportConfigsReportsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a Report. */
 export const deleteProjectsLocationsReportConfigsReports: API.OperationMethod<
   DeleteProjectsLocationsReportConfigsReportsRequest,
@@ -6915,7 +8765,12 @@ export const deleteProjectsLocationsReportConfigsReports: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsReportConfigsReportsReportExportJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsReportConfigsReportsReportExportJobsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes an report export job. */
 export const deleteProjectsLocationsReportConfigsReportsReportExportJobs: API.OperationMethod<
   DeleteProjectsLocationsReportConfigsReportsReportExportJobsRequest,
@@ -6930,7 +8785,12 @@ export const deleteProjectsLocationsReportConfigsReportsReportExportJobs: API.Op
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsSourcesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsSourcesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a source. */
 export const deleteProjectsLocationsSources: API.OperationMethod<
   DeleteProjectsLocationsSourcesRequest,
@@ -6975,7 +8835,10 @@ export const getProjectsLocationsAssets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsAssetsExportJobsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsAssetsExportJobsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the details of an assets export job. */
 export const getProjectsLocationsAssetsExportJobs: API.OperationMethod<
   GetProjectsLocationsAssetsExportJobsRequest,
@@ -6990,7 +8853,10 @@ export const getProjectsLocationsAssetsExportJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsDiscoveryClientsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsDiscoveryClientsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the details of a discovery client. */
 export const getProjectsLocationsDiscoveryClients: API.OperationMethod<
   GetProjectsLocationsDiscoveryClientsRequest,
@@ -7020,7 +8886,10 @@ export const getProjectsLocationsGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsImportJobsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsImportJobsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the details of an import job. */
 export const getProjectsLocationsImportJobs: API.OperationMethod<
   GetProjectsLocationsImportJobsRequest,
@@ -7035,7 +8904,10 @@ export const getProjectsLocationsImportJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsImportJobsImportDataFilesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsImportJobsImportDataFilesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets an import data file. */
 export const getProjectsLocationsImportJobsImportDataFiles: API.OperationMethod<
   GetProjectsLocationsImportJobsImportDataFilesRequest,
@@ -7050,7 +8922,10 @@ export const getProjectsLocationsImportJobsImportDataFiles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -7065,7 +8940,10 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsPreferenceSetsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsPreferenceSetsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the details of a preference set. */
 export const getProjectsLocationsPreferenceSets: API.OperationMethod<
   GetProjectsLocationsPreferenceSetsRequest,
@@ -7080,7 +8958,10 @@ export const getProjectsLocationsPreferenceSets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsRelationsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsRelationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the details of an relation. */
 export const getProjectsLocationsRelations: API.OperationMethod<
   GetProjectsLocationsRelationsRequest,
@@ -7095,7 +8976,10 @@ export const getProjectsLocationsRelations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsReportConfigsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsReportConfigsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a single ReportConfig. */
 export const getProjectsLocationsReportConfigs: API.OperationMethod<
   GetProjectsLocationsReportConfigsRequest,
@@ -7110,7 +8994,10 @@ export const getProjectsLocationsReportConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsReportConfigsReportsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsReportConfigsReportsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a single Report. */
 export const getProjectsLocationsReportConfigsReports: API.OperationMethod<
   GetProjectsLocationsReportConfigsReportsRequest,
@@ -7125,7 +9012,10 @@ export const getProjectsLocationsReportConfigsReports: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsReportConfigsReportsReportExportJobsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsReportConfigsReportsReportExportJobsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the details of a report export job. */
 export const getProjectsLocationsReportConfigsReportsReportExportJobs: API.OperationMethod<
   GetProjectsLocationsReportConfigsReportsReportExportJobsRequest,
@@ -7140,7 +9030,10 @@ export const getProjectsLocationsReportConfigsReportsReportExportJobs: API.Opera
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsSourcesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsSourcesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the details of a source. */
 export const getProjectsLocationsSources: API.OperationMethod<
   GetProjectsLocationsSourcesRequest,
@@ -7155,7 +9048,10 @@ export const getProjectsLocationsSources: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsSourcesErrorFramesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsSourcesErrorFramesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the details of an error frame. */
 export const getProjectsLocationsSourcesErrorFrames: API.OperationMethod<
   GetProjectsLocationsSourcesErrorFramesRequest,
@@ -7170,7 +9066,10 @@ export const getProjectsLocationsSourcesErrorFrames: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetSettingsProjectsLocationsError = NotFound | Forbidden | GcpOpError;
+export type GetSettingsProjectsLocationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the details of regional settings. */
 export const getSettingsProjectsLocations: API.OperationMethod<
   GetSettingsProjectsLocationsRequest,
@@ -7198,10 +9097,16 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsAssetsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsAssetsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all the assets in a given project and location. */
 export const listProjectsLocationsAssets: API.PaginatedOperationMethod<
   ListProjectsLocationsAssetsRequest,
@@ -7214,10 +9119,16 @@ export const listProjectsLocationsAssets: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsAssetsExportJobsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsAssetsExportJobsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all the assets export jobs in a given project and location. */
 export const listProjectsLocationsAssetsExportJobs: API.PaginatedOperationMethod<
   ListProjectsLocationsAssetsExportJobsRequest,
@@ -7230,10 +9141,16 @@ export const listProjectsLocationsAssetsExportJobs: API.PaginatedOperationMethod
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsDiscoveryClientsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsDiscoveryClientsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all the discovery clients in a given project and location. */
 export const listProjectsLocationsDiscoveryClients: API.PaginatedOperationMethod<
   ListProjectsLocationsDiscoveryClientsRequest,
@@ -7246,10 +9163,16 @@ export const listProjectsLocationsDiscoveryClients: API.PaginatedOperationMethod
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsGroupsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsGroupsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all groups in a given project and location. */
 export const listProjectsLocationsGroups: API.PaginatedOperationMethod<
   ListProjectsLocationsGroupsRequest,
@@ -7262,10 +9185,16 @@ export const listProjectsLocationsGroups: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsImportJobsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsImportJobsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all import jobs. */
 export const listProjectsLocationsImportJobs: API.PaginatedOperationMethod<
   ListProjectsLocationsImportJobsRequest,
@@ -7278,10 +9207,16 @@ export const listProjectsLocationsImportJobs: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsImportJobsImportDataFilesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsImportJobsImportDataFilesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** List import data files. */
 export const listProjectsLocationsImportJobsImportDataFiles: API.PaginatedOperationMethod<
   ListProjectsLocationsImportJobsImportDataFilesRequest,
@@ -7294,10 +9229,16 @@ export const listProjectsLocationsImportJobsImportDataFiles: API.PaginatedOperat
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -7310,10 +9251,16 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsPreferenceSetsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsPreferenceSetsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all the preference sets in a given project and location. */
 export const listProjectsLocationsPreferenceSets: API.PaginatedOperationMethod<
   ListProjectsLocationsPreferenceSetsRequest,
@@ -7326,10 +9273,16 @@ export const listProjectsLocationsPreferenceSets: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsRelationsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsRelationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all the relations in a given project and location. */
 export const listProjectsLocationsRelations: API.PaginatedOperationMethod<
   ListProjectsLocationsRelationsRequest,
@@ -7342,10 +9295,16 @@ export const listProjectsLocationsRelations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsReportConfigsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsReportConfigsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists ReportConfigs in a given project and location. */
 export const listProjectsLocationsReportConfigs: API.PaginatedOperationMethod<
   ListProjectsLocationsReportConfigsRequest,
@@ -7358,10 +9317,16 @@ export const listProjectsLocationsReportConfigs: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsReportConfigsReportsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsReportConfigsReportsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists Reports in a given ReportConfig. */
 export const listProjectsLocationsReportConfigsReports: API.PaginatedOperationMethod<
   ListProjectsLocationsReportConfigsReportsRequest,
@@ -7374,10 +9339,16 @@ export const listProjectsLocationsReportConfigsReports: API.PaginatedOperationMe
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsReportConfigsReportsReportExportJobsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsReportConfigsReportsReportExportJobsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all the report export jobs for a given report. */
 export const listProjectsLocationsReportConfigsReportsReportExportJobs: API.PaginatedOperationMethod<
   ListProjectsLocationsReportConfigsReportsReportExportJobsRequest,
@@ -7390,10 +9361,16 @@ export const listProjectsLocationsReportConfigsReportsReportExportJobs: API.Pagi
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsSourcesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsSourcesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all the sources in a given project and location. */
 export const listProjectsLocationsSources: API.PaginatedOperationMethod<
   ListProjectsLocationsSourcesRequest,
@@ -7406,10 +9383,16 @@ export const listProjectsLocationsSources: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsSourcesErrorFramesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsSourcesErrorFramesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all error frames in a given source and location. */
 export const listProjectsLocationsSourcesErrorFrames: API.PaginatedOperationMethod<
   ListProjectsLocationsSourcesErrorFramesRequest,
@@ -7422,10 +9405,18 @@ export const listProjectsLocationsSourcesErrorFrames: API.PaginatedOperationMeth
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type PatchProjectsLocationsAssetsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsAssetsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the parameters of an asset. */
 export const patchProjectsLocationsAssets: API.OperationMethod<
   PatchProjectsLocationsAssetsRequest,
@@ -7440,7 +9431,12 @@ export const patchProjectsLocationsAssets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsDiscoveryClientsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsDiscoveryClientsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a discovery client. */
 export const patchProjectsLocationsDiscoveryClients: API.OperationMethod<
   PatchProjectsLocationsDiscoveryClientsRequest,
@@ -7455,7 +9451,12 @@ export const patchProjectsLocationsDiscoveryClients: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsGroupsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the parameters of a group. */
 export const patchProjectsLocationsGroups: API.OperationMethod<
   PatchProjectsLocationsGroupsRequest,
@@ -7470,7 +9471,12 @@ export const patchProjectsLocationsGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsImportJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsImportJobsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates an import job. */
 export const patchProjectsLocationsImportJobs: API.OperationMethod<
   PatchProjectsLocationsImportJobsRequest,
@@ -7485,7 +9491,12 @@ export const patchProjectsLocationsImportJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsPreferenceSetsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsPreferenceSetsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the parameters of a preference set. */
 export const patchProjectsLocationsPreferenceSets: API.OperationMethod<
   PatchProjectsLocationsPreferenceSetsRequest,
@@ -7500,7 +9511,12 @@ export const patchProjectsLocationsPreferenceSets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsSourcesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsSourcesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the parameters of a source. */
 export const patchProjectsLocationsSources: API.OperationMethod<
   PatchProjectsLocationsSourcesRequest,
@@ -7515,7 +9531,12 @@ export const patchProjectsLocationsSources: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RemoveAssetsProjectsLocationsGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RemoveAssetsProjectsLocationsGroupsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Removes assets from a group. */
 export const removeAssetsProjectsLocationsGroups: API.OperationMethod<
   RemoveAssetsProjectsLocationsGroupsRequest,
@@ -7530,7 +9551,12 @@ export const removeAssetsProjectsLocationsGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ReportAssetFramesProjectsLocationsAssetsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ReportAssetFramesProjectsLocationsAssetsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Reports a set of frames. */
 export const reportAssetFramesProjectsLocationsAssets: API.OperationMethod<
   ReportAssetFramesProjectsLocationsAssetsRequest,
@@ -7545,7 +9571,12 @@ export const reportAssetFramesProjectsLocationsAssets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RunProjectsLocationsAssetsExportJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RunProjectsLocationsAssetsExportJobsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Runs an assets export job, returning an AssetsExportJobExecution. */
 export const runProjectsLocationsAssetsExportJobs: API.OperationMethod<
   RunProjectsLocationsAssetsExportJobsRequest,
@@ -7560,7 +9591,12 @@ export const runProjectsLocationsAssetsExportJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RunProjectsLocationsImportJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RunProjectsLocationsImportJobsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Runs an import job. */
 export const runProjectsLocationsImportJobs: API.OperationMethod<
   RunProjectsLocationsImportJobsRequest,
@@ -7575,7 +9611,12 @@ export const runProjectsLocationsImportJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RunProjectsLocationsReportConfigsReportsReportExportJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RunProjectsLocationsReportConfigsReportsReportExportJobsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Runs a report export job. */
 export const runProjectsLocationsReportConfigsReportsReportExportJobs: API.OperationMethod<
   RunProjectsLocationsReportConfigsReportsReportExportJobsRequest,
@@ -7590,7 +9631,12 @@ export const runProjectsLocationsReportConfigsReportsReportExportJobs: API.Opera
   retry: Retry.Retry,
 }));
 
-export type SendHeartbeatProjectsLocationsDiscoveryClientsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SendHeartbeatProjectsLocationsDiscoveryClientsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sends a discovery client heartbeat. Healthy clients are expected to send heartbeats regularly (normally every few minutes). */
 export const sendHeartbeatProjectsLocationsDiscoveryClients: API.OperationMethod<
   SendHeartbeatProjectsLocationsDiscoveryClientsRequest,
@@ -7605,7 +9651,12 @@ export const sendHeartbeatProjectsLocationsDiscoveryClients: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type UpdateSettingsProjectsLocationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateSettingsProjectsLocationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the regional-level project settings. */
 export const updateSettingsProjectsLocations: API.OperationMethod<
   UpdateSettingsProjectsLocationsRequest,
@@ -7620,7 +9671,12 @@ export const updateSettingsProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ValidateProjectsLocationsImportJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ValidateProjectsLocationsImportJobsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Validates an import job. */
 export const validateProjectsLocationsImportJobs: API.OperationMethod<
   ValidateProjectsLocationsImportJobsRequest,
@@ -7634,4 +9690,3 @@ export const validateProjectsLocationsImportJobs: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

@@ -5528,22 +5528,36 @@ export const RulesCreateResponseRulesItemRewriteRuleActionParametersHeadersRemov
       "RulesCreateResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeader",
   }) as any as S.Schema<RulesCreateResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeader>;
 
-export type RulesCreateResponseRulesItemRewriteRuleActionParametersHeaders =
-  | RulesCreateResponseRulesItemRewriteRuleActionParametersHeadersAddStaticHeader
-  | RulesCreateResponseRulesItemRewriteRuleActionParametersHeadersAddDynamicHeader
-  | RulesCreateResponseRulesItemRewriteRuleActionParametersHeadersSetStaticHeader
-  | RulesCreateResponseRulesItemRewriteRuleActionParametersHeadersSetDynamicHeader
-  | RulesCreateResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeader;
+export interface RulesCreateResponseRulesItemRewriteRuleActionParametersHeaders {
+  /** The operation to perform on the header. */
+  operation:
+    | RulesCreateResponseRulesItemRewriteRuleActionParametersHeadersAddStaticHeaderOperation
+    | RulesCreateResponseRulesItemRewriteRuleActionParametersHeadersAddDynamicHeaderOperation
+    | RulesCreateResponseRulesItemRewriteRuleActionParametersHeadersSetStaticHeaderOperation
+    | RulesCreateResponseRulesItemRewriteRuleActionParametersHeadersSetDynamicHeaderOperation
+    | RulesCreateResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeaderOperation;
+  /** A static value for the header. */
+  value?: string;
+  /** An expression that evaluates to a value for the header. */
+  expression?: string;
+}
 export const RulesCreateResponseRulesItemRewriteRuleActionParametersHeaders =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value"],
-      ["expression", "operation"],
-      ["operation", "value"],
-      ["expression", "operation"],
-      ["operation"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        RulesCreateResponseRulesItemRewriteRuleActionParametersHeadersAddStaticHeaderOperation,
+        RulesCreateResponseRulesItemRewriteRuleActionParametersHeadersAddDynamicHeaderOperation,
+        RulesCreateResponseRulesItemRewriteRuleActionParametersHeadersSetStaticHeaderOperation,
+        RulesCreateResponseRulesItemRewriteRuleActionParametersHeadersSetDynamicHeaderOperation,
+        RulesCreateResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeaderOperation,
+      ),
+      value: S.optional(S.String),
+      expression: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateResponseRulesItemRewriteRuleActionParametersHeaders",
+  }) as any as S.Schema<RulesCreateResponseRulesItemRewriteRuleActionParametersHeaders>;
 
 export interface RulesCreateResponseRulesItemRewriteRuleActionParametersUriURIPathPath {
   /** An expression that evaluates to a value to rewrite the URI path to. */
@@ -5614,16 +5628,28 @@ export const RulesCreateResponseRulesItemRewriteRuleActionParametersUriURIQuery 
       "RulesCreateResponseRulesItemRewriteRuleActionParametersUriURIQuery",
   }) as any as S.Schema<RulesCreateResponseRulesItemRewriteRuleActionParametersUriURIQuery>;
 
-export type RulesCreateResponseRulesItemRewriteRuleActionParametersUri =
-  | RulesCreateResponseRulesItemRewriteRuleActionParametersUriURIPath
-  | RulesCreateResponseRulesItemRewriteRuleActionParametersUriURIQuery;
+export interface RulesCreateResponseRulesItemRewriteRuleActionParametersUri {
+  /** A URI path rewrite. */
+  path?: RulesCreateResponseRulesItemRewriteRuleActionParametersUriURIPathPath;
+  /** Whether to propagate the rewritten URI to origin. */
+  origin?: boolean;
+  /** A URI query rewrite. */
+  query?: RulesCreateResponseRulesItemRewriteRuleActionParametersUriURIQueryQuery;
+}
 export const RulesCreateResponseRulesItemRewriteRuleActionParametersUri =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["path", "origin"],
-      ["query", "origin"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.optional(
+        RulesCreateResponseRulesItemRewriteRuleActionParametersUriURIPathPath,
+      ),
+      origin: S.optional(S.Boolean),
+      query: S.optional(
+        RulesCreateResponseRulesItemRewriteRuleActionParametersUriURIQueryQuery,
+      ),
+    }),
+  ).annotate({
+    identifier: "RulesCreateResponseRulesItemRewriteRuleActionParametersUri",
+  }) as any as S.Schema<RulesCreateResponseRulesItemRewriteRuleActionParametersUri>;
 
 export interface RulesCreateResponseRulesItemRewriteRuleActionParameters {
   /** A map of headers to rewrite. */
@@ -6180,16 +6206,34 @@ export const RulesCreateResponseRulesItemServeErrorRuleActionParametersActionPar
       "RulesCreateResponseRulesItemServeErrorRuleActionParametersActionParametersAsset",
   }) as any as S.Schema<RulesCreateResponseRulesItemServeErrorRuleActionParametersActionParametersAsset>;
 
-export type RulesCreateResponseRulesItemServeErrorRuleActionParameters =
-  | RulesCreateResponseRulesItemServeErrorRuleActionParametersActionParametersContent
-  | RulesCreateResponseRulesItemServeErrorRuleActionParametersActionParametersAsset;
+export interface RulesCreateResponseRulesItemServeErrorRuleActionParameters {
+  /** The response content. */
+  content?: string;
+  /** The content type header to set with the error response. */
+  contentType?:
+    | RulesCreateResponseRulesItemServeErrorRuleActionParametersActionParametersContentContentType
+    | RulesCreateResponseRulesItemServeErrorRuleActionParametersActionParametersAssetContentType;
+  /** The status code to use for the error. */
+  statusCode?: number;
+  /** The name of a custom asset to serve as the error response. */
+  assetName?: string;
+}
 export const RulesCreateResponseRulesItemServeErrorRuleActionParameters =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["content", "contentType", "statusCode"],
-      ["assetName", "contentType", "statusCode"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      content: S.optional(S.String),
+      contentType: S.optional(
+        S.Union(
+          RulesCreateResponseRulesItemServeErrorRuleActionParametersActionParametersContentContentType,
+          RulesCreateResponseRulesItemServeErrorRuleActionParametersActionParametersAssetContentType,
+        ).pipe(T.Body("content_type")),
+      ),
+      statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
+      assetName: S.optional(S.String.pipe(T.Body("asset_name"))),
+    }),
+  ).annotate({
+    identifier: "RulesCreateResponseRulesItemServeErrorRuleActionParameters",
+  }) as any as S.Schema<RulesCreateResponseRulesItemServeErrorRuleActionParameters>;
 
 export type RulesCreateResponseRulesItemServeErrorRuleCategoriesList =
   ReadonlyArray<string>;
@@ -6379,16 +6423,27 @@ export const RulesCreateResponseRulesItemSetCacheControlActionParametersImmutabl
       "RulesCreateResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirective",
   }) as any as S.Schema<RulesCreateResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirective>;
 
-export type RulesCreateResponseRulesItemSetCacheControlActionParametersImmutable =
-    | RulesCreateResponseRulesItemSetCacheControlActionParametersImmutableSetDirective
-    | RulesCreateResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirective;
+export interface RulesCreateResponseRulesItemSetCacheControlActionParametersImmutable {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | RulesCreateResponseRulesItemSetCacheControlActionParametersImmutableSetDirectiveOperation
+    | RulesCreateResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const RulesCreateResponseRulesItemSetCacheControlActionParametersImmutable =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        RulesCreateResponseRulesItemSetCacheControlActionParametersImmutableSetDirectiveOperation,
+        RulesCreateResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateResponseRulesItemSetCacheControlActionParametersImmutable",
+  }) as any as S.Schema<RulesCreateResponseRulesItemSetCacheControlActionParametersImmutable>;
 
 export type RulesCreateResponseRulesItemSetCacheControlActionParametersMaxAgeSetDirectiveOperation =
   "set" | "remove";
@@ -6439,16 +6494,30 @@ export const RulesCreateResponseRulesItemSetCacheControlActionParametersMaxAgeRe
       "RulesCreateResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirective",
   }) as any as S.Schema<RulesCreateResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirective>;
 
-export type RulesCreateResponseRulesItemSetCacheControlActionParametersMaxAge =
-  | RulesCreateResponseRulesItemSetCacheControlActionParametersMaxAgeSetDirective
-  | RulesCreateResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirective;
+export interface RulesCreateResponseRulesItemSetCacheControlActionParametersMaxAge {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | RulesCreateResponseRulesItemSetCacheControlActionParametersMaxAgeSetDirectiveOperation
+    | RulesCreateResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirectiveOperation;
+  /** The duration value in seconds for the directive. */
+  value?: number;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const RulesCreateResponseRulesItemSetCacheControlActionParametersMaxAge =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        RulesCreateResponseRulesItemSetCacheControlActionParametersMaxAgeSetDirectiveOperation,
+        RulesCreateResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirectiveOperation,
+      ),
+      value: S.optional(S.Number),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateResponseRulesItemSetCacheControlActionParametersMaxAge",
+  }) as any as S.Schema<RulesCreateResponseRulesItemSetCacheControlActionParametersMaxAge>;
 
 export type RulesCreateResponseRulesItemSetCacheControlActionParametersMustRevalidateSetDirectiveOperation =
   "set" | "remove";
@@ -6496,16 +6565,27 @@ export const RulesCreateResponseRulesItemSetCacheControlActionParametersMustReva
       "RulesCreateResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirective",
   }) as any as S.Schema<RulesCreateResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirective>;
 
-export type RulesCreateResponseRulesItemSetCacheControlActionParametersMustRevalidate =
-    | RulesCreateResponseRulesItemSetCacheControlActionParametersMustRevalidateSetDirective
-    | RulesCreateResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirective;
+export interface RulesCreateResponseRulesItemSetCacheControlActionParametersMustRevalidate {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | RulesCreateResponseRulesItemSetCacheControlActionParametersMustRevalidateSetDirectiveOperation
+    | RulesCreateResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const RulesCreateResponseRulesItemSetCacheControlActionParametersMustRevalidate =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        RulesCreateResponseRulesItemSetCacheControlActionParametersMustRevalidateSetDirectiveOperation,
+        RulesCreateResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateResponseRulesItemSetCacheControlActionParametersMustRevalidate",
+  }) as any as S.Schema<RulesCreateResponseRulesItemSetCacheControlActionParametersMustRevalidate>;
 
 export type RulesCreateResponseRulesItemSetCacheControlActionParametersMustUnderstandSetDirectiveOperation =
   "set" | "remove";
@@ -6553,16 +6633,27 @@ export const RulesCreateResponseRulesItemSetCacheControlActionParametersMustUnde
       "RulesCreateResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirective",
   }) as any as S.Schema<RulesCreateResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirective>;
 
-export type RulesCreateResponseRulesItemSetCacheControlActionParametersMustUnderstand =
-    | RulesCreateResponseRulesItemSetCacheControlActionParametersMustUnderstandSetDirective
-    | RulesCreateResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirective;
+export interface RulesCreateResponseRulesItemSetCacheControlActionParametersMustUnderstand {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | RulesCreateResponseRulesItemSetCacheControlActionParametersMustUnderstandSetDirectiveOperation
+    | RulesCreateResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const RulesCreateResponseRulesItemSetCacheControlActionParametersMustUnderstand =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        RulesCreateResponseRulesItemSetCacheControlActionParametersMustUnderstandSetDirectiveOperation,
+        RulesCreateResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateResponseRulesItemSetCacheControlActionParametersMustUnderstand",
+  }) as any as S.Schema<RulesCreateResponseRulesItemSetCacheControlActionParametersMustUnderstand>;
 
 export type RulesCreateResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveOperation =
   "set" | "remove";
@@ -6622,16 +6713,32 @@ export const RulesCreateResponseRulesItemSetCacheControlActionParametersNoCacheR
       "RulesCreateResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirective",
   }) as any as S.Schema<RulesCreateResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirective>;
 
-export type RulesCreateResponseRulesItemSetCacheControlActionParametersNoCache =
-    | RulesCreateResponseRulesItemSetCacheControlActionParametersNoCacheSetDirective
-    | RulesCreateResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirective;
+export interface RulesCreateResponseRulesItemSetCacheControlActionParametersNoCache {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | RulesCreateResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveOperation
+    | RulesCreateResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+  /** Optional list of header names to qualify the directive (e.g., for "private" or "no-cache" directives). */
+  qualifiers?: RulesCreateResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList;
+}
 export const RulesCreateResponseRulesItemSetCacheControlActionParametersNoCache =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly", "qualifiers"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        RulesCreateResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveOperation,
+        RulesCreateResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+      qualifiers: S.optional(
+        RulesCreateResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateResponseRulesItemSetCacheControlActionParametersNoCache",
+  }) as any as S.Schema<RulesCreateResponseRulesItemSetCacheControlActionParametersNoCache>;
 
 export type RulesCreateResponseRulesItemSetCacheControlActionParametersNoStoreSetDirectiveOperation =
   "set" | "remove";
@@ -6679,16 +6786,27 @@ export const RulesCreateResponseRulesItemSetCacheControlActionParametersNoStoreR
       "RulesCreateResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirective",
   }) as any as S.Schema<RulesCreateResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirective>;
 
-export type RulesCreateResponseRulesItemSetCacheControlActionParametersNoStore =
-    | RulesCreateResponseRulesItemSetCacheControlActionParametersNoStoreSetDirective
-    | RulesCreateResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirective;
+export interface RulesCreateResponseRulesItemSetCacheControlActionParametersNoStore {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | RulesCreateResponseRulesItemSetCacheControlActionParametersNoStoreSetDirectiveOperation
+    | RulesCreateResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const RulesCreateResponseRulesItemSetCacheControlActionParametersNoStore =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        RulesCreateResponseRulesItemSetCacheControlActionParametersNoStoreSetDirectiveOperation,
+        RulesCreateResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateResponseRulesItemSetCacheControlActionParametersNoStore",
+  }) as any as S.Schema<RulesCreateResponseRulesItemSetCacheControlActionParametersNoStore>;
 
 export type RulesCreateResponseRulesItemSetCacheControlActionParametersNoTransformSetDirectiveOperation =
   "set" | "remove";
@@ -6736,16 +6854,27 @@ export const RulesCreateResponseRulesItemSetCacheControlActionParametersNoTransf
       "RulesCreateResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirective",
   }) as any as S.Schema<RulesCreateResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirective>;
 
-export type RulesCreateResponseRulesItemSetCacheControlActionParametersNoTransform =
-    | RulesCreateResponseRulesItemSetCacheControlActionParametersNoTransformSetDirective
-    | RulesCreateResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirective;
+export interface RulesCreateResponseRulesItemSetCacheControlActionParametersNoTransform {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | RulesCreateResponseRulesItemSetCacheControlActionParametersNoTransformSetDirectiveOperation
+    | RulesCreateResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const RulesCreateResponseRulesItemSetCacheControlActionParametersNoTransform =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        RulesCreateResponseRulesItemSetCacheControlActionParametersNoTransformSetDirectiveOperation,
+        RulesCreateResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateResponseRulesItemSetCacheControlActionParametersNoTransform",
+  }) as any as S.Schema<RulesCreateResponseRulesItemSetCacheControlActionParametersNoTransform>;
 
 export type RulesCreateResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveOperation =
   "set" | "remove";
@@ -6805,16 +6934,32 @@ export const RulesCreateResponseRulesItemSetCacheControlActionParametersPrivateR
       "RulesCreateResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirective",
   }) as any as S.Schema<RulesCreateResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirective>;
 
-export type RulesCreateResponseRulesItemSetCacheControlActionParametersPrivate =
-    | RulesCreateResponseRulesItemSetCacheControlActionParametersPrivateSetDirective
-    | RulesCreateResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirective;
+export interface RulesCreateResponseRulesItemSetCacheControlActionParametersPrivate {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | RulesCreateResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveOperation
+    | RulesCreateResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+  /** Optional list of header names to qualify the directive (e.g., for "private" or "no-cache" directives). */
+  qualifiers?: RulesCreateResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList;
+}
 export const RulesCreateResponseRulesItemSetCacheControlActionParametersPrivate =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly", "qualifiers"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        RulesCreateResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveOperation,
+        RulesCreateResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+      qualifiers: S.optional(
+        RulesCreateResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateResponseRulesItemSetCacheControlActionParametersPrivate",
+  }) as any as S.Schema<RulesCreateResponseRulesItemSetCacheControlActionParametersPrivate>;
 
 export type RulesCreateResponseRulesItemSetCacheControlActionParametersProxyRevalidateSetDirectiveOperation =
   "set" | "remove";
@@ -6862,16 +7007,27 @@ export const RulesCreateResponseRulesItemSetCacheControlActionParametersProxyRev
       "RulesCreateResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirective",
   }) as any as S.Schema<RulesCreateResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirective>;
 
-export type RulesCreateResponseRulesItemSetCacheControlActionParametersProxyRevalidate =
-    | RulesCreateResponseRulesItemSetCacheControlActionParametersProxyRevalidateSetDirective
-    | RulesCreateResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirective;
+export interface RulesCreateResponseRulesItemSetCacheControlActionParametersProxyRevalidate {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | RulesCreateResponseRulesItemSetCacheControlActionParametersProxyRevalidateSetDirectiveOperation
+    | RulesCreateResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const RulesCreateResponseRulesItemSetCacheControlActionParametersProxyRevalidate =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        RulesCreateResponseRulesItemSetCacheControlActionParametersProxyRevalidateSetDirectiveOperation,
+        RulesCreateResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateResponseRulesItemSetCacheControlActionParametersProxyRevalidate",
+  }) as any as S.Schema<RulesCreateResponseRulesItemSetCacheControlActionParametersProxyRevalidate>;
 
 export type RulesCreateResponseRulesItemSetCacheControlActionParametersPublicSetDirectiveOperation =
   "set" | "remove";
@@ -6919,16 +7075,27 @@ export const RulesCreateResponseRulesItemSetCacheControlActionParametersPublicRe
       "RulesCreateResponseRulesItemSetCacheControlActionParametersPublicRemoveDirective",
   }) as any as S.Schema<RulesCreateResponseRulesItemSetCacheControlActionParametersPublicRemoveDirective>;
 
-export type RulesCreateResponseRulesItemSetCacheControlActionParametersPublic =
-  | RulesCreateResponseRulesItemSetCacheControlActionParametersPublicSetDirective
-  | RulesCreateResponseRulesItemSetCacheControlActionParametersPublicRemoveDirective;
+export interface RulesCreateResponseRulesItemSetCacheControlActionParametersPublic {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | RulesCreateResponseRulesItemSetCacheControlActionParametersPublicSetDirectiveOperation
+    | RulesCreateResponseRulesItemSetCacheControlActionParametersPublicRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const RulesCreateResponseRulesItemSetCacheControlActionParametersPublic =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        RulesCreateResponseRulesItemSetCacheControlActionParametersPublicSetDirectiveOperation,
+        RulesCreateResponseRulesItemSetCacheControlActionParametersPublicRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateResponseRulesItemSetCacheControlActionParametersPublic",
+  }) as any as S.Schema<RulesCreateResponseRulesItemSetCacheControlActionParametersPublic>;
 
 export type RulesCreateResponseRulesItemSetCacheControlActionParametersSMaxageSetDirectiveOperation =
   "set" | "remove";
@@ -6979,16 +7146,30 @@ export const RulesCreateResponseRulesItemSetCacheControlActionParametersSMaxageR
       "RulesCreateResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirective",
   }) as any as S.Schema<RulesCreateResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirective>;
 
-export type RulesCreateResponseRulesItemSetCacheControlActionParametersSMaxage =
-    | RulesCreateResponseRulesItemSetCacheControlActionParametersSMaxageSetDirective
-    | RulesCreateResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirective;
+export interface RulesCreateResponseRulesItemSetCacheControlActionParametersSMaxage {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | RulesCreateResponseRulesItemSetCacheControlActionParametersSMaxageSetDirectiveOperation
+    | RulesCreateResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirectiveOperation;
+  /** The duration value in seconds for the directive. */
+  value?: number;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const RulesCreateResponseRulesItemSetCacheControlActionParametersSMaxage =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        RulesCreateResponseRulesItemSetCacheControlActionParametersSMaxageSetDirectiveOperation,
+        RulesCreateResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirectiveOperation,
+      ),
+      value: S.optional(S.Number),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateResponseRulesItemSetCacheControlActionParametersSMaxage",
+  }) as any as S.Schema<RulesCreateResponseRulesItemSetCacheControlActionParametersSMaxage>;
 
 export type RulesCreateResponseRulesItemSetCacheControlActionParametersStaleIfErrorSetDirectiveOperation =
   "set" | "remove";
@@ -7039,16 +7220,30 @@ export const RulesCreateResponseRulesItemSetCacheControlActionParametersStaleIfE
       "RulesCreateResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirective",
   }) as any as S.Schema<RulesCreateResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirective>;
 
-export type RulesCreateResponseRulesItemSetCacheControlActionParametersStaleIfError =
-    | RulesCreateResponseRulesItemSetCacheControlActionParametersStaleIfErrorSetDirective
-    | RulesCreateResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirective;
+export interface RulesCreateResponseRulesItemSetCacheControlActionParametersStaleIfError {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | RulesCreateResponseRulesItemSetCacheControlActionParametersStaleIfErrorSetDirectiveOperation
+    | RulesCreateResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirectiveOperation;
+  /** The duration value in seconds for the directive. */
+  value?: number;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const RulesCreateResponseRulesItemSetCacheControlActionParametersStaleIfError =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        RulesCreateResponseRulesItemSetCacheControlActionParametersStaleIfErrorSetDirectiveOperation,
+        RulesCreateResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirectiveOperation,
+      ),
+      value: S.optional(S.Number),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateResponseRulesItemSetCacheControlActionParametersStaleIfError",
+  }) as any as S.Schema<RulesCreateResponseRulesItemSetCacheControlActionParametersStaleIfError>;
 
 export type RulesCreateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirectiveOperation =
   "set" | "remove";
@@ -7099,16 +7294,30 @@ export const RulesCreateResponseRulesItemSetCacheControlActionParametersStaleWhi
       "RulesCreateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirective",
   }) as any as S.Schema<RulesCreateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirective>;
 
-export type RulesCreateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate =
-    | RulesCreateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirective
-    | RulesCreateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirective;
+export interface RulesCreateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | RulesCreateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirectiveOperation
+    | RulesCreateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirectiveOperation;
+  /** The duration value in seconds for the directive. */
+  value?: number;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const RulesCreateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        RulesCreateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirectiveOperation,
+        RulesCreateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirectiveOperation,
+      ),
+      value: S.optional(S.Number),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "RulesCreateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate",
+  }) as any as S.Schema<RulesCreateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate>;
 
 export interface RulesCreateResponseRulesItemSetCacheControlActionParameters {
   /** A cache-control directive configuration. */
@@ -8280,24 +8489,46 @@ export const RulesCreateResponseRulesItemSetCacheTagsActionParametersSetCacheTag
       "RulesCreateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpression",
   }) as any as S.Schema<RulesCreateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpression>;
 
-export type RulesCreateResponseRulesItemSetCacheTagsActionParameters =
-  | RulesCreateResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValues
-  | RulesCreateResponseRulesItemSetCacheTagsActionParametersAddCacheTagsExpression
-  | RulesCreateResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValues
-  | RulesCreateResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsExpression
-  | RulesCreateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValues
-  | RulesCreateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpression;
+export interface RulesCreateResponseRulesItemSetCacheTagsActionParameters {
+  /** The operation to perform on the cache tags. */
+  operation:
+    | RulesCreateResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesOperation
+    | RulesCreateResponseRulesItemSetCacheTagsActionParametersAddCacheTagsExpressionOperation
+    | RulesCreateResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesOperation
+    | RulesCreateResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsExpressionOperation
+    | RulesCreateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesOperation
+    | RulesCreateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpressionOperation;
+  /** A list of cache tag values. */
+  values?:
+    | RulesCreateResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesValuesList
+    | RulesCreateResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesValuesList
+    | RulesCreateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesValuesList;
+  /** An expression that evaluates to an array of cache tag values. */
+  expression?: string;
+}
 export const RulesCreateResponseRulesItemSetCacheTagsActionParameters =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "values"],
-      ["expression", "operation"],
-      ["operation", "values"],
-      ["expression", "operation"],
-      ["operation", "values"],
-      ["expression", "operation"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        RulesCreateResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesOperation,
+        RulesCreateResponseRulesItemSetCacheTagsActionParametersAddCacheTagsExpressionOperation,
+        RulesCreateResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesOperation,
+        RulesCreateResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsExpressionOperation,
+        RulesCreateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesOperation,
+        RulesCreateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpressionOperation,
+      ),
+      values: S.optional(
+        S.Union(
+          RulesCreateResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesValuesList,
+          RulesCreateResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesValuesList,
+          RulesCreateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesValuesList,
+        ),
+      ),
+      expression: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesCreateResponseRulesItemSetCacheTagsActionParameters",
+  }) as any as S.Schema<RulesCreateResponseRulesItemSetCacheTagsActionParameters>;
 
 export type RulesCreateResponseRulesItemSetCacheTagsCategoriesList =
   ReadonlyArray<string>;
@@ -9155,347 +9386,268 @@ export const RulesCreateResponseRulesItemTransformResponseHTML =
     identifier: "RulesCreateResponseRulesItemTransformResponseHTML",
   }) as any as S.Schema<RulesCreateResponseRulesItemTransformResponseHTML>;
 
-export type RulesCreateResponseRulesItem =
-  | RulesCreateResponseRulesItemBlockRule
-  | RulesCreateResponseRulesItemChallenge
-  | RulesCreateResponseRulesItemCompressResponseRule
-  | RulesCreateResponseRulesItemDDoSDynamicRule
-  | RulesCreateResponseRulesItemExecuteRule
-  | RulesCreateResponseRulesItemForceConnectionCloseRule
-  | RulesCreateResponseRulesItemJSChallenge
-  | RulesCreateResponseRulesItemLogRule
-  | RulesCreateResponseRulesItemLogCustomFieldRule
-  | RulesCreateResponseRulesItemManagedChallengeRule
-  | RulesCreateResponseRulesItemRedirectRule
-  | RulesCreateResponseRulesItemRewriteRule
-  | RulesCreateResponseRulesItemRouteRule
-  | RulesCreateResponseRulesItemScoreRule
-  | RulesCreateResponseRulesItemServeErrorRule
-  | RulesCreateResponseRulesItemSetCacheControl
-  | RulesCreateResponseRulesItemSetCacheSettingsRule
-  | RulesCreateResponseRulesItemSetCacheTags
-  | RulesCreateResponseRulesItemSetConfigRule
-  | RulesCreateResponseRulesItemSkipRule
-  | RulesCreateResponseRulesItemTransformResponseHTML;
-export const RulesCreateResponseRulesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-  ]),
-);
+export interface RulesCreateResponseRulesItem {
+  /** The timestamp of when the rule was last modified. */
+  lastUpdated: string;
+  /** The version of the rule. */
+  version: string;
+  /** The unique ID of the rule. */
+  id?: string;
+  /** The action to perform when the rule matches. */
+  action?:
+    | RulesCreateResponseRulesItemBlockRuleAction
+    | RulesCreateResponseRulesItemChallengeAction
+    | RulesCreateResponseRulesItemCompressResponseRuleAction
+    | RulesCreateResponseRulesItemDDoSDynamicRuleAction
+    | RulesCreateResponseRulesItemExecuteRuleAction
+    | RulesCreateResponseRulesItemForceConnectionCloseRuleAction
+    | RulesCreateResponseRulesItemJSChallengeAction
+    | RulesCreateResponseRulesItemLogRuleAction
+    | RulesCreateResponseRulesItemLogCustomFieldRuleAction
+    | RulesCreateResponseRulesItemManagedChallengeRuleAction
+    | RulesCreateResponseRulesItemRedirectRuleAction
+    | RulesCreateResponseRulesItemRewriteRuleAction
+    | RulesCreateResponseRulesItemRouteRuleAction
+    | RulesCreateResponseRulesItemScoreRuleAction
+    | RulesCreateResponseRulesItemServeErrorRuleAction
+    | RulesCreateResponseRulesItemSetCacheControlAction
+    | RulesCreateResponseRulesItemSetCacheSettingsRuleAction
+    | RulesCreateResponseRulesItemSetCacheTagsAction
+    | RulesCreateResponseRulesItemSetConfigRuleAction
+    | RulesCreateResponseRulesItemSkipRuleAction
+    | RulesCreateResponseRulesItemTransformResponseHTMLAction;
+  /** The parameters configuring the rule's action. */
+  actionParameters?:
+    | RulesCreateResponseRulesItemBlockRuleActionParameters
+    | unknown
+    | RulesCreateResponseRulesItemCompressResponseRuleActionParameters
+    | RulesCreateResponseRulesItemExecuteRuleActionParameters
+    | RulesCreateResponseRulesItemLogCustomFieldRuleActionParameters
+    | RulesCreateResponseRulesItemRedirectRuleActionParameters
+    | RulesCreateResponseRulesItemRewriteRuleActionParameters
+    | RulesCreateResponseRulesItemRouteRuleActionParameters
+    | RulesCreateResponseRulesItemScoreRuleActionParameters
+    | RulesCreateResponseRulesItemServeErrorRuleActionParameters
+    | RulesCreateResponseRulesItemSetCacheControlActionParameters
+    | RulesCreateResponseRulesItemSetCacheSettingsRuleActionParameters
+    | RulesCreateResponseRulesItemSetCacheTagsActionParameters
+    | RulesCreateResponseRulesItemSetConfigRuleActionParameters
+    | RulesCreateResponseRulesItemSkipRuleActionParameters
+    | RulesCreateResponseRulesItemTransformResponseHTMLActionParameters;
+  /** The categories of the rule. */
+  categories?:
+    | RulesCreateResponseRulesItemBlockRuleCategoriesList
+    | RulesCreateResponseRulesItemChallengeCategoriesList
+    | RulesCreateResponseRulesItemCompressResponseRuleCategoriesList
+    | RulesCreateResponseRulesItemDDoSDynamicRuleCategoriesList
+    | RulesCreateResponseRulesItemExecuteRuleCategoriesList
+    | RulesCreateResponseRulesItemForceConnectionCloseRuleCategoriesList
+    | RulesCreateResponseRulesItemJSChallengeCategoriesList
+    | RulesCreateResponseRulesItemLogRuleCategoriesList
+    | RulesCreateResponseRulesItemLogCustomFieldRuleCategoriesList
+    | RulesCreateResponseRulesItemManagedChallengeRuleCategoriesList
+    | RulesCreateResponseRulesItemRedirectRuleCategoriesList
+    | RulesCreateResponseRulesItemRewriteRuleCategoriesList
+    | RulesCreateResponseRulesItemRouteRuleCategoriesList
+    | RulesCreateResponseRulesItemScoreRuleCategoriesList
+    | RulesCreateResponseRulesItemServeErrorRuleCategoriesList
+    | RulesCreateResponseRulesItemSetCacheControlCategoriesList
+    | RulesCreateResponseRulesItemSetCacheSettingsRuleCategoriesList
+    | RulesCreateResponseRulesItemSetCacheTagsCategoriesList
+    | RulesCreateResponseRulesItemSetConfigRuleCategoriesList
+    | RulesCreateResponseRulesItemSkipRuleCategoriesList
+    | RulesCreateResponseRulesItemTransformResponseHTMLCategoriesList;
+  /** An informative description of the rule. */
+  description?: string;
+  /** Whether the rule should be executed. */
+  enabled?: boolean;
+  /** Configuration for exposed credential checking. */
+  exposedCredentialCheck?:
+    | RulesCreateResponseRulesItemBlockRuleExposedCredentialCheck
+    | RulesCreateResponseRulesItemChallengeExposedCredentialCheck
+    | RulesCreateResponseRulesItemCompressResponseRuleExposedCredentialCheck
+    | RulesCreateResponseRulesItemDDoSDynamicRuleExposedCredentialCheck
+    | RulesCreateResponseRulesItemExecuteRuleExposedCredentialCheck
+    | RulesCreateResponseRulesItemForceConnectionCloseRuleExposedCredentialCheck
+    | RulesCreateResponseRulesItemJSChallengeExposedCredentialCheck
+    | RulesCreateResponseRulesItemLogRuleExposedCredentialCheck
+    | RulesCreateResponseRulesItemLogCustomFieldRuleExposedCredentialCheck
+    | RulesCreateResponseRulesItemManagedChallengeRuleExposedCredentialCheck
+    | RulesCreateResponseRulesItemRedirectRuleExposedCredentialCheck
+    | RulesCreateResponseRulesItemRewriteRuleExposedCredentialCheck
+    | RulesCreateResponseRulesItemRouteRuleExposedCredentialCheck
+    | RulesCreateResponseRulesItemScoreRuleExposedCredentialCheck
+    | RulesCreateResponseRulesItemServeErrorRuleExposedCredentialCheck
+    | RulesCreateResponseRulesItemSetCacheControlExposedCredentialCheck
+    | RulesCreateResponseRulesItemSetCacheSettingsRuleExposedCredentialCheck
+    | RulesCreateResponseRulesItemSetCacheTagsExposedCredentialCheck
+    | RulesCreateResponseRulesItemSetConfigRuleExposedCredentialCheck
+    | RulesCreateResponseRulesItemSkipRuleExposedCredentialCheck
+    | RulesCreateResponseRulesItemTransformResponseHTMLExposedCredentialCheck;
+  /** The expression defining which traffic will match the rule. */
+  expression?: string;
+  /** An object configuring the rule's logging behavior. */
+  logging?: RulesCreateResponseRulesItemBlockRuleLogging;
+  /** An object configuring the rule's rate limit behavior. */
+  ratelimit?:
+    | RulesCreateResponseRulesItemBlockRuleRatelimit
+    | RulesCreateResponseRulesItemChallengeRatelimit
+    | RulesCreateResponseRulesItemCompressResponseRuleRatelimit
+    | RulesCreateResponseRulesItemDDoSDynamicRuleRatelimit
+    | RulesCreateResponseRulesItemExecuteRuleRatelimit
+    | RulesCreateResponseRulesItemForceConnectionCloseRuleRatelimit
+    | RulesCreateResponseRulesItemJSChallengeRatelimit
+    | RulesCreateResponseRulesItemLogRuleRatelimit
+    | RulesCreateResponseRulesItemLogCustomFieldRuleRatelimit
+    | RulesCreateResponseRulesItemManagedChallengeRuleRatelimit
+    | RulesCreateResponseRulesItemRedirectRuleRatelimit
+    | RulesCreateResponseRulesItemRewriteRuleRatelimit
+    | RulesCreateResponseRulesItemRouteRuleRatelimit
+    | RulesCreateResponseRulesItemScoreRuleRatelimit
+    | RulesCreateResponseRulesItemServeErrorRuleRatelimit
+    | RulesCreateResponseRulesItemSetCacheControlRatelimit
+    | RulesCreateResponseRulesItemSetCacheSettingsRuleRatelimit
+    | RulesCreateResponseRulesItemSetCacheTagsRatelimit
+    | RulesCreateResponseRulesItemSetConfigRuleRatelimit
+    | RulesCreateResponseRulesItemSkipRuleRatelimit
+    | RulesCreateResponseRulesItemTransformResponseHTMLRatelimit;
+  /** The reference of the rule (the rule's ID by default). */
+  ref?: string;
+}
+export const RulesCreateResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lastUpdated: S.String.pipe(T.Body("last_updated")),
+    version: S.String,
+    id: S.optional(S.String),
+    action: S.optional(
+      S.Union(
+        RulesCreateResponseRulesItemBlockRuleAction,
+        RulesCreateResponseRulesItemChallengeAction,
+        RulesCreateResponseRulesItemCompressResponseRuleAction,
+        RulesCreateResponseRulesItemDDoSDynamicRuleAction,
+        RulesCreateResponseRulesItemExecuteRuleAction,
+        RulesCreateResponseRulesItemForceConnectionCloseRuleAction,
+        RulesCreateResponseRulesItemJSChallengeAction,
+        RulesCreateResponseRulesItemLogRuleAction,
+        RulesCreateResponseRulesItemLogCustomFieldRuleAction,
+        RulesCreateResponseRulesItemManagedChallengeRuleAction,
+        RulesCreateResponseRulesItemRedirectRuleAction,
+        RulesCreateResponseRulesItemRewriteRuleAction,
+        RulesCreateResponseRulesItemRouteRuleAction,
+        RulesCreateResponseRulesItemScoreRuleAction,
+        RulesCreateResponseRulesItemServeErrorRuleAction,
+        RulesCreateResponseRulesItemSetCacheControlAction,
+        RulesCreateResponseRulesItemSetCacheSettingsRuleAction,
+        RulesCreateResponseRulesItemSetCacheTagsAction,
+        RulesCreateResponseRulesItemSetConfigRuleAction,
+        RulesCreateResponseRulesItemSkipRuleAction,
+        RulesCreateResponseRulesItemTransformResponseHTMLAction,
+      ),
+    ),
+    actionParameters: S.optional(
+      S.Union(
+        RulesCreateResponseRulesItemBlockRuleActionParameters,
+        S.Unknown,
+        RulesCreateResponseRulesItemCompressResponseRuleActionParameters,
+        RulesCreateResponseRulesItemExecuteRuleActionParameters,
+        RulesCreateResponseRulesItemLogCustomFieldRuleActionParameters,
+        RulesCreateResponseRulesItemRedirectRuleActionParameters,
+        RulesCreateResponseRulesItemRewriteRuleActionParameters,
+        RulesCreateResponseRulesItemRouteRuleActionParameters,
+        RulesCreateResponseRulesItemScoreRuleActionParameters,
+        RulesCreateResponseRulesItemServeErrorRuleActionParameters,
+        RulesCreateResponseRulesItemSetCacheControlActionParameters,
+        RulesCreateResponseRulesItemSetCacheSettingsRuleActionParameters,
+        RulesCreateResponseRulesItemSetCacheTagsActionParameters,
+        RulesCreateResponseRulesItemSetConfigRuleActionParameters,
+        RulesCreateResponseRulesItemSkipRuleActionParameters,
+        RulesCreateResponseRulesItemTransformResponseHTMLActionParameters,
+      ).pipe(T.Body("action_parameters")),
+    ),
+    categories: S.optional(
+      S.Union(
+        RulesCreateResponseRulesItemBlockRuleCategoriesList,
+        RulesCreateResponseRulesItemChallengeCategoriesList,
+        RulesCreateResponseRulesItemCompressResponseRuleCategoriesList,
+        RulesCreateResponseRulesItemDDoSDynamicRuleCategoriesList,
+        RulesCreateResponseRulesItemExecuteRuleCategoriesList,
+        RulesCreateResponseRulesItemForceConnectionCloseRuleCategoriesList,
+        RulesCreateResponseRulesItemJSChallengeCategoriesList,
+        RulesCreateResponseRulesItemLogRuleCategoriesList,
+        RulesCreateResponseRulesItemLogCustomFieldRuleCategoriesList,
+        RulesCreateResponseRulesItemManagedChallengeRuleCategoriesList,
+        RulesCreateResponseRulesItemRedirectRuleCategoriesList,
+        RulesCreateResponseRulesItemRewriteRuleCategoriesList,
+        RulesCreateResponseRulesItemRouteRuleCategoriesList,
+        RulesCreateResponseRulesItemScoreRuleCategoriesList,
+        RulesCreateResponseRulesItemServeErrorRuleCategoriesList,
+        RulesCreateResponseRulesItemSetCacheControlCategoriesList,
+        RulesCreateResponseRulesItemSetCacheSettingsRuleCategoriesList,
+        RulesCreateResponseRulesItemSetCacheTagsCategoriesList,
+        RulesCreateResponseRulesItemSetConfigRuleCategoriesList,
+        RulesCreateResponseRulesItemSkipRuleCategoriesList,
+        RulesCreateResponseRulesItemTransformResponseHTMLCategoriesList,
+      ),
+    ),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    exposedCredentialCheck: S.optional(
+      S.Union(
+        RulesCreateResponseRulesItemBlockRuleExposedCredentialCheck,
+        RulesCreateResponseRulesItemChallengeExposedCredentialCheck,
+        RulesCreateResponseRulesItemCompressResponseRuleExposedCredentialCheck,
+        RulesCreateResponseRulesItemDDoSDynamicRuleExposedCredentialCheck,
+        RulesCreateResponseRulesItemExecuteRuleExposedCredentialCheck,
+        RulesCreateResponseRulesItemForceConnectionCloseRuleExposedCredentialCheck,
+        RulesCreateResponseRulesItemJSChallengeExposedCredentialCheck,
+        RulesCreateResponseRulesItemLogRuleExposedCredentialCheck,
+        RulesCreateResponseRulesItemLogCustomFieldRuleExposedCredentialCheck,
+        RulesCreateResponseRulesItemManagedChallengeRuleExposedCredentialCheck,
+        RulesCreateResponseRulesItemRedirectRuleExposedCredentialCheck,
+        RulesCreateResponseRulesItemRewriteRuleExposedCredentialCheck,
+        RulesCreateResponseRulesItemRouteRuleExposedCredentialCheck,
+        RulesCreateResponseRulesItemScoreRuleExposedCredentialCheck,
+        RulesCreateResponseRulesItemServeErrorRuleExposedCredentialCheck,
+        RulesCreateResponseRulesItemSetCacheControlExposedCredentialCheck,
+        RulesCreateResponseRulesItemSetCacheSettingsRuleExposedCredentialCheck,
+        RulesCreateResponseRulesItemSetCacheTagsExposedCredentialCheck,
+        RulesCreateResponseRulesItemSetConfigRuleExposedCredentialCheck,
+        RulesCreateResponseRulesItemSkipRuleExposedCredentialCheck,
+        RulesCreateResponseRulesItemTransformResponseHTMLExposedCredentialCheck,
+      ).pipe(T.Body("exposed_credential_check")),
+    ),
+    expression: S.optional(S.String),
+    logging: S.optional(RulesCreateResponseRulesItemBlockRuleLogging),
+    ratelimit: S.optional(
+      S.Union(
+        RulesCreateResponseRulesItemBlockRuleRatelimit,
+        RulesCreateResponseRulesItemChallengeRatelimit,
+        RulesCreateResponseRulesItemCompressResponseRuleRatelimit,
+        RulesCreateResponseRulesItemDDoSDynamicRuleRatelimit,
+        RulesCreateResponseRulesItemExecuteRuleRatelimit,
+        RulesCreateResponseRulesItemForceConnectionCloseRuleRatelimit,
+        RulesCreateResponseRulesItemJSChallengeRatelimit,
+        RulesCreateResponseRulesItemLogRuleRatelimit,
+        RulesCreateResponseRulesItemLogCustomFieldRuleRatelimit,
+        RulesCreateResponseRulesItemManagedChallengeRuleRatelimit,
+        RulesCreateResponseRulesItemRedirectRuleRatelimit,
+        RulesCreateResponseRulesItemRewriteRuleRatelimit,
+        RulesCreateResponseRulesItemRouteRuleRatelimit,
+        RulesCreateResponseRulesItemScoreRuleRatelimit,
+        RulesCreateResponseRulesItemServeErrorRuleRatelimit,
+        RulesCreateResponseRulesItemSetCacheControlRatelimit,
+        RulesCreateResponseRulesItemSetCacheSettingsRuleRatelimit,
+        RulesCreateResponseRulesItemSetCacheTagsRatelimit,
+        RulesCreateResponseRulesItemSetConfigRuleRatelimit,
+        RulesCreateResponseRulesItemSkipRuleRatelimit,
+        RulesCreateResponseRulesItemTransformResponseHTMLRatelimit,
+      ),
+    ),
+    ref: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RulesCreateResponseRulesItem",
+}) as any as S.Schema<RulesCreateResponseRulesItem>;
 
 export type RulesCreateResponseRulesList =
   ReadonlyArray<RulesCreateResponseRulesItem>;
@@ -17880,22 +18032,35 @@ export const CreateResponseRulesItemRewriteRuleActionParametersHeadersRemoveHead
       "CreateResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeader",
   }) as any as S.Schema<CreateResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeader>;
 
-export type CreateResponseRulesItemRewriteRuleActionParametersHeaders =
-  | CreateResponseRulesItemRewriteRuleActionParametersHeadersAddStaticHeader
-  | CreateResponseRulesItemRewriteRuleActionParametersHeadersAddDynamicHeader
-  | CreateResponseRulesItemRewriteRuleActionParametersHeadersSetStaticHeader
-  | CreateResponseRulesItemRewriteRuleActionParametersHeadersSetDynamicHeader
-  | CreateResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeader;
+export interface CreateResponseRulesItemRewriteRuleActionParametersHeaders {
+  /** The operation to perform on the header. */
+  operation:
+    | CreateResponseRulesItemRewriteRuleActionParametersHeadersAddStaticHeaderOperation
+    | CreateResponseRulesItemRewriteRuleActionParametersHeadersAddDynamicHeaderOperation
+    | CreateResponseRulesItemRewriteRuleActionParametersHeadersSetStaticHeaderOperation
+    | CreateResponseRulesItemRewriteRuleActionParametersHeadersSetDynamicHeaderOperation
+    | CreateResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeaderOperation;
+  /** A static value for the header. */
+  value?: string;
+  /** An expression that evaluates to a value for the header. */
+  expression?: string;
+}
 export const CreateResponseRulesItemRewriteRuleActionParametersHeaders =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value"],
-      ["expression", "operation"],
-      ["operation", "value"],
-      ["expression", "operation"],
-      ["operation"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        CreateResponseRulesItemRewriteRuleActionParametersHeadersAddStaticHeaderOperation,
+        CreateResponseRulesItemRewriteRuleActionParametersHeadersAddDynamicHeaderOperation,
+        CreateResponseRulesItemRewriteRuleActionParametersHeadersSetStaticHeaderOperation,
+        CreateResponseRulesItemRewriteRuleActionParametersHeadersSetDynamicHeaderOperation,
+        CreateResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeaderOperation,
+      ),
+      value: S.optional(S.String),
+      expression: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "CreateResponseRulesItemRewriteRuleActionParametersHeaders",
+  }) as any as S.Schema<CreateResponseRulesItemRewriteRuleActionParametersHeaders>;
 
 export interface CreateResponseRulesItemRewriteRuleActionParametersUriURIPathPath {
   /** An expression that evaluates to a value to rewrite the URI path to. */
@@ -17963,16 +18128,28 @@ export const CreateResponseRulesItemRewriteRuleActionParametersUriURIQuery =
     identifier: "CreateResponseRulesItemRewriteRuleActionParametersUriURIQuery",
   }) as any as S.Schema<CreateResponseRulesItemRewriteRuleActionParametersUriURIQuery>;
 
-export type CreateResponseRulesItemRewriteRuleActionParametersUri =
-  | CreateResponseRulesItemRewriteRuleActionParametersUriURIPath
-  | CreateResponseRulesItemRewriteRuleActionParametersUriURIQuery;
+export interface CreateResponseRulesItemRewriteRuleActionParametersUri {
+  /** A URI path rewrite. */
+  path?: CreateResponseRulesItemRewriteRuleActionParametersUriURIPathPath;
+  /** Whether to propagate the rewritten URI to origin. */
+  origin?: boolean;
+  /** A URI query rewrite. */
+  query?: CreateResponseRulesItemRewriteRuleActionParametersUriURIQueryQuery;
+}
 export const CreateResponseRulesItemRewriteRuleActionParametersUri =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["path", "origin"],
-      ["query", "origin"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.optional(
+        CreateResponseRulesItemRewriteRuleActionParametersUriURIPathPath,
+      ),
+      origin: S.optional(S.Boolean),
+      query: S.optional(
+        CreateResponseRulesItemRewriteRuleActionParametersUriURIQueryQuery,
+      ),
+    }),
+  ).annotate({
+    identifier: "CreateResponseRulesItemRewriteRuleActionParametersUri",
+  }) as any as S.Schema<CreateResponseRulesItemRewriteRuleActionParametersUri>;
 
 export interface CreateResponseRulesItemRewriteRuleActionParameters {
   /** A map of headers to rewrite. */
@@ -18516,16 +18693,34 @@ export const CreateResponseRulesItemServeErrorRuleActionParametersActionParamete
       "CreateResponseRulesItemServeErrorRuleActionParametersActionParametersAsset",
   }) as any as S.Schema<CreateResponseRulesItemServeErrorRuleActionParametersActionParametersAsset>;
 
-export type CreateResponseRulesItemServeErrorRuleActionParameters =
-  | CreateResponseRulesItemServeErrorRuleActionParametersActionParametersContent
-  | CreateResponseRulesItemServeErrorRuleActionParametersActionParametersAsset;
+export interface CreateResponseRulesItemServeErrorRuleActionParameters {
+  /** The response content. */
+  content?: string;
+  /** The content type header to set with the error response. */
+  contentType?:
+    | CreateResponseRulesItemServeErrorRuleActionParametersActionParametersContentContentType
+    | CreateResponseRulesItemServeErrorRuleActionParametersActionParametersAssetContentType;
+  /** The status code to use for the error. */
+  statusCode?: number;
+  /** The name of a custom asset to serve as the error response. */
+  assetName?: string;
+}
 export const CreateResponseRulesItemServeErrorRuleActionParameters =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["content", "contentType", "statusCode"],
-      ["assetName", "contentType", "statusCode"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      content: S.optional(S.String),
+      contentType: S.optional(
+        S.Union(
+          CreateResponseRulesItemServeErrorRuleActionParametersActionParametersContentContentType,
+          CreateResponseRulesItemServeErrorRuleActionParametersActionParametersAssetContentType,
+        ).pipe(T.Body("content_type")),
+      ),
+      statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
+      assetName: S.optional(S.String.pipe(T.Body("asset_name"))),
+    }),
+  ).annotate({
+    identifier: "CreateResponseRulesItemServeErrorRuleActionParameters",
+  }) as any as S.Schema<CreateResponseRulesItemServeErrorRuleActionParameters>;
 
 export type CreateResponseRulesItemServeErrorRuleCategoriesList =
   ReadonlyArray<string>;
@@ -18711,16 +18906,27 @@ export const CreateResponseRulesItemSetCacheControlActionParametersImmutableRemo
       "CreateResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirective",
   }) as any as S.Schema<CreateResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirective>;
 
-export type CreateResponseRulesItemSetCacheControlActionParametersImmutable =
-  | CreateResponseRulesItemSetCacheControlActionParametersImmutableSetDirective
-  | CreateResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirective;
+export interface CreateResponseRulesItemSetCacheControlActionParametersImmutable {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | CreateResponseRulesItemSetCacheControlActionParametersImmutableSetDirectiveOperation
+    | CreateResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const CreateResponseRulesItemSetCacheControlActionParametersImmutable =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        CreateResponseRulesItemSetCacheControlActionParametersImmutableSetDirectiveOperation,
+        CreateResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "CreateResponseRulesItemSetCacheControlActionParametersImmutable",
+  }) as any as S.Schema<CreateResponseRulesItemSetCacheControlActionParametersImmutable>;
 
 export type CreateResponseRulesItemSetCacheControlActionParametersMaxAgeSetDirectiveOperation =
   "set" | "remove";
@@ -18771,16 +18977,29 @@ export const CreateResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveD
       "CreateResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirective",
   }) as any as S.Schema<CreateResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirective>;
 
-export type CreateResponseRulesItemSetCacheControlActionParametersMaxAge =
-  | CreateResponseRulesItemSetCacheControlActionParametersMaxAgeSetDirective
-  | CreateResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirective;
+export interface CreateResponseRulesItemSetCacheControlActionParametersMaxAge {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | CreateResponseRulesItemSetCacheControlActionParametersMaxAgeSetDirectiveOperation
+    | CreateResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirectiveOperation;
+  /** The duration value in seconds for the directive. */
+  value?: number;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const CreateResponseRulesItemSetCacheControlActionParametersMaxAge =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        CreateResponseRulesItemSetCacheControlActionParametersMaxAgeSetDirectiveOperation,
+        CreateResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirectiveOperation,
+      ),
+      value: S.optional(S.Number),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier: "CreateResponseRulesItemSetCacheControlActionParametersMaxAge",
+  }) as any as S.Schema<CreateResponseRulesItemSetCacheControlActionParametersMaxAge>;
 
 export type CreateResponseRulesItemSetCacheControlActionParametersMustRevalidateSetDirectiveOperation =
   "set" | "remove";
@@ -18828,16 +19047,27 @@ export const CreateResponseRulesItemSetCacheControlActionParametersMustRevalidat
       "CreateResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirective",
   }) as any as S.Schema<CreateResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirective>;
 
-export type CreateResponseRulesItemSetCacheControlActionParametersMustRevalidate =
-    | CreateResponseRulesItemSetCacheControlActionParametersMustRevalidateSetDirective
-    | CreateResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirective;
+export interface CreateResponseRulesItemSetCacheControlActionParametersMustRevalidate {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | CreateResponseRulesItemSetCacheControlActionParametersMustRevalidateSetDirectiveOperation
+    | CreateResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const CreateResponseRulesItemSetCacheControlActionParametersMustRevalidate =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        CreateResponseRulesItemSetCacheControlActionParametersMustRevalidateSetDirectiveOperation,
+        CreateResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "CreateResponseRulesItemSetCacheControlActionParametersMustRevalidate",
+  }) as any as S.Schema<CreateResponseRulesItemSetCacheControlActionParametersMustRevalidate>;
 
 export type CreateResponseRulesItemSetCacheControlActionParametersMustUnderstandSetDirectiveOperation =
   "set" | "remove";
@@ -18885,16 +19115,27 @@ export const CreateResponseRulesItemSetCacheControlActionParametersMustUnderstan
       "CreateResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirective",
   }) as any as S.Schema<CreateResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirective>;
 
-export type CreateResponseRulesItemSetCacheControlActionParametersMustUnderstand =
-    | CreateResponseRulesItemSetCacheControlActionParametersMustUnderstandSetDirective
-    | CreateResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirective;
+export interface CreateResponseRulesItemSetCacheControlActionParametersMustUnderstand {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | CreateResponseRulesItemSetCacheControlActionParametersMustUnderstandSetDirectiveOperation
+    | CreateResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const CreateResponseRulesItemSetCacheControlActionParametersMustUnderstand =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        CreateResponseRulesItemSetCacheControlActionParametersMustUnderstandSetDirectiveOperation,
+        CreateResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "CreateResponseRulesItemSetCacheControlActionParametersMustUnderstand",
+  }) as any as S.Schema<CreateResponseRulesItemSetCacheControlActionParametersMustUnderstand>;
 
 export type CreateResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveOperation =
   "set" | "remove";
@@ -18954,16 +19195,31 @@ export const CreateResponseRulesItemSetCacheControlActionParametersNoCacheRemove
       "CreateResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirective",
   }) as any as S.Schema<CreateResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirective>;
 
-export type CreateResponseRulesItemSetCacheControlActionParametersNoCache =
-  | CreateResponseRulesItemSetCacheControlActionParametersNoCacheSetDirective
-  | CreateResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirective;
+export interface CreateResponseRulesItemSetCacheControlActionParametersNoCache {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | CreateResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveOperation
+    | CreateResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+  /** Optional list of header names to qualify the directive (e.g., for "private" or "no-cache" directives). */
+  qualifiers?: CreateResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList;
+}
 export const CreateResponseRulesItemSetCacheControlActionParametersNoCache =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly", "qualifiers"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        CreateResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveOperation,
+        CreateResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+      qualifiers: S.optional(
+        CreateResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList,
+      ),
+    }),
+  ).annotate({
+    identifier: "CreateResponseRulesItemSetCacheControlActionParametersNoCache",
+  }) as any as S.Schema<CreateResponseRulesItemSetCacheControlActionParametersNoCache>;
 
 export type CreateResponseRulesItemSetCacheControlActionParametersNoStoreSetDirectiveOperation =
   "set" | "remove";
@@ -19011,16 +19267,26 @@ export const CreateResponseRulesItemSetCacheControlActionParametersNoStoreRemove
       "CreateResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirective",
   }) as any as S.Schema<CreateResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirective>;
 
-export type CreateResponseRulesItemSetCacheControlActionParametersNoStore =
-  | CreateResponseRulesItemSetCacheControlActionParametersNoStoreSetDirective
-  | CreateResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirective;
+export interface CreateResponseRulesItemSetCacheControlActionParametersNoStore {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | CreateResponseRulesItemSetCacheControlActionParametersNoStoreSetDirectiveOperation
+    | CreateResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const CreateResponseRulesItemSetCacheControlActionParametersNoStore =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        CreateResponseRulesItemSetCacheControlActionParametersNoStoreSetDirectiveOperation,
+        CreateResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier: "CreateResponseRulesItemSetCacheControlActionParametersNoStore",
+  }) as any as S.Schema<CreateResponseRulesItemSetCacheControlActionParametersNoStore>;
 
 export type CreateResponseRulesItemSetCacheControlActionParametersNoTransformSetDirectiveOperation =
   "set" | "remove";
@@ -19068,16 +19334,27 @@ export const CreateResponseRulesItemSetCacheControlActionParametersNoTransformRe
       "CreateResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirective",
   }) as any as S.Schema<CreateResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirective>;
 
-export type CreateResponseRulesItemSetCacheControlActionParametersNoTransform =
-  | CreateResponseRulesItemSetCacheControlActionParametersNoTransformSetDirective
-  | CreateResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirective;
+export interface CreateResponseRulesItemSetCacheControlActionParametersNoTransform {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | CreateResponseRulesItemSetCacheControlActionParametersNoTransformSetDirectiveOperation
+    | CreateResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const CreateResponseRulesItemSetCacheControlActionParametersNoTransform =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        CreateResponseRulesItemSetCacheControlActionParametersNoTransformSetDirectiveOperation,
+        CreateResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "CreateResponseRulesItemSetCacheControlActionParametersNoTransform",
+  }) as any as S.Schema<CreateResponseRulesItemSetCacheControlActionParametersNoTransform>;
 
 export type CreateResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveOperation =
   "set" | "remove";
@@ -19137,16 +19414,31 @@ export const CreateResponseRulesItemSetCacheControlActionParametersPrivateRemove
       "CreateResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirective",
   }) as any as S.Schema<CreateResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirective>;
 
-export type CreateResponseRulesItemSetCacheControlActionParametersPrivate =
-  | CreateResponseRulesItemSetCacheControlActionParametersPrivateSetDirective
-  | CreateResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirective;
+export interface CreateResponseRulesItemSetCacheControlActionParametersPrivate {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | CreateResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveOperation
+    | CreateResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+  /** Optional list of header names to qualify the directive (e.g., for "private" or "no-cache" directives). */
+  qualifiers?: CreateResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList;
+}
 export const CreateResponseRulesItemSetCacheControlActionParametersPrivate =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly", "qualifiers"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        CreateResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveOperation,
+        CreateResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+      qualifiers: S.optional(
+        CreateResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList,
+      ),
+    }),
+  ).annotate({
+    identifier: "CreateResponseRulesItemSetCacheControlActionParametersPrivate",
+  }) as any as S.Schema<CreateResponseRulesItemSetCacheControlActionParametersPrivate>;
 
 export type CreateResponseRulesItemSetCacheControlActionParametersProxyRevalidateSetDirectiveOperation =
   "set" | "remove";
@@ -19194,16 +19486,27 @@ export const CreateResponseRulesItemSetCacheControlActionParametersProxyRevalida
       "CreateResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirective",
   }) as any as S.Schema<CreateResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirective>;
 
-export type CreateResponseRulesItemSetCacheControlActionParametersProxyRevalidate =
-    | CreateResponseRulesItemSetCacheControlActionParametersProxyRevalidateSetDirective
-    | CreateResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirective;
+export interface CreateResponseRulesItemSetCacheControlActionParametersProxyRevalidate {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | CreateResponseRulesItemSetCacheControlActionParametersProxyRevalidateSetDirectiveOperation
+    | CreateResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const CreateResponseRulesItemSetCacheControlActionParametersProxyRevalidate =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        CreateResponseRulesItemSetCacheControlActionParametersProxyRevalidateSetDirectiveOperation,
+        CreateResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "CreateResponseRulesItemSetCacheControlActionParametersProxyRevalidate",
+  }) as any as S.Schema<CreateResponseRulesItemSetCacheControlActionParametersProxyRevalidate>;
 
 export type CreateResponseRulesItemSetCacheControlActionParametersPublicSetDirectiveOperation =
   "set" | "remove";
@@ -19251,16 +19554,26 @@ export const CreateResponseRulesItemSetCacheControlActionParametersPublicRemoveD
       "CreateResponseRulesItemSetCacheControlActionParametersPublicRemoveDirective",
   }) as any as S.Schema<CreateResponseRulesItemSetCacheControlActionParametersPublicRemoveDirective>;
 
-export type CreateResponseRulesItemSetCacheControlActionParametersPublic =
-  | CreateResponseRulesItemSetCacheControlActionParametersPublicSetDirective
-  | CreateResponseRulesItemSetCacheControlActionParametersPublicRemoveDirective;
+export interface CreateResponseRulesItemSetCacheControlActionParametersPublic {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | CreateResponseRulesItemSetCacheControlActionParametersPublicSetDirectiveOperation
+    | CreateResponseRulesItemSetCacheControlActionParametersPublicRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const CreateResponseRulesItemSetCacheControlActionParametersPublic =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        CreateResponseRulesItemSetCacheControlActionParametersPublicSetDirectiveOperation,
+        CreateResponseRulesItemSetCacheControlActionParametersPublicRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier: "CreateResponseRulesItemSetCacheControlActionParametersPublic",
+  }) as any as S.Schema<CreateResponseRulesItemSetCacheControlActionParametersPublic>;
 
 export type CreateResponseRulesItemSetCacheControlActionParametersSMaxageSetDirectiveOperation =
   "set" | "remove";
@@ -19311,16 +19624,29 @@ export const CreateResponseRulesItemSetCacheControlActionParametersSMaxageRemove
       "CreateResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirective",
   }) as any as S.Schema<CreateResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirective>;
 
-export type CreateResponseRulesItemSetCacheControlActionParametersSMaxage =
-  | CreateResponseRulesItemSetCacheControlActionParametersSMaxageSetDirective
-  | CreateResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirective;
+export interface CreateResponseRulesItemSetCacheControlActionParametersSMaxage {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | CreateResponseRulesItemSetCacheControlActionParametersSMaxageSetDirectiveOperation
+    | CreateResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirectiveOperation;
+  /** The duration value in seconds for the directive. */
+  value?: number;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const CreateResponseRulesItemSetCacheControlActionParametersSMaxage =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        CreateResponseRulesItemSetCacheControlActionParametersSMaxageSetDirectiveOperation,
+        CreateResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirectiveOperation,
+      ),
+      value: S.optional(S.Number),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier: "CreateResponseRulesItemSetCacheControlActionParametersSMaxage",
+  }) as any as S.Schema<CreateResponseRulesItemSetCacheControlActionParametersSMaxage>;
 
 export type CreateResponseRulesItemSetCacheControlActionParametersStaleIfErrorSetDirectiveOperation =
   "set" | "remove";
@@ -19371,16 +19697,30 @@ export const CreateResponseRulesItemSetCacheControlActionParametersStaleIfErrorR
       "CreateResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirective",
   }) as any as S.Schema<CreateResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirective>;
 
-export type CreateResponseRulesItemSetCacheControlActionParametersStaleIfError =
-    | CreateResponseRulesItemSetCacheControlActionParametersStaleIfErrorSetDirective
-    | CreateResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirective;
+export interface CreateResponseRulesItemSetCacheControlActionParametersStaleIfError {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | CreateResponseRulesItemSetCacheControlActionParametersStaleIfErrorSetDirectiveOperation
+    | CreateResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirectiveOperation;
+  /** The duration value in seconds for the directive. */
+  value?: number;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const CreateResponseRulesItemSetCacheControlActionParametersStaleIfError =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        CreateResponseRulesItemSetCacheControlActionParametersStaleIfErrorSetDirectiveOperation,
+        CreateResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirectiveOperation,
+      ),
+      value: S.optional(S.Number),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "CreateResponseRulesItemSetCacheControlActionParametersStaleIfError",
+  }) as any as S.Schema<CreateResponseRulesItemSetCacheControlActionParametersStaleIfError>;
 
 export type CreateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirectiveOperation =
   "set" | "remove";
@@ -19431,16 +19771,30 @@ export const CreateResponseRulesItemSetCacheControlActionParametersStaleWhileRev
       "CreateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirective",
   }) as any as S.Schema<CreateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirective>;
 
-export type CreateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate =
-    | CreateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirective
-    | CreateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirective;
+export interface CreateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | CreateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirectiveOperation
+    | CreateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirectiveOperation;
+  /** The duration value in seconds for the directive. */
+  value?: number;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const CreateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        CreateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirectiveOperation,
+        CreateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirectiveOperation,
+      ),
+      value: S.optional(S.Number),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "CreateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate",
+  }) as any as S.Schema<CreateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate>;
 
 export interface CreateResponseRulesItemSetCacheControlActionParameters {
   /** A cache-control directive configuration. */
@@ -20605,24 +20959,46 @@ export const CreateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpr
       "CreateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpression",
   }) as any as S.Schema<CreateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpression>;
 
-export type CreateResponseRulesItemSetCacheTagsActionParameters =
-  | CreateResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValues
-  | CreateResponseRulesItemSetCacheTagsActionParametersAddCacheTagsExpression
-  | CreateResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValues
-  | CreateResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsExpression
-  | CreateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValues
-  | CreateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpression;
+export interface CreateResponseRulesItemSetCacheTagsActionParameters {
+  /** The operation to perform on the cache tags. */
+  operation:
+    | CreateResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesOperation
+    | CreateResponseRulesItemSetCacheTagsActionParametersAddCacheTagsExpressionOperation
+    | CreateResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesOperation
+    | CreateResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsExpressionOperation
+    | CreateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesOperation
+    | CreateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpressionOperation;
+  /** A list of cache tag values. */
+  values?:
+    | CreateResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesValuesList
+    | CreateResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesValuesList
+    | CreateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesValuesList;
+  /** An expression that evaluates to an array of cache tag values. */
+  expression?: string;
+}
 export const CreateResponseRulesItemSetCacheTagsActionParameters =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "values"],
-      ["expression", "operation"],
-      ["operation", "values"],
-      ["expression", "operation"],
-      ["operation", "values"],
-      ["expression", "operation"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        CreateResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesOperation,
+        CreateResponseRulesItemSetCacheTagsActionParametersAddCacheTagsExpressionOperation,
+        CreateResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesOperation,
+        CreateResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsExpressionOperation,
+        CreateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesOperation,
+        CreateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpressionOperation,
+      ),
+      values: S.optional(
+        S.Union(
+          CreateResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesValuesList,
+          CreateResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesValuesList,
+          CreateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesValuesList,
+        ),
+      ),
+      expression: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "CreateResponseRulesItemSetCacheTagsActionParameters",
+  }) as any as S.Schema<CreateResponseRulesItemSetCacheTagsActionParameters>;
 
 export type CreateResponseRulesItemSetCacheTagsCategoriesList =
   ReadonlyArray<string>;
@@ -21467,347 +21843,268 @@ export const CreateResponseRulesItemTransformResponseHTML =
     identifier: "CreateResponseRulesItemTransformResponseHTML",
   }) as any as S.Schema<CreateResponseRulesItemTransformResponseHTML>;
 
-export type CreateResponseRulesItem =
-  | CreateResponseRulesItemBlockRule
-  | CreateResponseRulesItemChallenge
-  | CreateResponseRulesItemCompressResponseRule
-  | CreateResponseRulesItemDDoSDynamicRule
-  | CreateResponseRulesItemExecuteRule
-  | CreateResponseRulesItemForceConnectionCloseRule
-  | CreateResponseRulesItemJSChallenge
-  | CreateResponseRulesItemLogRule
-  | CreateResponseRulesItemLogCustomFieldRule
-  | CreateResponseRulesItemManagedChallengeRule
-  | CreateResponseRulesItemRedirectRule
-  | CreateResponseRulesItemRewriteRule
-  | CreateResponseRulesItemRouteRule
-  | CreateResponseRulesItemScoreRule
-  | CreateResponseRulesItemServeErrorRule
-  | CreateResponseRulesItemSetCacheControl
-  | CreateResponseRulesItemSetCacheSettingsRule
-  | CreateResponseRulesItemSetCacheTags
-  | CreateResponseRulesItemSetConfigRule
-  | CreateResponseRulesItemSkipRule
-  | CreateResponseRulesItemTransformResponseHTML;
-export const CreateResponseRulesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-  ]),
-);
+export interface CreateResponseRulesItem {
+  /** The timestamp of when the rule was last modified. */
+  lastUpdated: string;
+  /** The version of the rule. */
+  version: string;
+  /** The unique ID of the rule. */
+  id?: string;
+  /** The action to perform when the rule matches. */
+  action?:
+    | CreateResponseRulesItemBlockRuleAction
+    | CreateResponseRulesItemChallengeAction
+    | CreateResponseRulesItemCompressResponseRuleAction
+    | CreateResponseRulesItemDDoSDynamicRuleAction
+    | CreateResponseRulesItemExecuteRuleAction
+    | CreateResponseRulesItemForceConnectionCloseRuleAction
+    | CreateResponseRulesItemJSChallengeAction
+    | CreateResponseRulesItemLogRuleAction
+    | CreateResponseRulesItemLogCustomFieldRuleAction
+    | CreateResponseRulesItemManagedChallengeRuleAction
+    | CreateResponseRulesItemRedirectRuleAction
+    | CreateResponseRulesItemRewriteRuleAction
+    | CreateResponseRulesItemRouteRuleAction
+    | CreateResponseRulesItemScoreRuleAction
+    | CreateResponseRulesItemServeErrorRuleAction
+    | CreateResponseRulesItemSetCacheControlAction
+    | CreateResponseRulesItemSetCacheSettingsRuleAction
+    | CreateResponseRulesItemSetCacheTagsAction
+    | CreateResponseRulesItemSetConfigRuleAction
+    | CreateResponseRulesItemSkipRuleAction
+    | CreateResponseRulesItemTransformResponseHTMLAction;
+  /** The parameters configuring the rule's action. */
+  actionParameters?:
+    | CreateResponseRulesItemBlockRuleActionParameters
+    | unknown
+    | CreateResponseRulesItemCompressResponseRuleActionParameters
+    | CreateResponseRulesItemExecuteRuleActionParameters
+    | CreateResponseRulesItemLogCustomFieldRuleActionParameters
+    | CreateResponseRulesItemRedirectRuleActionParameters
+    | CreateResponseRulesItemRewriteRuleActionParameters
+    | CreateResponseRulesItemRouteRuleActionParameters
+    | CreateResponseRulesItemScoreRuleActionParameters
+    | CreateResponseRulesItemServeErrorRuleActionParameters
+    | CreateResponseRulesItemSetCacheControlActionParameters
+    | CreateResponseRulesItemSetCacheSettingsRuleActionParameters
+    | CreateResponseRulesItemSetCacheTagsActionParameters
+    | CreateResponseRulesItemSetConfigRuleActionParameters
+    | CreateResponseRulesItemSkipRuleActionParameters
+    | CreateResponseRulesItemTransformResponseHTMLActionParameters;
+  /** The categories of the rule. */
+  categories?:
+    | CreateResponseRulesItemBlockRuleCategoriesList
+    | CreateResponseRulesItemChallengeCategoriesList
+    | CreateResponseRulesItemCompressResponseRuleCategoriesList
+    | CreateResponseRulesItemDDoSDynamicRuleCategoriesList
+    | CreateResponseRulesItemExecuteRuleCategoriesList
+    | CreateResponseRulesItemForceConnectionCloseRuleCategoriesList
+    | CreateResponseRulesItemJSChallengeCategoriesList
+    | CreateResponseRulesItemLogRuleCategoriesList
+    | CreateResponseRulesItemLogCustomFieldRuleCategoriesList
+    | CreateResponseRulesItemManagedChallengeRuleCategoriesList
+    | CreateResponseRulesItemRedirectRuleCategoriesList
+    | CreateResponseRulesItemRewriteRuleCategoriesList
+    | CreateResponseRulesItemRouteRuleCategoriesList
+    | CreateResponseRulesItemScoreRuleCategoriesList
+    | CreateResponseRulesItemServeErrorRuleCategoriesList
+    | CreateResponseRulesItemSetCacheControlCategoriesList
+    | CreateResponseRulesItemSetCacheSettingsRuleCategoriesList
+    | CreateResponseRulesItemSetCacheTagsCategoriesList
+    | CreateResponseRulesItemSetConfigRuleCategoriesList
+    | CreateResponseRulesItemSkipRuleCategoriesList
+    | CreateResponseRulesItemTransformResponseHTMLCategoriesList;
+  /** An informative description of the rule. */
+  description?: string;
+  /** Whether the rule should be executed. */
+  enabled?: boolean;
+  /** Configuration for exposed credential checking. */
+  exposedCredentialCheck?:
+    | CreateResponseRulesItemBlockRuleExposedCredentialCheck
+    | CreateResponseRulesItemChallengeExposedCredentialCheck
+    | CreateResponseRulesItemCompressResponseRuleExposedCredentialCheck
+    | CreateResponseRulesItemDDoSDynamicRuleExposedCredentialCheck
+    | CreateResponseRulesItemExecuteRuleExposedCredentialCheck
+    | CreateResponseRulesItemForceConnectionCloseRuleExposedCredentialCheck
+    | CreateResponseRulesItemJSChallengeExposedCredentialCheck
+    | CreateResponseRulesItemLogRuleExposedCredentialCheck
+    | CreateResponseRulesItemLogCustomFieldRuleExposedCredentialCheck
+    | CreateResponseRulesItemManagedChallengeRuleExposedCredentialCheck
+    | CreateResponseRulesItemRedirectRuleExposedCredentialCheck
+    | CreateResponseRulesItemRewriteRuleExposedCredentialCheck
+    | CreateResponseRulesItemRouteRuleExposedCredentialCheck
+    | CreateResponseRulesItemScoreRuleExposedCredentialCheck
+    | CreateResponseRulesItemServeErrorRuleExposedCredentialCheck
+    | CreateResponseRulesItemSetCacheControlExposedCredentialCheck
+    | CreateResponseRulesItemSetCacheSettingsRuleExposedCredentialCheck
+    | CreateResponseRulesItemSetCacheTagsExposedCredentialCheck
+    | CreateResponseRulesItemSetConfigRuleExposedCredentialCheck
+    | CreateResponseRulesItemSkipRuleExposedCredentialCheck
+    | CreateResponseRulesItemTransformResponseHTMLExposedCredentialCheck;
+  /** The expression defining which traffic will match the rule. */
+  expression?: string;
+  /** An object configuring the rule's logging behavior. */
+  logging?: CreateResponseRulesItemBlockRuleLogging;
+  /** An object configuring the rule's rate limit behavior. */
+  ratelimit?:
+    | CreateResponseRulesItemBlockRuleRatelimit
+    | CreateResponseRulesItemChallengeRatelimit
+    | CreateResponseRulesItemCompressResponseRuleRatelimit
+    | CreateResponseRulesItemDDoSDynamicRuleRatelimit
+    | CreateResponseRulesItemExecuteRuleRatelimit
+    | CreateResponseRulesItemForceConnectionCloseRuleRatelimit
+    | CreateResponseRulesItemJSChallengeRatelimit
+    | CreateResponseRulesItemLogRuleRatelimit
+    | CreateResponseRulesItemLogCustomFieldRuleRatelimit
+    | CreateResponseRulesItemManagedChallengeRuleRatelimit
+    | CreateResponseRulesItemRedirectRuleRatelimit
+    | CreateResponseRulesItemRewriteRuleRatelimit
+    | CreateResponseRulesItemRouteRuleRatelimit
+    | CreateResponseRulesItemScoreRuleRatelimit
+    | CreateResponseRulesItemServeErrorRuleRatelimit
+    | CreateResponseRulesItemSetCacheControlRatelimit
+    | CreateResponseRulesItemSetCacheSettingsRuleRatelimit
+    | CreateResponseRulesItemSetCacheTagsRatelimit
+    | CreateResponseRulesItemSetConfigRuleRatelimit
+    | CreateResponseRulesItemSkipRuleRatelimit
+    | CreateResponseRulesItemTransformResponseHTMLRatelimit;
+  /** The reference of the rule (the rule's ID by default). */
+  ref?: string;
+}
+export const CreateResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lastUpdated: S.String.pipe(T.Body("last_updated")),
+    version: S.String,
+    id: S.optional(S.String),
+    action: S.optional(
+      S.Union(
+        CreateResponseRulesItemBlockRuleAction,
+        CreateResponseRulesItemChallengeAction,
+        CreateResponseRulesItemCompressResponseRuleAction,
+        CreateResponseRulesItemDDoSDynamicRuleAction,
+        CreateResponseRulesItemExecuteRuleAction,
+        CreateResponseRulesItemForceConnectionCloseRuleAction,
+        CreateResponseRulesItemJSChallengeAction,
+        CreateResponseRulesItemLogRuleAction,
+        CreateResponseRulesItemLogCustomFieldRuleAction,
+        CreateResponseRulesItemManagedChallengeRuleAction,
+        CreateResponseRulesItemRedirectRuleAction,
+        CreateResponseRulesItemRewriteRuleAction,
+        CreateResponseRulesItemRouteRuleAction,
+        CreateResponseRulesItemScoreRuleAction,
+        CreateResponseRulesItemServeErrorRuleAction,
+        CreateResponseRulesItemSetCacheControlAction,
+        CreateResponseRulesItemSetCacheSettingsRuleAction,
+        CreateResponseRulesItemSetCacheTagsAction,
+        CreateResponseRulesItemSetConfigRuleAction,
+        CreateResponseRulesItemSkipRuleAction,
+        CreateResponseRulesItemTransformResponseHTMLAction,
+      ),
+    ),
+    actionParameters: S.optional(
+      S.Union(
+        CreateResponseRulesItemBlockRuleActionParameters,
+        S.Unknown,
+        CreateResponseRulesItemCompressResponseRuleActionParameters,
+        CreateResponseRulesItemExecuteRuleActionParameters,
+        CreateResponseRulesItemLogCustomFieldRuleActionParameters,
+        CreateResponseRulesItemRedirectRuleActionParameters,
+        CreateResponseRulesItemRewriteRuleActionParameters,
+        CreateResponseRulesItemRouteRuleActionParameters,
+        CreateResponseRulesItemScoreRuleActionParameters,
+        CreateResponseRulesItemServeErrorRuleActionParameters,
+        CreateResponseRulesItemSetCacheControlActionParameters,
+        CreateResponseRulesItemSetCacheSettingsRuleActionParameters,
+        CreateResponseRulesItemSetCacheTagsActionParameters,
+        CreateResponseRulesItemSetConfigRuleActionParameters,
+        CreateResponseRulesItemSkipRuleActionParameters,
+        CreateResponseRulesItemTransformResponseHTMLActionParameters,
+      ).pipe(T.Body("action_parameters")),
+    ),
+    categories: S.optional(
+      S.Union(
+        CreateResponseRulesItemBlockRuleCategoriesList,
+        CreateResponseRulesItemChallengeCategoriesList,
+        CreateResponseRulesItemCompressResponseRuleCategoriesList,
+        CreateResponseRulesItemDDoSDynamicRuleCategoriesList,
+        CreateResponseRulesItemExecuteRuleCategoriesList,
+        CreateResponseRulesItemForceConnectionCloseRuleCategoriesList,
+        CreateResponseRulesItemJSChallengeCategoriesList,
+        CreateResponseRulesItemLogRuleCategoriesList,
+        CreateResponseRulesItemLogCustomFieldRuleCategoriesList,
+        CreateResponseRulesItemManagedChallengeRuleCategoriesList,
+        CreateResponseRulesItemRedirectRuleCategoriesList,
+        CreateResponseRulesItemRewriteRuleCategoriesList,
+        CreateResponseRulesItemRouteRuleCategoriesList,
+        CreateResponseRulesItemScoreRuleCategoriesList,
+        CreateResponseRulesItemServeErrorRuleCategoriesList,
+        CreateResponseRulesItemSetCacheControlCategoriesList,
+        CreateResponseRulesItemSetCacheSettingsRuleCategoriesList,
+        CreateResponseRulesItemSetCacheTagsCategoriesList,
+        CreateResponseRulesItemSetConfigRuleCategoriesList,
+        CreateResponseRulesItemSkipRuleCategoriesList,
+        CreateResponseRulesItemTransformResponseHTMLCategoriesList,
+      ),
+    ),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    exposedCredentialCheck: S.optional(
+      S.Union(
+        CreateResponseRulesItemBlockRuleExposedCredentialCheck,
+        CreateResponseRulesItemChallengeExposedCredentialCheck,
+        CreateResponseRulesItemCompressResponseRuleExposedCredentialCheck,
+        CreateResponseRulesItemDDoSDynamicRuleExposedCredentialCheck,
+        CreateResponseRulesItemExecuteRuleExposedCredentialCheck,
+        CreateResponseRulesItemForceConnectionCloseRuleExposedCredentialCheck,
+        CreateResponseRulesItemJSChallengeExposedCredentialCheck,
+        CreateResponseRulesItemLogRuleExposedCredentialCheck,
+        CreateResponseRulesItemLogCustomFieldRuleExposedCredentialCheck,
+        CreateResponseRulesItemManagedChallengeRuleExposedCredentialCheck,
+        CreateResponseRulesItemRedirectRuleExposedCredentialCheck,
+        CreateResponseRulesItemRewriteRuleExposedCredentialCheck,
+        CreateResponseRulesItemRouteRuleExposedCredentialCheck,
+        CreateResponseRulesItemScoreRuleExposedCredentialCheck,
+        CreateResponseRulesItemServeErrorRuleExposedCredentialCheck,
+        CreateResponseRulesItemSetCacheControlExposedCredentialCheck,
+        CreateResponseRulesItemSetCacheSettingsRuleExposedCredentialCheck,
+        CreateResponseRulesItemSetCacheTagsExposedCredentialCheck,
+        CreateResponseRulesItemSetConfigRuleExposedCredentialCheck,
+        CreateResponseRulesItemSkipRuleExposedCredentialCheck,
+        CreateResponseRulesItemTransformResponseHTMLExposedCredentialCheck,
+      ).pipe(T.Body("exposed_credential_check")),
+    ),
+    expression: S.optional(S.String),
+    logging: S.optional(CreateResponseRulesItemBlockRuleLogging),
+    ratelimit: S.optional(
+      S.Union(
+        CreateResponseRulesItemBlockRuleRatelimit,
+        CreateResponseRulesItemChallengeRatelimit,
+        CreateResponseRulesItemCompressResponseRuleRatelimit,
+        CreateResponseRulesItemDDoSDynamicRuleRatelimit,
+        CreateResponseRulesItemExecuteRuleRatelimit,
+        CreateResponseRulesItemForceConnectionCloseRuleRatelimit,
+        CreateResponseRulesItemJSChallengeRatelimit,
+        CreateResponseRulesItemLogRuleRatelimit,
+        CreateResponseRulesItemLogCustomFieldRuleRatelimit,
+        CreateResponseRulesItemManagedChallengeRuleRatelimit,
+        CreateResponseRulesItemRedirectRuleRatelimit,
+        CreateResponseRulesItemRewriteRuleRatelimit,
+        CreateResponseRulesItemRouteRuleRatelimit,
+        CreateResponseRulesItemScoreRuleRatelimit,
+        CreateResponseRulesItemServeErrorRuleRatelimit,
+        CreateResponseRulesItemSetCacheControlRatelimit,
+        CreateResponseRulesItemSetCacheSettingsRuleRatelimit,
+        CreateResponseRulesItemSetCacheTagsRatelimit,
+        CreateResponseRulesItemSetConfigRuleRatelimit,
+        CreateResponseRulesItemSkipRuleRatelimit,
+        CreateResponseRulesItemTransformResponseHTMLRatelimit,
+      ),
+    ),
+    ref: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateResponseRulesItem",
+}) as any as S.Schema<CreateResponseRulesItem>;
 
 export type CreateResponseRulesList = ReadonlyArray<CreateResponseRulesItem>;
 export const CreateResponseRulesList = /*@__PURE__*/ S.Array(
@@ -24069,22 +24366,36 @@ export const RulesDeleteResponseRulesItemRewriteRuleActionParametersHeadersRemov
       "RulesDeleteResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeader",
   }) as any as S.Schema<RulesDeleteResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeader>;
 
-export type RulesDeleteResponseRulesItemRewriteRuleActionParametersHeaders =
-  | RulesDeleteResponseRulesItemRewriteRuleActionParametersHeadersAddStaticHeader
-  | RulesDeleteResponseRulesItemRewriteRuleActionParametersHeadersAddDynamicHeader
-  | RulesDeleteResponseRulesItemRewriteRuleActionParametersHeadersSetStaticHeader
-  | RulesDeleteResponseRulesItemRewriteRuleActionParametersHeadersSetDynamicHeader
-  | RulesDeleteResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeader;
+export interface RulesDeleteResponseRulesItemRewriteRuleActionParametersHeaders {
+  /** The operation to perform on the header. */
+  operation:
+    | RulesDeleteResponseRulesItemRewriteRuleActionParametersHeadersAddStaticHeaderOperation
+    | RulesDeleteResponseRulesItemRewriteRuleActionParametersHeadersAddDynamicHeaderOperation
+    | RulesDeleteResponseRulesItemRewriteRuleActionParametersHeadersSetStaticHeaderOperation
+    | RulesDeleteResponseRulesItemRewriteRuleActionParametersHeadersSetDynamicHeaderOperation
+    | RulesDeleteResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeaderOperation;
+  /** A static value for the header. */
+  value?: string;
+  /** An expression that evaluates to a value for the header. */
+  expression?: string;
+}
 export const RulesDeleteResponseRulesItemRewriteRuleActionParametersHeaders =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value"],
-      ["expression", "operation"],
-      ["operation", "value"],
-      ["expression", "operation"],
-      ["operation"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        RulesDeleteResponseRulesItemRewriteRuleActionParametersHeadersAddStaticHeaderOperation,
+        RulesDeleteResponseRulesItemRewriteRuleActionParametersHeadersAddDynamicHeaderOperation,
+        RulesDeleteResponseRulesItemRewriteRuleActionParametersHeadersSetStaticHeaderOperation,
+        RulesDeleteResponseRulesItemRewriteRuleActionParametersHeadersSetDynamicHeaderOperation,
+        RulesDeleteResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeaderOperation,
+      ),
+      value: S.optional(S.String),
+      expression: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RulesDeleteResponseRulesItemRewriteRuleActionParametersHeaders",
+  }) as any as S.Schema<RulesDeleteResponseRulesItemRewriteRuleActionParametersHeaders>;
 
 export interface RulesDeleteResponseRulesItemRewriteRuleActionParametersUriURIPathPath {
   /** An expression that evaluates to a value to rewrite the URI path to. */
@@ -24155,16 +24466,28 @@ export const RulesDeleteResponseRulesItemRewriteRuleActionParametersUriURIQuery 
       "RulesDeleteResponseRulesItemRewriteRuleActionParametersUriURIQuery",
   }) as any as S.Schema<RulesDeleteResponseRulesItemRewriteRuleActionParametersUriURIQuery>;
 
-export type RulesDeleteResponseRulesItemRewriteRuleActionParametersUri =
-  | RulesDeleteResponseRulesItemRewriteRuleActionParametersUriURIPath
-  | RulesDeleteResponseRulesItemRewriteRuleActionParametersUriURIQuery;
+export interface RulesDeleteResponseRulesItemRewriteRuleActionParametersUri {
+  /** A URI path rewrite. */
+  path?: RulesDeleteResponseRulesItemRewriteRuleActionParametersUriURIPathPath;
+  /** Whether to propagate the rewritten URI to origin. */
+  origin?: boolean;
+  /** A URI query rewrite. */
+  query?: RulesDeleteResponseRulesItemRewriteRuleActionParametersUriURIQueryQuery;
+}
 export const RulesDeleteResponseRulesItemRewriteRuleActionParametersUri =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["path", "origin"],
-      ["query", "origin"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.optional(
+        RulesDeleteResponseRulesItemRewriteRuleActionParametersUriURIPathPath,
+      ),
+      origin: S.optional(S.Boolean),
+      query: S.optional(
+        RulesDeleteResponseRulesItemRewriteRuleActionParametersUriURIQueryQuery,
+      ),
+    }),
+  ).annotate({
+    identifier: "RulesDeleteResponseRulesItemRewriteRuleActionParametersUri",
+  }) as any as S.Schema<RulesDeleteResponseRulesItemRewriteRuleActionParametersUri>;
 
 export interface RulesDeleteResponseRulesItemRewriteRuleActionParameters {
   /** A map of headers to rewrite. */
@@ -24721,16 +25044,34 @@ export const RulesDeleteResponseRulesItemServeErrorRuleActionParametersActionPar
       "RulesDeleteResponseRulesItemServeErrorRuleActionParametersActionParametersAsset",
   }) as any as S.Schema<RulesDeleteResponseRulesItemServeErrorRuleActionParametersActionParametersAsset>;
 
-export type RulesDeleteResponseRulesItemServeErrorRuleActionParameters =
-  | RulesDeleteResponseRulesItemServeErrorRuleActionParametersActionParametersContent
-  | RulesDeleteResponseRulesItemServeErrorRuleActionParametersActionParametersAsset;
+export interface RulesDeleteResponseRulesItemServeErrorRuleActionParameters {
+  /** The response content. */
+  content?: string;
+  /** The content type header to set with the error response. */
+  contentType?:
+    | RulesDeleteResponseRulesItemServeErrorRuleActionParametersActionParametersContentContentType
+    | RulesDeleteResponseRulesItemServeErrorRuleActionParametersActionParametersAssetContentType;
+  /** The status code to use for the error. */
+  statusCode?: number;
+  /** The name of a custom asset to serve as the error response. */
+  assetName?: string;
+}
 export const RulesDeleteResponseRulesItemServeErrorRuleActionParameters =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["content", "contentType", "statusCode"],
-      ["assetName", "contentType", "statusCode"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      content: S.optional(S.String),
+      contentType: S.optional(
+        S.Union(
+          RulesDeleteResponseRulesItemServeErrorRuleActionParametersActionParametersContentContentType,
+          RulesDeleteResponseRulesItemServeErrorRuleActionParametersActionParametersAssetContentType,
+        ).pipe(T.Body("content_type")),
+      ),
+      statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
+      assetName: S.optional(S.String.pipe(T.Body("asset_name"))),
+    }),
+  ).annotate({
+    identifier: "RulesDeleteResponseRulesItemServeErrorRuleActionParameters",
+  }) as any as S.Schema<RulesDeleteResponseRulesItemServeErrorRuleActionParameters>;
 
 export type RulesDeleteResponseRulesItemServeErrorRuleCategoriesList =
   ReadonlyArray<string>;
@@ -24920,16 +25261,27 @@ export const RulesDeleteResponseRulesItemSetCacheControlActionParametersImmutabl
       "RulesDeleteResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirective",
   }) as any as S.Schema<RulesDeleteResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirective>;
 
-export type RulesDeleteResponseRulesItemSetCacheControlActionParametersImmutable =
-    | RulesDeleteResponseRulesItemSetCacheControlActionParametersImmutableSetDirective
-    | RulesDeleteResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirective;
+export interface RulesDeleteResponseRulesItemSetCacheControlActionParametersImmutable {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | RulesDeleteResponseRulesItemSetCacheControlActionParametersImmutableSetDirectiveOperation
+    | RulesDeleteResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const RulesDeleteResponseRulesItemSetCacheControlActionParametersImmutable =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        RulesDeleteResponseRulesItemSetCacheControlActionParametersImmutableSetDirectiveOperation,
+        RulesDeleteResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "RulesDeleteResponseRulesItemSetCacheControlActionParametersImmutable",
+  }) as any as S.Schema<RulesDeleteResponseRulesItemSetCacheControlActionParametersImmutable>;
 
 export type RulesDeleteResponseRulesItemSetCacheControlActionParametersMaxAgeSetDirectiveOperation =
   "set" | "remove";
@@ -24980,16 +25332,30 @@ export const RulesDeleteResponseRulesItemSetCacheControlActionParametersMaxAgeRe
       "RulesDeleteResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirective",
   }) as any as S.Schema<RulesDeleteResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirective>;
 
-export type RulesDeleteResponseRulesItemSetCacheControlActionParametersMaxAge =
-  | RulesDeleteResponseRulesItemSetCacheControlActionParametersMaxAgeSetDirective
-  | RulesDeleteResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirective;
+export interface RulesDeleteResponseRulesItemSetCacheControlActionParametersMaxAge {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | RulesDeleteResponseRulesItemSetCacheControlActionParametersMaxAgeSetDirectiveOperation
+    | RulesDeleteResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirectiveOperation;
+  /** The duration value in seconds for the directive. */
+  value?: number;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const RulesDeleteResponseRulesItemSetCacheControlActionParametersMaxAge =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        RulesDeleteResponseRulesItemSetCacheControlActionParametersMaxAgeSetDirectiveOperation,
+        RulesDeleteResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirectiveOperation,
+      ),
+      value: S.optional(S.Number),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "RulesDeleteResponseRulesItemSetCacheControlActionParametersMaxAge",
+  }) as any as S.Schema<RulesDeleteResponseRulesItemSetCacheControlActionParametersMaxAge>;
 
 export type RulesDeleteResponseRulesItemSetCacheControlActionParametersMustRevalidateSetDirectiveOperation =
   "set" | "remove";
@@ -25037,16 +25403,27 @@ export const RulesDeleteResponseRulesItemSetCacheControlActionParametersMustReva
       "RulesDeleteResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirective",
   }) as any as S.Schema<RulesDeleteResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirective>;
 
-export type RulesDeleteResponseRulesItemSetCacheControlActionParametersMustRevalidate =
-    | RulesDeleteResponseRulesItemSetCacheControlActionParametersMustRevalidateSetDirective
-    | RulesDeleteResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirective;
+export interface RulesDeleteResponseRulesItemSetCacheControlActionParametersMustRevalidate {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | RulesDeleteResponseRulesItemSetCacheControlActionParametersMustRevalidateSetDirectiveOperation
+    | RulesDeleteResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const RulesDeleteResponseRulesItemSetCacheControlActionParametersMustRevalidate =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        RulesDeleteResponseRulesItemSetCacheControlActionParametersMustRevalidateSetDirectiveOperation,
+        RulesDeleteResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "RulesDeleteResponseRulesItemSetCacheControlActionParametersMustRevalidate",
+  }) as any as S.Schema<RulesDeleteResponseRulesItemSetCacheControlActionParametersMustRevalidate>;
 
 export type RulesDeleteResponseRulesItemSetCacheControlActionParametersMustUnderstandSetDirectiveOperation =
   "set" | "remove";
@@ -25094,16 +25471,27 @@ export const RulesDeleteResponseRulesItemSetCacheControlActionParametersMustUnde
       "RulesDeleteResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirective",
   }) as any as S.Schema<RulesDeleteResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirective>;
 
-export type RulesDeleteResponseRulesItemSetCacheControlActionParametersMustUnderstand =
-    | RulesDeleteResponseRulesItemSetCacheControlActionParametersMustUnderstandSetDirective
-    | RulesDeleteResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirective;
+export interface RulesDeleteResponseRulesItemSetCacheControlActionParametersMustUnderstand {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | RulesDeleteResponseRulesItemSetCacheControlActionParametersMustUnderstandSetDirectiveOperation
+    | RulesDeleteResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const RulesDeleteResponseRulesItemSetCacheControlActionParametersMustUnderstand =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        RulesDeleteResponseRulesItemSetCacheControlActionParametersMustUnderstandSetDirectiveOperation,
+        RulesDeleteResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "RulesDeleteResponseRulesItemSetCacheControlActionParametersMustUnderstand",
+  }) as any as S.Schema<RulesDeleteResponseRulesItemSetCacheControlActionParametersMustUnderstand>;
 
 export type RulesDeleteResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveOperation =
   "set" | "remove";
@@ -25163,16 +25551,32 @@ export const RulesDeleteResponseRulesItemSetCacheControlActionParametersNoCacheR
       "RulesDeleteResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirective",
   }) as any as S.Schema<RulesDeleteResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirective>;
 
-export type RulesDeleteResponseRulesItemSetCacheControlActionParametersNoCache =
-    | RulesDeleteResponseRulesItemSetCacheControlActionParametersNoCacheSetDirective
-    | RulesDeleteResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirective;
+export interface RulesDeleteResponseRulesItemSetCacheControlActionParametersNoCache {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | RulesDeleteResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveOperation
+    | RulesDeleteResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+  /** Optional list of header names to qualify the directive (e.g., for "private" or "no-cache" directives). */
+  qualifiers?: RulesDeleteResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList;
+}
 export const RulesDeleteResponseRulesItemSetCacheControlActionParametersNoCache =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly", "qualifiers"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        RulesDeleteResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveOperation,
+        RulesDeleteResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+      qualifiers: S.optional(
+        RulesDeleteResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "RulesDeleteResponseRulesItemSetCacheControlActionParametersNoCache",
+  }) as any as S.Schema<RulesDeleteResponseRulesItemSetCacheControlActionParametersNoCache>;
 
 export type RulesDeleteResponseRulesItemSetCacheControlActionParametersNoStoreSetDirectiveOperation =
   "set" | "remove";
@@ -25220,16 +25624,27 @@ export const RulesDeleteResponseRulesItemSetCacheControlActionParametersNoStoreR
       "RulesDeleteResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirective",
   }) as any as S.Schema<RulesDeleteResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirective>;
 
-export type RulesDeleteResponseRulesItemSetCacheControlActionParametersNoStore =
-    | RulesDeleteResponseRulesItemSetCacheControlActionParametersNoStoreSetDirective
-    | RulesDeleteResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirective;
+export interface RulesDeleteResponseRulesItemSetCacheControlActionParametersNoStore {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | RulesDeleteResponseRulesItemSetCacheControlActionParametersNoStoreSetDirectiveOperation
+    | RulesDeleteResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const RulesDeleteResponseRulesItemSetCacheControlActionParametersNoStore =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        RulesDeleteResponseRulesItemSetCacheControlActionParametersNoStoreSetDirectiveOperation,
+        RulesDeleteResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "RulesDeleteResponseRulesItemSetCacheControlActionParametersNoStore",
+  }) as any as S.Schema<RulesDeleteResponseRulesItemSetCacheControlActionParametersNoStore>;
 
 export type RulesDeleteResponseRulesItemSetCacheControlActionParametersNoTransformSetDirectiveOperation =
   "set" | "remove";
@@ -25277,16 +25692,27 @@ export const RulesDeleteResponseRulesItemSetCacheControlActionParametersNoTransf
       "RulesDeleteResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirective",
   }) as any as S.Schema<RulesDeleteResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirective>;
 
-export type RulesDeleteResponseRulesItemSetCacheControlActionParametersNoTransform =
-    | RulesDeleteResponseRulesItemSetCacheControlActionParametersNoTransformSetDirective
-    | RulesDeleteResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirective;
+export interface RulesDeleteResponseRulesItemSetCacheControlActionParametersNoTransform {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | RulesDeleteResponseRulesItemSetCacheControlActionParametersNoTransformSetDirectiveOperation
+    | RulesDeleteResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const RulesDeleteResponseRulesItemSetCacheControlActionParametersNoTransform =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        RulesDeleteResponseRulesItemSetCacheControlActionParametersNoTransformSetDirectiveOperation,
+        RulesDeleteResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "RulesDeleteResponseRulesItemSetCacheControlActionParametersNoTransform",
+  }) as any as S.Schema<RulesDeleteResponseRulesItemSetCacheControlActionParametersNoTransform>;
 
 export type RulesDeleteResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveOperation =
   "set" | "remove";
@@ -25346,16 +25772,32 @@ export const RulesDeleteResponseRulesItemSetCacheControlActionParametersPrivateR
       "RulesDeleteResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirective",
   }) as any as S.Schema<RulesDeleteResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirective>;
 
-export type RulesDeleteResponseRulesItemSetCacheControlActionParametersPrivate =
-    | RulesDeleteResponseRulesItemSetCacheControlActionParametersPrivateSetDirective
-    | RulesDeleteResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirective;
+export interface RulesDeleteResponseRulesItemSetCacheControlActionParametersPrivate {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | RulesDeleteResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveOperation
+    | RulesDeleteResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+  /** Optional list of header names to qualify the directive (e.g., for "private" or "no-cache" directives). */
+  qualifiers?: RulesDeleteResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList;
+}
 export const RulesDeleteResponseRulesItemSetCacheControlActionParametersPrivate =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly", "qualifiers"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        RulesDeleteResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveOperation,
+        RulesDeleteResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+      qualifiers: S.optional(
+        RulesDeleteResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "RulesDeleteResponseRulesItemSetCacheControlActionParametersPrivate",
+  }) as any as S.Schema<RulesDeleteResponseRulesItemSetCacheControlActionParametersPrivate>;
 
 export type RulesDeleteResponseRulesItemSetCacheControlActionParametersProxyRevalidateSetDirectiveOperation =
   "set" | "remove";
@@ -25403,16 +25845,27 @@ export const RulesDeleteResponseRulesItemSetCacheControlActionParametersProxyRev
       "RulesDeleteResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirective",
   }) as any as S.Schema<RulesDeleteResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirective>;
 
-export type RulesDeleteResponseRulesItemSetCacheControlActionParametersProxyRevalidate =
-    | RulesDeleteResponseRulesItemSetCacheControlActionParametersProxyRevalidateSetDirective
-    | RulesDeleteResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirective;
+export interface RulesDeleteResponseRulesItemSetCacheControlActionParametersProxyRevalidate {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | RulesDeleteResponseRulesItemSetCacheControlActionParametersProxyRevalidateSetDirectiveOperation
+    | RulesDeleteResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const RulesDeleteResponseRulesItemSetCacheControlActionParametersProxyRevalidate =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        RulesDeleteResponseRulesItemSetCacheControlActionParametersProxyRevalidateSetDirectiveOperation,
+        RulesDeleteResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "RulesDeleteResponseRulesItemSetCacheControlActionParametersProxyRevalidate",
+  }) as any as S.Schema<RulesDeleteResponseRulesItemSetCacheControlActionParametersProxyRevalidate>;
 
 export type RulesDeleteResponseRulesItemSetCacheControlActionParametersPublicSetDirectiveOperation =
   "set" | "remove";
@@ -25460,16 +25913,27 @@ export const RulesDeleteResponseRulesItemSetCacheControlActionParametersPublicRe
       "RulesDeleteResponseRulesItemSetCacheControlActionParametersPublicRemoveDirective",
   }) as any as S.Schema<RulesDeleteResponseRulesItemSetCacheControlActionParametersPublicRemoveDirective>;
 
-export type RulesDeleteResponseRulesItemSetCacheControlActionParametersPublic =
-  | RulesDeleteResponseRulesItemSetCacheControlActionParametersPublicSetDirective
-  | RulesDeleteResponseRulesItemSetCacheControlActionParametersPublicRemoveDirective;
+export interface RulesDeleteResponseRulesItemSetCacheControlActionParametersPublic {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | RulesDeleteResponseRulesItemSetCacheControlActionParametersPublicSetDirectiveOperation
+    | RulesDeleteResponseRulesItemSetCacheControlActionParametersPublicRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const RulesDeleteResponseRulesItemSetCacheControlActionParametersPublic =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        RulesDeleteResponseRulesItemSetCacheControlActionParametersPublicSetDirectiveOperation,
+        RulesDeleteResponseRulesItemSetCacheControlActionParametersPublicRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "RulesDeleteResponseRulesItemSetCacheControlActionParametersPublic",
+  }) as any as S.Schema<RulesDeleteResponseRulesItemSetCacheControlActionParametersPublic>;
 
 export type RulesDeleteResponseRulesItemSetCacheControlActionParametersSMaxageSetDirectiveOperation =
   "set" | "remove";
@@ -25520,16 +25984,30 @@ export const RulesDeleteResponseRulesItemSetCacheControlActionParametersSMaxageR
       "RulesDeleteResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirective",
   }) as any as S.Schema<RulesDeleteResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirective>;
 
-export type RulesDeleteResponseRulesItemSetCacheControlActionParametersSMaxage =
-    | RulesDeleteResponseRulesItemSetCacheControlActionParametersSMaxageSetDirective
-    | RulesDeleteResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirective;
+export interface RulesDeleteResponseRulesItemSetCacheControlActionParametersSMaxage {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | RulesDeleteResponseRulesItemSetCacheControlActionParametersSMaxageSetDirectiveOperation
+    | RulesDeleteResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirectiveOperation;
+  /** The duration value in seconds for the directive. */
+  value?: number;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const RulesDeleteResponseRulesItemSetCacheControlActionParametersSMaxage =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        RulesDeleteResponseRulesItemSetCacheControlActionParametersSMaxageSetDirectiveOperation,
+        RulesDeleteResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirectiveOperation,
+      ),
+      value: S.optional(S.Number),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "RulesDeleteResponseRulesItemSetCacheControlActionParametersSMaxage",
+  }) as any as S.Schema<RulesDeleteResponseRulesItemSetCacheControlActionParametersSMaxage>;
 
 export type RulesDeleteResponseRulesItemSetCacheControlActionParametersStaleIfErrorSetDirectiveOperation =
   "set" | "remove";
@@ -25580,16 +26058,30 @@ export const RulesDeleteResponseRulesItemSetCacheControlActionParametersStaleIfE
       "RulesDeleteResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirective",
   }) as any as S.Schema<RulesDeleteResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirective>;
 
-export type RulesDeleteResponseRulesItemSetCacheControlActionParametersStaleIfError =
-    | RulesDeleteResponseRulesItemSetCacheControlActionParametersStaleIfErrorSetDirective
-    | RulesDeleteResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirective;
+export interface RulesDeleteResponseRulesItemSetCacheControlActionParametersStaleIfError {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | RulesDeleteResponseRulesItemSetCacheControlActionParametersStaleIfErrorSetDirectiveOperation
+    | RulesDeleteResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirectiveOperation;
+  /** The duration value in seconds for the directive. */
+  value?: number;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const RulesDeleteResponseRulesItemSetCacheControlActionParametersStaleIfError =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        RulesDeleteResponseRulesItemSetCacheControlActionParametersStaleIfErrorSetDirectiveOperation,
+        RulesDeleteResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirectiveOperation,
+      ),
+      value: S.optional(S.Number),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "RulesDeleteResponseRulesItemSetCacheControlActionParametersStaleIfError",
+  }) as any as S.Schema<RulesDeleteResponseRulesItemSetCacheControlActionParametersStaleIfError>;
 
 export type RulesDeleteResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirectiveOperation =
   "set" | "remove";
@@ -25640,16 +26132,30 @@ export const RulesDeleteResponseRulesItemSetCacheControlActionParametersStaleWhi
       "RulesDeleteResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirective",
   }) as any as S.Schema<RulesDeleteResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirective>;
 
-export type RulesDeleteResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate =
-    | RulesDeleteResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirective
-    | RulesDeleteResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirective;
+export interface RulesDeleteResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | RulesDeleteResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirectiveOperation
+    | RulesDeleteResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirectiveOperation;
+  /** The duration value in seconds for the directive. */
+  value?: number;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const RulesDeleteResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        RulesDeleteResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirectiveOperation,
+        RulesDeleteResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirectiveOperation,
+      ),
+      value: S.optional(S.Number),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "RulesDeleteResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate",
+  }) as any as S.Schema<RulesDeleteResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate>;
 
 export interface RulesDeleteResponseRulesItemSetCacheControlActionParameters {
   /** A cache-control directive configuration. */
@@ -26821,24 +27327,46 @@ export const RulesDeleteResponseRulesItemSetCacheTagsActionParametersSetCacheTag
       "RulesDeleteResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpression",
   }) as any as S.Schema<RulesDeleteResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpression>;
 
-export type RulesDeleteResponseRulesItemSetCacheTagsActionParameters =
-  | RulesDeleteResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValues
-  | RulesDeleteResponseRulesItemSetCacheTagsActionParametersAddCacheTagsExpression
-  | RulesDeleteResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValues
-  | RulesDeleteResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsExpression
-  | RulesDeleteResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValues
-  | RulesDeleteResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpression;
+export interface RulesDeleteResponseRulesItemSetCacheTagsActionParameters {
+  /** The operation to perform on the cache tags. */
+  operation:
+    | RulesDeleteResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesOperation
+    | RulesDeleteResponseRulesItemSetCacheTagsActionParametersAddCacheTagsExpressionOperation
+    | RulesDeleteResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesOperation
+    | RulesDeleteResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsExpressionOperation
+    | RulesDeleteResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesOperation
+    | RulesDeleteResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpressionOperation;
+  /** A list of cache tag values. */
+  values?:
+    | RulesDeleteResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesValuesList
+    | RulesDeleteResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesValuesList
+    | RulesDeleteResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesValuesList;
+  /** An expression that evaluates to an array of cache tag values. */
+  expression?: string;
+}
 export const RulesDeleteResponseRulesItemSetCacheTagsActionParameters =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "values"],
-      ["expression", "operation"],
-      ["operation", "values"],
-      ["expression", "operation"],
-      ["operation", "values"],
-      ["expression", "operation"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        RulesDeleteResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesOperation,
+        RulesDeleteResponseRulesItemSetCacheTagsActionParametersAddCacheTagsExpressionOperation,
+        RulesDeleteResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesOperation,
+        RulesDeleteResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsExpressionOperation,
+        RulesDeleteResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesOperation,
+        RulesDeleteResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpressionOperation,
+      ),
+      values: S.optional(
+        S.Union(
+          RulesDeleteResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesValuesList,
+          RulesDeleteResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesValuesList,
+          RulesDeleteResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesValuesList,
+        ),
+      ),
+      expression: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesDeleteResponseRulesItemSetCacheTagsActionParameters",
+  }) as any as S.Schema<RulesDeleteResponseRulesItemSetCacheTagsActionParameters>;
 
 export type RulesDeleteResponseRulesItemSetCacheTagsCategoriesList =
   ReadonlyArray<string>;
@@ -27696,347 +28224,268 @@ export const RulesDeleteResponseRulesItemTransformResponseHTML =
     identifier: "RulesDeleteResponseRulesItemTransformResponseHTML",
   }) as any as S.Schema<RulesDeleteResponseRulesItemTransformResponseHTML>;
 
-export type RulesDeleteResponseRulesItem =
-  | RulesDeleteResponseRulesItemBlockRule
-  | RulesDeleteResponseRulesItemChallenge
-  | RulesDeleteResponseRulesItemCompressResponseRule
-  | RulesDeleteResponseRulesItemDDoSDynamicRule
-  | RulesDeleteResponseRulesItemExecuteRule
-  | RulesDeleteResponseRulesItemForceConnectionCloseRule
-  | RulesDeleteResponseRulesItemJSChallenge
-  | RulesDeleteResponseRulesItemLogRule
-  | RulesDeleteResponseRulesItemLogCustomFieldRule
-  | RulesDeleteResponseRulesItemManagedChallengeRule
-  | RulesDeleteResponseRulesItemRedirectRule
-  | RulesDeleteResponseRulesItemRewriteRule
-  | RulesDeleteResponseRulesItemRouteRule
-  | RulesDeleteResponseRulesItemScoreRule
-  | RulesDeleteResponseRulesItemServeErrorRule
-  | RulesDeleteResponseRulesItemSetCacheControl
-  | RulesDeleteResponseRulesItemSetCacheSettingsRule
-  | RulesDeleteResponseRulesItemSetCacheTags
-  | RulesDeleteResponseRulesItemSetConfigRule
-  | RulesDeleteResponseRulesItemSkipRule
-  | RulesDeleteResponseRulesItemTransformResponseHTML;
-export const RulesDeleteResponseRulesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-  ]),
-);
+export interface RulesDeleteResponseRulesItem {
+  /** The timestamp of when the rule was last modified. */
+  lastUpdated: string;
+  /** The version of the rule. */
+  version: string;
+  /** The unique ID of the rule. */
+  id?: string;
+  /** The action to perform when the rule matches. */
+  action?:
+    | RulesDeleteResponseRulesItemBlockRuleAction
+    | RulesDeleteResponseRulesItemChallengeAction
+    | RulesDeleteResponseRulesItemCompressResponseRuleAction
+    | RulesDeleteResponseRulesItemDDoSDynamicRuleAction
+    | RulesDeleteResponseRulesItemExecuteRuleAction
+    | RulesDeleteResponseRulesItemForceConnectionCloseRuleAction
+    | RulesDeleteResponseRulesItemJSChallengeAction
+    | RulesDeleteResponseRulesItemLogRuleAction
+    | RulesDeleteResponseRulesItemLogCustomFieldRuleAction
+    | RulesDeleteResponseRulesItemManagedChallengeRuleAction
+    | RulesDeleteResponseRulesItemRedirectRuleAction
+    | RulesDeleteResponseRulesItemRewriteRuleAction
+    | RulesDeleteResponseRulesItemRouteRuleAction
+    | RulesDeleteResponseRulesItemScoreRuleAction
+    | RulesDeleteResponseRulesItemServeErrorRuleAction
+    | RulesDeleteResponseRulesItemSetCacheControlAction
+    | RulesDeleteResponseRulesItemSetCacheSettingsRuleAction
+    | RulesDeleteResponseRulesItemSetCacheTagsAction
+    | RulesDeleteResponseRulesItemSetConfigRuleAction
+    | RulesDeleteResponseRulesItemSkipRuleAction
+    | RulesDeleteResponseRulesItemTransformResponseHTMLAction;
+  /** The parameters configuring the rule's action. */
+  actionParameters?:
+    | RulesDeleteResponseRulesItemBlockRuleActionParameters
+    | unknown
+    | RulesDeleteResponseRulesItemCompressResponseRuleActionParameters
+    | RulesDeleteResponseRulesItemExecuteRuleActionParameters
+    | RulesDeleteResponseRulesItemLogCustomFieldRuleActionParameters
+    | RulesDeleteResponseRulesItemRedirectRuleActionParameters
+    | RulesDeleteResponseRulesItemRewriteRuleActionParameters
+    | RulesDeleteResponseRulesItemRouteRuleActionParameters
+    | RulesDeleteResponseRulesItemScoreRuleActionParameters
+    | RulesDeleteResponseRulesItemServeErrorRuleActionParameters
+    | RulesDeleteResponseRulesItemSetCacheControlActionParameters
+    | RulesDeleteResponseRulesItemSetCacheSettingsRuleActionParameters
+    | RulesDeleteResponseRulesItemSetCacheTagsActionParameters
+    | RulesDeleteResponseRulesItemSetConfigRuleActionParameters
+    | RulesDeleteResponseRulesItemSkipRuleActionParameters
+    | RulesDeleteResponseRulesItemTransformResponseHTMLActionParameters;
+  /** The categories of the rule. */
+  categories?:
+    | RulesDeleteResponseRulesItemBlockRuleCategoriesList
+    | RulesDeleteResponseRulesItemChallengeCategoriesList
+    | RulesDeleteResponseRulesItemCompressResponseRuleCategoriesList
+    | RulesDeleteResponseRulesItemDDoSDynamicRuleCategoriesList
+    | RulesDeleteResponseRulesItemExecuteRuleCategoriesList
+    | RulesDeleteResponseRulesItemForceConnectionCloseRuleCategoriesList
+    | RulesDeleteResponseRulesItemJSChallengeCategoriesList
+    | RulesDeleteResponseRulesItemLogRuleCategoriesList
+    | RulesDeleteResponseRulesItemLogCustomFieldRuleCategoriesList
+    | RulesDeleteResponseRulesItemManagedChallengeRuleCategoriesList
+    | RulesDeleteResponseRulesItemRedirectRuleCategoriesList
+    | RulesDeleteResponseRulesItemRewriteRuleCategoriesList
+    | RulesDeleteResponseRulesItemRouteRuleCategoriesList
+    | RulesDeleteResponseRulesItemScoreRuleCategoriesList
+    | RulesDeleteResponseRulesItemServeErrorRuleCategoriesList
+    | RulesDeleteResponseRulesItemSetCacheControlCategoriesList
+    | RulesDeleteResponseRulesItemSetCacheSettingsRuleCategoriesList
+    | RulesDeleteResponseRulesItemSetCacheTagsCategoriesList
+    | RulesDeleteResponseRulesItemSetConfigRuleCategoriesList
+    | RulesDeleteResponseRulesItemSkipRuleCategoriesList
+    | RulesDeleteResponseRulesItemTransformResponseHTMLCategoriesList;
+  /** An informative description of the rule. */
+  description?: string;
+  /** Whether the rule should be executed. */
+  enabled?: boolean;
+  /** Configuration for exposed credential checking. */
+  exposedCredentialCheck?:
+    | RulesDeleteResponseRulesItemBlockRuleExposedCredentialCheck
+    | RulesDeleteResponseRulesItemChallengeExposedCredentialCheck
+    | RulesDeleteResponseRulesItemCompressResponseRuleExposedCredentialCheck
+    | RulesDeleteResponseRulesItemDDoSDynamicRuleExposedCredentialCheck
+    | RulesDeleteResponseRulesItemExecuteRuleExposedCredentialCheck
+    | RulesDeleteResponseRulesItemForceConnectionCloseRuleExposedCredentialCheck
+    | RulesDeleteResponseRulesItemJSChallengeExposedCredentialCheck
+    | RulesDeleteResponseRulesItemLogRuleExposedCredentialCheck
+    | RulesDeleteResponseRulesItemLogCustomFieldRuleExposedCredentialCheck
+    | RulesDeleteResponseRulesItemManagedChallengeRuleExposedCredentialCheck
+    | RulesDeleteResponseRulesItemRedirectRuleExposedCredentialCheck
+    | RulesDeleteResponseRulesItemRewriteRuleExposedCredentialCheck
+    | RulesDeleteResponseRulesItemRouteRuleExposedCredentialCheck
+    | RulesDeleteResponseRulesItemScoreRuleExposedCredentialCheck
+    | RulesDeleteResponseRulesItemServeErrorRuleExposedCredentialCheck
+    | RulesDeleteResponseRulesItemSetCacheControlExposedCredentialCheck
+    | RulesDeleteResponseRulesItemSetCacheSettingsRuleExposedCredentialCheck
+    | RulesDeleteResponseRulesItemSetCacheTagsExposedCredentialCheck
+    | RulesDeleteResponseRulesItemSetConfigRuleExposedCredentialCheck
+    | RulesDeleteResponseRulesItemSkipRuleExposedCredentialCheck
+    | RulesDeleteResponseRulesItemTransformResponseHTMLExposedCredentialCheck;
+  /** The expression defining which traffic will match the rule. */
+  expression?: string;
+  /** An object configuring the rule's logging behavior. */
+  logging?: RulesDeleteResponseRulesItemBlockRuleLogging;
+  /** An object configuring the rule's rate limit behavior. */
+  ratelimit?:
+    | RulesDeleteResponseRulesItemBlockRuleRatelimit
+    | RulesDeleteResponseRulesItemChallengeRatelimit
+    | RulesDeleteResponseRulesItemCompressResponseRuleRatelimit
+    | RulesDeleteResponseRulesItemDDoSDynamicRuleRatelimit
+    | RulesDeleteResponseRulesItemExecuteRuleRatelimit
+    | RulesDeleteResponseRulesItemForceConnectionCloseRuleRatelimit
+    | RulesDeleteResponseRulesItemJSChallengeRatelimit
+    | RulesDeleteResponseRulesItemLogRuleRatelimit
+    | RulesDeleteResponseRulesItemLogCustomFieldRuleRatelimit
+    | RulesDeleteResponseRulesItemManagedChallengeRuleRatelimit
+    | RulesDeleteResponseRulesItemRedirectRuleRatelimit
+    | RulesDeleteResponseRulesItemRewriteRuleRatelimit
+    | RulesDeleteResponseRulesItemRouteRuleRatelimit
+    | RulesDeleteResponseRulesItemScoreRuleRatelimit
+    | RulesDeleteResponseRulesItemServeErrorRuleRatelimit
+    | RulesDeleteResponseRulesItemSetCacheControlRatelimit
+    | RulesDeleteResponseRulesItemSetCacheSettingsRuleRatelimit
+    | RulesDeleteResponseRulesItemSetCacheTagsRatelimit
+    | RulesDeleteResponseRulesItemSetConfigRuleRatelimit
+    | RulesDeleteResponseRulesItemSkipRuleRatelimit
+    | RulesDeleteResponseRulesItemTransformResponseHTMLRatelimit;
+  /** The reference of the rule (the rule's ID by default). */
+  ref?: string;
+}
+export const RulesDeleteResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lastUpdated: S.String.pipe(T.Body("last_updated")),
+    version: S.String,
+    id: S.optional(S.String),
+    action: S.optional(
+      S.Union(
+        RulesDeleteResponseRulesItemBlockRuleAction,
+        RulesDeleteResponseRulesItemChallengeAction,
+        RulesDeleteResponseRulesItemCompressResponseRuleAction,
+        RulesDeleteResponseRulesItemDDoSDynamicRuleAction,
+        RulesDeleteResponseRulesItemExecuteRuleAction,
+        RulesDeleteResponseRulesItemForceConnectionCloseRuleAction,
+        RulesDeleteResponseRulesItemJSChallengeAction,
+        RulesDeleteResponseRulesItemLogRuleAction,
+        RulesDeleteResponseRulesItemLogCustomFieldRuleAction,
+        RulesDeleteResponseRulesItemManagedChallengeRuleAction,
+        RulesDeleteResponseRulesItemRedirectRuleAction,
+        RulesDeleteResponseRulesItemRewriteRuleAction,
+        RulesDeleteResponseRulesItemRouteRuleAction,
+        RulesDeleteResponseRulesItemScoreRuleAction,
+        RulesDeleteResponseRulesItemServeErrorRuleAction,
+        RulesDeleteResponseRulesItemSetCacheControlAction,
+        RulesDeleteResponseRulesItemSetCacheSettingsRuleAction,
+        RulesDeleteResponseRulesItemSetCacheTagsAction,
+        RulesDeleteResponseRulesItemSetConfigRuleAction,
+        RulesDeleteResponseRulesItemSkipRuleAction,
+        RulesDeleteResponseRulesItemTransformResponseHTMLAction,
+      ),
+    ),
+    actionParameters: S.optional(
+      S.Union(
+        RulesDeleteResponseRulesItemBlockRuleActionParameters,
+        S.Unknown,
+        RulesDeleteResponseRulesItemCompressResponseRuleActionParameters,
+        RulesDeleteResponseRulesItemExecuteRuleActionParameters,
+        RulesDeleteResponseRulesItemLogCustomFieldRuleActionParameters,
+        RulesDeleteResponseRulesItemRedirectRuleActionParameters,
+        RulesDeleteResponseRulesItemRewriteRuleActionParameters,
+        RulesDeleteResponseRulesItemRouteRuleActionParameters,
+        RulesDeleteResponseRulesItemScoreRuleActionParameters,
+        RulesDeleteResponseRulesItemServeErrorRuleActionParameters,
+        RulesDeleteResponseRulesItemSetCacheControlActionParameters,
+        RulesDeleteResponseRulesItemSetCacheSettingsRuleActionParameters,
+        RulesDeleteResponseRulesItemSetCacheTagsActionParameters,
+        RulesDeleteResponseRulesItemSetConfigRuleActionParameters,
+        RulesDeleteResponseRulesItemSkipRuleActionParameters,
+        RulesDeleteResponseRulesItemTransformResponseHTMLActionParameters,
+      ).pipe(T.Body("action_parameters")),
+    ),
+    categories: S.optional(
+      S.Union(
+        RulesDeleteResponseRulesItemBlockRuleCategoriesList,
+        RulesDeleteResponseRulesItemChallengeCategoriesList,
+        RulesDeleteResponseRulesItemCompressResponseRuleCategoriesList,
+        RulesDeleteResponseRulesItemDDoSDynamicRuleCategoriesList,
+        RulesDeleteResponseRulesItemExecuteRuleCategoriesList,
+        RulesDeleteResponseRulesItemForceConnectionCloseRuleCategoriesList,
+        RulesDeleteResponseRulesItemJSChallengeCategoriesList,
+        RulesDeleteResponseRulesItemLogRuleCategoriesList,
+        RulesDeleteResponseRulesItemLogCustomFieldRuleCategoriesList,
+        RulesDeleteResponseRulesItemManagedChallengeRuleCategoriesList,
+        RulesDeleteResponseRulesItemRedirectRuleCategoriesList,
+        RulesDeleteResponseRulesItemRewriteRuleCategoriesList,
+        RulesDeleteResponseRulesItemRouteRuleCategoriesList,
+        RulesDeleteResponseRulesItemScoreRuleCategoriesList,
+        RulesDeleteResponseRulesItemServeErrorRuleCategoriesList,
+        RulesDeleteResponseRulesItemSetCacheControlCategoriesList,
+        RulesDeleteResponseRulesItemSetCacheSettingsRuleCategoriesList,
+        RulesDeleteResponseRulesItemSetCacheTagsCategoriesList,
+        RulesDeleteResponseRulesItemSetConfigRuleCategoriesList,
+        RulesDeleteResponseRulesItemSkipRuleCategoriesList,
+        RulesDeleteResponseRulesItemTransformResponseHTMLCategoriesList,
+      ),
+    ),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    exposedCredentialCheck: S.optional(
+      S.Union(
+        RulesDeleteResponseRulesItemBlockRuleExposedCredentialCheck,
+        RulesDeleteResponseRulesItemChallengeExposedCredentialCheck,
+        RulesDeleteResponseRulesItemCompressResponseRuleExposedCredentialCheck,
+        RulesDeleteResponseRulesItemDDoSDynamicRuleExposedCredentialCheck,
+        RulesDeleteResponseRulesItemExecuteRuleExposedCredentialCheck,
+        RulesDeleteResponseRulesItemForceConnectionCloseRuleExposedCredentialCheck,
+        RulesDeleteResponseRulesItemJSChallengeExposedCredentialCheck,
+        RulesDeleteResponseRulesItemLogRuleExposedCredentialCheck,
+        RulesDeleteResponseRulesItemLogCustomFieldRuleExposedCredentialCheck,
+        RulesDeleteResponseRulesItemManagedChallengeRuleExposedCredentialCheck,
+        RulesDeleteResponseRulesItemRedirectRuleExposedCredentialCheck,
+        RulesDeleteResponseRulesItemRewriteRuleExposedCredentialCheck,
+        RulesDeleteResponseRulesItemRouteRuleExposedCredentialCheck,
+        RulesDeleteResponseRulesItemScoreRuleExposedCredentialCheck,
+        RulesDeleteResponseRulesItemServeErrorRuleExposedCredentialCheck,
+        RulesDeleteResponseRulesItemSetCacheControlExposedCredentialCheck,
+        RulesDeleteResponseRulesItemSetCacheSettingsRuleExposedCredentialCheck,
+        RulesDeleteResponseRulesItemSetCacheTagsExposedCredentialCheck,
+        RulesDeleteResponseRulesItemSetConfigRuleExposedCredentialCheck,
+        RulesDeleteResponseRulesItemSkipRuleExposedCredentialCheck,
+        RulesDeleteResponseRulesItemTransformResponseHTMLExposedCredentialCheck,
+      ).pipe(T.Body("exposed_credential_check")),
+    ),
+    expression: S.optional(S.String),
+    logging: S.optional(RulesDeleteResponseRulesItemBlockRuleLogging),
+    ratelimit: S.optional(
+      S.Union(
+        RulesDeleteResponseRulesItemBlockRuleRatelimit,
+        RulesDeleteResponseRulesItemChallengeRatelimit,
+        RulesDeleteResponseRulesItemCompressResponseRuleRatelimit,
+        RulesDeleteResponseRulesItemDDoSDynamicRuleRatelimit,
+        RulesDeleteResponseRulesItemExecuteRuleRatelimit,
+        RulesDeleteResponseRulesItemForceConnectionCloseRuleRatelimit,
+        RulesDeleteResponseRulesItemJSChallengeRatelimit,
+        RulesDeleteResponseRulesItemLogRuleRatelimit,
+        RulesDeleteResponseRulesItemLogCustomFieldRuleRatelimit,
+        RulesDeleteResponseRulesItemManagedChallengeRuleRatelimit,
+        RulesDeleteResponseRulesItemRedirectRuleRatelimit,
+        RulesDeleteResponseRulesItemRewriteRuleRatelimit,
+        RulesDeleteResponseRulesItemRouteRuleRatelimit,
+        RulesDeleteResponseRulesItemScoreRuleRatelimit,
+        RulesDeleteResponseRulesItemServeErrorRuleRatelimit,
+        RulesDeleteResponseRulesItemSetCacheControlRatelimit,
+        RulesDeleteResponseRulesItemSetCacheSettingsRuleRatelimit,
+        RulesDeleteResponseRulesItemSetCacheTagsRatelimit,
+        RulesDeleteResponseRulesItemSetConfigRuleRatelimit,
+        RulesDeleteResponseRulesItemSkipRuleRatelimit,
+        RulesDeleteResponseRulesItemTransformResponseHTMLRatelimit,
+      ),
+    ),
+    ref: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RulesDeleteResponseRulesItem",
+}) as any as S.Schema<RulesDeleteResponseRulesItem>;
 
 export type RulesDeleteResponseRulesList =
   ReadonlyArray<RulesDeleteResponseRulesItem>;
@@ -30401,22 +30850,35 @@ export const PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersRemoveH
       "PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeader",
   }) as any as S.Schema<PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeader>;
 
-export type PhasesGetResponseRulesItemRewriteRuleActionParametersHeaders =
-  | PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersAddStaticHeader
-  | PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersAddDynamicHeader
-  | PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersSetStaticHeader
-  | PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersSetDynamicHeader
-  | PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeader;
+export interface PhasesGetResponseRulesItemRewriteRuleActionParametersHeaders {
+  /** The operation to perform on the header. */
+  operation:
+    | PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersAddStaticHeaderOperation
+    | PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersAddDynamicHeaderOperation
+    | PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersSetStaticHeaderOperation
+    | PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersSetDynamicHeaderOperation
+    | PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeaderOperation;
+  /** A static value for the header. */
+  value?: string;
+  /** An expression that evaluates to a value for the header. */
+  expression?: string;
+}
 export const PhasesGetResponseRulesItemRewriteRuleActionParametersHeaders =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value"],
-      ["expression", "operation"],
-      ["operation", "value"],
-      ["expression", "operation"],
-      ["operation"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersAddStaticHeaderOperation,
+        PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersAddDynamicHeaderOperation,
+        PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersSetStaticHeaderOperation,
+        PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersSetDynamicHeaderOperation,
+        PhasesGetResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeaderOperation,
+      ),
+      value: S.optional(S.String),
+      expression: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "PhasesGetResponseRulesItemRewriteRuleActionParametersHeaders",
+  }) as any as S.Schema<PhasesGetResponseRulesItemRewriteRuleActionParametersHeaders>;
 
 export interface PhasesGetResponseRulesItemRewriteRuleActionParametersUriURIPathPath {
   /** An expression that evaluates to a value to rewrite the URI path to. */
@@ -30487,16 +30949,28 @@ export const PhasesGetResponseRulesItemRewriteRuleActionParametersUriURIQuery =
       "PhasesGetResponseRulesItemRewriteRuleActionParametersUriURIQuery",
   }) as any as S.Schema<PhasesGetResponseRulesItemRewriteRuleActionParametersUriURIQuery>;
 
-export type PhasesGetResponseRulesItemRewriteRuleActionParametersUri =
-  | PhasesGetResponseRulesItemRewriteRuleActionParametersUriURIPath
-  | PhasesGetResponseRulesItemRewriteRuleActionParametersUriURIQuery;
+export interface PhasesGetResponseRulesItemRewriteRuleActionParametersUri {
+  /** A URI path rewrite. */
+  path?: PhasesGetResponseRulesItemRewriteRuleActionParametersUriURIPathPath;
+  /** Whether to propagate the rewritten URI to origin. */
+  origin?: boolean;
+  /** A URI query rewrite. */
+  query?: PhasesGetResponseRulesItemRewriteRuleActionParametersUriURIQueryQuery;
+}
 export const PhasesGetResponseRulesItemRewriteRuleActionParametersUri =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["path", "origin"],
-      ["query", "origin"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.optional(
+        PhasesGetResponseRulesItemRewriteRuleActionParametersUriURIPathPath,
+      ),
+      origin: S.optional(S.Boolean),
+      query: S.optional(
+        PhasesGetResponseRulesItemRewriteRuleActionParametersUriURIQueryQuery,
+      ),
+    }),
+  ).annotate({
+    identifier: "PhasesGetResponseRulesItemRewriteRuleActionParametersUri",
+  }) as any as S.Schema<PhasesGetResponseRulesItemRewriteRuleActionParametersUri>;
 
 export interface PhasesGetResponseRulesItemRewriteRuleActionParameters {
   /** A map of headers to rewrite. */
@@ -31043,16 +31517,34 @@ export const PhasesGetResponseRulesItemServeErrorRuleActionParametersActionParam
       "PhasesGetResponseRulesItemServeErrorRuleActionParametersActionParametersAsset",
   }) as any as S.Schema<PhasesGetResponseRulesItemServeErrorRuleActionParametersActionParametersAsset>;
 
-export type PhasesGetResponseRulesItemServeErrorRuleActionParameters =
-  | PhasesGetResponseRulesItemServeErrorRuleActionParametersActionParametersContent
-  | PhasesGetResponseRulesItemServeErrorRuleActionParametersActionParametersAsset;
+export interface PhasesGetResponseRulesItemServeErrorRuleActionParameters {
+  /** The response content. */
+  content?: string;
+  /** The content type header to set with the error response. */
+  contentType?:
+    | PhasesGetResponseRulesItemServeErrorRuleActionParametersActionParametersContentContentType
+    | PhasesGetResponseRulesItemServeErrorRuleActionParametersActionParametersAssetContentType;
+  /** The status code to use for the error. */
+  statusCode?: number;
+  /** The name of a custom asset to serve as the error response. */
+  assetName?: string;
+}
 export const PhasesGetResponseRulesItemServeErrorRuleActionParameters =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["content", "contentType", "statusCode"],
-      ["assetName", "contentType", "statusCode"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      content: S.optional(S.String),
+      contentType: S.optional(
+        S.Union(
+          PhasesGetResponseRulesItemServeErrorRuleActionParametersActionParametersContentContentType,
+          PhasesGetResponseRulesItemServeErrorRuleActionParametersActionParametersAssetContentType,
+        ).pipe(T.Body("content_type")),
+      ),
+      statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
+      assetName: S.optional(S.String.pipe(T.Body("asset_name"))),
+    }),
+  ).annotate({
+    identifier: "PhasesGetResponseRulesItemServeErrorRuleActionParameters",
+  }) as any as S.Schema<PhasesGetResponseRulesItemServeErrorRuleActionParameters>;
 
 export type PhasesGetResponseRulesItemServeErrorRuleCategoriesList =
   ReadonlyArray<string>;
@@ -31240,16 +31732,27 @@ export const PhasesGetResponseRulesItemSetCacheControlActionParametersImmutableR
       "PhasesGetResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirective",
   }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirective>;
 
-export type PhasesGetResponseRulesItemSetCacheControlActionParametersImmutable =
-    | PhasesGetResponseRulesItemSetCacheControlActionParametersImmutableSetDirective
-    | PhasesGetResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirective;
+export interface PhasesGetResponseRulesItemSetCacheControlActionParametersImmutable {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | PhasesGetResponseRulesItemSetCacheControlActionParametersImmutableSetDirectiveOperation
+    | PhasesGetResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const PhasesGetResponseRulesItemSetCacheControlActionParametersImmutable =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        PhasesGetResponseRulesItemSetCacheControlActionParametersImmutableSetDirectiveOperation,
+        PhasesGetResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "PhasesGetResponseRulesItemSetCacheControlActionParametersImmutable",
+  }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlActionParametersImmutable>;
 
 export type PhasesGetResponseRulesItemSetCacheControlActionParametersMaxAgeSetDirectiveOperation =
   "set" | "remove";
@@ -31300,16 +31803,30 @@ export const PhasesGetResponseRulesItemSetCacheControlActionParametersMaxAgeRemo
       "PhasesGetResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirective",
   }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirective>;
 
-export type PhasesGetResponseRulesItemSetCacheControlActionParametersMaxAge =
-  | PhasesGetResponseRulesItemSetCacheControlActionParametersMaxAgeSetDirective
-  | PhasesGetResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirective;
+export interface PhasesGetResponseRulesItemSetCacheControlActionParametersMaxAge {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | PhasesGetResponseRulesItemSetCacheControlActionParametersMaxAgeSetDirectiveOperation
+    | PhasesGetResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirectiveOperation;
+  /** The duration value in seconds for the directive. */
+  value?: number;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const PhasesGetResponseRulesItemSetCacheControlActionParametersMaxAge =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        PhasesGetResponseRulesItemSetCacheControlActionParametersMaxAgeSetDirectiveOperation,
+        PhasesGetResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirectiveOperation,
+      ),
+      value: S.optional(S.Number),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "PhasesGetResponseRulesItemSetCacheControlActionParametersMaxAge",
+  }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlActionParametersMaxAge>;
 
 export type PhasesGetResponseRulesItemSetCacheControlActionParametersMustRevalidateSetDirectiveOperation =
   "set" | "remove";
@@ -31357,16 +31874,27 @@ export const PhasesGetResponseRulesItemSetCacheControlActionParametersMustRevali
       "PhasesGetResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirective",
   }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirective>;
 
-export type PhasesGetResponseRulesItemSetCacheControlActionParametersMustRevalidate =
-    | PhasesGetResponseRulesItemSetCacheControlActionParametersMustRevalidateSetDirective
-    | PhasesGetResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirective;
+export interface PhasesGetResponseRulesItemSetCacheControlActionParametersMustRevalidate {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | PhasesGetResponseRulesItemSetCacheControlActionParametersMustRevalidateSetDirectiveOperation
+    | PhasesGetResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const PhasesGetResponseRulesItemSetCacheControlActionParametersMustRevalidate =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        PhasesGetResponseRulesItemSetCacheControlActionParametersMustRevalidateSetDirectiveOperation,
+        PhasesGetResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "PhasesGetResponseRulesItemSetCacheControlActionParametersMustRevalidate",
+  }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlActionParametersMustRevalidate>;
 
 export type PhasesGetResponseRulesItemSetCacheControlActionParametersMustUnderstandSetDirectiveOperation =
   "set" | "remove";
@@ -31414,16 +31942,27 @@ export const PhasesGetResponseRulesItemSetCacheControlActionParametersMustUnders
       "PhasesGetResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirective",
   }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirective>;
 
-export type PhasesGetResponseRulesItemSetCacheControlActionParametersMustUnderstand =
-    | PhasesGetResponseRulesItemSetCacheControlActionParametersMustUnderstandSetDirective
-    | PhasesGetResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirective;
+export interface PhasesGetResponseRulesItemSetCacheControlActionParametersMustUnderstand {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | PhasesGetResponseRulesItemSetCacheControlActionParametersMustUnderstandSetDirectiveOperation
+    | PhasesGetResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const PhasesGetResponseRulesItemSetCacheControlActionParametersMustUnderstand =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        PhasesGetResponseRulesItemSetCacheControlActionParametersMustUnderstandSetDirectiveOperation,
+        PhasesGetResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "PhasesGetResponseRulesItemSetCacheControlActionParametersMustUnderstand",
+  }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlActionParametersMustUnderstand>;
 
 export type PhasesGetResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveOperation =
   "set" | "remove";
@@ -31483,16 +32022,32 @@ export const PhasesGetResponseRulesItemSetCacheControlActionParametersNoCacheRem
       "PhasesGetResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirective",
   }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirective>;
 
-export type PhasesGetResponseRulesItemSetCacheControlActionParametersNoCache =
-  | PhasesGetResponseRulesItemSetCacheControlActionParametersNoCacheSetDirective
-  | PhasesGetResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirective;
+export interface PhasesGetResponseRulesItemSetCacheControlActionParametersNoCache {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | PhasesGetResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveOperation
+    | PhasesGetResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+  /** Optional list of header names to qualify the directive (e.g., for "private" or "no-cache" directives). */
+  qualifiers?: PhasesGetResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList;
+}
 export const PhasesGetResponseRulesItemSetCacheControlActionParametersNoCache =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly", "qualifiers"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        PhasesGetResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveOperation,
+        PhasesGetResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+      qualifiers: S.optional(
+        PhasesGetResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "PhasesGetResponseRulesItemSetCacheControlActionParametersNoCache",
+  }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlActionParametersNoCache>;
 
 export type PhasesGetResponseRulesItemSetCacheControlActionParametersNoStoreSetDirectiveOperation =
   "set" | "remove";
@@ -31540,16 +32095,27 @@ export const PhasesGetResponseRulesItemSetCacheControlActionParametersNoStoreRem
       "PhasesGetResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirective",
   }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirective>;
 
-export type PhasesGetResponseRulesItemSetCacheControlActionParametersNoStore =
-  | PhasesGetResponseRulesItemSetCacheControlActionParametersNoStoreSetDirective
-  | PhasesGetResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirective;
+export interface PhasesGetResponseRulesItemSetCacheControlActionParametersNoStore {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | PhasesGetResponseRulesItemSetCacheControlActionParametersNoStoreSetDirectiveOperation
+    | PhasesGetResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const PhasesGetResponseRulesItemSetCacheControlActionParametersNoStore =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        PhasesGetResponseRulesItemSetCacheControlActionParametersNoStoreSetDirectiveOperation,
+        PhasesGetResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "PhasesGetResponseRulesItemSetCacheControlActionParametersNoStore",
+  }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlActionParametersNoStore>;
 
 export type PhasesGetResponseRulesItemSetCacheControlActionParametersNoTransformSetDirectiveOperation =
   "set" | "remove";
@@ -31597,16 +32163,27 @@ export const PhasesGetResponseRulesItemSetCacheControlActionParametersNoTransfor
       "PhasesGetResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirective",
   }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirective>;
 
-export type PhasesGetResponseRulesItemSetCacheControlActionParametersNoTransform =
-    | PhasesGetResponseRulesItemSetCacheControlActionParametersNoTransformSetDirective
-    | PhasesGetResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirective;
+export interface PhasesGetResponseRulesItemSetCacheControlActionParametersNoTransform {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | PhasesGetResponseRulesItemSetCacheControlActionParametersNoTransformSetDirectiveOperation
+    | PhasesGetResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const PhasesGetResponseRulesItemSetCacheControlActionParametersNoTransform =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        PhasesGetResponseRulesItemSetCacheControlActionParametersNoTransformSetDirectiveOperation,
+        PhasesGetResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "PhasesGetResponseRulesItemSetCacheControlActionParametersNoTransform",
+  }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlActionParametersNoTransform>;
 
 export type PhasesGetResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveOperation =
   "set" | "remove";
@@ -31666,16 +32243,32 @@ export const PhasesGetResponseRulesItemSetCacheControlActionParametersPrivateRem
       "PhasesGetResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirective",
   }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirective>;
 
-export type PhasesGetResponseRulesItemSetCacheControlActionParametersPrivate =
-  | PhasesGetResponseRulesItemSetCacheControlActionParametersPrivateSetDirective
-  | PhasesGetResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirective;
+export interface PhasesGetResponseRulesItemSetCacheControlActionParametersPrivate {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | PhasesGetResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveOperation
+    | PhasesGetResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+  /** Optional list of header names to qualify the directive (e.g., for "private" or "no-cache" directives). */
+  qualifiers?: PhasesGetResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList;
+}
 export const PhasesGetResponseRulesItemSetCacheControlActionParametersPrivate =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly", "qualifiers"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        PhasesGetResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveOperation,
+        PhasesGetResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+      qualifiers: S.optional(
+        PhasesGetResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "PhasesGetResponseRulesItemSetCacheControlActionParametersPrivate",
+  }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlActionParametersPrivate>;
 
 export type PhasesGetResponseRulesItemSetCacheControlActionParametersProxyRevalidateSetDirectiveOperation =
   "set" | "remove";
@@ -31723,16 +32316,27 @@ export const PhasesGetResponseRulesItemSetCacheControlActionParametersProxyReval
       "PhasesGetResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirective",
   }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirective>;
 
-export type PhasesGetResponseRulesItemSetCacheControlActionParametersProxyRevalidate =
-    | PhasesGetResponseRulesItemSetCacheControlActionParametersProxyRevalidateSetDirective
-    | PhasesGetResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirective;
+export interface PhasesGetResponseRulesItemSetCacheControlActionParametersProxyRevalidate {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | PhasesGetResponseRulesItemSetCacheControlActionParametersProxyRevalidateSetDirectiveOperation
+    | PhasesGetResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const PhasesGetResponseRulesItemSetCacheControlActionParametersProxyRevalidate =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        PhasesGetResponseRulesItemSetCacheControlActionParametersProxyRevalidateSetDirectiveOperation,
+        PhasesGetResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "PhasesGetResponseRulesItemSetCacheControlActionParametersProxyRevalidate",
+  }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlActionParametersProxyRevalidate>;
 
 export type PhasesGetResponseRulesItemSetCacheControlActionParametersPublicSetDirectiveOperation =
   "set" | "remove";
@@ -31780,16 +32384,27 @@ export const PhasesGetResponseRulesItemSetCacheControlActionParametersPublicRemo
       "PhasesGetResponseRulesItemSetCacheControlActionParametersPublicRemoveDirective",
   }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlActionParametersPublicRemoveDirective>;
 
-export type PhasesGetResponseRulesItemSetCacheControlActionParametersPublic =
-  | PhasesGetResponseRulesItemSetCacheControlActionParametersPublicSetDirective
-  | PhasesGetResponseRulesItemSetCacheControlActionParametersPublicRemoveDirective;
+export interface PhasesGetResponseRulesItemSetCacheControlActionParametersPublic {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | PhasesGetResponseRulesItemSetCacheControlActionParametersPublicSetDirectiveOperation
+    | PhasesGetResponseRulesItemSetCacheControlActionParametersPublicRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const PhasesGetResponseRulesItemSetCacheControlActionParametersPublic =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        PhasesGetResponseRulesItemSetCacheControlActionParametersPublicSetDirectiveOperation,
+        PhasesGetResponseRulesItemSetCacheControlActionParametersPublicRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "PhasesGetResponseRulesItemSetCacheControlActionParametersPublic",
+  }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlActionParametersPublic>;
 
 export type PhasesGetResponseRulesItemSetCacheControlActionParametersSMaxageSetDirectiveOperation =
   "set" | "remove";
@@ -31840,16 +32455,30 @@ export const PhasesGetResponseRulesItemSetCacheControlActionParametersSMaxageRem
       "PhasesGetResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirective",
   }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirective>;
 
-export type PhasesGetResponseRulesItemSetCacheControlActionParametersSMaxage =
-  | PhasesGetResponseRulesItemSetCacheControlActionParametersSMaxageSetDirective
-  | PhasesGetResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirective;
+export interface PhasesGetResponseRulesItemSetCacheControlActionParametersSMaxage {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | PhasesGetResponseRulesItemSetCacheControlActionParametersSMaxageSetDirectiveOperation
+    | PhasesGetResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirectiveOperation;
+  /** The duration value in seconds for the directive. */
+  value?: number;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const PhasesGetResponseRulesItemSetCacheControlActionParametersSMaxage =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        PhasesGetResponseRulesItemSetCacheControlActionParametersSMaxageSetDirectiveOperation,
+        PhasesGetResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirectiveOperation,
+      ),
+      value: S.optional(S.Number),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "PhasesGetResponseRulesItemSetCacheControlActionParametersSMaxage",
+  }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlActionParametersSMaxage>;
 
 export type PhasesGetResponseRulesItemSetCacheControlActionParametersStaleIfErrorSetDirectiveOperation =
   "set" | "remove";
@@ -31900,16 +32529,30 @@ export const PhasesGetResponseRulesItemSetCacheControlActionParametersStaleIfErr
       "PhasesGetResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirective",
   }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirective>;
 
-export type PhasesGetResponseRulesItemSetCacheControlActionParametersStaleIfError =
-    | PhasesGetResponseRulesItemSetCacheControlActionParametersStaleIfErrorSetDirective
-    | PhasesGetResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirective;
+export interface PhasesGetResponseRulesItemSetCacheControlActionParametersStaleIfError {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | PhasesGetResponseRulesItemSetCacheControlActionParametersStaleIfErrorSetDirectiveOperation
+    | PhasesGetResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirectiveOperation;
+  /** The duration value in seconds for the directive. */
+  value?: number;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const PhasesGetResponseRulesItemSetCacheControlActionParametersStaleIfError =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        PhasesGetResponseRulesItemSetCacheControlActionParametersStaleIfErrorSetDirectiveOperation,
+        PhasesGetResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirectiveOperation,
+      ),
+      value: S.optional(S.Number),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "PhasesGetResponseRulesItemSetCacheControlActionParametersStaleIfError",
+  }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlActionParametersStaleIfError>;
 
 export type PhasesGetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirectiveOperation =
   "set" | "remove";
@@ -31960,16 +32603,30 @@ export const PhasesGetResponseRulesItemSetCacheControlActionParametersStaleWhile
       "PhasesGetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirective",
   }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirective>;
 
-export type PhasesGetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate =
-    | PhasesGetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirective
-    | PhasesGetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirective;
+export interface PhasesGetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | PhasesGetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirectiveOperation
+    | PhasesGetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirectiveOperation;
+  /** The duration value in seconds for the directive. */
+  value?: number;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const PhasesGetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        PhasesGetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirectiveOperation,
+        PhasesGetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirectiveOperation,
+      ),
+      value: S.optional(S.Number),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "PhasesGetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate",
+  }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate>;
 
 export interface PhasesGetResponseRulesItemSetCacheControlActionParameters {
   /** A cache-control directive configuration. */
@@ -33137,24 +33794,46 @@ export const PhasesGetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsE
       "PhasesGetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpression",
   }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpression>;
 
-export type PhasesGetResponseRulesItemSetCacheTagsActionParameters =
-  | PhasesGetResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValues
-  | PhasesGetResponseRulesItemSetCacheTagsActionParametersAddCacheTagsExpression
-  | PhasesGetResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValues
-  | PhasesGetResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsExpression
-  | PhasesGetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValues
-  | PhasesGetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpression;
+export interface PhasesGetResponseRulesItemSetCacheTagsActionParameters {
+  /** The operation to perform on the cache tags. */
+  operation:
+    | PhasesGetResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesOperation
+    | PhasesGetResponseRulesItemSetCacheTagsActionParametersAddCacheTagsExpressionOperation
+    | PhasesGetResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesOperation
+    | PhasesGetResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsExpressionOperation
+    | PhasesGetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesOperation
+    | PhasesGetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpressionOperation;
+  /** A list of cache tag values. */
+  values?:
+    | PhasesGetResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesValuesList
+    | PhasesGetResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesValuesList
+    | PhasesGetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesValuesList;
+  /** An expression that evaluates to an array of cache tag values. */
+  expression?: string;
+}
 export const PhasesGetResponseRulesItemSetCacheTagsActionParameters =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "values"],
-      ["expression", "operation"],
-      ["operation", "values"],
-      ["expression", "operation"],
-      ["operation", "values"],
-      ["expression", "operation"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        PhasesGetResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesOperation,
+        PhasesGetResponseRulesItemSetCacheTagsActionParametersAddCacheTagsExpressionOperation,
+        PhasesGetResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesOperation,
+        PhasesGetResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsExpressionOperation,
+        PhasesGetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesOperation,
+        PhasesGetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpressionOperation,
+      ),
+      values: S.optional(
+        S.Union(
+          PhasesGetResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesValuesList,
+          PhasesGetResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesValuesList,
+          PhasesGetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesValuesList,
+        ),
+      ),
+      expression: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "PhasesGetResponseRulesItemSetCacheTagsActionParameters",
+  }) as any as S.Schema<PhasesGetResponseRulesItemSetCacheTagsActionParameters>;
 
 export type PhasesGetResponseRulesItemSetCacheTagsCategoriesList =
   ReadonlyArray<string>;
@@ -34003,347 +34682,268 @@ export const PhasesGetResponseRulesItemTransformResponseHTML =
     identifier: "PhasesGetResponseRulesItemTransformResponseHTML",
   }) as any as S.Schema<PhasesGetResponseRulesItemTransformResponseHTML>;
 
-export type PhasesGetResponseRulesItem =
-  | PhasesGetResponseRulesItemBlockRule
-  | PhasesGetResponseRulesItemChallenge
-  | PhasesGetResponseRulesItemCompressResponseRule
-  | PhasesGetResponseRulesItemDDoSDynamicRule
-  | PhasesGetResponseRulesItemExecuteRule
-  | PhasesGetResponseRulesItemForceConnectionCloseRule
-  | PhasesGetResponseRulesItemJSChallenge
-  | PhasesGetResponseRulesItemLogRule
-  | PhasesGetResponseRulesItemLogCustomFieldRule
-  | PhasesGetResponseRulesItemManagedChallengeRule
-  | PhasesGetResponseRulesItemRedirectRule
-  | PhasesGetResponseRulesItemRewriteRule
-  | PhasesGetResponseRulesItemRouteRule
-  | PhasesGetResponseRulesItemScoreRule
-  | PhasesGetResponseRulesItemServeErrorRule
-  | PhasesGetResponseRulesItemSetCacheControl
-  | PhasesGetResponseRulesItemSetCacheSettingsRule
-  | PhasesGetResponseRulesItemSetCacheTags
-  | PhasesGetResponseRulesItemSetConfigRule
-  | PhasesGetResponseRulesItemSkipRule
-  | PhasesGetResponseRulesItemTransformResponseHTML;
-export const PhasesGetResponseRulesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-  ]),
-);
+export interface PhasesGetResponseRulesItem {
+  /** The timestamp of when the rule was last modified. */
+  lastUpdated: string;
+  /** The version of the rule. */
+  version: string;
+  /** The unique ID of the rule. */
+  id?: string;
+  /** The action to perform when the rule matches. */
+  action?:
+    | PhasesGetResponseRulesItemBlockRuleAction
+    | PhasesGetResponseRulesItemChallengeAction
+    | PhasesGetResponseRulesItemCompressResponseRuleAction
+    | PhasesGetResponseRulesItemDDoSDynamicRuleAction
+    | PhasesGetResponseRulesItemExecuteRuleAction
+    | PhasesGetResponseRulesItemForceConnectionCloseRuleAction
+    | PhasesGetResponseRulesItemJSChallengeAction
+    | PhasesGetResponseRulesItemLogRuleAction
+    | PhasesGetResponseRulesItemLogCustomFieldRuleAction
+    | PhasesGetResponseRulesItemManagedChallengeRuleAction
+    | PhasesGetResponseRulesItemRedirectRuleAction
+    | PhasesGetResponseRulesItemRewriteRuleAction
+    | PhasesGetResponseRulesItemRouteRuleAction
+    | PhasesGetResponseRulesItemScoreRuleAction
+    | PhasesGetResponseRulesItemServeErrorRuleAction
+    | PhasesGetResponseRulesItemSetCacheControlAction
+    | PhasesGetResponseRulesItemSetCacheSettingsRuleAction
+    | PhasesGetResponseRulesItemSetCacheTagsAction
+    | PhasesGetResponseRulesItemSetConfigRuleAction
+    | PhasesGetResponseRulesItemSkipRuleAction
+    | PhasesGetResponseRulesItemTransformResponseHTMLAction;
+  /** The parameters configuring the rule's action. */
+  actionParameters?:
+    | PhasesGetResponseRulesItemBlockRuleActionParameters
+    | unknown
+    | PhasesGetResponseRulesItemCompressResponseRuleActionParameters
+    | PhasesGetResponseRulesItemExecuteRuleActionParameters
+    | PhasesGetResponseRulesItemLogCustomFieldRuleActionParameters
+    | PhasesGetResponseRulesItemRedirectRuleActionParameters
+    | PhasesGetResponseRulesItemRewriteRuleActionParameters
+    | PhasesGetResponseRulesItemRouteRuleActionParameters
+    | PhasesGetResponseRulesItemScoreRuleActionParameters
+    | PhasesGetResponseRulesItemServeErrorRuleActionParameters
+    | PhasesGetResponseRulesItemSetCacheControlActionParameters
+    | PhasesGetResponseRulesItemSetCacheSettingsRuleActionParameters
+    | PhasesGetResponseRulesItemSetCacheTagsActionParameters
+    | PhasesGetResponseRulesItemSetConfigRuleActionParameters
+    | PhasesGetResponseRulesItemSkipRuleActionParameters
+    | PhasesGetResponseRulesItemTransformResponseHTMLActionParameters;
+  /** The categories of the rule. */
+  categories?:
+    | PhasesGetResponseRulesItemBlockRuleCategoriesList
+    | PhasesGetResponseRulesItemChallengeCategoriesList
+    | PhasesGetResponseRulesItemCompressResponseRuleCategoriesList
+    | PhasesGetResponseRulesItemDDoSDynamicRuleCategoriesList
+    | PhasesGetResponseRulesItemExecuteRuleCategoriesList
+    | PhasesGetResponseRulesItemForceConnectionCloseRuleCategoriesList
+    | PhasesGetResponseRulesItemJSChallengeCategoriesList
+    | PhasesGetResponseRulesItemLogRuleCategoriesList
+    | PhasesGetResponseRulesItemLogCustomFieldRuleCategoriesList
+    | PhasesGetResponseRulesItemManagedChallengeRuleCategoriesList
+    | PhasesGetResponseRulesItemRedirectRuleCategoriesList
+    | PhasesGetResponseRulesItemRewriteRuleCategoriesList
+    | PhasesGetResponseRulesItemRouteRuleCategoriesList
+    | PhasesGetResponseRulesItemScoreRuleCategoriesList
+    | PhasesGetResponseRulesItemServeErrorRuleCategoriesList
+    | PhasesGetResponseRulesItemSetCacheControlCategoriesList
+    | PhasesGetResponseRulesItemSetCacheSettingsRuleCategoriesList
+    | PhasesGetResponseRulesItemSetCacheTagsCategoriesList
+    | PhasesGetResponseRulesItemSetConfigRuleCategoriesList
+    | PhasesGetResponseRulesItemSkipRuleCategoriesList
+    | PhasesGetResponseRulesItemTransformResponseHTMLCategoriesList;
+  /** An informative description of the rule. */
+  description?: string;
+  /** Whether the rule should be executed. */
+  enabled?: boolean;
+  /** Configuration for exposed credential checking. */
+  exposedCredentialCheck?:
+    | PhasesGetResponseRulesItemBlockRuleExposedCredentialCheck
+    | PhasesGetResponseRulesItemChallengeExposedCredentialCheck
+    | PhasesGetResponseRulesItemCompressResponseRuleExposedCredentialCheck
+    | PhasesGetResponseRulesItemDDoSDynamicRuleExposedCredentialCheck
+    | PhasesGetResponseRulesItemExecuteRuleExposedCredentialCheck
+    | PhasesGetResponseRulesItemForceConnectionCloseRuleExposedCredentialCheck
+    | PhasesGetResponseRulesItemJSChallengeExposedCredentialCheck
+    | PhasesGetResponseRulesItemLogRuleExposedCredentialCheck
+    | PhasesGetResponseRulesItemLogCustomFieldRuleExposedCredentialCheck
+    | PhasesGetResponseRulesItemManagedChallengeRuleExposedCredentialCheck
+    | PhasesGetResponseRulesItemRedirectRuleExposedCredentialCheck
+    | PhasesGetResponseRulesItemRewriteRuleExposedCredentialCheck
+    | PhasesGetResponseRulesItemRouteRuleExposedCredentialCheck
+    | PhasesGetResponseRulesItemScoreRuleExposedCredentialCheck
+    | PhasesGetResponseRulesItemServeErrorRuleExposedCredentialCheck
+    | PhasesGetResponseRulesItemSetCacheControlExposedCredentialCheck
+    | PhasesGetResponseRulesItemSetCacheSettingsRuleExposedCredentialCheck
+    | PhasesGetResponseRulesItemSetCacheTagsExposedCredentialCheck
+    | PhasesGetResponseRulesItemSetConfigRuleExposedCredentialCheck
+    | PhasesGetResponseRulesItemSkipRuleExposedCredentialCheck
+    | PhasesGetResponseRulesItemTransformResponseHTMLExposedCredentialCheck;
+  /** The expression defining which traffic will match the rule. */
+  expression?: string;
+  /** An object configuring the rule's logging behavior. */
+  logging?: PhasesGetResponseRulesItemBlockRuleLogging;
+  /** An object configuring the rule's rate limit behavior. */
+  ratelimit?:
+    | PhasesGetResponseRulesItemBlockRuleRatelimit
+    | PhasesGetResponseRulesItemChallengeRatelimit
+    | PhasesGetResponseRulesItemCompressResponseRuleRatelimit
+    | PhasesGetResponseRulesItemDDoSDynamicRuleRatelimit
+    | PhasesGetResponseRulesItemExecuteRuleRatelimit
+    | PhasesGetResponseRulesItemForceConnectionCloseRuleRatelimit
+    | PhasesGetResponseRulesItemJSChallengeRatelimit
+    | PhasesGetResponseRulesItemLogRuleRatelimit
+    | PhasesGetResponseRulesItemLogCustomFieldRuleRatelimit
+    | PhasesGetResponseRulesItemManagedChallengeRuleRatelimit
+    | PhasesGetResponseRulesItemRedirectRuleRatelimit
+    | PhasesGetResponseRulesItemRewriteRuleRatelimit
+    | PhasesGetResponseRulesItemRouteRuleRatelimit
+    | PhasesGetResponseRulesItemScoreRuleRatelimit
+    | PhasesGetResponseRulesItemServeErrorRuleRatelimit
+    | PhasesGetResponseRulesItemSetCacheControlRatelimit
+    | PhasesGetResponseRulesItemSetCacheSettingsRuleRatelimit
+    | PhasesGetResponseRulesItemSetCacheTagsRatelimit
+    | PhasesGetResponseRulesItemSetConfigRuleRatelimit
+    | PhasesGetResponseRulesItemSkipRuleRatelimit
+    | PhasesGetResponseRulesItemTransformResponseHTMLRatelimit;
+  /** The reference of the rule (the rule's ID by default). */
+  ref?: string;
+}
+export const PhasesGetResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lastUpdated: S.String.pipe(T.Body("last_updated")),
+    version: S.String,
+    id: S.optional(S.String),
+    action: S.optional(
+      S.Union(
+        PhasesGetResponseRulesItemBlockRuleAction,
+        PhasesGetResponseRulesItemChallengeAction,
+        PhasesGetResponseRulesItemCompressResponseRuleAction,
+        PhasesGetResponseRulesItemDDoSDynamicRuleAction,
+        PhasesGetResponseRulesItemExecuteRuleAction,
+        PhasesGetResponseRulesItemForceConnectionCloseRuleAction,
+        PhasesGetResponseRulesItemJSChallengeAction,
+        PhasesGetResponseRulesItemLogRuleAction,
+        PhasesGetResponseRulesItemLogCustomFieldRuleAction,
+        PhasesGetResponseRulesItemManagedChallengeRuleAction,
+        PhasesGetResponseRulesItemRedirectRuleAction,
+        PhasesGetResponseRulesItemRewriteRuleAction,
+        PhasesGetResponseRulesItemRouteRuleAction,
+        PhasesGetResponseRulesItemScoreRuleAction,
+        PhasesGetResponseRulesItemServeErrorRuleAction,
+        PhasesGetResponseRulesItemSetCacheControlAction,
+        PhasesGetResponseRulesItemSetCacheSettingsRuleAction,
+        PhasesGetResponseRulesItemSetCacheTagsAction,
+        PhasesGetResponseRulesItemSetConfigRuleAction,
+        PhasesGetResponseRulesItemSkipRuleAction,
+        PhasesGetResponseRulesItemTransformResponseHTMLAction,
+      ),
+    ),
+    actionParameters: S.optional(
+      S.Union(
+        PhasesGetResponseRulesItemBlockRuleActionParameters,
+        S.Unknown,
+        PhasesGetResponseRulesItemCompressResponseRuleActionParameters,
+        PhasesGetResponseRulesItemExecuteRuleActionParameters,
+        PhasesGetResponseRulesItemLogCustomFieldRuleActionParameters,
+        PhasesGetResponseRulesItemRedirectRuleActionParameters,
+        PhasesGetResponseRulesItemRewriteRuleActionParameters,
+        PhasesGetResponseRulesItemRouteRuleActionParameters,
+        PhasesGetResponseRulesItemScoreRuleActionParameters,
+        PhasesGetResponseRulesItemServeErrorRuleActionParameters,
+        PhasesGetResponseRulesItemSetCacheControlActionParameters,
+        PhasesGetResponseRulesItemSetCacheSettingsRuleActionParameters,
+        PhasesGetResponseRulesItemSetCacheTagsActionParameters,
+        PhasesGetResponseRulesItemSetConfigRuleActionParameters,
+        PhasesGetResponseRulesItemSkipRuleActionParameters,
+        PhasesGetResponseRulesItemTransformResponseHTMLActionParameters,
+      ).pipe(T.Body("action_parameters")),
+    ),
+    categories: S.optional(
+      S.Union(
+        PhasesGetResponseRulesItemBlockRuleCategoriesList,
+        PhasesGetResponseRulesItemChallengeCategoriesList,
+        PhasesGetResponseRulesItemCompressResponseRuleCategoriesList,
+        PhasesGetResponseRulesItemDDoSDynamicRuleCategoriesList,
+        PhasesGetResponseRulesItemExecuteRuleCategoriesList,
+        PhasesGetResponseRulesItemForceConnectionCloseRuleCategoriesList,
+        PhasesGetResponseRulesItemJSChallengeCategoriesList,
+        PhasesGetResponseRulesItemLogRuleCategoriesList,
+        PhasesGetResponseRulesItemLogCustomFieldRuleCategoriesList,
+        PhasesGetResponseRulesItemManagedChallengeRuleCategoriesList,
+        PhasesGetResponseRulesItemRedirectRuleCategoriesList,
+        PhasesGetResponseRulesItemRewriteRuleCategoriesList,
+        PhasesGetResponseRulesItemRouteRuleCategoriesList,
+        PhasesGetResponseRulesItemScoreRuleCategoriesList,
+        PhasesGetResponseRulesItemServeErrorRuleCategoriesList,
+        PhasesGetResponseRulesItemSetCacheControlCategoriesList,
+        PhasesGetResponseRulesItemSetCacheSettingsRuleCategoriesList,
+        PhasesGetResponseRulesItemSetCacheTagsCategoriesList,
+        PhasesGetResponseRulesItemSetConfigRuleCategoriesList,
+        PhasesGetResponseRulesItemSkipRuleCategoriesList,
+        PhasesGetResponseRulesItemTransformResponseHTMLCategoriesList,
+      ),
+    ),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    exposedCredentialCheck: S.optional(
+      S.Union(
+        PhasesGetResponseRulesItemBlockRuleExposedCredentialCheck,
+        PhasesGetResponseRulesItemChallengeExposedCredentialCheck,
+        PhasesGetResponseRulesItemCompressResponseRuleExposedCredentialCheck,
+        PhasesGetResponseRulesItemDDoSDynamicRuleExposedCredentialCheck,
+        PhasesGetResponseRulesItemExecuteRuleExposedCredentialCheck,
+        PhasesGetResponseRulesItemForceConnectionCloseRuleExposedCredentialCheck,
+        PhasesGetResponseRulesItemJSChallengeExposedCredentialCheck,
+        PhasesGetResponseRulesItemLogRuleExposedCredentialCheck,
+        PhasesGetResponseRulesItemLogCustomFieldRuleExposedCredentialCheck,
+        PhasesGetResponseRulesItemManagedChallengeRuleExposedCredentialCheck,
+        PhasesGetResponseRulesItemRedirectRuleExposedCredentialCheck,
+        PhasesGetResponseRulesItemRewriteRuleExposedCredentialCheck,
+        PhasesGetResponseRulesItemRouteRuleExposedCredentialCheck,
+        PhasesGetResponseRulesItemScoreRuleExposedCredentialCheck,
+        PhasesGetResponseRulesItemServeErrorRuleExposedCredentialCheck,
+        PhasesGetResponseRulesItemSetCacheControlExposedCredentialCheck,
+        PhasesGetResponseRulesItemSetCacheSettingsRuleExposedCredentialCheck,
+        PhasesGetResponseRulesItemSetCacheTagsExposedCredentialCheck,
+        PhasesGetResponseRulesItemSetConfigRuleExposedCredentialCheck,
+        PhasesGetResponseRulesItemSkipRuleExposedCredentialCheck,
+        PhasesGetResponseRulesItemTransformResponseHTMLExposedCredentialCheck,
+      ).pipe(T.Body("exposed_credential_check")),
+    ),
+    expression: S.optional(S.String),
+    logging: S.optional(PhasesGetResponseRulesItemBlockRuleLogging),
+    ratelimit: S.optional(
+      S.Union(
+        PhasesGetResponseRulesItemBlockRuleRatelimit,
+        PhasesGetResponseRulesItemChallengeRatelimit,
+        PhasesGetResponseRulesItemCompressResponseRuleRatelimit,
+        PhasesGetResponseRulesItemDDoSDynamicRuleRatelimit,
+        PhasesGetResponseRulesItemExecuteRuleRatelimit,
+        PhasesGetResponseRulesItemForceConnectionCloseRuleRatelimit,
+        PhasesGetResponseRulesItemJSChallengeRatelimit,
+        PhasesGetResponseRulesItemLogRuleRatelimit,
+        PhasesGetResponseRulesItemLogCustomFieldRuleRatelimit,
+        PhasesGetResponseRulesItemManagedChallengeRuleRatelimit,
+        PhasesGetResponseRulesItemRedirectRuleRatelimit,
+        PhasesGetResponseRulesItemRewriteRuleRatelimit,
+        PhasesGetResponseRulesItemRouteRuleRatelimit,
+        PhasesGetResponseRulesItemScoreRuleRatelimit,
+        PhasesGetResponseRulesItemServeErrorRuleRatelimit,
+        PhasesGetResponseRulesItemSetCacheControlRatelimit,
+        PhasesGetResponseRulesItemSetCacheSettingsRuleRatelimit,
+        PhasesGetResponseRulesItemSetCacheTagsRatelimit,
+        PhasesGetResponseRulesItemSetConfigRuleRatelimit,
+        PhasesGetResponseRulesItemSkipRuleRatelimit,
+        PhasesGetResponseRulesItemTransformResponseHTMLRatelimit,
+      ),
+    ),
+    ref: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PhasesGetResponseRulesItem",
+}) as any as S.Schema<PhasesGetResponseRulesItem>;
 
 export type PhasesGetResponseRulesList =
   ReadonlyArray<PhasesGetResponseRulesItem>;
@@ -36632,22 +37232,36 @@ export const PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeader
       "PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeader",
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeader>;
 
-export type PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeaders =
-    | PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersAddStaticHeader
-    | PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersAddDynamicHeader
-    | PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersSetStaticHeader
-    | PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersSetDynamicHeader
-    | PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeader;
+export interface PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeaders {
+  /** The operation to perform on the header. */
+  operation:
+    | PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersAddStaticHeaderOperation
+    | PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersAddDynamicHeaderOperation
+    | PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersSetStaticHeaderOperation
+    | PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersSetDynamicHeaderOperation
+    | PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeaderOperation;
+  /** A static value for the header. */
+  value?: string;
+  /** An expression that evaluates to a value for the header. */
+  expression?: string;
+}
 export const PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeaders =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value"],
-      ["expression", "operation"],
-      ["operation", "value"],
-      ["expression", "operation"],
-      ["operation"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersAddStaticHeaderOperation,
+        PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersAddDynamicHeaderOperation,
+        PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersSetStaticHeaderOperation,
+        PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersSetDynamicHeaderOperation,
+        PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeaderOperation,
+      ),
+      value: S.optional(S.String),
+      expression: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeaders",
+  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersHeaders>;
 
 export interface PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersUriURIPathPath {
   /** An expression that evaluates to a value to rewrite the URI path to. */
@@ -36718,16 +37332,29 @@ export const PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersUriURI
       "PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersUriURIQuery",
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersUriURIQuery>;
 
-export type PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersUri =
-  | PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersUriURIPath
-  | PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersUriURIQuery;
+export interface PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersUri {
+  /** A URI path rewrite. */
+  path?: PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersUriURIPathPath;
+  /** Whether to propagate the rewritten URI to origin. */
+  origin?: boolean;
+  /** A URI query rewrite. */
+  query?: PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersUriURIQueryQuery;
+}
 export const PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersUri =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["path", "origin"],
-      ["query", "origin"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.optional(
+        PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersUriURIPathPath,
+      ),
+      origin: S.optional(S.Boolean),
+      query: S.optional(
+        PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersUriURIQueryQuery,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersUri",
+  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemRewriteRuleActionParametersUri>;
 
 export interface PhasesVersionsGetResponseRulesItemRewriteRuleActionParameters {
   /** A map of headers to rewrite. */
@@ -37298,16 +37925,35 @@ export const PhasesVersionsGetResponseRulesItemServeErrorRuleActionParametersAct
       "PhasesVersionsGetResponseRulesItemServeErrorRuleActionParametersActionParametersAsset",
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemServeErrorRuleActionParametersActionParametersAsset>;
 
-export type PhasesVersionsGetResponseRulesItemServeErrorRuleActionParameters =
-  | PhasesVersionsGetResponseRulesItemServeErrorRuleActionParametersActionParametersContent
-  | PhasesVersionsGetResponseRulesItemServeErrorRuleActionParametersActionParametersAsset;
+export interface PhasesVersionsGetResponseRulesItemServeErrorRuleActionParameters {
+  /** The response content. */
+  content?: string;
+  /** The content type header to set with the error response. */
+  contentType?:
+    | PhasesVersionsGetResponseRulesItemServeErrorRuleActionParametersActionParametersContentContentType
+    | PhasesVersionsGetResponseRulesItemServeErrorRuleActionParametersActionParametersAssetContentType;
+  /** The status code to use for the error. */
+  statusCode?: number;
+  /** The name of a custom asset to serve as the error response. */
+  assetName?: string;
+}
 export const PhasesVersionsGetResponseRulesItemServeErrorRuleActionParameters =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["content", "contentType", "statusCode"],
-      ["assetName", "contentType", "statusCode"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      content: S.optional(S.String),
+      contentType: S.optional(
+        S.Union(
+          PhasesVersionsGetResponseRulesItemServeErrorRuleActionParametersActionParametersContentContentType,
+          PhasesVersionsGetResponseRulesItemServeErrorRuleActionParametersActionParametersAssetContentType,
+        ).pipe(T.Body("content_type")),
+      ),
+      statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
+      assetName: S.optional(S.String.pipe(T.Body("asset_name"))),
+    }),
+  ).annotate({
+    identifier:
+      "PhasesVersionsGetResponseRulesItemServeErrorRuleActionParameters",
+  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemServeErrorRuleActionParameters>;
 
 export type PhasesVersionsGetResponseRulesItemServeErrorRuleCategoriesList =
   ReadonlyArray<string>;
@@ -37499,16 +38145,27 @@ export const PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersIm
       "PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirective",
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirective>;
 
-export type PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersImmutable =
-    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersImmutableSetDirective
-    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirective;
+export interface PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersImmutable {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersImmutableSetDirectiveOperation
+    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersImmutable =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersImmutableSetDirectiveOperation,
+        PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersImmutable",
+  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersImmutable>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersMaxAgeSetDirectiveOperation =
   "set" | "remove";
@@ -37559,16 +38216,30 @@ export const PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersMa
       "PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirective",
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirective>;
 
-export type PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersMaxAge =
-    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersMaxAgeSetDirective
-    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirective;
+export interface PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersMaxAge {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersMaxAgeSetDirectiveOperation
+    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirectiveOperation;
+  /** The duration value in seconds for the directive. */
+  value?: number;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersMaxAge =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersMaxAgeSetDirectiveOperation,
+        PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirectiveOperation,
+      ),
+      value: S.optional(S.Number),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersMaxAge",
+  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersMaxAge>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersMustRevalidateSetDirectiveOperation =
   "set" | "remove";
@@ -37616,16 +38287,27 @@ export const PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersMu
       "PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirective",
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirective>;
 
-export type PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersMustRevalidate =
-    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersMustRevalidateSetDirective
-    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirective;
+export interface PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersMustRevalidate {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersMustRevalidateSetDirectiveOperation
+    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersMustRevalidate =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersMustRevalidateSetDirectiveOperation,
+        PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersMustRevalidate",
+  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersMustRevalidate>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersMustUnderstandSetDirectiveOperation =
   "set" | "remove";
@@ -37673,16 +38355,27 @@ export const PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersMu
       "PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirective",
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirective>;
 
-export type PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersMustUnderstand =
-    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersMustUnderstandSetDirective
-    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirective;
+export interface PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersMustUnderstand {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersMustUnderstandSetDirectiveOperation
+    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersMustUnderstand =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersMustUnderstandSetDirectiveOperation,
+        PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersMustUnderstand",
+  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersMustUnderstand>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveOperation =
   "set" | "remove";
@@ -37742,16 +38435,32 @@ export const PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNo
       "PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirective",
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirective>;
 
-export type PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNoCache =
-    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNoCacheSetDirective
-    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirective;
+export interface PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNoCache {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveOperation
+    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+  /** Optional list of header names to qualify the directive (e.g., for "private" or "no-cache" directives). */
+  qualifiers?: PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList;
+}
 export const PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNoCache =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly", "qualifiers"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveOperation,
+        PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+      qualifiers: S.optional(
+        PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNoCache",
+  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNoCache>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNoStoreSetDirectiveOperation =
   "set" | "remove";
@@ -37799,16 +38508,27 @@ export const PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNo
       "PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirective",
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirective>;
 
-export type PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNoStore =
-    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNoStoreSetDirective
-    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirective;
+export interface PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNoStore {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNoStoreSetDirectiveOperation
+    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNoStore =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNoStoreSetDirectiveOperation,
+        PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNoStore",
+  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNoStore>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNoTransformSetDirectiveOperation =
   "set" | "remove";
@@ -37856,16 +38576,27 @@ export const PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNo
       "PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirective",
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirective>;
 
-export type PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNoTransform =
-    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNoTransformSetDirective
-    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirective;
+export interface PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNoTransform {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNoTransformSetDirectiveOperation
+    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNoTransform =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNoTransformSetDirectiveOperation,
+        PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNoTransform",
+  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersNoTransform>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveOperation =
   "set" | "remove";
@@ -37925,16 +38656,32 @@ export const PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersPr
       "PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirective",
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirective>;
 
-export type PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersPrivate =
-    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersPrivateSetDirective
-    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirective;
+export interface PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersPrivate {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveOperation
+    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+  /** Optional list of header names to qualify the directive (e.g., for "private" or "no-cache" directives). */
+  qualifiers?: PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList;
+}
 export const PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersPrivate =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly", "qualifiers"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveOperation,
+        PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+      qualifiers: S.optional(
+        PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersPrivate",
+  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersPrivate>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersProxyRevalidateSetDirectiveOperation =
   "set" | "remove";
@@ -37982,16 +38729,27 @@ export const PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersPr
       "PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirective",
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirective>;
 
-export type PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersProxyRevalidate =
-    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersProxyRevalidateSetDirective
-    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirective;
+export interface PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersProxyRevalidate {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersProxyRevalidateSetDirectiveOperation
+    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersProxyRevalidate =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersProxyRevalidateSetDirectiveOperation,
+        PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersProxyRevalidate",
+  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersProxyRevalidate>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersPublicSetDirectiveOperation =
   "set" | "remove";
@@ -38039,16 +38797,27 @@ export const PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersPu
       "PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersPublicRemoveDirective",
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersPublicRemoveDirective>;
 
-export type PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersPublic =
-    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersPublicSetDirective
-    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersPublicRemoveDirective;
+export interface PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersPublic {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersPublicSetDirectiveOperation
+    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersPublicRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersPublic =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersPublicSetDirectiveOperation,
+        PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersPublicRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersPublic",
+  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersPublic>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersSMaxageSetDirectiveOperation =
   "set" | "remove";
@@ -38099,16 +38868,30 @@ export const PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersSM
       "PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirective",
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirective>;
 
-export type PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersSMaxage =
-    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersSMaxageSetDirective
-    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirective;
+export interface PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersSMaxage {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersSMaxageSetDirectiveOperation
+    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirectiveOperation;
+  /** The duration value in seconds for the directive. */
+  value?: number;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersSMaxage =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersSMaxageSetDirectiveOperation,
+        PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirectiveOperation,
+      ),
+      value: S.optional(S.Number),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersSMaxage",
+  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersSMaxage>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersStaleIfErrorSetDirectiveOperation =
   "set" | "remove";
@@ -38159,16 +38942,30 @@ export const PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersSt
       "PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirective",
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirective>;
 
-export type PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersStaleIfError =
-    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersStaleIfErrorSetDirective
-    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirective;
+export interface PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersStaleIfError {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersStaleIfErrorSetDirectiveOperation
+    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirectiveOperation;
+  /** The duration value in seconds for the directive. */
+  value?: number;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersStaleIfError =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersStaleIfErrorSetDirectiveOperation,
+        PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirectiveOperation,
+      ),
+      value: S.optional(S.Number),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersStaleIfError",
+  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersStaleIfError>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirectiveOperation =
   "set" | "remove";
@@ -38219,16 +39016,30 @@ export const PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersSt
       "PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirective",
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirective>;
 
-export type PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate =
-    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirective
-    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirective;
+export interface PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirectiveOperation
+    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirectiveOperation;
+  /** The duration value in seconds for the directive. */
+  value?: number;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirectiveOperation,
+        PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirectiveOperation,
+      ),
+      value: S.optional(S.Number),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate",
+  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate>;
 
 export interface PhasesVersionsGetResponseRulesItemSetCacheControlActionParameters {
   /** A cache-control directive configuration. */
@@ -39405,24 +40216,47 @@ export const PhasesVersionsGetResponseRulesItemSetCacheTagsActionParametersSetCa
       "PhasesVersionsGetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpression",
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpression>;
 
-export type PhasesVersionsGetResponseRulesItemSetCacheTagsActionParameters =
-  | PhasesVersionsGetResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValues
-  | PhasesVersionsGetResponseRulesItemSetCacheTagsActionParametersAddCacheTagsExpression
-  | PhasesVersionsGetResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValues
-  | PhasesVersionsGetResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsExpression
-  | PhasesVersionsGetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValues
-  | PhasesVersionsGetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpression;
+export interface PhasesVersionsGetResponseRulesItemSetCacheTagsActionParameters {
+  /** The operation to perform on the cache tags. */
+  operation:
+    | PhasesVersionsGetResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesOperation
+    | PhasesVersionsGetResponseRulesItemSetCacheTagsActionParametersAddCacheTagsExpressionOperation
+    | PhasesVersionsGetResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesOperation
+    | PhasesVersionsGetResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsExpressionOperation
+    | PhasesVersionsGetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesOperation
+    | PhasesVersionsGetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpressionOperation;
+  /** A list of cache tag values. */
+  values?:
+    | PhasesVersionsGetResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesValuesList
+    | PhasesVersionsGetResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesValuesList
+    | PhasesVersionsGetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesValuesList;
+  /** An expression that evaluates to an array of cache tag values. */
+  expression?: string;
+}
 export const PhasesVersionsGetResponseRulesItemSetCacheTagsActionParameters =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "values"],
-      ["expression", "operation"],
-      ["operation", "values"],
-      ["expression", "operation"],
-      ["operation", "values"],
-      ["expression", "operation"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        PhasesVersionsGetResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesOperation,
+        PhasesVersionsGetResponseRulesItemSetCacheTagsActionParametersAddCacheTagsExpressionOperation,
+        PhasesVersionsGetResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesOperation,
+        PhasesVersionsGetResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsExpressionOperation,
+        PhasesVersionsGetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesOperation,
+        PhasesVersionsGetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpressionOperation,
+      ),
+      values: S.optional(
+        S.Union(
+          PhasesVersionsGetResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesValuesList,
+          PhasesVersionsGetResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesValuesList,
+          PhasesVersionsGetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesValuesList,
+        ),
+      ),
+      expression: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "PhasesVersionsGetResponseRulesItemSetCacheTagsActionParameters",
+  }) as any as S.Schema<PhasesVersionsGetResponseRulesItemSetCacheTagsActionParameters>;
 
 export type PhasesVersionsGetResponseRulesItemSetCacheTagsCategoriesList =
   ReadonlyArray<string>;
@@ -40284,347 +41118,268 @@ export const PhasesVersionsGetResponseRulesItemTransformResponseHTML =
     identifier: "PhasesVersionsGetResponseRulesItemTransformResponseHTML",
   }) as any as S.Schema<PhasesVersionsGetResponseRulesItemTransformResponseHTML>;
 
-export type PhasesVersionsGetResponseRulesItem =
-  | PhasesVersionsGetResponseRulesItemBlockRule
-  | PhasesVersionsGetResponseRulesItemChallenge
-  | PhasesVersionsGetResponseRulesItemCompressResponseRule
-  | PhasesVersionsGetResponseRulesItemDDoSDynamicRule
-  | PhasesVersionsGetResponseRulesItemExecuteRule
-  | PhasesVersionsGetResponseRulesItemForceConnectionCloseRule
-  | PhasesVersionsGetResponseRulesItemJSChallenge
-  | PhasesVersionsGetResponseRulesItemLogRule
-  | PhasesVersionsGetResponseRulesItemLogCustomFieldRule
-  | PhasesVersionsGetResponseRulesItemManagedChallengeRule
-  | PhasesVersionsGetResponseRulesItemRedirectRule
-  | PhasesVersionsGetResponseRulesItemRewriteRule
-  | PhasesVersionsGetResponseRulesItemRouteRule
-  | PhasesVersionsGetResponseRulesItemScoreRule
-  | PhasesVersionsGetResponseRulesItemServeErrorRule
-  | PhasesVersionsGetResponseRulesItemSetCacheControl
-  | PhasesVersionsGetResponseRulesItemSetCacheSettingsRule
-  | PhasesVersionsGetResponseRulesItemSetCacheTags
-  | PhasesVersionsGetResponseRulesItemSetConfigRule
-  | PhasesVersionsGetResponseRulesItemSkipRule
-  | PhasesVersionsGetResponseRulesItemTransformResponseHTML;
-export const PhasesVersionsGetResponseRulesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-  ]),
-);
+export interface PhasesVersionsGetResponseRulesItem {
+  /** The timestamp of when the rule was last modified. */
+  lastUpdated: string;
+  /** The version of the rule. */
+  version: string;
+  /** The unique ID of the rule. */
+  id?: string;
+  /** The action to perform when the rule matches. */
+  action?:
+    | PhasesVersionsGetResponseRulesItemBlockRuleAction
+    | PhasesVersionsGetResponseRulesItemChallengeAction
+    | PhasesVersionsGetResponseRulesItemCompressResponseRuleAction
+    | PhasesVersionsGetResponseRulesItemDDoSDynamicRuleAction
+    | PhasesVersionsGetResponseRulesItemExecuteRuleAction
+    | PhasesVersionsGetResponseRulesItemForceConnectionCloseRuleAction
+    | PhasesVersionsGetResponseRulesItemJSChallengeAction
+    | PhasesVersionsGetResponseRulesItemLogRuleAction
+    | PhasesVersionsGetResponseRulesItemLogCustomFieldRuleAction
+    | PhasesVersionsGetResponseRulesItemManagedChallengeRuleAction
+    | PhasesVersionsGetResponseRulesItemRedirectRuleAction
+    | PhasesVersionsGetResponseRulesItemRewriteRuleAction
+    | PhasesVersionsGetResponseRulesItemRouteRuleAction
+    | PhasesVersionsGetResponseRulesItemScoreRuleAction
+    | PhasesVersionsGetResponseRulesItemServeErrorRuleAction
+    | PhasesVersionsGetResponseRulesItemSetCacheControlAction
+    | PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleAction
+    | PhasesVersionsGetResponseRulesItemSetCacheTagsAction
+    | PhasesVersionsGetResponseRulesItemSetConfigRuleAction
+    | PhasesVersionsGetResponseRulesItemSkipRuleAction
+    | PhasesVersionsGetResponseRulesItemTransformResponseHTMLAction;
+  /** The parameters configuring the rule's action. */
+  actionParameters?:
+    | PhasesVersionsGetResponseRulesItemBlockRuleActionParameters
+    | unknown
+    | PhasesVersionsGetResponseRulesItemCompressResponseRuleActionParameters
+    | PhasesVersionsGetResponseRulesItemExecuteRuleActionParameters
+    | PhasesVersionsGetResponseRulesItemLogCustomFieldRuleActionParameters
+    | PhasesVersionsGetResponseRulesItemRedirectRuleActionParameters
+    | PhasesVersionsGetResponseRulesItemRewriteRuleActionParameters
+    | PhasesVersionsGetResponseRulesItemRouteRuleActionParameters
+    | PhasesVersionsGetResponseRulesItemScoreRuleActionParameters
+    | PhasesVersionsGetResponseRulesItemServeErrorRuleActionParameters
+    | PhasesVersionsGetResponseRulesItemSetCacheControlActionParameters
+    | PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParameters
+    | PhasesVersionsGetResponseRulesItemSetCacheTagsActionParameters
+    | PhasesVersionsGetResponseRulesItemSetConfigRuleActionParameters
+    | PhasesVersionsGetResponseRulesItemSkipRuleActionParameters
+    | PhasesVersionsGetResponseRulesItemTransformResponseHTMLActionParameters;
+  /** The categories of the rule. */
+  categories?:
+    | PhasesVersionsGetResponseRulesItemBlockRuleCategoriesList
+    | PhasesVersionsGetResponseRulesItemChallengeCategoriesList
+    | PhasesVersionsGetResponseRulesItemCompressResponseRuleCategoriesList
+    | PhasesVersionsGetResponseRulesItemDDoSDynamicRuleCategoriesList
+    | PhasesVersionsGetResponseRulesItemExecuteRuleCategoriesList
+    | PhasesVersionsGetResponseRulesItemForceConnectionCloseRuleCategoriesList
+    | PhasesVersionsGetResponseRulesItemJSChallengeCategoriesList
+    | PhasesVersionsGetResponseRulesItemLogRuleCategoriesList
+    | PhasesVersionsGetResponseRulesItemLogCustomFieldRuleCategoriesList
+    | PhasesVersionsGetResponseRulesItemManagedChallengeRuleCategoriesList
+    | PhasesVersionsGetResponseRulesItemRedirectRuleCategoriesList
+    | PhasesVersionsGetResponseRulesItemRewriteRuleCategoriesList
+    | PhasesVersionsGetResponseRulesItemRouteRuleCategoriesList
+    | PhasesVersionsGetResponseRulesItemScoreRuleCategoriesList
+    | PhasesVersionsGetResponseRulesItemServeErrorRuleCategoriesList
+    | PhasesVersionsGetResponseRulesItemSetCacheControlCategoriesList
+    | PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleCategoriesList
+    | PhasesVersionsGetResponseRulesItemSetCacheTagsCategoriesList
+    | PhasesVersionsGetResponseRulesItemSetConfigRuleCategoriesList
+    | PhasesVersionsGetResponseRulesItemSkipRuleCategoriesList
+    | PhasesVersionsGetResponseRulesItemTransformResponseHTMLCategoriesList;
+  /** An informative description of the rule. */
+  description?: string;
+  /** Whether the rule should be executed. */
+  enabled?: boolean;
+  /** Configuration for exposed credential checking. */
+  exposedCredentialCheck?:
+    | PhasesVersionsGetResponseRulesItemBlockRuleExposedCredentialCheck
+    | PhasesVersionsGetResponseRulesItemChallengeExposedCredentialCheck
+    | PhasesVersionsGetResponseRulesItemCompressResponseRuleExposedCredentialCheck
+    | PhasesVersionsGetResponseRulesItemDDoSDynamicRuleExposedCredentialCheck
+    | PhasesVersionsGetResponseRulesItemExecuteRuleExposedCredentialCheck
+    | PhasesVersionsGetResponseRulesItemForceConnectionCloseRuleExposedCredentialCheck
+    | PhasesVersionsGetResponseRulesItemJSChallengeExposedCredentialCheck
+    | PhasesVersionsGetResponseRulesItemLogRuleExposedCredentialCheck
+    | PhasesVersionsGetResponseRulesItemLogCustomFieldRuleExposedCredentialCheck
+    | PhasesVersionsGetResponseRulesItemManagedChallengeRuleExposedCredentialCheck
+    | PhasesVersionsGetResponseRulesItemRedirectRuleExposedCredentialCheck
+    | PhasesVersionsGetResponseRulesItemRewriteRuleExposedCredentialCheck
+    | PhasesVersionsGetResponseRulesItemRouteRuleExposedCredentialCheck
+    | PhasesVersionsGetResponseRulesItemScoreRuleExposedCredentialCheck
+    | PhasesVersionsGetResponseRulesItemServeErrorRuleExposedCredentialCheck
+    | PhasesVersionsGetResponseRulesItemSetCacheControlExposedCredentialCheck
+    | PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleExposedCredentialCheck
+    | PhasesVersionsGetResponseRulesItemSetCacheTagsExposedCredentialCheck
+    | PhasesVersionsGetResponseRulesItemSetConfigRuleExposedCredentialCheck
+    | PhasesVersionsGetResponseRulesItemSkipRuleExposedCredentialCheck
+    | PhasesVersionsGetResponseRulesItemTransformResponseHTMLExposedCredentialCheck;
+  /** The expression defining which traffic will match the rule. */
+  expression?: string;
+  /** An object configuring the rule's logging behavior. */
+  logging?: PhasesVersionsGetResponseRulesItemBlockRuleLogging;
+  /** An object configuring the rule's rate limit behavior. */
+  ratelimit?:
+    | PhasesVersionsGetResponseRulesItemBlockRuleRatelimit
+    | PhasesVersionsGetResponseRulesItemChallengeRatelimit
+    | PhasesVersionsGetResponseRulesItemCompressResponseRuleRatelimit
+    | PhasesVersionsGetResponseRulesItemDDoSDynamicRuleRatelimit
+    | PhasesVersionsGetResponseRulesItemExecuteRuleRatelimit
+    | PhasesVersionsGetResponseRulesItemForceConnectionCloseRuleRatelimit
+    | PhasesVersionsGetResponseRulesItemJSChallengeRatelimit
+    | PhasesVersionsGetResponseRulesItemLogRuleRatelimit
+    | PhasesVersionsGetResponseRulesItemLogCustomFieldRuleRatelimit
+    | PhasesVersionsGetResponseRulesItemManagedChallengeRuleRatelimit
+    | PhasesVersionsGetResponseRulesItemRedirectRuleRatelimit
+    | PhasesVersionsGetResponseRulesItemRewriteRuleRatelimit
+    | PhasesVersionsGetResponseRulesItemRouteRuleRatelimit
+    | PhasesVersionsGetResponseRulesItemScoreRuleRatelimit
+    | PhasesVersionsGetResponseRulesItemServeErrorRuleRatelimit
+    | PhasesVersionsGetResponseRulesItemSetCacheControlRatelimit
+    | PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleRatelimit
+    | PhasesVersionsGetResponseRulesItemSetCacheTagsRatelimit
+    | PhasesVersionsGetResponseRulesItemSetConfigRuleRatelimit
+    | PhasesVersionsGetResponseRulesItemSkipRuleRatelimit
+    | PhasesVersionsGetResponseRulesItemTransformResponseHTMLRatelimit;
+  /** The reference of the rule (the rule's ID by default). */
+  ref?: string;
+}
+export const PhasesVersionsGetResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lastUpdated: S.String.pipe(T.Body("last_updated")),
+    version: S.String,
+    id: S.optional(S.String),
+    action: S.optional(
+      S.Union(
+        PhasesVersionsGetResponseRulesItemBlockRuleAction,
+        PhasesVersionsGetResponseRulesItemChallengeAction,
+        PhasesVersionsGetResponseRulesItemCompressResponseRuleAction,
+        PhasesVersionsGetResponseRulesItemDDoSDynamicRuleAction,
+        PhasesVersionsGetResponseRulesItemExecuteRuleAction,
+        PhasesVersionsGetResponseRulesItemForceConnectionCloseRuleAction,
+        PhasesVersionsGetResponseRulesItemJSChallengeAction,
+        PhasesVersionsGetResponseRulesItemLogRuleAction,
+        PhasesVersionsGetResponseRulesItemLogCustomFieldRuleAction,
+        PhasesVersionsGetResponseRulesItemManagedChallengeRuleAction,
+        PhasesVersionsGetResponseRulesItemRedirectRuleAction,
+        PhasesVersionsGetResponseRulesItemRewriteRuleAction,
+        PhasesVersionsGetResponseRulesItemRouteRuleAction,
+        PhasesVersionsGetResponseRulesItemScoreRuleAction,
+        PhasesVersionsGetResponseRulesItemServeErrorRuleAction,
+        PhasesVersionsGetResponseRulesItemSetCacheControlAction,
+        PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleAction,
+        PhasesVersionsGetResponseRulesItemSetCacheTagsAction,
+        PhasesVersionsGetResponseRulesItemSetConfigRuleAction,
+        PhasesVersionsGetResponseRulesItemSkipRuleAction,
+        PhasesVersionsGetResponseRulesItemTransformResponseHTMLAction,
+      ),
+    ),
+    actionParameters: S.optional(
+      S.Union(
+        PhasesVersionsGetResponseRulesItemBlockRuleActionParameters,
+        S.Unknown,
+        PhasesVersionsGetResponseRulesItemCompressResponseRuleActionParameters,
+        PhasesVersionsGetResponseRulesItemExecuteRuleActionParameters,
+        PhasesVersionsGetResponseRulesItemLogCustomFieldRuleActionParameters,
+        PhasesVersionsGetResponseRulesItemRedirectRuleActionParameters,
+        PhasesVersionsGetResponseRulesItemRewriteRuleActionParameters,
+        PhasesVersionsGetResponseRulesItemRouteRuleActionParameters,
+        PhasesVersionsGetResponseRulesItemScoreRuleActionParameters,
+        PhasesVersionsGetResponseRulesItemServeErrorRuleActionParameters,
+        PhasesVersionsGetResponseRulesItemSetCacheControlActionParameters,
+        PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleActionParameters,
+        PhasesVersionsGetResponseRulesItemSetCacheTagsActionParameters,
+        PhasesVersionsGetResponseRulesItemSetConfigRuleActionParameters,
+        PhasesVersionsGetResponseRulesItemSkipRuleActionParameters,
+        PhasesVersionsGetResponseRulesItemTransformResponseHTMLActionParameters,
+      ).pipe(T.Body("action_parameters")),
+    ),
+    categories: S.optional(
+      S.Union(
+        PhasesVersionsGetResponseRulesItemBlockRuleCategoriesList,
+        PhasesVersionsGetResponseRulesItemChallengeCategoriesList,
+        PhasesVersionsGetResponseRulesItemCompressResponseRuleCategoriesList,
+        PhasesVersionsGetResponseRulesItemDDoSDynamicRuleCategoriesList,
+        PhasesVersionsGetResponseRulesItemExecuteRuleCategoriesList,
+        PhasesVersionsGetResponseRulesItemForceConnectionCloseRuleCategoriesList,
+        PhasesVersionsGetResponseRulesItemJSChallengeCategoriesList,
+        PhasesVersionsGetResponseRulesItemLogRuleCategoriesList,
+        PhasesVersionsGetResponseRulesItemLogCustomFieldRuleCategoriesList,
+        PhasesVersionsGetResponseRulesItemManagedChallengeRuleCategoriesList,
+        PhasesVersionsGetResponseRulesItemRedirectRuleCategoriesList,
+        PhasesVersionsGetResponseRulesItemRewriteRuleCategoriesList,
+        PhasesVersionsGetResponseRulesItemRouteRuleCategoriesList,
+        PhasesVersionsGetResponseRulesItemScoreRuleCategoriesList,
+        PhasesVersionsGetResponseRulesItemServeErrorRuleCategoriesList,
+        PhasesVersionsGetResponseRulesItemSetCacheControlCategoriesList,
+        PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleCategoriesList,
+        PhasesVersionsGetResponseRulesItemSetCacheTagsCategoriesList,
+        PhasesVersionsGetResponseRulesItemSetConfigRuleCategoriesList,
+        PhasesVersionsGetResponseRulesItemSkipRuleCategoriesList,
+        PhasesVersionsGetResponseRulesItemTransformResponseHTMLCategoriesList,
+      ),
+    ),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    exposedCredentialCheck: S.optional(
+      S.Union(
+        PhasesVersionsGetResponseRulesItemBlockRuleExposedCredentialCheck,
+        PhasesVersionsGetResponseRulesItemChallengeExposedCredentialCheck,
+        PhasesVersionsGetResponseRulesItemCompressResponseRuleExposedCredentialCheck,
+        PhasesVersionsGetResponseRulesItemDDoSDynamicRuleExposedCredentialCheck,
+        PhasesVersionsGetResponseRulesItemExecuteRuleExposedCredentialCheck,
+        PhasesVersionsGetResponseRulesItemForceConnectionCloseRuleExposedCredentialCheck,
+        PhasesVersionsGetResponseRulesItemJSChallengeExposedCredentialCheck,
+        PhasesVersionsGetResponseRulesItemLogRuleExposedCredentialCheck,
+        PhasesVersionsGetResponseRulesItemLogCustomFieldRuleExposedCredentialCheck,
+        PhasesVersionsGetResponseRulesItemManagedChallengeRuleExposedCredentialCheck,
+        PhasesVersionsGetResponseRulesItemRedirectRuleExposedCredentialCheck,
+        PhasesVersionsGetResponseRulesItemRewriteRuleExposedCredentialCheck,
+        PhasesVersionsGetResponseRulesItemRouteRuleExposedCredentialCheck,
+        PhasesVersionsGetResponseRulesItemScoreRuleExposedCredentialCheck,
+        PhasesVersionsGetResponseRulesItemServeErrorRuleExposedCredentialCheck,
+        PhasesVersionsGetResponseRulesItemSetCacheControlExposedCredentialCheck,
+        PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleExposedCredentialCheck,
+        PhasesVersionsGetResponseRulesItemSetCacheTagsExposedCredentialCheck,
+        PhasesVersionsGetResponseRulesItemSetConfigRuleExposedCredentialCheck,
+        PhasesVersionsGetResponseRulesItemSkipRuleExposedCredentialCheck,
+        PhasesVersionsGetResponseRulesItemTransformResponseHTMLExposedCredentialCheck,
+      ).pipe(T.Body("exposed_credential_check")),
+    ),
+    expression: S.optional(S.String),
+    logging: S.optional(PhasesVersionsGetResponseRulesItemBlockRuleLogging),
+    ratelimit: S.optional(
+      S.Union(
+        PhasesVersionsGetResponseRulesItemBlockRuleRatelimit,
+        PhasesVersionsGetResponseRulesItemChallengeRatelimit,
+        PhasesVersionsGetResponseRulesItemCompressResponseRuleRatelimit,
+        PhasesVersionsGetResponseRulesItemDDoSDynamicRuleRatelimit,
+        PhasesVersionsGetResponseRulesItemExecuteRuleRatelimit,
+        PhasesVersionsGetResponseRulesItemForceConnectionCloseRuleRatelimit,
+        PhasesVersionsGetResponseRulesItemJSChallengeRatelimit,
+        PhasesVersionsGetResponseRulesItemLogRuleRatelimit,
+        PhasesVersionsGetResponseRulesItemLogCustomFieldRuleRatelimit,
+        PhasesVersionsGetResponseRulesItemManagedChallengeRuleRatelimit,
+        PhasesVersionsGetResponseRulesItemRedirectRuleRatelimit,
+        PhasesVersionsGetResponseRulesItemRewriteRuleRatelimit,
+        PhasesVersionsGetResponseRulesItemRouteRuleRatelimit,
+        PhasesVersionsGetResponseRulesItemScoreRuleRatelimit,
+        PhasesVersionsGetResponseRulesItemServeErrorRuleRatelimit,
+        PhasesVersionsGetResponseRulesItemSetCacheControlRatelimit,
+        PhasesVersionsGetResponseRulesItemSetCacheSettingsRuleRatelimit,
+        PhasesVersionsGetResponseRulesItemSetCacheTagsRatelimit,
+        PhasesVersionsGetResponseRulesItemSetConfigRuleRatelimit,
+        PhasesVersionsGetResponseRulesItemSkipRuleRatelimit,
+        PhasesVersionsGetResponseRulesItemTransformResponseHTMLRatelimit,
+      ),
+    ),
+    ref: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PhasesVersionsGetResponseRulesItem",
+}) as any as S.Schema<PhasesVersionsGetResponseRulesItem>;
 
 export type PhasesVersionsGetResponseRulesList =
   ReadonlyArray<PhasesVersionsGetResponseRulesItem>;
@@ -42825,22 +43580,35 @@ export const GetResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeader 
       "GetResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeader",
   }) as any as S.Schema<GetResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeader>;
 
-export type GetResponseRulesItemRewriteRuleActionParametersHeaders =
-  | GetResponseRulesItemRewriteRuleActionParametersHeadersAddStaticHeader
-  | GetResponseRulesItemRewriteRuleActionParametersHeadersAddDynamicHeader
-  | GetResponseRulesItemRewriteRuleActionParametersHeadersSetStaticHeader
-  | GetResponseRulesItemRewriteRuleActionParametersHeadersSetDynamicHeader
-  | GetResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeader;
+export interface GetResponseRulesItemRewriteRuleActionParametersHeaders {
+  /** The operation to perform on the header. */
+  operation:
+    | GetResponseRulesItemRewriteRuleActionParametersHeadersAddStaticHeaderOperation
+    | GetResponseRulesItemRewriteRuleActionParametersHeadersAddDynamicHeaderOperation
+    | GetResponseRulesItemRewriteRuleActionParametersHeadersSetStaticHeaderOperation
+    | GetResponseRulesItemRewriteRuleActionParametersHeadersSetDynamicHeaderOperation
+    | GetResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeaderOperation;
+  /** A static value for the header. */
+  value?: string;
+  /** An expression that evaluates to a value for the header. */
+  expression?: string;
+}
 export const GetResponseRulesItemRewriteRuleActionParametersHeaders =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value"],
-      ["expression", "operation"],
-      ["operation", "value"],
-      ["expression", "operation"],
-      ["operation"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        GetResponseRulesItemRewriteRuleActionParametersHeadersAddStaticHeaderOperation,
+        GetResponseRulesItemRewriteRuleActionParametersHeadersAddDynamicHeaderOperation,
+        GetResponseRulesItemRewriteRuleActionParametersHeadersSetStaticHeaderOperation,
+        GetResponseRulesItemRewriteRuleActionParametersHeadersSetDynamicHeaderOperation,
+        GetResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeaderOperation,
+      ),
+      value: S.optional(S.String),
+      expression: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GetResponseRulesItemRewriteRuleActionParametersHeaders",
+  }) as any as S.Schema<GetResponseRulesItemRewriteRuleActionParametersHeaders>;
 
 export interface GetResponseRulesItemRewriteRuleActionParametersUriURIPathPath {
   /** An expression that evaluates to a value to rewrite the URI path to. */
@@ -42907,16 +43675,28 @@ export const GetResponseRulesItemRewriteRuleActionParametersUriURIQuery =
     identifier: "GetResponseRulesItemRewriteRuleActionParametersUriURIQuery",
   }) as any as S.Schema<GetResponseRulesItemRewriteRuleActionParametersUriURIQuery>;
 
-export type GetResponseRulesItemRewriteRuleActionParametersUri =
-  | GetResponseRulesItemRewriteRuleActionParametersUriURIPath
-  | GetResponseRulesItemRewriteRuleActionParametersUriURIQuery;
+export interface GetResponseRulesItemRewriteRuleActionParametersUri {
+  /** A URI path rewrite. */
+  path?: GetResponseRulesItemRewriteRuleActionParametersUriURIPathPath;
+  /** Whether to propagate the rewritten URI to origin. */
+  origin?: boolean;
+  /** A URI query rewrite. */
+  query?: GetResponseRulesItemRewriteRuleActionParametersUriURIQueryQuery;
+}
 export const GetResponseRulesItemRewriteRuleActionParametersUri =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["path", "origin"],
-      ["query", "origin"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.optional(
+        GetResponseRulesItemRewriteRuleActionParametersUriURIPathPath,
+      ),
+      origin: S.optional(S.Boolean),
+      query: S.optional(
+        GetResponseRulesItemRewriteRuleActionParametersUriURIQueryQuery,
+      ),
+    }),
+  ).annotate({
+    identifier: "GetResponseRulesItemRewriteRuleActionParametersUri",
+  }) as any as S.Schema<GetResponseRulesItemRewriteRuleActionParametersUri>;
 
 export interface GetResponseRulesItemRewriteRuleActionParameters {
   /** A map of headers to rewrite. */
@@ -43455,16 +44235,34 @@ export const GetResponseRulesItemServeErrorRuleActionParametersActionParametersA
       "GetResponseRulesItemServeErrorRuleActionParametersActionParametersAsset",
   }) as any as S.Schema<GetResponseRulesItemServeErrorRuleActionParametersActionParametersAsset>;
 
-export type GetResponseRulesItemServeErrorRuleActionParameters =
-  | GetResponseRulesItemServeErrorRuleActionParametersActionParametersContent
-  | GetResponseRulesItemServeErrorRuleActionParametersActionParametersAsset;
+export interface GetResponseRulesItemServeErrorRuleActionParameters {
+  /** The response content. */
+  content?: string;
+  /** The content type header to set with the error response. */
+  contentType?:
+    | GetResponseRulesItemServeErrorRuleActionParametersActionParametersContentContentType
+    | GetResponseRulesItemServeErrorRuleActionParametersActionParametersAssetContentType;
+  /** The status code to use for the error. */
+  statusCode?: number;
+  /** The name of a custom asset to serve as the error response. */
+  assetName?: string;
+}
 export const GetResponseRulesItemServeErrorRuleActionParameters =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["content", "contentType", "statusCode"],
-      ["assetName", "contentType", "statusCode"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      content: S.optional(S.String),
+      contentType: S.optional(
+        S.Union(
+          GetResponseRulesItemServeErrorRuleActionParametersActionParametersContentContentType,
+          GetResponseRulesItemServeErrorRuleActionParametersActionParametersAssetContentType,
+        ).pipe(T.Body("content_type")),
+      ),
+      statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
+      assetName: S.optional(S.String.pipe(T.Body("asset_name"))),
+    }),
+  ).annotate({
+    identifier: "GetResponseRulesItemServeErrorRuleActionParameters",
+  }) as any as S.Schema<GetResponseRulesItemServeErrorRuleActionParameters>;
 
 export type GetResponseRulesItemServeErrorRuleCategoriesList =
   ReadonlyArray<string>;
@@ -43646,16 +44444,26 @@ export const GetResponseRulesItemSetCacheControlActionParametersImmutableRemoveD
       "GetResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirective",
   }) as any as S.Schema<GetResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirective>;
 
-export type GetResponseRulesItemSetCacheControlActionParametersImmutable =
-  | GetResponseRulesItemSetCacheControlActionParametersImmutableSetDirective
-  | GetResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirective;
+export interface GetResponseRulesItemSetCacheControlActionParametersImmutable {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | GetResponseRulesItemSetCacheControlActionParametersImmutableSetDirectiveOperation
+    | GetResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const GetResponseRulesItemSetCacheControlActionParametersImmutable =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        GetResponseRulesItemSetCacheControlActionParametersImmutableSetDirectiveOperation,
+        GetResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier: "GetResponseRulesItemSetCacheControlActionParametersImmutable",
+  }) as any as S.Schema<GetResponseRulesItemSetCacheControlActionParametersImmutable>;
 
 export type GetResponseRulesItemSetCacheControlActionParametersMaxAgeSetDirectiveOperation =
   "set" | "remove";
@@ -43706,16 +44514,29 @@ export const GetResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDire
       "GetResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirective",
   }) as any as S.Schema<GetResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirective>;
 
-export type GetResponseRulesItemSetCacheControlActionParametersMaxAge =
-  | GetResponseRulesItemSetCacheControlActionParametersMaxAgeSetDirective
-  | GetResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirective;
+export interface GetResponseRulesItemSetCacheControlActionParametersMaxAge {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | GetResponseRulesItemSetCacheControlActionParametersMaxAgeSetDirectiveOperation
+    | GetResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirectiveOperation;
+  /** The duration value in seconds for the directive. */
+  value?: number;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const GetResponseRulesItemSetCacheControlActionParametersMaxAge =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        GetResponseRulesItemSetCacheControlActionParametersMaxAgeSetDirectiveOperation,
+        GetResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirectiveOperation,
+      ),
+      value: S.optional(S.Number),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier: "GetResponseRulesItemSetCacheControlActionParametersMaxAge",
+  }) as any as S.Schema<GetResponseRulesItemSetCacheControlActionParametersMaxAge>;
 
 export type GetResponseRulesItemSetCacheControlActionParametersMustRevalidateSetDirectiveOperation =
   "set" | "remove";
@@ -43763,16 +44584,27 @@ export const GetResponseRulesItemSetCacheControlActionParametersMustRevalidateRe
       "GetResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirective",
   }) as any as S.Schema<GetResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirective>;
 
-export type GetResponseRulesItemSetCacheControlActionParametersMustRevalidate =
-  | GetResponseRulesItemSetCacheControlActionParametersMustRevalidateSetDirective
-  | GetResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirective;
+export interface GetResponseRulesItemSetCacheControlActionParametersMustRevalidate {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | GetResponseRulesItemSetCacheControlActionParametersMustRevalidateSetDirectiveOperation
+    | GetResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const GetResponseRulesItemSetCacheControlActionParametersMustRevalidate =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        GetResponseRulesItemSetCacheControlActionParametersMustRevalidateSetDirectiveOperation,
+        GetResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "GetResponseRulesItemSetCacheControlActionParametersMustRevalidate",
+  }) as any as S.Schema<GetResponseRulesItemSetCacheControlActionParametersMustRevalidate>;
 
 export type GetResponseRulesItemSetCacheControlActionParametersMustUnderstandSetDirectiveOperation =
   "set" | "remove";
@@ -43820,16 +44652,27 @@ export const GetResponseRulesItemSetCacheControlActionParametersMustUnderstandRe
       "GetResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirective",
   }) as any as S.Schema<GetResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirective>;
 
-export type GetResponseRulesItemSetCacheControlActionParametersMustUnderstand =
-  | GetResponseRulesItemSetCacheControlActionParametersMustUnderstandSetDirective
-  | GetResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirective;
+export interface GetResponseRulesItemSetCacheControlActionParametersMustUnderstand {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | GetResponseRulesItemSetCacheControlActionParametersMustUnderstandSetDirectiveOperation
+    | GetResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const GetResponseRulesItemSetCacheControlActionParametersMustUnderstand =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        GetResponseRulesItemSetCacheControlActionParametersMustUnderstandSetDirectiveOperation,
+        GetResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "GetResponseRulesItemSetCacheControlActionParametersMustUnderstand",
+  }) as any as S.Schema<GetResponseRulesItemSetCacheControlActionParametersMustUnderstand>;
 
 export type GetResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveOperation =
   "set" | "remove";
@@ -43889,16 +44732,31 @@ export const GetResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDir
       "GetResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirective",
   }) as any as S.Schema<GetResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirective>;
 
-export type GetResponseRulesItemSetCacheControlActionParametersNoCache =
-  | GetResponseRulesItemSetCacheControlActionParametersNoCacheSetDirective
-  | GetResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirective;
+export interface GetResponseRulesItemSetCacheControlActionParametersNoCache {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | GetResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveOperation
+    | GetResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+  /** Optional list of header names to qualify the directive (e.g., for "private" or "no-cache" directives). */
+  qualifiers?: GetResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList;
+}
 export const GetResponseRulesItemSetCacheControlActionParametersNoCache =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly", "qualifiers"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        GetResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveOperation,
+        GetResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+      qualifiers: S.optional(
+        GetResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList,
+      ),
+    }),
+  ).annotate({
+    identifier: "GetResponseRulesItemSetCacheControlActionParametersNoCache",
+  }) as any as S.Schema<GetResponseRulesItemSetCacheControlActionParametersNoCache>;
 
 export type GetResponseRulesItemSetCacheControlActionParametersNoStoreSetDirectiveOperation =
   "set" | "remove";
@@ -43946,16 +44804,26 @@ export const GetResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDir
       "GetResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirective",
   }) as any as S.Schema<GetResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirective>;
 
-export type GetResponseRulesItemSetCacheControlActionParametersNoStore =
-  | GetResponseRulesItemSetCacheControlActionParametersNoStoreSetDirective
-  | GetResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirective;
+export interface GetResponseRulesItemSetCacheControlActionParametersNoStore {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | GetResponseRulesItemSetCacheControlActionParametersNoStoreSetDirectiveOperation
+    | GetResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const GetResponseRulesItemSetCacheControlActionParametersNoStore =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        GetResponseRulesItemSetCacheControlActionParametersNoStoreSetDirectiveOperation,
+        GetResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier: "GetResponseRulesItemSetCacheControlActionParametersNoStore",
+  }) as any as S.Schema<GetResponseRulesItemSetCacheControlActionParametersNoStore>;
 
 export type GetResponseRulesItemSetCacheControlActionParametersNoTransformSetDirectiveOperation =
   "set" | "remove";
@@ -44003,16 +44871,27 @@ export const GetResponseRulesItemSetCacheControlActionParametersNoTransformRemov
       "GetResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirective",
   }) as any as S.Schema<GetResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirective>;
 
-export type GetResponseRulesItemSetCacheControlActionParametersNoTransform =
-  | GetResponseRulesItemSetCacheControlActionParametersNoTransformSetDirective
-  | GetResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirective;
+export interface GetResponseRulesItemSetCacheControlActionParametersNoTransform {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | GetResponseRulesItemSetCacheControlActionParametersNoTransformSetDirectiveOperation
+    | GetResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const GetResponseRulesItemSetCacheControlActionParametersNoTransform =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        GetResponseRulesItemSetCacheControlActionParametersNoTransformSetDirectiveOperation,
+        GetResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "GetResponseRulesItemSetCacheControlActionParametersNoTransform",
+  }) as any as S.Schema<GetResponseRulesItemSetCacheControlActionParametersNoTransform>;
 
 export type GetResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveOperation =
   "set" | "remove";
@@ -44072,16 +44951,31 @@ export const GetResponseRulesItemSetCacheControlActionParametersPrivateRemoveDir
       "GetResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirective",
   }) as any as S.Schema<GetResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirective>;
 
-export type GetResponseRulesItemSetCacheControlActionParametersPrivate =
-  | GetResponseRulesItemSetCacheControlActionParametersPrivateSetDirective
-  | GetResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirective;
+export interface GetResponseRulesItemSetCacheControlActionParametersPrivate {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | GetResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveOperation
+    | GetResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+  /** Optional list of header names to qualify the directive (e.g., for "private" or "no-cache" directives). */
+  qualifiers?: GetResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList;
+}
 export const GetResponseRulesItemSetCacheControlActionParametersPrivate =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly", "qualifiers"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        GetResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveOperation,
+        GetResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+      qualifiers: S.optional(
+        GetResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList,
+      ),
+    }),
+  ).annotate({
+    identifier: "GetResponseRulesItemSetCacheControlActionParametersPrivate",
+  }) as any as S.Schema<GetResponseRulesItemSetCacheControlActionParametersPrivate>;
 
 export type GetResponseRulesItemSetCacheControlActionParametersProxyRevalidateSetDirectiveOperation =
   "set" | "remove";
@@ -44129,16 +45023,27 @@ export const GetResponseRulesItemSetCacheControlActionParametersProxyRevalidateR
       "GetResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirective",
   }) as any as S.Schema<GetResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirective>;
 
-export type GetResponseRulesItemSetCacheControlActionParametersProxyRevalidate =
-    | GetResponseRulesItemSetCacheControlActionParametersProxyRevalidateSetDirective
-    | GetResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirective;
+export interface GetResponseRulesItemSetCacheControlActionParametersProxyRevalidate {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | GetResponseRulesItemSetCacheControlActionParametersProxyRevalidateSetDirectiveOperation
+    | GetResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const GetResponseRulesItemSetCacheControlActionParametersProxyRevalidate =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        GetResponseRulesItemSetCacheControlActionParametersProxyRevalidateSetDirectiveOperation,
+        GetResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "GetResponseRulesItemSetCacheControlActionParametersProxyRevalidate",
+  }) as any as S.Schema<GetResponseRulesItemSetCacheControlActionParametersProxyRevalidate>;
 
 export type GetResponseRulesItemSetCacheControlActionParametersPublicSetDirectiveOperation =
   "set" | "remove";
@@ -44186,16 +45091,26 @@ export const GetResponseRulesItemSetCacheControlActionParametersPublicRemoveDire
       "GetResponseRulesItemSetCacheControlActionParametersPublicRemoveDirective",
   }) as any as S.Schema<GetResponseRulesItemSetCacheControlActionParametersPublicRemoveDirective>;
 
-export type GetResponseRulesItemSetCacheControlActionParametersPublic =
-  | GetResponseRulesItemSetCacheControlActionParametersPublicSetDirective
-  | GetResponseRulesItemSetCacheControlActionParametersPublicRemoveDirective;
+export interface GetResponseRulesItemSetCacheControlActionParametersPublic {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | GetResponseRulesItemSetCacheControlActionParametersPublicSetDirectiveOperation
+    | GetResponseRulesItemSetCacheControlActionParametersPublicRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const GetResponseRulesItemSetCacheControlActionParametersPublic =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        GetResponseRulesItemSetCacheControlActionParametersPublicSetDirectiveOperation,
+        GetResponseRulesItemSetCacheControlActionParametersPublicRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier: "GetResponseRulesItemSetCacheControlActionParametersPublic",
+  }) as any as S.Schema<GetResponseRulesItemSetCacheControlActionParametersPublic>;
 
 export type GetResponseRulesItemSetCacheControlActionParametersSMaxageSetDirectiveOperation =
   "set" | "remove";
@@ -44246,16 +45161,29 @@ export const GetResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDir
       "GetResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirective",
   }) as any as S.Schema<GetResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirective>;
 
-export type GetResponseRulesItemSetCacheControlActionParametersSMaxage =
-  | GetResponseRulesItemSetCacheControlActionParametersSMaxageSetDirective
-  | GetResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirective;
+export interface GetResponseRulesItemSetCacheControlActionParametersSMaxage {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | GetResponseRulesItemSetCacheControlActionParametersSMaxageSetDirectiveOperation
+    | GetResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirectiveOperation;
+  /** The duration value in seconds for the directive. */
+  value?: number;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const GetResponseRulesItemSetCacheControlActionParametersSMaxage =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        GetResponseRulesItemSetCacheControlActionParametersSMaxageSetDirectiveOperation,
+        GetResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirectiveOperation,
+      ),
+      value: S.optional(S.Number),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier: "GetResponseRulesItemSetCacheControlActionParametersSMaxage",
+  }) as any as S.Schema<GetResponseRulesItemSetCacheControlActionParametersSMaxage>;
 
 export type GetResponseRulesItemSetCacheControlActionParametersStaleIfErrorSetDirectiveOperation =
   "set" | "remove";
@@ -44306,16 +45234,30 @@ export const GetResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemo
       "GetResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirective",
   }) as any as S.Schema<GetResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirective>;
 
-export type GetResponseRulesItemSetCacheControlActionParametersStaleIfError =
-  | GetResponseRulesItemSetCacheControlActionParametersStaleIfErrorSetDirective
-  | GetResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirective;
+export interface GetResponseRulesItemSetCacheControlActionParametersStaleIfError {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | GetResponseRulesItemSetCacheControlActionParametersStaleIfErrorSetDirectiveOperation
+    | GetResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirectiveOperation;
+  /** The duration value in seconds for the directive. */
+  value?: number;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const GetResponseRulesItemSetCacheControlActionParametersStaleIfError =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        GetResponseRulesItemSetCacheControlActionParametersStaleIfErrorSetDirectiveOperation,
+        GetResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirectiveOperation,
+      ),
+      value: S.optional(S.Number),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "GetResponseRulesItemSetCacheControlActionParametersStaleIfError",
+  }) as any as S.Schema<GetResponseRulesItemSetCacheControlActionParametersStaleIfError>;
 
 export type GetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirectiveOperation =
   "set" | "remove";
@@ -44366,16 +45308,30 @@ export const GetResponseRulesItemSetCacheControlActionParametersStaleWhileRevali
       "GetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirective",
   }) as any as S.Schema<GetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirective>;
 
-export type GetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate =
-    | GetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirective
-    | GetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirective;
+export interface GetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | GetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirectiveOperation
+    | GetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirectiveOperation;
+  /** The duration value in seconds for the directive. */
+  value?: number;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const GetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        GetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirectiveOperation,
+        GetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirectiveOperation,
+      ),
+      value: S.optional(S.Number),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "GetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate",
+  }) as any as S.Schema<GetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate>;
 
 export interface GetResponseRulesItemSetCacheControlActionParameters {
   /** A cache-control directive configuration. */
@@ -45534,24 +46490,46 @@ export const GetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpress
       "GetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpression",
   }) as any as S.Schema<GetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpression>;
 
-export type GetResponseRulesItemSetCacheTagsActionParameters =
-  | GetResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValues
-  | GetResponseRulesItemSetCacheTagsActionParametersAddCacheTagsExpression
-  | GetResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValues
-  | GetResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsExpression
-  | GetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValues
-  | GetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpression;
+export interface GetResponseRulesItemSetCacheTagsActionParameters {
+  /** The operation to perform on the cache tags. */
+  operation:
+    | GetResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesOperation
+    | GetResponseRulesItemSetCacheTagsActionParametersAddCacheTagsExpressionOperation
+    | GetResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesOperation
+    | GetResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsExpressionOperation
+    | GetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesOperation
+    | GetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpressionOperation;
+  /** A list of cache tag values. */
+  values?:
+    | GetResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesValuesList
+    | GetResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesValuesList
+    | GetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesValuesList;
+  /** An expression that evaluates to an array of cache tag values. */
+  expression?: string;
+}
 export const GetResponseRulesItemSetCacheTagsActionParameters =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "values"],
-      ["expression", "operation"],
-      ["operation", "values"],
-      ["expression", "operation"],
-      ["operation", "values"],
-      ["expression", "operation"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        GetResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesOperation,
+        GetResponseRulesItemSetCacheTagsActionParametersAddCacheTagsExpressionOperation,
+        GetResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesOperation,
+        GetResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsExpressionOperation,
+        GetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesOperation,
+        GetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpressionOperation,
+      ),
+      values: S.optional(
+        S.Union(
+          GetResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesValuesList,
+          GetResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesValuesList,
+          GetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesValuesList,
+        ),
+      ),
+      expression: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GetResponseRulesItemSetCacheTagsActionParameters",
+  }) as any as S.Schema<GetResponseRulesItemSetCacheTagsActionParameters>;
 
 export type GetResponseRulesItemSetCacheTagsCategoriesList =
   ReadonlyArray<string>;
@@ -46382,347 +47360,268 @@ export const GetResponseRulesItemTransformResponseHTML =
     identifier: "GetResponseRulesItemTransformResponseHTML",
   }) as any as S.Schema<GetResponseRulesItemTransformResponseHTML>;
 
-export type GetResponseRulesItem =
-  | GetResponseRulesItemBlockRule
-  | GetResponseRulesItemChallenge
-  | GetResponseRulesItemCompressResponseRule
-  | GetResponseRulesItemDDoSDynamicRule
-  | GetResponseRulesItemExecuteRule
-  | GetResponseRulesItemForceConnectionCloseRule
-  | GetResponseRulesItemJSChallenge
-  | GetResponseRulesItemLogRule
-  | GetResponseRulesItemLogCustomFieldRule
-  | GetResponseRulesItemManagedChallengeRule
-  | GetResponseRulesItemRedirectRule
-  | GetResponseRulesItemRewriteRule
-  | GetResponseRulesItemRouteRule
-  | GetResponseRulesItemScoreRule
-  | GetResponseRulesItemServeErrorRule
-  | GetResponseRulesItemSetCacheControl
-  | GetResponseRulesItemSetCacheSettingsRule
-  | GetResponseRulesItemSetCacheTags
-  | GetResponseRulesItemSetConfigRule
-  | GetResponseRulesItemSkipRule
-  | GetResponseRulesItemTransformResponseHTML;
-export const GetResponseRulesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-  ]),
-);
+export interface GetResponseRulesItem {
+  /** The timestamp of when the rule was last modified. */
+  lastUpdated: string;
+  /** The version of the rule. */
+  version: string;
+  /** The unique ID of the rule. */
+  id?: string;
+  /** The action to perform when the rule matches. */
+  action?:
+    | GetResponseRulesItemBlockRuleAction
+    | GetResponseRulesItemChallengeAction
+    | GetResponseRulesItemCompressResponseRuleAction
+    | GetResponseRulesItemDDoSDynamicRuleAction
+    | GetResponseRulesItemExecuteRuleAction
+    | GetResponseRulesItemForceConnectionCloseRuleAction
+    | GetResponseRulesItemJSChallengeAction
+    | GetResponseRulesItemLogRuleAction
+    | GetResponseRulesItemLogCustomFieldRuleAction
+    | GetResponseRulesItemManagedChallengeRuleAction
+    | GetResponseRulesItemRedirectRuleAction
+    | GetResponseRulesItemRewriteRuleAction
+    | GetResponseRulesItemRouteRuleAction
+    | GetResponseRulesItemScoreRuleAction
+    | GetResponseRulesItemServeErrorRuleAction
+    | GetResponseRulesItemSetCacheControlAction
+    | GetResponseRulesItemSetCacheSettingsRuleAction
+    | GetResponseRulesItemSetCacheTagsAction
+    | GetResponseRulesItemSetConfigRuleAction
+    | GetResponseRulesItemSkipRuleAction
+    | GetResponseRulesItemTransformResponseHTMLAction;
+  /** The parameters configuring the rule's action. */
+  actionParameters?:
+    | GetResponseRulesItemBlockRuleActionParameters
+    | unknown
+    | GetResponseRulesItemCompressResponseRuleActionParameters
+    | GetResponseRulesItemExecuteRuleActionParameters
+    | GetResponseRulesItemLogCustomFieldRuleActionParameters
+    | GetResponseRulesItemRedirectRuleActionParameters
+    | GetResponseRulesItemRewriteRuleActionParameters
+    | GetResponseRulesItemRouteRuleActionParameters
+    | GetResponseRulesItemScoreRuleActionParameters
+    | GetResponseRulesItemServeErrorRuleActionParameters
+    | GetResponseRulesItemSetCacheControlActionParameters
+    | GetResponseRulesItemSetCacheSettingsRuleActionParameters
+    | GetResponseRulesItemSetCacheTagsActionParameters
+    | GetResponseRulesItemSetConfigRuleActionParameters
+    | GetResponseRulesItemSkipRuleActionParameters
+    | GetResponseRulesItemTransformResponseHTMLActionParameters;
+  /** The categories of the rule. */
+  categories?:
+    | GetResponseRulesItemBlockRuleCategoriesList
+    | GetResponseRulesItemChallengeCategoriesList
+    | GetResponseRulesItemCompressResponseRuleCategoriesList
+    | GetResponseRulesItemDDoSDynamicRuleCategoriesList
+    | GetResponseRulesItemExecuteRuleCategoriesList
+    | GetResponseRulesItemForceConnectionCloseRuleCategoriesList
+    | GetResponseRulesItemJSChallengeCategoriesList
+    | GetResponseRulesItemLogRuleCategoriesList
+    | GetResponseRulesItemLogCustomFieldRuleCategoriesList
+    | GetResponseRulesItemManagedChallengeRuleCategoriesList
+    | GetResponseRulesItemRedirectRuleCategoriesList
+    | GetResponseRulesItemRewriteRuleCategoriesList
+    | GetResponseRulesItemRouteRuleCategoriesList
+    | GetResponseRulesItemScoreRuleCategoriesList
+    | GetResponseRulesItemServeErrorRuleCategoriesList
+    | GetResponseRulesItemSetCacheControlCategoriesList
+    | GetResponseRulesItemSetCacheSettingsRuleCategoriesList
+    | GetResponseRulesItemSetCacheTagsCategoriesList
+    | GetResponseRulesItemSetConfigRuleCategoriesList
+    | GetResponseRulesItemSkipRuleCategoriesList
+    | GetResponseRulesItemTransformResponseHTMLCategoriesList;
+  /** An informative description of the rule. */
+  description?: string;
+  /** Whether the rule should be executed. */
+  enabled?: boolean;
+  /** Configuration for exposed credential checking. */
+  exposedCredentialCheck?:
+    | GetResponseRulesItemBlockRuleExposedCredentialCheck
+    | GetResponseRulesItemChallengeExposedCredentialCheck
+    | GetResponseRulesItemCompressResponseRuleExposedCredentialCheck
+    | GetResponseRulesItemDDoSDynamicRuleExposedCredentialCheck
+    | GetResponseRulesItemExecuteRuleExposedCredentialCheck
+    | GetResponseRulesItemForceConnectionCloseRuleExposedCredentialCheck
+    | GetResponseRulesItemJSChallengeExposedCredentialCheck
+    | GetResponseRulesItemLogRuleExposedCredentialCheck
+    | GetResponseRulesItemLogCustomFieldRuleExposedCredentialCheck
+    | GetResponseRulesItemManagedChallengeRuleExposedCredentialCheck
+    | GetResponseRulesItemRedirectRuleExposedCredentialCheck
+    | GetResponseRulesItemRewriteRuleExposedCredentialCheck
+    | GetResponseRulesItemRouteRuleExposedCredentialCheck
+    | GetResponseRulesItemScoreRuleExposedCredentialCheck
+    | GetResponseRulesItemServeErrorRuleExposedCredentialCheck
+    | GetResponseRulesItemSetCacheControlExposedCredentialCheck
+    | GetResponseRulesItemSetCacheSettingsRuleExposedCredentialCheck
+    | GetResponseRulesItemSetCacheTagsExposedCredentialCheck
+    | GetResponseRulesItemSetConfigRuleExposedCredentialCheck
+    | GetResponseRulesItemSkipRuleExposedCredentialCheck
+    | GetResponseRulesItemTransformResponseHTMLExposedCredentialCheck;
+  /** The expression defining which traffic will match the rule. */
+  expression?: string;
+  /** An object configuring the rule's logging behavior. */
+  logging?: GetResponseRulesItemBlockRuleLogging;
+  /** An object configuring the rule's rate limit behavior. */
+  ratelimit?:
+    | GetResponseRulesItemBlockRuleRatelimit
+    | GetResponseRulesItemChallengeRatelimit
+    | GetResponseRulesItemCompressResponseRuleRatelimit
+    | GetResponseRulesItemDDoSDynamicRuleRatelimit
+    | GetResponseRulesItemExecuteRuleRatelimit
+    | GetResponseRulesItemForceConnectionCloseRuleRatelimit
+    | GetResponseRulesItemJSChallengeRatelimit
+    | GetResponseRulesItemLogRuleRatelimit
+    | GetResponseRulesItemLogCustomFieldRuleRatelimit
+    | GetResponseRulesItemManagedChallengeRuleRatelimit
+    | GetResponseRulesItemRedirectRuleRatelimit
+    | GetResponseRulesItemRewriteRuleRatelimit
+    | GetResponseRulesItemRouteRuleRatelimit
+    | GetResponseRulesItemScoreRuleRatelimit
+    | GetResponseRulesItemServeErrorRuleRatelimit
+    | GetResponseRulesItemSetCacheControlRatelimit
+    | GetResponseRulesItemSetCacheSettingsRuleRatelimit
+    | GetResponseRulesItemSetCacheTagsRatelimit
+    | GetResponseRulesItemSetConfigRuleRatelimit
+    | GetResponseRulesItemSkipRuleRatelimit
+    | GetResponseRulesItemTransformResponseHTMLRatelimit;
+  /** The reference of the rule (the rule's ID by default). */
+  ref?: string;
+}
+export const GetResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lastUpdated: S.String.pipe(T.Body("last_updated")),
+    version: S.String,
+    id: S.optional(S.String),
+    action: S.optional(
+      S.Union(
+        GetResponseRulesItemBlockRuleAction,
+        GetResponseRulesItemChallengeAction,
+        GetResponseRulesItemCompressResponseRuleAction,
+        GetResponseRulesItemDDoSDynamicRuleAction,
+        GetResponseRulesItemExecuteRuleAction,
+        GetResponseRulesItemForceConnectionCloseRuleAction,
+        GetResponseRulesItemJSChallengeAction,
+        GetResponseRulesItemLogRuleAction,
+        GetResponseRulesItemLogCustomFieldRuleAction,
+        GetResponseRulesItemManagedChallengeRuleAction,
+        GetResponseRulesItemRedirectRuleAction,
+        GetResponseRulesItemRewriteRuleAction,
+        GetResponseRulesItemRouteRuleAction,
+        GetResponseRulesItemScoreRuleAction,
+        GetResponseRulesItemServeErrorRuleAction,
+        GetResponseRulesItemSetCacheControlAction,
+        GetResponseRulesItemSetCacheSettingsRuleAction,
+        GetResponseRulesItemSetCacheTagsAction,
+        GetResponseRulesItemSetConfigRuleAction,
+        GetResponseRulesItemSkipRuleAction,
+        GetResponseRulesItemTransformResponseHTMLAction,
+      ),
+    ),
+    actionParameters: S.optional(
+      S.Union(
+        GetResponseRulesItemBlockRuleActionParameters,
+        S.Unknown,
+        GetResponseRulesItemCompressResponseRuleActionParameters,
+        GetResponseRulesItemExecuteRuleActionParameters,
+        GetResponseRulesItemLogCustomFieldRuleActionParameters,
+        GetResponseRulesItemRedirectRuleActionParameters,
+        GetResponseRulesItemRewriteRuleActionParameters,
+        GetResponseRulesItemRouteRuleActionParameters,
+        GetResponseRulesItemScoreRuleActionParameters,
+        GetResponseRulesItemServeErrorRuleActionParameters,
+        GetResponseRulesItemSetCacheControlActionParameters,
+        GetResponseRulesItemSetCacheSettingsRuleActionParameters,
+        GetResponseRulesItemSetCacheTagsActionParameters,
+        GetResponseRulesItemSetConfigRuleActionParameters,
+        GetResponseRulesItemSkipRuleActionParameters,
+        GetResponseRulesItemTransformResponseHTMLActionParameters,
+      ).pipe(T.Body("action_parameters")),
+    ),
+    categories: S.optional(
+      S.Union(
+        GetResponseRulesItemBlockRuleCategoriesList,
+        GetResponseRulesItemChallengeCategoriesList,
+        GetResponseRulesItemCompressResponseRuleCategoriesList,
+        GetResponseRulesItemDDoSDynamicRuleCategoriesList,
+        GetResponseRulesItemExecuteRuleCategoriesList,
+        GetResponseRulesItemForceConnectionCloseRuleCategoriesList,
+        GetResponseRulesItemJSChallengeCategoriesList,
+        GetResponseRulesItemLogRuleCategoriesList,
+        GetResponseRulesItemLogCustomFieldRuleCategoriesList,
+        GetResponseRulesItemManagedChallengeRuleCategoriesList,
+        GetResponseRulesItemRedirectRuleCategoriesList,
+        GetResponseRulesItemRewriteRuleCategoriesList,
+        GetResponseRulesItemRouteRuleCategoriesList,
+        GetResponseRulesItemScoreRuleCategoriesList,
+        GetResponseRulesItemServeErrorRuleCategoriesList,
+        GetResponseRulesItemSetCacheControlCategoriesList,
+        GetResponseRulesItemSetCacheSettingsRuleCategoriesList,
+        GetResponseRulesItemSetCacheTagsCategoriesList,
+        GetResponseRulesItemSetConfigRuleCategoriesList,
+        GetResponseRulesItemSkipRuleCategoriesList,
+        GetResponseRulesItemTransformResponseHTMLCategoriesList,
+      ),
+    ),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    exposedCredentialCheck: S.optional(
+      S.Union(
+        GetResponseRulesItemBlockRuleExposedCredentialCheck,
+        GetResponseRulesItemChallengeExposedCredentialCheck,
+        GetResponseRulesItemCompressResponseRuleExposedCredentialCheck,
+        GetResponseRulesItemDDoSDynamicRuleExposedCredentialCheck,
+        GetResponseRulesItemExecuteRuleExposedCredentialCheck,
+        GetResponseRulesItemForceConnectionCloseRuleExposedCredentialCheck,
+        GetResponseRulesItemJSChallengeExposedCredentialCheck,
+        GetResponseRulesItemLogRuleExposedCredentialCheck,
+        GetResponseRulesItemLogCustomFieldRuleExposedCredentialCheck,
+        GetResponseRulesItemManagedChallengeRuleExposedCredentialCheck,
+        GetResponseRulesItemRedirectRuleExposedCredentialCheck,
+        GetResponseRulesItemRewriteRuleExposedCredentialCheck,
+        GetResponseRulesItemRouteRuleExposedCredentialCheck,
+        GetResponseRulesItemScoreRuleExposedCredentialCheck,
+        GetResponseRulesItemServeErrorRuleExposedCredentialCheck,
+        GetResponseRulesItemSetCacheControlExposedCredentialCheck,
+        GetResponseRulesItemSetCacheSettingsRuleExposedCredentialCheck,
+        GetResponseRulesItemSetCacheTagsExposedCredentialCheck,
+        GetResponseRulesItemSetConfigRuleExposedCredentialCheck,
+        GetResponseRulesItemSkipRuleExposedCredentialCheck,
+        GetResponseRulesItemTransformResponseHTMLExposedCredentialCheck,
+      ).pipe(T.Body("exposed_credential_check")),
+    ),
+    expression: S.optional(S.String),
+    logging: S.optional(GetResponseRulesItemBlockRuleLogging),
+    ratelimit: S.optional(
+      S.Union(
+        GetResponseRulesItemBlockRuleRatelimit,
+        GetResponseRulesItemChallengeRatelimit,
+        GetResponseRulesItemCompressResponseRuleRatelimit,
+        GetResponseRulesItemDDoSDynamicRuleRatelimit,
+        GetResponseRulesItemExecuteRuleRatelimit,
+        GetResponseRulesItemForceConnectionCloseRuleRatelimit,
+        GetResponseRulesItemJSChallengeRatelimit,
+        GetResponseRulesItemLogRuleRatelimit,
+        GetResponseRulesItemLogCustomFieldRuleRatelimit,
+        GetResponseRulesItemManagedChallengeRuleRatelimit,
+        GetResponseRulesItemRedirectRuleRatelimit,
+        GetResponseRulesItemRewriteRuleRatelimit,
+        GetResponseRulesItemRouteRuleRatelimit,
+        GetResponseRulesItemScoreRuleRatelimit,
+        GetResponseRulesItemServeErrorRuleRatelimit,
+        GetResponseRulesItemSetCacheControlRatelimit,
+        GetResponseRulesItemSetCacheSettingsRuleRatelimit,
+        GetResponseRulesItemSetCacheTagsRatelimit,
+        GetResponseRulesItemSetConfigRuleRatelimit,
+        GetResponseRulesItemSkipRuleRatelimit,
+        GetResponseRulesItemTransformResponseHTMLRatelimit,
+      ),
+    ),
+    ref: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetResponseRulesItem",
+}) as any as S.Schema<GetResponseRulesItem>;
 
 export type GetResponseRulesList = ReadonlyArray<GetResponseRulesItem>;
 export const GetResponseRulesList = /*@__PURE__*/ S.Array(
@@ -48976,22 +49875,36 @@ export const VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersRemov
       "VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeader",
   }) as any as S.Schema<VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeader>;
 
-export type VersionsGetResponseRulesItemRewriteRuleActionParametersHeaders =
-  | VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersAddStaticHeader
-  | VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersAddDynamicHeader
-  | VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersSetStaticHeader
-  | VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersSetDynamicHeader
-  | VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeader;
+export interface VersionsGetResponseRulesItemRewriteRuleActionParametersHeaders {
+  /** The operation to perform on the header. */
+  operation:
+    | VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersAddStaticHeaderOperation
+    | VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersAddDynamicHeaderOperation
+    | VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersSetStaticHeaderOperation
+    | VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersSetDynamicHeaderOperation
+    | VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeaderOperation;
+  /** A static value for the header. */
+  value?: string;
+  /** An expression that evaluates to a value for the header. */
+  expression?: string;
+}
 export const VersionsGetResponseRulesItemRewriteRuleActionParametersHeaders =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value"],
-      ["expression", "operation"],
-      ["operation", "value"],
-      ["expression", "operation"],
-      ["operation"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersAddStaticHeaderOperation,
+        VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersAddDynamicHeaderOperation,
+        VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersSetStaticHeaderOperation,
+        VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersSetDynamicHeaderOperation,
+        VersionsGetResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeaderOperation,
+      ),
+      value: S.optional(S.String),
+      expression: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "VersionsGetResponseRulesItemRewriteRuleActionParametersHeaders",
+  }) as any as S.Schema<VersionsGetResponseRulesItemRewriteRuleActionParametersHeaders>;
 
 export interface VersionsGetResponseRulesItemRewriteRuleActionParametersUriURIPathPath {
   /** An expression that evaluates to a value to rewrite the URI path to. */
@@ -49062,16 +49975,28 @@ export const VersionsGetResponseRulesItemRewriteRuleActionParametersUriURIQuery 
       "VersionsGetResponseRulesItemRewriteRuleActionParametersUriURIQuery",
   }) as any as S.Schema<VersionsGetResponseRulesItemRewriteRuleActionParametersUriURIQuery>;
 
-export type VersionsGetResponseRulesItemRewriteRuleActionParametersUri =
-  | VersionsGetResponseRulesItemRewriteRuleActionParametersUriURIPath
-  | VersionsGetResponseRulesItemRewriteRuleActionParametersUriURIQuery;
+export interface VersionsGetResponseRulesItemRewriteRuleActionParametersUri {
+  /** A URI path rewrite. */
+  path?: VersionsGetResponseRulesItemRewriteRuleActionParametersUriURIPathPath;
+  /** Whether to propagate the rewritten URI to origin. */
+  origin?: boolean;
+  /** A URI query rewrite. */
+  query?: VersionsGetResponseRulesItemRewriteRuleActionParametersUriURIQueryQuery;
+}
 export const VersionsGetResponseRulesItemRewriteRuleActionParametersUri =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["path", "origin"],
-      ["query", "origin"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.optional(
+        VersionsGetResponseRulesItemRewriteRuleActionParametersUriURIPathPath,
+      ),
+      origin: S.optional(S.Boolean),
+      query: S.optional(
+        VersionsGetResponseRulesItemRewriteRuleActionParametersUriURIQueryQuery,
+      ),
+    }),
+  ).annotate({
+    identifier: "VersionsGetResponseRulesItemRewriteRuleActionParametersUri",
+  }) as any as S.Schema<VersionsGetResponseRulesItemRewriteRuleActionParametersUri>;
 
 export interface VersionsGetResponseRulesItemRewriteRuleActionParameters {
   /** A map of headers to rewrite. */
@@ -49628,16 +50553,34 @@ export const VersionsGetResponseRulesItemServeErrorRuleActionParametersActionPar
       "VersionsGetResponseRulesItemServeErrorRuleActionParametersActionParametersAsset",
   }) as any as S.Schema<VersionsGetResponseRulesItemServeErrorRuleActionParametersActionParametersAsset>;
 
-export type VersionsGetResponseRulesItemServeErrorRuleActionParameters =
-  | VersionsGetResponseRulesItemServeErrorRuleActionParametersActionParametersContent
-  | VersionsGetResponseRulesItemServeErrorRuleActionParametersActionParametersAsset;
+export interface VersionsGetResponseRulesItemServeErrorRuleActionParameters {
+  /** The response content. */
+  content?: string;
+  /** The content type header to set with the error response. */
+  contentType?:
+    | VersionsGetResponseRulesItemServeErrorRuleActionParametersActionParametersContentContentType
+    | VersionsGetResponseRulesItemServeErrorRuleActionParametersActionParametersAssetContentType;
+  /** The status code to use for the error. */
+  statusCode?: number;
+  /** The name of a custom asset to serve as the error response. */
+  assetName?: string;
+}
 export const VersionsGetResponseRulesItemServeErrorRuleActionParameters =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["content", "contentType", "statusCode"],
-      ["assetName", "contentType", "statusCode"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      content: S.optional(S.String),
+      contentType: S.optional(
+        S.Union(
+          VersionsGetResponseRulesItemServeErrorRuleActionParametersActionParametersContentContentType,
+          VersionsGetResponseRulesItemServeErrorRuleActionParametersActionParametersAssetContentType,
+        ).pipe(T.Body("content_type")),
+      ),
+      statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
+      assetName: S.optional(S.String.pipe(T.Body("asset_name"))),
+    }),
+  ).annotate({
+    identifier: "VersionsGetResponseRulesItemServeErrorRuleActionParameters",
+  }) as any as S.Schema<VersionsGetResponseRulesItemServeErrorRuleActionParameters>;
 
 export type VersionsGetResponseRulesItemServeErrorRuleCategoriesList =
   ReadonlyArray<string>;
@@ -49827,16 +50770,27 @@ export const VersionsGetResponseRulesItemSetCacheControlActionParametersImmutabl
       "VersionsGetResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirective",
   }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirective>;
 
-export type VersionsGetResponseRulesItemSetCacheControlActionParametersImmutable =
-    | VersionsGetResponseRulesItemSetCacheControlActionParametersImmutableSetDirective
-    | VersionsGetResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirective;
+export interface VersionsGetResponseRulesItemSetCacheControlActionParametersImmutable {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | VersionsGetResponseRulesItemSetCacheControlActionParametersImmutableSetDirectiveOperation
+    | VersionsGetResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const VersionsGetResponseRulesItemSetCacheControlActionParametersImmutable =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        VersionsGetResponseRulesItemSetCacheControlActionParametersImmutableSetDirectiveOperation,
+        VersionsGetResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "VersionsGetResponseRulesItemSetCacheControlActionParametersImmutable",
+  }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlActionParametersImmutable>;
 
 export type VersionsGetResponseRulesItemSetCacheControlActionParametersMaxAgeSetDirectiveOperation =
   "set" | "remove";
@@ -49887,16 +50841,30 @@ export const VersionsGetResponseRulesItemSetCacheControlActionParametersMaxAgeRe
       "VersionsGetResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirective",
   }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirective>;
 
-export type VersionsGetResponseRulesItemSetCacheControlActionParametersMaxAge =
-  | VersionsGetResponseRulesItemSetCacheControlActionParametersMaxAgeSetDirective
-  | VersionsGetResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirective;
+export interface VersionsGetResponseRulesItemSetCacheControlActionParametersMaxAge {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | VersionsGetResponseRulesItemSetCacheControlActionParametersMaxAgeSetDirectiveOperation
+    | VersionsGetResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirectiveOperation;
+  /** The duration value in seconds for the directive. */
+  value?: number;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const VersionsGetResponseRulesItemSetCacheControlActionParametersMaxAge =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        VersionsGetResponseRulesItemSetCacheControlActionParametersMaxAgeSetDirectiveOperation,
+        VersionsGetResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirectiveOperation,
+      ),
+      value: S.optional(S.Number),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "VersionsGetResponseRulesItemSetCacheControlActionParametersMaxAge",
+  }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlActionParametersMaxAge>;
 
 export type VersionsGetResponseRulesItemSetCacheControlActionParametersMustRevalidateSetDirectiveOperation =
   "set" | "remove";
@@ -49944,16 +50912,27 @@ export const VersionsGetResponseRulesItemSetCacheControlActionParametersMustReva
       "VersionsGetResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirective",
   }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirective>;
 
-export type VersionsGetResponseRulesItemSetCacheControlActionParametersMustRevalidate =
-    | VersionsGetResponseRulesItemSetCacheControlActionParametersMustRevalidateSetDirective
-    | VersionsGetResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirective;
+export interface VersionsGetResponseRulesItemSetCacheControlActionParametersMustRevalidate {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | VersionsGetResponseRulesItemSetCacheControlActionParametersMustRevalidateSetDirectiveOperation
+    | VersionsGetResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const VersionsGetResponseRulesItemSetCacheControlActionParametersMustRevalidate =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        VersionsGetResponseRulesItemSetCacheControlActionParametersMustRevalidateSetDirectiveOperation,
+        VersionsGetResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "VersionsGetResponseRulesItemSetCacheControlActionParametersMustRevalidate",
+  }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlActionParametersMustRevalidate>;
 
 export type VersionsGetResponseRulesItemSetCacheControlActionParametersMustUnderstandSetDirectiveOperation =
   "set" | "remove";
@@ -50001,16 +50980,27 @@ export const VersionsGetResponseRulesItemSetCacheControlActionParametersMustUnde
       "VersionsGetResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirective",
   }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirective>;
 
-export type VersionsGetResponseRulesItemSetCacheControlActionParametersMustUnderstand =
-    | VersionsGetResponseRulesItemSetCacheControlActionParametersMustUnderstandSetDirective
-    | VersionsGetResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirective;
+export interface VersionsGetResponseRulesItemSetCacheControlActionParametersMustUnderstand {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | VersionsGetResponseRulesItemSetCacheControlActionParametersMustUnderstandSetDirectiveOperation
+    | VersionsGetResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const VersionsGetResponseRulesItemSetCacheControlActionParametersMustUnderstand =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        VersionsGetResponseRulesItemSetCacheControlActionParametersMustUnderstandSetDirectiveOperation,
+        VersionsGetResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "VersionsGetResponseRulesItemSetCacheControlActionParametersMustUnderstand",
+  }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlActionParametersMustUnderstand>;
 
 export type VersionsGetResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveOperation =
   "set" | "remove";
@@ -50070,16 +51060,32 @@ export const VersionsGetResponseRulesItemSetCacheControlActionParametersNoCacheR
       "VersionsGetResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirective",
   }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirective>;
 
-export type VersionsGetResponseRulesItemSetCacheControlActionParametersNoCache =
-    | VersionsGetResponseRulesItemSetCacheControlActionParametersNoCacheSetDirective
-    | VersionsGetResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirective;
+export interface VersionsGetResponseRulesItemSetCacheControlActionParametersNoCache {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | VersionsGetResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveOperation
+    | VersionsGetResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+  /** Optional list of header names to qualify the directive (e.g., for "private" or "no-cache" directives). */
+  qualifiers?: VersionsGetResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList;
+}
 export const VersionsGetResponseRulesItemSetCacheControlActionParametersNoCache =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly", "qualifiers"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        VersionsGetResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveOperation,
+        VersionsGetResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+      qualifiers: S.optional(
+        VersionsGetResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "VersionsGetResponseRulesItemSetCacheControlActionParametersNoCache",
+  }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlActionParametersNoCache>;
 
 export type VersionsGetResponseRulesItemSetCacheControlActionParametersNoStoreSetDirectiveOperation =
   "set" | "remove";
@@ -50127,16 +51133,27 @@ export const VersionsGetResponseRulesItemSetCacheControlActionParametersNoStoreR
       "VersionsGetResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirective",
   }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirective>;
 
-export type VersionsGetResponseRulesItemSetCacheControlActionParametersNoStore =
-    | VersionsGetResponseRulesItemSetCacheControlActionParametersNoStoreSetDirective
-    | VersionsGetResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirective;
+export interface VersionsGetResponseRulesItemSetCacheControlActionParametersNoStore {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | VersionsGetResponseRulesItemSetCacheControlActionParametersNoStoreSetDirectiveOperation
+    | VersionsGetResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const VersionsGetResponseRulesItemSetCacheControlActionParametersNoStore =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        VersionsGetResponseRulesItemSetCacheControlActionParametersNoStoreSetDirectiveOperation,
+        VersionsGetResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "VersionsGetResponseRulesItemSetCacheControlActionParametersNoStore",
+  }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlActionParametersNoStore>;
 
 export type VersionsGetResponseRulesItemSetCacheControlActionParametersNoTransformSetDirectiveOperation =
   "set" | "remove";
@@ -50184,16 +51201,27 @@ export const VersionsGetResponseRulesItemSetCacheControlActionParametersNoTransf
       "VersionsGetResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirective",
   }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirective>;
 
-export type VersionsGetResponseRulesItemSetCacheControlActionParametersNoTransform =
-    | VersionsGetResponseRulesItemSetCacheControlActionParametersNoTransformSetDirective
-    | VersionsGetResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirective;
+export interface VersionsGetResponseRulesItemSetCacheControlActionParametersNoTransform {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | VersionsGetResponseRulesItemSetCacheControlActionParametersNoTransformSetDirectiveOperation
+    | VersionsGetResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const VersionsGetResponseRulesItemSetCacheControlActionParametersNoTransform =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        VersionsGetResponseRulesItemSetCacheControlActionParametersNoTransformSetDirectiveOperation,
+        VersionsGetResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "VersionsGetResponseRulesItemSetCacheControlActionParametersNoTransform",
+  }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlActionParametersNoTransform>;
 
 export type VersionsGetResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveOperation =
   "set" | "remove";
@@ -50253,16 +51281,32 @@ export const VersionsGetResponseRulesItemSetCacheControlActionParametersPrivateR
       "VersionsGetResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirective",
   }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirective>;
 
-export type VersionsGetResponseRulesItemSetCacheControlActionParametersPrivate =
-    | VersionsGetResponseRulesItemSetCacheControlActionParametersPrivateSetDirective
-    | VersionsGetResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirective;
+export interface VersionsGetResponseRulesItemSetCacheControlActionParametersPrivate {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | VersionsGetResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveOperation
+    | VersionsGetResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+  /** Optional list of header names to qualify the directive (e.g., for "private" or "no-cache" directives). */
+  qualifiers?: VersionsGetResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList;
+}
 export const VersionsGetResponseRulesItemSetCacheControlActionParametersPrivate =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly", "qualifiers"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        VersionsGetResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveOperation,
+        VersionsGetResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+      qualifiers: S.optional(
+        VersionsGetResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "VersionsGetResponseRulesItemSetCacheControlActionParametersPrivate",
+  }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlActionParametersPrivate>;
 
 export type VersionsGetResponseRulesItemSetCacheControlActionParametersProxyRevalidateSetDirectiveOperation =
   "set" | "remove";
@@ -50310,16 +51354,27 @@ export const VersionsGetResponseRulesItemSetCacheControlActionParametersProxyRev
       "VersionsGetResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirective",
   }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirective>;
 
-export type VersionsGetResponseRulesItemSetCacheControlActionParametersProxyRevalidate =
-    | VersionsGetResponseRulesItemSetCacheControlActionParametersProxyRevalidateSetDirective
-    | VersionsGetResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirective;
+export interface VersionsGetResponseRulesItemSetCacheControlActionParametersProxyRevalidate {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | VersionsGetResponseRulesItemSetCacheControlActionParametersProxyRevalidateSetDirectiveOperation
+    | VersionsGetResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const VersionsGetResponseRulesItemSetCacheControlActionParametersProxyRevalidate =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        VersionsGetResponseRulesItemSetCacheControlActionParametersProxyRevalidateSetDirectiveOperation,
+        VersionsGetResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "VersionsGetResponseRulesItemSetCacheControlActionParametersProxyRevalidate",
+  }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlActionParametersProxyRevalidate>;
 
 export type VersionsGetResponseRulesItemSetCacheControlActionParametersPublicSetDirectiveOperation =
   "set" | "remove";
@@ -50367,16 +51422,27 @@ export const VersionsGetResponseRulesItemSetCacheControlActionParametersPublicRe
       "VersionsGetResponseRulesItemSetCacheControlActionParametersPublicRemoveDirective",
   }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlActionParametersPublicRemoveDirective>;
 
-export type VersionsGetResponseRulesItemSetCacheControlActionParametersPublic =
-  | VersionsGetResponseRulesItemSetCacheControlActionParametersPublicSetDirective
-  | VersionsGetResponseRulesItemSetCacheControlActionParametersPublicRemoveDirective;
+export interface VersionsGetResponseRulesItemSetCacheControlActionParametersPublic {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | VersionsGetResponseRulesItemSetCacheControlActionParametersPublicSetDirectiveOperation
+    | VersionsGetResponseRulesItemSetCacheControlActionParametersPublicRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const VersionsGetResponseRulesItemSetCacheControlActionParametersPublic =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        VersionsGetResponseRulesItemSetCacheControlActionParametersPublicSetDirectiveOperation,
+        VersionsGetResponseRulesItemSetCacheControlActionParametersPublicRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "VersionsGetResponseRulesItemSetCacheControlActionParametersPublic",
+  }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlActionParametersPublic>;
 
 export type VersionsGetResponseRulesItemSetCacheControlActionParametersSMaxageSetDirectiveOperation =
   "set" | "remove";
@@ -50427,16 +51493,30 @@ export const VersionsGetResponseRulesItemSetCacheControlActionParametersSMaxageR
       "VersionsGetResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirective",
   }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirective>;
 
-export type VersionsGetResponseRulesItemSetCacheControlActionParametersSMaxage =
-    | VersionsGetResponseRulesItemSetCacheControlActionParametersSMaxageSetDirective
-    | VersionsGetResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirective;
+export interface VersionsGetResponseRulesItemSetCacheControlActionParametersSMaxage {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | VersionsGetResponseRulesItemSetCacheControlActionParametersSMaxageSetDirectiveOperation
+    | VersionsGetResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirectiveOperation;
+  /** The duration value in seconds for the directive. */
+  value?: number;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const VersionsGetResponseRulesItemSetCacheControlActionParametersSMaxage =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        VersionsGetResponseRulesItemSetCacheControlActionParametersSMaxageSetDirectiveOperation,
+        VersionsGetResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirectiveOperation,
+      ),
+      value: S.optional(S.Number),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "VersionsGetResponseRulesItemSetCacheControlActionParametersSMaxage",
+  }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlActionParametersSMaxage>;
 
 export type VersionsGetResponseRulesItemSetCacheControlActionParametersStaleIfErrorSetDirectiveOperation =
   "set" | "remove";
@@ -50487,16 +51567,30 @@ export const VersionsGetResponseRulesItemSetCacheControlActionParametersStaleIfE
       "VersionsGetResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirective",
   }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirective>;
 
-export type VersionsGetResponseRulesItemSetCacheControlActionParametersStaleIfError =
-    | VersionsGetResponseRulesItemSetCacheControlActionParametersStaleIfErrorSetDirective
-    | VersionsGetResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirective;
+export interface VersionsGetResponseRulesItemSetCacheControlActionParametersStaleIfError {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | VersionsGetResponseRulesItemSetCacheControlActionParametersStaleIfErrorSetDirectiveOperation
+    | VersionsGetResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirectiveOperation;
+  /** The duration value in seconds for the directive. */
+  value?: number;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const VersionsGetResponseRulesItemSetCacheControlActionParametersStaleIfError =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        VersionsGetResponseRulesItemSetCacheControlActionParametersStaleIfErrorSetDirectiveOperation,
+        VersionsGetResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirectiveOperation,
+      ),
+      value: S.optional(S.Number),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "VersionsGetResponseRulesItemSetCacheControlActionParametersStaleIfError",
+  }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlActionParametersStaleIfError>;
 
 export type VersionsGetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirectiveOperation =
   "set" | "remove";
@@ -50547,16 +51641,30 @@ export const VersionsGetResponseRulesItemSetCacheControlActionParametersStaleWhi
       "VersionsGetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirective",
   }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirective>;
 
-export type VersionsGetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate =
-    | VersionsGetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirective
-    | VersionsGetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirective;
+export interface VersionsGetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | VersionsGetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirectiveOperation
+    | VersionsGetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirectiveOperation;
+  /** The duration value in seconds for the directive. */
+  value?: number;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const VersionsGetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        VersionsGetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirectiveOperation,
+        VersionsGetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirectiveOperation,
+      ),
+      value: S.optional(S.Number),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "VersionsGetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate",
+  }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate>;
 
 export interface VersionsGetResponseRulesItemSetCacheControlActionParameters {
   /** A cache-control directive configuration. */
@@ -51728,24 +52836,46 @@ export const VersionsGetResponseRulesItemSetCacheTagsActionParametersSetCacheTag
       "VersionsGetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpression",
   }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpression>;
 
-export type VersionsGetResponseRulesItemSetCacheTagsActionParameters =
-  | VersionsGetResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValues
-  | VersionsGetResponseRulesItemSetCacheTagsActionParametersAddCacheTagsExpression
-  | VersionsGetResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValues
-  | VersionsGetResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsExpression
-  | VersionsGetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValues
-  | VersionsGetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpression;
+export interface VersionsGetResponseRulesItemSetCacheTagsActionParameters {
+  /** The operation to perform on the cache tags. */
+  operation:
+    | VersionsGetResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesOperation
+    | VersionsGetResponseRulesItemSetCacheTagsActionParametersAddCacheTagsExpressionOperation
+    | VersionsGetResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesOperation
+    | VersionsGetResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsExpressionOperation
+    | VersionsGetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesOperation
+    | VersionsGetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpressionOperation;
+  /** A list of cache tag values. */
+  values?:
+    | VersionsGetResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesValuesList
+    | VersionsGetResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesValuesList
+    | VersionsGetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesValuesList;
+  /** An expression that evaluates to an array of cache tag values. */
+  expression?: string;
+}
 export const VersionsGetResponseRulesItemSetCacheTagsActionParameters =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "values"],
-      ["expression", "operation"],
-      ["operation", "values"],
-      ["expression", "operation"],
-      ["operation", "values"],
-      ["expression", "operation"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        VersionsGetResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesOperation,
+        VersionsGetResponseRulesItemSetCacheTagsActionParametersAddCacheTagsExpressionOperation,
+        VersionsGetResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesOperation,
+        VersionsGetResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsExpressionOperation,
+        VersionsGetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesOperation,
+        VersionsGetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpressionOperation,
+      ),
+      values: S.optional(
+        S.Union(
+          VersionsGetResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesValuesList,
+          VersionsGetResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesValuesList,
+          VersionsGetResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesValuesList,
+        ),
+      ),
+      expression: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "VersionsGetResponseRulesItemSetCacheTagsActionParameters",
+  }) as any as S.Schema<VersionsGetResponseRulesItemSetCacheTagsActionParameters>;
 
 export type VersionsGetResponseRulesItemSetCacheTagsCategoriesList =
   ReadonlyArray<string>;
@@ -52603,347 +53733,268 @@ export const VersionsGetResponseRulesItemTransformResponseHTML =
     identifier: "VersionsGetResponseRulesItemTransformResponseHTML",
   }) as any as S.Schema<VersionsGetResponseRulesItemTransformResponseHTML>;
 
-export type VersionsGetResponseRulesItem =
-  | VersionsGetResponseRulesItemBlockRule
-  | VersionsGetResponseRulesItemChallenge
-  | VersionsGetResponseRulesItemCompressResponseRule
-  | VersionsGetResponseRulesItemDDoSDynamicRule
-  | VersionsGetResponseRulesItemExecuteRule
-  | VersionsGetResponseRulesItemForceConnectionCloseRule
-  | VersionsGetResponseRulesItemJSChallenge
-  | VersionsGetResponseRulesItemLogRule
-  | VersionsGetResponseRulesItemLogCustomFieldRule
-  | VersionsGetResponseRulesItemManagedChallengeRule
-  | VersionsGetResponseRulesItemRedirectRule
-  | VersionsGetResponseRulesItemRewriteRule
-  | VersionsGetResponseRulesItemRouteRule
-  | VersionsGetResponseRulesItemScoreRule
-  | VersionsGetResponseRulesItemServeErrorRule
-  | VersionsGetResponseRulesItemSetCacheControl
-  | VersionsGetResponseRulesItemSetCacheSettingsRule
-  | VersionsGetResponseRulesItemSetCacheTags
-  | VersionsGetResponseRulesItemSetConfigRule
-  | VersionsGetResponseRulesItemSkipRule
-  | VersionsGetResponseRulesItemTransformResponseHTML;
-export const VersionsGetResponseRulesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-  ]),
-);
+export interface VersionsGetResponseRulesItem {
+  /** The timestamp of when the rule was last modified. */
+  lastUpdated: string;
+  /** The version of the rule. */
+  version: string;
+  /** The unique ID of the rule. */
+  id?: string;
+  /** The action to perform when the rule matches. */
+  action?:
+    | VersionsGetResponseRulesItemBlockRuleAction
+    | VersionsGetResponseRulesItemChallengeAction
+    | VersionsGetResponseRulesItemCompressResponseRuleAction
+    | VersionsGetResponseRulesItemDDoSDynamicRuleAction
+    | VersionsGetResponseRulesItemExecuteRuleAction
+    | VersionsGetResponseRulesItemForceConnectionCloseRuleAction
+    | VersionsGetResponseRulesItemJSChallengeAction
+    | VersionsGetResponseRulesItemLogRuleAction
+    | VersionsGetResponseRulesItemLogCustomFieldRuleAction
+    | VersionsGetResponseRulesItemManagedChallengeRuleAction
+    | VersionsGetResponseRulesItemRedirectRuleAction
+    | VersionsGetResponseRulesItemRewriteRuleAction
+    | VersionsGetResponseRulesItemRouteRuleAction
+    | VersionsGetResponseRulesItemScoreRuleAction
+    | VersionsGetResponseRulesItemServeErrorRuleAction
+    | VersionsGetResponseRulesItemSetCacheControlAction
+    | VersionsGetResponseRulesItemSetCacheSettingsRuleAction
+    | VersionsGetResponseRulesItemSetCacheTagsAction
+    | VersionsGetResponseRulesItemSetConfigRuleAction
+    | VersionsGetResponseRulesItemSkipRuleAction
+    | VersionsGetResponseRulesItemTransformResponseHTMLAction;
+  /** The parameters configuring the rule's action. */
+  actionParameters?:
+    | VersionsGetResponseRulesItemBlockRuleActionParameters
+    | unknown
+    | VersionsGetResponseRulesItemCompressResponseRuleActionParameters
+    | VersionsGetResponseRulesItemExecuteRuleActionParameters
+    | VersionsGetResponseRulesItemLogCustomFieldRuleActionParameters
+    | VersionsGetResponseRulesItemRedirectRuleActionParameters
+    | VersionsGetResponseRulesItemRewriteRuleActionParameters
+    | VersionsGetResponseRulesItemRouteRuleActionParameters
+    | VersionsGetResponseRulesItemScoreRuleActionParameters
+    | VersionsGetResponseRulesItemServeErrorRuleActionParameters
+    | VersionsGetResponseRulesItemSetCacheControlActionParameters
+    | VersionsGetResponseRulesItemSetCacheSettingsRuleActionParameters
+    | VersionsGetResponseRulesItemSetCacheTagsActionParameters
+    | VersionsGetResponseRulesItemSetConfigRuleActionParameters
+    | VersionsGetResponseRulesItemSkipRuleActionParameters
+    | VersionsGetResponseRulesItemTransformResponseHTMLActionParameters;
+  /** The categories of the rule. */
+  categories?:
+    | VersionsGetResponseRulesItemBlockRuleCategoriesList
+    | VersionsGetResponseRulesItemChallengeCategoriesList
+    | VersionsGetResponseRulesItemCompressResponseRuleCategoriesList
+    | VersionsGetResponseRulesItemDDoSDynamicRuleCategoriesList
+    | VersionsGetResponseRulesItemExecuteRuleCategoriesList
+    | VersionsGetResponseRulesItemForceConnectionCloseRuleCategoriesList
+    | VersionsGetResponseRulesItemJSChallengeCategoriesList
+    | VersionsGetResponseRulesItemLogRuleCategoriesList
+    | VersionsGetResponseRulesItemLogCustomFieldRuleCategoriesList
+    | VersionsGetResponseRulesItemManagedChallengeRuleCategoriesList
+    | VersionsGetResponseRulesItemRedirectRuleCategoriesList
+    | VersionsGetResponseRulesItemRewriteRuleCategoriesList
+    | VersionsGetResponseRulesItemRouteRuleCategoriesList
+    | VersionsGetResponseRulesItemScoreRuleCategoriesList
+    | VersionsGetResponseRulesItemServeErrorRuleCategoriesList
+    | VersionsGetResponseRulesItemSetCacheControlCategoriesList
+    | VersionsGetResponseRulesItemSetCacheSettingsRuleCategoriesList
+    | VersionsGetResponseRulesItemSetCacheTagsCategoriesList
+    | VersionsGetResponseRulesItemSetConfigRuleCategoriesList
+    | VersionsGetResponseRulesItemSkipRuleCategoriesList
+    | VersionsGetResponseRulesItemTransformResponseHTMLCategoriesList;
+  /** An informative description of the rule. */
+  description?: string;
+  /** Whether the rule should be executed. */
+  enabled?: boolean;
+  /** Configuration for exposed credential checking. */
+  exposedCredentialCheck?:
+    | VersionsGetResponseRulesItemBlockRuleExposedCredentialCheck
+    | VersionsGetResponseRulesItemChallengeExposedCredentialCheck
+    | VersionsGetResponseRulesItemCompressResponseRuleExposedCredentialCheck
+    | VersionsGetResponseRulesItemDDoSDynamicRuleExposedCredentialCheck
+    | VersionsGetResponseRulesItemExecuteRuleExposedCredentialCheck
+    | VersionsGetResponseRulesItemForceConnectionCloseRuleExposedCredentialCheck
+    | VersionsGetResponseRulesItemJSChallengeExposedCredentialCheck
+    | VersionsGetResponseRulesItemLogRuleExposedCredentialCheck
+    | VersionsGetResponseRulesItemLogCustomFieldRuleExposedCredentialCheck
+    | VersionsGetResponseRulesItemManagedChallengeRuleExposedCredentialCheck
+    | VersionsGetResponseRulesItemRedirectRuleExposedCredentialCheck
+    | VersionsGetResponseRulesItemRewriteRuleExposedCredentialCheck
+    | VersionsGetResponseRulesItemRouteRuleExposedCredentialCheck
+    | VersionsGetResponseRulesItemScoreRuleExposedCredentialCheck
+    | VersionsGetResponseRulesItemServeErrorRuleExposedCredentialCheck
+    | VersionsGetResponseRulesItemSetCacheControlExposedCredentialCheck
+    | VersionsGetResponseRulesItemSetCacheSettingsRuleExposedCredentialCheck
+    | VersionsGetResponseRulesItemSetCacheTagsExposedCredentialCheck
+    | VersionsGetResponseRulesItemSetConfigRuleExposedCredentialCheck
+    | VersionsGetResponseRulesItemSkipRuleExposedCredentialCheck
+    | VersionsGetResponseRulesItemTransformResponseHTMLExposedCredentialCheck;
+  /** The expression defining which traffic will match the rule. */
+  expression?: string;
+  /** An object configuring the rule's logging behavior. */
+  logging?: VersionsGetResponseRulesItemBlockRuleLogging;
+  /** An object configuring the rule's rate limit behavior. */
+  ratelimit?:
+    | VersionsGetResponseRulesItemBlockRuleRatelimit
+    | VersionsGetResponseRulesItemChallengeRatelimit
+    | VersionsGetResponseRulesItemCompressResponseRuleRatelimit
+    | VersionsGetResponseRulesItemDDoSDynamicRuleRatelimit
+    | VersionsGetResponseRulesItemExecuteRuleRatelimit
+    | VersionsGetResponseRulesItemForceConnectionCloseRuleRatelimit
+    | VersionsGetResponseRulesItemJSChallengeRatelimit
+    | VersionsGetResponseRulesItemLogRuleRatelimit
+    | VersionsGetResponseRulesItemLogCustomFieldRuleRatelimit
+    | VersionsGetResponseRulesItemManagedChallengeRuleRatelimit
+    | VersionsGetResponseRulesItemRedirectRuleRatelimit
+    | VersionsGetResponseRulesItemRewriteRuleRatelimit
+    | VersionsGetResponseRulesItemRouteRuleRatelimit
+    | VersionsGetResponseRulesItemScoreRuleRatelimit
+    | VersionsGetResponseRulesItemServeErrorRuleRatelimit
+    | VersionsGetResponseRulesItemSetCacheControlRatelimit
+    | VersionsGetResponseRulesItemSetCacheSettingsRuleRatelimit
+    | VersionsGetResponseRulesItemSetCacheTagsRatelimit
+    | VersionsGetResponseRulesItemSetConfigRuleRatelimit
+    | VersionsGetResponseRulesItemSkipRuleRatelimit
+    | VersionsGetResponseRulesItemTransformResponseHTMLRatelimit;
+  /** The reference of the rule (the rule's ID by default). */
+  ref?: string;
+}
+export const VersionsGetResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lastUpdated: S.String.pipe(T.Body("last_updated")),
+    version: S.String,
+    id: S.optional(S.String),
+    action: S.optional(
+      S.Union(
+        VersionsGetResponseRulesItemBlockRuleAction,
+        VersionsGetResponseRulesItemChallengeAction,
+        VersionsGetResponseRulesItemCompressResponseRuleAction,
+        VersionsGetResponseRulesItemDDoSDynamicRuleAction,
+        VersionsGetResponseRulesItemExecuteRuleAction,
+        VersionsGetResponseRulesItemForceConnectionCloseRuleAction,
+        VersionsGetResponseRulesItemJSChallengeAction,
+        VersionsGetResponseRulesItemLogRuleAction,
+        VersionsGetResponseRulesItemLogCustomFieldRuleAction,
+        VersionsGetResponseRulesItemManagedChallengeRuleAction,
+        VersionsGetResponseRulesItemRedirectRuleAction,
+        VersionsGetResponseRulesItemRewriteRuleAction,
+        VersionsGetResponseRulesItemRouteRuleAction,
+        VersionsGetResponseRulesItemScoreRuleAction,
+        VersionsGetResponseRulesItemServeErrorRuleAction,
+        VersionsGetResponseRulesItemSetCacheControlAction,
+        VersionsGetResponseRulesItemSetCacheSettingsRuleAction,
+        VersionsGetResponseRulesItemSetCacheTagsAction,
+        VersionsGetResponseRulesItemSetConfigRuleAction,
+        VersionsGetResponseRulesItemSkipRuleAction,
+        VersionsGetResponseRulesItemTransformResponseHTMLAction,
+      ),
+    ),
+    actionParameters: S.optional(
+      S.Union(
+        VersionsGetResponseRulesItemBlockRuleActionParameters,
+        S.Unknown,
+        VersionsGetResponseRulesItemCompressResponseRuleActionParameters,
+        VersionsGetResponseRulesItemExecuteRuleActionParameters,
+        VersionsGetResponseRulesItemLogCustomFieldRuleActionParameters,
+        VersionsGetResponseRulesItemRedirectRuleActionParameters,
+        VersionsGetResponseRulesItemRewriteRuleActionParameters,
+        VersionsGetResponseRulesItemRouteRuleActionParameters,
+        VersionsGetResponseRulesItemScoreRuleActionParameters,
+        VersionsGetResponseRulesItemServeErrorRuleActionParameters,
+        VersionsGetResponseRulesItemSetCacheControlActionParameters,
+        VersionsGetResponseRulesItemSetCacheSettingsRuleActionParameters,
+        VersionsGetResponseRulesItemSetCacheTagsActionParameters,
+        VersionsGetResponseRulesItemSetConfigRuleActionParameters,
+        VersionsGetResponseRulesItemSkipRuleActionParameters,
+        VersionsGetResponseRulesItemTransformResponseHTMLActionParameters,
+      ).pipe(T.Body("action_parameters")),
+    ),
+    categories: S.optional(
+      S.Union(
+        VersionsGetResponseRulesItemBlockRuleCategoriesList,
+        VersionsGetResponseRulesItemChallengeCategoriesList,
+        VersionsGetResponseRulesItemCompressResponseRuleCategoriesList,
+        VersionsGetResponseRulesItemDDoSDynamicRuleCategoriesList,
+        VersionsGetResponseRulesItemExecuteRuleCategoriesList,
+        VersionsGetResponseRulesItemForceConnectionCloseRuleCategoriesList,
+        VersionsGetResponseRulesItemJSChallengeCategoriesList,
+        VersionsGetResponseRulesItemLogRuleCategoriesList,
+        VersionsGetResponseRulesItemLogCustomFieldRuleCategoriesList,
+        VersionsGetResponseRulesItemManagedChallengeRuleCategoriesList,
+        VersionsGetResponseRulesItemRedirectRuleCategoriesList,
+        VersionsGetResponseRulesItemRewriteRuleCategoriesList,
+        VersionsGetResponseRulesItemRouteRuleCategoriesList,
+        VersionsGetResponseRulesItemScoreRuleCategoriesList,
+        VersionsGetResponseRulesItemServeErrorRuleCategoriesList,
+        VersionsGetResponseRulesItemSetCacheControlCategoriesList,
+        VersionsGetResponseRulesItemSetCacheSettingsRuleCategoriesList,
+        VersionsGetResponseRulesItemSetCacheTagsCategoriesList,
+        VersionsGetResponseRulesItemSetConfigRuleCategoriesList,
+        VersionsGetResponseRulesItemSkipRuleCategoriesList,
+        VersionsGetResponseRulesItemTransformResponseHTMLCategoriesList,
+      ),
+    ),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    exposedCredentialCheck: S.optional(
+      S.Union(
+        VersionsGetResponseRulesItemBlockRuleExposedCredentialCheck,
+        VersionsGetResponseRulesItemChallengeExposedCredentialCheck,
+        VersionsGetResponseRulesItemCompressResponseRuleExposedCredentialCheck,
+        VersionsGetResponseRulesItemDDoSDynamicRuleExposedCredentialCheck,
+        VersionsGetResponseRulesItemExecuteRuleExposedCredentialCheck,
+        VersionsGetResponseRulesItemForceConnectionCloseRuleExposedCredentialCheck,
+        VersionsGetResponseRulesItemJSChallengeExposedCredentialCheck,
+        VersionsGetResponseRulesItemLogRuleExposedCredentialCheck,
+        VersionsGetResponseRulesItemLogCustomFieldRuleExposedCredentialCheck,
+        VersionsGetResponseRulesItemManagedChallengeRuleExposedCredentialCheck,
+        VersionsGetResponseRulesItemRedirectRuleExposedCredentialCheck,
+        VersionsGetResponseRulesItemRewriteRuleExposedCredentialCheck,
+        VersionsGetResponseRulesItemRouteRuleExposedCredentialCheck,
+        VersionsGetResponseRulesItemScoreRuleExposedCredentialCheck,
+        VersionsGetResponseRulesItemServeErrorRuleExposedCredentialCheck,
+        VersionsGetResponseRulesItemSetCacheControlExposedCredentialCheck,
+        VersionsGetResponseRulesItemSetCacheSettingsRuleExposedCredentialCheck,
+        VersionsGetResponseRulesItemSetCacheTagsExposedCredentialCheck,
+        VersionsGetResponseRulesItemSetConfigRuleExposedCredentialCheck,
+        VersionsGetResponseRulesItemSkipRuleExposedCredentialCheck,
+        VersionsGetResponseRulesItemTransformResponseHTMLExposedCredentialCheck,
+      ).pipe(T.Body("exposed_credential_check")),
+    ),
+    expression: S.optional(S.String),
+    logging: S.optional(VersionsGetResponseRulesItemBlockRuleLogging),
+    ratelimit: S.optional(
+      S.Union(
+        VersionsGetResponseRulesItemBlockRuleRatelimit,
+        VersionsGetResponseRulesItemChallengeRatelimit,
+        VersionsGetResponseRulesItemCompressResponseRuleRatelimit,
+        VersionsGetResponseRulesItemDDoSDynamicRuleRatelimit,
+        VersionsGetResponseRulesItemExecuteRuleRatelimit,
+        VersionsGetResponseRulesItemForceConnectionCloseRuleRatelimit,
+        VersionsGetResponseRulesItemJSChallengeRatelimit,
+        VersionsGetResponseRulesItemLogRuleRatelimit,
+        VersionsGetResponseRulesItemLogCustomFieldRuleRatelimit,
+        VersionsGetResponseRulesItemManagedChallengeRuleRatelimit,
+        VersionsGetResponseRulesItemRedirectRuleRatelimit,
+        VersionsGetResponseRulesItemRewriteRuleRatelimit,
+        VersionsGetResponseRulesItemRouteRuleRatelimit,
+        VersionsGetResponseRulesItemScoreRuleRatelimit,
+        VersionsGetResponseRulesItemServeErrorRuleRatelimit,
+        VersionsGetResponseRulesItemSetCacheControlRatelimit,
+        VersionsGetResponseRulesItemSetCacheSettingsRuleRatelimit,
+        VersionsGetResponseRulesItemSetCacheTagsRatelimit,
+        VersionsGetResponseRulesItemSetConfigRuleRatelimit,
+        VersionsGetResponseRulesItemSkipRuleRatelimit,
+        VersionsGetResponseRulesItemTransformResponseHTMLRatelimit,
+      ),
+    ),
+    ref: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VersionsGetResponseRulesItem",
+}) as any as S.Schema<VersionsGetResponseRulesItem>;
 
 export type VersionsGetResponseRulesList =
   ReadonlyArray<VersionsGetResponseRulesItem>;
@@ -58760,22 +59811,35 @@ export const RulesEditResponseRulesItemRewriteRuleActionParametersHeadersRemoveH
       "RulesEditResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeader",
   }) as any as S.Schema<RulesEditResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeader>;
 
-export type RulesEditResponseRulesItemRewriteRuleActionParametersHeaders =
-  | RulesEditResponseRulesItemRewriteRuleActionParametersHeadersAddStaticHeader
-  | RulesEditResponseRulesItemRewriteRuleActionParametersHeadersAddDynamicHeader
-  | RulesEditResponseRulesItemRewriteRuleActionParametersHeadersSetStaticHeader
-  | RulesEditResponseRulesItemRewriteRuleActionParametersHeadersSetDynamicHeader
-  | RulesEditResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeader;
+export interface RulesEditResponseRulesItemRewriteRuleActionParametersHeaders {
+  /** The operation to perform on the header. */
+  operation:
+    | RulesEditResponseRulesItemRewriteRuleActionParametersHeadersAddStaticHeaderOperation
+    | RulesEditResponseRulesItemRewriteRuleActionParametersHeadersAddDynamicHeaderOperation
+    | RulesEditResponseRulesItemRewriteRuleActionParametersHeadersSetStaticHeaderOperation
+    | RulesEditResponseRulesItemRewriteRuleActionParametersHeadersSetDynamicHeaderOperation
+    | RulesEditResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeaderOperation;
+  /** A static value for the header. */
+  value?: string;
+  /** An expression that evaluates to a value for the header. */
+  expression?: string;
+}
 export const RulesEditResponseRulesItemRewriteRuleActionParametersHeaders =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value"],
-      ["expression", "operation"],
-      ["operation", "value"],
-      ["expression", "operation"],
-      ["operation"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        RulesEditResponseRulesItemRewriteRuleActionParametersHeadersAddStaticHeaderOperation,
+        RulesEditResponseRulesItemRewriteRuleActionParametersHeadersAddDynamicHeaderOperation,
+        RulesEditResponseRulesItemRewriteRuleActionParametersHeadersSetStaticHeaderOperation,
+        RulesEditResponseRulesItemRewriteRuleActionParametersHeadersSetDynamicHeaderOperation,
+        RulesEditResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeaderOperation,
+      ),
+      value: S.optional(S.String),
+      expression: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesEditResponseRulesItemRewriteRuleActionParametersHeaders",
+  }) as any as S.Schema<RulesEditResponseRulesItemRewriteRuleActionParametersHeaders>;
 
 export interface RulesEditResponseRulesItemRewriteRuleActionParametersUriURIPathPath {
   /** An expression that evaluates to a value to rewrite the URI path to. */
@@ -58846,16 +59910,28 @@ export const RulesEditResponseRulesItemRewriteRuleActionParametersUriURIQuery =
       "RulesEditResponseRulesItemRewriteRuleActionParametersUriURIQuery",
   }) as any as S.Schema<RulesEditResponseRulesItemRewriteRuleActionParametersUriURIQuery>;
 
-export type RulesEditResponseRulesItemRewriteRuleActionParametersUri =
-  | RulesEditResponseRulesItemRewriteRuleActionParametersUriURIPath
-  | RulesEditResponseRulesItemRewriteRuleActionParametersUriURIQuery;
+export interface RulesEditResponseRulesItemRewriteRuleActionParametersUri {
+  /** A URI path rewrite. */
+  path?: RulesEditResponseRulesItemRewriteRuleActionParametersUriURIPathPath;
+  /** Whether to propagate the rewritten URI to origin. */
+  origin?: boolean;
+  /** A URI query rewrite. */
+  query?: RulesEditResponseRulesItemRewriteRuleActionParametersUriURIQueryQuery;
+}
 export const RulesEditResponseRulesItemRewriteRuleActionParametersUri =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["path", "origin"],
-      ["query", "origin"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.optional(
+        RulesEditResponseRulesItemRewriteRuleActionParametersUriURIPathPath,
+      ),
+      origin: S.optional(S.Boolean),
+      query: S.optional(
+        RulesEditResponseRulesItemRewriteRuleActionParametersUriURIQueryQuery,
+      ),
+    }),
+  ).annotate({
+    identifier: "RulesEditResponseRulesItemRewriteRuleActionParametersUri",
+  }) as any as S.Schema<RulesEditResponseRulesItemRewriteRuleActionParametersUri>;
 
 export interface RulesEditResponseRulesItemRewriteRuleActionParameters {
   /** A map of headers to rewrite. */
@@ -59402,16 +60478,34 @@ export const RulesEditResponseRulesItemServeErrorRuleActionParametersActionParam
       "RulesEditResponseRulesItemServeErrorRuleActionParametersActionParametersAsset",
   }) as any as S.Schema<RulesEditResponseRulesItemServeErrorRuleActionParametersActionParametersAsset>;
 
-export type RulesEditResponseRulesItemServeErrorRuleActionParameters =
-  | RulesEditResponseRulesItemServeErrorRuleActionParametersActionParametersContent
-  | RulesEditResponseRulesItemServeErrorRuleActionParametersActionParametersAsset;
+export interface RulesEditResponseRulesItemServeErrorRuleActionParameters {
+  /** The response content. */
+  content?: string;
+  /** The content type header to set with the error response. */
+  contentType?:
+    | RulesEditResponseRulesItemServeErrorRuleActionParametersActionParametersContentContentType
+    | RulesEditResponseRulesItemServeErrorRuleActionParametersActionParametersAssetContentType;
+  /** The status code to use for the error. */
+  statusCode?: number;
+  /** The name of a custom asset to serve as the error response. */
+  assetName?: string;
+}
 export const RulesEditResponseRulesItemServeErrorRuleActionParameters =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["content", "contentType", "statusCode"],
-      ["assetName", "contentType", "statusCode"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      content: S.optional(S.String),
+      contentType: S.optional(
+        S.Union(
+          RulesEditResponseRulesItemServeErrorRuleActionParametersActionParametersContentContentType,
+          RulesEditResponseRulesItemServeErrorRuleActionParametersActionParametersAssetContentType,
+        ).pipe(T.Body("content_type")),
+      ),
+      statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
+      assetName: S.optional(S.String.pipe(T.Body("asset_name"))),
+    }),
+  ).annotate({
+    identifier: "RulesEditResponseRulesItemServeErrorRuleActionParameters",
+  }) as any as S.Schema<RulesEditResponseRulesItemServeErrorRuleActionParameters>;
 
 export type RulesEditResponseRulesItemServeErrorRuleCategoriesList =
   ReadonlyArray<string>;
@@ -59599,16 +60693,27 @@ export const RulesEditResponseRulesItemSetCacheControlActionParametersImmutableR
       "RulesEditResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirective",
   }) as any as S.Schema<RulesEditResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirective>;
 
-export type RulesEditResponseRulesItemSetCacheControlActionParametersImmutable =
-    | RulesEditResponseRulesItemSetCacheControlActionParametersImmutableSetDirective
-    | RulesEditResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirective;
+export interface RulesEditResponseRulesItemSetCacheControlActionParametersImmutable {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | RulesEditResponseRulesItemSetCacheControlActionParametersImmutableSetDirectiveOperation
+    | RulesEditResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const RulesEditResponseRulesItemSetCacheControlActionParametersImmutable =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        RulesEditResponseRulesItemSetCacheControlActionParametersImmutableSetDirectiveOperation,
+        RulesEditResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditResponseRulesItemSetCacheControlActionParametersImmutable",
+  }) as any as S.Schema<RulesEditResponseRulesItemSetCacheControlActionParametersImmutable>;
 
 export type RulesEditResponseRulesItemSetCacheControlActionParametersMaxAgeSetDirectiveOperation =
   "set" | "remove";
@@ -59659,16 +60764,30 @@ export const RulesEditResponseRulesItemSetCacheControlActionParametersMaxAgeRemo
       "RulesEditResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirective",
   }) as any as S.Schema<RulesEditResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirective>;
 
-export type RulesEditResponseRulesItemSetCacheControlActionParametersMaxAge =
-  | RulesEditResponseRulesItemSetCacheControlActionParametersMaxAgeSetDirective
-  | RulesEditResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirective;
+export interface RulesEditResponseRulesItemSetCacheControlActionParametersMaxAge {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | RulesEditResponseRulesItemSetCacheControlActionParametersMaxAgeSetDirectiveOperation
+    | RulesEditResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirectiveOperation;
+  /** The duration value in seconds for the directive. */
+  value?: number;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const RulesEditResponseRulesItemSetCacheControlActionParametersMaxAge =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        RulesEditResponseRulesItemSetCacheControlActionParametersMaxAgeSetDirectiveOperation,
+        RulesEditResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirectiveOperation,
+      ),
+      value: S.optional(S.Number),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditResponseRulesItemSetCacheControlActionParametersMaxAge",
+  }) as any as S.Schema<RulesEditResponseRulesItemSetCacheControlActionParametersMaxAge>;
 
 export type RulesEditResponseRulesItemSetCacheControlActionParametersMustRevalidateSetDirectiveOperation =
   "set" | "remove";
@@ -59716,16 +60835,27 @@ export const RulesEditResponseRulesItemSetCacheControlActionParametersMustRevali
       "RulesEditResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirective",
   }) as any as S.Schema<RulesEditResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirective>;
 
-export type RulesEditResponseRulesItemSetCacheControlActionParametersMustRevalidate =
-    | RulesEditResponseRulesItemSetCacheControlActionParametersMustRevalidateSetDirective
-    | RulesEditResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirective;
+export interface RulesEditResponseRulesItemSetCacheControlActionParametersMustRevalidate {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | RulesEditResponseRulesItemSetCacheControlActionParametersMustRevalidateSetDirectiveOperation
+    | RulesEditResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const RulesEditResponseRulesItemSetCacheControlActionParametersMustRevalidate =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        RulesEditResponseRulesItemSetCacheControlActionParametersMustRevalidateSetDirectiveOperation,
+        RulesEditResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditResponseRulesItemSetCacheControlActionParametersMustRevalidate",
+  }) as any as S.Schema<RulesEditResponseRulesItemSetCacheControlActionParametersMustRevalidate>;
 
 export type RulesEditResponseRulesItemSetCacheControlActionParametersMustUnderstandSetDirectiveOperation =
   "set" | "remove";
@@ -59773,16 +60903,27 @@ export const RulesEditResponseRulesItemSetCacheControlActionParametersMustUnders
       "RulesEditResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirective",
   }) as any as S.Schema<RulesEditResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirective>;
 
-export type RulesEditResponseRulesItemSetCacheControlActionParametersMustUnderstand =
-    | RulesEditResponseRulesItemSetCacheControlActionParametersMustUnderstandSetDirective
-    | RulesEditResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirective;
+export interface RulesEditResponseRulesItemSetCacheControlActionParametersMustUnderstand {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | RulesEditResponseRulesItemSetCacheControlActionParametersMustUnderstandSetDirectiveOperation
+    | RulesEditResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const RulesEditResponseRulesItemSetCacheControlActionParametersMustUnderstand =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        RulesEditResponseRulesItemSetCacheControlActionParametersMustUnderstandSetDirectiveOperation,
+        RulesEditResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditResponseRulesItemSetCacheControlActionParametersMustUnderstand",
+  }) as any as S.Schema<RulesEditResponseRulesItemSetCacheControlActionParametersMustUnderstand>;
 
 export type RulesEditResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveOperation =
   "set" | "remove";
@@ -59842,16 +60983,32 @@ export const RulesEditResponseRulesItemSetCacheControlActionParametersNoCacheRem
       "RulesEditResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirective",
   }) as any as S.Schema<RulesEditResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirective>;
 
-export type RulesEditResponseRulesItemSetCacheControlActionParametersNoCache =
-  | RulesEditResponseRulesItemSetCacheControlActionParametersNoCacheSetDirective
-  | RulesEditResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirective;
+export interface RulesEditResponseRulesItemSetCacheControlActionParametersNoCache {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | RulesEditResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveOperation
+    | RulesEditResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+  /** Optional list of header names to qualify the directive (e.g., for "private" or "no-cache" directives). */
+  qualifiers?: RulesEditResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList;
+}
 export const RulesEditResponseRulesItemSetCacheControlActionParametersNoCache =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly", "qualifiers"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        RulesEditResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveOperation,
+        RulesEditResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+      qualifiers: S.optional(
+        RulesEditResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditResponseRulesItemSetCacheControlActionParametersNoCache",
+  }) as any as S.Schema<RulesEditResponseRulesItemSetCacheControlActionParametersNoCache>;
 
 export type RulesEditResponseRulesItemSetCacheControlActionParametersNoStoreSetDirectiveOperation =
   "set" | "remove";
@@ -59899,16 +61056,27 @@ export const RulesEditResponseRulesItemSetCacheControlActionParametersNoStoreRem
       "RulesEditResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirective",
   }) as any as S.Schema<RulesEditResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirective>;
 
-export type RulesEditResponseRulesItemSetCacheControlActionParametersNoStore =
-  | RulesEditResponseRulesItemSetCacheControlActionParametersNoStoreSetDirective
-  | RulesEditResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirective;
+export interface RulesEditResponseRulesItemSetCacheControlActionParametersNoStore {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | RulesEditResponseRulesItemSetCacheControlActionParametersNoStoreSetDirectiveOperation
+    | RulesEditResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const RulesEditResponseRulesItemSetCacheControlActionParametersNoStore =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        RulesEditResponseRulesItemSetCacheControlActionParametersNoStoreSetDirectiveOperation,
+        RulesEditResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditResponseRulesItemSetCacheControlActionParametersNoStore",
+  }) as any as S.Schema<RulesEditResponseRulesItemSetCacheControlActionParametersNoStore>;
 
 export type RulesEditResponseRulesItemSetCacheControlActionParametersNoTransformSetDirectiveOperation =
   "set" | "remove";
@@ -59956,16 +61124,27 @@ export const RulesEditResponseRulesItemSetCacheControlActionParametersNoTransfor
       "RulesEditResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirective",
   }) as any as S.Schema<RulesEditResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirective>;
 
-export type RulesEditResponseRulesItemSetCacheControlActionParametersNoTransform =
-    | RulesEditResponseRulesItemSetCacheControlActionParametersNoTransformSetDirective
-    | RulesEditResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirective;
+export interface RulesEditResponseRulesItemSetCacheControlActionParametersNoTransform {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | RulesEditResponseRulesItemSetCacheControlActionParametersNoTransformSetDirectiveOperation
+    | RulesEditResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const RulesEditResponseRulesItemSetCacheControlActionParametersNoTransform =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        RulesEditResponseRulesItemSetCacheControlActionParametersNoTransformSetDirectiveOperation,
+        RulesEditResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditResponseRulesItemSetCacheControlActionParametersNoTransform",
+  }) as any as S.Schema<RulesEditResponseRulesItemSetCacheControlActionParametersNoTransform>;
 
 export type RulesEditResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveOperation =
   "set" | "remove";
@@ -60025,16 +61204,32 @@ export const RulesEditResponseRulesItemSetCacheControlActionParametersPrivateRem
       "RulesEditResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirective",
   }) as any as S.Schema<RulesEditResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirective>;
 
-export type RulesEditResponseRulesItemSetCacheControlActionParametersPrivate =
-  | RulesEditResponseRulesItemSetCacheControlActionParametersPrivateSetDirective
-  | RulesEditResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirective;
+export interface RulesEditResponseRulesItemSetCacheControlActionParametersPrivate {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | RulesEditResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveOperation
+    | RulesEditResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+  /** Optional list of header names to qualify the directive (e.g., for "private" or "no-cache" directives). */
+  qualifiers?: RulesEditResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList;
+}
 export const RulesEditResponseRulesItemSetCacheControlActionParametersPrivate =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly", "qualifiers"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        RulesEditResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveOperation,
+        RulesEditResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+      qualifiers: S.optional(
+        RulesEditResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditResponseRulesItemSetCacheControlActionParametersPrivate",
+  }) as any as S.Schema<RulesEditResponseRulesItemSetCacheControlActionParametersPrivate>;
 
 export type RulesEditResponseRulesItemSetCacheControlActionParametersProxyRevalidateSetDirectiveOperation =
   "set" | "remove";
@@ -60082,16 +61277,27 @@ export const RulesEditResponseRulesItemSetCacheControlActionParametersProxyReval
       "RulesEditResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirective",
   }) as any as S.Schema<RulesEditResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirective>;
 
-export type RulesEditResponseRulesItemSetCacheControlActionParametersProxyRevalidate =
-    | RulesEditResponseRulesItemSetCacheControlActionParametersProxyRevalidateSetDirective
-    | RulesEditResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirective;
+export interface RulesEditResponseRulesItemSetCacheControlActionParametersProxyRevalidate {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | RulesEditResponseRulesItemSetCacheControlActionParametersProxyRevalidateSetDirectiveOperation
+    | RulesEditResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const RulesEditResponseRulesItemSetCacheControlActionParametersProxyRevalidate =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        RulesEditResponseRulesItemSetCacheControlActionParametersProxyRevalidateSetDirectiveOperation,
+        RulesEditResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditResponseRulesItemSetCacheControlActionParametersProxyRevalidate",
+  }) as any as S.Schema<RulesEditResponseRulesItemSetCacheControlActionParametersProxyRevalidate>;
 
 export type RulesEditResponseRulesItemSetCacheControlActionParametersPublicSetDirectiveOperation =
   "set" | "remove";
@@ -60139,16 +61345,27 @@ export const RulesEditResponseRulesItemSetCacheControlActionParametersPublicRemo
       "RulesEditResponseRulesItemSetCacheControlActionParametersPublicRemoveDirective",
   }) as any as S.Schema<RulesEditResponseRulesItemSetCacheControlActionParametersPublicRemoveDirective>;
 
-export type RulesEditResponseRulesItemSetCacheControlActionParametersPublic =
-  | RulesEditResponseRulesItemSetCacheControlActionParametersPublicSetDirective
-  | RulesEditResponseRulesItemSetCacheControlActionParametersPublicRemoveDirective;
+export interface RulesEditResponseRulesItemSetCacheControlActionParametersPublic {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | RulesEditResponseRulesItemSetCacheControlActionParametersPublicSetDirectiveOperation
+    | RulesEditResponseRulesItemSetCacheControlActionParametersPublicRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const RulesEditResponseRulesItemSetCacheControlActionParametersPublic =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        RulesEditResponseRulesItemSetCacheControlActionParametersPublicSetDirectiveOperation,
+        RulesEditResponseRulesItemSetCacheControlActionParametersPublicRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditResponseRulesItemSetCacheControlActionParametersPublic",
+  }) as any as S.Schema<RulesEditResponseRulesItemSetCacheControlActionParametersPublic>;
 
 export type RulesEditResponseRulesItemSetCacheControlActionParametersSMaxageSetDirectiveOperation =
   "set" | "remove";
@@ -60199,16 +61416,30 @@ export const RulesEditResponseRulesItemSetCacheControlActionParametersSMaxageRem
       "RulesEditResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirective",
   }) as any as S.Schema<RulesEditResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirective>;
 
-export type RulesEditResponseRulesItemSetCacheControlActionParametersSMaxage =
-  | RulesEditResponseRulesItemSetCacheControlActionParametersSMaxageSetDirective
-  | RulesEditResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirective;
+export interface RulesEditResponseRulesItemSetCacheControlActionParametersSMaxage {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | RulesEditResponseRulesItemSetCacheControlActionParametersSMaxageSetDirectiveOperation
+    | RulesEditResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirectiveOperation;
+  /** The duration value in seconds for the directive. */
+  value?: number;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const RulesEditResponseRulesItemSetCacheControlActionParametersSMaxage =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        RulesEditResponseRulesItemSetCacheControlActionParametersSMaxageSetDirectiveOperation,
+        RulesEditResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirectiveOperation,
+      ),
+      value: S.optional(S.Number),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditResponseRulesItemSetCacheControlActionParametersSMaxage",
+  }) as any as S.Schema<RulesEditResponseRulesItemSetCacheControlActionParametersSMaxage>;
 
 export type RulesEditResponseRulesItemSetCacheControlActionParametersStaleIfErrorSetDirectiveOperation =
   "set" | "remove";
@@ -60259,16 +61490,30 @@ export const RulesEditResponseRulesItemSetCacheControlActionParametersStaleIfErr
       "RulesEditResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirective",
   }) as any as S.Schema<RulesEditResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirective>;
 
-export type RulesEditResponseRulesItemSetCacheControlActionParametersStaleIfError =
-    | RulesEditResponseRulesItemSetCacheControlActionParametersStaleIfErrorSetDirective
-    | RulesEditResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirective;
+export interface RulesEditResponseRulesItemSetCacheControlActionParametersStaleIfError {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | RulesEditResponseRulesItemSetCacheControlActionParametersStaleIfErrorSetDirectiveOperation
+    | RulesEditResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirectiveOperation;
+  /** The duration value in seconds for the directive. */
+  value?: number;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const RulesEditResponseRulesItemSetCacheControlActionParametersStaleIfError =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        RulesEditResponseRulesItemSetCacheControlActionParametersStaleIfErrorSetDirectiveOperation,
+        RulesEditResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirectiveOperation,
+      ),
+      value: S.optional(S.Number),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditResponseRulesItemSetCacheControlActionParametersStaleIfError",
+  }) as any as S.Schema<RulesEditResponseRulesItemSetCacheControlActionParametersStaleIfError>;
 
 export type RulesEditResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirectiveOperation =
   "set" | "remove";
@@ -60319,16 +61564,30 @@ export const RulesEditResponseRulesItemSetCacheControlActionParametersStaleWhile
       "RulesEditResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirective",
   }) as any as S.Schema<RulesEditResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirective>;
 
-export type RulesEditResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate =
-    | RulesEditResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirective
-    | RulesEditResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirective;
+export interface RulesEditResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | RulesEditResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirectiveOperation
+    | RulesEditResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirectiveOperation;
+  /** The duration value in seconds for the directive. */
+  value?: number;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const RulesEditResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        RulesEditResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirectiveOperation,
+        RulesEditResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirectiveOperation,
+      ),
+      value: S.optional(S.Number),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "RulesEditResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate",
+  }) as any as S.Schema<RulesEditResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate>;
 
 export interface RulesEditResponseRulesItemSetCacheControlActionParameters {
   /** A cache-control directive configuration. */
@@ -61496,24 +62755,46 @@ export const RulesEditResponseRulesItemSetCacheTagsActionParametersSetCacheTagsE
       "RulesEditResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpression",
   }) as any as S.Schema<RulesEditResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpression>;
 
-export type RulesEditResponseRulesItemSetCacheTagsActionParameters =
-  | RulesEditResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValues
-  | RulesEditResponseRulesItemSetCacheTagsActionParametersAddCacheTagsExpression
-  | RulesEditResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValues
-  | RulesEditResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsExpression
-  | RulesEditResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValues
-  | RulesEditResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpression;
+export interface RulesEditResponseRulesItemSetCacheTagsActionParameters {
+  /** The operation to perform on the cache tags. */
+  operation:
+    | RulesEditResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesOperation
+    | RulesEditResponseRulesItemSetCacheTagsActionParametersAddCacheTagsExpressionOperation
+    | RulesEditResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesOperation
+    | RulesEditResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsExpressionOperation
+    | RulesEditResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesOperation
+    | RulesEditResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpressionOperation;
+  /** A list of cache tag values. */
+  values?:
+    | RulesEditResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesValuesList
+    | RulesEditResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesValuesList
+    | RulesEditResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesValuesList;
+  /** An expression that evaluates to an array of cache tag values. */
+  expression?: string;
+}
 export const RulesEditResponseRulesItemSetCacheTagsActionParameters =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "values"],
-      ["expression", "operation"],
-      ["operation", "values"],
-      ["expression", "operation"],
-      ["operation", "values"],
-      ["expression", "operation"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        RulesEditResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesOperation,
+        RulesEditResponseRulesItemSetCacheTagsActionParametersAddCacheTagsExpressionOperation,
+        RulesEditResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesOperation,
+        RulesEditResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsExpressionOperation,
+        RulesEditResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesOperation,
+        RulesEditResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpressionOperation,
+      ),
+      values: S.optional(
+        S.Union(
+          RulesEditResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesValuesList,
+          RulesEditResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesValuesList,
+          RulesEditResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesValuesList,
+        ),
+      ),
+      expression: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RulesEditResponseRulesItemSetCacheTagsActionParameters",
+  }) as any as S.Schema<RulesEditResponseRulesItemSetCacheTagsActionParameters>;
 
 export type RulesEditResponseRulesItemSetCacheTagsCategoriesList =
   ReadonlyArray<string>;
@@ -62362,347 +63643,268 @@ export const RulesEditResponseRulesItemTransformResponseHTML =
     identifier: "RulesEditResponseRulesItemTransformResponseHTML",
   }) as any as S.Schema<RulesEditResponseRulesItemTransformResponseHTML>;
 
-export type RulesEditResponseRulesItem =
-  | RulesEditResponseRulesItemBlockRule
-  | RulesEditResponseRulesItemChallenge
-  | RulesEditResponseRulesItemCompressResponseRule
-  | RulesEditResponseRulesItemDDoSDynamicRule
-  | RulesEditResponseRulesItemExecuteRule
-  | RulesEditResponseRulesItemForceConnectionCloseRule
-  | RulesEditResponseRulesItemJSChallenge
-  | RulesEditResponseRulesItemLogRule
-  | RulesEditResponseRulesItemLogCustomFieldRule
-  | RulesEditResponseRulesItemManagedChallengeRule
-  | RulesEditResponseRulesItemRedirectRule
-  | RulesEditResponseRulesItemRewriteRule
-  | RulesEditResponseRulesItemRouteRule
-  | RulesEditResponseRulesItemScoreRule
-  | RulesEditResponseRulesItemServeErrorRule
-  | RulesEditResponseRulesItemSetCacheControl
-  | RulesEditResponseRulesItemSetCacheSettingsRule
-  | RulesEditResponseRulesItemSetCacheTags
-  | RulesEditResponseRulesItemSetConfigRule
-  | RulesEditResponseRulesItemSkipRule
-  | RulesEditResponseRulesItemTransformResponseHTML;
-export const RulesEditResponseRulesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-  ]),
-);
+export interface RulesEditResponseRulesItem {
+  /** The timestamp of when the rule was last modified. */
+  lastUpdated: string;
+  /** The version of the rule. */
+  version: string;
+  /** The unique ID of the rule. */
+  id?: string;
+  /** The action to perform when the rule matches. */
+  action?:
+    | RulesEditResponseRulesItemBlockRuleAction
+    | RulesEditResponseRulesItemChallengeAction
+    | RulesEditResponseRulesItemCompressResponseRuleAction
+    | RulesEditResponseRulesItemDDoSDynamicRuleAction
+    | RulesEditResponseRulesItemExecuteRuleAction
+    | RulesEditResponseRulesItemForceConnectionCloseRuleAction
+    | RulesEditResponseRulesItemJSChallengeAction
+    | RulesEditResponseRulesItemLogRuleAction
+    | RulesEditResponseRulesItemLogCustomFieldRuleAction
+    | RulesEditResponseRulesItemManagedChallengeRuleAction
+    | RulesEditResponseRulesItemRedirectRuleAction
+    | RulesEditResponseRulesItemRewriteRuleAction
+    | RulesEditResponseRulesItemRouteRuleAction
+    | RulesEditResponseRulesItemScoreRuleAction
+    | RulesEditResponseRulesItemServeErrorRuleAction
+    | RulesEditResponseRulesItemSetCacheControlAction
+    | RulesEditResponseRulesItemSetCacheSettingsRuleAction
+    | RulesEditResponseRulesItemSetCacheTagsAction
+    | RulesEditResponseRulesItemSetConfigRuleAction
+    | RulesEditResponseRulesItemSkipRuleAction
+    | RulesEditResponseRulesItemTransformResponseHTMLAction;
+  /** The parameters configuring the rule's action. */
+  actionParameters?:
+    | RulesEditResponseRulesItemBlockRuleActionParameters
+    | unknown
+    | RulesEditResponseRulesItemCompressResponseRuleActionParameters
+    | RulesEditResponseRulesItemExecuteRuleActionParameters
+    | RulesEditResponseRulesItemLogCustomFieldRuleActionParameters
+    | RulesEditResponseRulesItemRedirectRuleActionParameters
+    | RulesEditResponseRulesItemRewriteRuleActionParameters
+    | RulesEditResponseRulesItemRouteRuleActionParameters
+    | RulesEditResponseRulesItemScoreRuleActionParameters
+    | RulesEditResponseRulesItemServeErrorRuleActionParameters
+    | RulesEditResponseRulesItemSetCacheControlActionParameters
+    | RulesEditResponseRulesItemSetCacheSettingsRuleActionParameters
+    | RulesEditResponseRulesItemSetCacheTagsActionParameters
+    | RulesEditResponseRulesItemSetConfigRuleActionParameters
+    | RulesEditResponseRulesItemSkipRuleActionParameters
+    | RulesEditResponseRulesItemTransformResponseHTMLActionParameters;
+  /** The categories of the rule. */
+  categories?:
+    | RulesEditResponseRulesItemBlockRuleCategoriesList
+    | RulesEditResponseRulesItemChallengeCategoriesList
+    | RulesEditResponseRulesItemCompressResponseRuleCategoriesList
+    | RulesEditResponseRulesItemDDoSDynamicRuleCategoriesList
+    | RulesEditResponseRulesItemExecuteRuleCategoriesList
+    | RulesEditResponseRulesItemForceConnectionCloseRuleCategoriesList
+    | RulesEditResponseRulesItemJSChallengeCategoriesList
+    | RulesEditResponseRulesItemLogRuleCategoriesList
+    | RulesEditResponseRulesItemLogCustomFieldRuleCategoriesList
+    | RulesEditResponseRulesItemManagedChallengeRuleCategoriesList
+    | RulesEditResponseRulesItemRedirectRuleCategoriesList
+    | RulesEditResponseRulesItemRewriteRuleCategoriesList
+    | RulesEditResponseRulesItemRouteRuleCategoriesList
+    | RulesEditResponseRulesItemScoreRuleCategoriesList
+    | RulesEditResponseRulesItemServeErrorRuleCategoriesList
+    | RulesEditResponseRulesItemSetCacheControlCategoriesList
+    | RulesEditResponseRulesItemSetCacheSettingsRuleCategoriesList
+    | RulesEditResponseRulesItemSetCacheTagsCategoriesList
+    | RulesEditResponseRulesItemSetConfigRuleCategoriesList
+    | RulesEditResponseRulesItemSkipRuleCategoriesList
+    | RulesEditResponseRulesItemTransformResponseHTMLCategoriesList;
+  /** An informative description of the rule. */
+  description?: string;
+  /** Whether the rule should be executed. */
+  enabled?: boolean;
+  /** Configuration for exposed credential checking. */
+  exposedCredentialCheck?:
+    | RulesEditResponseRulesItemBlockRuleExposedCredentialCheck
+    | RulesEditResponseRulesItemChallengeExposedCredentialCheck
+    | RulesEditResponseRulesItemCompressResponseRuleExposedCredentialCheck
+    | RulesEditResponseRulesItemDDoSDynamicRuleExposedCredentialCheck
+    | RulesEditResponseRulesItemExecuteRuleExposedCredentialCheck
+    | RulesEditResponseRulesItemForceConnectionCloseRuleExposedCredentialCheck
+    | RulesEditResponseRulesItemJSChallengeExposedCredentialCheck
+    | RulesEditResponseRulesItemLogRuleExposedCredentialCheck
+    | RulesEditResponseRulesItemLogCustomFieldRuleExposedCredentialCheck
+    | RulesEditResponseRulesItemManagedChallengeRuleExposedCredentialCheck
+    | RulesEditResponseRulesItemRedirectRuleExposedCredentialCheck
+    | RulesEditResponseRulesItemRewriteRuleExposedCredentialCheck
+    | RulesEditResponseRulesItemRouteRuleExposedCredentialCheck
+    | RulesEditResponseRulesItemScoreRuleExposedCredentialCheck
+    | RulesEditResponseRulesItemServeErrorRuleExposedCredentialCheck
+    | RulesEditResponseRulesItemSetCacheControlExposedCredentialCheck
+    | RulesEditResponseRulesItemSetCacheSettingsRuleExposedCredentialCheck
+    | RulesEditResponseRulesItemSetCacheTagsExposedCredentialCheck
+    | RulesEditResponseRulesItemSetConfigRuleExposedCredentialCheck
+    | RulesEditResponseRulesItemSkipRuleExposedCredentialCheck
+    | RulesEditResponseRulesItemTransformResponseHTMLExposedCredentialCheck;
+  /** The expression defining which traffic will match the rule. */
+  expression?: string;
+  /** An object configuring the rule's logging behavior. */
+  logging?: RulesEditResponseRulesItemBlockRuleLogging;
+  /** An object configuring the rule's rate limit behavior. */
+  ratelimit?:
+    | RulesEditResponseRulesItemBlockRuleRatelimit
+    | RulesEditResponseRulesItemChallengeRatelimit
+    | RulesEditResponseRulesItemCompressResponseRuleRatelimit
+    | RulesEditResponseRulesItemDDoSDynamicRuleRatelimit
+    | RulesEditResponseRulesItemExecuteRuleRatelimit
+    | RulesEditResponseRulesItemForceConnectionCloseRuleRatelimit
+    | RulesEditResponseRulesItemJSChallengeRatelimit
+    | RulesEditResponseRulesItemLogRuleRatelimit
+    | RulesEditResponseRulesItemLogCustomFieldRuleRatelimit
+    | RulesEditResponseRulesItemManagedChallengeRuleRatelimit
+    | RulesEditResponseRulesItemRedirectRuleRatelimit
+    | RulesEditResponseRulesItemRewriteRuleRatelimit
+    | RulesEditResponseRulesItemRouteRuleRatelimit
+    | RulesEditResponseRulesItemScoreRuleRatelimit
+    | RulesEditResponseRulesItemServeErrorRuleRatelimit
+    | RulesEditResponseRulesItemSetCacheControlRatelimit
+    | RulesEditResponseRulesItemSetCacheSettingsRuleRatelimit
+    | RulesEditResponseRulesItemSetCacheTagsRatelimit
+    | RulesEditResponseRulesItemSetConfigRuleRatelimit
+    | RulesEditResponseRulesItemSkipRuleRatelimit
+    | RulesEditResponseRulesItemTransformResponseHTMLRatelimit;
+  /** The reference of the rule (the rule's ID by default). */
+  ref?: string;
+}
+export const RulesEditResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lastUpdated: S.String.pipe(T.Body("last_updated")),
+    version: S.String,
+    id: S.optional(S.String),
+    action: S.optional(
+      S.Union(
+        RulesEditResponseRulesItemBlockRuleAction,
+        RulesEditResponseRulesItemChallengeAction,
+        RulesEditResponseRulesItemCompressResponseRuleAction,
+        RulesEditResponseRulesItemDDoSDynamicRuleAction,
+        RulesEditResponseRulesItemExecuteRuleAction,
+        RulesEditResponseRulesItemForceConnectionCloseRuleAction,
+        RulesEditResponseRulesItemJSChallengeAction,
+        RulesEditResponseRulesItemLogRuleAction,
+        RulesEditResponseRulesItemLogCustomFieldRuleAction,
+        RulesEditResponseRulesItemManagedChallengeRuleAction,
+        RulesEditResponseRulesItemRedirectRuleAction,
+        RulesEditResponseRulesItemRewriteRuleAction,
+        RulesEditResponseRulesItemRouteRuleAction,
+        RulesEditResponseRulesItemScoreRuleAction,
+        RulesEditResponseRulesItemServeErrorRuleAction,
+        RulesEditResponseRulesItemSetCacheControlAction,
+        RulesEditResponseRulesItemSetCacheSettingsRuleAction,
+        RulesEditResponseRulesItemSetCacheTagsAction,
+        RulesEditResponseRulesItemSetConfigRuleAction,
+        RulesEditResponseRulesItemSkipRuleAction,
+        RulesEditResponseRulesItemTransformResponseHTMLAction,
+      ),
+    ),
+    actionParameters: S.optional(
+      S.Union(
+        RulesEditResponseRulesItemBlockRuleActionParameters,
+        S.Unknown,
+        RulesEditResponseRulesItemCompressResponseRuleActionParameters,
+        RulesEditResponseRulesItemExecuteRuleActionParameters,
+        RulesEditResponseRulesItemLogCustomFieldRuleActionParameters,
+        RulesEditResponseRulesItemRedirectRuleActionParameters,
+        RulesEditResponseRulesItemRewriteRuleActionParameters,
+        RulesEditResponseRulesItemRouteRuleActionParameters,
+        RulesEditResponseRulesItemScoreRuleActionParameters,
+        RulesEditResponseRulesItemServeErrorRuleActionParameters,
+        RulesEditResponseRulesItemSetCacheControlActionParameters,
+        RulesEditResponseRulesItemSetCacheSettingsRuleActionParameters,
+        RulesEditResponseRulesItemSetCacheTagsActionParameters,
+        RulesEditResponseRulesItemSetConfigRuleActionParameters,
+        RulesEditResponseRulesItemSkipRuleActionParameters,
+        RulesEditResponseRulesItemTransformResponseHTMLActionParameters,
+      ).pipe(T.Body("action_parameters")),
+    ),
+    categories: S.optional(
+      S.Union(
+        RulesEditResponseRulesItemBlockRuleCategoriesList,
+        RulesEditResponseRulesItemChallengeCategoriesList,
+        RulesEditResponseRulesItemCompressResponseRuleCategoriesList,
+        RulesEditResponseRulesItemDDoSDynamicRuleCategoriesList,
+        RulesEditResponseRulesItemExecuteRuleCategoriesList,
+        RulesEditResponseRulesItemForceConnectionCloseRuleCategoriesList,
+        RulesEditResponseRulesItemJSChallengeCategoriesList,
+        RulesEditResponseRulesItemLogRuleCategoriesList,
+        RulesEditResponseRulesItemLogCustomFieldRuleCategoriesList,
+        RulesEditResponseRulesItemManagedChallengeRuleCategoriesList,
+        RulesEditResponseRulesItemRedirectRuleCategoriesList,
+        RulesEditResponseRulesItemRewriteRuleCategoriesList,
+        RulesEditResponseRulesItemRouteRuleCategoriesList,
+        RulesEditResponseRulesItemScoreRuleCategoriesList,
+        RulesEditResponseRulesItemServeErrorRuleCategoriesList,
+        RulesEditResponseRulesItemSetCacheControlCategoriesList,
+        RulesEditResponseRulesItemSetCacheSettingsRuleCategoriesList,
+        RulesEditResponseRulesItemSetCacheTagsCategoriesList,
+        RulesEditResponseRulesItemSetConfigRuleCategoriesList,
+        RulesEditResponseRulesItemSkipRuleCategoriesList,
+        RulesEditResponseRulesItemTransformResponseHTMLCategoriesList,
+      ),
+    ),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    exposedCredentialCheck: S.optional(
+      S.Union(
+        RulesEditResponseRulesItemBlockRuleExposedCredentialCheck,
+        RulesEditResponseRulesItemChallengeExposedCredentialCheck,
+        RulesEditResponseRulesItemCompressResponseRuleExposedCredentialCheck,
+        RulesEditResponseRulesItemDDoSDynamicRuleExposedCredentialCheck,
+        RulesEditResponseRulesItemExecuteRuleExposedCredentialCheck,
+        RulesEditResponseRulesItemForceConnectionCloseRuleExposedCredentialCheck,
+        RulesEditResponseRulesItemJSChallengeExposedCredentialCheck,
+        RulesEditResponseRulesItemLogRuleExposedCredentialCheck,
+        RulesEditResponseRulesItemLogCustomFieldRuleExposedCredentialCheck,
+        RulesEditResponseRulesItemManagedChallengeRuleExposedCredentialCheck,
+        RulesEditResponseRulesItemRedirectRuleExposedCredentialCheck,
+        RulesEditResponseRulesItemRewriteRuleExposedCredentialCheck,
+        RulesEditResponseRulesItemRouteRuleExposedCredentialCheck,
+        RulesEditResponseRulesItemScoreRuleExposedCredentialCheck,
+        RulesEditResponseRulesItemServeErrorRuleExposedCredentialCheck,
+        RulesEditResponseRulesItemSetCacheControlExposedCredentialCheck,
+        RulesEditResponseRulesItemSetCacheSettingsRuleExposedCredentialCheck,
+        RulesEditResponseRulesItemSetCacheTagsExposedCredentialCheck,
+        RulesEditResponseRulesItemSetConfigRuleExposedCredentialCheck,
+        RulesEditResponseRulesItemSkipRuleExposedCredentialCheck,
+        RulesEditResponseRulesItemTransformResponseHTMLExposedCredentialCheck,
+      ).pipe(T.Body("exposed_credential_check")),
+    ),
+    expression: S.optional(S.String),
+    logging: S.optional(RulesEditResponseRulesItemBlockRuleLogging),
+    ratelimit: S.optional(
+      S.Union(
+        RulesEditResponseRulesItemBlockRuleRatelimit,
+        RulesEditResponseRulesItemChallengeRatelimit,
+        RulesEditResponseRulesItemCompressResponseRuleRatelimit,
+        RulesEditResponseRulesItemDDoSDynamicRuleRatelimit,
+        RulesEditResponseRulesItemExecuteRuleRatelimit,
+        RulesEditResponseRulesItemForceConnectionCloseRuleRatelimit,
+        RulesEditResponseRulesItemJSChallengeRatelimit,
+        RulesEditResponseRulesItemLogRuleRatelimit,
+        RulesEditResponseRulesItemLogCustomFieldRuleRatelimit,
+        RulesEditResponseRulesItemManagedChallengeRuleRatelimit,
+        RulesEditResponseRulesItemRedirectRuleRatelimit,
+        RulesEditResponseRulesItemRewriteRuleRatelimit,
+        RulesEditResponseRulesItemRouteRuleRatelimit,
+        RulesEditResponseRulesItemScoreRuleRatelimit,
+        RulesEditResponseRulesItemServeErrorRuleRatelimit,
+        RulesEditResponseRulesItemSetCacheControlRatelimit,
+        RulesEditResponseRulesItemSetCacheSettingsRuleRatelimit,
+        RulesEditResponseRulesItemSetCacheTagsRatelimit,
+        RulesEditResponseRulesItemSetConfigRuleRatelimit,
+        RulesEditResponseRulesItemSkipRuleRatelimit,
+        RulesEditResponseRulesItemTransformResponseHTMLRatelimit,
+      ),
+    ),
+    ref: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RulesEditResponseRulesItem",
+}) as any as S.Schema<RulesEditResponseRulesItem>;
 
 export type RulesEditResponseRulesList =
   ReadonlyArray<RulesEditResponseRulesItem>;
@@ -71211,22 +72413,36 @@ export const PhasesUpdateResponseRulesItemRewriteRuleActionParametersHeadersRemo
       "PhasesUpdateResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeader",
   }) as any as S.Schema<PhasesUpdateResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeader>;
 
-export type PhasesUpdateResponseRulesItemRewriteRuleActionParametersHeaders =
-  | PhasesUpdateResponseRulesItemRewriteRuleActionParametersHeadersAddStaticHeader
-  | PhasesUpdateResponseRulesItemRewriteRuleActionParametersHeadersAddDynamicHeader
-  | PhasesUpdateResponseRulesItemRewriteRuleActionParametersHeadersSetStaticHeader
-  | PhasesUpdateResponseRulesItemRewriteRuleActionParametersHeadersSetDynamicHeader
-  | PhasesUpdateResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeader;
+export interface PhasesUpdateResponseRulesItemRewriteRuleActionParametersHeaders {
+  /** The operation to perform on the header. */
+  operation:
+    | PhasesUpdateResponseRulesItemRewriteRuleActionParametersHeadersAddStaticHeaderOperation
+    | PhasesUpdateResponseRulesItemRewriteRuleActionParametersHeadersAddDynamicHeaderOperation
+    | PhasesUpdateResponseRulesItemRewriteRuleActionParametersHeadersSetStaticHeaderOperation
+    | PhasesUpdateResponseRulesItemRewriteRuleActionParametersHeadersSetDynamicHeaderOperation
+    | PhasesUpdateResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeaderOperation;
+  /** A static value for the header. */
+  value?: string;
+  /** An expression that evaluates to a value for the header. */
+  expression?: string;
+}
 export const PhasesUpdateResponseRulesItemRewriteRuleActionParametersHeaders =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value"],
-      ["expression", "operation"],
-      ["operation", "value"],
-      ["expression", "operation"],
-      ["operation"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        PhasesUpdateResponseRulesItemRewriteRuleActionParametersHeadersAddStaticHeaderOperation,
+        PhasesUpdateResponseRulesItemRewriteRuleActionParametersHeadersAddDynamicHeaderOperation,
+        PhasesUpdateResponseRulesItemRewriteRuleActionParametersHeadersSetStaticHeaderOperation,
+        PhasesUpdateResponseRulesItemRewriteRuleActionParametersHeadersSetDynamicHeaderOperation,
+        PhasesUpdateResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeaderOperation,
+      ),
+      value: S.optional(S.String),
+      expression: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "PhasesUpdateResponseRulesItemRewriteRuleActionParametersHeaders",
+  }) as any as S.Schema<PhasesUpdateResponseRulesItemRewriteRuleActionParametersHeaders>;
 
 export interface PhasesUpdateResponseRulesItemRewriteRuleActionParametersUriURIPathPath {
   /** An expression that evaluates to a value to rewrite the URI path to. */
@@ -71297,16 +72513,28 @@ export const PhasesUpdateResponseRulesItemRewriteRuleActionParametersUriURIQuery
       "PhasesUpdateResponseRulesItemRewriteRuleActionParametersUriURIQuery",
   }) as any as S.Schema<PhasesUpdateResponseRulesItemRewriteRuleActionParametersUriURIQuery>;
 
-export type PhasesUpdateResponseRulesItemRewriteRuleActionParametersUri =
-  | PhasesUpdateResponseRulesItemRewriteRuleActionParametersUriURIPath
-  | PhasesUpdateResponseRulesItemRewriteRuleActionParametersUriURIQuery;
+export interface PhasesUpdateResponseRulesItemRewriteRuleActionParametersUri {
+  /** A URI path rewrite. */
+  path?: PhasesUpdateResponseRulesItemRewriteRuleActionParametersUriURIPathPath;
+  /** Whether to propagate the rewritten URI to origin. */
+  origin?: boolean;
+  /** A URI query rewrite. */
+  query?: PhasesUpdateResponseRulesItemRewriteRuleActionParametersUriURIQueryQuery;
+}
 export const PhasesUpdateResponseRulesItemRewriteRuleActionParametersUri =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["path", "origin"],
-      ["query", "origin"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.optional(
+        PhasesUpdateResponseRulesItemRewriteRuleActionParametersUriURIPathPath,
+      ),
+      origin: S.optional(S.Boolean),
+      query: S.optional(
+        PhasesUpdateResponseRulesItemRewriteRuleActionParametersUriURIQueryQuery,
+      ),
+    }),
+  ).annotate({
+    identifier: "PhasesUpdateResponseRulesItemRewriteRuleActionParametersUri",
+  }) as any as S.Schema<PhasesUpdateResponseRulesItemRewriteRuleActionParametersUri>;
 
 export interface PhasesUpdateResponseRulesItemRewriteRuleActionParameters {
   /** A map of headers to rewrite. */
@@ -71866,16 +73094,34 @@ export const PhasesUpdateResponseRulesItemServeErrorRuleActionParametersActionPa
       "PhasesUpdateResponseRulesItemServeErrorRuleActionParametersActionParametersAsset",
   }) as any as S.Schema<PhasesUpdateResponseRulesItemServeErrorRuleActionParametersActionParametersAsset>;
 
-export type PhasesUpdateResponseRulesItemServeErrorRuleActionParameters =
-  | PhasesUpdateResponseRulesItemServeErrorRuleActionParametersActionParametersContent
-  | PhasesUpdateResponseRulesItemServeErrorRuleActionParametersActionParametersAsset;
+export interface PhasesUpdateResponseRulesItemServeErrorRuleActionParameters {
+  /** The response content. */
+  content?: string;
+  /** The content type header to set with the error response. */
+  contentType?:
+    | PhasesUpdateResponseRulesItemServeErrorRuleActionParametersActionParametersContentContentType
+    | PhasesUpdateResponseRulesItemServeErrorRuleActionParametersActionParametersAssetContentType;
+  /** The status code to use for the error. */
+  statusCode?: number;
+  /** The name of a custom asset to serve as the error response. */
+  assetName?: string;
+}
 export const PhasesUpdateResponseRulesItemServeErrorRuleActionParameters =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["content", "contentType", "statusCode"],
-      ["assetName", "contentType", "statusCode"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      content: S.optional(S.String),
+      contentType: S.optional(
+        S.Union(
+          PhasesUpdateResponseRulesItemServeErrorRuleActionParametersActionParametersContentContentType,
+          PhasesUpdateResponseRulesItemServeErrorRuleActionParametersActionParametersAssetContentType,
+        ).pipe(T.Body("content_type")),
+      ),
+      statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
+      assetName: S.optional(S.String.pipe(T.Body("asset_name"))),
+    }),
+  ).annotate({
+    identifier: "PhasesUpdateResponseRulesItemServeErrorRuleActionParameters",
+  }) as any as S.Schema<PhasesUpdateResponseRulesItemServeErrorRuleActionParameters>;
 
 export type PhasesUpdateResponseRulesItemServeErrorRuleCategoriesList =
   ReadonlyArray<string>;
@@ -72065,16 +73311,27 @@ export const PhasesUpdateResponseRulesItemSetCacheControlActionParametersImmutab
       "PhasesUpdateResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirective",
   }) as any as S.Schema<PhasesUpdateResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirective>;
 
-export type PhasesUpdateResponseRulesItemSetCacheControlActionParametersImmutable =
-    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersImmutableSetDirective
-    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirective;
+export interface PhasesUpdateResponseRulesItemSetCacheControlActionParametersImmutable {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersImmutableSetDirectiveOperation
+    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const PhasesUpdateResponseRulesItemSetCacheControlActionParametersImmutable =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        PhasesUpdateResponseRulesItemSetCacheControlActionParametersImmutableSetDirectiveOperation,
+        PhasesUpdateResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "PhasesUpdateResponseRulesItemSetCacheControlActionParametersImmutable",
+  }) as any as S.Schema<PhasesUpdateResponseRulesItemSetCacheControlActionParametersImmutable>;
 
 export type PhasesUpdateResponseRulesItemSetCacheControlActionParametersMaxAgeSetDirectiveOperation =
   "set" | "remove";
@@ -72125,16 +73382,30 @@ export const PhasesUpdateResponseRulesItemSetCacheControlActionParametersMaxAgeR
       "PhasesUpdateResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirective",
   }) as any as S.Schema<PhasesUpdateResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirective>;
 
-export type PhasesUpdateResponseRulesItemSetCacheControlActionParametersMaxAge =
-    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersMaxAgeSetDirective
-    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirective;
+export interface PhasesUpdateResponseRulesItemSetCacheControlActionParametersMaxAge {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersMaxAgeSetDirectiveOperation
+    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirectiveOperation;
+  /** The duration value in seconds for the directive. */
+  value?: number;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const PhasesUpdateResponseRulesItemSetCacheControlActionParametersMaxAge =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        PhasesUpdateResponseRulesItemSetCacheControlActionParametersMaxAgeSetDirectiveOperation,
+        PhasesUpdateResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirectiveOperation,
+      ),
+      value: S.optional(S.Number),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "PhasesUpdateResponseRulesItemSetCacheControlActionParametersMaxAge",
+  }) as any as S.Schema<PhasesUpdateResponseRulesItemSetCacheControlActionParametersMaxAge>;
 
 export type PhasesUpdateResponseRulesItemSetCacheControlActionParametersMustRevalidateSetDirectiveOperation =
   "set" | "remove";
@@ -72182,16 +73453,27 @@ export const PhasesUpdateResponseRulesItemSetCacheControlActionParametersMustRev
       "PhasesUpdateResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirective",
   }) as any as S.Schema<PhasesUpdateResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirective>;
 
-export type PhasesUpdateResponseRulesItemSetCacheControlActionParametersMustRevalidate =
-    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersMustRevalidateSetDirective
-    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirective;
+export interface PhasesUpdateResponseRulesItemSetCacheControlActionParametersMustRevalidate {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersMustRevalidateSetDirectiveOperation
+    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const PhasesUpdateResponseRulesItemSetCacheControlActionParametersMustRevalidate =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        PhasesUpdateResponseRulesItemSetCacheControlActionParametersMustRevalidateSetDirectiveOperation,
+        PhasesUpdateResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "PhasesUpdateResponseRulesItemSetCacheControlActionParametersMustRevalidate",
+  }) as any as S.Schema<PhasesUpdateResponseRulesItemSetCacheControlActionParametersMustRevalidate>;
 
 export type PhasesUpdateResponseRulesItemSetCacheControlActionParametersMustUnderstandSetDirectiveOperation =
   "set" | "remove";
@@ -72239,16 +73521,27 @@ export const PhasesUpdateResponseRulesItemSetCacheControlActionParametersMustUnd
       "PhasesUpdateResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirective",
   }) as any as S.Schema<PhasesUpdateResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirective>;
 
-export type PhasesUpdateResponseRulesItemSetCacheControlActionParametersMustUnderstand =
-    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersMustUnderstandSetDirective
-    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirective;
+export interface PhasesUpdateResponseRulesItemSetCacheControlActionParametersMustUnderstand {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersMustUnderstandSetDirectiveOperation
+    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const PhasesUpdateResponseRulesItemSetCacheControlActionParametersMustUnderstand =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        PhasesUpdateResponseRulesItemSetCacheControlActionParametersMustUnderstandSetDirectiveOperation,
+        PhasesUpdateResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "PhasesUpdateResponseRulesItemSetCacheControlActionParametersMustUnderstand",
+  }) as any as S.Schema<PhasesUpdateResponseRulesItemSetCacheControlActionParametersMustUnderstand>;
 
 export type PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveOperation =
   "set" | "remove";
@@ -72308,16 +73601,32 @@ export const PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoCache
       "PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirective",
   }) as any as S.Schema<PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirective>;
 
-export type PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoCache =
-    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoCacheSetDirective
-    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirective;
+export interface PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoCache {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveOperation
+    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+  /** Optional list of header names to qualify the directive (e.g., for "private" or "no-cache" directives). */
+  qualifiers?: PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList;
+}
 export const PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoCache =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly", "qualifiers"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveOperation,
+        PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+      qualifiers: S.optional(
+        PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoCache",
+  }) as any as S.Schema<PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoCache>;
 
 export type PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoStoreSetDirectiveOperation =
   "set" | "remove";
@@ -72365,16 +73674,27 @@ export const PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoStore
       "PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirective",
   }) as any as S.Schema<PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirective>;
 
-export type PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoStore =
-    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoStoreSetDirective
-    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirective;
+export interface PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoStore {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoStoreSetDirectiveOperation
+    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoStore =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoStoreSetDirectiveOperation,
+        PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoStore",
+  }) as any as S.Schema<PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoStore>;
 
 export type PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoTransformSetDirectiveOperation =
   "set" | "remove";
@@ -72422,16 +73742,27 @@ export const PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoTrans
       "PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirective",
   }) as any as S.Schema<PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirective>;
 
-export type PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoTransform =
-    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoTransformSetDirective
-    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirective;
+export interface PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoTransform {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoTransformSetDirectiveOperation
+    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoTransform =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoTransformSetDirectiveOperation,
+        PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoTransform",
+  }) as any as S.Schema<PhasesUpdateResponseRulesItemSetCacheControlActionParametersNoTransform>;
 
 export type PhasesUpdateResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveOperation =
   "set" | "remove";
@@ -72491,16 +73822,32 @@ export const PhasesUpdateResponseRulesItemSetCacheControlActionParametersPrivate
       "PhasesUpdateResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirective",
   }) as any as S.Schema<PhasesUpdateResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirective>;
 
-export type PhasesUpdateResponseRulesItemSetCacheControlActionParametersPrivate =
-    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersPrivateSetDirective
-    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirective;
+export interface PhasesUpdateResponseRulesItemSetCacheControlActionParametersPrivate {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveOperation
+    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+  /** Optional list of header names to qualify the directive (e.g., for "private" or "no-cache" directives). */
+  qualifiers?: PhasesUpdateResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList;
+}
 export const PhasesUpdateResponseRulesItemSetCacheControlActionParametersPrivate =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly", "qualifiers"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        PhasesUpdateResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveOperation,
+        PhasesUpdateResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+      qualifiers: S.optional(
+        PhasesUpdateResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "PhasesUpdateResponseRulesItemSetCacheControlActionParametersPrivate",
+  }) as any as S.Schema<PhasesUpdateResponseRulesItemSetCacheControlActionParametersPrivate>;
 
 export type PhasesUpdateResponseRulesItemSetCacheControlActionParametersProxyRevalidateSetDirectiveOperation =
   "set" | "remove";
@@ -72548,16 +73895,27 @@ export const PhasesUpdateResponseRulesItemSetCacheControlActionParametersProxyRe
       "PhasesUpdateResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirective",
   }) as any as S.Schema<PhasesUpdateResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirective>;
 
-export type PhasesUpdateResponseRulesItemSetCacheControlActionParametersProxyRevalidate =
-    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersProxyRevalidateSetDirective
-    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirective;
+export interface PhasesUpdateResponseRulesItemSetCacheControlActionParametersProxyRevalidate {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersProxyRevalidateSetDirectiveOperation
+    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const PhasesUpdateResponseRulesItemSetCacheControlActionParametersProxyRevalidate =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        PhasesUpdateResponseRulesItemSetCacheControlActionParametersProxyRevalidateSetDirectiveOperation,
+        PhasesUpdateResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "PhasesUpdateResponseRulesItemSetCacheControlActionParametersProxyRevalidate",
+  }) as any as S.Schema<PhasesUpdateResponseRulesItemSetCacheControlActionParametersProxyRevalidate>;
 
 export type PhasesUpdateResponseRulesItemSetCacheControlActionParametersPublicSetDirectiveOperation =
   "set" | "remove";
@@ -72605,16 +73963,27 @@ export const PhasesUpdateResponseRulesItemSetCacheControlActionParametersPublicR
       "PhasesUpdateResponseRulesItemSetCacheControlActionParametersPublicRemoveDirective",
   }) as any as S.Schema<PhasesUpdateResponseRulesItemSetCacheControlActionParametersPublicRemoveDirective>;
 
-export type PhasesUpdateResponseRulesItemSetCacheControlActionParametersPublic =
-    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersPublicSetDirective
-    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersPublicRemoveDirective;
+export interface PhasesUpdateResponseRulesItemSetCacheControlActionParametersPublic {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersPublicSetDirectiveOperation
+    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersPublicRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const PhasesUpdateResponseRulesItemSetCacheControlActionParametersPublic =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        PhasesUpdateResponseRulesItemSetCacheControlActionParametersPublicSetDirectiveOperation,
+        PhasesUpdateResponseRulesItemSetCacheControlActionParametersPublicRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "PhasesUpdateResponseRulesItemSetCacheControlActionParametersPublic",
+  }) as any as S.Schema<PhasesUpdateResponseRulesItemSetCacheControlActionParametersPublic>;
 
 export type PhasesUpdateResponseRulesItemSetCacheControlActionParametersSMaxageSetDirectiveOperation =
   "set" | "remove";
@@ -72665,16 +74034,30 @@ export const PhasesUpdateResponseRulesItemSetCacheControlActionParametersSMaxage
       "PhasesUpdateResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirective",
   }) as any as S.Schema<PhasesUpdateResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirective>;
 
-export type PhasesUpdateResponseRulesItemSetCacheControlActionParametersSMaxage =
-    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersSMaxageSetDirective
-    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirective;
+export interface PhasesUpdateResponseRulesItemSetCacheControlActionParametersSMaxage {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersSMaxageSetDirectiveOperation
+    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirectiveOperation;
+  /** The duration value in seconds for the directive. */
+  value?: number;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const PhasesUpdateResponseRulesItemSetCacheControlActionParametersSMaxage =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        PhasesUpdateResponseRulesItemSetCacheControlActionParametersSMaxageSetDirectiveOperation,
+        PhasesUpdateResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirectiveOperation,
+      ),
+      value: S.optional(S.Number),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "PhasesUpdateResponseRulesItemSetCacheControlActionParametersSMaxage",
+  }) as any as S.Schema<PhasesUpdateResponseRulesItemSetCacheControlActionParametersSMaxage>;
 
 export type PhasesUpdateResponseRulesItemSetCacheControlActionParametersStaleIfErrorSetDirectiveOperation =
   "set" | "remove";
@@ -72725,16 +74108,30 @@ export const PhasesUpdateResponseRulesItemSetCacheControlActionParametersStaleIf
       "PhasesUpdateResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirective",
   }) as any as S.Schema<PhasesUpdateResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirective>;
 
-export type PhasesUpdateResponseRulesItemSetCacheControlActionParametersStaleIfError =
-    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersStaleIfErrorSetDirective
-    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirective;
+export interface PhasesUpdateResponseRulesItemSetCacheControlActionParametersStaleIfError {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersStaleIfErrorSetDirectiveOperation
+    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirectiveOperation;
+  /** The duration value in seconds for the directive. */
+  value?: number;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const PhasesUpdateResponseRulesItemSetCacheControlActionParametersStaleIfError =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        PhasesUpdateResponseRulesItemSetCacheControlActionParametersStaleIfErrorSetDirectiveOperation,
+        PhasesUpdateResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirectiveOperation,
+      ),
+      value: S.optional(S.Number),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "PhasesUpdateResponseRulesItemSetCacheControlActionParametersStaleIfError",
+  }) as any as S.Schema<PhasesUpdateResponseRulesItemSetCacheControlActionParametersStaleIfError>;
 
 export type PhasesUpdateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirectiveOperation =
   "set" | "remove";
@@ -72785,16 +74182,30 @@ export const PhasesUpdateResponseRulesItemSetCacheControlActionParametersStaleWh
       "PhasesUpdateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirective",
   }) as any as S.Schema<PhasesUpdateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirective>;
 
-export type PhasesUpdateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate =
-    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirective
-    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirective;
+export interface PhasesUpdateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirectiveOperation
+    | PhasesUpdateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirectiveOperation;
+  /** The duration value in seconds for the directive. */
+  value?: number;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const PhasesUpdateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        PhasesUpdateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirectiveOperation,
+        PhasesUpdateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirectiveOperation,
+      ),
+      value: S.optional(S.Number),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "PhasesUpdateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate",
+  }) as any as S.Schema<PhasesUpdateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate>;
 
 export interface PhasesUpdateResponseRulesItemSetCacheControlActionParameters {
   /** A cache-control directive configuration. */
@@ -73966,24 +75377,46 @@ export const PhasesUpdateResponseRulesItemSetCacheTagsActionParametersSetCacheTa
       "PhasesUpdateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpression",
   }) as any as S.Schema<PhasesUpdateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpression>;
 
-export type PhasesUpdateResponseRulesItemSetCacheTagsActionParameters =
-  | PhasesUpdateResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValues
-  | PhasesUpdateResponseRulesItemSetCacheTagsActionParametersAddCacheTagsExpression
-  | PhasesUpdateResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValues
-  | PhasesUpdateResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsExpression
-  | PhasesUpdateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValues
-  | PhasesUpdateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpression;
+export interface PhasesUpdateResponseRulesItemSetCacheTagsActionParameters {
+  /** The operation to perform on the cache tags. */
+  operation:
+    | PhasesUpdateResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesOperation
+    | PhasesUpdateResponseRulesItemSetCacheTagsActionParametersAddCacheTagsExpressionOperation
+    | PhasesUpdateResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesOperation
+    | PhasesUpdateResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsExpressionOperation
+    | PhasesUpdateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesOperation
+    | PhasesUpdateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpressionOperation;
+  /** A list of cache tag values. */
+  values?:
+    | PhasesUpdateResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesValuesList
+    | PhasesUpdateResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesValuesList
+    | PhasesUpdateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesValuesList;
+  /** An expression that evaluates to an array of cache tag values. */
+  expression?: string;
+}
 export const PhasesUpdateResponseRulesItemSetCacheTagsActionParameters =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "values"],
-      ["expression", "operation"],
-      ["operation", "values"],
-      ["expression", "operation"],
-      ["operation", "values"],
-      ["expression", "operation"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        PhasesUpdateResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesOperation,
+        PhasesUpdateResponseRulesItemSetCacheTagsActionParametersAddCacheTagsExpressionOperation,
+        PhasesUpdateResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesOperation,
+        PhasesUpdateResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsExpressionOperation,
+        PhasesUpdateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesOperation,
+        PhasesUpdateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpressionOperation,
+      ),
+      values: S.optional(
+        S.Union(
+          PhasesUpdateResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesValuesList,
+          PhasesUpdateResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesValuesList,
+          PhasesUpdateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesValuesList,
+        ),
+      ),
+      expression: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "PhasesUpdateResponseRulesItemSetCacheTagsActionParameters",
+  }) as any as S.Schema<PhasesUpdateResponseRulesItemSetCacheTagsActionParameters>;
 
 export type PhasesUpdateResponseRulesItemSetCacheTagsCategoriesList =
   ReadonlyArray<string>;
@@ -74843,347 +76276,268 @@ export const PhasesUpdateResponseRulesItemTransformResponseHTML =
     identifier: "PhasesUpdateResponseRulesItemTransformResponseHTML",
   }) as any as S.Schema<PhasesUpdateResponseRulesItemTransformResponseHTML>;
 
-export type PhasesUpdateResponseRulesItem =
-  | PhasesUpdateResponseRulesItemBlockRule
-  | PhasesUpdateResponseRulesItemChallenge
-  | PhasesUpdateResponseRulesItemCompressResponseRule
-  | PhasesUpdateResponseRulesItemDDoSDynamicRule
-  | PhasesUpdateResponseRulesItemExecuteRule
-  | PhasesUpdateResponseRulesItemForceConnectionCloseRule
-  | PhasesUpdateResponseRulesItemJSChallenge
-  | PhasesUpdateResponseRulesItemLogRule
-  | PhasesUpdateResponseRulesItemLogCustomFieldRule
-  | PhasesUpdateResponseRulesItemManagedChallengeRule
-  | PhasesUpdateResponseRulesItemRedirectRule
-  | PhasesUpdateResponseRulesItemRewriteRule
-  | PhasesUpdateResponseRulesItemRouteRule
-  | PhasesUpdateResponseRulesItemScoreRule
-  | PhasesUpdateResponseRulesItemServeErrorRule
-  | PhasesUpdateResponseRulesItemSetCacheControl
-  | PhasesUpdateResponseRulesItemSetCacheSettingsRule
-  | PhasesUpdateResponseRulesItemSetCacheTags
-  | PhasesUpdateResponseRulesItemSetConfigRule
-  | PhasesUpdateResponseRulesItemSkipRule
-  | PhasesUpdateResponseRulesItemTransformResponseHTML;
-export const PhasesUpdateResponseRulesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-  ]),
-);
+export interface PhasesUpdateResponseRulesItem {
+  /** The timestamp of when the rule was last modified. */
+  lastUpdated: string;
+  /** The version of the rule. */
+  version: string;
+  /** The unique ID of the rule. */
+  id?: string;
+  /** The action to perform when the rule matches. */
+  action?:
+    | PhasesUpdateResponseRulesItemBlockRuleAction
+    | PhasesUpdateResponseRulesItemChallengeAction
+    | PhasesUpdateResponseRulesItemCompressResponseRuleAction
+    | PhasesUpdateResponseRulesItemDDoSDynamicRuleAction
+    | PhasesUpdateResponseRulesItemExecuteRuleAction
+    | PhasesUpdateResponseRulesItemForceConnectionCloseRuleAction
+    | PhasesUpdateResponseRulesItemJSChallengeAction
+    | PhasesUpdateResponseRulesItemLogRuleAction
+    | PhasesUpdateResponseRulesItemLogCustomFieldRuleAction
+    | PhasesUpdateResponseRulesItemManagedChallengeRuleAction
+    | PhasesUpdateResponseRulesItemRedirectRuleAction
+    | PhasesUpdateResponseRulesItemRewriteRuleAction
+    | PhasesUpdateResponseRulesItemRouteRuleAction
+    | PhasesUpdateResponseRulesItemScoreRuleAction
+    | PhasesUpdateResponseRulesItemServeErrorRuleAction
+    | PhasesUpdateResponseRulesItemSetCacheControlAction
+    | PhasesUpdateResponseRulesItemSetCacheSettingsRuleAction
+    | PhasesUpdateResponseRulesItemSetCacheTagsAction
+    | PhasesUpdateResponseRulesItemSetConfigRuleAction
+    | PhasesUpdateResponseRulesItemSkipRuleAction
+    | PhasesUpdateResponseRulesItemTransformResponseHTMLAction;
+  /** The parameters configuring the rule's action. */
+  actionParameters?:
+    | PhasesUpdateResponseRulesItemBlockRuleActionParameters
+    | unknown
+    | PhasesUpdateResponseRulesItemCompressResponseRuleActionParameters
+    | PhasesUpdateResponseRulesItemExecuteRuleActionParameters
+    | PhasesUpdateResponseRulesItemLogCustomFieldRuleActionParameters
+    | PhasesUpdateResponseRulesItemRedirectRuleActionParameters
+    | PhasesUpdateResponseRulesItemRewriteRuleActionParameters
+    | PhasesUpdateResponseRulesItemRouteRuleActionParameters
+    | PhasesUpdateResponseRulesItemScoreRuleActionParameters
+    | PhasesUpdateResponseRulesItemServeErrorRuleActionParameters
+    | PhasesUpdateResponseRulesItemSetCacheControlActionParameters
+    | PhasesUpdateResponseRulesItemSetCacheSettingsRuleActionParameters
+    | PhasesUpdateResponseRulesItemSetCacheTagsActionParameters
+    | PhasesUpdateResponseRulesItemSetConfigRuleActionParameters
+    | PhasesUpdateResponseRulesItemSkipRuleActionParameters
+    | PhasesUpdateResponseRulesItemTransformResponseHTMLActionParameters;
+  /** The categories of the rule. */
+  categories?:
+    | PhasesUpdateResponseRulesItemBlockRuleCategoriesList
+    | PhasesUpdateResponseRulesItemChallengeCategoriesList
+    | PhasesUpdateResponseRulesItemCompressResponseRuleCategoriesList
+    | PhasesUpdateResponseRulesItemDDoSDynamicRuleCategoriesList
+    | PhasesUpdateResponseRulesItemExecuteRuleCategoriesList
+    | PhasesUpdateResponseRulesItemForceConnectionCloseRuleCategoriesList
+    | PhasesUpdateResponseRulesItemJSChallengeCategoriesList
+    | PhasesUpdateResponseRulesItemLogRuleCategoriesList
+    | PhasesUpdateResponseRulesItemLogCustomFieldRuleCategoriesList
+    | PhasesUpdateResponseRulesItemManagedChallengeRuleCategoriesList
+    | PhasesUpdateResponseRulesItemRedirectRuleCategoriesList
+    | PhasesUpdateResponseRulesItemRewriteRuleCategoriesList
+    | PhasesUpdateResponseRulesItemRouteRuleCategoriesList
+    | PhasesUpdateResponseRulesItemScoreRuleCategoriesList
+    | PhasesUpdateResponseRulesItemServeErrorRuleCategoriesList
+    | PhasesUpdateResponseRulesItemSetCacheControlCategoriesList
+    | PhasesUpdateResponseRulesItemSetCacheSettingsRuleCategoriesList
+    | PhasesUpdateResponseRulesItemSetCacheTagsCategoriesList
+    | PhasesUpdateResponseRulesItemSetConfigRuleCategoriesList
+    | PhasesUpdateResponseRulesItemSkipRuleCategoriesList
+    | PhasesUpdateResponseRulesItemTransformResponseHTMLCategoriesList;
+  /** An informative description of the rule. */
+  description?: string;
+  /** Whether the rule should be executed. */
+  enabled?: boolean;
+  /** Configuration for exposed credential checking. */
+  exposedCredentialCheck?:
+    | PhasesUpdateResponseRulesItemBlockRuleExposedCredentialCheck
+    | PhasesUpdateResponseRulesItemChallengeExposedCredentialCheck
+    | PhasesUpdateResponseRulesItemCompressResponseRuleExposedCredentialCheck
+    | PhasesUpdateResponseRulesItemDDoSDynamicRuleExposedCredentialCheck
+    | PhasesUpdateResponseRulesItemExecuteRuleExposedCredentialCheck
+    | PhasesUpdateResponseRulesItemForceConnectionCloseRuleExposedCredentialCheck
+    | PhasesUpdateResponseRulesItemJSChallengeExposedCredentialCheck
+    | PhasesUpdateResponseRulesItemLogRuleExposedCredentialCheck
+    | PhasesUpdateResponseRulesItemLogCustomFieldRuleExposedCredentialCheck
+    | PhasesUpdateResponseRulesItemManagedChallengeRuleExposedCredentialCheck
+    | PhasesUpdateResponseRulesItemRedirectRuleExposedCredentialCheck
+    | PhasesUpdateResponseRulesItemRewriteRuleExposedCredentialCheck
+    | PhasesUpdateResponseRulesItemRouteRuleExposedCredentialCheck
+    | PhasesUpdateResponseRulesItemScoreRuleExposedCredentialCheck
+    | PhasesUpdateResponseRulesItemServeErrorRuleExposedCredentialCheck
+    | PhasesUpdateResponseRulesItemSetCacheControlExposedCredentialCheck
+    | PhasesUpdateResponseRulesItemSetCacheSettingsRuleExposedCredentialCheck
+    | PhasesUpdateResponseRulesItemSetCacheTagsExposedCredentialCheck
+    | PhasesUpdateResponseRulesItemSetConfigRuleExposedCredentialCheck
+    | PhasesUpdateResponseRulesItemSkipRuleExposedCredentialCheck
+    | PhasesUpdateResponseRulesItemTransformResponseHTMLExposedCredentialCheck;
+  /** The expression defining which traffic will match the rule. */
+  expression?: string;
+  /** An object configuring the rule's logging behavior. */
+  logging?: PhasesUpdateResponseRulesItemBlockRuleLogging;
+  /** An object configuring the rule's rate limit behavior. */
+  ratelimit?:
+    | PhasesUpdateResponseRulesItemBlockRuleRatelimit
+    | PhasesUpdateResponseRulesItemChallengeRatelimit
+    | PhasesUpdateResponseRulesItemCompressResponseRuleRatelimit
+    | PhasesUpdateResponseRulesItemDDoSDynamicRuleRatelimit
+    | PhasesUpdateResponseRulesItemExecuteRuleRatelimit
+    | PhasesUpdateResponseRulesItemForceConnectionCloseRuleRatelimit
+    | PhasesUpdateResponseRulesItemJSChallengeRatelimit
+    | PhasesUpdateResponseRulesItemLogRuleRatelimit
+    | PhasesUpdateResponseRulesItemLogCustomFieldRuleRatelimit
+    | PhasesUpdateResponseRulesItemManagedChallengeRuleRatelimit
+    | PhasesUpdateResponseRulesItemRedirectRuleRatelimit
+    | PhasesUpdateResponseRulesItemRewriteRuleRatelimit
+    | PhasesUpdateResponseRulesItemRouteRuleRatelimit
+    | PhasesUpdateResponseRulesItemScoreRuleRatelimit
+    | PhasesUpdateResponseRulesItemServeErrorRuleRatelimit
+    | PhasesUpdateResponseRulesItemSetCacheControlRatelimit
+    | PhasesUpdateResponseRulesItemSetCacheSettingsRuleRatelimit
+    | PhasesUpdateResponseRulesItemSetCacheTagsRatelimit
+    | PhasesUpdateResponseRulesItemSetConfigRuleRatelimit
+    | PhasesUpdateResponseRulesItemSkipRuleRatelimit
+    | PhasesUpdateResponseRulesItemTransformResponseHTMLRatelimit;
+  /** The reference of the rule (the rule's ID by default). */
+  ref?: string;
+}
+export const PhasesUpdateResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lastUpdated: S.String.pipe(T.Body("last_updated")),
+    version: S.String,
+    id: S.optional(S.String),
+    action: S.optional(
+      S.Union(
+        PhasesUpdateResponseRulesItemBlockRuleAction,
+        PhasesUpdateResponseRulesItemChallengeAction,
+        PhasesUpdateResponseRulesItemCompressResponseRuleAction,
+        PhasesUpdateResponseRulesItemDDoSDynamicRuleAction,
+        PhasesUpdateResponseRulesItemExecuteRuleAction,
+        PhasesUpdateResponseRulesItemForceConnectionCloseRuleAction,
+        PhasesUpdateResponseRulesItemJSChallengeAction,
+        PhasesUpdateResponseRulesItemLogRuleAction,
+        PhasesUpdateResponseRulesItemLogCustomFieldRuleAction,
+        PhasesUpdateResponseRulesItemManagedChallengeRuleAction,
+        PhasesUpdateResponseRulesItemRedirectRuleAction,
+        PhasesUpdateResponseRulesItemRewriteRuleAction,
+        PhasesUpdateResponseRulesItemRouteRuleAction,
+        PhasesUpdateResponseRulesItemScoreRuleAction,
+        PhasesUpdateResponseRulesItemServeErrorRuleAction,
+        PhasesUpdateResponseRulesItemSetCacheControlAction,
+        PhasesUpdateResponseRulesItemSetCacheSettingsRuleAction,
+        PhasesUpdateResponseRulesItemSetCacheTagsAction,
+        PhasesUpdateResponseRulesItemSetConfigRuleAction,
+        PhasesUpdateResponseRulesItemSkipRuleAction,
+        PhasesUpdateResponseRulesItemTransformResponseHTMLAction,
+      ),
+    ),
+    actionParameters: S.optional(
+      S.Union(
+        PhasesUpdateResponseRulesItemBlockRuleActionParameters,
+        S.Unknown,
+        PhasesUpdateResponseRulesItemCompressResponseRuleActionParameters,
+        PhasesUpdateResponseRulesItemExecuteRuleActionParameters,
+        PhasesUpdateResponseRulesItemLogCustomFieldRuleActionParameters,
+        PhasesUpdateResponseRulesItemRedirectRuleActionParameters,
+        PhasesUpdateResponseRulesItemRewriteRuleActionParameters,
+        PhasesUpdateResponseRulesItemRouteRuleActionParameters,
+        PhasesUpdateResponseRulesItemScoreRuleActionParameters,
+        PhasesUpdateResponseRulesItemServeErrorRuleActionParameters,
+        PhasesUpdateResponseRulesItemSetCacheControlActionParameters,
+        PhasesUpdateResponseRulesItemSetCacheSettingsRuleActionParameters,
+        PhasesUpdateResponseRulesItemSetCacheTagsActionParameters,
+        PhasesUpdateResponseRulesItemSetConfigRuleActionParameters,
+        PhasesUpdateResponseRulesItemSkipRuleActionParameters,
+        PhasesUpdateResponseRulesItemTransformResponseHTMLActionParameters,
+      ).pipe(T.Body("action_parameters")),
+    ),
+    categories: S.optional(
+      S.Union(
+        PhasesUpdateResponseRulesItemBlockRuleCategoriesList,
+        PhasesUpdateResponseRulesItemChallengeCategoriesList,
+        PhasesUpdateResponseRulesItemCompressResponseRuleCategoriesList,
+        PhasesUpdateResponseRulesItemDDoSDynamicRuleCategoriesList,
+        PhasesUpdateResponseRulesItemExecuteRuleCategoriesList,
+        PhasesUpdateResponseRulesItemForceConnectionCloseRuleCategoriesList,
+        PhasesUpdateResponseRulesItemJSChallengeCategoriesList,
+        PhasesUpdateResponseRulesItemLogRuleCategoriesList,
+        PhasesUpdateResponseRulesItemLogCustomFieldRuleCategoriesList,
+        PhasesUpdateResponseRulesItemManagedChallengeRuleCategoriesList,
+        PhasesUpdateResponseRulesItemRedirectRuleCategoriesList,
+        PhasesUpdateResponseRulesItemRewriteRuleCategoriesList,
+        PhasesUpdateResponseRulesItemRouteRuleCategoriesList,
+        PhasesUpdateResponseRulesItemScoreRuleCategoriesList,
+        PhasesUpdateResponseRulesItemServeErrorRuleCategoriesList,
+        PhasesUpdateResponseRulesItemSetCacheControlCategoriesList,
+        PhasesUpdateResponseRulesItemSetCacheSettingsRuleCategoriesList,
+        PhasesUpdateResponseRulesItemSetCacheTagsCategoriesList,
+        PhasesUpdateResponseRulesItemSetConfigRuleCategoriesList,
+        PhasesUpdateResponseRulesItemSkipRuleCategoriesList,
+        PhasesUpdateResponseRulesItemTransformResponseHTMLCategoriesList,
+      ),
+    ),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    exposedCredentialCheck: S.optional(
+      S.Union(
+        PhasesUpdateResponseRulesItemBlockRuleExposedCredentialCheck,
+        PhasesUpdateResponseRulesItemChallengeExposedCredentialCheck,
+        PhasesUpdateResponseRulesItemCompressResponseRuleExposedCredentialCheck,
+        PhasesUpdateResponseRulesItemDDoSDynamicRuleExposedCredentialCheck,
+        PhasesUpdateResponseRulesItemExecuteRuleExposedCredentialCheck,
+        PhasesUpdateResponseRulesItemForceConnectionCloseRuleExposedCredentialCheck,
+        PhasesUpdateResponseRulesItemJSChallengeExposedCredentialCheck,
+        PhasesUpdateResponseRulesItemLogRuleExposedCredentialCheck,
+        PhasesUpdateResponseRulesItemLogCustomFieldRuleExposedCredentialCheck,
+        PhasesUpdateResponseRulesItemManagedChallengeRuleExposedCredentialCheck,
+        PhasesUpdateResponseRulesItemRedirectRuleExposedCredentialCheck,
+        PhasesUpdateResponseRulesItemRewriteRuleExposedCredentialCheck,
+        PhasesUpdateResponseRulesItemRouteRuleExposedCredentialCheck,
+        PhasesUpdateResponseRulesItemScoreRuleExposedCredentialCheck,
+        PhasesUpdateResponseRulesItemServeErrorRuleExposedCredentialCheck,
+        PhasesUpdateResponseRulesItemSetCacheControlExposedCredentialCheck,
+        PhasesUpdateResponseRulesItemSetCacheSettingsRuleExposedCredentialCheck,
+        PhasesUpdateResponseRulesItemSetCacheTagsExposedCredentialCheck,
+        PhasesUpdateResponseRulesItemSetConfigRuleExposedCredentialCheck,
+        PhasesUpdateResponseRulesItemSkipRuleExposedCredentialCheck,
+        PhasesUpdateResponseRulesItemTransformResponseHTMLExposedCredentialCheck,
+      ).pipe(T.Body("exposed_credential_check")),
+    ),
+    expression: S.optional(S.String),
+    logging: S.optional(PhasesUpdateResponseRulesItemBlockRuleLogging),
+    ratelimit: S.optional(
+      S.Union(
+        PhasesUpdateResponseRulesItemBlockRuleRatelimit,
+        PhasesUpdateResponseRulesItemChallengeRatelimit,
+        PhasesUpdateResponseRulesItemCompressResponseRuleRatelimit,
+        PhasesUpdateResponseRulesItemDDoSDynamicRuleRatelimit,
+        PhasesUpdateResponseRulesItemExecuteRuleRatelimit,
+        PhasesUpdateResponseRulesItemForceConnectionCloseRuleRatelimit,
+        PhasesUpdateResponseRulesItemJSChallengeRatelimit,
+        PhasesUpdateResponseRulesItemLogRuleRatelimit,
+        PhasesUpdateResponseRulesItemLogCustomFieldRuleRatelimit,
+        PhasesUpdateResponseRulesItemManagedChallengeRuleRatelimit,
+        PhasesUpdateResponseRulesItemRedirectRuleRatelimit,
+        PhasesUpdateResponseRulesItemRewriteRuleRatelimit,
+        PhasesUpdateResponseRulesItemRouteRuleRatelimit,
+        PhasesUpdateResponseRulesItemScoreRuleRatelimit,
+        PhasesUpdateResponseRulesItemServeErrorRuleRatelimit,
+        PhasesUpdateResponseRulesItemSetCacheControlRatelimit,
+        PhasesUpdateResponseRulesItemSetCacheSettingsRuleRatelimit,
+        PhasesUpdateResponseRulesItemSetCacheTagsRatelimit,
+        PhasesUpdateResponseRulesItemSetConfigRuleRatelimit,
+        PhasesUpdateResponseRulesItemSkipRuleRatelimit,
+        PhasesUpdateResponseRulesItemTransformResponseHTMLRatelimit,
+      ),
+    ),
+    ref: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PhasesUpdateResponseRulesItem",
+}) as any as S.Schema<PhasesUpdateResponseRulesItem>;
 
 export type PhasesUpdateResponseRulesList =
   ReadonlyArray<PhasesUpdateResponseRulesItem>;
@@ -83578,22 +84932,35 @@ export const UpdateResponseRulesItemRewriteRuleActionParametersHeadersRemoveHead
       "UpdateResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeader",
   }) as any as S.Schema<UpdateResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeader>;
 
-export type UpdateResponseRulesItemRewriteRuleActionParametersHeaders =
-  | UpdateResponseRulesItemRewriteRuleActionParametersHeadersAddStaticHeader
-  | UpdateResponseRulesItemRewriteRuleActionParametersHeadersAddDynamicHeader
-  | UpdateResponseRulesItemRewriteRuleActionParametersHeadersSetStaticHeader
-  | UpdateResponseRulesItemRewriteRuleActionParametersHeadersSetDynamicHeader
-  | UpdateResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeader;
+export interface UpdateResponseRulesItemRewriteRuleActionParametersHeaders {
+  /** The operation to perform on the header. */
+  operation:
+    | UpdateResponseRulesItemRewriteRuleActionParametersHeadersAddStaticHeaderOperation
+    | UpdateResponseRulesItemRewriteRuleActionParametersHeadersAddDynamicHeaderOperation
+    | UpdateResponseRulesItemRewriteRuleActionParametersHeadersSetStaticHeaderOperation
+    | UpdateResponseRulesItemRewriteRuleActionParametersHeadersSetDynamicHeaderOperation
+    | UpdateResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeaderOperation;
+  /** A static value for the header. */
+  value?: string;
+  /** An expression that evaluates to a value for the header. */
+  expression?: string;
+}
 export const UpdateResponseRulesItemRewriteRuleActionParametersHeaders =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value"],
-      ["expression", "operation"],
-      ["operation", "value"],
-      ["expression", "operation"],
-      ["operation"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        UpdateResponseRulesItemRewriteRuleActionParametersHeadersAddStaticHeaderOperation,
+        UpdateResponseRulesItemRewriteRuleActionParametersHeadersAddDynamicHeaderOperation,
+        UpdateResponseRulesItemRewriteRuleActionParametersHeadersSetStaticHeaderOperation,
+        UpdateResponseRulesItemRewriteRuleActionParametersHeadersSetDynamicHeaderOperation,
+        UpdateResponseRulesItemRewriteRuleActionParametersHeadersRemoveHeaderOperation,
+      ),
+      value: S.optional(S.String),
+      expression: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "UpdateResponseRulesItemRewriteRuleActionParametersHeaders",
+  }) as any as S.Schema<UpdateResponseRulesItemRewriteRuleActionParametersHeaders>;
 
 export interface UpdateResponseRulesItemRewriteRuleActionParametersUriURIPathPath {
   /** An expression that evaluates to a value to rewrite the URI path to. */
@@ -83661,16 +85028,28 @@ export const UpdateResponseRulesItemRewriteRuleActionParametersUriURIQuery =
     identifier: "UpdateResponseRulesItemRewriteRuleActionParametersUriURIQuery",
   }) as any as S.Schema<UpdateResponseRulesItemRewriteRuleActionParametersUriURIQuery>;
 
-export type UpdateResponseRulesItemRewriteRuleActionParametersUri =
-  | UpdateResponseRulesItemRewriteRuleActionParametersUriURIPath
-  | UpdateResponseRulesItemRewriteRuleActionParametersUriURIQuery;
+export interface UpdateResponseRulesItemRewriteRuleActionParametersUri {
+  /** A URI path rewrite. */
+  path?: UpdateResponseRulesItemRewriteRuleActionParametersUriURIPathPath;
+  /** Whether to propagate the rewritten URI to origin. */
+  origin?: boolean;
+  /** A URI query rewrite. */
+  query?: UpdateResponseRulesItemRewriteRuleActionParametersUriURIQueryQuery;
+}
 export const UpdateResponseRulesItemRewriteRuleActionParametersUri =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["path", "origin"],
-      ["query", "origin"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.optional(
+        UpdateResponseRulesItemRewriteRuleActionParametersUriURIPathPath,
+      ),
+      origin: S.optional(S.Boolean),
+      query: S.optional(
+        UpdateResponseRulesItemRewriteRuleActionParametersUriURIQueryQuery,
+      ),
+    }),
+  ).annotate({
+    identifier: "UpdateResponseRulesItemRewriteRuleActionParametersUri",
+  }) as any as S.Schema<UpdateResponseRulesItemRewriteRuleActionParametersUri>;
 
 export interface UpdateResponseRulesItemRewriteRuleActionParameters {
   /** A map of headers to rewrite. */
@@ -84214,16 +85593,34 @@ export const UpdateResponseRulesItemServeErrorRuleActionParametersActionParamete
       "UpdateResponseRulesItemServeErrorRuleActionParametersActionParametersAsset",
   }) as any as S.Schema<UpdateResponseRulesItemServeErrorRuleActionParametersActionParametersAsset>;
 
-export type UpdateResponseRulesItemServeErrorRuleActionParameters =
-  | UpdateResponseRulesItemServeErrorRuleActionParametersActionParametersContent
-  | UpdateResponseRulesItemServeErrorRuleActionParametersActionParametersAsset;
+export interface UpdateResponseRulesItemServeErrorRuleActionParameters {
+  /** The response content. */
+  content?: string;
+  /** The content type header to set with the error response. */
+  contentType?:
+    | UpdateResponseRulesItemServeErrorRuleActionParametersActionParametersContentContentType
+    | UpdateResponseRulesItemServeErrorRuleActionParametersActionParametersAssetContentType;
+  /** The status code to use for the error. */
+  statusCode?: number;
+  /** The name of a custom asset to serve as the error response. */
+  assetName?: string;
+}
 export const UpdateResponseRulesItemServeErrorRuleActionParameters =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["content", "contentType", "statusCode"],
-      ["assetName", "contentType", "statusCode"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      content: S.optional(S.String),
+      contentType: S.optional(
+        S.Union(
+          UpdateResponseRulesItemServeErrorRuleActionParametersActionParametersContentContentType,
+          UpdateResponseRulesItemServeErrorRuleActionParametersActionParametersAssetContentType,
+        ).pipe(T.Body("content_type")),
+      ),
+      statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
+      assetName: S.optional(S.String.pipe(T.Body("asset_name"))),
+    }),
+  ).annotate({
+    identifier: "UpdateResponseRulesItemServeErrorRuleActionParameters",
+  }) as any as S.Schema<UpdateResponseRulesItemServeErrorRuleActionParameters>;
 
 export type UpdateResponseRulesItemServeErrorRuleCategoriesList =
   ReadonlyArray<string>;
@@ -84409,16 +85806,27 @@ export const UpdateResponseRulesItemSetCacheControlActionParametersImmutableRemo
       "UpdateResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirective",
   }) as any as S.Schema<UpdateResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirective>;
 
-export type UpdateResponseRulesItemSetCacheControlActionParametersImmutable =
-  | UpdateResponseRulesItemSetCacheControlActionParametersImmutableSetDirective
-  | UpdateResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirective;
+export interface UpdateResponseRulesItemSetCacheControlActionParametersImmutable {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | UpdateResponseRulesItemSetCacheControlActionParametersImmutableSetDirectiveOperation
+    | UpdateResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const UpdateResponseRulesItemSetCacheControlActionParametersImmutable =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        UpdateResponseRulesItemSetCacheControlActionParametersImmutableSetDirectiveOperation,
+        UpdateResponseRulesItemSetCacheControlActionParametersImmutableRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "UpdateResponseRulesItemSetCacheControlActionParametersImmutable",
+  }) as any as S.Schema<UpdateResponseRulesItemSetCacheControlActionParametersImmutable>;
 
 export type UpdateResponseRulesItemSetCacheControlActionParametersMaxAgeSetDirectiveOperation =
   "set" | "remove";
@@ -84469,16 +85877,29 @@ export const UpdateResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveD
       "UpdateResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirective",
   }) as any as S.Schema<UpdateResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirective>;
 
-export type UpdateResponseRulesItemSetCacheControlActionParametersMaxAge =
-  | UpdateResponseRulesItemSetCacheControlActionParametersMaxAgeSetDirective
-  | UpdateResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirective;
+export interface UpdateResponseRulesItemSetCacheControlActionParametersMaxAge {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | UpdateResponseRulesItemSetCacheControlActionParametersMaxAgeSetDirectiveOperation
+    | UpdateResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirectiveOperation;
+  /** The duration value in seconds for the directive. */
+  value?: number;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const UpdateResponseRulesItemSetCacheControlActionParametersMaxAge =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        UpdateResponseRulesItemSetCacheControlActionParametersMaxAgeSetDirectiveOperation,
+        UpdateResponseRulesItemSetCacheControlActionParametersMaxAgeRemoveDirectiveOperation,
+      ),
+      value: S.optional(S.Number),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier: "UpdateResponseRulesItemSetCacheControlActionParametersMaxAge",
+  }) as any as S.Schema<UpdateResponseRulesItemSetCacheControlActionParametersMaxAge>;
 
 export type UpdateResponseRulesItemSetCacheControlActionParametersMustRevalidateSetDirectiveOperation =
   "set" | "remove";
@@ -84526,16 +85947,27 @@ export const UpdateResponseRulesItemSetCacheControlActionParametersMustRevalidat
       "UpdateResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirective",
   }) as any as S.Schema<UpdateResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirective>;
 
-export type UpdateResponseRulesItemSetCacheControlActionParametersMustRevalidate =
-    | UpdateResponseRulesItemSetCacheControlActionParametersMustRevalidateSetDirective
-    | UpdateResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirective;
+export interface UpdateResponseRulesItemSetCacheControlActionParametersMustRevalidate {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | UpdateResponseRulesItemSetCacheControlActionParametersMustRevalidateSetDirectiveOperation
+    | UpdateResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const UpdateResponseRulesItemSetCacheControlActionParametersMustRevalidate =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        UpdateResponseRulesItemSetCacheControlActionParametersMustRevalidateSetDirectiveOperation,
+        UpdateResponseRulesItemSetCacheControlActionParametersMustRevalidateRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "UpdateResponseRulesItemSetCacheControlActionParametersMustRevalidate",
+  }) as any as S.Schema<UpdateResponseRulesItemSetCacheControlActionParametersMustRevalidate>;
 
 export type UpdateResponseRulesItemSetCacheControlActionParametersMustUnderstandSetDirectiveOperation =
   "set" | "remove";
@@ -84583,16 +86015,27 @@ export const UpdateResponseRulesItemSetCacheControlActionParametersMustUnderstan
       "UpdateResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirective",
   }) as any as S.Schema<UpdateResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirective>;
 
-export type UpdateResponseRulesItemSetCacheControlActionParametersMustUnderstand =
-    | UpdateResponseRulesItemSetCacheControlActionParametersMustUnderstandSetDirective
-    | UpdateResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirective;
+export interface UpdateResponseRulesItemSetCacheControlActionParametersMustUnderstand {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | UpdateResponseRulesItemSetCacheControlActionParametersMustUnderstandSetDirectiveOperation
+    | UpdateResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const UpdateResponseRulesItemSetCacheControlActionParametersMustUnderstand =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        UpdateResponseRulesItemSetCacheControlActionParametersMustUnderstandSetDirectiveOperation,
+        UpdateResponseRulesItemSetCacheControlActionParametersMustUnderstandRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "UpdateResponseRulesItemSetCacheControlActionParametersMustUnderstand",
+  }) as any as S.Schema<UpdateResponseRulesItemSetCacheControlActionParametersMustUnderstand>;
 
 export type UpdateResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveOperation =
   "set" | "remove";
@@ -84652,16 +86095,31 @@ export const UpdateResponseRulesItemSetCacheControlActionParametersNoCacheRemove
       "UpdateResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirective",
   }) as any as S.Schema<UpdateResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirective>;
 
-export type UpdateResponseRulesItemSetCacheControlActionParametersNoCache =
-  | UpdateResponseRulesItemSetCacheControlActionParametersNoCacheSetDirective
-  | UpdateResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirective;
+export interface UpdateResponseRulesItemSetCacheControlActionParametersNoCache {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | UpdateResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveOperation
+    | UpdateResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+  /** Optional list of header names to qualify the directive (e.g., for "private" or "no-cache" directives). */
+  qualifiers?: UpdateResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList;
+}
 export const UpdateResponseRulesItemSetCacheControlActionParametersNoCache =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly", "qualifiers"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        UpdateResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveOperation,
+        UpdateResponseRulesItemSetCacheControlActionParametersNoCacheRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+      qualifiers: S.optional(
+        UpdateResponseRulesItemSetCacheControlActionParametersNoCacheSetDirectiveQualifiersList,
+      ),
+    }),
+  ).annotate({
+    identifier: "UpdateResponseRulesItemSetCacheControlActionParametersNoCache",
+  }) as any as S.Schema<UpdateResponseRulesItemSetCacheControlActionParametersNoCache>;
 
 export type UpdateResponseRulesItemSetCacheControlActionParametersNoStoreSetDirectiveOperation =
   "set" | "remove";
@@ -84709,16 +86167,26 @@ export const UpdateResponseRulesItemSetCacheControlActionParametersNoStoreRemove
       "UpdateResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirective",
   }) as any as S.Schema<UpdateResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirective>;
 
-export type UpdateResponseRulesItemSetCacheControlActionParametersNoStore =
-  | UpdateResponseRulesItemSetCacheControlActionParametersNoStoreSetDirective
-  | UpdateResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirective;
+export interface UpdateResponseRulesItemSetCacheControlActionParametersNoStore {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | UpdateResponseRulesItemSetCacheControlActionParametersNoStoreSetDirectiveOperation
+    | UpdateResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const UpdateResponseRulesItemSetCacheControlActionParametersNoStore =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        UpdateResponseRulesItemSetCacheControlActionParametersNoStoreSetDirectiveOperation,
+        UpdateResponseRulesItemSetCacheControlActionParametersNoStoreRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier: "UpdateResponseRulesItemSetCacheControlActionParametersNoStore",
+  }) as any as S.Schema<UpdateResponseRulesItemSetCacheControlActionParametersNoStore>;
 
 export type UpdateResponseRulesItemSetCacheControlActionParametersNoTransformSetDirectiveOperation =
   "set" | "remove";
@@ -84766,16 +86234,27 @@ export const UpdateResponseRulesItemSetCacheControlActionParametersNoTransformRe
       "UpdateResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirective",
   }) as any as S.Schema<UpdateResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirective>;
 
-export type UpdateResponseRulesItemSetCacheControlActionParametersNoTransform =
-  | UpdateResponseRulesItemSetCacheControlActionParametersNoTransformSetDirective
-  | UpdateResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirective;
+export interface UpdateResponseRulesItemSetCacheControlActionParametersNoTransform {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | UpdateResponseRulesItemSetCacheControlActionParametersNoTransformSetDirectiveOperation
+    | UpdateResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const UpdateResponseRulesItemSetCacheControlActionParametersNoTransform =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        UpdateResponseRulesItemSetCacheControlActionParametersNoTransformSetDirectiveOperation,
+        UpdateResponseRulesItemSetCacheControlActionParametersNoTransformRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "UpdateResponseRulesItemSetCacheControlActionParametersNoTransform",
+  }) as any as S.Schema<UpdateResponseRulesItemSetCacheControlActionParametersNoTransform>;
 
 export type UpdateResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveOperation =
   "set" | "remove";
@@ -84835,16 +86314,31 @@ export const UpdateResponseRulesItemSetCacheControlActionParametersPrivateRemove
       "UpdateResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirective",
   }) as any as S.Schema<UpdateResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirective>;
 
-export type UpdateResponseRulesItemSetCacheControlActionParametersPrivate =
-  | UpdateResponseRulesItemSetCacheControlActionParametersPrivateSetDirective
-  | UpdateResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirective;
+export interface UpdateResponseRulesItemSetCacheControlActionParametersPrivate {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | UpdateResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveOperation
+    | UpdateResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+  /** Optional list of header names to qualify the directive (e.g., for "private" or "no-cache" directives). */
+  qualifiers?: UpdateResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList;
+}
 export const UpdateResponseRulesItemSetCacheControlActionParametersPrivate =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly", "qualifiers"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        UpdateResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveOperation,
+        UpdateResponseRulesItemSetCacheControlActionParametersPrivateRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+      qualifiers: S.optional(
+        UpdateResponseRulesItemSetCacheControlActionParametersPrivateSetDirectiveQualifiersList,
+      ),
+    }),
+  ).annotate({
+    identifier: "UpdateResponseRulesItemSetCacheControlActionParametersPrivate",
+  }) as any as S.Schema<UpdateResponseRulesItemSetCacheControlActionParametersPrivate>;
 
 export type UpdateResponseRulesItemSetCacheControlActionParametersProxyRevalidateSetDirectiveOperation =
   "set" | "remove";
@@ -84892,16 +86386,27 @@ export const UpdateResponseRulesItemSetCacheControlActionParametersProxyRevalida
       "UpdateResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirective",
   }) as any as S.Schema<UpdateResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirective>;
 
-export type UpdateResponseRulesItemSetCacheControlActionParametersProxyRevalidate =
-    | UpdateResponseRulesItemSetCacheControlActionParametersProxyRevalidateSetDirective
-    | UpdateResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirective;
+export interface UpdateResponseRulesItemSetCacheControlActionParametersProxyRevalidate {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | UpdateResponseRulesItemSetCacheControlActionParametersProxyRevalidateSetDirectiveOperation
+    | UpdateResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const UpdateResponseRulesItemSetCacheControlActionParametersProxyRevalidate =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        UpdateResponseRulesItemSetCacheControlActionParametersProxyRevalidateSetDirectiveOperation,
+        UpdateResponseRulesItemSetCacheControlActionParametersProxyRevalidateRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "UpdateResponseRulesItemSetCacheControlActionParametersProxyRevalidate",
+  }) as any as S.Schema<UpdateResponseRulesItemSetCacheControlActionParametersProxyRevalidate>;
 
 export type UpdateResponseRulesItemSetCacheControlActionParametersPublicSetDirectiveOperation =
   "set" | "remove";
@@ -84949,16 +86454,26 @@ export const UpdateResponseRulesItemSetCacheControlActionParametersPublicRemoveD
       "UpdateResponseRulesItemSetCacheControlActionParametersPublicRemoveDirective",
   }) as any as S.Schema<UpdateResponseRulesItemSetCacheControlActionParametersPublicRemoveDirective>;
 
-export type UpdateResponseRulesItemSetCacheControlActionParametersPublic =
-  | UpdateResponseRulesItemSetCacheControlActionParametersPublicSetDirective
-  | UpdateResponseRulesItemSetCacheControlActionParametersPublicRemoveDirective;
+export interface UpdateResponseRulesItemSetCacheControlActionParametersPublic {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | UpdateResponseRulesItemSetCacheControlActionParametersPublicSetDirectiveOperation
+    | UpdateResponseRulesItemSetCacheControlActionParametersPublicRemoveDirectiveOperation;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const UpdateResponseRulesItemSetCacheControlActionParametersPublic =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        UpdateResponseRulesItemSetCacheControlActionParametersPublicSetDirectiveOperation,
+        UpdateResponseRulesItemSetCacheControlActionParametersPublicRemoveDirectiveOperation,
+      ),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier: "UpdateResponseRulesItemSetCacheControlActionParametersPublic",
+  }) as any as S.Schema<UpdateResponseRulesItemSetCacheControlActionParametersPublic>;
 
 export type UpdateResponseRulesItemSetCacheControlActionParametersSMaxageSetDirectiveOperation =
   "set" | "remove";
@@ -85009,16 +86524,29 @@ export const UpdateResponseRulesItemSetCacheControlActionParametersSMaxageRemove
       "UpdateResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirective",
   }) as any as S.Schema<UpdateResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirective>;
 
-export type UpdateResponseRulesItemSetCacheControlActionParametersSMaxage =
-  | UpdateResponseRulesItemSetCacheControlActionParametersSMaxageSetDirective
-  | UpdateResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirective;
+export interface UpdateResponseRulesItemSetCacheControlActionParametersSMaxage {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | UpdateResponseRulesItemSetCacheControlActionParametersSMaxageSetDirectiveOperation
+    | UpdateResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirectiveOperation;
+  /** The duration value in seconds for the directive. */
+  value?: number;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const UpdateResponseRulesItemSetCacheControlActionParametersSMaxage =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        UpdateResponseRulesItemSetCacheControlActionParametersSMaxageSetDirectiveOperation,
+        UpdateResponseRulesItemSetCacheControlActionParametersSMaxageRemoveDirectiveOperation,
+      ),
+      value: S.optional(S.Number),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier: "UpdateResponseRulesItemSetCacheControlActionParametersSMaxage",
+  }) as any as S.Schema<UpdateResponseRulesItemSetCacheControlActionParametersSMaxage>;
 
 export type UpdateResponseRulesItemSetCacheControlActionParametersStaleIfErrorSetDirectiveOperation =
   "set" | "remove";
@@ -85069,16 +86597,30 @@ export const UpdateResponseRulesItemSetCacheControlActionParametersStaleIfErrorR
       "UpdateResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirective",
   }) as any as S.Schema<UpdateResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirective>;
 
-export type UpdateResponseRulesItemSetCacheControlActionParametersStaleIfError =
-    | UpdateResponseRulesItemSetCacheControlActionParametersStaleIfErrorSetDirective
-    | UpdateResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirective;
+export interface UpdateResponseRulesItemSetCacheControlActionParametersStaleIfError {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | UpdateResponseRulesItemSetCacheControlActionParametersStaleIfErrorSetDirectiveOperation
+    | UpdateResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirectiveOperation;
+  /** The duration value in seconds for the directive. */
+  value?: number;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const UpdateResponseRulesItemSetCacheControlActionParametersStaleIfError =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        UpdateResponseRulesItemSetCacheControlActionParametersStaleIfErrorSetDirectiveOperation,
+        UpdateResponseRulesItemSetCacheControlActionParametersStaleIfErrorRemoveDirectiveOperation,
+      ),
+      value: S.optional(S.Number),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "UpdateResponseRulesItemSetCacheControlActionParametersStaleIfError",
+  }) as any as S.Schema<UpdateResponseRulesItemSetCacheControlActionParametersStaleIfError>;
 
 export type UpdateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirectiveOperation =
   "set" | "remove";
@@ -85129,16 +86671,30 @@ export const UpdateResponseRulesItemSetCacheControlActionParametersStaleWhileRev
       "UpdateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirective",
   }) as any as S.Schema<UpdateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirective>;
 
-export type UpdateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate =
-    | UpdateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirective
-    | UpdateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirective;
+export interface UpdateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate {
+  /** The operation to perform on the cache-control directive. */
+  operation:
+    | UpdateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirectiveOperation
+    | UpdateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirectiveOperation;
+  /** The duration value in seconds for the directive. */
+  value?: number;
+  /** Whether the directive should only be applied to the Cloudflare CDN cache. */
+  cloudflareOnly?: boolean;
+}
 export const UpdateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "value", "cloudflareOnly"],
-      ["operation", "cloudflareOnly"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        UpdateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateSetDirectiveOperation,
+        UpdateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidateRemoveDirectiveOperation,
+      ),
+      value: S.optional(S.Number),
+      cloudflareOnly: S.optional(S.Boolean.pipe(T.Body("cloudflare_only"))),
+    }),
+  ).annotate({
+    identifier:
+      "UpdateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate",
+  }) as any as S.Schema<UpdateResponseRulesItemSetCacheControlActionParametersStaleWhileRevalidate>;
 
 export interface UpdateResponseRulesItemSetCacheControlActionParameters {
   /** A cache-control directive configuration. */
@@ -86303,24 +87859,46 @@ export const UpdateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpr
       "UpdateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpression",
   }) as any as S.Schema<UpdateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpression>;
 
-export type UpdateResponseRulesItemSetCacheTagsActionParameters =
-  | UpdateResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValues
-  | UpdateResponseRulesItemSetCacheTagsActionParametersAddCacheTagsExpression
-  | UpdateResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValues
-  | UpdateResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsExpression
-  | UpdateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValues
-  | UpdateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpression;
+export interface UpdateResponseRulesItemSetCacheTagsActionParameters {
+  /** The operation to perform on the cache tags. */
+  operation:
+    | UpdateResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesOperation
+    | UpdateResponseRulesItemSetCacheTagsActionParametersAddCacheTagsExpressionOperation
+    | UpdateResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesOperation
+    | UpdateResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsExpressionOperation
+    | UpdateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesOperation
+    | UpdateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpressionOperation;
+  /** A list of cache tag values. */
+  values?:
+    | UpdateResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesValuesList
+    | UpdateResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesValuesList
+    | UpdateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesValuesList;
+  /** An expression that evaluates to an array of cache tag values. */
+  expression?: string;
+}
 export const UpdateResponseRulesItemSetCacheTagsActionParameters =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["operation", "values"],
-      ["expression", "operation"],
-      ["operation", "values"],
-      ["expression", "operation"],
-      ["operation", "values"],
-      ["expression", "operation"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      operation: S.Union(
+        UpdateResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesOperation,
+        UpdateResponseRulesItemSetCacheTagsActionParametersAddCacheTagsExpressionOperation,
+        UpdateResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesOperation,
+        UpdateResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsExpressionOperation,
+        UpdateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesOperation,
+        UpdateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsExpressionOperation,
+      ),
+      values: S.optional(
+        S.Union(
+          UpdateResponseRulesItemSetCacheTagsActionParametersAddCacheTagsValuesValuesList,
+          UpdateResponseRulesItemSetCacheTagsActionParametersRemoveCacheTagsValuesValuesList,
+          UpdateResponseRulesItemSetCacheTagsActionParametersSetCacheTagsValuesValuesList,
+        ),
+      ),
+      expression: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "UpdateResponseRulesItemSetCacheTagsActionParameters",
+  }) as any as S.Schema<UpdateResponseRulesItemSetCacheTagsActionParameters>;
 
 export type UpdateResponseRulesItemSetCacheTagsCategoriesList =
   ReadonlyArray<string>;
@@ -87165,347 +88743,268 @@ export const UpdateResponseRulesItemTransformResponseHTML =
     identifier: "UpdateResponseRulesItemTransformResponseHTML",
   }) as any as S.Schema<UpdateResponseRulesItemTransformResponseHTML>;
 
-export type UpdateResponseRulesItem =
-  | UpdateResponseRulesItemBlockRule
-  | UpdateResponseRulesItemChallenge
-  | UpdateResponseRulesItemCompressResponseRule
-  | UpdateResponseRulesItemDDoSDynamicRule
-  | UpdateResponseRulesItemExecuteRule
-  | UpdateResponseRulesItemForceConnectionCloseRule
-  | UpdateResponseRulesItemJSChallenge
-  | UpdateResponseRulesItemLogRule
-  | UpdateResponseRulesItemLogCustomFieldRule
-  | UpdateResponseRulesItemManagedChallengeRule
-  | UpdateResponseRulesItemRedirectRule
-  | UpdateResponseRulesItemRewriteRule
-  | UpdateResponseRulesItemRouteRule
-  | UpdateResponseRulesItemScoreRule
-  | UpdateResponseRulesItemServeErrorRule
-  | UpdateResponseRulesItemSetCacheControl
-  | UpdateResponseRulesItemSetCacheSettingsRule
-  | UpdateResponseRulesItemSetCacheTags
-  | UpdateResponseRulesItemSetConfigRule
-  | UpdateResponseRulesItemSkipRule
-  | UpdateResponseRulesItemTransformResponseHTML;
-export const UpdateResponseRulesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-    [
-      "lastUpdated",
-      "version",
-      "id",
-      "action",
-      "actionParameters",
-      "categories",
-      "description",
-      "enabled",
-      "exposedCredentialCheck",
-      "expression",
-      "logging",
-      "ratelimit",
-      "ref",
-    ],
-  ]),
-);
+export interface UpdateResponseRulesItem {
+  /** The timestamp of when the rule was last modified. */
+  lastUpdated: string;
+  /** The version of the rule. */
+  version: string;
+  /** The unique ID of the rule. */
+  id?: string;
+  /** The action to perform when the rule matches. */
+  action?:
+    | UpdateResponseRulesItemBlockRuleAction
+    | UpdateResponseRulesItemChallengeAction
+    | UpdateResponseRulesItemCompressResponseRuleAction
+    | UpdateResponseRulesItemDDoSDynamicRuleAction
+    | UpdateResponseRulesItemExecuteRuleAction
+    | UpdateResponseRulesItemForceConnectionCloseRuleAction
+    | UpdateResponseRulesItemJSChallengeAction
+    | UpdateResponseRulesItemLogRuleAction
+    | UpdateResponseRulesItemLogCustomFieldRuleAction
+    | UpdateResponseRulesItemManagedChallengeRuleAction
+    | UpdateResponseRulesItemRedirectRuleAction
+    | UpdateResponseRulesItemRewriteRuleAction
+    | UpdateResponseRulesItemRouteRuleAction
+    | UpdateResponseRulesItemScoreRuleAction
+    | UpdateResponseRulesItemServeErrorRuleAction
+    | UpdateResponseRulesItemSetCacheControlAction
+    | UpdateResponseRulesItemSetCacheSettingsRuleAction
+    | UpdateResponseRulesItemSetCacheTagsAction
+    | UpdateResponseRulesItemSetConfigRuleAction
+    | UpdateResponseRulesItemSkipRuleAction
+    | UpdateResponseRulesItemTransformResponseHTMLAction;
+  /** The parameters configuring the rule's action. */
+  actionParameters?:
+    | UpdateResponseRulesItemBlockRuleActionParameters
+    | unknown
+    | UpdateResponseRulesItemCompressResponseRuleActionParameters
+    | UpdateResponseRulesItemExecuteRuleActionParameters
+    | UpdateResponseRulesItemLogCustomFieldRuleActionParameters
+    | UpdateResponseRulesItemRedirectRuleActionParameters
+    | UpdateResponseRulesItemRewriteRuleActionParameters
+    | UpdateResponseRulesItemRouteRuleActionParameters
+    | UpdateResponseRulesItemScoreRuleActionParameters
+    | UpdateResponseRulesItemServeErrorRuleActionParameters
+    | UpdateResponseRulesItemSetCacheControlActionParameters
+    | UpdateResponseRulesItemSetCacheSettingsRuleActionParameters
+    | UpdateResponseRulesItemSetCacheTagsActionParameters
+    | UpdateResponseRulesItemSetConfigRuleActionParameters
+    | UpdateResponseRulesItemSkipRuleActionParameters
+    | UpdateResponseRulesItemTransformResponseHTMLActionParameters;
+  /** The categories of the rule. */
+  categories?:
+    | UpdateResponseRulesItemBlockRuleCategoriesList
+    | UpdateResponseRulesItemChallengeCategoriesList
+    | UpdateResponseRulesItemCompressResponseRuleCategoriesList
+    | UpdateResponseRulesItemDDoSDynamicRuleCategoriesList
+    | UpdateResponseRulesItemExecuteRuleCategoriesList
+    | UpdateResponseRulesItemForceConnectionCloseRuleCategoriesList
+    | UpdateResponseRulesItemJSChallengeCategoriesList
+    | UpdateResponseRulesItemLogRuleCategoriesList
+    | UpdateResponseRulesItemLogCustomFieldRuleCategoriesList
+    | UpdateResponseRulesItemManagedChallengeRuleCategoriesList
+    | UpdateResponseRulesItemRedirectRuleCategoriesList
+    | UpdateResponseRulesItemRewriteRuleCategoriesList
+    | UpdateResponseRulesItemRouteRuleCategoriesList
+    | UpdateResponseRulesItemScoreRuleCategoriesList
+    | UpdateResponseRulesItemServeErrorRuleCategoriesList
+    | UpdateResponseRulesItemSetCacheControlCategoriesList
+    | UpdateResponseRulesItemSetCacheSettingsRuleCategoriesList
+    | UpdateResponseRulesItemSetCacheTagsCategoriesList
+    | UpdateResponseRulesItemSetConfigRuleCategoriesList
+    | UpdateResponseRulesItemSkipRuleCategoriesList
+    | UpdateResponseRulesItemTransformResponseHTMLCategoriesList;
+  /** An informative description of the rule. */
+  description?: string;
+  /** Whether the rule should be executed. */
+  enabled?: boolean;
+  /** Configuration for exposed credential checking. */
+  exposedCredentialCheck?:
+    | UpdateResponseRulesItemBlockRuleExposedCredentialCheck
+    | UpdateResponseRulesItemChallengeExposedCredentialCheck
+    | UpdateResponseRulesItemCompressResponseRuleExposedCredentialCheck
+    | UpdateResponseRulesItemDDoSDynamicRuleExposedCredentialCheck
+    | UpdateResponseRulesItemExecuteRuleExposedCredentialCheck
+    | UpdateResponseRulesItemForceConnectionCloseRuleExposedCredentialCheck
+    | UpdateResponseRulesItemJSChallengeExposedCredentialCheck
+    | UpdateResponseRulesItemLogRuleExposedCredentialCheck
+    | UpdateResponseRulesItemLogCustomFieldRuleExposedCredentialCheck
+    | UpdateResponseRulesItemManagedChallengeRuleExposedCredentialCheck
+    | UpdateResponseRulesItemRedirectRuleExposedCredentialCheck
+    | UpdateResponseRulesItemRewriteRuleExposedCredentialCheck
+    | UpdateResponseRulesItemRouteRuleExposedCredentialCheck
+    | UpdateResponseRulesItemScoreRuleExposedCredentialCheck
+    | UpdateResponseRulesItemServeErrorRuleExposedCredentialCheck
+    | UpdateResponseRulesItemSetCacheControlExposedCredentialCheck
+    | UpdateResponseRulesItemSetCacheSettingsRuleExposedCredentialCheck
+    | UpdateResponseRulesItemSetCacheTagsExposedCredentialCheck
+    | UpdateResponseRulesItemSetConfigRuleExposedCredentialCheck
+    | UpdateResponseRulesItemSkipRuleExposedCredentialCheck
+    | UpdateResponseRulesItemTransformResponseHTMLExposedCredentialCheck;
+  /** The expression defining which traffic will match the rule. */
+  expression?: string;
+  /** An object configuring the rule's logging behavior. */
+  logging?: UpdateResponseRulesItemBlockRuleLogging;
+  /** An object configuring the rule's rate limit behavior. */
+  ratelimit?:
+    | UpdateResponseRulesItemBlockRuleRatelimit
+    | UpdateResponseRulesItemChallengeRatelimit
+    | UpdateResponseRulesItemCompressResponseRuleRatelimit
+    | UpdateResponseRulesItemDDoSDynamicRuleRatelimit
+    | UpdateResponseRulesItemExecuteRuleRatelimit
+    | UpdateResponseRulesItemForceConnectionCloseRuleRatelimit
+    | UpdateResponseRulesItemJSChallengeRatelimit
+    | UpdateResponseRulesItemLogRuleRatelimit
+    | UpdateResponseRulesItemLogCustomFieldRuleRatelimit
+    | UpdateResponseRulesItemManagedChallengeRuleRatelimit
+    | UpdateResponseRulesItemRedirectRuleRatelimit
+    | UpdateResponseRulesItemRewriteRuleRatelimit
+    | UpdateResponseRulesItemRouteRuleRatelimit
+    | UpdateResponseRulesItemScoreRuleRatelimit
+    | UpdateResponseRulesItemServeErrorRuleRatelimit
+    | UpdateResponseRulesItemSetCacheControlRatelimit
+    | UpdateResponseRulesItemSetCacheSettingsRuleRatelimit
+    | UpdateResponseRulesItemSetCacheTagsRatelimit
+    | UpdateResponseRulesItemSetConfigRuleRatelimit
+    | UpdateResponseRulesItemSkipRuleRatelimit
+    | UpdateResponseRulesItemTransformResponseHTMLRatelimit;
+  /** The reference of the rule (the rule's ID by default). */
+  ref?: string;
+}
+export const UpdateResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lastUpdated: S.String.pipe(T.Body("last_updated")),
+    version: S.String,
+    id: S.optional(S.String),
+    action: S.optional(
+      S.Union(
+        UpdateResponseRulesItemBlockRuleAction,
+        UpdateResponseRulesItemChallengeAction,
+        UpdateResponseRulesItemCompressResponseRuleAction,
+        UpdateResponseRulesItemDDoSDynamicRuleAction,
+        UpdateResponseRulesItemExecuteRuleAction,
+        UpdateResponseRulesItemForceConnectionCloseRuleAction,
+        UpdateResponseRulesItemJSChallengeAction,
+        UpdateResponseRulesItemLogRuleAction,
+        UpdateResponseRulesItemLogCustomFieldRuleAction,
+        UpdateResponseRulesItemManagedChallengeRuleAction,
+        UpdateResponseRulesItemRedirectRuleAction,
+        UpdateResponseRulesItemRewriteRuleAction,
+        UpdateResponseRulesItemRouteRuleAction,
+        UpdateResponseRulesItemScoreRuleAction,
+        UpdateResponseRulesItemServeErrorRuleAction,
+        UpdateResponseRulesItemSetCacheControlAction,
+        UpdateResponseRulesItemSetCacheSettingsRuleAction,
+        UpdateResponseRulesItemSetCacheTagsAction,
+        UpdateResponseRulesItemSetConfigRuleAction,
+        UpdateResponseRulesItemSkipRuleAction,
+        UpdateResponseRulesItemTransformResponseHTMLAction,
+      ),
+    ),
+    actionParameters: S.optional(
+      S.Union(
+        UpdateResponseRulesItemBlockRuleActionParameters,
+        S.Unknown,
+        UpdateResponseRulesItemCompressResponseRuleActionParameters,
+        UpdateResponseRulesItemExecuteRuleActionParameters,
+        UpdateResponseRulesItemLogCustomFieldRuleActionParameters,
+        UpdateResponseRulesItemRedirectRuleActionParameters,
+        UpdateResponseRulesItemRewriteRuleActionParameters,
+        UpdateResponseRulesItemRouteRuleActionParameters,
+        UpdateResponseRulesItemScoreRuleActionParameters,
+        UpdateResponseRulesItemServeErrorRuleActionParameters,
+        UpdateResponseRulesItemSetCacheControlActionParameters,
+        UpdateResponseRulesItemSetCacheSettingsRuleActionParameters,
+        UpdateResponseRulesItemSetCacheTagsActionParameters,
+        UpdateResponseRulesItemSetConfigRuleActionParameters,
+        UpdateResponseRulesItemSkipRuleActionParameters,
+        UpdateResponseRulesItemTransformResponseHTMLActionParameters,
+      ).pipe(T.Body("action_parameters")),
+    ),
+    categories: S.optional(
+      S.Union(
+        UpdateResponseRulesItemBlockRuleCategoriesList,
+        UpdateResponseRulesItemChallengeCategoriesList,
+        UpdateResponseRulesItemCompressResponseRuleCategoriesList,
+        UpdateResponseRulesItemDDoSDynamicRuleCategoriesList,
+        UpdateResponseRulesItemExecuteRuleCategoriesList,
+        UpdateResponseRulesItemForceConnectionCloseRuleCategoriesList,
+        UpdateResponseRulesItemJSChallengeCategoriesList,
+        UpdateResponseRulesItemLogRuleCategoriesList,
+        UpdateResponseRulesItemLogCustomFieldRuleCategoriesList,
+        UpdateResponseRulesItemManagedChallengeRuleCategoriesList,
+        UpdateResponseRulesItemRedirectRuleCategoriesList,
+        UpdateResponseRulesItemRewriteRuleCategoriesList,
+        UpdateResponseRulesItemRouteRuleCategoriesList,
+        UpdateResponseRulesItemScoreRuleCategoriesList,
+        UpdateResponseRulesItemServeErrorRuleCategoriesList,
+        UpdateResponseRulesItemSetCacheControlCategoriesList,
+        UpdateResponseRulesItemSetCacheSettingsRuleCategoriesList,
+        UpdateResponseRulesItemSetCacheTagsCategoriesList,
+        UpdateResponseRulesItemSetConfigRuleCategoriesList,
+        UpdateResponseRulesItemSkipRuleCategoriesList,
+        UpdateResponseRulesItemTransformResponseHTMLCategoriesList,
+      ),
+    ),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    exposedCredentialCheck: S.optional(
+      S.Union(
+        UpdateResponseRulesItemBlockRuleExposedCredentialCheck,
+        UpdateResponseRulesItemChallengeExposedCredentialCheck,
+        UpdateResponseRulesItemCompressResponseRuleExposedCredentialCheck,
+        UpdateResponseRulesItemDDoSDynamicRuleExposedCredentialCheck,
+        UpdateResponseRulesItemExecuteRuleExposedCredentialCheck,
+        UpdateResponseRulesItemForceConnectionCloseRuleExposedCredentialCheck,
+        UpdateResponseRulesItemJSChallengeExposedCredentialCheck,
+        UpdateResponseRulesItemLogRuleExposedCredentialCheck,
+        UpdateResponseRulesItemLogCustomFieldRuleExposedCredentialCheck,
+        UpdateResponseRulesItemManagedChallengeRuleExposedCredentialCheck,
+        UpdateResponseRulesItemRedirectRuleExposedCredentialCheck,
+        UpdateResponseRulesItemRewriteRuleExposedCredentialCheck,
+        UpdateResponseRulesItemRouteRuleExposedCredentialCheck,
+        UpdateResponseRulesItemScoreRuleExposedCredentialCheck,
+        UpdateResponseRulesItemServeErrorRuleExposedCredentialCheck,
+        UpdateResponseRulesItemSetCacheControlExposedCredentialCheck,
+        UpdateResponseRulesItemSetCacheSettingsRuleExposedCredentialCheck,
+        UpdateResponseRulesItemSetCacheTagsExposedCredentialCheck,
+        UpdateResponseRulesItemSetConfigRuleExposedCredentialCheck,
+        UpdateResponseRulesItemSkipRuleExposedCredentialCheck,
+        UpdateResponseRulesItemTransformResponseHTMLExposedCredentialCheck,
+      ).pipe(T.Body("exposed_credential_check")),
+    ),
+    expression: S.optional(S.String),
+    logging: S.optional(UpdateResponseRulesItemBlockRuleLogging),
+    ratelimit: S.optional(
+      S.Union(
+        UpdateResponseRulesItemBlockRuleRatelimit,
+        UpdateResponseRulesItemChallengeRatelimit,
+        UpdateResponseRulesItemCompressResponseRuleRatelimit,
+        UpdateResponseRulesItemDDoSDynamicRuleRatelimit,
+        UpdateResponseRulesItemExecuteRuleRatelimit,
+        UpdateResponseRulesItemForceConnectionCloseRuleRatelimit,
+        UpdateResponseRulesItemJSChallengeRatelimit,
+        UpdateResponseRulesItemLogRuleRatelimit,
+        UpdateResponseRulesItemLogCustomFieldRuleRatelimit,
+        UpdateResponseRulesItemManagedChallengeRuleRatelimit,
+        UpdateResponseRulesItemRedirectRuleRatelimit,
+        UpdateResponseRulesItemRewriteRuleRatelimit,
+        UpdateResponseRulesItemRouteRuleRatelimit,
+        UpdateResponseRulesItemScoreRuleRatelimit,
+        UpdateResponseRulesItemServeErrorRuleRatelimit,
+        UpdateResponseRulesItemSetCacheControlRatelimit,
+        UpdateResponseRulesItemSetCacheSettingsRuleRatelimit,
+        UpdateResponseRulesItemSetCacheTagsRatelimit,
+        UpdateResponseRulesItemSetConfigRuleRatelimit,
+        UpdateResponseRulesItemSkipRuleRatelimit,
+        UpdateResponseRulesItemTransformResponseHTMLRatelimit,
+      ),
+    ),
+    ref: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateResponseRulesItem",
+}) as any as S.Schema<UpdateResponseRulesItem>;
 
 export type UpdateResponseRulesList = ReadonlyArray<UpdateResponseRulesItem>;
 export const UpdateResponseRulesList = /*@__PURE__*/ S.Array(

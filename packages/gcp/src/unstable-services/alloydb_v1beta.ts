@@ -13,76 +13,99 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+name}:cancel","baseUrl":"https://alloydb.googleapis.com/"})),
-).annotate({ identifier: "CancelProjectsLocationsOperationsRequest" }) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+name}:cancel",
+        baseUrl: "https://alloydb.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CancelProjectsLocationsOperationsRequest",
+}) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
-export type BackupDatabaseVersionEnum = "DATABASE_VERSION_UNSPECIFIED" | "POSTGRES_13" | "POSTGRES_14" | "POSTGRES_15" | "POSTGRES_16" | "POSTGRES_17" | "POSTGRES_18";
+export type BackupDatabaseVersionEnum =
+  | "DATABASE_VERSION_UNSPECIFIED"
+  | "POSTGRES_13"
+  | "POSTGRES_14"
+  | "POSTGRES_15"
+  | "POSTGRES_16"
+  | "POSTGRES_17"
+  | "POSTGRES_18";
 export const BackupDatabaseVersionEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
-export type BackupTypeEnum = "TYPE_UNSPECIFIED" | "ON_DEMAND" | "AUTOMATED" | "CONTINUOUS";
+export type BackupTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "ON_DEMAND"
+  | "AUTOMATED"
+  | "CONTINUOUS";
 export const BackupTypeEnum = /*@__PURE__*/ S.String;
 
 /** A backup's position in a quantity-based retention queue, of backups with the same source cluster and type, with length, retention, specified by the backup's retention policy. Once the position is greater than the retention, the backup is eligible to be garbage collected. Example: 5 backups from the same source cluster and type with a quantity-based retention of 3 and denoted by backup_id (position, retention). Safe: backup_5 (1, 3), backup_4, (2, 3), backup_3 (3, 3). Awaiting garbage collection: backup_2 (4, 3), backup_1 (5, 3) */
@@ -93,17 +116,24 @@ export interface QuantityBasedExpiry {
   totalRetentionCount?: number;
 }
 export const QuantityBasedExpiry = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "retentionCount": S.optional(S.Number),
-  "totalRetentionCount": S.optional(S.Number),
-}),
-).annotate({ identifier: "QuantityBasedExpiry" }) as any as S.Schema<QuantityBasedExpiry>;
+  S.Struct({
+    retentionCount: S.optional(S.Number),
+    totalRetentionCount: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "QuantityBasedExpiry",
+}) as any as S.Schema<QuantityBasedExpiry>;
 
-export type EncryptionInfoEncryptionTypeEnum = "TYPE_UNSPECIFIED" | "GOOGLE_DEFAULT_ENCRYPTION" | "CUSTOMER_MANAGED_ENCRYPTION";
+export type EncryptionInfoEncryptionTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "GOOGLE_DEFAULT_ENCRYPTION"
+  | "CUSTOMER_MANAGED_ENCRYPTION";
 export const EncryptionInfoEncryptionTypeEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** EncryptionInfo describes the encryption information of a cluster or a backup. */
 export interface EncryptionInfo {
@@ -113,13 +143,18 @@ export interface EncryptionInfo {
   kmsKeyVersions?: StringList;
 }
 export const EncryptionInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "encryptionType": S.optional(EncryptionInfoEncryptionTypeEnum),
-  "kmsKeyVersions": S.optional(StringList),
-}),
+  S.Struct({
+    encryptionType: S.optional(EncryptionInfoEncryptionTypeEnum),
+    kmsKeyVersions: S.optional(StringList),
+  }),
 ).annotate({ identifier: "EncryptionInfo" }) as any as S.Schema<EncryptionInfo>;
 
-export type BackupStateEnum = "STATE_UNSPECIFIED" | "READY" | "CREATING" | "FAILED" | "DELETING";
+export type BackupStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "READY"
+  | "CREATING"
+  | "FAILED"
+  | "DELETING";
 export const BackupStateEnum = /*@__PURE__*/ S.String;
 
 /** EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key). */
@@ -128,10 +163,12 @@ export interface EncryptionConfig {
   kmsKeyName?: string;
 }
 export const EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kmsKeyName": S.optional(S.String),
-}),
-).annotate({ identifier: "EncryptionConfig" }) as any as S.Schema<EncryptionConfig>;
+  S.Struct({
+    kmsKeyName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EncryptionConfig",
+}) as any as S.Schema<EncryptionConfig>;
 
 /** Message describing Backup object */
 export interface Backup {
@@ -187,33 +224,33 @@ export interface Backup {
   encryptionConfig?: EncryptionConfig;
 }
 export const Backup = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "expiryTime": S.optional(S.String),
-  "databaseVersion": S.optional(BackupDatabaseVersionEnum),
-  "clusterDeleted": S.optional(S.Boolean),
-  "deleteTime": S.optional(S.String),
-  "description": S.optional(S.String),
-  "tags": S.optional(StringMap),
-  "uid": S.optional(S.String),
-  "type": S.optional(BackupTypeEnum),
-  "etag": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "clusterUid": S.optional(S.String),
-  "reconciling": S.optional(S.Boolean),
-  "satisfiesPzs": S.optional(S.Boolean),
-  "createTime": S.optional(S.String),
-  "expiryQuantity": S.optional(QuantityBasedExpiry),
-  "createCompletionTime": S.optional(S.String),
-  "encryptionInfo": S.optional(EncryptionInfo),
-  "labels": S.optional(StringMap),
-  "sizeBytes": S.optional(S.String),
-  "clusterName": S.optional(S.String),
-  "state": S.optional(BackupStateEnum),
-  "displayName": S.optional(S.String),
-  "annotations": S.optional(StringMap),
-  "name": S.optional(S.String),
-  "encryptionConfig": S.optional(EncryptionConfig),
-}),
+  S.Struct({
+    expiryTime: S.optional(S.String),
+    databaseVersion: S.optional(BackupDatabaseVersionEnum),
+    clusterDeleted: S.optional(S.Boolean),
+    deleteTime: S.optional(S.String),
+    description: S.optional(S.String),
+    tags: S.optional(StringMap),
+    uid: S.optional(S.String),
+    type: S.optional(BackupTypeEnum),
+    etag: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    clusterUid: S.optional(S.String),
+    reconciling: S.optional(S.Boolean),
+    satisfiesPzs: S.optional(S.Boolean),
+    createTime: S.optional(S.String),
+    expiryQuantity: S.optional(QuantityBasedExpiry),
+    createCompletionTime: S.optional(S.String),
+    encryptionInfo: S.optional(EncryptionInfo),
+    labels: S.optional(StringMap),
+    sizeBytes: S.optional(S.String),
+    clusterName: S.optional(S.String),
+    state: S.optional(BackupStateEnum),
+    displayName: S.optional(S.String),
+    annotations: S.optional(StringMap),
+    name: S.optional(S.String),
+    encryptionConfig: S.optional(EncryptionConfig),
+  }),
 ).annotate({ identifier: "Backup" }) as any as S.Schema<Backup>;
 
 export interface CreateProjectsLocationsBackupsRequest {
@@ -228,21 +265,35 @@ export interface CreateProjectsLocationsBackupsRequest {
   /** Request body */
   body?: Backup;
 }
-export const CreateProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "backupId": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Backup.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+parent}/backups","baseUrl":"https://alloydb.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsBackupsRequest" }) as any as S.Schema<CreateProjectsLocationsBackupsRequest>;
+export const CreateProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      backupId: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Backup.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+parent}/backups",
+        baseUrl: "https://alloydb.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateProjectsLocationsBackupsRequest",
+}) as any as S.Schema<CreateProjectsLocationsBackupsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -254,11 +305,11 @@ export interface Status {
   details?: DocumentMapList;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(S.Number),
-  "message": S.optional(S.String),
-  "details": S.optional(DocumentMapList),
-}),
+  S.Struct({
+    code: S.optional(S.Number),
+    message: S.optional(S.String),
+    details: S.optional(DocumentMapList),
+  }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -275,13 +326,13 @@ export interface Operation {
   done?: boolean;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "error": S.optional(Status),
-  "response": S.optional(DocumentMap),
-  "metadata": S.optional(DocumentMap),
-  "done": S.optional(S.Boolean),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    error: S.optional(Status),
+    response: S.optional(DocumentMap),
+    metadata: S.optional(DocumentMap),
+    done: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** Message describing a BackupDrBackupSource. */
@@ -290,10 +341,12 @@ export interface BackupDrBackupSource {
   backup?: string;
 }
 export const BackupDrBackupSource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "backup": S.optional(S.String),
-}),
-).annotate({ identifier: "BackupDrBackupSource" }) as any as S.Schema<BackupDrBackupSource>;
+  S.Struct({
+    backup: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BackupDrBackupSource",
+}) as any as S.Schema<BackupDrBackupSource>;
 
 /** Message describing a BackupSource. */
 export interface BackupSource {
@@ -303,22 +356,42 @@ export interface BackupSource {
   backupName?: string;
 }
 export const BackupSource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "backupUid": S.optional(S.String),
-  "backupName": S.optional(S.String),
-}),
+  S.Struct({
+    backupUid: S.optional(S.String),
+    backupName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "BackupSource" }) as any as S.Schema<BackupSource>;
 
-export type ClusterStateEnum = "STATE_UNSPECIFIED" | "READY" | "STOPPED" | "EMPTY" | "CREATING" | "DELETING" | "FAILED" | "BOOTSTRAPPING" | "MAINTENANCE" | "PROMOTING" | "SWITCHOVER" | "RECREATING";
+export type ClusterStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "READY"
+  | "STOPPED"
+  | "EMPTY"
+  | "CREATING"
+  | "DELETING"
+  | "FAILED"
+  | "BOOTSTRAPPING"
+  | "MAINTENANCE"
+  | "PROMOTING"
+  | "SWITCHOVER"
+  | "RECREATING";
 export const ClusterStateEnum = /*@__PURE__*/ S.String;
 
-export type ClusterClusterTypeEnum = "CLUSTER_TYPE_UNSPECIFIED" | "PRIMARY" | "SECONDARY";
+export type ClusterClusterTypeEnum =
+  | "CLUSTER_TYPE_UNSPECIFIED"
+  | "PRIMARY"
+  | "SECONDARY";
 export const ClusterClusterTypeEnum = /*@__PURE__*/ S.String;
 
-export type ClusterSubscriptionTypeEnum = "SUBSCRIPTION_TYPE_UNSPECIFIED" | "STANDARD" | "TRIAL";
+export type ClusterSubscriptionTypeEnum =
+  | "SUBSCRIPTION_TYPE_UNSPECIFIED"
+  | "STANDARD"
+  | "TRIAL";
 export const ClusterSubscriptionTypeEnum = /*@__PURE__*/ S.String;
 
-export type MigrationSourceSourceTypeEnum = "MIGRATION_SOURCE_TYPE_UNSPECIFIED" | "DMS";
+export type MigrationSourceSourceTypeEnum =
+  | "MIGRATION_SOURCE_TYPE_UNSPECIFIED"
+  | "DMS";
 export const MigrationSourceSourceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Subset of the source instance configuration that is available when reading the cluster resource. */
@@ -331,18 +404,31 @@ export interface MigrationSource {
   sourceType?: MigrationSourceSourceTypeEnum;
 }
 export const MigrationSource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "referenceId": S.optional(S.String),
-  "hostPort": S.optional(S.String),
-  "sourceType": S.optional(MigrationSourceSourceTypeEnum),
-}),
-).annotate({ identifier: "MigrationSource" }) as any as S.Schema<MigrationSource>;
+  S.Struct({
+    referenceId: S.optional(S.String),
+    hostPort: S.optional(S.String),
+    sourceType: S.optional(MigrationSourceSourceTypeEnum),
+  }),
+).annotate({
+  identifier: "MigrationSource",
+}) as any as S.Schema<MigrationSource>;
 
-export type ContinuousBackupInfoScheduleItemEnum = "DAY_OF_WEEK_UNSPECIFIED" | "MONDAY" | "TUESDAY" | "WEDNESDAY" | "THURSDAY" | "FRIDAY" | "SATURDAY" | "SUNDAY";
+export type ContinuousBackupInfoScheduleItemEnum =
+  | "DAY_OF_WEEK_UNSPECIFIED"
+  | "MONDAY"
+  | "TUESDAY"
+  | "WEDNESDAY"
+  | "THURSDAY"
+  | "FRIDAY"
+  | "SATURDAY"
+  | "SUNDAY";
 export const ContinuousBackupInfoScheduleItemEnum = /*@__PURE__*/ S.String;
 
-export type ContinuousBackupInfoScheduleItemEnumList = ReadonlyArray<ContinuousBackupInfoScheduleItemEnum>;
-export const ContinuousBackupInfoScheduleItemEnumList = /*@__PURE__*/ S.Array(ContinuousBackupInfoScheduleItemEnum) as any as S.Schema<ContinuousBackupInfoScheduleItemEnumList>;
+export type ContinuousBackupInfoScheduleItemEnumList =
+  ReadonlyArray<ContinuousBackupInfoScheduleItemEnum>;
+export const ContinuousBackupInfoScheduleItemEnumList = /*@__PURE__*/ S.Array(
+  ContinuousBackupInfoScheduleItemEnum,
+) as any as S.Schema<ContinuousBackupInfoScheduleItemEnumList>;
 
 /** ContinuousBackupInfo describes the continuous backup properties of a cluster. */
 export interface ContinuousBackupInfo {
@@ -356,13 +442,15 @@ export interface ContinuousBackupInfo {
   earliestRestorableTime?: string;
 }
 export const ContinuousBackupInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "enabledTime": S.optional(S.String),
-  "encryptionInfo": S.optional(EncryptionInfo),
-  "schedule": S.optional(ContinuousBackupInfoScheduleItemEnumList),
-  "earliestRestorableTime": S.optional(S.String),
-}),
-).annotate({ identifier: "ContinuousBackupInfo" }) as any as S.Schema<ContinuousBackupInfo>;
+  S.Struct({
+    enabledTime: S.optional(S.String),
+    encryptionInfo: S.optional(EncryptionInfo),
+    schedule: S.optional(ContinuousBackupInfoScheduleItemEnumList),
+    earliestRestorableTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ContinuousBackupInfo",
+}) as any as S.Schema<ContinuousBackupInfo>;
 
 /** The source CloudSQL backup resource. */
 export interface CloudSQLBackupRunSource {
@@ -374,12 +462,14 @@ export interface CloudSQLBackupRunSource {
   instanceId?: string;
 }
 export const CloudSQLBackupRunSource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "project": S.optional(S.String),
-  "backupRunId": S.optional(S.String),
-  "instanceId": S.optional(S.String),
-}),
-).annotate({ identifier: "CloudSQLBackupRunSource" }) as any as S.Schema<CloudSQLBackupRunSource>;
+  S.Struct({
+    project: S.optional(S.String),
+    backupRunId: S.optional(S.String),
+    instanceId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CloudSQLBackupRunSource",
+}) as any as S.Schema<CloudSQLBackupRunSource>;
 
 /** Metadata related to network configuration. */
 export interface NetworkConfig {
@@ -389,10 +479,10 @@ export interface NetworkConfig {
   network?: string;
 }
 export const NetworkConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "allocatedIpRange": S.optional(S.String),
-  "network": S.optional(S.String),
-}),
+  S.Struct({
+    allocatedIpRange: S.optional(S.String),
+    network: S.optional(S.String),
+  }),
 ).annotate({ identifier: "NetworkConfig" }) as any as S.Schema<NetworkConfig>;
 
 /** Configuration for Dataplex integration. */
@@ -401,15 +491,27 @@ export interface DataplexConfig {
   enabled?: boolean;
 }
 export const DataplexConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "enabled": S.optional(S.Boolean),
-}),
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "DataplexConfig" }) as any as S.Schema<DataplexConfig>;
 
-export type ClusterMaintenanceVersionSelectionPolicyEnum = "MAINTENANCE_VERSION_SELECTION_POLICY_UNSPECIFIED" | "MAINTENANCE_VERSION_SELECTION_POLICY_LATEST" | "MAINTENANCE_VERSION_SELECTION_POLICY_DEFAULT";
-export const ClusterMaintenanceVersionSelectionPolicyEnum = /*@__PURE__*/ S.String;
+export type ClusterMaintenanceVersionSelectionPolicyEnum =
+  | "MAINTENANCE_VERSION_SELECTION_POLICY_UNSPECIFIED"
+  | "MAINTENANCE_VERSION_SELECTION_POLICY_LATEST"
+  | "MAINTENANCE_VERSION_SELECTION_POLICY_DEFAULT";
+export const ClusterMaintenanceVersionSelectionPolicyEnum =
+  /*@__PURE__*/ S.String;
 
-export type MaintenanceWindowDayEnum = "DAY_OF_WEEK_UNSPECIFIED" | "MONDAY" | "TUESDAY" | "WEDNESDAY" | "THURSDAY" | "FRIDAY" | "SATURDAY" | "SUNDAY";
+export type MaintenanceWindowDayEnum =
+  | "DAY_OF_WEEK_UNSPECIFIED"
+  | "MONDAY"
+  | "TUESDAY"
+  | "WEDNESDAY"
+  | "THURSDAY"
+  | "FRIDAY"
+  | "SATURDAY"
+  | "SUNDAY";
 export const MaintenanceWindowDayEnum = /*@__PURE__*/ S.String;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
@@ -424,13 +526,15 @@ export interface GoogleTypeTimeOfDay {
   minutes?: number;
 }
 export const GoogleTypeTimeOfDay = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "hours": S.optional(S.Number),
-  "seconds": S.optional(S.Number),
-  "nanos": S.optional(S.Number),
-  "minutes": S.optional(S.Number),
-}),
-).annotate({ identifier: "GoogleTypeTimeOfDay" }) as any as S.Schema<GoogleTypeTimeOfDay>;
+  S.Struct({
+    hours: S.optional(S.Number),
+    seconds: S.optional(S.Number),
+    nanos: S.optional(S.Number),
+    minutes: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "GoogleTypeTimeOfDay",
+}) as any as S.Schema<GoogleTypeTimeOfDay>;
 
 /** MaintenanceWindow specifies a preferred day and time for maintenance. */
 export interface MaintenanceWindow {
@@ -440,14 +544,18 @@ export interface MaintenanceWindow {
   startTime?: GoogleTypeTimeOfDay;
 }
 export const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "day": S.optional(MaintenanceWindowDayEnum),
-  "startTime": S.optional(GoogleTypeTimeOfDay),
-}),
-).annotate({ identifier: "MaintenanceWindow" }) as any as S.Schema<MaintenanceWindow>;
+  S.Struct({
+    day: S.optional(MaintenanceWindowDayEnum),
+    startTime: S.optional(GoogleTypeTimeOfDay),
+  }),
+).annotate({
+  identifier: "MaintenanceWindow",
+}) as any as S.Schema<MaintenanceWindow>;
 
 export type MaintenanceWindowList = ReadonlyArray<MaintenanceWindow>;
-export const MaintenanceWindowList = /*@__PURE__*/ S.Array(MaintenanceWindow) as any as S.Schema<MaintenanceWindowList>;
+export const MaintenanceWindowList = /*@__PURE__*/ S.Array(
+  MaintenanceWindow,
+) as any as S.Schema<MaintenanceWindowList>;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface GoogleTypeDate {
@@ -459,11 +567,11 @@ export interface GoogleTypeDate {
   day?: number;
 }
 export const GoogleTypeDate = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "year": S.optional(S.Number),
-  "month": S.optional(S.Number),
-  "day": S.optional(S.Number),
-}),
+  S.Struct({
+    year: S.optional(S.Number),
+    month: S.optional(S.Number),
+    day: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "GoogleTypeDate" }) as any as S.Schema<GoogleTypeDate>;
 
 /** DenyMaintenancePeriod definition. Excepting emergencies, maintenance will not be scheduled to start within this deny period. The start_date must be less than the end_date. */
@@ -476,15 +584,19 @@ export interface DenyMaintenancePeriod {
   endDate?: GoogleTypeDate;
 }
 export const DenyMaintenancePeriod = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "time": S.optional(GoogleTypeTimeOfDay),
-  "startDate": S.optional(GoogleTypeDate),
-  "endDate": S.optional(GoogleTypeDate),
-}),
-).annotate({ identifier: "DenyMaintenancePeriod" }) as any as S.Schema<DenyMaintenancePeriod>;
+  S.Struct({
+    time: S.optional(GoogleTypeTimeOfDay),
+    startDate: S.optional(GoogleTypeDate),
+    endDate: S.optional(GoogleTypeDate),
+  }),
+).annotate({
+  identifier: "DenyMaintenancePeriod",
+}) as any as S.Schema<DenyMaintenancePeriod>;
 
 export type DenyMaintenancePeriodList = ReadonlyArray<DenyMaintenancePeriod>;
-export const DenyMaintenancePeriodList = /*@__PURE__*/ S.Array(DenyMaintenancePeriod) as any as S.Schema<DenyMaintenancePeriodList>;
+export const DenyMaintenancePeriodList = /*@__PURE__*/ S.Array(
+  DenyMaintenancePeriod,
+) as any as S.Schema<DenyMaintenancePeriodList>;
 
 /** MaintenanceUpdatePolicy defines the policy for system updates. */
 export interface MaintenanceUpdatePolicy {
@@ -494,11 +606,13 @@ export interface MaintenanceUpdatePolicy {
   denyMaintenancePeriods?: DenyMaintenancePeriodList;
 }
 export const MaintenanceUpdatePolicy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "maintenanceWindows": S.optional(MaintenanceWindowList),
-  "denyMaintenancePeriods": S.optional(DenyMaintenancePeriodList),
-}),
-).annotate({ identifier: "MaintenanceUpdatePolicy" }) as any as S.Schema<MaintenanceUpdatePolicy>;
+  S.Struct({
+    maintenanceWindows: S.optional(MaintenanceWindowList),
+    denyMaintenancePeriods: S.optional(DenyMaintenancePeriodList),
+  }),
+).annotate({
+  identifier: "MaintenanceUpdatePolicy",
+}) as any as S.Schema<MaintenanceUpdatePolicy>;
 
 /** ContinuousBackupConfig describes the continuous backups recovery configurations of a cluster. */
 export interface ContinuousBackupConfig {
@@ -510,12 +624,14 @@ export interface ContinuousBackupConfig {
   encryptionConfig?: EncryptionConfig;
 }
 export const ContinuousBackupConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "enabled": S.optional(S.Boolean),
-  "recoveryWindowDays": S.optional(S.Number),
-  "encryptionConfig": S.optional(EncryptionConfig),
-}),
-).annotate({ identifier: "ContinuousBackupConfig" }) as any as S.Schema<ContinuousBackupConfig>;
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+    recoveryWindowDays: S.optional(S.Number),
+    encryptionConfig: S.optional(EncryptionConfig),
+  }),
+).annotate({
+  identifier: "ContinuousBackupConfig",
+}) as any as S.Schema<ContinuousBackupConfig>;
 
 /** The username/password for a database user. Used for specifying initial users at cluster creation time. */
 export interface UserPassword {
@@ -525,16 +641,24 @@ export interface UserPassword {
   password?: string;
 }
 export const UserPassword = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "user": S.optional(S.String),
-  "password": S.optional(S.String),
-}),
+  S.Struct({
+    user: S.optional(S.String),
+    password: S.optional(S.String),
+  }),
 ).annotate({ identifier: "UserPassword" }) as any as S.Schema<UserPassword>;
 
-export type SslConfigSslModeEnum = "SSL_MODE_UNSPECIFIED" | "SSL_MODE_ALLOW" | "SSL_MODE_REQUIRE" | "SSL_MODE_VERIFY_CA" | "ALLOW_UNENCRYPTED_AND_ENCRYPTED" | "ENCRYPTED_ONLY";
+export type SslConfigSslModeEnum =
+  | "SSL_MODE_UNSPECIFIED"
+  | "SSL_MODE_ALLOW"
+  | "SSL_MODE_REQUIRE"
+  | "SSL_MODE_VERIFY_CA"
+  | "ALLOW_UNENCRYPTED_AND_ENCRYPTED"
+  | "ENCRYPTED_ONLY";
 export const SslConfigSslModeEnum = /*@__PURE__*/ S.String;
 
-export type SslConfigCaSourceEnum = "CA_SOURCE_UNSPECIFIED" | "CA_SOURCE_MANAGED";
+export type SslConfigCaSourceEnum =
+  | "CA_SOURCE_UNSPECIFIED"
+  | "CA_SOURCE_MANAGED";
 export const SslConfigCaSourceEnum = /*@__PURE__*/ S.String;
 
 /** SSL configuration. */
@@ -545,10 +669,10 @@ export interface SslConfig {
   caSource?: SslConfigCaSourceEnum;
 }
 export const SslConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sslMode": S.optional(SslConfigSslModeEnum),
-  "caSource": S.optional(SslConfigCaSourceEnum),
-}),
+  S.Struct({
+    sslMode: S.optional(SslConfigSslModeEnum),
+    caSource: S.optional(SslConfigCaSourceEnum),
+  }),
 ).annotate({ identifier: "SslConfig" }) as any as S.Schema<SslConfig>;
 
 /** Information about a single window when BackupDR was enabled for this cluster. */
@@ -573,21 +697,25 @@ export interface BackupDrEnabledWindow {
   logRetentionPeriod?: string;
 }
 export const BackupDrEnabledWindow = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dataSource": S.optional(S.String),
-  "disabledTime": S.optional(S.String),
-  "automatedBackupPreviouslyEnabled": S.optional(S.Boolean),
-  "continuousBackupPreviouslyEnabled": S.optional(S.Boolean),
-  "continuousBackupPreviouslyEnabledTime": S.optional(S.String),
-  "continuousBackupPreviousRecoveryWindowDays": S.optional(S.Number),
-  "enabledTime": S.optional(S.String),
-  "backupPlanAssociation": S.optional(S.String),
-  "logRetentionPeriod": S.optional(S.String),
-}),
-).annotate({ identifier: "BackupDrEnabledWindow" }) as any as S.Schema<BackupDrEnabledWindow>;
+  S.Struct({
+    dataSource: S.optional(S.String),
+    disabledTime: S.optional(S.String),
+    automatedBackupPreviouslyEnabled: S.optional(S.Boolean),
+    continuousBackupPreviouslyEnabled: S.optional(S.Boolean),
+    continuousBackupPreviouslyEnabledTime: S.optional(S.String),
+    continuousBackupPreviousRecoveryWindowDays: S.optional(S.Number),
+    enabledTime: S.optional(S.String),
+    backupPlanAssociation: S.optional(S.String),
+    logRetentionPeriod: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BackupDrEnabledWindow",
+}) as any as S.Schema<BackupDrEnabledWindow>;
 
 export type BackupDrEnabledWindowList = ReadonlyArray<BackupDrEnabledWindow>;
-export const BackupDrEnabledWindowList = /*@__PURE__*/ S.Array(BackupDrEnabledWindow) as any as S.Schema<BackupDrEnabledWindowList>;
+export const BackupDrEnabledWindowList = /*@__PURE__*/ S.Array(
+  BackupDrEnabledWindow,
+) as any as S.Schema<BackupDrEnabledWindowList>;
 
 /** Information about BackupDR protection for this cluster. */
 export interface BackupDrInfo {
@@ -597,10 +725,10 @@ export interface BackupDrInfo {
   previousWindows?: BackupDrEnabledWindowList;
 }
 export const BackupDrInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "currentWindow": S.optional(BackupDrEnabledWindow),
-  "previousWindows": S.optional(BackupDrEnabledWindowList),
-}),
+  S.Struct({
+    currentWindow: S.optional(BackupDrEnabledWindow),
+    previousWindows: S.optional(BackupDrEnabledWindowList),
+  }),
 ).annotate({ identifier: "BackupDrInfo" }) as any as S.Schema<BackupDrInfo>;
 
 /** Contains information and all metadata related to TRIAL clusters. */
@@ -615,12 +743,12 @@ export interface TrialMetadata {
   graceEndTime?: string;
 }
 export const TrialMetadata = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "endTime": S.optional(S.String),
-  "startTime": S.optional(S.String),
-  "upgradeTime": S.optional(S.String),
-  "graceEndTime": S.optional(S.String),
-}),
+  S.Struct({
+    endTime: S.optional(S.String),
+    startTime: S.optional(S.String),
+    upgradeTime: S.optional(S.String),
+    graceEndTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "TrialMetadata" }) as any as S.Schema<TrialMetadata>;
 
 /** Configuration for the primary cluster. It has the list of clusters that are replicating from this cluster. This should be set if and only if the cluster is of type PRIMARY. */
@@ -629,22 +757,42 @@ export interface PrimaryConfig {
   secondaryClusterNames?: StringList;
 }
 export const PrimaryConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "secondaryClusterNames": S.optional(StringList),
-}),
+  S.Struct({
+    secondaryClusterNames: S.optional(StringList),
+  }),
 ).annotate({ identifier: "PrimaryConfig" }) as any as S.Schema<PrimaryConfig>;
 
-export type ClusterDatabaseVersionEnum = "DATABASE_VERSION_UNSPECIFIED" | "POSTGRES_13" | "POSTGRES_14" | "POSTGRES_15" | "POSTGRES_16" | "POSTGRES_17" | "POSTGRES_18";
+export type ClusterDatabaseVersionEnum =
+  | "DATABASE_VERSION_UNSPECIFIED"
+  | "POSTGRES_13"
+  | "POSTGRES_14"
+  | "POSTGRES_15"
+  | "POSTGRES_16"
+  | "POSTGRES_17"
+  | "POSTGRES_18";
 export const ClusterDatabaseVersionEnum = /*@__PURE__*/ S.String;
 
 export type GoogleTypeTimeOfDayList = ReadonlyArray<GoogleTypeTimeOfDay>;
-export const GoogleTypeTimeOfDayList = /*@__PURE__*/ S.Array(GoogleTypeTimeOfDay) as any as S.Schema<GoogleTypeTimeOfDayList>;
+export const GoogleTypeTimeOfDayList = /*@__PURE__*/ S.Array(
+  GoogleTypeTimeOfDay,
+) as any as S.Schema<GoogleTypeTimeOfDayList>;
 
-export type WeeklyScheduleDaysOfWeekItemEnum = "DAY_OF_WEEK_UNSPECIFIED" | "MONDAY" | "TUESDAY" | "WEDNESDAY" | "THURSDAY" | "FRIDAY" | "SATURDAY" | "SUNDAY";
+export type WeeklyScheduleDaysOfWeekItemEnum =
+  | "DAY_OF_WEEK_UNSPECIFIED"
+  | "MONDAY"
+  | "TUESDAY"
+  | "WEDNESDAY"
+  | "THURSDAY"
+  | "FRIDAY"
+  | "SATURDAY"
+  | "SUNDAY";
 export const WeeklyScheduleDaysOfWeekItemEnum = /*@__PURE__*/ S.String;
 
-export type WeeklyScheduleDaysOfWeekItemEnumList = ReadonlyArray<WeeklyScheduleDaysOfWeekItemEnum>;
-export const WeeklyScheduleDaysOfWeekItemEnumList = /*@__PURE__*/ S.Array(WeeklyScheduleDaysOfWeekItemEnum) as any as S.Schema<WeeklyScheduleDaysOfWeekItemEnumList>;
+export type WeeklyScheduleDaysOfWeekItemEnumList =
+  ReadonlyArray<WeeklyScheduleDaysOfWeekItemEnum>;
+export const WeeklyScheduleDaysOfWeekItemEnumList = /*@__PURE__*/ S.Array(
+  WeeklyScheduleDaysOfWeekItemEnum,
+) as any as S.Schema<WeeklyScheduleDaysOfWeekItemEnumList>;
 
 /** A weekly schedule starts a backup at prescribed start times within a day, for the specified days of the week. The weekly schedule message is flexible and can be used to create many types of schedules. For example, to have a daily backup that starts at 22:00, configure the `start_times` field to have one element "22:00" and the `days_of_week` field to have all seven days of the week. */
 export interface WeeklySchedule {
@@ -654,10 +802,10 @@ export interface WeeklySchedule {
   daysOfWeek?: WeeklyScheduleDaysOfWeekItemEnumList;
 }
 export const WeeklySchedule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "startTimes": S.optional(GoogleTypeTimeOfDayList),
-  "daysOfWeek": S.optional(WeeklyScheduleDaysOfWeekItemEnumList),
-}),
+  S.Struct({
+    startTimes: S.optional(GoogleTypeTimeOfDayList),
+    daysOfWeek: S.optional(WeeklyScheduleDaysOfWeekItemEnumList),
+  }),
 ).annotate({ identifier: "WeeklySchedule" }) as any as S.Schema<WeeklySchedule>;
 
 /** A quantity based policy specifies that a certain number of the most recent successful backups should be retained. */
@@ -666,10 +814,12 @@ export interface QuantityBasedRetention {
   count?: number;
 }
 export const QuantityBasedRetention = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "count": S.optional(S.Number),
-}),
-).annotate({ identifier: "QuantityBasedRetention" }) as any as S.Schema<QuantityBasedRetention>;
+  S.Struct({
+    count: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "QuantityBasedRetention",
+}) as any as S.Schema<QuantityBasedRetention>;
 
 /** A time based retention policy specifies that all backups within a certain time period should be retained. */
 export interface TimeBasedRetention {
@@ -677,10 +827,12 @@ export interface TimeBasedRetention {
   retentionPeriod?: string;
 }
 export const TimeBasedRetention = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "retentionPeriod": S.optional(S.String),
-}),
-).annotate({ identifier: "TimeBasedRetention" }) as any as S.Schema<TimeBasedRetention>;
+  S.Struct({
+    retentionPeriod: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "TimeBasedRetention",
+}) as any as S.Schema<TimeBasedRetention>;
 
 /** Message describing the user-specified automated backup policy. All fields in the automated backup policy are optional. Defaults for each field are provided if they are not set. */
 export interface AutomatedBackupPolicy {
@@ -702,17 +854,19 @@ export interface AutomatedBackupPolicy {
   backupWindow?: string;
 }
 export const AutomatedBackupPolicy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "weeklySchedule": S.optional(WeeklySchedule),
-  "enabled": S.optional(S.Boolean),
-  "location": S.optional(S.String),
-  "quantityBasedRetention": S.optional(QuantityBasedRetention),
-  "timeBasedRetention": S.optional(TimeBasedRetention),
-  "labels": S.optional(StringMap),
-  "encryptionConfig": S.optional(EncryptionConfig),
-  "backupWindow": S.optional(S.String),
-}),
-).annotate({ identifier: "AutomatedBackupPolicy" }) as any as S.Schema<AutomatedBackupPolicy>;
+  S.Struct({
+    weeklySchedule: S.optional(WeeklySchedule),
+    enabled: S.optional(S.Boolean),
+    location: S.optional(S.String),
+    quantityBasedRetention: S.optional(QuantityBasedRetention),
+    timeBasedRetention: S.optional(TimeBasedRetention),
+    labels: S.optional(StringMap),
+    encryptionConfig: S.optional(EncryptionConfig),
+    backupWindow: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AutomatedBackupPolicy",
+}) as any as S.Schema<AutomatedBackupPolicy>;
 
 /** Configuration information for the secondary cluster. This should be set if and only if the cluster is of type SECONDARY. */
 export interface SecondaryConfig {
@@ -720,10 +874,12 @@ export interface SecondaryConfig {
   primaryClusterName?: string;
 }
 export const SecondaryConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "primaryClusterName": S.optional(S.String),
-}),
-).annotate({ identifier: "SecondaryConfig" }) as any as S.Schema<SecondaryConfig>;
+  S.Struct({
+    primaryClusterName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SecondaryConfig",
+}) as any as S.Schema<SecondaryConfig>;
 
 /** Deprecated and unused. This message will be removed in the near future. */
 export interface GeminiClusterConfig {
@@ -731,10 +887,12 @@ export interface GeminiClusterConfig {
   entitled?: boolean;
 }
 export const GeminiClusterConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "entitled": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "GeminiClusterConfig" }) as any as S.Schema<GeminiClusterConfig>;
+  S.Struct({
+    entitled: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "GeminiClusterConfig",
+}) as any as S.Schema<GeminiClusterConfig>;
 
 /** PscConfig contains PSC related configuration at a cluster level. */
 export interface PscConfig {
@@ -744,10 +902,10 @@ export interface PscConfig {
   serviceOwnedProjectNumber?: string;
 }
 export const PscConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pscEnabled": S.optional(S.Boolean),
-  "serviceOwnedProjectNumber": S.optional(S.String),
-}),
+  S.Struct({
+    pscEnabled: S.optional(S.Boolean),
+    serviceOwnedProjectNumber: S.optional(S.String),
+  }),
 ).annotate({ identifier: "PscConfig" }) as any as S.Schema<PscConfig>;
 
 /** MaintenanceSchedule stores the maintenance schedule generated from the MaintenanceUpdatePolicy, once a maintenance rollout is triggered, if MaintenanceWindow is set, and if there is no conflicting DenyPeriod. The schedule is cleared once the update takes place. This field cannot be manually changed; modify the MaintenanceUpdatePolicy instead. */
@@ -756,10 +914,12 @@ export interface MaintenanceSchedule {
   startTime?: string;
 }
 export const MaintenanceSchedule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "startTime": S.optional(S.String),
-}),
-).annotate({ identifier: "MaintenanceSchedule" }) as any as S.Schema<MaintenanceSchedule>;
+  S.Struct({
+    startTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MaintenanceSchedule",
+}) as any as S.Schema<MaintenanceSchedule>;
 
 /** A cluster is a collection of regional AlloyDB resources. It can include a primary instance and one or more read pool instances. All cluster resources share a storage layer, which scales as needed. */
 export interface Cluster {
@@ -844,48 +1004,50 @@ export interface Cluster {
   maintenanceSchedule?: MaintenanceSchedule;
 }
 export const Cluster = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "encryptionConfig": S.optional(EncryptionConfig),
-  "backupdrBackupSource": S.optional(BackupDrBackupSource),
-  "backupSource": S.optional(BackupSource),
-  "state": S.optional(ClusterStateEnum),
-  "clusterType": S.optional(ClusterClusterTypeEnum),
-  "subscriptionType": S.optional(ClusterSubscriptionTypeEnum),
-  "displayName": S.optional(S.String),
-  "annotations": S.optional(StringMap),
-  "migrationSource": S.optional(MigrationSource),
-  "continuousBackupInfo": S.optional(ContinuousBackupInfo),
-  "cloudsqlBackupRunSource": S.optional(CloudSQLBackupRunSource),
-  "networkConfig": S.optional(NetworkConfig),
-  "dataplexConfig": S.optional(DataplexConfig),
-  "encryptionInfo": S.optional(EncryptionInfo),
-  "labels": S.optional(StringMap),
-  "maintenanceVersionSelectionPolicy": S.optional(ClusterMaintenanceVersionSelectionPolicyEnum),
-  "maintenanceUpdatePolicy": S.optional(MaintenanceUpdatePolicy),
-  "createTime": S.optional(S.String),
-  "continuousBackupConfig": S.optional(ContinuousBackupConfig),
-  "initialUser": S.optional(UserPassword),
-  "satisfiesPzs": S.optional(S.Boolean),
-  "etag": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "reconciling": S.optional(S.Boolean),
-  "tags": S.optional(StringMap),
-  "uid": S.optional(S.String),
-  "sslConfig": S.optional(SslConfig),
-  "backupdrInfo": S.optional(BackupDrInfo),
-  "deleteTime": S.optional(S.String),
-  "trialMetadata": S.optional(TrialMetadata),
-  "primaryConfig": S.optional(PrimaryConfig),
-  "databaseVersion": S.optional(ClusterDatabaseVersionEnum),
-  "automatedBackupPolicy": S.optional(AutomatedBackupPolicy),
-  "network": S.optional(S.String),
-  "serviceAccountEmail": S.optional(S.String),
-  "secondaryConfig": S.optional(SecondaryConfig),
-  "geminiConfig": S.optional(GeminiClusterConfig),
-  "pscConfig": S.optional(PscConfig),
-  "maintenanceSchedule": S.optional(MaintenanceSchedule),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    encryptionConfig: S.optional(EncryptionConfig),
+    backupdrBackupSource: S.optional(BackupDrBackupSource),
+    backupSource: S.optional(BackupSource),
+    state: S.optional(ClusterStateEnum),
+    clusterType: S.optional(ClusterClusterTypeEnum),
+    subscriptionType: S.optional(ClusterSubscriptionTypeEnum),
+    displayName: S.optional(S.String),
+    annotations: S.optional(StringMap),
+    migrationSource: S.optional(MigrationSource),
+    continuousBackupInfo: S.optional(ContinuousBackupInfo),
+    cloudsqlBackupRunSource: S.optional(CloudSQLBackupRunSource),
+    networkConfig: S.optional(NetworkConfig),
+    dataplexConfig: S.optional(DataplexConfig),
+    encryptionInfo: S.optional(EncryptionInfo),
+    labels: S.optional(StringMap),
+    maintenanceVersionSelectionPolicy: S.optional(
+      ClusterMaintenanceVersionSelectionPolicyEnum,
+    ),
+    maintenanceUpdatePolicy: S.optional(MaintenanceUpdatePolicy),
+    createTime: S.optional(S.String),
+    continuousBackupConfig: S.optional(ContinuousBackupConfig),
+    initialUser: S.optional(UserPassword),
+    satisfiesPzs: S.optional(S.Boolean),
+    etag: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    reconciling: S.optional(S.Boolean),
+    tags: S.optional(StringMap),
+    uid: S.optional(S.String),
+    sslConfig: S.optional(SslConfig),
+    backupdrInfo: S.optional(BackupDrInfo),
+    deleteTime: S.optional(S.String),
+    trialMetadata: S.optional(TrialMetadata),
+    primaryConfig: S.optional(PrimaryConfig),
+    databaseVersion: S.optional(ClusterDatabaseVersionEnum),
+    automatedBackupPolicy: S.optional(AutomatedBackupPolicy),
+    network: S.optional(S.String),
+    serviceAccountEmail: S.optional(S.String),
+    secondaryConfig: S.optional(SecondaryConfig),
+    geminiConfig: S.optional(GeminiClusterConfig),
+    pscConfig: S.optional(PscConfig),
+    maintenanceSchedule: S.optional(MaintenanceSchedule),
+  }),
 ).annotate({ identifier: "Cluster" }) as any as S.Schema<Cluster>;
 
 export interface CreateProjectsLocationsClustersRequest {
@@ -900,17 +1062,29 @@ export interface CreateProjectsLocationsClustersRequest {
   /** Request body */
   body?: Cluster;
 }
-export const CreateProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "clusterId": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(Cluster.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+parent}/clusters","baseUrl":"https://alloydb.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsClustersRequest" }) as any as S.Schema<CreateProjectsLocationsClustersRequest>;
+export const CreateProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      clusterId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      body: S.optional(Cluster.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+parent}/clusters",
+        baseUrl: "https://alloydb.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateProjectsLocationsClustersRequest",
+}) as any as S.Schema<CreateProjectsLocationsClustersRequest>;
 
-export type UpdatePolicyModeEnum = "MODE_UNSPECIFIED" | "DEFAULT" | "FORCE_APPLY";
+export type UpdatePolicyModeEnum =
+  | "MODE_UNSPECIFIED"
+  | "DEFAULT"
+  | "FORCE_APPLY";
 export const UpdatePolicyModeEnum = /*@__PURE__*/ S.String;
 
 /** Policy to be used while updating the instance. */
@@ -919,9 +1093,9 @@ export interface UpdatePolicy {
   mode?: UpdatePolicyModeEnum;
 }
 export const UpdatePolicy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "mode": S.optional(UpdatePolicyModeEnum),
-}),
+  S.Struct({
+    mode: S.optional(UpdatePolicyModeEnum),
+  }),
 ).annotate({ identifier: "UpdatePolicy" }) as any as S.Schema<UpdatePolicy>;
 
 /** QueryInsights Instance specific configuration. */
@@ -936,13 +1110,15 @@ export interface QueryInsightsInstanceConfig {
   queryPlansPerMinute?: number;
 }
 export const QueryInsightsInstanceConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "recordApplicationTags": S.optional(S.Boolean),
-  "recordClientAddress": S.optional(S.Boolean),
-  "queryStringLength": S.optional(S.Number),
-  "queryPlansPerMinute": S.optional(S.Number),
-}),
-).annotate({ identifier: "QueryInsightsInstanceConfig" }) as any as S.Schema<QueryInsightsInstanceConfig>;
+  S.Struct({
+    recordApplicationTags: S.optional(S.Boolean),
+    recordClientAddress: S.optional(S.Boolean),
+    queryStringLength: S.optional(S.Number),
+    queryPlansPerMinute: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "QueryInsightsInstanceConfig",
+}) as any as S.Schema<QueryInsightsInstanceConfig>;
 
 /** Observability Instance specific configuration. */
 export interface ObservabilityInstanceConfig {
@@ -970,26 +1146,37 @@ export interface ObservabilityInstanceConfig {
   trackActiveQueries?: boolean;
 }
 export const ObservabilityInstanceConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "trackActiveQueryPlan": S.optional(S.Boolean),
-  "trackWaitEventTypes": S.optional(S.Boolean),
-  "trackClientAddress": S.optional(S.Boolean),
-  "queryPlansPerMinute": S.optional(S.Number),
-  "recordApplicationTags": S.optional(S.Boolean),
-  "preserveComments": S.optional(S.Boolean),
-  "trackWaitEvents": S.optional(S.Boolean),
-  "maxQueryStringLength": S.optional(S.Number),
-  "assistiveExperiencesEnabled": S.optional(S.Boolean),
-  "enabled": S.optional(S.Boolean),
-  "trackActiveQueries": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "ObservabilityInstanceConfig" }) as any as S.Schema<ObservabilityInstanceConfig>;
+  S.Struct({
+    trackActiveQueryPlan: S.optional(S.Boolean),
+    trackWaitEventTypes: S.optional(S.Boolean),
+    trackClientAddress: S.optional(S.Boolean),
+    queryPlansPerMinute: S.optional(S.Number),
+    recordApplicationTags: S.optional(S.Boolean),
+    preserveComments: S.optional(S.Boolean),
+    trackWaitEvents: S.optional(S.Boolean),
+    maxQueryStringLength: S.optional(S.Number),
+    assistiveExperiencesEnabled: S.optional(S.Boolean),
+    enabled: S.optional(S.Boolean),
+    trackActiveQueries: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ObservabilityInstanceConfig",
+}) as any as S.Schema<ObservabilityInstanceConfig>;
 
-export type ConnectionPoolConfigPoolerScalingTypeEnum = "POOLER_SCALING_TYPE_UNSPECIFIED" | "POOLER_NONE" | "POOLER_MACHINE_SIZED" | "POOLER_MANUAL_OVERRIDE";
+export type ConnectionPoolConfigPoolerScalingTypeEnum =
+  | "POOLER_SCALING_TYPE_UNSPECIFIED"
+  | "POOLER_NONE"
+  | "POOLER_MACHINE_SIZED"
+  | "POOLER_MANUAL_OVERRIDE";
 export const ConnectionPoolConfigPoolerScalingTypeEnum = /*@__PURE__*/ S.String;
 
-export type ConnectionPoolConfigAuthproxyPoolerScalingTypeEnum = "POOLER_SCALING_TYPE_UNSPECIFIED" | "POOLER_NONE" | "POOLER_MACHINE_SIZED" | "POOLER_MANUAL_OVERRIDE";
-export const ConnectionPoolConfigAuthproxyPoolerScalingTypeEnum = /*@__PURE__*/ S.String;
+export type ConnectionPoolConfigAuthproxyPoolerScalingTypeEnum =
+  | "POOLER_SCALING_TYPE_UNSPECIFIED"
+  | "POOLER_NONE"
+  | "POOLER_MACHINE_SIZED"
+  | "POOLER_MANUAL_OVERRIDE";
+export const ConnectionPoolConfigAuthproxyPoolerScalingTypeEnum =
+  /*@__PURE__*/ S.String;
 
 /** Configuration for Managed Connection Pool (MCP). */
 export interface ConnectionPoolConfig {
@@ -1007,15 +1194,19 @@ export interface ConnectionPoolConfig {
   poolerCount?: number;
 }
 export const ConnectionPoolConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "poolerScalingType": S.optional(ConnectionPoolConfigPoolerScalingTypeEnum),
-  "enabled": S.optional(S.Boolean),
-  "flags": S.optional(StringMap),
-  "authproxyPoolerScalingType": S.optional(ConnectionPoolConfigAuthproxyPoolerScalingTypeEnum),
-  "authproxyPoolerCount": S.optional(S.Number),
-  "poolerCount": S.optional(S.Number),
-}),
-).annotate({ identifier: "ConnectionPoolConfig" }) as any as S.Schema<ConnectionPoolConfig>;
+  S.Struct({
+    poolerScalingType: S.optional(ConnectionPoolConfigPoolerScalingTypeEnum),
+    enabled: S.optional(S.Boolean),
+    flags: S.optional(StringMap),
+    authproxyPoolerScalingType: S.optional(
+      ConnectionPoolConfigAuthproxyPoolerScalingTypeEnum,
+    ),
+    authproxyPoolerCount: S.optional(S.Number),
+    poolerCount: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ConnectionPoolConfig",
+}) as any as S.Schema<ConnectionPoolConfig>;
 
 /** Deprecated and unused. This message will be removed in the near future. */
 export interface GeminiInstanceConfig {
@@ -1023,12 +1214,16 @@ export interface GeminiInstanceConfig {
   entitled?: boolean;
 }
 export const GeminiInstanceConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "entitled": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "GeminiInstanceConfig" }) as any as S.Schema<GeminiInstanceConfig>;
+  S.Struct({
+    entitled: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "GeminiInstanceConfig",
+}) as any as S.Schema<GeminiInstanceConfig>;
 
-export type GCAInstanceConfigGcaEntitlementEnum = "GCA_ENTITLEMENT_TYPE_UNSPECIFIED" | "GCA_STANDARD";
+export type GCAInstanceConfigGcaEntitlementEnum =
+  | "GCA_ENTITLEMENT_TYPE_UNSPECIFIED"
+  | "GCA_STANDARD";
 export const GCAInstanceConfigGcaEntitlementEnum = /*@__PURE__*/ S.String;
 
 /** Instance level configuration parameters related to the Gemini Cloud Assist product. */
@@ -1037,10 +1232,12 @@ export interface GCAInstanceConfig {
   gcaEntitlement?: GCAInstanceConfigGcaEntitlementEnum;
 }
 export const GCAInstanceConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "gcaEntitlement": S.optional(GCAInstanceConfigGcaEntitlementEnum),
-}),
-).annotate({ identifier: "GCAInstanceConfig" }) as any as S.Schema<GCAInstanceConfig>;
+  S.Struct({
+    gcaEntitlement: S.optional(GCAInstanceConfigGcaEntitlementEnum),
+  }),
+).annotate({
+  identifier: "GCAInstanceConfig",
+}) as any as S.Schema<GCAInstanceConfig>;
 
 /** Client connection configuration */
 export interface ClientConnectionConfig {
@@ -1050,11 +1247,13 @@ export interface ClientConnectionConfig {
   sslConfig?: SslConfig;
 }
 export const ClientConnectionConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requireConnectors": S.optional(S.Boolean),
-  "sslConfig": S.optional(SslConfig),
-}),
-).annotate({ identifier: "ClientConnectionConfig" }) as any as S.Schema<ClientConnectionConfig>;
+  S.Struct({
+    requireConnectors: S.optional(S.Boolean),
+    sslConfig: S.optional(SslConfig),
+  }),
+).annotate({
+  identifier: "ClientConnectionConfig",
+}) as any as S.Schema<ClientConnectionConfig>;
 
 /** Configuration for setting up PSC service automation. Consumer projects in the configs will be allowlisted automatically for the instance. */
 export interface PscAutoConnectionConfig {
@@ -1070,17 +1269,22 @@ export interface PscAutoConnectionConfig {
   status?: string;
 }
 export const PscAutoConnectionConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "ipAddress": S.optional(S.String),
-  "consumerProject": S.optional(S.String),
-  "consumerNetworkStatus": S.optional(S.String),
-  "consumerNetwork": S.optional(S.String),
-  "status": S.optional(S.String),
-}),
-).annotate({ identifier: "PscAutoConnectionConfig" }) as any as S.Schema<PscAutoConnectionConfig>;
+  S.Struct({
+    ipAddress: S.optional(S.String),
+    consumerProject: S.optional(S.String),
+    consumerNetworkStatus: S.optional(S.String),
+    consumerNetwork: S.optional(S.String),
+    status: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PscAutoConnectionConfig",
+}) as any as S.Schema<PscAutoConnectionConfig>;
 
-export type PscAutoConnectionConfigList = ReadonlyArray<PscAutoConnectionConfig>;
-export const PscAutoConnectionConfigList = /*@__PURE__*/ S.Array(PscAutoConnectionConfig) as any as S.Schema<PscAutoConnectionConfigList>;
+export type PscAutoConnectionConfigList =
+  ReadonlyArray<PscAutoConnectionConfig>;
+export const PscAutoConnectionConfigList = /*@__PURE__*/ S.Array(
+  PscAutoConnectionConfig,
+) as any as S.Schema<PscAutoConnectionConfigList>;
 
 /** Configuration for setting up a PSC interface to enable outbound connectivity. */
 export interface PscInterfaceConfig {
@@ -1088,13 +1292,17 @@ export interface PscInterfaceConfig {
   networkAttachmentResource?: string;
 }
 export const PscInterfaceConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "networkAttachmentResource": S.optional(S.String),
-}),
-).annotate({ identifier: "PscInterfaceConfig" }) as any as S.Schema<PscInterfaceConfig>;
+  S.Struct({
+    networkAttachmentResource: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PscInterfaceConfig",
+}) as any as S.Schema<PscInterfaceConfig>;
 
 export type PscInterfaceConfigList = ReadonlyArray<PscInterfaceConfig>;
-export const PscInterfaceConfigList = /*@__PURE__*/ S.Array(PscInterfaceConfig) as any as S.Schema<PscInterfaceConfigList>;
+export const PscInterfaceConfigList = /*@__PURE__*/ S.Array(
+  PscInterfaceConfig,
+) as any as S.Schema<PscInterfaceConfigList>;
 
 /** PscInstanceConfig contains PSC related configuration at an instance level. */
 export interface PscInstanceConfig {
@@ -1110,16 +1318,21 @@ export interface PscInstanceConfig {
   serviceAttachmentLink?: string;
 }
 export const PscInstanceConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "allowedConsumerProjects": S.optional(StringList),
-  "pscDnsName": S.optional(S.String),
-  "pscAutoConnections": S.optional(PscAutoConnectionConfigList),
-  "pscInterfaceConfigs": S.optional(PscInterfaceConfigList),
-  "serviceAttachmentLink": S.optional(S.String),
-}),
-).annotate({ identifier: "PscInstanceConfig" }) as any as S.Schema<PscInstanceConfig>;
+  S.Struct({
+    allowedConsumerProjects: S.optional(StringList),
+    pscDnsName: S.optional(S.String),
+    pscAutoConnections: S.optional(PscAutoConnectionConfigList),
+    pscInterfaceConfigs: S.optional(PscInterfaceConfigList),
+    serviceAttachmentLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PscInstanceConfig",
+}) as any as S.Schema<PscInstanceConfig>;
 
-export type InstanceAvailabilityTypeEnum = "AVAILABILITY_TYPE_UNSPECIFIED" | "ZONAL" | "REGIONAL";
+export type InstanceAvailabilityTypeEnum =
+  | "AVAILABILITY_TYPE_UNSPECIFIED"
+  | "ZONAL"
+  | "REGIONAL";
 export const InstanceAvailabilityTypeEnum = /*@__PURE__*/ S.String;
 
 /** Details of a single node in the instance. Nodes in an AlloyDB instance are ephemeral, they can change during update, failover, autohealing and resize operations. */
@@ -1136,17 +1349,19 @@ export interface Node {
   zoneId?: string;
 }
 export const Node = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "isHotStandby": S.optional(S.Boolean),
-  "id": S.optional(S.String),
-  "state": S.optional(S.String),
-  "ip": S.optional(S.String),
-  "zoneId": S.optional(S.String),
-}),
+  S.Struct({
+    isHotStandby: S.optional(S.Boolean),
+    id: S.optional(S.String),
+    state: S.optional(S.String),
+    ip: S.optional(S.String),
+    zoneId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Node" }) as any as S.Schema<Node>;
 
 export type NodeList = ReadonlyArray<Node>;
-export const NodeList = /*@__PURE__*/ S.Array(Node) as any as S.Schema<NodeList>;
+export const NodeList = /*@__PURE__*/ S.Array(
+  Node,
+) as any as S.Schema<NodeList>;
 
 /** CPU utilization policy for the autoscaler. */
 export interface CpuUtilization {
@@ -1154,9 +1369,9 @@ export interface CpuUtilization {
   utilizationTarget?: number;
 }
 export const CpuUtilization = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "utilizationTarget": S.optional(S.Number),
-}),
+  S.Struct({
+    utilizationTarget: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "CpuUtilization" }) as any as S.Schema<CpuUtilization>;
 
 /** Policy for the autoscaler. */
@@ -1171,12 +1386,12 @@ export interface Policy {
   enabled?: boolean;
 }
 export const Policy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "coolDownPeriodSec": S.optional(S.String),
-  "maxNodeCount": S.optional(S.String),
-  "cpuUtilization": S.optional(CpuUtilization),
-  "enabled": S.optional(S.Boolean),
-}),
+  S.Struct({
+    coolDownPeriodSec: S.optional(S.String),
+    maxNodeCount: S.optional(S.String),
+    cpuUtilization: S.optional(CpuUtilization),
+    enabled: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
 
 /** A schedule for the autoscaler. */
@@ -1197,19 +1412,21 @@ export interface Schedule {
   durationSec?: string;
 }
 export const Schedule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "timeZone": S.optional(S.String),
-  "cronExpression": S.optional(S.String),
-  "minNodeCount": S.optional(S.String),
-  "description": S.optional(S.String),
-  "disabled": S.optional(S.Boolean),
-  "name": S.optional(S.String),
-  "durationSec": S.optional(S.String),
-}),
+  S.Struct({
+    timeZone: S.optional(S.String),
+    cronExpression: S.optional(S.String),
+    minNodeCount: S.optional(S.String),
+    description: S.optional(S.String),
+    disabled: S.optional(S.Boolean),
+    name: S.optional(S.String),
+    durationSec: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Schedule" }) as any as S.Schema<Schedule>;
 
 export type ScheduleList = ReadonlyArray<Schedule>;
-export const ScheduleList = /*@__PURE__*/ S.Array(Schedule) as any as S.Schema<ScheduleList>;
+export const ScheduleList = /*@__PURE__*/ S.Array(
+  Schedule,
+) as any as S.Schema<ScheduleList>;
 
 /** Configuration for autoscaling. */
 export interface AutoScalingConfig {
@@ -1219,11 +1436,13 @@ export interface AutoScalingConfig {
   schedules?: ScheduleList;
 }
 export const AutoScalingConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "policy": S.optional(Policy),
-  "schedules": S.optional(ScheduleList),
-}),
-).annotate({ identifier: "AutoScalingConfig" }) as any as S.Schema<AutoScalingConfig>;
+  S.Struct({
+    policy: S.optional(Policy),
+    schedules: S.optional(ScheduleList),
+  }),
+).annotate({
+  identifier: "AutoScalingConfig",
+}) as any as S.Schema<AutoScalingConfig>;
 
 /** Configuration for a read pool instance. */
 export interface ReadPoolConfig {
@@ -1233,16 +1452,23 @@ export interface ReadPoolConfig {
   nodeCount?: number;
 }
 export const ReadPoolConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "autoScalingConfig": S.optional(AutoScalingConfig),
-  "nodeCount": S.optional(S.Number),
-}),
+  S.Struct({
+    autoScalingConfig: S.optional(AutoScalingConfig),
+    nodeCount: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "ReadPoolConfig" }) as any as S.Schema<ReadPoolConfig>;
 
-export type InstanceActivationPolicyEnum = "ACTIVATION_POLICY_UNSPECIFIED" | "ALWAYS" | "NEVER";
+export type InstanceActivationPolicyEnum =
+  | "ACTIVATION_POLICY_UNSPECIFIED"
+  | "ALWAYS"
+  | "NEVER";
 export const InstanceActivationPolicyEnum = /*@__PURE__*/ S.String;
 
-export type InstanceInstanceTypeEnum = "INSTANCE_TYPE_UNSPECIFIED" | "PRIMARY" | "READ_POOL" | "SECONDARY";
+export type InstanceInstanceTypeEnum =
+  | "INSTANCE_TYPE_UNSPECIFIED"
+  | "PRIMARY"
+  | "READ_POOL"
+  | "SECONDARY";
 export const InstanceInstanceTypeEnum = /*@__PURE__*/ S.String;
 
 /** AuthorizedNetwork contains metadata for an authorized network. */
@@ -1251,13 +1477,17 @@ export interface AuthorizedNetwork {
   cidrRange?: string;
 }
 export const AuthorizedNetwork = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "cidrRange": S.optional(S.String),
-}),
-).annotate({ identifier: "AuthorizedNetwork" }) as any as S.Schema<AuthorizedNetwork>;
+  S.Struct({
+    cidrRange: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AuthorizedNetwork",
+}) as any as S.Schema<AuthorizedNetwork>;
 
 export type AuthorizedNetworkList = ReadonlyArray<AuthorizedNetwork>;
-export const AuthorizedNetworkList = /*@__PURE__*/ S.Array(AuthorizedNetwork) as any as S.Schema<AuthorizedNetworkList>;
+export const AuthorizedNetworkList = /*@__PURE__*/ S.Array(
+  AuthorizedNetwork,
+) as any as S.Schema<AuthorizedNetworkList>;
 
 /** Metadata related to instance-level network configuration. */
 export interface InstanceNetworkConfig {
@@ -1273,19 +1503,36 @@ export interface InstanceNetworkConfig {
   allocatedIpRangeOverride?: string;
 }
 export const InstanceNetworkConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "enablePublicIp": S.optional(S.Boolean),
-  "authorizedExternalNetworks": S.optional(AuthorizedNetworkList),
-  "network": S.optional(S.String),
-  "enableOutboundPublicIp": S.optional(S.Boolean),
-  "allocatedIpRangeOverride": S.optional(S.String),
-}),
-).annotate({ identifier: "InstanceNetworkConfig" }) as any as S.Schema<InstanceNetworkConfig>;
+  S.Struct({
+    enablePublicIp: S.optional(S.Boolean),
+    authorizedExternalNetworks: S.optional(AuthorizedNetworkList),
+    network: S.optional(S.String),
+    enableOutboundPublicIp: S.optional(S.Boolean),
+    allocatedIpRangeOverride: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "InstanceNetworkConfig",
+}) as any as S.Schema<InstanceNetworkConfig>;
 
-export type InstanceDataApiAccessEnum = "DEFAULT_DATA_API_ENABLED_FOR_GOOGLE_CLOUD_SERVICES" | "DISABLED" | "ENABLED";
+export type InstanceDataApiAccessEnum =
+  | "DEFAULT_DATA_API_ENABLED_FOR_GOOGLE_CLOUD_SERVICES"
+  | "DISABLED"
+  | "ENABLED";
 export const InstanceDataApiAccessEnum = /*@__PURE__*/ S.String;
 
-export type InstanceStateEnum = "STATE_UNSPECIFIED" | "READY" | "STOPPED" | "CREATING" | "DELETING" | "MAINTENANCE" | "FAILED" | "BOOTSTRAPPING" | "PROMOTING" | "SWITCHOVER" | "STOPPING" | "STARTING";
+export type InstanceStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "READY"
+  | "STOPPED"
+  | "CREATING"
+  | "DELETING"
+  | "MAINTENANCE"
+  | "FAILED"
+  | "BOOTSTRAPPING"
+  | "PROMOTING"
+  | "SWITCHOVER"
+  | "STOPPING"
+  | "STARTING";
 export const InstanceStateEnum = /*@__PURE__*/ S.String;
 
 /** MachineConfig describes the configuration of a machine. */
@@ -1296,10 +1543,10 @@ export interface MachineConfig {
   machineType?: string;
 }
 export const MachineConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "cpuCount": S.optional(S.Number),
-  "machineType": S.optional(S.String),
-}),
+  S.Struct({
+    cpuCount: S.optional(S.Number),
+    machineType: S.optional(S.String),
+  }),
 ).annotate({ identifier: "MachineConfig" }) as any as S.Schema<MachineConfig>;
 
 /** An Instance is a computing unit that an end customer can connect to. It's the main unit of computing resources in AlloyDB. */
@@ -1376,43 +1623,43 @@ export interface Instance {
   outboundPublicIpAddresses?: StringList;
 }
 export const Instance = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updatePolicy": S.optional(UpdatePolicy),
-  "queryInsightsConfig": S.optional(QueryInsightsInstanceConfig),
-  "observabilityConfig": S.optional(ObservabilityInstanceConfig),
-  "connectionPoolConfig": S.optional(ConnectionPoolConfig),
-  "geminiConfig": S.optional(GeminiInstanceConfig),
-  "gcaConfig": S.optional(GCAInstanceConfig),
-  "clientConnectionConfig": S.optional(ClientConnectionConfig),
-  "pscInstanceConfig": S.optional(PscInstanceConfig),
-  "availabilityType": S.optional(InstanceAvailabilityTypeEnum),
-  "deleteTime": S.optional(S.String),
-  "uid": S.optional(S.String),
-  "publicIpAddress": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "reconciling": S.optional(S.Boolean),
-  "nodes": S.optional(NodeList),
-  "readPoolConfig": S.optional(ReadPoolConfig),
-  "databaseFlags": S.optional(StringMap),
-  "etag": S.optional(S.String),
-  "ipAddress": S.optional(S.String),
-  "activationPolicy": S.optional(InstanceActivationPolicyEnum),
-  "instanceType": S.optional(InstanceInstanceTypeEnum),
-  "satisfiesPzs": S.optional(S.Boolean),
-  "createTime": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "networkConfig": S.optional(InstanceNetworkConfig),
-  "maintenanceVersionName": S.optional(S.String),
-  "dataApiAccess": S.optional(InstanceDataApiAccessEnum),
-  "displayName": S.optional(S.String),
-  "writableNode": S.optional(Node),
-  "annotations": S.optional(StringMap),
-  "state": S.optional(InstanceStateEnum),
-  "gceZone": S.optional(S.String),
-  "name": S.optional(S.String),
-  "machineConfig": S.optional(MachineConfig),
-  "outboundPublicIpAddresses": S.optional(StringList),
-}),
+  S.Struct({
+    updatePolicy: S.optional(UpdatePolicy),
+    queryInsightsConfig: S.optional(QueryInsightsInstanceConfig),
+    observabilityConfig: S.optional(ObservabilityInstanceConfig),
+    connectionPoolConfig: S.optional(ConnectionPoolConfig),
+    geminiConfig: S.optional(GeminiInstanceConfig),
+    gcaConfig: S.optional(GCAInstanceConfig),
+    clientConnectionConfig: S.optional(ClientConnectionConfig),
+    pscInstanceConfig: S.optional(PscInstanceConfig),
+    availabilityType: S.optional(InstanceAvailabilityTypeEnum),
+    deleteTime: S.optional(S.String),
+    uid: S.optional(S.String),
+    publicIpAddress: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    reconciling: S.optional(S.Boolean),
+    nodes: S.optional(NodeList),
+    readPoolConfig: S.optional(ReadPoolConfig),
+    databaseFlags: S.optional(StringMap),
+    etag: S.optional(S.String),
+    ipAddress: S.optional(S.String),
+    activationPolicy: S.optional(InstanceActivationPolicyEnum),
+    instanceType: S.optional(InstanceInstanceTypeEnum),
+    satisfiesPzs: S.optional(S.Boolean),
+    createTime: S.optional(S.String),
+    labels: S.optional(StringMap),
+    networkConfig: S.optional(InstanceNetworkConfig),
+    maintenanceVersionName: S.optional(S.String),
+    dataApiAccess: S.optional(InstanceDataApiAccessEnum),
+    displayName: S.optional(S.String),
+    writableNode: S.optional(Node),
+    annotations: S.optional(StringMap),
+    state: S.optional(InstanceStateEnum),
+    gceZone: S.optional(S.String),
+    name: S.optional(S.String),
+    machineConfig: S.optional(MachineConfig),
+    outboundPublicIpAddresses: S.optional(StringList),
+  }),
 ).annotate({ identifier: "Instance" }) as any as S.Schema<Instance>;
 
 export interface CreateProjectsLocationsClustersInstancesRequest {
@@ -1427,17 +1674,32 @@ export interface CreateProjectsLocationsClustersInstancesRequest {
   /** Request body */
   body?: Instance;
 }
-export const CreateProjectsLocationsClustersInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "instanceId": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Instance.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+parent}/instances","baseUrl":"https://alloydb.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsClustersInstancesRequest" }) as any as S.Schema<CreateProjectsLocationsClustersInstancesRequest>;
+export const CreateProjectsLocationsClustersInstancesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      instanceId: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Instance.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+parent}/instances",
+        baseUrl: "https://alloydb.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsClustersInstancesRequest",
+  }) as any as S.Schema<CreateProjectsLocationsClustersInstancesRequest>;
 
-export type UserUserTypeEnum = "USER_TYPE_UNSPECIFIED" | "ALLOYDB_BUILT_IN" | "ALLOYDB_IAM_USER" | "ALLOYDB_IAM_GROUP" | "ALLOYDB_IAM_GROUP_USER" | "ALLOYDB_IAM_GROUP_SERVICE_ACCOUNT";
+export type UserUserTypeEnum =
+  | "USER_TYPE_UNSPECIFIED"
+  | "ALLOYDB_BUILT_IN"
+  | "ALLOYDB_IAM_USER"
+  | "ALLOYDB_IAM_GROUP"
+  | "ALLOYDB_IAM_GROUP_USER"
+  | "ALLOYDB_IAM_GROUP_SERVICE_ACCOUNT";
 export const UserUserTypeEnum = /*@__PURE__*/ S.String;
 
 /** Message describing User object. */
@@ -1454,13 +1716,13 @@ export interface User {
   password?: string;
 }
 export const User = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "keepExtraRoles": S.optional(S.Boolean),
-  "name": S.optional(S.String),
-  "userType": S.optional(UserUserTypeEnum),
-  "databaseRoles": S.optional(StringList),
-  "password": S.optional(S.String),
-}),
+  S.Struct({
+    keepExtraRoles: S.optional(S.Boolean),
+    name: S.optional(S.String),
+    userType: S.optional(UserUserTypeEnum),
+    databaseRoles: S.optional(StringList),
+    password: S.optional(S.String),
+  }),
 ).annotate({ identifier: "User" }) as any as S.Schema<User>;
 
 export interface CreateProjectsLocationsClustersUsersRequest {
@@ -1475,15 +1737,24 @@ export interface CreateProjectsLocationsClustersUsersRequest {
   /** Request body */
   body?: User;
 }
-export const CreateProjectsLocationsClustersUsersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "userId": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(User.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+parent}/users","baseUrl":"https://alloydb.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsClustersUsersRequest" }) as any as S.Schema<CreateProjectsLocationsClustersUsersRequest>;
+export const CreateProjectsLocationsClustersUsersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      userId: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      body: S.optional(User.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+parent}/users",
+        baseUrl: "https://alloydb.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsClustersUsersRequest",
+  }) as any as S.Schema<CreateProjectsLocationsClustersUsersRequest>;
 
 /** The DNS config for the endpoint, containing the DNS record name, type and targets. */
 export interface DNSConfig {
@@ -1493,16 +1764,24 @@ export interface DNSConfig {
   dnsName?: string;
 }
 export const DNSConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dnsRecordType": S.optional(S.String),
-  "dnsName": S.optional(S.String),
-}),
+  S.Struct({
+    dnsRecordType: S.optional(S.String),
+    dnsName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "DNSConfig" }) as any as S.Schema<DNSConfig>;
 
-export type EndpointStateEnum = "STATE_UNSPECIFIED" | "READY" | "CREATING" | "UPDATING" | "DELETING";
+export type EndpointStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "READY"
+  | "CREATING"
+  | "UPDATING"
+  | "DELETING";
 export const EndpointStateEnum = /*@__PURE__*/ S.String;
 
-export type EndpointEndpointTypeEnum = "ENDPOINT_TYPE_UNSPECIFIED" | "WRITE_ENDPOINT" | "READ_ENDPOINT";
+export type EndpointEndpointTypeEnum =
+  | "ENDPOINT_TYPE_UNSPECIFIED"
+  | "WRITE_ENDPOINT"
+  | "READ_ENDPOINT";
 export const EndpointEndpointTypeEnum = /*@__PURE__*/ S.String;
 
 /** Endpoint resource. */
@@ -1537,22 +1816,22 @@ export interface Endpoint {
   createTime?: string;
 }
 export const Endpoint = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateTime": S.optional(S.String),
-  "reconciling": S.optional(S.Boolean),
-  "dnsConfig": S.optional(DNSConfig),
-  "name": S.optional(S.String),
-  "etag": S.optional(S.String),
-  "targetInstances": S.optional(StringList),
-  "displayName": S.optional(S.String),
-  "annotations": S.optional(StringMap),
-  "state": S.optional(EndpointStateEnum),
-  "deleteTime": S.optional(S.String),
-  "uid": S.optional(S.String),
-  "effectiveTargetInstances": S.optional(StringList),
-  "endpointType": S.optional(EndpointEndpointTypeEnum),
-  "createTime": S.optional(S.String),
-}),
+  S.Struct({
+    updateTime: S.optional(S.String),
+    reconciling: S.optional(S.Boolean),
+    dnsConfig: S.optional(DNSConfig),
+    name: S.optional(S.String),
+    etag: S.optional(S.String),
+    targetInstances: S.optional(StringList),
+    displayName: S.optional(S.String),
+    annotations: S.optional(StringMap),
+    state: S.optional(EndpointStateEnum),
+    deleteTime: S.optional(S.String),
+    uid: S.optional(S.String),
+    effectiveTargetInstances: S.optional(StringList),
+    endpointType: S.optional(EndpointEndpointTypeEnum),
+    createTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Endpoint" }) as any as S.Schema<Endpoint>;
 
 export interface CreateProjectsLocationsEndpointsRequest {
@@ -1567,15 +1846,24 @@ export interface CreateProjectsLocationsEndpointsRequest {
   /** Request body */
   body?: Endpoint;
 }
-export const CreateProjectsLocationsEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "endpointId": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(Endpoint.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+parent}/endpoints","baseUrl":"https://alloydb.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsEndpointsRequest" }) as any as S.Schema<CreateProjectsLocationsEndpointsRequest>;
+export const CreateProjectsLocationsEndpointsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      endpointId: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      body: S.optional(Endpoint.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+parent}/endpoints",
+        baseUrl: "https://alloydb.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateProjectsLocationsEndpointsRequest",
+}) as any as S.Schema<CreateProjectsLocationsEndpointsRequest>;
 
 export interface CreatesecondaryProjectsLocationsClustersRequest {
   /** Optional. If set, performs request validation, for example, permission checks and any other type of validation, but does not actually execute the create request. */
@@ -1589,15 +1877,24 @@ export interface CreatesecondaryProjectsLocationsClustersRequest {
   /** Request body */
   body?: Cluster;
 }
-export const CreatesecondaryProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "clusterId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Cluster.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+parent}/clusters:createsecondary","baseUrl":"https://alloydb.googleapis.com/"})),
-).annotate({ identifier: "CreatesecondaryProjectsLocationsClustersRequest" }) as any as S.Schema<CreatesecondaryProjectsLocationsClustersRequest>;
+export const CreatesecondaryProjectsLocationsClustersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      clusterId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Cluster.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+parent}/clusters:createsecondary",
+        baseUrl: "https://alloydb.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreatesecondaryProjectsLocationsClustersRequest",
+  }) as any as S.Schema<CreatesecondaryProjectsLocationsClustersRequest>;
 
 export interface CreatesecondaryProjectsLocationsClustersInstancesRequest {
   /** Optional. If set, performs request validation, for example, permission checks and any other type of validation, but does not actually execute the create request. */
@@ -1611,15 +1908,24 @@ export interface CreatesecondaryProjectsLocationsClustersInstancesRequest {
   /** Request body */
   body?: Instance;
 }
-export const CreatesecondaryProjectsLocationsClustersInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "instanceId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Instance.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+parent}/instances:createsecondary","baseUrl":"https://alloydb.googleapis.com/"})),
-).annotate({ identifier: "CreatesecondaryProjectsLocationsClustersInstancesRequest" }) as any as S.Schema<CreatesecondaryProjectsLocationsClustersInstancesRequest>;
+export const CreatesecondaryProjectsLocationsClustersInstancesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      instanceId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Instance.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+parent}/instances:createsecondary",
+        baseUrl: "https://alloydb.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreatesecondaryProjectsLocationsClustersInstancesRequest",
+  }) as any as S.Schema<CreatesecondaryProjectsLocationsClustersInstancesRequest>;
 
 export interface DeleteProjectsLocationsBackupsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -1631,14 +1937,23 @@ export interface DeleteProjectsLocationsBackupsRequest {
   /** Optional. The current etag of the Backup. If an etag is provided and does not match the current etag of the Backup, deletion will be blocked and an ABORTED error will be returned. */
   etag?: string;
 }
-export const DeleteProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "etag": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta/{+name}","baseUrl":"https://alloydb.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsBackupsRequest" }) as any as S.Schema<DeleteProjectsLocationsBackupsRequest>;
+export const DeleteProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      requestId: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      etag: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta/{+name}",
+        baseUrl: "https://alloydb.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsBackupsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsBackupsRequest>;
 
 export interface DeleteProjectsLocationsClustersRequest {
   /** Optional. Whether to cascade delete child instances for given cluster. */
@@ -1652,15 +1967,24 @@ export interface DeleteProjectsLocationsClustersRequest {
   /** Optional. If set, performs request validation, for example, permission checks and any other type of validation, but does not actually execute the create request. */
   validateOnly?: boolean;
 }
-export const DeleteProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "force": S.optional(S.Boolean.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "etag": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta/{+name}","baseUrl":"https://alloydb.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsClustersRequest" }) as any as S.Schema<DeleteProjectsLocationsClustersRequest>;
+export const DeleteProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      force: S.optional(S.Boolean.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      etag: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta/{+name}",
+        baseUrl: "https://alloydb.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsClustersRequest",
+}) as any as S.Schema<DeleteProjectsLocationsClustersRequest>;
 
 export interface DeleteProjectsLocationsClustersInstancesRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -1672,14 +1996,23 @@ export interface DeleteProjectsLocationsClustersInstancesRequest {
   /** Optional. The current etag of the Instance. If an etag is provided and does not match the current etag of the Instance, deletion will be blocked and an ABORTED error will be returned. */
   etag?: string;
 }
-export const DeleteProjectsLocationsClustersInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "etag": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta/{+name}","baseUrl":"https://alloydb.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsClustersInstancesRequest" }) as any as S.Schema<DeleteProjectsLocationsClustersInstancesRequest>;
+export const DeleteProjectsLocationsClustersInstancesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      requestId: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      etag: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta/{+name}",
+        baseUrl: "https://alloydb.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsClustersInstancesRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsClustersInstancesRequest>;
 
 export interface DeleteProjectsLocationsClustersUsersRequest {
   /** Required. The name of the resource. For the required format, see the comment on the User.name field. */
@@ -1689,13 +2022,22 @@ export interface DeleteProjectsLocationsClustersUsersRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsClustersUsersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta/{+name}","baseUrl":"https://alloydb.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsClustersUsersRequest" }) as any as S.Schema<DeleteProjectsLocationsClustersUsersRequest>;
+export const DeleteProjectsLocationsClustersUsersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta/{+name}",
+        baseUrl: "https://alloydb.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsClustersUsersRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsClustersUsersRequest>;
 
 export interface DeleteProjectsLocationsEndpointsRequest {
   /** Required. The name of the resource. For the required format, see the comment on the Endpoint.name field. */
@@ -1707,24 +2049,42 @@ export interface DeleteProjectsLocationsEndpointsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "etag": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta/{+name}","baseUrl":"https://alloydb.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsEndpointsRequest" }) as any as S.Schema<DeleteProjectsLocationsEndpointsRequest>;
+export const DeleteProjectsLocationsEndpointsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      etag: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta/{+name}",
+        baseUrl: "https://alloydb.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsEndpointsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsEndpointsRequest>;
 
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta/{+name}","baseUrl":"https://alloydb.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsOperationsRequest" }) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta/{+name}",
+        baseUrl: "https://alloydb.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsOperationsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
 
 /** Options for exporting data in CSV format. */
 export interface CsvExportOptions {
@@ -1738,13 +2098,15 @@ export interface CsvExportOptions {
   quoteCharacter?: string;
 }
 export const CsvExportOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "selectQuery": S.optional(S.String),
-  "escapeCharacter": S.optional(S.String),
-  "fieldDelimiter": S.optional(S.String),
-  "quoteCharacter": S.optional(S.String),
-}),
-).annotate({ identifier: "CsvExportOptions" }) as any as S.Schema<CsvExportOptions>;
+  S.Struct({
+    selectQuery: S.optional(S.String),
+    escapeCharacter: S.optional(S.String),
+    fieldDelimiter: S.optional(S.String),
+    quoteCharacter: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CsvExportOptions",
+}) as any as S.Schema<CsvExportOptions>;
 
 /** Options for exporting data in SQL format. */
 export interface SqlExportOptions {
@@ -1758,13 +2120,15 @@ export interface SqlExportOptions {
   cleanTargetObjects?: boolean;
 }
 export const SqlExportOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "tables": S.optional(StringList),
-  "schemaOnly": S.optional(S.Boolean),
-  "ifExistTargetObjects": S.optional(S.Boolean),
-  "cleanTargetObjects": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "SqlExportOptions" }) as any as S.Schema<SqlExportOptions>;
+  S.Struct({
+    tables: S.optional(StringList),
+    schemaOnly: S.optional(S.Boolean),
+    ifExistTargetObjects: S.optional(S.Boolean),
+    cleanTargetObjects: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "SqlExportOptions",
+}) as any as S.Schema<SqlExportOptions>;
 
 /** Destination for Export. Export will be done to cloud storage. */
 export interface GcsDestination {
@@ -1772,9 +2136,9 @@ export interface GcsDestination {
   uri?: string;
 }
 export const GcsDestination = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "uri": S.optional(S.String),
-}),
+  S.Struct({
+    uri: S.optional(S.String),
+  }),
 ).annotate({ identifier: "GcsDestination" }) as any as S.Schema<GcsDestination>;
 
 /** Export cluster request. */
@@ -1789,13 +2153,15 @@ export interface ExportClusterRequest {
   database?: string;
 }
 export const ExportClusterRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "csvExportOptions": S.optional(CsvExportOptions),
-  "sqlExportOptions": S.optional(SqlExportOptions),
-  "gcsDestination": S.optional(GcsDestination),
-  "database": S.optional(S.String),
-}),
-).annotate({ identifier: "ExportClusterRequest" }) as any as S.Schema<ExportClusterRequest>;
+  S.Struct({
+    csvExportOptions: S.optional(CsvExportOptions),
+    sqlExportOptions: S.optional(SqlExportOptions),
+    gcsDestination: S.optional(GcsDestination),
+    database: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ExportClusterRequest",
+}) as any as S.Schema<ExportClusterRequest>;
 
 export interface ExportProjectsLocationsClustersRequest {
   /** Required. The resource name of the cluster. */
@@ -1803,12 +2169,21 @@ export interface ExportProjectsLocationsClustersRequest {
   /** Request body */
   body?: ExportClusterRequest;
 }
-export const ExportProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(ExportClusterRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+name}:export","baseUrl":"https://alloydb.googleapis.com/"})),
-).annotate({ identifier: "ExportProjectsLocationsClustersRequest" }) as any as S.Schema<ExportProjectsLocationsClustersRequest>;
+export const ExportProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(ExportClusterRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+name}:export",
+        baseUrl: "https://alloydb.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ExportProjectsLocationsClustersRequest",
+}) as any as S.Schema<ExportProjectsLocationsClustersRequest>;
 
 /** Message for triggering failover on an Instance */
 export interface FailoverInstanceRequest {
@@ -1818,11 +2193,13 @@ export interface FailoverInstanceRequest {
   requestId?: string;
 }
 export const FailoverInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "validateOnly": S.optional(S.Boolean),
-  "requestId": S.optional(S.String),
-}),
-).annotate({ identifier: "FailoverInstanceRequest" }) as any as S.Schema<FailoverInstanceRequest>;
+  S.Struct({
+    validateOnly: S.optional(S.Boolean),
+    requestId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "FailoverInstanceRequest",
+}) as any as S.Schema<FailoverInstanceRequest>;
 
 export interface FailoverProjectsLocationsClustersInstancesRequest {
   /** Required. The name of the resource. For the required format, see the comment on the Instance.name field. */
@@ -1830,12 +2207,21 @@ export interface FailoverProjectsLocationsClustersInstancesRequest {
   /** Request body */
   body?: FailoverInstanceRequest;
 }
-export const FailoverProjectsLocationsClustersInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(FailoverInstanceRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+name}:failover","baseUrl":"https://alloydb.googleapis.com/"})),
-).annotate({ identifier: "FailoverProjectsLocationsClustersInstancesRequest" }) as any as S.Schema<FailoverProjectsLocationsClustersInstancesRequest>;
+export const FailoverProjectsLocationsClustersInstancesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(FailoverInstanceRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+name}:failover",
+        baseUrl: "https://alloydb.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "FailoverProjectsLocationsClustersInstancesRequest",
+  }) as any as S.Schema<FailoverProjectsLocationsClustersInstancesRequest>;
 
 export interface GetConnectionInfoProjectsLocationsClustersInstancesRequest {
   /** Required. The name of the parent resource. The required format is: projects/{project}/locations/{location}/clusters/{cluster}/instances/{instance} */
@@ -1843,12 +2229,21 @@ export interface GetConnectionInfoProjectsLocationsClustersInstancesRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const GetConnectionInfoProjectsLocationsClustersInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+parent}/connectionInfo","baseUrl":"https://alloydb.googleapis.com/"})),
-).annotate({ identifier: "GetConnectionInfoProjectsLocationsClustersInstancesRequest" }) as any as S.Schema<GetConnectionInfoProjectsLocationsClustersInstancesRequest>;
+export const GetConnectionInfoProjectsLocationsClustersInstancesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/{+parent}/connectionInfo",
+        baseUrl: "https://alloydb.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetConnectionInfoProjectsLocationsClustersInstancesRequest",
+  }) as any as S.Schema<GetConnectionInfoProjectsLocationsClustersInstancesRequest>;
 
 /** ConnectionInfo singleton resource. https://google.aip.dev/156 */
 export interface ConnectionInfo {
@@ -1868,15 +2263,15 @@ export interface ConnectionInfo {
   instanceUid?: string;
 }
 export const ConnectionInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pscAutoDnsName": S.optional(S.String),
-  "pscDnsName": S.optional(S.String),
-  "ipAddress": S.optional(S.String),
-  "publicIpAddress": S.optional(S.String),
-  "pemCertificateChain": S.optional(StringList),
-  "name": S.optional(S.String),
-  "instanceUid": S.optional(S.String),
-}),
+  S.Struct({
+    pscAutoDnsName: S.optional(S.String),
+    pscDnsName: S.optional(S.String),
+    ipAddress: S.optional(S.String),
+    publicIpAddress: S.optional(S.String),
+    pemCertificateChain: S.optional(StringList),
+    name: S.optional(S.String),
+    instanceUid: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ConnectionInfo" }) as any as S.Schema<ConnectionInfo>;
 
 export interface GetProjectsLocationsRequest {
@@ -1884,10 +2279,18 @@ export interface GetProjectsLocationsRequest {
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}","baseUrl":"https://alloydb.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://alloydb.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsRequest",
+}) as any as S.Schema<GetProjectsLocationsRequest>;
 
 /** A resource that represents a Google Cloud location. */
 export interface GoogleCloudLocationLocation {
@@ -1903,16 +2306,21 @@ export interface GoogleCloudLocationLocation {
   metadata?: DocumentMap;
 }
 export const GoogleCloudLocationLocation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "locationId": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "metadata": S.optional(DocumentMap),
-}),
-).annotate({ identifier: "GoogleCloudLocationLocation" }) as any as S.Schema<GoogleCloudLocationLocation>;
+  S.Struct({
+    name: S.optional(S.String),
+    locationId: S.optional(S.String),
+    displayName: S.optional(S.String),
+    labels: S.optional(StringMap),
+    metadata: S.optional(DocumentMap),
+  }),
+).annotate({
+  identifier: "GoogleCloudLocationLocation",
+}) as any as S.Schema<GoogleCloudLocationLocation>;
 
-export type GetProjectsLocationsBackupsViewEnum = "BACKUP_VIEW_UNSPECIFIED" | "BACKUP_VIEW_BASIC" | "BACKUP_VIEW_CLUSTER_DELETED";
+export type GetProjectsLocationsBackupsViewEnum =
+  | "BACKUP_VIEW_UNSPECIFIED"
+  | "BACKUP_VIEW_BASIC"
+  | "BACKUP_VIEW_CLUSTER_DELETED";
 export const GetProjectsLocationsBackupsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsBackupsRequest {
@@ -1922,13 +2330,24 @@ export interface GetProjectsLocationsBackupsRequest {
   name: string;
 }
 export const GetProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "view": S.optional(GetProjectsLocationsBackupsViewEnum.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}","baseUrl":"https://alloydb.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsBackupsRequest" }) as any as S.Schema<GetProjectsLocationsBackupsRequest>;
+  S.Struct({
+    view: S.optional(GetProjectsLocationsBackupsViewEnum.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://alloydb.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsBackupsRequest",
+}) as any as S.Schema<GetProjectsLocationsBackupsRequest>;
 
-export type GetProjectsLocationsClustersViewEnum = "CLUSTER_VIEW_UNSPECIFIED" | "CLUSTER_VIEW_BASIC" | "CLUSTER_VIEW_CONTINUOUS_BACKUP";
+export type GetProjectsLocationsClustersViewEnum =
+  | "CLUSTER_VIEW_UNSPECIFIED"
+  | "CLUSTER_VIEW_BASIC"
+  | "CLUSTER_VIEW_CONTINUOUS_BACKUP";
 export const GetProjectsLocationsClustersViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsClustersRequest {
@@ -1938,14 +2357,26 @@ export interface GetProjectsLocationsClustersRequest {
   view?: GetProjectsLocationsClustersViewEnum | (string & {});
 }
 export const GetProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "view": S.optional(GetProjectsLocationsClustersViewEnum.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}","baseUrl":"https://alloydb.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsClustersRequest" }) as any as S.Schema<GetProjectsLocationsClustersRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    view: S.optional(GetProjectsLocationsClustersViewEnum.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://alloydb.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsClustersRequest",
+}) as any as S.Schema<GetProjectsLocationsClustersRequest>;
 
-export type GetProjectsLocationsClustersInstancesViewEnum = "INSTANCE_VIEW_UNSPECIFIED" | "INSTANCE_VIEW_BASIC" | "INSTANCE_VIEW_FULL";
-export const GetProjectsLocationsClustersInstancesViewEnum = /*@__PURE__*/ S.String;
+export type GetProjectsLocationsClustersInstancesViewEnum =
+  | "INSTANCE_VIEW_UNSPECIFIED"
+  | "INSTANCE_VIEW_BASIC"
+  | "INSTANCE_VIEW_FULL";
+export const GetProjectsLocationsClustersInstancesViewEnum =
+  /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsClustersInstancesRequest {
   /** The view of the instance to return. */
@@ -1953,42 +2384,80 @@ export interface GetProjectsLocationsClustersInstancesRequest {
   /** Required. The name of the resource. For the required format, see the comment on the Instance.name field. */
   name: string;
 }
-export const GetProjectsLocationsClustersInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "view": S.optional(GetProjectsLocationsClustersInstancesViewEnum.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}","baseUrl":"https://alloydb.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsClustersInstancesRequest" }) as any as S.Schema<GetProjectsLocationsClustersInstancesRequest>;
+export const GetProjectsLocationsClustersInstancesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      view: S.optional(
+        GetProjectsLocationsClustersInstancesViewEnum.pipe(T.Query()),
+      ),
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/{+name}",
+        baseUrl: "https://alloydb.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsClustersInstancesRequest",
+  }) as any as S.Schema<GetProjectsLocationsClustersInstancesRequest>;
 
 export interface GetProjectsLocationsClustersUsersRequest {
   /** Required. The name of the resource. For the required format, see the comment on the User.name field. */
   name: string;
 }
-export const GetProjectsLocationsClustersUsersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}","baseUrl":"https://alloydb.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsClustersUsersRequest" }) as any as S.Schema<GetProjectsLocationsClustersUsersRequest>;
+export const GetProjectsLocationsClustersUsersRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/{+name}",
+        baseUrl: "https://alloydb.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsClustersUsersRequest",
+}) as any as S.Schema<GetProjectsLocationsClustersUsersRequest>;
 
 export interface GetProjectsLocationsEndpointsRequest {
   /** Required. The name of the resource. For the required format, see the comment on the Endpoint.name field. */
   name: string;
 }
-export const GetProjectsLocationsEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}","baseUrl":"https://alloydb.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsEndpointsRequest" }) as any as S.Schema<GetProjectsLocationsEndpointsRequest>;
+export const GetProjectsLocationsEndpointsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/{+name}",
+        baseUrl: "https://alloydb.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsEndpointsRequest",
+}) as any as S.Schema<GetProjectsLocationsEndpointsRequest>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}","baseUrl":"https://alloydb.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/{+name}",
+        baseUrl: "https://alloydb.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsOperationsRequest",
+}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 /** Options for importing data in CSV format. */
 export interface CsvImportOptions {
@@ -2004,20 +2473,24 @@ export interface CsvImportOptions {
   quoteCharacter?: string;
 }
 export const CsvImportOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "escapeCharacter": S.optional(S.String),
-  "fieldDelimiter": S.optional(S.String),
-  "table": S.optional(S.String),
-  "columns": S.optional(StringList),
-  "quoteCharacter": S.optional(S.String),
-}),
-).annotate({ identifier: "CsvImportOptions" }) as any as S.Schema<CsvImportOptions>;
+  S.Struct({
+    escapeCharacter: S.optional(S.String),
+    fieldDelimiter: S.optional(S.String),
+    table: S.optional(S.String),
+    columns: S.optional(StringList),
+    quoteCharacter: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CsvImportOptions",
+}) as any as S.Schema<CsvImportOptions>;
 
 /** Options for importing data in SQL format. */
 export interface SqlImportOptions {}
 export const SqlImportOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "SqlImportOptions" }) as any as S.Schema<SqlImportOptions>;
+  S.Struct({}),
+).annotate({
+  identifier: "SqlImportOptions",
+}) as any as S.Schema<SqlImportOptions>;
 
 /** Import cluster request. */
 export interface ImportClusterRequest {
@@ -2033,14 +2506,16 @@ export interface ImportClusterRequest {
   user?: string;
 }
 export const ImportClusterRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "csvImportOptions": S.optional(CsvImportOptions),
-  "gcsUri": S.optional(S.String),
-  "database": S.optional(S.String),
-  "sqlImportOptions": S.optional(SqlImportOptions),
-  "user": S.optional(S.String),
-}),
-).annotate({ identifier: "ImportClusterRequest" }) as any as S.Schema<ImportClusterRequest>;
+  S.Struct({
+    csvImportOptions: S.optional(CsvImportOptions),
+    gcsUri: S.optional(S.String),
+    database: S.optional(S.String),
+    sqlImportOptions: S.optional(SqlImportOptions),
+    user: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ImportClusterRequest",
+}) as any as S.Schema<ImportClusterRequest>;
 
 export interface ImportProjectsLocationsClustersRequest {
   /** Required. The resource name of the cluster. */
@@ -2048,14 +2523,25 @@ export interface ImportProjectsLocationsClustersRequest {
   /** Request body */
   body?: ImportClusterRequest;
 }
-export const ImportProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(ImportClusterRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+name}:import","baseUrl":"https://alloydb.googleapis.com/"})),
-).annotate({ identifier: "ImportProjectsLocationsClustersRequest" }) as any as S.Schema<ImportProjectsLocationsClustersRequest>;
+export const ImportProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(ImportClusterRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+name}:import",
+        baseUrl: "https://alloydb.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ImportProjectsLocationsClustersRequest",
+}) as any as S.Schema<ImportProjectsLocationsClustersRequest>;
 
-export type InjectFaultRequestFaultTypeEnum = "FAULT_TYPE_UNSPECIFIED" | "STOP_VM";
+export type InjectFaultRequestFaultTypeEnum =
+  | "FAULT_TYPE_UNSPECIFIED"
+  | "STOP_VM";
 export const InjectFaultRequestFaultTypeEnum = /*@__PURE__*/ S.String;
 
 /** Message for triggering fault injection on an instance */
@@ -2068,12 +2554,14 @@ export interface InjectFaultRequest {
   requestId?: string;
 }
 export const InjectFaultRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "faultType": S.optional(InjectFaultRequestFaultTypeEnum),
-  "validateOnly": S.optional(S.Boolean),
-  "requestId": S.optional(S.String),
-}),
-).annotate({ identifier: "InjectFaultRequest" }) as any as S.Schema<InjectFaultRequest>;
+  S.Struct({
+    faultType: S.optional(InjectFaultRequestFaultTypeEnum),
+    validateOnly: S.optional(S.Boolean),
+    requestId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "InjectFaultRequest",
+}) as any as S.Schema<InjectFaultRequest>;
 
 export interface InjectFaultProjectsLocationsClustersInstancesRequest {
   /** Required. The name of the resource. For the required format, see the comment on the Instance.name field. */
@@ -2081,12 +2569,21 @@ export interface InjectFaultProjectsLocationsClustersInstancesRequest {
   /** Request body */
   body?: InjectFaultRequest;
 }
-export const InjectFaultProjectsLocationsClustersInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(InjectFaultRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+name}:injectFault","baseUrl":"https://alloydb.googleapis.com/"})),
-).annotate({ identifier: "InjectFaultProjectsLocationsClustersInstancesRequest" }) as any as S.Schema<InjectFaultProjectsLocationsClustersInstancesRequest>;
+export const InjectFaultProjectsLocationsClustersInstancesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(InjectFaultRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+name}:injectFault",
+        baseUrl: "https://alloydb.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "InjectFaultProjectsLocationsClustersInstancesRequest",
+  }) as any as S.Schema<InjectFaultProjectsLocationsClustersInstancesRequest>;
 
 export interface ListProjectsLocationsRequest {
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
@@ -2101,17 +2598,28 @@ export interface ListProjectsLocationsRequest {
   pageToken?: string;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}/locations","baseUrl":"https://alloydb.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
+  S.Struct({
+    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+name}/locations",
+      baseUrl: "https://alloydb.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsRequest",
+}) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type GoogleCloudLocationLocationList = ReadonlyArray<GoogleCloudLocationLocation>;
-export const GoogleCloudLocationLocationList = /*@__PURE__*/ S.Array(GoogleCloudLocationLocation) as any as S.Schema<GoogleCloudLocationLocationList>;
+export type GoogleCloudLocationLocationList =
+  ReadonlyArray<GoogleCloudLocationLocation>;
+export const GoogleCloudLocationLocationList = /*@__PURE__*/ S.Array(
+  GoogleCloudLocationLocation,
+) as any as S.Schema<GoogleCloudLocationLocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface GoogleCloudLocationListLocationsResponse {
@@ -2120,14 +2628,20 @@ export interface GoogleCloudLocationListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-export const GoogleCloudLocationListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locations": S.optional(GoogleCloudLocationLocationList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudLocationListLocationsResponse" }) as any as S.Schema<GoogleCloudLocationListLocationsResponse>;
+export const GoogleCloudLocationListLocationsResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      locations: S.optional(GoogleCloudLocationLocationList),
+      nextPageToken: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "GoogleCloudLocationListLocationsResponse",
+}) as any as S.Schema<GoogleCloudLocationListLocationsResponse>;
 
-export type ListProjectsLocationsBackupsViewEnum = "BACKUP_VIEW_UNSPECIFIED" | "BACKUP_VIEW_BASIC" | "BACKUP_VIEW_CLUSTER_DELETED";
+export type ListProjectsLocationsBackupsViewEnum =
+  | "BACKUP_VIEW_UNSPECIFIED"
+  | "BACKUP_VIEW_BASIC"
+  | "BACKUP_VIEW_CLUSTER_DELETED";
 export const ListProjectsLocationsBackupsViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsLocationsBackupsRequest {
@@ -2145,18 +2659,28 @@ export interface ListProjectsLocationsBackupsRequest {
   pageToken?: string;
 }
 export const ListProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "view": S.optional(ListProjectsLocationsBackupsViewEnum.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+parent}/backups","baseUrl":"https://alloydb.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsBackupsRequest" }) as any as S.Schema<ListProjectsLocationsBackupsRequest>;
+  S.Struct({
+    filter: S.optional(S.String.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    view: S.optional(ListProjectsLocationsBackupsViewEnum.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+parent}/backups",
+      baseUrl: "https://alloydb.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsBackupsRequest",
+}) as any as S.Schema<ListProjectsLocationsBackupsRequest>;
 
 export type BackupList = ReadonlyArray<Backup>;
-export const BackupList = /*@__PURE__*/ S.Array(Backup) as any as S.Schema<BackupList>;
+export const BackupList = /*@__PURE__*/ S.Array(
+  Backup,
+) as any as S.Schema<BackupList>;
 
 /** Message for response to listing Backups */
 export interface ListBackupsResponse {
@@ -2168,12 +2692,14 @@ export interface ListBackupsResponse {
   unreachable?: StringList;
 }
 export const ListBackupsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "backups": S.optional(BackupList),
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListBackupsResponse" }) as any as S.Schema<ListBackupsResponse>;
+  S.Struct({
+    backups: S.optional(BackupList),
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListBackupsResponse",
+}) as any as S.Schema<ListBackupsResponse>;
 
 export interface ListProjectsLocationsClustersRequest {
   /** Optional. Filtering results */
@@ -2187,18 +2713,29 @@ export interface ListProjectsLocationsClustersRequest {
   /** A token identifying a page of results the server should return. */
   pageToken?: string;
 }
-export const ListProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+parent}/clusters","baseUrl":"https://alloydb.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsClustersRequest" }) as any as S.Schema<ListProjectsLocationsClustersRequest>;
+export const ListProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      filter: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/{+parent}/clusters",
+        baseUrl: "https://alloydb.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsClustersRequest",
+}) as any as S.Schema<ListProjectsLocationsClustersRequest>;
 
 export type ClusterList = ReadonlyArray<Cluster>;
-export const ClusterList = /*@__PURE__*/ S.Array(Cluster) as any as S.Schema<ClusterList>;
+export const ClusterList = /*@__PURE__*/ S.Array(
+  Cluster,
+) as any as S.Schema<ClusterList>;
 
 /** Message for response to listing Clusters */
 export interface ListClustersResponse {
@@ -2210,12 +2747,14 @@ export interface ListClustersResponse {
   clusters?: ClusterList;
 }
 export const ListClustersResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-  "clusters": S.optional(ClusterList),
-}),
-).annotate({ identifier: "ListClustersResponse" }) as any as S.Schema<ListClustersResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+    clusters: S.optional(ClusterList),
+  }),
+).annotate({
+  identifier: "ListClustersResponse",
+}) as any as S.Schema<ListClustersResponse>;
 
 export interface ListProjectsLocationsClustersInstancesRequest {
   /** Required. The name of the parent resource. For the required format, see the comment on the Instance.name field. Additionally, you can perform an aggregated list operation by specifying a value with one of the following formats: * projects/{project}/locations/-/clusters/- * projects/{project}/locations/{region}/clusters/- */
@@ -2229,18 +2768,29 @@ export interface ListProjectsLocationsClustersInstancesRequest {
   /** Optional. Hint for how to order the results */
   orderBy?: string;
 }
-export const ListProjectsLocationsClustersInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+parent}/instances","baseUrl":"https://alloydb.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsClustersInstancesRequest" }) as any as S.Schema<ListProjectsLocationsClustersInstancesRequest>;
+export const ListProjectsLocationsClustersInstancesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/{+parent}/instances",
+        baseUrl: "https://alloydb.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsClustersInstancesRequest",
+  }) as any as S.Schema<ListProjectsLocationsClustersInstancesRequest>;
 
 export type InstanceList = ReadonlyArray<Instance>;
-export const InstanceList = /*@__PURE__*/ S.Array(Instance) as any as S.Schema<InstanceList>;
+export const InstanceList = /*@__PURE__*/ S.Array(
+  Instance,
+) as any as S.Schema<InstanceList>;
 
 /** Message for response to listing Instances */
 export interface ListInstancesResponse {
@@ -2252,12 +2802,14 @@ export interface ListInstancesResponse {
   unreachable?: StringList;
 }
 export const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "instances": S.optional(InstanceList),
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListInstancesResponse" }) as any as S.Schema<ListInstancesResponse>;
+  S.Struct({
+    instances: S.optional(InstanceList),
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListInstancesResponse",
+}) as any as S.Schema<ListInstancesResponse>;
 
 export interface ListProjectsLocationsClustersUsersRequest {
   /** Required. Parent value for ListUsersRequest */
@@ -2271,18 +2823,29 @@ export interface ListProjectsLocationsClustersUsersRequest {
   /** Optional. Hint for how to order the results */
   orderBy?: string;
 }
-export const ListProjectsLocationsClustersUsersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+parent}/users","baseUrl":"https://alloydb.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsClustersUsersRequest" }) as any as S.Schema<ListProjectsLocationsClustersUsersRequest>;
+export const ListProjectsLocationsClustersUsersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/{+parent}/users",
+        baseUrl: "https://alloydb.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsClustersUsersRequest",
+  }) as any as S.Schema<ListProjectsLocationsClustersUsersRequest>;
 
 export type UserList = ReadonlyArray<User>;
-export const UserList = /*@__PURE__*/ S.Array(User) as any as S.Schema<UserList>;
+export const UserList = /*@__PURE__*/ S.Array(
+  User,
+) as any as S.Schema<UserList>;
 
 /** Message for response to listing Users */
 export interface ListUsersResponse {
@@ -2294,12 +2857,14 @@ export interface ListUsersResponse {
   unreachable?: StringList;
 }
 export const ListUsersResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "users": S.optional(UserList),
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListUsersResponse" }) as any as S.Schema<ListUsersResponse>;
+  S.Struct({
+    users: S.optional(UserList),
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListUsersResponse",
+}) as any as S.Schema<ListUsersResponse>;
 
 export interface ListProjectsLocationsEndpointsRequest {
   /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
@@ -2313,18 +2878,29 @@ export interface ListProjectsLocationsEndpointsRequest {
   /** Optional. Filtering results. This field is currently not supported, its value will be ignored if passed. */
   filter?: string;
 }
-export const ListProjectsLocationsEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+parent}/endpoints","baseUrl":"https://alloydb.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsEndpointsRequest" }) as any as S.Schema<ListProjectsLocationsEndpointsRequest>;
+export const ListProjectsLocationsEndpointsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/{+parent}/endpoints",
+        baseUrl: "https://alloydb.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsEndpointsRequest",
+}) as any as S.Schema<ListProjectsLocationsEndpointsRequest>;
 
 export type EndpointList = ReadonlyArray<Endpoint>;
-export const EndpointList = /*@__PURE__*/ S.Array(Endpoint) as any as S.Schema<EndpointList>;
+export const EndpointList = /*@__PURE__*/ S.Array(
+  Endpoint,
+) as any as S.Schema<EndpointList>;
 
 /** Message for response to listing Endpoints */
 export interface ListEndpointsResponse {
@@ -2336,12 +2912,14 @@ export interface ListEndpointsResponse {
   unreachable?: StringList;
 }
 export const ListEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "endpoints": S.optional(EndpointList),
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListEndpointsResponse" }) as any as S.Schema<ListEndpointsResponse>;
+  S.Struct({
+    endpoints: S.optional(EndpointList),
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListEndpointsResponse",
+}) as any as S.Schema<ListEndpointsResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
@@ -2355,18 +2933,29 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}/operations","baseUrl":"https://alloydb.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/{+name}/operations",
+        baseUrl: "https://alloydb.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsOperationsRequest",
+}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(
+  Operation,
+) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -2378,15 +2967,21 @@ export interface ListOperationsResponse {
   operations?: OperationList;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-  "operations": S.optional(OperationList),
-}),
-).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+    operations: S.optional(OperationList),
+  }),
+).annotate({
+  identifier: "ListOperationsResponse",
+}) as any as S.Schema<ListOperationsResponse>;
 
-export type ListProjectsLocationsSupportedDatabaseFlagsScopeEnum = "SCOPE_UNSPECIFIED" | "DATABASE" | "CONNECTION_POOL";
-export const ListProjectsLocationsSupportedDatabaseFlagsScopeEnum = /*@__PURE__*/ S.String;
+export type ListProjectsLocationsSupportedDatabaseFlagsScopeEnum =
+  | "SCOPE_UNSPECIFIED"
+  | "DATABASE"
+  | "CONNECTION_POOL";
+export const ListProjectsLocationsSupportedDatabaseFlagsScopeEnum =
+  /*@__PURE__*/ S.String;
 
 export interface ListProjectsLocationsSupportedDatabaseFlagsRequest {
   /** Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
@@ -2398,14 +2993,25 @@ export interface ListProjectsLocationsSupportedDatabaseFlagsRequest {
   /** Optional. The scope for which supported flags are requested. If not specified, default is DATABASE. */
   scope?: ListProjectsLocationsSupportedDatabaseFlagsScopeEnum | (string & {});
 }
-export const ListProjectsLocationsSupportedDatabaseFlagsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "scope": S.optional(ListProjectsLocationsSupportedDatabaseFlagsScopeEnum.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+parent}/supportedDatabaseFlags","baseUrl":"https://alloydb.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsSupportedDatabaseFlagsRequest" }) as any as S.Schema<ListProjectsLocationsSupportedDatabaseFlagsRequest>;
+export const ListProjectsLocationsSupportedDatabaseFlagsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      scope: S.optional(
+        ListProjectsLocationsSupportedDatabaseFlagsScopeEnum.pipe(T.Query()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/{+parent}/supportedDatabaseFlags",
+        baseUrl: "https://alloydb.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsSupportedDatabaseFlagsRequest",
+  }) as any as S.Schema<ListProjectsLocationsSupportedDatabaseFlagsRequest>;
 
 /** Restrictions on INTEGER type values. */
 export interface IntegerRestrictions {
@@ -2415,13 +3021,20 @@ export interface IntegerRestrictions {
   maxValue?: string;
 }
 export const IntegerRestrictions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "minValue": S.optional(S.String),
-  "maxValue": S.optional(S.String),
-}),
-).annotate({ identifier: "IntegerRestrictions" }) as any as S.Schema<IntegerRestrictions>;
+  S.Struct({
+    minValue: S.optional(S.String),
+    maxValue: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "IntegerRestrictions",
+}) as any as S.Schema<IntegerRestrictions>;
 
-export type SupportedDatabaseFlagValueTypeEnum = "VALUE_TYPE_UNSPECIFIED" | "STRING" | "INTEGER" | "FLOAT" | "NONE";
+export type SupportedDatabaseFlagValueTypeEnum =
+  | "VALUE_TYPE_UNSPECIFIED"
+  | "STRING"
+  | "INTEGER"
+  | "FLOAT"
+  | "NONE";
 export const SupportedDatabaseFlagValueTypeEnum = /*@__PURE__*/ S.String;
 
 /** Restrictions on STRING type values */
@@ -2430,19 +3043,36 @@ export interface StringRestrictions {
   allowedValues?: StringList;
 }
 export const StringRestrictions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "allowedValues": S.optional(StringList),
-}),
-).annotate({ identifier: "StringRestrictions" }) as any as S.Schema<StringRestrictions>;
+  S.Struct({
+    allowedValues: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "StringRestrictions",
+}) as any as S.Schema<StringRestrictions>;
 
-export type SupportedDatabaseFlagScopeEnum = "SCOPE_UNSPECIFIED" | "DATABASE" | "CONNECTION_POOL";
+export type SupportedDatabaseFlagScopeEnum =
+  | "SCOPE_UNSPECIFIED"
+  | "DATABASE"
+  | "CONNECTION_POOL";
 export const SupportedDatabaseFlagScopeEnum = /*@__PURE__*/ S.String;
 
-export type SupportedDatabaseFlagSupportedDbVersionsItemEnum = "DATABASE_VERSION_UNSPECIFIED" | "POSTGRES_13" | "POSTGRES_14" | "POSTGRES_15" | "POSTGRES_16" | "POSTGRES_17" | "POSTGRES_18";
-export const SupportedDatabaseFlagSupportedDbVersionsItemEnum = /*@__PURE__*/ S.String;
+export type SupportedDatabaseFlagSupportedDbVersionsItemEnum =
+  | "DATABASE_VERSION_UNSPECIFIED"
+  | "POSTGRES_13"
+  | "POSTGRES_14"
+  | "POSTGRES_15"
+  | "POSTGRES_16"
+  | "POSTGRES_17"
+  | "POSTGRES_18";
+export const SupportedDatabaseFlagSupportedDbVersionsItemEnum =
+  /*@__PURE__*/ S.String;
 
-export type SupportedDatabaseFlagSupportedDbVersionsItemEnumList = ReadonlyArray<SupportedDatabaseFlagSupportedDbVersionsItemEnum>;
-export const SupportedDatabaseFlagSupportedDbVersionsItemEnumList = /*@__PURE__*/ S.Array(SupportedDatabaseFlagSupportedDbVersionsItemEnum) as any as S.Schema<SupportedDatabaseFlagSupportedDbVersionsItemEnumList>;
+export type SupportedDatabaseFlagSupportedDbVersionsItemEnumList =
+  ReadonlyArray<SupportedDatabaseFlagSupportedDbVersionsItemEnum>;
+export const SupportedDatabaseFlagSupportedDbVersionsItemEnumList =
+  /*@__PURE__*/ S.Array(
+    SupportedDatabaseFlagSupportedDbVersionsItemEnum,
+  ) as any as S.Schema<SupportedDatabaseFlagSupportedDbVersionsItemEnumList>;
 
 /** SupportedDatabaseFlag gives general information about a database flag, like type and allowed values. This is a static value that is defined on the server side, and it cannot be modified by callers. To set the Database flags on a particular Instance, a caller should modify the Instance.database_flags field. */
 export interface SupportedDatabaseFlag {
@@ -2469,23 +3099,29 @@ export interface SupportedDatabaseFlag {
   flagName?: string;
 }
 export const SupportedDatabaseFlag = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "integerRestrictions": S.optional(IntegerRestrictions),
-  "valueType": S.optional(SupportedDatabaseFlagValueTypeEnum),
-  "stringRestrictions": S.optional(StringRestrictions),
-  "requiresDbRestart": S.optional(S.Boolean),
-  "acceptsMultipleValues": S.optional(S.Boolean),
-  "recommendedIntegerValue": S.optional(S.String),
-  "scope": S.optional(SupportedDatabaseFlagScopeEnum),
-  "recommendedStringValue": S.optional(S.String),
-  "name": S.optional(S.String),
-  "supportedDbVersions": S.optional(SupportedDatabaseFlagSupportedDbVersionsItemEnumList),
-  "flagName": S.optional(S.String),
-}),
-).annotate({ identifier: "SupportedDatabaseFlag" }) as any as S.Schema<SupportedDatabaseFlag>;
+  S.Struct({
+    integerRestrictions: S.optional(IntegerRestrictions),
+    valueType: S.optional(SupportedDatabaseFlagValueTypeEnum),
+    stringRestrictions: S.optional(StringRestrictions),
+    requiresDbRestart: S.optional(S.Boolean),
+    acceptsMultipleValues: S.optional(S.Boolean),
+    recommendedIntegerValue: S.optional(S.String),
+    scope: S.optional(SupportedDatabaseFlagScopeEnum),
+    recommendedStringValue: S.optional(S.String),
+    name: S.optional(S.String),
+    supportedDbVersions: S.optional(
+      SupportedDatabaseFlagSupportedDbVersionsItemEnumList,
+    ),
+    flagName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SupportedDatabaseFlag",
+}) as any as S.Schema<SupportedDatabaseFlag>;
 
 export type SupportedDatabaseFlagList = ReadonlyArray<SupportedDatabaseFlag>;
-export const SupportedDatabaseFlagList = /*@__PURE__*/ S.Array(SupportedDatabaseFlag) as any as S.Schema<SupportedDatabaseFlagList>;
+export const SupportedDatabaseFlagList = /*@__PURE__*/ S.Array(
+  SupportedDatabaseFlag,
+) as any as S.Schema<SupportedDatabaseFlagList>;
 
 /** Message for response to listing SupportedDatabaseFlags. */
 export interface ListSupportedDatabaseFlagsResponse {
@@ -2495,11 +3131,13 @@ export interface ListSupportedDatabaseFlagsResponse {
   nextPageToken?: string;
 }
 export const ListSupportedDatabaseFlagsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "supportedDatabaseFlags": S.optional(SupportedDatabaseFlagList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListSupportedDatabaseFlagsResponse" }) as any as S.Schema<ListSupportedDatabaseFlagsResponse>;
+  S.Struct({
+    supportedDatabaseFlags: S.optional(SupportedDatabaseFlagList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListSupportedDatabaseFlagsResponse",
+}) as any as S.Schema<ListSupportedDatabaseFlagsResponse>;
 
 export interface PatchProjectsLocationsBackupsRequest {
   /** Optional. If set, the backend validates the request, but doesn't actually execute it. */
@@ -2515,16 +3153,25 @@ export interface PatchProjectsLocationsBackupsRequest {
   /** Request body */
   body?: Backup;
 }
-export const PatchProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(Backup.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta/{+name}","baseUrl":"https://alloydb.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsBackupsRequest" }) as any as S.Schema<PatchProjectsLocationsBackupsRequest>;
+export const PatchProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
+      body: S.optional(Backup.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta/{+name}",
+        baseUrl: "https://alloydb.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "PatchProjectsLocationsBackupsRequest",
+}) as any as S.Schema<PatchProjectsLocationsBackupsRequest>;
 
 export interface PatchProjectsLocationsClustersRequest {
   /** Output only. The name of the cluster resource with the format: * projects/{project}/locations/{region}/clusters/{cluster_id} where the cluster ID segment should satisfy the regex expression `[a-z0-9-]+`. For more details see https://google.aip.dev/122. The prefix of the cluster resource name is the name of the parent resource: * projects/{project}/locations/{region} */
@@ -2540,16 +3187,25 @@ export interface PatchProjectsLocationsClustersRequest {
   /** Request body */
   body?: Cluster;
 }
-export const PatchProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(Cluster.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta/{+name}","baseUrl":"https://alloydb.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsClustersRequest" }) as any as S.Schema<PatchProjectsLocationsClustersRequest>;
+export const PatchProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
+      body: S.optional(Cluster.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta/{+name}",
+        baseUrl: "https://alloydb.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "PatchProjectsLocationsClustersRequest",
+}) as any as S.Schema<PatchProjectsLocationsClustersRequest>;
 
 export interface PatchProjectsLocationsClustersInstancesRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -2565,16 +3221,25 @@ export interface PatchProjectsLocationsClustersInstancesRequest {
   /** Request body */
   body?: Instance;
 }
-export const PatchProjectsLocationsClustersInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Instance.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta/{+name}","baseUrl":"https://alloydb.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsClustersInstancesRequest" }) as any as S.Schema<PatchProjectsLocationsClustersInstancesRequest>;
+export const PatchProjectsLocationsClustersInstancesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      requestId: S.optional(S.String.pipe(T.Query())),
+      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Instance.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta/{+name}",
+        baseUrl: "https://alloydb.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsClustersInstancesRequest",
+  }) as any as S.Schema<PatchProjectsLocationsClustersInstancesRequest>;
 
 export interface PatchProjectsLocationsClustersUsersRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -2590,16 +3255,25 @@ export interface PatchProjectsLocationsClustersUsersRequest {
   /** Request body */
   body?: User;
 }
-export const PatchProjectsLocationsClustersUsersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(User.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta/{+name}","baseUrl":"https://alloydb.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsClustersUsersRequest" }) as any as S.Schema<PatchProjectsLocationsClustersUsersRequest>;
+export const PatchProjectsLocationsClustersUsersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      requestId: S.optional(S.String.pipe(T.Query())),
+      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(User.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta/{+name}",
+        baseUrl: "https://alloydb.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsClustersUsersRequest",
+  }) as any as S.Schema<PatchProjectsLocationsClustersUsersRequest>;
 
 export interface PatchProjectsLocationsEndpointsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -2615,16 +3289,25 @@ export interface PatchProjectsLocationsEndpointsRequest {
   /** Request body */
   body?: Endpoint;
 }
-export const PatchProjectsLocationsEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "allowMissing": S.optional(S.Boolean.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(Endpoint.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta/{+name}","baseUrl":"https://alloydb.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsEndpointsRequest" }) as any as S.Schema<PatchProjectsLocationsEndpointsRequest>;
+export const PatchProjectsLocationsEndpointsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      requestId: S.optional(S.String.pipe(T.Query())),
+      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      body: S.optional(Endpoint.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta/{+name}",
+        baseUrl: "https://alloydb.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "PatchProjectsLocationsEndpointsRequest",
+}) as any as S.Schema<PatchProjectsLocationsEndpointsRequest>;
 
 /** Message for promoting a Cluster */
 export interface PromoteClusterRequest {
@@ -2638,13 +3321,15 @@ export interface PromoteClusterRequest {
   failover?: boolean;
 }
 export const PromoteClusterRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String),
-  "validateOnly": S.optional(S.Boolean),
-  "etag": S.optional(S.String),
-  "failover": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "PromoteClusterRequest" }) as any as S.Schema<PromoteClusterRequest>;
+  S.Struct({
+    requestId: S.optional(S.String),
+    validateOnly: S.optional(S.Boolean),
+    etag: S.optional(S.String),
+    failover: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "PromoteClusterRequest",
+}) as any as S.Schema<PromoteClusterRequest>;
 
 export interface PromoteProjectsLocationsClustersRequest {
   /** Required. The name of the resource. For the required format, see the comment on the Cluster.name field */
@@ -2652,12 +3337,21 @@ export interface PromoteProjectsLocationsClustersRequest {
   /** Request body */
   body?: PromoteClusterRequest;
 }
-export const PromoteProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(PromoteClusterRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+name}:promote","baseUrl":"https://alloydb.googleapis.com/"})),
-).annotate({ identifier: "PromoteProjectsLocationsClustersRequest" }) as any as S.Schema<PromoteProjectsLocationsClustersRequest>;
+export const PromoteProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(PromoteClusterRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+name}:promote",
+        baseUrl: "https://alloydb.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "PromoteProjectsLocationsClustersRequest",
+}) as any as S.Schema<PromoteProjectsLocationsClustersRequest>;
 
 export interface RestartInstanceRequest {
   /** Optional. If set, performs request validation, for example, permission checks and any other type of validation, but does not actually execute the create request. */
@@ -2668,12 +3362,14 @@ export interface RestartInstanceRequest {
   nodeIds?: StringList;
 }
 export const RestartInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "validateOnly": S.optional(S.Boolean),
-  "requestId": S.optional(S.String),
-  "nodeIds": S.optional(StringList),
-}),
-).annotate({ identifier: "RestartInstanceRequest" }) as any as S.Schema<RestartInstanceRequest>;
+  S.Struct({
+    validateOnly: S.optional(S.Boolean),
+    requestId: S.optional(S.String),
+    nodeIds: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "RestartInstanceRequest",
+}) as any as S.Schema<RestartInstanceRequest>;
 
 export interface RestartProjectsLocationsClustersInstancesRequest {
   /** Required. The name of the resource. For the required format, see the comment on the Instance.name field. */
@@ -2681,12 +3377,21 @@ export interface RestartProjectsLocationsClustersInstancesRequest {
   /** Request body */
   body?: RestartInstanceRequest;
 }
-export const RestartProjectsLocationsClustersInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(RestartInstanceRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+name}:restart","baseUrl":"https://alloydb.googleapis.com/"})),
-).annotate({ identifier: "RestartProjectsLocationsClustersInstancesRequest" }) as any as S.Schema<RestartProjectsLocationsClustersInstancesRequest>;
+export const RestartProjectsLocationsClustersInstancesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(RestartInstanceRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+name}:restart",
+        baseUrl: "https://alloydb.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "RestartProjectsLocationsClustersInstancesRequest",
+  }) as any as S.Schema<RestartProjectsLocationsClustersInstancesRequest>;
 
 /** Message for registering Restoring from CloudSQL resource. */
 export interface RestoreFromCloudSQLRequest {
@@ -2698,12 +3403,14 @@ export interface RestoreFromCloudSQLRequest {
   cluster?: Cluster;
 }
 export const RestoreFromCloudSQLRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "cloudsqlBackupRunSource": S.optional(CloudSQLBackupRunSource),
-  "clusterId": S.optional(S.String),
-  "cluster": S.optional(Cluster),
-}),
-).annotate({ identifier: "RestoreFromCloudSQLRequest" }) as any as S.Schema<RestoreFromCloudSQLRequest>;
+  S.Struct({
+    cloudsqlBackupRunSource: S.optional(CloudSQLBackupRunSource),
+    clusterId: S.optional(S.String),
+    cluster: S.optional(Cluster),
+  }),
+).annotate({
+  identifier: "RestoreFromCloudSQLRequest",
+}) as any as S.Schema<RestoreFromCloudSQLRequest>;
 
 export interface RestoreFromCloudSQLProjectsLocationsClustersRequest {
   /** Required. The location of the new cluster. For the required format, see the comment on Cluster.name field. */
@@ -2711,12 +3418,21 @@ export interface RestoreFromCloudSQLProjectsLocationsClustersRequest {
   /** Request body */
   body?: RestoreFromCloudSQLRequest;
 }
-export const RestoreFromCloudSQLProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(RestoreFromCloudSQLRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+parent}/clusters:restoreFromCloudSQL","baseUrl":"https://alloydb.googleapis.com/"})),
-).annotate({ identifier: "RestoreFromCloudSQLProjectsLocationsClustersRequest" }) as any as S.Schema<RestoreFromCloudSQLProjectsLocationsClustersRequest>;
+export const RestoreFromCloudSQLProjectsLocationsClustersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(RestoreFromCloudSQLRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+parent}/clusters:restoreFromCloudSQL",
+        baseUrl: "https://alloydb.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "RestoreFromCloudSQLProjectsLocationsClustersRequest",
+  }) as any as S.Schema<RestoreFromCloudSQLProjectsLocationsClustersRequest>;
 
 /** Message describing a ContinuousBackupSource. */
 export interface ContinuousBackupSource {
@@ -2726,11 +3442,13 @@ export interface ContinuousBackupSource {
   pointInTime?: string;
 }
 export const ContinuousBackupSource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "cluster": S.optional(S.String),
-  "pointInTime": S.optional(S.String),
-}),
-).annotate({ identifier: "ContinuousBackupSource" }) as any as S.Schema<ContinuousBackupSource>;
+  S.Struct({
+    cluster: S.optional(S.String),
+    pointInTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ContinuousBackupSource",
+}) as any as S.Schema<ContinuousBackupSource>;
 
 /** Message describing a BackupDrPitrSource. */
 export interface BackupDrPitrSource {
@@ -2740,11 +3458,13 @@ export interface BackupDrPitrSource {
   dataSource?: string;
 }
 export const BackupDrPitrSource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pointInTime": S.optional(S.String),
-  "dataSource": S.optional(S.String),
-}),
-).annotate({ identifier: "BackupDrPitrSource" }) as any as S.Schema<BackupDrPitrSource>;
+  S.Struct({
+    pointInTime: S.optional(S.String),
+    dataSource: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BackupDrPitrSource",
+}) as any as S.Schema<BackupDrPitrSource>;
 
 /** Message for restoring a Cluster from a backup or another cluster at a given point in time. NEXT_ID: 11 */
 export interface RestoreClusterRequest {
@@ -2766,17 +3486,19 @@ export interface RestoreClusterRequest {
   validateOnly?: boolean;
 }
 export const RestoreClusterRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String),
-  "backupSource": S.optional(BackupSource),
-  "clusterId": S.optional(S.String),
-  "continuousBackupSource": S.optional(ContinuousBackupSource),
-  "backupdrPitrSource": S.optional(BackupDrPitrSource),
-  "cluster": S.optional(Cluster),
-  "backupdrBackupSource": S.optional(BackupDrBackupSource),
-  "validateOnly": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "RestoreClusterRequest" }) as any as S.Schema<RestoreClusterRequest>;
+  S.Struct({
+    requestId: S.optional(S.String),
+    backupSource: S.optional(BackupSource),
+    clusterId: S.optional(S.String),
+    continuousBackupSource: S.optional(ContinuousBackupSource),
+    backupdrPitrSource: S.optional(BackupDrPitrSource),
+    cluster: S.optional(Cluster),
+    backupdrBackupSource: S.optional(BackupDrBackupSource),
+    validateOnly: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "RestoreClusterRequest",
+}) as any as S.Schema<RestoreClusterRequest>;
 
 export interface RestoreProjectsLocationsClustersRequest {
   /** Required. The name of the parent resource. For the required format, see the comment on the Cluster.name field. */
@@ -2784,12 +3506,21 @@ export interface RestoreProjectsLocationsClustersRequest {
   /** Request body */
   body?: RestoreClusterRequest;
 }
-export const RestoreProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(RestoreClusterRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+parent}/clusters:restore","baseUrl":"https://alloydb.googleapis.com/"})),
-).annotate({ identifier: "RestoreProjectsLocationsClustersRequest" }) as any as S.Schema<RestoreProjectsLocationsClustersRequest>;
+export const RestoreProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(RestoreClusterRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+parent}/clusters:restore",
+        baseUrl: "https://alloydb.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "RestoreProjectsLocationsClustersRequest",
+}) as any as S.Schema<RestoreProjectsLocationsClustersRequest>;
 
 /** Message for switching over to a cluster */
 export interface SwitchoverClusterRequest {
@@ -2799,11 +3530,13 @@ export interface SwitchoverClusterRequest {
   validateOnly?: boolean;
 }
 export const SwitchoverClusterRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String),
-  "validateOnly": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "SwitchoverClusterRequest" }) as any as S.Schema<SwitchoverClusterRequest>;
+  S.Struct({
+    requestId: S.optional(S.String),
+    validateOnly: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "SwitchoverClusterRequest",
+}) as any as S.Schema<SwitchoverClusterRequest>;
 
 export interface SwitchoverProjectsLocationsClustersRequest {
   /** Required. The name of the resource. For the required format, see the comment on the Cluster.name field */
@@ -2811,14 +3544,30 @@ export interface SwitchoverProjectsLocationsClustersRequest {
   /** Request body */
   body?: SwitchoverClusterRequest;
 }
-export const SwitchoverProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(SwitchoverClusterRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+name}:switchover","baseUrl":"https://alloydb.googleapis.com/"})),
-).annotate({ identifier: "SwitchoverProjectsLocationsClustersRequest" }) as any as S.Schema<SwitchoverProjectsLocationsClustersRequest>;
+export const SwitchoverProjectsLocationsClustersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(SwitchoverClusterRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+name}:switchover",
+        baseUrl: "https://alloydb.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "SwitchoverProjectsLocationsClustersRequest",
+  }) as any as S.Schema<SwitchoverProjectsLocationsClustersRequest>;
 
-export type UpgradeClusterRequestVersionEnum = "DATABASE_VERSION_UNSPECIFIED" | "POSTGRES_13" | "POSTGRES_14" | "POSTGRES_15" | "POSTGRES_16" | "POSTGRES_17" | "POSTGRES_18";
+export type UpgradeClusterRequestVersionEnum =
+  | "DATABASE_VERSION_UNSPECIFIED"
+  | "POSTGRES_13"
+  | "POSTGRES_14"
+  | "POSTGRES_15"
+  | "POSTGRES_16"
+  | "POSTGRES_17"
+  | "POSTGRES_18";
 export const UpgradeClusterRequestVersionEnum = /*@__PURE__*/ S.String;
 
 /** Upgrades a cluster. */
@@ -2833,13 +3582,15 @@ export interface UpgradeClusterRequest {
   etag?: string;
 }
 export const UpgradeClusterRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String),
-  "validateOnly": S.optional(S.Boolean),
-  "version": S.optional(UpgradeClusterRequestVersionEnum),
-  "etag": S.optional(S.String),
-}),
-).annotate({ identifier: "UpgradeClusterRequest" }) as any as S.Schema<UpgradeClusterRequest>;
+  S.Struct({
+    requestId: S.optional(S.String),
+    validateOnly: S.optional(S.Boolean),
+    version: S.optional(UpgradeClusterRequestVersionEnum),
+    etag: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpgradeClusterRequest",
+}) as any as S.Schema<UpgradeClusterRequest>;
 
 export interface UpgradeProjectsLocationsClustersRequest {
   /** Required. The resource name of the cluster. */
@@ -2847,14 +3598,28 @@ export interface UpgradeProjectsLocationsClustersRequest {
   /** Request body */
   body?: UpgradeClusterRequest;
 }
-export const UpgradeProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(UpgradeClusterRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta/{+name}:upgrade","baseUrl":"https://alloydb.googleapis.com/"})),
-).annotate({ identifier: "UpgradeProjectsLocationsClustersRequest" }) as any as S.Schema<UpgradeProjectsLocationsClustersRequest>;
+export const UpgradeProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(UpgradeClusterRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta/{+name}:upgrade",
+        baseUrl: "https://alloydb.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "UpgradeProjectsLocationsClustersRequest",
+}) as any as S.Schema<UpgradeProjectsLocationsClustersRequest>;
 
-export type CancelProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CancelProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsRequest,
@@ -2869,7 +3634,12 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsBackupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsBackupsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new Backup in a given project and location. */
 export const createProjectsLocationsBackups: API.OperationMethod<
   CreateProjectsLocationsBackupsRequest,
@@ -2884,7 +3654,12 @@ export const createProjectsLocationsBackups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsClustersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new Cluster in a given project and location. */
 export const createProjectsLocationsClusters: API.OperationMethod<
   CreateProjectsLocationsClustersRequest,
@@ -2899,7 +3674,12 @@ export const createProjectsLocationsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsClustersInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsClustersInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new Instance in a given project and location. */
 export const createProjectsLocationsClustersInstances: API.OperationMethod<
   CreateProjectsLocationsClustersInstancesRequest,
@@ -2914,7 +3694,12 @@ export const createProjectsLocationsClustersInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsClustersUsersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsClustersUsersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new User in a given project, location, and cluster. */
 export const createProjectsLocationsClustersUsers: API.OperationMethod<
   CreateProjectsLocationsClustersUsersRequest,
@@ -2929,7 +3714,12 @@ export const createProjectsLocationsClustersUsers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsEndpointsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsEndpointsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new Endpoint in a given project and location. */
 export const createProjectsLocationsEndpoints: API.OperationMethod<
   CreateProjectsLocationsEndpointsRequest,
@@ -2944,7 +3734,12 @@ export const createProjectsLocationsEndpoints: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreatesecondaryProjectsLocationsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreatesecondaryProjectsLocationsClustersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a cluster of type SECONDARY in the given location using the primary cluster as the source. */
 export const createsecondaryProjectsLocationsClusters: API.OperationMethod<
   CreatesecondaryProjectsLocationsClustersRequest,
@@ -2959,7 +3754,12 @@ export const createsecondaryProjectsLocationsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreatesecondaryProjectsLocationsClustersInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreatesecondaryProjectsLocationsClustersInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new SECONDARY Instance in a given project and location. */
 export const createsecondaryProjectsLocationsClustersInstances: API.OperationMethod<
   CreatesecondaryProjectsLocationsClustersInstancesRequest,
@@ -2974,7 +3774,12 @@ export const createsecondaryProjectsLocationsClustersInstances: API.OperationMet
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsBackupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsBackupsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a single Backup. */
 export const deleteProjectsLocationsBackups: API.OperationMethod<
   DeleteProjectsLocationsBackupsRequest,
@@ -2989,7 +3794,12 @@ export const deleteProjectsLocationsBackups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsClustersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a single Cluster. */
 export const deleteProjectsLocationsClusters: API.OperationMethod<
   DeleteProjectsLocationsClustersRequest,
@@ -3004,7 +3814,12 @@ export const deleteProjectsLocationsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsClustersInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsClustersInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a single Instance. */
 export const deleteProjectsLocationsClustersInstances: API.OperationMethod<
   DeleteProjectsLocationsClustersInstancesRequest,
@@ -3019,7 +3834,12 @@ export const deleteProjectsLocationsClustersInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsClustersUsersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsClustersUsersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a single User. */
 export const deleteProjectsLocationsClustersUsers: API.OperationMethod<
   DeleteProjectsLocationsClustersUsersRequest,
@@ -3034,7 +3854,12 @@ export const deleteProjectsLocationsClustersUsers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsEndpointsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsEndpointsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a single Endpoint. */
 export const deleteProjectsLocationsEndpoints: API.OperationMethod<
   DeleteProjectsLocationsEndpointsRequest,
@@ -3049,7 +3874,12 @@ export const deleteProjectsLocationsEndpoints: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsRequest,
@@ -3064,7 +3894,12 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ExportProjectsLocationsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ExportProjectsLocationsClustersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Exports data from the cluster. Imperative only. */
 export const exportProjectsLocationsClusters: API.OperationMethod<
   ExportProjectsLocationsClustersRequest,
@@ -3079,7 +3914,12 @@ export const exportProjectsLocationsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type FailoverProjectsLocationsClustersInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type FailoverProjectsLocationsClustersInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Forces a Failover for a highly available instance. Failover promotes the HA standby instance as the new primary. Imperative only. */
 export const failoverProjectsLocationsClustersInstances: API.OperationMethod<
   FailoverProjectsLocationsClustersInstancesRequest,
@@ -3094,7 +3934,10 @@ export const failoverProjectsLocationsClustersInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetConnectionInfoProjectsLocationsClustersInstancesError = NotFound | Forbidden | GcpOpError;
+export type GetConnectionInfoProjectsLocationsClustersInstancesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Get instance metadata used for a connection. */
 export const getConnectionInfoProjectsLocationsClustersInstances: API.OperationMethod<
   GetConnectionInfoProjectsLocationsClustersInstancesRequest,
@@ -3124,7 +3967,10 @@ export const getProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsBackupsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsBackupsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a single Backup. */
 export const getProjectsLocationsBackups: API.OperationMethod<
   GetProjectsLocationsBackupsRequest,
@@ -3139,7 +3985,10 @@ export const getProjectsLocationsBackups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsClustersError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsClustersError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a single Cluster. */
 export const getProjectsLocationsClusters: API.OperationMethod<
   GetProjectsLocationsClustersRequest,
@@ -3154,7 +4003,10 @@ export const getProjectsLocationsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsClustersInstancesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsClustersInstancesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a single Instance. */
 export const getProjectsLocationsClustersInstances: API.OperationMethod<
   GetProjectsLocationsClustersInstancesRequest,
@@ -3169,7 +4021,10 @@ export const getProjectsLocationsClustersInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsClustersUsersError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsClustersUsersError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a single User. */
 export const getProjectsLocationsClustersUsers: API.OperationMethod<
   GetProjectsLocationsClustersUsersRequest,
@@ -3184,7 +4039,10 @@ export const getProjectsLocationsClustersUsers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsEndpointsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsEndpointsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a single Endpoint. */
 export const getProjectsLocationsEndpoints: API.OperationMethod<
   GetProjectsLocationsEndpointsRequest,
@@ -3199,7 +4057,10 @@ export const getProjectsLocationsEndpoints: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -3214,7 +4075,12 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ImportProjectsLocationsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ImportProjectsLocationsClustersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Imports data to the cluster. Imperative only. */
 export const importProjectsLocationsClusters: API.OperationMethod<
   ImportProjectsLocationsClustersRequest,
@@ -3229,7 +4095,12 @@ export const importProjectsLocationsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InjectFaultProjectsLocationsClustersInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type InjectFaultProjectsLocationsClustersInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Injects fault in an instance. Imperative only. */
 export const injectFaultProjectsLocationsClustersInstances: API.OperationMethod<
   InjectFaultProjectsLocationsClustersInstancesRequest,
@@ -3257,10 +4128,16 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsBackupsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsBackupsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists Backups in a given project and location. */
 export const listProjectsLocationsBackups: API.PaginatedOperationMethod<
   ListProjectsLocationsBackupsRequest,
@@ -3273,10 +4150,16 @@ export const listProjectsLocationsBackups: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsClustersError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsClustersError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists Clusters in a given project and location. */
 export const listProjectsLocationsClusters: API.PaginatedOperationMethod<
   ListProjectsLocationsClustersRequest,
@@ -3289,10 +4172,16 @@ export const listProjectsLocationsClusters: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsClustersInstancesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsClustersInstancesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists Instances in a given project and location. */
 export const listProjectsLocationsClustersInstances: API.PaginatedOperationMethod<
   ListProjectsLocationsClustersInstancesRequest,
@@ -3305,10 +4194,16 @@ export const listProjectsLocationsClustersInstances: API.PaginatedOperationMetho
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsClustersUsersError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsClustersUsersError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists Users in a given project and location. */
 export const listProjectsLocationsClustersUsers: API.PaginatedOperationMethod<
   ListProjectsLocationsClustersUsersRequest,
@@ -3321,10 +4216,16 @@ export const listProjectsLocationsClustersUsers: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsEndpointsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsEndpointsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists Endpoints in a given project and location. */
 export const listProjectsLocationsEndpoints: API.PaginatedOperationMethod<
   ListProjectsLocationsEndpointsRequest,
@@ -3337,10 +4238,16 @@ export const listProjectsLocationsEndpoints: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -3353,10 +4260,16 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsSupportedDatabaseFlagsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsSupportedDatabaseFlagsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists SupportedDatabaseFlags for a given project and location. */
 export const listProjectsLocationsSupportedDatabaseFlags: API.PaginatedOperationMethod<
   ListProjectsLocationsSupportedDatabaseFlagsRequest,
@@ -3369,10 +4282,18 @@ export const listProjectsLocationsSupportedDatabaseFlags: API.PaginatedOperation
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type PatchProjectsLocationsBackupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsBackupsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the parameters of a single Backup. */
 export const patchProjectsLocationsBackups: API.OperationMethod<
   PatchProjectsLocationsBackupsRequest,
@@ -3387,7 +4308,12 @@ export const patchProjectsLocationsBackups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsClustersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the parameters of a single Cluster. */
 export const patchProjectsLocationsClusters: API.OperationMethod<
   PatchProjectsLocationsClustersRequest,
@@ -3402,7 +4328,12 @@ export const patchProjectsLocationsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsClustersInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsClustersInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the parameters of a single Instance. */
 export const patchProjectsLocationsClustersInstances: API.OperationMethod<
   PatchProjectsLocationsClustersInstancesRequest,
@@ -3417,7 +4348,12 @@ export const patchProjectsLocationsClustersInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsClustersUsersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsClustersUsersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the parameters of a single User. */
 export const patchProjectsLocationsClustersUsers: API.OperationMethod<
   PatchProjectsLocationsClustersUsersRequest,
@@ -3432,7 +4368,12 @@ export const patchProjectsLocationsClustersUsers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsEndpointsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsEndpointsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the parameters of a single Endpoint. */
 export const patchProjectsLocationsEndpoints: API.OperationMethod<
   PatchProjectsLocationsEndpointsRequest,
@@ -3447,7 +4388,12 @@ export const patchProjectsLocationsEndpoints: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PromoteProjectsLocationsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PromoteProjectsLocationsClustersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Promotes a SECONDARY cluster. This turns down replication from the PRIMARY cluster and promotes a secondary cluster into its own standalone cluster. Imperative only. */
 export const promoteProjectsLocationsClusters: API.OperationMethod<
   PromoteProjectsLocationsClustersRequest,
@@ -3462,7 +4408,12 @@ export const promoteProjectsLocationsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RestartProjectsLocationsClustersInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RestartProjectsLocationsClustersInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Restart an Instance in a cluster. Imperative only. */
 export const restartProjectsLocationsClustersInstances: API.OperationMethod<
   RestartProjectsLocationsClustersInstancesRequest,
@@ -3477,7 +4428,12 @@ export const restartProjectsLocationsClustersInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RestoreFromCloudSQLProjectsLocationsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RestoreFromCloudSQLProjectsLocationsClustersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Restores an AlloyDB cluster from a CloudSQL resource. */
 export const restoreFromCloudSQLProjectsLocationsClusters: API.OperationMethod<
   RestoreFromCloudSQLProjectsLocationsClustersRequest,
@@ -3492,7 +4448,12 @@ export const restoreFromCloudSQLProjectsLocationsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RestoreProjectsLocationsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RestoreProjectsLocationsClustersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new Cluster in a given project and location, with a volume restored from the provided source, either a backup ID or a point-in-time and a source cluster. */
 export const restoreProjectsLocationsClusters: API.OperationMethod<
   RestoreProjectsLocationsClustersRequest,
@@ -3507,7 +4468,12 @@ export const restoreProjectsLocationsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SwitchoverProjectsLocationsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SwitchoverProjectsLocationsClustersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Switches the roles of PRIMARY and SECONDARY clusters without any data loss. This promotes the SECONDARY cluster to PRIMARY and sets up the original PRIMARY cluster to replicate from this newly promoted cluster. */
 export const switchoverProjectsLocationsClusters: API.OperationMethod<
   SwitchoverProjectsLocationsClustersRequest,
@@ -3522,7 +4488,12 @@ export const switchoverProjectsLocationsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpgradeProjectsLocationsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpgradeProjectsLocationsClustersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Upgrades a single Cluster. Imperative only. */
 export const upgradeProjectsLocationsClusters: API.OperationMethod<
   UpgradeProjectsLocationsClustersRequest,
@@ -3536,4 +4507,3 @@ export const upgradeProjectsLocationsClusters: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

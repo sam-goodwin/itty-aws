@@ -759,19 +759,52 @@ export const InstancesGetResponseStepsItemCase3 = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstancesGetResponseStepsItemCase3",
 }) as any as S.Schema<InstancesGetResponseStepsItemCase3>;
 
-export type InstancesGetResponseStepsItem =
-  | InstancesGetResponseStepsItemCase0
-  | InstancesGetResponseStepsItemCase1
-  | InstancesGetResponseStepsItemCase2
-  | InstancesGetResponseStepsItemCase3;
-export const InstancesGetResponseStepsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["attempts", "config", "end", "name", "output", "start", "success", "type"],
-    ["end", "error", "finished", "name", "start", "type"],
-    ["trigger", "type"],
-    ["end", "error", "finished", "name", "start", "type", "output"],
-  ]),
-);
+export interface InstancesGetResponseStepsItem {
+  attempts?: InstancesGetResponseStepsItemCase0AttemptsList;
+  config?: InstancesGetResponseStepsItemCase0Config;
+  end?: string;
+  name?: string;
+  output?: string;
+  start?: string;
+  success?: boolean;
+  type:
+    | InstancesGetResponseStepsItemCase0Type
+    | InstancesGetResponseStepsItemCase1Type
+    | InstancesGetResponseStepsItemCase2Type
+    | InstancesGetResponseStepsItemCase3Type;
+  error?:
+    | InstancesGetResponseStepsItemCase1Error
+    | InstancesGetResponseStepsItemCase3Error;
+  finished?: boolean;
+  trigger?: InstancesGetResponseStepsItemCase2Trigger;
+}
+export const InstancesGetResponseStepsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    attempts: S.optional(InstancesGetResponseStepsItemCase0AttemptsList),
+    config: S.optional(InstancesGetResponseStepsItemCase0Config),
+    end: S.optional(S.String),
+    name: S.optional(S.String),
+    output: S.optional(S.String),
+    start: S.optional(S.String),
+    success: S.optional(S.Boolean),
+    type: S.Union(
+      InstancesGetResponseStepsItemCase0Type,
+      InstancesGetResponseStepsItemCase1Type,
+      InstancesGetResponseStepsItemCase2Type,
+      InstancesGetResponseStepsItemCase3Type,
+    ),
+    error: S.optional(
+      S.Union(
+        InstancesGetResponseStepsItemCase1Error,
+        InstancesGetResponseStepsItemCase3Error,
+      ),
+    ),
+    finished: S.optional(S.Boolean),
+    trigger: S.optional(InstancesGetResponseStepsItemCase2Trigger),
+  }),
+).annotate({
+  identifier: "InstancesGetResponseStepsItem",
+}) as any as S.Schema<InstancesGetResponseStepsItem>;
 
 export type InstancesGetResponseStepsList =
   ReadonlyArray<InstancesGetResponseStepsItem>;
@@ -1257,11 +1290,27 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase2PayloadCase1 =
     identifier: "VersionsGraphResponseGraphWorkflowNodesItemCase2PayloadCase1",
   }) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase2PayloadCase1>;
 
-export type VersionsGraphResponseGraphWorkflowNodesItemCase2Payload =
-  | VersionsGraphResponseGraphWorkflowNodesItemCase2PayloadType
-  | VersionsGraphResponseGraphWorkflowNodesItemCase2PayloadCase1;
+export interface VersionsGraphResponseGraphWorkflowNodesItemCase2Payload {
+  type:
+    | VersionsGraphResponseGraphWorkflowNodesItemCase2PayloadTypeType
+    | VersionsGraphResponseGraphWorkflowNodesItemCase2PayloadCase1Type;
+  /** Nested JsonShape fields (recursive structure). */
+  fields?: VersionsGraphResponseGraphWorkflowNodesItemCase2PayloadCase1FieldsMap;
+}
 export const VersionsGraphResponseGraphWorkflowNodesItemCase2Payload =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([["type"], ["fields", "type"]]));
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.Union(
+        VersionsGraphResponseGraphWorkflowNodesItemCase2PayloadTypeType,
+        VersionsGraphResponseGraphWorkflowNodesItemCase2PayloadCase1Type,
+      ),
+      fields: S.optional(
+        VersionsGraphResponseGraphWorkflowNodesItemCase2PayloadCase1FieldsMap,
+      ),
+    }),
+  ).annotate({
+    identifier: "VersionsGraphResponseGraphWorkflowNodesItemCase2Payload",
+  }) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase2Payload>;
 
 export interface VersionsGraphResponseGraphWorkflowNodesItemCase2 {
   name: string;
@@ -1713,11 +1762,27 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadCase1 =
     identifier: "VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadCase1",
   }) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadCase1>;
 
-export type VersionsGraphResponseGraphWorkflowNodesItemCase10Payload =
-  | VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadType
-  | VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadCase1;
+export interface VersionsGraphResponseGraphWorkflowNodesItemCase10Payload {
+  type:
+    | VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadTypeType
+    | VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadCase1Type;
+  /** Nested JsonShape fields (recursive structure). */
+  fields?: VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadCase1FieldsMap;
+}
 export const VersionsGraphResponseGraphWorkflowNodesItemCase10Payload =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([["type"], ["fields", "type"]]));
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.Union(
+        VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadTypeType,
+        VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadCase1Type,
+      ),
+      fields: S.optional(
+        VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadCase1FieldsMap,
+      ),
+    }),
+  ).annotate({
+    identifier: "VersionsGraphResponseGraphWorkflowNodesItemCase10Payload",
+  }) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase10Payload>;
 
 export interface VersionsGraphResponseGraphWorkflowNodesItemCase10 {
   className: string;
@@ -1820,40 +1885,142 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase13 =
     identifier: "VersionsGraphResponseGraphWorkflowNodesItemCase13",
   }) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase13>;
 
-export type VersionsGraphResponseGraphWorkflowNodesItem =
-  | VersionsGraphResponseGraphWorkflowNodesItemCase0
-  | VersionsGraphResponseGraphWorkflowNodesItemCase1
-  | VersionsGraphResponseGraphWorkflowNodesItemCase2
-  | VersionsGraphResponseGraphWorkflowNodesItemCase3
-  | VersionsGraphResponseGraphWorkflowNodesItemCase4
-  | VersionsGraphResponseGraphWorkflowNodesItemCase5
-  | VersionsGraphResponseGraphWorkflowNodesItemCase6
-  | VersionsGraphResponseGraphWorkflowNodesItemCase7
-  | VersionsGraphResponseGraphWorkflowNodesItemCase8
-  | VersionsGraphResponseGraphWorkflowNodesItemCase9
-  | VersionsGraphResponseGraphWorkflowNodesItemCase10
-  | VersionsGraphResponseGraphWorkflowNodesItemCase11
-  | VersionsGraphResponseGraphWorkflowNodesItemCase12
-  | VersionsGraphResponseGraphWorkflowNodesItemCase13;
+export interface VersionsGraphResponseGraphWorkflowNodesItem {
+  /** Duration as milliseconds (number) or human-readable string. */
+  duration?: VersionsGraphResponseGraphWorkflowNodesItemCase0Duration;
+  name?: string;
+  type:
+    | VersionsGraphResponseGraphWorkflowNodesItemCase0Type
+    | VersionsGraphResponseGraphWorkflowNodesItemCase1Type
+    | VersionsGraphResponseGraphWorkflowNodesItemCase2Type
+    | VersionsGraphResponseGraphWorkflowNodesItemCase3Type
+    | VersionsGraphResponseGraphWorkflowNodesItemCase4Type
+    | VersionsGraphResponseGraphWorkflowNodesItemCase5Type
+    | VersionsGraphResponseGraphWorkflowNodesItemCase6Type
+    | VersionsGraphResponseGraphWorkflowNodesItemCase7Type
+    | VersionsGraphResponseGraphWorkflowNodesItemCase8Type
+    | VersionsGraphResponseGraphWorkflowNodesItemCase9Type
+    | VersionsGraphResponseGraphWorkflowNodesItemCase10Type
+    | VersionsGraphResponseGraphWorkflowNodesItemCase11Type
+    | VersionsGraphResponseGraphWorkflowNodesItemCase12Type
+    | VersionsGraphResponseGraphWorkflowNodesItemCase13Type;
+  resolves?: number;
+  starts?: number;
+  /** Configuration for a step (retries and timeout). */
+  config?: VersionsGraphResponseGraphWorkflowNodesItemCase1Config;
+  /** Child nodes (recursive). */
+  nodes?:
+    | VersionsGraphResponseGraphWorkflowNodesItemCase1NodesList
+    | VersionsGraphResponseGraphWorkflowNodesItemCase4NodesList
+    | VersionsGraphResponseGraphWorkflowNodesItemCase5NodesList
+    | VersionsGraphResponseGraphWorkflowNodesItemCase7NodesList
+    | VersionsGraphResponseGraphWorkflowNodesItemCase10NodesList
+    | VersionsGraphResponseGraphWorkflowNodesItemCase12NodesList;
+  /** Options for a waitForEvent step. */
+  options?: VersionsGraphResponseGraphWorkflowNodesItemCase2Options;
+  /** Shape descriptor for JSON payloads. */
+  payload?:
+    | VersionsGraphResponseGraphWorkflowNodesItemCase2Payload
+    | VersionsGraphResponseGraphWorkflowNodesItemCase10Payload;
+  timestamp?: string;
+  /** Parallel execution strategy. */
+  kind?:
+    | VersionsGraphResponseGraphWorkflowNodesItemCase5Kind
+    | VersionsGraphResponseGraphWorkflowNodesItemCase13Kind;
+  catchBlock?: VersionsGraphResponseGraphWorkflowNodesItemCase6CatchBlock;
+  finallyBlock?: VersionsGraphResponseGraphWorkflowNodesItemCase6FinallyBlock;
+  tryBlock?: VersionsGraphResponseGraphWorkflowNodesItemCase6TryBlock;
+  branches?:
+    | VersionsGraphResponseGraphWorkflowNodesItemCase8BranchesList
+    | VersionsGraphResponseGraphWorkflowNodesItemCase9BranchesList;
+  discriminant?: string;
+  className?: string;
+  functions?: VersionsGraphResponseGraphWorkflowNodesItemCase10FunctionsMap;
+}
 export const VersionsGraphResponseGraphWorkflowNodesItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["duration", "name", "type", "resolves", "starts"],
-      ["config", "name", "nodes", "type", "resolves", "starts"],
-      ["name", "options", "type", "payload", "resolves", "starts"],
-      ["name", "timestamp", "type", "resolves", "starts"],
-      ["nodes", "type"],
-      ["kind", "nodes", "type"],
-      ["catchBlock", "finallyBlock", "tryBlock", "type"],
-      ["nodes", "type"],
-      ["branches", "type"],
-      ["branches", "discriminant", "type"],
-      ["className", "functions", "nodes", "type", "payload"],
-      ["name", "type", "resolves", "starts"],
-      ["name", "nodes", "type"],
-      ["kind", "type"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      duration: S.optional(
+        VersionsGraphResponseGraphWorkflowNodesItemCase0Duration,
+      ),
+      name: S.optional(S.String),
+      type: S.Union(
+        VersionsGraphResponseGraphWorkflowNodesItemCase0Type,
+        VersionsGraphResponseGraphWorkflowNodesItemCase1Type,
+        VersionsGraphResponseGraphWorkflowNodesItemCase2Type,
+        VersionsGraphResponseGraphWorkflowNodesItemCase3Type,
+        VersionsGraphResponseGraphWorkflowNodesItemCase4Type,
+        VersionsGraphResponseGraphWorkflowNodesItemCase5Type,
+        VersionsGraphResponseGraphWorkflowNodesItemCase6Type,
+        VersionsGraphResponseGraphWorkflowNodesItemCase7Type,
+        VersionsGraphResponseGraphWorkflowNodesItemCase8Type,
+        VersionsGraphResponseGraphWorkflowNodesItemCase9Type,
+        VersionsGraphResponseGraphWorkflowNodesItemCase10Type,
+        VersionsGraphResponseGraphWorkflowNodesItemCase11Type,
+        VersionsGraphResponseGraphWorkflowNodesItemCase12Type,
+        VersionsGraphResponseGraphWorkflowNodesItemCase13Type,
+      ),
+      resolves: S.optional(S.Number),
+      starts: S.optional(S.Number),
+      config: S.optional(
+        VersionsGraphResponseGraphWorkflowNodesItemCase1Config,
+      ),
+      nodes: S.optional(
+        S.Union(
+          VersionsGraphResponseGraphWorkflowNodesItemCase1NodesList,
+          VersionsGraphResponseGraphWorkflowNodesItemCase4NodesList,
+          VersionsGraphResponseGraphWorkflowNodesItemCase5NodesList,
+          VersionsGraphResponseGraphWorkflowNodesItemCase7NodesList,
+          VersionsGraphResponseGraphWorkflowNodesItemCase10NodesList,
+          VersionsGraphResponseGraphWorkflowNodesItemCase12NodesList,
+        ),
+      ),
+      options: S.optional(
+        VersionsGraphResponseGraphWorkflowNodesItemCase2Options,
+      ),
+      payload: S.optional(
+        S.Union(
+          VersionsGraphResponseGraphWorkflowNodesItemCase2Payload,
+          VersionsGraphResponseGraphWorkflowNodesItemCase10Payload,
+        ),
+      ),
+      timestamp: S.optional(S.String),
+      kind: S.optional(
+        S.Union(
+          VersionsGraphResponseGraphWorkflowNodesItemCase5Kind,
+          VersionsGraphResponseGraphWorkflowNodesItemCase13Kind,
+        ),
+      ),
+      catchBlock: S.optional(
+        VersionsGraphResponseGraphWorkflowNodesItemCase6CatchBlock.pipe(
+          T.Body("catch_block"),
+        ),
+      ),
+      finallyBlock: S.optional(
+        VersionsGraphResponseGraphWorkflowNodesItemCase6FinallyBlock.pipe(
+          T.Body("finally_block"),
+        ),
+      ),
+      tryBlock: S.optional(
+        VersionsGraphResponseGraphWorkflowNodesItemCase6TryBlock.pipe(
+          T.Body("try_block"),
+        ),
+      ),
+      branches: S.optional(
+        S.Union(
+          VersionsGraphResponseGraphWorkflowNodesItemCase8BranchesList,
+          VersionsGraphResponseGraphWorkflowNodesItemCase9BranchesList,
+        ),
+      ),
+      discriminant: S.optional(S.String),
+      className: S.optional(S.String.pipe(T.Body("class_name"))),
+      functions: S.optional(
+        VersionsGraphResponseGraphWorkflowNodesItemCase10FunctionsMap,
+      ),
+    }),
+  ).annotate({
+    identifier: "VersionsGraphResponseGraphWorkflowNodesItem",
+  }) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItem>;
 
 export type VersionsGraphResponseGraphWorkflowNodesList =
   ReadonlyArray<VersionsGraphResponseGraphWorkflowNodesItem>;
@@ -1906,11 +2073,27 @@ export const VersionsGraphResponseGraphWorkflowPayloadCase1 =
     identifier: "VersionsGraphResponseGraphWorkflowPayloadCase1",
   }) as any as S.Schema<VersionsGraphResponseGraphWorkflowPayloadCase1>;
 
-export type VersionsGraphResponseGraphWorkflowPayload =
-  | VersionsGraphResponseGraphWorkflowPayloadType
-  | VersionsGraphResponseGraphWorkflowPayloadCase1;
+export interface VersionsGraphResponseGraphWorkflowPayload {
+  type:
+    | VersionsGraphResponseGraphWorkflowPayloadTypeType
+    | VersionsGraphResponseGraphWorkflowPayloadCase1Type;
+  /** Nested JsonShape fields (recursive structure). */
+  fields?: VersionsGraphResponseGraphWorkflowPayloadCase1FieldsMap;
+}
 export const VersionsGraphResponseGraphWorkflowPayload =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([["type"], ["fields", "type"]]));
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.Union(
+        VersionsGraphResponseGraphWorkflowPayloadTypeType,
+        VersionsGraphResponseGraphWorkflowPayloadCase1Type,
+      ),
+      fields: S.optional(
+        VersionsGraphResponseGraphWorkflowPayloadCase1FieldsMap,
+      ),
+    }),
+  ).annotate({
+    identifier: "VersionsGraphResponseGraphWorkflowPayload",
+  }) as any as S.Schema<VersionsGraphResponseGraphWorkflowPayload>;
 
 export interface VersionsGraphResponseGraphWorkflow {
   className: string;

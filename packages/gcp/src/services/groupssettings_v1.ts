@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export interface GetGroupsRequest {
@@ -65,10 +65,18 @@ export interface GetGroupsRequest {
   groupUniqueId: string;
 }
 export const GetGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "groupUniqueId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"{groupUniqueId}","baseUrl":"https://www.googleapis.com/groups/v1/groups/"})),
-).annotate({ identifier: "GetGroupsRequest" }) as any as S.Schema<GetGroupsRequest>;
+  S.Struct({
+    groupUniqueId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "{groupUniqueId}",
+      baseUrl: "https://www.googleapis.com/groups/v1/groups/",
+    }),
+  ),
+).annotate({
+  identifier: "GetGroupsRequest",
+}) as any as S.Schema<GetGroupsRequest>;
 
 /** JSON template for Group resource */
 export interface Groups {
@@ -200,71 +208,71 @@ export interface Groups {
   spamModerationLevel?: string;
 }
 export const Groups = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "whoCanUnassignTopic": S.optional(S.String),
-  "whoCanAdd": S.optional(S.String),
-  "whoCanLeaveGroup": S.optional(S.String),
-  "whoCanAddReferences": S.optional(S.String),
-  "whoCanMarkDuplicate": S.optional(S.String),
-  "whoCanDeleteAnyPost": S.optional(S.String),
-  "sendMessageDenyNotification": S.optional(S.String),
-  "whoCanAddExternalMembers": S.optional(S.String),
-  "whoCanAssignTopics": S.optional(S.String),
-  "whoCanLockTopics": S.optional(S.String),
-  "whoCanMarkNoResponseNeeded": S.optional(S.String),
-  "includeCustomFooter": S.optional(S.String),
-  "whoCanMoveTopicsIn": S.optional(S.String),
-  "whoCanJoin": S.optional(S.String),
-  "whoCanDeleteTopics": S.optional(S.String),
-  "default_sender": S.optional(S.String),
-  "whoCanBanUsers": S.optional(S.String),
-  "whoCanPostMessage": S.optional(S.String),
-  "whoCanMarkFavoriteReplyOnAnyTopic": S.optional(S.String),
-  "replyTo": S.optional(S.String),
-  "whoCanMakeTopicsSticky": S.optional(S.String),
-  "allowWebPosting": S.optional(S.String),
-  "whoCanHideAbuse": S.optional(S.String),
-  "email": S.optional(S.String),
-  "enableCollaborativeInbox": S.optional(S.String),
-  "allowGoogleCommunication": S.optional(S.String),
-  "whoCanModerateContent": S.optional(S.String),
-  "whoCanModerateMembers": S.optional(S.String),
-  "whoCanTakeTopics": S.optional(S.String),
-  "whoCanAssistContent": S.optional(S.String),
-  "messageModerationLevel": S.optional(S.String),
-  "maxMessageBytes": S.optional(S.Number),
-  "whoCanViewMembership": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "primaryLanguage": S.optional(S.String),
-  "defaultMessageDenyNotificationText": S.optional(S.String),
-  "customFooterText": S.optional(S.String),
-  "allowExternalMembers": S.optional(S.String),
-  "whoCanDiscoverGroup": S.optional(S.String),
-  "whoCanApproveMessages": S.optional(S.String),
-  "customReplyTo": S.optional(S.String),
-  "whoCanInvite": S.optional(S.String),
-  "whoCanUnmarkFavoriteReplyOnAnyTopic": S.optional(S.String),
-  "includeInGlobalAddressList": S.optional(S.String),
-  "membersCanPostAsTheGroup": S.optional(S.String),
-  "whoCanPostAnnouncements": S.optional(S.String),
-  "customRolesEnabledForSettingsToBeMerged": S.optional(S.String),
-  "whoCanMarkFavoriteReplyOnOwnTopic": S.optional(S.String),
-  "whoCanEnterFreeFormTags": S.optional(S.String),
-  "archiveOnly": S.optional(S.String),
-  "whoCanViewGroup": S.optional(S.String),
-  "showInGroupDirectory": S.optional(S.String),
-  "whoCanModifyTagsAndCategories": S.optional(S.String),
-  "description": S.optional(S.String),
-  "whoCanModifyMembers": S.optional(S.String),
-  "whoCanContactOwner": S.optional(S.String),
-  "favoriteRepliesOnTop": S.optional(S.String),
-  "whoCanMoveTopicsOut": S.optional(S.String),
-  "name": S.optional(S.String),
-  "whoCanApproveMembers": S.optional(S.String),
-  "messageDisplayFont": S.optional(S.String),
-  "isArchived": S.optional(S.String),
-  "spamModerationLevel": S.optional(S.String),
-}),
+  S.Struct({
+    whoCanUnassignTopic: S.optional(S.String),
+    whoCanAdd: S.optional(S.String),
+    whoCanLeaveGroup: S.optional(S.String),
+    whoCanAddReferences: S.optional(S.String),
+    whoCanMarkDuplicate: S.optional(S.String),
+    whoCanDeleteAnyPost: S.optional(S.String),
+    sendMessageDenyNotification: S.optional(S.String),
+    whoCanAddExternalMembers: S.optional(S.String),
+    whoCanAssignTopics: S.optional(S.String),
+    whoCanLockTopics: S.optional(S.String),
+    whoCanMarkNoResponseNeeded: S.optional(S.String),
+    includeCustomFooter: S.optional(S.String),
+    whoCanMoveTopicsIn: S.optional(S.String),
+    whoCanJoin: S.optional(S.String),
+    whoCanDeleteTopics: S.optional(S.String),
+    default_sender: S.optional(S.String),
+    whoCanBanUsers: S.optional(S.String),
+    whoCanPostMessage: S.optional(S.String),
+    whoCanMarkFavoriteReplyOnAnyTopic: S.optional(S.String),
+    replyTo: S.optional(S.String),
+    whoCanMakeTopicsSticky: S.optional(S.String),
+    allowWebPosting: S.optional(S.String),
+    whoCanHideAbuse: S.optional(S.String),
+    email: S.optional(S.String),
+    enableCollaborativeInbox: S.optional(S.String),
+    allowGoogleCommunication: S.optional(S.String),
+    whoCanModerateContent: S.optional(S.String),
+    whoCanModerateMembers: S.optional(S.String),
+    whoCanTakeTopics: S.optional(S.String),
+    whoCanAssistContent: S.optional(S.String),
+    messageModerationLevel: S.optional(S.String),
+    maxMessageBytes: S.optional(S.Number),
+    whoCanViewMembership: S.optional(S.String),
+    kind: S.optional(S.String),
+    primaryLanguage: S.optional(S.String),
+    defaultMessageDenyNotificationText: S.optional(S.String),
+    customFooterText: S.optional(S.String),
+    allowExternalMembers: S.optional(S.String),
+    whoCanDiscoverGroup: S.optional(S.String),
+    whoCanApproveMessages: S.optional(S.String),
+    customReplyTo: S.optional(S.String),
+    whoCanInvite: S.optional(S.String),
+    whoCanUnmarkFavoriteReplyOnAnyTopic: S.optional(S.String),
+    includeInGlobalAddressList: S.optional(S.String),
+    membersCanPostAsTheGroup: S.optional(S.String),
+    whoCanPostAnnouncements: S.optional(S.String),
+    customRolesEnabledForSettingsToBeMerged: S.optional(S.String),
+    whoCanMarkFavoriteReplyOnOwnTopic: S.optional(S.String),
+    whoCanEnterFreeFormTags: S.optional(S.String),
+    archiveOnly: S.optional(S.String),
+    whoCanViewGroup: S.optional(S.String),
+    showInGroupDirectory: S.optional(S.String),
+    whoCanModifyTagsAndCategories: S.optional(S.String),
+    description: S.optional(S.String),
+    whoCanModifyMembers: S.optional(S.String),
+    whoCanContactOwner: S.optional(S.String),
+    favoriteRepliesOnTop: S.optional(S.String),
+    whoCanMoveTopicsOut: S.optional(S.String),
+    name: S.optional(S.String),
+    whoCanApproveMembers: S.optional(S.String),
+    messageDisplayFont: S.optional(S.String),
+    isArchived: S.optional(S.String),
+    spamModerationLevel: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Groups" }) as any as S.Schema<Groups>;
 
 export interface PatchGroupsRequest {
@@ -274,11 +282,19 @@ export interface PatchGroupsRequest {
   body?: Groups;
 }
 export const PatchGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "groupUniqueId": S.String.pipe(T.Label()),
-  "body": S.optional(Groups.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"{groupUniqueId}","baseUrl":"https://www.googleapis.com/groups/v1/groups/"})),
-).annotate({ identifier: "PatchGroupsRequest" }) as any as S.Schema<PatchGroupsRequest>;
+  S.Struct({
+    groupUniqueId: S.String.pipe(T.Label()),
+    body: S.optional(Groups.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "{groupUniqueId}",
+      baseUrl: "https://www.googleapis.com/groups/v1/groups/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchGroupsRequest",
+}) as any as S.Schema<PatchGroupsRequest>;
 
 export interface UpdateGroupsRequest {
   /** The group's email address. */
@@ -287,11 +303,19 @@ export interface UpdateGroupsRequest {
   body?: Groups;
 }
 export const UpdateGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "groupUniqueId": S.String.pipe(T.Label()),
-  "body": S.optional(Groups.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"{groupUniqueId}","baseUrl":"https://www.googleapis.com/groups/v1/groups/"})),
-).annotate({ identifier: "UpdateGroupsRequest" }) as any as S.Schema<UpdateGroupsRequest>;
+  S.Struct({
+    groupUniqueId: S.String.pipe(T.Label()),
+    body: S.optional(Groups.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "{groupUniqueId}",
+      baseUrl: "https://www.googleapis.com/groups/v1/groups/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateGroupsRequest",
+}) as any as S.Schema<UpdateGroupsRequest>;
 
 export type GetGroupsError = NotFound | Forbidden | GcpOpError;
 /** Gets one resource by id. */
@@ -308,7 +332,12 @@ export const getGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchGroupsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates an existing resource. This method supports patch semantics. */
 export const patchGroups: API.OperationMethod<
   PatchGroupsRequest,
@@ -323,7 +352,12 @@ export const patchGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateGroupsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates an existing resource. */
 export const updateGroups: API.OperationMethod<
   UpdateGroupsRequest,
@@ -337,4 +371,3 @@ export const updateGroups: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

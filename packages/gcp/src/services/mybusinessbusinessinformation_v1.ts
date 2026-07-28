@@ -13,58 +13,63 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
-export type BatchGetCategoriesViewEnum = "CATEGORY_VIEW_UNSPECIFIED" | "BASIC" | "FULL";
+export type BatchGetCategoriesViewEnum =
+  | "CATEGORY_VIEW_UNSPECIFIED"
+  | "BASIC"
+  | "FULL";
 export const BatchGetCategoriesViewEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 export interface BatchGetCategoriesRequest {
   /** Required. The BCP 47 code of language that the category names should be returned in. */
@@ -77,13 +82,21 @@ export interface BatchGetCategoriesRequest {
   names?: StringList;
 }
 export const BatchGetCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "languageCode": S.optional(S.String.pipe(T.Query())),
-  "regionCode": S.optional(S.String.pipe(T.Query())),
-  "view": S.optional(BatchGetCategoriesViewEnum.pipe(T.Query())),
-  "names": S.optional(StringList.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/categories:batchGet","baseUrl":"https://mybusinessbusinessinformation.googleapis.com/"})),
-).annotate({ identifier: "BatchGetCategoriesRequest" }) as any as S.Schema<BatchGetCategoriesRequest>;
+  S.Struct({
+    languageCode: S.optional(S.String.pipe(T.Query())),
+    regionCode: S.optional(S.String.pipe(T.Query())),
+    view: S.optional(BatchGetCategoriesViewEnum.pipe(T.Query())),
+    names: S.optional(StringList.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/categories:batchGet",
+      baseUrl: "https://mybusinessbusinessinformation.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "BatchGetCategoriesRequest",
+}) as any as S.Schema<BatchGetCategoriesRequest>;
 
 /** More hours types that a business can offers, in addition to its regular hours. */
 export interface MoreHoursType {
@@ -95,15 +108,17 @@ export interface MoreHoursType {
   localizedDisplayName?: string;
 }
 export const MoreHoursType = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "hoursTypeId": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "localizedDisplayName": S.optional(S.String),
-}),
+  S.Struct({
+    hoursTypeId: S.optional(S.String),
+    displayName: S.optional(S.String),
+    localizedDisplayName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "MoreHoursType" }) as any as S.Schema<MoreHoursType>;
 
 export type MoreHoursTypeList = ReadonlyArray<MoreHoursType>;
-export const MoreHoursTypeList = /*@__PURE__*/ S.Array(MoreHoursType) as any as S.Schema<MoreHoursTypeList>;
+export const MoreHoursTypeList = /*@__PURE__*/ S.Array(
+  MoreHoursType,
+) as any as S.Schema<MoreHoursTypeList>;
 
 /** A message describing a service type that the business offers. */
 export interface ServiceType {
@@ -113,14 +128,16 @@ export interface ServiceType {
   serviceTypeId?: string;
 }
 export const ServiceType = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "displayName": S.optional(S.String),
-  "serviceTypeId": S.optional(S.String),
-}),
+  S.Struct({
+    displayName: S.optional(S.String),
+    serviceTypeId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ServiceType" }) as any as S.Schema<ServiceType>;
 
 export type ServiceTypeList = ReadonlyArray<ServiceType>;
-export const ServiceTypeList = /*@__PURE__*/ S.Array(ServiceType) as any as S.Schema<ServiceTypeList>;
+export const ServiceTypeList = /*@__PURE__*/ S.Array(
+  ServiceType,
+) as any as S.Schema<ServiceTypeList>;
 
 /** A category describing what this business is (not what it does). For a list of valid category IDs, and the mappings to their human-readable names, see `categories.list`. */
 export interface Category {
@@ -134,16 +151,18 @@ export interface Category {
   serviceTypes?: ServiceTypeList;
 }
 export const Category = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "moreHoursTypes": S.optional(MoreHoursTypeList),
-  "displayName": S.optional(S.String),
-  "serviceTypes": S.optional(ServiceTypeList),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    moreHoursTypes: S.optional(MoreHoursTypeList),
+    displayName: S.optional(S.String),
+    serviceTypes: S.optional(ServiceTypeList),
+  }),
 ).annotate({ identifier: "Category" }) as any as S.Schema<Category>;
 
 export type CategoryList = ReadonlyArray<Category>;
-export const CategoryList = /*@__PURE__*/ S.Array(Category) as any as S.Schema<CategoryList>;
+export const CategoryList = /*@__PURE__*/ S.Array(
+  Category,
+) as any as S.Schema<CategoryList>;
 
 /** Response message for BusinessCategories.BatchGetBusinessCategories. */
 export interface BatchGetCategoriesResponse {
@@ -151,10 +170,12 @@ export interface BatchGetCategoriesResponse {
   categories?: CategoryList;
 }
 export const BatchGetCategoriesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "categories": S.optional(CategoryList),
-}),
-).annotate({ identifier: "BatchGetCategoriesResponse" }) as any as S.Schema<BatchGetCategoriesResponse>;
+  S.Struct({
+    categories: S.optional(CategoryList),
+  }),
+).annotate({
+  identifier: "BatchGetCategoriesResponse",
+}) as any as S.Schema<BatchGetCategoriesResponse>;
 
 /** Label to be used when displaying the price list, section, or item. */
 export interface Label {
@@ -166,11 +187,11 @@ export interface Label {
   languageCode?: string;
 }
 export const Label = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "displayName": S.optional(S.String),
-  "description": S.optional(S.String),
-  "languageCode": S.optional(S.String),
-}),
+  S.Struct({
+    displayName: S.optional(S.String),
+    description: S.optional(S.String),
+    languageCode: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Label" }) as any as S.Schema<Label>;
 
 /** Represents a free-form service offered by the merchant. These are services that are not exposed as part of our structure service data. The merchant manually enters the names for such services using a geomerchant surface. */
@@ -181,11 +202,13 @@ export interface FreeFormServiceItem {
   label?: Label;
 }
 export const FreeFormServiceItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "category": S.optional(S.String),
-  "label": S.optional(Label),
-}),
-).annotate({ identifier: "FreeFormServiceItem" }) as any as S.Schema<FreeFormServiceItem>;
+  S.Struct({
+    category: S.optional(S.String),
+    label: S.optional(Label),
+  }),
+).annotate({
+  identifier: "FreeFormServiceItem",
+}) as any as S.Schema<FreeFormServiceItem>;
 
 /** Represents a structured service offered by the merchant. For eg: toilet_installation. */
 export interface StructuredServiceItem {
@@ -195,11 +218,13 @@ export interface StructuredServiceItem {
   description?: string;
 }
 export const StructuredServiceItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "serviceTypeId": S.optional(S.String),
-  "description": S.optional(S.String),
-}),
-).annotate({ identifier: "StructuredServiceItem" }) as any as S.Schema<StructuredServiceItem>;
+  S.Struct({
+    serviceTypeId: S.optional(S.String),
+    description: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "StructuredServiceItem",
+}) as any as S.Schema<StructuredServiceItem>;
 
 /** Represents an amount of money with its currency type. */
 export interface Money {
@@ -211,11 +236,11 @@ export interface Money {
   currencyCode?: string;
 }
 export const Money = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "units": S.optional(S.String),
-  "nanos": S.optional(S.Number),
-  "currencyCode": S.optional(S.String),
-}),
+  S.Struct({
+    units: S.optional(S.String),
+    nanos: S.optional(S.Number),
+    currencyCode: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Money" }) as any as S.Schema<Money>;
 
 /** A message that describes a single service item. It is used to describe the type of service that the merchant provides. For example, haircut can be a service. */
@@ -228,17 +253,23 @@ export interface ServiceItem {
   price?: Money;
 }
 export const ServiceItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "freeFormServiceItem": S.optional(FreeFormServiceItem),
-  "structuredServiceItem": S.optional(StructuredServiceItem),
-  "price": S.optional(Money),
-}),
+  S.Struct({
+    freeFormServiceItem: S.optional(FreeFormServiceItem),
+    structuredServiceItem: S.optional(StructuredServiceItem),
+    price: S.optional(Money),
+  }),
 ).annotate({ identifier: "ServiceItem" }) as any as S.Schema<ServiceItem>;
 
 export type ServiceItemList = ReadonlyArray<ServiceItem>;
-export const ServiceItemList = /*@__PURE__*/ S.Array(ServiceItem) as any as S.Schema<ServiceItemList>;
+export const ServiceItemList = /*@__PURE__*/ S.Array(
+  ServiceItem,
+) as any as S.Schema<ServiceItemList>;
 
-export type OpenInfoStatusEnum = "OPEN_FOR_BUSINESS_UNSPECIFIED" | "OPEN" | "CLOSED_PERMANENTLY" | "CLOSED_TEMPORARILY";
+export type OpenInfoStatusEnum =
+  | "OPEN_FOR_BUSINESS_UNSPECIFIED"
+  | "OPEN"
+  | "CLOSED_PERMANENTLY"
+  | "CLOSED_TEMPORARILY";
 export const OpenInfoStatusEnum = /*@__PURE__*/ S.String;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
@@ -251,12 +282,14 @@ export interface Mybusinessbusinessinformation_Date {
   year?: number;
 }
 export const Mybusinessbusinessinformation_Date = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "day": S.optional(S.Number),
-  "month": S.optional(S.Number),
-  "year": S.optional(S.Number),
-}),
-).annotate({ identifier: "Mybusinessbusinessinformation_Date" }) as any as S.Schema<Mybusinessbusinessinformation_Date>;
+  S.Struct({
+    day: S.optional(S.Number),
+    month: S.optional(S.Number),
+    year: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "Mybusinessbusinessinformation_Date",
+}) as any as S.Schema<Mybusinessbusinessinformation_Date>;
 
 /** Information related to the opening state of the business. */
 export interface OpenInfo {
@@ -268,11 +301,11 @@ export interface OpenInfo {
   openingDate?: Mybusinessbusinessinformation_Date;
 }
 export const OpenInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "canReopen": S.optional(S.Boolean),
-  "status": S.optional(OpenInfoStatusEnum),
-  "openingDate": S.optional(Mybusinessbusinessinformation_Date),
-}),
+  S.Struct({
+    canReopen: S.optional(S.Boolean),
+    status: S.optional(OpenInfoStatusEnum),
+    openingDate: S.optional(Mybusinessbusinessinformation_Date),
+  }),
 ).annotate({ identifier: "OpenInfo" }) as any as S.Schema<OpenInfo>;
 
 /** Additional information that is surfaced in AdWords. */
@@ -281,12 +314,22 @@ export interface AdWordsLocationExtensions {
   adPhone?: string;
 }
 export const AdWordsLocationExtensions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "adPhone": S.optional(S.String),
-}),
-).annotate({ identifier: "AdWordsLocationExtensions" }) as any as S.Schema<AdWordsLocationExtensions>;
+  S.Struct({
+    adPhone: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AdWordsLocationExtensions",
+}) as any as S.Schema<AdWordsLocationExtensions>;
 
-export type TimePeriodOpenDayEnum = "DAY_OF_WEEK_UNSPECIFIED" | "MONDAY" | "TUESDAY" | "WEDNESDAY" | "THURSDAY" | "FRIDAY" | "SATURDAY" | "SUNDAY";
+export type TimePeriodOpenDayEnum =
+  | "DAY_OF_WEEK_UNSPECIFIED"
+  | "MONDAY"
+  | "TUESDAY"
+  | "WEDNESDAY"
+  | "THURSDAY"
+  | "FRIDAY"
+  | "SATURDAY"
+  | "SUNDAY";
 export const TimePeriodOpenDayEnum = /*@__PURE__*/ S.String;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
@@ -301,15 +344,23 @@ export interface TimeOfDay {
   nanos?: number;
 }
 export const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "hours": S.optional(S.Number),
-  "minutes": S.optional(S.Number),
-  "seconds": S.optional(S.Number),
-  "nanos": S.optional(S.Number),
-}),
+  S.Struct({
+    hours: S.optional(S.Number),
+    minutes: S.optional(S.Number),
+    seconds: S.optional(S.Number),
+    nanos: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "TimeOfDay" }) as any as S.Schema<TimeOfDay>;
 
-export type TimePeriodCloseDayEnum = "DAY_OF_WEEK_UNSPECIFIED" | "MONDAY" | "TUESDAY" | "WEDNESDAY" | "THURSDAY" | "FRIDAY" | "SATURDAY" | "SUNDAY";
+export type TimePeriodCloseDayEnum =
+  | "DAY_OF_WEEK_UNSPECIFIED"
+  | "MONDAY"
+  | "TUESDAY"
+  | "WEDNESDAY"
+  | "THURSDAY"
+  | "FRIDAY"
+  | "SATURDAY"
+  | "SUNDAY";
 export const TimePeriodCloseDayEnum = /*@__PURE__*/ S.String;
 
 /** Represents a span of time that the business is open, starting on the specified open day/time and closing on the specified close day/time. The closing time must occur after the opening time, for example later in the same day, or on a subsequent day. */
@@ -324,16 +375,18 @@ export interface TimePeriod {
   closeDay?: TimePeriodCloseDayEnum;
 }
 export const TimePeriod = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "openDay": S.optional(TimePeriodOpenDayEnum),
-  "openTime": S.optional(TimeOfDay),
-  "closeTime": S.optional(TimeOfDay),
-  "closeDay": S.optional(TimePeriodCloseDayEnum),
-}),
+  S.Struct({
+    openDay: S.optional(TimePeriodOpenDayEnum),
+    openTime: S.optional(TimeOfDay),
+    closeTime: S.optional(TimeOfDay),
+    closeDay: S.optional(TimePeriodCloseDayEnum),
+  }),
 ).annotate({ identifier: "TimePeriod" }) as any as S.Schema<TimePeriod>;
 
 export type TimePeriodList = ReadonlyArray<TimePeriod>;
-export const TimePeriodList = /*@__PURE__*/ S.Array(TimePeriod) as any as S.Schema<TimePeriodList>;
+export const TimePeriodList = /*@__PURE__*/ S.Array(
+  TimePeriod,
+) as any as S.Schema<TimePeriodList>;
 
 /** The time periods during which a location is open for certain types of business. */
 export interface MoreHours {
@@ -343,14 +396,16 @@ export interface MoreHours {
   periods?: TimePeriodList;
 }
 export const MoreHours = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "hoursTypeId": S.optional(S.String),
-  "periods": S.optional(TimePeriodList),
-}),
+  S.Struct({
+    hoursTypeId: S.optional(S.String),
+    periods: S.optional(TimePeriodList),
+  }),
 ).annotate({ identifier: "MoreHours" }) as any as S.Schema<MoreHours>;
 
 export type MoreHoursList = ReadonlyArray<MoreHours>;
-export const MoreHoursList = /*@__PURE__*/ S.Array(MoreHours) as any as S.Schema<MoreHoursList>;
+export const MoreHoursList = /*@__PURE__*/ S.Array(
+  MoreHours,
+) as any as S.Schema<MoreHoursList>;
 
 /** A collection of phone numbers for the business. During updates, both fields must be set. Clients may not update just the primary or additional phone numbers using the update mask. International phone format is preferred, such as "+1 415 555 0132", see more in (https://developers.google.com/style/phone-numbers#international-phone-numbers). */
 export interface PhoneNumbers {
@@ -360,10 +415,10 @@ export interface PhoneNumbers {
   additionalPhones?: StringList;
 }
 export const PhoneNumbers = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "primaryPhone": S.optional(S.String),
-  "additionalPhones": S.optional(StringList),
-}),
+  S.Struct({
+    primaryPhone: S.optional(S.String),
+    additionalPhones: S.optional(StringList),
+  }),
 ).annotate({ identifier: "PhoneNumbers" }) as any as S.Schema<PhoneNumbers>;
 
 /** Represents a single time period when a location's operational hours differ from its normal business hours. A special hour period must represent a range of less than 24 hours. The `open_time` and `start_date` must predate the `close_time` and `end_date`. The `close_time` and `end_date` can extend to 11:59 a.m. on the day after the specified `start_date`. For example, the following inputs are valid: start_date=2015-11-23, open_time=08:00, close_time=18:00 start_date=2015-11-23, end_date=2015-11-23, open_time=08:00, close_time=18:00 start_date=2015-11-23, end_date=2015-11-24, open_time=13:00, close_time=11:59 The following inputs are not valid: start_date=2015-11-23, open_time=13:00, close_time=11:59 start_date=2015-11-23, end_date=2015-11-24, open_time=13:00, close_time=12:00 start_date=2015-11-23, end_date=2015-11-25, open_time=08:00, close_time=18:00 */
@@ -380,17 +435,21 @@ export interface SpecialHourPeriod {
   startDate?: Mybusinessbusinessinformation_Date;
 }
 export const SpecialHourPeriod = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "openTime": S.optional(TimeOfDay),
-  "closeTime": S.optional(TimeOfDay),
-  "closed": S.optional(S.Boolean),
-  "endDate": S.optional(Mybusinessbusinessinformation_Date),
-  "startDate": S.optional(Mybusinessbusinessinformation_Date),
-}),
-).annotate({ identifier: "SpecialHourPeriod" }) as any as S.Schema<SpecialHourPeriod>;
+  S.Struct({
+    openTime: S.optional(TimeOfDay),
+    closeTime: S.optional(TimeOfDay),
+    closed: S.optional(S.Boolean),
+    endDate: S.optional(Mybusinessbusinessinformation_Date),
+    startDate: S.optional(Mybusinessbusinessinformation_Date),
+  }),
+).annotate({
+  identifier: "SpecialHourPeriod",
+}) as any as S.Schema<SpecialHourPeriod>;
 
 export type SpecialHourPeriodList = ReadonlyArray<SpecialHourPeriod>;
-export const SpecialHourPeriodList = /*@__PURE__*/ S.Array(SpecialHourPeriod) as any as S.Schema<SpecialHourPeriodList>;
+export const SpecialHourPeriodList = /*@__PURE__*/ S.Array(
+  SpecialHourPeriod,
+) as any as S.Schema<SpecialHourPeriodList>;
 
 /** Represents a set of time periods when a location's operational hours differ from its normal business hours. */
 export interface SpecialHours {
@@ -398,9 +457,9 @@ export interface SpecialHours {
   specialHourPeriods?: SpecialHourPeriodList;
 }
 export const SpecialHours = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "specialHourPeriods": S.optional(SpecialHourPeriodList),
-}),
+  S.Struct({
+    specialHourPeriods: S.optional(SpecialHourPeriodList),
+  }),
 ).annotate({ identifier: "SpecialHours" }) as any as S.Schema<SpecialHours>;
 
 /** All information pertaining to the location's profile. */
@@ -409,12 +468,15 @@ export interface Profile {
   description?: string;
 }
 export const Profile = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "description": S.optional(S.String),
-}),
+  S.Struct({
+    description: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Profile" }) as any as S.Schema<Profile>;
 
-export type ServiceAreaBusinessBusinessTypeEnum = "BUSINESS_TYPE_UNSPECIFIED" | "CUSTOMER_LOCATION_ONLY" | "CUSTOMER_AND_BUSINESS_LOCATION";
+export type ServiceAreaBusinessBusinessTypeEnum =
+  | "BUSINESS_TYPE_UNSPECIFIED"
+  | "CUSTOMER_LOCATION_ONLY"
+  | "CUSTOMER_AND_BUSINESS_LOCATION";
 export const ServiceAreaBusinessBusinessTypeEnum = /*@__PURE__*/ S.String;
 
 /** Defines an area that's represented by a place ID. */
@@ -425,14 +487,16 @@ export interface PlaceInfo {
   placeId?: string;
 }
 export const PlaceInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "placeName": S.optional(S.String),
-  "placeId": S.optional(S.String),
-}),
+  S.Struct({
+    placeName: S.optional(S.String),
+    placeId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "PlaceInfo" }) as any as S.Schema<PlaceInfo>;
 
 export type PlaceInfoList = ReadonlyArray<PlaceInfo>;
-export const PlaceInfoList = /*@__PURE__*/ S.Array(PlaceInfo) as any as S.Schema<PlaceInfoList>;
+export const PlaceInfoList = /*@__PURE__*/ S.Array(
+  PlaceInfo,
+) as any as S.Schema<PlaceInfoList>;
 
 /** Defines the union of areas represented by a set of places. */
 export interface Places {
@@ -440,9 +504,9 @@ export interface Places {
   placeInfos?: PlaceInfoList;
 }
 export const Places = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "placeInfos": S.optional(PlaceInfoList),
-}),
+  S.Struct({
+    placeInfos: S.optional(PlaceInfoList),
+  }),
 ).annotate({ identifier: "Places" }) as any as S.Schema<Places>;
 
 /** Service area businesses provide their service at the customer's location (for example, a locksmith or plumber). */
@@ -455,12 +519,14 @@ export interface ServiceAreaBusiness {
   places?: Places;
 }
 export const ServiceAreaBusiness = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "businessType": S.optional(ServiceAreaBusinessBusinessTypeEnum),
-  "regionCode": S.optional(S.String),
-  "places": S.optional(Places),
-}),
-).annotate({ identifier: "ServiceAreaBusiness" }) as any as S.Schema<ServiceAreaBusiness>;
+  S.Struct({
+    businessType: S.optional(ServiceAreaBusinessBusinessTypeEnum),
+    regionCode: S.optional(S.String),
+    places: S.optional(Places),
+  }),
+).annotate({
+  identifier: "ServiceAreaBusiness",
+}) as any as S.Schema<ServiceAreaBusiness>;
 
 /** Represents a postal address, such as for postal delivery or payments addresses. With a postal address, a postal service can deliver items to a premise, P.O. box, or similar. A postal address is not intended to model geographical locations like roads, towns, or mountains. In typical usage, an address would be created by user input or from importing existing data, depending on the type of process. Advice on address input or editing: - Use an internationalization-ready address widget such as https://github.com/google/libaddressinput. - Users should not be presented with UI elements for input or editing of fields outside countries where that field is used. For more guidance on how to use this schema, see: https://support.google.com/business/answer/6397478. */
 export interface PostalAddress {
@@ -488,19 +554,19 @@ export interface PostalAddress {
   administrativeArea?: string;
 }
 export const PostalAddress = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locality": S.optional(S.String),
-  "recipients": S.optional(StringList),
-  "addressLines": S.optional(StringList),
-  "regionCode": S.optional(S.String),
-  "postalCode": S.optional(S.String),
-  "sublocality": S.optional(S.String),
-  "organization": S.optional(S.String),
-  "revision": S.optional(S.Number),
-  "sortingCode": S.optional(S.String),
-  "languageCode": S.optional(S.String),
-  "administrativeArea": S.optional(S.String),
-}),
+  S.Struct({
+    locality: S.optional(S.String),
+    recipients: S.optional(StringList),
+    addressLines: S.optional(StringList),
+    regionCode: S.optional(S.String),
+    postalCode: S.optional(S.String),
+    sublocality: S.optional(S.String),
+    organization: S.optional(S.String),
+    revision: S.optional(S.Number),
+    sortingCode: S.optional(S.String),
+    languageCode: S.optional(S.String),
+    administrativeArea: S.optional(S.String),
+  }),
 ).annotate({ identifier: "PostalAddress" }) as any as S.Schema<PostalAddress>;
 
 /** A collection of categories that describes the business. During updates, both fields must be set. Clients are prohibited from individually updating the primary or additional categories using the update mask. */
@@ -511,13 +577,16 @@ export interface Categories {
   additionalCategories?: CategoryList;
 }
 export const Categories = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "primaryCategory": S.optional(Category),
-  "additionalCategories": S.optional(CategoryList),
-}),
+  S.Struct({
+    primaryCategory: S.optional(Category),
+    additionalCategories: S.optional(CategoryList),
+  }),
 ).annotate({ identifier: "Categories" }) as any as S.Schema<Categories>;
 
-export type RelevantLocationRelationTypeEnum = "RELATION_TYPE_UNSPECIFIED" | "DEPARTMENT_OF" | "INDEPENDENT_ESTABLISHMENT_IN";
+export type RelevantLocationRelationTypeEnum =
+  | "RELATION_TYPE_UNSPECIFIED"
+  | "DEPARTMENT_OF"
+  | "INDEPENDENT_ESTABLISHMENT_IN";
 export const RelevantLocationRelationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Information about another location that is related to current one. The relation can be any one of DEPARTMENT_OF or INDEPENDENT_ESTABLISHMENT_OF, and the location specified here can be on either side (parent/child) of the location. */
@@ -528,14 +597,18 @@ export interface RelevantLocation {
   relationType?: RelevantLocationRelationTypeEnum;
 }
 export const RelevantLocation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "placeId": S.optional(S.String),
-  "relationType": S.optional(RelevantLocationRelationTypeEnum),
-}),
-).annotate({ identifier: "RelevantLocation" }) as any as S.Schema<RelevantLocation>;
+  S.Struct({
+    placeId: S.optional(S.String),
+    relationType: S.optional(RelevantLocationRelationTypeEnum),
+  }),
+).annotate({
+  identifier: "RelevantLocation",
+}) as any as S.Schema<RelevantLocation>;
 
 export type RelevantLocationList = ReadonlyArray<RelevantLocation>;
-export const RelevantLocationList = /*@__PURE__*/ S.Array(RelevantLocation) as any as S.Schema<RelevantLocationList>;
+export const RelevantLocationList = /*@__PURE__*/ S.Array(
+  RelevantLocation,
+) as any as S.Schema<RelevantLocationList>;
 
 /** Information of all parent and children locations related to this one. */
 export interface RelationshipData {
@@ -547,12 +620,14 @@ export interface RelationshipData {
   parentLocation?: RelevantLocation;
 }
 export const RelationshipData = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "childrenLocations": S.optional(RelevantLocationList),
-  "parentChain": S.optional(S.String),
-  "parentLocation": S.optional(RelevantLocation),
-}),
-).annotate({ identifier: "RelationshipData" }) as any as S.Schema<RelationshipData>;
+  S.Struct({
+    childrenLocations: S.optional(RelevantLocationList),
+    parentChain: S.optional(S.String),
+    parentLocation: S.optional(RelevantLocation),
+  }),
+).annotate({
+  identifier: "RelationshipData",
+}) as any as S.Schema<RelationshipData>;
 
 /** An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this object must conform to the WGS84 standard. Values must be within normalized ranges. */
 export interface LatLng {
@@ -562,10 +637,10 @@ export interface LatLng {
   longitude?: number;
 }
 export const LatLng = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "latitude": S.optional(S.Number),
-  "longitude": S.optional(S.Number),
-}),
+  S.Struct({
+    latitude: S.optional(S.Number),
+    longitude: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "LatLng" }) as any as S.Schema<LatLng>;
 
 /** Represents the time periods that this location is open for business. Holds a collection of TimePeriod instances. */
@@ -574,9 +649,9 @@ export interface BusinessHours {
   periods?: TimePeriodList;
 }
 export const BusinessHours = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "periods": S.optional(TimePeriodList),
-}),
+  S.Struct({
+    periods: S.optional(TimePeriodList),
+  }),
 ).annotate({ identifier: "BusinessHours" }) as any as S.Schema<BusinessHours>;
 
 /** Additional non-user-editable information about the location. */
@@ -613,23 +688,23 @@ export interface Metadata {
   canOperateLodgingData?: boolean;
 }
 export const Metadata = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "placeId": S.optional(S.String),
-  "canHaveFoodMenus": S.optional(S.Boolean),
-  "duplicateLocation": S.optional(S.String),
-  "mapsUri": S.optional(S.String),
-  "canDelete": S.optional(S.Boolean),
-  "hasPendingEdits": S.optional(S.Boolean),
-  "isParticularlyPersonalPlace": S.optional(S.Boolean),
-  "hasGoogleUpdated": S.optional(S.Boolean),
-  "canModifyServiceList": S.optional(S.Boolean),
-  "canHaveBusinessCalls": S.optional(S.Boolean),
-  "canOperateHealthData": S.optional(S.Boolean),
-  "canOperateLocalPost": S.optional(S.Boolean),
-  "hasVoiceOfMerchant": S.optional(S.Boolean),
-  "newReviewUri": S.optional(S.String),
-  "canOperateLodgingData": S.optional(S.Boolean),
-}),
+  S.Struct({
+    placeId: S.optional(S.String),
+    canHaveFoodMenus: S.optional(S.Boolean),
+    duplicateLocation: S.optional(S.String),
+    mapsUri: S.optional(S.String),
+    canDelete: S.optional(S.Boolean),
+    hasPendingEdits: S.optional(S.Boolean),
+    isParticularlyPersonalPlace: S.optional(S.Boolean),
+    hasGoogleUpdated: S.optional(S.Boolean),
+    canModifyServiceList: S.optional(S.Boolean),
+    canHaveBusinessCalls: S.optional(S.Boolean),
+    canOperateHealthData: S.optional(S.Boolean),
+    canOperateLocalPost: S.optional(S.Boolean),
+    hasVoiceOfMerchant: S.optional(S.Boolean),
+    newReviewUri: S.optional(S.String),
+    canOperateLodgingData: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "Metadata" }) as any as S.Schema<Metadata>;
 
 /** A location. See the [help center article] (https://support.google.com/business/answer/3038177) for a detailed description of these fields, or the [category endpoint](/my-business/reference/rest/v4/categories) for a list of valid business categories. */
@@ -676,28 +751,28 @@ export interface Location {
   metadata?: Metadata;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "serviceItems": S.optional(ServiceItemList),
-  "openInfo": S.optional(OpenInfo),
-  "adWordsLocationExtensions": S.optional(AdWordsLocationExtensions),
-  "languageCode": S.optional(S.String),
-  "moreHours": S.optional(MoreHoursList),
-  "storeCode": S.optional(S.String),
-  "phoneNumbers": S.optional(PhoneNumbers),
-  "specialHours": S.optional(SpecialHours),
-  "profile": S.optional(Profile),
-  "serviceArea": S.optional(ServiceAreaBusiness),
-  "storefrontAddress": S.optional(PostalAddress),
-  "title": S.optional(S.String),
-  "name": S.optional(S.String),
-  "labels": S.optional(StringList),
-  "categories": S.optional(Categories),
-  "relationshipData": S.optional(RelationshipData),
-  "websiteUri": S.optional(S.String),
-  "latlng": S.optional(LatLng),
-  "regularHours": S.optional(BusinessHours),
-  "metadata": S.optional(Metadata),
-}),
+  S.Struct({
+    serviceItems: S.optional(ServiceItemList),
+    openInfo: S.optional(OpenInfo),
+    adWordsLocationExtensions: S.optional(AdWordsLocationExtensions),
+    languageCode: S.optional(S.String),
+    moreHours: S.optional(MoreHoursList),
+    storeCode: S.optional(S.String),
+    phoneNumbers: S.optional(PhoneNumbers),
+    specialHours: S.optional(SpecialHours),
+    profile: S.optional(Profile),
+    serviceArea: S.optional(ServiceAreaBusiness),
+    storefrontAddress: S.optional(PostalAddress),
+    title: S.optional(S.String),
+    name: S.optional(S.String),
+    labels: S.optional(StringList),
+    categories: S.optional(Categories),
+    relationshipData: S.optional(RelationshipData),
+    websiteUri: S.optional(S.String),
+    latlng: S.optional(LatLng),
+    regularHours: S.optional(BusinessHours),
+    metadata: S.optional(Metadata),
+  }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export interface CreateAccountsLocationsRequest {
@@ -711,41 +786,70 @@ export interface CreateAccountsLocationsRequest {
   body?: Location;
 }
 export const CreateAccountsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(Location.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/locations","baseUrl":"https://mybusinessbusinessinformation.googleapis.com/"})),
-).annotate({ identifier: "CreateAccountsLocationsRequest" }) as any as S.Schema<CreateAccountsLocationsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    requestId: S.optional(S.String.pipe(T.Query())),
+    validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+    body: S.optional(Location.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/locations",
+      baseUrl: "https://mybusinessbusinessinformation.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateAccountsLocationsRequest",
+}) as any as S.Schema<CreateAccountsLocationsRequest>;
 
 export interface DeleteLocationsRequest {
   /** Required. The name of the location to delete. */
   name: string;
 }
 export const DeleteLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://mybusinessbusinessinformation.googleapis.com/"})),
-).annotate({ identifier: "DeleteLocationsRequest" }) as any as S.Schema<DeleteLocationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://mybusinessbusinessinformation.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteLocationsRequest",
+}) as any as S.Schema<DeleteLocationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 export interface GetAttributesLocationsRequest {
   /** Required. Google identifier for this location in the form of `locations/{location_id}/attributes`. */
   name: string;
 }
 export const GetAttributesLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://mybusinessbusinessinformation.googleapis.com/"})),
-).annotate({ identifier: "GetAttributesLocationsRequest" }) as any as S.Schema<GetAttributesLocationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://mybusinessbusinessinformation.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetAttributesLocationsRequest",
+}) as any as S.Schema<GetAttributesLocationsRequest>;
 
-export type AttributeValueTypeEnum = "ATTRIBUTE_VALUE_TYPE_UNSPECIFIED" | "BOOL" | "ENUM" | "URL" | "REPEATED_ENUM";
+export type AttributeValueTypeEnum =
+  | "ATTRIBUTE_VALUE_TYPE_UNSPECIFIED"
+  | "BOOL"
+  | "ENUM"
+  | "URL"
+  | "REPEATED_ENUM";
 export const AttributeValueTypeEnum = /*@__PURE__*/ S.String;
 
 /** Values for an attribute with a `value_type` of REPEATED_ENUM. This consists of two lists of value IDs: those that are set (true) and those that are unset (false). Values absent are considered unknown. At least one value must be specified. */
@@ -756,14 +860,18 @@ export interface RepeatedEnumAttributeValue {
   unsetValues?: StringList;
 }
 export const RepeatedEnumAttributeValue = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "setValues": S.optional(StringList),
-  "unsetValues": S.optional(StringList),
-}),
-).annotate({ identifier: "RepeatedEnumAttributeValue" }) as any as S.Schema<RepeatedEnumAttributeValue>;
+  S.Struct({
+    setValues: S.optional(StringList),
+    unsetValues: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "RepeatedEnumAttributeValue",
+}) as any as S.Schema<RepeatedEnumAttributeValue>;
 
 export type DocumentList = ReadonlyArray<unknown>;
-export const DocumentList = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Schema<DocumentList>;
+export const DocumentList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<DocumentList>;
 
 /** Values for an attribute with a `value_type` of URL. */
 export interface UriAttributeValue {
@@ -771,13 +879,17 @@ export interface UriAttributeValue {
   uri?: string;
 }
 export const UriAttributeValue = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "uri": S.optional(S.String),
-}),
-).annotate({ identifier: "UriAttributeValue" }) as any as S.Schema<UriAttributeValue>;
+  S.Struct({
+    uri: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UriAttributeValue",
+}) as any as S.Schema<UriAttributeValue>;
 
 export type UriAttributeValueList = ReadonlyArray<UriAttributeValue>;
-export const UriAttributeValueList = /*@__PURE__*/ S.Array(UriAttributeValue) as any as S.Schema<UriAttributeValueList>;
+export const UriAttributeValueList = /*@__PURE__*/ S.Array(
+  UriAttributeValue,
+) as any as S.Schema<UriAttributeValueList>;
 
 /** A location attribute. Attributes provide additional information about a location. The attributes that can be set on a location may vary based on the properties of that location (for example, category). Available attributes are determined by Google and may be added and removed without API changes. */
 export interface Attribute {
@@ -793,17 +905,19 @@ export interface Attribute {
   uriValues?: UriAttributeValueList;
 }
 export const Attribute = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "valueType": S.optional(AttributeValueTypeEnum),
-  "repeatedEnumValue": S.optional(RepeatedEnumAttributeValue),
-  "name": S.optional(S.String),
-  "values": S.optional(DocumentList),
-  "uriValues": S.optional(UriAttributeValueList),
-}),
+  S.Struct({
+    valueType: S.optional(AttributeValueTypeEnum),
+    repeatedEnumValue: S.optional(RepeatedEnumAttributeValue),
+    name: S.optional(S.String),
+    values: S.optional(DocumentList),
+    uriValues: S.optional(UriAttributeValueList),
+  }),
 ).annotate({ identifier: "Attribute" }) as any as S.Schema<Attribute>;
 
 export type AttributeList = ReadonlyArray<Attribute>;
-export const AttributeList = /*@__PURE__*/ S.Array(Attribute) as any as S.Schema<AttributeList>;
+export const AttributeList = /*@__PURE__*/ S.Array(
+  Attribute,
+) as any as S.Schema<AttributeList>;
 
 /** A container for all the attributes for a given location. */
 export interface Attributes {
@@ -813,10 +927,10 @@ export interface Attributes {
   attributes?: AttributeList;
 }
 export const Attributes = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "attributes": S.optional(AttributeList),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    attributes: S.optional(AttributeList),
+  }),
 ).annotate({ identifier: "Attributes" }) as any as S.Schema<Attributes>;
 
 export interface GetChainsRequest {
@@ -824,10 +938,18 @@ export interface GetChainsRequest {
   name: string;
 }
 export const GetChainsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://mybusinessbusinessinformation.googleapis.com/"})),
-).annotate({ identifier: "GetChainsRequest" }) as any as S.Schema<GetChainsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://mybusinessbusinessinformation.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetChainsRequest",
+}) as any as S.Schema<GetChainsRequest>;
 
 /** Name to be used when displaying the chain. */
 export interface ChainName {
@@ -837,14 +959,16 @@ export interface ChainName {
   displayName?: string;
 }
 export const ChainName = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "languageCode": S.optional(S.String),
-  "displayName": S.optional(S.String),
-}),
+  S.Struct({
+    languageCode: S.optional(S.String),
+    displayName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ChainName" }) as any as S.Schema<ChainName>;
 
 export type ChainNameList = ReadonlyArray<ChainName>;
-export const ChainNameList = /*@__PURE__*/ S.Array(ChainName) as any as S.Schema<ChainNameList>;
+export const ChainNameList = /*@__PURE__*/ S.Array(
+  ChainName,
+) as any as S.Schema<ChainNameList>;
 
 /** Url to be used when displaying the chain. */
 export interface ChainUri {
@@ -852,13 +976,15 @@ export interface ChainUri {
   uri?: string;
 }
 export const ChainUri = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "uri": S.optional(S.String),
-}),
+  S.Struct({
+    uri: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ChainUri" }) as any as S.Schema<ChainUri>;
 
 export type ChainUriList = ReadonlyArray<ChainUri>;
-export const ChainUriList = /*@__PURE__*/ S.Array(ChainUri) as any as S.Schema<ChainUriList>;
+export const ChainUriList = /*@__PURE__*/ S.Array(
+  ChainUri,
+) as any as S.Schema<ChainUriList>;
 
 /** A chain is a brand that your business's locations can be affiliated with. */
 export interface Chain {
@@ -872,12 +998,12 @@ export interface Chain {
   websites?: ChainUriList;
 }
 export const Chain = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "locationCount": S.optional(S.Number),
-  "chainNames": S.optional(ChainNameList),
-  "websites": S.optional(ChainUriList),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    locationCount: S.optional(S.Number),
+    chainNames: S.optional(ChainNameList),
+    websites: S.optional(ChainUriList),
+  }),
 ).annotate({ identifier: "Chain" }) as any as S.Schema<Chain>;
 
 export interface GetGoogleUpdatedLocationsRequest {
@@ -887,11 +1013,19 @@ export interface GetGoogleUpdatedLocationsRequest {
   readMask?: string;
 }
 export const GetGoogleUpdatedLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "readMask": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:getGoogleUpdated","baseUrl":"https://mybusinessbusinessinformation.googleapis.com/"})),
-).annotate({ identifier: "GetGoogleUpdatedLocationsRequest" }) as any as S.Schema<GetGoogleUpdatedLocationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    readMask: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}:getGoogleUpdated",
+      baseUrl: "https://mybusinessbusinessinformation.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetGoogleUpdatedLocationsRequest",
+}) as any as S.Schema<GetGoogleUpdatedLocationsRequest>;
 
 /** Represents the view of a location as it appears to consumers, which includes updates that are currently serving on Google Maps and Search. */
 export interface GoogleUpdatedLocation {
@@ -903,22 +1037,33 @@ export interface GoogleUpdatedLocation {
   pendingMask?: string;
 }
 export const GoogleUpdatedLocation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "location": S.optional(Location),
-  "diffMask": S.optional(S.String),
-  "pendingMask": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleUpdatedLocation" }) as any as S.Schema<GoogleUpdatedLocation>;
+  S.Struct({
+    location: S.optional(Location),
+    diffMask: S.optional(S.String),
+    pendingMask: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleUpdatedLocation",
+}) as any as S.Schema<GoogleUpdatedLocation>;
 
 export interface GetGoogleUpdatedLocationsAttributesRequest {
   /** Required. Google identifier for this location in the form of `locations/{location_id}/attributes`. */
   name: string;
 }
-export const GetGoogleUpdatedLocationsAttributesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:getGoogleUpdated","baseUrl":"https://mybusinessbusinessinformation.googleapis.com/"})),
-).annotate({ identifier: "GetGoogleUpdatedLocationsAttributesRequest" }) as any as S.Schema<GetGoogleUpdatedLocationsAttributesRequest>;
+export const GetGoogleUpdatedLocationsAttributesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}:getGoogleUpdated",
+        baseUrl: "https://mybusinessbusinessinformation.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetGoogleUpdatedLocationsAttributesRequest",
+  }) as any as S.Schema<GetGoogleUpdatedLocationsAttributesRequest>;
 
 export interface GetLocationsRequest {
   /** Required. The name of the location to fetch. */
@@ -927,11 +1072,19 @@ export interface GetLocationsRequest {
   readMask?: string;
 }
 export const GetLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "readMask": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://mybusinessbusinessinformation.googleapis.com/"})),
-).annotate({ identifier: "GetLocationsRequest" }) as any as S.Schema<GetLocationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    readMask: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://mybusinessbusinessinformation.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetLocationsRequest",
+}) as any as S.Schema<GetLocationsRequest>;
 
 export interface ListAccountsLocationsRequest {
   /** Optional. If specified, it fetches the next `page` of locations. The page token is returned by previous calls to `ListLocations` when there were more locations than could fit in the requested page size. */
@@ -948,18 +1101,28 @@ export interface ListAccountsLocationsRequest {
   pageSize?: number;
 }
 export const ListAccountsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "readMask": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/locations","baseUrl":"https://mybusinessbusinessinformation.googleapis.com/"})),
-).annotate({ identifier: "ListAccountsLocationsRequest" }) as any as S.Schema<ListAccountsLocationsRequest>;
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    readMask: S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/locations",
+      baseUrl: "https://mybusinessbusinessinformation.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListAccountsLocationsRequest",
+}) as any as S.Schema<ListAccountsLocationsRequest>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(
+  Location,
+) as any as S.Schema<LocationList>;
 
 /** Response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -971,12 +1134,14 @@ export interface ListLocationsResponse {
   totalSize?: number;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locations": S.optional(LocationList),
-  "nextPageToken": S.optional(S.String),
-  "totalSize": S.optional(S.Number),
-}),
-).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
+  S.Struct({
+    locations: S.optional(LocationList),
+    nextPageToken: S.optional(S.String),
+    totalSize: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ListLocationsResponse",
+}) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListAttributesRequest {
   /** If specified, the next page of attribute metadata is retrieved. */
@@ -995,18 +1160,31 @@ export interface ListAttributesRequest {
   languageCode?: string;
 }
 export const ListAttributesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "showAll": S.optional(S.Boolean.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.optional(S.String.pipe(T.Query())),
-  "categoryName": S.optional(S.String.pipe(T.Query())),
-  "regionCode": S.optional(S.String.pipe(T.Query())),
-  "languageCode": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/attributes","baseUrl":"https://mybusinessbusinessinformation.googleapis.com/"})),
-).annotate({ identifier: "ListAttributesRequest" }) as any as S.Schema<ListAttributesRequest>;
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    showAll: S.optional(S.Boolean.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    parent: S.optional(S.String.pipe(T.Query())),
+    categoryName: S.optional(S.String.pipe(T.Query())),
+    regionCode: S.optional(S.String.pipe(T.Query())),
+    languageCode: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/attributes",
+      baseUrl: "https://mybusinessbusinessinformation.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListAttributesRequest",
+}) as any as S.Schema<ListAttributesRequest>;
 
-export type AttributeMetadataValueTypeEnum = "ATTRIBUTE_VALUE_TYPE_UNSPECIFIED" | "BOOL" | "ENUM" | "URL" | "REPEATED_ENUM";
+export type AttributeMetadataValueTypeEnum =
+  | "ATTRIBUTE_VALUE_TYPE_UNSPECIFIED"
+  | "BOOL"
+  | "ENUM"
+  | "URL"
+  | "REPEATED_ENUM";
 export const AttributeMetadataValueTypeEnum = /*@__PURE__*/ S.String;
 
 /** Metadata for supported attribute values. */
@@ -1017,14 +1195,18 @@ export interface AttributeValueMetadata {
   value?: unknown;
 }
 export const AttributeValueMetadata = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "displayName": S.optional(S.String),
-  "value": S.optional(S.Unknown),
-}),
-).annotate({ identifier: "AttributeValueMetadata" }) as any as S.Schema<AttributeValueMetadata>;
+  S.Struct({
+    displayName: S.optional(S.String),
+    value: S.optional(S.Unknown),
+  }),
+).annotate({
+  identifier: "AttributeValueMetadata",
+}) as any as S.Schema<AttributeValueMetadata>;
 
 export type AttributeValueMetadataList = ReadonlyArray<AttributeValueMetadata>;
-export const AttributeValueMetadataList = /*@__PURE__*/ S.Array(AttributeValueMetadata) as any as S.Schema<AttributeValueMetadataList>;
+export const AttributeValueMetadataList = /*@__PURE__*/ S.Array(
+  AttributeValueMetadata,
+) as any as S.Schema<AttributeValueMetadataList>;
 
 /** Metadata for an attribute. Contains display information for the attribute, including a localized name and a heading for grouping related attributes together. */
 export interface AttributeMetadata {
@@ -1044,19 +1226,23 @@ export interface AttributeMetadata {
   valueMetadata?: AttributeValueMetadataList;
 }
 export const AttributeMetadata = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "displayName": S.optional(S.String),
-  "groupDisplayName": S.optional(S.String),
-  "deprecated": S.optional(S.Boolean),
-  "parent": S.optional(S.String),
-  "valueType": S.optional(AttributeMetadataValueTypeEnum),
-  "repeatable": S.optional(S.Boolean),
-  "valueMetadata": S.optional(AttributeValueMetadataList),
-}),
-).annotate({ identifier: "AttributeMetadata" }) as any as S.Schema<AttributeMetadata>;
+  S.Struct({
+    displayName: S.optional(S.String),
+    groupDisplayName: S.optional(S.String),
+    deprecated: S.optional(S.Boolean),
+    parent: S.optional(S.String),
+    valueType: S.optional(AttributeMetadataValueTypeEnum),
+    repeatable: S.optional(S.Boolean),
+    valueMetadata: S.optional(AttributeValueMetadataList),
+  }),
+).annotate({
+  identifier: "AttributeMetadata",
+}) as any as S.Schema<AttributeMetadata>;
 
 export type AttributeMetadataList = ReadonlyArray<AttributeMetadata>;
-export const AttributeMetadataList = /*@__PURE__*/ S.Array(AttributeMetadata) as any as S.Schema<AttributeMetadataList>;
+export const AttributeMetadataList = /*@__PURE__*/ S.Array(
+  AttributeMetadata,
+) as any as S.Schema<AttributeMetadataList>;
 
 /** Response for AttributesService.ListAttributeMetadata. */
 export interface ListAttributeMetadataResponse {
@@ -1066,13 +1252,18 @@ export interface ListAttributeMetadataResponse {
   attributeMetadata?: AttributeMetadataList;
 }
 export const ListAttributeMetadataResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "attributeMetadata": S.optional(AttributeMetadataList),
-}),
-).annotate({ identifier: "ListAttributeMetadataResponse" }) as any as S.Schema<ListAttributeMetadataResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    attributeMetadata: S.optional(AttributeMetadataList),
+  }),
+).annotate({
+  identifier: "ListAttributeMetadataResponse",
+}) as any as S.Schema<ListAttributeMetadataResponse>;
 
-export type ListCategoriesViewEnum = "CATEGORY_VIEW_UNSPECIFIED" | "BASIC" | "FULL";
+export type ListCategoriesViewEnum =
+  | "CATEGORY_VIEW_UNSPECIFIED"
+  | "BASIC"
+  | "FULL";
 export const ListCategoriesViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListCategoriesRequest {
@@ -1090,15 +1281,23 @@ export interface ListCategoriesRequest {
   pageSize?: number;
 }
 export const ListCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "view": S.optional(ListCategoriesViewEnum.pipe(T.Query())),
-  "regionCode": S.optional(S.String.pipe(T.Query())),
-  "languageCode": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/categories","baseUrl":"https://mybusinessbusinessinformation.googleapis.com/"})),
-).annotate({ identifier: "ListCategoriesRequest" }) as any as S.Schema<ListCategoriesRequest>;
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    view: S.optional(ListCategoriesViewEnum.pipe(T.Query())),
+    regionCode: S.optional(S.String.pipe(T.Query())),
+    languageCode: S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/categories",
+      baseUrl: "https://mybusinessbusinessinformation.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListCategoriesRequest",
+}) as any as S.Schema<ListCategoriesRequest>;
 
 /** Response message for BusinessCategories.ListCategories. */
 export interface ListCategoriesResponse {
@@ -1108,11 +1307,13 @@ export interface ListCategoriesResponse {
   nextPageToken?: string;
 }
 export const ListCategoriesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "categories": S.optional(CategoryList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListCategoriesResponse" }) as any as S.Schema<ListCategoriesResponse>;
+  S.Struct({
+    categories: S.optional(CategoryList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListCategoriesResponse",
+}) as any as S.Schema<ListCategoriesResponse>;
 
 export interface PatchLocationsRequest {
   /** Google identifier for this location in the form: `locations/{location_id}`. */
@@ -1125,13 +1326,21 @@ export interface PatchLocationsRequest {
   body?: Location;
 }
 export const PatchLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Location.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://mybusinessbusinessinformation.googleapis.com/"})),
-).annotate({ identifier: "PatchLocationsRequest" }) as any as S.Schema<PatchLocationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(Location.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+name}",
+      baseUrl: "https://mybusinessbusinessinformation.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchLocationsRequest",
+}) as any as S.Schema<PatchLocationsRequest>;
 
 export interface SearchChainsRequest {
   /** The maximum number of matched chains to return from this query. The default is 10. The maximum possible value is 500. */
@@ -1140,14 +1349,24 @@ export interface SearchChainsRequest {
   chainName?: string;
 }
 export const SearchChainsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "chainName": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/chains:search","baseUrl":"https://mybusinessbusinessinformation.googleapis.com/"})),
-).annotate({ identifier: "SearchChainsRequest" }) as any as S.Schema<SearchChainsRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    chainName: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/chains:search",
+      baseUrl: "https://mybusinessbusinessinformation.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SearchChainsRequest",
+}) as any as S.Schema<SearchChainsRequest>;
 
 export type ChainList = ReadonlyArray<Chain>;
-export const ChainList = /*@__PURE__*/ S.Array(Chain) as any as S.Schema<ChainList>;
+export const ChainList = /*@__PURE__*/ S.Array(
+  Chain,
+) as any as S.Schema<ChainList>;
 
 /** Response message for Locations.SearchChains. */
 export interface SearchChainsResponse {
@@ -1155,10 +1374,12 @@ export interface SearchChainsResponse {
   chains?: ChainList;
 }
 export const SearchChainsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "chains": S.optional(ChainList),
-}),
-).annotate({ identifier: "SearchChainsResponse" }) as any as S.Schema<SearchChainsResponse>;
+  S.Struct({
+    chains: S.optional(ChainList),
+  }),
+).annotate({
+  identifier: "SearchChainsResponse",
+}) as any as S.Schema<SearchChainsResponse>;
 
 /** Request message for GoogleLocations.SearchGoogleLocations. */
 export interface SearchGoogleLocationsRequest {
@@ -1170,22 +1391,32 @@ export interface SearchGoogleLocationsRequest {
   query?: string;
 }
 export const SearchGoogleLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number),
-  "location": S.optional(Location),
-  "query": S.optional(S.String),
-}),
-).annotate({ identifier: "SearchGoogleLocationsRequest" }) as any as S.Schema<SearchGoogleLocationsRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number),
+    location: S.optional(Location),
+    query: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SearchGoogleLocationsRequest",
+}) as any as S.Schema<SearchGoogleLocationsRequest>;
 
 export interface SearchGoogleLocationsRequest_ {
   /** Request body */
   body?: SearchGoogleLocationsRequest;
 }
 export const SearchGoogleLocationsRequest_ = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(SearchGoogleLocationsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/googleLocations:search","baseUrl":"https://mybusinessbusinessinformation.googleapis.com/"})),
-).annotate({ identifier: "SearchGoogleLocationsRequest_" }) as any as S.Schema<SearchGoogleLocationsRequest_>;
+  S.Struct({
+    body: S.optional(SearchGoogleLocationsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/googleLocations:search",
+      baseUrl: "https://mybusinessbusinessinformation.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SearchGoogleLocationsRequest_",
+}) as any as S.Schema<SearchGoogleLocationsRequest_>;
 
 /** Represents a Location that is present on Google. This can be a location that has been claimed by the user, someone else, or could be unclaimed. */
 export interface GoogleLocation {
@@ -1197,15 +1428,17 @@ export interface GoogleLocation {
   requestAdminRightsUri?: string;
 }
 export const GoogleLocation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "location": S.optional(Location),
-  "requestAdminRightsUri": S.optional(S.String),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    location: S.optional(Location),
+    requestAdminRightsUri: S.optional(S.String),
+  }),
 ).annotate({ identifier: "GoogleLocation" }) as any as S.Schema<GoogleLocation>;
 
 export type GoogleLocationList = ReadonlyArray<GoogleLocation>;
-export const GoogleLocationList = /*@__PURE__*/ S.Array(GoogleLocation) as any as S.Schema<GoogleLocationList>;
+export const GoogleLocationList = /*@__PURE__*/ S.Array(
+  GoogleLocation,
+) as any as S.Schema<GoogleLocationList>;
 
 /** Response message for GoogleLocations.SearchGoogleLocations. */
 export interface SearchGoogleLocationsResponse {
@@ -1213,10 +1446,12 @@ export interface SearchGoogleLocationsResponse {
   googleLocations?: GoogleLocationList;
 }
 export const SearchGoogleLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "googleLocations": S.optional(GoogleLocationList),
-}),
-).annotate({ identifier: "SearchGoogleLocationsResponse" }) as any as S.Schema<SearchGoogleLocationsResponse>;
+  S.Struct({
+    googleLocations: S.optional(GoogleLocationList),
+  }),
+).annotate({
+  identifier: "SearchGoogleLocationsResponse",
+}) as any as S.Schema<SearchGoogleLocationsResponse>;
 
 export interface UpdateAttributesLocationsRequest {
   /** Required. Google identifier for this location in the form of `locations/{location_id}/attributes`. */
@@ -1227,12 +1462,20 @@ export interface UpdateAttributesLocationsRequest {
   body?: Attributes;
 }
 export const UpdateAttributesLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "attributeMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Attributes.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://mybusinessbusinessinformation.googleapis.com/"})),
-).annotate({ identifier: "UpdateAttributesLocationsRequest" }) as any as S.Schema<UpdateAttributesLocationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    attributeMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(Attributes.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+name}",
+      baseUrl: "https://mybusinessbusinessinformation.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateAttributesLocationsRequest",
+}) as any as S.Schema<UpdateAttributesLocationsRequest>;
 
 export type BatchGetCategoriesError = NotFound | Forbidden | GcpOpError;
 /** Returns a list of business categories for the provided language and GConcept ids. */
@@ -1249,7 +1492,12 @@ export const batchGetCategories: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAccountsLocationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateAccountsLocationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new Location that will be owned by the logged in user. */
 export const createAccountsLocations: API.OperationMethod<
   CreateAccountsLocationsRequest,
@@ -1264,7 +1512,12 @@ export const createAccountsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteLocationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteLocationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a location. If this location cannot be deleted using the API and it is marked so in the `google.mybusiness.businessinformation.v1.LocationState`, use the [Google Business Profile](https://business.google.com/manage/) website. */
 export const deleteLocations: API.OperationMethod<
   DeleteLocationsRequest,
@@ -1324,7 +1577,10 @@ export const getGoogleUpdatedLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetGoogleUpdatedLocationsAttributesError = NotFound | Forbidden | GcpOpError;
+export type GetGoogleUpdatedLocationsAttributesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieves attributes for a location as they appear live on Google Maps and Search. This consumer-facing view may have been updated by Google or user-generated content and may differ from the merchant's version. */
 export const getGoogleUpdatedLocationsAttributes: API.OperationMethod<
   GetGoogleUpdatedLocationsAttributesRequest,
@@ -1367,7 +1623,10 @@ export const listAccountsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListAttributesError = NotFound | Forbidden | GcpOpError;
@@ -1383,7 +1642,10 @@ export const listAttributes: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListCategoriesError = NotFound | Forbidden | GcpOpError;
@@ -1399,10 +1661,18 @@ export const listCategories: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type PatchLocationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchLocationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the specified location. */
 export const patchLocations: API.OperationMethod<
   PatchLocationsRequest,
@@ -1432,7 +1702,12 @@ export const searchChains: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SearchGoogleLocationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SearchGoogleLocationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Search all of the possible locations that are a match to the specified request. */
 export const searchGoogleLocations: API.OperationMethod<
   SearchGoogleLocationsRequest_,
@@ -1447,7 +1722,12 @@ export const searchGoogleLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateAttributesLocationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateAttributesLocationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update attributes for a given location. */
 export const updateAttributesLocations: API.OperationMethod<
   UpdateAttributesLocationsRequest,
@@ -1461,4 +1741,3 @@ export const updateAttributesLocations: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

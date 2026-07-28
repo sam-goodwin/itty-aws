@@ -4394,229 +4394,104 @@ export const RecordsBatchResponseDeletesItemURIRecord = /*@__PURE__*/ S.suspend(
   identifier: "RecordsBatchResponseDeletesItemURIRecord",
 }) as any as S.Schema<RecordsBatchResponseDeletesItemURIRecord>;
 
-export type RecordsBatchResponseDeletesItem =
-  | RecordsBatchResponseDeletesItemARecord
-  | RecordsBatchResponseDeletesItemAAAARecord
-  | RecordsBatchResponseDeletesItemCNAMERecord
-  | RecordsBatchResponseDeletesItemMXRecord
-  | RecordsBatchResponseDeletesItemNSRecord
-  | RecordsBatchResponseDeletesItemOpenpgpkeyRecord
-  | RecordsBatchResponseDeletesItemPTRRecord
-  | RecordsBatchResponseDeletesItemTXTRecord
-  | RecordsBatchResponseDeletesItemCAARecord
-  | RecordsBatchResponseDeletesItemCERTRecord
-  | RecordsBatchResponseDeletesItemDNSKEYRecord
-  | RecordsBatchResponseDeletesItemDSRecord
-  | RecordsBatchResponseDeletesItemHTTPSRecord
-  | RecordsBatchResponseDeletesItemLOCRecord
-  | RecordsBatchResponseDeletesItemNAPTRRecord
-  | RecordsBatchResponseDeletesItemSMIMEARecord
-  | RecordsBatchResponseDeletesItemSRVRecord
-  | RecordsBatchResponseDeletesItemSSHFPRecord
-  | RecordsBatchResponseDeletesItemSVCBRecord
-  | RecordsBatchResponseDeletesItemTLSARecord
-  | RecordsBatchResponseDeletesItemURIRecord;
-export const RecordsBatchResponseDeletesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "comment",
-      "content",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "name",
-      "proxiable",
-      "proxied",
-      "settings",
-      "tags",
-      "ttl",
-      "type",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-  ]),
-);
+export interface RecordsBatchResponseDeletesItem {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta:
+    | RecordsBatchResponseDeletesItemARecordMeta
+    | RecordsBatchResponseDeletesItemAAAARecordMeta
+    | RecordsBatchResponseDeletesItemCNAMERecordMeta
+    | RecordsBatchResponseDeletesItemMXRecordMeta
+    | RecordsBatchResponseDeletesItemNSRecordMeta
+    | RecordsBatchResponseDeletesItemOpenpgpkeyRecordMeta
+    | RecordsBatchResponseDeletesItemPTRRecordMeta
+    | RecordsBatchResponseDeletesItemTXTRecordMeta
+    | RecordsBatchResponseDeletesItemCAARecordMeta
+    | RecordsBatchResponseDeletesItemCERTRecordMeta
+    | RecordsBatchResponseDeletesItemDNSKEYRecordMeta
+    | RecordsBatchResponseDeletesItemDSRecordMeta
+    | RecordsBatchResponseDeletesItemHTTPSRecordMeta
+    | RecordsBatchResponseDeletesItemLOCRecordMeta
+    | RecordsBatchResponseDeletesItemNAPTRRecordMeta
+    | RecordsBatchResponseDeletesItemSMIMEARecordMeta
+    | RecordsBatchResponseDeletesItemSRVRecordMeta
+    | RecordsBatchResponseDeletesItemSSHFPRecordMeta
+    | RecordsBatchResponseDeletesItemSVCBRecordMeta
+    | RecordsBatchResponseDeletesItemTLSARecordMeta
+    | RecordsBatchResponseDeletesItemURIRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
+  comment?: string;
+  /** A single Base64-encoded OpenPGP Transferable Public Key (RFC 4880 Section 11.1) */
+  content?: string;
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name?: string;
+  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
+  proxied?: boolean;
+  /** Settings for the DNS record. */
+  settings?: RecordsBatchResponseDeletesItemOpenpgpkeyRecordSettings;
+  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
+  tags?: RecordsBatchResponseDeletesItemOpenpgpkeyRecordTagsList;
+  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
+  ttl?: number;
+  /** Record type. */
+  type?: RecordsBatchResponseDeletesItemOpenpgpkeyRecordType;
+}
+export const RecordsBatchResponseDeletesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: S.Union(
+      RecordsBatchResponseDeletesItemARecordMeta,
+      RecordsBatchResponseDeletesItemAAAARecordMeta,
+      RecordsBatchResponseDeletesItemCNAMERecordMeta,
+      RecordsBatchResponseDeletesItemMXRecordMeta,
+      RecordsBatchResponseDeletesItemNSRecordMeta,
+      RecordsBatchResponseDeletesItemOpenpgpkeyRecordMeta,
+      RecordsBatchResponseDeletesItemPTRRecordMeta,
+      RecordsBatchResponseDeletesItemTXTRecordMeta,
+      RecordsBatchResponseDeletesItemCAARecordMeta,
+      RecordsBatchResponseDeletesItemCERTRecordMeta,
+      RecordsBatchResponseDeletesItemDNSKEYRecordMeta,
+      RecordsBatchResponseDeletesItemDSRecordMeta,
+      RecordsBatchResponseDeletesItemHTTPSRecordMeta,
+      RecordsBatchResponseDeletesItemLOCRecordMeta,
+      RecordsBatchResponseDeletesItemNAPTRRecordMeta,
+      RecordsBatchResponseDeletesItemSMIMEARecordMeta,
+      RecordsBatchResponseDeletesItemSRVRecordMeta,
+      RecordsBatchResponseDeletesItemSSHFPRecordMeta,
+      RecordsBatchResponseDeletesItemSVCBRecordMeta,
+      RecordsBatchResponseDeletesItemTLSARecordMeta,
+      RecordsBatchResponseDeletesItemURIRecordMeta,
+    ),
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    comment: S.optional(S.String),
+    content: S.optional(S.String),
+    name: S.optional(S.String),
+    proxied: S.optional(S.Boolean),
+    settings: S.optional(
+      RecordsBatchResponseDeletesItemOpenpgpkeyRecordSettings,
+    ),
+    tags: S.optional(RecordsBatchResponseDeletesItemOpenpgpkeyRecordTagsList),
+    ttl: S.optional(S.Number),
+    type: S.optional(RecordsBatchResponseDeletesItemOpenpgpkeyRecordType),
+  }),
+).annotate({
+  identifier: "RecordsBatchResponseDeletesItem",
+}) as any as S.Schema<RecordsBatchResponseDeletesItem>;
 
 export type RecordsBatchResponseDeletesList =
   ReadonlyArray<RecordsBatchResponseDeletesItem>;
@@ -4630,213 +4505,78 @@ export const RecordsBatchResponsePatchesItemOpenpgpkeyRecord =
     identifier: "RecordsBatchResponsePatchesItemOpenpgpkeyRecord",
   }) as any as S.Schema<RecordsBatchResponsePatchesItemOpenpgpkeyRecord>;
 
-export type RecordsBatchResponsePatchesItem =
-  | RecordsBatchResponseDeletesItemARecord
-  | RecordsBatchResponseDeletesItemAAAARecord
-  | RecordsBatchResponseDeletesItemCNAMERecord
-  | RecordsBatchResponseDeletesItemMXRecord
-  | RecordsBatchResponseDeletesItemNSRecord
-  | RecordsBatchResponsePatchesItemOpenpgpkeyRecord
-  | RecordsBatchResponseDeletesItemPTRRecord
-  | RecordsBatchResponseDeletesItemTXTRecord
-  | RecordsBatchResponseDeletesItemCAARecord
-  | RecordsBatchResponseDeletesItemCERTRecord
-  | RecordsBatchResponseDeletesItemDNSKEYRecord
-  | RecordsBatchResponseDeletesItemDSRecord
-  | RecordsBatchResponseDeletesItemHTTPSRecord
-  | RecordsBatchResponseDeletesItemLOCRecord
-  | RecordsBatchResponseDeletesItemNAPTRRecord
-  | RecordsBatchResponseDeletesItemSMIMEARecord
-  | RecordsBatchResponseDeletesItemSRVRecord
-  | RecordsBatchResponseDeletesItemSSHFPRecord
-  | RecordsBatchResponseDeletesItemSVCBRecord
-  | RecordsBatchResponseDeletesItemTLSARecord
-  | RecordsBatchResponseDeletesItemURIRecord;
-export const RecordsBatchResponsePatchesItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-  ]),
-);
+export interface RecordsBatchResponsePatchesItem {
+  /** Identifier. */
+  id?: string;
+  /** When the record was created. */
+  createdOn?: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta?:
+    | RecordsBatchResponseDeletesItemARecordMeta
+    | RecordsBatchResponseDeletesItemAAAARecordMeta
+    | RecordsBatchResponseDeletesItemCNAMERecordMeta
+    | RecordsBatchResponseDeletesItemMXRecordMeta
+    | RecordsBatchResponseDeletesItemNSRecordMeta
+    | RecordsBatchResponseDeletesItemPTRRecordMeta
+    | RecordsBatchResponseDeletesItemTXTRecordMeta
+    | RecordsBatchResponseDeletesItemCAARecordMeta
+    | RecordsBatchResponseDeletesItemCERTRecordMeta
+    | RecordsBatchResponseDeletesItemDNSKEYRecordMeta
+    | RecordsBatchResponseDeletesItemDSRecordMeta
+    | RecordsBatchResponseDeletesItemHTTPSRecordMeta
+    | RecordsBatchResponseDeletesItemLOCRecordMeta
+    | RecordsBatchResponseDeletesItemNAPTRRecordMeta
+    | RecordsBatchResponseDeletesItemSMIMEARecordMeta
+    | RecordsBatchResponseDeletesItemSRVRecordMeta
+    | RecordsBatchResponseDeletesItemSSHFPRecordMeta
+    | RecordsBatchResponseDeletesItemSVCBRecordMeta
+    | RecordsBatchResponseDeletesItemTLSARecordMeta
+    | RecordsBatchResponseDeletesItemURIRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn?: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable?: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsBatchResponsePatchesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    meta: S.optional(
+      S.Union(
+        RecordsBatchResponseDeletesItemARecordMeta,
+        RecordsBatchResponseDeletesItemAAAARecordMeta,
+        RecordsBatchResponseDeletesItemCNAMERecordMeta,
+        RecordsBatchResponseDeletesItemMXRecordMeta,
+        RecordsBatchResponseDeletesItemNSRecordMeta,
+        RecordsBatchResponseDeletesItemPTRRecordMeta,
+        RecordsBatchResponseDeletesItemTXTRecordMeta,
+        RecordsBatchResponseDeletesItemCAARecordMeta,
+        RecordsBatchResponseDeletesItemCERTRecordMeta,
+        RecordsBatchResponseDeletesItemDNSKEYRecordMeta,
+        RecordsBatchResponseDeletesItemDSRecordMeta,
+        RecordsBatchResponseDeletesItemHTTPSRecordMeta,
+        RecordsBatchResponseDeletesItemLOCRecordMeta,
+        RecordsBatchResponseDeletesItemNAPTRRecordMeta,
+        RecordsBatchResponseDeletesItemSMIMEARecordMeta,
+        RecordsBatchResponseDeletesItemSRVRecordMeta,
+        RecordsBatchResponseDeletesItemSSHFPRecordMeta,
+        RecordsBatchResponseDeletesItemSVCBRecordMeta,
+        RecordsBatchResponseDeletesItemTLSARecordMeta,
+        RecordsBatchResponseDeletesItemURIRecordMeta,
+      ),
+    ),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    proxiable: S.optional(S.Boolean),
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsBatchResponsePatchesItem",
+}) as any as S.Schema<RecordsBatchResponsePatchesItem>;
 
 export type RecordsBatchResponsePatchesList =
   ReadonlyArray<RecordsBatchResponsePatchesItem>;
@@ -4850,213 +4590,78 @@ export const RecordsBatchResponsePostsItemOpenpgpkeyRecord =
     identifier: "RecordsBatchResponsePostsItemOpenpgpkeyRecord",
   }) as any as S.Schema<RecordsBatchResponsePostsItemOpenpgpkeyRecord>;
 
-export type RecordsBatchResponsePostsItem =
-  | RecordsBatchResponseDeletesItemARecord
-  | RecordsBatchResponseDeletesItemAAAARecord
-  | RecordsBatchResponseDeletesItemCNAMERecord
-  | RecordsBatchResponseDeletesItemMXRecord
-  | RecordsBatchResponseDeletesItemNSRecord
-  | RecordsBatchResponsePostsItemOpenpgpkeyRecord
-  | RecordsBatchResponseDeletesItemPTRRecord
-  | RecordsBatchResponseDeletesItemTXTRecord
-  | RecordsBatchResponseDeletesItemCAARecord
-  | RecordsBatchResponseDeletesItemCERTRecord
-  | RecordsBatchResponseDeletesItemDNSKEYRecord
-  | RecordsBatchResponseDeletesItemDSRecord
-  | RecordsBatchResponseDeletesItemHTTPSRecord
-  | RecordsBatchResponseDeletesItemLOCRecord
-  | RecordsBatchResponseDeletesItemNAPTRRecord
-  | RecordsBatchResponseDeletesItemSMIMEARecord
-  | RecordsBatchResponseDeletesItemSRVRecord
-  | RecordsBatchResponseDeletesItemSSHFPRecord
-  | RecordsBatchResponseDeletesItemSVCBRecord
-  | RecordsBatchResponseDeletesItemTLSARecord
-  | RecordsBatchResponseDeletesItemURIRecord;
-export const RecordsBatchResponsePostsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-  ]),
-);
+export interface RecordsBatchResponsePostsItem {
+  /** Identifier. */
+  id?: string;
+  /** When the record was created. */
+  createdOn?: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta?:
+    | RecordsBatchResponseDeletesItemARecordMeta
+    | RecordsBatchResponseDeletesItemAAAARecordMeta
+    | RecordsBatchResponseDeletesItemCNAMERecordMeta
+    | RecordsBatchResponseDeletesItemMXRecordMeta
+    | RecordsBatchResponseDeletesItemNSRecordMeta
+    | RecordsBatchResponseDeletesItemPTRRecordMeta
+    | RecordsBatchResponseDeletesItemTXTRecordMeta
+    | RecordsBatchResponseDeletesItemCAARecordMeta
+    | RecordsBatchResponseDeletesItemCERTRecordMeta
+    | RecordsBatchResponseDeletesItemDNSKEYRecordMeta
+    | RecordsBatchResponseDeletesItemDSRecordMeta
+    | RecordsBatchResponseDeletesItemHTTPSRecordMeta
+    | RecordsBatchResponseDeletesItemLOCRecordMeta
+    | RecordsBatchResponseDeletesItemNAPTRRecordMeta
+    | RecordsBatchResponseDeletesItemSMIMEARecordMeta
+    | RecordsBatchResponseDeletesItemSRVRecordMeta
+    | RecordsBatchResponseDeletesItemSSHFPRecordMeta
+    | RecordsBatchResponseDeletesItemSVCBRecordMeta
+    | RecordsBatchResponseDeletesItemTLSARecordMeta
+    | RecordsBatchResponseDeletesItemURIRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn?: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable?: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsBatchResponsePostsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    meta: S.optional(
+      S.Union(
+        RecordsBatchResponseDeletesItemARecordMeta,
+        RecordsBatchResponseDeletesItemAAAARecordMeta,
+        RecordsBatchResponseDeletesItemCNAMERecordMeta,
+        RecordsBatchResponseDeletesItemMXRecordMeta,
+        RecordsBatchResponseDeletesItemNSRecordMeta,
+        RecordsBatchResponseDeletesItemPTRRecordMeta,
+        RecordsBatchResponseDeletesItemTXTRecordMeta,
+        RecordsBatchResponseDeletesItemCAARecordMeta,
+        RecordsBatchResponseDeletesItemCERTRecordMeta,
+        RecordsBatchResponseDeletesItemDNSKEYRecordMeta,
+        RecordsBatchResponseDeletesItemDSRecordMeta,
+        RecordsBatchResponseDeletesItemHTTPSRecordMeta,
+        RecordsBatchResponseDeletesItemLOCRecordMeta,
+        RecordsBatchResponseDeletesItemNAPTRRecordMeta,
+        RecordsBatchResponseDeletesItemSMIMEARecordMeta,
+        RecordsBatchResponseDeletesItemSRVRecordMeta,
+        RecordsBatchResponseDeletesItemSSHFPRecordMeta,
+        RecordsBatchResponseDeletesItemSVCBRecordMeta,
+        RecordsBatchResponseDeletesItemTLSARecordMeta,
+        RecordsBatchResponseDeletesItemURIRecordMeta,
+      ),
+    ),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    proxiable: S.optional(S.Boolean),
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsBatchResponsePostsItem",
+}) as any as S.Schema<RecordsBatchResponsePostsItem>;
 
 export type RecordsBatchResponsePostsList =
   ReadonlyArray<RecordsBatchResponsePostsItem>;
@@ -5070,213 +4675,78 @@ export const RecordsBatchResponsePutsItemOpenpgpkeyRecord =
     identifier: "RecordsBatchResponsePutsItemOpenpgpkeyRecord",
   }) as any as S.Schema<RecordsBatchResponsePutsItemOpenpgpkeyRecord>;
 
-export type RecordsBatchResponsePutsItem =
-  | RecordsBatchResponseDeletesItemARecord
-  | RecordsBatchResponseDeletesItemAAAARecord
-  | RecordsBatchResponseDeletesItemCNAMERecord
-  | RecordsBatchResponseDeletesItemMXRecord
-  | RecordsBatchResponseDeletesItemNSRecord
-  | RecordsBatchResponsePutsItemOpenpgpkeyRecord
-  | RecordsBatchResponseDeletesItemPTRRecord
-  | RecordsBatchResponseDeletesItemTXTRecord
-  | RecordsBatchResponseDeletesItemCAARecord
-  | RecordsBatchResponseDeletesItemCERTRecord
-  | RecordsBatchResponseDeletesItemDNSKEYRecord
-  | RecordsBatchResponseDeletesItemDSRecord
-  | RecordsBatchResponseDeletesItemHTTPSRecord
-  | RecordsBatchResponseDeletesItemLOCRecord
-  | RecordsBatchResponseDeletesItemNAPTRRecord
-  | RecordsBatchResponseDeletesItemSMIMEARecord
-  | RecordsBatchResponseDeletesItemSRVRecord
-  | RecordsBatchResponseDeletesItemSSHFPRecord
-  | RecordsBatchResponseDeletesItemSVCBRecord
-  | RecordsBatchResponseDeletesItemTLSARecord
-  | RecordsBatchResponseDeletesItemURIRecord;
-export const RecordsBatchResponsePutsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-  ]),
-);
+export interface RecordsBatchResponsePutsItem {
+  /** Identifier. */
+  id?: string;
+  /** When the record was created. */
+  createdOn?: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta?:
+    | RecordsBatchResponseDeletesItemARecordMeta
+    | RecordsBatchResponseDeletesItemAAAARecordMeta
+    | RecordsBatchResponseDeletesItemCNAMERecordMeta
+    | RecordsBatchResponseDeletesItemMXRecordMeta
+    | RecordsBatchResponseDeletesItemNSRecordMeta
+    | RecordsBatchResponseDeletesItemPTRRecordMeta
+    | RecordsBatchResponseDeletesItemTXTRecordMeta
+    | RecordsBatchResponseDeletesItemCAARecordMeta
+    | RecordsBatchResponseDeletesItemCERTRecordMeta
+    | RecordsBatchResponseDeletesItemDNSKEYRecordMeta
+    | RecordsBatchResponseDeletesItemDSRecordMeta
+    | RecordsBatchResponseDeletesItemHTTPSRecordMeta
+    | RecordsBatchResponseDeletesItemLOCRecordMeta
+    | RecordsBatchResponseDeletesItemNAPTRRecordMeta
+    | RecordsBatchResponseDeletesItemSMIMEARecordMeta
+    | RecordsBatchResponseDeletesItemSRVRecordMeta
+    | RecordsBatchResponseDeletesItemSSHFPRecordMeta
+    | RecordsBatchResponseDeletesItemSVCBRecordMeta
+    | RecordsBatchResponseDeletesItemTLSARecordMeta
+    | RecordsBatchResponseDeletesItemURIRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn?: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable?: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsBatchResponsePutsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    meta: S.optional(
+      S.Union(
+        RecordsBatchResponseDeletesItemARecordMeta,
+        RecordsBatchResponseDeletesItemAAAARecordMeta,
+        RecordsBatchResponseDeletesItemCNAMERecordMeta,
+        RecordsBatchResponseDeletesItemMXRecordMeta,
+        RecordsBatchResponseDeletesItemNSRecordMeta,
+        RecordsBatchResponseDeletesItemPTRRecordMeta,
+        RecordsBatchResponseDeletesItemTXTRecordMeta,
+        RecordsBatchResponseDeletesItemCAARecordMeta,
+        RecordsBatchResponseDeletesItemCERTRecordMeta,
+        RecordsBatchResponseDeletesItemDNSKEYRecordMeta,
+        RecordsBatchResponseDeletesItemDSRecordMeta,
+        RecordsBatchResponseDeletesItemHTTPSRecordMeta,
+        RecordsBatchResponseDeletesItemLOCRecordMeta,
+        RecordsBatchResponseDeletesItemNAPTRRecordMeta,
+        RecordsBatchResponseDeletesItemSMIMEARecordMeta,
+        RecordsBatchResponseDeletesItemSRVRecordMeta,
+        RecordsBatchResponseDeletesItemSSHFPRecordMeta,
+        RecordsBatchResponseDeletesItemSVCBRecordMeta,
+        RecordsBatchResponseDeletesItemTLSARecordMeta,
+        RecordsBatchResponseDeletesItemURIRecordMeta,
+      ),
+    ),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    proxiable: S.optional(S.Boolean),
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsBatchResponsePutsItem",
+}) as any as S.Schema<RecordsBatchResponsePutsItem>;
 
 export type RecordsBatchResponsePutsList =
   ReadonlyArray<RecordsBatchResponsePutsItem>;
@@ -7127,229 +6597,102 @@ export const RecordsCreateResultURIRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsCreateResultURIRecord",
 }) as any as S.Schema<RecordsCreateResultURIRecord>;
 
-export type RecordsCreateResult =
-  | RecordsCreateResultARecord
-  | RecordsCreateResultAAAARecord
-  | RecordsCreateResultCNAMERecord
-  | RecordsCreateResultMXRecord
-  | RecordsCreateResultNSRecord
-  | RecordsCreateResultOpenpgpkeyRecord
-  | RecordsCreateResultPTRRecord
-  | RecordsCreateResultTXTRecord
-  | RecordsCreateResultCAARecord
-  | RecordsCreateResultCERTRecord
-  | RecordsCreateResultDNSKEYRecord
-  | RecordsCreateResultDSRecord
-  | RecordsCreateResultHTTPSRecord
-  | RecordsCreateResultLOCRecord
-  | RecordsCreateResultNAPTRRecord
-  | RecordsCreateResultSMIMEARecord
-  | RecordsCreateResultSRVRecord
-  | RecordsCreateResultSSHFPRecord
-  | RecordsCreateResultSVCBRecord
-  | RecordsCreateResultTLSARecord
-  | RecordsCreateResultURIRecord;
-export const RecordsCreateResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "comment",
-      "content",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "name",
-      "proxiable",
-      "proxied",
-      "settings",
-      "tags",
-      "ttl",
-      "type",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-  ]),
-);
+export interface RecordsCreateResult {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta:
+    | RecordsCreateResultARecordMeta
+    | RecordsCreateResultAAAARecordMeta
+    | RecordsCreateResultCNAMERecordMeta
+    | RecordsCreateResultMXRecordMeta
+    | RecordsCreateResultNSRecordMeta
+    | RecordsCreateResultOpenpgpkeyRecordMeta
+    | RecordsCreateResultPTRRecordMeta
+    | RecordsCreateResultTXTRecordMeta
+    | RecordsCreateResultCAARecordMeta
+    | RecordsCreateResultCERTRecordMeta
+    | RecordsCreateResultDNSKEYRecordMeta
+    | RecordsCreateResultDSRecordMeta
+    | RecordsCreateResultHTTPSRecordMeta
+    | RecordsCreateResultLOCRecordMeta
+    | RecordsCreateResultNAPTRRecordMeta
+    | RecordsCreateResultSMIMEARecordMeta
+    | RecordsCreateResultSRVRecordMeta
+    | RecordsCreateResultSSHFPRecordMeta
+    | RecordsCreateResultSVCBRecordMeta
+    | RecordsCreateResultTLSARecordMeta
+    | RecordsCreateResultURIRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
+  comment?: string;
+  /** A single Base64-encoded OpenPGP Transferable Public Key (RFC 4880 Section 11.1) */
+  content?: string;
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name?: string;
+  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
+  proxied?: boolean;
+  /** Settings for the DNS record. */
+  settings?: RecordsCreateResultOpenpgpkeyRecordSettings;
+  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
+  tags?: RecordsCreateResultOpenpgpkeyRecordTagsList;
+  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
+  ttl?: number;
+  /** Record type. */
+  type?: RecordsCreateResultOpenpgpkeyRecordType;
+}
+export const RecordsCreateResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: S.Union(
+      RecordsCreateResultARecordMeta,
+      RecordsCreateResultAAAARecordMeta,
+      RecordsCreateResultCNAMERecordMeta,
+      RecordsCreateResultMXRecordMeta,
+      RecordsCreateResultNSRecordMeta,
+      RecordsCreateResultOpenpgpkeyRecordMeta,
+      RecordsCreateResultPTRRecordMeta,
+      RecordsCreateResultTXTRecordMeta,
+      RecordsCreateResultCAARecordMeta,
+      RecordsCreateResultCERTRecordMeta,
+      RecordsCreateResultDNSKEYRecordMeta,
+      RecordsCreateResultDSRecordMeta,
+      RecordsCreateResultHTTPSRecordMeta,
+      RecordsCreateResultLOCRecordMeta,
+      RecordsCreateResultNAPTRRecordMeta,
+      RecordsCreateResultSMIMEARecordMeta,
+      RecordsCreateResultSRVRecordMeta,
+      RecordsCreateResultSSHFPRecordMeta,
+      RecordsCreateResultSVCBRecordMeta,
+      RecordsCreateResultTLSARecordMeta,
+      RecordsCreateResultURIRecordMeta,
+    ),
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    comment: S.optional(S.String),
+    content: S.optional(S.String),
+    name: S.optional(S.String),
+    proxied: S.optional(S.Boolean),
+    settings: S.optional(RecordsCreateResultOpenpgpkeyRecordSettings),
+    tags: S.optional(RecordsCreateResultOpenpgpkeyRecordTagsList),
+    ttl: S.optional(S.Number),
+    type: S.optional(RecordsCreateResultOpenpgpkeyRecordType),
+  }),
+).annotate({
+  identifier: "RecordsCreateResult",
+}) as any as S.Schema<RecordsCreateResult>;
 
 export type CreateRecordResponse = RecordsCreateResult;
 export const CreateRecordResponse = /*@__PURE__*/ S.suspend(() =>
@@ -9919,229 +9262,102 @@ export const RecordsGetResultURIRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsGetResultURIRecord",
 }) as any as S.Schema<RecordsGetResultURIRecord>;
 
-export type RecordsGetResult =
-  | RecordsGetResultARecord
-  | RecordsGetResultAAAARecord
-  | RecordsGetResultCNAMERecord
-  | RecordsGetResultMXRecord
-  | RecordsGetResultNSRecord
-  | RecordsGetResultOpenpgpkeyRecord
-  | RecordsGetResultPTRRecord
-  | RecordsGetResultTXTRecord
-  | RecordsGetResultCAARecord
-  | RecordsGetResultCERTRecord
-  | RecordsGetResultDNSKEYRecord
-  | RecordsGetResultDSRecord
-  | RecordsGetResultHTTPSRecord
-  | RecordsGetResultLOCRecord
-  | RecordsGetResultNAPTRRecord
-  | RecordsGetResultSMIMEARecord
-  | RecordsGetResultSRVRecord
-  | RecordsGetResultSSHFPRecord
-  | RecordsGetResultSVCBRecord
-  | RecordsGetResultTLSARecord
-  | RecordsGetResultURIRecord;
-export const RecordsGetResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "comment",
-      "content",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "name",
-      "proxiable",
-      "proxied",
-      "settings",
-      "tags",
-      "ttl",
-      "type",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-  ]),
-);
+export interface RecordsGetResult {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta:
+    | RecordsGetResultARecordMeta
+    | RecordsGetResultAAAARecordMeta
+    | RecordsGetResultCNAMERecordMeta
+    | RecordsGetResultMXRecordMeta
+    | RecordsGetResultNSRecordMeta
+    | RecordsGetResultOpenpgpkeyRecordMeta
+    | RecordsGetResultPTRRecordMeta
+    | RecordsGetResultTXTRecordMeta
+    | RecordsGetResultCAARecordMeta
+    | RecordsGetResultCERTRecordMeta
+    | RecordsGetResultDNSKEYRecordMeta
+    | RecordsGetResultDSRecordMeta
+    | RecordsGetResultHTTPSRecordMeta
+    | RecordsGetResultLOCRecordMeta
+    | RecordsGetResultNAPTRRecordMeta
+    | RecordsGetResultSMIMEARecordMeta
+    | RecordsGetResultSRVRecordMeta
+    | RecordsGetResultSSHFPRecordMeta
+    | RecordsGetResultSVCBRecordMeta
+    | RecordsGetResultTLSARecordMeta
+    | RecordsGetResultURIRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
+  comment?: string;
+  /** A single Base64-encoded OpenPGP Transferable Public Key (RFC 4880 Section 11.1) */
+  content?: string;
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name?: string;
+  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
+  proxied?: boolean;
+  /** Settings for the DNS record. */
+  settings?: RecordsGetResultOpenpgpkeyRecordSettings;
+  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
+  tags?: RecordsGetResultOpenpgpkeyRecordTagsList;
+  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
+  ttl?: number;
+  /** Record type. */
+  type?: RecordsGetResultOpenpgpkeyRecordType;
+}
+export const RecordsGetResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: S.Union(
+      RecordsGetResultARecordMeta,
+      RecordsGetResultAAAARecordMeta,
+      RecordsGetResultCNAMERecordMeta,
+      RecordsGetResultMXRecordMeta,
+      RecordsGetResultNSRecordMeta,
+      RecordsGetResultOpenpgpkeyRecordMeta,
+      RecordsGetResultPTRRecordMeta,
+      RecordsGetResultTXTRecordMeta,
+      RecordsGetResultCAARecordMeta,
+      RecordsGetResultCERTRecordMeta,
+      RecordsGetResultDNSKEYRecordMeta,
+      RecordsGetResultDSRecordMeta,
+      RecordsGetResultHTTPSRecordMeta,
+      RecordsGetResultLOCRecordMeta,
+      RecordsGetResultNAPTRRecordMeta,
+      RecordsGetResultSMIMEARecordMeta,
+      RecordsGetResultSRVRecordMeta,
+      RecordsGetResultSSHFPRecordMeta,
+      RecordsGetResultSVCBRecordMeta,
+      RecordsGetResultTLSARecordMeta,
+      RecordsGetResultURIRecordMeta,
+    ),
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    comment: S.optional(S.String),
+    content: S.optional(S.String),
+    name: S.optional(S.String),
+    proxied: S.optional(S.Boolean),
+    settings: S.optional(RecordsGetResultOpenpgpkeyRecordSettings),
+    tags: S.optional(RecordsGetResultOpenpgpkeyRecordTagsList),
+    ttl: S.optional(S.Number),
+    type: S.optional(RecordsGetResultOpenpgpkeyRecordType),
+  }),
+).annotate({
+  identifier: "RecordsGetResult",
+}) as any as S.Schema<RecordsGetResult>;
 
 export type GetRecordResponse = RecordsGetResult;
 export const GetRecordResponse = /*@__PURE__*/ S.suspend(() =>
@@ -12653,269 +11869,145 @@ export const RecordsListResultItemURIRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsListResultItemURIRecord",
 }) as any as S.Schema<RecordsListResultItemURIRecord>;
 
-export type RecordsListResultItem =
-  | RecordsListResultItemARecord
-  | RecordsListResultItemAAAARecord
-  | RecordsListResultItemCNAMERecord
-  | RecordsListResultItemMXRecord
-  | RecordsListResultItemNSRecord
-  | RecordsListResultItemOpenpgpkeyRecord
-  | RecordsListResultItemPTRRecord
-  | RecordsListResultItemTXTRecord
-  | RecordsListResultItemCAARecord
-  | RecordsListResultItemCERTRecord
-  | RecordsListResultItemDNSKEYRecord
-  | RecordsListResultItemDSRecord
-  | RecordsListResultItemHTTPSRecord
-  | RecordsListResultItemLOCRecord
-  | RecordsListResultItemNAPTRRecord
-  | RecordsListResultItemSMIMEARecord
-  | RecordsListResultItemSRVRecord
-  | RecordsListResultItemSSHFPRecord
-  | RecordsListResultItemSVCBRecord
-  | RecordsListResultItemTLSARecord
-  | RecordsListResultItemURIRecord;
-export const RecordsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-      "name",
-      "type",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-      "name",
-      "type",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-      "name",
-      "type",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-      "name",
-      "type",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-      "name",
-      "type",
-    ],
-    [
-      "id",
-      "comment",
-      "content",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "name",
-      "proxiable",
-      "proxied",
-      "settings",
-      "tags",
-      "ttl",
-      "type",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-      "name",
-      "type",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-      "name",
-      "type",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-      "name",
-      "type",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-      "name",
-      "type",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-      "name",
-      "type",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-      "name",
-      "type",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-      "name",
-      "type",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-      "name",
-      "type",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-      "name",
-      "type",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-      "name",
-      "type",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-      "name",
-      "type",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-      "name",
-      "type",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-      "name",
-      "type",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-      "name",
-      "type",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-      "name",
-      "type",
-    ],
-  ]),
-);
+export interface RecordsListResultItem {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta:
+    | RecordsListResultItemARecordMeta
+    | RecordsListResultItemAAAARecordMeta
+    | RecordsListResultItemCNAMERecordMeta
+    | RecordsListResultItemMXRecordMeta
+    | RecordsListResultItemNSRecordMeta
+    | RecordsListResultItemOpenpgpkeyRecordMeta
+    | RecordsListResultItemPTRRecordMeta
+    | RecordsListResultItemTXTRecordMeta
+    | RecordsListResultItemCAARecordMeta
+    | RecordsListResultItemCERTRecordMeta
+    | RecordsListResultItemDNSKEYRecordMeta
+    | RecordsListResultItemDSRecordMeta
+    | RecordsListResultItemHTTPSRecordMeta
+    | RecordsListResultItemLOCRecordMeta
+    | RecordsListResultItemNAPTRRecordMeta
+    | RecordsListResultItemSMIMEARecordMeta
+    | RecordsListResultItemSRVRecordMeta
+    | RecordsListResultItemSSHFPRecordMeta
+    | RecordsListResultItemSVCBRecordMeta
+    | RecordsListResultItemTLSARecordMeta
+    | RecordsListResultItemURIRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name: string;
+  /** Record type. */
+  type:
+    | RecordsListResultItemARecordType
+    | RecordsListResultItemAAAARecordType
+    | RecordsListResultItemCNAMERecordType
+    | RecordsListResultItemMXRecordType
+    | RecordsListResultItemNSRecordType
+    | RecordsListResultItemOpenpgpkeyRecordType
+    | RecordsListResultItemPTRRecordType
+    | RecordsListResultItemTXTRecordType
+    | RecordsListResultItemCAARecordType
+    | RecordsListResultItemCERTRecordType
+    | RecordsListResultItemDNSKEYRecordType
+    | RecordsListResultItemDSRecordType
+    | RecordsListResultItemHTTPSRecordType
+    | RecordsListResultItemLOCRecordType
+    | RecordsListResultItemNAPTRRecordType
+    | RecordsListResultItemSMIMEARecordType
+    | RecordsListResultItemSRVRecordType
+    | RecordsListResultItemSSHFPRecordType
+    | RecordsListResultItemSVCBRecordType
+    | RecordsListResultItemTLSARecordType
+    | RecordsListResultItemURIRecordType;
+  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
+  comment?: string;
+  /** A single Base64-encoded OpenPGP Transferable Public Key (RFC 4880 Section 11.1) */
+  content?: string;
+  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
+  proxied?: boolean;
+  /** Settings for the DNS record. */
+  settings?: RecordsListResultItemOpenpgpkeyRecordSettings;
+  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
+  tags?: RecordsListResultItemOpenpgpkeyRecordTagsList;
+  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
+  ttl?: number;
+}
+export const RecordsListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: S.Union(
+      RecordsListResultItemARecordMeta,
+      RecordsListResultItemAAAARecordMeta,
+      RecordsListResultItemCNAMERecordMeta,
+      RecordsListResultItemMXRecordMeta,
+      RecordsListResultItemNSRecordMeta,
+      RecordsListResultItemOpenpgpkeyRecordMeta,
+      RecordsListResultItemPTRRecordMeta,
+      RecordsListResultItemTXTRecordMeta,
+      RecordsListResultItemCAARecordMeta,
+      RecordsListResultItemCERTRecordMeta,
+      RecordsListResultItemDNSKEYRecordMeta,
+      RecordsListResultItemDSRecordMeta,
+      RecordsListResultItemHTTPSRecordMeta,
+      RecordsListResultItemLOCRecordMeta,
+      RecordsListResultItemNAPTRRecordMeta,
+      RecordsListResultItemSMIMEARecordMeta,
+      RecordsListResultItemSRVRecordMeta,
+      RecordsListResultItemSSHFPRecordMeta,
+      RecordsListResultItemSVCBRecordMeta,
+      RecordsListResultItemTLSARecordMeta,
+      RecordsListResultItemURIRecordMeta,
+    ),
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    name: S.String,
+    type: S.Union(
+      RecordsListResultItemARecordType,
+      RecordsListResultItemAAAARecordType,
+      RecordsListResultItemCNAMERecordType,
+      RecordsListResultItemMXRecordType,
+      RecordsListResultItemNSRecordType,
+      RecordsListResultItemOpenpgpkeyRecordType,
+      RecordsListResultItemPTRRecordType,
+      RecordsListResultItemTXTRecordType,
+      RecordsListResultItemCAARecordType,
+      RecordsListResultItemCERTRecordType,
+      RecordsListResultItemDNSKEYRecordType,
+      RecordsListResultItemDSRecordType,
+      RecordsListResultItemHTTPSRecordType,
+      RecordsListResultItemLOCRecordType,
+      RecordsListResultItemNAPTRRecordType,
+      RecordsListResultItemSMIMEARecordType,
+      RecordsListResultItemSRVRecordType,
+      RecordsListResultItemSSHFPRecordType,
+      RecordsListResultItemSVCBRecordType,
+      RecordsListResultItemTLSARecordType,
+      RecordsListResultItemURIRecordType,
+    ),
+    comment: S.optional(S.String),
+    content: S.optional(S.String),
+    proxied: S.optional(S.Boolean),
+    settings: S.optional(RecordsListResultItemOpenpgpkeyRecordSettings),
+    tags: S.optional(RecordsListResultItemOpenpgpkeyRecordTagsList),
+    ttl: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "RecordsListResultItem",
+}) as any as S.Schema<RecordsListResultItem>;
 
 export type RecordsListResultList = ReadonlyArray<RecordsListResultItem>;
 export const RecordsListResultList = /*@__PURE__*/ S.Array(
@@ -15141,229 +14233,102 @@ export const RecordsEditResultURIRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsEditResultURIRecord",
 }) as any as S.Schema<RecordsEditResultURIRecord>;
 
-export type RecordsEditResult =
-  | RecordsEditResultARecord
-  | RecordsEditResultAAAARecord
-  | RecordsEditResultCNAMERecord
-  | RecordsEditResultMXRecord
-  | RecordsEditResultNSRecord
-  | RecordsEditResultOpenpgpkeyRecord
-  | RecordsEditResultPTRRecord
-  | RecordsEditResultTXTRecord
-  | RecordsEditResultCAARecord
-  | RecordsEditResultCERTRecord
-  | RecordsEditResultDNSKEYRecord
-  | RecordsEditResultDSRecord
-  | RecordsEditResultHTTPSRecord
-  | RecordsEditResultLOCRecord
-  | RecordsEditResultNAPTRRecord
-  | RecordsEditResultSMIMEARecord
-  | RecordsEditResultSRVRecord
-  | RecordsEditResultSSHFPRecord
-  | RecordsEditResultSVCBRecord
-  | RecordsEditResultTLSARecord
-  | RecordsEditResultURIRecord;
-export const RecordsEditResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "comment",
-      "content",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "name",
-      "proxiable",
-      "proxied",
-      "settings",
-      "tags",
-      "ttl",
-      "type",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-  ]),
-);
+export interface RecordsEditResult {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta:
+    | RecordsEditResultARecordMeta
+    | RecordsEditResultAAAARecordMeta
+    | RecordsEditResultCNAMERecordMeta
+    | RecordsEditResultMXRecordMeta
+    | RecordsEditResultNSRecordMeta
+    | RecordsEditResultOpenpgpkeyRecordMeta
+    | RecordsEditResultPTRRecordMeta
+    | RecordsEditResultTXTRecordMeta
+    | RecordsEditResultCAARecordMeta
+    | RecordsEditResultCERTRecordMeta
+    | RecordsEditResultDNSKEYRecordMeta
+    | RecordsEditResultDSRecordMeta
+    | RecordsEditResultHTTPSRecordMeta
+    | RecordsEditResultLOCRecordMeta
+    | RecordsEditResultNAPTRRecordMeta
+    | RecordsEditResultSMIMEARecordMeta
+    | RecordsEditResultSRVRecordMeta
+    | RecordsEditResultSSHFPRecordMeta
+    | RecordsEditResultSVCBRecordMeta
+    | RecordsEditResultTLSARecordMeta
+    | RecordsEditResultURIRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
+  comment?: string;
+  /** A single Base64-encoded OpenPGP Transferable Public Key (RFC 4880 Section 11.1) */
+  content?: string;
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name?: string;
+  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
+  proxied?: boolean;
+  /** Settings for the DNS record. */
+  settings?: RecordsEditResultOpenpgpkeyRecordSettings;
+  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
+  tags?: RecordsEditResultOpenpgpkeyRecordTagsList;
+  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
+  ttl?: number;
+  /** Record type. */
+  type?: RecordsEditResultOpenpgpkeyRecordType;
+}
+export const RecordsEditResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: S.Union(
+      RecordsEditResultARecordMeta,
+      RecordsEditResultAAAARecordMeta,
+      RecordsEditResultCNAMERecordMeta,
+      RecordsEditResultMXRecordMeta,
+      RecordsEditResultNSRecordMeta,
+      RecordsEditResultOpenpgpkeyRecordMeta,
+      RecordsEditResultPTRRecordMeta,
+      RecordsEditResultTXTRecordMeta,
+      RecordsEditResultCAARecordMeta,
+      RecordsEditResultCERTRecordMeta,
+      RecordsEditResultDNSKEYRecordMeta,
+      RecordsEditResultDSRecordMeta,
+      RecordsEditResultHTTPSRecordMeta,
+      RecordsEditResultLOCRecordMeta,
+      RecordsEditResultNAPTRRecordMeta,
+      RecordsEditResultSMIMEARecordMeta,
+      RecordsEditResultSRVRecordMeta,
+      RecordsEditResultSSHFPRecordMeta,
+      RecordsEditResultSVCBRecordMeta,
+      RecordsEditResultTLSARecordMeta,
+      RecordsEditResultURIRecordMeta,
+    ),
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    comment: S.optional(S.String),
+    content: S.optional(S.String),
+    name: S.optional(S.String),
+    proxied: S.optional(S.Boolean),
+    settings: S.optional(RecordsEditResultOpenpgpkeyRecordSettings),
+    tags: S.optional(RecordsEditResultOpenpgpkeyRecordTagsList),
+    ttl: S.optional(S.Number),
+    type: S.optional(RecordsEditResultOpenpgpkeyRecordType),
+  }),
+).annotate({
+  identifier: "RecordsEditResult",
+}) as any as S.Schema<RecordsEditResult>;
 
 export type PatchRecordResponse = RecordsEditResult;
 export const PatchRecordResponse = /*@__PURE__*/ S.suspend(() =>
@@ -17405,229 +16370,102 @@ export const RecordsScanListResultItemURIRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsScanListResultItemURIRecord",
 }) as any as S.Schema<RecordsScanListResultItemURIRecord>;
 
-export type RecordsScanListResultItem =
-  | RecordsScanListResultItemARecord
-  | RecordsScanListResultItemAAAARecord
-  | RecordsScanListResultItemCNAMERecord
-  | RecordsScanListResultItemMXRecord
-  | RecordsScanListResultItemNSRecord
-  | RecordsScanListResultItemOpenpgpkeyRecord
-  | RecordsScanListResultItemPTRRecord
-  | RecordsScanListResultItemTXTRecord
-  | RecordsScanListResultItemCAARecord
-  | RecordsScanListResultItemCERTRecord
-  | RecordsScanListResultItemDNSKEYRecord
-  | RecordsScanListResultItemDSRecord
-  | RecordsScanListResultItemHTTPSRecord
-  | RecordsScanListResultItemLOCRecord
-  | RecordsScanListResultItemNAPTRRecord
-  | RecordsScanListResultItemSMIMEARecord
-  | RecordsScanListResultItemSRVRecord
-  | RecordsScanListResultItemSSHFPRecord
-  | RecordsScanListResultItemSVCBRecord
-  | RecordsScanListResultItemTLSARecord
-  | RecordsScanListResultItemURIRecord;
-export const RecordsScanListResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "comment",
-      "content",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "name",
-      "proxiable",
-      "proxied",
-      "settings",
-      "tags",
-      "ttl",
-      "type",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-  ]),
-);
+export interface RecordsScanListResultItem {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta:
+    | RecordsScanListResultItemARecordMeta
+    | RecordsScanListResultItemAAAARecordMeta
+    | RecordsScanListResultItemCNAMERecordMeta
+    | RecordsScanListResultItemMXRecordMeta
+    | RecordsScanListResultItemNSRecordMeta
+    | RecordsScanListResultItemOpenpgpkeyRecordMeta
+    | RecordsScanListResultItemPTRRecordMeta
+    | RecordsScanListResultItemTXTRecordMeta
+    | RecordsScanListResultItemCAARecordMeta
+    | RecordsScanListResultItemCERTRecordMeta
+    | RecordsScanListResultItemDNSKEYRecordMeta
+    | RecordsScanListResultItemDSRecordMeta
+    | RecordsScanListResultItemHTTPSRecordMeta
+    | RecordsScanListResultItemLOCRecordMeta
+    | RecordsScanListResultItemNAPTRRecordMeta
+    | RecordsScanListResultItemSMIMEARecordMeta
+    | RecordsScanListResultItemSRVRecordMeta
+    | RecordsScanListResultItemSSHFPRecordMeta
+    | RecordsScanListResultItemSVCBRecordMeta
+    | RecordsScanListResultItemTLSARecordMeta
+    | RecordsScanListResultItemURIRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
+  comment?: string;
+  /** A single Base64-encoded OpenPGP Transferable Public Key (RFC 4880 Section 11.1) */
+  content?: string;
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name?: string;
+  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
+  proxied?: boolean;
+  /** Settings for the DNS record. */
+  settings?: RecordsScanListResultItemOpenpgpkeyRecordSettings;
+  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
+  tags?: RecordsScanListResultItemOpenpgpkeyRecordTagsList;
+  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
+  ttl?: number;
+  /** Record type. */
+  type?: RecordsScanListResultItemOpenpgpkeyRecordType;
+}
+export const RecordsScanListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: S.Union(
+      RecordsScanListResultItemARecordMeta,
+      RecordsScanListResultItemAAAARecordMeta,
+      RecordsScanListResultItemCNAMERecordMeta,
+      RecordsScanListResultItemMXRecordMeta,
+      RecordsScanListResultItemNSRecordMeta,
+      RecordsScanListResultItemOpenpgpkeyRecordMeta,
+      RecordsScanListResultItemPTRRecordMeta,
+      RecordsScanListResultItemTXTRecordMeta,
+      RecordsScanListResultItemCAARecordMeta,
+      RecordsScanListResultItemCERTRecordMeta,
+      RecordsScanListResultItemDNSKEYRecordMeta,
+      RecordsScanListResultItemDSRecordMeta,
+      RecordsScanListResultItemHTTPSRecordMeta,
+      RecordsScanListResultItemLOCRecordMeta,
+      RecordsScanListResultItemNAPTRRecordMeta,
+      RecordsScanListResultItemSMIMEARecordMeta,
+      RecordsScanListResultItemSRVRecordMeta,
+      RecordsScanListResultItemSSHFPRecordMeta,
+      RecordsScanListResultItemSVCBRecordMeta,
+      RecordsScanListResultItemTLSARecordMeta,
+      RecordsScanListResultItemURIRecordMeta,
+    ),
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    comment: S.optional(S.String),
+    content: S.optional(S.String),
+    name: S.optional(S.String),
+    proxied: S.optional(S.Boolean),
+    settings: S.optional(RecordsScanListResultItemOpenpgpkeyRecordSettings),
+    tags: S.optional(RecordsScanListResultItemOpenpgpkeyRecordTagsList),
+    ttl: S.optional(S.Number),
+    type: S.optional(RecordsScanListResultItemOpenpgpkeyRecordType),
+  }),
+).annotate({
+  identifier: "RecordsScanListResultItem",
+}) as any as S.Schema<RecordsScanListResultItem>;
 
 export type RecordsScanListResultList =
   ReadonlyArray<RecordsScanListResultItem>;
@@ -21167,230 +20005,111 @@ export const RecordsScanReviewResponseAcceptsItemURIRecord =
     identifier: "RecordsScanReviewResponseAcceptsItemURIRecord",
   }) as any as S.Schema<RecordsScanReviewResponseAcceptsItemURIRecord>;
 
-export type RecordsScanReviewResponseAcceptsItem =
-  | RecordsScanReviewResponseAcceptsItemARecord
-  | RecordsScanReviewResponseAcceptsItemAAAARecord
-  | RecordsScanReviewResponseAcceptsItemCNAMERecord
-  | RecordsScanReviewResponseAcceptsItemMXRecord
-  | RecordsScanReviewResponseAcceptsItemNSRecord
-  | RecordsScanReviewResponseAcceptsItemOpenpgpkeyRecord
-  | RecordsScanReviewResponseAcceptsItemPTRRecord
-  | RecordsScanReviewResponseAcceptsItemTXTRecord
-  | RecordsScanReviewResponseAcceptsItemCAARecord
-  | RecordsScanReviewResponseAcceptsItemCERTRecord
-  | RecordsScanReviewResponseAcceptsItemDNSKEYRecord
-  | RecordsScanReviewResponseAcceptsItemDSRecord
-  | RecordsScanReviewResponseAcceptsItemHTTPSRecord
-  | RecordsScanReviewResponseAcceptsItemLOCRecord
-  | RecordsScanReviewResponseAcceptsItemNAPTRRecord
-  | RecordsScanReviewResponseAcceptsItemSMIMEARecord
-  | RecordsScanReviewResponseAcceptsItemSRVRecord
-  | RecordsScanReviewResponseAcceptsItemSSHFPRecord
-  | RecordsScanReviewResponseAcceptsItemSVCBRecord
-  | RecordsScanReviewResponseAcceptsItemTLSARecord
-  | RecordsScanReviewResponseAcceptsItemURIRecord;
-export const RecordsScanReviewResponseAcceptsItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      [
-        "id",
-        "createdOn",
-        "meta",
-        "modifiedOn",
-        "proxiable",
-        "commentModifiedOn",
-        "tagsModifiedOn",
-      ],
-      [
-        "id",
-        "createdOn",
-        "meta",
-        "modifiedOn",
-        "proxiable",
-        "commentModifiedOn",
-        "tagsModifiedOn",
-      ],
-      [
-        "id",
-        "createdOn",
-        "meta",
-        "modifiedOn",
-        "proxiable",
-        "commentModifiedOn",
-        "tagsModifiedOn",
-      ],
-      [
-        "id",
-        "createdOn",
-        "meta",
-        "modifiedOn",
-        "proxiable",
-        "commentModifiedOn",
-        "tagsModifiedOn",
-      ],
-      [
-        "id",
-        "createdOn",
-        "meta",
-        "modifiedOn",
-        "proxiable",
-        "commentModifiedOn",
-        "tagsModifiedOn",
-      ],
-      [
-        "id",
-        "comment",
-        "content",
-        "createdOn",
-        "meta",
-        "modifiedOn",
-        "name",
-        "proxiable",
-        "proxied",
-        "settings",
-        "tags",
-        "ttl",
-        "type",
-        "commentModifiedOn",
-        "tagsModifiedOn",
-      ],
-      [
-        "id",
-        "createdOn",
-        "meta",
-        "modifiedOn",
-        "proxiable",
-        "commentModifiedOn",
-        "tagsModifiedOn",
-      ],
-      [
-        "id",
-        "createdOn",
-        "meta",
-        "modifiedOn",
-        "proxiable",
-        "commentModifiedOn",
-        "tagsModifiedOn",
-      ],
-      [
-        "id",
-        "createdOn",
-        "meta",
-        "modifiedOn",
-        "proxiable",
-        "commentModifiedOn",
-        "tagsModifiedOn",
-      ],
-      [
-        "id",
-        "createdOn",
-        "meta",
-        "modifiedOn",
-        "proxiable",
-        "commentModifiedOn",
-        "tagsModifiedOn",
-      ],
-      [
-        "id",
-        "createdOn",
-        "meta",
-        "modifiedOn",
-        "proxiable",
-        "commentModifiedOn",
-        "tagsModifiedOn",
-      ],
-      [
-        "id",
-        "createdOn",
-        "meta",
-        "modifiedOn",
-        "proxiable",
-        "commentModifiedOn",
-        "tagsModifiedOn",
-      ],
-      [
-        "id",
-        "createdOn",
-        "meta",
-        "modifiedOn",
-        "proxiable",
-        "commentModifiedOn",
-        "tagsModifiedOn",
-      ],
-      [
-        "id",
-        "createdOn",
-        "meta",
-        "modifiedOn",
-        "proxiable",
-        "commentModifiedOn",
-        "tagsModifiedOn",
-      ],
-      [
-        "id",
-        "createdOn",
-        "meta",
-        "modifiedOn",
-        "proxiable",
-        "commentModifiedOn",
-        "tagsModifiedOn",
-      ],
-      [
-        "id",
-        "createdOn",
-        "meta",
-        "modifiedOn",
-        "proxiable",
-        "commentModifiedOn",
-        "tagsModifiedOn",
-      ],
-      [
-        "id",
-        "createdOn",
-        "meta",
-        "modifiedOn",
-        "proxiable",
-        "commentModifiedOn",
-        "tagsModifiedOn",
-      ],
-      [
-        "id",
-        "createdOn",
-        "meta",
-        "modifiedOn",
-        "proxiable",
-        "commentModifiedOn",
-        "tagsModifiedOn",
-      ],
-      [
-        "id",
-        "createdOn",
-        "meta",
-        "modifiedOn",
-        "proxiable",
-        "commentModifiedOn",
-        "tagsModifiedOn",
-      ],
-      [
-        "id",
-        "createdOn",
-        "meta",
-        "modifiedOn",
-        "proxiable",
-        "commentModifiedOn",
-        "tagsModifiedOn",
-      ],
-      [
-        "id",
-        "createdOn",
-        "meta",
-        "modifiedOn",
-        "proxiable",
-        "commentModifiedOn",
-        "tagsModifiedOn",
-      ],
-    ]),
-  );
+export interface RecordsScanReviewResponseAcceptsItem {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta:
+    | RecordsScanReviewResponseAcceptsItemARecordMeta
+    | RecordsScanReviewResponseAcceptsItemAAAARecordMeta
+    | RecordsScanReviewResponseAcceptsItemCNAMERecordMeta
+    | RecordsScanReviewResponseAcceptsItemMXRecordMeta
+    | RecordsScanReviewResponseAcceptsItemNSRecordMeta
+    | RecordsScanReviewResponseAcceptsItemOpenpgpkeyRecordMeta
+    | RecordsScanReviewResponseAcceptsItemPTRRecordMeta
+    | RecordsScanReviewResponseAcceptsItemTXTRecordMeta
+    | RecordsScanReviewResponseAcceptsItemCAARecordMeta
+    | RecordsScanReviewResponseAcceptsItemCERTRecordMeta
+    | RecordsScanReviewResponseAcceptsItemDNSKEYRecordMeta
+    | RecordsScanReviewResponseAcceptsItemDSRecordMeta
+    | RecordsScanReviewResponseAcceptsItemHTTPSRecordMeta
+    | RecordsScanReviewResponseAcceptsItemLOCRecordMeta
+    | RecordsScanReviewResponseAcceptsItemNAPTRRecordMeta
+    | RecordsScanReviewResponseAcceptsItemSMIMEARecordMeta
+    | RecordsScanReviewResponseAcceptsItemSRVRecordMeta
+    | RecordsScanReviewResponseAcceptsItemSSHFPRecordMeta
+    | RecordsScanReviewResponseAcceptsItemSVCBRecordMeta
+    | RecordsScanReviewResponseAcceptsItemTLSARecordMeta
+    | RecordsScanReviewResponseAcceptsItemURIRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
+  comment?: string;
+  /** A single Base64-encoded OpenPGP Transferable Public Key (RFC 4880 Section 11.1) */
+  content?: string;
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name?: string;
+  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
+  proxied?: boolean;
+  /** Settings for the DNS record. */
+  settings?: RecordsScanReviewResponseAcceptsItemOpenpgpkeyRecordSettings;
+  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
+  tags?: RecordsScanReviewResponseAcceptsItemOpenpgpkeyRecordTagsList;
+  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
+  ttl?: number;
+  /** Record type. */
+  type?: RecordsScanReviewResponseAcceptsItemOpenpgpkeyRecordType;
+}
+export const RecordsScanReviewResponseAcceptsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+      createdOn: S.String.pipe(T.Body("created_on")),
+      meta: S.Union(
+        RecordsScanReviewResponseAcceptsItemARecordMeta,
+        RecordsScanReviewResponseAcceptsItemAAAARecordMeta,
+        RecordsScanReviewResponseAcceptsItemCNAMERecordMeta,
+        RecordsScanReviewResponseAcceptsItemMXRecordMeta,
+        RecordsScanReviewResponseAcceptsItemNSRecordMeta,
+        RecordsScanReviewResponseAcceptsItemOpenpgpkeyRecordMeta,
+        RecordsScanReviewResponseAcceptsItemPTRRecordMeta,
+        RecordsScanReviewResponseAcceptsItemTXTRecordMeta,
+        RecordsScanReviewResponseAcceptsItemCAARecordMeta,
+        RecordsScanReviewResponseAcceptsItemCERTRecordMeta,
+        RecordsScanReviewResponseAcceptsItemDNSKEYRecordMeta,
+        RecordsScanReviewResponseAcceptsItemDSRecordMeta,
+        RecordsScanReviewResponseAcceptsItemHTTPSRecordMeta,
+        RecordsScanReviewResponseAcceptsItemLOCRecordMeta,
+        RecordsScanReviewResponseAcceptsItemNAPTRRecordMeta,
+        RecordsScanReviewResponseAcceptsItemSMIMEARecordMeta,
+        RecordsScanReviewResponseAcceptsItemSRVRecordMeta,
+        RecordsScanReviewResponseAcceptsItemSSHFPRecordMeta,
+        RecordsScanReviewResponseAcceptsItemSVCBRecordMeta,
+        RecordsScanReviewResponseAcceptsItemTLSARecordMeta,
+        RecordsScanReviewResponseAcceptsItemURIRecordMeta,
+      ),
+      modifiedOn: S.String.pipe(T.Body("modified_on")),
+      proxiable: S.Boolean,
+      commentModifiedOn: S.optional(
+        S.String.pipe(T.Body("comment_modified_on")),
+      ),
+      tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+      comment: S.optional(S.String),
+      content: S.optional(S.String),
+      name: S.optional(S.String),
+      proxied: S.optional(S.Boolean),
+      settings: S.optional(
+        RecordsScanReviewResponseAcceptsItemOpenpgpkeyRecordSettings,
+      ),
+      tags: S.optional(
+        RecordsScanReviewResponseAcceptsItemOpenpgpkeyRecordTagsList,
+      ),
+      ttl: S.optional(S.Number),
+      type: S.optional(
+        RecordsScanReviewResponseAcceptsItemOpenpgpkeyRecordType,
+      ),
+    }),
+).annotate({
+  identifier: "RecordsScanReviewResponseAcceptsItem",
+}) as any as S.Schema<RecordsScanReviewResponseAcceptsItem>;
 
 export type RecordsScanReviewResponseAcceptsList =
   ReadonlyArray<RecordsScanReviewResponseAcceptsItem>;
@@ -23272,229 +21991,102 @@ export const RecordsUpdateResultURIRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsUpdateResultURIRecord",
 }) as any as S.Schema<RecordsUpdateResultURIRecord>;
 
-export type RecordsUpdateResult =
-  | RecordsUpdateResultARecord
-  | RecordsUpdateResultAAAARecord
-  | RecordsUpdateResultCNAMERecord
-  | RecordsUpdateResultMXRecord
-  | RecordsUpdateResultNSRecord
-  | RecordsUpdateResultOpenpgpkeyRecord
-  | RecordsUpdateResultPTRRecord
-  | RecordsUpdateResultTXTRecord
-  | RecordsUpdateResultCAARecord
-  | RecordsUpdateResultCERTRecord
-  | RecordsUpdateResultDNSKEYRecord
-  | RecordsUpdateResultDSRecord
-  | RecordsUpdateResultHTTPSRecord
-  | RecordsUpdateResultLOCRecord
-  | RecordsUpdateResultNAPTRRecord
-  | RecordsUpdateResultSMIMEARecord
-  | RecordsUpdateResultSRVRecord
-  | RecordsUpdateResultSSHFPRecord
-  | RecordsUpdateResultSVCBRecord
-  | RecordsUpdateResultTLSARecord
-  | RecordsUpdateResultURIRecord;
-export const RecordsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "comment",
-      "content",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "name",
-      "proxiable",
-      "proxied",
-      "settings",
-      "tags",
-      "ttl",
-      "type",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-    [
-      "id",
-      "createdOn",
-      "meta",
-      "modifiedOn",
-      "proxiable",
-      "commentModifiedOn",
-      "tagsModifiedOn",
-    ],
-  ]),
-);
+export interface RecordsUpdateResult {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta:
+    | RecordsUpdateResultARecordMeta
+    | RecordsUpdateResultAAAARecordMeta
+    | RecordsUpdateResultCNAMERecordMeta
+    | RecordsUpdateResultMXRecordMeta
+    | RecordsUpdateResultNSRecordMeta
+    | RecordsUpdateResultOpenpgpkeyRecordMeta
+    | RecordsUpdateResultPTRRecordMeta
+    | RecordsUpdateResultTXTRecordMeta
+    | RecordsUpdateResultCAARecordMeta
+    | RecordsUpdateResultCERTRecordMeta
+    | RecordsUpdateResultDNSKEYRecordMeta
+    | RecordsUpdateResultDSRecordMeta
+    | RecordsUpdateResultHTTPSRecordMeta
+    | RecordsUpdateResultLOCRecordMeta
+    | RecordsUpdateResultNAPTRRecordMeta
+    | RecordsUpdateResultSMIMEARecordMeta
+    | RecordsUpdateResultSRVRecordMeta
+    | RecordsUpdateResultSSHFPRecordMeta
+    | RecordsUpdateResultSVCBRecordMeta
+    | RecordsUpdateResultTLSARecordMeta
+    | RecordsUpdateResultURIRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+  /** Comments or notes about the DNS record. This field has no effect on DNS responses. */
+  comment?: string;
+  /** A single Base64-encoded OpenPGP Transferable Public Key (RFC 4880 Section 11.1) */
+  content?: string;
+  /** Complete DNS record name, including the zone name, in Punycode. */
+  name?: string;
+  /** Whether the record is receiving the performance and security benefits of Cloudflare. */
+  proxied?: boolean;
+  /** Settings for the DNS record. */
+  settings?: RecordsUpdateResultOpenpgpkeyRecordSettings;
+  /** Custom tags for the DNS record. This field has no effect on DNS responses. */
+  tags?: RecordsUpdateResultOpenpgpkeyRecordTagsList;
+  /** Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
+  ttl?: number;
+  /** Record type. */
+  type?: RecordsUpdateResultOpenpgpkeyRecordType;
+}
+export const RecordsUpdateResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: S.Union(
+      RecordsUpdateResultARecordMeta,
+      RecordsUpdateResultAAAARecordMeta,
+      RecordsUpdateResultCNAMERecordMeta,
+      RecordsUpdateResultMXRecordMeta,
+      RecordsUpdateResultNSRecordMeta,
+      RecordsUpdateResultOpenpgpkeyRecordMeta,
+      RecordsUpdateResultPTRRecordMeta,
+      RecordsUpdateResultTXTRecordMeta,
+      RecordsUpdateResultCAARecordMeta,
+      RecordsUpdateResultCERTRecordMeta,
+      RecordsUpdateResultDNSKEYRecordMeta,
+      RecordsUpdateResultDSRecordMeta,
+      RecordsUpdateResultHTTPSRecordMeta,
+      RecordsUpdateResultLOCRecordMeta,
+      RecordsUpdateResultNAPTRRecordMeta,
+      RecordsUpdateResultSMIMEARecordMeta,
+      RecordsUpdateResultSRVRecordMeta,
+      RecordsUpdateResultSSHFPRecordMeta,
+      RecordsUpdateResultSVCBRecordMeta,
+      RecordsUpdateResultTLSARecordMeta,
+      RecordsUpdateResultURIRecordMeta,
+    ),
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+    comment: S.optional(S.String),
+    content: S.optional(S.String),
+    name: S.optional(S.String),
+    proxied: S.optional(S.Boolean),
+    settings: S.optional(RecordsUpdateResultOpenpgpkeyRecordSettings),
+    tags: S.optional(RecordsUpdateResultOpenpgpkeyRecordTagsList),
+    ttl: S.optional(S.Number),
+    type: S.optional(RecordsUpdateResultOpenpgpkeyRecordType),
+  }),
+).annotate({
+  identifier: "RecordsUpdateResult",
+}) as any as S.Schema<RecordsUpdateResult>;
 
 export type UpdateRecordResponse = RecordsUpdateResult;
 export const UpdateRecordResponse = /*@__PURE__*/ S.suspend(() =>

@@ -13,55 +13,57 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** The request message for language detection. */
 export interface DetectLanguageRequest {
@@ -69,10 +71,12 @@ export interface DetectLanguageRequest {
   q?: StringList;
 }
 export const DetectLanguageRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "q": S.optional(StringList),
-}),
-).annotate({ identifier: "DetectLanguageRequest" }) as any as S.Schema<DetectLanguageRequest>;
+  S.Struct({
+    q: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "DetectLanguageRequest",
+}) as any as S.Schema<DetectLanguageRequest>;
 
 export interface DetectDetectionsRequest {
   /** OAuth bearer token. */
@@ -83,12 +87,20 @@ export interface DetectDetectionsRequest {
   body?: DetectLanguageRequest;
 }
 export const DetectDetectionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bearer_token": S.optional(S.String.pipe(T.Query())),
-  "pp": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(DetectLanguageRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2/detect","baseUrl":"https://translation.googleapis.com/language/translate/"})),
-).annotate({ identifier: "DetectDetectionsRequest" }) as any as S.Schema<DetectDetectionsRequest>;
+  S.Struct({
+    bearer_token: S.optional(S.String.pipe(T.Query())),
+    pp: S.optional(S.Boolean.pipe(T.Query())),
+    body: S.optional(DetectLanguageRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v2/detect",
+      baseUrl: "https://translation.googleapis.com/language/translate/",
+    }),
+  ),
+).annotate({
+  identifier: "DetectDetectionsRequest",
+}) as any as S.Schema<DetectDetectionsRequest>;
 
 export interface DetectionsResourceItem {
   /** The confidence of the detection result of this language. */
@@ -99,29 +111,37 @@ export interface DetectionsResourceItem {
   language?: string;
 }
 export const DetectionsResourceItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "confidence": S.optional(S.Number),
-  "isReliable": S.optional(S.Boolean),
-  "language": S.optional(S.String),
-}),
-).annotate({ identifier: "DetectionsResourceItem" }) as any as S.Schema<DetectionsResourceItem>;
+  S.Struct({
+    confidence: S.optional(S.Number),
+    isReliable: S.optional(S.Boolean),
+    language: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DetectionsResourceItem",
+}) as any as S.Schema<DetectionsResourceItem>;
 
 /** An array of languages which we detect for the given text The most likely language list first. */
 export type DetectionsResource = ReadonlyArray<DetectionsResourceItem>;
-export const DetectionsResource = /*@__PURE__*/ S.Array(DetectionsResourceItem) as any as S.Schema<DetectionsResource>;
+export const DetectionsResource = /*@__PURE__*/ S.Array(
+  DetectionsResourceItem,
+) as any as S.Schema<DetectionsResource>;
 
 export type DetectionsResourceList = ReadonlyArray<DetectionsResource>;
-export const DetectionsResourceList = /*@__PURE__*/ S.Array(DetectionsResource) as any as S.Schema<DetectionsResourceList>;
+export const DetectionsResourceList = /*@__PURE__*/ S.Array(
+  DetectionsResource,
+) as any as S.Schema<DetectionsResourceList>;
 
 export interface DetectionsListResponse {
   /** A detections contains detection results of several text */
   detections?: DetectionsResourceList;
 }
 export const DetectionsListResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "detections": S.optional(DetectionsResourceList),
-}),
-).annotate({ identifier: "DetectionsListResponse" }) as any as S.Schema<DetectionsListResponse>;
+  S.Struct({
+    detections: S.optional(DetectionsResourceList),
+  }),
+).annotate({
+  identifier: "DetectionsListResponse",
+}) as any as S.Schema<DetectionsListResponse>;
 
 export interface ListDetectionsRequest {
   /** OAuth bearer token. */
@@ -132,12 +152,20 @@ export interface ListDetectionsRequest {
   q: StringList;
 }
 export const ListDetectionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bearer_token": S.optional(S.String.pipe(T.Query())),
-  "pp": S.optional(S.Boolean.pipe(T.Query())),
-  "q": StringList.pipe(T.Query()),
-}).pipe(T.Http({"method":"GET","uri":"v2/detect","baseUrl":"https://translation.googleapis.com/language/translate/"})),
-).annotate({ identifier: "ListDetectionsRequest" }) as any as S.Schema<ListDetectionsRequest>;
+  S.Struct({
+    bearer_token: S.optional(S.String.pipe(T.Query())),
+    pp: S.optional(S.Boolean.pipe(T.Query())),
+    q: StringList.pipe(T.Query()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v2/detect",
+      baseUrl: "https://translation.googleapis.com/language/translate/",
+    }),
+  ),
+).annotate({
+  identifier: "ListDetectionsRequest",
+}) as any as S.Schema<ListDetectionsRequest>;
 
 export interface ListLanguagesRequest {
   /** OAuth bearer token. */
@@ -150,13 +178,21 @@ export interface ListLanguagesRequest {
   model?: string;
 }
 export const ListLanguagesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bearer_token": S.optional(S.String.pipe(T.Query())),
-  "pp": S.optional(S.Boolean.pipe(T.Query())),
-  "target": S.optional(S.String.pipe(T.Query())),
-  "model": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v2/languages","baseUrl":"https://translation.googleapis.com/language/translate/"})),
-).annotate({ identifier: "ListLanguagesRequest" }) as any as S.Schema<ListLanguagesRequest>;
+  S.Struct({
+    bearer_token: S.optional(S.String.pipe(T.Query())),
+    pp: S.optional(S.Boolean.pipe(T.Query())),
+    target: S.optional(S.String.pipe(T.Query())),
+    model: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v2/languages",
+      baseUrl: "https://translation.googleapis.com/language/translate/",
+    }),
+  ),
+).annotate({
+  identifier: "ListLanguagesRequest",
+}) as any as S.Schema<ListLanguagesRequest>;
 
 export interface LanguagesResource {
   /** Human readable name of the language localized to the target language. */
@@ -165,24 +201,30 @@ export interface LanguagesResource {
   language?: string;
 }
 export const LanguagesResource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "language": S.optional(S.String),
-}),
-).annotate({ identifier: "LanguagesResource" }) as any as S.Schema<LanguagesResource>;
+  S.Struct({
+    name: S.optional(S.String),
+    language: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "LanguagesResource",
+}) as any as S.Schema<LanguagesResource>;
 
 export type LanguagesResourceList = ReadonlyArray<LanguagesResource>;
-export const LanguagesResourceList = /*@__PURE__*/ S.Array(LanguagesResource) as any as S.Schema<LanguagesResourceList>;
+export const LanguagesResourceList = /*@__PURE__*/ S.Array(
+  LanguagesResource,
+) as any as S.Schema<LanguagesResourceList>;
 
 export interface LanguagesListResponse {
   /** List of source/target languages supported by the translation API. If target parameter is unspecified, the list is sorted by the ASCII code point order of the language code. If target parameter is specified, the list is sorted by the collation order of the language name in the target language. */
   languages?: LanguagesResourceList;
 }
 export const LanguagesListResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "languages": S.optional(LanguagesResourceList),
-}),
-).annotate({ identifier: "LanguagesListResponse" }) as any as S.Schema<LanguagesListResponse>;
+  S.Struct({
+    languages: S.optional(LanguagesResourceList),
+  }),
+).annotate({
+  identifier: "LanguagesListResponse",
+}) as any as S.Schema<LanguagesListResponse>;
 
 export type ListTranslationsFormatEnum = "html" | "text";
 export const ListTranslationsFormatEnum = /*@__PURE__*/ S.String;
@@ -206,17 +248,25 @@ export interface ListTranslationsRequest {
   target: string;
 }
 export const ListTranslationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bearer_token": S.optional(S.String.pipe(T.Query())),
-  "pp": S.optional(S.Boolean.pipe(T.Query())),
-  "format": S.optional(ListTranslationsFormatEnum.pipe(T.Query())),
-  "model": S.optional(S.String.pipe(T.Query())),
-  "cid": S.optional(StringList.pipe(T.Query())),
-  "source": S.optional(S.String.pipe(T.Query())),
-  "q": StringList.pipe(T.Query()),
-  "target": S.String.pipe(T.Query()),
-}).pipe(T.Http({"method":"GET","uri":"v2","baseUrl":"https://translation.googleapis.com/language/translate/"})),
-).annotate({ identifier: "ListTranslationsRequest" }) as any as S.Schema<ListTranslationsRequest>;
+  S.Struct({
+    bearer_token: S.optional(S.String.pipe(T.Query())),
+    pp: S.optional(S.Boolean.pipe(T.Query())),
+    format: S.optional(ListTranslationsFormatEnum.pipe(T.Query())),
+    model: S.optional(S.String.pipe(T.Query())),
+    cid: S.optional(StringList.pipe(T.Query())),
+    source: S.optional(S.String.pipe(T.Query())),
+    q: StringList.pipe(T.Query()),
+    target: S.String.pipe(T.Query()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v2",
+      baseUrl: "https://translation.googleapis.com/language/translate/",
+    }),
+  ),
+).annotate({
+  identifier: "ListTranslationsRequest",
+}) as any as S.Schema<ListTranslationsRequest>;
 
 export interface TranslationsResource {
   /** The source language of the initial request, detected automatically, if no source language was passed within the initial request. If the source language was passed, auto-detection of the language will not occur and this field will be empty. */
@@ -227,15 +277,19 @@ export interface TranslationsResource {
   translatedText?: string;
 }
 export const TranslationsResource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "detectedSourceLanguage": S.optional(S.String),
-  "model": S.optional(S.String),
-  "translatedText": S.optional(S.String),
-}),
-).annotate({ identifier: "TranslationsResource" }) as any as S.Schema<TranslationsResource>;
+  S.Struct({
+    detectedSourceLanguage: S.optional(S.String),
+    model: S.optional(S.String),
+    translatedText: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "TranslationsResource",
+}) as any as S.Schema<TranslationsResource>;
 
 export type TranslationsResourceList = ReadonlyArray<TranslationsResource>;
-export const TranslationsResourceList = /*@__PURE__*/ S.Array(TranslationsResource) as any as S.Schema<TranslationsResourceList>;
+export const TranslationsResourceList = /*@__PURE__*/ S.Array(
+  TranslationsResource,
+) as any as S.Schema<TranslationsResourceList>;
 
 /** The main language translation response message. */
 export interface TranslationsListResponse {
@@ -243,10 +297,12 @@ export interface TranslationsListResponse {
   translations?: TranslationsResourceList;
 }
 export const TranslationsListResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "translations": S.optional(TranslationsResourceList),
-}),
-).annotate({ identifier: "TranslationsListResponse" }) as any as S.Schema<TranslationsListResponse>;
+  S.Struct({
+    translations: S.optional(TranslationsResourceList),
+  }),
+).annotate({
+  identifier: "TranslationsListResponse",
+}) as any as S.Schema<TranslationsListResponse>;
 
 /** The main translation request message for the Cloud Translation API. */
 export interface TranslateTextRequest {
@@ -262,14 +318,16 @@ export interface TranslateTextRequest {
   model?: string;
 }
 export const TranslateTextRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "target": S.optional(S.String),
-  "q": S.optional(StringList),
-  "source": S.optional(S.String),
-  "format": S.optional(S.String),
-  "model": S.optional(S.String),
-}),
-).annotate({ identifier: "TranslateTextRequest" }) as any as S.Schema<TranslateTextRequest>;
+  S.Struct({
+    target: S.optional(S.String),
+    q: S.optional(StringList),
+    source: S.optional(S.String),
+    format: S.optional(S.String),
+    model: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "TranslateTextRequest",
+}) as any as S.Schema<TranslateTextRequest>;
 
 export interface TranslateTranslationsRequest {
   /** OAuth bearer token. */
@@ -280,14 +338,27 @@ export interface TranslateTranslationsRequest {
   body?: TranslateTextRequest;
 }
 export const TranslateTranslationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bearer_token": S.optional(S.String.pipe(T.Query())),
-  "pp": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(TranslateTextRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2","baseUrl":"https://translation.googleapis.com/language/translate/"})),
-).annotate({ identifier: "TranslateTranslationsRequest" }) as any as S.Schema<TranslateTranslationsRequest>;
+  S.Struct({
+    bearer_token: S.optional(S.String.pipe(T.Query())),
+    pp: S.optional(S.Boolean.pipe(T.Query())),
+    body: S.optional(TranslateTextRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v2",
+      baseUrl: "https://translation.googleapis.com/language/translate/",
+    }),
+  ),
+).annotate({
+  identifier: "TranslateTranslationsRequest",
+}) as any as S.Schema<TranslateTranslationsRequest>;
 
-export type DetectDetectionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DetectDetectionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Detects the language of text within a request. */
 export const detectDetections: API.OperationMethod<
   DetectDetectionsRequest,
@@ -347,7 +418,12 @@ export const listTranslations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TranslateTranslationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TranslateTranslationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Translates input text, returning translated text. */
 export const translateTranslations: API.OperationMethod<
   TranslateTranslationsRequest,
@@ -361,4 +437,3 @@ export const translateTranslations: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

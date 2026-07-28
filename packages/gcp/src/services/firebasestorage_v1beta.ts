@@ -13,58 +13,60 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 /** The request used to link a Google Cloud Storage bucket to a Firebase project. */
 export interface AddFirebaseRequest {}
 export const AddFirebaseRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "AddFirebaseRequest" }) as any as S.Schema<AddFirebaseRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "AddFirebaseRequest",
+}) as any as S.Schema<AddFirebaseRequest>;
 
 export interface AddFirebaseProjectsBucketsRequest {
   /** Required. Resource name of the bucket, mirrors the ID of the underlying Google Cloud Storage bucket, `projects/{project_id_or_number}/buckets/{bucket_id}`. */
@@ -73,11 +75,19 @@ export interface AddFirebaseProjectsBucketsRequest {
   body?: AddFirebaseRequest;
 }
 export const AddFirebaseProjectsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "body": S.optional(AddFirebaseRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+bucket}:addFirebase","baseUrl":"https://firebasestorage.googleapis.com/"})),
-).annotate({ identifier: "AddFirebaseProjectsBucketsRequest" }) as any as S.Schema<AddFirebaseProjectsBucketsRequest>;
+  S.Struct({
+    bucket: S.String.pipe(T.Label()),
+    body: S.optional(AddFirebaseRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+bucket}:addFirebase",
+      baseUrl: "https://firebasestorage.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "AddFirebaseProjectsBucketsRequest",
+}) as any as S.Schema<AddFirebaseProjectsBucketsRequest>;
 
 /** A storage bucket and its relation to a parent Firebase project. */
 export interface Bucket {
@@ -85,9 +95,9 @@ export interface Bucket {
   name?: string;
 }
 export const Bucket = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Bucket" }) as any as S.Schema<Bucket>;
 
 /** Spark tier-eligible Cloud Storage bucket. One per project. This resource exists if the underlying Cloud Storage bucket exists and it is linked to your Firebase project. See https://firebase.google.com/pricing for pricing details. */
@@ -102,12 +112,12 @@ export interface DefaultBucket {
   name?: string;
 }
 export const DefaultBucket = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "location": S.optional(S.String),
-  "storageClass": S.optional(S.String),
-  "bucket": S.optional(Bucket),
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    location: S.optional(S.String),
+    storageClass: S.optional(S.String),
+    bucket: S.optional(Bucket),
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "DefaultBucket" }) as any as S.Schema<DefaultBucket>;
 
 export interface CreateProjectsDefaultBucketRequest {
@@ -117,47 +127,79 @@ export interface CreateProjectsDefaultBucketRequest {
   body?: DefaultBucket;
 }
 export const CreateProjectsDefaultBucketRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(DefaultBucket.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+parent}/defaultBucket","baseUrl":"https://firebasestorage.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsDefaultBucketRequest" }) as any as S.Schema<CreateProjectsDefaultBucketRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(DefaultBucket.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+parent}/defaultBucket",
+      baseUrl: "https://firebasestorage.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateProjectsDefaultBucketRequest",
+}) as any as S.Schema<CreateProjectsDefaultBucketRequest>;
 
 export interface DeleteDefaultBucketProjectsRequest {
   /** Required. The name of the default bucket to delete, `projects/{project_id_or_number}/defaultBucket`. */
   name: string;
 }
 export const DeleteDefaultBucketProjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta/{+name}","baseUrl":"https://firebasestorage.googleapis.com/"})),
-).annotate({ identifier: "DeleteDefaultBucketProjectsRequest" }) as any as S.Schema<DeleteDefaultBucketProjectsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://firebasestorage.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteDefaultBucketProjectsRequest",
+}) as any as S.Schema<DeleteDefaultBucketProjectsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 export interface GetDefaultBucketProjectsRequest {
   /** Required. The name of the default bucket to retrieve, `projects/{project_id_or_number}/defaultBucket`. */
   name: string;
 }
 export const GetDefaultBucketProjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}","baseUrl":"https://firebasestorage.googleapis.com/"})),
-).annotate({ identifier: "GetDefaultBucketProjectsRequest" }) as any as S.Schema<GetDefaultBucketProjectsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://firebasestorage.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetDefaultBucketProjectsRequest",
+}) as any as S.Schema<GetDefaultBucketProjectsRequest>;
 
 export interface GetProjectsBucketsRequest {
   /** Required. Resource name of the bucket, mirrors the ID of the underlying Google Cloud Storage bucket, `projects/{project_id_or_number}/buckets/{bucket_id}`. */
   name: string;
 }
 export const GetProjectsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}","baseUrl":"https://firebasestorage.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsBucketsRequest" }) as any as S.Schema<GetProjectsBucketsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://firebasestorage.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsBucketsRequest",
+}) as any as S.Schema<GetProjectsBucketsRequest>;
 
 export interface ListProjectsBucketsRequest {
   /** The maximum number of buckets to return. If not set, the server will use a reasonable default. */
@@ -168,15 +210,25 @@ export interface ListProjectsBucketsRequest {
   pageToken?: string;
 }
 export const ListProjectsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+parent}/buckets","baseUrl":"https://firebasestorage.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsBucketsRequest" }) as any as S.Schema<ListProjectsBucketsRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+parent}/buckets",
+      baseUrl: "https://firebasestorage.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsBucketsRequest",
+}) as any as S.Schema<ListProjectsBucketsRequest>;
 
 export type BucketList = ReadonlyArray<Bucket>;
-export const BucketList = /*@__PURE__*/ S.Array(Bucket) as any as S.Schema<BucketList>;
+export const BucketList = /*@__PURE__*/ S.Array(
+  Bucket,
+) as any as S.Schema<BucketList>;
 
 /** The response returned by `ListBuckets`. */
 export interface ListBucketsResponse {
@@ -186,17 +238,21 @@ export interface ListBucketsResponse {
   nextPageToken?: string;
 }
 export const ListBucketsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "buckets": S.optional(BucketList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListBucketsResponse" }) as any as S.Schema<ListBucketsResponse>;
+  S.Struct({
+    buckets: S.optional(BucketList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListBucketsResponse",
+}) as any as S.Schema<ListBucketsResponse>;
 
 /** The request used to unlink a Google Cloud Storage bucket from a Firebase project. */
 export interface RemoveFirebaseRequest {}
 export const RemoveFirebaseRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "RemoveFirebaseRequest" }) as any as S.Schema<RemoveFirebaseRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "RemoveFirebaseRequest",
+}) as any as S.Schema<RemoveFirebaseRequest>;
 
 export interface RemoveFirebaseProjectsBucketsRequest {
   /** Required. Resource name of the bucket, mirrors the ID of the underlying Google Cloud Storage bucket, `projects/{project_id_or_number}/buckets/{bucket_id}`. */
@@ -204,14 +260,28 @@ export interface RemoveFirebaseProjectsBucketsRequest {
   /** Request body */
   body?: RemoveFirebaseRequest;
 }
-export const RemoveFirebaseProjectsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.String.pipe(T.Label()),
-  "body": S.optional(RemoveFirebaseRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+bucket}:removeFirebase","baseUrl":"https://firebasestorage.googleapis.com/"})),
-).annotate({ identifier: "RemoveFirebaseProjectsBucketsRequest" }) as any as S.Schema<RemoveFirebaseProjectsBucketsRequest>;
+export const RemoveFirebaseProjectsBucketsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      bucket: S.String.pipe(T.Label()),
+      body: S.optional(RemoveFirebaseRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+bucket}:removeFirebase",
+        baseUrl: "https://firebasestorage.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "RemoveFirebaseProjectsBucketsRequest",
+}) as any as S.Schema<RemoveFirebaseProjectsBucketsRequest>;
 
-export type AddFirebaseProjectsBucketsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type AddFirebaseProjectsBucketsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Links a Google Cloud Storage bucket to a Firebase project. */
 export const addFirebaseProjectsBuckets: API.OperationMethod<
   AddFirebaseProjectsBucketsRequest,
@@ -226,7 +296,12 @@ export const addFirebaseProjectsBuckets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsDefaultBucketError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsDefaultBucketError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a Spark tier-eligible Cloud Storage bucket and links it to your Firebase project. If the default bucket already exists, this method will re-link it to your Firebase project. See https://firebase.google.com/pricing for pricing details. */
 export const createProjectsDefaultBucket: API.OperationMethod<
   CreateProjectsDefaultBucketRequest,
@@ -241,7 +316,12 @@ export const createProjectsDefaultBucket: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteDefaultBucketProjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteDefaultBucketProjectsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Unlinks and deletes the default bucket. */
 export const deleteDefaultBucketProjects: API.OperationMethod<
   DeleteDefaultBucketProjectsRequest,
@@ -299,10 +379,18 @@ export const listProjectsBuckets: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type RemoveFirebaseProjectsBucketsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RemoveFirebaseProjectsBucketsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Unlinks a linked Google Cloud Storage bucket from a Firebase project. */
 export const removeFirebaseProjectsBuckets: API.OperationMethod<
   RemoveFirebaseProjectsBucketsRequest,
@@ -316,4 +404,3 @@ export const removeFirebaseProjectsBuckets: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

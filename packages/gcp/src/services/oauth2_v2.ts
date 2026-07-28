@@ -13,57 +13,65 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export interface GetUserinfoRequest {}
 export const GetUserinfoRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}).pipe(T.Http({"method":"GET","uri":"oauth2/v2/userinfo","baseUrl":"https://www.googleapis.com/"})),
-).annotate({ identifier: "GetUserinfoRequest" }) as any as S.Schema<GetUserinfoRequest>;
+  S.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      uri: "oauth2/v2/userinfo",
+      baseUrl: "https://www.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetUserinfoRequest",
+}) as any as S.Schema<GetUserinfoRequest>;
 
 export interface Userinfo {
   /** The user's email address. */
@@ -90,34 +98,50 @@ export interface Userinfo {
   verified_email?: boolean;
 }
 export const Userinfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "email": S.optional(S.String),
-  "family_name": S.optional(S.String),
-  "gender": S.optional(S.String),
-  "given_name": S.optional(S.String),
-  "hd": S.optional(S.String),
-  "id": S.optional(S.String),
-  "link": S.optional(S.String),
-  "locale": S.optional(S.String),
-  "name": S.optional(S.String),
-  "picture": S.optional(S.String),
-  "verified_email": S.optional(S.Boolean),
-}),
+  S.Struct({
+    email: S.optional(S.String),
+    family_name: S.optional(S.String),
+    gender: S.optional(S.String),
+    given_name: S.optional(S.String),
+    hd: S.optional(S.String),
+    id: S.optional(S.String),
+    link: S.optional(S.String),
+    locale: S.optional(S.String),
+    name: S.optional(S.String),
+    picture: S.optional(S.String),
+    verified_email: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "Userinfo" }) as any as S.Schema<Userinfo>;
 
 export interface GetUserinfoV2MeRequest {}
 export const GetUserinfoV2MeRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}).pipe(T.Http({"method":"GET","uri":"userinfo/v2/me","baseUrl":"https://www.googleapis.com/"})),
-).annotate({ identifier: "GetUserinfoV2MeRequest" }) as any as S.Schema<GetUserinfoV2MeRequest>;
+  S.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      uri: "userinfo/v2/me",
+      baseUrl: "https://www.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetUserinfoV2MeRequest",
+}) as any as S.Schema<GetUserinfoV2MeRequest>;
 
 export interface TokeninfoRequest {
   id_token?: string;
 }
 export const TokeninfoRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id_token": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"POST","uri":"oauth2/v2/tokeninfo","baseUrl":"https://www.googleapis.com/"})),
-).annotate({ identifier: "TokeninfoRequest" }) as any as S.Schema<TokeninfoRequest>;
+  S.Struct({
+    id_token: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "oauth2/v2/tokeninfo",
+      baseUrl: "https://www.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "TokeninfoRequest",
+}) as any as S.Schema<TokeninfoRequest>;
 
 export interface Tokeninfo {
   /** Who is the intended audience for this token. In general the same as issued_to. */
@@ -136,15 +160,15 @@ export interface Tokeninfo {
   verified_email?: boolean;
 }
 export const Tokeninfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "audience": S.optional(S.String),
-  "email": S.optional(S.String),
-  "expires_in": S.optional(S.Number),
-  "issued_to": S.optional(S.String),
-  "scope": S.optional(S.String),
-  "user_id": S.optional(S.String),
-  "verified_email": S.optional(S.Boolean),
-}),
+  S.Struct({
+    audience: S.optional(S.String),
+    email: S.optional(S.String),
+    expires_in: S.optional(S.Number),
+    issued_to: S.optional(S.String),
+    scope: S.optional(S.String),
+    user_id: S.optional(S.String),
+    verified_email: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "Tokeninfo" }) as any as S.Schema<Tokeninfo>;
 
 export type GetUserinfoError = NotFound | Forbidden | GcpOpError;
@@ -175,7 +199,12 @@ export const getUserinfoV2Me: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type Tokeninfo_Error = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type Tokeninfo_Error =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 export const tokeninfo: API.OperationMethod<
   TokeninfoRequest,
   Tokeninfo,
@@ -188,4 +217,3 @@ export const tokeninfo: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

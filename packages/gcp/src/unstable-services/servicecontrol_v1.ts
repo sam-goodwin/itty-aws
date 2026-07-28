@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 /** Represents an amount of money with its currency type. */
@@ -70,15 +70,17 @@ export interface Money {
   currencyCode?: string;
 }
 export const Money = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "units": S.optional(S.String),
-  "nanos": S.optional(S.Number),
-  "currencyCode": S.optional(S.String),
-}),
+  S.Struct({
+    units: S.optional(S.String),
+    nanos: S.optional(S.Number),
+    currencyCode: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Money" }) as any as S.Schema<Money>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** Describing buckets with constant width. */
 export interface LinearBuckets {
@@ -90,15 +92,17 @@ export interface LinearBuckets {
   width?: number;
 }
 export const LinearBuckets = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "offset": S.optional(S.Number),
-  "numFiniteBuckets": S.optional(S.Number),
-  "width": S.optional(S.Number),
-}),
+  S.Struct({
+    offset: S.optional(S.Number),
+    numFiniteBuckets: S.optional(S.Number),
+    width: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "LinearBuckets" }) as any as S.Schema<LinearBuckets>;
 
 export type DoubleList = ReadonlyArray<number>;
-export const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
+export const DoubleList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<DoubleList>;
 
 /** Describing buckets with arbitrary user-provided width. */
 export interface ExplicitBuckets {
@@ -106,16 +110,23 @@ export interface ExplicitBuckets {
   bounds?: DoubleList;
 }
 export const ExplicitBuckets = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bounds": S.optional(DoubleList),
-}),
-).annotate({ identifier: "ExplicitBuckets" }) as any as S.Schema<ExplicitBuckets>;
+  S.Struct({
+    bounds: S.optional(DoubleList),
+  }),
+).annotate({
+  identifier: "ExplicitBuckets",
+}) as any as S.Schema<ExplicitBuckets>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 /** Exemplars are example points that may be used to annotate aggregated distribution values. They are metadata that gives information about a particular value added to a Distribution bucket, such as a trace ID that was active when a value was added. They may contain further information, such as a example values and timestamps, origin, etc. */
 export interface Exemplar {
@@ -127,15 +138,17 @@ export interface Exemplar {
   attachments?: DocumentMapList;
 }
 export const Exemplar = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "value": S.optional(S.Number),
-  "timestamp": S.optional(S.String),
-  "attachments": S.optional(DocumentMapList),
-}),
+  S.Struct({
+    value: S.optional(S.Number),
+    timestamp: S.optional(S.String),
+    attachments: S.optional(DocumentMapList),
+  }),
 ).annotate({ identifier: "Exemplar" }) as any as S.Schema<Exemplar>;
 
 export type ExemplarList = ReadonlyArray<Exemplar>;
-export const ExemplarList = /*@__PURE__*/ S.Array(Exemplar) as any as S.Schema<ExemplarList>;
+export const ExemplarList = /*@__PURE__*/ S.Array(
+  Exemplar,
+) as any as S.Schema<ExemplarList>;
 
 /** Describing buckets with exponentially growing width. */
 export interface ExponentialBuckets {
@@ -147,12 +160,14 @@ export interface ExponentialBuckets {
   growthFactor?: number;
 }
 export const ExponentialBuckets = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "scale": S.optional(S.Number),
-  "numFiniteBuckets": S.optional(S.Number),
-  "growthFactor": S.optional(S.Number),
-}),
-).annotate({ identifier: "ExponentialBuckets" }) as any as S.Schema<ExponentialBuckets>;
+  S.Struct({
+    scale: S.optional(S.Number),
+    numFiniteBuckets: S.optional(S.Number),
+    growthFactor: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ExponentialBuckets",
+}) as any as S.Schema<ExponentialBuckets>;
 
 /** Distribution represents a frequency distribution of double-valued sample points. It contains the size of the population of sample points plus additional optional information: * the arithmetic mean of the samples * the minimum and maximum of the samples * the sum-squared-deviation of the samples, used to compute variance * a histogram of the values of the sample points */
 export interface Distribution {
@@ -178,22 +193,25 @@ export interface Distribution {
   sumOfSquaredDeviation?: number;
 }
 export const Distribution = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucketCounts": S.optional(StringList),
-  "count": S.optional(S.String),
-  "minimum": S.optional(S.Number),
-  "mean": S.optional(S.Number),
-  "linearBuckets": S.optional(LinearBuckets),
-  "explicitBuckets": S.optional(ExplicitBuckets),
-  "maximum": S.optional(S.Number),
-  "exemplars": S.optional(ExemplarList),
-  "exponentialBuckets": S.optional(ExponentialBuckets),
-  "sumOfSquaredDeviation": S.optional(S.Number),
-}),
+  S.Struct({
+    bucketCounts: S.optional(StringList),
+    count: S.optional(S.String),
+    minimum: S.optional(S.Number),
+    mean: S.optional(S.Number),
+    linearBuckets: S.optional(LinearBuckets),
+    explicitBuckets: S.optional(ExplicitBuckets),
+    maximum: S.optional(S.Number),
+    exemplars: S.optional(ExemplarList),
+    exponentialBuckets: S.optional(ExponentialBuckets),
+    sumOfSquaredDeviation: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "Distribution" }) as any as S.Schema<Distribution>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
 /** Represents a single metric value. */
 export interface MetricValue {
@@ -217,21 +235,23 @@ export interface MetricValue {
   doubleValue?: number;
 }
 export const MetricValue = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "endTime": S.optional(S.String),
-  "boolValue": S.optional(S.Boolean),
-  "moneyValue": S.optional(Money),
-  "startTime": S.optional(S.String),
-  "distributionValue": S.optional(Distribution),
-  "stringValue": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "int64Value": S.optional(S.String),
-  "doubleValue": S.optional(S.Number),
-}),
+  S.Struct({
+    endTime: S.optional(S.String),
+    boolValue: S.optional(S.Boolean),
+    moneyValue: S.optional(Money),
+    startTime: S.optional(S.String),
+    distributionValue: S.optional(Distribution),
+    stringValue: S.optional(S.String),
+    labels: S.optional(StringMap),
+    int64Value: S.optional(S.String),
+    doubleValue: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "MetricValue" }) as any as S.Schema<MetricValue>;
 
 export type MetricValueList = ReadonlyArray<MetricValue>;
-export const MetricValueList = /*@__PURE__*/ S.Array(MetricValue) as any as S.Schema<MetricValueList>;
+export const MetricValueList = /*@__PURE__*/ S.Array(
+  MetricValue,
+) as any as S.Schema<MetricValueList>;
 
 /** Represents a set of metric values in the same metric. Each metric value in the set should have a unique combination of start time, end time, and label values. */
 export interface MetricValueSet {
@@ -241,16 +261,23 @@ export interface MetricValueSet {
   metricValues?: MetricValueList;
 }
 export const MetricValueSet = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "metricName": S.optional(S.String),
-  "metricValues": S.optional(MetricValueList),
-}),
+  S.Struct({
+    metricName: S.optional(S.String),
+    metricValues: S.optional(MetricValueList),
+  }),
 ).annotate({ identifier: "MetricValueSet" }) as any as S.Schema<MetricValueSet>;
 
 export type MetricValueSetList = ReadonlyArray<MetricValueSet>;
-export const MetricValueSetList = /*@__PURE__*/ S.Array(MetricValueSet) as any as S.Schema<MetricValueSetList>;
+export const MetricValueSetList = /*@__PURE__*/ S.Array(
+  MetricValueSet,
+) as any as S.Schema<MetricValueSetList>;
 
-export type QuotaOperationQuotaModeEnum = "UNSPECIFIED" | "NORMAL" | "BEST_EFFORT" | "CHECK_ONLY" | "ADJUST_ONLY";
+export type QuotaOperationQuotaModeEnum =
+  | "UNSPECIFIED"
+  | "NORMAL"
+  | "BEST_EFFORT"
+  | "CHECK_ONLY"
+  | "ADJUST_ONLY";
 export const QuotaOperationQuotaModeEnum = /*@__PURE__*/ S.String;
 
 /** Represents information regarding a quota operation. */
@@ -269,14 +296,14 @@ export interface QuotaOperation {
   quotaMode?: QuotaOperationQuotaModeEnum | (string & {});
 }
 export const QuotaOperation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "methodName": S.optional(S.String),
-  "operationId": S.optional(S.String),
-  "quotaMetrics": S.optional(MetricValueSetList),
-  "consumerId": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "quotaMode": S.optional(QuotaOperationQuotaModeEnum),
-}),
+  S.Struct({
+    methodName: S.optional(S.String),
+    operationId: S.optional(S.String),
+    quotaMetrics: S.optional(MetricValueSetList),
+    consumerId: S.optional(S.String),
+    labels: S.optional(StringMap),
+    quotaMode: S.optional(QuotaOperationQuotaModeEnum),
+  }),
 ).annotate({ identifier: "QuotaOperation" }) as any as S.Schema<QuotaOperation>;
 
 /** Request message for the AllocateQuota method. */
@@ -287,11 +314,13 @@ export interface AllocateQuotaRequest {
   serviceConfigId?: string;
 }
 export const AllocateQuotaRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "allocateOperation": S.optional(QuotaOperation),
-  "serviceConfigId": S.optional(S.String),
-}),
-).annotate({ identifier: "AllocateQuotaRequest" }) as any as S.Schema<AllocateQuotaRequest>;
+  S.Struct({
+    allocateOperation: S.optional(QuotaOperation),
+    serviceConfigId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AllocateQuotaRequest",
+}) as any as S.Schema<AllocateQuotaRequest>;
 
 export interface AllocateQuotaServicesRequest {
   /** Name of the service as specified in the service configuration. For example, `"pubsub.googleapis.com"`. See google.api.Service for the definition of a service name. */
@@ -300,13 +329,35 @@ export interface AllocateQuotaServicesRequest {
   body?: AllocateQuotaRequest;
 }
 export const AllocateQuotaServicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "serviceName": S.String.pipe(T.Label()),
-  "body": S.optional(AllocateQuotaRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/services/{serviceName}:allocateQuota","baseUrl":"https://servicecontrol.googleapis.com/"})),
-).annotate({ identifier: "AllocateQuotaServicesRequest" }) as any as S.Schema<AllocateQuotaServicesRequest>;
+  S.Struct({
+    serviceName: S.String.pipe(T.Label()),
+    body: S.optional(AllocateQuotaRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/services/{serviceName}:allocateQuota",
+      baseUrl: "https://servicecontrol.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "AllocateQuotaServicesRequest",
+}) as any as S.Schema<AllocateQuotaServicesRequest>;
 
-export type QuotaErrorCodeEnum = "UNSPECIFIED" | "RESOURCE_EXHAUSTED" | "OUT_OF_RANGE" | "BILLING_NOT_ACTIVE" | "PROJECT_DELETED" | "API_KEY_INVALID" | "API_KEY_EXPIRED" | "SPATULA_HEADER_INVALID" | "LOAS_ROLE_INVALID" | "NO_LOAS_PROJECT" | "PROJECT_STATUS_UNAVAILABLE" | "SERVICE_STATUS_UNAVAILABLE" | "BILLING_STATUS_UNAVAILABLE" | "QUOTA_SYSTEM_UNAVAILABLE";
+export type QuotaErrorCodeEnum =
+  | "UNSPECIFIED"
+  | "RESOURCE_EXHAUSTED"
+  | "OUT_OF_RANGE"
+  | "BILLING_NOT_ACTIVE"
+  | "PROJECT_DELETED"
+  | "API_KEY_INVALID"
+  | "API_KEY_EXPIRED"
+  | "SPATULA_HEADER_INVALID"
+  | "LOAS_ROLE_INVALID"
+  | "NO_LOAS_PROJECT"
+  | "PROJECT_STATUS_UNAVAILABLE"
+  | "SERVICE_STATUS_UNAVAILABLE"
+  | "BILLING_STATUS_UNAVAILABLE"
+  | "QUOTA_SYSTEM_UNAVAILABLE";
 export const QuotaErrorCodeEnum = /*@__PURE__*/ S.String;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
@@ -319,11 +370,11 @@ export interface Status {
   details?: DocumentMapList;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(S.Number),
-  "message": S.optional(S.String),
-  "details": S.optional(DocumentMapList),
-}),
+  S.Struct({
+    code: S.optional(S.Number),
+    message: S.optional(S.String),
+    details: S.optional(DocumentMapList),
+  }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** Represents error information for QuotaOperation. */
@@ -338,25 +389,27 @@ export interface QuotaError {
   status?: Status;
 }
 export const QuotaError = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(QuotaErrorCodeEnum),
-  "subject": S.optional(S.String),
-  "description": S.optional(S.String),
-  "status": S.optional(Status),
-}),
+  S.Struct({
+    code: S.optional(QuotaErrorCodeEnum),
+    subject: S.optional(S.String),
+    description: S.optional(S.String),
+    status: S.optional(Status),
+  }),
 ).annotate({ identifier: "QuotaError" }) as any as S.Schema<QuotaError>;
 
 export type QuotaErrorList = ReadonlyArray<QuotaError>;
-export const QuotaErrorList = /*@__PURE__*/ S.Array(QuotaError) as any as S.Schema<QuotaErrorList>;
+export const QuotaErrorList = /*@__PURE__*/ S.Array(
+  QuotaError,
+) as any as S.Schema<QuotaErrorList>;
 
 export interface AllocateInfo {
   /** A list of label keys that were unused by the server in processing the request. Thus, for similar requests repeated in a certain future time window, the caller can choose to ignore these labels in the requests to achieve better client-side cache hits and quota aggregation for rate quota. This field is not populated for allocation quota checks. */
   unusedArguments?: StringList;
 }
 export const AllocateInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "unusedArguments": S.optional(StringList),
-}),
+  S.Struct({
+    unusedArguments: S.optional(StringList),
+  }),
 ).annotate({ identifier: "AllocateInfo" }) as any as S.Schema<AllocateInfo>;
 
 /** Response message for the AllocateQuota method. */
@@ -373,16 +426,21 @@ export interface AllocateQuotaResponse {
   allocateInfo?: AllocateInfo;
 }
 export const AllocateQuotaResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "allocateErrors": S.optional(QuotaErrorList),
-  "operationId": S.optional(S.String),
-  "quotaMetrics": S.optional(MetricValueSetList),
-  "serviceConfigId": S.optional(S.String),
-  "allocateInfo": S.optional(AllocateInfo),
-}),
-).annotate({ identifier: "AllocateQuotaResponse" }) as any as S.Schema<AllocateQuotaResponse>;
+  S.Struct({
+    allocateErrors: S.optional(QuotaErrorList),
+    operationId: S.optional(S.String),
+    quotaMetrics: S.optional(MetricValueSetList),
+    serviceConfigId: S.optional(S.String),
+    allocateInfo: S.optional(AllocateInfo),
+  }),
+).annotate({
+  identifier: "AllocateQuotaResponse",
+}) as any as S.Schema<AllocateQuotaResponse>;
 
-export type QuotaPropertiesQuotaModeEnum = "ACQUIRE" | "ACQUIRE_BEST_EFFORT" | "CHECK";
+export type QuotaPropertiesQuotaModeEnum =
+  | "ACQUIRE"
+  | "ACQUIRE_BEST_EFFORT"
+  | "CHECK";
 export const QuotaPropertiesQuotaModeEnum = /*@__PURE__*/ S.String;
 
 /** Represents the properties needed for quota operations. */
@@ -391,15 +449,26 @@ export interface QuotaProperties {
   quotaMode?: QuotaPropertiesQuotaModeEnum | (string & {});
 }
 export const QuotaProperties = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "quotaMode": S.optional(QuotaPropertiesQuotaModeEnum),
-}),
-).annotate({ identifier: "QuotaProperties" }) as any as S.Schema<QuotaProperties>;
+  S.Struct({
+    quotaMode: S.optional(QuotaPropertiesQuotaModeEnum),
+  }),
+).annotate({
+  identifier: "QuotaProperties",
+}) as any as S.Schema<QuotaProperties>;
 
 export type OperationImportanceEnum = "LOW" | "HIGH" | "DEBUG" | "PROMOTED";
 export const OperationImportanceEnum = /*@__PURE__*/ S.String;
 
-export type LogEntrySeverityEnum = "DEFAULT" | "DEBUG" | "INFO" | "NOTICE" | "WARNING" | "ERROR" | "CRITICAL" | "ALERT" | "EMERGENCY";
+export type LogEntrySeverityEnum =
+  | "DEFAULT"
+  | "DEBUG"
+  | "INFO"
+  | "NOTICE"
+  | "WARNING"
+  | "ERROR"
+  | "CRITICAL"
+  | "ALERT"
+  | "EMERGENCY";
 export const LogEntrySeverityEnum = /*@__PURE__*/ S.String;
 
 /** A common proto for logging HTTP requests. Only contains semantics defined by the HTTP specification. Product-specific logging information MUST be defined in a separate message. */
@@ -436,23 +505,23 @@ export interface HttpRequest {
   referer?: string;
 }
 export const HttpRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "userAgent": S.optional(S.String),
-  "cacheFillBytes": S.optional(S.String),
-  "responseSize": S.optional(S.String),
-  "cacheLookup": S.optional(S.Boolean),
-  "protocol": S.optional(S.String),
-  "remoteIp": S.optional(S.String),
-  "requestSize": S.optional(S.String),
-  "latency": S.optional(S.String),
-  "cacheHit": S.optional(S.Boolean),
-  "serverIp": S.optional(S.String),
-  "requestUrl": S.optional(S.String),
-  "status": S.optional(S.Number),
-  "requestMethod": S.optional(S.String),
-  "cacheValidatedWithOriginServer": S.optional(S.Boolean),
-  "referer": S.optional(S.String),
-}),
+  S.Struct({
+    userAgent: S.optional(S.String),
+    cacheFillBytes: S.optional(S.String),
+    responseSize: S.optional(S.String),
+    cacheLookup: S.optional(S.Boolean),
+    protocol: S.optional(S.String),
+    remoteIp: S.optional(S.String),
+    requestSize: S.optional(S.String),
+    latency: S.optional(S.String),
+    cacheHit: S.optional(S.Boolean),
+    serverIp: S.optional(S.String),
+    requestUrl: S.optional(S.String),
+    status: S.optional(S.Number),
+    requestMethod: S.optional(S.String),
+    cacheValidatedWithOriginServer: S.optional(S.Boolean),
+    referer: S.optional(S.String),
+  }),
 ).annotate({ identifier: "HttpRequest" }) as any as S.Schema<HttpRequest>;
 
 /** Additional information about the source code location that produced the log entry. */
@@ -465,12 +534,14 @@ export interface LogEntrySourceLocation {
   function?: string;
 }
 export const LogEntrySourceLocation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "file": S.optional(S.String),
-  "line": S.optional(S.String),
-  "function": S.optional(S.String),
-}),
-).annotate({ identifier: "LogEntrySourceLocation" }) as any as S.Schema<LogEntrySourceLocation>;
+  S.Struct({
+    file: S.optional(S.String),
+    line: S.optional(S.String),
+    function: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "LogEntrySourceLocation",
+}) as any as S.Schema<LogEntrySourceLocation>;
 
 /** Additional information about a potentially long-running operation with which a log entry is associated. */
 export interface LogEntryOperation {
@@ -484,13 +555,15 @@ export interface LogEntryOperation {
   producer?: string;
 }
 export const LogEntryOperation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "first": S.optional(S.Boolean),
-  "last": S.optional(S.Boolean),
-  "id": S.optional(S.String),
-  "producer": S.optional(S.String),
-}),
-).annotate({ identifier: "LogEntryOperation" }) as any as S.Schema<LogEntryOperation>;
+  S.Struct({
+    first: S.optional(S.Boolean),
+    last: S.optional(S.Boolean),
+    id: S.optional(S.String),
+    producer: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "LogEntryOperation",
+}) as any as S.Schema<LogEntryOperation>;
 
 /** An individual log entry. */
 export interface LogEntry {
@@ -520,24 +593,26 @@ export interface LogEntry {
   labels?: StringMap;
 }
 export const LogEntry = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "protoPayload": S.optional(DocumentMap),
-  "severity": S.optional(LogEntrySeverityEnum),
-  "httpRequest": S.optional(HttpRequest),
-  "sourceLocation": S.optional(LogEntrySourceLocation),
-  "timestamp": S.optional(S.String),
-  "textPayload": S.optional(S.String),
-  "structPayload": S.optional(DocumentMap),
-  "insertId": S.optional(S.String),
-  "operation": S.optional(LogEntryOperation),
-  "name": S.optional(S.String),
-  "trace": S.optional(S.String),
-  "labels": S.optional(StringMap),
-}),
+  S.Struct({
+    protoPayload: S.optional(DocumentMap),
+    severity: S.optional(LogEntrySeverityEnum),
+    httpRequest: S.optional(HttpRequest),
+    sourceLocation: S.optional(LogEntrySourceLocation),
+    timestamp: S.optional(S.String),
+    textPayload: S.optional(S.String),
+    structPayload: S.optional(DocumentMap),
+    insertId: S.optional(S.String),
+    operation: S.optional(LogEntryOperation),
+    name: S.optional(S.String),
+    trace: S.optional(S.String),
+    labels: S.optional(StringMap),
+  }),
 ).annotate({ identifier: "LogEntry" }) as any as S.Schema<LogEntry>;
 
 export type LogEntryList = ReadonlyArray<LogEntry>;
-export const LogEntryList = /*@__PURE__*/ S.Array(LogEntry) as any as S.Schema<LogEntryList>;
+export const LogEntryList = /*@__PURE__*/ S.Array(
+  LogEntry,
+) as any as S.Schema<LogEntryList>;
 
 /** Describes a resource associated with this operation. */
 export interface ResourceInfo {
@@ -551,16 +626,18 @@ export interface ResourceInfo {
   resourceLocation?: string;
 }
 export const ResourceInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceName": S.optional(S.String),
-  "permission": S.optional(S.String),
-  "resourceContainer": S.optional(S.String),
-  "resourceLocation": S.optional(S.String),
-}),
+  S.Struct({
+    resourceName: S.optional(S.String),
+    permission: S.optional(S.String),
+    resourceContainer: S.optional(S.String),
+    resourceLocation: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ResourceInfo" }) as any as S.Schema<ResourceInfo>;
 
 export type ResourceInfoList = ReadonlyArray<ResourceInfo>;
-export const ResourceInfoList = /*@__PURE__*/ S.Array(ResourceInfo) as any as S.Schema<ResourceInfoList>;
+export const ResourceInfoList = /*@__PURE__*/ S.Array(
+  ResourceInfo,
+) as any as S.Schema<ResourceInfoList>;
 
 /** Represents a string that might be shortened to a specified length. */
 export interface TruncatableString {
@@ -570,11 +647,13 @@ export interface TruncatableString {
   truncatedByteCount?: number;
 }
 export const TruncatableString = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "value": S.optional(S.String),
-  "truncatedByteCount": S.optional(S.Number),
-}),
-).annotate({ identifier: "TruncatableString" }) as any as S.Schema<TruncatableString>;
+  S.Struct({
+    value: S.optional(S.String),
+    truncatedByteCount: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "TruncatableString",
+}) as any as S.Schema<TruncatableString>;
 
 /** The allowed types for [VALUE] in a `[KEY]:[VALUE]` attribute. */
 export interface AttributeValue {
@@ -586,15 +665,18 @@ export interface AttributeValue {
   intValue?: string;
 }
 export const AttributeValue = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "boolValue": S.optional(S.Boolean),
-  "stringValue": S.optional(TruncatableString),
-  "intValue": S.optional(S.String),
-}),
+  S.Struct({
+    boolValue: S.optional(S.Boolean),
+    stringValue: S.optional(TruncatableString),
+    intValue: S.optional(S.String),
+  }),
 ).annotate({ identifier: "AttributeValue" }) as any as S.Schema<AttributeValue>;
 
 export type AttributeValueMap = { [key: string]: AttributeValue | undefined };
-export const AttributeValueMap = /*@__PURE__*/ S.Record(S.String, AttributeValue) as any as S.Schema<AttributeValueMap>;
+export const AttributeValueMap = /*@__PURE__*/ S.Record(
+  S.String,
+  AttributeValue,
+) as any as S.Schema<AttributeValueMap>;
 
 /** A set of attributes, each in the format `[KEY]:[VALUE]`. */
 export interface Attributes {
@@ -604,13 +686,19 @@ export interface Attributes {
   droppedAttributesCount?: number;
 }
 export const Attributes = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "attributeMap": S.optional(AttributeValueMap),
-  "droppedAttributesCount": S.optional(S.Number),
-}),
+  S.Struct({
+    attributeMap: S.optional(AttributeValueMap),
+    droppedAttributesCount: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "Attributes" }) as any as S.Schema<Attributes>;
 
-export type TraceSpanSpanKindEnum = "SPAN_KIND_UNSPECIFIED" | "INTERNAL" | "SERVER" | "CLIENT" | "PRODUCER" | "CONSUMER";
+export type TraceSpanSpanKindEnum =
+  | "SPAN_KIND_UNSPECIFIED"
+  | "INTERNAL"
+  | "SERVER"
+  | "CLIENT"
+  | "PRODUCER"
+  | "CONSUMER";
 export const TraceSpanSpanKindEnum = /*@__PURE__*/ S.String;
 
 /** A span represents a single operation within a trace. Spans can be nested to form a trace tree. Often, a trace contains a root span that describes the end-to-end latency, and one or more subspans for its sub-operations. A trace can also contain multiple root spans, or none at all. Spans do not need to be contiguous—there may be gaps or overlaps between spans in a trace. */
@@ -639,23 +727,25 @@ export interface TraceSpan {
   displayName?: TruncatableString;
 }
 export const TraceSpan = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parentSpanId": S.optional(S.String),
-  "startTime": S.optional(S.String),
-  "endTime": S.optional(S.String),
-  "spanId": S.optional(S.String),
-  "attributes": S.optional(Attributes),
-  "status": S.optional(Status),
-  "childSpanCount": S.optional(S.Number),
-  "spanKind": S.optional(TraceSpanSpanKindEnum),
-  "name": S.optional(S.String),
-  "sameProcessAsParentSpan": S.optional(S.Boolean),
-  "displayName": S.optional(TruncatableString),
-}),
+  S.Struct({
+    parentSpanId: S.optional(S.String),
+    startTime: S.optional(S.String),
+    endTime: S.optional(S.String),
+    spanId: S.optional(S.String),
+    attributes: S.optional(Attributes),
+    status: S.optional(Status),
+    childSpanCount: S.optional(S.Number),
+    spanKind: S.optional(TraceSpanSpanKindEnum),
+    name: S.optional(S.String),
+    sameProcessAsParentSpan: S.optional(S.Boolean),
+    displayName: S.optional(TruncatableString),
+  }),
 ).annotate({ identifier: "TraceSpan" }) as any as S.Schema<TraceSpan>;
 
 export type TraceSpanList = ReadonlyArray<TraceSpan>;
-export const TraceSpanList = /*@__PURE__*/ S.Array(TraceSpan) as any as S.Schema<TraceSpanList>;
+export const TraceSpanList = /*@__PURE__*/ S.Array(
+  TraceSpan,
+) as any as S.Schema<TraceSpanList>;
 
 /** Represents information regarding an operation. */
 export interface Operation {
@@ -687,21 +777,21 @@ export interface Operation {
   operationName?: string;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "startTime": S.optional(S.String),
-  "quotaProperties": S.optional(QuotaProperties),
-  "endTime": S.optional(S.String),
-  "metricValueSets": S.optional(MetricValueSetList),
-  "importance": S.optional(OperationImportanceEnum),
-  "labels": S.optional(StringMap),
-  "operationId": S.optional(S.String),
-  "consumerId": S.optional(S.String),
-  "logEntries": S.optional(LogEntryList),
-  "resources": S.optional(ResourceInfoList),
-  "userLabels": S.optional(StringMap),
-  "traceSpans": S.optional(TraceSpanList),
-  "operationName": S.optional(S.String),
-}),
+  S.Struct({
+    startTime: S.optional(S.String),
+    quotaProperties: S.optional(QuotaProperties),
+    endTime: S.optional(S.String),
+    metricValueSets: S.optional(MetricValueSetList),
+    importance: S.optional(OperationImportanceEnum),
+    labels: S.optional(StringMap),
+    operationId: S.optional(S.String),
+    consumerId: S.optional(S.String),
+    logEntries: S.optional(LogEntryList),
+    resources: S.optional(ResourceInfoList),
+    userLabels: S.optional(StringMap),
+    traceSpans: S.optional(TraceSpanList),
+    operationName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** Request message for the Check method. */
@@ -716,12 +806,12 @@ export interface CheckRequest {
   requestProjectSettings?: boolean;
 }
 export const CheckRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "operation": S.optional(Operation),
-  "skipActivationCheck": S.optional(S.Boolean),
-  "serviceConfigId": S.optional(S.String),
-  "requestProjectSettings": S.optional(S.Boolean),
-}),
+  S.Struct({
+    operation: S.optional(Operation),
+    skipActivationCheck: S.optional(S.Boolean),
+    serviceConfigId: S.optional(S.String),
+    requestProjectSettings: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "CheckRequest" }) as any as S.Schema<CheckRequest>;
 
 export interface CheckServicesRequest {
@@ -731,16 +821,30 @@ export interface CheckServicesRequest {
   body?: CheckRequest;
 }
 export const CheckServicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "serviceName": S.String.pipe(T.Label()),
-  "body": S.optional(CheckRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/services/{serviceName}:check","baseUrl":"https://servicecontrol.googleapis.com/"})),
-).annotate({ identifier: "CheckServicesRequest" }) as any as S.Schema<CheckServicesRequest>;
+  S.Struct({
+    serviceName: S.String.pipe(T.Label()),
+    body: S.optional(CheckRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/services/{serviceName}:check",
+      baseUrl: "https://servicecontrol.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CheckServicesRequest",
+}) as any as S.Schema<CheckServicesRequest>;
 
 export type IntegerMap = { [key: string]: number | undefined };
-export const IntegerMap = /*@__PURE__*/ S.Record(S.String, S.Number) as any as S.Schema<IntegerMap>;
+export const IntegerMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Number,
+) as any as S.Schema<IntegerMap>;
 
-export type QuotaInfoQuotaExtractionStateEnum = "QUOTA_EXTRACTION_STATE_UNSPECIFIED" | "QUOTA_EXTRACTION_STATE_DARK_LAUNCH" | "QUOTA_EXTRACTION_STATE_TRAFFIC_MIGRATION";
+export type QuotaInfoQuotaExtractionStateEnum =
+  | "QUOTA_EXTRACTION_STATE_UNSPECIFIED"
+  | "QUOTA_EXTRACTION_STATE_DARK_LAUNCH"
+  | "QUOTA_EXTRACTION_STATE_TRAFFIC_MIGRATION";
 export const QuotaInfoQuotaExtractionStateEnum = /*@__PURE__*/ S.String;
 
 /** Contains the quota information for a quota check response. */
@@ -755,15 +859,52 @@ export interface QuotaInfo {
   limitExceeded?: StringList;
 }
 export const QuotaInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "quotaConsumed": S.optional(IntegerMap),
-  "quotaMetrics": S.optional(MetricValueSetList),
-  "quotaExtractionState": S.optional(QuotaInfoQuotaExtractionStateEnum),
-  "limitExceeded": S.optional(StringList),
-}),
+  S.Struct({
+    quotaConsumed: S.optional(IntegerMap),
+    quotaMetrics: S.optional(MetricValueSetList),
+    quotaExtractionState: S.optional(QuotaInfoQuotaExtractionStateEnum),
+    limitExceeded: S.optional(StringList),
+  }),
 ).annotate({ identifier: "QuotaInfo" }) as any as S.Schema<QuotaInfo>;
 
-export type CheckErrorCodeEnum = "ERROR_CODE_UNSPECIFIED" | "NOT_FOUND" | "PERMISSION_DENIED" | "RESOURCE_EXHAUSTED" | "BUDGET_EXCEEDED" | "DENIAL_OF_SERVICE_DETECTED" | "LOAD_SHEDDING" | "ABUSER_DETECTED" | "SERVICE_NOT_ACTIVATED" | "VISIBILITY_DENIED" | "BILLING_DISABLED" | "PROJECT_DELETED" | "PROJECT_INVALID" | "CONSUMER_INVALID" | "IP_ADDRESS_BLOCKED" | "REFERER_BLOCKED" | "CLIENT_APP_BLOCKED" | "API_TARGET_BLOCKED" | "API_KEY_INVALID" | "API_KEY_EXPIRED" | "API_KEY_NOT_FOUND" | "SPATULA_HEADER_INVALID" | "LOAS_ROLE_INVALID" | "NO_LOAS_PROJECT" | "LOAS_PROJECT_DISABLED" | "SECURITY_POLICY_VIOLATED" | "INVALID_CREDENTIAL" | "LOCATION_POLICY_VIOLATED" | "NAMESPACE_LOOKUP_UNAVAILABLE" | "SERVICE_STATUS_UNAVAILABLE" | "BILLING_STATUS_UNAVAILABLE" | "QUOTA_CHECK_UNAVAILABLE" | "LOAS_PROJECT_LOOKUP_UNAVAILABLE" | "CLOUD_RESOURCE_MANAGER_BACKEND_UNAVAILABLE" | "SECURITY_POLICY_BACKEND_UNAVAILABLE" | "LOCATION_POLICY_BACKEND_UNAVAILABLE" | "INJECTED_ERROR";
+export type CheckErrorCodeEnum =
+  | "ERROR_CODE_UNSPECIFIED"
+  | "NOT_FOUND"
+  | "PERMISSION_DENIED"
+  | "RESOURCE_EXHAUSTED"
+  | "BUDGET_EXCEEDED"
+  | "DENIAL_OF_SERVICE_DETECTED"
+  | "LOAD_SHEDDING"
+  | "ABUSER_DETECTED"
+  | "SERVICE_NOT_ACTIVATED"
+  | "VISIBILITY_DENIED"
+  | "BILLING_DISABLED"
+  | "PROJECT_DELETED"
+  | "PROJECT_INVALID"
+  | "CONSUMER_INVALID"
+  | "IP_ADDRESS_BLOCKED"
+  | "REFERER_BLOCKED"
+  | "CLIENT_APP_BLOCKED"
+  | "API_TARGET_BLOCKED"
+  | "API_KEY_INVALID"
+  | "API_KEY_EXPIRED"
+  | "API_KEY_NOT_FOUND"
+  | "SPATULA_HEADER_INVALID"
+  | "LOAS_ROLE_INVALID"
+  | "NO_LOAS_PROJECT"
+  | "LOAS_PROJECT_DISABLED"
+  | "SECURITY_POLICY_VIOLATED"
+  | "INVALID_CREDENTIAL"
+  | "LOCATION_POLICY_VIOLATED"
+  | "NAMESPACE_LOOKUP_UNAVAILABLE"
+  | "SERVICE_STATUS_UNAVAILABLE"
+  | "BILLING_STATUS_UNAVAILABLE"
+  | "QUOTA_CHECK_UNAVAILABLE"
+  | "LOAS_PROJECT_LOOKUP_UNAVAILABLE"
+  | "CLOUD_RESOURCE_MANAGER_BACKEND_UNAVAILABLE"
+  | "SECURITY_POLICY_BACKEND_UNAVAILABLE"
+  | "LOCATION_POLICY_BACKEND_UNAVAILABLE"
+  | "INJECTED_ERROR";
 export const CheckErrorCodeEnum = /*@__PURE__*/ S.String;
 
 /** Defines the errors to be returned in google.api.servicecontrol.v1.CheckResponse.check_errors. */
@@ -778,18 +919,25 @@ export interface CheckError {
   subject?: string;
 }
 export const CheckError = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "status": S.optional(Status),
-  "detail": S.optional(S.String),
-  "code": S.optional(CheckErrorCodeEnum),
-  "subject": S.optional(S.String),
-}),
+  S.Struct({
+    status: S.optional(Status),
+    detail: S.optional(S.String),
+    code: S.optional(CheckErrorCodeEnum),
+    subject: S.optional(S.String),
+  }),
 ).annotate({ identifier: "CheckError" }) as any as S.Schema<CheckError>;
 
 export type CheckErrorList = ReadonlyArray<CheckError>;
-export const CheckErrorList = /*@__PURE__*/ S.Array(CheckError) as any as S.Schema<CheckErrorList>;
+export const CheckErrorList = /*@__PURE__*/ S.Array(
+  CheckError,
+) as any as S.Schema<CheckErrorList>;
 
-export type ConsumerInfoTypeEnum = "CONSUMER_TYPE_UNSPECIFIED" | "PROJECT" | "FOLDER" | "ORGANIZATION" | "SERVICE_SPECIFIC";
+export type ConsumerInfoTypeEnum =
+  | "CONSUMER_TYPE_UNSPECIFIED"
+  | "PROJECT"
+  | "FOLDER"
+  | "ORGANIZATION"
+  | "SERVICE_SPECIFIC";
 export const ConsumerInfoTypeEnum = /*@__PURE__*/ S.String;
 
 /** `ConsumerInfo` provides information about the consumer. */
@@ -802,11 +950,11 @@ export interface ConsumerInfo {
   projectNumber?: string;
 }
 export const ConsumerInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "consumerNumber": S.optional(S.String),
-  "type": S.optional(ConsumerInfoTypeEnum),
-  "projectNumber": S.optional(S.String),
-}),
+  S.Struct({
+    consumerNumber: S.optional(S.String),
+    type: S.optional(ConsumerInfoTypeEnum),
+    projectNumber: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ConsumerInfo" }) as any as S.Schema<ConsumerInfo>;
 
 /** Contains additional information about the check operation. */
@@ -821,12 +969,12 @@ export interface CheckInfo {
   consumerInfo?: ConsumerInfo;
 }
 export const CheckInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "unusedArguments": S.optional(StringList),
-  "apiKeyUid": S.optional(S.String),
-  "ignoreApiKeyUidAsCredentialId": S.optional(S.Boolean),
-  "consumerInfo": S.optional(ConsumerInfo),
-}),
+  S.Struct({
+    unusedArguments: S.optional(StringList),
+    apiKeyUid: S.optional(S.String),
+    ignoreApiKeyUidAsCredentialId: S.optional(S.Boolean),
+    consumerInfo: S.optional(ConsumerInfo),
+  }),
 ).annotate({ identifier: "CheckInfo" }) as any as S.Schema<CheckInfo>;
 
 /** Response message for the Check method. */
@@ -845,18 +993,20 @@ export interface CheckResponse {
   serviceRolloutId?: string;
 }
 export const CheckResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "quotaInfo": S.optional(QuotaInfo),
-  "checkErrors": S.optional(CheckErrorList),
-  "serviceConfigId": S.optional(S.String),
-  "checkInfo": S.optional(CheckInfo),
-  "operationId": S.optional(S.String),
-  "serviceRolloutId": S.optional(S.String),
-}),
+  S.Struct({
+    quotaInfo: S.optional(QuotaInfo),
+    checkErrors: S.optional(CheckErrorList),
+    serviceConfigId: S.optional(S.String),
+    checkInfo: S.optional(CheckInfo),
+    operationId: S.optional(S.String),
+    serviceRolloutId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "CheckResponse" }) as any as S.Schema<CheckResponse>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(
+  Operation,
+) as any as S.Schema<OperationList>;
 
 /** Request message for the Report method. */
 export interface ReportRequest {
@@ -866,10 +1016,10 @@ export interface ReportRequest {
   operations?: OperationList;
 }
 export const ReportRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "serviceConfigId": S.optional(S.String),
-  "operations": S.optional(OperationList),
-}),
+  S.Struct({
+    serviceConfigId: S.optional(S.String),
+    operations: S.optional(OperationList),
+  }),
 ).annotate({ identifier: "ReportRequest" }) as any as S.Schema<ReportRequest>;
 
 export interface ReportServicesRequest {
@@ -879,11 +1029,19 @@ export interface ReportServicesRequest {
   body?: ReportRequest;
 }
 export const ReportServicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "serviceName": S.String.pipe(T.Label()),
-  "body": S.optional(ReportRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/services/{serviceName}:report","baseUrl":"https://servicecontrol.googleapis.com/"})),
-).annotate({ identifier: "ReportServicesRequest" }) as any as S.Schema<ReportServicesRequest>;
+  S.Struct({
+    serviceName: S.String.pipe(T.Label()),
+    body: S.optional(ReportRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/services/{serviceName}:report",
+      baseUrl: "https://servicecontrol.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ReportServicesRequest",
+}) as any as S.Schema<ReportServicesRequest>;
 
 /** Represents the processing error of one Operation in the request. */
 export interface ReportError {
@@ -893,14 +1051,16 @@ export interface ReportError {
   operationId?: string;
 }
 export const ReportError = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "status": S.optional(Status),
-  "operationId": S.optional(S.String),
-}),
+  S.Struct({
+    status: S.optional(Status),
+    operationId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ReportError" }) as any as S.Schema<ReportError>;
 
 export type ReportErrorList = ReadonlyArray<ReportError>;
-export const ReportErrorList = /*@__PURE__*/ S.Array(ReportError) as any as S.Schema<ReportErrorList>;
+export const ReportErrorList = /*@__PURE__*/ S.Array(
+  ReportError,
+) as any as S.Schema<ReportErrorList>;
 
 /** Response message for the Report method. */
 export interface ReportResponse {
@@ -912,14 +1072,19 @@ export interface ReportResponse {
   reportErrors?: ReportErrorList;
 }
 export const ReportResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "serviceRolloutId": S.optional(S.String),
-  "serviceConfigId": S.optional(S.String),
-  "reportErrors": S.optional(ReportErrorList),
-}),
+  S.Struct({
+    serviceRolloutId: S.optional(S.String),
+    serviceConfigId: S.optional(S.String),
+    reportErrors: S.optional(ReportErrorList),
+  }),
 ).annotate({ identifier: "ReportResponse" }) as any as S.Schema<ReportResponse>;
 
-export type AllocateQuotaServicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type AllocateQuotaServicesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Attempts to allocate quota for the specified consumer. It should be called before the operation is executed. This method requires the `servicemanagement.services.quota` permission on the specified service. For more information, see [Cloud IAM](https://cloud.google.com/iam). **NOTE:** The client **must** fail-open on server errors `INTERNAL`, `UNKNOWN`, `DEADLINE_EXCEEDED`, and `UNAVAILABLE`. To ensure system reliability, the server may inject these errors to prohibit any hard dependency on the quota functionality. */
 export const allocateQuotaServices: API.OperationMethod<
   AllocateQuotaServicesRequest,
@@ -934,7 +1099,12 @@ export const allocateQuotaServices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CheckServicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CheckServicesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Checks whether an operation on a service should be allowed to proceed based on the configuration of the service and related policies. It must be called before the operation is executed. If feasible, the client should cache the check results and reuse them for 60 seconds. In case of any server errors, the client should rely on the cached results for much longer time to avoid outage. WARNING: There is general 60s delay for the configuration and policy propagation, therefore callers MUST NOT depend on the `Check` method having the latest policy information. NOTE: the CheckRequest has the size limit (wire-format byte size) of 1MB. This method requires the `servicemanagement.services.check` permission on the specified service. For more information, see [Cloud IAM](https://cloud.google.com/iam). */
 export const checkServices: API.OperationMethod<
   CheckServicesRequest,
@@ -949,7 +1119,12 @@ export const checkServices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ReportServicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ReportServicesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Reports operation results to Google Service Control, such as logs and metrics. It should be called after an operation is completed. If feasible, the client should aggregate reporting data for up to 5 seconds to reduce API traffic. Limiting aggregation to 5 seconds is to reduce data loss during client crashes. Clients should carefully choose the aggregation time window to avoid data loss risk more than 0.01% for business and compliance reasons. NOTE: the ReportRequest has the size limit (wire-format byte size) of 1MB. This method requires the `servicemanagement.services.report` permission on the specified service. For more information, see [Google Cloud IAM](https://cloud.google.com/iam). */
 export const reportServices: API.OperationMethod<
   ReportServicesRequest,
@@ -963,4 +1138,3 @@ export const reportServices: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

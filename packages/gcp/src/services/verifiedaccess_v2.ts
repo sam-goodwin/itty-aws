@@ -13,68 +13,76 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 export interface GenerateChallengeRequest {
   /** Request body */
   body?: Empty;
 }
 export const GenerateChallengeRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(Empty.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2/challenge:generate","baseUrl":"https://verifiedaccess.googleapis.com/"})),
-).annotate({ identifier: "GenerateChallengeRequest" }) as any as S.Schema<GenerateChallengeRequest>;
+  S.Struct({
+    body: S.optional(Empty.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v2/challenge:generate",
+      baseUrl: "https://verifiedaccess.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GenerateChallengeRequest",
+}) as any as S.Schema<GenerateChallengeRequest>;
 
 /** Result message for VerifiedAccess.GenerateChallenge. */
 export interface Challenge {
@@ -82,9 +90,9 @@ export interface Challenge {
   challenge?: string;
 }
 export const Challenge = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "challenge": S.optional(S.String),
-}),
+  S.Struct({
+    challenge: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Challenge" }) as any as S.Schema<Challenge>;
 
 /** Signed ChallengeResponse. */
@@ -95,30 +103,58 @@ export interface VerifyChallengeResponseRequest {
   expectedIdentity?: string;
 }
 export const VerifyChallengeResponseRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "challengeResponse": S.optional(S.String),
-  "expectedIdentity": S.optional(S.String),
-}),
-).annotate({ identifier: "VerifyChallengeResponseRequest" }) as any as S.Schema<VerifyChallengeResponseRequest>;
+  S.Struct({
+    challengeResponse: S.optional(S.String),
+    expectedIdentity: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VerifyChallengeResponseRequest",
+}) as any as S.Schema<VerifyChallengeResponseRequest>;
 
 export interface VerifyChallengeRequest {
   /** Request body */
   body?: VerifyChallengeResponseRequest;
 }
 export const VerifyChallengeRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(VerifyChallengeResponseRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2/challenge:verify","baseUrl":"https://verifiedaccess.googleapis.com/"})),
-).annotate({ identifier: "VerifyChallengeRequest" }) as any as S.Schema<VerifyChallengeRequest>;
+  S.Struct({
+    body: S.optional(VerifyChallengeResponseRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v2/challenge:verify",
+      baseUrl: "https://verifiedaccess.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "VerifyChallengeRequest",
+}) as any as S.Schema<VerifyChallengeRequest>;
 
-export type VerifyChallengeResponseResultKeyTrustLevelEnum = "KEY_TRUST_LEVEL_UNSPECIFIED" | "CHROME_OS_VERIFIED_MODE" | "CHROME_OS_DEVELOPER_MODE" | "CHROME_BROWSER_HW_KEY" | "CHROME_BROWSER_OS_KEY" | "CHROME_BROWSER_NO_KEY" | "CHROME_OS_NO_KEY";
-export const VerifyChallengeResponseResultKeyTrustLevelEnum = /*@__PURE__*/ S.String;
+export type VerifyChallengeResponseResultKeyTrustLevelEnum =
+  | "KEY_TRUST_LEVEL_UNSPECIFIED"
+  | "CHROME_OS_VERIFIED_MODE"
+  | "CHROME_OS_DEVELOPER_MODE"
+  | "CHROME_BROWSER_HW_KEY"
+  | "CHROME_BROWSER_OS_KEY"
+  | "CHROME_BROWSER_NO_KEY"
+  | "CHROME_OS_NO_KEY";
+export const VerifyChallengeResponseResultKeyTrustLevelEnum =
+  /*@__PURE__*/ S.String;
 
-export type VerifyChallengeResponseResultProfileKeyTrustLevelEnum = "KEY_TRUST_LEVEL_UNSPECIFIED" | "CHROME_OS_VERIFIED_MODE" | "CHROME_OS_DEVELOPER_MODE" | "CHROME_BROWSER_HW_KEY" | "CHROME_BROWSER_OS_KEY" | "CHROME_BROWSER_NO_KEY" | "CHROME_OS_NO_KEY";
-export const VerifyChallengeResponseResultProfileKeyTrustLevelEnum = /*@__PURE__*/ S.String;
+export type VerifyChallengeResponseResultProfileKeyTrustLevelEnum =
+  | "KEY_TRUST_LEVEL_UNSPECIFIED"
+  | "CHROME_OS_VERIFIED_MODE"
+  | "CHROME_OS_DEVELOPER_MODE"
+  | "CHROME_BROWSER_HW_KEY"
+  | "CHROME_BROWSER_OS_KEY"
+  | "CHROME_BROWSER_NO_KEY"
+  | "CHROME_OS_NO_KEY";
+export const VerifyChallengeResponseResultProfileKeyTrustLevelEnum =
+  /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** Properties of the CrowdStrike agent installed on a device. */
 export interface CrowdStrikeAgent {
@@ -128,22 +164,42 @@ export interface CrowdStrikeAgent {
   customerId?: string;
 }
 export const CrowdStrikeAgent = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "agentId": S.optional(S.String),
-  "customerId": S.optional(S.String),
-}),
-).annotate({ identifier: "CrowdStrikeAgent" }) as any as S.Schema<CrowdStrikeAgent>;
+  S.Struct({
+    agentId: S.optional(S.String),
+    customerId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CrowdStrikeAgent",
+}) as any as S.Schema<CrowdStrikeAgent>;
 
-export type DeviceSignalsOsFirewallEnum = "OS_FIREWALL_UNSPECIFIED" | "OS_FIREWALL_UNKNOWN" | "OS_FIREWALL_DISABLED" | "OS_FIREWALL_ENABLED";
+export type DeviceSignalsOsFirewallEnum =
+  | "OS_FIREWALL_UNSPECIFIED"
+  | "OS_FIREWALL_UNKNOWN"
+  | "OS_FIREWALL_DISABLED"
+  | "OS_FIREWALL_ENABLED";
 export const DeviceSignalsOsFirewallEnum = /*@__PURE__*/ S.String;
 
-export type DeviceSignalsDiskEncryptionEnum = "DISK_ENCRYPTION_UNSPECIFIED" | "DISK_ENCRYPTION_UNKNOWN" | "DISK_ENCRYPTION_DISABLED" | "DISK_ENCRYPTION_ENCRYPTED";
+export type DeviceSignalsDiskEncryptionEnum =
+  | "DISK_ENCRYPTION_UNSPECIFIED"
+  | "DISK_ENCRYPTION_UNKNOWN"
+  | "DISK_ENCRYPTION_DISABLED"
+  | "DISK_ENCRYPTION_ENCRYPTED";
 export const DeviceSignalsDiskEncryptionEnum = /*@__PURE__*/ S.String;
 
-export type DeviceSignalsOperatingSystemEnum = "OPERATING_SYSTEM_UNSPECIFIED" | "CHROME_OS" | "CHROMIUM_OS" | "WINDOWS" | "MAC_OS_X" | "LINUX";
+export type DeviceSignalsOperatingSystemEnum =
+  | "OPERATING_SYSTEM_UNSPECIFIED"
+  | "CHROME_OS"
+  | "CHROMIUM_OS"
+  | "WINDOWS"
+  | "MAC_OS_X"
+  | "LINUX";
 export const DeviceSignalsOperatingSystemEnum = /*@__PURE__*/ S.String;
 
-export type AntivirusStateEnum = "STATE_UNSPECIFIED" | "MISSING" | "DISABLED" | "ENABLED";
+export type AntivirusStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "MISSING"
+  | "DISABLED"
+  | "ENABLED";
 export const AntivirusStateEnum = /*@__PURE__*/ S.String;
 
 /** Antivirus information on a device. */
@@ -152,27 +208,52 @@ export interface Antivirus {
   state?: AntivirusStateEnum;
 }
 export const Antivirus = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "state": S.optional(AntivirusStateEnum),
-}),
+  S.Struct({
+    state: S.optional(AntivirusStateEnum),
+  }),
 ).annotate({ identifier: "Antivirus" }) as any as S.Schema<Antivirus>;
 
-export type DeviceSignalsSecureBootModeEnum = "SECURE_BOOT_MODE_UNSPECIFIED" | "SECURE_BOOT_MODE_UNKNOWN" | "SECURE_BOOT_MODE_DISABLED" | "SECURE_BOOT_MODE_ENABLED";
+export type DeviceSignalsSecureBootModeEnum =
+  | "SECURE_BOOT_MODE_UNSPECIFIED"
+  | "SECURE_BOOT_MODE_UNKNOWN"
+  | "SECURE_BOOT_MODE_DISABLED"
+  | "SECURE_BOOT_MODE_ENABLED";
 export const DeviceSignalsSecureBootModeEnum = /*@__PURE__*/ S.String;
 
-export type DeviceSignalsScreenLockSecuredEnum = "SCREEN_LOCK_SECURED_UNSPECIFIED" | "SCREEN_LOCK_SECURED_UNKNOWN" | "SCREEN_LOCK_SECURED_DISABLED" | "SCREEN_LOCK_SECURED_ENABLED";
+export type DeviceSignalsScreenLockSecuredEnum =
+  | "SCREEN_LOCK_SECURED_UNSPECIFIED"
+  | "SCREEN_LOCK_SECURED_UNKNOWN"
+  | "SCREEN_LOCK_SECURED_DISABLED"
+  | "SCREEN_LOCK_SECURED_ENABLED";
 export const DeviceSignalsScreenLockSecuredEnum = /*@__PURE__*/ S.String;
 
-export type DeviceSignalsSafeBrowsingProtectionLevelEnum = "SAFE_BROWSING_PROTECTION_LEVEL_UNSPECIFIED" | "INACTIVE" | "STANDARD" | "ENHANCED";
-export const DeviceSignalsSafeBrowsingProtectionLevelEnum = /*@__PURE__*/ S.String;
+export type DeviceSignalsSafeBrowsingProtectionLevelEnum =
+  | "SAFE_BROWSING_PROTECTION_LEVEL_UNSPECIFIED"
+  | "INACTIVE"
+  | "STANDARD"
+  | "ENHANCED";
+export const DeviceSignalsSafeBrowsingProtectionLevelEnum =
+  /*@__PURE__*/ S.String;
 
-export type DeviceSignalsPasswordProtectionWarningTriggerEnum = "PASSWORD_PROTECTION_WARNING_TRIGGER_UNSPECIFIED" | "POLICY_UNSET" | "PASSWORD_PROTECTION_OFF" | "PASSWORD_REUSE" | "PHISHING_REUSE";
-export const DeviceSignalsPasswordProtectionWarningTriggerEnum = /*@__PURE__*/ S.String;
+export type DeviceSignalsPasswordProtectionWarningTriggerEnum =
+  | "PASSWORD_PROTECTION_WARNING_TRIGGER_UNSPECIFIED"
+  | "POLICY_UNSET"
+  | "PASSWORD_PROTECTION_OFF"
+  | "PASSWORD_REUSE"
+  | "PHISHING_REUSE";
+export const DeviceSignalsPasswordProtectionWarningTriggerEnum =
+  /*@__PURE__*/ S.String;
 
-export type DeviceSignalsRealtimeUrlCheckModeEnum = "REALTIME_URL_CHECK_MODE_UNSPECIFIED" | "REALTIME_URL_CHECK_MODE_DISABLED" | "REALTIME_URL_CHECK_MODE_ENABLED_MAIN_FRAME";
+export type DeviceSignalsRealtimeUrlCheckModeEnum =
+  | "REALTIME_URL_CHECK_MODE_UNSPECIFIED"
+  | "REALTIME_URL_CHECK_MODE_DISABLED"
+  | "REALTIME_URL_CHECK_MODE_ENABLED_MAIN_FRAME";
 export const DeviceSignalsRealtimeUrlCheckModeEnum = /*@__PURE__*/ S.String;
 
-export type DeviceSignalsTriggerEnum = "TRIGGER_UNSPECIFIED" | "TRIGGER_BROWSER_NAVIGATION" | "TRIGGER_LOGIN_SCREEN";
+export type DeviceSignalsTriggerEnum =
+  | "TRIGGER_UNSPECIFIED"
+  | "TRIGGER_BROWSER_NAVIGATION"
+  | "TRIGGER_LOGIN_SCREEN";
 export const DeviceSignalsTriggerEnum = /*@__PURE__*/ S.String;
 
 /** The device signals as reported by Chrome. Unless otherwise specified, signals are available on all platforms. */
@@ -245,41 +326,45 @@ export interface DeviceSignals {
   trigger?: DeviceSignalsTriggerEnum;
 }
 export const DeviceSignals = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "systemDnsServers": S.optional(StringList),
-  "macAddresses": S.optional(StringList),
-  "crowdStrikeAgent": S.optional(CrowdStrikeAgent),
-  "windowsMachineDomain": S.optional(S.String),
-  "siteIsolationEnabled": S.optional(S.Boolean),
-  "serialNumber": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "profileEnrollmentDomain": S.optional(S.String),
-  "chromeRemoteDesktopAppBlocked": S.optional(S.Boolean),
-  "deviceModel": S.optional(S.String),
-  "thirdPartyBlockingEnabled": S.optional(S.Boolean),
-  "osFirewall": S.optional(DeviceSignalsOsFirewallEnum),
-  "imei": S.optional(StringList),
-  "diskEncryption": S.optional(DeviceSignalsDiskEncryptionEnum),
-  "operatingSystem": S.optional(DeviceSignalsOperatingSystemEnum),
-  "deviceManufacturer": S.optional(S.String),
-  "builtInDnsClientEnabled": S.optional(S.Boolean),
-  "osVersion": S.optional(S.String),
-  "meid": S.optional(StringList),
-  "deviceAffiliationIds": S.optional(StringList),
-  "antivirus": S.optional(Antivirus),
-  "secureBootMode": S.optional(DeviceSignalsSecureBootModeEnum),
-  "screenLockSecured": S.optional(DeviceSignalsScreenLockSecuredEnum),
-  "hostname": S.optional(S.String),
-  "profileAffiliationIds": S.optional(StringList),
-  "windowsUserDomain": S.optional(S.String),
-  "deviceEnrollmentDomain": S.optional(S.String),
-  "safeBrowsingProtectionLevel": S.optional(DeviceSignalsSafeBrowsingProtectionLevelEnum),
-  "allowScreenLock": S.optional(S.Boolean),
-  "passwordProtectionWarningTrigger": S.optional(DeviceSignalsPasswordProtectionWarningTriggerEnum),
-  "browserVersion": S.optional(S.String),
-  "realtimeUrlCheckMode": S.optional(DeviceSignalsRealtimeUrlCheckModeEnum),
-  "trigger": S.optional(DeviceSignalsTriggerEnum),
-}),
+  S.Struct({
+    systemDnsServers: S.optional(StringList),
+    macAddresses: S.optional(StringList),
+    crowdStrikeAgent: S.optional(CrowdStrikeAgent),
+    windowsMachineDomain: S.optional(S.String),
+    siteIsolationEnabled: S.optional(S.Boolean),
+    serialNumber: S.optional(S.String),
+    displayName: S.optional(S.String),
+    profileEnrollmentDomain: S.optional(S.String),
+    chromeRemoteDesktopAppBlocked: S.optional(S.Boolean),
+    deviceModel: S.optional(S.String),
+    thirdPartyBlockingEnabled: S.optional(S.Boolean),
+    osFirewall: S.optional(DeviceSignalsOsFirewallEnum),
+    imei: S.optional(StringList),
+    diskEncryption: S.optional(DeviceSignalsDiskEncryptionEnum),
+    operatingSystem: S.optional(DeviceSignalsOperatingSystemEnum),
+    deviceManufacturer: S.optional(S.String),
+    builtInDnsClientEnabled: S.optional(S.Boolean),
+    osVersion: S.optional(S.String),
+    meid: S.optional(StringList),
+    deviceAffiliationIds: S.optional(StringList),
+    antivirus: S.optional(Antivirus),
+    secureBootMode: S.optional(DeviceSignalsSecureBootModeEnum),
+    screenLockSecured: S.optional(DeviceSignalsScreenLockSecuredEnum),
+    hostname: S.optional(S.String),
+    profileAffiliationIds: S.optional(StringList),
+    windowsUserDomain: S.optional(S.String),
+    deviceEnrollmentDomain: S.optional(S.String),
+    safeBrowsingProtectionLevel: S.optional(
+      DeviceSignalsSafeBrowsingProtectionLevelEnum,
+    ),
+    allowScreenLock: S.optional(S.Boolean),
+    passwordProtectionWarningTrigger: S.optional(
+      DeviceSignalsPasswordProtectionWarningTriggerEnum,
+    ),
+    browserVersion: S.optional(S.String),
+    realtimeUrlCheckMode: S.optional(DeviceSignalsRealtimeUrlCheckModeEnum),
+    trigger: S.optional(DeviceSignalsTriggerEnum),
+  }),
 ).annotate({ identifier: "DeviceSignals" }) as any as S.Schema<DeviceSignals>;
 
 /** Result message for VerifiedAccess.VerifyChallengeResponse. The response returned when successful for Managed profiles on Unmanaged browsers will NOT have devicePermanentId, keyTrustLevel, virtualDeviceId and customerId fields. Managed profiles will INSTEAD have the profileCustomerId, virtualProfileId, profilePermanentId and profileKeyTrustLevel fields. */
@@ -312,24 +397,33 @@ export interface VerifyChallengeResponseResult {
   deviceSignal?: string;
 }
 export const VerifyChallengeResponseResult = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "keyTrustLevel": S.optional(VerifyChallengeResponseResultKeyTrustLevelEnum),
-  "profileCustomerId": S.optional(S.String),
-  "profilePermanentId": S.optional(S.String),
-  "attestedDeviceId": S.optional(S.String),
-  "deviceEnrollmentId": S.optional(S.String),
-  "devicePermanentId": S.optional(S.String),
-  "virtualDeviceId": S.optional(S.String),
-  "profileKeyTrustLevel": S.optional(VerifyChallengeResponseResultProfileKeyTrustLevelEnum),
-  "signedPublicKeyAndChallenge": S.optional(S.String),
-  "virtualProfileId": S.optional(S.String),
-  "customerId": S.optional(S.String),
-  "deviceSignals": S.optional(DeviceSignals),
-  "deviceSignal": S.optional(S.String),
-}),
-).annotate({ identifier: "VerifyChallengeResponseResult" }) as any as S.Schema<VerifyChallengeResponseResult>;
+  S.Struct({
+    keyTrustLevel: S.optional(VerifyChallengeResponseResultKeyTrustLevelEnum),
+    profileCustomerId: S.optional(S.String),
+    profilePermanentId: S.optional(S.String),
+    attestedDeviceId: S.optional(S.String),
+    deviceEnrollmentId: S.optional(S.String),
+    devicePermanentId: S.optional(S.String),
+    virtualDeviceId: S.optional(S.String),
+    profileKeyTrustLevel: S.optional(
+      VerifyChallengeResponseResultProfileKeyTrustLevelEnum,
+    ),
+    signedPublicKeyAndChallenge: S.optional(S.String),
+    virtualProfileId: S.optional(S.String),
+    customerId: S.optional(S.String),
+    deviceSignals: S.optional(DeviceSignals),
+    deviceSignal: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VerifyChallengeResponseResult",
+}) as any as S.Schema<VerifyChallengeResponseResult>;
 
-export type GenerateChallengeError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type GenerateChallengeError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Generates a new challenge. */
 export const generateChallenge: API.OperationMethod<
   GenerateChallengeRequest,
@@ -344,7 +438,12 @@ export const generateChallenge: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type VerifyChallengeError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type VerifyChallengeError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Verifies the challenge response. */
 export const verifyChallenge: API.OperationMethod<
   VerifyChallengeRequest,
@@ -358,4 +457,3 @@ export const verifyChallenge: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

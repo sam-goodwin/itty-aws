@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export interface AccessibilityClustersProjectsHistoriesExecutionsStepsRequest {
@@ -66,14 +66,28 @@ export interface AccessibilityClustersProjectsHistoriesExecutionsStepsRequest {
   /** The accepted format is the canonical Unicode format with hyphen as a delimiter. Language must be lowercase, Language Script - Capitalized, Region - UPPERCASE. See http://www.unicode.org/reports/tr35/#Unicode_locale_identifier for details. Required. */
   locale?: string;
 }
-export const AccessibilityClustersProjectsHistoriesExecutionsStepsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "locale": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"toolresults/v1beta3/{+name}:accessibilityClusters","baseUrl":"https://toolresults.googleapis.com/"})),
-).annotate({ identifier: "AccessibilityClustersProjectsHistoriesExecutionsStepsRequest" }) as any as S.Schema<AccessibilityClustersProjectsHistoriesExecutionsStepsRequest>;
+export const AccessibilityClustersProjectsHistoriesExecutionsStepsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      locale: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "toolresults/v1beta3/{+name}:accessibilityClusters",
+        baseUrl: "https://toolresults.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "AccessibilityClustersProjectsHistoriesExecutionsStepsRequest",
+  }) as any as S.Schema<AccessibilityClustersProjectsHistoriesExecutionsStepsRequest>;
 
-export type SuggestionClusterProtoCategoryEnum = "unknownCategory" | "contentLabeling" | "touchTargetSize" | "lowContrast" | "implementation";
+export type SuggestionClusterProtoCategoryEnum =
+  | "unknownCategory"
+  | "contentLabeling"
+  | "touchTargetSize"
+  | "lowContrast"
+  | "implementation";
 export const SuggestionClusterProtoCategoryEnum = /*@__PURE__*/ S.String;
 
 /** IMPORTANT: It is unsafe to accept this message from an untrusted source, since it's trivial for an attacker to forge serialized messages that don't fulfill the type's safety contract -- for example, it could contain attacker controlled script. A system which receives a SafeHtmlProto implicitly trusts the producer of the SafeHtmlProto. So, it's generally safe to return this message in RPC responses, but generally unsafe to accept it in RPC requests. */
@@ -82,12 +96,16 @@ export interface SafeHtmlProto {
   privateDoNotAccessOrElseSafeHtmlWrappedValue?: string;
 }
 export const SafeHtmlProto = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "privateDoNotAccessOrElseSafeHtmlWrappedValue": S.optional(S.String),
-}),
+  S.Struct({
+    privateDoNotAccessOrElseSafeHtmlWrappedValue: S.optional(S.String),
+  }),
 ).annotate({ identifier: "SafeHtmlProto" }) as any as S.Schema<SafeHtmlProto>;
 
-export type SuggestionProtoPriorityEnum = "unknownPriority" | "error" | "warning" | "info";
+export type SuggestionProtoPriorityEnum =
+  | "unknownPriority"
+  | "error"
+  | "warning"
+  | "info";
 export const SuggestionProtoPriorityEnum = /*@__PURE__*/ S.String;
 
 /** A rectangular region. */
@@ -102,12 +120,12 @@ export interface RegionProto {
   widthPx?: number;
 }
 export const RegionProto = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "topPx": S.optional(S.Number),
-  "heightPx": S.optional(S.Number),
-  "leftPx": S.optional(S.Number),
-  "widthPx": S.optional(S.Number),
-}),
+  S.Struct({
+    topPx: S.optional(S.Number),
+    heightPx: S.optional(S.Number),
+    leftPx: S.optional(S.Number),
+    widthPx: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "RegionProto" }) as any as S.Schema<RegionProto>;
 
 export interface SuggestionProto {
@@ -133,22 +151,26 @@ export interface SuggestionProto {
   secondaryPriority?: number;
 }
 export const SuggestionProto = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "title": S.optional(S.String),
-  "longMessage": S.optional(SafeHtmlProto),
-  "priority": S.optional(SuggestionProtoPriorityEnum),
-  "helpUrl": S.optional(S.String),
-  "shortMessage": S.optional(SafeHtmlProto),
-  "region": S.optional(RegionProto),
-  "pseudoResourceId": S.optional(S.String),
-  "screenId": S.optional(S.String),
-  "resourceName": S.optional(S.String),
-  "secondaryPriority": S.optional(S.Number),
-}),
-).annotate({ identifier: "SuggestionProto" }) as any as S.Schema<SuggestionProto>;
+  S.Struct({
+    title: S.optional(S.String),
+    longMessage: S.optional(SafeHtmlProto),
+    priority: S.optional(SuggestionProtoPriorityEnum),
+    helpUrl: S.optional(S.String),
+    shortMessage: S.optional(SafeHtmlProto),
+    region: S.optional(RegionProto),
+    pseudoResourceId: S.optional(S.String),
+    screenId: S.optional(S.String),
+    resourceName: S.optional(S.String),
+    secondaryPriority: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "SuggestionProto",
+}) as any as S.Schema<SuggestionProto>;
 
 export type SuggestionProtoList = ReadonlyArray<SuggestionProto>;
-export const SuggestionProtoList = /*@__PURE__*/ S.Array(SuggestionProto) as any as S.Schema<SuggestionProtoList>;
+export const SuggestionProtoList = /*@__PURE__*/ S.Array(
+  SuggestionProto,
+) as any as S.Schema<SuggestionProtoList>;
 
 /** A set of similar suggestions that we suspect are closely related. This proto and most of the nested protos are branched from foxandcrown.prelaunchreport.service.SuggestionClusterProto, replacing PLR's dependencies with FTL's. */
 export interface SuggestionClusterProto {
@@ -158,14 +180,18 @@ export interface SuggestionClusterProto {
   suggestions?: SuggestionProtoList;
 }
 export const SuggestionClusterProto = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "category": S.optional(SuggestionClusterProtoCategoryEnum),
-  "suggestions": S.optional(SuggestionProtoList),
-}),
-).annotate({ identifier: "SuggestionClusterProto" }) as any as S.Schema<SuggestionClusterProto>;
+  S.Struct({
+    category: S.optional(SuggestionClusterProtoCategoryEnum),
+    suggestions: S.optional(SuggestionProtoList),
+  }),
+).annotate({
+  identifier: "SuggestionClusterProto",
+}) as any as S.Schema<SuggestionClusterProto>;
 
 export type SuggestionClusterProtoList = ReadonlyArray<SuggestionClusterProto>;
-export const SuggestionClusterProtoList = /*@__PURE__*/ S.Array(SuggestionClusterProto) as any as S.Schema<SuggestionClusterProtoList>;
+export const SuggestionClusterProtoList = /*@__PURE__*/ S.Array(
+  SuggestionClusterProto,
+) as any as S.Schema<SuggestionClusterProtoList>;
 
 /** Response message for AccessibilityService.ListStepAccessibilityClusters. */
 export interface ListStepAccessibilityClustersResponse {
@@ -174,12 +200,15 @@ export interface ListStepAccessibilityClustersResponse {
   /** A sequence of accessibility suggestions, grouped into clusters. Within the sequence, clusters that belong to the same SuggestionCategory should be adjacent. Within each category, clusters should be ordered by their SuggestionPriority (ERRORs first). The categories should be ordered by their highest priority cluster. */
   clusters?: SuggestionClusterProtoList;
 }
-export const ListStepAccessibilityClustersResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "clusters": S.optional(SuggestionClusterProtoList),
-}),
-).annotate({ identifier: "ListStepAccessibilityClustersResponse" }) as any as S.Schema<ListStepAccessibilityClustersResponse>;
+export const ListStepAccessibilityClustersResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.optional(S.String),
+      clusters: S.optional(SuggestionClusterProtoList),
+    }),
+).annotate({
+  identifier: "ListStepAccessibilityClustersResponse",
+}) as any as S.Schema<ListStepAccessibilityClustersResponse>;
 
 /** A Timestamp represents a point in time independent of any time zone or local calendar, encoded as a count of seconds and fractions of seconds at nanosecond resolution. The count is relative to an epoch at UTC midnight on January 1, 1970, in the proleptic Gregorian calendar which extends the Gregorian calendar backwards to year one. All minutes are 60 seconds long. Leap seconds are "smeared" so that no leap second table is needed for interpretation, using a [24-hour linear smear](https://developers.google.com/time/smear). The range is from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By restricting to that range, we ensure that we can convert to and from [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) date strings. */
 export interface Timestamp {
@@ -189,10 +218,10 @@ export interface Timestamp {
   nanos?: number;
 }
 export const Timestamp = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "seconds": S.optional(S.String),
-  "nanos": S.optional(S.Number),
-}),
+  S.Struct({
+    seconds: S.optional(S.String),
+    nanos: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "Timestamp" }) as any as S.Schema<Timestamp>;
 
 /** Resource representing a single performance measure or data point */
@@ -203,14 +232,16 @@ export interface PerfSample {
   value?: number;
 }
 export const PerfSample = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sampleTime": S.optional(Timestamp),
-  "value": S.optional(S.Number),
-}),
+  S.Struct({
+    sampleTime: S.optional(Timestamp),
+    value: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "PerfSample" }) as any as S.Schema<PerfSample>;
 
 export type PerfSampleList = ReadonlyArray<PerfSample>;
-export const PerfSampleList = /*@__PURE__*/ S.Array(PerfSample) as any as S.Schema<PerfSampleList>;
+export const PerfSampleList = /*@__PURE__*/ S.Array(
+  PerfSample,
+) as any as S.Schema<PerfSampleList>;
 
 /** The request must provide up to a maximum of 5000 samples to be created; a larger sample size will cause an INVALID_ARGUMENT error */
 export interface BatchCreatePerfSamplesRequest {
@@ -218,10 +249,12 @@ export interface BatchCreatePerfSamplesRequest {
   perfSamples?: PerfSampleList;
 }
 export const BatchCreatePerfSamplesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "perfSamples": S.optional(PerfSampleList),
-}),
-).annotate({ identifier: "BatchCreatePerfSamplesRequest" }) as any as S.Schema<BatchCreatePerfSamplesRequest>;
+  S.Struct({
+    perfSamples: S.optional(PerfSampleList),
+  }),
+).annotate({
+  identifier: "BatchCreatePerfSamplesRequest",
+}) as any as S.Schema<BatchCreatePerfSamplesRequest>;
 
 export interface BatchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest {
   /** The cloud project */
@@ -237,25 +270,37 @@ export interface BatchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamp
   /** Request body */
   body?: BatchCreatePerfSamplesRequest;
 }
-export const BatchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectId": S.String.pipe(T.Label()),
-  "executionId": S.String.pipe(T.Label()),
-  "stepId": S.String.pipe(T.Label()),
-  "sampleSeriesId": S.String.pipe(T.Label()),
-  "historyId": S.String.pipe(T.Label()),
-  "body": S.optional(BatchCreatePerfSamplesRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries/{sampleSeriesId}/samples:batchCreate","baseUrl":"https://toolresults.googleapis.com/"})),
-).annotate({ identifier: "BatchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest" }) as any as S.Schema<BatchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest>;
+export const BatchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      projectId: S.String.pipe(T.Label()),
+      executionId: S.String.pipe(T.Label()),
+      stepId: S.String.pipe(T.Label()),
+      sampleSeriesId: S.String.pipe(T.Label()),
+      historyId: S.String.pipe(T.Label()),
+      body: S.optional(BatchCreatePerfSamplesRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries/{sampleSeriesId}/samples:batchCreate",
+        baseUrl: "https://toolresults.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "BatchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest",
+  }) as any as S.Schema<BatchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest>;
 
 export interface BatchCreatePerfSamplesResponse {
   perfSamples?: PerfSampleList;
 }
 export const BatchCreatePerfSamplesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "perfSamples": S.optional(PerfSampleList),
-}),
-).annotate({ identifier: "BatchCreatePerfSamplesResponse" }) as any as S.Schema<BatchCreatePerfSamplesResponse>;
+  S.Struct({
+    perfSamples: S.optional(PerfSampleList),
+  }),
+).annotate({
+  identifier: "BatchCreatePerfSamplesResponse",
+}) as any as S.Schema<BatchCreatePerfSamplesResponse>;
 
 export type HistoryTestPlatformEnum = "unknownPlatform" | "android" | "ios";
 export const HistoryTestPlatformEnum = /*@__PURE__*/ S.String;
@@ -272,12 +317,12 @@ export interface History {
   displayName?: string;
 }
 export const History = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "testPlatform": S.optional(HistoryTestPlatformEnum),
-  "historyId": S.optional(S.String),
-  "name": S.optional(S.String),
-  "displayName": S.optional(S.String),
-}),
+  S.Struct({
+    testPlatform: S.optional(HistoryTestPlatformEnum),
+    historyId: S.optional(S.String),
+    name: S.optional(S.String),
+    displayName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "History" }) as any as S.Schema<History>;
 
 export interface CreateProjectsHistoriesRequest {
@@ -289,24 +334,41 @@ export interface CreateProjectsHistoriesRequest {
   body?: History;
 }
 export const CreateProjectsHistoriesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectId": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(History.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"toolresults/v1beta3/projects/{projectId}/histories","baseUrl":"https://toolresults.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsHistoriesRequest" }) as any as S.Schema<CreateProjectsHistoriesRequest>;
+  S.Struct({
+    projectId: S.String.pipe(T.Label()),
+    requestId: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(History.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "toolresults/v1beta3/projects/{projectId}/histories",
+      baseUrl: "https://toolresults.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateProjectsHistoriesRequest",
+}) as any as S.Schema<CreateProjectsHistoriesRequest>;
 
-export type ExecutionStateEnum = "unknownState" | "pending" | "inProgress" | "complete";
+export type ExecutionStateEnum =
+  | "unknownState"
+  | "pending"
+  | "inProgress"
+  | "complete";
 export const ExecutionStateEnum = /*@__PURE__*/ S.String;
 
 /** One dimension of the matrix of different runs of a step. */
 export interface MatrixDimensionDefinition {}
 export const MatrixDimensionDefinition = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "MatrixDimensionDefinition" }) as any as S.Schema<MatrixDimensionDefinition>;
+  S.Struct({}),
+).annotate({
+  identifier: "MatrixDimensionDefinition",
+}) as any as S.Schema<MatrixDimensionDefinition>;
 
-export type MatrixDimensionDefinitionList = ReadonlyArray<MatrixDimensionDefinition>;
-export const MatrixDimensionDefinitionList = /*@__PURE__*/ S.Array(MatrixDimensionDefinition) as any as S.Schema<MatrixDimensionDefinitionList>;
+export type MatrixDimensionDefinitionList =
+  ReadonlyArray<MatrixDimensionDefinition>;
+export const MatrixDimensionDefinitionList = /*@__PURE__*/ S.Array(
+  MatrixDimensionDefinition,
+) as any as S.Schema<MatrixDimensionDefinitionList>;
 
 /** iOS app information */
 export interface IosAppInfo {
@@ -314,9 +376,9 @@ export interface IosAppInfo {
   name?: string;
 }
 export const IosAppInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "IosAppInfo" }) as any as S.Schema<IosAppInfo>;
 
 /** A Duration represents a signed, fixed-length span of time represented as a count of seconds and fractions of seconds at nanosecond resolution. It is independent of any calendar and concepts like "day" or "month". It is related to Timestamp in that the difference between two Timestamp values is a Duration and it can be added or subtracted from a Timestamp. Range is approximately +-10,000 years. */
@@ -327,17 +389,17 @@ export interface Duration {
   nanos?: number;
 }
 export const Duration = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "seconds": S.optional(S.String),
-  "nanos": S.optional(S.Number),
-}),
+  S.Struct({
+    seconds: S.optional(S.String),
+    nanos: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "Duration" }) as any as S.Schema<Duration>;
 
 /** A Robo test for an iOS application. */
 export interface IosRoboTest {}
-export const IosRoboTest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "IosRoboTest" }) as any as S.Schema<IosRoboTest>;
+export const IosRoboTest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
+  { identifier: "IosRoboTest" },
+) as any as S.Schema<IosRoboTest>;
 
 /** A game loop test of an iOS application. */
 export interface IosTestLoop {
@@ -345,9 +407,9 @@ export interface IosTestLoop {
   bundleId?: string;
 }
 export const IosTestLoop = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bundleId": S.optional(S.String),
-}),
+  S.Struct({
+    bundleId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "IosTestLoop" }) as any as S.Schema<IosTestLoop>;
 
 /** A test of an iOS application that uses the XCTest framework. */
@@ -358,10 +420,10 @@ export interface IosXcTest {
   xcodeVersion?: string;
 }
 export const IosXcTest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bundleId": S.optional(S.String),
-  "xcodeVersion": S.optional(S.String),
-}),
+  S.Struct({
+    bundleId: S.optional(S.String),
+    xcodeVersion: S.optional(S.String),
+  }),
 ).annotate({ identifier: "IosXcTest" }) as any as S.Schema<IosXcTest>;
 
 /** A iOS mobile test specification */
@@ -378,13 +440,13 @@ export interface IosTest {
   iosXcTest?: IosXcTest;
 }
 export const IosTest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "iosAppInfo": S.optional(IosAppInfo),
-  "testTimeout": S.optional(Duration),
-  "iosRoboTest": S.optional(IosRoboTest),
-  "iosTestLoop": S.optional(IosTestLoop),
-  "iosXcTest": S.optional(IosXcTest),
-}),
+  S.Struct({
+    iosAppInfo: S.optional(IosAppInfo),
+    testTimeout: S.optional(Duration),
+    iosRoboTest: S.optional(IosRoboTest),
+    iosTestLoop: S.optional(IosTestLoop),
+    iosXcTest: S.optional(IosXcTest),
+  }),
 ).annotate({ identifier: "IosTest" }) as any as S.Schema<IosTest>;
 
 /** A test of an android application that explores the application on a virtual or physical Android device, finding culprits and crashes as it goes. */
@@ -401,17 +463,21 @@ export interface AndroidRoboTest {
   appInitialActivity?: string;
 }
 export const AndroidRoboTest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bootstrapPackageId": S.optional(S.String),
-  "maxSteps": S.optional(S.Number),
-  "bootstrapRunnerClass": S.optional(S.String),
-  "maxDepth": S.optional(S.Number),
-  "appInitialActivity": S.optional(S.String),
-}),
-).annotate({ identifier: "AndroidRoboTest" }) as any as S.Schema<AndroidRoboTest>;
+  S.Struct({
+    bootstrapPackageId: S.optional(S.String),
+    maxSteps: S.optional(S.Number),
+    bootstrapRunnerClass: S.optional(S.String),
+    maxDepth: S.optional(S.Number),
+    appInitialActivity: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AndroidRoboTest",
+}) as any as S.Schema<AndroidRoboTest>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** A test of an Android application that can control an Android component independently of its normal lifecycle. See for more information on types of Android tests. */
 export interface AndroidInstrumentationTest {
@@ -425,19 +491,23 @@ export interface AndroidInstrumentationTest {
   testRunnerClass?: string;
 }
 export const AndroidInstrumentationTest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "testTargets": S.optional(StringList),
-  "testPackageId": S.optional(S.String),
-  "useOrchestrator": S.optional(S.Boolean),
-  "testRunnerClass": S.optional(S.String),
-}),
-).annotate({ identifier: "AndroidInstrumentationTest" }) as any as S.Schema<AndroidInstrumentationTest>;
+  S.Struct({
+    testTargets: S.optional(StringList),
+    testPackageId: S.optional(S.String),
+    useOrchestrator: S.optional(S.Boolean),
+    testRunnerClass: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AndroidInstrumentationTest",
+}) as any as S.Schema<AndroidInstrumentationTest>;
 
 /** Test Loops are tests that can be launched by the app itself, determining when to run by listening for an intent. */
 export interface AndroidTestLoop {}
 export const AndroidTestLoop = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "AndroidTestLoop" }) as any as S.Schema<AndroidTestLoop>;
+  S.Struct({}),
+).annotate({
+  identifier: "AndroidTestLoop",
+}) as any as S.Schema<AndroidTestLoop>;
 
 /** Android app information. */
 export interface AndroidAppInfo {
@@ -451,12 +521,12 @@ export interface AndroidAppInfo {
   versionName?: string;
 }
 export const AndroidAppInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "packageName": S.optional(S.String),
-  "versionCode": S.optional(S.String),
-  "versionName": S.optional(S.String),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    packageName: S.optional(S.String),
+    versionCode: S.optional(S.String),
+    versionName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "AndroidAppInfo" }) as any as S.Schema<AndroidAppInfo>;
 
 /** An Android mobile test specification. */
@@ -473,13 +543,13 @@ export interface AndroidTest {
   androidAppInfo?: AndroidAppInfo;
 }
 export const AndroidTest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "androidRoboTest": S.optional(AndroidRoboTest),
-  "testTimeout": S.optional(Duration),
-  "androidInstrumentationTest": S.optional(AndroidInstrumentationTest),
-  "androidTestLoop": S.optional(AndroidTestLoop),
-  "androidAppInfo": S.optional(AndroidAppInfo),
-}),
+  S.Struct({
+    androidRoboTest: S.optional(AndroidRoboTest),
+    testTimeout: S.optional(Duration),
+    androidInstrumentationTest: S.optional(AndroidInstrumentationTest),
+    androidTestLoop: S.optional(AndroidTestLoop),
+    androidAppInfo: S.optional(AndroidAppInfo),
+  }),
 ).annotate({ identifier: "AndroidTest" }) as any as S.Schema<AndroidTest>;
 
 /** The details about how to run the execution. */
@@ -490,10 +560,10 @@ export interface Specification {
   androidTest?: AndroidTest;
 }
 export const Specification = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "iosTest": S.optional(IosTest),
-  "androidTest": S.optional(AndroidTest),
-}),
+  S.Struct({
+    iosTest: S.optional(IosTest),
+    androidTest: S.optional(AndroidTest),
+  }),
 ).annotate({ identifier: "Specification" }) as any as S.Schema<Specification>;
 
 /** Details for an outcome with a SKIPPED outcome summary. */
@@ -508,15 +578,21 @@ export interface SkippedDetail {
   incompatibleArchitecture?: boolean;
 }
 export const SkippedDetail = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "incompatibleAppVersion": S.optional(S.Boolean),
-  "incompatibleDevice": S.optional(S.Boolean),
-  "pendingTimeout": S.optional(S.Boolean),
-  "incompatibleArchitecture": S.optional(S.Boolean),
-}),
+  S.Struct({
+    incompatibleAppVersion: S.optional(S.Boolean),
+    incompatibleDevice: S.optional(S.Boolean),
+    pendingTimeout: S.optional(S.Boolean),
+    incompatibleArchitecture: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "SkippedDetail" }) as any as S.Schema<SkippedDetail>;
 
-export type OutcomeSummaryEnum = "unset" | "success" | "failure" | "inconclusive" | "skipped" | "flaky";
+export type OutcomeSummaryEnum =
+  | "unset"
+  | "success"
+  | "failure"
+  | "inconclusive"
+  | "skipped"
+  | "flaky";
 export const OutcomeSummaryEnum = /*@__PURE__*/ S.String;
 
 /** Details for an outcome with a SUCCESS outcome summary. LINT.IfChange */
@@ -525,9 +601,9 @@ export interface SuccessDetail {
   otherNativeCrash?: boolean;
 }
 export const SuccessDetail = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "otherNativeCrash": S.optional(S.Boolean),
-}),
+  S.Struct({
+    otherNativeCrash: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "SuccessDetail" }) as any as S.Schema<SuccessDetail>;
 
 /** Details for an outcome with a FAILURE outcome summary. */
@@ -548,15 +624,15 @@ export interface FailureDetail {
   timedOut?: boolean;
 }
 export const FailureDetail = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "unableToCrawl": S.optional(S.Boolean),
-  "notInstalled": S.optional(S.Boolean),
-  "otherNativeCrash": S.optional(S.Boolean),
-  "failedRoboscript": S.optional(S.Boolean),
-  "deviceOutOfMemory": S.optional(S.Boolean),
-  "crashed": S.optional(S.Boolean),
-  "timedOut": S.optional(S.Boolean),
-}),
+  S.Struct({
+    unableToCrawl: S.optional(S.Boolean),
+    notInstalled: S.optional(S.Boolean),
+    otherNativeCrash: S.optional(S.Boolean),
+    failedRoboscript: S.optional(S.Boolean),
+    deviceOutOfMemory: S.optional(S.Boolean),
+    crashed: S.optional(S.Boolean),
+    timedOut: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "FailureDetail" }) as any as S.Schema<FailureDetail>;
 
 /** Details for an outcome with an INCONCLUSIVE outcome summary. */
@@ -569,12 +645,14 @@ export interface InconclusiveDetail {
   hasErrorLogs?: boolean;
 }
 export const InconclusiveDetail = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "infrastructureFailure": S.optional(S.Boolean),
-  "abortedByUser": S.optional(S.Boolean),
-  "hasErrorLogs": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "InconclusiveDetail" }) as any as S.Schema<InconclusiveDetail>;
+  S.Struct({
+    infrastructureFailure: S.optional(S.Boolean),
+    abortedByUser: S.optional(S.Boolean),
+    hasErrorLogs: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "InconclusiveDetail",
+}) as any as S.Schema<InconclusiveDetail>;
 
 /** Interprets a result so that humans and machines can act on it. */
 export interface Outcome {
@@ -590,13 +668,13 @@ export interface Outcome {
   inconclusiveDetail?: InconclusiveDetail;
 }
 export const Outcome = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "skippedDetail": S.optional(SkippedDetail),
-  "summary": S.optional(OutcomeSummaryEnum),
-  "successDetail": S.optional(SuccessDetail),
-  "failureDetail": S.optional(FailureDetail),
-  "inconclusiveDetail": S.optional(InconclusiveDetail),
-}),
+  S.Struct({
+    skippedDetail: S.optional(SkippedDetail),
+    summary: S.optional(OutcomeSummaryEnum),
+    successDetail: S.optional(SuccessDetail),
+    failureDetail: S.optional(FailureDetail),
+    inconclusiveDetail: S.optional(InconclusiveDetail),
+  }),
 ).annotate({ identifier: "Outcome" }) as any as S.Schema<Outcome>;
 
 /** An Execution represents a collection of Steps. For instance, it could represent: - a mobile test executed across a range of device configurations - a jenkins job with a build step followed by a test step The maximum size of an execution message is 1 MiB. An Execution can be updated until its state is set to COMPLETE at which point it becomes immutable. */
@@ -619,16 +697,16 @@ export interface Execution {
   creationTime?: Timestamp;
 }
 export const Execution = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "executionId": S.optional(S.String),
-  "state": S.optional(ExecutionStateEnum),
-  "dimensionDefinitions": S.optional(MatrixDimensionDefinitionList),
-  "specification": S.optional(Specification),
-  "outcome": S.optional(Outcome),
-  "completionTime": S.optional(Timestamp),
-  "testExecutionMatrixId": S.optional(S.String),
-  "creationTime": S.optional(Timestamp),
-}),
+  S.Struct({
+    executionId: S.optional(S.String),
+    state: S.optional(ExecutionStateEnum),
+    dimensionDefinitions: S.optional(MatrixDimensionDefinitionList),
+    specification: S.optional(Specification),
+    outcome: S.optional(Outcome),
+    completionTime: S.optional(Timestamp),
+    testExecutionMatrixId: S.optional(S.String),
+    creationTime: S.optional(Timestamp),
+  }),
 ).annotate({ identifier: "Execution" }) as any as S.Schema<Execution>;
 
 export interface CreateProjectsHistoriesExecutionsRequest {
@@ -641,16 +719,29 @@ export interface CreateProjectsHistoriesExecutionsRequest {
   /** Request body */
   body?: Execution;
 }
-export const CreateProjectsHistoriesExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "historyId": S.String.pipe(T.Label()),
-  "projectId": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Execution.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions","baseUrl":"https://toolresults.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsHistoriesExecutionsRequest" }) as any as S.Schema<CreateProjectsHistoriesExecutionsRequest>;
+export const CreateProjectsHistoriesExecutionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      historyId: S.String.pipe(T.Label()),
+      projectId: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Execution.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions",
+        baseUrl: "https://toolresults.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateProjectsHistoriesExecutionsRequest",
+}) as any as S.Schema<CreateProjectsHistoriesExecutionsRequest>;
 
-export type StepStateEnum = "unknownState" | "pending" | "inProgress" | "complete";
+export type StepStateEnum =
+  | "unknownState"
+  | "pending"
+  | "inProgress"
+  | "complete";
 export const StepStateEnum = /*@__PURE__*/ S.String;
 
 /** A reference to a file. */
@@ -659,9 +750,9 @@ export interface FileReference {
   fileUri?: string;
 }
 export const FileReference = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fileUri": S.optional(S.String),
-}),
+  S.Struct({
+    fileUri: S.optional(S.String),
+  }),
 ).annotate({ identifier: "FileReference" }) as any as S.Schema<FileReference>;
 
 /** A summary of a test suite result either parsed from XML or uploaded directly by a user. Note: the API related comments are for StepService only. This message is also being used in ExecutionService in a read only mode for the corresponding step. */
@@ -684,20 +775,24 @@ export interface TestSuiteOverview {
   flakyCount?: number;
 }
 export const TestSuiteOverview = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "skippedCount": S.optional(S.Number),
-  "errorCount": S.optional(S.Number),
-  "xmlSource": S.optional(FileReference),
-  "elapsedTime": S.optional(Duration),
-  "name": S.optional(S.String),
-  "totalCount": S.optional(S.Number),
-  "failureCount": S.optional(S.Number),
-  "flakyCount": S.optional(S.Number),
-}),
-).annotate({ identifier: "TestSuiteOverview" }) as any as S.Schema<TestSuiteOverview>;
+  S.Struct({
+    skippedCount: S.optional(S.Number),
+    errorCount: S.optional(S.Number),
+    xmlSource: S.optional(FileReference),
+    elapsedTime: S.optional(Duration),
+    name: S.optional(S.String),
+    totalCount: S.optional(S.Number),
+    failureCount: S.optional(S.Number),
+    flakyCount: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "TestSuiteOverview",
+}) as any as S.Schema<TestSuiteOverview>;
 
 export type TestSuiteOverviewList = ReadonlyArray<TestSuiteOverview>;
-export const TestSuiteOverviewList = /*@__PURE__*/ S.Array(TestSuiteOverview) as any as S.Schema<TestSuiteOverviewList>;
+export const TestSuiteOverviewList = /*@__PURE__*/ S.Array(
+  TestSuiteOverview,
+) as any as S.Schema<TestSuiteOverviewList>;
 
 /** A reference to a test case. Test case references are canonically ordered lexicographically by these three factors: * First, by test_suite_name. * Second, by class_name. * Third, by name. */
 export interface TestCaseReference {
@@ -709,12 +804,14 @@ export interface TestCaseReference {
   testSuiteName?: string;
 }
 export const TestCaseReference = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "className": S.optional(S.String),
-  "testSuiteName": S.optional(S.String),
-}),
-).annotate({ identifier: "TestCaseReference" }) as any as S.Schema<TestCaseReference>;
+  S.Struct({
+    name: S.optional(S.String),
+    className: S.optional(S.String),
+    testSuiteName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "TestCaseReference",
+}) as any as S.Schema<TestCaseReference>;
 
 /** A reference to a ToolExecution output file. */
 export interface ToolOutputReference {
@@ -726,18 +823,24 @@ export interface ToolOutputReference {
   testCase?: TestCaseReference;
 }
 export const ToolOutputReference = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "creationTime": S.optional(Timestamp),
-  "output": S.optional(FileReference),
-  "testCase": S.optional(TestCaseReference),
-}),
-).annotate({ identifier: "ToolOutputReference" }) as any as S.Schema<ToolOutputReference>;
+  S.Struct({
+    creationTime: S.optional(Timestamp),
+    output: S.optional(FileReference),
+    testCase: S.optional(TestCaseReference),
+  }),
+).annotate({
+  identifier: "ToolOutputReference",
+}) as any as S.Schema<ToolOutputReference>;
 
 export type ToolOutputReferenceList = ReadonlyArray<ToolOutputReference>;
-export const ToolOutputReferenceList = /*@__PURE__*/ S.Array(ToolOutputReference) as any as S.Schema<ToolOutputReferenceList>;
+export const ToolOutputReferenceList = /*@__PURE__*/ S.Array(
+  ToolOutputReference,
+) as any as S.Schema<ToolOutputReferenceList>;
 
 export type FileReferenceList = ReadonlyArray<FileReference>;
-export const FileReferenceList = /*@__PURE__*/ S.Array(FileReference) as any as S.Schema<FileReferenceList>;
+export const FileReferenceList = /*@__PURE__*/ S.Array(
+  FileReference,
+) as any as S.Schema<FileReferenceList>;
 
 /** Exit code from a tool execution. */
 export interface ToolExitCode {
@@ -745,9 +848,9 @@ export interface ToolExitCode {
   number?: number;
 }
 export const ToolExitCode = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "number": S.optional(S.Number),
-}),
+  S.Struct({
+    number: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "ToolExitCode" }) as any as S.Schema<ToolExitCode>;
 
 /** An execution of an arbitrary tool. It could be a test runner or a tool copying artifacts or deploying code. */
@@ -762,15 +865,49 @@ export interface ToolExecution {
   exitCode?: ToolExitCode;
 }
 export const ToolExecution = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "toolOutputs": S.optional(ToolOutputReferenceList),
-  "commandLineArguments": S.optional(StringList),
-  "toolLogs": S.optional(FileReferenceList),
-  "exitCode": S.optional(ToolExitCode),
-}),
+  S.Struct({
+    toolOutputs: S.optional(ToolOutputReferenceList),
+    commandLineArguments: S.optional(StringList),
+    toolLogs: S.optional(FileReferenceList),
+    exitCode: S.optional(ToolExitCode),
+  }),
 ).annotate({ identifier: "ToolExecution" }) as any as S.Schema<ToolExecution>;
 
-export type TestIssueTypeEnum = "unspecifiedType" | "fatalException" | "nativeCrash" | "anr" | "unusedRoboDirective" | "compatibleWithOrchestrator" | "launcherActivityNotFound" | "startActivityNotFound" | "incompleteRoboScriptExecution" | "completeRoboScriptExecution" | "failedToInstall" | "availableDeepLinks" | "nonSdkApiUsageViolation" | "nonSdkApiUsageReport" | "encounteredNonAndroidUiWidgetScreen" | "encounteredLoginScreen" | "performedGoogleLogin" | "iosException" | "iosCrash" | "performedMonkeyActions" | "usedRoboDirective" | "usedRoboIgnoreDirective" | "insufficientCoverage" | "inAppPurchases" | "crashDialogError" | "uiElementsTooDeep" | "blankScreen" | "overlappingUiElements" | "unityException" | "deviceOutOfMemory" | "logcatCollectionError" | "detectedAppSplashScreen" | "assetIssue" | "licensingProtectionTermination";
+export type TestIssueTypeEnum =
+  | "unspecifiedType"
+  | "fatalException"
+  | "nativeCrash"
+  | "anr"
+  | "unusedRoboDirective"
+  | "compatibleWithOrchestrator"
+  | "launcherActivityNotFound"
+  | "startActivityNotFound"
+  | "incompleteRoboScriptExecution"
+  | "completeRoboScriptExecution"
+  | "failedToInstall"
+  | "availableDeepLinks"
+  | "nonSdkApiUsageViolation"
+  | "nonSdkApiUsageReport"
+  | "encounteredNonAndroidUiWidgetScreen"
+  | "encounteredLoginScreen"
+  | "performedGoogleLogin"
+  | "iosException"
+  | "iosCrash"
+  | "performedMonkeyActions"
+  | "usedRoboDirective"
+  | "usedRoboIgnoreDirective"
+  | "insufficientCoverage"
+  | "inAppPurchases"
+  | "crashDialogError"
+  | "uiElementsTooDeep"
+  | "blankScreen"
+  | "overlappingUiElements"
+  | "unityException"
+  | "deviceOutOfMemory"
+  | "logcatCollectionError"
+  | "detectedAppSplashScreen"
+  | "assetIssue"
+  | "licensingProtectionTermination";
 export const TestIssueTypeEnum = /*@__PURE__*/ S.String;
 
 /** `Any` contains an arbitrary serialized protocol buffer message along with a URL that describes the type of the serialized message. Protobuf library provides support to pack/unpack Any values in the form of utility functions or additional generated methods of the Any type. Example 1: Pack and unpack a message in C++. Foo foo = ...; Any any; any.PackFrom(foo); ... if (any.UnpackTo(&foo)) { ... } Example 2: Pack and unpack a message in Java. Foo foo = ...; Any any = Any.pack(foo); ... if (any.is(Foo.class)) { foo = any.unpack(Foo.class); } Example 3: Pack and unpack a message in Python. foo = Foo(...) any = Any() any.Pack(foo) ... if any.Is(Foo.DESCRIPTOR): any.Unpack(foo) ... Example 4: Pack and unpack a message in Go foo := &pb.Foo{...} any, err := ptypes.MarshalAny(foo) ... foo := &pb.Foo{} if err := ptypes.UnmarshalAny(any, foo); err != nil { ... } The pack methods provided by protobuf library will by default use 'type.googleapis.com/full.type.name' as the type URL and the unpack methods only use the fully qualified type name after the last '/' in the type URL, for example "foo.bar.com/x/y.z" will yield type name "y.z". # JSON The JSON representation of an `Any` value uses the regular representation of the deserialized, embedded message, with an additional field `@type` which contains the type URL. Example: package google.profile; message Person { string first_name = 1; string last_name = 2; } { "@type": "type.googleapis.com/google.profile.Person", "firstName": , "lastName": } If the embedded message type is well-known and has a custom JSON representation, that representation will be embedded adding a field `value` which holds the custom JSON in addition to the `@type` field. Example (for message google.protobuf.Duration): { "@type": "type.googleapis.com/google.protobuf.Duration", "value": "1.212s" } */
@@ -781,10 +918,10 @@ export interface Any {
   value?: string;
 }
 export const Any = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "typeUrl": S.optional(S.String),
-  "value": S.optional(S.String),
-}),
+  S.Struct({
+    typeUrl: S.optional(S.String),
+    value: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Any" }) as any as S.Schema<Any>;
 
 /** A stacktrace. */
@@ -793,12 +930,17 @@ export interface StackTrace {
   exception?: string;
 }
 export const StackTrace = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "exception": S.optional(S.String),
-}),
+  S.Struct({
+    exception: S.optional(S.String),
+  }),
 ).annotate({ identifier: "StackTrace" }) as any as S.Schema<StackTrace>;
 
-export type TestIssueSeverityEnum = "unspecifiedSeverity" | "info" | "suggestion" | "warning" | "severe";
+export type TestIssueSeverityEnum =
+  | "unspecifiedSeverity"
+  | "info"
+  | "suggestion"
+  | "warning"
+  | "severe";
 export const TestIssueSeverityEnum = /*@__PURE__*/ S.String;
 
 export type TestIssueCategoryEnum = "unspecifiedCategory" | "common" | "robo";
@@ -820,18 +962,20 @@ export interface TestIssue {
   category?: TestIssueCategoryEnum;
 }
 export const TestIssue = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(TestIssueTypeEnum),
-  "errorMessage": S.optional(S.String),
-  "warning_migration": S.optional(Any),
-  "stackTrace": S.optional(StackTrace),
-  "severity": S.optional(TestIssueSeverityEnum),
-  "category": S.optional(TestIssueCategoryEnum),
-}),
+  S.Struct({
+    type: S.optional(TestIssueTypeEnum),
+    errorMessage: S.optional(S.String),
+    warning_migration: S.optional(Any),
+    stackTrace: S.optional(StackTrace),
+    severity: S.optional(TestIssueSeverityEnum),
+    category: S.optional(TestIssueCategoryEnum),
+  }),
 ).annotate({ identifier: "TestIssue" }) as any as S.Schema<TestIssue>;
 
 export type TestIssueList = ReadonlyArray<TestIssue>;
-export const TestIssueList = /*@__PURE__*/ S.Array(TestIssue) as any as S.Schema<TestIssueList>;
+export const TestIssueList = /*@__PURE__*/ S.Array(
+  TestIssue,
+) as any as S.Schema<TestIssueList>;
 
 /** Testing timing break down to know phases. */
 export interface TestTiming {
@@ -839,9 +983,9 @@ export interface TestTiming {
   testProcessDuration?: Duration;
 }
 export const TestTiming = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "testProcessDuration": S.optional(Duration),
-}),
+  S.Struct({
+    testProcessDuration: S.optional(Duration),
+  }),
 ).annotate({ identifier: "TestTiming" }) as any as S.Schema<TestTiming>;
 
 /** A step that represents running tests. It accepts ant-junit xml files which will be parsed into structured test results by the service. Xml file paths are updated in order to append more files, however they can't be deleted. Users can also add test results manually by using the test_result field. */
@@ -856,41 +1000,52 @@ export interface TestExecutionStep {
   testTiming?: TestTiming;
 }
 export const TestExecutionStep = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "testSuiteOverviews": S.optional(TestSuiteOverviewList),
-  "toolExecution": S.optional(ToolExecution),
-  "testIssues": S.optional(TestIssueList),
-  "testTiming": S.optional(TestTiming),
-}),
-).annotate({ identifier: "TestExecutionStep" }) as any as S.Schema<TestExecutionStep>;
+  S.Struct({
+    testSuiteOverviews: S.optional(TestSuiteOverviewList),
+    toolExecution: S.optional(ToolExecution),
+    testIssues: S.optional(TestIssueList),
+    testTiming: S.optional(TestTiming),
+  }),
+).annotate({
+  identifier: "TestExecutionStep",
+}) as any as S.Schema<TestExecutionStep>;
 
 export interface StepLabelsEntry {
   key?: string;
   value?: string;
 }
 export const StepLabelsEntry = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "key": S.optional(S.String),
-  "value": S.optional(S.String),
-}),
-).annotate({ identifier: "StepLabelsEntry" }) as any as S.Schema<StepLabelsEntry>;
+  S.Struct({
+    key: S.optional(S.String),
+    value: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "StepLabelsEntry",
+}) as any as S.Schema<StepLabelsEntry>;
 
 export type StepLabelsEntryList = ReadonlyArray<StepLabelsEntry>;
-export const StepLabelsEntryList = /*@__PURE__*/ S.Array(StepLabelsEntry) as any as S.Schema<StepLabelsEntryList>;
+export const StepLabelsEntryList = /*@__PURE__*/ S.Array(
+  StepLabelsEntry,
+) as any as S.Schema<StepLabelsEntryList>;
 
 export interface StepDimensionValueEntry {
   key?: string;
   value?: string;
 }
 export const StepDimensionValueEntry = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "key": S.optional(S.String),
-  "value": S.optional(S.String),
-}),
-).annotate({ identifier: "StepDimensionValueEntry" }) as any as S.Schema<StepDimensionValueEntry>;
+  S.Struct({
+    key: S.optional(S.String),
+    value: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "StepDimensionValueEntry",
+}) as any as S.Schema<StepDimensionValueEntry>;
 
-export type StepDimensionValueEntryList = ReadonlyArray<StepDimensionValueEntry>;
-export const StepDimensionValueEntryList = /*@__PURE__*/ S.Array(StepDimensionValueEntry) as any as S.Schema<StepDimensionValueEntryList>;
+export type StepDimensionValueEntryList =
+  ReadonlyArray<StepDimensionValueEntry>;
+export const StepDimensionValueEntryList = /*@__PURE__*/ S.Array(
+  StepDimensionValueEntry,
+) as any as S.Schema<StepDimensionValueEntryList>;
 
 /** Generic tool step to be used for binaries we do not explicitly support. For example: running cp to copy artifacts from one location to another. */
 export interface ToolExecutionStep {
@@ -898,15 +1053,29 @@ export interface ToolExecutionStep {
   toolExecution?: ToolExecution;
 }
 export const ToolExecutionStep = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "toolExecution": S.optional(ToolExecution),
-}),
-).annotate({ identifier: "ToolExecutionStep" }) as any as S.Schema<ToolExecutionStep>;
+  S.Struct({
+    toolExecution: S.optional(ToolExecution),
+  }),
+).annotate({
+  identifier: "ToolExecutionStep",
+}) as any as S.Schema<ToolExecutionStep>;
 
-export type PrimaryStepRollUpEnum = "unset" | "success" | "failure" | "inconclusive" | "skipped" | "flaky";
+export type PrimaryStepRollUpEnum =
+  | "unset"
+  | "success"
+  | "failure"
+  | "inconclusive"
+  | "skipped"
+  | "flaky";
 export const PrimaryStepRollUpEnum = /*@__PURE__*/ S.String;
 
-export type IndividualOutcomeOutcomeSummaryEnum = "unset" | "success" | "failure" | "inconclusive" | "skipped" | "flaky";
+export type IndividualOutcomeOutcomeSummaryEnum =
+  | "unset"
+  | "success"
+  | "failure"
+  | "inconclusive"
+  | "skipped"
+  | "flaky";
 export const IndividualOutcomeOutcomeSummaryEnum = /*@__PURE__*/ S.String;
 
 /** Step Id and outcome of each individual step that was run as a group with other steps with the same configuration. */
@@ -919,16 +1088,20 @@ export interface IndividualOutcome {
   runDuration?: Duration;
 }
 export const IndividualOutcome = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "outcomeSummary": S.optional(IndividualOutcomeOutcomeSummaryEnum),
-  "stepId": S.optional(S.String),
-  "multistepNumber": S.optional(S.Number),
-  "runDuration": S.optional(Duration),
-}),
-).annotate({ identifier: "IndividualOutcome" }) as any as S.Schema<IndividualOutcome>;
+  S.Struct({
+    outcomeSummary: S.optional(IndividualOutcomeOutcomeSummaryEnum),
+    stepId: S.optional(S.String),
+    multistepNumber: S.optional(S.Number),
+    runDuration: S.optional(Duration),
+  }),
+).annotate({
+  identifier: "IndividualOutcome",
+}) as any as S.Schema<IndividualOutcome>;
 
 export type IndividualOutcomeList = ReadonlyArray<IndividualOutcome>;
-export const IndividualOutcomeList = /*@__PURE__*/ S.Array(IndividualOutcome) as any as S.Schema<IndividualOutcomeList>;
+export const IndividualOutcomeList = /*@__PURE__*/ S.Array(
+  IndividualOutcome,
+) as any as S.Schema<IndividualOutcomeList>;
 
 /** Stores rollup test status of multiple steps that were run as a group and outcome of each individual step. */
 export interface PrimaryStep {
@@ -938,10 +1111,10 @@ export interface PrimaryStep {
   individualOutcome?: IndividualOutcomeList;
 }
 export const PrimaryStep = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "rollUp": S.optional(PrimaryStepRollUpEnum),
-  "individualOutcome": S.optional(IndividualOutcomeList),
-}),
+  S.Struct({
+    rollUp: S.optional(PrimaryStepRollUpEnum),
+    individualOutcome: S.optional(IndividualOutcomeList),
+  }),
 ).annotate({ identifier: "PrimaryStep" }) as any as S.Schema<PrimaryStep>;
 
 /** Details when multiple steps are run with the same configuration as a group. */
@@ -954,11 +1127,11 @@ export interface MultiStep {
   primaryStepId?: string;
 }
 export const MultiStep = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "multistepNumber": S.optional(S.Number),
-  "primaryStep": S.optional(PrimaryStep),
-  "primaryStepId": S.optional(S.String),
-}),
+  S.Struct({
+    multistepNumber: S.optional(S.Number),
+    primaryStep: S.optional(PrimaryStep),
+    primaryStepId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "MultiStep" }) as any as S.Schema<MultiStep>;
 
 /** A Step represents a single operation performed as part of Execution. A step can be used to represent the execution of a tool ( for example a test runner execution or an execution of a compiler). Steps can overlap (for instance two steps might have the same start time if some operations are done in parallel). Here is an example, let's consider that we have a continuous build is executing a test runner for each iteration. The workflow would look like: - user creates a Execution with id 1 - user creates a TestExecutionStep with id 100 for Execution 1 - user update TestExecutionStep with id 100 to add a raw xml log + the service parses the xml logs and returns a TestExecutionStep with updated TestResult(s). - user update the status of TestExecutionStep with id 100 to COMPLETE A Step can be updated until its state is set to COMPLETE at which points it becomes immutable. */
@@ -995,23 +1168,23 @@ export interface Step {
   multiStep?: MultiStep;
 }
 export const Step = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "outcome": S.optional(Outcome),
-  "runDuration": S.optional(Duration),
-  "creationTime": S.optional(Timestamp),
-  "hasImages": S.optional(S.Boolean),
-  "state": S.optional(StepStateEnum),
-  "completionTime": S.optional(Timestamp),
-  "testExecutionStep": S.optional(TestExecutionStep),
-  "deviceUsageDuration": S.optional(Duration),
-  "labels": S.optional(StepLabelsEntryList),
-  "name": S.optional(S.String),
-  "dimensionValue": S.optional(StepDimensionValueEntryList),
-  "description": S.optional(S.String),
-  "toolExecutionStep": S.optional(ToolExecutionStep),
-  "stepId": S.optional(S.String),
-  "multiStep": S.optional(MultiStep),
-}),
+  S.Struct({
+    outcome: S.optional(Outcome),
+    runDuration: S.optional(Duration),
+    creationTime: S.optional(Timestamp),
+    hasImages: S.optional(S.Boolean),
+    state: S.optional(StepStateEnum),
+    completionTime: S.optional(Timestamp),
+    testExecutionStep: S.optional(TestExecutionStep),
+    deviceUsageDuration: S.optional(Duration),
+    labels: S.optional(StepLabelsEntryList),
+    name: S.optional(S.String),
+    dimensionValue: S.optional(StepDimensionValueEntryList),
+    description: S.optional(S.String),
+    toolExecutionStep: S.optional(ToolExecutionStep),
+    stepId: S.optional(S.String),
+    multiStep: S.optional(MultiStep),
+  }),
 ).annotate({ identifier: "Step" }) as any as S.Schema<Step>;
 
 export interface CreateProjectsHistoriesExecutionsStepsRequest {
@@ -1026,21 +1199,38 @@ export interface CreateProjectsHistoriesExecutionsStepsRequest {
   /** Request body */
   body?: Step;
 }
-export const CreateProjectsHistoriesExecutionsStepsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectId": S.String.pipe(T.Label()),
-  "executionId": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "historyId": S.String.pipe(T.Label()),
-  "body": S.optional(Step.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps","baseUrl":"https://toolresults.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsHistoriesExecutionsStepsRequest" }) as any as S.Schema<CreateProjectsHistoriesExecutionsStepsRequest>;
+export const CreateProjectsHistoriesExecutionsStepsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      projectId: S.String.pipe(T.Label()),
+      executionId: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      historyId: S.String.pipe(T.Label()),
+      body: S.optional(Step.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps",
+        baseUrl: "https://toolresults.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsHistoriesExecutionsStepsRequest",
+  }) as any as S.Schema<CreateProjectsHistoriesExecutionsStepsRequest>;
 
-export type PerfMetricsSummaryPerfMetricsItemEnum = "perfMetricTypeUnspecified" | "memory" | "cpu" | "network" | "graphics";
+export type PerfMetricsSummaryPerfMetricsItemEnum =
+  | "perfMetricTypeUnspecified"
+  | "memory"
+  | "cpu"
+  | "network"
+  | "graphics";
 export const PerfMetricsSummaryPerfMetricsItemEnum = /*@__PURE__*/ S.String;
 
-export type PerfMetricsSummaryPerfMetricsItemEnumList = ReadonlyArray<PerfMetricsSummaryPerfMetricsItemEnum>;
-export const PerfMetricsSummaryPerfMetricsItemEnumList = /*@__PURE__*/ S.Array(PerfMetricsSummaryPerfMetricsItemEnum) as any as S.Schema<PerfMetricsSummaryPerfMetricsItemEnumList>;
+export type PerfMetricsSummaryPerfMetricsItemEnumList =
+  ReadonlyArray<PerfMetricsSummaryPerfMetricsItemEnum>;
+export const PerfMetricsSummaryPerfMetricsItemEnumList = /*@__PURE__*/ S.Array(
+  PerfMetricsSummaryPerfMetricsItemEnum,
+) as any as S.Schema<PerfMetricsSummaryPerfMetricsItemEnumList>;
 
 export interface GraphicsStatsBucket {
   /** Lower bound of render time in milliseconds. */
@@ -1049,14 +1239,18 @@ export interface GraphicsStatsBucket {
   frameCount?: string;
 }
 export const GraphicsStatsBucket = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "renderMillis": S.optional(S.String),
-  "frameCount": S.optional(S.String),
-}),
-).annotate({ identifier: "GraphicsStatsBucket" }) as any as S.Schema<GraphicsStatsBucket>;
+  S.Struct({
+    renderMillis: S.optional(S.String),
+    frameCount: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GraphicsStatsBucket",
+}) as any as S.Schema<GraphicsStatsBucket>;
 
 export type GraphicsStatsBucketList = ReadonlyArray<GraphicsStatsBucket>;
-export const GraphicsStatsBucketList = /*@__PURE__*/ S.Array(GraphicsStatsBucket) as any as S.Schema<GraphicsStatsBucketList>;
+export const GraphicsStatsBucketList = /*@__PURE__*/ S.Array(
+  GraphicsStatsBucket,
+) as any as S.Schema<GraphicsStatsBucketList>;
 
 /** Graphics statistics for the App. The information is collected from 'adb shell dumpsys graphicsstats'. For more info see: https://developer.android.com/training/testing/performance.html Statistics will only be present for API 23+. */
 export interface GraphicsStats {
@@ -1086,20 +1280,20 @@ export interface GraphicsStats {
   slowDrawCount?: string;
 }
 export const GraphicsStats = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "p50Millis": S.optional(S.String),
-  "slowUiThreadCount": S.optional(S.String),
-  "totalFrames": S.optional(S.String),
-  "jankyFrames": S.optional(S.String),
-  "slowBitmapUploadCount": S.optional(S.String),
-  "p90Millis": S.optional(S.String),
-  "missedVsyncCount": S.optional(S.String),
-  "buckets": S.optional(GraphicsStatsBucketList),
-  "p99Millis": S.optional(S.String),
-  "p95Millis": S.optional(S.String),
-  "highInputLatencyCount": S.optional(S.String),
-  "slowDrawCount": S.optional(S.String),
-}),
+  S.Struct({
+    p50Millis: S.optional(S.String),
+    slowUiThreadCount: S.optional(S.String),
+    totalFrames: S.optional(S.String),
+    jankyFrames: S.optional(S.String),
+    slowBitmapUploadCount: S.optional(S.String),
+    p90Millis: S.optional(S.String),
+    missedVsyncCount: S.optional(S.String),
+    buckets: S.optional(GraphicsStatsBucketList),
+    p99Millis: S.optional(S.String),
+    p95Millis: S.optional(S.String),
+    highInputLatencyCount: S.optional(S.String),
+    slowDrawCount: S.optional(S.String),
+  }),
 ).annotate({ identifier: "GraphicsStats" }) as any as S.Schema<GraphicsStats>;
 
 export interface CPUInfo {
@@ -1111,11 +1305,11 @@ export interface CPUInfo {
   numberOfCores?: number;
 }
 export const CPUInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "cpuSpeedInGhz": S.optional(S.Number),
-  "cpuProcessor": S.optional(S.String),
-  "numberOfCores": S.optional(S.Number),
-}),
+  S.Struct({
+    cpuSpeedInGhz: S.optional(S.Number),
+    cpuProcessor: S.optional(S.String),
+    numberOfCores: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "CPUInfo" }) as any as S.Schema<CPUInfo>;
 
 export interface MemoryInfo {
@@ -1125,10 +1319,10 @@ export interface MemoryInfo {
   memoryCapInKibibyte?: string;
 }
 export const MemoryInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "memoryTotalInKibibyte": S.optional(S.String),
-  "memoryCapInKibibyte": S.optional(S.String),
-}),
+  S.Struct({
+    memoryTotalInKibibyte: S.optional(S.String),
+    memoryCapInKibibyte: S.optional(S.String),
+  }),
 ).annotate({ identifier: "MemoryInfo" }) as any as S.Schema<MemoryInfo>;
 
 /** Encapsulates performance environment info */
@@ -1139,11 +1333,13 @@ export interface PerfEnvironment {
   memoryInfo?: MemoryInfo;
 }
 export const PerfEnvironment = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "cpuInfo": S.optional(CPUInfo),
-  "memoryInfo": S.optional(MemoryInfo),
-}),
-).annotate({ identifier: "PerfEnvironment" }) as any as S.Schema<PerfEnvironment>;
+  S.Struct({
+    cpuInfo: S.optional(CPUInfo),
+    memoryInfo: S.optional(MemoryInfo),
+  }),
+).annotate({
+  identifier: "PerfEnvironment",
+}) as any as S.Schema<PerfEnvironment>;
 
 export interface AppStartTime {
   /** The time from app start to the first displayed activity being drawn, as reported in Logcat. See https://developer.android.com/topic/performance/launch-time.html#time-initial */
@@ -1152,10 +1348,10 @@ export interface AppStartTime {
   fullyDrawnTime?: Duration;
 }
 export const AppStartTime = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "initialDisplayTime": S.optional(Duration),
-  "fullyDrawnTime": S.optional(Duration),
-}),
+  S.Struct({
+    initialDisplayTime: S.optional(Duration),
+    fullyDrawnTime: S.optional(Duration),
+  }),
 ).annotate({ identifier: "AppStartTime" }) as any as S.Schema<AppStartTime>;
 
 /** A summary of perf metrics collected and performance environment info */
@@ -1177,17 +1373,19 @@ export interface PerfMetricsSummary {
   appStartTime?: AppStartTime;
 }
 export const PerfMetricsSummary = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectId": S.optional(S.String),
-  "executionId": S.optional(S.String),
-  "stepId": S.optional(S.String),
-  "historyId": S.optional(S.String),
-  "perfMetrics": S.optional(PerfMetricsSummaryPerfMetricsItemEnumList),
-  "graphicsStats": S.optional(GraphicsStats),
-  "perfEnvironment": S.optional(PerfEnvironment),
-  "appStartTime": S.optional(AppStartTime),
-}),
-).annotate({ identifier: "PerfMetricsSummary" }) as any as S.Schema<PerfMetricsSummary>;
+  S.Struct({
+    projectId: S.optional(S.String),
+    executionId: S.optional(S.String),
+    stepId: S.optional(S.String),
+    historyId: S.optional(S.String),
+    perfMetrics: S.optional(PerfMetricsSummaryPerfMetricsItemEnumList),
+    graphicsStats: S.optional(GraphicsStats),
+    perfEnvironment: S.optional(PerfEnvironment),
+    appStartTime: S.optional(AppStartTime),
+  }),
+).annotate({
+  identifier: "PerfMetricsSummary",
+}) as any as S.Schema<PerfMetricsSummary>;
 
 export interface CreateProjectsHistoriesExecutionsStepsPerfMetricsSummaryRequest {
   /** A tool results step ID. */
@@ -1201,23 +1399,58 @@ export interface CreateProjectsHistoriesExecutionsStepsPerfMetricsSummaryRequest
   /** Request body */
   body?: PerfMetricsSummary;
 }
-export const CreateProjectsHistoriesExecutionsStepsPerfMetricsSummaryRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "stepId": S.String.pipe(T.Label()),
-  "projectId": S.String.pipe(T.Label()),
-  "executionId": S.String.pipe(T.Label()),
-  "historyId": S.String.pipe(T.Label()),
-  "body": S.optional(PerfMetricsSummary.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfMetricsSummary","baseUrl":"https://toolresults.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsHistoriesExecutionsStepsPerfMetricsSummaryRequest" }) as any as S.Schema<CreateProjectsHistoriesExecutionsStepsPerfMetricsSummaryRequest>;
+export const CreateProjectsHistoriesExecutionsStepsPerfMetricsSummaryRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      stepId: S.String.pipe(T.Label()),
+      projectId: S.String.pipe(T.Label()),
+      executionId: S.String.pipe(T.Label()),
+      historyId: S.String.pipe(T.Label()),
+      body: S.optional(PerfMetricsSummary.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfMetricsSummary",
+        baseUrl: "https://toolresults.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "CreateProjectsHistoriesExecutionsStepsPerfMetricsSummaryRequest",
+  }) as any as S.Schema<CreateProjectsHistoriesExecutionsStepsPerfMetricsSummaryRequest>;
 
-export type BasicPerfSampleSeriesSampleSeriesLabelEnum = "sampleSeriesTypeUnspecified" | "memoryRssPrivate" | "memoryRssShared" | "memoryRssTotal" | "memoryTotal" | "cpuUser" | "cpuKernel" | "cpuTotal" | "ntBytesTransferred" | "ntBytesReceived" | "networkSent" | "networkReceived" | "graphicsFrameRate";
-export const BasicPerfSampleSeriesSampleSeriesLabelEnum = /*@__PURE__*/ S.String;
+export type BasicPerfSampleSeriesSampleSeriesLabelEnum =
+  | "sampleSeriesTypeUnspecified"
+  | "memoryRssPrivate"
+  | "memoryRssShared"
+  | "memoryRssTotal"
+  | "memoryTotal"
+  | "cpuUser"
+  | "cpuKernel"
+  | "cpuTotal"
+  | "ntBytesTransferred"
+  | "ntBytesReceived"
+  | "networkSent"
+  | "networkReceived"
+  | "graphicsFrameRate";
+export const BasicPerfSampleSeriesSampleSeriesLabelEnum =
+  /*@__PURE__*/ S.String;
 
-export type BasicPerfSampleSeriesPerfUnitEnum = "perfUnitUnspecified" | "kibibyte" | "percent" | "bytesPerSecond" | "framesPerSecond" | "byte";
+export type BasicPerfSampleSeriesPerfUnitEnum =
+  | "perfUnitUnspecified"
+  | "kibibyte"
+  | "percent"
+  | "bytesPerSecond"
+  | "framesPerSecond"
+  | "byte";
 export const BasicPerfSampleSeriesPerfUnitEnum = /*@__PURE__*/ S.String;
 
-export type BasicPerfSampleSeriesPerfMetricTypeEnum = "perfMetricTypeUnspecified" | "memory" | "cpu" | "network" | "graphics";
+export type BasicPerfSampleSeriesPerfMetricTypeEnum =
+  | "perfMetricTypeUnspecified"
+  | "memory"
+  | "cpu"
+  | "network"
+  | "graphics";
 export const BasicPerfSampleSeriesPerfMetricTypeEnum = /*@__PURE__*/ S.String;
 
 /** Encapsulates the metadata for basic sample series represented by a line chart */
@@ -1227,12 +1460,14 @@ export interface BasicPerfSampleSeries {
   perfMetricType?: BasicPerfSampleSeriesPerfMetricTypeEnum;
 }
 export const BasicPerfSampleSeries = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sampleSeriesLabel": S.optional(BasicPerfSampleSeriesSampleSeriesLabelEnum),
-  "perfUnit": S.optional(BasicPerfSampleSeriesPerfUnitEnum),
-  "perfMetricType": S.optional(BasicPerfSampleSeriesPerfMetricTypeEnum),
-}),
-).annotate({ identifier: "BasicPerfSampleSeries" }) as any as S.Schema<BasicPerfSampleSeries>;
+  S.Struct({
+    sampleSeriesLabel: S.optional(BasicPerfSampleSeriesSampleSeriesLabelEnum),
+    perfUnit: S.optional(BasicPerfSampleSeriesPerfUnitEnum),
+    perfMetricType: S.optional(BasicPerfSampleSeriesPerfMetricTypeEnum),
+  }),
+).annotate({
+  identifier: "BasicPerfSampleSeries",
+}) as any as S.Schema<BasicPerfSampleSeries>;
 
 /** Resource representing a collection of performance samples (or data points) */
 export interface PerfSampleSeries {
@@ -1250,15 +1485,17 @@ export interface PerfSampleSeries {
   historyId?: string;
 }
 export const PerfSampleSeries = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectId": S.optional(S.String),
-  "executionId": S.optional(S.String),
-  "stepId": S.optional(S.String),
-  "sampleSeriesId": S.optional(S.String),
-  "basicPerfSampleSeries": S.optional(BasicPerfSampleSeries),
-  "historyId": S.optional(S.String),
-}),
-).annotate({ identifier: "PerfSampleSeries" }) as any as S.Schema<PerfSampleSeries>;
+  S.Struct({
+    projectId: S.optional(S.String),
+    executionId: S.optional(S.String),
+    stepId: S.optional(S.String),
+    sampleSeriesId: S.optional(S.String),
+    basicPerfSampleSeries: S.optional(BasicPerfSampleSeries),
+    historyId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PerfSampleSeries",
+}) as any as S.Schema<PerfSampleSeries>;
 
 export interface CreateProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest {
   /** A tool results step ID. */
@@ -1272,15 +1509,24 @@ export interface CreateProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest {
   /** Request body */
   body?: PerfSampleSeries;
 }
-export const CreateProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "stepId": S.String.pipe(T.Label()),
-  "projectId": S.String.pipe(T.Label()),
-  "executionId": S.String.pipe(T.Label()),
-  "historyId": S.String.pipe(T.Label()),
-  "body": S.optional(PerfSampleSeries.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries","baseUrl":"https://toolresults.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest" }) as any as S.Schema<CreateProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest>;
+export const CreateProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      stepId: S.String.pipe(T.Label()),
+      projectId: S.String.pipe(T.Label()),
+      executionId: S.String.pipe(T.Label()),
+      historyId: S.String.pipe(T.Label()),
+      body: S.optional(PerfSampleSeries.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries",
+        baseUrl: "https://toolresults.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest",
+  }) as any as S.Schema<CreateProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest>;
 
 export interface GetPerfMetricsSummaryProjectsHistoriesExecutionsStepsRequest {
   /** The cloud project */
@@ -1292,14 +1538,23 @@ export interface GetPerfMetricsSummaryProjectsHistoriesExecutionsStepsRequest {
   /** A tool results step ID. */
   stepId: string;
 }
-export const GetPerfMetricsSummaryProjectsHistoriesExecutionsStepsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectId": S.String.pipe(T.Label()),
-  "executionId": S.String.pipe(T.Label()),
-  "historyId": S.String.pipe(T.Label()),
-  "stepId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfMetricsSummary","baseUrl":"https://toolresults.googleapis.com/"})),
-).annotate({ identifier: "GetPerfMetricsSummaryProjectsHistoriesExecutionsStepsRequest" }) as any as S.Schema<GetPerfMetricsSummaryProjectsHistoriesExecutionsStepsRequest>;
+export const GetPerfMetricsSummaryProjectsHistoriesExecutionsStepsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      projectId: S.String.pipe(T.Label()),
+      executionId: S.String.pipe(T.Label()),
+      historyId: S.String.pipe(T.Label()),
+      stepId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfMetricsSummary",
+        baseUrl: "https://toolresults.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetPerfMetricsSummaryProjectsHistoriesExecutionsStepsRequest",
+  }) as any as S.Schema<GetPerfMetricsSummaryProjectsHistoriesExecutionsStepsRequest>;
 
 export interface GetProjectsHistoriesRequest {
   /** A Project id. Required. */
@@ -1308,11 +1563,19 @@ export interface GetProjectsHistoriesRequest {
   historyId: string;
 }
 export const GetProjectsHistoriesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectId": S.String.pipe(T.Label()),
-  "historyId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"toolresults/v1beta3/projects/{projectId}/histories/{historyId}","baseUrl":"https://toolresults.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsHistoriesRequest" }) as any as S.Schema<GetProjectsHistoriesRequest>;
+  S.Struct({
+    projectId: S.String.pipe(T.Label()),
+    historyId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}",
+      baseUrl: "https://toolresults.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsHistoriesRequest",
+}) as any as S.Schema<GetProjectsHistoriesRequest>;
 
 export interface GetProjectsHistoriesExecutionsRequest {
   /** A History id. Required. */
@@ -1322,13 +1585,22 @@ export interface GetProjectsHistoriesExecutionsRequest {
   /** An Execution id. Required. */
   executionId: string;
 }
-export const GetProjectsHistoriesExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "historyId": S.String.pipe(T.Label()),
-  "projectId": S.String.pipe(T.Label()),
-  "executionId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}","baseUrl":"https://toolresults.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsHistoriesExecutionsRequest" }) as any as S.Schema<GetProjectsHistoriesExecutionsRequest>;
+export const GetProjectsHistoriesExecutionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      historyId: S.String.pipe(T.Label()),
+      projectId: S.String.pipe(T.Label()),
+      executionId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}",
+        baseUrl: "https://toolresults.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsHistoriesExecutionsRequest",
+}) as any as S.Schema<GetProjectsHistoriesExecutionsRequest>;
 
 export interface GetProjectsHistoriesExecutionsClustersRequest {
   /** A History id. Required. */
@@ -1340,14 +1612,23 @@ export interface GetProjectsHistoriesExecutionsClustersRequest {
   /** A Cluster id Required. */
   clusterId: string;
 }
-export const GetProjectsHistoriesExecutionsClustersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "historyId": S.String.pipe(T.Label()),
-  "projectId": S.String.pipe(T.Label()),
-  "executionId": S.String.pipe(T.Label()),
-  "clusterId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/clusters/{clusterId}","baseUrl":"https://toolresults.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsHistoriesExecutionsClustersRequest" }) as any as S.Schema<GetProjectsHistoriesExecutionsClustersRequest>;
+export const GetProjectsHistoriesExecutionsClustersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      historyId: S.String.pipe(T.Label()),
+      projectId: S.String.pipe(T.Label()),
+      executionId: S.String.pipe(T.Label()),
+      clusterId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/clusters/{clusterId}",
+        baseUrl: "https://toolresults.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsHistoriesExecutionsClustersRequest",
+  }) as any as S.Schema<GetProjectsHistoriesExecutionsClustersRequest>;
 
 export interface Screen {
   /** File reference of the png file. Required. */
@@ -1360,16 +1641,18 @@ export interface Screen {
   locale?: string;
 }
 export const Screen = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fileReference": S.optional(S.String),
-  "model": S.optional(S.String),
-  "version": S.optional(S.String),
-  "locale": S.optional(S.String),
-}),
+  S.Struct({
+    fileReference: S.optional(S.String),
+    model: S.optional(S.String),
+    version: S.optional(S.String),
+    locale: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Screen" }) as any as S.Schema<Screen>;
 
 export type ScreenList = ReadonlyArray<Screen>;
-export const ScreenList = /*@__PURE__*/ S.Array(Screen) as any as S.Schema<ScreenList>;
+export const ScreenList = /*@__PURE__*/ S.Array(
+  Screen,
+) as any as S.Schema<ScreenList>;
 
 export interface ScreenshotCluster {
   /** A unique identifier for the cluster. @OutputOnly */
@@ -1382,13 +1665,15 @@ export interface ScreenshotCluster {
   screens?: ScreenList;
 }
 export const ScreenshotCluster = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "clusterId": S.optional(S.String),
-  "keyScreen": S.optional(Screen),
-  "activity": S.optional(S.String),
-  "screens": S.optional(ScreenList),
-}),
-).annotate({ identifier: "ScreenshotCluster" }) as any as S.Schema<ScreenshotCluster>;
+  S.Struct({
+    clusterId: S.optional(S.String),
+    keyScreen: S.optional(Screen),
+    activity: S.optional(S.String),
+    screens: S.optional(ScreenList),
+  }),
+).annotate({
+  identifier: "ScreenshotCluster",
+}) as any as S.Schema<ScreenshotCluster>;
 
 export interface GetProjectsHistoriesExecutionsEnvironmentsRequest {
   /** Required. A Project id. */
@@ -1400,14 +1685,23 @@ export interface GetProjectsHistoriesExecutionsEnvironmentsRequest {
   /** Required. An Environment id. */
   environmentId: string;
 }
-export const GetProjectsHistoriesExecutionsEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectId": S.String.pipe(T.Label()),
-  "executionId": S.String.pipe(T.Label()),
-  "historyId": S.String.pipe(T.Label()),
-  "environmentId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/environments/{environmentId}","baseUrl":"https://toolresults.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsHistoriesExecutionsEnvironmentsRequest" }) as any as S.Schema<GetProjectsHistoriesExecutionsEnvironmentsRequest>;
+export const GetProjectsHistoriesExecutionsEnvironmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      projectId: S.String.pipe(T.Label()),
+      executionId: S.String.pipe(T.Label()),
+      historyId: S.String.pipe(T.Label()),
+      environmentId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/environments/{environmentId}",
+        baseUrl: "https://toolresults.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsHistoriesExecutionsEnvironmentsRequest",
+  }) as any as S.Schema<GetProjectsHistoriesExecutionsEnvironmentsRequest>;
 
 /** The storage for test results. */
 export interface ResultsStorage {
@@ -1417,13 +1711,17 @@ export interface ResultsStorage {
   xunitXmlFile?: FileReference;
 }
 export const ResultsStorage = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resultsStoragePath": S.optional(FileReference),
-  "xunitXmlFile": S.optional(FileReference),
-}),
+  S.Struct({
+    resultsStoragePath: S.optional(FileReference),
+    xunitXmlFile: S.optional(FileReference),
+  }),
 ).annotate({ identifier: "ResultsStorage" }) as any as S.Schema<ResultsStorage>;
 
-export type MergedResultStateEnum = "unknownState" | "pending" | "inProgress" | "complete";
+export type MergedResultStateEnum =
+  | "unknownState"
+  | "pending"
+  | "inProgress"
+  | "complete";
 export const MergedResultStateEnum = /*@__PURE__*/ S.String;
 
 /** Merged test result for environment. If the environment has only one step (no reruns or shards), then the merged result is the same as the step result. If the environment has multiple shards and/or reruns, then the results of shards and reruns that belong to the same environment are merged into one environment result. */
@@ -1436,11 +1734,11 @@ export interface MergedResult {
   outcome?: Outcome;
 }
 export const MergedResult = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "state": S.optional(MergedResultStateEnum),
-  "testSuiteOverviews": S.optional(TestSuiteOverviewList),
-  "outcome": S.optional(Outcome),
-}),
+  S.Struct({
+    state: S.optional(MergedResultStateEnum),
+    testSuiteOverviews: S.optional(TestSuiteOverviewList),
+    outcome: S.optional(Outcome),
+  }),
 ).annotate({ identifier: "MergedResult" }) as any as S.Schema<MergedResult>;
 
 export interface EnvironmentDimensionValueEntry {
@@ -1448,23 +1746,30 @@ export interface EnvironmentDimensionValueEntry {
   value?: string;
 }
 export const EnvironmentDimensionValueEntry = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "key": S.optional(S.String),
-  "value": S.optional(S.String),
-}),
-).annotate({ identifier: "EnvironmentDimensionValueEntry" }) as any as S.Schema<EnvironmentDimensionValueEntry>;
+  S.Struct({
+    key: S.optional(S.String),
+    value: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EnvironmentDimensionValueEntry",
+}) as any as S.Schema<EnvironmentDimensionValueEntry>;
 
-export type EnvironmentDimensionValueEntryList = ReadonlyArray<EnvironmentDimensionValueEntry>;
-export const EnvironmentDimensionValueEntryList = /*@__PURE__*/ S.Array(EnvironmentDimensionValueEntry) as any as S.Schema<EnvironmentDimensionValueEntryList>;
+export type EnvironmentDimensionValueEntryList =
+  ReadonlyArray<EnvironmentDimensionValueEntry>;
+export const EnvironmentDimensionValueEntryList = /*@__PURE__*/ S.Array(
+  EnvironmentDimensionValueEntry,
+) as any as S.Schema<EnvironmentDimensionValueEntryList>;
 
 /** Lightweight summary of a step within this execution. */
 export interface StepSummary {}
-export const StepSummary = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "StepSummary" }) as any as S.Schema<StepSummary>;
+export const StepSummary = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
+  { identifier: "StepSummary" },
+) as any as S.Schema<StepSummary>;
 
 export type StepSummaryList = ReadonlyArray<StepSummary>;
-export const StepSummaryList = /*@__PURE__*/ S.Array(StepSummary) as any as S.Schema<StepSummaryList>;
+export const StepSummaryList = /*@__PURE__*/ S.Array(
+  StepSummary,
+) as any as S.Schema<StepSummaryList>;
 
 /** Result summary for a shard in an environment. */
 export interface ShardSummary {
@@ -1474,14 +1779,16 @@ export interface ShardSummary {
   shardResult?: MergedResult;
 }
 export const ShardSummary = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "runs": S.optional(StepSummaryList),
-  "shardResult": S.optional(MergedResult),
-}),
+  S.Struct({
+    runs: S.optional(StepSummaryList),
+    shardResult: S.optional(MergedResult),
+  }),
 ).annotate({ identifier: "ShardSummary" }) as any as S.Schema<ShardSummary>;
 
 export type ShardSummaryList = ReadonlyArray<ShardSummary>;
-export const ShardSummaryList = /*@__PURE__*/ S.Array(ShardSummary) as any as S.Schema<ShardSummaryList>;
+export const ShardSummaryList = /*@__PURE__*/ S.Array(
+  ShardSummary,
+) as any as S.Schema<ShardSummaryList>;
 
 /** An Environment represents the set of test runs (Steps) from the parent Execution that are configured with the same set of dimensions (Model, Version, Locale, and Orientation). Multiple such runs occur particularly because of features like sharding (splitting up a test suite to run in parallel across devices) and reruns (running a test multiple times to check for different outcomes). */
 export interface Environment {
@@ -1509,19 +1816,19 @@ export interface Environment {
   creationTime?: Timestamp;
 }
 export const Environment = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "executionId": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "resultsStorage": S.optional(ResultsStorage),
-  "historyId": S.optional(S.String),
-  "environmentId": S.optional(S.String),
-  "completionTime": S.optional(Timestamp),
-  "environmentResult": S.optional(MergedResult),
-  "projectId": S.optional(S.String),
-  "dimensionValue": S.optional(EnvironmentDimensionValueEntryList),
-  "shardSummaries": S.optional(ShardSummaryList),
-  "creationTime": S.optional(Timestamp),
-}),
+  S.Struct({
+    executionId: S.optional(S.String),
+    displayName: S.optional(S.String),
+    resultsStorage: S.optional(ResultsStorage),
+    historyId: S.optional(S.String),
+    environmentId: S.optional(S.String),
+    completionTime: S.optional(Timestamp),
+    environmentResult: S.optional(MergedResult),
+    projectId: S.optional(S.String),
+    dimensionValue: S.optional(EnvironmentDimensionValueEntryList),
+    shardSummaries: S.optional(ShardSummaryList),
+    creationTime: S.optional(Timestamp),
+  }),
 ).annotate({ identifier: "Environment" }) as any as S.Schema<Environment>;
 
 export interface GetProjectsHistoriesExecutionsStepsRequest {
@@ -1534,14 +1841,23 @@ export interface GetProjectsHistoriesExecutionsStepsRequest {
   /** A Step id. Required. */
   stepId: string;
 }
-export const GetProjectsHistoriesExecutionsStepsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "historyId": S.String.pipe(T.Label()),
-  "projectId": S.String.pipe(T.Label()),
-  "executionId": S.String.pipe(T.Label()),
-  "stepId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}","baseUrl":"https://toolresults.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsHistoriesExecutionsStepsRequest" }) as any as S.Schema<GetProjectsHistoriesExecutionsStepsRequest>;
+export const GetProjectsHistoriesExecutionsStepsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      historyId: S.String.pipe(T.Label()),
+      projectId: S.String.pipe(T.Label()),
+      executionId: S.String.pipe(T.Label()),
+      stepId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}",
+        baseUrl: "https://toolresults.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsHistoriesExecutionsStepsRequest",
+  }) as any as S.Schema<GetProjectsHistoriesExecutionsStepsRequest>;
 
 export interface GetProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest {
   /** A tool results history ID. */
@@ -1555,15 +1871,24 @@ export interface GetProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest {
   /** A tool results execution ID. */
   executionId: string;
 }
-export const GetProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "historyId": S.String.pipe(T.Label()),
-  "stepId": S.String.pipe(T.Label()),
-  "sampleSeriesId": S.String.pipe(T.Label()),
-  "projectId": S.String.pipe(T.Label()),
-  "executionId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries/{sampleSeriesId}","baseUrl":"https://toolresults.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest" }) as any as S.Schema<GetProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest>;
+export const GetProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      historyId: S.String.pipe(T.Label()),
+      stepId: S.String.pipe(T.Label()),
+      sampleSeriesId: S.String.pipe(T.Label()),
+      projectId: S.String.pipe(T.Label()),
+      executionId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries/{sampleSeriesId}",
+        baseUrl: "https://toolresults.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest",
+  }) as any as S.Schema<GetProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest>;
 
 export interface GetProjectsHistoriesExecutionsStepsTestCasesRequest {
   /** A Project id. Required. */
@@ -1577,20 +1902,36 @@ export interface GetProjectsHistoriesExecutionsStepsTestCasesRequest {
   /** A Test Case id. Required. */
   testCaseId: string;
 }
-export const GetProjectsHistoriesExecutionsStepsTestCasesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectId": S.String.pipe(T.Label()),
-  "executionId": S.String.pipe(T.Label()),
-  "stepId": S.String.pipe(T.Label()),
-  "historyId": S.String.pipe(T.Label()),
-  "testCaseId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/testCases/{testCaseId}","baseUrl":"https://toolresults.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsHistoriesExecutionsStepsTestCasesRequest" }) as any as S.Schema<GetProjectsHistoriesExecutionsStepsTestCasesRequest>;
+export const GetProjectsHistoriesExecutionsStepsTestCasesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      projectId: S.String.pipe(T.Label()),
+      executionId: S.String.pipe(T.Label()),
+      stepId: S.String.pipe(T.Label()),
+      historyId: S.String.pipe(T.Label()),
+      testCaseId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/testCases/{testCaseId}",
+        baseUrl: "https://toolresults.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsHistoriesExecutionsStepsTestCasesRequest",
+  }) as any as S.Schema<GetProjectsHistoriesExecutionsStepsTestCasesRequest>;
 
 export type StackTraceList = ReadonlyArray<StackTrace>;
-export const StackTraceList = /*@__PURE__*/ S.Array(StackTrace) as any as S.Schema<StackTraceList>;
+export const StackTraceList = /*@__PURE__*/ S.Array(
+  StackTrace,
+) as any as S.Schema<StackTraceList>;
 
-export type TestCaseStatusEnum = "passed" | "failed" | "error" | "skipped" | "flaky";
+export type TestCaseStatusEnum =
+  | "passed"
+  | "failed"
+  | "error"
+  | "skipped"
+  | "flaky";
 export const TestCaseStatusEnum = /*@__PURE__*/ S.String;
 
 export interface TestCase {
@@ -1614,17 +1955,17 @@ export interface TestCase {
   status?: TestCaseStatusEnum;
 }
 export const TestCase = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "startTime": S.optional(Timestamp),
-  "stackTraces": S.optional(StackTraceList),
-  "endTime": S.optional(Timestamp),
-  "testCaseReference": S.optional(TestCaseReference),
-  "elapsedTime": S.optional(Duration),
-  "testCaseId": S.optional(S.String),
-  "skippedMessage": S.optional(S.String),
-  "toolOutputs": S.optional(ToolOutputReferenceList),
-  "status": S.optional(TestCaseStatusEnum),
-}),
+  S.Struct({
+    startTime: S.optional(Timestamp),
+    stackTraces: S.optional(StackTraceList),
+    endTime: S.optional(Timestamp),
+    testCaseReference: S.optional(TestCaseReference),
+    elapsedTime: S.optional(Duration),
+    testCaseId: S.optional(S.String),
+    skippedMessage: S.optional(S.String),
+    toolOutputs: S.optional(ToolOutputReferenceList),
+    status: S.optional(TestCaseStatusEnum),
+  }),
 ).annotate({ identifier: "TestCase" }) as any as S.Schema<TestCase>;
 
 export interface GetSettingsProjectsRequest {
@@ -1632,10 +1973,18 @@ export interface GetSettingsProjectsRequest {
   projectId: string;
 }
 export const GetSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"toolresults/v1beta3/projects/{projectId}/settings","baseUrl":"https://toolresults.googleapis.com/"})),
-).annotate({ identifier: "GetSettingsProjectsRequest" }) as any as S.Schema<GetSettingsProjectsRequest>;
+  S.Struct({
+    projectId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "toolresults/v1beta3/projects/{projectId}/settings",
+      baseUrl: "https://toolresults.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetSettingsProjectsRequest",
+}) as any as S.Schema<GetSettingsProjectsRequest>;
 
 /** Per-project settings for the Tool Results service. */
 export interface ProjectSettings {
@@ -1645,21 +1994,31 @@ export interface ProjectSettings {
   defaultBucket?: string;
 }
 export const ProjectSettings = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "defaultBucket": S.optional(S.String),
-}),
-).annotate({ identifier: "ProjectSettings" }) as any as S.Schema<ProjectSettings>;
+  S.Struct({
+    name: S.optional(S.String),
+    defaultBucket: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ProjectSettings",
+}) as any as S.Schema<ProjectSettings>;
 
 export interface InitializeSettingsProjectsRequest {
   /** A Project id. Required. */
   projectId: string;
 }
 export const InitializeSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"POST","uri":"toolresults/v1beta3/projects/{projectId}:initializeSettings","baseUrl":"https://toolresults.googleapis.com/"})),
-).annotate({ identifier: "InitializeSettingsProjectsRequest" }) as any as S.Schema<InitializeSettingsProjectsRequest>;
+  S.Struct({
+    projectId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "toolresults/v1beta3/projects/{projectId}:initializeSettings",
+      baseUrl: "https://toolresults.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "InitializeSettingsProjectsRequest",
+}) as any as S.Schema<InitializeSettingsProjectsRequest>;
 
 export interface ListProjectsHistoriesRequest {
   /** A Project id. Required. */
@@ -1672,16 +2031,26 @@ export interface ListProjectsHistoriesRequest {
   pageSize?: number;
 }
 export const ListProjectsHistoriesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectId": S.String.pipe(T.Label()),
-  "filterByName": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"toolresults/v1beta3/projects/{projectId}/histories","baseUrl":"https://toolresults.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsHistoriesRequest" }) as any as S.Schema<ListProjectsHistoriesRequest>;
+  S.Struct({
+    projectId: S.String.pipe(T.Label()),
+    filterByName: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "toolresults/v1beta3/projects/{projectId}/histories",
+      baseUrl: "https://toolresults.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsHistoriesRequest",
+}) as any as S.Schema<ListProjectsHistoriesRequest>;
 
 export type HistoryList = ReadonlyArray<History>;
-export const HistoryList = /*@__PURE__*/ S.Array(History) as any as S.Schema<HistoryList>;
+export const HistoryList = /*@__PURE__*/ S.Array(
+  History,
+) as any as S.Schema<HistoryList>;
 
 /** Response message for HistoryService.List */
 export interface ListHistoriesResponse {
@@ -1691,11 +2060,13 @@ export interface ListHistoriesResponse {
   nextPageToken?: string;
 }
 export const ListHistoriesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "histories": S.optional(HistoryList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListHistoriesResponse" }) as any as S.Schema<ListHistoriesResponse>;
+  S.Struct({
+    histories: S.optional(HistoryList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListHistoriesResponse",
+}) as any as S.Schema<ListHistoriesResponse>;
 
 export interface ListProjectsHistoriesExecutionsRequest {
   /** A History id. Required. */
@@ -1707,17 +2078,28 @@ export interface ListProjectsHistoriesExecutionsRequest {
   /** The maximum number of Executions to fetch. Default value: 25. The server will use this default if the field is not set or has a value of 0. Optional. */
   pageSize?: number;
 }
-export const ListProjectsHistoriesExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "historyId": S.String.pipe(T.Label()),
-  "projectId": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions","baseUrl":"https://toolresults.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsHistoriesExecutionsRequest" }) as any as S.Schema<ListProjectsHistoriesExecutionsRequest>;
+export const ListProjectsHistoriesExecutionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      historyId: S.String.pipe(T.Label()),
+      projectId: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions",
+        baseUrl: "https://toolresults.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsHistoriesExecutionsRequest",
+}) as any as S.Schema<ListProjectsHistoriesExecutionsRequest>;
 
 export type ExecutionList = ReadonlyArray<Execution>;
-export const ExecutionList = /*@__PURE__*/ S.Array(Execution) as any as S.Schema<ExecutionList>;
+export const ExecutionList = /*@__PURE__*/ S.Array(
+  Execution,
+) as any as S.Schema<ExecutionList>;
 
 export interface ListExecutionsResponse {
   /** A continuation token to resume the query at the next item. Will only be set if there are more Executions to fetch. */
@@ -1726,11 +2108,13 @@ export interface ListExecutionsResponse {
   executions?: ExecutionList;
 }
 export const ListExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "executions": S.optional(ExecutionList),
-}),
-).annotate({ identifier: "ListExecutionsResponse" }) as any as S.Schema<ListExecutionsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    executions: S.optional(ExecutionList),
+  }),
+).annotate({
+  identifier: "ListExecutionsResponse",
+}) as any as S.Schema<ListExecutionsResponse>;
 
 export interface ListProjectsHistoriesExecutionsClustersRequest {
   /** A History id. Required. */
@@ -1740,26 +2124,39 @@ export interface ListProjectsHistoriesExecutionsClustersRequest {
   /** An Execution id. Required. */
   executionId: string;
 }
-export const ListProjectsHistoriesExecutionsClustersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "historyId": S.String.pipe(T.Label()),
-  "projectId": S.String.pipe(T.Label()),
-  "executionId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/clusters","baseUrl":"https://toolresults.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsHistoriesExecutionsClustersRequest" }) as any as S.Schema<ListProjectsHistoriesExecutionsClustersRequest>;
+export const ListProjectsHistoriesExecutionsClustersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      historyId: S.String.pipe(T.Label()),
+      projectId: S.String.pipe(T.Label()),
+      executionId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/clusters",
+        baseUrl: "https://toolresults.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsHistoriesExecutionsClustersRequest",
+  }) as any as S.Schema<ListProjectsHistoriesExecutionsClustersRequest>;
 
 export type ScreenshotClusterList = ReadonlyArray<ScreenshotCluster>;
-export const ScreenshotClusterList = /*@__PURE__*/ S.Array(ScreenshotCluster) as any as S.Schema<ScreenshotClusterList>;
+export const ScreenshotClusterList = /*@__PURE__*/ S.Array(
+  ScreenshotCluster,
+) as any as S.Schema<ScreenshotClusterList>;
 
 export interface ListScreenshotClustersResponse {
   /** The set of clusters associated with an execution Always set */
   clusters?: ScreenshotClusterList;
 }
 export const ListScreenshotClustersResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "clusters": S.optional(ScreenshotClusterList),
-}),
-).annotate({ identifier: "ListScreenshotClustersResponse" }) as any as S.Schema<ListScreenshotClustersResponse>;
+  S.Struct({
+    clusters: S.optional(ScreenshotClusterList),
+  }),
+).annotate({
+  identifier: "ListScreenshotClustersResponse",
+}) as any as S.Schema<ListScreenshotClustersResponse>;
 
 export interface ListProjectsHistoriesExecutionsEnvironmentsRequest {
   /** Required. A Project id. */
@@ -1773,18 +2170,29 @@ export interface ListProjectsHistoriesExecutionsEnvironmentsRequest {
   /** Required. A History id. */
   historyId: string;
 }
-export const ListProjectsHistoriesExecutionsEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectId": S.String.pipe(T.Label()),
-  "executionId": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "historyId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/environments","baseUrl":"https://toolresults.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsHistoriesExecutionsEnvironmentsRequest" }) as any as S.Schema<ListProjectsHistoriesExecutionsEnvironmentsRequest>;
+export const ListProjectsHistoriesExecutionsEnvironmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      projectId: S.String.pipe(T.Label()),
+      executionId: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      historyId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/environments",
+        baseUrl: "https://toolresults.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsHistoriesExecutionsEnvironmentsRequest",
+  }) as any as S.Schema<ListProjectsHistoriesExecutionsEnvironmentsRequest>;
 
 export type EnvironmentList = ReadonlyArray<Environment>;
-export const EnvironmentList = /*@__PURE__*/ S.Array(Environment) as any as S.Schema<EnvironmentList>;
+export const EnvironmentList = /*@__PURE__*/ S.Array(
+  Environment,
+) as any as S.Schema<EnvironmentList>;
 
 /** Response message for EnvironmentService.ListEnvironments. */
 export interface ListEnvironmentsResponse {
@@ -1800,14 +2208,16 @@ export interface ListEnvironmentsResponse {
   executionId?: string;
 }
 export const ListEnvironmentsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "environments": S.optional(EnvironmentList),
-  "nextPageToken": S.optional(S.String),
-  "historyId": S.optional(S.String),
-  "projectId": S.optional(S.String),
-  "executionId": S.optional(S.String),
-}),
-).annotate({ identifier: "ListEnvironmentsResponse" }) as any as S.Schema<ListEnvironmentsResponse>;
+  S.Struct({
+    environments: S.optional(EnvironmentList),
+    nextPageToken: S.optional(S.String),
+    historyId: S.optional(S.String),
+    projectId: S.optional(S.String),
+    executionId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListEnvironmentsResponse",
+}) as any as S.Schema<ListEnvironmentsResponse>;
 
 export interface ListProjectsHistoriesExecutionsStepsRequest {
   /** A Project id. Required. */
@@ -1821,18 +2231,29 @@ export interface ListProjectsHistoriesExecutionsStepsRequest {
   /** A History id. Required. */
   historyId: string;
 }
-export const ListProjectsHistoriesExecutionsStepsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectId": S.String.pipe(T.Label()),
-  "executionId": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "historyId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps","baseUrl":"https://toolresults.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsHistoriesExecutionsStepsRequest" }) as any as S.Schema<ListProjectsHistoriesExecutionsStepsRequest>;
+export const ListProjectsHistoriesExecutionsStepsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      projectId: S.String.pipe(T.Label()),
+      executionId: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      historyId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps",
+        baseUrl: "https://toolresults.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsHistoriesExecutionsStepsRequest",
+  }) as any as S.Schema<ListProjectsHistoriesExecutionsStepsRequest>;
 
 export type StepList = ReadonlyArray<Step>;
-export const StepList = /*@__PURE__*/ S.Array(Step) as any as S.Schema<StepList>;
+export const StepList = /*@__PURE__*/ S.Array(
+  Step,
+) as any as S.Schema<StepList>;
 
 /** Response message for StepService.List. */
 export interface ListStepsResponse {
@@ -1842,17 +2263,32 @@ export interface ListStepsResponse {
   steps?: StepList;
 }
 export const ListStepsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "steps": S.optional(StepList),
-}),
-).annotate({ identifier: "ListStepsResponse" }) as any as S.Schema<ListStepsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    steps: S.optional(StepList),
+  }),
+).annotate({
+  identifier: "ListStepsResponse",
+}) as any as S.Schema<ListStepsResponse>;
 
-export type ListProjectsHistoriesExecutionsStepsPerfSampleSeriesFilterEnum = "perfMetricTypeUnspecified" | "memory" | "cpu" | "network" | "graphics";
-export const ListProjectsHistoriesExecutionsStepsPerfSampleSeriesFilterEnum = /*@__PURE__*/ S.String;
+export type ListProjectsHistoriesExecutionsStepsPerfSampleSeriesFilterEnum =
+  | "perfMetricTypeUnspecified"
+  | "memory"
+  | "cpu"
+  | "network"
+  | "graphics";
+export const ListProjectsHistoriesExecutionsStepsPerfSampleSeriesFilterEnum =
+  /*@__PURE__*/ S.String;
 
-export type ListProjectsHistoriesExecutionsStepsPerfSampleSeriesFilterEnumList = ReadonlyArray<ListProjectsHistoriesExecutionsStepsPerfSampleSeriesFilterEnum | (string & {})>;
-export const ListProjectsHistoriesExecutionsStepsPerfSampleSeriesFilterEnumList = /*@__PURE__*/ S.Array(ListProjectsHistoriesExecutionsStepsPerfSampleSeriesFilterEnum) as any as S.Schema<ListProjectsHistoriesExecutionsStepsPerfSampleSeriesFilterEnumList>;
+export type ListProjectsHistoriesExecutionsStepsPerfSampleSeriesFilterEnumList =
+  ReadonlyArray<
+    | ListProjectsHistoriesExecutionsStepsPerfSampleSeriesFilterEnum
+    | (string & {})
+  >;
+export const ListProjectsHistoriesExecutionsStepsPerfSampleSeriesFilterEnumList =
+  /*@__PURE__*/ S.Array(
+    ListProjectsHistoriesExecutionsStepsPerfSampleSeriesFilterEnum,
+  ) as any as S.Schema<ListProjectsHistoriesExecutionsStepsPerfSampleSeriesFilterEnumList>;
 
 export interface ListProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest {
   /** The cloud project */
@@ -1866,28 +2302,45 @@ export interface ListProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest {
   /** A tool results history ID. */
   historyId: string;
 }
-export const ListProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectId": S.String.pipe(T.Label()),
-  "executionId": S.String.pipe(T.Label()),
-  "filter": S.optional(ListProjectsHistoriesExecutionsStepsPerfSampleSeriesFilterEnumList.pipe(T.Query())),
-  "stepId": S.String.pipe(T.Label()),
-  "historyId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries","baseUrl":"https://toolresults.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest" }) as any as S.Schema<ListProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest>;
+export const ListProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      projectId: S.String.pipe(T.Label()),
+      executionId: S.String.pipe(T.Label()),
+      filter: S.optional(
+        ListProjectsHistoriesExecutionsStepsPerfSampleSeriesFilterEnumList.pipe(
+          T.Query(),
+        ),
+      ),
+      stepId: S.String.pipe(T.Label()),
+      historyId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries",
+        baseUrl: "https://toolresults.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest",
+  }) as any as S.Schema<ListProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest>;
 
 export type PerfSampleSeriesList = ReadonlyArray<PerfSampleSeries>;
-export const PerfSampleSeriesList = /*@__PURE__*/ S.Array(PerfSampleSeries) as any as S.Schema<PerfSampleSeriesList>;
+export const PerfSampleSeriesList = /*@__PURE__*/ S.Array(
+  PerfSampleSeries,
+) as any as S.Schema<PerfSampleSeriesList>;
 
 export interface ListPerfSampleSeriesResponse {
   /** The resulting PerfSampleSeries sorted by id */
   perfSampleSeries?: PerfSampleSeriesList;
 }
 export const ListPerfSampleSeriesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "perfSampleSeries": S.optional(PerfSampleSeriesList),
-}),
-).annotate({ identifier: "ListPerfSampleSeriesResponse" }) as any as S.Schema<ListPerfSampleSeriesResponse>;
+  S.Struct({
+    perfSampleSeries: S.optional(PerfSampleSeriesList),
+  }),
+).annotate({
+  identifier: "ListPerfSampleSeriesResponse",
+}) as any as S.Schema<ListPerfSampleSeriesResponse>;
 
 export interface ListProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest {
   /** A tool results history ID. */
@@ -1905,17 +2358,27 @@ export interface ListProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequ
   /** A sample series id */
   sampleSeriesId: string;
 }
-export const ListProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "historyId": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "projectId": S.String.pipe(T.Label()),
-  "executionId": S.String.pipe(T.Label()),
-  "stepId": S.String.pipe(T.Label()),
-  "sampleSeriesId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries/{sampleSeriesId}/samples","baseUrl":"https://toolresults.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest" }) as any as S.Schema<ListProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest>;
+export const ListProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      historyId: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      projectId: S.String.pipe(T.Label()),
+      executionId: S.String.pipe(T.Label()),
+      stepId: S.String.pipe(T.Label()),
+      sampleSeriesId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries/{sampleSeriesId}/samples",
+        baseUrl: "https://toolresults.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "ListProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest",
+  }) as any as S.Schema<ListProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest>;
 
 export interface ListPerfSamplesResponse {
   /** Optional, returned if result size exceeds the page size specified in the request (or the default page size, 500, if unspecified). It indicates the last sample timestamp to be used as page_token in subsequent request */
@@ -1923,11 +2386,13 @@ export interface ListPerfSamplesResponse {
   perfSamples?: PerfSampleList;
 }
 export const ListPerfSamplesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "perfSamples": S.optional(PerfSampleList),
-}),
-).annotate({ identifier: "ListPerfSamplesResponse" }) as any as S.Schema<ListPerfSamplesResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    perfSamples: S.optional(PerfSampleList),
+  }),
+).annotate({
+  identifier: "ListPerfSamplesResponse",
+}) as any as S.Schema<ListPerfSamplesResponse>;
 
 export interface ListProjectsHistoriesExecutionsStepsTestCasesRequest {
   /** A continuation token to resume the query at the next item. Optional. */
@@ -1943,19 +2408,30 @@ export interface ListProjectsHistoriesExecutionsStepsTestCasesRequest {
   /** A Execution id Required. */
   executionId: string;
 }
-export const ListProjectsHistoriesExecutionsStepsTestCasesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "historyId": S.String.pipe(T.Label()),
-  "stepId": S.String.pipe(T.Label()),
-  "projectId": S.String.pipe(T.Label()),
-  "executionId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/testCases","baseUrl":"https://toolresults.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsHistoriesExecutionsStepsTestCasesRequest" }) as any as S.Schema<ListProjectsHistoriesExecutionsStepsTestCasesRequest>;
+export const ListProjectsHistoriesExecutionsStepsTestCasesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      historyId: S.String.pipe(T.Label()),
+      stepId: S.String.pipe(T.Label()),
+      projectId: S.String.pipe(T.Label()),
+      executionId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/testCases",
+        baseUrl: "https://toolresults.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsHistoriesExecutionsStepsTestCasesRequest",
+  }) as any as S.Schema<ListProjectsHistoriesExecutionsStepsTestCasesRequest>;
 
 export type TestCaseList = ReadonlyArray<TestCase>;
-export const TestCaseList = /*@__PURE__*/ S.Array(TestCase) as any as S.Schema<TestCaseList>;
+export const TestCaseList = /*@__PURE__*/ S.Array(
+  TestCase,
+) as any as S.Schema<TestCaseList>;
 
 /** Response message for StepService.ListTestCases. */
 export interface ListTestCasesResponse {
@@ -1964,11 +2440,13 @@ export interface ListTestCasesResponse {
   nextPageToken?: string;
 }
 export const ListTestCasesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "testCases": S.optional(TestCaseList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListTestCasesResponse" }) as any as S.Schema<ListTestCasesResponse>;
+  S.Struct({
+    testCases: S.optional(TestCaseList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListTestCasesResponse",
+}) as any as S.Schema<ListTestCasesResponse>;
 
 export interface ListProjectsHistoriesExecutionsStepsThumbnailsRequest {
   /** A Step id. Required. */
@@ -1984,22 +2462,36 @@ export interface ListProjectsHistoriesExecutionsStepsThumbnailsRequest {
   /** A History id. Required. */
   historyId: string;
 }
-export const ListProjectsHistoriesExecutionsStepsThumbnailsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "stepId": S.String.pipe(T.Label()),
-  "projectId": S.String.pipe(T.Label()),
-  "executionId": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "historyId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/thumbnails","baseUrl":"https://toolresults.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsHistoriesExecutionsStepsThumbnailsRequest" }) as any as S.Schema<ListProjectsHistoriesExecutionsStepsThumbnailsRequest>;
+export const ListProjectsHistoriesExecutionsStepsThumbnailsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      stepId: S.String.pipe(T.Label()),
+      projectId: S.String.pipe(T.Label()),
+      executionId: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      historyId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/thumbnails",
+        baseUrl: "https://toolresults.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsHistoriesExecutionsStepsThumbnailsRequest",
+  }) as any as S.Schema<ListProjectsHistoriesExecutionsStepsThumbnailsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -2011,11 +2503,11 @@ export interface Status {
   code?: number;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "message": S.optional(S.String),
-  "details": S.optional(DocumentMapList),
-  "code": S.optional(S.Number),
-}),
+  S.Struct({
+    message: S.optional(S.String),
+    details: S.optional(DocumentMapList),
+    code: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** A single thumbnail, with its size and format. */
@@ -2030,12 +2522,12 @@ export interface Thumbnail {
   data?: string;
 }
 export const Thumbnail = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "contentType": S.optional(S.String),
-  "widthPx": S.optional(S.Number),
-  "heightPx": S.optional(S.Number),
-  "data": S.optional(S.String),
-}),
+  S.Struct({
+    contentType: S.optional(S.String),
+    widthPx: S.optional(S.Number),
+    heightPx: S.optional(S.Number),
+    data: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Thumbnail" }) as any as S.Schema<Thumbnail>;
 
 /** An image, with a link to the main image and a thumbnail. */
@@ -2050,16 +2542,18 @@ export interface Image {
   thumbnail?: Thumbnail;
 }
 export const Image = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "error": S.optional(Status),
-  "stepId": S.optional(S.String),
-  "sourceImage": S.optional(ToolOutputReference),
-  "thumbnail": S.optional(Thumbnail),
-}),
+  S.Struct({
+    error: S.optional(Status),
+    stepId: S.optional(S.String),
+    sourceImage: S.optional(ToolOutputReference),
+    thumbnail: S.optional(Thumbnail),
+  }),
 ).annotate({ identifier: "Image" }) as any as S.Schema<Image>;
 
 export type ImageList = ReadonlyArray<Image>;
-export const ImageList = /*@__PURE__*/ S.Array(Image) as any as S.Schema<ImageList>;
+export const ImageList = /*@__PURE__*/ S.Array(
+  Image,
+) as any as S.Schema<ImageList>;
 
 /** A response containing the thumbnails in a step. */
 export interface ListStepThumbnailsResponse {
@@ -2069,11 +2563,13 @@ export interface ListStepThumbnailsResponse {
   nextPageToken?: string;
 }
 export const ListStepThumbnailsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "thumbnails": S.optional(ImageList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListStepThumbnailsResponse" }) as any as S.Schema<ListStepThumbnailsResponse>;
+  S.Struct({
+    thumbnails: S.optional(ImageList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListStepThumbnailsResponse",
+}) as any as S.Schema<ListStepThumbnailsResponse>;
 
 export interface PatchProjectsHistoriesExecutionsRequest {
   /** A Project id. Required. */
@@ -2087,15 +2583,24 @@ export interface PatchProjectsHistoriesExecutionsRequest {
   /** Request body */
   body?: Execution;
 }
-export const PatchProjectsHistoriesExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectId": S.String.pipe(T.Label()),
-  "executionId": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "historyId": S.String.pipe(T.Label()),
-  "body": S.optional(Execution.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}","baseUrl":"https://toolresults.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsHistoriesExecutionsRequest" }) as any as S.Schema<PatchProjectsHistoriesExecutionsRequest>;
+export const PatchProjectsHistoriesExecutionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      projectId: S.String.pipe(T.Label()),
+      executionId: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      historyId: S.String.pipe(T.Label()),
+      body: S.optional(Execution.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}",
+        baseUrl: "https://toolresults.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "PatchProjectsHistoriesExecutionsRequest",
+}) as any as S.Schema<PatchProjectsHistoriesExecutionsRequest>;
 
 export interface PatchProjectsHistoriesExecutionsStepsRequest {
   /** A History id. Required. */
@@ -2111,16 +2616,25 @@ export interface PatchProjectsHistoriesExecutionsStepsRequest {
   /** Request body */
   body?: Step;
 }
-export const PatchProjectsHistoriesExecutionsStepsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "historyId": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "stepId": S.String.pipe(T.Label()),
-  "projectId": S.String.pipe(T.Label()),
-  "executionId": S.String.pipe(T.Label()),
-  "body": S.optional(Step.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}","baseUrl":"https://toolresults.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsHistoriesExecutionsStepsRequest" }) as any as S.Schema<PatchProjectsHistoriesExecutionsStepsRequest>;
+export const PatchProjectsHistoriesExecutionsStepsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      historyId: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      stepId: S.String.pipe(T.Label()),
+      projectId: S.String.pipe(T.Label()),
+      executionId: S.String.pipe(T.Label()),
+      body: S.optional(Step.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}",
+        baseUrl: "https://toolresults.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsHistoriesExecutionsStepsRequest",
+  }) as any as S.Schema<PatchProjectsHistoriesExecutionsStepsRequest>;
 
 /** Request message for StepService.PublishXunitXmlFiles. */
 export interface PublishXunitXmlFilesRequest {
@@ -2128,10 +2642,12 @@ export interface PublishXunitXmlFilesRequest {
   xunitXmlFiles?: FileReferenceList;
 }
 export const PublishXunitXmlFilesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "xunitXmlFiles": S.optional(FileReferenceList),
-}),
-).annotate({ identifier: "PublishXunitXmlFilesRequest" }) as any as S.Schema<PublishXunitXmlFilesRequest>;
+  S.Struct({
+    xunitXmlFiles: S.optional(FileReferenceList),
+  }),
+).annotate({
+  identifier: "PublishXunitXmlFilesRequest",
+}) as any as S.Schema<PublishXunitXmlFilesRequest>;
 
 export interface PublishXunitXmlFilesProjectsHistoriesExecutionsStepsRequest {
   /** A Step id. Note: This step must include a TestExecutionStep. Required. */
@@ -2145,17 +2661,29 @@ export interface PublishXunitXmlFilesProjectsHistoriesExecutionsStepsRequest {
   /** Request body */
   body?: PublishXunitXmlFilesRequest;
 }
-export const PublishXunitXmlFilesProjectsHistoriesExecutionsStepsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "stepId": S.String.pipe(T.Label()),
-  "historyId": S.String.pipe(T.Label()),
-  "projectId": S.String.pipe(T.Label()),
-  "executionId": S.String.pipe(T.Label()),
-  "body": S.optional(PublishXunitXmlFilesRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}:publishXunitXmlFiles","baseUrl":"https://toolresults.googleapis.com/"})),
-).annotate({ identifier: "PublishXunitXmlFilesProjectsHistoriesExecutionsStepsRequest" }) as any as S.Schema<PublishXunitXmlFilesProjectsHistoriesExecutionsStepsRequest>;
+export const PublishXunitXmlFilesProjectsHistoriesExecutionsStepsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      stepId: S.String.pipe(T.Label()),
+      historyId: S.String.pipe(T.Label()),
+      projectId: S.String.pipe(T.Label()),
+      executionId: S.String.pipe(T.Label()),
+      body: S.optional(PublishXunitXmlFilesRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}:publishXunitXmlFiles",
+        baseUrl: "https://toolresults.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PublishXunitXmlFilesProjectsHistoriesExecutionsStepsRequest",
+  }) as any as S.Schema<PublishXunitXmlFilesProjectsHistoriesExecutionsStepsRequest>;
 
-export type AccessibilityClustersProjectsHistoriesExecutionsStepsError = NotFound | Forbidden | GcpOpError;
+export type AccessibilityClustersProjectsHistoriesExecutionsStepsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists accessibility clusters for a given Step May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - FAILED_PRECONDITION - if an argument in the request happens to be invalid; e.g. if the locale format is incorrect - NOT_FOUND - if the containing Step does not exist */
 export const accessibilityClustersProjectsHistoriesExecutionsSteps: API.OperationMethod<
   AccessibilityClustersProjectsHistoriesExecutionsStepsRequest,
@@ -2170,7 +2698,8 @@ export const accessibilityClustersProjectsHistoriesExecutionsSteps: API.Operatio
   retry: Retry.Retry,
 }));
 
-export type BatchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type BatchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesError =
+  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a batch of PerfSamples - a client can submit multiple batches of Perf Samples through repeated calls to this method in order to split up a large request payload - duplicates and existing timestamp entries will be ignored. - the batch operation may partially succeed - the set of elements successfully inserted is returned in the response (omits items which already existed in the database). May return any of the following canonical error codes: - NOT_FOUND - The containing PerfSampleSeries does not exist */
 export const batchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamples: API.OperationMethod<
   BatchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest,
@@ -2178,14 +2707,20 @@ export const batchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamples:
   BatchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest,
+  input:
+    BatchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest,
   output: BatchCreatePerfSamplesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsHistoriesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsHistoriesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a History. The returned History will have the id set. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the containing project does not exist */
 export const createProjectsHistories: API.OperationMethod<
   CreateProjectsHistoriesRequest,
@@ -2200,7 +2735,12 @@ export const createProjectsHistories: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsHistoriesExecutionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsHistoriesExecutionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates an Execution. The returned Execution will have the id set. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the containing History does not exist */
 export const createProjectsHistoriesExecutions: API.OperationMethod<
   CreateProjectsHistoriesExecutionsRequest,
@@ -2215,7 +2755,12 @@ export const createProjectsHistoriesExecutions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsHistoriesExecutionsStepsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsHistoriesExecutionsStepsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a Step. The returned Step will have the id set. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed - FAILED_PRECONDITION - if the step is too large (more than 10Mib) - NOT_FOUND - if the containing Execution does not exist */
 export const createProjectsHistoriesExecutionsSteps: API.OperationMethod<
   CreateProjectsHistoriesExecutionsStepsRequest,
@@ -2230,7 +2775,12 @@ export const createProjectsHistoriesExecutionsSteps: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsHistoriesExecutionsStepsPerfMetricsSummaryError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsHistoriesExecutionsStepsPerfMetricsSummaryError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a PerfMetricsSummary resource. Returns the existing one if it has already been created. May return any of the following error code(s): - NOT_FOUND - The containing Step does not exist */
 export const createProjectsHistoriesExecutionsStepsPerfMetricsSummary: API.OperationMethod<
   CreateProjectsHistoriesExecutionsStepsPerfMetricsSummaryRequest,
@@ -2245,7 +2795,12 @@ export const createProjectsHistoriesExecutionsStepsPerfMetricsSummary: API.Opera
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsHistoriesExecutionsStepsPerfSampleSeriesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsHistoriesExecutionsStepsPerfSampleSeriesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a PerfSampleSeries. May return any of the following error code(s): - ALREADY_EXISTS - PerfMetricSummary already exists for the given Step - NOT_FOUND - The containing Step does not exist */
 export const createProjectsHistoriesExecutionsStepsPerfSampleSeries: API.OperationMethod<
   CreateProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest,
@@ -2260,7 +2815,10 @@ export const createProjectsHistoriesExecutionsStepsPerfSampleSeries: API.Operati
   retry: Retry.Retry,
 }));
 
-export type GetPerfMetricsSummaryProjectsHistoriesExecutionsStepsError = NotFound | Forbidden | GcpOpError;
+export type GetPerfMetricsSummaryProjectsHistoriesExecutionsStepsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieves a PerfMetricsSummary. May return any of the following error code(s): - NOT_FOUND - The specified PerfMetricsSummary does not exist */
 export const getPerfMetricsSummaryProjectsHistoriesExecutionsSteps: API.OperationMethod<
   GetPerfMetricsSummaryProjectsHistoriesExecutionsStepsRequest,
@@ -2290,7 +2848,10 @@ export const getProjectsHistories: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsHistoriesExecutionsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsHistoriesExecutionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets an Execution. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Execution does not exist */
 export const getProjectsHistoriesExecutions: API.OperationMethod<
   GetProjectsHistoriesExecutionsRequest,
@@ -2305,7 +2866,10 @@ export const getProjectsHistoriesExecutions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsHistoriesExecutionsClustersError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsHistoriesExecutionsClustersError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieves a single screenshot cluster by its ID */
 export const getProjectsHistoriesExecutionsClusters: API.OperationMethod<
   GetProjectsHistoriesExecutionsClustersRequest,
@@ -2320,7 +2884,10 @@ export const getProjectsHistoriesExecutionsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsHistoriesExecutionsEnvironmentsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsHistoriesExecutionsEnvironmentsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets an Environment. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Environment does not exist */
 export const getProjectsHistoriesExecutionsEnvironments: API.OperationMethod<
   GetProjectsHistoriesExecutionsEnvironmentsRequest,
@@ -2335,7 +2902,10 @@ export const getProjectsHistoriesExecutionsEnvironments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsHistoriesExecutionsStepsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsHistoriesExecutionsStepsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets a Step. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Step does not exist */
 export const getProjectsHistoriesExecutionsSteps: API.OperationMethod<
   GetProjectsHistoriesExecutionsStepsRequest,
@@ -2350,7 +2920,10 @@ export const getProjectsHistoriesExecutionsSteps: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsHistoriesExecutionsStepsPerfSampleSeriesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsHistoriesExecutionsStepsPerfSampleSeriesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets a PerfSampleSeries. May return any of the following error code(s): - NOT_FOUND - The specified PerfSampleSeries does not exist */
 export const getProjectsHistoriesExecutionsStepsPerfSampleSeries: API.OperationMethod<
   GetProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest,
@@ -2365,7 +2938,10 @@ export const getProjectsHistoriesExecutionsStepsPerfSampleSeries: API.OperationM
   retry: Retry.Retry,
 }));
 
-export type GetProjectsHistoriesExecutionsStepsTestCasesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsHistoriesExecutionsStepsTestCasesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a Test Case for a Step. Experimental test cases API. Still in active development. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the containing Test Case does not exist */
 export const getProjectsHistoriesExecutionsStepsTestCases: API.OperationMethod<
   GetProjectsHistoriesExecutionsStepsTestCasesRequest,
@@ -2395,7 +2971,12 @@ export const getSettingsProjects: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InitializeSettingsProjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type InitializeSettingsProjectsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates resources for settings which have not yet been set. Currently, this creates a single resource: a Google Cloud Storage bucket, to be used as the default bucket for this project. The bucket is created in an FTL-own storage project. Except for in rare cases, calling this method in parallel from multiple clients will only create a single bucket. In order to avoid unnecessary storage charges, the bucket is configured to automatically delete objects older than 60 days. The bucket is created with the following permissions: - Owner access for owners of central storage project (FTL-owned) - Writer access for owners/editors of customer project - Reader access for viewers of customer project The default ACL on objects created in the bucket is: - Owner access for owners of central storage project - Reader access for owners/editors/viewers of customer project See Google Cloud Storage documentation for more details. If there is already a default bucket set and the project can access the bucket, this call does nothing. However, if the project doesn't have the permission to access the bucket or the bucket is deleted, a new bucket will be created. May return any canonical error codes, including the following: - PERMISSION_DENIED - if the user is not authorized to write to project - Any error code raised by Google Cloud Storage */
 export const initializeSettingsProjects: API.OperationMethod<
   InitializeSettingsProjectsRequest,
@@ -2423,10 +3004,16 @@ export const listProjectsHistories: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsHistoriesExecutionsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsHistoriesExecutionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists Executions for a given History. The executions are sorted by creation_time in descending order. The execution_id key will be used to order the executions with the same creation_time. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the containing History does not exist */
 export const listProjectsHistoriesExecutions: API.PaginatedOperationMethod<
   ListProjectsHistoriesExecutionsRequest,
@@ -2439,10 +3026,16 @@ export const listProjectsHistoriesExecutions: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsHistoriesExecutionsClustersError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsHistoriesExecutionsClustersError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists Screenshot Clusters Returns the list of screenshot clusters corresponding to an execution. Screenshot clusters are created after the execution is finished. Clusters are created from a set of screenshots. Between any two screenshots, a matching score is calculated based off their metadata that determines how similar they are. Screenshots are placed in the cluster that has screens which have the highest matching scores. */
 export const listProjectsHistoriesExecutionsClusters: API.OperationMethod<
   ListProjectsHistoriesExecutionsClustersRequest,
@@ -2457,7 +3050,10 @@ export const listProjectsHistoriesExecutionsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListProjectsHistoriesExecutionsEnvironmentsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsHistoriesExecutionsEnvironmentsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists Environments for a given Execution. The Environments are sorted by display name. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the containing Execution does not exist */
 export const listProjectsHistoriesExecutionsEnvironments: API.PaginatedOperationMethod<
   ListProjectsHistoriesExecutionsEnvironmentsRequest,
@@ -2470,10 +3066,16 @@ export const listProjectsHistoriesExecutionsEnvironments: API.PaginatedOperation
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsHistoriesExecutionsStepsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsHistoriesExecutionsStepsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists Steps for a given Execution. The steps are sorted by creation_time in descending order. The step_id key will be used to order the steps with the same creation_time. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - FAILED_PRECONDITION - if an argument in the request happens to be invalid; e.g. if an attempt is made to list the children of a nonexistent Step - NOT_FOUND - if the containing Execution does not exist */
 export const listProjectsHistoriesExecutionsSteps: API.PaginatedOperationMethod<
   ListProjectsHistoriesExecutionsStepsRequest,
@@ -2486,10 +3088,16 @@ export const listProjectsHistoriesExecutionsSteps: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsHistoriesExecutionsStepsPerfSampleSeriesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsHistoriesExecutionsStepsPerfSampleSeriesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists PerfSampleSeries for a given Step. The request provides an optional filter which specifies one or more PerfMetricsType to include in the result; if none returns all. The resulting PerfSampleSeries are sorted by ids. May return any of the following canonical error codes: - NOT_FOUND - The containing Step does not exist */
 export const listProjectsHistoriesExecutionsStepsPerfSampleSeries: API.OperationMethod<
   ListProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest,
@@ -2504,7 +3112,10 @@ export const listProjectsHistoriesExecutionsStepsPerfSampleSeries: API.Operation
   retry: Retry.Retry,
 }));
 
-export type ListProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists the Performance Samples of a given Sample Series - The list results are sorted by timestamps ascending - The default page size is 500 samples; and maximum size allowed 5000 - The response token indicates the last returned PerfSample timestamp - When the results size exceeds the page size, submit a subsequent request including the page token to return the rest of the samples up to the page limit May return any of the following canonical error codes: - OUT_OF_RANGE - The specified request page_token is out of valid range - NOT_FOUND - The containing PerfSampleSeries does not exist */
 export const listProjectsHistoriesExecutionsStepsPerfSampleSeriesSamples: API.PaginatedOperationMethod<
   ListProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest,
@@ -2517,10 +3128,16 @@ export const listProjectsHistoriesExecutionsStepsPerfSampleSeriesSamples: API.Pa
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsHistoriesExecutionsStepsTestCasesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsHistoriesExecutionsStepsTestCasesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists Test Cases attached to a Step. Experimental test cases API. Still in active development. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the containing Step does not exist */
 export const listProjectsHistoriesExecutionsStepsTestCases: API.PaginatedOperationMethod<
   ListProjectsHistoriesExecutionsStepsTestCasesRequest,
@@ -2533,10 +3150,16 @@ export const listProjectsHistoriesExecutionsStepsTestCases: API.PaginatedOperati
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsHistoriesExecutionsStepsThumbnailsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsHistoriesExecutionsStepsThumbnailsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists thumbnails of images attached to a step. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read from the project, or from any of the images - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the step does not exist, or if any of the images do not exist */
 export const listProjectsHistoriesExecutionsStepsThumbnails: API.PaginatedOperationMethod<
   ListProjectsHistoriesExecutionsStepsThumbnailsRequest,
@@ -2549,10 +3172,18 @@ export const listProjectsHistoriesExecutionsStepsThumbnails: API.PaginatedOperat
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type PatchProjectsHistoriesExecutionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsHistoriesExecutionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates an existing Execution with the supplied partial entity. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed - FAILED_PRECONDITION - if the requested state transition is illegal - NOT_FOUND - if the containing History does not exist */
 export const patchProjectsHistoriesExecutions: API.OperationMethod<
   PatchProjectsHistoriesExecutionsRequest,
@@ -2567,7 +3198,12 @@ export const patchProjectsHistoriesExecutions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsHistoriesExecutionsStepsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsHistoriesExecutionsStepsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates an existing Step with the supplied partial entity. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write project - INVALID_ARGUMENT - if the request is malformed - FAILED_PRECONDITION - if the requested state transition is illegal (e.g try to upload a duplicate xml file), if the updated step is too large (more than 10Mib) - NOT_FOUND - if the containing Execution does not exist */
 export const patchProjectsHistoriesExecutionsSteps: API.OperationMethod<
   PatchProjectsHistoriesExecutionsStepsRequest,
@@ -2582,7 +3218,12 @@ export const patchProjectsHistoriesExecutionsSteps: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PublishXunitXmlFilesProjectsHistoriesExecutionsStepsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PublishXunitXmlFilesProjectsHistoriesExecutionsStepsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Publish xml files to an existing Step. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write project - INVALID_ARGUMENT - if the request is malformed - FAILED_PRECONDITION - if the requested state transition is illegal, e.g. try to upload a duplicate xml file or a file too large. - NOT_FOUND - if the containing Execution does not exist */
 export const publishXunitXmlFilesProjectsHistoriesExecutionsSteps: API.OperationMethod<
   PublishXunitXmlFilesProjectsHistoriesExecutionsStepsRequest,
@@ -2596,4 +3237,3 @@ export const publishXunitXmlFilesProjectsHistoriesExecutionsSteps: API.Operation
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

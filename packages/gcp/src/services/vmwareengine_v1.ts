@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 /** Google service file service configuration */
@@ -68,14 +68,18 @@ export interface GoogleFileService {
   filestoreInstance?: string;
 }
 export const GoogleFileService = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "netappVolume": S.optional(S.String),
-  "filestoreInstance": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleFileService" }) as any as S.Schema<GoogleFileService>;
+  S.Struct({
+    netappVolume: S.optional(S.String),
+    filestoreInstance: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleFileService",
+}) as any as S.Schema<GoogleFileService>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** Third party file service configuration */
 export interface ThirdPartyFileService {
@@ -87,18 +91,22 @@ export interface ThirdPartyFileService {
   network?: string;
 }
 export const ThirdPartyFileService = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "servers": S.optional(StringList),
-  "fileShare": S.optional(S.String),
-  "network": S.optional(S.String),
-}),
-).annotate({ identifier: "ThirdPartyFileService" }) as any as S.Schema<ThirdPartyFileService>;
+  S.Struct({
+    servers: S.optional(StringList),
+    fileShare: S.optional(S.String),
+    network: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ThirdPartyFileService",
+}) as any as S.Schema<ThirdPartyFileService>;
 
 /** Volume message captures user inputs for creation of file services managed by GCVE */
 export interface GoogleVmwareFileService {}
 export const GoogleVmwareFileService = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "GoogleVmwareFileService" }) as any as S.Schema<GoogleVmwareFileService>;
+  S.Struct({}),
+).annotate({
+  identifier: "GoogleVmwareFileService",
+}) as any as S.Schema<GoogleVmwareFileService>;
 
 /** The NFS datastore configuration. */
 export interface NfsDatastore {
@@ -110,14 +118,19 @@ export interface NfsDatastore {
   googleVmwareFileService?: GoogleVmwareFileService;
 }
 export const NfsDatastore = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "googleFileService": S.optional(GoogleFileService),
-  "thirdPartyFileService": S.optional(ThirdPartyFileService),
-  "googleVmwareFileService": S.optional(GoogleVmwareFileService),
-}),
+  S.Struct({
+    googleFileService: S.optional(GoogleFileService),
+    thirdPartyFileService: S.optional(ThirdPartyFileService),
+    googleVmwareFileService: S.optional(GoogleVmwareFileService),
+  }),
 ).annotate({ identifier: "NfsDatastore" }) as any as S.Schema<NfsDatastore>;
 
-export type DatastoreStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "ACTIVE" | "UPDATING" | "DELETING";
+export type DatastoreStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "CREATING"
+  | "ACTIVE"
+  | "UPDATING"
+  | "DELETING";
 export const DatastoreStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a datastore resource. */
@@ -142,17 +155,17 @@ export interface Datastore {
   updateTime?: string;
 }
 export const Datastore = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nfsDatastore": S.optional(NfsDatastore),
-  "createTime": S.optional(S.String),
-  "name": S.optional(S.String),
-  "state": S.optional(DatastoreStateEnum),
-  "description": S.optional(S.String),
-  "etag": S.optional(S.String),
-  "clusters": S.optional(StringList),
-  "uid": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-}),
+  S.Struct({
+    nfsDatastore: S.optional(NfsDatastore),
+    createTime: S.optional(S.String),
+    name: S.optional(S.String),
+    state: S.optional(DatastoreStateEnum),
+    description: S.optional(S.String),
+    etag: S.optional(S.String),
+    clusters: S.optional(StringList),
+    uid: S.optional(S.String),
+    updateTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Datastore" }) as any as S.Schema<Datastore>;
 
 export interface CreateProjectsLocationsDatastoresRequest {
@@ -165,20 +178,34 @@ export interface CreateProjectsLocationsDatastoresRequest {
   /** Request body */
   body?: Datastore;
 }
-export const CreateProjectsLocationsDatastoresRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "datastoreId": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Datastore.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/datastores","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsDatastoresRequest" }) as any as S.Schema<CreateProjectsLocationsDatastoresRequest>;
+export const CreateProjectsLocationsDatastoresRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      datastoreId: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Datastore.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/datastores",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateProjectsLocationsDatastoresRequest",
+}) as any as S.Schema<CreateProjectsLocationsDatastoresRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -190,11 +217,11 @@ export interface Status {
   details?: DocumentMapList;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(S.Number),
-  "message": S.optional(S.String),
-  "details": S.optional(DocumentMapList),
-}),
+  S.Struct({
+    code: S.optional(S.Number),
+    message: S.optional(S.String),
+    details: S.optional(DocumentMapList),
+  }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -211,19 +238,33 @@ export interface Operation {
   done?: boolean;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "metadata": S.optional(DocumentMap),
-  "error": S.optional(Status),
-  "name": S.optional(S.String),
-  "response": S.optional(DocumentMap),
-  "done": S.optional(S.Boolean),
-}),
+  S.Struct({
+    metadata: S.optional(DocumentMap),
+    error: S.optional(Status),
+    name: S.optional(S.String),
+    response: S.optional(DocumentMap),
+    done: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
-export type NetworkPeeringPeerNetworkTypeEnum = "PEER_NETWORK_TYPE_UNSPECIFIED" | "STANDARD" | "VMWARE_ENGINE_NETWORK" | "PRIVATE_SERVICES_ACCESS" | "NETAPP_CLOUD_VOLUMES" | "THIRD_PARTY_SERVICE" | "DELL_POWERSCALE" | "GOOGLE_CLOUD_NETAPP_VOLUMES" | "GOOGLE_CLOUD_FILESTORE_INSTANCES";
+export type NetworkPeeringPeerNetworkTypeEnum =
+  | "PEER_NETWORK_TYPE_UNSPECIFIED"
+  | "STANDARD"
+  | "VMWARE_ENGINE_NETWORK"
+  | "PRIVATE_SERVICES_ACCESS"
+  | "NETAPP_CLOUD_VOLUMES"
+  | "THIRD_PARTY_SERVICE"
+  | "DELL_POWERSCALE"
+  | "GOOGLE_CLOUD_NETAPP_VOLUMES"
+  | "GOOGLE_CLOUD_FILESTORE_INSTANCES";
 export const NetworkPeeringPeerNetworkTypeEnum = /*@__PURE__*/ S.String;
 
-export type NetworkPeeringStateEnum = "STATE_UNSPECIFIED" | "INACTIVE" | "ACTIVE" | "CREATING" | "DELETING";
+export type NetworkPeeringStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "INACTIVE"
+  | "ACTIVE"
+  | "CREATING"
+  | "DELETING";
 export const NetworkPeeringStateEnum = /*@__PURE__*/ S.String;
 
 /** Details of a network peering. */
@@ -262,24 +303,24 @@ export interface NetworkPeering {
   importCustomRoutesWithPublicIp?: boolean;
 }
 export const NetworkPeering = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "exchangeSubnetRoutes": S.optional(S.Boolean),
-  "peerNetworkType": S.optional(NetworkPeeringPeerNetworkTypeEnum),
-  "description": S.optional(S.String),
-  "exportCustomRoutes": S.optional(S.Boolean),
-  "name": S.optional(S.String),
-  "peerNetwork": S.optional(S.String),
-  "state": S.optional(NetworkPeeringStateEnum),
-  "exportCustomRoutesWithPublicIp": S.optional(S.Boolean),
-  "importCustomRoutes": S.optional(S.Boolean),
-  "peerMtu": S.optional(S.Number),
-  "updateTime": S.optional(S.String),
-  "vmwareEngineNetwork": S.optional(S.String),
-  "stateDetails": S.optional(S.String),
-  "uid": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "importCustomRoutesWithPublicIp": S.optional(S.Boolean),
-}),
+  S.Struct({
+    exchangeSubnetRoutes: S.optional(S.Boolean),
+    peerNetworkType: S.optional(NetworkPeeringPeerNetworkTypeEnum),
+    description: S.optional(S.String),
+    exportCustomRoutes: S.optional(S.Boolean),
+    name: S.optional(S.String),
+    peerNetwork: S.optional(S.String),
+    state: S.optional(NetworkPeeringStateEnum),
+    exportCustomRoutesWithPublicIp: S.optional(S.Boolean),
+    importCustomRoutes: S.optional(S.Boolean),
+    peerMtu: S.optional(S.Number),
+    updateTime: S.optional(S.String),
+    vmwareEngineNetwork: S.optional(S.String),
+    stateDetails: S.optional(S.String),
+    uid: S.optional(S.String),
+    createTime: S.optional(S.String),
+    importCustomRoutesWithPublicIp: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "NetworkPeering" }) as any as S.Schema<NetworkPeering>;
 
 export interface CreateProjectsLocationsNetworkPeeringsRequest {
@@ -294,17 +335,30 @@ export interface CreateProjectsLocationsNetworkPeeringsRequest {
   /** Request body */
   body?: NetworkPeering;
 }
-export const CreateProjectsLocationsNetworkPeeringsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "networkPeeringId": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(NetworkPeering.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/networkPeerings","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsNetworkPeeringsRequest" }) as any as S.Schema<CreateProjectsLocationsNetworkPeeringsRequest>;
+export const CreateProjectsLocationsNetworkPeeringsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      networkPeeringId: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(NetworkPeering.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/networkPeerings",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsNetworkPeeringsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsNetworkPeeringsRequest>;
 
-export type NetworkServiceStateEnum = "STATE_UNSPECIFIED" | "UNPROVISIONED" | "RECONCILING" | "ACTIVE";
+export type NetworkServiceStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "UNPROVISIONED"
+  | "RECONCILING"
+  | "ACTIVE";
 export const NetworkServiceStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a network service that is managed by a `NetworkPolicy` resource. A network service provides a way to control an aspect of external access to VMware workloads. For example, whether the VMware workloads in the private clouds governed by a network policy can access or be accessed from the internet. */
@@ -315,10 +369,10 @@ export interface NetworkService {
   state?: NetworkServiceStateEnum;
 }
 export const NetworkService = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "enabled": S.optional(S.Boolean),
-  "state": S.optional(NetworkServiceStateEnum),
-}),
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+    state: S.optional(NetworkServiceStateEnum),
+  }),
 ).annotate({ identifier: "NetworkService" }) as any as S.Schema<NetworkService>;
 
 /** Represents a network policy resource. Network policies are regional resources. You can use a network policy to enable or disable internet access and external IP access. Network policies are associated with a VMware Engine network, which might span across regions. For a given region, a network policy applies to all private clouds in the VMware Engine network associated with the policy. */
@@ -345,18 +399,18 @@ export interface NetworkPolicy {
   internetAccess?: NetworkService;
 }
 export const NetworkPolicy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "vmwareEngineNetworkCanonical": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "vmwareEngineNetwork": S.optional(S.String),
-  "description": S.optional(S.String),
-  "edgeServicesCidr": S.optional(S.String),
-  "uid": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "externalIp": S.optional(NetworkService),
-  "name": S.optional(S.String),
-  "internetAccess": S.optional(NetworkService),
-}),
+  S.Struct({
+    vmwareEngineNetworkCanonical: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    vmwareEngineNetwork: S.optional(S.String),
+    description: S.optional(S.String),
+    edgeServicesCidr: S.optional(S.String),
+    uid: S.optional(S.String),
+    createTime: S.optional(S.String),
+    externalIp: S.optional(NetworkService),
+    name: S.optional(S.String),
+    internetAccess: S.optional(NetworkService),
+  }),
 ).annotate({ identifier: "NetworkPolicy" }) as any as S.Schema<NetworkPolicy>;
 
 export interface CreateProjectsLocationsNetworkPoliciesRequest {
@@ -371,20 +425,37 @@ export interface CreateProjectsLocationsNetworkPoliciesRequest {
   /** Request body */
   body?: NetworkPolicy;
 }
-export const CreateProjectsLocationsNetworkPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "networkPolicyId": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(NetworkPolicy.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/networkPolicies","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsNetworkPoliciesRequest" }) as any as S.Schema<CreateProjectsLocationsNetworkPoliciesRequest>;
+export const CreateProjectsLocationsNetworkPoliciesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      networkPolicyId: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(NetworkPolicy.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/networkPolicies",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsNetworkPoliciesRequest",
+  }) as any as S.Schema<CreateProjectsLocationsNetworkPoliciesRequest>;
 
-export type ExternalAccessRuleStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "CREATING" | "UPDATING" | "DELETING";
+export type ExternalAccessRuleStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "CREATING"
+  | "UPDATING"
+  | "DELETING";
 export const ExternalAccessRuleStateEnum = /*@__PURE__*/ S.String;
 
-export type ExternalAccessRuleActionEnum = "ACTION_UNSPECIFIED" | "ALLOW" | "DENY";
+export type ExternalAccessRuleActionEnum =
+  | "ACTION_UNSPECIFIED"
+  | "ALLOW"
+  | "DENY";
 export const ExternalAccessRuleActionEnum = /*@__PURE__*/ S.String;
 
 /** An IP range provided in any one of the supported formats. */
@@ -397,15 +468,17 @@ export interface IpRange {
   ipAddressRange?: string;
 }
 export const IpRange = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "ipAddress": S.optional(S.String),
-  "externalAddress": S.optional(S.String),
-  "ipAddressRange": S.optional(S.String),
-}),
+  S.Struct({
+    ipAddress: S.optional(S.String),
+    externalAddress: S.optional(S.String),
+    ipAddressRange: S.optional(S.String),
+  }),
 ).annotate({ identifier: "IpRange" }) as any as S.Schema<IpRange>;
 
 export type IpRangeList = ReadonlyArray<IpRange>;
-export const IpRangeList = /*@__PURE__*/ S.Array(IpRange) as any as S.Schema<IpRangeList>;
+export const IpRangeList = /*@__PURE__*/ S.Array(
+  IpRange,
+) as any as S.Schema<IpRangeList>;
 
 /** External access firewall rules for filtering incoming traffic destined to `ExternalAddress` resources. */
 export interface ExternalAccessRule {
@@ -437,22 +510,24 @@ export interface ExternalAccessRule {
   destinationIpRanges?: IpRangeList;
 }
 export const ExternalAccessRule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "state": S.optional(ExternalAccessRuleStateEnum),
-  "sourcePorts": S.optional(StringList),
-  "description": S.optional(S.String),
-  "action": S.optional(ExternalAccessRuleActionEnum),
-  "ipProtocol": S.optional(S.String),
-  "priority": S.optional(S.Number),
-  "sourceIpRanges": S.optional(IpRangeList),
-  "createTime": S.optional(S.String),
-  "destinationPorts": S.optional(StringList),
-  "updateTime": S.optional(S.String),
-  "uid": S.optional(S.String),
-  "destinationIpRanges": S.optional(IpRangeList),
-}),
-).annotate({ identifier: "ExternalAccessRule" }) as any as S.Schema<ExternalAccessRule>;
+  S.Struct({
+    name: S.optional(S.String),
+    state: S.optional(ExternalAccessRuleStateEnum),
+    sourcePorts: S.optional(StringList),
+    description: S.optional(S.String),
+    action: S.optional(ExternalAccessRuleActionEnum),
+    ipProtocol: S.optional(S.String),
+    priority: S.optional(S.Number),
+    sourceIpRanges: S.optional(IpRangeList),
+    createTime: S.optional(S.String),
+    destinationPorts: S.optional(StringList),
+    updateTime: S.optional(S.String),
+    uid: S.optional(S.String),
+    destinationIpRanges: S.optional(IpRangeList),
+  }),
+).annotate({
+  identifier: "ExternalAccessRule",
+}) as any as S.Schema<ExternalAccessRule>;
 
 export interface CreateProjectsLocationsNetworkPoliciesExternalAccessRulesRequest {
   /** Required. The user-provided identifier of the `ExternalAccessRule` to be created. This identifier must be unique among `ExternalAccessRule` resources within the parent and becomes the final token in the name URI. The identifier must meet the following requirements: * Only contains 1-63 alphanumeric characters and hyphens * Begins with an alphabetical character * Ends with a non-hyphen character * Not formatted as a UUID * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5) */
@@ -466,17 +541,31 @@ export interface CreateProjectsLocationsNetworkPoliciesExternalAccessRulesReques
   /** Request body */
   body?: ExternalAccessRule;
 }
-export const CreateProjectsLocationsNetworkPoliciesExternalAccessRulesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "externalAccessRuleId": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(ExternalAccessRule.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/externalAccessRules","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsNetworkPoliciesExternalAccessRulesRequest" }) as any as S.Schema<CreateProjectsLocationsNetworkPoliciesExternalAccessRulesRequest>;
+export const CreateProjectsLocationsNetworkPoliciesExternalAccessRulesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      externalAccessRuleId: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(ExternalAccessRule.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/externalAccessRules",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "CreateProjectsLocationsNetworkPoliciesExternalAccessRulesRequest",
+  }) as any as S.Schema<CreateProjectsLocationsNetworkPoliciesExternalAccessRulesRequest>;
 
-export type HcxStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "CREATING" | "ACTIVATING";
+export type HcxStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "CREATING"
+  | "ACTIVATING";
 export const HcxStateEnum = /*@__PURE__*/ S.String;
 
 /** Details about a HCX Cloud Manager appliance. */
@@ -491,12 +580,12 @@ export interface Hcx {
   version?: string;
 }
 export const Hcx = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "internalIp": S.optional(S.String),
-  "fqdn": S.optional(S.String),
-  "state": S.optional(HcxStateEnum),
-  "version": S.optional(S.String),
-}),
+  S.Struct({
+    internalIp: S.optional(S.String),
+    fqdn: S.optional(S.String),
+    state: S.optional(HcxStateEnum),
+    version: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Hcx" }) as any as S.Schema<Hcx>;
 
 export type NsxStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "CREATING";
@@ -514,12 +603,12 @@ export interface Nsx {
   fqdn?: string;
 }
 export const Nsx = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "version": S.optional(S.String),
-  "state": S.optional(NsxStateEnum),
-  "internalIp": S.optional(S.String),
-  "fqdn": S.optional(S.String),
-}),
+  S.Struct({
+    version: S.optional(S.String),
+    state: S.optional(NsxStateEnum),
+    internalIp: S.optional(S.String),
+    fqdn: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Nsx" }) as any as S.Schema<Nsx>;
 
 /** Information about the type and number of nodes associated with the cluster. */
@@ -530,14 +619,17 @@ export interface NodeTypeConfig {
   nodeCount?: number;
 }
 export const NodeTypeConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "customCoreCount": S.optional(S.Number),
-  "nodeCount": S.optional(S.Number),
-}),
+  S.Struct({
+    customCoreCount: S.optional(S.Number),
+    nodeCount: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "NodeTypeConfig" }) as any as S.Schema<NodeTypeConfig>;
 
 export type NodeTypeConfigMap = { [key: string]: NodeTypeConfig | undefined };
-export const NodeTypeConfigMap = /*@__PURE__*/ S.Record(S.String, NodeTypeConfig) as any as S.Schema<NodeTypeConfigMap>;
+export const NodeTypeConfigMap = /*@__PURE__*/ S.Record(
+  S.String,
+  NodeTypeConfig,
+) as any as S.Schema<NodeTypeConfigMap>;
 
 /** Configuration of a stretched cluster. */
 export interface StretchedClusterConfig {
@@ -547,11 +639,13 @@ export interface StretchedClusterConfig {
   secondaryLocation?: string;
 }
 export const StretchedClusterConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "preferredLocation": S.optional(S.String),
-  "secondaryLocation": S.optional(S.String),
-}),
-).annotate({ identifier: "StretchedClusterConfig" }) as any as S.Schema<StretchedClusterConfig>;
+  S.Struct({
+    preferredLocation: S.optional(S.String),
+    secondaryLocation: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "StretchedClusterConfig",
+}) as any as S.Schema<StretchedClusterConfig>;
 
 /** Management cluster configuration. */
 export interface ManagementCluster {
@@ -563,14 +657,20 @@ export interface ManagementCluster {
   stretchedClusterConfig?: StretchedClusterConfig;
 }
 export const ManagementCluster = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "clusterId": S.optional(S.String),
-  "nodeTypeConfigs": S.optional(NodeTypeConfigMap),
-  "stretchedClusterConfig": S.optional(StretchedClusterConfig),
-}),
-).annotate({ identifier: "ManagementCluster" }) as any as S.Schema<ManagementCluster>;
+  S.Struct({
+    clusterId: S.optional(S.String),
+    nodeTypeConfigs: S.optional(NodeTypeConfigMap),
+    stretchedClusterConfig: S.optional(StretchedClusterConfig),
+  }),
+).annotate({
+  identifier: "ManagementCluster",
+}) as any as S.Schema<ManagementCluster>;
 
-export type EncryptionConfigTypeEnum = "TYPE_UNSPECIFIED" | "CMEK" | "LEGACY_CMEK" | "OTHER";
+export type EncryptionConfigTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "CMEK"
+  | "LEGACY_CMEK"
+  | "OTHER";
 export const EncryptionConfigTypeEnum = /*@__PURE__*/ S.String;
 
 /** Encryption configuration for a private cloud. */
@@ -581,13 +681,22 @@ export interface EncryptionConfig {
   type?: EncryptionConfigTypeEnum;
 }
 export const EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "cryptoKeyName": S.optional(S.String),
-  "type": S.optional(EncryptionConfigTypeEnum),
-}),
-).annotate({ identifier: "EncryptionConfig" }) as any as S.Schema<EncryptionConfig>;
+  S.Struct({
+    cryptoKeyName: S.optional(S.String),
+    type: S.optional(EncryptionConfigTypeEnum),
+  }),
+).annotate({
+  identifier: "EncryptionConfig",
+}) as any as S.Schema<EncryptionConfig>;
 
-export type PrivateCloudStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "CREATING" | "UPDATING" | "FAILED" | "DELETED" | "PURGING";
+export type PrivateCloudStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "CREATING"
+  | "UPDATING"
+  | "FAILED"
+  | "DELETED"
+  | "PURGING";
 export const PrivateCloudStateEnum = /*@__PURE__*/ S.String;
 
 export type PrivateCloudTypeEnum = "STANDARD" | "TIME_LIMITED" | "STRETCHED";
@@ -607,13 +716,13 @@ export interface NetworkConfig {
   vmwareEngineNetworkCanonical?: string;
 }
 export const NetworkConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "managementCidr": S.optional(S.String),
-  "vmwareEngineNetwork": S.optional(S.String),
-  "managementIpAddressLayoutVersion": S.optional(S.Number),
-  "dnsServerIp": S.optional(S.String),
-  "vmwareEngineNetworkCanonical": S.optional(S.String),
-}),
+  S.Struct({
+    managementCidr: S.optional(S.String),
+    vmwareEngineNetwork: S.optional(S.String),
+    managementIpAddressLayoutVersion: S.optional(S.Number),
+    dnsServerIp: S.optional(S.String),
+    vmwareEngineNetworkCanonical: S.optional(S.String),
+  }),
 ).annotate({ identifier: "NetworkConfig" }) as any as S.Schema<NetworkConfig>;
 
 export type VcenterStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "CREATING";
@@ -631,12 +740,12 @@ export interface Vcenter {
   fqdn?: string;
 }
 export const Vcenter = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "state": S.optional(VcenterStateEnum),
-  "version": S.optional(S.String),
-  "internalIp": S.optional(S.String),
-  "fqdn": S.optional(S.String),
-}),
+  S.Struct({
+    state: S.optional(VcenterStateEnum),
+    version: S.optional(S.String),
+    internalIp: S.optional(S.String),
+    fqdn: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Vcenter" }) as any as S.Schema<Vcenter>;
 
 /** Represents a private cloud resource. Private clouds of type `STANDARD` and `TIME_LIMITED` are zonal resources, `STRETCHED` private clouds are regional. */
@@ -673,23 +782,23 @@ export interface PrivateCloud {
   vcenter?: Vcenter;
 }
 export const PrivateCloud = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateTime": S.optional(S.String),
-  "hcx": S.optional(Hcx),
-  "uid": S.optional(S.String),
-  "nsx": S.optional(Nsx),
-  "createTime": S.optional(S.String),
-  "managementCluster": S.optional(ManagementCluster),
-  "description": S.optional(S.String),
-  "encryptionConfig": S.optional(EncryptionConfig),
-  "deleteTime": S.optional(S.String),
-  "name": S.optional(S.String),
-  "state": S.optional(PrivateCloudStateEnum),
-  "type": S.optional(PrivateCloudTypeEnum),
-  "networkConfig": S.optional(NetworkConfig),
-  "expireTime": S.optional(S.String),
-  "vcenter": S.optional(Vcenter),
-}),
+  S.Struct({
+    updateTime: S.optional(S.String),
+    hcx: S.optional(Hcx),
+    uid: S.optional(S.String),
+    nsx: S.optional(Nsx),
+    createTime: S.optional(S.String),
+    managementCluster: S.optional(ManagementCluster),
+    description: S.optional(S.String),
+    encryptionConfig: S.optional(EncryptionConfig),
+    deleteTime: S.optional(S.String),
+    name: S.optional(S.String),
+    state: S.optional(PrivateCloudStateEnum),
+    type: S.optional(PrivateCloudTypeEnum),
+    networkConfig: S.optional(NetworkConfig),
+    expireTime: S.optional(S.String),
+    vcenter: S.optional(Vcenter),
+  }),
 ).annotate({ identifier: "PrivateCloud" }) as any as S.Schema<PrivateCloud>;
 
 export interface CreateProjectsLocationsPrivateCloudsRequest {
@@ -704,15 +813,24 @@ export interface CreateProjectsLocationsPrivateCloudsRequest {
   /** Request body */
   body?: PrivateCloud;
 }
-export const CreateProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "privateCloudId": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(PrivateCloud.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/privateClouds","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsPrivateCloudsRequest" }) as any as S.Schema<CreateProjectsLocationsPrivateCloudsRequest>;
+export const CreateProjectsLocationsPrivateCloudsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      privateCloudId: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(PrivateCloud.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/privateClouds",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsPrivateCloudsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsPrivateCloudsRequest>;
 
 /** Thresholds define the utilization of resources triggering scale-out and scale-in operations. */
 export interface Thresholds {
@@ -722,10 +840,10 @@ export interface Thresholds {
   scaleOut?: number;
 }
 export const Thresholds = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "scaleIn": S.optional(S.Number),
-  "scaleOut": S.optional(S.Number),
-}),
+  S.Struct({
+    scaleIn: S.optional(S.Number),
+    scaleOut: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "Thresholds" }) as any as S.Schema<Thresholds>;
 
 /** Autoscaling policy describes the behavior of the autoscaling with respect to the resource utilization. The scale-out operation is initiated if the utilization exceeds ANY of the respective thresholds. The scale-in operation is initiated if the utilization is below ALL of the respective thresholds. */
@@ -744,18 +862,25 @@ export interface AutoscalingPolicy {
   storageThresholds?: Thresholds;
 }
 export const AutoscalingPolicy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "grantedMemoryThresholds": S.optional(Thresholds),
-  "scaleOutSize": S.optional(S.Number),
-  "cpuThresholds": S.optional(Thresholds),
-  "consumedMemoryThresholds": S.optional(Thresholds),
-  "nodeTypeId": S.optional(S.String),
-  "storageThresholds": S.optional(Thresholds),
-}),
-).annotate({ identifier: "AutoscalingPolicy" }) as any as S.Schema<AutoscalingPolicy>;
+  S.Struct({
+    grantedMemoryThresholds: S.optional(Thresholds),
+    scaleOutSize: S.optional(S.Number),
+    cpuThresholds: S.optional(Thresholds),
+    consumedMemoryThresholds: S.optional(Thresholds),
+    nodeTypeId: S.optional(S.String),
+    storageThresholds: S.optional(Thresholds),
+  }),
+).annotate({
+  identifier: "AutoscalingPolicy",
+}) as any as S.Schema<AutoscalingPolicy>;
 
-export type AutoscalingPolicyMap = { [key: string]: AutoscalingPolicy | undefined };
-export const AutoscalingPolicyMap = /*@__PURE__*/ S.Record(S.String, AutoscalingPolicy) as any as S.Schema<AutoscalingPolicyMap>;
+export type AutoscalingPolicyMap = {
+  [key: string]: AutoscalingPolicy | undefined;
+};
+export const AutoscalingPolicyMap = /*@__PURE__*/ S.Record(
+  S.String,
+  AutoscalingPolicy,
+) as any as S.Schema<AutoscalingPolicyMap>;
 
 /** Autoscaling settings define the rules used by VMware Engine to automatically scale-out and scale-in the clusters in a private cloud. */
 export interface AutoscalingSettings {
@@ -769,21 +894,34 @@ export interface AutoscalingSettings {
   minClusterNodeCount?: number;
 }
 export const AutoscalingSettings = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "maxClusterNodeCount": S.optional(S.Number),
-  "autoscalingPolicies": S.optional(AutoscalingPolicyMap),
-  "coolDownPeriod": S.optional(S.String),
-  "minClusterNodeCount": S.optional(S.Number),
-}),
-).annotate({ identifier: "AutoscalingSettings" }) as any as S.Schema<AutoscalingSettings>;
+  S.Struct({
+    maxClusterNodeCount: S.optional(S.Number),
+    autoscalingPolicies: S.optional(AutoscalingPolicyMap),
+    coolDownPeriod: S.optional(S.String),
+    minClusterNodeCount: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "AutoscalingSettings",
+}) as any as S.Schema<AutoscalingSettings>;
 
-export type ClusterStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "CREATING" | "UPDATING" | "DELETING" | "REPAIRING";
+export type ClusterStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "CREATING"
+  | "UPDATING"
+  | "DELETING"
+  | "REPAIRING";
 export const ClusterStateEnum = /*@__PURE__*/ S.String;
 
-export type DatastoreMountConfigAccessModeEnum = "ACCESS_MODE_UNSPECIFIED" | "READ_ONLY" | "READ_WRITE";
+export type DatastoreMountConfigAccessModeEnum =
+  | "ACCESS_MODE_UNSPECIFIED"
+  | "READ_ONLY"
+  | "READ_WRITE";
 export const DatastoreMountConfigAccessModeEnum = /*@__PURE__*/ S.String;
 
-export type DatastoreMountConfigNfsVersionEnum = "NFS_VERSION_UNSPECIFIED" | "NFS_V3";
+export type DatastoreMountConfigNfsVersionEnum =
+  | "NFS_VERSION_UNSPECIFIED"
+  | "NFS_V3";
 export const DatastoreMountConfigNfsVersionEnum = /*@__PURE__*/ S.String;
 
 /** The network configuration for the datastore. */
@@ -798,13 +936,15 @@ export interface DatastoreNetwork {
   connectionCount?: number;
 }
 export const DatastoreNetwork = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "subnet": S.optional(S.String),
-  "mtu": S.optional(S.Number),
-  "networkPeering": S.optional(S.String),
-  "connectionCount": S.optional(S.Number),
-}),
-).annotate({ identifier: "DatastoreNetwork" }) as any as S.Schema<DatastoreNetwork>;
+  S.Struct({
+    subnet: S.optional(S.String),
+    mtu: S.optional(S.Number),
+    networkPeering: S.optional(S.String),
+    connectionCount: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "DatastoreNetwork",
+}) as any as S.Schema<DatastoreNetwork>;
 
 /** The Datastore Mount configuration */
 export interface DatastoreMountConfig {
@@ -822,18 +962,22 @@ export interface DatastoreMountConfig {
   datastoreNetwork?: DatastoreNetwork;
 }
 export const DatastoreMountConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fileShare": S.optional(S.String),
-  "accessMode": S.optional(DatastoreMountConfigAccessModeEnum),
-  "nfsVersion": S.optional(DatastoreMountConfigNfsVersionEnum),
-  "datastore": S.optional(S.String),
-  "servers": S.optional(StringList),
-  "datastoreNetwork": S.optional(DatastoreNetwork),
-}),
-).annotate({ identifier: "DatastoreMountConfig" }) as any as S.Schema<DatastoreMountConfig>;
+  S.Struct({
+    fileShare: S.optional(S.String),
+    accessMode: S.optional(DatastoreMountConfigAccessModeEnum),
+    nfsVersion: S.optional(DatastoreMountConfigNfsVersionEnum),
+    datastore: S.optional(S.String),
+    servers: S.optional(StringList),
+    datastoreNetwork: S.optional(DatastoreNetwork),
+  }),
+).annotate({
+  identifier: "DatastoreMountConfig",
+}) as any as S.Schema<DatastoreMountConfig>;
 
 export type DatastoreMountConfigList = ReadonlyArray<DatastoreMountConfig>;
-export const DatastoreMountConfigList = /*@__PURE__*/ S.Array(DatastoreMountConfig) as any as S.Schema<DatastoreMountConfigList>;
+export const DatastoreMountConfigList = /*@__PURE__*/ S.Array(
+  DatastoreMountConfig,
+) as any as S.Schema<DatastoreMountConfigList>;
 
 /** A cluster in a private cloud. */
 export interface Cluster {
@@ -859,18 +1003,18 @@ export interface Cluster {
   datastoreMountConfig?: DatastoreMountConfigList;
 }
 export const Cluster = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateTime": S.optional(S.String),
-  "uid": S.optional(S.String),
-  "management": S.optional(S.Boolean),
-  "stretchedClusterConfig": S.optional(StretchedClusterConfig),
-  "autoscalingSettings": S.optional(AutoscalingSettings),
-  "name": S.optional(S.String),
-  "state": S.optional(ClusterStateEnum),
-  "nodeTypeConfigs": S.optional(NodeTypeConfigMap),
-  "createTime": S.optional(S.String),
-  "datastoreMountConfig": S.optional(DatastoreMountConfigList),
-}),
+  S.Struct({
+    updateTime: S.optional(S.String),
+    uid: S.optional(S.String),
+    management: S.optional(S.Boolean),
+    stretchedClusterConfig: S.optional(StretchedClusterConfig),
+    autoscalingSettings: S.optional(AutoscalingSettings),
+    name: S.optional(S.String),
+    state: S.optional(ClusterStateEnum),
+    nodeTypeConfigs: S.optional(NodeTypeConfigMap),
+    createTime: S.optional(S.String),
+    datastoreMountConfig: S.optional(DatastoreMountConfigList),
+  }),
 ).annotate({ identifier: "Cluster" }) as any as S.Schema<Cluster>;
 
 export interface CreateProjectsLocationsPrivateCloudsClustersRequest {
@@ -885,17 +1029,31 @@ export interface CreateProjectsLocationsPrivateCloudsClustersRequest {
   /** Request body */
   body?: Cluster;
 }
-export const CreateProjectsLocationsPrivateCloudsClustersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "clusterId": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Cluster.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/clusters","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsPrivateCloudsClustersRequest" }) as any as S.Schema<CreateProjectsLocationsPrivateCloudsClustersRequest>;
+export const CreateProjectsLocationsPrivateCloudsClustersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      clusterId: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Cluster.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/clusters",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsPrivateCloudsClustersRequest",
+  }) as any as S.Schema<CreateProjectsLocationsPrivateCloudsClustersRequest>;
 
-export type ExternalAddressStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "CREATING" | "UPDATING" | "DELETING";
+export type ExternalAddressStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "CREATING"
+  | "UPDATING"
+  | "DELETING";
 export const ExternalAddressStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents an allocated external IP address and its corresponding internal IP address in a private cloud. */
@@ -918,17 +1076,19 @@ export interface ExternalAddress {
   externalIp?: string;
 }
 export const ExternalAddress = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "state": S.optional(ExternalAddressStateEnum),
-  "description": S.optional(S.String),
-  "internalIp": S.optional(S.String),
-  "uid": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "externalIp": S.optional(S.String),
-}),
-).annotate({ identifier: "ExternalAddress" }) as any as S.Schema<ExternalAddress>;
+  S.Struct({
+    name: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    state: S.optional(ExternalAddressStateEnum),
+    description: S.optional(S.String),
+    internalIp: S.optional(S.String),
+    uid: S.optional(S.String),
+    createTime: S.optional(S.String),
+    externalIp: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ExternalAddress",
+}) as any as S.Schema<ExternalAddress>;
 
 export interface CreateProjectsLocationsPrivateCloudsExternalAddressesRequest {
   /** Required. The resource name of the private cloud to create a new external IP address in. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud` */
@@ -942,17 +1102,30 @@ export interface CreateProjectsLocationsPrivateCloudsExternalAddressesRequest {
   /** Request body */
   body?: ExternalAddress;
 }
-export const CreateProjectsLocationsPrivateCloudsExternalAddressesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "externalAddressId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(ExternalAddress.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/externalAddresses","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsPrivateCloudsExternalAddressesRequest" }) as any as S.Schema<CreateProjectsLocationsPrivateCloudsExternalAddressesRequest>;
+export const CreateProjectsLocationsPrivateCloudsExternalAddressesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      externalAddressId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(ExternalAddress.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/externalAddresses",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsPrivateCloudsExternalAddressesRequest",
+  }) as any as S.Schema<CreateProjectsLocationsPrivateCloudsExternalAddressesRequest>;
 
-export type HcxActivationKeyStateEnum = "STATE_UNSPECIFIED" | "AVAILABLE" | "CONSUMED" | "CREATING";
+export type HcxActivationKeyStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "AVAILABLE"
+  | "CONSUMED"
+  | "CREATING";
 export const HcxActivationKeyStateEnum = /*@__PURE__*/ S.String;
 
 /** HCX activation key. A default key is created during private cloud provisioning, but this behavior is subject to change and you should always verify active keys. Use VmwareEngine.ListHcxActivationKeys to retrieve existing keys and VmwareEngine.CreateHcxActivationKey to create new ones. */
@@ -969,14 +1142,16 @@ export interface HcxActivationKey {
   state?: HcxActivationKeyStateEnum;
 }
 export const HcxActivationKey = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "createTime": S.optional(S.String),
-  "activationKey": S.optional(S.String),
-  "uid": S.optional(S.String),
-  "name": S.optional(S.String),
-  "state": S.optional(HcxActivationKeyStateEnum),
-}),
-).annotate({ identifier: "HcxActivationKey" }) as any as S.Schema<HcxActivationKey>;
+  S.Struct({
+    createTime: S.optional(S.String),
+    activationKey: S.optional(S.String),
+    uid: S.optional(S.String),
+    name: S.optional(S.String),
+    state: S.optional(HcxActivationKeyStateEnum),
+  }),
+).annotate({
+  identifier: "HcxActivationKey",
+}) as any as S.Schema<HcxActivationKey>;
 
 export interface CreateProjectsLocationsPrivateCloudsHcxActivationKeysRequest {
   /** Required. The user-provided identifier of the `HcxActivationKey` to be created. This identifier must be unique among `HcxActivationKey` resources within the parent and becomes the final token in the name URI. The identifier must meet the following requirements: * Only contains 1-63 alphanumeric characters and hyphens * Begins with an alphabetical character * Ends with a non-hyphen character * Not formatted as a UUID * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5) */
@@ -988,19 +1163,37 @@ export interface CreateProjectsLocationsPrivateCloudsHcxActivationKeysRequest {
   /** Request body */
   body?: HcxActivationKey;
 }
-export const CreateProjectsLocationsPrivateCloudsHcxActivationKeysRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "hcxActivationKeyId": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(HcxActivationKey.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/hcxActivationKeys","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsPrivateCloudsHcxActivationKeysRequest" }) as any as S.Schema<CreateProjectsLocationsPrivateCloudsHcxActivationKeysRequest>;
+export const CreateProjectsLocationsPrivateCloudsHcxActivationKeysRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      hcxActivationKeyId: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(HcxActivationKey.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/hcxActivationKeys",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsPrivateCloudsHcxActivationKeysRequest",
+  }) as any as S.Schema<CreateProjectsLocationsPrivateCloudsHcxActivationKeysRequest>;
 
-export type LoggingServerProtocolEnum = "PROTOCOL_UNSPECIFIED" | "UDP" | "TCP" | "TLS" | "SSL" | "RELP";
+export type LoggingServerProtocolEnum =
+  | "PROTOCOL_UNSPECIFIED"
+  | "UDP"
+  | "TCP"
+  | "TLS"
+  | "SSL"
+  | "RELP";
 export const LoggingServerProtocolEnum = /*@__PURE__*/ S.String;
 
-export type LoggingServerSourceTypeEnum = "SOURCE_TYPE_UNSPECIFIED" | "ESXI" | "VCSA";
+export type LoggingServerSourceTypeEnum =
+  | "SOURCE_TYPE_UNSPECIFIED"
+  | "ESXI"
+  | "VCSA";
 export const LoggingServerSourceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Logging server to receive vCenter or ESXi logs. */
@@ -1023,16 +1216,16 @@ export interface LoggingServer {
   sourceType?: LoggingServerSourceTypeEnum;
 }
 export const LoggingServer = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "createTime": S.optional(S.String),
-  "hostname": S.optional(S.String),
-  "uid": S.optional(S.String),
-  "port": S.optional(S.Number),
-  "name": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "protocol": S.optional(LoggingServerProtocolEnum),
-  "sourceType": S.optional(LoggingServerSourceTypeEnum),
-}),
+  S.Struct({
+    createTime: S.optional(S.String),
+    hostname: S.optional(S.String),
+    uid: S.optional(S.String),
+    port: S.optional(S.Number),
+    name: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    protocol: S.optional(LoggingServerProtocolEnum),
+    sourceType: S.optional(LoggingServerSourceTypeEnum),
+  }),
 ).annotate({ identifier: "LoggingServer" }) as any as S.Schema<LoggingServer>;
 
 export interface CreateProjectsLocationsPrivateCloudsLoggingServersRequest {
@@ -1045,16 +1238,31 @@ export interface CreateProjectsLocationsPrivateCloudsLoggingServersRequest {
   /** Request body */
   body?: LoggingServer;
 }
-export const CreateProjectsLocationsPrivateCloudsLoggingServersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "loggingServerId": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(LoggingServer.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/loggingServers","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsPrivateCloudsLoggingServersRequest" }) as any as S.Schema<CreateProjectsLocationsPrivateCloudsLoggingServersRequest>;
+export const CreateProjectsLocationsPrivateCloudsLoggingServersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      loggingServerId: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(LoggingServer.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/loggingServers",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsPrivateCloudsLoggingServersRequest",
+  }) as any as S.Schema<CreateProjectsLocationsPrivateCloudsLoggingServersRequest>;
 
-export type ManagementDnsZoneBindingStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "CREATING" | "UPDATING" | "DELETING" | "FAILED";
+export type ManagementDnsZoneBindingStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "CREATING"
+  | "UPDATING"
+  | "DELETING"
+  | "FAILED";
 export const ManagementDnsZoneBindingStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a binding between a network and the management DNS zone. A management DNS zone is the Cloud DNS cross-project binding zone that VMware Engine creates for each private cloud. It contains FQDNs and corresponding IP addresses for the private cloud's ESXi hosts and management VM appliances like vCenter and NSX Manager. */
@@ -1077,17 +1285,19 @@ export interface ManagementDnsZoneBinding {
   createTime?: string;
 }
 export const ManagementDnsZoneBinding = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "description": S.optional(S.String),
-  "uid": S.optional(S.String),
-  "name": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "state": S.optional(ManagementDnsZoneBindingStateEnum),
-  "vpcNetwork": S.optional(S.String),
-  "vmwareEngineNetwork": S.optional(S.String),
-  "createTime": S.optional(S.String),
-}),
-).annotate({ identifier: "ManagementDnsZoneBinding" }) as any as S.Schema<ManagementDnsZoneBinding>;
+  S.Struct({
+    description: S.optional(S.String),
+    uid: S.optional(S.String),
+    name: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    state: S.optional(ManagementDnsZoneBindingStateEnum),
+    vpcNetwork: S.optional(S.String),
+    vmwareEngineNetwork: S.optional(S.String),
+    createTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ManagementDnsZoneBinding",
+}) as any as S.Schema<ManagementDnsZoneBinding>;
 
 export interface CreateProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest {
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -1099,25 +1309,53 @@ export interface CreateProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRe
   /** Request body */
   body?: ManagementDnsZoneBinding;
 }
-export const CreateProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "managementDnsZoneBindingId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(ManagementDnsZoneBinding.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/managementDnsZoneBindings","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest" }) as any as S.Schema<CreateProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest>;
+export const CreateProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      requestId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      managementDnsZoneBindingId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(ManagementDnsZoneBinding.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/managementDnsZoneBindings",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "CreateProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest>;
 
-export type PrivateConnectionPeeringStateEnum = "PEERING_STATE_UNSPECIFIED" | "PEERING_ACTIVE" | "PEERING_INACTIVE";
+export type PrivateConnectionPeeringStateEnum =
+  | "PEERING_STATE_UNSPECIFIED"
+  | "PEERING_ACTIVE"
+  | "PEERING_INACTIVE";
 export const PrivateConnectionPeeringStateEnum = /*@__PURE__*/ S.String;
 
-export type PrivateConnectionStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "ACTIVE" | "UPDATING" | "DELETING" | "UNPROVISIONED" | "FAILED";
+export type PrivateConnectionStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "CREATING"
+  | "ACTIVE"
+  | "UPDATING"
+  | "DELETING"
+  | "UNPROVISIONED"
+  | "FAILED";
 export const PrivateConnectionStateEnum = /*@__PURE__*/ S.String;
 
-export type PrivateConnectionTypeEnum = "TYPE_UNSPECIFIED" | "PRIVATE_SERVICE_ACCESS" | "NETAPP_CLOUD_VOLUMES" | "DELL_POWERSCALE" | "THIRD_PARTY_SERVICE";
+export type PrivateConnectionTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "PRIVATE_SERVICE_ACCESS"
+  | "NETAPP_CLOUD_VOLUMES"
+  | "DELL_POWERSCALE"
+  | "THIRD_PARTY_SERVICE";
 export const PrivateConnectionTypeEnum = /*@__PURE__*/ S.String;
 
-export type PrivateConnectionRoutingModeEnum = "ROUTING_MODE_UNSPECIFIED" | "GLOBAL" | "REGIONAL";
+export type PrivateConnectionRoutingModeEnum =
+  | "ROUTING_MODE_UNSPECIFIED"
+  | "GLOBAL"
+  | "REGIONAL";
 export const PrivateConnectionRoutingModeEnum = /*@__PURE__*/ S.String;
 
 /** Private connection resource that provides connectivity for VMware Engine private clouds. */
@@ -1150,22 +1388,24 @@ export interface PrivateConnection {
   serviceNetwork?: string;
 }
 export const PrivateConnection = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateTime": S.optional(S.String),
-  "vmwareEngineNetwork": S.optional(S.String),
-  "uid": S.optional(S.String),
-  "peeringState": S.optional(PrivateConnectionPeeringStateEnum),
-  "createTime": S.optional(S.String),
-  "description": S.optional(S.String),
-  "peeringId": S.optional(S.String),
-  "vmwareEngineNetworkCanonical": S.optional(S.String),
-  "name": S.optional(S.String),
-  "state": S.optional(PrivateConnectionStateEnum),
-  "type": S.optional(PrivateConnectionTypeEnum),
-  "routingMode": S.optional(PrivateConnectionRoutingModeEnum),
-  "serviceNetwork": S.optional(S.String),
-}),
-).annotate({ identifier: "PrivateConnection" }) as any as S.Schema<PrivateConnection>;
+  S.Struct({
+    updateTime: S.optional(S.String),
+    vmwareEngineNetwork: S.optional(S.String),
+    uid: S.optional(S.String),
+    peeringState: S.optional(PrivateConnectionPeeringStateEnum),
+    createTime: S.optional(S.String),
+    description: S.optional(S.String),
+    peeringId: S.optional(S.String),
+    vmwareEngineNetworkCanonical: S.optional(S.String),
+    name: S.optional(S.String),
+    state: S.optional(PrivateConnectionStateEnum),
+    type: S.optional(PrivateConnectionTypeEnum),
+    routingMode: S.optional(PrivateConnectionRoutingModeEnum),
+    serviceNetwork: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PrivateConnection",
+}) as any as S.Schema<PrivateConnection>;
 
 export interface CreateProjectsLocationsPrivateConnectionsRequest {
   /** Required. The user-provided identifier of the new private connection. This identifier must be unique among private connection resources within the parent and becomes the final token in the name URI. The identifier must meet the following requirements: * Only contains 1-63 alphanumeric characters and hyphens * Begins with an alphabetical character * Ends with a non-hyphen character * Not formatted as a UUID * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5) */
@@ -1179,23 +1419,44 @@ export interface CreateProjectsLocationsPrivateConnectionsRequest {
   /** Request body */
   body?: PrivateConnection;
 }
-export const CreateProjectsLocationsPrivateConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "privateConnectionId": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(PrivateConnection.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/privateConnections","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsPrivateConnectionsRequest" }) as any as S.Schema<CreateProjectsLocationsPrivateConnectionsRequest>;
+export const CreateProjectsLocationsPrivateConnectionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      privateConnectionId: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(PrivateConnection.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/privateConnections",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsPrivateConnectionsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsPrivateConnectionsRequest>;
 
-export type VmwareEngineNetworkStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "ACTIVE" | "UPDATING" | "DELETING";
+export type VmwareEngineNetworkStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "CREATING"
+  | "ACTIVE"
+  | "UPDATING"
+  | "DELETING";
 export const VmwareEngineNetworkStateEnum = /*@__PURE__*/ S.String;
 
-export type VmwareEngineNetworkTypeEnum = "TYPE_UNSPECIFIED" | "LEGACY" | "STANDARD";
+export type VmwareEngineNetworkTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "LEGACY"
+  | "STANDARD";
 export const VmwareEngineNetworkTypeEnum = /*@__PURE__*/ S.String;
 
-export type VpcNetworkTypeEnum = "TYPE_UNSPECIFIED" | "INTRANET" | "INTERNET" | "GOOGLE_CLOUD";
+export type VpcNetworkTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "INTRANET"
+  | "INTERNET"
+  | "GOOGLE_CLOUD";
 export const VpcNetworkTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a VMware Engine VPC network that is managed by a VMware Engine network resource. */
@@ -1206,14 +1467,16 @@ export interface VpcNetwork {
   network?: string;
 }
 export const VpcNetwork = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(VpcNetworkTypeEnum),
-  "network": S.optional(S.String),
-}),
+  S.Struct({
+    type: S.optional(VpcNetworkTypeEnum),
+    network: S.optional(S.String),
+  }),
 ).annotate({ identifier: "VpcNetwork" }) as any as S.Schema<VpcNetwork>;
 
 export type VpcNetworkList = ReadonlyArray<VpcNetwork>;
-export const VpcNetworkList = /*@__PURE__*/ S.Array(VpcNetwork) as any as S.Schema<VpcNetworkList>;
+export const VpcNetworkList = /*@__PURE__*/ S.Array(
+  VpcNetwork,
+) as any as S.Schema<VpcNetworkList>;
 
 /** VMware Engine network resource that provides connectivity for VMware Engine private clouds. */
 export interface VmwareEngineNetwork {
@@ -1237,18 +1500,20 @@ export interface VmwareEngineNetwork {
   updateTime?: string;
 }
 export const VmwareEngineNetwork = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "createTime": S.optional(S.String),
-  "name": S.optional(S.String),
-  "state": S.optional(VmwareEngineNetworkStateEnum),
-  "type": S.optional(VmwareEngineNetworkTypeEnum),
-  "vpcNetworks": S.optional(VpcNetworkList),
-  "description": S.optional(S.String),
-  "etag": S.optional(S.String),
-  "uid": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-}),
-).annotate({ identifier: "VmwareEngineNetwork" }) as any as S.Schema<VmwareEngineNetwork>;
+  S.Struct({
+    createTime: S.optional(S.String),
+    name: S.optional(S.String),
+    state: S.optional(VmwareEngineNetworkStateEnum),
+    type: S.optional(VmwareEngineNetworkTypeEnum),
+    vpcNetworks: S.optional(VpcNetworkList),
+    description: S.optional(S.String),
+    etag: S.optional(S.String),
+    uid: S.optional(S.String),
+    updateTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VmwareEngineNetwork",
+}) as any as S.Schema<VmwareEngineNetwork>;
 
 export interface CreateProjectsLocationsVmwareEngineNetworksRequest {
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -1262,15 +1527,24 @@ export interface CreateProjectsLocationsVmwareEngineNetworksRequest {
   /** Request body */
   body?: VmwareEngineNetwork;
 }
-export const CreateProjectsLocationsVmwareEngineNetworksRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "vmwareEngineNetworkId": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(VmwareEngineNetwork.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/vmwareEngineNetworks","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsVmwareEngineNetworksRequest" }) as any as S.Schema<CreateProjectsLocationsVmwareEngineNetworksRequest>;
+export const CreateProjectsLocationsVmwareEngineNetworksRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      requestId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      vmwareEngineNetworkId: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      body: S.optional(VmwareEngineNetwork.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/vmwareEngineNetworks",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsVmwareEngineNetworksRequest",
+  }) as any as S.Schema<CreateProjectsLocationsVmwareEngineNetworksRequest>;
 
 export interface DeleteProjectsLocationsDatastoresRequest {
   /** Required. The resource name of the Datastore to be deleted. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1/datastore/my-datastore` */
@@ -1280,13 +1554,22 @@ export interface DeleteProjectsLocationsDatastoresRequest {
   /** Optional. Checksum used to ensure that the user-provided value is up to date before the server processes the request. The server compares provided checksum with the current checksum of the resource. If the user-provided value is out of date, this request returns an `ABORTED` error. */
   etag?: string;
 }
-export const DeleteProjectsLocationsDatastoresRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "etag": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsDatastoresRequest" }) as any as S.Schema<DeleteProjectsLocationsDatastoresRequest>;
+export const DeleteProjectsLocationsDatastoresRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      etag: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsDatastoresRequest",
+}) as any as S.Schema<DeleteProjectsLocationsDatastoresRequest>;
 
 export interface DeleteProjectsLocationsNetworkPeeringsRequest {
   /** Required. The resource name of the network peering to be deleted. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/global/networkPeerings/my-peering` */
@@ -1294,12 +1577,21 @@ export interface DeleteProjectsLocationsNetworkPeeringsRequest {
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsNetworkPeeringsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsNetworkPeeringsRequest" }) as any as S.Schema<DeleteProjectsLocationsNetworkPeeringsRequest>;
+export const DeleteProjectsLocationsNetworkPeeringsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsNetworkPeeringsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsNetworkPeeringsRequest>;
 
 export interface DeleteProjectsLocationsNetworkPoliciesRequest {
   /** Required. The resource name of the network policy to delete. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1/networkPolicies/my-network-policy` */
@@ -1307,12 +1599,21 @@ export interface DeleteProjectsLocationsNetworkPoliciesRequest {
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsNetworkPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsNetworkPoliciesRequest" }) as any as S.Schema<DeleteProjectsLocationsNetworkPoliciesRequest>;
+export const DeleteProjectsLocationsNetworkPoliciesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsNetworkPoliciesRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsNetworkPoliciesRequest>;
 
 export interface DeleteProjectsLocationsNetworkPoliciesExternalAccessRulesRequest {
   /** Required. The resource name of the external access firewall rule to delete. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1/networkPolicies/my-policy/externalAccessRules/my-rule` */
@@ -1320,28 +1621,47 @@ export interface DeleteProjectsLocationsNetworkPoliciesExternalAccessRulesReques
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsNetworkPoliciesExternalAccessRulesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsNetworkPoliciesExternalAccessRulesRequest" }) as any as S.Schema<DeleteProjectsLocationsNetworkPoliciesExternalAccessRulesRequest>;
+export const DeleteProjectsLocationsNetworkPoliciesExternalAccessRulesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "DeleteProjectsLocationsNetworkPoliciesExternalAccessRulesRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsNetworkPoliciesExternalAccessRulesRequest>;
 
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsOperationsRequest" }) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsOperationsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 export interface DeleteProjectsLocationsPrivateCloudsRequest {
   /** Optional. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -1353,14 +1673,23 @@ export interface DeleteProjectsLocationsPrivateCloudsRequest {
   /** Optional. If set to true, cascade delete is enabled and all children of this private cloud resource are also deleted. When this flag is set to false, the private cloud will not be deleted if there are any children other than the management cluster. The management cluster is always deleted. */
   force?: boolean;
 }
-export const DeleteProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "delayHours": S.optional(S.Number.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "force": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsPrivateCloudsRequest" }) as any as S.Schema<DeleteProjectsLocationsPrivateCloudsRequest>;
+export const DeleteProjectsLocationsPrivateCloudsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      requestId: S.optional(S.String.pipe(T.Query())),
+      delayHours: S.optional(S.Number.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      force: S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsPrivateCloudsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsPrivateCloudsRequest>;
 
 export interface DeleteProjectsLocationsPrivateCloudsClustersRequest {
   /** Required. The resource name of the cluster to delete. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/clusters/my-cluster` */
@@ -1368,12 +1697,21 @@ export interface DeleteProjectsLocationsPrivateCloudsClustersRequest {
   /** Optional. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsPrivateCloudsClustersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsPrivateCloudsClustersRequest" }) as any as S.Schema<DeleteProjectsLocationsPrivateCloudsClustersRequest>;
+export const DeleteProjectsLocationsPrivateCloudsClustersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsPrivateCloudsClustersRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsPrivateCloudsClustersRequest>;
 
 export interface DeleteProjectsLocationsPrivateCloudsExternalAddressesRequest {
   /** Required. The resource name of the external IP address to delete. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/externalAddresses/my-ip` */
@@ -1381,12 +1719,21 @@ export interface DeleteProjectsLocationsPrivateCloudsExternalAddressesRequest {
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsPrivateCloudsExternalAddressesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsPrivateCloudsExternalAddressesRequest" }) as any as S.Schema<DeleteProjectsLocationsPrivateCloudsExternalAddressesRequest>;
+export const DeleteProjectsLocationsPrivateCloudsExternalAddressesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsPrivateCloudsExternalAddressesRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsPrivateCloudsExternalAddressesRequest>;
 
 export interface DeleteProjectsLocationsPrivateCloudsLoggingServersRequest {
   /** Required. The resource name of the logging server to delete. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/loggingServers/my-logging-server` */
@@ -1394,12 +1741,21 @@ export interface DeleteProjectsLocationsPrivateCloudsLoggingServersRequest {
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsPrivateCloudsLoggingServersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsPrivateCloudsLoggingServersRequest" }) as any as S.Schema<DeleteProjectsLocationsPrivateCloudsLoggingServersRequest>;
+export const DeleteProjectsLocationsPrivateCloudsLoggingServersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsPrivateCloudsLoggingServersRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsPrivateCloudsLoggingServersRequest>;
 
 export interface DeleteProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest {
   /** Required. The resource name of the management DNS zone binding to delete. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/managementDnsZoneBindings/my-management-dns-zone-binding` */
@@ -1407,12 +1763,22 @@ export interface DeleteProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRe
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest" }) as any as S.Schema<DeleteProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest>;
+export const DeleteProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "DeleteProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest>;
 
 export interface DeleteProjectsLocationsPrivateConnectionsRequest {
   /** Required. The resource name of the private connection to be deleted. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1/privateConnections/my-connection` */
@@ -1420,12 +1786,21 @@ export interface DeleteProjectsLocationsPrivateConnectionsRequest {
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsPrivateConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsPrivateConnectionsRequest" }) as any as S.Schema<DeleteProjectsLocationsPrivateConnectionsRequest>;
+export const DeleteProjectsLocationsPrivateConnectionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsPrivateConnectionsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsPrivateConnectionsRequest>;
 
 export interface DeleteProjectsLocationsVmwareEngineNetworksRequest {
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -1435,13 +1810,22 @@ export interface DeleteProjectsLocationsVmwareEngineNetworksRequest {
   /** Required. The resource name of the VMware Engine network to be deleted. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/global/vmwareEngineNetworks/my-network` */
   name: string;
 }
-export const DeleteProjectsLocationsVmwareEngineNetworksRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "etag": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsVmwareEngineNetworksRequest" }) as any as S.Schema<DeleteProjectsLocationsVmwareEngineNetworksRequest>;
+export const DeleteProjectsLocationsVmwareEngineNetworksRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      requestId: S.optional(S.String.pipe(T.Query())),
+      etag: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsVmwareEngineNetworksRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsVmwareEngineNetworksRequest>;
 
 export interface FetchExternalAddressesProjectsLocationsNetworkPoliciesRequest {
   /** The maximum number of external IP addresses to return in one page. The service may return fewer than this value. The maximum value is coerced to 1000. The default value of this field is 500. */
@@ -1451,16 +1835,27 @@ export interface FetchExternalAddressesProjectsLocationsNetworkPoliciesRequest {
   /** A page token, received from a previous `FetchNetworkPolicyExternalAddresses` call. Provide this to retrieve the subsequent page. When paginating, all parameters provided to `FetchNetworkPolicyExternalAddresses`, except for `page_size` and `page_token`, must match the call that provided the page token. */
   pageToken?: string;
 }
-export const FetchExternalAddressesProjectsLocationsNetworkPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "networkPolicy": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+networkPolicy}:fetchExternalAddresses","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "FetchExternalAddressesProjectsLocationsNetworkPoliciesRequest" }) as any as S.Schema<FetchExternalAddressesProjectsLocationsNetworkPoliciesRequest>;
+export const FetchExternalAddressesProjectsLocationsNetworkPoliciesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      networkPolicy: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+networkPolicy}:fetchExternalAddresses",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "FetchExternalAddressesProjectsLocationsNetworkPoliciesRequest",
+  }) as any as S.Schema<FetchExternalAddressesProjectsLocationsNetworkPoliciesRequest>;
 
 export type ExternalAddressList = ReadonlyArray<ExternalAddress>;
-export const ExternalAddressList = /*@__PURE__*/ S.Array(ExternalAddress) as any as S.Schema<ExternalAddressList>;
+export const ExternalAddressList = /*@__PURE__*/ S.Array(
+  ExternalAddress,
+) as any as S.Schema<ExternalAddressList>;
 
 /** Response message for VmwareEngine.FetchNetworkPolicyExternalAddresses */
 export interface FetchNetworkPolicyExternalAddressesResponse {
@@ -1469,22 +1864,34 @@ export interface FetchNetworkPolicyExternalAddressesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const FetchNetworkPolicyExternalAddressesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "externalAddresses": S.optional(ExternalAddressList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "FetchNetworkPolicyExternalAddressesResponse" }) as any as S.Schema<FetchNetworkPolicyExternalAddressesResponse>;
+export const FetchNetworkPolicyExternalAddressesResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      externalAddresses: S.optional(ExternalAddressList),
+      nextPageToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "FetchNetworkPolicyExternalAddressesResponse",
+  }) as any as S.Schema<FetchNetworkPolicyExternalAddressesResponse>;
 
 export interface GetDnsBindPermissionProjectsLocationsRequest {
   /** Required. The name of the resource which stores the users/service accounts having the permission to bind to the corresponding intranet VPC of the consumer project. DnsBindPermission is a global resource. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/global/dnsBindPermission` */
   name: string;
 }
-export const GetDnsBindPermissionProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "GetDnsBindPermissionProjectsLocationsRequest" }) as any as S.Schema<GetDnsBindPermissionProjectsLocationsRequest>;
+export const GetDnsBindPermissionProjectsLocationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetDnsBindPermissionProjectsLocationsRequest",
+  }) as any as S.Schema<GetDnsBindPermissionProjectsLocationsRequest>;
 
 /** Users/Service accounts which have access for DNS binding on the intranet VPC corresponding to the consumer project. */
 export interface Principal {
@@ -1494,14 +1901,16 @@ export interface Principal {
   user?: string;
 }
 export const Principal = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "serviceAccount": S.optional(S.String),
-  "user": S.optional(S.String),
-}),
+  S.Struct({
+    serviceAccount: S.optional(S.String),
+    user: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Principal" }) as any as S.Schema<Principal>;
 
 export type PrincipalList = ReadonlyArray<Principal>;
-export const PrincipalList = /*@__PURE__*/ S.Array(Principal) as any as S.Schema<PrincipalList>;
+export const PrincipalList = /*@__PURE__*/ S.Array(
+  Principal,
+) as any as S.Schema<PrincipalList>;
 
 /** DnsBindPermission resource that contains the accounts having the consumer DNS bind permission on the corresponding intranet VPC of the consumer project. */
 export interface DnsBindPermission {
@@ -1511,21 +1920,32 @@ export interface DnsBindPermission {
   principals?: PrincipalList;
 }
 export const DnsBindPermission = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "principals": S.optional(PrincipalList),
-}),
-).annotate({ identifier: "DnsBindPermission" }) as any as S.Schema<DnsBindPermission>;
+  S.Struct({
+    name: S.optional(S.String),
+    principals: S.optional(PrincipalList),
+  }),
+).annotate({
+  identifier: "DnsBindPermission",
+}) as any as S.Schema<DnsBindPermission>;
 
 export interface GetDnsForwardingProjectsLocationsPrivateCloudsRequest {
   /** Required. The resource name of a `DnsForwarding` to retrieve. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/dnsForwarding` */
   name: string;
 }
-export const GetDnsForwardingProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "GetDnsForwardingProjectsLocationsPrivateCloudsRequest" }) as any as S.Schema<GetDnsForwardingProjectsLocationsPrivateCloudsRequest>;
+export const GetDnsForwardingProjectsLocationsPrivateCloudsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetDnsForwardingProjectsLocationsPrivateCloudsRequest",
+  }) as any as S.Schema<GetDnsForwardingProjectsLocationsPrivateCloudsRequest>;
 
 /** A forwarding rule is a mapping of a `domain` to `name_servers`. This mapping allows VMware Engine to resolve domains for attached private clouds by forwarding DNS requests for a given domain to the specified nameservers. */
 export interface ForwardingRule {
@@ -1535,14 +1955,16 @@ export interface ForwardingRule {
   nameServers?: StringList;
 }
 export const ForwardingRule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "domain": S.optional(S.String),
-  "nameServers": S.optional(StringList),
-}),
+  S.Struct({
+    domain: S.optional(S.String),
+    nameServers: S.optional(StringList),
+  }),
 ).annotate({ identifier: "ForwardingRule" }) as any as S.Schema<ForwardingRule>;
 
 export type ForwardingRuleList = ReadonlyArray<ForwardingRule>;
-export const ForwardingRuleList = /*@__PURE__*/ S.Array(ForwardingRule) as any as S.Schema<ForwardingRuleList>;
+export const ForwardingRuleList = /*@__PURE__*/ S.Array(
+  ForwardingRule,
+) as any as S.Schema<ForwardingRuleList>;
 
 /** DNS forwarding config. This config defines a list of domain to name server mappings, and is attached to the private cloud for custom domain resolution. */
 export interface DnsForwarding {
@@ -1556,12 +1978,12 @@ export interface DnsForwarding {
   forwardingRules?: ForwardingRuleList;
 }
 export const DnsForwarding = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "createTime": S.optional(S.String),
-  "name": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "forwardingRules": S.optional(ForwardingRuleList),
-}),
+  S.Struct({
+    createTime: S.optional(S.String),
+    name: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    forwardingRules: S.optional(ForwardingRuleList),
+  }),
 ).annotate({ identifier: "DnsForwarding" }) as any as S.Schema<DnsForwarding>;
 
 export interface GetIamPolicyProjectsLocationsPrivateCloudsRequest {
@@ -1570,12 +1992,21 @@ export interface GetIamPolicyProjectsLocationsPrivateCloudsRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "GetIamPolicyProjectsLocationsPrivateCloudsRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsPrivateCloudsRequest>;
+export const GetIamPolicyProjectsLocationsPrivateCloudsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+resource}:getIamPolicy",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetIamPolicyProjectsLocationsPrivateCloudsRequest",
+  }) as any as S.Schema<GetIamPolicyProjectsLocationsPrivateCloudsRequest>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -1589,12 +2020,12 @@ export interface Expr {
   location?: string;
 }
 export const Expr = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "expression": S.optional(S.String),
-  "title": S.optional(S.String),
-  "description": S.optional(S.String),
-  "location": S.optional(S.String),
-}),
+  S.Struct({
+    expression: S.optional(S.String),
+    title: S.optional(S.String),
+    description: S.optional(S.String),
+    location: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
 /** Associates `members`, or principals, with a `role`. */
@@ -1607,17 +2038,23 @@ export interface Binding {
   condition?: Expr;
 }
 export const Binding = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "members": S.optional(StringList),
-  "role": S.optional(S.String),
-  "condition": S.optional(Expr),
-}),
+  S.Struct({
+    members: S.optional(StringList),
+    role: S.optional(S.String),
+    condition: S.optional(Expr),
+  }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = ReadonlyArray<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+export const BindingList = /*@__PURE__*/ S.Array(
+  Binding,
+) as any as S.Schema<BindingList>;
 
-export type AuditLogConfigLogTypeEnum = "LOG_TYPE_UNSPECIFIED" | "ADMIN_READ" | "DATA_WRITE" | "DATA_READ";
+export type AuditLogConfigLogTypeEnum =
+  | "LOG_TYPE_UNSPECIFIED"
+  | "ADMIN_READ"
+  | "DATA_WRITE"
+  | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -1628,14 +2065,16 @@ export interface AuditLogConfig {
   logType?: AuditLogConfigLogTypeEnum;
 }
 export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "exemptedMembers": S.optional(StringList),
-  "logType": S.optional(AuditLogConfigLogTypeEnum),
-}),
+  S.Struct({
+    exemptedMembers: S.optional(StringList),
+    logType: S.optional(AuditLogConfigLogTypeEnum),
+  }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(AuditLogConfig) as any as S.Schema<AuditLogConfigList>;
+export const AuditLogConfigList = /*@__PURE__*/ S.Array(
+  AuditLogConfig,
+) as any as S.Schema<AuditLogConfigList>;
 
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface AuditConfig {
@@ -1645,14 +2084,16 @@ export interface AuditConfig {
   auditLogConfigs?: AuditLogConfigList;
 }
 export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "service": S.optional(S.String),
-  "auditLogConfigs": S.optional(AuditLogConfigList),
-}),
+  S.Struct({
+    service: S.optional(S.String),
+    auditLogConfigs: S.optional(AuditLogConfigList),
+  }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = ReadonlyArray<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
+export const AuditConfigList = /*@__PURE__*/ S.Array(
+  AuditConfig,
+) as any as S.Schema<AuditConfigList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -1666,12 +2107,12 @@ export interface Policy {
   version?: number;
 }
 export const Policy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bindings": S.optional(BindingList),
-  "etag": S.optional(S.String),
-  "auditConfigs": S.optional(AuditConfigList),
-  "version": S.optional(S.Number),
-}),
+  S.Struct({
+    bindings: S.optional(BindingList),
+    etag: S.optional(S.String),
+    auditConfigs: S.optional(AuditConfigList),
+    version: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
 
 export interface GetIamPolicyProjectsLocationsPrivateCloudsClustersRequest {
@@ -1680,12 +2121,21 @@ export interface GetIamPolicyProjectsLocationsPrivateCloudsClustersRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsPrivateCloudsClustersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "GetIamPolicyProjectsLocationsPrivateCloudsClustersRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsPrivateCloudsClustersRequest>;
+export const GetIamPolicyProjectsLocationsPrivateCloudsClustersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+resource}:getIamPolicy",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetIamPolicyProjectsLocationsPrivateCloudsClustersRequest",
+  }) as any as S.Schema<GetIamPolicyProjectsLocationsPrivateCloudsClustersRequest>;
 
 export interface GetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1693,25 +2143,46 @@ export interface GetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequ
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+resource}:getIamPolicy","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "GetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequest" }) as any as S.Schema<GetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequest>;
+export const GetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+resource}:getIamPolicy",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "GetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequest",
+  }) as any as S.Schema<GetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequest>;
 
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://vmwareengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsRequest",
+}) as any as S.Schema<GetProjectsLocationsRequest>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -1727,26 +2198,40 @@ export interface Location {
   displayName?: string;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "metadata": S.optional(DocumentMap),
-  "labels": S.optional(StringMap),
-  "name": S.optional(S.String),
-  "locationId": S.optional(S.String),
-  "displayName": S.optional(S.String),
-}),
+  S.Struct({
+    metadata: S.optional(DocumentMap),
+    labels: S.optional(StringMap),
+    name: S.optional(S.String),
+    locationId: S.optional(S.String),
+    displayName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export interface GetProjectsLocationsAnnouncementsRequest {
   /** Required. The resource name of the announcement to retrieve. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-west1-a/announcements/announcement-uuid` */
   name: string;
 }
-export const GetProjectsLocationsAnnouncementsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsAnnouncementsRequest" }) as any as S.Schema<GetProjectsLocationsAnnouncementsRequest>;
+export const GetProjectsLocationsAnnouncementsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsAnnouncementsRequest",
+}) as any as S.Schema<GetProjectsLocationsAnnouncementsRequest>;
 
-export type AnnouncementStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "INACTIVE" | "DELETING" | "CREATING";
+export type AnnouncementStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "INACTIVE"
+  | "DELETING"
+  | "CREATING";
 export const AnnouncementStateEnum = /*@__PURE__*/ S.String;
 
 /** Announcement for the resources of Vmware Engine. */
@@ -1775,82 +2260,134 @@ export interface Announcement {
   updateTime?: string;
 }
 export const Announcement = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "createTime": S.optional(S.String),
-  "targetResourceType": S.optional(S.String),
-  "cluster": S.optional(S.String),
-  "name": S.optional(S.String),
-  "state": S.optional(AnnouncementStateEnum),
-  "activityType": S.optional(S.String),
-  "metadata": S.optional(StringMap),
-  "code": S.optional(S.String),
-  "privateCloud": S.optional(S.String),
-  "description": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-}),
+  S.Struct({
+    createTime: S.optional(S.String),
+    targetResourceType: S.optional(S.String),
+    cluster: S.optional(S.String),
+    name: S.optional(S.String),
+    state: S.optional(AnnouncementStateEnum),
+    activityType: S.optional(S.String),
+    metadata: S.optional(StringMap),
+    code: S.optional(S.String),
+    privateCloud: S.optional(S.String),
+    description: S.optional(S.String),
+    updateTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Announcement" }) as any as S.Schema<Announcement>;
 
 export interface GetProjectsLocationsDatastoresRequest {
   /** Required. The resource name of the Datastore to retrieve. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1/datastores/my-datastore` */
   name: string;
 }
-export const GetProjectsLocationsDatastoresRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsDatastoresRequest" }) as any as S.Schema<GetProjectsLocationsDatastoresRequest>;
+export const GetProjectsLocationsDatastoresRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsDatastoresRequest",
+}) as any as S.Schema<GetProjectsLocationsDatastoresRequest>;
 
 export interface GetProjectsLocationsNetworkPeeringsRequest {
   /** Required. The resource name of the network peering to retrieve. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/global/networkPeerings/my-peering` */
   name: string;
 }
-export const GetProjectsLocationsNetworkPeeringsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsNetworkPeeringsRequest" }) as any as S.Schema<GetProjectsLocationsNetworkPeeringsRequest>;
+export const GetProjectsLocationsNetworkPeeringsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsNetworkPeeringsRequest",
+  }) as any as S.Schema<GetProjectsLocationsNetworkPeeringsRequest>;
 
 export interface GetProjectsLocationsNetworkPoliciesRequest {
   /** Required. The resource name of the network policy to retrieve. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1/networkPolicies/my-network-policy` */
   name: string;
 }
-export const GetProjectsLocationsNetworkPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsNetworkPoliciesRequest" }) as any as S.Schema<GetProjectsLocationsNetworkPoliciesRequest>;
+export const GetProjectsLocationsNetworkPoliciesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsNetworkPoliciesRequest",
+  }) as any as S.Schema<GetProjectsLocationsNetworkPoliciesRequest>;
 
 export interface GetProjectsLocationsNetworkPoliciesExternalAccessRulesRequest {
   /** Required. The resource name of the external access firewall rule to retrieve. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1/networkPolicies/my-policy/externalAccessRules/my-rule` */
   name: string;
 }
-export const GetProjectsLocationsNetworkPoliciesExternalAccessRulesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsNetworkPoliciesExternalAccessRulesRequest" }) as any as S.Schema<GetProjectsLocationsNetworkPoliciesExternalAccessRulesRequest>;
+export const GetProjectsLocationsNetworkPoliciesExternalAccessRulesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsNetworkPoliciesExternalAccessRulesRequest",
+  }) as any as S.Schema<GetProjectsLocationsNetworkPoliciesExternalAccessRulesRequest>;
 
 export interface GetProjectsLocationsNodeTypesRequest {
   /** Required. The resource name of the node type to retrieve. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-proj/locations/us-central1-a/nodeTypes/standard-72` */
   name: string;
 }
-export const GetProjectsLocationsNodeTypesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsNodeTypesRequest" }) as any as S.Schema<GetProjectsLocationsNodeTypesRequest>;
+export const GetProjectsLocationsNodeTypesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsNodeTypesRequest",
+}) as any as S.Schema<GetProjectsLocationsNodeTypesRequest>;
 
-export type NodeTypeCapabilitiesItemEnum = "CAPABILITY_UNSPECIFIED" | "STRETCHED_CLUSTERS";
+export type NodeTypeCapabilitiesItemEnum =
+  | "CAPABILITY_UNSPECIFIED"
+  | "STRETCHED_CLUSTERS";
 export const NodeTypeCapabilitiesItemEnum = /*@__PURE__*/ S.String;
 
-export type NodeTypeCapabilitiesItemEnumList = ReadonlyArray<NodeTypeCapabilitiesItemEnum>;
-export const NodeTypeCapabilitiesItemEnumList = /*@__PURE__*/ S.Array(NodeTypeCapabilitiesItemEnum) as any as S.Schema<NodeTypeCapabilitiesItemEnumList>;
+export type NodeTypeCapabilitiesItemEnumList =
+  ReadonlyArray<NodeTypeCapabilitiesItemEnum>;
+export const NodeTypeCapabilitiesItemEnumList = /*@__PURE__*/ S.Array(
+  NodeTypeCapabilitiesItemEnum,
+) as any as S.Schema<NodeTypeCapabilitiesItemEnumList>;
 
 export type NodeTypeKindEnum = "KIND_UNSPECIFIED" | "STANDARD" | "STORAGE_ONLY";
 export const NodeTypeKindEnum = /*@__PURE__*/ S.String;
 
 export type IntegerList = ReadonlyArray<number>;
-export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
+export const IntegerList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<IntegerList>;
 
 /** Describes node type. */
 export interface NodeType {
@@ -1878,62 +2415,103 @@ export interface NodeType {
   diskSizeGb?: number;
 }
 export const NodeType = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "families": S.optional(StringList),
-  "virtualCpuCount": S.optional(S.Number),
-  "totalCoreCount": S.optional(S.Number),
-  "capabilities": S.optional(NodeTypeCapabilitiesItemEnumList),
-  "kind": S.optional(NodeTypeKindEnum),
-  "memoryGb": S.optional(S.Number),
-  "nodeTypeId": S.optional(S.String),
-  "name": S.optional(S.String),
-  "availableCustomCoreCounts": S.optional(IntegerList),
-  "displayName": S.optional(S.String),
-  "diskSizeGb": S.optional(S.Number),
-}),
+  S.Struct({
+    families: S.optional(StringList),
+    virtualCpuCount: S.optional(S.Number),
+    totalCoreCount: S.optional(S.Number),
+    capabilities: S.optional(NodeTypeCapabilitiesItemEnumList),
+    kind: S.optional(NodeTypeKindEnum),
+    memoryGb: S.optional(S.Number),
+    nodeTypeId: S.optional(S.String),
+    name: S.optional(S.String),
+    availableCustomCoreCounts: S.optional(IntegerList),
+    displayName: S.optional(S.String),
+    diskSizeGb: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "NodeType" }) as any as S.Schema<NodeType>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsOperationsRequest",
+}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export interface GetProjectsLocationsPrivateCloudsRequest {
   /** Required. The resource name of the private cloud to retrieve. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud` */
   name: string;
 }
-export const GetProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsPrivateCloudsRequest" }) as any as S.Schema<GetProjectsLocationsPrivateCloudsRequest>;
+export const GetProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsPrivateCloudsRequest",
+}) as any as S.Schema<GetProjectsLocationsPrivateCloudsRequest>;
 
 export interface GetProjectsLocationsPrivateCloudsClustersRequest {
   /** Required. The cluster resource name to retrieve. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/clusters/my-cluster` */
   name: string;
 }
-export const GetProjectsLocationsPrivateCloudsClustersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsPrivateCloudsClustersRequest" }) as any as S.Schema<GetProjectsLocationsPrivateCloudsClustersRequest>;
+export const GetProjectsLocationsPrivateCloudsClustersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsPrivateCloudsClustersRequest",
+  }) as any as S.Schema<GetProjectsLocationsPrivateCloudsClustersRequest>;
 
 export interface GetProjectsLocationsPrivateCloudsClustersNodesRequest {
   /** Required. The resource name of the node to retrieve. For example: `projects/{project}/locations/{location}/privateClouds/{private_cloud}/clusters/{cluster}/nodes/{node}` */
   name: string;
 }
-export const GetProjectsLocationsPrivateCloudsClustersNodesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsPrivateCloudsClustersNodesRequest" }) as any as S.Schema<GetProjectsLocationsPrivateCloudsClustersNodesRequest>;
+export const GetProjectsLocationsPrivateCloudsClustersNodesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsPrivateCloudsClustersNodesRequest",
+  }) as any as S.Schema<GetProjectsLocationsPrivateCloudsClustersNodesRequest>;
 
-export type NodeStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "CREATING" | "FAILED" | "UPGRADING";
+export type NodeStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "CREATING"
+  | "FAILED"
+  | "UPGRADING";
 export const NodeStateEnum = /*@__PURE__*/ S.String;
 
 /** Node in a cluster. */
@@ -1954,68 +2532,121 @@ export interface Node {
   internalIp?: string;
 }
 export const Node = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "customCoreCount": S.optional(S.String),
-  "fqdn": S.optional(S.String),
-  "nodeTypeId": S.optional(S.String),
-  "version": S.optional(S.String),
-  "name": S.optional(S.String),
-  "state": S.optional(NodeStateEnum),
-  "internalIp": S.optional(S.String),
-}),
+  S.Struct({
+    customCoreCount: S.optional(S.String),
+    fqdn: S.optional(S.String),
+    nodeTypeId: S.optional(S.String),
+    version: S.optional(S.String),
+    name: S.optional(S.String),
+    state: S.optional(NodeStateEnum),
+    internalIp: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Node" }) as any as S.Schema<Node>;
 
 export interface GetProjectsLocationsPrivateCloudsExternalAddressesRequest {
   /** Required. The resource name of the external IP address to retrieve. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/externalAddresses/my-ip` */
   name: string;
 }
-export const GetProjectsLocationsPrivateCloudsExternalAddressesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsPrivateCloudsExternalAddressesRequest" }) as any as S.Schema<GetProjectsLocationsPrivateCloudsExternalAddressesRequest>;
+export const GetProjectsLocationsPrivateCloudsExternalAddressesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsPrivateCloudsExternalAddressesRequest",
+  }) as any as S.Schema<GetProjectsLocationsPrivateCloudsExternalAddressesRequest>;
 
 export interface GetProjectsLocationsPrivateCloudsHcxActivationKeysRequest {
   /** Required. The resource name of the HCX activation key to retrieve. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1/privateClouds/my-cloud/hcxActivationKeys/my-key` */
   name: string;
 }
-export const GetProjectsLocationsPrivateCloudsHcxActivationKeysRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsPrivateCloudsHcxActivationKeysRequest" }) as any as S.Schema<GetProjectsLocationsPrivateCloudsHcxActivationKeysRequest>;
+export const GetProjectsLocationsPrivateCloudsHcxActivationKeysRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsPrivateCloudsHcxActivationKeysRequest",
+  }) as any as S.Schema<GetProjectsLocationsPrivateCloudsHcxActivationKeysRequest>;
 
 export interface GetProjectsLocationsPrivateCloudsLoggingServersRequest {
   /** Required. The resource name of the Logging Server to retrieve. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/loggingServers/my-logging-server` */
   name: string;
 }
-export const GetProjectsLocationsPrivateCloudsLoggingServersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsPrivateCloudsLoggingServersRequest" }) as any as S.Schema<GetProjectsLocationsPrivateCloudsLoggingServersRequest>;
+export const GetProjectsLocationsPrivateCloudsLoggingServersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsPrivateCloudsLoggingServersRequest",
+  }) as any as S.Schema<GetProjectsLocationsPrivateCloudsLoggingServersRequest>;
 
 export interface GetProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest {
   /** Required. The resource name of the management DNS zone binding to retrieve. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/managementDnsZoneBindings/my-management-dns-zone-binding` */
   name: string;
 }
-export const GetProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest" }) as any as S.Schema<GetProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest>;
+export const GetProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "GetProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest",
+  }) as any as S.Schema<GetProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest>;
 
 export interface GetProjectsLocationsPrivateCloudsSubnetsRequest {
   /** Required. The resource name of the subnet to retrieve. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/subnets/my-subnet` */
   name: string;
 }
-export const GetProjectsLocationsPrivateCloudsSubnetsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsPrivateCloudsSubnetsRequest" }) as any as S.Schema<GetProjectsLocationsPrivateCloudsSubnetsRequest>;
+export const GetProjectsLocationsPrivateCloudsSubnetsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsPrivateCloudsSubnetsRequest",
+  }) as any as S.Schema<GetProjectsLocationsPrivateCloudsSubnetsRequest>;
 
-export type SubnetStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "CREATING" | "UPDATING" | "DELETING" | "RECONCILING" | "FAILED";
+export type SubnetStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "CREATING"
+  | "UPDATING"
+  | "DELETING"
+  | "RECONCILING"
+  | "FAILED";
 export const SubnetStateEnum = /*@__PURE__*/ S.String;
 
 /** Subnet in a private cloud. Either `management` subnets (such as vMotion) that are read-only, or `userDefined`, which can also be updated. */
@@ -2034,25 +2665,34 @@ export interface Subnet {
   vlanId?: number;
 }
 export const Subnet = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "gatewayIp": S.optional(S.String),
-  "name": S.optional(S.String),
-  "state": S.optional(SubnetStateEnum),
-  "type": S.optional(S.String),
-  "ipCidrRange": S.optional(S.String),
-  "vlanId": S.optional(S.Number),
-}),
+  S.Struct({
+    gatewayIp: S.optional(S.String),
+    name: S.optional(S.String),
+    state: S.optional(SubnetStateEnum),
+    type: S.optional(S.String),
+    ipCidrRange: S.optional(S.String),
+    vlanId: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "Subnet" }) as any as S.Schema<Subnet>;
 
 export interface GetProjectsLocationsPrivateCloudsUpgradesRequest {
   /** Required. The name of the `Upgrade` resource to be retrieved. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-west1-a/privateClouds/my-cloud/upgrades/my-upgrade` */
   name: string;
 }
-export const GetProjectsLocationsPrivateCloudsUpgradesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsPrivateCloudsUpgradesRequest" }) as any as S.Schema<GetProjectsLocationsPrivateCloudsUpgradesRequest>;
+export const GetProjectsLocationsPrivateCloudsUpgradesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsPrivateCloudsUpgradesRequest",
+  }) as any as S.Schema<GetProjectsLocationsPrivateCloudsUpgradesRequest>;
 
 /** Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive). The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time). When both start and end are unspecified, the interval matches any time. */
 export interface Interval {
@@ -2062,13 +2702,21 @@ export interface Interval {
   endTime?: string;
 }
 export const Interval = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "startTime": S.optional(S.String),
-  "endTime": S.optional(S.String),
-}),
+  S.Struct({
+    startTime: S.optional(S.String),
+    endTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Interval" }) as any as S.Schema<Interval>;
 
-export type TimeWindowDayOfWeekEnum = "DAY_OF_WEEK_UNSPECIFIED" | "MONDAY" | "TUESDAY" | "WEDNESDAY" | "THURSDAY" | "FRIDAY" | "SATURDAY" | "SUNDAY";
+export type TimeWindowDayOfWeekEnum =
+  | "DAY_OF_WEEK_UNSPECIFIED"
+  | "MONDAY"
+  | "TUESDAY"
+  | "WEDNESDAY"
+  | "THURSDAY"
+  | "FRIDAY"
+  | "SATURDAY"
+  | "SUNDAY";
 export const TimeWindowDayOfWeekEnum = /*@__PURE__*/ S.String;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
@@ -2083,12 +2731,12 @@ export interface TimeOfDay {
   nanos?: number;
 }
 export const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "seconds": S.optional(S.Number),
-  "hours": S.optional(S.Number),
-  "minutes": S.optional(S.Number),
-  "nanos": S.optional(S.Number),
-}),
+  S.Struct({
+    seconds: S.optional(S.Number),
+    hours: S.optional(S.Number),
+    minutes: S.optional(S.Number),
+    nanos: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "TimeOfDay" }) as any as S.Schema<TimeOfDay>;
 
 /** Represents the time window to perform upgrade activities. */
@@ -2101,23 +2749,41 @@ export interface TimeWindow {
   duration?: string;
 }
 export const TimeWindow = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dayOfWeek": S.optional(TimeWindowDayOfWeekEnum),
-  "startTime": S.optional(TimeOfDay),
-  "duration": S.optional(S.String),
-}),
+  S.Struct({
+    dayOfWeek: S.optional(TimeWindowDayOfWeekEnum),
+    startTime: S.optional(TimeOfDay),
+    duration: S.optional(S.String),
+  }),
 ).annotate({ identifier: "TimeWindow" }) as any as S.Schema<TimeWindow>;
 
 export type TimeWindowList = ReadonlyArray<TimeWindow>;
-export const TimeWindowList = /*@__PURE__*/ S.Array(TimeWindow) as any as S.Schema<TimeWindowList>;
+export const TimeWindowList = /*@__PURE__*/ S.Array(
+  TimeWindow,
+) as any as S.Schema<TimeWindowList>;
 
 export type ScheduleLastEditorEnum = "EDITOR_UNSPECIFIED" | "SYSTEM" | "USER";
 export const ScheduleLastEditorEnum = /*@__PURE__*/ S.String;
 
-export type WeeklyTimeIntervalStartDayEnum = "DAY_OF_WEEK_UNSPECIFIED" | "MONDAY" | "TUESDAY" | "WEDNESDAY" | "THURSDAY" | "FRIDAY" | "SATURDAY" | "SUNDAY";
+export type WeeklyTimeIntervalStartDayEnum =
+  | "DAY_OF_WEEK_UNSPECIFIED"
+  | "MONDAY"
+  | "TUESDAY"
+  | "WEDNESDAY"
+  | "THURSDAY"
+  | "FRIDAY"
+  | "SATURDAY"
+  | "SUNDAY";
 export const WeeklyTimeIntervalStartDayEnum = /*@__PURE__*/ S.String;
 
-export type WeeklyTimeIntervalEndDayEnum = "DAY_OF_WEEK_UNSPECIFIED" | "MONDAY" | "TUESDAY" | "WEDNESDAY" | "THURSDAY" | "FRIDAY" | "SATURDAY" | "SUNDAY";
+export type WeeklyTimeIntervalEndDayEnum =
+  | "DAY_OF_WEEK_UNSPECIFIED"
+  | "MONDAY"
+  | "TUESDAY"
+  | "WEDNESDAY"
+  | "THURSDAY"
+  | "FRIDAY"
+  | "SATURDAY"
+  | "SUNDAY";
 export const WeeklyTimeIntervalEndDayEnum = /*@__PURE__*/ S.String;
 
 /** Represents a time interval, spanning across days of the week. Until local timezones are supported, this interval is in UTC. */
@@ -2132,16 +2798,20 @@ export interface WeeklyTimeInterval {
   startTime?: TimeOfDay;
 }
 export const WeeklyTimeInterval = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "startDay": S.optional(WeeklyTimeIntervalStartDayEnum),
-  "endDay": S.optional(WeeklyTimeIntervalEndDayEnum),
-  "endTime": S.optional(TimeOfDay),
-  "startTime": S.optional(TimeOfDay),
-}),
-).annotate({ identifier: "WeeklyTimeInterval" }) as any as S.Schema<WeeklyTimeInterval>;
+  S.Struct({
+    startDay: S.optional(WeeklyTimeIntervalStartDayEnum),
+    endDay: S.optional(WeeklyTimeIntervalEndDayEnum),
+    endTime: S.optional(TimeOfDay),
+    startTime: S.optional(TimeOfDay),
+  }),
+).annotate({
+  identifier: "WeeklyTimeInterval",
+}) as any as S.Schema<WeeklyTimeInterval>;
 
 export type WeeklyTimeIntervalList = ReadonlyArray<WeeklyTimeInterval>;
-export const WeeklyTimeIntervalList = /*@__PURE__*/ S.Array(WeeklyTimeInterval) as any as S.Schema<WeeklyTimeIntervalList>;
+export const WeeklyTimeIntervalList = /*@__PURE__*/ S.Array(
+  WeeklyTimeInterval,
+) as any as S.Schema<WeeklyTimeIntervalList>;
 
 /** Constraints to be applied while editing a schedule. These constraints ensure that `Upgrade` specific requirements are met. */
 export interface Constraints {
@@ -2155,12 +2825,12 @@ export interface Constraints {
   minHoursDay?: number;
 }
 export const Constraints = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "disallowedIntervals": S.optional(WeeklyTimeIntervalList),
-  "minHoursWeek": S.optional(S.Number),
-  "rescheduleDateRange": S.optional(Interval),
-  "minHoursDay": S.optional(S.Number),
-}),
+  S.Struct({
+    disallowedIntervals: S.optional(WeeklyTimeIntervalList),
+    minHoursWeek: S.optional(S.Number),
+    rescheduleDateRange: S.optional(Interval),
+    minHoursDay: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "Constraints" }) as any as S.Schema<Constraints>;
 
 /** Schedule for the upgrade. */
@@ -2177,25 +2847,64 @@ export interface Schedule {
   constraints?: Constraints;
 }
 export const Schedule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "editWindow": S.optional(Interval),
-  "weeklyWindows": S.optional(TimeWindowList),
-  "lastEditor": S.optional(ScheduleLastEditorEnum),
-  "startTime": S.optional(S.String),
-  "constraints": S.optional(Constraints),
-}),
+  S.Struct({
+    editWindow: S.optional(Interval),
+    weeklyWindows: S.optional(TimeWindowList),
+    lastEditor: S.optional(ScheduleLastEditorEnum),
+    startTime: S.optional(S.String),
+    constraints: S.optional(Constraints),
+  }),
 ).annotate({ identifier: "Schedule" }) as any as S.Schema<Schedule>;
 
-export type UpgradeTypeEnum = "TYPE_UNSPECIFIED" | "VSPHERE_UPGRADE" | "VSPHERE_PATCH" | "WORKAROUND" | "FIRMWARE_UPGRADE" | "SWITCH_UPGRADE" | "OTHER" | "INFRASTRUCTURE_UPGRADE";
+export type UpgradeTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "VSPHERE_UPGRADE"
+  | "VSPHERE_PATCH"
+  | "WORKAROUND"
+  | "FIRMWARE_UPGRADE"
+  | "SWITCH_UPGRADE"
+  | "OTHER"
+  | "INFRASTRUCTURE_UPGRADE";
 export const UpgradeTypeEnum = /*@__PURE__*/ S.String;
 
-export type UpgradeStateEnum = "STATE_UNSPECIFIED" | "SCHEDULED" | "ONGOING" | "SUCCEEDED" | "PAUSED" | "FAILED" | "CANCELLING" | "CANCELLED" | "RESCHEDULING";
+export type UpgradeStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "SCHEDULED"
+  | "ONGOING"
+  | "SUCCEEDED"
+  | "PAUSED"
+  | "FAILED"
+  | "CANCELLING"
+  | "CANCELLED"
+  | "RESCHEDULING";
 export const UpgradeStateEnum = /*@__PURE__*/ S.String;
 
-export type VmwareUpgradeComponentComponentTypeEnum = "VMWARE_COMPONENT_TYPE_UNSPECIFIED" | "VCENTER" | "ESXI" | "NSXT_UC" | "NSXT_EDGE" | "NSXT_MGR" | "HCX" | "VSAN" | "DVS" | "NAMESERVER_VM" | "KMS_VM" | "WITNESS_VM" | "NSXT" | "CLUSTER" | "VM_TOOLS";
+export type VmwareUpgradeComponentComponentTypeEnum =
+  | "VMWARE_COMPONENT_TYPE_UNSPECIFIED"
+  | "VCENTER"
+  | "ESXI"
+  | "NSXT_UC"
+  | "NSXT_EDGE"
+  | "NSXT_MGR"
+  | "HCX"
+  | "VSAN"
+  | "DVS"
+  | "NAMESERVER_VM"
+  | "KMS_VM"
+  | "WITNESS_VM"
+  | "NSXT"
+  | "CLUSTER"
+  | "VM_TOOLS";
 export const VmwareUpgradeComponentComponentTypeEnum = /*@__PURE__*/ S.String;
 
-export type VmwareUpgradeComponentStateEnum = "STATE_UNSPECIFIED" | "RUNNING" | "PAUSED" | "SUCCEEDED" | "FAILED" | "NOT_STARTED" | "NOT_APPLICABLE";
+export type VmwareUpgradeComponentStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "RUNNING"
+  | "PAUSED"
+  | "SUCCEEDED"
+  | "FAILED"
+  | "NOT_STARTED"
+  | "NOT_APPLICABLE";
 export const VmwareUpgradeComponentStateEnum = /*@__PURE__*/ S.String;
 
 /** Per component upgrade resource */
@@ -2206,14 +2915,18 @@ export interface VmwareUpgradeComponent {
   state?: VmwareUpgradeComponentStateEnum;
 }
 export const VmwareUpgradeComponent = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "componentType": S.optional(VmwareUpgradeComponentComponentTypeEnum),
-  "state": S.optional(VmwareUpgradeComponentStateEnum),
-}),
-).annotate({ identifier: "VmwareUpgradeComponent" }) as any as S.Schema<VmwareUpgradeComponent>;
+  S.Struct({
+    componentType: S.optional(VmwareUpgradeComponentComponentTypeEnum),
+    state: S.optional(VmwareUpgradeComponentStateEnum),
+  }),
+).annotate({
+  identifier: "VmwareUpgradeComponent",
+}) as any as S.Schema<VmwareUpgradeComponent>;
 
 export type VmwareUpgradeComponentList = ReadonlyArray<VmwareUpgradeComponent>;
-export const VmwareUpgradeComponentList = /*@__PURE__*/ S.Array(VmwareUpgradeComponent) as any as S.Schema<VmwareUpgradeComponentList>;
+export const VmwareUpgradeComponentList = /*@__PURE__*/ S.Array(
+  VmwareUpgradeComponent,
+) as any as S.Schema<VmwareUpgradeComponentList>;
 
 /** Describes Private cloud Upgrade. */
 export interface Upgrade {
@@ -2249,44 +2962,62 @@ export interface Upgrade {
   endTime?: string;
 }
 export const Upgrade = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "schedule": S.optional(Schedule),
-  "version": S.optional(S.String),
-  "startVersion": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "uid": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "targetVersion": S.optional(S.String),
-  "estimatedDuration": S.optional(S.String),
-  "type": S.optional(UpgradeTypeEnum),
-  "name": S.optional(S.String),
-  "state": S.optional(UpgradeStateEnum),
-  "description": S.optional(S.String),
-  "etag": S.optional(S.String),
-  "componentUpgrades": S.optional(VmwareUpgradeComponentList),
-  "endTime": S.optional(S.String),
-}),
+  S.Struct({
+    schedule: S.optional(Schedule),
+    version: S.optional(S.String),
+    startVersion: S.optional(S.String),
+    createTime: S.optional(S.String),
+    uid: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    targetVersion: S.optional(S.String),
+    estimatedDuration: S.optional(S.String),
+    type: S.optional(UpgradeTypeEnum),
+    name: S.optional(S.String),
+    state: S.optional(UpgradeStateEnum),
+    description: S.optional(S.String),
+    etag: S.optional(S.String),
+    componentUpgrades: S.optional(VmwareUpgradeComponentList),
+    endTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Upgrade" }) as any as S.Schema<Upgrade>;
 
 export interface GetProjectsLocationsPrivateConnectionsRequest {
   /** Required. The resource name of the private connection to retrieve. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1/privateConnections/my-connection` */
   name: string;
 }
-export const GetProjectsLocationsPrivateConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsPrivateConnectionsRequest" }) as any as S.Schema<GetProjectsLocationsPrivateConnectionsRequest>;
+export const GetProjectsLocationsPrivateConnectionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsPrivateConnectionsRequest",
+  }) as any as S.Schema<GetProjectsLocationsPrivateConnectionsRequest>;
 
 export interface GetProjectsLocationsVmwareEngineNetworksRequest {
   /** Required. The resource name of the VMware Engine network to retrieve. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/global/vmwareEngineNetworks/my-network` */
   name: string;
 }
-export const GetProjectsLocationsVmwareEngineNetworksRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsVmwareEngineNetworksRequest" }) as any as S.Schema<GetProjectsLocationsVmwareEngineNetworksRequest>;
+export const GetProjectsLocationsVmwareEngineNetworksRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsVmwareEngineNetworksRequest",
+  }) as any as S.Schema<GetProjectsLocationsVmwareEngineNetworksRequest>;
 
 /** Request message for VmwareEngine.GrantDnsBindPermission */
 export interface GrantDnsBindPermissionRequest {
@@ -2296,11 +3027,13 @@ export interface GrantDnsBindPermissionRequest {
   requestId?: string;
 }
 export const GrantDnsBindPermissionRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "principal": S.optional(Principal),
-  "requestId": S.optional(S.String),
-}),
-).annotate({ identifier: "GrantDnsBindPermissionRequest" }) as any as S.Schema<GrantDnsBindPermissionRequest>;
+  S.Struct({
+    principal: S.optional(Principal),
+    requestId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GrantDnsBindPermissionRequest",
+}) as any as S.Schema<GrantDnsBindPermissionRequest>;
 
 export interface GrantProjectsLocationsDnsBindPermissionRequest {
   /** Required. The name of the resource which stores the users/service accounts having the permission to bind to the corresponding intranet VPC of the consumer project. DnsBindPermission is a global resource. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/global/dnsBindPermission` */
@@ -2308,12 +3041,21 @@ export interface GrantProjectsLocationsDnsBindPermissionRequest {
   /** Request body */
   body?: GrantDnsBindPermissionRequest;
 }
-export const GrantProjectsLocationsDnsBindPermissionRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GrantDnsBindPermissionRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:grant","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "GrantProjectsLocationsDnsBindPermissionRequest" }) as any as S.Schema<GrantProjectsLocationsDnsBindPermissionRequest>;
+export const GrantProjectsLocationsDnsBindPermissionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(GrantDnsBindPermissionRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:grant",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GrantProjectsLocationsDnsBindPermissionRequest",
+  }) as any as S.Schema<GrantProjectsLocationsDnsBindPermissionRequest>;
 
 export interface ListProjectsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
@@ -2328,17 +3070,27 @@ export interface ListProjectsLocationsRequest {
   pageToken?: string;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/locations","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
+  S.Struct({
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}/locations",
+      baseUrl: "https://vmwareengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsRequest",
+}) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(
+  Location,
+) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -2348,11 +3100,13 @@ export interface ListLocationsResponse {
   locations?: LocationList;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "locations": S.optional(LocationList),
-}),
-).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    locations: S.optional(LocationList),
+  }),
+).annotate({
+  identifier: "ListLocationsResponse",
+}) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsLocationsAnnouncementsRequest {
   /** A page token, received from a previous `ListAnnouncements` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAnnouncements` must match the call that provided the page token. */
@@ -2366,18 +3120,29 @@ export interface ListProjectsLocationsAnnouncementsRequest {
   /** A filter expression that matches resources returned in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be `=`, `!=`, `>`, or `<`. For example, if you are filtering a list of announcement runs, you can exclude the ones named `example-announcement` by specifying `name != "example-announcement"`. You can also filter nested fields. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (name = "example-announcement") (createTime > "2021-04-12T08:15:10.40Z") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (name = "announcement-1") AND (createTime > "2021-04-12T08:15:10.40Z") OR (name = "announcement-2") ``` */
   filter?: string;
 }
-export const ListProjectsLocationsAnnouncementsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/announcements","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsAnnouncementsRequest" }) as any as S.Schema<ListProjectsLocationsAnnouncementsRequest>;
+export const ListProjectsLocationsAnnouncementsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      filter: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/announcements",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsAnnouncementsRequest",
+  }) as any as S.Schema<ListProjectsLocationsAnnouncementsRequest>;
 
 export type AnnouncementList = ReadonlyArray<Announcement>;
-export const AnnouncementList = /*@__PURE__*/ S.Array(Announcement) as any as S.Schema<AnnouncementList>;
+export const AnnouncementList = /*@__PURE__*/ S.Array(
+  Announcement,
+) as any as S.Schema<AnnouncementList>;
 
 /** Response message for VmwareEngine.ListAnnouncements */
 export interface ListAnnouncementsResponse {
@@ -2389,12 +3154,14 @@ export interface ListAnnouncementsResponse {
   unreachable?: StringList;
 }
 export const ListAnnouncementsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "announcements": S.optional(AnnouncementList),
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListAnnouncementsResponse" }) as any as S.Schema<ListAnnouncementsResponse>;
+  S.Struct({
+    announcements: S.optional(AnnouncementList),
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListAnnouncementsResponse",
+}) as any as S.Schema<ListAnnouncementsResponse>;
 
 export interface ListProjectsLocationsDatastoresRequest {
   /** Optional. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -2410,19 +3177,30 @@ export interface ListProjectsLocationsDatastoresRequest {
   /** Optional. Sorts list results by a certain order. By default, returned results are ordered by `name` in ascending order. You can also sort results in descending order based on the `name` value using `orderBy="name desc"`. Currently, only ordering by `name` is supported. */
   orderBy?: string;
 }
-export const ListProjectsLocationsDatastoresRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/datastores","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsDatastoresRequest" }) as any as S.Schema<ListProjectsLocationsDatastoresRequest>;
+export const ListProjectsLocationsDatastoresRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      requestId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      filter: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/datastores",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsDatastoresRequest",
+}) as any as S.Schema<ListProjectsLocationsDatastoresRequest>;
 
 export type DatastoreList = ReadonlyArray<Datastore>;
-export const DatastoreList = /*@__PURE__*/ S.Array(Datastore) as any as S.Schema<DatastoreList>;
+export const DatastoreList = /*@__PURE__*/ S.Array(
+  Datastore,
+) as any as S.Schema<DatastoreList>;
 
 /** Response message for VmwareEngine.ListDatastores */
 export interface ListDatastoresResponse {
@@ -2434,12 +3212,14 @@ export interface ListDatastoresResponse {
   datastores?: DatastoreList;
 }
 export const ListDatastoresResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "unreachable": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-  "datastores": S.optional(DatastoreList),
-}),
-).annotate({ identifier: "ListDatastoresResponse" }) as any as S.Schema<ListDatastoresResponse>;
+  S.Struct({
+    unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+    datastores: S.optional(DatastoreList),
+  }),
+).annotate({
+  identifier: "ListDatastoresResponse",
+}) as any as S.Schema<ListDatastoresResponse>;
 
 export interface ListProjectsLocationsNetworkPeeringsRequest {
   /** Required. The resource name of the location (global) to query for network peerings. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/global` */
@@ -2453,18 +3233,29 @@ export interface ListProjectsLocationsNetworkPeeringsRequest {
   /** Sorts list results by a certain order. By default, returned results are ordered by `name` in ascending order. You can also sort results in descending order based on the `name` value using `orderBy="name desc"`. Currently, only ordering by `name` is supported. */
   orderBy?: string;
 }
-export const ListProjectsLocationsNetworkPeeringsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/networkPeerings","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsNetworkPeeringsRequest" }) as any as S.Schema<ListProjectsLocationsNetworkPeeringsRequest>;
+export const ListProjectsLocationsNetworkPeeringsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      filter: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/networkPeerings",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsNetworkPeeringsRequest",
+  }) as any as S.Schema<ListProjectsLocationsNetworkPeeringsRequest>;
 
 export type NetworkPeeringList = ReadonlyArray<NetworkPeering>;
-export const NetworkPeeringList = /*@__PURE__*/ S.Array(NetworkPeering) as any as S.Schema<NetworkPeeringList>;
+export const NetworkPeeringList = /*@__PURE__*/ S.Array(
+  NetworkPeering,
+) as any as S.Schema<NetworkPeeringList>;
 
 /** Response message for VmwareEngine.ListNetworkPeerings */
 export interface ListNetworkPeeringsResponse {
@@ -2476,12 +3267,14 @@ export interface ListNetworkPeeringsResponse {
   networkPeerings?: NetworkPeeringList;
 }
 export const ListNetworkPeeringsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-  "networkPeerings": S.optional(NetworkPeeringList),
-}),
-).annotate({ identifier: "ListNetworkPeeringsResponse" }) as any as S.Schema<ListNetworkPeeringsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+    networkPeerings: S.optional(NetworkPeeringList),
+  }),
+).annotate({
+  identifier: "ListNetworkPeeringsResponse",
+}) as any as S.Schema<ListNetworkPeeringsResponse>;
 
 export interface ListProjectsLocationsNetworkPeeringsPeeringRoutesRequest {
   /** Required. The resource name of the network peering to retrieve peering routes from. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/global/networkPeerings/my-peering` */
@@ -2493,19 +3286,35 @@ export interface ListProjectsLocationsNetworkPeeringsPeeringRoutesRequest {
   /** The maximum number of peering routes to return in one page. The service may return fewer than this value. The maximum value is coerced to 1000. The default value of this field is 500. */
   pageSize?: number;
 }
-export const ListProjectsLocationsNetworkPeeringsPeeringRoutesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/peeringRoutes","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsNetworkPeeringsPeeringRoutesRequest" }) as any as S.Schema<ListProjectsLocationsNetworkPeeringsPeeringRoutesRequest>;
+export const ListProjectsLocationsNetworkPeeringsPeeringRoutesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/peeringRoutes",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsNetworkPeeringsPeeringRoutesRequest",
+  }) as any as S.Schema<ListProjectsLocationsNetworkPeeringsPeeringRoutesRequest>;
 
-export type PeeringRouteDirectionEnum = "DIRECTION_UNSPECIFIED" | "INCOMING" | "OUTGOING";
+export type PeeringRouteDirectionEnum =
+  | "DIRECTION_UNSPECIFIED"
+  | "INCOMING"
+  | "OUTGOING";
 export const PeeringRouteDirectionEnum = /*@__PURE__*/ S.String;
 
-export type PeeringRouteTypeEnum = "TYPE_UNSPECIFIED" | "DYNAMIC_PEERING_ROUTE" | "STATIC_PEERING_ROUTE" | "SUBNET_PEERING_ROUTE";
+export type PeeringRouteTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "DYNAMIC_PEERING_ROUTE"
+  | "STATIC_PEERING_ROUTE"
+  | "SUBNET_PEERING_ROUTE";
 export const PeeringRouteTypeEnum = /*@__PURE__*/ S.String;
 
 /** Exchanged network peering route. */
@@ -2524,18 +3333,20 @@ export interface PeeringRoute {
   type?: PeeringRouteTypeEnum;
 }
 export const PeeringRoute = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextHopRegion": S.optional(S.String),
-  "direction": S.optional(PeeringRouteDirectionEnum),
-  "destRange": S.optional(S.String),
-  "priority": S.optional(S.String),
-  "imported": S.optional(S.Boolean),
-  "type": S.optional(PeeringRouteTypeEnum),
-}),
+  S.Struct({
+    nextHopRegion: S.optional(S.String),
+    direction: S.optional(PeeringRouteDirectionEnum),
+    destRange: S.optional(S.String),
+    priority: S.optional(S.String),
+    imported: S.optional(S.Boolean),
+    type: S.optional(PeeringRouteTypeEnum),
+  }),
 ).annotate({ identifier: "PeeringRoute" }) as any as S.Schema<PeeringRoute>;
 
 export type PeeringRouteList = ReadonlyArray<PeeringRoute>;
-export const PeeringRouteList = /*@__PURE__*/ S.Array(PeeringRoute) as any as S.Schema<PeeringRouteList>;
+export const PeeringRouteList = /*@__PURE__*/ S.Array(
+  PeeringRoute,
+) as any as S.Schema<PeeringRouteList>;
 
 /** Response message for VmwareEngine.ListPeeringRoutes */
 export interface ListPeeringRoutesResponse {
@@ -2545,11 +3356,13 @@ export interface ListPeeringRoutesResponse {
   nextPageToken?: string;
 }
 export const ListPeeringRoutesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "peeringRoutes": S.optional(PeeringRouteList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListPeeringRoutesResponse" }) as any as S.Schema<ListPeeringRoutesResponse>;
+  S.Struct({
+    peeringRoutes: S.optional(PeeringRouteList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListPeeringRoutesResponse",
+}) as any as S.Schema<ListPeeringRoutesResponse>;
 
 export interface ListProjectsLocationsNetworkPoliciesRequest {
   /** A filter expression that matches resources returned in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be `=`, `!=`, `>`, or `<`. For example, if you are filtering a list of network policies, you can exclude the ones named `example-policy` by specifying `name != "example-policy"`. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (name = "example-policy") (createTime > "2021-04-12T08:15:10.40Z") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (name = "example-policy-1") AND (createTime > "2021-04-12T08:15:10.40Z") OR (name = "example-policy-2") ``` */
@@ -2563,18 +3376,29 @@ export interface ListProjectsLocationsNetworkPoliciesRequest {
   /** A page token, received from a previous `ListNetworkPolicies` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListNetworkPolicies` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsNetworkPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/networkPolicies","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsNetworkPoliciesRequest" }) as any as S.Schema<ListProjectsLocationsNetworkPoliciesRequest>;
+export const ListProjectsLocationsNetworkPoliciesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      filter: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/networkPolicies",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsNetworkPoliciesRequest",
+  }) as any as S.Schema<ListProjectsLocationsNetworkPoliciesRequest>;
 
 export type NetworkPolicyList = ReadonlyArray<NetworkPolicy>;
-export const NetworkPolicyList = /*@__PURE__*/ S.Array(NetworkPolicy) as any as S.Schema<NetworkPolicyList>;
+export const NetworkPolicyList = /*@__PURE__*/ S.Array(
+  NetworkPolicy,
+) as any as S.Schema<NetworkPolicyList>;
 
 /** Response message for VmwareEngine.ListNetworkPolicies */
 export interface ListNetworkPoliciesResponse {
@@ -2586,12 +3410,14 @@ export interface ListNetworkPoliciesResponse {
   nextPageToken?: string;
 }
 export const ListNetworkPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "networkPolicies": S.optional(NetworkPolicyList),
-  "unreachable": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListNetworkPoliciesResponse" }) as any as S.Schema<ListNetworkPoliciesResponse>;
+  S.Struct({
+    networkPolicies: S.optional(NetworkPolicyList),
+    unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListNetworkPoliciesResponse",
+}) as any as S.Schema<ListNetworkPoliciesResponse>;
 
 export interface ListProjectsLocationsNetworkPoliciesExternalAccessRulesRequest {
   /** A filter expression that matches resources returned in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be `=`, `!=`, `>`, or `<`. For example, if you are filtering a list of external access rules, you can exclude the ones named `example-rule` by specifying `name != "example-rule"`. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (name = "example-rule") (createTime > "2021-04-12T08:15:10.40Z") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (name = "example-rule-1") AND (createTime > "2021-04-12T08:15:10.40Z") OR (name = "example-rule-2") ``` */
@@ -2605,18 +3431,30 @@ export interface ListProjectsLocationsNetworkPoliciesExternalAccessRulesRequest 
   /** A page token, received from a previous `ListExternalAccessRulesRequest` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListExternalAccessRulesRequest` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsNetworkPoliciesExternalAccessRulesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/externalAccessRules","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsNetworkPoliciesExternalAccessRulesRequest" }) as any as S.Schema<ListProjectsLocationsNetworkPoliciesExternalAccessRulesRequest>;
+export const ListProjectsLocationsNetworkPoliciesExternalAccessRulesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      filter: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/externalAccessRules",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "ListProjectsLocationsNetworkPoliciesExternalAccessRulesRequest",
+  }) as any as S.Schema<ListProjectsLocationsNetworkPoliciesExternalAccessRulesRequest>;
 
 export type ExternalAccessRuleList = ReadonlyArray<ExternalAccessRule>;
-export const ExternalAccessRuleList = /*@__PURE__*/ S.Array(ExternalAccessRule) as any as S.Schema<ExternalAccessRuleList>;
+export const ExternalAccessRuleList = /*@__PURE__*/ S.Array(
+  ExternalAccessRule,
+) as any as S.Schema<ExternalAccessRuleList>;
 
 /** Response message for VmwareEngine.ListExternalAccessRules */
 export interface ListExternalAccessRulesResponse {
@@ -2628,12 +3466,14 @@ export interface ListExternalAccessRulesResponse {
   externalAccessRules?: ExternalAccessRuleList;
 }
 export const ListExternalAccessRulesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "unreachable": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-  "externalAccessRules": S.optional(ExternalAccessRuleList),
-}),
-).annotate({ identifier: "ListExternalAccessRulesResponse" }) as any as S.Schema<ListExternalAccessRulesResponse>;
+  S.Struct({
+    unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+    externalAccessRules: S.optional(ExternalAccessRuleList),
+  }),
+).annotate({
+  identifier: "ListExternalAccessRulesResponse",
+}) as any as S.Schema<ListExternalAccessRulesResponse>;
 
 export interface ListProjectsLocationsNodeTypesRequest {
   /** A filter expression that matches resources returned in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be `=`, `!=`, `>`, or `<`. For example, if you are filtering a list of node types, you can exclude the ones named `standard-72` by specifying `name != "standard-72"`. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (name = "standard-72") (virtual_cpu_count > 2) ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (name = "standard-96") AND (virtual_cpu_count > 2) OR (name = "standard-72") ``` */
@@ -2645,17 +3485,28 @@ export interface ListProjectsLocationsNodeTypesRequest {
   /** The maximum number of node types to return in one page. The service may return fewer than this value. The maximum value is coerced to 1000. The default value of this field is 500. */
   pageSize?: number;
 }
-export const ListProjectsLocationsNodeTypesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/nodeTypes","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsNodeTypesRequest" }) as any as S.Schema<ListProjectsLocationsNodeTypesRequest>;
+export const ListProjectsLocationsNodeTypesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      filter: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/nodeTypes",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsNodeTypesRequest",
+}) as any as S.Schema<ListProjectsLocationsNodeTypesRequest>;
 
 export type NodeTypeList = ReadonlyArray<NodeType>;
-export const NodeTypeList = /*@__PURE__*/ S.Array(NodeType) as any as S.Schema<NodeTypeList>;
+export const NodeTypeList = /*@__PURE__*/ S.Array(
+  NodeType,
+) as any as S.Schema<NodeTypeList>;
 
 /** Response message for VmwareEngine.ListNodeTypes */
 export interface ListNodeTypesResponse {
@@ -2667,12 +3518,14 @@ export interface ListNodeTypesResponse {
   unreachable?: StringList;
 }
 export const ListNodeTypesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "nodeTypes": S.optional(NodeTypeList),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListNodeTypesResponse" }) as any as S.Schema<ListNodeTypesResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    nodeTypes: S.optional(NodeTypeList),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListNodeTypesResponse",
+}) as any as S.Schema<ListNodeTypesResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list filter. */
@@ -2686,18 +3539,29 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/operations","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      filter: S.optional(S.String.pipe(T.Query())),
+      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}/operations",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsOperationsRequest",
+}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(
+  Operation,
+) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -2709,12 +3573,14 @@ export interface ListOperationsResponse {
   nextPageToken?: string;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "operations": S.optional(OperationList),
-  "unreachable": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
+  S.Struct({
+    operations: S.optional(OperationList),
+    unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListOperationsResponse",
+}) as any as S.Schema<ListOperationsResponse>;
 
 export interface ListProjectsLocationsPrivateCloudsRequest {
   /** A filter expression that matches resources returned in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be `=`, `!=`, `>`, or `<`. For example, if you are filtering a list of private clouds, you can exclude the ones named `example-pc` by specifying `name != "example-pc"`. You can also filter nested fields. For example, you could specify `networkConfig.managementCidr = "192.168.0.0/24"` to include private clouds only if they have a matching address in their network configuration. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (name = "example-pc") (createTime > "2021-04-12T08:15:10.40Z") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (name = "private-cloud-1") AND (createTime > "2021-04-12T08:15:10.40Z") OR (name = "private-cloud-2") ``` */
@@ -2728,18 +3594,29 @@ export interface ListProjectsLocationsPrivateCloudsRequest {
   /** The maximum number of private clouds to return in one page. The service may return fewer than this value. The maximum value is coerced to 1000. The default value of this field is 500. */
   pageSize?: number;
 }
-export const ListProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/privateClouds","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsPrivateCloudsRequest" }) as any as S.Schema<ListProjectsLocationsPrivateCloudsRequest>;
+export const ListProjectsLocationsPrivateCloudsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      filter: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/privateClouds",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsPrivateCloudsRequest",
+  }) as any as S.Schema<ListProjectsLocationsPrivateCloudsRequest>;
 
 export type PrivateCloudList = ReadonlyArray<PrivateCloud>;
-export const PrivateCloudList = /*@__PURE__*/ S.Array(PrivateCloud) as any as S.Schema<PrivateCloudList>;
+export const PrivateCloudList = /*@__PURE__*/ S.Array(
+  PrivateCloud,
+) as any as S.Schema<PrivateCloudList>;
 
 /** Response message for VmwareEngine.ListPrivateClouds */
 export interface ListPrivateCloudsResponse {
@@ -2751,12 +3628,14 @@ export interface ListPrivateCloudsResponse {
   unreachable?: StringList;
 }
 export const ListPrivateCloudsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "privateClouds": S.optional(PrivateCloudList),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListPrivateCloudsResponse" }) as any as S.Schema<ListPrivateCloudsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    privateClouds: S.optional(PrivateCloudList),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListPrivateCloudsResponse",
+}) as any as S.Schema<ListPrivateCloudsResponse>;
 
 export interface ListProjectsLocationsPrivateCloudsClustersRequest {
   /** The maximum number of clusters to return in one page. The service may return fewer than this value. The maximum value is coerced to 1000. The default value of this field is 500. */
@@ -2770,18 +3649,29 @@ export interface ListProjectsLocationsPrivateCloudsClustersRequest {
   /** To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (name = "example-cluster") (nodeCount = "3") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (name = "example-cluster-1") AND (createTime > "2021-04-12T08:15:10.40Z") OR (name = "example-cluster-2") ``` */
   filter?: string;
 }
-export const ListProjectsLocationsPrivateCloudsClustersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/clusters","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsPrivateCloudsClustersRequest" }) as any as S.Schema<ListProjectsLocationsPrivateCloudsClustersRequest>;
+export const ListProjectsLocationsPrivateCloudsClustersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      filter: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/clusters",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsPrivateCloudsClustersRequest",
+  }) as any as S.Schema<ListProjectsLocationsPrivateCloudsClustersRequest>;
 
 export type ClusterList = ReadonlyArray<Cluster>;
-export const ClusterList = /*@__PURE__*/ S.Array(Cluster) as any as S.Schema<ClusterList>;
+export const ClusterList = /*@__PURE__*/ S.Array(
+  Cluster,
+) as any as S.Schema<ClusterList>;
 
 /** Response message for VmwareEngine.ListClusters */
 export interface ListClustersResponse {
@@ -2793,12 +3683,14 @@ export interface ListClustersResponse {
   unreachable?: StringList;
 }
 export const ListClustersResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "clusters": S.optional(ClusterList),
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListClustersResponse" }) as any as S.Schema<ListClustersResponse>;
+  S.Struct({
+    clusters: S.optional(ClusterList),
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListClustersResponse",
+}) as any as S.Schema<ListClustersResponse>;
 
 export interface ListProjectsLocationsPrivateCloudsClustersNodesRequest {
   /** The maximum number of nodes to return in one page. The service may return fewer than this value. The maximum value is coerced to 1000. The default value of this field is 500. */
@@ -2808,16 +3700,27 @@ export interface ListProjectsLocationsPrivateCloudsClustersNodesRequest {
   /** A page token, received from a previous `ListNodes` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListNodes` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsPrivateCloudsClustersNodesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/nodes","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsPrivateCloudsClustersNodesRequest" }) as any as S.Schema<ListProjectsLocationsPrivateCloudsClustersNodesRequest>;
+export const ListProjectsLocationsPrivateCloudsClustersNodesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/nodes",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsPrivateCloudsClustersNodesRequest",
+  }) as any as S.Schema<ListProjectsLocationsPrivateCloudsClustersNodesRequest>;
 
 export type NodeList = ReadonlyArray<Node>;
-export const NodeList = /*@__PURE__*/ S.Array(Node) as any as S.Schema<NodeList>;
+export const NodeList = /*@__PURE__*/ S.Array(
+  Node,
+) as any as S.Schema<NodeList>;
 
 /** Response message for VmwareEngine.ListNodes */
 export interface ListNodesResponse {
@@ -2827,11 +3730,13 @@ export interface ListNodesResponse {
   nodes?: NodeList;
 }
 export const ListNodesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "nodes": S.optional(NodeList),
-}),
-).annotate({ identifier: "ListNodesResponse" }) as any as S.Schema<ListNodesResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    nodes: S.optional(NodeList),
+  }),
+).annotate({
+  identifier: "ListNodesResponse",
+}) as any as S.Schema<ListNodesResponse>;
 
 export interface ListProjectsLocationsPrivateCloudsExternalAddressesRequest {
   /** The maximum number of external IP addresses to return in one page. The service may return fewer than this value. The maximum value is coerced to 1000. The default value of this field is 500. */
@@ -2845,15 +3750,24 @@ export interface ListProjectsLocationsPrivateCloudsExternalAddressesRequest {
   /** A filter expression that matches resources returned in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be `=`, `!=`, `>`, or `<`. For example, if you are filtering a list of IP addresses, you can exclude the ones named `example-ip` by specifying `name != "example-ip"`. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (name = "example-ip") (createTime > "2021-04-12T08:15:10.40Z") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (name = "example-ip-1") AND (createTime > "2021-04-12T08:15:10.40Z") OR (name = "example-ip-2") ``` */
   filter?: string;
 }
-export const ListProjectsLocationsPrivateCloudsExternalAddressesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/externalAddresses","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsPrivateCloudsExternalAddressesRequest" }) as any as S.Schema<ListProjectsLocationsPrivateCloudsExternalAddressesRequest>;
+export const ListProjectsLocationsPrivateCloudsExternalAddressesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      filter: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/externalAddresses",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsPrivateCloudsExternalAddressesRequest",
+  }) as any as S.Schema<ListProjectsLocationsPrivateCloudsExternalAddressesRequest>;
 
 /** Response message for VmwareEngine.ListExternalAddresses */
 export interface ListExternalAddressesResponse {
@@ -2865,12 +3779,14 @@ export interface ListExternalAddressesResponse {
   nextPageToken?: string;
 }
 export const ListExternalAddressesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "externalAddresses": S.optional(ExternalAddressList),
-  "unreachable": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListExternalAddressesResponse" }) as any as S.Schema<ListExternalAddressesResponse>;
+  S.Struct({
+    externalAddresses: S.optional(ExternalAddressList),
+    unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListExternalAddressesResponse",
+}) as any as S.Schema<ListExternalAddressesResponse>;
 
 export interface ListProjectsLocationsPrivateCloudsHcxActivationKeysRequest {
   /** Required. The resource name of the private cloud to be queried for HCX activation keys. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1/privateClouds/my-cloud` */
@@ -2880,16 +3796,27 @@ export interface ListProjectsLocationsPrivateCloudsHcxActivationKeysRequest {
   /** The maximum number of HCX activation keys to return in one page. The service may return fewer than this value. The maximum value is coerced to 1000. The default value of this field is 500. */
   pageSize?: number;
 }
-export const ListProjectsLocationsPrivateCloudsHcxActivationKeysRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/hcxActivationKeys","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsPrivateCloudsHcxActivationKeysRequest" }) as any as S.Schema<ListProjectsLocationsPrivateCloudsHcxActivationKeysRequest>;
+export const ListProjectsLocationsPrivateCloudsHcxActivationKeysRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/hcxActivationKeys",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsPrivateCloudsHcxActivationKeysRequest",
+  }) as any as S.Schema<ListProjectsLocationsPrivateCloudsHcxActivationKeysRequest>;
 
 export type HcxActivationKeyList = ReadonlyArray<HcxActivationKey>;
-export const HcxActivationKeyList = /*@__PURE__*/ S.Array(HcxActivationKey) as any as S.Schema<HcxActivationKeyList>;
+export const HcxActivationKeyList = /*@__PURE__*/ S.Array(
+  HcxActivationKey,
+) as any as S.Schema<HcxActivationKeyList>;
 
 /** Response message for VmwareEngine.ListHcxActivationKeys */
 export interface ListHcxActivationKeysResponse {
@@ -2901,12 +3828,14 @@ export interface ListHcxActivationKeysResponse {
   hcxActivationKeys?: HcxActivationKeyList;
 }
 export const ListHcxActivationKeysResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-  "hcxActivationKeys": S.optional(HcxActivationKeyList),
-}),
-).annotate({ identifier: "ListHcxActivationKeysResponse" }) as any as S.Schema<ListHcxActivationKeysResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+    hcxActivationKeys: S.optional(HcxActivationKeyList),
+  }),
+).annotate({
+  identifier: "ListHcxActivationKeysResponse",
+}) as any as S.Schema<ListHcxActivationKeysResponse>;
 
 export interface ListProjectsLocationsPrivateCloudsLoggingServersRequest {
   /** The maximum number of logging servers to return in one page. The service may return fewer than this value. The maximum value is coerced to 1000. The default value of this field is 500. */
@@ -2920,18 +3849,29 @@ export interface ListProjectsLocationsPrivateCloudsLoggingServersRequest {
   /** A filter expression that matches resources returned in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be `=`, `!=`, `>`, or `<`. For example, if you are filtering a list of logging servers, you can exclude the ones named `example-server` by specifying `name != "example-server"`. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (name = "example-server") (createTime > "2021-04-12T08:15:10.40Z") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (name = "example-server-1") AND (createTime > "2021-04-12T08:15:10.40Z") OR (name = "example-server-2") ``` */
   filter?: string;
 }
-export const ListProjectsLocationsPrivateCloudsLoggingServersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/loggingServers","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsPrivateCloudsLoggingServersRequest" }) as any as S.Schema<ListProjectsLocationsPrivateCloudsLoggingServersRequest>;
+export const ListProjectsLocationsPrivateCloudsLoggingServersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      filter: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/loggingServers",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsPrivateCloudsLoggingServersRequest",
+  }) as any as S.Schema<ListProjectsLocationsPrivateCloudsLoggingServersRequest>;
 
 export type LoggingServerList = ReadonlyArray<LoggingServer>;
-export const LoggingServerList = /*@__PURE__*/ S.Array(LoggingServer) as any as S.Schema<LoggingServerList>;
+export const LoggingServerList = /*@__PURE__*/ S.Array(
+  LoggingServer,
+) as any as S.Schema<LoggingServerList>;
 
 /** Response message for VmwareEngine.ListLoggingServers */
 export interface ListLoggingServersResponse {
@@ -2943,12 +3883,14 @@ export interface ListLoggingServersResponse {
   unreachable?: StringList;
 }
 export const ListLoggingServersResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "loggingServers": S.optional(LoggingServerList),
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListLoggingServersResponse" }) as any as S.Schema<ListLoggingServersResponse>;
+  S.Struct({
+    loggingServers: S.optional(LoggingServerList),
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListLoggingServersResponse",
+}) as any as S.Schema<ListLoggingServersResponse>;
 
 export interface ListProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest {
   /** A page token, received from a previous `ListManagementDnsZoneBindings` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListManagementDnsZoneBindings` must match the call that provided the page token. */
@@ -2962,18 +3904,31 @@ export interface ListProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequ
   /** A filter expression that matches resources returned in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be `=`, `!=`, `>`, or `<`. For example, if you are filtering a list of Management DNS Zone Bindings, you can exclude the ones named `example-management-dns-zone-binding` by specifying `name != "example-management-dns-zone-binding"`. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (name = "example-management-dns-zone-binding") (createTime > "2021-04-12T08:15:10.40Z") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (name = "example-management-dns-zone-binding-1") AND (createTime > "2021-04-12T08:15:10.40Z") OR (name = "example-management-dns-zone-binding-2") ``` */
   filter?: string;
 }
-export const ListProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/managementDnsZoneBindings","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest" }) as any as S.Schema<ListProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest>;
+export const ListProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      filter: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/managementDnsZoneBindings",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "ListProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest",
+  }) as any as S.Schema<ListProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest>;
 
-export type ManagementDnsZoneBindingList = ReadonlyArray<ManagementDnsZoneBinding>;
-export const ManagementDnsZoneBindingList = /*@__PURE__*/ S.Array(ManagementDnsZoneBinding) as any as S.Schema<ManagementDnsZoneBindingList>;
+export type ManagementDnsZoneBindingList =
+  ReadonlyArray<ManagementDnsZoneBinding>;
+export const ManagementDnsZoneBindingList = /*@__PURE__*/ S.Array(
+  ManagementDnsZoneBinding,
+) as any as S.Schema<ManagementDnsZoneBindingList>;
 
 /** Response message for VmwareEngine.ListManagementDnsZoneBindings */
 export interface ListManagementDnsZoneBindingsResponse {
@@ -2984,13 +3939,16 @@ export interface ListManagementDnsZoneBindingsResponse {
   /** Locations that could not be reached when making an aggregated query using wildcards. */
   unreachable?: StringList;
 }
-export const ListManagementDnsZoneBindingsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "managementDnsZoneBindings": S.optional(ManagementDnsZoneBindingList),
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListManagementDnsZoneBindingsResponse" }) as any as S.Schema<ListManagementDnsZoneBindingsResponse>;
+export const ListManagementDnsZoneBindingsResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      managementDnsZoneBindings: S.optional(ManagementDnsZoneBindingList),
+      nextPageToken: S.optional(S.String),
+      unreachable: S.optional(StringList),
+    }),
+).annotate({
+  identifier: "ListManagementDnsZoneBindingsResponse",
+}) as any as S.Schema<ListManagementDnsZoneBindingsResponse>;
 
 export interface ListProjectsLocationsPrivateCloudsSubnetsRequest {
   /** Required. The resource name of the private cloud to be queried for subnets. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud` */
@@ -3000,16 +3958,27 @@ export interface ListProjectsLocationsPrivateCloudsSubnetsRequest {
   /** The maximum number of subnets to return in one page. The service may return fewer than this value. The maximum value is coerced to 1000. The default value of this field is 500. */
   pageSize?: number;
 }
-export const ListProjectsLocationsPrivateCloudsSubnetsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/subnets","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsPrivateCloudsSubnetsRequest" }) as any as S.Schema<ListProjectsLocationsPrivateCloudsSubnetsRequest>;
+export const ListProjectsLocationsPrivateCloudsSubnetsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/subnets",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsPrivateCloudsSubnetsRequest",
+  }) as any as S.Schema<ListProjectsLocationsPrivateCloudsSubnetsRequest>;
 
 export type SubnetList = ReadonlyArray<Subnet>;
-export const SubnetList = /*@__PURE__*/ S.Array(Subnet) as any as S.Schema<SubnetList>;
+export const SubnetList = /*@__PURE__*/ S.Array(
+  Subnet,
+) as any as S.Schema<SubnetList>;
 
 /** Response message for VmwareEngine.ListSubnets */
 export interface ListSubnetsResponse {
@@ -3021,12 +3990,14 @@ export interface ListSubnetsResponse {
   nextPageToken?: string;
 }
 export const ListSubnetsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "subnets": S.optional(SubnetList),
-  "unreachable": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListSubnetsResponse" }) as any as S.Schema<ListSubnetsResponse>;
+  S.Struct({
+    subnets: S.optional(SubnetList),
+    unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListSubnetsResponse",
+}) as any as S.Schema<ListSubnetsResponse>;
 
 export interface ListProjectsLocationsPrivateCloudsUpgradesRequest {
   /** Required. Query a list of `Upgrades` for the given private cloud resource name. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-west1-a/privateClouds/my-cloud` */
@@ -3040,18 +4011,29 @@ export interface ListProjectsLocationsPrivateCloudsUpgradesRequest {
   /** Sorts list results by a certain order. By default, returned results are ordered by `name` in ascending order. You can also sort results in descending order based on the `name` value using `orderBy="name desc"`. Currently, only ordering by `name` is supported. */
   orderBy?: string;
 }
-export const ListProjectsLocationsPrivateCloudsUpgradesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/upgrades","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsPrivateCloudsUpgradesRequest" }) as any as S.Schema<ListProjectsLocationsPrivateCloudsUpgradesRequest>;
+export const ListProjectsLocationsPrivateCloudsUpgradesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      filter: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/upgrades",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsPrivateCloudsUpgradesRequest",
+  }) as any as S.Schema<ListProjectsLocationsPrivateCloudsUpgradesRequest>;
 
 export type UpgradeList = ReadonlyArray<Upgrade>;
-export const UpgradeList = /*@__PURE__*/ S.Array(Upgrade) as any as S.Schema<UpgradeList>;
+export const UpgradeList = /*@__PURE__*/ S.Array(
+  Upgrade,
+) as any as S.Schema<UpgradeList>;
 
 /** Response message for VmwareEngine.ListUpgrades. */
 export interface ListUpgradesResponse {
@@ -3063,12 +4045,14 @@ export interface ListUpgradesResponse {
   unreachable?: StringList;
 }
 export const ListUpgradesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "upgrades": S.optional(UpgradeList),
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListUpgradesResponse" }) as any as S.Schema<ListUpgradesResponse>;
+  S.Struct({
+    upgrades: S.optional(UpgradeList),
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListUpgradesResponse",
+}) as any as S.Schema<ListUpgradesResponse>;
 
 export interface ListProjectsLocationsPrivateConnectionsRequest {
   /** A page token, received from a previous `ListPrivateConnections` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListPrivateConnections` must match the call that provided the page token. */
@@ -3082,18 +4066,29 @@ export interface ListProjectsLocationsPrivateConnectionsRequest {
   /** A filter expression that matches resources returned in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be `=`, `!=`, `>`, or `<`. For example, if you are filtering a list of private connections, you can exclude the ones named `example-connection` by specifying `name != "example-connection"`. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (name = "example-connection") (createTime > "2022-09-22T08:15:10.40Z") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (name = "example-connection-1") AND (createTime > "2021-04-12T08:15:10.40Z") OR (name = "example-connection-2") ``` */
   filter?: string;
 }
-export const ListProjectsLocationsPrivateConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/privateConnections","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsPrivateConnectionsRequest" }) as any as S.Schema<ListProjectsLocationsPrivateConnectionsRequest>;
+export const ListProjectsLocationsPrivateConnectionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      filter: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/privateConnections",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsPrivateConnectionsRequest",
+  }) as any as S.Schema<ListProjectsLocationsPrivateConnectionsRequest>;
 
 export type PrivateConnectionList = ReadonlyArray<PrivateConnection>;
-export const PrivateConnectionList = /*@__PURE__*/ S.Array(PrivateConnection) as any as S.Schema<PrivateConnectionList>;
+export const PrivateConnectionList = /*@__PURE__*/ S.Array(
+  PrivateConnection,
+) as any as S.Schema<PrivateConnectionList>;
 
 /** Response message for VmwareEngine.ListPrivateConnections */
 export interface ListPrivateConnectionsResponse {
@@ -3105,12 +4100,14 @@ export interface ListPrivateConnectionsResponse {
   privateConnections?: PrivateConnectionList;
 }
 export const ListPrivateConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-  "privateConnections": S.optional(PrivateConnectionList),
-}),
-).annotate({ identifier: "ListPrivateConnectionsResponse" }) as any as S.Schema<ListPrivateConnectionsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+    privateConnections: S.optional(PrivateConnectionList),
+  }),
+).annotate({
+  identifier: "ListPrivateConnectionsResponse",
+}) as any as S.Schema<ListPrivateConnectionsResponse>;
 
 export interface ListProjectsLocationsPrivateConnectionsPeeringRoutesRequest {
   /** The maximum number of peering routes to return in one page. The service may return fewer than this value. The maximum value is coerced to 1000. The default value of this field is 500. */
@@ -3120,13 +4117,22 @@ export interface ListProjectsLocationsPrivateConnectionsPeeringRoutesRequest {
   /** A page token, received from a previous `ListPrivateConnectionPeeringRoutes` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListPrivateConnectionPeeringRoutes` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsPrivateConnectionsPeeringRoutesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/peeringRoutes","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsPrivateConnectionsPeeringRoutesRequest" }) as any as S.Schema<ListProjectsLocationsPrivateConnectionsPeeringRoutesRequest>;
+export const ListProjectsLocationsPrivateConnectionsPeeringRoutesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/peeringRoutes",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsPrivateConnectionsPeeringRoutesRequest",
+  }) as any as S.Schema<ListProjectsLocationsPrivateConnectionsPeeringRoutesRequest>;
 
 /** Response message for VmwareEngine.ListPrivateConnectionPeeringRoutes */
 export interface ListPrivateConnectionPeeringRoutesResponse {
@@ -3135,12 +4141,15 @@ export interface ListPrivateConnectionPeeringRoutesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListPrivateConnectionPeeringRoutesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "peeringRoutes": S.optional(PeeringRouteList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListPrivateConnectionPeeringRoutesResponse" }) as any as S.Schema<ListPrivateConnectionPeeringRoutesResponse>;
+export const ListPrivateConnectionPeeringRoutesResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      peeringRoutes: S.optional(PeeringRouteList),
+      nextPageToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ListPrivateConnectionPeeringRoutesResponse",
+  }) as any as S.Schema<ListPrivateConnectionPeeringRoutesResponse>;
 
 export interface ListProjectsLocationsVmwareEngineNetworksRequest {
   /** Sorts list results by a certain order. By default, returned results are ordered by `name` in ascending order. You can also sort results in descending order based on the `name` value using `orderBy="name desc"`. Currently, only ordering by `name` is supported. */
@@ -3154,18 +4163,29 @@ export interface ListProjectsLocationsVmwareEngineNetworksRequest {
   /** Required. The resource name of the location to query for VMware Engine networks. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/global` */
   parent: string;
 }
-export const ListProjectsLocationsVmwareEngineNetworksRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/vmwareEngineNetworks","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsVmwareEngineNetworksRequest" }) as any as S.Schema<ListProjectsLocationsVmwareEngineNetworksRequest>;
+export const ListProjectsLocationsVmwareEngineNetworksRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/vmwareEngineNetworks",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsVmwareEngineNetworksRequest",
+  }) as any as S.Schema<ListProjectsLocationsVmwareEngineNetworksRequest>;
 
 export type VmwareEngineNetworkList = ReadonlyArray<VmwareEngineNetwork>;
-export const VmwareEngineNetworkList = /*@__PURE__*/ S.Array(VmwareEngineNetwork) as any as S.Schema<VmwareEngineNetworkList>;
+export const VmwareEngineNetworkList = /*@__PURE__*/ S.Array(
+  VmwareEngineNetwork,
+) as any as S.Schema<VmwareEngineNetworkList>;
 
 /** Response message for VmwareEngine.ListVmwareEngineNetworks */
 export interface ListVmwareEngineNetworksResponse {
@@ -3177,12 +4197,14 @@ export interface ListVmwareEngineNetworksResponse {
   vmwareEngineNetworks?: VmwareEngineNetworkList;
 }
 export const ListVmwareEngineNetworksResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-  "vmwareEngineNetworks": S.optional(VmwareEngineNetworkList),
-}),
-).annotate({ identifier: "ListVmwareEngineNetworksResponse" }) as any as S.Schema<ListVmwareEngineNetworksResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+    vmwareEngineNetworks: S.optional(VmwareEngineNetworkList),
+  }),
+).annotate({
+  identifier: "ListVmwareEngineNetworksResponse",
+}) as any as S.Schema<ListVmwareEngineNetworksResponse>;
 
 /** Request message for VmwareEngine.MigrateManagementVms */
 export interface MigrateManagementVmsRequest {
@@ -3194,12 +4216,14 @@ export interface MigrateManagementVmsRequest {
   etag?: string;
 }
 export const MigrateManagementVmsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "clusterId": S.optional(S.String),
-  "requestId": S.optional(S.String),
-  "etag": S.optional(S.String),
-}),
-).annotate({ identifier: "MigrateManagementVmsRequest" }) as any as S.Schema<MigrateManagementVmsRequest>;
+  S.Struct({
+    clusterId: S.optional(S.String),
+    requestId: S.optional(S.String),
+    etag: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MigrateManagementVmsRequest",
+}) as any as S.Schema<MigrateManagementVmsRequest>;
 
 export interface MigrateManagementVmsProjectsLocationsPrivateCloudsRequest {
   /** Required. The resource name of the private cloud whose management vms are getting migrated. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud` */
@@ -3207,12 +4231,21 @@ export interface MigrateManagementVmsProjectsLocationsPrivateCloudsRequest {
   /** Request body */
   body?: MigrateManagementVmsRequest;
 }
-export const MigrateManagementVmsProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(MigrateManagementVmsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:migrateManagementVms","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "MigrateManagementVmsProjectsLocationsPrivateCloudsRequest" }) as any as S.Schema<MigrateManagementVmsProjectsLocationsPrivateCloudsRequest>;
+export const MigrateManagementVmsProjectsLocationsPrivateCloudsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(MigrateManagementVmsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:migrateManagementVms",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "MigrateManagementVmsProjectsLocationsPrivateCloudsRequest",
+  }) as any as S.Schema<MigrateManagementVmsProjectsLocationsPrivateCloudsRequest>;
 
 /** Mount Datastore Request message */
 export interface MountDatastoreRequest {
@@ -3226,13 +4259,15 @@ export interface MountDatastoreRequest {
   ignoreColocation?: boolean;
 }
 export const MountDatastoreRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String),
-  "datastoreMountConfig": S.optional(DatastoreMountConfig),
-  "validateOnly": S.optional(S.Boolean),
-  "ignoreColocation": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "MountDatastoreRequest" }) as any as S.Schema<MountDatastoreRequest>;
+  S.Struct({
+    requestId: S.optional(S.String),
+    datastoreMountConfig: S.optional(DatastoreMountConfig),
+    validateOnly: S.optional(S.Boolean),
+    ignoreColocation: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "MountDatastoreRequest",
+}) as any as S.Schema<MountDatastoreRequest>;
 
 export interface MountDatastoreProjectsLocationsPrivateCloudsClustersRequest {
   /** Required. The resource name of the cluster to mount the datastore. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/clusters/my-cluster` */
@@ -3240,12 +4275,21 @@ export interface MountDatastoreProjectsLocationsPrivateCloudsClustersRequest {
   /** Request body */
   body?: MountDatastoreRequest;
 }
-export const MountDatastoreProjectsLocationsPrivateCloudsClustersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(MountDatastoreRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:mountDatastore","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "MountDatastoreProjectsLocationsPrivateCloudsClustersRequest" }) as any as S.Schema<MountDatastoreProjectsLocationsPrivateCloudsClustersRequest>;
+export const MountDatastoreProjectsLocationsPrivateCloudsClustersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(MountDatastoreRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:mountDatastore",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "MountDatastoreProjectsLocationsPrivateCloudsClustersRequest",
+  }) as any as S.Schema<MountDatastoreProjectsLocationsPrivateCloudsClustersRequest>;
 
 export interface PatchProjectsLocationsDatastoresRequest {
   /** Optional. Field mask is used to specify the fields to be overwritten in the Datastore resource by the update. The fields specified in the `update_mask` are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */
@@ -3257,14 +4301,23 @@ export interface PatchProjectsLocationsDatastoresRequest {
   /** Request body */
   body?: Datastore;
 }
-export const PatchProjectsLocationsDatastoresRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(Datastore.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsDatastoresRequest" }) as any as S.Schema<PatchProjectsLocationsDatastoresRequest>;
+export const PatchProjectsLocationsDatastoresRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      body: S.optional(Datastore.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "PatchProjectsLocationsDatastoresRequest",
+}) as any as S.Schema<PatchProjectsLocationsDatastoresRequest>;
 
 export interface PatchProjectsLocationsNetworkPeeringsRequest {
   /** Required. Field mask is used to specify the fields to be overwritten in the `NetworkPeering` resource by the update. The fields specified in the `update_mask` are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */
@@ -3278,15 +4331,24 @@ export interface PatchProjectsLocationsNetworkPeeringsRequest {
   /** Request body */
   body?: NetworkPeering;
 }
-export const PatchProjectsLocationsNetworkPeeringsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(NetworkPeering.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsNetworkPeeringsRequest" }) as any as S.Schema<PatchProjectsLocationsNetworkPeeringsRequest>;
+export const PatchProjectsLocationsNetworkPeeringsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      body: S.optional(NetworkPeering.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsNetworkPeeringsRequest",
+  }) as any as S.Schema<PatchProjectsLocationsNetworkPeeringsRequest>;
 
 export interface PatchProjectsLocationsNetworkPoliciesRequest {
   /** Required. Field mask is used to specify the fields to be overwritten in the `NetworkPolicy` resource by the update. The fields specified in the `update_mask` are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */
@@ -3300,15 +4362,24 @@ export interface PatchProjectsLocationsNetworkPoliciesRequest {
   /** Request body */
   body?: NetworkPolicy;
 }
-export const PatchProjectsLocationsNetworkPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(NetworkPolicy.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsNetworkPoliciesRequest" }) as any as S.Schema<PatchProjectsLocationsNetworkPoliciesRequest>;
+export const PatchProjectsLocationsNetworkPoliciesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      body: S.optional(NetworkPolicy.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsNetworkPoliciesRequest",
+  }) as any as S.Schema<PatchProjectsLocationsNetworkPoliciesRequest>;
 
 export interface PatchProjectsLocationsNetworkPoliciesExternalAccessRulesRequest {
   /** Output only. The resource name of this external access rule. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1/networkPolicies/my-policy/externalAccessRules/my-rule` */
@@ -3322,15 +4393,25 @@ export interface PatchProjectsLocationsNetworkPoliciesExternalAccessRulesRequest
   /** Request body */
   body?: ExternalAccessRule;
 }
-export const PatchProjectsLocationsNetworkPoliciesExternalAccessRulesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(ExternalAccessRule.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsNetworkPoliciesExternalAccessRulesRequest" }) as any as S.Schema<PatchProjectsLocationsNetworkPoliciesExternalAccessRulesRequest>;
+export const PatchProjectsLocationsNetworkPoliciesExternalAccessRulesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(ExternalAccessRule.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "PatchProjectsLocationsNetworkPoliciesExternalAccessRulesRequest",
+  }) as any as S.Schema<PatchProjectsLocationsNetworkPoliciesExternalAccessRulesRequest>;
 
 export interface PatchProjectsLocationsPrivateCloudsRequest {
   /** Output only. Identifier. The resource name of this private cloud. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud` */
@@ -3344,15 +4425,24 @@ export interface PatchProjectsLocationsPrivateCloudsRequest {
   /** Request body */
   body?: PrivateCloud;
 }
-export const PatchProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(PrivateCloud.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsPrivateCloudsRequest" }) as any as S.Schema<PatchProjectsLocationsPrivateCloudsRequest>;
+export const PatchProjectsLocationsPrivateCloudsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(PrivateCloud.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsPrivateCloudsRequest",
+  }) as any as S.Schema<PatchProjectsLocationsPrivateCloudsRequest>;
 
 export interface PatchProjectsLocationsPrivateCloudsClustersRequest {
   /** Required. Field mask is used to specify the fields to be overwritten in the `Cluster` resource by the update. The fields specified in the `updateMask` are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */
@@ -3366,15 +4456,24 @@ export interface PatchProjectsLocationsPrivateCloudsClustersRequest {
   /** Request body */
   body?: Cluster;
 }
-export const PatchProjectsLocationsPrivateCloudsClustersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(Cluster.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsPrivateCloudsClustersRequest" }) as any as S.Schema<PatchProjectsLocationsPrivateCloudsClustersRequest>;
+export const PatchProjectsLocationsPrivateCloudsClustersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      body: S.optional(Cluster.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsPrivateCloudsClustersRequest",
+  }) as any as S.Schema<PatchProjectsLocationsPrivateCloudsClustersRequest>;
 
 export interface PatchProjectsLocationsPrivateCloudsExternalAddressesRequest {
   /** Output only. Identifier. The resource name of this external IP address. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/externalAddresses/my-address` */
@@ -3388,15 +4487,24 @@ export interface PatchProjectsLocationsPrivateCloudsExternalAddressesRequest {
   /** Request body */
   body?: ExternalAddress;
 }
-export const PatchProjectsLocationsPrivateCloudsExternalAddressesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(ExternalAddress.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsPrivateCloudsExternalAddressesRequest" }) as any as S.Schema<PatchProjectsLocationsPrivateCloudsExternalAddressesRequest>;
+export const PatchProjectsLocationsPrivateCloudsExternalAddressesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(ExternalAddress.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsPrivateCloudsExternalAddressesRequest",
+  }) as any as S.Schema<PatchProjectsLocationsPrivateCloudsExternalAddressesRequest>;
 
 export interface PatchProjectsLocationsPrivateCloudsLoggingServersRequest {
   /** Output only. The resource name of this logging server. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/loggingServers/my-logging-server` */
@@ -3408,14 +4516,23 @@ export interface PatchProjectsLocationsPrivateCloudsLoggingServersRequest {
   /** Request body */
   body?: LoggingServer;
 }
-export const PatchProjectsLocationsPrivateCloudsLoggingServersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(LoggingServer.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsPrivateCloudsLoggingServersRequest" }) as any as S.Schema<PatchProjectsLocationsPrivateCloudsLoggingServersRequest>;
+export const PatchProjectsLocationsPrivateCloudsLoggingServersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(LoggingServer.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsPrivateCloudsLoggingServersRequest",
+  }) as any as S.Schema<PatchProjectsLocationsPrivateCloudsLoggingServersRequest>;
 
 export interface PatchProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest {
   /** Output only. The resource name of this binding. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/managementDnsZoneBindings/my-management-dns-zone-binding` */
@@ -3427,14 +4544,24 @@ export interface PatchProjectsLocationsPrivateCloudsManagementDnsZoneBindingsReq
   /** Request body */
   body?: ManagementDnsZoneBinding;
 }
-export const PatchProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(ManagementDnsZoneBinding.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest" }) as any as S.Schema<PatchProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest>;
+export const PatchProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(ManagementDnsZoneBinding.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "PatchProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest",
+  }) as any as S.Schema<PatchProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest>;
 
 export interface PatchProjectsLocationsPrivateCloudsSubnetsRequest {
   /** Output only. Identifier. The resource name of this subnet. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/subnets/my-subnet` */
@@ -3444,13 +4571,22 @@ export interface PatchProjectsLocationsPrivateCloudsSubnetsRequest {
   /** Request body */
   body?: Subnet;
 }
-export const PatchProjectsLocationsPrivateCloudsSubnetsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Subnet.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsPrivateCloudsSubnetsRequest" }) as any as S.Schema<PatchProjectsLocationsPrivateCloudsSubnetsRequest>;
+export const PatchProjectsLocationsPrivateCloudsSubnetsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Subnet.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsPrivateCloudsSubnetsRequest",
+  }) as any as S.Schema<PatchProjectsLocationsPrivateCloudsSubnetsRequest>;
 
 export interface PatchProjectsLocationsPrivateCloudsUpgradesRequest {
   /** Output only. Identifier. The resource name of the private cloud `Upgrade`. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-west1-a/privateClouds/my-cloud/upgrades/my-upgrade` */
@@ -3462,14 +4598,23 @@ export interface PatchProjectsLocationsPrivateCloudsUpgradesRequest {
   /** Request body */
   body?: Upgrade;
 }
-export const PatchProjectsLocationsPrivateCloudsUpgradesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Upgrade.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsPrivateCloudsUpgradesRequest" }) as any as S.Schema<PatchProjectsLocationsPrivateCloudsUpgradesRequest>;
+export const PatchProjectsLocationsPrivateCloudsUpgradesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Upgrade.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsPrivateCloudsUpgradesRequest",
+  }) as any as S.Schema<PatchProjectsLocationsPrivateCloudsUpgradesRequest>;
 
 export interface PatchProjectsLocationsPrivateConnectionsRequest {
   /** Output only. The resource name of the private connection. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1/privateConnections/my-connection` */
@@ -3483,15 +4628,24 @@ export interface PatchProjectsLocationsPrivateConnectionsRequest {
   /** Request body */
   body?: PrivateConnection;
 }
-export const PatchProjectsLocationsPrivateConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(PrivateConnection.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsPrivateConnectionsRequest" }) as any as S.Schema<PatchProjectsLocationsPrivateConnectionsRequest>;
+export const PatchProjectsLocationsPrivateConnectionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(PrivateConnection.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsPrivateConnectionsRequest",
+  }) as any as S.Schema<PatchProjectsLocationsPrivateConnectionsRequest>;
 
 export interface PatchProjectsLocationsVmwareEngineNetworksRequest {
   /** Required. Field mask is used to specify the fields to be overwritten in the VMware Engine network resource by the update. The fields specified in the `update_mask` are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. Only the following fields can be updated: `description`. */
@@ -3505,15 +4659,24 @@ export interface PatchProjectsLocationsVmwareEngineNetworksRequest {
   /** Request body */
   body?: VmwareEngineNetwork;
 }
-export const PatchProjectsLocationsVmwareEngineNetworksRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "validateOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(VmwareEngineNetwork.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsVmwareEngineNetworksRequest" }) as any as S.Schema<PatchProjectsLocationsVmwareEngineNetworksRequest>;
+export const PatchProjectsLocationsVmwareEngineNetworksRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      body: S.optional(VmwareEngineNetwork.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsVmwareEngineNetworksRequest",
+  }) as any as S.Schema<PatchProjectsLocationsVmwareEngineNetworksRequest>;
 
 /** Request message for VmwareEngine.AcceleratePrivateCloudDeletion */
 export interface AcceleratePrivateCloudDeletionRequest {
@@ -3522,12 +4685,15 @@ export interface AcceleratePrivateCloudDeletionRequest {
   /** Optional. Checksum used to ensure that the user-provided value is up to date before the server processes the request. The server compares provided checksum with the current checksum of the resource. If the user-provided value is out of date, this request returns an `ABORTED` error. */
   etag?: string;
 }
-export const AcceleratePrivateCloudDeletionRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String),
-  "etag": S.optional(S.String),
-}),
-).annotate({ identifier: "AcceleratePrivateCloudDeletionRequest" }) as any as S.Schema<AcceleratePrivateCloudDeletionRequest>;
+export const AcceleratePrivateCloudDeletionRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      requestId: S.optional(S.String),
+      etag: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "AcceleratePrivateCloudDeletionRequest",
+}) as any as S.Schema<AcceleratePrivateCloudDeletionRequest>;
 
 export interface PrivateCloudDeletionNowProjectsLocationsPrivateCloudsRequest {
   /** Required. The resource name of the private cloud in softdeletion. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud` */
@@ -3535,23 +4701,37 @@ export interface PrivateCloudDeletionNowProjectsLocationsPrivateCloudsRequest {
   /** Request body */
   body?: AcceleratePrivateCloudDeletionRequest;
 }
-export const PrivateCloudDeletionNowProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(AcceleratePrivateCloudDeletionRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:privateCloudDeletionNow","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "PrivateCloudDeletionNowProjectsLocationsPrivateCloudsRequest" }) as any as S.Schema<PrivateCloudDeletionNowProjectsLocationsPrivateCloudsRequest>;
+export const PrivateCloudDeletionNowProjectsLocationsPrivateCloudsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(
+        AcceleratePrivateCloudDeletionRequest.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:privateCloudDeletionNow",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PrivateCloudDeletionNowProjectsLocationsPrivateCloudsRequest",
+  }) as any as S.Schema<PrivateCloudDeletionNowProjectsLocationsPrivateCloudsRequest>;
 
 /** Request message for VmwareEngine.RepairManagementDnsZoneBindings */
 export interface RepairManagementDnsZoneBindingRequest {
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const RepairManagementDnsZoneBindingRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String),
-}),
-).annotate({ identifier: "RepairManagementDnsZoneBindingRequest" }) as any as S.Schema<RepairManagementDnsZoneBindingRequest>;
+export const RepairManagementDnsZoneBindingRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      requestId: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "RepairManagementDnsZoneBindingRequest",
+}) as any as S.Schema<RepairManagementDnsZoneBindingRequest>;
 
 export interface RepairProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest {
   /** Required. The resource name of the management DNS zone binding to repair. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/managementDnsZoneBindings/my-management-dns-zone-binding` */
@@ -3559,12 +4739,24 @@ export interface RepairProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRe
   /** Request body */
   body?: RepairManagementDnsZoneBindingRequest;
 }
-export const RepairProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(RepairManagementDnsZoneBindingRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:repair","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "RepairProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest" }) as any as S.Schema<RepairProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest>;
+export const RepairProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(
+        RepairManagementDnsZoneBindingRequest.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:repair",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "RepairProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest",
+  }) as any as S.Schema<RepairProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest>;
 
 /** Request message for VmwareEngine.ResetNsxCredentials */
 export interface ResetNsxCredentialsRequest {
@@ -3572,10 +4764,12 @@ export interface ResetNsxCredentialsRequest {
   requestId?: string;
 }
 export const ResetNsxCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String),
-}),
-).annotate({ identifier: "ResetNsxCredentialsRequest" }) as any as S.Schema<ResetNsxCredentialsRequest>;
+  S.Struct({
+    requestId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ResetNsxCredentialsRequest",
+}) as any as S.Schema<ResetNsxCredentialsRequest>;
 
 export interface ResetNsxCredentialsProjectsLocationsPrivateCloudsRequest {
   /** Required. The resource name of the private cloud to reset credentials for. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud` */
@@ -3583,12 +4777,21 @@ export interface ResetNsxCredentialsProjectsLocationsPrivateCloudsRequest {
   /** Request body */
   body?: ResetNsxCredentialsRequest;
 }
-export const ResetNsxCredentialsProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "privateCloud": S.String.pipe(T.Label()),
-  "body": S.optional(ResetNsxCredentialsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+privateCloud}:resetNsxCredentials","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "ResetNsxCredentialsProjectsLocationsPrivateCloudsRequest" }) as any as S.Schema<ResetNsxCredentialsProjectsLocationsPrivateCloudsRequest>;
+export const ResetNsxCredentialsProjectsLocationsPrivateCloudsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      privateCloud: S.String.pipe(T.Label()),
+      body: S.optional(ResetNsxCredentialsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+privateCloud}:resetNsxCredentials",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ResetNsxCredentialsProjectsLocationsPrivateCloudsRequest",
+  }) as any as S.Schema<ResetNsxCredentialsProjectsLocationsPrivateCloudsRequest>;
 
 /** Request message for VmwareEngine.ResetVcenterCredentials */
 export interface ResetVcenterCredentialsRequest {
@@ -3598,11 +4801,13 @@ export interface ResetVcenterCredentialsRequest {
   username?: string;
 }
 export const ResetVcenterCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String),
-  "username": S.optional(S.String),
-}),
-).annotate({ identifier: "ResetVcenterCredentialsRequest" }) as any as S.Schema<ResetVcenterCredentialsRequest>;
+  S.Struct({
+    requestId: S.optional(S.String),
+    username: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ResetVcenterCredentialsRequest",
+}) as any as S.Schema<ResetVcenterCredentialsRequest>;
 
 export interface ResetVcenterCredentialsProjectsLocationsPrivateCloudsRequest {
   /** Required. The resource name of the private cloud to reset credentials for. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud` */
@@ -3610,12 +4815,21 @@ export interface ResetVcenterCredentialsProjectsLocationsPrivateCloudsRequest {
   /** Request body */
   body?: ResetVcenterCredentialsRequest;
 }
-export const ResetVcenterCredentialsProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "privateCloud": S.String.pipe(T.Label()),
-  "body": S.optional(ResetVcenterCredentialsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+privateCloud}:resetVcenterCredentials","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "ResetVcenterCredentialsProjectsLocationsPrivateCloudsRequest" }) as any as S.Schema<ResetVcenterCredentialsProjectsLocationsPrivateCloudsRequest>;
+export const ResetVcenterCredentialsProjectsLocationsPrivateCloudsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      privateCloud: S.String.pipe(T.Label()),
+      body: S.optional(ResetVcenterCredentialsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+privateCloud}:resetVcenterCredentials",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ResetVcenterCredentialsProjectsLocationsPrivateCloudsRequest",
+  }) as any as S.Schema<ResetVcenterCredentialsProjectsLocationsPrivateCloudsRequest>;
 
 /** Request message for VmwareEngine.RevokeDnsBindPermission */
 export interface RevokeDnsBindPermissionRequest {
@@ -3625,11 +4839,13 @@ export interface RevokeDnsBindPermissionRequest {
   requestId?: string;
 }
 export const RevokeDnsBindPermissionRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "principal": S.optional(Principal),
-  "requestId": S.optional(S.String),
-}),
-).annotate({ identifier: "RevokeDnsBindPermissionRequest" }) as any as S.Schema<RevokeDnsBindPermissionRequest>;
+  S.Struct({
+    principal: S.optional(Principal),
+    requestId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RevokeDnsBindPermissionRequest",
+}) as any as S.Schema<RevokeDnsBindPermissionRequest>;
 
 export interface RevokeProjectsLocationsDnsBindPermissionRequest {
   /** Required. The name of the resource which stores the users/service accounts having the permission to bind to the corresponding intranet VPC of the consumer project. DnsBindPermission is a global resource. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/global/dnsBindPermission` */
@@ -3637,12 +4853,21 @@ export interface RevokeProjectsLocationsDnsBindPermissionRequest {
   /** Request body */
   body?: RevokeDnsBindPermissionRequest;
 }
-export const RevokeProjectsLocationsDnsBindPermissionRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(RevokeDnsBindPermissionRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:revoke","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "RevokeProjectsLocationsDnsBindPermissionRequest" }) as any as S.Schema<RevokeProjectsLocationsDnsBindPermissionRequest>;
+export const RevokeProjectsLocationsDnsBindPermissionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(RevokeDnsBindPermissionRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:revoke",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "RevokeProjectsLocationsDnsBindPermissionRequest",
+  }) as any as S.Schema<RevokeProjectsLocationsDnsBindPermissionRequest>;
 
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
@@ -3652,11 +4877,13 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "policy": S.optional(Policy),
-  "updateMask": S.optional(S.String),
-}),
-).annotate({ identifier: "SetIamPolicyRequest" }) as any as S.Schema<SetIamPolicyRequest>;
+  S.Struct({
+    policy: S.optional(Policy),
+    updateMask: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SetIamPolicyRequest",
+}) as any as S.Schema<SetIamPolicyRequest>;
 
 export interface SetIamPolicyProjectsLocationsPrivateCloudsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -3664,12 +4891,21 @@ export interface SetIamPolicyProjectsLocationsPrivateCloudsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "SetIamPolicyProjectsLocationsPrivateCloudsRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsPrivateCloudsRequest>;
+export const SetIamPolicyProjectsLocationsPrivateCloudsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+resource}:setIamPolicy",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "SetIamPolicyProjectsLocationsPrivateCloudsRequest",
+  }) as any as S.Schema<SetIamPolicyProjectsLocationsPrivateCloudsRequest>;
 
 export interface SetIamPolicyProjectsLocationsPrivateCloudsClustersRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -3677,12 +4913,21 @@ export interface SetIamPolicyProjectsLocationsPrivateCloudsClustersRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsPrivateCloudsClustersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "SetIamPolicyProjectsLocationsPrivateCloudsClustersRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsPrivateCloudsClustersRequest>;
+export const SetIamPolicyProjectsLocationsPrivateCloudsClustersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+resource}:setIamPolicy",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "SetIamPolicyProjectsLocationsPrivateCloudsClustersRequest",
+  }) as any as S.Schema<SetIamPolicyProjectsLocationsPrivateCloudsClustersRequest>;
 
 export interface SetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -3690,22 +4935,41 @@ export interface SetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequ
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:setIamPolicy","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "SetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequest" }) as any as S.Schema<SetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequest>;
+export const SetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+resource}:setIamPolicy",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "SetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequest",
+  }) as any as S.Schema<SetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequest>;
 
 export interface ShowNsxCredentialsProjectsLocationsPrivateCloudsRequest {
   /** Required. The resource name of the private cloud to be queried for credentials. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud` */
   privateCloud: string;
 }
-export const ShowNsxCredentialsProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "privateCloud": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+privateCloud}:showNsxCredentials","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "ShowNsxCredentialsProjectsLocationsPrivateCloudsRequest" }) as any as S.Schema<ShowNsxCredentialsProjectsLocationsPrivateCloudsRequest>;
+export const ShowNsxCredentialsProjectsLocationsPrivateCloudsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      privateCloud: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+privateCloud}:showNsxCredentials",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ShowNsxCredentialsProjectsLocationsPrivateCloudsRequest",
+  }) as any as S.Schema<ShowNsxCredentialsProjectsLocationsPrivateCloudsRequest>;
 
 /** Credentials for a private cloud. */
 export interface Vmwareengine_Credentials {
@@ -3715,11 +4979,13 @@ export interface Vmwareengine_Credentials {
   password?: string;
 }
 export const Vmwareengine_Credentials = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "username": S.optional(S.String),
-  "password": S.optional(S.String),
-}),
-).annotate({ identifier: "Vmwareengine_Credentials" }) as any as S.Schema<Vmwareengine_Credentials>;
+  S.Struct({
+    username: S.optional(S.String),
+    password: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "Vmwareengine_Credentials",
+}) as any as S.Schema<Vmwareengine_Credentials>;
 
 export interface ShowVcenterCredentialsProjectsLocationsPrivateCloudsRequest {
   /** Required. The resource name of the private cloud to be queried for credentials. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud` */
@@ -3727,12 +4993,21 @@ export interface ShowVcenterCredentialsProjectsLocationsPrivateCloudsRequest {
   /** Optional. The username of the user to be queried for credentials. The default value of this field is CloudOwner@gve.local. The provided value must be one of the following: CloudOwner@gve.local, solution-user-01@gve.local, solution-user-02@gve.local, solution-user-03@gve.local, solution-user-04@gve.local, solution-user-05@gve.local, zertoadmin@gve.local. */
   username?: string;
 }
-export const ShowVcenterCredentialsProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "privateCloud": S.String.pipe(T.Label()),
-  "username": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+privateCloud}:showVcenterCredentials","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "ShowVcenterCredentialsProjectsLocationsPrivateCloudsRequest" }) as any as S.Schema<ShowVcenterCredentialsProjectsLocationsPrivateCloudsRequest>;
+export const ShowVcenterCredentialsProjectsLocationsPrivateCloudsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      privateCloud: S.String.pipe(T.Label()),
+      username: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+privateCloud}:showVcenterCredentials",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ShowVcenterCredentialsProjectsLocationsPrivateCloudsRequest",
+  }) as any as S.Schema<ShowVcenterCredentialsProjectsLocationsPrivateCloudsRequest>;
 
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
@@ -3740,10 +5015,12 @@ export interface TestIamPermissionsRequest {
   permissions?: StringList;
 }
 export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "permissions": S.optional(StringList),
-}),
-).annotate({ identifier: "TestIamPermissionsRequest" }) as any as S.Schema<TestIamPermissionsRequest>;
+  S.Struct({
+    permissions: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "TestIamPermissionsRequest",
+}) as any as S.Schema<TestIamPermissionsRequest>;
 
 export interface TestIamPermissionsProjectsLocationsPrivateCloudsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -3751,12 +5028,21 @@ export interface TestIamPermissionsProjectsLocationsPrivateCloudsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "TestIamPermissionsProjectsLocationsPrivateCloudsRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsPrivateCloudsRequest>;
+export const TestIamPermissionsProjectsLocationsPrivateCloudsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+resource}:testIamPermissions",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "TestIamPermissionsProjectsLocationsPrivateCloudsRequest",
+  }) as any as S.Schema<TestIamPermissionsProjectsLocationsPrivateCloudsRequest>;
 
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
@@ -3764,10 +5050,12 @@ export interface TestIamPermissionsResponse {
   permissions?: StringList;
 }
 export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "permissions": S.optional(StringList),
-}),
-).annotate({ identifier: "TestIamPermissionsResponse" }) as any as S.Schema<TestIamPermissionsResponse>;
+  S.Struct({
+    permissions: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "TestIamPermissionsResponse",
+}) as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsPrivateCloudsClustersRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -3775,12 +5063,22 @@ export interface TestIamPermissionsProjectsLocationsPrivateCloudsClustersRequest
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsPrivateCloudsClustersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "TestIamPermissionsProjectsLocationsPrivateCloudsClustersRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsPrivateCloudsClustersRequest>;
+export const TestIamPermissionsProjectsLocationsPrivateCloudsClustersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+resource}:testIamPermissions",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "TestIamPermissionsProjectsLocationsPrivateCloudsClustersRequest",
+  }) as any as S.Schema<TestIamPermissionsProjectsLocationsPrivateCloudsClustersRequest>;
 
 export interface TestIamPermissionsProjectsLocationsPrivateCloudsHcxActivationKeysRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -3788,12 +5086,22 @@ export interface TestIamPermissionsProjectsLocationsPrivateCloudsHcxActivationKe
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsPrivateCloudsHcxActivationKeysRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resource": S.String.pipe(T.Label()),
-  "body": S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resource}:testIamPermissions","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "TestIamPermissionsProjectsLocationsPrivateCloudsHcxActivationKeysRequest" }) as any as S.Schema<TestIamPermissionsProjectsLocationsPrivateCloudsHcxActivationKeysRequest>;
+export const TestIamPermissionsProjectsLocationsPrivateCloudsHcxActivationKeysRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+resource}:testIamPermissions",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "TestIamPermissionsProjectsLocationsPrivateCloudsHcxActivationKeysRequest",
+  }) as any as S.Schema<TestIamPermissionsProjectsLocationsPrivateCloudsHcxActivationKeysRequest>;
 
 /** Request message for VmwareEngine.UndeletePrivateCloud */
 export interface UndeletePrivateCloudRequest {
@@ -3801,10 +5109,12 @@ export interface UndeletePrivateCloudRequest {
   requestId?: string;
 }
 export const UndeletePrivateCloudRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String),
-}),
-).annotate({ identifier: "UndeletePrivateCloudRequest" }) as any as S.Schema<UndeletePrivateCloudRequest>;
+  S.Struct({
+    requestId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UndeletePrivateCloudRequest",
+}) as any as S.Schema<UndeletePrivateCloudRequest>;
 
 export interface UndeleteProjectsLocationsPrivateCloudsRequest {
   /** Required. The resource name of the private cloud scheduled for deletion. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud` */
@@ -3812,12 +5122,21 @@ export interface UndeleteProjectsLocationsPrivateCloudsRequest {
   /** Request body */
   body?: UndeletePrivateCloudRequest;
 }
-export const UndeleteProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(UndeletePrivateCloudRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:undelete","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "UndeleteProjectsLocationsPrivateCloudsRequest" }) as any as S.Schema<UndeleteProjectsLocationsPrivateCloudsRequest>;
+export const UndeleteProjectsLocationsPrivateCloudsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(UndeletePrivateCloudRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:undelete",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "UndeleteProjectsLocationsPrivateCloudsRequest",
+  }) as any as S.Schema<UndeleteProjectsLocationsPrivateCloudsRequest>;
 
 /** Unmount Datastore Request messag */
 export interface UnmountDatastoreRequest {
@@ -3829,12 +5148,14 @@ export interface UnmountDatastoreRequest {
   requestId?: string;
 }
 export const UnmountDatastoreRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "validateOnly": S.optional(S.Boolean),
-  "datastore": S.optional(S.String),
-  "requestId": S.optional(S.String),
-}),
-).annotate({ identifier: "UnmountDatastoreRequest" }) as any as S.Schema<UnmountDatastoreRequest>;
+  S.Struct({
+    validateOnly: S.optional(S.Boolean),
+    datastore: S.optional(S.String),
+    requestId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UnmountDatastoreRequest",
+}) as any as S.Schema<UnmountDatastoreRequest>;
 
 export interface UnmountDatastoreProjectsLocationsPrivateCloudsClustersRequest {
   /** Required. The resource name of the cluster to unmount the datastore. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/clusters/my-cluster` */
@@ -3842,12 +5163,21 @@ export interface UnmountDatastoreProjectsLocationsPrivateCloudsClustersRequest {
   /** Request body */
   body?: UnmountDatastoreRequest;
 }
-export const UnmountDatastoreProjectsLocationsPrivateCloudsClustersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(UnmountDatastoreRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:unmountDatastore","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "UnmountDatastoreProjectsLocationsPrivateCloudsClustersRequest" }) as any as S.Schema<UnmountDatastoreProjectsLocationsPrivateCloudsClustersRequest>;
+export const UnmountDatastoreProjectsLocationsPrivateCloudsClustersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(UnmountDatastoreRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:unmountDatastore",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "UnmountDatastoreProjectsLocationsPrivateCloudsClustersRequest",
+  }) as any as S.Schema<UnmountDatastoreProjectsLocationsPrivateCloudsClustersRequest>;
 
 export interface UpdateDnsForwardingProjectsLocationsPrivateCloudsRequest {
   /** Output only. Identifier. The resource name of this DNS profile. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/dnsForwarding` */
@@ -3859,16 +5189,30 @@ export interface UpdateDnsForwardingProjectsLocationsPrivateCloudsRequest {
   /** Request body */
   body?: DnsForwarding;
 }
-export const UpdateDnsForwardingProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(DnsForwarding.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://vmwareengine.googleapis.com/"})),
-).annotate({ identifier: "UpdateDnsForwardingProjectsLocationsPrivateCloudsRequest" }) as any as S.Schema<UpdateDnsForwardingProjectsLocationsPrivateCloudsRequest>;
+export const UpdateDnsForwardingProjectsLocationsPrivateCloudsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(DnsForwarding.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmwareengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "UpdateDnsForwardingProjectsLocationsPrivateCloudsRequest",
+  }) as any as S.Schema<UpdateDnsForwardingProjectsLocationsPrivateCloudsRequest>;
 
-export type CreateProjectsLocationsDatastoresError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsDatastoresError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new `Datastore` resource in a given project and location. */
 export const createProjectsLocationsDatastores: API.OperationMethod<
   CreateProjectsLocationsDatastoresRequest,
@@ -3883,7 +5227,12 @@ export const createProjectsLocationsDatastores: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsNetworkPeeringsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsNetworkPeeringsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new network peering between the peer network and VMware Engine network provided in a `NetworkPeering` resource. NetworkPeering is a global resource and location can only be global. */
 export const createProjectsLocationsNetworkPeerings: API.OperationMethod<
   CreateProjectsLocationsNetworkPeeringsRequest,
@@ -3898,7 +5247,12 @@ export const createProjectsLocationsNetworkPeerings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsNetworkPoliciesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsNetworkPoliciesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new network policy in a given VMware Engine network of a project and location (region). A new network policy cannot be created if another network policy already exists in the same scope. */
 export const createProjectsLocationsNetworkPolicies: API.OperationMethod<
   CreateProjectsLocationsNetworkPoliciesRequest,
@@ -3913,7 +5267,12 @@ export const createProjectsLocationsNetworkPolicies: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsNetworkPoliciesExternalAccessRulesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsNetworkPoliciesExternalAccessRulesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new external access rule in a given network policy. */
 export const createProjectsLocationsNetworkPoliciesExternalAccessRules: API.OperationMethod<
   CreateProjectsLocationsNetworkPoliciesExternalAccessRulesRequest,
@@ -3928,7 +5287,12 @@ export const createProjectsLocationsNetworkPoliciesExternalAccessRules: API.Oper
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsPrivateCloudsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsPrivateCloudsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new `PrivateCloud` resource in a given project and location. Private clouds of type `STANDARD` and `TIME_LIMITED` are zonal resources, `STRETCHED` private clouds are regional. Creating a private cloud also creates a [management cluster](https://cloud.google.com/vmware-engine/docs/concepts-vmware-components) for that private cloud. */
 export const createProjectsLocationsPrivateClouds: API.OperationMethod<
   CreateProjectsLocationsPrivateCloudsRequest,
@@ -3943,7 +5307,12 @@ export const createProjectsLocationsPrivateClouds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsPrivateCloudsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsPrivateCloudsClustersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new cluster in a given private cloud. Creating a new cluster provides additional nodes for use in the parent private cloud and requires sufficient [node quota](https://cloud.google.com/vmware-engine/quotas). */
 export const createProjectsLocationsPrivateCloudsClusters: API.OperationMethod<
   CreateProjectsLocationsPrivateCloudsClustersRequest,
@@ -3958,7 +5327,12 @@ export const createProjectsLocationsPrivateCloudsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsPrivateCloudsExternalAddressesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsPrivateCloudsExternalAddressesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new `ExternalAddress` resource in a given private cloud. The network policy that corresponds to the private cloud must have the external IP address network service enabled (`NetworkPolicy.external_ip`). */
 export const createProjectsLocationsPrivateCloudsExternalAddresses: API.OperationMethod<
   CreateProjectsLocationsPrivateCloudsExternalAddressesRequest,
@@ -3973,7 +5347,12 @@ export const createProjectsLocationsPrivateCloudsExternalAddresses: API.Operatio
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsPrivateCloudsHcxActivationKeysError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsPrivateCloudsHcxActivationKeysError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new HCX activation key in a given private cloud. */
 export const createProjectsLocationsPrivateCloudsHcxActivationKeys: API.OperationMethod<
   CreateProjectsLocationsPrivateCloudsHcxActivationKeysRequest,
@@ -3988,7 +5367,12 @@ export const createProjectsLocationsPrivateCloudsHcxActivationKeys: API.Operatio
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsPrivateCloudsLoggingServersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsPrivateCloudsLoggingServersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Create a new logging server for a given private cloud. */
 export const createProjectsLocationsPrivateCloudsLoggingServers: API.OperationMethod<
   CreateProjectsLocationsPrivateCloudsLoggingServersRequest,
@@ -4003,7 +5387,8 @@ export const createProjectsLocationsPrivateCloudsLoggingServers: API.OperationMe
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsPrivateCloudsManagementDnsZoneBindingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsPrivateCloudsManagementDnsZoneBindingsError =
+  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new `ManagementDnsZoneBinding` resource in a private cloud. This RPC creates the DNS binding and the resource that represents the DNS binding of the consumer VPC network to the management DNS zone. A management DNS zone is the Cloud DNS cross-project binding zone that VMware Engine creates for each private cloud. It contains FQDNs and corresponding IP addresses for the private cloud's ESXi hosts and management VM appliances like vCenter and NSX Manager. */
 export const createProjectsLocationsPrivateCloudsManagementDnsZoneBindings: API.OperationMethod<
   CreateProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest,
@@ -4018,7 +5403,12 @@ export const createProjectsLocationsPrivateCloudsManagementDnsZoneBindings: API.
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsPrivateConnectionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsPrivateConnectionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new private connection that can be used for accessing private Clouds. */
 export const createProjectsLocationsPrivateConnections: API.OperationMethod<
   CreateProjectsLocationsPrivateConnectionsRequest,
@@ -4033,7 +5423,12 @@ export const createProjectsLocationsPrivateConnections: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsVmwareEngineNetworksError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsVmwareEngineNetworksError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new VMware Engine network that can be used by a private cloud. */
 export const createProjectsLocationsVmwareEngineNetworks: API.OperationMethod<
   CreateProjectsLocationsVmwareEngineNetworksRequest,
@@ -4048,7 +5443,12 @@ export const createProjectsLocationsVmwareEngineNetworks: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsDatastoresError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsDatastoresError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a `Datastore` resource. You can only delete a Datastore after all resources that refer to it are deleted. For example, multiple clusters of the same private cloud or different private clouds can refer to the same datastore. */
 export const deleteProjectsLocationsDatastores: API.OperationMethod<
   DeleteProjectsLocationsDatastoresRequest,
@@ -4063,7 +5463,12 @@ export const deleteProjectsLocationsDatastores: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsNetworkPeeringsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsNetworkPeeringsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a `NetworkPeering` resource. When a network peering is deleted for a VMware Engine network, the peer network becomes inaccessible to that VMware Engine network. NetworkPeering is a global resource and location can only be global. */
 export const deleteProjectsLocationsNetworkPeerings: API.OperationMethod<
   DeleteProjectsLocationsNetworkPeeringsRequest,
@@ -4078,7 +5483,12 @@ export const deleteProjectsLocationsNetworkPeerings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsNetworkPoliciesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsNetworkPoliciesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a `NetworkPolicy` resource. A network policy cannot be deleted when `NetworkService.state` is set to `RECONCILING` for either its external IP or internet access service. */
 export const deleteProjectsLocationsNetworkPolicies: API.OperationMethod<
   DeleteProjectsLocationsNetworkPoliciesRequest,
@@ -4093,7 +5503,12 @@ export const deleteProjectsLocationsNetworkPolicies: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsNetworkPoliciesExternalAccessRulesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsNetworkPoliciesExternalAccessRulesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a single external access rule. */
 export const deleteProjectsLocationsNetworkPoliciesExternalAccessRules: API.OperationMethod<
   DeleteProjectsLocationsNetworkPoliciesExternalAccessRulesRequest,
@@ -4108,7 +5523,12 @@ export const deleteProjectsLocationsNetworkPoliciesExternalAccessRules: API.Oper
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsRequest,
@@ -4123,7 +5543,12 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsPrivateCloudsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsPrivateCloudsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Schedules a `PrivateCloud` resource for deletion. A `PrivateCloud` resource scheduled for deletion has `PrivateCloud.state` set to `DELETED` and `expireTime` set to the time when deletion is final and can no longer be reversed. The delete operation is marked as done as soon as the `PrivateCloud` is successfully scheduled for deletion (this also applies when `delayHours` is set to zero), and the operation is not kept in pending state until `PrivateCloud` is purged. `PrivateCloud` can be restored using `UndeletePrivateCloud` method before the `expireTime` elapses. When `expireTime` is reached, deletion is final and all private cloud resources are irreversibly removed and billing stops. During the final removal process, `PrivateCloud.state` is set to `PURGING`. `PrivateCloud` can be polled using standard `GET` method for the whole period of deletion and purging. It will not be returned only when it is completely purged. */
 export const deleteProjectsLocationsPrivateClouds: API.OperationMethod<
   DeleteProjectsLocationsPrivateCloudsRequest,
@@ -4138,7 +5563,12 @@ export const deleteProjectsLocationsPrivateClouds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsPrivateCloudsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsPrivateCloudsClustersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a `Cluster` resource. To avoid unintended data loss, migrate or gracefully shut down any workloads running on the cluster before deletion. You cannot delete the management cluster of a private cloud using this method. */
 export const deleteProjectsLocationsPrivateCloudsClusters: API.OperationMethod<
   DeleteProjectsLocationsPrivateCloudsClustersRequest,
@@ -4153,7 +5583,12 @@ export const deleteProjectsLocationsPrivateCloudsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsPrivateCloudsExternalAddressesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsPrivateCloudsExternalAddressesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a single external IP address. When you delete an external IP address, connectivity between the external IP address and the corresponding internal IP address is lost. */
 export const deleteProjectsLocationsPrivateCloudsExternalAddresses: API.OperationMethod<
   DeleteProjectsLocationsPrivateCloudsExternalAddressesRequest,
@@ -4168,7 +5603,12 @@ export const deleteProjectsLocationsPrivateCloudsExternalAddresses: API.Operatio
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsPrivateCloudsLoggingServersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsPrivateCloudsLoggingServersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a single logging server. */
 export const deleteProjectsLocationsPrivateCloudsLoggingServers: API.OperationMethod<
   DeleteProjectsLocationsPrivateCloudsLoggingServersRequest,
@@ -4183,7 +5623,8 @@ export const deleteProjectsLocationsPrivateCloudsLoggingServers: API.OperationMe
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsPrivateCloudsManagementDnsZoneBindingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsPrivateCloudsManagementDnsZoneBindingsError =
+  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Deletes a `ManagementDnsZoneBinding` resource. When a management DNS zone binding is deleted, the corresponding consumer VPC network is no longer bound to the management DNS zone. */
 export const deleteProjectsLocationsPrivateCloudsManagementDnsZoneBindings: API.OperationMethod<
   DeleteProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest,
@@ -4198,7 +5639,12 @@ export const deleteProjectsLocationsPrivateCloudsManagementDnsZoneBindings: API.
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsPrivateConnectionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsPrivateConnectionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a `PrivateConnection` resource. When a private connection is deleted for a VMware Engine network, the connected network becomes inaccessible to that VMware Engine network. */
 export const deleteProjectsLocationsPrivateConnections: API.OperationMethod<
   DeleteProjectsLocationsPrivateConnectionsRequest,
@@ -4213,7 +5659,12 @@ export const deleteProjectsLocationsPrivateConnections: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsVmwareEngineNetworksError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsVmwareEngineNetworksError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a `VmwareEngineNetwork` resource. You can only delete a VMware Engine network after all resources that refer to it are deleted. For example, a private cloud, a network peering, and a network policy can all refer to the same VMware Engine network. */
 export const deleteProjectsLocationsVmwareEngineNetworks: API.OperationMethod<
   DeleteProjectsLocationsVmwareEngineNetworksRequest,
@@ -4228,7 +5679,10 @@ export const deleteProjectsLocationsVmwareEngineNetworks: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type FetchExternalAddressesProjectsLocationsNetworkPoliciesError = NotFound | Forbidden | GcpOpError;
+export type FetchExternalAddressesProjectsLocationsNetworkPoliciesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists external IP addresses assigned to VMware workload VMs within the scope of the given network policy. */
 export const fetchExternalAddressesProjectsLocationsNetworkPolicies: API.PaginatedOperationMethod<
   FetchExternalAddressesProjectsLocationsNetworkPoliciesRequest,
@@ -4241,10 +5695,16 @@ export const fetchExternalAddressesProjectsLocationsNetworkPolicies: API.Paginat
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type GetDnsBindPermissionProjectsLocationsError = NotFound | Forbidden | GcpOpError;
+export type GetDnsBindPermissionProjectsLocationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets all the principals having bind permission on the intranet VPC associated with the consumer project granted by the Grant API. DnsBindPermission is a global resource and location can only be global. */
 export const getDnsBindPermissionProjectsLocations: API.OperationMethod<
   GetDnsBindPermissionProjectsLocationsRequest,
@@ -4259,7 +5719,10 @@ export const getDnsBindPermissionProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetDnsForwardingProjectsLocationsPrivateCloudsError = NotFound | Forbidden | GcpOpError;
+export type GetDnsForwardingProjectsLocationsPrivateCloudsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of the `DnsForwarding` config. */
 export const getDnsForwardingProjectsLocationsPrivateClouds: API.OperationMethod<
   GetDnsForwardingProjectsLocationsPrivateCloudsRequest,
@@ -4274,7 +5737,10 @@ export const getDnsForwardingProjectsLocationsPrivateClouds: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsPrivateCloudsError = NotFound | Forbidden | GcpOpError;
+export type GetIamPolicyProjectsLocationsPrivateCloudsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsPrivateClouds: API.OperationMethod<
   GetIamPolicyProjectsLocationsPrivateCloudsRequest,
@@ -4289,7 +5755,10 @@ export const getIamPolicyProjectsLocationsPrivateClouds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsPrivateCloudsClustersError = NotFound | Forbidden | GcpOpError;
+export type GetIamPolicyProjectsLocationsPrivateCloudsClustersError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsPrivateCloudsClusters: API.OperationMethod<
   GetIamPolicyProjectsLocationsPrivateCloudsClustersRequest,
@@ -4304,7 +5773,10 @@ export const getIamPolicyProjectsLocationsPrivateCloudsClusters: API.OperationMe
   retry: Retry.Retry,
 }));
 
-export type GetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysError = NotFound | Forbidden | GcpOpError;
+export type GetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeys: API.OperationMethod<
   GetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequest,
@@ -4334,7 +5806,10 @@ export const getProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsAnnouncementsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsAnnouncementsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieves a `Announcement` by its resource name. */
 export const getProjectsLocationsAnnouncements: API.OperationMethod<
   GetProjectsLocationsAnnouncementsRequest,
@@ -4349,7 +5824,10 @@ export const getProjectsLocationsAnnouncements: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsDatastoresError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsDatastoresError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieves a `Datastore` resource by its resource name. The resource contains details of the Datastore, such as its description, subnets, type, and more. */
 export const getProjectsLocationsDatastores: API.OperationMethod<
   GetProjectsLocationsDatastoresRequest,
@@ -4364,7 +5842,10 @@ export const getProjectsLocationsDatastores: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsNetworkPeeringsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsNetworkPeeringsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieves a `NetworkPeering` resource by its resource name. The resource contains details of the network peering, such as peered networks, import and export custom route configurations, and peering state. NetworkPeering is a global resource and location can only be global. */
 export const getProjectsLocationsNetworkPeerings: API.OperationMethod<
   GetProjectsLocationsNetworkPeeringsRequest,
@@ -4379,7 +5860,10 @@ export const getProjectsLocationsNetworkPeerings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsNetworkPoliciesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsNetworkPoliciesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieves a `NetworkPolicy` resource by its resource name. */
 export const getProjectsLocationsNetworkPolicies: API.OperationMethod<
   GetProjectsLocationsNetworkPoliciesRequest,
@@ -4394,7 +5878,10 @@ export const getProjectsLocationsNetworkPolicies: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsNetworkPoliciesExternalAccessRulesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsNetworkPoliciesExternalAccessRulesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a single external access rule. */
 export const getProjectsLocationsNetworkPoliciesExternalAccessRules: API.OperationMethod<
   GetProjectsLocationsNetworkPoliciesExternalAccessRulesRequest,
@@ -4409,7 +5896,10 @@ export const getProjectsLocationsNetworkPoliciesExternalAccessRules: API.Operati
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsNodeTypesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsNodeTypesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a single `NodeType`. */
 export const getProjectsLocationsNodeTypes: API.OperationMethod<
   GetProjectsLocationsNodeTypesRequest,
@@ -4424,7 +5914,10 @@ export const getProjectsLocationsNodeTypes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -4439,7 +5932,10 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsPrivateCloudsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsPrivateCloudsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieves a `PrivateCloud` resource by its resource name. */
 export const getProjectsLocationsPrivateClouds: API.OperationMethod<
   GetProjectsLocationsPrivateCloudsRequest,
@@ -4454,7 +5950,10 @@ export const getProjectsLocationsPrivateClouds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsPrivateCloudsClustersError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsPrivateCloudsClustersError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieves a `Cluster` resource by its resource name. */
 export const getProjectsLocationsPrivateCloudsClusters: API.OperationMethod<
   GetProjectsLocationsPrivateCloudsClustersRequest,
@@ -4469,7 +5968,10 @@ export const getProjectsLocationsPrivateCloudsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsPrivateCloudsClustersNodesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsPrivateCloudsClustersNodesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a single node. */
 export const getProjectsLocationsPrivateCloudsClustersNodes: API.OperationMethod<
   GetProjectsLocationsPrivateCloudsClustersNodesRequest,
@@ -4484,7 +5986,10 @@ export const getProjectsLocationsPrivateCloudsClustersNodes: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsPrivateCloudsExternalAddressesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsPrivateCloudsExternalAddressesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a single external IP address. */
 export const getProjectsLocationsPrivateCloudsExternalAddresses: API.OperationMethod<
   GetProjectsLocationsPrivateCloudsExternalAddressesRequest,
@@ -4499,7 +6004,10 @@ export const getProjectsLocationsPrivateCloudsExternalAddresses: API.OperationMe
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsPrivateCloudsHcxActivationKeysError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsPrivateCloudsHcxActivationKeysError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieves a `HcxActivationKey` resource by its resource name. */
 export const getProjectsLocationsPrivateCloudsHcxActivationKeys: API.OperationMethod<
   GetProjectsLocationsPrivateCloudsHcxActivationKeysRequest,
@@ -4514,7 +6022,10 @@ export const getProjectsLocationsPrivateCloudsHcxActivationKeys: API.OperationMe
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsPrivateCloudsLoggingServersError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsPrivateCloudsLoggingServersError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a logging server. */
 export const getProjectsLocationsPrivateCloudsLoggingServers: API.OperationMethod<
   GetProjectsLocationsPrivateCloudsLoggingServersRequest,
@@ -4529,7 +6040,10 @@ export const getProjectsLocationsPrivateCloudsLoggingServers: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsPrivateCloudsManagementDnsZoneBindingsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsPrivateCloudsManagementDnsZoneBindingsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieves a 'ManagementDnsZoneBinding' resource by its resource name. */
 export const getProjectsLocationsPrivateCloudsManagementDnsZoneBindings: API.OperationMethod<
   GetProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest,
@@ -4544,7 +6058,10 @@ export const getProjectsLocationsPrivateCloudsManagementDnsZoneBindings: API.Ope
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsPrivateCloudsSubnetsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsPrivateCloudsSubnetsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a single subnet. */
 export const getProjectsLocationsPrivateCloudsSubnets: API.OperationMethod<
   GetProjectsLocationsPrivateCloudsSubnetsRequest,
@@ -4559,7 +6076,10 @@ export const getProjectsLocationsPrivateCloudsSubnets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsPrivateCloudsUpgradesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsPrivateCloudsUpgradesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieves a private cloud `Upgrade` resource by its resource name. */
 export const getProjectsLocationsPrivateCloudsUpgrades: API.OperationMethod<
   GetProjectsLocationsPrivateCloudsUpgradesRequest,
@@ -4574,7 +6094,10 @@ export const getProjectsLocationsPrivateCloudsUpgrades: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsPrivateConnectionsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsPrivateConnectionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieves a `PrivateConnection` resource by its resource name. The resource contains details of the private connection, such as connected network, routing mode and state. */
 export const getProjectsLocationsPrivateConnections: API.OperationMethod<
   GetProjectsLocationsPrivateConnectionsRequest,
@@ -4589,7 +6112,10 @@ export const getProjectsLocationsPrivateConnections: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsVmwareEngineNetworksError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsVmwareEngineNetworksError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieves a `VmwareEngineNetwork` resource by its resource name. The resource contains details of the VMware Engine network, such as its VMware Engine network type, peered networks in a service project, and state (for example, `CREATING`, `ACTIVE`, `DELETING`). */
 export const getProjectsLocationsVmwareEngineNetworks: API.OperationMethod<
   GetProjectsLocationsVmwareEngineNetworksRequest,
@@ -4604,7 +6130,12 @@ export const getProjectsLocationsVmwareEngineNetworks: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GrantProjectsLocationsDnsBindPermissionError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type GrantProjectsLocationsDnsBindPermissionError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Grants the bind permission to the customer provided principal(user / service account) to bind their DNS zone with the intranet VPC associated with the project. DnsBindPermission is a global resource and location can only be global. */
 export const grantProjectsLocationsDnsBindPermission: API.OperationMethod<
   GrantProjectsLocationsDnsBindPermissionRequest,
@@ -4632,10 +6163,16 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsAnnouncementsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsAnnouncementsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists `Announcements` for a given region and project */
 export const listProjectsLocationsAnnouncements: API.PaginatedOperationMethod<
   ListProjectsLocationsAnnouncementsRequest,
@@ -4648,10 +6185,16 @@ export const listProjectsLocationsAnnouncements: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsDatastoresError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsDatastoresError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists `Datastore` resources in a given project and location. */
 export const listProjectsLocationsDatastores: API.PaginatedOperationMethod<
   ListProjectsLocationsDatastoresRequest,
@@ -4664,10 +6207,16 @@ export const listProjectsLocationsDatastores: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsNetworkPeeringsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsNetworkPeeringsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists `NetworkPeering` resources in a given project. NetworkPeering is a global resource and location can only be global. */
 export const listProjectsLocationsNetworkPeerings: API.PaginatedOperationMethod<
   ListProjectsLocationsNetworkPeeringsRequest,
@@ -4680,10 +6229,16 @@ export const listProjectsLocationsNetworkPeerings: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsNetworkPeeringsPeeringRoutesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsNetworkPeeringsPeeringRoutesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists the network peering routes exchanged over a peering connection. NetworkPeering is a global resource and location can only be global. */
 export const listProjectsLocationsNetworkPeeringsPeeringRoutes: API.PaginatedOperationMethod<
   ListProjectsLocationsNetworkPeeringsPeeringRoutesRequest,
@@ -4696,10 +6251,16 @@ export const listProjectsLocationsNetworkPeeringsPeeringRoutes: API.PaginatedOpe
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsNetworkPoliciesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsNetworkPoliciesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists `NetworkPolicy` resources in a specified project and location. */
 export const listProjectsLocationsNetworkPolicies: API.PaginatedOperationMethod<
   ListProjectsLocationsNetworkPoliciesRequest,
@@ -4712,10 +6273,16 @@ export const listProjectsLocationsNetworkPolicies: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsNetworkPoliciesExternalAccessRulesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsNetworkPoliciesExternalAccessRulesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists `ExternalAccessRule` resources in the specified network policy. */
 export const listProjectsLocationsNetworkPoliciesExternalAccessRules: API.PaginatedOperationMethod<
   ListProjectsLocationsNetworkPoliciesExternalAccessRulesRequest,
@@ -4728,10 +6295,16 @@ export const listProjectsLocationsNetworkPoliciesExternalAccessRules: API.Pagina
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsNodeTypesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsNodeTypesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists node types */
 export const listProjectsLocationsNodeTypes: API.PaginatedOperationMethod<
   ListProjectsLocationsNodeTypesRequest,
@@ -4744,10 +6317,16 @@ export const listProjectsLocationsNodeTypes: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -4760,10 +6339,16 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsPrivateCloudsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsPrivateCloudsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists `PrivateCloud` resources in a given project and location. */
 export const listProjectsLocationsPrivateClouds: API.PaginatedOperationMethod<
   ListProjectsLocationsPrivateCloudsRequest,
@@ -4776,10 +6361,16 @@ export const listProjectsLocationsPrivateClouds: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsPrivateCloudsClustersError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsPrivateCloudsClustersError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists `Cluster` resources in a given private cloud. */
 export const listProjectsLocationsPrivateCloudsClusters: API.PaginatedOperationMethod<
   ListProjectsLocationsPrivateCloudsClustersRequest,
@@ -4792,10 +6383,16 @@ export const listProjectsLocationsPrivateCloudsClusters: API.PaginatedOperationM
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsPrivateCloudsClustersNodesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsPrivateCloudsClustersNodesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists nodes in a given cluster. */
 export const listProjectsLocationsPrivateCloudsClustersNodes: API.PaginatedOperationMethod<
   ListProjectsLocationsPrivateCloudsClustersNodesRequest,
@@ -4808,10 +6405,16 @@ export const listProjectsLocationsPrivateCloudsClustersNodes: API.PaginatedOpera
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsPrivateCloudsExternalAddressesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsPrivateCloudsExternalAddressesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists external IP addresses assigned to VMware workload VMs in a given private cloud. */
 export const listProjectsLocationsPrivateCloudsExternalAddresses: API.PaginatedOperationMethod<
   ListProjectsLocationsPrivateCloudsExternalAddressesRequest,
@@ -4824,10 +6427,16 @@ export const listProjectsLocationsPrivateCloudsExternalAddresses: API.PaginatedO
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsPrivateCloudsHcxActivationKeysError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsPrivateCloudsHcxActivationKeysError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists `HcxActivationKey` resources in a given private cloud. */
 export const listProjectsLocationsPrivateCloudsHcxActivationKeys: API.PaginatedOperationMethod<
   ListProjectsLocationsPrivateCloudsHcxActivationKeysRequest,
@@ -4840,10 +6449,16 @@ export const listProjectsLocationsPrivateCloudsHcxActivationKeys: API.PaginatedO
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsPrivateCloudsLoggingServersError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsPrivateCloudsLoggingServersError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists logging servers configured for a given private cloud. */
 export const listProjectsLocationsPrivateCloudsLoggingServers: API.PaginatedOperationMethod<
   ListProjectsLocationsPrivateCloudsLoggingServersRequest,
@@ -4856,10 +6471,16 @@ export const listProjectsLocationsPrivateCloudsLoggingServers: API.PaginatedOper
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsPrivateCloudsManagementDnsZoneBindingsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsPrivateCloudsManagementDnsZoneBindingsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists Consumer VPCs bound to Management DNS Zone of a given private cloud. */
 export const listProjectsLocationsPrivateCloudsManagementDnsZoneBindings: API.PaginatedOperationMethod<
   ListProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest,
@@ -4872,10 +6493,16 @@ export const listProjectsLocationsPrivateCloudsManagementDnsZoneBindings: API.Pa
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsPrivateCloudsSubnetsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsPrivateCloudsSubnetsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists subnets in a given private cloud. */
 export const listProjectsLocationsPrivateCloudsSubnets: API.PaginatedOperationMethod<
   ListProjectsLocationsPrivateCloudsSubnetsRequest,
@@ -4888,10 +6515,16 @@ export const listProjectsLocationsPrivateCloudsSubnets: API.PaginatedOperationMe
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsPrivateCloudsUpgradesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsPrivateCloudsUpgradesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists past, ongoing and upcoming `Upgrades` for the given private cloud. */
 export const listProjectsLocationsPrivateCloudsUpgrades: API.PaginatedOperationMethod<
   ListProjectsLocationsPrivateCloudsUpgradesRequest,
@@ -4904,10 +6537,16 @@ export const listProjectsLocationsPrivateCloudsUpgrades: API.PaginatedOperationM
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsPrivateConnectionsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsPrivateConnectionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists `PrivateConnection` resources in a given project and location. */
 export const listProjectsLocationsPrivateConnections: API.PaginatedOperationMethod<
   ListProjectsLocationsPrivateConnectionsRequest,
@@ -4920,10 +6559,16 @@ export const listProjectsLocationsPrivateConnections: API.PaginatedOperationMeth
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsPrivateConnectionsPeeringRoutesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsPrivateConnectionsPeeringRoutesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists the private connection routes exchanged over a peering connection. */
 export const listProjectsLocationsPrivateConnectionsPeeringRoutes: API.PaginatedOperationMethod<
   ListProjectsLocationsPrivateConnectionsPeeringRoutesRequest,
@@ -4936,10 +6581,16 @@ export const listProjectsLocationsPrivateConnectionsPeeringRoutes: API.Paginated
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsVmwareEngineNetworksError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsVmwareEngineNetworksError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists `VmwareEngineNetwork` resources in a given project and location. */
 export const listProjectsLocationsVmwareEngineNetworks: API.PaginatedOperationMethod<
   ListProjectsLocationsVmwareEngineNetworksRequest,
@@ -4952,10 +6603,18 @@ export const listProjectsLocationsVmwareEngineNetworks: API.PaginatedOperationMe
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type MigrateManagementVmsProjectsLocationsPrivateCloudsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type MigrateManagementVmsProjectsLocationsPrivateCloudsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Migrates the management VMs of the PC from the current management cluster to a workload cluster. Post this migration, the provided workload cluster becomes the management cluster */
 export const migrateManagementVmsProjectsLocationsPrivateClouds: API.OperationMethod<
   MigrateManagementVmsProjectsLocationsPrivateCloudsRequest,
@@ -4970,7 +6629,12 @@ export const migrateManagementVmsProjectsLocationsPrivateClouds: API.OperationMe
   retry: Retry.Retry,
 }));
 
-export type MountDatastoreProjectsLocationsPrivateCloudsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type MountDatastoreProjectsLocationsPrivateCloudsClustersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Mounts a `Datastore` on a cluster resource */
 export const mountDatastoreProjectsLocationsPrivateCloudsClusters: API.OperationMethod<
   MountDatastoreProjectsLocationsPrivateCloudsClustersRequest,
@@ -4985,7 +6649,12 @@ export const mountDatastoreProjectsLocationsPrivateCloudsClusters: API.Operation
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsDatastoresError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsDatastoresError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Modifies a Datastore resource. Only fields specified in `updateMask` are applied. */
 export const patchProjectsLocationsDatastores: API.OperationMethod<
   PatchProjectsLocationsDatastoresRequest,
@@ -5000,7 +6669,12 @@ export const patchProjectsLocationsDatastores: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsNetworkPeeringsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsNetworkPeeringsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Modifies a `NetworkPeering` resource. Only the `description` field can be updated. Only fields specified in `updateMask` are applied. NetworkPeering is a global resource and location can only be global. */
 export const patchProjectsLocationsNetworkPeerings: API.OperationMethod<
   PatchProjectsLocationsNetworkPeeringsRequest,
@@ -5015,7 +6689,12 @@ export const patchProjectsLocationsNetworkPeerings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsNetworkPoliciesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsNetworkPoliciesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Modifies a `NetworkPolicy` resource. Only the following fields can be updated: `internet_access`, `external_ip`, `edge_services_cidr`. Only fields specified in `updateMask` are applied. When updating a network policy, the external IP network service can only be disabled if there are no external IP addresses present in the scope of the policy. Also, a `NetworkService` cannot be updated when `NetworkService.state` is set to `RECONCILING`. During operation processing, the resource is temporarily in the `ACTIVE` state before the operation fully completes. For that period of time, you can't update the resource. Use the operation status to determine when the processing fully completes. */
 export const patchProjectsLocationsNetworkPolicies: API.OperationMethod<
   PatchProjectsLocationsNetworkPoliciesRequest,
@@ -5030,7 +6709,12 @@ export const patchProjectsLocationsNetworkPolicies: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsNetworkPoliciesExternalAccessRulesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsNetworkPoliciesExternalAccessRulesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the parameters of a single external access rule. Only fields specified in `update_mask` are applied. */
 export const patchProjectsLocationsNetworkPoliciesExternalAccessRules: API.OperationMethod<
   PatchProjectsLocationsNetworkPoliciesExternalAccessRulesRequest,
@@ -5045,7 +6729,12 @@ export const patchProjectsLocationsNetworkPoliciesExternalAccessRules: API.Opera
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsPrivateCloudsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsPrivateCloudsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Modifies a `PrivateCloud` resource. Only the following fields can be updated: `description`. Only fields specified in `updateMask` are applied. During operation processing, the resource is temporarily in the `ACTIVE` state before the operation fully completes. For that period of time, you can't update the resource. Use the operation status to determine when the processing fully completes. */
 export const patchProjectsLocationsPrivateClouds: API.OperationMethod<
   PatchProjectsLocationsPrivateCloudsRequest,
@@ -5060,7 +6749,12 @@ export const patchProjectsLocationsPrivateClouds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsPrivateCloudsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsPrivateCloudsClustersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Modifies a `Cluster` resource. Only fields specified in `updateMask` are applied. During operation processing, the resource is temporarily in the `ACTIVE` state before the operation fully completes. For that period of time, you can't update the resource. Use the operation status to determine when the processing fully completes. */
 export const patchProjectsLocationsPrivateCloudsClusters: API.OperationMethod<
   PatchProjectsLocationsPrivateCloudsClustersRequest,
@@ -5075,7 +6769,12 @@ export const patchProjectsLocationsPrivateCloudsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsPrivateCloudsExternalAddressesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsPrivateCloudsExternalAddressesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the parameters of a single external IP address. Only fields specified in `update_mask` are applied. During operation processing, the resource is temporarily in the `ACTIVE` state before the operation fully completes. For that period of time, you can't update the resource. Use the operation status to determine when the processing fully completes. */
 export const patchProjectsLocationsPrivateCloudsExternalAddresses: API.OperationMethod<
   PatchProjectsLocationsPrivateCloudsExternalAddressesRequest,
@@ -5090,7 +6789,12 @@ export const patchProjectsLocationsPrivateCloudsExternalAddresses: API.Operation
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsPrivateCloudsLoggingServersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsPrivateCloudsLoggingServersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the parameters of a single logging server. Only fields specified in `update_mask` are applied. */
 export const patchProjectsLocationsPrivateCloudsLoggingServers: API.OperationMethod<
   PatchProjectsLocationsPrivateCloudsLoggingServersRequest,
@@ -5105,7 +6809,12 @@ export const patchProjectsLocationsPrivateCloudsLoggingServers: API.OperationMet
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsPrivateCloudsManagementDnsZoneBindingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsPrivateCloudsManagementDnsZoneBindingsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a `ManagementDnsZoneBinding` resource. Only fields specified in `update_mask` are applied. */
 export const patchProjectsLocationsPrivateCloudsManagementDnsZoneBindings: API.OperationMethod<
   PatchProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest,
@@ -5120,7 +6829,12 @@ export const patchProjectsLocationsPrivateCloudsManagementDnsZoneBindings: API.O
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsPrivateCloudsSubnetsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsPrivateCloudsSubnetsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the parameters of a single subnet. Only fields specified in `update_mask` are applied. *Note*: This API is synchronous and always returns a successful `google.longrunning.Operation` (LRO). The returned LRO will only have `done` and `response` fields. */
 export const patchProjectsLocationsPrivateCloudsSubnets: API.OperationMethod<
   PatchProjectsLocationsPrivateCloudsSubnetsRequest,
@@ -5135,7 +6849,12 @@ export const patchProjectsLocationsPrivateCloudsSubnets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsPrivateCloudsUpgradesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsPrivateCloudsUpgradesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update the private cloud `Upgrade` resource. Only `schedule` field can updated. The schedule can only be updated when the upgrade has not started and schedule edit window is open. Only fields specified in `update_mask` are considered. */
 export const patchProjectsLocationsPrivateCloudsUpgrades: API.OperationMethod<
   PatchProjectsLocationsPrivateCloudsUpgradesRequest,
@@ -5150,7 +6869,12 @@ export const patchProjectsLocationsPrivateCloudsUpgrades: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsPrivateConnectionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsPrivateConnectionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Modifies a `PrivateConnection` resource. Only `description` and `routing_mode` fields can be updated. Only fields specified in `updateMask` are applied. */
 export const patchProjectsLocationsPrivateConnections: API.OperationMethod<
   PatchProjectsLocationsPrivateConnectionsRequest,
@@ -5165,7 +6889,12 @@ export const patchProjectsLocationsPrivateConnections: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsVmwareEngineNetworksError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsVmwareEngineNetworksError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Modifies a VMware Engine network resource. Only the following fields can be updated: `description`. Only fields specified in `updateMask` are applied. */
 export const patchProjectsLocationsVmwareEngineNetworks: API.OperationMethod<
   PatchProjectsLocationsVmwareEngineNetworksRequest,
@@ -5180,7 +6909,12 @@ export const patchProjectsLocationsVmwareEngineNetworks: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PrivateCloudDeletionNowProjectsLocationsPrivateCloudsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PrivateCloudDeletionNowProjectsLocationsPrivateCloudsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Accelerates the deletion of a private cloud that is currently in soft deletion A `PrivateCloud` resource in soft deletion has `PrivateCloud.state` set to `SOFT_DELETED` and `PrivateCloud.expireTime` set to the time when deletion can no longer be reversed. */
 export const privateCloudDeletionNowProjectsLocationsPrivateClouds: API.OperationMethod<
   PrivateCloudDeletionNowProjectsLocationsPrivateCloudsRequest,
@@ -5195,7 +6929,8 @@ export const privateCloudDeletionNowProjectsLocationsPrivateClouds: API.Operatio
   retry: Retry.Retry,
 }));
 
-export type RepairProjectsLocationsPrivateCloudsManagementDnsZoneBindingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RepairProjectsLocationsPrivateCloudsManagementDnsZoneBindingsError =
+  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Retries to create a `ManagementDnsZoneBinding` resource that is in failed state. */
 export const repairProjectsLocationsPrivateCloudsManagementDnsZoneBindings: API.OperationMethod<
   RepairProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest,
@@ -5210,7 +6945,12 @@ export const repairProjectsLocationsPrivateCloudsManagementDnsZoneBindings: API.
   retry: Retry.Retry,
 }));
 
-export type ResetNsxCredentialsProjectsLocationsPrivateCloudsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ResetNsxCredentialsProjectsLocationsPrivateCloudsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Resets credentials of the NSX appliance. */
 export const resetNsxCredentialsProjectsLocationsPrivateClouds: API.OperationMethod<
   ResetNsxCredentialsProjectsLocationsPrivateCloudsRequest,
@@ -5225,7 +6965,12 @@ export const resetNsxCredentialsProjectsLocationsPrivateClouds: API.OperationMet
   retry: Retry.Retry,
 }));
 
-export type ResetVcenterCredentialsProjectsLocationsPrivateCloudsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ResetVcenterCredentialsProjectsLocationsPrivateCloudsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Resets credentials of the Vcenter appliance. */
 export const resetVcenterCredentialsProjectsLocationsPrivateClouds: API.OperationMethod<
   ResetVcenterCredentialsProjectsLocationsPrivateCloudsRequest,
@@ -5240,7 +6985,12 @@ export const resetVcenterCredentialsProjectsLocationsPrivateClouds: API.Operatio
   retry: Retry.Retry,
 }));
 
-export type RevokeProjectsLocationsDnsBindPermissionError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RevokeProjectsLocationsDnsBindPermissionError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Revokes the bind permission from the customer provided principal(user / service account) on the intranet VPC associated with the consumer project. DnsBindPermission is a global resource and location can only be global. */
 export const revokeProjectsLocationsDnsBindPermission: API.OperationMethod<
   RevokeProjectsLocationsDnsBindPermissionRequest,
@@ -5255,7 +7005,12 @@ export const revokeProjectsLocationsDnsBindPermission: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsPrivateCloudsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetIamPolicyProjectsLocationsPrivateCloudsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsPrivateClouds: API.OperationMethod<
   SetIamPolicyProjectsLocationsPrivateCloudsRequest,
@@ -5270,7 +7025,12 @@ export const setIamPolicyProjectsLocationsPrivateClouds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsPrivateCloudsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetIamPolicyProjectsLocationsPrivateCloudsClustersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsPrivateCloudsClusters: API.OperationMethod<
   SetIamPolicyProjectsLocationsPrivateCloudsClustersRequest,
@@ -5285,7 +7045,12 @@ export const setIamPolicyProjectsLocationsPrivateCloudsClusters: API.OperationMe
   retry: Retry.Retry,
 }));
 
-export type SetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeys: API.OperationMethod<
   SetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequest,
@@ -5300,7 +7065,10 @@ export const setIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeys: API.Op
   retry: Retry.Retry,
 }));
 
-export type ShowNsxCredentialsProjectsLocationsPrivateCloudsError = NotFound | Forbidden | GcpOpError;
+export type ShowNsxCredentialsProjectsLocationsPrivateCloudsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of credentials for NSX appliance. */
 export const showNsxCredentialsProjectsLocationsPrivateClouds: API.OperationMethod<
   ShowNsxCredentialsProjectsLocationsPrivateCloudsRequest,
@@ -5315,7 +7083,10 @@ export const showNsxCredentialsProjectsLocationsPrivateClouds: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type ShowVcenterCredentialsProjectsLocationsPrivateCloudsError = NotFound | Forbidden | GcpOpError;
+export type ShowVcenterCredentialsProjectsLocationsPrivateCloudsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of credentials for Vcenter appliance. */
 export const showVcenterCredentialsProjectsLocationsPrivateClouds: API.OperationMethod<
   ShowVcenterCredentialsProjectsLocationsPrivateCloudsRequest,
@@ -5330,7 +7101,12 @@ export const showVcenterCredentialsProjectsLocationsPrivateClouds: API.Operation
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsPrivateCloudsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TestIamPermissionsProjectsLocationsPrivateCloudsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsPrivateClouds: API.OperationMethod<
   TestIamPermissionsProjectsLocationsPrivateCloudsRequest,
@@ -5345,7 +7121,12 @@ export const testIamPermissionsProjectsLocationsPrivateClouds: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsPrivateCloudsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TestIamPermissionsProjectsLocationsPrivateCloudsClustersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsPrivateCloudsClusters: API.OperationMethod<
   TestIamPermissionsProjectsLocationsPrivateCloudsClustersRequest,
@@ -5360,7 +7141,8 @@ export const testIamPermissionsProjectsLocationsPrivateCloudsClusters: API.Opera
   retry: Retry.Retry,
 }));
 
-export type TestIamPermissionsProjectsLocationsPrivateCloudsHcxActivationKeysError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TestIamPermissionsProjectsLocationsPrivateCloudsHcxActivationKeysError =
+  NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsPrivateCloudsHcxActivationKeys: API.OperationMethod<
   TestIamPermissionsProjectsLocationsPrivateCloudsHcxActivationKeysRequest,
@@ -5368,14 +7150,20 @@ export const testIamPermissionsProjectsLocationsPrivateCloudsHcxActivationKeys: 
   TestIamPermissionsProjectsLocationsPrivateCloudsHcxActivationKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsPrivateCloudsHcxActivationKeysRequest,
+  input:
+    TestIamPermissionsProjectsLocationsPrivateCloudsHcxActivationKeysRequest,
   output: TestIamPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type UndeleteProjectsLocationsPrivateCloudsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UndeleteProjectsLocationsPrivateCloudsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Restores a private cloud that was previously scheduled for deletion by `DeletePrivateCloud`. A `PrivateCloud` resource scheduled for deletion has `PrivateCloud.state` set to `DELETED` and `PrivateCloud.expireTime` set to the time when deletion can no longer be reversed. */
 export const undeleteProjectsLocationsPrivateClouds: API.OperationMethod<
   UndeleteProjectsLocationsPrivateCloudsRequest,
@@ -5390,7 +7178,12 @@ export const undeleteProjectsLocationsPrivateClouds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UnmountDatastoreProjectsLocationsPrivateCloudsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UnmountDatastoreProjectsLocationsPrivateCloudsClustersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Unmounts a `Datastore` on a cluster resource */
 export const unmountDatastoreProjectsLocationsPrivateCloudsClusters: API.OperationMethod<
   UnmountDatastoreProjectsLocationsPrivateCloudsClustersRequest,
@@ -5405,7 +7198,12 @@ export const unmountDatastoreProjectsLocationsPrivateCloudsClusters: API.Operati
   retry: Retry.Retry,
 }));
 
-export type UpdateDnsForwardingProjectsLocationsPrivateCloudsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateDnsForwardingProjectsLocationsPrivateCloudsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the parameters of the `DnsForwarding` config, like associated domains. Only fields specified in `update_mask` are applied. */
 export const updateDnsForwardingProjectsLocationsPrivateClouds: API.OperationMethod<
   UpdateDnsForwardingProjectsLocationsPrivateCloudsRequest,
@@ -5419,4 +7217,3 @@ export const updateDnsForwardingProjectsLocationsPrivateClouds: API.OperationMet
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

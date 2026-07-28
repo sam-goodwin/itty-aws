@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export type TagActionActionEnum = "ACTION_UNSPECIFIED" | "ADD" | "REMOVE";
@@ -71,14 +71,16 @@ export interface TagAction {
   action?: TagActionActionEnum | (string & {});
 }
 export const TagAction = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "tag": S.optional(S.String),
-  "action": S.optional(TagActionActionEnum),
-}),
+  S.Struct({
+    tag: S.optional(S.String),
+    action: S.optional(TagActionActionEnum),
+  }),
 ).annotate({ identifier: "TagAction" }) as any as S.Schema<TagAction>;
 
 export type TagActionList = ReadonlyArray<TagAction>;
-export const TagActionList = /*@__PURE__*/ S.Array(TagAction) as any as S.Schema<TagActionList>;
+export const TagActionList = /*@__PURE__*/ S.Array(
+  TagAction,
+) as any as S.Schema<TagActionList>;
 
 /** Message for requesting edit tags for ApiObservation */
 export interface EditTagsApiObservationsRequest {
@@ -88,14 +90,19 @@ export interface EditTagsApiObservationsRequest {
   apiObservationId?: string;
 }
 export const EditTagsApiObservationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "tagActions": S.optional(TagActionList),
-  "apiObservationId": S.optional(S.String),
-}),
-).annotate({ identifier: "EditTagsApiObservationsRequest" }) as any as S.Schema<EditTagsApiObservationsRequest>;
+  S.Struct({
+    tagActions: S.optional(TagActionList),
+    apiObservationId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EditTagsApiObservationsRequest",
+}) as any as S.Schema<EditTagsApiObservationsRequest>;
 
-export type EditTagsApiObservationsRequestList = ReadonlyArray<EditTagsApiObservationsRequest>;
-export const EditTagsApiObservationsRequestList = /*@__PURE__*/ S.Array(EditTagsApiObservationsRequest) as any as S.Schema<EditTagsApiObservationsRequestList>;
+export type EditTagsApiObservationsRequestList =
+  ReadonlyArray<EditTagsApiObservationsRequest>;
+export const EditTagsApiObservationsRequestList = /*@__PURE__*/ S.Array(
+  EditTagsApiObservationsRequest,
+) as any as S.Schema<EditTagsApiObservationsRequestList>;
 
 /** Message for requesting batch edit tags for ApiObservations */
 export interface BatchEditTagsApiObservationsRequest {
@@ -103,10 +110,12 @@ export interface BatchEditTagsApiObservationsRequest {
   requests?: EditTagsApiObservationsRequestList;
 }
 export const BatchEditTagsApiObservationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requests": S.optional(EditTagsApiObservationsRequestList),
-}),
-).annotate({ identifier: "BatchEditTagsApiObservationsRequest" }) as any as S.Schema<BatchEditTagsApiObservationsRequest>;
+  S.Struct({
+    requests: S.optional(EditTagsApiObservationsRequestList),
+  }),
+).annotate({
+  identifier: "BatchEditTagsApiObservationsRequest",
+}) as any as S.Schema<BatchEditTagsApiObservationsRequest>;
 
 export interface BatchEditTagsProjectsLocationsObservationJobsApiObservationsRequest {
   /** Required. The parent resource shared by all ApiObservations being edited. Format: projects/{project}/locations/{location}/observationJobs/{observation_job} */
@@ -114,17 +123,33 @@ export interface BatchEditTagsProjectsLocationsObservationJobsApiObservationsReq
   /** Request body */
   body?: BatchEditTagsApiObservationsRequest;
 }
-export const BatchEditTagsProjectsLocationsObservationJobsApiObservationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(BatchEditTagsApiObservationsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha/{+parent}/apiObservations:batchEditTags","baseUrl":"https://apim.googleapis.com/"})),
-).annotate({ identifier: "BatchEditTagsProjectsLocationsObservationJobsApiObservationsRequest" }) as any as S.Schema<BatchEditTagsProjectsLocationsObservationJobsApiObservationsRequest>;
+export const BatchEditTagsProjectsLocationsObservationJobsApiObservationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(BatchEditTagsApiObservationsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1alpha/{+parent}/apiObservations:batchEditTags",
+        baseUrl: "https://apim.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "BatchEditTagsProjectsLocationsObservationJobsApiObservationsRequest",
+  }) as any as S.Schema<BatchEditTagsProjectsLocationsObservationJobsApiObservationsRequest>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
-export type ApiObservationStyleEnum = "STYLE_UNSPECIFIED" | "REST" | "GRPC" | "GRAPHQL";
+export type ApiObservationStyleEnum =
+  | "STYLE_UNSPECIFIED"
+  | "REST"
+  | "GRPC"
+  | "GRAPHQL";
 export const ApiObservationStyleEnum = /*@__PURE__*/ S.String;
 
 /** Message describing ApiObservation object */
@@ -151,39 +176,46 @@ export interface ApiObservation {
   apiOperationCount?: string;
 }
 export const ApiObservation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateTime": S.optional(S.String),
-  "name": S.optional(S.String),
-  "serverIps": S.optional(StringList),
-  "tags": S.optional(StringList),
-  "lastEventDetectedTime": S.optional(S.String),
-  "sourceLocations": S.optional(StringList),
-  "hostname": S.optional(S.String),
-  "style": S.optional(ApiObservationStyleEnum),
-  "createTime": S.optional(S.String),
-  "apiOperationCount": S.optional(S.String),
-}),
+  S.Struct({
+    updateTime: S.optional(S.String),
+    name: S.optional(S.String),
+    serverIps: S.optional(StringList),
+    tags: S.optional(StringList),
+    lastEventDetectedTime: S.optional(S.String),
+    sourceLocations: S.optional(StringList),
+    hostname: S.optional(S.String),
+    style: S.optional(ApiObservationStyleEnum),
+    createTime: S.optional(S.String),
+    apiOperationCount: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ApiObservation" }) as any as S.Schema<ApiObservation>;
 
 export type ApiObservationList = ReadonlyArray<ApiObservation>;
-export const ApiObservationList = /*@__PURE__*/ S.Array(ApiObservation) as any as S.Schema<ApiObservationList>;
+export const ApiObservationList = /*@__PURE__*/ S.Array(
+  ApiObservation,
+) as any as S.Schema<ApiObservationList>;
 
 /** Message for response to edit Tags for ApiObservations */
 export interface BatchEditTagsApiObservationsResponse {
   /** ApiObservations that were changed */
   apiObservations?: ApiObservationList;
 }
-export const BatchEditTagsApiObservationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "apiObservations": S.optional(ApiObservationList),
-}),
-).annotate({ identifier: "BatchEditTagsApiObservationsResponse" }) as any as S.Schema<BatchEditTagsApiObservationsResponse>;
+export const BatchEditTagsApiObservationsResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      apiObservations: S.optional(ApiObservationList),
+    }),
+).annotate({
+  identifier: "BatchEditTagsApiObservationsResponse",
+}) as any as S.Schema<BatchEditTagsApiObservationsResponse>;
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
 export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "CancelOperationRequest" }) as any as S.Schema<CancelOperationRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "CancelOperationRequest",
+}) as any as S.Schema<CancelOperationRequest>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -191,20 +223,37 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha/{+name}:cancel","baseUrl":"https://apim.googleapis.com/"})),
-).annotate({ identifier: "CancelProjectsLocationsOperationsRequest" }) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1alpha/{+name}:cancel",
+        baseUrl: "https://apim.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CancelProjectsLocationsOperationsRequest",
+}) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
-export type ObservationJobStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "ENABLING" | "ENABLED" | "DISABLING" | "DISABLED" | "DELETING" | "ERROR";
+export type ObservationJobStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "CREATING"
+  | "ENABLING"
+  | "ENABLED"
+  | "DISABLING"
+  | "DISABLED"
+  | "DELETING"
+  | "ERROR";
 export const ObservationJobStateEnum = /*@__PURE__*/ S.String;
 
 /** Message describing ObservationJob object */
@@ -221,13 +270,13 @@ export interface ObservationJob {
   updateTime?: string;
 }
 export const ObservationJob = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "state": S.optional(ObservationJobStateEnum),
-  "sources": S.optional(StringList),
-  "name": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-}),
+  S.Struct({
+    state: S.optional(ObservationJobStateEnum),
+    sources: S.optional(StringList),
+    name: S.optional(S.String),
+    createTime: S.optional(S.String),
+    updateTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ObservationJob" }) as any as S.Schema<ObservationJob>;
 
 export interface CreateProjectsLocationsObservationJobsRequest {
@@ -240,20 +289,34 @@ export interface CreateProjectsLocationsObservationJobsRequest {
   /** Request body */
   body?: ObservationJob;
 }
-export const CreateProjectsLocationsObservationJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "observationJobId": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(ObservationJob.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha/{+parent}/observationJobs","baseUrl":"https://apim.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsObservationJobsRequest" }) as any as S.Schema<CreateProjectsLocationsObservationJobsRequest>;
+export const CreateProjectsLocationsObservationJobsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      observationJobId: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(ObservationJob.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1alpha/{+parent}/observationJobs",
+        baseUrl: "https://apim.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsObservationJobsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsObservationJobsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -265,11 +328,11 @@ export interface Status {
   message?: string;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(S.Number),
-  "details": S.optional(DocumentMapList),
-  "message": S.optional(S.String),
-}),
+  S.Struct({
+    code: S.optional(S.Number),
+    details: S.optional(DocumentMapList),
+    message: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -286,16 +349,21 @@ export interface Operation {
   error?: Status;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "metadata": S.optional(DocumentMap),
-  "done": S.optional(S.Boolean),
-  "name": S.optional(S.String),
-  "response": S.optional(DocumentMap),
-  "error": S.optional(Status),
-}),
+  S.Struct({
+    metadata: S.optional(DocumentMap),
+    done: S.optional(S.Boolean),
+    name: S.optional(S.String),
+    response: S.optional(DocumentMap),
+    error: S.optional(Status),
+  }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
-export type ObservationSourceStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "CREATED" | "DELETING" | "ERROR";
+export type ObservationSourceStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "CREATING"
+  | "CREATED"
+  | "DELETING"
+  | "ERROR";
 export const ObservationSourceStateEnum = /*@__PURE__*/ S.String;
 
 /** Network information for setting up a PSC connection. */
@@ -305,15 +373,21 @@ export interface GclbObservationSourcePscNetworkConfig {
   /** Required. The subnetwork in the source region that will be used to connect to the Cloud Load Balancers via PSC NEGs. Must belong to `network`. Format: projects/{project_id}/regions/{region}/subnetworks/{subnet} */
   subnetwork?: string;
 }
-export const GclbObservationSourcePscNetworkConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "network": S.optional(S.String),
-  "subnetwork": S.optional(S.String),
-}),
-).annotate({ identifier: "GclbObservationSourcePscNetworkConfig" }) as any as S.Schema<GclbObservationSourcePscNetworkConfig>;
+export const GclbObservationSourcePscNetworkConfig = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      network: S.optional(S.String),
+      subnetwork: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "GclbObservationSourcePscNetworkConfig",
+}) as any as S.Schema<GclbObservationSourcePscNetworkConfig>;
 
-export type GclbObservationSourcePscNetworkConfigList = ReadonlyArray<GclbObservationSourcePscNetworkConfig>;
-export const GclbObservationSourcePscNetworkConfigList = /*@__PURE__*/ S.Array(GclbObservationSourcePscNetworkConfig) as any as S.Schema<GclbObservationSourcePscNetworkConfigList>;
+export type GclbObservationSourcePscNetworkConfigList =
+  ReadonlyArray<GclbObservationSourcePscNetworkConfig>;
+export const GclbObservationSourcePscNetworkConfigList = /*@__PURE__*/ S.Array(
+  GclbObservationSourcePscNetworkConfig,
+) as any as S.Schema<GclbObservationSourcePscNetworkConfigList>;
 
 /** The GCLB observation source. */
 export interface GclbObservationSource {
@@ -321,10 +395,12 @@ export interface GclbObservationSource {
   pscNetworkConfigs?: GclbObservationSourcePscNetworkConfigList;
 }
 export const GclbObservationSource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pscNetworkConfigs": S.optional(GclbObservationSourcePscNetworkConfigList),
-}),
-).annotate({ identifier: "GclbObservationSource" }) as any as S.Schema<GclbObservationSource>;
+  S.Struct({
+    pscNetworkConfigs: S.optional(GclbObservationSourcePscNetworkConfigList),
+  }),
+).annotate({
+  identifier: "GclbObservationSource",
+}) as any as S.Schema<GclbObservationSource>;
 
 /** Observation source configuration types */
 export interface ObservationSource {
@@ -340,14 +416,16 @@ export interface ObservationSource {
   gclbObservationSource?: GclbObservationSource;
 }
 export const ObservationSource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "state": S.optional(ObservationSourceStateEnum),
-  "updateTime": S.optional(S.String),
-  "name": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "gclbObservationSource": S.optional(GclbObservationSource),
-}),
-).annotate({ identifier: "ObservationSource" }) as any as S.Schema<ObservationSource>;
+  S.Struct({
+    state: S.optional(ObservationSourceStateEnum),
+    updateTime: S.optional(S.String),
+    name: S.optional(S.String),
+    createTime: S.optional(S.String),
+    gclbObservationSource: S.optional(GclbObservationSource),
+  }),
+).annotate({
+  identifier: "ObservationSource",
+}) as any as S.Schema<ObservationSource>;
 
 export interface CreateProjectsLocationsObservationSourcesRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -359,50 +437,88 @@ export interface CreateProjectsLocationsObservationSourcesRequest {
   /** Request body */
   body?: ObservationSource;
 }
-export const CreateProjectsLocationsObservationSourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "observationSourceId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(ObservationSource.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha/{+parent}/observationSources","baseUrl":"https://apim.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsObservationSourcesRequest" }) as any as S.Schema<CreateProjectsLocationsObservationSourcesRequest>;
+export const CreateProjectsLocationsObservationSourcesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      requestId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      observationSourceId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(ObservationSource.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1alpha/{+parent}/observationSources",
+        baseUrl: "https://apim.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsObservationSourcesRequest",
+  }) as any as S.Schema<CreateProjectsLocationsObservationSourcesRequest>;
 
 export interface DeleteProjectsLocationsObservationJobsRequest {
   /** Required. Name of the resource Format: projects/{project}/locations/{location}/observationJobs/{observation_job} */
   name: string;
 }
-export const DeleteProjectsLocationsObservationJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1alpha/{+name}","baseUrl":"https://apim.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsObservationJobsRequest" }) as any as S.Schema<DeleteProjectsLocationsObservationJobsRequest>;
+export const DeleteProjectsLocationsObservationJobsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1alpha/{+name}",
+        baseUrl: "https://apim.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsObservationJobsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsObservationJobsRequest>;
 
 export interface DeleteProjectsLocationsObservationSourcesRequest {
   /** Required. Name of the resource Format: projects/{project}/locations/{location}/observationSources/{source} */
   name: string;
 }
-export const DeleteProjectsLocationsObservationSourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1alpha/{+name}","baseUrl":"https://apim.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsObservationSourcesRequest" }) as any as S.Schema<DeleteProjectsLocationsObservationSourcesRequest>;
+export const DeleteProjectsLocationsObservationSourcesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1alpha/{+name}",
+        baseUrl: "https://apim.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsObservationSourcesRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsObservationSourcesRequest>;
 
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1alpha/{+name}","baseUrl":"https://apim.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsOperationsRequest" }) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1alpha/{+name}",
+        baseUrl: "https://apim.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsOperationsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
 
 /** Message for disabling an ObservationJob */
 export interface DisableObservationJobRequest {}
 export const DisableObservationJobRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "DisableObservationJobRequest" }) as any as S.Schema<DisableObservationJobRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "DisableObservationJobRequest",
+}) as any as S.Schema<DisableObservationJobRequest>;
 
 export interface DisableProjectsLocationsObservationJobsRequest {
   /** Required. The name of the ObservationJob to disable. Format: projects/{project}/locations/{location}/observationJobs/{job} */
@@ -410,18 +526,29 @@ export interface DisableProjectsLocationsObservationJobsRequest {
   /** Request body */
   body?: DisableObservationJobRequest;
 }
-export const DisableProjectsLocationsObservationJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(DisableObservationJobRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha/{+name}:disable","baseUrl":"https://apim.googleapis.com/"})),
-).annotate({ identifier: "DisableProjectsLocationsObservationJobsRequest" }) as any as S.Schema<DisableProjectsLocationsObservationJobsRequest>;
+export const DisableProjectsLocationsObservationJobsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(DisableObservationJobRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1alpha/{+name}:disable",
+        baseUrl: "https://apim.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DisableProjectsLocationsObservationJobsRequest",
+  }) as any as S.Schema<DisableProjectsLocationsObservationJobsRequest>;
 
 /** Message for enabling an ObservationJob */
 export interface EnableObservationJobRequest {}
 export const EnableObservationJobRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "EnableObservationJobRequest" }) as any as S.Schema<EnableObservationJobRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "EnableObservationJobRequest",
+}) as any as S.Schema<EnableObservationJobRequest>;
 
 export interface EnableProjectsLocationsObservationJobsRequest {
   /** Required. The name of the ObservationJob to enable. Format: projects/{project}/locations/{location}/observationJobs/{job} */
@@ -429,22 +556,40 @@ export interface EnableProjectsLocationsObservationJobsRequest {
   /** Request body */
   body?: EnableObservationJobRequest;
 }
-export const EnableProjectsLocationsObservationJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(EnableObservationJobRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha/{+name}:enable","baseUrl":"https://apim.googleapis.com/"})),
-).annotate({ identifier: "EnableProjectsLocationsObservationJobsRequest" }) as any as S.Schema<EnableProjectsLocationsObservationJobsRequest>;
+export const EnableProjectsLocationsObservationJobsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(EnableObservationJobRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1alpha/{+name}:enable",
+        baseUrl: "https://apim.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "EnableProjectsLocationsObservationJobsRequest",
+  }) as any as S.Schema<EnableProjectsLocationsObservationJobsRequest>;
 
 export interface GetEntitlementProjectsLocationsRequest {
   /** Required. The entitlement resource name Format: projects/{project}/locations/{location}/entitlement */
   name: string;
 }
-export const GetEntitlementProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}","baseUrl":"https://apim.googleapis.com/"})),
-).annotate({ identifier: "GetEntitlementProjectsLocationsRequest" }) as any as S.Schema<GetEntitlementProjectsLocationsRequest>;
+export const GetEntitlementProjectsLocationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha/{+name}",
+        baseUrl: "https://apim.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetEntitlementProjectsLocationsRequest",
+}) as any as S.Schema<GetEntitlementProjectsLocationsRequest>;
 
 /** Entitlement stores data related to API Observation entitlement for a given project */
 export interface Entitlement {
@@ -460,13 +605,13 @@ export interface Entitlement {
   createTime?: string;
 }
 export const Entitlement = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "apiObservationEntitled": S.optional(S.Boolean),
-  "billingProjectNumber": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "name": S.optional(S.String),
-  "createTime": S.optional(S.String),
-}),
+  S.Struct({
+    apiObservationEntitled: S.optional(S.Boolean),
+    billingProjectNumber: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    name: S.optional(S.String),
+    createTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Entitlement" }) as any as S.Schema<Entitlement>;
 
 export interface GetProjectsLocationsRequest {
@@ -474,13 +619,24 @@ export interface GetProjectsLocationsRequest {
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}","baseUrl":"https://apim.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha/{+name}",
+      baseUrl: "https://apim.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsRequest",
+}) as any as S.Schema<GetProjectsLocationsRequest>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -496,49 +652,93 @@ export interface Location {
   labels?: StringMap;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locationId": S.optional(S.String),
-  "metadata": S.optional(DocumentMap),
-  "displayName": S.optional(S.String),
-  "name": S.optional(S.String),
-  "labels": S.optional(StringMap),
-}),
+  S.Struct({
+    locationId: S.optional(S.String),
+    metadata: S.optional(DocumentMap),
+    displayName: S.optional(S.String),
+    name: S.optional(S.String),
+    labels: S.optional(StringMap),
+  }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export interface GetProjectsLocationsObservationJobsRequest {
   /** Required. The name of the ObservationJob to retrieve. Format: projects/{project}/locations/{location}/observationJobs/{job} */
   name: string;
 }
-export const GetProjectsLocationsObservationJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}","baseUrl":"https://apim.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsObservationJobsRequest" }) as any as S.Schema<GetProjectsLocationsObservationJobsRequest>;
+export const GetProjectsLocationsObservationJobsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha/{+name}",
+        baseUrl: "https://apim.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsObservationJobsRequest",
+  }) as any as S.Schema<GetProjectsLocationsObservationJobsRequest>;
 
 export interface GetProjectsLocationsObservationJobsApiObservationsRequest {
   /** Required. The name of the ApiObservation to retrieve. Format: projects/{project}/locations/{location}/observationJobs/{observation_job}/apiObservations/{api_observation} */
   name: string;
 }
-export const GetProjectsLocationsObservationJobsApiObservationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}","baseUrl":"https://apim.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsObservationJobsApiObservationsRequest" }) as any as S.Schema<GetProjectsLocationsObservationJobsApiObservationsRequest>;
+export const GetProjectsLocationsObservationJobsApiObservationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha/{+name}",
+        baseUrl: "https://apim.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsObservationJobsApiObservationsRequest",
+  }) as any as S.Schema<GetProjectsLocationsObservationJobsApiObservationsRequest>;
 
 export interface GetProjectsLocationsObservationJobsApiObservationsApiOperationsRequest {
   /** Required. The name of the ApiOperation to retrieve. Format: projects/{project}/locations/{location}/observationJobs/{observation_job}/apiObservations/{api_observation}/apiOperation/{api_operation} */
   name: string;
 }
-export const GetProjectsLocationsObservationJobsApiObservationsApiOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}","baseUrl":"https://apim.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsObservationJobsApiObservationsApiOperationsRequest" }) as any as S.Schema<GetProjectsLocationsObservationJobsApiObservationsApiOperationsRequest>;
+export const GetProjectsLocationsObservationJobsApiObservationsApiOperationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha/{+name}",
+        baseUrl: "https://apim.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "GetProjectsLocationsObservationJobsApiObservationsApiOperationsRequest",
+  }) as any as S.Schema<GetProjectsLocationsObservationJobsApiObservationsApiOperationsRequest>;
 
-export type HttpOperationMethodEnum = "HTTP_METHOD_UNSPECIFIED" | "GET" | "HEAD" | "POST" | "PUT" | "PATCH" | "DELETE" | "TRACE" | "OPTIONS" | "CONNECT";
+export type HttpOperationMethodEnum =
+  | "HTTP_METHOD_UNSPECIFIED"
+  | "GET"
+  | "HEAD"
+  | "POST"
+  | "PUT"
+  | "PATCH"
+  | "DELETE"
+  | "TRACE"
+  | "OPTIONS"
+  | "CONNECT";
 export const HttpOperationMethodEnum = /*@__PURE__*/ S.String;
 
-export type HttpOperationQueryParamDataTypeEnum = "DATA_TYPE_UNSPECIFIED" | "BOOL" | "INTEGER" | "FLOAT" | "STRING" | "UUID";
+export type HttpOperationQueryParamDataTypeEnum =
+  | "DATA_TYPE_UNSPECIFIED"
+  | "BOOL"
+  | "INTEGER"
+  | "FLOAT"
+  | "STRING"
+  | "UUID";
 export const HttpOperationQueryParamDataTypeEnum = /*@__PURE__*/ S.String;
 
 /** An aggregation of HTTP query parameter occurrences. */
@@ -551,17 +751,30 @@ export interface HttpOperationQueryParam {
   count?: string;
 }
 export const HttpOperationQueryParam = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "dataType": S.optional(HttpOperationQueryParamDataTypeEnum),
-  "count": S.optional(S.String),
-}),
-).annotate({ identifier: "HttpOperationQueryParam" }) as any as S.Schema<HttpOperationQueryParam>;
+  S.Struct({
+    name: S.optional(S.String),
+    dataType: S.optional(HttpOperationQueryParamDataTypeEnum),
+    count: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "HttpOperationQueryParam",
+}) as any as S.Schema<HttpOperationQueryParam>;
 
-export type HttpOperationQueryParamMap = { [key: string]: HttpOperationQueryParam | undefined };
-export const HttpOperationQueryParamMap = /*@__PURE__*/ S.Record(S.String, HttpOperationQueryParam) as any as S.Schema<HttpOperationQueryParamMap>;
+export type HttpOperationQueryParamMap = {
+  [key: string]: HttpOperationQueryParam | undefined;
+};
+export const HttpOperationQueryParamMap = /*@__PURE__*/ S.Record(
+  S.String,
+  HttpOperationQueryParam,
+) as any as S.Schema<HttpOperationQueryParamMap>;
 
-export type HttpOperationHeaderDataTypeEnum = "DATA_TYPE_UNSPECIFIED" | "BOOL" | "INTEGER" | "FLOAT" | "STRING" | "UUID";
+export type HttpOperationHeaderDataTypeEnum =
+  | "DATA_TYPE_UNSPECIFIED"
+  | "BOOL"
+  | "INTEGER"
+  | "FLOAT"
+  | "STRING"
+  | "UUID";
 export const HttpOperationHeaderDataTypeEnum = /*@__PURE__*/ S.String;
 
 /** An aggregation of HTTP header occurrences. */
@@ -574,15 +787,22 @@ export interface HttpOperationHeader {
   count?: string;
 }
 export const HttpOperationHeader = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "dataType": S.optional(HttpOperationHeaderDataTypeEnum),
-  "count": S.optional(S.String),
-}),
-).annotate({ identifier: "HttpOperationHeader" }) as any as S.Schema<HttpOperationHeader>;
+  S.Struct({
+    name: S.optional(S.String),
+    dataType: S.optional(HttpOperationHeaderDataTypeEnum),
+    count: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "HttpOperationHeader",
+}) as any as S.Schema<HttpOperationHeader>;
 
-export type HttpOperationHeaderMap = { [key: string]: HttpOperationHeader | undefined };
-export const HttpOperationHeaderMap = /*@__PURE__*/ S.Record(S.String, HttpOperationHeader) as any as S.Schema<HttpOperationHeaderMap>;
+export type HttpOperationHeaderMap = {
+  [key: string]: HttpOperationHeader | undefined;
+};
+export const HttpOperationHeaderMap = /*@__PURE__*/ S.Record(
+  S.String,
+  HttpOperationHeader,
+) as any as S.Schema<HttpOperationHeaderMap>;
 
 /** An aggregation of HTTP requests. */
 export interface HttpOperationHttpRequest {
@@ -590,12 +810,20 @@ export interface HttpOperationHttpRequest {
   headers?: HttpOperationHeaderMap;
 }
 export const HttpOperationHttpRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "headers": S.optional(HttpOperationHeaderMap),
-}),
-).annotate({ identifier: "HttpOperationHttpRequest" }) as any as S.Schema<HttpOperationHttpRequest>;
+  S.Struct({
+    headers: S.optional(HttpOperationHeaderMap),
+  }),
+).annotate({
+  identifier: "HttpOperationHttpRequest",
+}) as any as S.Schema<HttpOperationHttpRequest>;
 
-export type HttpOperationPathParamDataTypeEnum = "DATA_TYPE_UNSPECIFIED" | "BOOL" | "INTEGER" | "FLOAT" | "STRING" | "UUID";
+export type HttpOperationPathParamDataTypeEnum =
+  | "DATA_TYPE_UNSPECIFIED"
+  | "BOOL"
+  | "INTEGER"
+  | "FLOAT"
+  | "STRING"
+  | "UUID";
 export const HttpOperationPathParamDataTypeEnum = /*@__PURE__*/ S.String;
 
 /** HTTP Path parameter. */
@@ -606,14 +834,18 @@ export interface HttpOperationPathParam {
   dataType?: HttpOperationPathParamDataTypeEnum;
 }
 export const HttpOperationPathParam = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "position": S.optional(S.Number),
-  "dataType": S.optional(HttpOperationPathParamDataTypeEnum),
-}),
-).annotate({ identifier: "HttpOperationPathParam" }) as any as S.Schema<HttpOperationPathParam>;
+  S.Struct({
+    position: S.optional(S.Number),
+    dataType: S.optional(HttpOperationPathParamDataTypeEnum),
+  }),
+).annotate({
+  identifier: "HttpOperationPathParam",
+}) as any as S.Schema<HttpOperationPathParam>;
 
 export type HttpOperationPathParamList = ReadonlyArray<HttpOperationPathParam>;
-export const HttpOperationPathParamList = /*@__PURE__*/ S.Array(HttpOperationPathParam) as any as S.Schema<HttpOperationPathParamList>;
+export const HttpOperationPathParamList = /*@__PURE__*/ S.Array(
+  HttpOperationPathParam,
+) as any as S.Schema<HttpOperationPathParamList>;
 
 /** An aggregation of HTTP responses. */
 export interface HttpOperationHttpResponse {
@@ -623,11 +855,13 @@ export interface HttpOperationHttpResponse {
   responseCodes?: StringMap;
 }
 export const HttpOperationHttpResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "headers": S.optional(HttpOperationHeaderMap),
-  "responseCodes": S.optional(StringMap),
-}),
-).annotate({ identifier: "HttpOperationHttpResponse" }) as any as S.Schema<HttpOperationHttpResponse>;
+  S.Struct({
+    headers: S.optional(HttpOperationHeaderMap),
+    responseCodes: S.optional(StringMap),
+  }),
+).annotate({
+  identifier: "HttpOperationHttpResponse",
+}) as any as S.Schema<HttpOperationHttpResponse>;
 
 /** An HTTP-based API Operation, sometimes called a "REST" Operation. */
 export interface HttpOperation {
@@ -645,14 +879,14 @@ export interface HttpOperation {
   response?: HttpOperationHttpResponse;
 }
 export const HttpOperation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "method": S.optional(HttpOperationMethodEnum),
-  "queryParams": S.optional(HttpOperationQueryParamMap),
-  "path": S.optional(S.String),
-  "request": S.optional(HttpOperationHttpRequest),
-  "pathParams": S.optional(HttpOperationPathParamList),
-  "response": S.optional(HttpOperationHttpResponse),
-}),
+  S.Struct({
+    method: S.optional(HttpOperationMethodEnum),
+    queryParams: S.optional(HttpOperationQueryParamMap),
+    path: S.optional(S.String),
+    request: S.optional(HttpOperationHttpRequest),
+    pathParams: S.optional(HttpOperationPathParamList),
+    response: S.optional(HttpOperationHttpResponse),
+  }),
 ).annotate({ identifier: "HttpOperation" }) as any as S.Schema<HttpOperation>;
 
 /** Message describing ApiOperation object */
@@ -669,34 +903,52 @@ export interface ApiOperation {
   httpOperation?: HttpOperation;
 }
 export const ApiOperation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "firstSeenTime": S.optional(S.String),
-  "count": S.optional(S.String),
-  "name": S.optional(S.String),
-  "lastSeenTime": S.optional(S.String),
-  "httpOperation": S.optional(HttpOperation),
-}),
+  S.Struct({
+    firstSeenTime: S.optional(S.String),
+    count: S.optional(S.String),
+    name: S.optional(S.String),
+    lastSeenTime: S.optional(S.String),
+    httpOperation: S.optional(HttpOperation),
+  }),
 ).annotate({ identifier: "ApiOperation" }) as any as S.Schema<ApiOperation>;
 
 export interface GetProjectsLocationsObservationSourcesRequest {
   /** Required. The name of the ObservationSource to retrieve. Format: projects/{project}/locations/{location}/observationSources/{source} */
   name: string;
 }
-export const GetProjectsLocationsObservationSourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}","baseUrl":"https://apim.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsObservationSourcesRequest" }) as any as S.Schema<GetProjectsLocationsObservationSourcesRequest>;
+export const GetProjectsLocationsObservationSourcesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha/{+name}",
+        baseUrl: "https://apim.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsObservationSourcesRequest",
+  }) as any as S.Schema<GetProjectsLocationsObservationSourcesRequest>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}","baseUrl":"https://apim.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha/{+name}",
+        baseUrl: "https://apim.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsOperationsRequest",
+}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export interface ListApiObservationTagsProjectsLocationsRequest {
   /** Optional. The maximum number of tags to return. The service may return fewer than this value. If unspecified, at most 10 tags will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
@@ -706,13 +958,22 @@ export interface ListApiObservationTagsProjectsLocationsRequest {
   /** Optional. A page token, received from a previous `ListApiObservationTags` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListApiObservationTags` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListApiObservationTagsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+parent}:listApiObservationTags","baseUrl":"https://apim.googleapis.com/"})),
-).annotate({ identifier: "ListApiObservationTagsProjectsLocationsRequest" }) as any as S.Schema<ListApiObservationTagsProjectsLocationsRequest>;
+export const ListApiObservationTagsProjectsLocationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha/{+parent}:listApiObservationTags",
+        baseUrl: "https://apim.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListApiObservationTagsProjectsLocationsRequest",
+  }) as any as S.Schema<ListApiObservationTagsProjectsLocationsRequest>;
 
 /** Message for response to listing tags */
 export interface ListApiObservationTagsResponse {
@@ -722,11 +983,13 @@ export interface ListApiObservationTagsResponse {
   nextPageToken?: string;
 }
 export const ListApiObservationTagsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "apiObservationTags": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListApiObservationTagsResponse" }) as any as S.Schema<ListApiObservationTagsResponse>;
+  S.Struct({
+    apiObservationTags: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListApiObservationTagsResponse",
+}) as any as S.Schema<ListApiObservationTagsResponse>;
 
 export interface ListProjectsLocationsRequest {
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
@@ -741,17 +1004,27 @@ export interface ListProjectsLocationsRequest {
   extraLocationTypes?: StringList;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}/locations","baseUrl":"https://apim.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha/{+name}/locations",
+      baseUrl: "https://apim.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsRequest",
+}) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(
+  Location,
+) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -761,11 +1034,13 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locations": S.optional(LocationList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
+  S.Struct({
+    locations: S.optional(LocationList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListLocationsResponse",
+}) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsLocationsObservationJobsRequest {
   /** Required. The parent, which owns this collection of ObservationJobs. Format: projects/{project}/locations/{location} */
@@ -775,16 +1050,27 @@ export interface ListProjectsLocationsObservationJobsRequest {
   /** Optional. A page token, received from a previous `ListObservationJobs` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListObservationJobs` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsObservationJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+parent}/observationJobs","baseUrl":"https://apim.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsObservationJobsRequest" }) as any as S.Schema<ListProjectsLocationsObservationJobsRequest>;
+export const ListProjectsLocationsObservationJobsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha/{+parent}/observationJobs",
+        baseUrl: "https://apim.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsObservationJobsRequest",
+  }) as any as S.Schema<ListProjectsLocationsObservationJobsRequest>;
 
 export type ObservationJobList = ReadonlyArray<ObservationJob>;
-export const ObservationJobList = /*@__PURE__*/ S.Array(ObservationJob) as any as S.Schema<ObservationJobList>;
+export const ObservationJobList = /*@__PURE__*/ S.Array(
+  ObservationJob,
+) as any as S.Schema<ObservationJobList>;
 
 /** Message for response to listing ObservationJobs */
 export interface ListObservationJobsResponse {
@@ -796,12 +1082,14 @@ export interface ListObservationJobsResponse {
   observationJobs?: ObservationJobList;
 }
 export const ListObservationJobsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-  "observationJobs": S.optional(ObservationJobList),
-}),
-).annotate({ identifier: "ListObservationJobsResponse" }) as any as S.Schema<ListObservationJobsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+    observationJobs: S.optional(ObservationJobList),
+  }),
+).annotate({
+  identifier: "ListObservationJobsResponse",
+}) as any as S.Schema<ListObservationJobsResponse>;
 
 export interface ListProjectsLocationsObservationJobsApiObservationsRequest {
   /** Optional. A page token, received from a previous `ListApiObservations` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListApiObservations` must match the call that provided the page token. */
@@ -811,13 +1099,22 @@ export interface ListProjectsLocationsObservationJobsApiObservationsRequest {
   /** Optional. The maximum number of ApiObservations to return. The service may return fewer than this value. If unspecified, at most 10 ApiObservations will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-export const ListProjectsLocationsObservationJobsApiObservationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+parent}/apiObservations","baseUrl":"https://apim.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsObservationJobsApiObservationsRequest" }) as any as S.Schema<ListProjectsLocationsObservationJobsApiObservationsRequest>;
+export const ListProjectsLocationsObservationJobsApiObservationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha/{+parent}/apiObservations",
+        baseUrl: "https://apim.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsObservationJobsApiObservationsRequest",
+  }) as any as S.Schema<ListProjectsLocationsObservationJobsApiObservationsRequest>;
 
 /** Message for response to listing ApiObservations */
 export interface ListApiObservationsResponse {
@@ -827,11 +1124,13 @@ export interface ListApiObservationsResponse {
   apiObservations?: ApiObservationList;
 }
 export const ListApiObservationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "apiObservations": S.optional(ApiObservationList),
-}),
-).annotate({ identifier: "ListApiObservationsResponse" }) as any as S.Schema<ListApiObservationsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    apiObservations: S.optional(ApiObservationList),
+  }),
+).annotate({
+  identifier: "ListApiObservationsResponse",
+}) as any as S.Schema<ListApiObservationsResponse>;
 
 export interface ListProjectsLocationsObservationJobsApiObservationsApiOperationsRequest {
   /** Required. The parent, which owns this collection of ApiOperations. Format: projects/{project}/locations/{location}/observationJobs/{observation_job}/apiObservations/{api_observation} */
@@ -841,16 +1140,28 @@ export interface ListProjectsLocationsObservationJobsApiObservationsApiOperation
   /** Optional. A page token, received from a previous `ListApiApiOperations` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListApiApiOperations` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsObservationJobsApiObservationsApiOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+parent}/apiOperations","baseUrl":"https://apim.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsObservationJobsApiObservationsApiOperationsRequest" }) as any as S.Schema<ListProjectsLocationsObservationJobsApiObservationsApiOperationsRequest>;
+export const ListProjectsLocationsObservationJobsApiObservationsApiOperationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha/{+parent}/apiOperations",
+        baseUrl: "https://apim.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "ListProjectsLocationsObservationJobsApiObservationsApiOperationsRequest",
+  }) as any as S.Schema<ListProjectsLocationsObservationJobsApiObservationsApiOperationsRequest>;
 
 export type ApiOperationList = ReadonlyArray<ApiOperation>;
-export const ApiOperationList = /*@__PURE__*/ S.Array(ApiOperation) as any as S.Schema<ApiOperationList>;
+export const ApiOperationList = /*@__PURE__*/ S.Array(
+  ApiOperation,
+) as any as S.Schema<ApiOperationList>;
 
 /** Message for response to listing ApiOperations */
 export interface ListApiOperationsResponse {
@@ -860,11 +1171,13 @@ export interface ListApiOperationsResponse {
   nextPageToken?: string;
 }
 export const ListApiOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "apiOperations": S.optional(ApiOperationList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListApiOperationsResponse" }) as any as S.Schema<ListApiOperationsResponse>;
+  S.Struct({
+    apiOperations: S.optional(ApiOperationList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListApiOperationsResponse",
+}) as any as S.Schema<ListApiOperationsResponse>;
 
 export interface ListProjectsLocationsObservationSourcesRequest {
   /** Optional. The maximum number of ObservationSources to return. The service may return fewer than this value. If unspecified, at most 10 ObservationSources will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
@@ -874,16 +1187,27 @@ export interface ListProjectsLocationsObservationSourcesRequest {
   /** Optional. A page token, received from a previous `ListObservationSources` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListObservationSources` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsObservationSourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+parent}/observationSources","baseUrl":"https://apim.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsObservationSourcesRequest" }) as any as S.Schema<ListProjectsLocationsObservationSourcesRequest>;
+export const ListProjectsLocationsObservationSourcesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha/{+parent}/observationSources",
+        baseUrl: "https://apim.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsObservationSourcesRequest",
+  }) as any as S.Schema<ListProjectsLocationsObservationSourcesRequest>;
 
 export type ObservationSourceList = ReadonlyArray<ObservationSource>;
-export const ObservationSourceList = /*@__PURE__*/ S.Array(ObservationSource) as any as S.Schema<ObservationSourceList>;
+export const ObservationSourceList = /*@__PURE__*/ S.Array(
+  ObservationSource,
+) as any as S.Schema<ObservationSourceList>;
 
 /** Message for response to listing ObservationSources */
 export interface ListObservationSourcesResponse {
@@ -895,12 +1219,14 @@ export interface ListObservationSourcesResponse {
   observationSources?: ObservationSourceList;
 }
 export const ListObservationSourcesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-  "observationSources": S.optional(ObservationSourceList),
-}),
-).annotate({ identifier: "ListObservationSourcesResponse" }) as any as S.Schema<ListObservationSourcesResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+    observationSources: S.optional(ObservationSourceList),
+  }),
+).annotate({
+  identifier: "ListObservationSourcesResponse",
+}) as any as S.Schema<ListObservationSourcesResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page token. */
@@ -914,18 +1240,29 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha/{+name}/operations","baseUrl":"https://apim.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      filter: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha/{+name}/operations",
+        baseUrl: "https://apim.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsOperationsRequest",
+}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(
+  Operation,
+) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -937,14 +1274,21 @@ export interface ListOperationsResponse {
   unreachable?: StringList;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "operations": S.optional(OperationList),
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
+  S.Struct({
+    operations: S.optional(OperationList),
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListOperationsResponse",
+}) as any as S.Schema<ListOperationsResponse>;
 
-export type BatchEditTagsProjectsLocationsObservationJobsApiObservationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type BatchEditTagsProjectsLocationsObservationJobsApiObservationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** BatchEditTagsApiObservations adds or removes Tags for ApiObservations. */
 export const batchEditTagsProjectsLocationsObservationJobsApiObservations: API.OperationMethod<
   BatchEditTagsProjectsLocationsObservationJobsApiObservationsRequest,
@@ -959,7 +1303,12 @@ export const batchEditTagsProjectsLocationsObservationJobsApiObservations: API.O
   retry: Retry.Retry,
 }));
 
-export type CancelProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CancelProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsRequest,
@@ -974,7 +1323,12 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsObservationJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsObservationJobsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** CreateObservationJob creates a new ObservationJob but does not have any effecton its own. It is a configuration that can be used in an Observation Job to collect data about existing APIs. */
 export const createProjectsLocationsObservationJobs: API.OperationMethod<
   CreateProjectsLocationsObservationJobsRequest,
@@ -989,7 +1343,12 @@ export const createProjectsLocationsObservationJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsObservationSourcesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsObservationSourcesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** CreateObservationSource creates a new ObservationSource but does not affect any deployed infrastructure. It is a configuration that can be used in an Observation Job to collect data about APIs running in user's dataplane. */
 export const createProjectsLocationsObservationSources: API.OperationMethod<
   CreateProjectsLocationsObservationSourcesRequest,
@@ -1004,7 +1363,12 @@ export const createProjectsLocationsObservationSources: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsObservationJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsObservationJobsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** DeleteObservationJob deletes an ObservationJob. This method will fail if the observation job is currently being used by any ObservationSource, even if not enabled. */
 export const deleteProjectsLocationsObservationJobs: API.OperationMethod<
   DeleteProjectsLocationsObservationJobsRequest,
@@ -1019,7 +1383,12 @@ export const deleteProjectsLocationsObservationJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsObservationSourcesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsObservationSourcesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** DeleteObservationSource deletes an observation source. This method will fail if the observation source is currently being used by any ObservationJob, even if not enabled. */
 export const deleteProjectsLocationsObservationSources: API.OperationMethod<
   DeleteProjectsLocationsObservationSourcesRequest,
@@ -1034,7 +1403,12 @@ export const deleteProjectsLocationsObservationSources: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsRequest,
@@ -1049,7 +1423,12 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DisableProjectsLocationsObservationJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DisableProjectsLocationsObservationJobsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Disables the given ObservationJob. */
 export const disableProjectsLocationsObservationJobs: API.OperationMethod<
   DisableProjectsLocationsObservationJobsRequest,
@@ -1064,7 +1443,12 @@ export const disableProjectsLocationsObservationJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type EnableProjectsLocationsObservationJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type EnableProjectsLocationsObservationJobsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Enables the given ObservationJob. */
 export const enableProjectsLocationsObservationJobs: API.OperationMethod<
   EnableProjectsLocationsObservationJobsRequest,
@@ -1079,7 +1463,10 @@ export const enableProjectsLocationsObservationJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetEntitlementProjectsLocationsError = NotFound | Forbidden | GcpOpError;
+export type GetEntitlementProjectsLocationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** GetEntitlement returns the entitlement for the provided project. */
 export const getEntitlementProjectsLocations: API.OperationMethod<
   GetEntitlementProjectsLocationsRequest,
@@ -1109,7 +1496,10 @@ export const getProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsObservationJobsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsObservationJobsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** GetObservationJob retrieves a single ObservationJob by name. */
 export const getProjectsLocationsObservationJobs: API.OperationMethod<
   GetProjectsLocationsObservationJobsRequest,
@@ -1124,7 +1514,10 @@ export const getProjectsLocationsObservationJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsObservationJobsApiObservationsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsObservationJobsApiObservationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** GetApiObservation retrieves a single ApiObservation by name. */
 export const getProjectsLocationsObservationJobsApiObservations: API.OperationMethod<
   GetProjectsLocationsObservationJobsApiObservationsRequest,
@@ -1139,7 +1532,8 @@ export const getProjectsLocationsObservationJobsApiObservations: API.OperationMe
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsObservationJobsApiObservationsApiOperationsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsObservationJobsApiObservationsApiOperationsError =
+  NotFound | Forbidden | GcpOpError;
 /** GetApiOperation retrieves a single ApiOperation by name. */
 export const getProjectsLocationsObservationJobsApiObservationsApiOperations: API.OperationMethod<
   GetProjectsLocationsObservationJobsApiObservationsApiOperationsRequest,
@@ -1154,7 +1548,10 @@ export const getProjectsLocationsObservationJobsApiObservationsApiOperations: AP
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsObservationSourcesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsObservationSourcesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** GetObservationSource retrieves a single ObservationSource by name. */
 export const getProjectsLocationsObservationSources: API.OperationMethod<
   GetProjectsLocationsObservationSourcesRequest,
@@ -1169,7 +1566,10 @@ export const getProjectsLocationsObservationSources: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -1184,7 +1584,10 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListApiObservationTagsProjectsLocationsError = NotFound | Forbidden | GcpOpError;
+export type ListApiObservationTagsProjectsLocationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** ListApiObservationTags lists all extant tags on any observation in the given project. */
 export const listApiObservationTagsProjectsLocations: API.PaginatedOperationMethod<
   ListApiObservationTagsProjectsLocationsRequest,
@@ -1197,7 +1600,10 @@ export const listApiObservationTagsProjectsLocations: API.PaginatedOperationMeth
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListProjectsLocationsError = NotFound | Forbidden | GcpOpError;
@@ -1213,10 +1619,16 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsObservationJobsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsObservationJobsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** ListObservationJobs gets all ObservationJobs for a given project and location. */
 export const listProjectsLocationsObservationJobs: API.PaginatedOperationMethod<
   ListProjectsLocationsObservationJobsRequest,
@@ -1229,10 +1641,16 @@ export const listProjectsLocationsObservationJobs: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsObservationJobsApiObservationsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsObservationJobsApiObservationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** ListApiObservations gets all ApiObservations for a given project and location and ObservationJob. */
 export const listProjectsLocationsObservationJobsApiObservations: API.PaginatedOperationMethod<
   ListProjectsLocationsObservationJobsApiObservationsRequest,
@@ -1245,10 +1663,14 @@ export const listProjectsLocationsObservationJobsApiObservations: API.PaginatedO
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsObservationJobsApiObservationsApiOperationsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsObservationJobsApiObservationsApiOperationsError =
+  NotFound | Forbidden | GcpOpError;
 /** ListApiOperations gets all ApiOperations for a given project and location and ObservationJob and ApiObservation. */
 export const listProjectsLocationsObservationJobsApiObservationsApiOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsObservationJobsApiObservationsApiOperationsRequest,
@@ -1256,15 +1678,22 @@ export const listProjectsLocationsObservationJobsApiObservationsApiOperations: A
   ListProjectsLocationsObservationJobsApiObservationsApiOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsObservationJobsApiObservationsApiOperationsRequest,
+  input:
+    ListProjectsLocationsObservationJobsApiObservationsApiOperationsRequest,
   output: ListApiOperationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsObservationSourcesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsObservationSourcesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** ListObservationSources gets all ObservationSources for a given project and location. */
 export const listProjectsLocationsObservationSources: API.PaginatedOperationMethod<
   ListProjectsLocationsObservationSourcesRequest,
@@ -1277,10 +1706,16 @@ export const listProjectsLocationsObservationSources: API.PaginatedOperationMeth
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -1293,6 +1728,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
-

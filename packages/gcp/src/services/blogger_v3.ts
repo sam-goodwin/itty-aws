@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export interface ApproveCommentsRequest {
@@ -66,12 +66,20 @@ export interface ApproveCommentsRequest {
   postId: string;
 }
 export const ApproveCommentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "blogId": S.String.pipe(T.Label()),
-  "commentId": S.String.pipe(T.Label()),
-  "postId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"POST","uri":"v3/blogs/{blogId}/posts/{postId}/comments/{commentId}/approve","baseUrl":"https://blogger.googleapis.com/"})),
-).annotate({ identifier: "ApproveCommentsRequest" }) as any as S.Schema<ApproveCommentsRequest>;
+  S.Struct({
+    blogId: S.String.pipe(T.Label()),
+    commentId: S.String.pipe(T.Label()),
+    postId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v3/blogs/{blogId}/posts/{postId}/comments/{commentId}/approve",
+      baseUrl: "https://blogger.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ApproveCommentsRequest",
+}) as any as S.Schema<ApproveCommentsRequest>;
 
 export type CommentStatusEnum = "LIVE" | "EMPTIED" | "PENDING" | "SPAM";
 export const CommentStatusEnum = /*@__PURE__*/ S.String;
@@ -81,19 +89,21 @@ export interface CommentInReplyTo {
   id?: string;
 }
 export const CommentInReplyTo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.optional(S.String),
-}),
-).annotate({ identifier: "CommentInReplyTo" }) as any as S.Schema<CommentInReplyTo>;
+  S.Struct({
+    id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CommentInReplyTo",
+}) as any as S.Schema<CommentInReplyTo>;
 
 export interface CommentBlog {
   /** The identifier of the blog containing this comment. */
   id?: string;
 }
 export const CommentBlog = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.optional(S.String),
-}),
+  S.Struct({
+    id: S.optional(S.String),
+  }),
 ).annotate({ identifier: "CommentBlog" }) as any as S.Schema<CommentBlog>;
 
 export interface CommentPost {
@@ -101,9 +111,9 @@ export interface CommentPost {
   id?: string;
 }
 export const CommentPost = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.optional(S.String),
-}),
+  S.Struct({
+    id: S.optional(S.String),
+  }),
 ).annotate({ identifier: "CommentPost" }) as any as S.Schema<CommentPost>;
 
 export interface CommentAuthorImage {
@@ -111,10 +121,12 @@ export interface CommentAuthorImage {
   url?: string;
 }
 export const CommentAuthorImage = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "url": S.optional(S.String),
-}),
-).annotate({ identifier: "CommentAuthorImage" }) as any as S.Schema<CommentAuthorImage>;
+  S.Struct({
+    url: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CommentAuthorImage",
+}) as any as S.Schema<CommentAuthorImage>;
 
 export interface CommentAuthor {
   /** The display name. */
@@ -127,12 +139,12 @@ export interface CommentAuthor {
   image?: CommentAuthorImage;
 }
 export const CommentAuthor = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "displayName": S.optional(S.String),
-  "id": S.optional(S.String),
-  "url": S.optional(S.String),
-  "image": S.optional(CommentAuthorImage),
-}),
+  S.Struct({
+    displayName: S.optional(S.String),
+    id: S.optional(S.String),
+    url: S.optional(S.String),
+    image: S.optional(CommentAuthorImage),
+  }),
 ).annotate({ identifier: "CommentAuthor" }) as any as S.Schema<CommentAuthor>;
 
 export interface Comment {
@@ -160,19 +172,19 @@ export interface Comment {
   author?: CommentAuthor;
 }
 export const Comment = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "status": S.optional(CommentStatusEnum),
-  "inReplyTo": S.optional(CommentInReplyTo),
-  "updated": S.optional(S.String),
-  "blog": S.optional(CommentBlog),
-  "kind": S.optional(S.String),
-  "id": S.optional(S.String),
-  "post": S.optional(CommentPost),
-  "selfLink": S.optional(S.String),
-  "published": S.optional(S.String),
-  "content": S.optional(S.String),
-  "author": S.optional(CommentAuthor),
-}),
+  S.Struct({
+    status: S.optional(CommentStatusEnum),
+    inReplyTo: S.optional(CommentInReplyTo),
+    updated: S.optional(S.String),
+    blog: S.optional(CommentBlog),
+    kind: S.optional(S.String),
+    id: S.optional(S.String),
+    post: S.optional(CommentPost),
+    selfLink: S.optional(S.String),
+    published: S.optional(S.String),
+    content: S.optional(S.String),
+    author: S.optional(CommentAuthor),
+  }),
 ).annotate({ identifier: "Comment" }) as any as S.Schema<Comment>;
 
 export interface DeleteCommentsRequest {
@@ -181,17 +193,27 @@ export interface DeleteCommentsRequest {
   commentId: string;
 }
 export const DeleteCommentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "postId": S.String.pipe(T.Label()),
-  "blogId": S.String.pipe(T.Label()),
-  "commentId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v3/blogs/{blogId}/posts/{postId}/comments/{commentId}","baseUrl":"https://blogger.googleapis.com/"})),
-).annotate({ identifier: "DeleteCommentsRequest" }) as any as S.Schema<DeleteCommentsRequest>;
+  S.Struct({
+    postId: S.String.pipe(T.Label()),
+    blogId: S.String.pipe(T.Label()),
+    commentId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v3/blogs/{blogId}/posts/{postId}/comments/{commentId}",
+      baseUrl: "https://blogger.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteCommentsRequest",
+}) as any as S.Schema<DeleteCommentsRequest>;
 
 export interface DeleteCommentsResponse {}
 export const DeleteCommentsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "DeleteCommentsResponse" }) as any as S.Schema<DeleteCommentsResponse>;
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteCommentsResponse",
+}) as any as S.Schema<DeleteCommentsResponse>;
 
 export interface DeletePagesRequest {
   /** Move to Trash if possible */
@@ -200,17 +222,27 @@ export interface DeletePagesRequest {
   blogId: string;
 }
 export const DeletePagesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "useTrash": S.optional(S.Boolean.pipe(T.Query())),
-  "pageId": S.String.pipe(T.Label()),
-  "blogId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v3/blogs/{blogId}/pages/{pageId}","baseUrl":"https://blogger.googleapis.com/"})),
-).annotate({ identifier: "DeletePagesRequest" }) as any as S.Schema<DeletePagesRequest>;
+  S.Struct({
+    useTrash: S.optional(S.Boolean.pipe(T.Query())),
+    pageId: S.String.pipe(T.Label()),
+    blogId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v3/blogs/{blogId}/pages/{pageId}",
+      baseUrl: "https://blogger.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeletePagesRequest",
+}) as any as S.Schema<DeletePagesRequest>;
 
 export interface DeletePagesResponse {}
 export const DeletePagesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "DeletePagesResponse" }) as any as S.Schema<DeletePagesResponse>;
+  S.Struct({}),
+).annotate({
+  identifier: "DeletePagesResponse",
+}) as any as S.Schema<DeletePagesResponse>;
 
 export interface DeletePostsRequest {
   postId: string;
@@ -219,19 +251,33 @@ export interface DeletePostsRequest {
   blogId: string;
 }
 export const DeletePostsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "postId": S.String.pipe(T.Label()),
-  "useTrash": S.optional(S.Boolean.pipe(T.Query())),
-  "blogId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v3/blogs/{blogId}/posts/{postId}","baseUrl":"https://blogger.googleapis.com/"})),
-).annotate({ identifier: "DeletePostsRequest" }) as any as S.Schema<DeletePostsRequest>;
+  S.Struct({
+    postId: S.String.pipe(T.Label()),
+    useTrash: S.optional(S.Boolean.pipe(T.Query())),
+    blogId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v3/blogs/{blogId}/posts/{postId}",
+      baseUrl: "https://blogger.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeletePostsRequest",
+}) as any as S.Schema<DeletePostsRequest>;
 
 export interface DeletePostsResponse {}
 export const DeletePostsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "DeletePostsResponse" }) as any as S.Schema<DeletePostsResponse>;
+  S.Struct({}),
+).annotate({
+  identifier: "DeletePostsResponse",
+}) as any as S.Schema<DeletePostsResponse>;
 
-export type GetBlogsViewEnum = "VIEW_TYPE_UNSPECIFIED" | "READER" | "AUTHOR" | "ADMIN";
+export type GetBlogsViewEnum =
+  | "VIEW_TYPE_UNSPECIFIED"
+  | "READER"
+  | "AUTHOR"
+  | "ADMIN";
 export const GetBlogsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetBlogsRequest {
@@ -241,12 +287,20 @@ export interface GetBlogsRequest {
   view?: GetBlogsViewEnum | (string & {});
 }
 export const GetBlogsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "blogId": S.String.pipe(T.Label()),
-  "maxPosts": S.optional(S.Number.pipe(T.Query())),
-  "view": S.optional(GetBlogsViewEnum.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v3/blogs/{blogId}","baseUrl":"https://blogger.googleapis.com/"})),
-).annotate({ identifier: "GetBlogsRequest" }) as any as S.Schema<GetBlogsRequest>;
+  S.Struct({
+    blogId: S.String.pipe(T.Label()),
+    maxPosts: S.optional(S.Number.pipe(T.Query())),
+    view: S.optional(GetBlogsViewEnum.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v3/blogs/{blogId}",
+      baseUrl: "https://blogger.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetBlogsRequest",
+}) as any as S.Schema<GetBlogsRequest>;
 
 export interface BlogPages {
   /** The URL of the container for pages in this blog. */
@@ -255,10 +309,10 @@ export interface BlogPages {
   totalItems?: number;
 }
 export const BlogPages = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "selfLink": S.optional(S.String),
-  "totalItems": S.optional(S.Number),
-}),
+  S.Struct({
+    selfLink: S.optional(S.String),
+    totalItems: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "BlogPages" }) as any as S.Schema<BlogPages>;
 
 export type PostStatusEnum = "LIVE" | "DRAFT" | "SCHEDULED" | "SOFT_TRASHED";
@@ -268,23 +322,27 @@ export interface PostImagesItem {
   url?: string;
 }
 export const PostImagesItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "url": S.optional(S.String),
-}),
+  S.Struct({
+    url: S.optional(S.String),
+  }),
 ).annotate({ identifier: "PostImagesItem" }) as any as S.Schema<PostImagesItem>;
 
 export type PostImagesItemList = ReadonlyArray<PostImagesItem>;
-export const PostImagesItemList = /*@__PURE__*/ S.Array(PostImagesItem) as any as S.Schema<PostImagesItemList>;
+export const PostImagesItemList = /*@__PURE__*/ S.Array(
+  PostImagesItem,
+) as any as S.Schema<PostImagesItemList>;
 
 export interface PostAuthorImage {
   /** The creator's avatar URL. */
   url?: string;
 }
 export const PostAuthorImage = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "url": S.optional(S.String),
-}),
-).annotate({ identifier: "PostAuthorImage" }) as any as S.Schema<PostAuthorImage>;
+  S.Struct({
+    url: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PostAuthorImage",
+}) as any as S.Schema<PostAuthorImage>;
 
 export interface PostAuthor {
   /** The display name. */
@@ -297,29 +355,33 @@ export interface PostAuthor {
   image?: PostAuthorImage;
 }
 export const PostAuthor = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "displayName": S.optional(S.String),
-  "id": S.optional(S.String),
-  "url": S.optional(S.String),
-  "image": S.optional(PostAuthorImage),
-}),
+  S.Struct({
+    displayName: S.optional(S.String),
+    id: S.optional(S.String),
+    url: S.optional(S.String),
+    image: S.optional(PostAuthorImage),
+  }),
 ).annotate({ identifier: "PostAuthor" }) as any as S.Schema<PostAuthor>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 export interface PostBlog {
   /** The identifier of the Blog that contains this Post. */
   id?: string;
 }
 export const PostBlog = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.optional(S.String),
-}),
+  S.Struct({
+    id: S.optional(S.String),
+  }),
 ).annotate({ identifier: "PostBlog" }) as any as S.Schema<PostBlog>;
 
 export type CommentList_ = ReadonlyArray<Comment>;
-export const CommentList_ = /*@__PURE__*/ S.Array(Comment) as any as S.Schema<CommentList_>;
+export const CommentList_ = /*@__PURE__*/ S.Array(
+  Comment,
+) as any as S.Schema<CommentList_>;
 
 export interface PostReplies {
   /** The URL of the comments on this post. */
@@ -330,11 +392,11 @@ export interface PostReplies {
   items?: CommentList_;
 }
 export const PostReplies = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "selfLink": S.optional(S.String),
-  "totalItems": S.optional(S.String),
-  "items": S.optional(CommentList_),
-}),
+  S.Struct({
+    selfLink: S.optional(S.String),
+    totalItems: S.optional(S.String),
+    items: S.optional(CommentList_),
+  }),
 ).annotate({ identifier: "PostReplies" }) as any as S.Schema<PostReplies>;
 
 export interface PostLocation {
@@ -348,15 +410,18 @@ export interface PostLocation {
   span?: string;
 }
 export const PostLocation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "lat": S.optional(S.Number),
-  "lng": S.optional(S.Number),
-  "span": S.optional(S.String),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    lat: S.optional(S.Number),
+    lng: S.optional(S.Number),
+    span: S.optional(S.String),
+  }),
 ).annotate({ identifier: "PostLocation" }) as any as S.Schema<PostLocation>;
 
-export type PostReaderCommentsEnum = "ALLOW" | "DONT_ALLOW_SHOW_EXISTING" | "DONT_ALLOW_HIDE_EXISTING";
+export type PostReaderCommentsEnum =
+  | "ALLOW"
+  | "DONT_ALLOW_SHOW_EXISTING"
+  | "DONT_ALLOW_HIDE_EXISTING";
 export const PostReaderCommentsEnum = /*@__PURE__*/ S.String;
 
 export interface Post {
@@ -402,32 +467,34 @@ export interface Post {
   content?: string;
 }
 export const Post = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "status": S.optional(PostStatusEnum),
-  "titleLink": S.optional(S.String),
-  "images": S.optional(PostImagesItemList),
-  "customMetaData": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "published": S.optional(S.String),
-  "author": S.optional(PostAuthor),
-  "labels": S.optional(StringList),
-  "etag": S.optional(S.String),
-  "blog": S.optional(PostBlog),
-  "updated": S.optional(S.String),
-  "url": S.optional(S.String),
-  "replies": S.optional(PostReplies),
-  "selfLink": S.optional(S.String),
-  "location": S.optional(PostLocation),
-  "readerComments": S.optional(PostReaderCommentsEnum),
-  "id": S.optional(S.String),
-  "title": S.optional(S.String),
-  "trashed": S.optional(S.String),
-  "content": S.optional(S.String),
-}),
+  S.Struct({
+    status: S.optional(PostStatusEnum),
+    titleLink: S.optional(S.String),
+    images: S.optional(PostImagesItemList),
+    customMetaData: S.optional(S.String),
+    kind: S.optional(S.String),
+    published: S.optional(S.String),
+    author: S.optional(PostAuthor),
+    labels: S.optional(StringList),
+    etag: S.optional(S.String),
+    blog: S.optional(PostBlog),
+    updated: S.optional(S.String),
+    url: S.optional(S.String),
+    replies: S.optional(PostReplies),
+    selfLink: S.optional(S.String),
+    location: S.optional(PostLocation),
+    readerComments: S.optional(PostReaderCommentsEnum),
+    id: S.optional(S.String),
+    title: S.optional(S.String),
+    trashed: S.optional(S.String),
+    content: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Post" }) as any as S.Schema<Post>;
 
 export type PostList_ = ReadonlyArray<Post>;
-export const PostList_ = /*@__PURE__*/ S.Array(Post) as any as S.Schema<PostList_>;
+export const PostList_ = /*@__PURE__*/ S.Array(
+  Post,
+) as any as S.Schema<PostList_>;
 
 export interface BlogPosts {
   /** The URL of the container for posts in this blog. */
@@ -438,11 +505,11 @@ export interface BlogPosts {
   items?: PostList_;
 }
 export const BlogPosts = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "selfLink": S.optional(S.String),
-  "totalItems": S.optional(S.Number),
-  "items": S.optional(PostList_),
-}),
+  S.Struct({
+    selfLink: S.optional(S.String),
+    totalItems: S.optional(S.Number),
+    items: S.optional(PostList_),
+  }),
 ).annotate({ identifier: "BlogPosts" }) as any as S.Schema<BlogPosts>;
 
 export interface BlogLocale {
@@ -454,11 +521,11 @@ export interface BlogLocale {
   variant?: string;
 }
 export const BlogLocale = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "country": S.optional(S.String),
-  "language": S.optional(S.String),
-  "variant": S.optional(S.String),
-}),
+  S.Struct({
+    country: S.optional(S.String),
+    language: S.optional(S.String),
+    variant: S.optional(S.String),
+  }),
 ).annotate({ identifier: "BlogLocale" }) as any as S.Schema<BlogLocale>;
 
 export type BlogStatusEnum = "LIVE" | "DELETED";
@@ -493,21 +560,21 @@ export interface Blog {
   published?: string;
 }
 export const Blog = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "selfLink": S.optional(S.String),
-  "id": S.optional(S.String),
-  "updated": S.optional(S.String),
-  "url": S.optional(S.String),
-  "description": S.optional(S.String),
-  "pages": S.optional(BlogPages),
-  "posts": S.optional(BlogPosts),
-  "customMetaData": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "locale": S.optional(BlogLocale),
-  "status": S.optional(BlogStatusEnum),
-  "name": S.optional(S.String),
-  "published": S.optional(S.String),
-}),
+  S.Struct({
+    selfLink: S.optional(S.String),
+    id: S.optional(S.String),
+    updated: S.optional(S.String),
+    url: S.optional(S.String),
+    description: S.optional(S.String),
+    pages: S.optional(BlogPages),
+    posts: S.optional(BlogPosts),
+    customMetaData: S.optional(S.String),
+    kind: S.optional(S.String),
+    locale: S.optional(BlogLocale),
+    status: S.optional(BlogStatusEnum),
+    name: S.optional(S.String),
+    published: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Blog" }) as any as S.Schema<Blog>;
 
 export interface GetBlogUserInfosRequest {
@@ -516,14 +583,26 @@ export interface GetBlogUserInfosRequest {
   maxPosts?: number;
 }
 export const GetBlogUserInfosRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "userId": S.String.pipe(T.Label()),
-  "blogId": S.String.pipe(T.Label()),
-  "maxPosts": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v3/users/{userId}/blogs/{blogId}","baseUrl":"https://blogger.googleapis.com/"})),
-).annotate({ identifier: "GetBlogUserInfosRequest" }) as any as S.Schema<GetBlogUserInfosRequest>;
+  S.Struct({
+    userId: S.String.pipe(T.Label()),
+    blogId: S.String.pipe(T.Label()),
+    maxPosts: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v3/users/{userId}/blogs/{blogId}",
+      baseUrl: "https://blogger.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetBlogUserInfosRequest",
+}) as any as S.Schema<GetBlogUserInfosRequest>;
 
-export type BlogPerUserInfoRoleEnum = "VIEW_TYPE_UNSPECIFIED" | "READER" | "AUTHOR" | "ADMIN";
+export type BlogPerUserInfoRoleEnum =
+  | "VIEW_TYPE_UNSPECIFIED"
+  | "READER"
+  | "AUTHOR"
+  | "ADMIN";
 export const BlogPerUserInfoRoleEnum = /*@__PURE__*/ S.String;
 
 export interface BlogPerUserInfo {
@@ -541,15 +620,17 @@ export interface BlogPerUserInfo {
   photosAlbumKey?: string;
 }
 export const BlogPerUserInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "userId": S.optional(S.String),
-  "hasAdminAccess": S.optional(S.Boolean),
-  "blogId": S.optional(S.String),
-  "role": S.optional(BlogPerUserInfoRoleEnum),
-  "kind": S.optional(S.String),
-  "photosAlbumKey": S.optional(S.String),
-}),
-).annotate({ identifier: "BlogPerUserInfo" }) as any as S.Schema<BlogPerUserInfo>;
+  S.Struct({
+    userId: S.optional(S.String),
+    hasAdminAccess: S.optional(S.Boolean),
+    blogId: S.optional(S.String),
+    role: S.optional(BlogPerUserInfoRoleEnum),
+    kind: S.optional(S.String),
+    photosAlbumKey: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BlogPerUserInfo",
+}) as any as S.Schema<BlogPerUserInfo>;
 
 export interface BlogUserInfo {
   /** The kind of this entity. Always blogger#blogUserInfo. */
@@ -560,14 +641,18 @@ export interface BlogUserInfo {
   blog?: Blog;
 }
 export const BlogUserInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "blog_user_info": S.optional(BlogPerUserInfo),
-  "blog": S.optional(Blog),
-}),
+  S.Struct({
+    kind: S.optional(S.String),
+    blog_user_info: S.optional(BlogPerUserInfo),
+    blog: S.optional(Blog),
+  }),
 ).annotate({ identifier: "BlogUserInfo" }) as any as S.Schema<BlogUserInfo>;
 
-export type GetByPathPostsViewEnum = "VIEW_TYPE_UNSPECIFIED" | "READER" | "AUTHOR" | "ADMIN";
+export type GetByPathPostsViewEnum =
+  | "VIEW_TYPE_UNSPECIFIED"
+  | "READER"
+  | "AUTHOR"
+  | "ADMIN";
 export const GetByPathPostsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetByPathPostsRequest {
@@ -577,15 +662,27 @@ export interface GetByPathPostsRequest {
   view?: GetByPathPostsViewEnum | (string & {});
 }
 export const GetByPathPostsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "blogId": S.String.pipe(T.Label()),
-  "path": S.String.pipe(T.Query()),
-  "maxComments": S.optional(S.Number.pipe(T.Query())),
-  "view": S.optional(GetByPathPostsViewEnum.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v3/blogs/{blogId}/posts/bypath","baseUrl":"https://blogger.googleapis.com/"})),
-).annotate({ identifier: "GetByPathPostsRequest" }) as any as S.Schema<GetByPathPostsRequest>;
+  S.Struct({
+    blogId: S.String.pipe(T.Label()),
+    path: S.String.pipe(T.Query()),
+    maxComments: S.optional(S.Number.pipe(T.Query())),
+    view: S.optional(GetByPathPostsViewEnum.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v3/blogs/{blogId}/posts/bypath",
+      baseUrl: "https://blogger.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetByPathPostsRequest",
+}) as any as S.Schema<GetByPathPostsRequest>;
 
-export type GetByUrlBlogsViewEnum = "VIEW_TYPE_UNSPECIFIED" | "READER" | "AUTHOR" | "ADMIN";
+export type GetByUrlBlogsViewEnum =
+  | "VIEW_TYPE_UNSPECIFIED"
+  | "READER"
+  | "AUTHOR"
+  | "ADMIN";
 export const GetByUrlBlogsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetByUrlBlogsRequest {
@@ -594,13 +691,25 @@ export interface GetByUrlBlogsRequest {
   view?: GetByUrlBlogsViewEnum | (string & {});
 }
 export const GetByUrlBlogsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "url": S.String.pipe(T.Query()),
-  "view": S.optional(GetByUrlBlogsViewEnum.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v3/blogs/byurl","baseUrl":"https://blogger.googleapis.com/"})),
-).annotate({ identifier: "GetByUrlBlogsRequest" }) as any as S.Schema<GetByUrlBlogsRequest>;
+  S.Struct({
+    url: S.String.pipe(T.Query()),
+    view: S.optional(GetByUrlBlogsViewEnum.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v3/blogs/byurl",
+      baseUrl: "https://blogger.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetByUrlBlogsRequest",
+}) as any as S.Schema<GetByUrlBlogsRequest>;
 
-export type GetCommentsViewEnum = "VIEW_TYPE_UNSPECIFIED" | "READER" | "AUTHOR" | "ADMIN";
+export type GetCommentsViewEnum =
+  | "VIEW_TYPE_UNSPECIFIED"
+  | "READER"
+  | "AUTHOR"
+  | "ADMIN";
 export const GetCommentsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetCommentsRequest {
@@ -610,15 +719,27 @@ export interface GetCommentsRequest {
   view?: GetCommentsViewEnum | (string & {});
 }
 export const GetCommentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "blogId": S.String.pipe(T.Label()),
-  "commentId": S.String.pipe(T.Label()),
-  "postId": S.String.pipe(T.Label()),
-  "view": S.optional(GetCommentsViewEnum.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v3/blogs/{blogId}/posts/{postId}/comments/{commentId}","baseUrl":"https://blogger.googleapis.com/"})),
-).annotate({ identifier: "GetCommentsRequest" }) as any as S.Schema<GetCommentsRequest>;
+  S.Struct({
+    blogId: S.String.pipe(T.Label()),
+    commentId: S.String.pipe(T.Label()),
+    postId: S.String.pipe(T.Label()),
+    view: S.optional(GetCommentsViewEnum.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v3/blogs/{blogId}/posts/{postId}/comments/{commentId}",
+      baseUrl: "https://blogger.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetCommentsRequest",
+}) as any as S.Schema<GetCommentsRequest>;
 
-export type GetPagesViewEnum = "VIEW_TYPE_UNSPECIFIED" | "READER" | "AUTHOR" | "ADMIN";
+export type GetPagesViewEnum =
+  | "VIEW_TYPE_UNSPECIFIED"
+  | "READER"
+  | "AUTHOR"
+  | "ADMIN";
 export const GetPagesViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetPagesRequest {
@@ -627,21 +748,29 @@ export interface GetPagesRequest {
   blogId: string;
 }
 export const GetPagesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "view": S.optional(GetPagesViewEnum.pipe(T.Query())),
-  "pageId": S.String.pipe(T.Label()),
-  "blogId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v3/blogs/{blogId}/pages/{pageId}","baseUrl":"https://blogger.googleapis.com/"})),
-).annotate({ identifier: "GetPagesRequest" }) as any as S.Schema<GetPagesRequest>;
+  S.Struct({
+    view: S.optional(GetPagesViewEnum.pipe(T.Query())),
+    pageId: S.String.pipe(T.Label()),
+    blogId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v3/blogs/{blogId}/pages/{pageId}",
+      baseUrl: "https://blogger.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetPagesRequest",
+}) as any as S.Schema<GetPagesRequest>;
 
 export interface PageBlog {
   /** The identifier of the blog containing this page. */
   id?: string;
 }
 export const PageBlog = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.optional(S.String),
-}),
+  S.Struct({
+    id: S.optional(S.String),
+  }),
 ).annotate({ identifier: "PageBlog" }) as any as S.Schema<PageBlog>;
 
 export type PageStatusEnum = "LIVE" | "DRAFT" | "SOFT_TRASHED";
@@ -652,10 +781,12 @@ export interface PageAuthorImage {
   url?: string;
 }
 export const PageAuthorImage = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "url": S.optional(S.String),
-}),
-).annotate({ identifier: "PageAuthorImage" }) as any as S.Schema<PageAuthorImage>;
+  S.Struct({
+    url: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PageAuthorImage",
+}) as any as S.Schema<PageAuthorImage>;
 
 export interface PageAuthor {
   /** The creator's avatar. */
@@ -668,12 +799,12 @@ export interface PageAuthor {
   displayName?: string;
 }
 export const PageAuthor = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "image": S.optional(PageAuthorImage),
-  "id": S.optional(S.String),
-  "url": S.optional(S.String),
-  "displayName": S.optional(S.String),
-}),
+  S.Struct({
+    image: S.optional(PageAuthorImage),
+    id: S.optional(S.String),
+    url: S.optional(S.String),
+    displayName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "PageAuthor" }) as any as S.Schema<PageAuthor>;
 
 export interface Page {
@@ -705,41 +836,56 @@ export interface Page {
   etag?: string;
 }
 export const Page = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "blog": S.optional(PageBlog),
-  "updated": S.optional(S.String),
-  "url": S.optional(S.String),
-  "selfLink": S.optional(S.String),
-  "id": S.optional(S.String),
-  "title": S.optional(S.String),
-  "trashed": S.optional(S.String),
-  "content": S.optional(S.String),
-  "status": S.optional(PageStatusEnum),
-  "kind": S.optional(S.String),
-  "published": S.optional(S.String),
-  "author": S.optional(PageAuthor),
-  "etag": S.optional(S.String),
-}),
+  S.Struct({
+    blog: S.optional(PageBlog),
+    updated: S.optional(S.String),
+    url: S.optional(S.String),
+    selfLink: S.optional(S.String),
+    id: S.optional(S.String),
+    title: S.optional(S.String),
+    trashed: S.optional(S.String),
+    content: S.optional(S.String),
+    status: S.optional(PageStatusEnum),
+    kind: S.optional(S.String),
+    published: S.optional(S.String),
+    author: S.optional(PageAuthor),
+    etag: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Page" }) as any as S.Schema<Page>;
 
 export type GetPageViewsRangeEnum = "all" | "30DAYS" | "7DAYS";
 export const GetPageViewsRangeEnum = /*@__PURE__*/ S.String;
 
-export type GetPageViewsRangeEnumList = ReadonlyArray<GetPageViewsRangeEnum | (string & {})>;
-export const GetPageViewsRangeEnumList = /*@__PURE__*/ S.Array(GetPageViewsRangeEnum) as any as S.Schema<GetPageViewsRangeEnumList>;
+export type GetPageViewsRangeEnumList = ReadonlyArray<
+  GetPageViewsRangeEnum | (string & {})
+>;
+export const GetPageViewsRangeEnumList = /*@__PURE__*/ S.Array(
+  GetPageViewsRangeEnum,
+) as any as S.Schema<GetPageViewsRangeEnumList>;
 
 export interface GetPageViewsRequest {
   blogId: string;
   range?: GetPageViewsRangeEnumList;
 }
 export const GetPageViewsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "blogId": S.String.pipe(T.Label()),
-  "range": S.optional(GetPageViewsRangeEnumList.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v3/blogs/{blogId}/pageviews","baseUrl":"https://blogger.googleapis.com/"})),
-).annotate({ identifier: "GetPageViewsRequest" }) as any as S.Schema<GetPageViewsRequest>;
+  S.Struct({
+    blogId: S.String.pipe(T.Label()),
+    range: S.optional(GetPageViewsRangeEnumList.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v3/blogs/{blogId}/pageviews",
+      baseUrl: "https://blogger.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetPageViewsRequest",
+}) as any as S.Schema<GetPageViewsRequest>;
 
-export type PageviewsCountsItemTimeRangeEnum = "ALL_TIME" | "THIRTY_DAYS" | "SEVEN_DAYS";
+export type PageviewsCountsItemTimeRangeEnum =
+  | "ALL_TIME"
+  | "THIRTY_DAYS"
+  | "SEVEN_DAYS";
 export const PageviewsCountsItemTimeRangeEnum = /*@__PURE__*/ S.String;
 
 export interface PageviewsCountsItem {
@@ -749,14 +895,18 @@ export interface PageviewsCountsItem {
   timeRange?: PageviewsCountsItemTimeRangeEnum;
 }
 export const PageviewsCountsItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "count": S.optional(S.String),
-  "timeRange": S.optional(PageviewsCountsItemTimeRangeEnum),
-}),
-).annotate({ identifier: "PageviewsCountsItem" }) as any as S.Schema<PageviewsCountsItem>;
+  S.Struct({
+    count: S.optional(S.String),
+    timeRange: S.optional(PageviewsCountsItemTimeRangeEnum),
+  }),
+).annotate({
+  identifier: "PageviewsCountsItem",
+}) as any as S.Schema<PageviewsCountsItem>;
 
 export type PageviewsCountsItemList = ReadonlyArray<PageviewsCountsItem>;
-export const PageviewsCountsItemList = /*@__PURE__*/ S.Array(PageviewsCountsItem) as any as S.Schema<PageviewsCountsItemList>;
+export const PageviewsCountsItemList = /*@__PURE__*/ S.Array(
+  PageviewsCountsItem,
+) as any as S.Schema<PageviewsCountsItemList>;
 
 export interface Pageviews {
   /** Blog Id. */
@@ -767,14 +917,18 @@ export interface Pageviews {
   kind?: string;
 }
 export const Pageviews = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "blogId": S.optional(S.String),
-  "counts": S.optional(PageviewsCountsItemList),
-  "kind": S.optional(S.String),
-}),
+  S.Struct({
+    blogId: S.optional(S.String),
+    counts: S.optional(PageviewsCountsItemList),
+    kind: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Pageviews" }) as any as S.Schema<Pageviews>;
 
-export type GetPostsViewEnum = "VIEW_TYPE_UNSPECIFIED" | "READER" | "AUTHOR" | "ADMIN";
+export type GetPostsViewEnum =
+  | "VIEW_TYPE_UNSPECIFIED"
+  | "READER"
+  | "AUTHOR"
+  | "ADMIN";
 export const GetPostsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetPostsRequest {
@@ -786,15 +940,23 @@ export interface GetPostsRequest {
   fetchBody?: boolean;
 }
 export const GetPostsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "maxComments": S.optional(S.Number.pipe(T.Query())),
-  "view": S.optional(GetPostsViewEnum.pipe(T.Query())),
-  "postId": S.String.pipe(T.Label()),
-  "blogId": S.String.pipe(T.Label()),
-  "fetchImages": S.optional(S.Boolean.pipe(T.Query())),
-  "fetchBody": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v3/blogs/{blogId}/posts/{postId}","baseUrl":"https://blogger.googleapis.com/"})),
-).annotate({ identifier: "GetPostsRequest" }) as any as S.Schema<GetPostsRequest>;
+  S.Struct({
+    maxComments: S.optional(S.Number.pipe(T.Query())),
+    view: S.optional(GetPostsViewEnum.pipe(T.Query())),
+    postId: S.String.pipe(T.Label()),
+    blogId: S.String.pipe(T.Label()),
+    fetchImages: S.optional(S.Boolean.pipe(T.Query())),
+    fetchBody: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v3/blogs/{blogId}/posts/{postId}",
+      baseUrl: "https://blogger.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetPostsRequest",
+}) as any as S.Schema<GetPostsRequest>;
 
 export interface GetPostUserInfosRequest {
   postId: string;
@@ -803,13 +965,21 @@ export interface GetPostUserInfosRequest {
   maxComments?: number;
 }
 export const GetPostUserInfosRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "postId": S.String.pipe(T.Label()),
-  "blogId": S.String.pipe(T.Label()),
-  "userId": S.String.pipe(T.Label()),
-  "maxComments": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v3/users/{userId}/blogs/{blogId}/posts/{postId}","baseUrl":"https://blogger.googleapis.com/"})),
-).annotate({ identifier: "GetPostUserInfosRequest" }) as any as S.Schema<GetPostUserInfosRequest>;
+  S.Struct({
+    postId: S.String.pipe(T.Label()),
+    blogId: S.String.pipe(T.Label()),
+    userId: S.String.pipe(T.Label()),
+    maxComments: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v3/users/{userId}/blogs/{blogId}/posts/{postId}",
+      baseUrl: "https://blogger.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetPostUserInfosRequest",
+}) as any as S.Schema<GetPostUserInfosRequest>;
 
 export interface PostPerUserInfo {
   /** ID of the Post resource. */
@@ -824,14 +994,16 @@ export interface PostPerUserInfo {
   hasEditAccess?: boolean;
 }
 export const PostPerUserInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "postId": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "blogId": S.optional(S.String),
-  "userId": S.optional(S.String),
-  "hasEditAccess": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "PostPerUserInfo" }) as any as S.Schema<PostPerUserInfo>;
+  S.Struct({
+    postId: S.optional(S.String),
+    kind: S.optional(S.String),
+    blogId: S.optional(S.String),
+    userId: S.optional(S.String),
+    hasEditAccess: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "PostPerUserInfo",
+}) as any as S.Schema<PostPerUserInfo>;
 
 export interface PostUserInfo {
   /** Information about a User for the Post. */
@@ -842,21 +1014,29 @@ export interface PostUserInfo {
   kind?: string;
 }
 export const PostUserInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "post_user_info": S.optional(PostPerUserInfo),
-  "post": S.optional(Post),
-  "kind": S.optional(S.String),
-}),
+  S.Struct({
+    post_user_info: S.optional(PostPerUserInfo),
+    post: S.optional(Post),
+    kind: S.optional(S.String),
+  }),
 ).annotate({ identifier: "PostUserInfo" }) as any as S.Schema<PostUserInfo>;
 
 export interface GetUsersRequest {
   userId: string;
 }
 export const GetUsersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "userId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v3/users/{userId}","baseUrl":"https://blogger.googleapis.com/"})),
-).annotate({ identifier: "GetUsersRequest" }) as any as S.Schema<GetUsersRequest>;
+  S.Struct({
+    userId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v3/users/{userId}",
+      baseUrl: "https://blogger.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetUsersRequest",
+}) as any as S.Schema<GetUsersRequest>;
 
 export interface UserLocale {
   /** The language this blog is authored in. */
@@ -867,11 +1047,11 @@ export interface UserLocale {
   country?: string;
 }
 export const UserLocale = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "language": S.optional(S.String),
-  "variant": S.optional(S.String),
-  "country": S.optional(S.String),
-}),
+  S.Struct({
+    language: S.optional(S.String),
+    variant: S.optional(S.String),
+    country: S.optional(S.String),
+  }),
 ).annotate({ identifier: "UserLocale" }) as any as S.Schema<UserLocale>;
 
 export interface UserBlogs {
@@ -879,9 +1059,9 @@ export interface UserBlogs {
   selfLink?: string;
 }
 export const UserBlogs = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "selfLink": S.optional(S.String),
-}),
+  S.Struct({
+    selfLink: S.optional(S.String),
+  }),
 ).annotate({ identifier: "UserBlogs" }) as any as S.Schema<UserBlogs>;
 
 export interface User {
@@ -905,17 +1085,17 @@ export interface User {
   about?: string;
 }
 export const User = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locale": S.optional(UserLocale),
-  "kind": S.optional(S.String),
-  "id": S.optional(S.String),
-  "selfLink": S.optional(S.String),
-  "blogs": S.optional(UserBlogs),
-  "url": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "created": S.optional(S.String),
-  "about": S.optional(S.String),
-}),
+  S.Struct({
+    locale: S.optional(UserLocale),
+    kind: S.optional(S.String),
+    id: S.optional(S.String),
+    selfLink: S.optional(S.String),
+    blogs: S.optional(UserBlogs),
+    url: S.optional(S.String),
+    displayName: S.optional(S.String),
+    created: S.optional(S.String),
+    about: S.optional(S.String),
+  }),
 ).annotate({ identifier: "User" }) as any as S.Schema<User>;
 
 export interface InsertPagesRequest {
@@ -925,12 +1105,20 @@ export interface InsertPagesRequest {
   body?: Page;
 }
 export const InsertPagesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "blogId": S.String.pipe(T.Label()),
-  "isDraft": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(Page.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v3/blogs/{blogId}/pages","baseUrl":"https://blogger.googleapis.com/"})),
-).annotate({ identifier: "InsertPagesRequest" }) as any as S.Schema<InsertPagesRequest>;
+  S.Struct({
+    blogId: S.String.pipe(T.Label()),
+    isDraft: S.optional(S.Boolean.pipe(T.Query())),
+    body: S.optional(Page.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v3/blogs/{blogId}/pages",
+      baseUrl: "https://blogger.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "InsertPagesRequest",
+}) as any as S.Schema<InsertPagesRequest>;
 
 export interface InsertPostsRequest {
   blogId: string;
@@ -941,20 +1129,36 @@ export interface InsertPostsRequest {
   body?: Post;
 }
 export const InsertPostsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "blogId": S.String.pipe(T.Label()),
-  "fetchImages": S.optional(S.Boolean.pipe(T.Query())),
-  "isDraft": S.optional(S.Boolean.pipe(T.Query())),
-  "fetchBody": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(Post.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v3/blogs/{blogId}/posts","baseUrl":"https://blogger.googleapis.com/"})),
-).annotate({ identifier: "InsertPostsRequest" }) as any as S.Schema<InsertPostsRequest>;
+  S.Struct({
+    blogId: S.String.pipe(T.Label()),
+    fetchImages: S.optional(S.Boolean.pipe(T.Query())),
+    isDraft: S.optional(S.Boolean.pipe(T.Query())),
+    fetchBody: S.optional(S.Boolean.pipe(T.Query())),
+    body: S.optional(Post.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v3/blogs/{blogId}/posts",
+      baseUrl: "https://blogger.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "InsertPostsRequest",
+}) as any as S.Schema<InsertPostsRequest>;
 
-export type ListByBlogCommentsStatusEnum = "LIVE" | "EMPTIED" | "PENDING" | "SPAM";
+export type ListByBlogCommentsStatusEnum =
+  | "LIVE"
+  | "EMPTIED"
+  | "PENDING"
+  | "SPAM";
 export const ListByBlogCommentsStatusEnum = /*@__PURE__*/ S.String;
 
-export type ListByBlogCommentsStatusEnumList = ReadonlyArray<ListByBlogCommentsStatusEnum | (string & {})>;
-export const ListByBlogCommentsStatusEnumList = /*@__PURE__*/ S.Array(ListByBlogCommentsStatusEnum) as any as S.Schema<ListByBlogCommentsStatusEnumList>;
+export type ListByBlogCommentsStatusEnumList = ReadonlyArray<
+  ListByBlogCommentsStatusEnum | (string & {})
+>;
+export const ListByBlogCommentsStatusEnumList = /*@__PURE__*/ S.Array(
+  ListByBlogCommentsStatusEnum,
+) as any as S.Schema<ListByBlogCommentsStatusEnumList>;
 
 export interface ListByBlogCommentsRequest {
   pageToken?: string;
@@ -966,16 +1170,24 @@ export interface ListByBlogCommentsRequest {
   maxResults?: number;
 }
 export const ListByBlogCommentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "status": S.optional(ListByBlogCommentsStatusEnumList.pipe(T.Query())),
-  "fetchBodies": S.optional(S.Boolean.pipe(T.Query())),
-  "blogId": S.String.pipe(T.Label()),
-  "endDate": S.optional(S.String.pipe(T.Query())),
-  "startDate": S.optional(S.String.pipe(T.Query())),
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v3/blogs/{blogId}/comments","baseUrl":"https://blogger.googleapis.com/"})),
-).annotate({ identifier: "ListByBlogCommentsRequest" }) as any as S.Schema<ListByBlogCommentsRequest>;
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    status: S.optional(ListByBlogCommentsStatusEnumList.pipe(T.Query())),
+    fetchBodies: S.optional(S.Boolean.pipe(T.Query())),
+    blogId: S.String.pipe(T.Label()),
+    endDate: S.optional(S.String.pipe(T.Query())),
+    startDate: S.optional(S.String.pipe(T.Query())),
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v3/blogs/{blogId}/comments",
+      baseUrl: "https://blogger.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListByBlogCommentsRequest",
+}) as any as S.Schema<ListByBlogCommentsRequest>;
 
 export interface CommentList {
   /** Etag of the response. */
@@ -990,29 +1202,45 @@ export interface CommentList {
   items: CommentList_;
 }
 export const CommentList = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "etag": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "prevPageToken": S.optional(S.String),
-  "nextPageToken": S.optional(S.String),
-  "items": CommentList_,
-}),
+  S.Struct({
+    etag: S.optional(S.String),
+    kind: S.optional(S.String),
+    prevPageToken: S.optional(S.String),
+    nextPageToken: S.optional(S.String),
+    items: CommentList_,
+  }),
 ).annotate({ identifier: "CommentList" }) as any as S.Schema<CommentList>;
 
-export type ListByUserBlogsViewEnum = "VIEW_TYPE_UNSPECIFIED" | "READER" | "AUTHOR" | "ADMIN";
+export type ListByUserBlogsViewEnum =
+  | "VIEW_TYPE_UNSPECIFIED"
+  | "READER"
+  | "AUTHOR"
+  | "ADMIN";
 export const ListByUserBlogsViewEnum = /*@__PURE__*/ S.String;
 
 export type ListByUserBlogsStatusEnum = "LIVE" | "DELETED";
 export const ListByUserBlogsStatusEnum = /*@__PURE__*/ S.String;
 
-export type ListByUserBlogsStatusEnumList = ReadonlyArray<ListByUserBlogsStatusEnum | (string & {})>;
-export const ListByUserBlogsStatusEnumList = /*@__PURE__*/ S.Array(ListByUserBlogsStatusEnum) as any as S.Schema<ListByUserBlogsStatusEnumList>;
+export type ListByUserBlogsStatusEnumList = ReadonlyArray<
+  ListByUserBlogsStatusEnum | (string & {})
+>;
+export const ListByUserBlogsStatusEnumList = /*@__PURE__*/ S.Array(
+  ListByUserBlogsStatusEnum,
+) as any as S.Schema<ListByUserBlogsStatusEnumList>;
 
-export type ListByUserBlogsRoleEnum = "VIEW_TYPE_UNSPECIFIED" | "READER" | "AUTHOR" | "ADMIN";
+export type ListByUserBlogsRoleEnum =
+  | "VIEW_TYPE_UNSPECIFIED"
+  | "READER"
+  | "AUTHOR"
+  | "ADMIN";
 export const ListByUserBlogsRoleEnum = /*@__PURE__*/ S.String;
 
-export type ListByUserBlogsRoleEnumList = ReadonlyArray<ListByUserBlogsRoleEnum | (string & {})>;
-export const ListByUserBlogsRoleEnumList = /*@__PURE__*/ S.Array(ListByUserBlogsRoleEnum) as any as S.Schema<ListByUserBlogsRoleEnumList>;
+export type ListByUserBlogsRoleEnumList = ReadonlyArray<
+  ListByUserBlogsRoleEnum | (string & {})
+>;
+export const ListByUserBlogsRoleEnumList = /*@__PURE__*/ S.Array(
+  ListByUserBlogsRoleEnum,
+) as any as S.Schema<ListByUserBlogsRoleEnumList>;
 
 export interface ListByUserBlogsRequest {
   fetchUserInfo?: boolean;
@@ -1024,20 +1252,32 @@ export interface ListByUserBlogsRequest {
   role?: ListByUserBlogsRoleEnumList;
 }
 export const ListByUserBlogsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fetchUserInfo": S.optional(S.Boolean.pipe(T.Query())),
-  "view": S.optional(ListByUserBlogsViewEnum.pipe(T.Query())),
-  "status": S.optional(ListByUserBlogsStatusEnumList.pipe(T.Query())),
-  "userId": S.String.pipe(T.Label()),
-  "role": S.optional(ListByUserBlogsRoleEnumList.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v3/users/{userId}/blogs","baseUrl":"https://blogger.googleapis.com/"})),
-).annotate({ identifier: "ListByUserBlogsRequest" }) as any as S.Schema<ListByUserBlogsRequest>;
+  S.Struct({
+    fetchUserInfo: S.optional(S.Boolean.pipe(T.Query())),
+    view: S.optional(ListByUserBlogsViewEnum.pipe(T.Query())),
+    status: S.optional(ListByUserBlogsStatusEnumList.pipe(T.Query())),
+    userId: S.String.pipe(T.Label()),
+    role: S.optional(ListByUserBlogsRoleEnumList.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v3/users/{userId}/blogs",
+      baseUrl: "https://blogger.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListByUserBlogsRequest",
+}) as any as S.Schema<ListByUserBlogsRequest>;
 
 export type BlogUserInfoList = ReadonlyArray<BlogUserInfo>;
-export const BlogUserInfoList = /*@__PURE__*/ S.Array(BlogUserInfo) as any as S.Schema<BlogUserInfoList>;
+export const BlogUserInfoList = /*@__PURE__*/ S.Array(
+  BlogUserInfo,
+) as any as S.Schema<BlogUserInfoList>;
 
 export type BlogList_ = ReadonlyArray<Blog>;
-export const BlogList_ = /*@__PURE__*/ S.Array(Blog) as any as S.Schema<BlogList_>;
+export const BlogList_ = /*@__PURE__*/ S.Array(
+  Blog,
+) as any as S.Schema<BlogList_>;
 
 export interface BlogList {
   /** Admin level list of blog per-user information. */
@@ -1048,17 +1288,21 @@ export interface BlogList {
   items?: BlogList_;
 }
 export const BlogList = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "blogUserInfos": S.optional(BlogUserInfoList),
-  "kind": S.optional(S.String),
-  "items": S.optional(BlogList_),
-}),
+  S.Struct({
+    blogUserInfos: S.optional(BlogUserInfoList),
+    kind: S.optional(S.String),
+    items: S.optional(BlogList_),
+  }),
 ).annotate({ identifier: "BlogList" }) as any as S.Schema<BlogList>;
 
 export type ListCommentsStatusEnum = "LIVE" | "EMPTIED" | "PENDING" | "SPAM";
 export const ListCommentsStatusEnum = /*@__PURE__*/ S.String;
 
-export type ListCommentsViewEnum = "VIEW_TYPE_UNSPECIFIED" | "READER" | "AUTHOR" | "ADMIN";
+export type ListCommentsViewEnum =
+  | "VIEW_TYPE_UNSPECIFIED"
+  | "READER"
+  | "AUTHOR"
+  | "ADMIN";
 export const ListCommentsViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListCommentsRequest {
@@ -1073,26 +1317,42 @@ export interface ListCommentsRequest {
   view?: ListCommentsViewEnum | (string & {});
 }
 export const ListCommentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "postId": S.String.pipe(T.Label()),
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-  "status": S.optional(ListCommentsStatusEnum.pipe(T.Query())),
-  "fetchBodies": S.optional(S.Boolean.pipe(T.Query())),
-  "blogId": S.String.pipe(T.Label()),
-  "endDate": S.optional(S.String.pipe(T.Query())),
-  "startDate": S.optional(S.String.pipe(T.Query())),
-  "view": S.optional(ListCommentsViewEnum.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v3/blogs/{blogId}/posts/{postId}/comments","baseUrl":"https://blogger.googleapis.com/"})),
-).annotate({ identifier: "ListCommentsRequest" }) as any as S.Schema<ListCommentsRequest>;
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    postId: S.String.pipe(T.Label()),
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+    status: S.optional(ListCommentsStatusEnum.pipe(T.Query())),
+    fetchBodies: S.optional(S.Boolean.pipe(T.Query())),
+    blogId: S.String.pipe(T.Label()),
+    endDate: S.optional(S.String.pipe(T.Query())),
+    startDate: S.optional(S.String.pipe(T.Query())),
+    view: S.optional(ListCommentsViewEnum.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v3/blogs/{blogId}/posts/{postId}/comments",
+      baseUrl: "https://blogger.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListCommentsRequest",
+}) as any as S.Schema<ListCommentsRequest>;
 
 export type ListPagesStatusEnum = "LIVE" | "DRAFT" | "SOFT_TRASHED";
 export const ListPagesStatusEnum = /*@__PURE__*/ S.String;
 
-export type ListPagesStatusEnumList = ReadonlyArray<ListPagesStatusEnum | (string & {})>;
-export const ListPagesStatusEnumList = /*@__PURE__*/ S.Array(ListPagesStatusEnum) as any as S.Schema<ListPagesStatusEnumList>;
+export type ListPagesStatusEnumList = ReadonlyArray<
+  ListPagesStatusEnum | (string & {})
+>;
+export const ListPagesStatusEnumList = /*@__PURE__*/ S.Array(
+  ListPagesStatusEnum,
+) as any as S.Schema<ListPagesStatusEnumList>;
 
-export type ListPagesViewEnum = "VIEW_TYPE_UNSPECIFIED" | "READER" | "AUTHOR" | "ADMIN";
+export type ListPagesViewEnum =
+  | "VIEW_TYPE_UNSPECIFIED"
+  | "READER"
+  | "AUTHOR"
+  | "ADMIN";
 export const ListPagesViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListPagesRequest {
@@ -1104,18 +1364,28 @@ export interface ListPagesRequest {
   view?: ListPagesViewEnum | (string & {});
 }
 export const ListPagesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "blogId": S.String.pipe(T.Label()),
-  "fetchBodies": S.optional(S.Boolean.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "status": S.optional(ListPagesStatusEnumList.pipe(T.Query())),
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-  "view": S.optional(ListPagesViewEnum.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v3/blogs/{blogId}/pages","baseUrl":"https://blogger.googleapis.com/"})),
-).annotate({ identifier: "ListPagesRequest" }) as any as S.Schema<ListPagesRequest>;
+  S.Struct({
+    blogId: S.String.pipe(T.Label()),
+    fetchBodies: S.optional(S.Boolean.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    status: S.optional(ListPagesStatusEnumList.pipe(T.Query())),
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+    view: S.optional(ListPagesViewEnum.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v3/blogs/{blogId}/pages",
+      baseUrl: "https://blogger.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListPagesRequest",
+}) as any as S.Schema<ListPagesRequest>;
 
 export type PageList_ = ReadonlyArray<Page>;
-export const PageList_ = /*@__PURE__*/ S.Array(Page) as any as S.Schema<PageList_>;
+export const PageList_ = /*@__PURE__*/ S.Array(
+  Page,
+) as any as S.Schema<PageList_>;
 
 export interface PageList {
   /** The kind of this entity. Always blogger#pageList. */
@@ -1128,27 +1398,45 @@ export interface PageList {
   etag?: string;
 }
 export const PageList = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "items": PageList_,
-  "nextPageToken": S.optional(S.String),
-  "etag": S.optional(S.String),
-}),
+  S.Struct({
+    kind: S.optional(S.String),
+    items: PageList_,
+    nextPageToken: S.optional(S.String),
+    etag: S.optional(S.String),
+  }),
 ).annotate({ identifier: "PageList" }) as any as S.Schema<PageList>;
 
-export type ListPostsStatusEnum = "LIVE" | "DRAFT" | "SCHEDULED" | "SOFT_TRASHED";
+export type ListPostsStatusEnum =
+  | "LIVE"
+  | "DRAFT"
+  | "SCHEDULED"
+  | "SOFT_TRASHED";
 export const ListPostsStatusEnum = /*@__PURE__*/ S.String;
 
-export type ListPostsStatusEnumList = ReadonlyArray<ListPostsStatusEnum | (string & {})>;
-export const ListPostsStatusEnumList = /*@__PURE__*/ S.Array(ListPostsStatusEnum) as any as S.Schema<ListPostsStatusEnumList>;
+export type ListPostsStatusEnumList = ReadonlyArray<
+  ListPostsStatusEnum | (string & {})
+>;
+export const ListPostsStatusEnumList = /*@__PURE__*/ S.Array(
+  ListPostsStatusEnum,
+) as any as S.Schema<ListPostsStatusEnumList>;
 
-export type ListPostsOrderByEnum = "ORDER_BY_UNSPECIFIED" | "PUBLISHED" | "UPDATED";
+export type ListPostsOrderByEnum =
+  | "ORDER_BY_UNSPECIFIED"
+  | "PUBLISHED"
+  | "UPDATED";
 export const ListPostsOrderByEnum = /*@__PURE__*/ S.String;
 
-export type ListPostsViewEnum = "VIEW_TYPE_UNSPECIFIED" | "READER" | "AUTHOR" | "ADMIN";
+export type ListPostsViewEnum =
+  | "VIEW_TYPE_UNSPECIFIED"
+  | "READER"
+  | "AUTHOR"
+  | "ADMIN";
 export const ListPostsViewEnum = /*@__PURE__*/ S.String;
 
-export type ListPostsSortOptionEnum = "SORT_OPTION_UNSPECIFIED" | "DESCENDING" | "ASCENDING";
+export type ListPostsSortOptionEnum =
+  | "SORT_OPTION_UNSPECIFIED"
+  | "DESCENDING"
+  | "ASCENDING";
 export const ListPostsSortOptionEnum = /*@__PURE__*/ S.String;
 
 export interface ListPostsRequest {
@@ -1167,21 +1455,29 @@ export interface ListPostsRequest {
   sortOption?: ListPostsSortOptionEnum | (string & {});
 }
 export const ListPostsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "blogId": S.String.pipe(T.Label()),
-  "endDate": S.optional(S.String.pipe(T.Query())),
-  "status": S.optional(ListPostsStatusEnumList.pipe(T.Query())),
-  "fetchBodies": S.optional(S.Boolean.pipe(T.Query())),
-  "orderBy": S.optional(ListPostsOrderByEnum.pipe(T.Query())),
-  "startDate": S.optional(S.String.pipe(T.Query())),
-  "view": S.optional(ListPostsViewEnum.pipe(T.Query())),
-  "fetchImages": S.optional(S.Boolean.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "labels": S.optional(S.String.pipe(T.Query())),
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-  "sortOption": S.optional(ListPostsSortOptionEnum.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v3/blogs/{blogId}/posts","baseUrl":"https://blogger.googleapis.com/"})),
-).annotate({ identifier: "ListPostsRequest" }) as any as S.Schema<ListPostsRequest>;
+  S.Struct({
+    blogId: S.String.pipe(T.Label()),
+    endDate: S.optional(S.String.pipe(T.Query())),
+    status: S.optional(ListPostsStatusEnumList.pipe(T.Query())),
+    fetchBodies: S.optional(S.Boolean.pipe(T.Query())),
+    orderBy: S.optional(ListPostsOrderByEnum.pipe(T.Query())),
+    startDate: S.optional(S.String.pipe(T.Query())),
+    view: S.optional(ListPostsViewEnum.pipe(T.Query())),
+    fetchImages: S.optional(S.Boolean.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    labels: S.optional(S.String.pipe(T.Query())),
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+    sortOption: S.optional(ListPostsSortOptionEnum.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v3/blogs/{blogId}/posts",
+      baseUrl: "https://blogger.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListPostsRequest",
+}) as any as S.Schema<ListPostsRequest>;
 
 export interface PostList {
   /** Pagination token to fetch the next page, if one exists. */
@@ -1196,26 +1492,41 @@ export interface PostList {
   kind?: string;
 }
 export const PostList = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "items": PostList_,
-  "prevPageToken": S.optional(S.String),
-  "etag": S.optional(S.String),
-  "kind": S.optional(S.String),
-}),
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    items: PostList_,
+    prevPageToken: S.optional(S.String),
+    etag: S.optional(S.String),
+    kind: S.optional(S.String),
+  }),
 ).annotate({ identifier: "PostList" }) as any as S.Schema<PostList>;
 
-export type ListPostUserInfosOrderByEnum = "ORDER_BY_UNSPECIFIED" | "PUBLISHED" | "UPDATED";
+export type ListPostUserInfosOrderByEnum =
+  | "ORDER_BY_UNSPECIFIED"
+  | "PUBLISHED"
+  | "UPDATED";
 export const ListPostUserInfosOrderByEnum = /*@__PURE__*/ S.String;
 
-export type ListPostUserInfosViewEnum = "VIEW_TYPE_UNSPECIFIED" | "READER" | "AUTHOR" | "ADMIN";
+export type ListPostUserInfosViewEnum =
+  | "VIEW_TYPE_UNSPECIFIED"
+  | "READER"
+  | "AUTHOR"
+  | "ADMIN";
 export const ListPostUserInfosViewEnum = /*@__PURE__*/ S.String;
 
-export type ListPostUserInfosStatusEnum = "LIVE" | "DRAFT" | "SCHEDULED" | "SOFT_TRASHED";
+export type ListPostUserInfosStatusEnum =
+  | "LIVE"
+  | "DRAFT"
+  | "SCHEDULED"
+  | "SOFT_TRASHED";
 export const ListPostUserInfosStatusEnum = /*@__PURE__*/ S.String;
 
-export type ListPostUserInfosStatusEnumList = ReadonlyArray<ListPostUserInfosStatusEnum | (string & {})>;
-export const ListPostUserInfosStatusEnumList = /*@__PURE__*/ S.Array(ListPostUserInfosStatusEnum) as any as S.Schema<ListPostUserInfosStatusEnumList>;
+export type ListPostUserInfosStatusEnumList = ReadonlyArray<
+  ListPostUserInfosStatusEnum | (string & {})
+>;
+export const ListPostUserInfosStatusEnumList = /*@__PURE__*/ S.Array(
+  ListPostUserInfosStatusEnum,
+) as any as S.Schema<ListPostUserInfosStatusEnumList>;
 
 export interface ListPostUserInfosRequest {
   labels?: string;
@@ -1231,23 +1542,33 @@ export interface ListPostUserInfosRequest {
   status?: ListPostUserInfosStatusEnumList;
 }
 export const ListPostUserInfosRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "labels": S.optional(S.String.pipe(T.Query())),
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(ListPostUserInfosOrderByEnum.pipe(T.Query())),
-  "startDate": S.optional(S.String.pipe(T.Query())),
-  "view": S.optional(ListPostUserInfosViewEnum.pipe(T.Query())),
-  "userId": S.String.pipe(T.Label()),
-  "endDate": S.optional(S.String.pipe(T.Query())),
-  "blogId": S.String.pipe(T.Label()),
-  "fetchBodies": S.optional(S.Boolean.pipe(T.Query())),
-  "status": S.optional(ListPostUserInfosStatusEnumList.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v3/users/{userId}/blogs/{blogId}/posts","baseUrl":"https://blogger.googleapis.com/"})),
-).annotate({ identifier: "ListPostUserInfosRequest" }) as any as S.Schema<ListPostUserInfosRequest>;
+  S.Struct({
+    labels: S.optional(S.String.pipe(T.Query())),
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    orderBy: S.optional(ListPostUserInfosOrderByEnum.pipe(T.Query())),
+    startDate: S.optional(S.String.pipe(T.Query())),
+    view: S.optional(ListPostUserInfosViewEnum.pipe(T.Query())),
+    userId: S.String.pipe(T.Label()),
+    endDate: S.optional(S.String.pipe(T.Query())),
+    blogId: S.String.pipe(T.Label()),
+    fetchBodies: S.optional(S.Boolean.pipe(T.Query())),
+    status: S.optional(ListPostUserInfosStatusEnumList.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v3/users/{userId}/blogs/{blogId}/posts",
+      baseUrl: "https://blogger.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListPostUserInfosRequest",
+}) as any as S.Schema<ListPostUserInfosRequest>;
 
 export type PostUserInfoList = ReadonlyArray<PostUserInfo>;
-export const PostUserInfoList = /*@__PURE__*/ S.Array(PostUserInfo) as any as S.Schema<PostUserInfoList>;
+export const PostUserInfoList = /*@__PURE__*/ S.Array(
+  PostUserInfo,
+) as any as S.Schema<PostUserInfoList>;
 
 export interface PostUserInfosList {
   /** Pagination token to fetch the next page, if one exists. */
@@ -1258,12 +1579,14 @@ export interface PostUserInfosList {
   kind?: string;
 }
 export const PostUserInfosList = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "items": PostUserInfoList,
-  "kind": S.optional(S.String),
-}),
-).annotate({ identifier: "PostUserInfosList" }) as any as S.Schema<PostUserInfosList>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    items: PostUserInfoList,
+    kind: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PostUserInfosList",
+}) as any as S.Schema<PostUserInfosList>;
 
 export interface MarkAsSpamCommentsRequest {
   blogId: string;
@@ -1271,12 +1594,20 @@ export interface MarkAsSpamCommentsRequest {
   postId: string;
 }
 export const MarkAsSpamCommentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "blogId": S.String.pipe(T.Label()),
-  "commentId": S.String.pipe(T.Label()),
-  "postId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"POST","uri":"v3/blogs/{blogId}/posts/{postId}/comments/{commentId}/spam","baseUrl":"https://blogger.googleapis.com/"})),
-).annotate({ identifier: "MarkAsSpamCommentsRequest" }) as any as S.Schema<MarkAsSpamCommentsRequest>;
+  S.Struct({
+    blogId: S.String.pipe(T.Label()),
+    commentId: S.String.pipe(T.Label()),
+    postId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v3/blogs/{blogId}/posts/{postId}/comments/{commentId}/spam",
+      baseUrl: "https://blogger.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "MarkAsSpamCommentsRequest",
+}) as any as S.Schema<MarkAsSpamCommentsRequest>;
 
 export interface PatchPagesRequest {
   blogId: string;
@@ -1287,14 +1618,22 @@ export interface PatchPagesRequest {
   body?: Page;
 }
 export const PatchPagesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "blogId": S.String.pipe(T.Label()),
-  "publish": S.optional(S.Boolean.pipe(T.Query())),
-  "pageId": S.String.pipe(T.Label()),
-  "revert": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(Page.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v3/blogs/{blogId}/pages/{pageId}","baseUrl":"https://blogger.googleapis.com/"})),
-).annotate({ identifier: "PatchPagesRequest" }) as any as S.Schema<PatchPagesRequest>;
+  S.Struct({
+    blogId: S.String.pipe(T.Label()),
+    publish: S.optional(S.Boolean.pipe(T.Query())),
+    pageId: S.String.pipe(T.Label()),
+    revert: S.optional(S.Boolean.pipe(T.Query())),
+    body: S.optional(Page.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v3/blogs/{blogId}/pages/{pageId}",
+      baseUrl: "https://blogger.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchPagesRequest",
+}) as any as S.Schema<PatchPagesRequest>;
 
 export interface PatchPostsRequest {
   fetchBody?: boolean;
@@ -1308,28 +1647,44 @@ export interface PatchPostsRequest {
   body?: Post;
 }
 export const PatchPostsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fetchBody": S.optional(S.Boolean.pipe(T.Query())),
-  "revert": S.optional(S.Boolean.pipe(T.Query())),
-  "blogId": S.String.pipe(T.Label()),
-  "fetchImages": S.optional(S.Boolean.pipe(T.Query())),
-  "postId": S.String.pipe(T.Label()),
-  "publish": S.optional(S.Boolean.pipe(T.Query())),
-  "maxComments": S.optional(S.Number.pipe(T.Query())),
-  "body": S.optional(Post.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v3/blogs/{blogId}/posts/{postId}","baseUrl":"https://blogger.googleapis.com/"})),
-).annotate({ identifier: "PatchPostsRequest" }) as any as S.Schema<PatchPostsRequest>;
+  S.Struct({
+    fetchBody: S.optional(S.Boolean.pipe(T.Query())),
+    revert: S.optional(S.Boolean.pipe(T.Query())),
+    blogId: S.String.pipe(T.Label()),
+    fetchImages: S.optional(S.Boolean.pipe(T.Query())),
+    postId: S.String.pipe(T.Label()),
+    publish: S.optional(S.Boolean.pipe(T.Query())),
+    maxComments: S.optional(S.Number.pipe(T.Query())),
+    body: S.optional(Post.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v3/blogs/{blogId}/posts/{postId}",
+      baseUrl: "https://blogger.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchPostsRequest",
+}) as any as S.Schema<PatchPostsRequest>;
 
 export interface PublishPagesRequest {
   blogId: string;
   pageId: string;
 }
 export const PublishPagesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "blogId": S.String.pipe(T.Label()),
-  "pageId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"POST","uri":"v3/blogs/{blogId}/pages/{pageId}/publish","baseUrl":"https://blogger.googleapis.com/"})),
-).annotate({ identifier: "PublishPagesRequest" }) as any as S.Schema<PublishPagesRequest>;
+  S.Struct({
+    blogId: S.String.pipe(T.Label()),
+    pageId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v3/blogs/{blogId}/pages/{pageId}/publish",
+      baseUrl: "https://blogger.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PublishPagesRequest",
+}) as any as S.Schema<PublishPagesRequest>;
 
 export interface PublishPostsRequest {
   blogId: string;
@@ -1337,12 +1692,20 @@ export interface PublishPostsRequest {
   publishDate?: string;
 }
 export const PublishPostsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "blogId": S.String.pipe(T.Label()),
-  "postId": S.String.pipe(T.Label()),
-  "publishDate": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"POST","uri":"v3/blogs/{blogId}/posts/{postId}/publish","baseUrl":"https://blogger.googleapis.com/"})),
-).annotate({ identifier: "PublishPostsRequest" }) as any as S.Schema<PublishPostsRequest>;
+  S.Struct({
+    blogId: S.String.pipe(T.Label()),
+    postId: S.String.pipe(T.Label()),
+    publishDate: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v3/blogs/{blogId}/posts/{postId}/publish",
+      baseUrl: "https://blogger.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PublishPostsRequest",
+}) as any as S.Schema<PublishPostsRequest>;
 
 export interface RemoveContentCommentsRequest {
   blogId: string;
@@ -1350,36 +1713,63 @@ export interface RemoveContentCommentsRequest {
   postId: string;
 }
 export const RemoveContentCommentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "blogId": S.String.pipe(T.Label()),
-  "commentId": S.String.pipe(T.Label()),
-  "postId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"POST","uri":"v3/blogs/{blogId}/posts/{postId}/comments/{commentId}/removecontent","baseUrl":"https://blogger.googleapis.com/"})),
-).annotate({ identifier: "RemoveContentCommentsRequest" }) as any as S.Schema<RemoveContentCommentsRequest>;
+  S.Struct({
+    blogId: S.String.pipe(T.Label()),
+    commentId: S.String.pipe(T.Label()),
+    postId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v3/blogs/{blogId}/posts/{postId}/comments/{commentId}/removecontent",
+      baseUrl: "https://blogger.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "RemoveContentCommentsRequest",
+}) as any as S.Schema<RemoveContentCommentsRequest>;
 
 export interface RevertPagesRequest {
   blogId: string;
   pageId: string;
 }
 export const RevertPagesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "blogId": S.String.pipe(T.Label()),
-  "pageId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"POST","uri":"v3/blogs/{blogId}/pages/{pageId}/revert","baseUrl":"https://blogger.googleapis.com/"})),
-).annotate({ identifier: "RevertPagesRequest" }) as any as S.Schema<RevertPagesRequest>;
+  S.Struct({
+    blogId: S.String.pipe(T.Label()),
+    pageId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v3/blogs/{blogId}/pages/{pageId}/revert",
+      baseUrl: "https://blogger.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "RevertPagesRequest",
+}) as any as S.Schema<RevertPagesRequest>;
 
 export interface RevertPostsRequest {
   blogId: string;
   postId: string;
 }
 export const RevertPostsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "blogId": S.String.pipe(T.Label()),
-  "postId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"POST","uri":"v3/blogs/{blogId}/posts/{postId}/revert","baseUrl":"https://blogger.googleapis.com/"})),
-).annotate({ identifier: "RevertPostsRequest" }) as any as S.Schema<RevertPostsRequest>;
+  S.Struct({
+    blogId: S.String.pipe(T.Label()),
+    postId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v3/blogs/{blogId}/posts/{postId}/revert",
+      baseUrl: "https://blogger.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "RevertPostsRequest",
+}) as any as S.Schema<RevertPostsRequest>;
 
-export type SearchPostsOrderByEnum = "ORDER_BY_UNSPECIFIED" | "PUBLISHED" | "UPDATED";
+export type SearchPostsOrderByEnum =
+  | "ORDER_BY_UNSPECIFIED"
+  | "PUBLISHED"
+  | "UPDATED";
 export const SearchPostsOrderByEnum = /*@__PURE__*/ S.String;
 
 export interface SearchPostsRequest {
@@ -1389,13 +1779,21 @@ export interface SearchPostsRequest {
   blogId: string;
 }
 export const SearchPostsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fetchBodies": S.optional(S.Boolean.pipe(T.Query())),
-  "q": S.String.pipe(T.Query()),
-  "orderBy": S.optional(SearchPostsOrderByEnum.pipe(T.Query())),
-  "blogId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v3/blogs/{blogId}/posts/search","baseUrl":"https://blogger.googleapis.com/"})),
-).annotate({ identifier: "SearchPostsRequest" }) as any as S.Schema<SearchPostsRequest>;
+  S.Struct({
+    fetchBodies: S.optional(S.Boolean.pipe(T.Query())),
+    q: S.String.pipe(T.Query()),
+    orderBy: S.optional(SearchPostsOrderByEnum.pipe(T.Query())),
+    blogId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v3/blogs/{blogId}/posts/search",
+      baseUrl: "https://blogger.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SearchPostsRequest",
+}) as any as S.Schema<SearchPostsRequest>;
 
 export interface UpdatePagesRequest {
   blogId: string;
@@ -1406,14 +1804,22 @@ export interface UpdatePagesRequest {
   body?: Page;
 }
 export const UpdatePagesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "blogId": S.String.pipe(T.Label()),
-  "publish": S.optional(S.Boolean.pipe(T.Query())),
-  "pageId": S.String.pipe(T.Label()),
-  "revert": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(Page.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"v3/blogs/{blogId}/pages/{pageId}","baseUrl":"https://blogger.googleapis.com/"})),
-).annotate({ identifier: "UpdatePagesRequest" }) as any as S.Schema<UpdatePagesRequest>;
+  S.Struct({
+    blogId: S.String.pipe(T.Label()),
+    publish: S.optional(S.Boolean.pipe(T.Query())),
+    pageId: S.String.pipe(T.Label()),
+    revert: S.optional(S.Boolean.pipe(T.Query())),
+    body: S.optional(Page.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "v3/blogs/{blogId}/pages/{pageId}",
+      baseUrl: "https://blogger.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdatePagesRequest",
+}) as any as S.Schema<UpdatePagesRequest>;
 
 export interface UpdatePostsRequest {
   postId: string;
@@ -1427,19 +1833,32 @@ export interface UpdatePostsRequest {
   body?: Post;
 }
 export const UpdatePostsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "postId": S.String.pipe(T.Label()),
-  "publish": S.optional(S.Boolean.pipe(T.Query())),
-  "maxComments": S.optional(S.Number.pipe(T.Query())),
-  "fetchBody": S.optional(S.Boolean.pipe(T.Query())),
-  "revert": S.optional(S.Boolean.pipe(T.Query())),
-  "blogId": S.String.pipe(T.Label()),
-  "fetchImages": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(Post.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"v3/blogs/{blogId}/posts/{postId}","baseUrl":"https://blogger.googleapis.com/"})),
-).annotate({ identifier: "UpdatePostsRequest" }) as any as S.Schema<UpdatePostsRequest>;
+  S.Struct({
+    postId: S.String.pipe(T.Label()),
+    publish: S.optional(S.Boolean.pipe(T.Query())),
+    maxComments: S.optional(S.Number.pipe(T.Query())),
+    fetchBody: S.optional(S.Boolean.pipe(T.Query())),
+    revert: S.optional(S.Boolean.pipe(T.Query())),
+    blogId: S.String.pipe(T.Label()),
+    fetchImages: S.optional(S.Boolean.pipe(T.Query())),
+    body: S.optional(Post.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "v3/blogs/{blogId}/posts/{postId}",
+      baseUrl: "https://blogger.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdatePostsRequest",
+}) as any as S.Schema<UpdatePostsRequest>;
 
-export type ApproveCommentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ApproveCommentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Marks a comment as not spam by blog id, post id and comment id. */
 export const approveComments: API.OperationMethod<
   ApproveCommentsRequest,
@@ -1454,7 +1873,12 @@ export const approveComments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteCommentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteCommentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a comment by blog id, post id and comment id. */
 export const deleteComments: API.OperationMethod<
   DeleteCommentsRequest,
@@ -1469,7 +1893,12 @@ export const deleteComments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeletePagesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeletePagesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a page by blog id and page id. */
 export const deletePages: API.OperationMethod<
   DeletePagesRequest,
@@ -1484,7 +1913,12 @@ export const deletePages: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeletePostsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeletePostsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a post by blog id and post id. */
 export const deletePosts: API.OperationMethod<
   DeletePostsRequest,
@@ -1649,7 +2083,12 @@ export const getUsers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertPagesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type InsertPagesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Inserts a page. */
 export const insertPages: API.OperationMethod<
   InsertPagesRequest,
@@ -1664,7 +2103,12 @@ export const insertPages: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertPostsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type InsertPostsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Inserts a post. */
 export const insertPosts: API.OperationMethod<
   InsertPostsRequest,
@@ -1692,7 +2136,11 @@ export const listByBlogComments: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken","items":"items"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+    items: "items",
+  } as const,
 }));
 
 export type ListByUserBlogsError = NotFound | Forbidden | GcpOpError;
@@ -1723,7 +2171,11 @@ export const listComments: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken","items":"items"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+    items: "items",
+  } as const,
 }));
 
 export type ListPagesError = NotFound | Forbidden | GcpOpError;
@@ -1739,7 +2191,11 @@ export const listPages: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken","items":"items"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+    items: "items",
+  } as const,
 }));
 
 export type ListPostsError = NotFound | Forbidden | GcpOpError;
@@ -1755,7 +2211,11 @@ export const listPosts: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken","items":"items"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+    items: "items",
+  } as const,
 }));
 
 export type ListPostUserInfosError = NotFound | Forbidden | GcpOpError;
@@ -1771,10 +2231,19 @@ export const listPostUserInfos: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken","items":"items"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+    items: "items",
+  } as const,
 }));
 
-export type MarkAsSpamCommentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type MarkAsSpamCommentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Marks a comment as spam by blog id, post id and comment id. */
 export const markAsSpamComments: API.OperationMethod<
   MarkAsSpamCommentsRequest,
@@ -1789,7 +2258,12 @@ export const markAsSpamComments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchPagesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchPagesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Patches a page. */
 export const patchPages: API.OperationMethod<
   PatchPagesRequest,
@@ -1804,7 +2278,12 @@ export const patchPages: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchPostsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchPostsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Patches a post. */
 export const patchPosts: API.OperationMethod<
   PatchPostsRequest,
@@ -1819,7 +2298,12 @@ export const patchPosts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PublishPagesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PublishPagesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Publishes a page. */
 export const publishPages: API.OperationMethod<
   PublishPagesRequest,
@@ -1834,7 +2318,12 @@ export const publishPages: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PublishPostsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PublishPostsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Publishes a post. */
 export const publishPosts: API.OperationMethod<
   PublishPostsRequest,
@@ -1849,7 +2338,12 @@ export const publishPosts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RemoveContentCommentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RemoveContentCommentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Removes the content of a comment by blog id, post id and comment id. */
 export const removeContentComments: API.OperationMethod<
   RemoveContentCommentsRequest,
@@ -1864,7 +2358,12 @@ export const removeContentComments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RevertPagesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RevertPagesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Reverts a published or scheduled page to draft state. */
 export const revertPages: API.OperationMethod<
   RevertPagesRequest,
@@ -1879,7 +2378,12 @@ export const revertPages: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RevertPostsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RevertPostsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Reverts a published or scheduled post to draft state. */
 export const revertPosts: API.OperationMethod<
   RevertPostsRequest,
@@ -1909,7 +2413,12 @@ export const searchPosts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdatePagesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdatePagesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a page by blog id and page id. */
 export const updatePages: API.OperationMethod<
   UpdatePagesRequest,
@@ -1924,7 +2433,12 @@ export const updatePages: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdatePostsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdatePostsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a post by blog id and post id. */
 export const updatePosts: API.OperationMethod<
   UpdatePostsRequest,
@@ -1938,4 +2452,3 @@ export const updatePosts: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

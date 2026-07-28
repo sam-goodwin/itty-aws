@@ -13,73 +13,104 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://tpu.googleapis.com/"})),
-).annotate({ identifier: "CancelProjectsLocationsOperationsRequest" }) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:cancel",
+        baseUrl: "https://tpu.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CancelProjectsLocationsOperationsRequest",
+}) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
-export type NodeHealthEnum = "HEALTH_UNSPECIFIED" | "HEALTHY" | "DEPRECATED_UNHEALTHY" | "TIMEOUT" | "UNHEALTHY_TENSORFLOW" | "UNHEALTHY_MAINTENANCE";
+export type NodeHealthEnum =
+  | "HEALTH_UNSPECIFIED"
+  | "HEALTHY"
+  | "DEPRECATED_UNHEALTHY"
+  | "TIMEOUT"
+  | "UNHEALTHY_TENSORFLOW"
+  | "UNHEALTHY_MAINTENANCE";
 export const NodeHealthEnum = /*@__PURE__*/ S.String;
 
-export type NodeStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "READY" | "RESTARTING" | "REIMAGING" | "DELETING" | "REPAIRING" | "STOPPED" | "STOPPING" | "STARTING" | "PREEMPTED" | "TERMINATED" | "HIDING" | "HIDDEN" | "UNHIDING" | "UNKNOWN";
+export type NodeStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "CREATING"
+  | "READY"
+  | "RESTARTING"
+  | "REIMAGING"
+  | "DELETING"
+  | "REPAIRING"
+  | "STOPPED"
+  | "STOPPING"
+  | "STARTING"
+  | "PREEMPTED"
+  | "TERMINATED"
+  | "HIDING"
+  | "HIDDEN"
+  | "UNHIDING"
+  | "UNKNOWN";
 export const NodeStateEnum = /*@__PURE__*/ S.String;
 
 /** A network endpoint over which a TPU worker can be reached. */
@@ -90,20 +121,31 @@ export interface NetworkEndpoint {
   port?: number;
 }
 export const NetworkEndpoint = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "ipAddress": S.optional(S.String),
-  "port": S.optional(S.Number),
-}),
-).annotate({ identifier: "NetworkEndpoint" }) as any as S.Schema<NetworkEndpoint>;
+  S.Struct({
+    ipAddress: S.optional(S.String),
+    port: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "NetworkEndpoint",
+}) as any as S.Schema<NetworkEndpoint>;
 
 export type NetworkEndpointList = ReadonlyArray<NetworkEndpoint>;
-export const NetworkEndpointList = /*@__PURE__*/ S.Array(NetworkEndpoint) as any as S.Schema<NetworkEndpointList>;
+export const NetworkEndpointList = /*@__PURE__*/ S.Array(
+  NetworkEndpoint,
+) as any as S.Schema<NetworkEndpointList>;
 
-export type NodeApiVersionEnum = "API_VERSION_UNSPECIFIED" | "V1_ALPHA1" | "V1" | "V2_ALPHA1";
+export type NodeApiVersionEnum =
+  | "API_VERSION_UNSPECIFIED"
+  | "V1_ALPHA1"
+  | "V1"
+  | "V2_ALPHA1";
 export const NodeApiVersionEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
 /** Sets the scheduling options for this node. */
 export interface SchedulingConfig {
@@ -113,13 +155,22 @@ export interface SchedulingConfig {
   reserved?: boolean;
 }
 export const SchedulingConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "preemptible": S.optional(S.Boolean),
-  "reserved": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "SchedulingConfig" }) as any as S.Schema<SchedulingConfig>;
+  S.Struct({
+    preemptible: S.optional(S.Boolean),
+    reserved: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "SchedulingConfig",
+}) as any as S.Schema<SchedulingConfig>;
 
-export type SymptomSymptomTypeEnum = "SYMPTOM_TYPE_UNSPECIFIED" | "LOW_MEMORY" | "OUT_OF_MEMORY" | "EXECUTE_TIMED_OUT" | "MESH_BUILD_FAIL" | "HBM_OUT_OF_MEMORY" | "PROJECT_ABUSE";
+export type SymptomSymptomTypeEnum =
+  | "SYMPTOM_TYPE_UNSPECIFIED"
+  | "LOW_MEMORY"
+  | "OUT_OF_MEMORY"
+  | "EXECUTE_TIMED_OUT"
+  | "MESH_BUILD_FAIL"
+  | "HBM_OUT_OF_MEMORY"
+  | "PROJECT_ABUSE";
 export const SymptomSymptomTypeEnum = /*@__PURE__*/ S.String;
 
 /** A Symptom instance. */
@@ -134,16 +185,18 @@ export interface Symptom {
   details?: string;
 }
 export const Symptom = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "createTime": S.optional(S.String),
-  "workerId": S.optional(S.String),
-  "symptomType": S.optional(SymptomSymptomTypeEnum),
-  "details": S.optional(S.String),
-}),
+  S.Struct({
+    createTime: S.optional(S.String),
+    workerId: S.optional(S.String),
+    symptomType: S.optional(SymptomSymptomTypeEnum),
+    details: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Symptom" }) as any as S.Schema<Symptom>;
 
 export type SymptomList = ReadonlyArray<Symptom>;
-export const SymptomList = /*@__PURE__*/ S.Array(Symptom) as any as S.Schema<SymptomList>;
+export const SymptomList = /*@__PURE__*/ S.Array(
+  Symptom,
+) as any as S.Schema<SymptomList>;
 
 /** A TPU instance. */
 export interface Node {
@@ -187,27 +240,27 @@ export interface Node {
   symptoms?: SymptomList;
 }
 export const Node = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "description": S.optional(S.String),
-  "health": S.optional(NodeHealthEnum),
-  "state": S.optional(NodeStateEnum),
-  "createTime": S.optional(S.String),
-  "networkEndpoints": S.optional(NetworkEndpointList),
-  "healthDescription": S.optional(S.String),
-  "tensorflowVersion": S.optional(S.String),
-  "serviceAccount": S.optional(S.String),
-  "ipAddress": S.optional(S.String),
-  "apiVersion": S.optional(NodeApiVersionEnum),
-  "labels": S.optional(StringMap),
-  "acceleratorType": S.optional(S.String),
-  "cidrBlock": S.optional(S.String),
-  "useServiceNetworking": S.optional(S.Boolean),
-  "port": S.optional(S.String),
-  "network": S.optional(S.String),
-  "schedulingConfig": S.optional(SchedulingConfig),
-  "symptoms": S.optional(SymptomList),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    description: S.optional(S.String),
+    health: S.optional(NodeHealthEnum),
+    state: S.optional(NodeStateEnum),
+    createTime: S.optional(S.String),
+    networkEndpoints: S.optional(NetworkEndpointList),
+    healthDescription: S.optional(S.String),
+    tensorflowVersion: S.optional(S.String),
+    serviceAccount: S.optional(S.String),
+    ipAddress: S.optional(S.String),
+    apiVersion: S.optional(NodeApiVersionEnum),
+    labels: S.optional(StringMap),
+    acceleratorType: S.optional(S.String),
+    cidrBlock: S.optional(S.String),
+    useServiceNetworking: S.optional(S.Boolean),
+    port: S.optional(S.String),
+    network: S.optional(S.String),
+    schedulingConfig: S.optional(SchedulingConfig),
+    symptoms: S.optional(SymptomList),
+  }),
 ).annotate({ identifier: "Node" }) as any as S.Schema<Node>;
 
 export interface CreateProjectsLocationsNodesRequest {
@@ -219,18 +272,31 @@ export interface CreateProjectsLocationsNodesRequest {
   body?: Node;
 }
 export const CreateProjectsLocationsNodesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "nodeId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Node.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/nodes","baseUrl":"https://tpu.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsNodesRequest" }) as any as S.Schema<CreateProjectsLocationsNodesRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    nodeId: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(Node.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/nodes",
+      baseUrl: "https://tpu.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateProjectsLocationsNodesRequest",
+}) as any as S.Schema<CreateProjectsLocationsNodesRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -242,11 +308,11 @@ export interface Status {
   details?: DocumentMapList;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(S.Number),
-  "message": S.optional(S.String),
-  "details": S.optional(DocumentMapList),
-}),
+  S.Struct({
+    code: S.optional(S.Number),
+    message: S.optional(S.String),
+    details: S.optional(DocumentMapList),
+  }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -263,13 +329,13 @@ export interface Operation {
   done?: boolean;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "response": S.optional(DocumentMap),
-  "name": S.optional(S.String),
-  "error": S.optional(Status),
-  "metadata": S.optional(DocumentMap),
-  "done": S.optional(S.Boolean),
-}),
+  S.Struct({
+    response: S.optional(DocumentMap),
+    name: S.optional(S.String),
+    error: S.optional(Status),
+    metadata: S.optional(DocumentMap),
+    done: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 export interface DeleteProjectsLocationsNodesRequest {
@@ -277,30 +343,55 @@ export interface DeleteProjectsLocationsNodesRequest {
   name: string;
 }
 export const DeleteProjectsLocationsNodesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://tpu.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsNodesRequest" }) as any as S.Schema<DeleteProjectsLocationsNodesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://tpu.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteProjectsLocationsNodesRequest",
+}) as any as S.Schema<DeleteProjectsLocationsNodesRequest>;
 
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://tpu.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsOperationsRequest" }) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://tpu.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsOperationsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
 
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://tpu.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://tpu.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsRequest",
+}) as any as S.Schema<GetProjectsLocationsRequest>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -316,24 +407,33 @@ export interface Location {
   displayName?: string;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "metadata": S.optional(DocumentMap),
-  "name": S.optional(S.String),
-  "locationId": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "displayName": S.optional(S.String),
-}),
+  S.Struct({
+    metadata: S.optional(DocumentMap),
+    name: S.optional(S.String),
+    locationId: S.optional(S.String),
+    labels: S.optional(StringMap),
+    displayName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export interface GetProjectsLocationsAcceleratorTypesRequest {
   /** Required. The resource name. */
   name: string;
 }
-export const GetProjectsLocationsAcceleratorTypesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://tpu.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsAcceleratorTypesRequest" }) as any as S.Schema<GetProjectsLocationsAcceleratorTypesRequest>;
+export const GetProjectsLocationsAcceleratorTypesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://tpu.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsAcceleratorTypesRequest",
+  }) as any as S.Schema<GetProjectsLocationsAcceleratorTypesRequest>;
 
 /** A accelerator type that a Node can be configured with. */
 export interface AcceleratorType {
@@ -343,41 +443,69 @@ export interface AcceleratorType {
   type?: string;
 }
 export const AcceleratorType = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "type": S.optional(S.String),
-}),
-).annotate({ identifier: "AcceleratorType" }) as any as S.Schema<AcceleratorType>;
+  S.Struct({
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AcceleratorType",
+}) as any as S.Schema<AcceleratorType>;
 
 export interface GetProjectsLocationsNodesRequest {
   /** Required. The resource name. */
   name: string;
 }
 export const GetProjectsLocationsNodesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://tpu.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsNodesRequest" }) as any as S.Schema<GetProjectsLocationsNodesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://tpu.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsNodesRequest",
+}) as any as S.Schema<GetProjectsLocationsNodesRequest>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://tpu.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://tpu.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsOperationsRequest",
+}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export interface GetProjectsLocationsTensorflowVersionsRequest {
   /** Required. The resource name. */
   name: string;
 }
-export const GetProjectsLocationsTensorflowVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://tpu.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsTensorflowVersionsRequest" }) as any as S.Schema<GetProjectsLocationsTensorflowVersionsRequest>;
+export const GetProjectsLocationsTensorflowVersionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://tpu.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsTensorflowVersionsRequest",
+  }) as any as S.Schema<GetProjectsLocationsTensorflowVersionsRequest>;
 
 /** A tensorflow version that a Node can be configured with. */
 export interface TensorFlowVersion {
@@ -387,14 +515,18 @@ export interface TensorFlowVersion {
   version?: string;
 }
 export const TensorFlowVersion = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "version": S.optional(S.String),
-}),
-).annotate({ identifier: "TensorFlowVersion" }) as any as S.Schema<TensorFlowVersion>;
+  S.Struct({
+    name: S.optional(S.String),
+    version: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "TensorFlowVersion",
+}) as any as S.Schema<TensorFlowVersion>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 export interface ListProjectsLocationsRequest {
   /** The resource that owns the locations collection, if applicable. */
@@ -409,17 +541,27 @@ export interface ListProjectsLocationsRequest {
   pageSize?: number;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/locations","baseUrl":"https://tpu.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    filter: S.optional(S.String.pipe(T.Query())),
+    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}/locations",
+      baseUrl: "https://tpu.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsRequest",
+}) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(
+  Location,
+) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -429,11 +571,13 @@ export interface ListLocationsResponse {
   locations?: LocationList;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "locations": S.optional(LocationList),
-}),
-).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    locations: S.optional(LocationList),
+  }),
+).annotate({
+  identifier: "ListLocationsResponse",
+}) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsLocationsAcceleratorTypesRequest {
   /** The next_page_token value returned from a previous List request, if any. */
@@ -447,18 +591,29 @@ export interface ListProjectsLocationsAcceleratorTypesRequest {
   /** List filter. */
   filter?: string;
 }
-export const ListProjectsLocationsAcceleratorTypesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/acceleratorTypes","baseUrl":"https://tpu.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsAcceleratorTypesRequest" }) as any as S.Schema<ListProjectsLocationsAcceleratorTypesRequest>;
+export const ListProjectsLocationsAcceleratorTypesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      filter: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/acceleratorTypes",
+        baseUrl: "https://tpu.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsAcceleratorTypesRequest",
+  }) as any as S.Schema<ListProjectsLocationsAcceleratorTypesRequest>;
 
 export type AcceleratorTypeList = ReadonlyArray<AcceleratorType>;
-export const AcceleratorTypeList = /*@__PURE__*/ S.Array(AcceleratorType) as any as S.Schema<AcceleratorTypeList>;
+export const AcceleratorTypeList = /*@__PURE__*/ S.Array(
+  AcceleratorType,
+) as any as S.Schema<AcceleratorTypeList>;
 
 /** Response for ListAcceleratorTypes. */
 export interface ListAcceleratorTypesResponse {
@@ -470,12 +625,14 @@ export interface ListAcceleratorTypesResponse {
   unreachable?: StringList;
 }
 export const ListAcceleratorTypesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "acceleratorTypes": S.optional(AcceleratorTypeList),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListAcceleratorTypesResponse" }) as any as S.Schema<ListAcceleratorTypesResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    acceleratorTypes: S.optional(AcceleratorTypeList),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListAcceleratorTypesResponse",
+}) as any as S.Schema<ListAcceleratorTypesResponse>;
 
 export interface ListProjectsLocationsNodesRequest {
   /** The next_page_token value returned from a previous List request, if any. */
@@ -486,15 +643,25 @@ export interface ListProjectsLocationsNodesRequest {
   pageSize?: number;
 }
 export const ListProjectsLocationsNodesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/nodes","baseUrl":"https://tpu.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsNodesRequest" }) as any as S.Schema<ListProjectsLocationsNodesRequest>;
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/nodes",
+      baseUrl: "https://tpu.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsNodesRequest",
+}) as any as S.Schema<ListProjectsLocationsNodesRequest>;
 
 export type NodeList = ReadonlyArray<Node>;
-export const NodeList = /*@__PURE__*/ S.Array(Node) as any as S.Schema<NodeList>;
+export const NodeList = /*@__PURE__*/ S.Array(
+  Node,
+) as any as S.Schema<NodeList>;
 
 /** Response for ListNodes. */
 export interface ListNodesResponse {
@@ -506,12 +673,14 @@ export interface ListNodesResponse {
   unreachable?: StringList;
 }
 export const ListNodesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "nodes": S.optional(NodeList),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListNodesResponse" }) as any as S.Schema<ListNodesResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    nodes: S.optional(NodeList),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListNodesResponse",
+}) as any as S.Schema<ListNodesResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page token. */
@@ -525,18 +694,29 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list filter. */
   filter?: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/operations","baseUrl":"https://tpu.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}/operations",
+        baseUrl: "https://tpu.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsOperationsRequest",
+}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(
+  Operation,
+) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -548,12 +728,14 @@ export interface ListOperationsResponse {
   unreachable?: StringList;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "operations": S.optional(OperationList),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    operations: S.optional(OperationList),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListOperationsResponse",
+}) as any as S.Schema<ListOperationsResponse>;
 
 export interface ListProjectsLocationsTensorflowVersionsRequest {
   /** The maximum number of items to return. */
@@ -567,18 +749,29 @@ export interface ListProjectsLocationsTensorflowVersionsRequest {
   /** List filter. */
   filter?: string;
 }
-export const ListProjectsLocationsTensorflowVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/tensorflowVersions","baseUrl":"https://tpu.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsTensorflowVersionsRequest" }) as any as S.Schema<ListProjectsLocationsTensorflowVersionsRequest>;
+export const ListProjectsLocationsTensorflowVersionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/tensorflowVersions",
+        baseUrl: "https://tpu.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsTensorflowVersionsRequest",
+  }) as any as S.Schema<ListProjectsLocationsTensorflowVersionsRequest>;
 
 export type TensorFlowVersionList = ReadonlyArray<TensorFlowVersion>;
-export const TensorFlowVersionList = /*@__PURE__*/ S.Array(TensorFlowVersion) as any as S.Schema<TensorFlowVersionList>;
+export const TensorFlowVersionList = /*@__PURE__*/ S.Array(
+  TensorFlowVersion,
+) as any as S.Schema<TensorFlowVersionList>;
 
 /** Response for ListTensorFlowVersions. */
 export interface ListTensorFlowVersionsResponse {
@@ -590,12 +783,14 @@ export interface ListTensorFlowVersionsResponse {
   nextPageToken?: string;
 }
 export const ListTensorFlowVersionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "unreachable": S.optional(StringList),
-  "tensorflowVersions": S.optional(TensorFlowVersionList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListTensorFlowVersionsResponse" }) as any as S.Schema<ListTensorFlowVersionsResponse>;
+  S.Struct({
+    unreachable: S.optional(StringList),
+    tensorflowVersions: S.optional(TensorFlowVersionList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListTensorFlowVersionsResponse",
+}) as any as S.Schema<ListTensorFlowVersionsResponse>;
 
 /** Request for ReimageNode. */
 export interface ReimageNodeRequest {
@@ -603,10 +798,12 @@ export interface ReimageNodeRequest {
   tensorflowVersion?: string;
 }
 export const ReimageNodeRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "tensorflowVersion": S.optional(S.String),
-}),
-).annotate({ identifier: "ReimageNodeRequest" }) as any as S.Schema<ReimageNodeRequest>;
+  S.Struct({
+    tensorflowVersion: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ReimageNodeRequest",
+}) as any as S.Schema<ReimageNodeRequest>;
 
 export interface ReimageProjectsLocationsNodesRequest {
   /** The resource name. */
@@ -614,18 +811,29 @@ export interface ReimageProjectsLocationsNodesRequest {
   /** Request body */
   body?: ReimageNodeRequest;
 }
-export const ReimageProjectsLocationsNodesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(ReimageNodeRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:reimage","baseUrl":"https://tpu.googleapis.com/"})),
-).annotate({ identifier: "ReimageProjectsLocationsNodesRequest" }) as any as S.Schema<ReimageProjectsLocationsNodesRequest>;
+export const ReimageProjectsLocationsNodesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(ReimageNodeRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:reimage",
+        baseUrl: "https://tpu.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ReimageProjectsLocationsNodesRequest",
+}) as any as S.Schema<ReimageProjectsLocationsNodesRequest>;
 
 /** Request for StartNode. */
 export interface StartNodeRequest {}
 export const StartNodeRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "StartNodeRequest" }) as any as S.Schema<StartNodeRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "StartNodeRequest",
+}) as any as S.Schema<StartNodeRequest>;
 
 export interface StartProjectsLocationsNodesRequest {
   /** The resource name. */
@@ -634,17 +842,27 @@ export interface StartProjectsLocationsNodesRequest {
   body?: StartNodeRequest;
 }
 export const StartProjectsLocationsNodesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(StartNodeRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:start","baseUrl":"https://tpu.googleapis.com/"})),
-).annotate({ identifier: "StartProjectsLocationsNodesRequest" }) as any as S.Schema<StartProjectsLocationsNodesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(StartNodeRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:start",
+      baseUrl: "https://tpu.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "StartProjectsLocationsNodesRequest",
+}) as any as S.Schema<StartProjectsLocationsNodesRequest>;
 
 /** Request for StopNode. */
 export interface StopNodeRequest {}
 export const StopNodeRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "StopNodeRequest" }) as any as S.Schema<StopNodeRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "StopNodeRequest",
+}) as any as S.Schema<StopNodeRequest>;
 
 export interface StopProjectsLocationsNodesRequest {
   /** The resource name. */
@@ -653,13 +871,26 @@ export interface StopProjectsLocationsNodesRequest {
   body?: StopNodeRequest;
 }
 export const StopProjectsLocationsNodesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(StopNodeRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:stop","baseUrl":"https://tpu.googleapis.com/"})),
-).annotate({ identifier: "StopProjectsLocationsNodesRequest" }) as any as S.Schema<StopProjectsLocationsNodesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(StopNodeRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:stop",
+      baseUrl: "https://tpu.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "StopProjectsLocationsNodesRequest",
+}) as any as S.Schema<StopProjectsLocationsNodesRequest>;
 
-export type CancelProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CancelProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsRequest,
@@ -674,7 +905,12 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsNodesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsNodesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a node. */
 export const createProjectsLocationsNodes: API.OperationMethod<
   CreateProjectsLocationsNodesRequest,
@@ -689,7 +925,12 @@ export const createProjectsLocationsNodes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsNodesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsNodesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a node. */
 export const deleteProjectsLocationsNodes: API.OperationMethod<
   DeleteProjectsLocationsNodesRequest,
@@ -704,7 +945,12 @@ export const deleteProjectsLocationsNodes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsRequest,
@@ -734,7 +980,10 @@ export const getProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsAcceleratorTypesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsAcceleratorTypesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets AcceleratorType. */
 export const getProjectsLocationsAcceleratorTypes: API.OperationMethod<
   GetProjectsLocationsAcceleratorTypesRequest,
@@ -764,7 +1013,10 @@ export const getProjectsLocationsNodes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -779,7 +1031,10 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsTensorflowVersionsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsTensorflowVersionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets TensorFlow Version. */
 export const getProjectsLocationsTensorflowVersions: API.OperationMethod<
   GetProjectsLocationsTensorflowVersionsRequest,
@@ -807,10 +1062,16 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsAcceleratorTypesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsAcceleratorTypesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists accelerator types supported by this API. */
 export const listProjectsLocationsAcceleratorTypes: API.PaginatedOperationMethod<
   ListProjectsLocationsAcceleratorTypesRequest,
@@ -823,7 +1084,10 @@ export const listProjectsLocationsAcceleratorTypes: API.PaginatedOperationMethod
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListProjectsLocationsNodesError = NotFound | Forbidden | GcpOpError;
@@ -839,10 +1103,16 @@ export const listProjectsLocationsNodes: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -855,10 +1125,16 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsTensorflowVersionsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsTensorflowVersionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** List TensorFlow versions supported by this API. */
 export const listProjectsLocationsTensorflowVersions: API.PaginatedOperationMethod<
   ListProjectsLocationsTensorflowVersionsRequest,
@@ -871,10 +1147,18 @@ export const listProjectsLocationsTensorflowVersions: API.PaginatedOperationMeth
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ReimageProjectsLocationsNodesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ReimageProjectsLocationsNodesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Reimages a node's OS. */
 export const reimageProjectsLocationsNodes: API.OperationMethod<
   ReimageProjectsLocationsNodesRequest,
@@ -889,7 +1173,12 @@ export const reimageProjectsLocationsNodes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type StartProjectsLocationsNodesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type StartProjectsLocationsNodesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Starts a node. */
 export const startProjectsLocationsNodes: API.OperationMethod<
   StartProjectsLocationsNodesRequest,
@@ -904,7 +1193,12 @@ export const startProjectsLocationsNodes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type StopProjectsLocationsNodesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type StopProjectsLocationsNodesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Stops a node, this operation is only available with single TPU nodes. */
 export const stopProjectsLocationsNodes: API.OperationMethod<
   StopProjectsLocationsNodesRequest,
@@ -918,4 +1212,3 @@ export const stopProjectsLocationsNodes: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 /** The quantitative measurements of a report. For example, the metric `eventCount` is the total number of events. Requests are allowed up to 10 metrics. */
@@ -70,18 +70,22 @@ export interface Metric {
   expression?: string;
 }
 export const Metric = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "invisible": S.optional(S.Boolean),
-  "expression": S.optional(S.String),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    invisible: S.optional(S.Boolean),
+    expression: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Metric" }) as any as S.Schema<Metric>;
 
 export type MetricList = ReadonlyArray<Metric>;
-export const MetricList = /*@__PURE__*/ S.Array(Metric) as any as S.Schema<MetricList>;
+export const MetricList = /*@__PURE__*/ S.Array(
+  Metric,
+) as any as S.Schema<MetricList>;
 
 export type FilterExpressionList_ = ReadonlyArray<FilterExpression>;
-export const FilterExpressionList_ = /*@__PURE__*/ S.Array(S.suspend(() => FilterExpression)) as any as S.Schema<FilterExpressionList_>;
+export const FilterExpressionList_ = /*@__PURE__*/ S.Array(
+  S.suspend(() => FilterExpression),
+) as any as S.Schema<FilterExpressionList_>;
 
 /** A list of filter expressions. */
 export interface FilterExpressionList {
@@ -89,12 +93,20 @@ export interface FilterExpressionList {
   expressions?: FilterExpressionList_;
 }
 export const FilterExpressionList = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "expressions": S.optional(FilterExpressionList_),
-}),
-).annotate({ identifier: "FilterExpressionList" }) as any as S.Schema<FilterExpressionList>;
+  S.Struct({
+    expressions: S.optional(FilterExpressionList_),
+  }),
+).annotate({
+  identifier: "FilterExpressionList",
+}) as any as S.Schema<FilterExpressionList>;
 
-export type NumericFilterOperationEnum = "OPERATION_UNSPECIFIED" | "EQUAL" | "LESS_THAN" | "LESS_THAN_OR_EQUAL" | "GREATER_THAN" | "GREATER_THAN_OR_EQUAL";
+export type NumericFilterOperationEnum =
+  | "OPERATION_UNSPECIFIED"
+  | "EQUAL"
+  | "LESS_THAN"
+  | "LESS_THAN_OR_EQUAL"
+  | "GREATER_THAN"
+  | "GREATER_THAN_OR_EQUAL";
 export const NumericFilterOperationEnum = /*@__PURE__*/ S.String;
 
 /** To represent a number. */
@@ -105,10 +117,10 @@ export interface NumericValue {
   doubleValue?: number;
 }
 export const NumericValue = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "int64Value": S.optional(S.String),
-  "doubleValue": S.optional(S.Number),
-}),
+  S.Struct({
+    int64Value: S.optional(S.String),
+    doubleValue: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "NumericValue" }) as any as S.Schema<NumericValue>;
 
 /** Filters for numeric or date values. */
@@ -119,14 +131,16 @@ export interface NumericFilter {
   value?: NumericValue;
 }
 export const NumericFilter = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "operation": S.optional(NumericFilterOperationEnum),
-  "value": S.optional(NumericValue),
-}),
+  S.Struct({
+    operation: S.optional(NumericFilterOperationEnum),
+    value: S.optional(NumericValue),
+  }),
 ).annotate({ identifier: "NumericFilter" }) as any as S.Schema<NumericFilter>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** The result needs to be in a list of string values. */
 export interface InListFilter {
@@ -136,13 +150,20 @@ export interface InListFilter {
   caseSensitive?: boolean;
 }
 export const InListFilter = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "values": S.optional(StringList),
-  "caseSensitive": S.optional(S.Boolean),
-}),
+  S.Struct({
+    values: S.optional(StringList),
+    caseSensitive: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "InListFilter" }) as any as S.Schema<InListFilter>;
 
-export type StringFilterMatchTypeEnum = "MATCH_TYPE_UNSPECIFIED" | "EXACT" | "BEGINS_WITH" | "ENDS_WITH" | "CONTAINS" | "FULL_REGEXP" | "PARTIAL_REGEXP";
+export type StringFilterMatchTypeEnum =
+  | "MATCH_TYPE_UNSPECIFIED"
+  | "EXACT"
+  | "BEGINS_WITH"
+  | "ENDS_WITH"
+  | "CONTAINS"
+  | "FULL_REGEXP"
+  | "PARTIAL_REGEXP";
 export const StringFilterMatchTypeEnum = /*@__PURE__*/ S.String;
 
 /** The filter for string */
@@ -155,11 +176,11 @@ export interface StringFilter {
   value?: string;
 }
 export const StringFilter = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "caseSensitive": S.optional(S.Boolean),
-  "matchType": S.optional(StringFilterMatchTypeEnum),
-  "value": S.optional(S.String),
-}),
+  S.Struct({
+    caseSensitive: S.optional(S.Boolean),
+    matchType: S.optional(StringFilterMatchTypeEnum),
+    value: S.optional(S.String),
+  }),
 ).annotate({ identifier: "StringFilter" }) as any as S.Schema<StringFilter>;
 
 /** To express that the result needs to be between two numbers (inclusive). */
@@ -170,17 +191,17 @@ export interface BetweenFilter {
   toValue?: NumericValue;
 }
 export const BetweenFilter = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fromValue": S.optional(NumericValue),
-  "toValue": S.optional(NumericValue),
-}),
+  S.Struct({
+    fromValue: S.optional(NumericValue),
+    toValue: S.optional(NumericValue),
+  }),
 ).annotate({ identifier: "BetweenFilter" }) as any as S.Schema<BetweenFilter>;
 
 /** Filter for empty values. */
 export interface EmptyFilter {}
-export const EmptyFilter = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "EmptyFilter" }) as any as S.Schema<EmptyFilter>;
+export const EmptyFilter = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
+  { identifier: "EmptyFilter" },
+) as any as S.Schema<EmptyFilter>;
 
 /** An expression to filter dimension or metric values. */
 export interface Filter {
@@ -198,14 +219,14 @@ export interface Filter {
   emptyFilter?: EmptyFilter;
 }
 export const Filter = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "numericFilter": S.optional(NumericFilter),
-  "inListFilter": S.optional(InListFilter),
-  "stringFilter": S.optional(StringFilter),
-  "fieldName": S.optional(S.String),
-  "betweenFilter": S.optional(BetweenFilter),
-  "emptyFilter": S.optional(EmptyFilter),
-}),
+  S.Struct({
+    numericFilter: S.optional(NumericFilter),
+    inListFilter: S.optional(InListFilter),
+    stringFilter: S.optional(StringFilter),
+    fieldName: S.optional(S.String),
+    betweenFilter: S.optional(BetweenFilter),
+    emptyFilter: S.optional(EmptyFilter),
+  }),
 ).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
 
 /** To express dimension or metric filters. The fields in the same FilterExpression need to be either all dimensions or all metrics. */
@@ -220,15 +241,21 @@ export interface FilterExpression {
   filter?: Filter;
 }
 export const FilterExpression = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "andGroup": S.optional(FilterExpressionList),
-  "orGroup": S.optional(FilterExpressionList),
-  "notExpression": S.optional(FilterExpression),
-  "filter": S.optional(Filter),
-}),
-).annotate({ identifier: "FilterExpression" }) as any as S.Schema<FilterExpression>;
+  S.Struct({
+    andGroup: S.optional(FilterExpressionList),
+    orGroup: S.optional(FilterExpressionList),
+    notExpression: S.optional(FilterExpression),
+    filter: S.optional(Filter),
+  }),
+).annotate({
+  identifier: "FilterExpression",
+}) as any as S.Schema<FilterExpression>;
 
-export type DimensionOrderByOrderTypeEnum = "ORDER_TYPE_UNSPECIFIED" | "ALPHANUMERIC" | "CASE_INSENSITIVE_ALPHANUMERIC" | "NUMERIC";
+export type DimensionOrderByOrderTypeEnum =
+  | "ORDER_TYPE_UNSPECIFIED"
+  | "ALPHANUMERIC"
+  | "CASE_INSENSITIVE_ALPHANUMERIC"
+  | "NUMERIC";
 export const DimensionOrderByOrderTypeEnum = /*@__PURE__*/ S.String;
 
 /** Sorts by dimension values. */
@@ -239,11 +266,13 @@ export interface DimensionOrderBy {
   orderType?: DimensionOrderByOrderTypeEnum | (string & {});
 }
 export const DimensionOrderBy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dimensionName": S.optional(S.String),
-  "orderType": S.optional(DimensionOrderByOrderTypeEnum),
-}),
-).annotate({ identifier: "DimensionOrderBy" }) as any as S.Schema<DimensionOrderBy>;
+  S.Struct({
+    dimensionName: S.optional(S.String),
+    orderType: S.optional(DimensionOrderByOrderTypeEnum),
+  }),
+).annotate({
+  identifier: "DimensionOrderBy",
+}) as any as S.Schema<DimensionOrderBy>;
 
 /** A pair of dimension names and values. Rows with this dimension pivot pair are ordered by the metric's value. For example if pivots = {{"browser", "Chrome"}} and metric_name = "Sessions", then the rows will be sorted based on Sessions in Chrome. ---------|----------|----------------|----------|---------------- | Chrome | Chrome | Safari | Safari ---------|----------|----------------|----------|---------------- Country | Sessions | Pages/Sessions | Sessions | Pages/Sessions ---------|----------|----------------|----------|---------------- US | 2 | 2 | 3 | 1 ---------|----------|----------------|----------|---------------- Canada | 3 | 1 | 4 | 1 ---------|----------|----------------|----------|---------------- */
 export interface PivotSelection {
@@ -253,14 +282,16 @@ export interface PivotSelection {
   dimensionValue?: string;
 }
 export const PivotSelection = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dimensionName": S.optional(S.String),
-  "dimensionValue": S.optional(S.String),
-}),
+  S.Struct({
+    dimensionName: S.optional(S.String),
+    dimensionValue: S.optional(S.String),
+  }),
 ).annotate({ identifier: "PivotSelection" }) as any as S.Schema<PivotSelection>;
 
 export type PivotSelectionList = ReadonlyArray<PivotSelection>;
-export const PivotSelectionList = /*@__PURE__*/ S.Array(PivotSelection) as any as S.Schema<PivotSelectionList>;
+export const PivotSelectionList = /*@__PURE__*/ S.Array(
+  PivotSelection,
+) as any as S.Schema<PivotSelectionList>;
 
 /** Sorts by a pivot column group. */
 export interface PivotOrderBy {
@@ -270,10 +301,10 @@ export interface PivotOrderBy {
   pivotSelections?: PivotSelectionList;
 }
 export const PivotOrderBy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "metricName": S.optional(S.String),
-  "pivotSelections": S.optional(PivotSelectionList),
-}),
+  S.Struct({
+    metricName: S.optional(S.String),
+    pivotSelections: S.optional(PivotSelectionList),
+  }),
 ).annotate({ identifier: "PivotOrderBy" }) as any as S.Schema<PivotOrderBy>;
 
 /** Sorts by metric values. */
@@ -282,9 +313,9 @@ export interface MetricOrderBy {
   metricName?: string;
 }
 export const MetricOrderBy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "metricName": S.optional(S.String),
-}),
+  S.Struct({
+    metricName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "MetricOrderBy" }) as any as S.Schema<MetricOrderBy>;
 
 /** Order bys define how rows will be sorted in the response. For example, ordering rows by descending event count is one ordering, and ordering rows by the event name string is a different ordering. */
@@ -299,22 +330,33 @@ export interface OrderBy {
   metric?: MetricOrderBy;
 }
 export const OrderBy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dimension": S.optional(DimensionOrderBy),
-  "desc": S.optional(S.Boolean),
-  "pivot": S.optional(PivotOrderBy),
-  "metric": S.optional(MetricOrderBy),
-}),
+  S.Struct({
+    dimension: S.optional(DimensionOrderBy),
+    desc: S.optional(S.Boolean),
+    pivot: S.optional(PivotOrderBy),
+    metric: S.optional(MetricOrderBy),
+  }),
 ).annotate({ identifier: "OrderBy" }) as any as S.Schema<OrderBy>;
 
 export type OrderByList = ReadonlyArray<OrderBy>;
-export const OrderByList = /*@__PURE__*/ S.Array(OrderBy) as any as S.Schema<OrderByList>;
+export const OrderByList = /*@__PURE__*/ S.Array(
+  OrderBy,
+) as any as S.Schema<OrderByList>;
 
-export type PivotMetricAggregationsItemEnum = "METRIC_AGGREGATION_UNSPECIFIED" | "TOTAL" | "MINIMUM" | "MAXIMUM" | "COUNT";
+export type PivotMetricAggregationsItemEnum =
+  | "METRIC_AGGREGATION_UNSPECIFIED"
+  | "TOTAL"
+  | "MINIMUM"
+  | "MAXIMUM"
+  | "COUNT";
 export const PivotMetricAggregationsItemEnum = /*@__PURE__*/ S.String;
 
-export type PivotMetricAggregationsItemEnumList = ReadonlyArray<PivotMetricAggregationsItemEnum | (string & {})>;
-export const PivotMetricAggregationsItemEnumList = /*@__PURE__*/ S.Array(PivotMetricAggregationsItemEnum) as any as S.Schema<PivotMetricAggregationsItemEnumList>;
+export type PivotMetricAggregationsItemEnumList = ReadonlyArray<
+  PivotMetricAggregationsItemEnum | (string & {})
+>;
+export const PivotMetricAggregationsItemEnumList = /*@__PURE__*/ S.Array(
+  PivotMetricAggregationsItemEnum,
+) as any as S.Schema<PivotMetricAggregationsItemEnumList>;
 
 /** Describes the visible dimension columns and rows in the report response. */
 export interface Pivot {
@@ -330,17 +372,19 @@ export interface Pivot {
   metricAggregations?: PivotMetricAggregationsItemEnumList;
 }
 export const Pivot = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "offset": S.optional(S.String),
-  "orderBys": S.optional(OrderByList),
-  "fieldNames": S.optional(StringList),
-  "limit": S.optional(S.String),
-  "metricAggregations": S.optional(PivotMetricAggregationsItemEnumList),
-}),
+  S.Struct({
+    offset: S.optional(S.String),
+    orderBys: S.optional(OrderByList),
+    fieldNames: S.optional(StringList),
+    limit: S.optional(S.String),
+    metricAggregations: S.optional(PivotMetricAggregationsItemEnumList),
+  }),
 ).annotate({ identifier: "Pivot" }) as any as S.Schema<Pivot>;
 
 export type PivotList = ReadonlyArray<Pivot>;
-export const PivotList = /*@__PURE__*/ S.Array(Pivot) as any as S.Schema<PivotList>;
+export const PivotList = /*@__PURE__*/ S.Array(
+  Pivot,
+) as any as S.Schema<PivotList>;
 
 /** Used to convert a dimension value to a single case. */
 export interface CaseExpression {
@@ -348,9 +392,9 @@ export interface CaseExpression {
   dimensionName?: string;
 }
 export const CaseExpression = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dimensionName": S.optional(S.String),
-}),
+  S.Struct({
+    dimensionName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "CaseExpression" }) as any as S.Schema<CaseExpression>;
 
 /** Used to combine dimension values to a single dimension. */
@@ -361,11 +405,13 @@ export interface ConcatenateExpression {
   delimiter?: string;
 }
 export const ConcatenateExpression = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dimensionNames": S.optional(StringList),
-  "delimiter": S.optional(S.String),
-}),
-).annotate({ identifier: "ConcatenateExpression" }) as any as S.Schema<ConcatenateExpression>;
+  S.Struct({
+    dimensionNames: S.optional(StringList),
+    delimiter: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConcatenateExpression",
+}) as any as S.Schema<ConcatenateExpression>;
 
 /** Used to express a dimension which is the result of a formula of multiple dimensions. Example usages: 1) lower_case(dimension) 2) concatenate(dimension1, symbol, dimension2). */
 export interface DimensionExpression {
@@ -377,12 +423,14 @@ export interface DimensionExpression {
   concatenate?: ConcatenateExpression;
 }
 export const DimensionExpression = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "lowerCase": S.optional(CaseExpression),
-  "upperCase": S.optional(CaseExpression),
-  "concatenate": S.optional(ConcatenateExpression),
-}),
-).annotate({ identifier: "DimensionExpression" }) as any as S.Schema<DimensionExpression>;
+  S.Struct({
+    lowerCase: S.optional(CaseExpression),
+    upperCase: S.optional(CaseExpression),
+    concatenate: S.optional(ConcatenateExpression),
+  }),
+).annotate({
+  identifier: "DimensionExpression",
+}) as any as S.Schema<DimensionExpression>;
 
 /** Dimensions are attributes of your data. For example, the dimension city indicates the city from which an event originates. Dimension values in report responses are strings; for example, the city could be "Paris" or "New York". Requests are allowed up to 9 dimensions. */
 export interface Dimension {
@@ -392,14 +440,16 @@ export interface Dimension {
   dimensionExpression?: DimensionExpression;
 }
 export const Dimension = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "dimensionExpression": S.optional(DimensionExpression),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    dimensionExpression: S.optional(DimensionExpression),
+  }),
 ).annotate({ identifier: "Dimension" }) as any as S.Schema<Dimension>;
 
 export type DimensionList = ReadonlyArray<Dimension>;
-export const DimensionList = /*@__PURE__*/ S.Array(Dimension) as any as S.Schema<DimensionList>;
+export const DimensionList = /*@__PURE__*/ S.Array(
+  Dimension,
+) as any as S.Schema<DimensionList>;
 
 /** A contiguous set of days: `startDate`, `startDate + 1`, ..., `endDate`. Requests are allowed up to 4 date ranges. */
 export interface DateRange {
@@ -411,15 +461,17 @@ export interface DateRange {
   name?: string;
 }
 export const DateRange = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "startDate": S.optional(S.String),
-  "endDate": S.optional(S.String),
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    startDate: S.optional(S.String),
+    endDate: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "DateRange" }) as any as S.Schema<DateRange>;
 
 export type DateRangeList = ReadonlyArray<DateRange>;
-export const DateRangeList = /*@__PURE__*/ S.Array(DateRange) as any as S.Schema<DateRangeList>;
+export const DateRangeList = /*@__PURE__*/ S.Array(
+  DateRange,
+) as any as S.Schema<DateRangeList>;
 
 /** Defines an individual comparison. Most requests will include multiple comparisons so that the report compares between the comparisons. */
 export interface Comparison {
@@ -431,15 +483,17 @@ export interface Comparison {
   dimensionFilter?: FilterExpression;
 }
 export const Comparison = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "comparison": S.optional(S.String),
-  "name": S.optional(S.String),
-  "dimensionFilter": S.optional(FilterExpression),
-}),
+  S.Struct({
+    comparison: S.optional(S.String),
+    name: S.optional(S.String),
+    dimensionFilter: S.optional(FilterExpression),
+  }),
 ).annotate({ identifier: "Comparison" }) as any as S.Schema<Comparison>;
 
 export type ComparisonList = ReadonlyArray<Comparison>;
-export const ComparisonList = /*@__PURE__*/ S.Array(Comparison) as any as S.Schema<ComparisonList>;
+export const ComparisonList = /*@__PURE__*/ S.Array(
+  Comparison,
+) as any as S.Schema<ComparisonList>;
 
 /** Optional settings of a cohort report. */
 export interface CohortReportSettings {
@@ -447,12 +501,18 @@ export interface CohortReportSettings {
   accumulate?: boolean;
 }
 export const CohortReportSettings = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "accumulate": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "CohortReportSettings" }) as any as S.Schema<CohortReportSettings>;
+  S.Struct({
+    accumulate: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "CohortReportSettings",
+}) as any as S.Schema<CohortReportSettings>;
 
-export type CohortsRangeGranularityEnum = "GRANULARITY_UNSPECIFIED" | "DAILY" | "WEEKLY" | "MONTHLY";
+export type CohortsRangeGranularityEnum =
+  | "GRANULARITY_UNSPECIFIED"
+  | "DAILY"
+  | "WEEKLY"
+  | "MONTHLY";
 export const CohortsRangeGranularityEnum = /*@__PURE__*/ S.String;
 
 /** Configures the extended reporting date range for a cohort report. Specifies an offset duration to follow the cohorts over. */
@@ -465,11 +525,11 @@ export interface CohortsRange {
   endOffset?: number;
 }
 export const CohortsRange = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "granularity": S.optional(CohortsRangeGranularityEnum),
-  "startOffset": S.optional(S.Number),
-  "endOffset": S.optional(S.Number),
-}),
+  S.Struct({
+    granularity: S.optional(CohortsRangeGranularityEnum),
+    startOffset: S.optional(S.Number),
+    endOffset: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "CohortsRange" }) as any as S.Schema<CohortsRange>;
 
 /** Defines a cohort selection criteria. A cohort is a group of users who share a common characteristic. For example, users with the same `firstSessionDate` belong to the same cohort. */
@@ -482,15 +542,17 @@ export interface Cohort {
   name?: string;
 }
 export const Cohort = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dateRange": S.optional(DateRange),
-  "dimension": S.optional(S.String),
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    dateRange: S.optional(DateRange),
+    dimension: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Cohort" }) as any as S.Schema<Cohort>;
 
 export type CohortList = ReadonlyArray<Cohort>;
-export const CohortList = /*@__PURE__*/ S.Array(Cohort) as any as S.Schema<CohortList>;
+export const CohortList = /*@__PURE__*/ S.Array(
+  Cohort,
+) as any as S.Schema<CohortList>;
 
 /** The specification of cohorts for a cohort report. Cohort reports create a time series of user retention for the cohort. For example, you could select the cohort of users that were acquired in the first week of September and follow that cohort for the next six weeks. Selecting the users acquired in the first week of September cohort is specified in the `cohort` object. Following that cohort for the next six weeks is specified in the `cohortsRange` object. For examples, see [Cohort Report Examples](https://developers.google.com/analytics/devguides/reporting/data/v1/advanced#cohort_report_examples). The report response could show a weekly time series where say your app has retained 60% of this cohort after three weeks and 25% of this cohort after six weeks. These two percentages can be calculated by the metric `cohortActiveUsers/cohortTotalUsers` and will be separate rows in the report. */
 export interface CohortSpec {
@@ -502,11 +564,11 @@ export interface CohortSpec {
   cohorts?: CohortList;
 }
 export const CohortSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "cohortReportSettings": S.optional(CohortReportSettings),
-  "cohortsRange": S.optional(CohortsRange),
-  "cohorts": S.optional(CohortList),
-}),
+  S.Struct({
+    cohortReportSettings: S.optional(CohortReportSettings),
+    cohortsRange: S.optional(CohortsRange),
+    cohorts: S.optional(CohortList),
+  }),
 ).annotate({ identifier: "CohortSpec" }) as any as S.Schema<CohortSpec>;
 
 /** The request to generate a pivot report. */
@@ -537,24 +599,28 @@ export interface RunPivotReportRequest {
   property?: string;
 }
 export const RunPivotReportRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "metrics": S.optional(MetricList),
-  "metricFilter": S.optional(FilterExpression),
-  "keepEmptyRows": S.optional(S.Boolean),
-  "pivots": S.optional(PivotList),
-  "dimensionFilter": S.optional(FilterExpression),
-  "dimensions": S.optional(DimensionList),
-  "currencyCode": S.optional(S.String),
-  "dateRanges": S.optional(DateRangeList),
-  "returnPropertyQuota": S.optional(S.Boolean),
-  "comparisons": S.optional(ComparisonList),
-  "cohortSpec": S.optional(CohortSpec),
-  "property": S.optional(S.String),
-}),
-).annotate({ identifier: "RunPivotReportRequest" }) as any as S.Schema<RunPivotReportRequest>;
+  S.Struct({
+    metrics: S.optional(MetricList),
+    metricFilter: S.optional(FilterExpression),
+    keepEmptyRows: S.optional(S.Boolean),
+    pivots: S.optional(PivotList),
+    dimensionFilter: S.optional(FilterExpression),
+    dimensions: S.optional(DimensionList),
+    currencyCode: S.optional(S.String),
+    dateRanges: S.optional(DateRangeList),
+    returnPropertyQuota: S.optional(S.Boolean),
+    comparisons: S.optional(ComparisonList),
+    cohortSpec: S.optional(CohortSpec),
+    property: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RunPivotReportRequest",
+}) as any as S.Schema<RunPivotReportRequest>;
 
 export type RunPivotReportRequestList = ReadonlyArray<RunPivotReportRequest>;
-export const RunPivotReportRequestList = /*@__PURE__*/ S.Array(RunPivotReportRequest) as any as S.Schema<RunPivotReportRequestList>;
+export const RunPivotReportRequestList = /*@__PURE__*/ S.Array(
+  RunPivotReportRequest,
+) as any as S.Schema<RunPivotReportRequestList>;
 
 /** The batch request containing multiple pivot report requests. */
 export interface BatchRunPivotReportsRequest {
@@ -562,10 +628,12 @@ export interface BatchRunPivotReportsRequest {
   requests?: RunPivotReportRequestList;
 }
 export const BatchRunPivotReportsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requests": S.optional(RunPivotReportRequestList),
-}),
-).annotate({ identifier: "BatchRunPivotReportsRequest" }) as any as S.Schema<BatchRunPivotReportsRequest>;
+  S.Struct({
+    requests: S.optional(RunPivotReportRequestList),
+  }),
+).annotate({
+  identifier: "BatchRunPivotReportsRequest",
+}) as any as S.Schema<BatchRunPivotReportsRequest>;
 
 export interface BatchRunPivotReportsPropertiesRequest {
   /** A Google Analytics property identifier whose events are tracked. Specified in the URL path and not the body. To learn more, see [where to find your Property ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id). This property must be specified for the batch. The property within RunPivotReportRequest may either be unspecified or consistent with this property. Example: properties/1234 */
@@ -573,12 +641,21 @@ export interface BatchRunPivotReportsPropertiesRequest {
   /** Request body */
   body?: BatchRunPivotReportsRequest;
 }
-export const BatchRunPivotReportsPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "property": S.String.pipe(T.Label()),
-  "body": S.optional(BatchRunPivotReportsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+property}:batchRunPivotReports","baseUrl":"https://analyticsdata.googleapis.com/"})),
-).annotate({ identifier: "BatchRunPivotReportsPropertiesRequest" }) as any as S.Schema<BatchRunPivotReportsPropertiesRequest>;
+export const BatchRunPivotReportsPropertiesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      property: S.String.pipe(T.Label()),
+      body: S.optional(BatchRunPivotReportsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+property}:batchRunPivotReports",
+        baseUrl: "https://analyticsdata.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "BatchRunPivotReportsPropertiesRequest",
+}) as any as S.Schema<BatchRunPivotReportsPropertiesRequest>;
 
 /** Describes a dimension column in the report. Dimensions requested in a report produce column entries within rows and DimensionHeaders. However, dimensions used exclusively within filters or expressions do not produce columns in a report; correspondingly, those dimensions do not produce headers. */
 export interface DimensionHeader {
@@ -586,13 +663,17 @@ export interface DimensionHeader {
   name?: string;
 }
 export const DimensionHeader = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-}),
-).annotate({ identifier: "DimensionHeader" }) as any as S.Schema<DimensionHeader>;
+  S.Struct({
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DimensionHeader",
+}) as any as S.Schema<DimensionHeader>;
 
 export type DimensionHeaderList = ReadonlyArray<DimensionHeader>;
-export const DimensionHeaderList = /*@__PURE__*/ S.Array(DimensionHeader) as any as S.Schema<DimensionHeaderList>;
+export const DimensionHeaderList = /*@__PURE__*/ S.Array(
+  DimensionHeader,
+) as any as S.Schema<DimensionHeaderList>;
 
 /** The value of a dimension. */
 export interface DimensionValue {
@@ -600,13 +681,15 @@ export interface DimensionValue {
   value?: string;
 }
 export const DimensionValue = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "value": S.optional(S.String),
-}),
+  S.Struct({
+    value: S.optional(S.String),
+  }),
 ).annotate({ identifier: "DimensionValue" }) as any as S.Schema<DimensionValue>;
 
 export type DimensionValueList = ReadonlyArray<DimensionValue>;
-export const DimensionValueList = /*@__PURE__*/ S.Array(DimensionValue) as any as S.Schema<DimensionValueList>;
+export const DimensionValueList = /*@__PURE__*/ S.Array(
+  DimensionValue,
+) as any as S.Schema<DimensionValueList>;
 
 /** The value of a metric. */
 export interface MetricValue {
@@ -614,13 +697,15 @@ export interface MetricValue {
   value?: string;
 }
 export const MetricValue = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "value": S.optional(S.String),
-}),
+  S.Struct({
+    value: S.optional(S.String),
+  }),
 ).annotate({ identifier: "MetricValue" }) as any as S.Schema<MetricValue>;
 
 export type MetricValueList = ReadonlyArray<MetricValue>;
-export const MetricValueList = /*@__PURE__*/ S.Array(MetricValue) as any as S.Schema<MetricValueList>;
+export const MetricValueList = /*@__PURE__*/ S.Array(
+  MetricValue,
+) as any as S.Schema<MetricValueList>;
 
 /** Report data for each row. For example if RunReportRequest contains: ```none "dimensions": [ { "name": "eventName" }, { "name": "countryId" } ], "metrics": [ { "name": "eventCount" } ] ``` One row with 'in_app_purchase' as the eventName, 'JP' as the countryId, and 15 as the eventCount, would be: ```none "dimensionValues": [ { "value": "in_app_purchase" }, { "value": "JP" } ], "metricValues": [ { "value": "15" } ] ``` */
 export interface Row {
@@ -630,16 +715,29 @@ export interface Row {
   metricValues?: MetricValueList;
 }
 export const Row = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dimensionValues": S.optional(DimensionValueList),
-  "metricValues": S.optional(MetricValueList),
-}),
+  S.Struct({
+    dimensionValues: S.optional(DimensionValueList),
+    metricValues: S.optional(MetricValueList),
+  }),
 ).annotate({ identifier: "Row" }) as any as S.Schema<Row>;
 
 export type RowList = ReadonlyArray<Row>;
 export const RowList = /*@__PURE__*/ S.Array(Row) as any as S.Schema<RowList>;
 
-export type MetricHeaderTypeEnum = "METRIC_TYPE_UNSPECIFIED" | "TYPE_INTEGER" | "TYPE_FLOAT" | "TYPE_SECONDS" | "TYPE_MILLISECONDS" | "TYPE_MINUTES" | "TYPE_HOURS" | "TYPE_STANDARD" | "TYPE_CURRENCY" | "TYPE_FEET" | "TYPE_MILES" | "TYPE_METERS" | "TYPE_KILOMETERS";
+export type MetricHeaderTypeEnum =
+  | "METRIC_TYPE_UNSPECIFIED"
+  | "TYPE_INTEGER"
+  | "TYPE_FLOAT"
+  | "TYPE_SECONDS"
+  | "TYPE_MILLISECONDS"
+  | "TYPE_MINUTES"
+  | "TYPE_HOURS"
+  | "TYPE_STANDARD"
+  | "TYPE_CURRENCY"
+  | "TYPE_FEET"
+  | "TYPE_MILES"
+  | "TYPE_METERS"
+  | "TYPE_KILOMETERS";
 export const MetricHeaderTypeEnum = /*@__PURE__*/ S.String;
 
 /** Describes a metric column in the report. Visible metrics requested in a report produce column entries within rows and MetricHeaders. However, metrics used exclusively within filters or expressions do not produce columns in a report; correspondingly, those metrics do not produce headers. */
@@ -650,20 +748,30 @@ export interface MetricHeader {
   name?: string;
 }
 export const MetricHeader = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(MetricHeaderTypeEnum),
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    type: S.optional(MetricHeaderTypeEnum),
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "MetricHeader" }) as any as S.Schema<MetricHeader>;
 
 export type MetricHeaderList = ReadonlyArray<MetricHeader>;
-export const MetricHeaderList = /*@__PURE__*/ S.Array(MetricHeader) as any as S.Schema<MetricHeaderList>;
+export const MetricHeaderList = /*@__PURE__*/ S.Array(
+  MetricHeader,
+) as any as S.Schema<MetricHeaderList>;
 
-export type ActiveMetricRestrictionRestrictedMetricTypesItemEnum = "RESTRICTED_METRIC_TYPE_UNSPECIFIED" | "COST_DATA" | "REVENUE_DATA";
-export const ActiveMetricRestrictionRestrictedMetricTypesItemEnum = /*@__PURE__*/ S.String;
+export type ActiveMetricRestrictionRestrictedMetricTypesItemEnum =
+  | "RESTRICTED_METRIC_TYPE_UNSPECIFIED"
+  | "COST_DATA"
+  | "REVENUE_DATA";
+export const ActiveMetricRestrictionRestrictedMetricTypesItemEnum =
+  /*@__PURE__*/ S.String;
 
-export type ActiveMetricRestrictionRestrictedMetricTypesItemEnumList = ReadonlyArray<ActiveMetricRestrictionRestrictedMetricTypesItemEnum>;
-export const ActiveMetricRestrictionRestrictedMetricTypesItemEnumList = /*@__PURE__*/ S.Array(ActiveMetricRestrictionRestrictedMetricTypesItemEnum) as any as S.Schema<ActiveMetricRestrictionRestrictedMetricTypesItemEnumList>;
+export type ActiveMetricRestrictionRestrictedMetricTypesItemEnumList =
+  ReadonlyArray<ActiveMetricRestrictionRestrictedMetricTypesItemEnum>;
+export const ActiveMetricRestrictionRestrictedMetricTypesItemEnumList =
+  /*@__PURE__*/ S.Array(
+    ActiveMetricRestrictionRestrictedMetricTypesItemEnum,
+  ) as any as S.Schema<ActiveMetricRestrictionRestrictedMetricTypesItemEnumList>;
 
 /** A metric actively restricted in creating the report. */
 export interface ActiveMetricRestriction {
@@ -673,14 +781,21 @@ export interface ActiveMetricRestriction {
   restrictedMetricTypes?: ActiveMetricRestrictionRestrictedMetricTypesItemEnumList;
 }
 export const ActiveMetricRestriction = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "metricName": S.optional(S.String),
-  "restrictedMetricTypes": S.optional(ActiveMetricRestrictionRestrictedMetricTypesItemEnumList),
-}),
-).annotate({ identifier: "ActiveMetricRestriction" }) as any as S.Schema<ActiveMetricRestriction>;
+  S.Struct({
+    metricName: S.optional(S.String),
+    restrictedMetricTypes: S.optional(
+      ActiveMetricRestrictionRestrictedMetricTypesItemEnumList,
+    ),
+  }),
+).annotate({
+  identifier: "ActiveMetricRestriction",
+}) as any as S.Schema<ActiveMetricRestriction>;
 
-export type ActiveMetricRestrictionList = ReadonlyArray<ActiveMetricRestriction>;
-export const ActiveMetricRestrictionList = /*@__PURE__*/ S.Array(ActiveMetricRestriction) as any as S.Schema<ActiveMetricRestrictionList>;
+export type ActiveMetricRestrictionList =
+  ReadonlyArray<ActiveMetricRestriction>;
+export const ActiveMetricRestrictionList = /*@__PURE__*/ S.Array(
+  ActiveMetricRestriction,
+) as any as S.Schema<ActiveMetricRestrictionList>;
 
 /** The schema restrictions actively enforced in creating this report. To learn more, see [Access and data-restriction management](https://support.google.com/analytics/answer/10851388). */
 export interface SchemaRestrictionResponse {
@@ -688,10 +803,12 @@ export interface SchemaRestrictionResponse {
   activeMetricRestrictions?: ActiveMetricRestrictionList;
 }
 export const SchemaRestrictionResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "activeMetricRestrictions": S.optional(ActiveMetricRestrictionList),
-}),
-).annotate({ identifier: "SchemaRestrictionResponse" }) as any as S.Schema<SchemaRestrictionResponse>;
+  S.Struct({
+    activeMetricRestrictions: S.optional(ActiveMetricRestrictionList),
+  }),
+).annotate({
+  identifier: "SchemaRestrictionResponse",
+}) as any as S.Schema<SchemaRestrictionResponse>;
 
 /** If this report results is [sampled](https://support.google.com/analytics/answer/13331292), this describes the percentage of events used in this report. Sampling is the practice of analyzing a subset of all data in order to uncover the meaningful information in the larger data set. */
 export interface SamplingMetadata {
@@ -701,14 +818,18 @@ export interface SamplingMetadata {
   samplingSpaceSize?: string;
 }
 export const SamplingMetadata = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "samplesReadCount": S.optional(S.String),
-  "samplingSpaceSize": S.optional(S.String),
-}),
-).annotate({ identifier: "SamplingMetadata" }) as any as S.Schema<SamplingMetadata>;
+  S.Struct({
+    samplesReadCount: S.optional(S.String),
+    samplingSpaceSize: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SamplingMetadata",
+}) as any as S.Schema<SamplingMetadata>;
 
 export type SamplingMetadataList = ReadonlyArray<SamplingMetadata>;
-export const SamplingMetadataList = /*@__PURE__*/ S.Array(SamplingMetadata) as any as S.Schema<SamplingMetadataList>;
+export const SamplingMetadataList = /*@__PURE__*/ S.Array(
+  SamplingMetadata,
+) as any as S.Schema<SamplingMetadataList>;
 
 /** Response's metadata carrying additional information about the report content. */
 export interface ResponseMetaData {
@@ -728,16 +849,18 @@ export interface ResponseMetaData {
   currencyCode?: string;
 }
 export const ResponseMetaData = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "schemaRestrictionResponse": S.optional(SchemaRestrictionResponse),
-  "samplingMetadatas": S.optional(SamplingMetadataList),
-  "timeZone": S.optional(S.String),
-  "emptyReason": S.optional(S.String),
-  "subjectToThresholding": S.optional(S.Boolean),
-  "dataLossFromOtherRow": S.optional(S.Boolean),
-  "currencyCode": S.optional(S.String),
-}),
-).annotate({ identifier: "ResponseMetaData" }) as any as S.Schema<ResponseMetaData>;
+  S.Struct({
+    schemaRestrictionResponse: S.optional(SchemaRestrictionResponse),
+    samplingMetadatas: S.optional(SamplingMetadataList),
+    timeZone: S.optional(S.String),
+    emptyReason: S.optional(S.String),
+    subjectToThresholding: S.optional(S.Boolean),
+    dataLossFromOtherRow: S.optional(S.Boolean),
+    currencyCode: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ResponseMetaData",
+}) as any as S.Schema<ResponseMetaData>;
 
 /** Summarizes dimension values from a row for this pivot. */
 export interface PivotDimensionHeader {
@@ -745,13 +868,17 @@ export interface PivotDimensionHeader {
   dimensionValues?: DimensionValueList;
 }
 export const PivotDimensionHeader = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dimensionValues": S.optional(DimensionValueList),
-}),
-).annotate({ identifier: "PivotDimensionHeader" }) as any as S.Schema<PivotDimensionHeader>;
+  S.Struct({
+    dimensionValues: S.optional(DimensionValueList),
+  }),
+).annotate({
+  identifier: "PivotDimensionHeader",
+}) as any as S.Schema<PivotDimensionHeader>;
 
 export type PivotDimensionHeaderList = ReadonlyArray<PivotDimensionHeader>;
-export const PivotDimensionHeaderList = /*@__PURE__*/ S.Array(PivotDimensionHeader) as any as S.Schema<PivotDimensionHeaderList>;
+export const PivotDimensionHeaderList = /*@__PURE__*/ S.Array(
+  PivotDimensionHeader,
+) as any as S.Schema<PivotDimensionHeaderList>;
 
 /** Dimensions' values in a single pivot. */
 export interface PivotHeader {
@@ -761,14 +888,16 @@ export interface PivotHeader {
   pivotDimensionHeaders?: PivotDimensionHeaderList;
 }
 export const PivotHeader = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "rowCount": S.optional(S.Number),
-  "pivotDimensionHeaders": S.optional(PivotDimensionHeaderList),
-}),
+  S.Struct({
+    rowCount: S.optional(S.Number),
+    pivotDimensionHeaders: S.optional(PivotDimensionHeaderList),
+  }),
 ).annotate({ identifier: "PivotHeader" }) as any as S.Schema<PivotHeader>;
 
 export type PivotHeaderList = ReadonlyArray<PivotHeader>;
-export const PivotHeaderList = /*@__PURE__*/ S.Array(PivotHeader) as any as S.Schema<PivotHeaderList>;
+export const PivotHeaderList = /*@__PURE__*/ S.Array(
+  PivotHeader,
+) as any as S.Schema<PivotHeaderList>;
 
 /** Current state for a particular quota group. */
 export interface QuotaStatus {
@@ -778,10 +907,10 @@ export interface QuotaStatus {
   remaining?: number;
 }
 export const QuotaStatus = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "consumed": S.optional(S.Number),
-  "remaining": S.optional(S.Number),
-}),
+  S.Struct({
+    consumed: S.optional(S.Number),
+    remaining: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "QuotaStatus" }) as any as S.Schema<QuotaStatus>;
 
 /** Current state of all quotas for this Analytics Property. If any quota for a property is exhausted, all requests to that property will return Resource Exhausted errors. */
@@ -800,14 +929,14 @@ export interface PropertyQuota {
   potentiallyThresholdedRequestsPerHour?: QuotaStatus;
 }
 export const PropertyQuota = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "tokensPerProjectPerHour": S.optional(QuotaStatus),
-  "tokensPerHour": S.optional(QuotaStatus),
-  "concurrentRequests": S.optional(QuotaStatus),
-  "serverErrorsPerProjectPerHour": S.optional(QuotaStatus),
-  "tokensPerDay": S.optional(QuotaStatus),
-  "potentiallyThresholdedRequestsPerHour": S.optional(QuotaStatus),
-}),
+  S.Struct({
+    tokensPerProjectPerHour: S.optional(QuotaStatus),
+    tokensPerHour: S.optional(QuotaStatus),
+    concurrentRequests: S.optional(QuotaStatus),
+    serverErrorsPerProjectPerHour: S.optional(QuotaStatus),
+    tokensPerDay: S.optional(QuotaStatus),
+    potentiallyThresholdedRequestsPerHour: S.optional(QuotaStatus),
+  }),
 ).annotate({ identifier: "PropertyQuota" }) as any as S.Schema<PropertyQuota>;
 
 /** The response pivot report table corresponding to a pivot request. */
@@ -830,20 +959,24 @@ export interface RunPivotReportResponse {
   propertyQuota?: PropertyQuota;
 }
 export const RunPivotReportResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dimensionHeaders": S.optional(DimensionHeaderList),
-  "rows": S.optional(RowList),
-  "metricHeaders": S.optional(MetricHeaderList),
-  "aggregates": S.optional(RowList),
-  "metadata": S.optional(ResponseMetaData),
-  "pivotHeaders": S.optional(PivotHeaderList),
-  "kind": S.optional(S.String),
-  "propertyQuota": S.optional(PropertyQuota),
-}),
-).annotate({ identifier: "RunPivotReportResponse" }) as any as S.Schema<RunPivotReportResponse>;
+  S.Struct({
+    dimensionHeaders: S.optional(DimensionHeaderList),
+    rows: S.optional(RowList),
+    metricHeaders: S.optional(MetricHeaderList),
+    aggregates: S.optional(RowList),
+    metadata: S.optional(ResponseMetaData),
+    pivotHeaders: S.optional(PivotHeaderList),
+    kind: S.optional(S.String),
+    propertyQuota: S.optional(PropertyQuota),
+  }),
+).annotate({
+  identifier: "RunPivotReportResponse",
+}) as any as S.Schema<RunPivotReportResponse>;
 
 export type RunPivotReportResponseList = ReadonlyArray<RunPivotReportResponse>;
-export const RunPivotReportResponseList = /*@__PURE__*/ S.Array(RunPivotReportResponse) as any as S.Schema<RunPivotReportResponseList>;
+export const RunPivotReportResponseList = /*@__PURE__*/ S.Array(
+  RunPivotReportResponse,
+) as any as S.Schema<RunPivotReportResponseList>;
 
 /** The batch response containing multiple pivot reports. */
 export interface BatchRunPivotReportsResponse {
@@ -853,17 +986,30 @@ export interface BatchRunPivotReportsResponse {
   kind?: string;
 }
 export const BatchRunPivotReportsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pivotReports": S.optional(RunPivotReportResponseList),
-  "kind": S.optional(S.String),
-}),
-).annotate({ identifier: "BatchRunPivotReportsResponse" }) as any as S.Schema<BatchRunPivotReportsResponse>;
+  S.Struct({
+    pivotReports: S.optional(RunPivotReportResponseList),
+    kind: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BatchRunPivotReportsResponse",
+}) as any as S.Schema<BatchRunPivotReportsResponse>;
 
-export type RunReportRequestMetricAggregationsItemEnum = "METRIC_AGGREGATION_UNSPECIFIED" | "TOTAL" | "MINIMUM" | "MAXIMUM" | "COUNT";
-export const RunReportRequestMetricAggregationsItemEnum = /*@__PURE__*/ S.String;
+export type RunReportRequestMetricAggregationsItemEnum =
+  | "METRIC_AGGREGATION_UNSPECIFIED"
+  | "TOTAL"
+  | "MINIMUM"
+  | "MAXIMUM"
+  | "COUNT";
+export const RunReportRequestMetricAggregationsItemEnum =
+  /*@__PURE__*/ S.String;
 
-export type RunReportRequestMetricAggregationsItemEnumList = ReadonlyArray<RunReportRequestMetricAggregationsItemEnum | (string & {})>;
-export const RunReportRequestMetricAggregationsItemEnumList = /*@__PURE__*/ S.Array(RunReportRequestMetricAggregationsItemEnum) as any as S.Schema<RunReportRequestMetricAggregationsItemEnumList>;
+export type RunReportRequestMetricAggregationsItemEnumList = ReadonlyArray<
+  RunReportRequestMetricAggregationsItemEnum | (string & {})
+>;
+export const RunReportRequestMetricAggregationsItemEnumList =
+  /*@__PURE__*/ S.Array(
+    RunReportRequestMetricAggregationsItemEnum,
+  ) as any as S.Schema<RunReportRequestMetricAggregationsItemEnumList>;
 
 /** The request to generate a report. */
 export interface RunReportRequest {
@@ -899,27 +1045,33 @@ export interface RunReportRequest {
   returnPropertyQuota?: boolean;
 }
 export const RunReportRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dimensionFilter": S.optional(FilterExpression),
-  "offset": S.optional(S.String),
-  "dimensions": S.optional(DimensionList),
-  "metrics": S.optional(MetricList),
-  "comparisons": S.optional(ComparisonList),
-  "cohortSpec": S.optional(CohortSpec),
-  "property": S.optional(S.String),
-  "limit": S.optional(S.String),
-  "metricAggregations": S.optional(RunReportRequestMetricAggregationsItemEnumList),
-  "currencyCode": S.optional(S.String),
-  "metricFilter": S.optional(FilterExpression),
-  "keepEmptyRows": S.optional(S.Boolean),
-  "orderBys": S.optional(OrderByList),
-  "dateRanges": S.optional(DateRangeList),
-  "returnPropertyQuota": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "RunReportRequest" }) as any as S.Schema<RunReportRequest>;
+  S.Struct({
+    dimensionFilter: S.optional(FilterExpression),
+    offset: S.optional(S.String),
+    dimensions: S.optional(DimensionList),
+    metrics: S.optional(MetricList),
+    comparisons: S.optional(ComparisonList),
+    cohortSpec: S.optional(CohortSpec),
+    property: S.optional(S.String),
+    limit: S.optional(S.String),
+    metricAggregations: S.optional(
+      RunReportRequestMetricAggregationsItemEnumList,
+    ),
+    currencyCode: S.optional(S.String),
+    metricFilter: S.optional(FilterExpression),
+    keepEmptyRows: S.optional(S.Boolean),
+    orderBys: S.optional(OrderByList),
+    dateRanges: S.optional(DateRangeList),
+    returnPropertyQuota: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "RunReportRequest",
+}) as any as S.Schema<RunReportRequest>;
 
 export type RunReportRequestList = ReadonlyArray<RunReportRequest>;
-export const RunReportRequestList = /*@__PURE__*/ S.Array(RunReportRequest) as any as S.Schema<RunReportRequestList>;
+export const RunReportRequestList = /*@__PURE__*/ S.Array(
+  RunReportRequest,
+) as any as S.Schema<RunReportRequestList>;
 
 /** The batch request containing multiple report requests. */
 export interface BatchRunReportsRequest {
@@ -927,10 +1079,12 @@ export interface BatchRunReportsRequest {
   requests?: RunReportRequestList;
 }
 export const BatchRunReportsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requests": S.optional(RunReportRequestList),
-}),
-).annotate({ identifier: "BatchRunReportsRequest" }) as any as S.Schema<BatchRunReportsRequest>;
+  S.Struct({
+    requests: S.optional(RunReportRequestList),
+  }),
+).annotate({
+  identifier: "BatchRunReportsRequest",
+}) as any as S.Schema<BatchRunReportsRequest>;
 
 export interface BatchRunReportsPropertiesRequest {
   /** A Google Analytics property identifier whose events are tracked. Specified in the URL path and not the body. To learn more, see [where to find your Property ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id). This property must be specified for the batch. The property within RunReportRequest may either be unspecified or consistent with this property. Example: properties/1234 */
@@ -939,11 +1093,19 @@ export interface BatchRunReportsPropertiesRequest {
   body?: BatchRunReportsRequest;
 }
 export const BatchRunReportsPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "property": S.String.pipe(T.Label()),
-  "body": S.optional(BatchRunReportsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+property}:batchRunReports","baseUrl":"https://analyticsdata.googleapis.com/"})),
-).annotate({ identifier: "BatchRunReportsPropertiesRequest" }) as any as S.Schema<BatchRunReportsPropertiesRequest>;
+  S.Struct({
+    property: S.String.pipe(T.Label()),
+    body: S.optional(BatchRunReportsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+property}:batchRunReports",
+      baseUrl: "https://analyticsdata.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "BatchRunReportsPropertiesRequest",
+}) as any as S.Schema<BatchRunReportsPropertiesRequest>;
 
 /** The response report table corresponding to a request. */
 export interface RunReportResponse {
@@ -969,22 +1131,26 @@ export interface RunReportResponse {
   propertyQuota?: PropertyQuota;
 }
 export const RunReportResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "metricHeaders": S.optional(MetricHeaderList),
-  "metadata": S.optional(ResponseMetaData),
-  "totals": S.optional(RowList),
-  "kind": S.optional(S.String),
-  "dimensionHeaders": S.optional(DimensionHeaderList),
-  "rows": S.optional(RowList),
-  "minimums": S.optional(RowList),
-  "maximums": S.optional(RowList),
-  "rowCount": S.optional(S.Number),
-  "propertyQuota": S.optional(PropertyQuota),
-}),
-).annotate({ identifier: "RunReportResponse" }) as any as S.Schema<RunReportResponse>;
+  S.Struct({
+    metricHeaders: S.optional(MetricHeaderList),
+    metadata: S.optional(ResponseMetaData),
+    totals: S.optional(RowList),
+    kind: S.optional(S.String),
+    dimensionHeaders: S.optional(DimensionHeaderList),
+    rows: S.optional(RowList),
+    minimums: S.optional(RowList),
+    maximums: S.optional(RowList),
+    rowCount: S.optional(S.Number),
+    propertyQuota: S.optional(PropertyQuota),
+  }),
+).annotate({
+  identifier: "RunReportResponse",
+}) as any as S.Schema<RunReportResponse>;
 
 export type RunReportResponseList = ReadonlyArray<RunReportResponse>;
-export const RunReportResponseList = /*@__PURE__*/ S.Array(RunReportResponse) as any as S.Schema<RunReportResponseList>;
+export const RunReportResponseList = /*@__PURE__*/ S.Array(
+  RunReportResponse,
+) as any as S.Schema<RunReportResponseList>;
 
 /** The batch response containing multiple reports. */
 export interface BatchRunReportsResponse {
@@ -994,14 +1160,20 @@ export interface BatchRunReportsResponse {
   reports?: RunReportResponseList;
 }
 export const BatchRunReportsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "reports": S.optional(RunReportResponseList),
-}),
-).annotate({ identifier: "BatchRunReportsResponse" }) as any as S.Schema<BatchRunReportsResponse>;
+  S.Struct({
+    kind: S.optional(S.String),
+    reports: S.optional(RunReportResponseList),
+  }),
+).annotate({
+  identifier: "BatchRunReportsResponse",
+}) as any as S.Schema<BatchRunReportsResponse>;
 
-export type CheckCompatibilityRequestCompatibilityFilterEnum = "COMPATIBILITY_UNSPECIFIED" | "COMPATIBLE" | "INCOMPATIBLE";
-export const CheckCompatibilityRequestCompatibilityFilterEnum = /*@__PURE__*/ S.String;
+export type CheckCompatibilityRequestCompatibilityFilterEnum =
+  | "COMPATIBILITY_UNSPECIFIED"
+  | "COMPATIBLE"
+  | "INCOMPATIBLE";
+export const CheckCompatibilityRequestCompatibilityFilterEnum =
+  /*@__PURE__*/ S.String;
 
 /** The request for compatibility information for a report's dimensions and metrics. Check compatibility provides a preview of the compatibility of a report; fields shared with the `runReport` request should be the same values as in your `runReport` request. */
 export interface CheckCompatibilityRequest {
@@ -1010,21 +1182,27 @@ export interface CheckCompatibilityRequest {
   /** The filter clause of metrics. `metricFilter` should be the same value as in your `runReport` request */
   metricFilter?: FilterExpression;
   /** Filters the dimensions and metrics in the response to just this compatibility. Commonly used as `”compatibilityFilter”: “COMPATIBLE”` to only return compatible dimensions & metrics. */
-  compatibilityFilter?: CheckCompatibilityRequestCompatibilityFilterEnum | (string & {});
+  compatibilityFilter?:
+    | CheckCompatibilityRequestCompatibilityFilterEnum
+    | (string & {});
   /** The filter clause of dimensions. `dimensionFilter` should be the same value as in your `runReport` request. */
   dimensionFilter?: FilterExpression;
   /** The dimensions in this report. `dimensions` should be the same value as in your `runReport` request. */
   dimensions?: DimensionList;
 }
 export const CheckCompatibilityRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "metrics": S.optional(MetricList),
-  "metricFilter": S.optional(FilterExpression),
-  "compatibilityFilter": S.optional(CheckCompatibilityRequestCompatibilityFilterEnum),
-  "dimensionFilter": S.optional(FilterExpression),
-  "dimensions": S.optional(DimensionList),
-}),
-).annotate({ identifier: "CheckCompatibilityRequest" }) as any as S.Schema<CheckCompatibilityRequest>;
+  S.Struct({
+    metrics: S.optional(MetricList),
+    metricFilter: S.optional(FilterExpression),
+    compatibilityFilter: S.optional(
+      CheckCompatibilityRequestCompatibilityFilterEnum,
+    ),
+    dimensionFilter: S.optional(FilterExpression),
+    dimensions: S.optional(DimensionList),
+  }),
+).annotate({
+  identifier: "CheckCompatibilityRequest",
+}) as any as S.Schema<CheckCompatibilityRequest>;
 
 export interface CheckCompatibilityPropertiesRequest {
   /** A Google Analytics property identifier whose events are tracked. To learn more, see [where to find your Property ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id). `property` should be the same value as in your `runReport` request. Example: properties/1234 */
@@ -1033,11 +1211,19 @@ export interface CheckCompatibilityPropertiesRequest {
   body?: CheckCompatibilityRequest;
 }
 export const CheckCompatibilityPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "property": S.String.pipe(T.Label()),
-  "body": S.optional(CheckCompatibilityRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+property}:checkCompatibility","baseUrl":"https://analyticsdata.googleapis.com/"})),
-).annotate({ identifier: "CheckCompatibilityPropertiesRequest" }) as any as S.Schema<CheckCompatibilityPropertiesRequest>;
+  S.Struct({
+    property: S.String.pipe(T.Label()),
+    body: S.optional(CheckCompatibilityRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+property}:checkCompatibility",
+      baseUrl: "https://analyticsdata.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CheckCompatibilityPropertiesRequest",
+}) as any as S.Schema<CheckCompatibilityPropertiesRequest>;
 
 /** Explains a dimension. */
 export interface DimensionMetadata {
@@ -1055,17 +1241,22 @@ export interface DimensionMetadata {
   category?: string;
 }
 export const DimensionMetadata = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "apiName": S.optional(S.String),
-  "description": S.optional(S.String),
-  "uiName": S.optional(S.String),
-  "deprecatedApiNames": S.optional(StringList),
-  "customDefinition": S.optional(S.Boolean),
-  "category": S.optional(S.String),
-}),
-).annotate({ identifier: "DimensionMetadata" }) as any as S.Schema<DimensionMetadata>;
+  S.Struct({
+    apiName: S.optional(S.String),
+    description: S.optional(S.String),
+    uiName: S.optional(S.String),
+    deprecatedApiNames: S.optional(StringList),
+    customDefinition: S.optional(S.Boolean),
+    category: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DimensionMetadata",
+}) as any as S.Schema<DimensionMetadata>;
 
-export type DimensionCompatibilityCompatibilityEnum = "COMPATIBILITY_UNSPECIFIED" | "COMPATIBLE" | "INCOMPATIBLE";
+export type DimensionCompatibilityCompatibilityEnum =
+  | "COMPATIBILITY_UNSPECIFIED"
+  | "COMPATIBLE"
+  | "INCOMPATIBLE";
 export const DimensionCompatibilityCompatibilityEnum = /*@__PURE__*/ S.String;
 
 /** The compatibility for a single dimension. */
@@ -1076,22 +1267,45 @@ export interface DimensionCompatibility {
   compatibility?: DimensionCompatibilityCompatibilityEnum;
 }
 export const DimensionCompatibility = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dimensionMetadata": S.optional(DimensionMetadata),
-  "compatibility": S.optional(DimensionCompatibilityCompatibilityEnum),
-}),
-).annotate({ identifier: "DimensionCompatibility" }) as any as S.Schema<DimensionCompatibility>;
+  S.Struct({
+    dimensionMetadata: S.optional(DimensionMetadata),
+    compatibility: S.optional(DimensionCompatibilityCompatibilityEnum),
+  }),
+).annotate({
+  identifier: "DimensionCompatibility",
+}) as any as S.Schema<DimensionCompatibility>;
 
 export type DimensionCompatibilityList = ReadonlyArray<DimensionCompatibility>;
-export const DimensionCompatibilityList = /*@__PURE__*/ S.Array(DimensionCompatibility) as any as S.Schema<DimensionCompatibilityList>;
+export const DimensionCompatibilityList = /*@__PURE__*/ S.Array(
+  DimensionCompatibility,
+) as any as S.Schema<DimensionCompatibilityList>;
 
-export type MetricMetadataBlockedReasonsItemEnum = "BLOCKED_REASON_UNSPECIFIED" | "NO_REVENUE_METRICS" | "NO_COST_METRICS";
+export type MetricMetadataBlockedReasonsItemEnum =
+  | "BLOCKED_REASON_UNSPECIFIED"
+  | "NO_REVENUE_METRICS"
+  | "NO_COST_METRICS";
 export const MetricMetadataBlockedReasonsItemEnum = /*@__PURE__*/ S.String;
 
-export type MetricMetadataBlockedReasonsItemEnumList = ReadonlyArray<MetricMetadataBlockedReasonsItemEnum>;
-export const MetricMetadataBlockedReasonsItemEnumList = /*@__PURE__*/ S.Array(MetricMetadataBlockedReasonsItemEnum) as any as S.Schema<MetricMetadataBlockedReasonsItemEnumList>;
+export type MetricMetadataBlockedReasonsItemEnumList =
+  ReadonlyArray<MetricMetadataBlockedReasonsItemEnum>;
+export const MetricMetadataBlockedReasonsItemEnumList = /*@__PURE__*/ S.Array(
+  MetricMetadataBlockedReasonsItemEnum,
+) as any as S.Schema<MetricMetadataBlockedReasonsItemEnumList>;
 
-export type MetricMetadataTypeEnum = "METRIC_TYPE_UNSPECIFIED" | "TYPE_INTEGER" | "TYPE_FLOAT" | "TYPE_SECONDS" | "TYPE_MILLISECONDS" | "TYPE_MINUTES" | "TYPE_HOURS" | "TYPE_STANDARD" | "TYPE_CURRENCY" | "TYPE_FEET" | "TYPE_MILES" | "TYPE_METERS" | "TYPE_KILOMETERS";
+export type MetricMetadataTypeEnum =
+  | "METRIC_TYPE_UNSPECIFIED"
+  | "TYPE_INTEGER"
+  | "TYPE_FLOAT"
+  | "TYPE_SECONDS"
+  | "TYPE_MILLISECONDS"
+  | "TYPE_MINUTES"
+  | "TYPE_HOURS"
+  | "TYPE_STANDARD"
+  | "TYPE_CURRENCY"
+  | "TYPE_FEET"
+  | "TYPE_MILES"
+  | "TYPE_METERS"
+  | "TYPE_KILOMETERS";
 export const MetricMetadataTypeEnum = /*@__PURE__*/ S.String;
 
 /** Explains a metric. */
@@ -1116,20 +1330,23 @@ export interface MetricMetadata {
   type?: MetricMetadataTypeEnum;
 }
 export const MetricMetadata = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "uiName": S.optional(S.String),
-  "blockedReasons": S.optional(MetricMetadataBlockedReasonsItemEnumList),
-  "deprecatedApiNames": S.optional(StringList),
-  "apiName": S.optional(S.String),
-  "expression": S.optional(S.String),
-  "customDefinition": S.optional(S.Boolean),
-  "category": S.optional(S.String),
-  "description": S.optional(S.String),
-  "type": S.optional(MetricMetadataTypeEnum),
-}),
+  S.Struct({
+    uiName: S.optional(S.String),
+    blockedReasons: S.optional(MetricMetadataBlockedReasonsItemEnumList),
+    deprecatedApiNames: S.optional(StringList),
+    apiName: S.optional(S.String),
+    expression: S.optional(S.String),
+    customDefinition: S.optional(S.Boolean),
+    category: S.optional(S.String),
+    description: S.optional(S.String),
+    type: S.optional(MetricMetadataTypeEnum),
+  }),
 ).annotate({ identifier: "MetricMetadata" }) as any as S.Schema<MetricMetadata>;
 
-export type MetricCompatibilityCompatibilityEnum = "COMPATIBILITY_UNSPECIFIED" | "COMPATIBLE" | "INCOMPATIBLE";
+export type MetricCompatibilityCompatibilityEnum =
+  | "COMPATIBILITY_UNSPECIFIED"
+  | "COMPATIBLE"
+  | "INCOMPATIBLE";
 export const MetricCompatibilityCompatibilityEnum = /*@__PURE__*/ S.String;
 
 /** The compatibility for a single metric. */
@@ -1140,14 +1357,18 @@ export interface MetricCompatibility {
   compatibility?: MetricCompatibilityCompatibilityEnum;
 }
 export const MetricCompatibility = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "metricMetadata": S.optional(MetricMetadata),
-  "compatibility": S.optional(MetricCompatibilityCompatibilityEnum),
-}),
-).annotate({ identifier: "MetricCompatibility" }) as any as S.Schema<MetricCompatibility>;
+  S.Struct({
+    metricMetadata: S.optional(MetricMetadata),
+    compatibility: S.optional(MetricCompatibilityCompatibilityEnum),
+  }),
+).annotate({
+  identifier: "MetricCompatibility",
+}) as any as S.Schema<MetricCompatibility>;
 
 export type MetricCompatibilityList = ReadonlyArray<MetricCompatibility>;
-export const MetricCompatibilityList = /*@__PURE__*/ S.Array(MetricCompatibility) as any as S.Schema<MetricCompatibilityList>;
+export const MetricCompatibilityList = /*@__PURE__*/ S.Array(
+  MetricCompatibility,
+) as any as S.Schema<MetricCompatibilityList>;
 
 /** The compatibility response with the compatibility of each dimension & metric. */
 export interface CheckCompatibilityResponse {
@@ -1157,13 +1378,19 @@ export interface CheckCompatibilityResponse {
   metricCompatibilities?: MetricCompatibilityList;
 }
 export const CheckCompatibilityResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dimensionCompatibilities": S.optional(DimensionCompatibilityList),
-  "metricCompatibilities": S.optional(MetricCompatibilityList),
-}),
-).annotate({ identifier: "CheckCompatibilityResponse" }) as any as S.Schema<CheckCompatibilityResponse>;
+  S.Struct({
+    dimensionCompatibilities: S.optional(DimensionCompatibilityList),
+    metricCompatibilities: S.optional(MetricCompatibilityList),
+  }),
+).annotate({
+  identifier: "CheckCompatibilityResponse",
+}) as any as S.Schema<CheckCompatibilityResponse>;
 
-export type AudienceExportStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "ACTIVE" | "FAILED";
+export type AudienceExportStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "CREATING"
+  | "ACTIVE"
+  | "FAILED";
 export const AudienceExportStateEnum = /*@__PURE__*/ S.String;
 
 /** An audience dimension is a user attribute. Specific user attributed are requested and then later returned in the `QueryAudienceExportResponse`. */
@@ -1172,13 +1399,18 @@ export interface V1betaAudienceDimension {
   dimensionName?: string;
 }
 export const V1betaAudienceDimension = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dimensionName": S.optional(S.String),
-}),
-).annotate({ identifier: "V1betaAudienceDimension" }) as any as S.Schema<V1betaAudienceDimension>;
+  S.Struct({
+    dimensionName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "V1betaAudienceDimension",
+}) as any as S.Schema<V1betaAudienceDimension>;
 
-export type V1betaAudienceDimensionList = ReadonlyArray<V1betaAudienceDimension>;
-export const V1betaAudienceDimensionList = /*@__PURE__*/ S.Array(V1betaAudienceDimension) as any as S.Schema<V1betaAudienceDimensionList>;
+export type V1betaAudienceDimensionList =
+  ReadonlyArray<V1betaAudienceDimension>;
+export const V1betaAudienceDimensionList = /*@__PURE__*/ S.Array(
+  V1betaAudienceDimension,
+) as any as S.Schema<V1betaAudienceDimensionList>;
 
 /** An audience export is a list of users in an audience at the time of the list's creation. One audience may have multiple audience exports created for different days. */
 export interface AudienceExport {
@@ -1204,18 +1436,18 @@ export interface AudienceExport {
   rowCount?: number;
 }
 export const AudienceExport = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "errorMessage": S.optional(S.String),
-  "audienceDisplayName": S.optional(S.String),
-  "state": S.optional(AudienceExportStateEnum),
-  "audience": S.optional(S.String),
-  "dimensions": S.optional(V1betaAudienceDimensionList),
-  "beginCreatingTime": S.optional(S.String),
-  "percentageCompleted": S.optional(S.Number),
-  "name": S.optional(S.String),
-  "creationQuotaTokensCharged": S.optional(S.Number),
-  "rowCount": S.optional(S.Number),
-}),
+  S.Struct({
+    errorMessage: S.optional(S.String),
+    audienceDisplayName: S.optional(S.String),
+    state: S.optional(AudienceExportStateEnum),
+    audience: S.optional(S.String),
+    dimensions: S.optional(V1betaAudienceDimensionList),
+    beginCreatingTime: S.optional(S.String),
+    percentageCompleted: S.optional(S.Number),
+    name: S.optional(S.String),
+    creationQuotaTokensCharged: S.optional(S.Number),
+    rowCount: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "AudienceExport" }) as any as S.Schema<AudienceExport>;
 
 export interface CreatePropertiesAudienceExportsRequest {
@@ -1224,18 +1456,32 @@ export interface CreatePropertiesAudienceExportsRequest {
   /** Request body */
   body?: AudienceExport;
 }
-export const CreatePropertiesAudienceExportsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(AudienceExport.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+parent}/audienceExports","baseUrl":"https://analyticsdata.googleapis.com/"})),
-).annotate({ identifier: "CreatePropertiesAudienceExportsRequest" }) as any as S.Schema<CreatePropertiesAudienceExportsRequest>;
+export const CreatePropertiesAudienceExportsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(AudienceExport.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+parent}/audienceExports",
+        baseUrl: "https://analyticsdata.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreatePropertiesAudienceExportsRequest",
+}) as any as S.Schema<CreatePropertiesAudienceExportsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -1247,11 +1493,11 @@ export interface Status {
   details?: DocumentMapList;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(S.Number),
-  "message": S.optional(S.String),
-  "details": S.optional(DocumentMapList),
-}),
+  S.Struct({
+    code: S.optional(S.Number),
+    message: S.optional(S.String),
+    details: S.optional(DocumentMapList),
+  }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -1268,13 +1514,13 @@ export interface Operation {
   done?: boolean;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "error": S.optional(Status),
-  "name": S.optional(S.String),
-  "response": S.optional(DocumentMap),
-  "metadata": S.optional(DocumentMap),
-  "done": S.optional(S.Boolean),
-}),
+  S.Struct({
+    error: S.optional(Status),
+    name: S.optional(S.String),
+    response: S.optional(DocumentMap),
+    metadata: S.optional(DocumentMap),
+    done: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 export interface GetMetadataPropertiesRequest {
@@ -1282,16 +1528,28 @@ export interface GetMetadataPropertiesRequest {
   name: string;
 }
 export const GetMetadataPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}","baseUrl":"https://analyticsdata.googleapis.com/"})),
-).annotate({ identifier: "GetMetadataPropertiesRequest" }) as any as S.Schema<GetMetadataPropertiesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://analyticsdata.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetMetadataPropertiesRequest",
+}) as any as S.Schema<GetMetadataPropertiesRequest>;
 
 export type DimensionMetadataList = ReadonlyArray<DimensionMetadata>;
-export const DimensionMetadataList = /*@__PURE__*/ S.Array(DimensionMetadata) as any as S.Schema<DimensionMetadataList>;
+export const DimensionMetadataList = /*@__PURE__*/ S.Array(
+  DimensionMetadata,
+) as any as S.Schema<DimensionMetadataList>;
 
 export type MetricMetadataList = ReadonlyArray<MetricMetadata>;
-export const MetricMetadataList = /*@__PURE__*/ S.Array(MetricMetadata) as any as S.Schema<MetricMetadataList>;
+export const MetricMetadataList = /*@__PURE__*/ S.Array(
+  MetricMetadata,
+) as any as S.Schema<MetricMetadataList>;
 
 /** The metadata for a single comparison. */
 export interface ComparisonMetadata {
@@ -1303,15 +1561,19 @@ export interface ComparisonMetadata {
   description?: string;
 }
 export const ComparisonMetadata = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "apiName": S.optional(S.String),
-  "uiName": S.optional(S.String),
-  "description": S.optional(S.String),
-}),
-).annotate({ identifier: "ComparisonMetadata" }) as any as S.Schema<ComparisonMetadata>;
+  S.Struct({
+    apiName: S.optional(S.String),
+    uiName: S.optional(S.String),
+    description: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ComparisonMetadata",
+}) as any as S.Schema<ComparisonMetadata>;
 
 export type ComparisonMetadataList = ReadonlyArray<ComparisonMetadata>;
-export const ComparisonMetadataList = /*@__PURE__*/ S.Array(ComparisonMetadata) as any as S.Schema<ComparisonMetadataList>;
+export const ComparisonMetadataList = /*@__PURE__*/ S.Array(
+  ComparisonMetadata,
+) as any as S.Schema<ComparisonMetadataList>;
 
 /** The dimensions, metrics and comparisons currently accepted in reporting methods. */
 export interface Metadata {
@@ -1325,12 +1587,12 @@ export interface Metadata {
   name?: string;
 }
 export const Metadata = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dimensions": S.optional(DimensionMetadataList),
-  "metrics": S.optional(MetricMetadataList),
-  "comparisons": S.optional(ComparisonMetadataList),
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    dimensions: S.optional(DimensionMetadataList),
+    metrics: S.optional(MetricMetadataList),
+    comparisons: S.optional(ComparisonMetadataList),
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Metadata" }) as any as S.Schema<Metadata>;
 
 export interface GetPropertiesAudienceExportsRequest {
@@ -1338,10 +1600,18 @@ export interface GetPropertiesAudienceExportsRequest {
   name: string;
 }
 export const GetPropertiesAudienceExportsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}","baseUrl":"https://analyticsdata.googleapis.com/"})),
-).annotate({ identifier: "GetPropertiesAudienceExportsRequest" }) as any as S.Schema<GetPropertiesAudienceExportsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://analyticsdata.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetPropertiesAudienceExportsRequest",
+}) as any as S.Schema<GetPropertiesAudienceExportsRequest>;
 
 export interface ListPropertiesAudienceExportsRequest {
   /** Required. All audience exports for this property will be listed in the response. Format: `properties/{property}` */
@@ -1351,16 +1621,27 @@ export interface ListPropertiesAudienceExportsRequest {
   /** Optional. A page token, received from a previous `ListAudienceExports` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAudienceExports` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListPropertiesAudienceExportsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+parent}/audienceExports","baseUrl":"https://analyticsdata.googleapis.com/"})),
-).annotate({ identifier: "ListPropertiesAudienceExportsRequest" }) as any as S.Schema<ListPropertiesAudienceExportsRequest>;
+export const ListPropertiesAudienceExportsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/{+parent}/audienceExports",
+        baseUrl: "https://analyticsdata.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListPropertiesAudienceExportsRequest",
+}) as any as S.Schema<ListPropertiesAudienceExportsRequest>;
 
 export type AudienceExportList = ReadonlyArray<AudienceExport>;
-export const AudienceExportList = /*@__PURE__*/ S.Array(AudienceExport) as any as S.Schema<AudienceExportList>;
+export const AudienceExportList = /*@__PURE__*/ S.Array(
+  AudienceExport,
+) as any as S.Schema<AudienceExportList>;
 
 /** A list of all audience exports for a property. */
 export interface ListAudienceExportsResponse {
@@ -1370,11 +1651,13 @@ export interface ListAudienceExportsResponse {
   nextPageToken?: string;
 }
 export const ListAudienceExportsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "audienceExports": S.optional(AudienceExportList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListAudienceExportsResponse" }) as any as S.Schema<ListAudienceExportsResponse>;
+  S.Struct({
+    audienceExports: S.optional(AudienceExportList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListAudienceExportsResponse",
+}) as any as S.Schema<ListAudienceExportsResponse>;
 
 /** A request to list users in an audience export. */
 export interface QueryAudienceExportRequest {
@@ -1384,11 +1667,13 @@ export interface QueryAudienceExportRequest {
   limit?: string;
 }
 export const QueryAudienceExportRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "offset": S.optional(S.String),
-  "limit": S.optional(S.String),
-}),
-).annotate({ identifier: "QueryAudienceExportRequest" }) as any as S.Schema<QueryAudienceExportRequest>;
+  S.Struct({
+    offset: S.optional(S.String),
+    limit: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "QueryAudienceExportRequest",
+}) as any as S.Schema<QueryAudienceExportRequest>;
 
 export interface QueryPropertiesAudienceExportsRequest {
   /** Required. The name of the audience export to retrieve users from. Format: `properties/{property}/audienceExports/{audience_export}` */
@@ -1396,12 +1681,21 @@ export interface QueryPropertiesAudienceExportsRequest {
   /** Request body */
   body?: QueryAudienceExportRequest;
 }
-export const QueryPropertiesAudienceExportsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(QueryAudienceExportRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+name}:query","baseUrl":"https://analyticsdata.googleapis.com/"})),
-).annotate({ identifier: "QueryPropertiesAudienceExportsRequest" }) as any as S.Schema<QueryPropertiesAudienceExportsRequest>;
+export const QueryPropertiesAudienceExportsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(QueryAudienceExportRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+name}:query",
+        baseUrl: "https://analyticsdata.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "QueryPropertiesAudienceExportsRequest",
+}) as any as S.Schema<QueryPropertiesAudienceExportsRequest>;
 
 /** The value of a dimension. */
 export interface V1betaAudienceDimensionValue {
@@ -1409,13 +1703,18 @@ export interface V1betaAudienceDimensionValue {
   value?: string;
 }
 export const V1betaAudienceDimensionValue = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "value": S.optional(S.String),
-}),
-).annotate({ identifier: "V1betaAudienceDimensionValue" }) as any as S.Schema<V1betaAudienceDimensionValue>;
+  S.Struct({
+    value: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "V1betaAudienceDimensionValue",
+}) as any as S.Schema<V1betaAudienceDimensionValue>;
 
-export type V1betaAudienceDimensionValueList = ReadonlyArray<V1betaAudienceDimensionValue>;
-export const V1betaAudienceDimensionValueList = /*@__PURE__*/ S.Array(V1betaAudienceDimensionValue) as any as S.Schema<V1betaAudienceDimensionValueList>;
+export type V1betaAudienceDimensionValueList =
+  ReadonlyArray<V1betaAudienceDimensionValue>;
+export const V1betaAudienceDimensionValueList = /*@__PURE__*/ S.Array(
+  V1betaAudienceDimensionValue,
+) as any as S.Schema<V1betaAudienceDimensionValueList>;
 
 /** Dimension value attributes for the audience user row. */
 export interface V1betaAudienceRow {
@@ -1423,13 +1722,17 @@ export interface V1betaAudienceRow {
   dimensionValues?: V1betaAudienceDimensionValueList;
 }
 export const V1betaAudienceRow = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dimensionValues": S.optional(V1betaAudienceDimensionValueList),
-}),
-).annotate({ identifier: "V1betaAudienceRow" }) as any as S.Schema<V1betaAudienceRow>;
+  S.Struct({
+    dimensionValues: S.optional(V1betaAudienceDimensionValueList),
+  }),
+).annotate({
+  identifier: "V1betaAudienceRow",
+}) as any as S.Schema<V1betaAudienceRow>;
 
 export type V1betaAudienceRowList = ReadonlyArray<V1betaAudienceRow>;
-export const V1betaAudienceRowList = /*@__PURE__*/ S.Array(V1betaAudienceRow) as any as S.Schema<V1betaAudienceRowList>;
+export const V1betaAudienceRowList = /*@__PURE__*/ S.Array(
+  V1betaAudienceRow,
+) as any as S.Schema<V1betaAudienceRowList>;
 
 /** A list of users in an audience export. */
 export interface QueryAudienceExportResponse {
@@ -1441,12 +1744,14 @@ export interface QueryAudienceExportResponse {
   rowCount?: number;
 }
 export const QueryAudienceExportResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "audienceExport": S.optional(AudienceExport),
-  "audienceRows": S.optional(V1betaAudienceRowList),
-  "rowCount": S.optional(S.Number),
-}),
-).annotate({ identifier: "QueryAudienceExportResponse" }) as any as S.Schema<QueryAudienceExportResponse>;
+  S.Struct({
+    audienceExport: S.optional(AudienceExport),
+    audienceRows: S.optional(V1betaAudienceRowList),
+    rowCount: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "QueryAudienceExportResponse",
+}) as any as S.Schema<QueryAudienceExportResponse>;
 
 export interface RunPivotReportPropertiesRequest {
   /** A Google Analytics property identifier whose events are tracked. Specified in the URL path and not the body. To learn more, see [where to find your Property ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id). Within a batch request, this property should either be unspecified or consistent with the batch-level property. Example: properties/1234 */
@@ -1455,17 +1760,37 @@ export interface RunPivotReportPropertiesRequest {
   body?: RunPivotReportRequest;
 }
 export const RunPivotReportPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "property": S.String.pipe(T.Label()),
-  "body": S.optional(RunPivotReportRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+property}:runPivotReport","baseUrl":"https://analyticsdata.googleapis.com/"})),
-).annotate({ identifier: "RunPivotReportPropertiesRequest" }) as any as S.Schema<RunPivotReportPropertiesRequest>;
+  S.Struct({
+    property: S.String.pipe(T.Label()),
+    body: S.optional(RunPivotReportRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+property}:runPivotReport",
+      baseUrl: "https://analyticsdata.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "RunPivotReportPropertiesRequest",
+}) as any as S.Schema<RunPivotReportPropertiesRequest>;
 
-export type RunRealtimeReportRequestMetricAggregationsItemEnum = "METRIC_AGGREGATION_UNSPECIFIED" | "TOTAL" | "MINIMUM" | "MAXIMUM" | "COUNT";
-export const RunRealtimeReportRequestMetricAggregationsItemEnum = /*@__PURE__*/ S.String;
+export type RunRealtimeReportRequestMetricAggregationsItemEnum =
+  | "METRIC_AGGREGATION_UNSPECIFIED"
+  | "TOTAL"
+  | "MINIMUM"
+  | "MAXIMUM"
+  | "COUNT";
+export const RunRealtimeReportRequestMetricAggregationsItemEnum =
+  /*@__PURE__*/ S.String;
 
-export type RunRealtimeReportRequestMetricAggregationsItemEnumList = ReadonlyArray<RunRealtimeReportRequestMetricAggregationsItemEnum | (string & {})>;
-export const RunRealtimeReportRequestMetricAggregationsItemEnumList = /*@__PURE__*/ S.Array(RunRealtimeReportRequestMetricAggregationsItemEnum) as any as S.Schema<RunRealtimeReportRequestMetricAggregationsItemEnumList>;
+export type RunRealtimeReportRequestMetricAggregationsItemEnumList =
+  ReadonlyArray<
+    RunRealtimeReportRequestMetricAggregationsItemEnum | (string & {})
+  >;
+export const RunRealtimeReportRequestMetricAggregationsItemEnumList =
+  /*@__PURE__*/ S.Array(
+    RunRealtimeReportRequestMetricAggregationsItemEnum,
+  ) as any as S.Schema<RunRealtimeReportRequestMetricAggregationsItemEnumList>;
 
 /** A contiguous set of minutes: `startMinutesAgo`, `startMinutesAgo + 1`, ..., `endMinutesAgo`. Requests are allowed up to 2 minute ranges. */
 export interface MinuteRange {
@@ -1477,15 +1802,17 @@ export interface MinuteRange {
   name?: string;
 }
 export const MinuteRange = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "startMinutesAgo": S.optional(S.Number),
-  "endMinutesAgo": S.optional(S.Number),
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    startMinutesAgo: S.optional(S.Number),
+    endMinutesAgo: S.optional(S.Number),
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "MinuteRange" }) as any as S.Schema<MinuteRange>;
 
 export type MinuteRangeList = ReadonlyArray<MinuteRange>;
-export const MinuteRangeList = /*@__PURE__*/ S.Array(MinuteRange) as any as S.Schema<MinuteRangeList>;
+export const MinuteRangeList = /*@__PURE__*/ S.Array(
+  MinuteRange,
+) as any as S.Schema<MinuteRangeList>;
 
 /** The request to generate a realtime report. */
 export interface RunRealtimeReportRequest {
@@ -1509,18 +1836,22 @@ export interface RunRealtimeReportRequest {
   dimensionFilter?: FilterExpression;
 }
 export const RunRealtimeReportRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "returnPropertyQuota": S.optional(S.Boolean),
-  "limit": S.optional(S.String),
-  "metricAggregations": S.optional(RunRealtimeReportRequestMetricAggregationsItemEnumList),
-  "orderBys": S.optional(OrderByList),
-  "minuteRanges": S.optional(MinuteRangeList),
-  "metrics": S.optional(MetricList),
-  "metricFilter": S.optional(FilterExpression),
-  "dimensions": S.optional(DimensionList),
-  "dimensionFilter": S.optional(FilterExpression),
-}),
-).annotate({ identifier: "RunRealtimeReportRequest" }) as any as S.Schema<RunRealtimeReportRequest>;
+  S.Struct({
+    returnPropertyQuota: S.optional(S.Boolean),
+    limit: S.optional(S.String),
+    metricAggregations: S.optional(
+      RunRealtimeReportRequestMetricAggregationsItemEnumList,
+    ),
+    orderBys: S.optional(OrderByList),
+    minuteRanges: S.optional(MinuteRangeList),
+    metrics: S.optional(MetricList),
+    metricFilter: S.optional(FilterExpression),
+    dimensions: S.optional(DimensionList),
+    dimensionFilter: S.optional(FilterExpression),
+  }),
+).annotate({
+  identifier: "RunRealtimeReportRequest",
+}) as any as S.Schema<RunRealtimeReportRequest>;
 
 export interface RunRealtimeReportPropertiesRequest {
   /** A Google Analytics property identifier whose events are tracked. Specified in the URL path and not the body. To learn more, see [where to find your Property ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id). Example: properties/1234 */
@@ -1529,11 +1860,19 @@ export interface RunRealtimeReportPropertiesRequest {
   body?: RunRealtimeReportRequest;
 }
 export const RunRealtimeReportPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "property": S.String.pipe(T.Label()),
-  "body": S.optional(RunRealtimeReportRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+property}:runRealtimeReport","baseUrl":"https://analyticsdata.googleapis.com/"})),
-).annotate({ identifier: "RunRealtimeReportPropertiesRequest" }) as any as S.Schema<RunRealtimeReportPropertiesRequest>;
+  S.Struct({
+    property: S.String.pipe(T.Label()),
+    body: S.optional(RunRealtimeReportRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+property}:runRealtimeReport",
+      baseUrl: "https://analyticsdata.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "RunRealtimeReportPropertiesRequest",
+}) as any as S.Schema<RunRealtimeReportPropertiesRequest>;
 
 /** The response realtime report table corresponding to a request. */
 export interface RunRealtimeReportResponse {
@@ -1557,18 +1896,20 @@ export interface RunRealtimeReportResponse {
   metricHeaders?: MetricHeaderList;
 }
 export const RunRealtimeReportResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "maximums": S.optional(RowList),
-  "rowCount": S.optional(S.Number),
-  "minimums": S.optional(RowList),
-  "propertyQuota": S.optional(PropertyQuota),
-  "dimensionHeaders": S.optional(DimensionHeaderList),
-  "rows": S.optional(RowList),
-  "totals": S.optional(RowList),
-  "kind": S.optional(S.String),
-  "metricHeaders": S.optional(MetricHeaderList),
-}),
-).annotate({ identifier: "RunRealtimeReportResponse" }) as any as S.Schema<RunRealtimeReportResponse>;
+  S.Struct({
+    maximums: S.optional(RowList),
+    rowCount: S.optional(S.Number),
+    minimums: S.optional(RowList),
+    propertyQuota: S.optional(PropertyQuota),
+    dimensionHeaders: S.optional(DimensionHeaderList),
+    rows: S.optional(RowList),
+    totals: S.optional(RowList),
+    kind: S.optional(S.String),
+    metricHeaders: S.optional(MetricHeaderList),
+  }),
+).annotate({
+  identifier: "RunRealtimeReportResponse",
+}) as any as S.Schema<RunRealtimeReportResponse>;
 
 export interface RunReportPropertiesRequest {
   /** A Google Analytics property identifier whose events are tracked. Specified in the URL path and not the body. To learn more, see [where to find your Property ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id). Within a batch request, this property should either be unspecified or consistent with the batch-level property. Example: properties/1234 */
@@ -1577,13 +1918,26 @@ export interface RunReportPropertiesRequest {
   body?: RunReportRequest;
 }
 export const RunReportPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "property": S.String.pipe(T.Label()),
-  "body": S.optional(RunReportRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+property}:runReport","baseUrl":"https://analyticsdata.googleapis.com/"})),
-).annotate({ identifier: "RunReportPropertiesRequest" }) as any as S.Schema<RunReportPropertiesRequest>;
+  S.Struct({
+    property: S.String.pipe(T.Label()),
+    body: S.optional(RunReportRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+property}:runReport",
+      baseUrl: "https://analyticsdata.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "RunReportPropertiesRequest",
+}) as any as S.Schema<RunReportPropertiesRequest>;
 
-export type BatchRunPivotReportsPropertiesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type BatchRunPivotReportsPropertiesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Returns multiple pivot reports in a batch. All reports must be for the same Google Analytics property. */
 export const batchRunPivotReportsProperties: API.OperationMethod<
   BatchRunPivotReportsPropertiesRequest,
@@ -1598,7 +1952,12 @@ export const batchRunPivotReportsProperties: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BatchRunReportsPropertiesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type BatchRunReportsPropertiesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Returns multiple reports in a batch. All reports must be for the same Google Analytics property. */
 export const batchRunReportsProperties: API.OperationMethod<
   BatchRunReportsPropertiesRequest,
@@ -1613,7 +1972,12 @@ export const batchRunReportsProperties: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CheckCompatibilityPropertiesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CheckCompatibilityPropertiesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** This compatibility method lists dimensions and metrics that can be added to a report request and maintain compatibility. This method fails if the request's dimensions and metrics are incompatible. In Google Analytics, reports fail if they request incompatible dimensions and/or metrics; in that case, you will need to remove dimensions and/or metrics from the incompatible report until the report is compatible. The Realtime and Core reports have different compatibility rules. This method checks compatibility for Core reports. */
 export const checkCompatibilityProperties: API.OperationMethod<
   CheckCompatibilityPropertiesRequest,
@@ -1628,7 +1992,12 @@ export const checkCompatibilityProperties: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreatePropertiesAudienceExportsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreatePropertiesAudienceExportsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates an audience export for later retrieval. This method quickly returns the audience export's resource name and initiates a long running asynchronous request to form an audience export. To export the users in an audience export, first create the audience export through this method and then send the audience resource name to the `QueryAudienceExport` method. See [Creating an Audience Export](https://developers.google.com/analytics/devguides/reporting/data/v1/audience-list-basics) for an introduction to Audience Exports with examples. An audience export is a snapshot of the users currently in the audience at the time of audience export creation. Creating audience exports for one audience on different days will return different results as users enter and exit the audience. Audiences in Google Analytics 4 allow you to segment your users in the ways that are important to your business. To learn more, see https://support.google.com/analytics/answer/9267572. Audience exports contain the users in each audience. Audience Export APIs have some methods at alpha and other methods at beta stability. The intention is to advance methods to beta stability after some feedback and adoption. To give your feedback on this API, complete the [Google Analytics Audience Export API Feedback](https://forms.gle/EeA5u5LW6PEggtCEA) form. */
 export const createPropertiesAudienceExports: API.OperationMethod<
   CreatePropertiesAudienceExportsRequest,
@@ -1658,7 +2027,10 @@ export const getMetadataProperties: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetPropertiesAudienceExportsError = NotFound | Forbidden | GcpOpError;
+export type GetPropertiesAudienceExportsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets configuration metadata about a specific audience export. This method can be used to understand an audience export after it has been created. See [Creating an Audience Export](https://developers.google.com/analytics/devguides/reporting/data/v1/audience-list-basics) for an introduction to Audience Exports with examples. Audience Export APIs have some methods at alpha and other methods at beta stability. The intention is to advance methods to beta stability after some feedback and adoption. To give your feedback on this API, complete the [Google Analytics Audience Export API Feedback](https://forms.gle/EeA5u5LW6PEggtCEA) form. */
 export const getPropertiesAudienceExports: API.OperationMethod<
   GetPropertiesAudienceExportsRequest,
@@ -1673,7 +2045,10 @@ export const getPropertiesAudienceExports: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListPropertiesAudienceExportsError = NotFound | Forbidden | GcpOpError;
+export type ListPropertiesAudienceExportsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all audience exports for a property. This method can be used for you to find and reuse existing audience exports rather than creating unnecessary new audience exports. The same audience can have multiple audience exports that represent the export of users that were in an audience on different days. See [Creating an Audience Export](https://developers.google.com/analytics/devguides/reporting/data/v1/audience-list-basics) for an introduction to Audience Exports with examples. Audience Export APIs have some methods at alpha and other methods at beta stability. The intention is to advance methods to beta stability after some feedback and adoption. To give your feedback on this API, complete the [Google Analytics Audience Export API Feedback](https://forms.gle/EeA5u5LW6PEggtCEA) form. */
 export const listPropertiesAudienceExports: API.PaginatedOperationMethod<
   ListPropertiesAudienceExportsRequest,
@@ -1686,10 +2061,18 @@ export const listPropertiesAudienceExports: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type QueryPropertiesAudienceExportsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type QueryPropertiesAudienceExportsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Retrieves an audience export of users. After creating an audience, the users are not immediately available for exporting. First, a request to `CreateAudienceExport` is necessary to create an audience export of users, and then second, this method is used to retrieve the users in the audience export. See [Creating an Audience Export](https://developers.google.com/analytics/devguides/reporting/data/v1/audience-list-basics) for an introduction to Audience Exports with examples. Audiences in Google Analytics 4 allow you to segment your users in the ways that are important to your business. To learn more, see https://support.google.com/analytics/answer/9267572. Audience Export APIs have some methods at alpha and other methods at beta stability. The intention is to advance methods to beta stability after some feedback and adoption. To give your feedback on this API, complete the [Google Analytics Audience Export API Feedback](https://forms.gle/EeA5u5LW6PEggtCEA) form. */
 export const queryPropertiesAudienceExports: API.OperationMethod<
   QueryPropertiesAudienceExportsRequest,
@@ -1704,7 +2087,12 @@ export const queryPropertiesAudienceExports: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RunPivotReportPropertiesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RunPivotReportPropertiesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Returns a customized pivot report of your Google Analytics event data. Pivot reports are more advanced and expressive formats than regular reports. In a pivot report, dimensions are only visible if they are included in a pivot. Multiple pivots can be specified to further dissect your data. */
 export const runPivotReportProperties: API.OperationMethod<
   RunPivotReportPropertiesRequest,
@@ -1719,7 +2107,12 @@ export const runPivotReportProperties: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RunRealtimeReportPropertiesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RunRealtimeReportPropertiesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Returns a customized report of realtime event data for your property. Events appear in realtime reports seconds after they have been sent to the Google Analytics. Realtime reports show events and usage data for the periods of time ranging from the present moment to 30 minutes ago (up to 60 minutes for Google Analytics 360 properties). For a guide to constructing realtime requests & understanding responses, see [Creating a Realtime Report](https://developers.google.com/analytics/devguides/reporting/data/v1/realtime-basics). */
 export const runRealtimeReportProperties: API.OperationMethod<
   RunRealtimeReportPropertiesRequest,
@@ -1734,7 +2127,12 @@ export const runRealtimeReportProperties: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RunReportPropertiesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RunReportPropertiesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Returns a customized report of your Google Analytics event data. Reports contain statistics derived from data collected by the Google Analytics tracking code. The data returned from the API is as a table with columns for the requested dimensions and metrics. Metrics are individual measurements of user activity on your property, such as active users or event count. Dimensions break down metrics across some common criteria, such as country or event name. For a guide to constructing requests & understanding responses, see [Creating a Report](https://developers.google.com/analytics/devguides/reporting/data/v1/basics). */
 export const runReportProperties: API.OperationMethod<
   RunReportPropertiesRequest,
@@ -1748,4 +2146,3 @@ export const runReportProperties: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

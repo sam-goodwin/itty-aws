@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export interface ActivateSubscriptionsRequest {
@@ -67,11 +67,19 @@ export interface ActivateSubscriptionsRequest {
   subscriptionId: string;
 }
 export const ActivateSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "customerId": S.String.pipe(T.Label()),
-  "subscriptionId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"POST","uri":"apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/activate","baseUrl":"https://reseller.googleapis.com/"})),
-).annotate({ identifier: "ActivateSubscriptionsRequest" }) as any as S.Schema<ActivateSubscriptionsRequest>;
+  S.Struct({
+    customerId: S.String.pipe(T.Label()),
+    subscriptionId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/activate",
+      baseUrl: "https://reseller.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ActivateSubscriptionsRequest",
+}) as any as S.Schema<ActivateSubscriptionsRequest>;
 
 /** JSON template for a subscription renewal settings. */
 export interface RenewalSettings {
@@ -81,14 +89,18 @@ export interface RenewalSettings {
   kind?: string;
 }
 export const RenewalSettings = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "renewalType": S.optional(S.String),
-  "kind": S.optional(S.String),
-}),
-).annotate({ identifier: "RenewalSettings" }) as any as S.Schema<RenewalSettings>;
+  S.Struct({
+    renewalType: S.optional(S.String),
+    kind: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RenewalSettings",
+}) as any as S.Schema<RenewalSettings>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 export interface SubscriptionTrialSettings {
   /** Date when the trial ends. The value is in milliseconds using the UNIX Epoch format. See an example Epoch converter. */
@@ -97,11 +109,13 @@ export interface SubscriptionTrialSettings {
   isInTrial?: boolean;
 }
 export const SubscriptionTrialSettings = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "trialEndTime": S.optional(S.String),
-  "isInTrial": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "SubscriptionTrialSettings" }) as any as S.Schema<SubscriptionTrialSettings>;
+  S.Struct({
+    trialEndTime: S.optional(S.String),
+    isInTrial: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "SubscriptionTrialSettings",
+}) as any as S.Schema<SubscriptionTrialSettings>;
 
 export interface SubscriptionTransferInfo {
   /** The `skuId` of the current resold subscription. This is populated only when the customer has a subscription with a legacy SKU and the subscription resource is populated with the `skuId` of the SKU recommended for the transfer. */
@@ -112,12 +126,14 @@ export interface SubscriptionTransferInfo {
   minimumTransferableSeats?: number;
 }
 export const SubscriptionTransferInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "currentLegacySkuId": S.optional(S.String),
-  "transferabilityExpirationTime": S.optional(S.String),
-  "minimumTransferableSeats": S.optional(S.Number),
-}),
-).annotate({ identifier: "SubscriptionTransferInfo" }) as any as S.Schema<SubscriptionTransferInfo>;
+  S.Struct({
+    currentLegacySkuId: S.optional(S.String),
+    transferabilityExpirationTime: S.optional(S.String),
+    minimumTransferableSeats: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "SubscriptionTransferInfo",
+}) as any as S.Schema<SubscriptionTransferInfo>;
 
 export interface SubscriptionPlanCommitmentInterval {
   /** An annual commitment plan's interval's `startTime` in milliseconds using UNIX Epoch format. See an example Epoch converter. */
@@ -126,11 +142,13 @@ export interface SubscriptionPlanCommitmentInterval {
   endTime?: string;
 }
 export const SubscriptionPlanCommitmentInterval = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "startTime": S.optional(S.String),
-  "endTime": S.optional(S.String),
-}),
-).annotate({ identifier: "SubscriptionPlanCommitmentInterval" }) as any as S.Schema<SubscriptionPlanCommitmentInterval>;
+  S.Struct({
+    startTime: S.optional(S.String),
+    endTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SubscriptionPlanCommitmentInterval",
+}) as any as S.Schema<SubscriptionPlanCommitmentInterval>;
 
 export interface SubscriptionPlan {
   /** The `isCommitmentPlan` property's boolean value identifies the plan as an annual commitment plan: - `true` — The subscription's plan is an annual commitment plan. - `false` — The plan is not an annual commitment plan. */
@@ -141,12 +159,14 @@ export interface SubscriptionPlan {
   planName?: string;
 }
 export const SubscriptionPlan = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "isCommitmentPlan": S.optional(S.Boolean),
-  "commitmentInterval": S.optional(SubscriptionPlanCommitmentInterval),
-  "planName": S.optional(S.String),
-}),
-).annotate({ identifier: "SubscriptionPlan" }) as any as S.Schema<SubscriptionPlan>;
+  S.Struct({
+    isCommitmentPlan: S.optional(S.Boolean),
+    commitmentInterval: S.optional(SubscriptionPlanCommitmentInterval),
+    planName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SubscriptionPlan",
+}) as any as S.Schema<SubscriptionPlan>;
 
 /** JSON template for subscription seats. */
 export interface Seats {
@@ -160,12 +180,12 @@ export interface Seats {
   numberOfSeats?: number;
 }
 export const Seats = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "maximumNumberOfSeats": S.optional(S.Number),
-  "licensedNumberOfSeats": S.optional(S.Number),
-  "kind": S.optional(S.String),
-  "numberOfSeats": S.optional(S.Number),
-}),
+  S.Struct({
+    maximumNumberOfSeats: S.optional(S.Number),
+    licensedNumberOfSeats: S.optional(S.Number),
+    kind: S.optional(S.String),
+    numberOfSeats: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "Seats" }) as any as S.Schema<Seats>;
 
 /** JSON template for a subscription. */
@@ -208,26 +228,26 @@ export interface Subscription {
   billingMethod?: string;
 }
 export const Subscription = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kind": S.optional(S.String),
-  "customerDomain": S.optional(S.String),
-  "renewalSettings": S.optional(RenewalSettings),
-  "suspensionReasons": S.optional(StringList),
-  "trialSettings": S.optional(SubscriptionTrialSettings),
-  "transferInfo": S.optional(SubscriptionTransferInfo),
-  "subscriptionId": S.optional(S.String),
-  "plan": S.optional(SubscriptionPlan),
-  "purchaseOrderId": S.optional(S.String),
-  "status": S.optional(S.String),
-  "dealCode": S.optional(S.String),
-  "resourceUiUrl": S.optional(S.String),
-  "customerId": S.optional(S.String),
-  "skuName": S.optional(S.String),
-  "creationTime": S.optional(S.String),
-  "skuId": S.optional(S.String),
-  "seats": S.optional(Seats),
-  "billingMethod": S.optional(S.String),
-}),
+  S.Struct({
+    kind: S.optional(S.String),
+    customerDomain: S.optional(S.String),
+    renewalSettings: S.optional(RenewalSettings),
+    suspensionReasons: S.optional(StringList),
+    trialSettings: S.optional(SubscriptionTrialSettings),
+    transferInfo: S.optional(SubscriptionTransferInfo),
+    subscriptionId: S.optional(S.String),
+    plan: S.optional(SubscriptionPlan),
+    purchaseOrderId: S.optional(S.String),
+    status: S.optional(S.String),
+    dealCode: S.optional(S.String),
+    resourceUiUrl: S.optional(S.String),
+    customerId: S.optional(S.String),
+    skuName: S.optional(S.String),
+    creationTime: S.optional(S.String),
+    skuId: S.optional(S.String),
+    seats: S.optional(Seats),
+    billingMethod: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Subscription" }) as any as S.Schema<Subscription>;
 
 /** JSON template for the ChangePlan rpc request. */
@@ -244,14 +264,16 @@ export interface ChangePlanRequest {
   seats?: Seats;
 }
 export const ChangePlanRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dealCode": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "planName": S.optional(S.String),
-  "purchaseOrderId": S.optional(S.String),
-  "seats": S.optional(Seats),
-}),
-).annotate({ identifier: "ChangePlanRequest" }) as any as S.Schema<ChangePlanRequest>;
+  S.Struct({
+    dealCode: S.optional(S.String),
+    kind: S.optional(S.String),
+    planName: S.optional(S.String),
+    purchaseOrderId: S.optional(S.String),
+    seats: S.optional(Seats),
+  }),
+).annotate({
+  identifier: "ChangePlanRequest",
+}) as any as S.Schema<ChangePlanRequest>;
 
 export interface ChangePlanSubscriptionsRequest {
   /** This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable. */
@@ -262,12 +284,20 @@ export interface ChangePlanSubscriptionsRequest {
   body?: ChangePlanRequest;
 }
 export const ChangePlanSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "customerId": S.String.pipe(T.Label()),
-  "subscriptionId": S.String.pipe(T.Label()),
-  "body": S.optional(ChangePlanRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/changePlan","baseUrl":"https://reseller.googleapis.com/"})),
-).annotate({ identifier: "ChangePlanSubscriptionsRequest" }) as any as S.Schema<ChangePlanSubscriptionsRequest>;
+  S.Struct({
+    customerId: S.String.pipe(T.Label()),
+    subscriptionId: S.String.pipe(T.Label()),
+    body: S.optional(ChangePlanRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/changePlan",
+      baseUrl: "https://reseller.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ChangePlanSubscriptionsRequest",
+}) as any as S.Schema<ChangePlanSubscriptionsRequest>;
 
 export interface ChangeRenewalSettingsSubscriptionsRequest {
   /** This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable. */
@@ -277,13 +307,22 @@ export interface ChangeRenewalSettingsSubscriptionsRequest {
   /** Request body */
   body?: RenewalSettings;
 }
-export const ChangeRenewalSettingsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "customerId": S.String.pipe(T.Label()),
-  "subscriptionId": S.String.pipe(T.Label()),
-  "body": S.optional(RenewalSettings.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/changeRenewalSettings","baseUrl":"https://reseller.googleapis.com/"})),
-).annotate({ identifier: "ChangeRenewalSettingsSubscriptionsRequest" }) as any as S.Schema<ChangeRenewalSettingsSubscriptionsRequest>;
+export const ChangeRenewalSettingsSubscriptionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      customerId: S.String.pipe(T.Label()),
+      subscriptionId: S.String.pipe(T.Label()),
+      body: S.optional(RenewalSettings.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/changeRenewalSettings",
+        baseUrl: "https://reseller.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ChangeRenewalSettingsSubscriptionsRequest",
+  }) as any as S.Schema<ChangeRenewalSettingsSubscriptionsRequest>;
 
 export interface ChangeSeatsSubscriptionsRequest {
   /** This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable. */
@@ -294,14 +333,25 @@ export interface ChangeSeatsSubscriptionsRequest {
   body?: Seats;
 }
 export const ChangeSeatsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "customerId": S.String.pipe(T.Label()),
-  "subscriptionId": S.String.pipe(T.Label()),
-  "body": S.optional(Seats.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/changeSeats","baseUrl":"https://reseller.googleapis.com/"})),
-).annotate({ identifier: "ChangeSeatsSubscriptionsRequest" }) as any as S.Schema<ChangeSeatsSubscriptionsRequest>;
+  S.Struct({
+    customerId: S.String.pipe(T.Label()),
+    subscriptionId: S.String.pipe(T.Label()),
+    body: S.optional(Seats.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/changeSeats",
+      baseUrl: "https://reseller.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ChangeSeatsSubscriptionsRequest",
+}) as any as S.Schema<ChangeSeatsSubscriptionsRequest>;
 
-export type DeleteSubscriptionsDeletionTypeEnum = "deletion_type_undefined" | "cancel" | "transfer_to_direct";
+export type DeleteSubscriptionsDeletionTypeEnum =
+  | "deletion_type_undefined"
+  | "cancel"
+  | "transfer_to_direct";
 export const DeleteSubscriptionsDeletionTypeEnum = /*@__PURE__*/ S.String;
 
 export interface DeleteSubscriptionsRequest {
@@ -313,27 +363,45 @@ export interface DeleteSubscriptionsRequest {
   deletionType: DeleteSubscriptionsDeletionTypeEnum | (string & {});
 }
 export const DeleteSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "customerId": S.String.pipe(T.Label()),
-  "subscriptionId": S.String.pipe(T.Label()),
-  "deletionType": DeleteSubscriptionsDeletionTypeEnum.pipe(T.Query()),
-}).pipe(T.Http({"method":"DELETE","uri":"apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}","baseUrl":"https://reseller.googleapis.com/"})),
-).annotate({ identifier: "DeleteSubscriptionsRequest" }) as any as S.Schema<DeleteSubscriptionsRequest>;
+  S.Struct({
+    customerId: S.String.pipe(T.Label()),
+    subscriptionId: S.String.pipe(T.Label()),
+    deletionType: DeleteSubscriptionsDeletionTypeEnum.pipe(T.Query()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}",
+      baseUrl: "https://reseller.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteSubscriptionsRequest",
+}) as any as S.Schema<DeleteSubscriptionsRequest>;
 
 export interface DeleteSubscriptionsResponse {}
 export const DeleteSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "DeleteSubscriptionsResponse" }) as any as S.Schema<DeleteSubscriptionsResponse>;
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteSubscriptionsResponse",
+}) as any as S.Schema<DeleteSubscriptionsResponse>;
 
 export interface GetCustomersRequest {
   /** This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable. */
   customerId: string;
 }
 export const GetCustomersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "customerId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"apps/reseller/v1/customers/{customerId}","baseUrl":"https://reseller.googleapis.com/"})),
-).annotate({ identifier: "GetCustomersRequest" }) as any as S.Schema<GetCustomersRequest>;
+  S.Struct({
+    customerId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "apps/reseller/v1/customers/{customerId}",
+      baseUrl: "https://reseller.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetCustomersRequest",
+}) as any as S.Schema<GetCustomersRequest>;
 
 /** JSON template for address of a customer. */
 export interface Address {
@@ -359,21 +427,24 @@ export interface Address {
   kind?: string;
 }
 export const Address = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "contactName": S.optional(S.String),
-  "organizationName": S.optional(S.String),
-  "addressLine3": S.optional(S.String),
-  "postalCode": S.optional(S.String),
-  "countryCode": S.optional(S.String),
-  "region": S.optional(S.String),
-  "locality": S.optional(S.String),
-  "addressLine2": S.optional(S.String),
-  "addressLine1": S.optional(S.String),
-  "kind": S.optional(S.String),
-}),
+  S.Struct({
+    contactName: S.optional(S.String),
+    organizationName: S.optional(S.String),
+    addressLine3: S.optional(S.String),
+    postalCode: S.optional(S.String),
+    countryCode: S.optional(S.String),
+    region: S.optional(S.String),
+    locality: S.optional(S.String),
+    addressLine2: S.optional(S.String),
+    addressLine1: S.optional(S.String),
+    kind: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Address" }) as any as S.Schema<Address>;
 
-export type CustomerCustomerTypeEnum = "customerTypeUnspecified" | "domain" | "team";
+export type CustomerCustomerTypeEnum =
+  | "customerTypeUnspecified"
+  | "domain"
+  | "team";
 export const CustomerCustomerTypeEnum = /*@__PURE__*/ S.String;
 
 /** JSON template for primary admin in case of TEAM customers */
@@ -382,9 +453,9 @@ export interface PrimaryAdmin {
   primaryEmail?: string;
 }
 export const PrimaryAdmin = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "primaryEmail": S.optional(S.String),
-}),
+  S.Struct({
+    primaryEmail: S.optional(S.String),
+  }),
 ).annotate({ identifier: "PrimaryAdmin" }) as any as S.Schema<PrimaryAdmin>;
 
 /** When a Google customer's account is registered with a reseller, the customer's subscriptions for Google services are managed by this reseller. A customer is described by a primary domain name and a physical address. */
@@ -411,18 +482,18 @@ export interface Customer {
   phoneNumber?: string;
 }
 export const Customer = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "postalAddress": S.optional(Address),
-  "alternateEmail": S.optional(S.String),
-  "customerType": S.optional(CustomerCustomerTypeEnum),
-  "primaryAdmin": S.optional(PrimaryAdmin),
-  "customerDomain": S.optional(S.String),
-  "customerDomainVerified": S.optional(S.Boolean),
-  "kind": S.optional(S.String),
-  "resourceUiUrl": S.optional(S.String),
-  "customerId": S.optional(S.String),
-  "phoneNumber": S.optional(S.String),
-}),
+  S.Struct({
+    postalAddress: S.optional(Address),
+    alternateEmail: S.optional(S.String),
+    customerType: S.optional(CustomerCustomerTypeEnum),
+    primaryAdmin: S.optional(PrimaryAdmin),
+    customerDomain: S.optional(S.String),
+    customerDomainVerified: S.optional(S.Boolean),
+    kind: S.optional(S.String),
+    resourceUiUrl: S.optional(S.String),
+    customerId: S.optional(S.String),
+    phoneNumber: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Customer" }) as any as S.Schema<Customer>;
 
 export interface GetSubscriptionsRequest {
@@ -432,16 +503,33 @@ export interface GetSubscriptionsRequest {
   subscriptionId: string;
 }
 export const GetSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "customerId": S.String.pipe(T.Label()),
-  "subscriptionId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}","baseUrl":"https://reseller.googleapis.com/"})),
-).annotate({ identifier: "GetSubscriptionsRequest" }) as any as S.Schema<GetSubscriptionsRequest>;
+  S.Struct({
+    customerId: S.String.pipe(T.Label()),
+    subscriptionId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}",
+      baseUrl: "https://reseller.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetSubscriptionsRequest",
+}) as any as S.Schema<GetSubscriptionsRequest>;
 
 export interface GetwatchdetailsResellernotifyRequest {}
-export const GetwatchdetailsResellernotifyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}).pipe(T.Http({"method":"GET","uri":"apps/reseller/v1/resellernotify/getwatchdetails","baseUrl":"https://reseller.googleapis.com/"})),
-).annotate({ identifier: "GetwatchdetailsResellernotifyRequest" }) as any as S.Schema<GetwatchdetailsResellernotifyRequest>;
+export const GetwatchdetailsResellernotifyRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({}).pipe(
+      T.Http({
+        method: "GET",
+        uri: "apps/reseller/v1/resellernotify/getwatchdetails",
+        baseUrl: "https://reseller.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetwatchdetailsResellernotifyRequest",
+}) as any as S.Schema<GetwatchdetailsResellernotifyRequest>;
 
 /** JSON template for resellernotify getwatchdetails response. */
 export interface ResellernotifyGetwatchdetailsResponse {
@@ -450,12 +538,15 @@ export interface ResellernotifyGetwatchdetailsResponse {
   /** Topic name of the PubSub */
   topicName?: string;
 }
-export const ResellernotifyGetwatchdetailsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "serviceAccountEmailAddresses": S.optional(StringList),
-  "topicName": S.optional(S.String),
-}),
-).annotate({ identifier: "ResellernotifyGetwatchdetailsResponse" }) as any as S.Schema<ResellernotifyGetwatchdetailsResponse>;
+export const ResellernotifyGetwatchdetailsResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      serviceAccountEmailAddresses: S.optional(StringList),
+      topicName: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ResellernotifyGetwatchdetailsResponse",
+}) as any as S.Schema<ResellernotifyGetwatchdetailsResponse>;
 
 export interface InsertCustomersRequest {
   /** The `customerAuthToken` query string is required when creating a resold account that transfers a direct customer's subscription or transfers another reseller customer's subscription to your reseller management. This is a hexadecimal authentication token needed to complete the subscription transfer. For more information, see the administrator help center. */
@@ -464,13 +555,24 @@ export interface InsertCustomersRequest {
   body?: Customer;
 }
 export const InsertCustomersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "customerAuthToken": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Customer.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"apps/reseller/v1/customers","baseUrl":"https://reseller.googleapis.com/"})),
-).annotate({ identifier: "InsertCustomersRequest" }) as any as S.Schema<InsertCustomersRequest>;
+  S.Struct({
+    customerAuthToken: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(Customer.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "apps/reseller/v1/customers",
+      baseUrl: "https://reseller.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "InsertCustomersRequest",
+}) as any as S.Schema<InsertCustomersRequest>;
 
-export type InsertSubscriptionsActionEnum = "actionUnspecified" | "buy" | "switch";
+export type InsertSubscriptionsActionEnum =
+  | "actionUnspecified"
+  | "buy"
+  | "switch";
 export const InsertSubscriptionsActionEnum = /*@__PURE__*/ S.String;
 
 export interface InsertSubscriptionsRequest {
@@ -486,14 +588,22 @@ export interface InsertSubscriptionsRequest {
   body?: Subscription;
 }
 export const InsertSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sourceSkuId": S.optional(S.String.pipe(T.Query())),
-  "action": S.optional(InsertSubscriptionsActionEnum.pipe(T.Query())),
-  "customerId": S.String.pipe(T.Label()),
-  "customerAuthToken": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Subscription.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"apps/reseller/v1/customers/{customerId}/subscriptions","baseUrl":"https://reseller.googleapis.com/"})),
-).annotate({ identifier: "InsertSubscriptionsRequest" }) as any as S.Schema<InsertSubscriptionsRequest>;
+  S.Struct({
+    sourceSkuId: S.optional(S.String.pipe(T.Query())),
+    action: S.optional(InsertSubscriptionsActionEnum.pipe(T.Query())),
+    customerId: S.String.pipe(T.Label()),
+    customerAuthToken: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(Subscription.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "apps/reseller/v1/customers/{customerId}/subscriptions",
+      baseUrl: "https://reseller.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "InsertSubscriptionsRequest",
+}) as any as S.Schema<InsertSubscriptionsRequest>;
 
 export interface ListSubscriptionsRequest {
   /** When retrieving all of your subscriptions and filtering for specific customers, you can enter a prefix for a customer name. Using an example customer group that includes `exam.com`, `example20.com` and `example.com`: - `exa` -- Returns all customer names that start with 'exa' which could include `exam.com`, `example20.com`, and `example.com`. A name prefix is similar to using a regular expression's asterisk, exa*. - `example` -- Returns `example20.com` and `example.com`. */
@@ -508,17 +618,27 @@ export interface ListSubscriptionsRequest {
   customerId?: string;
 }
 export const ListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "customerNamePrefix": S.optional(S.String.pipe(T.Query())),
-  "maxResults": S.optional(S.Number.pipe(T.Query())),
-  "customerAuthToken": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "customerId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"apps/reseller/v1/subscriptions","baseUrl":"https://reseller.googleapis.com/"})),
-).annotate({ identifier: "ListSubscriptionsRequest" }) as any as S.Schema<ListSubscriptionsRequest>;
+  S.Struct({
+    customerNamePrefix: S.optional(S.String.pipe(T.Query())),
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+    customerAuthToken: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    customerId: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "apps/reseller/v1/subscriptions",
+      baseUrl: "https://reseller.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListSubscriptionsRequest",
+}) as any as S.Schema<ListSubscriptionsRequest>;
 
 export type SubscriptionList = ReadonlyArray<Subscription>;
-export const SubscriptionList = /*@__PURE__*/ S.Array(Subscription) as any as S.Schema<SubscriptionList>;
+export const SubscriptionList = /*@__PURE__*/ S.Array(
+  Subscription,
+) as any as S.Schema<SubscriptionList>;
 
 /** A subscription manages the relationship of a Google customer's payment plan with a product's SKU, user licenses, 30-day free trial status, and renewal options. A primary role of a reseller is to manage the Google customer's subscriptions. */
 export interface Subscriptions {
@@ -530,11 +650,11 @@ export interface Subscriptions {
   subscriptions?: SubscriptionList;
 }
 export const Subscriptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "kind": S.optional(S.String),
-  "subscriptions": S.optional(SubscriptionList),
-}),
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    kind: S.optional(S.String),
+    subscriptions: S.optional(SubscriptionList),
+  }),
 ).annotate({ identifier: "Subscriptions" }) as any as S.Schema<Subscriptions>;
 
 export interface PatchCustomersRequest {
@@ -544,21 +664,37 @@ export interface PatchCustomersRequest {
   body?: Customer;
 }
 export const PatchCustomersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "customerId": S.String.pipe(T.Label()),
-  "body": S.optional(Customer.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"apps/reseller/v1/customers/{customerId}","baseUrl":"https://reseller.googleapis.com/"})),
-).annotate({ identifier: "PatchCustomersRequest" }) as any as S.Schema<PatchCustomersRequest>;
+  S.Struct({
+    customerId: S.String.pipe(T.Label()),
+    body: S.optional(Customer.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "apps/reseller/v1/customers/{customerId}",
+      baseUrl: "https://reseller.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchCustomersRequest",
+}) as any as S.Schema<PatchCustomersRequest>;
 
 export interface RegisterResellernotifyRequest {
   /** The service account which will own the created Cloud-PubSub topic. */
   serviceAccountEmailAddress?: string;
 }
 export const RegisterResellernotifyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "serviceAccountEmailAddress": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"POST","uri":"apps/reseller/v1/resellernotify/register","baseUrl":"https://reseller.googleapis.com/"})),
-).annotate({ identifier: "RegisterResellernotifyRequest" }) as any as S.Schema<RegisterResellernotifyRequest>;
+  S.Struct({
+    serviceAccountEmailAddress: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "apps/reseller/v1/resellernotify/register",
+      baseUrl: "https://reseller.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "RegisterResellernotifyRequest",
+}) as any as S.Schema<RegisterResellernotifyRequest>;
 
 /** JSON template for resellernotify response. */
 export interface ResellernotifyResource {
@@ -566,10 +702,12 @@ export interface ResellernotifyResource {
   topicName?: string;
 }
 export const ResellernotifyResource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "topicName": S.optional(S.String),
-}),
-).annotate({ identifier: "ResellernotifyResource" }) as any as S.Schema<ResellernotifyResource>;
+  S.Struct({
+    topicName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ResellernotifyResource",
+}) as any as S.Schema<ResellernotifyResource>;
 
 export interface StartPaidServiceSubscriptionsRequest {
   /** This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable. */
@@ -577,12 +715,21 @@ export interface StartPaidServiceSubscriptionsRequest {
   /** This is a required property. The `subscriptionId` is the subscription identifier and is unique for each customer. Since a `subscriptionId` changes when a subscription is updated, we recommend to not use this ID as a key for persistent data. And the `subscriptionId` can be found using the retrieve all reseller subscriptions method. */
   subscriptionId: string;
 }
-export const StartPaidServiceSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "customerId": S.String.pipe(T.Label()),
-  "subscriptionId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"POST","uri":"apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/startPaidService","baseUrl":"https://reseller.googleapis.com/"})),
-).annotate({ identifier: "StartPaidServiceSubscriptionsRequest" }) as any as S.Schema<StartPaidServiceSubscriptionsRequest>;
+export const StartPaidServiceSubscriptionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      customerId: S.String.pipe(T.Label()),
+      subscriptionId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/startPaidService",
+        baseUrl: "https://reseller.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "StartPaidServiceSubscriptionsRequest",
+}) as any as S.Schema<StartPaidServiceSubscriptionsRequest>;
 
 export interface SuspendSubscriptionsRequest {
   /** This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable. */
@@ -591,21 +738,37 @@ export interface SuspendSubscriptionsRequest {
   subscriptionId: string;
 }
 export const SuspendSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "customerId": S.String.pipe(T.Label()),
-  "subscriptionId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"POST","uri":"apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/suspend","baseUrl":"https://reseller.googleapis.com/"})),
-).annotate({ identifier: "SuspendSubscriptionsRequest" }) as any as S.Schema<SuspendSubscriptionsRequest>;
+  S.Struct({
+    customerId: S.String.pipe(T.Label()),
+    subscriptionId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/suspend",
+      baseUrl: "https://reseller.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SuspendSubscriptionsRequest",
+}) as any as S.Schema<SuspendSubscriptionsRequest>;
 
 export interface UnregisterResellernotifyRequest {
   /** The service account which owns the Cloud-PubSub topic. */
   serviceAccountEmailAddress?: string;
 }
 export const UnregisterResellernotifyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "serviceAccountEmailAddress": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"POST","uri":"apps/reseller/v1/resellernotify/unregister","baseUrl":"https://reseller.googleapis.com/"})),
-).annotate({ identifier: "UnregisterResellernotifyRequest" }) as any as S.Schema<UnregisterResellernotifyRequest>;
+  S.Struct({
+    serviceAccountEmailAddress: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "apps/reseller/v1/resellernotify/unregister",
+      baseUrl: "https://reseller.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UnregisterResellernotifyRequest",
+}) as any as S.Schema<UnregisterResellernotifyRequest>;
 
 export interface UpdateCustomersRequest {
   /** This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable. */
@@ -614,13 +777,26 @@ export interface UpdateCustomersRequest {
   body?: Customer;
 }
 export const UpdateCustomersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "customerId": S.String.pipe(T.Label()),
-  "body": S.optional(Customer.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"apps/reseller/v1/customers/{customerId}","baseUrl":"https://reseller.googleapis.com/"})),
-).annotate({ identifier: "UpdateCustomersRequest" }) as any as S.Schema<UpdateCustomersRequest>;
+  S.Struct({
+    customerId: S.String.pipe(T.Label()),
+    body: S.optional(Customer.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "apps/reseller/v1/customers/{customerId}",
+      baseUrl: "https://reseller.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateCustomersRequest",
+}) as any as S.Schema<UpdateCustomersRequest>;
 
-export type ActivateSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ActivateSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Activates a subscription previously suspended by the reseller. If you did not suspend the customer subscription and it is suspended for any other reason, such as for abuse or a pending ToS acceptance, this call will not reactivate the customer subscription. */
 export const activateSubscriptions: API.OperationMethod<
   ActivateSubscriptionsRequest,
@@ -635,7 +811,12 @@ export const activateSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ChangePlanSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ChangePlanSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a subscription plan. Use this method to update a plan for a 30-day trial or a flexible plan subscription to an annual commitment plan with monthly or yearly payments. How a plan is updated differs depending on the plan and the products. For more information, see the description in [manage subscriptions](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_subscriptions#update_subscription_plan). */
 export const changePlanSubscriptions: API.OperationMethod<
   ChangePlanSubscriptionsRequest,
@@ -650,7 +831,12 @@ export const changePlanSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ChangeRenewalSettingsSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ChangeRenewalSettingsSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a user license's renewal settings. This is applicable for accounts with annual commitment plans only. For more information, see the description in [manage subscriptions](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_subscriptions#update_renewal). */
 export const changeRenewalSettingsSubscriptions: API.OperationMethod<
   ChangeRenewalSettingsSubscriptionsRequest,
@@ -665,7 +851,12 @@ export const changeRenewalSettingsSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ChangeSeatsSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ChangeSeatsSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a subscription's user license settings. For more information about updating an annual commitment plan or a flexible plan subscription’s licenses, see [Manage Subscriptions](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_subscriptions#update_subscription_seat). */
 export const changeSeatsSubscriptions: API.OperationMethod<
   ChangeSeatsSubscriptionsRequest,
@@ -680,7 +871,12 @@ export const changeSeatsSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Cancels, suspends, or transfers a subscription to direct. */
 export const deleteSubscriptions: API.OperationMethod<
   DeleteSubscriptionsRequest,
@@ -725,7 +921,10 @@ export const getSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetwatchdetailsResellernotifyError = NotFound | Forbidden | GcpOpError;
+export type GetwatchdetailsResellernotifyError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns all the details of the watch corresponding to the reseller. */
 export const getwatchdetailsResellernotify: API.OperationMethod<
   GetwatchdetailsResellernotifyRequest,
@@ -740,7 +939,12 @@ export const getwatchdetailsResellernotify: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertCustomersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type InsertCustomersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Orders a new customer's account. Before ordering a new customer account, establish whether the customer account already exists using the [`customers.get`](https://developers.google.com/workspace/admin/reseller/v1/reference/customers/get) If the customer account exists as a direct Google account or as a resold customer account from another reseller, use the `customerAuthToken\` as described in [order a resold account for an existing customer](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_customers#create_existing_customer). For more information about ordering a new customer account, see [order a new customer account](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_customers#create_customer). After creating a new customer account, you must provision a user as an administrator. The customer's administrator is required to sign in to the Admin console and sign the G Suite via Reseller agreement to activate the account. Resellers are prohibited from signing the G Suite via Reseller agreement on the customer's behalf. For more information, see [order a new customer account](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_customers#tos). */
 export const insertCustomers: API.OperationMethod<
   InsertCustomersRequest,
@@ -755,7 +959,12 @@ export const insertCustomers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type InsertSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type InsertSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates or transfer a subscription. Create a subscription for a customer's account that you ordered using the [Order a new customer account](https://developers.google.com/workspace/admin/reseller/v1/reference/customers/insert.html) method. For more information about creating a subscription for different payment plans, see [manage subscriptions](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_subscriptions#create_subscription).\ If you did not order the customer's account using the customer insert method, use the customer's `customerAuthToken` when creating a subscription for that customer. If transferring a G Suite subscription with an associated Google Drive or Google Vault subscription, use the [batch operation](https://developers.google.com/workspace/admin/reseller/v1/how-tos/batch.html) to transfer all of these subscriptions. For more information, see how to [transfer subscriptions](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_subscriptions#transfer_a_subscription). */
 export const insertSubscriptions: API.OperationMethod<
   InsertSubscriptionsRequest,
@@ -783,10 +992,18 @@ export const listSubscriptions: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type PatchCustomersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchCustomersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a customer account's settings. This method supports patch semantics. You cannot update `customerType` via the Reseller API, but a `"team"` customer can verify their domain and become `customerType = "domain"`. For more information, see [Verify your domain to unlock Essentials features](https://support.google.com/a/answer/9122284). */
 export const patchCustomers: API.OperationMethod<
   PatchCustomersRequest,
@@ -801,7 +1018,12 @@ export const patchCustomers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RegisterResellernotifyError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RegisterResellernotifyError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Registers a Reseller for receiving notifications. */
 export const registerResellernotify: API.OperationMethod<
   RegisterResellernotifyRequest,
@@ -816,7 +1038,12 @@ export const registerResellernotify: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type StartPaidServiceSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type StartPaidServiceSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Immediately move a 30-day free trial subscription to a paid service subscription. This method is only applicable if a payment plan has already been set up for the 30-day trial subscription. For more information, see [manage subscriptions](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_subscriptions#paid_service). */
 export const startPaidServiceSubscriptions: API.OperationMethod<
   StartPaidServiceSubscriptionsRequest,
@@ -831,7 +1058,12 @@ export const startPaidServiceSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SuspendSubscriptionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SuspendSubscriptionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Suspends an active subscription. You can use this method to suspend a paid subscription that is currently in the `ACTIVE` state. * For `FLEXIBLE` subscriptions, billing is paused. * For `ANNUAL_MONTHLY_PAY` or `ANNUAL_YEARLY_PAY` subscriptions: * Suspending the subscription does not change the renewal date that was originally committed to. * A suspended subscription does not renew. If you activate the subscription after the original renewal date, a new annual subscription will be created, starting on the day of activation. We strongly encourage you to suspend subscriptions only for short periods of time as suspensions over 60 days may result in the subscription being cancelled. */
 export const suspendSubscriptions: API.OperationMethod<
   SuspendSubscriptionsRequest,
@@ -846,7 +1078,12 @@ export const suspendSubscriptions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UnregisterResellernotifyError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UnregisterResellernotifyError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Unregisters a Reseller for receiving notifications. */
 export const unregisterResellernotify: API.OperationMethod<
   UnregisterResellernotifyRequest,
@@ -861,7 +1098,12 @@ export const unregisterResellernotify: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateCustomersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateCustomersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a customer account's settings. You cannot update `customerType` via the Reseller API, but a `"team"` customer can verify their domain and become `customerType = "domain"`. For more information, see [update a customer's settings](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_customers#update_customer). */
 export const updateCustomers: API.OperationMethod<
   UpdateCustomersRequest,
@@ -875,4 +1117,3 @@ export const updateCustomers: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

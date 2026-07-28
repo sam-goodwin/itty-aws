@@ -13,58 +13,60 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
 export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "CancelOperationRequest" }) as any as S.Schema<CancelOperationRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "CancelOperationRequest",
+}) as any as S.Schema<CancelOperationRequest>;
 
 export interface CancelFoldersLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -72,18 +74,27 @@ export interface CancelFoldersLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelFoldersLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2beta/{+name}:cancel","baseUrl":"https://osconfig.googleapis.com/"})),
-).annotate({ identifier: "CancelFoldersLocationsOperationsRequest" }) as any as S.Schema<CancelFoldersLocationsOperationsRequest>;
+export const CancelFoldersLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v2beta/{+name}:cancel",
+        baseUrl: "https://osconfig.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CancelFoldersLocationsOperationsRequest",
+}) as any as S.Schema<CancelFoldersLocationsOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 export interface CancelOrganizationsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -91,12 +102,21 @@ export interface CancelOrganizationsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2beta/{+name}:cancel","baseUrl":"https://osconfig.googleapis.com/"})),
-).annotate({ identifier: "CancelOrganizationsLocationsOperationsRequest" }) as any as S.Schema<CancelOrganizationsLocationsOperationsRequest>;
+export const CancelOrganizationsLocationsOperationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v2beta/{+name}:cancel",
+        baseUrl: "https://osconfig.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CancelOrganizationsLocationsOperationsRequest",
+  }) as any as S.Schema<CancelOrganizationsLocationsOperationsRequest>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -104,21 +124,42 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2beta/{+name}:cancel","baseUrl":"https://osconfig.googleapis.com/"})),
-).annotate({ identifier: "CancelProjectsLocationsOperationsRequest" }) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v2beta/{+name}:cancel",
+        baseUrl: "https://osconfig.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CancelProjectsLocationsOperationsRequest",
+}) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
 
-export type GoogleCloudOsconfigV2beta_PolicyOrchestrator_IterationStateStateEnum = "STATE_UNSPECIFIED" | "PROCESSING" | "COMPLETED" | "FAILED" | "CANCELLED" | "UNKNOWN";
-export const GoogleCloudOsconfigV2beta_PolicyOrchestrator_IterationStateStateEnum = /*@__PURE__*/ S.String;
+export type GoogleCloudOsconfigV2beta_PolicyOrchestrator_IterationStateStateEnum =
+    | "STATE_UNSPECIFIED"
+    | "PROCESSING"
+    | "COMPLETED"
+    | "FAILED"
+    | "CANCELLED"
+    | "UNKNOWN";
+export const GoogleCloudOsconfigV2beta_PolicyOrchestrator_IterationStateStateEnum =
+  /*@__PURE__*/ S.String;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -130,11 +171,11 @@ export interface Status {
   details?: DocumentMapList;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "message": S.optional(S.String),
-  "code": S.optional(S.Number),
-  "details": S.optional(DocumentMapList),
-}),
+  S.Struct({
+    message: S.optional(S.String),
+    code: S.optional(S.Number),
+    details: S.optional(DocumentMapList),
+  }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** Describes the state of a single iteration of the orchestrator. */
@@ -156,18 +197,23 @@ export interface GoogleCloudOsconfigV2beta_PolicyOrchestrator_IterationState {
   /** Output only. Error thrown in the wave iteration. */
   error?: Status;
 }
-export const GoogleCloudOsconfigV2beta_PolicyOrchestrator_IterationState = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "finishTime": S.optional(S.String),
-  "iterationId": S.optional(S.String),
-  "state": S.optional(GoogleCloudOsconfigV2beta_PolicyOrchestrator_IterationStateStateEnum),
-  "startTime": S.optional(S.String),
-  "progress": S.optional(S.Number),
-  "failedActions": S.optional(S.String),
-  "performedActions": S.optional(S.String),
-  "error": S.optional(Status),
-}),
-).annotate({ identifier: "GoogleCloudOsconfigV2beta_PolicyOrchestrator_IterationState" }) as any as S.Schema<GoogleCloudOsconfigV2beta_PolicyOrchestrator_IterationState>;
+export const GoogleCloudOsconfigV2beta_PolicyOrchestrator_IterationState =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      finishTime: S.optional(S.String),
+      iterationId: S.optional(S.String),
+      state: S.optional(
+        GoogleCloudOsconfigV2beta_PolicyOrchestrator_IterationStateStateEnum,
+      ),
+      startTime: S.optional(S.String),
+      progress: S.optional(S.Number),
+      failedActions: S.optional(S.String),
+      performedActions: S.optional(S.String),
+      error: S.optional(Status),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudOsconfigV2beta_PolicyOrchestrator_IterationState",
+  }) as any as S.Schema<GoogleCloudOsconfigV2beta_PolicyOrchestrator_IterationState>;
 
 /** Describes the state of the orchestration process. */
 export interface GoogleCloudOsconfigV2beta_PolicyOrchestrator_OrchestrationState {
@@ -176,18 +222,31 @@ export interface GoogleCloudOsconfigV2beta_PolicyOrchestrator_OrchestrationState
   /** Output only. Current Wave iteration state. */
   currentIterationState?: GoogleCloudOsconfigV2beta_PolicyOrchestrator_IterationState;
 }
-export const GoogleCloudOsconfigV2beta_PolicyOrchestrator_OrchestrationState = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "previousIterationState": S.optional(GoogleCloudOsconfigV2beta_PolicyOrchestrator_IterationState),
-  "currentIterationState": S.optional(GoogleCloudOsconfigV2beta_PolicyOrchestrator_IterationState),
-}),
-).annotate({ identifier: "GoogleCloudOsconfigV2beta_PolicyOrchestrator_OrchestrationState" }) as any as S.Schema<GoogleCloudOsconfigV2beta_PolicyOrchestrator_OrchestrationState>;
+export const GoogleCloudOsconfigV2beta_PolicyOrchestrator_OrchestrationState =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      previousIterationState: S.optional(
+        GoogleCloudOsconfigV2beta_PolicyOrchestrator_IterationState,
+      ),
+      currentIterationState: S.optional(
+        GoogleCloudOsconfigV2beta_PolicyOrchestrator_IterationState,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudOsconfigV2beta_PolicyOrchestrator_OrchestrationState",
+  }) as any as S.Schema<GoogleCloudOsconfigV2beta_PolicyOrchestrator_OrchestrationState>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** Selector containing Cloud Resource Manager resource hierarchy nodes. */
 export interface GoogleCloudOsconfigV2beta_OrchestrationScope_ResourceHierarchySelector {
@@ -196,23 +255,30 @@ export interface GoogleCloudOsconfigV2beta_OrchestrationScope_ResourceHierarchyS
   /** Optional. Names of the folders in scope. Format: `folders/{folder_id}` */
   includedFolders?: StringList;
 }
-export const GoogleCloudOsconfigV2beta_OrchestrationScope_ResourceHierarchySelector = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "includedProjects": S.optional(StringList),
-  "includedFolders": S.optional(StringList),
-}),
-).annotate({ identifier: "GoogleCloudOsconfigV2beta_OrchestrationScope_ResourceHierarchySelector" }) as any as S.Schema<GoogleCloudOsconfigV2beta_OrchestrationScope_ResourceHierarchySelector>;
+export const GoogleCloudOsconfigV2beta_OrchestrationScope_ResourceHierarchySelector =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      includedProjects: S.optional(StringList),
+      includedFolders: S.optional(StringList),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudOsconfigV2beta_OrchestrationScope_ResourceHierarchySelector",
+  }) as any as S.Schema<GoogleCloudOsconfigV2beta_OrchestrationScope_ResourceHierarchySelector>;
 
 /** Selector containing locations in scope. */
 export interface GoogleCloudOsconfigV2beta_OrchestrationScope_LocationSelector {
   /** Optional. Names of the locations in scope. Format: `us-central1-a` */
   includedLocations?: StringList;
 }
-export const GoogleCloudOsconfigV2beta_OrchestrationScope_LocationSelector = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "includedLocations": S.optional(StringList),
-}),
-).annotate({ identifier: "GoogleCloudOsconfigV2beta_OrchestrationScope_LocationSelector" }) as any as S.Schema<GoogleCloudOsconfigV2beta_OrchestrationScope_LocationSelector>;
+export const GoogleCloudOsconfigV2beta_OrchestrationScope_LocationSelector =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      includedLocations: S.optional(StringList),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudOsconfigV2beta_OrchestrationScope_LocationSelector",
+  }) as any as S.Schema<GoogleCloudOsconfigV2beta_OrchestrationScope_LocationSelector>;
 
 /** Selector for the resources in scope of orchestration. */
 export interface GoogleCloudOsconfigV2beta_OrchestrationScope_Selector {
@@ -221,28 +287,47 @@ export interface GoogleCloudOsconfigV2beta_OrchestrationScope_Selector {
   /** Selector for selecting locations. */
   locationSelector?: GoogleCloudOsconfigV2beta_OrchestrationScope_LocationSelector;
 }
-export const GoogleCloudOsconfigV2beta_OrchestrationScope_Selector = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceHierarchySelector": S.optional(GoogleCloudOsconfigV2beta_OrchestrationScope_ResourceHierarchySelector),
-  "locationSelector": S.optional(GoogleCloudOsconfigV2beta_OrchestrationScope_LocationSelector),
-}),
-).annotate({ identifier: "GoogleCloudOsconfigV2beta_OrchestrationScope_Selector" }) as any as S.Schema<GoogleCloudOsconfigV2beta_OrchestrationScope_Selector>;
+export const GoogleCloudOsconfigV2beta_OrchestrationScope_Selector =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resourceHierarchySelector: S.optional(
+        GoogleCloudOsconfigV2beta_OrchestrationScope_ResourceHierarchySelector,
+      ),
+      locationSelector: S.optional(
+        GoogleCloudOsconfigV2beta_OrchestrationScope_LocationSelector,
+      ),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudOsconfigV2beta_OrchestrationScope_Selector",
+  }) as any as S.Schema<GoogleCloudOsconfigV2beta_OrchestrationScope_Selector>;
 
-export type GoogleCloudOsconfigV2beta_OrchestrationScope_SelectorList = ReadonlyArray<GoogleCloudOsconfigV2beta_OrchestrationScope_Selector>;
-export const GoogleCloudOsconfigV2beta_OrchestrationScope_SelectorList = /*@__PURE__*/ S.Array(GoogleCloudOsconfigV2beta_OrchestrationScope_Selector) as any as S.Schema<GoogleCloudOsconfigV2beta_OrchestrationScope_SelectorList>;
+export type GoogleCloudOsconfigV2beta_OrchestrationScope_SelectorList =
+  ReadonlyArray<GoogleCloudOsconfigV2beta_OrchestrationScope_Selector>;
+export const GoogleCloudOsconfigV2beta_OrchestrationScope_SelectorList =
+  /*@__PURE__*/ S.Array(
+    GoogleCloudOsconfigV2beta_OrchestrationScope_Selector,
+  ) as any as S.Schema<GoogleCloudOsconfigV2beta_OrchestrationScope_SelectorList>;
 
 /** Defines a set of selectors which drive which resources are in scope of policy orchestration. */
 export interface GoogleCloudOsconfigV2beta__OrchestrationScope {
   /** Optional. Selectors of the orchestration scope. There is a logical AND between each selector defined. When there is no explicit `ResourceHierarchySelector` selector specified, the scope is by default bounded to the parent of the policy orchestrator resource. */
   selectors?: GoogleCloudOsconfigV2beta_OrchestrationScope_SelectorList;
 }
-export const GoogleCloudOsconfigV2beta__OrchestrationScope = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "selectors": S.optional(GoogleCloudOsconfigV2beta_OrchestrationScope_SelectorList),
-}),
-).annotate({ identifier: "GoogleCloudOsconfigV2beta__OrchestrationScope" }) as any as S.Schema<GoogleCloudOsconfigV2beta__OrchestrationScope>;
+export const GoogleCloudOsconfigV2beta__OrchestrationScope =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      selectors: S.optional(
+        GoogleCloudOsconfigV2beta_OrchestrationScope_SelectorList,
+      ),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudOsconfigV2beta__OrchestrationScope",
+  }) as any as S.Schema<GoogleCloudOsconfigV2beta__OrchestrationScope>;
 
-export type OSPolicyModeEnum = "MODE_UNSPECIFIED" | "VALIDATION" | "ENFORCEMENT";
+export type OSPolicyModeEnum =
+  | "MODE_UNSPECIFIED"
+  | "VALIDATION"
+  | "ENFORCEMENT";
 export const OSPolicyModeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a Goo package repository. These are added to a repo file that is managed at `C:/ProgramData/GooGet/repos/google_osconfig.repo`. */
@@ -252,15 +337,22 @@ export interface OSPolicyResourceRepositoryResourceGooRepository {
   /** Required. The url of the repository. */
   url?: string;
 }
-export const OSPolicyResourceRepositoryResourceGooRepository = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "url": S.optional(S.String),
-}),
-).annotate({ identifier: "OSPolicyResourceRepositoryResourceGooRepository" }) as any as S.Schema<OSPolicyResourceRepositoryResourceGooRepository>;
+export const OSPolicyResourceRepositoryResourceGooRepository =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.optional(S.String),
+      url: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "OSPolicyResourceRepositoryResourceGooRepository",
+  }) as any as S.Schema<OSPolicyResourceRepositoryResourceGooRepository>;
 
-export type OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeEnum = "ARCHIVE_TYPE_UNSPECIFIED" | "DEB" | "DEB_SRC";
-export const OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeEnum = /*@__PURE__*/ S.String;
+export type OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeEnum =
+  | "ARCHIVE_TYPE_UNSPECIFIED"
+  | "DEB"
+  | "DEB_SRC";
+export const OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeEnum =
+  /*@__PURE__*/ S.String;
 
 /** Represents a single apt package repository. These will be added to a repo file that will be managed at `/etc/apt/sources.list.d/google_osconfig.list`. */
 export interface OSPolicyResourceRepositoryResourceAptRepository {
@@ -275,15 +367,20 @@ export interface OSPolicyResourceRepositoryResourceAptRepository {
   /** Required. List of components for this repository. Must contain at least one item. */
   components?: StringList;
 }
-export const OSPolicyResourceRepositoryResourceAptRepository = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "gpgKey": S.optional(S.String),
-  "uri": S.optional(S.String),
-  "distribution": S.optional(S.String),
-  "archiveType": S.optional(OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeEnum),
-  "components": S.optional(StringList),
-}),
-).annotate({ identifier: "OSPolicyResourceRepositoryResourceAptRepository" }) as any as S.Schema<OSPolicyResourceRepositoryResourceAptRepository>;
+export const OSPolicyResourceRepositoryResourceAptRepository =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      gpgKey: S.optional(S.String),
+      uri: S.optional(S.String),
+      distribution: S.optional(S.String),
+      archiveType: S.optional(
+        OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeEnum,
+      ),
+      components: S.optional(StringList),
+    }),
+  ).annotate({
+    identifier: "OSPolicyResourceRepositoryResourceAptRepository",
+  }) as any as S.Schema<OSPolicyResourceRepositoryResourceAptRepository>;
 
 /** Represents a single yum package repository. These are added to a repo file that is managed at `/etc/yum.repos.d/google_osconfig.repo`. */
 export interface OSPolicyResourceRepositoryResourceYumRepository {
@@ -296,14 +393,17 @@ export interface OSPolicyResourceRepositoryResourceYumRepository {
   /** URIs of GPG keys. */
   gpgKeys?: StringList;
 }
-export const OSPolicyResourceRepositoryResourceYumRepository = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "baseUrl": S.optional(S.String),
-  "gpgKeys": S.optional(StringList),
-}),
-).annotate({ identifier: "OSPolicyResourceRepositoryResourceYumRepository" }) as any as S.Schema<OSPolicyResourceRepositoryResourceYumRepository>;
+export const OSPolicyResourceRepositoryResourceYumRepository =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      displayName: S.optional(S.String),
+      baseUrl: S.optional(S.String),
+      gpgKeys: S.optional(StringList),
+    }),
+  ).annotate({
+    identifier: "OSPolicyResourceRepositoryResourceYumRepository",
+  }) as any as S.Schema<OSPolicyResourceRepositoryResourceYumRepository>;
 
 /** Represents a single zypper package repository. These are added to a repo file that is managed at `/etc/zypp/repos.d/google_osconfig.repo`. */
 export interface OSPolicyResourceRepositoryResourceZypperRepository {
@@ -316,14 +416,17 @@ export interface OSPolicyResourceRepositoryResourceZypperRepository {
   /** URIs of GPG keys. */
   gpgKeys?: StringList;
 }
-export const OSPolicyResourceRepositoryResourceZypperRepository = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "baseUrl": S.optional(S.String),
-  "gpgKeys": S.optional(StringList),
-}),
-).annotate({ identifier: "OSPolicyResourceRepositoryResourceZypperRepository" }) as any as S.Schema<OSPolicyResourceRepositoryResourceZypperRepository>;
+export const OSPolicyResourceRepositoryResourceZypperRepository =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      displayName: S.optional(S.String),
+      baseUrl: S.optional(S.String),
+      gpgKeys: S.optional(StringList),
+    }),
+  ).annotate({
+    identifier: "OSPolicyResourceRepositoryResourceZypperRepository",
+  }) as any as S.Schema<OSPolicyResourceRepositoryResourceZypperRepository>;
 
 /** A resource that manages a package repository. */
 export interface OSPolicyResourceRepositoryResource {
@@ -337,13 +440,15 @@ export interface OSPolicyResourceRepositoryResource {
   zypper?: OSPolicyResourceRepositoryResourceZypperRepository;
 }
 export const OSPolicyResourceRepositoryResource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "goo": S.optional(OSPolicyResourceRepositoryResourceGooRepository),
-  "apt": S.optional(OSPolicyResourceRepositoryResourceAptRepository),
-  "yum": S.optional(OSPolicyResourceRepositoryResourceYumRepository),
-  "zypper": S.optional(OSPolicyResourceRepositoryResourceZypperRepository),
-}),
-).annotate({ identifier: "OSPolicyResourceRepositoryResource" }) as any as S.Schema<OSPolicyResourceRepositoryResource>;
+  S.Struct({
+    goo: S.optional(OSPolicyResourceRepositoryResourceGooRepository),
+    apt: S.optional(OSPolicyResourceRepositoryResourceAptRepository),
+    yum: S.optional(OSPolicyResourceRepositoryResourceYumRepository),
+    zypper: S.optional(OSPolicyResourceRepositoryResourceZypperRepository),
+  }),
+).annotate({
+  identifier: "OSPolicyResourceRepositoryResource",
+}) as any as S.Schema<OSPolicyResourceRepositoryResource>;
 
 /** A package managed by YUM. - install: `yum -y install package` - remove: `yum -y remove package` */
 export interface OSPolicyResourcePackageResourceYUM {
@@ -351,10 +456,12 @@ export interface OSPolicyResourcePackageResourceYUM {
   name?: string;
 }
 export const OSPolicyResourcePackageResourceYUM = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-}),
-).annotate({ identifier: "OSPolicyResourcePackageResourceYUM" }) as any as S.Schema<OSPolicyResourcePackageResourceYUM>;
+  S.Struct({
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OSPolicyResourcePackageResourceYUM",
+}) as any as S.Schema<OSPolicyResourcePackageResourceYUM>;
 
 /** Specifies a file available as a Cloud Storage Object. */
 export interface OSPolicyResourceFileGcs {
@@ -366,12 +473,14 @@ export interface OSPolicyResourceFileGcs {
   object?: string;
 }
 export const OSPolicyResourceFileGcs = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "generation": S.optional(S.String),
-  "bucket": S.optional(S.String),
-  "object": S.optional(S.String),
-}),
-).annotate({ identifier: "OSPolicyResourceFileGcs" }) as any as S.Schema<OSPolicyResourceFileGcs>;
+  S.Struct({
+    generation: S.optional(S.String),
+    bucket: S.optional(S.String),
+    object: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OSPolicyResourceFileGcs",
+}) as any as S.Schema<OSPolicyResourceFileGcs>;
 
 /** Specifies a file available via some URI. */
 export interface OSPolicyResourceFileRemote {
@@ -381,11 +490,13 @@ export interface OSPolicyResourceFileRemote {
   sha256Checksum?: string;
 }
 export const OSPolicyResourceFileRemote = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "uri": S.optional(S.String),
-  "sha256Checksum": S.optional(S.String),
-}),
-).annotate({ identifier: "OSPolicyResourceFileRemote" }) as any as S.Schema<OSPolicyResourceFileRemote>;
+  S.Struct({
+    uri: S.optional(S.String),
+    sha256Checksum: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OSPolicyResourceFileRemote",
+}) as any as S.Schema<OSPolicyResourceFileRemote>;
 
 /** A remote or local file. */
 export interface OSPolicyResourceFile {
@@ -399,13 +510,15 @@ export interface OSPolicyResourceFile {
   localPath?: string;
 }
 export const OSPolicyResourceFile = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "gcs": S.optional(OSPolicyResourceFileGcs),
-  "remote": S.optional(OSPolicyResourceFileRemote),
-  "allowInsecure": S.optional(S.Boolean),
-  "localPath": S.optional(S.String),
-}),
-).annotate({ identifier: "OSPolicyResourceFile" }) as any as S.Schema<OSPolicyResourceFile>;
+  S.Struct({
+    gcs: S.optional(OSPolicyResourceFileGcs),
+    remote: S.optional(OSPolicyResourceFileRemote),
+    allowInsecure: S.optional(S.Boolean),
+    localPath: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OSPolicyResourceFile",
+}) as any as S.Schema<OSPolicyResourceFile>;
 
 /** A deb package file. dpkg packages only support INSTALLED state. */
 export interface OSPolicyResourcePackageResourceDeb {
@@ -415,11 +528,13 @@ export interface OSPolicyResourcePackageResourceDeb {
   source?: OSPolicyResourceFile;
 }
 export const OSPolicyResourcePackageResourceDeb = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pullDeps": S.optional(S.Boolean),
-  "source": S.optional(OSPolicyResourceFile),
-}),
-).annotate({ identifier: "OSPolicyResourcePackageResourceDeb" }) as any as S.Schema<OSPolicyResourcePackageResourceDeb>;
+  S.Struct({
+    pullDeps: S.optional(S.Boolean),
+    source: S.optional(OSPolicyResourceFile),
+  }),
+).annotate({
+  identifier: "OSPolicyResourcePackageResourceDeb",
+}) as any as S.Schema<OSPolicyResourcePackageResourceDeb>;
 
 /** An RPM package file. RPM packages only support INSTALLED state. */
 export interface OSPolicyResourcePackageResourceRPM {
@@ -429,22 +544,27 @@ export interface OSPolicyResourcePackageResourceRPM {
   pullDeps?: boolean;
 }
 export const OSPolicyResourcePackageResourceRPM = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "source": S.optional(OSPolicyResourceFile),
-  "pullDeps": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "OSPolicyResourcePackageResourceRPM" }) as any as S.Schema<OSPolicyResourcePackageResourceRPM>;
+  S.Struct({
+    source: S.optional(OSPolicyResourceFile),
+    pullDeps: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "OSPolicyResourcePackageResourceRPM",
+}) as any as S.Schema<OSPolicyResourcePackageResourceRPM>;
 
 /** A package managed by Zypper. - install: `zypper -y install package` - remove: `zypper -y rm package` */
 export interface OSPolicyResourcePackageResourceZypper {
   /** Required. Package name. */
   name?: string;
 }
-export const OSPolicyResourcePackageResourceZypper = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-}),
-).annotate({ identifier: "OSPolicyResourcePackageResourceZypper" }) as any as S.Schema<OSPolicyResourcePackageResourceZypper>;
+export const OSPolicyResourcePackageResourceZypper = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "OSPolicyResourcePackageResourceZypper",
+}) as any as S.Schema<OSPolicyResourcePackageResourceZypper>;
 
 /** A package managed by APT. - install: `apt-get update && apt-get -y install [name]` - remove: `apt-get -y remove [name]` */
 export interface OSPolicyResourcePackageResourceAPT {
@@ -452,24 +572,33 @@ export interface OSPolicyResourcePackageResourceAPT {
   name?: string;
 }
 export const OSPolicyResourcePackageResourceAPT = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-}),
-).annotate({ identifier: "OSPolicyResourcePackageResourceAPT" }) as any as S.Schema<OSPolicyResourcePackageResourceAPT>;
+  S.Struct({
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OSPolicyResourcePackageResourceAPT",
+}) as any as S.Schema<OSPolicyResourcePackageResourceAPT>;
 
-export type OSPolicyResourcePackageResourceDesiredStateEnum = "DESIRED_STATE_UNSPECIFIED" | "INSTALLED" | "REMOVED";
-export const OSPolicyResourcePackageResourceDesiredStateEnum = /*@__PURE__*/ S.String;
+export type OSPolicyResourcePackageResourceDesiredStateEnum =
+  | "DESIRED_STATE_UNSPECIFIED"
+  | "INSTALLED"
+  | "REMOVED";
+export const OSPolicyResourcePackageResourceDesiredStateEnum =
+  /*@__PURE__*/ S.String;
 
 /** A package managed by GooGet. - install: `googet -noconfirm install package` - remove: `googet -noconfirm remove package` */
 export interface OSPolicyResourcePackageResourceGooGet {
   /** Required. Package name. */
   name?: string;
 }
-export const OSPolicyResourcePackageResourceGooGet = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-}),
-).annotate({ identifier: "OSPolicyResourcePackageResourceGooGet" }) as any as S.Schema<OSPolicyResourcePackageResourceGooGet>;
+export const OSPolicyResourcePackageResourceGooGet = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "OSPolicyResourcePackageResourceGooGet",
+}) as any as S.Schema<OSPolicyResourcePackageResourceGooGet>;
 
 /** An MSI package. MSI packages only support INSTALLED state. */
 export interface OSPolicyResourcePackageResourceMSI {
@@ -479,11 +608,13 @@ export interface OSPolicyResourcePackageResourceMSI {
   properties?: StringList;
 }
 export const OSPolicyResourcePackageResourceMSI = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "source": S.optional(OSPolicyResourceFile),
-  "properties": S.optional(StringList),
-}),
-).annotate({ identifier: "OSPolicyResourcePackageResourceMSI" }) as any as S.Schema<OSPolicyResourcePackageResourceMSI>;
+  S.Struct({
+    source: S.optional(OSPolicyResourceFile),
+    properties: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "OSPolicyResourcePackageResourceMSI",
+}) as any as S.Schema<OSPolicyResourcePackageResourceMSI>;
 
 /** A resource that manages a system package. */
 export interface OSPolicyResourcePackageResource {
@@ -505,20 +636,27 @@ export interface OSPolicyResourcePackageResource {
   msi?: OSPolicyResourcePackageResourceMSI;
 }
 export const OSPolicyResourcePackageResource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "yum": S.optional(OSPolicyResourcePackageResourceYUM),
-  "deb": S.optional(OSPolicyResourcePackageResourceDeb),
-  "rpm": S.optional(OSPolicyResourcePackageResourceRPM),
-  "zypper": S.optional(OSPolicyResourcePackageResourceZypper),
-  "apt": S.optional(OSPolicyResourcePackageResourceAPT),
-  "desiredState": S.optional(OSPolicyResourcePackageResourceDesiredStateEnum),
-  "googet": S.optional(OSPolicyResourcePackageResourceGooGet),
-  "msi": S.optional(OSPolicyResourcePackageResourceMSI),
-}),
-).annotate({ identifier: "OSPolicyResourcePackageResource" }) as any as S.Schema<OSPolicyResourcePackageResource>;
+  S.Struct({
+    yum: S.optional(OSPolicyResourcePackageResourceYUM),
+    deb: S.optional(OSPolicyResourcePackageResourceDeb),
+    rpm: S.optional(OSPolicyResourcePackageResourceRPM),
+    zypper: S.optional(OSPolicyResourcePackageResourceZypper),
+    apt: S.optional(OSPolicyResourcePackageResourceAPT),
+    desiredState: S.optional(OSPolicyResourcePackageResourceDesiredStateEnum),
+    googet: S.optional(OSPolicyResourcePackageResourceGooGet),
+    msi: S.optional(OSPolicyResourcePackageResourceMSI),
+  }),
+).annotate({
+  identifier: "OSPolicyResourcePackageResource",
+}) as any as S.Schema<OSPolicyResourcePackageResource>;
 
-export type OSPolicyResourceExecResourceExecInterpreterEnum = "INTERPRETER_UNSPECIFIED" | "NONE" | "SHELL" | "POWERSHELL";
-export const OSPolicyResourceExecResourceExecInterpreterEnum = /*@__PURE__*/ S.String;
+export type OSPolicyResourceExecResourceExecInterpreterEnum =
+  | "INTERPRETER_UNSPECIFIED"
+  | "NONE"
+  | "SHELL"
+  | "POWERSHELL";
+export const OSPolicyResourceExecResourceExecInterpreterEnum =
+  /*@__PURE__*/ S.String;
 
 /** A file or script to execute. */
 export interface OSPolicyResourceExecResourceExec {
@@ -534,14 +672,16 @@ export interface OSPolicyResourceExecResourceExec {
   script?: string;
 }
 export const OSPolicyResourceExecResourceExec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "args": S.optional(StringList),
-  "file": S.optional(OSPolicyResourceFile),
-  "interpreter": S.optional(OSPolicyResourceExecResourceExecInterpreterEnum),
-  "outputFilePath": S.optional(S.String),
-  "script": S.optional(S.String),
-}),
-).annotate({ identifier: "OSPolicyResourceExecResourceExec" }) as any as S.Schema<OSPolicyResourceExecResourceExec>;
+  S.Struct({
+    args: S.optional(StringList),
+    file: S.optional(OSPolicyResourceFile),
+    interpreter: S.optional(OSPolicyResourceExecResourceExecInterpreterEnum),
+    outputFilePath: S.optional(S.String),
+    script: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OSPolicyResourceExecResourceExec",
+}) as any as S.Schema<OSPolicyResourceExecResourceExec>;
 
 /** A resource that allows executing scripts on the VM. The `ExecResource` has 2 stages: `validate` and `enforce` and both stages accept a script as an argument to execute. When the `ExecResource` is applied by the agent, it first executes the script in the `validate` stage. The `validate` stage can signal that the `ExecResource` is already in the desired state by returning an exit code of `100`. If the `ExecResource` is not in the desired state, it should return an exit code of `101`. Any other exit code returned by this stage is considered an error. If the `ExecResource` is not in the desired state based on the exit code from the `validate` stage, the agent proceeds to execute the script from the `enforce` stage. If the `ExecResource` is already in the desired state, the `enforce` stage will not be run. Similar to `validate` stage, the `enforce` stage should return an exit code of `100` to indicate that the resource in now in its desired state. Any other exit code is considered an error. NOTE: An exit code of `100` was chosen over `0` (and `101` vs `1`) to have an explicit indicator of `in desired state`, `not in desired state` and errors. Because, for example, Powershell will always return an exit code of `0` unless an `exit` statement is provided in the script. So, for reasons of consistency and being explicit, exit codes `100` and `101` were chosen. */
 export interface OSPolicyResourceExecResource {
@@ -551,13 +691,19 @@ export interface OSPolicyResourceExecResource {
   validate?: OSPolicyResourceExecResourceExec;
 }
 export const OSPolicyResourceExecResource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "enforce": S.optional(OSPolicyResourceExecResourceExec),
-  "validate": S.optional(OSPolicyResourceExecResourceExec),
-}),
-).annotate({ identifier: "OSPolicyResourceExecResource" }) as any as S.Schema<OSPolicyResourceExecResource>;
+  S.Struct({
+    enforce: S.optional(OSPolicyResourceExecResourceExec),
+    validate: S.optional(OSPolicyResourceExecResourceExec),
+  }),
+).annotate({
+  identifier: "OSPolicyResourceExecResource",
+}) as any as S.Schema<OSPolicyResourceExecResource>;
 
-export type OSPolicyResourceFileResourceStateEnum = "DESIRED_STATE_UNSPECIFIED" | "PRESENT" | "ABSENT" | "CONTENTS_MATCH";
+export type OSPolicyResourceFileResourceStateEnum =
+  | "DESIRED_STATE_UNSPECIFIED"
+  | "PRESENT"
+  | "ABSENT"
+  | "CONTENTS_MATCH";
 export const OSPolicyResourceFileResourceStateEnum = /*@__PURE__*/ S.String;
 
 /** A resource that manages the state of a file. */
@@ -574,14 +720,16 @@ export interface OSPolicyResourceFileResource {
   permissions?: string;
 }
 export const OSPolicyResourceFileResource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "file": S.optional(OSPolicyResourceFile),
-  "path": S.optional(S.String),
-  "state": S.optional(OSPolicyResourceFileResourceStateEnum),
-  "content": S.optional(S.String),
-  "permissions": S.optional(S.String),
-}),
-).annotate({ identifier: "OSPolicyResourceFileResource" }) as any as S.Schema<OSPolicyResourceFileResource>;
+  S.Struct({
+    file: S.optional(OSPolicyResourceFile),
+    path: S.optional(S.String),
+    state: S.optional(OSPolicyResourceFileResourceStateEnum),
+    content: S.optional(S.String),
+    permissions: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OSPolicyResourceFileResource",
+}) as any as S.Schema<OSPolicyResourceFileResource>;
 
 /** An OS policy resource is used to define the desired state configuration and provides a specific functionality like installing/removing packages, executing a script etc. The system ensures that resources are always in their desired state by taking necessary actions if they have drifted from their desired state. */
 export interface OSPolicyResource {
@@ -597,17 +745,21 @@ export interface OSPolicyResource {
   file?: OSPolicyResourceFileResource;
 }
 export const OSPolicyResource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "repository": S.optional(OSPolicyResourceRepositoryResource),
-  "id": S.optional(S.String),
-  "pkg": S.optional(OSPolicyResourcePackageResource),
-  "exec": S.optional(OSPolicyResourceExecResource),
-  "file": S.optional(OSPolicyResourceFileResource),
-}),
-).annotate({ identifier: "OSPolicyResource" }) as any as S.Schema<OSPolicyResource>;
+  S.Struct({
+    repository: S.optional(OSPolicyResourceRepositoryResource),
+    id: S.optional(S.String),
+    pkg: S.optional(OSPolicyResourcePackageResource),
+    exec: S.optional(OSPolicyResourceExecResource),
+    file: S.optional(OSPolicyResourceFileResource),
+  }),
+).annotate({
+  identifier: "OSPolicyResource",
+}) as any as S.Schema<OSPolicyResource>;
 
 export type OSPolicyResourceList = ReadonlyArray<OSPolicyResource>;
-export const OSPolicyResourceList = /*@__PURE__*/ S.Array(OSPolicyResource) as any as S.Schema<OSPolicyResourceList>;
+export const OSPolicyResourceList = /*@__PURE__*/ S.Array(
+  OSPolicyResource,
+) as any as S.Schema<OSPolicyResourceList>;
 
 /** Filtering criteria to select VMs based on inventory details. */
 export interface OSPolicyInventoryFilter {
@@ -617,14 +769,19 @@ export interface OSPolicyInventoryFilter {
   osVersion?: string;
 }
 export const OSPolicyInventoryFilter = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "osShortName": S.optional(S.String),
-  "osVersion": S.optional(S.String),
-}),
-).annotate({ identifier: "OSPolicyInventoryFilter" }) as any as S.Schema<OSPolicyInventoryFilter>;
+  S.Struct({
+    osShortName: S.optional(S.String),
+    osVersion: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OSPolicyInventoryFilter",
+}) as any as S.Schema<OSPolicyInventoryFilter>;
 
-export type OSPolicyInventoryFilterList = ReadonlyArray<OSPolicyInventoryFilter>;
-export const OSPolicyInventoryFilterList = /*@__PURE__*/ S.Array(OSPolicyInventoryFilter) as any as S.Schema<OSPolicyInventoryFilterList>;
+export type OSPolicyInventoryFilterList =
+  ReadonlyArray<OSPolicyInventoryFilter>;
+export const OSPolicyInventoryFilterList = /*@__PURE__*/ S.Array(
+  OSPolicyInventoryFilter,
+) as any as S.Schema<OSPolicyInventoryFilterList>;
 
 /** Resource groups provide a mechanism to group OS policy resources. Resource groups enable OS policy authors to create a single OS policy to be applied to VMs running different operating Systems. When the OS policy is applied to a target VM, the appropriate resource group within the OS policy is selected based on the `OSFilter` specified within the resource group. */
 export interface OSPolicyResourceGroup {
@@ -634,14 +791,18 @@ export interface OSPolicyResourceGroup {
   inventoryFilters?: OSPolicyInventoryFilterList;
 }
 export const OSPolicyResourceGroup = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resources": S.optional(OSPolicyResourceList),
-  "inventoryFilters": S.optional(OSPolicyInventoryFilterList),
-}),
-).annotate({ identifier: "OSPolicyResourceGroup" }) as any as S.Schema<OSPolicyResourceGroup>;
+  S.Struct({
+    resources: S.optional(OSPolicyResourceList),
+    inventoryFilters: S.optional(OSPolicyInventoryFilterList),
+  }),
+).annotate({
+  identifier: "OSPolicyResourceGroup",
+}) as any as S.Schema<OSPolicyResourceGroup>;
 
 export type OSPolicyResourceGroupList = ReadonlyArray<OSPolicyResourceGroup>;
-export const OSPolicyResourceGroupList = /*@__PURE__*/ S.Array(OSPolicyResourceGroup) as any as S.Schema<OSPolicyResourceGroupList>;
+export const OSPolicyResourceGroupList = /*@__PURE__*/ S.Array(
+  OSPolicyResourceGroup,
+) as any as S.Schema<OSPolicyResourceGroupList>;
 
 /** An OS policy defines the desired state configuration for a VM. */
 export interface OSPolicy {
@@ -657,19 +818,26 @@ export interface OSPolicy {
   description?: string;
 }
 export const OSPolicy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.optional(S.String),
-  "mode": S.optional(OSPolicyModeEnum),
-  "resourceGroups": S.optional(OSPolicyResourceGroupList),
-  "allowNoResourceGroupMatch": S.optional(S.Boolean),
-  "description": S.optional(S.String),
-}),
+  S.Struct({
+    id: S.optional(S.String),
+    mode: S.optional(OSPolicyModeEnum),
+    resourceGroups: S.optional(OSPolicyResourceGroupList),
+    allowNoResourceGroupMatch: S.optional(S.Boolean),
+    description: S.optional(S.String),
+  }),
 ).annotate({ identifier: "OSPolicy" }) as any as S.Schema<OSPolicy>;
 
 export type OSPolicyList = ReadonlyArray<OSPolicy>;
-export const OSPolicyList = /*@__PURE__*/ S.Array(OSPolicy) as any as S.Schema<OSPolicyList>;
+export const OSPolicyList = /*@__PURE__*/ S.Array(
+  OSPolicy,
+) as any as S.Schema<OSPolicyList>;
 
-export type OSPolicyAssignmentRolloutStateEnum = "ROLLOUT_STATE_UNSPECIFIED" | "IN_PROGRESS" | "CANCELLING" | "CANCELLED" | "SUCCEEDED";
+export type OSPolicyAssignmentRolloutStateEnum =
+  | "ROLLOUT_STATE_UNSPECIFIED"
+  | "IN_PROGRESS"
+  | "CANCELLING"
+  | "CANCELLED"
+  | "SUCCEEDED";
 export const OSPolicyAssignmentRolloutStateEnum = /*@__PURE__*/ S.String;
 
 /** Message representing label set. * A label is a key value pair set for a VM. * A LabelSet is a set of labels. * Labels within a LabelSet are ANDed. In other words, a LabelSet is applicable for a VM only if it matches all the labels in the LabelSet. * Example: A LabelSet with 2 labels: `env=prod` and `type=webserver` will only be applicable for those VMs with both labels present. */
@@ -678,13 +846,18 @@ export interface OSPolicyAssignmentLabelSet {
   labels?: StringMap;
 }
 export const OSPolicyAssignmentLabelSet = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "labels": S.optional(StringMap),
-}),
-).annotate({ identifier: "OSPolicyAssignmentLabelSet" }) as any as S.Schema<OSPolicyAssignmentLabelSet>;
+  S.Struct({
+    labels: S.optional(StringMap),
+  }),
+).annotate({
+  identifier: "OSPolicyAssignmentLabelSet",
+}) as any as S.Schema<OSPolicyAssignmentLabelSet>;
 
-export type OSPolicyAssignmentLabelSetList = ReadonlyArray<OSPolicyAssignmentLabelSet>;
-export const OSPolicyAssignmentLabelSetList = /*@__PURE__*/ S.Array(OSPolicyAssignmentLabelSet) as any as S.Schema<OSPolicyAssignmentLabelSetList>;
+export type OSPolicyAssignmentLabelSetList =
+  ReadonlyArray<OSPolicyAssignmentLabelSet>;
+export const OSPolicyAssignmentLabelSetList = /*@__PURE__*/ S.Array(
+  OSPolicyAssignmentLabelSet,
+) as any as S.Schema<OSPolicyAssignmentLabelSetList>;
 
 /** VM inventory details. */
 export interface OSPolicyAssignmentInstanceFilterInventory {
@@ -693,15 +866,22 @@ export interface OSPolicyAssignmentInstanceFilterInventory {
   /** The OS version Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*` An empty string matches all OS versions. */
   osVersion?: string;
 }
-export const OSPolicyAssignmentInstanceFilterInventory = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "osShortName": S.optional(S.String),
-  "osVersion": S.optional(S.String),
-}),
-).annotate({ identifier: "OSPolicyAssignmentInstanceFilterInventory" }) as any as S.Schema<OSPolicyAssignmentInstanceFilterInventory>;
+export const OSPolicyAssignmentInstanceFilterInventory =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      osShortName: S.optional(S.String),
+      osVersion: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "OSPolicyAssignmentInstanceFilterInventory",
+  }) as any as S.Schema<OSPolicyAssignmentInstanceFilterInventory>;
 
-export type OSPolicyAssignmentInstanceFilterInventoryList = ReadonlyArray<OSPolicyAssignmentInstanceFilterInventory>;
-export const OSPolicyAssignmentInstanceFilterInventoryList = /*@__PURE__*/ S.Array(OSPolicyAssignmentInstanceFilterInventory) as any as S.Schema<OSPolicyAssignmentInstanceFilterInventoryList>;
+export type OSPolicyAssignmentInstanceFilterInventoryList =
+  ReadonlyArray<OSPolicyAssignmentInstanceFilterInventory>;
+export const OSPolicyAssignmentInstanceFilterInventoryList =
+  /*@__PURE__*/ S.Array(
+    OSPolicyAssignmentInstanceFilterInventory,
+  ) as any as S.Schema<OSPolicyAssignmentInstanceFilterInventoryList>;
 
 /** Filters to select target VMs for an assignment. If more than one filter criteria is specified below, a VM will be selected if and only if it satisfies all of them. */
 export interface OSPolicyAssignmentInstanceFilter {
@@ -715,13 +895,15 @@ export interface OSPolicyAssignmentInstanceFilter {
   exclusionLabels?: OSPolicyAssignmentLabelSetList;
 }
 export const OSPolicyAssignmentInstanceFilter = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "inclusionLabels": S.optional(OSPolicyAssignmentLabelSetList),
-  "inventories": S.optional(OSPolicyAssignmentInstanceFilterInventoryList),
-  "all": S.optional(S.Boolean),
-  "exclusionLabels": S.optional(OSPolicyAssignmentLabelSetList),
-}),
-).annotate({ identifier: "OSPolicyAssignmentInstanceFilter" }) as any as S.Schema<OSPolicyAssignmentInstanceFilter>;
+  S.Struct({
+    inclusionLabels: S.optional(OSPolicyAssignmentLabelSetList),
+    inventories: S.optional(OSPolicyAssignmentInstanceFilterInventoryList),
+    all: S.optional(S.Boolean),
+    exclusionLabels: S.optional(OSPolicyAssignmentLabelSetList),
+  }),
+).annotate({
+  identifier: "OSPolicyAssignmentInstanceFilter",
+}) as any as S.Schema<OSPolicyAssignmentInstanceFilter>;
 
 /** Message encapsulating a value that can be either absolute ("fixed") or relative ("percent") to a value. */
 export interface FixedOrPercent {
@@ -731,10 +913,10 @@ export interface FixedOrPercent {
   percent?: number;
 }
 export const FixedOrPercent = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fixed": S.optional(S.Number),
-  "percent": S.optional(S.Number),
-}),
+  S.Struct({
+    fixed: S.optional(S.Number),
+    percent: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "FixedOrPercent" }) as any as S.Schema<FixedOrPercent>;
 
 /** Message to configure the rollout at the zonal level for the OS policy assignment. */
@@ -745,11 +927,13 @@ export interface OSPolicyAssignmentRollout {
   disruptionBudget?: FixedOrPercent;
 }
 export const OSPolicyAssignmentRollout = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "minWaitDuration": S.optional(S.String),
-  "disruptionBudget": S.optional(FixedOrPercent),
-}),
-).annotate({ identifier: "OSPolicyAssignmentRollout" }) as any as S.Schema<OSPolicyAssignmentRollout>;
+  S.Struct({
+    minWaitDuration: S.optional(S.String),
+    disruptionBudget: S.optional(FixedOrPercent),
+  }),
+).annotate({
+  identifier: "OSPolicyAssignmentRollout",
+}) as any as S.Schema<OSPolicyAssignmentRollout>;
 
 /** OS policy assignment is an API resource that is used to apply a set of OS policies to a dynamically targeted group of Compute Engine VM instances. An OS policy is used to define the desired state configuration for a Compute Engine VM instance through a set of configuration resources that provide capabilities such as installing or removing software packages, or executing a script. For more information about the OS policy resource definitions and examples, see [OS policy and OS policy assignment](https://cloud.google.com/compute/docs/os-configuration-management/working-with-os-policies). */
 export interface OSPolicyAssignment {
@@ -781,22 +965,24 @@ export interface OSPolicyAssignment {
   rollout?: OSPolicyAssignmentRollout;
 }
 export const OSPolicyAssignment = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "description": S.optional(S.String),
-  "etag": S.optional(S.String),
-  "uid": S.optional(S.String),
-  "revisionId": S.optional(S.String),
-  "name": S.optional(S.String),
-  "reconciling": S.optional(S.Boolean),
-  "osPolicies": S.optional(OSPolicyList),
-  "rolloutState": S.optional(OSPolicyAssignmentRolloutStateEnum),
-  "instanceFilter": S.optional(OSPolicyAssignmentInstanceFilter),
-  "revisionCreateTime": S.optional(S.String),
-  "baseline": S.optional(S.Boolean),
-  "deleted": S.optional(S.Boolean),
-  "rollout": S.optional(OSPolicyAssignmentRollout),
-}),
-).annotate({ identifier: "OSPolicyAssignment" }) as any as S.Schema<OSPolicyAssignment>;
+  S.Struct({
+    description: S.optional(S.String),
+    etag: S.optional(S.String),
+    uid: S.optional(S.String),
+    revisionId: S.optional(S.String),
+    name: S.optional(S.String),
+    reconciling: S.optional(S.Boolean),
+    osPolicies: S.optional(OSPolicyList),
+    rolloutState: S.optional(OSPolicyAssignmentRolloutStateEnum),
+    instanceFilter: S.optional(OSPolicyAssignmentInstanceFilter),
+    revisionCreateTime: S.optional(S.String),
+    baseline: S.optional(S.Boolean),
+    deleted: S.optional(S.Boolean),
+    rollout: S.optional(OSPolicyAssignmentRollout),
+  }),
+).annotate({
+  identifier: "OSPolicyAssignment",
+}) as any as S.Schema<OSPolicyAssignment>;
 
 /** Represents a resource that is being orchestrated by the policy orchestrator. */
 export interface GoogleCloudOsconfigV2beta__OrchestratedResource {
@@ -805,12 +991,15 @@ export interface GoogleCloudOsconfigV2beta__OrchestratedResource {
   /** Optional. ID of the resource to be used while generating set of affected resources. For UPSERT action the value is auto-generated during PolicyOrchestrator creation when not set. When the value is set it should following next restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project. For DELETE action, ID must be specified explicitly during PolicyOrchestrator creation. */
   id?: string;
 }
-export const GoogleCloudOsconfigV2beta__OrchestratedResource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "osPolicyAssignmentV1Payload": S.optional(OSPolicyAssignment),
-  "id": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudOsconfigV2beta__OrchestratedResource" }) as any as S.Schema<GoogleCloudOsconfigV2beta__OrchestratedResource>;
+export const GoogleCloudOsconfigV2beta__OrchestratedResource =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      osPolicyAssignmentV1Payload: S.optional(OSPolicyAssignment),
+      id: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudOsconfigV2beta__OrchestratedResource",
+  }) as any as S.Schema<GoogleCloudOsconfigV2beta__OrchestratedResource>;
 
 /** A policy orchestrator manages project-level and zone-level policy resources, such as OS policy assignments. It provides methods to create, update, and delete these resources across projects and locations at scale. The policy orchestrator operates as a continuous loop. In each iteration, the orchestrator identifies the set of resources to be modified and progressively applies changes. If the set of resources changes over time (for example, if you add new projects), subsequent iterations address those changes. The orchestrator can either upsert or delete policy resources. For more details, see the `action` and `orchestrated_resource` fields. The policy orchestrator does not manage the lifecycle of the resources it creates. Each iteration is independent and, besides Cloud Logging, the orchestrator retains only a minimal history of past actions. Deleting the orchestrator does not affect previously created resources; these resources remain in their current state. Similarly, removing projects from the orchestrator's scope does not affect existing resources. */
 export interface GoogleCloudOsconfigV2beta__PolicyOrchestrator {
@@ -839,22 +1028,31 @@ export interface GoogleCloudOsconfigV2beta__PolicyOrchestrator {
   /** Output only. Timestamp when the policy orchestrator resource was created. */
   createTime?: string;
 }
-export const GoogleCloudOsconfigV2beta__PolicyOrchestrator = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "etag": S.optional(S.String),
-  "action": S.optional(S.String),
-  "orchestrationState": S.optional(GoogleCloudOsconfigV2beta_PolicyOrchestrator_OrchestrationState),
-  "labels": S.optional(StringMap),
-  "updateTime": S.optional(S.String),
-  "orchestrationScope": S.optional(GoogleCloudOsconfigV2beta__OrchestrationScope),
-  "orchestratedResource": S.optional(GoogleCloudOsconfigV2beta__OrchestratedResource),
-  "name": S.optional(S.String),
-  "description": S.optional(S.String),
-  "state": S.optional(S.String),
-  "reconciling": S.optional(S.Boolean),
-  "createTime": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudOsconfigV2beta__PolicyOrchestrator" }) as any as S.Schema<GoogleCloudOsconfigV2beta__PolicyOrchestrator>;
+export const GoogleCloudOsconfigV2beta__PolicyOrchestrator =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      etag: S.optional(S.String),
+      action: S.optional(S.String),
+      orchestrationState: S.optional(
+        GoogleCloudOsconfigV2beta_PolicyOrchestrator_OrchestrationState,
+      ),
+      labels: S.optional(StringMap),
+      updateTime: S.optional(S.String),
+      orchestrationScope: S.optional(
+        GoogleCloudOsconfigV2beta__OrchestrationScope,
+      ),
+      orchestratedResource: S.optional(
+        GoogleCloudOsconfigV2beta__OrchestratedResource,
+      ),
+      name: S.optional(S.String),
+      description: S.optional(S.String),
+      state: S.optional(S.String),
+      reconciling: S.optional(S.Boolean),
+      createTime: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudOsconfigV2beta__PolicyOrchestrator",
+  }) as any as S.Schema<GoogleCloudOsconfigV2beta__PolicyOrchestrator>;
 
 export interface CreateFoldersLocationsGlobalPolicyOrchestratorsRequest {
   /** Required. The logical identifier of the policy orchestrator, with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the parent. */
@@ -866,14 +1064,25 @@ export interface CreateFoldersLocationsGlobalPolicyOrchestratorsRequest {
   /** Request body */
   body?: GoogleCloudOsconfigV2beta__PolicyOrchestrator;
 }
-export const CreateFoldersLocationsGlobalPolicyOrchestratorsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "policyOrchestratorId": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(GoogleCloudOsconfigV2beta__PolicyOrchestrator.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2beta/{+parent}/policyOrchestrators","baseUrl":"https://osconfig.googleapis.com/"})),
-).annotate({ identifier: "CreateFoldersLocationsGlobalPolicyOrchestratorsRequest" }) as any as S.Schema<CreateFoldersLocationsGlobalPolicyOrchestratorsRequest>;
+export const CreateFoldersLocationsGlobalPolicyOrchestratorsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      policyOrchestratorId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(
+        GoogleCloudOsconfigV2beta__PolicyOrchestrator.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v2beta/{+parent}/policyOrchestrators",
+        baseUrl: "https://osconfig.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateFoldersLocationsGlobalPolicyOrchestratorsRequest",
+  }) as any as S.Schema<CreateFoldersLocationsGlobalPolicyOrchestratorsRequest>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
@@ -889,13 +1098,13 @@ export interface Operation {
   name?: string;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "metadata": S.optional(DocumentMap),
-  "done": S.optional(S.Boolean),
-  "response": S.optional(DocumentMap),
-  "error": S.optional(Status),
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    metadata: S.optional(DocumentMap),
+    done: S.optional(S.Boolean),
+    response: S.optional(DocumentMap),
+    error: S.optional(Status),
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 export interface CreateOrganizationsLocationsGlobalPolicyOrchestratorsRequest {
@@ -908,14 +1117,25 @@ export interface CreateOrganizationsLocationsGlobalPolicyOrchestratorsRequest {
   /** Request body */
   body?: GoogleCloudOsconfigV2beta__PolicyOrchestrator;
 }
-export const CreateOrganizationsLocationsGlobalPolicyOrchestratorsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "policyOrchestratorId": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(GoogleCloudOsconfigV2beta__PolicyOrchestrator.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2beta/{+parent}/policyOrchestrators","baseUrl":"https://osconfig.googleapis.com/"})),
-).annotate({ identifier: "CreateOrganizationsLocationsGlobalPolicyOrchestratorsRequest" }) as any as S.Schema<CreateOrganizationsLocationsGlobalPolicyOrchestratorsRequest>;
+export const CreateOrganizationsLocationsGlobalPolicyOrchestratorsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      policyOrchestratorId: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(
+        GoogleCloudOsconfigV2beta__PolicyOrchestrator.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v2beta/{+parent}/policyOrchestrators",
+        baseUrl: "https://osconfig.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateOrganizationsLocationsGlobalPolicyOrchestratorsRequest",
+  }) as any as S.Schema<CreateOrganizationsLocationsGlobalPolicyOrchestratorsRequest>;
 
 export interface CreateProjectsLocationsGlobalPolicyOrchestratorsRequest {
   /** Required. The parent resource name in the form of: * `organizations/{organization_id}/locations/global` * `folders/{folder_id}/locations/global` * `projects/{project_id_or_number}/locations/global` */
@@ -927,14 +1147,25 @@ export interface CreateProjectsLocationsGlobalPolicyOrchestratorsRequest {
   /** Request body */
   body?: GoogleCloudOsconfigV2beta__PolicyOrchestrator;
 }
-export const CreateProjectsLocationsGlobalPolicyOrchestratorsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "policyOrchestratorId": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(GoogleCloudOsconfigV2beta__PolicyOrchestrator.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2beta/{+parent}/policyOrchestrators","baseUrl":"https://osconfig.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsGlobalPolicyOrchestratorsRequest" }) as any as S.Schema<CreateProjectsLocationsGlobalPolicyOrchestratorsRequest>;
+export const CreateProjectsLocationsGlobalPolicyOrchestratorsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      policyOrchestratorId: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(
+        GoogleCloudOsconfigV2beta__PolicyOrchestrator.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v2beta/{+parent}/policyOrchestrators",
+        baseUrl: "https://osconfig.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsGlobalPolicyOrchestratorsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsGlobalPolicyOrchestratorsRequest>;
 
 export interface DeleteFoldersLocationsGlobalPolicyOrchestratorsRequest {
   /** Required. Name of the resource to be deleted. */
@@ -944,23 +1175,41 @@ export interface DeleteFoldersLocationsGlobalPolicyOrchestratorsRequest {
   /** Optional. The current etag of the policy orchestrator. If an etag is provided and does not match the current etag of the policy orchestrator, deletion will be blocked and an ABORTED error will be returned. */
   etag?: string;
 }
-export const DeleteFoldersLocationsGlobalPolicyOrchestratorsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "etag": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v2beta/{+name}","baseUrl":"https://osconfig.googleapis.com/"})),
-).annotate({ identifier: "DeleteFoldersLocationsGlobalPolicyOrchestratorsRequest" }) as any as S.Schema<DeleteFoldersLocationsGlobalPolicyOrchestratorsRequest>;
+export const DeleteFoldersLocationsGlobalPolicyOrchestratorsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      etag: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v2beta/{+name}",
+        baseUrl: "https://osconfig.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteFoldersLocationsGlobalPolicyOrchestratorsRequest",
+  }) as any as S.Schema<DeleteFoldersLocationsGlobalPolicyOrchestratorsRequest>;
 
 export interface DeleteFoldersLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteFoldersLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v2beta/{+name}","baseUrl":"https://osconfig.googleapis.com/"})),
-).annotate({ identifier: "DeleteFoldersLocationsOperationsRequest" }) as any as S.Schema<DeleteFoldersLocationsOperationsRequest>;
+export const DeleteFoldersLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v2beta/{+name}",
+        baseUrl: "https://osconfig.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteFoldersLocationsOperationsRequest",
+}) as any as S.Schema<DeleteFoldersLocationsOperationsRequest>;
 
 export interface DeleteOrganizationsLocationsGlobalPolicyOrchestratorsRequest {
   /** Required. Name of the resource to be deleted. */
@@ -970,23 +1219,41 @@ export interface DeleteOrganizationsLocationsGlobalPolicyOrchestratorsRequest {
   /** Optional. The current etag of the policy orchestrator. If an etag is provided and does not match the current etag of the policy orchestrator, deletion will be blocked and an ABORTED error will be returned. */
   etag?: string;
 }
-export const DeleteOrganizationsLocationsGlobalPolicyOrchestratorsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "etag": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v2beta/{+name}","baseUrl":"https://osconfig.googleapis.com/"})),
-).annotate({ identifier: "DeleteOrganizationsLocationsGlobalPolicyOrchestratorsRequest" }) as any as S.Schema<DeleteOrganizationsLocationsGlobalPolicyOrchestratorsRequest>;
+export const DeleteOrganizationsLocationsGlobalPolicyOrchestratorsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      etag: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v2beta/{+name}",
+        baseUrl: "https://osconfig.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteOrganizationsLocationsGlobalPolicyOrchestratorsRequest",
+  }) as any as S.Schema<DeleteOrganizationsLocationsGlobalPolicyOrchestratorsRequest>;
 
 export interface DeleteOrganizationsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v2beta/{+name}","baseUrl":"https://osconfig.googleapis.com/"})),
-).annotate({ identifier: "DeleteOrganizationsLocationsOperationsRequest" }) as any as S.Schema<DeleteOrganizationsLocationsOperationsRequest>;
+export const DeleteOrganizationsLocationsOperationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v2beta/{+name}",
+        baseUrl: "https://osconfig.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteOrganizationsLocationsOperationsRequest",
+  }) as any as S.Schema<DeleteOrganizationsLocationsOperationsRequest>;
 
 export interface DeleteProjectsLocationsGlobalPolicyOrchestratorsRequest {
   /** Required. Name of the resource to be deleted. */
@@ -996,83 +1263,155 @@ export interface DeleteProjectsLocationsGlobalPolicyOrchestratorsRequest {
   /** Optional. The current etag of the policy orchestrator. If an etag is provided and does not match the current etag of the policy orchestrator, deletion will be blocked and an ABORTED error will be returned. */
   etag?: string;
 }
-export const DeleteProjectsLocationsGlobalPolicyOrchestratorsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "etag": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v2beta/{+name}","baseUrl":"https://osconfig.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsGlobalPolicyOrchestratorsRequest" }) as any as S.Schema<DeleteProjectsLocationsGlobalPolicyOrchestratorsRequest>;
+export const DeleteProjectsLocationsGlobalPolicyOrchestratorsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      etag: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v2beta/{+name}",
+        baseUrl: "https://osconfig.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsGlobalPolicyOrchestratorsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsGlobalPolicyOrchestratorsRequest>;
 
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v2beta/{+name}","baseUrl":"https://osconfig.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsOperationsRequest" }) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v2beta/{+name}",
+        baseUrl: "https://osconfig.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsOperationsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
 
 export interface GetFoldersLocationsGlobalPolicyOrchestratorsRequest {
   /** Required. The resource name. */
   name: string;
 }
-export const GetFoldersLocationsGlobalPolicyOrchestratorsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v2beta/{+name}","baseUrl":"https://osconfig.googleapis.com/"})),
-).annotate({ identifier: "GetFoldersLocationsGlobalPolicyOrchestratorsRequest" }) as any as S.Schema<GetFoldersLocationsGlobalPolicyOrchestratorsRequest>;
+export const GetFoldersLocationsGlobalPolicyOrchestratorsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v2beta/{+name}",
+        baseUrl: "https://osconfig.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetFoldersLocationsGlobalPolicyOrchestratorsRequest",
+  }) as any as S.Schema<GetFoldersLocationsGlobalPolicyOrchestratorsRequest>;
 
 export interface GetFoldersLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetFoldersLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v2beta/{+name}","baseUrl":"https://osconfig.googleapis.com/"})),
-).annotate({ identifier: "GetFoldersLocationsOperationsRequest" }) as any as S.Schema<GetFoldersLocationsOperationsRequest>;
+export const GetFoldersLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v2beta/{+name}",
+        baseUrl: "https://osconfig.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetFoldersLocationsOperationsRequest",
+}) as any as S.Schema<GetFoldersLocationsOperationsRequest>;
 
 export interface GetOrganizationsLocationsGlobalPolicyOrchestratorsRequest {
   /** Required. The resource name. */
   name: string;
 }
-export const GetOrganizationsLocationsGlobalPolicyOrchestratorsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v2beta/{+name}","baseUrl":"https://osconfig.googleapis.com/"})),
-).annotate({ identifier: "GetOrganizationsLocationsGlobalPolicyOrchestratorsRequest" }) as any as S.Schema<GetOrganizationsLocationsGlobalPolicyOrchestratorsRequest>;
+export const GetOrganizationsLocationsGlobalPolicyOrchestratorsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v2beta/{+name}",
+        baseUrl: "https://osconfig.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetOrganizationsLocationsGlobalPolicyOrchestratorsRequest",
+  }) as any as S.Schema<GetOrganizationsLocationsGlobalPolicyOrchestratorsRequest>;
 
 export interface GetOrganizationsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v2beta/{+name}","baseUrl":"https://osconfig.googleapis.com/"})),
-).annotate({ identifier: "GetOrganizationsLocationsOperationsRequest" }) as any as S.Schema<GetOrganizationsLocationsOperationsRequest>;
+export const GetOrganizationsLocationsOperationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v2beta/{+name}",
+        baseUrl: "https://osconfig.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetOrganizationsLocationsOperationsRequest",
+  }) as any as S.Schema<GetOrganizationsLocationsOperationsRequest>;
 
 export interface GetProjectsLocationsGlobalPolicyOrchestratorsRequest {
   /** Required. The resource name. */
   name: string;
 }
-export const GetProjectsLocationsGlobalPolicyOrchestratorsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v2beta/{+name}","baseUrl":"https://osconfig.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsGlobalPolicyOrchestratorsRequest" }) as any as S.Schema<GetProjectsLocationsGlobalPolicyOrchestratorsRequest>;
+export const GetProjectsLocationsGlobalPolicyOrchestratorsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v2beta/{+name}",
+        baseUrl: "https://osconfig.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsGlobalPolicyOrchestratorsRequest",
+  }) as any as S.Schema<GetProjectsLocationsGlobalPolicyOrchestratorsRequest>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v2beta/{+name}","baseUrl":"https://osconfig.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v2beta/{+name}",
+        baseUrl: "https://osconfig.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsOperationsRequest",
+}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export interface ListFoldersLocationsGlobalPolicyOrchestratorsRequest {
   /** Optional. Filtering results */
@@ -1086,18 +1425,31 @@ export interface ListFoldersLocationsGlobalPolicyOrchestratorsRequest {
   /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
 }
-export const ListFoldersLocationsGlobalPolicyOrchestratorsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v2beta/{+parent}/policyOrchestrators","baseUrl":"https://osconfig.googleapis.com/"})),
-).annotate({ identifier: "ListFoldersLocationsGlobalPolicyOrchestratorsRequest" }) as any as S.Schema<ListFoldersLocationsGlobalPolicyOrchestratorsRequest>;
+export const ListFoldersLocationsGlobalPolicyOrchestratorsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      filter: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v2beta/{+parent}/policyOrchestrators",
+        baseUrl: "https://osconfig.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListFoldersLocationsGlobalPolicyOrchestratorsRequest",
+  }) as any as S.Schema<ListFoldersLocationsGlobalPolicyOrchestratorsRequest>;
 
-export type GoogleCloudOsconfigV2beta__PolicyOrchestratorList = ReadonlyArray<GoogleCloudOsconfigV2beta__PolicyOrchestrator>;
-export const GoogleCloudOsconfigV2beta__PolicyOrchestratorList = /*@__PURE__*/ S.Array(GoogleCloudOsconfigV2beta__PolicyOrchestrator) as any as S.Schema<GoogleCloudOsconfigV2beta__PolicyOrchestratorList>;
+export type GoogleCloudOsconfigV2beta__PolicyOrchestratorList =
+  ReadonlyArray<GoogleCloudOsconfigV2beta__PolicyOrchestrator>;
+export const GoogleCloudOsconfigV2beta__PolicyOrchestratorList =
+  /*@__PURE__*/ S.Array(
+    GoogleCloudOsconfigV2beta__PolicyOrchestrator,
+  ) as any as S.Schema<GoogleCloudOsconfigV2beta__PolicyOrchestratorList>;
 
 /** Response for the list policy orchestrator resources. */
 export interface GoogleCloudOsconfigV2beta__ListPolicyOrchestratorsResponse {
@@ -1108,13 +1460,18 @@ export interface GoogleCloudOsconfigV2beta__ListPolicyOrchestratorsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleCloudOsconfigV2beta__ListPolicyOrchestratorsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "policyOrchestrators": S.optional(GoogleCloudOsconfigV2beta__PolicyOrchestratorList),
-  "unreachable": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleCloudOsconfigV2beta__ListPolicyOrchestratorsResponse" }) as any as S.Schema<GoogleCloudOsconfigV2beta__ListPolicyOrchestratorsResponse>;
+export const GoogleCloudOsconfigV2beta__ListPolicyOrchestratorsResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      policyOrchestrators: S.optional(
+        GoogleCloudOsconfigV2beta__PolicyOrchestratorList,
+      ),
+      unreachable: S.optional(StringList),
+      nextPageToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudOsconfigV2beta__ListPolicyOrchestratorsResponse",
+  }) as any as S.Schema<GoogleCloudOsconfigV2beta__ListPolicyOrchestratorsResponse>;
 
 export interface ListFoldersLocationsOperationsRequest {
   /** The standard list filter. */
@@ -1128,18 +1485,29 @@ export interface ListFoldersLocationsOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
 }
-export const ListFoldersLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v2beta/{+name}/operations","baseUrl":"https://osconfig.googleapis.com/"})),
-).annotate({ identifier: "ListFoldersLocationsOperationsRequest" }) as any as S.Schema<ListFoldersLocationsOperationsRequest>;
+export const ListFoldersLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      filter: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v2beta/{+name}/operations",
+        baseUrl: "https://osconfig.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListFoldersLocationsOperationsRequest",
+}) as any as S.Schema<ListFoldersLocationsOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(
+  Operation,
+) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -1151,12 +1519,14 @@ export interface ListOperationsResponse {
   unreachable?: StringList;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "operations": S.optional(OperationList),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    operations: S.optional(OperationList),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListOperationsResponse",
+}) as any as S.Schema<ListOperationsResponse>;
 
 export interface ListOrganizationsLocationsGlobalPolicyOrchestratorsRequest {
   /** Required. The parent resource name. */
@@ -1170,15 +1540,24 @@ export interface ListOrganizationsLocationsGlobalPolicyOrchestratorsRequest {
   /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
 }
-export const ListOrganizationsLocationsGlobalPolicyOrchestratorsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v2beta/{+parent}/policyOrchestrators","baseUrl":"https://osconfig.googleapis.com/"})),
-).annotate({ identifier: "ListOrganizationsLocationsGlobalPolicyOrchestratorsRequest" }) as any as S.Schema<ListOrganizationsLocationsGlobalPolicyOrchestratorsRequest>;
+export const ListOrganizationsLocationsGlobalPolicyOrchestratorsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v2beta/{+parent}/policyOrchestrators",
+        baseUrl: "https://osconfig.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListOrganizationsLocationsGlobalPolicyOrchestratorsRequest",
+  }) as any as S.Schema<ListOrganizationsLocationsGlobalPolicyOrchestratorsRequest>;
 
 export interface ListOrganizationsLocationsOperationsRequest {
   /** The standard list page size. */
@@ -1192,15 +1571,24 @@ export interface ListOrganizationsLocationsOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
 }
-export const ListOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v2beta/{+name}/operations","baseUrl":"https://osconfig.googleapis.com/"})),
-).annotate({ identifier: "ListOrganizationsLocationsOperationsRequest" }) as any as S.Schema<ListOrganizationsLocationsOperationsRequest>;
+export const ListOrganizationsLocationsOperationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v2beta/{+name}/operations",
+        baseUrl: "https://osconfig.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListOrganizationsLocationsOperationsRequest",
+  }) as any as S.Schema<ListOrganizationsLocationsOperationsRequest>;
 
 export interface ListProjectsLocationsGlobalPolicyOrchestratorsRequest {
   /** Required. The parent resource name. */
@@ -1214,15 +1602,24 @@ export interface ListProjectsLocationsGlobalPolicyOrchestratorsRequest {
   /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
 }
-export const ListProjectsLocationsGlobalPolicyOrchestratorsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v2beta/{+parent}/policyOrchestrators","baseUrl":"https://osconfig.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsGlobalPolicyOrchestratorsRequest" }) as any as S.Schema<ListProjectsLocationsGlobalPolicyOrchestratorsRequest>;
+export const ListProjectsLocationsGlobalPolicyOrchestratorsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v2beta/{+parent}/policyOrchestrators",
+        baseUrl: "https://osconfig.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsGlobalPolicyOrchestratorsRequest",
+  }) as any as S.Schema<ListProjectsLocationsGlobalPolicyOrchestratorsRequest>;
 
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page size. */
@@ -1236,15 +1633,24 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v2beta/{+name}/operations","baseUrl":"https://osconfig.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v2beta/{+name}/operations",
+        baseUrl: "https://osconfig.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsOperationsRequest",
+}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export interface PatchFoldersLocationsGlobalPolicyOrchestratorsRequest {
   /** Immutable. Identifier. In the following format: * `organizations/{organization_id}/locations/global/policyOrchestrators/{orchestrator_id}` * `folders/{folder_id}/locations/global/policyOrchestrators/{orchestrator_id}` * `projects/{project_id_or_number}/locations/global/policyOrchestrators/{orchestrator_id}` */
@@ -1254,13 +1660,24 @@ export interface PatchFoldersLocationsGlobalPolicyOrchestratorsRequest {
   /** Request body */
   body?: GoogleCloudOsconfigV2beta__PolicyOrchestrator;
 }
-export const PatchFoldersLocationsGlobalPolicyOrchestratorsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(GoogleCloudOsconfigV2beta__PolicyOrchestrator.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v2beta/{+name}","baseUrl":"https://osconfig.googleapis.com/"})),
-).annotate({ identifier: "PatchFoldersLocationsGlobalPolicyOrchestratorsRequest" }) as any as S.Schema<PatchFoldersLocationsGlobalPolicyOrchestratorsRequest>;
+export const PatchFoldersLocationsGlobalPolicyOrchestratorsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(
+        GoogleCloudOsconfigV2beta__PolicyOrchestrator.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v2beta/{+name}",
+        baseUrl: "https://osconfig.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchFoldersLocationsGlobalPolicyOrchestratorsRequest",
+  }) as any as S.Schema<PatchFoldersLocationsGlobalPolicyOrchestratorsRequest>;
 
 export interface PatchOrganizationsLocationsGlobalPolicyOrchestratorsRequest {
   /** Immutable. Identifier. In the following format: * `organizations/{organization_id}/locations/global/policyOrchestrators/{orchestrator_id}` * `folders/{folder_id}/locations/global/policyOrchestrators/{orchestrator_id}` * `projects/{project_id_or_number}/locations/global/policyOrchestrators/{orchestrator_id}` */
@@ -1270,13 +1687,24 @@ export interface PatchOrganizationsLocationsGlobalPolicyOrchestratorsRequest {
   /** Request body */
   body?: GoogleCloudOsconfigV2beta__PolicyOrchestrator;
 }
-export const PatchOrganizationsLocationsGlobalPolicyOrchestratorsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(GoogleCloudOsconfigV2beta__PolicyOrchestrator.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v2beta/{+name}","baseUrl":"https://osconfig.googleapis.com/"})),
-).annotate({ identifier: "PatchOrganizationsLocationsGlobalPolicyOrchestratorsRequest" }) as any as S.Schema<PatchOrganizationsLocationsGlobalPolicyOrchestratorsRequest>;
+export const PatchOrganizationsLocationsGlobalPolicyOrchestratorsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(
+        GoogleCloudOsconfigV2beta__PolicyOrchestrator.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v2beta/{+name}",
+        baseUrl: "https://osconfig.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchOrganizationsLocationsGlobalPolicyOrchestratorsRequest",
+  }) as any as S.Schema<PatchOrganizationsLocationsGlobalPolicyOrchestratorsRequest>;
 
 export interface PatchProjectsLocationsGlobalPolicyOrchestratorsRequest {
   /** Immutable. Identifier. In the following format: * `organizations/{organization_id}/locations/global/policyOrchestrators/{orchestrator_id}` * `folders/{folder_id}/locations/global/policyOrchestrators/{orchestrator_id}` * `projects/{project_id_or_number}/locations/global/policyOrchestrators/{orchestrator_id}` */
@@ -1286,15 +1714,31 @@ export interface PatchProjectsLocationsGlobalPolicyOrchestratorsRequest {
   /** Request body */
   body?: GoogleCloudOsconfigV2beta__PolicyOrchestrator;
 }
-export const PatchProjectsLocationsGlobalPolicyOrchestratorsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(GoogleCloudOsconfigV2beta__PolicyOrchestrator.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v2beta/{+name}","baseUrl":"https://osconfig.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsGlobalPolicyOrchestratorsRequest" }) as any as S.Schema<PatchProjectsLocationsGlobalPolicyOrchestratorsRequest>;
+export const PatchProjectsLocationsGlobalPolicyOrchestratorsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(
+        GoogleCloudOsconfigV2beta__PolicyOrchestrator.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v2beta/{+name}",
+        baseUrl: "https://osconfig.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsGlobalPolicyOrchestratorsRequest",
+  }) as any as S.Schema<PatchProjectsLocationsGlobalPolicyOrchestratorsRequest>;
 
-export type CancelFoldersLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CancelFoldersLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelFoldersLocationsOperations: API.OperationMethod<
   CancelFoldersLocationsOperationsRequest,
@@ -1309,7 +1753,12 @@ export const cancelFoldersLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CancelOrganizationsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CancelOrganizationsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelOrganizationsLocationsOperations: API.OperationMethod<
   CancelOrganizationsLocationsOperationsRequest,
@@ -1324,7 +1773,12 @@ export const cancelOrganizationsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CancelProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CancelProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsRequest,
@@ -1339,7 +1793,12 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateFoldersLocationsGlobalPolicyOrchestratorsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateFoldersLocationsGlobalPolicyOrchestratorsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new policy orchestrator under the given folder resource. `name` field of the given orchestrator are ignored and instead replaced by a product of `parent` and `policy_orchestrator_id`. Orchestrator state field might be only set to `ACTIVE`, `STOPPED` or omitted (in which case, the created resource will be in `ACTIVE` state anyway). */
 export const createFoldersLocationsGlobalPolicyOrchestrators: API.OperationMethod<
   CreateFoldersLocationsGlobalPolicyOrchestratorsRequest,
@@ -1354,7 +1813,12 @@ export const createFoldersLocationsGlobalPolicyOrchestrators: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type CreateOrganizationsLocationsGlobalPolicyOrchestratorsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateOrganizationsLocationsGlobalPolicyOrchestratorsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new policy orchestrator under the given organizations resource. `name` field of the given orchestrator are ignored and instead replaced by a product of `parent` and `policy_orchestrator_id`. Orchestrator state field might be only set to `ACTIVE`, `STOPPED` or omitted (in which case, the created resource will be in `ACTIVE` state anyway). */
 export const createOrganizationsLocationsGlobalPolicyOrchestrators: API.OperationMethod<
   CreateOrganizationsLocationsGlobalPolicyOrchestratorsRequest,
@@ -1369,7 +1833,12 @@ export const createOrganizationsLocationsGlobalPolicyOrchestrators: API.Operatio
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsGlobalPolicyOrchestratorsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsGlobalPolicyOrchestratorsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new policy orchestrator under the given project resource. `name` field of the given orchestrator are ignored and instead replaced by a product of `parent` and `policy_orchestrator_id`. Orchestrator state field might be only set to `ACTIVE`, `STOPPED` or omitted (in which case, the created resource will be in `ACTIVE` state anyway). */
 export const createProjectsLocationsGlobalPolicyOrchestrators: API.OperationMethod<
   CreateProjectsLocationsGlobalPolicyOrchestratorsRequest,
@@ -1384,7 +1853,12 @@ export const createProjectsLocationsGlobalPolicyOrchestrators: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type DeleteFoldersLocationsGlobalPolicyOrchestratorsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteFoldersLocationsGlobalPolicyOrchestratorsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes an existing policy orchestrator resource, parented by a folder. */
 export const deleteFoldersLocationsGlobalPolicyOrchestrators: API.OperationMethod<
   DeleteFoldersLocationsGlobalPolicyOrchestratorsRequest,
@@ -1399,7 +1873,12 @@ export const deleteFoldersLocationsGlobalPolicyOrchestrators: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type DeleteFoldersLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteFoldersLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteFoldersLocationsOperations: API.OperationMethod<
   DeleteFoldersLocationsOperationsRequest,
@@ -1414,7 +1893,12 @@ export const deleteFoldersLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteOrganizationsLocationsGlobalPolicyOrchestratorsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteOrganizationsLocationsGlobalPolicyOrchestratorsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes an existing policy orchestrator resource, parented by an organization. */
 export const deleteOrganizationsLocationsGlobalPolicyOrchestrators: API.OperationMethod<
   DeleteOrganizationsLocationsGlobalPolicyOrchestratorsRequest,
@@ -1429,7 +1913,12 @@ export const deleteOrganizationsLocationsGlobalPolicyOrchestrators: API.Operatio
   retry: Retry.Retry,
 }));
 
-export type DeleteOrganizationsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteOrganizationsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteOrganizationsLocationsOperations: API.OperationMethod<
   DeleteOrganizationsLocationsOperationsRequest,
@@ -1444,7 +1933,12 @@ export const deleteOrganizationsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsGlobalPolicyOrchestratorsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsGlobalPolicyOrchestratorsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes an existing policy orchestrator resource, parented by a project. */
 export const deleteProjectsLocationsGlobalPolicyOrchestrators: API.OperationMethod<
   DeleteProjectsLocationsGlobalPolicyOrchestratorsRequest,
@@ -1459,7 +1953,12 @@ export const deleteProjectsLocationsGlobalPolicyOrchestrators: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsRequest,
@@ -1474,7 +1973,10 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetFoldersLocationsGlobalPolicyOrchestratorsError = NotFound | Forbidden | GcpOpError;
+export type GetFoldersLocationsGlobalPolicyOrchestratorsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieves an existing policy orchestrator, parented by a folder. */
 export const getFoldersLocationsGlobalPolicyOrchestrators: API.OperationMethod<
   GetFoldersLocationsGlobalPolicyOrchestratorsRequest,
@@ -1489,7 +1991,10 @@ export const getFoldersLocationsGlobalPolicyOrchestrators: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetFoldersLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type GetFoldersLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getFoldersLocationsOperations: API.OperationMethod<
   GetFoldersLocationsOperationsRequest,
@@ -1504,7 +2009,10 @@ export const getFoldersLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetOrganizationsLocationsGlobalPolicyOrchestratorsError = NotFound | Forbidden | GcpOpError;
+export type GetOrganizationsLocationsGlobalPolicyOrchestratorsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieves an existing policy orchestrator, parented by an organization. */
 export const getOrganizationsLocationsGlobalPolicyOrchestrators: API.OperationMethod<
   GetOrganizationsLocationsGlobalPolicyOrchestratorsRequest,
@@ -1519,7 +2027,10 @@ export const getOrganizationsLocationsGlobalPolicyOrchestrators: API.OperationMe
   retry: Retry.Retry,
 }));
 
-export type GetOrganizationsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type GetOrganizationsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getOrganizationsLocationsOperations: API.OperationMethod<
   GetOrganizationsLocationsOperationsRequest,
@@ -1534,7 +2045,10 @@ export const getOrganizationsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsGlobalPolicyOrchestratorsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsGlobalPolicyOrchestratorsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieves an existing policy orchestrator, parented by a project. */
 export const getProjectsLocationsGlobalPolicyOrchestrators: API.OperationMethod<
   GetProjectsLocationsGlobalPolicyOrchestratorsRequest,
@@ -1549,7 +2063,10 @@ export const getProjectsLocationsGlobalPolicyOrchestrators: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -1564,7 +2081,10 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListFoldersLocationsGlobalPolicyOrchestratorsError = NotFound | Forbidden | GcpOpError;
+export type ListFoldersLocationsGlobalPolicyOrchestratorsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists the policy orchestrators under the given parent folder resource. */
 export const listFoldersLocationsGlobalPolicyOrchestrators: API.PaginatedOperationMethod<
   ListFoldersLocationsGlobalPolicyOrchestratorsRequest,
@@ -1577,10 +2097,16 @@ export const listFoldersLocationsGlobalPolicyOrchestrators: API.PaginatedOperati
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListFoldersLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type ListFoldersLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listFoldersLocationsOperations: API.PaginatedOperationMethod<
   ListFoldersLocationsOperationsRequest,
@@ -1593,10 +2119,16 @@ export const listFoldersLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListOrganizationsLocationsGlobalPolicyOrchestratorsError = NotFound | Forbidden | GcpOpError;
+export type ListOrganizationsLocationsGlobalPolicyOrchestratorsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists the policy orchestrators under the given parent organization resource. */
 export const listOrganizationsLocationsGlobalPolicyOrchestrators: API.PaginatedOperationMethod<
   ListOrganizationsLocationsGlobalPolicyOrchestratorsRequest,
@@ -1609,10 +2141,16 @@ export const listOrganizationsLocationsGlobalPolicyOrchestrators: API.PaginatedO
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListOrganizationsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type ListOrganizationsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listOrganizationsLocationsOperations: API.PaginatedOperationMethod<
   ListOrganizationsLocationsOperationsRequest,
@@ -1625,10 +2163,16 @@ export const listOrganizationsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsGlobalPolicyOrchestratorsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsGlobalPolicyOrchestratorsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists the policy orchestrators under the given parent project resource. */
 export const listProjectsLocationsGlobalPolicyOrchestrators: API.PaginatedOperationMethod<
   ListProjectsLocationsGlobalPolicyOrchestratorsRequest,
@@ -1641,10 +2185,16 @@ export const listProjectsLocationsGlobalPolicyOrchestrators: API.PaginatedOperat
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -1657,10 +2207,18 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type PatchFoldersLocationsGlobalPolicyOrchestratorsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchFoldersLocationsGlobalPolicyOrchestratorsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates an existing policy orchestrator, parented by a folder. */
 export const patchFoldersLocationsGlobalPolicyOrchestrators: API.OperationMethod<
   PatchFoldersLocationsGlobalPolicyOrchestratorsRequest,
@@ -1675,7 +2233,12 @@ export const patchFoldersLocationsGlobalPolicyOrchestrators: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type PatchOrganizationsLocationsGlobalPolicyOrchestratorsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchOrganizationsLocationsGlobalPolicyOrchestratorsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates an existing policy orchestrator, parented by an organization. */
 export const patchOrganizationsLocationsGlobalPolicyOrchestrators: API.OperationMethod<
   PatchOrganizationsLocationsGlobalPolicyOrchestratorsRequest,
@@ -1690,7 +2253,12 @@ export const patchOrganizationsLocationsGlobalPolicyOrchestrators: API.Operation
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsGlobalPolicyOrchestratorsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsGlobalPolicyOrchestratorsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates an existing policy orchestrator, parented by a project. */
 export const patchProjectsLocationsGlobalPolicyOrchestrators: API.OperationMethod<
   PatchProjectsLocationsGlobalPolicyOrchestratorsRequest,
@@ -1704,4 +2272,3 @@ export const patchProjectsLocationsGlobalPolicyOrchestrators: API.OperationMetho
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

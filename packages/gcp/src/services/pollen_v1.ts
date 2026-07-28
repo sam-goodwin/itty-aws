@@ -13,27 +13,27 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export interface LookupForecastRequest {
@@ -53,18 +53,30 @@ export interface LookupForecastRequest {
   plantsDescription?: boolean;
 }
 export const LookupForecastRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "days": S.optional(S.Number.pipe(T.Query())),
-  "languageCode": S.optional(S.String.pipe(T.Query())),
-  "location.longitude": S.optional(S.Number.pipe(T.Query())),
-  "location.latitude": S.optional(S.Number.pipe(T.Query())),
-  "plantsDescription": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/forecast:lookup","baseUrl":"https://pollen.googleapis.com/"})),
-).annotate({ identifier: "LookupForecastRequest" }) as any as S.Schema<LookupForecastRequest>;
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    days: S.optional(S.Number.pipe(T.Query())),
+    languageCode: S.optional(S.String.pipe(T.Query())),
+    "location.longitude": S.optional(S.Number.pipe(T.Query())),
+    "location.latitude": S.optional(S.Number.pipe(T.Query())),
+    plantsDescription: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/forecast:lookup",
+      baseUrl: "https://pollen.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "LookupForecastRequest",
+}) as any as S.Schema<LookupForecastRequest>;
 
-export type PollenTypeInfoCodeEnum = "POLLEN_TYPE_UNSPECIFIED" | "GRASS" | "TREE" | "WEED";
+export type PollenTypeInfoCodeEnum =
+  | "POLLEN_TYPE_UNSPECIFIED"
+  | "GRASS"
+  | "TREE"
+  | "WEED";
 export const PollenTypeInfoCodeEnum = /*@__PURE__*/ S.String;
 
 export type IndexInfoCodeEnum = "INDEX_UNSPECIFIED" | "UPI";
@@ -82,12 +94,12 @@ export interface Color {
   alpha?: number;
 }
 export const Color = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "green": S.optional(S.Number),
-  "blue": S.optional(S.Number),
-  "red": S.optional(S.Number),
-  "alpha": S.optional(S.Number),
-}),
+  S.Struct({
+    green: S.optional(S.Number),
+    blue: S.optional(S.Number),
+    red: S.optional(S.Number),
+    alpha: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "Color" }) as any as S.Schema<Color>;
 
 /** This object contains data representing specific pollen index value, category and description. */
@@ -106,18 +118,20 @@ export interface IndexInfo {
   value?: number;
 }
 export const IndexInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "indexDescription": S.optional(S.String),
-  "code": S.optional(IndexInfoCodeEnum),
-  "displayName": S.optional(S.String),
-  "category": S.optional(S.String),
-  "color": S.optional(Color),
-  "value": S.optional(S.Number),
-}),
+  S.Struct({
+    indexDescription: S.optional(S.String),
+    code: S.optional(IndexInfoCodeEnum),
+    displayName: S.optional(S.String),
+    category: S.optional(S.String),
+    color: S.optional(Color),
+    value: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "IndexInfo" }) as any as S.Schema<IndexInfo>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** This object contains the pollen type index and health recommendation information on specific pollen type. */
 export interface PollenTypeInfo {
@@ -133,22 +147,46 @@ export interface PollenTypeInfo {
   healthRecommendations?: StringList;
 }
 export const PollenTypeInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(PollenTypeInfoCodeEnum),
-  "displayName": S.optional(S.String),
-  "inSeason": S.optional(S.Boolean),
-  "indexInfo": S.optional(IndexInfo),
-  "healthRecommendations": S.optional(StringList),
-}),
+  S.Struct({
+    code: S.optional(PollenTypeInfoCodeEnum),
+    displayName: S.optional(S.String),
+    inSeason: S.optional(S.Boolean),
+    indexInfo: S.optional(IndexInfo),
+    healthRecommendations: S.optional(StringList),
+  }),
 ).annotate({ identifier: "PollenTypeInfo" }) as any as S.Schema<PollenTypeInfo>;
 
 export type PollenTypeInfoList = ReadonlyArray<PollenTypeInfo>;
-export const PollenTypeInfoList = /*@__PURE__*/ S.Array(PollenTypeInfo) as any as S.Schema<PollenTypeInfoList>;
+export const PollenTypeInfoList = /*@__PURE__*/ S.Array(
+  PollenTypeInfo,
+) as any as S.Schema<PollenTypeInfoList>;
 
-export type PlantInfoCodeEnum = "PLANT_UNSPECIFIED" | "ALDER" | "ASH" | "BIRCH" | "COTTONWOOD" | "ELM" | "MAPLE" | "OLIVE" | "JUNIPER" | "OAK" | "PINE" | "CYPRESS_PINE" | "HAZEL" | "GRAMINALES" | "RAGWEED" | "MUGWORT" | "JAPANESE_CEDAR" | "JAPANESE_CYPRESS";
+export type PlantInfoCodeEnum =
+  | "PLANT_UNSPECIFIED"
+  | "ALDER"
+  | "ASH"
+  | "BIRCH"
+  | "COTTONWOOD"
+  | "ELM"
+  | "MAPLE"
+  | "OLIVE"
+  | "JUNIPER"
+  | "OAK"
+  | "PINE"
+  | "CYPRESS_PINE"
+  | "HAZEL"
+  | "GRAMINALES"
+  | "RAGWEED"
+  | "MUGWORT"
+  | "JAPANESE_CEDAR"
+  | "JAPANESE_CYPRESS";
 export const PlantInfoCodeEnum = /*@__PURE__*/ S.String;
 
-export type PlantDescriptionTypeEnum = "POLLEN_TYPE_UNSPECIFIED" | "GRASS" | "TREE" | "WEED";
+export type PlantDescriptionTypeEnum =
+  | "POLLEN_TYPE_UNSPECIFIED"
+  | "GRASS"
+  | "TREE"
+  | "WEED";
 export const PlantDescriptionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Contains general information about plants, including details on their seasonality, special shapes and colors, information about allergic cross-reactions, and plant photos. */
@@ -171,17 +209,19 @@ export interface PlantDescription {
   specialShapes?: string;
 }
 export const PlantDescription = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "family": S.optional(S.String),
-  "picture": S.optional(S.String),
-  "specialColors": S.optional(S.String),
-  "pictureCloseup": S.optional(S.String),
-  "season": S.optional(S.String),
-  "type": S.optional(PlantDescriptionTypeEnum),
-  "crossReaction": S.optional(S.String),
-  "specialShapes": S.optional(S.String),
-}),
-).annotate({ identifier: "PlantDescription" }) as any as S.Schema<PlantDescription>;
+  S.Struct({
+    family: S.optional(S.String),
+    picture: S.optional(S.String),
+    specialColors: S.optional(S.String),
+    pictureCloseup: S.optional(S.String),
+    season: S.optional(S.String),
+    type: S.optional(PlantDescriptionTypeEnum),
+    crossReaction: S.optional(S.String),
+    specialShapes: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PlantDescription",
+}) as any as S.Schema<PlantDescription>;
 
 /** This object contains the daily information on specific plant. */
 export interface PlantInfo {
@@ -197,17 +237,19 @@ export interface PlantInfo {
   plantDescription?: PlantDescription;
 }
 export const PlantInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "indexInfo": S.optional(IndexInfo),
-  "code": S.optional(PlantInfoCodeEnum),
-  "displayName": S.optional(S.String),
-  "inSeason": S.optional(S.Boolean),
-  "plantDescription": S.optional(PlantDescription),
-}),
+  S.Struct({
+    indexInfo: S.optional(IndexInfo),
+    code: S.optional(PlantInfoCodeEnum),
+    displayName: S.optional(S.String),
+    inSeason: S.optional(S.Boolean),
+    plantDescription: S.optional(PlantDescription),
+  }),
 ).annotate({ identifier: "PlantInfo" }) as any as S.Schema<PlantInfo>;
 
 export type PlantInfoList = ReadonlyArray<PlantInfo>;
-export const PlantInfoList = /*@__PURE__*/ S.Array(PlantInfo) as any as S.Schema<PlantInfoList>;
+export const PlantInfoList = /*@__PURE__*/ S.Array(
+  PlantInfo,
+) as any as S.Schema<PlantInfoList>;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface Pollen_Date {
@@ -219,11 +261,11 @@ export interface Pollen_Date {
   day?: number;
 }
 export const Pollen_Date = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "year": S.optional(S.Number),
-  "month": S.optional(S.Number),
-  "day": S.optional(S.Number),
-}),
+  S.Struct({
+    year: S.optional(S.Number),
+    month: S.optional(S.Number),
+    day: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "Pollen_Date" }) as any as S.Schema<Pollen_Date>;
 
 /** This object contains the daily forecast information for each day requested. */
@@ -236,15 +278,17 @@ export interface DayInfo {
   date?: Pollen_Date;
 }
 export const DayInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pollenTypeInfo": S.optional(PollenTypeInfoList),
-  "plantInfo": S.optional(PlantInfoList),
-  "date": S.optional(Pollen_Date),
-}),
+  S.Struct({
+    pollenTypeInfo: S.optional(PollenTypeInfoList),
+    plantInfo: S.optional(PlantInfoList),
+    date: S.optional(Pollen_Date),
+  }),
 ).annotate({ identifier: "DayInfo" }) as any as S.Schema<DayInfo>;
 
 export type DayInfoList = ReadonlyArray<DayInfo>;
-export const DayInfoList = /*@__PURE__*/ S.Array(DayInfo) as any as S.Schema<DayInfoList>;
+export const DayInfoList = /*@__PURE__*/ S.Array(
+  DayInfo,
+) as any as S.Schema<DayInfoList>;
 
 export interface LookupForecastResponse {
   /** The ISO_3166-1 alpha-2 code of the country/region corresponding to the location provided in the request. This field might be omitted from the response if the location provided in the request resides in a disputed territory. */
@@ -255,15 +299,22 @@ export interface LookupForecastResponse {
   dailyInfo?: DayInfoList;
 }
 export const LookupForecastResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "regionCode": S.optional(S.String),
-  "nextPageToken": S.optional(S.String),
-  "dailyInfo": S.optional(DayInfoList),
-}),
-).annotate({ identifier: "LookupForecastResponse" }) as any as S.Schema<LookupForecastResponse>;
+  S.Struct({
+    regionCode: S.optional(S.String),
+    nextPageToken: S.optional(S.String),
+    dailyInfo: S.optional(DayInfoList),
+  }),
+).annotate({
+  identifier: "LookupForecastResponse",
+}) as any as S.Schema<LookupForecastResponse>;
 
-export type LookupHeatmapTileMapTypesHeatmapTilesMapTypeEnum = "MAP_TYPE_UNSPECIFIED" | "TREE_UPI" | "GRASS_UPI" | "WEED_UPI";
-export const LookupHeatmapTileMapTypesHeatmapTilesMapTypeEnum = /*@__PURE__*/ S.String;
+export type LookupHeatmapTileMapTypesHeatmapTilesMapTypeEnum =
+  | "MAP_TYPE_UNSPECIFIED"
+  | "TREE_UPI"
+  | "GRASS_UPI"
+  | "WEED_UPI";
+export const LookupHeatmapTileMapTypesHeatmapTilesMapTypeEnum =
+  /*@__PURE__*/ S.String;
 
 export interface LookupHeatmapTileMapTypesHeatmapTilesRequest {
   /** Required. The type of the pollen heatmap. Defines the combination of pollen type and index that the map will graphically represent. */
@@ -275,20 +326,34 @@ export interface LookupHeatmapTileMapTypesHeatmapTilesRequest {
   /** Required. Defines the north-south point in the requested tile. */
   y: number;
 }
-export const LookupHeatmapTileMapTypesHeatmapTilesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "mapType": LookupHeatmapTileMapTypesHeatmapTilesMapTypeEnum.pipe(T.Label()),
-  "zoom": S.Number.pipe(T.Label()),
-  "x": S.Number.pipe(T.Label()),
-  "y": S.Number.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/mapTypes/{mapType}/heatmapTiles/{zoom}/{x}/{y}","baseUrl":"https://pollen.googleapis.com/"})),
-).annotate({ identifier: "LookupHeatmapTileMapTypesHeatmapTilesRequest" }) as any as S.Schema<LookupHeatmapTileMapTypesHeatmapTilesRequest>;
+export const LookupHeatmapTileMapTypesHeatmapTilesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mapType: LookupHeatmapTileMapTypesHeatmapTilesMapTypeEnum.pipe(T.Label()),
+      zoom: S.Number.pipe(T.Label()),
+      x: S.Number.pipe(T.Label()),
+      y: S.Number.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/mapTypes/{mapType}/heatmapTiles/{zoom}/{x}/{y}",
+        baseUrl: "https://pollen.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "LookupHeatmapTileMapTypesHeatmapTilesRequest",
+  }) as any as S.Schema<LookupHeatmapTileMapTypesHeatmapTilesRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 /** Message that represents an arbitrary HTTP body. It should only be used for payload formats that can't be represented as JSON, such as raw binary or an HTML page. This message can be used both in streaming and non-streaming API methods in the request as well as the response. It can be used as a top-level request field, which is convenient if one wants to extract parameters from either the URL or HTTP template into the request fields and also want access to the raw HTTP body. Example: message GetResourceRequest { // A unique request id. string request_id = 1; // The raw HTTP body is bound to this field. google.api.HttpBody http_body = 2; } service ResourceService { rpc GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); } Example with streaming methods: service CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); rpc UpdateCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); } Use of this type only changes how the request and response bodies are handled, all other features will continue to work unchanged. */
 export interface HttpBody {
@@ -300,11 +365,11 @@ export interface HttpBody {
   contentType?: string;
 }
 export const HttpBody = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "extensions": S.optional(DocumentMapList),
-  "data": S.optional(S.String),
-  "contentType": S.optional(S.String),
-}),
+  S.Struct({
+    extensions: S.optional(DocumentMapList),
+    data: S.optional(S.String),
+    contentType: S.optional(S.String),
+  }),
 ).annotate({ identifier: "HttpBody" }) as any as S.Schema<HttpBody>;
 
 export type LookupForecastError = NotFound | Forbidden | GcpOpError;
@@ -320,10 +385,16 @@ export const lookupForecast: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type LookupHeatmapTileMapTypesHeatmapTilesError = NotFound | Forbidden | GcpOpError;
+export type LookupHeatmapTileMapTypesHeatmapTilesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns a byte array containing the data of the tile PNG image. */
 export const lookupHeatmapTileMapTypesHeatmapTiles: API.OperationMethod<
   LookupHeatmapTileMapTypesHeatmapTilesRequest,
@@ -337,4 +408,3 @@ export const lookupHeatmapTileMapTypesHeatmapTiles: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

@@ -13,58 +13,60 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
 export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "CancelOperationRequest" }) as any as S.Schema<CancelOperationRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "CancelOperationRequest",
+}) as any as S.Schema<CancelOperationRequest>;
 
 export interface CancelTransferOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -73,17 +75,25 @@ export interface CancelTransferOperationsRequest {
   body?: CancelOperationRequest;
 }
 export const CancelTransferOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://storagetransfer.googleapis.com/"})),
-).annotate({ identifier: "CancelTransferOperationsRequest" }) as any as S.Schema<CancelTransferOperationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:cancel",
+      baseUrl: "https://storagetransfer.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CancelTransferOperationsRequest",
+}) as any as S.Schema<CancelTransferOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 /** Specifies a bandwidth limit for an agent pool. */
 export interface BandwidthLimit {
@@ -91,12 +101,16 @@ export interface BandwidthLimit {
   limitMbps?: string;
 }
 export const BandwidthLimit = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "limitMbps": S.optional(S.String),
-}),
+  S.Struct({
+    limitMbps: S.optional(S.String),
+  }),
 ).annotate({ identifier: "BandwidthLimit" }) as any as S.Schema<BandwidthLimit>;
 
-export type AgentPoolStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "CREATED" | "DELETING";
+export type AgentPoolStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "CREATING"
+  | "CREATED"
+  | "DELETING";
 export const AgentPoolStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents an agent pool. */
@@ -111,12 +125,12 @@ export interface AgentPool {
   name?: string;
 }
 export const AgentPool = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "displayName": S.optional(S.String),
-  "bandwidthLimit": S.optional(BandwidthLimit),
-  "state": S.optional(AgentPoolStateEnum),
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    displayName: S.optional(S.String),
+    bandwidthLimit: S.optional(BandwidthLimit),
+    state: S.optional(AgentPoolStateEnum),
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "AgentPool" }) as any as S.Schema<AgentPool>;
 
 export interface CreateProjectsAgentPoolsRequest {
@@ -128,24 +142,46 @@ export interface CreateProjectsAgentPoolsRequest {
   body?: AgentPool;
 }
 export const CreateProjectsAgentPoolsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectId": S.String.pipe(T.Label()),
-  "agentPoolId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(AgentPool.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/projects/{+projectId}/agentPools","baseUrl":"https://storagetransfer.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsAgentPoolsRequest" }) as any as S.Schema<CreateProjectsAgentPoolsRequest>;
+  S.Struct({
+    projectId: S.String.pipe(T.Label()),
+    agentPoolId: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(AgentPool.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/projects/{+projectId}/agentPools",
+      baseUrl: "https://storagetransfer.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateProjectsAgentPoolsRequest",
+}) as any as S.Schema<CreateProjectsAgentPoolsRequest>;
 
-export type LoggingConfigLogActionStatesItemEnum = "LOGGABLE_ACTION_STATE_UNSPECIFIED" | "SUCCEEDED" | "FAILED" | "SKIPPED";
+export type LoggingConfigLogActionStatesItemEnum =
+  | "LOGGABLE_ACTION_STATE_UNSPECIFIED"
+  | "SUCCEEDED"
+  | "FAILED"
+  | "SKIPPED";
 export const LoggingConfigLogActionStatesItemEnum = /*@__PURE__*/ S.String;
 
-export type LoggingConfigLogActionStatesItemEnumList = ReadonlyArray<LoggingConfigLogActionStatesItemEnum>;
-export const LoggingConfigLogActionStatesItemEnumList = /*@__PURE__*/ S.Array(LoggingConfigLogActionStatesItemEnum) as any as S.Schema<LoggingConfigLogActionStatesItemEnumList>;
+export type LoggingConfigLogActionStatesItemEnumList =
+  ReadonlyArray<LoggingConfigLogActionStatesItemEnum>;
+export const LoggingConfigLogActionStatesItemEnumList = /*@__PURE__*/ S.Array(
+  LoggingConfigLogActionStatesItemEnum,
+) as any as S.Schema<LoggingConfigLogActionStatesItemEnumList>;
 
-export type LoggingConfigLogActionsItemEnum = "LOGGABLE_ACTION_UNSPECIFIED" | "FIND" | "DELETE" | "COPY";
+export type LoggingConfigLogActionsItemEnum =
+  | "LOGGABLE_ACTION_UNSPECIFIED"
+  | "FIND"
+  | "DELETE"
+  | "COPY";
 export const LoggingConfigLogActionsItemEnum = /*@__PURE__*/ S.String;
 
-export type LoggingConfigLogActionsItemEnumList = ReadonlyArray<LoggingConfigLogActionsItemEnum>;
-export const LoggingConfigLogActionsItemEnumList = /*@__PURE__*/ S.Array(LoggingConfigLogActionsItemEnum) as any as S.Schema<LoggingConfigLogActionsItemEnumList>;
+export type LoggingConfigLogActionsItemEnumList =
+  ReadonlyArray<LoggingConfigLogActionsItemEnum>;
+export const LoggingConfigLogActionsItemEnumList = /*@__PURE__*/ S.Array(
+  LoggingConfigLogActionsItemEnum,
+) as any as S.Schema<LoggingConfigLogActionsItemEnumList>;
 
 /** Specifies the logging behavior for transfer operations. Logs can be sent to Cloud Logging for all transfer types. See [Read transfer logs](https://cloud.google.com/storage-transfer/docs/read-transfer-logs) for details. */
 export interface LoggingConfig {
@@ -157,11 +193,11 @@ export interface LoggingConfig {
   logActions?: LoggingConfigLogActionsItemEnumList;
 }
 export const LoggingConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "logActionStates": S.optional(LoggingConfigLogActionStatesItemEnumList),
-  "enableOnpremGcsTransferLogs": S.optional(S.Boolean),
-  "logActions": S.optional(LoggingConfigLogActionsItemEnumList),
-}),
+  S.Struct({
+    logActionStates: S.optional(LoggingConfigLogActionStatesItemEnumList),
+    enableOnpremGcsTransferLogs: S.optional(S.Boolean),
+    logActions: S.optional(LoggingConfigLogActionsItemEnumList),
+  }),
 ).annotate({ identifier: "LoggingConfig" }) as any as S.Schema<LoggingConfig>;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
@@ -174,12 +210,14 @@ export interface Storagetransfer_Date {
   year?: number;
 }
 export const Storagetransfer_Date = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "month": S.optional(S.Number),
-  "day": S.optional(S.Number),
-  "year": S.optional(S.Number),
-}),
-).annotate({ identifier: "Storagetransfer_Date" }) as any as S.Schema<Storagetransfer_Date>;
+  S.Struct({
+    month: S.optional(S.Number),
+    day: S.optional(S.Number),
+    year: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "Storagetransfer_Date",
+}) as any as S.Schema<Storagetransfer_Date>;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
 export interface TimeOfDay {
@@ -193,12 +231,12 @@ export interface TimeOfDay {
   minutes?: number;
 }
 export const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "seconds": S.optional(S.Number),
-  "nanos": S.optional(S.Number),
-  "hours": S.optional(S.Number),
-  "minutes": S.optional(S.Number),
-}),
+  S.Struct({
+    seconds: S.optional(S.Number),
+    nanos: S.optional(S.Number),
+    hours: S.optional(S.Number),
+    minutes: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "TimeOfDay" }) as any as S.Schema<TimeOfDay>;
 
 /** Transfers can be scheduled to recur or to run just once. */
@@ -215,16 +253,20 @@ export interface Schedule {
   endTimeOfDay?: TimeOfDay;
 }
 export const Schedule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "scheduleStartDate": S.optional(Storagetransfer_Date),
-  "repeatInterval": S.optional(S.String),
-  "scheduleEndDate": S.optional(Storagetransfer_Date),
-  "startTimeOfDay": S.optional(TimeOfDay),
-  "endTimeOfDay": S.optional(TimeOfDay),
-}),
+  S.Struct({
+    scheduleStartDate: S.optional(Storagetransfer_Date),
+    repeatInterval: S.optional(S.String),
+    scheduleEndDate: S.optional(Storagetransfer_Date),
+    startTimeOfDay: S.optional(TimeOfDay),
+    endTimeOfDay: S.optional(TimeOfDay),
+  }),
 ).annotate({ identifier: "Schedule" }) as any as S.Schema<Schedule>;
 
-export type TransferJobStatusEnum = "STATUS_UNSPECIFIED" | "ENABLED" | "DISABLED" | "DELETED";
+export type TransferJobStatusEnum =
+  | "STATUS_UNSPECIFIED"
+  | "ENABLED"
+  | "DISABLED"
+  | "DELETED";
 export const TransferJobStatusEnum = /*@__PURE__*/ S.String;
 
 /** An HttpData resource specifies a list of objects on the web to be transferred over HTTP. The information of the objects to be transferred is contained in a file referenced by a URL. The first line in the file must be `"TsvHttpData-1.0"`, which specifies the format of the file. Subsequent lines specify the information of the list of objects, one object per list entry. Each entry has the following tab-delimited fields: * **HTTP URL** — The location of the object. * **Length** — The size of the object in bytes. * **MD5** — The base64-encoded MD5 hash of the object. For an example of a valid TSV file, see [Transferring data from URLs](https://cloud.google.com/storage-transfer/docs/create-url-list). When transferring data based on a URL list, keep the following in mind: * When an object located at `http(s)://hostname:port/` is transferred to a data sink, the name of the object at the data sink is `/`. * If the specified size of an object does not match the actual size of the object fetched, the object is not transferred. * If the specified MD5 does not match the MD5 computed from the transferred bytes, the object transfer fails. * Ensure that each URL you specify is publicly accessible. For example, in Cloud Storage you can [share an object publicly] (/storage/docs/cloud-console#_sharingdata) and get a link to it. * Storage Transfer Service obeys `robots.txt` rules and requires the source HTTP server to support `Range` requests and to return a `Content-Length` header in each response. * ObjectConditions have no effect when filtering objects to transfer. */
@@ -233,9 +275,9 @@ export interface HttpData {
   listUrl?: string;
 }
 export const HttpData = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "listUrl": S.optional(S.String),
-}),
+  S.Struct({
+    listUrl: S.optional(S.String),
+  }),
 ).annotate({ identifier: "HttpData" }) as any as S.Schema<HttpData>;
 
 /** Azure credentials For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials). */
@@ -244,10 +286,12 @@ export interface AzureCredentials {
   sasToken?: string;
 }
 export const AzureCredentials = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sasToken": S.optional(S.String),
-}),
-).annotate({ identifier: "AzureCredentials" }) as any as S.Schema<AzureCredentials>;
+  S.Struct({
+    sasToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AzureCredentials",
+}) as any as S.Schema<AzureCredentials>;
 
 /** The identity of an Azure application through which Storage Transfer Service can authenticate requests using Azure workload identity federation. Storage Transfer Service can issue requests to Azure Storage through registered Azure applications, eliminating the need to pass credentials to Storage Transfer Service directly. To configure federated identity, see [Configure access to Microsoft Azure Storage](https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#option_3_authenticate_using_federated_identity). */
 export interface FederatedIdentityConfig {
@@ -257,11 +301,13 @@ export interface FederatedIdentityConfig {
   tenantId?: string;
 }
 export const FederatedIdentityConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "clientId": S.optional(S.String),
-  "tenantId": S.optional(S.String),
-}),
-).annotate({ identifier: "FederatedIdentityConfig" }) as any as S.Schema<FederatedIdentityConfig>;
+  S.Struct({
+    clientId: S.optional(S.String),
+    tenantId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "FederatedIdentityConfig",
+}) as any as S.Schema<FederatedIdentityConfig>;
 
 /** An AzureBlobStorageData resource can be a data source, but not a data sink. An AzureBlobStorageData resource represents one Azure container. The storage account determines the [Azure endpoint](https://docs.microsoft.com/en-us/azure/storage/common/storage-create-storage-account#storage-account-endpoints). In an AzureBlobStorageData resource, a blobs's name is the [Azure Blob Storage blob's key name](https://docs.microsoft.com/en-us/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#blob-names). */
 export interface AzureBlobStorageData {
@@ -281,42 +327,75 @@ export interface AzureBlobStorageData {
   federatedIdentityConfig?: FederatedIdentityConfig;
 }
 export const AzureBlobStorageData = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "storageAccount": S.optional(S.String),
-  "credentialsSecret": S.optional(S.String),
-  "privateNetworkService": S.optional(S.String),
-  "container": S.optional(S.String),
-  "path": S.optional(S.String),
-  "azureCredentials": S.optional(AzureCredentials),
-  "federatedIdentityConfig": S.optional(FederatedIdentityConfig),
-}),
-).annotate({ identifier: "AzureBlobStorageData" }) as any as S.Schema<AzureBlobStorageData>;
+  S.Struct({
+    storageAccount: S.optional(S.String),
+    credentialsSecret: S.optional(S.String),
+    privateNetworkService: S.optional(S.String),
+    container: S.optional(S.String),
+    path: S.optional(S.String),
+    azureCredentials: S.optional(AzureCredentials),
+    federatedIdentityConfig: S.optional(FederatedIdentityConfig),
+  }),
+).annotate({
+  identifier: "AzureBlobStorageData",
+}) as any as S.Schema<AzureBlobStorageData>;
 
-export type MetadataOptionsStorageClassEnum = "STORAGE_CLASS_UNSPECIFIED" | "STORAGE_CLASS_DESTINATION_BUCKET_DEFAULT" | "STORAGE_CLASS_PRESERVE" | "STORAGE_CLASS_STANDARD" | "STORAGE_CLASS_NEARLINE" | "STORAGE_CLASS_COLDLINE" | "STORAGE_CLASS_ARCHIVE";
+export type MetadataOptionsStorageClassEnum =
+  | "STORAGE_CLASS_UNSPECIFIED"
+  | "STORAGE_CLASS_DESTINATION_BUCKET_DEFAULT"
+  | "STORAGE_CLASS_PRESERVE"
+  | "STORAGE_CLASS_STANDARD"
+  | "STORAGE_CLASS_NEARLINE"
+  | "STORAGE_CLASS_COLDLINE"
+  | "STORAGE_CLASS_ARCHIVE";
 export const MetadataOptionsStorageClassEnum = /*@__PURE__*/ S.String;
 
-export type MetadataOptionsTemporaryHoldEnum = "TEMPORARY_HOLD_UNSPECIFIED" | "TEMPORARY_HOLD_SKIP" | "TEMPORARY_HOLD_PRESERVE";
+export type MetadataOptionsTemporaryHoldEnum =
+  | "TEMPORARY_HOLD_UNSPECIFIED"
+  | "TEMPORARY_HOLD_SKIP"
+  | "TEMPORARY_HOLD_PRESERVE";
 export const MetadataOptionsTemporaryHoldEnum = /*@__PURE__*/ S.String;
 
-export type MetadataOptionsModeEnum = "MODE_UNSPECIFIED" | "MODE_SKIP" | "MODE_PRESERVE";
+export type MetadataOptionsModeEnum =
+  | "MODE_UNSPECIFIED"
+  | "MODE_SKIP"
+  | "MODE_PRESERVE";
 export const MetadataOptionsModeEnum = /*@__PURE__*/ S.String;
 
-export type MetadataOptionsGidEnum = "GID_UNSPECIFIED" | "GID_SKIP" | "GID_NUMBER";
+export type MetadataOptionsGidEnum =
+  | "GID_UNSPECIFIED"
+  | "GID_SKIP"
+  | "GID_NUMBER";
 export const MetadataOptionsGidEnum = /*@__PURE__*/ S.String;
 
-export type MetadataOptionsAclEnum = "ACL_UNSPECIFIED" | "ACL_DESTINATION_BUCKET_DEFAULT" | "ACL_PRESERVE";
+export type MetadataOptionsAclEnum =
+  | "ACL_UNSPECIFIED"
+  | "ACL_DESTINATION_BUCKET_DEFAULT"
+  | "ACL_PRESERVE";
 export const MetadataOptionsAclEnum = /*@__PURE__*/ S.String;
 
-export type MetadataOptionsKmsKeyEnum = "KMS_KEY_UNSPECIFIED" | "KMS_KEY_DESTINATION_BUCKET_DEFAULT" | "KMS_KEY_PRESERVE";
+export type MetadataOptionsKmsKeyEnum =
+  | "KMS_KEY_UNSPECIFIED"
+  | "KMS_KEY_DESTINATION_BUCKET_DEFAULT"
+  | "KMS_KEY_PRESERVE";
 export const MetadataOptionsKmsKeyEnum = /*@__PURE__*/ S.String;
 
-export type MetadataOptionsUidEnum = "UID_UNSPECIFIED" | "UID_SKIP" | "UID_NUMBER";
+export type MetadataOptionsUidEnum =
+  | "UID_UNSPECIFIED"
+  | "UID_SKIP"
+  | "UID_NUMBER";
 export const MetadataOptionsUidEnum = /*@__PURE__*/ S.String;
 
-export type MetadataOptionsSymlinkEnum = "SYMLINK_UNSPECIFIED" | "SYMLINK_SKIP" | "SYMLINK_PRESERVE";
+export type MetadataOptionsSymlinkEnum =
+  | "SYMLINK_UNSPECIFIED"
+  | "SYMLINK_SKIP"
+  | "SYMLINK_PRESERVE";
 export const MetadataOptionsSymlinkEnum = /*@__PURE__*/ S.String;
 
-export type MetadataOptionsTimeCreatedEnum = "TIME_CREATED_UNSPECIFIED" | "TIME_CREATED_SKIP" | "TIME_CREATED_PRESERVE_AS_CUSTOM_TIME";
+export type MetadataOptionsTimeCreatedEnum =
+  | "TIME_CREATED_UNSPECIFIED"
+  | "TIME_CREATED_SKIP"
+  | "TIME_CREATED_PRESERVE_AS_CUSTOM_TIME";
 export const MetadataOptionsTimeCreatedEnum = /*@__PURE__*/ S.String;
 
 /** Specifies the metadata options for running a transfer. */
@@ -341,20 +420,26 @@ export interface MetadataOptions {
   timeCreated?: MetadataOptionsTimeCreatedEnum;
 }
 export const MetadataOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "storageClass": S.optional(MetadataOptionsStorageClassEnum),
-  "temporaryHold": S.optional(MetadataOptionsTemporaryHoldEnum),
-  "mode": S.optional(MetadataOptionsModeEnum),
-  "gid": S.optional(MetadataOptionsGidEnum),
-  "acl": S.optional(MetadataOptionsAclEnum),
-  "kmsKey": S.optional(MetadataOptionsKmsKeyEnum),
-  "uid": S.optional(MetadataOptionsUidEnum),
-  "symlink": S.optional(MetadataOptionsSymlinkEnum),
-  "timeCreated": S.optional(MetadataOptionsTimeCreatedEnum),
-}),
-).annotate({ identifier: "MetadataOptions" }) as any as S.Schema<MetadataOptions>;
+  S.Struct({
+    storageClass: S.optional(MetadataOptionsStorageClassEnum),
+    temporaryHold: S.optional(MetadataOptionsTemporaryHoldEnum),
+    mode: S.optional(MetadataOptionsModeEnum),
+    gid: S.optional(MetadataOptionsGidEnum),
+    acl: S.optional(MetadataOptionsAclEnum),
+    kmsKey: S.optional(MetadataOptionsKmsKeyEnum),
+    uid: S.optional(MetadataOptionsUidEnum),
+    symlink: S.optional(MetadataOptionsSymlinkEnum),
+    timeCreated: S.optional(MetadataOptionsTimeCreatedEnum),
+  }),
+).annotate({
+  identifier: "MetadataOptions",
+}) as any as S.Schema<MetadataOptions>;
 
-export type TransferOptionsOverwriteWhenEnum = "OVERWRITE_WHEN_UNSPECIFIED" | "DIFFERENT" | "NEVER" | "ALWAYS";
+export type TransferOptionsOverwriteWhenEnum =
+  | "OVERWRITE_WHEN_UNSPECIFIED"
+  | "DIFFERENT"
+  | "NEVER"
+  | "ALWAYS";
 export const TransferOptionsOverwriteWhenEnum = /*@__PURE__*/ S.String;
 
 /** TransferOptions define the actions to be performed on objects in a transfer. */
@@ -371,14 +456,16 @@ export interface TransferOptions {
   deleteObjectsUniqueInSink?: boolean;
 }
 export const TransferOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "overwriteObjectsAlreadyExistingInSink": S.optional(S.Boolean),
-  "metadataOptions": S.optional(MetadataOptions),
-  "overwriteWhen": S.optional(TransferOptionsOverwriteWhenEnum),
-  "deleteObjectsFromSourceAfterTransfer": S.optional(S.Boolean),
-  "deleteObjectsUniqueInSink": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "TransferOptions" }) as any as S.Schema<TransferOptions>;
+  S.Struct({
+    overwriteObjectsAlreadyExistingInSink: S.optional(S.Boolean),
+    metadataOptions: S.optional(MetadataOptions),
+    overwriteWhen: S.optional(TransferOptionsOverwriteWhenEnum),
+    deleteObjectsFromSourceAfterTransfer: S.optional(S.Boolean),
+    deleteObjectsUniqueInSink: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "TransferOptions",
+}) as any as S.Schema<TransferOptions>;
 
 /** Specifies where the manifest is located. */
 export interface TransferManifest {
@@ -386,10 +473,12 @@ export interface TransferManifest {
   location?: string;
 }
 export const TransferManifest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "location": S.optional(S.String),
-}),
-).annotate({ identifier: "TransferManifest" }) as any as S.Schema<TransferManifest>;
+  S.Struct({
+    location: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "TransferManifest",
+}) as any as S.Schema<TransferManifest>;
 
 /** In a GcsData resource, an object's name is the Cloud Storage object's name and its "last modification time" refers to the object's `updated` property of Cloud Storage objects, which changes when the content or the metadata of the object is updated. */
 export interface GcsData {
@@ -401,11 +490,11 @@ export interface GcsData {
   bucketName?: string;
 }
 export const GcsData = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.optional(S.String),
-  "managedFolderTransferEnabled": S.optional(S.Boolean),
-  "bucketName": S.optional(S.String),
-}),
+  S.Struct({
+    path: S.optional(S.String),
+    managedFolderTransferEnabled: S.optional(S.Boolean),
+    bucketName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "GcsData" }) as any as S.Schema<GcsData>;
 
 /** An HdfsData resource specifies a path within an HDFS entity (e.g. a cluster). All cluster-specific settings, such as namenodes and ports, are configured on the transfer agents servicing requests, so HdfsData only contains the root path to the data in our transfer. */
@@ -414,13 +503,15 @@ export interface HdfsData {
   path?: string;
 }
 export const HdfsData = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.optional(S.String),
-}),
+  S.Struct({
+    path: S.optional(S.String),
+  }),
 ).annotate({ identifier: "HdfsData" }) as any as S.Schema<HdfsData>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** Conditions that determine which objects are transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs. For S3 objects, the `LastModified` value is the time the object begins uploading. If the object meets your "last modification time" criteria, but has not finished uploading, the object is not transferred. See [Transfer from Amazon S3 to Cloud Storage](https://cloud.google.com/storage-transfer/docs/create-transfers/agentless/s3#transfer_options) for more information. Transfers with a PosixFilesystem source or destination don't support `ObjectConditions`. */
 export interface ObjectConditions {
@@ -442,28 +533,42 @@ export interface ObjectConditions {
   includeStorageClasses?: StringList;
 }
 export const ObjectConditions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "minTimeElapsedSinceLastModification": S.optional(S.String),
-  "matchGlob": S.optional(S.String),
-  "maxTimeElapsedSinceLastModification": S.optional(S.String),
-  "excludePrefixes": S.optional(StringList),
-  "includePrefixes": S.optional(StringList),
-  "lastModifiedBefore": S.optional(S.String),
-  "lastModifiedSince": S.optional(S.String),
-  "includeStorageClasses": S.optional(StringList),
-}),
-).annotate({ identifier: "ObjectConditions" }) as any as S.Schema<ObjectConditions>;
+  S.Struct({
+    minTimeElapsedSinceLastModification: S.optional(S.String),
+    matchGlob: S.optional(S.String),
+    maxTimeElapsedSinceLastModification: S.optional(S.String),
+    excludePrefixes: S.optional(StringList),
+    includePrefixes: S.optional(StringList),
+    lastModifiedBefore: S.optional(S.String),
+    lastModifiedSince: S.optional(S.String),
+    includeStorageClasses: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ObjectConditions",
+}) as any as S.Schema<ObjectConditions>;
 
-export type S3CompatibleMetadataProtocolEnum = "NETWORK_PROTOCOL_UNSPECIFIED" | "NETWORK_PROTOCOL_HTTPS" | "NETWORK_PROTOCOL_HTTP";
+export type S3CompatibleMetadataProtocolEnum =
+  | "NETWORK_PROTOCOL_UNSPECIFIED"
+  | "NETWORK_PROTOCOL_HTTPS"
+  | "NETWORK_PROTOCOL_HTTP";
 export const S3CompatibleMetadataProtocolEnum = /*@__PURE__*/ S.String;
 
-export type S3CompatibleMetadataListApiEnum = "LIST_API_UNSPECIFIED" | "LIST_OBJECTS_V2" | "LIST_OBJECTS";
+export type S3CompatibleMetadataListApiEnum =
+  | "LIST_API_UNSPECIFIED"
+  | "LIST_OBJECTS_V2"
+  | "LIST_OBJECTS";
 export const S3CompatibleMetadataListApiEnum = /*@__PURE__*/ S.String;
 
-export type S3CompatibleMetadataRequestModelEnum = "REQUEST_MODEL_UNSPECIFIED" | "REQUEST_MODEL_VIRTUAL_HOSTED_STYLE" | "REQUEST_MODEL_PATH_STYLE";
+export type S3CompatibleMetadataRequestModelEnum =
+  | "REQUEST_MODEL_UNSPECIFIED"
+  | "REQUEST_MODEL_VIRTUAL_HOSTED_STYLE"
+  | "REQUEST_MODEL_PATH_STYLE";
 export const S3CompatibleMetadataRequestModelEnum = /*@__PURE__*/ S.String;
 
-export type S3CompatibleMetadataAuthMethodEnum = "AUTH_METHOD_UNSPECIFIED" | "AUTH_METHOD_AWS_SIGNATURE_V4" | "AUTH_METHOD_AWS_SIGNATURE_V2";
+export type S3CompatibleMetadataAuthMethodEnum =
+  | "AUTH_METHOD_UNSPECIFIED"
+  | "AUTH_METHOD_AWS_SIGNATURE_V4"
+  | "AUTH_METHOD_AWS_SIGNATURE_V2";
 export const S3CompatibleMetadataAuthMethodEnum = /*@__PURE__*/ S.String;
 
 /** S3CompatibleMetadata contains the metadata fields that apply to the basic types of S3-compatible data providers. */
@@ -478,13 +583,15 @@ export interface S3CompatibleMetadata {
   authMethod?: S3CompatibleMetadataAuthMethodEnum;
 }
 export const S3CompatibleMetadata = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "protocol": S.optional(S3CompatibleMetadataProtocolEnum),
-  "listApi": S.optional(S3CompatibleMetadataListApiEnum),
-  "requestModel": S.optional(S3CompatibleMetadataRequestModelEnum),
-  "authMethod": S.optional(S3CompatibleMetadataAuthMethodEnum),
-}),
-).annotate({ identifier: "S3CompatibleMetadata" }) as any as S.Schema<S3CompatibleMetadata>;
+  S.Struct({
+    protocol: S.optional(S3CompatibleMetadataProtocolEnum),
+    listApi: S.optional(S3CompatibleMetadataListApiEnum),
+    requestModel: S.optional(S3CompatibleMetadataRequestModelEnum),
+    authMethod: S.optional(S3CompatibleMetadataAuthMethodEnum),
+  }),
+).annotate({
+  identifier: "S3CompatibleMetadata",
+}) as any as S.Schema<S3CompatibleMetadata>;
 
 /** An AwsS3CompatibleData resource. */
 export interface AwsS3CompatibleData {
@@ -500,14 +607,16 @@ export interface AwsS3CompatibleData {
   path?: string;
 }
 export const AwsS3CompatibleData = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "endpoint": S.optional(S.String),
-  "s3Metadata": S.optional(S3CompatibleMetadata),
-  "bucketName": S.optional(S.String),
-  "region": S.optional(S.String),
-  "path": S.optional(S.String),
-}),
-).annotate({ identifier: "AwsS3CompatibleData" }) as any as S.Schema<AwsS3CompatibleData>;
+  S.Struct({
+    endpoint: S.optional(S.String),
+    s3Metadata: S.optional(S3CompatibleMetadata),
+    bucketName: S.optional(S.String),
+    region: S.optional(S.String),
+    path: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AwsS3CompatibleData",
+}) as any as S.Schema<AwsS3CompatibleData>;
 
 /** AWS access key (see [AWS Security Credentials](https://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html)). For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials). */
 export interface AwsAccessKey {
@@ -517,10 +626,10 @@ export interface AwsAccessKey {
   secretAccessKey?: string;
 }
 export const AwsAccessKey = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "accessKeyId": S.optional(S.String),
-  "secretAccessKey": S.optional(S.String),
-}),
+  S.Struct({
+    accessKeyId: S.optional(S.String),
+    secretAccessKey: S.optional(S.String),
+  }),
 ).annotate({ identifier: "AwsAccessKey" }) as any as S.Schema<AwsAccessKey>;
 
 /** An AwsS3Data resource can be a data source, but not a data sink. In an AwsS3Data resource, an object's name is the S3 object's key name. */
@@ -543,16 +652,16 @@ export interface AwsS3Data {
   managedPrivateNetwork?: boolean;
 }
 export const AwsS3Data = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.optional(S.String),
-  "privateNetworkService": S.optional(S.String),
-  "bucketName": S.optional(S.String),
-  "credentialsSecret": S.optional(S.String),
-  "roleArn": S.optional(S.String),
-  "awsAccessKey": S.optional(AwsAccessKey),
-  "cloudfrontDomain": S.optional(S.String),
-  "managedPrivateNetwork": S.optional(S.Boolean),
-}),
+  S.Struct({
+    path: S.optional(S.String),
+    privateNetworkService: S.optional(S.String),
+    bucketName: S.optional(S.String),
+    credentialsSecret: S.optional(S.String),
+    roleArn: S.optional(S.String),
+    awsAccessKey: S.optional(AwsAccessKey),
+    cloudfrontDomain: S.optional(S.String),
+    managedPrivateNetwork: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "AwsS3Data" }) as any as S.Schema<AwsS3Data>;
 
 /** A POSIX filesystem resource. */
@@ -561,10 +670,12 @@ export interface PosixFilesystem {
   rootDirectory?: string;
 }
 export const PosixFilesystem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "rootDirectory": S.optional(S.String),
-}),
-).annotate({ identifier: "PosixFilesystem" }) as any as S.Schema<PosixFilesystem>;
+  S.Struct({
+    rootDirectory: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PosixFilesystem",
+}) as any as S.Schema<PosixFilesystem>;
 
 /** Configuration for running a transfer. */
 export interface TransferSpec {
@@ -600,23 +711,23 @@ export interface TransferSpec {
   posixDataSink?: PosixFilesystem;
 }
 export const TransferSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "httpDataSource": S.optional(HttpData),
-  "azureBlobStorageDataSource": S.optional(AzureBlobStorageData),
-  "transferOptions": S.optional(TransferOptions),
-  "transferManifest": S.optional(TransferManifest),
-  "gcsDataSink": S.optional(GcsData),
-  "hdfsDataSource": S.optional(HdfsData),
-  "objectConditions": S.optional(ObjectConditions),
-  "sinkAgentPoolName": S.optional(S.String),
-  "awsS3CompatibleDataSource": S.optional(AwsS3CompatibleData),
-  "gcsDataSource": S.optional(GcsData),
-  "sourceAgentPoolName": S.optional(S.String),
-  "gcsIntermediateDataLocation": S.optional(GcsData),
-  "awsS3DataSource": S.optional(AwsS3Data),
-  "posixDataSource": S.optional(PosixFilesystem),
-  "posixDataSink": S.optional(PosixFilesystem),
-}),
+  S.Struct({
+    httpDataSource: S.optional(HttpData),
+    azureBlobStorageDataSource: S.optional(AzureBlobStorageData),
+    transferOptions: S.optional(TransferOptions),
+    transferManifest: S.optional(TransferManifest),
+    gcsDataSink: S.optional(GcsData),
+    hdfsDataSource: S.optional(HdfsData),
+    objectConditions: S.optional(ObjectConditions),
+    sinkAgentPoolName: S.optional(S.String),
+    awsS3CompatibleDataSource: S.optional(AwsS3CompatibleData),
+    gcsDataSource: S.optional(GcsData),
+    sourceAgentPoolName: S.optional(S.String),
+    gcsIntermediateDataLocation: S.optional(GcsData),
+    awsS3DataSource: S.optional(AwsS3Data),
+    posixDataSource: S.optional(PosixFilesystem),
+    posixDataSink: S.optional(PosixFilesystem),
+  }),
 ).annotate({ identifier: "TransferSpec" }) as any as S.Schema<TransferSpec>;
 
 /** Specifies the configuration for a cross-bucket replication job. Cross-bucket replication copies new or updated objects from a source Cloud Storage bucket to a destination Cloud Storage bucket. Existing objects in the source bucket are not copied by a new cross-bucket replication job. */
@@ -631,13 +742,15 @@ export interface ReplicationSpec {
   transferOptions?: TransferOptions;
 }
 export const ReplicationSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "objectConditions": S.optional(ObjectConditions),
-  "gcsDataSource": S.optional(GcsData),
-  "gcsDataSink": S.optional(GcsData),
-  "transferOptions": S.optional(TransferOptions),
-}),
-).annotate({ identifier: "ReplicationSpec" }) as any as S.Schema<ReplicationSpec>;
+  S.Struct({
+    objectConditions: S.optional(ObjectConditions),
+    gcsDataSource: S.optional(GcsData),
+    gcsDataSink: S.optional(GcsData),
+    transferOptions: S.optional(TransferOptions),
+  }),
+).annotate({
+  identifier: "ReplicationSpec",
+}) as any as S.Schema<ReplicationSpec>;
 
 /** Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. */
 export interface EventStream {
@@ -649,21 +762,31 @@ export interface EventStream {
   eventStreamExpirationTime?: string;
 }
 export const EventStream = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "eventStreamStartTime": S.optional(S.String),
-  "name": S.optional(S.String),
-  "eventStreamExpirationTime": S.optional(S.String),
-}),
+  S.Struct({
+    eventStreamStartTime: S.optional(S.String),
+    name: S.optional(S.String),
+    eventStreamExpirationTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "EventStream" }) as any as S.Schema<EventStream>;
 
-export type NotificationConfigPayloadFormatEnum = "PAYLOAD_FORMAT_UNSPECIFIED" | "NONE" | "JSON";
+export type NotificationConfigPayloadFormatEnum =
+  | "PAYLOAD_FORMAT_UNSPECIFIED"
+  | "NONE"
+  | "JSON";
 export const NotificationConfigPayloadFormatEnum = /*@__PURE__*/ S.String;
 
-export type NotificationConfigEventTypesItemEnum = "EVENT_TYPE_UNSPECIFIED" | "TRANSFER_OPERATION_SUCCESS" | "TRANSFER_OPERATION_FAILED" | "TRANSFER_OPERATION_ABORTED";
+export type NotificationConfigEventTypesItemEnum =
+  | "EVENT_TYPE_UNSPECIFIED"
+  | "TRANSFER_OPERATION_SUCCESS"
+  | "TRANSFER_OPERATION_FAILED"
+  | "TRANSFER_OPERATION_ABORTED";
 export const NotificationConfigEventTypesItemEnum = /*@__PURE__*/ S.String;
 
-export type NotificationConfigEventTypesItemEnumList = ReadonlyArray<NotificationConfigEventTypesItemEnum>;
-export const NotificationConfigEventTypesItemEnumList = /*@__PURE__*/ S.Array(NotificationConfigEventTypesItemEnum) as any as S.Schema<NotificationConfigEventTypesItemEnumList>;
+export type NotificationConfigEventTypesItemEnumList =
+  ReadonlyArray<NotificationConfigEventTypesItemEnum>;
+export const NotificationConfigEventTypesItemEnumList = /*@__PURE__*/ S.Array(
+  NotificationConfigEventTypesItemEnum,
+) as any as S.Schema<NotificationConfigEventTypesItemEnumList>;
 
 /** Specification to configure notifications published to Pub/Sub. Notifications are published to the customer-provided topic using the following `PubsubMessage.attributes`: * `"eventType"`: one of the EventType values * `"payloadFormat"`: one of the PayloadFormat values * `"projectId"`: the project_id of the `TransferOperation` * `"transferJobName"`: the transfer_job_name of the `TransferOperation` * `"transferOperationName"`: the name of the `TransferOperation` The `PubsubMessage.data` contains a TransferOperation resource formatted according to the specified `PayloadFormat`. */
 export interface NotificationConfig {
@@ -675,12 +798,14 @@ export interface NotificationConfig {
   eventTypes?: NotificationConfigEventTypesItemEnumList;
 }
 export const NotificationConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "payloadFormat": S.optional(NotificationConfigPayloadFormatEnum),
-  "pubsubTopic": S.optional(S.String),
-  "eventTypes": S.optional(NotificationConfigEventTypesItemEnumList),
-}),
-).annotate({ identifier: "NotificationConfig" }) as any as S.Schema<NotificationConfig>;
+  S.Struct({
+    payloadFormat: S.optional(NotificationConfigPayloadFormatEnum),
+    pubsubTopic: S.optional(S.String),
+    eventTypes: S.optional(NotificationConfigEventTypesItemEnumList),
+  }),
+).annotate({
+  identifier: "NotificationConfig",
+}) as any as S.Schema<NotificationConfig>;
 
 /** This resource represents the configuration of a transfer job that runs periodically. */
 export interface TransferJob {
@@ -716,23 +841,23 @@ export interface TransferJob {
   notificationConfig?: NotificationConfig;
 }
 export const TransferJob = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "loggingConfig": S.optional(LoggingConfig),
-  "projectId": S.optional(S.String),
-  "serviceAccount": S.optional(S.String),
-  "lastModificationTime": S.optional(S.String),
-  "creationTime": S.optional(S.String),
-  "schedule": S.optional(Schedule),
-  "deletionTime": S.optional(S.String),
-  "status": S.optional(TransferJobStatusEnum),
-  "latestOperationName": S.optional(S.String),
-  "transferSpec": S.optional(TransferSpec),
-  "name": S.optional(S.String),
-  "replicationSpec": S.optional(ReplicationSpec),
-  "eventStream": S.optional(EventStream),
-  "description": S.optional(S.String),
-  "notificationConfig": S.optional(NotificationConfig),
-}),
+  S.Struct({
+    loggingConfig: S.optional(LoggingConfig),
+    projectId: S.optional(S.String),
+    serviceAccount: S.optional(S.String),
+    lastModificationTime: S.optional(S.String),
+    creationTime: S.optional(S.String),
+    schedule: S.optional(Schedule),
+    deletionTime: S.optional(S.String),
+    status: S.optional(TransferJobStatusEnum),
+    latestOperationName: S.optional(S.String),
+    transferSpec: S.optional(TransferSpec),
+    name: S.optional(S.String),
+    replicationSpec: S.optional(ReplicationSpec),
+    eventStream: S.optional(EventStream),
+    description: S.optional(S.String),
+    notificationConfig: S.optional(NotificationConfig),
+  }),
 ).annotate({ identifier: "TransferJob" }) as any as S.Schema<TransferJob>;
 
 export interface CreateTransferJobsRequest {
@@ -740,20 +865,36 @@ export interface CreateTransferJobsRequest {
   body?: TransferJob;
 }
 export const CreateTransferJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(TransferJob.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/transferJobs","baseUrl":"https://storagetransfer.googleapis.com/"})),
-).annotate({ identifier: "CreateTransferJobsRequest" }) as any as S.Schema<CreateTransferJobsRequest>;
+  S.Struct({
+    body: S.optional(TransferJob.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/transferJobs",
+      baseUrl: "https://storagetransfer.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateTransferJobsRequest",
+}) as any as S.Schema<CreateTransferJobsRequest>;
 
 export interface DeleteProjectsAgentPoolsRequest {
   /** Required. The name of the agent pool to delete. */
   name: string;
 }
 export const DeleteProjectsAgentPoolsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://storagetransfer.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsAgentPoolsRequest" }) as any as S.Schema<DeleteProjectsAgentPoolsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://storagetransfer.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteProjectsAgentPoolsRequest",
+}) as any as S.Schema<DeleteProjectsAgentPoolsRequest>;
 
 export interface DeleteTransferJobsRequest {
   /** Required. The ID of the Google Cloud project that owns the job. */
@@ -762,21 +903,37 @@ export interface DeleteTransferJobsRequest {
   jobName: string;
 }
 export const DeleteTransferJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectId": S.String.pipe(T.Query()),
-  "jobName": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+jobName}","baseUrl":"https://storagetransfer.googleapis.com/"})),
-).annotate({ identifier: "DeleteTransferJobsRequest" }) as any as S.Schema<DeleteTransferJobsRequest>;
+  S.Struct({
+    projectId: S.String.pipe(T.Query()),
+    jobName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+jobName}",
+      baseUrl: "https://storagetransfer.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteTransferJobsRequest",
+}) as any as S.Schema<DeleteTransferJobsRequest>;
 
 export interface GetGoogleServiceAccountsRequest {
   /** Required. The ID of the Google Cloud project that the Google service account is associated with. */
   projectId: string;
 }
 export const GetGoogleServiceAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/googleServiceAccounts/{projectId}","baseUrl":"https://storagetransfer.googleapis.com/"})),
-).annotate({ identifier: "GetGoogleServiceAccountsRequest" }) as any as S.Schema<GetGoogleServiceAccountsRequest>;
+  S.Struct({
+    projectId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/googleServiceAccounts/{projectId}",
+      baseUrl: "https://storagetransfer.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetGoogleServiceAccountsRequest",
+}) as any as S.Schema<GetGoogleServiceAccountsRequest>;
 
 /** Google service account */
 export interface GoogleServiceAccount {
@@ -786,21 +943,31 @@ export interface GoogleServiceAccount {
   accountEmail?: string;
 }
 export const GoogleServiceAccount = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "subjectId": S.optional(S.String),
-  "accountEmail": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleServiceAccount" }) as any as S.Schema<GoogleServiceAccount>;
+  S.Struct({
+    subjectId: S.optional(S.String),
+    accountEmail: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleServiceAccount",
+}) as any as S.Schema<GoogleServiceAccount>;
 
 export interface GetProjectsAgentPoolsRequest {
   /** Required. The name of the agent pool to get. */
   name: string;
 }
 export const GetProjectsAgentPoolsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://storagetransfer.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsAgentPoolsRequest" }) as any as S.Schema<GetProjectsAgentPoolsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://storagetransfer.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsAgentPoolsRequest",
+}) as any as S.Schema<GetProjectsAgentPoolsRequest>;
 
 export interface GetTransferJobsRequest {
   /** Required. The job to get. */
@@ -809,27 +976,48 @@ export interface GetTransferJobsRequest {
   projectId: string;
 }
 export const GetTransferJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "jobName": S.String.pipe(T.Label()),
-  "projectId": S.String.pipe(T.Query()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+jobName}","baseUrl":"https://storagetransfer.googleapis.com/"})),
-).annotate({ identifier: "GetTransferJobsRequest" }) as any as S.Schema<GetTransferJobsRequest>;
+  S.Struct({
+    jobName: S.String.pipe(T.Label()),
+    projectId: S.String.pipe(T.Query()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+jobName}",
+      baseUrl: "https://storagetransfer.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetTransferJobsRequest",
+}) as any as S.Schema<GetTransferJobsRequest>;
 
 export interface GetTransferOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
 export const GetTransferOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://storagetransfer.googleapis.com/"})),
-).annotate({ identifier: "GetTransferOperationsRequest" }) as any as S.Schema<GetTransferOperationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://storagetransfer.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetTransferOperationsRequest",
+}) as any as S.Schema<GetTransferOperationsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -841,11 +1029,11 @@ export interface Status {
   message?: string;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(S.Number),
-  "details": S.optional(DocumentMapList),
-  "message": S.optional(S.String),
-}),
+  S.Struct({
+    code: S.optional(S.Number),
+    details: S.optional(DocumentMapList),
+    message: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -862,13 +1050,13 @@ export interface Operation {
   error?: Status;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "response": S.optional(DocumentMap),
-  "metadata": S.optional(DocumentMap),
-  "name": S.optional(S.String),
-  "done": S.optional(S.Boolean),
-  "error": S.optional(Status),
-}),
+  S.Struct({
+    response: S.optional(DocumentMap),
+    metadata: S.optional(DocumentMap),
+    name: S.optional(S.String),
+    done: S.optional(S.Boolean),
+    error: S.optional(Status),
+  }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 export interface ListProjectsAgentPoolsRequest {
@@ -882,16 +1070,26 @@ export interface ListProjectsAgentPoolsRequest {
   pageToken?: string;
 }
 export const ListProjectsAgentPoolsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectId": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/projects/{+projectId}/agentPools","baseUrl":"https://storagetransfer.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsAgentPoolsRequest" }) as any as S.Schema<ListProjectsAgentPoolsRequest>;
+  S.Struct({
+    projectId: S.String.pipe(T.Label()),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/projects/{+projectId}/agentPools",
+      baseUrl: "https://storagetransfer.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsAgentPoolsRequest",
+}) as any as S.Schema<ListProjectsAgentPoolsRequest>;
 
 export type AgentPoolList = ReadonlyArray<AgentPool>;
-export const AgentPoolList = /*@__PURE__*/ S.Array(AgentPool) as any as S.Schema<AgentPoolList>;
+export const AgentPoolList = /*@__PURE__*/ S.Array(
+  AgentPool,
+) as any as S.Schema<AgentPoolList>;
 
 /** Response from ListAgentPools. */
 export interface ListAgentPoolsResponse {
@@ -901,11 +1099,13 @@ export interface ListAgentPoolsResponse {
   nextPageToken?: string;
 }
 export const ListAgentPoolsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "agentPools": S.optional(AgentPoolList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListAgentPoolsResponse" }) as any as S.Schema<ListAgentPoolsResponse>;
+  S.Struct({
+    agentPools: S.optional(AgentPoolList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListAgentPoolsResponse",
+}) as any as S.Schema<ListAgentPoolsResponse>;
 
 export interface ListTransferJobsRequest {
   /** Required. A list of query parameters specified as JSON text in the form of: ``` { "projectId":"my_project_id", "jobNames":["jobid1","jobid2",...], "jobStatuses":["status1","status2",...], "dataBackend":"QUERY_REPLICATION_CONFIGS", "sourceBucket":"source-bucket-name", "sinkBucket":"sink-bucket-name", } ``` The JSON formatting in the example is for display only; provide the query parameters without spaces or line breaks. * `projectId` is required. * Since `jobNames` and `jobStatuses` support multiple values, their values must be specified with array notation. `jobNames` and `jobStatuses` are optional. Valid values are case-insensitive: * ENABLED * DISABLED * DELETED * Specify `"dataBackend":"QUERY_REPLICATION_CONFIGS"` to return a list of cross-bucket replication jobs. * Limit the results to jobs from a particular bucket with `sourceBucket` and/or to a particular bucket with `sinkBucket`. */
@@ -916,15 +1116,25 @@ export interface ListTransferJobsRequest {
   pageToken?: string;
 }
 export const ListTransferJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.String.pipe(T.Query()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/transferJobs","baseUrl":"https://storagetransfer.googleapis.com/"})),
-).annotate({ identifier: "ListTransferJobsRequest" }) as any as S.Schema<ListTransferJobsRequest>;
+  S.Struct({
+    filter: S.String.pipe(T.Query()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/transferJobs",
+      baseUrl: "https://storagetransfer.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListTransferJobsRequest",
+}) as any as S.Schema<ListTransferJobsRequest>;
 
 export type TransferJobList = ReadonlyArray<TransferJob>;
-export const TransferJobList = /*@__PURE__*/ S.Array(TransferJob) as any as S.Schema<TransferJobList>;
+export const TransferJobList = /*@__PURE__*/ S.Array(
+  TransferJob,
+) as any as S.Schema<TransferJobList>;
 
 /** Response from ListTransferJobs. */
 export interface ListTransferJobsResponse {
@@ -934,11 +1144,13 @@ export interface ListTransferJobsResponse {
   transferJobs?: TransferJobList;
 }
 export const ListTransferJobsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "transferJobs": S.optional(TransferJobList),
-}),
-).annotate({ identifier: "ListTransferJobsResponse" }) as any as S.Schema<ListTransferJobsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    transferJobs: S.optional(TransferJobList),
+  }),
+).annotate({
+  identifier: "ListTransferJobsResponse",
+}) as any as S.Schema<ListTransferJobsResponse>;
 
 export interface ListTransferOperationsRequest {
   /** Required. The name of the type being listed; must be `transferOperations`. */
@@ -953,17 +1165,27 @@ export interface ListTransferOperationsRequest {
   returnPartialSuccess?: boolean;
 }
 export const ListTransferOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "filter": S.String.pipe(T.Query()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://storagetransfer.googleapis.com/"})),
-).annotate({ identifier: "ListTransferOperationsRequest" }) as any as S.Schema<ListTransferOperationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    filter: S.String.pipe(T.Query()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://storagetransfer.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListTransferOperationsRequest",
+}) as any as S.Schema<ListTransferOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(
+  Operation,
+) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -975,12 +1197,14 @@ export interface ListOperationsResponse {
   nextPageToken?: string;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "operations": S.optional(OperationList),
-  "unreachable": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
+  S.Struct({
+    operations: S.optional(OperationList),
+    unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListOperationsResponse",
+}) as any as S.Schema<ListOperationsResponse>;
 
 export interface PatchProjectsAgentPoolsRequest {
   /** Required. Specifies a unique string that identifies the agent pool. Format: `projects/{project_id}/agentPools/{agent_pool_id}` */
@@ -991,12 +1215,20 @@ export interface PatchProjectsAgentPoolsRequest {
   body?: AgentPool;
 }
 export const PatchProjectsAgentPoolsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(AgentPool.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://storagetransfer.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsAgentPoolsRequest" }) as any as S.Schema<PatchProjectsAgentPoolsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(AgentPool.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+name}",
+      baseUrl: "https://storagetransfer.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchProjectsAgentPoolsRequest",
+}) as any as S.Schema<PatchProjectsAgentPoolsRequest>;
 
 /** Request passed to UpdateTransferJob. */
 export interface UpdateTransferJobRequest {
@@ -1008,12 +1240,14 @@ export interface UpdateTransferJobRequest {
   transferJob?: TransferJob;
 }
 export const UpdateTransferJobRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectId": S.optional(S.String),
-  "updateTransferJobFieldMask": S.optional(S.String),
-  "transferJob": S.optional(TransferJob),
-}),
-).annotate({ identifier: "UpdateTransferJobRequest" }) as any as S.Schema<UpdateTransferJobRequest>;
+  S.Struct({
+    projectId: S.optional(S.String),
+    updateTransferJobFieldMask: S.optional(S.String),
+    transferJob: S.optional(TransferJob),
+  }),
+).annotate({
+  identifier: "UpdateTransferJobRequest",
+}) as any as S.Schema<UpdateTransferJobRequest>;
 
 export interface PatchTransferJobsRequest {
   /** Required. The name of job to update. */
@@ -1022,17 +1256,27 @@ export interface PatchTransferJobsRequest {
   body?: UpdateTransferJobRequest;
 }
 export const PatchTransferJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "jobName": S.String.pipe(T.Label()),
-  "body": S.optional(UpdateTransferJobRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+jobName}","baseUrl":"https://storagetransfer.googleapis.com/"})),
-).annotate({ identifier: "PatchTransferJobsRequest" }) as any as S.Schema<PatchTransferJobsRequest>;
+  S.Struct({
+    jobName: S.String.pipe(T.Label()),
+    body: S.optional(UpdateTransferJobRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+jobName}",
+      baseUrl: "https://storagetransfer.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchTransferJobsRequest",
+}) as any as S.Schema<PatchTransferJobsRequest>;
 
 /** Request passed to PauseTransferOperation. */
 export interface PauseTransferOperationRequest {}
 export const PauseTransferOperationRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "PauseTransferOperationRequest" }) as any as S.Schema<PauseTransferOperationRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "PauseTransferOperationRequest",
+}) as any as S.Schema<PauseTransferOperationRequest>;
 
 export interface PauseTransferOperationsRequest {
   /** Required. The name of the transfer operation. */
@@ -1041,17 +1285,27 @@ export interface PauseTransferOperationsRequest {
   body?: PauseTransferOperationRequest;
 }
 export const PauseTransferOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(PauseTransferOperationRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:pause","baseUrl":"https://storagetransfer.googleapis.com/"})),
-).annotate({ identifier: "PauseTransferOperationsRequest" }) as any as S.Schema<PauseTransferOperationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(PauseTransferOperationRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:pause",
+      baseUrl: "https://storagetransfer.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PauseTransferOperationsRequest",
+}) as any as S.Schema<PauseTransferOperationsRequest>;
 
 /** Request passed to ResumeTransferOperation. */
 export interface ResumeTransferOperationRequest {}
 export const ResumeTransferOperationRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "ResumeTransferOperationRequest" }) as any as S.Schema<ResumeTransferOperationRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "ResumeTransferOperationRequest",
+}) as any as S.Schema<ResumeTransferOperationRequest>;
 
 export interface ResumeTransferOperationsRequest {
   /** Required. The name of the transfer operation. */
@@ -1060,11 +1314,19 @@ export interface ResumeTransferOperationsRequest {
   body?: ResumeTransferOperationRequest;
 }
 export const ResumeTransferOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(ResumeTransferOperationRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:resume","baseUrl":"https://storagetransfer.googleapis.com/"})),
-).annotate({ identifier: "ResumeTransferOperationsRequest" }) as any as S.Schema<ResumeTransferOperationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(ResumeTransferOperationRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:resume",
+      baseUrl: "https://storagetransfer.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ResumeTransferOperationsRequest",
+}) as any as S.Schema<ResumeTransferOperationsRequest>;
 
 /** Request passed to RunTransferJob. */
 export interface RunTransferJobRequest {
@@ -1072,10 +1334,12 @@ export interface RunTransferJobRequest {
   projectId?: string;
 }
 export const RunTransferJobRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectId": S.optional(S.String),
-}),
-).annotate({ identifier: "RunTransferJobRequest" }) as any as S.Schema<RunTransferJobRequest>;
+  S.Struct({
+    projectId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RunTransferJobRequest",
+}) as any as S.Schema<RunTransferJobRequest>;
 
 export interface RunTransferJobsRequest {
   /** Required. The name of the transfer job. */
@@ -1084,13 +1348,26 @@ export interface RunTransferJobsRequest {
   body?: RunTransferJobRequest;
 }
 export const RunTransferJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "jobName": S.String.pipe(T.Label()),
-  "body": S.optional(RunTransferJobRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+jobName}:run","baseUrl":"https://storagetransfer.googleapis.com/"})),
-).annotate({ identifier: "RunTransferJobsRequest" }) as any as S.Schema<RunTransferJobsRequest>;
+  S.Struct({
+    jobName: S.String.pipe(T.Label()),
+    body: S.optional(RunTransferJobRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+jobName}:run",
+      baseUrl: "https://storagetransfer.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "RunTransferJobsRequest",
+}) as any as S.Schema<RunTransferJobsRequest>;
 
-export type CancelTransferOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CancelTransferOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Cancels a transfer. Use the transferOperations.get method to check if the cancellation succeeded or if the operation completed despite the `cancel` request. When you cancel an operation, the currently running transfer is interrupted. For recurring transfer jobs, the next instance of the transfer job will still run. For example, if your job is configured to run every day at 1pm and you cancel Monday's operation at 1:05pm, Monday's transfer will stop. However, a transfer job will still be attempted on Tuesday. This applies only to currently running operations. If an operation is not currently running, `cancel` does nothing. *Caution:* Canceling a transfer job can leave your data in an unknown state. We recommend that you restore the state at both the destination and the source after the `cancel` request completes so that your data is in a consistent state. When you cancel a job, the next job computes a delta of files and may repair any inconsistent state. For instance, if you run a job every day, and today's job found 10 new files and transferred five files before you canceled the job, tomorrow's transfer operation will compute a new delta with the five files that were not copied today plus any new files discovered tomorrow. */
 export const cancelTransferOperations: API.OperationMethod<
   CancelTransferOperationsRequest,
@@ -1105,7 +1382,12 @@ export const cancelTransferOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsAgentPoolsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsAgentPoolsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates an agent pool resource. */
 export const createProjectsAgentPools: API.OperationMethod<
   CreateProjectsAgentPoolsRequest,
@@ -1120,7 +1402,12 @@ export const createProjectsAgentPools: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateTransferJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateTransferJobsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a transfer job that runs periodically. */
 export const createTransferJobs: API.OperationMethod<
   CreateTransferJobsRequest,
@@ -1135,7 +1422,12 @@ export const createTransferJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsAgentPoolsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsAgentPoolsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes an agent pool. */
 export const deleteProjectsAgentPools: API.OperationMethod<
   DeleteProjectsAgentPoolsRequest,
@@ -1150,7 +1442,12 @@ export const deleteProjectsAgentPools: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteTransferJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteTransferJobsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a transfer job. Deleting a transfer job sets its status to DELETED. */
 export const deleteTransferJobs: API.OperationMethod<
   DeleteTransferJobsRequest,
@@ -1238,7 +1535,10 @@ export const listProjectsAgentPools: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListTransferJobsError = NotFound | Forbidden | GcpOpError;
@@ -1254,7 +1554,10 @@ export const listTransferJobs: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListTransferOperationsError = NotFound | Forbidden | GcpOpError;
@@ -1270,10 +1573,18 @@ export const listTransferOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type PatchProjectsAgentPoolsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsAgentPoolsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates an existing agent pool resource. */
 export const patchProjectsAgentPools: API.OperationMethod<
   PatchProjectsAgentPoolsRequest,
@@ -1288,7 +1599,12 @@ export const patchProjectsAgentPools: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchTransferJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchTransferJobsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a transfer job. Updating a job's transfer spec does not affect transfer operations that are running already. **Note:** The job's status field can be modified using this RPC (for example, to set a job's status to DELETED, DISABLED, or ENABLED). */
 export const patchTransferJobs: API.OperationMethod<
   PatchTransferJobsRequest,
@@ -1303,7 +1619,12 @@ export const patchTransferJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PauseTransferOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PauseTransferOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Pauses a transfer operation. */
 export const pauseTransferOperations: API.OperationMethod<
   PauseTransferOperationsRequest,
@@ -1318,7 +1639,12 @@ export const pauseTransferOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ResumeTransferOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ResumeTransferOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Resumes a transfer operation that is paused. */
 export const resumeTransferOperations: API.OperationMethod<
   ResumeTransferOperationsRequest,
@@ -1333,7 +1659,12 @@ export const resumeTransferOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RunTransferJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RunTransferJobsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Starts a new operation for the specified transfer job. A `TransferJob` has a maximum of one active `TransferOperation`. If this method is called while a `TransferOperation` is active, an error is returned. */
 export const runTransferJobs: API.OperationMethod<
   RunTransferJobsRequest,
@@ -1347,4 +1678,3 @@ export const runTransferJobs: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

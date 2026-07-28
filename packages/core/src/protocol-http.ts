@@ -180,6 +180,42 @@ export const mapKeys = (
 
   const node = resolveNode(ast);
 
+  // Schema-level union member (a merged response struct whose arms disagree
+  // on a member's type — see the codegen's response-union merge): pick the
+  // arm that explains the value best and map with it. Object values score
+  // arms by how many of their declared keys are present; array values take
+  // the first array arm. Anything unmatched deep-renames via the dictionary
+  // fallback, like other opaque content. (Single-real-member unions —
+  // optional/null wrappers — were already collapsed by resolveNode; the
+  // opaque `T.UnionCases` mechanism never produces a Union node and is
+  // handled above.)
+  if (node._tag === "Union") {
+    const arms = (node as AST.Union).types.map(resolveNode);
+    if (Array.isArray(value)) {
+      const arr = arms.find((t) => t._tag === "Arrays");
+      if (arr) return mapKeys(arr, value, direction, dict);
+    } else {
+      let best: AST.AST | undefined;
+      let bestScore = 0;
+      for (const t of arms) {
+        if (t._tag !== "Objects") continue;
+        let score = 0;
+        for (const p of (t as any)
+          .propertySignatures as readonly AST.PropertySignature[]) {
+          const from =
+            direction === "encode" ? String(p.name) : nameOf(p, bodySymbol);
+          if ((value as Record<string, unknown>)[from] !== undefined) score++;
+        }
+        if (score > bestScore) {
+          best = t;
+          bestScore = score;
+        }
+      }
+      if (best) return mapKeys(best, value, direction, dict);
+    }
+    return dict ? mapKeysByDictionary(dict, value, direction) : value;
+  }
+
   if (node._tag === "Arrays") {
     if (!Array.isArray(value)) return value;
     const elem = (node as any).rest?.[0] as AST.AST | undefined;

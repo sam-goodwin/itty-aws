@@ -13,27 +13,27 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export interface GetAccountsLimitsRequest {
@@ -41,12 +41,23 @@ export interface GetAccountsLimitsRequest {
   name: string;
 }
 export const GetAccountsLimitsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"quota/v1/{+name}","baseUrl":"https://merchantapi.googleapis.com/"})),
-).annotate({ identifier: "GetAccountsLimitsRequest" }) as any as S.Schema<GetAccountsLimitsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "quota/v1/{+name}",
+      baseUrl: "https://merchantapi.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetAccountsLimitsRequest",
+}) as any as S.Schema<GetAccountsLimitsRequest>;
 
-export type ProductLimitScopeEnum = "SCOPE_UNSPECIFIED" | "ADS_NON_EEA" | "ADS_EEA";
+export type ProductLimitScopeEnum =
+  | "SCOPE_UNSPECIFIED"
+  | "ADS_NON_EEA"
+  | "ADS_EEA";
 export const ProductLimitScopeEnum = /*@__PURE__*/ S.String;
 
 /** The limit for products. */
@@ -57,10 +68,10 @@ export interface ProductLimit {
   limit?: string;
 }
 export const ProductLimit = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "scope": S.optional(ProductLimitScopeEnum),
-  "limit": S.optional(S.String),
-}),
+  S.Struct({
+    scope: S.optional(ProductLimitScopeEnum),
+    limit: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ProductLimit" }) as any as S.Schema<ProductLimit>;
 
 /** A limit of a certain type that is applied to an account. */
@@ -71,10 +82,10 @@ export interface AccountLimit {
   name?: string;
 }
 export const AccountLimit = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "products": S.optional(ProductLimit),
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    products: S.optional(ProductLimit),
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "AccountLimit" }) as any as S.Schema<AccountLimit>;
 
 export interface ListAccountsLimitsRequest {
@@ -88,16 +99,26 @@ export interface ListAccountsLimitsRequest {
   pageSize?: number;
 }
 export const ListAccountsLimitsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"quota/v1/{+parent}/limits","baseUrl":"https://merchantapi.googleapis.com/"})),
-).annotate({ identifier: "ListAccountsLimitsRequest" }) as any as S.Schema<ListAccountsLimitsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "quota/v1/{+parent}/limits",
+      baseUrl: "https://merchantapi.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListAccountsLimitsRequest",
+}) as any as S.Schema<ListAccountsLimitsRequest>;
 
 export type AccountLimitList = ReadonlyArray<AccountLimit>;
-export const AccountLimitList = /*@__PURE__*/ S.Array(AccountLimit) as any as S.Schema<AccountLimitList>;
+export const AccountLimitList = /*@__PURE__*/ S.Array(
+  AccountLimit,
+) as any as S.Schema<AccountLimitList>;
 
 /** Response message for the `ListAccountLimits` method. */
 export interface ListAccountLimitsResponse {
@@ -107,11 +128,13 @@ export interface ListAccountLimitsResponse {
   nextPageToken?: string;
 }
 export const ListAccountLimitsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "accountLimits": S.optional(AccountLimitList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListAccountLimitsResponse" }) as any as S.Schema<ListAccountLimitsResponse>;
+  S.Struct({
+    accountLimits: S.optional(AccountLimitList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListAccountLimitsResponse",
+}) as any as S.Schema<ListAccountLimitsResponse>;
 
 export interface ListAccountsQuotasRequest {
   /** Required. The merchant account who owns the collection of method quotas Format: accounts/{account} */
@@ -122,12 +145,20 @@ export interface ListAccountsQuotasRequest {
   pageSize?: number;
 }
 export const ListAccountsQuotasRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"quota/v1/{+parent}/quotas","baseUrl":"https://merchantapi.googleapis.com/"})),
-).annotate({ identifier: "ListAccountsQuotasRequest" }) as any as S.Schema<ListAccountsQuotasRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "quota/v1/{+parent}/quotas",
+      baseUrl: "https://merchantapi.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListAccountsQuotasRequest",
+}) as any as S.Schema<ListAccountsQuotasRequest>;
 
 /** The method details per method in the Merchant API. */
 export interface MethodDetails {
@@ -141,16 +172,18 @@ export interface MethodDetails {
   subapi?: string;
 }
 export const MethodDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "path": S.optional(S.String),
-  "method": S.optional(S.String),
-  "version": S.optional(S.String),
-  "subapi": S.optional(S.String),
-}),
+  S.Struct({
+    path: S.optional(S.String),
+    method: S.optional(S.String),
+    version: S.optional(S.String),
+    subapi: S.optional(S.String),
+  }),
 ).annotate({ identifier: "MethodDetails" }) as any as S.Schema<MethodDetails>;
 
 export type MethodDetailsList = ReadonlyArray<MethodDetails>;
-export const MethodDetailsList = /*@__PURE__*/ S.Array(MethodDetails) as any as S.Schema<MethodDetailsList>;
+export const MethodDetailsList = /*@__PURE__*/ S.Array(
+  MethodDetails,
+) as any as S.Schema<MethodDetailsList>;
 
 /** The group information for methods in the Merchant API. The quota is shared between all methods in the group. Even if none of the methods within the group have usage the information for the group is returned. */
 export interface QuotaGroup {
@@ -166,17 +199,19 @@ export interface QuotaGroup {
   quotaLimit?: string;
 }
 export const QuotaGroup = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "methodDetails": S.optional(MethodDetailsList),
-  "quotaUsage": S.optional(S.String),
-  "quotaMinuteLimit": S.optional(S.String),
-  "quotaLimit": S.optional(S.String),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    methodDetails: S.optional(MethodDetailsList),
+    quotaUsage: S.optional(S.String),
+    quotaMinuteLimit: S.optional(S.String),
+    quotaLimit: S.optional(S.String),
+  }),
 ).annotate({ identifier: "QuotaGroup" }) as any as S.Schema<QuotaGroup>;
 
 export type QuotaGroupList = ReadonlyArray<QuotaGroup>;
-export const QuotaGroupList = /*@__PURE__*/ S.Array(QuotaGroup) as any as S.Schema<QuotaGroupList>;
+export const QuotaGroupList = /*@__PURE__*/ S.Array(
+  QuotaGroup,
+) as any as S.Schema<QuotaGroupList>;
 
 /** Response message for the ListMethodGroups method. */
 export interface ListQuotaGroupsResponse {
@@ -186,11 +221,13 @@ export interface ListQuotaGroupsResponse {
   nextPageToken?: string;
 }
 export const ListQuotaGroupsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "quotaGroups": S.optional(QuotaGroupList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListQuotaGroupsResponse" }) as any as S.Schema<ListQuotaGroupsResponse>;
+  S.Struct({
+    quotaGroups: S.optional(QuotaGroupList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListQuotaGroupsResponse",
+}) as any as S.Schema<ListQuotaGroupsResponse>;
 
 export type GetAccountsLimitsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves an account limit. */
@@ -220,7 +257,10 @@ export const listAccountsLimits: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListAccountsQuotasError = NotFound | Forbidden | GcpOpError;
@@ -236,6 +276,8 @@ export const listAccountsQuotas: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
-

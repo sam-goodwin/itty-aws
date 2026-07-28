@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export interface AggregateFleetV1betaRequest {
@@ -81,26 +81,62 @@ export interface AggregateFleetV1betaRequest {
   pageToken?: string;
 }
 export const AggregateFleetV1betaRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "baselineDate.day": S.optional(S.Number.pipe(T.Query())),
-  "baselineDate.year": S.optional(S.Number.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "baselineDate.month": S.optional(S.Number.pipe(T.Query())),
-  "groupBy": S.optional(S.String.pipe(T.Query())),
-  "parent": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta:aggregateFleet","baseUrl":"https://databasecenter.googleapis.com/"})),
-).annotate({ identifier: "AggregateFleetV1betaRequest" }) as any as S.Schema<AggregateFleetV1betaRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    "baselineDate.day": S.optional(S.Number.pipe(T.Query())),
+    "baselineDate.year": S.optional(S.Number.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+    "baselineDate.month": S.optional(S.Number.pipe(T.Query())),
+    groupBy: S.optional(S.String.pipe(T.Query())),
+    parent: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta:aggregateFleet",
+      baseUrl: "https://databasecenter.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "AggregateFleetV1betaRequest",
+}) as any as S.Schema<AggregateFleetV1betaRequest>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
-export type ProductTypeEnum = "PRODUCT_TYPE_UNSPECIFIED" | "PRODUCT_TYPE_CLOUD_SQL" | "PRODUCT_TYPE_ALLOYDB" | "PRODUCT_TYPE_SPANNER" | "PRODUCT_TYPE_BIGTABLE" | "PRODUCT_TYPE_MEMORYSTORE" | "PRODUCT_TYPE_FIRESTORE" | "PRODUCT_TYPE_COMPUTE_ENGINE" | "PRODUCT_TYPE_ORACLE_ON_GCP" | "PRODUCT_TYPE_BIGQUERY" | "PRODUCT_TYPE_OTHER";
+export type ProductTypeEnum =
+  | "PRODUCT_TYPE_UNSPECIFIED"
+  | "PRODUCT_TYPE_CLOUD_SQL"
+  | "PRODUCT_TYPE_ALLOYDB"
+  | "PRODUCT_TYPE_SPANNER"
+  | "PRODUCT_TYPE_BIGTABLE"
+  | "PRODUCT_TYPE_MEMORYSTORE"
+  | "PRODUCT_TYPE_FIRESTORE"
+  | "PRODUCT_TYPE_COMPUTE_ENGINE"
+  | "PRODUCT_TYPE_ORACLE_ON_GCP"
+  | "PRODUCT_TYPE_BIGQUERY"
+  | "PRODUCT_TYPE_OTHER";
 export const ProductTypeEnum = /*@__PURE__*/ S.String;
 
-export type ProductEngineEnum = "ENGINE_UNSPECIFIED" | "ENGINE_MYSQL" | "ENGINE_POSTGRES" | "ENGINE_SQL_SERVER" | "ENGINE_NATIVE" | "ENGINE_MEMORYSTORE_FOR_REDIS" | "ENGINE_MEMORYSTORE_FOR_REDIS_CLUSTER" | "ENGINE_MEMORSTORE_FOR_VALKEY" | "ENGINE_MEMORYSTORE_FOR_VALKEY" | "ENGINE_FIRESTORE_WITH_NATIVE_MODE" | "ENGINE_FIRESTORE_WITH_DATASTORE_MODE" | "ENGINE_EXADATA_ORACLE" | "ENGINE_ADB_SERVERLESS_ORACLE" | "ENGINE_FIRESTORE_WITH_MONGODB_COMPATIBILITY_MODE" | "ENGINE_OTHER";
+export type ProductEngineEnum =
+  | "ENGINE_UNSPECIFIED"
+  | "ENGINE_MYSQL"
+  | "ENGINE_POSTGRES"
+  | "ENGINE_SQL_SERVER"
+  | "ENGINE_NATIVE"
+  | "ENGINE_MEMORYSTORE_FOR_REDIS"
+  | "ENGINE_MEMORYSTORE_FOR_REDIS_CLUSTER"
+  | "ENGINE_MEMORSTORE_FOR_VALKEY"
+  | "ENGINE_MEMORYSTORE_FOR_VALKEY"
+  | "ENGINE_FIRESTORE_WITH_NATIVE_MODE"
+  | "ENGINE_FIRESTORE_WITH_DATASTORE_MODE"
+  | "ENGINE_EXADATA_ORACLE"
+  | "ENGINE_ADB_SERVERLESS_ORACLE"
+  | "ENGINE_FIRESTORE_WITH_MONGODB_COMPATIBILITY_MODE"
+  | "ENGINE_OTHER";
 export const ProductEngineEnum = /*@__PURE__*/ S.String;
 
 /** Product specification for databasecenter resources. */
@@ -115,12 +151,12 @@ export interface Product {
   engine?: ProductEngineEnum;
 }
 export const Product = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "minorVersion": S.optional(S.String),
-  "version": S.optional(S.String),
-  "type": S.optional(ProductTypeEnum),
-  "engine": S.optional(ProductEngineEnum),
-}),
+  S.Struct({
+    minorVersion: S.optional(S.String),
+    version: S.optional(S.String),
+    type: S.optional(ProductTypeEnum),
+    engine: S.optional(ProductEngineEnum),
+  }),
 ).annotate({ identifier: "Product" }) as any as S.Schema<Product>;
 
 /** Capture the resource details for resources that are included in the delta counts. */
@@ -135,16 +171,20 @@ export interface ResourceDetails {
   fullResourceName?: string;
 }
 export const ResourceDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "location": S.optional(S.String),
-  "product": S.optional(Product),
-  "container": S.optional(S.String),
-  "fullResourceName": S.optional(S.String),
-}),
-).annotate({ identifier: "ResourceDetails" }) as any as S.Schema<ResourceDetails>;
+  S.Struct({
+    location: S.optional(S.String),
+    product: S.optional(Product),
+    container: S.optional(S.String),
+    fullResourceName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ResourceDetails",
+}) as any as S.Schema<ResourceDetails>;
 
 export type ResourceDetailsList = ReadonlyArray<ResourceDetails>;
-export const ResourceDetailsList = /*@__PURE__*/ S.Array(ResourceDetails) as any as S.Schema<ResourceDetailsList>;
+export const ResourceDetailsList = /*@__PURE__*/ S.Array(
+  ResourceDetails,
+) as any as S.Schema<ResourceDetailsList>;
 
 /** Captures the details of items that have increased or decreased in some bucket when compared to some point in history. It is currently used to capture the delta of resources that have been added or removed in the fleet as well as to capture the resources that have a change in Issue/Signal status. */
 export interface DeltaDetails {
@@ -154,28 +194,76 @@ export interface DeltaDetails {
   increasedResources?: ResourceDetailsList;
 }
 export const DeltaDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "decreasedResources": S.optional(ResourceDetailsList),
-  "increasedResources": S.optional(ResourceDetailsList),
-}),
+  S.Struct({
+    decreasedResources: S.optional(ResourceDetailsList),
+    increasedResources: S.optional(ResourceDetailsList),
+  }),
 ).annotate({ identifier: "DeltaDetails" }) as any as S.Schema<DeltaDetails>;
 
-export type DimensionProductEngineEnum = "ENGINE_UNSPECIFIED" | "ENGINE_MYSQL" | "ENGINE_POSTGRES" | "ENGINE_SQL_SERVER" | "ENGINE_NATIVE" | "ENGINE_MEMORYSTORE_FOR_REDIS" | "ENGINE_MEMORYSTORE_FOR_REDIS_CLUSTER" | "ENGINE_MEMORSTORE_FOR_VALKEY" | "ENGINE_MEMORYSTORE_FOR_VALKEY" | "ENGINE_FIRESTORE_WITH_NATIVE_MODE" | "ENGINE_FIRESTORE_WITH_DATASTORE_MODE" | "ENGINE_EXADATA_ORACLE" | "ENGINE_ADB_SERVERLESS_ORACLE" | "ENGINE_FIRESTORE_WITH_MONGODB_COMPATIBILITY_MODE" | "ENGINE_OTHER";
+export type DimensionProductEngineEnum =
+  | "ENGINE_UNSPECIFIED"
+  | "ENGINE_MYSQL"
+  | "ENGINE_POSTGRES"
+  | "ENGINE_SQL_SERVER"
+  | "ENGINE_NATIVE"
+  | "ENGINE_MEMORYSTORE_FOR_REDIS"
+  | "ENGINE_MEMORYSTORE_FOR_REDIS_CLUSTER"
+  | "ENGINE_MEMORSTORE_FOR_VALKEY"
+  | "ENGINE_MEMORYSTORE_FOR_VALKEY"
+  | "ENGINE_FIRESTORE_WITH_NATIVE_MODE"
+  | "ENGINE_FIRESTORE_WITH_DATASTORE_MODE"
+  | "ENGINE_EXADATA_ORACLE"
+  | "ENGINE_ADB_SERVERLESS_ORACLE"
+  | "ENGINE_FIRESTORE_WITH_MONGODB_COMPATIBILITY_MODE"
+  | "ENGINE_OTHER";
 export const DimensionProductEngineEnum = /*@__PURE__*/ S.String;
 
-export type DimensionProductTypeEnum = "PRODUCT_TYPE_UNSPECIFIED" | "PRODUCT_TYPE_CLOUD_SQL" | "PRODUCT_TYPE_ALLOYDB" | "PRODUCT_TYPE_SPANNER" | "PRODUCT_TYPE_BIGTABLE" | "PRODUCT_TYPE_MEMORYSTORE" | "PRODUCT_TYPE_FIRESTORE" | "PRODUCT_TYPE_COMPUTE_ENGINE" | "PRODUCT_TYPE_ORACLE_ON_GCP" | "PRODUCT_TYPE_BIGQUERY" | "PRODUCT_TYPE_OTHER";
+export type DimensionProductTypeEnum =
+  | "PRODUCT_TYPE_UNSPECIFIED"
+  | "PRODUCT_TYPE_CLOUD_SQL"
+  | "PRODUCT_TYPE_ALLOYDB"
+  | "PRODUCT_TYPE_SPANNER"
+  | "PRODUCT_TYPE_BIGTABLE"
+  | "PRODUCT_TYPE_MEMORYSTORE"
+  | "PRODUCT_TYPE_FIRESTORE"
+  | "PRODUCT_TYPE_COMPUTE_ENGINE"
+  | "PRODUCT_TYPE_ORACLE_ON_GCP"
+  | "PRODUCT_TYPE_BIGQUERY"
+  | "PRODUCT_TYPE_OTHER";
 export const DimensionProductTypeEnum = /*@__PURE__*/ S.String;
 
-export type DimensionEditionEnum = "EDITION_UNSPECIFIED" | "EDITION_ENTERPRISE" | "EDITION_ENTERPRISE_PLUS" | "EDITION_STANDARD";
+export type DimensionEditionEnum =
+  | "EDITION_UNSPECIFIED"
+  | "EDITION_ENTERPRISE"
+  | "EDITION_ENTERPRISE_PLUS"
+  | "EDITION_STANDARD";
 export const DimensionEditionEnum = /*@__PURE__*/ S.String;
 
-export type DimensionSubResourceTypeEnum = "SUB_RESOURCE_TYPE_UNSPECIFIED" | "SUB_RESOURCE_TYPE_PRIMARY" | "SUB_RESOURCE_TYPE_SECONDARY" | "SUB_RESOURCE_TYPE_READ_REPLICA" | "SUB_RESOURCE_TYPE_EXTERNAL_PRIMARY" | "SUB_RESOURCE_TYPE_READ_POOL" | "SUB_RESOURCE_TYPE_RESERVATION" | "SUB_RESOURCE_TYPE_DATASET" | "SUB_RESOURCE_TYPE_OTHER";
+export type DimensionSubResourceTypeEnum =
+  | "SUB_RESOURCE_TYPE_UNSPECIFIED"
+  | "SUB_RESOURCE_TYPE_PRIMARY"
+  | "SUB_RESOURCE_TYPE_SECONDARY"
+  | "SUB_RESOURCE_TYPE_READ_REPLICA"
+  | "SUB_RESOURCE_TYPE_EXTERNAL_PRIMARY"
+  | "SUB_RESOURCE_TYPE_READ_POOL"
+  | "SUB_RESOURCE_TYPE_RESERVATION"
+  | "SUB_RESOURCE_TYPE_DATASET"
+  | "SUB_RESOURCE_TYPE_OTHER";
 export const DimensionSubResourceTypeEnum = /*@__PURE__*/ S.String;
 
-export type DimensionResourceCategoryEnum = "RESOURCE_CATEGORY_UNSPECIFIED" | "INSTANCE" | "CLUSTER" | "DATABASE" | "DATASET" | "RESERVATION";
+export type DimensionResourceCategoryEnum =
+  | "RESOURCE_CATEGORY_UNSPECIFIED"
+  | "INSTANCE"
+  | "CLUSTER"
+  | "DATABASE"
+  | "DATASET"
+  | "RESERVATION";
 export const DimensionResourceCategoryEnum = /*@__PURE__*/ S.String;
 
-export type DimensionManagementTypeEnum = "MANAGEMENT_TYPE_UNSPECIFIED" | "MANAGEMENT_TYPE_GCP_MANAGED" | "MANAGEMENT_TYPE_SELF_MANAGED";
+export type DimensionManagementTypeEnum =
+  | "MANAGEMENT_TYPE_UNSPECIFIED"
+  | "MANAGEMENT_TYPE_GCP_MANAGED"
+  | "MANAGEMENT_TYPE_SELF_MANAGED";
 export const DimensionManagementTypeEnum = /*@__PURE__*/ S.String;
 
 /** Dimension used to aggregate the fleet. */
@@ -220,31 +308,33 @@ export interface Dimension {
   hasDenyMaintenanceSchedules?: boolean;
 }
 export const Dimension = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "productEngine": S.optional(DimensionProductEngineEnum),
-  "hasMaintenanceSchedule": S.optional(S.Boolean),
-  "productType": S.optional(DimensionProductTypeEnum),
-  "resourceType": S.optional(S.String),
-  "edition": S.optional(DimensionEditionEnum),
-  "tagValue": S.optional(S.String),
-  "subResourceType": S.optional(DimensionSubResourceTypeEnum),
-  "labelSource": S.optional(S.String),
-  "resourceCategory": S.optional(DimensionResourceCategoryEnum),
-  "managementType": S.optional(DimensionManagementTypeEnum),
-  "container": S.optional(S.String),
-  "location": S.optional(S.String),
-  "productVersion": S.optional(S.String),
-  "labelValue": S.optional(S.String),
-  "labelKey": S.optional(S.String),
-  "tagSource": S.optional(S.String),
-  "tagInherited": S.optional(S.Boolean),
-  "tagKey": S.optional(S.String),
-  "hasDenyMaintenanceSchedules": S.optional(S.Boolean),
-}),
+  S.Struct({
+    productEngine: S.optional(DimensionProductEngineEnum),
+    hasMaintenanceSchedule: S.optional(S.Boolean),
+    productType: S.optional(DimensionProductTypeEnum),
+    resourceType: S.optional(S.String),
+    edition: S.optional(DimensionEditionEnum),
+    tagValue: S.optional(S.String),
+    subResourceType: S.optional(DimensionSubResourceTypeEnum),
+    labelSource: S.optional(S.String),
+    resourceCategory: S.optional(DimensionResourceCategoryEnum),
+    managementType: S.optional(DimensionManagementTypeEnum),
+    container: S.optional(S.String),
+    location: S.optional(S.String),
+    productVersion: S.optional(S.String),
+    labelValue: S.optional(S.String),
+    labelKey: S.optional(S.String),
+    tagSource: S.optional(S.String),
+    tagInherited: S.optional(S.Boolean),
+    tagKey: S.optional(S.String),
+    hasDenyMaintenanceSchedules: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "Dimension" }) as any as S.Schema<Dimension>;
 
 export type DimensionList = ReadonlyArray<Dimension>;
-export const DimensionList = /*@__PURE__*/ S.Array(Dimension) as any as S.Schema<DimensionList>;
+export const DimensionList = /*@__PURE__*/ S.Array(
+  Dimension,
+) as any as S.Schema<DimensionList>;
 
 /** Individual row grouped by a particular dimension. */
 export interface AggregateFleetRow {
@@ -258,16 +348,20 @@ export interface AggregateFleetRow {
   dimension?: DimensionList;
 }
 export const AggregateFleetRow = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourcesCount": S.optional(S.Number),
-  "resourceGroupsCount": S.optional(S.Number),
-  "deltaDetails": S.optional(DeltaDetails),
-  "dimension": S.optional(DimensionList),
-}),
-).annotate({ identifier: "AggregateFleetRow" }) as any as S.Schema<AggregateFleetRow>;
+  S.Struct({
+    resourcesCount: S.optional(S.Number),
+    resourceGroupsCount: S.optional(S.Number),
+    deltaDetails: S.optional(DeltaDetails),
+    dimension: S.optional(DimensionList),
+  }),
+).annotate({
+  identifier: "AggregateFleetRow",
+}) as any as S.Schema<AggregateFleetRow>;
 
 export type AggregateFleetRowList = ReadonlyArray<AggregateFleetRow>;
-export const AggregateFleetRowList = /*@__PURE__*/ S.Array(AggregateFleetRow) as any as S.Schema<AggregateFleetRowList>;
+export const AggregateFleetRowList = /*@__PURE__*/ S.Array(
+  AggregateFleetRow,
+) as any as S.Schema<AggregateFleetRowList>;
 
 /** The response message to aggregate a fleet by some group by fields. */
 export interface AggregateFleetResponse {
@@ -285,21 +379,130 @@ export interface AggregateFleetResponse {
   totalSize?: string;
 }
 export const AggregateFleetResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceGroupsTotalCount": S.optional(S.Number),
-  "unreachable": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-  "resourceTotalCount": S.optional(S.Number),
-  "rows": S.optional(AggregateFleetRowList),
-  "totalSize": S.optional(S.String),
-}),
-).annotate({ identifier: "AggregateFleetResponse" }) as any as S.Schema<AggregateFleetResponse>;
+  S.Struct({
+    resourceGroupsTotalCount: S.optional(S.Number),
+    unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+    resourceTotalCount: S.optional(S.Number),
+    rows: S.optional(AggregateFleetRowList),
+    totalSize: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AggregateFleetResponse",
+}) as any as S.Schema<AggregateFleetResponse>;
 
-export type SignalTypeGroupSignalTypesItemEnum = "SIGNAL_TYPE_UNSPECIFIED" | "SIGNAL_TYPE_RESOURCE_FAILOVER_PROTECTED" | "SIGNAL_TYPE_GROUP_MULTIREGIONAL" | "SIGNAL_TYPE_NO_AUTOMATED_BACKUP_POLICY" | "SIGNAL_TYPE_SHORT_BACKUP_RETENTION" | "SIGNAL_TYPE_LAST_BACKUP_FAILED" | "SIGNAL_TYPE_LAST_BACKUP_OLD" | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_2_0" | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_1_3" | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_1_2" | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_1_1" | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_1_0" | "SIGNAL_TYPE_VIOLATES_CIS_CONTROLS_V8_0" | "SIGNAL_TYPE_VIOLATES_NIST_800_53" | "SIGNAL_TYPE_VIOLATES_NIST_800_53_R5" | "SIGNAL_TYPE_VIOLATES_NIST_CYBERSECURITY_FRAMEWORK_V1_0" | "SIGNAL_TYPE_VIOLATES_ISO_27001" | "SIGNAL_TYPE_VIOLATES_ISO_27001_V2022" | "SIGNAL_TYPE_VIOLATES_PCI_DSS_V3_2_1" | "SIGNAL_TYPE_VIOLATES_PCI_DSS_V4_0" | "SIGNAL_TYPE_VIOLATES_CLOUD_CONTROLS_MATRIX_V4" | "SIGNAL_TYPE_VIOLATES_HIPAA" | "SIGNAL_TYPE_VIOLATES_SOC2_V2017" | "SIGNAL_TYPE_LOGS_NOT_OPTIMIZED_FOR_TROUBLESHOOTING" | "SIGNAL_TYPE_QUERY_DURATIONS_NOT_LOGGED" | "SIGNAL_TYPE_VERBOSE_ERROR_LOGGING" | "SIGNAL_TYPE_QUERY_LOCK_WAITS_NOT_LOGGED" | "SIGNAL_TYPE_LOGGING_MOST_ERRORS" | "SIGNAL_TYPE_LOGGING_ONLY_CRITICAL_ERRORS" | "SIGNAL_TYPE_MINIMAL_ERROR_LOGGING" | "SIGNAL_TYPE_QUERY_STATS_LOGGED" | "SIGNAL_TYPE_EXCESSIVE_LOGGING_OF_CLIENT_HOSTNAME" | "SIGNAL_TYPE_EXCESSIVE_LOGGING_OF_PARSER_STATS" | "SIGNAL_TYPE_EXCESSIVE_LOGGING_OF_PLANNER_STATS" | "SIGNAL_TYPE_NOT_LOGGING_ONLY_DDL_STATEMENTS" | "SIGNAL_TYPE_LOGGING_QUERY_STATS" | "SIGNAL_TYPE_NOT_LOGGING_TEMPORARY_FILES" | "SIGNAL_TYPE_CONNECTION_MAX_NOT_CONFIGURED" | "SIGNAL_TYPE_USER_OPTIONS_CONFIGURED" | "SIGNAL_TYPE_EXPOSED_TO_PUBLIC_ACCESS" | "SIGNAL_TYPE_UNENCRYPTED_CONNECTIONS" | "SIGNAL_TYPE_NO_ROOT_PASSWORD" | "SIGNAL_TYPE_WEAK_ROOT_PASSWORD" | "SIGNAL_TYPE_ENCRYPTION_KEY_NOT_CUSTOMER_MANAGED" | "SIGNAL_TYPE_SERVER_AUTHENTICATION_NOT_REQUIRED" | "SIGNAL_TYPE_EXPOSED_TO_EXTERNAL_SCRIPTS" | "SIGNAL_TYPE_EXPOSED_TO_LOCAL_DATA_LOADS" | "SIGNAL_TYPE_CONNECTION_ATTEMPTS_NOT_LOGGED" | "SIGNAL_TYPE_DISCONNECTIONS_NOT_LOGGED" | "SIGNAL_TYPE_LOGGING_EXCESSIVE_STATEMENT_INFO" | "SIGNAL_TYPE_EXPOSED_TO_REMOTE_ACCESS" | "SIGNAL_TYPE_DATABASE_NAMES_EXPOSED" | "SIGNAL_TYPE_SENSITIVE_TRACE_INFO_NOT_MASKED" | "SIGNAL_TYPE_PUBLIC_IP_ENABLED" | "SIGNAL_TYPE_IDLE" | "SIGNAL_TYPE_OVERPROVISIONED" | "SIGNAL_TYPE_HIGH_NUMBER_OF_OPEN_TABLES" | "SIGNAL_TYPE_HIGH_NUMBER_OF_TABLES" | "SIGNAL_TYPE_HIGH_TRANSACTION_ID_UTILIZATION" | "SIGNAL_TYPE_UNDERPROVISIONED" | "SIGNAL_TYPE_OUT_OF_DISK" | "SIGNAL_TYPE_SERVER_CERTIFICATE_NEAR_EXPIRY" | "SIGNAL_TYPE_DATABASE_AUDITING_DISABLED" | "SIGNAL_TYPE_RESTRICT_AUTHORIZED_NETWORKS" | "SIGNAL_TYPE_VIOLATE_POLICY_RESTRICT_PUBLIC_IP" | "SIGNAL_TYPE_QUOTA_LIMIT" | "SIGNAL_TYPE_NO_PASSWORD_POLICY" | "SIGNAL_TYPE_CONNECTIONS_PERFORMANCE_IMPACT" | "SIGNAL_TYPE_TMP_TABLES_PERFORMANCE_IMPACT" | "SIGNAL_TYPE_TRANS_LOGS_PERFORMANCE_IMPACT" | "SIGNAL_TYPE_HIGH_JOINS_WITHOUT_INDEXES" | "SIGNAL_TYPE_SUPERUSER_WRITING_TO_USER_TABLES" | "SIGNAL_TYPE_USER_GRANTED_ALL_PERMISSIONS" | "SIGNAL_TYPE_DATA_EXPORT_TO_EXTERNAL_CLOUD_STORAGE_BUCKET" | "SIGNAL_TYPE_DATA_EXPORT_TO_PUBLIC_CLOUD_STORAGE_BUCKET" | "SIGNAL_TYPE_WEAK_PASSWORD_HASH_ALGORITHM" | "SIGNAL_TYPE_NO_USER_PASSWORD_POLICY" | "SIGNAL_TYPE_HOT_NODE" | "SIGNAL_TYPE_NO_DELETION_PROTECTION" | "SIGNAL_TYPE_NO_POINT_IN_TIME_RECOVERY" | "SIGNAL_TYPE_RESOURCE_SUSPENDED" | "SIGNAL_TYPE_EXPENSIVE_COMMANDS" | "SIGNAL_TYPE_NO_MAINTENANCE_POLICY_CONFIGURED" | "SIGNAL_TYPE_INEFFICIENT_QUERY" | "SIGNAL_TYPE_READ_INTENSIVE_WORKLOAD" | "SIGNAL_TYPE_MEMORY_LIMIT" | "SIGNAL_TYPE_MAX_SERVER_MEMORY" | "SIGNAL_TYPE_LARGE_ROWS" | "SIGNAL_TYPE_HIGH_WRITE_PRESSURE" | "SIGNAL_TYPE_HIGH_READ_PRESSURE" | "SIGNAL_TYPE_ENCRYPTION_ORG_POLICY_NOT_SATISFIED" | "SIGNAL_TYPE_LOCATION_ORG_POLICY_NOT_SATISFIED" | "SIGNAL_TYPE_OUTDATED_MINOR_VERSION" | "SIGNAL_TYPE_SCHEMA_NOT_OPTIMIZED" | "SIGNAL_TYPE_REPLICATION_LAG" | "SIGNAL_TYPE_OUTDATED_CLIENT" | "SIGNAL_TYPE_DATABOOST_DISABLED" | "SIGNAL_TYPE_RECOMMENDED_MAINTENANCE_POLICIES" | "SIGNAL_TYPE_EXTENDED_SUPPORT" | "SIGNAL_TYPE_VERSION_NEARING_END_OF_LIFE" | "SIGNAL_TYPE_HIGH_MAINTENANCE_DOWNTIME_RISK" | "SIGNAL_TYPE_LOW_CACHE_HIT_AND_MAINTENANCE_DOWNTIME" | "SIGNAL_TYPE_MISSING_ENHANCED_PROTECTION";
+export type SignalTypeGroupSignalTypesItemEnum =
+  | "SIGNAL_TYPE_UNSPECIFIED"
+  | "SIGNAL_TYPE_RESOURCE_FAILOVER_PROTECTED"
+  | "SIGNAL_TYPE_GROUP_MULTIREGIONAL"
+  | "SIGNAL_TYPE_NO_AUTOMATED_BACKUP_POLICY"
+  | "SIGNAL_TYPE_SHORT_BACKUP_RETENTION"
+  | "SIGNAL_TYPE_LAST_BACKUP_FAILED"
+  | "SIGNAL_TYPE_LAST_BACKUP_OLD"
+  | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_2_0"
+  | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_1_3"
+  | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_1_2"
+  | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_1_1"
+  | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_1_0"
+  | "SIGNAL_TYPE_VIOLATES_CIS_CONTROLS_V8_0"
+  | "SIGNAL_TYPE_VIOLATES_NIST_800_53"
+  | "SIGNAL_TYPE_VIOLATES_NIST_800_53_R5"
+  | "SIGNAL_TYPE_VIOLATES_NIST_CYBERSECURITY_FRAMEWORK_V1_0"
+  | "SIGNAL_TYPE_VIOLATES_ISO_27001"
+  | "SIGNAL_TYPE_VIOLATES_ISO_27001_V2022"
+  | "SIGNAL_TYPE_VIOLATES_PCI_DSS_V3_2_1"
+  | "SIGNAL_TYPE_VIOLATES_PCI_DSS_V4_0"
+  | "SIGNAL_TYPE_VIOLATES_CLOUD_CONTROLS_MATRIX_V4"
+  | "SIGNAL_TYPE_VIOLATES_HIPAA"
+  | "SIGNAL_TYPE_VIOLATES_SOC2_V2017"
+  | "SIGNAL_TYPE_LOGS_NOT_OPTIMIZED_FOR_TROUBLESHOOTING"
+  | "SIGNAL_TYPE_QUERY_DURATIONS_NOT_LOGGED"
+  | "SIGNAL_TYPE_VERBOSE_ERROR_LOGGING"
+  | "SIGNAL_TYPE_QUERY_LOCK_WAITS_NOT_LOGGED"
+  | "SIGNAL_TYPE_LOGGING_MOST_ERRORS"
+  | "SIGNAL_TYPE_LOGGING_ONLY_CRITICAL_ERRORS"
+  | "SIGNAL_TYPE_MINIMAL_ERROR_LOGGING"
+  | "SIGNAL_TYPE_QUERY_STATS_LOGGED"
+  | "SIGNAL_TYPE_EXCESSIVE_LOGGING_OF_CLIENT_HOSTNAME"
+  | "SIGNAL_TYPE_EXCESSIVE_LOGGING_OF_PARSER_STATS"
+  | "SIGNAL_TYPE_EXCESSIVE_LOGGING_OF_PLANNER_STATS"
+  | "SIGNAL_TYPE_NOT_LOGGING_ONLY_DDL_STATEMENTS"
+  | "SIGNAL_TYPE_LOGGING_QUERY_STATS"
+  | "SIGNAL_TYPE_NOT_LOGGING_TEMPORARY_FILES"
+  | "SIGNAL_TYPE_CONNECTION_MAX_NOT_CONFIGURED"
+  | "SIGNAL_TYPE_USER_OPTIONS_CONFIGURED"
+  | "SIGNAL_TYPE_EXPOSED_TO_PUBLIC_ACCESS"
+  | "SIGNAL_TYPE_UNENCRYPTED_CONNECTIONS"
+  | "SIGNAL_TYPE_NO_ROOT_PASSWORD"
+  | "SIGNAL_TYPE_WEAK_ROOT_PASSWORD"
+  | "SIGNAL_TYPE_ENCRYPTION_KEY_NOT_CUSTOMER_MANAGED"
+  | "SIGNAL_TYPE_SERVER_AUTHENTICATION_NOT_REQUIRED"
+  | "SIGNAL_TYPE_EXPOSED_TO_EXTERNAL_SCRIPTS"
+  | "SIGNAL_TYPE_EXPOSED_TO_LOCAL_DATA_LOADS"
+  | "SIGNAL_TYPE_CONNECTION_ATTEMPTS_NOT_LOGGED"
+  | "SIGNAL_TYPE_DISCONNECTIONS_NOT_LOGGED"
+  | "SIGNAL_TYPE_LOGGING_EXCESSIVE_STATEMENT_INFO"
+  | "SIGNAL_TYPE_EXPOSED_TO_REMOTE_ACCESS"
+  | "SIGNAL_TYPE_DATABASE_NAMES_EXPOSED"
+  | "SIGNAL_TYPE_SENSITIVE_TRACE_INFO_NOT_MASKED"
+  | "SIGNAL_TYPE_PUBLIC_IP_ENABLED"
+  | "SIGNAL_TYPE_IDLE"
+  | "SIGNAL_TYPE_OVERPROVISIONED"
+  | "SIGNAL_TYPE_HIGH_NUMBER_OF_OPEN_TABLES"
+  | "SIGNAL_TYPE_HIGH_NUMBER_OF_TABLES"
+  | "SIGNAL_TYPE_HIGH_TRANSACTION_ID_UTILIZATION"
+  | "SIGNAL_TYPE_UNDERPROVISIONED"
+  | "SIGNAL_TYPE_OUT_OF_DISK"
+  | "SIGNAL_TYPE_SERVER_CERTIFICATE_NEAR_EXPIRY"
+  | "SIGNAL_TYPE_DATABASE_AUDITING_DISABLED"
+  | "SIGNAL_TYPE_RESTRICT_AUTHORIZED_NETWORKS"
+  | "SIGNAL_TYPE_VIOLATE_POLICY_RESTRICT_PUBLIC_IP"
+  | "SIGNAL_TYPE_QUOTA_LIMIT"
+  | "SIGNAL_TYPE_NO_PASSWORD_POLICY"
+  | "SIGNAL_TYPE_CONNECTIONS_PERFORMANCE_IMPACT"
+  | "SIGNAL_TYPE_TMP_TABLES_PERFORMANCE_IMPACT"
+  | "SIGNAL_TYPE_TRANS_LOGS_PERFORMANCE_IMPACT"
+  | "SIGNAL_TYPE_HIGH_JOINS_WITHOUT_INDEXES"
+  | "SIGNAL_TYPE_SUPERUSER_WRITING_TO_USER_TABLES"
+  | "SIGNAL_TYPE_USER_GRANTED_ALL_PERMISSIONS"
+  | "SIGNAL_TYPE_DATA_EXPORT_TO_EXTERNAL_CLOUD_STORAGE_BUCKET"
+  | "SIGNAL_TYPE_DATA_EXPORT_TO_PUBLIC_CLOUD_STORAGE_BUCKET"
+  | "SIGNAL_TYPE_WEAK_PASSWORD_HASH_ALGORITHM"
+  | "SIGNAL_TYPE_NO_USER_PASSWORD_POLICY"
+  | "SIGNAL_TYPE_HOT_NODE"
+  | "SIGNAL_TYPE_NO_DELETION_PROTECTION"
+  | "SIGNAL_TYPE_NO_POINT_IN_TIME_RECOVERY"
+  | "SIGNAL_TYPE_RESOURCE_SUSPENDED"
+  | "SIGNAL_TYPE_EXPENSIVE_COMMANDS"
+  | "SIGNAL_TYPE_NO_MAINTENANCE_POLICY_CONFIGURED"
+  | "SIGNAL_TYPE_INEFFICIENT_QUERY"
+  | "SIGNAL_TYPE_READ_INTENSIVE_WORKLOAD"
+  | "SIGNAL_TYPE_MEMORY_LIMIT"
+  | "SIGNAL_TYPE_MAX_SERVER_MEMORY"
+  | "SIGNAL_TYPE_LARGE_ROWS"
+  | "SIGNAL_TYPE_HIGH_WRITE_PRESSURE"
+  | "SIGNAL_TYPE_HIGH_READ_PRESSURE"
+  | "SIGNAL_TYPE_ENCRYPTION_ORG_POLICY_NOT_SATISFIED"
+  | "SIGNAL_TYPE_LOCATION_ORG_POLICY_NOT_SATISFIED"
+  | "SIGNAL_TYPE_OUTDATED_MINOR_VERSION"
+  | "SIGNAL_TYPE_SCHEMA_NOT_OPTIMIZED"
+  | "SIGNAL_TYPE_REPLICATION_LAG"
+  | "SIGNAL_TYPE_OUTDATED_CLIENT"
+  | "SIGNAL_TYPE_DATABOOST_DISABLED"
+  | "SIGNAL_TYPE_RECOMMENDED_MAINTENANCE_POLICIES"
+  | "SIGNAL_TYPE_EXTENDED_SUPPORT"
+  | "SIGNAL_TYPE_VERSION_NEARING_END_OF_LIFE"
+  | "SIGNAL_TYPE_HIGH_MAINTENANCE_DOWNTIME_RISK"
+  | "SIGNAL_TYPE_LOW_CACHE_HIT_AND_MAINTENANCE_DOWNTIME"
+  | "SIGNAL_TYPE_MISSING_ENHANCED_PROTECTION";
 export const SignalTypeGroupSignalTypesItemEnum = /*@__PURE__*/ S.String;
 
-export type SignalTypeGroupSignalTypesItemEnumList = ReadonlyArray<SignalTypeGroupSignalTypesItemEnum | (string & {})>;
-export const SignalTypeGroupSignalTypesItemEnumList = /*@__PURE__*/ S.Array(SignalTypeGroupSignalTypesItemEnum) as any as S.Schema<SignalTypeGroupSignalTypesItemEnumList>;
+export type SignalTypeGroupSignalTypesItemEnumList = ReadonlyArray<
+  SignalTypeGroupSignalTypesItemEnum | (string & {})
+>;
+export const SignalTypeGroupSignalTypesItemEnumList = /*@__PURE__*/ S.Array(
+  SignalTypeGroupSignalTypesItemEnum,
+) as any as S.Schema<SignalTypeGroupSignalTypesItemEnumList>;
 
 /** A group of signal types that specifies what the user is interested in. Used by QueryDatabaseResourceGroups API. Example: signal_type_group { name = "AVAILABILITY" types = [SIGNAL_TYPE_NO_PROMOTABLE_REPLICA] } */
 export interface SignalTypeGroup {
@@ -309,14 +512,18 @@ export interface SignalTypeGroup {
   signalTypes?: SignalTypeGroupSignalTypesItemEnumList;
 }
 export const SignalTypeGroup = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "displayName": S.optional(S.String),
-  "signalTypes": S.optional(SignalTypeGroupSignalTypesItemEnumList),
-}),
-).annotate({ identifier: "SignalTypeGroup" }) as any as S.Schema<SignalTypeGroup>;
+  S.Struct({
+    displayName: S.optional(S.String),
+    signalTypes: S.optional(SignalTypeGroupSignalTypesItemEnumList),
+  }),
+).annotate({
+  identifier: "SignalTypeGroup",
+}) as any as S.Schema<SignalTypeGroup>;
 
 export type SignalTypeGroupList = ReadonlyArray<SignalTypeGroup>;
-export const SignalTypeGroupList = /*@__PURE__*/ S.Array(SignalTypeGroup) as any as S.Schema<SignalTypeGroupList>;
+export const SignalTypeGroupList = /*@__PURE__*/ S.Array(
+  SignalTypeGroup,
+) as any as S.Schema<SignalTypeGroupList>;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface Databasecenter_Date {
@@ -328,12 +535,14 @@ export interface Databasecenter_Date {
   day?: number;
 }
 export const Databasecenter_Date = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "year": S.optional(S.Number),
-  "month": S.optional(S.Number),
-  "day": S.optional(S.Number),
-}),
-).annotate({ identifier: "Databasecenter_Date" }) as any as S.Schema<Databasecenter_Date>;
+  S.Struct({
+    year: S.optional(S.Number),
+    month: S.optional(S.Number),
+    day: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "Databasecenter_Date",
+}) as any as S.Schema<Databasecenter_Date>;
 
 /** AggregateIssueStatsRequest represents the input to the AggregateIssueStats method. */
 export interface AggregateIssueStatsRequest {
@@ -347,28 +556,147 @@ export interface AggregateIssueStatsRequest {
   filter?: string;
 }
 export const AggregateIssueStatsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "signalTypeGroups": S.optional(SignalTypeGroupList),
-  "baselineDate": S.optional(Databasecenter_Date),
-  "parent": S.optional(S.String),
-  "filter": S.optional(S.String),
-}),
-).annotate({ identifier: "AggregateIssueStatsRequest" }) as any as S.Schema<AggregateIssueStatsRequest>;
+  S.Struct({
+    signalTypeGroups: S.optional(SignalTypeGroupList),
+    baselineDate: S.optional(Databasecenter_Date),
+    parent: S.optional(S.String),
+    filter: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AggregateIssueStatsRequest",
+}) as any as S.Schema<AggregateIssueStatsRequest>;
 
 export interface AggregateIssueStatsV1betaRequest {
   /** Request body */
   body?: AggregateIssueStatsRequest;
 }
 export const AggregateIssueStatsV1betaRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(AggregateIssueStatsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta:aggregateIssueStats","baseUrl":"https://databasecenter.googleapis.com/"})),
-).annotate({ identifier: "AggregateIssueStatsV1betaRequest" }) as any as S.Schema<AggregateIssueStatsV1betaRequest>;
+  S.Struct({
+    body: S.optional(AggregateIssueStatsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta:aggregateIssueStats",
+      baseUrl: "https://databasecenter.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "AggregateIssueStatsV1betaRequest",
+}) as any as S.Schema<AggregateIssueStatsV1betaRequest>;
 
-export type IssueStatsIssueSeverityEnum = "ISSUE_SEVERITY_UNSPECIFIED" | "ISSUE_SEVERITY_LOW" | "ISSUE_SEVERITY_MEDIUM" | "ISSUE_SEVERITY_HIGH" | "ISSUE_SEVERITY_CRITICAL" | "ISSUE_SEVERITY_IRRELEVANT";
+export type IssueStatsIssueSeverityEnum =
+  | "ISSUE_SEVERITY_UNSPECIFIED"
+  | "ISSUE_SEVERITY_LOW"
+  | "ISSUE_SEVERITY_MEDIUM"
+  | "ISSUE_SEVERITY_HIGH"
+  | "ISSUE_SEVERITY_CRITICAL"
+  | "ISSUE_SEVERITY_IRRELEVANT";
 export const IssueStatsIssueSeverityEnum = /*@__PURE__*/ S.String;
 
-export type IssueStatsSignalTypeEnum = "SIGNAL_TYPE_UNSPECIFIED" | "SIGNAL_TYPE_RESOURCE_FAILOVER_PROTECTED" | "SIGNAL_TYPE_GROUP_MULTIREGIONAL" | "SIGNAL_TYPE_NO_AUTOMATED_BACKUP_POLICY" | "SIGNAL_TYPE_SHORT_BACKUP_RETENTION" | "SIGNAL_TYPE_LAST_BACKUP_FAILED" | "SIGNAL_TYPE_LAST_BACKUP_OLD" | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_2_0" | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_1_3" | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_1_2" | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_1_1" | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_1_0" | "SIGNAL_TYPE_VIOLATES_CIS_CONTROLS_V8_0" | "SIGNAL_TYPE_VIOLATES_NIST_800_53" | "SIGNAL_TYPE_VIOLATES_NIST_800_53_R5" | "SIGNAL_TYPE_VIOLATES_NIST_CYBERSECURITY_FRAMEWORK_V1_0" | "SIGNAL_TYPE_VIOLATES_ISO_27001" | "SIGNAL_TYPE_VIOLATES_ISO_27001_V2022" | "SIGNAL_TYPE_VIOLATES_PCI_DSS_V3_2_1" | "SIGNAL_TYPE_VIOLATES_PCI_DSS_V4_0" | "SIGNAL_TYPE_VIOLATES_CLOUD_CONTROLS_MATRIX_V4" | "SIGNAL_TYPE_VIOLATES_HIPAA" | "SIGNAL_TYPE_VIOLATES_SOC2_V2017" | "SIGNAL_TYPE_LOGS_NOT_OPTIMIZED_FOR_TROUBLESHOOTING" | "SIGNAL_TYPE_QUERY_DURATIONS_NOT_LOGGED" | "SIGNAL_TYPE_VERBOSE_ERROR_LOGGING" | "SIGNAL_TYPE_QUERY_LOCK_WAITS_NOT_LOGGED" | "SIGNAL_TYPE_LOGGING_MOST_ERRORS" | "SIGNAL_TYPE_LOGGING_ONLY_CRITICAL_ERRORS" | "SIGNAL_TYPE_MINIMAL_ERROR_LOGGING" | "SIGNAL_TYPE_QUERY_STATS_LOGGED" | "SIGNAL_TYPE_EXCESSIVE_LOGGING_OF_CLIENT_HOSTNAME" | "SIGNAL_TYPE_EXCESSIVE_LOGGING_OF_PARSER_STATS" | "SIGNAL_TYPE_EXCESSIVE_LOGGING_OF_PLANNER_STATS" | "SIGNAL_TYPE_NOT_LOGGING_ONLY_DDL_STATEMENTS" | "SIGNAL_TYPE_LOGGING_QUERY_STATS" | "SIGNAL_TYPE_NOT_LOGGING_TEMPORARY_FILES" | "SIGNAL_TYPE_CONNECTION_MAX_NOT_CONFIGURED" | "SIGNAL_TYPE_USER_OPTIONS_CONFIGURED" | "SIGNAL_TYPE_EXPOSED_TO_PUBLIC_ACCESS" | "SIGNAL_TYPE_UNENCRYPTED_CONNECTIONS" | "SIGNAL_TYPE_NO_ROOT_PASSWORD" | "SIGNAL_TYPE_WEAK_ROOT_PASSWORD" | "SIGNAL_TYPE_ENCRYPTION_KEY_NOT_CUSTOMER_MANAGED" | "SIGNAL_TYPE_SERVER_AUTHENTICATION_NOT_REQUIRED" | "SIGNAL_TYPE_EXPOSED_TO_EXTERNAL_SCRIPTS" | "SIGNAL_TYPE_EXPOSED_TO_LOCAL_DATA_LOADS" | "SIGNAL_TYPE_CONNECTION_ATTEMPTS_NOT_LOGGED" | "SIGNAL_TYPE_DISCONNECTIONS_NOT_LOGGED" | "SIGNAL_TYPE_LOGGING_EXCESSIVE_STATEMENT_INFO" | "SIGNAL_TYPE_EXPOSED_TO_REMOTE_ACCESS" | "SIGNAL_TYPE_DATABASE_NAMES_EXPOSED" | "SIGNAL_TYPE_SENSITIVE_TRACE_INFO_NOT_MASKED" | "SIGNAL_TYPE_PUBLIC_IP_ENABLED" | "SIGNAL_TYPE_IDLE" | "SIGNAL_TYPE_OVERPROVISIONED" | "SIGNAL_TYPE_HIGH_NUMBER_OF_OPEN_TABLES" | "SIGNAL_TYPE_HIGH_NUMBER_OF_TABLES" | "SIGNAL_TYPE_HIGH_TRANSACTION_ID_UTILIZATION" | "SIGNAL_TYPE_UNDERPROVISIONED" | "SIGNAL_TYPE_OUT_OF_DISK" | "SIGNAL_TYPE_SERVER_CERTIFICATE_NEAR_EXPIRY" | "SIGNAL_TYPE_DATABASE_AUDITING_DISABLED" | "SIGNAL_TYPE_RESTRICT_AUTHORIZED_NETWORKS" | "SIGNAL_TYPE_VIOLATE_POLICY_RESTRICT_PUBLIC_IP" | "SIGNAL_TYPE_QUOTA_LIMIT" | "SIGNAL_TYPE_NO_PASSWORD_POLICY" | "SIGNAL_TYPE_CONNECTIONS_PERFORMANCE_IMPACT" | "SIGNAL_TYPE_TMP_TABLES_PERFORMANCE_IMPACT" | "SIGNAL_TYPE_TRANS_LOGS_PERFORMANCE_IMPACT" | "SIGNAL_TYPE_HIGH_JOINS_WITHOUT_INDEXES" | "SIGNAL_TYPE_SUPERUSER_WRITING_TO_USER_TABLES" | "SIGNAL_TYPE_USER_GRANTED_ALL_PERMISSIONS" | "SIGNAL_TYPE_DATA_EXPORT_TO_EXTERNAL_CLOUD_STORAGE_BUCKET" | "SIGNAL_TYPE_DATA_EXPORT_TO_PUBLIC_CLOUD_STORAGE_BUCKET" | "SIGNAL_TYPE_WEAK_PASSWORD_HASH_ALGORITHM" | "SIGNAL_TYPE_NO_USER_PASSWORD_POLICY" | "SIGNAL_TYPE_HOT_NODE" | "SIGNAL_TYPE_NO_DELETION_PROTECTION" | "SIGNAL_TYPE_NO_POINT_IN_TIME_RECOVERY" | "SIGNAL_TYPE_RESOURCE_SUSPENDED" | "SIGNAL_TYPE_EXPENSIVE_COMMANDS" | "SIGNAL_TYPE_NO_MAINTENANCE_POLICY_CONFIGURED" | "SIGNAL_TYPE_INEFFICIENT_QUERY" | "SIGNAL_TYPE_READ_INTENSIVE_WORKLOAD" | "SIGNAL_TYPE_MEMORY_LIMIT" | "SIGNAL_TYPE_MAX_SERVER_MEMORY" | "SIGNAL_TYPE_LARGE_ROWS" | "SIGNAL_TYPE_HIGH_WRITE_PRESSURE" | "SIGNAL_TYPE_HIGH_READ_PRESSURE" | "SIGNAL_TYPE_ENCRYPTION_ORG_POLICY_NOT_SATISFIED" | "SIGNAL_TYPE_LOCATION_ORG_POLICY_NOT_SATISFIED" | "SIGNAL_TYPE_OUTDATED_MINOR_VERSION" | "SIGNAL_TYPE_SCHEMA_NOT_OPTIMIZED" | "SIGNAL_TYPE_REPLICATION_LAG" | "SIGNAL_TYPE_OUTDATED_CLIENT" | "SIGNAL_TYPE_DATABOOST_DISABLED" | "SIGNAL_TYPE_RECOMMENDED_MAINTENANCE_POLICIES" | "SIGNAL_TYPE_EXTENDED_SUPPORT" | "SIGNAL_TYPE_VERSION_NEARING_END_OF_LIFE" | "SIGNAL_TYPE_HIGH_MAINTENANCE_DOWNTIME_RISK" | "SIGNAL_TYPE_LOW_CACHE_HIT_AND_MAINTENANCE_DOWNTIME" | "SIGNAL_TYPE_MISSING_ENHANCED_PROTECTION";
+export type IssueStatsSignalTypeEnum =
+  | "SIGNAL_TYPE_UNSPECIFIED"
+  | "SIGNAL_TYPE_RESOURCE_FAILOVER_PROTECTED"
+  | "SIGNAL_TYPE_GROUP_MULTIREGIONAL"
+  | "SIGNAL_TYPE_NO_AUTOMATED_BACKUP_POLICY"
+  | "SIGNAL_TYPE_SHORT_BACKUP_RETENTION"
+  | "SIGNAL_TYPE_LAST_BACKUP_FAILED"
+  | "SIGNAL_TYPE_LAST_BACKUP_OLD"
+  | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_2_0"
+  | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_1_3"
+  | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_1_2"
+  | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_1_1"
+  | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_1_0"
+  | "SIGNAL_TYPE_VIOLATES_CIS_CONTROLS_V8_0"
+  | "SIGNAL_TYPE_VIOLATES_NIST_800_53"
+  | "SIGNAL_TYPE_VIOLATES_NIST_800_53_R5"
+  | "SIGNAL_TYPE_VIOLATES_NIST_CYBERSECURITY_FRAMEWORK_V1_0"
+  | "SIGNAL_TYPE_VIOLATES_ISO_27001"
+  | "SIGNAL_TYPE_VIOLATES_ISO_27001_V2022"
+  | "SIGNAL_TYPE_VIOLATES_PCI_DSS_V3_2_1"
+  | "SIGNAL_TYPE_VIOLATES_PCI_DSS_V4_0"
+  | "SIGNAL_TYPE_VIOLATES_CLOUD_CONTROLS_MATRIX_V4"
+  | "SIGNAL_TYPE_VIOLATES_HIPAA"
+  | "SIGNAL_TYPE_VIOLATES_SOC2_V2017"
+  | "SIGNAL_TYPE_LOGS_NOT_OPTIMIZED_FOR_TROUBLESHOOTING"
+  | "SIGNAL_TYPE_QUERY_DURATIONS_NOT_LOGGED"
+  | "SIGNAL_TYPE_VERBOSE_ERROR_LOGGING"
+  | "SIGNAL_TYPE_QUERY_LOCK_WAITS_NOT_LOGGED"
+  | "SIGNAL_TYPE_LOGGING_MOST_ERRORS"
+  | "SIGNAL_TYPE_LOGGING_ONLY_CRITICAL_ERRORS"
+  | "SIGNAL_TYPE_MINIMAL_ERROR_LOGGING"
+  | "SIGNAL_TYPE_QUERY_STATS_LOGGED"
+  | "SIGNAL_TYPE_EXCESSIVE_LOGGING_OF_CLIENT_HOSTNAME"
+  | "SIGNAL_TYPE_EXCESSIVE_LOGGING_OF_PARSER_STATS"
+  | "SIGNAL_TYPE_EXCESSIVE_LOGGING_OF_PLANNER_STATS"
+  | "SIGNAL_TYPE_NOT_LOGGING_ONLY_DDL_STATEMENTS"
+  | "SIGNAL_TYPE_LOGGING_QUERY_STATS"
+  | "SIGNAL_TYPE_NOT_LOGGING_TEMPORARY_FILES"
+  | "SIGNAL_TYPE_CONNECTION_MAX_NOT_CONFIGURED"
+  | "SIGNAL_TYPE_USER_OPTIONS_CONFIGURED"
+  | "SIGNAL_TYPE_EXPOSED_TO_PUBLIC_ACCESS"
+  | "SIGNAL_TYPE_UNENCRYPTED_CONNECTIONS"
+  | "SIGNAL_TYPE_NO_ROOT_PASSWORD"
+  | "SIGNAL_TYPE_WEAK_ROOT_PASSWORD"
+  | "SIGNAL_TYPE_ENCRYPTION_KEY_NOT_CUSTOMER_MANAGED"
+  | "SIGNAL_TYPE_SERVER_AUTHENTICATION_NOT_REQUIRED"
+  | "SIGNAL_TYPE_EXPOSED_TO_EXTERNAL_SCRIPTS"
+  | "SIGNAL_TYPE_EXPOSED_TO_LOCAL_DATA_LOADS"
+  | "SIGNAL_TYPE_CONNECTION_ATTEMPTS_NOT_LOGGED"
+  | "SIGNAL_TYPE_DISCONNECTIONS_NOT_LOGGED"
+  | "SIGNAL_TYPE_LOGGING_EXCESSIVE_STATEMENT_INFO"
+  | "SIGNAL_TYPE_EXPOSED_TO_REMOTE_ACCESS"
+  | "SIGNAL_TYPE_DATABASE_NAMES_EXPOSED"
+  | "SIGNAL_TYPE_SENSITIVE_TRACE_INFO_NOT_MASKED"
+  | "SIGNAL_TYPE_PUBLIC_IP_ENABLED"
+  | "SIGNAL_TYPE_IDLE"
+  | "SIGNAL_TYPE_OVERPROVISIONED"
+  | "SIGNAL_TYPE_HIGH_NUMBER_OF_OPEN_TABLES"
+  | "SIGNAL_TYPE_HIGH_NUMBER_OF_TABLES"
+  | "SIGNAL_TYPE_HIGH_TRANSACTION_ID_UTILIZATION"
+  | "SIGNAL_TYPE_UNDERPROVISIONED"
+  | "SIGNAL_TYPE_OUT_OF_DISK"
+  | "SIGNAL_TYPE_SERVER_CERTIFICATE_NEAR_EXPIRY"
+  | "SIGNAL_TYPE_DATABASE_AUDITING_DISABLED"
+  | "SIGNAL_TYPE_RESTRICT_AUTHORIZED_NETWORKS"
+  | "SIGNAL_TYPE_VIOLATE_POLICY_RESTRICT_PUBLIC_IP"
+  | "SIGNAL_TYPE_QUOTA_LIMIT"
+  | "SIGNAL_TYPE_NO_PASSWORD_POLICY"
+  | "SIGNAL_TYPE_CONNECTIONS_PERFORMANCE_IMPACT"
+  | "SIGNAL_TYPE_TMP_TABLES_PERFORMANCE_IMPACT"
+  | "SIGNAL_TYPE_TRANS_LOGS_PERFORMANCE_IMPACT"
+  | "SIGNAL_TYPE_HIGH_JOINS_WITHOUT_INDEXES"
+  | "SIGNAL_TYPE_SUPERUSER_WRITING_TO_USER_TABLES"
+  | "SIGNAL_TYPE_USER_GRANTED_ALL_PERMISSIONS"
+  | "SIGNAL_TYPE_DATA_EXPORT_TO_EXTERNAL_CLOUD_STORAGE_BUCKET"
+  | "SIGNAL_TYPE_DATA_EXPORT_TO_PUBLIC_CLOUD_STORAGE_BUCKET"
+  | "SIGNAL_TYPE_WEAK_PASSWORD_HASH_ALGORITHM"
+  | "SIGNAL_TYPE_NO_USER_PASSWORD_POLICY"
+  | "SIGNAL_TYPE_HOT_NODE"
+  | "SIGNAL_TYPE_NO_DELETION_PROTECTION"
+  | "SIGNAL_TYPE_NO_POINT_IN_TIME_RECOVERY"
+  | "SIGNAL_TYPE_RESOURCE_SUSPENDED"
+  | "SIGNAL_TYPE_EXPENSIVE_COMMANDS"
+  | "SIGNAL_TYPE_NO_MAINTENANCE_POLICY_CONFIGURED"
+  | "SIGNAL_TYPE_INEFFICIENT_QUERY"
+  | "SIGNAL_TYPE_READ_INTENSIVE_WORKLOAD"
+  | "SIGNAL_TYPE_MEMORY_LIMIT"
+  | "SIGNAL_TYPE_MAX_SERVER_MEMORY"
+  | "SIGNAL_TYPE_LARGE_ROWS"
+  | "SIGNAL_TYPE_HIGH_WRITE_PRESSURE"
+  | "SIGNAL_TYPE_HIGH_READ_PRESSURE"
+  | "SIGNAL_TYPE_ENCRYPTION_ORG_POLICY_NOT_SATISFIED"
+  | "SIGNAL_TYPE_LOCATION_ORG_POLICY_NOT_SATISFIED"
+  | "SIGNAL_TYPE_OUTDATED_MINOR_VERSION"
+  | "SIGNAL_TYPE_SCHEMA_NOT_OPTIMIZED"
+  | "SIGNAL_TYPE_REPLICATION_LAG"
+  | "SIGNAL_TYPE_OUTDATED_CLIENT"
+  | "SIGNAL_TYPE_DATABOOST_DISABLED"
+  | "SIGNAL_TYPE_RECOMMENDED_MAINTENANCE_POLICIES"
+  | "SIGNAL_TYPE_EXTENDED_SUPPORT"
+  | "SIGNAL_TYPE_VERSION_NEARING_END_OF_LIFE"
+  | "SIGNAL_TYPE_HIGH_MAINTENANCE_DOWNTIME_RISK"
+  | "SIGNAL_TYPE_LOW_CACHE_HIT_AND_MAINTENANCE_DOWNTIME"
+  | "SIGNAL_TYPE_MISSING_ENHANCED_PROTECTION";
 export const IssueStatsSignalTypeEnum = /*@__PURE__*/ S.String;
 
 /** IssueStats holds stats for a particular signal category. */
@@ -383,16 +711,18 @@ export interface IssueStats {
   deltaDetails?: DeltaDetails;
 }
 export const IssueStats = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceCount": S.optional(S.Number),
-  "issueSeverity": S.optional(IssueStatsIssueSeverityEnum),
-  "signalType": S.optional(IssueStatsSignalTypeEnum),
-  "deltaDetails": S.optional(DeltaDetails),
-}),
+  S.Struct({
+    resourceCount: S.optional(S.Number),
+    issueSeverity: S.optional(IssueStatsIssueSeverityEnum),
+    signalType: S.optional(IssueStatsSignalTypeEnum),
+    deltaDetails: S.optional(DeltaDetails),
+  }),
 ).annotate({ identifier: "IssueStats" }) as any as S.Schema<IssueStats>;
 
 export type IssueStatsList = ReadonlyArray<IssueStats>;
-export const IssueStatsList = /*@__PURE__*/ S.Array(IssueStats) as any as S.Schema<IssueStatsList>;
+export const IssueStatsList = /*@__PURE__*/ S.Array(
+  IssueStats,
+) as any as S.Schema<IssueStatsList>;
 
 /** IssueGroupStats refers to stats for a particulare combination of relevant health issues of database resources. */
 export interface IssueGroupStats {
@@ -410,18 +740,22 @@ export interface IssueGroupStats {
   healthyResourceGroupsCount?: number;
 }
 export const IssueGroupStats = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "healthyResourcesCount": S.optional(S.Number),
-  "issueStats": S.optional(IssueStatsList),
-  "resourcesCount": S.optional(S.Number),
-  "displayName": S.optional(S.String),
-  "resourceGroupsCount": S.optional(S.Number),
-  "healthyResourceGroupsCount": S.optional(S.Number),
-}),
-).annotate({ identifier: "IssueGroupStats" }) as any as S.Schema<IssueGroupStats>;
+  S.Struct({
+    healthyResourcesCount: S.optional(S.Number),
+    issueStats: S.optional(IssueStatsList),
+    resourcesCount: S.optional(S.Number),
+    displayName: S.optional(S.String),
+    resourceGroupsCount: S.optional(S.Number),
+    healthyResourceGroupsCount: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "IssueGroupStats",
+}) as any as S.Schema<IssueGroupStats>;
 
 export type IssueGroupStatsList = ReadonlyArray<IssueGroupStats>;
-export const IssueGroupStatsList = /*@__PURE__*/ S.Array(IssueGroupStats) as any as S.Schema<IssueGroupStatsList>;
+export const IssueGroupStatsList = /*@__PURE__*/ S.Array(
+  IssueGroupStats,
+) as any as S.Schema<IssueGroupStatsList>;
 
 /** The response message containing one of more group of relevant health issues for database resources. */
 export interface AggregateIssueStatsResponse {
@@ -435,13 +769,15 @@ export interface AggregateIssueStatsResponse {
   unreachable?: StringList;
 }
 export const AggregateIssueStatsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "issueGroupStats": S.optional(IssueGroupStatsList),
-  "totalResourceGroupsCount": S.optional(S.Number),
-  "totalResourcesCount": S.optional(S.Number),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "AggregateIssueStatsResponse" }) as any as S.Schema<AggregateIssueStatsResponse>;
+  S.Struct({
+    issueGroupStats: S.optional(IssueGroupStatsList),
+    totalResourceGroupsCount: S.optional(S.Number),
+    totalResourcesCount: S.optional(S.Number),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "AggregateIssueStatsResponse",
+}) as any as S.Schema<AggregateIssueStatsResponse>;
 
 /** AggregateQueryStatsRequest represents the input to the AggregateQueryStats method. */
 export interface AggregateQueryStatsRequest {
@@ -455,13 +791,15 @@ export interface AggregateQueryStatsRequest {
   pageSize?: number;
 }
 export const AggregateQueryStatsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "orderBy": S.optional(S.String),
-  "filter": S.optional(S.String),
-  "pageToken": S.optional(S.String),
-  "pageSize": S.optional(S.Number),
-}),
-).annotate({ identifier: "AggregateQueryStatsRequest" }) as any as S.Schema<AggregateQueryStatsRequest>;
+  S.Struct({
+    orderBy: S.optional(S.String),
+    filter: S.optional(S.String),
+    pageToken: S.optional(S.String),
+    pageSize: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "AggregateQueryStatsRequest",
+}) as any as S.Schema<AggregateQueryStatsRequest>;
 
 export interface AggregateQueryStatsFoldersRequest {
   /** Required. Parent can be a project, a folder, or an organization. The search is limited to the resources within the `parent`. The allowed values are: * projects/{PROJECT_ID} (e.g., "projects/foo-bar") * projects/{PROJECT_NUMBER} (e.g., "projects/12345678") * folders/{FOLDER_NUMBER} (e.g., "folders/1234567") * organizations/{ORGANIZATION_NUMBER} (e.g., "organizations/123456") */
@@ -470,11 +808,19 @@ export interface AggregateQueryStatsFoldersRequest {
   body?: AggregateQueryStatsRequest;
 }
 export const AggregateQueryStatsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(AggregateQueryStatsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+parent}:aggregateQueryStats","baseUrl":"https://databasecenter.googleapis.com/"})),
-).annotate({ identifier: "AggregateQueryStatsFoldersRequest" }) as any as S.Schema<AggregateQueryStatsFoldersRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(AggregateQueryStatsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+parent}:aggregateQueryStats",
+      baseUrl: "https://databasecenter.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "AggregateQueryStatsFoldersRequest",
+}) as any as S.Schema<AggregateQueryStatsFoldersRequest>;
 
 /** ResourceId contains the identifier for a database resource, including the full resource name, resource type, and product. */
 export interface ResourceId {
@@ -486,15 +832,17 @@ export interface ResourceId {
   product?: Product;
 }
 export const ResourceId = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fullResourceName": S.optional(S.String),
-  "resourceType": S.optional(S.String),
-  "product": S.optional(Product),
-}),
+  S.Struct({
+    fullResourceName: S.optional(S.String),
+    resourceType: S.optional(S.String),
+    product: S.optional(Product),
+  }),
 ).annotate({ identifier: "ResourceId" }) as any as S.Schema<ResourceId>;
 
 export type ResourceIdList = ReadonlyArray<ResourceId>;
-export const ResourceIdList = /*@__PURE__*/ S.Array(ResourceId) as any as S.Schema<ResourceIdList>;
+export const ResourceIdList = /*@__PURE__*/ S.Array(
+  ResourceId,
+) as any as S.Schema<ResourceIdList>;
 
 /** Metadata about inefficient query signal info for a database resource. */
 export interface InefficientQueryInfo {
@@ -510,16 +858,22 @@ export interface InefficientQueryInfo {
   storageCostBytes?: string;
 }
 export const InefficientQueryInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "database": S.optional(S.String),
-  "table": S.optional(S.String),
-  "sqlIndexStatement": S.optional(S.String),
-  "impactedQueriesCount": S.optional(S.String),
-  "storageCostBytes": S.optional(S.String),
-}),
-).annotate({ identifier: "InefficientQueryInfo" }) as any as S.Schema<InefficientQueryInfo>;
+  S.Struct({
+    database: S.optional(S.String),
+    table: S.optional(S.String),
+    sqlIndexStatement: S.optional(S.String),
+    impactedQueriesCount: S.optional(S.String),
+    storageCostBytes: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "InefficientQueryInfo",
+}) as any as S.Schema<InefficientQueryInfo>;
 
-export type QueryMetricsMetricsWindowEnum = "METRICS_WINDOW_UNSPECIFIED" | "LAST_ONE_DAY" | "LAST_ONE_WEEK" | "LAST_TWO_WEEKS";
+export type QueryMetricsMetricsWindowEnum =
+  | "METRICS_WINDOW_UNSPECIFIED"
+  | "LAST_ONE_DAY"
+  | "LAST_ONE_WEEK"
+  | "LAST_TWO_WEEKS";
 export const QueryMetricsMetricsWindowEnum = /*@__PURE__*/ S.String;
 
 /** QueryMetrics contains the metrics related to the query execution. */
@@ -536,13 +890,13 @@ export interface QueryMetrics {
   metricsWindow?: QueryMetricsMetricsWindowEnum;
 }
 export const QueryMetrics = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "totalCpuTime": S.optional(S.String),
-  "avgCpuTime": S.optional(S.String),
-  "rowsProcessed": S.optional(S.String),
-  "executionCount": S.optional(S.String),
-  "metricsWindow": S.optional(QueryMetricsMetricsWindowEnum),
-}),
+  S.Struct({
+    totalCpuTime: S.optional(S.String),
+    avgCpuTime: S.optional(S.String),
+    rowsProcessed: S.optional(S.String),
+    executionCount: S.optional(S.String),
+    metricsWindow: S.optional(QueryMetricsMetricsWindowEnum),
+  }),
 ).annotate({ identifier: "QueryMetrics" }) as any as S.Schema<QueryMetrics>;
 
 /** QueryStats contains the stats for a particular combination of query_hash, query_string and resource_type. */
@@ -561,18 +915,20 @@ export interface QueryStats {
   queryMetrics?: QueryMetrics;
 }
 export const QueryStats = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "queryHash": S.optional(S.String),
-  "resourceIds": S.optional(ResourceIdList),
-  "inefficientQueryInfo": S.optional(InefficientQueryInfo),
-  "resourceType": S.optional(S.String),
-  "normalizedQuery": S.optional(S.String),
-  "queryMetrics": S.optional(QueryMetrics),
-}),
+  S.Struct({
+    queryHash: S.optional(S.String),
+    resourceIds: S.optional(ResourceIdList),
+    inefficientQueryInfo: S.optional(InefficientQueryInfo),
+    resourceType: S.optional(S.String),
+    normalizedQuery: S.optional(S.String),
+    queryMetrics: S.optional(QueryMetrics),
+  }),
 ).annotate({ identifier: "QueryStats" }) as any as S.Schema<QueryStats>;
 
 export type QueryStatsList = ReadonlyArray<QueryStats>;
-export const QueryStatsList = /*@__PURE__*/ S.Array(QueryStats) as any as S.Schema<QueryStatsList>;
+export const QueryStatsList = /*@__PURE__*/ S.Array(
+  QueryStats,
+) as any as S.Schema<QueryStatsList>;
 
 /** QueryStatsInfo contains the aggregated and detailed query stats for a particular combination of relevant query stats for queries having same normalized query. */
 export interface QueryStatsInfo {
@@ -582,14 +938,16 @@ export interface QueryStatsInfo {
   queryStats?: QueryStatsList;
 }
 export const QueryStatsInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "aggregatedQueryStats": S.optional(QueryStats),
-  "queryStats": S.optional(QueryStatsList),
-}),
+  S.Struct({
+    aggregatedQueryStats: S.optional(QueryStats),
+    queryStats: S.optional(QueryStatsList),
+  }),
 ).annotate({ identifier: "QueryStatsInfo" }) as any as S.Schema<QueryStatsInfo>;
 
 export type QueryStatsInfoList = ReadonlyArray<QueryStatsInfo>;
-export const QueryStatsInfoList = /*@__PURE__*/ S.Array(QueryStatsInfo) as any as S.Schema<QueryStatsInfoList>;
+export const QueryStatsInfoList = /*@__PURE__*/ S.Array(
+  QueryStatsInfo,
+) as any as S.Schema<QueryStatsInfoList>;
 
 /** The response message containing relevant query stats for database resources. */
 export interface AggregateQueryStatsResponse {
@@ -601,12 +959,14 @@ export interface AggregateQueryStatsResponse {
   unreachable?: StringList;
 }
 export const AggregateQueryStatsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "queryStats": S.optional(QueryStatsInfoList),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "AggregateQueryStatsResponse" }) as any as S.Schema<AggregateQueryStatsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    queryStats: S.optional(QueryStatsInfoList),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "AggregateQueryStatsResponse",
+}) as any as S.Schema<AggregateQueryStatsResponse>;
 
 export interface AggregateQueryStatsOrganizationsRequest {
   /** Required. Parent can be a project, a folder, or an organization. The search is limited to the resources within the `parent`. The allowed values are: * projects/{PROJECT_ID} (e.g., "projects/foo-bar") * projects/{PROJECT_NUMBER} (e.g., "projects/12345678") * folders/{FOLDER_NUMBER} (e.g., "folders/1234567") * organizations/{ORGANIZATION_NUMBER} (e.g., "organizations/123456") */
@@ -614,12 +974,21 @@ export interface AggregateQueryStatsOrganizationsRequest {
   /** Request body */
   body?: AggregateQueryStatsRequest;
 }
-export const AggregateQueryStatsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(AggregateQueryStatsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+parent}:aggregateQueryStats","baseUrl":"https://databasecenter.googleapis.com/"})),
-).annotate({ identifier: "AggregateQueryStatsOrganizationsRequest" }) as any as S.Schema<AggregateQueryStatsOrganizationsRequest>;
+export const AggregateQueryStatsOrganizationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(AggregateQueryStatsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+parent}:aggregateQueryStats",
+        baseUrl: "https://databasecenter.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "AggregateQueryStatsOrganizationsRequest",
+}) as any as S.Schema<AggregateQueryStatsOrganizationsRequest>;
 
 export interface AggregateQueryStatsProjectsRequest {
   /** Required. Parent can be a project, a folder, or an organization. The search is limited to the resources within the `parent`. The allowed values are: * projects/{PROJECT_ID} (e.g., "projects/foo-bar") * projects/{PROJECT_NUMBER} (e.g., "projects/12345678") * folders/{FOLDER_NUMBER} (e.g., "folders/1234567") * organizations/{ORGANIZATION_NUMBER} (e.g., "organizations/123456") */
@@ -628,16 +997,129 @@ export interface AggregateQueryStatsProjectsRequest {
   body?: AggregateQueryStatsRequest;
 }
 export const AggregateQueryStatsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(AggregateQueryStatsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+parent}:aggregateQueryStats","baseUrl":"https://databasecenter.googleapis.com/"})),
-).annotate({ identifier: "AggregateQueryStatsProjectsRequest" }) as any as S.Schema<AggregateQueryStatsProjectsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(AggregateQueryStatsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+parent}:aggregateQueryStats",
+      baseUrl: "https://databasecenter.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "AggregateQueryStatsProjectsRequest",
+}) as any as S.Schema<AggregateQueryStatsProjectsRequest>;
 
 export type ProductList = ReadonlyArray<Product>;
-export const ProductList = /*@__PURE__*/ S.Array(Product) as any as S.Schema<ProductList>;
+export const ProductList = /*@__PURE__*/ S.Array(
+  Product,
+) as any as S.Schema<ProductList>;
 
-export type SignalProductsFiltersSignalTypeEnum = "SIGNAL_TYPE_UNSPECIFIED" | "SIGNAL_TYPE_RESOURCE_FAILOVER_PROTECTED" | "SIGNAL_TYPE_GROUP_MULTIREGIONAL" | "SIGNAL_TYPE_NO_AUTOMATED_BACKUP_POLICY" | "SIGNAL_TYPE_SHORT_BACKUP_RETENTION" | "SIGNAL_TYPE_LAST_BACKUP_FAILED" | "SIGNAL_TYPE_LAST_BACKUP_OLD" | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_2_0" | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_1_3" | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_1_2" | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_1_1" | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_1_0" | "SIGNAL_TYPE_VIOLATES_CIS_CONTROLS_V8_0" | "SIGNAL_TYPE_VIOLATES_NIST_800_53" | "SIGNAL_TYPE_VIOLATES_NIST_800_53_R5" | "SIGNAL_TYPE_VIOLATES_NIST_CYBERSECURITY_FRAMEWORK_V1_0" | "SIGNAL_TYPE_VIOLATES_ISO_27001" | "SIGNAL_TYPE_VIOLATES_ISO_27001_V2022" | "SIGNAL_TYPE_VIOLATES_PCI_DSS_V3_2_1" | "SIGNAL_TYPE_VIOLATES_PCI_DSS_V4_0" | "SIGNAL_TYPE_VIOLATES_CLOUD_CONTROLS_MATRIX_V4" | "SIGNAL_TYPE_VIOLATES_HIPAA" | "SIGNAL_TYPE_VIOLATES_SOC2_V2017" | "SIGNAL_TYPE_LOGS_NOT_OPTIMIZED_FOR_TROUBLESHOOTING" | "SIGNAL_TYPE_QUERY_DURATIONS_NOT_LOGGED" | "SIGNAL_TYPE_VERBOSE_ERROR_LOGGING" | "SIGNAL_TYPE_QUERY_LOCK_WAITS_NOT_LOGGED" | "SIGNAL_TYPE_LOGGING_MOST_ERRORS" | "SIGNAL_TYPE_LOGGING_ONLY_CRITICAL_ERRORS" | "SIGNAL_TYPE_MINIMAL_ERROR_LOGGING" | "SIGNAL_TYPE_QUERY_STATS_LOGGED" | "SIGNAL_TYPE_EXCESSIVE_LOGGING_OF_CLIENT_HOSTNAME" | "SIGNAL_TYPE_EXCESSIVE_LOGGING_OF_PARSER_STATS" | "SIGNAL_TYPE_EXCESSIVE_LOGGING_OF_PLANNER_STATS" | "SIGNAL_TYPE_NOT_LOGGING_ONLY_DDL_STATEMENTS" | "SIGNAL_TYPE_LOGGING_QUERY_STATS" | "SIGNAL_TYPE_NOT_LOGGING_TEMPORARY_FILES" | "SIGNAL_TYPE_CONNECTION_MAX_NOT_CONFIGURED" | "SIGNAL_TYPE_USER_OPTIONS_CONFIGURED" | "SIGNAL_TYPE_EXPOSED_TO_PUBLIC_ACCESS" | "SIGNAL_TYPE_UNENCRYPTED_CONNECTIONS" | "SIGNAL_TYPE_NO_ROOT_PASSWORD" | "SIGNAL_TYPE_WEAK_ROOT_PASSWORD" | "SIGNAL_TYPE_ENCRYPTION_KEY_NOT_CUSTOMER_MANAGED" | "SIGNAL_TYPE_SERVER_AUTHENTICATION_NOT_REQUIRED" | "SIGNAL_TYPE_EXPOSED_TO_EXTERNAL_SCRIPTS" | "SIGNAL_TYPE_EXPOSED_TO_LOCAL_DATA_LOADS" | "SIGNAL_TYPE_CONNECTION_ATTEMPTS_NOT_LOGGED" | "SIGNAL_TYPE_DISCONNECTIONS_NOT_LOGGED" | "SIGNAL_TYPE_LOGGING_EXCESSIVE_STATEMENT_INFO" | "SIGNAL_TYPE_EXPOSED_TO_REMOTE_ACCESS" | "SIGNAL_TYPE_DATABASE_NAMES_EXPOSED" | "SIGNAL_TYPE_SENSITIVE_TRACE_INFO_NOT_MASKED" | "SIGNAL_TYPE_PUBLIC_IP_ENABLED" | "SIGNAL_TYPE_IDLE" | "SIGNAL_TYPE_OVERPROVISIONED" | "SIGNAL_TYPE_HIGH_NUMBER_OF_OPEN_TABLES" | "SIGNAL_TYPE_HIGH_NUMBER_OF_TABLES" | "SIGNAL_TYPE_HIGH_TRANSACTION_ID_UTILIZATION" | "SIGNAL_TYPE_UNDERPROVISIONED" | "SIGNAL_TYPE_OUT_OF_DISK" | "SIGNAL_TYPE_SERVER_CERTIFICATE_NEAR_EXPIRY" | "SIGNAL_TYPE_DATABASE_AUDITING_DISABLED" | "SIGNAL_TYPE_RESTRICT_AUTHORIZED_NETWORKS" | "SIGNAL_TYPE_VIOLATE_POLICY_RESTRICT_PUBLIC_IP" | "SIGNAL_TYPE_QUOTA_LIMIT" | "SIGNAL_TYPE_NO_PASSWORD_POLICY" | "SIGNAL_TYPE_CONNECTIONS_PERFORMANCE_IMPACT" | "SIGNAL_TYPE_TMP_TABLES_PERFORMANCE_IMPACT" | "SIGNAL_TYPE_TRANS_LOGS_PERFORMANCE_IMPACT" | "SIGNAL_TYPE_HIGH_JOINS_WITHOUT_INDEXES" | "SIGNAL_TYPE_SUPERUSER_WRITING_TO_USER_TABLES" | "SIGNAL_TYPE_USER_GRANTED_ALL_PERMISSIONS" | "SIGNAL_TYPE_DATA_EXPORT_TO_EXTERNAL_CLOUD_STORAGE_BUCKET" | "SIGNAL_TYPE_DATA_EXPORT_TO_PUBLIC_CLOUD_STORAGE_BUCKET" | "SIGNAL_TYPE_WEAK_PASSWORD_HASH_ALGORITHM" | "SIGNAL_TYPE_NO_USER_PASSWORD_POLICY" | "SIGNAL_TYPE_HOT_NODE" | "SIGNAL_TYPE_NO_DELETION_PROTECTION" | "SIGNAL_TYPE_NO_POINT_IN_TIME_RECOVERY" | "SIGNAL_TYPE_RESOURCE_SUSPENDED" | "SIGNAL_TYPE_EXPENSIVE_COMMANDS" | "SIGNAL_TYPE_NO_MAINTENANCE_POLICY_CONFIGURED" | "SIGNAL_TYPE_INEFFICIENT_QUERY" | "SIGNAL_TYPE_READ_INTENSIVE_WORKLOAD" | "SIGNAL_TYPE_MEMORY_LIMIT" | "SIGNAL_TYPE_MAX_SERVER_MEMORY" | "SIGNAL_TYPE_LARGE_ROWS" | "SIGNAL_TYPE_HIGH_WRITE_PRESSURE" | "SIGNAL_TYPE_HIGH_READ_PRESSURE" | "SIGNAL_TYPE_ENCRYPTION_ORG_POLICY_NOT_SATISFIED" | "SIGNAL_TYPE_LOCATION_ORG_POLICY_NOT_SATISFIED" | "SIGNAL_TYPE_OUTDATED_MINOR_VERSION" | "SIGNAL_TYPE_SCHEMA_NOT_OPTIMIZED" | "SIGNAL_TYPE_REPLICATION_LAG" | "SIGNAL_TYPE_OUTDATED_CLIENT" | "SIGNAL_TYPE_DATABOOST_DISABLED" | "SIGNAL_TYPE_RECOMMENDED_MAINTENANCE_POLICIES" | "SIGNAL_TYPE_EXTENDED_SUPPORT" | "SIGNAL_TYPE_VERSION_NEARING_END_OF_LIFE" | "SIGNAL_TYPE_HIGH_MAINTENANCE_DOWNTIME_RISK" | "SIGNAL_TYPE_LOW_CACHE_HIT_AND_MAINTENANCE_DOWNTIME" | "SIGNAL_TYPE_MISSING_ENHANCED_PROTECTION";
+export type SignalProductsFiltersSignalTypeEnum =
+  | "SIGNAL_TYPE_UNSPECIFIED"
+  | "SIGNAL_TYPE_RESOURCE_FAILOVER_PROTECTED"
+  | "SIGNAL_TYPE_GROUP_MULTIREGIONAL"
+  | "SIGNAL_TYPE_NO_AUTOMATED_BACKUP_POLICY"
+  | "SIGNAL_TYPE_SHORT_BACKUP_RETENTION"
+  | "SIGNAL_TYPE_LAST_BACKUP_FAILED"
+  | "SIGNAL_TYPE_LAST_BACKUP_OLD"
+  | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_2_0"
+  | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_1_3"
+  | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_1_2"
+  | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_1_1"
+  | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_1_0"
+  | "SIGNAL_TYPE_VIOLATES_CIS_CONTROLS_V8_0"
+  | "SIGNAL_TYPE_VIOLATES_NIST_800_53"
+  | "SIGNAL_TYPE_VIOLATES_NIST_800_53_R5"
+  | "SIGNAL_TYPE_VIOLATES_NIST_CYBERSECURITY_FRAMEWORK_V1_0"
+  | "SIGNAL_TYPE_VIOLATES_ISO_27001"
+  | "SIGNAL_TYPE_VIOLATES_ISO_27001_V2022"
+  | "SIGNAL_TYPE_VIOLATES_PCI_DSS_V3_2_1"
+  | "SIGNAL_TYPE_VIOLATES_PCI_DSS_V4_0"
+  | "SIGNAL_TYPE_VIOLATES_CLOUD_CONTROLS_MATRIX_V4"
+  | "SIGNAL_TYPE_VIOLATES_HIPAA"
+  | "SIGNAL_TYPE_VIOLATES_SOC2_V2017"
+  | "SIGNAL_TYPE_LOGS_NOT_OPTIMIZED_FOR_TROUBLESHOOTING"
+  | "SIGNAL_TYPE_QUERY_DURATIONS_NOT_LOGGED"
+  | "SIGNAL_TYPE_VERBOSE_ERROR_LOGGING"
+  | "SIGNAL_TYPE_QUERY_LOCK_WAITS_NOT_LOGGED"
+  | "SIGNAL_TYPE_LOGGING_MOST_ERRORS"
+  | "SIGNAL_TYPE_LOGGING_ONLY_CRITICAL_ERRORS"
+  | "SIGNAL_TYPE_MINIMAL_ERROR_LOGGING"
+  | "SIGNAL_TYPE_QUERY_STATS_LOGGED"
+  | "SIGNAL_TYPE_EXCESSIVE_LOGGING_OF_CLIENT_HOSTNAME"
+  | "SIGNAL_TYPE_EXCESSIVE_LOGGING_OF_PARSER_STATS"
+  | "SIGNAL_TYPE_EXCESSIVE_LOGGING_OF_PLANNER_STATS"
+  | "SIGNAL_TYPE_NOT_LOGGING_ONLY_DDL_STATEMENTS"
+  | "SIGNAL_TYPE_LOGGING_QUERY_STATS"
+  | "SIGNAL_TYPE_NOT_LOGGING_TEMPORARY_FILES"
+  | "SIGNAL_TYPE_CONNECTION_MAX_NOT_CONFIGURED"
+  | "SIGNAL_TYPE_USER_OPTIONS_CONFIGURED"
+  | "SIGNAL_TYPE_EXPOSED_TO_PUBLIC_ACCESS"
+  | "SIGNAL_TYPE_UNENCRYPTED_CONNECTIONS"
+  | "SIGNAL_TYPE_NO_ROOT_PASSWORD"
+  | "SIGNAL_TYPE_WEAK_ROOT_PASSWORD"
+  | "SIGNAL_TYPE_ENCRYPTION_KEY_NOT_CUSTOMER_MANAGED"
+  | "SIGNAL_TYPE_SERVER_AUTHENTICATION_NOT_REQUIRED"
+  | "SIGNAL_TYPE_EXPOSED_TO_EXTERNAL_SCRIPTS"
+  | "SIGNAL_TYPE_EXPOSED_TO_LOCAL_DATA_LOADS"
+  | "SIGNAL_TYPE_CONNECTION_ATTEMPTS_NOT_LOGGED"
+  | "SIGNAL_TYPE_DISCONNECTIONS_NOT_LOGGED"
+  | "SIGNAL_TYPE_LOGGING_EXCESSIVE_STATEMENT_INFO"
+  | "SIGNAL_TYPE_EXPOSED_TO_REMOTE_ACCESS"
+  | "SIGNAL_TYPE_DATABASE_NAMES_EXPOSED"
+  | "SIGNAL_TYPE_SENSITIVE_TRACE_INFO_NOT_MASKED"
+  | "SIGNAL_TYPE_PUBLIC_IP_ENABLED"
+  | "SIGNAL_TYPE_IDLE"
+  | "SIGNAL_TYPE_OVERPROVISIONED"
+  | "SIGNAL_TYPE_HIGH_NUMBER_OF_OPEN_TABLES"
+  | "SIGNAL_TYPE_HIGH_NUMBER_OF_TABLES"
+  | "SIGNAL_TYPE_HIGH_TRANSACTION_ID_UTILIZATION"
+  | "SIGNAL_TYPE_UNDERPROVISIONED"
+  | "SIGNAL_TYPE_OUT_OF_DISK"
+  | "SIGNAL_TYPE_SERVER_CERTIFICATE_NEAR_EXPIRY"
+  | "SIGNAL_TYPE_DATABASE_AUDITING_DISABLED"
+  | "SIGNAL_TYPE_RESTRICT_AUTHORIZED_NETWORKS"
+  | "SIGNAL_TYPE_VIOLATE_POLICY_RESTRICT_PUBLIC_IP"
+  | "SIGNAL_TYPE_QUOTA_LIMIT"
+  | "SIGNAL_TYPE_NO_PASSWORD_POLICY"
+  | "SIGNAL_TYPE_CONNECTIONS_PERFORMANCE_IMPACT"
+  | "SIGNAL_TYPE_TMP_TABLES_PERFORMANCE_IMPACT"
+  | "SIGNAL_TYPE_TRANS_LOGS_PERFORMANCE_IMPACT"
+  | "SIGNAL_TYPE_HIGH_JOINS_WITHOUT_INDEXES"
+  | "SIGNAL_TYPE_SUPERUSER_WRITING_TO_USER_TABLES"
+  | "SIGNAL_TYPE_USER_GRANTED_ALL_PERMISSIONS"
+  | "SIGNAL_TYPE_DATA_EXPORT_TO_EXTERNAL_CLOUD_STORAGE_BUCKET"
+  | "SIGNAL_TYPE_DATA_EXPORT_TO_PUBLIC_CLOUD_STORAGE_BUCKET"
+  | "SIGNAL_TYPE_WEAK_PASSWORD_HASH_ALGORITHM"
+  | "SIGNAL_TYPE_NO_USER_PASSWORD_POLICY"
+  | "SIGNAL_TYPE_HOT_NODE"
+  | "SIGNAL_TYPE_NO_DELETION_PROTECTION"
+  | "SIGNAL_TYPE_NO_POINT_IN_TIME_RECOVERY"
+  | "SIGNAL_TYPE_RESOURCE_SUSPENDED"
+  | "SIGNAL_TYPE_EXPENSIVE_COMMANDS"
+  | "SIGNAL_TYPE_NO_MAINTENANCE_POLICY_CONFIGURED"
+  | "SIGNAL_TYPE_INEFFICIENT_QUERY"
+  | "SIGNAL_TYPE_READ_INTENSIVE_WORKLOAD"
+  | "SIGNAL_TYPE_MEMORY_LIMIT"
+  | "SIGNAL_TYPE_MAX_SERVER_MEMORY"
+  | "SIGNAL_TYPE_LARGE_ROWS"
+  | "SIGNAL_TYPE_HIGH_WRITE_PRESSURE"
+  | "SIGNAL_TYPE_HIGH_READ_PRESSURE"
+  | "SIGNAL_TYPE_ENCRYPTION_ORG_POLICY_NOT_SATISFIED"
+  | "SIGNAL_TYPE_LOCATION_ORG_POLICY_NOT_SATISFIED"
+  | "SIGNAL_TYPE_OUTDATED_MINOR_VERSION"
+  | "SIGNAL_TYPE_SCHEMA_NOT_OPTIMIZED"
+  | "SIGNAL_TYPE_REPLICATION_LAG"
+  | "SIGNAL_TYPE_OUTDATED_CLIENT"
+  | "SIGNAL_TYPE_DATABOOST_DISABLED"
+  | "SIGNAL_TYPE_RECOMMENDED_MAINTENANCE_POLICIES"
+  | "SIGNAL_TYPE_EXTENDED_SUPPORT"
+  | "SIGNAL_TYPE_VERSION_NEARING_END_OF_LIFE"
+  | "SIGNAL_TYPE_HIGH_MAINTENANCE_DOWNTIME_RISK"
+  | "SIGNAL_TYPE_LOW_CACHE_HIT_AND_MAINTENANCE_DOWNTIME"
+  | "SIGNAL_TYPE_MISSING_ENHANCED_PROTECTION";
 export const SignalProductsFiltersSignalTypeEnum = /*@__PURE__*/ S.String;
 
 /** SignalProductsFilters represents a signal and list of supported products. */
@@ -648,19 +1130,131 @@ export interface SignalProductsFilters {
   signalType?: SignalProductsFiltersSignalTypeEnum | (string & {});
 }
 export const SignalProductsFilters = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "products": S.optional(ProductList),
-  "signalType": S.optional(SignalProductsFiltersSignalTypeEnum),
-}),
-).annotate({ identifier: "SignalProductsFilters" }) as any as S.Schema<SignalProductsFilters>;
+  S.Struct({
+    products: S.optional(ProductList),
+    signalType: S.optional(SignalProductsFiltersSignalTypeEnum),
+  }),
+).annotate({
+  identifier: "SignalProductsFilters",
+}) as any as S.Schema<SignalProductsFilters>;
 
 export type SignalProductsFiltersList = ReadonlyArray<SignalProductsFilters>;
-export const SignalProductsFiltersList = /*@__PURE__*/ S.Array(SignalProductsFilters) as any as S.Schema<SignalProductsFiltersList>;
+export const SignalProductsFiltersList = /*@__PURE__*/ S.Array(
+  SignalProductsFilters,
+) as any as S.Schema<SignalProductsFiltersList>;
 
-export type SignalFilterSignalTypeEnum = "SIGNAL_TYPE_UNSPECIFIED" | "SIGNAL_TYPE_RESOURCE_FAILOVER_PROTECTED" | "SIGNAL_TYPE_GROUP_MULTIREGIONAL" | "SIGNAL_TYPE_NO_AUTOMATED_BACKUP_POLICY" | "SIGNAL_TYPE_SHORT_BACKUP_RETENTION" | "SIGNAL_TYPE_LAST_BACKUP_FAILED" | "SIGNAL_TYPE_LAST_BACKUP_OLD" | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_2_0" | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_1_3" | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_1_2" | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_1_1" | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_1_0" | "SIGNAL_TYPE_VIOLATES_CIS_CONTROLS_V8_0" | "SIGNAL_TYPE_VIOLATES_NIST_800_53" | "SIGNAL_TYPE_VIOLATES_NIST_800_53_R5" | "SIGNAL_TYPE_VIOLATES_NIST_CYBERSECURITY_FRAMEWORK_V1_0" | "SIGNAL_TYPE_VIOLATES_ISO_27001" | "SIGNAL_TYPE_VIOLATES_ISO_27001_V2022" | "SIGNAL_TYPE_VIOLATES_PCI_DSS_V3_2_1" | "SIGNAL_TYPE_VIOLATES_PCI_DSS_V4_0" | "SIGNAL_TYPE_VIOLATES_CLOUD_CONTROLS_MATRIX_V4" | "SIGNAL_TYPE_VIOLATES_HIPAA" | "SIGNAL_TYPE_VIOLATES_SOC2_V2017" | "SIGNAL_TYPE_LOGS_NOT_OPTIMIZED_FOR_TROUBLESHOOTING" | "SIGNAL_TYPE_QUERY_DURATIONS_NOT_LOGGED" | "SIGNAL_TYPE_VERBOSE_ERROR_LOGGING" | "SIGNAL_TYPE_QUERY_LOCK_WAITS_NOT_LOGGED" | "SIGNAL_TYPE_LOGGING_MOST_ERRORS" | "SIGNAL_TYPE_LOGGING_ONLY_CRITICAL_ERRORS" | "SIGNAL_TYPE_MINIMAL_ERROR_LOGGING" | "SIGNAL_TYPE_QUERY_STATS_LOGGED" | "SIGNAL_TYPE_EXCESSIVE_LOGGING_OF_CLIENT_HOSTNAME" | "SIGNAL_TYPE_EXCESSIVE_LOGGING_OF_PARSER_STATS" | "SIGNAL_TYPE_EXCESSIVE_LOGGING_OF_PLANNER_STATS" | "SIGNAL_TYPE_NOT_LOGGING_ONLY_DDL_STATEMENTS" | "SIGNAL_TYPE_LOGGING_QUERY_STATS" | "SIGNAL_TYPE_NOT_LOGGING_TEMPORARY_FILES" | "SIGNAL_TYPE_CONNECTION_MAX_NOT_CONFIGURED" | "SIGNAL_TYPE_USER_OPTIONS_CONFIGURED" | "SIGNAL_TYPE_EXPOSED_TO_PUBLIC_ACCESS" | "SIGNAL_TYPE_UNENCRYPTED_CONNECTIONS" | "SIGNAL_TYPE_NO_ROOT_PASSWORD" | "SIGNAL_TYPE_WEAK_ROOT_PASSWORD" | "SIGNAL_TYPE_ENCRYPTION_KEY_NOT_CUSTOMER_MANAGED" | "SIGNAL_TYPE_SERVER_AUTHENTICATION_NOT_REQUIRED" | "SIGNAL_TYPE_EXPOSED_TO_EXTERNAL_SCRIPTS" | "SIGNAL_TYPE_EXPOSED_TO_LOCAL_DATA_LOADS" | "SIGNAL_TYPE_CONNECTION_ATTEMPTS_NOT_LOGGED" | "SIGNAL_TYPE_DISCONNECTIONS_NOT_LOGGED" | "SIGNAL_TYPE_LOGGING_EXCESSIVE_STATEMENT_INFO" | "SIGNAL_TYPE_EXPOSED_TO_REMOTE_ACCESS" | "SIGNAL_TYPE_DATABASE_NAMES_EXPOSED" | "SIGNAL_TYPE_SENSITIVE_TRACE_INFO_NOT_MASKED" | "SIGNAL_TYPE_PUBLIC_IP_ENABLED" | "SIGNAL_TYPE_IDLE" | "SIGNAL_TYPE_OVERPROVISIONED" | "SIGNAL_TYPE_HIGH_NUMBER_OF_OPEN_TABLES" | "SIGNAL_TYPE_HIGH_NUMBER_OF_TABLES" | "SIGNAL_TYPE_HIGH_TRANSACTION_ID_UTILIZATION" | "SIGNAL_TYPE_UNDERPROVISIONED" | "SIGNAL_TYPE_OUT_OF_DISK" | "SIGNAL_TYPE_SERVER_CERTIFICATE_NEAR_EXPIRY" | "SIGNAL_TYPE_DATABASE_AUDITING_DISABLED" | "SIGNAL_TYPE_RESTRICT_AUTHORIZED_NETWORKS" | "SIGNAL_TYPE_VIOLATE_POLICY_RESTRICT_PUBLIC_IP" | "SIGNAL_TYPE_QUOTA_LIMIT" | "SIGNAL_TYPE_NO_PASSWORD_POLICY" | "SIGNAL_TYPE_CONNECTIONS_PERFORMANCE_IMPACT" | "SIGNAL_TYPE_TMP_TABLES_PERFORMANCE_IMPACT" | "SIGNAL_TYPE_TRANS_LOGS_PERFORMANCE_IMPACT" | "SIGNAL_TYPE_HIGH_JOINS_WITHOUT_INDEXES" | "SIGNAL_TYPE_SUPERUSER_WRITING_TO_USER_TABLES" | "SIGNAL_TYPE_USER_GRANTED_ALL_PERMISSIONS" | "SIGNAL_TYPE_DATA_EXPORT_TO_EXTERNAL_CLOUD_STORAGE_BUCKET" | "SIGNAL_TYPE_DATA_EXPORT_TO_PUBLIC_CLOUD_STORAGE_BUCKET" | "SIGNAL_TYPE_WEAK_PASSWORD_HASH_ALGORITHM" | "SIGNAL_TYPE_NO_USER_PASSWORD_POLICY" | "SIGNAL_TYPE_HOT_NODE" | "SIGNAL_TYPE_NO_DELETION_PROTECTION" | "SIGNAL_TYPE_NO_POINT_IN_TIME_RECOVERY" | "SIGNAL_TYPE_RESOURCE_SUSPENDED" | "SIGNAL_TYPE_EXPENSIVE_COMMANDS" | "SIGNAL_TYPE_NO_MAINTENANCE_POLICY_CONFIGURED" | "SIGNAL_TYPE_INEFFICIENT_QUERY" | "SIGNAL_TYPE_READ_INTENSIVE_WORKLOAD" | "SIGNAL_TYPE_MEMORY_LIMIT" | "SIGNAL_TYPE_MAX_SERVER_MEMORY" | "SIGNAL_TYPE_LARGE_ROWS" | "SIGNAL_TYPE_HIGH_WRITE_PRESSURE" | "SIGNAL_TYPE_HIGH_READ_PRESSURE" | "SIGNAL_TYPE_ENCRYPTION_ORG_POLICY_NOT_SATISFIED" | "SIGNAL_TYPE_LOCATION_ORG_POLICY_NOT_SATISFIED" | "SIGNAL_TYPE_OUTDATED_MINOR_VERSION" | "SIGNAL_TYPE_SCHEMA_NOT_OPTIMIZED" | "SIGNAL_TYPE_REPLICATION_LAG" | "SIGNAL_TYPE_OUTDATED_CLIENT" | "SIGNAL_TYPE_DATABOOST_DISABLED" | "SIGNAL_TYPE_RECOMMENDED_MAINTENANCE_POLICIES" | "SIGNAL_TYPE_EXTENDED_SUPPORT" | "SIGNAL_TYPE_VERSION_NEARING_END_OF_LIFE" | "SIGNAL_TYPE_HIGH_MAINTENANCE_DOWNTIME_RISK" | "SIGNAL_TYPE_LOW_CACHE_HIT_AND_MAINTENANCE_DOWNTIME" | "SIGNAL_TYPE_MISSING_ENHANCED_PROTECTION";
+export type SignalFilterSignalTypeEnum =
+  | "SIGNAL_TYPE_UNSPECIFIED"
+  | "SIGNAL_TYPE_RESOURCE_FAILOVER_PROTECTED"
+  | "SIGNAL_TYPE_GROUP_MULTIREGIONAL"
+  | "SIGNAL_TYPE_NO_AUTOMATED_BACKUP_POLICY"
+  | "SIGNAL_TYPE_SHORT_BACKUP_RETENTION"
+  | "SIGNAL_TYPE_LAST_BACKUP_FAILED"
+  | "SIGNAL_TYPE_LAST_BACKUP_OLD"
+  | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_2_0"
+  | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_1_3"
+  | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_1_2"
+  | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_1_1"
+  | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_1_0"
+  | "SIGNAL_TYPE_VIOLATES_CIS_CONTROLS_V8_0"
+  | "SIGNAL_TYPE_VIOLATES_NIST_800_53"
+  | "SIGNAL_TYPE_VIOLATES_NIST_800_53_R5"
+  | "SIGNAL_TYPE_VIOLATES_NIST_CYBERSECURITY_FRAMEWORK_V1_0"
+  | "SIGNAL_TYPE_VIOLATES_ISO_27001"
+  | "SIGNAL_TYPE_VIOLATES_ISO_27001_V2022"
+  | "SIGNAL_TYPE_VIOLATES_PCI_DSS_V3_2_1"
+  | "SIGNAL_TYPE_VIOLATES_PCI_DSS_V4_0"
+  | "SIGNAL_TYPE_VIOLATES_CLOUD_CONTROLS_MATRIX_V4"
+  | "SIGNAL_TYPE_VIOLATES_HIPAA"
+  | "SIGNAL_TYPE_VIOLATES_SOC2_V2017"
+  | "SIGNAL_TYPE_LOGS_NOT_OPTIMIZED_FOR_TROUBLESHOOTING"
+  | "SIGNAL_TYPE_QUERY_DURATIONS_NOT_LOGGED"
+  | "SIGNAL_TYPE_VERBOSE_ERROR_LOGGING"
+  | "SIGNAL_TYPE_QUERY_LOCK_WAITS_NOT_LOGGED"
+  | "SIGNAL_TYPE_LOGGING_MOST_ERRORS"
+  | "SIGNAL_TYPE_LOGGING_ONLY_CRITICAL_ERRORS"
+  | "SIGNAL_TYPE_MINIMAL_ERROR_LOGGING"
+  | "SIGNAL_TYPE_QUERY_STATS_LOGGED"
+  | "SIGNAL_TYPE_EXCESSIVE_LOGGING_OF_CLIENT_HOSTNAME"
+  | "SIGNAL_TYPE_EXCESSIVE_LOGGING_OF_PARSER_STATS"
+  | "SIGNAL_TYPE_EXCESSIVE_LOGGING_OF_PLANNER_STATS"
+  | "SIGNAL_TYPE_NOT_LOGGING_ONLY_DDL_STATEMENTS"
+  | "SIGNAL_TYPE_LOGGING_QUERY_STATS"
+  | "SIGNAL_TYPE_NOT_LOGGING_TEMPORARY_FILES"
+  | "SIGNAL_TYPE_CONNECTION_MAX_NOT_CONFIGURED"
+  | "SIGNAL_TYPE_USER_OPTIONS_CONFIGURED"
+  | "SIGNAL_TYPE_EXPOSED_TO_PUBLIC_ACCESS"
+  | "SIGNAL_TYPE_UNENCRYPTED_CONNECTIONS"
+  | "SIGNAL_TYPE_NO_ROOT_PASSWORD"
+  | "SIGNAL_TYPE_WEAK_ROOT_PASSWORD"
+  | "SIGNAL_TYPE_ENCRYPTION_KEY_NOT_CUSTOMER_MANAGED"
+  | "SIGNAL_TYPE_SERVER_AUTHENTICATION_NOT_REQUIRED"
+  | "SIGNAL_TYPE_EXPOSED_TO_EXTERNAL_SCRIPTS"
+  | "SIGNAL_TYPE_EXPOSED_TO_LOCAL_DATA_LOADS"
+  | "SIGNAL_TYPE_CONNECTION_ATTEMPTS_NOT_LOGGED"
+  | "SIGNAL_TYPE_DISCONNECTIONS_NOT_LOGGED"
+  | "SIGNAL_TYPE_LOGGING_EXCESSIVE_STATEMENT_INFO"
+  | "SIGNAL_TYPE_EXPOSED_TO_REMOTE_ACCESS"
+  | "SIGNAL_TYPE_DATABASE_NAMES_EXPOSED"
+  | "SIGNAL_TYPE_SENSITIVE_TRACE_INFO_NOT_MASKED"
+  | "SIGNAL_TYPE_PUBLIC_IP_ENABLED"
+  | "SIGNAL_TYPE_IDLE"
+  | "SIGNAL_TYPE_OVERPROVISIONED"
+  | "SIGNAL_TYPE_HIGH_NUMBER_OF_OPEN_TABLES"
+  | "SIGNAL_TYPE_HIGH_NUMBER_OF_TABLES"
+  | "SIGNAL_TYPE_HIGH_TRANSACTION_ID_UTILIZATION"
+  | "SIGNAL_TYPE_UNDERPROVISIONED"
+  | "SIGNAL_TYPE_OUT_OF_DISK"
+  | "SIGNAL_TYPE_SERVER_CERTIFICATE_NEAR_EXPIRY"
+  | "SIGNAL_TYPE_DATABASE_AUDITING_DISABLED"
+  | "SIGNAL_TYPE_RESTRICT_AUTHORIZED_NETWORKS"
+  | "SIGNAL_TYPE_VIOLATE_POLICY_RESTRICT_PUBLIC_IP"
+  | "SIGNAL_TYPE_QUOTA_LIMIT"
+  | "SIGNAL_TYPE_NO_PASSWORD_POLICY"
+  | "SIGNAL_TYPE_CONNECTIONS_PERFORMANCE_IMPACT"
+  | "SIGNAL_TYPE_TMP_TABLES_PERFORMANCE_IMPACT"
+  | "SIGNAL_TYPE_TRANS_LOGS_PERFORMANCE_IMPACT"
+  | "SIGNAL_TYPE_HIGH_JOINS_WITHOUT_INDEXES"
+  | "SIGNAL_TYPE_SUPERUSER_WRITING_TO_USER_TABLES"
+  | "SIGNAL_TYPE_USER_GRANTED_ALL_PERMISSIONS"
+  | "SIGNAL_TYPE_DATA_EXPORT_TO_EXTERNAL_CLOUD_STORAGE_BUCKET"
+  | "SIGNAL_TYPE_DATA_EXPORT_TO_PUBLIC_CLOUD_STORAGE_BUCKET"
+  | "SIGNAL_TYPE_WEAK_PASSWORD_HASH_ALGORITHM"
+  | "SIGNAL_TYPE_NO_USER_PASSWORD_POLICY"
+  | "SIGNAL_TYPE_HOT_NODE"
+  | "SIGNAL_TYPE_NO_DELETION_PROTECTION"
+  | "SIGNAL_TYPE_NO_POINT_IN_TIME_RECOVERY"
+  | "SIGNAL_TYPE_RESOURCE_SUSPENDED"
+  | "SIGNAL_TYPE_EXPENSIVE_COMMANDS"
+  | "SIGNAL_TYPE_NO_MAINTENANCE_POLICY_CONFIGURED"
+  | "SIGNAL_TYPE_INEFFICIENT_QUERY"
+  | "SIGNAL_TYPE_READ_INTENSIVE_WORKLOAD"
+  | "SIGNAL_TYPE_MEMORY_LIMIT"
+  | "SIGNAL_TYPE_MAX_SERVER_MEMORY"
+  | "SIGNAL_TYPE_LARGE_ROWS"
+  | "SIGNAL_TYPE_HIGH_WRITE_PRESSURE"
+  | "SIGNAL_TYPE_HIGH_READ_PRESSURE"
+  | "SIGNAL_TYPE_ENCRYPTION_ORG_POLICY_NOT_SATISFIED"
+  | "SIGNAL_TYPE_LOCATION_ORG_POLICY_NOT_SATISFIED"
+  | "SIGNAL_TYPE_OUTDATED_MINOR_VERSION"
+  | "SIGNAL_TYPE_SCHEMA_NOT_OPTIMIZED"
+  | "SIGNAL_TYPE_REPLICATION_LAG"
+  | "SIGNAL_TYPE_OUTDATED_CLIENT"
+  | "SIGNAL_TYPE_DATABOOST_DISABLED"
+  | "SIGNAL_TYPE_RECOMMENDED_MAINTENANCE_POLICIES"
+  | "SIGNAL_TYPE_EXTENDED_SUPPORT"
+  | "SIGNAL_TYPE_VERSION_NEARING_END_OF_LIFE"
+  | "SIGNAL_TYPE_HIGH_MAINTENANCE_DOWNTIME_RISK"
+  | "SIGNAL_TYPE_LOW_CACHE_HIT_AND_MAINTENANCE_DOWNTIME"
+  | "SIGNAL_TYPE_MISSING_ENHANCED_PROTECTION";
 export const SignalFilterSignalTypeEnum = /*@__PURE__*/ S.String;
 
-export type SignalFilterSignalStatusEnum = "SIGNAL_STATUS_UNSPECIFIED" | "SIGNAL_STATUS_NOT_APPLICABLE" | "SIGNAL_STATUS_OK" | "SIGNAL_STATUS_ISSUE" | "SIGNAL_STATUS_NOT_ENABLED";
+export type SignalFilterSignalStatusEnum =
+  | "SIGNAL_STATUS_UNSPECIFIED"
+  | "SIGNAL_STATUS_NOT_APPLICABLE"
+  | "SIGNAL_STATUS_OK"
+  | "SIGNAL_STATUS_ISSUE"
+  | "SIGNAL_STATUS_NOT_ENABLED";
 export const SignalFilterSignalStatusEnum = /*@__PURE__*/ S.String;
 
 /** A filter for Signals. If signal_type is left unset, all signals should be returned. For example, the following filter returns all issues. signal_filter: { signal_status: SIGNAL_STATUS_ISSUE; } Another example, the following filter returns issues of the given type: signal_filter: { type: SIGNAL_TYPE_NO_PROMOTABLE_REPLICA signal_status: ISSUE } If signal_status is left unset or set to SIGNAL_STATE_UNSPECIFIED, an error should be returned. */
@@ -671,14 +1265,16 @@ export interface SignalFilter {
   signalStatus?: SignalFilterSignalStatusEnum | (string & {});
 }
 export const SignalFilter = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "signalType": S.optional(SignalFilterSignalTypeEnum),
-  "signalStatus": S.optional(SignalFilterSignalStatusEnum),
-}),
+  S.Struct({
+    signalType: S.optional(SignalFilterSignalTypeEnum),
+    signalStatus: S.optional(SignalFilterSignalStatusEnum),
+  }),
 ).annotate({ identifier: "SignalFilter" }) as any as S.Schema<SignalFilter>;
 
 export type SignalFilterList = ReadonlyArray<SignalFilter>;
-export const SignalFilterList = /*@__PURE__*/ S.Array(SignalFilter) as any as S.Schema<SignalFilterList>;
+export const SignalFilterList = /*@__PURE__*/ S.Array(
+  SignalFilter,
+) as any as S.Schema<SignalFilterList>;
 
 /** QueryDatabaseResourceGroupsRequest is the request to get a list of database groups. */
 export interface QueryDatabaseResourceGroupsRequest {
@@ -700,27 +1296,38 @@ export interface QueryDatabaseResourceGroupsRequest {
   pageToken?: string;
 }
 export const QueryDatabaseResourceGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number),
-  "signalProductsFilters": S.optional(SignalProductsFiltersList),
-  "signalTypeGroups": S.optional(SignalTypeGroupList),
-  "filter": S.optional(S.String),
-  "orderBy": S.optional(S.String),
-  "parent": S.optional(S.String),
-  "signalFilters": S.optional(SignalFilterList),
-  "pageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "QueryDatabaseResourceGroupsRequest" }) as any as S.Schema<QueryDatabaseResourceGroupsRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number),
+    signalProductsFilters: S.optional(SignalProductsFiltersList),
+    signalTypeGroups: S.optional(SignalTypeGroupList),
+    filter: S.optional(S.String),
+    orderBy: S.optional(S.String),
+    parent: S.optional(S.String),
+    signalFilters: S.optional(SignalFilterList),
+    pageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "QueryDatabaseResourceGroupsRequest",
+}) as any as S.Schema<QueryDatabaseResourceGroupsRequest>;
 
 export interface QueryDatabaseResourceGroupsV1betaRequest {
   /** Request body */
   body?: QueryDatabaseResourceGroupsRequest;
 }
-export const QueryDatabaseResourceGroupsV1betaRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(QueryDatabaseResourceGroupsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta:queryDatabaseResourceGroups","baseUrl":"https://databasecenter.googleapis.com/"})),
-).annotate({ identifier: "QueryDatabaseResourceGroupsV1betaRequest" }) as any as S.Schema<QueryDatabaseResourceGroupsV1betaRequest>;
+export const QueryDatabaseResourceGroupsV1betaRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      body: S.optional(QueryDatabaseResourceGroupsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta:queryDatabaseResourceGroups",
+        baseUrl: "https://databasecenter.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "QueryDatabaseResourceGroupsV1betaRequest",
+}) as any as S.Schema<QueryDatabaseResourceGroupsV1betaRequest>;
 
 /** Count of issues for a group of signals. */
 export interface IssueCount {
@@ -730,16 +1337,25 @@ export interface IssueCount {
   issueCount?: number;
 }
 export const IssueCount = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "displayName": S.optional(S.String),
-  "issueCount": S.optional(S.Number),
-}),
+  S.Struct({
+    displayName: S.optional(S.String),
+    issueCount: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "IssueCount" }) as any as S.Schema<IssueCount>;
 
 export type IssueCountList = ReadonlyArray<IssueCount>;
-export const IssueCountList = /*@__PURE__*/ S.Array(IssueCount) as any as S.Schema<IssueCountList>;
+export const IssueCountList = /*@__PURE__*/ S.Array(
+  IssueCount,
+) as any as S.Schema<IssueCountList>;
 
-export type LineageProcessTypeEnum = "PROCESS_TYPE_UNSPECIFIED" | "COMPOSER" | "DATASTREAM" | "DATAFLOW" | "BIGQUERY" | "DATA_FUSION" | "DATAPROC";
+export type LineageProcessTypeEnum =
+  | "PROCESS_TYPE_UNSPECIFIED"
+  | "COMPOSER"
+  | "DATASTREAM"
+  | "DATAFLOW"
+  | "BIGQUERY"
+  | "DATA_FUSION"
+  | "DATAPROC";
 export const LineageProcessTypeEnum = /*@__PURE__*/ S.String;
 
 /** lineage information of the affiliated resources This captures source, target and process which created the lineage. */
@@ -754,16 +1370,18 @@ export interface Lineage {
   processFqn?: string;
 }
 export const Lineage = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "processType": S.optional(LineageProcessTypeEnum),
-  "sourceFqn": S.optional(S.String),
-  "targetFqn": S.optional(S.String),
-  "processFqn": S.optional(S.String),
-}),
+  S.Struct({
+    processType: S.optional(LineageProcessTypeEnum),
+    sourceFqn: S.optional(S.String),
+    targetFqn: S.optional(S.String),
+    processFqn: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Lineage" }) as any as S.Schema<Lineage>;
 
 export type LineageList = ReadonlyArray<Lineage>;
-export const LineageList = /*@__PURE__*/ S.Array(Lineage) as any as S.Schema<LineageList>;
+export const LineageList = /*@__PURE__*/ S.Array(
+  Lineage,
+) as any as S.Schema<LineageList>;
 
 /** Affiliation information of a resource */
 export interface Affiliation {
@@ -775,15 +1393,17 @@ export interface Affiliation {
   lineages?: LineageList;
 }
 export const Affiliation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fullResourceName": S.optional(S.String),
-  "resourceId": S.optional(S.String),
-  "lineages": S.optional(LineageList),
-}),
+  S.Struct({
+    fullResourceName: S.optional(S.String),
+    resourceId: S.optional(S.String),
+    lineages: S.optional(LineageList),
+  }),
 ).annotate({ identifier: "Affiliation" }) as any as S.Schema<Affiliation>;
 
 export type AffiliationList = ReadonlyArray<Affiliation>;
-export const AffiliationList = /*@__PURE__*/ S.Array(Affiliation) as any as S.Schema<AffiliationList>;
+export const AffiliationList = /*@__PURE__*/ S.Array(
+  Affiliation,
+) as any as S.Schema<AffiliationList>;
 
 /** BackupDRConfig to capture the backup and disaster recovery details of database resource. */
 export interface BackupDRConfig {
@@ -791,9 +1411,9 @@ export interface BackupDRConfig {
   backupdrManaged?: boolean;
 }
 export const BackupDRConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "backupdrManaged": S.optional(S.Boolean),
-}),
+  S.Struct({
+    backupdrManaged: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "BackupDRConfig" }) as any as S.Schema<BackupDRConfig>;
 
 /** Upcoming maintenance window for the database resource. */
@@ -804,16 +1424,31 @@ export interface UpcomingMaintenance {
   endTime?: string;
 }
 export const UpcomingMaintenance = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "startTime": S.optional(S.String),
-  "endTime": S.optional(S.String),
-}),
-).annotate({ identifier: "UpcomingMaintenance" }) as any as S.Schema<UpcomingMaintenance>;
+  S.Struct({
+    startTime: S.optional(S.String),
+    endTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpcomingMaintenance",
+}) as any as S.Schema<UpcomingMaintenance>;
 
-export type MaintenanceInfoStateEnum = "MAINTENANCE_STATE_UNSPECIFIED" | "MAINTENANCE_STATE_SCHEDULED" | "MAINTENANCE_STATE_IN_PROGRESS" | "MAINTENANCE_STATE_COMPLETED" | "MAINTENANCE_STATE_FAILED";
+export type MaintenanceInfoStateEnum =
+  | "MAINTENANCE_STATE_UNSPECIFIED"
+  | "MAINTENANCE_STATE_SCHEDULED"
+  | "MAINTENANCE_STATE_IN_PROGRESS"
+  | "MAINTENANCE_STATE_COMPLETED"
+  | "MAINTENANCE_STATE_FAILED";
 export const MaintenanceInfoStateEnum = /*@__PURE__*/ S.String;
 
-export type ResourceMaintenanceScheduleDayEnum = "DAY_OF_WEEK_UNSPECIFIED" | "MONDAY" | "TUESDAY" | "WEDNESDAY" | "THURSDAY" | "FRIDAY" | "SATURDAY" | "SUNDAY";
+export type ResourceMaintenanceScheduleDayEnum =
+  | "DAY_OF_WEEK_UNSPECIFIED"
+  | "MONDAY"
+  | "TUESDAY"
+  | "WEDNESDAY"
+  | "THURSDAY"
+  | "FRIDAY"
+  | "SATURDAY"
+  | "SUNDAY";
 export const ResourceMaintenanceScheduleDayEnum = /*@__PURE__*/ S.String;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
@@ -828,15 +1463,20 @@ export interface TimeOfDay {
   nanos?: number;
 }
 export const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "minutes": S.optional(S.Number),
-  "seconds": S.optional(S.Number),
-  "hours": S.optional(S.Number),
-  "nanos": S.optional(S.Number),
-}),
+  S.Struct({
+    minutes: S.optional(S.Number),
+    seconds: S.optional(S.Number),
+    hours: S.optional(S.Number),
+    nanos: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "TimeOfDay" }) as any as S.Schema<TimeOfDay>;
 
-export type ResourceMaintenanceSchedulePhaseEnum = "PHASE_UNSPECIFIED" | "PHASE_WEEK1" | "PHASE_WEEK2" | "PHASE_WEEK5" | "PHASE_ANY";
+export type ResourceMaintenanceSchedulePhaseEnum =
+  | "PHASE_UNSPECIFIED"
+  | "PHASE_WEEK1"
+  | "PHASE_WEEK2"
+  | "PHASE_WEEK5"
+  | "PHASE_ANY";
 export const ResourceMaintenanceSchedulePhaseEnum = /*@__PURE__*/ S.String;
 
 /** Maintenance window for the database resource. It specifies preferred time and day of the week and phase in some cases, when the maintenance can start. */
@@ -849,18 +1489,28 @@ export interface ResourceMaintenanceSchedule {
   phase?: ResourceMaintenanceSchedulePhaseEnum;
 }
 export const ResourceMaintenanceSchedule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "day": S.optional(ResourceMaintenanceScheduleDayEnum),
-  "startTime": S.optional(TimeOfDay),
-  "phase": S.optional(ResourceMaintenanceSchedulePhaseEnum),
-}),
-).annotate({ identifier: "ResourceMaintenanceSchedule" }) as any as S.Schema<ResourceMaintenanceSchedule>;
+  S.Struct({
+    day: S.optional(ResourceMaintenanceScheduleDayEnum),
+    startTime: S.optional(TimeOfDay),
+    phase: S.optional(ResourceMaintenanceSchedulePhaseEnum),
+  }),
+).annotate({
+  identifier: "ResourceMaintenanceSchedule",
+}) as any as S.Schema<ResourceMaintenanceSchedule>;
 
-export type MaintenanceInfoPossibleFailureReasonsItemEnum = "POSSIBLE_FAILURE_REASON_UNSPECIFIED" | "POSSIBLE_FAILURE_REASON_DENY_POLICY_CONFLICT" | "POSSIBLE_FAILURE_REASON_INSTANCE_IN_STOPPED_STATE";
-export const MaintenanceInfoPossibleFailureReasonsItemEnum = /*@__PURE__*/ S.String;
+export type MaintenanceInfoPossibleFailureReasonsItemEnum =
+  | "POSSIBLE_FAILURE_REASON_UNSPECIFIED"
+  | "POSSIBLE_FAILURE_REASON_DENY_POLICY_CONFLICT"
+  | "POSSIBLE_FAILURE_REASON_INSTANCE_IN_STOPPED_STATE";
+export const MaintenanceInfoPossibleFailureReasonsItemEnum =
+  /*@__PURE__*/ S.String;
 
-export type MaintenanceInfoPossibleFailureReasonsItemEnumList = ReadonlyArray<MaintenanceInfoPossibleFailureReasonsItemEnum>;
-export const MaintenanceInfoPossibleFailureReasonsItemEnumList = /*@__PURE__*/ S.Array(MaintenanceInfoPossibleFailureReasonsItemEnum) as any as S.Schema<MaintenanceInfoPossibleFailureReasonsItemEnumList>;
+export type MaintenanceInfoPossibleFailureReasonsItemEnumList =
+  ReadonlyArray<MaintenanceInfoPossibleFailureReasonsItemEnum>;
+export const MaintenanceInfoPossibleFailureReasonsItemEnumList =
+  /*@__PURE__*/ S.Array(
+    MaintenanceInfoPossibleFailureReasonsItemEnum,
+  ) as any as S.Schema<MaintenanceInfoPossibleFailureReasonsItemEnumList>;
 
 /** Deny maintenance period for the database resource. It specifies the time range during which the maintenance cannot start. This is configured by the customer. */
 export interface ResourceMaintenanceDenySchedule {
@@ -872,15 +1522,20 @@ export interface ResourceMaintenanceDenySchedule {
   startDate?: Databasecenter_Date;
 }
 export const ResourceMaintenanceDenySchedule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "endDate": S.optional(Databasecenter_Date),
-  "time": S.optional(TimeOfDay),
-  "startDate": S.optional(Databasecenter_Date),
-}),
-).annotate({ identifier: "ResourceMaintenanceDenySchedule" }) as any as S.Schema<ResourceMaintenanceDenySchedule>;
+  S.Struct({
+    endDate: S.optional(Databasecenter_Date),
+    time: S.optional(TimeOfDay),
+    startDate: S.optional(Databasecenter_Date),
+  }),
+).annotate({
+  identifier: "ResourceMaintenanceDenySchedule",
+}) as any as S.Schema<ResourceMaintenanceDenySchedule>;
 
-export type ResourceMaintenanceDenyScheduleList = ReadonlyArray<ResourceMaintenanceDenySchedule>;
-export const ResourceMaintenanceDenyScheduleList = /*@__PURE__*/ S.Array(ResourceMaintenanceDenySchedule) as any as S.Schema<ResourceMaintenanceDenyScheduleList>;
+export type ResourceMaintenanceDenyScheduleList =
+  ReadonlyArray<ResourceMaintenanceDenySchedule>;
+export const ResourceMaintenanceDenyScheduleList = /*@__PURE__*/ S.Array(
+  ResourceMaintenanceDenySchedule,
+) as any as S.Schema<ResourceMaintenanceDenyScheduleList>;
 
 /** MaintenanceInfo to capture the maintenance details of database resource. */
 export interface MaintenanceInfo {
@@ -902,17 +1557,21 @@ export interface MaintenanceInfo {
   denyMaintenanceSchedules?: ResourceMaintenanceDenyScheduleList;
 }
 export const MaintenanceInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "maintenanceVersion": S.optional(S.String),
-  "currentVersionReleaseDate": S.optional(Databasecenter_Date),
-  "upcomingMaintenance": S.optional(UpcomingMaintenance),
-  "state": S.optional(MaintenanceInfoStateEnum),
-  "maintenanceSchedule": S.optional(ResourceMaintenanceSchedule),
-  "possibleFailureReasons": S.optional(MaintenanceInfoPossibleFailureReasonsItemEnumList),
-  "previousMaintenanceVersion": S.optional(S.String),
-  "denyMaintenanceSchedules": S.optional(ResourceMaintenanceDenyScheduleList),
-}),
-).annotate({ identifier: "MaintenanceInfo" }) as any as S.Schema<MaintenanceInfo>;
+  S.Struct({
+    maintenanceVersion: S.optional(S.String),
+    currentVersionReleaseDate: S.optional(Databasecenter_Date),
+    upcomingMaintenance: S.optional(UpcomingMaintenance),
+    state: S.optional(MaintenanceInfoStateEnum),
+    maintenanceSchedule: S.optional(ResourceMaintenanceSchedule),
+    possibleFailureReasons: S.optional(
+      MaintenanceInfoPossibleFailureReasonsItemEnumList,
+    ),
+    previousMaintenanceVersion: S.optional(S.String),
+    denyMaintenanceSchedules: S.optional(ResourceMaintenanceDenyScheduleList),
+  }),
+).annotate({
+  identifier: "MaintenanceInfo",
+}) as any as S.Schema<MaintenanceInfo>;
 
 /** Label is a key value pair applied to a resource. */
 export interface Label {
@@ -924,15 +1583,17 @@ export interface Label {
   source?: string;
 }
 export const Label = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "value": S.optional(S.String),
-  "key": S.optional(S.String),
-  "source": S.optional(S.String),
-}),
+  S.Struct({
+    value: S.optional(S.String),
+    key: S.optional(S.String),
+    source: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Label" }) as any as S.Schema<Label>;
 
 export type LabelList = ReadonlyArray<Label>;
-export const LabelList = /*@__PURE__*/ S.Array(Label) as any as S.Schema<LabelList>;
+export const LabelList = /*@__PURE__*/ S.Array(
+  Label,
+) as any as S.Schema<LabelList>;
 
 /** TypedValue represents the value of the metric based on data type. */
 export interface TypedValue {
@@ -942,10 +1603,10 @@ export interface TypedValue {
   int64Value?: string;
 }
 export const TypedValue = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "doubleValue": S.optional(S.Number),
-  "int64Value": S.optional(S.String),
-}),
+  S.Struct({
+    doubleValue: S.optional(S.Number),
+    int64Value: S.optional(S.String),
+  }),
 ).annotate({ identifier: "TypedValue" }) as any as S.Schema<TypedValue>;
 
 /** MetricData represents the metric data for a database resource. */
@@ -956,10 +1617,10 @@ export interface MetricData {
   observationTime?: string;
 }
 export const MetricData = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "value": S.optional(TypedValue),
-  "observationTime": S.optional(S.String),
-}),
+  S.Struct({
+    value: S.optional(TypedValue),
+    observationTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "MetricData" }) as any as S.Schema<MetricData>;
 
 /** Metrics represents the metrics for a database resource. */
@@ -984,30 +1645,147 @@ export interface Metrics {
   currentStorageUsedBytes?: MetricData;
 }
 export const Metrics = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "peakNumberConnections": S.optional(MetricData),
-  "processingUnitCount": S.optional(MetricData),
-  "p99CpuUtilization": S.optional(MetricData),
-  "p95CpuUtilization": S.optional(MetricData),
-  "nodeCount": S.optional(MetricData),
-  "currentMemoryUsedBytes": S.optional(MetricData),
-  "peakStorageUtilization": S.optional(MetricData),
-  "peakMemoryUtilization": S.optional(MetricData),
-  "currentStorageUsedBytes": S.optional(MetricData),
-}),
+  S.Struct({
+    peakNumberConnections: S.optional(MetricData),
+    processingUnitCount: S.optional(MetricData),
+    p99CpuUtilization: S.optional(MetricData),
+    p95CpuUtilization: S.optional(MetricData),
+    nodeCount: S.optional(MetricData),
+    currentMemoryUsedBytes: S.optional(MetricData),
+    peakStorageUtilization: S.optional(MetricData),
+    peakMemoryUtilization: S.optional(MetricData),
+    currentStorageUsedBytes: S.optional(MetricData),
+  }),
 ).annotate({ identifier: "Metrics" }) as any as S.Schema<Metrics>;
 
-export type DatabaseResourceResourceCategoryEnum = "RESOURCE_CATEGORY_UNSPECIFIED" | "INSTANCE" | "CLUSTER" | "DATABASE" | "DATASET" | "RESERVATION";
+export type DatabaseResourceResourceCategoryEnum =
+  | "RESOURCE_CATEGORY_UNSPECIFIED"
+  | "INSTANCE"
+  | "CLUSTER"
+  | "DATABASE"
+  | "DATASET"
+  | "RESERVATION";
 export const DatabaseResourceResourceCategoryEnum = /*@__PURE__*/ S.String;
 
-export type SignalSignalTypeEnum = "SIGNAL_TYPE_UNSPECIFIED" | "SIGNAL_TYPE_RESOURCE_FAILOVER_PROTECTED" | "SIGNAL_TYPE_GROUP_MULTIREGIONAL" | "SIGNAL_TYPE_NO_AUTOMATED_BACKUP_POLICY" | "SIGNAL_TYPE_SHORT_BACKUP_RETENTION" | "SIGNAL_TYPE_LAST_BACKUP_FAILED" | "SIGNAL_TYPE_LAST_BACKUP_OLD" | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_2_0" | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_1_3" | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_1_2" | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_1_1" | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_1_0" | "SIGNAL_TYPE_VIOLATES_CIS_CONTROLS_V8_0" | "SIGNAL_TYPE_VIOLATES_NIST_800_53" | "SIGNAL_TYPE_VIOLATES_NIST_800_53_R5" | "SIGNAL_TYPE_VIOLATES_NIST_CYBERSECURITY_FRAMEWORK_V1_0" | "SIGNAL_TYPE_VIOLATES_ISO_27001" | "SIGNAL_TYPE_VIOLATES_ISO_27001_V2022" | "SIGNAL_TYPE_VIOLATES_PCI_DSS_V3_2_1" | "SIGNAL_TYPE_VIOLATES_PCI_DSS_V4_0" | "SIGNAL_TYPE_VIOLATES_CLOUD_CONTROLS_MATRIX_V4" | "SIGNAL_TYPE_VIOLATES_HIPAA" | "SIGNAL_TYPE_VIOLATES_SOC2_V2017" | "SIGNAL_TYPE_LOGS_NOT_OPTIMIZED_FOR_TROUBLESHOOTING" | "SIGNAL_TYPE_QUERY_DURATIONS_NOT_LOGGED" | "SIGNAL_TYPE_VERBOSE_ERROR_LOGGING" | "SIGNAL_TYPE_QUERY_LOCK_WAITS_NOT_LOGGED" | "SIGNAL_TYPE_LOGGING_MOST_ERRORS" | "SIGNAL_TYPE_LOGGING_ONLY_CRITICAL_ERRORS" | "SIGNAL_TYPE_MINIMAL_ERROR_LOGGING" | "SIGNAL_TYPE_QUERY_STATS_LOGGED" | "SIGNAL_TYPE_EXCESSIVE_LOGGING_OF_CLIENT_HOSTNAME" | "SIGNAL_TYPE_EXCESSIVE_LOGGING_OF_PARSER_STATS" | "SIGNAL_TYPE_EXCESSIVE_LOGGING_OF_PLANNER_STATS" | "SIGNAL_TYPE_NOT_LOGGING_ONLY_DDL_STATEMENTS" | "SIGNAL_TYPE_LOGGING_QUERY_STATS" | "SIGNAL_TYPE_NOT_LOGGING_TEMPORARY_FILES" | "SIGNAL_TYPE_CONNECTION_MAX_NOT_CONFIGURED" | "SIGNAL_TYPE_USER_OPTIONS_CONFIGURED" | "SIGNAL_TYPE_EXPOSED_TO_PUBLIC_ACCESS" | "SIGNAL_TYPE_UNENCRYPTED_CONNECTIONS" | "SIGNAL_TYPE_NO_ROOT_PASSWORD" | "SIGNAL_TYPE_WEAK_ROOT_PASSWORD" | "SIGNAL_TYPE_ENCRYPTION_KEY_NOT_CUSTOMER_MANAGED" | "SIGNAL_TYPE_SERVER_AUTHENTICATION_NOT_REQUIRED" | "SIGNAL_TYPE_EXPOSED_TO_EXTERNAL_SCRIPTS" | "SIGNAL_TYPE_EXPOSED_TO_LOCAL_DATA_LOADS" | "SIGNAL_TYPE_CONNECTION_ATTEMPTS_NOT_LOGGED" | "SIGNAL_TYPE_DISCONNECTIONS_NOT_LOGGED" | "SIGNAL_TYPE_LOGGING_EXCESSIVE_STATEMENT_INFO" | "SIGNAL_TYPE_EXPOSED_TO_REMOTE_ACCESS" | "SIGNAL_TYPE_DATABASE_NAMES_EXPOSED" | "SIGNAL_TYPE_SENSITIVE_TRACE_INFO_NOT_MASKED" | "SIGNAL_TYPE_PUBLIC_IP_ENABLED" | "SIGNAL_TYPE_IDLE" | "SIGNAL_TYPE_OVERPROVISIONED" | "SIGNAL_TYPE_HIGH_NUMBER_OF_OPEN_TABLES" | "SIGNAL_TYPE_HIGH_NUMBER_OF_TABLES" | "SIGNAL_TYPE_HIGH_TRANSACTION_ID_UTILIZATION" | "SIGNAL_TYPE_UNDERPROVISIONED" | "SIGNAL_TYPE_OUT_OF_DISK" | "SIGNAL_TYPE_SERVER_CERTIFICATE_NEAR_EXPIRY" | "SIGNAL_TYPE_DATABASE_AUDITING_DISABLED" | "SIGNAL_TYPE_RESTRICT_AUTHORIZED_NETWORKS" | "SIGNAL_TYPE_VIOLATE_POLICY_RESTRICT_PUBLIC_IP" | "SIGNAL_TYPE_QUOTA_LIMIT" | "SIGNAL_TYPE_NO_PASSWORD_POLICY" | "SIGNAL_TYPE_CONNECTIONS_PERFORMANCE_IMPACT" | "SIGNAL_TYPE_TMP_TABLES_PERFORMANCE_IMPACT" | "SIGNAL_TYPE_TRANS_LOGS_PERFORMANCE_IMPACT" | "SIGNAL_TYPE_HIGH_JOINS_WITHOUT_INDEXES" | "SIGNAL_TYPE_SUPERUSER_WRITING_TO_USER_TABLES" | "SIGNAL_TYPE_USER_GRANTED_ALL_PERMISSIONS" | "SIGNAL_TYPE_DATA_EXPORT_TO_EXTERNAL_CLOUD_STORAGE_BUCKET" | "SIGNAL_TYPE_DATA_EXPORT_TO_PUBLIC_CLOUD_STORAGE_BUCKET" | "SIGNAL_TYPE_WEAK_PASSWORD_HASH_ALGORITHM" | "SIGNAL_TYPE_NO_USER_PASSWORD_POLICY" | "SIGNAL_TYPE_HOT_NODE" | "SIGNAL_TYPE_NO_DELETION_PROTECTION" | "SIGNAL_TYPE_NO_POINT_IN_TIME_RECOVERY" | "SIGNAL_TYPE_RESOURCE_SUSPENDED" | "SIGNAL_TYPE_EXPENSIVE_COMMANDS" | "SIGNAL_TYPE_NO_MAINTENANCE_POLICY_CONFIGURED" | "SIGNAL_TYPE_INEFFICIENT_QUERY" | "SIGNAL_TYPE_READ_INTENSIVE_WORKLOAD" | "SIGNAL_TYPE_MEMORY_LIMIT" | "SIGNAL_TYPE_MAX_SERVER_MEMORY" | "SIGNAL_TYPE_LARGE_ROWS" | "SIGNAL_TYPE_HIGH_WRITE_PRESSURE" | "SIGNAL_TYPE_HIGH_READ_PRESSURE" | "SIGNAL_TYPE_ENCRYPTION_ORG_POLICY_NOT_SATISFIED" | "SIGNAL_TYPE_LOCATION_ORG_POLICY_NOT_SATISFIED" | "SIGNAL_TYPE_OUTDATED_MINOR_VERSION" | "SIGNAL_TYPE_SCHEMA_NOT_OPTIMIZED" | "SIGNAL_TYPE_REPLICATION_LAG" | "SIGNAL_TYPE_OUTDATED_CLIENT" | "SIGNAL_TYPE_DATABOOST_DISABLED" | "SIGNAL_TYPE_RECOMMENDED_MAINTENANCE_POLICIES" | "SIGNAL_TYPE_EXTENDED_SUPPORT" | "SIGNAL_TYPE_VERSION_NEARING_END_OF_LIFE" | "SIGNAL_TYPE_HIGH_MAINTENANCE_DOWNTIME_RISK" | "SIGNAL_TYPE_LOW_CACHE_HIT_AND_MAINTENANCE_DOWNTIME" | "SIGNAL_TYPE_MISSING_ENHANCED_PROTECTION";
+export type SignalSignalTypeEnum =
+  | "SIGNAL_TYPE_UNSPECIFIED"
+  | "SIGNAL_TYPE_RESOURCE_FAILOVER_PROTECTED"
+  | "SIGNAL_TYPE_GROUP_MULTIREGIONAL"
+  | "SIGNAL_TYPE_NO_AUTOMATED_BACKUP_POLICY"
+  | "SIGNAL_TYPE_SHORT_BACKUP_RETENTION"
+  | "SIGNAL_TYPE_LAST_BACKUP_FAILED"
+  | "SIGNAL_TYPE_LAST_BACKUP_OLD"
+  | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_2_0"
+  | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_1_3"
+  | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_1_2"
+  | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_1_1"
+  | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_1_0"
+  | "SIGNAL_TYPE_VIOLATES_CIS_CONTROLS_V8_0"
+  | "SIGNAL_TYPE_VIOLATES_NIST_800_53"
+  | "SIGNAL_TYPE_VIOLATES_NIST_800_53_R5"
+  | "SIGNAL_TYPE_VIOLATES_NIST_CYBERSECURITY_FRAMEWORK_V1_0"
+  | "SIGNAL_TYPE_VIOLATES_ISO_27001"
+  | "SIGNAL_TYPE_VIOLATES_ISO_27001_V2022"
+  | "SIGNAL_TYPE_VIOLATES_PCI_DSS_V3_2_1"
+  | "SIGNAL_TYPE_VIOLATES_PCI_DSS_V4_0"
+  | "SIGNAL_TYPE_VIOLATES_CLOUD_CONTROLS_MATRIX_V4"
+  | "SIGNAL_TYPE_VIOLATES_HIPAA"
+  | "SIGNAL_TYPE_VIOLATES_SOC2_V2017"
+  | "SIGNAL_TYPE_LOGS_NOT_OPTIMIZED_FOR_TROUBLESHOOTING"
+  | "SIGNAL_TYPE_QUERY_DURATIONS_NOT_LOGGED"
+  | "SIGNAL_TYPE_VERBOSE_ERROR_LOGGING"
+  | "SIGNAL_TYPE_QUERY_LOCK_WAITS_NOT_LOGGED"
+  | "SIGNAL_TYPE_LOGGING_MOST_ERRORS"
+  | "SIGNAL_TYPE_LOGGING_ONLY_CRITICAL_ERRORS"
+  | "SIGNAL_TYPE_MINIMAL_ERROR_LOGGING"
+  | "SIGNAL_TYPE_QUERY_STATS_LOGGED"
+  | "SIGNAL_TYPE_EXCESSIVE_LOGGING_OF_CLIENT_HOSTNAME"
+  | "SIGNAL_TYPE_EXCESSIVE_LOGGING_OF_PARSER_STATS"
+  | "SIGNAL_TYPE_EXCESSIVE_LOGGING_OF_PLANNER_STATS"
+  | "SIGNAL_TYPE_NOT_LOGGING_ONLY_DDL_STATEMENTS"
+  | "SIGNAL_TYPE_LOGGING_QUERY_STATS"
+  | "SIGNAL_TYPE_NOT_LOGGING_TEMPORARY_FILES"
+  | "SIGNAL_TYPE_CONNECTION_MAX_NOT_CONFIGURED"
+  | "SIGNAL_TYPE_USER_OPTIONS_CONFIGURED"
+  | "SIGNAL_TYPE_EXPOSED_TO_PUBLIC_ACCESS"
+  | "SIGNAL_TYPE_UNENCRYPTED_CONNECTIONS"
+  | "SIGNAL_TYPE_NO_ROOT_PASSWORD"
+  | "SIGNAL_TYPE_WEAK_ROOT_PASSWORD"
+  | "SIGNAL_TYPE_ENCRYPTION_KEY_NOT_CUSTOMER_MANAGED"
+  | "SIGNAL_TYPE_SERVER_AUTHENTICATION_NOT_REQUIRED"
+  | "SIGNAL_TYPE_EXPOSED_TO_EXTERNAL_SCRIPTS"
+  | "SIGNAL_TYPE_EXPOSED_TO_LOCAL_DATA_LOADS"
+  | "SIGNAL_TYPE_CONNECTION_ATTEMPTS_NOT_LOGGED"
+  | "SIGNAL_TYPE_DISCONNECTIONS_NOT_LOGGED"
+  | "SIGNAL_TYPE_LOGGING_EXCESSIVE_STATEMENT_INFO"
+  | "SIGNAL_TYPE_EXPOSED_TO_REMOTE_ACCESS"
+  | "SIGNAL_TYPE_DATABASE_NAMES_EXPOSED"
+  | "SIGNAL_TYPE_SENSITIVE_TRACE_INFO_NOT_MASKED"
+  | "SIGNAL_TYPE_PUBLIC_IP_ENABLED"
+  | "SIGNAL_TYPE_IDLE"
+  | "SIGNAL_TYPE_OVERPROVISIONED"
+  | "SIGNAL_TYPE_HIGH_NUMBER_OF_OPEN_TABLES"
+  | "SIGNAL_TYPE_HIGH_NUMBER_OF_TABLES"
+  | "SIGNAL_TYPE_HIGH_TRANSACTION_ID_UTILIZATION"
+  | "SIGNAL_TYPE_UNDERPROVISIONED"
+  | "SIGNAL_TYPE_OUT_OF_DISK"
+  | "SIGNAL_TYPE_SERVER_CERTIFICATE_NEAR_EXPIRY"
+  | "SIGNAL_TYPE_DATABASE_AUDITING_DISABLED"
+  | "SIGNAL_TYPE_RESTRICT_AUTHORIZED_NETWORKS"
+  | "SIGNAL_TYPE_VIOLATE_POLICY_RESTRICT_PUBLIC_IP"
+  | "SIGNAL_TYPE_QUOTA_LIMIT"
+  | "SIGNAL_TYPE_NO_PASSWORD_POLICY"
+  | "SIGNAL_TYPE_CONNECTIONS_PERFORMANCE_IMPACT"
+  | "SIGNAL_TYPE_TMP_TABLES_PERFORMANCE_IMPACT"
+  | "SIGNAL_TYPE_TRANS_LOGS_PERFORMANCE_IMPACT"
+  | "SIGNAL_TYPE_HIGH_JOINS_WITHOUT_INDEXES"
+  | "SIGNAL_TYPE_SUPERUSER_WRITING_TO_USER_TABLES"
+  | "SIGNAL_TYPE_USER_GRANTED_ALL_PERMISSIONS"
+  | "SIGNAL_TYPE_DATA_EXPORT_TO_EXTERNAL_CLOUD_STORAGE_BUCKET"
+  | "SIGNAL_TYPE_DATA_EXPORT_TO_PUBLIC_CLOUD_STORAGE_BUCKET"
+  | "SIGNAL_TYPE_WEAK_PASSWORD_HASH_ALGORITHM"
+  | "SIGNAL_TYPE_NO_USER_PASSWORD_POLICY"
+  | "SIGNAL_TYPE_HOT_NODE"
+  | "SIGNAL_TYPE_NO_DELETION_PROTECTION"
+  | "SIGNAL_TYPE_NO_POINT_IN_TIME_RECOVERY"
+  | "SIGNAL_TYPE_RESOURCE_SUSPENDED"
+  | "SIGNAL_TYPE_EXPENSIVE_COMMANDS"
+  | "SIGNAL_TYPE_NO_MAINTENANCE_POLICY_CONFIGURED"
+  | "SIGNAL_TYPE_INEFFICIENT_QUERY"
+  | "SIGNAL_TYPE_READ_INTENSIVE_WORKLOAD"
+  | "SIGNAL_TYPE_MEMORY_LIMIT"
+  | "SIGNAL_TYPE_MAX_SERVER_MEMORY"
+  | "SIGNAL_TYPE_LARGE_ROWS"
+  | "SIGNAL_TYPE_HIGH_WRITE_PRESSURE"
+  | "SIGNAL_TYPE_HIGH_READ_PRESSURE"
+  | "SIGNAL_TYPE_ENCRYPTION_ORG_POLICY_NOT_SATISFIED"
+  | "SIGNAL_TYPE_LOCATION_ORG_POLICY_NOT_SATISFIED"
+  | "SIGNAL_TYPE_OUTDATED_MINOR_VERSION"
+  | "SIGNAL_TYPE_SCHEMA_NOT_OPTIMIZED"
+  | "SIGNAL_TYPE_REPLICATION_LAG"
+  | "SIGNAL_TYPE_OUTDATED_CLIENT"
+  | "SIGNAL_TYPE_DATABOOST_DISABLED"
+  | "SIGNAL_TYPE_RECOMMENDED_MAINTENANCE_POLICIES"
+  | "SIGNAL_TYPE_EXTENDED_SUPPORT"
+  | "SIGNAL_TYPE_VERSION_NEARING_END_OF_LIFE"
+  | "SIGNAL_TYPE_HIGH_MAINTENANCE_DOWNTIME_RISK"
+  | "SIGNAL_TYPE_LOW_CACHE_HIT_AND_MAINTENANCE_DOWNTIME"
+  | "SIGNAL_TYPE_MISSING_ENHANCED_PROTECTION";
 export const SignalSignalTypeEnum = /*@__PURE__*/ S.String;
 
-export type SignalSignalStatusEnum = "SIGNAL_STATUS_UNSPECIFIED" | "SIGNAL_STATUS_NOT_APPLICABLE" | "SIGNAL_STATUS_OK" | "SIGNAL_STATUS_ISSUE" | "SIGNAL_STATUS_NOT_ENABLED";
+export type SignalSignalStatusEnum =
+  | "SIGNAL_STATUS_UNSPECIFIED"
+  | "SIGNAL_STATUS_NOT_APPLICABLE"
+  | "SIGNAL_STATUS_OK"
+  | "SIGNAL_STATUS_ISSUE"
+  | "SIGNAL_STATUS_NOT_ENABLED";
 export const SignalSignalStatusEnum = /*@__PURE__*/ S.String;
 
-export type ResourceMaintenanceScheduleList = ReadonlyArray<ResourceMaintenanceSchedule>;
-export const ResourceMaintenanceScheduleList = /*@__PURE__*/ S.Array(ResourceMaintenanceSchedule) as any as S.Schema<ResourceMaintenanceScheduleList>;
+export type ResourceMaintenanceScheduleList =
+  ReadonlyArray<ResourceMaintenanceSchedule>;
+export const ResourceMaintenanceScheduleList = /*@__PURE__*/ S.Array(
+  ResourceMaintenanceSchedule,
+) as any as S.Schema<ResourceMaintenanceScheduleList>;
 
 /** Info associated with maintenance recommendation. */
 export interface MaintenanceRecommendationInfo {
@@ -1015,15 +1793,27 @@ export interface MaintenanceRecommendationInfo {
   resourceMaintenanceSchedules?: ResourceMaintenanceScheduleList;
 }
 export const MaintenanceRecommendationInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceMaintenanceSchedules": S.optional(ResourceMaintenanceScheduleList),
-}),
-).annotate({ identifier: "MaintenanceRecommendationInfo" }) as any as S.Schema<MaintenanceRecommendationInfo>;
+  S.Struct({
+    resourceMaintenanceSchedules: S.optional(ResourceMaintenanceScheduleList),
+  }),
+).annotate({
+  identifier: "MaintenanceRecommendationInfo",
+}) as any as S.Schema<MaintenanceRecommendationInfo>;
 
-export type BackupRunInfoStateEnum = "STATE_UNSPECIFIED" | "SUCCEEDED" | "FAILED";
+export type BackupRunInfoStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "SUCCEEDED"
+  | "FAILED";
 export const BackupRunInfoStateEnum = /*@__PURE__*/ S.String;
 
-export type BackupRunInfoOperationErrorTypeEnum = "OPERATION_ERROR_TYPE_UNSPECIFIED" | "KMS_KEY_ERROR" | "DATABASE_ERROR" | "STOCKOUT_ERROR" | "CANCELLATION_ERROR" | "SQLSERVER_ERROR" | "INTERNAL_ERROR";
+export type BackupRunInfoOperationErrorTypeEnum =
+  | "OPERATION_ERROR_TYPE_UNSPECIFIED"
+  | "KMS_KEY_ERROR"
+  | "DATABASE_ERROR"
+  | "STOCKOUT_ERROR"
+  | "CANCELLATION_ERROR"
+  | "SQLSERVER_ERROR"
+  | "INTERNAL_ERROR";
 export const BackupRunInfoOperationErrorTypeEnum = /*@__PURE__*/ S.String;
 
 /** Sub resource details For Spanner/Bigtable instance certain data protection settings are at sub resource level like database/table. This message is used to capture such sub resource details. */
@@ -1038,12 +1828,12 @@ export interface SubResource {
   fullResourceName?: string;
 }
 export const SubResource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "product": S.optional(Product),
-  "resourceType": S.optional(S.String),
-  "container": S.optional(S.String),
-  "fullResourceName": S.optional(S.String),
-}),
+  S.Struct({
+    product: S.optional(Product),
+    resourceType: S.optional(S.String),
+    container: S.optional(S.String),
+    fullResourceName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "SubResource" }) as any as S.Schema<SubResource>;
 
 /** Metadata about latest backup run state for a database resource. */
@@ -1062,14 +1852,14 @@ export interface BackupRunInfo {
   endTime?: string;
 }
 export const BackupRunInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "state": S.optional(BackupRunInfoStateEnum),
-  "errorMessage": S.optional(S.String),
-  "operationErrorType": S.optional(BackupRunInfoOperationErrorTypeEnum),
-  "subResource": S.optional(SubResource),
-  "startTime": S.optional(S.String),
-  "endTime": S.optional(S.String),
-}),
+  S.Struct({
+    state: S.optional(BackupRunInfoStateEnum),
+    errorMessage: S.optional(S.String),
+    operationErrorType: S.optional(BackupRunInfoOperationErrorTypeEnum),
+    subResource: S.optional(SubResource),
+    startTime: S.optional(S.String),
+    endTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "BackupRunInfo" }) as any as S.Schema<BackupRunInfo>;
 
 /** Automated backup policy signal info */
@@ -1080,11 +1870,13 @@ export interface AutomatedBackupPolicyInfo {
   subResource?: SubResource;
 }
 export const AutomatedBackupPolicyInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "isEnabled": S.optional(S.Boolean),
-  "subResource": S.optional(SubResource),
-}),
-).annotate({ identifier: "AutomatedBackupPolicyInfo" }) as any as S.Schema<AutomatedBackupPolicyInfo>;
+  S.Struct({
+    isEnabled: S.optional(S.Boolean),
+    subResource: S.optional(SubResource),
+  }),
+).annotate({
+  identifier: "AutomatedBackupPolicyInfo",
+}) as any as S.Schema<AutomatedBackupPolicyInfo>;
 
 /** Info associated with recommendation. */
 export interface RecommendationInfo {
@@ -1096,12 +1888,14 @@ export interface RecommendationInfo {
   recommenderId?: string;
 }
 export const RecommendationInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "recommender": S.optional(S.String),
-  "recommenderSubtype": S.optional(S.String),
-  "recommenderId": S.optional(S.String),
-}),
-).annotate({ identifier: "RecommendationInfo" }) as any as S.Schema<RecommendationInfo>;
+  S.Struct({
+    recommender: S.optional(S.String),
+    recommenderSubtype: S.optional(S.String),
+    recommenderId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RecommendationInfo",
+}) as any as S.Schema<RecommendationInfo>;
 
 /** Metadata about backup retention settings for a database resource. */
 export interface RetentionSettingsInfo {
@@ -1115,13 +1909,15 @@ export interface RetentionSettingsInfo {
   subResource?: SubResource;
 }
 export const RetentionSettingsInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "quantityBasedRetention": S.optional(S.Number),
-  "timestampBasedRetentionTime": S.optional(S.String),
-  "durationBasedRetention": S.optional(S.String),
-  "subResource": S.optional(SubResource),
-}),
-).annotate({ identifier: "RetentionSettingsInfo" }) as any as S.Schema<RetentionSettingsInfo>;
+  S.Struct({
+    quantityBasedRetention: S.optional(S.Number),
+    timestampBasedRetentionTime: S.optional(S.String),
+    durationBasedRetention: S.optional(S.String),
+    subResource: S.optional(SubResource),
+  }),
+).annotate({
+  identifier: "RetentionSettingsInfo",
+}) as any as S.Schema<RetentionSettingsInfo>;
 
 /** Deletion protection signal info for a database resource. */
 export interface DeletionProtectionInfo {
@@ -1131,11 +1927,13 @@ export interface DeletionProtectionInfo {
   deletionProtectionEnabled?: boolean;
 }
 export const DeletionProtectionInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "subResource": S.optional(SubResource),
-  "deletionProtectionEnabled": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "DeletionProtectionInfo" }) as any as S.Schema<DeletionProtectionInfo>;
+  S.Struct({
+    subResource: S.optional(SubResource),
+    deletionProtectionEnabled: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "DeletionProtectionInfo",
+}) as any as S.Schema<DeletionProtectionInfo>;
 
 /** Info associated with outdated minor version. */
 export interface OutdatedMinorVersionInfo {
@@ -1143,13 +1941,23 @@ export interface OutdatedMinorVersionInfo {
   recommendedMinorVersion?: string;
 }
 export const OutdatedMinorVersionInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "recommendedMinorVersion": S.optional(S.String),
-}),
-).annotate({ identifier: "OutdatedMinorVersionInfo" }) as any as S.Schema<OutdatedMinorVersionInfo>;
+  S.Struct({
+    recommendedMinorVersion: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OutdatedMinorVersionInfo",
+}) as any as S.Schema<OutdatedMinorVersionInfo>;
 
-export type ResourceSuspensionInfoSuspensionReasonEnum = "SUSPENSION_REASON_UNSPECIFIED" | "WIPEOUT_HIDE_EVENT" | "WIPEOUT_PURGE_EVENT" | "BILLING_DISABLED" | "ABUSER_DETECTED" | "ENCRYPTION_KEY_INACCESSIBLE" | "REPLICATED_CLUSTER_ENCRYPTION_KEY_INACCESSIBLE";
-export const ResourceSuspensionInfoSuspensionReasonEnum = /*@__PURE__*/ S.String;
+export type ResourceSuspensionInfoSuspensionReasonEnum =
+  | "SUSPENSION_REASON_UNSPECIFIED"
+  | "WIPEOUT_HIDE_EVENT"
+  | "WIPEOUT_PURGE_EVENT"
+  | "BILLING_DISABLED"
+  | "ABUSER_DETECTED"
+  | "ENCRYPTION_KEY_INACCESSIBLE"
+  | "REPLICATED_CLUSTER_ENCRYPTION_KEY_INACCESSIBLE";
+export const ResourceSuspensionInfoSuspensionReasonEnum =
+  /*@__PURE__*/ S.String;
 
 /** Resource suspension info for a database resource. */
 export interface ResourceSuspensionInfo {
@@ -1159,11 +1967,13 @@ export interface ResourceSuspensionInfo {
   suspensionReason?: ResourceSuspensionInfoSuspensionReasonEnum;
 }
 export const ResourceSuspensionInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceSuspended": S.optional(S.Boolean),
-  "suspensionReason": S.optional(ResourceSuspensionInfoSuspensionReasonEnum),
-}),
-).annotate({ identifier: "ResourceSuspensionInfo" }) as any as S.Schema<ResourceSuspensionInfo>;
+  S.Struct({
+    resourceSuspended: S.optional(S.Boolean),
+    suspensionReason: S.optional(ResourceSuspensionInfoSuspensionReasonEnum),
+  }),
+).annotate({
+  identifier: "ResourceSuspensionInfo",
+}) as any as S.Schema<ResourceSuspensionInfo>;
 
 /** Compliances associated with signals. */
 export interface RegulatoryStandard {
@@ -1173,14 +1983,18 @@ export interface RegulatoryStandard {
   version?: string;
 }
 export const RegulatoryStandard = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "standard": S.optional(S.String),
-  "version": S.optional(S.String),
-}),
-).annotate({ identifier: "RegulatoryStandard" }) as any as S.Schema<RegulatoryStandard>;
+  S.Struct({
+    standard: S.optional(S.String),
+    version: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RegulatoryStandard",
+}) as any as S.Schema<RegulatoryStandard>;
 
 export type RegulatoryStandardList = ReadonlyArray<RegulatoryStandard>;
-export const RegulatoryStandardList = /*@__PURE__*/ S.Array(RegulatoryStandard) as any as S.Schema<RegulatoryStandardList>;
+export const RegulatoryStandardList = /*@__PURE__*/ S.Array(
+  RegulatoryStandard,
+) as any as S.Schema<RegulatoryStandardList>;
 
 /** Info associated with SCC signals. */
 export interface SCCInfo {
@@ -1194,18 +2008,126 @@ export interface SCCInfo {
   externalUri?: string;
 }
 export const SCCInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "category": S.optional(S.String),
-  "regulatoryStandards": S.optional(RegulatoryStandardList),
-  "signal": S.optional(S.String),
-  "externalUri": S.optional(S.String),
-}),
+  S.Struct({
+    category: S.optional(S.String),
+    regulatoryStandards: S.optional(RegulatoryStandardList),
+    signal: S.optional(S.String),
+    externalUri: S.optional(S.String),
+  }),
 ).annotate({ identifier: "SCCInfo" }) as any as S.Schema<SCCInfo>;
 
-export type AdditionalDetailSignalSourceEnum = "SIGNAL_SOURCE_UNSPECIFIED" | "SIGNAL_SOURCE_RESOURCE_METADATA" | "SIGNAL_SOURCE_SECURITY_FINDINGS" | "SIGNAL_SOURCE_RECOMMENDER" | "SIGNAL_SOURCE_MODERN_OBSERVABILITY";
+export type AdditionalDetailSignalSourceEnum =
+  | "SIGNAL_SOURCE_UNSPECIFIED"
+  | "SIGNAL_SOURCE_RESOURCE_METADATA"
+  | "SIGNAL_SOURCE_SECURITY_FINDINGS"
+  | "SIGNAL_SOURCE_RECOMMENDER"
+  | "SIGNAL_SOURCE_MODERN_OBSERVABILITY";
 export const AdditionalDetailSignalSourceEnum = /*@__PURE__*/ S.String;
 
-export type AdditionalDetailSignalTypeEnum = "SIGNAL_TYPE_UNSPECIFIED" | "SIGNAL_TYPE_RESOURCE_FAILOVER_PROTECTED" | "SIGNAL_TYPE_GROUP_MULTIREGIONAL" | "SIGNAL_TYPE_NO_AUTOMATED_BACKUP_POLICY" | "SIGNAL_TYPE_SHORT_BACKUP_RETENTION" | "SIGNAL_TYPE_LAST_BACKUP_FAILED" | "SIGNAL_TYPE_LAST_BACKUP_OLD" | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_2_0" | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_1_3" | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_1_2" | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_1_1" | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_1_0" | "SIGNAL_TYPE_VIOLATES_CIS_CONTROLS_V8_0" | "SIGNAL_TYPE_VIOLATES_NIST_800_53" | "SIGNAL_TYPE_VIOLATES_NIST_800_53_R5" | "SIGNAL_TYPE_VIOLATES_NIST_CYBERSECURITY_FRAMEWORK_V1_0" | "SIGNAL_TYPE_VIOLATES_ISO_27001" | "SIGNAL_TYPE_VIOLATES_ISO_27001_V2022" | "SIGNAL_TYPE_VIOLATES_PCI_DSS_V3_2_1" | "SIGNAL_TYPE_VIOLATES_PCI_DSS_V4_0" | "SIGNAL_TYPE_VIOLATES_CLOUD_CONTROLS_MATRIX_V4" | "SIGNAL_TYPE_VIOLATES_HIPAA" | "SIGNAL_TYPE_VIOLATES_SOC2_V2017" | "SIGNAL_TYPE_LOGS_NOT_OPTIMIZED_FOR_TROUBLESHOOTING" | "SIGNAL_TYPE_QUERY_DURATIONS_NOT_LOGGED" | "SIGNAL_TYPE_VERBOSE_ERROR_LOGGING" | "SIGNAL_TYPE_QUERY_LOCK_WAITS_NOT_LOGGED" | "SIGNAL_TYPE_LOGGING_MOST_ERRORS" | "SIGNAL_TYPE_LOGGING_ONLY_CRITICAL_ERRORS" | "SIGNAL_TYPE_MINIMAL_ERROR_LOGGING" | "SIGNAL_TYPE_QUERY_STATS_LOGGED" | "SIGNAL_TYPE_EXCESSIVE_LOGGING_OF_CLIENT_HOSTNAME" | "SIGNAL_TYPE_EXCESSIVE_LOGGING_OF_PARSER_STATS" | "SIGNAL_TYPE_EXCESSIVE_LOGGING_OF_PLANNER_STATS" | "SIGNAL_TYPE_NOT_LOGGING_ONLY_DDL_STATEMENTS" | "SIGNAL_TYPE_LOGGING_QUERY_STATS" | "SIGNAL_TYPE_NOT_LOGGING_TEMPORARY_FILES" | "SIGNAL_TYPE_CONNECTION_MAX_NOT_CONFIGURED" | "SIGNAL_TYPE_USER_OPTIONS_CONFIGURED" | "SIGNAL_TYPE_EXPOSED_TO_PUBLIC_ACCESS" | "SIGNAL_TYPE_UNENCRYPTED_CONNECTIONS" | "SIGNAL_TYPE_NO_ROOT_PASSWORD" | "SIGNAL_TYPE_WEAK_ROOT_PASSWORD" | "SIGNAL_TYPE_ENCRYPTION_KEY_NOT_CUSTOMER_MANAGED" | "SIGNAL_TYPE_SERVER_AUTHENTICATION_NOT_REQUIRED" | "SIGNAL_TYPE_EXPOSED_TO_EXTERNAL_SCRIPTS" | "SIGNAL_TYPE_EXPOSED_TO_LOCAL_DATA_LOADS" | "SIGNAL_TYPE_CONNECTION_ATTEMPTS_NOT_LOGGED" | "SIGNAL_TYPE_DISCONNECTIONS_NOT_LOGGED" | "SIGNAL_TYPE_LOGGING_EXCESSIVE_STATEMENT_INFO" | "SIGNAL_TYPE_EXPOSED_TO_REMOTE_ACCESS" | "SIGNAL_TYPE_DATABASE_NAMES_EXPOSED" | "SIGNAL_TYPE_SENSITIVE_TRACE_INFO_NOT_MASKED" | "SIGNAL_TYPE_PUBLIC_IP_ENABLED" | "SIGNAL_TYPE_IDLE" | "SIGNAL_TYPE_OVERPROVISIONED" | "SIGNAL_TYPE_HIGH_NUMBER_OF_OPEN_TABLES" | "SIGNAL_TYPE_HIGH_NUMBER_OF_TABLES" | "SIGNAL_TYPE_HIGH_TRANSACTION_ID_UTILIZATION" | "SIGNAL_TYPE_UNDERPROVISIONED" | "SIGNAL_TYPE_OUT_OF_DISK" | "SIGNAL_TYPE_SERVER_CERTIFICATE_NEAR_EXPIRY" | "SIGNAL_TYPE_DATABASE_AUDITING_DISABLED" | "SIGNAL_TYPE_RESTRICT_AUTHORIZED_NETWORKS" | "SIGNAL_TYPE_VIOLATE_POLICY_RESTRICT_PUBLIC_IP" | "SIGNAL_TYPE_QUOTA_LIMIT" | "SIGNAL_TYPE_NO_PASSWORD_POLICY" | "SIGNAL_TYPE_CONNECTIONS_PERFORMANCE_IMPACT" | "SIGNAL_TYPE_TMP_TABLES_PERFORMANCE_IMPACT" | "SIGNAL_TYPE_TRANS_LOGS_PERFORMANCE_IMPACT" | "SIGNAL_TYPE_HIGH_JOINS_WITHOUT_INDEXES" | "SIGNAL_TYPE_SUPERUSER_WRITING_TO_USER_TABLES" | "SIGNAL_TYPE_USER_GRANTED_ALL_PERMISSIONS" | "SIGNAL_TYPE_DATA_EXPORT_TO_EXTERNAL_CLOUD_STORAGE_BUCKET" | "SIGNAL_TYPE_DATA_EXPORT_TO_PUBLIC_CLOUD_STORAGE_BUCKET" | "SIGNAL_TYPE_WEAK_PASSWORD_HASH_ALGORITHM" | "SIGNAL_TYPE_NO_USER_PASSWORD_POLICY" | "SIGNAL_TYPE_HOT_NODE" | "SIGNAL_TYPE_NO_DELETION_PROTECTION" | "SIGNAL_TYPE_NO_POINT_IN_TIME_RECOVERY" | "SIGNAL_TYPE_RESOURCE_SUSPENDED" | "SIGNAL_TYPE_EXPENSIVE_COMMANDS" | "SIGNAL_TYPE_NO_MAINTENANCE_POLICY_CONFIGURED" | "SIGNAL_TYPE_INEFFICIENT_QUERY" | "SIGNAL_TYPE_READ_INTENSIVE_WORKLOAD" | "SIGNAL_TYPE_MEMORY_LIMIT" | "SIGNAL_TYPE_MAX_SERVER_MEMORY" | "SIGNAL_TYPE_LARGE_ROWS" | "SIGNAL_TYPE_HIGH_WRITE_PRESSURE" | "SIGNAL_TYPE_HIGH_READ_PRESSURE" | "SIGNAL_TYPE_ENCRYPTION_ORG_POLICY_NOT_SATISFIED" | "SIGNAL_TYPE_LOCATION_ORG_POLICY_NOT_SATISFIED" | "SIGNAL_TYPE_OUTDATED_MINOR_VERSION" | "SIGNAL_TYPE_SCHEMA_NOT_OPTIMIZED" | "SIGNAL_TYPE_REPLICATION_LAG" | "SIGNAL_TYPE_OUTDATED_CLIENT" | "SIGNAL_TYPE_DATABOOST_DISABLED" | "SIGNAL_TYPE_RECOMMENDED_MAINTENANCE_POLICIES" | "SIGNAL_TYPE_EXTENDED_SUPPORT" | "SIGNAL_TYPE_VERSION_NEARING_END_OF_LIFE" | "SIGNAL_TYPE_HIGH_MAINTENANCE_DOWNTIME_RISK" | "SIGNAL_TYPE_LOW_CACHE_HIT_AND_MAINTENANCE_DOWNTIME" | "SIGNAL_TYPE_MISSING_ENHANCED_PROTECTION";
+export type AdditionalDetailSignalTypeEnum =
+  | "SIGNAL_TYPE_UNSPECIFIED"
+  | "SIGNAL_TYPE_RESOURCE_FAILOVER_PROTECTED"
+  | "SIGNAL_TYPE_GROUP_MULTIREGIONAL"
+  | "SIGNAL_TYPE_NO_AUTOMATED_BACKUP_POLICY"
+  | "SIGNAL_TYPE_SHORT_BACKUP_RETENTION"
+  | "SIGNAL_TYPE_LAST_BACKUP_FAILED"
+  | "SIGNAL_TYPE_LAST_BACKUP_OLD"
+  | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_2_0"
+  | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_1_3"
+  | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_1_2"
+  | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_1_1"
+  | "SIGNAL_TYPE_VIOLATES_CIS_GCP_FOUNDATION_1_0"
+  | "SIGNAL_TYPE_VIOLATES_CIS_CONTROLS_V8_0"
+  | "SIGNAL_TYPE_VIOLATES_NIST_800_53"
+  | "SIGNAL_TYPE_VIOLATES_NIST_800_53_R5"
+  | "SIGNAL_TYPE_VIOLATES_NIST_CYBERSECURITY_FRAMEWORK_V1_0"
+  | "SIGNAL_TYPE_VIOLATES_ISO_27001"
+  | "SIGNAL_TYPE_VIOLATES_ISO_27001_V2022"
+  | "SIGNAL_TYPE_VIOLATES_PCI_DSS_V3_2_1"
+  | "SIGNAL_TYPE_VIOLATES_PCI_DSS_V4_0"
+  | "SIGNAL_TYPE_VIOLATES_CLOUD_CONTROLS_MATRIX_V4"
+  | "SIGNAL_TYPE_VIOLATES_HIPAA"
+  | "SIGNAL_TYPE_VIOLATES_SOC2_V2017"
+  | "SIGNAL_TYPE_LOGS_NOT_OPTIMIZED_FOR_TROUBLESHOOTING"
+  | "SIGNAL_TYPE_QUERY_DURATIONS_NOT_LOGGED"
+  | "SIGNAL_TYPE_VERBOSE_ERROR_LOGGING"
+  | "SIGNAL_TYPE_QUERY_LOCK_WAITS_NOT_LOGGED"
+  | "SIGNAL_TYPE_LOGGING_MOST_ERRORS"
+  | "SIGNAL_TYPE_LOGGING_ONLY_CRITICAL_ERRORS"
+  | "SIGNAL_TYPE_MINIMAL_ERROR_LOGGING"
+  | "SIGNAL_TYPE_QUERY_STATS_LOGGED"
+  | "SIGNAL_TYPE_EXCESSIVE_LOGGING_OF_CLIENT_HOSTNAME"
+  | "SIGNAL_TYPE_EXCESSIVE_LOGGING_OF_PARSER_STATS"
+  | "SIGNAL_TYPE_EXCESSIVE_LOGGING_OF_PLANNER_STATS"
+  | "SIGNAL_TYPE_NOT_LOGGING_ONLY_DDL_STATEMENTS"
+  | "SIGNAL_TYPE_LOGGING_QUERY_STATS"
+  | "SIGNAL_TYPE_NOT_LOGGING_TEMPORARY_FILES"
+  | "SIGNAL_TYPE_CONNECTION_MAX_NOT_CONFIGURED"
+  | "SIGNAL_TYPE_USER_OPTIONS_CONFIGURED"
+  | "SIGNAL_TYPE_EXPOSED_TO_PUBLIC_ACCESS"
+  | "SIGNAL_TYPE_UNENCRYPTED_CONNECTIONS"
+  | "SIGNAL_TYPE_NO_ROOT_PASSWORD"
+  | "SIGNAL_TYPE_WEAK_ROOT_PASSWORD"
+  | "SIGNAL_TYPE_ENCRYPTION_KEY_NOT_CUSTOMER_MANAGED"
+  | "SIGNAL_TYPE_SERVER_AUTHENTICATION_NOT_REQUIRED"
+  | "SIGNAL_TYPE_EXPOSED_TO_EXTERNAL_SCRIPTS"
+  | "SIGNAL_TYPE_EXPOSED_TO_LOCAL_DATA_LOADS"
+  | "SIGNAL_TYPE_CONNECTION_ATTEMPTS_NOT_LOGGED"
+  | "SIGNAL_TYPE_DISCONNECTIONS_NOT_LOGGED"
+  | "SIGNAL_TYPE_LOGGING_EXCESSIVE_STATEMENT_INFO"
+  | "SIGNAL_TYPE_EXPOSED_TO_REMOTE_ACCESS"
+  | "SIGNAL_TYPE_DATABASE_NAMES_EXPOSED"
+  | "SIGNAL_TYPE_SENSITIVE_TRACE_INFO_NOT_MASKED"
+  | "SIGNAL_TYPE_PUBLIC_IP_ENABLED"
+  | "SIGNAL_TYPE_IDLE"
+  | "SIGNAL_TYPE_OVERPROVISIONED"
+  | "SIGNAL_TYPE_HIGH_NUMBER_OF_OPEN_TABLES"
+  | "SIGNAL_TYPE_HIGH_NUMBER_OF_TABLES"
+  | "SIGNAL_TYPE_HIGH_TRANSACTION_ID_UTILIZATION"
+  | "SIGNAL_TYPE_UNDERPROVISIONED"
+  | "SIGNAL_TYPE_OUT_OF_DISK"
+  | "SIGNAL_TYPE_SERVER_CERTIFICATE_NEAR_EXPIRY"
+  | "SIGNAL_TYPE_DATABASE_AUDITING_DISABLED"
+  | "SIGNAL_TYPE_RESTRICT_AUTHORIZED_NETWORKS"
+  | "SIGNAL_TYPE_VIOLATE_POLICY_RESTRICT_PUBLIC_IP"
+  | "SIGNAL_TYPE_QUOTA_LIMIT"
+  | "SIGNAL_TYPE_NO_PASSWORD_POLICY"
+  | "SIGNAL_TYPE_CONNECTIONS_PERFORMANCE_IMPACT"
+  | "SIGNAL_TYPE_TMP_TABLES_PERFORMANCE_IMPACT"
+  | "SIGNAL_TYPE_TRANS_LOGS_PERFORMANCE_IMPACT"
+  | "SIGNAL_TYPE_HIGH_JOINS_WITHOUT_INDEXES"
+  | "SIGNAL_TYPE_SUPERUSER_WRITING_TO_USER_TABLES"
+  | "SIGNAL_TYPE_USER_GRANTED_ALL_PERMISSIONS"
+  | "SIGNAL_TYPE_DATA_EXPORT_TO_EXTERNAL_CLOUD_STORAGE_BUCKET"
+  | "SIGNAL_TYPE_DATA_EXPORT_TO_PUBLIC_CLOUD_STORAGE_BUCKET"
+  | "SIGNAL_TYPE_WEAK_PASSWORD_HASH_ALGORITHM"
+  | "SIGNAL_TYPE_NO_USER_PASSWORD_POLICY"
+  | "SIGNAL_TYPE_HOT_NODE"
+  | "SIGNAL_TYPE_NO_DELETION_PROTECTION"
+  | "SIGNAL_TYPE_NO_POINT_IN_TIME_RECOVERY"
+  | "SIGNAL_TYPE_RESOURCE_SUSPENDED"
+  | "SIGNAL_TYPE_EXPENSIVE_COMMANDS"
+  | "SIGNAL_TYPE_NO_MAINTENANCE_POLICY_CONFIGURED"
+  | "SIGNAL_TYPE_INEFFICIENT_QUERY"
+  | "SIGNAL_TYPE_READ_INTENSIVE_WORKLOAD"
+  | "SIGNAL_TYPE_MEMORY_LIMIT"
+  | "SIGNAL_TYPE_MAX_SERVER_MEMORY"
+  | "SIGNAL_TYPE_LARGE_ROWS"
+  | "SIGNAL_TYPE_HIGH_WRITE_PRESSURE"
+  | "SIGNAL_TYPE_HIGH_READ_PRESSURE"
+  | "SIGNAL_TYPE_ENCRYPTION_ORG_POLICY_NOT_SATISFIED"
+  | "SIGNAL_TYPE_LOCATION_ORG_POLICY_NOT_SATISFIED"
+  | "SIGNAL_TYPE_OUTDATED_MINOR_VERSION"
+  | "SIGNAL_TYPE_SCHEMA_NOT_OPTIMIZED"
+  | "SIGNAL_TYPE_REPLICATION_LAG"
+  | "SIGNAL_TYPE_OUTDATED_CLIENT"
+  | "SIGNAL_TYPE_DATABOOST_DISABLED"
+  | "SIGNAL_TYPE_RECOMMENDED_MAINTENANCE_POLICIES"
+  | "SIGNAL_TYPE_EXTENDED_SUPPORT"
+  | "SIGNAL_TYPE_VERSION_NEARING_END_OF_LIFE"
+  | "SIGNAL_TYPE_HIGH_MAINTENANCE_DOWNTIME_RISK"
+  | "SIGNAL_TYPE_LOW_CACHE_HIT_AND_MAINTENANCE_DOWNTIME"
+  | "SIGNAL_TYPE_MISSING_ENHANCED_PROTECTION";
 export const AdditionalDetailSignalTypeEnum = /*@__PURE__*/ S.String;
 
 /** Details related to signal. */
@@ -1238,27 +2160,37 @@ export interface AdditionalDetail {
   signalType?: AdditionalDetailSignalTypeEnum;
 }
 export const AdditionalDetail = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "maintenanceRecommendationInfo": S.optional(MaintenanceRecommendationInfo),
-  "backupRunInfo": S.optional(BackupRunInfo),
-  "automatedBackupPolicyInfo": S.optional(AutomatedBackupPolicyInfo),
-  "recommendationInfo": S.optional(RecommendationInfo),
-  "shortBackupRetentionInfo": S.optional(RetentionSettingsInfo),
-  "signalEventTime": S.optional(S.String),
-  "deletionProtectionInfo": S.optional(DeletionProtectionInfo),
-  "outdatedMinorVersionInfo": S.optional(OutdatedMinorVersionInfo),
-  "resourceSuspensionInfo": S.optional(ResourceSuspensionInfo),
-  "inefficientQueryInfo": S.optional(InefficientQueryInfo),
-  "sccInfo": S.optional(SCCInfo),
-  "signalSource": S.optional(AdditionalDetailSignalSourceEnum),
-  "signalType": S.optional(AdditionalDetailSignalTypeEnum),
-}),
-).annotate({ identifier: "AdditionalDetail" }) as any as S.Schema<AdditionalDetail>;
+  S.Struct({
+    maintenanceRecommendationInfo: S.optional(MaintenanceRecommendationInfo),
+    backupRunInfo: S.optional(BackupRunInfo),
+    automatedBackupPolicyInfo: S.optional(AutomatedBackupPolicyInfo),
+    recommendationInfo: S.optional(RecommendationInfo),
+    shortBackupRetentionInfo: S.optional(RetentionSettingsInfo),
+    signalEventTime: S.optional(S.String),
+    deletionProtectionInfo: S.optional(DeletionProtectionInfo),
+    outdatedMinorVersionInfo: S.optional(OutdatedMinorVersionInfo),
+    resourceSuspensionInfo: S.optional(ResourceSuspensionInfo),
+    inefficientQueryInfo: S.optional(InefficientQueryInfo),
+    sccInfo: S.optional(SCCInfo),
+    signalSource: S.optional(AdditionalDetailSignalSourceEnum),
+    signalType: S.optional(AdditionalDetailSignalTypeEnum),
+  }),
+).annotate({
+  identifier: "AdditionalDetail",
+}) as any as S.Schema<AdditionalDetail>;
 
 export type AdditionalDetailList = ReadonlyArray<AdditionalDetail>;
-export const AdditionalDetailList = /*@__PURE__*/ S.Array(AdditionalDetail) as any as S.Schema<AdditionalDetailList>;
+export const AdditionalDetailList = /*@__PURE__*/ S.Array(
+  AdditionalDetail,
+) as any as S.Schema<AdditionalDetailList>;
 
-export type SignalIssueSeverityEnum = "ISSUE_SEVERITY_UNSPECIFIED" | "ISSUE_SEVERITY_LOW" | "ISSUE_SEVERITY_MEDIUM" | "ISSUE_SEVERITY_HIGH" | "ISSUE_SEVERITY_CRITICAL" | "ISSUE_SEVERITY_IRRELEVANT";
+export type SignalIssueSeverityEnum =
+  | "ISSUE_SEVERITY_UNSPECIFIED"
+  | "ISSUE_SEVERITY_LOW"
+  | "ISSUE_SEVERITY_MEDIUM"
+  | "ISSUE_SEVERITY_HIGH"
+  | "ISSUE_SEVERITY_CRITICAL"
+  | "ISSUE_SEVERITY_IRRELEVANT";
 export const SignalIssueSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Represents a signal. */
@@ -1275,17 +2207,19 @@ export interface Signal {
   issueSeverity?: SignalIssueSeverityEnum;
 }
 export const Signal = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "signalType": S.optional(SignalSignalTypeEnum),
-  "signalStatus": S.optional(SignalSignalStatusEnum),
-  "additionalDetails": S.optional(AdditionalDetailList),
-  "issueCreateTime": S.optional(S.String),
-  "issueSeverity": S.optional(SignalIssueSeverityEnum),
-}),
+  S.Struct({
+    signalType: S.optional(SignalSignalTypeEnum),
+    signalStatus: S.optional(SignalSignalStatusEnum),
+    additionalDetails: S.optional(AdditionalDetailList),
+    issueCreateTime: S.optional(S.String),
+    issueSeverity: S.optional(SignalIssueSeverityEnum),
+  }),
 ).annotate({ identifier: "Signal" }) as any as S.Schema<Signal>;
 
 export type SignalList = ReadonlyArray<Signal>;
-export const SignalList = /*@__PURE__*/ S.Array(Signal) as any as S.Schema<SignalList>;
+export const SignalList = /*@__PURE__*/ S.Array(
+  Signal,
+) as any as S.Schema<SignalList>;
 
 /** A group of signals and their counts. */
 export interface SignalGroup {
@@ -1297,20 +2231,35 @@ export interface SignalGroup {
   displayName?: string;
 }
 export const SignalGroup = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "issueCount": S.optional(S.Number),
-  "signals": S.optional(SignalList),
-  "displayName": S.optional(S.String),
-}),
+  S.Struct({
+    issueCount: S.optional(S.Number),
+    signals: S.optional(SignalList),
+    displayName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "SignalGroup" }) as any as S.Schema<SignalGroup>;
 
 export type SignalGroupList = ReadonlyArray<SignalGroup>;
-export const SignalGroupList = /*@__PURE__*/ S.Array(SignalGroup) as any as S.Schema<SignalGroupList>;
+export const SignalGroupList = /*@__PURE__*/ S.Array(
+  SignalGroup,
+) as any as S.Schema<SignalGroupList>;
 
-export type DatabaseResourceSubResourceTypeEnum = "SUB_RESOURCE_TYPE_UNSPECIFIED" | "SUB_RESOURCE_TYPE_PRIMARY" | "SUB_RESOURCE_TYPE_SECONDARY" | "SUB_RESOURCE_TYPE_READ_REPLICA" | "SUB_RESOURCE_TYPE_EXTERNAL_PRIMARY" | "SUB_RESOURCE_TYPE_READ_POOL" | "SUB_RESOURCE_TYPE_RESERVATION" | "SUB_RESOURCE_TYPE_DATASET" | "SUB_RESOURCE_TYPE_OTHER";
+export type DatabaseResourceSubResourceTypeEnum =
+  | "SUB_RESOURCE_TYPE_UNSPECIFIED"
+  | "SUB_RESOURCE_TYPE_PRIMARY"
+  | "SUB_RESOURCE_TYPE_SECONDARY"
+  | "SUB_RESOURCE_TYPE_READ_REPLICA"
+  | "SUB_RESOURCE_TYPE_EXTERNAL_PRIMARY"
+  | "SUB_RESOURCE_TYPE_READ_POOL"
+  | "SUB_RESOURCE_TYPE_RESERVATION"
+  | "SUB_RESOURCE_TYPE_DATASET"
+  | "SUB_RESOURCE_TYPE_OTHER";
 export const DatabaseResourceSubResourceTypeEnum = /*@__PURE__*/ S.String;
 
-export type DatabaseResourceEditionEnum = "EDITION_UNSPECIFIED" | "EDITION_ENTERPRISE" | "EDITION_ENTERPRISE_PLUS" | "EDITION_STANDARD";
+export type DatabaseResourceEditionEnum =
+  | "EDITION_UNSPECIFIED"
+  | "EDITION_ENTERPRISE"
+  | "EDITION_ENTERPRISE_PLUS"
+  | "EDITION_STANDARD";
 export const DatabaseResourceEditionEnum = /*@__PURE__*/ S.String;
 
 /** Tag is a key value pair attached to a resource. */
@@ -1324,12 +2273,12 @@ export interface Tag {
   inherited?: boolean;
 }
 export const Tag = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "value": S.optional(S.String),
-  "key": S.optional(S.String),
-  "source": S.optional(S.String),
-  "inherited": S.optional(S.Boolean),
-}),
+  S.Struct({
+    value: S.optional(S.String),
+    key: S.optional(S.String),
+    source: S.optional(S.String),
+    inherited: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 
 export type TagList = ReadonlyArray<Tag>;
@@ -1349,13 +2298,13 @@ export interface MachineConfig {
   vcpuCount?: number;
 }
 export const MachineConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "baselineSlotCount": S.optional(S.String),
-  "maxReservationSlotCount": S.optional(S.String),
-  "memorySizeBytes": S.optional(S.String),
-  "shardCount": S.optional(S.Number),
-  "vcpuCount": S.optional(S.Number),
-}),
+  S.Struct({
+    baselineSlotCount: S.optional(S.String),
+    maxReservationSlotCount: S.optional(S.String),
+    memorySizeBytes: S.optional(S.String),
+    shardCount: S.optional(S.Number),
+    vcpuCount: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "MachineConfig" }) as any as S.Schema<MachineConfig>;
 
 /** DatabaseResource represents every individually configured database unit representing compute and/or storage. */
@@ -1398,30 +2347,34 @@ export interface DatabaseResource {
   machineConfig?: MachineConfig;
 }
 export const DatabaseResource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "affiliations": S.optional(AffiliationList),
-  "backupdrConfig": S.optional(BackupDRConfig),
-  "maintenanceInfo": S.optional(MaintenanceInfo),
-  "labels": S.optional(LabelList),
-  "fullResourceName": S.optional(S.String),
-  "location": S.optional(S.String),
-  "product": S.optional(Product),
-  "container": S.optional(S.String),
-  "resourceName": S.optional(S.String),
-  "metrics": S.optional(Metrics),
-  "resourceCategory": S.optional(DatabaseResourceResourceCategoryEnum),
-  "childResources": S.optional(S.suspend(() => DatabaseResourceList)),
-  "signalGroups": S.optional(SignalGroupList),
-  "subResourceType": S.optional(DatabaseResourceSubResourceTypeEnum),
-  "edition": S.optional(DatabaseResourceEditionEnum),
-  "tags": S.optional(TagList),
-  "resourceType": S.optional(S.String),
-  "machineConfig": S.optional(MachineConfig),
-}),
-).annotate({ identifier: "DatabaseResource" }) as any as S.Schema<DatabaseResource>;
+  S.Struct({
+    affiliations: S.optional(AffiliationList),
+    backupdrConfig: S.optional(BackupDRConfig),
+    maintenanceInfo: S.optional(MaintenanceInfo),
+    labels: S.optional(LabelList),
+    fullResourceName: S.optional(S.String),
+    location: S.optional(S.String),
+    product: S.optional(Product),
+    container: S.optional(S.String),
+    resourceName: S.optional(S.String),
+    metrics: S.optional(Metrics),
+    resourceCategory: S.optional(DatabaseResourceResourceCategoryEnum),
+    childResources: S.optional(S.suspend(() => DatabaseResourceList)),
+    signalGroups: S.optional(SignalGroupList),
+    subResourceType: S.optional(DatabaseResourceSubResourceTypeEnum),
+    edition: S.optional(DatabaseResourceEditionEnum),
+    tags: S.optional(TagList),
+    resourceType: S.optional(S.String),
+    machineConfig: S.optional(MachineConfig),
+  }),
+).annotate({
+  identifier: "DatabaseResource",
+}) as any as S.Schema<DatabaseResource>;
 
 export type DatabaseResourceList = ReadonlyArray<DatabaseResource>;
-export const DatabaseResourceList = /*@__PURE__*/ S.Array(DatabaseResource) as any as S.Schema<DatabaseResourceList>;
+export const DatabaseResourceList = /*@__PURE__*/ S.Array(
+  DatabaseResource,
+) as any as S.Schema<DatabaseResourceList>;
 
 /** DatabaseResourceGroup represents all resources that serve a common data set. It is considered notionally as a single entity, powered by any number of units of compute and storage. */
 export interface DatabaseResourceGroup {
@@ -1431,14 +2384,18 @@ export interface DatabaseResourceGroup {
   rootResources?: DatabaseResourceList;
 }
 export const DatabaseResourceGroup = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "signalGroups": S.optional(IssueCountList),
-  "rootResources": S.optional(DatabaseResourceList),
-}),
-).annotate({ identifier: "DatabaseResourceGroup" }) as any as S.Schema<DatabaseResourceGroup>;
+  S.Struct({
+    signalGroups: S.optional(IssueCountList),
+    rootResources: S.optional(DatabaseResourceList),
+  }),
+).annotate({
+  identifier: "DatabaseResourceGroup",
+}) as any as S.Schema<DatabaseResourceGroup>;
 
 export type DatabaseResourceGroupList = ReadonlyArray<DatabaseResourceGroup>;
-export const DatabaseResourceGroupList = /*@__PURE__*/ S.Array(DatabaseResourceGroup) as any as S.Schema<DatabaseResourceGroupList>;
+export const DatabaseResourceGroupList = /*@__PURE__*/ S.Array(
+  DatabaseResourceGroup,
+) as any as S.Schema<DatabaseResourceGroupList>;
 
 /** QueryDatabaseResourceGroupsResponse represents the response message containing a list of resource groups. */
 export interface QueryDatabaseResourceGroupsResponse {
@@ -1452,13 +2409,15 @@ export interface QueryDatabaseResourceGroupsResponse {
   totalSize?: string;
 }
 export const QueryDatabaseResourceGroupsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceGroups": S.optional(DatabaseResourceGroupList),
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-  "totalSize": S.optional(S.String),
-}),
-).annotate({ identifier: "QueryDatabaseResourceGroupsResponse" }) as any as S.Schema<QueryDatabaseResourceGroupsResponse>;
+  S.Struct({
+    resourceGroups: S.optional(DatabaseResourceGroupList),
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+    totalSize: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "QueryDatabaseResourceGroupsResponse",
+}) as any as S.Schema<QueryDatabaseResourceGroupsResponse>;
 
 /** QueryIssuesRequest is the request to get a list of issues. */
 export interface QueryIssuesRequest {
@@ -1476,25 +2435,35 @@ export interface QueryIssuesRequest {
   pageSize?: number;
 }
 export const QueryIssuesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.optional(S.String),
-  "pageToken": S.optional(S.String),
-  "filter": S.optional(S.String),
-  "orderBy": S.optional(S.String),
-  "signalProductsFilters": S.optional(SignalProductsFiltersList),
-  "pageSize": S.optional(S.Number),
-}),
-).annotate({ identifier: "QueryIssuesRequest" }) as any as S.Schema<QueryIssuesRequest>;
+  S.Struct({
+    parent: S.optional(S.String),
+    pageToken: S.optional(S.String),
+    filter: S.optional(S.String),
+    orderBy: S.optional(S.String),
+    signalProductsFilters: S.optional(SignalProductsFiltersList),
+    pageSize: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "QueryIssuesRequest",
+}) as any as S.Schema<QueryIssuesRequest>;
 
 export interface QueryIssuesV1betaRequest {
   /** Request body */
   body?: QueryIssuesRequest;
 }
 export const QueryIssuesV1betaRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(QueryIssuesRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta:queryIssues","baseUrl":"https://databasecenter.googleapis.com/"})),
-).annotate({ identifier: "QueryIssuesV1betaRequest" }) as any as S.Schema<QueryIssuesV1betaRequest>;
+  S.Struct({
+    body: S.optional(QueryIssuesRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta:queryIssues",
+      baseUrl: "https://databasecenter.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "QueryIssuesV1betaRequest",
+}) as any as S.Schema<QueryIssuesV1betaRequest>;
 
 /** DatabaseResource and Issue associated with it. */
 export interface DatabaseResourceIssue {
@@ -1504,14 +2473,18 @@ export interface DatabaseResourceIssue {
   resource?: DatabaseResource;
 }
 export const DatabaseResourceIssue = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "signal": S.optional(Signal),
-  "resource": S.optional(DatabaseResource),
-}),
-).annotate({ identifier: "DatabaseResourceIssue" }) as any as S.Schema<DatabaseResourceIssue>;
+  S.Struct({
+    signal: S.optional(Signal),
+    resource: S.optional(DatabaseResource),
+  }),
+).annotate({
+  identifier: "DatabaseResourceIssue",
+}) as any as S.Schema<DatabaseResourceIssue>;
 
 export type DatabaseResourceIssueList = ReadonlyArray<DatabaseResourceIssue>;
-export const DatabaseResourceIssueList = /*@__PURE__*/ S.Array(DatabaseResourceIssue) as any as S.Schema<DatabaseResourceIssueList>;
+export const DatabaseResourceIssueList = /*@__PURE__*/ S.Array(
+  DatabaseResourceIssue,
+) as any as S.Schema<DatabaseResourceIssueList>;
 
 /** QueryIssuesResponse is the response containing a list of issues. */
 export interface QueryIssuesResponse {
@@ -1523,12 +2496,14 @@ export interface QueryIssuesResponse {
   nextPageToken?: string;
 }
 export const QueryIssuesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceIssues": S.optional(DatabaseResourceIssueList),
-  "unreachable": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "QueryIssuesResponse" }) as any as S.Schema<QueryIssuesResponse>;
+  S.Struct({
+    resourceIssues: S.optional(DatabaseResourceIssueList),
+    unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "QueryIssuesResponse",
+}) as any as S.Schema<QueryIssuesResponse>;
 
 export interface QueryProductsV1betaRequest {
   /** Required. Parent can be a project, a folder, or an organization. The allowed values are: * projects/{PROJECT_ID}/locations/{LOCATION} (e.g.,"projects/foo-bar/locations/us-central1") * projects/{PROJECT_NUMBER}/locations/{LOCATION} (e.g.,"projects/12345678/locations/us-central1") * folders/{FOLDER_NUMBER}/locations/{LOCATION} (e.g.,"folders/1234567/locations/us-central1") * organizations/{ORGANIZATION_NUMBER}/locations/{LOCATION} (e.g.,"organizations/123456/locations/us-central1") * projects/{PROJECT_ID} (e.g., "projects/foo-bar") * projects/{PROJECT_NUMBER} (e.g., "projects/12345678") * folders/{FOLDER_NUMBER} (e.g., "folders/1234567") * organizations/{ORGANIZATION_NUMBER} (e.g., "organizations/123456") */
@@ -1539,12 +2514,20 @@ export interface QueryProductsV1betaRequest {
   pageSize?: number;
 }
 export const QueryProductsV1betaRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta:queryProducts","baseUrl":"https://databasecenter.googleapis.com/"})),
-).annotate({ identifier: "QueryProductsV1betaRequest" }) as any as S.Schema<QueryProductsV1betaRequest>;
+  S.Struct({
+    parent: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta:queryProducts",
+      baseUrl: "https://databasecenter.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "QueryProductsV1betaRequest",
+}) as any as S.Schema<QueryProductsV1betaRequest>;
 
 /** QueryProductsResponse represents the response containing a list of products. */
 export interface QueryProductsResponse {
@@ -1556,12 +2539,14 @@ export interface QueryProductsResponse {
   unreachable?: StringList;
 }
 export const QueryProductsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "products": S.optional(ProductList),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "QueryProductsResponse" }) as any as S.Schema<QueryProductsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    products: S.optional(ProductList),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "QueryProductsResponse",
+}) as any as S.Schema<QueryProductsResponse>;
 
 export type AggregateFleetV1betaError = NotFound | Forbidden | GcpOpError;
 /** AggregateFleet provides statistics about the fleet grouped by various fields. */
@@ -1576,10 +2561,18 @@ export const aggregateFleetV1beta: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type AggregateIssueStatsV1betaError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type AggregateIssueStatsV1betaError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** AggregateIssueStats provides database resource issues statistics. */
 export const aggregateIssueStatsV1beta: API.OperationMethod<
   AggregateIssueStatsV1betaRequest,
@@ -1594,7 +2587,12 @@ export const aggregateIssueStatsV1beta: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AggregateQueryStatsFoldersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type AggregateQueryStatsFoldersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** AggregateQueryStats provides database resource query execution statistics. */
 export const aggregateQueryStatsFolders: API.OperationMethod<
   AggregateQueryStatsFoldersRequest,
@@ -1609,7 +2607,12 @@ export const aggregateQueryStatsFolders: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AggregateQueryStatsOrganizationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type AggregateQueryStatsOrganizationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** AggregateQueryStats provides database resource query execution statistics. */
 export const aggregateQueryStatsOrganizations: API.OperationMethod<
   AggregateQueryStatsOrganizationsRequest,
@@ -1624,7 +2627,12 @@ export const aggregateQueryStatsOrganizations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AggregateQueryStatsProjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type AggregateQueryStatsProjectsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** AggregateQueryStats provides database resource query execution statistics. */
 export const aggregateQueryStatsProjects: API.OperationMethod<
   AggregateQueryStatsProjectsRequest,
@@ -1639,7 +2647,12 @@ export const aggregateQueryStatsProjects: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type QueryDatabaseResourceGroupsV1betaError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type QueryDatabaseResourceGroupsV1betaError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** QueryDatabaseResourceGroups returns paginated results of database groups. */
 export const queryDatabaseResourceGroupsV1beta: API.OperationMethod<
   QueryDatabaseResourceGroupsV1betaRequest,
@@ -1654,7 +2667,12 @@ export const queryDatabaseResourceGroupsV1beta: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type QueryIssuesV1betaError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type QueryIssuesV1betaError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** QueryIssues provides a list of issues and recommendations that a user has access to and that are within the requested scope. */
 export const queryIssuesV1beta: API.OperationMethod<
   QueryIssuesV1betaRequest,
@@ -1682,6 +2700,8 @@ export const queryProductsV1beta: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
-

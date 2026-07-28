@@ -174,15 +174,32 @@ export const RulesBulkDeleteResultItemFilterDeletedFilter =
     identifier: "RulesBulkDeleteResultItemFilterDeletedFilter",
   }) as any as S.Schema<RulesBulkDeleteResultItemFilterDeletedFilter>;
 
-export type RulesBulkDeleteResultItemFilter =
-  | RulesBulkDeleteResultItemFilterFirewallFilter
-  | RulesBulkDeleteResultItemFilterDeletedFilter;
-export const RulesBulkDeleteResultItemFilter = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["id", "description", "expression", "paused", "ref"],
-    ["id", "deleted"],
-  ]),
-);
+export interface RulesBulkDeleteResultItemFilter {
+  /** The unique identifier of the filter. */
+  id?: string;
+  /** An informative summary of the filter. */
+  description?: string;
+  /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
+  expression?: string;
+  /** When true, indicates that the filter is currently paused. */
+  paused?: boolean;
+  /** A short reference tag. Allows you to select related filters. */
+  ref?: string;
+  /** When true, indicates that the firewall rule was deleted. */
+  deleted?: boolean;
+}
+export const RulesBulkDeleteResultItemFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    description: S.optional(S.String),
+    expression: S.optional(S.String),
+    paused: S.optional(S.Boolean),
+    ref: S.optional(S.String),
+    deleted: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "RulesBulkDeleteResultItemFilter",
+}) as any as S.Schema<RulesBulkDeleteResultItemFilter>;
 
 export type RulesBulkDeleteResultItemProductsItem =
   | "zoneLockdown"
@@ -323,15 +340,32 @@ export const RulesBulkEditResultItemFilterDeletedFilter =
     identifier: "RulesBulkEditResultItemFilterDeletedFilter",
   }) as any as S.Schema<RulesBulkEditResultItemFilterDeletedFilter>;
 
-export type RulesBulkEditResultItemFilter =
-  | RulesBulkEditResultItemFilterFirewallFilter
-  | RulesBulkEditResultItemFilterDeletedFilter;
-export const RulesBulkEditResultItemFilter = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["id", "description", "expression", "paused", "ref"],
-    ["id", "deleted"],
-  ]),
-);
+export interface RulesBulkEditResultItemFilter {
+  /** The unique identifier of the filter. */
+  id?: string;
+  /** An informative summary of the filter. */
+  description?: string;
+  /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
+  expression?: string;
+  /** When true, indicates that the filter is currently paused. */
+  paused?: boolean;
+  /** A short reference tag. Allows you to select related filters. */
+  ref?: string;
+  /** When true, indicates that the firewall rule was deleted. */
+  deleted?: boolean;
+}
+export const RulesBulkEditResultItemFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    description: S.optional(S.String),
+    expression: S.optional(S.String),
+    paused: S.optional(S.Boolean),
+    ref: S.optional(S.String),
+    deleted: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "RulesBulkEditResultItemFilter",
+}) as any as S.Schema<RulesBulkEditResultItemFilter>;
 
 export type RulesBulkEditResultItemProductsItem =
   | "zoneLockdown"
@@ -471,15 +505,32 @@ export const RulesBulkUpdateResultItemFilterDeletedFilter =
     identifier: "RulesBulkUpdateResultItemFilterDeletedFilter",
   }) as any as S.Schema<RulesBulkUpdateResultItemFilterDeletedFilter>;
 
-export type RulesBulkUpdateResultItemFilter =
-  | RulesBulkUpdateResultItemFilterFirewallFilter
-  | RulesBulkUpdateResultItemFilterDeletedFilter;
-export const RulesBulkUpdateResultItemFilter = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["id", "description", "expression", "paused", "ref"],
-    ["id", "deleted"],
-  ]),
-);
+export interface RulesBulkUpdateResultItemFilter {
+  /** The unique identifier of the filter. */
+  id?: string;
+  /** An informative summary of the filter. */
+  description?: string;
+  /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
+  expression?: string;
+  /** When true, indicates that the filter is currently paused. */
+  paused?: boolean;
+  /** A short reference tag. Allows you to select related filters. */
+  ref?: string;
+  /** When true, indicates that the firewall rule was deleted. */
+  deleted?: boolean;
+}
+export const RulesBulkUpdateResultItemFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    description: S.optional(S.String),
+    expression: S.optional(S.String),
+    paused: S.optional(S.Boolean),
+    ref: S.optional(S.String),
+    deleted: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "RulesBulkUpdateResultItemFilter",
+}) as any as S.Schema<RulesBulkUpdateResultItemFilter>;
 
 export type RulesBulkUpdateResultItemProductsItem =
   | "zoneLockdown"
@@ -860,22 +911,34 @@ export const AccessRulesCreateResponseConfigurationCountryConfiguration =
     identifier: "AccessRulesCreateResponseConfigurationCountryConfiguration",
   }) as any as S.Schema<AccessRulesCreateResponseConfigurationCountryConfiguration>;
 
-export type AccessRulesCreateResponseConfiguration =
-  | AccessRulesCreateResponseConfigurationAccessRuleIPConfiguration
-  | AccessRulesCreateResponseConfigurationIPV6Configuration
-  | AccessRulesCreateResponseConfigurationAccessRuleCIDRConfiguration
-  | AccessRulesCreateResponseConfigurationASNConfiguration
-  | AccessRulesCreateResponseConfigurationCountryConfiguration;
-export const AccessRulesCreateResponseConfiguration =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["target", "value"],
-      ["target", "value"],
-      ["target", "value"],
-      ["target", "value"],
-      ["target", "value"],
-    ]),
-  );
+export interface AccessRulesCreateResponseConfiguration {
+  /** The configuration target. You must set the target to `ip` when specifying an IP address in the rule. */
+  target?:
+    | AccessRulesCreateResponseConfigurationAccessRuleIPConfigurationTarget
+    | AccessRulesCreateResponseConfigurationIPV6ConfigurationTarget
+    | AccessRulesCreateResponseConfigurationAccessRuleCIDRConfigurationTarget
+    | AccessRulesCreateResponseConfigurationASNConfigurationTarget
+    | AccessRulesCreateResponseConfigurationCountryConfigurationTarget;
+  /** The IP address to match. This address will be compared to the IP address of incoming requests. */
+  value?: string;
+}
+export const AccessRulesCreateResponseConfiguration = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      target: S.optional(
+        S.Union(
+          AccessRulesCreateResponseConfigurationAccessRuleIPConfigurationTarget,
+          AccessRulesCreateResponseConfigurationIPV6ConfigurationTarget,
+          AccessRulesCreateResponseConfigurationAccessRuleCIDRConfigurationTarget,
+          AccessRulesCreateResponseConfigurationASNConfigurationTarget,
+          AccessRulesCreateResponseConfigurationCountryConfigurationTarget,
+        ),
+      ),
+      value: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "AccessRulesCreateResponseConfiguration",
+}) as any as S.Schema<AccessRulesCreateResponseConfiguration>;
 
 export type AccessRulesCreateResponseMode =
   | "block"
@@ -1119,16 +1182,28 @@ export const LockdownsCreateResponseConfigurationsLockdownCIDRConfiguration =
       "LockdownsCreateResponseConfigurationsLockdownCIDRConfiguration",
   }) as any as S.Schema<LockdownsCreateResponseConfigurationsLockdownCIDRConfiguration>;
 
-export type LockdownsCreateResponseConfigurations =
-  | LockdownsCreateResponseConfigurationsLockdownIPConfiguration
-  | LockdownsCreateResponseConfigurationsLockdownCIDRConfiguration;
-export const LockdownsCreateResponseConfigurations =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["target", "value"],
-      ["target", "value"],
-    ]),
-  );
+export interface LockdownsCreateResponseConfigurations {
+  /** The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule. */
+  target?:
+    | LockdownsCreateResponseConfigurationsLockdownIPConfigurationTarget
+    | LockdownsCreateResponseConfigurationsLockdownCIDRConfigurationTarget;
+  /** The IP address to match. This address will be compared to the IP address of incoming requests. */
+  value?: string;
+}
+export const LockdownsCreateResponseConfigurations = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      target: S.optional(
+        S.Union(
+          LockdownsCreateResponseConfigurationsLockdownIPConfigurationTarget,
+          LockdownsCreateResponseConfigurationsLockdownCIDRConfigurationTarget,
+        ),
+      ),
+      value: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "LockdownsCreateResponseConfigurations",
+}) as any as S.Schema<LockdownsCreateResponseConfigurations>;
 
 export type LockdownsCreateResponseUrlsList = ReadonlyArray<string>;
 export const LockdownsCreateResponseUrlsList = /*@__PURE__*/ S.Array(
@@ -1307,15 +1382,32 @@ export const RulesCreateResultItemFilterDeletedFilter = /*@__PURE__*/ S.suspend(
   identifier: "RulesCreateResultItemFilterDeletedFilter",
 }) as any as S.Schema<RulesCreateResultItemFilterDeletedFilter>;
 
-export type RulesCreateResultItemFilter =
-  | RulesCreateResultItemFilterFirewallFilter
-  | RulesCreateResultItemFilterDeletedFilter;
-export const RulesCreateResultItemFilter = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["id", "description", "expression", "paused", "ref"],
-    ["id", "deleted"],
-  ]),
-);
+export interface RulesCreateResultItemFilter {
+  /** The unique identifier of the filter. */
+  id?: string;
+  /** An informative summary of the filter. */
+  description?: string;
+  /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
+  expression?: string;
+  /** When true, indicates that the filter is currently paused. */
+  paused?: boolean;
+  /** A short reference tag. Allows you to select related filters. */
+  ref?: string;
+  /** When true, indicates that the firewall rule was deleted. */
+  deleted?: boolean;
+}
+export const RulesCreateResultItemFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    description: S.optional(S.String),
+    expression: S.optional(S.String),
+    paused: S.optional(S.Boolean),
+    ref: S.optional(S.String),
+    deleted: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "RulesCreateResultItemFilter",
+}) as any as S.Schema<RulesCreateResultItemFilter>;
 
 export type RulesCreateResultItemProductsItem =
   | "zoneLockdown"
@@ -1812,15 +1904,32 @@ export const RulesDeleteResponseFilterDeletedFilter = /*@__PURE__*/ S.suspend(
   identifier: "RulesDeleteResponseFilterDeletedFilter",
 }) as any as S.Schema<RulesDeleteResponseFilterDeletedFilter>;
 
-export type RulesDeleteResponseFilter =
-  | RulesDeleteResponseFilterFirewallFilter
-  | RulesDeleteResponseFilterDeletedFilter;
-export const RulesDeleteResponseFilter = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["id", "description", "expression", "paused", "ref"],
-    ["id", "deleted"],
-  ]),
-);
+export interface RulesDeleteResponseFilter {
+  /** The unique identifier of the filter. */
+  id?: string;
+  /** An informative summary of the filter. */
+  description?: string;
+  /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
+  expression?: string;
+  /** When true, indicates that the filter is currently paused. */
+  paused?: boolean;
+  /** A short reference tag. Allows you to select related filters. */
+  ref?: string;
+  /** When true, indicates that the firewall rule was deleted. */
+  deleted?: boolean;
+}
+export const RulesDeleteResponseFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    description: S.optional(S.String),
+    expression: S.optional(S.String),
+    paused: S.optional(S.Boolean),
+    ref: S.optional(S.String),
+    deleted: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "RulesDeleteResponseFilter",
+}) as any as S.Schema<RulesDeleteResponseFilter>;
 
 export type RulesDeleteResponseProductsItem =
   | "zoneLockdown"
@@ -2127,21 +2236,33 @@ export const AccessRulesGetResponseConfigurationCountryConfiguration =
     identifier: "AccessRulesGetResponseConfigurationCountryConfiguration",
   }) as any as S.Schema<AccessRulesGetResponseConfigurationCountryConfiguration>;
 
-export type AccessRulesGetResponseConfiguration =
-  | AccessRulesGetResponseConfigurationAccessRuleIPConfiguration
-  | AccessRulesGetResponseConfigurationIPV6Configuration
-  | AccessRulesGetResponseConfigurationAccessRuleCIDRConfiguration
-  | AccessRulesGetResponseConfigurationASNConfiguration
-  | AccessRulesGetResponseConfigurationCountryConfiguration;
-export const AccessRulesGetResponseConfiguration = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["target", "value"],
-    ["target", "value"],
-    ["target", "value"],
-    ["target", "value"],
-    ["target", "value"],
-  ]),
-);
+export interface AccessRulesGetResponseConfiguration {
+  /** The configuration target. You must set the target to `ip` when specifying an IP address in the rule. */
+  target?:
+    | AccessRulesGetResponseConfigurationAccessRuleIPConfigurationTarget
+    | AccessRulesGetResponseConfigurationIPV6ConfigurationTarget
+    | AccessRulesGetResponseConfigurationAccessRuleCIDRConfigurationTarget
+    | AccessRulesGetResponseConfigurationASNConfigurationTarget
+    | AccessRulesGetResponseConfigurationCountryConfigurationTarget;
+  /** The IP address to match. This address will be compared to the IP address of incoming requests. */
+  value?: string;
+}
+export const AccessRulesGetResponseConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    target: S.optional(
+      S.Union(
+        AccessRulesGetResponseConfigurationAccessRuleIPConfigurationTarget,
+        AccessRulesGetResponseConfigurationIPV6ConfigurationTarget,
+        AccessRulesGetResponseConfigurationAccessRuleCIDRConfigurationTarget,
+        AccessRulesGetResponseConfigurationASNConfigurationTarget,
+        AccessRulesGetResponseConfigurationCountryConfigurationTarget,
+      ),
+    ),
+    value: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AccessRulesGetResponseConfiguration",
+}) as any as S.Schema<AccessRulesGetResponseConfiguration>;
 
 export type AccessRulesGetResponseMode =
   | "block"
@@ -2300,15 +2421,27 @@ export const LockdownsGetResponseConfigurationsLockdownCIDRConfiguration =
     identifier: "LockdownsGetResponseConfigurationsLockdownCIDRConfiguration",
   }) as any as S.Schema<LockdownsGetResponseConfigurationsLockdownCIDRConfiguration>;
 
-export type LockdownsGetResponseConfigurations =
-  | LockdownsGetResponseConfigurationsLockdownIPConfiguration
-  | LockdownsGetResponseConfigurationsLockdownCIDRConfiguration;
-export const LockdownsGetResponseConfigurations = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["target", "value"],
-    ["target", "value"],
-  ]),
-);
+export interface LockdownsGetResponseConfigurations {
+  /** The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule. */
+  target?:
+    | LockdownsGetResponseConfigurationsLockdownIPConfigurationTarget
+    | LockdownsGetResponseConfigurationsLockdownCIDRConfigurationTarget;
+  /** The IP address to match. This address will be compared to the IP address of incoming requests. */
+  value?: string;
+}
+export const LockdownsGetResponseConfigurations = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    target: S.optional(
+      S.Union(
+        LockdownsGetResponseConfigurationsLockdownIPConfigurationTarget,
+        LockdownsGetResponseConfigurationsLockdownCIDRConfigurationTarget,
+      ),
+    ),
+    value: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "LockdownsGetResponseConfigurations",
+}) as any as S.Schema<LockdownsGetResponseConfigurations>;
 
 export type LockdownsGetResponseUrlsList = ReadonlyArray<string>;
 export const LockdownsGetResponseUrlsList = /*@__PURE__*/ S.Array(
@@ -2417,15 +2550,32 @@ export const RulesGetResponseFilterDeletedFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesGetResponseFilterDeletedFilter",
 }) as any as S.Schema<RulesGetResponseFilterDeletedFilter>;
 
-export type RulesGetResponseFilter =
-  | RulesGetResponseFilterFirewallFilter
-  | RulesGetResponseFilterDeletedFilter;
-export const RulesGetResponseFilter = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["id", "description", "expression", "paused", "ref"],
-    ["id", "deleted"],
-  ]),
-);
+export interface RulesGetResponseFilter {
+  /** The unique identifier of the filter. */
+  id?: string;
+  /** An informative summary of the filter. */
+  description?: string;
+  /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
+  expression?: string;
+  /** When true, indicates that the filter is currently paused. */
+  paused?: boolean;
+  /** A short reference tag. Allows you to select related filters. */
+  ref?: string;
+  /** When true, indicates that the firewall rule was deleted. */
+  deleted?: boolean;
+}
+export const RulesGetResponseFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    description: S.optional(S.String),
+    expression: S.optional(S.String),
+    paused: S.optional(S.Boolean),
+    ref: S.optional(S.String),
+    deleted: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "RulesGetResponseFilter",
+}) as any as S.Schema<RulesGetResponseFilter>;
 
 export type RulesGetResponseProductsItem =
   | "zoneLockdown"
@@ -3009,22 +3159,34 @@ export const AccessRulesListResultItemConfigurationCountryConfiguration =
     identifier: "AccessRulesListResultItemConfigurationCountryConfiguration",
   }) as any as S.Schema<AccessRulesListResultItemConfigurationCountryConfiguration>;
 
-export type AccessRulesListResultItemConfiguration =
-  | AccessRulesListResultItemConfigurationAccessRuleIPConfiguration
-  | AccessRulesListResultItemConfigurationIPV6Configuration
-  | AccessRulesListResultItemConfigurationAccessRuleCIDRConfiguration
-  | AccessRulesListResultItemConfigurationASNConfiguration
-  | AccessRulesListResultItemConfigurationCountryConfiguration;
-export const AccessRulesListResultItemConfiguration =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["target", "value"],
-      ["target", "value"],
-      ["target", "value"],
-      ["target", "value"],
-      ["target", "value"],
-    ]),
-  );
+export interface AccessRulesListResultItemConfiguration {
+  /** The configuration target. You must set the target to `ip` when specifying an IP address in the rule. */
+  target?:
+    | AccessRulesListResultItemConfigurationAccessRuleIPConfigurationTarget
+    | AccessRulesListResultItemConfigurationIPV6ConfigurationTarget
+    | AccessRulesListResultItemConfigurationAccessRuleCIDRConfigurationTarget
+    | AccessRulesListResultItemConfigurationASNConfigurationTarget
+    | AccessRulesListResultItemConfigurationCountryConfigurationTarget;
+  /** The IP address to match. This address will be compared to the IP address of incoming requests. */
+  value?: string;
+}
+export const AccessRulesListResultItemConfiguration = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      target: S.optional(
+        S.Union(
+          AccessRulesListResultItemConfigurationAccessRuleIPConfigurationTarget,
+          AccessRulesListResultItemConfigurationIPV6ConfigurationTarget,
+          AccessRulesListResultItemConfigurationAccessRuleCIDRConfigurationTarget,
+          AccessRulesListResultItemConfigurationASNConfigurationTarget,
+          AccessRulesListResultItemConfigurationCountryConfigurationTarget,
+        ),
+      ),
+      value: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "AccessRulesListResultItemConfiguration",
+}) as any as S.Schema<AccessRulesListResultItemConfiguration>;
 
 export type AccessRulesListResultItemMode =
   | "block"
@@ -3256,16 +3418,28 @@ export const LockdownsListResultItemConfigurationsLockdownCIDRConfiguration =
       "LockdownsListResultItemConfigurationsLockdownCIDRConfiguration",
   }) as any as S.Schema<LockdownsListResultItemConfigurationsLockdownCIDRConfiguration>;
 
-export type LockdownsListResultItemConfigurations =
-  | LockdownsListResultItemConfigurationsLockdownIPConfiguration
-  | LockdownsListResultItemConfigurationsLockdownCIDRConfiguration;
-export const LockdownsListResultItemConfigurations =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["target", "value"],
-      ["target", "value"],
-    ]),
-  );
+export interface LockdownsListResultItemConfigurations {
+  /** The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule. */
+  target?:
+    | LockdownsListResultItemConfigurationsLockdownIPConfigurationTarget
+    | LockdownsListResultItemConfigurationsLockdownCIDRConfigurationTarget;
+  /** The IP address to match. This address will be compared to the IP address of incoming requests. */
+  value?: string;
+}
+export const LockdownsListResultItemConfigurations = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      target: S.optional(
+        S.Union(
+          LockdownsListResultItemConfigurationsLockdownIPConfigurationTarget,
+          LockdownsListResultItemConfigurationsLockdownCIDRConfigurationTarget,
+        ),
+      ),
+      value: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "LockdownsListResultItemConfigurations",
+}) as any as S.Schema<LockdownsListResultItemConfigurations>;
 
 export type LockdownsListResultItemUrlsList = ReadonlyArray<string>;
 export const LockdownsListResultItemUrlsList = /*@__PURE__*/ S.Array(
@@ -3411,15 +3585,32 @@ export const RulesListResultItemFilterDeletedFilter = /*@__PURE__*/ S.suspend(
   identifier: "RulesListResultItemFilterDeletedFilter",
 }) as any as S.Schema<RulesListResultItemFilterDeletedFilter>;
 
-export type RulesListResultItemFilter =
-  | RulesListResultItemFilterFirewallFilter
-  | RulesListResultItemFilterDeletedFilter;
-export const RulesListResultItemFilter = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["id", "description", "expression", "paused", "ref"],
-    ["id", "deleted"],
-  ]),
-);
+export interface RulesListResultItemFilter {
+  /** The unique identifier of the filter. */
+  id?: string;
+  /** An informative summary of the filter. */
+  description?: string;
+  /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
+  expression?: string;
+  /** When true, indicates that the filter is currently paused. */
+  paused?: boolean;
+  /** A short reference tag. Allows you to select related filters. */
+  ref?: string;
+  /** When true, indicates that the firewall rule was deleted. */
+  deleted?: boolean;
+}
+export const RulesListResultItemFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    description: S.optional(S.String),
+    expression: S.optional(S.String),
+    paused: S.optional(S.Boolean),
+    ref: S.optional(S.String),
+    deleted: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "RulesListResultItemFilter",
+}) as any as S.Schema<RulesListResultItemFilter>;
 
 export type RulesListResultItemProductsItem =
   | "zoneLockdown"
@@ -4145,42 +4336,56 @@ export const WafPackagesRulesListResultItemWAFManagedRulesTraditionalAllowRule =
       "WafPackagesRulesListResultItemWAFManagedRulesTraditionalAllowRule",
   }) as any as S.Schema<WafPackagesRulesListResultItemWAFManagedRulesTraditionalAllowRule>;
 
-export type WafPackagesRulesListResultItem =
-  | WafPackagesRulesListResultItemWAFManagedRulesAnomalyRule
-  | WafPackagesRulesListResultItemWAFManagedRulesTraditionalDenyRule
-  | WafPackagesRulesListResultItemWAFManagedRulesTraditionalAllowRule;
-export const WafPackagesRulesListResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    [
-      "id",
-      "allowedModes",
-      "description",
-      "group",
-      "mode",
-      "packageId",
-      "priority",
-    ],
-    [
-      "id",
-      "allowedModes",
-      "defaultMode",
-      "description",
-      "group",
-      "mode",
-      "packageId",
-      "priority",
-    ],
-    [
-      "id",
-      "allowedModes",
-      "description",
-      "group",
-      "mode",
-      "packageId",
-      "priority",
-    ],
-  ]),
-);
+export interface WafPackagesRulesListResultItem {
+  /** Defines the unique identifier of the WAF rule. */
+  id: string;
+  /** Defines the available modes for the current WAF rule. Applies to anomaly detection WAF rules. */
+  allowedModes:
+    | WafPackagesRulesListResultItemWAFManagedRulesAnomalyRuleAllowedModesList
+    | WafPackagesRulesListResultItemWAFManagedRulesTraditionalDenyRuleAllowedModesList
+    | WafPackagesRulesListResultItemWAFManagedRulesTraditionalAllowRuleAllowedModesList;
+  /** Defines the public description of the WAF rule. */
+  description: string;
+  /** Defines the rule group to which the current WAF rule belongs. */
+  group: WafPackagesRulesListResultItemWAFManagedRulesAnomalyRuleGroup;
+  /** Defines the mode anomaly. When set to `on`, the current WAF rule will be used when evaluating the request. Applies to anomaly detection WAF rules. */
+  mode:
+    | WafPackagesRulesListResultItemWAFManagedRulesAnomalyRuleMode
+    | WafPackagesRulesListResultItemWAFManagedRulesTraditionalDenyRuleMode
+    | WafPackagesRulesListResultItemWAFManagedRulesTraditionalAllowRuleMode;
+  /** Defines the unique identifier of a WAF package. */
+  packageId: string;
+  /** Defines the order in which the individual WAF rule is executed within its rule group. */
+  priority: string;
+  /** Defines the default action/mode of a rule. */
+  defaultMode?: WafPackagesRulesListResultItemWAFManagedRulesTraditionalDenyRuleDefaultMode;
+}
+export const WafPackagesRulesListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    allowedModes: S.Union(
+      WafPackagesRulesListResultItemWAFManagedRulesAnomalyRuleAllowedModesList,
+      WafPackagesRulesListResultItemWAFManagedRulesTraditionalDenyRuleAllowedModesList,
+      WafPackagesRulesListResultItemWAFManagedRulesTraditionalAllowRuleAllowedModesList,
+    ).pipe(T.Body("allowed_modes")),
+    description: S.String,
+    group: WafPackagesRulesListResultItemWAFManagedRulesAnomalyRuleGroup,
+    mode: S.Union(
+      WafPackagesRulesListResultItemWAFManagedRulesAnomalyRuleMode,
+      WafPackagesRulesListResultItemWAFManagedRulesTraditionalDenyRuleMode,
+      WafPackagesRulesListResultItemWAFManagedRulesTraditionalAllowRuleMode,
+    ),
+    packageId: S.String.pipe(T.Body("package_id")),
+    priority: S.String,
+    defaultMode: S.optional(
+      WafPackagesRulesListResultItemWAFManagedRulesTraditionalDenyRuleDefaultMode.pipe(
+        T.Body("default_mode"),
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "WafPackagesRulesListResultItem",
+}) as any as S.Schema<WafPackagesRulesListResultItem>;
 
 export type WafPackagesRulesListResultList =
   ReadonlyArray<WafPackagesRulesListResultItem>;
@@ -4566,22 +4771,34 @@ export const AccessRulesEditResponseConfigurationCountryConfiguration =
     identifier: "AccessRulesEditResponseConfigurationCountryConfiguration",
   }) as any as S.Schema<AccessRulesEditResponseConfigurationCountryConfiguration>;
 
-export type AccessRulesEditResponseConfiguration =
-  | AccessRulesEditResponseConfigurationAccessRuleIPConfiguration
-  | AccessRulesEditResponseConfigurationIPV6Configuration
-  | AccessRulesEditResponseConfigurationAccessRuleCIDRConfiguration
-  | AccessRulesEditResponseConfigurationASNConfiguration
-  | AccessRulesEditResponseConfigurationCountryConfiguration;
-export const AccessRulesEditResponseConfiguration =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["target", "value"],
-      ["target", "value"],
-      ["target", "value"],
-      ["target", "value"],
-      ["target", "value"],
-    ]),
-  );
+export interface AccessRulesEditResponseConfiguration {
+  /** The configuration target. You must set the target to `ip` when specifying an IP address in the rule. */
+  target?:
+    | AccessRulesEditResponseConfigurationAccessRuleIPConfigurationTarget
+    | AccessRulesEditResponseConfigurationIPV6ConfigurationTarget
+    | AccessRulesEditResponseConfigurationAccessRuleCIDRConfigurationTarget
+    | AccessRulesEditResponseConfigurationASNConfigurationTarget
+    | AccessRulesEditResponseConfigurationCountryConfigurationTarget;
+  /** The IP address to match. This address will be compared to the IP address of incoming requests. */
+  value?: string;
+}
+export const AccessRulesEditResponseConfiguration = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      target: S.optional(
+        S.Union(
+          AccessRulesEditResponseConfigurationAccessRuleIPConfigurationTarget,
+          AccessRulesEditResponseConfigurationIPV6ConfigurationTarget,
+          AccessRulesEditResponseConfigurationAccessRuleCIDRConfigurationTarget,
+          AccessRulesEditResponseConfigurationASNConfigurationTarget,
+          AccessRulesEditResponseConfigurationCountryConfigurationTarget,
+        ),
+      ),
+      value: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "AccessRulesEditResponseConfiguration",
+}) as any as S.Schema<AccessRulesEditResponseConfiguration>;
 
 export type AccessRulesEditResponseMode =
   | "block"
@@ -4754,15 +4971,32 @@ export const RulesEditResultItemFilterDeletedFilter = /*@__PURE__*/ S.suspend(
   identifier: "RulesEditResultItemFilterDeletedFilter",
 }) as any as S.Schema<RulesEditResultItemFilterDeletedFilter>;
 
-export type RulesEditResultItemFilter =
-  | RulesEditResultItemFilterFirewallFilter
-  | RulesEditResultItemFilterDeletedFilter;
-export const RulesEditResultItemFilter = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["id", "description", "expression", "paused", "ref"],
-    ["id", "deleted"],
-  ]),
-);
+export interface RulesEditResultItemFilter {
+  /** The unique identifier of the filter. */
+  id?: string;
+  /** An informative summary of the filter. */
+  description?: string;
+  /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
+  expression?: string;
+  /** When true, indicates that the filter is currently paused. */
+  paused?: boolean;
+  /** A short reference tag. Allows you to select related filters. */
+  ref?: string;
+  /** When true, indicates that the firewall rule was deleted. */
+  deleted?: boolean;
+}
+export const RulesEditResultItemFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    description: S.optional(S.String),
+    expression: S.optional(S.String),
+    paused: S.optional(S.Boolean),
+    ref: S.optional(S.String),
+    deleted: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "RulesEditResultItemFilter",
+}) as any as S.Schema<RulesEditResultItemFilter>;
 
 export type RulesEditResultItemProductsItem =
   | "zoneLockdown"
@@ -5095,42 +5329,56 @@ export const WafPackagesRulesEditResultWAFManagedRulesTraditionalAllowRule =
     identifier: "WafPackagesRulesEditResultWAFManagedRulesTraditionalAllowRule",
   }) as any as S.Schema<WafPackagesRulesEditResultWAFManagedRulesTraditionalAllowRule>;
 
-export type WafPackagesRulesEditResult =
-  | WafPackagesRulesEditResultWAFManagedRulesAnomalyRule
-  | WafPackagesRulesEditResultWAFManagedRulesTraditionalDenyRule
-  | WafPackagesRulesEditResultWAFManagedRulesTraditionalAllowRule;
-export const WafPackagesRulesEditResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    [
-      "id",
-      "allowedModes",
-      "description",
-      "group",
-      "mode",
-      "packageId",
-      "priority",
-    ],
-    [
-      "id",
-      "allowedModes",
-      "defaultMode",
-      "description",
-      "group",
-      "mode",
-      "packageId",
-      "priority",
-    ],
-    [
-      "id",
-      "allowedModes",
-      "description",
-      "group",
-      "mode",
-      "packageId",
-      "priority",
-    ],
-  ]),
-);
+export interface WafPackagesRulesEditResult {
+  /** Defines the unique identifier of the WAF rule. */
+  id: string;
+  /** Defines the available modes for the current WAF rule. Applies to anomaly detection WAF rules. */
+  allowedModes:
+    | WafPackagesRulesEditResultWAFManagedRulesAnomalyRuleAllowedModesList
+    | WafPackagesRulesEditResultWAFManagedRulesTraditionalDenyRuleAllowedModesList
+    | WafPackagesRulesEditResultWAFManagedRulesTraditionalAllowRuleAllowedModesList;
+  /** Defines the public description of the WAF rule. */
+  description: string;
+  /** Defines the rule group to which the current WAF rule belongs. */
+  group: WafPackagesRulesEditResultWAFManagedRulesAnomalyRuleGroup;
+  /** Defines the mode anomaly. When set to `on`, the current WAF rule will be used when evaluating the request. Applies to anomaly detection WAF rules. */
+  mode:
+    | WafPackagesRulesEditResultWAFManagedRulesAnomalyRuleMode
+    | WafPackagesRulesEditResultWAFManagedRulesTraditionalDenyRuleMode
+    | WafPackagesRulesEditResultWAFManagedRulesTraditionalAllowRuleMode;
+  /** Defines the unique identifier of a WAF package. */
+  packageId: string;
+  /** Defines the order in which the individual WAF rule is executed within its rule group. */
+  priority: string;
+  /** Defines the default action/mode of a rule. */
+  defaultMode?: WafPackagesRulesEditResultWAFManagedRulesTraditionalDenyRuleDefaultMode;
+}
+export const WafPackagesRulesEditResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    allowedModes: S.Union(
+      WafPackagesRulesEditResultWAFManagedRulesAnomalyRuleAllowedModesList,
+      WafPackagesRulesEditResultWAFManagedRulesTraditionalDenyRuleAllowedModesList,
+      WafPackagesRulesEditResultWAFManagedRulesTraditionalAllowRuleAllowedModesList,
+    ).pipe(T.Body("allowed_modes")),
+    description: S.String,
+    group: WafPackagesRulesEditResultWAFManagedRulesAnomalyRuleGroup,
+    mode: S.Union(
+      WafPackagesRulesEditResultWAFManagedRulesAnomalyRuleMode,
+      WafPackagesRulesEditResultWAFManagedRulesTraditionalDenyRuleMode,
+      WafPackagesRulesEditResultWAFManagedRulesTraditionalAllowRuleMode,
+    ),
+    packageId: S.String.pipe(T.Body("package_id")),
+    priority: S.String,
+    defaultMode: S.optional(
+      WafPackagesRulesEditResultWAFManagedRulesTraditionalDenyRuleDefaultMode.pipe(
+        T.Body("default_mode"),
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "WafPackagesRulesEditResult",
+}) as any as S.Schema<WafPackagesRulesEditResult>;
 
 export type PatchWafPackageRuleResponse = WafPackagesRulesEditResult;
 export const PatchWafPackageRuleResponse = /*@__PURE__*/ S.suspend(() =>
@@ -5290,16 +5538,28 @@ export const LockdownsUpdateResponseConfigurationsLockdownCIDRConfiguration =
       "LockdownsUpdateResponseConfigurationsLockdownCIDRConfiguration",
   }) as any as S.Schema<LockdownsUpdateResponseConfigurationsLockdownCIDRConfiguration>;
 
-export type LockdownsUpdateResponseConfigurations =
-  | LockdownsUpdateResponseConfigurationsLockdownIPConfiguration
-  | LockdownsUpdateResponseConfigurationsLockdownCIDRConfiguration;
-export const LockdownsUpdateResponseConfigurations =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["target", "value"],
-      ["target", "value"],
-    ]),
-  );
+export interface LockdownsUpdateResponseConfigurations {
+  /** The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule. */
+  target?:
+    | LockdownsUpdateResponseConfigurationsLockdownIPConfigurationTarget
+    | LockdownsUpdateResponseConfigurationsLockdownCIDRConfigurationTarget;
+  /** The IP address to match. This address will be compared to the IP address of incoming requests. */
+  value?: string;
+}
+export const LockdownsUpdateResponseConfigurations = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      target: S.optional(
+        S.Union(
+          LockdownsUpdateResponseConfigurationsLockdownIPConfigurationTarget,
+          LockdownsUpdateResponseConfigurationsLockdownCIDRConfigurationTarget,
+        ),
+      ),
+      value: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "LockdownsUpdateResponseConfigurations",
+}) as any as S.Schema<LockdownsUpdateResponseConfigurations>;
 
 export type LockdownsUpdateResponseUrlsList = ReadonlyArray<string>;
 export const LockdownsUpdateResponseUrlsList = /*@__PURE__*/ S.Array(
@@ -5481,15 +5741,32 @@ export const RulesUpdateResponseFilterDeletedFilter = /*@__PURE__*/ S.suspend(
   identifier: "RulesUpdateResponseFilterDeletedFilter",
 }) as any as S.Schema<RulesUpdateResponseFilterDeletedFilter>;
 
-export type RulesUpdateResponseFilter =
-  | RulesUpdateResponseFilterFirewallFilter
-  | RulesUpdateResponseFilterDeletedFilter;
-export const RulesUpdateResponseFilter = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["id", "description", "expression", "paused", "ref"],
-    ["id", "deleted"],
-  ]),
-);
+export interface RulesUpdateResponseFilter {
+  /** The unique identifier of the filter. */
+  id?: string;
+  /** An informative summary of the filter. */
+  description?: string;
+  /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
+  expression?: string;
+  /** When true, indicates that the filter is currently paused. */
+  paused?: boolean;
+  /** A short reference tag. Allows you to select related filters. */
+  ref?: string;
+  /** When true, indicates that the firewall rule was deleted. */
+  deleted?: boolean;
+}
+export const RulesUpdateResponseFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    description: S.optional(S.String),
+    expression: S.optional(S.String),
+    paused: S.optional(S.Boolean),
+    ref: S.optional(S.String),
+    deleted: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "RulesUpdateResponseFilter",
+}) as any as S.Schema<RulesUpdateResponseFilter>;
 
 export type RulesUpdateResponseProductsItem =
   | "zoneLockdown"

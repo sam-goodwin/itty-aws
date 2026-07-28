@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 /** Request message for 'AddGroupMigration' request. */
@@ -66,10 +66,12 @@ export interface AddGroupMigrationRequest {
   migratingVm?: string;
 }
 export const AddGroupMigrationRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "migratingVm": S.optional(S.String),
-}),
-).annotate({ identifier: "AddGroupMigrationRequest" }) as any as S.Schema<AddGroupMigrationRequest>;
+  S.Struct({
+    migratingVm: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AddGroupMigrationRequest",
+}) as any as S.Schema<AddGroupMigrationRequest>;
 
 export interface AddGroupMigrationProjectsLocationsGroupsRequest {
   /** Required. The full path name of the Group to add to. */
@@ -77,18 +79,32 @@ export interface AddGroupMigrationProjectsLocationsGroupsRequest {
   /** Request body */
   body?: AddGroupMigrationRequest;
 }
-export const AddGroupMigrationProjectsLocationsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "group": S.String.pipe(T.Label()),
-  "body": S.optional(AddGroupMigrationRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+group}:addGroupMigration","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "AddGroupMigrationProjectsLocationsGroupsRequest" }) as any as S.Schema<AddGroupMigrationProjectsLocationsGroupsRequest>;
+export const AddGroupMigrationProjectsLocationsGroupsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      group: S.String.pipe(T.Label()),
+      body: S.optional(AddGroupMigrationRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+group}:addGroupMigration",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "AddGroupMigrationProjectsLocationsGroupsRequest",
+  }) as any as S.Schema<AddGroupMigrationProjectsLocationsGroupsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -100,11 +116,11 @@ export interface Status {
   message?: string;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(S.Number),
-  "details": S.optional(DocumentMapList),
-  "message": S.optional(S.String),
-}),
+  S.Struct({
+    code: S.optional(S.Number),
+    details: S.optional(DocumentMapList),
+    message: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -121,20 +137,22 @@ export interface Operation {
   name?: string;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "metadata": S.optional(DocumentMap),
-  "response": S.optional(DocumentMap),
-  "done": S.optional(S.Boolean),
-  "error": S.optional(Status),
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    metadata: S.optional(DocumentMap),
+    response: S.optional(DocumentMap),
+    done: S.optional(S.Boolean),
+    error: S.optional(Status),
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** Request message for 'CancelImageImportJob' request. */
 export interface CancelImageImportJobRequest {}
 export const CancelImageImportJobRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "CancelImageImportJobRequest" }) as any as S.Schema<CancelImageImportJobRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "CancelImageImportJobRequest",
+}) as any as S.Schema<CancelImageImportJobRequest>;
 
 export interface CancelProjectsLocationsImageImportsImageImportJobsRequest {
   /** Required. The image import job id. */
@@ -142,18 +160,29 @@ export interface CancelProjectsLocationsImageImportsImageImportJobsRequest {
   /** Request body */
   body?: CancelImageImportJobRequest;
 }
-export const CancelProjectsLocationsImageImportsImageImportJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(CancelImageImportJobRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "CancelProjectsLocationsImageImportsImageImportJobsRequest" }) as any as S.Schema<CancelProjectsLocationsImageImportsImageImportJobsRequest>;
+export const CancelProjectsLocationsImageImportsImageImportJobsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(CancelImageImportJobRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:cancel",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CancelProjectsLocationsImageImportsImageImportJobsRequest",
+  }) as any as S.Schema<CancelProjectsLocationsImageImportsImageImportJobsRequest>;
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
 export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "CancelOperationRequest" }) as any as S.Schema<CancelOperationRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "CancelOperationRequest",
+}) as any as S.Schema<CancelOperationRequest>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -161,24 +190,35 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "CancelProjectsLocationsOperationsRequest" }) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:cancel",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CancelProjectsLocationsOperationsRequest",
+}) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 /** Request message for 'CancelDiskMigrationJob' request. */
 export interface CancelDiskMigrationJobRequest {}
 export const CancelDiskMigrationJobRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "CancelDiskMigrationJobRequest" }) as any as S.Schema<CancelDiskMigrationJobRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "CancelDiskMigrationJobRequest",
+}) as any as S.Schema<CancelDiskMigrationJobRequest>;
 
 export interface CancelProjectsLocationsSourcesDiskMigrationJobsRequest {
   /** Required. The name of the DiskMigrationJob. */
@@ -186,18 +226,29 @@ export interface CancelProjectsLocationsSourcesDiskMigrationJobsRequest {
   /** Request body */
   body?: CancelDiskMigrationJobRequest;
 }
-export const CancelProjectsLocationsSourcesDiskMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(CancelDiskMigrationJobRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "CancelProjectsLocationsSourcesDiskMigrationJobsRequest" }) as any as S.Schema<CancelProjectsLocationsSourcesDiskMigrationJobsRequest>;
+export const CancelProjectsLocationsSourcesDiskMigrationJobsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(CancelDiskMigrationJobRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:cancel",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CancelProjectsLocationsSourcesDiskMigrationJobsRequest",
+  }) as any as S.Schema<CancelProjectsLocationsSourcesDiskMigrationJobsRequest>;
 
 /** Request message for 'CancelCloneJob' request. */
 export interface CancelCloneJobRequest {}
 export const CancelCloneJobRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "CancelCloneJobRequest" }) as any as S.Schema<CancelCloneJobRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "CancelCloneJobRequest",
+}) as any as S.Schema<CancelCloneJobRequest>;
 
 export interface CancelProjectsLocationsSourcesMigratingVmsCloneJobsRequest {
   /** Required. The clone job id */
@@ -205,18 +256,29 @@ export interface CancelProjectsLocationsSourcesMigratingVmsCloneJobsRequest {
   /** Request body */
   body?: CancelCloneJobRequest;
 }
-export const CancelProjectsLocationsSourcesMigratingVmsCloneJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(CancelCloneJobRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "CancelProjectsLocationsSourcesMigratingVmsCloneJobsRequest" }) as any as S.Schema<CancelProjectsLocationsSourcesMigratingVmsCloneJobsRequest>;
+export const CancelProjectsLocationsSourcesMigratingVmsCloneJobsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(CancelCloneJobRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:cancel",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CancelProjectsLocationsSourcesMigratingVmsCloneJobsRequest",
+  }) as any as S.Schema<CancelProjectsLocationsSourcesMigratingVmsCloneJobsRequest>;
 
 /** Request message for 'CancelCutoverJob' request. */
 export interface CancelCutoverJobRequest {}
 export const CancelCutoverJobRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "CancelCutoverJobRequest" }) as any as S.Schema<CancelCutoverJobRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "CancelCutoverJobRequest",
+}) as any as S.Schema<CancelCutoverJobRequest>;
 
 export interface CancelProjectsLocationsSourcesMigratingVmsCutoverJobsRequest {
   /** Required. The cutover job id */
@@ -224,14 +286,26 @@ export interface CancelProjectsLocationsSourcesMigratingVmsCutoverJobsRequest {
   /** Request body */
   body?: CancelCutoverJobRequest;
 }
-export const CancelProjectsLocationsSourcesMigratingVmsCutoverJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(CancelCutoverJobRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "CancelProjectsLocationsSourcesMigratingVmsCutoverJobsRequest" }) as any as S.Schema<CancelProjectsLocationsSourcesMigratingVmsCutoverJobsRequest>;
+export const CancelProjectsLocationsSourcesMigratingVmsCutoverJobsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(CancelCutoverJobRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:cancel",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CancelProjectsLocationsSourcesMigratingVmsCutoverJobsRequest",
+  }) as any as S.Schema<CancelProjectsLocationsSourcesMigratingVmsCutoverJobsRequest>;
 
-export type GroupMigrationTargetTypeEnum = "MIGRATION_TARGET_TYPE_UNSPECIFIED" | "MIGRATION_TARGET_TYPE_GCE" | "MIGRATION_TARGET_TYPE_DISKS";
+export type GroupMigrationTargetTypeEnum =
+  | "MIGRATION_TARGET_TYPE_UNSPECIFIED"
+  | "MIGRATION_TARGET_TYPE_GCE"
+  | "MIGRATION_TARGET_TYPE_DISKS";
 export const GroupMigrationTargetTypeEnum = /*@__PURE__*/ S.String;
 
 /** Describes message for 'Group' resource. The Group is a collections of several MigratingVms. */
@@ -250,14 +324,14 @@ export interface Group {
   name?: string;
 }
 export const Group = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateTime": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "description": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "migrationTargetType": S.optional(GroupMigrationTargetTypeEnum),
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    updateTime: S.optional(S.String),
+    createTime: S.optional(S.String),
+    description: S.optional(S.String),
+    displayName: S.optional(S.String),
+    migrationTargetType: S.optional(GroupMigrationTargetTypeEnum),
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Group" }) as any as S.Schema<Group>;
 
 export interface CreateProjectsLocationsGroupsRequest {
@@ -270,20 +344,34 @@ export interface CreateProjectsLocationsGroupsRequest {
   /** Request body */
   body?: Group;
 }
-export const CreateProjectsLocationsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "groupId": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Group.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/groups","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsGroupsRequest" }) as any as S.Schema<CreateProjectsLocationsGroupsRequest>;
+export const CreateProjectsLocationsGroupsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      groupId: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Group.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/groups",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateProjectsLocationsGroupsRequest",
+}) as any as S.Schema<CreateProjectsLocationsGroupsRequest>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
 /** Encryption message describes the details of the applied encryption. */
 export interface Encryption {
@@ -291,9 +379,9 @@ export interface Encryption {
   kmsKey?: string;
 }
 export const Encryption = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kmsKey": S.optional(S.String),
-}),
+  S.Struct({
+    kmsKey: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Encryption" }) as any as S.Schema<Encryption>;
 
 /** Used when the image import is not using OS adaptation process. */
@@ -302,10 +390,12 @@ export interface DataDiskImageImport {
   guestOsFeatures?: StringList;
 }
 export const DataDiskImageImport = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "guestOsFeatures": S.optional(StringList),
-}),
-).annotate({ identifier: "DataDiskImageImport" }) as any as S.Schema<DataDiskImageImport>;
+  S.Struct({
+    guestOsFeatures: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "DataDiskImageImport",
+}) as any as S.Schema<DataDiskImageImport>;
 
 /** AdaptationModifier a modifier to be used for configuration of the OS adaptation process. */
 export interface AdaptationModifier {
@@ -315,20 +405,32 @@ export interface AdaptationModifier {
   modifier?: string;
 }
 export const AdaptationModifier = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "value": S.optional(S.String),
-  "modifier": S.optional(S.String),
-}),
-).annotate({ identifier: "AdaptationModifier" }) as any as S.Schema<AdaptationModifier>;
+  S.Struct({
+    value: S.optional(S.String),
+    modifier: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AdaptationModifier",
+}) as any as S.Schema<AdaptationModifier>;
 
 export type AdaptationModifierList = ReadonlyArray<AdaptationModifier>;
-export const AdaptationModifierList = /*@__PURE__*/ S.Array(AdaptationModifier) as any as S.Schema<AdaptationModifierList>;
+export const AdaptationModifierList = /*@__PURE__*/ S.Array(
+  AdaptationModifier,
+) as any as S.Schema<AdaptationModifierList>;
 
-export type ImageImportOsAdaptationParametersBootConversionEnum = "BOOT_CONVERSION_UNSPECIFIED" | "NONE" | "BIOS_TO_EFI";
-export const ImageImportOsAdaptationParametersBootConversionEnum = /*@__PURE__*/ S.String;
+export type ImageImportOsAdaptationParametersBootConversionEnum =
+  | "BOOT_CONVERSION_UNSPECIFIED"
+  | "NONE"
+  | "BIOS_TO_EFI";
+export const ImageImportOsAdaptationParametersBootConversionEnum =
+  /*@__PURE__*/ S.String;
 
-export type ImageImportOsAdaptationParametersLicenseTypeEnum = "COMPUTE_ENGINE_LICENSE_TYPE_DEFAULT" | "COMPUTE_ENGINE_LICENSE_TYPE_PAYG" | "COMPUTE_ENGINE_LICENSE_TYPE_BYOL";
-export const ImageImportOsAdaptationParametersLicenseTypeEnum = /*@__PURE__*/ S.String;
+export type ImageImportOsAdaptationParametersLicenseTypeEnum =
+  | "COMPUTE_ENGINE_LICENSE_TYPE_DEFAULT"
+  | "COMPUTE_ENGINE_LICENSE_TYPE_PAYG"
+  | "COMPUTE_ENGINE_LICENSE_TYPE_BYOL";
+export const ImageImportOsAdaptationParametersLicenseTypeEnum =
+  /*@__PURE__*/ S.String;
 
 /** Parameters affecting the OS adaptation process. */
 export interface ImageImportOsAdaptationParameters {
@@ -342,13 +444,17 @@ export interface ImageImportOsAdaptationParameters {
   licenseType?: ImageImportOsAdaptationParametersLicenseTypeEnum;
 }
 export const ImageImportOsAdaptationParameters = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "adaptationModifiers": S.optional(AdaptationModifierList),
-  "bootConversion": S.optional(ImageImportOsAdaptationParametersBootConversionEnum),
-  "generalize": S.optional(S.Boolean),
-  "licenseType": S.optional(ImageImportOsAdaptationParametersLicenseTypeEnum),
-}),
-).annotate({ identifier: "ImageImportOsAdaptationParameters" }) as any as S.Schema<ImageImportOsAdaptationParameters>;
+  S.Struct({
+    adaptationModifiers: S.optional(AdaptationModifierList),
+    bootConversion: S.optional(
+      ImageImportOsAdaptationParametersBootConversionEnum,
+    ),
+    generalize: S.optional(S.Boolean),
+    licenseType: S.optional(ImageImportOsAdaptationParametersLicenseTypeEnum),
+  }),
+).annotate({
+  identifier: "ImageImportOsAdaptationParameters",
+}) as any as S.Schema<ImageImportOsAdaptationParameters>;
 
 /** The target details of the image resource that will be created by the import job. */
 export interface DiskImageTargetDetails {
@@ -374,43 +480,51 @@ export interface DiskImageTargetDetails {
   osAdaptationParameters?: ImageImportOsAdaptationParameters;
 }
 export const DiskImageTargetDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "imageName": S.optional(S.String),
-  "targetProject": S.optional(S.String),
-  "additionalLicenses": S.optional(StringList),
-  "description": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "singleRegionStorage": S.optional(S.Boolean),
-  "encryption": S.optional(Encryption),
-  "familyName": S.optional(S.String),
-  "dataDiskImageImport": S.optional(DataDiskImageImport),
-  "osAdaptationParameters": S.optional(ImageImportOsAdaptationParameters),
-}),
-).annotate({ identifier: "DiskImageTargetDetails" }) as any as S.Schema<DiskImageTargetDetails>;
+  S.Struct({
+    imageName: S.optional(S.String),
+    targetProject: S.optional(S.String),
+    additionalLicenses: S.optional(StringList),
+    description: S.optional(S.String),
+    labels: S.optional(StringMap),
+    singleRegionStorage: S.optional(S.Boolean),
+    encryption: S.optional(Encryption),
+    familyName: S.optional(S.String),
+    dataDiskImageImport: S.optional(DataDiskImageImport),
+    osAdaptationParameters: S.optional(ImageImportOsAdaptationParameters),
+  }),
+).annotate({
+  identifier: "DiskImageTargetDetails",
+}) as any as S.Schema<DiskImageTargetDetails>;
 
 /** CreatingImageStep contains specific step details. */
 export interface CreatingImageStep {}
 export const CreatingImageStep = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "CreatingImageStep" }) as any as S.Schema<CreatingImageStep>;
+  S.Struct({}),
+).annotate({
+  identifier: "CreatingImageStep",
+}) as any as S.Schema<CreatingImageStep>;
 
 /** AdaptingOSStep contains specific step details. */
 export interface AdaptingOSStep {}
 export const AdaptingOSStep = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
+  S.Struct({}),
 ).annotate({ identifier: "AdaptingOSStep" }) as any as S.Schema<AdaptingOSStep>;
 
 /** InitializingImageImportStep contains specific step details. */
 export interface InitializingImageImportStep {}
 export const InitializingImageImportStep = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "InitializingImageImportStep" }) as any as S.Schema<InitializingImageImportStep>;
+  S.Struct({}),
+).annotate({
+  identifier: "InitializingImageImportStep",
+}) as any as S.Schema<InitializingImageImportStep>;
 
 /** LoadingImageSourceFilesStep contains specific step details. */
 export interface LoadingImageSourceFilesStep {}
 export const LoadingImageSourceFilesStep = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "LoadingImageSourceFilesStep" }) as any as S.Schema<LoadingImageSourceFilesStep>;
+  S.Struct({}),
+).annotate({
+  identifier: "LoadingImageSourceFilesStep",
+}) as any as S.Schema<LoadingImageSourceFilesStep>;
 
 /** ImageImportStep holds information about the image import step progress. */
 export interface ImageImportStep {
@@ -428,23 +542,36 @@ export interface ImageImportStep {
   startTime?: string;
 }
 export const ImageImportStep = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "endTime": S.optional(S.String),
-  "creatingImage": S.optional(CreatingImageStep),
-  "adaptingOs": S.optional(AdaptingOSStep),
-  "initializing": S.optional(InitializingImageImportStep),
-  "loadingSourceFiles": S.optional(LoadingImageSourceFilesStep),
-  "startTime": S.optional(S.String),
-}),
-).annotate({ identifier: "ImageImportStep" }) as any as S.Schema<ImageImportStep>;
+  S.Struct({
+    endTime: S.optional(S.String),
+    creatingImage: S.optional(CreatingImageStep),
+    adaptingOs: S.optional(AdaptingOSStep),
+    initializing: S.optional(InitializingImageImportStep),
+    loadingSourceFiles: S.optional(LoadingImageSourceFilesStep),
+    startTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ImageImportStep",
+}) as any as S.Schema<ImageImportStep>;
 
 export type ImageImportStepList = ReadonlyArray<ImageImportStep>;
-export const ImageImportStepList = /*@__PURE__*/ S.Array(ImageImportStep) as any as S.Schema<ImageImportStepList>;
+export const ImageImportStepList = /*@__PURE__*/ S.Array(
+  ImageImportStep,
+) as any as S.Schema<ImageImportStepList>;
 
 export type StatusList = ReadonlyArray<Status>;
-export const StatusList = /*@__PURE__*/ S.Array(Status) as any as S.Schema<StatusList>;
+export const StatusList = /*@__PURE__*/ S.Array(
+  Status,
+) as any as S.Schema<StatusList>;
 
-export type ImageImportJobStateEnum = "STATE_UNSPECIFIED" | "PENDING" | "RUNNING" | "SUCCEEDED" | "FAILED" | "CANCELLING" | "CANCELLED";
+export type ImageImportJobStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "PENDING"
+  | "RUNNING"
+  | "SUCCEEDED"
+  | "FAILED"
+  | "CANCELLING"
+  | "CANCELLED";
 export const ImageImportJobStateEnum = /*@__PURE__*/ S.String;
 
 /** Provides a localized error message that is safe to return to the user which can be attached to an RPC error. */
@@ -455,13 +582,17 @@ export interface LocalizedMessage {
   message?: string;
 }
 export const LocalizedMessage = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locale": S.optional(S.String),
-  "message": S.optional(S.String),
-}),
-).annotate({ identifier: "LocalizedMessage" }) as any as S.Schema<LocalizedMessage>;
+  S.Struct({
+    locale: S.optional(S.String),
+    message: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "LocalizedMessage",
+}) as any as S.Schema<LocalizedMessage>;
 
-export type MigrationWarningCodeEnum = "WARNING_CODE_UNSPECIFIED" | "ADAPTATION_WARNING";
+export type MigrationWarningCodeEnum =
+  | "WARNING_CODE_UNSPECIFIED"
+  | "ADAPTATION_WARNING";
 export const MigrationWarningCodeEnum = /*@__PURE__*/ S.String;
 
 /** Describes a URL link. */
@@ -472,14 +603,16 @@ export interface Link {
   url?: string;
 }
 export const Link = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "description": S.optional(S.String),
-  "url": S.optional(S.String),
-}),
+  S.Struct({
+    description: S.optional(S.String),
+    url: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Link" }) as any as S.Schema<Link>;
 
 export type LinkList = ReadonlyArray<Link>;
-export const LinkList = /*@__PURE__*/ S.Array(Link) as any as S.Schema<LinkList>;
+export const LinkList = /*@__PURE__*/ S.Array(
+  Link,
+) as any as S.Schema<LinkList>;
 
 /** Represents migration resource warning information that can be used with google.rpc.Status message. MigrationWarning is used to present the user with warning information in migration operations. */
 export interface MigrationWarning {
@@ -495,19 +628,26 @@ export interface MigrationWarning {
   warningTime?: string;
 }
 export const MigrationWarning = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "warningMessage": S.optional(LocalizedMessage),
-  "actionItem": S.optional(LocalizedMessage),
-  "code": S.optional(MigrationWarningCodeEnum),
-  "helpLinks": S.optional(LinkList),
-  "warningTime": S.optional(S.String),
-}),
-).annotate({ identifier: "MigrationWarning" }) as any as S.Schema<MigrationWarning>;
+  S.Struct({
+    warningMessage: S.optional(LocalizedMessage),
+    actionItem: S.optional(LocalizedMessage),
+    code: S.optional(MigrationWarningCodeEnum),
+    helpLinks: S.optional(LinkList),
+    warningTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MigrationWarning",
+}) as any as S.Schema<MigrationWarning>;
 
 export type MigrationWarningList = ReadonlyArray<MigrationWarning>;
-export const MigrationWarningList = /*@__PURE__*/ S.Array(MigrationWarning) as any as S.Schema<MigrationWarningList>;
+export const MigrationWarningList = /*@__PURE__*/ S.Array(
+  MigrationWarning,
+) as any as S.Schema<MigrationWarningList>;
 
-export type NetworkInterfaceNetworkTierEnum = "COMPUTE_ENGINE_NETWORK_TIER_UNSPECIFIED" | "NETWORK_TIER_STANDARD" | "NETWORK_TIER_PREMIUM";
+export type NetworkInterfaceNetworkTierEnum =
+  | "COMPUTE_ENGINE_NETWORK_TIER_UNSPECIFIED"
+  | "NETWORK_TIER_STANDARD"
+  | "NETWORK_TIER_PREMIUM";
 export const NetworkInterfaceNetworkTierEnum = /*@__PURE__*/ S.String;
 
 /** NetworkInterface represents a NIC of a VM. */
@@ -524,19 +664,26 @@ export interface NetworkInterface {
   networkTier?: NetworkInterfaceNetworkTierEnum;
 }
 export const NetworkInterface = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "internalIp": S.optional(S.String),
-  "externalIp": S.optional(S.String),
-  "network": S.optional(S.String),
-  "subnetwork": S.optional(S.String),
-  "networkTier": S.optional(NetworkInterfaceNetworkTierEnum),
-}),
-).annotate({ identifier: "NetworkInterface" }) as any as S.Schema<NetworkInterface>;
+  S.Struct({
+    internalIp: S.optional(S.String),
+    externalIp: S.optional(S.String),
+    network: S.optional(S.String),
+    subnetwork: S.optional(S.String),
+    networkTier: S.optional(NetworkInterfaceNetworkTierEnum),
+  }),
+).annotate({
+  identifier: "NetworkInterface",
+}) as any as S.Schema<NetworkInterface>;
 
 export type NetworkInterfaceList = ReadonlyArray<NetworkInterface>;
-export const NetworkInterfaceList = /*@__PURE__*/ S.Array(NetworkInterface) as any as S.Schema<NetworkInterfaceList>;
+export const NetworkInterfaceList = /*@__PURE__*/ S.Array(
+  NetworkInterface,
+) as any as S.Schema<NetworkInterfaceList>;
 
-export type ShieldedInstanceConfigSecureBootEnum = "SECURE_BOOT_UNSPECIFIED" | "TRUE" | "FALSE";
+export type ShieldedInstanceConfigSecureBootEnum =
+  | "SECURE_BOOT_UNSPECIFIED"
+  | "TRUE"
+  | "FALSE";
 export const ShieldedInstanceConfigSecureBootEnum = /*@__PURE__*/ S.String;
 
 /** Shielded instance configuration. */
@@ -549,12 +696,14 @@ export interface ShieldedInstanceConfig {
   enableIntegrityMonitoring?: boolean;
 }
 export const ShieldedInstanceConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "secureBoot": S.optional(ShieldedInstanceConfigSecureBootEnum),
-  "enableVtpm": S.optional(S.Boolean),
-  "enableIntegrityMonitoring": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "ShieldedInstanceConfig" }) as any as S.Schema<ShieldedInstanceConfig>;
+  S.Struct({
+    secureBoot: S.optional(ShieldedInstanceConfigSecureBootEnum),
+    enableVtpm: S.optional(S.Boolean),
+    enableIntegrityMonitoring: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ShieldedInstanceConfig",
+}) as any as S.Schema<ShieldedInstanceConfig>;
 
 /** Service account to assign to the instance created by the machine image. */
 export interface ServiceAccount {
@@ -564,10 +713,10 @@ export interface ServiceAccount {
   scopes?: StringList;
 }
 export const ServiceAccount = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "email": S.optional(S.String),
-  "scopes": S.optional(StringList),
-}),
+  S.Struct({
+    email: S.optional(S.String),
+    scopes: S.optional(StringList),
+  }),
 ).annotate({ identifier: "ServiceAccount" }) as any as S.Schema<ServiceAccount>;
 
 /** Parameters overriding decisions based on the source machine image configurations. */
@@ -576,16 +725,20 @@ export interface MachineImageParametersOverrides {
   machineType?: string;
 }
 export const MachineImageParametersOverrides = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "machineType": S.optional(S.String),
-}),
-).annotate({ identifier: "MachineImageParametersOverrides" }) as any as S.Schema<MachineImageParametersOverrides>;
+  S.Struct({
+    machineType: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MachineImageParametersOverrides",
+}) as any as S.Schema<MachineImageParametersOverrides>;
 
 /** Mentions that the machine image import is not using OS adaptation process. */
 export interface SkipOsAdaptation {}
 export const SkipOsAdaptation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "SkipOsAdaptation" }) as any as S.Schema<SkipOsAdaptation>;
+  S.Struct({}),
+).annotate({
+  identifier: "SkipOsAdaptation",
+}) as any as S.Schema<SkipOsAdaptation>;
 
 /** The target details of the machine image resource that will be created by the image import job. */
 export interface MachineImageTargetDetails {
@@ -619,23 +772,27 @@ export interface MachineImageTargetDetails {
   skipOsAdaptation?: SkipOsAdaptation;
 }
 export const MachineImageTargetDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "singleRegionStorage": S.optional(S.Boolean),
-  "encryption": S.optional(Encryption),
-  "description": S.optional(S.String),
-  "tags": S.optional(StringList),
-  "networkInterfaces": S.optional(NetworkInterfaceList),
-  "targetProject": S.optional(S.String),
-  "machineImageName": S.optional(S.String),
-  "additionalLicenses": S.optional(StringList),
-  "shieldedInstanceConfig": S.optional(ShieldedInstanceConfig),
-  "serviceAccount": S.optional(ServiceAccount),
-  "labels": S.optional(StringMap),
-  "osAdaptationParameters": S.optional(ImageImportOsAdaptationParameters),
-  "machineImageParametersOverrides": S.optional(MachineImageParametersOverrides),
-  "skipOsAdaptation": S.optional(SkipOsAdaptation),
-}),
-).annotate({ identifier: "MachineImageTargetDetails" }) as any as S.Schema<MachineImageTargetDetails>;
+  S.Struct({
+    singleRegionStorage: S.optional(S.Boolean),
+    encryption: S.optional(Encryption),
+    description: S.optional(S.String),
+    tags: S.optional(StringList),
+    networkInterfaces: S.optional(NetworkInterfaceList),
+    targetProject: S.optional(S.String),
+    machineImageName: S.optional(S.String),
+    additionalLicenses: S.optional(StringList),
+    shieldedInstanceConfig: S.optional(ShieldedInstanceConfig),
+    serviceAccount: S.optional(ServiceAccount),
+    labels: S.optional(StringMap),
+    osAdaptationParameters: S.optional(ImageImportOsAdaptationParameters),
+    machineImageParametersOverrides: S.optional(
+      MachineImageParametersOverrides,
+    ),
+    skipOsAdaptation: S.optional(SkipOsAdaptation),
+  }),
+).annotate({
+  identifier: "MachineImageTargetDetails",
+}) as any as S.Schema<MachineImageTargetDetails>;
 
 /** ImageImportJob describes the progress and result of an image import. */
 export interface ImageImportJob {
@@ -663,23 +820,25 @@ export interface ImageImportJob {
   machineImageTargetDetails?: MachineImageTargetDetails;
 }
 export const ImageImportJob = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "createTime": S.optional(S.String),
-  "createdResources": S.optional(StringList),
-  "endTime": S.optional(S.String),
-  "steps": S.optional(ImageImportStepList),
-  "errors": S.optional(StatusList),
-  "state": S.optional(ImageImportJobStateEnum),
-  "diskImageTargetDetails": S.optional(DiskImageTargetDetails),
-  "warnings": S.optional(MigrationWarningList),
-  "cloudStorageUri": S.optional(S.String),
-  "name": S.optional(S.String),
-  "machineImageTargetDetails": S.optional(MachineImageTargetDetails),
-}),
+  S.Struct({
+    createTime: S.optional(S.String),
+    createdResources: S.optional(StringList),
+    endTime: S.optional(S.String),
+    steps: S.optional(ImageImportStepList),
+    errors: S.optional(StatusList),
+    state: S.optional(ImageImportJobStateEnum),
+    diskImageTargetDetails: S.optional(DiskImageTargetDetails),
+    warnings: S.optional(MigrationWarningList),
+    cloudStorageUri: S.optional(S.String),
+    name: S.optional(S.String),
+    machineImageTargetDetails: S.optional(MachineImageTargetDetails),
+  }),
 ).annotate({ identifier: "ImageImportJob" }) as any as S.Schema<ImageImportJob>;
 
 export type ImageImportJobList = ReadonlyArray<ImageImportJob>;
-export const ImageImportJobList = /*@__PURE__*/ S.Array(ImageImportJob) as any as S.Schema<ImageImportJobList>;
+export const ImageImportJobList = /*@__PURE__*/ S.Array(
+  ImageImportJob,
+) as any as S.Schema<ImageImportJobList>;
 
 /** ImageImport describes the configuration of the image import to run. */
 export interface ImageImport {
@@ -699,15 +858,15 @@ export interface ImageImport {
   createTime?: string;
 }
 export const ImageImport = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "diskImageTargetDefaults": S.optional(DiskImageTargetDetails),
-  "recentImageImportJobs": S.optional(ImageImportJobList),
-  "cloudStorageUri": S.optional(S.String),
-  "name": S.optional(S.String),
-  "encryption": S.optional(Encryption),
-  "machineImageTargetDefaults": S.optional(MachineImageTargetDetails),
-  "createTime": S.optional(S.String),
-}),
+  S.Struct({
+    diskImageTargetDefaults: S.optional(DiskImageTargetDetails),
+    recentImageImportJobs: S.optional(ImageImportJobList),
+    cloudStorageUri: S.optional(S.String),
+    name: S.optional(S.String),
+    encryption: S.optional(Encryption),
+    machineImageTargetDefaults: S.optional(MachineImageTargetDetails),
+    createTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ImageImport" }) as any as S.Schema<ImageImport>;
 
 export interface CreateProjectsLocationsImageImportsRequest {
@@ -720,14 +879,23 @@ export interface CreateProjectsLocationsImageImportsRequest {
   /** Request body */
   body?: ImageImport;
 }
-export const CreateProjectsLocationsImageImportsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "imageImportId": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(ImageImport.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/imageImports","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsImageImportsRequest" }) as any as S.Schema<CreateProjectsLocationsImageImportsRequest>;
+export const CreateProjectsLocationsImageImportsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      imageImportId: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(ImageImport.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/imageImports",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsImageImportsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsImageImportsRequest>;
 
 /** Message describing Azure Credentials using tenant ID, client ID and secret. */
 export interface ClientSecretCredentials {
@@ -739,14 +907,20 @@ export interface ClientSecretCredentials {
   clientSecret?: string;
 }
 export const ClientSecretCredentials = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "tenantId": S.optional(S.String),
-  "clientId": S.optional(S.String),
-  "clientSecret": S.optional(S.String),
-}),
-).annotate({ identifier: "ClientSecretCredentials" }) as any as S.Schema<ClientSecretCredentials>;
+  S.Struct({
+    tenantId: S.optional(S.String),
+    clientId: S.optional(S.String),
+    clientSecret: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ClientSecretCredentials",
+}) as any as S.Schema<ClientSecretCredentials>;
 
-export type AzureSourceDetailsStateEnum = "STATE_UNSPECIFIED" | "PENDING" | "FAILED" | "ACTIVE";
+export type AzureSourceDetailsStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "PENDING"
+  | "FAILED"
+  | "ACTIVE";
 export const AzureSourceDetailsStateEnum = /*@__PURE__*/ S.String;
 
 /** AzureSourceDetails message describes a specific source details for the Azure source type. */
@@ -767,16 +941,18 @@ export interface AzureSourceDetails {
   migrationResourcesUserTags?: StringMap;
 }
 export const AzureSourceDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "subscriptionId": S.optional(S.String),
-  "error": S.optional(Status),
-  "clientSecretCreds": S.optional(ClientSecretCredentials),
-  "azureLocation": S.optional(S.String),
-  "resourceGroupId": S.optional(S.String),
-  "state": S.optional(AzureSourceDetailsStateEnum),
-  "migrationResourcesUserTags": S.optional(StringMap),
-}),
-).annotate({ identifier: "AzureSourceDetails" }) as any as S.Schema<AzureSourceDetails>;
+  S.Struct({
+    subscriptionId: S.optional(S.String),
+    error: S.optional(Status),
+    clientSecretCreds: S.optional(ClientSecretCredentials),
+    azureLocation: S.optional(S.String),
+    resourceGroupId: S.optional(S.String),
+    state: S.optional(AzureSourceDetailsStateEnum),
+    migrationResourcesUserTags: S.optional(StringMap),
+  }),
+).annotate({
+  identifier: "AzureSourceDetails",
+}) as any as S.Schema<AzureSourceDetails>;
 
 /** Message describing AWS Credentials using access key id and secret. */
 export interface AccessKeyCredentials {
@@ -788,12 +964,14 @@ export interface AccessKeyCredentials {
   accessKeyId?: string;
 }
 export const AccessKeyCredentials = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sessionToken": S.optional(S.String),
-  "secretAccessKey": S.optional(S.String),
-  "accessKeyId": S.optional(S.String),
-}),
-).annotate({ identifier: "AccessKeyCredentials" }) as any as S.Schema<AccessKeyCredentials>;
+  S.Struct({
+    sessionToken: S.optional(S.String),
+    secretAccessKey: S.optional(S.String),
+    accessKeyId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AccessKeyCredentials",
+}) as any as S.Schema<AccessKeyCredentials>;
 
 /** Tag is an AWS tag representation. */
 export interface Tag {
@@ -803,16 +981,20 @@ export interface Tag {
   value?: string;
 }
 export const Tag = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "key": S.optional(S.String),
-  "value": S.optional(S.String),
-}),
+  S.Struct({
+    key: S.optional(S.String),
+    value: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 
 export type TagList = ReadonlyArray<Tag>;
 export const TagList = /*@__PURE__*/ S.Array(Tag) as any as S.Schema<TagList>;
 
-export type AwsSourceDetailsStateEnum = "STATE_UNSPECIFIED" | "PENDING" | "FAILED" | "ACTIVE";
+export type AwsSourceDetailsStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "PENDING"
+  | "FAILED"
+  | "ACTIVE";
 export const AwsSourceDetailsStateEnum = /*@__PURE__*/ S.String;
 
 /** AwsSourceDetails message describes a specific source details for the AWS source type. */
@@ -835,17 +1017,19 @@ export interface AwsSourceDetails {
   migrationResourcesUserTags?: StringMap;
 }
 export const AwsSourceDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "accessKeyCreds": S.optional(AccessKeyCredentials),
-  "inventoryTagList": S.optional(TagList),
-  "inventorySecurityGroupNames": S.optional(StringList),
-  "awsRegion": S.optional(S.String),
-  "error": S.optional(Status),
-  "publicIp": S.optional(S.String),
-  "state": S.optional(AwsSourceDetailsStateEnum),
-  "migrationResourcesUserTags": S.optional(StringMap),
-}),
-).annotate({ identifier: "AwsSourceDetails" }) as any as S.Schema<AwsSourceDetails>;
+  S.Struct({
+    accessKeyCreds: S.optional(AccessKeyCredentials),
+    inventoryTagList: S.optional(TagList),
+    inventorySecurityGroupNames: S.optional(StringList),
+    awsRegion: S.optional(S.String),
+    error: S.optional(Status),
+    publicIp: S.optional(S.String),
+    state: S.optional(AwsSourceDetailsStateEnum),
+    migrationResourcesUserTags: S.optional(StringMap),
+  }),
+).annotate({
+  identifier: "AwsSourceDetails",
+}) as any as S.Schema<AwsSourceDetails>;
 
 /** VmwareSourceDetails message describes a specific source details for the vmware source type. */
 export interface VmwareSourceDetails {
@@ -861,14 +1045,16 @@ export interface VmwareSourceDetails {
   username?: string;
 }
 export const VmwareSourceDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "vcenterIp": S.optional(S.String),
-  "thumbprint": S.optional(S.String),
-  "resolvedVcenterHost": S.optional(S.String),
-  "password": S.optional(S.String),
-  "username": S.optional(S.String),
-}),
-).annotate({ identifier: "VmwareSourceDetails" }) as any as S.Schema<VmwareSourceDetails>;
+  S.Struct({
+    vcenterIp: S.optional(S.String),
+    thumbprint: S.optional(S.String),
+    resolvedVcenterHost: S.optional(S.String),
+    password: S.optional(S.String),
+    username: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VmwareSourceDetails",
+}) as any as S.Schema<VmwareSourceDetails>;
 
 /** Source message describes a specific vm migration Source resource. It contains the source environment information. */
 export interface Source {
@@ -892,17 +1078,17 @@ export interface Source {
   vmware?: VmwareSourceDetails;
 }
 export const Source = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "labels": S.optional(StringMap),
-  "description": S.optional(S.String),
-  "encryption": S.optional(Encryption),
-  "name": S.optional(S.String),
-  "azure": S.optional(AzureSourceDetails),
-  "createTime": S.optional(S.String),
-  "aws": S.optional(AwsSourceDetails),
-  "updateTime": S.optional(S.String),
-  "vmware": S.optional(VmwareSourceDetails),
-}),
+  S.Struct({
+    labels: S.optional(StringMap),
+    description: S.optional(S.String),
+    encryption: S.optional(Encryption),
+    name: S.optional(S.String),
+    azure: S.optional(AzureSourceDetails),
+    createTime: S.optional(S.String),
+    aws: S.optional(AwsSourceDetails),
+    updateTime: S.optional(S.String),
+    vmware: S.optional(VmwareSourceDetails),
+  }),
 ).annotate({ identifier: "Source" }) as any as S.Schema<Source>;
 
 export interface CreateProjectsLocationsSourcesRequest {
@@ -915,16 +1101,29 @@ export interface CreateProjectsLocationsSourcesRequest {
   /** Request body */
   body?: Source;
 }
-export const CreateProjectsLocationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "sourceId": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Source.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/sources","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsSourcesRequest" }) as any as S.Schema<CreateProjectsLocationsSourcesRequest>;
+export const CreateProjectsLocationsSourcesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      sourceId: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Source.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/sources",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateProjectsLocationsSourcesRequest",
+}) as any as S.Schema<CreateProjectsLocationsSourcesRequest>;
 
-export type UpgradeStatusStateEnum = "STATE_UNSPECIFIED" | "RUNNING" | "FAILED" | "SUCCEEDED";
+export type UpgradeStatusStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "RUNNING"
+  | "FAILED"
+  | "SUCCEEDED";
 export const UpgradeStatusStateEnum = /*@__PURE__*/ S.String;
 
 /** UpgradeStatus contains information about upgradeAppliance operation. */
@@ -941,16 +1140,21 @@ export interface UpgradeStatus {
   startTime?: string;
 }
 export const UpgradeStatus = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "version": S.optional(S.String),
-  "previousVersion": S.optional(S.String),
-  "error": S.optional(Status),
-  "state": S.optional(UpgradeStatusStateEnum),
-  "startTime": S.optional(S.String),
-}),
+  S.Struct({
+    version: S.optional(S.String),
+    previousVersion: S.optional(S.String),
+    error: S.optional(Status),
+    state: S.optional(UpgradeStatusStateEnum),
+    startTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "UpgradeStatus" }) as any as S.Schema<UpgradeStatus>;
 
-export type DatacenterConnectorStateEnum = "STATE_UNSPECIFIED" | "PENDING" | "OFFLINE" | "FAILED" | "ACTIVE";
+export type DatacenterConnectorStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "PENDING"
+  | "OFFLINE"
+  | "FAILED"
+  | "ACTIVE";
 export const DatacenterConnectorStateEnum = /*@__PURE__*/ S.String;
 
 /** Describes an appliance version. */
@@ -965,13 +1169,15 @@ export interface ApplianceVersion {
   critical?: boolean;
 }
 export const ApplianceVersion = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "version": S.optional(S.String),
-  "releaseNotesUri": S.optional(S.String),
-  "uri": S.optional(S.String),
-  "critical": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "ApplianceVersion" }) as any as S.Schema<ApplianceVersion>;
+  S.Struct({
+    version: S.optional(S.String),
+    releaseNotesUri: S.optional(S.String),
+    uri: S.optional(S.String),
+    critical: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ApplianceVersion",
+}) as any as S.Schema<ApplianceVersion>;
 
 /** Holds information about the available versions for upgrade. */
 export interface AvailableUpdates {
@@ -981,11 +1187,13 @@ export interface AvailableUpdates {
   inPlaceUpdate?: ApplianceVersion;
 }
 export const AvailableUpdates = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "newDeployableAppliance": S.optional(ApplianceVersion),
-  "inPlaceUpdate": S.optional(ApplianceVersion),
-}),
-).annotate({ identifier: "AvailableUpdates" }) as any as S.Schema<AvailableUpdates>;
+  S.Struct({
+    newDeployableAppliance: S.optional(ApplianceVersion),
+    inPlaceUpdate: S.optional(ApplianceVersion),
+  }),
+).annotate({
+  identifier: "AvailableUpdates",
+}) as any as S.Schema<AvailableUpdates>;
 
 /** DatacenterConnector message describes a connector between the Source and Google Cloud, which is installed on a vmware datacenter (an OVA vm installed by the user) to connect the Datacenter to Google Cloud and support vm migration data transfer. */
 export interface DatacenterConnector {
@@ -1019,23 +1227,25 @@ export interface DatacenterConnector {
   createTime?: string;
 }
 export const DatacenterConnector = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "upgradeStatus": S.optional(UpgradeStatus),
-  "bucket": S.optional(S.String),
-  "state": S.optional(DatacenterConnectorStateEnum),
-  "error": S.optional(Status),
-  "applianceInfrastructureVersion": S.optional(S.String),
-  "applianceSoftwareVersion": S.optional(S.String),
-  "version": S.optional(S.String),
-  "name": S.optional(S.String),
-  "serviceAccount": S.optional(S.String),
-  "stateTime": S.optional(S.String),
-  "availableVersions": S.optional(AvailableUpdates),
-  "updateTime": S.optional(S.String),
-  "registrationId": S.optional(S.String),
-  "createTime": S.optional(S.String),
-}),
-).annotate({ identifier: "DatacenterConnector" }) as any as S.Schema<DatacenterConnector>;
+  S.Struct({
+    upgradeStatus: S.optional(UpgradeStatus),
+    bucket: S.optional(S.String),
+    state: S.optional(DatacenterConnectorStateEnum),
+    error: S.optional(Status),
+    applianceInfrastructureVersion: S.optional(S.String),
+    applianceSoftwareVersion: S.optional(S.String),
+    version: S.optional(S.String),
+    name: S.optional(S.String),
+    serviceAccount: S.optional(S.String),
+    stateTime: S.optional(S.String),
+    availableVersions: S.optional(AvailableUpdates),
+    updateTime: S.optional(S.String),
+    registrationId: S.optional(S.String),
+    createTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DatacenterConnector",
+}) as any as S.Schema<DatacenterConnector>;
 
 export interface CreateProjectsLocationsSourcesDatacenterConnectorsRequest {
   /** Required. The DatacenterConnector's parent. Required. The Source in where the new DatacenterConnector will be created. For example: `projects/my-project/locations/us-central1/sources/my-source` */
@@ -1047,32 +1257,47 @@ export interface CreateProjectsLocationsSourcesDatacenterConnectorsRequest {
   /** Request body */
   body?: DatacenterConnector;
 }
-export const CreateProjectsLocationsSourcesDatacenterConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "datacenterConnectorId": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(DatacenterConnector.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/datacenterConnectors","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsSourcesDatacenterConnectorsRequest" }) as any as S.Schema<CreateProjectsLocationsSourcesDatacenterConnectorsRequest>;
+export const CreateProjectsLocationsSourcesDatacenterConnectorsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      datacenterConnectorId: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(DatacenterConnector.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/datacenterConnectors",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsSourcesDatacenterConnectorsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsSourcesDatacenterConnectorsRequest>;
 
 /** ProvisioningTargetDiskStep contains specific step details. */
 export interface ProvisioningTargetDiskStep {}
 export const ProvisioningTargetDiskStep = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "ProvisioningTargetDiskStep" }) as any as S.Schema<ProvisioningTargetDiskStep>;
+  S.Struct({}),
+).annotate({
+  identifier: "ProvisioningTargetDiskStep",
+}) as any as S.Schema<ProvisioningTargetDiskStep>;
 
 /** CreatingSourceDiskSnapshotStep contains specific step details. */
 export interface CreatingSourceDiskSnapshotStep {}
 export const CreatingSourceDiskSnapshotStep = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "CreatingSourceDiskSnapshotStep" }) as any as S.Schema<CreatingSourceDiskSnapshotStep>;
+  S.Struct({}),
+).annotate({
+  identifier: "CreatingSourceDiskSnapshotStep",
+}) as any as S.Schema<CreatingSourceDiskSnapshotStep>;
 
 /** CopyingSourceDiskSnapshotStep contains specific step details. */
 export interface CopyingSourceDiskSnapshotStep {}
 export const CopyingSourceDiskSnapshotStep = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "CopyingSourceDiskSnapshotStep" }) as any as S.Schema<CopyingSourceDiskSnapshotStep>;
+  S.Struct({}),
+).annotate({
+  identifier: "CopyingSourceDiskSnapshotStep",
+}) as any as S.Schema<CopyingSourceDiskSnapshotStep>;
 
 /** DiskMigrationStep holds information about the disk migration step progress. */
 export interface DiskMigrationStep {
@@ -1088,19 +1313,29 @@ export interface DiskMigrationStep {
   copyingSourceDiskSnapshot?: CopyingSourceDiskSnapshotStep;
 }
 export const DiskMigrationStep = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "provisioningTargetDisk": S.optional(ProvisioningTargetDiskStep),
-  "creatingSourceDiskSnapshot": S.optional(CreatingSourceDiskSnapshotStep),
-  "startTime": S.optional(S.String),
-  "endTime": S.optional(S.String),
-  "copyingSourceDiskSnapshot": S.optional(CopyingSourceDiskSnapshotStep),
-}),
-).annotate({ identifier: "DiskMigrationStep" }) as any as S.Schema<DiskMigrationStep>;
+  S.Struct({
+    provisioningTargetDisk: S.optional(ProvisioningTargetDiskStep),
+    creatingSourceDiskSnapshot: S.optional(CreatingSourceDiskSnapshotStep),
+    startTime: S.optional(S.String),
+    endTime: S.optional(S.String),
+    copyingSourceDiskSnapshot: S.optional(CopyingSourceDiskSnapshotStep),
+  }),
+).annotate({
+  identifier: "DiskMigrationStep",
+}) as any as S.Schema<DiskMigrationStep>;
 
 export type DiskMigrationStepList = ReadonlyArray<DiskMigrationStep>;
-export const DiskMigrationStepList = /*@__PURE__*/ S.Array(DiskMigrationStep) as any as S.Schema<DiskMigrationStepList>;
+export const DiskMigrationStepList = /*@__PURE__*/ S.Array(
+  DiskMigrationStep,
+) as any as S.Schema<DiskMigrationStepList>;
 
-export type ComputeEngineDiskDiskTypeEnum = "COMPUTE_ENGINE_DISK_TYPE_UNSPECIFIED" | "COMPUTE_ENGINE_DISK_TYPE_STANDARD" | "COMPUTE_ENGINE_DISK_TYPE_SSD" | "COMPUTE_ENGINE_DISK_TYPE_BALANCED" | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED" | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED_HIGH_AVAILABILITY";
+export type ComputeEngineDiskDiskTypeEnum =
+  | "COMPUTE_ENGINE_DISK_TYPE_UNSPECIFIED"
+  | "COMPUTE_ENGINE_DISK_TYPE_STANDARD"
+  | "COMPUTE_ENGINE_DISK_TYPE_SSD"
+  | "COMPUTE_ENGINE_DISK_TYPE_BALANCED"
+  | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED"
+  | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED_HIGH_AVAILABILITY";
 export const ComputeEngineDiskDiskTypeEnum = /*@__PURE__*/ S.String;
 
 /** Compute Engine disk target details. */
@@ -1115,13 +1350,15 @@ export interface ComputeEngineDisk {
   diskType?: ComputeEngineDiskDiskTypeEnum;
 }
 export const ComputeEngineDisk = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "zone": S.optional(S.String),
-  "diskId": S.optional(S.String),
-  "replicaZones": S.optional(StringList),
-  "diskType": S.optional(ComputeEngineDiskDiskTypeEnum),
-}),
-).annotate({ identifier: "ComputeEngineDisk" }) as any as S.Schema<ComputeEngineDisk>;
+  S.Struct({
+    zone: S.optional(S.String),
+    diskId: S.optional(S.String),
+    replicaZones: S.optional(StringList),
+    diskType: S.optional(ComputeEngineDiskDiskTypeEnum),
+  }),
+).annotate({
+  identifier: "ComputeEngineDisk",
+}) as any as S.Schema<ComputeEngineDisk>;
 
 /** Details of the target disk in Compute Engine. */
 export interface DiskMigrationJobTargetDetails {
@@ -1135,18 +1372,35 @@ export interface DiskMigrationJobTargetDetails {
   targetDisk?: ComputeEngineDisk;
 }
 export const DiskMigrationJobTargetDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "targetProject": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "encryption": S.optional(Encryption),
-  "targetDisk": S.optional(ComputeEngineDisk),
-}),
-).annotate({ identifier: "DiskMigrationJobTargetDetails" }) as any as S.Schema<DiskMigrationJobTargetDetails>;
+  S.Struct({
+    targetProject: S.optional(S.String),
+    labels: S.optional(StringMap),
+    encryption: S.optional(Encryption),
+    targetDisk: S.optional(ComputeEngineDisk),
+  }),
+).annotate({
+  identifier: "DiskMigrationJobTargetDetails",
+}) as any as S.Schema<DiskMigrationJobTargetDetails>;
 
-export type DiskMigrationJobStateEnum = "STATE_UNSPECIFIED" | "READY" | "RUNNING" | "SUCCEEDED" | "CANCELLING" | "CANCELLED" | "FAILED";
+export type DiskMigrationJobStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "READY"
+  | "RUNNING"
+  | "SUCCEEDED"
+  | "CANCELLING"
+  | "CANCELLED"
+  | "FAILED";
 export const DiskMigrationJobStateEnum = /*@__PURE__*/ S.String;
 
-export type AwsSourceDiskDetailsDiskTypeEnum = "TYPE_UNSPECIFIED" | "GP2" | "GP3" | "IO1" | "IO2" | "ST1" | "SC1" | "STANDARD";
+export type AwsSourceDiskDetailsDiskTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "GP2"
+  | "GP3"
+  | "IO1"
+  | "IO2"
+  | "ST1"
+  | "SC1"
+  | "STANDARD";
 export const AwsSourceDiskDetailsDiskTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents the source AWS Disk details. */
@@ -1161,13 +1415,15 @@ export interface AwsSourceDiskDetails {
   sizeGib?: string;
 }
 export const AwsSourceDiskDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "tags": S.optional(StringMap),
-  "diskType": S.optional(AwsSourceDiskDetailsDiskTypeEnum),
-  "volumeId": S.optional(S.String),
-  "sizeGib": S.optional(S.String),
-}),
-).annotate({ identifier: "AwsSourceDiskDetails" }) as any as S.Schema<AwsSourceDiskDetails>;
+  S.Struct({
+    tags: S.optional(StringMap),
+    diskType: S.optional(AwsSourceDiskDetailsDiskTypeEnum),
+    volumeId: S.optional(S.String),
+    sizeGib: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AwsSourceDiskDetails",
+}) as any as S.Schema<AwsSourceDiskDetails>;
 
 /** Describes the disk which will be migrated from the source environment. The source disk has to be unattached. */
 export interface DiskMigrationJob {
@@ -1189,17 +1445,19 @@ export interface DiskMigrationJob {
   updateTime?: string;
 }
 export const DiskMigrationJob = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "steps": S.optional(DiskMigrationStepList),
-  "createTime": S.optional(S.String),
-  "targetDetails": S.optional(DiskMigrationJobTargetDetails),
-  "state": S.optional(DiskMigrationJobStateEnum),
-  "awsSourceDiskDetails": S.optional(AwsSourceDiskDetails),
-  "errors": S.optional(StatusList),
-  "updateTime": S.optional(S.String),
-}),
-).annotate({ identifier: "DiskMigrationJob" }) as any as S.Schema<DiskMigrationJob>;
+  S.Struct({
+    name: S.optional(S.String),
+    steps: S.optional(DiskMigrationStepList),
+    createTime: S.optional(S.String),
+    targetDetails: S.optional(DiskMigrationJobTargetDetails),
+    state: S.optional(DiskMigrationJobStateEnum),
+    awsSourceDiskDetails: S.optional(AwsSourceDiskDetails),
+    errors: S.optional(StatusList),
+    updateTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DiskMigrationJob",
+}) as any as S.Schema<DiskMigrationJob>;
 
 export interface CreateProjectsLocationsSourcesDiskMigrationJobsRequest {
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request timed out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -1211,20 +1469,31 @@ export interface CreateProjectsLocationsSourcesDiskMigrationJobsRequest {
   /** Request body */
   body?: DiskMigrationJob;
 }
-export const CreateProjectsLocationsSourcesDiskMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "diskMigrationJobId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(DiskMigrationJob.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/diskMigrationJobs","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsSourcesDiskMigrationJobsRequest" }) as any as S.Schema<CreateProjectsLocationsSourcesDiskMigrationJobsRequest>;
+export const CreateProjectsLocationsSourcesDiskMigrationJobsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      requestId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      diskMigrationJobId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(DiskMigrationJob.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/diskMigrationJobs",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsSourcesDiskMigrationJobsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsSourcesDiskMigrationJobsRequest>;
 
 /** PostProcessingStep contains specific step details. */
 export interface PostProcessingStep {}
 export const PostProcessingStep = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "PostProcessingStep" }) as any as S.Schema<PostProcessingStep>;
+  S.Struct({}),
+).annotate({
+  identifier: "PostProcessingStep",
+}) as any as S.Schema<PostProcessingStep>;
 
 /** ReplicatingStep contains specific step details. */
 export interface ReplicatingStep {
@@ -1238,19 +1507,23 @@ export interface ReplicatingStep {
   lastThirtyMinutesAverageBytesPerSecond?: string;
 }
 export const ReplicatingStep = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "totalBytes": S.optional(S.String),
-  "replicatedBytes": S.optional(S.String),
-  "lastTwoMinutesAverageBytesPerSecond": S.optional(S.String),
-  "lastThirtyMinutesAverageBytesPerSecond": S.optional(S.String),
-}),
-).annotate({ identifier: "ReplicatingStep" }) as any as S.Schema<ReplicatingStep>;
+  S.Struct({
+    totalBytes: S.optional(S.String),
+    replicatedBytes: S.optional(S.String),
+    lastTwoMinutesAverageBytesPerSecond: S.optional(S.String),
+    lastThirtyMinutesAverageBytesPerSecond: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ReplicatingStep",
+}) as any as S.Schema<ReplicatingStep>;
 
 /** InitializingReplicationStep contains specific step details. */
 export interface InitializingReplicationStep {}
 export const InitializingReplicationStep = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "InitializingReplicationStep" }) as any as S.Schema<InitializingReplicationStep>;
+  S.Struct({}),
+).annotate({
+  identifier: "InitializingReplicationStep",
+}) as any as S.Schema<InitializingReplicationStep>;
 
 /** CycleStep holds information about a step progress. */
 export interface CycleStep {
@@ -1266,19 +1539,26 @@ export interface CycleStep {
   initializingReplication?: InitializingReplicationStep;
 }
 export const CycleStep = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "postProcessing": S.optional(PostProcessingStep),
-  "startTime": S.optional(S.String),
-  "endTime": S.optional(S.String),
-  "replicating": S.optional(ReplicatingStep),
-  "initializingReplication": S.optional(InitializingReplicationStep),
-}),
+  S.Struct({
+    postProcessing: S.optional(PostProcessingStep),
+    startTime: S.optional(S.String),
+    endTime: S.optional(S.String),
+    replicating: S.optional(ReplicatingStep),
+    initializingReplication: S.optional(InitializingReplicationStep),
+  }),
 ).annotate({ identifier: "CycleStep" }) as any as S.Schema<CycleStep>;
 
 export type CycleStepList = ReadonlyArray<CycleStep>;
-export const CycleStepList = /*@__PURE__*/ S.Array(CycleStep) as any as S.Schema<CycleStepList>;
+export const CycleStepList = /*@__PURE__*/ S.Array(
+  CycleStep,
+) as any as S.Schema<CycleStepList>;
 
-export type ReplicationCycleStateEnum = "STATE_UNSPECIFIED" | "RUNNING" | "PAUSED" | "FAILED" | "SUCCEEDED";
+export type ReplicationCycleStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "RUNNING"
+  | "PAUSED"
+  | "FAILED"
+  | "SUCCEEDED";
 export const ReplicationCycleStateEnum = /*@__PURE__*/ S.String;
 
 /** ReplicationCycle contains information about the current replication cycle status. */
@@ -1305,19 +1585,21 @@ export interface ReplicationCycle {
   state?: ReplicationCycleStateEnum;
 }
 export const ReplicationCycle = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "warnings": S.optional(MigrationWarningList),
-  "name": S.optional(S.String),
-  "cycleNumber": S.optional(S.Number),
-  "startTime": S.optional(S.String),
-  "totalPauseDuration": S.optional(S.String),
-  "endTime": S.optional(S.String),
-  "steps": S.optional(CycleStepList),
-  "progressPercent": S.optional(S.Number),
-  "error": S.optional(Status),
-  "state": S.optional(ReplicationCycleStateEnum),
-}),
-).annotate({ identifier: "ReplicationCycle" }) as any as S.Schema<ReplicationCycle>;
+  S.Struct({
+    warnings: S.optional(MigrationWarningList),
+    name: S.optional(S.String),
+    cycleNumber: S.optional(S.Number),
+    startTime: S.optional(S.String),
+    totalPauseDuration: S.optional(S.String),
+    endTime: S.optional(S.String),
+    steps: S.optional(CycleStepList),
+    progressPercent: S.optional(S.Number),
+    error: S.optional(Status),
+    state: S.optional(ReplicationCycleStateEnum),
+  }),
+).annotate({
+  identifier: "ReplicationCycle",
+}) as any as S.Schema<ReplicationCycle>;
 
 /** Expiration holds information about the expiration of a MigratingVm. */
 export interface Expiration {
@@ -1329,14 +1611,28 @@ export interface Expiration {
   extendable?: boolean;
 }
 export const Expiration = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "expireTime": S.optional(S.String),
-  "extensionCount": S.optional(S.Number),
-  "extendable": S.optional(S.Boolean),
-}),
+  S.Struct({
+    expireTime: S.optional(S.String),
+    extensionCount: S.optional(S.Number),
+    extendable: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "Expiration" }) as any as S.Schema<Expiration>;
 
-export type MigratingVmStateEnum = "STATE_UNSPECIFIED" | "PENDING" | "READY" | "FIRST_SYNC" | "ACTIVE" | "CUTTING_OVER" | "CUTOVER" | "FINAL_SYNC" | "PAUSED" | "FINALIZING" | "FINALIZED" | "ERROR" | "EXPIRED" | "FINALIZED_EXPIRED";
+export type MigratingVmStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "PENDING"
+  | "READY"
+  | "FIRST_SYNC"
+  | "ACTIVE"
+  | "CUTTING_OVER"
+  | "CUTOVER"
+  | "FINAL_SYNC"
+  | "PAUSED"
+  | "FINALIZING"
+  | "FINALIZED"
+  | "ERROR"
+  | "EXPIRED"
+  | "FINALIZED_EXPIRED";
 export const MigratingVmStateEnum = /*@__PURE__*/ S.String;
 
 /** CutoverForecast holds information about future CutoverJobs of a MigratingVm. */
@@ -1345,18 +1641,25 @@ export interface CutoverForecast {
   estimatedCutoverJobDuration?: string;
 }
 export const CutoverForecast = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "estimatedCutoverJobDuration": S.optional(S.String),
-}),
-).annotate({ identifier: "CutoverForecast" }) as any as S.Schema<CutoverForecast>;
+  S.Struct({
+    estimatedCutoverJobDuration: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CutoverForecast",
+}) as any as S.Schema<CutoverForecast>;
 
 /** Details for a disk only migration. */
 export interface DisksMigrationDisksTargetDefaults {}
 export const DisksMigrationDisksTargetDefaults = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "DisksMigrationDisksTargetDefaults" }) as any as S.Schema<DisksMigrationDisksTargetDefaults>;
+  S.Struct({}),
+).annotate({
+  identifier: "DisksMigrationDisksTargetDefaults",
+}) as any as S.Schema<DisksMigrationDisksTargetDefaults>;
 
-export type SchedulingNodeAffinityOperatorEnum = "OPERATOR_UNSPECIFIED" | "IN" | "NOT_IN";
+export type SchedulingNodeAffinityOperatorEnum =
+  | "OPERATOR_UNSPECIFIED"
+  | "IN"
+  | "NOT_IN";
 export const SchedulingNodeAffinityOperatorEnum = /*@__PURE__*/ S.String;
 
 /** Node Affinity: the configuration of desired nodes onto which this Instance could be scheduled. Based on https://cloud.google.com/compute/docs/reference/rest/v1/instances/setScheduling */
@@ -1369,20 +1672,30 @@ export interface SchedulingNodeAffinity {
   values?: StringList;
 }
 export const SchedulingNodeAffinity = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "operator": S.optional(SchedulingNodeAffinityOperatorEnum),
-  "key": S.optional(S.String),
-  "values": S.optional(StringList),
-}),
-).annotate({ identifier: "SchedulingNodeAffinity" }) as any as S.Schema<SchedulingNodeAffinity>;
+  S.Struct({
+    operator: S.optional(SchedulingNodeAffinityOperatorEnum),
+    key: S.optional(S.String),
+    values: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "SchedulingNodeAffinity",
+}) as any as S.Schema<SchedulingNodeAffinity>;
 
 export type SchedulingNodeAffinityList = ReadonlyArray<SchedulingNodeAffinity>;
-export const SchedulingNodeAffinityList = /*@__PURE__*/ S.Array(SchedulingNodeAffinity) as any as S.Schema<SchedulingNodeAffinityList>;
+export const SchedulingNodeAffinityList = /*@__PURE__*/ S.Array(
+  SchedulingNodeAffinity,
+) as any as S.Schema<SchedulingNodeAffinityList>;
 
-export type ComputeSchedulingRestartTypeEnum = "RESTART_TYPE_UNSPECIFIED" | "AUTOMATIC_RESTART" | "NO_AUTOMATIC_RESTART";
+export type ComputeSchedulingRestartTypeEnum =
+  | "RESTART_TYPE_UNSPECIFIED"
+  | "AUTOMATIC_RESTART"
+  | "NO_AUTOMATIC_RESTART";
 export const ComputeSchedulingRestartTypeEnum = /*@__PURE__*/ S.String;
 
-export type ComputeSchedulingOnHostMaintenanceEnum = "ON_HOST_MAINTENANCE_UNSPECIFIED" | "TERMINATE" | "MIGRATE";
+export type ComputeSchedulingOnHostMaintenanceEnum =
+  | "ON_HOST_MAINTENANCE_UNSPECIFIED"
+  | "TERMINATE"
+  | "MIGRATE";
 export const ComputeSchedulingOnHostMaintenanceEnum = /*@__PURE__*/ S.String;
 
 /** Scheduling information for VM on maintenance/restart behaviour and node allocation in sole tenant nodes. Options for instance behavior when the host machine undergoes maintenance that may temporarily impact instance performance. */
@@ -1397,15 +1710,23 @@ export interface ComputeScheduling {
   onHostMaintenance?: ComputeSchedulingOnHostMaintenanceEnum;
 }
 export const ComputeScheduling = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nodeAffinities": S.optional(SchedulingNodeAffinityList),
-  "minNodeCpus": S.optional(S.Number),
-  "restartType": S.optional(ComputeSchedulingRestartTypeEnum),
-  "onHostMaintenance": S.optional(ComputeSchedulingOnHostMaintenanceEnum),
-}),
-).annotate({ identifier: "ComputeScheduling" }) as any as S.Schema<ComputeScheduling>;
+  S.Struct({
+    nodeAffinities: S.optional(SchedulingNodeAffinityList),
+    minNodeCpus: S.optional(S.Number),
+    restartType: S.optional(ComputeSchedulingRestartTypeEnum),
+    onHostMaintenance: S.optional(ComputeSchedulingOnHostMaintenanceEnum),
+  }),
+).annotate({
+  identifier: "ComputeScheduling",
+}) as any as S.Schema<ComputeScheduling>;
 
-export type BootDiskDefaultsDiskTypeEnum = "COMPUTE_ENGINE_DISK_TYPE_UNSPECIFIED" | "COMPUTE_ENGINE_DISK_TYPE_STANDARD" | "COMPUTE_ENGINE_DISK_TYPE_SSD" | "COMPUTE_ENGINE_DISK_TYPE_BALANCED" | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED" | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED_HIGH_AVAILABILITY";
+export type BootDiskDefaultsDiskTypeEnum =
+  | "COMPUTE_ENGINE_DISK_TYPE_UNSPECIFIED"
+  | "COMPUTE_ENGINE_DISK_TYPE_STANDARD"
+  | "COMPUTE_ENGINE_DISK_TYPE_SSD"
+  | "COMPUTE_ENGINE_DISK_TYPE_BALANCED"
+  | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED"
+  | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED_HIGH_AVAILABILITY";
 export const BootDiskDefaultsDiskTypeEnum = /*@__PURE__*/ S.String;
 
 /** Contains details about the image source used to create the disk. */
@@ -1414,10 +1735,12 @@ export interface DiskImageDefaults {
   sourceImage?: string;
 }
 export const DiskImageDefaults = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sourceImage": S.optional(S.String),
-}),
-).annotate({ identifier: "DiskImageDefaults" }) as any as S.Schema<DiskImageDefaults>;
+  S.Struct({
+    sourceImage: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DiskImageDefaults",
+}) as any as S.Schema<DiskImageDefaults>;
 
 /** BootDiskDefaults hold information about the boot disk of a VM. */
 export interface BootDiskDefaults {
@@ -1433,14 +1756,16 @@ export interface BootDiskDefaults {
   encryption?: Encryption;
 }
 export const BootDiskDefaults = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "deviceName": S.optional(S.String),
-  "diskType": S.optional(BootDiskDefaultsDiskTypeEnum),
-  "diskName": S.optional(S.String),
-  "image": S.optional(DiskImageDefaults),
-  "encryption": S.optional(Encryption),
-}),
-).annotate({ identifier: "BootDiskDefaults" }) as any as S.Schema<BootDiskDefaults>;
+  S.Struct({
+    deviceName: S.optional(S.String),
+    diskType: S.optional(BootDiskDefaultsDiskTypeEnum),
+    diskName: S.optional(S.String),
+    image: S.optional(DiskImageDefaults),
+    encryption: S.optional(Encryption),
+  }),
+).annotate({
+  identifier: "BootDiskDefaults",
+}) as any as S.Schema<BootDiskDefaults>;
 
 /** Details for creation of a VM that migrated data disks will be attached to. */
 export interface DisksMigrationVmTargetDefaults {
@@ -1478,27 +1803,35 @@ export interface DisksMigrationVmTargetDefaults {
   encryption?: Encryption;
 }
 export const DisksMigrationVmTargetDefaults = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "hostname": S.optional(S.String),
-  "enableIntegrityMonitoring": S.optional(S.Boolean),
-  "vmName": S.optional(S.String),
-  "machineType": S.optional(S.String),
-  "networkTags": S.optional(StringList),
-  "serviceAccount": S.optional(S.String),
-  "secureBoot": S.optional(S.Boolean),
-  "labels": S.optional(StringMap),
-  "additionalLicenses": S.optional(StringList),
-  "computeScheduling": S.optional(ComputeScheduling),
-  "enableVtpm": S.optional(S.Boolean),
-  "metadata": S.optional(StringMap),
-  "networkInterfaces": S.optional(NetworkInterfaceList),
-  "machineTypeSeries": S.optional(S.String),
-  "bootDiskDefaults": S.optional(BootDiskDefaults),
-  "encryption": S.optional(Encryption),
-}),
-).annotate({ identifier: "DisksMigrationVmTargetDefaults" }) as any as S.Schema<DisksMigrationVmTargetDefaults>;
+  S.Struct({
+    hostname: S.optional(S.String),
+    enableIntegrityMonitoring: S.optional(S.Boolean),
+    vmName: S.optional(S.String),
+    machineType: S.optional(S.String),
+    networkTags: S.optional(StringList),
+    serviceAccount: S.optional(S.String),
+    secureBoot: S.optional(S.Boolean),
+    labels: S.optional(StringMap),
+    additionalLicenses: S.optional(StringList),
+    computeScheduling: S.optional(ComputeScheduling),
+    enableVtpm: S.optional(S.Boolean),
+    metadata: S.optional(StringMap),
+    networkInterfaces: S.optional(NetworkInterfaceList),
+    machineTypeSeries: S.optional(S.String),
+    bootDiskDefaults: S.optional(BootDiskDefaults),
+    encryption: S.optional(Encryption),
+  }),
+).annotate({
+  identifier: "DisksMigrationVmTargetDefaults",
+}) as any as S.Schema<DisksMigrationVmTargetDefaults>;
 
-export type PersistentDiskDefaultsDiskTypeEnum = "COMPUTE_ENGINE_DISK_TYPE_UNSPECIFIED" | "COMPUTE_ENGINE_DISK_TYPE_STANDARD" | "COMPUTE_ENGINE_DISK_TYPE_SSD" | "COMPUTE_ENGINE_DISK_TYPE_BALANCED" | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED" | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED_HIGH_AVAILABILITY";
+export type PersistentDiskDefaultsDiskTypeEnum =
+  | "COMPUTE_ENGINE_DISK_TYPE_UNSPECIFIED"
+  | "COMPUTE_ENGINE_DISK_TYPE_STANDARD"
+  | "COMPUTE_ENGINE_DISK_TYPE_SSD"
+  | "COMPUTE_ENGINE_DISK_TYPE_BALANCED"
+  | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED"
+  | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED_HIGH_AVAILABILITY";
 export const PersistentDiskDefaultsDiskTypeEnum = /*@__PURE__*/ S.String;
 
 /** Details for attachment of the disk to a VM. */
@@ -1507,10 +1840,12 @@ export interface VmAttachmentDetails {
   deviceName?: string;
 }
 export const VmAttachmentDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "deviceName": S.optional(S.String),
-}),
-).annotate({ identifier: "VmAttachmentDetails" }) as any as S.Schema<VmAttachmentDetails>;
+  S.Struct({
+    deviceName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VmAttachmentDetails",
+}) as any as S.Schema<VmAttachmentDetails>;
 
 /** Details for creation of a Persistent Disk. */
 export interface PersistentDiskDefaults {
@@ -1528,18 +1863,22 @@ export interface PersistentDiskDefaults {
   vmAttachmentDetails?: VmAttachmentDetails;
 }
 export const PersistentDiskDefaults = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "diskName": S.optional(S.String),
-  "sourceDiskNumber": S.optional(S.Number),
-  "diskType": S.optional(PersistentDiskDefaultsDiskTypeEnum),
-  "additionalLabels": S.optional(StringMap),
-  "encryption": S.optional(Encryption),
-  "vmAttachmentDetails": S.optional(VmAttachmentDetails),
-}),
-).annotate({ identifier: "PersistentDiskDefaults" }) as any as S.Schema<PersistentDiskDefaults>;
+  S.Struct({
+    diskName: S.optional(S.String),
+    sourceDiskNumber: S.optional(S.Number),
+    diskType: S.optional(PersistentDiskDefaultsDiskTypeEnum),
+    additionalLabels: S.optional(StringMap),
+    encryption: S.optional(Encryption),
+    vmAttachmentDetails: S.optional(VmAttachmentDetails),
+  }),
+).annotate({
+  identifier: "PersistentDiskDefaults",
+}) as any as S.Schema<PersistentDiskDefaults>;
 
 export type PersistentDiskDefaultsList = ReadonlyArray<PersistentDiskDefaults>;
-export const PersistentDiskDefaultsList = /*@__PURE__*/ S.Array(PersistentDiskDefaults) as any as S.Schema<PersistentDiskDefaultsList>;
+export const PersistentDiskDefaultsList = /*@__PURE__*/ S.Array(
+  PersistentDiskDefaults,
+) as any as S.Schema<PersistentDiskDefaultsList>;
 
 /** ComputeEngineDisksTargetDefaults is a collection of details for creating Persistent Disks in a target Compute Engine project. */
 export interface ComputeEngineDisksTargetDefaults {
@@ -1555,28 +1894,55 @@ export interface ComputeEngineDisksTargetDefaults {
   disks?: PersistentDiskDefaultsList;
 }
 export const ComputeEngineDisksTargetDefaults = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "targetProject": S.optional(S.String),
-  "disksTargetDefaults": S.optional(DisksMigrationDisksTargetDefaults),
-  "vmTargetDefaults": S.optional(DisksMigrationVmTargetDefaults),
-  "zone": S.optional(S.String),
-  "disks": S.optional(PersistentDiskDefaultsList),
-}),
-).annotate({ identifier: "ComputeEngineDisksTargetDefaults" }) as any as S.Schema<ComputeEngineDisksTargetDefaults>;
+  S.Struct({
+    targetProject: S.optional(S.String),
+    disksTargetDefaults: S.optional(DisksMigrationDisksTargetDefaults),
+    vmTargetDefaults: S.optional(DisksMigrationVmTargetDefaults),
+    zone: S.optional(S.String),
+    disks: S.optional(PersistentDiskDefaultsList),
+  }),
+).annotate({
+  identifier: "ComputeEngineDisksTargetDefaults",
+}) as any as S.Schema<ComputeEngineDisksTargetDefaults>;
 
-export type CloneJobStateEnum = "STATE_UNSPECIFIED" | "PENDING" | "ACTIVE" | "FAILED" | "SUCCEEDED" | "CANCELLED" | "CANCELLING" | "ADAPTING_OS";
+export type CloneJobStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "PENDING"
+  | "ACTIVE"
+  | "FAILED"
+  | "SUCCEEDED"
+  | "CANCELLED"
+  | "CANCELLING"
+  | "ADAPTING_OS";
 export const CloneJobStateEnum = /*@__PURE__*/ S.String;
 
-export type ComputeEngineTargetDetailsDiskTypeEnum = "COMPUTE_ENGINE_DISK_TYPE_UNSPECIFIED" | "COMPUTE_ENGINE_DISK_TYPE_STANDARD" | "COMPUTE_ENGINE_DISK_TYPE_SSD" | "COMPUTE_ENGINE_DISK_TYPE_BALANCED" | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED" | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED_HIGH_AVAILABILITY";
+export type ComputeEngineTargetDetailsDiskTypeEnum =
+  | "COMPUTE_ENGINE_DISK_TYPE_UNSPECIFIED"
+  | "COMPUTE_ENGINE_DISK_TYPE_STANDARD"
+  | "COMPUTE_ENGINE_DISK_TYPE_SSD"
+  | "COMPUTE_ENGINE_DISK_TYPE_BALANCED"
+  | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED"
+  | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED_HIGH_AVAILABILITY";
 export const ComputeEngineTargetDetailsDiskTypeEnum = /*@__PURE__*/ S.String;
 
-export type ComputeEngineTargetDetailsBootOptionEnum = "COMPUTE_ENGINE_BOOT_OPTION_UNSPECIFIED" | "COMPUTE_ENGINE_BOOT_OPTION_EFI" | "COMPUTE_ENGINE_BOOT_OPTION_BIOS";
+export type ComputeEngineTargetDetailsBootOptionEnum =
+  | "COMPUTE_ENGINE_BOOT_OPTION_UNSPECIFIED"
+  | "COMPUTE_ENGINE_BOOT_OPTION_EFI"
+  | "COMPUTE_ENGINE_BOOT_OPTION_BIOS";
 export const ComputeEngineTargetDetailsBootOptionEnum = /*@__PURE__*/ S.String;
 
-export type ComputeEngineTargetDetailsBootConversionEnum = "BOOT_CONVERSION_UNSPECIFIED" | "NONE" | "BIOS_TO_EFI";
-export const ComputeEngineTargetDetailsBootConversionEnum = /*@__PURE__*/ S.String;
+export type ComputeEngineTargetDetailsBootConversionEnum =
+  | "BOOT_CONVERSION_UNSPECIFIED"
+  | "NONE"
+  | "BIOS_TO_EFI";
+export const ComputeEngineTargetDetailsBootConversionEnum =
+  /*@__PURE__*/ S.String;
 
-export type AppliedLicenseTypeEnum = "TYPE_UNSPECIFIED" | "NONE" | "PAYG" | "BYOL";
+export type AppliedLicenseTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "NONE"
+  | "PAYG"
+  | "BYOL";
 export const AppliedLicenseTypeEnum = /*@__PURE__*/ S.String;
 
 /** AppliedLicense holds the license data returned by adaptation module report. */
@@ -1587,13 +1953,16 @@ export interface AppliedLicense {
   type?: AppliedLicenseTypeEnum;
 }
 export const AppliedLicense = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "osLicense": S.optional(S.String),
-  "type": S.optional(AppliedLicenseTypeEnum),
-}),
+  S.Struct({
+    osLicense: S.optional(S.String),
+    type: S.optional(AppliedLicenseTypeEnum),
+  }),
 ).annotate({ identifier: "AppliedLicense" }) as any as S.Schema<AppliedLicense>;
 
-export type ComputeEngineTargetDetailsLicenseTypeEnum = "COMPUTE_ENGINE_LICENSE_TYPE_DEFAULT" | "COMPUTE_ENGINE_LICENSE_TYPE_PAYG" | "COMPUTE_ENGINE_LICENSE_TYPE_BYOL";
+export type ComputeEngineTargetDetailsLicenseTypeEnum =
+  | "COMPUTE_ENGINE_LICENSE_TYPE_DEFAULT"
+  | "COMPUTE_ENGINE_LICENSE_TYPE_PAYG"
+  | "COMPUTE_ENGINE_LICENSE_TYPE_BYOL";
 export const ComputeEngineTargetDetailsLicenseTypeEnum = /*@__PURE__*/ S.String;
 
 /** ComputeEngineTargetDetails is a collection of details for creating a VM in a target Compute Engine project. */
@@ -1650,46 +2019,52 @@ export interface ComputeEngineTargetDetails {
   serviceAccount?: string;
 }
 export const ComputeEngineTargetDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "project": S.optional(S.String),
-  "diskReplicaZones": S.optional(StringList),
-  "diskType": S.optional(ComputeEngineTargetDetailsDiskTypeEnum),
-  "additionalLicenses": S.optional(StringList),
-  "computeScheduling": S.optional(ComputeScheduling),
-  "networkInterfaces": S.optional(NetworkInterfaceList),
-  "bootOption": S.optional(ComputeEngineTargetDetailsBootOptionEnum),
-  "bootConversion": S.optional(ComputeEngineTargetDetailsBootConversionEnum),
-  "hostname": S.optional(S.String),
-  "vmName": S.optional(S.String),
-  "appliedLicense": S.optional(AppliedLicense),
-  "storagePool": S.optional(S.String),
-  "licenseType": S.optional(ComputeEngineTargetDetailsLicenseTypeEnum),
-  "networkTags": S.optional(StringList),
-  "secureBoot": S.optional(S.Boolean),
-  "adaptationModifiers": S.optional(AdaptationModifierList),
-  "enableVtpm": S.optional(S.Boolean),
-  "machineTypeSeries": S.optional(S.String),
-  "metadata": S.optional(StringMap),
-  "encryption": S.optional(Encryption),
-  "enableIntegrityMonitoring": S.optional(S.Boolean),
-  "zone": S.optional(S.String),
-  "machineType": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "serviceAccount": S.optional(S.String),
-}),
-).annotate({ identifier: "ComputeEngineTargetDetails" }) as any as S.Schema<ComputeEngineTargetDetails>;
+  S.Struct({
+    project: S.optional(S.String),
+    diskReplicaZones: S.optional(StringList),
+    diskType: S.optional(ComputeEngineTargetDetailsDiskTypeEnum),
+    additionalLicenses: S.optional(StringList),
+    computeScheduling: S.optional(ComputeScheduling),
+    networkInterfaces: S.optional(NetworkInterfaceList),
+    bootOption: S.optional(ComputeEngineTargetDetailsBootOptionEnum),
+    bootConversion: S.optional(ComputeEngineTargetDetailsBootConversionEnum),
+    hostname: S.optional(S.String),
+    vmName: S.optional(S.String),
+    appliedLicense: S.optional(AppliedLicense),
+    storagePool: S.optional(S.String),
+    licenseType: S.optional(ComputeEngineTargetDetailsLicenseTypeEnum),
+    networkTags: S.optional(StringList),
+    secureBoot: S.optional(S.Boolean),
+    adaptationModifiers: S.optional(AdaptationModifierList),
+    enableVtpm: S.optional(S.Boolean),
+    machineTypeSeries: S.optional(S.String),
+    metadata: S.optional(StringMap),
+    encryption: S.optional(Encryption),
+    enableIntegrityMonitoring: S.optional(S.Boolean),
+    zone: S.optional(S.String),
+    machineType: S.optional(S.String),
+    labels: S.optional(StringMap),
+    serviceAccount: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ComputeEngineTargetDetails",
+}) as any as S.Schema<ComputeEngineTargetDetails>;
 
 /** PreparingVMDisksStep contains specific step details. */
 export interface PreparingVMDisksStep {}
 export const PreparingVMDisksStep = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "PreparingVMDisksStep" }) as any as S.Schema<PreparingVMDisksStep>;
+  S.Struct({}),
+).annotate({
+  identifier: "PreparingVMDisksStep",
+}) as any as S.Schema<PreparingVMDisksStep>;
 
 /** InstantiatingMigratedVMStep contains specific step details. */
 export interface InstantiatingMigratedVMStep {}
 export const InstantiatingMigratedVMStep = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "InstantiatingMigratedVMStep" }) as any as S.Schema<InstantiatingMigratedVMStep>;
+  S.Struct({}),
+).annotate({
+  identifier: "InstantiatingMigratedVMStep",
+}) as any as S.Schema<InstantiatingMigratedVMStep>;
 
 /** CloneStep holds information about the clone step progress. */
 export interface CloneStep {
@@ -1705,23 +2080,27 @@ export interface CloneStep {
   endTime?: string;
 }
 export const CloneStep = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "preparingVmDisks": S.optional(PreparingVMDisksStep),
-  "startTime": S.optional(S.String),
-  "instantiatingMigratedVm": S.optional(InstantiatingMigratedVMStep),
-  "adaptingOs": S.optional(AdaptingOSStep),
-  "endTime": S.optional(S.String),
-}),
+  S.Struct({
+    preparingVmDisks: S.optional(PreparingVMDisksStep),
+    startTime: S.optional(S.String),
+    instantiatingMigratedVm: S.optional(InstantiatingMigratedVMStep),
+    adaptingOs: S.optional(AdaptingOSStep),
+    endTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "CloneStep" }) as any as S.Schema<CloneStep>;
 
 export type CloneStepList = ReadonlyArray<CloneStep>;
-export const CloneStepList = /*@__PURE__*/ S.Array(CloneStep) as any as S.Schema<CloneStepList>;
+export const CloneStepList = /*@__PURE__*/ S.Array(
+  CloneStep,
+) as any as S.Schema<CloneStepList>;
 
 /** Details for a disks-only migration. */
 export interface DisksMigrationDisksTargetDetails {}
 export const DisksMigrationDisksTargetDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "DisksMigrationDisksTargetDetails" }) as any as S.Schema<DisksMigrationDisksTargetDetails>;
+  S.Struct({}),
+).annotate({
+  identifier: "DisksMigrationDisksTargetDetails",
+}) as any as S.Schema<DisksMigrationDisksTargetDetails>;
 
 /** Details of a created Persistent Disk. */
 export interface PersistentDisk {
@@ -1731,14 +2110,16 @@ export interface PersistentDisk {
   diskUri?: string;
 }
 export const PersistentDisk = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sourceDiskNumber": S.optional(S.Number),
-  "diskUri": S.optional(S.String),
-}),
+  S.Struct({
+    sourceDiskNumber: S.optional(S.Number),
+    diskUri: S.optional(S.String),
+  }),
 ).annotate({ identifier: "PersistentDisk" }) as any as S.Schema<PersistentDisk>;
 
 export type PersistentDiskList = ReadonlyArray<PersistentDisk>;
-export const PersistentDiskList = /*@__PURE__*/ S.Array(PersistentDisk) as any as S.Schema<PersistentDiskList>;
+export const PersistentDiskList = /*@__PURE__*/ S.Array(
+  PersistentDisk,
+) as any as S.Schema<PersistentDiskList>;
 
 /** Details for the VM created VM as part of disks migration. */
 export interface DisksMigrationVmTargetDetails {
@@ -1746,10 +2127,12 @@ export interface DisksMigrationVmTargetDetails {
   vmUri?: string;
 }
 export const DisksMigrationVmTargetDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "vmUri": S.optional(S.String),
-}),
-).annotate({ identifier: "DisksMigrationVmTargetDetails" }) as any as S.Schema<DisksMigrationVmTargetDetails>;
+  S.Struct({
+    vmUri: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DisksMigrationVmTargetDetails",
+}) as any as S.Schema<DisksMigrationVmTargetDetails>;
 
 /** ComputeEngineDisksTargetDetails is a collection of created Persistent Disks details. */
 export interface ComputeEngineDisksTargetDetails {
@@ -1761,12 +2144,14 @@ export interface ComputeEngineDisksTargetDetails {
   vmTargetDetails?: DisksMigrationVmTargetDetails;
 }
 export const ComputeEngineDisksTargetDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "disksTargetDetails": S.optional(DisksMigrationDisksTargetDetails),
-  "disks": S.optional(PersistentDiskList),
-  "vmTargetDetails": S.optional(DisksMigrationVmTargetDetails),
-}),
-).annotate({ identifier: "ComputeEngineDisksTargetDetails" }) as any as S.Schema<ComputeEngineDisksTargetDetails>;
+  S.Struct({
+    disksTargetDetails: S.optional(DisksMigrationDisksTargetDetails),
+    disks: S.optional(PersistentDiskList),
+    vmTargetDetails: S.optional(DisksMigrationVmTargetDetails),
+  }),
+).annotate({
+  identifier: "ComputeEngineDisksTargetDetails",
+}) as any as S.Schema<ComputeEngineDisksTargetDetails>;
 
 /** CloneJob describes the process of creating a clone of a MigratingVM to the requested target based on the latest successful uploaded snapshots. While the migration cycles of a MigratingVm take place, it is possible to verify the uploaded VM can be started in the cloud, by creating a clone. The clone can be created without any downtime, and it is created using the latest snapshots which are already in the cloud. The cloneJob is only responsible for its work, not its products, which means once it is finished, it will never touch the instance it created. It will only delete it in case of the CloneJob being cancelled or upon failure to clone. */
 export interface CloneJob {
@@ -1790,27 +2175,38 @@ export interface CloneJob {
   computeEngineDisksTargetDetails?: ComputeEngineDisksTargetDetails;
 }
 export const CloneJob = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "state": S.optional(CloneJobStateEnum),
-  "computeEngineTargetDetails": S.optional(ComputeEngineTargetDetails),
-  "stateTime": S.optional(S.String),
-  "steps": S.optional(CloneStepList),
-  "error": S.optional(Status),
-  "createTime": S.optional(S.String),
-  "endTime": S.optional(S.String),
-  "name": S.optional(S.String),
-  "computeEngineDisksTargetDetails": S.optional(ComputeEngineDisksTargetDetails),
-}),
+  S.Struct({
+    state: S.optional(CloneJobStateEnum),
+    computeEngineTargetDetails: S.optional(ComputeEngineTargetDetails),
+    stateTime: S.optional(S.String),
+    steps: S.optional(CloneStepList),
+    error: S.optional(Status),
+    createTime: S.optional(S.String),
+    endTime: S.optional(S.String),
+    name: S.optional(S.String),
+    computeEngineDisksTargetDetails: S.optional(
+      ComputeEngineDisksTargetDetails,
+    ),
+  }),
 ).annotate({ identifier: "CloneJob" }) as any as S.Schema<CloneJob>;
 
 export type CloneJobList = ReadonlyArray<CloneJob>;
-export const CloneJobList = /*@__PURE__*/ S.Array(CloneJob) as any as S.Schema<CloneJobList>;
+export const CloneJobList = /*@__PURE__*/ S.Array(
+  CloneJob,
+) as any as S.Schema<CloneJobList>;
 
-export type VmCapabilitiesOsCapabilitiesItemEnum = "OS_CAPABILITY_UNSPECIFIED" | "OS_CAPABILITY_NVME_STORAGE_ACCESS" | "OS_CAPABILITY_GVNIC_NETWORK_INTERFACE" | "OS_CAPABILITY_IDPF_NETWORK_INTERFACE";
+export type VmCapabilitiesOsCapabilitiesItemEnum =
+  | "OS_CAPABILITY_UNSPECIFIED"
+  | "OS_CAPABILITY_NVME_STORAGE_ACCESS"
+  | "OS_CAPABILITY_GVNIC_NETWORK_INTERFACE"
+  | "OS_CAPABILITY_IDPF_NETWORK_INTERFACE";
 export const VmCapabilitiesOsCapabilitiesItemEnum = /*@__PURE__*/ S.String;
 
-export type VmCapabilitiesOsCapabilitiesItemEnumList = ReadonlyArray<VmCapabilitiesOsCapabilitiesItemEnum>;
-export const VmCapabilitiesOsCapabilitiesItemEnumList = /*@__PURE__*/ S.Array(VmCapabilitiesOsCapabilitiesItemEnum) as any as S.Schema<VmCapabilitiesOsCapabilitiesItemEnumList>;
+export type VmCapabilitiesOsCapabilitiesItemEnumList =
+  ReadonlyArray<VmCapabilitiesOsCapabilitiesItemEnum>;
+export const VmCapabilitiesOsCapabilitiesItemEnumList = /*@__PURE__*/ S.Array(
+  VmCapabilitiesOsCapabilitiesItemEnum,
+) as any as S.Schema<VmCapabilitiesOsCapabilitiesItemEnumList>;
 
 /** Migrating VM source information about the VM capabilities needed for some Compute Engine features. */
 export interface VmCapabilities {
@@ -1820,16 +2216,22 @@ export interface VmCapabilities {
   lastOsCapabilitiesUpdateTime?: string;
 }
 export const VmCapabilities = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "osCapabilities": S.optional(VmCapabilitiesOsCapabilitiesItemEnumList),
-  "lastOsCapabilitiesUpdateTime": S.optional(S.String),
-}),
+  S.Struct({
+    osCapabilities: S.optional(VmCapabilitiesOsCapabilitiesItemEnumList),
+    lastOsCapabilitiesUpdateTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "VmCapabilities" }) as any as S.Schema<VmCapabilities>;
 
-export type VmwareSourceVmDetailsArchitectureEnum = "VM_ARCHITECTURE_UNSPECIFIED" | "VM_ARCHITECTURE_X86_FAMILY" | "VM_ARCHITECTURE_ARM64";
+export type VmwareSourceVmDetailsArchitectureEnum =
+  | "VM_ARCHITECTURE_UNSPECIFIED"
+  | "VM_ARCHITECTURE_X86_FAMILY"
+  | "VM_ARCHITECTURE_ARM64";
 export const VmwareSourceVmDetailsArchitectureEnum = /*@__PURE__*/ S.String;
 
-export type VmwareSourceVmDetailsFirmwareEnum = "FIRMWARE_UNSPECIFIED" | "EFI" | "BIOS";
+export type VmwareSourceVmDetailsFirmwareEnum =
+  | "FIRMWARE_UNSPECIFIED"
+  | "EFI"
+  | "BIOS";
 export const VmwareSourceVmDetailsFirmwareEnum = /*@__PURE__*/ S.String;
 
 /** The details of a Vmware VM disk. */
@@ -1842,15 +2244,19 @@ export interface VmwareDiskDetails {
   diskNumber?: number;
 }
 export const VmwareDiskDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sizeGb": S.optional(S.String),
-  "label": S.optional(S.String),
-  "diskNumber": S.optional(S.Number),
-}),
-).annotate({ identifier: "VmwareDiskDetails" }) as any as S.Schema<VmwareDiskDetails>;
+  S.Struct({
+    sizeGb: S.optional(S.String),
+    label: S.optional(S.String),
+    diskNumber: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "VmwareDiskDetails",
+}) as any as S.Schema<VmwareDiskDetails>;
 
 export type VmwareDiskDetailsList = ReadonlyArray<VmwareDiskDetails>;
-export const VmwareDiskDetailsList = /*@__PURE__*/ S.Array(VmwareDiskDetails) as any as S.Schema<VmwareDiskDetailsList>;
+export const VmwareDiskDetailsList = /*@__PURE__*/ S.Array(
+  VmwareDiskDetails,
+) as any as S.Schema<VmwareDiskDetailsList>;
 
 /** Represent the source Vmware VM details. */
 export interface VmwareSourceVmDetails {
@@ -1866,26 +2272,45 @@ export interface VmwareSourceVmDetails {
   disks?: VmwareDiskDetailsList;
 }
 export const VmwareSourceVmDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "vmCapabilitiesInfo": S.optional(VmCapabilities),
-  "architecture": S.optional(VmwareSourceVmDetailsArchitectureEnum),
-  "firmware": S.optional(VmwareSourceVmDetailsFirmwareEnum),
-  "committedStorageBytes": S.optional(S.String),
-  "disks": S.optional(VmwareDiskDetailsList),
-}),
-).annotate({ identifier: "VmwareSourceVmDetails" }) as any as S.Schema<VmwareSourceVmDetails>;
+  S.Struct({
+    vmCapabilitiesInfo: S.optional(VmCapabilities),
+    architecture: S.optional(VmwareSourceVmDetailsArchitectureEnum),
+    firmware: S.optional(VmwareSourceVmDetailsFirmwareEnum),
+    committedStorageBytes: S.optional(S.String),
+    disks: S.optional(VmwareDiskDetailsList),
+  }),
+).annotate({
+  identifier: "VmwareSourceVmDetails",
+}) as any as S.Schema<VmwareSourceVmDetails>;
 
-export type ComputeEngineTargetDefaultsDiskTypeEnum = "COMPUTE_ENGINE_DISK_TYPE_UNSPECIFIED" | "COMPUTE_ENGINE_DISK_TYPE_STANDARD" | "COMPUTE_ENGINE_DISK_TYPE_SSD" | "COMPUTE_ENGINE_DISK_TYPE_BALANCED" | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED" | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED_HIGH_AVAILABILITY";
+export type ComputeEngineTargetDefaultsDiskTypeEnum =
+  | "COMPUTE_ENGINE_DISK_TYPE_UNSPECIFIED"
+  | "COMPUTE_ENGINE_DISK_TYPE_STANDARD"
+  | "COMPUTE_ENGINE_DISK_TYPE_SSD"
+  | "COMPUTE_ENGINE_DISK_TYPE_BALANCED"
+  | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED"
+  | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED_HIGH_AVAILABILITY";
 export const ComputeEngineTargetDefaultsDiskTypeEnum = /*@__PURE__*/ S.String;
 
-export type ComputeEngineTargetDefaultsBootConversionEnum = "BOOT_CONVERSION_UNSPECIFIED" | "NONE" | "BIOS_TO_EFI";
-export const ComputeEngineTargetDefaultsBootConversionEnum = /*@__PURE__*/ S.String;
+export type ComputeEngineTargetDefaultsBootConversionEnum =
+  | "BOOT_CONVERSION_UNSPECIFIED"
+  | "NONE"
+  | "BIOS_TO_EFI";
+export const ComputeEngineTargetDefaultsBootConversionEnum =
+  /*@__PURE__*/ S.String;
 
-export type ComputeEngineTargetDefaultsBootOptionEnum = "COMPUTE_ENGINE_BOOT_OPTION_UNSPECIFIED" | "COMPUTE_ENGINE_BOOT_OPTION_EFI" | "COMPUTE_ENGINE_BOOT_OPTION_BIOS";
+export type ComputeEngineTargetDefaultsBootOptionEnum =
+  | "COMPUTE_ENGINE_BOOT_OPTION_UNSPECIFIED"
+  | "COMPUTE_ENGINE_BOOT_OPTION_EFI"
+  | "COMPUTE_ENGINE_BOOT_OPTION_BIOS";
 export const ComputeEngineTargetDefaultsBootOptionEnum = /*@__PURE__*/ S.String;
 
-export type ComputeEngineTargetDefaultsLicenseTypeEnum = "COMPUTE_ENGINE_LICENSE_TYPE_DEFAULT" | "COMPUTE_ENGINE_LICENSE_TYPE_PAYG" | "COMPUTE_ENGINE_LICENSE_TYPE_BYOL";
-export const ComputeEngineTargetDefaultsLicenseTypeEnum = /*@__PURE__*/ S.String;
+export type ComputeEngineTargetDefaultsLicenseTypeEnum =
+  | "COMPUTE_ENGINE_LICENSE_TYPE_DEFAULT"
+  | "COMPUTE_ENGINE_LICENSE_TYPE_PAYG"
+  | "COMPUTE_ENGINE_LICENSE_TYPE_BYOL";
+export const ComputeEngineTargetDefaultsLicenseTypeEnum =
+  /*@__PURE__*/ S.String;
 
 /** ComputeEngineTargetDefaults is a collection of details for creating a VM in a target Compute Engine project. */
 export interface ComputeEngineTargetDefaults {
@@ -1943,35 +2368,37 @@ export interface ComputeEngineTargetDefaults {
   machineType?: string;
 }
 export const ComputeEngineTargetDefaults = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "computeScheduling": S.optional(ComputeScheduling),
-  "diskType": S.optional(ComputeEngineTargetDefaultsDiskTypeEnum),
-  "additionalLicenses": S.optional(StringList),
-  "diskReplicaZones": S.optional(StringList),
-  "bootConversion": S.optional(ComputeEngineTargetDefaultsBootConversionEnum),
-  "disks": S.optional(PersistentDiskDefaultsList),
-  "networkInterfaces": S.optional(NetworkInterfaceList),
-  "bootOption": S.optional(ComputeEngineTargetDefaultsBootOptionEnum),
-  "vmName": S.optional(S.String),
-  "appliedLicense": S.optional(AppliedLicense),
-  "storagePool": S.optional(S.String),
-  "hostname": S.optional(S.String),
-  "secureBoot": S.optional(S.Boolean),
-  "licenseType": S.optional(ComputeEngineTargetDefaultsLicenseTypeEnum),
-  "networkTags": S.optional(StringList),
-  "targetProject": S.optional(S.String),
-  "enableVtpm": S.optional(S.Boolean),
-  "adaptationModifiers": S.optional(AdaptationModifierList),
-  "encryption": S.optional(Encryption),
-  "metadata": S.optional(StringMap),
-  "machineTypeSeries": S.optional(S.String),
-  "enableIntegrityMonitoring": S.optional(S.Boolean),
-  "serviceAccount": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "zone": S.optional(S.String),
-  "machineType": S.optional(S.String),
-}),
-).annotate({ identifier: "ComputeEngineTargetDefaults" }) as any as S.Schema<ComputeEngineTargetDefaults>;
+  S.Struct({
+    computeScheduling: S.optional(ComputeScheduling),
+    diskType: S.optional(ComputeEngineTargetDefaultsDiskTypeEnum),
+    additionalLicenses: S.optional(StringList),
+    diskReplicaZones: S.optional(StringList),
+    bootConversion: S.optional(ComputeEngineTargetDefaultsBootConversionEnum),
+    disks: S.optional(PersistentDiskDefaultsList),
+    networkInterfaces: S.optional(NetworkInterfaceList),
+    bootOption: S.optional(ComputeEngineTargetDefaultsBootOptionEnum),
+    vmName: S.optional(S.String),
+    appliedLicense: S.optional(AppliedLicense),
+    storagePool: S.optional(S.String),
+    hostname: S.optional(S.String),
+    secureBoot: S.optional(S.Boolean),
+    licenseType: S.optional(ComputeEngineTargetDefaultsLicenseTypeEnum),
+    networkTags: S.optional(StringList),
+    targetProject: S.optional(S.String),
+    enableVtpm: S.optional(S.Boolean),
+    adaptationModifiers: S.optional(AdaptationModifierList),
+    encryption: S.optional(Encryption),
+    metadata: S.optional(StringMap),
+    machineTypeSeries: S.optional(S.String),
+    enableIntegrityMonitoring: S.optional(S.Boolean),
+    serviceAccount: S.optional(S.String),
+    labels: S.optional(StringMap),
+    zone: S.optional(S.String),
+    machineType: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ComputeEngineTargetDefaults",
+}) as any as S.Schema<ComputeEngineTargetDefaults>;
 
 /** ReplicationSync contain information about the last replica sync to the cloud. */
 export interface ReplicationSync {
@@ -1979,16 +2406,20 @@ export interface ReplicationSync {
   lastSyncTime?: string;
 }
 export const ReplicationSync = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "lastSyncTime": S.optional(S.String),
-}),
-).annotate({ identifier: "ReplicationSync" }) as any as S.Schema<ReplicationSync>;
+  S.Struct({
+    lastSyncTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ReplicationSync",
+}) as any as S.Schema<ReplicationSync>;
 
 /** ShuttingDownSourceVMStep contains specific step details. */
 export interface ShuttingDownSourceVMStep {}
 export const ShuttingDownSourceVMStep = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "ShuttingDownSourceVMStep" }) as any as S.Schema<ShuttingDownSourceVMStep>;
+  S.Struct({}),
+).annotate({
+  identifier: "ShuttingDownSourceVMStep",
+}) as any as S.Schema<ShuttingDownSourceVMStep>;
 
 /** CutoverStep holds information about the cutover step progress. */
 export interface CutoverStep {
@@ -2008,21 +2439,31 @@ export interface CutoverStep {
   startTime?: string;
 }
 export const CutoverStep = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "endTime": S.optional(S.String),
-  "previousReplicationCycle": S.optional(ReplicationCycle),
-  "finalSync": S.optional(ReplicationCycle),
-  "shuttingDownSourceVm": S.optional(ShuttingDownSourceVMStep),
-  "instantiatingMigratedVm": S.optional(InstantiatingMigratedVMStep),
-  "preparingVmDisks": S.optional(PreparingVMDisksStep),
-  "startTime": S.optional(S.String),
-}),
+  S.Struct({
+    endTime: S.optional(S.String),
+    previousReplicationCycle: S.optional(ReplicationCycle),
+    finalSync: S.optional(ReplicationCycle),
+    shuttingDownSourceVm: S.optional(ShuttingDownSourceVMStep),
+    instantiatingMigratedVm: S.optional(InstantiatingMigratedVMStep),
+    preparingVmDisks: S.optional(PreparingVMDisksStep),
+    startTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "CutoverStep" }) as any as S.Schema<CutoverStep>;
 
 export type CutoverStepList = ReadonlyArray<CutoverStep>;
-export const CutoverStepList = /*@__PURE__*/ S.Array(CutoverStep) as any as S.Schema<CutoverStepList>;
+export const CutoverStepList = /*@__PURE__*/ S.Array(
+  CutoverStep,
+) as any as S.Schema<CutoverStepList>;
 
-export type CutoverJobStateEnum = "STATE_UNSPECIFIED" | "PENDING" | "FAILED" | "SUCCEEDED" | "CANCELLED" | "CANCELLING" | "ACTIVE" | "ADAPTING_OS";
+export type CutoverJobStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "PENDING"
+  | "FAILED"
+  | "SUCCEEDED"
+  | "CANCELLED"
+  | "CANCELLING"
+  | "ACTIVE"
+  | "ADAPTING_OS";
 export const CutoverJobStateEnum = /*@__PURE__*/ S.String;
 
 /** CutoverJob message describes a cutover of a migrating VM. The CutoverJob is the operation of shutting down the VM, creating a snapshot and cloning the VM using the replicated snapshot. */
@@ -2051,23 +2492,27 @@ export interface CutoverJob {
   stateTime?: string;
 }
 export const CutoverJob = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "computeEngineDisksTargetDetails": S.optional(ComputeEngineDisksTargetDetails),
-  "steps": S.optional(CutoverStepList),
-  "progressPercent": S.optional(S.Number),
-  "error": S.optional(Status),
-  "stateMessage": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "endTime": S.optional(S.String),
-  "state": S.optional(CutoverJobStateEnum),
-  "computeEngineTargetDetails": S.optional(ComputeEngineTargetDetails),
-  "stateTime": S.optional(S.String),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    computeEngineDisksTargetDetails: S.optional(
+      ComputeEngineDisksTargetDetails,
+    ),
+    steps: S.optional(CutoverStepList),
+    progressPercent: S.optional(S.Number),
+    error: S.optional(Status),
+    stateMessage: S.optional(S.String),
+    createTime: S.optional(S.String),
+    endTime: S.optional(S.String),
+    state: S.optional(CutoverJobStateEnum),
+    computeEngineTargetDetails: S.optional(ComputeEngineTargetDetails),
+    stateTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "CutoverJob" }) as any as S.Schema<CutoverJob>;
 
 export type CutoverJobList = ReadonlyArray<CutoverJob>;
-export const CutoverJobList = /*@__PURE__*/ S.Array(CutoverJob) as any as S.Schema<CutoverJobList>;
+export const CutoverJobList = /*@__PURE__*/ S.Array(
+  CutoverJob,
+) as any as S.Schema<CutoverJobList>;
 
 /** The details of an Azure VM disk. */
 export interface AzureDiskDetails {
@@ -2079,20 +2524,30 @@ export interface AzureDiskDetails {
   sizeGb?: string;
 }
 export const AzureDiskDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "diskNumber": S.optional(S.Number),
-  "diskId": S.optional(S.String),
-  "sizeGb": S.optional(S.String),
-}),
-).annotate({ identifier: "AzureDiskDetails" }) as any as S.Schema<AzureDiskDetails>;
+  S.Struct({
+    diskNumber: S.optional(S.Number),
+    diskId: S.optional(S.String),
+    sizeGb: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AzureDiskDetails",
+}) as any as S.Schema<AzureDiskDetails>;
 
 export type AzureDiskDetailsList = ReadonlyArray<AzureDiskDetails>;
-export const AzureDiskDetailsList = /*@__PURE__*/ S.Array(AzureDiskDetails) as any as S.Schema<AzureDiskDetailsList>;
+export const AzureDiskDetailsList = /*@__PURE__*/ S.Array(
+  AzureDiskDetails,
+) as any as S.Schema<AzureDiskDetailsList>;
 
-export type AzureSourceVmDetailsArchitectureEnum = "VM_ARCHITECTURE_UNSPECIFIED" | "VM_ARCHITECTURE_X86_FAMILY" | "VM_ARCHITECTURE_ARM64";
+export type AzureSourceVmDetailsArchitectureEnum =
+  | "VM_ARCHITECTURE_UNSPECIFIED"
+  | "VM_ARCHITECTURE_X86_FAMILY"
+  | "VM_ARCHITECTURE_ARM64";
 export const AzureSourceVmDetailsArchitectureEnum = /*@__PURE__*/ S.String;
 
-export type AzureSourceVmDetailsFirmwareEnum = "FIRMWARE_UNSPECIFIED" | "EFI" | "BIOS";
+export type AzureSourceVmDetailsFirmwareEnum =
+  | "FIRMWARE_UNSPECIFIED"
+  | "EFI"
+  | "BIOS";
 export const AzureSourceVmDetailsFirmwareEnum = /*@__PURE__*/ S.String;
 
 /** Represent the source Azure VM details. */
@@ -2109,14 +2564,16 @@ export interface AzureSourceVmDetails {
   firmware?: AzureSourceVmDetailsFirmwareEnum;
 }
 export const AzureSourceVmDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "committedStorageBytes": S.optional(S.String),
-  "disks": S.optional(AzureDiskDetailsList),
-  "vmCapabilitiesInfo": S.optional(VmCapabilities),
-  "architecture": S.optional(AzureSourceVmDetailsArchitectureEnum),
-  "firmware": S.optional(AzureSourceVmDetailsFirmwareEnum),
-}),
-).annotate({ identifier: "AzureSourceVmDetails" }) as any as S.Schema<AzureSourceVmDetails>;
+  S.Struct({
+    committedStorageBytes: S.optional(S.String),
+    disks: S.optional(AzureDiskDetailsList),
+    vmCapabilitiesInfo: S.optional(VmCapabilities),
+    architecture: S.optional(AzureSourceVmDetailsArchitectureEnum),
+    firmware: S.optional(AzureSourceVmDetailsFirmwareEnum),
+  }),
+).annotate({
+  identifier: "AzureSourceVmDetails",
+}) as any as S.Schema<AzureSourceVmDetails>;
 
 /** The details of an AWS instance disk. */
 export interface AwsDiskDetails {
@@ -2128,20 +2585,28 @@ export interface AwsDiskDetails {
   diskNumber?: number;
 }
 export const AwsDiskDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sizeGb": S.optional(S.String),
-  "volumeId": S.optional(S.String),
-  "diskNumber": S.optional(S.Number),
-}),
+  S.Struct({
+    sizeGb: S.optional(S.String),
+    volumeId: S.optional(S.String),
+    diskNumber: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "AwsDiskDetails" }) as any as S.Schema<AwsDiskDetails>;
 
 export type AwsDiskDetailsList = ReadonlyArray<AwsDiskDetails>;
-export const AwsDiskDetailsList = /*@__PURE__*/ S.Array(AwsDiskDetails) as any as S.Schema<AwsDiskDetailsList>;
+export const AwsDiskDetailsList = /*@__PURE__*/ S.Array(
+  AwsDiskDetails,
+) as any as S.Schema<AwsDiskDetailsList>;
 
-export type AwsSourceVmDetailsFirmwareEnum = "FIRMWARE_UNSPECIFIED" | "EFI" | "BIOS";
+export type AwsSourceVmDetailsFirmwareEnum =
+  | "FIRMWARE_UNSPECIFIED"
+  | "EFI"
+  | "BIOS";
 export const AwsSourceVmDetailsFirmwareEnum = /*@__PURE__*/ S.String;
 
-export type AwsSourceVmDetailsArchitectureEnum = "VM_ARCHITECTURE_UNSPECIFIED" | "VM_ARCHITECTURE_X86_FAMILY" | "VM_ARCHITECTURE_ARM64";
+export type AwsSourceVmDetailsArchitectureEnum =
+  | "VM_ARCHITECTURE_UNSPECIFIED"
+  | "VM_ARCHITECTURE_X86_FAMILY"
+  | "VM_ARCHITECTURE_ARM64";
 export const AwsSourceVmDetailsArchitectureEnum = /*@__PURE__*/ S.String;
 
 /** Represent the source AWS VM details. */
@@ -2158,14 +2623,16 @@ export interface AwsSourceVmDetails {
   architecture?: AwsSourceVmDetailsArchitectureEnum;
 }
 export const AwsSourceVmDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "committedStorageBytes": S.optional(S.String),
-  "disks": S.optional(AwsDiskDetailsList),
-  "firmware": S.optional(AwsSourceVmDetailsFirmwareEnum),
-  "vmCapabilitiesInfo": S.optional(VmCapabilities),
-  "architecture": S.optional(AwsSourceVmDetailsArchitectureEnum),
-}),
-).annotate({ identifier: "AwsSourceVmDetails" }) as any as S.Schema<AwsSourceVmDetails>;
+  S.Struct({
+    committedStorageBytes: S.optional(S.String),
+    disks: S.optional(AwsDiskDetailsList),
+    firmware: S.optional(AwsSourceVmDetailsFirmwareEnum),
+    vmCapabilitiesInfo: S.optional(VmCapabilities),
+    architecture: S.optional(AwsSourceVmDetailsArchitectureEnum),
+  }),
+).annotate({
+  identifier: "AwsSourceVmDetails",
+}) as any as S.Schema<AwsSourceVmDetails>;
 
 /** A policy for scheduling replications. */
 export interface SchedulePolicy {
@@ -2175,10 +2642,10 @@ export interface SchedulePolicy {
   skipOsAdaptation?: boolean;
 }
 export const SchedulePolicy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "idleDuration": S.optional(S.String),
-  "skipOsAdaptation": S.optional(S.Boolean),
-}),
+  S.Struct({
+    idleDuration: S.optional(S.String),
+    skipOsAdaptation: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "SchedulePolicy" }) as any as S.Schema<SchedulePolicy>;
 
 /** MigratingVm describes the VM that will be migrated from a Source environment and its replication state. */
@@ -2233,32 +2700,34 @@ export interface MigratingVm {
   group?: string;
 }
 export const MigratingVm = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "currentSyncInfo": S.optional(ReplicationCycle),
-  "expiration": S.optional(Expiration),
-  "error": S.optional(Status),
-  "state": S.optional(MigratingVmStateEnum),
-  "cutoverForecast": S.optional(CutoverForecast),
-  "computeEngineDisksTargetDefaults": S.optional(ComputeEngineDisksTargetDefaults),
-  "lastReplicationCycle": S.optional(ReplicationCycle),
-  "recentCloneJobs": S.optional(CloneJobList),
-  "sourceVmId": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "description": S.optional(S.String),
-  "vmwareSourceVmDetails": S.optional(VmwareSourceVmDetails),
-  "computeEngineTargetDefaults": S.optional(ComputeEngineTargetDefaults),
-  "createTime": S.optional(S.String),
-  "lastSync": S.optional(ReplicationSync),
-  "stateTime": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "recentCutoverJobs": S.optional(CutoverJobList),
-  "azureSourceVmDetails": S.optional(AzureSourceVmDetails),
-  "awsSourceVmDetails": S.optional(AwsSourceVmDetails),
-  "policy": S.optional(SchedulePolicy),
-  "labels": S.optional(StringMap),
-  "name": S.optional(S.String),
-  "group": S.optional(S.String),
-}),
+  S.Struct({
+    currentSyncInfo: S.optional(ReplicationCycle),
+    expiration: S.optional(Expiration),
+    error: S.optional(Status),
+    state: S.optional(MigratingVmStateEnum),
+    cutoverForecast: S.optional(CutoverForecast),
+    computeEngineDisksTargetDefaults: S.optional(
+      ComputeEngineDisksTargetDefaults,
+    ),
+    lastReplicationCycle: S.optional(ReplicationCycle),
+    recentCloneJobs: S.optional(CloneJobList),
+    sourceVmId: S.optional(S.String),
+    displayName: S.optional(S.String),
+    description: S.optional(S.String),
+    vmwareSourceVmDetails: S.optional(VmwareSourceVmDetails),
+    computeEngineTargetDefaults: S.optional(ComputeEngineTargetDefaults),
+    createTime: S.optional(S.String),
+    lastSync: S.optional(ReplicationSync),
+    stateTime: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    recentCutoverJobs: S.optional(CutoverJobList),
+    azureSourceVmDetails: S.optional(AzureSourceVmDetails),
+    awsSourceVmDetails: S.optional(AwsSourceVmDetails),
+    policy: S.optional(SchedulePolicy),
+    labels: S.optional(StringMap),
+    name: S.optional(S.String),
+    group: S.optional(S.String),
+  }),
 ).annotate({ identifier: "MigratingVm" }) as any as S.Schema<MigratingVm>;
 
 export interface CreateProjectsLocationsSourcesMigratingVmsRequest {
@@ -2271,14 +2740,23 @@ export interface CreateProjectsLocationsSourcesMigratingVmsRequest {
   /** Request body */
   body?: MigratingVm;
 }
-export const CreateProjectsLocationsSourcesMigratingVmsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "migratingVmId": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(MigratingVm.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/migratingVms","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsSourcesMigratingVmsRequest" }) as any as S.Schema<CreateProjectsLocationsSourcesMigratingVmsRequest>;
+export const CreateProjectsLocationsSourcesMigratingVmsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      migratingVmId: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(MigratingVm.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/migratingVms",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsSourcesMigratingVmsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsSourcesMigratingVmsRequest>;
 
 export interface CreateProjectsLocationsSourcesMigratingVmsCloneJobsRequest {
   /** Required. The Clone's parent. */
@@ -2290,14 +2768,23 @@ export interface CreateProjectsLocationsSourcesMigratingVmsCloneJobsRequest {
   /** Request body */
   body?: CloneJob;
 }
-export const CreateProjectsLocationsSourcesMigratingVmsCloneJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "cloneJobId": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(CloneJob.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/cloneJobs","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsSourcesMigratingVmsCloneJobsRequest" }) as any as S.Schema<CreateProjectsLocationsSourcesMigratingVmsCloneJobsRequest>;
+export const CreateProjectsLocationsSourcesMigratingVmsCloneJobsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      cloneJobId: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(CloneJob.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/cloneJobs",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsSourcesMigratingVmsCloneJobsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsSourcesMigratingVmsCloneJobsRequest>;
 
 export interface CreateProjectsLocationsSourcesMigratingVmsCutoverJobsRequest {
   /** Required. The Cutover's parent. */
@@ -2309,28 +2796,55 @@ export interface CreateProjectsLocationsSourcesMigratingVmsCutoverJobsRequest {
   /** Request body */
   body?: CutoverJob;
 }
-export const CreateProjectsLocationsSourcesMigratingVmsCutoverJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "cutoverJobId": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(CutoverJob.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/cutoverJobs","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsSourcesMigratingVmsCutoverJobsRequest" }) as any as S.Schema<CreateProjectsLocationsSourcesMigratingVmsCutoverJobsRequest>;
+export const CreateProjectsLocationsSourcesMigratingVmsCutoverJobsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      cutoverJobId: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(CutoverJob.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/cutoverJobs",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsSourcesMigratingVmsCutoverJobsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsSourcesMigratingVmsCutoverJobsRequest>;
 
-export type UtilizationReportTimeFrameEnum = "TIME_FRAME_UNSPECIFIED" | "WEEK" | "MONTH" | "YEAR";
+export type UtilizationReportTimeFrameEnum =
+  | "TIME_FRAME_UNSPECIFIED"
+  | "WEEK"
+  | "MONTH"
+  | "YEAR";
 export const UtilizationReportTimeFrameEnum = /*@__PURE__*/ S.String;
 
-export type UtilizationReportStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "SUCCEEDED" | "FAILED";
+export type UtilizationReportStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "CREATING"
+  | "SUCCEEDED"
+  | "FAILED";
 export const UtilizationReportStateEnum = /*@__PURE__*/ S.String;
 
-export type VmwareVmDetailsPowerStateEnum = "POWER_STATE_UNSPECIFIED" | "ON" | "OFF" | "SUSPENDED";
+export type VmwareVmDetailsPowerStateEnum =
+  | "POWER_STATE_UNSPECIFIED"
+  | "ON"
+  | "OFF"
+  | "SUSPENDED";
 export const VmwareVmDetailsPowerStateEnum = /*@__PURE__*/ S.String;
 
-export type VmwareVmDetailsArchitectureEnum = "VM_ARCHITECTURE_UNSPECIFIED" | "VM_ARCHITECTURE_X86_FAMILY" | "VM_ARCHITECTURE_ARM64";
+export type VmwareVmDetailsArchitectureEnum =
+  | "VM_ARCHITECTURE_UNSPECIFIED"
+  | "VM_ARCHITECTURE_X86_FAMILY"
+  | "VM_ARCHITECTURE_ARM64";
 export const VmwareVmDetailsArchitectureEnum = /*@__PURE__*/ S.String;
 
-export type VmwareVmDetailsBootOptionEnum = "BOOT_OPTION_UNSPECIFIED" | "EFI" | "BIOS";
+export type VmwareVmDetailsBootOptionEnum =
+  | "BOOT_OPTION_UNSPECIFIED"
+  | "EFI"
+  | "BIOS";
 export const VmwareVmDetailsBootOptionEnum = /*@__PURE__*/ S.String;
 
 /** VmwareVmDetails describes a VM in vCenter. */
@@ -2363,22 +2877,24 @@ export interface VmwareVmDetails {
   displayName?: string;
 }
 export const VmwareVmDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "committedStorageMb": S.optional(S.String),
-  "powerState": S.optional(VmwareVmDetailsPowerStateEnum),
-  "uuid": S.optional(S.String),
-  "diskCount": S.optional(S.Number),
-  "datacenterDescription": S.optional(S.String),
-  "guestDescription": S.optional(S.String),
-  "architecture": S.optional(VmwareVmDetailsArchitectureEnum),
-  "datacenterId": S.optional(S.String),
-  "memoryMb": S.optional(S.Number),
-  "bootOption": S.optional(VmwareVmDetailsBootOptionEnum),
-  "vmId": S.optional(S.String),
-  "cpuCount": S.optional(S.Number),
-  "displayName": S.optional(S.String),
-}),
-).annotate({ identifier: "VmwareVmDetails" }) as any as S.Schema<VmwareVmDetails>;
+  S.Struct({
+    committedStorageMb: S.optional(S.String),
+    powerState: S.optional(VmwareVmDetailsPowerStateEnum),
+    uuid: S.optional(S.String),
+    diskCount: S.optional(S.Number),
+    datacenterDescription: S.optional(S.String),
+    guestDescription: S.optional(S.String),
+    architecture: S.optional(VmwareVmDetailsArchitectureEnum),
+    datacenterId: S.optional(S.String),
+    memoryMb: S.optional(S.Number),
+    bootOption: S.optional(VmwareVmDetailsBootOptionEnum),
+    vmId: S.optional(S.String),
+    cpuCount: S.optional(S.Number),
+    displayName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VmwareVmDetails",
+}) as any as S.Schema<VmwareVmDetails>;
 
 /** Utilization metrics values for a single VM. */
 export interface VmUtilizationMetrics {
@@ -2400,17 +2916,19 @@ export interface VmUtilizationMetrics {
   diskIoRateMaxKbps?: string;
 }
 export const VmUtilizationMetrics = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "memoryAveragePercent": S.optional(S.Number),
-  "cpuAveragePercent": S.optional(S.Number),
-  "networkThroughputMaxKbps": S.optional(S.String),
-  "networkThroughputAverageKbps": S.optional(S.String),
-  "memoryMaxPercent": S.optional(S.Number),
-  "diskIoRateAverageKbps": S.optional(S.String),
-  "cpuMaxPercent": S.optional(S.Number),
-  "diskIoRateMaxKbps": S.optional(S.String),
-}),
-).annotate({ identifier: "VmUtilizationMetrics" }) as any as S.Schema<VmUtilizationMetrics>;
+  S.Struct({
+    memoryAveragePercent: S.optional(S.Number),
+    cpuAveragePercent: S.optional(S.Number),
+    networkThroughputMaxKbps: S.optional(S.String),
+    networkThroughputAverageKbps: S.optional(S.String),
+    memoryMaxPercent: S.optional(S.Number),
+    diskIoRateAverageKbps: S.optional(S.String),
+    cpuMaxPercent: S.optional(S.Number),
+    diskIoRateMaxKbps: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VmUtilizationMetrics",
+}) as any as S.Schema<VmUtilizationMetrics>;
 
 /** Utilization information of a single VM. */
 export interface VmUtilizationInfo {
@@ -2422,15 +2940,19 @@ export interface VmUtilizationInfo {
   utilization?: VmUtilizationMetrics;
 }
 export const VmUtilizationInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "vmId": S.optional(S.String),
-  "vmwareVmDetails": S.optional(VmwareVmDetails),
-  "utilization": S.optional(VmUtilizationMetrics),
-}),
-).annotate({ identifier: "VmUtilizationInfo" }) as any as S.Schema<VmUtilizationInfo>;
+  S.Struct({
+    vmId: S.optional(S.String),
+    vmwareVmDetails: S.optional(VmwareVmDetails),
+    utilization: S.optional(VmUtilizationMetrics),
+  }),
+).annotate({
+  identifier: "VmUtilizationInfo",
+}) as any as S.Schema<VmUtilizationInfo>;
 
 export type VmUtilizationInfoList = ReadonlyArray<VmUtilizationInfo>;
-export const VmUtilizationInfoList = /*@__PURE__*/ S.Array(VmUtilizationInfo) as any as S.Schema<VmUtilizationInfoList>;
+export const VmUtilizationInfoList = /*@__PURE__*/ S.Array(
+  VmUtilizationInfo,
+) as any as S.Schema<VmUtilizationInfoList>;
 
 /** Utilization report details the utilization (CPU, memory, etc.) of selected source VMs. */
 export interface UtilizationReport {
@@ -2456,19 +2978,21 @@ export interface UtilizationReport {
   name?: string;
 }
 export const UtilizationReport = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "stateTime": S.optional(S.String),
-  "timeFrame": S.optional(UtilizationReportTimeFrameEnum),
-  "state": S.optional(UtilizationReportStateEnum),
-  "vmCount": S.optional(S.Number),
-  "createTime": S.optional(S.String),
-  "error": S.optional(Status),
-  "frameEndTime": S.optional(S.String),
-  "vms": S.optional(VmUtilizationInfoList),
-  "displayName": S.optional(S.String),
-  "name": S.optional(S.String),
-}),
-).annotate({ identifier: "UtilizationReport" }) as any as S.Schema<UtilizationReport>;
+  S.Struct({
+    stateTime: S.optional(S.String),
+    timeFrame: S.optional(UtilizationReportTimeFrameEnum),
+    state: S.optional(UtilizationReportStateEnum),
+    vmCount: S.optional(S.Number),
+    createTime: S.optional(S.String),
+    error: S.optional(Status),
+    frameEndTime: S.optional(S.String),
+    vms: S.optional(VmUtilizationInfoList),
+    displayName: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UtilizationReport",
+}) as any as S.Schema<UtilizationReport>;
 
 export interface CreateProjectsLocationsSourcesUtilizationReportsRequest {
   /** A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -2480,14 +3004,23 @@ export interface CreateProjectsLocationsSourcesUtilizationReportsRequest {
   /** Request body */
   body?: UtilizationReport;
 }
-export const CreateProjectsLocationsSourcesUtilizationReportsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "utilizationReportId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(UtilizationReport.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/utilizationReports","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsSourcesUtilizationReportsRequest" }) as any as S.Schema<CreateProjectsLocationsSourcesUtilizationReportsRequest>;
+export const CreateProjectsLocationsSourcesUtilizationReportsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      requestId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      utilizationReportId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(UtilizationReport.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/utilizationReports",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsSourcesUtilizationReportsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsSourcesUtilizationReportsRequest>;
 
 /** TargetProject message represents a target Compute Engine project for a migration or a clone. */
 export interface TargetProject {
@@ -2503,13 +3036,13 @@ export interface TargetProject {
   createTime?: string;
 }
 export const TargetProject = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateTime": S.optional(S.String),
-  "project": S.optional(S.String),
-  "name": S.optional(S.String),
-  "description": S.optional(S.String),
-  "createTime": S.optional(S.String),
-}),
+  S.Struct({
+    updateTime: S.optional(S.String),
+    project: S.optional(S.String),
+    name: S.optional(S.String),
+    description: S.optional(S.String),
+    createTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "TargetProject" }) as any as S.Schema<TargetProject>;
 
 export interface CreateProjectsLocationsTargetProjectsRequest {
@@ -2522,14 +3055,23 @@ export interface CreateProjectsLocationsTargetProjectsRequest {
   /** Request body */
   body?: TargetProject;
 }
-export const CreateProjectsLocationsTargetProjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "targetProjectId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(TargetProject.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/targetProjects","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsTargetProjectsRequest" }) as any as S.Schema<CreateProjectsLocationsTargetProjectsRequest>;
+export const CreateProjectsLocationsTargetProjectsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      requestId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      targetProjectId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(TargetProject.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/targetProjects",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsTargetProjectsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsTargetProjectsRequest>;
 
 export interface DeleteProjectsLocationsGroupsRequest {
   /** Required. The Group name. */
@@ -2537,12 +3079,21 @@ export interface DeleteProjectsLocationsGroupsRequest {
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsGroupsRequest" }) as any as S.Schema<DeleteProjectsLocationsGroupsRequest>;
+export const DeleteProjectsLocationsGroupsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsGroupsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsGroupsRequest>;
 
 export interface DeleteProjectsLocationsImageImportsRequest {
   /** Required. The ImageImport name. */
@@ -2550,22 +3101,40 @@ export interface DeleteProjectsLocationsImageImportsRequest {
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsImageImportsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsImageImportsRequest" }) as any as S.Schema<DeleteProjectsLocationsImageImportsRequest>;
+export const DeleteProjectsLocationsImageImportsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsImageImportsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsImageImportsRequest>;
 
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsOperationsRequest" }) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsOperationsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
 
 export interface DeleteProjectsLocationsSourcesRequest {
   /** Required. The Source name. */
@@ -2573,12 +3142,21 @@ export interface DeleteProjectsLocationsSourcesRequest {
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsSourcesRequest" }) as any as S.Schema<DeleteProjectsLocationsSourcesRequest>;
+export const DeleteProjectsLocationsSourcesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsSourcesRequest",
+}) as any as S.Schema<DeleteProjectsLocationsSourcesRequest>;
 
 export interface DeleteProjectsLocationsSourcesDatacenterConnectorsRequest {
   /** Required. The DatacenterConnector name. */
@@ -2586,32 +3164,59 @@ export interface DeleteProjectsLocationsSourcesDatacenterConnectorsRequest {
   /** A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsSourcesDatacenterConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsSourcesDatacenterConnectorsRequest" }) as any as S.Schema<DeleteProjectsLocationsSourcesDatacenterConnectorsRequest>;
+export const DeleteProjectsLocationsSourcesDatacenterConnectorsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsSourcesDatacenterConnectorsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsSourcesDatacenterConnectorsRequest>;
 
 export interface DeleteProjectsLocationsSourcesDiskMigrationJobsRequest {
   /** Required. The name of the DiskMigrationJob. */
   name: string;
 }
-export const DeleteProjectsLocationsSourcesDiskMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsSourcesDiskMigrationJobsRequest" }) as any as S.Schema<DeleteProjectsLocationsSourcesDiskMigrationJobsRequest>;
+export const DeleteProjectsLocationsSourcesDiskMigrationJobsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsSourcesDiskMigrationJobsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsSourcesDiskMigrationJobsRequest>;
 
 export interface DeleteProjectsLocationsSourcesMigratingVmsRequest {
   /** Required. The name of the MigratingVm. */
   name: string;
 }
-export const DeleteProjectsLocationsSourcesMigratingVmsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsSourcesMigratingVmsRequest" }) as any as S.Schema<DeleteProjectsLocationsSourcesMigratingVmsRequest>;
+export const DeleteProjectsLocationsSourcesMigratingVmsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsSourcesMigratingVmsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsSourcesMigratingVmsRequest>;
 
 export interface DeleteProjectsLocationsSourcesUtilizationReportsRequest {
   /** Required. The Utilization Report name. */
@@ -2619,12 +3224,21 @@ export interface DeleteProjectsLocationsSourcesUtilizationReportsRequest {
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsSourcesUtilizationReportsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsSourcesUtilizationReportsRequest" }) as any as S.Schema<DeleteProjectsLocationsSourcesUtilizationReportsRequest>;
+export const DeleteProjectsLocationsSourcesUtilizationReportsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsSourcesUtilizationReportsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsSourcesUtilizationReportsRequest>;
 
 export interface DeleteProjectsLocationsTargetProjectsRequest {
   /** Required. The TargetProject name. */
@@ -2632,18 +3246,29 @@ export interface DeleteProjectsLocationsTargetProjectsRequest {
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsTargetProjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsTargetProjectsRequest" }) as any as S.Schema<DeleteProjectsLocationsTargetProjectsRequest>;
+export const DeleteProjectsLocationsTargetProjectsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsTargetProjectsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsTargetProjectsRequest>;
 
 /** Request message for 'ExtendMigrationRequest' request. */
 export interface ExtendMigrationRequest {}
 export const ExtendMigrationRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "ExtendMigrationRequest" }) as any as S.Schema<ExtendMigrationRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "ExtendMigrationRequest",
+}) as any as S.Schema<ExtendMigrationRequest>;
 
 export interface ExtendMigrationProjectsLocationsSourcesMigratingVmsRequest {
   /** Required. The name of the MigratingVm. */
@@ -2651,12 +3276,21 @@ export interface ExtendMigrationProjectsLocationsSourcesMigratingVmsRequest {
   /** Request body */
   body?: ExtendMigrationRequest;
 }
-export const ExtendMigrationProjectsLocationsSourcesMigratingVmsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "migratingVm": S.String.pipe(T.Label()),
-  "body": S.optional(ExtendMigrationRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+migratingVm}:extendMigration","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "ExtendMigrationProjectsLocationsSourcesMigratingVmsRequest" }) as any as S.Schema<ExtendMigrationProjectsLocationsSourcesMigratingVmsRequest>;
+export const ExtendMigrationProjectsLocationsSourcesMigratingVmsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      migratingVm: S.String.pipe(T.Label()),
+      body: S.optional(ExtendMigrationRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+migratingVm}:extendMigration",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ExtendMigrationProjectsLocationsSourcesMigratingVmsRequest",
+  }) as any as S.Schema<ExtendMigrationProjectsLocationsSourcesMigratingVmsRequest>;
 
 export interface FetchInventoryProjectsLocationsSourcesRequest {
   /** A page token, received from a previous `FetchInventory` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `FetchInventory` must match the call that provided the page token. */
@@ -2668,14 +3302,23 @@ export interface FetchInventoryProjectsLocationsSourcesRequest {
   /** The maximum number of VMs to return. The service may return fewer than this value. For AWS source: If unspecified, at most 500 VMs will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. For VMWare source: If unspecified, all VMs will be returned. There is no limit for maximum value. */
   pageSize?: number;
 }
-export const FetchInventoryProjectsLocationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "forceRefresh": S.optional(S.Boolean.pipe(T.Query())),
-  "source": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+source}:fetchInventory","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "FetchInventoryProjectsLocationsSourcesRequest" }) as any as S.Schema<FetchInventoryProjectsLocationsSourcesRequest>;
+export const FetchInventoryProjectsLocationsSourcesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      forceRefresh: S.optional(S.Boolean.pipe(T.Query())),
+      source: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+source}:fetchInventory",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "FetchInventoryProjectsLocationsSourcesRequest",
+  }) as any as S.Schema<FetchInventoryProjectsLocationsSourcesRequest>;
 
 /** AwsSecurityGroup describes a security group of an AWS VM. */
 export interface AwsSecurityGroup {
@@ -2685,25 +3328,45 @@ export interface AwsSecurityGroup {
   name?: string;
 }
 export const AwsSecurityGroup = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.optional(S.String),
-  "name": S.optional(S.String),
-}),
-).annotate({ identifier: "AwsSecurityGroup" }) as any as S.Schema<AwsSecurityGroup>;
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AwsSecurityGroup",
+}) as any as S.Schema<AwsSecurityGroup>;
 
 export type AwsSecurityGroupList = ReadonlyArray<AwsSecurityGroup>;
-export const AwsSecurityGroupList = /*@__PURE__*/ S.Array(AwsSecurityGroup) as any as S.Schema<AwsSecurityGroupList>;
+export const AwsSecurityGroupList = /*@__PURE__*/ S.Array(
+  AwsSecurityGroup,
+) as any as S.Schema<AwsSecurityGroupList>;
 
-export type AwsVmDetailsBootOptionEnum = "BOOT_OPTION_UNSPECIFIED" | "EFI" | "BIOS";
+export type AwsVmDetailsBootOptionEnum =
+  | "BOOT_OPTION_UNSPECIFIED"
+  | "EFI"
+  | "BIOS";
 export const AwsVmDetailsBootOptionEnum = /*@__PURE__*/ S.String;
 
-export type AwsVmDetailsPowerStateEnum = "POWER_STATE_UNSPECIFIED" | "ON" | "OFF" | "SUSPENDED" | "PENDING";
+export type AwsVmDetailsPowerStateEnum =
+  | "POWER_STATE_UNSPECIFIED"
+  | "ON"
+  | "OFF"
+  | "SUSPENDED"
+  | "PENDING";
 export const AwsVmDetailsPowerStateEnum = /*@__PURE__*/ S.String;
 
-export type AwsVmDetailsVirtualizationTypeEnum = "VM_VIRTUALIZATION_TYPE_UNSPECIFIED" | "HVM" | "PARAVIRTUAL";
+export type AwsVmDetailsVirtualizationTypeEnum =
+  | "VM_VIRTUALIZATION_TYPE_UNSPECIFIED"
+  | "HVM"
+  | "PARAVIRTUAL";
 export const AwsVmDetailsVirtualizationTypeEnum = /*@__PURE__*/ S.String;
 
-export type AwsVmDetailsArchitectureEnum = "VM_ARCHITECTURE_UNSPECIFIED" | "I386" | "X86_64" | "ARM64" | "X86_64_MAC";
+export type AwsVmDetailsArchitectureEnum =
+  | "VM_ARCHITECTURE_UNSPECIFIED"
+  | "I386"
+  | "X86_64"
+  | "ARM64"
+  | "X86_64_MAC";
 export const AwsVmDetailsArchitectureEnum = /*@__PURE__*/ S.String;
 
 /** AwsVmDetails describes a VM in AWS. */
@@ -2748,31 +3411,33 @@ export interface AwsVmDetails {
   zone?: string;
 }
 export const AwsVmDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "securityGroups": S.optional(AwsSecurityGroupList),
-  "displayName": S.optional(S.String),
-  "tags": S.optional(StringMap),
-  "sourceId": S.optional(S.String),
-  "instanceType": S.optional(S.String),
-  "memoryMb": S.optional(S.Number),
-  "bootOption": S.optional(AwsVmDetailsBootOptionEnum),
-  "vmId": S.optional(S.String),
-  "cpuCount": S.optional(S.Number),
-  "powerState": S.optional(AwsVmDetailsPowerStateEnum),
-  "vcpuCount": S.optional(S.Number),
-  "vpcId": S.optional(S.String),
-  "committedStorageMb": S.optional(S.String),
-  "sourceDescription": S.optional(S.String),
-  "virtualizationType": S.optional(AwsVmDetailsVirtualizationTypeEnum),
-  "diskCount": S.optional(S.Number),
-  "architecture": S.optional(AwsVmDetailsArchitectureEnum),
-  "osDescription": S.optional(S.String),
-  "zone": S.optional(S.String),
-}),
+  S.Struct({
+    securityGroups: S.optional(AwsSecurityGroupList),
+    displayName: S.optional(S.String),
+    tags: S.optional(StringMap),
+    sourceId: S.optional(S.String),
+    instanceType: S.optional(S.String),
+    memoryMb: S.optional(S.Number),
+    bootOption: S.optional(AwsVmDetailsBootOptionEnum),
+    vmId: S.optional(S.String),
+    cpuCount: S.optional(S.Number),
+    powerState: S.optional(AwsVmDetailsPowerStateEnum),
+    vcpuCount: S.optional(S.Number),
+    vpcId: S.optional(S.String),
+    committedStorageMb: S.optional(S.String),
+    sourceDescription: S.optional(S.String),
+    virtualizationType: S.optional(AwsVmDetailsVirtualizationTypeEnum),
+    diskCount: S.optional(S.Number),
+    architecture: S.optional(AwsVmDetailsArchitectureEnum),
+    osDescription: S.optional(S.String),
+    zone: S.optional(S.String),
+  }),
 ).annotate({ identifier: "AwsVmDetails" }) as any as S.Schema<AwsVmDetails>;
 
 export type AwsVmDetailsList = ReadonlyArray<AwsVmDetails>;
-export const AwsVmDetailsList = /*@__PURE__*/ S.Array(AwsVmDetails) as any as S.Schema<AwsVmDetailsList>;
+export const AwsVmDetailsList = /*@__PURE__*/ S.Array(
+  AwsVmDetails,
+) as any as S.Schema<AwsVmDetailsList>;
 
 /** AWSVmsDetails describes VMs in AWS. */
 export interface AwsVmsDetails {
@@ -2780,13 +3445,15 @@ export interface AwsVmsDetails {
   details?: AwsVmDetailsList;
 }
 export const AwsVmsDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "details": S.optional(AwsVmDetailsList),
-}),
+  S.Struct({
+    details: S.optional(AwsVmDetailsList),
+  }),
 ).annotate({ identifier: "AwsVmsDetails" }) as any as S.Schema<AwsVmsDetails>;
 
 export type VmwareVmDetailsList = ReadonlyArray<VmwareVmDetails>;
-export const VmwareVmDetailsList = /*@__PURE__*/ S.Array(VmwareVmDetails) as any as S.Schema<VmwareVmDetailsList>;
+export const VmwareVmDetailsList = /*@__PURE__*/ S.Array(
+  VmwareVmDetails,
+) as any as S.Schema<VmwareVmDetailsList>;
 
 /** VmwareVmsDetails describes VMs in vCenter. */
 export interface VmwareVmsDetails {
@@ -2794,10 +3461,12 @@ export interface VmwareVmsDetails {
   details?: VmwareVmDetailsList;
 }
 export const VmwareVmsDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "details": S.optional(VmwareVmDetailsList),
-}),
-).annotate({ identifier: "VmwareVmsDetails" }) as any as S.Schema<VmwareVmsDetails>;
+  S.Struct({
+    details: S.optional(VmwareVmDetailsList),
+  }),
+).annotate({
+  identifier: "VmwareVmsDetails",
+}) as any as S.Schema<VmwareVmsDetails>;
 
 /** A message describing the OS disk. */
 export interface OSDisk {
@@ -2809,14 +3478,17 @@ export interface OSDisk {
   type?: string;
 }
 export const OSDisk = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "sizeGb": S.optional(S.Number),
-  "type": S.optional(S.String),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    sizeGb: S.optional(S.Number),
+    type: S.optional(S.String),
+  }),
 ).annotate({ identifier: "OSDisk" }) as any as S.Schema<OSDisk>;
 
-export type AzureVmDetailsBootOptionEnum = "BOOT_OPTION_UNSPECIFIED" | "EFI" | "BIOS";
+export type AzureVmDetailsBootOptionEnum =
+  | "BOOT_OPTION_UNSPECIFIED"
+  | "EFI"
+  | "BIOS";
 export const AzureVmDetailsBootOptionEnum = /*@__PURE__*/ S.String;
 
 /** A message describing a data disk. */
@@ -2829,20 +3501,33 @@ export interface Disk {
   lun?: number;
 }
 export const Disk = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "sizeGb": S.optional(S.Number),
-  "lun": S.optional(S.Number),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    sizeGb: S.optional(S.Number),
+    lun: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "Disk" }) as any as S.Schema<Disk>;
 
 export type DiskList = ReadonlyArray<Disk>;
-export const DiskList = /*@__PURE__*/ S.Array(Disk) as any as S.Schema<DiskList>;
+export const DiskList = /*@__PURE__*/ S.Array(
+  Disk,
+) as any as S.Schema<DiskList>;
 
-export type AzureVmDetailsPowerStateEnum = "POWER_STATE_UNSPECIFIED" | "STARTING" | "RUNNING" | "STOPPING" | "STOPPED" | "DEALLOCATING" | "DEALLOCATED" | "UNKNOWN";
+export type AzureVmDetailsPowerStateEnum =
+  | "POWER_STATE_UNSPECIFIED"
+  | "STARTING"
+  | "RUNNING"
+  | "STOPPING"
+  | "STOPPED"
+  | "DEALLOCATING"
+  | "DEALLOCATED"
+  | "UNKNOWN";
 export const AzureVmDetailsPowerStateEnum = /*@__PURE__*/ S.String;
 
-export type AzureVmDetailsArchitectureEnum = "VM_ARCHITECTURE_UNSPECIFIED" | "VM_ARCHITECTURE_X86_FAMILY" | "VM_ARCHITECTURE_ARM64";
+export type AzureVmDetailsArchitectureEnum =
+  | "VM_ARCHITECTURE_UNSPECIFIED"
+  | "VM_ARCHITECTURE_X86_FAMILY"
+  | "VM_ARCHITECTURE_ARM64";
 export const AzureVmDetailsArchitectureEnum = /*@__PURE__*/ S.String;
 
 /** A message describing the VM's OS. Including OS, Publisher, Offer and Plan if applicable. */
@@ -2857,12 +3542,12 @@ export interface OSDescription {
   plan?: string;
 }
 export const OSDescription = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "offer": S.optional(S.String),
-  "type": S.optional(S.String),
-  "publisher": S.optional(S.String),
-  "plan": S.optional(S.String),
-}),
+  S.Struct({
+    offer: S.optional(S.String),
+    type: S.optional(S.String),
+    publisher: S.optional(S.String),
+    plan: S.optional(S.String),
+  }),
 ).annotate({ identifier: "OSDescription" }) as any as S.Schema<OSDescription>;
 
 /** AzureVmDetails describes a VM in Azure. */
@@ -2897,26 +3582,28 @@ export interface AzureVmDetails {
   osDescription?: OSDescription;
 }
 export const AzureVmDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "osDisk": S.optional(OSDisk),
-  "tags": S.optional(StringMap),
-  "bootOption": S.optional(AzureVmDetailsBootOptionEnum),
-  "memoryMb": S.optional(S.Number),
-  "disks": S.optional(DiskList),
-  "vmId": S.optional(S.String),
-  "cpuCount": S.optional(S.Number),
-  "powerState": S.optional(AzureVmDetailsPowerStateEnum),
-  "vmSize": S.optional(S.String),
-  "committedStorageMb": S.optional(S.String),
-  "computerName": S.optional(S.String),
-  "diskCount": S.optional(S.Number),
-  "architecture": S.optional(AzureVmDetailsArchitectureEnum),
-  "osDescription": S.optional(OSDescription),
-}),
+  S.Struct({
+    osDisk: S.optional(OSDisk),
+    tags: S.optional(StringMap),
+    bootOption: S.optional(AzureVmDetailsBootOptionEnum),
+    memoryMb: S.optional(S.Number),
+    disks: S.optional(DiskList),
+    vmId: S.optional(S.String),
+    cpuCount: S.optional(S.Number),
+    powerState: S.optional(AzureVmDetailsPowerStateEnum),
+    vmSize: S.optional(S.String),
+    committedStorageMb: S.optional(S.String),
+    computerName: S.optional(S.String),
+    diskCount: S.optional(S.Number),
+    architecture: S.optional(AzureVmDetailsArchitectureEnum),
+    osDescription: S.optional(OSDescription),
+  }),
 ).annotate({ identifier: "AzureVmDetails" }) as any as S.Schema<AzureVmDetails>;
 
 export type AzureVmDetailsList = ReadonlyArray<AzureVmDetails>;
-export const AzureVmDetailsList = /*@__PURE__*/ S.Array(AzureVmDetails) as any as S.Schema<AzureVmDetailsList>;
+export const AzureVmDetailsList = /*@__PURE__*/ S.Array(
+  AzureVmDetails,
+) as any as S.Schema<AzureVmDetailsList>;
 
 /** AzureVmsDetails describes VMs in Azure. */
 export interface AzureVmsDetails {
@@ -2924,10 +3611,12 @@ export interface AzureVmsDetails {
   details?: AzureVmDetailsList;
 }
 export const AzureVmsDetails = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "details": S.optional(AzureVmDetailsList),
-}),
-).annotate({ identifier: "AzureVmsDetails" }) as any as S.Schema<AzureVmsDetails>;
+  S.Struct({
+    details: S.optional(AzureVmDetailsList),
+  }),
+).annotate({
+  identifier: "AzureVmsDetails",
+}) as any as S.Schema<AzureVmsDetails>;
 
 /** Response message for fetchInventory. */
 export interface FetchInventoryResponse {
@@ -2943,17 +3632,23 @@ export interface FetchInventoryResponse {
   azureVms?: AzureVmsDetails;
 }
 export const FetchInventoryResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateTime": S.optional(S.String),
-  "nextPageToken": S.optional(S.String),
-  "awsVms": S.optional(AwsVmsDetails),
-  "vmwareVms": S.optional(VmwareVmsDetails),
-  "azureVms": S.optional(AzureVmsDetails),
-}),
-).annotate({ identifier: "FetchInventoryResponse" }) as any as S.Schema<FetchInventoryResponse>;
+  S.Struct({
+    updateTime: S.optional(S.String),
+    nextPageToken: S.optional(S.String),
+    awsVms: S.optional(AwsVmsDetails),
+    vmwareVms: S.optional(VmwareVmsDetails),
+    azureVms: S.optional(AzureVmsDetails),
+  }),
+).annotate({
+  identifier: "FetchInventoryResponse",
+}) as any as S.Schema<FetchInventoryResponse>;
 
-export type FetchStorageInventoryProjectsLocationsSourcesTypeEnum = "STORAGE_TYPE_UNSPECIFIED" | "DISKS" | "SNAPSHOTS";
-export const FetchStorageInventoryProjectsLocationsSourcesTypeEnum = /*@__PURE__*/ S.String;
+export type FetchStorageInventoryProjectsLocationsSourcesTypeEnum =
+  | "STORAGE_TYPE_UNSPECIFIED"
+  | "DISKS"
+  | "SNAPSHOTS";
+export const FetchStorageInventoryProjectsLocationsSourcesTypeEnum =
+  /*@__PURE__*/ S.String;
 
 export interface FetchStorageInventoryProjectsLocationsSourcesRequest {
   /** Optional. If this flag is set to true, the source will be queried instead of using cached results. Using this flag will make the call slower. */
@@ -2967,15 +3662,26 @@ export interface FetchStorageInventoryProjectsLocationsSourcesRequest {
   /** Required. The type of the storage inventory to fetch. */
   type?: FetchStorageInventoryProjectsLocationsSourcesTypeEnum | (string & {});
 }
-export const FetchStorageInventoryProjectsLocationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "forceRefresh": S.optional(S.Boolean.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "source": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "type": S.optional(FetchStorageInventoryProjectsLocationsSourcesTypeEnum.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+source}:fetchStorageInventory","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "FetchStorageInventoryProjectsLocationsSourcesRequest" }) as any as S.Schema<FetchStorageInventoryProjectsLocationsSourcesRequest>;
+export const FetchStorageInventoryProjectsLocationsSourcesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      forceRefresh: S.optional(S.Boolean.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      source: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      type: S.optional(
+        FetchStorageInventoryProjectsLocationsSourcesTypeEnum.pipe(T.Query()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+source}:fetchStorageInventory",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "FetchStorageInventoryProjectsLocationsSourcesRequest",
+  }) as any as S.Schema<FetchStorageInventoryProjectsLocationsSourcesRequest>;
 
 /** SourceStorageResource describes a storage resource in the source. */
 export interface SourceStorageResource {
@@ -2983,13 +3689,17 @@ export interface SourceStorageResource {
   awsDiskDetails?: AwsSourceDiskDetails;
 }
 export const SourceStorageResource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "awsDiskDetails": S.optional(AwsSourceDiskDetails),
-}),
-).annotate({ identifier: "SourceStorageResource" }) as any as S.Schema<SourceStorageResource>;
+  S.Struct({
+    awsDiskDetails: S.optional(AwsSourceDiskDetails),
+  }),
+).annotate({
+  identifier: "SourceStorageResource",
+}) as any as S.Schema<SourceStorageResource>;
 
 export type SourceStorageResourceList = ReadonlyArray<SourceStorageResource>;
-export const SourceStorageResourceList = /*@__PURE__*/ S.Array(SourceStorageResource) as any as S.Schema<SourceStorageResourceList>;
+export const SourceStorageResourceList = /*@__PURE__*/ S.Array(
+  SourceStorageResource,
+) as any as S.Schema<SourceStorageResourceList>;
 
 /** Response message for fetchStorageInventory. */
 export interface FetchStorageInventoryResponse {
@@ -3001,18 +3711,22 @@ export interface FetchStorageInventoryResponse {
   updateTime?: string;
 }
 export const FetchStorageInventoryResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resources": S.optional(SourceStorageResourceList),
-  "nextPageToken": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-}),
-).annotate({ identifier: "FetchStorageInventoryResponse" }) as any as S.Schema<FetchStorageInventoryResponse>;
+  S.Struct({
+    resources: S.optional(SourceStorageResourceList),
+    nextPageToken: S.optional(S.String),
+    updateTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "FetchStorageInventoryResponse",
+}) as any as S.Schema<FetchStorageInventoryResponse>;
 
 /** Request message for 'FinalizeMigration' request. */
 export interface FinalizeMigrationRequest {}
 export const FinalizeMigrationRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "FinalizeMigrationRequest" }) as any as S.Schema<FinalizeMigrationRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "FinalizeMigrationRequest",
+}) as any as S.Schema<FinalizeMigrationRequest>;
 
 export interface FinalizeMigrationProjectsLocationsSourcesMigratingVmsRequest {
   /** Required. The name of the MigratingVm. */
@@ -3020,22 +3734,39 @@ export interface FinalizeMigrationProjectsLocationsSourcesMigratingVmsRequest {
   /** Request body */
   body?: FinalizeMigrationRequest;
 }
-export const FinalizeMigrationProjectsLocationsSourcesMigratingVmsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "migratingVm": S.String.pipe(T.Label()),
-  "body": S.optional(FinalizeMigrationRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+migratingVm}:finalizeMigration","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "FinalizeMigrationProjectsLocationsSourcesMigratingVmsRequest" }) as any as S.Schema<FinalizeMigrationProjectsLocationsSourcesMigratingVmsRequest>;
+export const FinalizeMigrationProjectsLocationsSourcesMigratingVmsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      migratingVm: S.String.pipe(T.Label()),
+      body: S.optional(FinalizeMigrationRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+migratingVm}:finalizeMigration",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "FinalizeMigrationProjectsLocationsSourcesMigratingVmsRequest",
+  }) as any as S.Schema<FinalizeMigrationProjectsLocationsSourcesMigratingVmsRequest>;
 
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://vmmigration.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsRequest",
+}) as any as S.Schema<GetProjectsLocationsRequest>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -3051,13 +3782,13 @@ export interface Location {
   displayName?: string;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "metadata": S.optional(DocumentMap),
-  "locationId": S.optional(S.String),
-  "name": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "displayName": S.optional(S.String),
-}),
+  S.Struct({
+    metadata: S.optional(DocumentMap),
+    locationId: S.optional(S.String),
+    name: S.optional(S.String),
+    labels: S.optional(StringMap),
+    displayName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export interface GetProjectsLocationsGroupsRequest {
@@ -3065,73 +3796,138 @@ export interface GetProjectsLocationsGroupsRequest {
   name: string;
 }
 export const GetProjectsLocationsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsGroupsRequest" }) as any as S.Schema<GetProjectsLocationsGroupsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://vmmigration.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsGroupsRequest",
+}) as any as S.Schema<GetProjectsLocationsGroupsRequest>;
 
 export interface GetProjectsLocationsImageImportsRequest {
   /** Required. The ImageImport name. */
   name: string;
 }
-export const GetProjectsLocationsImageImportsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsImageImportsRequest" }) as any as S.Schema<GetProjectsLocationsImageImportsRequest>;
+export const GetProjectsLocationsImageImportsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsImageImportsRequest",
+}) as any as S.Schema<GetProjectsLocationsImageImportsRequest>;
 
 export interface GetProjectsLocationsImageImportsImageImportJobsRequest {
   /** Required. The ImageImportJob name. */
   name: string;
 }
-export const GetProjectsLocationsImageImportsImageImportJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsImageImportsImageImportJobsRequest" }) as any as S.Schema<GetProjectsLocationsImageImportsImageImportJobsRequest>;
+export const GetProjectsLocationsImageImportsImageImportJobsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsImageImportsImageImportJobsRequest",
+  }) as any as S.Schema<GetProjectsLocationsImageImportsImageImportJobsRequest>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsOperationsRequest",
+}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export interface GetProjectsLocationsSourcesRequest {
   /** Required. The Source name. */
   name: string;
 }
 export const GetProjectsLocationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsSourcesRequest" }) as any as S.Schema<GetProjectsLocationsSourcesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://vmmigration.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsSourcesRequest",
+}) as any as S.Schema<GetProjectsLocationsSourcesRequest>;
 
 export interface GetProjectsLocationsSourcesDatacenterConnectorsRequest {
   /** Required. The name of the DatacenterConnector. */
   name: string;
 }
-export const GetProjectsLocationsSourcesDatacenterConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsSourcesDatacenterConnectorsRequest" }) as any as S.Schema<GetProjectsLocationsSourcesDatacenterConnectorsRequest>;
+export const GetProjectsLocationsSourcesDatacenterConnectorsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsSourcesDatacenterConnectorsRequest",
+  }) as any as S.Schema<GetProjectsLocationsSourcesDatacenterConnectorsRequest>;
 
 export interface GetProjectsLocationsSourcesDiskMigrationJobsRequest {
   /** Required. The name of the DiskMigrationJob. */
   name: string;
 }
-export const GetProjectsLocationsSourcesDiskMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsSourcesDiskMigrationJobsRequest" }) as any as S.Schema<GetProjectsLocationsSourcesDiskMigrationJobsRequest>;
+export const GetProjectsLocationsSourcesDiskMigrationJobsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsSourcesDiskMigrationJobsRequest",
+  }) as any as S.Schema<GetProjectsLocationsSourcesDiskMigrationJobsRequest>;
 
-export type GetProjectsLocationsSourcesMigratingVmsViewEnum = "MIGRATING_VM_VIEW_UNSPECIFIED" | "MIGRATING_VM_VIEW_BASIC" | "MIGRATING_VM_VIEW_FULL";
-export const GetProjectsLocationsSourcesMigratingVmsViewEnum = /*@__PURE__*/ S.String;
+export type GetProjectsLocationsSourcesMigratingVmsViewEnum =
+  | "MIGRATING_VM_VIEW_UNSPECIFIED"
+  | "MIGRATING_VM_VIEW_BASIC"
+  | "MIGRATING_VM_VIEW_FULL";
+export const GetProjectsLocationsSourcesMigratingVmsViewEnum =
+  /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsSourcesMigratingVmsRequest {
   /** Required. The name of the MigratingVm. */
@@ -3139,45 +3935,88 @@ export interface GetProjectsLocationsSourcesMigratingVmsRequest {
   /** Optional. The level of details of the migrating VM. */
   view?: GetProjectsLocationsSourcesMigratingVmsViewEnum | (string & {});
 }
-export const GetProjectsLocationsSourcesMigratingVmsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "view": S.optional(GetProjectsLocationsSourcesMigratingVmsViewEnum.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsSourcesMigratingVmsRequest" }) as any as S.Schema<GetProjectsLocationsSourcesMigratingVmsRequest>;
+export const GetProjectsLocationsSourcesMigratingVmsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      view: S.optional(
+        GetProjectsLocationsSourcesMigratingVmsViewEnum.pipe(T.Query()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsSourcesMigratingVmsRequest",
+  }) as any as S.Schema<GetProjectsLocationsSourcesMigratingVmsRequest>;
 
 export interface GetProjectsLocationsSourcesMigratingVmsCloneJobsRequest {
   /** Required. The name of the CloneJob. */
   name: string;
 }
-export const GetProjectsLocationsSourcesMigratingVmsCloneJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsSourcesMigratingVmsCloneJobsRequest" }) as any as S.Schema<GetProjectsLocationsSourcesMigratingVmsCloneJobsRequest>;
+export const GetProjectsLocationsSourcesMigratingVmsCloneJobsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsSourcesMigratingVmsCloneJobsRequest",
+  }) as any as S.Schema<GetProjectsLocationsSourcesMigratingVmsCloneJobsRequest>;
 
 export interface GetProjectsLocationsSourcesMigratingVmsCutoverJobsRequest {
   /** Required. The name of the CutoverJob. */
   name: string;
 }
-export const GetProjectsLocationsSourcesMigratingVmsCutoverJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsSourcesMigratingVmsCutoverJobsRequest" }) as any as S.Schema<GetProjectsLocationsSourcesMigratingVmsCutoverJobsRequest>;
+export const GetProjectsLocationsSourcesMigratingVmsCutoverJobsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsSourcesMigratingVmsCutoverJobsRequest",
+  }) as any as S.Schema<GetProjectsLocationsSourcesMigratingVmsCutoverJobsRequest>;
 
 export interface GetProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest {
   /** Required. The name of the ReplicationCycle. */
   name: string;
 }
-export const GetProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest" }) as any as S.Schema<GetProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest>;
+export const GetProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "GetProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest",
+  }) as any as S.Schema<GetProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest>;
 
-export type GetProjectsLocationsSourcesUtilizationReportsViewEnum = "UTILIZATION_REPORT_VIEW_UNSPECIFIED" | "BASIC" | "FULL";
-export const GetProjectsLocationsSourcesUtilizationReportsViewEnum = /*@__PURE__*/ S.String;
+export type GetProjectsLocationsSourcesUtilizationReportsViewEnum =
+  | "UTILIZATION_REPORT_VIEW_UNSPECIFIED"
+  | "BASIC"
+  | "FULL";
+export const GetProjectsLocationsSourcesUtilizationReportsViewEnum =
+  /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsSourcesUtilizationReportsRequest {
   /** Required. The Utilization Report name. */
@@ -3185,22 +4024,42 @@ export interface GetProjectsLocationsSourcesUtilizationReportsRequest {
   /** Optional. The level of details of the report. Defaults to FULL */
   view?: GetProjectsLocationsSourcesUtilizationReportsViewEnum | (string & {});
 }
-export const GetProjectsLocationsSourcesUtilizationReportsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "view": S.optional(GetProjectsLocationsSourcesUtilizationReportsViewEnum.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsSourcesUtilizationReportsRequest" }) as any as S.Schema<GetProjectsLocationsSourcesUtilizationReportsRequest>;
+export const GetProjectsLocationsSourcesUtilizationReportsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      view: S.optional(
+        GetProjectsLocationsSourcesUtilizationReportsViewEnum.pipe(T.Query()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsSourcesUtilizationReportsRequest",
+  }) as any as S.Schema<GetProjectsLocationsSourcesUtilizationReportsRequest>;
 
 export interface GetProjectsLocationsTargetProjectsRequest {
   /** Required. The TargetProject name. */
   name: string;
 }
-export const GetProjectsLocationsTargetProjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsTargetProjectsRequest" }) as any as S.Schema<GetProjectsLocationsTargetProjectsRequest>;
+export const GetProjectsLocationsTargetProjectsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsTargetProjectsRequest",
+  }) as any as S.Schema<GetProjectsLocationsTargetProjectsRequest>;
 
 export interface ListProjectsLocationsRequest {
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
@@ -3215,17 +4074,27 @@ export interface ListProjectsLocationsRequest {
   pageToken?: string;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/locations","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
+  S.Struct({
+    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}/locations",
+      baseUrl: "https://vmmigration.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsRequest",
+}) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(
+  Location,
+) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -3235,11 +4104,13 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locations": S.optional(LocationList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
+  S.Struct({
+    locations: S.optional(LocationList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListLocationsResponse",
+}) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsLocationsGroupsRequest {
   /** Required. The parent, which owns this collection of groups. */
@@ -3254,17 +4125,27 @@ export interface ListProjectsLocationsGroupsRequest {
   orderBy?: string;
 }
 export const ListProjectsLocationsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/groups","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsGroupsRequest" }) as any as S.Schema<ListProjectsLocationsGroupsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/groups",
+      baseUrl: "https://vmmigration.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsGroupsRequest",
+}) as any as S.Schema<ListProjectsLocationsGroupsRequest>;
 
 export type GroupList = ReadonlyArray<Group>;
-export const GroupList = /*@__PURE__*/ S.Array(Group) as any as S.Schema<GroupList>;
+export const GroupList = /*@__PURE__*/ S.Array(
+  Group,
+) as any as S.Schema<GroupList>;
 
 /** Response message for 'ListGroups' request. */
 export interface ListGroupsResponse {
@@ -3276,12 +4157,14 @@ export interface ListGroupsResponse {
   unreachable?: StringList;
 }
 export const ListGroupsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "groups": S.optional(GroupList),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListGroupsResponse" }) as any as S.Schema<ListGroupsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    groups: S.optional(GroupList),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListGroupsResponse",
+}) as any as S.Schema<ListGroupsResponse>;
 
 export interface ListProjectsLocationsImageImportsRequest {
   /** Required. The parent, which owns this collection of targets. */
@@ -3295,18 +4178,29 @@ export interface ListProjectsLocationsImageImportsRequest {
   /** Optional. The order by fields for the result (according to AIP-132). Currently ordering is only possible by "name" field. */
   orderBy?: string;
 }
-export const ListProjectsLocationsImageImportsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/imageImports","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsImageImportsRequest" }) as any as S.Schema<ListProjectsLocationsImageImportsRequest>;
+export const ListProjectsLocationsImageImportsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/imageImports",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsImageImportsRequest",
+}) as any as S.Schema<ListProjectsLocationsImageImportsRequest>;
 
 export type ImageImportList = ReadonlyArray<ImageImport>;
-export const ImageImportList = /*@__PURE__*/ S.Array(ImageImport) as any as S.Schema<ImageImportList>;
+export const ImageImportList = /*@__PURE__*/ S.Array(
+  ImageImport,
+) as any as S.Schema<ImageImportList>;
 
 /** Response message for 'ListImageImports' call. */
 export interface ListImageImportsResponse {
@@ -3318,12 +4212,14 @@ export interface ListImageImportsResponse {
   nextPageToken?: string;
 }
 export const ListImageImportsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "imageImports": S.optional(ImageImportList),
-  "unreachable": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListImageImportsResponse" }) as any as S.Schema<ListImageImportsResponse>;
+  S.Struct({
+    imageImports: S.optional(ImageImportList),
+    unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListImageImportsResponse",
+}) as any as S.Schema<ListImageImportsResponse>;
 
 export interface ListProjectsLocationsImageImportsImageImportJobsRequest {
   /** Optional. The filter request (according to AIP-160). */
@@ -3337,15 +4233,24 @@ export interface ListProjectsLocationsImageImportsImageImportJobsRequest {
   /** Optional. The maximum number of targets to return. The service may return fewer than this value. If unspecified, at most 500 targets will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-export const ListProjectsLocationsImageImportsImageImportJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/imageImportJobs","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsImageImportsImageImportJobsRequest" }) as any as S.Schema<ListProjectsLocationsImageImportsImageImportJobsRequest>;
+export const ListProjectsLocationsImageImportsImageImportJobsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      filter: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/imageImportJobs",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsImageImportsImageImportJobsRequest",
+  }) as any as S.Schema<ListProjectsLocationsImageImportsImageImportJobsRequest>;
 
 /** Response message for 'ListImageImportJobs' call. */
 export interface ListImageImportJobsResponse {
@@ -3357,12 +4262,14 @@ export interface ListImageImportJobsResponse {
   imageImportJobs?: ImageImportJobList;
 }
 export const ListImageImportJobsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "unreachable": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-  "imageImportJobs": S.optional(ImageImportJobList),
-}),
-).annotate({ identifier: "ListImageImportJobsResponse" }) as any as S.Schema<ListImageImportJobsResponse>;
+  S.Struct({
+    unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+    imageImportJobs: S.optional(ImageImportJobList),
+  }),
+).annotate({
+  identifier: "ListImageImportJobsResponse",
+}) as any as S.Schema<ListImageImportJobsResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list filter. */
@@ -3376,18 +4283,29 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/operations","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      filter: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}/operations",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsOperationsRequest",
+}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(
+  Operation,
+) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -3399,12 +4317,14 @@ export interface ListOperationsResponse {
   unreachable?: StringList;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "operations": S.optional(OperationList),
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
+  S.Struct({
+    operations: S.optional(OperationList),
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListOperationsResponse",
+}) as any as S.Schema<ListOperationsResponse>;
 
 export interface ListProjectsLocationsSourcesRequest {
   /** Optional. The filter request. */
@@ -3419,17 +4339,27 @@ export interface ListProjectsLocationsSourcesRequest {
   pageSize?: number;
 }
 export const ListProjectsLocationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/sources","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsSourcesRequest" }) as any as S.Schema<ListProjectsLocationsSourcesRequest>;
+  S.Struct({
+    filter: S.optional(S.String.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/sources",
+      baseUrl: "https://vmmigration.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsSourcesRequest",
+}) as any as S.Schema<ListProjectsLocationsSourcesRequest>;
 
 export type SourceList = ReadonlyArray<Source>;
-export const SourceList = /*@__PURE__*/ S.Array(Source) as any as S.Schema<SourceList>;
+export const SourceList = /*@__PURE__*/ S.Array(
+  Source,
+) as any as S.Schema<SourceList>;
 
 /** Response message for 'ListSources' request. */
 export interface ListSourcesResponse {
@@ -3441,12 +4371,14 @@ export interface ListSourcesResponse {
   nextPageToken?: string;
 }
 export const ListSourcesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "unreachable": S.optional(StringList),
-  "sources": S.optional(SourceList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListSourcesResponse" }) as any as S.Schema<ListSourcesResponse>;
+  S.Struct({
+    unreachable: S.optional(StringList),
+    sources: S.optional(SourceList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListSourcesResponse",
+}) as any as S.Schema<ListSourcesResponse>;
 
 export interface ListProjectsLocationsSourcesDatacenterConnectorsRequest {
   /** Optional. The filter request. */
@@ -3460,18 +4392,29 @@ export interface ListProjectsLocationsSourcesDatacenterConnectorsRequest {
   /** Required. A page token, received from a previous `ListDatacenterConnectors` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListDatacenterConnectors` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsSourcesDatacenterConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/datacenterConnectors","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsSourcesDatacenterConnectorsRequest" }) as any as S.Schema<ListProjectsLocationsSourcesDatacenterConnectorsRequest>;
+export const ListProjectsLocationsSourcesDatacenterConnectorsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      filter: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/datacenterConnectors",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsSourcesDatacenterConnectorsRequest",
+  }) as any as S.Schema<ListProjectsLocationsSourcesDatacenterConnectorsRequest>;
 
 export type DatacenterConnectorList = ReadonlyArray<DatacenterConnector>;
-export const DatacenterConnectorList = /*@__PURE__*/ S.Array(DatacenterConnector) as any as S.Schema<DatacenterConnectorList>;
+export const DatacenterConnectorList = /*@__PURE__*/ S.Array(
+  DatacenterConnector,
+) as any as S.Schema<DatacenterConnectorList>;
 
 /** Response message for 'ListDatacenterConnectors' request. */
 export interface ListDatacenterConnectorsResponse {
@@ -3483,12 +4426,14 @@ export interface ListDatacenterConnectorsResponse {
   unreachable?: StringList;
 }
 export const ListDatacenterConnectorsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "datacenterConnectors": S.optional(DatacenterConnectorList),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListDatacenterConnectorsResponse" }) as any as S.Schema<ListDatacenterConnectorsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    datacenterConnectors: S.optional(DatacenterConnectorList),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListDatacenterConnectorsResponse",
+}) as any as S.Schema<ListDatacenterConnectorsResponse>;
 
 export interface ListProjectsLocationsSourcesDiskMigrationJobsRequest {
   /** Optional. The filter request (according to AIP-160). */
@@ -3502,18 +4447,29 @@ export interface ListProjectsLocationsSourcesDiskMigrationJobsRequest {
   /** Optional. A page token, received from a previous `ListDiskMigrationJobs` call. Provide this to retrieve the subsequent page. When paginating, all parameters provided to `ListDiskMigrationJobs` except `page_size` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsSourcesDiskMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/diskMigrationJobs","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsSourcesDiskMigrationJobsRequest" }) as any as S.Schema<ListProjectsLocationsSourcesDiskMigrationJobsRequest>;
+export const ListProjectsLocationsSourcesDiskMigrationJobsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      filter: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/diskMigrationJobs",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsSourcesDiskMigrationJobsRequest",
+  }) as any as S.Schema<ListProjectsLocationsSourcesDiskMigrationJobsRequest>;
 
 export type DiskMigrationJobList = ReadonlyArray<DiskMigrationJob>;
-export const DiskMigrationJobList = /*@__PURE__*/ S.Array(DiskMigrationJob) as any as S.Schema<DiskMigrationJobList>;
+export const DiskMigrationJobList = /*@__PURE__*/ S.Array(
+  DiskMigrationJob,
+) as any as S.Schema<DiskMigrationJobList>;
 
 /** Response message for 'ListDiskMigrationJobs' request. */
 export interface ListDiskMigrationJobsResponse {
@@ -3525,15 +4481,21 @@ export interface ListDiskMigrationJobsResponse {
   unreachable?: StringList;
 }
 export const ListDiskMigrationJobsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "diskMigrationJobs": S.optional(DiskMigrationJobList),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListDiskMigrationJobsResponse" }) as any as S.Schema<ListDiskMigrationJobsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    diskMigrationJobs: S.optional(DiskMigrationJobList),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListDiskMigrationJobsResponse",
+}) as any as S.Schema<ListDiskMigrationJobsResponse>;
 
-export type ListProjectsLocationsSourcesMigratingVmsViewEnum = "MIGRATING_VM_VIEW_UNSPECIFIED" | "MIGRATING_VM_VIEW_BASIC" | "MIGRATING_VM_VIEW_FULL";
-export const ListProjectsLocationsSourcesMigratingVmsViewEnum = /*@__PURE__*/ S.String;
+export type ListProjectsLocationsSourcesMigratingVmsViewEnum =
+  | "MIGRATING_VM_VIEW_UNSPECIFIED"
+  | "MIGRATING_VM_VIEW_BASIC"
+  | "MIGRATING_VM_VIEW_FULL";
+export const ListProjectsLocationsSourcesMigratingVmsViewEnum =
+  /*@__PURE__*/ S.String;
 
 export interface ListProjectsLocationsSourcesMigratingVmsRequest {
   /** Optional. The filter request. */
@@ -3549,19 +4511,32 @@ export interface ListProjectsLocationsSourcesMigratingVmsRequest {
   /** Optional. The maximum number of migrating VMs to return. The service may return fewer than this value. If unspecified, at most 500 migrating VMs will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-export const ListProjectsLocationsSourcesMigratingVmsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "view": S.optional(ListProjectsLocationsSourcesMigratingVmsViewEnum.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/migratingVms","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsSourcesMigratingVmsRequest" }) as any as S.Schema<ListProjectsLocationsSourcesMigratingVmsRequest>;
+export const ListProjectsLocationsSourcesMigratingVmsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      filter: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      view: S.optional(
+        ListProjectsLocationsSourcesMigratingVmsViewEnum.pipe(T.Query()),
+      ),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/migratingVms",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsSourcesMigratingVmsRequest",
+  }) as any as S.Schema<ListProjectsLocationsSourcesMigratingVmsRequest>;
 
 export type MigratingVmList = ReadonlyArray<MigratingVm>;
-export const MigratingVmList = /*@__PURE__*/ S.Array(MigratingVm) as any as S.Schema<MigratingVmList>;
+export const MigratingVmList = /*@__PURE__*/ S.Array(
+  MigratingVm,
+) as any as S.Schema<MigratingVmList>;
 
 /** Response message for 'ListMigratingVms' request. */
 export interface ListMigratingVmsResponse {
@@ -3573,12 +4548,14 @@ export interface ListMigratingVmsResponse {
   unreachable?: StringList;
 }
 export const ListMigratingVmsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "migratingVms": S.optional(MigratingVmList),
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListMigratingVmsResponse" }) as any as S.Schema<ListMigratingVmsResponse>;
+  S.Struct({
+    migratingVms: S.optional(MigratingVmList),
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListMigratingVmsResponse",
+}) as any as S.Schema<ListMigratingVmsResponse>;
 
 export interface ListProjectsLocationsSourcesMigratingVmsCloneJobsRequest {
   /** Optional. The filter request. */
@@ -3592,15 +4569,24 @@ export interface ListProjectsLocationsSourcesMigratingVmsCloneJobsRequest {
   /** Optional. The maximum number of clone jobs to return. The service may return fewer than this value. If unspecified, at most 500 clone jobs will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-export const ListProjectsLocationsSourcesMigratingVmsCloneJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/cloneJobs","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsSourcesMigratingVmsCloneJobsRequest" }) as any as S.Schema<ListProjectsLocationsSourcesMigratingVmsCloneJobsRequest>;
+export const ListProjectsLocationsSourcesMigratingVmsCloneJobsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      filter: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/cloneJobs",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsSourcesMigratingVmsCloneJobsRequest",
+  }) as any as S.Schema<ListProjectsLocationsSourcesMigratingVmsCloneJobsRequest>;
 
 /** Response message for 'ListCloneJobs' request. */
 export interface ListCloneJobsResponse {
@@ -3612,12 +4598,14 @@ export interface ListCloneJobsResponse {
   unreachable?: StringList;
 }
 export const ListCloneJobsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "cloneJobs": S.optional(CloneJobList),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListCloneJobsResponse" }) as any as S.Schema<ListCloneJobsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    cloneJobs: S.optional(CloneJobList),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListCloneJobsResponse",
+}) as any as S.Schema<ListCloneJobsResponse>;
 
 export interface ListProjectsLocationsSourcesMigratingVmsCutoverJobsRequest {
   /** Optional. The maximum number of cutover jobs to return. The service may return fewer than this value. If unspecified, at most 500 cutover jobs will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
@@ -3631,15 +4619,24 @@ export interface ListProjectsLocationsSourcesMigratingVmsCutoverJobsRequest {
   /** Optional. the order by fields for the result. */
   orderBy?: string;
 }
-export const ListProjectsLocationsSourcesMigratingVmsCutoverJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/cutoverJobs","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsSourcesMigratingVmsCutoverJobsRequest" }) as any as S.Schema<ListProjectsLocationsSourcesMigratingVmsCutoverJobsRequest>;
+export const ListProjectsLocationsSourcesMigratingVmsCutoverJobsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/cutoverJobs",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsSourcesMigratingVmsCutoverJobsRequest",
+  }) as any as S.Schema<ListProjectsLocationsSourcesMigratingVmsCutoverJobsRequest>;
 
 /** Response message for 'ListCutoverJobs' request. */
 export interface ListCutoverJobsResponse {
@@ -3651,12 +4648,14 @@ export interface ListCutoverJobsResponse {
   nextPageToken?: string;
 }
 export const ListCutoverJobsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "cutoverJobs": S.optional(CutoverJobList),
-  "unreachable": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListCutoverJobsResponse" }) as any as S.Schema<ListCutoverJobsResponse>;
+  S.Struct({
+    cutoverJobs: S.optional(CutoverJobList),
+    unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListCutoverJobsResponse",
+}) as any as S.Schema<ListCutoverJobsResponse>;
 
 export interface ListProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest {
   /** Optional. The filter request. */
@@ -3670,18 +4669,30 @@ export interface ListProjectsLocationsSourcesMigratingVmsReplicationCyclesReques
   /** Optional. The maximum number of replication cycles to return. The service may return fewer than this value. If unspecified, at most 100 migrating VMs will be returned. The maximum value is 100; values above 100 will be coerced to 100. */
   pageSize?: number;
 }
-export const ListProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/replicationCycles","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest" }) as any as S.Schema<ListProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest>;
+export const ListProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      filter: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/replicationCycles",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "ListProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest",
+  }) as any as S.Schema<ListProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest>;
 
 export type ReplicationCycleList = ReadonlyArray<ReplicationCycle>;
-export const ReplicationCycleList = /*@__PURE__*/ S.Array(ReplicationCycle) as any as S.Schema<ReplicationCycleList>;
+export const ReplicationCycleList = /*@__PURE__*/ S.Array(
+  ReplicationCycle,
+) as any as S.Schema<ReplicationCycleList>;
 
 /** Response message for 'ListReplicationCycles' request. */
 export interface ListReplicationCyclesResponse {
@@ -3693,15 +4704,21 @@ export interface ListReplicationCyclesResponse {
   nextPageToken?: string;
 }
 export const ListReplicationCyclesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "unreachable": S.optional(StringList),
-  "replicationCycles": S.optional(ReplicationCycleList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListReplicationCyclesResponse" }) as any as S.Schema<ListReplicationCyclesResponse>;
+  S.Struct({
+    unreachable: S.optional(StringList),
+    replicationCycles: S.optional(ReplicationCycleList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListReplicationCyclesResponse",
+}) as any as S.Schema<ListReplicationCyclesResponse>;
 
-export type ListProjectsLocationsSourcesUtilizationReportsViewEnum = "UTILIZATION_REPORT_VIEW_UNSPECIFIED" | "BASIC" | "FULL";
-export const ListProjectsLocationsSourcesUtilizationReportsViewEnum = /*@__PURE__*/ S.String;
+export type ListProjectsLocationsSourcesUtilizationReportsViewEnum =
+  | "UTILIZATION_REPORT_VIEW_UNSPECIFIED"
+  | "BASIC"
+  | "FULL";
+export const ListProjectsLocationsSourcesUtilizationReportsViewEnum =
+  /*@__PURE__*/ S.String;
 
 export interface ListProjectsLocationsSourcesUtilizationReportsRequest {
   /** Required. The Utilization Reports parent. */
@@ -3717,19 +4734,32 @@ export interface ListProjectsLocationsSourcesUtilizationReportsRequest {
   /** Optional. the order by fields for the result. */
   orderBy?: string;
 }
-export const ListProjectsLocationsSourcesUtilizationReportsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "view": S.optional(ListProjectsLocationsSourcesUtilizationReportsViewEnum.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/utilizationReports","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsSourcesUtilizationReportsRequest" }) as any as S.Schema<ListProjectsLocationsSourcesUtilizationReportsRequest>;
+export const ListProjectsLocationsSourcesUtilizationReportsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      view: S.optional(
+        ListProjectsLocationsSourcesUtilizationReportsViewEnum.pipe(T.Query()),
+      ),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/utilizationReports",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsSourcesUtilizationReportsRequest",
+  }) as any as S.Schema<ListProjectsLocationsSourcesUtilizationReportsRequest>;
 
 export type UtilizationReportList = ReadonlyArray<UtilizationReport>;
-export const UtilizationReportList = /*@__PURE__*/ S.Array(UtilizationReport) as any as S.Schema<UtilizationReportList>;
+export const UtilizationReportList = /*@__PURE__*/ S.Array(
+  UtilizationReport,
+) as any as S.Schema<UtilizationReportList>;
 
 /** Response message for 'ListUtilizationReports' request. */
 export interface ListUtilizationReportsResponse {
@@ -3741,12 +4771,14 @@ export interface ListUtilizationReportsResponse {
   unreachable?: StringList;
 }
 export const ListUtilizationReportsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "utilizationReports": S.optional(UtilizationReportList),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListUtilizationReportsResponse" }) as any as S.Schema<ListUtilizationReportsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    utilizationReports: S.optional(UtilizationReportList),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListUtilizationReportsResponse",
+}) as any as S.Schema<ListUtilizationReportsResponse>;
 
 export interface ListProjectsLocationsTargetProjectsRequest {
   /** Optional. The maximum number of targets to return. The service may return fewer than this value. If unspecified, at most 500 targets will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
@@ -3760,18 +4792,29 @@ export interface ListProjectsLocationsTargetProjectsRequest {
   /** Optional. the order by fields for the result. */
   orderBy?: string;
 }
-export const ListProjectsLocationsTargetProjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/targetProjects","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsTargetProjectsRequest" }) as any as S.Schema<ListProjectsLocationsTargetProjectsRequest>;
+export const ListProjectsLocationsTargetProjectsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/targetProjects",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsTargetProjectsRequest",
+  }) as any as S.Schema<ListProjectsLocationsTargetProjectsRequest>;
 
 export type TargetProjectList = ReadonlyArray<TargetProject>;
-export const TargetProjectList = /*@__PURE__*/ S.Array(TargetProject) as any as S.Schema<TargetProjectList>;
+export const TargetProjectList = /*@__PURE__*/ S.Array(
+  TargetProject,
+) as any as S.Schema<TargetProjectList>;
 
 /** Response message for 'ListTargetProjects' call. */
 export interface ListTargetProjectsResponse {
@@ -3783,12 +4826,14 @@ export interface ListTargetProjectsResponse {
   unreachable?: StringList;
 }
 export const ListTargetProjectsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "targetProjects": S.optional(TargetProjectList),
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListTargetProjectsResponse" }) as any as S.Schema<ListTargetProjectsResponse>;
+  S.Struct({
+    targetProjects: S.optional(TargetProjectList),
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListTargetProjectsResponse",
+}) as any as S.Schema<ListTargetProjectsResponse>;
 
 export interface PatchProjectsLocationsGroupsRequest {
   /** Field mask is used to specify the fields to be overwritten in the Group resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */
@@ -3801,13 +4846,21 @@ export interface PatchProjectsLocationsGroupsRequest {
   body?: Group;
 }
 export const PatchProjectsLocationsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(Group.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsGroupsRequest" }) as any as S.Schema<PatchProjectsLocationsGroupsRequest>;
+  S.Struct({
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    requestId: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    body: S.optional(Group.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+name}",
+      baseUrl: "https://vmmigration.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchProjectsLocationsGroupsRequest",
+}) as any as S.Schema<PatchProjectsLocationsGroupsRequest>;
 
 export interface PatchProjectsLocationsSourcesRequest {
   /** Field mask is used to specify the fields to be overwritten in the Source resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */
@@ -3819,14 +4872,23 @@ export interface PatchProjectsLocationsSourcesRequest {
   /** Request body */
   body?: Source;
 }
-export const PatchProjectsLocationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(Source.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsSourcesRequest" }) as any as S.Schema<PatchProjectsLocationsSourcesRequest>;
+export const PatchProjectsLocationsSourcesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      body: S.optional(Source.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "PatchProjectsLocationsSourcesRequest",
+}) as any as S.Schema<PatchProjectsLocationsSourcesRequest>;
 
 export interface PatchProjectsLocationsSourcesDiskMigrationJobsRequest {
   /** Optional. Field mask is used to specify the fields to be overwritten in the DiskMigrationJob resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask, then a mask equivalent to all fields that are populated (have a non-empty value), will be implied. */
@@ -3838,14 +4900,23 @@ export interface PatchProjectsLocationsSourcesDiskMigrationJobsRequest {
   /** Request body */
   body?: DiskMigrationJob;
 }
-export const PatchProjectsLocationsSourcesDiskMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(DiskMigrationJob.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsSourcesDiskMigrationJobsRequest" }) as any as S.Schema<PatchProjectsLocationsSourcesDiskMigrationJobsRequest>;
+export const PatchProjectsLocationsSourcesDiskMigrationJobsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      body: S.optional(DiskMigrationJob.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsSourcesDiskMigrationJobsRequest",
+  }) as any as S.Schema<PatchProjectsLocationsSourcesDiskMigrationJobsRequest>;
 
 export interface PatchProjectsLocationsSourcesMigratingVmsRequest {
   /** Output only. The identifier of the MigratingVm. */
@@ -3857,14 +4928,23 @@ export interface PatchProjectsLocationsSourcesMigratingVmsRequest {
   /** Request body */
   body?: MigratingVm;
 }
-export const PatchProjectsLocationsSourcesMigratingVmsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(MigratingVm.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsSourcesMigratingVmsRequest" }) as any as S.Schema<PatchProjectsLocationsSourcesMigratingVmsRequest>;
+export const PatchProjectsLocationsSourcesMigratingVmsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(MigratingVm.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsSourcesMigratingVmsRequest",
+  }) as any as S.Schema<PatchProjectsLocationsSourcesMigratingVmsRequest>;
 
 export interface PatchProjectsLocationsTargetProjectsRequest {
   /** Field mask is used to specify the fields to be overwritten in the TargetProject resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */
@@ -3876,20 +4956,31 @@ export interface PatchProjectsLocationsTargetProjectsRequest {
   /** Request body */
   body?: TargetProject;
 }
-export const PatchProjectsLocationsTargetProjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(TargetProject.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsTargetProjectsRequest" }) as any as S.Schema<PatchProjectsLocationsTargetProjectsRequest>;
+export const PatchProjectsLocationsTargetProjectsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      body: S.optional(TargetProject.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsTargetProjectsRequest",
+  }) as any as S.Schema<PatchProjectsLocationsTargetProjectsRequest>;
 
 /** Request message for 'PauseMigration' request. */
 export interface PauseMigrationRequest {}
 export const PauseMigrationRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "PauseMigrationRequest" }) as any as S.Schema<PauseMigrationRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "PauseMigrationRequest",
+}) as any as S.Schema<PauseMigrationRequest>;
 
 export interface PauseMigrationProjectsLocationsSourcesMigratingVmsRequest {
   /** Required. The name of the MigratingVm. */
@@ -3897,12 +4988,21 @@ export interface PauseMigrationProjectsLocationsSourcesMigratingVmsRequest {
   /** Request body */
   body?: PauseMigrationRequest;
 }
-export const PauseMigrationProjectsLocationsSourcesMigratingVmsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "migratingVm": S.String.pipe(T.Label()),
-  "body": S.optional(PauseMigrationRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+migratingVm}:pauseMigration","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "PauseMigrationProjectsLocationsSourcesMigratingVmsRequest" }) as any as S.Schema<PauseMigrationProjectsLocationsSourcesMigratingVmsRequest>;
+export const PauseMigrationProjectsLocationsSourcesMigratingVmsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      migratingVm: S.String.pipe(T.Label()),
+      body: S.optional(PauseMigrationRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+migratingVm}:pauseMigration",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PauseMigrationProjectsLocationsSourcesMigratingVmsRequest",
+  }) as any as S.Schema<PauseMigrationProjectsLocationsSourcesMigratingVmsRequest>;
 
 /** Request message for 'RemoveMigration' request. */
 export interface RemoveGroupMigrationRequest {
@@ -3910,10 +5010,12 @@ export interface RemoveGroupMigrationRequest {
   migratingVm?: string;
 }
 export const RemoveGroupMigrationRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "migratingVm": S.optional(S.String),
-}),
-).annotate({ identifier: "RemoveGroupMigrationRequest" }) as any as S.Schema<RemoveGroupMigrationRequest>;
+  S.Struct({
+    migratingVm: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RemoveGroupMigrationRequest",
+}) as any as S.Schema<RemoveGroupMigrationRequest>;
 
 export interface RemoveGroupMigrationProjectsLocationsGroupsRequest {
   /** Required. The name of the Group. */
@@ -3921,18 +5023,29 @@ export interface RemoveGroupMigrationProjectsLocationsGroupsRequest {
   /** Request body */
   body?: RemoveGroupMigrationRequest;
 }
-export const RemoveGroupMigrationProjectsLocationsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "group": S.String.pipe(T.Label()),
-  "body": S.optional(RemoveGroupMigrationRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+group}:removeGroupMigration","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "RemoveGroupMigrationProjectsLocationsGroupsRequest" }) as any as S.Schema<RemoveGroupMigrationProjectsLocationsGroupsRequest>;
+export const RemoveGroupMigrationProjectsLocationsGroupsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      group: S.String.pipe(T.Label()),
+      body: S.optional(RemoveGroupMigrationRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+group}:removeGroupMigration",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "RemoveGroupMigrationProjectsLocationsGroupsRequest",
+  }) as any as S.Schema<RemoveGroupMigrationProjectsLocationsGroupsRequest>;
 
 /** Request message for 'ResumeMigration' request. */
 export interface ResumeMigrationRequest {}
 export const ResumeMigrationRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "ResumeMigrationRequest" }) as any as S.Schema<ResumeMigrationRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "ResumeMigrationRequest",
+}) as any as S.Schema<ResumeMigrationRequest>;
 
 export interface ResumeMigrationProjectsLocationsSourcesMigratingVmsRequest {
   /** Required. The name of the MigratingVm. */
@@ -3940,18 +5053,29 @@ export interface ResumeMigrationProjectsLocationsSourcesMigratingVmsRequest {
   /** Request body */
   body?: ResumeMigrationRequest;
 }
-export const ResumeMigrationProjectsLocationsSourcesMigratingVmsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "migratingVm": S.String.pipe(T.Label()),
-  "body": S.optional(ResumeMigrationRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+migratingVm}:resumeMigration","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "ResumeMigrationProjectsLocationsSourcesMigratingVmsRequest" }) as any as S.Schema<ResumeMigrationProjectsLocationsSourcesMigratingVmsRequest>;
+export const ResumeMigrationProjectsLocationsSourcesMigratingVmsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      migratingVm: S.String.pipe(T.Label()),
+      body: S.optional(ResumeMigrationRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+migratingVm}:resumeMigration",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ResumeMigrationProjectsLocationsSourcesMigratingVmsRequest",
+  }) as any as S.Schema<ResumeMigrationProjectsLocationsSourcesMigratingVmsRequest>;
 
 /** Request message for 'RunDiskMigrationJobRequest' request. */
 export interface RunDiskMigrationJobRequest {}
 export const RunDiskMigrationJobRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "RunDiskMigrationJobRequest" }) as any as S.Schema<RunDiskMigrationJobRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "RunDiskMigrationJobRequest",
+}) as any as S.Schema<RunDiskMigrationJobRequest>;
 
 export interface RunProjectsLocationsSourcesDiskMigrationJobsRequest {
   /** Required. The name of the DiskMigrationJob. */
@@ -3959,18 +5083,29 @@ export interface RunProjectsLocationsSourcesDiskMigrationJobsRequest {
   /** Request body */
   body?: RunDiskMigrationJobRequest;
 }
-export const RunProjectsLocationsSourcesDiskMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(RunDiskMigrationJobRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:run","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "RunProjectsLocationsSourcesDiskMigrationJobsRequest" }) as any as S.Schema<RunProjectsLocationsSourcesDiskMigrationJobsRequest>;
+export const RunProjectsLocationsSourcesDiskMigrationJobsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(RunDiskMigrationJobRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:run",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "RunProjectsLocationsSourcesDiskMigrationJobsRequest",
+  }) as any as S.Schema<RunProjectsLocationsSourcesDiskMigrationJobsRequest>;
 
 /** Request message for 'StartMigrationRequest' request. */
 export interface StartMigrationRequest {}
 export const StartMigrationRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "StartMigrationRequest" }) as any as S.Schema<StartMigrationRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "StartMigrationRequest",
+}) as any as S.Schema<StartMigrationRequest>;
 
 export interface StartMigrationProjectsLocationsSourcesMigratingVmsRequest {
   /** Required. The name of the MigratingVm. */
@@ -3978,12 +5113,21 @@ export interface StartMigrationProjectsLocationsSourcesMigratingVmsRequest {
   /** Request body */
   body?: StartMigrationRequest;
 }
-export const StartMigrationProjectsLocationsSourcesMigratingVmsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "migratingVm": S.String.pipe(T.Label()),
-  "body": S.optional(StartMigrationRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+migratingVm}:startMigration","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "StartMigrationProjectsLocationsSourcesMigratingVmsRequest" }) as any as S.Schema<StartMigrationProjectsLocationsSourcesMigratingVmsRequest>;
+export const StartMigrationProjectsLocationsSourcesMigratingVmsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      migratingVm: S.String.pipe(T.Label()),
+      body: S.optional(StartMigrationRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+migratingVm}:startMigration",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "StartMigrationProjectsLocationsSourcesMigratingVmsRequest",
+  }) as any as S.Schema<StartMigrationProjectsLocationsSourcesMigratingVmsRequest>;
 
 /** Request message for 'UpgradeAppliance' request. */
 export interface UpgradeApplianceRequest {
@@ -3991,10 +5135,12 @@ export interface UpgradeApplianceRequest {
   requestId?: string;
 }
 export const UpgradeApplianceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String),
-}),
-).annotate({ identifier: "UpgradeApplianceRequest" }) as any as S.Schema<UpgradeApplianceRequest>;
+  S.Struct({
+    requestId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpgradeApplianceRequest",
+}) as any as S.Schema<UpgradeApplianceRequest>;
 
 export interface UpgradeApplianceProjectsLocationsSourcesDatacenterConnectorsRequest {
   /** Required. The DatacenterConnector name. */
@@ -4002,14 +5148,29 @@ export interface UpgradeApplianceProjectsLocationsSourcesDatacenterConnectorsReq
   /** Request body */
   body?: UpgradeApplianceRequest;
 }
-export const UpgradeApplianceProjectsLocationsSourcesDatacenterConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "datacenterConnector": S.String.pipe(T.Label()),
-  "body": S.optional(UpgradeApplianceRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+datacenterConnector}:upgradeAppliance","baseUrl":"https://vmmigration.googleapis.com/"})),
-).annotate({ identifier: "UpgradeApplianceProjectsLocationsSourcesDatacenterConnectorsRequest" }) as any as S.Schema<UpgradeApplianceProjectsLocationsSourcesDatacenterConnectorsRequest>;
+export const UpgradeApplianceProjectsLocationsSourcesDatacenterConnectorsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      datacenterConnector: S.String.pipe(T.Label()),
+      body: S.optional(UpgradeApplianceRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+datacenterConnector}:upgradeAppliance",
+        baseUrl: "https://vmmigration.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "UpgradeApplianceProjectsLocationsSourcesDatacenterConnectorsRequest",
+  }) as any as S.Schema<UpgradeApplianceProjectsLocationsSourcesDatacenterConnectorsRequest>;
 
-export type AddGroupMigrationProjectsLocationsGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type AddGroupMigrationProjectsLocationsGroupsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Adds a MigratingVm to a Group. */
 export const addGroupMigrationProjectsLocationsGroups: API.OperationMethod<
   AddGroupMigrationProjectsLocationsGroupsRequest,
@@ -4024,7 +5185,12 @@ export const addGroupMigrationProjectsLocationsGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CancelProjectsLocationsImageImportsImageImportJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CancelProjectsLocationsImageImportsImageImportJobsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Initiates the cancellation of a running ImageImportJob. */
 export const cancelProjectsLocationsImageImportsImageImportJobs: API.OperationMethod<
   CancelProjectsLocationsImageImportsImageImportJobsRequest,
@@ -4039,7 +5205,12 @@ export const cancelProjectsLocationsImageImportsImageImportJobs: API.OperationMe
   retry: Retry.Retry,
 }));
 
-export type CancelProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CancelProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsRequest,
@@ -4054,7 +5225,12 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CancelProjectsLocationsSourcesDiskMigrationJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CancelProjectsLocationsSourcesDiskMigrationJobsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Cancels the disk migration job. */
 export const cancelProjectsLocationsSourcesDiskMigrationJobs: API.OperationMethod<
   CancelProjectsLocationsSourcesDiskMigrationJobsRequest,
@@ -4069,7 +5245,12 @@ export const cancelProjectsLocationsSourcesDiskMigrationJobs: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type CancelProjectsLocationsSourcesMigratingVmsCloneJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CancelProjectsLocationsSourcesMigratingVmsCloneJobsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Initiates the cancellation of a running clone job. */
 export const cancelProjectsLocationsSourcesMigratingVmsCloneJobs: API.OperationMethod<
   CancelProjectsLocationsSourcesMigratingVmsCloneJobsRequest,
@@ -4084,7 +5265,12 @@ export const cancelProjectsLocationsSourcesMigratingVmsCloneJobs: API.OperationM
   retry: Retry.Retry,
 }));
 
-export type CancelProjectsLocationsSourcesMigratingVmsCutoverJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CancelProjectsLocationsSourcesMigratingVmsCutoverJobsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Initiates the cancellation of a running cutover job. */
 export const cancelProjectsLocationsSourcesMigratingVmsCutoverJobs: API.OperationMethod<
   CancelProjectsLocationsSourcesMigratingVmsCutoverJobsRequest,
@@ -4099,7 +5285,12 @@ export const cancelProjectsLocationsSourcesMigratingVmsCutoverJobs: API.Operatio
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsGroupsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new Group in a given project and location. */
 export const createProjectsLocationsGroups: API.OperationMethod<
   CreateProjectsLocationsGroupsRequest,
@@ -4114,7 +5305,12 @@ export const createProjectsLocationsGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsImageImportsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsImageImportsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new ImageImport in a given project. */
 export const createProjectsLocationsImageImports: API.OperationMethod<
   CreateProjectsLocationsImageImportsRequest,
@@ -4129,7 +5325,12 @@ export const createProjectsLocationsImageImports: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsSourcesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsSourcesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new Source in a given project and location. */
 export const createProjectsLocationsSources: API.OperationMethod<
   CreateProjectsLocationsSourcesRequest,
@@ -4144,7 +5345,12 @@ export const createProjectsLocationsSources: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsSourcesDatacenterConnectorsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsSourcesDatacenterConnectorsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new DatacenterConnector in a given Source. */
 export const createProjectsLocationsSourcesDatacenterConnectors: API.OperationMethod<
   CreateProjectsLocationsSourcesDatacenterConnectorsRequest,
@@ -4159,7 +5365,12 @@ export const createProjectsLocationsSourcesDatacenterConnectors: API.OperationMe
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsSourcesDiskMigrationJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsSourcesDiskMigrationJobsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new disk migration job in a given Source. */
 export const createProjectsLocationsSourcesDiskMigrationJobs: API.OperationMethod<
   CreateProjectsLocationsSourcesDiskMigrationJobsRequest,
@@ -4174,7 +5385,12 @@ export const createProjectsLocationsSourcesDiskMigrationJobs: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsSourcesMigratingVmsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsSourcesMigratingVmsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new MigratingVm in a given Source. */
 export const createProjectsLocationsSourcesMigratingVms: API.OperationMethod<
   CreateProjectsLocationsSourcesMigratingVmsRequest,
@@ -4189,7 +5405,12 @@ export const createProjectsLocationsSourcesMigratingVms: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsSourcesMigratingVmsCloneJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsSourcesMigratingVmsCloneJobsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Initiates a Clone of a specific migrating VM. */
 export const createProjectsLocationsSourcesMigratingVmsCloneJobs: API.OperationMethod<
   CreateProjectsLocationsSourcesMigratingVmsCloneJobsRequest,
@@ -4204,7 +5425,12 @@ export const createProjectsLocationsSourcesMigratingVmsCloneJobs: API.OperationM
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsSourcesMigratingVmsCutoverJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsSourcesMigratingVmsCutoverJobsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Initiates a Cutover of a specific migrating VM. The returned LRO is completed when the cutover job resource is created and the job is initiated. */
 export const createProjectsLocationsSourcesMigratingVmsCutoverJobs: API.OperationMethod<
   CreateProjectsLocationsSourcesMigratingVmsCutoverJobsRequest,
@@ -4219,7 +5445,12 @@ export const createProjectsLocationsSourcesMigratingVmsCutoverJobs: API.Operatio
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsSourcesUtilizationReportsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsSourcesUtilizationReportsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new UtilizationReport. */
 export const createProjectsLocationsSourcesUtilizationReports: API.OperationMethod<
   CreateProjectsLocationsSourcesUtilizationReportsRequest,
@@ -4234,7 +5465,12 @@ export const createProjectsLocationsSourcesUtilizationReports: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsTargetProjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsTargetProjectsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new TargetProject in a given project. NOTE: TargetProject is a global resource; hence the only supported value for location is `global`. */
 export const createProjectsLocationsTargetProjects: API.OperationMethod<
   CreateProjectsLocationsTargetProjectsRequest,
@@ -4249,7 +5485,12 @@ export const createProjectsLocationsTargetProjects: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsGroupsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a single Group. */
 export const deleteProjectsLocationsGroups: API.OperationMethod<
   DeleteProjectsLocationsGroupsRequest,
@@ -4264,7 +5505,12 @@ export const deleteProjectsLocationsGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsImageImportsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsImageImportsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a single ImageImport. */
 export const deleteProjectsLocationsImageImports: API.OperationMethod<
   DeleteProjectsLocationsImageImportsRequest,
@@ -4279,7 +5525,12 @@ export const deleteProjectsLocationsImageImports: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsRequest,
@@ -4294,7 +5545,12 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsSourcesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsSourcesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a single Source. */
 export const deleteProjectsLocationsSources: API.OperationMethod<
   DeleteProjectsLocationsSourcesRequest,
@@ -4309,7 +5565,12 @@ export const deleteProjectsLocationsSources: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsSourcesDatacenterConnectorsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsSourcesDatacenterConnectorsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a single DatacenterConnector. */
 export const deleteProjectsLocationsSourcesDatacenterConnectors: API.OperationMethod<
   DeleteProjectsLocationsSourcesDatacenterConnectorsRequest,
@@ -4324,7 +5585,12 @@ export const deleteProjectsLocationsSourcesDatacenterConnectors: API.OperationMe
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsSourcesDiskMigrationJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsSourcesDiskMigrationJobsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a single DiskMigrationJob. */
 export const deleteProjectsLocationsSourcesDiskMigrationJobs: API.OperationMethod<
   DeleteProjectsLocationsSourcesDiskMigrationJobsRequest,
@@ -4339,7 +5605,12 @@ export const deleteProjectsLocationsSourcesDiskMigrationJobs: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsSourcesMigratingVmsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsSourcesMigratingVmsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a single MigratingVm. */
 export const deleteProjectsLocationsSourcesMigratingVms: API.OperationMethod<
   DeleteProjectsLocationsSourcesMigratingVmsRequest,
@@ -4354,7 +5625,12 @@ export const deleteProjectsLocationsSourcesMigratingVms: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsSourcesUtilizationReportsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsSourcesUtilizationReportsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a single Utilization Report. */
 export const deleteProjectsLocationsSourcesUtilizationReports: API.OperationMethod<
   DeleteProjectsLocationsSourcesUtilizationReportsRequest,
@@ -4369,7 +5645,12 @@ export const deleteProjectsLocationsSourcesUtilizationReports: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsTargetProjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsTargetProjectsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a single TargetProject. NOTE: TargetProject is a global resource; hence the only supported value for location is `global`. */
 export const deleteProjectsLocationsTargetProjects: API.OperationMethod<
   DeleteProjectsLocationsTargetProjectsRequest,
@@ -4384,7 +5665,12 @@ export const deleteProjectsLocationsTargetProjects: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ExtendMigrationProjectsLocationsSourcesMigratingVmsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ExtendMigrationProjectsLocationsSourcesMigratingVmsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Extend the migrating VM time to live. */
 export const extendMigrationProjectsLocationsSourcesMigratingVms: API.OperationMethod<
   ExtendMigrationProjectsLocationsSourcesMigratingVmsRequest,
@@ -4399,7 +5685,10 @@ export const extendMigrationProjectsLocationsSourcesMigratingVms: API.OperationM
   retry: Retry.Retry,
 }));
 
-export type FetchInventoryProjectsLocationsSourcesError = NotFound | Forbidden | GcpOpError;
+export type FetchInventoryProjectsLocationsSourcesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** List remote source's inventory of VMs. The remote source is the onprem vCenter (remote in the sense it's not in Compute Engine). The inventory describes the list of existing VMs in that source. Note that this operation lists the VMs on the remote source, as opposed to listing the MigratingVms resources in the vmmigration service. */
 export const fetchInventoryProjectsLocationsSources: API.PaginatedOperationMethod<
   FetchInventoryProjectsLocationsSourcesRequest,
@@ -4412,10 +5701,16 @@ export const fetchInventoryProjectsLocationsSources: API.PaginatedOperationMetho
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type FetchStorageInventoryProjectsLocationsSourcesError = NotFound | Forbidden | GcpOpError;
+export type FetchStorageInventoryProjectsLocationsSourcesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** List remote source's inventory of storage resources. The remote source is another cloud vendor (e.g. AWS, Azure). The inventory describes the list of existing storage resources in that source. Note that this operation lists the resources on the remote source, as opposed to listing the MigratingVms resources in the vmmigration service. */
 export const fetchStorageInventoryProjectsLocationsSources: API.PaginatedOperationMethod<
   FetchStorageInventoryProjectsLocationsSourcesRequest,
@@ -4428,10 +5723,18 @@ export const fetchStorageInventoryProjectsLocationsSources: API.PaginatedOperati
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type FinalizeMigrationProjectsLocationsSourcesMigratingVmsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type FinalizeMigrationProjectsLocationsSourcesMigratingVmsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Marks a migration as completed, deleting migration resources that are no longer being used. Only applicable after cutover is done. */
 export const finalizeMigrationProjectsLocationsSourcesMigratingVms: API.OperationMethod<
   FinalizeMigrationProjectsLocationsSourcesMigratingVmsRequest,
@@ -4476,7 +5779,10 @@ export const getProjectsLocationsGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsImageImportsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsImageImportsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a single ImageImport. */
 export const getProjectsLocationsImageImports: API.OperationMethod<
   GetProjectsLocationsImageImportsRequest,
@@ -4491,7 +5797,10 @@ export const getProjectsLocationsImageImports: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsImageImportsImageImportJobsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsImageImportsImageImportJobsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a single ImageImportJob. */
 export const getProjectsLocationsImageImportsImageImportJobs: API.OperationMethod<
   GetProjectsLocationsImageImportsImageImportJobsRequest,
@@ -4506,7 +5815,10 @@ export const getProjectsLocationsImageImportsImageImportJobs: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -4521,7 +5833,10 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsSourcesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsSourcesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a single Source. */
 export const getProjectsLocationsSources: API.OperationMethod<
   GetProjectsLocationsSourcesRequest,
@@ -4536,7 +5851,10 @@ export const getProjectsLocationsSources: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsSourcesDatacenterConnectorsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsSourcesDatacenterConnectorsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a single DatacenterConnector. */
 export const getProjectsLocationsSourcesDatacenterConnectors: API.OperationMethod<
   GetProjectsLocationsSourcesDatacenterConnectorsRequest,
@@ -4551,7 +5869,10 @@ export const getProjectsLocationsSourcesDatacenterConnectors: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsSourcesDiskMigrationJobsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsSourcesDiskMigrationJobsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a single DiskMigrationJob. */
 export const getProjectsLocationsSourcesDiskMigrationJobs: API.OperationMethod<
   GetProjectsLocationsSourcesDiskMigrationJobsRequest,
@@ -4566,7 +5887,10 @@ export const getProjectsLocationsSourcesDiskMigrationJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsSourcesMigratingVmsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsSourcesMigratingVmsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a single MigratingVm. */
 export const getProjectsLocationsSourcesMigratingVms: API.OperationMethod<
   GetProjectsLocationsSourcesMigratingVmsRequest,
@@ -4581,7 +5905,10 @@ export const getProjectsLocationsSourcesMigratingVms: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsSourcesMigratingVmsCloneJobsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsSourcesMigratingVmsCloneJobsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a single CloneJob. */
 export const getProjectsLocationsSourcesMigratingVmsCloneJobs: API.OperationMethod<
   GetProjectsLocationsSourcesMigratingVmsCloneJobsRequest,
@@ -4596,7 +5923,10 @@ export const getProjectsLocationsSourcesMigratingVmsCloneJobs: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsSourcesMigratingVmsCutoverJobsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsSourcesMigratingVmsCutoverJobsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a single CutoverJob. */
 export const getProjectsLocationsSourcesMigratingVmsCutoverJobs: API.OperationMethod<
   GetProjectsLocationsSourcesMigratingVmsCutoverJobsRequest,
@@ -4611,7 +5941,10 @@ export const getProjectsLocationsSourcesMigratingVmsCutoverJobs: API.OperationMe
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsSourcesMigratingVmsReplicationCyclesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsSourcesMigratingVmsReplicationCyclesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a single ReplicationCycle. */
 export const getProjectsLocationsSourcesMigratingVmsReplicationCycles: API.OperationMethod<
   GetProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest,
@@ -4626,7 +5959,10 @@ export const getProjectsLocationsSourcesMigratingVmsReplicationCycles: API.Opera
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsSourcesUtilizationReportsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsSourcesUtilizationReportsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets a single Utilization Report. */
 export const getProjectsLocationsSourcesUtilizationReports: API.OperationMethod<
   GetProjectsLocationsSourcesUtilizationReportsRequest,
@@ -4641,7 +5977,10 @@ export const getProjectsLocationsSourcesUtilizationReports: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsTargetProjectsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsTargetProjectsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a single TargetProject. NOTE: TargetProject is a global resource; hence the only supported value for location is `global`. */
 export const getProjectsLocationsTargetProjects: API.OperationMethod<
   GetProjectsLocationsTargetProjectsRequest,
@@ -4669,10 +6008,16 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsGroupsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsGroupsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists Groups in a given project and location. */
 export const listProjectsLocationsGroups: API.PaginatedOperationMethod<
   ListProjectsLocationsGroupsRequest,
@@ -4685,10 +6030,16 @@ export const listProjectsLocationsGroups: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsImageImportsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsImageImportsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists ImageImports in a given project. */
 export const listProjectsLocationsImageImports: API.PaginatedOperationMethod<
   ListProjectsLocationsImageImportsRequest,
@@ -4701,10 +6052,16 @@ export const listProjectsLocationsImageImports: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsImageImportsImageImportJobsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsImageImportsImageImportJobsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists ImageImportJobs in a given project. */
 export const listProjectsLocationsImageImportsImageImportJobs: API.PaginatedOperationMethod<
   ListProjectsLocationsImageImportsImageImportJobsRequest,
@@ -4717,10 +6074,16 @@ export const listProjectsLocationsImageImportsImageImportJobs: API.PaginatedOper
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -4733,10 +6096,16 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsSourcesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsSourcesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists Sources in a given project and location. */
 export const listProjectsLocationsSources: API.PaginatedOperationMethod<
   ListProjectsLocationsSourcesRequest,
@@ -4749,10 +6118,16 @@ export const listProjectsLocationsSources: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsSourcesDatacenterConnectorsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsSourcesDatacenterConnectorsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists DatacenterConnectors in a given Source. */
 export const listProjectsLocationsSourcesDatacenterConnectors: API.PaginatedOperationMethod<
   ListProjectsLocationsSourcesDatacenterConnectorsRequest,
@@ -4765,10 +6140,16 @@ export const listProjectsLocationsSourcesDatacenterConnectors: API.PaginatedOper
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsSourcesDiskMigrationJobsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsSourcesDiskMigrationJobsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists DiskMigrationJobs in a given Source. */
 export const listProjectsLocationsSourcesDiskMigrationJobs: API.PaginatedOperationMethod<
   ListProjectsLocationsSourcesDiskMigrationJobsRequest,
@@ -4781,10 +6162,16 @@ export const listProjectsLocationsSourcesDiskMigrationJobs: API.PaginatedOperati
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsSourcesMigratingVmsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsSourcesMigratingVmsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists MigratingVms in a given Source. */
 export const listProjectsLocationsSourcesMigratingVms: API.PaginatedOperationMethod<
   ListProjectsLocationsSourcesMigratingVmsRequest,
@@ -4797,10 +6184,16 @@ export const listProjectsLocationsSourcesMigratingVms: API.PaginatedOperationMet
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsSourcesMigratingVmsCloneJobsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsSourcesMigratingVmsCloneJobsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists the CloneJobs of a migrating VM. Only 25 most recent CloneJobs are listed. */
 export const listProjectsLocationsSourcesMigratingVmsCloneJobs: API.PaginatedOperationMethod<
   ListProjectsLocationsSourcesMigratingVmsCloneJobsRequest,
@@ -4813,10 +6206,16 @@ export const listProjectsLocationsSourcesMigratingVmsCloneJobs: API.PaginatedOpe
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsSourcesMigratingVmsCutoverJobsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsSourcesMigratingVmsCutoverJobsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists the CutoverJobs of a migrating VM. Only 25 most recent CutoverJobs are listed. */
 export const listProjectsLocationsSourcesMigratingVmsCutoverJobs: API.PaginatedOperationMethod<
   ListProjectsLocationsSourcesMigratingVmsCutoverJobsRequest,
@@ -4829,10 +6228,16 @@ export const listProjectsLocationsSourcesMigratingVmsCutoverJobs: API.PaginatedO
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsSourcesMigratingVmsReplicationCyclesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsSourcesMigratingVmsReplicationCyclesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists ReplicationCycles in a given MigratingVM. */
 export const listProjectsLocationsSourcesMigratingVmsReplicationCycles: API.PaginatedOperationMethod<
   ListProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest,
@@ -4845,10 +6250,16 @@ export const listProjectsLocationsSourcesMigratingVmsReplicationCycles: API.Pagi
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsSourcesUtilizationReportsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsSourcesUtilizationReportsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists Utilization Reports of the given Source. */
 export const listProjectsLocationsSourcesUtilizationReports: API.PaginatedOperationMethod<
   ListProjectsLocationsSourcesUtilizationReportsRequest,
@@ -4861,10 +6272,16 @@ export const listProjectsLocationsSourcesUtilizationReports: API.PaginatedOperat
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsTargetProjectsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsTargetProjectsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists TargetProjects in a given project. NOTE: TargetProject is a global resource; hence the only supported value for location is `global`. */
 export const listProjectsLocationsTargetProjects: API.PaginatedOperationMethod<
   ListProjectsLocationsTargetProjectsRequest,
@@ -4877,10 +6294,18 @@ export const listProjectsLocationsTargetProjects: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type PatchProjectsLocationsGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsGroupsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the parameters of a single Group. */
 export const patchProjectsLocationsGroups: API.OperationMethod<
   PatchProjectsLocationsGroupsRequest,
@@ -4895,7 +6320,12 @@ export const patchProjectsLocationsGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsSourcesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsSourcesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the parameters of a single Source. */
 export const patchProjectsLocationsSources: API.OperationMethod<
   PatchProjectsLocationsSourcesRequest,
@@ -4910,7 +6340,12 @@ export const patchProjectsLocationsSources: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsSourcesDiskMigrationJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsSourcesDiskMigrationJobsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the parameters of a single DiskMigrationJob. */
 export const patchProjectsLocationsSourcesDiskMigrationJobs: API.OperationMethod<
   PatchProjectsLocationsSourcesDiskMigrationJobsRequest,
@@ -4925,7 +6360,12 @@ export const patchProjectsLocationsSourcesDiskMigrationJobs: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsSourcesMigratingVmsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsSourcesMigratingVmsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the parameters of a single MigratingVm. */
 export const patchProjectsLocationsSourcesMigratingVms: API.OperationMethod<
   PatchProjectsLocationsSourcesMigratingVmsRequest,
@@ -4940,7 +6380,12 @@ export const patchProjectsLocationsSourcesMigratingVms: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsTargetProjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsTargetProjectsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the parameters of a single TargetProject. NOTE: TargetProject is a global resource; hence the only supported value for location is `global`. */
 export const patchProjectsLocationsTargetProjects: API.OperationMethod<
   PatchProjectsLocationsTargetProjectsRequest,
@@ -4955,7 +6400,12 @@ export const patchProjectsLocationsTargetProjects: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PauseMigrationProjectsLocationsSourcesMigratingVmsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PauseMigrationProjectsLocationsSourcesMigratingVmsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Pauses a migration for a VM. If cycle tasks are running they will be cancelled, preserving source task data. Further replication cycles will not be triggered while the VM is paused. */
 export const pauseMigrationProjectsLocationsSourcesMigratingVms: API.OperationMethod<
   PauseMigrationProjectsLocationsSourcesMigratingVmsRequest,
@@ -4970,7 +6420,12 @@ export const pauseMigrationProjectsLocationsSourcesMigratingVms: API.OperationMe
   retry: Retry.Retry,
 }));
 
-export type RemoveGroupMigrationProjectsLocationsGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RemoveGroupMigrationProjectsLocationsGroupsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Removes a MigratingVm from a Group. */
 export const removeGroupMigrationProjectsLocationsGroups: API.OperationMethod<
   RemoveGroupMigrationProjectsLocationsGroupsRequest,
@@ -4985,7 +6440,12 @@ export const removeGroupMigrationProjectsLocationsGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ResumeMigrationProjectsLocationsSourcesMigratingVmsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ResumeMigrationProjectsLocationsSourcesMigratingVmsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Resumes a migration for a VM. When called on a paused migration, will start the process of uploading data and creating snapshots; when called on a completed cut-over migration, will update the migration to active state and start the process of uploading data and creating snapshots. */
 export const resumeMigrationProjectsLocationsSourcesMigratingVms: API.OperationMethod<
   ResumeMigrationProjectsLocationsSourcesMigratingVmsRequest,
@@ -5000,7 +6460,12 @@ export const resumeMigrationProjectsLocationsSourcesMigratingVms: API.OperationM
   retry: Retry.Retry,
 }));
 
-export type RunProjectsLocationsSourcesDiskMigrationJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RunProjectsLocationsSourcesDiskMigrationJobsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Runs the disk migration job. */
 export const runProjectsLocationsSourcesDiskMigrationJobs: API.OperationMethod<
   RunProjectsLocationsSourcesDiskMigrationJobsRequest,
@@ -5015,7 +6480,12 @@ export const runProjectsLocationsSourcesDiskMigrationJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type StartMigrationProjectsLocationsSourcesMigratingVmsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type StartMigrationProjectsLocationsSourcesMigratingVmsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Starts migration for a VM. Starts the process of uploading data and creating snapshots, in replication cycles scheduled by the policy. */
 export const startMigrationProjectsLocationsSourcesMigratingVms: API.OperationMethod<
   StartMigrationProjectsLocationsSourcesMigratingVmsRequest,
@@ -5030,7 +6500,12 @@ export const startMigrationProjectsLocationsSourcesMigratingVms: API.OperationMe
   retry: Retry.Retry,
 }));
 
-export type UpgradeApplianceProjectsLocationsSourcesDatacenterConnectorsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpgradeApplianceProjectsLocationsSourcesDatacenterConnectorsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Upgrades the appliance relate to this DatacenterConnector to the in-place updateable version. */
 export const upgradeApplianceProjectsLocationsSourcesDatacenterConnectors: API.OperationMethod<
   UpgradeApplianceProjectsLocationsSourcesDatacenterConnectorsRequest,
@@ -5044,4 +6519,3 @@ export const upgradeApplianceProjectsLocationsSourcesDatacenterConnectors: API.O
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

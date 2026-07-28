@@ -13,63 +13,80 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
-export type SourceTypeEnum = "SOURCE_TYPE_UNSPECIFIED" | "ACCOUNT" | "PROFILE" | "DOMAIN_PROFILE" | "CONTACT" | "OTHER_CONTACT" | "DOMAIN_CONTACT";
+export type SourceTypeEnum =
+  | "SOURCE_TYPE_UNSPECIFIED"
+  | "ACCOUNT"
+  | "PROFILE"
+  | "DOMAIN_PROFILE"
+  | "CONTACT"
+  | "OTHER_CONTACT"
+  | "DOMAIN_CONTACT";
 export const SourceTypeEnum = /*@__PURE__*/ S.String;
 
-export type ProfileMetadataUserTypesItemEnum = "USER_TYPE_UNKNOWN" | "GOOGLE_USER" | "GPLUS_USER" | "GOOGLE_APPS_USER";
+export type ProfileMetadataUserTypesItemEnum =
+  | "USER_TYPE_UNKNOWN"
+  | "GOOGLE_USER"
+  | "GPLUS_USER"
+  | "GOOGLE_APPS_USER";
 export const ProfileMetadataUserTypesItemEnum = /*@__PURE__*/ S.String;
 
-export type ProfileMetadataUserTypesItemEnumList = ReadonlyArray<ProfileMetadataUserTypesItemEnum>;
-export const ProfileMetadataUserTypesItemEnumList = /*@__PURE__*/ S.Array(ProfileMetadataUserTypesItemEnum) as any as S.Schema<ProfileMetadataUserTypesItemEnumList>;
+export type ProfileMetadataUserTypesItemEnumList =
+  ReadonlyArray<ProfileMetadataUserTypesItemEnum>;
+export const ProfileMetadataUserTypesItemEnumList = /*@__PURE__*/ S.Array(
+  ProfileMetadataUserTypesItemEnum,
+) as any as S.Schema<ProfileMetadataUserTypesItemEnumList>;
 
-export type ProfileMetadataObjectTypeEnum = "OBJECT_TYPE_UNSPECIFIED" | "PERSON" | "PAGE";
+export type ProfileMetadataObjectTypeEnum =
+  | "OBJECT_TYPE_UNSPECIFIED"
+  | "PERSON"
+  | "PAGE";
 export const ProfileMetadataObjectTypeEnum = /*@__PURE__*/ S.String;
 
 /** The metadata about a profile. */
@@ -80,11 +97,13 @@ export interface ProfileMetadata {
   objectType?: ProfileMetadataObjectTypeEnum;
 }
 export const ProfileMetadata = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "userTypes": S.optional(ProfileMetadataUserTypesItemEnumList),
-  "objectType": S.optional(ProfileMetadataObjectTypeEnum),
-}),
-).annotate({ identifier: "ProfileMetadata" }) as any as S.Schema<ProfileMetadata>;
+  S.Struct({
+    userTypes: S.optional(ProfileMetadataUserTypesItemEnumList),
+    objectType: S.optional(ProfileMetadataObjectTypeEnum),
+  }),
+).annotate({
+  identifier: "ProfileMetadata",
+}) as any as S.Schema<ProfileMetadata>;
 
 /** The source of a field. */
 export interface Source {
@@ -100,13 +119,13 @@ export interface Source {
   updateTime?: string;
 }
 export const Source = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "etag": S.optional(S.String),
-  "id": S.optional(S.String),
-  "type": S.optional(SourceTypeEnum),
-  "profileMetadata": S.optional(ProfileMetadata),
-  "updateTime": S.optional(S.String),
-}),
+  S.Struct({
+    etag: S.optional(S.String),
+    id: S.optional(S.String),
+    type: S.optional(SourceTypeEnum),
+    profileMetadata: S.optional(ProfileMetadata),
+    updateTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Source" }) as any as S.Schema<Source>;
 
 /** Metadata about a field. */
@@ -121,12 +140,12 @@ export interface FieldMetadata {
   source?: Source;
 }
 export const FieldMetadata = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "verified": S.optional(S.Boolean),
-  "primary": S.optional(S.Boolean),
-  "sourcePrimary": S.optional(S.Boolean),
-  "source": S.optional(Source),
-}),
+  S.Struct({
+    verified: S.optional(S.Boolean),
+    primary: S.optional(S.Boolean),
+    sourcePrimary: S.optional(S.Boolean),
+    source: S.optional(Source),
+  }),
 ).annotate({ identifier: "FieldMetadata" }) as any as S.Schema<FieldMetadata>;
 
 /** A person's cover photo. A large image shown on the person's profile page that represents who they are or what they care about. */
@@ -139,15 +158,17 @@ export interface CoverPhoto {
   url?: string;
 }
 export const CoverPhoto = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "metadata": S.optional(FieldMetadata),
-  "default": S.optional(S.Boolean),
-  "url": S.optional(S.String),
-}),
+  S.Struct({
+    metadata: S.optional(FieldMetadata),
+    default: S.optional(S.Boolean),
+    url: S.optional(S.String),
+  }),
 ).annotate({ identifier: "CoverPhoto" }) as any as S.Schema<CoverPhoto>;
 
 export type CoverPhotoList = ReadonlyArray<CoverPhoto>;
-export const CoverPhotoList = /*@__PURE__*/ S.Array(CoverPhoto) as any as S.Schema<CoverPhotoList>;
+export const CoverPhotoList = /*@__PURE__*/ S.Array(
+  CoverPhoto,
+) as any as S.Schema<CoverPhotoList>;
 
 /** A person's phone number. */
 export interface PhoneNumber {
@@ -163,17 +184,19 @@ export interface PhoneNumber {
   metadata?: FieldMetadata;
 }
 export const PhoneNumber = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "value": S.optional(S.String),
-  "canonicalForm": S.optional(S.String),
-  "formattedType": S.optional(S.String),
-  "type": S.optional(S.String),
-  "metadata": S.optional(FieldMetadata),
-}),
+  S.Struct({
+    value: S.optional(S.String),
+    canonicalForm: S.optional(S.String),
+    formattedType: S.optional(S.String),
+    type: S.optional(S.String),
+    metadata: S.optional(FieldMetadata),
+  }),
 ).annotate({ identifier: "PhoneNumber" }) as any as S.Schema<PhoneNumber>;
 
 export type PhoneNumberList = ReadonlyArray<PhoneNumber>;
-export const PhoneNumberList = /*@__PURE__*/ S.Array(PhoneNumber) as any as S.Schema<PhoneNumberList>;
+export const PhoneNumberList = /*@__PURE__*/ S.Array(
+  PhoneNumber,
+) as any as S.Schema<PhoneNumberList>;
 
 /** A person's occupation. */
 export interface Occupation {
@@ -183,14 +206,16 @@ export interface Occupation {
   metadata?: FieldMetadata;
 }
 export const Occupation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "value": S.optional(S.String),
-  "metadata": S.optional(FieldMetadata),
-}),
+  S.Struct({
+    value: S.optional(S.String),
+    metadata: S.optional(FieldMetadata),
+  }),
 ).annotate({ identifier: "Occupation" }) as any as S.Schema<Occupation>;
 
 export type OccupationList = ReadonlyArray<Occupation>;
-export const OccupationList = /*@__PURE__*/ S.Array(Occupation) as any as S.Schema<OccupationList>;
+export const OccupationList = /*@__PURE__*/ S.Array(
+  Occupation,
+) as any as S.Schema<OccupationList>;
 
 /** **DEPRECATED**: No data will be returned A person's relationship status. */
 export interface RelationshipStatus {
@@ -202,15 +227,19 @@ export interface RelationshipStatus {
   metadata?: FieldMetadata;
 }
 export const RelationshipStatus = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "value": S.optional(S.String),
-  "formattedValue": S.optional(S.String),
-  "metadata": S.optional(FieldMetadata),
-}),
-).annotate({ identifier: "RelationshipStatus" }) as any as S.Schema<RelationshipStatus>;
+  S.Struct({
+    value: S.optional(S.String),
+    formattedValue: S.optional(S.String),
+    metadata: S.optional(FieldMetadata),
+  }),
+).annotate({
+  identifier: "RelationshipStatus",
+}) as any as S.Schema<RelationshipStatus>;
 
 export type RelationshipStatusList = ReadonlyArray<RelationshipStatus>;
-export const RelationshipStatusList = /*@__PURE__*/ S.Array(RelationshipStatus) as any as S.Schema<RelationshipStatusList>;
+export const RelationshipStatusList = /*@__PURE__*/ S.Array(
+  RelationshipStatus,
+) as any as S.Schema<RelationshipStatusList>;
 
 /** **DEPRECATED**: Please use `person.locations` instead. A person's past or current residence. */
 export interface Residence {
@@ -222,15 +251,17 @@ export interface Residence {
   value?: string;
 }
 export const Residence = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "metadata": S.optional(FieldMetadata),
-  "current": S.optional(S.Boolean),
-  "value": S.optional(S.String),
-}),
+  S.Struct({
+    metadata: S.optional(FieldMetadata),
+    current: S.optional(S.Boolean),
+    value: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Residence" }) as any as S.Schema<Residence>;
 
 export type ResidenceList = ReadonlyArray<Residence>;
-export const ResidenceList = /*@__PURE__*/ S.Array(Residence) as any as S.Schema<ResidenceList>;
+export const ResidenceList = /*@__PURE__*/ S.Array(
+  Residence,
+) as any as S.Schema<ResidenceList>;
 
 /** A person's associated URLs. */
 export interface Url {
@@ -244,12 +275,12 @@ export interface Url {
   metadata?: FieldMetadata;
 }
 export const Url = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "value": S.optional(S.String),
-  "formattedType": S.optional(S.String),
-  "type": S.optional(S.String),
-  "metadata": S.optional(FieldMetadata),
-}),
+  S.Struct({
+    value: S.optional(S.String),
+    formattedType: S.optional(S.String),
+    type: S.optional(S.String),
+    metadata: S.optional(FieldMetadata),
+  }),
 ).annotate({ identifier: "Url" }) as any as S.Schema<Url>;
 
 export type UrlList = ReadonlyArray<Url>;
@@ -265,17 +296,23 @@ export interface Photo {
   default?: boolean;
 }
 export const Photo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "metadata": S.optional(FieldMetadata),
-  "url": S.optional(S.String),
-  "default": S.optional(S.Boolean),
-}),
+  S.Struct({
+    metadata: S.optional(FieldMetadata),
+    url: S.optional(S.String),
+    default: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "Photo" }) as any as S.Schema<Photo>;
 
 export type PhotoList = ReadonlyArray<Photo>;
-export const PhotoList = /*@__PURE__*/ S.Array(Photo) as any as S.Schema<PhotoList>;
+export const PhotoList = /*@__PURE__*/ S.Array(
+  Photo,
+) as any as S.Schema<PhotoList>;
 
-export type AgeRangeTypeAgeRangeEnum = "AGE_RANGE_UNSPECIFIED" | "LESS_THAN_EIGHTEEN" | "EIGHTEEN_TO_TWENTY" | "TWENTY_ONE_OR_OLDER";
+export type AgeRangeTypeAgeRangeEnum =
+  | "AGE_RANGE_UNSPECIFIED"
+  | "LESS_THAN_EIGHTEEN"
+  | "EIGHTEEN_TO_TWENTY"
+  | "TWENTY_ONE_OR_OLDER";
 export const AgeRangeTypeAgeRangeEnum = /*@__PURE__*/ S.String;
 
 /** A person's age range. */
@@ -286,14 +323,16 @@ export interface AgeRangeType {
   ageRange?: AgeRangeTypeAgeRangeEnum;
 }
 export const AgeRangeType = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "metadata": S.optional(FieldMetadata),
-  "ageRange": S.optional(AgeRangeTypeAgeRangeEnum),
-}),
+  S.Struct({
+    metadata: S.optional(FieldMetadata),
+    ageRange: S.optional(AgeRangeTypeAgeRangeEnum),
+  }),
 ).annotate({ identifier: "AgeRangeType" }) as any as S.Schema<AgeRangeType>;
 
 export type AgeRangeTypeList = ReadonlyArray<AgeRangeType>;
-export const AgeRangeTypeList = /*@__PURE__*/ S.Array(AgeRangeType) as any as S.Schema<AgeRangeTypeList>;
+export const AgeRangeTypeList = /*@__PURE__*/ S.Array(
+  AgeRangeType,
+) as any as S.Schema<AgeRangeTypeList>;
 
 /** **DEPRECATED**: No data will be returned A person's bragging rights. */
 export interface BraggingRights {
@@ -303,14 +342,16 @@ export interface BraggingRights {
   metadata?: FieldMetadata;
 }
 export const BraggingRights = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "value": S.optional(S.String),
-  "metadata": S.optional(FieldMetadata),
-}),
+  S.Struct({
+    value: S.optional(S.String),
+    metadata: S.optional(FieldMetadata),
+  }),
 ).annotate({ identifier: "BraggingRights" }) as any as S.Schema<BraggingRights>;
 
 export type BraggingRightsList = ReadonlyArray<BraggingRights>;
-export const BraggingRightsList = /*@__PURE__*/ S.Array(BraggingRights) as any as S.Schema<BraggingRightsList>;
+export const BraggingRightsList = /*@__PURE__*/ S.Array(
+  BraggingRights,
+) as any as S.Schema<BraggingRightsList>;
 
 /** A skill that the person has. */
 export interface Skill {
@@ -320,14 +361,16 @@ export interface Skill {
   metadata?: FieldMetadata;
 }
 export const Skill = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "value": S.optional(S.String),
-  "metadata": S.optional(FieldMetadata),
-}),
+  S.Struct({
+    value: S.optional(S.String),
+    metadata: S.optional(FieldMetadata),
+  }),
 ).annotate({ identifier: "Skill" }) as any as S.Schema<Skill>;
 
 export type SkillList = ReadonlyArray<Skill>;
-export const SkillList = /*@__PURE__*/ S.Array(Skill) as any as S.Schema<SkillList>;
+export const SkillList = /*@__PURE__*/ S.Array(
+  Skill,
+) as any as S.Schema<SkillList>;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface People_Date {
@@ -339,11 +382,11 @@ export interface People_Date {
   day?: number;
 }
 export const People_Date = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "year": S.optional(S.Number),
-  "month": S.optional(S.Number),
-  "day": S.optional(S.Number),
-}),
+  S.Struct({
+    year: S.optional(S.Number),
+    month: S.optional(S.Number),
+    day: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "People_Date" }) as any as S.Schema<People_Date>;
 
 /** A person's past or current organization. Overlapping date ranges are permitted. */
@@ -382,28 +425,30 @@ export interface Organization {
   endDate?: People_Date;
 }
 export const Organization = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fullTimeEquivalentMillipercent": S.optional(S.Number),
-  "location": S.optional(S.String),
-  "domain": S.optional(S.String),
-  "formattedType": S.optional(S.String),
-  "costCenter": S.optional(S.String),
-  "name": S.optional(S.String),
-  "symbol": S.optional(S.String),
-  "title": S.optional(S.String),
-  "phoneticName": S.optional(S.String),
-  "department": S.optional(S.String),
-  "type": S.optional(S.String),
-  "current": S.optional(S.Boolean),
-  "metadata": S.optional(FieldMetadata),
-  "jobDescription": S.optional(S.String),
-  "startDate": S.optional(People_Date),
-  "endDate": S.optional(People_Date),
-}),
+  S.Struct({
+    fullTimeEquivalentMillipercent: S.optional(S.Number),
+    location: S.optional(S.String),
+    domain: S.optional(S.String),
+    formattedType: S.optional(S.String),
+    costCenter: S.optional(S.String),
+    name: S.optional(S.String),
+    symbol: S.optional(S.String),
+    title: S.optional(S.String),
+    phoneticName: S.optional(S.String),
+    department: S.optional(S.String),
+    type: S.optional(S.String),
+    current: S.optional(S.Boolean),
+    metadata: S.optional(FieldMetadata),
+    jobDescription: S.optional(S.String),
+    startDate: S.optional(People_Date),
+    endDate: S.optional(People_Date),
+  }),
 ).annotate({ identifier: "Organization" }) as any as S.Schema<Organization>;
 
 export type OrganizationList = ReadonlyArray<Organization>;
-export const OrganizationList = /*@__PURE__*/ S.Array(Organization) as any as S.Schema<OrganizationList>;
+export const OrganizationList = /*@__PURE__*/ S.Array(
+  Organization,
+) as any as S.Schema<OrganizationList>;
 
 /** Arbitrary user data that is populated by the end users. */
 export interface UserDefined {
@@ -415,15 +460,17 @@ export interface UserDefined {
   key?: string;
 }
 export const UserDefined = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "value": S.optional(S.String),
-  "metadata": S.optional(FieldMetadata),
-  "key": S.optional(S.String),
-}),
+  S.Struct({
+    value: S.optional(S.String),
+    metadata: S.optional(FieldMetadata),
+    key: S.optional(S.String),
+  }),
 ).annotate({ identifier: "UserDefined" }) as any as S.Schema<UserDefined>;
 
 export type UserDefinedList = ReadonlyArray<UserDefined>;
-export const UserDefinedList = /*@__PURE__*/ S.Array(UserDefined) as any as S.Schema<UserDefinedList>;
+export const UserDefinedList = /*@__PURE__*/ S.Array(
+  UserDefined,
+) as any as S.Schema<UserDefinedList>;
 
 /** A person's instant messaging client. */
 export interface ImClient {
@@ -441,18 +488,20 @@ export interface ImClient {
   metadata?: FieldMetadata;
 }
 export const ImClient = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "username": S.optional(S.String),
-  "formattedType": S.optional(S.String),
-  "formattedProtocol": S.optional(S.String),
-  "protocol": S.optional(S.String),
-  "type": S.optional(S.String),
-  "metadata": S.optional(FieldMetadata),
-}),
+  S.Struct({
+    username: S.optional(S.String),
+    formattedType: S.optional(S.String),
+    formattedProtocol: S.optional(S.String),
+    protocol: S.optional(S.String),
+    type: S.optional(S.String),
+    metadata: S.optional(FieldMetadata),
+  }),
 ).annotate({ identifier: "ImClient" }) as any as S.Schema<ImClient>;
 
 export type ImClientList = ReadonlyArray<ImClient>;
-export const ImClientList = /*@__PURE__*/ S.Array(ImClient) as any as S.Schema<ImClientList>;
+export const ImClientList = /*@__PURE__*/ S.Array(
+  ImClient,
+) as any as S.Schema<ImClientList>;
 
 /** A Google contact group membership. */
 export interface ContactGroupMembership {
@@ -462,11 +511,13 @@ export interface ContactGroupMembership {
   contactGroupId?: string;
 }
 export const ContactGroupMembership = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "contactGroupResourceName": S.optional(S.String),
-  "contactGroupId": S.optional(S.String),
-}),
-).annotate({ identifier: "ContactGroupMembership" }) as any as S.Schema<ContactGroupMembership>;
+  S.Struct({
+    contactGroupResourceName: S.optional(S.String),
+    contactGroupId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ContactGroupMembership",
+}) as any as S.Schema<ContactGroupMembership>;
 
 /** A Google Workspace Domain membership. */
 export interface DomainMembership {
@@ -474,10 +525,12 @@ export interface DomainMembership {
   inViewerDomain?: boolean;
 }
 export const DomainMembership = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "inViewerDomain": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "DomainMembership" }) as any as S.Schema<DomainMembership>;
+  S.Struct({
+    inViewerDomain: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "DomainMembership",
+}) as any as S.Schema<DomainMembership>;
 
 /** A person's membership in a group. Only contact group memberships can be modified. */
 export interface Membership {
@@ -489,15 +542,17 @@ export interface Membership {
   domainMembership?: DomainMembership;
 }
 export const Membership = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "metadata": S.optional(FieldMetadata),
-  "contactGroupMembership": S.optional(ContactGroupMembership),
-  "domainMembership": S.optional(DomainMembership),
-}),
+  S.Struct({
+    metadata: S.optional(FieldMetadata),
+    contactGroupMembership: S.optional(ContactGroupMembership),
+    domainMembership: S.optional(DomainMembership),
+  }),
 ).annotate({ identifier: "Membership" }) as any as S.Schema<Membership>;
 
 export type MembershipList = ReadonlyArray<Membership>;
-export const MembershipList = /*@__PURE__*/ S.Array(Membership) as any as S.Schema<MembershipList>;
+export const MembershipList = /*@__PURE__*/ S.Array(
+  Membership,
+) as any as S.Schema<MembershipList>;
 
 /** Arbitrary client data that is populated by clients. Duplicate keys and values are allowed. */
 export interface ClientData {
@@ -509,15 +564,17 @@ export interface ClientData {
   key?: string;
 }
 export const ClientData = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "value": S.optional(S.String),
-  "metadata": S.optional(FieldMetadata),
-  "key": S.optional(S.String),
-}),
+  S.Struct({
+    value: S.optional(S.String),
+    metadata: S.optional(FieldMetadata),
+    key: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ClientData" }) as any as S.Schema<ClientData>;
 
 export type ClientDataList = ReadonlyArray<ClientData>;
-export const ClientDataList = /*@__PURE__*/ S.Array(ClientData) as any as S.Schema<ClientDataList>;
+export const ClientDataList = /*@__PURE__*/ S.Array(
+  ClientData,
+) as any as S.Schema<ClientDataList>;
 
 /** A person's gender. */
 export interface Gender {
@@ -531,16 +588,18 @@ export interface Gender {
   metadata?: FieldMetadata;
 }
 export const Gender = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "value": S.optional(S.String),
-  "formattedValue": S.optional(S.String),
-  "addressMeAs": S.optional(S.String),
-  "metadata": S.optional(FieldMetadata),
-}),
+  S.Struct({
+    value: S.optional(S.String),
+    formattedValue: S.optional(S.String),
+    addressMeAs: S.optional(S.String),
+    metadata: S.optional(FieldMetadata),
+  }),
 ).annotate({ identifier: "Gender" }) as any as S.Schema<Gender>;
 
 export type GenderList = ReadonlyArray<Gender>;
-export const GenderList = /*@__PURE__*/ S.Array(Gender) as any as S.Schema<GenderList>;
+export const GenderList = /*@__PURE__*/ S.Array(
+  Gender,
+) as any as S.Schema<GenderList>;
 
 /** A person's SIP address. Session Initial Protocol addresses are used for VoIP communications to make voice or video calls over the internet. */
 export interface SipAddress {
@@ -554,25 +613,34 @@ export interface SipAddress {
   value?: string;
 }
 export const SipAddress = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "metadata": S.optional(FieldMetadata),
-  "type": S.optional(S.String),
-  "formattedType": S.optional(S.String),
-  "value": S.optional(S.String),
-}),
+  S.Struct({
+    metadata: S.optional(FieldMetadata),
+    type: S.optional(S.String),
+    formattedType: S.optional(S.String),
+    value: S.optional(S.String),
+  }),
 ).annotate({ identifier: "SipAddress" }) as any as S.Schema<SipAddress>;
 
 export type SipAddressList = ReadonlyArray<SipAddress>;
-export const SipAddressList = /*@__PURE__*/ S.Array(SipAddress) as any as S.Schema<SipAddressList>;
+export const SipAddressList = /*@__PURE__*/ S.Array(
+  SipAddress,
+) as any as S.Schema<SipAddressList>;
 
-export type PersonMetadataObjectTypeEnum = "OBJECT_TYPE_UNSPECIFIED" | "PERSON" | "PAGE";
+export type PersonMetadataObjectTypeEnum =
+  | "OBJECT_TYPE_UNSPECIFIED"
+  | "PERSON"
+  | "PAGE";
 export const PersonMetadataObjectTypeEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 export type SourceList = ReadonlyArray<Source>;
-export const SourceList = /*@__PURE__*/ S.Array(Source) as any as S.Schema<SourceList>;
+export const SourceList = /*@__PURE__*/ S.Array(
+  Source,
+) as any as S.Schema<SourceList>;
 
 /** The metadata about a person. */
 export interface PersonMetadata {
@@ -588,13 +656,13 @@ export interface PersonMetadata {
   previousResourceNames?: StringList;
 }
 export const PersonMetadata = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "deleted": S.optional(S.Boolean),
-  "objectType": S.optional(PersonMetadataObjectTypeEnum),
-  "linkedPeopleResourceNames": S.optional(StringList),
-  "sources": S.optional(SourceList),
-  "previousResourceNames": S.optional(StringList),
-}),
+  S.Struct({
+    deleted: S.optional(S.Boolean),
+    objectType: S.optional(PersonMetadataObjectTypeEnum),
+    linkedPeopleResourceNames: S.optional(StringList),
+    sources: S.optional(SourceList),
+    previousResourceNames: S.optional(StringList),
+  }),
 ).annotate({ identifier: "PersonMetadata" }) as any as S.Schema<PersonMetadata>;
 
 /** A person's relation to another person. */
@@ -609,16 +677,18 @@ export interface Relation {
   formattedType?: string;
 }
 export const Relation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(S.String),
-  "metadata": S.optional(FieldMetadata),
-  "person": S.optional(S.String),
-  "formattedType": S.optional(S.String),
-}),
+  S.Struct({
+    type: S.optional(S.String),
+    metadata: S.optional(FieldMetadata),
+    person: S.optional(S.String),
+    formattedType: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Relation" }) as any as S.Schema<Relation>;
 
 export type RelationList = ReadonlyArray<Relation>;
-export const RelationList = /*@__PURE__*/ S.Array(Relation) as any as S.Schema<RelationList>;
+export const RelationList = /*@__PURE__*/ S.Array(
+  Relation,
+) as any as S.Schema<RelationList>;
 
 /** An event related to the person. */
 export interface Event {
@@ -632,16 +702,18 @@ export interface Event {
   date?: People_Date;
 }
 export const Event = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "metadata": S.optional(FieldMetadata),
-  "type": S.optional(S.String),
-  "formattedType": S.optional(S.String),
-  "date": S.optional(People_Date),
-}),
+  S.Struct({
+    metadata: S.optional(FieldMetadata),
+    type: S.optional(S.String),
+    formattedType: S.optional(S.String),
+    date: S.optional(People_Date),
+  }),
 ).annotate({ identifier: "Event" }) as any as S.Schema<Event>;
 
 export type EventList = ReadonlyArray<Event>;
-export const EventList = /*@__PURE__*/ S.Array(Event) as any as S.Schema<EventList>;
+export const EventList = /*@__PURE__*/ S.Array(
+  Event,
+) as any as S.Schema<EventList>;
 
 /** **DEPRECATED**: No data will be returned A brief one-line description of the person. */
 export interface Tagline {
@@ -651,14 +723,16 @@ export interface Tagline {
   metadata?: FieldMetadata;
 }
 export const Tagline = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "value": S.optional(S.String),
-  "metadata": S.optional(FieldMetadata),
-}),
+  S.Struct({
+    value: S.optional(S.String),
+    metadata: S.optional(FieldMetadata),
+  }),
 ).annotate({ identifier: "Tagline" }) as any as S.Schema<Tagline>;
 
 export type TaglineList = ReadonlyArray<Tagline>;
-export const TaglineList = /*@__PURE__*/ S.Array(Tagline) as any as S.Schema<TaglineList>;
+export const TaglineList = /*@__PURE__*/ S.Array(
+  Tagline,
+) as any as S.Schema<TaglineList>;
 
 /** The name that should be used to sort the person in a list. */
 export interface FileAs {
@@ -668,14 +742,16 @@ export interface FileAs {
   metadata?: FieldMetadata;
 }
 export const FileAs = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "value": S.optional(S.String),
-  "metadata": S.optional(FieldMetadata),
-}),
+  S.Struct({
+    value: S.optional(S.String),
+    metadata: S.optional(FieldMetadata),
+  }),
 ).annotate({ identifier: "FileAs" }) as any as S.Schema<FileAs>;
 
 export type FileAsList = ReadonlyArray<FileAs>;
-export const FileAsList = /*@__PURE__*/ S.Array(FileAs) as any as S.Schema<FileAsList>;
+export const FileAsList = /*@__PURE__*/ S.Array(
+  FileAs,
+) as any as S.Schema<FileAsList>;
 
 /** One of the person's interests. */
 export interface Interest {
@@ -685,16 +761,21 @@ export interface Interest {
   value?: string;
 }
 export const Interest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "metadata": S.optional(FieldMetadata),
-  "value": S.optional(S.String),
-}),
+  S.Struct({
+    metadata: S.optional(FieldMetadata),
+    value: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Interest" }) as any as S.Schema<Interest>;
 
 export type InterestList = ReadonlyArray<Interest>;
-export const InterestList = /*@__PURE__*/ S.Array(Interest) as any as S.Schema<InterestList>;
+export const InterestList = /*@__PURE__*/ S.Array(
+  Interest,
+) as any as S.Schema<InterestList>;
 
-export type BiographyContentTypeEnum = "CONTENT_TYPE_UNSPECIFIED" | "TEXT_PLAIN" | "TEXT_HTML";
+export type BiographyContentTypeEnum =
+  | "CONTENT_TYPE_UNSPECIFIED"
+  | "TEXT_PLAIN"
+  | "TEXT_HTML";
 export const BiographyContentTypeEnum = /*@__PURE__*/ S.String;
 
 /** A person's short biography. */
@@ -707,15 +788,17 @@ export interface Biography {
   contentType?: BiographyContentTypeEnum;
 }
 export const Biography = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "metadata": S.optional(FieldMetadata),
-  "value": S.optional(S.String),
-  "contentType": S.optional(BiographyContentTypeEnum),
-}),
+  S.Struct({
+    metadata: S.optional(FieldMetadata),
+    value: S.optional(S.String),
+    contentType: S.optional(BiographyContentTypeEnum),
+  }),
 ).annotate({ identifier: "Biography" }) as any as S.Schema<Biography>;
 
 export type BiographyList = ReadonlyArray<Biography>;
-export const BiographyList = /*@__PURE__*/ S.Array(Biography) as any as S.Schema<BiographyList>;
+export const BiographyList = /*@__PURE__*/ S.Array(
+  Biography,
+) as any as S.Schema<BiographyList>;
 
 /** A person's birthday. At least one of the `date` and `text` fields are specified. The `date` and `text` fields typically represent the same date, but are not guaranteed to. Clients should always set the `date` field when mutating birthdays. */
 export interface Birthday {
@@ -727,17 +810,26 @@ export interface Birthday {
   metadata?: FieldMetadata;
 }
 export const Birthday = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "date": S.optional(People_Date),
-  "text": S.optional(S.String),
-  "metadata": S.optional(FieldMetadata),
-}),
+  S.Struct({
+    date: S.optional(People_Date),
+    text: S.optional(S.String),
+    metadata: S.optional(FieldMetadata),
+  }),
 ).annotate({ identifier: "Birthday" }) as any as S.Schema<Birthday>;
 
 export type BirthdayList = ReadonlyArray<Birthday>;
-export const BirthdayList = /*@__PURE__*/ S.Array(Birthday) as any as S.Schema<BirthdayList>;
+export const BirthdayList = /*@__PURE__*/ S.Array(
+  Birthday,
+) as any as S.Schema<BirthdayList>;
 
-export type NicknameTypeEnum = "DEFAULT" | "MAIDEN_NAME" | "INITIALS" | "GPLUS" | "OTHER_NAME" | "ALTERNATE_NAME" | "SHORT_NAME";
+export type NicknameTypeEnum =
+  | "DEFAULT"
+  | "MAIDEN_NAME"
+  | "INITIALS"
+  | "GPLUS"
+  | "OTHER_NAME"
+  | "ALTERNATE_NAME"
+  | "SHORT_NAME";
 export const NicknameTypeEnum = /*@__PURE__*/ S.String;
 
 /** A person's nickname. */
@@ -750,15 +842,17 @@ export interface Nickname {
   value?: string;
 }
 export const Nickname = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(NicknameTypeEnum),
-  "metadata": S.optional(FieldMetadata),
-  "value": S.optional(S.String),
-}),
+  S.Struct({
+    type: S.optional(NicknameTypeEnum),
+    metadata: S.optional(FieldMetadata),
+    value: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Nickname" }) as any as S.Schema<Nickname>;
 
 export type NicknameList = ReadonlyArray<Nickname>;
-export const NicknameList = /*@__PURE__*/ S.Array(Nickname) as any as S.Schema<NicknameList>;
+export const NicknameList = /*@__PURE__*/ S.Array(
+  Nickname,
+) as any as S.Schema<NicknameList>;
 
 /** A person's name. If the name is a mononym, the family name is empty. */
 export interface Name {
@@ -794,27 +888,29 @@ export interface Name {
   givenName?: string;
 }
 export const Name = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "phoneticMiddleName": S.optional(S.String),
-  "phoneticGivenName": S.optional(S.String),
-  "phoneticFamilyName": S.optional(S.String),
-  "metadata": S.optional(FieldMetadata),
-  "displayNameLastFirst": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "honorificPrefix": S.optional(S.String),
-  "middleName": S.optional(S.String),
-  "unstructuredName": S.optional(S.String),
-  "familyName": S.optional(S.String),
-  "phoneticFullName": S.optional(S.String),
-  "honorificSuffix": S.optional(S.String),
-  "phoneticHonorificPrefix": S.optional(S.String),
-  "phoneticHonorificSuffix": S.optional(S.String),
-  "givenName": S.optional(S.String),
-}),
+  S.Struct({
+    phoneticMiddleName: S.optional(S.String),
+    phoneticGivenName: S.optional(S.String),
+    phoneticFamilyName: S.optional(S.String),
+    metadata: S.optional(FieldMetadata),
+    displayNameLastFirst: S.optional(S.String),
+    displayName: S.optional(S.String),
+    honorificPrefix: S.optional(S.String),
+    middleName: S.optional(S.String),
+    unstructuredName: S.optional(S.String),
+    familyName: S.optional(S.String),
+    phoneticFullName: S.optional(S.String),
+    honorificSuffix: S.optional(S.String),
+    phoneticHonorificPrefix: S.optional(S.String),
+    phoneticHonorificSuffix: S.optional(S.String),
+    givenName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Name" }) as any as S.Schema<Name>;
 
 export type NameList = ReadonlyArray<Name>;
-export const NameList = /*@__PURE__*/ S.Array(Name) as any as S.Schema<NameList>;
+export const NameList = /*@__PURE__*/ S.Array(
+  Name,
+) as any as S.Schema<NameList>;
 
 /** A person's calendar URL. */
 export interface CalendarUrl {
@@ -828,16 +924,18 @@ export interface CalendarUrl {
   formattedType?: string;
 }
 export const CalendarUrl = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(S.String),
-  "metadata": S.optional(FieldMetadata),
-  "url": S.optional(S.String),
-  "formattedType": S.optional(S.String),
-}),
+  S.Struct({
+    type: S.optional(S.String),
+    metadata: S.optional(FieldMetadata),
+    url: S.optional(S.String),
+    formattedType: S.optional(S.String),
+  }),
 ).annotate({ identifier: "CalendarUrl" }) as any as S.Schema<CalendarUrl>;
 
 export type CalendarUrlList = ReadonlyArray<CalendarUrl>;
-export const CalendarUrlList = /*@__PURE__*/ S.Array(CalendarUrl) as any as S.Schema<CalendarUrlList>;
+export const CalendarUrlList = /*@__PURE__*/ S.Array(
+  CalendarUrl,
+) as any as S.Schema<CalendarUrlList>;
 
 /** A person's location. */
 export interface Location {
@@ -859,20 +957,22 @@ export interface Location {
   deskCode?: string;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(S.String),
-  "current": S.optional(S.Boolean),
-  "metadata": S.optional(FieldMetadata),
-  "floorSection": S.optional(S.String),
-  "buildingId": S.optional(S.String),
-  "floor": S.optional(S.String),
-  "value": S.optional(S.String),
-  "deskCode": S.optional(S.String),
-}),
+  S.Struct({
+    type: S.optional(S.String),
+    current: S.optional(S.Boolean),
+    metadata: S.optional(FieldMetadata),
+    floorSection: S.optional(S.String),
+    buildingId: S.optional(S.String),
+    floor: S.optional(S.String),
+    value: S.optional(S.String),
+    deskCode: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(
+  Location,
+) as any as S.Schema<LocationList>;
 
 /** **DEPRECATED**: No data will be returned A person's relationship interest . */
 export interface RelationshipInterest {
@@ -884,15 +984,19 @@ export interface RelationshipInterest {
   metadata?: FieldMetadata;
 }
 export const RelationshipInterest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "value": S.optional(S.String),
-  "formattedValue": S.optional(S.String),
-  "metadata": S.optional(FieldMetadata),
-}),
-).annotate({ identifier: "RelationshipInterest" }) as any as S.Schema<RelationshipInterest>;
+  S.Struct({
+    value: S.optional(S.String),
+    formattedValue: S.optional(S.String),
+    metadata: S.optional(FieldMetadata),
+  }),
+).annotate({
+  identifier: "RelationshipInterest",
+}) as any as S.Schema<RelationshipInterest>;
 
 export type RelationshipInterestList = ReadonlyArray<RelationshipInterest>;
-export const RelationshipInterestList = /*@__PURE__*/ S.Array(RelationshipInterest) as any as S.Schema<RelationshipInterestList>;
+export const RelationshipInterestList = /*@__PURE__*/ S.Array(
+  RelationshipInterest,
+) as any as S.Schema<RelationshipInterestList>;
 
 /** A person's email address. */
 export interface EmailAddress {
@@ -908,19 +1012,25 @@ export interface EmailAddress {
   metadata?: FieldMetadata;
 }
 export const EmailAddress = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "value": S.optional(S.String),
-  "formattedType": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "type": S.optional(S.String),
-  "metadata": S.optional(FieldMetadata),
-}),
+  S.Struct({
+    value: S.optional(S.String),
+    formattedType: S.optional(S.String),
+    displayName: S.optional(S.String),
+    type: S.optional(S.String),
+    metadata: S.optional(FieldMetadata),
+  }),
 ).annotate({ identifier: "EmailAddress" }) as any as S.Schema<EmailAddress>;
 
 export type EmailAddressList = ReadonlyArray<EmailAddress>;
-export const EmailAddressList = /*@__PURE__*/ S.Array(EmailAddress) as any as S.Schema<EmailAddressList>;
+export const EmailAddressList = /*@__PURE__*/ S.Array(
+  EmailAddress,
+) as any as S.Schema<EmailAddressList>;
 
-export type PersonAgeRangeEnum = "AGE_RANGE_UNSPECIFIED" | "LESS_THAN_EIGHTEEN" | "EIGHTEEN_TO_TWENTY" | "TWENTY_ONE_OR_OLDER";
+export type PersonAgeRangeEnum =
+  | "AGE_RANGE_UNSPECIFIED"
+  | "LESS_THAN_EIGHTEEN"
+  | "EIGHTEEN_TO_TWENTY"
+  | "TWENTY_ONE_OR_OLDER";
 export const PersonAgeRangeEnum = /*@__PURE__*/ S.String;
 
 /** A person's physical address. May be a P.O. box or street address. All fields are optional. */
@@ -951,24 +1061,26 @@ export interface Address {
   region?: string;
 }
 export const Address = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "streetAddress": S.optional(S.String),
-  "formattedValue": S.optional(S.String),
-  "formattedType": S.optional(S.String),
-  "type": S.optional(S.String),
-  "metadata": S.optional(FieldMetadata),
-  "poBox": S.optional(S.String),
-  "city": S.optional(S.String),
-  "postalCode": S.optional(S.String),
-  "extendedAddress": S.optional(S.String),
-  "country": S.optional(S.String),
-  "countryCode": S.optional(S.String),
-  "region": S.optional(S.String),
-}),
+  S.Struct({
+    streetAddress: S.optional(S.String),
+    formattedValue: S.optional(S.String),
+    formattedType: S.optional(S.String),
+    type: S.optional(S.String),
+    metadata: S.optional(FieldMetadata),
+    poBox: S.optional(S.String),
+    city: S.optional(S.String),
+    postalCode: S.optional(S.String),
+    extendedAddress: S.optional(S.String),
+    country: S.optional(S.String),
+    countryCode: S.optional(S.String),
+    region: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Address" }) as any as S.Schema<Address>;
 
 export type AddressList = ReadonlyArray<Address>;
-export const AddressList = /*@__PURE__*/ S.Array(Address) as any as S.Schema<AddressList>;
+export const AddressList = /*@__PURE__*/ S.Array(
+  Address,
+) as any as S.Schema<AddressList>;
 
 /** An identifier from an external entity related to the person. */
 export interface ExternalId {
@@ -982,16 +1094,18 @@ export interface ExternalId {
   formattedType?: string;
 }
 export const ExternalId = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(S.String),
-  "metadata": S.optional(FieldMetadata),
-  "value": S.optional(S.String),
-  "formattedType": S.optional(S.String),
-}),
+  S.Struct({
+    type: S.optional(S.String),
+    metadata: S.optional(FieldMetadata),
+    value: S.optional(S.String),
+    formattedType: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ExternalId" }) as any as S.Schema<ExternalId>;
 
 export type ExternalIdList = ReadonlyArray<ExternalId>;
-export const ExternalIdList = /*@__PURE__*/ S.Array(ExternalId) as any as S.Schema<ExternalIdList>;
+export const ExternalIdList = /*@__PURE__*/ S.Array(
+  ExternalId,
+) as any as S.Schema<ExternalIdList>;
 
 /** A person's locale preference. */
 export interface Locale {
@@ -1001,16 +1115,30 @@ export interface Locale {
   value?: string;
 }
 export const Locale = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "metadata": S.optional(FieldMetadata),
-  "value": S.optional(S.String),
-}),
+  S.Struct({
+    metadata: S.optional(FieldMetadata),
+    value: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Locale" }) as any as S.Schema<Locale>;
 
 export type LocaleList = ReadonlyArray<Locale>;
-export const LocaleList = /*@__PURE__*/ S.Array(Locale) as any as S.Schema<LocaleList>;
+export const LocaleList = /*@__PURE__*/ S.Array(
+  Locale,
+) as any as S.Schema<LocaleList>;
 
-export type MiscKeywordTypeEnum = "TYPE_UNSPECIFIED" | "OUTLOOK_BILLING_INFORMATION" | "OUTLOOK_DIRECTORY_SERVER" | "OUTLOOK_KEYWORD" | "OUTLOOK_MILEAGE" | "OUTLOOK_PRIORITY" | "OUTLOOK_SENSITIVITY" | "OUTLOOK_SUBJECT" | "OUTLOOK_USER" | "HOME" | "WORK" | "OTHER";
+export type MiscKeywordTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "OUTLOOK_BILLING_INFORMATION"
+  | "OUTLOOK_DIRECTORY_SERVER"
+  | "OUTLOOK_KEYWORD"
+  | "OUTLOOK_MILEAGE"
+  | "OUTLOOK_PRIORITY"
+  | "OUTLOOK_SENSITIVITY"
+  | "OUTLOOK_SUBJECT"
+  | "OUTLOOK_USER"
+  | "HOME"
+  | "WORK"
+  | "OTHER";
 export const MiscKeywordTypeEnum = /*@__PURE__*/ S.String;
 
 /** A person's miscellaneous keyword. */
@@ -1025,16 +1153,18 @@ export interface MiscKeyword {
   formattedType?: string;
 }
 export const MiscKeyword = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(MiscKeywordTypeEnum),
-  "metadata": S.optional(FieldMetadata),
-  "value": S.optional(S.String),
-  "formattedType": S.optional(S.String),
-}),
+  S.Struct({
+    type: S.optional(MiscKeywordTypeEnum),
+    metadata: S.optional(FieldMetadata),
+    value: S.optional(S.String),
+    formattedType: S.optional(S.String),
+  }),
 ).annotate({ identifier: "MiscKeyword" }) as any as S.Schema<MiscKeyword>;
 
 export type MiscKeywordList = ReadonlyArray<MiscKeyword>;
-export const MiscKeywordList = /*@__PURE__*/ S.Array(MiscKeyword) as any as S.Schema<MiscKeywordList>;
+export const MiscKeywordList = /*@__PURE__*/ S.Array(
+  MiscKeyword,
+) as any as S.Schema<MiscKeywordList>;
 
 /** Information about a person merged from various data sources such as the authenticated user's contacts and profile data. Most fields can have multiple items. The items in a field have no guaranteed order, but each non-empty field is guaranteed to have exactly one field with `metadata.primary` set to true. */
 export interface Person {
@@ -1116,46 +1246,46 @@ export interface Person {
   miscKeywords?: MiscKeywordList;
 }
 export const Person = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "coverPhotos": S.optional(CoverPhotoList),
-  "phoneNumbers": S.optional(PhoneNumberList),
-  "occupations": S.optional(OccupationList),
-  "relationshipStatuses": S.optional(RelationshipStatusList),
-  "residences": S.optional(ResidenceList),
-  "urls": S.optional(UrlList),
-  "photos": S.optional(PhotoList),
-  "ageRanges": S.optional(AgeRangeTypeList),
-  "braggingRights": S.optional(BraggingRightsList),
-  "skills": S.optional(SkillList),
-  "organizations": S.optional(OrganizationList),
-  "userDefined": S.optional(UserDefinedList),
-  "imClients": S.optional(ImClientList),
-  "memberships": S.optional(MembershipList),
-  "clientData": S.optional(ClientDataList),
-  "genders": S.optional(GenderList),
-  "sipAddresses": S.optional(SipAddressList),
-  "metadata": S.optional(PersonMetadata),
-  "relations": S.optional(RelationList),
-  "events": S.optional(EventList),
-  "taglines": S.optional(TaglineList),
-  "fileAses": S.optional(FileAsList),
-  "interests": S.optional(InterestList),
-  "biographies": S.optional(BiographyList),
-  "resourceName": S.optional(S.String),
-  "birthdays": S.optional(BirthdayList),
-  "nicknames": S.optional(NicknameList),
-  "names": S.optional(NameList),
-  "etag": S.optional(S.String),
-  "calendarUrls": S.optional(CalendarUrlList),
-  "locations": S.optional(LocationList),
-  "relationshipInterests": S.optional(RelationshipInterestList),
-  "emailAddresses": S.optional(EmailAddressList),
-  "ageRange": S.optional(PersonAgeRangeEnum),
-  "addresses": S.optional(AddressList),
-  "externalIds": S.optional(ExternalIdList),
-  "locales": S.optional(LocaleList),
-  "miscKeywords": S.optional(MiscKeywordList),
-}),
+  S.Struct({
+    coverPhotos: S.optional(CoverPhotoList),
+    phoneNumbers: S.optional(PhoneNumberList),
+    occupations: S.optional(OccupationList),
+    relationshipStatuses: S.optional(RelationshipStatusList),
+    residences: S.optional(ResidenceList),
+    urls: S.optional(UrlList),
+    photos: S.optional(PhotoList),
+    ageRanges: S.optional(AgeRangeTypeList),
+    braggingRights: S.optional(BraggingRightsList),
+    skills: S.optional(SkillList),
+    organizations: S.optional(OrganizationList),
+    userDefined: S.optional(UserDefinedList),
+    imClients: S.optional(ImClientList),
+    memberships: S.optional(MembershipList),
+    clientData: S.optional(ClientDataList),
+    genders: S.optional(GenderList),
+    sipAddresses: S.optional(SipAddressList),
+    metadata: S.optional(PersonMetadata),
+    relations: S.optional(RelationList),
+    events: S.optional(EventList),
+    taglines: S.optional(TaglineList),
+    fileAses: S.optional(FileAsList),
+    interests: S.optional(InterestList),
+    biographies: S.optional(BiographyList),
+    resourceName: S.optional(S.String),
+    birthdays: S.optional(BirthdayList),
+    nicknames: S.optional(NicknameList),
+    names: S.optional(NameList),
+    etag: S.optional(S.String),
+    calendarUrls: S.optional(CalendarUrlList),
+    locations: S.optional(LocationList),
+    relationshipInterests: S.optional(RelationshipInterestList),
+    emailAddresses: S.optional(EmailAddressList),
+    ageRange: S.optional(PersonAgeRangeEnum),
+    addresses: S.optional(AddressList),
+    externalIds: S.optional(ExternalIdList),
+    locales: S.optional(LocaleList),
+    miscKeywords: S.optional(MiscKeywordList),
+  }),
 ).annotate({ identifier: "Person" }) as any as S.Schema<Person>;
 
 /** A wrapper that contains the person data to populate a newly created source. */
@@ -1164,19 +1294,33 @@ export interface ContactToCreate {
   contactPerson?: Person;
 }
 export const ContactToCreate = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "contactPerson": S.optional(Person),
-}),
-).annotate({ identifier: "ContactToCreate" }) as any as S.Schema<ContactToCreate>;
+  S.Struct({
+    contactPerson: S.optional(Person),
+  }),
+).annotate({
+  identifier: "ContactToCreate",
+}) as any as S.Schema<ContactToCreate>;
 
 export type ContactToCreateList = ReadonlyArray<ContactToCreate>;
-export const ContactToCreateList = /*@__PURE__*/ S.Array(ContactToCreate) as any as S.Schema<ContactToCreateList>;
+export const ContactToCreateList = /*@__PURE__*/ S.Array(
+  ContactToCreate,
+) as any as S.Schema<ContactToCreateList>;
 
-export type BatchCreateContactsRequestSourcesItemEnum = "READ_SOURCE_TYPE_UNSPECIFIED" | "READ_SOURCE_TYPE_PROFILE" | "READ_SOURCE_TYPE_CONTACT" | "READ_SOURCE_TYPE_DOMAIN_CONTACT" | "READ_SOURCE_TYPE_OTHER_CONTACT";
+export type BatchCreateContactsRequestSourcesItemEnum =
+  | "READ_SOURCE_TYPE_UNSPECIFIED"
+  | "READ_SOURCE_TYPE_PROFILE"
+  | "READ_SOURCE_TYPE_CONTACT"
+  | "READ_SOURCE_TYPE_DOMAIN_CONTACT"
+  | "READ_SOURCE_TYPE_OTHER_CONTACT";
 export const BatchCreateContactsRequestSourcesItemEnum = /*@__PURE__*/ S.String;
 
-export type BatchCreateContactsRequestSourcesItemEnumList = ReadonlyArray<BatchCreateContactsRequestSourcesItemEnum | (string & {})>;
-export const BatchCreateContactsRequestSourcesItemEnumList = /*@__PURE__*/ S.Array(BatchCreateContactsRequestSourcesItemEnum) as any as S.Schema<BatchCreateContactsRequestSourcesItemEnumList>;
+export type BatchCreateContactsRequestSourcesItemEnumList = ReadonlyArray<
+  BatchCreateContactsRequestSourcesItemEnum | (string & {})
+>;
+export const BatchCreateContactsRequestSourcesItemEnumList =
+  /*@__PURE__*/ S.Array(
+    BatchCreateContactsRequestSourcesItemEnum,
+  ) as any as S.Schema<BatchCreateContactsRequestSourcesItemEnumList>;
 
 /** A request to create a batch of contacts. */
 export interface BatchCreateContactsRequest {
@@ -1188,28 +1332,43 @@ export interface BatchCreateContactsRequest {
   readMask?: string;
 }
 export const BatchCreateContactsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "contacts": S.optional(ContactToCreateList),
-  "sources": S.optional(BatchCreateContactsRequestSourcesItemEnumList),
-  "readMask": S.optional(S.String),
-}),
-).annotate({ identifier: "BatchCreateContactsRequest" }) as any as S.Schema<BatchCreateContactsRequest>;
+  S.Struct({
+    contacts: S.optional(ContactToCreateList),
+    sources: S.optional(BatchCreateContactsRequestSourcesItemEnumList),
+    readMask: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BatchCreateContactsRequest",
+}) as any as S.Schema<BatchCreateContactsRequest>;
 
 export interface BatchCreateContactsPeopleRequest {
   /** Request body */
   body?: BatchCreateContactsRequest;
 }
 export const BatchCreateContactsPeopleRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(BatchCreateContactsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/people:batchCreateContacts","baseUrl":"https://people.googleapis.com/"})),
-).annotate({ identifier: "BatchCreateContactsPeopleRequest" }) as any as S.Schema<BatchCreateContactsPeopleRequest>;
+  S.Struct({
+    body: S.optional(BatchCreateContactsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/people:batchCreateContacts",
+      baseUrl: "https://people.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "BatchCreateContactsPeopleRequest",
+}) as any as S.Schema<BatchCreateContactsPeopleRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -1221,11 +1380,11 @@ export interface Status {
   code?: number;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "details": S.optional(DocumentMapList),
-  "message": S.optional(S.String),
-  "code": S.optional(S.Number),
-}),
+  S.Struct({
+    details: S.optional(DocumentMapList),
+    message: S.optional(S.String),
+    code: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** The response for a single person */
@@ -1240,16 +1399,18 @@ export interface PersonResponse {
   person?: Person;
 }
 export const PersonResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "httpStatusCode": S.optional(S.Number),
-  "requestedResourceName": S.optional(S.String),
-  "status": S.optional(Status),
-  "person": S.optional(Person),
-}),
+  S.Struct({
+    httpStatusCode: S.optional(S.Number),
+    requestedResourceName: S.optional(S.String),
+    status: S.optional(Status),
+    person: S.optional(Person),
+  }),
 ).annotate({ identifier: "PersonResponse" }) as any as S.Schema<PersonResponse>;
 
 export type PersonResponseList = ReadonlyArray<PersonResponse>;
-export const PersonResponseList = /*@__PURE__*/ S.Array(PersonResponse) as any as S.Schema<PersonResponseList>;
+export const PersonResponseList = /*@__PURE__*/ S.Array(
+  PersonResponse,
+) as any as S.Schema<PersonResponseList>;
 
 /** If not successful, returns BatchCreateContactsErrorDetails which contains a list of errors for each invalid contact. The response to a request to create a batch of contacts. */
 export interface BatchCreateContactsResponse {
@@ -1257,10 +1418,12 @@ export interface BatchCreateContactsResponse {
   createdPeople?: PersonResponseList;
 }
 export const BatchCreateContactsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "createdPeople": S.optional(PersonResponseList),
-}),
-).annotate({ identifier: "BatchCreateContactsResponse" }) as any as S.Schema<BatchCreateContactsResponse>;
+  S.Struct({
+    createdPeople: S.optional(PersonResponseList),
+  }),
+).annotate({
+  identifier: "BatchCreateContactsResponse",
+}) as any as S.Schema<BatchCreateContactsResponse>;
 
 /** A request to delete a batch of existing contacts. */
 export interface BatchDeleteContactsRequest {
@@ -1268,26 +1431,36 @@ export interface BatchDeleteContactsRequest {
   resourceNames?: StringList;
 }
 export const BatchDeleteContactsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceNames": S.optional(StringList),
-}),
-).annotate({ identifier: "BatchDeleteContactsRequest" }) as any as S.Schema<BatchDeleteContactsRequest>;
+  S.Struct({
+    resourceNames: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "BatchDeleteContactsRequest",
+}) as any as S.Schema<BatchDeleteContactsRequest>;
 
 export interface BatchDeleteContactsPeopleRequest {
   /** Request body */
   body?: BatchDeleteContactsRequest;
 }
 export const BatchDeleteContactsPeopleRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(BatchDeleteContactsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/people:batchDeleteContacts","baseUrl":"https://people.googleapis.com/"})),
-).annotate({ identifier: "BatchDeleteContactsPeopleRequest" }) as any as S.Schema<BatchDeleteContactsPeopleRequest>;
+  S.Struct({
+    body: S.optional(BatchDeleteContactsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/people:batchDeleteContacts",
+      baseUrl: "https://people.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "BatchDeleteContactsPeopleRequest",
+}) as any as S.Schema<BatchDeleteContactsPeopleRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 export interface BatchGetContactGroupsRequest {
   /** Required. The resource names of the contact groups to get. There is a maximum of 200 resource names. */
@@ -1298,12 +1471,20 @@ export interface BatchGetContactGroupsRequest {
   groupFields?: string;
 }
 export const BatchGetContactGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceNames": S.optional(StringList.pipe(T.Query())),
-  "maxMembers": S.optional(S.Number.pipe(T.Query())),
-  "groupFields": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/contactGroups:batchGet","baseUrl":"https://people.googleapis.com/"})),
-).annotate({ identifier: "BatchGetContactGroupsRequest" }) as any as S.Schema<BatchGetContactGroupsRequest>;
+  S.Struct({
+    resourceNames: S.optional(StringList.pipe(T.Query())),
+    maxMembers: S.optional(S.Number.pipe(T.Query())),
+    groupFields: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/contactGroups:batchGet",
+      baseUrl: "https://people.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "BatchGetContactGroupsRequest",
+}) as any as S.Schema<BatchGetContactGroupsRequest>;
 
 /** The metadata about a contact group. */
 export interface ContactGroupMetadata {
@@ -1313,13 +1494,18 @@ export interface ContactGroupMetadata {
   deleted?: boolean;
 }
 export const ContactGroupMetadata = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateTime": S.optional(S.String),
-  "deleted": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "ContactGroupMetadata" }) as any as S.Schema<ContactGroupMetadata>;
+  S.Struct({
+    updateTime: S.optional(S.String),
+    deleted: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ContactGroupMetadata",
+}) as any as S.Schema<ContactGroupMetadata>;
 
-export type ContactGroupGroupTypeEnum = "GROUP_TYPE_UNSPECIFIED" | "USER_CONTACT_GROUP" | "SYSTEM_CONTACT_GROUP";
+export type ContactGroupGroupTypeEnum =
+  | "GROUP_TYPE_UNSPECIFIED"
+  | "USER_CONTACT_GROUP"
+  | "SYSTEM_CONTACT_GROUP";
 export const ContactGroupGroupTypeEnum = /*@__PURE__*/ S.String;
 
 /** Arbitrary client data that is populated by clients. Duplicate keys and values are allowed. */
@@ -1330,14 +1516,18 @@ export interface GroupClientData {
   value?: string;
 }
 export const GroupClientData = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "key": S.optional(S.String),
-  "value": S.optional(S.String),
-}),
-).annotate({ identifier: "GroupClientData" }) as any as S.Schema<GroupClientData>;
+  S.Struct({
+    key: S.optional(S.String),
+    value: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GroupClientData",
+}) as any as S.Schema<GroupClientData>;
 
 export type GroupClientDataList = ReadonlyArray<GroupClientData>;
-export const GroupClientDataList = /*@__PURE__*/ S.Array(GroupClientData) as any as S.Schema<GroupClientDataList>;
+export const GroupClientDataList = /*@__PURE__*/ S.Array(
+  GroupClientData,
+) as any as S.Schema<GroupClientDataList>;
 
 /** A contact group. */
 export interface ContactGroup {
@@ -1361,17 +1551,17 @@ export interface ContactGroup {
   clientData?: GroupClientDataList;
 }
 export const ContactGroup = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "memberCount": S.optional(S.Number),
-  "metadata": S.optional(ContactGroupMetadata),
-  "groupType": S.optional(ContactGroupGroupTypeEnum),
-  "formattedName": S.optional(S.String),
-  "resourceName": S.optional(S.String),
-  "name": S.optional(S.String),
-  "etag": S.optional(S.String),
-  "memberResourceNames": S.optional(StringList),
-  "clientData": S.optional(GroupClientDataList),
-}),
+  S.Struct({
+    memberCount: S.optional(S.Number),
+    metadata: S.optional(ContactGroupMetadata),
+    groupType: S.optional(ContactGroupGroupTypeEnum),
+    formattedName: S.optional(S.String),
+    resourceName: S.optional(S.String),
+    name: S.optional(S.String),
+    etag: S.optional(S.String),
+    memberResourceNames: S.optional(StringList),
+    clientData: S.optional(GroupClientDataList),
+  }),
 ).annotate({ identifier: "ContactGroup" }) as any as S.Schema<ContactGroup>;
 
 /** The response for a specific contact group. */
@@ -1384,15 +1574,19 @@ export interface ContactGroupResponse {
   contactGroup?: ContactGroup;
 }
 export const ContactGroupResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestedResourceName": S.optional(S.String),
-  "status": S.optional(Status),
-  "contactGroup": S.optional(ContactGroup),
-}),
-).annotate({ identifier: "ContactGroupResponse" }) as any as S.Schema<ContactGroupResponse>;
+  S.Struct({
+    requestedResourceName: S.optional(S.String),
+    status: S.optional(Status),
+    contactGroup: S.optional(ContactGroup),
+  }),
+).annotate({
+  identifier: "ContactGroupResponse",
+}) as any as S.Schema<ContactGroupResponse>;
 
 export type ContactGroupResponseList = ReadonlyArray<ContactGroupResponse>;
-export const ContactGroupResponseList = /*@__PURE__*/ S.Array(ContactGroupResponse) as any as S.Schema<ContactGroupResponseList>;
+export const ContactGroupResponseList = /*@__PURE__*/ S.Array(
+  ContactGroupResponse,
+) as any as S.Schema<ContactGroupResponseList>;
 
 /** The response to a batch get contact groups request. */
 export interface BatchGetContactGroupsResponse {
@@ -1400,19 +1594,34 @@ export interface BatchGetContactGroupsResponse {
   responses?: ContactGroupResponseList;
 }
 export const BatchGetContactGroupsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "responses": S.optional(ContactGroupResponseList),
-}),
-).annotate({ identifier: "BatchGetContactGroupsResponse" }) as any as S.Schema<BatchGetContactGroupsResponse>;
+  S.Struct({
+    responses: S.optional(ContactGroupResponseList),
+  }),
+).annotate({
+  identifier: "BatchGetContactGroupsResponse",
+}) as any as S.Schema<BatchGetContactGroupsResponse>;
 
 export type PersonMap = { [key: string]: Person | undefined };
-export const PersonMap = /*@__PURE__*/ S.Record(S.String, Person) as any as S.Schema<PersonMap>;
+export const PersonMap = /*@__PURE__*/ S.Record(
+  S.String,
+  Person,
+) as any as S.Schema<PersonMap>;
 
-export type BatchUpdateContactsRequestSourcesItemEnum = "READ_SOURCE_TYPE_UNSPECIFIED" | "READ_SOURCE_TYPE_PROFILE" | "READ_SOURCE_TYPE_CONTACT" | "READ_SOURCE_TYPE_DOMAIN_CONTACT" | "READ_SOURCE_TYPE_OTHER_CONTACT";
+export type BatchUpdateContactsRequestSourcesItemEnum =
+  | "READ_SOURCE_TYPE_UNSPECIFIED"
+  | "READ_SOURCE_TYPE_PROFILE"
+  | "READ_SOURCE_TYPE_CONTACT"
+  | "READ_SOURCE_TYPE_DOMAIN_CONTACT"
+  | "READ_SOURCE_TYPE_OTHER_CONTACT";
 export const BatchUpdateContactsRequestSourcesItemEnum = /*@__PURE__*/ S.String;
 
-export type BatchUpdateContactsRequestSourcesItemEnumList = ReadonlyArray<BatchUpdateContactsRequestSourcesItemEnum | (string & {})>;
-export const BatchUpdateContactsRequestSourcesItemEnumList = /*@__PURE__*/ S.Array(BatchUpdateContactsRequestSourcesItemEnum) as any as S.Schema<BatchUpdateContactsRequestSourcesItemEnumList>;
+export type BatchUpdateContactsRequestSourcesItemEnumList = ReadonlyArray<
+  BatchUpdateContactsRequestSourcesItemEnum | (string & {})
+>;
+export const BatchUpdateContactsRequestSourcesItemEnumList =
+  /*@__PURE__*/ S.Array(
+    BatchUpdateContactsRequestSourcesItemEnum,
+  ) as any as S.Schema<BatchUpdateContactsRequestSourcesItemEnumList>;
 
 /** A request to update a batch of contacts. */
 export interface BatchUpdateContactsRequest {
@@ -1426,26 +1635,39 @@ export interface BatchUpdateContactsRequest {
   readMask?: string;
 }
 export const BatchUpdateContactsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "contacts": S.optional(PersonMap),
-  "sources": S.optional(BatchUpdateContactsRequestSourcesItemEnumList),
-  "updateMask": S.optional(S.String),
-  "readMask": S.optional(S.String),
-}),
-).annotate({ identifier: "BatchUpdateContactsRequest" }) as any as S.Schema<BatchUpdateContactsRequest>;
+  S.Struct({
+    contacts: S.optional(PersonMap),
+    sources: S.optional(BatchUpdateContactsRequestSourcesItemEnumList),
+    updateMask: S.optional(S.String),
+    readMask: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BatchUpdateContactsRequest",
+}) as any as S.Schema<BatchUpdateContactsRequest>;
 
 export interface BatchUpdateContactsPeopleRequest {
   /** Request body */
   body?: BatchUpdateContactsRequest;
 }
 export const BatchUpdateContactsPeopleRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(BatchUpdateContactsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/people:batchUpdateContacts","baseUrl":"https://people.googleapis.com/"})),
-).annotate({ identifier: "BatchUpdateContactsPeopleRequest" }) as any as S.Schema<BatchUpdateContactsPeopleRequest>;
+  S.Struct({
+    body: S.optional(BatchUpdateContactsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/people:batchUpdateContacts",
+      baseUrl: "https://people.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "BatchUpdateContactsPeopleRequest",
+}) as any as S.Schema<BatchUpdateContactsPeopleRequest>;
 
 export type PersonResponseMap = { [key: string]: PersonResponse | undefined };
-export const PersonResponseMap = /*@__PURE__*/ S.Record(S.String, PersonResponse) as any as S.Schema<PersonResponseMap>;
+export const PersonResponseMap = /*@__PURE__*/ S.Record(
+  S.String,
+  PersonResponse,
+) as any as S.Schema<PersonResponseMap>;
 
 /** If not successful, returns BatchUpdateContactsErrorDetails, a list of errors corresponding to each contact. The response to a request to update a batch of contacts. */
 export interface BatchUpdateContactsResponse {
@@ -1453,16 +1675,30 @@ export interface BatchUpdateContactsResponse {
   updateResult?: PersonResponseMap;
 }
 export const BatchUpdateContactsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateResult": S.optional(PersonResponseMap),
-}),
-).annotate({ identifier: "BatchUpdateContactsResponse" }) as any as S.Schema<BatchUpdateContactsResponse>;
+  S.Struct({
+    updateResult: S.optional(PersonResponseMap),
+  }),
+).annotate({
+  identifier: "BatchUpdateContactsResponse",
+}) as any as S.Schema<BatchUpdateContactsResponse>;
 
-export type CopyOtherContactToMyContactsGroupRequestSourcesItemEnum = "READ_SOURCE_TYPE_UNSPECIFIED" | "READ_SOURCE_TYPE_PROFILE" | "READ_SOURCE_TYPE_CONTACT" | "READ_SOURCE_TYPE_DOMAIN_CONTACT" | "READ_SOURCE_TYPE_OTHER_CONTACT";
-export const CopyOtherContactToMyContactsGroupRequestSourcesItemEnum = /*@__PURE__*/ S.String;
+export type CopyOtherContactToMyContactsGroupRequestSourcesItemEnum =
+  | "READ_SOURCE_TYPE_UNSPECIFIED"
+  | "READ_SOURCE_TYPE_PROFILE"
+  | "READ_SOURCE_TYPE_CONTACT"
+  | "READ_SOURCE_TYPE_DOMAIN_CONTACT"
+  | "READ_SOURCE_TYPE_OTHER_CONTACT";
+export const CopyOtherContactToMyContactsGroupRequestSourcesItemEnum =
+  /*@__PURE__*/ S.String;
 
-export type CopyOtherContactToMyContactsGroupRequestSourcesItemEnumList = ReadonlyArray<CopyOtherContactToMyContactsGroupRequestSourcesItemEnum | (string & {})>;
-export const CopyOtherContactToMyContactsGroupRequestSourcesItemEnumList = /*@__PURE__*/ S.Array(CopyOtherContactToMyContactsGroupRequestSourcesItemEnum) as any as S.Schema<CopyOtherContactToMyContactsGroupRequestSourcesItemEnumList>;
+export type CopyOtherContactToMyContactsGroupRequestSourcesItemEnumList =
+  ReadonlyArray<
+    CopyOtherContactToMyContactsGroupRequestSourcesItemEnum | (string & {})
+  >;
+export const CopyOtherContactToMyContactsGroupRequestSourcesItemEnumList =
+  /*@__PURE__*/ S.Array(
+    CopyOtherContactToMyContactsGroupRequestSourcesItemEnum,
+  ) as any as S.Schema<CopyOtherContactToMyContactsGroupRequestSourcesItemEnumList>;
 
 /** A request to copy an "Other contact" to my contacts group. */
 export interface CopyOtherContactToMyContactsGroupRequest {
@@ -1473,13 +1709,18 @@ export interface CopyOtherContactToMyContactsGroupRequest {
   /** Optional. A field mask to restrict which fields on the person are returned. Multiple fields can be specified by separating them with commas. Defaults to the copy mask with metadata and membership fields if not set. Valid values are: * addresses * ageRanges * biographies * birthdays * calendarUrls * clientData * coverPhotos * emailAddresses * events * externalIds * genders * imClients * interests * locales * locations * memberships * metadata * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers * photos * relations * sipAddresses * skills * urls * userDefined */
   readMask?: string;
 }
-export const CopyOtherContactToMyContactsGroupRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "copyMask": S.optional(S.String),
-  "sources": S.optional(CopyOtherContactToMyContactsGroupRequestSourcesItemEnumList),
-  "readMask": S.optional(S.String),
-}),
-).annotate({ identifier: "CopyOtherContactToMyContactsGroupRequest" }) as any as S.Schema<CopyOtherContactToMyContactsGroupRequest>;
+export const CopyOtherContactToMyContactsGroupRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      copyMask: S.optional(S.String),
+      sources: S.optional(
+        CopyOtherContactToMyContactsGroupRequestSourcesItemEnumList,
+      ),
+      readMask: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "CopyOtherContactToMyContactsGroupRequest",
+}) as any as S.Schema<CopyOtherContactToMyContactsGroupRequest>;
 
 export interface CopyOtherContactToMyContactsGroupOtherContactsRequest {
   /** Required. The resource name of the "Other contact" to copy. */
@@ -1487,12 +1728,23 @@ export interface CopyOtherContactToMyContactsGroupOtherContactsRequest {
   /** Request body */
   body?: CopyOtherContactToMyContactsGroupRequest;
 }
-export const CopyOtherContactToMyContactsGroupOtherContactsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceName": S.String.pipe(T.Label()),
-  "body": S.optional(CopyOtherContactToMyContactsGroupRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resourceName}:copyOtherContactToMyContactsGroup","baseUrl":"https://people.googleapis.com/"})),
-).annotate({ identifier: "CopyOtherContactToMyContactsGroupOtherContactsRequest" }) as any as S.Schema<CopyOtherContactToMyContactsGroupOtherContactsRequest>;
+export const CopyOtherContactToMyContactsGroupOtherContactsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resourceName: S.String.pipe(T.Label()),
+      body: S.optional(
+        CopyOtherContactToMyContactsGroupRequest.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+resourceName}:copyOtherContactToMyContactsGroup",
+        baseUrl: "https://people.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CopyOtherContactToMyContactsGroupOtherContactsRequest",
+  }) as any as S.Schema<CopyOtherContactToMyContactsGroupOtherContactsRequest>;
 
 /** A request to create a new contact group. */
 export interface CreateContactGroupRequest {
@@ -1502,27 +1754,46 @@ export interface CreateContactGroupRequest {
   readGroupFields?: string;
 }
 export const CreateContactGroupRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "contactGroup": S.optional(ContactGroup),
-  "readGroupFields": S.optional(S.String),
-}),
-).annotate({ identifier: "CreateContactGroupRequest" }) as any as S.Schema<CreateContactGroupRequest>;
+  S.Struct({
+    contactGroup: S.optional(ContactGroup),
+    readGroupFields: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateContactGroupRequest",
+}) as any as S.Schema<CreateContactGroupRequest>;
 
 export interface CreateContactGroupsRequest {
   /** Request body */
   body?: CreateContactGroupRequest;
 }
 export const CreateContactGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(CreateContactGroupRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/contactGroups","baseUrl":"https://people.googleapis.com/"})),
-).annotate({ identifier: "CreateContactGroupsRequest" }) as any as S.Schema<CreateContactGroupsRequest>;
+  S.Struct({
+    body: S.optional(CreateContactGroupRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/contactGroups",
+      baseUrl: "https://people.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateContactGroupsRequest",
+}) as any as S.Schema<CreateContactGroupsRequest>;
 
-export type CreateContactPeopleSourcesEnum = "READ_SOURCE_TYPE_UNSPECIFIED" | "READ_SOURCE_TYPE_PROFILE" | "READ_SOURCE_TYPE_CONTACT" | "READ_SOURCE_TYPE_DOMAIN_CONTACT" | "READ_SOURCE_TYPE_OTHER_CONTACT";
+export type CreateContactPeopleSourcesEnum =
+  | "READ_SOURCE_TYPE_UNSPECIFIED"
+  | "READ_SOURCE_TYPE_PROFILE"
+  | "READ_SOURCE_TYPE_CONTACT"
+  | "READ_SOURCE_TYPE_DOMAIN_CONTACT"
+  | "READ_SOURCE_TYPE_OTHER_CONTACT";
 export const CreateContactPeopleSourcesEnum = /*@__PURE__*/ S.String;
 
-export type CreateContactPeopleSourcesEnumList = ReadonlyArray<CreateContactPeopleSourcesEnum | (string & {})>;
-export const CreateContactPeopleSourcesEnumList = /*@__PURE__*/ S.Array(CreateContactPeopleSourcesEnum) as any as S.Schema<CreateContactPeopleSourcesEnumList>;
+export type CreateContactPeopleSourcesEnumList = ReadonlyArray<
+  CreateContactPeopleSourcesEnum | (string & {})
+>;
+export const CreateContactPeopleSourcesEnumList = /*@__PURE__*/ S.Array(
+  CreateContactPeopleSourcesEnum,
+) as any as S.Schema<CreateContactPeopleSourcesEnumList>;
 
 export interface CreateContactPeopleRequest {
   /** Required. A field mask to restrict which fields on each person are returned. Multiple fields can be specified by separating them with commas. Defaults to all fields if not set. Valid values are: * addresses * ageRanges * biographies * birthdays * calendarUrls * clientData * coverPhotos * emailAddresses * events * externalIds * genders * imClients * interests * locales * locations * memberships * metadata * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers * photos * relations * sipAddresses * skills * urls * userDefined */
@@ -1533,12 +1804,20 @@ export interface CreateContactPeopleRequest {
   body?: Person;
 }
 export const CreateContactPeopleRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "personFields": S.optional(S.String.pipe(T.Query())),
-  "sources": S.optional(CreateContactPeopleSourcesEnumList.pipe(T.Query())),
-  "body": S.optional(Person.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/people:createContact","baseUrl":"https://people.googleapis.com/"})),
-).annotate({ identifier: "CreateContactPeopleRequest" }) as any as S.Schema<CreateContactPeopleRequest>;
+  S.Struct({
+    personFields: S.optional(S.String.pipe(T.Query())),
+    sources: S.optional(CreateContactPeopleSourcesEnumList.pipe(T.Query())),
+    body: S.optional(Person.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/people:createContact",
+      baseUrl: "https://people.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateContactPeopleRequest",
+}) as any as S.Schema<CreateContactPeopleRequest>;
 
 export interface DeleteContactGroupsRequest {
   /** Required. The resource name of the contact group to delete. */
@@ -1547,27 +1826,52 @@ export interface DeleteContactGroupsRequest {
   deleteContacts?: boolean;
 }
 export const DeleteContactGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceName": S.String.pipe(T.Label()),
-  "deleteContacts": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+resourceName}","baseUrl":"https://people.googleapis.com/"})),
-).annotate({ identifier: "DeleteContactGroupsRequest" }) as any as S.Schema<DeleteContactGroupsRequest>;
+  S.Struct({
+    resourceName: S.String.pipe(T.Label()),
+    deleteContacts: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+resourceName}",
+      baseUrl: "https://people.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteContactGroupsRequest",
+}) as any as S.Schema<DeleteContactGroupsRequest>;
 
 export interface DeleteContactPeopleRequest {
   /** Required. The resource name of the contact to delete. */
   resourceName: string;
 }
 export const DeleteContactPeopleRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceName": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+resourceName}:deleteContact","baseUrl":"https://people.googleapis.com/"})),
-).annotate({ identifier: "DeleteContactPeopleRequest" }) as any as S.Schema<DeleteContactPeopleRequest>;
+  S.Struct({
+    resourceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+resourceName}:deleteContact",
+      baseUrl: "https://people.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteContactPeopleRequest",
+}) as any as S.Schema<DeleteContactPeopleRequest>;
 
-export type DeleteContactPhotoPeopleSourcesEnum = "READ_SOURCE_TYPE_UNSPECIFIED" | "READ_SOURCE_TYPE_PROFILE" | "READ_SOURCE_TYPE_CONTACT" | "READ_SOURCE_TYPE_DOMAIN_CONTACT" | "READ_SOURCE_TYPE_OTHER_CONTACT";
+export type DeleteContactPhotoPeopleSourcesEnum =
+  | "READ_SOURCE_TYPE_UNSPECIFIED"
+  | "READ_SOURCE_TYPE_PROFILE"
+  | "READ_SOURCE_TYPE_CONTACT"
+  | "READ_SOURCE_TYPE_DOMAIN_CONTACT"
+  | "READ_SOURCE_TYPE_OTHER_CONTACT";
 export const DeleteContactPhotoPeopleSourcesEnum = /*@__PURE__*/ S.String;
 
-export type DeleteContactPhotoPeopleSourcesEnumList = ReadonlyArray<DeleteContactPhotoPeopleSourcesEnum | (string & {})>;
-export const DeleteContactPhotoPeopleSourcesEnumList = /*@__PURE__*/ S.Array(DeleteContactPhotoPeopleSourcesEnum) as any as S.Schema<DeleteContactPhotoPeopleSourcesEnumList>;
+export type DeleteContactPhotoPeopleSourcesEnumList = ReadonlyArray<
+  DeleteContactPhotoPeopleSourcesEnum | (string & {})
+>;
+export const DeleteContactPhotoPeopleSourcesEnumList = /*@__PURE__*/ S.Array(
+  DeleteContactPhotoPeopleSourcesEnum,
+) as any as S.Schema<DeleteContactPhotoPeopleSourcesEnumList>;
 
 export interface DeleteContactPhotoPeopleRequest {
   /** Optional. A field mask to restrict which fields on the person are returned. Multiple fields can be specified by separating them with commas. Defaults to empty if not set, which will skip the post mutate get. Valid values are: * addresses * ageRanges * biographies * birthdays * calendarUrls * clientData * coverPhotos * emailAddresses * events * externalIds * genders * imClients * interests * locales * locations * memberships * metadata * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers * photos * relations * sipAddresses * skills * urls * userDefined */
@@ -1578,12 +1882,22 @@ export interface DeleteContactPhotoPeopleRequest {
   resourceName: string;
 }
 export const DeleteContactPhotoPeopleRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "personFields": S.optional(S.String.pipe(T.Query())),
-  "sources": S.optional(DeleteContactPhotoPeopleSourcesEnumList.pipe(T.Query())),
-  "resourceName": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+resourceName}:deleteContactPhoto","baseUrl":"https://people.googleapis.com/"})),
-).annotate({ identifier: "DeleteContactPhotoPeopleRequest" }) as any as S.Schema<DeleteContactPhotoPeopleRequest>;
+  S.Struct({
+    personFields: S.optional(S.String.pipe(T.Query())),
+    sources: S.optional(
+      DeleteContactPhotoPeopleSourcesEnumList.pipe(T.Query()),
+    ),
+    resourceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+resourceName}:deleteContactPhoto",
+      baseUrl: "https://people.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteContactPhotoPeopleRequest",
+}) as any as S.Schema<DeleteContactPhotoPeopleRequest>;
 
 /** The response for deleting a contact's photo. */
 export interface DeleteContactPhotoResponse {
@@ -1591,16 +1905,27 @@ export interface DeleteContactPhotoResponse {
   person?: Person;
 }
 export const DeleteContactPhotoResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "person": S.optional(Person),
-}),
-).annotate({ identifier: "DeleteContactPhotoResponse" }) as any as S.Schema<DeleteContactPhotoResponse>;
+  S.Struct({
+    person: S.optional(Person),
+  }),
+).annotate({
+  identifier: "DeleteContactPhotoResponse",
+}) as any as S.Schema<DeleteContactPhotoResponse>;
 
-export type GetBatchGetPeopleSourcesEnum = "READ_SOURCE_TYPE_UNSPECIFIED" | "READ_SOURCE_TYPE_PROFILE" | "READ_SOURCE_TYPE_CONTACT" | "READ_SOURCE_TYPE_DOMAIN_CONTACT" | "READ_SOURCE_TYPE_OTHER_CONTACT";
+export type GetBatchGetPeopleSourcesEnum =
+  | "READ_SOURCE_TYPE_UNSPECIFIED"
+  | "READ_SOURCE_TYPE_PROFILE"
+  | "READ_SOURCE_TYPE_CONTACT"
+  | "READ_SOURCE_TYPE_DOMAIN_CONTACT"
+  | "READ_SOURCE_TYPE_OTHER_CONTACT";
 export const GetBatchGetPeopleSourcesEnum = /*@__PURE__*/ S.String;
 
-export type GetBatchGetPeopleSourcesEnumList = ReadonlyArray<GetBatchGetPeopleSourcesEnum | (string & {})>;
-export const GetBatchGetPeopleSourcesEnumList = /*@__PURE__*/ S.Array(GetBatchGetPeopleSourcesEnum) as any as S.Schema<GetBatchGetPeopleSourcesEnumList>;
+export type GetBatchGetPeopleSourcesEnumList = ReadonlyArray<
+  GetBatchGetPeopleSourcesEnum | (string & {})
+>;
+export const GetBatchGetPeopleSourcesEnumList = /*@__PURE__*/ S.Array(
+  GetBatchGetPeopleSourcesEnum,
+) as any as S.Schema<GetBatchGetPeopleSourcesEnumList>;
 
 export interface GetBatchGetPeopleRequest {
   /** Required. A field mask to restrict which fields on each person are returned. Multiple fields can be specified by separating them with commas. Valid values are: * addresses * ageRanges * biographies * birthdays * calendarUrls * clientData * coverPhotos * emailAddresses * events * externalIds * genders * imClients * interests * locales * locations * memberships * metadata * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers * photos * relations * sipAddresses * skills * urls * userDefined */
@@ -1613,13 +1938,21 @@ export interface GetBatchGetPeopleRequest {
   "requestMask.includeField"?: string;
 }
 export const GetBatchGetPeopleRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "personFields": S.optional(S.String.pipe(T.Query())),
-  "sources": S.optional(GetBatchGetPeopleSourcesEnumList.pipe(T.Query())),
-  "resourceNames": S.optional(StringList.pipe(T.Query())),
-  "requestMask.includeField": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/people:batchGet","baseUrl":"https://people.googleapis.com/"})),
-).annotate({ identifier: "GetBatchGetPeopleRequest" }) as any as S.Schema<GetBatchGetPeopleRequest>;
+  S.Struct({
+    personFields: S.optional(S.String.pipe(T.Query())),
+    sources: S.optional(GetBatchGetPeopleSourcesEnumList.pipe(T.Query())),
+    resourceNames: S.optional(StringList.pipe(T.Query())),
+    "requestMask.includeField": S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/people:batchGet",
+      baseUrl: "https://people.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetBatchGetPeopleRequest",
+}) as any as S.Schema<GetBatchGetPeopleRequest>;
 
 /** The response to a get request for a list of people by resource name. */
 export interface GetPeopleResponse {
@@ -1627,10 +1960,12 @@ export interface GetPeopleResponse {
   responses?: PersonResponseList;
 }
 export const GetPeopleResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "responses": S.optional(PersonResponseList),
-}),
-).annotate({ identifier: "GetPeopleResponse" }) as any as S.Schema<GetPeopleResponse>;
+  S.Struct({
+    responses: S.optional(PersonResponseList),
+  }),
+).annotate({
+  identifier: "GetPeopleResponse",
+}) as any as S.Schema<GetPeopleResponse>;
 
 export interface GetContactGroupsRequest {
   /** Required. The resource name of the contact group to get. */
@@ -1641,18 +1976,35 @@ export interface GetContactGroupsRequest {
   maxMembers?: number;
 }
 export const GetContactGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceName": S.String.pipe(T.Label()),
-  "groupFields": S.optional(S.String.pipe(T.Query())),
-  "maxMembers": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+resourceName}","baseUrl":"https://people.googleapis.com/"})),
-).annotate({ identifier: "GetContactGroupsRequest" }) as any as S.Schema<GetContactGroupsRequest>;
+  S.Struct({
+    resourceName: S.String.pipe(T.Label()),
+    groupFields: S.optional(S.String.pipe(T.Query())),
+    maxMembers: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+resourceName}",
+      baseUrl: "https://people.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetContactGroupsRequest",
+}) as any as S.Schema<GetContactGroupsRequest>;
 
-export type GetPeopleSourcesEnum = "READ_SOURCE_TYPE_UNSPECIFIED" | "READ_SOURCE_TYPE_PROFILE" | "READ_SOURCE_TYPE_CONTACT" | "READ_SOURCE_TYPE_DOMAIN_CONTACT" | "READ_SOURCE_TYPE_OTHER_CONTACT";
+export type GetPeopleSourcesEnum =
+  | "READ_SOURCE_TYPE_UNSPECIFIED"
+  | "READ_SOURCE_TYPE_PROFILE"
+  | "READ_SOURCE_TYPE_CONTACT"
+  | "READ_SOURCE_TYPE_DOMAIN_CONTACT"
+  | "READ_SOURCE_TYPE_OTHER_CONTACT";
 export const GetPeopleSourcesEnum = /*@__PURE__*/ S.String;
 
-export type GetPeopleSourcesEnumList = ReadonlyArray<GetPeopleSourcesEnum | (string & {})>;
-export const GetPeopleSourcesEnumList = /*@__PURE__*/ S.Array(GetPeopleSourcesEnum) as any as S.Schema<GetPeopleSourcesEnumList>;
+export type GetPeopleSourcesEnumList = ReadonlyArray<
+  GetPeopleSourcesEnum | (string & {})
+>;
+export const GetPeopleSourcesEnumList = /*@__PURE__*/ S.Array(
+  GetPeopleSourcesEnum,
+) as any as S.Schema<GetPeopleSourcesEnumList>;
 
 export interface GetPeopleRequest {
   /** Required. Comma-separated list of person fields to be included in the response. Each path should start with `person.`: for example, `person.names` or `person.photos`. */
@@ -1665,13 +2017,21 @@ export interface GetPeopleRequest {
   sources?: GetPeopleSourcesEnumList;
 }
 export const GetPeopleRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestMask.includeField": S.optional(S.String.pipe(T.Query())),
-  "resourceName": S.String.pipe(T.Label()),
-  "personFields": S.optional(S.String.pipe(T.Query())),
-  "sources": S.optional(GetPeopleSourcesEnumList.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+resourceName}","baseUrl":"https://people.googleapis.com/"})),
-).annotate({ identifier: "GetPeopleRequest" }) as any as S.Schema<GetPeopleRequest>;
+  S.Struct({
+    "requestMask.includeField": S.optional(S.String.pipe(T.Query())),
+    resourceName: S.String.pipe(T.Label()),
+    personFields: S.optional(S.String.pipe(T.Query())),
+    sources: S.optional(GetPeopleSourcesEnumList.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+resourceName}",
+      baseUrl: "https://people.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetPeopleRequest",
+}) as any as S.Schema<GetPeopleRequest>;
 
 export interface ListContactGroupsRequest {
   /** Optional. The next_page_token value returned from a previous call to [ListContactGroups](/people/api/rest/v1/contactgroups/list). Requests the next page of resources. */
@@ -1684,16 +2044,26 @@ export interface ListContactGroupsRequest {
   groupFields?: string;
 }
 export const ListContactGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "syncToken": S.optional(S.String.pipe(T.Query())),
-  "groupFields": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/contactGroups","baseUrl":"https://people.googleapis.com/"})),
-).annotate({ identifier: "ListContactGroupsRequest" }) as any as S.Schema<ListContactGroupsRequest>;
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    syncToken: S.optional(S.String.pipe(T.Query())),
+    groupFields: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/contactGroups",
+      baseUrl: "https://people.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListContactGroupsRequest",
+}) as any as S.Schema<ListContactGroupsRequest>;
 
 export type ContactGroupList = ReadonlyArray<ContactGroup>;
-export const ContactGroupList = /*@__PURE__*/ S.Array(ContactGroup) as any as S.Schema<ContactGroupList>;
+export const ContactGroupList = /*@__PURE__*/ S.Array(
+  ContactGroup,
+) as any as S.Schema<ContactGroupList>;
 
 /** The response to a list contact groups request. */
 export interface ListContactGroupsResponse {
@@ -1707,25 +2077,41 @@ export interface ListContactGroupsResponse {
   nextPageToken?: string;
 }
 export const ListContactGroupsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextSyncToken": S.optional(S.String),
-  "contactGroups": S.optional(ContactGroupList),
-  "totalItems": S.optional(S.Number),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListContactGroupsResponse" }) as any as S.Schema<ListContactGroupsResponse>;
+  S.Struct({
+    nextSyncToken: S.optional(S.String),
+    contactGroups: S.optional(ContactGroupList),
+    totalItems: S.optional(S.Number),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListContactGroupsResponse",
+}) as any as S.Schema<ListContactGroupsResponse>;
 
-export type ListDirectoryPeoplePeopleSourcesEnum = "DIRECTORY_SOURCE_TYPE_UNSPECIFIED" | "DIRECTORY_SOURCE_TYPE_DOMAIN_CONTACT" | "DIRECTORY_SOURCE_TYPE_DOMAIN_PROFILE";
+export type ListDirectoryPeoplePeopleSourcesEnum =
+  | "DIRECTORY_SOURCE_TYPE_UNSPECIFIED"
+  | "DIRECTORY_SOURCE_TYPE_DOMAIN_CONTACT"
+  | "DIRECTORY_SOURCE_TYPE_DOMAIN_PROFILE";
 export const ListDirectoryPeoplePeopleSourcesEnum = /*@__PURE__*/ S.String;
 
-export type ListDirectoryPeoplePeopleSourcesEnumList = ReadonlyArray<ListDirectoryPeoplePeopleSourcesEnum | (string & {})>;
-export const ListDirectoryPeoplePeopleSourcesEnumList = /*@__PURE__*/ S.Array(ListDirectoryPeoplePeopleSourcesEnum) as any as S.Schema<ListDirectoryPeoplePeopleSourcesEnumList>;
+export type ListDirectoryPeoplePeopleSourcesEnumList = ReadonlyArray<
+  ListDirectoryPeoplePeopleSourcesEnum | (string & {})
+>;
+export const ListDirectoryPeoplePeopleSourcesEnumList = /*@__PURE__*/ S.Array(
+  ListDirectoryPeoplePeopleSourcesEnum,
+) as any as S.Schema<ListDirectoryPeoplePeopleSourcesEnumList>;
 
-export type ListDirectoryPeoplePeopleMergeSourcesEnum = "DIRECTORY_MERGE_SOURCE_TYPE_UNSPECIFIED" | "DIRECTORY_MERGE_SOURCE_TYPE_CONTACT";
+export type ListDirectoryPeoplePeopleMergeSourcesEnum =
+  | "DIRECTORY_MERGE_SOURCE_TYPE_UNSPECIFIED"
+  | "DIRECTORY_MERGE_SOURCE_TYPE_CONTACT";
 export const ListDirectoryPeoplePeopleMergeSourcesEnum = /*@__PURE__*/ S.String;
 
-export type ListDirectoryPeoplePeopleMergeSourcesEnumList = ReadonlyArray<ListDirectoryPeoplePeopleMergeSourcesEnum | (string & {})>;
-export const ListDirectoryPeoplePeopleMergeSourcesEnumList = /*@__PURE__*/ S.Array(ListDirectoryPeoplePeopleMergeSourcesEnum) as any as S.Schema<ListDirectoryPeoplePeopleMergeSourcesEnumList>;
+export type ListDirectoryPeoplePeopleMergeSourcesEnumList = ReadonlyArray<
+  ListDirectoryPeoplePeopleMergeSourcesEnum | (string & {})
+>;
+export const ListDirectoryPeoplePeopleMergeSourcesEnumList =
+  /*@__PURE__*/ S.Array(
+    ListDirectoryPeoplePeopleMergeSourcesEnum,
+  ) as any as S.Schema<ListDirectoryPeoplePeopleMergeSourcesEnumList>;
 
 export interface ListDirectoryPeoplePeopleRequest {
   /** Optional. Whether the response should return `next_sync_token`. It can be used to get incremental changes since the last request by setting it on the request `sync_token`. More details about sync behavior at `people.listDirectoryPeople`. */
@@ -1744,19 +2130,33 @@ export interface ListDirectoryPeoplePeopleRequest {
   pageToken?: string;
 }
 export const ListDirectoryPeoplePeopleRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestSyncToken": S.optional(S.Boolean.pipe(T.Query())),
-  "readMask": S.optional(S.String.pipe(T.Query())),
-  "syncToken": S.optional(S.String.pipe(T.Query())),
-  "sources": S.optional(ListDirectoryPeoplePeopleSourcesEnumList.pipe(T.Query())),
-  "mergeSources": S.optional(ListDirectoryPeoplePeopleMergeSourcesEnumList.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/people:listDirectoryPeople","baseUrl":"https://people.googleapis.com/"})),
-).annotate({ identifier: "ListDirectoryPeoplePeopleRequest" }) as any as S.Schema<ListDirectoryPeoplePeopleRequest>;
+  S.Struct({
+    requestSyncToken: S.optional(S.Boolean.pipe(T.Query())),
+    readMask: S.optional(S.String.pipe(T.Query())),
+    syncToken: S.optional(S.String.pipe(T.Query())),
+    sources: S.optional(
+      ListDirectoryPeoplePeopleSourcesEnumList.pipe(T.Query()),
+    ),
+    mergeSources: S.optional(
+      ListDirectoryPeoplePeopleMergeSourcesEnumList.pipe(T.Query()),
+    ),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/people:listDirectoryPeople",
+      baseUrl: "https://people.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListDirectoryPeoplePeopleRequest",
+}) as any as S.Schema<ListDirectoryPeoplePeopleRequest>;
 
 export type PersonList = ReadonlyArray<Person>;
-export const PersonList = /*@__PURE__*/ S.Array(Person) as any as S.Schema<PersonList>;
+export const PersonList = /*@__PURE__*/ S.Array(
+  Person,
+) as any as S.Schema<PersonList>;
 
 /** The response to a request for the authenticated user's domain directory. */
 export interface ListDirectoryPeopleResponse {
@@ -1768,18 +2168,29 @@ export interface ListDirectoryPeopleResponse {
   nextPageToken?: string;
 }
 export const ListDirectoryPeopleResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextSyncToken": S.optional(S.String),
-  "people": S.optional(PersonList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListDirectoryPeopleResponse" }) as any as S.Schema<ListDirectoryPeopleResponse>;
+  S.Struct({
+    nextSyncToken: S.optional(S.String),
+    people: S.optional(PersonList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListDirectoryPeopleResponse",
+}) as any as S.Schema<ListDirectoryPeopleResponse>;
 
-export type ListOtherContactsSourcesEnum = "READ_SOURCE_TYPE_UNSPECIFIED" | "READ_SOURCE_TYPE_PROFILE" | "READ_SOURCE_TYPE_CONTACT" | "READ_SOURCE_TYPE_DOMAIN_CONTACT" | "READ_SOURCE_TYPE_OTHER_CONTACT";
+export type ListOtherContactsSourcesEnum =
+  | "READ_SOURCE_TYPE_UNSPECIFIED"
+  | "READ_SOURCE_TYPE_PROFILE"
+  | "READ_SOURCE_TYPE_CONTACT"
+  | "READ_SOURCE_TYPE_DOMAIN_CONTACT"
+  | "READ_SOURCE_TYPE_OTHER_CONTACT";
 export const ListOtherContactsSourcesEnum = /*@__PURE__*/ S.String;
 
-export type ListOtherContactsSourcesEnumList = ReadonlyArray<ListOtherContactsSourcesEnum | (string & {})>;
-export const ListOtherContactsSourcesEnumList = /*@__PURE__*/ S.Array(ListOtherContactsSourcesEnum) as any as S.Schema<ListOtherContactsSourcesEnumList>;
+export type ListOtherContactsSourcesEnumList = ReadonlyArray<
+  ListOtherContactsSourcesEnum | (string & {})
+>;
+export const ListOtherContactsSourcesEnumList = /*@__PURE__*/ S.Array(
+  ListOtherContactsSourcesEnum,
+) as any as S.Schema<ListOtherContactsSourcesEnumList>;
 
 export interface ListOtherContactsRequest {
   /** Optional. A page token, received from a previous response `next_page_token`. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `otherContacts.list` must match the first call that provided the page token. */
@@ -1796,15 +2207,23 @@ export interface ListOtherContactsRequest {
   sources?: ListOtherContactsSourcesEnumList;
 }
 export const ListOtherContactsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "requestSyncToken": S.optional(S.Boolean.pipe(T.Query())),
-  "syncToken": S.optional(S.String.pipe(T.Query())),
-  "readMask": S.optional(S.String.pipe(T.Query())),
-  "sources": S.optional(ListOtherContactsSourcesEnumList.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/otherContacts","baseUrl":"https://people.googleapis.com/"})),
-).annotate({ identifier: "ListOtherContactsRequest" }) as any as S.Schema<ListOtherContactsRequest>;
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    requestSyncToken: S.optional(S.Boolean.pipe(T.Query())),
+    syncToken: S.optional(S.String.pipe(T.Query())),
+    readMask: S.optional(S.String.pipe(T.Query())),
+    sources: S.optional(ListOtherContactsSourcesEnumList.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/otherContacts",
+      baseUrl: "https://people.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListOtherContactsRequest",
+}) as any as S.Schema<ListOtherContactsRequest>;
 
 /** The response to a request for the authenticated user's "Other contacts". */
 export interface ListOtherContactsResponse {
@@ -1818,22 +2237,37 @@ export interface ListOtherContactsResponse {
   nextPageToken?: string;
 }
 export const ListOtherContactsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextSyncToken": S.optional(S.String),
-  "otherContacts": S.optional(PersonList),
-  "totalSize": S.optional(S.Number),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListOtherContactsResponse" }) as any as S.Schema<ListOtherContactsResponse>;
+  S.Struct({
+    nextSyncToken: S.optional(S.String),
+    otherContacts: S.optional(PersonList),
+    totalSize: S.optional(S.Number),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListOtherContactsResponse",
+}) as any as S.Schema<ListOtherContactsResponse>;
 
-export type ListPeopleConnectionsSortOrderEnum = "LAST_MODIFIED_ASCENDING" | "LAST_MODIFIED_DESCENDING" | "FIRST_NAME_ASCENDING" | "LAST_NAME_ASCENDING";
+export type ListPeopleConnectionsSortOrderEnum =
+  | "LAST_MODIFIED_ASCENDING"
+  | "LAST_MODIFIED_DESCENDING"
+  | "FIRST_NAME_ASCENDING"
+  | "LAST_NAME_ASCENDING";
 export const ListPeopleConnectionsSortOrderEnum = /*@__PURE__*/ S.String;
 
-export type ListPeopleConnectionsSourcesEnum = "READ_SOURCE_TYPE_UNSPECIFIED" | "READ_SOURCE_TYPE_PROFILE" | "READ_SOURCE_TYPE_CONTACT" | "READ_SOURCE_TYPE_DOMAIN_CONTACT" | "READ_SOURCE_TYPE_OTHER_CONTACT";
+export type ListPeopleConnectionsSourcesEnum =
+  | "READ_SOURCE_TYPE_UNSPECIFIED"
+  | "READ_SOURCE_TYPE_PROFILE"
+  | "READ_SOURCE_TYPE_CONTACT"
+  | "READ_SOURCE_TYPE_DOMAIN_CONTACT"
+  | "READ_SOURCE_TYPE_OTHER_CONTACT";
 export const ListPeopleConnectionsSourcesEnum = /*@__PURE__*/ S.String;
 
-export type ListPeopleConnectionsSourcesEnumList = ReadonlyArray<ListPeopleConnectionsSourcesEnum | (string & {})>;
-export const ListPeopleConnectionsSourcesEnumList = /*@__PURE__*/ S.Array(ListPeopleConnectionsSourcesEnum) as any as S.Schema<ListPeopleConnectionsSourcesEnumList>;
+export type ListPeopleConnectionsSourcesEnumList = ReadonlyArray<
+  ListPeopleConnectionsSourcesEnum | (string & {})
+>;
+export const ListPeopleConnectionsSourcesEnumList = /*@__PURE__*/ S.Array(
+  ListPeopleConnectionsSourcesEnum,
+) as any as S.Schema<ListPeopleConnectionsSourcesEnumList>;
 
 export interface ListPeopleConnectionsRequest {
   /** Required. A field mask to restrict which fields on each person are returned. Multiple fields can be specified by separating them with commas. Valid values are: * addresses * ageRanges * biographies * birthdays * calendarUrls * clientData * coverPhotos * emailAddresses * events * externalIds * genders * imClients * interests * locales * locations * memberships * metadata * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers * photos * relations * sipAddresses * skills * urls * userDefined */
@@ -1856,18 +2290,26 @@ export interface ListPeopleConnectionsRequest {
   sources?: ListPeopleConnectionsSourcesEnumList;
 }
 export const ListPeopleConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "personFields": S.optional(S.String.pipe(T.Query())),
-  "requestMask.includeField": S.optional(S.String.pipe(T.Query())),
-  "resourceName": S.String.pipe(T.Label()),
-  "sortOrder": S.optional(ListPeopleConnectionsSortOrderEnum.pipe(T.Query())),
-  "syncToken": S.optional(S.String.pipe(T.Query())),
-  "requestSyncToken": S.optional(S.Boolean.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "sources": S.optional(ListPeopleConnectionsSourcesEnumList.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+resourceName}/connections","baseUrl":"https://people.googleapis.com/"})),
-).annotate({ identifier: "ListPeopleConnectionsRequest" }) as any as S.Schema<ListPeopleConnectionsRequest>;
+  S.Struct({
+    personFields: S.optional(S.String.pipe(T.Query())),
+    "requestMask.includeField": S.optional(S.String.pipe(T.Query())),
+    resourceName: S.String.pipe(T.Label()),
+    sortOrder: S.optional(ListPeopleConnectionsSortOrderEnum.pipe(T.Query())),
+    syncToken: S.optional(S.String.pipe(T.Query())),
+    requestSyncToken: S.optional(S.Boolean.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    sources: S.optional(ListPeopleConnectionsSourcesEnumList.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+resourceName}/connections",
+      baseUrl: "https://people.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListPeopleConnectionsRequest",
+}) as any as S.Schema<ListPeopleConnectionsRequest>;
 
 /** The response to a request for the authenticated user's connections. */
 export interface ListConnectionsResponse {
@@ -1883,14 +2325,16 @@ export interface ListConnectionsResponse {
   totalItems?: number;
 }
 export const ListConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "totalPeople": S.optional(S.Number),
-  "nextPageToken": S.optional(S.String),
-  "connections": S.optional(PersonList),
-  "nextSyncToken": S.optional(S.String),
-  "totalItems": S.optional(S.Number),
-}),
-).annotate({ identifier: "ListConnectionsResponse" }) as any as S.Schema<ListConnectionsResponse>;
+  S.Struct({
+    totalPeople: S.optional(S.Number),
+    nextPageToken: S.optional(S.String),
+    connections: S.optional(PersonList),
+    nextSyncToken: S.optional(S.String),
+    totalItems: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ListConnectionsResponse",
+}) as any as S.Schema<ListConnectionsResponse>;
 
 /** A request to modify an existing contact group's members. Contacts can be removed from any group but they can only be added to a user group or "myContacts" or "starred" system groups. */
 export interface ModifyContactGroupMembersRequest {
@@ -1900,11 +2344,13 @@ export interface ModifyContactGroupMembersRequest {
   resourceNamesToRemove?: StringList;
 }
 export const ModifyContactGroupMembersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceNamesToAdd": S.optional(StringList),
-  "resourceNamesToRemove": S.optional(StringList),
-}),
-).annotate({ identifier: "ModifyContactGroupMembersRequest" }) as any as S.Schema<ModifyContactGroupMembersRequest>;
+  S.Struct({
+    resourceNamesToAdd: S.optional(StringList),
+    resourceNamesToRemove: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ModifyContactGroupMembersRequest",
+}) as any as S.Schema<ModifyContactGroupMembersRequest>;
 
 export interface ModifyContactGroupsMembersRequest {
   /** Required. The resource name of the contact group to modify. */
@@ -1913,11 +2359,19 @@ export interface ModifyContactGroupsMembersRequest {
   body?: ModifyContactGroupMembersRequest;
 }
 export const ModifyContactGroupsMembersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceName": S.String.pipe(T.Label()),
-  "body": S.optional(ModifyContactGroupMembersRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+resourceName}/members:modify","baseUrl":"https://people.googleapis.com/"})),
-).annotate({ identifier: "ModifyContactGroupsMembersRequest" }) as any as S.Schema<ModifyContactGroupsMembersRequest>;
+  S.Struct({
+    resourceName: S.String.pipe(T.Label()),
+    body: S.optional(ModifyContactGroupMembersRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+resourceName}/members:modify",
+      baseUrl: "https://people.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ModifyContactGroupsMembersRequest",
+}) as any as S.Schema<ModifyContactGroupsMembersRequest>;
 
 /** The response to a modify contact group members request. */
 export interface ModifyContactGroupMembersResponse {
@@ -1927,17 +2381,28 @@ export interface ModifyContactGroupMembersResponse {
   canNotRemoveLastContactGroupResourceNames?: StringList;
 }
 export const ModifyContactGroupMembersResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "notFoundResourceNames": S.optional(StringList),
-  "canNotRemoveLastContactGroupResourceNames": S.optional(StringList),
-}),
-).annotate({ identifier: "ModifyContactGroupMembersResponse" }) as any as S.Schema<ModifyContactGroupMembersResponse>;
+  S.Struct({
+    notFoundResourceNames: S.optional(StringList),
+    canNotRemoveLastContactGroupResourceNames: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ModifyContactGroupMembersResponse",
+}) as any as S.Schema<ModifyContactGroupMembersResponse>;
 
-export type SearchContactsPeopleSourcesEnum = "READ_SOURCE_TYPE_UNSPECIFIED" | "READ_SOURCE_TYPE_PROFILE" | "READ_SOURCE_TYPE_CONTACT" | "READ_SOURCE_TYPE_DOMAIN_CONTACT" | "READ_SOURCE_TYPE_OTHER_CONTACT";
+export type SearchContactsPeopleSourcesEnum =
+  | "READ_SOURCE_TYPE_UNSPECIFIED"
+  | "READ_SOURCE_TYPE_PROFILE"
+  | "READ_SOURCE_TYPE_CONTACT"
+  | "READ_SOURCE_TYPE_DOMAIN_CONTACT"
+  | "READ_SOURCE_TYPE_OTHER_CONTACT";
 export const SearchContactsPeopleSourcesEnum = /*@__PURE__*/ S.String;
 
-export type SearchContactsPeopleSourcesEnumList = ReadonlyArray<SearchContactsPeopleSourcesEnum | (string & {})>;
-export const SearchContactsPeopleSourcesEnumList = /*@__PURE__*/ S.Array(SearchContactsPeopleSourcesEnum) as any as S.Schema<SearchContactsPeopleSourcesEnumList>;
+export type SearchContactsPeopleSourcesEnumList = ReadonlyArray<
+  SearchContactsPeopleSourcesEnum | (string & {})
+>;
+export const SearchContactsPeopleSourcesEnumList = /*@__PURE__*/ S.Array(
+  SearchContactsPeopleSourcesEnum,
+) as any as S.Schema<SearchContactsPeopleSourcesEnumList>;
 
 export interface SearchContactsPeopleRequest {
   /** Required. The plain-text query for the request. The query is used to match prefix phrases of the fields on a person. For example, a person with name "foo name" matches queries such as "f", "fo", "foo", "foo n", "nam", etc., but not "oo n". */
@@ -1950,13 +2415,21 @@ export interface SearchContactsPeopleRequest {
   sources?: SearchContactsPeopleSourcesEnumList;
 }
 export const SearchContactsPeopleRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "query": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "readMask": S.optional(S.String.pipe(T.Query())),
-  "sources": S.optional(SearchContactsPeopleSourcesEnumList.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/people:searchContacts","baseUrl":"https://people.googleapis.com/"})),
-).annotate({ identifier: "SearchContactsPeopleRequest" }) as any as S.Schema<SearchContactsPeopleRequest>;
+  S.Struct({
+    query: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    readMask: S.optional(S.String.pipe(T.Query())),
+    sources: S.optional(SearchContactsPeopleSourcesEnumList.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/people:searchContacts",
+      baseUrl: "https://people.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SearchContactsPeopleRequest",
+}) as any as S.Schema<SearchContactsPeopleRequest>;
 
 /** A result of a search query. */
 export interface SearchResult {
@@ -1964,13 +2437,15 @@ export interface SearchResult {
   person?: Person;
 }
 export const SearchResult = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "person": S.optional(Person),
-}),
+  S.Struct({
+    person: S.optional(Person),
+  }),
 ).annotate({ identifier: "SearchResult" }) as any as S.Schema<SearchResult>;
 
 export type SearchResultList = ReadonlyArray<SearchResult>;
-export const SearchResultList = /*@__PURE__*/ S.Array(SearchResult) as any as S.Schema<SearchResultList>;
+export const SearchResultList = /*@__PURE__*/ S.Array(
+  SearchResult,
+) as any as S.Schema<SearchResultList>;
 
 /** The response to a search request for the authenticated user, given a query. */
 export interface SearchResponse {
@@ -1978,22 +2453,37 @@ export interface SearchResponse {
   results?: SearchResultList;
 }
 export const SearchResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "results": S.optional(SearchResultList),
-}),
+  S.Struct({
+    results: S.optional(SearchResultList),
+  }),
 ).annotate({ identifier: "SearchResponse" }) as any as S.Schema<SearchResponse>;
 
-export type SearchDirectoryPeoplePeopleMergeSourcesEnum = "DIRECTORY_MERGE_SOURCE_TYPE_UNSPECIFIED" | "DIRECTORY_MERGE_SOURCE_TYPE_CONTACT";
-export const SearchDirectoryPeoplePeopleMergeSourcesEnum = /*@__PURE__*/ S.String;
+export type SearchDirectoryPeoplePeopleMergeSourcesEnum =
+  | "DIRECTORY_MERGE_SOURCE_TYPE_UNSPECIFIED"
+  | "DIRECTORY_MERGE_SOURCE_TYPE_CONTACT";
+export const SearchDirectoryPeoplePeopleMergeSourcesEnum =
+  /*@__PURE__*/ S.String;
 
-export type SearchDirectoryPeoplePeopleMergeSourcesEnumList = ReadonlyArray<SearchDirectoryPeoplePeopleMergeSourcesEnum | (string & {})>;
-export const SearchDirectoryPeoplePeopleMergeSourcesEnumList = /*@__PURE__*/ S.Array(SearchDirectoryPeoplePeopleMergeSourcesEnum) as any as S.Schema<SearchDirectoryPeoplePeopleMergeSourcesEnumList>;
+export type SearchDirectoryPeoplePeopleMergeSourcesEnumList = ReadonlyArray<
+  SearchDirectoryPeoplePeopleMergeSourcesEnum | (string & {})
+>;
+export const SearchDirectoryPeoplePeopleMergeSourcesEnumList =
+  /*@__PURE__*/ S.Array(
+    SearchDirectoryPeoplePeopleMergeSourcesEnum,
+  ) as any as S.Schema<SearchDirectoryPeoplePeopleMergeSourcesEnumList>;
 
-export type SearchDirectoryPeoplePeopleSourcesEnum = "DIRECTORY_SOURCE_TYPE_UNSPECIFIED" | "DIRECTORY_SOURCE_TYPE_DOMAIN_CONTACT" | "DIRECTORY_SOURCE_TYPE_DOMAIN_PROFILE";
+export type SearchDirectoryPeoplePeopleSourcesEnum =
+  | "DIRECTORY_SOURCE_TYPE_UNSPECIFIED"
+  | "DIRECTORY_SOURCE_TYPE_DOMAIN_CONTACT"
+  | "DIRECTORY_SOURCE_TYPE_DOMAIN_PROFILE";
 export const SearchDirectoryPeoplePeopleSourcesEnum = /*@__PURE__*/ S.String;
 
-export type SearchDirectoryPeoplePeopleSourcesEnumList = ReadonlyArray<SearchDirectoryPeoplePeopleSourcesEnum | (string & {})>;
-export const SearchDirectoryPeoplePeopleSourcesEnumList = /*@__PURE__*/ S.Array(SearchDirectoryPeoplePeopleSourcesEnum) as any as S.Schema<SearchDirectoryPeoplePeopleSourcesEnumList>;
+export type SearchDirectoryPeoplePeopleSourcesEnumList = ReadonlyArray<
+  SearchDirectoryPeoplePeopleSourcesEnum | (string & {})
+>;
+export const SearchDirectoryPeoplePeopleSourcesEnumList = /*@__PURE__*/ S.Array(
+  SearchDirectoryPeoplePeopleSourcesEnum,
+) as any as S.Schema<SearchDirectoryPeoplePeopleSourcesEnumList>;
 
 export interface SearchDirectoryPeoplePeopleRequest {
   /** Optional. The number of people to include in the response. Valid values are between 1 and 500, inclusive. Defaults to 100 if not set or set to 0. */
@@ -2010,15 +2500,27 @@ export interface SearchDirectoryPeoplePeopleRequest {
   query?: string;
 }
 export const SearchDirectoryPeoplePeopleRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "mergeSources": S.optional(SearchDirectoryPeoplePeopleMergeSourcesEnumList.pipe(T.Query())),
-  "sources": S.optional(SearchDirectoryPeoplePeopleSourcesEnumList.pipe(T.Query())),
-  "readMask": S.optional(S.String.pipe(T.Query())),
-  "query": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/people:searchDirectoryPeople","baseUrl":"https://people.googleapis.com/"})),
-).annotate({ identifier: "SearchDirectoryPeoplePeopleRequest" }) as any as S.Schema<SearchDirectoryPeoplePeopleRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    mergeSources: S.optional(
+      SearchDirectoryPeoplePeopleMergeSourcesEnumList.pipe(T.Query()),
+    ),
+    sources: S.optional(
+      SearchDirectoryPeoplePeopleSourcesEnumList.pipe(T.Query()),
+    ),
+    readMask: S.optional(S.String.pipe(T.Query())),
+    query: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/people:searchDirectoryPeople",
+      baseUrl: "https://people.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SearchDirectoryPeoplePeopleRequest",
+}) as any as S.Schema<SearchDirectoryPeoplePeopleRequest>;
 
 /** The response to a request for people in the authenticated user's domain directory that match the specified query. */
 export interface SearchDirectoryPeopleResponse {
@@ -2030,12 +2532,14 @@ export interface SearchDirectoryPeopleResponse {
   totalSize?: number;
 }
 export const SearchDirectoryPeopleResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "people": S.optional(PersonList),
-  "totalSize": S.optional(S.Number),
-}),
-).annotate({ identifier: "SearchDirectoryPeopleResponse" }) as any as S.Schema<SearchDirectoryPeopleResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    people: S.optional(PersonList),
+    totalSize: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "SearchDirectoryPeopleResponse",
+}) as any as S.Schema<SearchDirectoryPeopleResponse>;
 
 export interface SearchOtherContactsRequest {
   /** Required. The plain-text query for the request. The query is used to match prefix phrases of the fields on a person. For example, a person with name "foo name" matches queries such as "f", "fo", "foo", "foo n", "nam", etc., but not "oo n". */
@@ -2046,12 +2550,20 @@ export interface SearchOtherContactsRequest {
   readMask?: string;
 }
 export const SearchOtherContactsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "query": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "readMask": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/otherContacts:search","baseUrl":"https://people.googleapis.com/"})),
-).annotate({ identifier: "SearchOtherContactsRequest" }) as any as S.Schema<SearchOtherContactsRequest>;
+  S.Struct({
+    query: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    readMask: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/otherContacts:search",
+      baseUrl: "https://people.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SearchOtherContactsRequest",
+}) as any as S.Schema<SearchOtherContactsRequest>;
 
 /** A request to update an existing user contact group. All updated fields will be replaced. */
 export interface UpdateContactGroupRequest {
@@ -2063,12 +2575,14 @@ export interface UpdateContactGroupRequest {
   readGroupFields?: string;
 }
 export const UpdateContactGroupRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateGroupFields": S.optional(S.String),
-  "contactGroup": S.optional(ContactGroup),
-  "readGroupFields": S.optional(S.String),
-}),
-).annotate({ identifier: "UpdateContactGroupRequest" }) as any as S.Schema<UpdateContactGroupRequest>;
+  S.Struct({
+    updateGroupFields: S.optional(S.String),
+    contactGroup: S.optional(ContactGroup),
+    readGroupFields: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateContactGroupRequest",
+}) as any as S.Schema<UpdateContactGroupRequest>;
 
 export interface UpdateContactGroupsRequest {
   /** The resource name for the contact group, assigned by the server. An ASCII string, in the form of `contactGroups/{contact_group_id}`. */
@@ -2077,17 +2591,34 @@ export interface UpdateContactGroupsRequest {
   body?: UpdateContactGroupRequest;
 }
 export const UpdateContactGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceName": S.String.pipe(T.Label()),
-  "body": S.optional(UpdateContactGroupRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"v1/{+resourceName}","baseUrl":"https://people.googleapis.com/"})),
-).annotate({ identifier: "UpdateContactGroupsRequest" }) as any as S.Schema<UpdateContactGroupsRequest>;
+  S.Struct({
+    resourceName: S.String.pipe(T.Label()),
+    body: S.optional(UpdateContactGroupRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "v1/{+resourceName}",
+      baseUrl: "https://people.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateContactGroupsRequest",
+}) as any as S.Schema<UpdateContactGroupsRequest>;
 
-export type UpdateContactPeopleSourcesEnum = "READ_SOURCE_TYPE_UNSPECIFIED" | "READ_SOURCE_TYPE_PROFILE" | "READ_SOURCE_TYPE_CONTACT" | "READ_SOURCE_TYPE_DOMAIN_CONTACT" | "READ_SOURCE_TYPE_OTHER_CONTACT";
+export type UpdateContactPeopleSourcesEnum =
+  | "READ_SOURCE_TYPE_UNSPECIFIED"
+  | "READ_SOURCE_TYPE_PROFILE"
+  | "READ_SOURCE_TYPE_CONTACT"
+  | "READ_SOURCE_TYPE_DOMAIN_CONTACT"
+  | "READ_SOURCE_TYPE_OTHER_CONTACT";
 export const UpdateContactPeopleSourcesEnum = /*@__PURE__*/ S.String;
 
-export type UpdateContactPeopleSourcesEnumList = ReadonlyArray<UpdateContactPeopleSourcesEnum | (string & {})>;
-export const UpdateContactPeopleSourcesEnumList = /*@__PURE__*/ S.Array(UpdateContactPeopleSourcesEnum) as any as S.Schema<UpdateContactPeopleSourcesEnumList>;
+export type UpdateContactPeopleSourcesEnumList = ReadonlyArray<
+  UpdateContactPeopleSourcesEnum | (string & {})
+>;
+export const UpdateContactPeopleSourcesEnumList = /*@__PURE__*/ S.Array(
+  UpdateContactPeopleSourcesEnum,
+) as any as S.Schema<UpdateContactPeopleSourcesEnumList>;
 
 export interface UpdateContactPeopleRequest {
   /** Required. A field mask to restrict which fields on the person are updated. Multiple fields can be specified by separating them with commas. All updated fields will be replaced. Valid values are: * addresses * biographies * birthdays * calendarUrls * clientData * emailAddresses * events * externalIds * genders * imClients * interests * locales * locations * memberships * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers * relations * sipAddresses * urls * userDefined */
@@ -2102,20 +2633,38 @@ export interface UpdateContactPeopleRequest {
   body?: Person;
 }
 export const UpdateContactPeopleRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updatePersonFields": S.optional(S.String.pipe(T.Query())),
-  "personFields": S.optional(S.String.pipe(T.Query())),
-  "sources": S.optional(UpdateContactPeopleSourcesEnumList.pipe(T.Query())),
-  "resourceName": S.String.pipe(T.Label()),
-  "body": S.optional(Person.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+resourceName}:updateContact","baseUrl":"https://people.googleapis.com/"})),
-).annotate({ identifier: "UpdateContactPeopleRequest" }) as any as S.Schema<UpdateContactPeopleRequest>;
+  S.Struct({
+    updatePersonFields: S.optional(S.String.pipe(T.Query())),
+    personFields: S.optional(S.String.pipe(T.Query())),
+    sources: S.optional(UpdateContactPeopleSourcesEnumList.pipe(T.Query())),
+    resourceName: S.String.pipe(T.Label()),
+    body: S.optional(Person.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+resourceName}:updateContact",
+      baseUrl: "https://people.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateContactPeopleRequest",
+}) as any as S.Schema<UpdateContactPeopleRequest>;
 
-export type UpdateContactPhotoRequestSourcesItemEnum = "READ_SOURCE_TYPE_UNSPECIFIED" | "READ_SOURCE_TYPE_PROFILE" | "READ_SOURCE_TYPE_CONTACT" | "READ_SOURCE_TYPE_DOMAIN_CONTACT" | "READ_SOURCE_TYPE_OTHER_CONTACT";
+export type UpdateContactPhotoRequestSourcesItemEnum =
+  | "READ_SOURCE_TYPE_UNSPECIFIED"
+  | "READ_SOURCE_TYPE_PROFILE"
+  | "READ_SOURCE_TYPE_CONTACT"
+  | "READ_SOURCE_TYPE_DOMAIN_CONTACT"
+  | "READ_SOURCE_TYPE_OTHER_CONTACT";
 export const UpdateContactPhotoRequestSourcesItemEnum = /*@__PURE__*/ S.String;
 
-export type UpdateContactPhotoRequestSourcesItemEnumList = ReadonlyArray<UpdateContactPhotoRequestSourcesItemEnum | (string & {})>;
-export const UpdateContactPhotoRequestSourcesItemEnumList = /*@__PURE__*/ S.Array(UpdateContactPhotoRequestSourcesItemEnum) as any as S.Schema<UpdateContactPhotoRequestSourcesItemEnumList>;
+export type UpdateContactPhotoRequestSourcesItemEnumList = ReadonlyArray<
+  UpdateContactPhotoRequestSourcesItemEnum | (string & {})
+>;
+export const UpdateContactPhotoRequestSourcesItemEnumList =
+  /*@__PURE__*/ S.Array(
+    UpdateContactPhotoRequestSourcesItemEnum,
+  ) as any as S.Schema<UpdateContactPhotoRequestSourcesItemEnumList>;
 
 /** A request to update an existing contact's photo. All requests must have a valid photo format: JPEG or PNG. */
 export interface UpdateContactPhotoRequest {
@@ -2127,12 +2676,14 @@ export interface UpdateContactPhotoRequest {
   photoBytes?: string;
 }
 export const UpdateContactPhotoRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "personFields": S.optional(S.String),
-  "sources": S.optional(UpdateContactPhotoRequestSourcesItemEnumList),
-  "photoBytes": S.optional(S.String),
-}),
-).annotate({ identifier: "UpdateContactPhotoRequest" }) as any as S.Schema<UpdateContactPhotoRequest>;
+  S.Struct({
+    personFields: S.optional(S.String),
+    sources: S.optional(UpdateContactPhotoRequestSourcesItemEnumList),
+    photoBytes: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateContactPhotoRequest",
+}) as any as S.Schema<UpdateContactPhotoRequest>;
 
 export interface UpdateContactPhotoPeopleRequest {
   /** Required. Person resource name */
@@ -2141,11 +2692,19 @@ export interface UpdateContactPhotoPeopleRequest {
   body?: UpdateContactPhotoRequest;
 }
 export const UpdateContactPhotoPeopleRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceName": S.String.pipe(T.Label()),
-  "body": S.optional(UpdateContactPhotoRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+resourceName}:updateContactPhoto","baseUrl":"https://people.googleapis.com/"})),
-).annotate({ identifier: "UpdateContactPhotoPeopleRequest" }) as any as S.Schema<UpdateContactPhotoPeopleRequest>;
+  S.Struct({
+    resourceName: S.String.pipe(T.Label()),
+    body: S.optional(UpdateContactPhotoRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+resourceName}:updateContactPhoto",
+      baseUrl: "https://people.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateContactPhotoPeopleRequest",
+}) as any as S.Schema<UpdateContactPhotoPeopleRequest>;
 
 /** The response for updating a contact's photo. */
 export interface UpdateContactPhotoResponse {
@@ -2153,12 +2712,19 @@ export interface UpdateContactPhotoResponse {
   person?: Person;
 }
 export const UpdateContactPhotoResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "person": S.optional(Person),
-}),
-).annotate({ identifier: "UpdateContactPhotoResponse" }) as any as S.Schema<UpdateContactPhotoResponse>;
+  S.Struct({
+    person: S.optional(Person),
+  }),
+).annotate({
+  identifier: "UpdateContactPhotoResponse",
+}) as any as S.Schema<UpdateContactPhotoResponse>;
 
-export type BatchCreateContactsPeopleError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type BatchCreateContactsPeopleError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Create a batch of new contacts and return the PersonResponses for the newly Mutate requests for the same user should be sent sequentially to avoid increased latency and failures. */
 export const batchCreateContactsPeople: API.OperationMethod<
   BatchCreateContactsPeopleRequest,
@@ -2173,7 +2739,12 @@ export const batchCreateContactsPeople: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BatchDeleteContactsPeopleError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type BatchDeleteContactsPeopleError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Delete a batch of contacts. Any non-contact data will not be deleted. Mutate requests for the same user should be sent sequentially to avoid increased latency and failures. */
 export const batchDeleteContactsPeople: API.OperationMethod<
   BatchDeleteContactsPeopleRequest,
@@ -2203,7 +2774,12 @@ export const batchGetContactGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BatchUpdateContactsPeopleError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type BatchUpdateContactsPeopleError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update a batch of contacts and return a map of resource names to PersonResponses for the updated contacts. Mutate requests for the same user should be sent sequentially to avoid increased latency and failures. */
 export const batchUpdateContactsPeople: API.OperationMethod<
   BatchUpdateContactsPeopleRequest,
@@ -2218,7 +2794,12 @@ export const batchUpdateContactsPeople: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CopyOtherContactToMyContactsGroupOtherContactsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CopyOtherContactToMyContactsGroupOtherContactsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Copies an "Other contact" to a new contact in the user's "myContacts" group Mutate requests for the same user should be sent sequentially to avoid increased latency and failures. */
 export const copyOtherContactToMyContactsGroupOtherContacts: API.OperationMethod<
   CopyOtherContactToMyContactsGroupOtherContactsRequest,
@@ -2233,7 +2814,12 @@ export const copyOtherContactToMyContactsGroupOtherContacts: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type CreateContactGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateContactGroupsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Create a new contact group owned by the authenticated user. Created contact group names must be unique to the users contact groups. Attempting to create a group with a duplicate name will return a HTTP 409 error. Mutate requests for the same user should be sent sequentially to avoid increased latency and failures. */
 export const createContactGroups: API.OperationMethod<
   CreateContactGroupsRequest,
@@ -2248,7 +2834,12 @@ export const createContactGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateContactPeopleError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateContactPeopleError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Create a new contact and return the person resource for that contact. The request returns a 400 error if more than one field is specified on a field that is a singleton for contact sources: * biographies * birthdays * genders * names Mutate requests for the same user should be sent sequentially to avoid increased latency and failures. */
 export const createContactPeople: API.OperationMethod<
   CreateContactPeopleRequest,
@@ -2263,7 +2854,12 @@ export const createContactPeople: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteContactGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteContactGroupsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Delete an existing contact group owned by the authenticated user by specifying a contact group resource name. Mutate requests for the same user should be sent sequentially to avoid increased latency and failures. */
 export const deleteContactGroups: API.OperationMethod<
   DeleteContactGroupsRequest,
@@ -2278,7 +2874,12 @@ export const deleteContactGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteContactPeopleError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteContactPeopleError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Delete a contact person. Any non-contact data will not be deleted. Mutate requests for the same user should be sent sequentially to avoid increased latency and failures. */
 export const deleteContactPeople: API.OperationMethod<
   DeleteContactPeopleRequest,
@@ -2293,7 +2894,12 @@ export const deleteContactPeople: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteContactPhotoPeopleError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteContactPhotoPeopleError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Delete a contact's photo. Mutate requests for the same user should be done sequentially to avoid // lock contention. */
 export const deleteContactPhotoPeople: API.OperationMethod<
   DeleteContactPhotoPeopleRequest,
@@ -2366,7 +2972,10 @@ export const listContactGroups: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListDirectoryPeoplePeopleError = NotFound | Forbidden | GcpOpError;
@@ -2382,7 +2991,10 @@ export const listDirectoryPeoplePeople: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListOtherContactsError = NotFound | Forbidden | GcpOpError;
@@ -2398,7 +3010,10 @@ export const listOtherContacts: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListPeopleConnectionsError = NotFound | Forbidden | GcpOpError;
@@ -2414,10 +3029,18 @@ export const listPeopleConnections: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ModifyContactGroupsMembersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ModifyContactGroupsMembersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Modify the members of a contact group owned by the authenticated user. The only system contact groups that can have members added are `contactGroups/myContacts` and `contactGroups/starred`. Other system contact groups are deprecated and can only have contacts removed. */
 export const modifyContactGroupsMembers: API.OperationMethod<
   ModifyContactGroupsMembersRequest,
@@ -2447,7 +3070,10 @@ export const searchContactsPeople: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SearchDirectoryPeoplePeopleError = NotFound | Forbidden | GcpOpError;
+export type SearchDirectoryPeoplePeopleError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Provides a list of domain profiles and domain contacts in the authenticated user's domain directory that match the search query. */
 export const searchDirectoryPeoplePeople: API.PaginatedOperationMethod<
   SearchDirectoryPeoplePeopleRequest,
@@ -2460,7 +3086,10 @@ export const searchDirectoryPeoplePeople: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type SearchOtherContactsError = NotFound | Forbidden | GcpOpError;
@@ -2478,7 +3107,12 @@ export const searchOtherContacts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateContactGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateContactGroupsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update the name of an existing contact group owned by the authenticated user. Updated contact group names must be unique to the users contact groups. Attempting to create a group with a duplicate name will return a HTTP 409 error. Mutate requests for the same user should be sent sequentially to avoid increased latency and failures. */
 export const updateContactGroups: API.OperationMethod<
   UpdateContactGroupsRequest,
@@ -2493,7 +3127,12 @@ export const updateContactGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateContactPeopleError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateContactPeopleError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update contact data for an existing contact person. Any non-contact data will not be modified. Any non-contact data in the person to update will be ignored. All fields specified in the `update_mask` will be replaced. The server returns a 400 error if `person.metadata.sources` is not specified for the contact to be updated or if there is no contact source. The server returns a 400 error with reason `"failedPrecondition"` if `person.metadata.sources.etag` is different than the contact's etag, which indicates the contact has changed since its data was read. Clients should get the latest person and merge their updates into the latest person. If making sequential updates to the same person, the etag from the `updateContact` response should be used to avoid failures. The server returns a 400 error if `memberships` are being updated and there are no contact group memberships specified on the person. The server returns a 400 error if more than one field is specified on a field that is a singleton for contact sources: * biographies * birthdays * genders * names Mutate requests for the same user should be sent sequentially to avoid increased latency and failures. */
 export const updateContactPeople: API.OperationMethod<
   UpdateContactPeopleRequest,
@@ -2508,7 +3147,12 @@ export const updateContactPeople: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateContactPhotoPeopleError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateContactPhotoPeopleError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update a contact's photo. Mutate requests for the same user should be sent sequentially to avoid increased latency and failures. */
 export const updateContactPhotoPeople: API.OperationMethod<
   UpdateContactPhotoPeopleRequest,
@@ -2522,4 +3166,3 @@ export const updateContactPhotoPeople: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

@@ -1126,11 +1126,47 @@ export const SwapUnavailableResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SwapUnavailableResponse>;
 
 /** A wrapper for the response of a swap quote operation. */
-export type CreateSwapQuoteResponseWrapper =
-  | CreateSwapQuoteResponse
-  | SwapUnavailableResponse;
-export const CreateSwapQuoteResponseWrapper =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<CreateSwapQuoteResponseWrapper>;
+export interface CreateSwapQuoteResponseWrapper {
+  /** The approval object which contains the necessary fields to submit an approval for this transaction. Null if the `fromToken` is the native token or the transaction is a native token wrap / unwrap. */
+  permit2?: CreateSwapQuoteResponsePermit2 | null;
+  /** The details of the transaction to be signed and submitted to execute the swap. */
+  transaction?: CreateSwapQuoteResponseTransaction;
+  /** The block number at which the liquidity conditions were examined. */
+  blockNumber?: string;
+  /** The amount of the `toToken` that will be received in atomic units of the `toToken`. For example, `1000000000000000000` when receiving ETH equates to 1 ETH, `1000000` when receiving USDC equates to 1 USDC, etc. */
+  toAmount?: string;
+  /** The 0x-prefixed contract address of the token that will be received. */
+  toToken?: string;
+  /** The estimated fees for the swap. */
+  fees?: CreateSwapQuoteResponseFees;
+  /** An object containing potential issues discovered during validation that could prevent the swap from being executed successfully. */
+  issues?: CreateSwapQuoteResponseIssues;
+  /** Whether sufficient liquidity is available to settle the swap. All other fields in the response will be empty if this is false. */
+  liquidityAvailable: boolean;
+  /** The minimum amount of the `toToken` that must be received for the swap to succeed, in atomic units of the `toToken`. For example, `1000000000000000000` when receiving ETH equates to 1 ETH, `1000000` when receiving USDC equates to 1 USDC, etc. This value is influenced by the `slippageBps` parameter. */
+  minToAmount?: string;
+  /** The amount of the `fromToken` that will be sent in this swap, in atomic units of the `fromToken`. For example, `1000000000000000000` when sending ETH equates to 1 ETH, `1000000` when sending USDC equates to 1 USDC, etc. */
+  fromAmount?: string;
+  /** The 0x-prefixed contract address of the token that will be sent. */
+  fromToken?: string;
+}
+export const CreateSwapQuoteResponseWrapper = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    permit2: S.optional(S.NullOr(CreateSwapQuoteResponsePermit2)),
+    transaction: S.optional(CreateSwapQuoteResponseTransaction),
+    blockNumber: S.optional(S.String),
+    toAmount: S.optional(S.String),
+    toToken: S.optional(S.String),
+    fees: S.optional(CreateSwapQuoteResponseFees),
+    issues: S.optional(CreateSwapQuoteResponseIssues),
+    liquidityAvailable: S.Boolean,
+    minToAmount: S.optional(S.String),
+    fromAmount: S.optional(S.String),
+    fromToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateSwapQuoteResponseWrapper",
+}) as any as S.Schema<CreateSwapQuoteResponseWrapper>;
 
 export type CreateEvmSwapQuoteResponse = CreateSwapQuoteResponseWrapper;
 export const CreateEvmSwapQuoteResponse = /*@__PURE__*/ S.suspend(() =>
@@ -3974,13 +4010,38 @@ export const OriginatingBankAccountUS = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OriginatingBankAccountUS>;
 
 /** The source of the transfer. */
-export type TransferSource =
-  | TransfersAccount
-  | PaymentMethod
-  | OnchainAddress
-  | OriginatingBankAccountUS;
-export const TransferSource =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<TransferSource>;
+export interface TransferSource {
+  /** The ID of the Account. */
+  accountId?: string;
+  /** Asset symbol of the payment received by the recipient. */
+  asset?: string;
+  /** The ID of the Payment Method. */
+  paymentMethodId?: string;
+  /** The onchain crypto address of the recipient. Examples: - EVM address: 0xabc1234567890abcdef1234567890abcdef123456 - Solana address: HpabPRRCFbBKSuJr5PdkVvQc85FyxyTWkFM2obBRSvHT - XRP address: rhccc5p23aKiCGFcEqqnjEfLRZ6xEvfy3s */
+  address?: string;
+  network?: Network;
+  /** The destination tag of the onchain address. Destination tags are used by certain networks (primarily XRP/Ripple) to identify specific recipients when multiple users share a single address. The tag ensures funds are credited to the correct account within the shared address. Examples by network: - XRP/Ripple: Numeric values like "1234567890" or "123456" - Stellar (XLM): Memos which can be text, ID, or hash format Note: Most networks (Ethereum, Bitcoin, Solana) do not use destination tags. */
+  destinationTag?: string;
+  /** The name of the bank that originated the deposit. */
+  bankName?: string;
+  /** The last 4 digits of the originating bank account number. */
+  accountLast4?: string;
+  /** The fiat currency of the deposit (e.g., `usd`). */
+  currency?: string;
+}
+export const TransferSource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.optional(S.String),
+    asset: S.optional(S.String),
+    paymentMethodId: S.optional(S.String),
+    address: S.optional(S.String),
+    network: S.optional(Network),
+    destinationTag: S.optional(S.String),
+    bankName: S.optional(S.String),
+    accountLast4: S.optional(S.String),
+    currency: S.optional(S.String),
+  }),
+).annotate({ identifier: "TransferSource" }) as any as S.Schema<TransferSource>;
 
 /** Exchange rate information for currency conversion. The rate indicates how much of the target asset is equivalent to one unit of the source asset. */
 export interface TransferExchangeRate {
@@ -4992,11 +5053,47 @@ export const GetSwapPriceResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSwapPriceResponse>;
 
 /** A wrapper for the response of a swap price operation. */
-export type GetSwapPriceResponseWrapper =
-  | GetSwapPriceResponse
-  | SwapUnavailableResponse;
-export const GetSwapPriceResponseWrapper =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<GetSwapPriceResponseWrapper>;
+export interface GetSwapPriceResponseWrapper {
+  /** The block number at which the liquidity conditions were examined. */
+  blockNumber?: string;
+  /** The amount of the `toToken` that will be received in atomic units of the `toToken`. For example, `1000000000000000000` when receiving ETH equates to 1 ETH, `1000000` when receiving USDC equates to 1 USDC, etc. */
+  toAmount?: string;
+  /** The 0x-prefixed contract address of the token that will be received. */
+  toToken?: string;
+  /** The estimated fees for the swap. */
+  fees?: GetSwapPriceResponseFees;
+  /** An object containing potential issues discovered during validation that could prevent the swap from being executed successfully. */
+  issues?: GetSwapPriceResponseIssues;
+  /** Whether sufficient liquidity is available to settle the swap. All other fields in the response will be empty if this is false. */
+  liquidityAvailable: boolean;
+  /** The minimum amount of the `toToken` that must be received for the swap to succeed, in atomic units of the `toToken`. For example, `1000000000000000000` when receiving ETH equates to 1 ETH, `1000000` when receiving USDC equates to 1 USDC, etc. This value is influenced by the `slippageBps` parameter. */
+  minToAmount?: string;
+  /** The amount of the `fromToken` that will be sent in this swap, in atomic units of the `fromToken`. For example, `1000000000000000000` when sending ETH equates to 1 ETH, `1000000` when sending USDC equates to 1 USDC, etc. */
+  fromAmount?: string;
+  /** The 0x-prefixed contract address of the token that will be sent. */
+  fromToken?: string;
+  /** The estimated gas limit that should be used to send the transaction to guarantee settlement. */
+  gas?: string | null;
+  /** The gas price, in Wei, that should be used to send the transaction. For EIP-1559 transactions, this value should be seen as the `maxFeePerGas` value. The transaction should be sent with this gas price to guarantee settlement. */
+  gasPrice?: string;
+}
+export const GetSwapPriceResponseWrapper = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    blockNumber: S.optional(S.String),
+    toAmount: S.optional(S.String),
+    toToken: S.optional(S.String),
+    fees: S.optional(GetSwapPriceResponseFees),
+    issues: S.optional(GetSwapPriceResponseIssues),
+    liquidityAvailable: S.Boolean,
+    minToAmount: S.optional(S.String),
+    fromAmount: S.optional(S.String),
+    fromToken: S.optional(S.String),
+    gas: S.optional(S.NullOr(S.String)),
+    gasPrice: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetSwapPriceResponseWrapper",
+}) as any as S.Schema<GetSwapPriceResponseWrapper>;
 
 export type GetEvmSwapPriceResponse = GetSwapPriceResponseWrapper;
 export const GetEvmSwapPriceResponse = /*@__PURE__*/ S.suspend(() =>
@@ -5283,12 +5380,44 @@ export const SepaPaymentMethod = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SepaPaymentMethod>;
 
 /** A payment method linked to your entity. Payment methods represent external financial instruments that can be used as a target for transfers. The `paymentRail` field indicates which type-specific details object is present. Type-specific fields are nested under a key matching the rail name (e.g., `fedwire`, `swift`). */
-export type PaymentMethodsPaymentMethod =
-  | FedwirePaymentMethod
-  | SwiftPaymentMethod
-  | SepaPaymentMethod;
-export const PaymentMethodsPaymentMethod =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<PaymentMethodsPaymentMethod>;
+export interface PaymentMethodsPaymentMethod {
+  paymentMethodId: string;
+  /** Whether the payment method is active and can be used in transfers. A payment method may be inactive due to verification requirements or entity-level restrictions. */
+  active: boolean;
+  /** The timestamp when the payment method was created. */
+  createdAt: string;
+  /** The timestamp when the payment method was last updated. */
+  updatedAt: string;
+  /** The payment rail for this payment method. */
+  paymentRail:
+    | FedwirePaymentMethodPaymentRail
+    | SwiftPaymentMethodPaymentRail
+    | SepaPaymentMethodPaymentRail;
+  /** Fedwire (domestic USD wire) details. */
+  fedwire?: FedwireDetails;
+  /** SWIFT (international wire) details. */
+  swift?: SwiftDetails;
+  /** SEPA (Single Euro Payments Area) details. */
+  sepa?: SepaDetails;
+}
+export const PaymentMethodsPaymentMethod = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    paymentMethodId: S.String,
+    active: S.Boolean,
+    createdAt: S.String,
+    updatedAt: S.String,
+    paymentRail: S.Union(
+      FedwirePaymentMethodPaymentRail,
+      SwiftPaymentMethodPaymentRail,
+      SepaPaymentMethodPaymentRail,
+    ),
+    fedwire: S.optional(FedwireDetails),
+    swift: S.optional(SwiftDetails),
+    sepa: S.optional(SepaDetails),
+  }),
+).annotate({
+  identifier: "PaymentMethodsPaymentMethod",
+}) as any as S.Schema<PaymentMethodsPaymentMethod>;
 
 export type GetPaymentMethodResponse = PaymentMethodsPaymentMethod;
 export const GetPaymentMethodResponse = /*@__PURE__*/ S.suspend(() =>

@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
@@ -70,14 +70,24 @@ export interface Doubleclickbidmanager_Date {
   month?: number;
 }
 export const Doubleclickbidmanager_Date = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "day": S.optional(S.Number),
-  "year": S.optional(S.Number),
-  "month": S.optional(S.Number),
-}),
-).annotate({ identifier: "Doubleclickbidmanager_Date" }) as any as S.Schema<Doubleclickbidmanager_Date>;
+  S.Struct({
+    day: S.optional(S.Number),
+    year: S.optional(S.Number),
+    month: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "Doubleclickbidmanager_Date",
+}) as any as S.Schema<Doubleclickbidmanager_Date>;
 
-export type QueryScheduleFrequencyEnum = "FREQUENCY_UNSPECIFIED" | "ONE_TIME" | "DAILY" | "WEEKLY" | "SEMI_MONTHLY" | "MONTHLY" | "QUARTERLY" | "YEARLY";
+export type QueryScheduleFrequencyEnum =
+  | "FREQUENCY_UNSPECIFIED"
+  | "ONE_TIME"
+  | "DAILY"
+  | "WEEKLY"
+  | "SEMI_MONTHLY"
+  | "MONTHLY"
+  | "QUARTERLY"
+  | "YEARLY";
 export const QueryScheduleFrequencyEnum = /*@__PURE__*/ S.String;
 
 /** Settings on when and how frequently to run a query. */
@@ -92,18 +102,32 @@ export interface QuerySchedule {
   nextRunTimezoneCode?: string;
 }
 export const QuerySchedule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "startDate": S.optional(Doubleclickbidmanager_Date),
-  "endDate": S.optional(Doubleclickbidmanager_Date),
-  "frequency": S.optional(QueryScheduleFrequencyEnum),
-  "nextRunTimezoneCode": S.optional(S.String),
-}),
+  S.Struct({
+    startDate: S.optional(Doubleclickbidmanager_Date),
+    endDate: S.optional(Doubleclickbidmanager_Date),
+    frequency: S.optional(QueryScheduleFrequencyEnum),
+    nextRunTimezoneCode: S.optional(S.String),
+  }),
 ).annotate({ identifier: "QuerySchedule" }) as any as S.Schema<QuerySchedule>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
-export type ParametersTypeEnum = "REPORT_TYPE_UNSPECIFIED" | "STANDARD" | "INVENTORY_AVAILABILITY" | "AUDIENCE_COMPOSITION" | "FLOODLIGHT" | "YOUTUBE" | "GRP" | "YOUTUBE_PROGRAMMATIC_GUARANTEED" | "REACH" | "UNIQUE_REACH_AUDIENCE" | "FULL_PATH" | "PATH_ATTRIBUTION";
+export type ParametersTypeEnum =
+  | "REPORT_TYPE_UNSPECIFIED"
+  | "STANDARD"
+  | "INVENTORY_AVAILABILITY"
+  | "AUDIENCE_COMPOSITION"
+  | "FLOODLIGHT"
+  | "YOUTUBE"
+  | "GRP"
+  | "YOUTUBE_PROGRAMMATIC_GUARANTEED"
+  | "REACH"
+  | "UNIQUE_REACH_AUDIENCE"
+  | "FULL_PATH"
+  | "PATH_ATTRIBUTION";
 export const ParametersTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a single filter rule. */
@@ -114,14 +138,16 @@ export interface FilterPair {
   value?: string;
 }
 export const FilterPair = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(S.String),
-  "value": S.optional(S.String),
-}),
+  S.Struct({
+    type: S.optional(S.String),
+    value: S.optional(S.String),
+  }),
 ).annotate({ identifier: "FilterPair" }) as any as S.Schema<FilterPair>;
 
 export type FilterPairList = ReadonlyArray<FilterPair>;
-export const FilterPairList = /*@__PURE__*/ S.Array(FilterPair) as any as S.Schema<FilterPairList>;
+export const FilterPairList = /*@__PURE__*/ S.Array(
+  FilterPair,
+) as any as S.Schema<FilterPairList>;
 
 /** Report parameter options. */
 export interface Options {
@@ -129,9 +155,9 @@ export interface Options {
   includeOnlyTargetedUserLists?: boolean;
 }
 export const Options = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "includeOnlyTargetedUserLists": S.optional(S.Boolean),
-}),
+  S.Struct({
+    includeOnlyTargetedUserLists: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "Options" }) as any as S.Schema<Options>;
 
 /** Parameters of a generated report. */
@@ -148,16 +174,35 @@ export interface Parameters {
   options?: Options;
 }
 export const Parameters = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "groupBys": S.optional(StringList),
-  "metrics": S.optional(StringList),
-  "type": S.optional(ParametersTypeEnum),
-  "filters": S.optional(FilterPairList),
-  "options": S.optional(Options),
-}),
+  S.Struct({
+    groupBys: S.optional(StringList),
+    metrics: S.optional(StringList),
+    type: S.optional(ParametersTypeEnum),
+    filters: S.optional(FilterPairList),
+    options: S.optional(Options),
+  }),
 ).annotate({ identifier: "Parameters" }) as any as S.Schema<Parameters>;
 
-export type DataRangeRangeEnum = "RANGE_UNSPECIFIED" | "CUSTOM_DATES" | "CURRENT_DAY" | "PREVIOUS_DAY" | "WEEK_TO_DATE" | "MONTH_TO_DATE" | "QUARTER_TO_DATE" | "YEAR_TO_DATE" | "PREVIOUS_WEEK" | "PREVIOUS_MONTH" | "PREVIOUS_QUARTER" | "PREVIOUS_YEAR" | "LAST_7_DAYS" | "LAST_30_DAYS" | "LAST_90_DAYS" | "LAST_365_DAYS" | "ALL_TIME" | "LAST_14_DAYS" | "LAST_60_DAYS";
+export type DataRangeRangeEnum =
+  | "RANGE_UNSPECIFIED"
+  | "CUSTOM_DATES"
+  | "CURRENT_DAY"
+  | "PREVIOUS_DAY"
+  | "WEEK_TO_DATE"
+  | "MONTH_TO_DATE"
+  | "QUARTER_TO_DATE"
+  | "YEAR_TO_DATE"
+  | "PREVIOUS_WEEK"
+  | "PREVIOUS_MONTH"
+  | "PREVIOUS_QUARTER"
+  | "PREVIOUS_YEAR"
+  | "LAST_7_DAYS"
+  | "LAST_30_DAYS"
+  | "LAST_90_DAYS"
+  | "LAST_365_DAYS"
+  | "ALL_TIME"
+  | "LAST_14_DAYS"
+  | "LAST_60_DAYS";
 export const DataRangeRangeEnum = /*@__PURE__*/ S.String;
 
 /** The date range to be reported on. */
@@ -170,11 +215,11 @@ export interface DataRange {
   customStartDate?: Doubleclickbidmanager_Date;
 }
 export const DataRange = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "customEndDate": S.optional(Doubleclickbidmanager_Date),
-  "range": S.optional(DataRangeRangeEnum),
-  "customStartDate": S.optional(Doubleclickbidmanager_Date),
-}),
+  S.Struct({
+    customEndDate: S.optional(Doubleclickbidmanager_Date),
+    range: S.optional(DataRangeRangeEnum),
+    customStartDate: S.optional(Doubleclickbidmanager_Date),
+  }),
 ).annotate({ identifier: "DataRange" }) as any as S.Schema<DataRange>;
 
 export type QueryMetadataFormatEnum = "FORMAT_UNSPECIFIED" | "CSV" | "XLSX";
@@ -194,13 +239,13 @@ export interface QueryMetadata {
   format?: QueryMetadataFormatEnum;
 }
 export const QueryMetadata = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sendNotification": S.optional(S.Boolean),
-  "shareEmailAddress": S.optional(StringList),
-  "title": S.optional(S.String),
-  "dataRange": S.optional(DataRange),
-  "format": S.optional(QueryMetadataFormatEnum),
-}),
+  S.Struct({
+    sendNotification: S.optional(S.Boolean),
+    shareEmailAddress: S.optional(StringList),
+    title: S.optional(S.String),
+    dataRange: S.optional(DataRange),
+    format: S.optional(QueryMetadataFormatEnum),
+  }),
 ).annotate({ identifier: "QueryMetadata" }) as any as S.Schema<QueryMetadata>;
 
 /** A single query used to generate a report. */
@@ -215,12 +260,12 @@ export interface Query {
   metadata?: QueryMetadata;
 }
 export const Query = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "schedule": S.optional(QuerySchedule),
-  "queryId": S.optional(S.String),
-  "params": S.optional(Parameters),
-  "metadata": S.optional(QueryMetadata),
-}),
+  S.Struct({
+    schedule: S.optional(QuerySchedule),
+    queryId: S.optional(S.String),
+    params: S.optional(Parameters),
+    metadata: S.optional(QueryMetadata),
+  }),
 ).annotate({ identifier: "Query" }) as any as S.Schema<Query>;
 
 export interface CreateQueriesRequest {
@@ -228,35 +273,61 @@ export interface CreateQueriesRequest {
   body?: Query;
 }
 export const CreateQueriesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(Query.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"queries","baseUrl":"https://doubleclickbidmanager.googleapis.com/v2/"})),
-).annotate({ identifier: "CreateQueriesRequest" }) as any as S.Schema<CreateQueriesRequest>;
+  S.Struct({
+    body: S.optional(Query.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "queries",
+      baseUrl: "https://doubleclickbidmanager.googleapis.com/v2/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateQueriesRequest",
+}) as any as S.Schema<CreateQueriesRequest>;
 
 export interface DeleteQueriesRequest {
   /** Required. The ID of the query to delete. */
   queryId: string;
 }
 export const DeleteQueriesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "queryId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"queries/{queryId}","baseUrl":"https://doubleclickbidmanager.googleapis.com/v2/"})),
-).annotate({ identifier: "DeleteQueriesRequest" }) as any as S.Schema<DeleteQueriesRequest>;
+  S.Struct({
+    queryId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "queries/{queryId}",
+      baseUrl: "https://doubleclickbidmanager.googleapis.com/v2/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteQueriesRequest",
+}) as any as S.Schema<DeleteQueriesRequest>;
 
 export interface DeleteQueriesResponse {}
 export const DeleteQueriesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "DeleteQueriesResponse" }) as any as S.Schema<DeleteQueriesResponse>;
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteQueriesResponse",
+}) as any as S.Schema<DeleteQueriesResponse>;
 
 export interface GetQueriesRequest {
   /** Required. The ID of the query to retrieve. */
   queryId: string;
 }
 export const GetQueriesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "queryId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"queries/{queryId}","baseUrl":"https://doubleclickbidmanager.googleapis.com/v2/"})),
-).annotate({ identifier: "GetQueriesRequest" }) as any as S.Schema<GetQueriesRequest>;
+  S.Struct({
+    queryId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "queries/{queryId}",
+      baseUrl: "https://doubleclickbidmanager.googleapis.com/v2/",
+    }),
+  ),
+).annotate({
+  identifier: "GetQueriesRequest",
+}) as any as S.Schema<GetQueriesRequest>;
 
 export interface GetQueriesReportsRequest {
   /** Required. The ID of the query to retrieve. */
@@ -265,11 +336,19 @@ export interface GetQueriesReportsRequest {
   queryId: string;
 }
 export const GetQueriesReportsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "reportId": S.String.pipe(T.Label()),
-  "queryId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"queries/{queryId}/reports/{reportId}","baseUrl":"https://doubleclickbidmanager.googleapis.com/v2/"})),
-).annotate({ identifier: "GetQueriesReportsRequest" }) as any as S.Schema<GetQueriesReportsRequest>;
+  S.Struct({
+    reportId: S.String.pipe(T.Label()),
+    queryId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "queries/{queryId}/reports/{reportId}",
+      baseUrl: "https://doubleclickbidmanager.googleapis.com/v2/",
+    }),
+  ),
+).annotate({
+  identifier: "GetQueriesReportsRequest",
+}) as any as S.Schema<GetQueriesReportsRequest>;
 
 /** Identifying information of a report. */
 export interface ReportKey {
@@ -279,13 +358,18 @@ export interface ReportKey {
   reportId?: string;
 }
 export const ReportKey = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "queryId": S.optional(S.String),
-  "reportId": S.optional(S.String),
-}),
+  S.Struct({
+    queryId: S.optional(S.String),
+    reportId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ReportKey" }) as any as S.Schema<ReportKey>;
 
-export type ReportStatusStateEnum = "STATE_UNSPECIFIED" | "QUEUED" | "RUNNING" | "DONE" | "FAILED";
+export type ReportStatusStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "QUEUED"
+  | "RUNNING"
+  | "DONE"
+  | "FAILED";
 export const ReportStatusStateEnum = /*@__PURE__*/ S.String;
 
 export type ReportStatusFormatEnum = "FORMAT_UNSPECIFIED" | "CSV" | "XLSX";
@@ -301,11 +385,11 @@ export interface ReportStatus {
   format?: ReportStatusFormatEnum;
 }
 export const ReportStatus = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "state": S.optional(ReportStatusStateEnum),
-  "finishTime": S.optional(S.String),
-  "format": S.optional(ReportStatusFormatEnum),
-}),
+  S.Struct({
+    state: S.optional(ReportStatusStateEnum),
+    finishTime: S.optional(S.String),
+    format: S.optional(ReportStatusFormatEnum),
+  }),
 ).annotate({ identifier: "ReportStatus" }) as any as S.Schema<ReportStatus>;
 
 /** The metadata of a report. */
@@ -320,12 +404,12 @@ export interface ReportMetadata {
   status?: ReportStatus;
 }
 export const ReportMetadata = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "reportDataStartDate": S.optional(Doubleclickbidmanager_Date),
-  "reportDataEndDate": S.optional(Doubleclickbidmanager_Date),
-  "googleCloudStoragePath": S.optional(S.String),
-  "status": S.optional(ReportStatus),
-}),
+  S.Struct({
+    reportDataStartDate: S.optional(Doubleclickbidmanager_Date),
+    reportDataEndDate: S.optional(Doubleclickbidmanager_Date),
+    googleCloudStoragePath: S.optional(S.String),
+    status: S.optional(ReportStatus),
+  }),
 ).annotate({ identifier: "ReportMetadata" }) as any as S.Schema<ReportMetadata>;
 
 /** A single report generated by its parent report. */
@@ -338,11 +422,11 @@ export interface Report {
   metadata?: ReportMetadata;
 }
 export const Report = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "key": S.optional(ReportKey),
-  "params": S.optional(Parameters),
-  "metadata": S.optional(ReportMetadata),
-}),
+  S.Struct({
+    key: S.optional(ReportKey),
+    params: S.optional(Parameters),
+    metadata: S.optional(ReportMetadata),
+  }),
 ).annotate({ identifier: "Report" }) as any as S.Schema<Report>;
 
 export interface ListQueriesRequest {
@@ -354,15 +438,25 @@ export interface ListQueriesRequest {
   pageSize?: number;
 }
 export const ListQueriesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"queries","baseUrl":"https://doubleclickbidmanager.googleapis.com/v2/"})),
-).annotate({ identifier: "ListQueriesRequest" }) as any as S.Schema<ListQueriesRequest>;
+  S.Struct({
+    orderBy: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "queries",
+      baseUrl: "https://doubleclickbidmanager.googleapis.com/v2/",
+    }),
+  ),
+).annotate({
+  identifier: "ListQueriesRequest",
+}) as any as S.Schema<ListQueriesRequest>;
 
 export type QueryList = ReadonlyArray<Query>;
-export const QueryList = /*@__PURE__*/ S.Array(Query) as any as S.Schema<QueryList>;
+export const QueryList = /*@__PURE__*/ S.Array(
+  Query,
+) as any as S.Schema<QueryList>;
 
 export interface ListQueriesResponse {
   /** The list of queries. This field will be absent if empty. */
@@ -371,11 +465,13 @@ export interface ListQueriesResponse {
   nextPageToken?: string;
 }
 export const ListQueriesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "queries": S.optional(QueryList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListQueriesResponse" }) as any as S.Schema<ListQueriesResponse>;
+  S.Struct({
+    queries: S.optional(QueryList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListQueriesResponse",
+}) as any as S.Schema<ListQueriesResponse>;
 
 export interface ListQueriesReportsRequest {
   /** Maximum number of results per page. Must be between `1` and `100`. Defaults to `100` if unspecified. */
@@ -388,16 +484,26 @@ export interface ListQueriesReportsRequest {
   orderBy?: string;
 }
 export const ListQueriesReportsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "queryId": S.String.pipe(T.Label()),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"queries/{queryId}/reports","baseUrl":"https://doubleclickbidmanager.googleapis.com/v2/"})),
-).annotate({ identifier: "ListQueriesReportsRequest" }) as any as S.Schema<ListQueriesReportsRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    queryId: S.String.pipe(T.Label()),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "queries/{queryId}/reports",
+      baseUrl: "https://doubleclickbidmanager.googleapis.com/v2/",
+    }),
+  ),
+).annotate({
+  identifier: "ListQueriesReportsRequest",
+}) as any as S.Schema<ListQueriesReportsRequest>;
 
 export type ReportList = ReadonlyArray<Report>;
-export const ReportList = /*@__PURE__*/ S.Array(Report) as any as S.Schema<ReportList>;
+export const ReportList = /*@__PURE__*/ S.Array(
+  Report,
+) as any as S.Schema<ReportList>;
 
 export interface ListReportsResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `queries.reports.list` method to retrieve the next page of results. */
@@ -406,11 +512,13 @@ export interface ListReportsResponse {
   reports?: ReportList;
 }
 export const ListReportsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "reports": S.optional(ReportList),
-}),
-).annotate({ identifier: "ListReportsResponse" }) as any as S.Schema<ListReportsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    reports: S.optional(ReportList),
+  }),
+).annotate({
+  identifier: "ListReportsResponse",
+}) as any as S.Schema<ListReportsResponse>;
 
 /** Details specifying how to run a query. */
 export interface RunQueryRequest {
@@ -418,10 +526,12 @@ export interface RunQueryRequest {
   dataRange?: DataRange;
 }
 export const RunQueryRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dataRange": S.optional(DataRange),
-}),
-).annotate({ identifier: "RunQueryRequest" }) as any as S.Schema<RunQueryRequest>;
+  S.Struct({
+    dataRange: S.optional(DataRange),
+  }),
+).annotate({
+  identifier: "RunQueryRequest",
+}) as any as S.Schema<RunQueryRequest>;
 
 export interface RunQueriesRequest {
   /** Required. The ID of the query to run. */
@@ -432,14 +542,27 @@ export interface RunQueriesRequest {
   body?: RunQueryRequest;
 }
 export const RunQueriesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "queryId": S.String.pipe(T.Label()),
-  "synchronous": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(RunQueryRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"queries/{queryId}:run","baseUrl":"https://doubleclickbidmanager.googleapis.com/v2/"})),
-).annotate({ identifier: "RunQueriesRequest" }) as any as S.Schema<RunQueriesRequest>;
+  S.Struct({
+    queryId: S.String.pipe(T.Label()),
+    synchronous: S.optional(S.Boolean.pipe(T.Query())),
+    body: S.optional(RunQueryRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "queries/{queryId}:run",
+      baseUrl: "https://doubleclickbidmanager.googleapis.com/v2/",
+    }),
+  ),
+).annotate({
+  identifier: "RunQueriesRequest",
+}) as any as S.Schema<RunQueriesRequest>;
 
-export type CreateQueriesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateQueriesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new query. */
 export const createQueries: API.OperationMethod<
   CreateQueriesRequest,
@@ -454,7 +577,12 @@ export const createQueries: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteQueriesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteQueriesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes an existing query as well as its generated reports. */
 export const deleteQueries: API.OperationMethod<
   DeleteQueriesRequest,
@@ -512,7 +640,10 @@ export const listQueries: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListQueriesReportsError = NotFound | Forbidden | GcpOpError;
@@ -528,10 +659,18 @@ export const listQueriesReports: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type RunQueriesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RunQueriesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Runs an existing query to generate a report. */
 export const runQueries: API.OperationMethod<
   RunQueriesRequest,
@@ -545,4 +684,3 @@ export const runQueries: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

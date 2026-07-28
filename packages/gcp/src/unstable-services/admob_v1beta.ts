@@ -13,58 +13,61 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export type AdUnitMappingStateEnum = "STATE_UNSPECIFIED" | "ENABLED";
 export const AdUnitMappingStateEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
 /** Settings to map an AdMob ad unit to a 3rd party ad unit. */
 export interface AdUnitMapping {
@@ -80,13 +83,13 @@ export interface AdUnitMapping {
   displayName?: string;
 }
 export const AdUnitMapping = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "state": S.optional(AdUnitMappingStateEnum),
-  "adUnitConfigurations": S.optional(StringMap),
-  "adapterId": S.optional(S.String),
-  "name": S.optional(S.String),
-  "displayName": S.optional(S.String),
-}),
+  S.Struct({
+    state: S.optional(AdUnitMappingStateEnum),
+    adUnitConfigurations: S.optional(StringMap),
+    adapterId: S.optional(S.String),
+    name: S.optional(S.String),
+    displayName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "AdUnitMapping" }) as any as S.Schema<AdUnitMapping>;
 
 /** Request to create an ad unit mapping under the specific AdMob account and ad unit. */
@@ -97,14 +100,19 @@ export interface CreateAdUnitMappingRequest {
   adUnitMapping?: AdUnitMapping;
 }
 export const CreateAdUnitMappingRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.optional(S.String),
-  "adUnitMapping": S.optional(AdUnitMapping),
-}),
-).annotate({ identifier: "CreateAdUnitMappingRequest" }) as any as S.Schema<CreateAdUnitMappingRequest>;
+  S.Struct({
+    parent: S.optional(S.String),
+    adUnitMapping: S.optional(AdUnitMapping),
+  }),
+).annotate({
+  identifier: "CreateAdUnitMappingRequest",
+}) as any as S.Schema<CreateAdUnitMappingRequest>;
 
-export type CreateAdUnitMappingRequestList = ReadonlyArray<CreateAdUnitMappingRequest>;
-export const CreateAdUnitMappingRequestList = /*@__PURE__*/ S.Array(CreateAdUnitMappingRequest) as any as S.Schema<CreateAdUnitMappingRequestList>;
+export type CreateAdUnitMappingRequestList =
+  ReadonlyArray<CreateAdUnitMappingRequest>;
+export const CreateAdUnitMappingRequestList = /*@__PURE__*/ S.Array(
+  CreateAdUnitMappingRequest,
+) as any as S.Schema<CreateAdUnitMappingRequestList>;
 
 /** Request to create a batch of ad unit mappings under the specific AdMob account. */
 export interface BatchCreateAdUnitMappingsRequest {
@@ -112,10 +120,12 @@ export interface BatchCreateAdUnitMappingsRequest {
   requests?: CreateAdUnitMappingRequestList;
 }
 export const BatchCreateAdUnitMappingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requests": S.optional(CreateAdUnitMappingRequestList),
-}),
-).annotate({ identifier: "BatchCreateAdUnitMappingsRequest" }) as any as S.Schema<BatchCreateAdUnitMappingsRequest>;
+  S.Struct({
+    requests: S.optional(CreateAdUnitMappingRequestList),
+  }),
+).annotate({
+  identifier: "BatchCreateAdUnitMappingsRequest",
+}) as any as S.Schema<BatchCreateAdUnitMappingsRequest>;
 
 export interface BatchCreateAccountsAdUnitMappingsRequest {
   /** Required. The AdMob account which owns this collection of ad unit mappings. Format: accounts/{publisher_id} See https://support.google.com/admob/answer/2784578 for instructions on how to find your AdMob publisher ID. */
@@ -123,15 +133,26 @@ export interface BatchCreateAccountsAdUnitMappingsRequest {
   /** Request body */
   body?: BatchCreateAdUnitMappingsRequest;
 }
-export const BatchCreateAccountsAdUnitMappingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(BatchCreateAdUnitMappingsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+parent}/adUnitMappings:batchCreate","baseUrl":"https://admob.googleapis.com/"})),
-).annotate({ identifier: "BatchCreateAccountsAdUnitMappingsRequest" }) as any as S.Schema<BatchCreateAccountsAdUnitMappingsRequest>;
+export const BatchCreateAccountsAdUnitMappingsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(BatchCreateAdUnitMappingsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+parent}/adUnitMappings:batchCreate",
+        baseUrl: "https://admob.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "BatchCreateAccountsAdUnitMappingsRequest",
+}) as any as S.Schema<BatchCreateAccountsAdUnitMappingsRequest>;
 
 export type AdUnitMappingList = ReadonlyArray<AdUnitMapping>;
-export const AdUnitMappingList = /*@__PURE__*/ S.Array(AdUnitMapping) as any as S.Schema<AdUnitMappingList>;
+export const AdUnitMappingList = /*@__PURE__*/ S.Array(
+  AdUnitMapping,
+) as any as S.Schema<AdUnitMappingList>;
 
 /** Response containing a batch of created ad unit mappings. */
 export interface BatchCreateAdUnitMappingsResponse {
@@ -139,13 +160,17 @@ export interface BatchCreateAdUnitMappingsResponse {
   adUnitMappings?: AdUnitMappingList;
 }
 export const BatchCreateAdUnitMappingsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "adUnitMappings": S.optional(AdUnitMappingList),
-}),
-).annotate({ identifier: "BatchCreateAdUnitMappingsResponse" }) as any as S.Schema<BatchCreateAdUnitMappingsResponse>;
+  S.Struct({
+    adUnitMappings: S.optional(AdUnitMappingList),
+  }),
+).annotate({
+  identifier: "BatchCreateAdUnitMappingsResponse",
+}) as any as S.Schema<BatchCreateAdUnitMappingsResponse>;
 
 export type StringList_ = ReadonlyArray<string>;
-export const StringList_ = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList_>;
+export const StringList_ = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList_>;
 
 /** Settings for a rewarded ad unit. */
 export interface AdUnitRewardSettings {
@@ -155,11 +180,13 @@ export interface AdUnitRewardSettings {
   unitAmount?: string;
 }
 export const AdUnitRewardSettings = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "unitType": S.optional(S.String),
-  "unitAmount": S.optional(S.String),
-}),
-).annotate({ identifier: "AdUnitRewardSettings" }) as any as S.Schema<AdUnitRewardSettings>;
+  S.Struct({
+    unitType: S.optional(S.String),
+    unitAmount: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AdUnitRewardSettings",
+}) as any as S.Schema<AdUnitRewardSettings>;
 
 /** Describes an AdMob ad unit. */
 export interface AdUnit {
@@ -179,15 +206,15 @@ export interface AdUnit {
   rewardSettings?: AdUnitRewardSettings;
 }
 export const AdUnit = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "adUnitId": S.optional(S.String),
-  "adFormat": S.optional(S.String),
-  "appId": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "adTypes": S.optional(StringList_),
-  "name": S.optional(S.String),
-  "rewardSettings": S.optional(AdUnitRewardSettings),
-}),
+  S.Struct({
+    adUnitId: S.optional(S.String),
+    adFormat: S.optional(S.String),
+    appId: S.optional(S.String),
+    displayName: S.optional(S.String),
+    adTypes: S.optional(StringList_),
+    name: S.optional(S.String),
+    rewardSettings: S.optional(AdUnitRewardSettings),
+  }),
 ).annotate({ identifier: "AdUnit" }) as any as S.Schema<AdUnit>;
 
 export interface CreateAccountsAdUnitsRequest {
@@ -197,11 +224,19 @@ export interface CreateAccountsAdUnitsRequest {
   body?: AdUnit;
 }
 export const CreateAccountsAdUnitsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(AdUnit.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+parent}/adUnits","baseUrl":"https://admob.googleapis.com/"})),
-).annotate({ identifier: "CreateAccountsAdUnitsRequest" }) as any as S.Schema<CreateAccountsAdUnitsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(AdUnit.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+parent}/adUnits",
+      baseUrl: "https://admob.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateAccountsAdUnitsRequest",
+}) as any as S.Schema<CreateAccountsAdUnitsRequest>;
 
 export interface CreateAccountsAdUnitsAdUnitMappingsRequest {
   /** Required. The parent which owns the ad unit mapping. Format: accounts/{publisher_id}/adUnits/{ad_unit_id} */
@@ -209,14 +244,27 @@ export interface CreateAccountsAdUnitsAdUnitMappingsRequest {
   /** Request body */
   body?: AdUnitMapping;
 }
-export const CreateAccountsAdUnitsAdUnitMappingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(AdUnitMapping.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+parent}/adUnitMappings","baseUrl":"https://admob.googleapis.com/"})),
-).annotate({ identifier: "CreateAccountsAdUnitsAdUnitMappingsRequest" }) as any as S.Schema<CreateAccountsAdUnitsAdUnitMappingsRequest>;
+export const CreateAccountsAdUnitsAdUnitMappingsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(AdUnitMapping.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+parent}/adUnitMappings",
+        baseUrl: "https://admob.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateAccountsAdUnitsAdUnitMappingsRequest",
+  }) as any as S.Schema<CreateAccountsAdUnitsAdUnitMappingsRequest>;
 
-export type AppAppApprovalStateEnum = "APP_APPROVAL_STATE_UNSPECIFIED" | "ACTION_REQUIRED" | "IN_REVIEW" | "APPROVED";
+export type AppAppApprovalStateEnum =
+  | "APP_APPROVAL_STATE_UNSPECIFIED"
+  | "ACTION_REQUIRED"
+  | "IN_REVIEW"
+  | "APPROVED";
 export const AppAppApprovalStateEnum = /*@__PURE__*/ S.String;
 
 /** Information provided for manual apps which are not linked to an application store (Example: Google Play, App Store). */
@@ -225,16 +273,29 @@ export interface AppManualAppInfo {
   displayName?: string;
 }
 export const AppManualAppInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "displayName": S.optional(S.String),
-}),
-).annotate({ identifier: "AppManualAppInfo" }) as any as S.Schema<AppManualAppInfo>;
+  S.Struct({
+    displayName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AppManualAppInfo",
+}) as any as S.Schema<AppManualAppInfo>;
 
-export type AppLinkedAppInfoAndroidAppStoresItemEnum = "ANDROID_APP_STORE_UNSPECIFIED" | "GOOGLE_PLAY_APP_STORE" | "AMAZON_APP_STORE" | "OPPO_APP_STORE" | "SAMSUNG_APP_STORE" | "VIVO_APP_STORE" | "XIAOMI_APP_STORE";
+export type AppLinkedAppInfoAndroidAppStoresItemEnum =
+  | "ANDROID_APP_STORE_UNSPECIFIED"
+  | "GOOGLE_PLAY_APP_STORE"
+  | "AMAZON_APP_STORE"
+  | "OPPO_APP_STORE"
+  | "SAMSUNG_APP_STORE"
+  | "VIVO_APP_STORE"
+  | "XIAOMI_APP_STORE";
 export const AppLinkedAppInfoAndroidAppStoresItemEnum = /*@__PURE__*/ S.String;
 
-export type AppLinkedAppInfoAndroidAppStoresItemEnumList = ReadonlyArray<AppLinkedAppInfoAndroidAppStoresItemEnum>;
-export const AppLinkedAppInfoAndroidAppStoresItemEnumList = /*@__PURE__*/ S.Array(AppLinkedAppInfoAndroidAppStoresItemEnum) as any as S.Schema<AppLinkedAppInfoAndroidAppStoresItemEnumList>;
+export type AppLinkedAppInfoAndroidAppStoresItemEnumList =
+  ReadonlyArray<AppLinkedAppInfoAndroidAppStoresItemEnum>;
+export const AppLinkedAppInfoAndroidAppStoresItemEnumList =
+  /*@__PURE__*/ S.Array(
+    AppLinkedAppInfoAndroidAppStoresItemEnum,
+  ) as any as S.Schema<AppLinkedAppInfoAndroidAppStoresItemEnumList>;
 
 /** Information from the app store if the app is linked to an app store. */
 export interface AppLinkedAppInfo {
@@ -246,12 +307,14 @@ export interface AppLinkedAppInfo {
   displayName?: string;
 }
 export const AppLinkedAppInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "androidAppStores": S.optional(AppLinkedAppInfoAndroidAppStoresItemEnumList),
-  "appStoreId": S.optional(S.String),
-  "displayName": S.optional(S.String),
-}),
-).annotate({ identifier: "AppLinkedAppInfo" }) as any as S.Schema<AppLinkedAppInfo>;
+  S.Struct({
+    androidAppStores: S.optional(AppLinkedAppInfoAndroidAppStoresItemEnumList),
+    appStoreId: S.optional(S.String),
+    displayName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AppLinkedAppInfo",
+}) as any as S.Schema<AppLinkedAppInfo>;
 
 /** Describes an AdMob app for a specific platform (For example: Android or iOS). */
 export interface App {
@@ -269,14 +332,14 @@ export interface App {
   linkedAppInfo?: AppLinkedAppInfo;
 }
 export const App = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "platform": S.optional(S.String),
-  "name": S.optional(S.String),
-  "appApprovalState": S.optional(AppAppApprovalStateEnum),
-  "manualAppInfo": S.optional(AppManualAppInfo),
-  "appId": S.optional(S.String),
-  "linkedAppInfo": S.optional(AppLinkedAppInfo),
-}),
+  S.Struct({
+    platform: S.optional(S.String),
+    name: S.optional(S.String),
+    appApprovalState: S.optional(AppAppApprovalStateEnum),
+    manualAppInfo: S.optional(AppManualAppInfo),
+    appId: S.optional(S.String),
+    linkedAppInfo: S.optional(AppLinkedAppInfo),
+  }),
 ).annotate({ identifier: "App" }) as any as S.Schema<App>;
 
 export interface CreateAccountsAppsRequest {
@@ -286,13 +349,25 @@ export interface CreateAccountsAppsRequest {
   body?: App;
 }
 export const CreateAccountsAppsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(App.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+parent}/apps","baseUrl":"https://admob.googleapis.com/"})),
-).annotate({ identifier: "CreateAccountsAppsRequest" }) as any as S.Schema<CreateAccountsAppsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(App.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+parent}/apps",
+      baseUrl: "https://admob.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateAccountsAppsRequest",
+}) as any as S.Schema<CreateAccountsAppsRequest>;
 
-export type MediationGroupTargetingIdfaTargetingEnum = "IDFA_TARGETING_UNSPECIFIED" | "ALL" | "AVAILABLE" | "NOT_AVAILABLE";
+export type MediationGroupTargetingIdfaTargetingEnum =
+  | "IDFA_TARGETING_UNSPECIFIED"
+  | "ALL"
+  | "AVAILABLE"
+  | "NOT_AVAILABLE";
 export const MediationGroupTargetingIdfaTargetingEnum = /*@__PURE__*/ S.String;
 
 /** Set of criteria targeted by this mediation group. For example, a mediation group can target specific ad unit IDs, platform, format and geo location. */
@@ -311,29 +386,52 @@ export interface MediationGroupTargeting {
   adUnitIds?: StringList_;
 }
 export const MediationGroupTargeting = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "idfaTargeting": S.optional(MediationGroupTargetingIdfaTargetingEnum),
-  "excludedRegionCodes": S.optional(StringList_),
-  "format": S.optional(S.String),
-  "targetedRegionCodes": S.optional(StringList_),
-  "platform": S.optional(S.String),
-  "adUnitIds": S.optional(StringList_),
-}),
-).annotate({ identifier: "MediationGroupTargeting" }) as any as S.Schema<MediationGroupTargeting>;
+  S.Struct({
+    idfaTargeting: S.optional(MediationGroupTargetingIdfaTargetingEnum),
+    excludedRegionCodes: S.optional(StringList_),
+    format: S.optional(S.String),
+    targetedRegionCodes: S.optional(StringList_),
+    platform: S.optional(S.String),
+    adUnitIds: S.optional(StringList_),
+  }),
+).annotate({
+  identifier: "MediationGroupTargeting",
+}) as any as S.Schema<MediationGroupTargeting>;
 
-export type MediationGroupMediationAbExperimentStateEnum = "EXPERIMENT_STATE_UNSPECIFIED" | "RUNNING" | "NOT_RUNNING";
-export const MediationGroupMediationAbExperimentStateEnum = /*@__PURE__*/ S.String;
+export type MediationGroupMediationAbExperimentStateEnum =
+  | "EXPERIMENT_STATE_UNSPECIFIED"
+  | "RUNNING"
+  | "NOT_RUNNING";
+export const MediationGroupMediationAbExperimentStateEnum =
+  /*@__PURE__*/ S.String;
 
-export type MediationGroupStateEnum = "STATE_UNSPECIFIED" | "ENABLED" | "DISABLED";
+export type MediationGroupStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ENABLED"
+  | "DISABLED";
 export const MediationGroupStateEnum = /*@__PURE__*/ S.String;
 
-export type MediationGroupMediationGroupLineCpmModeEnum = "CPM_MODE_UNSPECIFIED" | "LIVE" | "MANUAL" | "ANO";
-export const MediationGroupMediationGroupLineCpmModeEnum = /*@__PURE__*/ S.String;
+export type MediationGroupMediationGroupLineCpmModeEnum =
+  | "CPM_MODE_UNSPECIFIED"
+  | "LIVE"
+  | "MANUAL"
+  | "ANO";
+export const MediationGroupMediationGroupLineCpmModeEnum =
+  /*@__PURE__*/ S.String;
 
-export type MediationGroupMediationGroupLineExperimentVariantEnum = "VARIANT_UNSPECIFIED" | "VARIANT_A" | "VARIANT_B" | "ORIGINAL";
-export const MediationGroupMediationGroupLineExperimentVariantEnum = /*@__PURE__*/ S.String;
+export type MediationGroupMediationGroupLineExperimentVariantEnum =
+  | "VARIANT_UNSPECIFIED"
+  | "VARIANT_A"
+  | "VARIANT_B"
+  | "ORIGINAL";
+export const MediationGroupMediationGroupLineExperimentVariantEnum =
+  /*@__PURE__*/ S.String;
 
-export type MediationGroupMediationGroupLineStateEnum = "STATE_UNSPECIFIED" | "ENABLED" | "DISABLED" | "REMOVED";
+export type MediationGroupMediationGroupLineStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ENABLED"
+  | "DISABLED"
+  | "REMOVED";
 export const MediationGroupMediationGroupLineStateEnum = /*@__PURE__*/ S.String;
 
 /** Settings for an ad network used by a mediation group. */
@@ -356,20 +454,29 @@ export interface MediationGroupMediationGroupLine {
   adUnitMappings?: StringMap;
 }
 export const MediationGroupMediationGroupLine = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "cpmMode": S.optional(MediationGroupMediationGroupLineCpmModeEnum),
-  "experimentVariant": S.optional(MediationGroupMediationGroupLineExperimentVariantEnum),
-  "adSourceId": S.optional(S.String),
-  "state": S.optional(MediationGroupMediationGroupLineStateEnum),
-  "cpmMicros": S.optional(S.String),
-  "adUnitMappings": S.optional(StringMap),
-}),
-).annotate({ identifier: "MediationGroupMediationGroupLine" }) as any as S.Schema<MediationGroupMediationGroupLine>;
+  S.Struct({
+    id: S.optional(S.String),
+    displayName: S.optional(S.String),
+    cpmMode: S.optional(MediationGroupMediationGroupLineCpmModeEnum),
+    experimentVariant: S.optional(
+      MediationGroupMediationGroupLineExperimentVariantEnum,
+    ),
+    adSourceId: S.optional(S.String),
+    state: S.optional(MediationGroupMediationGroupLineStateEnum),
+    cpmMicros: S.optional(S.String),
+    adUnitMappings: S.optional(StringMap),
+  }),
+).annotate({
+  identifier: "MediationGroupMediationGroupLine",
+}) as any as S.Schema<MediationGroupMediationGroupLine>;
 
-export type MediationGroupMediationGroupLineMap = { [key: string]: MediationGroupMediationGroupLine | undefined };
-export const MediationGroupMediationGroupLineMap = /*@__PURE__*/ S.Record(S.String, MediationGroupMediationGroupLine) as any as S.Schema<MediationGroupMediationGroupLineMap>;
+export type MediationGroupMediationGroupLineMap = {
+  [key: string]: MediationGroupMediationGroupLine | undefined;
+};
+export const MediationGroupMediationGroupLineMap = /*@__PURE__*/ S.Record(
+  S.String,
+  MediationGroupMediationGroupLine,
+) as any as S.Schema<MediationGroupMediationGroupLineMap>;
 
 /** Describes an AdMob Mediation group. */
 export interface MediationGroup {
@@ -389,15 +496,17 @@ export interface MediationGroup {
   mediationGroupLines?: MediationGroupMediationGroupLineMap;
 }
 export const MediationGroup = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "targeting": S.optional(MediationGroupTargeting),
-  "mediationAbExperimentState": S.optional(MediationGroupMediationAbExperimentStateEnum),
-  "displayName": S.optional(S.String),
-  "state": S.optional(MediationGroupStateEnum),
-  "mediationGroupId": S.optional(S.String),
-  "mediationGroupLines": S.optional(MediationGroupMediationGroupLineMap),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    targeting: S.optional(MediationGroupTargeting),
+    mediationAbExperimentState: S.optional(
+      MediationGroupMediationAbExperimentStateEnum,
+    ),
+    displayName: S.optional(S.String),
+    state: S.optional(MediationGroupStateEnum),
+    mediationGroupId: S.optional(S.String),
+    mediationGroupLines: S.optional(MediationGroupMediationGroupLineMap),
+  }),
 ).annotate({ identifier: "MediationGroup" }) as any as S.Schema<MediationGroup>;
 
 export interface CreateAccountsMediationGroupsRequest {
@@ -406,31 +515,57 @@ export interface CreateAccountsMediationGroupsRequest {
   /** Request body */
   body?: MediationGroup;
 }
-export const CreateAccountsMediationGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(MediationGroup.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+parent}/mediationGroups","baseUrl":"https://admob.googleapis.com/"})),
-).annotate({ identifier: "CreateAccountsMediationGroupsRequest" }) as any as S.Schema<CreateAccountsMediationGroupsRequest>;
+export const CreateAccountsMediationGroupsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(MediationGroup.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+parent}/mediationGroups",
+        baseUrl: "https://admob.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateAccountsMediationGroupsRequest",
+}) as any as S.Schema<CreateAccountsMediationGroupsRequest>;
 
 /** The mediation group line for the experiment. It will be used for serving during the run of the experiment. */
 export interface MediationAbExperimentExperimentMediationLine {
   /** The mediation group line used by the experiment. */
   mediationGroupLine?: MediationGroupMediationGroupLine;
 }
-export const MediationAbExperimentExperimentMediationLine = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "mediationGroupLine": S.optional(MediationGroupMediationGroupLine),
-}),
-).annotate({ identifier: "MediationAbExperimentExperimentMediationLine" }) as any as S.Schema<MediationAbExperimentExperimentMediationLine>;
+export const MediationAbExperimentExperimentMediationLine =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mediationGroupLine: S.optional(MediationGroupMediationGroupLine),
+    }),
+  ).annotate({
+    identifier: "MediationAbExperimentExperimentMediationLine",
+  }) as any as S.Schema<MediationAbExperimentExperimentMediationLine>;
 
-export type MediationAbExperimentExperimentMediationLineList = ReadonlyArray<MediationAbExperimentExperimentMediationLine>;
-export const MediationAbExperimentExperimentMediationLineList = /*@__PURE__*/ S.Array(MediationAbExperimentExperimentMediationLine) as any as S.Schema<MediationAbExperimentExperimentMediationLineList>;
+export type MediationAbExperimentExperimentMediationLineList =
+  ReadonlyArray<MediationAbExperimentExperimentMediationLine>;
+export const MediationAbExperimentExperimentMediationLineList =
+  /*@__PURE__*/ S.Array(
+    MediationAbExperimentExperimentMediationLine,
+  ) as any as S.Schema<MediationAbExperimentExperimentMediationLineList>;
 
-export type MediationAbExperimentStateEnum = "EXPERIMENT_STATE_UNSPECIFIED" | "EXPIRED" | "RUNNING" | "ENDED";
+export type MediationAbExperimentStateEnum =
+  | "EXPERIMENT_STATE_UNSPECIFIED"
+  | "EXPIRED"
+  | "RUNNING"
+  | "ENDED";
 export const MediationAbExperimentStateEnum = /*@__PURE__*/ S.String;
 
-export type MediationAbExperimentVariantLeaderEnum = "VARIANT_LEADER_UNSPECIFIED" | "CONTROL" | "TREATMENT" | "INSUFFICIENT_DATA" | "TOO_EARLY_TO_CALL" | "NO_VARIANT_LEADER";
+export type MediationAbExperimentVariantLeaderEnum =
+  | "VARIANT_LEADER_UNSPECIFIED"
+  | "CONTROL"
+  | "TREATMENT"
+  | "INSUFFICIENT_DATA"
+  | "TOO_EARLY_TO_CALL"
+  | "NO_VARIANT_LEADER";
 export const MediationAbExperimentVariantLeaderEnum = /*@__PURE__*/ S.String;
 
 /** The mediation A/B experiment. */
@@ -459,20 +594,26 @@ export interface MediationAbExperiment {
   startTime?: string;
 }
 export const MediationAbExperiment = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "treatmentMediationLines": S.optional(MediationAbExperimentExperimentMediationLineList),
-  "experimentId": S.optional(S.String),
-  "controlMediationLines": S.optional(MediationAbExperimentExperimentMediationLineList),
-  "state": S.optional(MediationAbExperimentStateEnum),
-  "mediationGroupId": S.optional(S.String),
-  "name": S.optional(S.String),
-  "treatmentTrafficPercentage": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "variantLeader": S.optional(MediationAbExperimentVariantLeaderEnum),
-  "endTime": S.optional(S.String),
-  "startTime": S.optional(S.String),
-}),
-).annotate({ identifier: "MediationAbExperiment" }) as any as S.Schema<MediationAbExperiment>;
+  S.Struct({
+    treatmentMediationLines: S.optional(
+      MediationAbExperimentExperimentMediationLineList,
+    ),
+    experimentId: S.optional(S.String),
+    controlMediationLines: S.optional(
+      MediationAbExperimentExperimentMediationLineList,
+    ),
+    state: S.optional(MediationAbExperimentStateEnum),
+    mediationGroupId: S.optional(S.String),
+    name: S.optional(S.String),
+    treatmentTrafficPercentage: S.optional(S.String),
+    displayName: S.optional(S.String),
+    variantLeader: S.optional(MediationAbExperimentVariantLeaderEnum),
+    endTime: S.optional(S.String),
+    startTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MediationAbExperiment",
+}) as any as S.Schema<MediationAbExperiment>;
 
 export interface CreateAccountsMediationGroupsMediationAbExperimentsRequest {
   /** Required. The parent which owns the mediation group. Format: accounts/{publisher_id}/mediationGroups/{mediation_group_id} */
@@ -480,12 +621,21 @@ export interface CreateAccountsMediationGroupsMediationAbExperimentsRequest {
   /** Request body */
   body?: MediationAbExperiment;
 }
-export const CreateAccountsMediationGroupsMediationAbExperimentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(MediationAbExperiment.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+parent}/mediationAbExperiments","baseUrl":"https://admob.googleapis.com/"})),
-).annotate({ identifier: "CreateAccountsMediationGroupsMediationAbExperimentsRequest" }) as any as S.Schema<CreateAccountsMediationGroupsMediationAbExperimentsRequest>;
+export const CreateAccountsMediationGroupsMediationAbExperimentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(MediationAbExperiment.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+parent}/mediationAbExperiments",
+        baseUrl: "https://admob.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateAccountsMediationGroupsMediationAbExperimentsRequest",
+  }) as any as S.Schema<CreateAccountsMediationGroupsMediationAbExperimentsRequest>;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface Admob_Date {
@@ -497,11 +647,11 @@ export interface Admob_Date {
   month?: number;
 }
 export const Admob_Date = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "day": S.optional(S.Number),
-  "year": S.optional(S.Number),
-  "month": S.optional(S.Number),
-}),
+  S.Struct({
+    day: S.optional(S.Number),
+    year: S.optional(S.Number),
+    month: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "Admob_Date" }) as any as S.Schema<Admob_Date>;
 
 /** Specification of a single date range. Both dates are inclusive. */
@@ -512,23 +662,50 @@ export interface DateRange {
   startDate?: Admob_Date;
 }
 export const DateRange = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "endDate": S.optional(Admob_Date),
-  "startDate": S.optional(Admob_Date),
-}),
+  S.Struct({
+    endDate: S.optional(Admob_Date),
+    startDate: S.optional(Admob_Date),
+  }),
 ).annotate({ identifier: "DateRange" }) as any as S.Schema<DateRange>;
 
-export type CampaignReportSpecDimensionsItemEnum = "DIMENSION_UNSPECIFIED" | "DATE" | "CAMPAIGN_ID" | "CAMPAIGN_NAME" | "AD_ID" | "AD_NAME" | "PLACEMENT_ID" | "PLACEMENT_NAME" | "PLACEMENT_PLATFORM" | "COUNTRY" | "FORMAT";
+export type CampaignReportSpecDimensionsItemEnum =
+  | "DIMENSION_UNSPECIFIED"
+  | "DATE"
+  | "CAMPAIGN_ID"
+  | "CAMPAIGN_NAME"
+  | "AD_ID"
+  | "AD_NAME"
+  | "PLACEMENT_ID"
+  | "PLACEMENT_NAME"
+  | "PLACEMENT_PLATFORM"
+  | "COUNTRY"
+  | "FORMAT";
 export const CampaignReportSpecDimensionsItemEnum = /*@__PURE__*/ S.String;
 
-export type CampaignReportSpecDimensionsItemEnumList = ReadonlyArray<CampaignReportSpecDimensionsItemEnum | (string & {})>;
-export const CampaignReportSpecDimensionsItemEnumList = /*@__PURE__*/ S.Array(CampaignReportSpecDimensionsItemEnum) as any as S.Schema<CampaignReportSpecDimensionsItemEnumList>;
+export type CampaignReportSpecDimensionsItemEnumList = ReadonlyArray<
+  CampaignReportSpecDimensionsItemEnum | (string & {})
+>;
+export const CampaignReportSpecDimensionsItemEnumList = /*@__PURE__*/ S.Array(
+  CampaignReportSpecDimensionsItemEnum,
+) as any as S.Schema<CampaignReportSpecDimensionsItemEnumList>;
 
-export type CampaignReportSpecMetricsItemEnum = "METRIC_UNSPECIFIED" | "IMPRESSIONS" | "CLICKS" | "CLICK_THROUGH_RATE" | "INSTALLS" | "ESTIMATED_COST" | "AVERAGE_CPI" | "INTERACTIONS";
+export type CampaignReportSpecMetricsItemEnum =
+  | "METRIC_UNSPECIFIED"
+  | "IMPRESSIONS"
+  | "CLICKS"
+  | "CLICK_THROUGH_RATE"
+  | "INSTALLS"
+  | "ESTIMATED_COST"
+  | "AVERAGE_CPI"
+  | "INTERACTIONS";
 export const CampaignReportSpecMetricsItemEnum = /*@__PURE__*/ S.String;
 
-export type CampaignReportSpecMetricsItemEnumList = ReadonlyArray<CampaignReportSpecMetricsItemEnum | (string & {})>;
-export const CampaignReportSpecMetricsItemEnumList = /*@__PURE__*/ S.Array(CampaignReportSpecMetricsItemEnum) as any as S.Schema<CampaignReportSpecMetricsItemEnumList>;
+export type CampaignReportSpecMetricsItemEnumList = ReadonlyArray<
+  CampaignReportSpecMetricsItemEnum | (string & {})
+>;
+export const CampaignReportSpecMetricsItemEnumList = /*@__PURE__*/ S.Array(
+  CampaignReportSpecMetricsItemEnum,
+) as any as S.Schema<CampaignReportSpecMetricsItemEnumList>;
 
 /** The specification for generating a Campaign report. For example, the specification to get IMPRESSIONS and CLICKS sliced by CAMPAIGN_ID can look like the following example: { "date_range": { "start_date": {"year": 2021, "month": 12, "day": 1}, "end_date": {"year": 2021, "month": 12, "day": 30} }, "dimensions": ["CAMPAIGN_ID"], "metrics": ["IMPRESSIONS", "CLICKS"], } */
 export interface CampaignReportSpec {
@@ -542,13 +719,15 @@ export interface CampaignReportSpec {
   languageCode?: string;
 }
 export const CampaignReportSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dateRange": S.optional(DateRange),
-  "dimensions": S.optional(CampaignReportSpecDimensionsItemEnumList),
-  "metrics": S.optional(CampaignReportSpecMetricsItemEnumList),
-  "languageCode": S.optional(S.String),
-}),
-).annotate({ identifier: "CampaignReportSpec" }) as any as S.Schema<CampaignReportSpec>;
+  S.Struct({
+    dateRange: S.optional(DateRange),
+    dimensions: S.optional(CampaignReportSpecDimensionsItemEnumList),
+    metrics: S.optional(CampaignReportSpecMetricsItemEnumList),
+    languageCode: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CampaignReportSpec",
+}) as any as S.Schema<CampaignReportSpec>;
 
 /** Request to generate campaign report. */
 export interface GenerateCampaignReportRequest {
@@ -556,10 +735,12 @@ export interface GenerateCampaignReportRequest {
   reportSpec?: CampaignReportSpec;
 }
 export const GenerateCampaignReportRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "reportSpec": S.optional(CampaignReportSpec),
-}),
-).annotate({ identifier: "GenerateCampaignReportRequest" }) as any as S.Schema<GenerateCampaignReportRequest>;
+  S.Struct({
+    reportSpec: S.optional(CampaignReportSpec),
+  }),
+).annotate({
+  identifier: "GenerateCampaignReportRequest",
+}) as any as S.Schema<GenerateCampaignReportRequest>;
 
 export interface GenerateAccountsCampaignReportRequest {
   /** Resource name of the account to generate the report for. Example: accounts/pub-9876543210987654 */
@@ -567,12 +748,21 @@ export interface GenerateAccountsCampaignReportRequest {
   /** Request body */
   body?: GenerateCampaignReportRequest;
 }
-export const GenerateAccountsCampaignReportRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(GenerateCampaignReportRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+parent}/campaignReport:generate","baseUrl":"https://admob.googleapis.com/"})),
-).annotate({ identifier: "GenerateAccountsCampaignReportRequest" }) as any as S.Schema<GenerateAccountsCampaignReportRequest>;
+export const GenerateAccountsCampaignReportRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(GenerateCampaignReportRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+parent}/campaignReport:generate",
+        baseUrl: "https://admob.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GenerateAccountsCampaignReportRequest",
+}) as any as S.Schema<GenerateAccountsCampaignReportRequest>;
 
 /** Representation of a dimension value. */
 export interface ReportRowDimensionValue {
@@ -582,14 +772,21 @@ export interface ReportRowDimensionValue {
   displayLabel?: string;
 }
 export const ReportRowDimensionValue = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "value": S.optional(S.String),
-  "displayLabel": S.optional(S.String),
-}),
-).annotate({ identifier: "ReportRowDimensionValue" }) as any as S.Schema<ReportRowDimensionValue>;
+  S.Struct({
+    value: S.optional(S.String),
+    displayLabel: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ReportRowDimensionValue",
+}) as any as S.Schema<ReportRowDimensionValue>;
 
-export type ReportRowDimensionValueMap = { [key: string]: ReportRowDimensionValue | undefined };
-export const ReportRowDimensionValueMap = /*@__PURE__*/ S.Record(S.String, ReportRowDimensionValue) as any as S.Schema<ReportRowDimensionValueMap>;
+export type ReportRowDimensionValueMap = {
+  [key: string]: ReportRowDimensionValue | undefined;
+};
+export const ReportRowDimensionValueMap = /*@__PURE__*/ S.Record(
+  S.String,
+  ReportRowDimensionValue,
+) as any as S.Schema<ReportRowDimensionValueMap>;
 
 /** Representation of a metric value. */
 export interface ReportRowMetricValue {
@@ -601,15 +798,22 @@ export interface ReportRowMetricValue {
   integerValue?: string;
 }
 export const ReportRowMetricValue = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "microsValue": S.optional(S.String),
-  "doubleValue": S.optional(S.Number),
-  "integerValue": S.optional(S.String),
-}),
-).annotate({ identifier: "ReportRowMetricValue" }) as any as S.Schema<ReportRowMetricValue>;
+  S.Struct({
+    microsValue: S.optional(S.String),
+    doubleValue: S.optional(S.Number),
+    integerValue: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ReportRowMetricValue",
+}) as any as S.Schema<ReportRowMetricValue>;
 
-export type ReportRowMetricValueMap = { [key: string]: ReportRowMetricValue | undefined };
-export const ReportRowMetricValueMap = /*@__PURE__*/ S.Record(S.String, ReportRowMetricValue) as any as S.Schema<ReportRowMetricValueMap>;
+export type ReportRowMetricValueMap = {
+  [key: string]: ReportRowMetricValue | undefined;
+};
+export const ReportRowMetricValueMap = /*@__PURE__*/ S.Record(
+  S.String,
+  ReportRowMetricValue,
+) as any as S.Schema<ReportRowMetricValueMap>;
 
 /** A row of the returning report. */
 export interface ReportRow {
@@ -619,14 +823,16 @@ export interface ReportRow {
   metricValues?: ReportRowMetricValueMap;
 }
 export const ReportRow = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dimensionValues": S.optional(ReportRowDimensionValueMap),
-  "metricValues": S.optional(ReportRowMetricValueMap),
-}),
+  S.Struct({
+    dimensionValues: S.optional(ReportRowDimensionValueMap),
+    metricValues: S.optional(ReportRowMetricValueMap),
+  }),
 ).annotate({ identifier: "ReportRow" }) as any as S.Schema<ReportRow>;
 
 export type ReportRowList = ReadonlyArray<ReportRow>;
-export const ReportRowList = /*@__PURE__*/ S.Array(ReportRow) as any as S.Schema<ReportRowList>;
+export const ReportRowList = /*@__PURE__*/ S.Array(
+  ReportRow,
+) as any as S.Schema<ReportRowList>;
 
 /** Campaign Report API response. */
 export interface GenerateCampaignReportResponse {
@@ -634,16 +840,31 @@ export interface GenerateCampaignReportResponse {
   rows?: ReportRowList;
 }
 export const GenerateCampaignReportResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "rows": S.optional(ReportRowList),
-}),
-).annotate({ identifier: "GenerateCampaignReportResponse" }) as any as S.Schema<GenerateCampaignReportResponse>;
+  S.Struct({
+    rows: S.optional(ReportRowList),
+  }),
+).annotate({
+  identifier: "GenerateCampaignReportResponse",
+}) as any as S.Schema<GenerateCampaignReportResponse>;
 
-export type MediationReportSpecMetricsItemEnum = "METRIC_UNSPECIFIED" | "AD_REQUESTS" | "CLICKS" | "ESTIMATED_EARNINGS" | "IMPRESSIONS" | "IMPRESSION_CTR" | "MATCHED_REQUESTS" | "MATCH_RATE" | "OBSERVED_ECPM";
+export type MediationReportSpecMetricsItemEnum =
+  | "METRIC_UNSPECIFIED"
+  | "AD_REQUESTS"
+  | "CLICKS"
+  | "ESTIMATED_EARNINGS"
+  | "IMPRESSIONS"
+  | "IMPRESSION_CTR"
+  | "MATCHED_REQUESTS"
+  | "MATCH_RATE"
+  | "OBSERVED_ECPM";
 export const MediationReportSpecMetricsItemEnum = /*@__PURE__*/ S.String;
 
-export type MediationReportSpecMetricsItemEnumList = ReadonlyArray<MediationReportSpecMetricsItemEnum | (string & {})>;
-export const MediationReportSpecMetricsItemEnumList = /*@__PURE__*/ S.Array(MediationReportSpecMetricsItemEnum) as any as S.Schema<MediationReportSpecMetricsItemEnumList>;
+export type MediationReportSpecMetricsItemEnumList = ReadonlyArray<
+  MediationReportSpecMetricsItemEnum | (string & {})
+>;
+export const MediationReportSpecMetricsItemEnumList = /*@__PURE__*/ S.Array(
+  MediationReportSpecMetricsItemEnum,
+) as any as S.Schema<MediationReportSpecMetricsItemEnumList>;
 
 /** List of string values. */
 export interface StringList {
@@ -651,13 +872,30 @@ export interface StringList {
   values?: StringList_;
 }
 export const StringList = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "values": S.optional(StringList_),
-}),
+  S.Struct({
+    values: S.optional(StringList_),
+  }),
 ).annotate({ identifier: "StringList" }) as any as S.Schema<StringList>;
 
-export type MediationReportSpecDimensionFilterDimensionEnum = "DIMENSION_UNSPECIFIED" | "DATE" | "MONTH" | "WEEK" | "AD_SOURCE" | "AD_SOURCE_INSTANCE" | "AD_UNIT" | "APP" | "MEDIATION_GROUP" | "COUNTRY" | "FORMAT" | "PLATFORM" | "MOBILE_OS_VERSION" | "GMA_SDK_VERSION" | "APP_VERSION_NAME" | "SERVING_RESTRICTION";
-export const MediationReportSpecDimensionFilterDimensionEnum = /*@__PURE__*/ S.String;
+export type MediationReportSpecDimensionFilterDimensionEnum =
+  | "DIMENSION_UNSPECIFIED"
+  | "DATE"
+  | "MONTH"
+  | "WEEK"
+  | "AD_SOURCE"
+  | "AD_SOURCE_INSTANCE"
+  | "AD_UNIT"
+  | "APP"
+  | "MEDIATION_GROUP"
+  | "COUNTRY"
+  | "FORMAT"
+  | "PLATFORM"
+  | "MOBILE_OS_VERSION"
+  | "GMA_SDK_VERSION"
+  | "APP_VERSION_NAME"
+  | "SERVING_RESTRICTION";
+export const MediationReportSpecDimensionFilterDimensionEnum =
+  /*@__PURE__*/ S.String;
 
 /** Describes which report rows to match based on their dimension values. */
 export interface MediationReportSpecDimensionFilter {
@@ -667,29 +905,84 @@ export interface MediationReportSpecDimensionFilter {
   dimension?: MediationReportSpecDimensionFilterDimensionEnum | (string & {});
 }
 export const MediationReportSpecDimensionFilter = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "matchesAny": S.optional(StringList),
-  "dimension": S.optional(MediationReportSpecDimensionFilterDimensionEnum),
-}),
-).annotate({ identifier: "MediationReportSpecDimensionFilter" }) as any as S.Schema<MediationReportSpecDimensionFilter>;
+  S.Struct({
+    matchesAny: S.optional(StringList),
+    dimension: S.optional(MediationReportSpecDimensionFilterDimensionEnum),
+  }),
+).annotate({
+  identifier: "MediationReportSpecDimensionFilter",
+}) as any as S.Schema<MediationReportSpecDimensionFilter>;
 
-export type MediationReportSpecDimensionFilterList = ReadonlyArray<MediationReportSpecDimensionFilter>;
-export const MediationReportSpecDimensionFilterList = /*@__PURE__*/ S.Array(MediationReportSpecDimensionFilter) as any as S.Schema<MediationReportSpecDimensionFilterList>;
+export type MediationReportSpecDimensionFilterList =
+  ReadonlyArray<MediationReportSpecDimensionFilter>;
+export const MediationReportSpecDimensionFilterList = /*@__PURE__*/ S.Array(
+  MediationReportSpecDimensionFilter,
+) as any as S.Schema<MediationReportSpecDimensionFilterList>;
 
-export type MediationReportSpecDimensionsItemEnum = "DIMENSION_UNSPECIFIED" | "DATE" | "MONTH" | "WEEK" | "AD_SOURCE" | "AD_SOURCE_INSTANCE" | "AD_UNIT" | "APP" | "MEDIATION_GROUP" | "COUNTRY" | "FORMAT" | "PLATFORM" | "MOBILE_OS_VERSION" | "GMA_SDK_VERSION" | "APP_VERSION_NAME" | "SERVING_RESTRICTION";
+export type MediationReportSpecDimensionsItemEnum =
+  | "DIMENSION_UNSPECIFIED"
+  | "DATE"
+  | "MONTH"
+  | "WEEK"
+  | "AD_SOURCE"
+  | "AD_SOURCE_INSTANCE"
+  | "AD_UNIT"
+  | "APP"
+  | "MEDIATION_GROUP"
+  | "COUNTRY"
+  | "FORMAT"
+  | "PLATFORM"
+  | "MOBILE_OS_VERSION"
+  | "GMA_SDK_VERSION"
+  | "APP_VERSION_NAME"
+  | "SERVING_RESTRICTION";
 export const MediationReportSpecDimensionsItemEnum = /*@__PURE__*/ S.String;
 
-export type MediationReportSpecDimensionsItemEnumList = ReadonlyArray<MediationReportSpecDimensionsItemEnum | (string & {})>;
-export const MediationReportSpecDimensionsItemEnumList = /*@__PURE__*/ S.Array(MediationReportSpecDimensionsItemEnum) as any as S.Schema<MediationReportSpecDimensionsItemEnumList>;
+export type MediationReportSpecDimensionsItemEnumList = ReadonlyArray<
+  MediationReportSpecDimensionsItemEnum | (string & {})
+>;
+export const MediationReportSpecDimensionsItemEnumList = /*@__PURE__*/ S.Array(
+  MediationReportSpecDimensionsItemEnum,
+) as any as S.Schema<MediationReportSpecDimensionsItemEnumList>;
 
-export type MediationReportSpecSortConditionDimensionEnum = "DIMENSION_UNSPECIFIED" | "DATE" | "MONTH" | "WEEK" | "AD_SOURCE" | "AD_SOURCE_INSTANCE" | "AD_UNIT" | "APP" | "MEDIATION_GROUP" | "COUNTRY" | "FORMAT" | "PLATFORM" | "MOBILE_OS_VERSION" | "GMA_SDK_VERSION" | "APP_VERSION_NAME" | "SERVING_RESTRICTION";
-export const MediationReportSpecSortConditionDimensionEnum = /*@__PURE__*/ S.String;
+export type MediationReportSpecSortConditionDimensionEnum =
+  | "DIMENSION_UNSPECIFIED"
+  | "DATE"
+  | "MONTH"
+  | "WEEK"
+  | "AD_SOURCE"
+  | "AD_SOURCE_INSTANCE"
+  | "AD_UNIT"
+  | "APP"
+  | "MEDIATION_GROUP"
+  | "COUNTRY"
+  | "FORMAT"
+  | "PLATFORM"
+  | "MOBILE_OS_VERSION"
+  | "GMA_SDK_VERSION"
+  | "APP_VERSION_NAME"
+  | "SERVING_RESTRICTION";
+export const MediationReportSpecSortConditionDimensionEnum =
+  /*@__PURE__*/ S.String;
 
-export type MediationReportSpecSortConditionOrderEnum = "SORT_ORDER_UNSPECIFIED" | "ASCENDING" | "DESCENDING";
+export type MediationReportSpecSortConditionOrderEnum =
+  | "SORT_ORDER_UNSPECIFIED"
+  | "ASCENDING"
+  | "DESCENDING";
 export const MediationReportSpecSortConditionOrderEnum = /*@__PURE__*/ S.String;
 
-export type MediationReportSpecSortConditionMetricEnum = "METRIC_UNSPECIFIED" | "AD_REQUESTS" | "CLICKS" | "ESTIMATED_EARNINGS" | "IMPRESSIONS" | "IMPRESSION_CTR" | "MATCHED_REQUESTS" | "MATCH_RATE" | "OBSERVED_ECPM";
-export const MediationReportSpecSortConditionMetricEnum = /*@__PURE__*/ S.String;
+export type MediationReportSpecSortConditionMetricEnum =
+  | "METRIC_UNSPECIFIED"
+  | "AD_REQUESTS"
+  | "CLICKS"
+  | "ESTIMATED_EARNINGS"
+  | "IMPRESSIONS"
+  | "IMPRESSION_CTR"
+  | "MATCHED_REQUESTS"
+  | "MATCH_RATE"
+  | "OBSERVED_ECPM";
+export const MediationReportSpecSortConditionMetricEnum =
+  /*@__PURE__*/ S.String;
 
 /** Sorting direction to be applied on a dimension or a metric. */
 export interface MediationReportSpecSortCondition {
@@ -701,15 +994,20 @@ export interface MediationReportSpecSortCondition {
   metric?: MediationReportSpecSortConditionMetricEnum | (string & {});
 }
 export const MediationReportSpecSortCondition = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dimension": S.optional(MediationReportSpecSortConditionDimensionEnum),
-  "order": S.optional(MediationReportSpecSortConditionOrderEnum),
-  "metric": S.optional(MediationReportSpecSortConditionMetricEnum),
-}),
-).annotate({ identifier: "MediationReportSpecSortCondition" }) as any as S.Schema<MediationReportSpecSortCondition>;
+  S.Struct({
+    dimension: S.optional(MediationReportSpecSortConditionDimensionEnum),
+    order: S.optional(MediationReportSpecSortConditionOrderEnum),
+    metric: S.optional(MediationReportSpecSortConditionMetricEnum),
+  }),
+).annotate({
+  identifier: "MediationReportSpecSortCondition",
+}) as any as S.Schema<MediationReportSpecSortCondition>;
 
-export type MediationReportSpecSortConditionList = ReadonlyArray<MediationReportSpecSortCondition>;
-export const MediationReportSpecSortConditionList = /*@__PURE__*/ S.Array(MediationReportSpecSortCondition) as any as S.Schema<MediationReportSpecSortConditionList>;
+export type MediationReportSpecSortConditionList =
+  ReadonlyArray<MediationReportSpecSortCondition>;
+export const MediationReportSpecSortConditionList = /*@__PURE__*/ S.Array(
+  MediationReportSpecSortCondition,
+) as any as S.Schema<MediationReportSpecSortConditionList>;
 
 /** Localization settings for reports, such as currency and language. It affects how metrics are calculated. */
 export interface LocalizationSettings {
@@ -719,11 +1017,13 @@ export interface LocalizationSettings {
   languageCode?: string;
 }
 export const LocalizationSettings = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "currencyCode": S.optional(S.String),
-  "languageCode": S.optional(S.String),
-}),
-).annotate({ identifier: "LocalizationSettings" }) as any as S.Schema<LocalizationSettings>;
+  S.Struct({
+    currencyCode: S.optional(S.String),
+    languageCode: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "LocalizationSettings",
+}) as any as S.Schema<LocalizationSettings>;
 
 /** The specification for generating an AdMob Mediation report. For example, the specification to get observed ECPM sliced by ad source and app for the 'US' and 'CN' countries can look like the following example: { "date_range": { "start_date": {"year": 2021, "month": 9, "day": 1}, "end_date": {"year": 2021, "month": 9, "day": 30} }, "dimensions": ["AD_SOURCE", "APP", "COUNTRY"], "metrics": ["OBSERVED_ECPM"], "dimension_filters": [ { "dimension": "COUNTRY", "matches_any": {"values": [{"value": "US", "value": "CN"}]} } ], "sort_conditions": [ {"dimension":"APP", order: "ASCENDING"} ], "localization_settings": { "currency_code": "USD", "language_code": "en-US" } } For a better understanding, you can treat the preceding specification like the following pseudo SQL: SELECT AD_SOURCE, APP, COUNTRY, OBSERVED_ECPM FROM MEDIATION_REPORT WHERE DATE >= '2021-09-01' AND DATE <= '2021-09-30' AND COUNTRY IN ('US', 'CN') GROUP BY AD_SOURCE, APP, COUNTRY ORDER BY APP ASC; */
 export interface MediationReportSpec {
@@ -745,17 +1045,19 @@ export interface MediationReportSpec {
   localizationSettings?: LocalizationSettings;
 }
 export const MediationReportSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "metrics": S.optional(MediationReportSpecMetricsItemEnumList),
-  "dimensionFilters": S.optional(MediationReportSpecDimensionFilterList),
-  "timeZone": S.optional(S.String),
-  "dateRange": S.optional(DateRange),
-  "dimensions": S.optional(MediationReportSpecDimensionsItemEnumList),
-  "maxReportRows": S.optional(S.Number),
-  "sortConditions": S.optional(MediationReportSpecSortConditionList),
-  "localizationSettings": S.optional(LocalizationSettings),
-}),
-).annotate({ identifier: "MediationReportSpec" }) as any as S.Schema<MediationReportSpec>;
+  S.Struct({
+    metrics: S.optional(MediationReportSpecMetricsItemEnumList),
+    dimensionFilters: S.optional(MediationReportSpecDimensionFilterList),
+    timeZone: S.optional(S.String),
+    dateRange: S.optional(DateRange),
+    dimensions: S.optional(MediationReportSpecDimensionsItemEnumList),
+    maxReportRows: S.optional(S.Number),
+    sortConditions: S.optional(MediationReportSpecSortConditionList),
+    localizationSettings: S.optional(LocalizationSettings),
+  }),
+).annotate({
+  identifier: "MediationReportSpec",
+}) as any as S.Schema<MediationReportSpec>;
 
 /** Request to generate an AdMob Mediation report. */
 export interface GenerateMediationReportRequest {
@@ -763,10 +1065,12 @@ export interface GenerateMediationReportRequest {
   reportSpec?: MediationReportSpec;
 }
 export const GenerateMediationReportRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "reportSpec": S.optional(MediationReportSpec),
-}),
-).annotate({ identifier: "GenerateMediationReportRequest" }) as any as S.Schema<GenerateMediationReportRequest>;
+  S.Struct({
+    reportSpec: S.optional(MediationReportSpec),
+  }),
+).annotate({
+  identifier: "GenerateMediationReportRequest",
+}) as any as S.Schema<GenerateMediationReportRequest>;
 
 export interface GenerateAccountsMediationReportRequest {
   /** Resource name of the account to generate the report for. Example: accounts/pub-9876543210987654 */
@@ -774,12 +1078,21 @@ export interface GenerateAccountsMediationReportRequest {
   /** Request body */
   body?: GenerateMediationReportRequest;
 }
-export const GenerateAccountsMediationReportRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(GenerateMediationReportRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+parent}/mediationReport:generate","baseUrl":"https://admob.googleapis.com/"})),
-).annotate({ identifier: "GenerateAccountsMediationReportRequest" }) as any as S.Schema<GenerateAccountsMediationReportRequest>;
+export const GenerateAccountsMediationReportRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(GenerateMediationReportRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+parent}/mediationReport:generate",
+        baseUrl: "https://admob.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GenerateAccountsMediationReportRequest",
+}) as any as S.Schema<GenerateAccountsMediationReportRequest>;
 
 /** Groups data helps to treat the generated report. Always sent as a first message in the stream response. */
 export interface ReportHeader {
@@ -791,14 +1104,19 @@ export interface ReportHeader {
   reportingTimeZone?: string;
 }
 export const ReportHeader = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "localizationSettings": S.optional(LocalizationSettings),
-  "dateRange": S.optional(DateRange),
-  "reportingTimeZone": S.optional(S.String),
-}),
+  S.Struct({
+    localizationSettings: S.optional(LocalizationSettings),
+    dateRange: S.optional(DateRange),
+    reportingTimeZone: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ReportHeader" }) as any as S.Schema<ReportHeader>;
 
-export type ReportWarningTypeEnum = "TYPE_UNSPECIFIED" | "DATA_BEFORE_ACCOUNT_TIMEZONE_CHANGE" | "DATA_DELAYED" | "OTHER" | "REPORT_CURRENCY_NOT_ACCOUNT_CURRENCY";
+export type ReportWarningTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "DATA_BEFORE_ACCOUNT_TIMEZONE_CHANGE"
+  | "DATA_DELAYED"
+  | "OTHER"
+  | "REPORT_CURRENCY_NOT_ACCOUNT_CURRENCY";
 export const ReportWarningTypeEnum = /*@__PURE__*/ S.String;
 
 /** Warnings associated with generation of the report. */
@@ -809,14 +1127,16 @@ export interface ReportWarning {
   description?: string;
 }
 export const ReportWarning = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(ReportWarningTypeEnum),
-  "description": S.optional(S.String),
-}),
+  S.Struct({
+    type: S.optional(ReportWarningTypeEnum),
+    description: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ReportWarning" }) as any as S.Schema<ReportWarning>;
 
 export type ReportWarningList = ReadonlyArray<ReportWarning>;
-export const ReportWarningList = /*@__PURE__*/ S.Array(ReportWarning) as any as S.Schema<ReportWarningList>;
+export const ReportWarningList = /*@__PURE__*/ S.Array(
+  ReportWarning,
+) as any as S.Schema<ReportWarningList>;
 
 /** Groups data available after report generation, for example, warnings and row counts. Always sent as the last message in the stream response. */
 export interface ReportFooter {
@@ -826,10 +1146,10 @@ export interface ReportFooter {
   matchingRowCount?: string;
 }
 export const ReportFooter = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "warnings": S.optional(ReportWarningList),
-  "matchingRowCount": S.optional(S.String),
-}),
+  S.Struct({
+    warnings: S.optional(ReportWarningList),
+    matchingRowCount: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ReportFooter" }) as any as S.Schema<ReportFooter>;
 
 /** The streaming response for the AdMob Mediation report where the first response contains the report header, then a stream of row responses, and finally a footer as the last response message. For example: [{ "header": { "date_range": { "start_date": {"year": 2018, "month": 9, "day": 1}, "end_date": {"year": 2018, "month": 9, "day": 1} }, "localization_settings": { "currency_code": "USD", "language_code": "en-US" } } }, { "row": { "dimension_values": { "DATE": {"value": "20180918"}, "APP": { "value": "ca-app-pub-8123415297019784~1001342552", "display_label": "My app name!" } }, "metric_values": { "ESTIMATED_EARNINGS": {"decimal_value": "1324746"} } } }, { "footer": {"matching_row_count": 1} }] */
@@ -842,20 +1162,50 @@ export interface GenerateMediationReportResponse {
   footer?: ReportFooter;
 }
 export const GenerateMediationReportResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "header": S.optional(ReportHeader),
-  "row": S.optional(ReportRow),
-  "footer": S.optional(ReportFooter),
-}),
-).annotate({ identifier: "GenerateMediationReportResponse" }) as any as S.Schema<GenerateMediationReportResponse>;
+  S.Struct({
+    header: S.optional(ReportHeader),
+    row: S.optional(ReportRow),
+    footer: S.optional(ReportFooter),
+  }),
+).annotate({
+  identifier: "GenerateMediationReportResponse",
+}) as any as S.Schema<GenerateMediationReportResponse>;
 
-export type NetworkReportSpecSortConditionMetricEnum = "METRIC_UNSPECIFIED" | "AD_REQUESTS" | "CLICKS" | "ESTIMATED_EARNINGS" | "IMPRESSIONS" | "IMPRESSION_CTR" | "IMPRESSION_RPM" | "MATCHED_REQUESTS" | "MATCH_RATE" | "SHOW_RATE";
+export type NetworkReportSpecSortConditionMetricEnum =
+  | "METRIC_UNSPECIFIED"
+  | "AD_REQUESTS"
+  | "CLICKS"
+  | "ESTIMATED_EARNINGS"
+  | "IMPRESSIONS"
+  | "IMPRESSION_CTR"
+  | "IMPRESSION_RPM"
+  | "MATCHED_REQUESTS"
+  | "MATCH_RATE"
+  | "SHOW_RATE";
 export const NetworkReportSpecSortConditionMetricEnum = /*@__PURE__*/ S.String;
 
-export type NetworkReportSpecSortConditionDimensionEnum = "DIMENSION_UNSPECIFIED" | "DATE" | "MONTH" | "WEEK" | "AD_UNIT" | "APP" | "AD_TYPE" | "COUNTRY" | "FORMAT" | "PLATFORM" | "MOBILE_OS_VERSION" | "GMA_SDK_VERSION" | "APP_VERSION_NAME" | "SERVING_RESTRICTION";
-export const NetworkReportSpecSortConditionDimensionEnum = /*@__PURE__*/ S.String;
+export type NetworkReportSpecSortConditionDimensionEnum =
+  | "DIMENSION_UNSPECIFIED"
+  | "DATE"
+  | "MONTH"
+  | "WEEK"
+  | "AD_UNIT"
+  | "APP"
+  | "AD_TYPE"
+  | "COUNTRY"
+  | "FORMAT"
+  | "PLATFORM"
+  | "MOBILE_OS_VERSION"
+  | "GMA_SDK_VERSION"
+  | "APP_VERSION_NAME"
+  | "SERVING_RESTRICTION";
+export const NetworkReportSpecSortConditionDimensionEnum =
+  /*@__PURE__*/ S.String;
 
-export type NetworkReportSpecSortConditionOrderEnum = "SORT_ORDER_UNSPECIFIED" | "ASCENDING" | "DESCENDING";
+export type NetworkReportSpecSortConditionOrderEnum =
+  | "SORT_ORDER_UNSPECIFIED"
+  | "ASCENDING"
+  | "DESCENDING";
 export const NetworkReportSpecSortConditionOrderEnum = /*@__PURE__*/ S.String;
 
 /** Sorting direction to be applied on a dimension or a metric. */
@@ -868,30 +1218,82 @@ export interface NetworkReportSpecSortCondition {
   order?: NetworkReportSpecSortConditionOrderEnum | (string & {});
 }
 export const NetworkReportSpecSortCondition = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "metric": S.optional(NetworkReportSpecSortConditionMetricEnum),
-  "dimension": S.optional(NetworkReportSpecSortConditionDimensionEnum),
-  "order": S.optional(NetworkReportSpecSortConditionOrderEnum),
-}),
-).annotate({ identifier: "NetworkReportSpecSortCondition" }) as any as S.Schema<NetworkReportSpecSortCondition>;
+  S.Struct({
+    metric: S.optional(NetworkReportSpecSortConditionMetricEnum),
+    dimension: S.optional(NetworkReportSpecSortConditionDimensionEnum),
+    order: S.optional(NetworkReportSpecSortConditionOrderEnum),
+  }),
+).annotate({
+  identifier: "NetworkReportSpecSortCondition",
+}) as any as S.Schema<NetworkReportSpecSortCondition>;
 
-export type NetworkReportSpecSortConditionList = ReadonlyArray<NetworkReportSpecSortCondition>;
-export const NetworkReportSpecSortConditionList = /*@__PURE__*/ S.Array(NetworkReportSpecSortCondition) as any as S.Schema<NetworkReportSpecSortConditionList>;
+export type NetworkReportSpecSortConditionList =
+  ReadonlyArray<NetworkReportSpecSortCondition>;
+export const NetworkReportSpecSortConditionList = /*@__PURE__*/ S.Array(
+  NetworkReportSpecSortCondition,
+) as any as S.Schema<NetworkReportSpecSortConditionList>;
 
-export type NetworkReportSpecDimensionsItemEnum = "DIMENSION_UNSPECIFIED" | "DATE" | "MONTH" | "WEEK" | "AD_UNIT" | "APP" | "AD_TYPE" | "COUNTRY" | "FORMAT" | "PLATFORM" | "MOBILE_OS_VERSION" | "GMA_SDK_VERSION" | "APP_VERSION_NAME" | "SERVING_RESTRICTION";
+export type NetworkReportSpecDimensionsItemEnum =
+  | "DIMENSION_UNSPECIFIED"
+  | "DATE"
+  | "MONTH"
+  | "WEEK"
+  | "AD_UNIT"
+  | "APP"
+  | "AD_TYPE"
+  | "COUNTRY"
+  | "FORMAT"
+  | "PLATFORM"
+  | "MOBILE_OS_VERSION"
+  | "GMA_SDK_VERSION"
+  | "APP_VERSION_NAME"
+  | "SERVING_RESTRICTION";
 export const NetworkReportSpecDimensionsItemEnum = /*@__PURE__*/ S.String;
 
-export type NetworkReportSpecDimensionsItemEnumList = ReadonlyArray<NetworkReportSpecDimensionsItemEnum | (string & {})>;
-export const NetworkReportSpecDimensionsItemEnumList = /*@__PURE__*/ S.Array(NetworkReportSpecDimensionsItemEnum) as any as S.Schema<NetworkReportSpecDimensionsItemEnumList>;
+export type NetworkReportSpecDimensionsItemEnumList = ReadonlyArray<
+  NetworkReportSpecDimensionsItemEnum | (string & {})
+>;
+export const NetworkReportSpecDimensionsItemEnumList = /*@__PURE__*/ S.Array(
+  NetworkReportSpecDimensionsItemEnum,
+) as any as S.Schema<NetworkReportSpecDimensionsItemEnumList>;
 
-export type NetworkReportSpecMetricsItemEnum = "METRIC_UNSPECIFIED" | "AD_REQUESTS" | "CLICKS" | "ESTIMATED_EARNINGS" | "IMPRESSIONS" | "IMPRESSION_CTR" | "IMPRESSION_RPM" | "MATCHED_REQUESTS" | "MATCH_RATE" | "SHOW_RATE";
+export type NetworkReportSpecMetricsItemEnum =
+  | "METRIC_UNSPECIFIED"
+  | "AD_REQUESTS"
+  | "CLICKS"
+  | "ESTIMATED_EARNINGS"
+  | "IMPRESSIONS"
+  | "IMPRESSION_CTR"
+  | "IMPRESSION_RPM"
+  | "MATCHED_REQUESTS"
+  | "MATCH_RATE"
+  | "SHOW_RATE";
 export const NetworkReportSpecMetricsItemEnum = /*@__PURE__*/ S.String;
 
-export type NetworkReportSpecMetricsItemEnumList = ReadonlyArray<NetworkReportSpecMetricsItemEnum | (string & {})>;
-export const NetworkReportSpecMetricsItemEnumList = /*@__PURE__*/ S.Array(NetworkReportSpecMetricsItemEnum) as any as S.Schema<NetworkReportSpecMetricsItemEnumList>;
+export type NetworkReportSpecMetricsItemEnumList = ReadonlyArray<
+  NetworkReportSpecMetricsItemEnum | (string & {})
+>;
+export const NetworkReportSpecMetricsItemEnumList = /*@__PURE__*/ S.Array(
+  NetworkReportSpecMetricsItemEnum,
+) as any as S.Schema<NetworkReportSpecMetricsItemEnumList>;
 
-export type NetworkReportSpecDimensionFilterDimensionEnum = "DIMENSION_UNSPECIFIED" | "DATE" | "MONTH" | "WEEK" | "AD_UNIT" | "APP" | "AD_TYPE" | "COUNTRY" | "FORMAT" | "PLATFORM" | "MOBILE_OS_VERSION" | "GMA_SDK_VERSION" | "APP_VERSION_NAME" | "SERVING_RESTRICTION";
-export const NetworkReportSpecDimensionFilterDimensionEnum = /*@__PURE__*/ S.String;
+export type NetworkReportSpecDimensionFilterDimensionEnum =
+  | "DIMENSION_UNSPECIFIED"
+  | "DATE"
+  | "MONTH"
+  | "WEEK"
+  | "AD_UNIT"
+  | "APP"
+  | "AD_TYPE"
+  | "COUNTRY"
+  | "FORMAT"
+  | "PLATFORM"
+  | "MOBILE_OS_VERSION"
+  | "GMA_SDK_VERSION"
+  | "APP_VERSION_NAME"
+  | "SERVING_RESTRICTION";
+export const NetworkReportSpecDimensionFilterDimensionEnum =
+  /*@__PURE__*/ S.String;
 
 /** Describes which report rows to match based on their dimension values. */
 export interface NetworkReportSpecDimensionFilter {
@@ -901,14 +1303,19 @@ export interface NetworkReportSpecDimensionFilter {
   dimension?: NetworkReportSpecDimensionFilterDimensionEnum | (string & {});
 }
 export const NetworkReportSpecDimensionFilter = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "matchesAny": S.optional(StringList),
-  "dimension": S.optional(NetworkReportSpecDimensionFilterDimensionEnum),
-}),
-).annotate({ identifier: "NetworkReportSpecDimensionFilter" }) as any as S.Schema<NetworkReportSpecDimensionFilter>;
+  S.Struct({
+    matchesAny: S.optional(StringList),
+    dimension: S.optional(NetworkReportSpecDimensionFilterDimensionEnum),
+  }),
+).annotate({
+  identifier: "NetworkReportSpecDimensionFilter",
+}) as any as S.Schema<NetworkReportSpecDimensionFilter>;
 
-export type NetworkReportSpecDimensionFilterList = ReadonlyArray<NetworkReportSpecDimensionFilter>;
-export const NetworkReportSpecDimensionFilterList = /*@__PURE__*/ S.Array(NetworkReportSpecDimensionFilter) as any as S.Schema<NetworkReportSpecDimensionFilterList>;
+export type NetworkReportSpecDimensionFilterList =
+  ReadonlyArray<NetworkReportSpecDimensionFilter>;
+export const NetworkReportSpecDimensionFilterList = /*@__PURE__*/ S.Array(
+  NetworkReportSpecDimensionFilter,
+) as any as S.Schema<NetworkReportSpecDimensionFilterList>;
 
 /** The specification for generating an AdMob Network report. For example, the specification to get clicks and estimated earnings for only the 'US' and 'CN' countries can look like the following example: { 'date_range': { 'start_date': {'year': 2021, 'month': 9, 'day': 1}, 'end_date': {'year': 2021, 'month': 9, 'day': 30} }, 'dimensions': ['DATE', 'APP', 'COUNTRY'], 'metrics': ['CLICKS', 'ESTIMATED_EARNINGS'], 'dimension_filters': [ { 'dimension': 'COUNTRY', 'matches_any': {'values': [{'value': 'US', 'value': 'CN'}]} } ], 'sort_conditions': [ {'dimension':'APP', order: 'ASCENDING'}, {'metric':'CLICKS', order: 'DESCENDING'} ], 'localization_settings': { 'currency_code': 'USD', 'language_code': 'en-US' } } For a better understanding, you can treat the preceding specification like the following pseudo SQL: SELECT DATE, APP, COUNTRY, CLICKS, ESTIMATED_EARNINGS FROM NETWORK_REPORT WHERE DATE >= '2021-09-01' AND DATE <= '2021-09-30' AND COUNTRY IN ('US', 'CN') GROUP BY DATE, APP, COUNTRY ORDER BY APP ASC, CLICKS DESC; */
 export interface NetworkReportSpec {
@@ -930,17 +1337,19 @@ export interface NetworkReportSpec {
   timeZone?: string;
 }
 export const NetworkReportSpec = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "localizationSettings": S.optional(LocalizationSettings),
-  "sortConditions": S.optional(NetworkReportSpecSortConditionList),
-  "maxReportRows": S.optional(S.Number),
-  "dateRange": S.optional(DateRange),
-  "dimensions": S.optional(NetworkReportSpecDimensionsItemEnumList),
-  "metrics": S.optional(NetworkReportSpecMetricsItemEnumList),
-  "dimensionFilters": S.optional(NetworkReportSpecDimensionFilterList),
-  "timeZone": S.optional(S.String),
-}),
-).annotate({ identifier: "NetworkReportSpec" }) as any as S.Schema<NetworkReportSpec>;
+  S.Struct({
+    localizationSettings: S.optional(LocalizationSettings),
+    sortConditions: S.optional(NetworkReportSpecSortConditionList),
+    maxReportRows: S.optional(S.Number),
+    dateRange: S.optional(DateRange),
+    dimensions: S.optional(NetworkReportSpecDimensionsItemEnumList),
+    metrics: S.optional(NetworkReportSpecMetricsItemEnumList),
+    dimensionFilters: S.optional(NetworkReportSpecDimensionFilterList),
+    timeZone: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "NetworkReportSpec",
+}) as any as S.Schema<NetworkReportSpec>;
 
 /** Request to generate an AdMob Network report. */
 export interface GenerateNetworkReportRequest {
@@ -948,10 +1357,12 @@ export interface GenerateNetworkReportRequest {
   reportSpec?: NetworkReportSpec;
 }
 export const GenerateNetworkReportRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "reportSpec": S.optional(NetworkReportSpec),
-}),
-).annotate({ identifier: "GenerateNetworkReportRequest" }) as any as S.Schema<GenerateNetworkReportRequest>;
+  S.Struct({
+    reportSpec: S.optional(NetworkReportSpec),
+  }),
+).annotate({
+  identifier: "GenerateNetworkReportRequest",
+}) as any as S.Schema<GenerateNetworkReportRequest>;
 
 export interface GenerateAccountsNetworkReportRequest {
   /** Resource name of the account to generate the report for. Example: accounts/pub-9876543210987654 */
@@ -959,12 +1370,21 @@ export interface GenerateAccountsNetworkReportRequest {
   /** Request body */
   body?: GenerateNetworkReportRequest;
 }
-export const GenerateAccountsNetworkReportRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(GenerateNetworkReportRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+parent}/networkReport:generate","baseUrl":"https://admob.googleapis.com/"})),
-).annotate({ identifier: "GenerateAccountsNetworkReportRequest" }) as any as S.Schema<GenerateAccountsNetworkReportRequest>;
+export const GenerateAccountsNetworkReportRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(GenerateNetworkReportRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+parent}/networkReport:generate",
+        baseUrl: "https://admob.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GenerateAccountsNetworkReportRequest",
+}) as any as S.Schema<GenerateAccountsNetworkReportRequest>;
 
 /** The streaming response for the AdMob Network report where the first response contains the report header, then a stream of row responses, and finally a footer as the last response message. For example: [{ "header": { "dateRange": { "startDate": {"year": 2018, "month": 9, "day": 1}, "endDate": {"year": 2018, "month": 9, "day": 1} }, "localizationSettings": { "currencyCode": "USD", "languageCode": "en-US" } } }, { "row": { "dimensionValues": { "DATE": {"value": "20180918"}, "APP": { "value": "ca-app-pub-8123415297019784~1001342552", displayLabel: "My app name!" } }, "metricValues": { "ESTIMATED_EARNINGS": {"microsValue": 6500000} } } }, { "footer": {"matchingRowCount": 1} }] */
 export interface GenerateNetworkReportResponse {
@@ -976,22 +1396,32 @@ export interface GenerateNetworkReportResponse {
   footer?: ReportFooter;
 }
 export const GenerateNetworkReportResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "header": S.optional(ReportHeader),
-  "row": S.optional(ReportRow),
-  "footer": S.optional(ReportFooter),
-}),
-).annotate({ identifier: "GenerateNetworkReportResponse" }) as any as S.Schema<GenerateNetworkReportResponse>;
+  S.Struct({
+    header: S.optional(ReportHeader),
+    row: S.optional(ReportRow),
+    footer: S.optional(ReportFooter),
+  }),
+).annotate({
+  identifier: "GenerateNetworkReportResponse",
+}) as any as S.Schema<GenerateNetworkReportResponse>;
 
 export interface GetAccountsRequest {
   /** Resource name of the publisher account to retrieve. Example: accounts/pub-9876543210987654 */
   name: string;
 }
 export const GetAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+name}","baseUrl":"https://admob.googleapis.com/"})),
-).annotate({ identifier: "GetAccountsRequest" }) as any as S.Schema<GetAccountsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://admob.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetAccountsRequest",
+}) as any as S.Schema<GetAccountsRequest>;
 
 /** A publisher account contains information relevant to the use of this API, such as the time zone used for the reports. */
 export interface PublisherAccount {
@@ -1005,13 +1435,15 @@ export interface PublisherAccount {
   currencyCode?: string;
 }
 export const PublisherAccount = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "reportingTimeZone": S.optional(S.String),
-  "name": S.optional(S.String),
-  "publisherId": S.optional(S.String),
-  "currencyCode": S.optional(S.String),
-}),
-).annotate({ identifier: "PublisherAccount" }) as any as S.Schema<PublisherAccount>;
+  S.Struct({
+    reportingTimeZone: S.optional(S.String),
+    name: S.optional(S.String),
+    publisherId: S.optional(S.String),
+    currencyCode: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PublisherAccount",
+}) as any as S.Schema<PublisherAccount>;
 
 export interface ListAccountsRequest {
   /** The value returned by the last `ListPublisherAccountsResponse`; indicates that this is a continuation of a prior `ListPublisherAccounts` call, and that the system should return the next page of data. */
@@ -1020,14 +1452,24 @@ export interface ListAccountsRequest {
   pageSize?: number;
 }
 export const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/accounts","baseUrl":"https://admob.googleapis.com/"})),
-).annotate({ identifier: "ListAccountsRequest" }) as any as S.Schema<ListAccountsRequest>;
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/accounts",
+      baseUrl: "https://admob.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListAccountsRequest",
+}) as any as S.Schema<ListAccountsRequest>;
 
 export type PublisherAccountList = ReadonlyArray<PublisherAccount>;
-export const PublisherAccountList = /*@__PURE__*/ S.Array(PublisherAccount) as any as S.Schema<PublisherAccountList>;
+export const PublisherAccountList = /*@__PURE__*/ S.Array(
+  PublisherAccount,
+) as any as S.Schema<PublisherAccountList>;
 
 /** Response for the publisher account list request. */
 export interface ListPublisherAccountsResponse {
@@ -1037,11 +1479,13 @@ export interface ListPublisherAccountsResponse {
   nextPageToken?: string;
 }
 export const ListPublisherAccountsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "account": S.optional(PublisherAccountList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListPublisherAccountsResponse" }) as any as S.Schema<ListPublisherAccountsResponse>;
+  S.Struct({
+    account: S.optional(PublisherAccountList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListPublisherAccountsResponse",
+}) as any as S.Schema<ListPublisherAccountsResponse>;
 
 export interface ListAccountsAdSourcesRequest {
   /** The maximum number of ad sources to return. If unspecified or 0, at most 10,000 ad sources will be returned. The maximum value is 20,000; values above 10,000 will be coerced to 20,000. */
@@ -1052,12 +1496,20 @@ export interface ListAccountsAdSourcesRequest {
   parent: string;
 }
 export const ListAccountsAdSourcesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+parent}/adSources","baseUrl":"https://admob.googleapis.com/"})),
-).annotate({ identifier: "ListAccountsAdSourcesRequest" }) as any as S.Schema<ListAccountsAdSourcesRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+parent}/adSources",
+      baseUrl: "https://admob.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListAccountsAdSourcesRequest",
+}) as any as S.Schema<ListAccountsAdSourcesRequest>;
 
 /** Definition of a mediation ad source. */
 export interface AdSource {
@@ -1069,15 +1521,17 @@ export interface AdSource {
   title?: string;
 }
 export const AdSource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "adSourceId": S.optional(S.String),
-  "title": S.optional(S.String),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    adSourceId: S.optional(S.String),
+    title: S.optional(S.String),
+  }),
 ).annotate({ identifier: "AdSource" }) as any as S.Schema<AdSource>;
 
 export type AdSourceList = ReadonlyArray<AdSource>;
-export const AdSourceList = /*@__PURE__*/ S.Array(AdSource) as any as S.Schema<AdSourceList>;
+export const AdSourceList = /*@__PURE__*/ S.Array(
+  AdSource,
+) as any as S.Schema<AdSourceList>;
 
 /** Response for the ListAdSourcesRequest. */
 export interface ListAdSourcesResponse {
@@ -1087,11 +1541,13 @@ export interface ListAdSourcesResponse {
   nextPageToken?: string;
 }
 export const ListAdSourcesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "adSources": S.optional(AdSourceList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListAdSourcesResponse" }) as any as S.Schema<ListAdSourcesResponse>;
+  S.Struct({
+    adSources: S.optional(AdSourceList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListAdSourcesResponse",
+}) as any as S.Schema<ListAdSourcesResponse>;
 
 export interface ListAccountsAdSourcesAdaptersRequest {
   /** A page token, received from a previous `ListAdapters` call. Provide this to retrieve the subsequent page. */
@@ -1101,13 +1557,22 @@ export interface ListAccountsAdSourcesAdaptersRequest {
   /** Required. The parent which owns this collection of adapters. Format: accounts/{publisher_id}/adSources/{ad_source_id} */
   parent: string;
 }
-export const ListAccountsAdSourcesAdaptersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+parent}/adapters","baseUrl":"https://admob.googleapis.com/"})),
-).annotate({ identifier: "ListAccountsAdSourcesAdaptersRequest" }) as any as S.Schema<ListAccountsAdSourcesAdaptersRequest>;
+export const ListAccountsAdSourcesAdaptersRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/{+parent}/adapters",
+        baseUrl: "https://admob.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListAccountsAdSourcesAdaptersRequest",
+}) as any as S.Schema<ListAccountsAdSourcesAdaptersRequest>;
 
 /** Configuration metadata associated with this adapter. They are used to define the ad_unit_configurations associated with AdUnitMappings for the this adapter. */
 export interface AdapterAdapterConfigMetadata {
@@ -1119,15 +1584,20 @@ export interface AdapterAdapterConfigMetadata {
   adapterConfigMetadataId?: string;
 }
 export const AdapterAdapterConfigMetadata = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "adapterConfigMetadataLabel": S.optional(S.String),
-  "isRequired": S.optional(S.Boolean),
-  "adapterConfigMetadataId": S.optional(S.String),
-}),
-).annotate({ identifier: "AdapterAdapterConfigMetadata" }) as any as S.Schema<AdapterAdapterConfigMetadata>;
+  S.Struct({
+    adapterConfigMetadataLabel: S.optional(S.String),
+    isRequired: S.optional(S.Boolean),
+    adapterConfigMetadataId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AdapterAdapterConfigMetadata",
+}) as any as S.Schema<AdapterAdapterConfigMetadata>;
 
-export type AdapterAdapterConfigMetadataList = ReadonlyArray<AdapterAdapterConfigMetadata>;
-export const AdapterAdapterConfigMetadataList = /*@__PURE__*/ S.Array(AdapterAdapterConfigMetadata) as any as S.Schema<AdapterAdapterConfigMetadataList>;
+export type AdapterAdapterConfigMetadataList =
+  ReadonlyArray<AdapterAdapterConfigMetadata>;
+export const AdapterAdapterConfigMetadataList = /*@__PURE__*/ S.Array(
+  AdapterAdapterConfigMetadata,
+) as any as S.Schema<AdapterAdapterConfigMetadataList>;
 
 /** Describes adapters supported by each mediation ad source. Adapters correspond to a specific SDK implementation of the ad source, and are each associated with a single platform and a list of supported ad unit formats. Adapters may also require setting some configurations to perform ad requests. Configurations can be specified in the AdUnitMapping by setting the [ad_unit_configurations](#AdUnitMapping.ad_unit_configurations) key/value pairs. For example, the ad_unit_configurations can be used to pass various IDs to the adapter's third-party SDK. */
 export interface Adapter {
@@ -1145,18 +1615,20 @@ export interface Adapter {
   title?: string;
 }
 export const Adapter = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "platform": S.optional(S.String),
-  "adapterConfigMetadata": S.optional(AdapterAdapterConfigMetadataList),
-  "name": S.optional(S.String),
-  "adapterId": S.optional(S.String),
-  "formats": S.optional(StringList_),
-  "title": S.optional(S.String),
-}),
+  S.Struct({
+    platform: S.optional(S.String),
+    adapterConfigMetadata: S.optional(AdapterAdapterConfigMetadataList),
+    name: S.optional(S.String),
+    adapterId: S.optional(S.String),
+    formats: S.optional(StringList_),
+    title: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Adapter" }) as any as S.Schema<Adapter>;
 
 export type AdapterList = ReadonlyArray<Adapter>;
-export const AdapterList = /*@__PURE__*/ S.Array(Adapter) as any as S.Schema<AdapterList>;
+export const AdapterList = /*@__PURE__*/ S.Array(
+  Adapter,
+) as any as S.Schema<AdapterList>;
 
 /** Response for the ListAdaptersRequest. */
 export interface ListAdaptersResponse {
@@ -1166,11 +1638,13 @@ export interface ListAdaptersResponse {
   nextPageToken?: string;
 }
 export const ListAdaptersResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "adapters": S.optional(AdapterList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListAdaptersResponse" }) as any as S.Schema<ListAdaptersResponse>;
+  S.Struct({
+    adapters: S.optional(AdapterList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListAdaptersResponse",
+}) as any as S.Schema<ListAdaptersResponse>;
 
 export interface ListAccountsAdUnitsRequest {
   /** The value returned by the last `ListAdUnitsResponse`; indicates that this is a continuation of a prior `ListAdUnits` call, and that the system should return the next page of data. */
@@ -1181,15 +1655,25 @@ export interface ListAccountsAdUnitsRequest {
   parent: string;
 }
 export const ListAccountsAdUnitsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+parent}/adUnits","baseUrl":"https://admob.googleapis.com/"})),
-).annotate({ identifier: "ListAccountsAdUnitsRequest" }) as any as S.Schema<ListAccountsAdUnitsRequest>;
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+parent}/adUnits",
+      baseUrl: "https://admob.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListAccountsAdUnitsRequest",
+}) as any as S.Schema<ListAccountsAdUnitsRequest>;
 
 export type AdUnitList = ReadonlyArray<AdUnit>;
-export const AdUnitList = /*@__PURE__*/ S.Array(AdUnit) as any as S.Schema<AdUnitList>;
+export const AdUnitList = /*@__PURE__*/ S.Array(
+  AdUnit,
+) as any as S.Schema<AdUnitList>;
 
 /** Response for the ad units list request. */
 export interface ListAdUnitsResponse {
@@ -1199,11 +1683,13 @@ export interface ListAdUnitsResponse {
   nextPageToken?: string;
 }
 export const ListAdUnitsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "adUnits": S.optional(AdUnitList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListAdUnitsResponse" }) as any as S.Schema<ListAdUnitsResponse>;
+  S.Struct({
+    adUnits: S.optional(AdUnitList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListAdUnitsResponse",
+}) as any as S.Schema<ListAdUnitsResponse>;
 
 export interface ListAccountsAdUnitsAdUnitMappingsRequest {
   /** A page token, received from a previous `ListAdUnitMappings` call. Provide this to retrieve the subsequent page. */
@@ -1215,14 +1701,23 @@ export interface ListAccountsAdUnitsAdUnitMappingsRequest {
   /** Required. The parent which owns this collection of ad unit mappings. Format: accounts/{publisher_id}/adUnits/{ad_unit_id} */
   parent: string;
 }
-export const ListAccountsAdUnitsAdUnitMappingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+parent}/adUnitMappings","baseUrl":"https://admob.googleapis.com/"})),
-).annotate({ identifier: "ListAccountsAdUnitsAdUnitMappingsRequest" }) as any as S.Schema<ListAccountsAdUnitsAdUnitMappingsRequest>;
+export const ListAccountsAdUnitsAdUnitMappingsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/{+parent}/adUnitMappings",
+        baseUrl: "https://admob.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListAccountsAdUnitsAdUnitMappingsRequest",
+}) as any as S.Schema<ListAccountsAdUnitsAdUnitMappingsRequest>;
 
 /** Response for the ListAdUnitMappingsRequest. */
 export interface ListAdUnitMappingsResponse {
@@ -1232,11 +1727,13 @@ export interface ListAdUnitMappingsResponse {
   adUnitMappings?: AdUnitMappingList;
 }
 export const ListAdUnitMappingsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "adUnitMappings": S.optional(AdUnitMappingList),
-}),
-).annotate({ identifier: "ListAdUnitMappingsResponse" }) as any as S.Schema<ListAdUnitMappingsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    adUnitMappings: S.optional(AdUnitMappingList),
+  }),
+).annotate({
+  identifier: "ListAdUnitMappingsResponse",
+}) as any as S.Schema<ListAdUnitMappingsResponse>;
 
 export interface ListAccountsAppsRequest {
   /** Required. Resource name of the account to list apps for. Example: accounts/pub-9876543210987654 */
@@ -1247,12 +1744,20 @@ export interface ListAccountsAppsRequest {
   pageToken?: string;
 }
 export const ListAccountsAppsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+parent}/apps","baseUrl":"https://admob.googleapis.com/"})),
-).annotate({ identifier: "ListAccountsAppsRequest" }) as any as S.Schema<ListAccountsAppsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+parent}/apps",
+      baseUrl: "https://admob.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListAccountsAppsRequest",
+}) as any as S.Schema<ListAccountsAppsRequest>;
 
 export type AppList = ReadonlyArray<App>;
 export const AppList = /*@__PURE__*/ S.Array(App) as any as S.Schema<AppList>;
@@ -1265,11 +1770,13 @@ export interface ListAppsResponse {
   apps?: AppList;
 }
 export const ListAppsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "apps": S.optional(AppList),
-}),
-).annotate({ identifier: "ListAppsResponse" }) as any as S.Schema<ListAppsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    apps: S.optional(AppList),
+  }),
+).annotate({
+  identifier: "ListAppsResponse",
+}) as any as S.Schema<ListAppsResponse>;
 
 export interface ListAccountsMediationGroupsRequest {
   /** Required. Resource name of the account to list mediation groups for. Example: accounts/pub-9876543210987654 */
@@ -1282,16 +1789,26 @@ export interface ListAccountsMediationGroupsRequest {
   pageSize?: number;
 }
 export const ListAccountsMediationGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta/{+parent}/mediationGroups","baseUrl":"https://admob.googleapis.com/"})),
-).annotate({ identifier: "ListAccountsMediationGroupsRequest" }) as any as S.Schema<ListAccountsMediationGroupsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+parent}/mediationGroups",
+      baseUrl: "https://admob.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListAccountsMediationGroupsRequest",
+}) as any as S.Schema<ListAccountsMediationGroupsRequest>;
 
 export type MediationGroupList = ReadonlyArray<MediationGroup>;
-export const MediationGroupList = /*@__PURE__*/ S.Array(MediationGroup) as any as S.Schema<MediationGroupList>;
+export const MediationGroupList = /*@__PURE__*/ S.Array(
+  MediationGroup,
+) as any as S.Schema<MediationGroupList>;
 
 /** Response for the mediation groups list request. */
 export interface ListMediationGroupsResponse {
@@ -1301,11 +1818,13 @@ export interface ListMediationGroupsResponse {
   mediationGroups?: MediationGroupList;
 }
 export const ListMediationGroupsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "mediationGroups": S.optional(MediationGroupList),
-}),
-).annotate({ identifier: "ListMediationGroupsResponse" }) as any as S.Schema<ListMediationGroupsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    mediationGroups: S.optional(MediationGroupList),
+  }),
+).annotate({
+  identifier: "ListMediationGroupsResponse",
+}) as any as S.Schema<ListMediationGroupsResponse>;
 
 export interface PatchAccountsMediationGroupsRequest {
   /** Resource name for this mediation group. Format is: accounts/{publisher_id}/mediationGroups/{mediation_group_id} Example: accounts/pub-9876543210987654/mediationGroups/0123456789 */
@@ -1316,26 +1835,44 @@ export interface PatchAccountsMediationGroupsRequest {
   body?: MediationGroup;
 }
 export const PatchAccountsMediationGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(MediationGroup.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta/{+name}","baseUrl":"https://admob.googleapis.com/"})),
-).annotate({ identifier: "PatchAccountsMediationGroupsRequest" }) as any as S.Schema<PatchAccountsMediationGroupsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(MediationGroup.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://admob.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchAccountsMediationGroupsRequest",
+}) as any as S.Schema<PatchAccountsMediationGroupsRequest>;
 
-export type StopMediationAbExperimentRequestVariantChoiceEnum = "VARIANT_CHOICE_UNSPECIFIED" | "VARIANT_CHOICE_A" | "VARIANT_CHOICE_B";
-export const StopMediationAbExperimentRequestVariantChoiceEnum = /*@__PURE__*/ S.String;
+export type StopMediationAbExperimentRequestVariantChoiceEnum =
+  | "VARIANT_CHOICE_UNSPECIFIED"
+  | "VARIANT_CHOICE_A"
+  | "VARIANT_CHOICE_B";
+export const StopMediationAbExperimentRequestVariantChoiceEnum =
+  /*@__PURE__*/ S.String;
 
 /** Request to end the mediation A/B experiment and choose a winning variant. */
 export interface StopMediationAbExperimentRequest {
   /** The choice for the winning variant. */
-  variantChoice?: StopMediationAbExperimentRequestVariantChoiceEnum | (string & {});
+  variantChoice?:
+    | StopMediationAbExperimentRequestVariantChoiceEnum
+    | (string & {});
 }
 export const StopMediationAbExperimentRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "variantChoice": S.optional(StopMediationAbExperimentRequestVariantChoiceEnum),
-}),
-).annotate({ identifier: "StopMediationAbExperimentRequest" }) as any as S.Schema<StopMediationAbExperimentRequest>;
+  S.Struct({
+    variantChoice: S.optional(
+      StopMediationAbExperimentRequestVariantChoiceEnum,
+    ),
+  }),
+).annotate({
+  identifier: "StopMediationAbExperimentRequest",
+}) as any as S.Schema<StopMediationAbExperimentRequest>;
 
 export interface StopAccountsMediationGroupsMediationAbExperimentsRequest {
   /** Name of the mediation group, the experiment for which to choose a variant for. Example: accounts/pub-9876543210987654/mediationGroups/0123456789/ mediationAbExperiments */
@@ -1343,14 +1880,28 @@ export interface StopAccountsMediationGroupsMediationAbExperimentsRequest {
   /** Request body */
   body?: StopMediationAbExperimentRequest;
 }
-export const StopAccountsMediationGroupsMediationAbExperimentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(StopMediationAbExperimentRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta/{+name}:stop","baseUrl":"https://admob.googleapis.com/"})),
-).annotate({ identifier: "StopAccountsMediationGroupsMediationAbExperimentsRequest" }) as any as S.Schema<StopAccountsMediationGroupsMediationAbExperimentsRequest>;
+export const StopAccountsMediationGroupsMediationAbExperimentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(StopMediationAbExperimentRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta/{+name}:stop",
+        baseUrl: "https://admob.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "StopAccountsMediationGroupsMediationAbExperimentsRequest",
+  }) as any as S.Schema<StopAccountsMediationGroupsMediationAbExperimentsRequest>;
 
-export type BatchCreateAccountsAdUnitMappingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type BatchCreateAccountsAdUnitMappingsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Batch create the ad unit mappings under the specific AdMob account. The maximum allowed batch size is 100. This method has limited access. If you see a 403 permission denied error, please reach out to your account manager for access. */
 export const batchCreateAccountsAdUnitMappings: API.OperationMethod<
   BatchCreateAccountsAdUnitMappingsRequest,
@@ -1365,7 +1916,12 @@ export const batchCreateAccountsAdUnitMappings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAccountsAdUnitsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateAccountsAdUnitsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates an ad unit under the specified AdMob account. This method has limited access. If you see a 403 permission denied error, please reach out to your account manager for access. */
 export const createAccountsAdUnits: API.OperationMethod<
   CreateAccountsAdUnitsRequest,
@@ -1380,7 +1936,12 @@ export const createAccountsAdUnits: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAccountsAdUnitsAdUnitMappingsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateAccountsAdUnitsAdUnitMappingsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Create an ad unit mapping under the specific AdMob account and ad unit. This method has limited access. If you see a 403 permission denied error, please reach out to your account manager for access. */
 export const createAccountsAdUnitsAdUnitMappings: API.OperationMethod<
   CreateAccountsAdUnitsAdUnitMappingsRequest,
@@ -1395,7 +1956,12 @@ export const createAccountsAdUnitsAdUnitMappings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAccountsAppsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateAccountsAppsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates an app under the specified AdMob account. This method has limited access. If you see a 403 permission denied error, please reach out to your account manager for access. */
 export const createAccountsApps: API.OperationMethod<
   CreateAccountsAppsRequest,
@@ -1410,7 +1976,12 @@ export const createAccountsApps: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAccountsMediationGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateAccountsMediationGroupsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Create a mediation group under the specific AdMob account. This method has limited access. If you see a 403 permission denied error, please reach out to your account manager for access. */
 export const createAccountsMediationGroups: API.OperationMethod<
   CreateAccountsMediationGroupsRequest,
@@ -1425,7 +1996,12 @@ export const createAccountsMediationGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAccountsMediationGroupsMediationAbExperimentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateAccountsMediationGroupsMediationAbExperimentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Create an A/B testing experiment for a specified AdMob account and a mediation group. This method has limited access. If you see a 403 permission denied error, please reach out to your account manager for access. */
 export const createAccountsMediationGroupsMediationAbExperiments: API.OperationMethod<
   CreateAccountsMediationGroupsMediationAbExperimentsRequest,
@@ -1440,7 +2016,12 @@ export const createAccountsMediationGroupsMediationAbExperiments: API.OperationM
   retry: Retry.Retry,
 }));
 
-export type GenerateAccountsCampaignReportError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type GenerateAccountsCampaignReportError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Generates Campaign Report based on provided specifications. */
 export const generateAccountsCampaignReport: API.OperationMethod<
   GenerateAccountsCampaignReportRequest,
@@ -1455,7 +2036,12 @@ export const generateAccountsCampaignReport: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GenerateAccountsMediationReportError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type GenerateAccountsMediationReportError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Generates an AdMob Mediation report based on the provided report specification. Returns result of a server-side streaming RPC. The result is returned in a sequence of responses. */
 export const generateAccountsMediationReport: API.OperationMethod<
   GenerateAccountsMediationReportRequest,
@@ -1470,7 +2056,12 @@ export const generateAccountsMediationReport: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GenerateAccountsNetworkReportError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type GenerateAccountsNetworkReportError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Generates an AdMob Network report based on the provided report specification. Returns result of a server-side streaming RPC. The result is returned in a sequence of responses. */
 export const generateAccountsNetworkReport: API.OperationMethod<
   GenerateAccountsNetworkReportRequest,
@@ -1513,7 +2104,10 @@ export const listAccounts: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListAccountsAdSourcesError = NotFound | Forbidden | GcpOpError;
@@ -1529,10 +2123,16 @@ export const listAccountsAdSources: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListAccountsAdSourcesAdaptersError = NotFound | Forbidden | GcpOpError;
+export type ListAccountsAdSourcesAdaptersError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** List the adapters of the ad source. */
 export const listAccountsAdSourcesAdapters: API.PaginatedOperationMethod<
   ListAccountsAdSourcesAdaptersRequest,
@@ -1545,7 +2145,10 @@ export const listAccountsAdSourcesAdapters: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListAccountsAdUnitsError = NotFound | Forbidden | GcpOpError;
@@ -1561,10 +2164,16 @@ export const listAccountsAdUnits: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListAccountsAdUnitsAdUnitMappingsError = NotFound | Forbidden | GcpOpError;
+export type ListAccountsAdUnitsAdUnitMappingsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** List ad unit mappings under the specified AdMob account and ad unit. This method has limited access. If you see a 403 permission denied error, please reach out to your account manager for access. */
 export const listAccountsAdUnitsAdUnitMappings: API.PaginatedOperationMethod<
   ListAccountsAdUnitsAdUnitMappingsRequest,
@@ -1577,7 +2186,10 @@ export const listAccountsAdUnitsAdUnitMappings: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListAccountsAppsError = NotFound | Forbidden | GcpOpError;
@@ -1593,10 +2205,16 @@ export const listAccountsApps: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListAccountsMediationGroupsError = NotFound | Forbidden | GcpOpError;
+export type ListAccountsMediationGroupsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** List mediation groups under the specified AdMob account. This method has limited access. If you see a 403 permission denied error, please reach out to your account manager for access. */
 export const listAccountsMediationGroups: API.PaginatedOperationMethod<
   ListAccountsMediationGroupsRequest,
@@ -1609,10 +2227,18 @@ export const listAccountsMediationGroups: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type PatchAccountsMediationGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchAccountsMediationGroupsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update the specified mediation group under the specified AdMob account. This method has limited access. If you see a 403 permission denied error, please reach out to your account manager for access. */
 export const patchAccountsMediationGroups: API.OperationMethod<
   PatchAccountsMediationGroupsRequest,
@@ -1627,7 +2253,12 @@ export const patchAccountsMediationGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type StopAccountsMediationGroupsMediationAbExperimentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type StopAccountsMediationGroupsMediationAbExperimentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Stop the mediation A/B experiment and choose a variant. This method has limited access. If you see a 403 permission denied error, please reach out to your account manager for access. */
 export const stopAccountsMediationGroupsMediationAbExperiments: API.OperationMethod<
   StopAccountsMediationGroupsMediationAbExperimentsRequest,
@@ -1641,4 +2272,3 @@ export const stopAccountsMediationGroupsMediationAbExperiments: API.OperationMet
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

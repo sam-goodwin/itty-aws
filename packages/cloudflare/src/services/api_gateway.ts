@@ -839,22 +839,44 @@ export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSche
       "OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfo",
   }) as any as S.Schema<OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfo>;
 
-export type OperationsBulkCreateResultItemFeatures =
-  | OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureThresholds
-  | OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemas
-  | OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureAPIRouting
-  | OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervals
-  | OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfo;
-export const OperationsBulkCreateResultItemFeatures =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["thresholds"],
-      ["parameterSchemas"],
-      ["apiRouting"],
-      ["confidenceIntervals"],
-      ["schemaInfo"],
-    ]),
-  );
+export interface OperationsBulkCreateResultItemFeatures {
+  thresholds?: OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds;
+  parameterSchemas?: OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas;
+  /** API Routing settings on endpoint. */
+  apiRouting?: OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting;
+  confidenceIntervals?: OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals;
+  schemaInfo?: OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo;
+}
+export const OperationsBulkCreateResultItemFeatures = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      thresholds: S.optional(
+        OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds,
+      ),
+      parameterSchemas: S.optional(
+        OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas.pipe(
+          T.Body("parameter_schemas"),
+        ),
+      ),
+      apiRouting: S.optional(
+        OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting.pipe(
+          T.Body("api_routing"),
+        ),
+      ),
+      confidenceIntervals: S.optional(
+        OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals.pipe(
+          T.Body("confidence_intervals"),
+        ),
+      ),
+      schemaInfo: S.optional(
+        OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo.pipe(
+          T.Body("schema_info"),
+        ),
+      ),
+    }),
+).annotate({
+  identifier: "OperationsBulkCreateResultItemFeatures",
+}) as any as S.Schema<OperationsBulkCreateResultItemFeatures>;
 
 export interface OperationsBulkCreateResultItem {
   /** The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/. */
@@ -1857,21 +1879,43 @@ export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfo
       "OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfo",
   }) as any as S.Schema<OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfo>;
 
-export type OperationsCreateResponseFeatures =
-  | OperationsCreateResponseFeaturesAPIShieldOperationFeatureThresholds
-  | OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemas
-  | OperationsCreateResponseFeaturesAPIShieldOperationFeatureAPIRouting
-  | OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervals
-  | OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfo;
-export const OperationsCreateResponseFeatures = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["thresholds"],
-    ["parameterSchemas"],
-    ["apiRouting"],
-    ["confidenceIntervals"],
-    ["schemaInfo"],
-  ]),
-);
+export interface OperationsCreateResponseFeatures {
+  thresholds?: OperationsCreateResponseFeaturesAPIShieldOperationFeatureThresholdsThresholds;
+  parameterSchemas?: OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas;
+  /** API Routing settings on endpoint. */
+  apiRouting?: OperationsCreateResponseFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting;
+  confidenceIntervals?: OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals;
+  schemaInfo?: OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo;
+}
+export const OperationsCreateResponseFeatures = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    thresholds: S.optional(
+      OperationsCreateResponseFeaturesAPIShieldOperationFeatureThresholdsThresholds,
+    ),
+    parameterSchemas: S.optional(
+      OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas.pipe(
+        T.Body("parameter_schemas"),
+      ),
+    ),
+    apiRouting: S.optional(
+      OperationsCreateResponseFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting.pipe(
+        T.Body("api_routing"),
+      ),
+    ),
+    confidenceIntervals: S.optional(
+      OperationsCreateResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals.pipe(
+        T.Body("confidence_intervals"),
+      ),
+    ),
+    schemaInfo: S.optional(
+      OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo.pipe(
+        T.Body("schema_info"),
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "OperationsCreateResponseFeatures",
+}) as any as S.Schema<OperationsCreateResponseFeatures>;
 
 export type OperationsCreateResponseSchemasLearnedParametersItemMap = {
   [key: string]: unknown | undefined;
@@ -2521,16 +2565,26 @@ export const ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuthIDCh
       "ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaim",
   }) as any as S.Schema<ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaim>;
 
-export type ConfigurationsGetResponseAuthIdCharacteristicsItem =
-  | ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristic
-  | ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaim;
+export interface ConfigurationsGetResponseAuthIdCharacteristicsItem {
+  /** The name of the characteristic field, i.e., the header or cookie name. */
+  name: string;
+  /** The type of characteristic. */
+  type:
+    | ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicType
+    | ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaimType;
+}
 export const ConfigurationsGetResponseAuthIdCharacteristicsItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["name", "type"],
-      ["name", "type"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String,
+      type: S.Union(
+        ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicType,
+        ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaimType,
+      ),
+    }),
+  ).annotate({
+    identifier: "ConfigurationsGetResponseAuthIdCharacteristicsItem",
+  }) as any as S.Schema<ConfigurationsGetResponseAuthIdCharacteristicsItem>;
 
 export type ConfigurationsGetResponseAuthIdCharacteristicsList =
   ReadonlyArray<ConfigurationsGetResponseAuthIdCharacteristicsItem>;
@@ -3122,21 +3176,43 @@ export const OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfo =
       "OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfo",
   }) as any as S.Schema<OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfo>;
 
-export type OperationsGetResponseFeatures =
-  | OperationsGetResponseFeaturesAPIShieldOperationFeatureThresholds
-  | OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemas
-  | OperationsGetResponseFeaturesAPIShieldOperationFeatureAPIRouting
-  | OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervals
-  | OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfo;
-export const OperationsGetResponseFeatures = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["thresholds"],
-    ["parameterSchemas"],
-    ["apiRouting"],
-    ["confidenceIntervals"],
-    ["schemaInfo"],
-  ]),
-);
+export interface OperationsGetResponseFeatures {
+  thresholds?: OperationsGetResponseFeaturesAPIShieldOperationFeatureThresholdsThresholds;
+  parameterSchemas?: OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas;
+  /** API Routing settings on endpoint. */
+  apiRouting?: OperationsGetResponseFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting;
+  confidenceIntervals?: OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals;
+  schemaInfo?: OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo;
+}
+export const OperationsGetResponseFeatures = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    thresholds: S.optional(
+      OperationsGetResponseFeaturesAPIShieldOperationFeatureThresholdsThresholds,
+    ),
+    parameterSchemas: S.optional(
+      OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas.pipe(
+        T.Body("parameter_schemas"),
+      ),
+    ),
+    apiRouting: S.optional(
+      OperationsGetResponseFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting.pipe(
+        T.Body("api_routing"),
+      ),
+    ),
+    confidenceIntervals: S.optional(
+      OperationsGetResponseFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals.pipe(
+        T.Body("confidence_intervals"),
+      ),
+    ),
+    schemaInfo: S.optional(
+      OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo.pipe(
+        T.Body("schema_info"),
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "OperationsGetResponseFeatures",
+}) as any as S.Schema<OperationsGetResponseFeatures>;
 
 export type OperationsGetResponseSchemasLearnedParametersItemMap = {
   [key: string]: unknown | undefined;
@@ -4158,21 +4234,43 @@ export const OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfo
       "OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfo",
   }) as any as S.Schema<OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfo>;
 
-export type OperationsListResultItemFeatures =
-  | OperationsListResultItemFeaturesAPIShieldOperationFeatureThresholds
-  | OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemas
-  | OperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRouting
-  | OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervals
-  | OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfo;
-export const OperationsListResultItemFeatures = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["thresholds"],
-    ["parameterSchemas"],
-    ["apiRouting"],
-    ["confidenceIntervals"],
-    ["schemaInfo"],
-  ]),
-);
+export interface OperationsListResultItemFeatures {
+  thresholds?: OperationsListResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds;
+  parameterSchemas?: OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas;
+  /** API Routing settings on endpoint. */
+  apiRouting?: OperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting;
+  confidenceIntervals?: OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals;
+  schemaInfo?: OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo;
+}
+export const OperationsListResultItemFeatures = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    thresholds: S.optional(
+      OperationsListResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds,
+    ),
+    parameterSchemas: S.optional(
+      OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas.pipe(
+        T.Body("parameter_schemas"),
+      ),
+    ),
+    apiRouting: S.optional(
+      OperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting.pipe(
+        T.Body("api_routing"),
+      ),
+    ),
+    confidenceIntervals: S.optional(
+      OperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals.pipe(
+        T.Body("confidence_intervals"),
+      ),
+    ),
+    schemaInfo: S.optional(
+      OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo.pipe(
+        T.Body("schema_info"),
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "OperationsListResultItemFeatures",
+}) as any as S.Schema<OperationsListResultItemFeatures>;
 
 export interface OperationsListResultItem {
   /** The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/. */
@@ -4805,22 +4903,44 @@ export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShi
       "UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfo",
   }) as any as S.Schema<UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfo>;
 
-export type UserSchemasOperationsListResultItemAPIShieldOperationFeatures =
-  | UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureThresholds
-  | UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemas
-  | UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureAPIRouting
-  | UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervals
-  | UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfo;
+export interface UserSchemasOperationsListResultItemAPIShieldOperationFeatures {
+  thresholds?: UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureThresholdsThresholds;
+  parameterSchemas?: UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas;
+  /** API Routing settings on endpoint. */
+  apiRouting?: UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting;
+  confidenceIntervals?: UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals;
+  schemaInfo?: UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo;
+}
 export const UserSchemasOperationsListResultItemAPIShieldOperationFeatures =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["thresholds"],
-      ["parameterSchemas"],
-      ["apiRouting"],
-      ["confidenceIntervals"],
-      ["schemaInfo"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      thresholds: S.optional(
+        UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureThresholdsThresholds,
+      ),
+      parameterSchemas: S.optional(
+        UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas.pipe(
+          T.Body("parameter_schemas"),
+        ),
+      ),
+      apiRouting: S.optional(
+        UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting.pipe(
+          T.Body("api_routing"),
+        ),
+      ),
+      confidenceIntervals: S.optional(
+        UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals.pipe(
+          T.Body("confidence_intervals"),
+        ),
+      ),
+      schemaInfo: S.optional(
+        UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo.pipe(
+          T.Body("schema_info"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "UserSchemasOperationsListResultItemAPIShieldOperationFeatures",
+  }) as any as S.Schema<UserSchemasOperationsListResultItemAPIShieldOperationFeatures>;
 
 export interface UserSchemasOperationsListResultItemAPIShieldOperation {
   /** The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/. */
@@ -4882,15 +5002,37 @@ export const UserSchemasOperationsListResultItemAPIShieldBasicOperation =
     identifier: "UserSchemasOperationsListResultItemAPIShieldBasicOperation",
   }) as any as S.Schema<UserSchemasOperationsListResultItemAPIShieldBasicOperation>;
 
-export type UserSchemasOperationsListResultItem =
-  | UserSchemasOperationsListResultItemAPIShieldOperation
-  | UserSchemasOperationsListResultItemAPIShieldBasicOperation;
-export const UserSchemasOperationsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["endpoint", "host", "lastUpdated", "method", "operationId", "features"],
-    ["endpoint", "host", "method"],
-  ]),
-);
+export interface UserSchemasOperationsListResultItem {
+  /** The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/. */
+  endpoint: string;
+  /** RFC3986-compliant host. */
+  host: string;
+  lastUpdated?: string;
+  /** The HTTP method used to access the endpoint. */
+  method:
+    | UserSchemasOperationsListResultItemAPIShieldOperationMethod
+    | UserSchemasOperationsListResultItemAPIShieldBasicOperationMethod;
+  /** UUID. */
+  operationId?: string;
+  features?: UserSchemasOperationsListResultItemAPIShieldOperationFeatures;
+}
+export const UserSchemasOperationsListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    endpoint: S.String,
+    host: S.String,
+    lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
+    method: S.Union(
+      UserSchemasOperationsListResultItemAPIShieldOperationMethod,
+      UserSchemasOperationsListResultItemAPIShieldBasicOperationMethod,
+    ),
+    operationId: S.optional(S.String.pipe(T.Body("operation_id"))),
+    features: S.optional(
+      UserSchemasOperationsListResultItemAPIShieldOperationFeatures,
+    ),
+  }),
+).annotate({
+  identifier: "UserSchemasOperationsListResultItem",
+}) as any as S.Schema<UserSchemasOperationsListResultItem>;
 
 export type UserSchemasOperationsListResultList =
   ReadonlyArray<UserSchemasOperationsListResultItem>;
@@ -5379,16 +5521,26 @@ export const ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldAuthI
       "ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaim",
   }) as any as S.Schema<ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaim>;
 
-export type ConfigurationsUpdateResponseAuthIdCharacteristicsItem =
-  | ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristic
-  | ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaim;
+export interface ConfigurationsUpdateResponseAuthIdCharacteristicsItem {
+  /** The name of the characteristic field, i.e., the header or cookie name. */
+  name: string;
+  /** The type of characteristic. */
+  type:
+    | ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicType
+    | ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaimType;
+}
 export const ConfigurationsUpdateResponseAuthIdCharacteristicsItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["name", "type"],
-      ["name", "type"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String,
+      type: S.Union(
+        ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicType,
+        ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaimType,
+      ),
+    }),
+  ).annotate({
+    identifier: "ConfigurationsUpdateResponseAuthIdCharacteristicsItem",
+  }) as any as S.Schema<ConfigurationsUpdateResponseAuthIdCharacteristicsItem>;
 
 export type ConfigurationsUpdateResponseAuthIdCharacteristicsList =
   ReadonlyArray<ConfigurationsUpdateResponseAuthIdCharacteristicsItem>;

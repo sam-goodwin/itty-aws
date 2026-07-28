@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 /** A representation of an ExternalAccountKey used for [external account binding](https://tools.ietf.org/html/rfc8555#section-7.3.4) within ACME. */
@@ -70,12 +70,14 @@ export interface ExternalAccountKey {
   name?: string;
 }
 export const ExternalAccountKey = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "keyId": S.optional(S.String),
-  "b64MacKey": S.optional(S.String),
-  "name": S.optional(S.String),
-}),
-).annotate({ identifier: "ExternalAccountKey" }) as any as S.Schema<ExternalAccountKey>;
+  S.Struct({
+    keyId: S.optional(S.String),
+    b64MacKey: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ExternalAccountKey",
+}) as any as S.Schema<ExternalAccountKey>;
 
 export interface CreateProjectsLocationsExternalAccountKeysRequest {
   /** Required. The parent resource where this external_account_key will be created. Format: projects/[project_id]/locations/[location]. At present only the "global" location is supported. */
@@ -83,14 +85,28 @@ export interface CreateProjectsLocationsExternalAccountKeysRequest {
   /** Request body */
   body?: ExternalAccountKey;
 }
-export const CreateProjectsLocationsExternalAccountKeysRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(ExternalAccountKey.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+parent}/externalAccountKeys","baseUrl":"https://publicca.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsExternalAccountKeysRequest" }) as any as S.Schema<CreateProjectsLocationsExternalAccountKeysRequest>;
+export const CreateProjectsLocationsExternalAccountKeysRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(ExternalAccountKey.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1alpha1/{+parent}/externalAccountKeys",
+        baseUrl: "https://publicca.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsExternalAccountKeysRequest",
+  }) as any as S.Schema<CreateProjectsLocationsExternalAccountKeysRequest>;
 
-export type CreateProjectsLocationsExternalAccountKeysError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsExternalAccountKeysError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new ExternalAccountKey bound to the project. */
 export const createProjectsLocationsExternalAccountKeys: API.OperationMethod<
   CreateProjectsLocationsExternalAccountKeysRequest,
@@ -104,4 +120,3 @@ export const createProjectsLocationsExternalAccountKeys: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

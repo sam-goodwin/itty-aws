@@ -2728,12 +2728,27 @@ export const RetrieveFailedOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "RetrieveFailedOutput",
 }) as any as S.Schema<RetrieveFailedOutput>;
 
-export type RetrieveFileDownloadResponse =
-  | RetrieveBasicOutput
-  | RetrieveCompletedOutput
-  | RetrieveFailedOutput;
-export const RetrieveFileDownloadResponse =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<RetrieveFileDownloadResponse>;
+export interface RetrieveFileDownloadResponse {
+  status:
+    | RetrieveBasicOutputStatusEnum
+    | RetrieveCompletedOutputStatusEnum
+    | RetrieveFailedOutputStatusEnum;
+  files?: RetrieveCompletedOutputFilesList;
+  error?: string;
+}
+export const RetrieveFileDownloadResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: S.Union(
+      RetrieveBasicOutputStatusEnum,
+      RetrieveCompletedOutputStatusEnum,
+      RetrieveFailedOutputStatusEnum,
+    ),
+    files: S.optional(RetrieveCompletedOutputFilesList),
+    error: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RetrieveFileDownloadResponse",
+}) as any as S.Schema<RetrieveFileDownloadResponse>;
 
 export type FileDownloadBatchExportsRetrieveResponse =
   RetrieveFileDownloadResponse;

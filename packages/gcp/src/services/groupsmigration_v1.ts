@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export interface InsertArchiveRequest {
@@ -65,10 +65,18 @@ export interface InsertArchiveRequest {
   groupId: string;
 }
 export const InsertArchiveRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "groupId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"POST","uri":"groups/v1/groups/{groupId}/archive","baseUrl":"https://groupsmigration.googleapis.com/"})),
-).annotate({ identifier: "InsertArchiveRequest" }) as any as S.Schema<InsertArchiveRequest>;
+  S.Struct({
+    groupId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "groups/v1/groups/{groupId}/archive",
+      baseUrl: "https://groupsmigration.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "InsertArchiveRequest",
+}) as any as S.Schema<InsertArchiveRequest>;
 
 /** JSON response template for groups migration API. */
 export interface Groups {
@@ -78,13 +86,18 @@ export interface Groups {
   kind?: string;
 }
 export const Groups = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "responseCode": S.optional(S.String),
-  "kind": S.optional(S.String),
-}),
+  S.Struct({
+    responseCode: S.optional(S.String),
+    kind: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Groups" }) as any as S.Schema<Groups>;
 
-export type InsertArchiveError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type InsertArchiveError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Inserts a new mail into the archive of the Google group. */
 export const insertArchive: API.OperationMethod<
   InsertArchiveRequest,
@@ -98,4 +111,3 @@ export const insertArchive: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

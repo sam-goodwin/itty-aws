@@ -410,13 +410,22 @@ export const CreateResponseDlpCase1 = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateResponseDlpCase1",
 }) as any as S.Schema<CreateResponseDlpCase1>;
 
-export type CreateResponseDlp = CreateResponseDlpCase0 | CreateResponseDlpCase1;
-export const CreateResponseDlp = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["action", "enabled", "profiles"],
-    ["enabled", "policies"],
-  ]),
-);
+export interface CreateResponseDlp {
+  action?: CreateResponseDlpCase0Action;
+  enabled: boolean;
+  profiles?: CreateResponseDlpCase0ProfilesList;
+  policies?: CreateResponseDlpCase1PoliciesList;
+}
+export const CreateResponseDlp = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    action: S.optional(CreateResponseDlpCase0Action),
+    enabled: S.Boolean,
+    profiles: S.optional(CreateResponseDlpCase0ProfilesList),
+    policies: S.optional(CreateResponseDlpCase1PoliciesList),
+  }),
+).annotate({
+  identifier: "CreateResponseDlp",
+}) as any as S.Schema<CreateResponseDlp>;
 
 export type CreateResponseGuardrailsPromptP1 = "FLAG" | "BLOCK";
 export const CreateResponseGuardrailsPromptP1 = /*@__PURE__*/ S.String;
@@ -680,11 +689,26 @@ export const CreateResponseSpendLimitsRulesItemMetadataCase1 =
     identifier: "CreateResponseSpendLimitsRulesItemMetadataCase1",
   }) as any as S.Schema<CreateResponseSpendLimitsRulesItemMetadataCase1>;
 
-export type CreateResponseSpendLimitsRulesItemMetadata =
-  | CreateResponseSpendLimitsRulesItemMetadataMode
-  | CreateResponseSpendLimitsRulesItemMetadataCase1;
+export interface CreateResponseSpendLimitsRulesItemMetadata {
+  mode:
+    | CreateResponseSpendLimitsRulesItemMetadataModeMode
+    | CreateResponseSpendLimitsRulesItemMetadataCase1Mode;
+  values?: CreateResponseSpendLimitsRulesItemMetadataCase1ValuesList;
+}
 export const CreateResponseSpendLimitsRulesItemMetadata =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([["mode"], ["mode", "values"]]));
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mode: S.Union(
+        CreateResponseSpendLimitsRulesItemMetadataModeMode,
+        CreateResponseSpendLimitsRulesItemMetadataCase1Mode,
+      ),
+      values: S.optional(
+        CreateResponseSpendLimitsRulesItemMetadataCase1ValuesList,
+      ),
+    }),
+  ).annotate({
+    identifier: "CreateResponseSpendLimitsRulesItemMetadata",
+  }) as any as S.Schema<CreateResponseSpendLimitsRulesItemMetadata>;
 
 export type CreateResponseSpendLimitsRulesItemModelMode = "filter";
 export const CreateResponseSpendLimitsRulesItemModelMode =
@@ -1707,24 +1731,58 @@ export const DynamicRoutingCreateDeploymentResponseElementsItemCase5 =
     identifier: "DynamicRoutingCreateDeploymentResponseElementsItemCase5",
   }) as any as S.Schema<DynamicRoutingCreateDeploymentResponseElementsItemCase5>;
 
-export type DynamicRoutingCreateDeploymentResponseElementsItem =
-  | DynamicRoutingCreateDeploymentResponseElementsItemCase0
-  | DynamicRoutingCreateDeploymentResponseElementsItemCase1
-  | DynamicRoutingCreateDeploymentResponseElementsItemCase2
-  | DynamicRoutingCreateDeploymentResponseElementsItemCase3
-  | DynamicRoutingCreateDeploymentResponseElementsItemCase4
-  | DynamicRoutingCreateDeploymentResponseElementsItemCase5;
+export interface DynamicRoutingCreateDeploymentResponseElementsItem {
+  id: string;
+  outputs:
+    | DynamicRoutingCreateDeploymentResponseElementsItemCase0Outputs
+    | DynamicRoutingCreateDeploymentResponseElementsItemCase1Outputs
+    | DynamicRoutingCreateDeploymentResponseElementsItemCase2OutputsMap
+    | DynamicRoutingCreateDeploymentResponseElementsItemCase3Outputs
+    | DynamicRoutingCreateDeploymentResponseElementsItemCase4Outputs
+    | DynamicRoutingCreateDeploymentResponseElementsItemCase5OutputsMap;
+  type:
+    | DynamicRoutingCreateDeploymentResponseElementsItemCase0Type
+    | DynamicRoutingCreateDeploymentResponseElementsItemCase1Type
+    | DynamicRoutingCreateDeploymentResponseElementsItemCase2Type
+    | DynamicRoutingCreateDeploymentResponseElementsItemCase3Type
+    | DynamicRoutingCreateDeploymentResponseElementsItemCase4Type
+    | DynamicRoutingCreateDeploymentResponseElementsItemCase5Type;
+  properties?:
+    | DynamicRoutingCreateDeploymentResponseElementsItemCase1Properties
+    | DynamicRoutingCreateDeploymentResponseElementsItemCase3Properties
+    | DynamicRoutingCreateDeploymentResponseElementsItemCase4Properties;
+}
 export const DynamicRoutingCreateDeploymentResponseElementsItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["id", "outputs", "type"],
-      ["id", "outputs", "properties", "type"],
-      ["id", "outputs", "type"],
-      ["id", "outputs", "properties", "type"],
-      ["id", "outputs", "properties", "type"],
-      ["id", "outputs", "type"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      outputs: S.Union(
+        DynamicRoutingCreateDeploymentResponseElementsItemCase0Outputs,
+        DynamicRoutingCreateDeploymentResponseElementsItemCase1Outputs,
+        DynamicRoutingCreateDeploymentResponseElementsItemCase2OutputsMap,
+        DynamicRoutingCreateDeploymentResponseElementsItemCase3Outputs,
+        DynamicRoutingCreateDeploymentResponseElementsItemCase4Outputs,
+        DynamicRoutingCreateDeploymentResponseElementsItemCase5OutputsMap,
+      ),
+      type: S.Union(
+        DynamicRoutingCreateDeploymentResponseElementsItemCase0Type,
+        DynamicRoutingCreateDeploymentResponseElementsItemCase1Type,
+        DynamicRoutingCreateDeploymentResponseElementsItemCase2Type,
+        DynamicRoutingCreateDeploymentResponseElementsItemCase3Type,
+        DynamicRoutingCreateDeploymentResponseElementsItemCase4Type,
+        DynamicRoutingCreateDeploymentResponseElementsItemCase5Type,
+      ),
+      properties: S.optional(
+        S.Union(
+          DynamicRoutingCreateDeploymentResponseElementsItemCase1Properties,
+          DynamicRoutingCreateDeploymentResponseElementsItemCase3Properties,
+          DynamicRoutingCreateDeploymentResponseElementsItemCase4Properties,
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "DynamicRoutingCreateDeploymentResponseElementsItem",
+  }) as any as S.Schema<DynamicRoutingCreateDeploymentResponseElementsItem>;
 
 export type DynamicRoutingCreateDeploymentResponseElementsList =
   ReadonlyArray<DynamicRoutingCreateDeploymentResponseElementsItem>;
@@ -2554,24 +2612,58 @@ export const DynamicRoutingCreateResponseElementsItemCase5 =
     identifier: "DynamicRoutingCreateResponseElementsItemCase5",
   }) as any as S.Schema<DynamicRoutingCreateResponseElementsItemCase5>;
 
-export type DynamicRoutingCreateResponseElementsItem =
-  | DynamicRoutingCreateResponseElementsItemCase0
-  | DynamicRoutingCreateResponseElementsItemCase1
-  | DynamicRoutingCreateResponseElementsItemCase2
-  | DynamicRoutingCreateResponseElementsItemCase3
-  | DynamicRoutingCreateResponseElementsItemCase4
-  | DynamicRoutingCreateResponseElementsItemCase5;
-export const DynamicRoutingCreateResponseElementsItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["id", "outputs", "type"],
-      ["id", "outputs", "properties", "type"],
-      ["id", "outputs", "type"],
-      ["id", "outputs", "properties", "type"],
-      ["id", "outputs", "properties", "type"],
-      ["id", "outputs", "type"],
-    ]),
-  );
+export interface DynamicRoutingCreateResponseElementsItem {
+  id: string;
+  outputs:
+    | DynamicRoutingCreateResponseElementsItemCase0Outputs
+    | DynamicRoutingCreateResponseElementsItemCase1Outputs
+    | DynamicRoutingCreateResponseElementsItemCase2OutputsMap
+    | DynamicRoutingCreateResponseElementsItemCase3Outputs
+    | DynamicRoutingCreateResponseElementsItemCase4Outputs
+    | DynamicRoutingCreateResponseElementsItemCase5OutputsMap;
+  type:
+    | DynamicRoutingCreateResponseElementsItemCase0Type
+    | DynamicRoutingCreateResponseElementsItemCase1Type
+    | DynamicRoutingCreateResponseElementsItemCase2Type
+    | DynamicRoutingCreateResponseElementsItemCase3Type
+    | DynamicRoutingCreateResponseElementsItemCase4Type
+    | DynamicRoutingCreateResponseElementsItemCase5Type;
+  properties?:
+    | DynamicRoutingCreateResponseElementsItemCase1Properties
+    | DynamicRoutingCreateResponseElementsItemCase3Properties
+    | DynamicRoutingCreateResponseElementsItemCase4Properties;
+}
+export const DynamicRoutingCreateResponseElementsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+      outputs: S.Union(
+        DynamicRoutingCreateResponseElementsItemCase0Outputs,
+        DynamicRoutingCreateResponseElementsItemCase1Outputs,
+        DynamicRoutingCreateResponseElementsItemCase2OutputsMap,
+        DynamicRoutingCreateResponseElementsItemCase3Outputs,
+        DynamicRoutingCreateResponseElementsItemCase4Outputs,
+        DynamicRoutingCreateResponseElementsItemCase5OutputsMap,
+      ),
+      type: S.Union(
+        DynamicRoutingCreateResponseElementsItemCase0Type,
+        DynamicRoutingCreateResponseElementsItemCase1Type,
+        DynamicRoutingCreateResponseElementsItemCase2Type,
+        DynamicRoutingCreateResponseElementsItemCase3Type,
+        DynamicRoutingCreateResponseElementsItemCase4Type,
+        DynamicRoutingCreateResponseElementsItemCase5Type,
+      ),
+      properties: S.optional(
+        S.Union(
+          DynamicRoutingCreateResponseElementsItemCase1Properties,
+          DynamicRoutingCreateResponseElementsItemCase3Properties,
+          DynamicRoutingCreateResponseElementsItemCase4Properties,
+        ),
+      ),
+    }),
+).annotate({
+  identifier: "DynamicRoutingCreateResponseElementsItem",
+}) as any as S.Schema<DynamicRoutingCreateResponseElementsItem>;
 
 export type DynamicRoutingCreateResponseElementsList =
   ReadonlyArray<DynamicRoutingCreateResponseElementsItem>;
@@ -3715,24 +3807,58 @@ export const DynamicRoutingCreateVersionResponseElementsItemCase5 =
     identifier: "DynamicRoutingCreateVersionResponseElementsItemCase5",
   }) as any as S.Schema<DynamicRoutingCreateVersionResponseElementsItemCase5>;
 
-export type DynamicRoutingCreateVersionResponseElementsItem =
-  | DynamicRoutingCreateVersionResponseElementsItemCase0
-  | DynamicRoutingCreateVersionResponseElementsItemCase1
-  | DynamicRoutingCreateVersionResponseElementsItemCase2
-  | DynamicRoutingCreateVersionResponseElementsItemCase3
-  | DynamicRoutingCreateVersionResponseElementsItemCase4
-  | DynamicRoutingCreateVersionResponseElementsItemCase5;
+export interface DynamicRoutingCreateVersionResponseElementsItem {
+  id: string;
+  outputs:
+    | DynamicRoutingCreateVersionResponseElementsItemCase0Outputs
+    | DynamicRoutingCreateVersionResponseElementsItemCase1Outputs
+    | DynamicRoutingCreateVersionResponseElementsItemCase2OutputsMap
+    | DynamicRoutingCreateVersionResponseElementsItemCase3Outputs
+    | DynamicRoutingCreateVersionResponseElementsItemCase4Outputs
+    | DynamicRoutingCreateVersionResponseElementsItemCase5OutputsMap;
+  type:
+    | DynamicRoutingCreateVersionResponseElementsItemCase0Type
+    | DynamicRoutingCreateVersionResponseElementsItemCase1Type
+    | DynamicRoutingCreateVersionResponseElementsItemCase2Type
+    | DynamicRoutingCreateVersionResponseElementsItemCase3Type
+    | DynamicRoutingCreateVersionResponseElementsItemCase4Type
+    | DynamicRoutingCreateVersionResponseElementsItemCase5Type;
+  properties?:
+    | DynamicRoutingCreateVersionResponseElementsItemCase1Properties
+    | DynamicRoutingCreateVersionResponseElementsItemCase3Properties
+    | DynamicRoutingCreateVersionResponseElementsItemCase4Properties;
+}
 export const DynamicRoutingCreateVersionResponseElementsItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["id", "outputs", "type"],
-      ["id", "outputs", "properties", "type"],
-      ["id", "outputs", "type"],
-      ["id", "outputs", "properties", "type"],
-      ["id", "outputs", "properties", "type"],
-      ["id", "outputs", "type"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      outputs: S.Union(
+        DynamicRoutingCreateVersionResponseElementsItemCase0Outputs,
+        DynamicRoutingCreateVersionResponseElementsItemCase1Outputs,
+        DynamicRoutingCreateVersionResponseElementsItemCase2OutputsMap,
+        DynamicRoutingCreateVersionResponseElementsItemCase3Outputs,
+        DynamicRoutingCreateVersionResponseElementsItemCase4Outputs,
+        DynamicRoutingCreateVersionResponseElementsItemCase5OutputsMap,
+      ),
+      type: S.Union(
+        DynamicRoutingCreateVersionResponseElementsItemCase0Type,
+        DynamicRoutingCreateVersionResponseElementsItemCase1Type,
+        DynamicRoutingCreateVersionResponseElementsItemCase2Type,
+        DynamicRoutingCreateVersionResponseElementsItemCase3Type,
+        DynamicRoutingCreateVersionResponseElementsItemCase4Type,
+        DynamicRoutingCreateVersionResponseElementsItemCase5Type,
+      ),
+      properties: S.optional(
+        S.Union(
+          DynamicRoutingCreateVersionResponseElementsItemCase1Properties,
+          DynamicRoutingCreateVersionResponseElementsItemCase3Properties,
+          DynamicRoutingCreateVersionResponseElementsItemCase4Properties,
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "DynamicRoutingCreateVersionResponseElementsItem",
+  }) as any as S.Schema<DynamicRoutingCreateVersionResponseElementsItem>;
 
 export type DynamicRoutingCreateVersionResponseElementsList =
   ReadonlyArray<DynamicRoutingCreateVersionResponseElementsItem>;
@@ -3953,13 +4079,22 @@ export const DeleteResponseDlpCase1 = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteResponseDlpCase1",
 }) as any as S.Schema<DeleteResponseDlpCase1>;
 
-export type DeleteResponseDlp = DeleteResponseDlpCase0 | DeleteResponseDlpCase1;
-export const DeleteResponseDlp = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["action", "enabled", "profiles"],
-    ["enabled", "policies"],
-  ]),
-);
+export interface DeleteResponseDlp {
+  action?: DeleteResponseDlpCase0Action;
+  enabled: boolean;
+  profiles?: DeleteResponseDlpCase0ProfilesList;
+  policies?: DeleteResponseDlpCase1PoliciesList;
+}
+export const DeleteResponseDlp = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    action: S.optional(DeleteResponseDlpCase0Action),
+    enabled: S.Boolean,
+    profiles: S.optional(DeleteResponseDlpCase0ProfilesList),
+    policies: S.optional(DeleteResponseDlpCase1PoliciesList),
+  }),
+).annotate({
+  identifier: "DeleteResponseDlp",
+}) as any as S.Schema<DeleteResponseDlp>;
 
 export type DeleteResponseGuardrailsPromptP1 = "FLAG" | "BLOCK";
 export const DeleteResponseGuardrailsPromptP1 = /*@__PURE__*/ S.String;
@@ -4223,11 +4358,26 @@ export const DeleteResponseSpendLimitsRulesItemMetadataCase1 =
     identifier: "DeleteResponseSpendLimitsRulesItemMetadataCase1",
   }) as any as S.Schema<DeleteResponseSpendLimitsRulesItemMetadataCase1>;
 
-export type DeleteResponseSpendLimitsRulesItemMetadata =
-  | DeleteResponseSpendLimitsRulesItemMetadataMode
-  | DeleteResponseSpendLimitsRulesItemMetadataCase1;
+export interface DeleteResponseSpendLimitsRulesItemMetadata {
+  mode:
+    | DeleteResponseSpendLimitsRulesItemMetadataModeMode
+    | DeleteResponseSpendLimitsRulesItemMetadataCase1Mode;
+  values?: DeleteResponseSpendLimitsRulesItemMetadataCase1ValuesList;
+}
 export const DeleteResponseSpendLimitsRulesItemMetadata =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([["mode"], ["mode", "values"]]));
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mode: S.Union(
+        DeleteResponseSpendLimitsRulesItemMetadataModeMode,
+        DeleteResponseSpendLimitsRulesItemMetadataCase1Mode,
+      ),
+      values: S.optional(
+        DeleteResponseSpendLimitsRulesItemMetadataCase1ValuesList,
+      ),
+    }),
+  ).annotate({
+    identifier: "DeleteResponseSpendLimitsRulesItemMetadata",
+  }) as any as S.Schema<DeleteResponseSpendLimitsRulesItemMetadata>;
 
 export type DeleteResponseSpendLimitsRulesItemModelMode = "filter";
 export const DeleteResponseSpendLimitsRulesItemModelMode =
@@ -5056,24 +5206,58 @@ export const DynamicRoutingDeleteResponseElementsItemCase5 =
     identifier: "DynamicRoutingDeleteResponseElementsItemCase5",
   }) as any as S.Schema<DynamicRoutingDeleteResponseElementsItemCase5>;
 
-export type DynamicRoutingDeleteResponseElementsItem =
-  | DynamicRoutingDeleteResponseElementsItemCase0
-  | DynamicRoutingDeleteResponseElementsItemCase1
-  | DynamicRoutingDeleteResponseElementsItemCase2
-  | DynamicRoutingDeleteResponseElementsItemCase3
-  | DynamicRoutingDeleteResponseElementsItemCase4
-  | DynamicRoutingDeleteResponseElementsItemCase5;
-export const DynamicRoutingDeleteResponseElementsItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["id", "outputs", "type"],
-      ["id", "outputs", "properties", "type"],
-      ["id", "outputs", "type"],
-      ["id", "outputs", "properties", "type"],
-      ["id", "outputs", "properties", "type"],
-      ["id", "outputs", "type"],
-    ]),
-  );
+export interface DynamicRoutingDeleteResponseElementsItem {
+  id: string;
+  outputs:
+    | DynamicRoutingDeleteResponseElementsItemCase0Outputs
+    | DynamicRoutingDeleteResponseElementsItemCase1Outputs
+    | DynamicRoutingDeleteResponseElementsItemCase2OutputsMap
+    | DynamicRoutingDeleteResponseElementsItemCase3Outputs
+    | DynamicRoutingDeleteResponseElementsItemCase4Outputs
+    | DynamicRoutingDeleteResponseElementsItemCase5OutputsMap;
+  type:
+    | DynamicRoutingDeleteResponseElementsItemCase0Type
+    | DynamicRoutingDeleteResponseElementsItemCase1Type
+    | DynamicRoutingDeleteResponseElementsItemCase2Type
+    | DynamicRoutingDeleteResponseElementsItemCase3Type
+    | DynamicRoutingDeleteResponseElementsItemCase4Type
+    | DynamicRoutingDeleteResponseElementsItemCase5Type;
+  properties?:
+    | DynamicRoutingDeleteResponseElementsItemCase1Properties
+    | DynamicRoutingDeleteResponseElementsItemCase3Properties
+    | DynamicRoutingDeleteResponseElementsItemCase4Properties;
+}
+export const DynamicRoutingDeleteResponseElementsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+      outputs: S.Union(
+        DynamicRoutingDeleteResponseElementsItemCase0Outputs,
+        DynamicRoutingDeleteResponseElementsItemCase1Outputs,
+        DynamicRoutingDeleteResponseElementsItemCase2OutputsMap,
+        DynamicRoutingDeleteResponseElementsItemCase3Outputs,
+        DynamicRoutingDeleteResponseElementsItemCase4Outputs,
+        DynamicRoutingDeleteResponseElementsItemCase5OutputsMap,
+      ),
+      type: S.Union(
+        DynamicRoutingDeleteResponseElementsItemCase0Type,
+        DynamicRoutingDeleteResponseElementsItemCase1Type,
+        DynamicRoutingDeleteResponseElementsItemCase2Type,
+        DynamicRoutingDeleteResponseElementsItemCase3Type,
+        DynamicRoutingDeleteResponseElementsItemCase4Type,
+        DynamicRoutingDeleteResponseElementsItemCase5Type,
+      ),
+      properties: S.optional(
+        S.Union(
+          DynamicRoutingDeleteResponseElementsItemCase1Properties,
+          DynamicRoutingDeleteResponseElementsItemCase3Properties,
+          DynamicRoutingDeleteResponseElementsItemCase4Properties,
+        ),
+      ),
+    }),
+).annotate({
+  identifier: "DynamicRoutingDeleteResponseElementsItem",
+}) as any as S.Schema<DynamicRoutingDeleteResponseElementsItem>;
 
 export type DynamicRoutingDeleteResponseElementsList =
   ReadonlyArray<DynamicRoutingDeleteResponseElementsItem>;
@@ -5480,13 +5664,20 @@ export const GetResponseDlpCase1 = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseDlpCase1",
 }) as any as S.Schema<GetResponseDlpCase1>;
 
-export type GetResponseDlp = GetResponseDlpCase0 | GetResponseDlpCase1;
-export const GetResponseDlp = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["action", "enabled", "profiles"],
-    ["enabled", "policies"],
-  ]),
-);
+export interface GetResponseDlp {
+  action?: GetResponseDlpCase0Action;
+  enabled: boolean;
+  profiles?: GetResponseDlpCase0ProfilesList;
+  policies?: GetResponseDlpCase1PoliciesList;
+}
+export const GetResponseDlp = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    action: S.optional(GetResponseDlpCase0Action),
+    enabled: S.Boolean,
+    profiles: S.optional(GetResponseDlpCase0ProfilesList),
+    policies: S.optional(GetResponseDlpCase1PoliciesList),
+  }),
+).annotate({ identifier: "GetResponseDlp" }) as any as S.Schema<GetResponseDlp>;
 
 export type GetResponseGuardrailsPromptP1 = "FLAG" | "BLOCK";
 export const GetResponseGuardrailsPromptP1 = /*@__PURE__*/ S.String;
@@ -5749,11 +5940,26 @@ export const GetResponseSpendLimitsRulesItemMetadataCase1 =
     identifier: "GetResponseSpendLimitsRulesItemMetadataCase1",
   }) as any as S.Schema<GetResponseSpendLimitsRulesItemMetadataCase1>;
 
-export type GetResponseSpendLimitsRulesItemMetadata =
-  | GetResponseSpendLimitsRulesItemMetadataMode
-  | GetResponseSpendLimitsRulesItemMetadataCase1;
-export const GetResponseSpendLimitsRulesItemMetadata =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([["mode"], ["mode", "values"]]));
+export interface GetResponseSpendLimitsRulesItemMetadata {
+  mode:
+    | GetResponseSpendLimitsRulesItemMetadataModeMode
+    | GetResponseSpendLimitsRulesItemMetadataCase1Mode;
+  values?: GetResponseSpendLimitsRulesItemMetadataCase1ValuesList;
+}
+export const GetResponseSpendLimitsRulesItemMetadata = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      mode: S.Union(
+        GetResponseSpendLimitsRulesItemMetadataModeMode,
+        GetResponseSpendLimitsRulesItemMetadataCase1Mode,
+      ),
+      values: S.optional(
+        GetResponseSpendLimitsRulesItemMetadataCase1ValuesList,
+      ),
+    }),
+).annotate({
+  identifier: "GetResponseSpendLimitsRulesItemMetadata",
+}) as any as S.Schema<GetResponseSpendLimitsRulesItemMetadata>;
 
 export type GetResponseSpendLimitsRulesItemModelMode = "filter";
 export const GetResponseSpendLimitsRulesItemModelMode = /*@__PURE__*/ S.String;
@@ -6619,24 +6825,58 @@ export const DynamicRoutingGetResponseElementsItemCase5 =
     identifier: "DynamicRoutingGetResponseElementsItemCase5",
   }) as any as S.Schema<DynamicRoutingGetResponseElementsItemCase5>;
 
-export type DynamicRoutingGetResponseElementsItem =
-  | DynamicRoutingGetResponseElementsItemCase0
-  | DynamicRoutingGetResponseElementsItemCase1
-  | DynamicRoutingGetResponseElementsItemCase2
-  | DynamicRoutingGetResponseElementsItemCase3
-  | DynamicRoutingGetResponseElementsItemCase4
-  | DynamicRoutingGetResponseElementsItemCase5;
-export const DynamicRoutingGetResponseElementsItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["id", "outputs", "type"],
-      ["id", "outputs", "properties", "type"],
-      ["id", "outputs", "type"],
-      ["id", "outputs", "properties", "type"],
-      ["id", "outputs", "properties", "type"],
-      ["id", "outputs", "type"],
-    ]),
-  );
+export interface DynamicRoutingGetResponseElementsItem {
+  id: string;
+  outputs:
+    | DynamicRoutingGetResponseElementsItemCase0Outputs
+    | DynamicRoutingGetResponseElementsItemCase1Outputs
+    | DynamicRoutingGetResponseElementsItemCase2OutputsMap
+    | DynamicRoutingGetResponseElementsItemCase3Outputs
+    | DynamicRoutingGetResponseElementsItemCase4Outputs
+    | DynamicRoutingGetResponseElementsItemCase5OutputsMap;
+  type:
+    | DynamicRoutingGetResponseElementsItemCase0Type
+    | DynamicRoutingGetResponseElementsItemCase1Type
+    | DynamicRoutingGetResponseElementsItemCase2Type
+    | DynamicRoutingGetResponseElementsItemCase3Type
+    | DynamicRoutingGetResponseElementsItemCase4Type
+    | DynamicRoutingGetResponseElementsItemCase5Type;
+  properties?:
+    | DynamicRoutingGetResponseElementsItemCase1Properties
+    | DynamicRoutingGetResponseElementsItemCase3Properties
+    | DynamicRoutingGetResponseElementsItemCase4Properties;
+}
+export const DynamicRoutingGetResponseElementsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+      outputs: S.Union(
+        DynamicRoutingGetResponseElementsItemCase0Outputs,
+        DynamicRoutingGetResponseElementsItemCase1Outputs,
+        DynamicRoutingGetResponseElementsItemCase2OutputsMap,
+        DynamicRoutingGetResponseElementsItemCase3Outputs,
+        DynamicRoutingGetResponseElementsItemCase4Outputs,
+        DynamicRoutingGetResponseElementsItemCase5OutputsMap,
+      ),
+      type: S.Union(
+        DynamicRoutingGetResponseElementsItemCase0Type,
+        DynamicRoutingGetResponseElementsItemCase1Type,
+        DynamicRoutingGetResponseElementsItemCase2Type,
+        DynamicRoutingGetResponseElementsItemCase3Type,
+        DynamicRoutingGetResponseElementsItemCase4Type,
+        DynamicRoutingGetResponseElementsItemCase5Type,
+      ),
+      properties: S.optional(
+        S.Union(
+          DynamicRoutingGetResponseElementsItemCase1Properties,
+          DynamicRoutingGetResponseElementsItemCase3Properties,
+          DynamicRoutingGetResponseElementsItemCase4Properties,
+        ),
+      ),
+    }),
+).annotate({
+  identifier: "DynamicRoutingGetResponseElementsItem",
+}) as any as S.Schema<DynamicRoutingGetResponseElementsItem>;
 
 export type DynamicRoutingGetResponseElementsList =
   ReadonlyArray<DynamicRoutingGetResponseElementsItem>;
@@ -7389,24 +7629,58 @@ export const DynamicRoutingGetVersionResponseElementsItemCase5 =
     identifier: "DynamicRoutingGetVersionResponseElementsItemCase5",
   }) as any as S.Schema<DynamicRoutingGetVersionResponseElementsItemCase5>;
 
-export type DynamicRoutingGetVersionResponseElementsItem =
-  | DynamicRoutingGetVersionResponseElementsItemCase0
-  | DynamicRoutingGetVersionResponseElementsItemCase1
-  | DynamicRoutingGetVersionResponseElementsItemCase2
-  | DynamicRoutingGetVersionResponseElementsItemCase3
-  | DynamicRoutingGetVersionResponseElementsItemCase4
-  | DynamicRoutingGetVersionResponseElementsItemCase5;
+export interface DynamicRoutingGetVersionResponseElementsItem {
+  id: string;
+  outputs:
+    | DynamicRoutingGetVersionResponseElementsItemCase0Outputs
+    | DynamicRoutingGetVersionResponseElementsItemCase1Outputs
+    | DynamicRoutingGetVersionResponseElementsItemCase2OutputsMap
+    | DynamicRoutingGetVersionResponseElementsItemCase3Outputs
+    | DynamicRoutingGetVersionResponseElementsItemCase4Outputs
+    | DynamicRoutingGetVersionResponseElementsItemCase5OutputsMap;
+  type:
+    | DynamicRoutingGetVersionResponseElementsItemCase0Type
+    | DynamicRoutingGetVersionResponseElementsItemCase1Type
+    | DynamicRoutingGetVersionResponseElementsItemCase2Type
+    | DynamicRoutingGetVersionResponseElementsItemCase3Type
+    | DynamicRoutingGetVersionResponseElementsItemCase4Type
+    | DynamicRoutingGetVersionResponseElementsItemCase5Type;
+  properties?:
+    | DynamicRoutingGetVersionResponseElementsItemCase1Properties
+    | DynamicRoutingGetVersionResponseElementsItemCase3Properties
+    | DynamicRoutingGetVersionResponseElementsItemCase4Properties;
+}
 export const DynamicRoutingGetVersionResponseElementsItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["id", "outputs", "type"],
-      ["id", "outputs", "properties", "type"],
-      ["id", "outputs", "type"],
-      ["id", "outputs", "properties", "type"],
-      ["id", "outputs", "properties", "type"],
-      ["id", "outputs", "type"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      outputs: S.Union(
+        DynamicRoutingGetVersionResponseElementsItemCase0Outputs,
+        DynamicRoutingGetVersionResponseElementsItemCase1Outputs,
+        DynamicRoutingGetVersionResponseElementsItemCase2OutputsMap,
+        DynamicRoutingGetVersionResponseElementsItemCase3Outputs,
+        DynamicRoutingGetVersionResponseElementsItemCase4Outputs,
+        DynamicRoutingGetVersionResponseElementsItemCase5OutputsMap,
+      ),
+      type: S.Union(
+        DynamicRoutingGetVersionResponseElementsItemCase0Type,
+        DynamicRoutingGetVersionResponseElementsItemCase1Type,
+        DynamicRoutingGetVersionResponseElementsItemCase2Type,
+        DynamicRoutingGetVersionResponseElementsItemCase3Type,
+        DynamicRoutingGetVersionResponseElementsItemCase4Type,
+        DynamicRoutingGetVersionResponseElementsItemCase5Type,
+      ),
+      properties: S.optional(
+        S.Union(
+          DynamicRoutingGetVersionResponseElementsItemCase1Properties,
+          DynamicRoutingGetVersionResponseElementsItemCase3Properties,
+          DynamicRoutingGetVersionResponseElementsItemCase4Properties,
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "DynamicRoutingGetVersionResponseElementsItem",
+  }) as any as S.Schema<DynamicRoutingGetVersionResponseElementsItem>;
 
 export type DynamicRoutingGetVersionResponseElementsList =
   ReadonlyArray<DynamicRoutingGetVersionResponseElementsItem>;
@@ -7802,13 +8076,22 @@ export const ListResultItemDlpCase1 = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResultItemDlpCase1",
 }) as any as S.Schema<ListResultItemDlpCase1>;
 
-export type ListResultItemDlp = ListResultItemDlpCase0 | ListResultItemDlpCase1;
-export const ListResultItemDlp = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["action", "enabled", "profiles"],
-    ["enabled", "policies"],
-  ]),
-);
+export interface ListResultItemDlp {
+  action?: ListResultItemDlpCase0Action;
+  enabled: boolean;
+  profiles?: ListResultItemDlpCase0ProfilesList;
+  policies?: ListResultItemDlpCase1PoliciesList;
+}
+export const ListResultItemDlp = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    action: S.optional(ListResultItemDlpCase0Action),
+    enabled: S.Boolean,
+    profiles: S.optional(ListResultItemDlpCase0ProfilesList),
+    policies: S.optional(ListResultItemDlpCase1PoliciesList),
+  }),
+).annotate({
+  identifier: "ListResultItemDlp",
+}) as any as S.Schema<ListResultItemDlp>;
 
 export type ListResultItemGuardrailsPromptP1 = "FLAG" | "BLOCK";
 export const ListResultItemGuardrailsPromptP1 = /*@__PURE__*/ S.String;
@@ -8072,11 +8355,26 @@ export const ListResultItemSpendLimitsRulesItemMetadataCase1 =
     identifier: "ListResultItemSpendLimitsRulesItemMetadataCase1",
   }) as any as S.Schema<ListResultItemSpendLimitsRulesItemMetadataCase1>;
 
-export type ListResultItemSpendLimitsRulesItemMetadata =
-  | ListResultItemSpendLimitsRulesItemMetadataMode
-  | ListResultItemSpendLimitsRulesItemMetadataCase1;
+export interface ListResultItemSpendLimitsRulesItemMetadata {
+  mode:
+    | ListResultItemSpendLimitsRulesItemMetadataModeMode
+    | ListResultItemSpendLimitsRulesItemMetadataCase1Mode;
+  values?: ListResultItemSpendLimitsRulesItemMetadataCase1ValuesList;
+}
 export const ListResultItemSpendLimitsRulesItemMetadata =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([["mode"], ["mode", "values"]]));
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mode: S.Union(
+        ListResultItemSpendLimitsRulesItemMetadataModeMode,
+        ListResultItemSpendLimitsRulesItemMetadataCase1Mode,
+      ),
+      values: S.optional(
+        ListResultItemSpendLimitsRulesItemMetadataCase1ValuesList,
+      ),
+    }),
+  ).annotate({
+    identifier: "ListResultItemSpendLimitsRulesItemMetadata",
+  }) as any as S.Schema<ListResultItemSpendLimitsRulesItemMetadata>;
 
 export type ListResultItemSpendLimitsRulesItemModelMode = "filter";
 export const ListResultItemSpendLimitsRulesItemModelMode =
@@ -9060,24 +9358,58 @@ export const DynamicRoutingListResponseDataRoutesItemElementsItemCase5 =
     identifier: "DynamicRoutingListResponseDataRoutesItemElementsItemCase5",
   }) as any as S.Schema<DynamicRoutingListResponseDataRoutesItemElementsItemCase5>;
 
-export type DynamicRoutingListResponseDataRoutesItemElementsItem =
-  | DynamicRoutingListResponseDataRoutesItemElementsItemCase0
-  | DynamicRoutingListResponseDataRoutesItemElementsItemCase1
-  | DynamicRoutingListResponseDataRoutesItemElementsItemCase2
-  | DynamicRoutingListResponseDataRoutesItemElementsItemCase3
-  | DynamicRoutingListResponseDataRoutesItemElementsItemCase4
-  | DynamicRoutingListResponseDataRoutesItemElementsItemCase5;
+export interface DynamicRoutingListResponseDataRoutesItemElementsItem {
+  id: string;
+  outputs:
+    | DynamicRoutingListResponseDataRoutesItemElementsItemCase0Outputs
+    | DynamicRoutingListResponseDataRoutesItemElementsItemCase1Outputs
+    | DynamicRoutingListResponseDataRoutesItemElementsItemCase2OutputsMap
+    | DynamicRoutingListResponseDataRoutesItemElementsItemCase3Outputs
+    | DynamicRoutingListResponseDataRoutesItemElementsItemCase4Outputs
+    | DynamicRoutingListResponseDataRoutesItemElementsItemCase5OutputsMap;
+  type:
+    | DynamicRoutingListResponseDataRoutesItemElementsItemCase0Type
+    | DynamicRoutingListResponseDataRoutesItemElementsItemCase1Type
+    | DynamicRoutingListResponseDataRoutesItemElementsItemCase2Type
+    | DynamicRoutingListResponseDataRoutesItemElementsItemCase3Type
+    | DynamicRoutingListResponseDataRoutesItemElementsItemCase4Type
+    | DynamicRoutingListResponseDataRoutesItemElementsItemCase5Type;
+  properties?:
+    | DynamicRoutingListResponseDataRoutesItemElementsItemCase1Properties
+    | DynamicRoutingListResponseDataRoutesItemElementsItemCase3Properties
+    | DynamicRoutingListResponseDataRoutesItemElementsItemCase4Properties;
+}
 export const DynamicRoutingListResponseDataRoutesItemElementsItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["id", "outputs", "type"],
-      ["id", "outputs", "properties", "type"],
-      ["id", "outputs", "type"],
-      ["id", "outputs", "properties", "type"],
-      ["id", "outputs", "properties", "type"],
-      ["id", "outputs", "type"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      outputs: S.Union(
+        DynamicRoutingListResponseDataRoutesItemElementsItemCase0Outputs,
+        DynamicRoutingListResponseDataRoutesItemElementsItemCase1Outputs,
+        DynamicRoutingListResponseDataRoutesItemElementsItemCase2OutputsMap,
+        DynamicRoutingListResponseDataRoutesItemElementsItemCase3Outputs,
+        DynamicRoutingListResponseDataRoutesItemElementsItemCase4Outputs,
+        DynamicRoutingListResponseDataRoutesItemElementsItemCase5OutputsMap,
+      ),
+      type: S.Union(
+        DynamicRoutingListResponseDataRoutesItemElementsItemCase0Type,
+        DynamicRoutingListResponseDataRoutesItemElementsItemCase1Type,
+        DynamicRoutingListResponseDataRoutesItemElementsItemCase2Type,
+        DynamicRoutingListResponseDataRoutesItemElementsItemCase3Type,
+        DynamicRoutingListResponseDataRoutesItemElementsItemCase4Type,
+        DynamicRoutingListResponseDataRoutesItemElementsItemCase5Type,
+      ),
+      properties: S.optional(
+        S.Union(
+          DynamicRoutingListResponseDataRoutesItemElementsItemCase1Properties,
+          DynamicRoutingListResponseDataRoutesItemElementsItemCase3Properties,
+          DynamicRoutingListResponseDataRoutesItemElementsItemCase4Properties,
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "DynamicRoutingListResponseDataRoutesItemElementsItem",
+  }) as any as S.Schema<DynamicRoutingListResponseDataRoutesItemElementsItem>;
 
 export type DynamicRoutingListResponseDataRoutesItemElementsList =
   ReadonlyArray<DynamicRoutingListResponseDataRoutesItemElementsItem>;
@@ -10227,24 +10559,58 @@ export const DynamicRoutingUpdateResponseRouteElementsItemCase5 =
     identifier: "DynamicRoutingUpdateResponseRouteElementsItemCase5",
   }) as any as S.Schema<DynamicRoutingUpdateResponseRouteElementsItemCase5>;
 
-export type DynamicRoutingUpdateResponseRouteElementsItem =
-  | DynamicRoutingUpdateResponseRouteElementsItemCase0
-  | DynamicRoutingUpdateResponseRouteElementsItemCase1
-  | DynamicRoutingUpdateResponseRouteElementsItemCase2
-  | DynamicRoutingUpdateResponseRouteElementsItemCase3
-  | DynamicRoutingUpdateResponseRouteElementsItemCase4
-  | DynamicRoutingUpdateResponseRouteElementsItemCase5;
+export interface DynamicRoutingUpdateResponseRouteElementsItem {
+  id: string;
+  outputs:
+    | DynamicRoutingUpdateResponseRouteElementsItemCase0Outputs
+    | DynamicRoutingUpdateResponseRouteElementsItemCase1Outputs
+    | DynamicRoutingUpdateResponseRouteElementsItemCase2OutputsMap
+    | DynamicRoutingUpdateResponseRouteElementsItemCase3Outputs
+    | DynamicRoutingUpdateResponseRouteElementsItemCase4Outputs
+    | DynamicRoutingUpdateResponseRouteElementsItemCase5OutputsMap;
+  type:
+    | DynamicRoutingUpdateResponseRouteElementsItemCase0Type
+    | DynamicRoutingUpdateResponseRouteElementsItemCase1Type
+    | DynamicRoutingUpdateResponseRouteElementsItemCase2Type
+    | DynamicRoutingUpdateResponseRouteElementsItemCase3Type
+    | DynamicRoutingUpdateResponseRouteElementsItemCase4Type
+    | DynamicRoutingUpdateResponseRouteElementsItemCase5Type;
+  properties?:
+    | DynamicRoutingUpdateResponseRouteElementsItemCase1Properties
+    | DynamicRoutingUpdateResponseRouteElementsItemCase3Properties
+    | DynamicRoutingUpdateResponseRouteElementsItemCase4Properties;
+}
 export const DynamicRoutingUpdateResponseRouteElementsItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["id", "outputs", "type"],
-      ["id", "outputs", "properties", "type"],
-      ["id", "outputs", "type"],
-      ["id", "outputs", "properties", "type"],
-      ["id", "outputs", "properties", "type"],
-      ["id", "outputs", "type"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      outputs: S.Union(
+        DynamicRoutingUpdateResponseRouteElementsItemCase0Outputs,
+        DynamicRoutingUpdateResponseRouteElementsItemCase1Outputs,
+        DynamicRoutingUpdateResponseRouteElementsItemCase2OutputsMap,
+        DynamicRoutingUpdateResponseRouteElementsItemCase3Outputs,
+        DynamicRoutingUpdateResponseRouteElementsItemCase4Outputs,
+        DynamicRoutingUpdateResponseRouteElementsItemCase5OutputsMap,
+      ),
+      type: S.Union(
+        DynamicRoutingUpdateResponseRouteElementsItemCase0Type,
+        DynamicRoutingUpdateResponseRouteElementsItemCase1Type,
+        DynamicRoutingUpdateResponseRouteElementsItemCase2Type,
+        DynamicRoutingUpdateResponseRouteElementsItemCase3Type,
+        DynamicRoutingUpdateResponseRouteElementsItemCase4Type,
+        DynamicRoutingUpdateResponseRouteElementsItemCase5Type,
+      ),
+      properties: S.optional(
+        S.Union(
+          DynamicRoutingUpdateResponseRouteElementsItemCase1Properties,
+          DynamicRoutingUpdateResponseRouteElementsItemCase3Properties,
+          DynamicRoutingUpdateResponseRouteElementsItemCase4Properties,
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "DynamicRoutingUpdateResponseRouteElementsItem",
+  }) as any as S.Schema<DynamicRoutingUpdateResponseRouteElementsItem>;
 
 export type DynamicRoutingUpdateResponseRouteElementsList =
   ReadonlyArray<DynamicRoutingUpdateResponseRouteElementsItem>;
@@ -11124,13 +11490,22 @@ export const UpdateResponseDlpCase1 = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateResponseDlpCase1",
 }) as any as S.Schema<UpdateResponseDlpCase1>;
 
-export type UpdateResponseDlp = UpdateResponseDlpCase0 | UpdateResponseDlpCase1;
-export const UpdateResponseDlp = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["action", "enabled", "profiles"],
-    ["enabled", "policies"],
-  ]),
-);
+export interface UpdateResponseDlp {
+  action?: UpdateResponseDlpCase0Action;
+  enabled: boolean;
+  profiles?: UpdateResponseDlpCase0ProfilesList;
+  policies?: UpdateResponseDlpCase1PoliciesList;
+}
+export const UpdateResponseDlp = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    action: S.optional(UpdateResponseDlpCase0Action),
+    enabled: S.Boolean,
+    profiles: S.optional(UpdateResponseDlpCase0ProfilesList),
+    policies: S.optional(UpdateResponseDlpCase1PoliciesList),
+  }),
+).annotate({
+  identifier: "UpdateResponseDlp",
+}) as any as S.Schema<UpdateResponseDlp>;
 
 export type UpdateResponseGuardrailsPromptP1 = "FLAG" | "BLOCK";
 export const UpdateResponseGuardrailsPromptP1 = /*@__PURE__*/ S.String;
@@ -11394,11 +11769,26 @@ export const UpdateResponseSpendLimitsRulesItemMetadataCase1 =
     identifier: "UpdateResponseSpendLimitsRulesItemMetadataCase1",
   }) as any as S.Schema<UpdateResponseSpendLimitsRulesItemMetadataCase1>;
 
-export type UpdateResponseSpendLimitsRulesItemMetadata =
-  | UpdateResponseSpendLimitsRulesItemMetadataMode
-  | UpdateResponseSpendLimitsRulesItemMetadataCase1;
+export interface UpdateResponseSpendLimitsRulesItemMetadata {
+  mode:
+    | UpdateResponseSpendLimitsRulesItemMetadataModeMode
+    | UpdateResponseSpendLimitsRulesItemMetadataCase1Mode;
+  values?: UpdateResponseSpendLimitsRulesItemMetadataCase1ValuesList;
+}
 export const UpdateResponseSpendLimitsRulesItemMetadata =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([["mode"], ["mode", "values"]]));
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mode: S.Union(
+        UpdateResponseSpendLimitsRulesItemMetadataModeMode,
+        UpdateResponseSpendLimitsRulesItemMetadataCase1Mode,
+      ),
+      values: S.optional(
+        UpdateResponseSpendLimitsRulesItemMetadataCase1ValuesList,
+      ),
+    }),
+  ).annotate({
+    identifier: "UpdateResponseSpendLimitsRulesItemMetadata",
+  }) as any as S.Schema<UpdateResponseSpendLimitsRulesItemMetadata>;
 
 export type UpdateResponseSpendLimitsRulesItemModelMode = "filter";
 export const UpdateResponseSpendLimitsRulesItemModelMode =

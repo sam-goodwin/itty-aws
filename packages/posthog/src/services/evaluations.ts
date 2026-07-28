@@ -287,12 +287,22 @@ export const EvaluationEvaluationConfigCase2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EvaluationEvaluationConfigCase2>;
 
 /** Configuration dict. For 'llm_judge': {prompt}; for 'hog': {source}; for 'sentiment': {source: 'user_messages'}. */
-export type EvaluationEvaluationConfig =
-  | EvaluationEvaluationConfigCase0
-  | EvaluationEvaluationConfigCase1
-  | EvaluationEvaluationConfigCase2;
-export const EvaluationEvaluationConfig =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<EvaluationEvaluationConfig>;
+export interface EvaluationEvaluationConfig {
+  /** Evaluation criteria for the LLM judge. Describe what makes a good vs bad response. */
+  prompt?: string;
+  /** Hog source code. Must return true (pass), false (fail), or null for N/A. */
+  source?: string | EvaluationEvaluationConfigCase2Source;
+}
+export const EvaluationEvaluationConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    prompt: S.optional(S.String),
+    source: S.optional(
+      S.Union(S.String, EvaluationEvaluationConfigCase2Source),
+    ),
+  }),
+).annotate({
+  identifier: "EvaluationEvaluationConfig",
+}) as any as S.Schema<EvaluationEvaluationConfig>;
 
 /** Output config. For 'boolean' output_type: {allows_na} to permit N/A results. */
 export interface EvaluationOutputConfig {

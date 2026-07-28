@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 /** The request for creating an IdpCredential with its associated payload. An InboundSamlSsoProfile can own up to 2 credentials. */
@@ -66,10 +66,12 @@ export interface AddIdpCredentialRequest {
   pemData?: string;
 }
 export const AddIdpCredentialRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pemData": S.optional(S.String),
-}),
-).annotate({ identifier: "AddIdpCredentialRequest" }) as any as S.Schema<AddIdpCredentialRequest>;
+  S.Struct({
+    pemData: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AddIdpCredentialRequest",
+}) as any as S.Schema<AddIdpCredentialRequest>;
 
 export interface AddInboundSamlSsoProfilesIdpCredentialsRequest {
   /** Required. The InboundSamlSsoProfile that owns the IdpCredential. Format: `inboundSamlSsoProfiles/{sso_profile_id}` */
@@ -77,18 +79,32 @@ export interface AddInboundSamlSsoProfilesIdpCredentialsRequest {
   /** Request body */
   body?: AddIdpCredentialRequest;
 }
-export const AddInboundSamlSsoProfilesIdpCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(AddIdpCredentialRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/idpCredentials:add","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "AddInboundSamlSsoProfilesIdpCredentialsRequest" }) as any as S.Schema<AddInboundSamlSsoProfilesIdpCredentialsRequest>;
+export const AddInboundSamlSsoProfilesIdpCredentialsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(AddIdpCredentialRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/idpCredentials:add",
+        baseUrl: "https://cloudidentity.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "AddInboundSamlSsoProfilesIdpCredentialsRequest",
+  }) as any as S.Schema<AddInboundSamlSsoProfilesIdpCredentialsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -100,11 +116,11 @@ export interface Status {
   message?: string;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(S.Number),
-  "details": S.optional(DocumentMapList),
-  "message": S.optional(S.String),
-}),
+  S.Struct({
+    code: S.optional(S.Number),
+    details: S.optional(DocumentMapList),
+    message: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -121,13 +137,13 @@ export interface Operation {
   name?: string;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "response": S.optional(DocumentMap),
-  "metadata": S.optional(DocumentMap),
-  "done": S.optional(S.Boolean),
-  "error": S.optional(Status),
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    response: S.optional(DocumentMap),
+    metadata: S.optional(DocumentMap),
+    done: S.optional(S.Boolean),
+    error: S.optional(Status),
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** Request message for approving the device to access user data. */
@@ -135,11 +151,14 @@ export interface GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest {
   /** Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer}`, where customer is the customer to whom the device belongs. */
   customer?: string;
 }
-export const GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "customer": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest" }) as any as S.Schema<GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest>;
+export const GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      customer: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest",
+  }) as any as S.Schema<GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest>;
 
 export interface ApproveDevicesDeviceUsersRequest {
   /** Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device}/deviceUsers/{device_user}`, where device is the unique ID assigned to the Device, and device_user is the unique ID assigned to the User. */
@@ -148,22 +167,37 @@ export interface ApproveDevicesDeviceUsersRequest {
   body?: GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest;
 }
 export const ApproveDevicesDeviceUsersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:approve","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "ApproveDevicesDeviceUsersRequest" }) as any as S.Schema<ApproveDevicesDeviceUsersRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(
+      GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest.pipe(
+        T.HttpBody(),
+      ),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:approve",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ApproveDevicesDeviceUsersRequest",
+}) as any as S.Schema<ApproveDevicesDeviceUsersRequest>;
 
 /** Request message for blocking account on device. */
 export interface GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest {
   /** Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer}`, where customer is the customer to whom the device belongs. */
   customer?: string;
 }
-export const GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "customer": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest" }) as any as S.Schema<GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest>;
+export const GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      customer: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest",
+  }) as any as S.Schema<GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest>;
 
 export interface BlockDevicesDeviceUsersRequest {
   /** Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device}/deviceUsers/{device_user}`, where device is the unique ID assigned to the Device, and device_user is the unique ID assigned to the User. */
@@ -172,17 +206,29 @@ export interface BlockDevicesDeviceUsersRequest {
   body?: GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest;
 }
 export const BlockDevicesDeviceUsersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:block","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "BlockDevicesDeviceUsersRequest" }) as any as S.Schema<BlockDevicesDeviceUsersRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(
+      GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest.pipe(T.HttpBody()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:block",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "BlockDevicesDeviceUsersRequest",
+}) as any as S.Schema<BlockDevicesDeviceUsersRequest>;
 
 /** Request to cancel sent invitation for target email in UserInvitation. */
 export interface CancelUserInvitationRequest {}
 export const CancelUserInvitationRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "CancelUserInvitationRequest" }) as any as S.Schema<CancelUserInvitationRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "CancelUserInvitationRequest",
+}) as any as S.Schema<CancelUserInvitationRequest>;
 
 export interface CancelCustomersUserinvitationsRequest {
   /** Required. `UserInvitation` name in the format `customers/{customer}/userinvitations/{user_email_address}` */
@@ -190,23 +236,35 @@ export interface CancelCustomersUserinvitationsRequest {
   /** Request body */
   body?: CancelUserInvitationRequest;
 }
-export const CancelCustomersUserinvitationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(CancelUserInvitationRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "CancelCustomersUserinvitationsRequest" }) as any as S.Schema<CancelCustomersUserinvitationsRequest>;
+export const CancelCustomersUserinvitationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(CancelUserInvitationRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:cancel",
+        baseUrl: "https://cloudidentity.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CancelCustomersUserinvitationsRequest",
+}) as any as S.Schema<CancelCustomersUserinvitationsRequest>;
 
 /** Request message for cancelling an unfinished device wipe. */
 export interface GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest {
   /** Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer}`, where customer is the customer to whom the device belongs. */
   customer?: string;
 }
-export const GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "customer": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest" }) as any as S.Schema<GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest>;
+export const GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      customer: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest",
+  }) as any as S.Schema<GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest>;
 
 export interface CancelWipeDevicesRequest {
   /** Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device}`, where device is the unique ID assigned to the Device. */
@@ -215,22 +273,37 @@ export interface CancelWipeDevicesRequest {
   body?: GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest;
 }
 export const CancelWipeDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancelWipe","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "CancelWipeDevicesRequest" }) as any as S.Schema<CancelWipeDevicesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(
+      GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest.pipe(
+        T.HttpBody(),
+      ),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:cancelWipe",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CancelWipeDevicesRequest",
+}) as any as S.Schema<CancelWipeDevicesRequest>;
 
 /** Request message for cancelling an unfinished user account wipe. */
 export interface GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest {
   /** Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer}`, where customer is the customer to whom the device belongs. */
   customer?: string;
 }
-export const GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "customer": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest" }) as any as S.Schema<GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest>;
+export const GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      customer: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest",
+  }) as any as S.Schema<GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest>;
 
 export interface CancelWipeDevicesDeviceUsersRequest {
   /** Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device}/deviceUsers/{device_user}`, where device is the unique ID assigned to the Device, and device_user is the unique ID assigned to the User. */
@@ -239,11 +312,23 @@ export interface CancelWipeDevicesDeviceUsersRequest {
   body?: GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest;
 }
 export const CancelWipeDevicesDeviceUsersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancelWipe","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "CancelWipeDevicesDeviceUsersRequest" }) as any as S.Schema<CancelWipeDevicesDeviceUsersRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(
+      GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest.pipe(
+        T.HttpBody(),
+      ),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:cancelWipe",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CancelWipeDevicesDeviceUsersRequest",
+}) as any as S.Schema<CancelWipeDevicesDeviceUsersRequest>;
 
 export interface CheckTransitiveMembershipGroupsMembershipsRequest {
   /** [Resource name](https://cloud.google.com/apis/design/resource_names) of the group to check the transitive membership in. Format: `groups/{group}`, where `group` is the unique id assigned to the Group to which the Membership belongs to. */
@@ -251,12 +336,21 @@ export interface CheckTransitiveMembershipGroupsMembershipsRequest {
   /** Required. A CEL expression that MUST include member specification. This is a `required` field. Certain groups are uniquely identified by both a 'member_key_id' and a 'member_key_namespace', which requires an additional query input: 'member_key_namespace'. Example query: `member_key_id == 'member_key_id_value'` */
   query?: string;
 }
-export const CheckTransitiveMembershipGroupsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "query": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/memberships:checkTransitiveMembership","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "CheckTransitiveMembershipGroupsMembershipsRequest" }) as any as S.Schema<CheckTransitiveMembershipGroupsMembershipsRequest>;
+export const CheckTransitiveMembershipGroupsMembershipsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      query: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/memberships:checkTransitiveMembership",
+        baseUrl: "https://cloudidentity.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CheckTransitiveMembershipGroupsMembershipsRequest",
+  }) as any as S.Schema<CheckTransitiveMembershipGroupsMembershipsRequest>;
 
 /** The response message for MembershipsService.CheckTransitiveMembership. */
 export interface CheckTransitiveMembershipResponse {
@@ -264,22 +358,39 @@ export interface CheckTransitiveMembershipResponse {
   hasMembership?: boolean;
 }
 export const CheckTransitiveMembershipResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "hasMembership": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "CheckTransitiveMembershipResponse" }) as any as S.Schema<CheckTransitiveMembershipResponse>;
+  S.Struct({
+    hasMembership: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "CheckTransitiveMembershipResponse",
+}) as any as S.Schema<CheckTransitiveMembershipResponse>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
-export type GoogleAppsCloudidentityDevicesV1BrowserInfoBrowserManagementStateEnum = "UNSPECIFIED" | "UNMANAGED" | "MANAGED_BY_OTHER_DOMAIN" | "PROFILE_MANAGED" | "BROWSER_MANAGED";
-export const GoogleAppsCloudidentityDevicesV1BrowserInfoBrowserManagementStateEnum = /*@__PURE__*/ S.String;
+export type GoogleAppsCloudidentityDevicesV1BrowserInfoBrowserManagementStateEnum =
+    | "UNSPECIFIED"
+    | "UNMANAGED"
+    | "MANAGED_BY_OTHER_DOMAIN"
+    | "PROFILE_MANAGED"
+    | "BROWSER_MANAGED";
+export const GoogleAppsCloudidentityDevicesV1BrowserInfoBrowserManagementStateEnum =
+  /*@__PURE__*/ S.String;
 
-export type GoogleAppsCloudidentityDevicesV1BrowserInfoSafeBrowsingProtectionLevelEnum = "SAFE_BROWSING_LEVEL_UNSPECIFIED" | "DISABLED" | "STANDARD" | "ENHANCED";
-export const GoogleAppsCloudidentityDevicesV1BrowserInfoSafeBrowsingProtectionLevelEnum = /*@__PURE__*/ S.String;
+export type GoogleAppsCloudidentityDevicesV1BrowserInfoSafeBrowsingProtectionLevelEnum =
+  "SAFE_BROWSING_LEVEL_UNSPECIFIED" | "DISABLED" | "STANDARD" | "ENHANCED";
+export const GoogleAppsCloudidentityDevicesV1BrowserInfoSafeBrowsingProtectionLevelEnum =
+  /*@__PURE__*/ S.String;
 
-export type GoogleAppsCloudidentityDevicesV1BrowserInfoPasswordProtectionWarningTriggerEnum = "PASSWORD_PROTECTION_TRIGGER_UNSPECIFIED" | "PROTECTION_OFF" | "PASSWORD_REUSE" | "PHISHING_REUSE";
-export const GoogleAppsCloudidentityDevicesV1BrowserInfoPasswordProtectionWarningTriggerEnum = /*@__PURE__*/ S.String;
+export type GoogleAppsCloudidentityDevicesV1BrowserInfoPasswordProtectionWarningTriggerEnum =
+    | "PASSWORD_PROTECTION_TRIGGER_UNSPECIFIED"
+    | "PROTECTION_OFF"
+    | "PASSWORD_REUSE"
+    | "PHISHING_REUSE";
+export const GoogleAppsCloudidentityDevicesV1BrowserInfoPasswordProtectionWarningTriggerEnum =
+  /*@__PURE__*/ S.String;
 
 /** Browser-specific fields reported by the [Endpoint Verification extension](https://chromewebstore.google.com/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg?pli=1). */
 export interface GoogleAppsCloudidentityDevicesV1BrowserInfo {
@@ -312,24 +423,33 @@ export interface GoogleAppsCloudidentityDevicesV1BrowserInfo {
   /** Current state of [file download analysis](https://chromeenterprise.google/policies/#OnFileDownloadedEnterpriseConnector). Set to true if provider list from Chrome is non-empty. */
   isFileDownloadAnalysisEnabled?: boolean;
 }
-export const GoogleAppsCloudidentityDevicesV1BrowserInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "isFileUploadAnalysisEnabled": S.optional(S.Boolean),
-  "isSiteIsolationEnabled": S.optional(S.Boolean),
-  "isRealtimeUrlCheckEnabled": S.optional(S.Boolean),
-  "browserVersion": S.optional(S.String),
-  "isChromeRemoteDesktopAppBlocked": S.optional(S.Boolean),
-  "isThirdPartyBlockingEnabled": S.optional(S.Boolean),
-  "isChromeCleanupEnabled": S.optional(S.Boolean),
-  "browserManagementState": S.optional(GoogleAppsCloudidentityDevicesV1BrowserInfoBrowserManagementStateEnum),
-  "isBuiltInDnsClientEnabled": S.optional(S.Boolean),
-  "safeBrowsingProtectionLevel": S.optional(GoogleAppsCloudidentityDevicesV1BrowserInfoSafeBrowsingProtectionLevelEnum),
-  "passwordProtectionWarningTrigger": S.optional(GoogleAppsCloudidentityDevicesV1BrowserInfoPasswordProtectionWarningTriggerEnum),
-  "isBulkDataEntryAnalysisEnabled": S.optional(S.Boolean),
-  "isSecurityEventAnalysisEnabled": S.optional(S.Boolean),
-  "isFileDownloadAnalysisEnabled": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "GoogleAppsCloudidentityDevicesV1BrowserInfo" }) as any as S.Schema<GoogleAppsCloudidentityDevicesV1BrowserInfo>;
+export const GoogleAppsCloudidentityDevicesV1BrowserInfo =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      isFileUploadAnalysisEnabled: S.optional(S.Boolean),
+      isSiteIsolationEnabled: S.optional(S.Boolean),
+      isRealtimeUrlCheckEnabled: S.optional(S.Boolean),
+      browserVersion: S.optional(S.String),
+      isChromeRemoteDesktopAppBlocked: S.optional(S.Boolean),
+      isThirdPartyBlockingEnabled: S.optional(S.Boolean),
+      isChromeCleanupEnabled: S.optional(S.Boolean),
+      browserManagementState: S.optional(
+        GoogleAppsCloudidentityDevicesV1BrowserInfoBrowserManagementStateEnum,
+      ),
+      isBuiltInDnsClientEnabled: S.optional(S.Boolean),
+      safeBrowsingProtectionLevel: S.optional(
+        GoogleAppsCloudidentityDevicesV1BrowserInfoSafeBrowsingProtectionLevelEnum,
+      ),
+      passwordProtectionWarningTrigger: S.optional(
+        GoogleAppsCloudidentityDevicesV1BrowserInfoPasswordProtectionWarningTriggerEnum,
+      ),
+      isBulkDataEntryAnalysisEnabled: S.optional(S.Boolean),
+      isSecurityEventAnalysisEnabled: S.optional(S.Boolean),
+      isFileDownloadAnalysisEnabled: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsCloudidentityDevicesV1BrowserInfo",
+  }) as any as S.Schema<GoogleAppsCloudidentityDevicesV1BrowserInfo>;
 
 /** Contains information about browser profiles reported by the [Endpoint Verification extension](https://chromewebstore.google.com/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg?pli=1). */
 export interface GoogleAppsCloudidentityDevicesV1BrowserAttributes {
@@ -340,16 +460,25 @@ export interface GoogleAppsCloudidentityDevicesV1BrowserAttributes {
   /** Chrome profile ID that is exposed by the Chrome API. It is unique for each device. */
   chromeProfileId?: string;
 }
-export const GoogleAppsCloudidentityDevicesV1BrowserAttributes = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "lastProfileSyncTime": S.optional(S.String),
-  "chromeBrowserInfo": S.optional(GoogleAppsCloudidentityDevicesV1BrowserInfo),
-  "chromeProfileId": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleAppsCloudidentityDevicesV1BrowserAttributes" }) as any as S.Schema<GoogleAppsCloudidentityDevicesV1BrowserAttributes>;
+export const GoogleAppsCloudidentityDevicesV1BrowserAttributes =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      lastProfileSyncTime: S.optional(S.String),
+      chromeBrowserInfo: S.optional(
+        GoogleAppsCloudidentityDevicesV1BrowserInfo,
+      ),
+      chromeProfileId: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsCloudidentityDevicesV1BrowserAttributes",
+  }) as any as S.Schema<GoogleAppsCloudidentityDevicesV1BrowserAttributes>;
 
-export type GoogleAppsCloudidentityDevicesV1BrowserAttributesList = ReadonlyArray<GoogleAppsCloudidentityDevicesV1BrowserAttributes>;
-export const GoogleAppsCloudidentityDevicesV1BrowserAttributesList = /*@__PURE__*/ S.Array(GoogleAppsCloudidentityDevicesV1BrowserAttributes) as any as S.Schema<GoogleAppsCloudidentityDevicesV1BrowserAttributesList>;
+export type GoogleAppsCloudidentityDevicesV1BrowserAttributesList =
+  ReadonlyArray<GoogleAppsCloudidentityDevicesV1BrowserAttributes>;
+export const GoogleAppsCloudidentityDevicesV1BrowserAttributesList =
+  /*@__PURE__*/ S.Array(
+    GoogleAppsCloudidentityDevicesV1BrowserAttributes,
+  ) as any as S.Schema<GoogleAppsCloudidentityDevicesV1BrowserAttributesList>;
 
 /** CertificateTemplate (v3 Extension in X.509). */
 export interface GoogleAppsCloudidentityDevicesV1CertificateTemplate {
@@ -360,16 +489,23 @@ export interface GoogleAppsCloudidentityDevicesV1CertificateTemplate {
   /** The minor version of the template. Example: 12. */
   minorVersion?: number;
 }
-export const GoogleAppsCloudidentityDevicesV1CertificateTemplate = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.optional(S.String),
-  "majorVersion": S.optional(S.Number),
-  "minorVersion": S.optional(S.Number),
-}),
-).annotate({ identifier: "GoogleAppsCloudidentityDevicesV1CertificateTemplate" }) as any as S.Schema<GoogleAppsCloudidentityDevicesV1CertificateTemplate>;
+export const GoogleAppsCloudidentityDevicesV1CertificateTemplate =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      majorVersion: S.optional(S.Number),
+      minorVersion: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsCloudidentityDevicesV1CertificateTemplate",
+  }) as any as S.Schema<GoogleAppsCloudidentityDevicesV1CertificateTemplate>;
 
-export type GoogleAppsCloudidentityDevicesV1CertificateAttributesValidationStateEnum = "CERTIFICATE_VALIDATION_STATE_UNSPECIFIED" | "VALIDATION_SUCCESSFUL" | "VALIDATION_FAILED";
-export const GoogleAppsCloudidentityDevicesV1CertificateAttributesValidationStateEnum = /*@__PURE__*/ S.String;
+export type GoogleAppsCloudidentityDevicesV1CertificateAttributesValidationStateEnum =
+    | "CERTIFICATE_VALIDATION_STATE_UNSPECIFIED"
+    | "VALIDATION_SUCCESSFUL"
+    | "VALIDATION_FAILED";
+export const GoogleAppsCloudidentityDevicesV1CertificateAttributesValidationStateEnum =
+  /*@__PURE__*/ S.String;
 
 /** Stores information about a certificate. */
 export interface GoogleAppsCloudidentityDevicesV1CertificateAttributes {
@@ -392,22 +528,33 @@ export interface GoogleAppsCloudidentityDevicesV1CertificateAttributes {
   /** The certificate thumbprint. */
   thumbprint?: string;
 }
-export const GoogleAppsCloudidentityDevicesV1CertificateAttributes = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "certificateTemplate": S.optional(GoogleAppsCloudidentityDevicesV1CertificateTemplate),
-  "issuer": S.optional(S.String),
-  "validityStartTime": S.optional(S.String),
-  "subject": S.optional(S.String),
-  "fingerprint": S.optional(S.String),
-  "validationState": S.optional(GoogleAppsCloudidentityDevicesV1CertificateAttributesValidationStateEnum),
-  "serialNumber": S.optional(S.String),
-  "validityExpirationTime": S.optional(S.String),
-  "thumbprint": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleAppsCloudidentityDevicesV1CertificateAttributes" }) as any as S.Schema<GoogleAppsCloudidentityDevicesV1CertificateAttributes>;
+export const GoogleAppsCloudidentityDevicesV1CertificateAttributes =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      certificateTemplate: S.optional(
+        GoogleAppsCloudidentityDevicesV1CertificateTemplate,
+      ),
+      issuer: S.optional(S.String),
+      validityStartTime: S.optional(S.String),
+      subject: S.optional(S.String),
+      fingerprint: S.optional(S.String),
+      validationState: S.optional(
+        GoogleAppsCloudidentityDevicesV1CertificateAttributesValidationStateEnum,
+      ),
+      serialNumber: S.optional(S.String),
+      validityExpirationTime: S.optional(S.String),
+      thumbprint: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsCloudidentityDevicesV1CertificateAttributes",
+  }) as any as S.Schema<GoogleAppsCloudidentityDevicesV1CertificateAttributes>;
 
-export type GoogleAppsCloudidentityDevicesV1CertificateAttributesList = ReadonlyArray<GoogleAppsCloudidentityDevicesV1CertificateAttributes>;
-export const GoogleAppsCloudidentityDevicesV1CertificateAttributesList = /*@__PURE__*/ S.Array(GoogleAppsCloudidentityDevicesV1CertificateAttributes) as any as S.Schema<GoogleAppsCloudidentityDevicesV1CertificateAttributesList>;
+export type GoogleAppsCloudidentityDevicesV1CertificateAttributesList =
+  ReadonlyArray<GoogleAppsCloudidentityDevicesV1CertificateAttributes>;
+export const GoogleAppsCloudidentityDevicesV1CertificateAttributesList =
+  /*@__PURE__*/ S.Array(
+    GoogleAppsCloudidentityDevicesV1CertificateAttributes,
+  ) as any as S.Schema<GoogleAppsCloudidentityDevicesV1CertificateAttributesList>;
 
 /** Resource representing the [Endpoint Verification-specific attributes](https://cloud.google.com/endpoint-verification/docs/device-information) of a device. */
 export interface GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes {
@@ -418,25 +565,59 @@ export interface GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAtt
   /** Details of certificates. */
   certificateAttributes?: GoogleAppsCloudidentityDevicesV1CertificateAttributesList;
 }
-export const GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "browserAttributes": S.optional(GoogleAppsCloudidentityDevicesV1BrowserAttributesList),
-  "additionalSignals": S.optional(DocumentMap),
-  "certificateAttributes": S.optional(GoogleAppsCloudidentityDevicesV1CertificateAttributesList),
-}),
-).annotate({ identifier: "GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes" }) as any as S.Schema<GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes>;
+export const GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      browserAttributes: S.optional(
+        GoogleAppsCloudidentityDevicesV1BrowserAttributesList,
+      ),
+      additionalSignals: S.optional(DocumentMap),
+      certificateAttributes: S.optional(
+        GoogleAppsCloudidentityDevicesV1CertificateAttributesList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes",
+  }) as any as S.Schema<GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes>;
 
-export type GoogleAppsCloudidentityDevicesV1DeviceManagementStateEnum = "MANAGEMENT_STATE_UNSPECIFIED" | "APPROVED" | "BLOCKED" | "PENDING" | "UNPROVISIONED" | "WIPING" | "WIPED";
-export const GoogleAppsCloudidentityDevicesV1DeviceManagementStateEnum = /*@__PURE__*/ S.String;
+export type GoogleAppsCloudidentityDevicesV1DeviceManagementStateEnum =
+  | "MANAGEMENT_STATE_UNSPECIFIED"
+  | "APPROVED"
+  | "BLOCKED"
+  | "PENDING"
+  | "UNPROVISIONED"
+  | "WIPING"
+  | "WIPED";
+export const GoogleAppsCloudidentityDevicesV1DeviceManagementStateEnum =
+  /*@__PURE__*/ S.String;
 
-export type GoogleAppsCloudidentityDevicesV1DeviceDeviceTypeEnum = "DEVICE_TYPE_UNSPECIFIED" | "ANDROID" | "IOS" | "GOOGLE_SYNC" | "WINDOWS" | "MAC_OS" | "LINUX" | "CHROME_OS";
-export const GoogleAppsCloudidentityDevicesV1DeviceDeviceTypeEnum = /*@__PURE__*/ S.String;
+export type GoogleAppsCloudidentityDevicesV1DeviceDeviceTypeEnum =
+  | "DEVICE_TYPE_UNSPECIFIED"
+  | "ANDROID"
+  | "IOS"
+  | "GOOGLE_SYNC"
+  | "WINDOWS"
+  | "MAC_OS"
+  | "LINUX"
+  | "CHROME_OS";
+export const GoogleAppsCloudidentityDevicesV1DeviceDeviceTypeEnum =
+  /*@__PURE__*/ S.String;
 
-export type GoogleAppsCloudidentityDevicesV1DeviceOwnerTypeEnum = "DEVICE_OWNERSHIP_UNSPECIFIED" | "COMPANY" | "BYOD";
-export const GoogleAppsCloudidentityDevicesV1DeviceOwnerTypeEnum = /*@__PURE__*/ S.String;
+export type GoogleAppsCloudidentityDevicesV1DeviceOwnerTypeEnum =
+  | "DEVICE_OWNERSHIP_UNSPECIFIED"
+  | "COMPANY"
+  | "BYOD";
+export const GoogleAppsCloudidentityDevicesV1DeviceOwnerTypeEnum =
+  /*@__PURE__*/ S.String;
 
-export type GoogleAppsCloudidentityDevicesV1AndroidAttributesOwnershipPrivilegeEnum = "OWNERSHIP_PRIVILEGE_UNSPECIFIED" | "DEVICE_ADMINISTRATOR" | "PROFILE_OWNER" | "DEVICE_OWNER";
-export const GoogleAppsCloudidentityDevicesV1AndroidAttributesOwnershipPrivilegeEnum = /*@__PURE__*/ S.String;
+export type GoogleAppsCloudidentityDevicesV1AndroidAttributesOwnershipPrivilegeEnum =
+    | "OWNERSHIP_PRIVILEGE_UNSPECIFIED"
+    | "DEVICE_ADMINISTRATOR"
+    | "PROFILE_OWNER"
+    | "DEVICE_OWNER";
+export const GoogleAppsCloudidentityDevicesV1AndroidAttributesOwnershipPrivilegeEnum =
+  /*@__PURE__*/ S.String;
 
 /** Resource representing the Android specific attributes of a Device. */
 export interface GoogleAppsCloudidentityDevicesV1AndroidAttributes {
@@ -457,24 +638,38 @@ export interface GoogleAppsCloudidentityDevicesV1AndroidAttributes {
   /** Whether applications from unknown sources can be installed on device. */
   enabledUnknownSources?: boolean;
 }
-export const GoogleAppsCloudidentityDevicesV1AndroidAttributes = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "ownerProfileAccount": S.optional(S.Boolean),
-  "verifiedBoot": S.optional(S.Boolean),
-  "ownershipPrivilege": S.optional(GoogleAppsCloudidentityDevicesV1AndroidAttributesOwnershipPrivilegeEnum),
-  "verifyAppsEnabled": S.optional(S.Boolean),
-  "hasPotentiallyHarmfulApps": S.optional(S.Boolean),
-  "supportsWorkProfile": S.optional(S.Boolean),
-  "ctsProfileMatch": S.optional(S.Boolean),
-  "enabledUnknownSources": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "GoogleAppsCloudidentityDevicesV1AndroidAttributes" }) as any as S.Schema<GoogleAppsCloudidentityDevicesV1AndroidAttributes>;
+export const GoogleAppsCloudidentityDevicesV1AndroidAttributes =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      ownerProfileAccount: S.optional(S.Boolean),
+      verifiedBoot: S.optional(S.Boolean),
+      ownershipPrivilege: S.optional(
+        GoogleAppsCloudidentityDevicesV1AndroidAttributesOwnershipPrivilegeEnum,
+      ),
+      verifyAppsEnabled: S.optional(S.Boolean),
+      hasPotentiallyHarmfulApps: S.optional(S.Boolean),
+      supportsWorkProfile: S.optional(S.Boolean),
+      ctsProfileMatch: S.optional(S.Boolean),
+      enabledUnknownSources: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsCloudidentityDevicesV1AndroidAttributes",
+  }) as any as S.Schema<GoogleAppsCloudidentityDevicesV1AndroidAttributes>;
 
-export type GoogleAppsCloudidentityDevicesV1DeviceEncryptionStateEnum = "ENCRYPTION_STATE_UNSPECIFIED" | "UNSUPPORTED_BY_DEVICE" | "ENCRYPTED" | "NOT_ENCRYPTED";
-export const GoogleAppsCloudidentityDevicesV1DeviceEncryptionStateEnum = /*@__PURE__*/ S.String;
+export type GoogleAppsCloudidentityDevicesV1DeviceEncryptionStateEnum =
+  | "ENCRYPTION_STATE_UNSPECIFIED"
+  | "UNSUPPORTED_BY_DEVICE"
+  | "ENCRYPTED"
+  | "NOT_ENCRYPTED";
+export const GoogleAppsCloudidentityDevicesV1DeviceEncryptionStateEnum =
+  /*@__PURE__*/ S.String;
 
-export type GoogleAppsCloudidentityDevicesV1DeviceCompromisedStateEnum = "COMPROMISED_STATE_UNSPECIFIED" | "COMPROMISED" | "UNCOMPROMISED";
-export const GoogleAppsCloudidentityDevicesV1DeviceCompromisedStateEnum = /*@__PURE__*/ S.String;
+export type GoogleAppsCloudidentityDevicesV1DeviceCompromisedStateEnum =
+  | "COMPROMISED_STATE_UNSPECIFIED"
+  | "COMPROMISED"
+  | "UNCOMPROMISED";
+export const GoogleAppsCloudidentityDevicesV1DeviceCompromisedStateEnum =
+  /*@__PURE__*/ S.String;
 
 /** A Device within the Cloud Identity Devices API. Represents a Device known to Google Cloud, independent of the device ownership, type, and whether it is assigned or in use by a user. */
 export interface GoogleAppsCloudidentityDevicesV1Device {
@@ -543,42 +738,59 @@ export interface GoogleAppsCloudidentityDevicesV1Device {
   /** Asset tag of the device. */
   assetTag?: string;
 }
-export const GoogleAppsCloudidentityDevicesV1Device = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "otherAccounts": S.optional(StringList),
-  "meid": S.optional(S.String),
-  "endpointVerificationSpecificAttributes": S.optional(GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes),
-  "managementState": S.optional(GoogleAppsCloudidentityDevicesV1DeviceManagementStateEnum),
-  "networkOperator": S.optional(S.String),
-  "serialNumber": S.optional(S.String),
-  "bootloaderVersion": S.optional(S.String),
-  "model": S.optional(S.String),
-  "basebandVersion": S.optional(S.String),
-  "name": S.optional(S.String),
-  "enabledUsbDebugging": S.optional(S.Boolean),
-  "deviceType": S.optional(GoogleAppsCloudidentityDevicesV1DeviceDeviceTypeEnum),
-  "osVersion": S.optional(S.String),
-  "manufacturer": S.optional(S.String),
-  "hostname": S.optional(S.String),
-  "ownerType": S.optional(GoogleAppsCloudidentityDevicesV1DeviceOwnerTypeEnum),
-  "securityPatchTime": S.optional(S.String),
-  "buildNumber": S.optional(S.String),
-  "enabledDeveloperOptions": S.optional(S.Boolean),
-  "deviceId": S.optional(S.String),
-  "lastSyncTime": S.optional(S.String),
-  "androidSpecificAttributes": S.optional(GoogleAppsCloudidentityDevicesV1AndroidAttributes),
-  "imei": S.optional(S.String),
-  "brand": S.optional(S.String),
-  "unifiedDeviceId": S.optional(S.String),
-  "wifiMacAddresses": S.optional(StringList),
-  "kernelVersion": S.optional(S.String),
-  "releaseVersion": S.optional(S.String),
-  "encryptionState": S.optional(GoogleAppsCloudidentityDevicesV1DeviceEncryptionStateEnum),
-  "compromisedState": S.optional(GoogleAppsCloudidentityDevicesV1DeviceCompromisedStateEnum),
-  "createTime": S.optional(S.String),
-  "assetTag": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleAppsCloudidentityDevicesV1Device" }) as any as S.Schema<GoogleAppsCloudidentityDevicesV1Device>;
+export const GoogleAppsCloudidentityDevicesV1Device = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      otherAccounts: S.optional(StringList),
+      meid: S.optional(S.String),
+      endpointVerificationSpecificAttributes: S.optional(
+        GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes,
+      ),
+      managementState: S.optional(
+        GoogleAppsCloudidentityDevicesV1DeviceManagementStateEnum,
+      ),
+      networkOperator: S.optional(S.String),
+      serialNumber: S.optional(S.String),
+      bootloaderVersion: S.optional(S.String),
+      model: S.optional(S.String),
+      basebandVersion: S.optional(S.String),
+      name: S.optional(S.String),
+      enabledUsbDebugging: S.optional(S.Boolean),
+      deviceType: S.optional(
+        GoogleAppsCloudidentityDevicesV1DeviceDeviceTypeEnum,
+      ),
+      osVersion: S.optional(S.String),
+      manufacturer: S.optional(S.String),
+      hostname: S.optional(S.String),
+      ownerType: S.optional(
+        GoogleAppsCloudidentityDevicesV1DeviceOwnerTypeEnum,
+      ),
+      securityPatchTime: S.optional(S.String),
+      buildNumber: S.optional(S.String),
+      enabledDeveloperOptions: S.optional(S.Boolean),
+      deviceId: S.optional(S.String),
+      lastSyncTime: S.optional(S.String),
+      androidSpecificAttributes: S.optional(
+        GoogleAppsCloudidentityDevicesV1AndroidAttributes,
+      ),
+      imei: S.optional(S.String),
+      brand: S.optional(S.String),
+      unifiedDeviceId: S.optional(S.String),
+      wifiMacAddresses: S.optional(StringList),
+      kernelVersion: S.optional(S.String),
+      releaseVersion: S.optional(S.String),
+      encryptionState: S.optional(
+        GoogleAppsCloudidentityDevicesV1DeviceEncryptionStateEnum,
+      ),
+      compromisedState: S.optional(
+        GoogleAppsCloudidentityDevicesV1DeviceCompromisedStateEnum,
+      ),
+      createTime: S.optional(S.String),
+      assetTag: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "GoogleAppsCloudidentityDevicesV1Device",
+}) as any as S.Schema<GoogleAppsCloudidentityDevicesV1Device>;
 
 export interface CreateDevicesRequest {
   /** Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer}`, where customer is the customer to whom the device belongs. */
@@ -587,13 +799,24 @@ export interface CreateDevicesRequest {
   body?: GoogleAppsCloudidentityDevicesV1Device;
 }
 export const CreateDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "customer": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(GoogleAppsCloudidentityDevicesV1Device.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/devices","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "CreateDevicesRequest" }) as any as S.Schema<CreateDevicesRequest>;
+  S.Struct({
+    customer: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(GoogleAppsCloudidentityDevicesV1Device.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/devices",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateDevicesRequest",
+}) as any as S.Schema<CreateDevicesRequest>;
 
-export type CreateGroupsInitialGroupConfigEnum = "INITIAL_GROUP_CONFIG_UNSPECIFIED" | "WITH_INITIAL_OWNER" | "EMPTY";
+export type CreateGroupsInitialGroupConfigEnum =
+  | "INITIAL_GROUP_CONFIG_UNSPECIFIED"
+  | "WITH_INITIAL_OWNER"
+  | "EMPTY";
 export const CreateGroupsInitialGroupConfigEnum = /*@__PURE__*/ S.String;
 
 /** A unique identifier for an entity in the Cloud Identity Groups API. An entity can represent either a group with an optional `namespace` or a user without a `namespace`. The combination of `id` and `namespace` must be unique; however, the same `id` can be used with different `namespace`s. */
@@ -604,13 +827,15 @@ export interface EntityKey {
   id?: string;
 }
 export const EntityKey = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "namespace": S.optional(S.String),
-  "id": S.optional(S.String),
-}),
+  S.Struct({
+    namespace: S.optional(S.String),
+    id: S.optional(S.String),
+  }),
 ).annotate({ identifier: "EntityKey" }) as any as S.Schema<EntityKey>;
 
-export type DynamicGroupQueryResourceTypeEnum = "RESOURCE_TYPE_UNSPECIFIED" | "USER";
+export type DynamicGroupQueryResourceTypeEnum =
+  | "RESOURCE_TYPE_UNSPECIFIED"
+  | "USER";
 export const DynamicGroupQueryResourceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Defines a query on a resource. */
@@ -621,16 +846,24 @@ export interface DynamicGroupQuery {
   query?: string;
 }
 export const DynamicGroupQuery = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "resourceType": S.optional(DynamicGroupQueryResourceTypeEnum),
-  "query": S.optional(S.String),
-}),
-).annotate({ identifier: "DynamicGroupQuery" }) as any as S.Schema<DynamicGroupQuery>;
+  S.Struct({
+    resourceType: S.optional(DynamicGroupQueryResourceTypeEnum),
+    query: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DynamicGroupQuery",
+}) as any as S.Schema<DynamicGroupQuery>;
 
 export type DynamicGroupQueryList = ReadonlyArray<DynamicGroupQuery>;
-export const DynamicGroupQueryList = /*@__PURE__*/ S.Array(DynamicGroupQuery) as any as S.Schema<DynamicGroupQueryList>;
+export const DynamicGroupQueryList = /*@__PURE__*/ S.Array(
+  DynamicGroupQuery,
+) as any as S.Schema<DynamicGroupQueryList>;
 
-export type DynamicGroupStatusStatusEnum = "STATUS_UNSPECIFIED" | "UP_TO_DATE" | "UPDATING_MEMBERSHIPS" | "INVALID_QUERY";
+export type DynamicGroupStatusStatusEnum =
+  | "STATUS_UNSPECIFIED"
+  | "UP_TO_DATE"
+  | "UPDATING_MEMBERSHIPS"
+  | "INVALID_QUERY";
 export const DynamicGroupStatusStatusEnum = /*@__PURE__*/ S.String;
 
 /** The current status of a dynamic group along with timestamp. */
@@ -641,11 +874,13 @@ export interface DynamicGroupStatus {
   statusTime?: string;
 }
 export const DynamicGroupStatus = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "status": S.optional(DynamicGroupStatusStatusEnum),
-  "statusTime": S.optional(S.String),
-}),
-).annotate({ identifier: "DynamicGroupStatus" }) as any as S.Schema<DynamicGroupStatus>;
+  S.Struct({
+    status: S.optional(DynamicGroupStatusStatusEnum),
+    statusTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DynamicGroupStatus",
+}) as any as S.Schema<DynamicGroupStatus>;
 
 /** Dynamic group metadata like queries and status. */
 export interface DynamicGroupMetadata {
@@ -655,17 +890,24 @@ export interface DynamicGroupMetadata {
   status?: DynamicGroupStatus;
 }
 export const DynamicGroupMetadata = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "queries": S.optional(DynamicGroupQueryList),
-  "status": S.optional(DynamicGroupStatus),
-}),
-).annotate({ identifier: "DynamicGroupMetadata" }) as any as S.Schema<DynamicGroupMetadata>;
+  S.Struct({
+    queries: S.optional(DynamicGroupQueryList),
+    status: S.optional(DynamicGroupStatus),
+  }),
+).annotate({
+  identifier: "DynamicGroupMetadata",
+}) as any as S.Schema<DynamicGroupMetadata>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
 export type EntityKeyList = ReadonlyArray<EntityKey>;
-export const EntityKeyList = /*@__PURE__*/ S.Array(EntityKey) as any as S.Schema<EntityKeyList>;
+export const EntityKeyList = /*@__PURE__*/ S.Array(
+  EntityKey,
+) as any as S.Schema<EntityKeyList>;
 
 /** A group within the Cloud Identity Groups API. A `Group` is a collection of entities, where each entity is either a user, another group, or a service account. */
 export interface Group {
@@ -691,18 +933,18 @@ export interface Group {
   additionalGroupKeys?: EntityKeyList;
 }
 export const Group = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "groupKey": S.optional(EntityKey),
-  "parent": S.optional(S.String),
-  "description": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "name": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "dynamicGroupMetadata": S.optional(DynamicGroupMetadata),
-  "createTime": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "additionalGroupKeys": S.optional(EntityKeyList),
-}),
+  S.Struct({
+    groupKey: S.optional(EntityKey),
+    parent: S.optional(S.String),
+    description: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    name: S.optional(S.String),
+    displayName: S.optional(S.String),
+    dynamicGroupMetadata: S.optional(DynamicGroupMetadata),
+    createTime: S.optional(S.String),
+    labels: S.optional(StringMap),
+    additionalGroupKeys: S.optional(EntityKeyList),
+  }),
 ).annotate({ identifier: "Group" }) as any as S.Schema<Group>;
 
 export interface CreateGroupsRequest {
@@ -712,13 +954,31 @@ export interface CreateGroupsRequest {
   body?: Group;
 }
 export const CreateGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "initialGroupConfig": S.optional(CreateGroupsInitialGroupConfigEnum.pipe(T.Query())),
-  "body": S.optional(Group.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/groups","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "CreateGroupsRequest" }) as any as S.Schema<CreateGroupsRequest>;
+  S.Struct({
+    initialGroupConfig: S.optional(
+      CreateGroupsInitialGroupConfigEnum.pipe(T.Query()),
+    ),
+    body: S.optional(Group.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/groups",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateGroupsRequest",
+}) as any as S.Schema<CreateGroupsRequest>;
 
-export type MembershipTypeEnum = "TYPE_UNSPECIFIED" | "USER" | "SERVICE_ACCOUNT" | "GROUP" | "SHARED_DRIVE" | "CBCM_BROWSER" | "CHROME_OS_DEVICE" | "OTHER";
+export type MembershipTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "USER"
+  | "SERVICE_ACCOUNT"
+  | "GROUP"
+  | "SHARED_DRIVE"
+  | "CBCM_BROWSER"
+  | "CHROME_OS_DEVICE"
+  | "OTHER";
 export const MembershipTypeEnum = /*@__PURE__*/ S.String;
 
 /** The `MembershipRole` expiry details. */
@@ -727,13 +987,19 @@ export interface ExpiryDetail {
   expireTime?: string;
 }
 export const ExpiryDetail = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "expireTime": S.optional(S.String),
-}),
+  S.Struct({
+    expireTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ExpiryDetail" }) as any as S.Schema<ExpiryDetail>;
 
-export type MembershipRoleRestrictionEvaluationStateEnum = "STATE_UNSPECIFIED" | "COMPLIANT" | "FORWARD_COMPLIANT" | "NON_COMPLIANT" | "EVALUATING";
-export const MembershipRoleRestrictionEvaluationStateEnum = /*@__PURE__*/ S.String;
+export type MembershipRoleRestrictionEvaluationStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "COMPLIANT"
+  | "FORWARD_COMPLIANT"
+  | "NON_COMPLIANT"
+  | "EVALUATING";
+export const MembershipRoleRestrictionEvaluationStateEnum =
+  /*@__PURE__*/ S.String;
 
 /** The evaluated state of this restriction. */
 export interface MembershipRoleRestrictionEvaluation {
@@ -741,10 +1007,12 @@ export interface MembershipRoleRestrictionEvaluation {
   state?: MembershipRoleRestrictionEvaluationStateEnum;
 }
 export const MembershipRoleRestrictionEvaluation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "state": S.optional(MembershipRoleRestrictionEvaluationStateEnum),
-}),
-).annotate({ identifier: "MembershipRoleRestrictionEvaluation" }) as any as S.Schema<MembershipRoleRestrictionEvaluation>;
+  S.Struct({
+    state: S.optional(MembershipRoleRestrictionEvaluationStateEnum),
+  }),
+).annotate({
+  identifier: "MembershipRoleRestrictionEvaluation",
+}) as any as S.Schema<MembershipRoleRestrictionEvaluation>;
 
 /** Evaluations of restrictions applied to parent group on this membership. */
 export interface RestrictionEvaluations {
@@ -752,10 +1020,14 @@ export interface RestrictionEvaluations {
   memberRestrictionEvaluation?: MembershipRoleRestrictionEvaluation;
 }
 export const RestrictionEvaluations = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "memberRestrictionEvaluation": S.optional(MembershipRoleRestrictionEvaluation),
-}),
-).annotate({ identifier: "RestrictionEvaluations" }) as any as S.Schema<RestrictionEvaluations>;
+  S.Struct({
+    memberRestrictionEvaluation: S.optional(
+      MembershipRoleRestrictionEvaluation,
+    ),
+  }),
+).annotate({
+  identifier: "RestrictionEvaluations",
+}) as any as S.Schema<RestrictionEvaluations>;
 
 /** A membership role within the Cloud Identity Groups API. A `MembershipRole` defines the privileges granted to a `Membership`. */
 export interface MembershipRole {
@@ -767,17 +1039,25 @@ export interface MembershipRole {
   restrictionEvaluations?: RestrictionEvaluations;
 }
 export const MembershipRole = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "expiryDetail": S.optional(ExpiryDetail),
-  "name": S.optional(S.String),
-  "restrictionEvaluations": S.optional(RestrictionEvaluations),
-}),
+  S.Struct({
+    expiryDetail: S.optional(ExpiryDetail),
+    name: S.optional(S.String),
+    restrictionEvaluations: S.optional(RestrictionEvaluations),
+  }),
 ).annotate({ identifier: "MembershipRole" }) as any as S.Schema<MembershipRole>;
 
 export type MembershipRoleList = ReadonlyArray<MembershipRole>;
-export const MembershipRoleList = /*@__PURE__*/ S.Array(MembershipRole) as any as S.Schema<MembershipRoleList>;
+export const MembershipRoleList = /*@__PURE__*/ S.Array(
+  MembershipRole,
+) as any as S.Schema<MembershipRoleList>;
 
-export type MembershipDeliverySettingEnum = "DELIVERY_SETTING_UNSPECIFIED" | "ALL_MAIL" | "DIGEST" | "DAILY" | "NONE" | "DISABLED";
+export type MembershipDeliverySettingEnum =
+  | "DELIVERY_SETTING_UNSPECIFIED"
+  | "ALL_MAIL"
+  | "DIGEST"
+  | "DAILY"
+  | "NONE"
+  | "DISABLED";
 export const MembershipDeliverySettingEnum = /*@__PURE__*/ S.String;
 
 /** A membership within the Cloud Identity Groups API. A `Membership` defines a relationship between a `Group` and an entity belonging to that `Group`, referred to as a "member". */
@@ -798,15 +1078,15 @@ export interface Membership {
   deliverySetting?: MembershipDeliverySettingEnum;
 }
 export const Membership = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "preferredMemberKey": S.optional(EntityKey),
-  "type": S.optional(MembershipTypeEnum),
-  "roles": S.optional(MembershipRoleList),
-  "deliverySetting": S.optional(MembershipDeliverySettingEnum),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    createTime: S.optional(S.String),
+    preferredMemberKey: S.optional(EntityKey),
+    type: S.optional(MembershipTypeEnum),
+    roles: S.optional(MembershipRoleList),
+    deliverySetting: S.optional(MembershipDeliverySettingEnum),
+  }),
 ).annotate({ identifier: "Membership" }) as any as S.Schema<Membership>;
 
 export interface CreateGroupsMembershipsRequest {
@@ -816,11 +1096,19 @@ export interface CreateGroupsMembershipsRequest {
   body?: Membership;
 }
 export const CreateGroupsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(Membership.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/memberships","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "CreateGroupsMembershipsRequest" }) as any as S.Schema<CreateGroupsMembershipsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(Membership.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/memberships",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateGroupsMembershipsRequest",
+}) as any as S.Schema<CreateGroupsMembershipsRequest>;
 
 /** OIDC IDP (identity provider) configuration. */
 export interface OidcIdpConfig {
@@ -830,10 +1118,10 @@ export interface OidcIdpConfig {
   issuerUri?: string;
 }
 export const OidcIdpConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "changePasswordUri": S.optional(S.String),
-  "issuerUri": S.optional(S.String),
-}),
+  S.Struct({
+    changePasswordUri: S.optional(S.String),
+    issuerUri: S.optional(S.String),
+  }),
 ).annotate({ identifier: "OidcIdpConfig" }) as any as S.Schema<OidcIdpConfig>;
 
 /** OIDC RP (relying party) configuration. */
@@ -846,11 +1134,11 @@ export interface OidcRpConfig {
   redirectUris?: StringList;
 }
 export const OidcRpConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "clientId": S.optional(S.String),
-  "clientSecret": S.optional(S.String),
-  "redirectUris": S.optional(StringList),
-}),
+  S.Struct({
+    clientId: S.optional(S.String),
+    clientSecret: S.optional(S.String),
+    redirectUris: S.optional(StringList),
+  }),
 ).annotate({ identifier: "OidcRpConfig" }) as any as S.Schema<OidcRpConfig>;
 
 /** An [OIDC](https://openid.net/developers/how-connect-works/) federation between a Google enterprise customer and an OIDC identity provider. */
@@ -867,24 +1155,34 @@ export interface InboundOidcSsoProfile {
   rpConfig?: OidcRpConfig;
 }
 export const InboundOidcSsoProfile = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "idpConfig": S.optional(OidcIdpConfig),
-  "name": S.optional(S.String),
-  "customer": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "rpConfig": S.optional(OidcRpConfig),
-}),
-).annotate({ identifier: "InboundOidcSsoProfile" }) as any as S.Schema<InboundOidcSsoProfile>;
+  S.Struct({
+    idpConfig: S.optional(OidcIdpConfig),
+    name: S.optional(S.String),
+    customer: S.optional(S.String),
+    displayName: S.optional(S.String),
+    rpConfig: S.optional(OidcRpConfig),
+  }),
+).annotate({
+  identifier: "InboundOidcSsoProfile",
+}) as any as S.Schema<InboundOidcSsoProfile>;
 
 export interface CreateInboundOidcSsoProfilesRequest {
   /** Request body */
   body?: InboundOidcSsoProfile;
 }
 export const CreateInboundOidcSsoProfilesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(InboundOidcSsoProfile.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/inboundOidcSsoProfiles","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "CreateInboundOidcSsoProfilesRequest" }) as any as S.Schema<CreateInboundOidcSsoProfilesRequest>;
+  S.Struct({
+    body: S.optional(InboundOidcSsoProfile.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/inboundOidcSsoProfiles",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateInboundOidcSsoProfilesRequest",
+}) as any as S.Schema<CreateInboundOidcSsoProfilesRequest>;
 
 /** SAML IDP (identity provider) configuration. */
 export interface SamlIdpConfig {
@@ -898,12 +1196,12 @@ export interface SamlIdpConfig {
   singleSignOnServiceUri?: string;
 }
 export const SamlIdpConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "entityId": S.optional(S.String),
-  "changePasswordUri": S.optional(S.String),
-  "logoutRedirectUri": S.optional(S.String),
-  "singleSignOnServiceUri": S.optional(S.String),
-}),
+  S.Struct({
+    entityId: S.optional(S.String),
+    changePasswordUri: S.optional(S.String),
+    logoutRedirectUri: S.optional(S.String),
+    singleSignOnServiceUri: S.optional(S.String),
+  }),
 ).annotate({ identifier: "SamlIdpConfig" }) as any as S.Schema<SamlIdpConfig>;
 
 /** SAML SP (service provider) configuration. */
@@ -914,10 +1212,10 @@ export interface SamlSpConfig {
   entityId?: string;
 }
 export const SamlSpConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "assertionConsumerServiceUri": S.optional(S.String),
-  "entityId": S.optional(S.String),
-}),
+  S.Struct({
+    assertionConsumerServiceUri: S.optional(S.String),
+    entityId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "SamlSpConfig" }) as any as S.Schema<SamlSpConfig>;
 
 /** A [SAML 2.0](https://www.oasis-open.org/standards#samlv2.0) federation between a Google enterprise customer and a SAML identity provider. */
@@ -934,24 +1232,34 @@ export interface InboundSamlSsoProfile {
   displayName?: string;
 }
 export const InboundSamlSsoProfile = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "idpConfig": S.optional(SamlIdpConfig),
-  "spConfig": S.optional(SamlSpConfig),
-  "name": S.optional(S.String),
-  "customer": S.optional(S.String),
-  "displayName": S.optional(S.String),
-}),
-).annotate({ identifier: "InboundSamlSsoProfile" }) as any as S.Schema<InboundSamlSsoProfile>;
+  S.Struct({
+    idpConfig: S.optional(SamlIdpConfig),
+    spConfig: S.optional(SamlSpConfig),
+    name: S.optional(S.String),
+    customer: S.optional(S.String),
+    displayName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "InboundSamlSsoProfile",
+}) as any as S.Schema<InboundSamlSsoProfile>;
 
 export interface CreateInboundSamlSsoProfilesRequest {
   /** Request body */
   body?: InboundSamlSsoProfile;
 }
 export const CreateInboundSamlSsoProfilesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(InboundSamlSsoProfile.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/inboundSamlSsoProfiles","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "CreateInboundSamlSsoProfilesRequest" }) as any as S.Schema<CreateInboundSamlSsoProfilesRequest>;
+  S.Struct({
+    body: S.optional(InboundSamlSsoProfile.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/inboundSamlSsoProfiles",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateInboundSamlSsoProfilesRequest",
+}) as any as S.Schema<CreateInboundSamlSsoProfilesRequest>;
 
 /** Details that are applicable when `sso_mode` == `SAML_SSO`. */
 export interface SamlSsoInfo {
@@ -959,9 +1267,9 @@ export interface SamlSsoInfo {
   inboundSamlSsoProfile?: string;
 }
 export const SamlSsoInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "inboundSamlSsoProfile": S.optional(S.String),
-}),
+  S.Struct({
+    inboundSamlSsoProfile: S.optional(S.String),
+  }),
 ).annotate({ identifier: "SamlSsoInfo" }) as any as S.Schema<SamlSsoInfo>;
 
 /** Details that are applicable when `sso_mode` is set to `OIDC_SSO`. */
@@ -970,12 +1278,14 @@ export interface OidcSsoInfo {
   inboundOidcSsoProfile?: string;
 }
 export const OidcSsoInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "inboundOidcSsoProfile": S.optional(S.String),
-}),
+  S.Struct({
+    inboundOidcSsoProfile: S.optional(S.String),
+  }),
 ).annotate({ identifier: "OidcSsoInfo" }) as any as S.Schema<OidcSsoInfo>;
 
-export type SignInBehaviorRedirectConditionEnum = "REDIRECT_CONDITION_UNSPECIFIED" | "NEVER";
+export type SignInBehaviorRedirectConditionEnum =
+  | "REDIRECT_CONDITION_UNSPECIFIED"
+  | "NEVER";
 export const SignInBehaviorRedirectConditionEnum = /*@__PURE__*/ S.String;
 
 /** Controls sign-in behavior. */
@@ -984,12 +1294,17 @@ export interface SignInBehavior {
   redirectCondition?: SignInBehaviorRedirectConditionEnum;
 }
 export const SignInBehavior = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "redirectCondition": S.optional(SignInBehaviorRedirectConditionEnum),
-}),
+  S.Struct({
+    redirectCondition: S.optional(SignInBehaviorRedirectConditionEnum),
+  }),
 ).annotate({ identifier: "SignInBehavior" }) as any as S.Schema<SignInBehavior>;
 
-export type InboundSsoAssignmentSsoModeEnum = "SSO_MODE_UNSPECIFIED" | "SSO_OFF" | "SAML_SSO" | "OIDC_SSO" | "DOMAIN_WIDE_SAML_IF_ENABLED";
+export type InboundSsoAssignmentSsoModeEnum =
+  | "SSO_MODE_UNSPECIFIED"
+  | "SSO_OFF"
+  | "SAML_SSO"
+  | "OIDC_SSO"
+  | "DOMAIN_WIDE_SAML_IF_ENABLED";
 export const InboundSsoAssignmentSsoModeEnum = /*@__PURE__*/ S.String;
 
 /** Targets with "set" SSO assignments and their respective assignments. */
@@ -1014,28 +1329,38 @@ export interface InboundSsoAssignment {
   customer?: string;
 }
 export const InboundSsoAssignment = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "samlSsoInfo": S.optional(SamlSsoInfo),
-  "targetOrgUnit": S.optional(S.String),
-  "oidcSsoInfo": S.optional(OidcSsoInfo),
-  "name": S.optional(S.String),
-  "signInBehavior": S.optional(SignInBehavior),
-  "targetGroup": S.optional(S.String),
-  "ssoMode": S.optional(InboundSsoAssignmentSsoModeEnum),
-  "rank": S.optional(S.Number),
-  "customer": S.optional(S.String),
-}),
-).annotate({ identifier: "InboundSsoAssignment" }) as any as S.Schema<InboundSsoAssignment>;
+  S.Struct({
+    samlSsoInfo: S.optional(SamlSsoInfo),
+    targetOrgUnit: S.optional(S.String),
+    oidcSsoInfo: S.optional(OidcSsoInfo),
+    name: S.optional(S.String),
+    signInBehavior: S.optional(SignInBehavior),
+    targetGroup: S.optional(S.String),
+    ssoMode: S.optional(InboundSsoAssignmentSsoModeEnum),
+    rank: S.optional(S.Number),
+    customer: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "InboundSsoAssignment",
+}) as any as S.Schema<InboundSsoAssignment>;
 
 export interface CreateInboundSsoAssignmentsRequest {
   /** Request body */
   body?: InboundSsoAssignment;
 }
 export const CreateInboundSsoAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(InboundSsoAssignment.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/inboundSsoAssignments","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "CreateInboundSsoAssignmentsRequest" }) as any as S.Schema<CreateInboundSsoAssignmentsRequest>;
+  S.Struct({
+    body: S.optional(InboundSsoAssignment.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/inboundSsoAssignments",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateInboundSsoAssignmentsRequest",
+}) as any as S.Schema<CreateInboundSsoAssignmentsRequest>;
 
 /** Setting */
 export interface Setting {
@@ -1045,10 +1370,10 @@ export interface Setting {
   value?: DocumentMap;
 }
 export const Setting = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(S.String),
-  "value": S.optional(DocumentMap),
-}),
+  S.Struct({
+    type: S.optional(S.String),
+    value: S.optional(DocumentMap),
+  }),
 ).annotate({ identifier: "Setting" }) as any as S.Schema<Setting>;
 
 export type PolicyTypeEnum = "POLICY_TYPE_UNSPECIFIED" | "SYSTEM" | "ADMIN";
@@ -1066,12 +1391,12 @@ export interface PolicyQuery {
   group?: string;
 }
 export const PolicyQuery = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "query": S.optional(S.String),
-  "orgUnit": S.optional(S.String),
-  "sortOrder": S.optional(S.Number),
-  "group": S.optional(S.String),
-}),
+  S.Struct({
+    query: S.optional(S.String),
+    orgUnit: S.optional(S.String),
+    sortOrder: S.optional(S.Number),
+    group: S.optional(S.String),
+  }),
 ).annotate({ identifier: "PolicyQuery" }) as any as S.Schema<PolicyQuery>;
 
 /** A Policy resource binds an instance of a single Setting with the scope of a PolicyQuery. The Setting instance will be applied to all entities that satisfy the query. */
@@ -1088,13 +1413,13 @@ export interface Policy {
   policyQuery?: PolicyQuery;
 }
 export const Policy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "customer": S.optional(S.String),
-  "setting": S.optional(Setting),
-  "type": S.optional(PolicyTypeEnum),
-  "policyQuery": S.optional(PolicyQuery),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    customer: S.optional(S.String),
+    setting: S.optional(Setting),
+    type: S.optional(PolicyTypeEnum),
+    policyQuery: S.optional(PolicyQuery),
+  }),
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
 
 export interface CreatePoliciesRequest {
@@ -1102,10 +1427,18 @@ export interface CreatePoliciesRequest {
   body?: Policy;
 }
 export const CreatePoliciesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(Policy.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/policies","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "CreatePoliciesRequest" }) as any as S.Schema<CreatePoliciesRequest>;
+  S.Struct({
+    body: S.optional(Policy.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/policies",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreatePoliciesRequest",
+}) as any as S.Schema<CreatePoliciesRequest>;
 
 export interface DeleteDevicesRequest {
   /** Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device}`, where device is the unique ID assigned to the Device. */
@@ -1114,11 +1447,19 @@ export interface DeleteDevicesRequest {
   customer?: string;
 }
 export const DeleteDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "customer": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "DeleteDevicesRequest" }) as any as S.Schema<DeleteDevicesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    customer: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteDevicesRequest",
+}) as any as S.Schema<DeleteDevicesRequest>;
 
 export interface DeleteDevicesDeviceUsersRequest {
   /** Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device}/deviceUsers/{device_user}`, where device is the unique ID assigned to the Device, and device_user is the unique ID assigned to the User. */
@@ -1127,93 +1468,171 @@ export interface DeleteDevicesDeviceUsersRequest {
   customer?: string;
 }
 export const DeleteDevicesDeviceUsersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "customer": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "DeleteDevicesDeviceUsersRequest" }) as any as S.Schema<DeleteDevicesDeviceUsersRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    customer: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteDevicesDeviceUsersRequest",
+}) as any as S.Schema<DeleteDevicesDeviceUsersRequest>;
 
 export interface DeleteGroupsRequest {
   /** Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Group` to retrieve. Must be of the form `groups/{group}`. */
   name: string;
 }
 export const DeleteGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "DeleteGroupsRequest" }) as any as S.Schema<DeleteGroupsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteGroupsRequest",
+}) as any as S.Schema<DeleteGroupsRequest>;
 
 export interface DeleteGroupsMembershipsRequest {
   /** Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership` to delete. Must be of the form `groups/{group}/memberships/{membership}` */
   name: string;
 }
 export const DeleteGroupsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "DeleteGroupsMembershipsRequest" }) as any as S.Schema<DeleteGroupsMembershipsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteGroupsMembershipsRequest",
+}) as any as S.Schema<DeleteGroupsMembershipsRequest>;
 
 export interface DeleteInboundOidcSsoProfilesRequest {
   /** Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the InboundOidcSsoProfile to delete. Format: `inboundOidcSsoProfiles/{sso_profile_id}` */
   name: string;
 }
 export const DeleteInboundOidcSsoProfilesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "DeleteInboundOidcSsoProfilesRequest" }) as any as S.Schema<DeleteInboundOidcSsoProfilesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteInboundOidcSsoProfilesRequest",
+}) as any as S.Schema<DeleteInboundOidcSsoProfilesRequest>;
 
 export interface DeleteInboundSamlSsoProfilesRequest {
   /** Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the InboundSamlSsoProfile to delete. Format: `inboundSamlSsoProfiles/{sso_profile_id}` */
   name: string;
 }
 export const DeleteInboundSamlSsoProfilesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "DeleteInboundSamlSsoProfilesRequest" }) as any as S.Schema<DeleteInboundSamlSsoProfilesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteInboundSamlSsoProfilesRequest",
+}) as any as S.Schema<DeleteInboundSamlSsoProfilesRequest>;
 
 export interface DeleteInboundSamlSsoProfilesIdpCredentialsRequest {
   /** Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the IdpCredential to delete. Format: `inboundSamlSsoProfiles/{sso_profile_id}/idpCredentials/{idp_credential_id}` */
   name: string;
 }
-export const DeleteInboundSamlSsoProfilesIdpCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "DeleteInboundSamlSsoProfilesIdpCredentialsRequest" }) as any as S.Schema<DeleteInboundSamlSsoProfilesIdpCredentialsRequest>;
+export const DeleteInboundSamlSsoProfilesIdpCredentialsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://cloudidentity.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteInboundSamlSsoProfilesIdpCredentialsRequest",
+  }) as any as S.Schema<DeleteInboundSamlSsoProfilesIdpCredentialsRequest>;
 
 export interface DeleteInboundSsoAssignmentsRequest {
   /** Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the InboundSsoAssignment to delete. Format: `inboundSsoAssignments/{assignment}` */
   name: string;
 }
 export const DeleteInboundSsoAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "DeleteInboundSsoAssignmentsRequest" }) as any as S.Schema<DeleteInboundSsoAssignmentsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteInboundSsoAssignmentsRequest",
+}) as any as S.Schema<DeleteInboundSsoAssignmentsRequest>;
 
 export interface DeletePoliciesRequest {
   /** Required. The name of the policy to delete. Format: `policies/{policy}`. */
   name: string;
 }
 export const DeletePoliciesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "DeletePoliciesRequest" }) as any as S.Schema<DeletePoliciesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeletePoliciesRequest",
+}) as any as S.Schema<DeletePoliciesRequest>;
 
 export interface GetCustomersUserinvitationsRequest {
   /** Required. `UserInvitation` name in the format `customers/{customer}/userinvitations/{user_email_address}` */
   name: string;
 }
 export const GetCustomersUserinvitationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "GetCustomersUserinvitationsRequest" }) as any as S.Schema<GetCustomersUserinvitationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetCustomersUserinvitationsRequest",
+}) as any as S.Schema<GetCustomersUserinvitationsRequest>;
 
-export type UserInvitationStateEnum = "STATE_UNSPECIFIED" | "NOT_YET_SENT" | "INVITED" | "ACCEPTED" | "DECLINED";
+export type UserInvitationStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "NOT_YET_SENT"
+  | "INVITED"
+  | "ACCEPTED"
+  | "DECLINED";
 export const UserInvitationStateEnum = /*@__PURE__*/ S.String;
 
 /** The `UserInvitation` resource represents an email that can be sent to an unmanaged user account inviting them to join the customer's Google Workspace or Cloud Identity account. An unmanaged account shares an email address domain with the Google Workspace or Cloud Identity account but is not managed by it yet. If the user accepts the `UserInvitation`, the user account will become managed. */
@@ -1228,12 +1647,12 @@ export interface UserInvitation {
   state?: UserInvitationStateEnum;
 }
 export const UserInvitation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "mailsSentCount": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "name": S.optional(S.String),
-  "state": S.optional(UserInvitationStateEnum),
-}),
+  S.Struct({
+    mailsSentCount: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    name: S.optional(S.String),
+    state: S.optional(UserInvitationStateEnum),
+  }),
 ).annotate({ identifier: "UserInvitation" }) as any as S.Schema<UserInvitation>;
 
 export interface GetDevicesRequest {
@@ -1243,11 +1662,19 @@ export interface GetDevicesRequest {
   customer?: string;
 }
 export const GetDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "customer": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "GetDevicesRequest" }) as any as S.Schema<GetDevicesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    customer: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetDevicesRequest",
+}) as any as S.Schema<GetDevicesRequest>;
 
 export interface GetDevicesDeviceUsersRequest {
   /** Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device}/deviceUsers/{device_user}`, where device is the unique ID assigned to the Device, and device_user is the unique ID assigned to the User. */
@@ -1256,20 +1683,44 @@ export interface GetDevicesDeviceUsersRequest {
   customer?: string;
 }
 export const GetDevicesDeviceUsersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "customer": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "GetDevicesDeviceUsersRequest" }) as any as S.Schema<GetDevicesDeviceUsersRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    customer: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetDevicesDeviceUsersRequest",
+}) as any as S.Schema<GetDevicesDeviceUsersRequest>;
 
-export type GoogleAppsCloudidentityDevicesV1DeviceUserCompromisedStateEnum = "COMPROMISED_STATE_UNSPECIFIED" | "COMPROMISED" | "NOT_COMPROMISED";
-export const GoogleAppsCloudidentityDevicesV1DeviceUserCompromisedStateEnum = /*@__PURE__*/ S.String;
+export type GoogleAppsCloudidentityDevicesV1DeviceUserCompromisedStateEnum =
+  | "COMPROMISED_STATE_UNSPECIFIED"
+  | "COMPROMISED"
+  | "NOT_COMPROMISED";
+export const GoogleAppsCloudidentityDevicesV1DeviceUserCompromisedStateEnum =
+  /*@__PURE__*/ S.String;
 
-export type GoogleAppsCloudidentityDevicesV1DeviceUserPasswordStateEnum = "PASSWORD_STATE_UNSPECIFIED" | "PASSWORD_SET" | "PASSWORD_NOT_SET";
-export const GoogleAppsCloudidentityDevicesV1DeviceUserPasswordStateEnum = /*@__PURE__*/ S.String;
+export type GoogleAppsCloudidentityDevicesV1DeviceUserPasswordStateEnum =
+  | "PASSWORD_STATE_UNSPECIFIED"
+  | "PASSWORD_SET"
+  | "PASSWORD_NOT_SET";
+export const GoogleAppsCloudidentityDevicesV1DeviceUserPasswordStateEnum =
+  /*@__PURE__*/ S.String;
 
-export type GoogleAppsCloudidentityDevicesV1DeviceUserManagementStateEnum = "MANAGEMENT_STATE_UNSPECIFIED" | "WIPING" | "WIPED" | "APPROVED" | "BLOCKED" | "PENDING_APPROVAL" | "UNENROLLED";
-export const GoogleAppsCloudidentityDevicesV1DeviceUserManagementStateEnum = /*@__PURE__*/ S.String;
+export type GoogleAppsCloudidentityDevicesV1DeviceUserManagementStateEnum =
+  | "MANAGEMENT_STATE_UNSPECIFIED"
+  | "WIPING"
+  | "WIPED"
+  | "APPROVED"
+  | "BLOCKED"
+  | "PENDING_APPROVAL"
+  | "UNENROLLED";
+export const GoogleAppsCloudidentityDevicesV1DeviceUserManagementStateEnum =
+  /*@__PURE__*/ S.String;
 
 /** Represents a user's use of a Device in the Cloud Identity Devices API. A DeviceUser is a resource representing a user's use of a Device */
 export interface GoogleAppsCloudidentityDevicesV1DeviceUser {
@@ -1294,20 +1745,29 @@ export interface GoogleAppsCloudidentityDevicesV1DeviceUser {
   /** When the user first signed in to the device */
   createTime?: string;
 }
-export const GoogleAppsCloudidentityDevicesV1DeviceUser = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "lastSyncTime": S.optional(S.String),
-  "firstSyncTime": S.optional(S.String),
-  "compromisedState": S.optional(GoogleAppsCloudidentityDevicesV1DeviceUserCompromisedStateEnum),
-  "passwordState": S.optional(GoogleAppsCloudidentityDevicesV1DeviceUserPasswordStateEnum),
-  "name": S.optional(S.String),
-  "userAgent": S.optional(S.String),
-  "languageCode": S.optional(S.String),
-  "userEmail": S.optional(S.String),
-  "managementState": S.optional(GoogleAppsCloudidentityDevicesV1DeviceUserManagementStateEnum),
-  "createTime": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleAppsCloudidentityDevicesV1DeviceUser" }) as any as S.Schema<GoogleAppsCloudidentityDevicesV1DeviceUser>;
+export const GoogleAppsCloudidentityDevicesV1DeviceUser =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      lastSyncTime: S.optional(S.String),
+      firstSyncTime: S.optional(S.String),
+      compromisedState: S.optional(
+        GoogleAppsCloudidentityDevicesV1DeviceUserCompromisedStateEnum,
+      ),
+      passwordState: S.optional(
+        GoogleAppsCloudidentityDevicesV1DeviceUserPasswordStateEnum,
+      ),
+      name: S.optional(S.String),
+      userAgent: S.optional(S.String),
+      languageCode: S.optional(S.String),
+      userEmail: S.optional(S.String),
+      managementState: S.optional(
+        GoogleAppsCloudidentityDevicesV1DeviceUserManagementStateEnum,
+      ),
+      createTime: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsCloudidentityDevicesV1DeviceUser",
+  }) as any as S.Schema<GoogleAppsCloudidentityDevicesV1DeviceUser>;
 
 export interface GetDevicesDeviceUsersClientStatesRequest {
   /** Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the ClientState in format: `devices/{device}/deviceUsers/{device_user}/clientStates/{partner}`, where `device` is the unique ID assigned to the Device, `device_user` is the unique ID assigned to the User and `partner` identifies the partner storing the data. To get the client state for devices belonging to your own organization, the `partnerId` is in the format: `customerId-*anystring*`. Where the `customerId` is your organization's customer ID and `anystring` is any suffix. This suffix is used in setting up Custom Access Levels in Context-Aware Access. You may use `my_customer` instead of the customer ID for devices managed by your own organization. You may specify `-` in place of the `{device}`, so the ClientState resource name can be: `devices/-/deviceUsers/{device_user_resource}/clientStates/{partner}`. */
@@ -1315,15 +1775,28 @@ export interface GetDevicesDeviceUsersClientStatesRequest {
   /** Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer}`, where customer is the customer to whom the device belongs. */
   customer?: string;
 }
-export const GetDevicesDeviceUsersClientStatesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "customer": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "GetDevicesDeviceUsersClientStatesRequest" }) as any as S.Schema<GetDevicesDeviceUsersClientStatesRequest>;
+export const GetDevicesDeviceUsersClientStatesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      customer: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://cloudidentity.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetDevicesDeviceUsersClientStatesRequest",
+}) as any as S.Schema<GetDevicesDeviceUsersClientStatesRequest>;
 
-export type GoogleAppsCloudidentityDevicesV1ClientStateComplianceStateEnum = "COMPLIANCE_STATE_UNSPECIFIED" | "COMPLIANT" | "NON_COMPLIANT";
-export const GoogleAppsCloudidentityDevicesV1ClientStateComplianceStateEnum = /*@__PURE__*/ S.String;
+export type GoogleAppsCloudidentityDevicesV1ClientStateComplianceStateEnum =
+  | "COMPLIANCE_STATE_UNSPECIFIED"
+  | "COMPLIANT"
+  | "NON_COMPLIANT";
+export const GoogleAppsCloudidentityDevicesV1ClientStateComplianceStateEnum =
+  /*@__PURE__*/ S.String;
 
 /** Additional custom attribute values may be one of these types */
 export interface GoogleAppsCloudidentityDevicesV1CustomAttributeValue {
@@ -1334,25 +1807,51 @@ export interface GoogleAppsCloudidentityDevicesV1CustomAttributeValue {
   /** Represents a boolean value. */
   boolValue?: boolean;
 }
-export const GoogleAppsCloudidentityDevicesV1CustomAttributeValue = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "numberValue": S.optional(S.Number),
-  "stringValue": S.optional(S.String),
-  "boolValue": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "GoogleAppsCloudidentityDevicesV1CustomAttributeValue" }) as any as S.Schema<GoogleAppsCloudidentityDevicesV1CustomAttributeValue>;
+export const GoogleAppsCloudidentityDevicesV1CustomAttributeValue =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      numberValue: S.optional(S.Number),
+      stringValue: S.optional(S.String),
+      boolValue: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsCloudidentityDevicesV1CustomAttributeValue",
+  }) as any as S.Schema<GoogleAppsCloudidentityDevicesV1CustomAttributeValue>;
 
-export type GoogleAppsCloudidentityDevicesV1CustomAttributeValueMap = { [key: string]: GoogleAppsCloudidentityDevicesV1CustomAttributeValue | undefined };
-export const GoogleAppsCloudidentityDevicesV1CustomAttributeValueMap = /*@__PURE__*/ S.Record(S.String, GoogleAppsCloudidentityDevicesV1CustomAttributeValue) as any as S.Schema<GoogleAppsCloudidentityDevicesV1CustomAttributeValueMap>;
+export type GoogleAppsCloudidentityDevicesV1CustomAttributeValueMap = {
+  [key: string]:
+    | GoogleAppsCloudidentityDevicesV1CustomAttributeValue
+    | undefined;
+};
+export const GoogleAppsCloudidentityDevicesV1CustomAttributeValueMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    GoogleAppsCloudidentityDevicesV1CustomAttributeValue,
+  ) as any as S.Schema<GoogleAppsCloudidentityDevicesV1CustomAttributeValueMap>;
 
-export type GoogleAppsCloudidentityDevicesV1ClientStateOwnerTypeEnum = "OWNER_TYPE_UNSPECIFIED" | "OWNER_TYPE_CUSTOMER" | "OWNER_TYPE_PARTNER";
-export const GoogleAppsCloudidentityDevicesV1ClientStateOwnerTypeEnum = /*@__PURE__*/ S.String;
+export type GoogleAppsCloudidentityDevicesV1ClientStateOwnerTypeEnum =
+  | "OWNER_TYPE_UNSPECIFIED"
+  | "OWNER_TYPE_CUSTOMER"
+  | "OWNER_TYPE_PARTNER";
+export const GoogleAppsCloudidentityDevicesV1ClientStateOwnerTypeEnum =
+  /*@__PURE__*/ S.String;
 
-export type GoogleAppsCloudidentityDevicesV1ClientStateHealthScoreEnum = "HEALTH_SCORE_UNSPECIFIED" | "VERY_POOR" | "POOR" | "NEUTRAL" | "GOOD" | "VERY_GOOD";
-export const GoogleAppsCloudidentityDevicesV1ClientStateHealthScoreEnum = /*@__PURE__*/ S.String;
+export type GoogleAppsCloudidentityDevicesV1ClientStateHealthScoreEnum =
+  | "HEALTH_SCORE_UNSPECIFIED"
+  | "VERY_POOR"
+  | "POOR"
+  | "NEUTRAL"
+  | "GOOD"
+  | "VERY_GOOD";
+export const GoogleAppsCloudidentityDevicesV1ClientStateHealthScoreEnum =
+  /*@__PURE__*/ S.String;
 
-export type GoogleAppsCloudidentityDevicesV1ClientStateManagedEnum = "MANAGED_STATE_UNSPECIFIED" | "MANAGED" | "UNMANAGED";
-export const GoogleAppsCloudidentityDevicesV1ClientStateManagedEnum = /*@__PURE__*/ S.String;
+export type GoogleAppsCloudidentityDevicesV1ClientStateManagedEnum =
+  | "MANAGED_STATE_UNSPECIFIED"
+  | "MANAGED"
+  | "UNMANAGED";
+export const GoogleAppsCloudidentityDevicesV1ClientStateManagedEnum =
+  /*@__PURE__*/ S.String;
 
 /** Represents the state associated with an API client calling the Devices API. Resource representing ClientState and supports updates from API users */
 export interface GoogleAppsCloudidentityDevicesV1ClientState {
@@ -1381,72 +1880,126 @@ export interface GoogleAppsCloudidentityDevicesV1ClientState {
   /** The token that needs to be passed back for concurrency control in updates. Token needs to be passed back in UpdateRequest */
   etag?: string;
 }
-export const GoogleAppsCloudidentityDevicesV1ClientState = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "customId": S.optional(S.String),
-  "complianceState": S.optional(GoogleAppsCloudidentityDevicesV1ClientStateComplianceStateEnum),
-  "keyValuePairs": S.optional(GoogleAppsCloudidentityDevicesV1CustomAttributeValueMap),
-  "lastUpdateTime": S.optional(S.String),
-  "ownerType": S.optional(GoogleAppsCloudidentityDevicesV1ClientStateOwnerTypeEnum),
-  "name": S.optional(S.String),
-  "scoreReason": S.optional(S.String),
-  "healthScore": S.optional(GoogleAppsCloudidentityDevicesV1ClientStateHealthScoreEnum),
-  "managed": S.optional(GoogleAppsCloudidentityDevicesV1ClientStateManagedEnum),
-  "createTime": S.optional(S.String),
-  "assetTags": S.optional(StringList),
-  "etag": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleAppsCloudidentityDevicesV1ClientState" }) as any as S.Schema<GoogleAppsCloudidentityDevicesV1ClientState>;
+export const GoogleAppsCloudidentityDevicesV1ClientState =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      customId: S.optional(S.String),
+      complianceState: S.optional(
+        GoogleAppsCloudidentityDevicesV1ClientStateComplianceStateEnum,
+      ),
+      keyValuePairs: S.optional(
+        GoogleAppsCloudidentityDevicesV1CustomAttributeValueMap,
+      ),
+      lastUpdateTime: S.optional(S.String),
+      ownerType: S.optional(
+        GoogleAppsCloudidentityDevicesV1ClientStateOwnerTypeEnum,
+      ),
+      name: S.optional(S.String),
+      scoreReason: S.optional(S.String),
+      healthScore: S.optional(
+        GoogleAppsCloudidentityDevicesV1ClientStateHealthScoreEnum,
+      ),
+      managed: S.optional(
+        GoogleAppsCloudidentityDevicesV1ClientStateManagedEnum,
+      ),
+      createTime: S.optional(S.String),
+      assetTags: S.optional(StringList),
+      etag: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsCloudidentityDevicesV1ClientState",
+  }) as any as S.Schema<GoogleAppsCloudidentityDevicesV1ClientState>;
 
 export interface GetGroupsRequest {
   /** Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Group` to retrieve. Must be of the form `groups/{group}`. */
   name: string;
 }
 export const GetGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "GetGroupsRequest" }) as any as S.Schema<GetGroupsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetGroupsRequest",
+}) as any as S.Schema<GetGroupsRequest>;
 
 export interface GetGroupsMembershipsRequest {
   /** Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership` to retrieve. Must be of the form `groups/{group}/memberships/{membership}`. */
   name: string;
 }
 export const GetGroupsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "GetGroupsMembershipsRequest" }) as any as S.Schema<GetGroupsMembershipsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetGroupsMembershipsRequest",
+}) as any as S.Schema<GetGroupsMembershipsRequest>;
 
 export interface GetInboundOidcSsoProfilesRequest {
   /** Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the InboundOidcSsoProfile to get. Format: `inboundOidcSsoProfiles/{sso_profile_id}` */
   name: string;
 }
 export const GetInboundOidcSsoProfilesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "GetInboundOidcSsoProfilesRequest" }) as any as S.Schema<GetInboundOidcSsoProfilesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetInboundOidcSsoProfilesRequest",
+}) as any as S.Schema<GetInboundOidcSsoProfilesRequest>;
 
 export interface GetInboundSamlSsoProfilesRequest {
   /** Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the InboundSamlSsoProfile to get. Format: `inboundSamlSsoProfiles/{sso_profile_id}` */
   name: string;
 }
 export const GetInboundSamlSsoProfilesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "GetInboundSamlSsoProfilesRequest" }) as any as S.Schema<GetInboundSamlSsoProfilesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetInboundSamlSsoProfilesRequest",
+}) as any as S.Schema<GetInboundSamlSsoProfilesRequest>;
 
 export interface GetInboundSamlSsoProfilesIdpCredentialsRequest {
   /** Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the IdpCredential to retrieve. Format: `inboundSamlSsoProfiles/{sso_profile_id}/idpCredentials/{idp_credential_id}` */
   name: string;
 }
-export const GetInboundSamlSsoProfilesIdpCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "GetInboundSamlSsoProfilesIdpCredentialsRequest" }) as any as S.Schema<GetInboundSamlSsoProfilesIdpCredentialsRequest>;
+export const GetInboundSamlSsoProfilesIdpCredentialsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://cloudidentity.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetInboundSamlSsoProfilesIdpCredentialsRequest",
+  }) as any as S.Schema<GetInboundSamlSsoProfilesIdpCredentialsRequest>;
 
 /** Information of a RSA public key. */
 export interface RsaPublicKeyInfo {
@@ -1454,10 +2007,12 @@ export interface RsaPublicKeyInfo {
   keySize?: number;
 }
 export const RsaPublicKeyInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "keySize": S.optional(S.Number),
-}),
-).annotate({ identifier: "RsaPublicKeyInfo" }) as any as S.Schema<RsaPublicKeyInfo>;
+  S.Struct({
+    keySize: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "RsaPublicKeyInfo",
+}) as any as S.Schema<RsaPublicKeyInfo>;
 
 /** Information of a DSA public key. */
 export interface DsaPublicKeyInfo {
@@ -1465,10 +2020,12 @@ export interface DsaPublicKeyInfo {
   keySize?: number;
 }
 export const DsaPublicKeyInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "keySize": S.optional(S.Number),
-}),
-).annotate({ identifier: "DsaPublicKeyInfo" }) as any as S.Schema<DsaPublicKeyInfo>;
+  S.Struct({
+    keySize: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "DsaPublicKeyInfo",
+}) as any as S.Schema<DsaPublicKeyInfo>;
 
 /** Credential for verifying signatures produced by the Identity Provider. */
 export interface IdpCredential {
@@ -1482,12 +2039,12 @@ export interface IdpCredential {
   name?: string;
 }
 export const IdpCredential = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "rsaKeyInfo": S.optional(RsaPublicKeyInfo),
-  "dsaKeyInfo": S.optional(DsaPublicKeyInfo),
-  "updateTime": S.optional(S.String),
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    rsaKeyInfo: S.optional(RsaPublicKeyInfo),
+    dsaKeyInfo: S.optional(DsaPublicKeyInfo),
+    updateTime: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "IdpCredential" }) as any as S.Schema<IdpCredential>;
 
 export interface GetInboundSsoAssignmentsRequest {
@@ -1495,10 +2052,18 @@ export interface GetInboundSsoAssignmentsRequest {
   name: string;
 }
 export const GetInboundSsoAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "GetInboundSsoAssignmentsRequest" }) as any as S.Schema<GetInboundSsoAssignmentsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetInboundSsoAssignmentsRequest",
+}) as any as S.Schema<GetInboundSsoAssignmentsRequest>;
 
 export interface GetMembershipGraphGroupsMembershipsRequest {
   /** Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the group to search transitive memberships in. Format: `groups/{group}`, where `group` is the unique ID assigned to the Group to which the Membership belongs to. group can be a wildcard collection id "-". When a group is specified, the membership graph will be constrained to paths between the member (defined in the query) and the parent. If a wildcard collection is provided, all membership paths connected to the member will be returned. */
@@ -1506,22 +2071,39 @@ export interface GetMembershipGraphGroupsMembershipsRequest {
   /** Required. A CEL expression that MUST include member specification AND label(s). Certain groups are uniquely identified by both a 'member_key_id' and a 'member_key_namespace', which requires an additional query input: 'member_key_namespace'. Example query: `member_key_id == 'member_key_id_value' && in labels` */
   query?: string;
 }
-export const GetMembershipGraphGroupsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "query": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/memberships:getMembershipGraph","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "GetMembershipGraphGroupsMembershipsRequest" }) as any as S.Schema<GetMembershipGraphGroupsMembershipsRequest>;
+export const GetMembershipGraphGroupsMembershipsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      query: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/memberships:getMembershipGraph",
+        baseUrl: "https://cloudidentity.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetMembershipGraphGroupsMembershipsRequest",
+  }) as any as S.Schema<GetMembershipGraphGroupsMembershipsRequest>;
 
 export interface GetPoliciesRequest {
   /** Required. The name of the policy to retrieve. Format: `policies/{policy}`. */
   name: string;
 }
 export const GetPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "GetPoliciesRequest" }) as any as S.Schema<GetPoliciesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetPoliciesRequest",
+}) as any as S.Schema<GetPoliciesRequest>;
 
 export interface GetSecuritySettingsGroupsRequest {
   /** Required. The security settings to retrieve. Format: `groups/{group_id}/securitySettings` */
@@ -1530,13 +2112,26 @@ export interface GetSecuritySettingsGroupsRequest {
   readMask?: string;
 }
 export const GetSecuritySettingsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "readMask": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "GetSecuritySettingsGroupsRequest" }) as any as S.Schema<GetSecuritySettingsGroupsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    readMask: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetSecuritySettingsGroupsRequest",
+}) as any as S.Schema<GetSecuritySettingsGroupsRequest>;
 
-export type RestrictionEvaluationStateEnum = "STATE_UNSPECIFIED" | "EVALUATING" | "COMPLIANT" | "FORWARD_COMPLIANT" | "NON_COMPLIANT";
+export type RestrictionEvaluationStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "EVALUATING"
+  | "COMPLIANT"
+  | "FORWARD_COMPLIANT"
+  | "NON_COMPLIANT";
 export const RestrictionEvaluationStateEnum = /*@__PURE__*/ S.String;
 
 /** The evaluated state of this restriction. */
@@ -1545,10 +2140,12 @@ export interface RestrictionEvaluation {
   state?: RestrictionEvaluationStateEnum;
 }
 export const RestrictionEvaluation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "state": S.optional(RestrictionEvaluationStateEnum),
-}),
-).annotate({ identifier: "RestrictionEvaluation" }) as any as S.Schema<RestrictionEvaluation>;
+  S.Struct({
+    state: S.optional(RestrictionEvaluationStateEnum),
+  }),
+).annotate({
+  identifier: "RestrictionEvaluation",
+}) as any as S.Schema<RestrictionEvaluation>;
 
 /** The definition of MemberRestriction */
 export interface MemberRestriction {
@@ -1558,11 +2155,13 @@ export interface MemberRestriction {
   evaluation?: RestrictionEvaluation;
 }
 export const MemberRestriction = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "query": S.optional(S.String),
-  "evaluation": S.optional(RestrictionEvaluation),
-}),
-).annotate({ identifier: "MemberRestriction" }) as any as S.Schema<MemberRestriction>;
+  S.Struct({
+    query: S.optional(S.String),
+    evaluation: S.optional(RestrictionEvaluation),
+  }),
+).annotate({
+  identifier: "MemberRestriction",
+}) as any as S.Schema<MemberRestriction>;
 
 /** The definition of security settings. */
 export interface SecuritySettings {
@@ -1572,21 +2171,32 @@ export interface SecuritySettings {
   memberRestriction?: MemberRestriction;
 }
 export const SecuritySettings = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "memberRestriction": S.optional(MemberRestriction),
-}),
-).annotate({ identifier: "SecuritySettings" }) as any as S.Schema<SecuritySettings>;
+  S.Struct({
+    name: S.optional(S.String),
+    memberRestriction: S.optional(MemberRestriction),
+  }),
+).annotate({
+  identifier: "SecuritySettings",
+}) as any as S.Schema<SecuritySettings>;
 
 export interface IsInvitableUserCustomersUserinvitationsRequest {
   /** Required. `UserInvitation` name in the format `customers/{customer}/userinvitations/{user_email_address}` */
   name: string;
 }
-export const IsInvitableUserCustomersUserinvitationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:isInvitableUser","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "IsInvitableUserCustomersUserinvitationsRequest" }) as any as S.Schema<IsInvitableUserCustomersUserinvitationsRequest>;
+export const IsInvitableUserCustomersUserinvitationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}:isInvitableUser",
+        baseUrl: "https://cloudidentity.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "IsInvitableUserCustomersUserinvitationsRequest",
+  }) as any as S.Schema<IsInvitableUserCustomersUserinvitationsRequest>;
 
 /** Response for IsInvitableUser RPC. */
 export interface IsInvitableUserResponse {
@@ -1594,10 +2204,12 @@ export interface IsInvitableUserResponse {
   isInvitableUser?: boolean;
 }
 export const IsInvitableUserResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "isInvitableUser": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "IsInvitableUserResponse" }) as any as S.Schema<IsInvitableUserResponse>;
+  S.Struct({
+    isInvitableUser: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "IsInvitableUserResponse",
+}) as any as S.Schema<IsInvitableUserResponse>;
 
 export interface ListCustomersUserinvitationsRequest {
   /** Required. The customer ID of the Google Workspace or Cloud Identity account the UserInvitation resources are associated with. */
@@ -1612,17 +2224,27 @@ export interface ListCustomersUserinvitationsRequest {
   orderBy?: string;
 }
 export const ListCustomersUserinvitationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/userinvitations","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "ListCustomersUserinvitationsRequest" }) as any as S.Schema<ListCustomersUserinvitationsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/userinvitations",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListCustomersUserinvitationsRequest",
+}) as any as S.Schema<ListCustomersUserinvitationsRequest>;
 
 export type UserInvitationList = ReadonlyArray<UserInvitation>;
-export const UserInvitationList = /*@__PURE__*/ S.Array(UserInvitation) as any as S.Schema<UserInvitationList>;
+export const UserInvitationList = /*@__PURE__*/ S.Array(
+  UserInvitation,
+) as any as S.Schema<UserInvitationList>;
 
 /** Response message for UserInvitation listing request. */
 export interface ListUserInvitationsResponse {
@@ -1632,13 +2254,18 @@ export interface ListUserInvitationsResponse {
   nextPageToken?: string;
 }
 export const ListUserInvitationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "userInvitations": S.optional(UserInvitationList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListUserInvitationsResponse" }) as any as S.Schema<ListUserInvitationsResponse>;
+  S.Struct({
+    userInvitations: S.optional(UserInvitationList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListUserInvitationsResponse",
+}) as any as S.Schema<ListUserInvitationsResponse>;
 
-export type ListDevicesViewEnum = "VIEW_UNSPECIFIED" | "COMPANY_INVENTORY" | "USER_ASSIGNED_DEVICES";
+export type ListDevicesViewEnum =
+  | "VIEW_UNSPECIFIED"
+  | "COMPANY_INVENTORY"
+  | "USER_ASSIGNED_DEVICES";
 export const ListDevicesViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListDevicesRequest {
@@ -1656,18 +2283,29 @@ export interface ListDevicesRequest {
   pageToken?: string;
 }
 export const ListDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "customer": S.optional(S.String.pipe(T.Query())),
-  "view": S.optional(ListDevicesViewEnum.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/devices","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "ListDevicesRequest" }) as any as S.Schema<ListDevicesRequest>;
+  S.Struct({
+    orderBy: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    customer: S.optional(S.String.pipe(T.Query())),
+    view: S.optional(ListDevicesViewEnum.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/devices",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListDevicesRequest",
+}) as any as S.Schema<ListDevicesRequest>;
 
-export type GoogleAppsCloudidentityDevicesV1DeviceList = ReadonlyArray<GoogleAppsCloudidentityDevicesV1Device>;
-export const GoogleAppsCloudidentityDevicesV1DeviceList = /*@__PURE__*/ S.Array(GoogleAppsCloudidentityDevicesV1Device) as any as S.Schema<GoogleAppsCloudidentityDevicesV1DeviceList>;
+export type GoogleAppsCloudidentityDevicesV1DeviceList =
+  ReadonlyArray<GoogleAppsCloudidentityDevicesV1Device>;
+export const GoogleAppsCloudidentityDevicesV1DeviceList = /*@__PURE__*/ S.Array(
+  GoogleAppsCloudidentityDevicesV1Device,
+) as any as S.Schema<GoogleAppsCloudidentityDevicesV1DeviceList>;
 
 /** Response message that is returned from the ListDevices method. */
 export interface GoogleAppsCloudidentityDevicesV1ListDevicesResponse {
@@ -1676,12 +2314,15 @@ export interface GoogleAppsCloudidentityDevicesV1ListDevicesResponse {
   /** Token to retrieve the next page of results. Empty if there are no more results. */
   nextPageToken?: string;
 }
-export const GoogleAppsCloudidentityDevicesV1ListDevicesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "devices": S.optional(GoogleAppsCloudidentityDevicesV1DeviceList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleAppsCloudidentityDevicesV1ListDevicesResponse" }) as any as S.Schema<GoogleAppsCloudidentityDevicesV1ListDevicesResponse>;
+export const GoogleAppsCloudidentityDevicesV1ListDevicesResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      devices: S.optional(GoogleAppsCloudidentityDevicesV1DeviceList),
+      nextPageToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsCloudidentityDevicesV1ListDevicesResponse",
+  }) as any as S.Schema<GoogleAppsCloudidentityDevicesV1ListDevicesResponse>;
 
 export interface ListDevicesDeviceUsersRequest {
   /** Optional. Order specification for devices in the response. */
@@ -1698,18 +2339,30 @@ export interface ListDevicesDeviceUsersRequest {
   pageToken?: string;
 }
 export const ListDevicesDeviceUsersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "customer": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/deviceUsers","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "ListDevicesDeviceUsersRequest" }) as any as S.Schema<ListDevicesDeviceUsersRequest>;
+  S.Struct({
+    orderBy: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    customer: S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/deviceUsers",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListDevicesDeviceUsersRequest",
+}) as any as S.Schema<ListDevicesDeviceUsersRequest>;
 
-export type GoogleAppsCloudidentityDevicesV1DeviceUserList = ReadonlyArray<GoogleAppsCloudidentityDevicesV1DeviceUser>;
-export const GoogleAppsCloudidentityDevicesV1DeviceUserList = /*@__PURE__*/ S.Array(GoogleAppsCloudidentityDevicesV1DeviceUser) as any as S.Schema<GoogleAppsCloudidentityDevicesV1DeviceUserList>;
+export type GoogleAppsCloudidentityDevicesV1DeviceUserList =
+  ReadonlyArray<GoogleAppsCloudidentityDevicesV1DeviceUser>;
+export const GoogleAppsCloudidentityDevicesV1DeviceUserList =
+  /*@__PURE__*/ S.Array(
+    GoogleAppsCloudidentityDevicesV1DeviceUser,
+  ) as any as S.Schema<GoogleAppsCloudidentityDevicesV1DeviceUserList>;
 
 /** Response message that is returned from the ListDeviceUsers method. */
 export interface GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse {
@@ -1718,12 +2371,15 @@ export interface GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse {
   /** Token to retrieve the next page of results. Empty if there are no more results. */
   nextPageToken?: string;
 }
-export const GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "deviceUsers": S.optional(GoogleAppsCloudidentityDevicesV1DeviceUserList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse" }) as any as S.Schema<GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse>;
+export const GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deviceUsers: S.optional(GoogleAppsCloudidentityDevicesV1DeviceUserList),
+      nextPageToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse",
+  }) as any as S.Schema<GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse>;
 
 export interface ListDevicesDeviceUsersClientStatesRequest {
   /** Optional. Order specification for client states in the response. */
@@ -1737,18 +2393,31 @@ export interface ListDevicesDeviceUsersClientStatesRequest {
   /** Optional. A page token, received from a previous `ListClientStates` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListClientStates` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListDevicesDeviceUsersClientStatesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "customer": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/clientStates","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "ListDevicesDeviceUsersClientStatesRequest" }) as any as S.Schema<ListDevicesDeviceUsersClientStatesRequest>;
+export const ListDevicesDeviceUsersClientStatesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      customer: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/clientStates",
+        baseUrl: "https://cloudidentity.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListDevicesDeviceUsersClientStatesRequest",
+  }) as any as S.Schema<ListDevicesDeviceUsersClientStatesRequest>;
 
-export type GoogleAppsCloudidentityDevicesV1ClientStateList = ReadonlyArray<GoogleAppsCloudidentityDevicesV1ClientState>;
-export const GoogleAppsCloudidentityDevicesV1ClientStateList = /*@__PURE__*/ S.Array(GoogleAppsCloudidentityDevicesV1ClientState) as any as S.Schema<GoogleAppsCloudidentityDevicesV1ClientStateList>;
+export type GoogleAppsCloudidentityDevicesV1ClientStateList =
+  ReadonlyArray<GoogleAppsCloudidentityDevicesV1ClientState>;
+export const GoogleAppsCloudidentityDevicesV1ClientStateList =
+  /*@__PURE__*/ S.Array(
+    GoogleAppsCloudidentityDevicesV1ClientState,
+  ) as any as S.Schema<GoogleAppsCloudidentityDevicesV1ClientStateList>;
 
 /** Response message that is returned in ListClientStates. */
 export interface GoogleAppsCloudidentityDevicesV1ListClientStatesResponse {
@@ -1757,12 +2426,15 @@ export interface GoogleAppsCloudidentityDevicesV1ListClientStatesResponse {
   /** Token to retrieve the next page of results. Empty if there are no more results. */
   nextPageToken?: string;
 }
-export const GoogleAppsCloudidentityDevicesV1ListClientStatesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "clientStates": S.optional(GoogleAppsCloudidentityDevicesV1ClientStateList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleAppsCloudidentityDevicesV1ListClientStatesResponse" }) as any as S.Schema<GoogleAppsCloudidentityDevicesV1ListClientStatesResponse>;
+export const GoogleAppsCloudidentityDevicesV1ListClientStatesResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      clientStates: S.optional(GoogleAppsCloudidentityDevicesV1ClientStateList),
+      nextPageToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsCloudidentityDevicesV1ListClientStatesResponse",
+  }) as any as S.Schema<GoogleAppsCloudidentityDevicesV1ListClientStatesResponse>;
 
 export type ListGroupsViewEnum = "VIEW_UNSPECIFIED" | "BASIC" | "FULL";
 export const ListGroupsViewEnum = /*@__PURE__*/ S.String;
@@ -1778,16 +2450,26 @@ export interface ListGroupsRequest {
   pageToken?: string;
 }
 export const ListGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "view": S.optional(ListGroupsViewEnum.pipe(T.Query())),
-  "parent": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/groups","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "ListGroupsRequest" }) as any as S.Schema<ListGroupsRequest>;
+  S.Struct({
+    view: S.optional(ListGroupsViewEnum.pipe(T.Query())),
+    parent: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/groups",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListGroupsRequest",
+}) as any as S.Schema<ListGroupsRequest>;
 
 export type GroupList = ReadonlyArray<Group>;
-export const GroupList = /*@__PURE__*/ S.Array(Group) as any as S.Schema<GroupList>;
+export const GroupList = /*@__PURE__*/ S.Array(
+  Group,
+) as any as S.Schema<GroupList>;
 
 /** Response message for ListGroups operation. */
 export interface ListGroupsResponse {
@@ -1797,13 +2479,18 @@ export interface ListGroupsResponse {
   nextPageToken?: string;
 }
 export const ListGroupsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "groups": S.optional(GroupList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListGroupsResponse" }) as any as S.Schema<ListGroupsResponse>;
+  S.Struct({
+    groups: S.optional(GroupList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListGroupsResponse",
+}) as any as S.Schema<ListGroupsResponse>;
 
-export type ListGroupsMembershipsViewEnum = "VIEW_UNSPECIFIED" | "BASIC" | "FULL";
+export type ListGroupsMembershipsViewEnum =
+  | "VIEW_UNSPECIFIED"
+  | "BASIC"
+  | "FULL";
 export const ListGroupsMembershipsViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListGroupsMembershipsRequest {
@@ -1817,16 +2504,26 @@ export interface ListGroupsMembershipsRequest {
   view?: ListGroupsMembershipsViewEnum | (string & {});
 }
 export const ListGroupsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "view": S.optional(ListGroupsMembershipsViewEnum.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/memberships","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "ListGroupsMembershipsRequest" }) as any as S.Schema<ListGroupsMembershipsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    view: S.optional(ListGroupsMembershipsViewEnum.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/memberships",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListGroupsMembershipsRequest",
+}) as any as S.Schema<ListGroupsMembershipsRequest>;
 
 export type MembershipList = ReadonlyArray<Membership>;
-export const MembershipList = /*@__PURE__*/ S.Array(Membership) as any as S.Schema<MembershipList>;
+export const MembershipList = /*@__PURE__*/ S.Array(
+  Membership,
+) as any as S.Schema<MembershipList>;
 
 /** The response message for MembershipsService.ListMemberships. */
 export interface ListMembershipsResponse {
@@ -1836,11 +2533,13 @@ export interface ListMembershipsResponse {
   nextPageToken?: string;
 }
 export const ListMembershipsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "memberships": S.optional(MembershipList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListMembershipsResponse" }) as any as S.Schema<ListMembershipsResponse>;
+  S.Struct({
+    memberships: S.optional(MembershipList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListMembershipsResponse",
+}) as any as S.Schema<ListMembershipsResponse>;
 
 export interface ListInboundOidcSsoProfilesRequest {
   /** A [Common Expression Language](https://github.com/google/cel-spec) expression to filter the results. The only supported filter is filtering by customer. For example: `customer=="customers/C0123abc"`. Omitting the filter or specifying a filter of `customer=="customers/my_customer"` will return the profiles for the customer that the caller (authenticated user) belongs to. Specifying a filter of `customer==""` will return the global shared OIDC profiles. */
@@ -1851,15 +2550,25 @@ export interface ListInboundOidcSsoProfilesRequest {
   pageToken?: string;
 }
 export const ListInboundOidcSsoProfilesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/inboundOidcSsoProfiles","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "ListInboundOidcSsoProfilesRequest" }) as any as S.Schema<ListInboundOidcSsoProfilesRequest>;
+  S.Struct({
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/inboundOidcSsoProfiles",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListInboundOidcSsoProfilesRequest",
+}) as any as S.Schema<ListInboundOidcSsoProfilesRequest>;
 
 export type InboundOidcSsoProfileList = ReadonlyArray<InboundOidcSsoProfile>;
-export const InboundOidcSsoProfileList = /*@__PURE__*/ S.Array(InboundOidcSsoProfile) as any as S.Schema<InboundOidcSsoProfileList>;
+export const InboundOidcSsoProfileList = /*@__PURE__*/ S.Array(
+  InboundOidcSsoProfile,
+) as any as S.Schema<InboundOidcSsoProfileList>;
 
 /** Response of the InboundOidcSsoProfilesService.ListInboundOidcSsoProfiles method. */
 export interface ListInboundOidcSsoProfilesResponse {
@@ -1869,11 +2578,13 @@ export interface ListInboundOidcSsoProfilesResponse {
   nextPageToken?: string;
 }
 export const ListInboundOidcSsoProfilesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "inboundOidcSsoProfiles": S.optional(InboundOidcSsoProfileList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListInboundOidcSsoProfilesResponse" }) as any as S.Schema<ListInboundOidcSsoProfilesResponse>;
+  S.Struct({
+    inboundOidcSsoProfiles: S.optional(InboundOidcSsoProfileList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListInboundOidcSsoProfilesResponse",
+}) as any as S.Schema<ListInboundOidcSsoProfilesResponse>;
 
 export interface ListInboundSamlSsoProfilesRequest {
   /** A [Common Expression Language](https://github.com/google/cel-spec) expression to filter the results. The only supported filter is filtering by customer. For example: `customer=="customers/C0123abc"`. Omitting the filter or specifying a filter of `customer=="customers/my_customer"` will return the profiles for the customer that the caller (authenticated user) belongs to. */
@@ -1884,15 +2595,25 @@ export interface ListInboundSamlSsoProfilesRequest {
   pageToken?: string;
 }
 export const ListInboundSamlSsoProfilesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/inboundSamlSsoProfiles","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "ListInboundSamlSsoProfilesRequest" }) as any as S.Schema<ListInboundSamlSsoProfilesRequest>;
+  S.Struct({
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/inboundSamlSsoProfiles",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListInboundSamlSsoProfilesRequest",
+}) as any as S.Schema<ListInboundSamlSsoProfilesRequest>;
 
 export type InboundSamlSsoProfileList = ReadonlyArray<InboundSamlSsoProfile>;
-export const InboundSamlSsoProfileList = /*@__PURE__*/ S.Array(InboundSamlSsoProfile) as any as S.Schema<InboundSamlSsoProfileList>;
+export const InboundSamlSsoProfileList = /*@__PURE__*/ S.Array(
+  InboundSamlSsoProfile,
+) as any as S.Schema<InboundSamlSsoProfileList>;
 
 /** Response of the InboundSamlSsoProfilesService.ListInboundSamlSsoProfiles method. */
 export interface ListInboundSamlSsoProfilesResponse {
@@ -1902,11 +2623,13 @@ export interface ListInboundSamlSsoProfilesResponse {
   inboundSamlSsoProfiles?: InboundSamlSsoProfileList;
 }
 export const ListInboundSamlSsoProfilesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "inboundSamlSsoProfiles": S.optional(InboundSamlSsoProfileList),
-}),
-).annotate({ identifier: "ListInboundSamlSsoProfilesResponse" }) as any as S.Schema<ListInboundSamlSsoProfilesResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    inboundSamlSsoProfiles: S.optional(InboundSamlSsoProfileList),
+  }),
+).annotate({
+  identifier: "ListInboundSamlSsoProfilesResponse",
+}) as any as S.Schema<ListInboundSamlSsoProfilesResponse>;
 
 export interface ListInboundSamlSsoProfilesIdpCredentialsRequest {
   /** Required. The parent, which owns this collection of `IdpCredential`s. Format: `inboundSamlSsoProfiles/{sso_profile_id}` */
@@ -1916,16 +2639,27 @@ export interface ListInboundSamlSsoProfilesIdpCredentialsRequest {
   /** A page token, received from a previous `ListIdpCredentials` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListIdpCredentials` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListInboundSamlSsoProfilesIdpCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/idpCredentials","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "ListInboundSamlSsoProfilesIdpCredentialsRequest" }) as any as S.Schema<ListInboundSamlSsoProfilesIdpCredentialsRequest>;
+export const ListInboundSamlSsoProfilesIdpCredentialsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/idpCredentials",
+        baseUrl: "https://cloudidentity.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListInboundSamlSsoProfilesIdpCredentialsRequest",
+  }) as any as S.Schema<ListInboundSamlSsoProfilesIdpCredentialsRequest>;
 
 export type IdpCredentialList = ReadonlyArray<IdpCredential>;
-export const IdpCredentialList = /*@__PURE__*/ S.Array(IdpCredential) as any as S.Schema<IdpCredentialList>;
+export const IdpCredentialList = /*@__PURE__*/ S.Array(
+  IdpCredential,
+) as any as S.Schema<IdpCredentialList>;
 
 /** Response of the InboundSamlSsoProfilesService.ListIdpCredentials method. */
 export interface ListIdpCredentialsResponse {
@@ -1935,11 +2669,13 @@ export interface ListIdpCredentialsResponse {
   nextPageToken?: string;
 }
 export const ListIdpCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "idpCredentials": S.optional(IdpCredentialList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListIdpCredentialsResponse" }) as any as S.Schema<ListIdpCredentialsResponse>;
+  S.Struct({
+    idpCredentials: S.optional(IdpCredentialList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListIdpCredentialsResponse",
+}) as any as S.Schema<ListIdpCredentialsResponse>;
 
 export interface ListInboundSsoAssignmentsRequest {
   /** The maximum number of assignments to return. The service may return fewer than this value. If omitted (or defaulted to zero) the server will use a sensible default. This default may change over time. The maximum allowed value is 100, though requests with page_size greater than that will be silently interpreted as having this maximum value. This may increase in the futue. */
@@ -1950,15 +2686,25 @@ export interface ListInboundSsoAssignmentsRequest {
   filter?: string;
 }
 export const ListInboundSsoAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/inboundSsoAssignments","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "ListInboundSsoAssignmentsRequest" }) as any as S.Schema<ListInboundSsoAssignmentsRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/inboundSsoAssignments",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListInboundSsoAssignmentsRequest",
+}) as any as S.Schema<ListInboundSsoAssignmentsRequest>;
 
 export type InboundSsoAssignmentList = ReadonlyArray<InboundSsoAssignment>;
-export const InboundSsoAssignmentList = /*@__PURE__*/ S.Array(InboundSsoAssignment) as any as S.Schema<InboundSsoAssignmentList>;
+export const InboundSsoAssignmentList = /*@__PURE__*/ S.Array(
+  InboundSsoAssignment,
+) as any as S.Schema<InboundSsoAssignmentList>;
 
 /** Response of the InboundSsoAssignmentsService.ListInboundSsoAssignments method. */
 export interface ListInboundSsoAssignmentsResponse {
@@ -1968,11 +2714,13 @@ export interface ListInboundSsoAssignmentsResponse {
   inboundSsoAssignments?: InboundSsoAssignmentList;
 }
 export const ListInboundSsoAssignmentsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "inboundSsoAssignments": S.optional(InboundSsoAssignmentList),
-}),
-).annotate({ identifier: "ListInboundSsoAssignmentsResponse" }) as any as S.Schema<ListInboundSsoAssignmentsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    inboundSsoAssignments: S.optional(InboundSsoAssignmentList),
+  }),
+).annotate({
+  identifier: "ListInboundSsoAssignmentsResponse",
+}) as any as S.Schema<ListInboundSsoAssignmentsResponse>;
 
 export interface ListPoliciesRequest {
   /** Optional. The maximum number of results to return. The service can return fewer than this number. If omitted or set to `0`, the default is `50` results per page. The maximum allowed value is `100`. `page_size` values greater than `100` default to `100`. */
@@ -1983,15 +2731,25 @@ export interface ListPoliciesRequest {
   filter?: string;
 }
 export const ListPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/policies","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "ListPoliciesRequest" }) as any as S.Schema<ListPoliciesRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/policies",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListPoliciesRequest",
+}) as any as S.Schema<ListPoliciesRequest>;
 
 export type PolicyList = ReadonlyArray<Policy>;
-export const PolicyList = /*@__PURE__*/ S.Array(Policy) as any as S.Schema<PolicyList>;
+export const PolicyList = /*@__PURE__*/ S.Array(
+  Policy,
+) as any as S.Schema<PolicyList>;
 
 /** The response message for PoliciesService.ListPolicies. */
 export interface ListPoliciesResponse {
@@ -2001,11 +2759,13 @@ export interface ListPoliciesResponse {
   nextPageToken?: string;
 }
 export const ListPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "policies": S.optional(PolicyList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListPoliciesResponse" }) as any as S.Schema<ListPoliciesResponse>;
+  S.Struct({
+    policies: S.optional(PolicyList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListPoliciesResponse",
+}) as any as S.Schema<ListPoliciesResponse>;
 
 export interface LookupDevicesDeviceUsersRequest {
   /** Optional. The partner ID of the calling iOS app. This string must match the value of the partner key within the app configuration dictionary provided to Google Workspace apps. */
@@ -2026,17 +2786,25 @@ export interface LookupDevicesDeviceUsersRequest {
   rawResourceId?: string;
 }
 export const LookupDevicesDeviceUsersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "partner": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "androidId": S.optional(S.String.pipe(T.Query())),
-  "userId": S.optional(S.String.pipe(T.Query())),
-  "iosDeviceId": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "rawResourceId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}:lookup","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "LookupDevicesDeviceUsersRequest" }) as any as S.Schema<LookupDevicesDeviceUsersRequest>;
+  S.Struct({
+    partner: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    androidId: S.optional(S.String.pipe(T.Query())),
+    userId: S.optional(S.String.pipe(T.Query())),
+    iosDeviceId: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    rawResourceId: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}:lookup",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "LookupDevicesDeviceUsersRequest",
+}) as any as S.Schema<LookupDevicesDeviceUsersRequest>;
 
 /** Response containing resource names of the DeviceUsers associated with the caller's credentials. */
 export interface GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse {
@@ -2047,13 +2815,16 @@ export interface GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse {
   /** Token to retrieve the next page of results. Empty if there are no more results. */
   nextPageToken?: string;
 }
-export const GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "customer": S.optional(S.String),
-  "names": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse" }) as any as S.Schema<GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse>;
+export const GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      customer: S.optional(S.String),
+      names: S.optional(StringList),
+      nextPageToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse",
+  }) as any as S.Schema<GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse>;
 
 export interface LookupGroupsRequest {
   /** The ID of the entity. For Google-managed entities, the `id` should be the email address of an existing group or user. Email addresses need to adhere to [name guidelines for users and groups](https://support.google.com/a/answer/9193374). For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's requirements. Must be unique within a `namespace`. */
@@ -2062,11 +2833,19 @@ export interface LookupGroupsRequest {
   "groupKey.namespace"?: string;
 }
 export const LookupGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "groupKey.id": S.optional(S.String.pipe(T.Query())),
-  "groupKey.namespace": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/groups:lookup","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "LookupGroupsRequest" }) as any as S.Schema<LookupGroupsRequest>;
+  S.Struct({
+    "groupKey.id": S.optional(S.String.pipe(T.Query())),
+    "groupKey.namespace": S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/groups:lookup",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "LookupGroupsRequest",
+}) as any as S.Schema<LookupGroupsRequest>;
 
 /** The response message for GroupsService.LookupGroupName. */
 export interface LookupGroupNameResponse {
@@ -2074,10 +2853,12 @@ export interface LookupGroupNameResponse {
   name?: string;
 }
 export const LookupGroupNameResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-}),
-).annotate({ identifier: "LookupGroupNameResponse" }) as any as S.Schema<LookupGroupNameResponse>;
+  S.Struct({
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "LookupGroupNameResponse",
+}) as any as S.Schema<LookupGroupNameResponse>;
 
 export interface LookupGroupsMembershipsRequest {
   /** The ID of the entity. For Google-managed entities, the `id` should be the email address of an existing group or user. Email addresses need to adhere to [name guidelines for users and groups](https://support.google.com/a/answer/9193374). For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's requirements. Must be unique within a `namespace`. */
@@ -2088,12 +2869,20 @@ export interface LookupGroupsMembershipsRequest {
   "memberKey.namespace"?: string;
 }
 export const LookupGroupsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "memberKey.id": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "memberKey.namespace": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/memberships:lookup","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "LookupGroupsMembershipsRequest" }) as any as S.Schema<LookupGroupsMembershipsRequest>;
+  S.Struct({
+    "memberKey.id": S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    "memberKey.namespace": S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/memberships:lookup",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "LookupGroupsMembershipsRequest",
+}) as any as S.Schema<LookupGroupsMembershipsRequest>;
 
 /** The response message for MembershipsService.LookupMembershipName. */
 export interface LookupMembershipNameResponse {
@@ -2101,10 +2890,12 @@ export interface LookupMembershipNameResponse {
   name?: string;
 }
 export const LookupMembershipNameResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-}),
-).annotate({ identifier: "LookupMembershipNameResponse" }) as any as S.Schema<LookupMembershipNameResponse>;
+  S.Struct({
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "LookupMembershipNameResponse",
+}) as any as S.Schema<LookupMembershipNameResponse>;
 
 /** The details of an update to a `MembershipRole`. */
 export interface UpdateMembershipRolesParams {
@@ -2114,14 +2905,19 @@ export interface UpdateMembershipRolesParams {
   membershipRole?: MembershipRole;
 }
 export const UpdateMembershipRolesParams = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fieldMask": S.optional(S.String),
-  "membershipRole": S.optional(MembershipRole),
-}),
-).annotate({ identifier: "UpdateMembershipRolesParams" }) as any as S.Schema<UpdateMembershipRolesParams>;
+  S.Struct({
+    fieldMask: S.optional(S.String),
+    membershipRole: S.optional(MembershipRole),
+  }),
+).annotate({
+  identifier: "UpdateMembershipRolesParams",
+}) as any as S.Schema<UpdateMembershipRolesParams>;
 
-export type UpdateMembershipRolesParamsList = ReadonlyArray<UpdateMembershipRolesParams>;
-export const UpdateMembershipRolesParamsList = /*@__PURE__*/ S.Array(UpdateMembershipRolesParams) as any as S.Schema<UpdateMembershipRolesParamsList>;
+export type UpdateMembershipRolesParamsList =
+  ReadonlyArray<UpdateMembershipRolesParams>;
+export const UpdateMembershipRolesParamsList = /*@__PURE__*/ S.Array(
+  UpdateMembershipRolesParams,
+) as any as S.Schema<UpdateMembershipRolesParamsList>;
 
 /** The request message for MembershipsService.ModifyMembershipRoles. */
 export interface ModifyMembershipRolesRequest {
@@ -2133,12 +2929,14 @@ export interface ModifyMembershipRolesRequest {
   addRoles?: MembershipRoleList;
 }
 export const ModifyMembershipRolesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "removeRoles": S.optional(StringList),
-  "updateRolesParams": S.optional(UpdateMembershipRolesParamsList),
-  "addRoles": S.optional(MembershipRoleList),
-}),
-).annotate({ identifier: "ModifyMembershipRolesRequest" }) as any as S.Schema<ModifyMembershipRolesRequest>;
+  S.Struct({
+    removeRoles: S.optional(StringList),
+    updateRolesParams: S.optional(UpdateMembershipRolesParamsList),
+    addRoles: S.optional(MembershipRoleList),
+  }),
+).annotate({
+  identifier: "ModifyMembershipRolesRequest",
+}) as any as S.Schema<ModifyMembershipRolesRequest>;
 
 export interface ModifyMembershipRolesGroupsMembershipsRequest {
   /** Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership` whose roles are to be modified. Must be of the form `groups/{group}/memberships/{membership}`. */
@@ -2146,12 +2944,21 @@ export interface ModifyMembershipRolesGroupsMembershipsRequest {
   /** Request body */
   body?: ModifyMembershipRolesRequest;
 }
-export const ModifyMembershipRolesGroupsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(ModifyMembershipRolesRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:modifyMembershipRoles","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "ModifyMembershipRolesGroupsMembershipsRequest" }) as any as S.Schema<ModifyMembershipRolesGroupsMembershipsRequest>;
+export const ModifyMembershipRolesGroupsMembershipsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(ModifyMembershipRolesRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:modifyMembershipRoles",
+        baseUrl: "https://cloudidentity.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ModifyMembershipRolesGroupsMembershipsRequest",
+  }) as any as S.Schema<ModifyMembershipRolesGroupsMembershipsRequest>;
 
 /** The response message for MembershipsService.ModifyMembershipRoles. */
 export interface ModifyMembershipRolesResponse {
@@ -2159,10 +2966,12 @@ export interface ModifyMembershipRolesResponse {
   membership?: Membership;
 }
 export const ModifyMembershipRolesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "membership": S.optional(Membership),
-}),
-).annotate({ identifier: "ModifyMembershipRolesResponse" }) as any as S.Schema<ModifyMembershipRolesResponse>;
+  S.Struct({
+    membership: S.optional(Membership),
+  }),
+).annotate({
+  identifier: "ModifyMembershipRolesResponse",
+}) as any as S.Schema<ModifyMembershipRolesResponse>;
 
 export interface PatchDevicesDeviceUsersClientStatesRequest {
   /** Optional. Comma-separated list of fully qualified names of fields to be updated. If not specified, all updatable fields in ClientState are updated. */
@@ -2174,14 +2983,25 @@ export interface PatchDevicesDeviceUsersClientStatesRequest {
   /** Request body */
   body?: GoogleAppsCloudidentityDevicesV1ClientState;
 }
-export const PatchDevicesDeviceUsersClientStatesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "customer": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(GoogleAppsCloudidentityDevicesV1ClientState.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "PatchDevicesDeviceUsersClientStatesRequest" }) as any as S.Schema<PatchDevicesDeviceUsersClientStatesRequest>;
+export const PatchDevicesDeviceUsersClientStatesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      customer: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(
+        GoogleAppsCloudidentityDevicesV1ClientState.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://cloudidentity.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchDevicesDeviceUsersClientStatesRequest",
+  }) as any as S.Schema<PatchDevicesDeviceUsersClientStatesRequest>;
 
 export interface PatchGroupsRequest {
   /** Output only. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Group`. Shall be of the form `groups/{group}`. */
@@ -2192,12 +3012,20 @@ export interface PatchGroupsRequest {
   body?: Group;
 }
 export const PatchGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Group.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "PatchGroupsRequest" }) as any as S.Schema<PatchGroupsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(Group.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+name}",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchGroupsRequest",
+}) as any as S.Schema<PatchGroupsRequest>;
 
 export interface PatchInboundOidcSsoProfilesRequest {
   /** Required. The list of fields to be updated. */
@@ -2208,12 +3036,20 @@ export interface PatchInboundOidcSsoProfilesRequest {
   body?: InboundOidcSsoProfile;
 }
 export const PatchInboundOidcSsoProfilesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(InboundOidcSsoProfile.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "PatchInboundOidcSsoProfilesRequest" }) as any as S.Schema<PatchInboundOidcSsoProfilesRequest>;
+  S.Struct({
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    body: S.optional(InboundOidcSsoProfile.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+name}",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchInboundOidcSsoProfilesRequest",
+}) as any as S.Schema<PatchInboundOidcSsoProfilesRequest>;
 
 export interface PatchInboundSamlSsoProfilesRequest {
   /** Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the SAML SSO profile. */
@@ -2224,12 +3060,20 @@ export interface PatchInboundSamlSsoProfilesRequest {
   body?: InboundSamlSsoProfile;
 }
 export const PatchInboundSamlSsoProfilesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(InboundSamlSsoProfile.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "PatchInboundSamlSsoProfilesRequest" }) as any as S.Schema<PatchInboundSamlSsoProfilesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(InboundSamlSsoProfile.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+name}",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchInboundSamlSsoProfilesRequest",
+}) as any as S.Schema<PatchInboundSamlSsoProfilesRequest>;
 
 export interface PatchInboundSsoAssignmentsRequest {
   /** Required. The list of fields to be updated. */
@@ -2240,12 +3084,20 @@ export interface PatchInboundSsoAssignmentsRequest {
   body?: InboundSsoAssignment;
 }
 export const PatchInboundSsoAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(InboundSsoAssignment.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "PatchInboundSsoAssignmentsRequest" }) as any as S.Schema<PatchInboundSsoAssignmentsRequest>;
+  S.Struct({
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    body: S.optional(InboundSsoAssignment.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+name}",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchInboundSsoAssignmentsRequest",
+}) as any as S.Schema<PatchInboundSsoAssignmentsRequest>;
 
 export interface PatchPoliciesRequest {
   /** Output only. Identifier. The [resource name](https://cloud.google.com/apis/design/resource_names) of the Policy. Format: policies/{policy}. */
@@ -2254,11 +3106,19 @@ export interface PatchPoliciesRequest {
   body?: Policy;
 }
 export const PatchPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(Policy.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "PatchPoliciesRequest" }) as any as S.Schema<PatchPoliciesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(Policy.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+name}",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchPoliciesRequest",
+}) as any as S.Schema<PatchPoliciesRequest>;
 
 export interface SearchDirectGroupsGroupsMembershipsRequest {
   /** The ordering of membership relation for the display name or email in the response. The syntax for this field can be found at https://cloud.google.com/apis/design/design_patterns#sorting_order. Example: Sort by the ascending display name: order_by="group_name" or order_by="group_name asc". Sort by the descending display name: order_by="group_name desc". Sort by the ascending group key: order_by="group_key" or order_by="group_key asc". Sort by the descending group key: order_by="group_key desc". */
@@ -2272,15 +3132,24 @@ export interface SearchDirectGroupsGroupsMembershipsRequest {
   /** Required. A CEL expression that MUST include member specification AND label(s). Users can search on label attributes of groups. CONTAINS match ('in') is supported on labels. Identity-mapped groups are uniquely identified by both a `member_key_id` and a `member_key_namespace`, which requires an additional query input: `member_key_namespace`. Example query: `member_key_id == 'member_key_id_value' && 'label_value' in labels` */
   query?: string;
 }
-export const SearchDirectGroupsGroupsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "query": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/memberships:searchDirectGroups","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "SearchDirectGroupsGroupsMembershipsRequest" }) as any as S.Schema<SearchDirectGroupsGroupsMembershipsRequest>;
+export const SearchDirectGroupsGroupsMembershipsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      query: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/memberships:searchDirectGroups",
+        baseUrl: "https://cloudidentity.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "SearchDirectGroupsGroupsMembershipsRequest",
+  }) as any as S.Schema<SearchDirectGroupsGroupsMembershipsRequest>;
 
 /** Message containing membership relation. */
 export interface MembershipRelation {
@@ -2300,19 +3169,23 @@ export interface MembershipRelation {
   displayName?: string;
 }
 export const MembershipRelation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "roles": S.optional(MembershipRoleList),
-  "group": S.optional(S.String),
-  "membership": S.optional(S.String),
-  "groupKey": S.optional(EntityKey),
-  "labels": S.optional(StringMap),
-  "description": S.optional(S.String),
-  "displayName": S.optional(S.String),
-}),
-).annotate({ identifier: "MembershipRelation" }) as any as S.Schema<MembershipRelation>;
+  S.Struct({
+    roles: S.optional(MembershipRoleList),
+    group: S.optional(S.String),
+    membership: S.optional(S.String),
+    groupKey: S.optional(EntityKey),
+    labels: S.optional(StringMap),
+    description: S.optional(S.String),
+    displayName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MembershipRelation",
+}) as any as S.Schema<MembershipRelation>;
 
 export type MembershipRelationList = ReadonlyArray<MembershipRelation>;
-export const MembershipRelationList = /*@__PURE__*/ S.Array(MembershipRelation) as any as S.Schema<MembershipRelationList>;
+export const MembershipRelationList = /*@__PURE__*/ S.Array(
+  MembershipRelation,
+) as any as S.Schema<MembershipRelationList>;
 
 /** The response message for MembershipsService.SearchDirectGroups. */
 export interface SearchDirectGroupsResponse {
@@ -2322,11 +3195,13 @@ export interface SearchDirectGroupsResponse {
   memberships?: MembershipRelationList;
 }
 export const SearchDirectGroupsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "memberships": S.optional(MembershipRelationList),
-}),
-).annotate({ identifier: "SearchDirectGroupsResponse" }) as any as S.Schema<SearchDirectGroupsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    memberships: S.optional(MembershipRelationList),
+  }),
+).annotate({
+  identifier: "SearchDirectGroupsResponse",
+}) as any as S.Schema<SearchDirectGroupsResponse>;
 
 export type SearchGroupsViewEnum = "VIEW_UNSPECIFIED" | "BASIC" | "FULL";
 export const SearchGroupsViewEnum = /*@__PURE__*/ S.String;
@@ -2342,13 +3217,21 @@ export interface SearchGroupsRequest {
   pageToken?: string;
 }
 export const SearchGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "view": S.optional(SearchGroupsViewEnum.pipe(T.Query())),
-  "query": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/groups:search","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "SearchGroupsRequest" }) as any as S.Schema<SearchGroupsRequest>;
+  S.Struct({
+    view: S.optional(SearchGroupsViewEnum.pipe(T.Query())),
+    query: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/groups:search",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SearchGroupsRequest",
+}) as any as S.Schema<SearchGroupsRequest>;
 
 /** The response message for GroupsService.SearchGroups. */
 export interface SearchGroupsResponse {
@@ -2358,11 +3241,13 @@ export interface SearchGroupsResponse {
   nextPageToken?: string;
 }
 export const SearchGroupsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "groups": S.optional(GroupList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "SearchGroupsResponse" }) as any as S.Schema<SearchGroupsResponse>;
+  S.Struct({
+    groups: S.optional(GroupList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SearchGroupsResponse",
+}) as any as S.Schema<SearchGroupsResponse>;
 
 export interface SearchTransitiveGroupsGroupsMembershipsRequest {
   /** [Resource name](https://cloud.google.com/apis/design/resource_names) of the group to search transitive memberships in. Format: `groups/{group}`, where `group` is always '-' as this API will search across all groups for a given member. */
@@ -2374,14 +3259,23 @@ export interface SearchTransitiveGroupsGroupsMembershipsRequest {
   /** Required. A CEL expression that MUST include member specification AND label(s). This is a `required` field. Users can search on label attributes of groups. CONTAINS match ('in') is supported on labels. Identity-mapped groups are uniquely identified by both a `member_key_id` and a `member_key_namespace`, which requires an additional query input: `member_key_namespace`. Example query: `member_key_id == 'member_key_id_value' && in labels` Query may optionally contain equality operators on the parent of the group restricting the search within a particular customer, e.g. `parent == 'customers/{customer_id}'`. The `customer_id` must begin with "C" (for example, 'C046psxkn'). This filtering is only supported for Admins with groups read permissions on the input customer. Example query: `member_key_id == 'member_key_id_value' && in labels && parent == 'customers/C046psxkn'` */
   query?: string;
 }
-export const SearchTransitiveGroupsGroupsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "query": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/memberships:searchTransitiveGroups","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "SearchTransitiveGroupsGroupsMembershipsRequest" }) as any as S.Schema<SearchTransitiveGroupsGroupsMembershipsRequest>;
+export const SearchTransitiveGroupsGroupsMembershipsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      query: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/memberships:searchTransitiveGroups",
+        baseUrl: "https://cloudidentity.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "SearchTransitiveGroupsGroupsMembershipsRequest",
+  }) as any as S.Schema<SearchTransitiveGroupsGroupsMembershipsRequest>;
 
 /** Message representing the role of a TransitiveMembership. */
 export interface TransitiveMembershipRole {
@@ -2389,15 +3283,24 @@ export interface TransitiveMembershipRole {
   role?: string;
 }
 export const TransitiveMembershipRole = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "role": S.optional(S.String),
-}),
-).annotate({ identifier: "TransitiveMembershipRole" }) as any as S.Schema<TransitiveMembershipRole>;
+  S.Struct({
+    role: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "TransitiveMembershipRole",
+}) as any as S.Schema<TransitiveMembershipRole>;
 
-export type TransitiveMembershipRoleList = ReadonlyArray<TransitiveMembershipRole>;
-export const TransitiveMembershipRoleList = /*@__PURE__*/ S.Array(TransitiveMembershipRole) as any as S.Schema<TransitiveMembershipRoleList>;
+export type TransitiveMembershipRoleList =
+  ReadonlyArray<TransitiveMembershipRole>;
+export const TransitiveMembershipRoleList = /*@__PURE__*/ S.Array(
+  TransitiveMembershipRole,
+) as any as S.Schema<TransitiveMembershipRoleList>;
 
-export type GroupRelationRelationTypeEnum = "RELATION_TYPE_UNSPECIFIED" | "DIRECT" | "INDIRECT" | "DIRECT_AND_INDIRECT";
+export type GroupRelationRelationTypeEnum =
+  | "RELATION_TYPE_UNSPECIFIED"
+  | "DIRECT"
+  | "INDIRECT"
+  | "DIRECT_AND_INDIRECT";
 export const GroupRelationRelationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Message representing a transitive group of a user or a group. */
@@ -2416,18 +3319,20 @@ export interface GroupRelation {
   labels?: StringMap;
 }
 export const GroupRelation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "groupKey": S.optional(EntityKey),
-  "group": S.optional(S.String),
-  "roles": S.optional(TransitiveMembershipRoleList),
-  "displayName": S.optional(S.String),
-  "relationType": S.optional(GroupRelationRelationTypeEnum),
-  "labels": S.optional(StringMap),
-}),
+  S.Struct({
+    groupKey: S.optional(EntityKey),
+    group: S.optional(S.String),
+    roles: S.optional(TransitiveMembershipRoleList),
+    displayName: S.optional(S.String),
+    relationType: S.optional(GroupRelationRelationTypeEnum),
+    labels: S.optional(StringMap),
+  }),
 ).annotate({ identifier: "GroupRelation" }) as any as S.Schema<GroupRelation>;
 
 export type GroupRelationList = ReadonlyArray<GroupRelation>;
-export const GroupRelationList = /*@__PURE__*/ S.Array(GroupRelation) as any as S.Schema<GroupRelationList>;
+export const GroupRelationList = /*@__PURE__*/ S.Array(
+  GroupRelation,
+) as any as S.Schema<GroupRelationList>;
 
 /** The response message for MembershipsService.SearchTransitiveGroups. */
 export interface SearchTransitiveGroupsResponse {
@@ -2437,11 +3342,13 @@ export interface SearchTransitiveGroupsResponse {
   nextPageToken?: string;
 }
 export const SearchTransitiveGroupsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "memberships": S.optional(GroupRelationList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "SearchTransitiveGroupsResponse" }) as any as S.Schema<SearchTransitiveGroupsResponse>;
+  S.Struct({
+    memberships: S.optional(GroupRelationList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SearchTransitiveGroupsResponse",
+}) as any as S.Schema<SearchTransitiveGroupsResponse>;
 
 export interface SearchTransitiveMembershipsGroupsMembershipsRequest {
   /** [Resource name](https://cloud.google.com/apis/design/resource_names) of the group to search transitive memberships in. Format: `groups/{group}`, where `group` is the unique ID assigned to the Group. */
@@ -2451,15 +3358,28 @@ export interface SearchTransitiveMembershipsGroupsMembershipsRequest {
   /** The `next_page_token` value returned from a previous list request, if any. */
   pageToken?: string;
 }
-export const SearchTransitiveMembershipsGroupsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/memberships:searchTransitiveMemberships","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "SearchTransitiveMembershipsGroupsMembershipsRequest" }) as any as S.Schema<SearchTransitiveMembershipsGroupsMembershipsRequest>;
+export const SearchTransitiveMembershipsGroupsMembershipsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/memberships:searchTransitiveMemberships",
+        baseUrl: "https://cloudidentity.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "SearchTransitiveMembershipsGroupsMembershipsRequest",
+  }) as any as S.Schema<SearchTransitiveMembershipsGroupsMembershipsRequest>;
 
-export type MemberRelationRelationTypeEnum = "RELATION_TYPE_UNSPECIFIED" | "DIRECT" | "INDIRECT" | "DIRECT_AND_INDIRECT";
+export type MemberRelationRelationTypeEnum =
+  | "RELATION_TYPE_UNSPECIFIED"
+  | "DIRECT"
+  | "INDIRECT"
+  | "DIRECT_AND_INDIRECT";
 export const MemberRelationRelationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Message representing a transitive membership of a group. */
@@ -2474,16 +3394,18 @@ export interface MemberRelation {
   preferredMemberKey?: EntityKeyList;
 }
 export const MemberRelation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "relationType": S.optional(MemberRelationRelationTypeEnum),
-  "member": S.optional(S.String),
-  "roles": S.optional(TransitiveMembershipRoleList),
-  "preferredMemberKey": S.optional(EntityKeyList),
-}),
+  S.Struct({
+    relationType: S.optional(MemberRelationRelationTypeEnum),
+    member: S.optional(S.String),
+    roles: S.optional(TransitiveMembershipRoleList),
+    preferredMemberKey: S.optional(EntityKeyList),
+  }),
 ).annotate({ identifier: "MemberRelation" }) as any as S.Schema<MemberRelation>;
 
 export type MemberRelationList = ReadonlyArray<MemberRelation>;
-export const MemberRelationList = /*@__PURE__*/ S.Array(MemberRelation) as any as S.Schema<MemberRelationList>;
+export const MemberRelationList = /*@__PURE__*/ S.Array(
+  MemberRelation,
+) as any as S.Schema<MemberRelationList>;
 
 /** The response message for MembershipsService.SearchTransitiveMemberships. */
 export interface SearchTransitiveMembershipsResponse {
@@ -2493,17 +3415,21 @@ export interface SearchTransitiveMembershipsResponse {
   nextPageToken?: string;
 }
 export const SearchTransitiveMembershipsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "memberships": S.optional(MemberRelationList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "SearchTransitiveMembershipsResponse" }) as any as S.Schema<SearchTransitiveMembershipsResponse>;
+  S.Struct({
+    memberships: S.optional(MemberRelationList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SearchTransitiveMembershipsResponse",
+}) as any as S.Schema<SearchTransitiveMembershipsResponse>;
 
 /** A request to send email for inviting target user corresponding to the UserInvitation. */
 export interface SendUserInvitationRequest {}
 export const SendUserInvitationRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "SendUserInvitationRequest" }) as any as S.Schema<SendUserInvitationRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "SendUserInvitationRequest",
+}) as any as S.Schema<SendUserInvitationRequest>;
 
 export interface SendCustomersUserinvitationsRequest {
   /** Required. `UserInvitation` name in the format `customers/{customer}/userinvitations/{user_email_address}` */
@@ -2512,11 +3438,19 @@ export interface SendCustomersUserinvitationsRequest {
   body?: SendUserInvitationRequest;
 }
 export const SendCustomersUserinvitationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(SendUserInvitationRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:send","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "SendCustomersUserinvitationsRequest" }) as any as S.Schema<SendCustomersUserinvitationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(SendUserInvitationRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:send",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SendCustomersUserinvitationsRequest",
+}) as any as S.Schema<SendCustomersUserinvitationsRequest>;
 
 export interface UpdateSecuritySettingsGroupsRequest {
   /** Required. The fully-qualified names of fields to update. May only contain the following field: `member_restriction.query`. */
@@ -2527,12 +3461,20 @@ export interface UpdateSecuritySettingsGroupsRequest {
   body?: SecuritySettings;
 }
 export const UpdateSecuritySettingsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(SecuritySettings.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "UpdateSecuritySettingsGroupsRequest" }) as any as S.Schema<UpdateSecuritySettingsGroupsRequest>;
+  S.Struct({
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    body: S.optional(SecuritySettings.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+name}",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateSecuritySettingsGroupsRequest",
+}) as any as S.Schema<UpdateSecuritySettingsGroupsRequest>;
 
 /** Request message for wiping all data on the device. */
 export interface GoogleAppsCloudidentityDevicesV1WipeDeviceRequest {
@@ -2541,12 +3483,15 @@ export interface GoogleAppsCloudidentityDevicesV1WipeDeviceRequest {
   /** Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer}`, where customer is the customer to whom the device belongs. */
   customer?: string;
 }
-export const GoogleAppsCloudidentityDevicesV1WipeDeviceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "removeResetLock": S.optional(S.Boolean),
-  "customer": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleAppsCloudidentityDevicesV1WipeDeviceRequest" }) as any as S.Schema<GoogleAppsCloudidentityDevicesV1WipeDeviceRequest>;
+export const GoogleAppsCloudidentityDevicesV1WipeDeviceRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      removeResetLock: S.optional(S.Boolean),
+      customer: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsCloudidentityDevicesV1WipeDeviceRequest",
+  }) as any as S.Schema<GoogleAppsCloudidentityDevicesV1WipeDeviceRequest>;
 
 export interface WipeDevicesRequest {
   /** Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device}/deviceUsers/{device_user}`, where device is the unique ID assigned to the Device, and device_user is the unique ID assigned to the User. */
@@ -2555,22 +3500,35 @@ export interface WipeDevicesRequest {
   body?: GoogleAppsCloudidentityDevicesV1WipeDeviceRequest;
 }
 export const WipeDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleAppsCloudidentityDevicesV1WipeDeviceRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:wipe","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "WipeDevicesRequest" }) as any as S.Schema<WipeDevicesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(
+      GoogleAppsCloudidentityDevicesV1WipeDeviceRequest.pipe(T.HttpBody()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:wipe",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "WipeDevicesRequest",
+}) as any as S.Schema<WipeDevicesRequest>;
 
 /** Request message for starting an account wipe on device. */
 export interface GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest {
   /** Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer}`, where customer is the customer to whom the device belongs. */
   customer?: string;
 }
-export const GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "customer": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest" }) as any as S.Schema<GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest>;
+export const GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      customer: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest",
+  }) as any as S.Schema<GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest>;
 
 export interface WipeDevicesDeviceUsersRequest {
   /** Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device}/deviceUsers/{device_user}`, where device is the unique ID assigned to the Device, and device_user is the unique ID assigned to the User. */
@@ -2579,13 +3537,28 @@ export interface WipeDevicesDeviceUsersRequest {
   body?: GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest;
 }
 export const WipeDevicesDeviceUsersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:wipe","baseUrl":"https://cloudidentity.googleapis.com/"})),
-).annotate({ identifier: "WipeDevicesDeviceUsersRequest" }) as any as S.Schema<WipeDevicesDeviceUsersRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(
+      GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest.pipe(T.HttpBody()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:wipe",
+      baseUrl: "https://cloudidentity.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "WipeDevicesDeviceUsersRequest",
+}) as any as S.Schema<WipeDevicesDeviceUsersRequest>;
 
-export type AddInboundSamlSsoProfilesIdpCredentialsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type AddInboundSamlSsoProfilesIdpCredentialsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Adds an IdpCredential. Up to 2 credentials are allowed. When the target customer has enabled [Multi-party approval for sensitive actions](https://support.google.com/a/answer/13790448), the `Operation` in the response will have `"done": false`, it will not have a response, and the metadata will have `"state": "awaiting-multi-party-approval"`. */
 export const addInboundSamlSsoProfilesIdpCredentials: API.OperationMethod<
   AddInboundSamlSsoProfilesIdpCredentialsRequest,
@@ -2600,7 +3573,12 @@ export const addInboundSamlSsoProfilesIdpCredentials: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ApproveDevicesDeviceUsersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ApproveDevicesDeviceUsersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Approves device to access user data. */
 export const approveDevicesDeviceUsers: API.OperationMethod<
   ApproveDevicesDeviceUsersRequest,
@@ -2615,7 +3593,12 @@ export const approveDevicesDeviceUsers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BlockDevicesDeviceUsersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type BlockDevicesDeviceUsersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Blocks device from accessing user data */
 export const blockDevicesDeviceUsers: API.OperationMethod<
   BlockDevicesDeviceUsersRequest,
@@ -2630,7 +3613,12 @@ export const blockDevicesDeviceUsers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CancelCustomersUserinvitationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CancelCustomersUserinvitationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Cancels a UserInvitation that was already sent. */
 export const cancelCustomersUserinvitations: API.OperationMethod<
   CancelCustomersUserinvitationsRequest,
@@ -2645,7 +3633,12 @@ export const cancelCustomersUserinvitations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CancelWipeDevicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CancelWipeDevicesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Cancels an unfinished device wipe. This operation can be used to cancel device wipe in the gap between the wipe operation returning success and the device being wiped. This operation is possible when the device is in a "pending wipe" state. The device enters the "pending wipe" state when a wipe device command is issued, but has not yet been sent to the device. The cancel wipe will fail if the wipe command has already been issued to the device. */
 export const cancelWipeDevices: API.OperationMethod<
   CancelWipeDevicesRequest,
@@ -2660,7 +3653,12 @@ export const cancelWipeDevices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CancelWipeDevicesDeviceUsersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CancelWipeDevicesDeviceUsersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Cancels an unfinished user account wipe. This operation can be used to cancel device wipe in the gap between the wipe operation returning success and the device being wiped. */
 export const cancelWipeDevicesDeviceUsers: API.OperationMethod<
   CancelWipeDevicesDeviceUsersRequest,
@@ -2675,7 +3673,10 @@ export const cancelWipeDevicesDeviceUsers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CheckTransitiveMembershipGroupsMembershipsError = NotFound | Forbidden | GcpOpError;
+export type CheckTransitiveMembershipGroupsMembershipsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Check a potential member for membership in a group. **Note:** This feature is only available to Google Workspace Enterprise Standard, Enterprise Plus, and Enterprise for Education; and Cloud Identity Premium accounts. If the account of the member is not one of these, a 403 (PERMISSION_DENIED) HTTP status code will be returned. A member has membership to a group as long as there is a single viewable transitive membership between the group and the member. The actor must have view permissions to at least one transitive membership between the member and group. */
 export const checkTransitiveMembershipGroupsMemberships: API.OperationMethod<
   CheckTransitiveMembershipGroupsMembershipsRequest,
@@ -2690,7 +3691,12 @@ export const checkTransitiveMembershipGroupsMemberships: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateDevicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateDevicesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a device. Only company-owned device may be created. **Note**: This method is available only to customers who have one of the following SKUs: Enterprise Standard, Enterprise Plus, Enterprise for Education, and Cloud Identity Premium */
 export const createDevices: API.OperationMethod<
   CreateDevicesRequest,
@@ -2705,7 +3711,12 @@ export const createDevices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateGroupsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a Group. */
 export const createGroups: API.OperationMethod<
   CreateGroupsRequest,
@@ -2720,7 +3731,12 @@ export const createGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateGroupsMembershipsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateGroupsMembershipsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a `Membership`. */
 export const createGroupsMemberships: API.OperationMethod<
   CreateGroupsMembershipsRequest,
@@ -2735,7 +3751,12 @@ export const createGroupsMemberships: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateInboundOidcSsoProfilesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateInboundOidcSsoProfilesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates an InboundOidcSsoProfile for a customer. When the target customer has enabled [Multi-party approval for sensitive actions](https://support.google.com/a/answer/13790448), the `Operation` in the response will have `"done": false`, it will not have a response, and the metadata will have `"state": "awaiting-multi-party-approval"`. */
 export const createInboundOidcSsoProfiles: API.OperationMethod<
   CreateInboundOidcSsoProfilesRequest,
@@ -2750,7 +3771,12 @@ export const createInboundOidcSsoProfiles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateInboundSamlSsoProfilesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateInboundSamlSsoProfilesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates an InboundSamlSsoProfile for a customer. When the target customer has enabled [Multi-party approval for sensitive actions](https://support.google.com/a/answer/13790448), the `Operation` in the response will have `"done": false`, it will not have a response, and the metadata will have `"state": "awaiting-multi-party-approval"`. */
 export const createInboundSamlSsoProfiles: API.OperationMethod<
   CreateInboundSamlSsoProfilesRequest,
@@ -2765,7 +3791,12 @@ export const createInboundSamlSsoProfiles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateInboundSsoAssignmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateInboundSsoAssignmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates an InboundSsoAssignment for users and devices in a `Customer` under a given `Group` or `OrgUnit`. */
 export const createInboundSsoAssignments: API.OperationMethod<
   CreateInboundSsoAssignmentsRequest,
@@ -2780,7 +3811,12 @@ export const createInboundSsoAssignments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreatePoliciesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreatePoliciesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Create a policy. */
 export const createPolicies: API.OperationMethod<
   CreatePoliciesRequest,
@@ -2795,7 +3831,12 @@ export const createPolicies: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteDevicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteDevicesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes the specified device. */
 export const deleteDevices: API.OperationMethod<
   DeleteDevicesRequest,
@@ -2810,7 +3851,12 @@ export const deleteDevices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteDevicesDeviceUsersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteDevicesDeviceUsersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes the specified DeviceUser. This also revokes the user's access to device data. */
 export const deleteDevicesDeviceUsers: API.OperationMethod<
   DeleteDevicesDeviceUsersRequest,
@@ -2825,7 +3871,12 @@ export const deleteDevicesDeviceUsers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteGroupsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a `Group`. */
 export const deleteGroups: API.OperationMethod<
   DeleteGroupsRequest,
@@ -2840,7 +3891,12 @@ export const deleteGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteGroupsMembershipsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteGroupsMembershipsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a `Membership`. */
 export const deleteGroupsMemberships: API.OperationMethod<
   DeleteGroupsMembershipsRequest,
@@ -2855,7 +3911,12 @@ export const deleteGroupsMemberships: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteInboundOidcSsoProfilesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteInboundOidcSsoProfilesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes an InboundOidcSsoProfile. */
 export const deleteInboundOidcSsoProfiles: API.OperationMethod<
   DeleteInboundOidcSsoProfilesRequest,
@@ -2870,7 +3931,12 @@ export const deleteInboundOidcSsoProfiles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteInboundSamlSsoProfilesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteInboundSamlSsoProfilesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes an InboundSamlSsoProfile. */
 export const deleteInboundSamlSsoProfiles: API.OperationMethod<
   DeleteInboundSamlSsoProfilesRequest,
@@ -2885,7 +3951,12 @@ export const deleteInboundSamlSsoProfiles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteInboundSamlSsoProfilesIdpCredentialsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteInboundSamlSsoProfilesIdpCredentialsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes an IdpCredential. */
 export const deleteInboundSamlSsoProfilesIdpCredentials: API.OperationMethod<
   DeleteInboundSamlSsoProfilesIdpCredentialsRequest,
@@ -2900,7 +3971,12 @@ export const deleteInboundSamlSsoProfilesIdpCredentials: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteInboundSsoAssignmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteInboundSsoAssignmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes an InboundSsoAssignment. To disable SSO, Create (or Update) an assignment that has `sso_mode` == `SSO_OFF`. */
 export const deleteInboundSsoAssignments: API.OperationMethod<
   DeleteInboundSsoAssignmentsRequest,
@@ -2915,7 +3991,12 @@ export const deleteInboundSsoAssignments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeletePoliciesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeletePoliciesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Delete a policy. */
 export const deletePolicies: API.OperationMethod<
   DeletePoliciesRequest,
@@ -2930,7 +4011,10 @@ export const deletePolicies: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetCustomersUserinvitationsError = NotFound | Forbidden | GcpOpError;
+export type GetCustomersUserinvitationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieves a UserInvitation resource. **Note:** New consumer accounts with the customer's verified domain created within the previous 48 hours will not appear in the result. This delay also applies to newly-verified domains. */
 export const getCustomersUserinvitations: API.OperationMethod<
   GetCustomersUserinvitationsRequest,
@@ -2975,7 +4059,10 @@ export const getDevicesDeviceUsers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetDevicesDeviceUsersClientStatesError = NotFound | Forbidden | GcpOpError;
+export type GetDevicesDeviceUsersClientStatesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the client state for the device user */
 export const getDevicesDeviceUsersClientStates: API.OperationMethod<
   GetDevicesDeviceUsersClientStatesRequest,
@@ -3050,7 +4137,10 @@ export const getInboundSamlSsoProfiles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetInboundSamlSsoProfilesIdpCredentialsError = NotFound | Forbidden | GcpOpError;
+export type GetInboundSamlSsoProfilesIdpCredentialsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets an IdpCredential. */
 export const getInboundSamlSsoProfilesIdpCredentials: API.OperationMethod<
   GetInboundSamlSsoProfilesIdpCredentialsRequest,
@@ -3080,7 +4170,10 @@ export const getInboundSsoAssignments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetMembershipGraphGroupsMembershipsError = NotFound | Forbidden | GcpOpError;
+export type GetMembershipGraphGroupsMembershipsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Get a membership graph of just a member or both a member and a group. **Note:** This feature is only available to Google Workspace Enterprise Standard, Enterprise Plus, and Enterprise for Education; and Cloud Identity Premium accounts. If the account of the member is not one of these, a 403 (PERMISSION_DENIED) HTTP status code will be returned. Given a member, the response will contain all membership paths from the member. Given both a group and a member, the response will contain all membership paths between the group and the member. */
 export const getMembershipGraphGroupsMemberships: API.OperationMethod<
   GetMembershipGraphGroupsMembershipsRequest,
@@ -3125,7 +4218,10 @@ export const getSecuritySettingsGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type IsInvitableUserCustomersUserinvitationsError = NotFound | Forbidden | GcpOpError;
+export type IsInvitableUserCustomersUserinvitationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Verifies whether a user account is eligible to receive a UserInvitation (is an unmanaged account). Eligibility is based on the following criteria: * the email address is a consumer account and it's the primary email address of the account, and * the domain of the email address matches an existing verified Google Workspace or Cloud Identity domain If both conditions are met, the user is eligible. **Note:** This method is not supported for Workspace Essentials customers. */
 export const isInvitableUserCustomersUserinvitations: API.OperationMethod<
   IsInvitableUserCustomersUserinvitationsRequest,
@@ -3140,7 +4236,10 @@ export const isInvitableUserCustomersUserinvitations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListCustomersUserinvitationsError = NotFound | Forbidden | GcpOpError;
+export type ListCustomersUserinvitationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieves a list of UserInvitation resources. **Note:** New consumer accounts with the customer's verified domain created within the previous 48 hours will not appear in the result. This delay also applies to newly-verified domains. */
 export const listCustomersUserinvitations: API.PaginatedOperationMethod<
   ListCustomersUserinvitationsRequest,
@@ -3153,7 +4252,10 @@ export const listCustomersUserinvitations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListDevicesError = NotFound | Forbidden | GcpOpError;
@@ -3169,7 +4271,10 @@ export const listDevices: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListDevicesDeviceUsersError = NotFound | Forbidden | GcpOpError;
@@ -3185,10 +4290,16 @@ export const listDevicesDeviceUsers: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListDevicesDeviceUsersClientStatesError = NotFound | Forbidden | GcpOpError;
+export type ListDevicesDeviceUsersClientStatesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists the client states for the given search query. */
 export const listDevicesDeviceUsersClientStates: API.PaginatedOperationMethod<
   ListDevicesDeviceUsersClientStatesRequest,
@@ -3201,7 +4312,10 @@ export const listDevicesDeviceUsersClientStates: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListGroupsError = NotFound | Forbidden | GcpOpError;
@@ -3217,7 +4331,10 @@ export const listGroups: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListGroupsMembershipsError = NotFound | Forbidden | GcpOpError;
@@ -3233,7 +4350,10 @@ export const listGroupsMemberships: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListInboundOidcSsoProfilesError = NotFound | Forbidden | GcpOpError;
@@ -3249,7 +4369,10 @@ export const listInboundOidcSsoProfiles: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListInboundSamlSsoProfilesError = NotFound | Forbidden | GcpOpError;
@@ -3265,10 +4388,16 @@ export const listInboundSamlSsoProfiles: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListInboundSamlSsoProfilesIdpCredentialsError = NotFound | Forbidden | GcpOpError;
+export type ListInboundSamlSsoProfilesIdpCredentialsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns a list of IdpCredentials in an InboundSamlSsoProfile. */
 export const listInboundSamlSsoProfilesIdpCredentials: API.PaginatedOperationMethod<
   ListInboundSamlSsoProfilesIdpCredentialsRequest,
@@ -3281,7 +4410,10 @@ export const listInboundSamlSsoProfilesIdpCredentials: API.PaginatedOperationMet
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListInboundSsoAssignmentsError = NotFound | Forbidden | GcpOpError;
@@ -3297,7 +4429,10 @@ export const listInboundSsoAssignments: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListPoliciesError = NotFound | Forbidden | GcpOpError;
@@ -3313,7 +4448,10 @@ export const listPolicies: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type LookupDevicesDeviceUsersError = NotFound | Forbidden | GcpOpError;
@@ -3329,7 +4467,10 @@ export const lookupDevicesDeviceUsers: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type LookupGroupsError = NotFound | Forbidden | GcpOpError;
@@ -3362,7 +4503,12 @@ export const lookupGroupsMemberships: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ModifyMembershipRolesGroupsMembershipsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ModifyMembershipRolesGroupsMembershipsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Modifies the `MembershipRole`s of a `Membership`. */
 export const modifyMembershipRolesGroupsMemberships: API.OperationMethod<
   ModifyMembershipRolesGroupsMembershipsRequest,
@@ -3377,7 +4523,12 @@ export const modifyMembershipRolesGroupsMemberships: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchDevicesDeviceUsersClientStatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchDevicesDeviceUsersClientStatesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the client state for the device user **Note**: This method is available only to customers who have one of the following SKUs: Enterprise Standard, Enterprise Plus, Enterprise for Education, and Cloud Identity Premium */
 export const patchDevicesDeviceUsersClientStates: API.OperationMethod<
   PatchDevicesDeviceUsersClientStatesRequest,
@@ -3392,7 +4543,12 @@ export const patchDevicesDeviceUsersClientStates: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchGroupsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a `Group`. */
 export const patchGroups: API.OperationMethod<
   PatchGroupsRequest,
@@ -3407,7 +4563,12 @@ export const patchGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchInboundOidcSsoProfilesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchInboundOidcSsoProfilesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates an InboundOidcSsoProfile. When the target customer has enabled [Multi-party approval for sensitive actions](https://support.google.com/a/answer/13790448), the `Operation` in the response will have `"done": false`, it will not have a response, and the metadata will have `"state": "awaiting-multi-party-approval"`. */
 export const patchInboundOidcSsoProfiles: API.OperationMethod<
   PatchInboundOidcSsoProfilesRequest,
@@ -3422,7 +4583,12 @@ export const patchInboundOidcSsoProfiles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchInboundSamlSsoProfilesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchInboundSamlSsoProfilesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates an InboundSamlSsoProfile. When the target customer has enabled [Multi-party approval for sensitive actions](https://support.google.com/a/answer/13790448), the `Operation` in the response will have `"done": false`, it will not have a response, and the metadata will have `"state": "awaiting-multi-party-approval"`. */
 export const patchInboundSamlSsoProfiles: API.OperationMethod<
   PatchInboundSamlSsoProfilesRequest,
@@ -3437,7 +4603,12 @@ export const patchInboundSamlSsoProfiles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchInboundSsoAssignmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchInboundSsoAssignmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates an InboundSsoAssignment. The body of this request is the `inbound_sso_assignment` field and the `update_mask` is relative to that. For example: a PATCH to `/v1/inboundSsoAssignments/0abcdefg1234567&update_mask=rank` with a body of `{ "rank": 1 }` moves that (presumably group-targeted) SSO assignment to the highest priority and shifts any other group-targeted assignments down in priority. */
 export const patchInboundSsoAssignments: API.OperationMethod<
   PatchInboundSsoAssignmentsRequest,
@@ -3452,7 +4623,12 @@ export const patchInboundSsoAssignments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchPoliciesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchPoliciesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update a policy. */
 export const patchPolicies: API.OperationMethod<
   PatchPoliciesRequest,
@@ -3467,7 +4643,10 @@ export const patchPolicies: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SearchDirectGroupsGroupsMembershipsError = NotFound | Forbidden | GcpOpError;
+export type SearchDirectGroupsGroupsMembershipsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Searches direct groups of a member. Groups for which the actor does not have the permission to view memberships are silently filtered out. */
 export const searchDirectGroupsGroupsMemberships: API.PaginatedOperationMethod<
   SearchDirectGroupsGroupsMembershipsRequest,
@@ -3480,7 +4659,10 @@ export const searchDirectGroupsGroupsMemberships: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type SearchGroupsError = NotFound | Forbidden | GcpOpError;
@@ -3496,10 +4678,16 @@ export const searchGroups: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type SearchTransitiveGroupsGroupsMembershipsError = NotFound | Forbidden | GcpOpError;
+export type SearchTransitiveGroupsGroupsMembershipsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Search transitive groups of a member. **Note:** This feature is only available to Google Workspace Enterprise Standard, Enterprise Plus, and Enterprise for Education; and Cloud Identity Premium accounts. If the account of the member is not one of these, a 403 (PERMISSION_DENIED) HTTP status code will be returned. A transitive group is any group that has a direct or indirect membership to the member. Actor must have view permissions all transitive groups. */
 export const searchTransitiveGroupsGroupsMemberships: API.PaginatedOperationMethod<
   SearchTransitiveGroupsGroupsMembershipsRequest,
@@ -3512,10 +4700,16 @@ export const searchTransitiveGroupsGroupsMemberships: API.PaginatedOperationMeth
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type SearchTransitiveMembershipsGroupsMembershipsError = NotFound | Forbidden | GcpOpError;
+export type SearchTransitiveMembershipsGroupsMembershipsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Search transitive memberships of a group. **Note:** This feature is only available to Google Workspace Enterprise Standard, Enterprise Plus, and Enterprise for Education; and Cloud Identity Premium accounts. If the account of the group is not one of these, a 403 (PERMISSION_DENIED) HTTP status code will be returned. A transitive membership is any direct or indirect membership of a group. Actor must have view permissions to all transitive memberships. */
 export const searchTransitiveMembershipsGroupsMemberships: API.PaginatedOperationMethod<
   SearchTransitiveMembershipsGroupsMembershipsRequest,
@@ -3528,10 +4722,18 @@ export const searchTransitiveMembershipsGroupsMemberships: API.PaginatedOperatio
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type SendCustomersUserinvitationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SendCustomersUserinvitationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Sends a UserInvitation to email. If the `UserInvitation` does not exist for this request and it is a valid request, the request creates a `UserInvitation`. **Note:** The `get` and `list` methods have a 48-hour delay where newly-created consumer accounts will not appear in the results. You can still send a `UserInvitation` to those accounts if you know the unmanaged email address and IsInvitableUser==True. */
 export const sendCustomersUserinvitations: API.OperationMethod<
   SendCustomersUserinvitationsRequest,
@@ -3546,7 +4748,12 @@ export const sendCustomersUserinvitations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateSecuritySettingsGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateSecuritySettingsGroupsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update Security Settings */
 export const updateSecuritySettingsGroups: API.OperationMethod<
   UpdateSecuritySettingsGroupsRequest,
@@ -3561,7 +4768,12 @@ export const updateSecuritySettingsGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type WipeDevicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type WipeDevicesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Wipes all data on the specified device. */
 export const wipeDevices: API.OperationMethod<
   WipeDevicesRequest,
@@ -3576,7 +4788,12 @@ export const wipeDevices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type WipeDevicesDeviceUsersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type WipeDevicesDeviceUsersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Wipes the user's account on a device. Other data on the device that is not associated with the user's work account is not affected. For example, if a Gmail app is installed on a device that is used for personal and work purposes, and the user is logged in to the Gmail app with their personal account as well as their work account, wiping the "deviceUser" by their work administrator will not affect their personal account within Gmail or other apps such as Photos. */
 export const wipeDevicesDeviceUsers: API.OperationMethod<
   WipeDevicesDeviceUsersRequest,
@@ -3590,4 +4807,3 @@ export const wipeDevicesDeviceUsers: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

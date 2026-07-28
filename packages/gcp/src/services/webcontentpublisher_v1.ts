@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export interface CheckFreeAccessPublicationsRequest {
@@ -69,12 +69,20 @@ export interface CheckFreeAccessPublicationsRequest {
   httpReferrer?: string;
 }
 export const CheckFreeAccessPublicationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "uri": S.optional(S.String.pipe(T.Query())),
-  "httpReferrer": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}:checkFreeAccess","baseUrl":"https://webcontentpublisher.googleapis.com/"})),
-).annotate({ identifier: "CheckFreeAccessPublicationsRequest" }) as any as S.Schema<CheckFreeAccessPublicationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    uri: S.optional(S.String.pipe(T.Query())),
+    httpReferrer: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}:checkFreeAccess",
+      baseUrl: "https://webcontentpublisher.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CheckFreeAccessPublicationsRequest",
+}) as any as S.Schema<CheckFreeAccessPublicationsRequest>;
 
 /** Response message for CheckFreeAccess */
 export interface CheckFreeAccessResponse {
@@ -82,10 +90,12 @@ export interface CheckFreeAccessResponse {
   isAllowed?: boolean;
 }
 export const CheckFreeAccessResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "isAllowed": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "CheckFreeAccessResponse" }) as any as S.Schema<CheckFreeAccessResponse>;
+  S.Struct({
+    isAllowed: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "CheckFreeAccessResponse",
+}) as any as S.Schema<CheckFreeAccessResponse>;
 
 /** Subscription Linking (SL) product settings and status. */
 export interface SlProduct {
@@ -95,10 +105,10 @@ export interface SlProduct {
   enabled?: boolean;
 }
 export const SlProduct = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "gcpProjectNumber": S.optional(S.String),
-  "enabled": S.optional(S.Boolean),
-}),
+  S.Struct({
+    gcpProjectNumber: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "SlProduct" }) as any as S.Schema<SlProduct>;
 
 /** Represents a domain property associated with a publication, typically used to verify ownership and scope access. */
@@ -109,19 +119,29 @@ export interface DomainProperty {
   ownershipVerified?: boolean;
 }
 export const DomainProperty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "url": S.optional(S.String),
-  "ownershipVerified": S.optional(S.Boolean),
-}),
+  S.Struct({
+    url: S.optional(S.String),
+    ownershipVerified: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "DomainProperty" }) as any as S.Schema<DomainProperty>;
 
 export type DomainPropertyList = ReadonlyArray<DomainProperty>;
-export const DomainPropertyList = /*@__PURE__*/ S.Array(DomainProperty) as any as S.Schema<DomainPropertyList>;
+export const DomainPropertyList = /*@__PURE__*/ S.Array(
+  DomainProperty,
+) as any as S.Schema<DomainPropertyList>;
 
-export type PublicationOnboardingStateEnum = "ONBOARDING_STATE_UNSPECIFIED" | "ACTION_REQUIRED" | "PENDING_VERIFICATION" | "COMPLETE";
+export type PublicationOnboardingStateEnum =
+  | "ONBOARDING_STATE_UNSPECIFIED"
+  | "ACTION_REQUIRED"
+  | "PENDING_VERIFICATION"
+  | "COMPLETE";
 export const PublicationOnboardingStateEnum = /*@__PURE__*/ S.String;
 
-export type PublicationPaymentOptionEnum = "PAYMENT_OPTION_UNSPECIFIED" | "NONE" | "SUBSCRIPTIONS" | "CONTRIBUTIONS";
+export type PublicationPaymentOptionEnum =
+  | "PAYMENT_OPTION_UNSPECIFIED"
+  | "NONE"
+  | "SUBSCRIPTIONS"
+  | "CONTRIBUTIONS";
 export const PublicationPaymentOptionEnum = /*@__PURE__*/ S.String;
 
 /** Details about the acceptance of the Terms of Service (TOS). */
@@ -134,11 +154,11 @@ export interface TosAcceptance {
   signer?: string;
 }
 export const TosAcceptance = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "userAccepted": S.optional(S.Boolean),
-  "signerTitle": S.optional(S.String),
-  "signer": S.optional(S.String),
-}),
+  S.Struct({
+    userAccepted: S.optional(S.Boolean),
+    signerTitle: S.optional(S.String),
+    signer: S.optional(S.String),
+  }),
 ).annotate({ identifier: "TosAcceptance" }) as any as S.Schema<TosAcceptance>;
 
 /** Configuration and status of the Reader Revenue Manager (RRM) product for a publication. */
@@ -151,14 +171,21 @@ export interface RrmProduct {
   tosAcceptance?: TosAcceptance;
 }
 export const RrmProduct = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "enabled": S.optional(S.Boolean),
-  "productTosUrl": S.optional(S.String),
-  "tosAcceptance": S.optional(TosAcceptance),
-}),
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+    productTosUrl: S.optional(S.String),
+    tosAcceptance: S.optional(TosAcceptance),
+  }),
 ).annotate({ identifier: "RrmProduct" }) as any as S.Schema<RrmProduct>;
 
-export type ContentPolicyStatusStateEnum = "STATE_UNSPECIFIED" | "OK" | "VIOLATION_GRACE_PERIOD" | "VIOLATION_ACTIVE" | "ORGANIZATION_VIOLATION_GRACE_PERIOD" | "ORGANIZATION_VIOLATION_ACTIVE" | "ORGANIZATION_VIOLATION_ACTIVE_IMMEDIATE";
+export type ContentPolicyStatusStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "OK"
+  | "VIOLATION_GRACE_PERIOD"
+  | "VIOLATION_ACTIVE"
+  | "ORGANIZATION_VIOLATION_GRACE_PERIOD"
+  | "ORGANIZATION_VIOLATION_ACTIVE"
+  | "ORGANIZATION_VIOLATION_ACTIVE_IMMEDIATE";
 export const ContentPolicyStatusStateEnum = /*@__PURE__*/ S.String;
 
 /** The content policy status of the publication, indicating any violations. */
@@ -169,14 +196,18 @@ export interface ContentPolicyStatus {
   policyInfoUrl?: string;
 }
 export const ContentPolicyStatus = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "state": S.optional(ContentPolicyStatusStateEnum),
-  "policyInfoUrl": S.optional(S.String),
-}),
-).annotate({ identifier: "ContentPolicyStatus" }) as any as S.Schema<ContentPolicyStatus>;
+  S.Struct({
+    state: S.optional(ContentPolicyStatusStateEnum),
+    policyInfoUrl: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ContentPolicyStatus",
+}) as any as S.Schema<ContentPolicyStatus>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** Represents a publisher's publication in Reader Revenue Manager. */
 export interface Publication {
@@ -214,24 +245,24 @@ export interface Publication {
   products?: StringList;
 }
 export const Publication = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "slProduct": S.optional(SlProduct),
-  "additionalDomains": S.optional(DomainPropertyList),
-  "onboardingState": S.optional(PublicationOnboardingStateEnum),
-  "publicationTosUrl": S.optional(S.String),
-  "languageCode": S.optional(S.String),
-  "regionCode": S.optional(S.String),
-  "paymentOption": S.optional(PublicationPaymentOptionEnum),
-  "name": S.optional(S.String),
-  "organizationId": S.optional(S.String),
-  "primaryDomain": S.optional(DomainProperty),
-  "displayName": S.optional(S.String),
-  "publicationId": S.optional(S.String),
-  "rrmProduct": S.optional(RrmProduct),
-  "publicationPrivacyPolicyUrl": S.optional(S.String),
-  "contentPolicyStatus": S.optional(ContentPolicyStatus),
-  "products": S.optional(StringList),
-}),
+  S.Struct({
+    slProduct: S.optional(SlProduct),
+    additionalDomains: S.optional(DomainPropertyList),
+    onboardingState: S.optional(PublicationOnboardingStateEnum),
+    publicationTosUrl: S.optional(S.String),
+    languageCode: S.optional(S.String),
+    regionCode: S.optional(S.String),
+    paymentOption: S.optional(PublicationPaymentOptionEnum),
+    name: S.optional(S.String),
+    organizationId: S.optional(S.String),
+    primaryDomain: S.optional(DomainProperty),
+    displayName: S.optional(S.String),
+    publicationId: S.optional(S.String),
+    rrmProduct: S.optional(RrmProduct),
+    publicationPrivacyPolicyUrl: S.optional(S.String),
+    contentPolicyStatus: S.optional(ContentPolicyStatus),
+    products: S.optional(StringList),
+  }),
 ).annotate({ identifier: "Publication" }) as any as S.Schema<Publication>;
 
 export interface CreateOrganizationsPublicationsRequest {
@@ -242,13 +273,22 @@ export interface CreateOrganizationsPublicationsRequest {
   /** Request body */
   body?: Publication;
 }
-export const CreateOrganizationsPublicationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "publicationId": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(Publication.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/publications","baseUrl":"https://webcontentpublisher.googleapis.com/"})),
-).annotate({ identifier: "CreateOrganizationsPublicationsRequest" }) as any as S.Schema<CreateOrganizationsPublicationsRequest>;
+export const CreateOrganizationsPublicationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      publicationId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(Publication.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/publications",
+        baseUrl: "https://webcontentpublisher.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateOrganizationsPublicationsRequest",
+}) as any as S.Schema<CreateOrganizationsPublicationsRequest>;
 
 export type CtaTypeEnum = "TYPE_UNSPECIFIED" | "NEWSLETTER_SIGNUP";
 export const CtaTypeEnum = /*@__PURE__*/ S.String;
@@ -268,13 +308,15 @@ export interface NewsletterConfig {
   title?: string;
 }
 export const NewsletterConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "customMessage": S.optional(S.String),
-  "customConsentText": S.optional(S.String),
-  "nameRequired": S.optional(S.Boolean),
-  "title": S.optional(S.String),
-}),
-).annotate({ identifier: "NewsletterConfig" }) as any as S.Schema<NewsletterConfig>;
+  S.Struct({
+    customMessage: S.optional(S.String),
+    customConsentText: S.optional(S.String),
+    nameRequired: S.optional(S.Boolean),
+    title: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "NewsletterConfig",
+}) as any as S.Schema<NewsletterConfig>;
 
 /** Represents a Call-To-Action (CTA) configuration for a publication. */
 export interface Cta {
@@ -290,13 +332,13 @@ export interface Cta {
   newsletterConfig?: NewsletterConfig;
 }
 export const Cta = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(CtaTypeEnum),
-  "state": S.optional(CtaStateEnum),
-  "name": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "newsletterConfig": S.optional(NewsletterConfig),
-}),
+  S.Struct({
+    type: S.optional(CtaTypeEnum),
+    state: S.optional(CtaStateEnum),
+    name: S.optional(S.String),
+    displayName: S.optional(S.String),
+    newsletterConfig: S.optional(NewsletterConfig),
+  }),
 ).annotate({ identifier: "Cta" }) as any as S.Schema<Cta>;
 
 export interface CreateOrganizationsPublicationsCtasRequest {
@@ -307,33 +349,59 @@ export interface CreateOrganizationsPublicationsCtasRequest {
   /** Request body */
   body?: Cta;
 }
-export const CreateOrganizationsPublicationsCtasRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "ctaId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Cta.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/ctas","baseUrl":"https://webcontentpublisher.googleapis.com/"})),
-).annotate({ identifier: "CreateOrganizationsPublicationsCtasRequest" }) as any as S.Schema<CreateOrganizationsPublicationsCtasRequest>;
+export const CreateOrganizationsPublicationsCtasRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      ctaId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Cta.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/ctas",
+        baseUrl: "https://webcontentpublisher.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateOrganizationsPublicationsCtasRequest",
+  }) as any as S.Schema<CreateOrganizationsPublicationsCtasRequest>;
 
 export interface GetOrganizationsPublicationsRequest {
   /** Required. The resource name of the publication to retrieve. Format: `organizations/{organization}/publications/{publication}`. */
   name: string;
 }
 export const GetOrganizationsPublicationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://webcontentpublisher.googleapis.com/"})),
-).annotate({ identifier: "GetOrganizationsPublicationsRequest" }) as any as S.Schema<GetOrganizationsPublicationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://webcontentpublisher.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetOrganizationsPublicationsRequest",
+}) as any as S.Schema<GetOrganizationsPublicationsRequest>;
 
 export interface GetOrganizationsPublicationsCtasRequest {
   /** Required. The resource name of the CTA to retrieve. Format: `organizations/{organization}/publications/{publication}/ctas/{cta}`. */
   name: string;
 }
-export const GetOrganizationsPublicationsCtasRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://webcontentpublisher.googleapis.com/"})),
-).annotate({ identifier: "GetOrganizationsPublicationsCtasRequest" }) as any as S.Schema<GetOrganizationsPublicationsCtasRequest>;
+export const GetOrganizationsPublicationsCtasRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://webcontentpublisher.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetOrganizationsPublicationsCtasRequest",
+}) as any as S.Schema<GetOrganizationsPublicationsCtasRequest>;
 
 export interface ListOrganizationsPublicationsRequest {
   /** Required. The parent organization whose publications to list. Format: `organizations/{organization}`. */
@@ -345,17 +413,28 @@ export interface ListOrganizationsPublicationsRequest {
   /** Optional. A page token, received from a previous `ListPublications` call, to retrieve the next page. */
   pageToken?: string;
 }
-export const ListOrganizationsPublicationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/publications","baseUrl":"https://webcontentpublisher.googleapis.com/"})),
-).annotate({ identifier: "ListOrganizationsPublicationsRequest" }) as any as S.Schema<ListOrganizationsPublicationsRequest>;
+export const ListOrganizationsPublicationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      filter: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/publications",
+        baseUrl: "https://webcontentpublisher.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListOrganizationsPublicationsRequest",
+}) as any as S.Schema<ListOrganizationsPublicationsRequest>;
 
 export type PublicationList = ReadonlyArray<Publication>;
-export const PublicationList = /*@__PURE__*/ S.Array(Publication) as any as S.Schema<PublicationList>;
+export const PublicationList = /*@__PURE__*/ S.Array(
+  Publication,
+) as any as S.Schema<PublicationList>;
 
 /** Response message for `ListPublications`. */
 export interface ListPublicationsResponse {
@@ -365,11 +444,13 @@ export interface ListPublicationsResponse {
   nextPageToken?: string;
 }
 export const ListPublicationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "publications": S.optional(PublicationList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListPublicationsResponse" }) as any as S.Schema<ListPublicationsResponse>;
+  S.Struct({
+    publications: S.optional(PublicationList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListPublicationsResponse",
+}) as any as S.Schema<ListPublicationsResponse>;
 
 export interface ListOrganizationsPublicationsCtasRequest {
   /** Optional. The maximum number of CTAs to return. The service may return fewer than this value. If unspecified, at most 50 CTAs will be returned. */
@@ -379,13 +460,22 @@ export interface ListOrganizationsPublicationsCtasRequest {
   /** Required. The parent publication resource whose CTAs to list. Format: `organizations/{organization}/publications/{publication}`. */
   parent: string;
 }
-export const ListOrganizationsPublicationsCtasRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/ctas","baseUrl":"https://webcontentpublisher.googleapis.com/"})),
-).annotate({ identifier: "ListOrganizationsPublicationsCtasRequest" }) as any as S.Schema<ListOrganizationsPublicationsCtasRequest>;
+export const ListOrganizationsPublicationsCtasRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/ctas",
+        baseUrl: "https://webcontentpublisher.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListOrganizationsPublicationsCtasRequest",
+}) as any as S.Schema<ListOrganizationsPublicationsCtasRequest>;
 
 export type CtaList = ReadonlyArray<Cta>;
 export const CtaList = /*@__PURE__*/ S.Array(Cta) as any as S.Schema<CtaList>;
@@ -398,11 +488,13 @@ export interface ListCtasResponse {
   nextPageToken?: string;
 }
 export const ListCtasResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "ctas": S.optional(CtaList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListCtasResponse" }) as any as S.Schema<ListCtasResponse>;
+  S.Struct({
+    ctas: S.optional(CtaList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListCtasResponse",
+}) as any as S.Schema<ListCtasResponse>;
 
 export interface PatchOrganizationsPublicationsRequest {
   /** Optional. The list of fields to update. */
@@ -412,15 +504,27 @@ export interface PatchOrganizationsPublicationsRequest {
   /** Request body */
   body?: Publication;
 }
-export const PatchOrganizationsPublicationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(Publication.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://webcontentpublisher.googleapis.com/"})),
-).annotate({ identifier: "PatchOrganizationsPublicationsRequest" }) as any as S.Schema<PatchOrganizationsPublicationsRequest>;
+export const PatchOrganizationsPublicationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      body: S.optional(Publication.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://webcontentpublisher.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "PatchOrganizationsPublicationsRequest",
+}) as any as S.Schema<PatchOrganizationsPublicationsRequest>;
 
-export type CheckFreeAccessPublicationsError = NotFound | Forbidden | GcpOpError;
+export type CheckFreeAccessPublicationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Checks if a user is eligible for free article access. */
 export const checkFreeAccessPublications: API.OperationMethod<
   CheckFreeAccessPublicationsRequest,
@@ -435,7 +539,12 @@ export const checkFreeAccessPublications: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateOrganizationsPublicationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateOrganizationsPublicationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a publication. */
 export const createOrganizationsPublications: API.OperationMethod<
   CreateOrganizationsPublicationsRequest,
@@ -450,7 +559,12 @@ export const createOrganizationsPublications: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateOrganizationsPublicationsCtasError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateOrganizationsPublicationsCtasError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a CTA. */
 export const createOrganizationsPublicationsCtas: API.OperationMethod<
   CreateOrganizationsPublicationsCtasRequest,
@@ -465,7 +579,10 @@ export const createOrganizationsPublicationsCtas: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetOrganizationsPublicationsError = NotFound | Forbidden | GcpOpError;
+export type GetOrganizationsPublicationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets a publication. */
 export const getOrganizationsPublications: API.OperationMethod<
   GetOrganizationsPublicationsRequest,
@@ -480,7 +597,10 @@ export const getOrganizationsPublications: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetOrganizationsPublicationsCtasError = NotFound | Forbidden | GcpOpError;
+export type GetOrganizationsPublicationsCtasError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets a CTA. */
 export const getOrganizationsPublicationsCtas: API.OperationMethod<
   GetOrganizationsPublicationsCtasRequest,
@@ -495,7 +615,10 @@ export const getOrganizationsPublicationsCtas: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListOrganizationsPublicationsError = NotFound | Forbidden | GcpOpError;
+export type ListOrganizationsPublicationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists publications. */
 export const listOrganizationsPublications: API.PaginatedOperationMethod<
   ListOrganizationsPublicationsRequest,
@@ -508,10 +631,16 @@ export const listOrganizationsPublications: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListOrganizationsPublicationsCtasError = NotFound | Forbidden | GcpOpError;
+export type ListOrganizationsPublicationsCtasError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists CTAs. */
 export const listOrganizationsPublicationsCtas: API.PaginatedOperationMethod<
   ListOrganizationsPublicationsCtasRequest,
@@ -524,10 +653,18 @@ export const listOrganizationsPublicationsCtas: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type PatchOrganizationsPublicationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchOrganizationsPublicationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a publication. */
 export const patchOrganizationsPublications: API.OperationMethod<
   PatchOrganizationsPublicationsRequest,
@@ -541,4 +678,3 @@ export const patchOrganizationsPublications: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

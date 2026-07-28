@@ -727,16 +727,31 @@ export const InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemC
       "InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1",
   }) as any as S.Schema<InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1>;
 
-export type InstancesChatCompletionsResponseChoicesItemMessageContentCase1Item =
-    | InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0
-    | InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1;
+export interface InstancesChatCompletionsResponseChoicesItemMessageContentCase1Item {
+  text?: string;
+  type:
+    | InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0Type
+    | InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1Type;
+  imageUrl?: InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1ImageUrl;
+}
 export const InstancesChatCompletionsResponseChoicesItemMessageContentCase1Item =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["text", "type"],
-      ["imageUrl", "type"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      text: S.optional(S.String),
+      type: S.Union(
+        InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0Type,
+        InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1Type,
+      ),
+      imageUrl: S.optional(
+        InstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1ImageUrl.pipe(
+          T.Body("image_url"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "InstancesChatCompletionsResponseChoicesItemMessageContentCase1Item",
+  }) as any as S.Schema<InstancesChatCompletionsResponseChoicesItemMessageContentCase1Item>;
 
 export type InstancesChatCompletionsResponseChoicesItemMessageContentCase1List =
   ReadonlyArray<InstancesChatCompletionsResponseChoicesItemMessageContentCase1Item>;
@@ -1394,16 +1409,31 @@ export const NamespacesChatCompletionsResponseChoicesItemMessageContentCase1Item
       "NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1",
   }) as any as S.Schema<NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1>;
 
-export type NamespacesChatCompletionsResponseChoicesItemMessageContentCase1Item =
-    | NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0
-    | NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1;
+export interface NamespacesChatCompletionsResponseChoicesItemMessageContentCase1Item {
+  text?: string;
+  type:
+    | NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0Type
+    | NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1Type;
+  imageUrl?: NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1ImageUrl;
+}
 export const NamespacesChatCompletionsResponseChoicesItemMessageContentCase1Item =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["text", "type"],
-      ["imageUrl", "type"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      text: S.optional(S.String),
+      type: S.Union(
+        NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0Type,
+        NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1Type,
+      ),
+      imageUrl: S.optional(
+        NamespacesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1ImageUrl.pipe(
+          T.Body("image_url"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "NamespacesChatCompletionsResponseChoicesItemMessageContentCase1Item",
+  }) as any as S.Schema<NamespacesChatCompletionsResponseChoicesItemMessageContentCase1Item>;
 
 export type NamespacesChatCompletionsResponseChoicesItemMessageContentCase1List =
   ReadonlyArray<NamespacesChatCompletionsResponseChoicesItemMessageContentCase1Item>;
@@ -2065,16 +2095,31 @@ export const NamespacesInstancesChatCompletionsResponseChoicesItemMessageContent
       "NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1",
   }) as any as S.Schema<NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1>;
 
-export type NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1Item =
-    | NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0
-    | NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1;
+export interface NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1Item {
+  text?: string;
+  type:
+    | NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0Type
+    | NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1Type;
+  imageUrl?: NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1ImageUrl;
+}
 export const NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1Item =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["text", "type"],
-      ["imageUrl", "type"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      text: S.optional(S.String),
+      type: S.Union(
+        NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase0Type,
+        NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1Type,
+      ),
+      imageUrl: S.optional(
+        NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1ItemCase1ImageUrl.pipe(
+          T.Body("image_url"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1Item",
+  }) as any as S.Schema<NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1Item>;
 
 export type NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1List =
   ReadonlyArray<NamespacesInstancesChatCompletionsResponseChoicesItemMessageContentCase1Item>;

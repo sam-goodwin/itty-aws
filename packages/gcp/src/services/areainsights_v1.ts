@@ -13,58 +13,65 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
-export type ComputeInsightsRequestInsightsItemEnum = "INSIGHT_UNSPECIFIED" | "INSIGHT_COUNT" | "INSIGHT_PLACES";
+export type ComputeInsightsRequestInsightsItemEnum =
+  | "INSIGHT_UNSPECIFIED"
+  | "INSIGHT_COUNT"
+  | "INSIGHT_PLACES";
 export const ComputeInsightsRequestInsightsItemEnum = /*@__PURE__*/ S.String;
 
-export type ComputeInsightsRequestInsightsItemEnumList = ReadonlyArray<ComputeInsightsRequestInsightsItemEnum | (string & {})>;
-export const ComputeInsightsRequestInsightsItemEnumList = /*@__PURE__*/ S.Array(ComputeInsightsRequestInsightsItemEnum) as any as S.Schema<ComputeInsightsRequestInsightsItemEnumList>;
+export type ComputeInsightsRequestInsightsItemEnumList = ReadonlyArray<
+  ComputeInsightsRequestInsightsItemEnum | (string & {})
+>;
+export const ComputeInsightsRequestInsightsItemEnumList = /*@__PURE__*/ S.Array(
+  ComputeInsightsRequestInsightsItemEnum,
+) as any as S.Schema<ComputeInsightsRequestInsightsItemEnumList>;
 
 /** Average user rating filters. */
 export interface RatingFilter {
@@ -74,23 +81,41 @@ export interface RatingFilter {
   maxRating?: number;
 }
 export const RatingFilter = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "minRating": S.optional(S.Number),
-  "maxRating": S.optional(S.Number),
-}),
+  S.Struct({
+    minRating: S.optional(S.Number),
+    maxRating: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "RatingFilter" }) as any as S.Schema<RatingFilter>;
 
-export type FilterOperatingStatusItemEnum = "OPERATING_STATUS_UNSPECIFIED" | "OPERATING_STATUS_OPERATIONAL" | "OPERATING_STATUS_PERMANENTLY_CLOSED" | "OPERATING_STATUS_TEMPORARILY_CLOSED";
+export type FilterOperatingStatusItemEnum =
+  | "OPERATING_STATUS_UNSPECIFIED"
+  | "OPERATING_STATUS_OPERATIONAL"
+  | "OPERATING_STATUS_PERMANENTLY_CLOSED"
+  | "OPERATING_STATUS_TEMPORARILY_CLOSED";
 export const FilterOperatingStatusItemEnum = /*@__PURE__*/ S.String;
 
-export type FilterOperatingStatusItemEnumList = ReadonlyArray<FilterOperatingStatusItemEnum | (string & {})>;
-export const FilterOperatingStatusItemEnumList = /*@__PURE__*/ S.Array(FilterOperatingStatusItemEnum) as any as S.Schema<FilterOperatingStatusItemEnumList>;
+export type FilterOperatingStatusItemEnumList = ReadonlyArray<
+  FilterOperatingStatusItemEnum | (string & {})
+>;
+export const FilterOperatingStatusItemEnumList = /*@__PURE__*/ S.Array(
+  FilterOperatingStatusItemEnum,
+) as any as S.Schema<FilterOperatingStatusItemEnumList>;
 
-export type FilterPriceLevelsItemEnum = "PRICE_LEVEL_UNSPECIFIED" | "PRICE_LEVEL_FREE" | "PRICE_LEVEL_INEXPENSIVE" | "PRICE_LEVEL_MODERATE" | "PRICE_LEVEL_EXPENSIVE" | "PRICE_LEVEL_VERY_EXPENSIVE";
+export type FilterPriceLevelsItemEnum =
+  | "PRICE_LEVEL_UNSPECIFIED"
+  | "PRICE_LEVEL_FREE"
+  | "PRICE_LEVEL_INEXPENSIVE"
+  | "PRICE_LEVEL_MODERATE"
+  | "PRICE_LEVEL_EXPENSIVE"
+  | "PRICE_LEVEL_VERY_EXPENSIVE";
 export const FilterPriceLevelsItemEnum = /*@__PURE__*/ S.String;
 
-export type FilterPriceLevelsItemEnumList = ReadonlyArray<FilterPriceLevelsItemEnum | (string & {})>;
-export const FilterPriceLevelsItemEnumList = /*@__PURE__*/ S.Array(FilterPriceLevelsItemEnum) as any as S.Schema<FilterPriceLevelsItemEnumList>;
+export type FilterPriceLevelsItemEnumList = ReadonlyArray<
+  FilterPriceLevelsItemEnum | (string & {})
+>;
+export const FilterPriceLevelsItemEnumList = /*@__PURE__*/ S.Array(
+  FilterPriceLevelsItemEnum,
+) as any as S.Schema<FilterPriceLevelsItemEnumList>;
 
 /** An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this object must conform to the WGS84 standard. Values must be within normalized ranges. */
 export interface LatLng {
@@ -100,10 +125,10 @@ export interface LatLng {
   longitude?: number;
 }
 export const LatLng = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "latitude": S.optional(S.Number),
-  "longitude": S.optional(S.Number),
-}),
+  S.Struct({
+    latitude: S.optional(S.Number),
+    longitude: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "LatLng" }) as any as S.Schema<LatLng>;
 
 /** A circle is defined by a center point and radius in meters. */
@@ -116,15 +141,17 @@ export interface Circle {
   place?: string;
 }
 export const Circle = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "latLng": S.optional(LatLng),
-  "radius": S.optional(S.Number),
-  "place": S.optional(S.String),
-}),
+  S.Struct({
+    latLng: S.optional(LatLng),
+    radius: S.optional(S.Number),
+    place: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Circle" }) as any as S.Schema<Circle>;
 
 export type LatLngList = ReadonlyArray<LatLng>;
-export const LatLngList = /*@__PURE__*/ S.Array(LatLng) as any as S.Schema<LatLngList>;
+export const LatLngList = /*@__PURE__*/ S.Array(
+  LatLng,
+) as any as S.Schema<LatLngList>;
 
 /** A polygon is represented by a series of connected coordinates in an counterclockwise ordered sequence. The coordinates form a closed loop and define a filled region. The first and last coordinates are equivalent, and they must contain identical values. The format is a simplified version of GeoJSON polygons (we only support one counterclockwise exterior ring). */
 export interface Polygon {
@@ -132,9 +159,9 @@ export interface Polygon {
   coordinates?: LatLngList;
 }
 export const Polygon = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "coordinates": S.optional(LatLngList),
-}),
+  S.Struct({
+    coordinates: S.optional(LatLngList),
+  }),
 ).annotate({ identifier: "Polygon" }) as any as S.Schema<Polygon>;
 
 /** Custom Area. */
@@ -143,9 +170,9 @@ export interface CustomArea {
   polygon?: Polygon;
 }
 export const CustomArea = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "polygon": S.optional(Polygon),
-}),
+  S.Struct({
+    polygon: S.optional(Polygon),
+  }),
 ).annotate({ identifier: "CustomArea" }) as any as S.Schema<CustomArea>;
 
 /** A region is a geographic boundary such as: cities, postal codes, counties, states, etc. */
@@ -154,9 +181,9 @@ export interface Region {
   place?: string;
 }
 export const Region = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "place": S.optional(S.String),
-}),
+  S.Struct({
+    place: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Region" }) as any as S.Schema<Region>;
 
 /** Location filters. Specifies the area of interest for the insight. */
@@ -169,15 +196,17 @@ export interface LocationFilter {
   region?: Region;
 }
 export const LocationFilter = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "circle": S.optional(Circle),
-  "customArea": S.optional(CustomArea),
-  "region": S.optional(Region),
-}),
+  S.Struct({
+    circle: S.optional(Circle),
+    customArea: S.optional(CustomArea),
+    region: S.optional(Region),
+  }),
 ).annotate({ identifier: "LocationFilter" }) as any as S.Schema<LocationFilter>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** Place type filters. Only Place types from [Table a](https://developers.google.com/maps/documentation/places/web-service/place-types#table-a) are supported. A place can only have a single primary type associated with it. For example, the primary type might be "mexican_restaurant" or "steak_house". Use included_primary_types and excluded_primary_types to filter the results on a place's primary type. A place can also have multiple type values associated with it. For example a restaurant might have the following types: "seafood_restaurant", "restaurant", "food", "point_of_interest", "establishment". Use included_types and excluded_types to filter the results on the list of types associated with a place. If a search is specified with multiple type restrictions, only places that satisfy all of the restrictions are returned. For example, if you specify {"included_types": ["restaurant"], "excluded_primary_types": ["steak_house"]}, the returned places provide "restaurant" related services but do not operate primarily as a "steak_house". If there are any conflicting types, i.e. a type appears in both included_types and excluded_types types or included_primary_types and excluded_primary_types, an INVALID_ARGUMENT error is returned. One of included_types or included_primary_types must be set. */
 export interface TypeFilter {
@@ -191,12 +220,12 @@ export interface TypeFilter {
   excludedTypes?: StringList;
 }
 export const TypeFilter = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "includedTypes": S.optional(StringList),
-  "excludedPrimaryTypes": S.optional(StringList),
-  "includedPrimaryTypes": S.optional(StringList),
-  "excludedTypes": S.optional(StringList),
-}),
+  S.Struct({
+    includedTypes: S.optional(StringList),
+    excludedPrimaryTypes: S.optional(StringList),
+    includedPrimaryTypes: S.optional(StringList),
+    excludedTypes: S.optional(StringList),
+  }),
 ).annotate({ identifier: "TypeFilter" }) as any as S.Schema<TypeFilter>;
 
 /** Filters for the ComputeInsights RPC. */
@@ -213,13 +242,13 @@ export interface Filter {
   typeFilter?: TypeFilter;
 }
 export const Filter = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "ratingFilter": S.optional(RatingFilter),
-  "operatingStatus": S.optional(FilterOperatingStatusItemEnumList),
-  "priceLevels": S.optional(FilterPriceLevelsItemEnumList),
-  "locationFilter": S.optional(LocationFilter),
-  "typeFilter": S.optional(TypeFilter),
-}),
+  S.Struct({
+    ratingFilter: S.optional(RatingFilter),
+    operatingStatus: S.optional(FilterOperatingStatusItemEnumList),
+    priceLevels: S.optional(FilterPriceLevelsItemEnumList),
+    locationFilter: S.optional(LocationFilter),
+    typeFilter: S.optional(TypeFilter),
+  }),
 ).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
 
 /** Request for the ComputeInsights RPC. */
@@ -230,21 +259,31 @@ export interface ComputeInsightsRequest {
   filter?: Filter;
 }
 export const ComputeInsightsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "insights": S.optional(ComputeInsightsRequestInsightsItemEnumList),
-  "filter": S.optional(Filter),
-}),
-).annotate({ identifier: "ComputeInsightsRequest" }) as any as S.Schema<ComputeInsightsRequest>;
+  S.Struct({
+    insights: S.optional(ComputeInsightsRequestInsightsItemEnumList),
+    filter: S.optional(Filter),
+  }),
+).annotate({
+  identifier: "ComputeInsightsRequest",
+}) as any as S.Schema<ComputeInsightsRequest>;
 
 export interface ComputeInsightsV1Request {
   /** Request body */
   body?: ComputeInsightsRequest;
 }
 export const ComputeInsightsV1Request = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(ComputeInsightsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1:computeInsights","baseUrl":"https://areainsights.googleapis.com/"})),
-).annotate({ identifier: "ComputeInsightsV1Request" }) as any as S.Schema<ComputeInsightsV1Request>;
+  S.Struct({
+    body: S.optional(ComputeInsightsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1:computeInsights",
+      baseUrl: "https://areainsights.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ComputeInsightsV1Request",
+}) as any as S.Schema<ComputeInsightsV1Request>;
 
 /** Holds information about a place */
 export interface PlaceInsight {
@@ -252,13 +291,15 @@ export interface PlaceInsight {
   place?: string;
 }
 export const PlaceInsight = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "place": S.optional(S.String),
-}),
+  S.Struct({
+    place: S.optional(S.String),
+  }),
 ).annotate({ identifier: "PlaceInsight" }) as any as S.Schema<PlaceInsight>;
 
 export type PlaceInsightList = ReadonlyArray<PlaceInsight>;
-export const PlaceInsightList = /*@__PURE__*/ S.Array(PlaceInsight) as any as S.Schema<PlaceInsightList>;
+export const PlaceInsightList = /*@__PURE__*/ S.Array(
+  PlaceInsight,
+) as any as S.Schema<PlaceInsightList>;
 
 /** Response for the ComputeInsights RPC. */
 export interface ComputeInsightsResponse {
@@ -268,13 +309,20 @@ export interface ComputeInsightsResponse {
   placeInsights?: PlaceInsightList;
 }
 export const ComputeInsightsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "count": S.optional(S.String),
-  "placeInsights": S.optional(PlaceInsightList),
-}),
-).annotate({ identifier: "ComputeInsightsResponse" }) as any as S.Schema<ComputeInsightsResponse>;
+  S.Struct({
+    count: S.optional(S.String),
+    placeInsights: S.optional(PlaceInsightList),
+  }),
+).annotate({
+  identifier: "ComputeInsightsResponse",
+}) as any as S.Schema<ComputeInsightsResponse>;
 
-export type ComputeInsightsV1Error = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ComputeInsightsV1Error =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** This method lets you retrieve insights about areas using a variety of filter such as: area, place type, operating status, price level and ratings. Currently "count" and "places" insights are supported. With "count" insights you can answer questions such as "How many restaurant are located in California that are operational, are inexpensive and have an average rating of at least 4 stars" (see `insight` enum for more details). With "places" insights, you can determine which places match the requested filter. Clients can then use those place resource names to fetch more details about each individual place using the Places API. */
 export const computeInsightsV1: API.OperationMethod<
   ComputeInsightsV1Request,
@@ -288,4 +336,3 @@ export const computeInsightsV1: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

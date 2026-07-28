@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 /** Input only. Batch delete jobs request. */
@@ -66,10 +66,12 @@ export interface BatchDeleteJobsRequest {
   filter?: string;
 }
 export const BatchDeleteJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String),
-}),
-).annotate({ identifier: "BatchDeleteJobsRequest" }) as any as S.Schema<BatchDeleteJobsRequest>;
+  S.Struct({
+    filter: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BatchDeleteJobsRequest",
+}) as any as S.Schema<BatchDeleteJobsRequest>;
 
 export interface BatchDeleteProjectsJobsRequest {
   /** Required. The resource name of the project under which the job is created. The format is "projects/{project_id}", for example, "projects/api-test-project". */
@@ -78,25 +80,42 @@ export interface BatchDeleteProjectsJobsRequest {
   body?: BatchDeleteJobsRequest;
 }
 export const BatchDeleteProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(BatchDeleteJobsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v3p1beta1/{+parent}/jobs:batchDelete","baseUrl":"https://jobs.googleapis.com/"})),
-).annotate({ identifier: "BatchDeleteProjectsJobsRequest" }) as any as S.Schema<BatchDeleteProjectsJobsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(BatchDeleteJobsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v3p1beta1/{+parent}/jobs:batchDelete",
+      baseUrl: "https://jobs.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "BatchDeleteProjectsJobsRequest",
+}) as any as S.Schema<BatchDeleteProjectsJobsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
-export type CompleteProjectsScopeEnum = "COMPLETION_SCOPE_UNSPECIFIED" | "TENANT" | "PUBLIC";
+export type CompleteProjectsScopeEnum =
+  | "COMPLETION_SCOPE_UNSPECIFIED"
+  | "TENANT"
+  | "PUBLIC";
 export const CompleteProjectsScopeEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
-export type CompleteProjectsTypeEnum = "COMPLETION_TYPE_UNSPECIFIED" | "JOB_TITLE" | "COMPANY_NAME" | "COMBINED";
+export type CompleteProjectsTypeEnum =
+  | "COMPLETION_TYPE_UNSPECIFIED"
+  | "JOB_TITLE"
+  | "COMPANY_NAME"
+  | "COMBINED";
 export const CompleteProjectsTypeEnum = /*@__PURE__*/ S.String;
 
 export interface CompleteProjectsRequest {
@@ -118,19 +137,31 @@ export interface CompleteProjectsRequest {
   pageSize?: number;
 }
 export const CompleteProjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "scope": S.optional(CompleteProjectsScopeEnum.pipe(T.Query())),
-  "languageCode": S.optional(S.String.pipe(T.Query())),
-  "languageCodes": S.optional(StringList.pipe(T.Query())),
-  "companyName": S.optional(S.String.pipe(T.Query())),
-  "type": S.optional(CompleteProjectsTypeEnum.pipe(T.Query())),
-  "query": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v3p1beta1/{+name}:complete","baseUrl":"https://jobs.googleapis.com/"})),
-).annotate({ identifier: "CompleteProjectsRequest" }) as any as S.Schema<CompleteProjectsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    scope: S.optional(CompleteProjectsScopeEnum.pipe(T.Query())),
+    languageCode: S.optional(S.String.pipe(T.Query())),
+    languageCodes: S.optional(StringList.pipe(T.Query())),
+    companyName: S.optional(S.String.pipe(T.Query())),
+    type: S.optional(CompleteProjectsTypeEnum.pipe(T.Query())),
+    query: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v3p1beta1/{+name}:complete",
+      baseUrl: "https://jobs.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CompleteProjectsRequest",
+}) as any as S.Schema<CompleteProjectsRequest>;
 
-export type CompletionResultTypeEnum = "COMPLETION_TYPE_UNSPECIFIED" | "JOB_TITLE" | "COMPANY_NAME" | "COMBINED";
+export type CompletionResultTypeEnum =
+  | "COMPLETION_TYPE_UNSPECIFIED"
+  | "JOB_TITLE"
+  | "COMPANY_NAME"
+  | "COMBINED";
 export const CompletionResultTypeEnum = /*@__PURE__*/ S.String;
 
 /** Output only. Resource that represents completion results. */
@@ -143,15 +174,19 @@ export interface CompletionResult {
   type?: CompletionResultTypeEnum;
 }
 export const CompletionResult = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "suggestion": S.optional(S.String),
-  "imageUri": S.optional(S.String),
-  "type": S.optional(CompletionResultTypeEnum),
-}),
-).annotate({ identifier: "CompletionResult" }) as any as S.Schema<CompletionResult>;
+  S.Struct({
+    suggestion: S.optional(S.String),
+    imageUri: S.optional(S.String),
+    type: S.optional(CompletionResultTypeEnum),
+  }),
+).annotate({
+  identifier: "CompletionResult",
+}) as any as S.Schema<CompletionResult>;
 
 export type CompletionResultList = ReadonlyArray<CompletionResult>;
-export const CompletionResultList = /*@__PURE__*/ S.Array(CompletionResult) as any as S.Schema<CompletionResultList>;
+export const CompletionResultList = /*@__PURE__*/ S.Array(
+  CompletionResult,
+) as any as S.Schema<CompletionResultList>;
 
 /** Output only. Additional information returned to client, such as debugging information. */
 export interface ResponseMetadata {
@@ -159,10 +194,12 @@ export interface ResponseMetadata {
   requestId?: string;
 }
 export const ResponseMetadata = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String),
-}),
-).annotate({ identifier: "ResponseMetadata" }) as any as S.Schema<ResponseMetadata>;
+  S.Struct({
+    requestId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ResponseMetadata",
+}) as any as S.Schema<ResponseMetadata>;
 
 /** Output only. Response of auto-complete query. */
 export interface CompleteQueryResponse {
@@ -172,13 +209,32 @@ export interface CompleteQueryResponse {
   metadata?: ResponseMetadata;
 }
 export const CompleteQueryResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "completionResults": S.optional(CompletionResultList),
-  "metadata": S.optional(ResponseMetadata),
-}),
-).annotate({ identifier: "CompleteQueryResponse" }) as any as S.Schema<CompleteQueryResponse>;
+  S.Struct({
+    completionResults: S.optional(CompletionResultList),
+    metadata: S.optional(ResponseMetadata),
+  }),
+).annotate({
+  identifier: "CompleteQueryResponse",
+}) as any as S.Schema<CompleteQueryResponse>;
 
-export type JobEventTypeEnum = "JOB_EVENT_TYPE_UNSPECIFIED" | "IMPRESSION" | "VIEW" | "VIEW_REDIRECT" | "APPLICATION_START" | "APPLICATION_FINISH" | "APPLICATION_QUICK_SUBMISSION" | "APPLICATION_REDIRECT" | "APPLICATION_START_FROM_SEARCH" | "APPLICATION_REDIRECT_FROM_SEARCH" | "APPLICATION_COMPANY_SUBMIT" | "BOOKMARK" | "NOTIFICATION" | "HIRED" | "SENT_CV" | "INTERVIEW_GRANTED" | "NOT_INTERESTED";
+export type JobEventTypeEnum =
+  | "JOB_EVENT_TYPE_UNSPECIFIED"
+  | "IMPRESSION"
+  | "VIEW"
+  | "VIEW_REDIRECT"
+  | "APPLICATION_START"
+  | "APPLICATION_FINISH"
+  | "APPLICATION_QUICK_SUBMISSION"
+  | "APPLICATION_REDIRECT"
+  | "APPLICATION_START_FROM_SEARCH"
+  | "APPLICATION_REDIRECT_FROM_SEARCH"
+  | "APPLICATION_COMPANY_SUBMIT"
+  | "BOOKMARK"
+  | "NOTIFICATION"
+  | "HIRED"
+  | "SENT_CV"
+  | "INTERVIEW_GRANTED"
+  | "NOT_INTERESTED";
 export const JobEventTypeEnum = /*@__PURE__*/ S.String;
 
 /** An event issued when a job seeker interacts with the application that implements Cloud Talent Solution. */
@@ -189,14 +245,17 @@ export interface JobEvent {
   type?: JobEventTypeEnum;
 }
 export const JobEvent = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "jobs": S.optional(StringList),
-  "type": S.optional(JobEventTypeEnum),
-}),
+  S.Struct({
+    jobs: S.optional(StringList),
+    type: S.optional(JobEventTypeEnum),
+  }),
 ).annotate({ identifier: "JobEvent" }) as any as S.Schema<JobEvent>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
 /** An event issued when an end user interacts with the application that implements Cloud Talent Solution. Providing this information improves the quality of search and recommendation for the API clients, enabling the service to perform optimally. The number of events sent must be consistent with other calls, such as job searches, issued to the service by the client. */
 export interface ClientEvent {
@@ -214,14 +273,14 @@ export interface ClientEvent {
   parentEventId?: string;
 }
 export const ClientEvent = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "jobEvent": S.optional(JobEvent),
-  "extraInfo": S.optional(StringMap),
-  "eventId": S.optional(S.String),
-  "parentEventId": S.optional(S.String),
-}),
+  S.Struct({
+    requestId: S.optional(S.String),
+    createTime: S.optional(S.String),
+    jobEvent: S.optional(JobEvent),
+    extraInfo: S.optional(StringMap),
+    eventId: S.optional(S.String),
+    parentEventId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ClientEvent" }) as any as S.Schema<ClientEvent>;
 
 /** The report event request. */
@@ -230,10 +289,12 @@ export interface CreateClientEventRequest {
   clientEvent?: ClientEvent;
 }
 export const CreateClientEventRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "clientEvent": S.optional(ClientEvent),
-}),
-).annotate({ identifier: "CreateClientEventRequest" }) as any as S.Schema<CreateClientEventRequest>;
+  S.Struct({
+    clientEvent: S.optional(ClientEvent),
+  }),
+).annotate({
+  identifier: "CreateClientEventRequest",
+}) as any as S.Schema<CreateClientEventRequest>;
 
 export interface CreateProjectsClientEventsRequest {
   /** Parent project name. */
@@ -242,11 +303,19 @@ export interface CreateProjectsClientEventsRequest {
   body?: CreateClientEventRequest;
 }
 export const CreateProjectsClientEventsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(CreateClientEventRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v3p1beta1/{+parent}/clientEvents","baseUrl":"https://jobs.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsClientEventsRequest" }) as any as S.Schema<CreateProjectsClientEventsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(CreateClientEventRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v3p1beta1/{+parent}/clientEvents",
+      baseUrl: "https://jobs.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateProjectsClientEventsRequest",
+}) as any as S.Schema<CreateProjectsClientEventsRequest>;
 
 /** Represents a postal address, such as for postal delivery or payments addresses. With a postal address, a postal service can deliver items to a premise, P.O. box, or similar. A postal address is not intended to model geographical locations like roads, towns, or mountains. In typical usage, an address would be created by user input or from importing existing data, depending on the type of process. Advice on address input or editing: - Use an internationalization-ready address widget such as https://github.com/google/libaddressinput. - Users should not be presented with UI elements for input or editing of fields outside countries where that field is used. For more guidance on how to use this schema, see: https://support.google.com/business/answer/6397478. */
 export interface PostalAddress {
@@ -274,22 +343,33 @@ export interface PostalAddress {
   regionCode?: string;
 }
 export const PostalAddress = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "languageCode": S.optional(S.String),
-  "sublocality": S.optional(S.String),
-  "postalCode": S.optional(S.String),
-  "organization": S.optional(S.String),
-  "administrativeArea": S.optional(S.String),
-  "sortingCode": S.optional(S.String),
-  "locality": S.optional(S.String),
-  "revision": S.optional(S.Number),
-  "addressLines": S.optional(StringList),
-  "recipients": S.optional(StringList),
-  "regionCode": S.optional(S.String),
-}),
+  S.Struct({
+    languageCode: S.optional(S.String),
+    sublocality: S.optional(S.String),
+    postalCode: S.optional(S.String),
+    organization: S.optional(S.String),
+    administrativeArea: S.optional(S.String),
+    sortingCode: S.optional(S.String),
+    locality: S.optional(S.String),
+    revision: S.optional(S.Number),
+    addressLines: S.optional(StringList),
+    recipients: S.optional(StringList),
+    regionCode: S.optional(S.String),
+  }),
 ).annotate({ identifier: "PostalAddress" }) as any as S.Schema<PostalAddress>;
 
-export type LocationLocationTypeEnum = "LOCATION_TYPE_UNSPECIFIED" | "COUNTRY" | "ADMINISTRATIVE_AREA" | "SUB_ADMINISTRATIVE_AREA" | "LOCALITY" | "POSTAL_CODE" | "SUB_LOCALITY" | "SUB_LOCALITY_1" | "SUB_LOCALITY_2" | "NEIGHBORHOOD" | "STREET_ADDRESS";
+export type LocationLocationTypeEnum =
+  | "LOCATION_TYPE_UNSPECIFIED"
+  | "COUNTRY"
+  | "ADMINISTRATIVE_AREA"
+  | "SUB_ADMINISTRATIVE_AREA"
+  | "LOCALITY"
+  | "POSTAL_CODE"
+  | "SUB_LOCALITY"
+  | "SUB_LOCALITY_1"
+  | "SUB_LOCALITY_2"
+  | "NEIGHBORHOOD"
+  | "STREET_ADDRESS";
 export const LocationLocationTypeEnum = /*@__PURE__*/ S.String;
 
 /** An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this object must conform to the WGS84 standard. Values must be within normalized ranges. */
@@ -300,10 +380,10 @@ export interface LatLng {
   latitude?: number;
 }
 export const LatLng = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "longitude": S.optional(S.Number),
-  "latitude": S.optional(S.Number),
-}),
+  S.Struct({
+    longitude: S.optional(S.Number),
+    latitude: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "LatLng" }) as any as S.Schema<LatLng>;
 
 /** Output only. A resource that represents a location with full geographic information. */
@@ -318,12 +398,12 @@ export interface Location {
   radiusInMiles?: number;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "postalAddress": S.optional(PostalAddress),
-  "locationType": S.optional(LocationLocationTypeEnum),
-  "latLng": S.optional(LatLng),
-  "radiusInMiles": S.optional(S.Number),
-}),
+  S.Struct({
+    postalAddress: S.optional(PostalAddress),
+    locationType: S.optional(LocationLocationTypeEnum),
+    latLng: S.optional(LatLng),
+    radiusInMiles: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 /** Derived details about the company. */
@@ -332,12 +412,22 @@ export interface CompanyDerivedInfo {
   headquartersLocation?: Location;
 }
 export const CompanyDerivedInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "headquartersLocation": S.optional(Location),
-}),
-).annotate({ identifier: "CompanyDerivedInfo" }) as any as S.Schema<CompanyDerivedInfo>;
+  S.Struct({
+    headquartersLocation: S.optional(Location),
+  }),
+).annotate({
+  identifier: "CompanyDerivedInfo",
+}) as any as S.Schema<CompanyDerivedInfo>;
 
-export type CompanySizeEnum = "COMPANY_SIZE_UNSPECIFIED" | "MINI" | "SMALL" | "SMEDIUM" | "MEDIUM" | "BIG" | "BIGGER" | "GIANT";
+export type CompanySizeEnum =
+  | "COMPANY_SIZE_UNSPECIFIED"
+  | "MINI"
+  | "SMALL"
+  | "SMEDIUM"
+  | "MEDIUM"
+  | "BIG"
+  | "BIGGER"
+  | "GIANT";
 export const CompanySizeEnum = /*@__PURE__*/ S.String;
 
 /** A Company resource represents a company in the service. A company is the entity that owns job postings, that is, the hiring entity responsible for employing applicants for the job position. */
@@ -370,21 +460,21 @@ export interface Company {
   displayName?: string;
 }
 export const Company = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "imageUri": S.optional(S.String),
-  "hiringAgency": S.optional(S.Boolean),
-  "externalId": S.optional(S.String),
-  "eeoText": S.optional(S.String),
-  "name": S.optional(S.String),
-  "headquartersAddress": S.optional(S.String),
-  "derivedInfo": S.optional(CompanyDerivedInfo),
-  "careerSiteUri": S.optional(S.String),
-  "suspended": S.optional(S.Boolean),
-  "websiteUri": S.optional(S.String),
-  "keywordSearchableJobCustomAttributes": S.optional(StringList),
-  "size": S.optional(CompanySizeEnum),
-  "displayName": S.optional(S.String),
-}),
+  S.Struct({
+    imageUri: S.optional(S.String),
+    hiringAgency: S.optional(S.Boolean),
+    externalId: S.optional(S.String),
+    eeoText: S.optional(S.String),
+    name: S.optional(S.String),
+    headquartersAddress: S.optional(S.String),
+    derivedInfo: S.optional(CompanyDerivedInfo),
+    careerSiteUri: S.optional(S.String),
+    suspended: S.optional(S.Boolean),
+    websiteUri: S.optional(S.String),
+    keywordSearchableJobCustomAttributes: S.optional(StringList),
+    size: S.optional(CompanySizeEnum),
+    displayName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Company" }) as any as S.Schema<Company>;
 
 /** Input only. The Request of the CreateCompany method. */
@@ -393,10 +483,12 @@ export interface CreateCompanyRequest {
   company?: Company;
 }
 export const CreateCompanyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "company": S.optional(Company),
-}),
-).annotate({ identifier: "CreateCompanyRequest" }) as any as S.Schema<CreateCompanyRequest>;
+  S.Struct({
+    company: S.optional(Company),
+  }),
+).annotate({
+  identifier: "CreateCompanyRequest",
+}) as any as S.Schema<CreateCompanyRequest>;
 
 export interface CreateProjectsCompaniesRequest {
   /** Required. Resource name of the project under which the company is created. The format is "projects/{project_id}", for example, "projects/api-test-project". */
@@ -405,25 +497,61 @@ export interface CreateProjectsCompaniesRequest {
   body?: CreateCompanyRequest;
 }
 export const CreateProjectsCompaniesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(CreateCompanyRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v3p1beta1/{+parent}/companies","baseUrl":"https://jobs.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsCompaniesRequest" }) as any as S.Schema<CreateProjectsCompaniesRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(CreateCompanyRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v3p1beta1/{+parent}/companies",
+      baseUrl: "https://jobs.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateProjectsCompaniesRequest",
+}) as any as S.Schema<CreateProjectsCompaniesRequest>;
 
-export type JobJobBenefitsItemEnum = "JOB_BENEFIT_UNSPECIFIED" | "CHILD_CARE" | "DENTAL" | "DOMESTIC_PARTNER" | "FLEXIBLE_HOURS" | "MEDICAL" | "LIFE_INSURANCE" | "PARENTAL_LEAVE" | "RETIREMENT_PLAN" | "SICK_DAYS" | "VACATION" | "VISION";
+export type JobJobBenefitsItemEnum =
+  | "JOB_BENEFIT_UNSPECIFIED"
+  | "CHILD_CARE"
+  | "DENTAL"
+  | "DOMESTIC_PARTNER"
+  | "FLEXIBLE_HOURS"
+  | "MEDICAL"
+  | "LIFE_INSURANCE"
+  | "PARENTAL_LEAVE"
+  | "RETIREMENT_PLAN"
+  | "SICK_DAYS"
+  | "VACATION"
+  | "VISION";
 export const JobJobBenefitsItemEnum = /*@__PURE__*/ S.String;
 
 export type JobJobBenefitsItemEnumList = ReadonlyArray<JobJobBenefitsItemEnum>;
-export const JobJobBenefitsItemEnumList = /*@__PURE__*/ S.Array(JobJobBenefitsItemEnum) as any as S.Schema<JobJobBenefitsItemEnumList>;
+export const JobJobBenefitsItemEnumList = /*@__PURE__*/ S.Array(
+  JobJobBenefitsItemEnum,
+) as any as S.Schema<JobJobBenefitsItemEnumList>;
 
-export type JobJobLevelEnum = "JOB_LEVEL_UNSPECIFIED" | "ENTRY_LEVEL" | "EXPERIENCED" | "MANAGER" | "DIRECTOR" | "EXECUTIVE";
+export type JobJobLevelEnum =
+  | "JOB_LEVEL_UNSPECIFIED"
+  | "ENTRY_LEVEL"
+  | "EXPERIENCED"
+  | "MANAGER"
+  | "DIRECTOR"
+  | "EXECUTIVE";
 export const JobJobLevelEnum = /*@__PURE__*/ S.String;
 
-export type JobPostingRegionEnum = "POSTING_REGION_UNSPECIFIED" | "ADMINISTRATIVE_AREA" | "NATION" | "TELECOMMUTE";
+export type JobPostingRegionEnum =
+  | "POSTING_REGION_UNSPECIFIED"
+  | "ADMINISTRATIVE_AREA"
+  | "NATION"
+  | "TELECOMMUTE";
 export const JobPostingRegionEnum = /*@__PURE__*/ S.String;
 
-export type JobVisibilityEnum = "VISIBILITY_UNSPECIFIED" | "ACCOUNT_ONLY" | "SHARED_WITH_GOOGLE" | "SHARED_WITH_PUBLIC";
+export type JobVisibilityEnum =
+  | "VISIBILITY_UNSPECIFIED"
+  | "ACCOUNT_ONLY"
+  | "SHARED_WITH_GOOGLE"
+  | "SHARED_WITH_PUBLIC";
 export const JobVisibilityEnum = /*@__PURE__*/ S.String;
 
 /** Represents an amount of money with its currency type. */
@@ -436,11 +564,11 @@ export interface Money {
   units?: string;
 }
 export const Money = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nanos": S.optional(S.Number),
-  "currencyCode": S.optional(S.String),
-  "units": S.optional(S.String),
-}),
+  S.Struct({
+    nanos: S.optional(S.Number),
+    currencyCode: S.optional(S.String),
+    units: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Money" }) as any as S.Schema<Money>;
 
 /** Compensation range. */
@@ -451,16 +579,35 @@ export interface CompensationRange {
   minCompensation?: Money;
 }
 export const CompensationRange = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "maxCompensation": S.optional(Money),
-  "minCompensation": S.optional(Money),
-}),
-).annotate({ identifier: "CompensationRange" }) as any as S.Schema<CompensationRange>;
+  S.Struct({
+    maxCompensation: S.optional(Money),
+    minCompensation: S.optional(Money),
+  }),
+).annotate({
+  identifier: "CompensationRange",
+}) as any as S.Schema<CompensationRange>;
 
-export type CompensationEntryTypeEnum = "COMPENSATION_TYPE_UNSPECIFIED" | "BASE" | "BONUS" | "SIGNING_BONUS" | "EQUITY" | "PROFIT_SHARING" | "COMMISSIONS" | "TIPS" | "OTHER_COMPENSATION_TYPE";
+export type CompensationEntryTypeEnum =
+  | "COMPENSATION_TYPE_UNSPECIFIED"
+  | "BASE"
+  | "BONUS"
+  | "SIGNING_BONUS"
+  | "EQUITY"
+  | "PROFIT_SHARING"
+  | "COMMISSIONS"
+  | "TIPS"
+  | "OTHER_COMPENSATION_TYPE";
 export const CompensationEntryTypeEnum = /*@__PURE__*/ S.String;
 
-export type CompensationEntryUnitEnum = "COMPENSATION_UNIT_UNSPECIFIED" | "HOURLY" | "DAILY" | "WEEKLY" | "MONTHLY" | "YEARLY" | "ONE_TIME" | "OTHER_COMPENSATION_UNIT";
+export type CompensationEntryUnitEnum =
+  | "COMPENSATION_UNIT_UNSPECIFIED"
+  | "HOURLY"
+  | "DAILY"
+  | "WEEKLY"
+  | "MONTHLY"
+  | "YEARLY"
+  | "ONE_TIME"
+  | "OTHER_COMPENSATION_UNIT";
 export const CompensationEntryUnitEnum = /*@__PURE__*/ S.String;
 
 /** A compensation entry that represents one component of compensation, such as base pay, bonus, or other compensation type. Annualization: One compensation entry can be annualized if - it contains valid amount or range. - and its expected_units_per_year is set or can be derived. Its annualized range is determined as (amount or range) times expected_units_per_year. */
@@ -479,18 +626,22 @@ export interface CompensationEntry {
   expectedUnitsPerYear?: number;
 }
 export const CompensationEntry = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(CompensationEntryTypeEnum),
-  "amount": S.optional(Money),
-  "range": S.optional(CompensationRange),
-  "description": S.optional(S.String),
-  "unit": S.optional(CompensationEntryUnitEnum),
-  "expectedUnitsPerYear": S.optional(S.Number),
-}),
-).annotate({ identifier: "CompensationEntry" }) as any as S.Schema<CompensationEntry>;
+  S.Struct({
+    type: S.optional(CompensationEntryTypeEnum),
+    amount: S.optional(Money),
+    range: S.optional(CompensationRange),
+    description: S.optional(S.String),
+    unit: S.optional(CompensationEntryUnitEnum),
+    expectedUnitsPerYear: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "CompensationEntry",
+}) as any as S.Schema<CompensationEntry>;
 
 export type CompensationEntryList = ReadonlyArray<CompensationEntry>;
-export const CompensationEntryList = /*@__PURE__*/ S.Array(CompensationEntry) as any as S.Schema<CompensationEntryList>;
+export const CompensationEntryList = /*@__PURE__*/ S.Array(
+  CompensationEntry,
+) as any as S.Schema<CompensationEntryList>;
 
 /** Job compensation details. */
 export interface CompensationInfo {
@@ -502,27 +653,76 @@ export interface CompensationInfo {
   annualizedTotalCompensationRange?: CompensationRange;
 }
 export const CompensationInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "annualizedBaseCompensationRange": S.optional(CompensationRange),
-  "entries": S.optional(CompensationEntryList),
-  "annualizedTotalCompensationRange": S.optional(CompensationRange),
-}),
-).annotate({ identifier: "CompensationInfo" }) as any as S.Schema<CompensationInfo>;
+  S.Struct({
+    annualizedBaseCompensationRange: S.optional(CompensationRange),
+    entries: S.optional(CompensationEntryList),
+    annualizedTotalCompensationRange: S.optional(CompensationRange),
+  }),
+).annotate({
+  identifier: "CompensationInfo",
+}) as any as S.Schema<CompensationInfo>;
 
-export type JobDegreeTypesItemEnum = "DEGREE_TYPE_UNSPECIFIED" | "PRIMARY_EDUCATION" | "LOWER_SECONDARY_EDUCATION" | "UPPER_SECONDARY_EDUCATION" | "ADULT_REMEDIAL_EDUCATION" | "ASSOCIATES_OR_EQUIVALENT" | "BACHELORS_OR_EQUIVALENT" | "MASTERS_OR_EQUIVALENT" | "DOCTORAL_OR_EQUIVALENT";
+export type JobDegreeTypesItemEnum =
+  | "DEGREE_TYPE_UNSPECIFIED"
+  | "PRIMARY_EDUCATION"
+  | "LOWER_SECONDARY_EDUCATION"
+  | "UPPER_SECONDARY_EDUCATION"
+  | "ADULT_REMEDIAL_EDUCATION"
+  | "ASSOCIATES_OR_EQUIVALENT"
+  | "BACHELORS_OR_EQUIVALENT"
+  | "MASTERS_OR_EQUIVALENT"
+  | "DOCTORAL_OR_EQUIVALENT";
 export const JobDegreeTypesItemEnum = /*@__PURE__*/ S.String;
 
 export type JobDegreeTypesItemEnumList = ReadonlyArray<JobDegreeTypesItemEnum>;
-export const JobDegreeTypesItemEnumList = /*@__PURE__*/ S.Array(JobDegreeTypesItemEnum) as any as S.Schema<JobDegreeTypesItemEnumList>;
+export const JobDegreeTypesItemEnumList = /*@__PURE__*/ S.Array(
+  JobDegreeTypesItemEnum,
+) as any as S.Schema<JobDegreeTypesItemEnumList>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(
+  Location,
+) as any as S.Schema<LocationList>;
 
-export type JobDerivedInfoJobCategoriesItemEnum = "JOB_CATEGORY_UNSPECIFIED" | "ACCOUNTING_AND_FINANCE" | "ADMINISTRATIVE_AND_OFFICE" | "ADVERTISING_AND_MARKETING" | "ANIMAL_CARE" | "ART_FASHION_AND_DESIGN" | "BUSINESS_OPERATIONS" | "CLEANING_AND_FACILITIES" | "COMPUTER_AND_IT" | "CONSTRUCTION" | "CUSTOMER_SERVICE" | "EDUCATION" | "ENTERTAINMENT_AND_TRAVEL" | "FARMING_AND_OUTDOORS" | "HEALTHCARE" | "HUMAN_RESOURCES" | "INSTALLATION_MAINTENANCE_AND_REPAIR" | "LEGAL" | "MANAGEMENT" | "MANUFACTURING_AND_WAREHOUSE" | "MEDIA_COMMUNICATIONS_AND_WRITING" | "OIL_GAS_AND_MINING" | "PERSONAL_CARE_AND_SERVICES" | "PROTECTIVE_SERVICES" | "REAL_ESTATE" | "RESTAURANT_AND_HOSPITALITY" | "SALES_AND_RETAIL" | "SCIENCE_AND_ENGINEERING" | "SOCIAL_SERVICES_AND_NON_PROFIT" | "SPORTS_FITNESS_AND_RECREATION" | "TRANSPORTATION_AND_LOGISTICS";
+export type JobDerivedInfoJobCategoriesItemEnum =
+  | "JOB_CATEGORY_UNSPECIFIED"
+  | "ACCOUNTING_AND_FINANCE"
+  | "ADMINISTRATIVE_AND_OFFICE"
+  | "ADVERTISING_AND_MARKETING"
+  | "ANIMAL_CARE"
+  | "ART_FASHION_AND_DESIGN"
+  | "BUSINESS_OPERATIONS"
+  | "CLEANING_AND_FACILITIES"
+  | "COMPUTER_AND_IT"
+  | "CONSTRUCTION"
+  | "CUSTOMER_SERVICE"
+  | "EDUCATION"
+  | "ENTERTAINMENT_AND_TRAVEL"
+  | "FARMING_AND_OUTDOORS"
+  | "HEALTHCARE"
+  | "HUMAN_RESOURCES"
+  | "INSTALLATION_MAINTENANCE_AND_REPAIR"
+  | "LEGAL"
+  | "MANAGEMENT"
+  | "MANUFACTURING_AND_WAREHOUSE"
+  | "MEDIA_COMMUNICATIONS_AND_WRITING"
+  | "OIL_GAS_AND_MINING"
+  | "PERSONAL_CARE_AND_SERVICES"
+  | "PROTECTIVE_SERVICES"
+  | "REAL_ESTATE"
+  | "RESTAURANT_AND_HOSPITALITY"
+  | "SALES_AND_RETAIL"
+  | "SCIENCE_AND_ENGINEERING"
+  | "SOCIAL_SERVICES_AND_NON_PROFIT"
+  | "SPORTS_FITNESS_AND_RECREATION"
+  | "TRANSPORTATION_AND_LOGISTICS";
 export const JobDerivedInfoJobCategoriesItemEnum = /*@__PURE__*/ S.String;
 
-export type JobDerivedInfoJobCategoriesItemEnumList = ReadonlyArray<JobDerivedInfoJobCategoriesItemEnum>;
-export const JobDerivedInfoJobCategoriesItemEnumList = /*@__PURE__*/ S.Array(JobDerivedInfoJobCategoriesItemEnum) as any as S.Schema<JobDerivedInfoJobCategoriesItemEnumList>;
+export type JobDerivedInfoJobCategoriesItemEnumList =
+  ReadonlyArray<JobDerivedInfoJobCategoriesItemEnum>;
+export const JobDerivedInfoJobCategoriesItemEnumList = /*@__PURE__*/ S.Array(
+  JobDerivedInfoJobCategoriesItemEnum,
+) as any as S.Schema<JobDerivedInfoJobCategoriesItemEnumList>;
 
 /** Output only. Derived details about the job posting. */
 export interface JobDerivedInfo {
@@ -532,10 +732,10 @@ export interface JobDerivedInfo {
   jobCategories?: JobDerivedInfoJobCategoriesItemEnumList;
 }
 export const JobDerivedInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locations": S.optional(LocationList),
-  "jobCategories": S.optional(JobDerivedInfoJobCategoriesItemEnumList),
-}),
+  S.Struct({
+    locations: S.optional(LocationList),
+    jobCategories: S.optional(JobDerivedInfoJobCategoriesItemEnumList),
+  }),
 ).annotate({ identifier: "JobDerivedInfo" }) as any as S.Schema<JobDerivedInfo>;
 
 /** Application related details of a job posting. */
@@ -548,20 +748,39 @@ export interface ApplicationInfo {
   emails?: StringList;
 }
 export const ApplicationInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "instruction": S.optional(S.String),
-  "uris": S.optional(StringList),
-  "emails": S.optional(StringList),
-}),
-).annotate({ identifier: "ApplicationInfo" }) as any as S.Schema<ApplicationInfo>;
+  S.Struct({
+    instruction: S.optional(S.String),
+    uris: S.optional(StringList),
+    emails: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ApplicationInfo",
+}) as any as S.Schema<ApplicationInfo>;
 
-export type JobEmploymentTypesItemEnum = "EMPLOYMENT_TYPE_UNSPECIFIED" | "FULL_TIME" | "PART_TIME" | "CONTRACTOR" | "CONTRACT_TO_HIRE" | "TEMPORARY" | "INTERN" | "VOLUNTEER" | "PER_DIEM" | "FLY_IN_FLY_OUT" | "OTHER_EMPLOYMENT_TYPE";
+export type JobEmploymentTypesItemEnum =
+  | "EMPLOYMENT_TYPE_UNSPECIFIED"
+  | "FULL_TIME"
+  | "PART_TIME"
+  | "CONTRACTOR"
+  | "CONTRACT_TO_HIRE"
+  | "TEMPORARY"
+  | "INTERN"
+  | "VOLUNTEER"
+  | "PER_DIEM"
+  | "FLY_IN_FLY_OUT"
+  | "OTHER_EMPLOYMENT_TYPE";
 export const JobEmploymentTypesItemEnum = /*@__PURE__*/ S.String;
 
-export type JobEmploymentTypesItemEnumList = ReadonlyArray<JobEmploymentTypesItemEnum>;
-export const JobEmploymentTypesItemEnumList = /*@__PURE__*/ S.Array(JobEmploymentTypesItemEnum) as any as S.Schema<JobEmploymentTypesItemEnumList>;
+export type JobEmploymentTypesItemEnumList =
+  ReadonlyArray<JobEmploymentTypesItemEnum>;
+export const JobEmploymentTypesItemEnumList = /*@__PURE__*/ S.Array(
+  JobEmploymentTypesItemEnum,
+) as any as S.Schema<JobEmploymentTypesItemEnumList>;
 
-export type ProcessingOptionsHtmlSanitizationEnum = "HTML_SANITIZATION_UNSPECIFIED" | "HTML_SANITIZATION_DISABLED" | "SIMPLE_FORMATTING_ONLY";
+export type ProcessingOptionsHtmlSanitizationEnum =
+  | "HTML_SANITIZATION_UNSPECIFIED"
+  | "HTML_SANITIZATION_DISABLED"
+  | "SIMPLE_FORMATTING_ONLY";
 export const ProcessingOptionsHtmlSanitizationEnum = /*@__PURE__*/ S.String;
 
 /** Input only. Options for job processing. */
@@ -572,11 +791,13 @@ export interface ProcessingOptions {
   disableStreetAddressResolution?: boolean;
 }
 export const ProcessingOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "htmlSanitization": S.optional(ProcessingOptionsHtmlSanitizationEnum),
-  "disableStreetAddressResolution": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "ProcessingOptions" }) as any as S.Schema<ProcessingOptions>;
+  S.Struct({
+    htmlSanitization: S.optional(ProcessingOptionsHtmlSanitizationEnum),
+    disableStreetAddressResolution: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ProcessingOptions",
+}) as any as S.Schema<ProcessingOptions>;
 
 /** Custom attribute values that are either filterable or non-filterable. */
 export interface CustomAttribute {
@@ -588,15 +809,20 @@ export interface CustomAttribute {
   stringValues?: StringList;
 }
 export const CustomAttribute = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "longValues": S.optional(StringList),
-  "filterable": S.optional(S.Boolean),
-  "stringValues": S.optional(StringList),
-}),
-).annotate({ identifier: "CustomAttribute" }) as any as S.Schema<CustomAttribute>;
+  S.Struct({
+    longValues: S.optional(StringList),
+    filterable: S.optional(S.Boolean),
+    stringValues: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "CustomAttribute",
+}) as any as S.Schema<CustomAttribute>;
 
 export type CustomAttributeMap = { [key: string]: CustomAttribute | undefined };
-export const CustomAttributeMap = /*@__PURE__*/ S.Record(S.String, CustomAttribute) as any as S.Schema<CustomAttributeMap>;
+export const CustomAttributeMap = /*@__PURE__*/ S.Record(
+  S.String,
+  CustomAttribute,
+) as any as S.Schema<CustomAttributeMap>;
 
 /** A Job resource represents a job posting (also referred to as a "job listing" or "job requisition"). A job belongs to a Company, which is the hiring entity responsible for the job. */
 export interface Job {
@@ -662,38 +888,38 @@ export interface Job {
   description?: string;
 }
 export const Job = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "jobBenefits": S.optional(JobJobBenefitsItemEnumList),
-  "jobLevel": S.optional(JobJobLevelEnum),
-  "postingRegion": S.optional(JobPostingRegionEnum),
-  "visibility": S.optional(JobVisibilityEnum),
-  "postingUpdateTime": S.optional(S.String),
-  "compensationInfo": S.optional(CompensationInfo),
-  "companyDisplayName": S.optional(S.String),
-  "promotionValue": S.optional(S.Number),
-  "degreeTypes": S.optional(JobDegreeTypesItemEnumList),
-  "derivedInfo": S.optional(JobDerivedInfo),
-  "jobStartTime": S.optional(S.String),
-  "companyName": S.optional(S.String),
-  "postingPublishTime": S.optional(S.String),
-  "addresses": S.optional(StringList),
-  "applicationInfo": S.optional(ApplicationInfo),
-  "requisitionId": S.optional(S.String),
-  "postingExpireTime": S.optional(S.String),
-  "postingCreateTime": S.optional(S.String),
-  "responsibilities": S.optional(S.String),
-  "employmentTypes": S.optional(JobEmploymentTypesItemEnumList),
-  "incentives": S.optional(S.String),
-  "jobEndTime": S.optional(S.String),
-  "processingOptions": S.optional(ProcessingOptions),
-  "customAttributes": S.optional(CustomAttributeMap),
-  "qualifications": S.optional(S.String),
-  "name": S.optional(S.String),
-  "languageCode": S.optional(S.String),
-  "title": S.optional(S.String),
-  "department": S.optional(S.String),
-  "description": S.optional(S.String),
-}),
+  S.Struct({
+    jobBenefits: S.optional(JobJobBenefitsItemEnumList),
+    jobLevel: S.optional(JobJobLevelEnum),
+    postingRegion: S.optional(JobPostingRegionEnum),
+    visibility: S.optional(JobVisibilityEnum),
+    postingUpdateTime: S.optional(S.String),
+    compensationInfo: S.optional(CompensationInfo),
+    companyDisplayName: S.optional(S.String),
+    promotionValue: S.optional(S.Number),
+    degreeTypes: S.optional(JobDegreeTypesItemEnumList),
+    derivedInfo: S.optional(JobDerivedInfo),
+    jobStartTime: S.optional(S.String),
+    companyName: S.optional(S.String),
+    postingPublishTime: S.optional(S.String),
+    addresses: S.optional(StringList),
+    applicationInfo: S.optional(ApplicationInfo),
+    requisitionId: S.optional(S.String),
+    postingExpireTime: S.optional(S.String),
+    postingCreateTime: S.optional(S.String),
+    responsibilities: S.optional(S.String),
+    employmentTypes: S.optional(JobEmploymentTypesItemEnumList),
+    incentives: S.optional(S.String),
+    jobEndTime: S.optional(S.String),
+    processingOptions: S.optional(ProcessingOptions),
+    customAttributes: S.optional(CustomAttributeMap),
+    qualifications: S.optional(S.String),
+    name: S.optional(S.String),
+    languageCode: S.optional(S.String),
+    title: S.optional(S.String),
+    department: S.optional(S.String),
+    description: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Job" }) as any as S.Schema<Job>;
 
 /** Input only. Create job request. */
@@ -702,10 +928,12 @@ export interface CreateJobRequest {
   job?: Job;
 }
 export const CreateJobRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "job": S.optional(Job),
-}),
-).annotate({ identifier: "CreateJobRequest" }) as any as S.Schema<CreateJobRequest>;
+  S.Struct({
+    job: S.optional(Job),
+  }),
+).annotate({
+  identifier: "CreateJobRequest",
+}) as any as S.Schema<CreateJobRequest>;
 
 export interface CreateProjectsJobsRequest {
   /** Required. The resource name of the project under which the job is created. The format is "projects/{project_id}", for example, "projects/api-test-project". */
@@ -714,67 +942,120 @@ export interface CreateProjectsJobsRequest {
   body?: CreateJobRequest;
 }
 export const CreateProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(CreateJobRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v3p1beta1/{+parent}/jobs","baseUrl":"https://jobs.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsJobsRequest" }) as any as S.Schema<CreateProjectsJobsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(CreateJobRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v3p1beta1/{+parent}/jobs",
+      baseUrl: "https://jobs.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateProjectsJobsRequest",
+}) as any as S.Schema<CreateProjectsJobsRequest>;
 
 export interface DeleteProjectsCompaniesRequest {
   /** Required. The resource name of the company to be deleted. The format is "projects/{project_id}/companies/{company_id}", for example, "projects/api-test-project/companies/foo". */
   name: string;
 }
 export const DeleteProjectsCompaniesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v3p1beta1/{+name}","baseUrl":"https://jobs.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsCompaniesRequest" }) as any as S.Schema<DeleteProjectsCompaniesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v3p1beta1/{+name}",
+      baseUrl: "https://jobs.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteProjectsCompaniesRequest",
+}) as any as S.Schema<DeleteProjectsCompaniesRequest>;
 
 export interface DeleteProjectsJobsRequest {
   /** Required. The resource name of the job to be deleted. The format is "projects/{project_id}/jobs/{job_id}", for example, "projects/api-test-project/jobs/1234". */
   name: string;
 }
 export const DeleteProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v3p1beta1/{+name}","baseUrl":"https://jobs.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsJobsRequest" }) as any as S.Schema<DeleteProjectsJobsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v3p1beta1/{+name}",
+      baseUrl: "https://jobs.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteProjectsJobsRequest",
+}) as any as S.Schema<DeleteProjectsJobsRequest>;
 
 export interface GetProjectsCompaniesRequest {
   /** Required. The resource name of the company to be retrieved. The format is "projects/{project_id}/companies/{company_id}", for example, "projects/api-test-project/companies/foo". */
   name: string;
 }
 export const GetProjectsCompaniesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v3p1beta1/{+name}","baseUrl":"https://jobs.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsCompaniesRequest" }) as any as S.Schema<GetProjectsCompaniesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v3p1beta1/{+name}",
+      baseUrl: "https://jobs.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsCompaniesRequest",
+}) as any as S.Schema<GetProjectsCompaniesRequest>;
 
 export interface GetProjectsJobsRequest {
   /** Required. The resource name of the job to retrieve. The format is "projects/{project_id}/jobs/{job_id}", for example, "projects/api-test-project/jobs/1234". */
   name: string;
 }
 export const GetProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v3p1beta1/{+name}","baseUrl":"https://jobs.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsJobsRequest" }) as any as S.Schema<GetProjectsJobsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v3p1beta1/{+name}",
+      baseUrl: "https://jobs.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsJobsRequest",
+}) as any as S.Schema<GetProjectsJobsRequest>;
 
 export interface GetProjectsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
 export const GetProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v3p1beta1/{+name}","baseUrl":"https://jobs.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsOperationsRequest" }) as any as S.Schema<GetProjectsOperationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v3p1beta1/{+name}",
+      baseUrl: "https://jobs.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsOperationsRequest",
+}) as any as S.Schema<GetProjectsOperationsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -786,11 +1067,11 @@ export interface Status {
   details?: DocumentMapList;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(S.Number),
-  "message": S.optional(S.String),
-  "details": S.optional(DocumentMapList),
-}),
+  S.Struct({
+    code: S.optional(S.Number),
+    message: S.optional(S.String),
+    details: S.optional(DocumentMapList),
+  }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -807,13 +1088,13 @@ export interface Operation {
   metadata?: DocumentMap;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "done": S.optional(S.Boolean),
-  "error": S.optional(Status),
-  "response": S.optional(DocumentMap),
-  "name": S.optional(S.String),
-  "metadata": S.optional(DocumentMap),
-}),
+  S.Struct({
+    done: S.optional(S.Boolean),
+    error: S.optional(Status),
+    response: S.optional(DocumentMap),
+    name: S.optional(S.String),
+    metadata: S.optional(DocumentMap),
+  }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 export interface ListProjectsCompaniesRequest {
@@ -827,16 +1108,26 @@ export interface ListProjectsCompaniesRequest {
   requireOpenJobs?: boolean;
 }
 export const ListProjectsCompaniesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "requireOpenJobs": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v3p1beta1/{+parent}/companies","baseUrl":"https://jobs.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsCompaniesRequest" }) as any as S.Schema<ListProjectsCompaniesRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    requireOpenJobs: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v3p1beta1/{+parent}/companies",
+      baseUrl: "https://jobs.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsCompaniesRequest",
+}) as any as S.Schema<ListProjectsCompaniesRequest>;
 
 export type CompanyList = ReadonlyArray<Company>;
-export const CompanyList = /*@__PURE__*/ S.Array(Company) as any as S.Schema<CompanyList>;
+export const CompanyList = /*@__PURE__*/ S.Array(
+  Company,
+) as any as S.Schema<CompanyList>;
 
 /** Output only. The List companies response object. */
 export interface ListCompaniesResponse {
@@ -848,14 +1139,21 @@ export interface ListCompaniesResponse {
   metadata?: ResponseMetadata;
 }
 export const ListCompaniesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "companies": S.optional(CompanyList),
-  "metadata": S.optional(ResponseMetadata),
-}),
-).annotate({ identifier: "ListCompaniesResponse" }) as any as S.Schema<ListCompaniesResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    companies: S.optional(CompanyList),
+    metadata: S.optional(ResponseMetadata),
+  }),
+).annotate({
+  identifier: "ListCompaniesResponse",
+}) as any as S.Schema<ListCompaniesResponse>;
 
-export type ListProjectsJobsJobViewEnum = "JOB_VIEW_UNSPECIFIED" | "JOB_VIEW_ID_ONLY" | "JOB_VIEW_MINIMAL" | "JOB_VIEW_SMALL" | "JOB_VIEW_FULL";
+export type ListProjectsJobsJobViewEnum =
+  | "JOB_VIEW_UNSPECIFIED"
+  | "JOB_VIEW_ID_ONLY"
+  | "JOB_VIEW_MINIMAL"
+  | "JOB_VIEW_SMALL"
+  | "JOB_VIEW_FULL";
 export const ListProjectsJobsJobViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsJobsRequest {
@@ -871,14 +1169,22 @@ export interface ListProjectsJobsRequest {
   pageToken?: string;
 }
 export const ListProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "jobView": S.optional(ListProjectsJobsJobViewEnum.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v3p1beta1/{+parent}/jobs","baseUrl":"https://jobs.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsJobsRequest" }) as any as S.Schema<ListProjectsJobsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    jobView: S.optional(ListProjectsJobsJobViewEnum.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v3p1beta1/{+parent}/jobs",
+      baseUrl: "https://jobs.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsJobsRequest",
+}) as any as S.Schema<ListProjectsJobsRequest>;
 
 export type JobList = ReadonlyArray<Job>;
 export const JobList = /*@__PURE__*/ S.Array(Job) as any as S.Schema<JobList>;
@@ -893,12 +1199,14 @@ export interface ListJobsResponse {
   nextPageToken?: string;
 }
 export const ListJobsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "jobs": S.optional(JobList),
-  "metadata": S.optional(ResponseMetadata),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListJobsResponse" }) as any as S.Schema<ListJobsResponse>;
+  S.Struct({
+    jobs: S.optional(JobList),
+    metadata: S.optional(ResponseMetadata),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListJobsResponse",
+}) as any as S.Schema<ListJobsResponse>;
 
 /** Input only. Request for updating a specified company. */
 export interface UpdateCompanyRequest {
@@ -908,11 +1216,13 @@ export interface UpdateCompanyRequest {
   updateMask?: string;
 }
 export const UpdateCompanyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "company": S.optional(Company),
-  "updateMask": S.optional(S.String),
-}),
-).annotate({ identifier: "UpdateCompanyRequest" }) as any as S.Schema<UpdateCompanyRequest>;
+  S.Struct({
+    company: S.optional(Company),
+    updateMask: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateCompanyRequest",
+}) as any as S.Schema<UpdateCompanyRequest>;
 
 export interface PatchProjectsCompaniesRequest {
   /** Required during company update. The resource name for a company. This is generated by the service when a company is created. The format is "projects/{project_id}/companies/{company_id}", for example, "projects/api-test-project/companies/foo". */
@@ -921,11 +1231,19 @@ export interface PatchProjectsCompaniesRequest {
   body?: UpdateCompanyRequest;
 }
 export const PatchProjectsCompaniesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(UpdateCompanyRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v3p1beta1/{+name}","baseUrl":"https://jobs.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsCompaniesRequest" }) as any as S.Schema<PatchProjectsCompaniesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(UpdateCompanyRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v3p1beta1/{+name}",
+      baseUrl: "https://jobs.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchProjectsCompaniesRequest",
+}) as any as S.Schema<PatchProjectsCompaniesRequest>;
 
 /** Input only. Update job request. */
 export interface UpdateJobRequest {
@@ -935,11 +1253,13 @@ export interface UpdateJobRequest {
   updateMask?: string;
 }
 export const UpdateJobRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "job": S.optional(Job),
-  "updateMask": S.optional(S.String),
-}),
-).annotate({ identifier: "UpdateJobRequest" }) as any as S.Schema<UpdateJobRequest>;
+  S.Struct({
+    job: S.optional(Job),
+    updateMask: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateJobRequest",
+}) as any as S.Schema<UpdateJobRequest>;
 
 export interface PatchProjectsJobsRequest {
   /** Required during job update. The resource name for the job. This is generated by the service when a job is created. The format is "projects/{project_id}/jobs/{job_id}", for example, "projects/api-test-project/jobs/1234". Use of this field in job queries and API calls is preferred over the use of requisition_id since this value is unique. */
@@ -948,11 +1268,19 @@ export interface PatchProjectsJobsRequest {
   body?: UpdateJobRequest;
 }
 export const PatchProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(UpdateJobRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v3p1beta1/{+name}","baseUrl":"https://jobs.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsJobsRequest" }) as any as S.Schema<PatchProjectsJobsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(UpdateJobRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v3p1beta1/{+name}",
+      baseUrl: "https://jobs.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchProjectsJobsRequest",
+}) as any as S.Schema<PatchProjectsJobsRequest>;
 
 /** Input Only. The histogram request. */
 export interface HistogramQuery {
@@ -960,15 +1288,24 @@ export interface HistogramQuery {
   histogramQuery?: string;
 }
 export const HistogramQuery = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "histogramQuery": S.optional(S.String),
-}),
+  S.Struct({
+    histogramQuery: S.optional(S.String),
+  }),
 ).annotate({ identifier: "HistogramQuery" }) as any as S.Schema<HistogramQuery>;
 
 export type HistogramQueryList = ReadonlyArray<HistogramQuery>;
-export const HistogramQueryList = /*@__PURE__*/ S.Array(HistogramQuery) as any as S.Schema<HistogramQueryList>;
+export const HistogramQueryList = /*@__PURE__*/ S.Array(
+  HistogramQuery,
+) as any as S.Schema<HistogramQueryList>;
 
-export type CustomRankingInfoImportanceLevelEnum = "IMPORTANCE_LEVEL_UNSPECIFIED" | "NONE" | "LOW" | "MILD" | "MEDIUM" | "HIGH" | "EXTREME";
+export type CustomRankingInfoImportanceLevelEnum =
+  | "IMPORTANCE_LEVEL_UNSPECIFIED"
+  | "NONE"
+  | "LOW"
+  | "MILD"
+  | "MEDIUM"
+  | "HIGH"
+  | "EXTREME";
 export const CustomRankingInfoImportanceLevelEnum = /*@__PURE__*/ S.String;
 
 /** Input only. Custom ranking information for SearchJobsRequest. */
@@ -979,20 +1316,32 @@ export interface CustomRankingInfo {
   rankingExpression?: string;
 }
 export const CustomRankingInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "importanceLevel": S.optional(CustomRankingInfoImportanceLevelEnum),
-  "rankingExpression": S.optional(S.String),
-}),
-).annotate({ identifier: "CustomRankingInfo" }) as any as S.Schema<CustomRankingInfo>;
+  S.Struct({
+    importanceLevel: S.optional(CustomRankingInfoImportanceLevelEnum),
+    rankingExpression: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CustomRankingInfo",
+}) as any as S.Schema<CustomRankingInfo>;
 
-export type SearchJobsRequestSearchModeEnum = "SEARCH_MODE_UNSPECIFIED" | "JOB_SEARCH" | "FEATURED_JOB_SEARCH";
+export type SearchJobsRequestSearchModeEnum =
+  | "SEARCH_MODE_UNSPECIFIED"
+  | "JOB_SEARCH"
+  | "FEATURED_JOB_SEARCH";
 export const SearchJobsRequestSearchModeEnum = /*@__PURE__*/ S.String;
 
-export type SearchJobsRequestJobViewEnum = "JOB_VIEW_UNSPECIFIED" | "JOB_VIEW_ID_ONLY" | "JOB_VIEW_MINIMAL" | "JOB_VIEW_SMALL" | "JOB_VIEW_FULL";
+export type SearchJobsRequestJobViewEnum =
+  | "JOB_VIEW_UNSPECIFIED"
+  | "JOB_VIEW_ID_ONLY"
+  | "JOB_VIEW_MINIMAL"
+  | "JOB_VIEW_SMALL"
+  | "JOB_VIEW_FULL";
 export const SearchJobsRequestJobViewEnum = /*@__PURE__*/ S.String;
 
 export type DoubleList = ReadonlyArray<number>;
-export const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
+export const DoubleList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<DoubleList>;
 
 /** Input only. Use this field to specify bucketing option for the histogram search response. */
 export interface NumericBucketingOption {
@@ -1002,11 +1351,13 @@ export interface NumericBucketingOption {
   requiresMinMax?: boolean;
 }
 export const NumericBucketingOption = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucketBounds": S.optional(DoubleList),
-  "requiresMinMax": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "NumericBucketingOption" }) as any as S.Schema<NumericBucketingOption>;
+  S.Struct({
+    bucketBounds: S.optional(DoubleList),
+    requiresMinMax: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "NumericBucketingOption",
+}) as any as S.Schema<NumericBucketingOption>;
 
 /** Custom attributes histogram request. An error is thrown if neither string_value_histogram or long_value_histogram_bucketing_option has been defined. */
 export interface CustomAttributeHistogramRequest {
@@ -1018,17 +1369,26 @@ export interface CustomAttributeHistogramRequest {
   stringValueHistogram?: boolean;
 }
 export const CustomAttributeHistogramRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "key": S.optional(S.String),
-  "longValueHistogramBucketingOption": S.optional(NumericBucketingOption),
-  "stringValueHistogram": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "CustomAttributeHistogramRequest" }) as any as S.Schema<CustomAttributeHistogramRequest>;
+  S.Struct({
+    key: S.optional(S.String),
+    longValueHistogramBucketingOption: S.optional(NumericBucketingOption),
+    stringValueHistogram: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "CustomAttributeHistogramRequest",
+}) as any as S.Schema<CustomAttributeHistogramRequest>;
 
-export type CustomAttributeHistogramRequestList = ReadonlyArray<CustomAttributeHistogramRequest>;
-export const CustomAttributeHistogramRequestList = /*@__PURE__*/ S.Array(CustomAttributeHistogramRequest) as any as S.Schema<CustomAttributeHistogramRequestList>;
+export type CustomAttributeHistogramRequestList =
+  ReadonlyArray<CustomAttributeHistogramRequest>;
+export const CustomAttributeHistogramRequestList = /*@__PURE__*/ S.Array(
+  CustomAttributeHistogramRequest,
+) as any as S.Schema<CustomAttributeHistogramRequestList>;
 
-export type CompensationHistogramRequestTypeEnum = "COMPENSATION_HISTOGRAM_REQUEST_TYPE_UNSPECIFIED" | "BASE" | "ANNUALIZED_BASE" | "ANNUALIZED_TOTAL";
+export type CompensationHistogramRequestTypeEnum =
+  | "COMPENSATION_HISTOGRAM_REQUEST_TYPE_UNSPECIFIED"
+  | "BASE"
+  | "ANNUALIZED_BASE"
+  | "ANNUALIZED_TOTAL";
 export const CompensationHistogramRequestTypeEnum = /*@__PURE__*/ S.String;
 
 /** Input only. Compensation based histogram request. */
@@ -1039,20 +1399,48 @@ export interface CompensationHistogramRequest {
   bucketingOption?: NumericBucketingOption;
 }
 export const CompensationHistogramRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(CompensationHistogramRequestTypeEnum),
-  "bucketingOption": S.optional(NumericBucketingOption),
-}),
-).annotate({ identifier: "CompensationHistogramRequest" }) as any as S.Schema<CompensationHistogramRequest>;
+  S.Struct({
+    type: S.optional(CompensationHistogramRequestTypeEnum),
+    bucketingOption: S.optional(NumericBucketingOption),
+  }),
+).annotate({
+  identifier: "CompensationHistogramRequest",
+}) as any as S.Schema<CompensationHistogramRequest>;
 
-export type CompensationHistogramRequestList = ReadonlyArray<CompensationHistogramRequest>;
-export const CompensationHistogramRequestList = /*@__PURE__*/ S.Array(CompensationHistogramRequest) as any as S.Schema<CompensationHistogramRequestList>;
+export type CompensationHistogramRequestList =
+  ReadonlyArray<CompensationHistogramRequest>;
+export const CompensationHistogramRequestList = /*@__PURE__*/ S.Array(
+  CompensationHistogramRequest,
+) as any as S.Schema<CompensationHistogramRequestList>;
 
-export type HistogramFacetsSimpleHistogramFacetsItemEnum = "SEARCH_TYPE_UNSPECIFIED" | "COMPANY_ID" | "EMPLOYMENT_TYPE" | "COMPANY_SIZE" | "DATE_PUBLISHED" | "EDUCATION_LEVEL" | "EXPERIENCE_LEVEL" | "ADMIN_1" | "COUNTRY" | "CITY" | "LOCALE" | "LANGUAGE" | "CATEGORY" | "CITY_COORDINATE" | "ADMIN_1_COUNTRY" | "COMPANY_DISPLAY_NAME" | "BASE_COMPENSATION_UNIT";
-export const HistogramFacetsSimpleHistogramFacetsItemEnum = /*@__PURE__*/ S.String;
+export type HistogramFacetsSimpleHistogramFacetsItemEnum =
+  | "SEARCH_TYPE_UNSPECIFIED"
+  | "COMPANY_ID"
+  | "EMPLOYMENT_TYPE"
+  | "COMPANY_SIZE"
+  | "DATE_PUBLISHED"
+  | "EDUCATION_LEVEL"
+  | "EXPERIENCE_LEVEL"
+  | "ADMIN_1"
+  | "COUNTRY"
+  | "CITY"
+  | "LOCALE"
+  | "LANGUAGE"
+  | "CATEGORY"
+  | "CITY_COORDINATE"
+  | "ADMIN_1_COUNTRY"
+  | "COMPANY_DISPLAY_NAME"
+  | "BASE_COMPENSATION_UNIT";
+export const HistogramFacetsSimpleHistogramFacetsItemEnum =
+  /*@__PURE__*/ S.String;
 
-export type HistogramFacetsSimpleHistogramFacetsItemEnumList = ReadonlyArray<HistogramFacetsSimpleHistogramFacetsItemEnum | (string & {})>;
-export const HistogramFacetsSimpleHistogramFacetsItemEnumList = /*@__PURE__*/ S.Array(HistogramFacetsSimpleHistogramFacetsItemEnum) as any as S.Schema<HistogramFacetsSimpleHistogramFacetsItemEnumList>;
+export type HistogramFacetsSimpleHistogramFacetsItemEnumList = ReadonlyArray<
+  HistogramFacetsSimpleHistogramFacetsItemEnum | (string & {})
+>;
+export const HistogramFacetsSimpleHistogramFacetsItemEnumList =
+  /*@__PURE__*/ S.Array(
+    HistogramFacetsSimpleHistogramFacetsItemEnum,
+  ) as any as S.Schema<HistogramFacetsSimpleHistogramFacetsItemEnumList>;
 
 /** Input only. Histogram facets to be specified in SearchJobsRequest. */
 export interface HistogramFacets {
@@ -1064,17 +1452,30 @@ export interface HistogramFacets {
   simpleHistogramFacets?: HistogramFacetsSimpleHistogramFacetsItemEnumList;
 }
 export const HistogramFacets = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "customAttributeHistogramFacets": S.optional(CustomAttributeHistogramRequestList),
-  "compensationHistogramFacets": S.optional(CompensationHistogramRequestList),
-  "simpleHistogramFacets": S.optional(HistogramFacetsSimpleHistogramFacetsItemEnumList),
-}),
-).annotate({ identifier: "HistogramFacets" }) as any as S.Schema<HistogramFacets>;
+  S.Struct({
+    customAttributeHistogramFacets: S.optional(
+      CustomAttributeHistogramRequestList,
+    ),
+    compensationHistogramFacets: S.optional(CompensationHistogramRequestList),
+    simpleHistogramFacets: S.optional(
+      HistogramFacetsSimpleHistogramFacetsItemEnumList,
+    ),
+  }),
+).annotate({
+  identifier: "HistogramFacets",
+}) as any as S.Schema<HistogramFacets>;
 
-export type SearchJobsRequestDiversificationLevelEnum = "DIVERSIFICATION_LEVEL_UNSPECIFIED" | "DISABLED" | "SIMPLE";
+export type SearchJobsRequestDiversificationLevelEnum =
+  | "DIVERSIFICATION_LEVEL_UNSPECIFIED"
+  | "DISABLED"
+  | "SIMPLE";
 export const SearchJobsRequestDiversificationLevelEnum = /*@__PURE__*/ S.String;
 
-export type LocationFilterTelecommutePreferenceEnum = "TELECOMMUTE_PREFERENCE_UNSPECIFIED" | "TELECOMMUTE_EXCLUDED" | "TELECOMMUTE_ALLOWED" | "TELECOMMUTE_JOBS_EXCLUDED";
+export type LocationFilterTelecommutePreferenceEnum =
+  | "TELECOMMUTE_PREFERENCE_UNSPECIFIED"
+  | "TELECOMMUTE_EXCLUDED"
+  | "TELECOMMUTE_ALLOWED"
+  | "TELECOMMUTE_JOBS_EXCLUDED";
 export const LocationFilterTelecommutePreferenceEnum = /*@__PURE__*/ S.String;
 
 /** Input only. Geographic region of the search. */
@@ -1082,7 +1483,9 @@ export interface LocationFilter {
   /** Optional. The address name, such as "Mountain View" or "Bay Area". */
   address?: string;
   /** Optional. Allows the client to return jobs without a set location, specifically, telecommuting jobs (telecommuting is considered by the service as a special location). Job.posting_region indicates if a job permits telecommuting. If this field is set to TelecommutePreference.TELECOMMUTE_ALLOWED, telecommuting jobs are searched, and address and lat_lng are ignored. If not set or set to TelecommutePreference.TELECOMMUTE_EXCLUDED, the telecommute status of the jobs is ignored. Jobs that have PostingRegion.TELECOMMUTE and have additional Job.addresses may still be matched based on other location filters using address or latlng. This filter can be used by itself to search exclusively for telecommuting jobs, or it can be combined with another location filter to search for a combination of job locations, such as "Mountain View" or "telecommuting" jobs. However, when used in combination with other location filters, telecommuting jobs can be treated as less relevant than other jobs in the search response. */
-  telecommutePreference?: LocationFilterTelecommutePreferenceEnum | (string & {});
+  telecommutePreference?:
+    | LocationFilterTelecommutePreferenceEnum
+    | (string & {});
   /** Optional. The distance_in_miles is applied when the location being searched for is identified as a city or smaller. When the location being searched for is a state or larger, this field is ignored. */
   distanceInMiles?: number;
   /** Optional. CLDR region code of the country/region. This field may be used in two ways: 1) If telecommute preference is not set, this field is used address ambiguity of the user-input address. For example, "Liverpool" may refer to "Liverpool, NY, US" or "Liverpool, UK". This region code biases the address resolution toward a specific country or territory. If this field is not set, address resolution is biased toward the United States by default. 2) If telecommute preference is set to TELECOMMUTE_ALLOWED, the telecommute location filter will be limited to the region specified in this field. If this field is not set, the telecommute job locations will not be limited. See https://unicode-org.github.io/cldr-staging/charts/latest/supplemental/territory_information.html for details. Example: "CH" for Switzerland. */
@@ -1091,23 +1494,40 @@ export interface LocationFilter {
   latLng?: LatLng;
 }
 export const LocationFilter = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "address": S.optional(S.String),
-  "telecommutePreference": S.optional(LocationFilterTelecommutePreferenceEnum),
-  "distanceInMiles": S.optional(S.Number),
-  "regionCode": S.optional(S.String),
-  "latLng": S.optional(LatLng),
-}),
+  S.Struct({
+    address: S.optional(S.String),
+    telecommutePreference: S.optional(LocationFilterTelecommutePreferenceEnum),
+    distanceInMiles: S.optional(S.Number),
+    regionCode: S.optional(S.String),
+    latLng: S.optional(LatLng),
+  }),
 ).annotate({ identifier: "LocationFilter" }) as any as S.Schema<LocationFilter>;
 
 export type LocationFilterList = ReadonlyArray<LocationFilter>;
-export const LocationFilterList = /*@__PURE__*/ S.Array(LocationFilter) as any as S.Schema<LocationFilterList>;
+export const LocationFilterList = /*@__PURE__*/ S.Array(
+  LocationFilter,
+) as any as S.Schema<LocationFilterList>;
 
-export type JobQueryEmploymentTypesItemEnum = "EMPLOYMENT_TYPE_UNSPECIFIED" | "FULL_TIME" | "PART_TIME" | "CONTRACTOR" | "CONTRACT_TO_HIRE" | "TEMPORARY" | "INTERN" | "VOLUNTEER" | "PER_DIEM" | "FLY_IN_FLY_OUT" | "OTHER_EMPLOYMENT_TYPE";
+export type JobQueryEmploymentTypesItemEnum =
+  | "EMPLOYMENT_TYPE_UNSPECIFIED"
+  | "FULL_TIME"
+  | "PART_TIME"
+  | "CONTRACTOR"
+  | "CONTRACT_TO_HIRE"
+  | "TEMPORARY"
+  | "INTERN"
+  | "VOLUNTEER"
+  | "PER_DIEM"
+  | "FLY_IN_FLY_OUT"
+  | "OTHER_EMPLOYMENT_TYPE";
 export const JobQueryEmploymentTypesItemEnum = /*@__PURE__*/ S.String;
 
-export type JobQueryEmploymentTypesItemEnumList = ReadonlyArray<JobQueryEmploymentTypesItemEnum | (string & {})>;
-export const JobQueryEmploymentTypesItemEnumList = /*@__PURE__*/ S.Array(JobQueryEmploymentTypesItemEnum) as any as S.Schema<JobQueryEmploymentTypesItemEnumList>;
+export type JobQueryEmploymentTypesItemEnumList = ReadonlyArray<
+  JobQueryEmploymentTypesItemEnum | (string & {})
+>;
+export const JobQueryEmploymentTypesItemEnumList = /*@__PURE__*/ S.Array(
+  JobQueryEmploymentTypesItemEnum,
+) as any as S.Schema<JobQueryEmploymentTypesItemEnumList>;
 
 /** Message representing a period of time between two timestamps. */
 export interface TimestampRange {
@@ -1117,19 +1537,59 @@ export interface TimestampRange {
   endTime?: string;
 }
 export const TimestampRange = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "startTime": S.optional(S.String),
-  "endTime": S.optional(S.String),
-}),
+  S.Struct({
+    startTime: S.optional(S.String),
+    endTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "TimestampRange" }) as any as S.Schema<TimestampRange>;
 
-export type JobQueryJobCategoriesItemEnum = "JOB_CATEGORY_UNSPECIFIED" | "ACCOUNTING_AND_FINANCE" | "ADMINISTRATIVE_AND_OFFICE" | "ADVERTISING_AND_MARKETING" | "ANIMAL_CARE" | "ART_FASHION_AND_DESIGN" | "BUSINESS_OPERATIONS" | "CLEANING_AND_FACILITIES" | "COMPUTER_AND_IT" | "CONSTRUCTION" | "CUSTOMER_SERVICE" | "EDUCATION" | "ENTERTAINMENT_AND_TRAVEL" | "FARMING_AND_OUTDOORS" | "HEALTHCARE" | "HUMAN_RESOURCES" | "INSTALLATION_MAINTENANCE_AND_REPAIR" | "LEGAL" | "MANAGEMENT" | "MANUFACTURING_AND_WAREHOUSE" | "MEDIA_COMMUNICATIONS_AND_WRITING" | "OIL_GAS_AND_MINING" | "PERSONAL_CARE_AND_SERVICES" | "PROTECTIVE_SERVICES" | "REAL_ESTATE" | "RESTAURANT_AND_HOSPITALITY" | "SALES_AND_RETAIL" | "SCIENCE_AND_ENGINEERING" | "SOCIAL_SERVICES_AND_NON_PROFIT" | "SPORTS_FITNESS_AND_RECREATION" | "TRANSPORTATION_AND_LOGISTICS";
+export type JobQueryJobCategoriesItemEnum =
+  | "JOB_CATEGORY_UNSPECIFIED"
+  | "ACCOUNTING_AND_FINANCE"
+  | "ADMINISTRATIVE_AND_OFFICE"
+  | "ADVERTISING_AND_MARKETING"
+  | "ANIMAL_CARE"
+  | "ART_FASHION_AND_DESIGN"
+  | "BUSINESS_OPERATIONS"
+  | "CLEANING_AND_FACILITIES"
+  | "COMPUTER_AND_IT"
+  | "CONSTRUCTION"
+  | "CUSTOMER_SERVICE"
+  | "EDUCATION"
+  | "ENTERTAINMENT_AND_TRAVEL"
+  | "FARMING_AND_OUTDOORS"
+  | "HEALTHCARE"
+  | "HUMAN_RESOURCES"
+  | "INSTALLATION_MAINTENANCE_AND_REPAIR"
+  | "LEGAL"
+  | "MANAGEMENT"
+  | "MANUFACTURING_AND_WAREHOUSE"
+  | "MEDIA_COMMUNICATIONS_AND_WRITING"
+  | "OIL_GAS_AND_MINING"
+  | "PERSONAL_CARE_AND_SERVICES"
+  | "PROTECTIVE_SERVICES"
+  | "REAL_ESTATE"
+  | "RESTAURANT_AND_HOSPITALITY"
+  | "SALES_AND_RETAIL"
+  | "SCIENCE_AND_ENGINEERING"
+  | "SOCIAL_SERVICES_AND_NON_PROFIT"
+  | "SPORTS_FITNESS_AND_RECREATION"
+  | "TRANSPORTATION_AND_LOGISTICS";
 export const JobQueryJobCategoriesItemEnum = /*@__PURE__*/ S.String;
 
-export type JobQueryJobCategoriesItemEnumList = ReadonlyArray<JobQueryJobCategoriesItemEnum | (string & {})>;
-export const JobQueryJobCategoriesItemEnumList = /*@__PURE__*/ S.Array(JobQueryJobCategoriesItemEnum) as any as S.Schema<JobQueryJobCategoriesItemEnumList>;
+export type JobQueryJobCategoriesItemEnumList = ReadonlyArray<
+  JobQueryJobCategoriesItemEnum | (string & {})
+>;
+export const JobQueryJobCategoriesItemEnumList = /*@__PURE__*/ S.Array(
+  JobQueryJobCategoriesItemEnum,
+) as any as S.Schema<JobQueryJobCategoriesItemEnumList>;
 
-export type CommuteFilterCommuteMethodEnum = "COMMUTE_METHOD_UNSPECIFIED" | "DRIVING" | "TRANSIT" | "WALKING" | "CYCLING";
+export type CommuteFilterCommuteMethodEnum =
+  | "COMMUTE_METHOD_UNSPECIFIED"
+  | "DRIVING"
+  | "TRANSIT"
+  | "WALKING"
+  | "CYCLING";
 export const CommuteFilterCommuteMethodEnum = /*@__PURE__*/ S.String;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
@@ -1144,15 +1604,18 @@ export interface TimeOfDay {
   minutes?: number;
 }
 export const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "seconds": S.optional(S.Number),
-  "nanos": S.optional(S.Number),
-  "hours": S.optional(S.Number),
-  "minutes": S.optional(S.Number),
-}),
+  S.Struct({
+    seconds: S.optional(S.Number),
+    nanos: S.optional(S.Number),
+    hours: S.optional(S.Number),
+    minutes: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "TimeOfDay" }) as any as S.Schema<TimeOfDay>;
 
-export type CommuteFilterRoadTrafficEnum = "ROAD_TRAFFIC_UNSPECIFIED" | "TRAFFIC_FREE" | "BUSY_HOUR";
+export type CommuteFilterRoadTrafficEnum =
+  | "ROAD_TRAFFIC_UNSPECIFIED"
+  | "TRAFFIC_FREE"
+  | "BUSY_HOUR";
 export const CommuteFilterRoadTrafficEnum = /*@__PURE__*/ S.String;
 
 /** Input only. Parameters needed for commute search. */
@@ -1171,24 +1634,41 @@ export interface CommuteFilter {
   roadTraffic?: CommuteFilterRoadTrafficEnum | (string & {});
 }
 export const CommuteFilter = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "travelDuration": S.optional(S.String),
-  "commuteMethod": S.optional(CommuteFilterCommuteMethodEnum),
-  "startCoordinates": S.optional(LatLng),
-  "allowImpreciseAddresses": S.optional(S.Boolean),
-  "departureTime": S.optional(TimeOfDay),
-  "roadTraffic": S.optional(CommuteFilterRoadTrafficEnum),
-}),
+  S.Struct({
+    travelDuration: S.optional(S.String),
+    commuteMethod: S.optional(CommuteFilterCommuteMethodEnum),
+    startCoordinates: S.optional(LatLng),
+    allowImpreciseAddresses: S.optional(S.Boolean),
+    departureTime: S.optional(TimeOfDay),
+    roadTraffic: S.optional(CommuteFilterRoadTrafficEnum),
+  }),
 ).annotate({ identifier: "CommuteFilter" }) as any as S.Schema<CommuteFilter>;
 
-export type CompensationFilterTypeEnum = "FILTER_TYPE_UNSPECIFIED" | "UNIT_ONLY" | "UNIT_AND_AMOUNT" | "ANNUALIZED_BASE_AMOUNT" | "ANNUALIZED_TOTAL_AMOUNT";
+export type CompensationFilterTypeEnum =
+  | "FILTER_TYPE_UNSPECIFIED"
+  | "UNIT_ONLY"
+  | "UNIT_AND_AMOUNT"
+  | "ANNUALIZED_BASE_AMOUNT"
+  | "ANNUALIZED_TOTAL_AMOUNT";
 export const CompensationFilterTypeEnum = /*@__PURE__*/ S.String;
 
-export type CompensationFilterUnitsItemEnum = "COMPENSATION_UNIT_UNSPECIFIED" | "HOURLY" | "DAILY" | "WEEKLY" | "MONTHLY" | "YEARLY" | "ONE_TIME" | "OTHER_COMPENSATION_UNIT";
+export type CompensationFilterUnitsItemEnum =
+  | "COMPENSATION_UNIT_UNSPECIFIED"
+  | "HOURLY"
+  | "DAILY"
+  | "WEEKLY"
+  | "MONTHLY"
+  | "YEARLY"
+  | "ONE_TIME"
+  | "OTHER_COMPENSATION_UNIT";
 export const CompensationFilterUnitsItemEnum = /*@__PURE__*/ S.String;
 
-export type CompensationFilterUnitsItemEnumList = ReadonlyArray<CompensationFilterUnitsItemEnum | (string & {})>;
-export const CompensationFilterUnitsItemEnumList = /*@__PURE__*/ S.Array(CompensationFilterUnitsItemEnum) as any as S.Schema<CompensationFilterUnitsItemEnumList>;
+export type CompensationFilterUnitsItemEnumList = ReadonlyArray<
+  CompensationFilterUnitsItemEnum | (string & {})
+>;
+export const CompensationFilterUnitsItemEnumList = /*@__PURE__*/ S.Array(
+  CompensationFilterUnitsItemEnum,
+) as any as S.Schema<CompensationFilterUnitsItemEnumList>;
 
 /** Input only. Filter on job compensation type and amount. */
 export interface CompensationFilter {
@@ -1202,13 +1682,15 @@ export interface CompensationFilter {
   range?: CompensationRange;
 }
 export const CompensationFilter = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(CompensationFilterTypeEnum),
-  "includeJobsWithUnspecifiedCompensationRange": S.optional(S.Boolean),
-  "units": S.optional(CompensationFilterUnitsItemEnumList),
-  "range": S.optional(CompensationRange),
-}),
-).annotate({ identifier: "CompensationFilter" }) as any as S.Schema<CompensationFilter>;
+  S.Struct({
+    type: S.optional(CompensationFilterTypeEnum),
+    includeJobsWithUnspecifiedCompensationRange: S.optional(S.Boolean),
+    units: S.optional(CompensationFilterUnitsItemEnumList),
+    range: S.optional(CompensationRange),
+  }),
+).annotate({
+  identifier: "CompensationFilter",
+}) as any as S.Schema<CompensationFilter>;
 
 /** Input only. The query required to perform a search query. */
 export interface JobQuery {
@@ -1242,25 +1724,32 @@ export interface JobQuery {
   compensationFilter?: CompensationFilter;
 }
 export const JobQuery = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locationFilters": S.optional(LocationFilterList),
-  "query": S.optional(S.String),
-  "customAttributeFilter": S.optional(S.String),
-  "languageCodes": S.optional(StringList),
-  "companyDisplayNames": S.optional(StringList),
-  "employmentTypes": S.optional(JobQueryEmploymentTypesItemEnumList),
-  "queryLanguageCode": S.optional(S.String),
-  "excludedJobs": S.optional(StringList),
-  "companyNames": S.optional(StringList),
-  "publishTimeRange": S.optional(TimestampRange),
-  "jobCategories": S.optional(JobQueryJobCategoriesItemEnumList),
-  "commuteFilter": S.optional(CommuteFilter),
-  "disableSpellCheck": S.optional(S.Boolean),
-  "compensationFilter": S.optional(CompensationFilter),
-}),
+  S.Struct({
+    locationFilters: S.optional(LocationFilterList),
+    query: S.optional(S.String),
+    customAttributeFilter: S.optional(S.String),
+    languageCodes: S.optional(StringList),
+    companyDisplayNames: S.optional(StringList),
+    employmentTypes: S.optional(JobQueryEmploymentTypesItemEnumList),
+    queryLanguageCode: S.optional(S.String),
+    excludedJobs: S.optional(StringList),
+    companyNames: S.optional(StringList),
+    publishTimeRange: S.optional(TimestampRange),
+    jobCategories: S.optional(JobQueryJobCategoriesItemEnumList),
+    commuteFilter: S.optional(CommuteFilter),
+    disableSpellCheck: S.optional(S.Boolean),
+    compensationFilter: S.optional(CompensationFilter),
+  }),
 ).annotate({ identifier: "JobQuery" }) as any as S.Schema<JobQuery>;
 
-export type DeviceInfoDeviceTypeEnum = "DEVICE_TYPE_UNSPECIFIED" | "WEB" | "MOBILE_WEB" | "ANDROID" | "IOS" | "BOT" | "OTHER";
+export type DeviceInfoDeviceTypeEnum =
+  | "DEVICE_TYPE_UNSPECIFIED"
+  | "WEB"
+  | "MOBILE_WEB"
+  | "ANDROID"
+  | "IOS"
+  | "BOT"
+  | "OTHER";
 export const DeviceInfoDeviceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Device information collected from the job seeker, candidate, or other entity conducting the job search. Providing this information improves the quality of the search results across devices. */
@@ -1271,10 +1760,10 @@ export interface DeviceInfo {
   deviceType?: DeviceInfoDeviceTypeEnum | (string & {});
 }
 export const DeviceInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.optional(S.String),
-  "deviceType": S.optional(DeviceInfoDeviceTypeEnum),
-}),
+  S.Struct({
+    id: S.optional(S.String),
+    deviceType: S.optional(DeviceInfoDeviceTypeEnum),
+  }),
 ).annotate({ identifier: "DeviceInfo" }) as any as S.Schema<DeviceInfo>;
 
 /** Input only. Meta information related to the job searcher or entity conducting the job search. This information is used to improve the performance of the service. */
@@ -1289,13 +1778,15 @@ export interface RequestMetadata {
   userId?: string;
 }
 export const RequestMetadata = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sessionId": S.optional(S.String),
-  "deviceInfo": S.optional(DeviceInfo),
-  "domain": S.optional(S.String),
-  "userId": S.optional(S.String),
-}),
-).annotate({ identifier: "RequestMetadata" }) as any as S.Schema<RequestMetadata>;
+  S.Struct({
+    sessionId: S.optional(S.String),
+    deviceInfo: S.optional(DeviceInfo),
+    domain: S.optional(S.String),
+    userId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RequestMetadata",
+}) as any as S.Schema<RequestMetadata>;
 
 /** Input only. The Request body of the `SearchJobs` call. */
 export interface SearchJobsRequest {
@@ -1322,7 +1813,9 @@ export interface SearchJobsRequest {
   /** Optional. Controls whether to broaden the search when it produces sparse results. Broadened queries append results to the end of the matching results list. Defaults to false. */
   enableBroadening?: boolean;
   /** Optional. Controls whether highly similar jobs are returned next to each other in the search results. Jobs are identified as highly similar based on their titles, job categories, and locations. Highly similar results are clustered so that only one representative job of the cluster is displayed to the job seeker higher up in the results, with the other jobs being displayed lower down in the results. Defaults to DiversificationLevel.SIMPLE if no value is specified. */
-  diversificationLevel?: SearchJobsRequestDiversificationLevelEnum | (string & {});
+  diversificationLevel?:
+    | SearchJobsRequestDiversificationLevelEnum
+    | (string & {});
   /** Optional. Query used to search against jobs, such as keyword, location filters, etc. */
   jobQuery?: JobQuery;
   /** Optional. The token specifying the current offset within search results. See SearchJobsResponse.next_page_token for an explanation of how to obtain the next set of query results. */
@@ -1331,24 +1824,26 @@ export interface SearchJobsRequest {
   requestMetadata?: RequestMetadata;
 }
 export const SearchJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number),
-  "histogramQueries": S.optional(HistogramQueryList),
-  "customRankingInfo": S.optional(CustomRankingInfo),
-  "requirePreciseResultSize": S.optional(S.Boolean),
-  "disableKeywordMatch": S.optional(S.Boolean),
-  "searchMode": S.optional(SearchJobsRequestSearchModeEnum),
-  "offset": S.optional(S.Number),
-  "orderBy": S.optional(S.String),
-  "jobView": S.optional(SearchJobsRequestJobViewEnum),
-  "histogramFacets": S.optional(HistogramFacets),
-  "enableBroadening": S.optional(S.Boolean),
-  "diversificationLevel": S.optional(SearchJobsRequestDiversificationLevelEnum),
-  "jobQuery": S.optional(JobQuery),
-  "pageToken": S.optional(S.String),
-  "requestMetadata": S.optional(RequestMetadata),
-}),
-).annotate({ identifier: "SearchJobsRequest" }) as any as S.Schema<SearchJobsRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number),
+    histogramQueries: S.optional(HistogramQueryList),
+    customRankingInfo: S.optional(CustomRankingInfo),
+    requirePreciseResultSize: S.optional(S.Boolean),
+    disableKeywordMatch: S.optional(S.Boolean),
+    searchMode: S.optional(SearchJobsRequestSearchModeEnum),
+    offset: S.optional(S.Number),
+    orderBy: S.optional(S.String),
+    jobView: S.optional(SearchJobsRequestJobViewEnum),
+    histogramFacets: S.optional(HistogramFacets),
+    enableBroadening: S.optional(S.Boolean),
+    diversificationLevel: S.optional(SearchJobsRequestDiversificationLevelEnum),
+    jobQuery: S.optional(JobQuery),
+    pageToken: S.optional(S.String),
+    requestMetadata: S.optional(RequestMetadata),
+  }),
+).annotate({
+  identifier: "SearchJobsRequest",
+}) as any as S.Schema<SearchJobsRequest>;
 
 export interface SearchForAlertProjectsJobsRequest {
   /** Required. The resource name of the project to search within. The format is "projects/{project_id}", for example, "projects/api-test-project". */
@@ -1357,11 +1852,19 @@ export interface SearchForAlertProjectsJobsRequest {
   body?: SearchJobsRequest;
 }
 export const SearchForAlertProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(SearchJobsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v3p1beta1/{+parent}/jobs:searchForAlert","baseUrl":"https://jobs.googleapis.com/"})),
-).annotate({ identifier: "SearchForAlertProjectsJobsRequest" }) as any as S.Schema<SearchForAlertProjectsJobsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(SearchJobsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v3p1beta1/{+parent}/jobs:searchForAlert",
+      baseUrl: "https://jobs.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SearchForAlertProjectsJobsRequest",
+}) as any as S.Schema<SearchForAlertProjectsJobsRequest>;
 
 /** Output only. Histogram result that matches HistogramSpec specified in searches. */
 export interface HistogramQueryResult {
@@ -1371,16 +1874,24 @@ export interface HistogramQueryResult {
   histogramQuery?: string;
 }
 export const HistogramQueryResult = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "histogram": S.optional(StringMap),
-  "histogramQuery": S.optional(S.String),
-}),
-).annotate({ identifier: "HistogramQueryResult" }) as any as S.Schema<HistogramQueryResult>;
+  S.Struct({
+    histogram: S.optional(StringMap),
+    histogramQuery: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "HistogramQueryResult",
+}) as any as S.Schema<HistogramQueryResult>;
 
 export type HistogramQueryResultList = ReadonlyArray<HistogramQueryResult>;
-export const HistogramQueryResultList = /*@__PURE__*/ S.Array(HistogramQueryResult) as any as S.Schema<HistogramQueryResultList>;
+export const HistogramQueryResultList = /*@__PURE__*/ S.Array(
+  HistogramQueryResult,
+) as any as S.Schema<HistogramQueryResultList>;
 
-export type CompensationHistogramResultTypeEnum = "COMPENSATION_HISTOGRAM_REQUEST_TYPE_UNSPECIFIED" | "BASE" | "ANNUALIZED_BASE" | "ANNUALIZED_TOTAL";
+export type CompensationHistogramResultTypeEnum =
+  | "COMPENSATION_HISTOGRAM_REQUEST_TYPE_UNSPECIFIED"
+  | "BASE"
+  | "ANNUALIZED_BASE"
+  | "ANNUALIZED_TOTAL";
 export const CompensationHistogramResultTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents starting and ending value of a range in double. */
@@ -1391,10 +1902,10 @@ export interface BucketRange {
   to?: number;
 }
 export const BucketRange = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "from": S.optional(S.Number),
-  "to": S.optional(S.Number),
-}),
+  S.Struct({
+    from: S.optional(S.Number),
+    to: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "BucketRange" }) as any as S.Schema<BucketRange>;
 
 /** Represents count of jobs within one bucket. */
@@ -1405,14 +1916,18 @@ export interface BucketizedCount {
   range?: BucketRange;
 }
 export const BucketizedCount = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "count": S.optional(S.Number),
-  "range": S.optional(BucketRange),
-}),
-).annotate({ identifier: "BucketizedCount" }) as any as S.Schema<BucketizedCount>;
+  S.Struct({
+    count: S.optional(S.Number),
+    range: S.optional(BucketRange),
+  }),
+).annotate({
+  identifier: "BucketizedCount",
+}) as any as S.Schema<BucketizedCount>;
 
 export type BucketizedCountList = ReadonlyArray<BucketizedCount>;
-export const BucketizedCountList = /*@__PURE__*/ S.Array(BucketizedCount) as any as S.Schema<BucketizedCountList>;
+export const BucketizedCountList = /*@__PURE__*/ S.Array(
+  BucketizedCount,
+) as any as S.Schema<BucketizedCountList>;
 
 /** Output only. Custom numeric bucketing result. */
 export interface NumericBucketingResult {
@@ -1424,12 +1939,14 @@ export interface NumericBucketingResult {
   maxValue?: number;
 }
 export const NumericBucketingResult = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "counts": S.optional(BucketizedCountList),
-  "minValue": S.optional(S.Number),
-  "maxValue": S.optional(S.Number),
-}),
-).annotate({ identifier: "NumericBucketingResult" }) as any as S.Schema<NumericBucketingResult>;
+  S.Struct({
+    counts: S.optional(BucketizedCountList),
+    minValue: S.optional(S.Number),
+    maxValue: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "NumericBucketingResult",
+}) as any as S.Schema<NumericBucketingResult>;
 
 /** Output only. Compensation based histogram result. */
 export interface CompensationHistogramResult {
@@ -1439,19 +1956,44 @@ export interface CompensationHistogramResult {
   result?: NumericBucketingResult;
 }
 export const CompensationHistogramResult = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(CompensationHistogramResultTypeEnum),
-  "result": S.optional(NumericBucketingResult),
-}),
-).annotate({ identifier: "CompensationHistogramResult" }) as any as S.Schema<CompensationHistogramResult>;
+  S.Struct({
+    type: S.optional(CompensationHistogramResultTypeEnum),
+    result: S.optional(NumericBucketingResult),
+  }),
+).annotate({
+  identifier: "CompensationHistogramResult",
+}) as any as S.Schema<CompensationHistogramResult>;
 
-export type CompensationHistogramResultList = ReadonlyArray<CompensationHistogramResult>;
-export const CompensationHistogramResultList = /*@__PURE__*/ S.Array(CompensationHistogramResult) as any as S.Schema<CompensationHistogramResultList>;
+export type CompensationHistogramResultList =
+  ReadonlyArray<CompensationHistogramResult>;
+export const CompensationHistogramResultList = /*@__PURE__*/ S.Array(
+  CompensationHistogramResult,
+) as any as S.Schema<CompensationHistogramResultList>;
 
 export type IntegerMap = { [key: string]: number | undefined };
-export const IntegerMap = /*@__PURE__*/ S.Record(S.String, S.Number) as any as S.Schema<IntegerMap>;
+export const IntegerMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Number,
+) as any as S.Schema<IntegerMap>;
 
-export type HistogramResultSearchTypeEnum = "SEARCH_TYPE_UNSPECIFIED" | "COMPANY_ID" | "EMPLOYMENT_TYPE" | "COMPANY_SIZE" | "DATE_PUBLISHED" | "EDUCATION_LEVEL" | "EXPERIENCE_LEVEL" | "ADMIN_1" | "COUNTRY" | "CITY" | "LOCALE" | "LANGUAGE" | "CATEGORY" | "CITY_COORDINATE" | "ADMIN_1_COUNTRY" | "COMPANY_DISPLAY_NAME" | "BASE_COMPENSATION_UNIT";
+export type HistogramResultSearchTypeEnum =
+  | "SEARCH_TYPE_UNSPECIFIED"
+  | "COMPANY_ID"
+  | "EMPLOYMENT_TYPE"
+  | "COMPANY_SIZE"
+  | "DATE_PUBLISHED"
+  | "EDUCATION_LEVEL"
+  | "EXPERIENCE_LEVEL"
+  | "ADMIN_1"
+  | "COUNTRY"
+  | "CITY"
+  | "LOCALE"
+  | "LANGUAGE"
+  | "CATEGORY"
+  | "CITY_COORDINATE"
+  | "ADMIN_1_COUNTRY"
+  | "COMPANY_DISPLAY_NAME"
+  | "BASE_COMPENSATION_UNIT";
 export const HistogramResultSearchTypeEnum = /*@__PURE__*/ S.String;
 
 /** Output only. Result of a histogram call. The response contains the histogram map for the search type specified by HistogramResult.field. The response is a map of each filter value to the corresponding count of jobs for that filter. */
@@ -1462,14 +2004,18 @@ export interface HistogramResult {
   searchType?: HistogramResultSearchTypeEnum;
 }
 export const HistogramResult = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "values": S.optional(IntegerMap),
-  "searchType": S.optional(HistogramResultSearchTypeEnum),
-}),
-).annotate({ identifier: "HistogramResult" }) as any as S.Schema<HistogramResult>;
+  S.Struct({
+    values: S.optional(IntegerMap),
+    searchType: S.optional(HistogramResultSearchTypeEnum),
+  }),
+).annotate({
+  identifier: "HistogramResult",
+}) as any as S.Schema<HistogramResult>;
 
 export type HistogramResultList = ReadonlyArray<HistogramResult>;
-export const HistogramResultList = /*@__PURE__*/ S.Array(HistogramResult) as any as S.Schema<HistogramResultList>;
+export const HistogramResultList = /*@__PURE__*/ S.Array(
+  HistogramResult,
+) as any as S.Schema<HistogramResultList>;
 
 /** Output only. Custom attribute histogram result. */
 export interface CustomAttributeHistogramResult {
@@ -1481,15 +2027,20 @@ export interface CustomAttributeHistogramResult {
   longValueHistogramResult?: NumericBucketingResult;
 }
 export const CustomAttributeHistogramResult = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "stringValueHistogramResult": S.optional(IntegerMap),
-  "key": S.optional(S.String),
-  "longValueHistogramResult": S.optional(NumericBucketingResult),
-}),
-).annotate({ identifier: "CustomAttributeHistogramResult" }) as any as S.Schema<CustomAttributeHistogramResult>;
+  S.Struct({
+    stringValueHistogramResult: S.optional(IntegerMap),
+    key: S.optional(S.String),
+    longValueHistogramResult: S.optional(NumericBucketingResult),
+  }),
+).annotate({
+  identifier: "CustomAttributeHistogramResult",
+}) as any as S.Schema<CustomAttributeHistogramResult>;
 
-export type CustomAttributeHistogramResultList = ReadonlyArray<CustomAttributeHistogramResult>;
-export const CustomAttributeHistogramResultList = /*@__PURE__*/ S.Array(CustomAttributeHistogramResult) as any as S.Schema<CustomAttributeHistogramResultList>;
+export type CustomAttributeHistogramResultList =
+  ReadonlyArray<CustomAttributeHistogramResult>;
+export const CustomAttributeHistogramResultList = /*@__PURE__*/ S.Array(
+  CustomAttributeHistogramResult,
+) as any as S.Schema<CustomAttributeHistogramResultList>;
 
 /** Output only. Histogram results that match HistogramFacets specified in SearchJobsRequest. */
 export interface HistogramResults {
@@ -1501,12 +2052,16 @@ export interface HistogramResults {
   customAttributeHistogramResults?: CustomAttributeHistogramResultList;
 }
 export const HistogramResults = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "compensationHistogramResults": S.optional(CompensationHistogramResultList),
-  "simpleHistogramResults": S.optional(HistogramResultList),
-  "customAttributeHistogramResults": S.optional(CustomAttributeHistogramResultList),
-}),
-).annotate({ identifier: "HistogramResults" }) as any as S.Schema<HistogramResults>;
+  S.Struct({
+    compensationHistogramResults: S.optional(CompensationHistogramResultList),
+    simpleHistogramResults: S.optional(HistogramResultList),
+    customAttributeHistogramResults: S.optional(
+      CustomAttributeHistogramResultList,
+    ),
+  }),
+).annotate({
+  identifier: "HistogramResults",
+}) as any as S.Schema<HistogramResults>;
 
 /** Output only. Commute details related to this job. */
 export interface CommuteInfo {
@@ -1516,10 +2071,10 @@ export interface CommuteInfo {
   travelDuration?: string;
 }
 export const CommuteInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "jobLocation": S.optional(Location),
-  "travelDuration": S.optional(S.String),
-}),
+  S.Struct({
+    jobLocation: S.optional(Location),
+    travelDuration: S.optional(S.String),
+  }),
 ).annotate({ identifier: "CommuteInfo" }) as any as S.Schema<CommuteInfo>;
 
 /** Output only. Job entry with metadata inside SearchJobsResponse. */
@@ -1536,17 +2091,19 @@ export interface MatchingJob {
   job?: Job;
 }
 export const MatchingJob = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "jobTitleSnippet": S.optional(S.String),
-  "commuteInfo": S.optional(CommuteInfo),
-  "jobSummary": S.optional(S.String),
-  "searchTextSnippet": S.optional(S.String),
-  "job": S.optional(Job),
-}),
+  S.Struct({
+    jobTitleSnippet: S.optional(S.String),
+    commuteInfo: S.optional(CommuteInfo),
+    jobSummary: S.optional(S.String),
+    searchTextSnippet: S.optional(S.String),
+    job: S.optional(Job),
+  }),
 ).annotate({ identifier: "MatchingJob" }) as any as S.Schema<MatchingJob>;
 
 export type MatchingJobList = ReadonlyArray<MatchingJob>;
-export const MatchingJobList = /*@__PURE__*/ S.Array(MatchingJob) as any as S.Schema<MatchingJobList>;
+export const MatchingJobList = /*@__PURE__*/ S.Array(
+  MatchingJob,
+) as any as S.Schema<MatchingJobList>;
 
 /** Output only. Spell check result. */
 export interface SpellingCorrection {
@@ -1556,11 +2113,13 @@ export interface SpellingCorrection {
   corrected?: boolean;
 }
 export const SpellingCorrection = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "correctedText": S.optional(S.String),
-  "corrected": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "SpellingCorrection" }) as any as S.Schema<SpellingCorrection>;
+  S.Struct({
+    correctedText: S.optional(S.String),
+    corrected: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "SpellingCorrection",
+}) as any as S.Schema<SpellingCorrection>;
 
 /** Output only. Response for SearchJob method. */
 export interface SearchJobsResponse {
@@ -1586,19 +2145,21 @@ export interface SearchJobsResponse {
   totalSize?: number;
 }
 export const SearchJobsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "histogramQueryResults": S.optional(HistogramQueryResultList),
-  "metadata": S.optional(ResponseMetadata),
-  "nextPageToken": S.optional(S.String),
-  "locationFilters": S.optional(LocationList),
-  "estimatedTotalSize": S.optional(S.Number),
-  "broadenedQueryJobsCount": S.optional(S.Number),
-  "histogramResults": S.optional(HistogramResults),
-  "matchingJobs": S.optional(MatchingJobList),
-  "spellCorrection": S.optional(SpellingCorrection),
-  "totalSize": S.optional(S.Number),
-}),
-).annotate({ identifier: "SearchJobsResponse" }) as any as S.Schema<SearchJobsResponse>;
+  S.Struct({
+    histogramQueryResults: S.optional(HistogramQueryResultList),
+    metadata: S.optional(ResponseMetadata),
+    nextPageToken: S.optional(S.String),
+    locationFilters: S.optional(LocationList),
+    estimatedTotalSize: S.optional(S.Number),
+    broadenedQueryJobsCount: S.optional(S.Number),
+    histogramResults: S.optional(HistogramResults),
+    matchingJobs: S.optional(MatchingJobList),
+    spellCorrection: S.optional(SpellingCorrection),
+    totalSize: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "SearchJobsResponse",
+}) as any as S.Schema<SearchJobsResponse>;
 
 export interface SearchProjectsJobsRequest {
   /** Required. The resource name of the project to search within. The format is "projects/{project_id}", for example, "projects/api-test-project". */
@@ -1607,13 +2168,26 @@ export interface SearchProjectsJobsRequest {
   body?: SearchJobsRequest;
 }
 export const SearchProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(SearchJobsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v3p1beta1/{+parent}/jobs:search","baseUrl":"https://jobs.googleapis.com/"})),
-).annotate({ identifier: "SearchProjectsJobsRequest" }) as any as S.Schema<SearchProjectsJobsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(SearchJobsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v3p1beta1/{+parent}/jobs:search",
+      baseUrl: "https://jobs.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SearchProjectsJobsRequest",
+}) as any as S.Schema<SearchProjectsJobsRequest>;
 
-export type BatchDeleteProjectsJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type BatchDeleteProjectsJobsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a list of Jobs by filter. */
 export const batchDeleteProjectsJobs: API.OperationMethod<
   BatchDeleteProjectsJobsRequest,
@@ -1643,7 +2217,12 @@ export const completeProjects: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsClientEventsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsClientEventsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Report events issued when end user interacts with customer's application that uses Cloud Talent Solution. You may inspect the created events in [self service tools](https://console.cloud.google.com/talent-solution/overview). [Learn more](https://cloud.google.com/talent-solution/docs/management-tools) about self service tools. */
 export const createProjectsClientEvents: API.OperationMethod<
   CreateProjectsClientEventsRequest,
@@ -1658,7 +2237,12 @@ export const createProjectsClientEvents: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsCompaniesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsCompaniesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new company entity. */
 export const createProjectsCompanies: API.OperationMethod<
   CreateProjectsCompaniesRequest,
@@ -1673,7 +2257,12 @@ export const createProjectsCompanies: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsJobsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new job. Typically, the job becomes searchable within 10 seconds, but it may take up to 5 minutes. */
 export const createProjectsJobs: API.OperationMethod<
   CreateProjectsJobsRequest,
@@ -1688,7 +2277,12 @@ export const createProjectsJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsCompaniesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsCompaniesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes specified company. Prerequisite: The company has no jobs associated with it. */
 export const deleteProjectsCompanies: API.OperationMethod<
   DeleteProjectsCompaniesRequest,
@@ -1703,7 +2297,12 @@ export const deleteProjectsCompanies: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsJobsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes the specified job. Typically, the job becomes unsearchable within 10 seconds, but it may take up to 5 minutes. */
 export const deleteProjectsJobs: API.OperationMethod<
   DeleteProjectsJobsRequest,
@@ -1776,7 +2375,10 @@ export const listProjectsCompanies: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListProjectsJobsError = NotFound | Forbidden | GcpOpError;
@@ -1792,10 +2394,18 @@ export const listProjectsJobs: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type PatchProjectsCompaniesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsCompaniesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates specified company. Company names can't be updated. To update a company name, delete the company and all jobs associated with it, and only then re-create them. */
 export const patchProjectsCompanies: API.OperationMethod<
   PatchProjectsCompaniesRequest,
@@ -1810,7 +2420,12 @@ export const patchProjectsCompanies: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsJobsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates specified job. Typically, updated contents become visible in search results within 10 seconds, but it may take up to 5 minutes. */
 export const patchProjectsJobs: API.OperationMethod<
   PatchProjectsJobsRequest,
@@ -1825,7 +2440,12 @@ export const patchProjectsJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SearchForAlertProjectsJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SearchForAlertProjectsJobsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Searches for jobs using the provided SearchJobsRequest. This API call is intended for the use case of targeting passive job seekers (for example, job seekers who have signed up to receive email alerts about potential job opportunities), and has different algorithmic adjustments that are targeted to passive job seekers. This call constrains the visibility of jobs present in the database, and only returns jobs the caller has permission to search against. */
 export const searchForAlertProjectsJobs: API.OperationMethod<
   SearchForAlertProjectsJobsRequest,
@@ -1840,7 +2460,12 @@ export const searchForAlertProjectsJobs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SearchProjectsJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SearchProjectsJobsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Searches for jobs using the provided SearchJobsRequest. This call constrains the visibility of jobs present in the database, and only returns jobs that the caller has permission to search against. */
 export const searchProjectsJobs: API.OperationMethod<
   SearchProjectsJobsRequest,
@@ -1854,4 +2479,3 @@ export const searchProjectsJobs: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

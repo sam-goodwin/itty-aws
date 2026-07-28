@@ -13,58 +13,60 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
 export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "CancelOperationRequest" }) as any as S.Schema<CancelOperationRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "CancelOperationRequest",
+}) as any as S.Schema<CancelOperationRequest>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -72,23 +74,38 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:cancel","baseUrl":"https://certificatemanager.googleapis.com/"})),
-).annotate({ identifier: "CancelProjectsLocationsOperationsRequest" }) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:cancel",
+        baseUrl: "https://certificatemanager.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CancelProjectsLocationsOperationsRequest",
+}) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
-export type CertificateIssuanceConfigKeyAlgorithmEnum = "KEY_ALGORITHM_UNSPECIFIED" | "RSA_2048" | "ECDSA_P256";
+export type CertificateIssuanceConfigKeyAlgorithmEnum =
+  | "KEY_ALGORITHM_UNSPECIFIED"
+  | "RSA_2048"
+  | "ECDSA_P256";
 export const CertificateIssuanceConfigKeyAlgorithmEnum = /*@__PURE__*/ S.String;
 
 /** Contains information required to contact CA service. */
@@ -97,10 +114,12 @@ export interface CertificateAuthorityServiceConfig {
   caPool?: string;
 }
 export const CertificateAuthorityServiceConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "caPool": S.optional(S.String),
-}),
-).annotate({ identifier: "CertificateAuthorityServiceConfig" }) as any as S.Schema<CertificateAuthorityServiceConfig>;
+  S.Struct({
+    caPool: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CertificateAuthorityServiceConfig",
+}) as any as S.Schema<CertificateAuthorityServiceConfig>;
 
 /** The CA that issues the workload certificate. It includes CA address, type, authentication to CA service, etc. */
 export interface CertificateAuthorityConfig {
@@ -108,10 +127,14 @@ export interface CertificateAuthorityConfig {
   certificateAuthorityServiceConfig?: CertificateAuthorityServiceConfig;
 }
 export const CertificateAuthorityConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "certificateAuthorityServiceConfig": S.optional(CertificateAuthorityServiceConfig),
-}),
-).annotate({ identifier: "CertificateAuthorityConfig" }) as any as S.Schema<CertificateAuthorityConfig>;
+  S.Struct({
+    certificateAuthorityServiceConfig: S.optional(
+      CertificateAuthorityServiceConfig,
+    ),
+  }),
+).annotate({
+  identifier: "CertificateAuthorityConfig",
+}) as any as S.Schema<CertificateAuthorityConfig>;
 
 /** CertificateIssuanceConfig specifies how to issue and manage a certificate. */
 export interface CertificateIssuanceConfig {
@@ -137,19 +160,21 @@ export interface CertificateIssuanceConfig {
   name?: string;
 }
 export const CertificateIssuanceConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "createTime": S.optional(S.String),
-  "description": S.optional(S.String),
-  "lifetime": S.optional(S.String),
-  "rotationWindowPercentage": S.optional(S.Number),
-  "tags": S.optional(StringMap),
-  "labels": S.optional(StringMap),
-  "updateTime": S.optional(S.String),
-  "keyAlgorithm": S.optional(CertificateIssuanceConfigKeyAlgorithmEnum),
-  "certificateAuthorityConfig": S.optional(CertificateAuthorityConfig),
-  "name": S.optional(S.String),
-}),
-).annotate({ identifier: "CertificateIssuanceConfig" }) as any as S.Schema<CertificateIssuanceConfig>;
+  S.Struct({
+    createTime: S.optional(S.String),
+    description: S.optional(S.String),
+    lifetime: S.optional(S.String),
+    rotationWindowPercentage: S.optional(S.Number),
+    tags: S.optional(StringMap),
+    labels: S.optional(StringMap),
+    updateTime: S.optional(S.String),
+    keyAlgorithm: S.optional(CertificateIssuanceConfigKeyAlgorithmEnum),
+    certificateAuthorityConfig: S.optional(CertificateAuthorityConfig),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CertificateIssuanceConfig",
+}) as any as S.Schema<CertificateIssuanceConfig>;
 
 export interface CreateProjectsLocationsCertificateIssuanceConfigsRequest {
   /** Required. The parent resource of the certificate issuance config. Must be in the format `projects/*\/locations/*`. */
@@ -159,19 +184,33 @@ export interface CreateProjectsLocationsCertificateIssuanceConfigsRequest {
   /** Request body */
   body?: CertificateIssuanceConfig;
 }
-export const CreateProjectsLocationsCertificateIssuanceConfigsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "certificateIssuanceConfigId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(CertificateIssuanceConfig.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/certificateIssuanceConfigs","baseUrl":"https://certificatemanager.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsCertificateIssuanceConfigsRequest" }) as any as S.Schema<CreateProjectsLocationsCertificateIssuanceConfigsRequest>;
+export const CreateProjectsLocationsCertificateIssuanceConfigsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      certificateIssuanceConfigId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(CertificateIssuanceConfig.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/certificateIssuanceConfigs",
+        baseUrl: "https://certificatemanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsCertificateIssuanceConfigsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsCertificateIssuanceConfigsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -183,11 +222,11 @@ export interface Status {
   details?: DocumentMapList;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(S.Number),
-  "message": S.optional(S.String),
-  "details": S.optional(DocumentMapList),
-}),
+  S.Struct({
+    code: S.optional(S.Number),
+    message: S.optional(S.String),
+    details: S.optional(DocumentMapList),
+  }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -204,17 +243,19 @@ export interface Operation {
   name?: string;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "metadata": S.optional(DocumentMap),
-  "done": S.optional(S.Boolean),
-  "response": S.optional(DocumentMap),
-  "error": S.optional(Status),
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    metadata: S.optional(DocumentMap),
+    done: S.optional(S.Boolean),
+    response: S.optional(DocumentMap),
+    error: S.optional(Status),
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 export type IntegerList = ReadonlyArray<number>;
-export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
+export const IntegerList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<IntegerList>;
 
 /** Defines IP configuration where this Certificate Map is serving. */
 export interface IpConfig {
@@ -224,14 +265,16 @@ export interface IpConfig {
   ports?: IntegerList;
 }
 export const IpConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "ipAddress": S.optional(S.String),
-  "ports": S.optional(IntegerList),
-}),
+  S.Struct({
+    ipAddress: S.optional(S.String),
+    ports: S.optional(IntegerList),
+  }),
 ).annotate({ identifier: "IpConfig" }) as any as S.Schema<IpConfig>;
 
 export type IpConfigList = ReadonlyArray<IpConfig>;
-export const IpConfigList = /*@__PURE__*/ S.Array(IpConfig) as any as S.Schema<IpConfigList>;
+export const IpConfigList = /*@__PURE__*/ S.Array(
+  IpConfig,
+) as any as S.Schema<IpConfigList>;
 
 /** Describes a Target Proxy that uses this Certificate Map. */
 export interface GclbTarget {
@@ -243,15 +286,17 @@ export interface GclbTarget {
   targetSslProxy?: string;
 }
 export const GclbTarget = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "ipConfigs": S.optional(IpConfigList),
-  "targetHttpsProxy": S.optional(S.String),
-  "targetSslProxy": S.optional(S.String),
-}),
+  S.Struct({
+    ipConfigs: S.optional(IpConfigList),
+    targetHttpsProxy: S.optional(S.String),
+    targetSslProxy: S.optional(S.String),
+  }),
 ).annotate({ identifier: "GclbTarget" }) as any as S.Schema<GclbTarget>;
 
 export type GclbTargetList = ReadonlyArray<GclbTarget>;
-export const GclbTargetList = /*@__PURE__*/ S.Array(GclbTarget) as any as S.Schema<GclbTargetList>;
+export const GclbTargetList = /*@__PURE__*/ S.Array(
+  GclbTarget,
+) as any as S.Schema<GclbTargetList>;
 
 /** Defines a collection of certificate configurations. */
 export interface CertificateMap {
@@ -271,15 +316,15 @@ export interface CertificateMap {
   tags?: StringMap;
 }
 export const CertificateMap = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateTime": S.optional(S.String),
-  "gclbTargets": S.optional(GclbTargetList),
-  "name": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "description": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "tags": S.optional(StringMap),
-}),
+  S.Struct({
+    updateTime: S.optional(S.String),
+    gclbTargets: S.optional(GclbTargetList),
+    name: S.optional(S.String),
+    labels: S.optional(StringMap),
+    description: S.optional(S.String),
+    createTime: S.optional(S.String),
+    tags: S.optional(StringMap),
+  }),
 ).annotate({ identifier: "CertificateMap" }) as any as S.Schema<CertificateMap>;
 
 export interface CreateProjectsLocationsCertificateMapsRequest {
@@ -290,21 +335,35 @@ export interface CreateProjectsLocationsCertificateMapsRequest {
   /** Request body */
   body?: CertificateMap;
 }
-export const CreateProjectsLocationsCertificateMapsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "certificateMapId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(CertificateMap.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/certificateMaps","baseUrl":"https://certificatemanager.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsCertificateMapsRequest" }) as any as S.Schema<CreateProjectsLocationsCertificateMapsRequest>;
+export const CreateProjectsLocationsCertificateMapsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      certificateMapId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(CertificateMap.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/certificateMaps",
+        baseUrl: "https://certificatemanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsCertificateMapsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsCertificateMapsRequest>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 export type CertificateMapEntryMatcherEnum = "MATCHER_UNSPECIFIED" | "PRIMARY";
 export const CertificateMapEntryMatcherEnum = /*@__PURE__*/ S.String;
 
-export type CertificateMapEntryStateEnum = "SERVING_STATE_UNSPECIFIED" | "ACTIVE" | "PENDING";
+export type CertificateMapEntryStateEnum =
+  | "SERVING_STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "PENDING";
 export const CertificateMapEntryStateEnum = /*@__PURE__*/ S.String;
 
 /** Defines a certificate map entry. */
@@ -329,18 +388,20 @@ export interface CertificateMapEntry {
   updateTime?: string;
 }
 export const CertificateMapEntry = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "certificates": S.optional(StringList),
-  "matcher": S.optional(CertificateMapEntryMatcherEnum),
-  "name": S.optional(S.String),
-  "hostname": S.optional(S.String),
-  "state": S.optional(CertificateMapEntryStateEnum),
-  "description": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "updateTime": S.optional(S.String),
-}),
-).annotate({ identifier: "CertificateMapEntry" }) as any as S.Schema<CertificateMapEntry>;
+  S.Struct({
+    certificates: S.optional(StringList),
+    matcher: S.optional(CertificateMapEntryMatcherEnum),
+    name: S.optional(S.String),
+    hostname: S.optional(S.String),
+    state: S.optional(CertificateMapEntryStateEnum),
+    description: S.optional(S.String),
+    createTime: S.optional(S.String),
+    labels: S.optional(StringMap),
+    updateTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CertificateMapEntry",
+}) as any as S.Schema<CertificateMapEntry>;
 
 export interface CreateProjectsLocationsCertificateMapsCertificateMapEntriesRequest {
   /** Required. The parent resource of the certificate map entry. Must be in the format `projects/*\/locations/*\/certificateMaps/*`. */
@@ -350,13 +411,23 @@ export interface CreateProjectsLocationsCertificateMapsCertificateMapEntriesRequ
   /** Request body */
   body?: CertificateMapEntry;
 }
-export const CreateProjectsLocationsCertificateMapsCertificateMapEntriesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "certificateMapEntryId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(CertificateMapEntry.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/certificateMapEntries","baseUrl":"https://certificatemanager.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsCertificateMapsCertificateMapEntriesRequest" }) as any as S.Schema<CreateProjectsLocationsCertificateMapsCertificateMapEntriesRequest>;
+export const CreateProjectsLocationsCertificateMapsCertificateMapEntriesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      certificateMapEntryId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(CertificateMapEntry.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/certificateMapEntries",
+        baseUrl: "https://certificatemanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "CreateProjectsLocationsCertificateMapsCertificateMapEntriesRequest",
+  }) as any as S.Schema<CreateProjectsLocationsCertificateMapsCertificateMapEntriesRequest>;
 
 /** Defines a resource that uses the certificate. */
 export interface UsedBy {
@@ -364,13 +435,15 @@ export interface UsedBy {
   name?: string;
 }
 export const UsedBy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "UsedBy" }) as any as S.Schema<UsedBy>;
 
 export type UsedByList = ReadonlyArray<UsedBy>;
-export const UsedByList = /*@__PURE__*/ S.Array(UsedBy) as any as S.Schema<UsedByList>;
+export const UsedByList = /*@__PURE__*/ S.Array(
+  UsedBy,
+) as any as S.Schema<UsedByList>;
 
 /** Certificate data for a SelfManaged Certificate. SelfManaged Certificates are uploaded by the user. Updating such certificates before they expire remains the user's responsibility. */
 export interface SelfManagedCertificate {
@@ -380,13 +453,18 @@ export interface SelfManagedCertificate {
   pemPrivateKey?: string;
 }
 export const SelfManagedCertificate = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pemCertificate": S.optional(S.String),
-  "pemPrivateKey": S.optional(S.String),
-}),
-).annotate({ identifier: "SelfManagedCertificate" }) as any as S.Schema<SelfManagedCertificate>;
+  S.Struct({
+    pemCertificate: S.optional(S.String),
+    pemPrivateKey: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SelfManagedCertificate",
+}) as any as S.Schema<SelfManagedCertificate>;
 
-export type ProvisioningIssueReasonEnum = "REASON_UNSPECIFIED" | "AUTHORIZATION_ISSUE" | "RATE_LIMITED";
+export type ProvisioningIssueReasonEnum =
+  | "REASON_UNSPECIFIED"
+  | "AUTHORIZATION_ISSUE"
+  | "RATE_LIMITED";
 export const ProvisioningIssueReasonEnum = /*@__PURE__*/ S.String;
 
 /** Information about issues with provisioning a Managed Certificate. */
@@ -397,13 +475,19 @@ export interface ProvisioningIssue {
   details?: string;
 }
 export const ProvisioningIssue = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "reason": S.optional(ProvisioningIssueReasonEnum),
-  "details": S.optional(S.String),
-}),
-).annotate({ identifier: "ProvisioningIssue" }) as any as S.Schema<ProvisioningIssue>;
+  S.Struct({
+    reason: S.optional(ProvisioningIssueReasonEnum),
+    details: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ProvisioningIssue",
+}) as any as S.Schema<ProvisioningIssue>;
 
-export type ManagedIdentityCertificateStateEnum = "STATE_UNSPECIFIED" | "PROVISIONING" | "FAILED" | "ACTIVE";
+export type ManagedIdentityCertificateStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "PROVISIONING"
+  | "FAILED"
+  | "ACTIVE";
 export const ManagedIdentityCertificateStateEnum = /*@__PURE__*/ S.String;
 
 /** Configuration and state of a Managed Identity Certificate. Certificate Manager provisions and renews Managed Identity Certificates automatically, for as long as it's authorized to do so. */
@@ -416,20 +500,34 @@ export interface ManagedIdentityCertificate {
   state?: ManagedIdentityCertificateStateEnum;
 }
 export const ManagedIdentityCertificate = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "provisioningIssue": S.optional(ProvisioningIssue),
-  "identity": S.optional(S.String),
-  "state": S.optional(ManagedIdentityCertificateStateEnum),
-}),
-).annotate({ identifier: "ManagedIdentityCertificate" }) as any as S.Schema<ManagedIdentityCertificate>;
+  S.Struct({
+    provisioningIssue: S.optional(ProvisioningIssue),
+    identity: S.optional(S.String),
+    state: S.optional(ManagedIdentityCertificateStateEnum),
+  }),
+).annotate({
+  identifier: "ManagedIdentityCertificate",
+}) as any as S.Schema<ManagedIdentityCertificate>;
 
-export type ManagedCertificateStateEnum = "STATE_UNSPECIFIED" | "PROVISIONING" | "FAILED" | "ACTIVE";
+export type ManagedCertificateStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "PROVISIONING"
+  | "FAILED"
+  | "ACTIVE";
 export const ManagedCertificateStateEnum = /*@__PURE__*/ S.String;
 
-export type AuthorizationAttemptInfoFailureReasonEnum = "FAILURE_REASON_UNSPECIFIED" | "CONFIG" | "CAA" | "RATE_LIMITED";
+export type AuthorizationAttemptInfoFailureReasonEnum =
+  | "FAILURE_REASON_UNSPECIFIED"
+  | "CONFIG"
+  | "CAA"
+  | "RATE_LIMITED";
 export const AuthorizationAttemptInfoFailureReasonEnum = /*@__PURE__*/ S.String;
 
-export type AuthorizationAttemptInfoStateEnum = "STATE_UNSPECIFIED" | "AUTHORIZING" | "AUTHORIZED" | "FAILED";
+export type AuthorizationAttemptInfoStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "AUTHORIZING"
+  | "AUTHORIZED"
+  | "FAILED";
 export const AuthorizationAttemptInfoStateEnum = /*@__PURE__*/ S.String;
 
 /** CNAME troubleshooting information. */
@@ -442,11 +540,11 @@ export interface CNAME {
   expectedData?: string;
 }
 export const CNAME = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "resolvedData": S.optional(StringList),
-  "expectedData": S.optional(S.String),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    resolvedData: S.optional(StringList),
+    expectedData: S.optional(S.String),
+  }),
 ).annotate({ identifier: "CNAME" }) as any as S.Schema<CNAME>;
 
 /** IPs troubleshooting information. */
@@ -459,18 +557,27 @@ export interface IPs {
   resolved?: StringList;
 }
 export const IPs = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "servingOnAltPorts": S.optional(StringList),
-  "serving": S.optional(StringList),
-  "resolved": S.optional(StringList),
-}),
+  S.Struct({
+    servingOnAltPorts: S.optional(StringList),
+    serving: S.optional(StringList),
+    resolved: S.optional(StringList),
+  }),
 ).annotate({ identifier: "IPs" }) as any as S.Schema<IPs>;
 
-export type TroubleshootingIssuesItemEnum = "ISSUE_UNSPECIFIED" | "CNAME_MISMATCH" | "RESOLVED_TO_NOT_SERVING" | "RESOLVED_TO_SERVING_ON_ALT_PORTS" | "NO_RESOLVED_IPS" | "CERTIFICATE_NOT_ATTACHED";
+export type TroubleshootingIssuesItemEnum =
+  | "ISSUE_UNSPECIFIED"
+  | "CNAME_MISMATCH"
+  | "RESOLVED_TO_NOT_SERVING"
+  | "RESOLVED_TO_SERVING_ON_ALT_PORTS"
+  | "NO_RESOLVED_IPS"
+  | "CERTIFICATE_NOT_ATTACHED";
 export const TroubleshootingIssuesItemEnum = /*@__PURE__*/ S.String;
 
-export type TroubleshootingIssuesItemEnumList = ReadonlyArray<TroubleshootingIssuesItemEnum>;
-export const TroubleshootingIssuesItemEnumList = /*@__PURE__*/ S.Array(TroubleshootingIssuesItemEnum) as any as S.Schema<TroubleshootingIssuesItemEnumList>;
+export type TroubleshootingIssuesItemEnumList =
+  ReadonlyArray<TroubleshootingIssuesItemEnum>;
+export const TroubleshootingIssuesItemEnumList = /*@__PURE__*/ S.Array(
+  TroubleshootingIssuesItemEnum,
+) as any as S.Schema<TroubleshootingIssuesItemEnumList>;
 
 /** Troubleshooting information for the authorization attempt. */
 export interface Troubleshooting {
@@ -482,12 +589,14 @@ export interface Troubleshooting {
   issues?: TroubleshootingIssuesItemEnumList;
 }
 export const Troubleshooting = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "cname": S.optional(CNAME),
-  "ips": S.optional(IPs),
-  "issues": S.optional(TroubleshootingIssuesItemEnumList),
-}),
-).annotate({ identifier: "Troubleshooting" }) as any as S.Schema<Troubleshooting>;
+  S.Struct({
+    cname: S.optional(CNAME),
+    ips: S.optional(IPs),
+    issues: S.optional(TroubleshootingIssuesItemEnumList),
+  }),
+).annotate({
+  identifier: "Troubleshooting",
+}) as any as S.Schema<Troubleshooting>;
 
 /** State of the latest attempt to authorize a domain for certificate issuance. */
 export interface AuthorizationAttemptInfo {
@@ -505,18 +614,23 @@ export interface AuthorizationAttemptInfo {
   troubleshooting?: Troubleshooting;
 }
 export const AuthorizationAttemptInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "failureReason": S.optional(AuthorizationAttemptInfoFailureReasonEnum),
-  "domain": S.optional(S.String),
-  "state": S.optional(AuthorizationAttemptInfoStateEnum),
-  "details": S.optional(S.String),
-  "attemptTime": S.optional(S.String),
-  "troubleshooting": S.optional(Troubleshooting),
-}),
-).annotate({ identifier: "AuthorizationAttemptInfo" }) as any as S.Schema<AuthorizationAttemptInfo>;
+  S.Struct({
+    failureReason: S.optional(AuthorizationAttemptInfoFailureReasonEnum),
+    domain: S.optional(S.String),
+    state: S.optional(AuthorizationAttemptInfoStateEnum),
+    details: S.optional(S.String),
+    attemptTime: S.optional(S.String),
+    troubleshooting: S.optional(Troubleshooting),
+  }),
+).annotate({
+  identifier: "AuthorizationAttemptInfo",
+}) as any as S.Schema<AuthorizationAttemptInfo>;
 
-export type AuthorizationAttemptInfoList = ReadonlyArray<AuthorizationAttemptInfo>;
-export const AuthorizationAttemptInfoList = /*@__PURE__*/ S.Array(AuthorizationAttemptInfo) as any as S.Schema<AuthorizationAttemptInfoList>;
+export type AuthorizationAttemptInfoList =
+  ReadonlyArray<AuthorizationAttemptInfo>;
+export const AuthorizationAttemptInfoList = /*@__PURE__*/ S.Array(
+  AuthorizationAttemptInfo,
+) as any as S.Schema<AuthorizationAttemptInfoList>;
 
 /** Configuration and state of a Managed Certificate. Certificate Manager provisions and renews Managed Certificates automatically, for as long as it's authorized to do so. */
 export interface ManagedCertificate {
@@ -534,17 +648,23 @@ export interface ManagedCertificate {
   dnsAuthorizations?: StringList;
 }
 export const ManagedCertificate = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "state": S.optional(ManagedCertificateStateEnum),
-  "issuanceConfig": S.optional(S.String),
-  "provisioningIssue": S.optional(ProvisioningIssue),
-  "authorizationAttemptInfo": S.optional(AuthorizationAttemptInfoList),
-  "domains": S.optional(StringList),
-  "dnsAuthorizations": S.optional(StringList),
-}),
-).annotate({ identifier: "ManagedCertificate" }) as any as S.Schema<ManagedCertificate>;
+  S.Struct({
+    state: S.optional(ManagedCertificateStateEnum),
+    issuanceConfig: S.optional(S.String),
+    provisioningIssue: S.optional(ProvisioningIssue),
+    authorizationAttemptInfo: S.optional(AuthorizationAttemptInfoList),
+    domains: S.optional(StringList),
+    dnsAuthorizations: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ManagedCertificate",
+}) as any as S.Schema<ManagedCertificate>;
 
-export type CertificateScopeEnum = "DEFAULT" | "EDGE_CACHE" | "ALL_REGIONS" | "CLIENT_AUTH";
+export type CertificateScopeEnum =
+  | "DEFAULT"
+  | "EDGE_CACHE"
+  | "ALL_REGIONS"
+  | "CLIENT_AUTH";
 export const CertificateScopeEnum = /*@__PURE__*/ S.String;
 
 /** Defines TLS certificate. */
@@ -579,22 +699,22 @@ export interface Certificate {
   scope?: CertificateScopeEnum;
 }
 export const Certificate = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "labels": S.optional(StringMap),
-  "pemCertificate": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "usedBy": S.optional(UsedByList),
-  "description": S.optional(S.String),
-  "tags": S.optional(StringMap),
-  "expireTime": S.optional(S.String),
-  "selfManaged": S.optional(SelfManagedCertificate),
-  "managedIdentity": S.optional(ManagedIdentityCertificate),
-  "sanDnsnames": S.optional(StringList),
-  "createTime": S.optional(S.String),
-  "name": S.optional(S.String),
-  "managed": S.optional(ManagedCertificate),
-  "scope": S.optional(CertificateScopeEnum),
-}),
+  S.Struct({
+    labels: S.optional(StringMap),
+    pemCertificate: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    usedBy: S.optional(UsedByList),
+    description: S.optional(S.String),
+    tags: S.optional(StringMap),
+    expireTime: S.optional(S.String),
+    selfManaged: S.optional(SelfManagedCertificate),
+    managedIdentity: S.optional(ManagedIdentityCertificate),
+    sanDnsnames: S.optional(StringList),
+    createTime: S.optional(S.String),
+    name: S.optional(S.String),
+    managed: S.optional(ManagedCertificate),
+    scope: S.optional(CertificateScopeEnum),
+  }),
 ).annotate({ identifier: "Certificate" }) as any as S.Schema<Certificate>;
 
 export interface CreateProjectsLocationsCertificatesRequest {
@@ -605,13 +725,22 @@ export interface CreateProjectsLocationsCertificatesRequest {
   /** Request body */
   body?: Certificate;
 }
-export const CreateProjectsLocationsCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "certificateId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Certificate.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/certificates","baseUrl":"https://certificatemanager.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsCertificatesRequest" }) as any as S.Schema<CreateProjectsLocationsCertificatesRequest>;
+export const CreateProjectsLocationsCertificatesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      certificateId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Certificate.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/certificates",
+        baseUrl: "https://certificatemanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsCertificatesRequest",
+  }) as any as S.Schema<CreateProjectsLocationsCertificatesRequest>;
 
 /** The structure describing the DNS Resource Record that needs to be added to DNS configuration for the authorization to be usable by certificate. */
 export interface DnsResourceRecord {
@@ -623,14 +752,19 @@ export interface DnsResourceRecord {
   type?: string;
 }
 export const DnsResourceRecord = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "data": S.optional(S.String),
-  "type": S.optional(S.String),
-}),
-).annotate({ identifier: "DnsResourceRecord" }) as any as S.Schema<DnsResourceRecord>;
+  S.Struct({
+    name: S.optional(S.String),
+    data: S.optional(S.String),
+    type: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DnsResourceRecord",
+}) as any as S.Schema<DnsResourceRecord>;
 
-export type DnsAuthorizationTypeEnum = "TYPE_UNSPECIFIED" | "FIXED_RECORD" | "PER_PROJECT_RECORD";
+export type DnsAuthorizationTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "FIXED_RECORD"
+  | "PER_PROJECT_RECORD";
 export const DnsAuthorizationTypeEnum = /*@__PURE__*/ S.String;
 
 /** A DnsAuthorization resource describes a way to perform domain authorization for certificate issuance. */
@@ -655,18 +789,20 @@ export interface DnsAuthorization {
   type?: DnsAuthorizationTypeEnum;
 }
 export const DnsAuthorization = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "createTime": S.optional(S.String),
-  "description": S.optional(S.String),
-  "tags": S.optional(StringMap),
-  "labels": S.optional(StringMap),
-  "domain": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "name": S.optional(S.String),
-  "dnsResourceRecord": S.optional(DnsResourceRecord),
-  "type": S.optional(DnsAuthorizationTypeEnum),
-}),
-).annotate({ identifier: "DnsAuthorization" }) as any as S.Schema<DnsAuthorization>;
+  S.Struct({
+    createTime: S.optional(S.String),
+    description: S.optional(S.String),
+    tags: S.optional(StringMap),
+    labels: S.optional(StringMap),
+    domain: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    name: S.optional(S.String),
+    dnsResourceRecord: S.optional(DnsResourceRecord),
+    type: S.optional(DnsAuthorizationTypeEnum),
+  }),
+).annotate({
+  identifier: "DnsAuthorization",
+}) as any as S.Schema<DnsAuthorization>;
 
 export interface CreateProjectsLocationsDnsAuthorizationsRequest {
   /** Required. The parent resource of the dns authorization. Must be in the format `projects/*\/locations/*`. */
@@ -676,13 +812,22 @@ export interface CreateProjectsLocationsDnsAuthorizationsRequest {
   /** Request body */
   body?: DnsAuthorization;
 }
-export const CreateProjectsLocationsDnsAuthorizationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "dnsAuthorizationId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(DnsAuthorization.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/dnsAuthorizations","baseUrl":"https://certificatemanager.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsDnsAuthorizationsRequest" }) as any as S.Schema<CreateProjectsLocationsDnsAuthorizationsRequest>;
+export const CreateProjectsLocationsDnsAuthorizationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      dnsAuthorizationId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(DnsAuthorization.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/dnsAuthorizations",
+        baseUrl: "https://certificatemanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsDnsAuthorizationsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsDnsAuthorizationsRequest>;
 
 /** Defines a trust anchor. */
 export interface TrustAnchor {
@@ -690,13 +835,15 @@ export interface TrustAnchor {
   pemCertificate?: string;
 }
 export const TrustAnchor = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pemCertificate": S.optional(S.String),
-}),
+  S.Struct({
+    pemCertificate: S.optional(S.String),
+  }),
 ).annotate({ identifier: "TrustAnchor" }) as any as S.Schema<TrustAnchor>;
 
 export type TrustAnchorList = ReadonlyArray<TrustAnchor>;
-export const TrustAnchorList = /*@__PURE__*/ S.Array(TrustAnchor) as any as S.Schema<TrustAnchorList>;
+export const TrustAnchorList = /*@__PURE__*/ S.Array(
+  TrustAnchor,
+) as any as S.Schema<TrustAnchorList>;
 
 /** Defines an intermediate CA. */
 export interface IntermediateCA {
@@ -704,13 +851,15 @@ export interface IntermediateCA {
   pemCertificate?: string;
 }
 export const IntermediateCA = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pemCertificate": S.optional(S.String),
-}),
+  S.Struct({
+    pemCertificate: S.optional(S.String),
+  }),
 ).annotate({ identifier: "IntermediateCA" }) as any as S.Schema<IntermediateCA>;
 
 export type IntermediateCAList = ReadonlyArray<IntermediateCA>;
-export const IntermediateCAList = /*@__PURE__*/ S.Array(IntermediateCA) as any as S.Schema<IntermediateCAList>;
+export const IntermediateCAList = /*@__PURE__*/ S.Array(
+  IntermediateCA,
+) as any as S.Schema<IntermediateCAList>;
 
 /** Defines a trust store. */
 export interface TrustStore {
@@ -720,14 +869,17 @@ export interface TrustStore {
   intermediateCas?: IntermediateCAList;
 }
 export const TrustStore = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "trustAnchors": S.optional(TrustAnchorList),
-  "intermediateCas": S.optional(IntermediateCAList),
-}),
+  S.Struct({
+    trustAnchors: S.optional(TrustAnchorList),
+    intermediateCas: S.optional(IntermediateCAList),
+  }),
 ).annotate({ identifier: "TrustStore" }) as any as S.Schema<TrustStore>;
 
 export type TrustStoreMap = { [key: string]: TrustStore | undefined };
-export const TrustStoreMap = /*@__PURE__*/ S.Record(S.String, TrustStore) as any as S.Schema<TrustStoreMap>;
+export const TrustStoreMap = /*@__PURE__*/ S.Record(
+  S.String,
+  TrustStore,
+) as any as S.Schema<TrustStoreMap>;
 
 /** Defines an allowlisted certificate. */
 export interface AllowlistedCertificate {
@@ -735,16 +887,22 @@ export interface AllowlistedCertificate {
   pemCertificate?: string;
 }
 export const AllowlistedCertificate = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pemCertificate": S.optional(S.String),
-}),
-).annotate({ identifier: "AllowlistedCertificate" }) as any as S.Schema<AllowlistedCertificate>;
+  S.Struct({
+    pemCertificate: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AllowlistedCertificate",
+}) as any as S.Schema<AllowlistedCertificate>;
 
 export type AllowlistedCertificateList = ReadonlyArray<AllowlistedCertificate>;
-export const AllowlistedCertificateList = /*@__PURE__*/ S.Array(AllowlistedCertificate) as any as S.Schema<AllowlistedCertificateList>;
+export const AllowlistedCertificateList = /*@__PURE__*/ S.Array(
+  AllowlistedCertificate,
+) as any as S.Schema<AllowlistedCertificateList>;
 
 export type TrustStoreList = ReadonlyArray<TrustStore>;
-export const TrustStoreList = /*@__PURE__*/ S.Array(TrustStore) as any as S.Schema<TrustStoreList>;
+export const TrustStoreList = /*@__PURE__*/ S.Array(
+  TrustStore,
+) as any as S.Schema<TrustStoreList>;
 
 /** Defines a trust config. */
 export interface TrustConfig {
@@ -770,18 +928,18 @@ export interface TrustConfig {
   tags?: StringMap;
 }
 export const TrustConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "spiffeTrustStores": S.optional(TrustStoreMap),
-  "allowlistedCertificates": S.optional(AllowlistedCertificateList),
-  "trustStores": S.optional(TrustStoreList),
-  "labels": S.optional(StringMap),
-  "updateTime": S.optional(S.String),
-  "etag": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "description": S.optional(S.String),
-  "tags": S.optional(StringMap),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    spiffeTrustStores: S.optional(TrustStoreMap),
+    allowlistedCertificates: S.optional(AllowlistedCertificateList),
+    trustStores: S.optional(TrustStoreList),
+    labels: S.optional(StringMap),
+    updateTime: S.optional(S.String),
+    etag: S.optional(S.String),
+    createTime: S.optional(S.String),
+    description: S.optional(S.String),
+    tags: S.optional(StringMap),
+  }),
 ).annotate({ identifier: "TrustConfig" }) as any as S.Schema<TrustConfig>;
 
 export interface CreateProjectsLocationsTrustConfigsRequest {
@@ -792,73 +950,137 @@ export interface CreateProjectsLocationsTrustConfigsRequest {
   /** Request body */
   body?: TrustConfig;
 }
-export const CreateProjectsLocationsTrustConfigsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "trustConfigId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(TrustConfig.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/trustConfigs","baseUrl":"https://certificatemanager.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsTrustConfigsRequest" }) as any as S.Schema<CreateProjectsLocationsTrustConfigsRequest>;
+export const CreateProjectsLocationsTrustConfigsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      trustConfigId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(TrustConfig.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/trustConfigs",
+        baseUrl: "https://certificatemanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsTrustConfigsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsTrustConfigsRequest>;
 
 export interface DeleteProjectsLocationsCertificateIssuanceConfigsRequest {
   /** Required. A name of the certificate issuance config to delete. Must be in the format `projects/*\/locations/*\/certificateIssuanceConfigs/*`. */
   name: string;
 }
-export const DeleteProjectsLocationsCertificateIssuanceConfigsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://certificatemanager.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsCertificateIssuanceConfigsRequest" }) as any as S.Schema<DeleteProjectsLocationsCertificateIssuanceConfigsRequest>;
+export const DeleteProjectsLocationsCertificateIssuanceConfigsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://certificatemanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsCertificateIssuanceConfigsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsCertificateIssuanceConfigsRequest>;
 
 export interface DeleteProjectsLocationsCertificateMapsRequest {
   /** Required. A name of the certificate map to delete. Must be in the format `projects/*\/locations/*\/certificateMaps/*`. */
   name: string;
 }
-export const DeleteProjectsLocationsCertificateMapsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://certificatemanager.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsCertificateMapsRequest" }) as any as S.Schema<DeleteProjectsLocationsCertificateMapsRequest>;
+export const DeleteProjectsLocationsCertificateMapsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://certificatemanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsCertificateMapsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsCertificateMapsRequest>;
 
 export interface DeleteProjectsLocationsCertificateMapsCertificateMapEntriesRequest {
   /** Required. A name of the certificate map entry to delete. Must be in the format `projects/*\/locations/*\/certificateMaps/*\/certificateMapEntries/*`. */
   name: string;
 }
-export const DeleteProjectsLocationsCertificateMapsCertificateMapEntriesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://certificatemanager.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsCertificateMapsCertificateMapEntriesRequest" }) as any as S.Schema<DeleteProjectsLocationsCertificateMapsCertificateMapEntriesRequest>;
+export const DeleteProjectsLocationsCertificateMapsCertificateMapEntriesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://certificatemanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "DeleteProjectsLocationsCertificateMapsCertificateMapEntriesRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsCertificateMapsCertificateMapEntriesRequest>;
 
 export interface DeleteProjectsLocationsCertificatesRequest {
   /** Required. A name of the certificate to delete. Must be in the format `projects/*\/locations/*\/certificates/*`. */
   name: string;
 }
-export const DeleteProjectsLocationsCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://certificatemanager.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsCertificatesRequest" }) as any as S.Schema<DeleteProjectsLocationsCertificatesRequest>;
+export const DeleteProjectsLocationsCertificatesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://certificatemanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsCertificatesRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsCertificatesRequest>;
 
 export interface DeleteProjectsLocationsDnsAuthorizationsRequest {
   /** Required. A name of the dns authorization to delete. Must be in the format `projects/*\/locations/*\/dnsAuthorizations/*`. */
   name: string;
 }
-export const DeleteProjectsLocationsDnsAuthorizationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://certificatemanager.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsDnsAuthorizationsRequest" }) as any as S.Schema<DeleteProjectsLocationsDnsAuthorizationsRequest>;
+export const DeleteProjectsLocationsDnsAuthorizationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://certificatemanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsDnsAuthorizationsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsDnsAuthorizationsRequest>;
 
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://certificatemanager.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsOperationsRequest" }) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://certificatemanager.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsOperationsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
 
 export interface DeleteProjectsLocationsTrustConfigsRequest {
   /** Optional. The current etag of the TrustConfig. If an etag is provided and does not match the current etag of the resource, deletion will be blocked and an ABORTED error will be returned. */
@@ -866,22 +1088,39 @@ export interface DeleteProjectsLocationsTrustConfigsRequest {
   /** Required. A name of the TrustConfig to delete. Must be in the format `projects/*\/locations/*\/trustConfigs/*`. */
   name: string;
 }
-export const DeleteProjectsLocationsTrustConfigsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "etag": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://certificatemanager.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsTrustConfigsRequest" }) as any as S.Schema<DeleteProjectsLocationsTrustConfigsRequest>;
+export const DeleteProjectsLocationsTrustConfigsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      etag: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://certificatemanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsTrustConfigsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsTrustConfigsRequest>;
 
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://certificatemanager.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://certificatemanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsRequest",
+}) as any as S.Schema<GetProjectsLocationsRequest>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -897,84 +1136,148 @@ export interface Location {
   locationId?: string;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "metadata": S.optional(DocumentMap),
-  "displayName": S.optional(S.String),
-  "name": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "locationId": S.optional(S.String),
-}),
+  S.Struct({
+    metadata: S.optional(DocumentMap),
+    displayName: S.optional(S.String),
+    name: S.optional(S.String),
+    labels: S.optional(StringMap),
+    locationId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export interface GetProjectsLocationsCertificateIssuanceConfigsRequest {
   /** Required. A name of the certificate issuance config to describe. Must be in the format `projects/*\/locations/*\/certificateIssuanceConfigs/*`. */
   name: string;
 }
-export const GetProjectsLocationsCertificateIssuanceConfigsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://certificatemanager.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsCertificateIssuanceConfigsRequest" }) as any as S.Schema<GetProjectsLocationsCertificateIssuanceConfigsRequest>;
+export const GetProjectsLocationsCertificateIssuanceConfigsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://certificatemanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsCertificateIssuanceConfigsRequest",
+  }) as any as S.Schema<GetProjectsLocationsCertificateIssuanceConfigsRequest>;
 
 export interface GetProjectsLocationsCertificateMapsRequest {
   /** Required. A name of the certificate map to describe. Must be in the format `projects/*\/locations/*\/certificateMaps/*`. */
   name: string;
 }
-export const GetProjectsLocationsCertificateMapsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://certificatemanager.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsCertificateMapsRequest" }) as any as S.Schema<GetProjectsLocationsCertificateMapsRequest>;
+export const GetProjectsLocationsCertificateMapsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://certificatemanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsCertificateMapsRequest",
+  }) as any as S.Schema<GetProjectsLocationsCertificateMapsRequest>;
 
 export interface GetProjectsLocationsCertificateMapsCertificateMapEntriesRequest {
   /** Required. A name of the certificate map entry to describe. Must be in the format `projects/*\/locations/*\/certificateMaps/*\/certificateMapEntries/*`. */
   name: string;
 }
-export const GetProjectsLocationsCertificateMapsCertificateMapEntriesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://certificatemanager.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsCertificateMapsCertificateMapEntriesRequest" }) as any as S.Schema<GetProjectsLocationsCertificateMapsCertificateMapEntriesRequest>;
+export const GetProjectsLocationsCertificateMapsCertificateMapEntriesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://certificatemanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "GetProjectsLocationsCertificateMapsCertificateMapEntriesRequest",
+  }) as any as S.Schema<GetProjectsLocationsCertificateMapsCertificateMapEntriesRequest>;
 
 export interface GetProjectsLocationsCertificatesRequest {
   /** Required. A name of the certificate to describe. Must be in the format `projects/*\/locations/*\/certificates/*`. */
   name: string;
 }
-export const GetProjectsLocationsCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://certificatemanager.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsCertificatesRequest" }) as any as S.Schema<GetProjectsLocationsCertificatesRequest>;
+export const GetProjectsLocationsCertificatesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://certificatemanager.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsCertificatesRequest",
+}) as any as S.Schema<GetProjectsLocationsCertificatesRequest>;
 
 export interface GetProjectsLocationsDnsAuthorizationsRequest {
   /** Required. A name of the dns authorization to describe. Must be in the format `projects/*\/locations/*\/dnsAuthorizations/*`. */
   name: string;
 }
-export const GetProjectsLocationsDnsAuthorizationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://certificatemanager.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsDnsAuthorizationsRequest" }) as any as S.Schema<GetProjectsLocationsDnsAuthorizationsRequest>;
+export const GetProjectsLocationsDnsAuthorizationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://certificatemanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsDnsAuthorizationsRequest",
+  }) as any as S.Schema<GetProjectsLocationsDnsAuthorizationsRequest>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://certificatemanager.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://certificatemanager.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsOperationsRequest",
+}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export interface GetProjectsLocationsTrustConfigsRequest {
   /** Required. A name of the TrustConfig to describe. Must be in the format `projects/*\/locations/*\/trustConfigs/*`. */
   name: string;
 }
-export const GetProjectsLocationsTrustConfigsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://certificatemanager.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsTrustConfigsRequest" }) as any as S.Schema<GetProjectsLocationsTrustConfigsRequest>;
+export const GetProjectsLocationsTrustConfigsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://certificatemanager.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsTrustConfigsRequest",
+}) as any as S.Schema<GetProjectsLocationsTrustConfigsRequest>;
 
 export interface ListProjectsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
@@ -989,17 +1292,27 @@ export interface ListProjectsLocationsRequest {
   pageSize?: number;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/locations","baseUrl":"https://certificatemanager.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
+  S.Struct({
+    filter: S.optional(S.String.pipe(T.Query())),
+    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}/locations",
+      baseUrl: "https://certificatemanager.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsRequest",
+}) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(
+  Location,
+) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -1009,11 +1322,13 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locations": S.optional(LocationList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
+  S.Struct({
+    locations: S.optional(LocationList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListLocationsResponse",
+}) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsLocationsCertificateIssuanceConfigsRequest {
   /** Required. The project and location from which the certificate should be listed, specified in the format `projects/*\/locations/*`. */
@@ -1027,18 +1342,30 @@ export interface ListProjectsLocationsCertificateIssuanceConfigsRequest {
   /** Optional. Maximum number of certificate configs to return per call. */
   pageSize?: number;
 }
-export const ListProjectsLocationsCertificateIssuanceConfigsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/certificateIssuanceConfigs","baseUrl":"https://certificatemanager.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsCertificateIssuanceConfigsRequest" }) as any as S.Schema<ListProjectsLocationsCertificateIssuanceConfigsRequest>;
+export const ListProjectsLocationsCertificateIssuanceConfigsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/certificateIssuanceConfigs",
+        baseUrl: "https://certificatemanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsCertificateIssuanceConfigsRequest",
+  }) as any as S.Schema<ListProjectsLocationsCertificateIssuanceConfigsRequest>;
 
-export type CertificateIssuanceConfigList = ReadonlyArray<CertificateIssuanceConfig>;
-export const CertificateIssuanceConfigList = /*@__PURE__*/ S.Array(CertificateIssuanceConfig) as any as S.Schema<CertificateIssuanceConfigList>;
+export type CertificateIssuanceConfigList =
+  ReadonlyArray<CertificateIssuanceConfig>;
+export const CertificateIssuanceConfigList = /*@__PURE__*/ S.Array(
+  CertificateIssuanceConfig,
+) as any as S.Schema<CertificateIssuanceConfigList>;
 
 /** Response for the `ListCertificateIssuanceConfigs` method. */
 export interface ListCertificateIssuanceConfigsResponse {
@@ -1049,13 +1376,16 @@ export interface ListCertificateIssuanceConfigsResponse {
   /** A list of certificate configs for the parent resource. */
   certificateIssuanceConfigs?: CertificateIssuanceConfigList;
 }
-export const ListCertificateIssuanceConfigsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-  "certificateIssuanceConfigs": S.optional(CertificateIssuanceConfigList),
-}),
-).annotate({ identifier: "ListCertificateIssuanceConfigsResponse" }) as any as S.Schema<ListCertificateIssuanceConfigsResponse>;
+export const ListCertificateIssuanceConfigsResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      nextPageToken: S.optional(S.String),
+      unreachable: S.optional(StringList),
+      certificateIssuanceConfigs: S.optional(CertificateIssuanceConfigList),
+    }),
+).annotate({
+  identifier: "ListCertificateIssuanceConfigsResponse",
+}) as any as S.Schema<ListCertificateIssuanceConfigsResponse>;
 
 export interface ListProjectsLocationsCertificateMapsRequest {
   /** Optional. The value returned by the last `ListCertificateMapsResponse`. Indicates that this is a continuation of a prior `ListCertificateMaps` call, and that the system should return the next page of data. */
@@ -1069,18 +1399,29 @@ export interface ListProjectsLocationsCertificateMapsRequest {
   /** Optional. Filter expression to restrict the Certificates Maps returned. */
   filter?: string;
 }
-export const ListProjectsLocationsCertificateMapsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/certificateMaps","baseUrl":"https://certificatemanager.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsCertificateMapsRequest" }) as any as S.Schema<ListProjectsLocationsCertificateMapsRequest>;
+export const ListProjectsLocationsCertificateMapsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/certificateMaps",
+        baseUrl: "https://certificatemanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsCertificateMapsRequest",
+  }) as any as S.Schema<ListProjectsLocationsCertificateMapsRequest>;
 
 export type CertificateMapList = ReadonlyArray<CertificateMap>;
-export const CertificateMapList = /*@__PURE__*/ S.Array(CertificateMap) as any as S.Schema<CertificateMapList>;
+export const CertificateMapList = /*@__PURE__*/ S.Array(
+  CertificateMap,
+) as any as S.Schema<CertificateMapList>;
 
 /** Response for the `ListCertificateMaps` method. */
 export interface ListCertificateMapsResponse {
@@ -1092,12 +1433,14 @@ export interface ListCertificateMapsResponse {
   certificateMaps?: CertificateMapList;
 }
 export const ListCertificateMapsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-  "certificateMaps": S.optional(CertificateMapList),
-}),
-).annotate({ identifier: "ListCertificateMapsResponse" }) as any as S.Schema<ListCertificateMapsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+    certificateMaps: S.optional(CertificateMapList),
+  }),
+).annotate({
+  identifier: "ListCertificateMapsResponse",
+}) as any as S.Schema<ListCertificateMapsResponse>;
 
 export interface ListProjectsLocationsCertificateMapsCertificateMapEntriesRequest {
   /** Optional. Filter expression to restrict the returned Certificate Map Entries. */
@@ -1111,18 +1454,30 @@ export interface ListProjectsLocationsCertificateMapsCertificateMapEntriesReques
   /** Optional. Maximum number of certificate map entries to return. The service may return fewer than this value. If unspecified, at most 50 certificate map entries will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-export const ListProjectsLocationsCertificateMapsCertificateMapEntriesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/certificateMapEntries","baseUrl":"https://certificatemanager.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsCertificateMapsCertificateMapEntriesRequest" }) as any as S.Schema<ListProjectsLocationsCertificateMapsCertificateMapEntriesRequest>;
+export const ListProjectsLocationsCertificateMapsCertificateMapEntriesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      filter: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/certificateMapEntries",
+        baseUrl: "https://certificatemanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "ListProjectsLocationsCertificateMapsCertificateMapEntriesRequest",
+  }) as any as S.Schema<ListProjectsLocationsCertificateMapsCertificateMapEntriesRequest>;
 
 export type CertificateMapEntryList = ReadonlyArray<CertificateMapEntry>;
-export const CertificateMapEntryList = /*@__PURE__*/ S.Array(CertificateMapEntry) as any as S.Schema<CertificateMapEntryList>;
+export const CertificateMapEntryList = /*@__PURE__*/ S.Array(
+  CertificateMapEntry,
+) as any as S.Schema<CertificateMapEntryList>;
 
 /** Response for the `ListCertificateMapEntries` method. */
 export interface ListCertificateMapEntriesResponse {
@@ -1134,12 +1489,14 @@ export interface ListCertificateMapEntriesResponse {
   unreachable?: StringList;
 }
 export const ListCertificateMapEntriesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "certificateMapEntries": S.optional(CertificateMapEntryList),
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListCertificateMapEntriesResponse" }) as any as S.Schema<ListCertificateMapEntriesResponse>;
+  S.Struct({
+    certificateMapEntries: S.optional(CertificateMapEntryList),
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListCertificateMapEntriesResponse",
+}) as any as S.Schema<ListCertificateMapEntriesResponse>;
 
 export interface ListProjectsLocationsCertificatesRequest {
   /** Required. The project and location from which the certificate should be listed, specified in the format `projects/*\/locations/*`. */
@@ -1153,18 +1510,29 @@ export interface ListProjectsLocationsCertificatesRequest {
   /** Optional. Maximum number of certificates to return per call. */
   pageSize?: number;
 }
-export const ListProjectsLocationsCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/certificates","baseUrl":"https://certificatemanager.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsCertificatesRequest" }) as any as S.Schema<ListProjectsLocationsCertificatesRequest>;
+export const ListProjectsLocationsCertificatesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/certificates",
+        baseUrl: "https://certificatemanager.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsCertificatesRequest",
+}) as any as S.Schema<ListProjectsLocationsCertificatesRequest>;
 
 export type CertificateList = ReadonlyArray<Certificate>;
-export const CertificateList = /*@__PURE__*/ S.Array(Certificate) as any as S.Schema<CertificateList>;
+export const CertificateList = /*@__PURE__*/ S.Array(
+  Certificate,
+) as any as S.Schema<CertificateList>;
 
 /** Response for the `ListCertificates` method. */
 export interface ListCertificatesResponse {
@@ -1176,12 +1544,14 @@ export interface ListCertificatesResponse {
   certificates?: CertificateList;
 }
 export const ListCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-  "certificates": S.optional(CertificateList),
-}),
-).annotate({ identifier: "ListCertificatesResponse" }) as any as S.Schema<ListCertificatesResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+    certificates: S.optional(CertificateList),
+  }),
+).annotate({
+  identifier: "ListCertificatesResponse",
+}) as any as S.Schema<ListCertificatesResponse>;
 
 export interface ListProjectsLocationsDnsAuthorizationsRequest {
   /** Required. The project and location from which the dns authorizations should be listed, specified in the format `projects/*\/locations/*`. */
@@ -1195,18 +1565,29 @@ export interface ListProjectsLocationsDnsAuthorizationsRequest {
   /** Optional. Maximum number of dns authorizations to return per call. */
   pageSize?: number;
 }
-export const ListProjectsLocationsDnsAuthorizationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/dnsAuthorizations","baseUrl":"https://certificatemanager.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsDnsAuthorizationsRequest" }) as any as S.Schema<ListProjectsLocationsDnsAuthorizationsRequest>;
+export const ListProjectsLocationsDnsAuthorizationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/dnsAuthorizations",
+        baseUrl: "https://certificatemanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsDnsAuthorizationsRequest",
+  }) as any as S.Schema<ListProjectsLocationsDnsAuthorizationsRequest>;
 
 export type DnsAuthorizationList = ReadonlyArray<DnsAuthorization>;
-export const DnsAuthorizationList = /*@__PURE__*/ S.Array(DnsAuthorization) as any as S.Schema<DnsAuthorizationList>;
+export const DnsAuthorizationList = /*@__PURE__*/ S.Array(
+  DnsAuthorization,
+) as any as S.Schema<DnsAuthorizationList>;
 
 /** Response for the `ListDnsAuthorizations` method. */
 export interface ListDnsAuthorizationsResponse {
@@ -1218,12 +1599,14 @@ export interface ListDnsAuthorizationsResponse {
   dnsAuthorizations?: DnsAuthorizationList;
 }
 export const ListDnsAuthorizationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-  "dnsAuthorizations": S.optional(DnsAuthorizationList),
-}),
-).annotate({ identifier: "ListDnsAuthorizationsResponse" }) as any as S.Schema<ListDnsAuthorizationsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+    dnsAuthorizations: S.optional(DnsAuthorizationList),
+  }),
+).annotate({
+  identifier: "ListDnsAuthorizationsResponse",
+}) as any as S.Schema<ListDnsAuthorizationsResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page token. */
@@ -1237,18 +1620,29 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list filter. */
   filter?: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/operations","baseUrl":"https://certificatemanager.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      filter: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}/operations",
+        baseUrl: "https://certificatemanager.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsOperationsRequest",
+}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(
+  Operation,
+) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -1260,12 +1654,14 @@ export interface ListOperationsResponse {
   operations?: OperationList;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-  "operations": S.optional(OperationList),
-}),
-).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+    operations: S.optional(OperationList),
+  }),
+).annotate({
+  identifier: "ListOperationsResponse",
+}) as any as S.Schema<ListOperationsResponse>;
 
 export interface ListProjectsLocationsTrustConfigsRequest {
   /** Optional. The value returned by the last `ListTrustConfigsResponse`. Indicates that this is a continuation of a prior `ListTrustConfigs` call, and that the system should return the next page of data. */
@@ -1279,18 +1675,29 @@ export interface ListProjectsLocationsTrustConfigsRequest {
   /** Optional. A list of TrustConfig field names used to specify the order of the returned results. The default sorting order is ascending. To specify descending order for a field, add a suffix `" desc"`. */
   orderBy?: string;
 }
-export const ListProjectsLocationsTrustConfigsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/trustConfigs","baseUrl":"https://certificatemanager.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsTrustConfigsRequest" }) as any as S.Schema<ListProjectsLocationsTrustConfigsRequest>;
+export const ListProjectsLocationsTrustConfigsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/trustConfigs",
+        baseUrl: "https://certificatemanager.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsTrustConfigsRequest",
+}) as any as S.Schema<ListProjectsLocationsTrustConfigsRequest>;
 
 export type TrustConfigList = ReadonlyArray<TrustConfig>;
-export const TrustConfigList = /*@__PURE__*/ S.Array(TrustConfig) as any as S.Schema<TrustConfigList>;
+export const TrustConfigList = /*@__PURE__*/ S.Array(
+  TrustConfig,
+) as any as S.Schema<TrustConfigList>;
 
 /** Response for the `ListTrustConfigs` method. */
 export interface ListTrustConfigsResponse {
@@ -1302,12 +1709,14 @@ export interface ListTrustConfigsResponse {
   trustConfigs?: TrustConfigList;
 }
 export const ListTrustConfigsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-  "trustConfigs": S.optional(TrustConfigList),
-}),
-).annotate({ identifier: "ListTrustConfigsResponse" }) as any as S.Schema<ListTrustConfigsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+    trustConfigs: S.optional(TrustConfigList),
+  }),
+).annotate({
+  identifier: "ListTrustConfigsResponse",
+}) as any as S.Schema<ListTrustConfigsResponse>;
 
 export interface PatchProjectsLocationsCertificateIssuanceConfigsRequest {
   /** Identifier. A user-defined name of the certificate issuance config. CertificateIssuanceConfig names must be unique globally and match pattern `projects/*\/locations/*\/certificateIssuanceConfigs/*`. */
@@ -1317,13 +1726,22 @@ export interface PatchProjectsLocationsCertificateIssuanceConfigsRequest {
   /** Request body */
   body?: CertificateIssuanceConfig;
 }
-export const PatchProjectsLocationsCertificateIssuanceConfigsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(CertificateIssuanceConfig.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://certificatemanager.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsCertificateIssuanceConfigsRequest" }) as any as S.Schema<PatchProjectsLocationsCertificateIssuanceConfigsRequest>;
+export const PatchProjectsLocationsCertificateIssuanceConfigsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(CertificateIssuanceConfig.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://certificatemanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsCertificateIssuanceConfigsRequest",
+  }) as any as S.Schema<PatchProjectsLocationsCertificateIssuanceConfigsRequest>;
 
 export interface PatchProjectsLocationsCertificateMapsRequest {
   /** Required. The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask. */
@@ -1333,13 +1751,22 @@ export interface PatchProjectsLocationsCertificateMapsRequest {
   /** Request body */
   body?: CertificateMap;
 }
-export const PatchProjectsLocationsCertificateMapsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(CertificateMap.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://certificatemanager.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsCertificateMapsRequest" }) as any as S.Schema<PatchProjectsLocationsCertificateMapsRequest>;
+export const PatchProjectsLocationsCertificateMapsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      body: S.optional(CertificateMap.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://certificatemanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsCertificateMapsRequest",
+  }) as any as S.Schema<PatchProjectsLocationsCertificateMapsRequest>;
 
 export interface PatchProjectsLocationsCertificateMapsCertificateMapEntriesRequest {
   /** Required. The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask. */
@@ -1349,13 +1776,23 @@ export interface PatchProjectsLocationsCertificateMapsCertificateMapEntriesReque
   /** Request body */
   body?: CertificateMapEntry;
 }
-export const PatchProjectsLocationsCertificateMapsCertificateMapEntriesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(CertificateMapEntry.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://certificatemanager.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsCertificateMapsCertificateMapEntriesRequest" }) as any as S.Schema<PatchProjectsLocationsCertificateMapsCertificateMapEntriesRequest>;
+export const PatchProjectsLocationsCertificateMapsCertificateMapEntriesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      body: S.optional(CertificateMapEntry.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://certificatemanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "PatchProjectsLocationsCertificateMapsCertificateMapEntriesRequest",
+  }) as any as S.Schema<PatchProjectsLocationsCertificateMapsCertificateMapEntriesRequest>;
 
 export interface PatchProjectsLocationsCertificatesRequest {
   /** Required. The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask. */
@@ -1365,13 +1802,22 @@ export interface PatchProjectsLocationsCertificatesRequest {
   /** Request body */
   body?: Certificate;
 }
-export const PatchProjectsLocationsCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(Certificate.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://certificatemanager.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsCertificatesRequest" }) as any as S.Schema<PatchProjectsLocationsCertificatesRequest>;
+export const PatchProjectsLocationsCertificatesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      body: S.optional(Certificate.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://certificatemanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsCertificatesRequest",
+  }) as any as S.Schema<PatchProjectsLocationsCertificatesRequest>;
 
 export interface PatchProjectsLocationsDnsAuthorizationsRequest {
   /** Identifier. A user-defined name of the dns authorization. DnsAuthorization names must be unique globally and match pattern `projects/*\/locations/*\/dnsAuthorizations/*`. */
@@ -1381,13 +1827,22 @@ export interface PatchProjectsLocationsDnsAuthorizationsRequest {
   /** Request body */
   body?: DnsAuthorization;
 }
-export const PatchProjectsLocationsDnsAuthorizationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(DnsAuthorization.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://certificatemanager.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsDnsAuthorizationsRequest" }) as any as S.Schema<PatchProjectsLocationsDnsAuthorizationsRequest>;
+export const PatchProjectsLocationsDnsAuthorizationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(DnsAuthorization.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://certificatemanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsDnsAuthorizationsRequest",
+  }) as any as S.Schema<PatchProjectsLocationsDnsAuthorizationsRequest>;
 
 export interface PatchProjectsLocationsTrustConfigsRequest {
   /** Required. The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask. */
@@ -1397,15 +1852,29 @@ export interface PatchProjectsLocationsTrustConfigsRequest {
   /** Request body */
   body?: TrustConfig;
 }
-export const PatchProjectsLocationsTrustConfigsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(TrustConfig.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://certificatemanager.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsTrustConfigsRequest" }) as any as S.Schema<PatchProjectsLocationsTrustConfigsRequest>;
+export const PatchProjectsLocationsTrustConfigsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      body: S.optional(TrustConfig.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://certificatemanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsTrustConfigsRequest",
+  }) as any as S.Schema<PatchProjectsLocationsTrustConfigsRequest>;
 
-export type CancelProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CancelProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsRequest,
@@ -1420,7 +1889,12 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsCertificateIssuanceConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsCertificateIssuanceConfigsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new CertificateIssuanceConfig in a given project and location. */
 export const createProjectsLocationsCertificateIssuanceConfigs: API.OperationMethod<
   CreateProjectsLocationsCertificateIssuanceConfigsRequest,
@@ -1435,7 +1909,12 @@ export const createProjectsLocationsCertificateIssuanceConfigs: API.OperationMet
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsCertificateMapsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsCertificateMapsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new CertificateMap in a given project and location. */
 export const createProjectsLocationsCertificateMaps: API.OperationMethod<
   CreateProjectsLocationsCertificateMapsRequest,
@@ -1450,7 +1929,12 @@ export const createProjectsLocationsCertificateMaps: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsCertificateMapsCertificateMapEntriesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsCertificateMapsCertificateMapEntriesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new CertificateMapEntry in a given project and location. */
 export const createProjectsLocationsCertificateMapsCertificateMapEntries: API.OperationMethod<
   CreateProjectsLocationsCertificateMapsCertificateMapEntriesRequest,
@@ -1465,7 +1949,12 @@ export const createProjectsLocationsCertificateMapsCertificateMapEntries: API.Op
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsCertificatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsCertificatesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new Certificate in a given project and location. */
 export const createProjectsLocationsCertificates: API.OperationMethod<
   CreateProjectsLocationsCertificatesRequest,
@@ -1480,7 +1969,12 @@ export const createProjectsLocationsCertificates: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsDnsAuthorizationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsDnsAuthorizationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new DnsAuthorization in a given project and location. */
 export const createProjectsLocationsDnsAuthorizations: API.OperationMethod<
   CreateProjectsLocationsDnsAuthorizationsRequest,
@@ -1495,7 +1989,12 @@ export const createProjectsLocationsDnsAuthorizations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsTrustConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsTrustConfigsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new TrustConfig in a given project and location. */
 export const createProjectsLocationsTrustConfigs: API.OperationMethod<
   CreateProjectsLocationsTrustConfigsRequest,
@@ -1510,7 +2009,12 @@ export const createProjectsLocationsTrustConfigs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsCertificateIssuanceConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsCertificateIssuanceConfigsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a single CertificateIssuanceConfig. */
 export const deleteProjectsLocationsCertificateIssuanceConfigs: API.OperationMethod<
   DeleteProjectsLocationsCertificateIssuanceConfigsRequest,
@@ -1525,7 +2029,12 @@ export const deleteProjectsLocationsCertificateIssuanceConfigs: API.OperationMet
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsCertificateMapsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsCertificateMapsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a single CertificateMap. A Certificate Map can't be deleted if it contains Certificate Map Entries. Remove all the entries from the map before calling this method. */
 export const deleteProjectsLocationsCertificateMaps: API.OperationMethod<
   DeleteProjectsLocationsCertificateMapsRequest,
@@ -1540,7 +2049,12 @@ export const deleteProjectsLocationsCertificateMaps: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsCertificateMapsCertificateMapEntriesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsCertificateMapsCertificateMapEntriesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a single CertificateMapEntry. */
 export const deleteProjectsLocationsCertificateMapsCertificateMapEntries: API.OperationMethod<
   DeleteProjectsLocationsCertificateMapsCertificateMapEntriesRequest,
@@ -1555,7 +2069,12 @@ export const deleteProjectsLocationsCertificateMapsCertificateMapEntries: API.Op
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsCertificatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsCertificatesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a single Certificate. */
 export const deleteProjectsLocationsCertificates: API.OperationMethod<
   DeleteProjectsLocationsCertificatesRequest,
@@ -1570,7 +2089,12 @@ export const deleteProjectsLocationsCertificates: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsDnsAuthorizationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsDnsAuthorizationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a single DnsAuthorization. */
 export const deleteProjectsLocationsDnsAuthorizations: API.OperationMethod<
   DeleteProjectsLocationsDnsAuthorizationsRequest,
@@ -1585,7 +2109,12 @@ export const deleteProjectsLocationsDnsAuthorizations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsRequest,
@@ -1600,7 +2129,12 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsTrustConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsTrustConfigsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a single TrustConfig. */
 export const deleteProjectsLocationsTrustConfigs: API.OperationMethod<
   DeleteProjectsLocationsTrustConfigsRequest,
@@ -1630,7 +2164,10 @@ export const getProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsCertificateIssuanceConfigsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsCertificateIssuanceConfigsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a single CertificateIssuanceConfig. */
 export const getProjectsLocationsCertificateIssuanceConfigs: API.OperationMethod<
   GetProjectsLocationsCertificateIssuanceConfigsRequest,
@@ -1645,7 +2182,10 @@ export const getProjectsLocationsCertificateIssuanceConfigs: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsCertificateMapsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsCertificateMapsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a single CertificateMap. */
 export const getProjectsLocationsCertificateMaps: API.OperationMethod<
   GetProjectsLocationsCertificateMapsRequest,
@@ -1660,7 +2200,10 @@ export const getProjectsLocationsCertificateMaps: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsCertificateMapsCertificateMapEntriesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsCertificateMapsCertificateMapEntriesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a single CertificateMapEntry. */
 export const getProjectsLocationsCertificateMapsCertificateMapEntries: API.OperationMethod<
   GetProjectsLocationsCertificateMapsCertificateMapEntriesRequest,
@@ -1675,7 +2218,10 @@ export const getProjectsLocationsCertificateMapsCertificateMapEntries: API.Opera
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsCertificatesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsCertificatesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a single Certificate. */
 export const getProjectsLocationsCertificates: API.OperationMethod<
   GetProjectsLocationsCertificatesRequest,
@@ -1690,7 +2236,10 @@ export const getProjectsLocationsCertificates: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsDnsAuthorizationsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsDnsAuthorizationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a single DnsAuthorization. */
 export const getProjectsLocationsDnsAuthorizations: API.OperationMethod<
   GetProjectsLocationsDnsAuthorizationsRequest,
@@ -1705,7 +2254,10 @@ export const getProjectsLocationsDnsAuthorizations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -1720,7 +2272,10 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsTrustConfigsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsTrustConfigsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a single TrustConfig. */
 export const getProjectsLocationsTrustConfigs: API.OperationMethod<
   GetProjectsLocationsTrustConfigsRequest,
@@ -1748,10 +2303,16 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsCertificateIssuanceConfigsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsCertificateIssuanceConfigsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists CertificateIssuanceConfigs in a given project and location. */
 export const listProjectsLocationsCertificateIssuanceConfigs: API.PaginatedOperationMethod<
   ListProjectsLocationsCertificateIssuanceConfigsRequest,
@@ -1764,10 +2325,16 @@ export const listProjectsLocationsCertificateIssuanceConfigs: API.PaginatedOpera
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsCertificateMapsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsCertificateMapsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists CertificateMaps in a given project and location. */
 export const listProjectsLocationsCertificateMaps: API.PaginatedOperationMethod<
   ListProjectsLocationsCertificateMapsRequest,
@@ -1780,10 +2347,16 @@ export const listProjectsLocationsCertificateMaps: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsCertificateMapsCertificateMapEntriesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsCertificateMapsCertificateMapEntriesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists CertificateMapEntries in a given project and location. */
 export const listProjectsLocationsCertificateMapsCertificateMapEntries: API.PaginatedOperationMethod<
   ListProjectsLocationsCertificateMapsCertificateMapEntriesRequest,
@@ -1796,10 +2369,16 @@ export const listProjectsLocationsCertificateMapsCertificateMapEntries: API.Pagi
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsCertificatesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsCertificatesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists Certificates in a given project and location. */
 export const listProjectsLocationsCertificates: API.PaginatedOperationMethod<
   ListProjectsLocationsCertificatesRequest,
@@ -1812,10 +2391,16 @@ export const listProjectsLocationsCertificates: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsDnsAuthorizationsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsDnsAuthorizationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists DnsAuthorizations in a given project and location. */
 export const listProjectsLocationsDnsAuthorizations: API.PaginatedOperationMethod<
   ListProjectsLocationsDnsAuthorizationsRequest,
@@ -1828,10 +2413,16 @@ export const listProjectsLocationsDnsAuthorizations: API.PaginatedOperationMetho
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -1844,10 +2435,16 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsTrustConfigsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsTrustConfigsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists TrustConfigs in a given project and location. */
 export const listProjectsLocationsTrustConfigs: API.PaginatedOperationMethod<
   ListProjectsLocationsTrustConfigsRequest,
@@ -1860,10 +2457,18 @@ export const listProjectsLocationsTrustConfigs: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type PatchProjectsLocationsCertificateIssuanceConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsCertificateIssuanceConfigsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a CertificateIssuanceConfig. */
 export const patchProjectsLocationsCertificateIssuanceConfigs: API.OperationMethod<
   PatchProjectsLocationsCertificateIssuanceConfigsRequest,
@@ -1878,7 +2483,12 @@ export const patchProjectsLocationsCertificateIssuanceConfigs: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsCertificateMapsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsCertificateMapsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a CertificateMap. */
 export const patchProjectsLocationsCertificateMaps: API.OperationMethod<
   PatchProjectsLocationsCertificateMapsRequest,
@@ -1893,7 +2503,12 @@ export const patchProjectsLocationsCertificateMaps: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsCertificateMapsCertificateMapEntriesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsCertificateMapsCertificateMapEntriesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a CertificateMapEntry. */
 export const patchProjectsLocationsCertificateMapsCertificateMapEntries: API.OperationMethod<
   PatchProjectsLocationsCertificateMapsCertificateMapEntriesRequest,
@@ -1908,7 +2523,12 @@ export const patchProjectsLocationsCertificateMapsCertificateMapEntries: API.Ope
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsCertificatesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsCertificatesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a Certificate. */
 export const patchProjectsLocationsCertificates: API.OperationMethod<
   PatchProjectsLocationsCertificatesRequest,
@@ -1923,7 +2543,12 @@ export const patchProjectsLocationsCertificates: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsDnsAuthorizationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsDnsAuthorizationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a DnsAuthorization. */
 export const patchProjectsLocationsDnsAuthorizations: API.OperationMethod<
   PatchProjectsLocationsDnsAuthorizationsRequest,
@@ -1938,7 +2563,12 @@ export const patchProjectsLocationsDnsAuthorizations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsTrustConfigsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsTrustConfigsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a TrustConfig. */
 export const patchProjectsLocationsTrustConfigs: API.OperationMethod<
   PatchProjectsLocationsTrustConfigsRequest,
@@ -1952,4 +2582,3 @@ export const patchProjectsLocationsTrustConfigs: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

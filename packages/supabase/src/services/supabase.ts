@@ -4726,15 +4726,25 @@ export const DiskResponseAttributesCase1 = /*@__PURE__*/ S.suspend(() =>
   identifier: "DiskResponseAttributesCase1",
 }) as any as S.Schema<DiskResponseAttributesCase1>;
 
-export type DiskResponseAttributes =
-  | DiskResponseAttributesCase0
-  | DiskResponseAttributesCase1;
-export const DiskResponseAttributes = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["iops", "size_gb", "throughput_mibps", "type"],
-    ["iops", "size_gb", "type"],
-  ]),
-);
+export interface DiskResponseAttributes {
+  iops: number;
+  size_gb: number;
+  throughput_mibps?: number;
+  type: DiskResponseAttributesCase0Type | DiskResponseAttributesCase1Type;
+}
+export const DiskResponseAttributes = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    iops: S.Number,
+    size_gb: S.Number,
+    throughput_mibps: S.optional(S.Number),
+    type: S.Union(
+      DiskResponseAttributesCase0Type,
+      DiskResponseAttributesCase1Type,
+    ),
+  }),
+).annotate({
+  identifier: "DiskResponseAttributes",
+}) as any as S.Schema<DiskResponseAttributes>;
 
 export interface DiskResponse {
   attributes: DiskResponseAttributes;
@@ -4909,13 +4919,20 @@ export const JitStateResponseCase1 = /*@__PURE__*/ S.suspend(() =>
   identifier: "JitStateResponseCase1",
 }) as any as S.Schema<JitStateResponseCase1>;
 
-export type JitStateResponse = JitStateResponseCase0 | JitStateResponseCase1;
-export const JitStateResponse = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["state", "appliedSuccessfully"],
-    ["state", "unavailableReason"],
-  ]),
-);
+export interface JitStateResponse {
+  state: JitStateResponseCase0State | JitStateResponseCase1State;
+  appliedSuccessfully?: boolean;
+  unavailableReason?: JitStateResponseCase1UnavailableReason;
+}
+export const JitStateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    state: S.Union(JitStateResponseCase0State, JitStateResponseCase1State),
+    appliedSuccessfully: S.optional(S.Boolean),
+    unavailableReason: S.optional(JitStateResponseCase1UnavailableReason),
+  }),
+).annotate({
+  identifier: "JitStateResponse",
+}) as any as S.Schema<JitStateResponse>;
 
 export type V1GetJitAccessConfigResponse = JitStateResponse;
 export const V1GetJitAccessConfigResponse = /*@__PURE__*/ S.suspend(() =>
@@ -5219,18 +5236,27 @@ export const V1ListEntitlementsResponseEntitlementsItemConfigCase2 =
     identifier: "V1ListEntitlementsResponseEntitlementsItemConfigCase2",
   }) as any as S.Schema<V1ListEntitlementsResponseEntitlementsItemConfigCase2>;
 
-export type V1ListEntitlementsResponseEntitlementsItemConfig =
-  | V1ListEntitlementsResponseEntitlementsItemConfigCase0
-  | V1ListEntitlementsResponseEntitlementsItemConfigCase1
-  | V1ListEntitlementsResponseEntitlementsItemConfigCase2;
+export interface V1ListEntitlementsResponseEntitlementsItemConfig {
+  enabled: boolean;
+  value?: number;
+  unlimited?: boolean;
+  unit?: string;
+  set?: V1ListEntitlementsResponseEntitlementsItemConfigCase2SetList;
+}
 export const V1ListEntitlementsResponseEntitlementsItemConfig =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["enabled"],
-      ["enabled", "value", "unlimited", "unit"],
-      ["enabled", "set"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+      value: S.optional(S.Number),
+      unlimited: S.optional(S.Boolean),
+      unit: S.optional(S.String),
+      set: S.optional(
+        V1ListEntitlementsResponseEntitlementsItemConfigCase2SetList,
+      ),
+    }),
+  ).annotate({
+    identifier: "V1ListEntitlementsResponseEntitlementsItemConfig",
+  }) as any as S.Schema<V1ListEntitlementsResponseEntitlementsItemConfig>;
 
 export interface V1ListEntitlementsResponseEntitlementsItem {
   feature: V1ListEntitlementsResponseEntitlementsItemFeature;
@@ -6020,32 +6046,68 @@ export const ProjectUpgradeEligibilityResponseValidationErrorsItemCase9 =
     identifier: "ProjectUpgradeEligibilityResponseValidationErrorsItemCase9",
   }) as any as S.Schema<ProjectUpgradeEligibilityResponseValidationErrorsItemCase9>;
 
-export type ProjectUpgradeEligibilityResponseValidationErrorsItem =
-  | ProjectUpgradeEligibilityResponseValidationErrorsItemCase0
-  | ProjectUpgradeEligibilityResponseValidationErrorsItemCase1
-  | ProjectUpgradeEligibilityResponseValidationErrorsItemCase2
-  | ProjectUpgradeEligibilityResponseValidationErrorsItemCase3
-  | ProjectUpgradeEligibilityResponseValidationErrorsItemCase4
-  | ProjectUpgradeEligibilityResponseValidationErrorsItemCase5
-  | ProjectUpgradeEligibilityResponseValidationErrorsItemCase6
-  | ProjectUpgradeEligibilityResponseValidationErrorsItemCase7
-  | ProjectUpgradeEligibilityResponseValidationErrorsItemCase8
-  | ProjectUpgradeEligibilityResponseValidationErrorsItemCase9;
+export interface ProjectUpgradeEligibilityResponseValidationErrorsItem {
+  type:
+    | ProjectUpgradeEligibilityResponseValidationErrorsItemCase0Type
+    | ProjectUpgradeEligibilityResponseValidationErrorsItemCase1Type
+    | ProjectUpgradeEligibilityResponseValidationErrorsItemCase2Type
+    | ProjectUpgradeEligibilityResponseValidationErrorsItemCase3Type
+    | ProjectUpgradeEligibilityResponseValidationErrorsItemCase4Type
+    | ProjectUpgradeEligibilityResponseValidationErrorsItemCase5Type
+    | ProjectUpgradeEligibilityResponseValidationErrorsItemCase6Type
+    | ProjectUpgradeEligibilityResponseValidationErrorsItemCase7Type
+    | ProjectUpgradeEligibilityResponseValidationErrorsItemCase8Type
+    | ProjectUpgradeEligibilityResponseValidationErrorsItemCase9Type;
+  dependents?: ProjectUpgradeEligibilityResponseValidationErrorsItemCase0DependentsList;
+  schema_name?: string;
+  table_name?: string;
+  index_name?: string;
+  function_name?: string;
+  lang_name?: string;
+  extension_name?: string;
+  fdw_name?: string;
+  fdw_handler_name?: string;
+  sequence_name?: string;
+  obj_type?: ProjectUpgradeEligibilityResponseValidationErrorsItemCase6ObjType;
+  obj_name?: string;
+  slot_name?: string;
+}
 export const ProjectUpgradeEligibilityResponseValidationErrorsItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["type", "dependents"],
-      ["type", "schema_name", "table_name", "index_name"],
-      ["type", "schema_name", "function_name", "lang_name"],
-      ["type", "extension_name"],
-      ["type", "fdw_name", "fdw_handler_name"],
-      ["type", "schema_name", "table_name", "sequence_name"],
-      ["type", "obj_type", "schema_name", "obj_name"],
-      ["type", "slot_name"],
-      ["type"],
-      ["type"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.Union(
+        ProjectUpgradeEligibilityResponseValidationErrorsItemCase0Type,
+        ProjectUpgradeEligibilityResponseValidationErrorsItemCase1Type,
+        ProjectUpgradeEligibilityResponseValidationErrorsItemCase2Type,
+        ProjectUpgradeEligibilityResponseValidationErrorsItemCase3Type,
+        ProjectUpgradeEligibilityResponseValidationErrorsItemCase4Type,
+        ProjectUpgradeEligibilityResponseValidationErrorsItemCase5Type,
+        ProjectUpgradeEligibilityResponseValidationErrorsItemCase6Type,
+        ProjectUpgradeEligibilityResponseValidationErrorsItemCase7Type,
+        ProjectUpgradeEligibilityResponseValidationErrorsItemCase8Type,
+        ProjectUpgradeEligibilityResponseValidationErrorsItemCase9Type,
+      ),
+      dependents: S.optional(
+        ProjectUpgradeEligibilityResponseValidationErrorsItemCase0DependentsList,
+      ),
+      schema_name: S.optional(S.String),
+      table_name: S.optional(S.String),
+      index_name: S.optional(S.String),
+      function_name: S.optional(S.String),
+      lang_name: S.optional(S.String),
+      extension_name: S.optional(S.String),
+      fdw_name: S.optional(S.String),
+      fdw_handler_name: S.optional(S.String),
+      sequence_name: S.optional(S.String),
+      obj_type: S.optional(
+        ProjectUpgradeEligibilityResponseValidationErrorsItemCase6ObjType,
+      ),
+      obj_name: S.optional(S.String),
+      slot_name: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ProjectUpgradeEligibilityResponseValidationErrorsItem",
+  }) as any as S.Schema<ProjectUpgradeEligibilityResponseValidationErrorsItem>;
 
 export type ProjectUpgradeEligibilityResponseValidationErrorsList =
   ReadonlyArray<ProjectUpgradeEligibilityResponseValidationErrorsItem>;
@@ -6105,12 +6167,24 @@ export const ProjectUpgradeEligibilityResponseWarningsItemCase2 =
     identifier: "ProjectUpgradeEligibilityResponseWarningsItemCase2",
   }) as any as S.Schema<ProjectUpgradeEligibilityResponseWarningsItemCase2>;
 
-export type ProjectUpgradeEligibilityResponseWarningsItem =
-  | ProjectUpgradeEligibilityResponseWarningsItemCase0
-  | ProjectUpgradeEligibilityResponseWarningsItemCase1
-  | ProjectUpgradeEligibilityResponseWarningsItemCase2;
+export interface ProjectUpgradeEligibilityResponseWarningsItem {
+  type:
+    | ProjectUpgradeEligibilityResponseWarningsItemCase0Type
+    | ProjectUpgradeEligibilityResponseWarningsItemCase1Type
+    | ProjectUpgradeEligibilityResponseWarningsItemCase2Type;
+}
 export const ProjectUpgradeEligibilityResponseWarningsItem =
-  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([["type"], ["type"], ["type"]]));
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.Union(
+        ProjectUpgradeEligibilityResponseWarningsItemCase0Type,
+        ProjectUpgradeEligibilityResponseWarningsItemCase1Type,
+        ProjectUpgradeEligibilityResponseWarningsItemCase2Type,
+      ),
+    }),
+  ).annotate({
+    identifier: "ProjectUpgradeEligibilityResponseWarningsItem",
+  }) as any as S.Schema<ProjectUpgradeEligibilityResponseWarningsItem>;
 
 export type ProjectUpgradeEligibilityResponseWarningsList =
   ReadonlyArray<ProjectUpgradeEligibilityResponseWarningsItem>;
@@ -7226,17 +7300,31 @@ export const V1ServiceHealthResponseInfoCase2 = /*@__PURE__*/ S.suspend(() =>
   identifier: "V1ServiceHealthResponseInfoCase2",
 }) as any as S.Schema<V1ServiceHealthResponseInfoCase2>;
 
-export type V1ServiceHealthResponseInfo =
-  | V1ServiceHealthResponseInfoCase0
-  | V1ServiceHealthResponseInfoCase1
-  | V1ServiceHealthResponseInfoCase2;
-export const V1ServiceHealthResponseInfo = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["name", "version", "description"],
-    ["healthy", "db_connected", "replication_connected", "connected_cluster"],
-    ["db_schema"],
-  ]),
-);
+export interface V1ServiceHealthResponseInfo {
+  name?: V1ServiceHealthResponseInfoCase0Name;
+  version?: string;
+  description?: string;
+  /** Deprecated. Use `status` instead. */
+  healthy?: boolean;
+  db_connected?: boolean;
+  replication_connected?: boolean;
+  connected_cluster?: number;
+  db_schema?: string;
+}
+export const V1ServiceHealthResponseInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(V1ServiceHealthResponseInfoCase0Name),
+    version: S.optional(S.String),
+    description: S.optional(S.String),
+    healthy: S.optional(S.Boolean),
+    db_connected: S.optional(S.Boolean),
+    replication_connected: S.optional(S.Boolean),
+    connected_cluster: S.optional(S.Number),
+    db_schema: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "V1ServiceHealthResponseInfo",
+}) as any as S.Schema<V1ServiceHealthResponseInfo>;
 
 export interface V1ServiceHealthResponse {
   name: V1ServiceHealthResponseName;
@@ -8778,15 +8866,29 @@ export const JitListAccessResponseItemsItemCase1 = /*@__PURE__*/ S.suspend(() =>
   identifier: "JitListAccessResponseItemsItemCase1",
 }) as any as S.Schema<JitListAccessResponseItemsItemCase1>;
 
-export type JitListAccessResponseItemsItem =
-  | JitListAccessResponseItemsItemCase0
-  | JitListAccessResponseItemsItemCase1;
-export const JitListAccessResponseItemsItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["user_id", "primary_email", "invite_id", "expires_at", "user_roles"],
-    ["user_id", "primary_email", "invite_id", "expires_at", "user_roles"],
-  ]),
-);
+export interface JitListAccessResponseItemsItem {
+  user_id: string | unknown | null;
+  primary_email: string | null;
+  invite_id: unknown | string | null;
+  expires_at: unknown | string | null;
+  user_roles:
+    | JitListAccessResponseItemsItemCase0UserRolesList
+    | JitListAccessResponseItemsItemCase1UserRolesList;
+}
+export const JitListAccessResponseItemsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    user_id: S.NullOr(S.Union(S.String, S.Unknown)),
+    primary_email: S.NullOr(S.String),
+    invite_id: S.NullOr(S.Union(S.Unknown, S.String)),
+    expires_at: S.NullOr(S.Union(S.Unknown, S.String)),
+    user_roles: S.Union(
+      JitListAccessResponseItemsItemCase0UserRolesList,
+      JitListAccessResponseItemsItemCase1UserRolesList,
+    ),
+  }),
+).annotate({
+  identifier: "JitListAccessResponseItemsItem",
+}) as any as S.Schema<JitListAccessResponseItemsItem>;
 
 export type JitListAccessResponseItemsList =
   ReadonlyArray<JitListAccessResponseItemsItem>;

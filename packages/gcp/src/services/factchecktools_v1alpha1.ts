@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 /** Information about the claim review author. */
@@ -67,12 +67,15 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor {
   /** Corresponds to `ClaimReview.author.image`. */
   imageUrl?: string;
 }
-export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "imageUrl": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor" }) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor>;
+export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.optional(S.String),
+      imageUrl: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor",
+  }) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor>;
 
 /** Information about the claim author. */
 export interface GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor {
@@ -85,17 +88,22 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor {
   /** Corresponds to `ClaimReview.itemReviewed.author.image`. */
   imageUrl?: string;
 }
-export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "jobTitle": S.optional(S.String),
-  "sameAs": S.optional(S.String),
-  "name": S.optional(S.String),
-  "imageUrl": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor" }) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor>;
+export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      jobTitle: S.optional(S.String),
+      sameAs: S.optional(S.String),
+      name: S.optional(S.String),
+      imageUrl: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor",
+  }) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** Information about the claim rating. */
 export interface GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating {
@@ -112,16 +120,19 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating {
   /** Corresponds to `ClaimReview.reviewRating.image`. */
   imageUrl?: string;
 }
-export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "ratingValue": S.optional(S.Number),
-  "bestRating": S.optional(S.Number),
-  "textualRating": S.optional(S.String),
-  "worstRating": S.optional(S.Number),
-  "ratingExplanation": S.optional(S.String),
-  "imageUrl": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating" }) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating>;
+export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      ratingValue: S.optional(S.Number),
+      bestRating: S.optional(S.Number),
+      textualRating: S.optional(S.String),
+      worstRating: S.optional(S.Number),
+      ratingExplanation: S.optional(S.String),
+      imageUrl: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating",
+  }) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating>;
 
 /** Fields for an individual `ClaimReview` element. Except for sub-messages that group fields together, each of these fields correspond those in https://schema.org/ClaimReview. We list the precise mapping for each field. */
 export interface GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup {
@@ -142,21 +153,30 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup {
   /** A short summary of the claim being evaluated. Corresponds to `ClaimReview.claimReviewed`. */
   claimReviewed?: string;
 }
-export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "claimDate": S.optional(S.String),
-  "claimAuthor": S.optional(GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor),
-  "claimLocation": S.optional(S.String),
-  "claimFirstAppearance": S.optional(S.String),
-  "claimAppearances": S.optional(StringList),
-  "rating": S.optional(GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating),
-  "url": S.optional(S.String),
-  "claimReviewed": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup" }) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup>;
+export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      claimDate: S.optional(S.String),
+      claimAuthor: S.optional(
+        GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor,
+      ),
+      claimLocation: S.optional(S.String),
+      claimFirstAppearance: S.optional(S.String),
+      claimAppearances: S.optional(StringList),
+      rating: S.optional(GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating),
+      url: S.optional(S.String),
+      claimReviewed: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup",
+  }) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup>;
 
-export type GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupList = ReadonlyArray<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup>;
-export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupList = /*@__PURE__*/ S.Array(GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupList>;
+export type GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupList =
+  ReadonlyArray<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup>;
+export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupList =
+  /*@__PURE__*/ S.Array(
+    GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup,
+  ) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupList>;
 
 /** Holds one or more instances of `ClaimReview` markup for a webpage. */
 export interface GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage {
@@ -173,52 +193,89 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage {
   /** A list of individual claim reviews for this page. Each item in the list corresponds to one `ClaimReview` element. */
   claimReviewMarkups?: GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupList;
 }
-export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageUrl": S.optional(S.String),
-  "name": S.optional(S.String),
-  "versionId": S.optional(S.String),
-  "claimReviewAuthor": S.optional(GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor),
-  "publishDate": S.optional(S.String),
-  "claimReviewMarkups": S.optional(GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupList),
-}),
-).annotate({ identifier: "GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage" }) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage>;
+export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageUrl: S.optional(S.String),
+      name: S.optional(S.String),
+      versionId: S.optional(S.String),
+      claimReviewAuthor: S.optional(
+        GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor,
+      ),
+      publishDate: S.optional(S.String),
+      claimReviewMarkups: S.optional(
+        GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupList,
+      ),
+    }),
+  ).annotate({
+    identifier: "GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage",
+  }) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage>;
 
 export interface CreatePagesRequest {
   /** Request body */
   body?: GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage;
 }
 export const CreatePagesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/pages","baseUrl":"https://factchecktools.googleapis.com/"})),
-).annotate({ identifier: "CreatePagesRequest" }) as any as S.Schema<CreatePagesRequest>;
+  S.Struct({
+    body: S.optional(
+      GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage.pipe(
+        T.HttpBody(),
+      ),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha1/pages",
+      baseUrl: "https://factchecktools.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreatePagesRequest",
+}) as any as S.Schema<CreatePagesRequest>;
 
 export interface DeletePagesRequest {
   /** The name of the resource to delete, in the form of `pages/{page_id}`. */
   name: string;
 }
 export const DeletePagesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1alpha1/{+name}","baseUrl":"https://factchecktools.googleapis.com/"})),
-).annotate({ identifier: "DeletePagesRequest" }) as any as S.Schema<DeletePagesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1alpha1/{+name}",
+      baseUrl: "https://factchecktools.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeletePagesRequest",
+}) as any as S.Schema<DeletePagesRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface GoogleProtobufEmpty {}
 export const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "GoogleProtobufEmpty" }) as any as S.Schema<GoogleProtobufEmpty>;
+  S.Struct({}),
+).annotate({
+  identifier: "GoogleProtobufEmpty",
+}) as any as S.Schema<GoogleProtobufEmpty>;
 
 export interface GetPagesRequest {
   /** The name of the resource to get, in the form of `pages/{page_id}`. */
   name: string;
 }
 export const GetPagesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+name}","baseUrl":"https://factchecktools.googleapis.com/"})),
-).annotate({ identifier: "GetPagesRequest" }) as any as S.Schema<GetPagesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha1/{+name}",
+      baseUrl: "https://factchecktools.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetPagesRequest",
+}) as any as S.Schema<GetPagesRequest>;
 
 export interface ImageSearchClaimsRequest {
   /** Required. The URI of the source image. This must be a publicly-accessible image HTTP/HTTPS URL. When fetching images from HTTP/HTTPS URLs, Google cannot guarantee that the request will be completed. Your request may fail if the specified host denies the request (e.g. due to request throttling or DOS prevention), or if Google throttles requests to the site for abuse prevention. You should not depend on externally-hosted images for production applications. */
@@ -233,14 +290,22 @@ export interface ImageSearchClaimsRequest {
   offset?: number;
 }
 export const ImageSearchClaimsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "imageUri": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "languageCode": S.optional(S.String.pipe(T.Query())),
-  "offset": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/claims:imageSearch","baseUrl":"https://factchecktools.googleapis.com/"})),
-).annotate({ identifier: "ImageSearchClaimsRequest" }) as any as S.Schema<ImageSearchClaimsRequest>;
+  S.Struct({
+    imageUri: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    languageCode: S.optional(S.String.pipe(T.Query())),
+    offset: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha1/claims:imageSearch",
+      baseUrl: "https://factchecktools.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ImageSearchClaimsRequest",
+}) as any as S.Schema<ImageSearchClaimsRequest>;
 
 /** Information about the publisher. */
 export interface GoogleFactcheckingFactchecktoolsV1alpha1Publisher {
@@ -249,12 +314,15 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1Publisher {
   /** The name of this publisher. For instance, "Awesome Fact Checks". */
   name?: string;
 }
-export const GoogleFactcheckingFactchecktoolsV1alpha1Publisher = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "site": S.optional(S.String),
-  "name": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleFactcheckingFactchecktoolsV1alpha1Publisher" }) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1Publisher>;
+export const GoogleFactcheckingFactchecktoolsV1alpha1Publisher =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      site: S.optional(S.String),
+      name: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleFactcheckingFactchecktoolsV1alpha1Publisher",
+  }) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1Publisher>;
 
 /** Information about a claim review. */
 export interface GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview {
@@ -271,19 +339,26 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview {
   /** The date the claim was reviewed. */
   reviewDate?: string;
 }
-export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "textualRating": S.optional(S.String),
-  "languageCode": S.optional(S.String),
-  "publisher": S.optional(GoogleFactcheckingFactchecktoolsV1alpha1Publisher),
-  "url": S.optional(S.String),
-  "title": S.optional(S.String),
-  "reviewDate": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview" }) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview>;
+export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      textualRating: S.optional(S.String),
+      languageCode: S.optional(S.String),
+      publisher: S.optional(GoogleFactcheckingFactchecktoolsV1alpha1Publisher),
+      url: S.optional(S.String),
+      title: S.optional(S.String),
+      reviewDate: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview",
+  }) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview>;
 
-export type GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewList = ReadonlyArray<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview>;
-export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewList = /*@__PURE__*/ S.Array(GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewList>;
+export type GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewList =
+  ReadonlyArray<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview>;
+export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewList =
+  /*@__PURE__*/ S.Array(
+    GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview,
+  ) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewList>;
 
 /** Information about the claim. */
 export interface GoogleFactcheckingFactchecktoolsV1alpha1Claim {
@@ -296,28 +371,41 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1Claim {
   /** One or more reviews of this claim (namely, a fact-checking article). */
   claimReview?: GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewList;
 }
-export const GoogleFactcheckingFactchecktoolsV1alpha1Claim = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "text": S.optional(S.String),
-  "claimant": S.optional(S.String),
-  "claimDate": S.optional(S.String),
-  "claimReview": S.optional(GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewList),
-}),
-).annotate({ identifier: "GoogleFactcheckingFactchecktoolsV1alpha1Claim" }) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1Claim>;
+export const GoogleFactcheckingFactchecktoolsV1alpha1Claim =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      text: S.optional(S.String),
+      claimant: S.optional(S.String),
+      claimDate: S.optional(S.String),
+      claimReview: S.optional(
+        GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewList,
+      ),
+    }),
+  ).annotate({
+    identifier: "GoogleFactcheckingFactchecktoolsV1alpha1Claim",
+  }) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1Claim>;
 
 /** A claim and its associated information. */
 export interface GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult {
   /** A claim which matched the query. */
   claim?: GoogleFactcheckingFactchecktoolsV1alpha1Claim;
 }
-export const GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "claim": S.optional(GoogleFactcheckingFactchecktoolsV1alpha1Claim),
-}),
-).annotate({ identifier: "GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult" }) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult>;
+export const GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      claim: S.optional(GoogleFactcheckingFactchecktoolsV1alpha1Claim),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult",
+  }) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult>;
 
-export type GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResultList = ReadonlyArray<GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult>;
-export const GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResultList = /*@__PURE__*/ S.Array(GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResultList>;
+export type GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResultList =
+  ReadonlyArray<GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult>;
+export const GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResultList =
+  /*@__PURE__*/ S.Array(
+    GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult,
+  ) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResultList>;
 
 /** Response from searching fact-checked claims by image. */
 export interface GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse {
@@ -326,12 +414,18 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSe
   /** The next pagination token in the Search response. It should be used as the `page_token` for the following request. An empty value means no more results. */
   nextPageToken?: string;
 }
-export const GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "results": S.optional(GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResultList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse" }) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse>;
+export const GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      results: S.optional(
+        GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResultList,
+      ),
+      nextPageToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse",
+  }) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse>;
 
 export interface ListPagesRequest {
   /** The organization for which we want to fetch markups for. For instance, "site.com". Cannot be specified along with an URL. */
@@ -346,17 +440,29 @@ export interface ListPagesRequest {
   pageSize?: number;
 }
 export const ListPagesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "organization": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "offset": S.optional(S.Number.pipe(T.Query())),
-  "url": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/pages","baseUrl":"https://factchecktools.googleapis.com/"})),
-).annotate({ identifier: "ListPagesRequest" }) as any as S.Schema<ListPagesRequest>;
+  S.Struct({
+    organization: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    offset: S.optional(S.Number.pipe(T.Query())),
+    url: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha1/pages",
+      baseUrl: "https://factchecktools.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListPagesRequest",
+}) as any as S.Schema<ListPagesRequest>;
 
-export type GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPageList = ReadonlyArray<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage>;
-export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPageList = /*@__PURE__*/ S.Array(GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPageList>;
+export type GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPageList =
+  ReadonlyArray<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage>;
+export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPageList =
+  /*@__PURE__*/ S.Array(
+    GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage,
+  ) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPageList>;
 
 /** Response from listing `ClaimReview` markup. */
 export interface GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse {
@@ -365,12 +471,18 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPa
   /** The next pagination token in the Search response. It should be used as the `page_token` for the following request. An empty value means no more results. */
   nextPageToken?: string;
 }
-export const GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "claimReviewMarkupPages": S.optional(GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPageList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse" }) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse>;
+export const GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      claimReviewMarkupPages: S.optional(
+        GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPageList,
+      ),
+      nextPageToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse",
+  }) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse>;
 
 export interface SearchClaimsRequest {
   /** Textual query string. Required unless `review_publisher_site_filter` is specified. */
@@ -389,19 +501,31 @@ export interface SearchClaimsRequest {
   offset?: number;
 }
 export const SearchClaimsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "query": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "languageCode": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "reviewPublisherSiteFilter": S.optional(S.String.pipe(T.Query())),
-  "maxAgeDays": S.optional(S.Number.pipe(T.Query())),
-  "offset": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/claims:search","baseUrl":"https://factchecktools.googleapis.com/"})),
-).annotate({ identifier: "SearchClaimsRequest" }) as any as S.Schema<SearchClaimsRequest>;
+  S.Struct({
+    query: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    languageCode: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    reviewPublisherSiteFilter: S.optional(S.String.pipe(T.Query())),
+    maxAgeDays: S.optional(S.Number.pipe(T.Query())),
+    offset: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha1/claims:search",
+      baseUrl: "https://factchecktools.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SearchClaimsRequest",
+}) as any as S.Schema<SearchClaimsRequest>;
 
-export type GoogleFactcheckingFactchecktoolsV1alpha1ClaimList = ReadonlyArray<GoogleFactcheckingFactchecktoolsV1alpha1Claim>;
-export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimList = /*@__PURE__*/ S.Array(GoogleFactcheckingFactchecktoolsV1alpha1Claim) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimList>;
+export type GoogleFactcheckingFactchecktoolsV1alpha1ClaimList =
+  ReadonlyArray<GoogleFactcheckingFactchecktoolsV1alpha1Claim>;
+export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimList =
+  /*@__PURE__*/ S.Array(
+    GoogleFactcheckingFactchecktoolsV1alpha1Claim,
+  ) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimList>;
 
 /** Response from searching fact-checked claims. */
 export interface GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse {
@@ -410,12 +534,16 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchR
   /** The list of claims and all of their associated information. */
   claims?: GoogleFactcheckingFactchecktoolsV1alpha1ClaimList;
 }
-export const GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "claims": S.optional(GoogleFactcheckingFactchecktoolsV1alpha1ClaimList),
-}),
-).annotate({ identifier: "GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse" }) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse>;
+export const GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      nextPageToken: S.optional(S.String),
+      claims: S.optional(GoogleFactcheckingFactchecktoolsV1alpha1ClaimList),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse",
+  }) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse>;
 
 export interface UpdatePagesRequest {
   /** The name of this `ClaimReview` markup page resource, in the form of `pages/{page_id}`. Except for update requests, this field is output-only and should not be set by the user. */
@@ -424,13 +552,30 @@ export interface UpdatePagesRequest {
   body?: GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage;
 }
 export const UpdatePagesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"v1alpha1/{+name}","baseUrl":"https://factchecktools.googleapis.com/"})),
-).annotate({ identifier: "UpdatePagesRequest" }) as any as S.Schema<UpdatePagesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(
+      GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage.pipe(
+        T.HttpBody(),
+      ),
+    ),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "v1alpha1/{+name}",
+      baseUrl: "https://factchecktools.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdatePagesRequest",
+}) as any as S.Schema<UpdatePagesRequest>;
 
-export type CreatePagesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreatePagesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Create `ClaimReview` markup on a page. */
 export const createPages: API.OperationMethod<
   CreatePagesRequest,
@@ -445,7 +590,12 @@ export const createPages: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeletePagesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeletePagesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Delete all `ClaimReview` markup on a page. */
 export const deletePages: API.OperationMethod<
   DeletePagesRequest,
@@ -484,11 +634,15 @@ export const imageSearchClaims: API.PaginatedOperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ImageSearchClaimsRequest,
-  output: GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse,
+  output:
+    GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListPagesError = NotFound | Forbidden | GcpOpError;
@@ -500,11 +654,15 @@ export const listPages: API.PaginatedOperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPagesRequest,
-  output: GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse,
+  output:
+    GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type SearchClaimsError = NotFound | Forbidden | GcpOpError;
@@ -516,14 +674,23 @@ export const searchClaims: API.PaginatedOperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchClaimsRequest,
-  output: GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse,
+  output:
+    GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type UpdatePagesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdatePagesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update for all `ClaimReview` markup on a page Note that this is a full update. To retain the existing `ClaimReview` markup on a page, first perform a Get operation, then modify the returned markup, and finally call Update with the entire `ClaimReview` markup as the body. */
 export const updatePages: API.OperationMethod<
   UpdatePagesRequest,
@@ -537,4 +704,3 @@ export const updatePages: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

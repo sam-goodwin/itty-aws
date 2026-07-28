@@ -13,54 +13,58 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
-export type AuthTokenStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "CREATING" | "DELETING";
+export type AuthTokenStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "CREATING"
+  | "DELETING";
 export const AuthTokenStateEnum = /*@__PURE__*/ S.String;
 
 /** Auth token for the cluster. */
@@ -75,12 +79,12 @@ export interface AuthToken {
   name?: string;
 }
 export const AuthToken = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "token": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "state": S.optional(AuthTokenStateEnum),
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    token: S.optional(S.String),
+    createTime: S.optional(S.String),
+    state: S.optional(AuthTokenStateEnum),
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "AuthToken" }) as any as S.Schema<AuthToken>;
 
 /** Request message for AddAuthToken. */
@@ -89,10 +93,12 @@ export interface AddAuthTokenRequest {
   authToken?: AuthToken;
 }
 export const AddAuthTokenRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "authToken": S.optional(AuthToken),
-}),
-).annotate({ identifier: "AddAuthTokenRequest" }) as any as S.Schema<AddAuthTokenRequest>;
+  S.Struct({
+    authToken: S.optional(AuthToken),
+  }),
+).annotate({
+  identifier: "AddAuthTokenRequest",
+}) as any as S.Schema<AddAuthTokenRequest>;
 
 export interface AddAuthTokenProjectsLocationsClustersTokenAuthUsersRequest {
   /** Required. The name of the token auth user resource that this auth token will be added for. Format: projects/{project}/locations/{location}/clusters/{cluster}/tokenAuthUsers/{token_auth_user} */
@@ -100,18 +106,32 @@ export interface AddAuthTokenProjectsLocationsClustersTokenAuthUsersRequest {
   /** Request body */
   body?: AddAuthTokenRequest;
 }
-export const AddAuthTokenProjectsLocationsClustersTokenAuthUsersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "tokenAuthUser": S.String.pipe(T.Label()),
-  "body": S.optional(AddAuthTokenRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+tokenAuthUser}:addAuthToken","baseUrl":"https://redis.googleapis.com/"})),
-).annotate({ identifier: "AddAuthTokenProjectsLocationsClustersTokenAuthUsersRequest" }) as any as S.Schema<AddAuthTokenProjectsLocationsClustersTokenAuthUsersRequest>;
+export const AddAuthTokenProjectsLocationsClustersTokenAuthUsersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      tokenAuthUser: S.String.pipe(T.Label()),
+      body: S.optional(AddAuthTokenRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+tokenAuthUser}:addAuthToken",
+        baseUrl: "https://redis.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "AddAuthTokenProjectsLocationsClustersTokenAuthUsersRequest",
+  }) as any as S.Schema<AddAuthTokenProjectsLocationsClustersTokenAuthUsersRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -123,11 +143,11 @@ export interface Status {
   details?: DocumentMapList;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(S.Number),
-  "message": S.optional(S.String),
-  "details": S.optional(DocumentMapList),
-}),
+  S.Struct({
+    code: S.optional(S.Number),
+    message: S.optional(S.String),
+    details: S.optional(DocumentMapList),
+  }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -144,13 +164,13 @@ export interface Operation {
   response?: DocumentMap;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "done": S.optional(S.Boolean),
-  "error": S.optional(Status),
-  "name": S.optional(S.String),
-  "metadata": S.optional(DocumentMap),
-  "response": S.optional(DocumentMap),
-}),
+  S.Struct({
+    done: S.optional(S.Boolean),
+    error: S.optional(Status),
+    name: S.optional(S.String),
+    metadata: S.optional(DocumentMap),
+    response: S.optional(DocumentMap),
+  }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** Request message for AddTokenAuthUser. */
@@ -159,10 +179,12 @@ export interface AddTokenAuthUserRequest {
   tokenAuthUser?: string;
 }
 export const AddTokenAuthUserRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "tokenAuthUser": S.optional(S.String),
-}),
-).annotate({ identifier: "AddTokenAuthUserRequest" }) as any as S.Schema<AddTokenAuthUserRequest>;
+  S.Struct({
+    tokenAuthUser: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AddTokenAuthUserRequest",
+}) as any as S.Schema<AddTokenAuthUserRequest>;
 
 export interface AddTokenAuthUserProjectsLocationsClustersRequest {
   /** Required. The cluster resource that this token auth user will be added for. Format: projects/{project}/locations/{location}/clusters/{cluster} */
@@ -170,12 +192,21 @@ export interface AddTokenAuthUserProjectsLocationsClustersRequest {
   /** Request body */
   body?: AddTokenAuthUserRequest;
 }
-export const AddTokenAuthUserProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "cluster": S.String.pipe(T.Label()),
-  "body": S.optional(AddTokenAuthUserRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+cluster}:addTokenAuthUser","baseUrl":"https://redis.googleapis.com/"})),
-).annotate({ identifier: "AddTokenAuthUserProjectsLocationsClustersRequest" }) as any as S.Schema<AddTokenAuthUserProjectsLocationsClustersRequest>;
+export const AddTokenAuthUserProjectsLocationsClustersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      cluster: S.String.pipe(T.Label()),
+      body: S.optional(AddTokenAuthUserRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+cluster}:addTokenAuthUser",
+        baseUrl: "https://redis.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "AddTokenAuthUserProjectsLocationsClustersRequest",
+  }) as any as S.Schema<AddTokenAuthUserProjectsLocationsClustersRequest>;
 
 /** Request for `BackupCluster`. */
 export interface BackupClusterRequest {
@@ -185,11 +216,13 @@ export interface BackupClusterRequest {
   ttl?: string;
 }
 export const BackupClusterRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "backupId": S.optional(S.String),
-  "ttl": S.optional(S.String),
-}),
-).annotate({ identifier: "BackupClusterRequest" }) as any as S.Schema<BackupClusterRequest>;
+  S.Struct({
+    backupId: S.optional(S.String),
+    ttl: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BackupClusterRequest",
+}) as any as S.Schema<BackupClusterRequest>;
 
 export interface BackupProjectsLocationsClustersRequest {
   /** Required. Redis cluster resource name using the form: `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}` where `location_id` refers to a Google Cloud region. */
@@ -197,28 +230,46 @@ export interface BackupProjectsLocationsClustersRequest {
   /** Request body */
   body?: BackupClusterRequest;
 }
-export const BackupProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(BackupClusterRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:backup","baseUrl":"https://redis.googleapis.com/"})),
-).annotate({ identifier: "BackupProjectsLocationsClustersRequest" }) as any as S.Schema<BackupProjectsLocationsClustersRequest>;
+export const BackupProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(BackupClusterRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+name}:backup",
+        baseUrl: "https://redis.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "BackupProjectsLocationsClustersRequest",
+}) as any as S.Schema<BackupProjectsLocationsClustersRequest>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:cancel","baseUrl":"https://redis.googleapis.com/"})),
-).annotate({ identifier: "CancelProjectsLocationsOperationsRequest" }) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+name}:cancel",
+        baseUrl: "https://redis.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CancelProjectsLocationsOperationsRequest",
+}) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 /** A single ACL rule which defines the policy for a user. */
 export interface AclRule {
@@ -228,19 +279,29 @@ export interface AclRule {
   rule?: string;
 }
 export const AclRule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "username": S.optional(S.String),
-  "rule": S.optional(S.String),
-}),
+  S.Struct({
+    username: S.optional(S.String),
+    rule: S.optional(S.String),
+  }),
 ).annotate({ identifier: "AclRule" }) as any as S.Schema<AclRule>;
 
 export type AclRuleList = ReadonlyArray<AclRule>;
-export const AclRuleList = /*@__PURE__*/ S.Array(AclRule) as any as S.Schema<AclRuleList>;
+export const AclRuleList = /*@__PURE__*/ S.Array(
+  AclRule,
+) as any as S.Schema<AclRuleList>;
 
-export type AclPolicyStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "UPDATING" | "DELETING";
+export type AclPolicyStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "UPDATING"
+  | "DELETING";
 export const AclPolicyStateEnum = /*@__PURE__*/ S.String;
 
-export type AclPolicyRevisionStatusStateEnum = "STATE_UNSPECIFIED" | "APPLYING" | "APPLIED" | "FAILED";
+export type AclPolicyRevisionStatusStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "APPLYING"
+  | "APPLIED"
+  | "FAILED";
 export const AclPolicyRevisionStatusStateEnum = /*@__PURE__*/ S.String;
 
 /** AclPolicyRevisionStatus stores the per-revision status for an attached cluster. */
@@ -255,16 +316,21 @@ export interface AclPolicyRevisionStatus {
   aclPolicyRevisionNumber?: string;
 }
 export const AclPolicyRevisionStatus = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "aclPolicyRevision": S.optional(S.String),
-  "errorMessage": S.optional(S.String),
-  "state": S.optional(AclPolicyRevisionStatusStateEnum),
-  "aclPolicyRevisionNumber": S.optional(S.String),
-}),
-).annotate({ identifier: "AclPolicyRevisionStatus" }) as any as S.Schema<AclPolicyRevisionStatus>;
+  S.Struct({
+    aclPolicyRevision: S.optional(S.String),
+    errorMessage: S.optional(S.String),
+    state: S.optional(AclPolicyRevisionStatusStateEnum),
+    aclPolicyRevisionNumber: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AclPolicyRevisionStatus",
+}) as any as S.Schema<AclPolicyRevisionStatus>;
 
-export type AclPolicyRevisionStatusList = ReadonlyArray<AclPolicyRevisionStatus>;
-export const AclPolicyRevisionStatusList = /*@__PURE__*/ S.Array(AclPolicyRevisionStatus) as any as S.Schema<AclPolicyRevisionStatusList>;
+export type AclPolicyRevisionStatusList =
+  ReadonlyArray<AclPolicyRevisionStatus>;
+export const AclPolicyRevisionStatusList = /*@__PURE__*/ S.Array(
+  AclPolicyRevisionStatus,
+) as any as S.Schema<AclPolicyRevisionStatusList>;
 
 /** ClusterAclPolicyAttachment stores the ACL policy status for an attached cluster for the revisions successfully applied, under application or failed. */
 export interface ClusterAclPolicyAttachment {
@@ -274,14 +340,19 @@ export interface ClusterAclPolicyAttachment {
   aclPolicyRevisionStatuses?: AclPolicyRevisionStatusList;
 }
 export const ClusterAclPolicyAttachment = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "cluster": S.optional(S.String),
-  "aclPolicyRevisionStatuses": S.optional(AclPolicyRevisionStatusList),
-}),
-).annotate({ identifier: "ClusterAclPolicyAttachment" }) as any as S.Schema<ClusterAclPolicyAttachment>;
+  S.Struct({
+    cluster: S.optional(S.String),
+    aclPolicyRevisionStatuses: S.optional(AclPolicyRevisionStatusList),
+  }),
+).annotate({
+  identifier: "ClusterAclPolicyAttachment",
+}) as any as S.Schema<ClusterAclPolicyAttachment>;
 
-export type ClusterAclPolicyAttachmentList = ReadonlyArray<ClusterAclPolicyAttachment>;
-export const ClusterAclPolicyAttachmentList = /*@__PURE__*/ S.Array(ClusterAclPolicyAttachment) as any as S.Schema<ClusterAclPolicyAttachmentList>;
+export type ClusterAclPolicyAttachmentList =
+  ReadonlyArray<ClusterAclPolicyAttachment>;
+export const ClusterAclPolicyAttachmentList = /*@__PURE__*/ S.Array(
+  ClusterAclPolicyAttachment,
+) as any as S.Schema<ClusterAclPolicyAttachmentList>;
 
 /** The ACL policy resource. */
 export interface AclPolicy {
@@ -303,16 +374,16 @@ export interface AclPolicy {
   updateTime?: string;
 }
 export const AclPolicy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "rules": S.optional(AclRuleList),
-  "name": S.optional(S.String),
-  "state": S.optional(AclPolicyStateEnum),
-  "version": S.optional(S.String),
-  "etag": S.optional(S.String),
-  "clusterAclPolicyAttachments": S.optional(ClusterAclPolicyAttachmentList),
-  "createTime": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-}),
+  S.Struct({
+    rules: S.optional(AclRuleList),
+    name: S.optional(S.String),
+    state: S.optional(AclPolicyStateEnum),
+    version: S.optional(S.String),
+    etag: S.optional(S.String),
+    clusterAclPolicyAttachments: S.optional(ClusterAclPolicyAttachmentList),
+    createTime: S.optional(S.String),
+    updateTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "AclPolicy" }) as any as S.Schema<AclPolicy>;
 
 export interface CreateProjectsLocationsAclPoliciesRequest {
@@ -325,25 +396,56 @@ export interface CreateProjectsLocationsAclPoliciesRequest {
   /** Request body */
   body?: AclPolicy;
 }
-export const CreateProjectsLocationsAclPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "aclPolicyId": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(AclPolicy.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/aclPolicies","baseUrl":"https://redis.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsAclPoliciesRequest" }) as any as S.Schema<CreateProjectsLocationsAclPoliciesRequest>;
+export const CreateProjectsLocationsAclPoliciesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      aclPolicyId: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(AclPolicy.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+parent}/aclPolicies",
+        baseUrl: "https://redis.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsAclPoliciesRequest",
+  }) as any as S.Schema<CreateProjectsLocationsAclPoliciesRequest>;
 
-export type ClusterNodeTypeEnum = "NODE_TYPE_UNSPECIFIED" | "REDIS_SHARED_CORE_NANO" | "REDIS_HIGHMEM_MEDIUM" | "REDIS_HIGHMEM_XLARGE" | "REDIS_STANDARD_SMALL" | "REDIS_HIGHCPU_MEDIUM" | "REDIS_STANDARD_LARGE" | "REDIS_HIGHMEM_2XLARGE";
+export type ClusterNodeTypeEnum =
+  | "NODE_TYPE_UNSPECIFIED"
+  | "REDIS_SHARED_CORE_NANO"
+  | "REDIS_HIGHMEM_MEDIUM"
+  | "REDIS_HIGHMEM_XLARGE"
+  | "REDIS_STANDARD_SMALL"
+  | "REDIS_HIGHCPU_MEDIUM"
+  | "REDIS_STANDARD_LARGE"
+  | "REDIS_HIGHMEM_2XLARGE";
 export const ClusterNodeTypeEnum = /*@__PURE__*/ S.String;
 
-export type EncryptionInfoKmsKeyPrimaryStateEnum = "KMS_KEY_STATE_UNSPECIFIED" | "ENABLED" | "PERMISSION_DENIED" | "DISABLED" | "DESTROYED" | "DESTROY_SCHEDULED" | "EKM_KEY_UNREACHABLE_DETECTED" | "BILLING_DISABLED" | "UNKNOWN_FAILURE";
+export type EncryptionInfoKmsKeyPrimaryStateEnum =
+  | "KMS_KEY_STATE_UNSPECIFIED"
+  | "ENABLED"
+  | "PERMISSION_DENIED"
+  | "DISABLED"
+  | "DESTROYED"
+  | "DESTROY_SCHEDULED"
+  | "EKM_KEY_UNREACHABLE_DETECTED"
+  | "BILLING_DISABLED"
+  | "UNKNOWN_FAILURE";
 export const EncryptionInfoKmsKeyPrimaryStateEnum = /*@__PURE__*/ S.String;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
-export type EncryptionInfoEncryptionTypeEnum = "TYPE_UNSPECIFIED" | "GOOGLE_DEFAULT_ENCRYPTION" | "CUSTOMER_MANAGED_ENCRYPTION";
+export type EncryptionInfoEncryptionTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "GOOGLE_DEFAULT_ENCRYPTION"
+  | "CUSTOMER_MANAGED_ENCRYPTION";
 export const EncryptionInfoEncryptionTypeEnum = /*@__PURE__*/ S.String;
 
 /** EncryptionInfo describes the encryption information of a cluster or a backup. */
@@ -358,15 +460,18 @@ export interface EncryptionInfo {
   lastUpdateTime?: string;
 }
 export const EncryptionInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kmsKeyPrimaryState": S.optional(EncryptionInfoKmsKeyPrimaryStateEnum),
-  "kmsKeyVersions": S.optional(StringList),
-  "encryptionType": S.optional(EncryptionInfoEncryptionTypeEnum),
-  "lastUpdateTime": S.optional(S.String),
-}),
+  S.Struct({
+    kmsKeyPrimaryState: S.optional(EncryptionInfoKmsKeyPrimaryStateEnum),
+    kmsKeyVersions: S.optional(StringList),
+    encryptionType: S.optional(EncryptionInfoEncryptionTypeEnum),
+    lastUpdateTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "EncryptionInfo" }) as any as S.Schema<EncryptionInfo>;
 
-export type ZoneDistributionConfigModeEnum = "ZONE_DISTRIBUTION_MODE_UNSPECIFIED" | "MULTI_ZONE" | "SINGLE_ZONE";
+export type ZoneDistributionConfigModeEnum =
+  | "ZONE_DISTRIBUTION_MODE_UNSPECIFIED"
+  | "MULTI_ZONE"
+  | "SINGLE_ZONE";
 export const ZoneDistributionConfigModeEnum = /*@__PURE__*/ S.String;
 
 /** Zone distribution config for allocation of cluster resources. */
@@ -379,30 +484,41 @@ export interface ZoneDistributionConfig {
   zones?: StringList;
 }
 export const ZoneDistributionConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "mode": S.optional(ZoneDistributionConfigModeEnum),
-  "zone": S.optional(S.String),
-  "zones": S.optional(StringList),
-}),
-).annotate({ identifier: "ZoneDistributionConfig" }) as any as S.Schema<ZoneDistributionConfig>;
+  S.Struct({
+    mode: S.optional(ZoneDistributionConfigModeEnum),
+    zone: S.optional(S.String),
+    zones: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ZoneDistributionConfig",
+}) as any as S.Schema<ZoneDistributionConfig>;
 
 export interface PscConfig {
   /** Required. The network where the IP address of the discovery endpoint will be reserved, in the form of projects/{network_project}/global/networks/{network_id}. */
   network?: string;
 }
 export const PscConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "network": S.optional(S.String),
-}),
+  S.Struct({
+    network: S.optional(S.String),
+  }),
 ).annotate({ identifier: "PscConfig" }) as any as S.Schema<PscConfig>;
 
 export type PscConfigList = ReadonlyArray<PscConfig>;
-export const PscConfigList = /*@__PURE__*/ S.Array(PscConfig) as any as S.Schema<PscConfigList>;
+export const PscConfigList = /*@__PURE__*/ S.Array(
+  PscConfig,
+) as any as S.Schema<PscConfigList>;
 
-export type PscAutoConnectionConnectionTypeEnum = "CONNECTION_TYPE_UNSPECIFIED" | "CONNECTION_TYPE_DISCOVERY" | "CONNECTION_TYPE_PRIMARY" | "CONNECTION_TYPE_READER";
+export type PscAutoConnectionConnectionTypeEnum =
+  | "CONNECTION_TYPE_UNSPECIFIED"
+  | "CONNECTION_TYPE_DISCOVERY"
+  | "CONNECTION_TYPE_PRIMARY"
+  | "CONNECTION_TYPE_READER";
 export const PscAutoConnectionConnectionTypeEnum = /*@__PURE__*/ S.String;
 
-export type PscAutoConnectionPscConnectionStatusEnum = "PSC_CONNECTION_STATUS_UNSPECIFIED" | "PSC_CONNECTION_STATUS_ACTIVE" | "PSC_CONNECTION_STATUS_NOT_FOUND";
+export type PscAutoConnectionPscConnectionStatusEnum =
+  | "PSC_CONNECTION_STATUS_UNSPECIFIED"
+  | "PSC_CONNECTION_STATUS_ACTIVE"
+  | "PSC_CONNECTION_STATUS_NOT_FOUND";
 export const PscAutoConnectionPscConnectionStatusEnum = /*@__PURE__*/ S.String;
 
 /** Details of consumer resources in a PSC connection that is created through Service Connectivity Automation. */
@@ -425,22 +541,31 @@ export interface PscAutoConnection {
   serviceAttachment?: string;
 }
 export const PscAutoConnection = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectId": S.optional(S.String),
-  "connectionType": S.optional(PscAutoConnectionConnectionTypeEnum),
-  "pscConnectionId": S.optional(S.String),
-  "address": S.optional(S.String),
-  "forwardingRule": S.optional(S.String),
-  "network": S.optional(S.String),
-  "pscConnectionStatus": S.optional(PscAutoConnectionPscConnectionStatusEnum),
-  "serviceAttachment": S.optional(S.String),
-}),
-).annotate({ identifier: "PscAutoConnection" }) as any as S.Schema<PscAutoConnection>;
+  S.Struct({
+    projectId: S.optional(S.String),
+    connectionType: S.optional(PscAutoConnectionConnectionTypeEnum),
+    pscConnectionId: S.optional(S.String),
+    address: S.optional(S.String),
+    forwardingRule: S.optional(S.String),
+    network: S.optional(S.String),
+    pscConnectionStatus: S.optional(PscAutoConnectionPscConnectionStatusEnum),
+    serviceAttachment: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PscAutoConnection",
+}) as any as S.Schema<PscAutoConnection>;
 
-export type PscConnectionConnectionTypeEnum = "CONNECTION_TYPE_UNSPECIFIED" | "CONNECTION_TYPE_DISCOVERY" | "CONNECTION_TYPE_PRIMARY" | "CONNECTION_TYPE_READER";
+export type PscConnectionConnectionTypeEnum =
+  | "CONNECTION_TYPE_UNSPECIFIED"
+  | "CONNECTION_TYPE_DISCOVERY"
+  | "CONNECTION_TYPE_PRIMARY"
+  | "CONNECTION_TYPE_READER";
 export const PscConnectionConnectionTypeEnum = /*@__PURE__*/ S.String;
 
-export type PscConnectionPscConnectionStatusEnum = "PSC_CONNECTION_STATUS_UNSPECIFIED" | "PSC_CONNECTION_STATUS_ACTIVE" | "PSC_CONNECTION_STATUS_NOT_FOUND";
+export type PscConnectionPscConnectionStatusEnum =
+  | "PSC_CONNECTION_STATUS_UNSPECIFIED"
+  | "PSC_CONNECTION_STATUS_ACTIVE"
+  | "PSC_CONNECTION_STATUS_NOT_FOUND";
 export const PscConnectionPscConnectionStatusEnum = /*@__PURE__*/ S.String;
 
 /** Details of consumer resources in a PSC connection. */
@@ -465,17 +590,17 @@ export interface PscConnection {
   address?: string;
 }
 export const PscConnection = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectId": S.optional(S.String),
-  "forwardingRule": S.optional(S.String),
-  "network": S.optional(S.String),
-  "connectionType": S.optional(PscConnectionConnectionTypeEnum),
-  "pscConnectionStatus": S.optional(PscConnectionPscConnectionStatusEnum),
-  "port": S.optional(S.Number),
-  "serviceAttachment": S.optional(S.String),
-  "pscConnectionId": S.optional(S.String),
-  "address": S.optional(S.String),
-}),
+  S.Struct({
+    projectId: S.optional(S.String),
+    forwardingRule: S.optional(S.String),
+    network: S.optional(S.String),
+    connectionType: S.optional(PscConnectionConnectionTypeEnum),
+    pscConnectionStatus: S.optional(PscConnectionPscConnectionStatusEnum),
+    port: S.optional(S.Number),
+    serviceAttachment: S.optional(S.String),
+    pscConnectionId: S.optional(S.String),
+    address: S.optional(S.String),
+  }),
 ).annotate({ identifier: "PscConnection" }) as any as S.Schema<PscConnection>;
 
 /** Detailed information of each PSC connection. */
@@ -486,14 +611,18 @@ export interface ConnectionDetail {
   pscConnection?: PscConnection;
 }
 export const ConnectionDetail = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pscAutoConnection": S.optional(PscAutoConnection),
-  "pscConnection": S.optional(PscConnection),
-}),
-).annotate({ identifier: "ConnectionDetail" }) as any as S.Schema<ConnectionDetail>;
+  S.Struct({
+    pscAutoConnection: S.optional(PscAutoConnection),
+    pscConnection: S.optional(PscConnection),
+  }),
+).annotate({
+  identifier: "ConnectionDetail",
+}) as any as S.Schema<ConnectionDetail>;
 
 export type ConnectionDetailList = ReadonlyArray<ConnectionDetail>;
-export const ConnectionDetailList = /*@__PURE__*/ S.Array(ConnectionDetail) as any as S.Schema<ConnectionDetailList>;
+export const ConnectionDetailList = /*@__PURE__*/ S.Array(
+  ConnectionDetail,
+) as any as S.Schema<ConnectionDetailList>;
 
 /** ClusterEndpoint consists of PSC connections that are created as a group in each VPC network for accessing the cluster. In each group, there shall be one connection for each service attachment in the cluster. */
 export interface ClusterEndpoint {
@@ -501,15 +630,24 @@ export interface ClusterEndpoint {
   connections?: ConnectionDetailList;
 }
 export const ClusterEndpoint = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "connections": S.optional(ConnectionDetailList),
-}),
-).annotate({ identifier: "ClusterEndpoint" }) as any as S.Schema<ClusterEndpoint>;
+  S.Struct({
+    connections: S.optional(ConnectionDetailList),
+  }),
+).annotate({
+  identifier: "ClusterEndpoint",
+}) as any as S.Schema<ClusterEndpoint>;
 
 export type ClusterEndpointList = ReadonlyArray<ClusterEndpoint>;
-export const ClusterEndpointList = /*@__PURE__*/ S.Array(ClusterEndpoint) as any as S.Schema<ClusterEndpointList>;
+export const ClusterEndpointList = /*@__PURE__*/ S.Array(
+  ClusterEndpoint,
+) as any as S.Schema<ClusterEndpointList>;
 
-export type RDBConfigRdbSnapshotPeriodEnum = "SNAPSHOT_PERIOD_UNSPECIFIED" | "ONE_HOUR" | "SIX_HOURS" | "TWELVE_HOURS" | "TWENTY_FOUR_HOURS";
+export type RDBConfigRdbSnapshotPeriodEnum =
+  | "SNAPSHOT_PERIOD_UNSPECIFIED"
+  | "ONE_HOUR"
+  | "SIX_HOURS"
+  | "TWELVE_HOURS"
+  | "TWENTY_FOUR_HOURS";
 export const RDBConfigRdbSnapshotPeriodEnum = /*@__PURE__*/ S.String;
 
 /** Configuration of the RDB based persistence. */
@@ -520,13 +658,17 @@ export interface RDBConfig {
   rdbSnapshotStartTime?: string;
 }
 export const RDBConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "rdbSnapshotPeriod": S.optional(RDBConfigRdbSnapshotPeriodEnum),
-  "rdbSnapshotStartTime": S.optional(S.String),
-}),
+  S.Struct({
+    rdbSnapshotPeriod: S.optional(RDBConfigRdbSnapshotPeriodEnum),
+    rdbSnapshotStartTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "RDBConfig" }) as any as S.Schema<RDBConfig>;
 
-export type AOFConfigAppendFsyncEnum = "APPEND_FSYNC_UNSPECIFIED" | "NO" | "EVERYSEC" | "ALWAYS";
+export type AOFConfigAppendFsyncEnum =
+  | "APPEND_FSYNC_UNSPECIFIED"
+  | "NO"
+  | "EVERYSEC"
+  | "ALWAYS";
 export const AOFConfigAppendFsyncEnum = /*@__PURE__*/ S.String;
 
 /** Configuration of the AOF based persistence. */
@@ -535,12 +677,16 @@ export interface AOFConfig {
   appendFsync?: AOFConfigAppendFsyncEnum;
 }
 export const AOFConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "appendFsync": S.optional(AOFConfigAppendFsyncEnum),
-}),
+  S.Struct({
+    appendFsync: S.optional(AOFConfigAppendFsyncEnum),
+  }),
 ).annotate({ identifier: "AOFConfig" }) as any as S.Schema<AOFConfig>;
 
-export type ClusterPersistenceConfigModeEnum = "PERSISTENCE_MODE_UNSPECIFIED" | "DISABLED" | "RDB" | "AOF";
+export type ClusterPersistenceConfigModeEnum =
+  | "PERSISTENCE_MODE_UNSPECIFIED"
+  | "DISABLED"
+  | "RDB"
+  | "AOF";
 export const ClusterPersistenceConfigModeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration of the persistence functionality. */
@@ -553,15 +699,21 @@ export interface ClusterPersistenceConfig {
   mode?: ClusterPersistenceConfigModeEnum;
 }
 export const ClusterPersistenceConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "rdbConfig": S.optional(RDBConfig),
-  "aofConfig": S.optional(AOFConfig),
-  "mode": S.optional(ClusterPersistenceConfigModeEnum),
-}),
-).annotate({ identifier: "ClusterPersistenceConfig" }) as any as S.Schema<ClusterPersistenceConfig>;
+  S.Struct({
+    rdbConfig: S.optional(RDBConfig),
+    aofConfig: S.optional(AOFConfig),
+    mode: S.optional(ClusterPersistenceConfigModeEnum),
+  }),
+).annotate({
+  identifier: "ClusterPersistenceConfig",
+}) as any as S.Schema<ClusterPersistenceConfig>;
 
-export type AutomatedBackupConfigAutomatedBackupModeEnum = "AUTOMATED_BACKUP_MODE_UNSPECIFIED" | "DISABLED" | "ENABLED";
-export const AutomatedBackupConfigAutomatedBackupModeEnum = /*@__PURE__*/ S.String;
+export type AutomatedBackupConfigAutomatedBackupModeEnum =
+  | "AUTOMATED_BACKUP_MODE_UNSPECIFIED"
+  | "DISABLED"
+  | "ENABLED";
+export const AutomatedBackupConfigAutomatedBackupModeEnum =
+  /*@__PURE__*/ S.String;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
 export interface TimeOfDay {
@@ -575,12 +727,12 @@ export interface TimeOfDay {
   seconds?: number;
 }
 export const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nanos": S.optional(S.Number),
-  "hours": S.optional(S.Number),
-  "minutes": S.optional(S.Number),
-  "seconds": S.optional(S.Number),
-}),
+  S.Struct({
+    nanos: S.optional(S.Number),
+    hours: S.optional(S.Number),
+    minutes: S.optional(S.Number),
+    seconds: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "TimeOfDay" }) as any as S.Schema<TimeOfDay>;
 
 /** This schedule allows the backup to be triggered at a fixed frequency (currently only daily is supported). */
@@ -589,10 +741,12 @@ export interface FixedFrequencySchedule {
   startTime?: TimeOfDay;
 }
 export const FixedFrequencySchedule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "startTime": S.optional(TimeOfDay),
-}),
-).annotate({ identifier: "FixedFrequencySchedule" }) as any as S.Schema<FixedFrequencySchedule>;
+  S.Struct({
+    startTime: S.optional(TimeOfDay),
+  }),
+).annotate({
+  identifier: "FixedFrequencySchedule",
+}) as any as S.Schema<FixedFrequencySchedule>;
 
 /** The automated backup config for a cluster. */
 export interface AutomatedBackupConfig {
@@ -604,12 +758,16 @@ export interface AutomatedBackupConfig {
   fixedFrequencySchedule?: FixedFrequencySchedule;
 }
 export const AutomatedBackupConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "automatedBackupMode": S.optional(AutomatedBackupConfigAutomatedBackupModeEnum),
-  "retention": S.optional(S.String),
-  "fixedFrequencySchedule": S.optional(FixedFrequencySchedule),
-}),
-).annotate({ identifier: "AutomatedBackupConfig" }) as any as S.Schema<AutomatedBackupConfig>;
+  S.Struct({
+    automatedBackupMode: S.optional(
+      AutomatedBackupConfigAutomatedBackupModeEnum,
+    ),
+    retention: S.optional(S.String),
+    fixedFrequencySchedule: S.optional(FixedFrequencySchedule),
+  }),
+).annotate({
+  identifier: "AutomatedBackupConfig",
+}) as any as S.Schema<AutomatedBackupConfig>;
 
 /** Details of the remote cluster associated with this cluster in a cross cluster replication setup. */
 export interface RemoteCluster {
@@ -619,14 +777,16 @@ export interface RemoteCluster {
   uid?: string;
 }
 export const RemoteCluster = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "cluster": S.optional(S.String),
-  "uid": S.optional(S.String),
-}),
+  S.Struct({
+    cluster: S.optional(S.String),
+    uid: S.optional(S.String),
+  }),
 ).annotate({ identifier: "RemoteCluster" }) as any as S.Schema<RemoteCluster>;
 
 export type RemoteClusterList = ReadonlyArray<RemoteCluster>;
-export const RemoteClusterList = /*@__PURE__*/ S.Array(RemoteCluster) as any as S.Schema<RemoteClusterList>;
+export const RemoteClusterList = /*@__PURE__*/ S.Array(
+  RemoteCluster,
+) as any as S.Schema<RemoteClusterList>;
 
 /** An output only view of all the member clusters participating in the cross cluster replication. */
 export interface Membership {
@@ -636,14 +796,19 @@ export interface Membership {
   secondaryClusters?: RemoteClusterList;
 }
 export const Membership = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "primaryCluster": S.optional(RemoteCluster),
-  "secondaryClusters": S.optional(RemoteClusterList),
-}),
+  S.Struct({
+    primaryCluster: S.optional(RemoteCluster),
+    secondaryClusters: S.optional(RemoteClusterList),
+  }),
 ).annotate({ identifier: "Membership" }) as any as S.Schema<Membership>;
 
-export type CrossClusterReplicationConfigClusterRoleEnum = "CLUSTER_ROLE_UNSPECIFIED" | "NONE" | "PRIMARY" | "SECONDARY";
-export const CrossClusterReplicationConfigClusterRoleEnum = /*@__PURE__*/ S.String;
+export type CrossClusterReplicationConfigClusterRoleEnum =
+  | "CLUSTER_ROLE_UNSPECIFIED"
+  | "NONE"
+  | "PRIMARY"
+  | "SECONDARY";
+export const CrossClusterReplicationConfigClusterRoleEnum =
+  /*@__PURE__*/ S.String;
 
 /** Cross cluster replication config. */
 export interface CrossClusterReplicationConfig {
@@ -659,16 +824,21 @@ export interface CrossClusterReplicationConfig {
   updateTime?: string;
 }
 export const CrossClusterReplicationConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "secondaryClusters": S.optional(RemoteClusterList),
-  "primaryCluster": S.optional(RemoteCluster),
-  "membership": S.optional(Membership),
-  "clusterRole": S.optional(CrossClusterReplicationConfigClusterRoleEnum),
-  "updateTime": S.optional(S.String),
-}),
-).annotate({ identifier: "CrossClusterReplicationConfig" }) as any as S.Schema<CrossClusterReplicationConfig>;
+  S.Struct({
+    secondaryClusters: S.optional(RemoteClusterList),
+    primaryCluster: S.optional(RemoteCluster),
+    membership: S.optional(Membership),
+    clusterRole: S.optional(CrossClusterReplicationConfigClusterRoleEnum),
+    updateTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CrossClusterReplicationConfig",
+}) as any as S.Schema<CrossClusterReplicationConfig>;
 
-export type ClusterTransitEncryptionModeEnum = "TRANSIT_ENCRYPTION_MODE_UNSPECIFIED" | "TRANSIT_ENCRYPTION_MODE_DISABLED" | "TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION";
+export type ClusterTransitEncryptionModeEnum =
+  | "TRANSIT_ENCRYPTION_MODE_UNSPECIFIED"
+  | "TRANSIT_ENCRYPTION_MODE_DISABLED"
+  | "TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION";
 export const ClusterTransitEncryptionModeEnum = /*@__PURE__*/ S.String;
 
 /** Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters. */
@@ -677,10 +847,12 @@ export interface GcsBackupSource {
   uris?: StringList;
 }
 export const GcsBackupSource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "uris": S.optional(StringList),
-}),
-).annotate({ identifier: "GcsBackupSource" }) as any as S.Schema<GcsBackupSource>;
+  S.Struct({
+    uris: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "GcsBackupSource",
+}) as any as S.Schema<GcsBackupSource>;
 
 /** Upcoming maintenance schedule. */
 export interface ClusterMaintenanceSchedule {
@@ -690,19 +862,34 @@ export interface ClusterMaintenanceSchedule {
   endTime?: string;
 }
 export const ClusterMaintenanceSchedule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "startTime": S.optional(S.String),
-  "endTime": S.optional(S.String),
-}),
-).annotate({ identifier: "ClusterMaintenanceSchedule" }) as any as S.Schema<ClusterMaintenanceSchedule>;
+  S.Struct({
+    startTime: S.optional(S.String),
+    endTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ClusterMaintenanceSchedule",
+}) as any as S.Schema<ClusterMaintenanceSchedule>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
 export type PscConnectionList = ReadonlyArray<PscConnection>;
-export const PscConnectionList = /*@__PURE__*/ S.Array(PscConnection) as any as S.Schema<PscConnectionList>;
+export const PscConnectionList = /*@__PURE__*/ S.Array(
+  PscConnection,
+) as any as S.Schema<PscConnectionList>;
 
-export type ClusterWeeklyMaintenanceWindowDayEnum = "DAY_OF_WEEK_UNSPECIFIED" | "MONDAY" | "TUESDAY" | "WEDNESDAY" | "THURSDAY" | "FRIDAY" | "SATURDAY" | "SUNDAY";
+export type ClusterWeeklyMaintenanceWindowDayEnum =
+  | "DAY_OF_WEEK_UNSPECIFIED"
+  | "MONDAY"
+  | "TUESDAY"
+  | "WEDNESDAY"
+  | "THURSDAY"
+  | "FRIDAY"
+  | "SATURDAY"
+  | "SUNDAY";
 export const ClusterWeeklyMaintenanceWindowDayEnum = /*@__PURE__*/ S.String;
 
 /** Time window specified for weekly operations. */
@@ -713,14 +900,19 @@ export interface ClusterWeeklyMaintenanceWindow {
   startTime?: TimeOfDay;
 }
 export const ClusterWeeklyMaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "day": S.optional(ClusterWeeklyMaintenanceWindowDayEnum),
-  "startTime": S.optional(TimeOfDay),
-}),
-).annotate({ identifier: "ClusterWeeklyMaintenanceWindow" }) as any as S.Schema<ClusterWeeklyMaintenanceWindow>;
+  S.Struct({
+    day: S.optional(ClusterWeeklyMaintenanceWindowDayEnum),
+    startTime: S.optional(TimeOfDay),
+  }),
+).annotate({
+  identifier: "ClusterWeeklyMaintenanceWindow",
+}) as any as S.Schema<ClusterWeeklyMaintenanceWindow>;
 
-export type ClusterWeeklyMaintenanceWindowList = ReadonlyArray<ClusterWeeklyMaintenanceWindow>;
-export const ClusterWeeklyMaintenanceWindowList = /*@__PURE__*/ S.Array(ClusterWeeklyMaintenanceWindow) as any as S.Schema<ClusterWeeklyMaintenanceWindowList>;
+export type ClusterWeeklyMaintenanceWindowList =
+  ReadonlyArray<ClusterWeeklyMaintenanceWindow>;
+export const ClusterWeeklyMaintenanceWindowList = /*@__PURE__*/ S.Array(
+  ClusterWeeklyMaintenanceWindow,
+) as any as S.Schema<ClusterWeeklyMaintenanceWindowList>;
 
 /** Maintenance policy per cluster. */
 export interface ClusterMaintenancePolicy {
@@ -732,17 +924,28 @@ export interface ClusterMaintenancePolicy {
   weeklyMaintenanceWindow?: ClusterWeeklyMaintenanceWindowList;
 }
 export const ClusterMaintenancePolicy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "createTime": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "weeklyMaintenanceWindow": S.optional(ClusterWeeklyMaintenanceWindowList),
-}),
-).annotate({ identifier: "ClusterMaintenancePolicy" }) as any as S.Schema<ClusterMaintenancePolicy>;
+  S.Struct({
+    createTime: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    weeklyMaintenanceWindow: S.optional(ClusterWeeklyMaintenanceWindowList),
+  }),
+).annotate({
+  identifier: "ClusterMaintenancePolicy",
+}) as any as S.Schema<ClusterMaintenancePolicy>;
 
-export type ClusterServerCaModeEnum = "SERVER_CA_MODE_UNSPECIFIED" | "SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA" | "SERVER_CA_MODE_GOOGLE_MANAGED_SHARED_CA" | "SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA";
+export type ClusterServerCaModeEnum =
+  | "SERVER_CA_MODE_UNSPECIFIED"
+  | "SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA"
+  | "SERVER_CA_MODE_GOOGLE_MANAGED_SHARED_CA"
+  | "SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA";
 export const ClusterServerCaModeEnum = /*@__PURE__*/ S.String;
 
-export type ClusterStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "ACTIVE" | "UPDATING" | "DELETING";
+export type ClusterStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "CREATING"
+  | "ACTIVE"
+  | "UPDATING"
+  | "DELETING";
 export const ClusterStateEnum = /*@__PURE__*/ S.String;
 
 /** Endpoints on each network, for Redis clients to connect to the cluster. */
@@ -755,15 +958,19 @@ export interface DiscoveryEndpoint {
   port?: number;
 }
 export const DiscoveryEndpoint = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "address": S.optional(S.String),
-  "pscConfig": S.optional(PscConfig),
-  "port": S.optional(S.Number),
-}),
-).annotate({ identifier: "DiscoveryEndpoint" }) as any as S.Schema<DiscoveryEndpoint>;
+  S.Struct({
+    address: S.optional(S.String),
+    pscConfig: S.optional(PscConfig),
+    port: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "DiscoveryEndpoint",
+}) as any as S.Schema<DiscoveryEndpoint>;
 
 export type DiscoveryEndpointList = ReadonlyArray<DiscoveryEndpoint>;
-export const DiscoveryEndpointList = /*@__PURE__*/ S.Array(DiscoveryEndpoint) as any as S.Schema<DiscoveryEndpointList>;
+export const DiscoveryEndpointList = /*@__PURE__*/ S.Array(
+  DiscoveryEndpoint,
+) as any as S.Schema<DiscoveryEndpointList>;
 
 /** Details of the applied ACL policy. */
 export interface AclPolicyInfo {
@@ -777,12 +984,12 @@ export interface AclPolicyInfo {
   appliedAclPolicyRevision?: string;
 }
 export const AclPolicyInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "appliedAclPolicyRevisionNumber": S.optional(S.String),
-  "aclPolicyRevisionStatuses": S.optional(AclPolicyRevisionStatusList),
-  "appliedAclPolicy": S.optional(S.String),
-  "appliedAclPolicyRevision": S.optional(S.String),
-}),
+  S.Struct({
+    appliedAclPolicyRevisionNumber: S.optional(S.String),
+    aclPolicyRevisionStatuses: S.optional(AclPolicyRevisionStatusList),
+    appliedAclPolicy: S.optional(S.String),
+    appliedAclPolicyRevision: S.optional(S.String),
+  }),
 ).annotate({ identifier: "AclPolicyInfo" }) as any as S.Schema<AclPolicyInfo>;
 
 /** Backups that generated and managed by memorystore. */
@@ -791,15 +998,25 @@ export interface ManagedBackupSource {
   backup?: string;
 }
 export const ManagedBackupSource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "backup": S.optional(S.String),
-}),
-).annotate({ identifier: "ManagedBackupSource" }) as any as S.Schema<ManagedBackupSource>;
+  S.Struct({
+    backup: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ManagedBackupSource",
+}) as any as S.Schema<ManagedBackupSource>;
 
-export type ClusterAuthorizationModeEnum = "AUTH_MODE_UNSPECIFIED" | "AUTH_MODE_IAM_AUTH" | "AUTH_MODE_DISABLED" | "AUTH_MODE_TOKEN_AUTH";
+export type ClusterAuthorizationModeEnum =
+  | "AUTH_MODE_UNSPECIFIED"
+  | "AUTH_MODE_IAM_AUTH"
+  | "AUTH_MODE_DISABLED"
+  | "AUTH_MODE_TOKEN_AUTH";
 export const ClusterAuthorizationModeEnum = /*@__PURE__*/ S.String;
 
-export type PscServiceAttachmentConnectionTypeEnum = "CONNECTION_TYPE_UNSPECIFIED" | "CONNECTION_TYPE_DISCOVERY" | "CONNECTION_TYPE_PRIMARY" | "CONNECTION_TYPE_READER";
+export type PscServiceAttachmentConnectionTypeEnum =
+  | "CONNECTION_TYPE_UNSPECIFIED"
+  | "CONNECTION_TYPE_DISCOVERY"
+  | "CONNECTION_TYPE_PRIMARY"
+  | "CONNECTION_TYPE_READER";
 export const PscServiceAttachmentConnectionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration of a service attachment of the cluster, for creating PSC connections. */
@@ -810,16 +1027,28 @@ export interface PscServiceAttachment {
   connectionType?: PscServiceAttachmentConnectionTypeEnum;
 }
 export const PscServiceAttachment = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "serviceAttachment": S.optional(S.String),
-  "connectionType": S.optional(PscServiceAttachmentConnectionTypeEnum),
-}),
-).annotate({ identifier: "PscServiceAttachment" }) as any as S.Schema<PscServiceAttachment>;
+  S.Struct({
+    serviceAttachment: S.optional(S.String),
+    connectionType: S.optional(PscServiceAttachmentConnectionTypeEnum),
+  }),
+).annotate({
+  identifier: "PscServiceAttachment",
+}) as any as S.Schema<PscServiceAttachment>;
 
 export type PscServiceAttachmentList = ReadonlyArray<PscServiceAttachment>;
-export const PscServiceAttachmentList = /*@__PURE__*/ S.Array(PscServiceAttachment) as any as S.Schema<PscServiceAttachmentList>;
+export const PscServiceAttachmentList = /*@__PURE__*/ S.Array(
+  PscServiceAttachment,
+) as any as S.Schema<PscServiceAttachmentList>;
 
-export type UpdateInfoTargetNodeTypeEnum = "NODE_TYPE_UNSPECIFIED" | "REDIS_SHARED_CORE_NANO" | "REDIS_HIGHMEM_MEDIUM" | "REDIS_HIGHMEM_XLARGE" | "REDIS_STANDARD_SMALL" | "REDIS_HIGHCPU_MEDIUM" | "REDIS_STANDARD_LARGE" | "REDIS_HIGHMEM_2XLARGE";
+export type UpdateInfoTargetNodeTypeEnum =
+  | "NODE_TYPE_UNSPECIFIED"
+  | "REDIS_SHARED_CORE_NANO"
+  | "REDIS_HIGHMEM_MEDIUM"
+  | "REDIS_HIGHMEM_XLARGE"
+  | "REDIS_STANDARD_SMALL"
+  | "REDIS_HIGHCPU_MEDIUM"
+  | "REDIS_STANDARD_LARGE"
+  | "REDIS_HIGHMEM_2XLARGE";
 export const UpdateInfoTargetNodeTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents information about an updating cluster. */
@@ -832,11 +1061,11 @@ export interface UpdateInfo {
   targetShardCount?: number;
 }
 export const UpdateInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "targetNodeType": S.optional(UpdateInfoTargetNodeTypeEnum),
-  "targetReplicaCount": S.optional(S.Number),
-  "targetShardCount": S.optional(S.Number),
-}),
+  S.Struct({
+    targetNodeType: S.optional(UpdateInfoTargetNodeTypeEnum),
+    targetReplicaCount: S.optional(S.Number),
+    targetShardCount: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "UpdateInfo" }) as any as S.Schema<UpdateInfo>;
 
 /** Represents additional information about the state of the cluster. */
@@ -845,9 +1074,9 @@ export interface StateInfo {
   updateInfo?: UpdateInfo;
 }
 export const StateInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateInfo": S.optional(UpdateInfo),
-}),
+  S.Struct({
+    updateInfo: S.optional(UpdateInfo),
+  }),
 ).annotate({ identifier: "StateInfo" }) as any as S.Schema<StateInfo>;
 
 /** A cluster instance. */
@@ -946,54 +1175,54 @@ export interface Cluster {
   availableMaintenanceVersions?: StringList;
 }
 export const Cluster = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nodeType": S.optional(ClusterNodeTypeEnum),
-  "encryptionInfo": S.optional(EncryptionInfo),
-  "allowFewerZonesDeployment": S.optional(S.Boolean),
-  "zoneDistributionConfig": S.optional(ZoneDistributionConfig),
-  "satisfiesPzi": S.optional(S.Boolean),
-  "ondemandMaintenance": S.optional(S.Boolean),
-  "pscConfigs": S.optional(PscConfigList),
-  "clusterEndpoints": S.optional(ClusterEndpointList),
-  "replicaCount": S.optional(S.Number),
-  "persistenceConfig": S.optional(ClusterPersistenceConfig),
-  "automatedBackupConfig": S.optional(AutomatedBackupConfig),
-  "sizeGb": S.optional(S.Number),
-  "crossClusterReplicationConfig": S.optional(CrossClusterReplicationConfig),
-  "transitEncryptionMode": S.optional(ClusterTransitEncryptionModeEnum),
-  "gcsSource": S.optional(GcsBackupSource),
-  "createTime": S.optional(S.String),
-  "maintenanceSchedule": S.optional(ClusterMaintenanceSchedule),
-  "backupCollection": S.optional(S.String),
-  "simulateMaintenanceEvent": S.optional(S.Boolean),
-  "effectiveMaintenanceVersion": S.optional(S.String),
-  "uid": S.optional(S.String),
-  "redisConfigs": S.optional(StringMap),
-  "pscConnections": S.optional(PscConnectionList),
-  "maintenancePolicy": S.optional(ClusterMaintenancePolicy),
-  "serverCaMode": S.optional(ClusterServerCaModeEnum),
-  "aclPolicy": S.optional(S.String),
-  "kmsKey": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "state": S.optional(ClusterStateEnum),
-  "rotateServerCertificate": S.optional(S.Boolean),
-  "name": S.optional(S.String),
-  "asyncClusterEndpointsDeletionEnabled": S.optional(S.Boolean),
-  "serverCaPool": S.optional(S.String),
-  "aclPolicyInSync": S.optional(S.Boolean),
-  "discoveryEndpoints": S.optional(DiscoveryEndpointList),
-  "satisfiesPzs": S.optional(S.Boolean),
-  "aclPolicyInfo": S.optional(AclPolicyInfo),
-  "managedBackupSource": S.optional(ManagedBackupSource),
-  "authorizationMode": S.optional(ClusterAuthorizationModeEnum),
-  "shardCount": S.optional(S.Number),
-  "preciseSizeGb": S.optional(S.Number),
-  "deletionProtectionEnabled": S.optional(S.Boolean),
-  "pscServiceAttachments": S.optional(PscServiceAttachmentList),
-  "maintenanceVersion": S.optional(S.String),
-  "stateInfo": S.optional(StateInfo),
-  "availableMaintenanceVersions": S.optional(StringList),
-}),
+  S.Struct({
+    nodeType: S.optional(ClusterNodeTypeEnum),
+    encryptionInfo: S.optional(EncryptionInfo),
+    allowFewerZonesDeployment: S.optional(S.Boolean),
+    zoneDistributionConfig: S.optional(ZoneDistributionConfig),
+    satisfiesPzi: S.optional(S.Boolean),
+    ondemandMaintenance: S.optional(S.Boolean),
+    pscConfigs: S.optional(PscConfigList),
+    clusterEndpoints: S.optional(ClusterEndpointList),
+    replicaCount: S.optional(S.Number),
+    persistenceConfig: S.optional(ClusterPersistenceConfig),
+    automatedBackupConfig: S.optional(AutomatedBackupConfig),
+    sizeGb: S.optional(S.Number),
+    crossClusterReplicationConfig: S.optional(CrossClusterReplicationConfig),
+    transitEncryptionMode: S.optional(ClusterTransitEncryptionModeEnum),
+    gcsSource: S.optional(GcsBackupSource),
+    createTime: S.optional(S.String),
+    maintenanceSchedule: S.optional(ClusterMaintenanceSchedule),
+    backupCollection: S.optional(S.String),
+    simulateMaintenanceEvent: S.optional(S.Boolean),
+    effectiveMaintenanceVersion: S.optional(S.String),
+    uid: S.optional(S.String),
+    redisConfigs: S.optional(StringMap),
+    pscConnections: S.optional(PscConnectionList),
+    maintenancePolicy: S.optional(ClusterMaintenancePolicy),
+    serverCaMode: S.optional(ClusterServerCaModeEnum),
+    aclPolicy: S.optional(S.String),
+    kmsKey: S.optional(S.String),
+    labels: S.optional(StringMap),
+    state: S.optional(ClusterStateEnum),
+    rotateServerCertificate: S.optional(S.Boolean),
+    name: S.optional(S.String),
+    asyncClusterEndpointsDeletionEnabled: S.optional(S.Boolean),
+    serverCaPool: S.optional(S.String),
+    aclPolicyInSync: S.optional(S.Boolean),
+    discoveryEndpoints: S.optional(DiscoveryEndpointList),
+    satisfiesPzs: S.optional(S.Boolean),
+    aclPolicyInfo: S.optional(AclPolicyInfo),
+    managedBackupSource: S.optional(ManagedBackupSource),
+    authorizationMode: S.optional(ClusterAuthorizationModeEnum),
+    shardCount: S.optional(S.Number),
+    preciseSizeGb: S.optional(S.Number),
+    deletionProtectionEnabled: S.optional(S.Boolean),
+    pscServiceAttachments: S.optional(PscServiceAttachmentList),
+    maintenanceVersion: S.optional(S.String),
+    stateInfo: S.optional(StateInfo),
+    availableMaintenanceVersions: S.optional(StringList),
+  }),
 ).annotate({ identifier: "Cluster" }) as any as S.Schema<Cluster>;
 
 export interface CreateProjectsLocationsClustersRequest {
@@ -1006,16 +1235,33 @@ export interface CreateProjectsLocationsClustersRequest {
   /** Request body */
   body?: Cluster;
 }
-export const CreateProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "clusterId": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Cluster.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/clusters","baseUrl":"https://redis.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsClustersRequest" }) as any as S.Schema<CreateProjectsLocationsClustersRequest>;
+export const CreateProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      clusterId: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Cluster.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+parent}/clusters",
+        baseUrl: "https://redis.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateProjectsLocationsClustersRequest",
+}) as any as S.Schema<CreateProjectsLocationsClustersRequest>;
 
-export type WeeklyMaintenanceWindowDayEnum = "DAY_OF_WEEK_UNSPECIFIED" | "MONDAY" | "TUESDAY" | "WEDNESDAY" | "THURSDAY" | "FRIDAY" | "SATURDAY" | "SUNDAY";
+export type WeeklyMaintenanceWindowDayEnum =
+  | "DAY_OF_WEEK_UNSPECIFIED"
+  | "MONDAY"
+  | "TUESDAY"
+  | "WEDNESDAY"
+  | "THURSDAY"
+  | "FRIDAY"
+  | "SATURDAY"
+  | "SUNDAY";
 export const WeeklyMaintenanceWindowDayEnum = /*@__PURE__*/ S.String;
 
 /** Time window in which disruptive maintenance updates occur. Non-disruptive updates can occur inside or outside this window. */
@@ -1028,15 +1274,20 @@ export interface WeeklyMaintenanceWindow {
   duration?: string;
 }
 export const WeeklyMaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "day": S.optional(WeeklyMaintenanceWindowDayEnum),
-  "startTime": S.optional(TimeOfDay),
-  "duration": S.optional(S.String),
-}),
-).annotate({ identifier: "WeeklyMaintenanceWindow" }) as any as S.Schema<WeeklyMaintenanceWindow>;
+  S.Struct({
+    day: S.optional(WeeklyMaintenanceWindowDayEnum),
+    startTime: S.optional(TimeOfDay),
+    duration: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "WeeklyMaintenanceWindow",
+}) as any as S.Schema<WeeklyMaintenanceWindow>;
 
-export type WeeklyMaintenanceWindowList = ReadonlyArray<WeeklyMaintenanceWindow>;
-export const WeeklyMaintenanceWindowList = /*@__PURE__*/ S.Array(WeeklyMaintenanceWindow) as any as S.Schema<WeeklyMaintenanceWindowList>;
+export type WeeklyMaintenanceWindowList =
+  ReadonlyArray<WeeklyMaintenanceWindow>;
+export const WeeklyMaintenanceWindowList = /*@__PURE__*/ S.Array(
+  WeeklyMaintenanceWindow,
+) as any as S.Schema<WeeklyMaintenanceWindowList>;
 
 /** Maintenance policy for an instance. */
 export interface MaintenancePolicy {
@@ -1050,18 +1301,29 @@ export interface MaintenancePolicy {
   weeklyMaintenanceWindow?: WeeklyMaintenanceWindowList;
 }
 export const MaintenancePolicy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "createTime": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "description": S.optional(S.String),
-  "weeklyMaintenanceWindow": S.optional(WeeklyMaintenanceWindowList),
-}),
-).annotate({ identifier: "MaintenancePolicy" }) as any as S.Schema<MaintenancePolicy>;
+  S.Struct({
+    createTime: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    description: S.optional(S.String),
+    weeklyMaintenanceWindow: S.optional(WeeklyMaintenanceWindowList),
+  }),
+).annotate({
+  identifier: "MaintenancePolicy",
+}) as any as S.Schema<MaintenancePolicy>;
 
 export type InstanceTierEnum = "TIER_UNSPECIFIED" | "BASIC" | "STANDARD_HA";
 export const InstanceTierEnum = /*@__PURE__*/ S.String;
 
-export type InstanceStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "READY" | "UPDATING" | "DELETING" | "REPAIRING" | "MAINTENANCE" | "IMPORTING" | "FAILING_OVER";
+export type InstanceStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "CREATING"
+  | "READY"
+  | "UPDATING"
+  | "DELETING"
+  | "REPAIRING"
+  | "MAINTENANCE"
+  | "IMPORTING"
+  | "FAILING_OVER";
 export const InstanceStateEnum = /*@__PURE__*/ S.String;
 
 /** TlsCertificate Resource */
@@ -1078,25 +1340,35 @@ export interface TlsCertificate {
   serialNumber?: string;
 }
 export const TlsCertificate = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sha1Fingerprint": S.optional(S.String),
-  "cert": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "expireTime": S.optional(S.String),
-  "serialNumber": S.optional(S.String),
-}),
+  S.Struct({
+    sha1Fingerprint: S.optional(S.String),
+    cert: S.optional(S.String),
+    createTime: S.optional(S.String),
+    expireTime: S.optional(S.String),
+    serialNumber: S.optional(S.String),
+  }),
 ).annotate({ identifier: "TlsCertificate" }) as any as S.Schema<TlsCertificate>;
 
 export type TlsCertificateList = ReadonlyArray<TlsCertificate>;
-export const TlsCertificateList = /*@__PURE__*/ S.Array(TlsCertificate) as any as S.Schema<TlsCertificateList>;
+export const TlsCertificateList = /*@__PURE__*/ S.Array(
+  TlsCertificate,
+) as any as S.Schema<TlsCertificateList>;
 
-export type InstanceSuspensionReasonsItemEnum = "SUSPENSION_REASON_UNSPECIFIED" | "CUSTOMER_MANAGED_KEY_ISSUE";
+export type InstanceSuspensionReasonsItemEnum =
+  | "SUSPENSION_REASON_UNSPECIFIED"
+  | "CUSTOMER_MANAGED_KEY_ISSUE";
 export const InstanceSuspensionReasonsItemEnum = /*@__PURE__*/ S.String;
 
-export type InstanceSuspensionReasonsItemEnumList = ReadonlyArray<InstanceSuspensionReasonsItemEnum>;
-export const InstanceSuspensionReasonsItemEnumList = /*@__PURE__*/ S.Array(InstanceSuspensionReasonsItemEnum) as any as S.Schema<InstanceSuspensionReasonsItemEnumList>;
+export type InstanceSuspensionReasonsItemEnumList =
+  ReadonlyArray<InstanceSuspensionReasonsItemEnum>;
+export const InstanceSuspensionReasonsItemEnumList = /*@__PURE__*/ S.Array(
+  InstanceSuspensionReasonsItemEnum,
+) as any as S.Schema<InstanceSuspensionReasonsItemEnumList>;
 
-export type InstanceReadReplicasModeEnum = "READ_REPLICAS_MODE_UNSPECIFIED" | "READ_REPLICAS_DISABLED" | "READ_REPLICAS_ENABLED";
+export type InstanceReadReplicasModeEnum =
+  | "READ_REPLICAS_MODE_UNSPECIFIED"
+  | "READ_REPLICAS_DISABLED"
+  | "READ_REPLICAS_ENABLED";
 export const InstanceReadReplicasModeEnum = /*@__PURE__*/ S.String;
 
 /** Node specific properties. */
@@ -1107,19 +1379,29 @@ export interface NodeInfo {
   id?: string;
 }
 export const NodeInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "zone": S.optional(S.String),
-  "id": S.optional(S.String),
-}),
+  S.Struct({
+    zone: S.optional(S.String),
+    id: S.optional(S.String),
+  }),
 ).annotate({ identifier: "NodeInfo" }) as any as S.Schema<NodeInfo>;
 
 export type NodeInfoList = ReadonlyArray<NodeInfo>;
-export const NodeInfoList = /*@__PURE__*/ S.Array(NodeInfo) as any as S.Schema<NodeInfoList>;
+export const NodeInfoList = /*@__PURE__*/ S.Array(
+  NodeInfo,
+) as any as S.Schema<NodeInfoList>;
 
-export type PersistenceConfigPersistenceModeEnum = "PERSISTENCE_MODE_UNSPECIFIED" | "DISABLED" | "RDB";
+export type PersistenceConfigPersistenceModeEnum =
+  | "PERSISTENCE_MODE_UNSPECIFIED"
+  | "DISABLED"
+  | "RDB";
 export const PersistenceConfigPersistenceModeEnum = /*@__PURE__*/ S.String;
 
-export type PersistenceConfigRdbSnapshotPeriodEnum = "SNAPSHOT_PERIOD_UNSPECIFIED" | "ONE_HOUR" | "SIX_HOURS" | "TWELVE_HOURS" | "TWENTY_FOUR_HOURS";
+export type PersistenceConfigRdbSnapshotPeriodEnum =
+  | "SNAPSHOT_PERIOD_UNSPECIFIED"
+  | "ONE_HOUR"
+  | "SIX_HOURS"
+  | "TWELVE_HOURS"
+  | "TWENTY_FOUR_HOURS";
 export const PersistenceConfigRdbSnapshotPeriodEnum = /*@__PURE__*/ S.String;
 
 /** Configuration of the persistence functionality. */
@@ -1134,18 +1416,26 @@ export interface PersistenceConfig {
   rdbSnapshotStartTime?: string;
 }
 export const PersistenceConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "persistenceMode": S.optional(PersistenceConfigPersistenceModeEnum),
-  "rdbSnapshotPeriod": S.optional(PersistenceConfigRdbSnapshotPeriodEnum),
-  "rdbNextSnapshotTime": S.optional(S.String),
-  "rdbSnapshotStartTime": S.optional(S.String),
-}),
-).annotate({ identifier: "PersistenceConfig" }) as any as S.Schema<PersistenceConfig>;
+  S.Struct({
+    persistenceMode: S.optional(PersistenceConfigPersistenceModeEnum),
+    rdbSnapshotPeriod: S.optional(PersistenceConfigRdbSnapshotPeriodEnum),
+    rdbNextSnapshotTime: S.optional(S.String),
+    rdbSnapshotStartTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PersistenceConfig",
+}) as any as S.Schema<PersistenceConfig>;
 
-export type InstanceConnectModeEnum = "CONNECT_MODE_UNSPECIFIED" | "DIRECT_PEERING" | "PRIVATE_SERVICE_ACCESS";
+export type InstanceConnectModeEnum =
+  | "CONNECT_MODE_UNSPECIFIED"
+  | "DIRECT_PEERING"
+  | "PRIVATE_SERVICE_ACCESS";
 export const InstanceConnectModeEnum = /*@__PURE__*/ S.String;
 
-export type InstanceTransitEncryptionModeEnum = "TRANSIT_ENCRYPTION_MODE_UNSPECIFIED" | "SERVER_AUTHENTICATION" | "DISABLED";
+export type InstanceTransitEncryptionModeEnum =
+  | "TRANSIT_ENCRYPTION_MODE_UNSPECIFIED"
+  | "SERVER_AUTHENTICATION"
+  | "DISABLED";
 export const InstanceTransitEncryptionModeEnum = /*@__PURE__*/ S.String;
 
 /** Upcoming maintenance schedule. If no maintenance is scheduled, fields are not populated. */
@@ -1160,13 +1450,15 @@ export interface MaintenanceSchedule {
   startTime?: string;
 }
 export const MaintenanceSchedule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "endTime": S.optional(S.String),
-  "canReschedule": S.optional(S.Boolean),
-  "scheduleDeadlineTime": S.optional(S.String),
-  "startTime": S.optional(S.String),
-}),
-).annotate({ identifier: "MaintenanceSchedule" }) as any as S.Schema<MaintenanceSchedule>;
+  S.Struct({
+    endTime: S.optional(S.String),
+    canReschedule: S.optional(S.Boolean),
+    scheduleDeadlineTime: S.optional(S.String),
+    startTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MaintenanceSchedule",
+}) as any as S.Schema<MaintenanceSchedule>;
 
 /** A Memorystore for Redis instance. */
 export interface Instance {
@@ -1248,46 +1540,46 @@ export interface Instance {
   redisVersion?: string;
 }
 export const Instance = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "redisConfigs": S.optional(StringMap),
-  "maintenancePolicy": S.optional(MaintenancePolicy),
-  "port": S.optional(S.Number),
-  "labels": S.optional(StringMap),
-  "tier": S.optional(InstanceTierEnum),
-  "readEndpointPort": S.optional(S.Number),
-  "name": S.optional(S.String),
-  "state": S.optional(InstanceStateEnum),
-  "authEnabled": S.optional(S.Boolean),
-  "satisfiesPzs": S.optional(S.Boolean),
-  "persistenceIamIdentity": S.optional(S.String),
-  "serverCaCerts": S.optional(TlsCertificateList),
-  "maintenanceVersion": S.optional(S.String),
-  "secondaryIpRange": S.optional(S.String),
-  "availableMaintenanceVersions": S.optional(StringList),
-  "tags": S.optional(StringMap),
-  "statusMessage": S.optional(S.String),
-  "authorizedNetwork": S.optional(S.String),
-  "suspensionReasons": S.optional(InstanceSuspensionReasonsItemEnumList),
-  "customerManagedKey": S.optional(S.String),
-  "satisfiesPzi": S.optional(S.Boolean),
-  "readEndpoint": S.optional(S.String),
-  "readReplicasMode": S.optional(InstanceReadReplicasModeEnum),
-  "nodes": S.optional(NodeInfoList),
-  "alternativeLocationId": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "replicaCount": S.optional(S.Number),
-  "persistenceConfig": S.optional(PersistenceConfig),
-  "connectMode": S.optional(InstanceConnectModeEnum),
-  "createTime": S.optional(S.String),
-  "transitEncryptionMode": S.optional(InstanceTransitEncryptionModeEnum),
-  "maintenanceSchedule": S.optional(MaintenanceSchedule),
-  "host": S.optional(S.String),
-  "currentLocationId": S.optional(S.String),
-  "reservedIpRange": S.optional(S.String),
-  "memorySizeGb": S.optional(S.Number),
-  "locationId": S.optional(S.String),
-  "redisVersion": S.optional(S.String),
-}),
+  S.Struct({
+    redisConfigs: S.optional(StringMap),
+    maintenancePolicy: S.optional(MaintenancePolicy),
+    port: S.optional(S.Number),
+    labels: S.optional(StringMap),
+    tier: S.optional(InstanceTierEnum),
+    readEndpointPort: S.optional(S.Number),
+    name: S.optional(S.String),
+    state: S.optional(InstanceStateEnum),
+    authEnabled: S.optional(S.Boolean),
+    satisfiesPzs: S.optional(S.Boolean),
+    persistenceIamIdentity: S.optional(S.String),
+    serverCaCerts: S.optional(TlsCertificateList),
+    maintenanceVersion: S.optional(S.String),
+    secondaryIpRange: S.optional(S.String),
+    availableMaintenanceVersions: S.optional(StringList),
+    tags: S.optional(StringMap),
+    statusMessage: S.optional(S.String),
+    authorizedNetwork: S.optional(S.String),
+    suspensionReasons: S.optional(InstanceSuspensionReasonsItemEnumList),
+    customerManagedKey: S.optional(S.String),
+    satisfiesPzi: S.optional(S.Boolean),
+    readEndpoint: S.optional(S.String),
+    readReplicasMode: S.optional(InstanceReadReplicasModeEnum),
+    nodes: S.optional(NodeInfoList),
+    alternativeLocationId: S.optional(S.String),
+    displayName: S.optional(S.String),
+    replicaCount: S.optional(S.Number),
+    persistenceConfig: S.optional(PersistenceConfig),
+    connectMode: S.optional(InstanceConnectModeEnum),
+    createTime: S.optional(S.String),
+    transitEncryptionMode: S.optional(InstanceTransitEncryptionModeEnum),
+    maintenanceSchedule: S.optional(MaintenanceSchedule),
+    host: S.optional(S.String),
+    currentLocationId: S.optional(S.String),
+    reservedIpRange: S.optional(S.String),
+    memorySizeGb: S.optional(S.Number),
+    locationId: S.optional(S.String),
+    redisVersion: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Instance" }) as any as S.Schema<Instance>;
 
 export interface CreateProjectsLocationsInstancesRequest {
@@ -1298,13 +1590,22 @@ export interface CreateProjectsLocationsInstancesRequest {
   /** Request body */
   body?: Instance;
 }
-export const CreateProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "instanceId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Instance.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/instances","baseUrl":"https://redis.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsInstancesRequest" }) as any as S.Schema<CreateProjectsLocationsInstancesRequest>;
+export const CreateProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      instanceId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Instance.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+parent}/instances",
+        baseUrl: "https://redis.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateProjectsLocationsInstancesRequest",
+}) as any as S.Schema<CreateProjectsLocationsInstancesRequest>;
 
 export interface DeleteProjectsLocationsAclPoliciesRequest {
   /** Optional. Etag of the ACL policy. If this is different from the server's etag, the request will fail with an ABORTED error. */
@@ -1314,13 +1615,22 @@ export interface DeleteProjectsLocationsAclPoliciesRequest {
   /** Required. Redis ACL policy resource name using the form: `projects/{project_id}/locations/{location_id}/aclPolicies/{acl_policy_id}` where `location_id` refers to a GCP region. */
   name: string;
 }
-export const DeleteProjectsLocationsAclPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "etag": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://redis.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsAclPoliciesRequest" }) as any as S.Schema<DeleteProjectsLocationsAclPoliciesRequest>;
+export const DeleteProjectsLocationsAclPoliciesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      etag: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://redis.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsAclPoliciesRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsAclPoliciesRequest>;
 
 export interface DeleteProjectsLocationsBackupCollectionsBackupsRequest {
   /** Required. Redis backup resource name using the form: `projects/{project_id}/locations/{location_id}/backupCollections/{backup_collection_id}/backups/{backup_id}` */
@@ -1328,12 +1638,21 @@ export interface DeleteProjectsLocationsBackupCollectionsBackupsRequest {
   /** Optional. Idempotent request UUID. */
   requestId?: string;
 }
-export const DeleteProjectsLocationsBackupCollectionsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://redis.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsBackupCollectionsBackupsRequest" }) as any as S.Schema<DeleteProjectsLocationsBackupCollectionsBackupsRequest>;
+export const DeleteProjectsLocationsBackupCollectionsBackupsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://redis.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsBackupCollectionsBackupsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsBackupCollectionsBackupsRequest>;
 
 export interface DeleteProjectsLocationsClustersRequest {
   /** Required. Redis cluster resource name using the form: `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}` where `location_id` refers to a Google Cloud region. */
@@ -1341,12 +1660,21 @@ export interface DeleteProjectsLocationsClustersRequest {
   /** Optional. Idempotent request UUID. */
   requestId?: string;
 }
-export const DeleteProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://redis.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsClustersRequest" }) as any as S.Schema<DeleteProjectsLocationsClustersRequest>;
+export const DeleteProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://redis.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsClustersRequest",
+}) as any as S.Schema<DeleteProjectsLocationsClustersRequest>;
 
 export interface DeleteProjectsLocationsClustersTokenAuthUsersRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -1356,43 +1684,80 @@ export interface DeleteProjectsLocationsClustersTokenAuthUsersRequest {
   /** Optional. If set to true, any child auth tokens of this user will also be deleted. Otherwise, the request will only work if the user has no auth tokens. */
   force?: boolean;
 }
-export const DeleteProjectsLocationsClustersTokenAuthUsersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "force": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://redis.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsClustersTokenAuthUsersRequest" }) as any as S.Schema<DeleteProjectsLocationsClustersTokenAuthUsersRequest>;
+export const DeleteProjectsLocationsClustersTokenAuthUsersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      requestId: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      force: S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://redis.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsClustersTokenAuthUsersRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsClustersTokenAuthUsersRequest>;
 
 export interface DeleteProjectsLocationsClustersTokenAuthUsersAuthTokensRequest {
   /** Required. The name of the token auth user resource that this auth token will be deleted from. Format: projects/{project}/locations/{location}/clusters/{cluster}/tokenAuthUsers/{token_auth_user}/authTokens/{auth_token} */
   name: string;
 }
-export const DeleteProjectsLocationsClustersTokenAuthUsersAuthTokensRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://redis.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsClustersTokenAuthUsersAuthTokensRequest" }) as any as S.Schema<DeleteProjectsLocationsClustersTokenAuthUsersAuthTokensRequest>;
+export const DeleteProjectsLocationsClustersTokenAuthUsersAuthTokensRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://redis.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "DeleteProjectsLocationsClustersTokenAuthUsersAuthTokensRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsClustersTokenAuthUsersAuthTokensRequest>;
 
 export interface DeleteProjectsLocationsInstancesRequest {
   /** Required. Redis instance resource name using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id` refers to a GCP region. */
   name: string;
 }
-export const DeleteProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://redis.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsInstancesRequest" }) as any as S.Schema<DeleteProjectsLocationsInstancesRequest>;
+export const DeleteProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://redis.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsInstancesRequest",
+}) as any as S.Schema<DeleteProjectsLocationsInstancesRequest>;
 
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://redis.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsOperationsRequest" }) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://redis.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsOperationsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
 
 /** Request for `ExportBackup`. */
 export interface ExportBackupRequest {
@@ -1400,10 +1765,12 @@ export interface ExportBackupRequest {
   gcsBucket?: string;
 }
 export const ExportBackupRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "gcsBucket": S.optional(S.String),
-}),
-).annotate({ identifier: "ExportBackupRequest" }) as any as S.Schema<ExportBackupRequest>;
+  S.Struct({
+    gcsBucket: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ExportBackupRequest",
+}) as any as S.Schema<ExportBackupRequest>;
 
 export interface ExportProjectsLocationsBackupCollectionsBackupsRequest {
   /** Required. Redis backup resource name using the form: `projects/{project_id}/locations/{location_id}/backupCollections/{backup_collection_id}/backups/{backup_id}` */
@@ -1411,12 +1778,21 @@ export interface ExportProjectsLocationsBackupCollectionsBackupsRequest {
   /** Request body */
   body?: ExportBackupRequest;
 }
-export const ExportProjectsLocationsBackupCollectionsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(ExportBackupRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:export","baseUrl":"https://redis.googleapis.com/"})),
-).annotate({ identifier: "ExportProjectsLocationsBackupCollectionsBackupsRequest" }) as any as S.Schema<ExportProjectsLocationsBackupCollectionsBackupsRequest>;
+export const ExportProjectsLocationsBackupCollectionsBackupsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(ExportBackupRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+name}:export",
+        baseUrl: "https://redis.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ExportProjectsLocationsBackupCollectionsBackupsRequest",
+  }) as any as S.Schema<ExportProjectsLocationsBackupCollectionsBackupsRequest>;
 
 /** The Cloud Storage location for the output content */
 export interface GcsDestination {
@@ -1424,9 +1800,9 @@ export interface GcsDestination {
   uri?: string;
 }
 export const GcsDestination = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "uri": S.optional(S.String),
-}),
+  S.Struct({
+    uri: S.optional(S.String),
+  }),
 ).annotate({ identifier: "GcsDestination" }) as any as S.Schema<GcsDestination>;
 
 /** The output content */
@@ -1435,9 +1811,9 @@ export interface OutputConfig {
   gcsDestination?: GcsDestination;
 }
 export const OutputConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "gcsDestination": S.optional(GcsDestination),
-}),
+  S.Struct({
+    gcsDestination: S.optional(GcsDestination),
+  }),
 ).annotate({ identifier: "OutputConfig" }) as any as S.Schema<OutputConfig>;
 
 /** Request for Export. */
@@ -1446,10 +1822,12 @@ export interface ExportInstanceRequest {
   outputConfig?: OutputConfig;
 }
 export const ExportInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "outputConfig": S.optional(OutputConfig),
-}),
-).annotate({ identifier: "ExportInstanceRequest" }) as any as S.Schema<ExportInstanceRequest>;
+  S.Struct({
+    outputConfig: S.optional(OutputConfig),
+  }),
+).annotate({
+  identifier: "ExportInstanceRequest",
+}) as any as S.Schema<ExportInstanceRequest>;
 
 export interface ExportProjectsLocationsInstancesRequest {
   /** Required. Redis instance resource name using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id` refers to a GCP region. */
@@ -1457,26 +1835,45 @@ export interface ExportProjectsLocationsInstancesRequest {
   /** Request body */
   body?: ExportInstanceRequest;
 }
-export const ExportProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(ExportInstanceRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:export","baseUrl":"https://redis.googleapis.com/"})),
-).annotate({ identifier: "ExportProjectsLocationsInstancesRequest" }) as any as S.Schema<ExportProjectsLocationsInstancesRequest>;
+export const ExportProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(ExportInstanceRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+name}:export",
+        baseUrl: "https://redis.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ExportProjectsLocationsInstancesRequest",
+}) as any as S.Schema<ExportProjectsLocationsInstancesRequest>;
 
-export type FailoverInstanceRequestDataProtectionModeEnum = "DATA_PROTECTION_MODE_UNSPECIFIED" | "LIMITED_DATA_LOSS" | "FORCE_DATA_LOSS";
-export const FailoverInstanceRequestDataProtectionModeEnum = /*@__PURE__*/ S.String;
+export type FailoverInstanceRequestDataProtectionModeEnum =
+  | "DATA_PROTECTION_MODE_UNSPECIFIED"
+  | "LIMITED_DATA_LOSS"
+  | "FORCE_DATA_LOSS";
+export const FailoverInstanceRequestDataProtectionModeEnum =
+  /*@__PURE__*/ S.String;
 
 /** Request for Failover. */
 export interface FailoverInstanceRequest {
   /** Optional. Available data protection modes that the user can choose. If it's unspecified, data protection mode will be LIMITED_DATA_LOSS by default. */
-  dataProtectionMode?: FailoverInstanceRequestDataProtectionModeEnum | (string & {});
+  dataProtectionMode?:
+    | FailoverInstanceRequestDataProtectionModeEnum
+    | (string & {});
 }
 export const FailoverInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dataProtectionMode": S.optional(FailoverInstanceRequestDataProtectionModeEnum),
-}),
-).annotate({ identifier: "FailoverInstanceRequest" }) as any as S.Schema<FailoverInstanceRequest>;
+  S.Struct({
+    dataProtectionMode: S.optional(
+      FailoverInstanceRequestDataProtectionModeEnum,
+    ),
+  }),
+).annotate({
+  identifier: "FailoverInstanceRequest",
+}) as any as S.Schema<FailoverInstanceRequest>;
 
 export interface FailoverProjectsLocationsInstancesRequest {
   /** Required. Redis instance resource name using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id` refers to a GCP region. */
@@ -1484,22 +1881,40 @@ export interface FailoverProjectsLocationsInstancesRequest {
   /** Request body */
   body?: FailoverInstanceRequest;
 }
-export const FailoverProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(FailoverInstanceRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:failover","baseUrl":"https://redis.googleapis.com/"})),
-).annotate({ identifier: "FailoverProjectsLocationsInstancesRequest" }) as any as S.Schema<FailoverProjectsLocationsInstancesRequest>;
+export const FailoverProjectsLocationsInstancesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(FailoverInstanceRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+name}:failover",
+        baseUrl: "https://redis.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "FailoverProjectsLocationsInstancesRequest",
+  }) as any as S.Schema<FailoverProjectsLocationsInstancesRequest>;
 
 export interface GetAuthStringProjectsLocationsInstancesRequest {
   /** Required. Redis instance resource name using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id` refers to a GCP region. */
   name: string;
 }
-export const GetAuthStringProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}/authString","baseUrl":"https://redis.googleapis.com/"})),
-).annotate({ identifier: "GetAuthStringProjectsLocationsInstancesRequest" }) as any as S.Schema<GetAuthStringProjectsLocationsInstancesRequest>;
+export const GetAuthStringProjectsLocationsInstancesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+name}/authString",
+        baseUrl: "https://redis.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetAuthStringProjectsLocationsInstancesRequest",
+  }) as any as S.Schema<GetAuthStringProjectsLocationsInstancesRequest>;
 
 /** Instance AUTH string details. */
 export interface InstanceAuthString {
@@ -1507,43 +1922,58 @@ export interface InstanceAuthString {
   authString?: string;
 }
 export const InstanceAuthString = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "authString": S.optional(S.String),
-}),
-).annotate({ identifier: "InstanceAuthString" }) as any as S.Schema<InstanceAuthString>;
+  S.Struct({
+    authString: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "InstanceAuthString",
+}) as any as S.Schema<InstanceAuthString>;
 
 export interface GetCertificateAuthorityProjectsLocationsClustersRequest {
   /** Required. Redis cluster certificate authority resource name using the form: `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}/certificateAuthority` where `location_id` refers to a Google Cloud region. */
   name: string;
 }
-export const GetCertificateAuthorityProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://redis.googleapis.com/"})),
-).annotate({ identifier: "GetCertificateAuthorityProjectsLocationsClustersRequest" }) as any as S.Schema<GetCertificateAuthorityProjectsLocationsClustersRequest>;
+export const GetCertificateAuthorityProjectsLocationsClustersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://redis.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetCertificateAuthorityProjectsLocationsClustersRequest",
+  }) as any as S.Schema<GetCertificateAuthorityProjectsLocationsClustersRequest>;
 
 export interface CertChain {
   /** The certificates that form the CA chain, from leaf to root order. */
   certificates?: StringList;
 }
 export const CertChain = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "certificates": S.optional(StringList),
-}),
+  S.Struct({
+    certificates: S.optional(StringList),
+  }),
 ).annotate({ identifier: "CertChain" }) as any as S.Schema<CertChain>;
 
 export type CertChainList = ReadonlyArray<CertChain>;
-export const CertChainList = /*@__PURE__*/ S.Array(CertChain) as any as S.Schema<CertChainList>;
+export const CertChainList = /*@__PURE__*/ S.Array(
+  CertChain,
+) as any as S.Schema<CertChainList>;
 
 export interface ManagedCertificateAuthority {
   /** The PEM encoded CA certificate chains for redis managed server authentication */
   caCerts?: CertChainList;
 }
 export const ManagedCertificateAuthority = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "caCerts": S.optional(CertChainList),
-}),
-).annotate({ identifier: "ManagedCertificateAuthority" }) as any as S.Schema<ManagedCertificateAuthority>;
+  S.Struct({
+    caCerts: S.optional(CertChainList),
+  }),
+).annotate({
+  identifier: "ManagedCertificateAuthority",
+}) as any as S.Schema<ManagedCertificateAuthority>;
 
 /** Redis cluster certificate authority */
 export interface CertificateAuthority {
@@ -1552,21 +1982,31 @@ export interface CertificateAuthority {
   name?: string;
 }
 export const CertificateAuthority = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "managedServerCa": S.optional(ManagedCertificateAuthority),
-  "name": S.optional(S.String),
-}),
-).annotate({ identifier: "CertificateAuthority" }) as any as S.Schema<CertificateAuthority>;
+  S.Struct({
+    managedServerCa: S.optional(ManagedCertificateAuthority),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CertificateAuthority",
+}) as any as S.Schema<CertificateAuthority>;
 
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://redis.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+name}",
+      baseUrl: "https://redis.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsRequest",
+}) as any as S.Schema<GetProjectsLocationsRequest>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -1582,34 +2022,52 @@ export interface Location {
   labels?: StringMap;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locationId": S.optional(S.String),
-  "name": S.optional(S.String),
-  "metadata": S.optional(DocumentMap),
-  "displayName": S.optional(S.String),
-  "labels": S.optional(StringMap),
-}),
+  S.Struct({
+    locationId: S.optional(S.String),
+    name: S.optional(S.String),
+    metadata: S.optional(DocumentMap),
+    displayName: S.optional(S.String),
+    labels: S.optional(StringMap),
+  }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export interface GetProjectsLocationsAclPoliciesRequest {
   /** Required. Redis ACL policy resource name using the form: `projects/{project_id}/locations/{location_id}/aclPolicies/{acl_policy_id}` where `location_id` refers to a GCP region. */
   name: string;
 }
-export const GetProjectsLocationsAclPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://redis.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsAclPoliciesRequest" }) as any as S.Schema<GetProjectsLocationsAclPoliciesRequest>;
+export const GetProjectsLocationsAclPoliciesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://redis.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsAclPoliciesRequest",
+}) as any as S.Schema<GetProjectsLocationsAclPoliciesRequest>;
 
 export interface GetProjectsLocationsAclPoliciesRevisionsRequest {
   /** Required. Redis ACL policy revision resource name using the form: `projects/{project_id}/locations/{location_id}/aclPolicies/{acl_policy_id}/revisions/{revision_id}` where `location_id` refers to a GCP region. */
   name: string;
 }
-export const GetProjectsLocationsAclPoliciesRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://redis.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsAclPoliciesRevisionsRequest" }) as any as S.Schema<GetProjectsLocationsAclPoliciesRevisionsRequest>;
+export const GetProjectsLocationsAclPoliciesRevisionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://redis.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsAclPoliciesRevisionsRequest",
+  }) as any as S.Schema<GetProjectsLocationsAclPoliciesRevisionsRequest>;
 
 /** The ACL policy revision resource. */
 export interface AclPolicyRevision {
@@ -1625,24 +2083,35 @@ export interface AclPolicyRevision {
   revisionNumber?: string;
 }
 export const AclPolicyRevision = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "createTime": S.optional(S.String),
-  "attachedClusters": S.optional(StringList),
-  "name": S.optional(S.String),
-  "snapshot": S.optional(AclPolicy),
-  "revisionNumber": S.optional(S.String),
-}),
-).annotate({ identifier: "AclPolicyRevision" }) as any as S.Schema<AclPolicyRevision>;
+  S.Struct({
+    createTime: S.optional(S.String),
+    attachedClusters: S.optional(StringList),
+    name: S.optional(S.String),
+    snapshot: S.optional(AclPolicy),
+    revisionNumber: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AclPolicyRevision",
+}) as any as S.Schema<AclPolicyRevision>;
 
 export interface GetProjectsLocationsBackupCollectionsRequest {
   /** Required. Redis backupCollection resource name using the form: `projects/{project_id}/locations/{location_id}/backupCollections/{backup_collection_id}` where `location_id` refers to a Google Cloud region. */
   name: string;
 }
-export const GetProjectsLocationsBackupCollectionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://redis.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsBackupCollectionsRequest" }) as any as S.Schema<GetProjectsLocationsBackupCollectionsRequest>;
+export const GetProjectsLocationsBackupCollectionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://redis.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsBackupCollectionsRequest",
+  }) as any as S.Schema<GetProjectsLocationsBackupCollectionsRequest>;
 
 /** BackupCollection of a cluster. */
 export interface BackupCollection {
@@ -1666,36 +2135,63 @@ export interface BackupCollection {
   uid?: string;
 }
 export const BackupCollection = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "clusterUid": S.optional(S.String),
-  "totalBackupSizeBytes": S.optional(S.String),
-  "totalBackupCount": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "kmsKey": S.optional(S.String),
-  "lastBackupTime": S.optional(S.String),
-  "name": S.optional(S.String),
-  "cluster": S.optional(S.String),
-  "uid": S.optional(S.String),
-}),
-).annotate({ identifier: "BackupCollection" }) as any as S.Schema<BackupCollection>;
+  S.Struct({
+    clusterUid: S.optional(S.String),
+    totalBackupSizeBytes: S.optional(S.String),
+    totalBackupCount: S.optional(S.String),
+    createTime: S.optional(S.String),
+    kmsKey: S.optional(S.String),
+    lastBackupTime: S.optional(S.String),
+    name: S.optional(S.String),
+    cluster: S.optional(S.String),
+    uid: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BackupCollection",
+}) as any as S.Schema<BackupCollection>;
 
 export interface GetProjectsLocationsBackupCollectionsBackupsRequest {
   /** Required. Redis backup resource name using the form: `projects/{project_id}/locations/{location_id}/backupCollections/{backup_collection_id}/backups/{backup_id}` */
   name: string;
 }
-export const GetProjectsLocationsBackupCollectionsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://redis.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsBackupCollectionsBackupsRequest" }) as any as S.Schema<GetProjectsLocationsBackupCollectionsBackupsRequest>;
+export const GetProjectsLocationsBackupCollectionsBackupsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://redis.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsBackupCollectionsBackupsRequest",
+  }) as any as S.Schema<GetProjectsLocationsBackupCollectionsBackupsRequest>;
 
-export type BackupNodeTypeEnum = "NODE_TYPE_UNSPECIFIED" | "REDIS_SHARED_CORE_NANO" | "REDIS_HIGHMEM_MEDIUM" | "REDIS_HIGHMEM_XLARGE" | "REDIS_STANDARD_SMALL" | "REDIS_HIGHCPU_MEDIUM" | "REDIS_STANDARD_LARGE" | "REDIS_HIGHMEM_2XLARGE";
+export type BackupNodeTypeEnum =
+  | "NODE_TYPE_UNSPECIFIED"
+  | "REDIS_SHARED_CORE_NANO"
+  | "REDIS_HIGHMEM_MEDIUM"
+  | "REDIS_HIGHMEM_XLARGE"
+  | "REDIS_STANDARD_SMALL"
+  | "REDIS_HIGHCPU_MEDIUM"
+  | "REDIS_STANDARD_LARGE"
+  | "REDIS_HIGHMEM_2XLARGE";
 export const BackupNodeTypeEnum = /*@__PURE__*/ S.String;
 
-export type BackupBackupTypeEnum = "BACKUP_TYPE_UNSPECIFIED" | "ON_DEMAND" | "AUTOMATED";
+export type BackupBackupTypeEnum =
+  | "BACKUP_TYPE_UNSPECIFIED"
+  | "ON_DEMAND"
+  | "AUTOMATED";
 export const BackupBackupTypeEnum = /*@__PURE__*/ S.String;
 
-export type BackupStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "ACTIVE" | "DELETING" | "SUSPENDED";
+export type BackupStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "CREATING"
+  | "ACTIVE"
+  | "DELETING"
+  | "SUSPENDED";
 export const BackupStateEnum = /*@__PURE__*/ S.String;
 
 /** Backup is consisted of multiple backup files. */
@@ -1708,15 +2204,17 @@ export interface BackupFile {
   createTime?: string;
 }
 export const BackupFile = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fileName": S.optional(S.String),
-  "sizeBytes": S.optional(S.String),
-  "createTime": S.optional(S.String),
-}),
+  S.Struct({
+    fileName: S.optional(S.String),
+    sizeBytes: S.optional(S.String),
+    createTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "BackupFile" }) as any as S.Schema<BackupFile>;
 
 export type BackupFileList = ReadonlyArray<BackupFile>;
-export const BackupFileList = /*@__PURE__*/ S.Array(BackupFile) as any as S.Schema<BackupFileList>;
+export const BackupFileList = /*@__PURE__*/ S.Array(
+  BackupFile,
+) as any as S.Schema<BackupFileList>;
 
 /** Backup of a cluster. */
 export interface Backup {
@@ -1752,23 +2250,23 @@ export interface Backup {
   backupFiles?: BackupFileList;
 }
 export const Backup = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "createTime": S.optional(S.String),
-  "replicaCount": S.optional(S.Number),
-  "uid": S.optional(S.String),
-  "expireTime": S.optional(S.String),
-  "shardCount": S.optional(S.Number),
-  "totalSizeBytes": S.optional(S.String),
-  "clusterUid": S.optional(S.String),
-  "nodeType": S.optional(BackupNodeTypeEnum),
-  "encryptionInfo": S.optional(EncryptionInfo),
-  "backupType": S.optional(BackupBackupTypeEnum),
-  "state": S.optional(BackupStateEnum),
-  "name": S.optional(S.String),
-  "cluster": S.optional(S.String),
-  "engineVersion": S.optional(S.String),
-  "backupFiles": S.optional(BackupFileList),
-}),
+  S.Struct({
+    createTime: S.optional(S.String),
+    replicaCount: S.optional(S.Number),
+    uid: S.optional(S.String),
+    expireTime: S.optional(S.String),
+    shardCount: S.optional(S.Number),
+    totalSizeBytes: S.optional(S.String),
+    clusterUid: S.optional(S.String),
+    nodeType: S.optional(BackupNodeTypeEnum),
+    encryptionInfo: S.optional(EncryptionInfo),
+    backupType: S.optional(BackupBackupTypeEnum),
+    state: S.optional(BackupStateEnum),
+    name: S.optional(S.String),
+    cluster: S.optional(S.String),
+    engineVersion: S.optional(S.String),
+    backupFiles: S.optional(BackupFileList),
+  }),
 ).annotate({ identifier: "Backup" }) as any as S.Schema<Backup>;
 
 export interface GetProjectsLocationsClustersRequest {
@@ -1776,22 +2274,44 @@ export interface GetProjectsLocationsClustersRequest {
   name: string;
 }
 export const GetProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://redis.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsClustersRequest" }) as any as S.Schema<GetProjectsLocationsClustersRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+name}",
+      baseUrl: "https://redis.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsClustersRequest",
+}) as any as S.Schema<GetProjectsLocationsClustersRequest>;
 
 export interface GetProjectsLocationsClustersTokenAuthUsersRequest {
   /** Required. The name of token auth user for a token based auth enabled cluster. Format: projects/{project}/locations/{location}/clusters/{cluster}/tokenAuthUsers/{token_auth_user} */
   name: string;
 }
-export const GetProjectsLocationsClustersTokenAuthUsersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://redis.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsClustersTokenAuthUsersRequest" }) as any as S.Schema<GetProjectsLocationsClustersTokenAuthUsersRequest>;
+export const GetProjectsLocationsClustersTokenAuthUsersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://redis.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsClustersTokenAuthUsersRequest",
+  }) as any as S.Schema<GetProjectsLocationsClustersTokenAuthUsersRequest>;
 
-export type TokenAuthUserStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "CREATING" | "UPDATING" | "DELETING";
+export type TokenAuthUserStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "CREATING"
+  | "UPDATING"
+  | "DELETING";
 export const TokenAuthUserStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a token based auth user for the cluster. */
@@ -1802,51 +2322,87 @@ export interface TokenAuthUser {
   state?: TokenAuthUserStateEnum;
 }
 export const TokenAuthUser = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "state": S.optional(TokenAuthUserStateEnum),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    state: S.optional(TokenAuthUserStateEnum),
+  }),
 ).annotate({ identifier: "TokenAuthUser" }) as any as S.Schema<TokenAuthUser>;
 
 export interface GetProjectsLocationsClustersTokenAuthUsersAuthTokensRequest {
   /** Required. The name of auth token for a token based auth enabled cluster. Format: projects/{project}/locations/{location}/clusters/{cluster}/tokenAuthUsers/{token_auth_user}/authTokens/{auth_token} */
   name: string;
 }
-export const GetProjectsLocationsClustersTokenAuthUsersAuthTokensRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://redis.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsClustersTokenAuthUsersAuthTokensRequest" }) as any as S.Schema<GetProjectsLocationsClustersTokenAuthUsersAuthTokensRequest>;
+export const GetProjectsLocationsClustersTokenAuthUsersAuthTokensRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://redis.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsClustersTokenAuthUsersAuthTokensRequest",
+  }) as any as S.Schema<GetProjectsLocationsClustersTokenAuthUsersAuthTokensRequest>;
 
 export interface GetProjectsLocationsInstancesRequest {
   /** Required. Redis instance resource name using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id` refers to a GCP region. */
   name: string;
 }
-export const GetProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://redis.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsInstancesRequest" }) as any as S.Schema<GetProjectsLocationsInstancesRequest>;
+export const GetProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://redis.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsInstancesRequest",
+}) as any as S.Schema<GetProjectsLocationsInstancesRequest>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://redis.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://redis.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsOperationsRequest",
+}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export interface GetSharedRegionalCertificateAuthorityProjectsLocationsRequest {
   /** Required. Regional certificate authority resource name using the form: `projects/{project_id}/locations/{location_id}/sharedRegionalCertificateAuthority` where `location_id` refers to a Google Cloud region. */
   name: string;
 }
-export const GetSharedRegionalCertificateAuthorityProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://redis.googleapis.com/"})),
-).annotate({ identifier: "GetSharedRegionalCertificateAuthorityProjectsLocationsRequest" }) as any as S.Schema<GetSharedRegionalCertificateAuthorityProjectsLocationsRequest>;
+export const GetSharedRegionalCertificateAuthorityProjectsLocationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://redis.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetSharedRegionalCertificateAuthorityProjectsLocationsRequest",
+  }) as any as S.Schema<GetSharedRegionalCertificateAuthorityProjectsLocationsRequest>;
 
 /** The certificates that form the CA chain, from leaf to root order. */
 export interface RegionalCertChain {
@@ -1854,13 +2410,17 @@ export interface RegionalCertChain {
   certificates?: StringList;
 }
 export const RegionalCertChain = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "certificates": S.optional(StringList),
-}),
-).annotate({ identifier: "RegionalCertChain" }) as any as S.Schema<RegionalCertChain>;
+  S.Struct({
+    certificates: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "RegionalCertChain",
+}) as any as S.Schema<RegionalCertChain>;
 
 export type RegionalCertChainList = ReadonlyArray<RegionalCertChain>;
-export const RegionalCertChainList = /*@__PURE__*/ S.Array(RegionalCertChain) as any as S.Schema<RegionalCertChainList>;
+export const RegionalCertChainList = /*@__PURE__*/ S.Array(
+  RegionalCertChain,
+) as any as S.Schema<RegionalCertChainList>;
 
 /** CA certificate chains for redis managed server authentication. */
 export interface RegionalManagedCertificateAuthority {
@@ -1868,10 +2428,12 @@ export interface RegionalManagedCertificateAuthority {
   caCerts?: RegionalCertChainList;
 }
 export const RegionalManagedCertificateAuthority = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "caCerts": S.optional(RegionalCertChainList),
-}),
-).annotate({ identifier: "RegionalManagedCertificateAuthority" }) as any as S.Schema<RegionalManagedCertificateAuthority>;
+  S.Struct({
+    caCerts: S.optional(RegionalCertChainList),
+  }),
+).annotate({
+  identifier: "RegionalManagedCertificateAuthority",
+}) as any as S.Schema<RegionalManagedCertificateAuthority>;
 
 /** Shared regional certificate authority */
 export interface SharedRegionalCertificateAuthority {
@@ -1881,11 +2443,13 @@ export interface SharedRegionalCertificateAuthority {
   name?: string;
 }
 export const SharedRegionalCertificateAuthority = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "managedServerCa": S.optional(RegionalManagedCertificateAuthority),
-  "name": S.optional(S.String),
-}),
-).annotate({ identifier: "SharedRegionalCertificateAuthority" }) as any as S.Schema<SharedRegionalCertificateAuthority>;
+  S.Struct({
+    managedServerCa: S.optional(RegionalManagedCertificateAuthority),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SharedRegionalCertificateAuthority",
+}) as any as S.Schema<SharedRegionalCertificateAuthority>;
 
 /** The Cloud Storage location for the input content */
 export interface GcsSource {
@@ -1893,9 +2457,9 @@ export interface GcsSource {
   uri?: string;
 }
 export const GcsSource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "uri": S.optional(S.String),
-}),
+  S.Struct({
+    uri: S.optional(S.String),
+  }),
 ).annotate({ identifier: "GcsSource" }) as any as S.Schema<GcsSource>;
 
 /** The input content */
@@ -1904,9 +2468,9 @@ export interface InputConfig {
   gcsSource?: GcsSource;
 }
 export const InputConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "gcsSource": S.optional(GcsSource),
-}),
+  S.Struct({
+    gcsSource: S.optional(GcsSource),
+  }),
 ).annotate({ identifier: "InputConfig" }) as any as S.Schema<InputConfig>;
 
 /** Request for Import. */
@@ -1915,10 +2479,12 @@ export interface ImportInstanceRequest {
   inputConfig?: InputConfig;
 }
 export const ImportInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "inputConfig": S.optional(InputConfig),
-}),
-).annotate({ identifier: "ImportInstanceRequest" }) as any as S.Schema<ImportInstanceRequest>;
+  S.Struct({
+    inputConfig: S.optional(InputConfig),
+  }),
+).annotate({
+  identifier: "ImportInstanceRequest",
+}) as any as S.Schema<ImportInstanceRequest>;
 
 export interface ImportProjectsLocationsInstancesRequest {
   /** Required. Redis instance resource name using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id` refers to a GCP region. */
@@ -1926,12 +2492,21 @@ export interface ImportProjectsLocationsInstancesRequest {
   /** Request body */
   body?: ImportInstanceRequest;
 }
-export const ImportProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(ImportInstanceRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:import","baseUrl":"https://redis.googleapis.com/"})),
-).annotate({ identifier: "ImportProjectsLocationsInstancesRequest" }) as any as S.Schema<ImportProjectsLocationsInstancesRequest>;
+export const ImportProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(ImportInstanceRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+name}:import",
+        baseUrl: "https://redis.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ImportProjectsLocationsInstancesRequest",
+}) as any as S.Schema<ImportProjectsLocationsInstancesRequest>;
 
 export interface ListProjectsLocationsRequest {
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
@@ -1946,17 +2521,27 @@ export interface ListProjectsLocationsRequest {
   pageToken?: string;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}/locations","baseUrl":"https://redis.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
+  S.Struct({
+    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+name}/locations",
+      baseUrl: "https://redis.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsRequest",
+}) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(
+  Location,
+) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -1966,11 +2551,13 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locations": S.optional(LocationList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
+  S.Struct({
+    locations: S.optional(LocationList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListLocationsResponse",
+}) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsLocationsAclPoliciesRequest {
   /** Optional. The `next_page_token` value returned from a previous `ListAclPolicies` request, if any. */
@@ -1980,16 +2567,27 @@ export interface ListProjectsLocationsAclPoliciesRequest {
   /** Optional. The maximum number of items to return. If not specified, a default value of 1000 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response's `next_page_token` to determine if there are more ACL policies left to be queried. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-export const ListProjectsLocationsAclPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/aclPolicies","baseUrl":"https://redis.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsAclPoliciesRequest" }) as any as S.Schema<ListProjectsLocationsAclPoliciesRequest>;
+export const ListProjectsLocationsAclPoliciesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+parent}/aclPolicies",
+        baseUrl: "https://redis.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsAclPoliciesRequest",
+}) as any as S.Schema<ListProjectsLocationsAclPoliciesRequest>;
 
 export type AclPolicyList = ReadonlyArray<AclPolicy>;
-export const AclPolicyList = /*@__PURE__*/ S.Array(AclPolicy) as any as S.Schema<AclPolicyList>;
+export const AclPolicyList = /*@__PURE__*/ S.Array(
+  AclPolicy,
+) as any as S.Schema<AclPolicyList>;
 
 /** Response for `ListAclPolicies`. */
 export interface ListAclPoliciesResponse {
@@ -2001,12 +2599,14 @@ export interface ListAclPoliciesResponse {
   unreachable?: StringList;
 }
 export const ListAclPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "aclPolicies": S.optional(AclPolicyList),
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListAclPoliciesResponse" }) as any as S.Schema<ListAclPoliciesResponse>;
+  S.Struct({
+    aclPolicies: S.optional(AclPolicyList),
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListAclPoliciesResponse",
+}) as any as S.Schema<ListAclPoliciesResponse>;
 
 export interface ListProjectsLocationsAclPoliciesRevisionsRequest {
   /** Optional. The `next_page_token` value returned from a previous `ListAclPolicyRevisions` request, if any. */
@@ -2016,16 +2616,27 @@ export interface ListProjectsLocationsAclPoliciesRevisionsRequest {
   /** Optional. The maximum number of items to return. */
   pageSize?: number;
 }
-export const ListProjectsLocationsAclPoliciesRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/revisions","baseUrl":"https://redis.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsAclPoliciesRevisionsRequest" }) as any as S.Schema<ListProjectsLocationsAclPoliciesRevisionsRequest>;
+export const ListProjectsLocationsAclPoliciesRevisionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+parent}/revisions",
+        baseUrl: "https://redis.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsAclPoliciesRevisionsRequest",
+  }) as any as S.Schema<ListProjectsLocationsAclPoliciesRevisionsRequest>;
 
 export type AclPolicyRevisionList = ReadonlyArray<AclPolicyRevision>;
-export const AclPolicyRevisionList = /*@__PURE__*/ S.Array(AclPolicyRevision) as any as S.Schema<AclPolicyRevisionList>;
+export const AclPolicyRevisionList = /*@__PURE__*/ S.Array(
+  AclPolicyRevision,
+) as any as S.Schema<AclPolicyRevisionList>;
 
 /** Response for `ListAclPolicyRevisions`. */
 export interface ListAclPolicyRevisionsResponse {
@@ -2037,12 +2648,14 @@ export interface ListAclPolicyRevisionsResponse {
   nextPageToken?: string;
 }
 export const ListAclPolicyRevisionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "aclPolicyRevisions": S.optional(AclPolicyRevisionList),
-  "unreachable": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListAclPolicyRevisionsResponse" }) as any as S.Schema<ListAclPolicyRevisionsResponse>;
+  S.Struct({
+    aclPolicyRevisions: S.optional(AclPolicyRevisionList),
+    unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListAclPolicyRevisionsResponse",
+}) as any as S.Schema<ListAclPolicyRevisionsResponse>;
 
 export interface ListProjectsLocationsBackupCollectionsRequest {
   /** Optional. The `next_page_token` value returned from a previous [ListBackupCollections] request, if any. */
@@ -2052,16 +2665,27 @@ export interface ListProjectsLocationsBackupCollectionsRequest {
   /** Required. The resource name of the backupCollection location using the form: `projects/{project_id}/locations/{location_id}` where `location_id` refers to a Google Cloud region. */
   parent: string;
 }
-export const ListProjectsLocationsBackupCollectionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/backupCollections","baseUrl":"https://redis.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsBackupCollectionsRequest" }) as any as S.Schema<ListProjectsLocationsBackupCollectionsRequest>;
+export const ListProjectsLocationsBackupCollectionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+parent}/backupCollections",
+        baseUrl: "https://redis.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsBackupCollectionsRequest",
+  }) as any as S.Schema<ListProjectsLocationsBackupCollectionsRequest>;
 
 export type BackupCollectionList = ReadonlyArray<BackupCollection>;
-export const BackupCollectionList = /*@__PURE__*/ S.Array(BackupCollection) as any as S.Schema<BackupCollectionList>;
+export const BackupCollectionList = /*@__PURE__*/ S.Array(
+  BackupCollection,
+) as any as S.Schema<BackupCollectionList>;
 
 /** Response for `ListBackupCollections`. */
 export interface ListBackupCollectionsResponse {
@@ -2073,12 +2697,14 @@ export interface ListBackupCollectionsResponse {
   nextPageToken?: string;
 }
 export const ListBackupCollectionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "backupCollections": S.optional(BackupCollectionList),
-  "unreachable": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListBackupCollectionsResponse" }) as any as S.Schema<ListBackupCollectionsResponse>;
+  S.Struct({
+    backupCollections: S.optional(BackupCollectionList),
+    unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListBackupCollectionsResponse",
+}) as any as S.Schema<ListBackupCollectionsResponse>;
 
 export interface ListProjectsLocationsBackupCollectionsBackupsRequest {
   /** Optional. The `next_page_token` value returned from a previous [ListBackupCollections] request, if any. */
@@ -2088,16 +2714,27 @@ export interface ListProjectsLocationsBackupCollectionsBackupsRequest {
   /** Optional. The maximum number of items to return. If not specified, a default value of 1000 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response's `next_page_token` to determine if there are more clusters left to be queried. */
   pageSize?: number;
 }
-export const ListProjectsLocationsBackupCollectionsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/backups","baseUrl":"https://redis.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsBackupCollectionsBackupsRequest" }) as any as S.Schema<ListProjectsLocationsBackupCollectionsBackupsRequest>;
+export const ListProjectsLocationsBackupCollectionsBackupsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+parent}/backups",
+        baseUrl: "https://redis.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsBackupCollectionsBackupsRequest",
+  }) as any as S.Schema<ListProjectsLocationsBackupCollectionsBackupsRequest>;
 
 export type BackupList = ReadonlyArray<Backup>;
-export const BackupList = /*@__PURE__*/ S.Array(Backup) as any as S.Schema<BackupList>;
+export const BackupList = /*@__PURE__*/ S.Array(
+  Backup,
+) as any as S.Schema<BackupList>;
 
 /** Response for `ListBackups`. */
 export interface ListBackupsResponse {
@@ -2109,12 +2746,14 @@ export interface ListBackupsResponse {
   unreachable?: StringList;
 }
 export const ListBackupsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "backups": S.optional(BackupList),
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListBackupsResponse" }) as any as S.Schema<ListBackupsResponse>;
+  S.Struct({
+    backups: S.optional(BackupList),
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListBackupsResponse",
+}) as any as S.Schema<ListBackupsResponse>;
 
 export interface ListProjectsLocationsClustersRequest {
   /** The `next_page_token` value returned from a previous `ListClusters` request, if any. */
@@ -2124,16 +2763,27 @@ export interface ListProjectsLocationsClustersRequest {
   /** The maximum number of items to return. If not specified, a default value of 1000 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response's `next_page_token` to determine if there are more clusters left to be queried. */
   pageSize?: number;
 }
-export const ListProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/clusters","baseUrl":"https://redis.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsClustersRequest" }) as any as S.Schema<ListProjectsLocationsClustersRequest>;
+export const ListProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+parent}/clusters",
+        baseUrl: "https://redis.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsClustersRequest",
+}) as any as S.Schema<ListProjectsLocationsClustersRequest>;
 
 export type ClusterList = ReadonlyArray<Cluster>;
-export const ClusterList = /*@__PURE__*/ S.Array(Cluster) as any as S.Schema<ClusterList>;
+export const ClusterList = /*@__PURE__*/ S.Array(
+  Cluster,
+) as any as S.Schema<ClusterList>;
 
 /** Response for `ListClusters`. */
 export interface ListClustersResponse {
@@ -2145,12 +2795,14 @@ export interface ListClustersResponse {
   nextPageToken?: string;
 }
 export const ListClustersResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "clusters": S.optional(ClusterList),
-  "unreachable": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListClustersResponse" }) as any as S.Schema<ListClustersResponse>;
+  S.Struct({
+    clusters: S.optional(ClusterList),
+    unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListClustersResponse",
+}) as any as S.Schema<ListClustersResponse>;
 
 export interface ListProjectsLocationsClustersTokenAuthUsersRequest {
   /** Optional. The `next_page_token` value returned from a previous [ListTokenAuthUsers] request, if any. */
@@ -2164,18 +2816,29 @@ export interface ListProjectsLocationsClustersTokenAuthUsersRequest {
   /** Optional. The maximum number of items to return. If not specified, a default value of 1000 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response's The maximum value is 1000; values above 1000 will be coerced to 1000. `next_page_token` to determine if there are more clusters left to be queried. */
   pageSize?: number;
 }
-export const ListProjectsLocationsClustersTokenAuthUsersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/tokenAuthUsers","baseUrl":"https://redis.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsClustersTokenAuthUsersRequest" }) as any as S.Schema<ListProjectsLocationsClustersTokenAuthUsersRequest>;
+export const ListProjectsLocationsClustersTokenAuthUsersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+parent}/tokenAuthUsers",
+        baseUrl: "https://redis.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsClustersTokenAuthUsersRequest",
+  }) as any as S.Schema<ListProjectsLocationsClustersTokenAuthUsersRequest>;
 
 export type TokenAuthUserList = ReadonlyArray<TokenAuthUser>;
-export const TokenAuthUserList = /*@__PURE__*/ S.Array(TokenAuthUser) as any as S.Schema<TokenAuthUserList>;
+export const TokenAuthUserList = /*@__PURE__*/ S.Array(
+  TokenAuthUser,
+) as any as S.Schema<TokenAuthUserList>;
 
 /** Response message for ListTokenAuthUsers. */
 export interface ListTokenAuthUsersResponse {
@@ -2187,12 +2850,14 @@ export interface ListTokenAuthUsersResponse {
   unreachable?: StringList;
 }
 export const ListTokenAuthUsersResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "tokenAuthUsers": S.optional(TokenAuthUserList),
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListTokenAuthUsersResponse" }) as any as S.Schema<ListTokenAuthUsersResponse>;
+  S.Struct({
+    tokenAuthUsers: S.optional(TokenAuthUserList),
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListTokenAuthUsersResponse",
+}) as any as S.Schema<ListTokenAuthUsersResponse>;
 
 export interface ListProjectsLocationsClustersTokenAuthUsersAuthTokensRequest {
   /** Optional. The maximum number of items to return. The maximum value is 1000; values above 1000 will be coerced to 1000. If not specified, a default value of 1000 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response's `next_page_token` to determine if there are more clusters left to be queried. */
@@ -2206,18 +2871,29 @@ export interface ListProjectsLocationsClustersTokenAuthUsersAuthTokensRequest {
   /** Optional. Expression for filtering results. */
   filter?: string;
 }
-export const ListProjectsLocationsClustersTokenAuthUsersAuthTokensRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/authTokens","baseUrl":"https://redis.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsClustersTokenAuthUsersAuthTokensRequest" }) as any as S.Schema<ListProjectsLocationsClustersTokenAuthUsersAuthTokensRequest>;
+export const ListProjectsLocationsClustersTokenAuthUsersAuthTokensRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+parent}/authTokens",
+        baseUrl: "https://redis.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsClustersTokenAuthUsersAuthTokensRequest",
+  }) as any as S.Schema<ListProjectsLocationsClustersTokenAuthUsersAuthTokensRequest>;
 
 export type AuthTokenList = ReadonlyArray<AuthToken>;
-export const AuthTokenList = /*@__PURE__*/ S.Array(AuthToken) as any as S.Schema<AuthTokenList>;
+export const AuthTokenList = /*@__PURE__*/ S.Array(
+  AuthToken,
+) as any as S.Schema<AuthTokenList>;
 
 /** Response message for ListAuthTokens. */
 export interface ListAuthTokensResponse {
@@ -2229,12 +2905,14 @@ export interface ListAuthTokensResponse {
   nextPageToken?: string;
 }
 export const ListAuthTokensResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "unreachable": S.optional(StringList),
-  "authTokens": S.optional(AuthTokenList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListAuthTokensResponse" }) as any as S.Schema<ListAuthTokensResponse>;
+  S.Struct({
+    unreachable: S.optional(StringList),
+    authTokens: S.optional(AuthTokenList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListAuthTokensResponse",
+}) as any as S.Schema<ListAuthTokensResponse>;
 
 export interface ListProjectsLocationsInstancesRequest {
   /** The `next_page_token` value returned from a previous ListInstances request, if any. */
@@ -2244,16 +2922,27 @@ export interface ListProjectsLocationsInstancesRequest {
   /** Required. The resource name of the instance location using the form: `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP region. */
   parent: string;
 }
-export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/instances","baseUrl":"https://redis.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsInstancesRequest" }) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
+export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+parent}/instances",
+        baseUrl: "https://redis.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsInstancesRequest",
+}) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
 
 export type InstanceList = ReadonlyArray<Instance>;
-export const InstanceList = /*@__PURE__*/ S.Array(Instance) as any as S.Schema<InstanceList>;
+export const InstanceList = /*@__PURE__*/ S.Array(
+  Instance,
+) as any as S.Schema<InstanceList>;
 
 /** Response for ListInstances. */
 export interface ListInstancesResponse {
@@ -2265,12 +2954,14 @@ export interface ListInstancesResponse {
   instances?: InstanceList;
 }
 export const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "unreachable": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-  "instances": S.optional(InstanceList),
-}),
-).annotate({ identifier: "ListInstancesResponse" }) as any as S.Schema<ListInstancesResponse>;
+  S.Struct({
+    unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+    instances: S.optional(InstanceList),
+  }),
+).annotate({
+  identifier: "ListInstancesResponse",
+}) as any as S.Schema<ListInstancesResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list filter. */
@@ -2284,18 +2975,29 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}/operations","baseUrl":"https://redis.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      filter: S.optional(S.String.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+name}/operations",
+        baseUrl: "https://redis.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsOperationsRequest",
+}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(
+  Operation,
+) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -2307,12 +3009,14 @@ export interface ListOperationsResponse {
   unreachable?: StringList;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "operations": S.optional(OperationList),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    operations: S.optional(OperationList),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListOperationsResponse",
+}) as any as S.Schema<ListOperationsResponse>;
 
 export interface PatchProjectsLocationsAclPoliciesRequest {
   /** Optional. Mask of fields to be updated. At least one path must be supplied in this field. The elements of the repeated paths field may only include these fields from `AclPolicy`: * `rules` */
@@ -2324,14 +3028,23 @@ export interface PatchProjectsLocationsAclPoliciesRequest {
   /** Request body */
   body?: AclPolicy;
 }
-export const PatchProjectsLocationsAclPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(AclPolicy.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://redis.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsAclPoliciesRequest" }) as any as S.Schema<PatchProjectsLocationsAclPoliciesRequest>;
+export const PatchProjectsLocationsAclPoliciesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(AclPolicy.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://redis.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "PatchProjectsLocationsAclPoliciesRequest",
+}) as any as S.Schema<PatchProjectsLocationsAclPoliciesRequest>;
 
 export interface PatchProjectsLocationsClustersRequest {
   /** Required. Mask of fields to update. At least one path must be supplied in this field. The elements of the repeated paths field may only include these fields from Cluster: * `size_gb` * `replica_count` * `cluster_endpoints` */
@@ -2343,14 +3056,23 @@ export interface PatchProjectsLocationsClustersRequest {
   /** Request body */
   body?: Cluster;
 }
-export const PatchProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(Cluster.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://redis.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsClustersRequest" }) as any as S.Schema<PatchProjectsLocationsClustersRequest>;
+export const PatchProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      body: S.optional(Cluster.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://redis.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "PatchProjectsLocationsClustersRequest",
+}) as any as S.Schema<PatchProjectsLocationsClustersRequest>;
 
 export interface PatchProjectsLocationsInstancesRequest {
   /** Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details. */
@@ -2360,30 +3082,49 @@ export interface PatchProjectsLocationsInstancesRequest {
   /** Request body */
   body?: Instance;
 }
-export const PatchProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Instance.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://redis.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsInstancesRequest" }) as any as S.Schema<PatchProjectsLocationsInstancesRequest>;
+export const PatchProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Instance.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://redis.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "PatchProjectsLocationsInstancesRequest",
+}) as any as S.Schema<PatchProjectsLocationsInstancesRequest>;
 
-export type RescheduleClusterMaintenanceRequestRescheduleTypeEnum = "RESCHEDULE_TYPE_UNSPECIFIED" | "IMMEDIATE" | "SPECIFIC_TIME";
-export const RescheduleClusterMaintenanceRequestRescheduleTypeEnum = /*@__PURE__*/ S.String;
+export type RescheduleClusterMaintenanceRequestRescheduleTypeEnum =
+  | "RESCHEDULE_TYPE_UNSPECIFIED"
+  | "IMMEDIATE"
+  | "SPECIFIC_TIME";
+export const RescheduleClusterMaintenanceRequestRescheduleTypeEnum =
+  /*@__PURE__*/ S.String;
 
 /** Request for rescheduling a cluster maintenance. */
 export interface RescheduleClusterMaintenanceRequest {
   /** Required. If reschedule type is SPECIFIC_TIME, must set up schedule_time as well. */
-  rescheduleType?: RescheduleClusterMaintenanceRequestRescheduleTypeEnum | (string & {});
+  rescheduleType?:
+    | RescheduleClusterMaintenanceRequestRescheduleTypeEnum
+    | (string & {});
   /** Optional. Timestamp when the maintenance shall be rescheduled to if reschedule_type=SPECIFIC_TIME, in RFC 3339 format, for example `2012-11-15T16:19:00.094Z`. */
   scheduleTime?: string;
 }
 export const RescheduleClusterMaintenanceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "rescheduleType": S.optional(RescheduleClusterMaintenanceRequestRescheduleTypeEnum),
-  "scheduleTime": S.optional(S.String),
-}),
-).annotate({ identifier: "RescheduleClusterMaintenanceRequest" }) as any as S.Schema<RescheduleClusterMaintenanceRequest>;
+  S.Struct({
+    rescheduleType: S.optional(
+      RescheduleClusterMaintenanceRequestRescheduleTypeEnum,
+    ),
+    scheduleTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RescheduleClusterMaintenanceRequest",
+}) as any as S.Schema<RescheduleClusterMaintenanceRequest>;
 
 export interface RescheduleClusterMaintenanceProjectsLocationsClustersRequest {
   /** Required. Redis Cluster instance resource name using the form: `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}` where `location_id` refers to a Google Cloud region. */
@@ -2391,29 +3132,47 @@ export interface RescheduleClusterMaintenanceProjectsLocationsClustersRequest {
   /** Request body */
   body?: RescheduleClusterMaintenanceRequest;
 }
-export const RescheduleClusterMaintenanceProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(RescheduleClusterMaintenanceRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:rescheduleClusterMaintenance","baseUrl":"https://redis.googleapis.com/"})),
-).annotate({ identifier: "RescheduleClusterMaintenanceProjectsLocationsClustersRequest" }) as any as S.Schema<RescheduleClusterMaintenanceProjectsLocationsClustersRequest>;
+export const RescheduleClusterMaintenanceProjectsLocationsClustersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(RescheduleClusterMaintenanceRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+name}:rescheduleClusterMaintenance",
+        baseUrl: "https://redis.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "RescheduleClusterMaintenanceProjectsLocationsClustersRequest",
+  }) as any as S.Schema<RescheduleClusterMaintenanceProjectsLocationsClustersRequest>;
 
-export type RescheduleMaintenanceRequestRescheduleTypeEnum = "RESCHEDULE_TYPE_UNSPECIFIED" | "IMMEDIATE" | "NEXT_AVAILABLE_WINDOW" | "SPECIFIC_TIME";
-export const RescheduleMaintenanceRequestRescheduleTypeEnum = /*@__PURE__*/ S.String;
+export type RescheduleMaintenanceRequestRescheduleTypeEnum =
+  | "RESCHEDULE_TYPE_UNSPECIFIED"
+  | "IMMEDIATE"
+  | "NEXT_AVAILABLE_WINDOW"
+  | "SPECIFIC_TIME";
+export const RescheduleMaintenanceRequestRescheduleTypeEnum =
+  /*@__PURE__*/ S.String;
 
 /** Request for RescheduleMaintenance. */
 export interface RescheduleMaintenanceRequest {
   /** Required. If reschedule type is SPECIFIC_TIME, must set up schedule_time as well. */
-  rescheduleType?: RescheduleMaintenanceRequestRescheduleTypeEnum | (string & {});
+  rescheduleType?:
+    | RescheduleMaintenanceRequestRescheduleTypeEnum
+    | (string & {});
   /** Optional. Timestamp when the maintenance shall be rescheduled to if reschedule_type=SPECIFIC_TIME, in RFC 3339 format, for example `2012-11-15T16:19:00.094Z`. */
   scheduleTime?: string;
 }
 export const RescheduleMaintenanceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "rescheduleType": S.optional(RescheduleMaintenanceRequestRescheduleTypeEnum),
-  "scheduleTime": S.optional(S.String),
-}),
-).annotate({ identifier: "RescheduleMaintenanceRequest" }) as any as S.Schema<RescheduleMaintenanceRequest>;
+  S.Struct({
+    rescheduleType: S.optional(RescheduleMaintenanceRequestRescheduleTypeEnum),
+    scheduleTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RescheduleMaintenanceRequest",
+}) as any as S.Schema<RescheduleMaintenanceRequest>;
 
 export interface RescheduleMaintenanceProjectsLocationsInstancesRequest {
   /** Required. Redis instance resource name using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id` refers to a GCP region. */
@@ -2421,12 +3180,21 @@ export interface RescheduleMaintenanceProjectsLocationsInstancesRequest {
   /** Request body */
   body?: RescheduleMaintenanceRequest;
 }
-export const RescheduleMaintenanceProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(RescheduleMaintenanceRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:rescheduleMaintenance","baseUrl":"https://redis.googleapis.com/"})),
-).annotate({ identifier: "RescheduleMaintenanceProjectsLocationsInstancesRequest" }) as any as S.Schema<RescheduleMaintenanceProjectsLocationsInstancesRequest>;
+export const RescheduleMaintenanceProjectsLocationsInstancesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(RescheduleMaintenanceRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+name}:rescheduleMaintenance",
+        baseUrl: "https://redis.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "RescheduleMaintenanceProjectsLocationsInstancesRequest",
+  }) as any as S.Schema<RescheduleMaintenanceProjectsLocationsInstancesRequest>;
 
 /** Request for UpgradeInstance. */
 export interface UpgradeInstanceRequest {
@@ -2434,10 +3202,12 @@ export interface UpgradeInstanceRequest {
   redisVersion?: string;
 }
 export const UpgradeInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "redisVersion": S.optional(S.String),
-}),
-).annotate({ identifier: "UpgradeInstanceRequest" }) as any as S.Schema<UpgradeInstanceRequest>;
+  S.Struct({
+    redisVersion: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpgradeInstanceRequest",
+}) as any as S.Schema<UpgradeInstanceRequest>;
 
 export interface UpgradeProjectsLocationsInstancesRequest {
   /** Required. Redis instance resource name using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id` refers to a GCP region. */
@@ -2445,14 +3215,28 @@ export interface UpgradeProjectsLocationsInstancesRequest {
   /** Request body */
   body?: UpgradeInstanceRequest;
 }
-export const UpgradeProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(UpgradeInstanceRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:upgrade","baseUrl":"https://redis.googleapis.com/"})),
-).annotate({ identifier: "UpgradeProjectsLocationsInstancesRequest" }) as any as S.Schema<UpgradeProjectsLocationsInstancesRequest>;
+export const UpgradeProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(UpgradeInstanceRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+name}:upgrade",
+        baseUrl: "https://redis.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "UpgradeProjectsLocationsInstancesRequest",
+}) as any as S.Schema<UpgradeProjectsLocationsInstancesRequest>;
 
-export type AddAuthTokenProjectsLocationsClustersTokenAuthUsersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type AddAuthTokenProjectsLocationsClustersTokenAuthUsersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Adds a auth token for a user of a token based auth enabled cluster. */
 export const addAuthTokenProjectsLocationsClustersTokenAuthUsers: API.OperationMethod<
   AddAuthTokenProjectsLocationsClustersTokenAuthUsersRequest,
@@ -2467,7 +3251,12 @@ export const addAuthTokenProjectsLocationsClustersTokenAuthUsers: API.OperationM
   retry: Retry.Retry,
 }));
 
-export type AddTokenAuthUserProjectsLocationsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type AddTokenAuthUserProjectsLocationsClustersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Adds a token auth user for a token based auth enabled cluster. */
 export const addTokenAuthUserProjectsLocationsClusters: API.OperationMethod<
   AddTokenAuthUserProjectsLocationsClustersRequest,
@@ -2482,7 +3271,12 @@ export const addTokenAuthUserProjectsLocationsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BackupProjectsLocationsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type BackupProjectsLocationsClustersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Backup Redis Cluster. If this is the first time a backup is being created, a backup collection will be created at the backend, and this backup belongs to this collection. Both collection and backup will have a resource name. Backup will be executed for each shard. A replica (primary if nonHA) will be selected to perform the execution. Backup call will be rejected if there is an ongoing backup or update operation. Be aware that during preview, if the cluster's internal software version is too old, critical update will be performed before actual backup. Once the internal software version is updated to the minimum version required by the backup feature, subsequent backups will not require critical update. After preview, there will be no critical update needed for backup. */
 export const backupProjectsLocationsClusters: API.OperationMethod<
   BackupProjectsLocationsClustersRequest,
@@ -2497,7 +3291,12 @@ export const backupProjectsLocationsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CancelProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CancelProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsRequest,
@@ -2512,7 +3311,12 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsAclPoliciesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsAclPoliciesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates an ACL policy. The creation is executed synchronously and the policy is available for use immediately after the RPC returns. */
 export const createProjectsLocationsAclPolicies: API.OperationMethod<
   CreateProjectsLocationsAclPoliciesRequest,
@@ -2527,7 +3331,12 @@ export const createProjectsLocationsAclPolicies: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsClustersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a Redis cluster based on the specified properties. The creation is executed asynchronously and callers may check the returned operation to track its progress. Once the operation is completed the Redis cluster will be fully functional. The completed longrunning.Operation will contain the new cluster object in the response field. The returned operation is automatically deleted after a few hours, so there is no need to call DeleteOperation. */
 export const createProjectsLocationsClusters: API.OperationMethod<
   CreateProjectsLocationsClustersRequest,
@@ -2542,7 +3351,12 @@ export const createProjectsLocationsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a Redis instance based on the specified tier and memory size. By default, the instance is accessible from the project's [default network](https://cloud.google.com/vpc/docs/vpc). The creation is executed asynchronously and callers may check the returned operation to track its progress. Once the operation is completed the Redis instance will be fully functional. The completed longrunning.Operation will contain the new instance object in the response field. The returned operation is automatically deleted after a few hours, so there is no need to call DeleteOperation. */
 export const createProjectsLocationsInstances: API.OperationMethod<
   CreateProjectsLocationsInstancesRequest,
@@ -2557,7 +3371,12 @@ export const createProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsAclPoliciesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsAclPoliciesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a specific ACL policy. This action will delete the ACL policy and all the rules associated with it. An ACL policy cannot be deleted if it is attached to a cluster. */
 export const deleteProjectsLocationsAclPolicies: API.OperationMethod<
   DeleteProjectsLocationsAclPoliciesRequest,
@@ -2572,7 +3391,12 @@ export const deleteProjectsLocationsAclPolicies: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsBackupCollectionsBackupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsBackupCollectionsBackupsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a specific backup. */
 export const deleteProjectsLocationsBackupCollectionsBackups: API.OperationMethod<
   DeleteProjectsLocationsBackupCollectionsBackupsRequest,
@@ -2587,7 +3411,12 @@ export const deleteProjectsLocationsBackupCollectionsBackups: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsClustersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a specific Redis cluster. Cluster stops serving and data is deleted. */
 export const deleteProjectsLocationsClusters: API.OperationMethod<
   DeleteProjectsLocationsClustersRequest,
@@ -2602,7 +3431,12 @@ export const deleteProjectsLocationsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsClustersTokenAuthUsersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsClustersTokenAuthUsersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a token auth user for a token based auth enabled cluster. */
 export const deleteProjectsLocationsClustersTokenAuthUsers: API.OperationMethod<
   DeleteProjectsLocationsClustersTokenAuthUsersRequest,
@@ -2617,7 +3451,12 @@ export const deleteProjectsLocationsClustersTokenAuthUsers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsClustersTokenAuthUsersAuthTokensError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsClustersTokenAuthUsersAuthTokensError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Removes a auth token for a user of a token based auth enabled instance. */
 export const deleteProjectsLocationsClustersTokenAuthUsersAuthTokens: API.OperationMethod<
   DeleteProjectsLocationsClustersTokenAuthUsersAuthTokensRequest,
@@ -2632,7 +3471,12 @@ export const deleteProjectsLocationsClustersTokenAuthUsersAuthTokens: API.Operat
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a specific Redis instance. Instance stops serving and data is deleted. */
 export const deleteProjectsLocationsInstances: API.OperationMethod<
   DeleteProjectsLocationsInstancesRequest,
@@ -2647,7 +3491,12 @@ export const deleteProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsRequest,
@@ -2662,7 +3511,12 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ExportProjectsLocationsBackupCollectionsBackupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ExportProjectsLocationsBackupCollectionsBackupsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Exports a specific backup to a customer target Cloud Storage URI. */
 export const exportProjectsLocationsBackupCollectionsBackups: API.OperationMethod<
   ExportProjectsLocationsBackupCollectionsBackupsRequest,
@@ -2677,7 +3531,12 @@ export const exportProjectsLocationsBackupCollectionsBackups: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type ExportProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ExportProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Export Redis instance data into a Redis RDB format file in Cloud Storage. Redis will continue serving during this operation. The returned operation is automatically deleted after a few hours, so there is no need to call DeleteOperation. */
 export const exportProjectsLocationsInstances: API.OperationMethod<
   ExportProjectsLocationsInstancesRequest,
@@ -2692,7 +3551,12 @@ export const exportProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type FailoverProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type FailoverProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Initiates a failover of the primary node to current replica node for a specific STANDARD tier Cloud Memorystore for Redis instance. */
 export const failoverProjectsLocationsInstances: API.OperationMethod<
   FailoverProjectsLocationsInstancesRequest,
@@ -2707,7 +3571,10 @@ export const failoverProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAuthStringProjectsLocationsInstancesError = NotFound | Forbidden | GcpOpError;
+export type GetAuthStringProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the AUTH string for a Redis instance. If AUTH is not enabled for the instance the response will be empty. This information is not included in the details returned to GetInstance. */
 export const getAuthStringProjectsLocationsInstances: API.OperationMethod<
   GetAuthStringProjectsLocationsInstancesRequest,
@@ -2722,7 +3589,10 @@ export const getAuthStringProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetCertificateAuthorityProjectsLocationsClustersError = NotFound | Forbidden | GcpOpError;
+export type GetCertificateAuthorityProjectsLocationsClustersError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the details of certificate authority information for Redis cluster. */
 export const getCertificateAuthorityProjectsLocationsClusters: API.OperationMethod<
   GetCertificateAuthorityProjectsLocationsClustersRequest,
@@ -2752,7 +3622,10 @@ export const getProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsAclPoliciesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsAclPoliciesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the details of a specific Redis Cluster ACL policy. */
 export const getProjectsLocationsAclPolicies: API.OperationMethod<
   GetProjectsLocationsAclPoliciesRequest,
@@ -2767,7 +3640,10 @@ export const getProjectsLocationsAclPolicies: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsAclPoliciesRevisionsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsAclPoliciesRevisionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a specific ACL policy revision. */
 export const getProjectsLocationsAclPoliciesRevisions: API.OperationMethod<
   GetProjectsLocationsAclPoliciesRevisionsRequest,
@@ -2782,7 +3658,10 @@ export const getProjectsLocationsAclPoliciesRevisions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsBackupCollectionsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsBackupCollectionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Get a backup collection. */
 export const getProjectsLocationsBackupCollections: API.OperationMethod<
   GetProjectsLocationsBackupCollectionsRequest,
@@ -2797,7 +3676,10 @@ export const getProjectsLocationsBackupCollections: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsBackupCollectionsBackupsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsBackupCollectionsBackupsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the details of a specific backup. */
 export const getProjectsLocationsBackupCollectionsBackups: API.OperationMethod<
   GetProjectsLocationsBackupCollectionsBackupsRequest,
@@ -2812,7 +3694,10 @@ export const getProjectsLocationsBackupCollectionsBackups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsClustersError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsClustersError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the details of a specific Redis cluster. */
 export const getProjectsLocationsClusters: API.OperationMethod<
   GetProjectsLocationsClustersRequest,
@@ -2827,7 +3712,10 @@ export const getProjectsLocationsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsClustersTokenAuthUsersError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsClustersTokenAuthUsersError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets a specific token auth user for a basic auth enabled cluster. */
 export const getProjectsLocationsClustersTokenAuthUsers: API.OperationMethod<
   GetProjectsLocationsClustersTokenAuthUsersRequest,
@@ -2842,7 +3730,10 @@ export const getProjectsLocationsClustersTokenAuthUsers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsClustersTokenAuthUsersAuthTokensError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsClustersTokenAuthUsersAuthTokensError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets a specific auth token for a specific token auth user. */
 export const getProjectsLocationsClustersTokenAuthUsersAuthTokens: API.OperationMethod<
   GetProjectsLocationsClustersTokenAuthUsersAuthTokensRequest,
@@ -2857,7 +3748,10 @@ export const getProjectsLocationsClustersTokenAuthUsersAuthTokens: API.Operation
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsInstancesError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the details of a specific Redis instance. */
 export const getProjectsLocationsInstances: API.OperationMethod<
   GetProjectsLocationsInstancesRequest,
@@ -2872,7 +3766,10 @@ export const getProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -2887,7 +3784,10 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetSharedRegionalCertificateAuthorityProjectsLocationsError = NotFound | Forbidden | GcpOpError;
+export type GetSharedRegionalCertificateAuthorityProjectsLocationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the details of regional certificate authority information for Redis cluster. */
 export const getSharedRegionalCertificateAuthorityProjectsLocations: API.OperationMethod<
   GetSharedRegionalCertificateAuthorityProjectsLocationsRequest,
@@ -2902,7 +3802,12 @@ export const getSharedRegionalCertificateAuthorityProjectsLocations: API.Operati
   retry: Retry.Retry,
 }));
 
-export type ImportProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ImportProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Import a Redis RDB snapshot file from Cloud Storage into a Redis instance. Redis may stop serving during this operation. Instance state will be IMPORTING for entire operation. When complete, the instance will contain only data from the imported file. The returned operation is automatically deleted after a few hours, so there is no need to call DeleteOperation. */
 export const importProjectsLocationsInstances: API.OperationMethod<
   ImportProjectsLocationsInstancesRequest,
@@ -2930,10 +3835,16 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsAclPoliciesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsAclPoliciesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all ACL policies owned by a project in either the specified location (region) or all locations. The location should have the following format: * `projects/{project_id}/locations/{location_id}` If `location_id` is specified as `-` (wildcard), then all regions available to the project are queried, and the results are aggregated. */
 export const listProjectsLocationsAclPolicies: API.PaginatedOperationMethod<
   ListProjectsLocationsAclPoliciesRequest,
@@ -2946,10 +3857,16 @@ export const listProjectsLocationsAclPolicies: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsAclPoliciesRevisionsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsAclPoliciesRevisionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all ACL policy revisions in a given ACL policy. */
 export const listProjectsLocationsAclPoliciesRevisions: API.PaginatedOperationMethod<
   ListProjectsLocationsAclPoliciesRevisionsRequest,
@@ -2962,10 +3879,16 @@ export const listProjectsLocationsAclPoliciesRevisions: API.PaginatedOperationMe
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsBackupCollectionsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsBackupCollectionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all backup collections owned by a consumer project in either the specified location (region) or all locations. If `location_id` is specified as `-` (wildcard), then all regions available to the project are queried, and the results are aggregated. */
 export const listProjectsLocationsBackupCollections: API.PaginatedOperationMethod<
   ListProjectsLocationsBackupCollectionsRequest,
@@ -2978,10 +3901,16 @@ export const listProjectsLocationsBackupCollections: API.PaginatedOperationMetho
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsBackupCollectionsBackupsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsBackupCollectionsBackupsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all backups owned by a backup collection. */
 export const listProjectsLocationsBackupCollectionsBackups: API.PaginatedOperationMethod<
   ListProjectsLocationsBackupCollectionsBackupsRequest,
@@ -2994,10 +3923,16 @@ export const listProjectsLocationsBackupCollectionsBackups: API.PaginatedOperati
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsClustersError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsClustersError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all Redis clusters owned by a project in either the specified location (region) or all locations. The location should have the following format: * `projects/{project_id}/locations/{location_id}` If `location_id` is specified as `-` (wildcard), then all regions available to the project are queried, and the results are aggregated. */
 export const listProjectsLocationsClusters: API.PaginatedOperationMethod<
   ListProjectsLocationsClustersRequest,
@@ -3010,10 +3945,16 @@ export const listProjectsLocationsClusters: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsClustersTokenAuthUsersError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsClustersTokenAuthUsersError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all the token auth users for a token based auth enabled cluster. */
 export const listProjectsLocationsClustersTokenAuthUsers: API.PaginatedOperationMethod<
   ListProjectsLocationsClustersTokenAuthUsersRequest,
@@ -3026,10 +3967,16 @@ export const listProjectsLocationsClustersTokenAuthUsers: API.PaginatedOperation
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsClustersTokenAuthUsersAuthTokensError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsClustersTokenAuthUsersAuthTokensError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all the auth tokens for a specific token auth user. */
 export const listProjectsLocationsClustersTokenAuthUsersAuthTokens: API.PaginatedOperationMethod<
   ListProjectsLocationsClustersTokenAuthUsersAuthTokensRequest,
@@ -3042,10 +3989,16 @@ export const listProjectsLocationsClustersTokenAuthUsersAuthTokens: API.Paginate
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsInstancesError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all Redis instances owned by a project in either the specified location (region) or all locations. The location should have the following format: * `projects/{project_id}/locations/{location_id}` If `location_id` is specified as `-` (wildcard), then all regions available to the project are queried, and the results are aggregated. */
 export const listProjectsLocationsInstances: API.PaginatedOperationMethod<
   ListProjectsLocationsInstancesRequest,
@@ -3058,10 +4011,16 @@ export const listProjectsLocationsInstances: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -3074,10 +4033,18 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type PatchProjectsLocationsAclPoliciesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsAclPoliciesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the ACL policy. The operation applies the updated ACL policy to all of the linked clusters. If Memorystore can apply the policy to all clusters, then the operation returns a SUCCESS status. If Memorystore can't apply the policy to all clusters, then to ensure eventual consistency, Memorystore uses reconciliation to apply the policy to the failed clusters. Completed longrunning.Operation will contain the new ACL policy object in the response field. */
 export const patchProjectsLocationsAclPolicies: API.OperationMethod<
   PatchProjectsLocationsAclPoliciesRequest,
@@ -3092,7 +4059,12 @@ export const patchProjectsLocationsAclPolicies: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsClustersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the metadata and configuration of a specific Redis cluster. Completed longrunning.Operation will contain the new cluster object in the response field. The returned operation is automatically deleted after a few hours, so there is no need to call DeleteOperation. */
 export const patchProjectsLocationsClusters: API.OperationMethod<
   PatchProjectsLocationsClustersRequest,
@@ -3107,7 +4079,12 @@ export const patchProjectsLocationsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the metadata and configuration of a specific Redis instance. Completed longrunning.Operation will contain the new instance object in the response field. The returned operation is automatically deleted after a few hours, so there is no need to call DeleteOperation. */
 export const patchProjectsLocationsInstances: API.OperationMethod<
   PatchProjectsLocationsInstancesRequest,
@@ -3122,7 +4099,12 @@ export const patchProjectsLocationsInstances: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RescheduleClusterMaintenanceProjectsLocationsClustersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RescheduleClusterMaintenanceProjectsLocationsClustersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Reschedules upcoming maintenance event. */
 export const rescheduleClusterMaintenanceProjectsLocationsClusters: API.OperationMethod<
   RescheduleClusterMaintenanceProjectsLocationsClustersRequest,
@@ -3137,7 +4119,12 @@ export const rescheduleClusterMaintenanceProjectsLocationsClusters: API.Operatio
   retry: Retry.Retry,
 }));
 
-export type RescheduleMaintenanceProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RescheduleMaintenanceProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Reschedule maintenance for a given instance in a given project and location. */
 export const rescheduleMaintenanceProjectsLocationsInstances: API.OperationMethod<
   RescheduleMaintenanceProjectsLocationsInstancesRequest,
@@ -3152,7 +4139,12 @@ export const rescheduleMaintenanceProjectsLocationsInstances: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type UpgradeProjectsLocationsInstancesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpgradeProjectsLocationsInstancesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Upgrades Redis instance to the newer Redis version specified in the request. */
 export const upgradeProjectsLocationsInstances: API.OperationMethod<
   UpgradeProjectsLocationsInstancesRequest,
@@ -3166,4 +4158,3 @@ export const upgradeProjectsLocationsInstances: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

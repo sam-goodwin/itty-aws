@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 /** A tag is associated with exactly one package name and user. */
@@ -74,13 +74,13 @@ export interface Tag {
   int64Value?: string;
 }
 export const Tag = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "stringValue": S.optional(S.String),
-  "timeValue": S.optional(S.String),
-  "booleanValue": S.optional(S.Boolean),
-  "key": S.optional(S.String),
-  "int64Value": S.optional(S.String),
-}),
+  S.Struct({
+    stringValue: S.optional(S.String),
+    timeValue: S.optional(S.String),
+    booleanValue: S.optional(S.Boolean),
+    key: S.optional(S.String),
+    int64Value: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 
 export type TagList = ReadonlyArray<Tag>;
@@ -92,10 +92,12 @@ export interface CreateOrUpdateTagsRequest {
   tags?: TagList;
 }
 export const CreateOrUpdateTagsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "tags": S.optional(TagList),
-}),
-).annotate({ identifier: "CreateOrUpdateTagsRequest" }) as any as S.Schema<CreateOrUpdateTagsRequest>;
+  S.Struct({
+    tags: S.optional(TagList),
+  }),
+).annotate({
+  identifier: "CreateOrUpdateTagsRequest",
+}) as any as S.Schema<CreateOrUpdateTagsRequest>;
 
 export interface CreateOrUpdateAppsTokensTagsRequest {
   /** Required. App whose tags are being manipulated. Format: apps/{package_name} */
@@ -106,12 +108,20 @@ export interface CreateOrUpdateAppsTokensTagsRequest {
   body?: CreateOrUpdateTagsRequest;
 }
 export const CreateOrUpdateAppsTokensTagsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "appPackage": S.String.pipe(T.Label()),
-  "token": S.String.pipe(T.Label()),
-  "body": S.optional(CreateOrUpdateTagsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+appPackage}/{+token}/tags:createOrUpdate","baseUrl":"https://playgrouping.googleapis.com/"})),
-).annotate({ identifier: "CreateOrUpdateAppsTokensTagsRequest" }) as any as S.Schema<CreateOrUpdateAppsTokensTagsRequest>;
+  S.Struct({
+    appPackage: S.String.pipe(T.Label()),
+    token: S.String.pipe(T.Label()),
+    body: S.optional(CreateOrUpdateTagsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha1/{+appPackage}/{+token}/tags:createOrUpdate",
+      baseUrl: "https://playgrouping.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateOrUpdateAppsTokensTagsRequest",
+}) as any as S.Schema<CreateOrUpdateAppsTokensTagsRequest>;
 
 /** Response message for CreateOrUpdateTags. */
 export interface CreateOrUpdateTagsResponse {
@@ -119,10 +129,12 @@ export interface CreateOrUpdateTagsResponse {
   tags?: TagList;
 }
 export const CreateOrUpdateTagsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "tags": S.optional(TagList),
-}),
-).annotate({ identifier: "CreateOrUpdateTagsResponse" }) as any as S.Schema<CreateOrUpdateTagsResponse>;
+  S.Struct({
+    tags: S.optional(TagList),
+  }),
+).annotate({
+  identifier: "CreateOrUpdateTagsResponse",
+}) as any as S.Schema<CreateOrUpdateTagsResponse>;
 
 /** Request message for VerifyToken. */
 export interface VerifyTokenRequest {
@@ -130,10 +142,12 @@ export interface VerifyTokenRequest {
   persona?: string;
 }
 export const VerifyTokenRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "persona": S.optional(S.String),
-}),
-).annotate({ identifier: "VerifyTokenRequest" }) as any as S.Schema<VerifyTokenRequest>;
+  S.Struct({
+    persona: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VerifyTokenRequest",
+}) as any as S.Schema<VerifyTokenRequest>;
 
 export interface VerifyAppsTokensRequest {
   /** Required. App the token belongs to. Format: apps/{package_name} */
@@ -144,20 +158,35 @@ export interface VerifyAppsTokensRequest {
   body?: VerifyTokenRequest;
 }
 export const VerifyAppsTokensRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "appPackage": S.String.pipe(T.Label()),
-  "token": S.String.pipe(T.Label()),
-  "body": S.optional(VerifyTokenRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+appPackage}/{+token}:verify","baseUrl":"https://playgrouping.googleapis.com/"})),
-).annotate({ identifier: "VerifyAppsTokensRequest" }) as any as S.Schema<VerifyAppsTokensRequest>;
+  S.Struct({
+    appPackage: S.String.pipe(T.Label()),
+    token: S.String.pipe(T.Label()),
+    body: S.optional(VerifyTokenRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha1/{+appPackage}/{+token}:verify",
+      baseUrl: "https://playgrouping.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "VerifyAppsTokensRequest",
+}) as any as S.Schema<VerifyAppsTokensRequest>;
 
 /** Response message for VerifyToken. */
 export interface VerifyTokenResponse {}
 export const VerifyTokenResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "VerifyTokenResponse" }) as any as S.Schema<VerifyTokenResponse>;
+  S.Struct({}),
+).annotate({
+  identifier: "VerifyTokenResponse",
+}) as any as S.Schema<VerifyTokenResponse>;
 
-export type CreateOrUpdateAppsTokensTagsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateOrUpdateAppsTokensTagsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Create or update tags for the user and app that are represented by the given token. */
 export const createOrUpdateAppsTokensTags: API.OperationMethod<
   CreateOrUpdateAppsTokensTagsRequest,
@@ -172,7 +201,12 @@ export const createOrUpdateAppsTokensTags: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type VerifyAppsTokensError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type VerifyAppsTokensError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Verify an API token by asserting the app and persona it belongs to. The verification is a protection against client-side attacks and will fail if the contents of the token don't match the provided values. A token must be verified before it can be used to manipulate user tags. */
 export const verifyAppsTokens: API.OperationMethod<
   VerifyAppsTokensRequest,
@@ -186,4 +220,3 @@ export const verifyAppsTokens: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

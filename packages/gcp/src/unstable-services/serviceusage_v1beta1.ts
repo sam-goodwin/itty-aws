@@ -13,55 +13,57 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** Request message for the `BatchEnableServices` method. */
 export interface BatchEnableServicesRequest {
@@ -69,10 +71,12 @@ export interface BatchEnableServicesRequest {
   serviceIds?: StringList;
 }
 export const BatchEnableServicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "serviceIds": S.optional(StringList),
-}),
-).annotate({ identifier: "BatchEnableServicesRequest" }) as any as S.Schema<BatchEnableServicesRequest>;
+  S.Struct({
+    serviceIds: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "BatchEnableServicesRequest",
+}) as any as S.Schema<BatchEnableServicesRequest>;
 
 export interface BatchEnableServicesRequest_ {
   /** Parent to enable services on. An example name would be: `projects/123` where `123` is the project number (not project ID). The `BatchEnableServices` method currently only supports projects. */
@@ -81,17 +85,30 @@ export interface BatchEnableServicesRequest_ {
   body?: BatchEnableServicesRequest;
 }
 export const BatchEnableServicesRequest_ = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(BatchEnableServicesRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/services:batchEnable","baseUrl":"https://serviceusage.googleapis.com/"})),
-).annotate({ identifier: "BatchEnableServicesRequest_" }) as any as S.Schema<BatchEnableServicesRequest_>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(BatchEnableServicesRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1/{+parent}/services:batchEnable",
+      baseUrl: "https://serviceusage.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "BatchEnableServicesRequest_",
+}) as any as S.Schema<BatchEnableServicesRequest_>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -103,11 +120,11 @@ export interface Status {
   code?: number;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "message": S.optional(S.String),
-  "details": S.optional(DocumentMapList),
-  "code": S.optional(S.Number),
-}),
+  S.Struct({
+    message: S.optional(S.String),
+    details: S.optional(DocumentMapList),
+    code: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -124,23 +141,37 @@ export interface Operation {
   name?: string;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "metadata": S.optional(DocumentMap),
-  "done": S.optional(S.Boolean),
-  "error": S.optional(Status),
-  "response": S.optional(DocumentMap),
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    metadata: S.optional(DocumentMap),
+    done: S.optional(S.Boolean),
+    error: S.optional(Status),
+    response: S.optional(DocumentMap),
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
-export type CreateServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnum = "QUOTA_SAFETY_CHECK_UNSPECIFIED" | "LIMIT_DECREASE_BELOW_USAGE" | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH";
-export const CreateServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnum = /*@__PURE__*/ S.String;
+export type CreateServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnum =
+    | "QUOTA_SAFETY_CHECK_UNSPECIFIED"
+    | "LIMIT_DECREASE_BELOW_USAGE"
+    | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH";
+export const CreateServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnum =
+  /*@__PURE__*/ S.String;
 
-export type CreateServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnumList = ReadonlyArray<CreateServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnum | (string & {})>;
-export const CreateServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnumList = /*@__PURE__*/ S.Array(CreateServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnum) as any as S.Schema<CreateServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnumList>;
+export type CreateServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnumList =
+  ReadonlyArray<
+    | CreateServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnum
+    | (string & {})
+  >;
+export const CreateServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnumList =
+  /*@__PURE__*/ S.Array(
+    CreateServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnum,
+  ) as any as S.Schema<CreateServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnumList>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
 /** A quota override */
 export interface QuotaOverride {
@@ -158,14 +189,14 @@ export interface QuotaOverride {
   adminOverrideAncestor?: string;
 }
 export const QuotaOverride = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "overrideValue": S.optional(S.String),
-  "unit": S.optional(S.String),
-  "dimensions": S.optional(StringMap),
-  "metric": S.optional(S.String),
-  "adminOverrideAncestor": S.optional(S.String),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    overrideValue: S.optional(S.String),
+    unit: S.optional(S.String),
+    dimensions: S.optional(StringMap),
+    metric: S.optional(S.String),
+    adminOverrideAncestor: S.optional(S.String),
+  }),
 ).annotate({ identifier: "QuotaOverride" }) as any as S.Schema<QuotaOverride>;
 
 export interface CreateServicesConsumerQuotaMetricsLimitsAdminOverridesRequest {
@@ -178,20 +209,44 @@ export interface CreateServicesConsumerQuotaMetricsLimitsAdminOverridesRequest {
   /** Request body */
   body?: QuotaOverride;
 }
-export const CreateServicesConsumerQuotaMetricsLimitsAdminOverridesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "force": S.optional(S.Boolean.pipe(T.Query())),
-  "forceOnly": S.optional(CreateServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnumList.pipe(T.Query())),
-  "body": S.optional(QuotaOverride.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/adminOverrides","baseUrl":"https://serviceusage.googleapis.com/"})),
-).annotate({ identifier: "CreateServicesConsumerQuotaMetricsLimitsAdminOverridesRequest" }) as any as S.Schema<CreateServicesConsumerQuotaMetricsLimitsAdminOverridesRequest>;
+export const CreateServicesConsumerQuotaMetricsLimitsAdminOverridesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      force: S.optional(S.Boolean.pipe(T.Query())),
+      forceOnly: S.optional(
+        CreateServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnumList.pipe(
+          T.Query(),
+        ),
+      ),
+      body: S.optional(QuotaOverride.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+parent}/adminOverrides",
+        baseUrl: "https://serviceusage.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateServicesConsumerQuotaMetricsLimitsAdminOverridesRequest",
+  }) as any as S.Schema<CreateServicesConsumerQuotaMetricsLimitsAdminOverridesRequest>;
 
-export type CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnum = "QUOTA_SAFETY_CHECK_UNSPECIFIED" | "LIMIT_DECREASE_BELOW_USAGE" | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH";
-export const CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnum = /*@__PURE__*/ S.String;
+export type CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnum =
+    | "QUOTA_SAFETY_CHECK_UNSPECIFIED"
+    | "LIMIT_DECREASE_BELOW_USAGE"
+    | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH";
+export const CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnum =
+  /*@__PURE__*/ S.String;
 
-export type CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnumList = ReadonlyArray<CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnum | (string & {})>;
-export const CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnumList = /*@__PURE__*/ S.Array(CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnum) as any as S.Schema<CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnumList>;
+export type CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnumList =
+  ReadonlyArray<
+    | CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnum
+    | (string & {})
+  >;
+export const CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnumList =
+  /*@__PURE__*/ S.Array(
+    CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnum,
+  ) as any as S.Schema<CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnumList>;
 
 export interface CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest {
   /** The resource name of the parent quota limit, returned by a ListConsumerQuotaMetrics or GetConsumerQuotaMetric call. An example name would be: `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion` */
@@ -203,20 +258,45 @@ export interface CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesReques
   /** Request body */
   body?: QuotaOverride;
 }
-export const CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "force": S.optional(S.Boolean.pipe(T.Query())),
-  "forceOnly": S.optional(CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnumList.pipe(T.Query())),
-  "body": S.optional(QuotaOverride.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/consumerOverrides","baseUrl":"https://serviceusage.googleapis.com/"})),
-).annotate({ identifier: "CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest" }) as any as S.Schema<CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest>;
+export const CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      force: S.optional(S.Boolean.pipe(T.Query())),
+      forceOnly: S.optional(
+        CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnumList.pipe(
+          T.Query(),
+        ),
+      ),
+      body: S.optional(QuotaOverride.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+parent}/consumerOverrides",
+        baseUrl: "https://serviceusage.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest",
+  }) as any as S.Schema<CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest>;
 
-export type DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnum = "QUOTA_SAFETY_CHECK_UNSPECIFIED" | "LIMIT_DECREASE_BELOW_USAGE" | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH";
-export const DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnum = /*@__PURE__*/ S.String;
+export type DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnum =
+    | "QUOTA_SAFETY_CHECK_UNSPECIFIED"
+    | "LIMIT_DECREASE_BELOW_USAGE"
+    | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH";
+export const DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnum =
+  /*@__PURE__*/ S.String;
 
-export type DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnumList = ReadonlyArray<DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnum | (string & {})>;
-export const DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnumList = /*@__PURE__*/ S.Array(DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnum) as any as S.Schema<DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnumList>;
+export type DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnumList =
+  ReadonlyArray<
+    | DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnum
+    | (string & {})
+  >;
+export const DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnumList =
+  /*@__PURE__*/ S.Array(
+    DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnum,
+  ) as any as S.Schema<DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnumList>;
 
 export interface DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesRequest {
   /** The resource name of the override to delete. An example name would be: `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion/adminOverrides/4a3f2c1d` */
@@ -226,19 +306,43 @@ export interface DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesRequest {
   /** The list of quota safety checks to ignore before the override mutation. Unlike 'force' field that ignores all the quota safety checks, the 'force_only' field ignores only the specified checks; other checks are still enforced. The 'force' and 'force_only' fields cannot both be set. If force_only is specified, it is recommended to include a case id in "X-Goog-Request-Reason" header when sending the request. */
   forceOnly?: DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnumList;
 }
-export const DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "force": S.optional(S.Boolean.pipe(T.Query())),
-  "forceOnly": S.optional(DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnumList.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://serviceusage.googleapis.com/"})),
-).annotate({ identifier: "DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesRequest" }) as any as S.Schema<DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesRequest>;
+export const DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      force: S.optional(S.Boolean.pipe(T.Query())),
+      forceOnly: S.optional(
+        DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnumList.pipe(
+          T.Query(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://serviceusage.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesRequest",
+  }) as any as S.Schema<DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesRequest>;
 
-export type DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnum = "QUOTA_SAFETY_CHECK_UNSPECIFIED" | "LIMIT_DECREASE_BELOW_USAGE" | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH";
-export const DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnum = /*@__PURE__*/ S.String;
+export type DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnum =
+    | "QUOTA_SAFETY_CHECK_UNSPECIFIED"
+    | "LIMIT_DECREASE_BELOW_USAGE"
+    | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH";
+export const DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnum =
+  /*@__PURE__*/ S.String;
 
-export type DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnumList = ReadonlyArray<DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnum | (string & {})>;
-export const DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnumList = /*@__PURE__*/ S.Array(DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnum) as any as S.Schema<DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnumList>;
+export type DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnumList =
+  ReadonlyArray<
+    | DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnum
+    | (string & {})
+  >;
+export const DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnumList =
+  /*@__PURE__*/ S.Array(
+    DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnum,
+  ) as any as S.Schema<DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnumList>;
 
 export interface DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest {
   /** The resource name of the override to delete. An example name would be: `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion/consumerOverrides/4a3f2c1d` */
@@ -248,19 +352,35 @@ export interface DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesReques
   /** The list of quota safety checks to ignore before the override mutation. Unlike 'force' field that ignores all the quota safety checks, the 'force_only' field ignores only the specified checks; other checks are still enforced. The 'force' and 'force_only' fields cannot both be set. If force_only is specified, it is recommended to include a case id in "X-Goog-Request-Reason" header when sending the request. */
   forceOnly?: DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnumList;
 }
-export const DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "force": S.optional(S.Boolean.pipe(T.Query())),
-  "forceOnly": S.optional(DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnumList.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/{+name}","baseUrl":"https://serviceusage.googleapis.com/"})),
-).annotate({ identifier: "DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest" }) as any as S.Schema<DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest>;
+export const DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      force: S.optional(S.Boolean.pipe(T.Query())),
+      forceOnly: S.optional(
+        DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnumList.pipe(
+          T.Query(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://serviceusage.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest",
+  }) as any as S.Schema<DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest>;
 
 /** Request message for the `DisableService` method. */
 export interface DisableServiceRequest {}
 export const DisableServiceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "DisableServiceRequest" }) as any as S.Schema<DisableServiceRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "DisableServiceRequest",
+}) as any as S.Schema<DisableServiceRequest>;
 
 export interface DisableServicesRequest {
   /** Name of the consumer and service to disable the service on. The enable and disable methods currently only support projects. An example name would be: `projects/123/services/serviceusage.googleapis.com` where `123` is the project number (not project ID). */
@@ -269,17 +389,27 @@ export interface DisableServicesRequest {
   body?: DisableServiceRequest;
 }
 export const DisableServicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(DisableServiceRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:disable","baseUrl":"https://serviceusage.googleapis.com/"})),
-).annotate({ identifier: "DisableServicesRequest" }) as any as S.Schema<DisableServicesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(DisableServiceRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1/{+name}:disable",
+      baseUrl: "https://serviceusage.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DisableServicesRequest",
+}) as any as S.Schema<DisableServicesRequest>;
 
 /** Request message for the `EnableService` method. */
 export interface EnableServiceRequest {}
 export const EnableServiceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "EnableServiceRequest" }) as any as S.Schema<EnableServiceRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "EnableServiceRequest",
+}) as any as S.Schema<EnableServiceRequest>;
 
 export interface EnableServicesRequest {
   /** Name of the consumer and service to enable the service on. The `EnableService` and `DisableService` methods currently only support projects. Enabling a service requires that the service is public or is shared with the user enabling the service. An example name would be: `projects/123/services/serviceusage.googleapis.com` where `123` is the project number (not project ID). */
@@ -288,41 +418,74 @@ export interface EnableServicesRequest {
   body?: EnableServiceRequest;
 }
 export const EnableServicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(EnableServiceRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+name}:enable","baseUrl":"https://serviceusage.googleapis.com/"})),
-).annotate({ identifier: "EnableServicesRequest" }) as any as S.Schema<EnableServicesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(EnableServiceRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1/{+name}:enable",
+      baseUrl: "https://serviceusage.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "EnableServicesRequest",
+}) as any as S.Schema<EnableServicesRequest>;
 
 export interface GenerateServiceIdentityServicesRequest {
   /** Name of the consumer and service to generate an identity for. The `GenerateServiceIdentity` methods currently support projects, folders, organizations. Example parents would be: `projects/123/services/example.googleapis.com` `folders/123/services/example.googleapis.com` `organizations/123/services/example.googleapis.com` */
   parent: string;
 }
-export const GenerateServiceIdentityServicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}:generateServiceIdentity","baseUrl":"https://serviceusage.googleapis.com/"})),
-).annotate({ identifier: "GenerateServiceIdentityServicesRequest" }) as any as S.Schema<GenerateServiceIdentityServicesRequest>;
+export const GenerateServiceIdentityServicesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+parent}:generateServiceIdentity",
+        baseUrl: "https://serviceusage.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GenerateServiceIdentityServicesRequest",
+}) as any as S.Schema<GenerateServiceIdentityServicesRequest>;
 
 export interface GetOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
 export const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://serviceusage.googleapis.com/"})),
-).annotate({ identifier: "GetOperationsRequest" }) as any as S.Schema<GetOperationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+name}",
+      baseUrl: "https://serviceusage.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetOperationsRequest",
+}) as any as S.Schema<GetOperationsRequest>;
 
 export interface GetServicesRequest {
   /** Name of the consumer and service to get the `ConsumerState` for. An example name would be: `projects/123/services/serviceusage.googleapis.com` where `123` is the project number (not project ID). */
   name: string;
 }
 export const GetServicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://serviceusage.googleapis.com/"})),
-).annotate({ identifier: "GetServicesRequest" }) as any as S.Schema<GetServicesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+name}",
+      baseUrl: "https://serviceusage.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetServicesRequest",
+}) as any as S.Schema<GetServicesRequest>;
 
 export type ServiceStateEnum = "STATE_UNSPECIFIED" | "DISABLED" | "ENABLED";
 export const ServiceStateEnum = /*@__PURE__*/ S.String;
@@ -335,14 +498,18 @@ export interface MonitoringDestination {
   metrics?: StringList;
 }
 export const MonitoringDestination = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "monitoredResource": S.optional(S.String),
-  "metrics": S.optional(StringList),
-}),
-).annotate({ identifier: "MonitoringDestination" }) as any as S.Schema<MonitoringDestination>;
+  S.Struct({
+    monitoredResource: S.optional(S.String),
+    metrics: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "MonitoringDestination",
+}) as any as S.Schema<MonitoringDestination>;
 
 export type MonitoringDestinationList = ReadonlyArray<MonitoringDestination>;
-export const MonitoringDestinationList = /*@__PURE__*/ S.Array(MonitoringDestination) as any as S.Schema<MonitoringDestinationList>;
+export const MonitoringDestinationList = /*@__PURE__*/ S.Array(
+  MonitoringDestination,
+) as any as S.Schema<MonitoringDestinationList>;
 
 /** Monitoring configuration of the service. The example below shows how to configure monitored resources and metrics for monitoring. In the example, a monitored resource and two metrics are defined. The `library.googleapis.com/book/returned_count` metric is sent to both producer and consumer projects, whereas the `library.googleapis.com/book/num_overdue` metric is only sent to the consumer project. monitored_resources: - type: library.googleapis.com/Branch display_name: "Library Branch" description: "A branch of a library." launch_stage: GA labels: - key: resource_container description: "The Cloud container (ie. project id) for the Branch." - key: location description: "The location of the library branch." - key: branch_id description: "The id of the branch." metrics: - name: library.googleapis.com/book/returned_count display_name: "Books Returned" description: "The count of books that have been returned." launch_stage: GA metric_kind: DELTA value_type: INT64 unit: "1" labels: - key: customer_id description: "The id of the customer." - name: library.googleapis.com/book/num_overdue display_name: "Books Overdue" description: "The current number of overdue books." launch_stage: GA metric_kind: GAUGE value_type: INT64 unit: "1" labels: - key: customer_id description: "The id of the customer." monitoring: producer_destinations: - monitored_resource: library.googleapis.com/Branch metrics: - library.googleapis.com/book/returned_count consumer_destinations: - monitored_resource: library.googleapis.com/Branch metrics: - library.googleapis.com/book/returned_count - library.googleapis.com/book/num_overdue */
 export interface Monitoring {
@@ -352,10 +519,10 @@ export interface Monitoring {
   producerDestinations?: MonitoringDestinationList;
 }
 export const Monitoring = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "consumerDestinations": S.optional(MonitoringDestinationList),
-  "producerDestinations": S.optional(MonitoringDestinationList),
-}),
+  S.Struct({
+    consumerDestinations: S.optional(MonitoringDestinationList),
+    producerDestinations: S.optional(MonitoringDestinationList),
+  }),
 ).annotate({ identifier: "Monitoring" }) as any as S.Schema<Monitoring>;
 
 /** Usage configuration rules for the service. */
@@ -368,15 +535,17 @@ export interface UsageRule {
   skipServiceControl?: boolean;
 }
 export const UsageRule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "selector": S.optional(S.String),
-  "allowUnregisteredCalls": S.optional(S.Boolean),
-  "skipServiceControl": S.optional(S.Boolean),
-}),
+  S.Struct({
+    selector: S.optional(S.String),
+    allowUnregisteredCalls: S.optional(S.Boolean),
+    skipServiceControl: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "UsageRule" }) as any as S.Schema<UsageRule>;
 
 export type UsageRuleList = ReadonlyArray<UsageRule>;
-export const UsageRuleList = /*@__PURE__*/ S.Array(UsageRule) as any as S.Schema<UsageRuleList>;
+export const UsageRuleList = /*@__PURE__*/ S.Array(
+  UsageRule,
+) as any as S.Schema<UsageRuleList>;
 
 /** Configuration controlling usage of a service. */
 export interface Usage {
@@ -388,11 +557,11 @@ export interface Usage {
   producerNotificationChannel?: string;
 }
 export const Usage = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "rules": S.optional(UsageRuleList),
-  "requirements": S.optional(StringList),
-  "producerNotificationChannel": S.optional(S.String),
-}),
+  S.Struct({
+    rules: S.optional(UsageRuleList),
+    requirements: S.optional(StringList),
+    producerNotificationChannel: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Usage" }) as any as S.Schema<Usage>;
 
 /** Bind API methods to metrics. Binding a method to a metric causes that metric's configured quota behaviors to apply to the method call. */
@@ -403,14 +572,16 @@ export interface MetricRule {
   selector?: string;
 }
 export const MetricRule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "metricCosts": S.optional(StringMap),
-  "selector": S.optional(S.String),
-}),
+  S.Struct({
+    metricCosts: S.optional(StringMap),
+    selector: S.optional(S.String),
+  }),
 ).annotate({ identifier: "MetricRule" }) as any as S.Schema<MetricRule>;
 
 export type MetricRuleList = ReadonlyArray<MetricRule>;
-export const MetricRuleList = /*@__PURE__*/ S.Array(MetricRule) as any as S.Schema<MetricRuleList>;
+export const MetricRuleList = /*@__PURE__*/ S.Array(
+  MetricRule,
+) as any as S.Schema<MetricRuleList>;
 
 /** `QuotaLimit` defines a specific limit that applies over a specified duration for a limit type. There can be at most one limit for a duration and limit type combination defined within a `QuotaGroup`. */
 export interface QuotaLimit {
@@ -436,22 +607,24 @@ export interface QuotaLimit {
   displayName?: string;
 }
 export const QuotaLimit = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "unit": S.optional(S.String),
-  "description": S.optional(S.String),
-  "maxLimit": S.optional(S.String),
-  "freeTier": S.optional(S.String),
-  "values": S.optional(StringMap),
-  "name": S.optional(S.String),
-  "metric": S.optional(S.String),
-  "defaultLimit": S.optional(S.String),
-  "duration": S.optional(S.String),
-  "displayName": S.optional(S.String),
-}),
+  S.Struct({
+    unit: S.optional(S.String),
+    description: S.optional(S.String),
+    maxLimit: S.optional(S.String),
+    freeTier: S.optional(S.String),
+    values: S.optional(StringMap),
+    name: S.optional(S.String),
+    metric: S.optional(S.String),
+    defaultLimit: S.optional(S.String),
+    duration: S.optional(S.String),
+    displayName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "QuotaLimit" }) as any as S.Schema<QuotaLimit>;
 
 export type QuotaLimitList = ReadonlyArray<QuotaLimit>;
-export const QuotaLimitList = /*@__PURE__*/ S.Array(QuotaLimit) as any as S.Schema<QuotaLimitList>;
+export const QuotaLimitList = /*@__PURE__*/ S.Array(
+  QuotaLimit,
+) as any as S.Schema<QuotaLimitList>;
 
 /** Quota configuration helps to achieve fairness and budgeting in service usage. The metric based quota configuration works this way: - The service configuration defines a set of metrics. - For API calls, the quota.metric_rules maps methods to metrics with corresponding costs. - The quota.limits defines limits on the metrics, which will be used for quota checks at runtime. An example quota configuration in yaml format: quota: limits: - name: apiWriteQpsPerProject metric: library.googleapis.com/write_calls unit: "1/min/{project}" # rate limit for consumer projects values: STANDARD: 10000 (The metric rules bind all methods to the read_calls metric, except for the UpdateBook and DeleteBook methods. These two methods are mapped to the write_calls metric, with the UpdateBook method consuming at twice rate as the DeleteBook method.) metric_rules: - selector: "*" metric_costs: library.googleapis.com/read_calls: 1 - selector: google.example.library.v1.LibraryService.UpdateBook metric_costs: library.googleapis.com/write_calls: 2 - selector: google.example.library.v1.LibraryService.DeleteBook metric_costs: library.googleapis.com/write_calls: 1 Corresponding Metric definition: metrics: - name: library.googleapis.com/read_calls display_name: Read requests metric_kind: DELTA value_type: INT64 - name: library.googleapis.com/write_calls display_name: Write requests metric_kind: DELTA value_type: INT64 */
 export interface Quota {
@@ -461,10 +634,10 @@ export interface Quota {
   limits?: QuotaLimitList;
 }
 export const Quota = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "metricRules": S.optional(MetricRuleList),
-  "limits": S.optional(QuotaLimitList),
-}),
+  S.Struct({
+    metricRules: S.optional(MetricRuleList),
+    limits: S.optional(QuotaLimitList),
+  }),
 ).annotate({ identifier: "Quota" }) as any as S.Schema<Quota>;
 
 /** Represents a documentation page. A page can contain subpages to represent nested documentation set structure. */
@@ -477,15 +650,17 @@ export interface Page {
   content?: string;
 }
 export const Page = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "subpages": S.optional(S.suspend(() => PageList)),
-  "name": S.optional(S.String),
-  "content": S.optional(S.String),
-}),
+  S.Struct({
+    subpages: S.optional(S.suspend(() => PageList)),
+    name: S.optional(S.String),
+    content: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Page" }) as any as S.Schema<Page>;
 
 export type PageList = ReadonlyArray<Page>;
-export const PageList = /*@__PURE__*/ S.Array(Page) as any as S.Schema<PageList>;
+export const PageList = /*@__PURE__*/ S.Array(
+  Page,
+) as any as S.Schema<PageList>;
 
 /** A documentation rule provides information about individual API elements. */
 export interface DocumentationRule {
@@ -499,16 +674,20 @@ export interface DocumentationRule {
   disableReplacementWords?: string;
 }
 export const DocumentationRule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "selector": S.optional(S.String),
-  "description": S.optional(S.String),
-  "deprecationDescription": S.optional(S.String),
-  "disableReplacementWords": S.optional(S.String),
-}),
-).annotate({ identifier: "DocumentationRule" }) as any as S.Schema<DocumentationRule>;
+  S.Struct({
+    selector: S.optional(S.String),
+    description: S.optional(S.String),
+    deprecationDescription: S.optional(S.String),
+    disableReplacementWords: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DocumentationRule",
+}) as any as S.Schema<DocumentationRule>;
 
 export type DocumentationRuleList = ReadonlyArray<DocumentationRule>;
-export const DocumentationRuleList = /*@__PURE__*/ S.Array(DocumentationRule) as any as S.Schema<DocumentationRuleList>;
+export const DocumentationRuleList = /*@__PURE__*/ S.Array(
+  DocumentationRule,
+) as any as S.Schema<DocumentationRuleList>;
 
 /** `Documentation` provides the information for describing a service. Example: documentation: summary: > The Google Calendar API gives access to most calendar features. pages: - name: Overview content: (== include google/foo/overview.md ==) - name: Tutorial content: (== include google/foo/tutorial.md ==) subpages: - name: Java content: (== include google/foo/tutorial_java.md ==) rules: - selector: google.calendar.Calendar.Get description: > ... - selector: google.calendar.Calendar.Put description: > ... Documentation is provided in markdown syntax. In addition to standard markdown features, definition lists, tables and fenced code blocks are supported. Section headers can be provided and are interpreted relative to the section nesting of the context where a documentation fragment is embedded. Documentation from the IDL is merged with documentation defined via the config at normalization time, where documentation provided by config rules overrides IDL provided. A number of constructs specific to the API platform are supported in documentation text. In order to reference a proto element, the following notation can be used: [fully.qualified.proto.name][] To override the display text used for the link, this can be used: [display text][fully.qualified.proto.name] Text can be excluded from doc using the following notation: (-- internal comment --) A few directives are available in documentation. Note that directives must appear on a single line to be properly identified. The `include` directive includes a markdown file from an external source: (== include path/to/file ==) The `resource_for` directive marks a message to be the resource of a collection in REST view. If it is not specified, tools attempt to infer the resource from the operations in a collection: (== resource_for v1.shelves.books ==) The directive `suppress_warning` does not directly affect documentation and is documented together with service config validation. */
 export interface Documentation {
@@ -530,20 +709,29 @@ export interface Documentation {
   rules?: DocumentationRuleList;
 }
 export const Documentation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "documentationRootUrl": S.optional(S.String),
-  "serviceRootUrl": S.optional(S.String),
-  "overview": S.optional(S.String),
-  "sectionOverrides": S.optional(PageList),
-  "pages": S.optional(PageList),
-  "additionalIamInfo": S.optional(S.String),
-  "summary": S.optional(S.String),
-  "rules": S.optional(DocumentationRuleList),
-}),
+  S.Struct({
+    documentationRootUrl: S.optional(S.String),
+    serviceRootUrl: S.optional(S.String),
+    overview: S.optional(S.String),
+    sectionOverrides: S.optional(PageList),
+    pages: S.optional(PageList),
+    additionalIamInfo: S.optional(S.String),
+    summary: S.optional(S.String),
+    rules: S.optional(DocumentationRuleList),
+  }),
 ).annotate({ identifier: "Documentation" }) as any as S.Schema<Documentation>;
 
-export type MonitoredResourceDescriptorLaunchStageEnum = "LAUNCH_STAGE_UNSPECIFIED" | "UNIMPLEMENTED" | "PRELAUNCH" | "EARLY_ACCESS" | "ALPHA" | "BETA" | "GA" | "DEPRECATED";
-export const MonitoredResourceDescriptorLaunchStageEnum = /*@__PURE__*/ S.String;
+export type MonitoredResourceDescriptorLaunchStageEnum =
+  | "LAUNCH_STAGE_UNSPECIFIED"
+  | "UNIMPLEMENTED"
+  | "PRELAUNCH"
+  | "EARLY_ACCESS"
+  | "ALPHA"
+  | "BETA"
+  | "GA"
+  | "DEPRECATED";
+export const MonitoredResourceDescriptorLaunchStageEnum =
+  /*@__PURE__*/ S.String;
 
 export type LabelDescriptorValueTypeEnum = "STRING" | "BOOL" | "INT64";
 export const LabelDescriptorValueTypeEnum = /*@__PURE__*/ S.String;
@@ -558,15 +746,19 @@ export interface LabelDescriptor {
   valueType?: LabelDescriptorValueTypeEnum;
 }
 export const LabelDescriptor = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "description": S.optional(S.String),
-  "key": S.optional(S.String),
-  "valueType": S.optional(LabelDescriptorValueTypeEnum),
-}),
-).annotate({ identifier: "LabelDescriptor" }) as any as S.Schema<LabelDescriptor>;
+  S.Struct({
+    description: S.optional(S.String),
+    key: S.optional(S.String),
+    valueType: S.optional(LabelDescriptorValueTypeEnum),
+  }),
+).annotate({
+  identifier: "LabelDescriptor",
+}) as any as S.Schema<LabelDescriptor>;
 
 export type LabelDescriptorList = ReadonlyArray<LabelDescriptor>;
-export const LabelDescriptorList = /*@__PURE__*/ S.Array(LabelDescriptor) as any as S.Schema<LabelDescriptorList>;
+export const LabelDescriptorList = /*@__PURE__*/ S.Array(
+  LabelDescriptor,
+) as any as S.Schema<LabelDescriptorList>;
 
 /** An object that describes the schema of a MonitoredResource object using a type name and a set of labels. For example, the monitored resource descriptor for Google Compute Engine VM instances has a type of `"gce_instance"` and specifies the use of the labels `"instance_id"` and `"zone"` to identify particular VM instances. Different APIs can support different monitored resource types. APIs generally provide a `list` method that returns the monitored resource descriptors used by the API. */
 export interface MonitoredResourceDescriptor {
@@ -584,18 +776,23 @@ export interface MonitoredResourceDescriptor {
   labels?: LabelDescriptorList;
 }
 export const MonitoredResourceDescriptor = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "type": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "launchStage": S.optional(MonitoredResourceDescriptorLaunchStageEnum),
-  "description": S.optional(S.String),
-  "name": S.optional(S.String),
-  "labels": S.optional(LabelDescriptorList),
-}),
-).annotate({ identifier: "MonitoredResourceDescriptor" }) as any as S.Schema<MonitoredResourceDescriptor>;
+  S.Struct({
+    type: S.optional(S.String),
+    displayName: S.optional(S.String),
+    launchStage: S.optional(MonitoredResourceDescriptorLaunchStageEnum),
+    description: S.optional(S.String),
+    name: S.optional(S.String),
+    labels: S.optional(LabelDescriptorList),
+  }),
+).annotate({
+  identifier: "MonitoredResourceDescriptor",
+}) as any as S.Schema<MonitoredResourceDescriptor>;
 
-export type MonitoredResourceDescriptorList = ReadonlyArray<MonitoredResourceDescriptor>;
-export const MonitoredResourceDescriptorList = /*@__PURE__*/ S.Array(MonitoredResourceDescriptor) as any as S.Schema<MonitoredResourceDescriptorList>;
+export type MonitoredResourceDescriptorList =
+  ReadonlyArray<MonitoredResourceDescriptor>;
+export const MonitoredResourceDescriptorList = /*@__PURE__*/ S.Array(
+  MonitoredResourceDescriptor,
+) as any as S.Schema<MonitoredResourceDescriptorList>;
 
 /** `Endpoint` describes a network address of a service that serves a set of APIs. It is commonly known as a service endpoint. A service may expose any number of service endpoints, and all service endpoints share the same service definition, such as quota limits and monitoring metrics. Example: type: google.api.Service name: library-example.googleapis.com endpoints: # Declares network address `https://library-example.googleapis.com` # for service `library-example.googleapis.com`. The `https` scheme # is implicit for all service endpoints. Other schemes may be # supported in the future. - name: library-example.googleapis.com allow_cors: false - name: content-staging-library-example.googleapis.com # Allows HTTP OPTIONS calls to be passed to the API frontend, for it # to decide whether the subsequent cross-origin request is allowed # to proceed. allow_cors: true */
 export interface Endpoint {
@@ -609,21 +806,29 @@ export interface Endpoint {
   target?: string;
 }
 export const Endpoint = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "allowCors": S.optional(S.Boolean),
-  "aliases": S.optional(StringList),
-  "target": S.optional(S.String),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    allowCors: S.optional(S.Boolean),
+    aliases: S.optional(StringList),
+    target: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Endpoint" }) as any as S.Schema<Endpoint>;
 
 export type EndpointList = ReadonlyArray<Endpoint>;
-export const EndpointList = /*@__PURE__*/ S.Array(Endpoint) as any as S.Schema<EndpointList>;
+export const EndpointList = /*@__PURE__*/ S.Array(
+  Endpoint,
+) as any as S.Schema<EndpointList>;
 
-export type ApiSyntaxEnum = "SYNTAX_PROTO2" | "SYNTAX_PROTO3" | "SYNTAX_EDITIONS";
+export type ApiSyntaxEnum =
+  | "SYNTAX_PROTO2"
+  | "SYNTAX_PROTO3"
+  | "SYNTAX_EDITIONS";
 export const ApiSyntaxEnum = /*@__PURE__*/ S.String;
 
-export type MethodSyntaxEnum = "SYNTAX_PROTO2" | "SYNTAX_PROTO3" | "SYNTAX_EDITIONS";
+export type MethodSyntaxEnum =
+  | "SYNTAX_PROTO2"
+  | "SYNTAX_PROTO3"
+  | "SYNTAX_EDITIONS";
 export const MethodSyntaxEnum = /*@__PURE__*/ S.String;
 
 /** A protocol buffer option, which can be attached to a message, field, enumeration, etc. New usages of this message as an alternative to FileOptions, MessageOptions, FieldOptions, EnumOptions, EnumValueOptions, ServiceOptions, or MethodOptions are strongly discouraged. */
@@ -634,14 +839,16 @@ export interface Option {
   value?: DocumentMap;
 }
 export const Option = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "value": S.optional(DocumentMap),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    value: S.optional(DocumentMap),
+  }),
 ).annotate({ identifier: "Option" }) as any as S.Schema<Option>;
 
 export type OptionList = ReadonlyArray<Option>;
-export const OptionList = /*@__PURE__*/ S.Array(Option) as any as S.Schema<OptionList>;
+export const OptionList = /*@__PURE__*/ S.Array(
+  Option,
+) as any as S.Schema<OptionList>;
 
 /** Method represents a method of an API interface. New usages of this message as an alternative to MethodDescriptorProto are strongly discouraged. This message does not reliability preserve all information necessary to model the schema and preserve semantics. Instead make use of FileDescriptorSet which preserves the necessary information. */
 export interface Method {
@@ -663,20 +870,22 @@ export interface Method {
   responseStreaming?: boolean;
 }
 export const Method = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "requestTypeUrl": S.optional(S.String),
-  "requestStreaming": S.optional(S.Boolean),
-  "syntax": S.optional(MethodSyntaxEnum),
-  "edition": S.optional(S.String),
-  "options": S.optional(OptionList),
-  "responseTypeUrl": S.optional(S.String),
-  "responseStreaming": S.optional(S.Boolean),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    requestTypeUrl: S.optional(S.String),
+    requestStreaming: S.optional(S.Boolean),
+    syntax: S.optional(MethodSyntaxEnum),
+    edition: S.optional(S.String),
+    options: S.optional(OptionList),
+    responseTypeUrl: S.optional(S.String),
+    responseStreaming: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "Method" }) as any as S.Schema<Method>;
 
 export type MethodList = ReadonlyArray<Method>;
-export const MethodList = /*@__PURE__*/ S.Array(Method) as any as S.Schema<MethodList>;
+export const MethodList = /*@__PURE__*/ S.Array(
+  Method,
+) as any as S.Schema<MethodList>;
 
 /** `SourceContext` represents information about the source of a protobuf element, like the file in which it is defined. */
 export interface SourceContext {
@@ -684,9 +893,9 @@ export interface SourceContext {
   fileName?: string;
 }
 export const SourceContext = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fileName": S.optional(S.String),
-}),
+  S.Struct({
+    fileName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "SourceContext" }) as any as S.Schema<SourceContext>;
 
 /** Declares an API Interface to be included in this interface. The including interface must redeclare all the methods from the included interface, but documentation and options are inherited as follows: - If after comment and whitespace stripping, the documentation string of the redeclared method is empty, it will be inherited from the original method. - Each annotation belonging to the service config (http, visibility) which is not set in the redeclared method will be inherited. - If an http annotation is inherited, the path pattern will be modified as follows. Any version prefix will be replaced by the version of the including interface plus the root path if specified. Example of a simple mixin: package google.acl.v1; service AccessControl { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get = "/v1/{resource=**}:getAcl"; } } package google.storage.v2; service Storage { // rpc GetAcl(GetAclRequest) returns (Acl); // Get a data record. rpc GetData(GetDataRequest) returns (Data) { option (google.api.http).get = "/v2/{resource=**}"; } } Example of a mixin configuration: apis: - name: google.storage.v2.Storage mixins: - name: google.acl.v1.AccessControl The mixin construct implies that all methods in `AccessControl` are also declared with same name and request/response types in `Storage`. A documentation generator or annotation processor will see the effective `Storage.GetAcl` method after inheriting documentation and annotations as follows: service Storage { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get = "/v2/{resource=**}:getAcl"; } ... } Note how the version in the path pattern changed from `v1` to `v2`. If the `root` field in the mixin is specified, it should be a relative path under which inherited HTTP paths are placed. Example: apis: - name: google.storage.v2.Storage mixins: - name: google.acl.v1.AccessControl root: acls This implies the following inherited HTTP annotation: service Storage { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get = "/v2/acls/{resource=**}:getAcl"; } ... } */
@@ -697,14 +906,16 @@ export interface Mixin {
   root?: string;
 }
 export const Mixin = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "root": S.optional(S.String),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    root: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Mixin" }) as any as S.Schema<Mixin>;
 
 export type MixinList = ReadonlyArray<Mixin>;
-export const MixinList = /*@__PURE__*/ S.Array(Mixin) as any as S.Schema<MixinList>;
+export const MixinList = /*@__PURE__*/ S.Array(
+  Mixin,
+) as any as S.Schema<MixinList>;
 
 /** Api is a light-weight descriptor for an API Interface. Interfaces are also described as "protocol buffer services" in some contexts, such as by the "service" keyword in a .proto file, but they are different from API Services, which represent a concrete implementation of an interface as opposed to simply a description of methods and bindings. They are also sometimes simply referred to as "APIs" in other contexts, such as the name of this message itself. See https://cloud.google.com/apis/design/glossary for detailed terminology. New usages of this message as an alternative to ServiceDescriptorProto are strongly discouraged. This message does not reliability preserve all information necessary to model the schema and preserve semantics. Instead make use of FileDescriptorSet which preserves the necessary information. */
 export interface Api {
@@ -726,16 +937,16 @@ export interface Api {
   mixins?: MixinList;
 }
 export const Api = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "syntax": S.optional(ApiSyntaxEnum),
-  "edition": S.optional(S.String),
-  "methods": S.optional(MethodList),
-  "options": S.optional(OptionList),
-  "sourceContext": S.optional(SourceContext),
-  "version": S.optional(S.String),
-  "mixins": S.optional(MixinList),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    syntax: S.optional(ApiSyntaxEnum),
+    edition: S.optional(S.String),
+    methods: S.optional(MethodList),
+    options: S.optional(OptionList),
+    sourceContext: S.optional(SourceContext),
+    version: S.optional(S.String),
+    mixins: S.optional(MixinList),
+  }),
 ).annotate({ identifier: "Api" }) as any as S.Schema<Api>;
 
 export type ApiList = ReadonlyArray<Api>;
@@ -749,14 +960,18 @@ export interface AuthRequirement {
   audiences?: string;
 }
 export const AuthRequirement = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "providerId": S.optional(S.String),
-  "audiences": S.optional(S.String),
-}),
-).annotate({ identifier: "AuthRequirement" }) as any as S.Schema<AuthRequirement>;
+  S.Struct({
+    providerId: S.optional(S.String),
+    audiences: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AuthRequirement",
+}) as any as S.Schema<AuthRequirement>;
 
 export type AuthRequirementList = ReadonlyArray<AuthRequirement>;
-export const AuthRequirementList = /*@__PURE__*/ S.Array(AuthRequirement) as any as S.Schema<AuthRequirementList>;
+export const AuthRequirementList = /*@__PURE__*/ S.Array(
+  AuthRequirement,
+) as any as S.Schema<AuthRequirementList>;
 
 /** OAuth scopes are a way to define data and permissions on data. For example, there are scopes defined for "Read-only access to Google Calendar" and "Access to Cloud Platform". Users can consent to a scope for an application, giving it permission to access that data on their behalf. OAuth scope specifications should be fairly coarse grained; a user will need to see and understand the text description of what your scope means. In most cases: use one or at most two OAuth scopes for an entire family of products. If your product has multiple APIs, you should probably be sharing the OAuth scope across all of those APIs. When you need finer grained OAuth consent screens: talk with your product management about how developers will use them in practice. Please note that even though each of the canonical scopes is enough for a request to be accepted and passed to the backend, a request can still fail due to the backend requiring additional scopes or permissions. */
 export interface OAuthRequirements {
@@ -764,10 +979,12 @@ export interface OAuthRequirements {
   canonicalScopes?: string;
 }
 export const OAuthRequirements = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "canonicalScopes": S.optional(S.String),
-}),
-).annotate({ identifier: "OAuthRequirements" }) as any as S.Schema<OAuthRequirements>;
+  S.Struct({
+    canonicalScopes: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OAuthRequirements",
+}) as any as S.Schema<OAuthRequirements>;
 
 /** Authentication rules for the service. By default, if a method has any authentication requirements, every request must include a valid credential matching one of the requirements. It's an error to include more than one kind of credential in a single request. If a method doesn't have any auth requirements, request credentials will be ignored. */
 export interface AuthenticationRule {
@@ -781,16 +998,20 @@ export interface AuthenticationRule {
   oauth?: OAuthRequirements;
 }
 export const AuthenticationRule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "allowWithoutCredential": S.optional(S.Boolean),
-  "requirements": S.optional(AuthRequirementList),
-  "selector": S.optional(S.String),
-  "oauth": S.optional(OAuthRequirements),
-}),
-).annotate({ identifier: "AuthenticationRule" }) as any as S.Schema<AuthenticationRule>;
+  S.Struct({
+    allowWithoutCredential: S.optional(S.Boolean),
+    requirements: S.optional(AuthRequirementList),
+    selector: S.optional(S.String),
+    oauth: S.optional(OAuthRequirements),
+  }),
+).annotate({
+  identifier: "AuthenticationRule",
+}) as any as S.Schema<AuthenticationRule>;
 
 export type AuthenticationRuleList = ReadonlyArray<AuthenticationRule>;
-export const AuthenticationRuleList = /*@__PURE__*/ S.Array(AuthenticationRule) as any as S.Schema<AuthenticationRuleList>;
+export const AuthenticationRuleList = /*@__PURE__*/ S.Array(
+  AuthenticationRule,
+) as any as S.Schema<AuthenticationRuleList>;
 
 /** Specifies a location to extract JWT from an API request. */
 export interface JwtLocation {
@@ -804,16 +1025,18 @@ export interface JwtLocation {
   query?: string;
 }
 export const JwtLocation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "header": S.optional(S.String),
-  "valuePrefix": S.optional(S.String),
-  "cookie": S.optional(S.String),
-  "query": S.optional(S.String),
-}),
+  S.Struct({
+    header: S.optional(S.String),
+    valuePrefix: S.optional(S.String),
+    cookie: S.optional(S.String),
+    query: S.optional(S.String),
+  }),
 ).annotate({ identifier: "JwtLocation" }) as any as S.Schema<JwtLocation>;
 
 export type JwtLocationList = ReadonlyArray<JwtLocation>;
-export const JwtLocationList = /*@__PURE__*/ S.Array(JwtLocation) as any as S.Schema<JwtLocationList>;
+export const JwtLocationList = /*@__PURE__*/ S.Array(
+  JwtLocation,
+) as any as S.Schema<JwtLocationList>;
 
 /** Configuration for an authentication provider, including support for [JSON Web Token (JWT)](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32). */
 export interface AuthProvider {
@@ -831,18 +1054,20 @@ export interface AuthProvider {
   audiences?: string;
 }
 export const AuthProvider = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.optional(S.String),
-  "jwksUri": S.optional(S.String),
-  "issuer": S.optional(S.String),
-  "authorizationUrl": S.optional(S.String),
-  "jwtLocations": S.optional(JwtLocationList),
-  "audiences": S.optional(S.String),
-}),
+  S.Struct({
+    id: S.optional(S.String),
+    jwksUri: S.optional(S.String),
+    issuer: S.optional(S.String),
+    authorizationUrl: S.optional(S.String),
+    jwtLocations: S.optional(JwtLocationList),
+    audiences: S.optional(S.String),
+  }),
 ).annotate({ identifier: "AuthProvider" }) as any as S.Schema<AuthProvider>;
 
 export type AuthProviderList = ReadonlyArray<AuthProvider>;
-export const AuthProviderList = /*@__PURE__*/ S.Array(AuthProvider) as any as S.Schema<AuthProviderList>;
+export const AuthProviderList = /*@__PURE__*/ S.Array(
+  AuthProvider,
+) as any as S.Schema<AuthProviderList>;
 
 /** `Authentication` defines the authentication configuration for API methods provided by an API service. Example: name: calendar.googleapis.com authentication: providers: - id: google_calendar_auth jwks_uri: https://www.googleapis.com/oauth2/v1/certs issuer: https://securetoken.google.com rules: - selector: "*" requirements: provider_id: google_calendar_auth - selector: google.calendar.Delegate oauth: canonical_scopes: https://www.googleapis.com/auth/calendar.read */
 export interface Authentication {
@@ -852,10 +1077,10 @@ export interface Authentication {
   providers?: AuthProviderList;
 }
 export const Authentication = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "rules": S.optional(AuthenticationRuleList),
-  "providers": S.optional(AuthProviderList),
-}),
+  S.Struct({
+    rules: S.optional(AuthenticationRuleList),
+    providers: S.optional(AuthProviderList),
+  }),
 ).annotate({ identifier: "Authentication" }) as any as S.Schema<Authentication>;
 
 /** The configuration of the service. */
@@ -882,18 +1107,18 @@ export interface ServiceConfig {
   authentication?: Authentication;
 }
 export const ServiceConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "monitoring": S.optional(Monitoring),
-  "usage": S.optional(Usage),
-  "name": S.optional(S.String),
-  "quota": S.optional(Quota),
-  "documentation": S.optional(Documentation),
-  "title": S.optional(S.String),
-  "monitoredResources": S.optional(MonitoredResourceDescriptorList),
-  "endpoints": S.optional(EndpointList),
-  "apis": S.optional(ApiList),
-  "authentication": S.optional(Authentication),
-}),
+  S.Struct({
+    monitoring: S.optional(Monitoring),
+    usage: S.optional(Usage),
+    name: S.optional(S.String),
+    quota: S.optional(Quota),
+    documentation: S.optional(Documentation),
+    title: S.optional(S.String),
+    monitoredResources: S.optional(MonitoredResourceDescriptorList),
+    endpoints: S.optional(EndpointList),
+    apis: S.optional(ApiList),
+    authentication: S.optional(Authentication),
+  }),
 ).annotate({ identifier: "ServiceConfig" }) as any as S.Schema<ServiceConfig>;
 
 /** A service that is available for use by the consumer. */
@@ -908,15 +1133,18 @@ export interface Service {
   config?: ServiceConfig;
 }
 export const Service = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.optional(S.String),
-  "state": S.optional(ServiceStateEnum),
-  "name": S.optional(S.String),
-  "config": S.optional(ServiceConfig),
-}),
+  S.Struct({
+    parent: S.optional(S.String),
+    state: S.optional(ServiceStateEnum),
+    name: S.optional(S.String),
+    config: S.optional(ServiceConfig),
+  }),
 ).annotate({ identifier: "Service" }) as any as S.Schema<Service>;
 
-export type GetServicesConsumerQuotaMetricsViewEnum = "QUOTA_VIEW_UNSPECIFIED" | "BASIC" | "FULL";
+export type GetServicesConsumerQuotaMetricsViewEnum =
+  | "QUOTA_VIEW_UNSPECIFIED"
+  | "BASIC"
+  | "FULL";
 export const GetServicesConsumerQuotaMetricsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetServicesConsumerQuotaMetricsRequest {
@@ -925,12 +1153,21 @@ export interface GetServicesConsumerQuotaMetricsRequest {
   /** Specifies the level of detail for quota information in the response. */
   view?: GetServicesConsumerQuotaMetricsViewEnum | (string & {});
 }
-export const GetServicesConsumerQuotaMetricsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "view": S.optional(GetServicesConsumerQuotaMetricsViewEnum.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://serviceusage.googleapis.com/"})),
-).annotate({ identifier: "GetServicesConsumerQuotaMetricsRequest" }) as any as S.Schema<GetServicesConsumerQuotaMetricsRequest>;
+export const GetServicesConsumerQuotaMetricsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      view: S.optional(GetServicesConsumerQuotaMetricsViewEnum.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://serviceusage.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetServicesConsumerQuotaMetricsRequest",
+}) as any as S.Schema<GetServicesConsumerQuotaMetricsRequest>;
 
 /** [Output only] Rollout information of a quota. */
 export interface RolloutInfo {
@@ -938,9 +1175,9 @@ export interface RolloutInfo {
   defaultLimitOngoingRollout?: boolean;
 }
 export const RolloutInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "defaultLimitOngoingRollout": S.optional(S.Boolean),
-}),
+  S.Struct({
+    defaultLimitOngoingRollout: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "RolloutInfo" }) as any as S.Schema<RolloutInfo>;
 
 /** Quota policy created by service producer. */
@@ -959,15 +1196,17 @@ export interface ProducerQuotaPolicy {
   container?: string;
 }
 export const ProducerQuotaPolicy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "policyValue": S.optional(S.String),
-  "name": S.optional(S.String),
-  "unit": S.optional(S.String),
-  "dimensions": S.optional(StringMap),
-  "metric": S.optional(S.String),
-  "container": S.optional(S.String),
-}),
-).annotate({ identifier: "ProducerQuotaPolicy" }) as any as S.Schema<ProducerQuotaPolicy>;
+  S.Struct({
+    policyValue: S.optional(S.String),
+    name: S.optional(S.String),
+    unit: S.optional(S.String),
+    dimensions: S.optional(StringMap),
+    metric: S.optional(S.String),
+    container: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ProducerQuotaPolicy",
+}) as any as S.Schema<ProducerQuotaPolicy>;
 
 /** A quota bucket is a quota provisioning unit for a specific set of dimensions. */
 export interface QuotaBucket {
@@ -989,20 +1228,22 @@ export interface QuotaBucket {
   adminOverride?: QuotaOverride;
 }
 export const QuotaBucket = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "consumerOverride": S.optional(QuotaOverride),
-  "rolloutInfo": S.optional(RolloutInfo),
-  "effectiveLimit": S.optional(S.String),
-  "producerOverride": S.optional(QuotaOverride),
-  "producerQuotaPolicy": S.optional(ProducerQuotaPolicy),
-  "defaultLimit": S.optional(S.String),
-  "dimensions": S.optional(StringMap),
-  "adminOverride": S.optional(QuotaOverride),
-}),
+  S.Struct({
+    consumerOverride: S.optional(QuotaOverride),
+    rolloutInfo: S.optional(RolloutInfo),
+    effectiveLimit: S.optional(S.String),
+    producerOverride: S.optional(QuotaOverride),
+    producerQuotaPolicy: S.optional(ProducerQuotaPolicy),
+    defaultLimit: S.optional(S.String),
+    dimensions: S.optional(StringMap),
+    adminOverride: S.optional(QuotaOverride),
+  }),
 ).annotate({ identifier: "QuotaBucket" }) as any as S.Schema<QuotaBucket>;
 
 export type QuotaBucketList = ReadonlyArray<QuotaBucket>;
-export const QuotaBucketList = /*@__PURE__*/ S.Array(QuotaBucket) as any as S.Schema<QuotaBucketList>;
+export const QuotaBucketList = /*@__PURE__*/ S.Array(
+  QuotaBucket,
+) as any as S.Schema<QuotaBucketList>;
 
 /** Consumer quota settings for a quota limit. */
 export interface ConsumerQuotaLimit {
@@ -1022,19 +1263,23 @@ export interface ConsumerQuotaLimit {
   name?: string;
 }
 export const ConsumerQuotaLimit = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "metric": S.optional(S.String),
-  "supportedLocations": S.optional(StringList),
-  "allowsAdminOverrides": S.optional(S.Boolean),
-  "isPrecise": S.optional(S.Boolean),
-  "unit": S.optional(S.String),
-  "quotaBuckets": S.optional(QuotaBucketList),
-  "name": S.optional(S.String),
-}),
-).annotate({ identifier: "ConsumerQuotaLimit" }) as any as S.Schema<ConsumerQuotaLimit>;
+  S.Struct({
+    metric: S.optional(S.String),
+    supportedLocations: S.optional(StringList),
+    allowsAdminOverrides: S.optional(S.Boolean),
+    isPrecise: S.optional(S.Boolean),
+    unit: S.optional(S.String),
+    quotaBuckets: S.optional(QuotaBucketList),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConsumerQuotaLimit",
+}) as any as S.Schema<ConsumerQuotaLimit>;
 
 export type ConsumerQuotaLimitList = ReadonlyArray<ConsumerQuotaLimit>;
-export const ConsumerQuotaLimitList = /*@__PURE__*/ S.Array(ConsumerQuotaLimit) as any as S.Schema<ConsumerQuotaLimitList>;
+export const ConsumerQuotaLimitList = /*@__PURE__*/ S.Array(
+  ConsumerQuotaLimit,
+) as any as S.Schema<ConsumerQuotaLimitList>;
 
 /** Consumer quota settings for a quota metric. */
 export interface ConsumerQuotaMetric {
@@ -1052,18 +1297,24 @@ export interface ConsumerQuotaMetric {
   displayName?: string;
 }
 export const ConsumerQuotaMetric = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "unit": S.optional(S.String),
-  "name": S.optional(S.String),
-  "descendantConsumerQuotaLimits": S.optional(ConsumerQuotaLimitList),
-  "consumerQuotaLimits": S.optional(ConsumerQuotaLimitList),
-  "metric": S.optional(S.String),
-  "displayName": S.optional(S.String),
-}),
-).annotate({ identifier: "ConsumerQuotaMetric" }) as any as S.Schema<ConsumerQuotaMetric>;
+  S.Struct({
+    unit: S.optional(S.String),
+    name: S.optional(S.String),
+    descendantConsumerQuotaLimits: S.optional(ConsumerQuotaLimitList),
+    consumerQuotaLimits: S.optional(ConsumerQuotaLimitList),
+    metric: S.optional(S.String),
+    displayName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConsumerQuotaMetric",
+}) as any as S.Schema<ConsumerQuotaMetric>;
 
-export type GetServicesConsumerQuotaMetricsLimitsViewEnum = "QUOTA_VIEW_UNSPECIFIED" | "BASIC" | "FULL";
-export const GetServicesConsumerQuotaMetricsLimitsViewEnum = /*@__PURE__*/ S.String;
+export type GetServicesConsumerQuotaMetricsLimitsViewEnum =
+  | "QUOTA_VIEW_UNSPECIFIED"
+  | "BASIC"
+  | "FULL";
+export const GetServicesConsumerQuotaMetricsLimitsViewEnum =
+  /*@__PURE__*/ S.String;
 
 export interface GetServicesConsumerQuotaMetricsLimitsRequest {
   /** Specifies the level of detail for quota information in the response. */
@@ -1071,21 +1322,43 @@ export interface GetServicesConsumerQuotaMetricsLimitsRequest {
   /** The resource name of the quota limit. Use the quota limit resource name returned by previous ListConsumerQuotaMetrics and GetConsumerQuotaMetric API calls. */
   name: string;
 }
-export const GetServicesConsumerQuotaMetricsLimitsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "view": S.optional(GetServicesConsumerQuotaMetricsLimitsViewEnum.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+name}","baseUrl":"https://serviceusage.googleapis.com/"})),
-).annotate({ identifier: "GetServicesConsumerQuotaMetricsLimitsRequest" }) as any as S.Schema<GetServicesConsumerQuotaMetricsLimitsRequest>;
+export const GetServicesConsumerQuotaMetricsLimitsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      view: S.optional(
+        GetServicesConsumerQuotaMetricsLimitsViewEnum.pipe(T.Query()),
+      ),
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://serviceusage.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetServicesConsumerQuotaMetricsLimitsRequest",
+  }) as any as S.Schema<GetServicesConsumerQuotaMetricsLimitsRequest>;
 
-export type ImportAdminOverridesRequestForceOnlyItemEnum = "QUOTA_SAFETY_CHECK_UNSPECIFIED" | "LIMIT_DECREASE_BELOW_USAGE" | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH";
-export const ImportAdminOverridesRequestForceOnlyItemEnum = /*@__PURE__*/ S.String;
+export type ImportAdminOverridesRequestForceOnlyItemEnum =
+  | "QUOTA_SAFETY_CHECK_UNSPECIFIED"
+  | "LIMIT_DECREASE_BELOW_USAGE"
+  | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH";
+export const ImportAdminOverridesRequestForceOnlyItemEnum =
+  /*@__PURE__*/ S.String;
 
-export type ImportAdminOverridesRequestForceOnlyItemEnumList = ReadonlyArray<ImportAdminOverridesRequestForceOnlyItemEnum | (string & {})>;
-export const ImportAdminOverridesRequestForceOnlyItemEnumList = /*@__PURE__*/ S.Array(ImportAdminOverridesRequestForceOnlyItemEnum) as any as S.Schema<ImportAdminOverridesRequestForceOnlyItemEnumList>;
+export type ImportAdminOverridesRequestForceOnlyItemEnumList = ReadonlyArray<
+  ImportAdminOverridesRequestForceOnlyItemEnum | (string & {})
+>;
+export const ImportAdminOverridesRequestForceOnlyItemEnumList =
+  /*@__PURE__*/ S.Array(
+    ImportAdminOverridesRequestForceOnlyItemEnum,
+  ) as any as S.Schema<ImportAdminOverridesRequestForceOnlyItemEnumList>;
 
 export type QuotaOverrideList = ReadonlyArray<QuotaOverride>;
-export const QuotaOverrideList = /*@__PURE__*/ S.Array(QuotaOverride) as any as S.Schema<QuotaOverrideList>;
+export const QuotaOverrideList = /*@__PURE__*/ S.Array(
+  QuotaOverride,
+) as any as S.Schema<QuotaOverrideList>;
 
 /** Import data embedded in the request message */
 export interface OverrideInlineSource {
@@ -1093,10 +1366,12 @@ export interface OverrideInlineSource {
   overrides?: QuotaOverrideList;
 }
 export const OverrideInlineSource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "overrides": S.optional(QuotaOverrideList),
-}),
-).annotate({ identifier: "OverrideInlineSource" }) as any as S.Schema<OverrideInlineSource>;
+  S.Struct({
+    overrides: S.optional(QuotaOverrideList),
+  }),
+).annotate({
+  identifier: "OverrideInlineSource",
+}) as any as S.Schema<OverrideInlineSource>;
 
 /** Request message for ImportAdminOverrides */
 export interface ImportAdminOverridesRequest {
@@ -1108,12 +1383,14 @@ export interface ImportAdminOverridesRequest {
   inlineSource?: OverrideInlineSource;
 }
 export const ImportAdminOverridesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "force": S.optional(S.Boolean),
-  "forceOnly": S.optional(ImportAdminOverridesRequestForceOnlyItemEnumList),
-  "inlineSource": S.optional(OverrideInlineSource),
-}),
-).annotate({ identifier: "ImportAdminOverridesRequest" }) as any as S.Schema<ImportAdminOverridesRequest>;
+  S.Struct({
+    force: S.optional(S.Boolean),
+    forceOnly: S.optional(ImportAdminOverridesRequestForceOnlyItemEnumList),
+    inlineSource: S.optional(OverrideInlineSource),
+  }),
+).annotate({
+  identifier: "ImportAdminOverridesRequest",
+}) as any as S.Schema<ImportAdminOverridesRequest>;
 
 export interface ImportAdminOverridesServicesConsumerQuotaMetricsRequest {
   /** The resource name of the consumer. An example name would be: `projects/123/services/compute.googleapis.com` */
@@ -1121,18 +1398,36 @@ export interface ImportAdminOverridesServicesConsumerQuotaMetricsRequest {
   /** Request body */
   body?: ImportAdminOverridesRequest;
 }
-export const ImportAdminOverridesServicesConsumerQuotaMetricsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(ImportAdminOverridesRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/consumerQuotaMetrics:importAdminOverrides","baseUrl":"https://serviceusage.googleapis.com/"})),
-).annotate({ identifier: "ImportAdminOverridesServicesConsumerQuotaMetricsRequest" }) as any as S.Schema<ImportAdminOverridesServicesConsumerQuotaMetricsRequest>;
+export const ImportAdminOverridesServicesConsumerQuotaMetricsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(ImportAdminOverridesRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+parent}/consumerQuotaMetrics:importAdminOverrides",
+        baseUrl: "https://serviceusage.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ImportAdminOverridesServicesConsumerQuotaMetricsRequest",
+  }) as any as S.Schema<ImportAdminOverridesServicesConsumerQuotaMetricsRequest>;
 
-export type ImportConsumerOverridesRequestForceOnlyItemEnum = "QUOTA_SAFETY_CHECK_UNSPECIFIED" | "LIMIT_DECREASE_BELOW_USAGE" | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH";
-export const ImportConsumerOverridesRequestForceOnlyItemEnum = /*@__PURE__*/ S.String;
+export type ImportConsumerOverridesRequestForceOnlyItemEnum =
+  | "QUOTA_SAFETY_CHECK_UNSPECIFIED"
+  | "LIMIT_DECREASE_BELOW_USAGE"
+  | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH";
+export const ImportConsumerOverridesRequestForceOnlyItemEnum =
+  /*@__PURE__*/ S.String;
 
-export type ImportConsumerOverridesRequestForceOnlyItemEnumList = ReadonlyArray<ImportConsumerOverridesRequestForceOnlyItemEnum | (string & {})>;
-export const ImportConsumerOverridesRequestForceOnlyItemEnumList = /*@__PURE__*/ S.Array(ImportConsumerOverridesRequestForceOnlyItemEnum) as any as S.Schema<ImportConsumerOverridesRequestForceOnlyItemEnumList>;
+export type ImportConsumerOverridesRequestForceOnlyItemEnumList = ReadonlyArray<
+  ImportConsumerOverridesRequestForceOnlyItemEnum | (string & {})
+>;
+export const ImportConsumerOverridesRequestForceOnlyItemEnumList =
+  /*@__PURE__*/ S.Array(
+    ImportConsumerOverridesRequestForceOnlyItemEnum,
+  ) as any as S.Schema<ImportConsumerOverridesRequestForceOnlyItemEnumList>;
 
 /** Request message for ImportConsumerOverrides */
 export interface ImportConsumerOverridesRequest {
@@ -1144,12 +1439,14 @@ export interface ImportConsumerOverridesRequest {
   inlineSource?: OverrideInlineSource;
 }
 export const ImportConsumerOverridesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "force": S.optional(S.Boolean),
-  "forceOnly": S.optional(ImportConsumerOverridesRequestForceOnlyItemEnumList),
-  "inlineSource": S.optional(OverrideInlineSource),
-}),
-).annotate({ identifier: "ImportConsumerOverridesRequest" }) as any as S.Schema<ImportConsumerOverridesRequest>;
+  S.Struct({
+    force: S.optional(S.Boolean),
+    forceOnly: S.optional(ImportConsumerOverridesRequestForceOnlyItemEnumList),
+    inlineSource: S.optional(OverrideInlineSource),
+  }),
+).annotate({
+  identifier: "ImportConsumerOverridesRequest",
+}) as any as S.Schema<ImportConsumerOverridesRequest>;
 
 export interface ImportConsumerOverridesServicesConsumerQuotaMetricsRequest {
   /** The resource name of the consumer. An example name would be: `projects/123/services/compute.googleapis.com` */
@@ -1157,12 +1454,21 @@ export interface ImportConsumerOverridesServicesConsumerQuotaMetricsRequest {
   /** Request body */
   body?: ImportConsumerOverridesRequest;
 }
-export const ImportConsumerOverridesServicesConsumerQuotaMetricsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(ImportConsumerOverridesRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/{+parent}/consumerQuotaMetrics:importConsumerOverrides","baseUrl":"https://serviceusage.googleapis.com/"})),
-).annotate({ identifier: "ImportConsumerOverridesServicesConsumerQuotaMetricsRequest" }) as any as S.Schema<ImportConsumerOverridesServicesConsumerQuotaMetricsRequest>;
+export const ImportConsumerOverridesServicesConsumerQuotaMetricsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(ImportConsumerOverridesRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1beta1/{+parent}/consumerQuotaMetrics:importConsumerOverrides",
+        baseUrl: "https://serviceusage.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ImportConsumerOverridesServicesConsumerQuotaMetricsRequest",
+  }) as any as S.Schema<ImportConsumerOverridesServicesConsumerQuotaMetricsRequest>;
 
 export interface ListOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
@@ -1177,17 +1483,27 @@ export interface ListOperationsRequest {
   pageToken?: string;
 }
 export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "name": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/operations","baseUrl":"https://serviceusage.googleapis.com/"})),
-).annotate({ identifier: "ListOperationsRequest" }) as any as S.Schema<ListOperationsRequest>;
+  S.Struct({
+    returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    name: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/operations",
+      baseUrl: "https://serviceusage.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListOperationsRequest",
+}) as any as S.Schema<ListOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(
+  Operation,
+) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -1199,12 +1515,14 @@ export interface ListOperationsResponse {
   unreachable?: StringList;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "operations": S.optional(OperationList),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    operations: S.optional(OperationList),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListOperationsResponse",
+}) as any as S.Schema<ListOperationsResponse>;
 
 export interface ListServicesRequest {
   /** Token identifying which result to start with, which is returned by a previous list call. */
@@ -1217,16 +1535,26 @@ export interface ListServicesRequest {
   filter?: string;
 }
 export const ListServicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/services","baseUrl":"https://serviceusage.googleapis.com/"})),
-).annotate({ identifier: "ListServicesRequest" }) as any as S.Schema<ListServicesRequest>;
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+parent}/services",
+      baseUrl: "https://serviceusage.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListServicesRequest",
+}) as any as S.Schema<ListServicesRequest>;
 
 export type ServiceList = ReadonlyArray<Service>;
-export const ServiceList = /*@__PURE__*/ S.Array(Service) as any as S.Schema<ServiceList>;
+export const ServiceList = /*@__PURE__*/ S.Array(
+  Service,
+) as any as S.Schema<ServiceList>;
 
 /** Response message for the `ListServices` method. */
 export interface ListServicesResponse {
@@ -1236,13 +1564,18 @@ export interface ListServicesResponse {
   nextPageToken?: string;
 }
 export const ListServicesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "services": S.optional(ServiceList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListServicesResponse" }) as any as S.Schema<ListServicesResponse>;
+  S.Struct({
+    services: S.optional(ServiceList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListServicesResponse",
+}) as any as S.Schema<ListServicesResponse>;
 
-export type ListServicesConsumerQuotaMetricsViewEnum = "QUOTA_VIEW_UNSPECIFIED" | "BASIC" | "FULL";
+export type ListServicesConsumerQuotaMetricsViewEnum =
+  | "QUOTA_VIEW_UNSPECIFIED"
+  | "BASIC"
+  | "FULL";
 export const ListServicesConsumerQuotaMetricsViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListServicesConsumerQuotaMetricsRequest {
@@ -1255,17 +1588,30 @@ export interface ListServicesConsumerQuotaMetricsRequest {
   /** Specifies the level of detail for quota information in the response. */
   view?: ListServicesConsumerQuotaMetricsViewEnum | (string & {});
 }
-export const ListServicesConsumerQuotaMetricsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "view": S.optional(ListServicesConsumerQuotaMetricsViewEnum.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/consumerQuotaMetrics","baseUrl":"https://serviceusage.googleapis.com/"})),
-).annotate({ identifier: "ListServicesConsumerQuotaMetricsRequest" }) as any as S.Schema<ListServicesConsumerQuotaMetricsRequest>;
+export const ListServicesConsumerQuotaMetricsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      view: S.optional(
+        ListServicesConsumerQuotaMetricsViewEnum.pipe(T.Query()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+parent}/consumerQuotaMetrics",
+        baseUrl: "https://serviceusage.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListServicesConsumerQuotaMetricsRequest",
+}) as any as S.Schema<ListServicesConsumerQuotaMetricsRequest>;
 
 export type ConsumerQuotaMetricList = ReadonlyArray<ConsumerQuotaMetric>;
-export const ConsumerQuotaMetricList = /*@__PURE__*/ S.Array(ConsumerQuotaMetric) as any as S.Schema<ConsumerQuotaMetricList>;
+export const ConsumerQuotaMetricList = /*@__PURE__*/ S.Array(
+  ConsumerQuotaMetric,
+) as any as S.Schema<ConsumerQuotaMetricList>;
 
 /** Response message for ListConsumerQuotaMetrics */
 export interface ListConsumerQuotaMetricsResponse {
@@ -1275,11 +1621,13 @@ export interface ListConsumerQuotaMetricsResponse {
   nextPageToken?: string;
 }
 export const ListConsumerQuotaMetricsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "metrics": S.optional(ConsumerQuotaMetricList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListConsumerQuotaMetricsResponse" }) as any as S.Schema<ListConsumerQuotaMetricsResponse>;
+  S.Struct({
+    metrics: S.optional(ConsumerQuotaMetricList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListConsumerQuotaMetricsResponse",
+}) as any as S.Schema<ListConsumerQuotaMetricsResponse>;
 
 export interface ListServicesConsumerQuotaMetricsLimitsAdminOverridesRequest {
   /** The resource name of the parent quota limit, returned by a ListConsumerQuotaMetrics or GetConsumerQuotaMetric call. An example name would be: `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion` */
@@ -1289,13 +1637,22 @@ export interface ListServicesConsumerQuotaMetricsLimitsAdminOverridesRequest {
   /** Token identifying which result to start with; returned by a previous list call. */
   pageToken?: string;
 }
-export const ListServicesConsumerQuotaMetricsLimitsAdminOverridesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/adminOverrides","baseUrl":"https://serviceusage.googleapis.com/"})),
-).annotate({ identifier: "ListServicesConsumerQuotaMetricsLimitsAdminOverridesRequest" }) as any as S.Schema<ListServicesConsumerQuotaMetricsLimitsAdminOverridesRequest>;
+export const ListServicesConsumerQuotaMetricsLimitsAdminOverridesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+parent}/adminOverrides",
+        baseUrl: "https://serviceusage.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListServicesConsumerQuotaMetricsLimitsAdminOverridesRequest",
+  }) as any as S.Schema<ListServicesConsumerQuotaMetricsLimitsAdminOverridesRequest>;
 
 /** Response message for ListAdminOverrides. */
 export interface ListAdminOverridesResponse {
@@ -1305,11 +1662,13 @@ export interface ListAdminOverridesResponse {
   nextPageToken?: string;
 }
 export const ListAdminOverridesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "overrides": S.optional(QuotaOverrideList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListAdminOverridesResponse" }) as any as S.Schema<ListAdminOverridesResponse>;
+  S.Struct({
+    overrides: S.optional(QuotaOverrideList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListAdminOverridesResponse",
+}) as any as S.Schema<ListAdminOverridesResponse>;
 
 export interface ListServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest {
   /** The resource name of the parent quota limit, returned by a ListConsumerQuotaMetrics or GetConsumerQuotaMetric call. An example name would be: `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion` */
@@ -1319,13 +1678,23 @@ export interface ListServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest 
   /** Token identifying which result to start with; returned by a previous list call. */
   pageToken?: string;
 }
-export const ListServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/{+parent}/consumerOverrides","baseUrl":"https://serviceusage.googleapis.com/"})),
-).annotate({ identifier: "ListServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest" }) as any as S.Schema<ListServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest>;
+export const ListServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta1/{+parent}/consumerOverrides",
+        baseUrl: "https://serviceusage.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "ListServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest",
+  }) as any as S.Schema<ListServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest>;
 
 /** Response message for ListConsumerOverrides. */
 export interface ListConsumerOverridesResponse {
@@ -1335,17 +1704,30 @@ export interface ListConsumerOverridesResponse {
   nextPageToken?: string;
 }
 export const ListConsumerOverridesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "overrides": S.optional(QuotaOverrideList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListConsumerOverridesResponse" }) as any as S.Schema<ListConsumerOverridesResponse>;
+  S.Struct({
+    overrides: S.optional(QuotaOverrideList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListConsumerOverridesResponse",
+}) as any as S.Schema<ListConsumerOverridesResponse>;
 
-export type PatchServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnum = "QUOTA_SAFETY_CHECK_UNSPECIFIED" | "LIMIT_DECREASE_BELOW_USAGE" | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH";
-export const PatchServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnum = /*@__PURE__*/ S.String;
+export type PatchServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnum =
+    | "QUOTA_SAFETY_CHECK_UNSPECIFIED"
+    | "LIMIT_DECREASE_BELOW_USAGE"
+    | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH";
+export const PatchServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnum =
+  /*@__PURE__*/ S.String;
 
-export type PatchServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnumList = ReadonlyArray<PatchServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnum | (string & {})>;
-export const PatchServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnumList = /*@__PURE__*/ S.Array(PatchServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnum) as any as S.Schema<PatchServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnumList>;
+export type PatchServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnumList =
+  ReadonlyArray<
+    | PatchServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnum
+    | (string & {})
+  >;
+export const PatchServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnumList =
+  /*@__PURE__*/ S.Array(
+    PatchServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnum,
+  ) as any as S.Schema<PatchServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnumList>;
 
 export interface PatchServicesConsumerQuotaMetricsLimitsAdminOverridesRequest {
   /** Whether to force the update of the quota override. Setting the force parameter to 'true' ignores all quota safety checks that would fail the request. QuotaSafetyCheck lists all such validations. If force is set to true, it is recommended to include a case id in "X-Goog-Request-Reason" header when sending the request. */
@@ -1359,21 +1741,45 @@ export interface PatchServicesConsumerQuotaMetricsLimitsAdminOverridesRequest {
   /** Request body */
   body?: QuotaOverride;
 }
-export const PatchServicesConsumerQuotaMetricsLimitsAdminOverridesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "force": S.optional(S.Boolean.pipe(T.Query())),
-  "forceOnly": S.optional(PatchServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnumList.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(QuotaOverride.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://serviceusage.googleapis.com/"})),
-).annotate({ identifier: "PatchServicesConsumerQuotaMetricsLimitsAdminOverridesRequest" }) as any as S.Schema<PatchServicesConsumerQuotaMetricsLimitsAdminOverridesRequest>;
+export const PatchServicesConsumerQuotaMetricsLimitsAdminOverridesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      force: S.optional(S.Boolean.pipe(T.Query())),
+      forceOnly: S.optional(
+        PatchServicesConsumerQuotaMetricsLimitsAdminOverridesForceOnlyEnumList.pipe(
+          T.Query(),
+        ),
+      ),
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(QuotaOverride.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://serviceusage.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchServicesConsumerQuotaMetricsLimitsAdminOverridesRequest",
+  }) as any as S.Schema<PatchServicesConsumerQuotaMetricsLimitsAdminOverridesRequest>;
 
-export type PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnum = "QUOTA_SAFETY_CHECK_UNSPECIFIED" | "LIMIT_DECREASE_BELOW_USAGE" | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH";
-export const PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnum = /*@__PURE__*/ S.String;
+export type PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnum =
+    | "QUOTA_SAFETY_CHECK_UNSPECIFIED"
+    | "LIMIT_DECREASE_BELOW_USAGE"
+    | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH";
+export const PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnum =
+  /*@__PURE__*/ S.String;
 
-export type PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnumList = ReadonlyArray<PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnum | (string & {})>;
-export const PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnumList = /*@__PURE__*/ S.Array(PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnum) as any as S.Schema<PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnumList>;
+export type PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnumList =
+  ReadonlyArray<
+    | PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnum
+    | (string & {})
+  >;
+export const PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnumList =
+  /*@__PURE__*/ S.Array(
+    PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnum,
+  ) as any as S.Schema<PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnumList>;
 
 export interface PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest {
   /** Whether to force the update of the quota override. Setting the force parameter to 'true' ignores all quota safety checks that would fail the request. QuotaSafetyCheck lists all such validations. If force is set to true, it is recommended to include a case id in "X-Goog-Request-Reason" header when sending the request. */
@@ -1387,17 +1793,36 @@ export interface PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest
   /** Request body */
   body?: QuotaOverride;
 }
-export const PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "force": S.optional(S.Boolean.pipe(T.Query())),
-  "forceOnly": S.optional(PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnumList.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(QuotaOverride.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/{+name}","baseUrl":"https://serviceusage.googleapis.com/"})),
-).annotate({ identifier: "PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest" }) as any as S.Schema<PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest>;
+export const PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      force: S.optional(S.Boolean.pipe(T.Query())),
+      forceOnly: S.optional(
+        PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesForceOnlyEnumList.pipe(
+          T.Query(),
+        ),
+      ),
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(QuotaOverride.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1beta1/{+name}",
+        baseUrl: "https://serviceusage.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest",
+  }) as any as S.Schema<PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest>;
 
-export type BatchEnableServicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type BatchEnableServicesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Enables multiple services on a project. The operation is atomic: if enabling any service fails, then the entire batch fails, and no state changes occur. Operation response type: `google.protobuf.Empty` */
 export const batchEnableServices: API.OperationMethod<
   BatchEnableServicesRequest_,
@@ -1412,7 +1837,12 @@ export const batchEnableServices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateServicesConsumerQuotaMetricsLimitsAdminOverridesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateServicesConsumerQuotaMetricsLimitsAdminOverridesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates an admin override. An admin override is applied by an administrator of a parent folder or parent organization of the consumer receiving the override. An admin override is intended to limit the amount of quota the consumer can use out of the total quota pool allocated to all children of the folder or organization. */
 export const createServicesConsumerQuotaMetricsLimitsAdminOverrides: API.OperationMethod<
   CreateServicesConsumerQuotaMetricsLimitsAdminOverridesRequest,
@@ -1427,7 +1857,12 @@ export const createServicesConsumerQuotaMetricsLimitsAdminOverrides: API.Operati
   retry: Retry.Retry,
 }));
 
-export type CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a consumer override. A consumer override is applied to the consumer on its own authority to limit its own quota usage. Consumer overrides cannot be used to grant more quota than would be allowed by admin overrides, producer overrides, or the default limit of the service. */
 export const createServicesConsumerQuotaMetricsLimitsConsumerOverrides: API.OperationMethod<
   CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest,
@@ -1442,7 +1877,12 @@ export const createServicesConsumerQuotaMetricsLimitsConsumerOverrides: API.Oper
   retry: Retry.Retry,
 }));
 
-export type DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes an admin override. */
 export const deleteServicesConsumerQuotaMetricsLimitsAdminOverrides: API.OperationMethod<
   DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesRequest,
@@ -1457,7 +1897,12 @@ export const deleteServicesConsumerQuotaMetricsLimitsAdminOverrides: API.Operati
   retry: Retry.Retry,
 }));
 
-export type DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a consumer override. */
 export const deleteServicesConsumerQuotaMetricsLimitsConsumerOverrides: API.OperationMethod<
   DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest,
@@ -1472,7 +1917,12 @@ export const deleteServicesConsumerQuotaMetricsLimitsConsumerOverrides: API.Oper
   retry: Retry.Retry,
 }));
 
-export type DisableServicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DisableServicesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Disables a service so that it can no longer be used with a project. This prevents unintended usage that may cause unexpected billing charges or security leaks. It is not valid to call the disable method on a service that is not currently enabled. Callers will receive a `FAILED_PRECONDITION` status if the target service is not currently enabled. Operation response type: `google.protobuf.Empty` */
 export const disableServices: API.OperationMethod<
   DisableServicesRequest,
@@ -1487,7 +1937,12 @@ export const disableServices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type EnableServicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type EnableServicesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Enables a service so that it can be used with a project. Operation response type: `google.protobuf.Empty` */
 export const enableServices: API.OperationMethod<
   EnableServicesRequest,
@@ -1502,7 +1957,12 @@ export const enableServices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GenerateServiceIdentityServicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type GenerateServiceIdentityServicesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Generates service identity for service. */
 export const generateServiceIdentityServices: API.OperationMethod<
   GenerateServiceIdentityServicesRequest,
@@ -1547,7 +2007,10 @@ export const getServices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetServicesConsumerQuotaMetricsError = NotFound | Forbidden | GcpOpError;
+export type GetServicesConsumerQuotaMetricsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieves a summary of quota information for a specific quota metric */
 export const getServicesConsumerQuotaMetrics: API.OperationMethod<
   GetServicesConsumerQuotaMetricsRequest,
@@ -1562,7 +2025,10 @@ export const getServicesConsumerQuotaMetrics: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetServicesConsumerQuotaMetricsLimitsError = NotFound | Forbidden | GcpOpError;
+export type GetServicesConsumerQuotaMetricsLimitsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieves a summary of quota information for a specific quota limit. */
 export const getServicesConsumerQuotaMetricsLimits: API.OperationMethod<
   GetServicesConsumerQuotaMetricsLimitsRequest,
@@ -1577,7 +2043,12 @@ export const getServicesConsumerQuotaMetricsLimits: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ImportAdminOverridesServicesConsumerQuotaMetricsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ImportAdminOverridesServicesConsumerQuotaMetricsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates or updates multiple admin overrides atomically, all on the same consumer, but on many different metrics or limits. The name field in the quota override message should not be set. */
 export const importAdminOverridesServicesConsumerQuotaMetrics: API.OperationMethod<
   ImportAdminOverridesServicesConsumerQuotaMetricsRequest,
@@ -1592,7 +2063,12 @@ export const importAdminOverridesServicesConsumerQuotaMetrics: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type ImportConsumerOverridesServicesConsumerQuotaMetricsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ImportConsumerOverridesServicesConsumerQuotaMetricsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates or updates multiple consumer overrides atomically, all on the same consumer, but on many different metrics or limits. The name field in the quota override message should not be set. */
 export const importConsumerOverridesServicesConsumerQuotaMetrics: API.OperationMethod<
   ImportConsumerOverridesServicesConsumerQuotaMetricsRequest,
@@ -1620,7 +2096,10 @@ export const listOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListServicesError = NotFound | Forbidden | GcpOpError;
@@ -1636,10 +2115,16 @@ export const listServices: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListServicesConsumerQuotaMetricsError = NotFound | Forbidden | GcpOpError;
+export type ListServicesConsumerQuotaMetricsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Retrieves a summary of all quota information visible to the service consumer, organized by service metric. Each metric includes information about all of its defined limits. Each limit includes the limit configuration (quota unit, preciseness, default value), the current effective limit value, and all of the overrides applied to the limit. */
 export const listServicesConsumerQuotaMetrics: API.PaginatedOperationMethod<
   ListServicesConsumerQuotaMetricsRequest,
@@ -1652,10 +2137,16 @@ export const listServicesConsumerQuotaMetrics: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListServicesConsumerQuotaMetricsLimitsAdminOverridesError = NotFound | Forbidden | GcpOpError;
+export type ListServicesConsumerQuotaMetricsLimitsAdminOverridesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all admin overrides on this limit. */
 export const listServicesConsumerQuotaMetricsLimitsAdminOverrides: API.PaginatedOperationMethod<
   ListServicesConsumerQuotaMetricsLimitsAdminOverridesRequest,
@@ -1668,10 +2159,16 @@ export const listServicesConsumerQuotaMetricsLimitsAdminOverrides: API.Paginated
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListServicesConsumerQuotaMetricsLimitsConsumerOverridesError = NotFound | Forbidden | GcpOpError;
+export type ListServicesConsumerQuotaMetricsLimitsConsumerOverridesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists all consumer overrides on this limit. */
 export const listServicesConsumerQuotaMetricsLimitsConsumerOverrides: API.PaginatedOperationMethod<
   ListServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest,
@@ -1684,10 +2181,18 @@ export const listServicesConsumerQuotaMetricsLimitsConsumerOverrides: API.Pagina
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type PatchServicesConsumerQuotaMetricsLimitsAdminOverridesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchServicesConsumerQuotaMetricsLimitsAdminOverridesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates an admin override. */
 export const patchServicesConsumerQuotaMetricsLimitsAdminOverrides: API.OperationMethod<
   PatchServicesConsumerQuotaMetricsLimitsAdminOverridesRequest,
@@ -1702,7 +2207,12 @@ export const patchServicesConsumerQuotaMetricsLimitsAdminOverrides: API.Operatio
   retry: Retry.Retry,
 }));
 
-export type PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a consumer override. */
 export const patchServicesConsumerQuotaMetricsLimitsConsumerOverrides: API.OperationMethod<
   PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest,
@@ -1716,4 +2226,3 @@ export const patchServicesConsumerQuotaMetricsLimitsConsumerOverrides: API.Opera
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

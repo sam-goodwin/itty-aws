@@ -1538,16 +1538,26 @@ export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItems
       "OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
   }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
 
-export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-    | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem
-    | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
+export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem {
+  itemType: string;
+  string?: string;
+  resourcePreview?: OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
+}
 export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.String.pipe(T.Body("item_type")),
+      string: S.optional(S.String),
+      resourcePreview: S.optional(
+        OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem",
+  }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
 
 export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList =
   ReadonlyArray<OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
@@ -1571,22 +1581,38 @@ export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItems
       "OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem",
   }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem>;
 
-export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue =
-    | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-    | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
-    | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
-    | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem
-    | OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem;
+export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue {
+  itemType: string;
+  string?: string;
+  yaml?: string;
+  yamlDiff?: OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff;
+  resourcePreview?: OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview;
+  list?: OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList;
+}
 export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.String.pipe(T.Body("item_type")),
+      string: S.optional(S.String),
+      yaml: S.optional(S.String),
+      yamlDiff: S.optional(
+        OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff.pipe(
+          T.Body("yaml_diff"),
+        ),
+      ),
+      resourcePreview: S.optional(
+        OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+      list: S.optional(
+        OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue",
+  }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue>;
 
 export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItem {
   helpText?: string;
@@ -1924,16 +1950,26 @@ export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItem
       "OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
   }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
 
-export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-    | OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem
-    | OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
+export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem {
+  itemType: string;
+  string?: string;
+  resourcePreview?: OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
+}
 export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.String.pipe(T.Body("item_type")),
+      string: S.optional(S.String),
+      resourcePreview: S.optional(
+        OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem",
+  }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
 
 export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList =
   ReadonlyArray<OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
@@ -1957,22 +1993,38 @@ export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItem
       "OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem",
   }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem>;
 
-export type OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue =
-    | OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnStringItem
-    | OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlItem
-    | OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem
-    | OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem
-    | OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem;
+export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue {
+  itemType: string;
+  string?: string;
+  yaml?: string;
+  yamlDiff?: OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff;
+  resourcePreview?: OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview;
+  list?: OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList;
+}
 export const OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.String.pipe(T.Body("item_type")),
+      string: S.optional(S.String),
+      yaml: S.optional(S.String),
+      yamlDiff: S.optional(
+        OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff.pipe(
+          T.Body("yaml_diff"),
+        ),
+      ),
+      resourcePreview: S.optional(
+        OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+      list: S.optional(
+        OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue",
+  }) as any as S.Schema<OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue>;
 
 export interface OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItem {
   helpText?: string;
@@ -2914,16 +2966,26 @@ export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueM
       "OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
   }) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
 
-export type OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-    | OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem
-    | OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
+export interface OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem {
+  itemType: string;
+  string?: string;
+  resourcePreview?: OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
+}
 export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.String.pipe(T.Body("item_type")),
+      string: S.optional(S.String),
+      resourcePreview: S.optional(
+        OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem",
+  }) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
 
 export type OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList =
   ReadonlyArray<OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
@@ -2947,22 +3009,38 @@ export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueM
       "OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem",
   }) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem>;
 
-export type OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValue =
-    | OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnStringItem
-    | OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlItem
-    | OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
-    | OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem
-    | OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem;
+export interface OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValue {
+  itemType: string;
+  string?: string;
+  yaml?: string;
+  yamlDiff?: OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff;
+  resourcePreview?: OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview;
+  list?: OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList;
+}
 export const OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.String.pipe(T.Body("item_type")),
+      string: S.optional(S.String),
+      yaml: S.optional(S.String),
+      yamlDiff: S.optional(
+        OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff.pipe(
+          T.Body("yaml_diff"),
+        ),
+      ),
+      resourcePreview: S.optional(
+        OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+      list: S.optional(
+        OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValue",
+  }) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItemValue>;
 
 export interface OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItem {
   helpText?: string;
@@ -3299,16 +3377,26 @@ export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue
       "OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
   }) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
 
-export type OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-    | OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem
-    | OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
+export interface OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem {
+  itemType: string;
+  string?: string;
+  resourcePreview?: OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
+}
 export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.String.pipe(T.Body("item_type")),
+      string: S.optional(S.String),
+      resourcePreview: S.optional(
+        OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem",
+  }) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
 
 export type OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList =
   ReadonlyArray<OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
@@ -3332,22 +3420,38 @@ export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue
       "OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem",
   }) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem>;
 
-export type OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue =
-    | OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnStringItem
-    | OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlItem
-    | OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem
-    | OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem
-    | OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem;
+export interface OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue {
+  itemType: string;
+  string?: string;
+  yaml?: string;
+  yamlDiff?: OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff;
+  resourcePreview?: OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview;
+  list?: OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList;
+}
 export const OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.String.pipe(T.Body("item_type")),
+      string: S.optional(S.String),
+      yaml: S.optional(S.String),
+      yamlDiff: S.optional(
+        OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff.pipe(
+          T.Body("yaml_diff"),
+        ),
+      ),
+      resourcePreview: S.optional(
+        OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+      list: S.optional(
+        OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue",
+  }) as any as S.Schema<OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue>;
 
 export interface OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItem {
   helpText?: string;
@@ -5212,16 +5316,26 @@ export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsIte
       "OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
   }) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
 
-export type OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-    | OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem
-    | OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
+export interface OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem {
+  itemType: string;
+  string?: string;
+  resourcePreview?: OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
+}
 export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.String.pipe(T.Body("item_type")),
+      string: S.optional(S.String),
+      resourcePreview: S.optional(
+        OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem",
+  }) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
 
 export type OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList =
   ReadonlyArray<OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
@@ -5245,22 +5359,38 @@ export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsIte
       "OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem",
   }) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem>;
 
-export type OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue =
-    | OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-    | OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
-    | OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
-    | OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem
-    | OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem;
+export interface OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue {
+  itemType: string;
+  string?: string;
+  yaml?: string;
+  yamlDiff?: OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff;
+  resourcePreview?: OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview;
+  list?: OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList;
+}
 export const OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.String.pipe(T.Body("item_type")),
+      string: S.optional(S.String),
+      yaml: S.optional(S.String),
+      yamlDiff: S.optional(
+        OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff.pipe(
+          T.Body("yaml_diff"),
+        ),
+      ),
+      resourcePreview: S.optional(
+        OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+      list: S.optional(
+        OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue",
+  }) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue>;
 
 export interface OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItem {
   helpText?: string;
@@ -5598,16 +5728,26 @@ export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsIt
       "OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
   }) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
 
-export type OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-    | OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem
-    | OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
+export interface OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem {
+  itemType: string;
+  string?: string;
+  resourcePreview?: OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
+}
 export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.String.pipe(T.Body("item_type")),
+      string: S.optional(S.String),
+      resourcePreview: S.optional(
+        OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem",
+  }) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
 
 export type OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList =
   ReadonlyArray<OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
@@ -5631,22 +5771,38 @@ export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsIt
       "OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem",
   }) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem>;
 
-export type OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue =
-    | OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnStringItem
-    | OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlItem
-    | OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem
-    | OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem
-    | OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem;
+export interface OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue {
+  itemType: string;
+  string?: string;
+  yaml?: string;
+  yamlDiff?: OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff;
+  resourcePreview?: OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview;
+  list?: OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList;
+}
 export const OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.String.pipe(T.Body("item_type")),
+      string: S.optional(S.String),
+      yaml: S.optional(S.String),
+      yamlDiff: S.optional(
+        OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff.pipe(
+          T.Body("yaml_diff"),
+        ),
+      ),
+      resourcePreview: S.optional(
+        OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+      list: S.optional(
+        OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue",
+  }) as any as S.Schema<OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue>;
 
 export interface OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItem {
   helpText?: string;
@@ -6582,16 +6738,26 @@ export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnL
       "OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
   }) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
 
-export type OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-    | OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem
-    | OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
+export interface OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem {
+  itemType: string;
+  string?: string;
+  resourcePreview?: OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
+}
 export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.String.pipe(T.Body("item_type")),
+      string: S.optional(S.String),
+      resourcePreview: S.optional(
+        OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem",
+  }) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
 
 export type OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList =
   ReadonlyArray<OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
@@ -6615,22 +6781,38 @@ export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnL
       "OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem",
   }) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem>;
 
-export type OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValue =
-  | OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlItem
-  | OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
-  | OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem
-  | OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem;
+export interface OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValue {
+  itemType: string;
+  string?: string;
+  yaml?: string;
+  yamlDiff?: OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff;
+  resourcePreview?: OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview;
+  list?: OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList;
+}
 export const OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.String.pipe(T.Body("item_type")),
+      string: S.optional(S.String),
+      yaml: S.optional(S.String),
+      yamlDiff: S.optional(
+        OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff.pipe(
+          T.Body("yaml_diff"),
+        ),
+      ),
+      resourcePreview: S.optional(
+        OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+      list: S.optional(
+        OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValue",
+  }) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItemValue>;
 
 export interface OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItem {
   helpText?: string;
@@ -6967,16 +7149,26 @@ export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcn
       "OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
   }) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
 
-export type OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-    | OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem
-    | OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
+export interface OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem {
+  itemType: string;
+  string?: string;
+  resourcePreview?: OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
+}
 export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.String.pipe(T.Body("item_type")),
+      string: S.optional(S.String),
+      resourcePreview: S.optional(
+        OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem",
+  }) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
 
 export type OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList =
   ReadonlyArray<OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
@@ -7000,22 +7192,38 @@ export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcn
       "OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem",
   }) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem>;
 
-export type OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValue =
-  | OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnStringItem
-  | OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlItem
-  | OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem
-  | OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem
-  | OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem;
+export interface OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValue {
+  itemType: string;
+  string?: string;
+  yaml?: string;
+  yamlDiff?: OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff;
+  resourcePreview?: OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview;
+  list?: OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList;
+}
 export const OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.String.pipe(T.Body("item_type")),
+      string: S.optional(S.String),
+      yaml: S.optional(S.String),
+      yamlDiff: S.optional(
+        OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff.pipe(
+          T.Body("yaml_diff"),
+        ),
+      ),
+      resourcePreview: S.optional(
+        OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+      list: S.optional(
+        OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValue",
+  }) as any as S.Schema<OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItemValue>;
 
 export interface OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItem {
   helpText?: string;
@@ -7760,16 +7968,26 @@ export const ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemList
       "ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
   }) as any as S.Schema<ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
 
-export type ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItem =
-    | ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem
-    | ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
+export interface ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItem {
+  itemType: string;
+  string?: string;
+  resourcePreview?: ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
+}
 export const ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.String.pipe(T.Body("item_type")),
+      string: S.optional(S.String),
+      resourcePreview: S.optional(
+        ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItem",
+  }) as any as S.Schema<ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItem>;
 
 export type ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListList =
   ReadonlyArray<ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListItem>;
@@ -7793,22 +8011,37 @@ export const ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItem =
       "ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItem",
   }) as any as S.Schema<ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItem>;
 
-export type ResourcesGetResponseSectionsItemHiddenItemsItemValue =
-  | ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnStringItem
-  | ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnYamlItem
-  | ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnYamlDiffItem
-  | ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItem
-  | ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItem;
+export interface ResourcesGetResponseSectionsItemHiddenItemsItemValue {
+  itemType: string;
+  string?: string;
+  yaml?: string;
+  yamlDiff?: ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff;
+  resourcePreview?: ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview;
+  list?: ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListList;
+}
 export const ResourcesGetResponseSectionsItemHiddenItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.String.pipe(T.Body("item_type")),
+      string: S.optional(S.String),
+      yaml: S.optional(S.String),
+      yamlDiff: S.optional(
+        ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff.pipe(
+          T.Body("yaml_diff"),
+        ),
+      ),
+      resourcePreview: S.optional(
+        ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+      list: S.optional(
+        ResourcesGetResponseSectionsItemHiddenItemsItemValueMcnListItemListList,
+      ),
+    }),
+  ).annotate({
+    identifier: "ResourcesGetResponseSectionsItemHiddenItemsItemValue",
+  }) as any as S.Schema<ResourcesGetResponseSectionsItemHiddenItemsItemValue>;
 
 export interface ResourcesGetResponseSectionsItemHiddenItemsItem {
   helpText?: string;
@@ -8143,16 +8376,26 @@ export const ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemLis
       "ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
   }) as any as S.Schema<ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
 
-export type ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItem =
-    | ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem
-    | ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
+export interface ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItem {
+  itemType: string;
+  string?: string;
+  resourcePreview?: ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
+}
 export const ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.String.pipe(T.Body("item_type")),
+      string: S.optional(S.String),
+      resourcePreview: S.optional(
+        ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItem",
+  }) as any as S.Schema<ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItem>;
 
 export type ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListList =
   ReadonlyArray<ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListItem>;
@@ -8176,22 +8419,37 @@ export const ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItem =
       "ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItem",
   }) as any as S.Schema<ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItem>;
 
-export type ResourcesGetResponseSectionsItemVisibleItemsItemValue =
-  | ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnStringItem
-  | ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnYamlItem
-  | ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnYamlDiffItem
-  | ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItem
-  | ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItem;
+export interface ResourcesGetResponseSectionsItemVisibleItemsItemValue {
+  itemType: string;
+  string?: string;
+  yaml?: string;
+  yamlDiff?: ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff;
+  resourcePreview?: ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview;
+  list?: ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListList;
+}
 export const ResourcesGetResponseSectionsItemVisibleItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.String.pipe(T.Body("item_type")),
+      string: S.optional(S.String),
+      yaml: S.optional(S.String),
+      yamlDiff: S.optional(
+        ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff.pipe(
+          T.Body("yaml_diff"),
+        ),
+      ),
+      resourcePreview: S.optional(
+        ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+      list: S.optional(
+        ResourcesGetResponseSectionsItemVisibleItemsItemValueMcnListItemListList,
+      ),
+    }),
+  ).annotate({
+    identifier: "ResourcesGetResponseSectionsItemVisibleItemsItemValue",
+  }) as any as S.Schema<ResourcesGetResponseSectionsItemVisibleItemsItemValue>;
 
 export interface ResourcesGetResponseSectionsItemVisibleItemsItem {
   helpText?: string;
@@ -8416,17 +8674,26 @@ export const CloudIntegrationsInitialSetupResultMcnGcpSetup =
     identifier: "CloudIntegrationsInitialSetupResultMcnGcpSetup",
   }) as any as S.Schema<CloudIntegrationsInitialSetupResultMcnGcpSetup>;
 
-export type CloudIntegrationsInitialSetupResult =
-  | CloudIntegrationsInitialSetupResultMcnAwsTrustPolicy
-  | CloudIntegrationsInitialSetupResultMcnAzureSetup
-  | CloudIntegrationsInitialSetupResultMcnGcpSetup;
-export const CloudIntegrationsInitialSetupResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["awsTrustPolicy", "itemType"],
-    ["azureConsentUrl", "integrationIdentityTag", "itemType", "tagCliCommand"],
-    ["integrationIdentityTag", "itemType", "tagCliCommand"],
-  ]),
-);
+export interface CloudIntegrationsInitialSetupResult {
+  awsTrustPolicy?: string;
+  itemType: string;
+  azureConsentUrl?: string;
+  integrationIdentityTag?: string;
+  tagCliCommand?: string;
+}
+export const CloudIntegrationsInitialSetupResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    awsTrustPolicy: S.optional(S.String.pipe(T.Body("aws_trust_policy"))),
+    itemType: S.String.pipe(T.Body("item_type")),
+    azureConsentUrl: S.optional(S.String.pipe(T.Body("azure_consent_url"))),
+    integrationIdentityTag: S.optional(
+      S.String.pipe(T.Body("integration_identity_tag")),
+    ),
+    tagCliCommand: S.optional(S.String.pipe(T.Body("tag_cli_command"))),
+  }),
+).annotate({
+  identifier: "CloudIntegrationsInitialSetupResult",
+}) as any as S.Schema<CloudIntegrationsInitialSetupResult>;
 
 export type InitialSetupCloudIntegrationResponse =
   CloudIntegrationsInitialSetupResult;
@@ -9876,16 +10143,26 @@ export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItems
       "OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
   }) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
 
-export type OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-    | OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem
-    | OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
+export interface OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem {
+  itemType: string;
+  string?: string;
+  resourcePreview?: OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
+}
 export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.String.pipe(T.Body("item_type")),
+      string: S.optional(S.String),
+      resourcePreview: S.optional(
+        OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem",
+  }) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
 
 export type OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList =
   ReadonlyArray<OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
@@ -9909,22 +10186,38 @@ export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItems
       "OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem",
   }) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem>;
 
-export type OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValue =
-    | OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-    | OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
-    | OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
-    | OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem
-    | OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem;
+export interface OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValue {
+  itemType: string;
+  string?: string;
+  yaml?: string;
+  yamlDiff?: OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff;
+  resourcePreview?: OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview;
+  list?: OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList;
+}
 export const OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.String.pipe(T.Body("item_type")),
+      string: S.optional(S.String),
+      yaml: S.optional(S.String),
+      yamlDiff: S.optional(
+        OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff.pipe(
+          T.Body("yaml_diff"),
+        ),
+      ),
+      resourcePreview: S.optional(
+        OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+      list: S.optional(
+        OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValue",
+  }) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItemValue>;
 
 export interface OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItem {
   helpText?: string;
@@ -10262,16 +10555,26 @@ export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItem
       "OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
   }) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
 
-export type OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-    | OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem
-    | OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
+export interface OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem {
+  itemType: string;
+  string?: string;
+  resourcePreview?: OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
+}
 export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.String.pipe(T.Body("item_type")),
+      string: S.optional(S.String),
+      resourcePreview: S.optional(
+        OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem",
+  }) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
 
 export type OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList =
   ReadonlyArray<OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
@@ -10295,22 +10598,38 @@ export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItem
       "OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem",
   }) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem>;
 
-export type OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValue =
-    | OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnStringItem
-    | OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlItem
-    | OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem
-    | OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem
-    | OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem;
+export interface OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValue {
+  itemType: string;
+  string?: string;
+  yaml?: string;
+  yamlDiff?: OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff;
+  resourcePreview?: OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview;
+  list?: OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList;
+}
 export const OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.String.pipe(T.Body("item_type")),
+      string: S.optional(S.String),
+      yaml: S.optional(S.String),
+      yamlDiff: S.optional(
+        OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff.pipe(
+          T.Body("yaml_diff"),
+        ),
+      ),
+      resourcePreview: S.optional(
+        OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+      list: S.optional(
+        OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValue",
+  }) as any as S.Schema<OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItemValue>;
 
 export interface OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItem {
   helpText?: string;
@@ -11252,16 +11571,26 @@ export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueM
       "OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
   }) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
 
-export type OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-    | OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem
-    | OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
+export interface OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem {
+  itemType: string;
+  string?: string;
+  resourcePreview?: OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
+}
 export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.String.pipe(T.Body("item_type")),
+      string: S.optional(S.String),
+      resourcePreview: S.optional(
+        OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem",
+  }) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
 
 export type OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList =
   ReadonlyArray<OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
@@ -11285,22 +11614,38 @@ export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueM
       "OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem",
   }) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem>;
 
-export type OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValue =
-    | OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnStringItem
-    | OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlItem
-    | OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
-    | OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem
-    | OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem;
+export interface OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValue {
+  itemType: string;
+  string?: string;
+  yaml?: string;
+  yamlDiff?: OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff;
+  resourcePreview?: OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview;
+  list?: OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList;
+}
 export const OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.String.pipe(T.Body("item_type")),
+      string: S.optional(S.String),
+      yaml: S.optional(S.String),
+      yamlDiff: S.optional(
+        OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff.pipe(
+          T.Body("yaml_diff"),
+        ),
+      ),
+      resourcePreview: S.optional(
+        OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+      list: S.optional(
+        OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValue",
+  }) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItemValue>;
 
 export interface OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItem {
   helpText?: string;
@@ -11637,16 +11982,26 @@ export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValue
       "OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
   }) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
 
-export type OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-    | OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem
-    | OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
+export interface OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem {
+  itemType: string;
+  string?: string;
+  resourcePreview?: OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
+}
 export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.String.pipe(T.Body("item_type")),
+      string: S.optional(S.String),
+      resourcePreview: S.optional(
+        OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem",
+  }) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
 
 export type OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList =
   ReadonlyArray<OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
@@ -11670,22 +12025,38 @@ export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValue
       "OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem",
   }) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem>;
 
-export type OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValue =
-    | OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnStringItem
-    | OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlItem
-    | OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem
-    | OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem
-    | OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem;
+export interface OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValue {
+  itemType: string;
+  string?: string;
+  yaml?: string;
+  yamlDiff?: OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff;
+  resourcePreview?: OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview;
+  list?: OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList;
+}
 export const OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.String.pipe(T.Body("item_type")),
+      string: S.optional(S.String),
+      yaml: S.optional(S.String),
+      yamlDiff: S.optional(
+        OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff.pipe(
+          T.Body("yaml_diff"),
+        ),
+      ),
+      resourcePreview: S.optional(
+        OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+      list: S.optional(
+        OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValue",
+  }) as any as S.Schema<OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItemValue>;
 
 export interface OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItem {
   helpText?: string;
@@ -12564,16 +12935,26 @@ export const ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemL
       "ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
   }) as any as S.Schema<ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
 
-export type ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItem =
-    | ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem
-    | ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
+export interface ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItem {
+  itemType: string;
+  string?: string;
+  resourcePreview?: ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
+}
 export const ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.String.pipe(T.Body("item_type")),
+      string: S.optional(S.String),
+      resourcePreview: S.optional(
+        ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItem",
+  }) as any as S.Schema<ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItem>;
 
 export type ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListList =
   ReadonlyArray<ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListItem>;
@@ -12597,22 +12978,37 @@ export const ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItem 
       "ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItem",
   }) as any as S.Schema<ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItem>;
 
-export type ResourcesListResultItemSectionsItemHiddenItemsItemValue =
-  | ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnStringItem
-  | ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnYamlItem
-  | ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnYamlDiffItem
-  | ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItem
-  | ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItem;
+export interface ResourcesListResultItemSectionsItemHiddenItemsItemValue {
+  itemType: string;
+  string?: string;
+  yaml?: string;
+  yamlDiff?: ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff;
+  resourcePreview?: ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview;
+  list?: ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListList;
+}
 export const ResourcesListResultItemSectionsItemHiddenItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.String.pipe(T.Body("item_type")),
+      string: S.optional(S.String),
+      yaml: S.optional(S.String),
+      yamlDiff: S.optional(
+        ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff.pipe(
+          T.Body("yaml_diff"),
+        ),
+      ),
+      resourcePreview: S.optional(
+        ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+      list: S.optional(
+        ResourcesListResultItemSectionsItemHiddenItemsItemValueMcnListItemListList,
+      ),
+    }),
+  ).annotate({
+    identifier: "ResourcesListResultItemSectionsItemHiddenItemsItemValue",
+  }) as any as S.Schema<ResourcesListResultItemSectionsItemHiddenItemsItemValue>;
 
 export interface ResourcesListResultItemSectionsItemHiddenItemsItem {
   helpText?: string;
@@ -12949,16 +13345,26 @@ export const ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItem
       "ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
   }) as any as S.Schema<ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
 
-export type ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItem =
-    | ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem
-    | ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
+export interface ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItem {
+  itemType: string;
+  string?: string;
+  resourcePreview?: ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
+}
 export const ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.String.pipe(T.Body("item_type")),
+      string: S.optional(S.String),
+      resourcePreview: S.optional(
+        ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItem",
+  }) as any as S.Schema<ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItem>;
 
 export type ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListList =
   ReadonlyArray<ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListItem>;
@@ -12982,22 +13388,37 @@ export const ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItem
       "ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItem",
   }) as any as S.Schema<ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItem>;
 
-export type ResourcesListResultItemSectionsItemVisibleItemsItemValue =
-  | ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnStringItem
-  | ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnYamlItem
-  | ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnYamlDiffItem
-  | ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItem
-  | ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItem;
+export interface ResourcesListResultItemSectionsItemVisibleItemsItemValue {
+  itemType: string;
+  string?: string;
+  yaml?: string;
+  yamlDiff?: ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff;
+  resourcePreview?: ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview;
+  list?: ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListList;
+}
 export const ResourcesListResultItemSectionsItemVisibleItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.String.pipe(T.Body("item_type")),
+      string: S.optional(S.String),
+      yaml: S.optional(S.String),
+      yamlDiff: S.optional(
+        ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff.pipe(
+          T.Body("yaml_diff"),
+        ),
+      ),
+      resourcePreview: S.optional(
+        ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+      list: S.optional(
+        ResourcesListResultItemSectionsItemVisibleItemsItemValueMcnListItemListList,
+      ),
+    }),
+  ).annotate({
+    identifier: "ResourcesListResultItemSectionsItemVisibleItemsItemValue",
+  }) as any as S.Schema<ResourcesListResultItemSectionsItemVisibleItemsItemValue>;
 
 export interface ResourcesListResultItemSectionsItemVisibleItemsItem {
   helpText?: string;
@@ -14496,16 +14917,26 @@ export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsIt
       "OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
   }) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
 
-export type OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-    | OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem
-    | OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
+export interface OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem {
+  itemType: string;
+  string?: string;
+  resourcePreview?: OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
+}
 export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.String.pipe(T.Body("item_type")),
+      string: S.optional(S.String),
+      resourcePreview: S.optional(
+        OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem",
+  }) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
 
 export type OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList =
   ReadonlyArray<OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
@@ -14529,22 +14960,38 @@ export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsIt
       "OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem",
   }) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem>;
 
-export type OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue =
-    | OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-    | OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
-    | OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
-    | OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem
-    | OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem;
+export interface OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue {
+  itemType: string;
+  string?: string;
+  yaml?: string;
+  yamlDiff?: OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff;
+  resourcePreview?: OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview;
+  list?: OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList;
+}
 export const OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.String.pipe(T.Body("item_type")),
+      string: S.optional(S.String),
+      yaml: S.optional(S.String),
+      yamlDiff: S.optional(
+        OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff.pipe(
+          T.Body("yaml_diff"),
+        ),
+      ),
+      resourcePreview: S.optional(
+        OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+      list: S.optional(
+        OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue",
+  }) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue>;
 
 export interface OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItem {
   helpText?: string;
@@ -14882,16 +15329,26 @@ export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsI
       "OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
   }) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
 
-export type OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-    | OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem
-    | OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
+export interface OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem {
+  itemType: string;
+  string?: string;
+  resourcePreview?: OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
+}
 export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.String.pipe(T.Body("item_type")),
+      string: S.optional(S.String),
+      resourcePreview: S.optional(
+        OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem",
+  }) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
 
 export type OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList =
   ReadonlyArray<OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
@@ -14915,22 +15372,38 @@ export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsI
       "OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem",
   }) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem>;
 
-export type OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue =
-    | OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnStringItem
-    | OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlItem
-    | OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem
-    | OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem
-    | OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem;
+export interface OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue {
+  itemType: string;
+  string?: string;
+  yaml?: string;
+  yamlDiff?: OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff;
+  resourcePreview?: OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview;
+  list?: OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList;
+}
 export const OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.String.pipe(T.Body("item_type")),
+      string: S.optional(S.String),
+      yaml: S.optional(S.String),
+      yamlDiff: S.optional(
+        OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff.pipe(
+          T.Body("yaml_diff"),
+        ),
+      ),
+      resourcePreview: S.optional(
+        OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+      list: S.optional(
+        OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue",
+  }) as any as S.Schema<OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue>;
 
 export interface OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItem {
   helpText?: string;
@@ -15866,16 +16339,26 @@ export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcn
       "OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
   }) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
 
-export type OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-    | OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem
-    | OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
+export interface OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem {
+  itemType: string;
+  string?: string;
+  resourcePreview?: OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
+}
 export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.String.pipe(T.Body("item_type")),
+      string: S.optional(S.String),
+      resourcePreview: S.optional(
+        OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem",
+  }) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
 
 export type OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList =
   ReadonlyArray<OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
@@ -15899,22 +16382,38 @@ export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcn
       "OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem",
   }) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem>;
 
-export type OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValue =
-  | OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnStringItem
-  | OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlItem
-  | OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
-  | OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem
-  | OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem;
+export interface OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValue {
+  itemType: string;
+  string?: string;
+  yaml?: string;
+  yamlDiff?: OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff;
+  resourcePreview?: OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview;
+  list?: OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList;
+}
 export const OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.String.pipe(T.Body("item_type")),
+      string: S.optional(S.String),
+      yaml: S.optional(S.String),
+      yamlDiff: S.optional(
+        OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff.pipe(
+          T.Body("yaml_diff"),
+        ),
+      ),
+      resourcePreview: S.optional(
+        OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+      list: S.optional(
+        OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValue",
+  }) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItemValue>;
 
 export interface OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItem {
   helpText?: string;
@@ -16251,16 +16750,26 @@ export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMc
       "OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
   }) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
 
-export type OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-    | OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem
-    | OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
+export interface OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem {
+  itemType: string;
+  string?: string;
+  resourcePreview?: OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
+}
 export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.String.pipe(T.Body("item_type")),
+      string: S.optional(S.String),
+      resourcePreview: S.optional(
+        OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem",
+  }) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
 
 export type OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList =
   ReadonlyArray<OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
@@ -16284,22 +16793,38 @@ export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMc
       "OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem",
   }) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem>;
 
-export type OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValue =
-  | OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnStringItem
-  | OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlItem
-  | OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem
-  | OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem
-  | OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem;
+export interface OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValue {
+  itemType: string;
+  string?: string;
+  yaml?: string;
+  yamlDiff?: OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff;
+  resourcePreview?: OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview;
+  list?: OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList;
+}
 export const OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.String.pipe(T.Body("item_type")),
+      string: S.optional(S.String),
+      yaml: S.optional(S.String),
+      yamlDiff: S.optional(
+        OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff.pipe(
+          T.Body("yaml_diff"),
+        ),
+      ),
+      resourcePreview: S.optional(
+        OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+      list: S.optional(
+        OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValue",
+  }) as any as S.Schema<OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItemValue>;
 
 export interface OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItem {
   helpText?: string;
@@ -18090,16 +18615,26 @@ export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItems
       "OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
   }) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
 
-export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-    | OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem
-    | OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
+export interface OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem {
+  itemType: string;
+  string?: string;
+  resourcePreview?: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
+}
 export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.String.pipe(T.Body("item_type")),
+      string: S.optional(S.String),
+      resourcePreview: S.optional(
+        OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem",
+  }) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
 
 export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList =
   ReadonlyArray<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
@@ -18123,22 +18658,38 @@ export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItems
       "OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem",
   }) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem>;
 
-export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue =
-    | OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnStringItem
-    | OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlItem
-    | OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
-    | OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem
-    | OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItem;
+export interface OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue {
+  itemType: string;
+  string?: string;
+  yaml?: string;
+  yamlDiff?: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff;
+  resourcePreview?: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview;
+  list?: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList;
+}
 export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.String.pipe(T.Body("item_type")),
+      string: S.optional(S.String),
+      yaml: S.optional(S.String),
+      yamlDiff: S.optional(
+        OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff.pipe(
+          T.Body("yaml_diff"),
+        ),
+      ),
+      resourcePreview: S.optional(
+        OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+      list: S.optional(
+        OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValueMcnListItemListList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue",
+  }) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItemValue>;
 
 export interface OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItem {
   helpText?: string;
@@ -18476,16 +19027,26 @@ export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItem
       "OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
   }) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
 
-export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-    | OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem
-    | OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
+export interface OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem {
+  itemType: string;
+  string?: string;
+  resourcePreview?: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
+}
 export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.String.pipe(T.Body("item_type")),
+      string: S.optional(S.String),
+      resourcePreview: S.optional(
+        OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem",
+  }) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
 
 export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList =
   ReadonlyArray<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
@@ -18509,22 +19070,38 @@ export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItem
       "OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem",
   }) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem>;
 
-export type OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue =
-    | OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnStringItem
-    | OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlItem
-    | OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem
-    | OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem
-    | OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItem;
+export interface OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue {
+  itemType: string;
+  string?: string;
+  yaml?: string;
+  yamlDiff?: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff;
+  resourcePreview?: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview;
+  list?: OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList;
+}
 export const OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.String.pipe(T.Body("item_type")),
+      string: S.optional(S.String),
+      yaml: S.optional(S.String),
+      yamlDiff: S.optional(
+        OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff.pipe(
+          T.Body("yaml_diff"),
+        ),
+      ),
+      resourcePreview: S.optional(
+        OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+      list: S.optional(
+        OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValueMcnListItemListList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue",
+  }) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItemValue>;
 
 export interface OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItem {
   helpText?: string;
@@ -19466,16 +20043,26 @@ export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueM
       "OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
   }) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
 
-export type OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-    | OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnStringItem
-    | OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
+export interface OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem {
+  itemType: string;
+  string?: string;
+  resourcePreview?: OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
+}
 export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.String.pipe(T.Body("item_type")),
+      string: S.optional(S.String),
+      resourcePreview: S.optional(
+        OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem",
+  }) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
 
 export type OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList =
   ReadonlyArray<OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListItem>;
@@ -19499,22 +20086,38 @@ export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueM
       "OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem",
   }) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem>;
 
-export type OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValue =
-    | OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnStringItem
-    | OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlItem
-    | OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItem
-    | OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItem
-    | OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItem;
+export interface OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValue {
+  itemType: string;
+  string?: string;
+  yaml?: string;
+  yamlDiff?: OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff;
+  resourcePreview?: OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview;
+  list?: OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList;
+}
 export const OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.String.pipe(T.Body("item_type")),
+      string: S.optional(S.String),
+      yaml: S.optional(S.String),
+      yamlDiff: S.optional(
+        OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnYamlDiffItemYamlDiff.pipe(
+          T.Body("yaml_diff"),
+        ),
+      ),
+      resourcePreview: S.optional(
+        OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+      list: S.optional(
+        OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValueMcnListItemListList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValue",
+  }) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItemValue>;
 
 export interface OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItem {
   helpText?: string;
@@ -19851,16 +20454,26 @@ export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue
       "OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem",
   }) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem>;
 
-export type OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-    | OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnStringItem
-    | OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItem;
+export interface OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem {
+  itemType: string;
+  string?: string;
+  resourcePreview?: OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview;
+}
 export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "resourcePreview"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.String.pipe(T.Body("item_type")),
+      string: S.optional(S.String),
+      resourcePreview: S.optional(
+        OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItemMcnResourcePreviewItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem",
+  }) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
 
 export type OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList =
   ReadonlyArray<OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListItem>;
@@ -19884,22 +20497,38 @@ export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue
       "OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem",
   }) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem>;
 
-export type OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue =
-    | OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnStringItem
-    | OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlItem
-    | OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItem
-    | OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItem
-    | OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItem;
+export interface OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue {
+  itemType: string;
+  string?: string;
+  yaml?: string;
+  yamlDiff?: OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff;
+  resourcePreview?: OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview;
+  list?: OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList;
+}
 export const OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["itemType", "string"],
-      ["itemType", "yaml"],
-      ["itemType", "yamlDiff"],
-      ["itemType", "resourcePreview"],
-      ["itemType", "list"],
-    ]),
-  );
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemType: S.String.pipe(T.Body("item_type")),
+      string: S.optional(S.String),
+      yaml: S.optional(S.String),
+      yamlDiff: S.optional(
+        OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnYamlDiffItemYamlDiff.pipe(
+          T.Body("yaml_diff"),
+        ),
+      ),
+      resourcePreview: S.optional(
+        OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnResourcePreviewItemResourcePreview.pipe(
+          T.Body("resource_preview"),
+        ),
+      ),
+      list: S.optional(
+        OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValueMcnListItemListList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue",
+  }) as any as S.Schema<OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItemValue>;
 
 export interface OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItem {
   helpText?: string;

@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 /** Request to check whether image upgrade will succeed. */
@@ -66,10 +66,12 @@ export interface CheckUpgradeRequest {
   imageVersion?: string;
 }
 export const CheckUpgradeRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "imageVersion": S.optional(S.String),
-}),
-).annotate({ identifier: "CheckUpgradeRequest" }) as any as S.Schema<CheckUpgradeRequest>;
+  S.Struct({
+    imageVersion: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CheckUpgradeRequest",
+}) as any as S.Schema<CheckUpgradeRequest>;
 
 export interface CheckUpgradeProjectsLocationsEnvironmentsRequest {
   /** Required. The resource name of the environment to check upgrade for, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
@@ -77,18 +79,32 @@ export interface CheckUpgradeProjectsLocationsEnvironmentsRequest {
   /** Request body */
   body?: CheckUpgradeRequest;
 }
-export const CheckUpgradeProjectsLocationsEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "environment": S.String.pipe(T.Label()),
-  "body": S.optional(CheckUpgradeRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+environment}:checkUpgrade","baseUrl":"https://composer.googleapis.com/"})),
-).annotate({ identifier: "CheckUpgradeProjectsLocationsEnvironmentsRequest" }) as any as S.Schema<CheckUpgradeProjectsLocationsEnvironmentsRequest>;
+export const CheckUpgradeProjectsLocationsEnvironmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      environment: S.String.pipe(T.Label()),
+      body: S.optional(CheckUpgradeRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+environment}:checkUpgrade",
+        baseUrl: "https://composer.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CheckUpgradeProjectsLocationsEnvironmentsRequest",
+  }) as any as S.Schema<CheckUpgradeProjectsLocationsEnvironmentsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -100,11 +116,11 @@ export interface Status {
   details?: DocumentMapList;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(S.Number),
-  "message": S.optional(S.String),
-  "details": S.optional(DocumentMapList),
-}),
+  S.Struct({
+    code: S.optional(S.Number),
+    message: S.optional(S.String),
+    details: S.optional(DocumentMapList),
+  }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -121,19 +137,28 @@ export interface Operation {
   response?: DocumentMap;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "metadata": S.optional(DocumentMap),
-  "done": S.optional(S.Boolean),
-  "error": S.optional(Status),
-  "response": S.optional(DocumentMap),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    metadata: S.optional(DocumentMap),
+    done: S.optional(S.Boolean),
+    error: S.optional(Status),
+    response: S.optional(DocumentMap),
+  }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
-export type EnvironmentStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "RUNNING" | "UPDATING" | "DELETING" | "ERROR";
+export type EnvironmentStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "CREATING"
+  | "RUNNING"
+  | "UPDATING"
+  | "DELETING"
+  | "ERROR";
 export const EnvironmentStateEnum = /*@__PURE__*/ S.String;
 
 /** The configuration for data storage in the environment. */
@@ -142,9 +167,9 @@ export interface StorageConfig {
   bucket?: string;
 }
 export const StorageConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "bucket": S.optional(S.String),
-}),
+  S.Struct({
+    bucket: S.optional(S.String),
+  }),
 ).annotate({ identifier: "StorageConfig" }) as any as S.Schema<StorageConfig>;
 
 /** The configuration for scheduled snapshot creation mechanism. */
@@ -159,13 +184,15 @@ export interface ScheduledSnapshotsConfig {
   enabled?: boolean;
 }
 export const ScheduledSnapshotsConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "snapshotLocation": S.optional(S.String),
-  "timeZone": S.optional(S.String),
-  "snapshotCreationSchedule": S.optional(S.String),
-  "enabled": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "ScheduledSnapshotsConfig" }) as any as S.Schema<ScheduledSnapshotsConfig>;
+  S.Struct({
+    snapshotLocation: S.optional(S.String),
+    timeZone: S.optional(S.String),
+    snapshotCreationSchedule: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ScheduledSnapshotsConfig",
+}) as any as S.Schema<ScheduledSnapshotsConfig>;
 
 /** The Recovery settings of an environment. */
 export interface RecoveryConfig {
@@ -173,12 +200,15 @@ export interface RecoveryConfig {
   scheduledSnapshotsConfig?: ScheduledSnapshotsConfig;
 }
 export const RecoveryConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "scheduledSnapshotsConfig": S.optional(ScheduledSnapshotsConfig),
-}),
+  S.Struct({
+    scheduledSnapshotsConfig: S.optional(ScheduledSnapshotsConfig),
+  }),
 ).annotate({ identifier: "RecoveryConfig" }) as any as S.Schema<RecoveryConfig>;
 
-export type TaskLogsRetentionConfigStorageModeEnum = "TASK_LOGS_STORAGE_MODE_UNSPECIFIED" | "CLOUD_LOGGING_AND_CLOUD_STORAGE" | "CLOUD_LOGGING_ONLY";
+export type TaskLogsRetentionConfigStorageModeEnum =
+  | "TASK_LOGS_STORAGE_MODE_UNSPECIFIED"
+  | "CLOUD_LOGGING_AND_CLOUD_STORAGE"
+  | "CLOUD_LOGGING_ONLY";
 export const TaskLogsRetentionConfigStorageModeEnum = /*@__PURE__*/ S.String;
 
 /** The configuration setting for Task Logs. */
@@ -187,13 +217,19 @@ export interface TaskLogsRetentionConfig {
   storageMode?: TaskLogsRetentionConfigStorageModeEnum;
 }
 export const TaskLogsRetentionConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "storageMode": S.optional(TaskLogsRetentionConfigStorageModeEnum),
-}),
-).annotate({ identifier: "TaskLogsRetentionConfig" }) as any as S.Schema<TaskLogsRetentionConfig>;
+  S.Struct({
+    storageMode: S.optional(TaskLogsRetentionConfigStorageModeEnum),
+  }),
+).annotate({
+  identifier: "TaskLogsRetentionConfig",
+}) as any as S.Schema<TaskLogsRetentionConfig>;
 
-export type AirflowMetadataRetentionPolicyConfigRetentionModeEnum = "RETENTION_MODE_UNSPECIFIED" | "RETENTION_MODE_ENABLED" | "RETENTION_MODE_DISABLED";
-export const AirflowMetadataRetentionPolicyConfigRetentionModeEnum = /*@__PURE__*/ S.String;
+export type AirflowMetadataRetentionPolicyConfigRetentionModeEnum =
+  | "RETENTION_MODE_UNSPECIFIED"
+  | "RETENTION_MODE_ENABLED"
+  | "RETENTION_MODE_DISABLED";
+export const AirflowMetadataRetentionPolicyConfigRetentionModeEnum =
+  /*@__PURE__*/ S.String;
 
 /** The policy for airflow metadata database retention. */
 export interface AirflowMetadataRetentionPolicyConfig {
@@ -202,12 +238,17 @@ export interface AirflowMetadataRetentionPolicyConfig {
   /** Optional. How many days data should be retained for. */
   retentionDays?: number;
 }
-export const AirflowMetadataRetentionPolicyConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "retentionMode": S.optional(AirflowMetadataRetentionPolicyConfigRetentionModeEnum),
-  "retentionDays": S.optional(S.Number),
-}),
-).annotate({ identifier: "AirflowMetadataRetentionPolicyConfig" }) as any as S.Schema<AirflowMetadataRetentionPolicyConfig>;
+export const AirflowMetadataRetentionPolicyConfig = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      retentionMode: S.optional(
+        AirflowMetadataRetentionPolicyConfigRetentionModeEnum,
+      ),
+      retentionDays: S.optional(S.Number),
+    }),
+).annotate({
+  identifier: "AirflowMetadataRetentionPolicyConfig",
+}) as any as S.Schema<AirflowMetadataRetentionPolicyConfig>;
 
 /** The configuration setting for Airflow database data retention mechanism. */
 export interface DataRetentionConfig {
@@ -217,11 +258,15 @@ export interface DataRetentionConfig {
   airflowMetadataRetentionConfig?: AirflowMetadataRetentionPolicyConfig;
 }
 export const DataRetentionConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "taskLogsRetentionConfig": S.optional(TaskLogsRetentionConfig),
-  "airflowMetadataRetentionConfig": S.optional(AirflowMetadataRetentionPolicyConfig),
-}),
-).annotate({ identifier: "DataRetentionConfig" }) as any as S.Schema<DataRetentionConfig>;
+  S.Struct({
+    taskLogsRetentionConfig: S.optional(TaskLogsRetentionConfig),
+    airflowMetadataRetentionConfig: S.optional(
+      AirflowMetadataRetentionPolicyConfig,
+    ),
+  }),
+).annotate({
+  identifier: "DataRetentionConfig",
+}) as any as S.Schema<DataRetentionConfig>;
 
 /** The encryption options for the Cloud Composer environment and its dependencies.Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. */
 export interface EncryptionConfig {
@@ -229,15 +274,24 @@ export interface EncryptionConfig {
   kmsKeyName?: string;
 }
 export const EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "kmsKeyName": S.optional(S.String),
-}),
-).annotate({ identifier: "EncryptionConfig" }) as any as S.Schema<EncryptionConfig>;
+  S.Struct({
+    kmsKeyName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EncryptionConfig",
+}) as any as S.Schema<EncryptionConfig>;
 
-export type PrivateEnvironmentConfigNetworkingTypeEnum = "NETWORKING_TYPE_UNSPECIFIED" | "PRIVATE" | "PUBLIC";
-export const PrivateEnvironmentConfigNetworkingTypeEnum = /*@__PURE__*/ S.String;
+export type PrivateEnvironmentConfigNetworkingTypeEnum =
+  | "NETWORKING_TYPE_UNSPECIFIED"
+  | "PRIVATE"
+  | "PUBLIC";
+export const PrivateEnvironmentConfigNetworkingTypeEnum =
+  /*@__PURE__*/ S.String;
 
-export type NetworkingConfigConnectionTypeEnum = "CONNECTION_TYPE_UNSPECIFIED" | "VPC_PEERING" | "PRIVATE_SERVICE_CONNECT";
+export type NetworkingConfigConnectionTypeEnum =
+  | "CONNECTION_TYPE_UNSPECIFIED"
+  | "VPC_PEERING"
+  | "PRIVATE_SERVICE_CONNECT";
 export const NetworkingConfigConnectionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration options for networking connections in the Composer 2 environment. */
@@ -246,10 +300,12 @@ export interface NetworkingConfig {
   connectionType?: NetworkingConfigConnectionTypeEnum;
 }
 export const NetworkingConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "connectionType": S.optional(NetworkingConfigConnectionTypeEnum),
-}),
-).annotate({ identifier: "NetworkingConfig" }) as any as S.Schema<NetworkingConfig>;
+  S.Struct({
+    connectionType: S.optional(NetworkingConfigConnectionTypeEnum),
+  }),
+).annotate({
+  identifier: "NetworkingConfig",
+}) as any as S.Schema<NetworkingConfig>;
 
 /** Configuration options for the private GKE cluster in a Cloud Composer environment. */
 export interface PrivateClusterConfig {
@@ -261,12 +317,14 @@ export interface PrivateClusterConfig {
   masterIpv4ReservedRange?: string;
 }
 export const PrivateClusterConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "masterIpv4CidrBlock": S.optional(S.String),
-  "enablePrivateEndpoint": S.optional(S.Boolean),
-  "masterIpv4ReservedRange": S.optional(S.String),
-}),
-).annotate({ identifier: "PrivateClusterConfig" }) as any as S.Schema<PrivateClusterConfig>;
+  S.Struct({
+    masterIpv4CidrBlock: S.optional(S.String),
+    enablePrivateEndpoint: S.optional(S.Boolean),
+    masterIpv4ReservedRange: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PrivateClusterConfig",
+}) as any as S.Schema<PrivateClusterConfig>;
 
 /** The configuration information for configuring a Private IP Cloud Composer environment. */
 export interface PrivateEnvironmentConfig {
@@ -296,21 +354,23 @@ export interface PrivateEnvironmentConfig {
   privateClusterConfig?: PrivateClusterConfig;
 }
 export const PrivateEnvironmentConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "cloudSqlIpv4CidrBlock": S.optional(S.String),
-  "webServerIpv4CidrBlock": S.optional(S.String),
-  "enablePrivateEnvironment": S.optional(S.Boolean),
-  "networkingType": S.optional(PrivateEnvironmentConfigNetworkingTypeEnum),
-  "webServerIpv4ReservedRange": S.optional(S.String),
-  "networkingConfig": S.optional(NetworkingConfig),
-  "cloudComposerNetworkIpv4ReservedRange": S.optional(S.String),
-  "cloudComposerConnectionSubnetwork": S.optional(S.String),
-  "cloudComposerNetworkIpv4CidrBlock": S.optional(S.String),
-  "enablePrivatelyUsedPublicIps": S.optional(S.Boolean),
-  "enablePrivateBuildsOnly": S.optional(S.Boolean),
-  "privateClusterConfig": S.optional(PrivateClusterConfig),
-}),
-).annotate({ identifier: "PrivateEnvironmentConfig" }) as any as S.Schema<PrivateEnvironmentConfig>;
+  S.Struct({
+    cloudSqlIpv4CidrBlock: S.optional(S.String),
+    webServerIpv4CidrBlock: S.optional(S.String),
+    enablePrivateEnvironment: S.optional(S.Boolean),
+    networkingType: S.optional(PrivateEnvironmentConfigNetworkingTypeEnum),
+    webServerIpv4ReservedRange: S.optional(S.String),
+    networkingConfig: S.optional(NetworkingConfig),
+    cloudComposerNetworkIpv4ReservedRange: S.optional(S.String),
+    cloudComposerConnectionSubnetwork: S.optional(S.String),
+    cloudComposerNetworkIpv4CidrBlock: S.optional(S.String),
+    enablePrivatelyUsedPublicIps: S.optional(S.Boolean),
+    enablePrivateBuildsOnly: S.optional(S.Boolean),
+    privateClusterConfig: S.optional(PrivateClusterConfig),
+  }),
+).annotate({
+  identifier: "PrivateEnvironmentConfig",
+}) as any as S.Schema<PrivateEnvironmentConfig>;
 
 /** The configuration settings for Cloud Composer maintenance window. The following example: ``` { "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" } ``` would define a maintenance window between 01 and 07 hours UTC during each Tuesday and Wednesday. */
 export interface MaintenanceWindow {
@@ -322,14 +382,18 @@ export interface MaintenanceWindow {
   recurrence?: string;
 }
 export const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "startTime": S.optional(S.String),
-  "endTime": S.optional(S.String),
-  "recurrence": S.optional(S.String),
-}),
-).annotate({ identifier: "MaintenanceWindow" }) as any as S.Schema<MaintenanceWindow>;
+  S.Struct({
+    startTime: S.optional(S.String),
+    endTime: S.optional(S.String),
+    recurrence: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MaintenanceWindow",
+}) as any as S.Schema<MaintenanceWindow>;
 
-export type EnvironmentConfigResilienceModeEnum = "RESILIENCE_MODE_UNSPECIFIED" | "HIGH_RESILIENCE";
+export type EnvironmentConfigResilienceModeEnum =
+  | "RESILIENCE_MODE_UNSPECIFIED"
+  | "HIGH_RESILIENCE";
 export const EnvironmentConfigResilienceModeEnum = /*@__PURE__*/ S.String;
 
 /** The configuration settings for the Airflow web server App Engine instance. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.* */
@@ -338,10 +402,12 @@ export interface WebServerConfig {
   machineType?: string;
 }
 export const WebServerConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "machineType": S.optional(S.String),
-}),
-).annotate({ identifier: "WebServerConfig" }) as any as S.Schema<WebServerConfig>;
+  S.Struct({
+    machineType: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "WebServerConfig",
+}) as any as S.Schema<WebServerConfig>;
 
 /** The configuration of Cloud SQL instance that is used by the Apache Airflow software. */
 export interface DatabaseConfig {
@@ -351,10 +417,10 @@ export interface DatabaseConfig {
   zone?: string;
 }
 export const DatabaseConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "machineType": S.optional(S.String),
-  "zone": S.optional(S.String),
-}),
+  S.Struct({
+    machineType: S.optional(S.String),
+    zone: S.optional(S.String),
+  }),
 ).annotate({ identifier: "DatabaseConfig" }) as any as S.Schema<DatabaseConfig>;
 
 /** Configuration for resources used by Airflow workers. */
@@ -371,13 +437,13 @@ export interface WorkerResource {
   maxCount?: number;
 }
 export const WorkerResource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "memoryGb": S.optional(S.Number),
-  "storageGb": S.optional(S.Number),
-  "cpu": S.optional(S.Number),
-  "minCount": S.optional(S.Number),
-  "maxCount": S.optional(S.Number),
-}),
+  S.Struct({
+    memoryGb: S.optional(S.Number),
+    storageGb: S.optional(S.Number),
+    cpu: S.optional(S.Number),
+    minCount: S.optional(S.Number),
+    maxCount: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "WorkerResource" }) as any as S.Schema<WorkerResource>;
 
 /** Configuration for resources used by Airflow DAG processors. This field is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer. */
@@ -392,13 +458,15 @@ export interface DagProcessorResource {
   cpu?: number;
 }
 export const DagProcessorResource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "memoryGb": S.optional(S.Number),
-  "storageGb": S.optional(S.Number),
-  "count": S.optional(S.Number),
-  "cpu": S.optional(S.Number),
-}),
-).annotate({ identifier: "DagProcessorResource" }) as any as S.Schema<DagProcessorResource>;
+  S.Struct({
+    memoryGb: S.optional(S.Number),
+    storageGb: S.optional(S.Number),
+    count: S.optional(S.Number),
+    cpu: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "DagProcessorResource",
+}) as any as S.Schema<DagProcessorResource>;
 
 /** Configuration for resources used by Airflow web server. */
 export interface WebServerResource {
@@ -410,12 +478,14 @@ export interface WebServerResource {
   cpu?: number;
 }
 export const WebServerResource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "memoryGb": S.optional(S.Number),
-  "storageGb": S.optional(S.Number),
-  "cpu": S.optional(S.Number),
-}),
-).annotate({ identifier: "WebServerResource" }) as any as S.Schema<WebServerResource>;
+  S.Struct({
+    memoryGb: S.optional(S.Number),
+    storageGb: S.optional(S.Number),
+    cpu: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "WebServerResource",
+}) as any as S.Schema<WebServerResource>;
 
 /** Configuration for resources used by Airflow triggerers. */
 export interface TriggererResource {
@@ -427,12 +497,14 @@ export interface TriggererResource {
   memoryGb?: number;
 }
 export const TriggererResource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "cpu": S.optional(S.Number),
-  "count": S.optional(S.Number),
-  "memoryGb": S.optional(S.Number),
-}),
-).annotate({ identifier: "TriggererResource" }) as any as S.Schema<TriggererResource>;
+  S.Struct({
+    cpu: S.optional(S.Number),
+    count: S.optional(S.Number),
+    memoryGb: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "TriggererResource",
+}) as any as S.Schema<TriggererResource>;
 
 /** Configuration for resources used by Airflow schedulers. */
 export interface SchedulerResource {
@@ -446,13 +518,15 @@ export interface SchedulerResource {
   count?: number;
 }
 export const SchedulerResource = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "cpu": S.optional(S.Number),
-  "memoryGb": S.optional(S.Number),
-  "storageGb": S.optional(S.Number),
-  "count": S.optional(S.Number),
-}),
-).annotate({ identifier: "SchedulerResource" }) as any as S.Schema<SchedulerResource>;
+  S.Struct({
+    cpu: S.optional(S.Number),
+    memoryGb: S.optional(S.Number),
+    storageGb: S.optional(S.Number),
+    count: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "SchedulerResource",
+}) as any as S.Schema<SchedulerResource>;
 
 /** The Kubernetes workloads configuration for GKE cluster associated with the Cloud Composer environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer. */
 export interface WorkloadsConfig {
@@ -468,17 +542,21 @@ export interface WorkloadsConfig {
   scheduler?: SchedulerResource;
 }
 export const WorkloadsConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "worker": S.optional(WorkerResource),
-  "dagProcessor": S.optional(DagProcessorResource),
-  "webServer": S.optional(WebServerResource),
-  "triggerer": S.optional(TriggererResource),
-  "scheduler": S.optional(SchedulerResource),
-}),
-).annotate({ identifier: "WorkloadsConfig" }) as any as S.Schema<WorkloadsConfig>;
+  S.Struct({
+    worker: S.optional(WorkerResource),
+    dagProcessor: S.optional(DagProcessorResource),
+    webServer: S.optional(WebServerResource),
+    triggerer: S.optional(TriggererResource),
+    scheduler: S.optional(SchedulerResource),
+  }),
+).annotate({
+  identifier: "WorkloadsConfig",
+}) as any as S.Schema<WorkloadsConfig>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** Configuration for controlling how IPs are allocated in the GKE cluster running the Apache Airflow software. */
 export interface IPAllocationPolicy {
@@ -494,14 +572,16 @@ export interface IPAllocationPolicy {
   servicesIpv4CidrBlock?: string;
 }
 export const IPAllocationPolicy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "servicesSecondaryRangeName": S.optional(S.String),
-  "useIpAliases": S.optional(S.Boolean),
-  "clusterIpv4CidrBlock": S.optional(S.String),
-  "clusterSecondaryRangeName": S.optional(S.String),
-  "servicesIpv4CidrBlock": S.optional(S.String),
-}),
-).annotate({ identifier: "IPAllocationPolicy" }) as any as S.Schema<IPAllocationPolicy>;
+  S.Struct({
+    servicesSecondaryRangeName: S.optional(S.String),
+    useIpAliases: S.optional(S.Boolean),
+    clusterIpv4CidrBlock: S.optional(S.String),
+    clusterSecondaryRangeName: S.optional(S.String),
+    servicesIpv4CidrBlock: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "IPAllocationPolicy",
+}) as any as S.Schema<IPAllocationPolicy>;
 
 /** The configuration information for the Kubernetes Engine nodes running the Apache Airflow software. */
 export interface NodeConfig {
@@ -531,20 +611,20 @@ export interface NodeConfig {
   subnetwork?: string;
 }
 export const NodeConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "diskSizeGb": S.optional(S.Number),
-  "oauthScopes": S.optional(StringList),
-  "tags": S.optional(StringList),
-  "ipAllocationPolicy": S.optional(IPAllocationPolicy),
-  "composerInternalIpv4CidrBlock": S.optional(S.String),
-  "serviceAccount": S.optional(S.String),
-  "location": S.optional(S.String),
-  "machineType": S.optional(S.String),
-  "network": S.optional(S.String),
-  "enableIpMasqAgent": S.optional(S.Boolean),
-  "composerNetworkAttachment": S.optional(S.String),
-  "subnetwork": S.optional(S.String),
-}),
+  S.Struct({
+    diskSizeGb: S.optional(S.Number),
+    oauthScopes: S.optional(StringList),
+    tags: S.optional(StringList),
+    ipAllocationPolicy: S.optional(IPAllocationPolicy),
+    composerInternalIpv4CidrBlock: S.optional(S.String),
+    serviceAccount: S.optional(S.String),
+    location: S.optional(S.String),
+    machineType: S.optional(S.String),
+    network: S.optional(S.String),
+    enableIpMasqAgent: S.optional(S.Boolean),
+    composerNetworkAttachment: S.optional(S.String),
+    subnetwork: S.optional(S.String),
+  }),
 ).annotate({ identifier: "NodeConfig" }) as any as S.Schema<NodeConfig>;
 
 /** Allowed IP range with user-provided description. */
@@ -555,14 +635,16 @@ export interface AllowedIpRange {
   value?: string;
 }
 export const AllowedIpRange = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "description": S.optional(S.String),
-  "value": S.optional(S.String),
-}),
+  S.Struct({
+    description: S.optional(S.String),
+    value: S.optional(S.String),
+  }),
 ).annotate({ identifier: "AllowedIpRange" }) as any as S.Schema<AllowedIpRange>;
 
 export type AllowedIpRangeList = ReadonlyArray<AllowedIpRange>;
-export const AllowedIpRangeList = /*@__PURE__*/ S.Array(AllowedIpRange) as any as S.Schema<AllowedIpRangeList>;
+export const AllowedIpRangeList = /*@__PURE__*/ S.Array(
+  AllowedIpRange,
+) as any as S.Schema<AllowedIpRangeList>;
 
 /** Network-level access control policy for the Airflow web server. */
 export interface WebServerNetworkAccessControl {
@@ -570,16 +652,25 @@ export interface WebServerNetworkAccessControl {
   allowedIpRanges?: AllowedIpRangeList;
 }
 export const WebServerNetworkAccessControl = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "allowedIpRanges": S.optional(AllowedIpRangeList),
-}),
-).annotate({ identifier: "WebServerNetworkAccessControl" }) as any as S.Schema<WebServerNetworkAccessControl>;
+  S.Struct({
+    allowedIpRanges: S.optional(AllowedIpRangeList),
+  }),
+).annotate({
+  identifier: "WebServerNetworkAccessControl",
+}) as any as S.Schema<WebServerNetworkAccessControl>;
 
-export type SoftwareConfigWebServerPluginsModeEnum = "WEB_SERVER_PLUGINS_MODE_UNSPECIFIED" | "PLUGINS_DISABLED" | "PLUGINS_ENABLED";
+export type SoftwareConfigWebServerPluginsModeEnum =
+  | "WEB_SERVER_PLUGINS_MODE_UNSPECIFIED"
+  | "PLUGINS_DISABLED"
+  | "PLUGINS_ENABLED";
 export const SoftwareConfigWebServerPluginsModeEnum = /*@__PURE__*/ S.String;
 
-export type SoftwareConfigAuditLogsReplicationModeEnum = "AUDIT_LOGS_REPLICATION_MODE_UNSPECIFIED" | "AUDIT_LOGS_REPLICATION_DISABLED" | "AUDIT_LOGS_REPLICATION_ENABLED";
-export const SoftwareConfigAuditLogsReplicationModeEnum = /*@__PURE__*/ S.String;
+export type SoftwareConfigAuditLogsReplicationModeEnum =
+  | "AUDIT_LOGS_REPLICATION_MODE_UNSPECIFIED"
+  | "AUDIT_LOGS_REPLICATION_DISABLED"
+  | "AUDIT_LOGS_REPLICATION_ENABLED";
+export const SoftwareConfigAuditLogsReplicationModeEnum =
+  /*@__PURE__*/ S.String;
 
 /** Configuration for Cloud Data Lineage integration. */
 export interface CloudDataLineageIntegration {
@@ -587,10 +678,12 @@ export interface CloudDataLineageIntegration {
   enabled?: boolean;
 }
 export const CloudDataLineageIntegration = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "enabled": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "CloudDataLineageIntegration" }) as any as S.Schema<CloudDataLineageIntegration>;
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "CloudDataLineageIntegration",
+}) as any as S.Schema<CloudDataLineageIntegration>;
 
 /** Specifies the selection and configuration of software inside the environment. */
 export interface SoftwareConfig {
@@ -614,17 +707,19 @@ export interface SoftwareConfig {
   pythonVersion?: string;
 }
 export const SoftwareConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "webServerPluginsMode": S.optional(SoftwareConfigWebServerPluginsModeEnum),
-  "auditLogsReplicationMode": S.optional(SoftwareConfigAuditLogsReplicationModeEnum),
-  "pypiPackages": S.optional(StringMap),
-  "schedulerCount": S.optional(S.Number),
-  "imageVersion": S.optional(S.String),
-  "airflowConfigOverrides": S.optional(StringMap),
-  "cloudDataLineageIntegration": S.optional(CloudDataLineageIntegration),
-  "envVariables": S.optional(StringMap),
-  "pythonVersion": S.optional(S.String),
-}),
+  S.Struct({
+    webServerPluginsMode: S.optional(SoftwareConfigWebServerPluginsModeEnum),
+    auditLogsReplicationMode: S.optional(
+      SoftwareConfigAuditLogsReplicationModeEnum,
+    ),
+    pypiPackages: S.optional(StringMap),
+    schedulerCount: S.optional(S.Number),
+    imageVersion: S.optional(S.String),
+    airflowConfigOverrides: S.optional(StringMap),
+    cloudDataLineageIntegration: S.optional(CloudDataLineageIntegration),
+    envVariables: S.optional(StringMap),
+    pythonVersion: S.optional(S.String),
+  }),
 ).annotate({ identifier: "SoftwareConfig" }) as any as S.Schema<SoftwareConfig>;
 
 /** CIDR block with an optional name. */
@@ -635,14 +730,16 @@ export interface CidrBlock {
   cidrBlock?: string;
 }
 export const CidrBlock = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "displayName": S.optional(S.String),
-  "cidrBlock": S.optional(S.String),
-}),
+  S.Struct({
+    displayName: S.optional(S.String),
+    cidrBlock: S.optional(S.String),
+  }),
 ).annotate({ identifier: "CidrBlock" }) as any as S.Schema<CidrBlock>;
 
 export type CidrBlockList = ReadonlyArray<CidrBlock>;
-export const CidrBlockList = /*@__PURE__*/ S.Array(CidrBlock) as any as S.Schema<CidrBlockList>;
+export const CidrBlockList = /*@__PURE__*/ S.Array(
+  CidrBlock,
+) as any as S.Schema<CidrBlockList>;
 
 /** Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs. */
 export interface MasterAuthorizedNetworksConfig {
@@ -652,13 +749,20 @@ export interface MasterAuthorizedNetworksConfig {
   cidrBlocks?: CidrBlockList;
 }
 export const MasterAuthorizedNetworksConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "enabled": S.optional(S.Boolean),
-  "cidrBlocks": S.optional(CidrBlockList),
-}),
-).annotate({ identifier: "MasterAuthorizedNetworksConfig" }) as any as S.Schema<MasterAuthorizedNetworksConfig>;
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+    cidrBlocks: S.optional(CidrBlockList),
+  }),
+).annotate({
+  identifier: "MasterAuthorizedNetworksConfig",
+}) as any as S.Schema<MasterAuthorizedNetworksConfig>;
 
-export type EnvironmentConfigEnvironmentSizeEnum = "ENVIRONMENT_SIZE_UNSPECIFIED" | "ENVIRONMENT_SIZE_SMALL" | "ENVIRONMENT_SIZE_MEDIUM" | "ENVIRONMENT_SIZE_LARGE" | "ENVIRONMENT_SIZE_EXTRA_LARGE";
+export type EnvironmentConfigEnvironmentSizeEnum =
+  | "ENVIRONMENT_SIZE_UNSPECIFIED"
+  | "ENVIRONMENT_SIZE_SMALL"
+  | "ENVIRONMENT_SIZE_MEDIUM"
+  | "ENVIRONMENT_SIZE_LARGE"
+  | "ENVIRONMENT_SIZE_EXTRA_LARGE";
 export const EnvironmentConfigEnvironmentSizeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration information for an environment. */
@@ -703,28 +807,30 @@ export interface EnvironmentConfig {
   environmentSize?: EnvironmentConfigEnvironmentSizeEnum;
 }
 export const EnvironmentConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "recoveryConfig": S.optional(RecoveryConfig),
-  "dataRetentionConfig": S.optional(DataRetentionConfig),
-  "encryptionConfig": S.optional(EncryptionConfig),
-  "privateEnvironmentConfig": S.optional(PrivateEnvironmentConfig),
-  "dagGcsPrefix": S.optional(S.String),
-  "maintenanceWindow": S.optional(MaintenanceWindow),
-  "resilienceMode": S.optional(EnvironmentConfigResilienceModeEnum),
-  "airflowByoidUri": S.optional(S.String),
-  "webServerConfig": S.optional(WebServerConfig),
-  "databaseConfig": S.optional(DatabaseConfig),
-  "workloadsConfig": S.optional(WorkloadsConfig),
-  "airflowUri": S.optional(S.String),
-  "gkeCluster": S.optional(S.String),
-  "nodeConfig": S.optional(NodeConfig),
-  "webServerNetworkAccessControl": S.optional(WebServerNetworkAccessControl),
-  "softwareConfig": S.optional(SoftwareConfig),
-  "nodeCount": S.optional(S.Number),
-  "masterAuthorizedNetworksConfig": S.optional(MasterAuthorizedNetworksConfig),
-  "environmentSize": S.optional(EnvironmentConfigEnvironmentSizeEnum),
-}),
-).annotate({ identifier: "EnvironmentConfig" }) as any as S.Schema<EnvironmentConfig>;
+  S.Struct({
+    recoveryConfig: S.optional(RecoveryConfig),
+    dataRetentionConfig: S.optional(DataRetentionConfig),
+    encryptionConfig: S.optional(EncryptionConfig),
+    privateEnvironmentConfig: S.optional(PrivateEnvironmentConfig),
+    dagGcsPrefix: S.optional(S.String),
+    maintenanceWindow: S.optional(MaintenanceWindow),
+    resilienceMode: S.optional(EnvironmentConfigResilienceModeEnum),
+    airflowByoidUri: S.optional(S.String),
+    webServerConfig: S.optional(WebServerConfig),
+    databaseConfig: S.optional(DatabaseConfig),
+    workloadsConfig: S.optional(WorkloadsConfig),
+    airflowUri: S.optional(S.String),
+    gkeCluster: S.optional(S.String),
+    nodeConfig: S.optional(NodeConfig),
+    webServerNetworkAccessControl: S.optional(WebServerNetworkAccessControl),
+    softwareConfig: S.optional(SoftwareConfig),
+    nodeCount: S.optional(S.Number),
+    masterAuthorizedNetworksConfig: S.optional(MasterAuthorizedNetworksConfig),
+    environmentSize: S.optional(EnvironmentConfigEnvironmentSizeEnum),
+  }),
+).annotate({
+  identifier: "EnvironmentConfig",
+}) as any as S.Schema<EnvironmentConfig>;
 
 /** An environment for running orchestration tasks. */
 export interface Environment {
@@ -750,18 +856,18 @@ export interface Environment {
   satisfiesPzs?: boolean;
 }
 export const Environment = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "createTime": S.optional(S.String),
-  "labels": S.optional(StringMap),
-  "uuid": S.optional(S.String),
-  "state": S.optional(EnvironmentStateEnum),
-  "storageConfig": S.optional(StorageConfig),
-  "config": S.optional(EnvironmentConfig),
-  "name": S.optional(S.String),
-  "satisfiesPzi": S.optional(S.Boolean),
-  "updateTime": S.optional(S.String),
-  "satisfiesPzs": S.optional(S.Boolean),
-}),
+  S.Struct({
+    createTime: S.optional(S.String),
+    labels: S.optional(StringMap),
+    uuid: S.optional(S.String),
+    state: S.optional(EnvironmentStateEnum),
+    storageConfig: S.optional(StorageConfig),
+    config: S.optional(EnvironmentConfig),
+    name: S.optional(S.String),
+    satisfiesPzi: S.optional(S.Boolean),
+    updateTime: S.optional(S.String),
+    satisfiesPzs: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "Environment" }) as any as S.Schema<Environment>;
 
 export interface CreateProjectsLocationsEnvironmentsRequest {
@@ -770,12 +876,21 @@ export interface CreateProjectsLocationsEnvironmentsRequest {
   /** Request body */
   body?: Environment;
 }
-export const CreateProjectsLocationsEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(Environment.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/environments","baseUrl":"https://composer.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsEnvironmentsRequest" }) as any as S.Schema<CreateProjectsLocationsEnvironmentsRequest>;
+export const CreateProjectsLocationsEnvironmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(Environment.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/environments",
+        baseUrl: "https://composer.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsEnvironmentsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsEnvironmentsRequest>;
 
 /** User workloads ConfigMap used by Airflow tasks that run with Kubernetes executor or KubernetesPodOperator. */
 export interface UserWorkloadsConfigMap {
@@ -785,11 +900,13 @@ export interface UserWorkloadsConfigMap {
   data?: StringMap;
 }
 export const UserWorkloadsConfigMap = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "data": S.optional(StringMap),
-}),
-).annotate({ identifier: "UserWorkloadsConfigMap" }) as any as S.Schema<UserWorkloadsConfigMap>;
+  S.Struct({
+    name: S.optional(S.String),
+    data: S.optional(StringMap),
+  }),
+).annotate({
+  identifier: "UserWorkloadsConfigMap",
+}) as any as S.Schema<UserWorkloadsConfigMap>;
 
 export interface CreateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest {
   /** Required. The environment name to create a ConfigMap for, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
@@ -797,12 +914,22 @@ export interface CreateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsReque
   /** Request body */
   body?: UserWorkloadsConfigMap;
 }
-export const CreateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(UserWorkloadsConfigMap.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/userWorkloadsConfigMaps","baseUrl":"https://composer.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest" }) as any as S.Schema<CreateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest>;
+export const CreateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(UserWorkloadsConfigMap.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/userWorkloadsConfigMaps",
+        baseUrl: "https://composer.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "CreateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest>;
 
 /** User workloads Secret used by Airflow tasks that run with Kubernetes executor or KubernetesPodOperator. */
 export interface UserWorkloadsSecret {
@@ -812,11 +939,13 @@ export interface UserWorkloadsSecret {
   data?: StringMap;
 }
 export const UserWorkloadsSecret = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "data": S.optional(StringMap),
-}),
-).annotate({ identifier: "UserWorkloadsSecret" }) as any as S.Schema<UserWorkloadsSecret>;
+  S.Struct({
+    name: S.optional(S.String),
+    data: S.optional(StringMap),
+  }),
+).annotate({
+  identifier: "UserWorkloadsSecret",
+}) as any as S.Schema<UserWorkloadsSecret>;
 
 export interface CreateProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest {
   /** Required. The environment name to create a Secret for, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
@@ -824,18 +953,30 @@ export interface CreateProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest 
   /** Request body */
   body?: UserWorkloadsSecret;
 }
-export const CreateProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(UserWorkloadsSecret.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/userWorkloadsSecrets","baseUrl":"https://composer.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest" }) as any as S.Schema<CreateProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest>;
+export const CreateProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(UserWorkloadsSecret.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/userWorkloadsSecrets",
+        baseUrl: "https://composer.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "CreateProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest",
+  }) as any as S.Schema<CreateProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest>;
 
 /** Request to trigger database failover (only for highly resilient environments). */
 export interface DatabaseFailoverRequest {}
 export const DatabaseFailoverRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "DatabaseFailoverRequest" }) as any as S.Schema<DatabaseFailoverRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "DatabaseFailoverRequest",
+}) as any as S.Schema<DatabaseFailoverRequest>;
 
 export interface DatabaseFailoverProjectsLocationsEnvironmentsRequest {
   /** Target environment: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
@@ -843,58 +984,105 @@ export interface DatabaseFailoverProjectsLocationsEnvironmentsRequest {
   /** Request body */
   body?: DatabaseFailoverRequest;
 }
-export const DatabaseFailoverProjectsLocationsEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "environment": S.String.pipe(T.Label()),
-  "body": S.optional(DatabaseFailoverRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+environment}:databaseFailover","baseUrl":"https://composer.googleapis.com/"})),
-).annotate({ identifier: "DatabaseFailoverProjectsLocationsEnvironmentsRequest" }) as any as S.Schema<DatabaseFailoverProjectsLocationsEnvironmentsRequest>;
+export const DatabaseFailoverProjectsLocationsEnvironmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      environment: S.String.pipe(T.Label()),
+      body: S.optional(DatabaseFailoverRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+environment}:databaseFailover",
+        baseUrl: "https://composer.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DatabaseFailoverProjectsLocationsEnvironmentsRequest",
+  }) as any as S.Schema<DatabaseFailoverProjectsLocationsEnvironmentsRequest>;
 
 export interface DeleteProjectsLocationsEnvironmentsRequest {
   /** The environment to delete, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
   name: string;
 }
-export const DeleteProjectsLocationsEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://composer.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsEnvironmentsRequest" }) as any as S.Schema<DeleteProjectsLocationsEnvironmentsRequest>;
+export const DeleteProjectsLocationsEnvironmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://composer.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsEnvironmentsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsEnvironmentsRequest>;
 
 export interface DeleteProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest {
   /** Required. The ConfigMap to delete, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsConfigMaps/{userWorkloadsConfigMapId}" */
   name: string;
 }
-export const DeleteProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://composer.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest" }) as any as S.Schema<DeleteProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest>;
+export const DeleteProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://composer.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "DeleteProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 export interface DeleteProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest {
   /** Required. The Secret to delete, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsSecrets/{userWorkloadsSecretId}" */
   name: string;
 }
-export const DeleteProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://composer.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest" }) as any as S.Schema<DeleteProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest>;
+export const DeleteProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://composer.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "DeleteProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest>;
 
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://composer.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsOperationsRequest" }) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+name}",
+        baseUrl: "https://composer.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsOperationsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
 
 /** Execute Airflow Command request. */
 export interface ExecuteAirflowCommandRequest {
@@ -906,12 +1094,14 @@ export interface ExecuteAirflowCommandRequest {
   subcommand?: string;
 }
 export const ExecuteAirflowCommandRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parameters": S.optional(StringList),
-  "command": S.optional(S.String),
-  "subcommand": S.optional(S.String),
-}),
-).annotate({ identifier: "ExecuteAirflowCommandRequest" }) as any as S.Schema<ExecuteAirflowCommandRequest>;
+  S.Struct({
+    parameters: S.optional(StringList),
+    command: S.optional(S.String),
+    subcommand: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ExecuteAirflowCommandRequest",
+}) as any as S.Schema<ExecuteAirflowCommandRequest>;
 
 export interface ExecuteAirflowCommandProjectsLocationsEnvironmentsRequest {
   /** The resource name of the environment in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}". */
@@ -919,12 +1109,21 @@ export interface ExecuteAirflowCommandProjectsLocationsEnvironmentsRequest {
   /** Request body */
   body?: ExecuteAirflowCommandRequest;
 }
-export const ExecuteAirflowCommandProjectsLocationsEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "environment": S.String.pipe(T.Label()),
-  "body": S.optional(ExecuteAirflowCommandRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+environment}:executeAirflowCommand","baseUrl":"https://composer.googleapis.com/"})),
-).annotate({ identifier: "ExecuteAirflowCommandProjectsLocationsEnvironmentsRequest" }) as any as S.Schema<ExecuteAirflowCommandProjectsLocationsEnvironmentsRequest>;
+export const ExecuteAirflowCommandProjectsLocationsEnvironmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      environment: S.String.pipe(T.Label()),
+      body: S.optional(ExecuteAirflowCommandRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+environment}:executeAirflowCommand",
+        baseUrl: "https://composer.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ExecuteAirflowCommandProjectsLocationsEnvironmentsRequest",
+  }) as any as S.Schema<ExecuteAirflowCommandProjectsLocationsEnvironmentsRequest>;
 
 /** Response to ExecuteAirflowCommandRequest. */
 export interface ExecuteAirflowCommandResponse {
@@ -938,23 +1137,34 @@ export interface ExecuteAirflowCommandResponse {
   executionId?: string;
 }
 export const ExecuteAirflowCommandResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "podNamespace": S.optional(S.String),
-  "error": S.optional(S.String),
-  "pod": S.optional(S.String),
-  "executionId": S.optional(S.String),
-}),
-).annotate({ identifier: "ExecuteAirflowCommandResponse" }) as any as S.Schema<ExecuteAirflowCommandResponse>;
+  S.Struct({
+    podNamespace: S.optional(S.String),
+    error: S.optional(S.String),
+    pod: S.optional(S.String),
+    executionId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ExecuteAirflowCommandResponse",
+}) as any as S.Schema<ExecuteAirflowCommandResponse>;
 
 export interface FetchDatabasePropertiesProjectsLocationsEnvironmentsRequest {
   /** Required. The resource name of the environment, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
   environment: string;
 }
-export const FetchDatabasePropertiesProjectsLocationsEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "environment": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+environment}:fetchDatabaseProperties","baseUrl":"https://composer.googleapis.com/"})),
-).annotate({ identifier: "FetchDatabasePropertiesProjectsLocationsEnvironmentsRequest" }) as any as S.Schema<FetchDatabasePropertiesProjectsLocationsEnvironmentsRequest>;
+export const FetchDatabasePropertiesProjectsLocationsEnvironmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      environment: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+environment}:fetchDatabaseProperties",
+        baseUrl: "https://composer.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "FetchDatabasePropertiesProjectsLocationsEnvironmentsRequest",
+  }) as any as S.Schema<FetchDatabasePropertiesProjectsLocationsEnvironmentsRequest>;
 
 /** Response for FetchDatabasePropertiesRequest. */
 export interface FetchDatabasePropertiesResponse {
@@ -966,52 +1176,91 @@ export interface FetchDatabasePropertiesResponse {
   secondaryGceZone?: string;
 }
 export const FetchDatabasePropertiesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "isFailoverReplicaAvailable": S.optional(S.Boolean),
-  "primaryGceZone": S.optional(S.String),
-  "secondaryGceZone": S.optional(S.String),
-}),
-).annotate({ identifier: "FetchDatabasePropertiesResponse" }) as any as S.Schema<FetchDatabasePropertiesResponse>;
+  S.Struct({
+    isFailoverReplicaAvailable: S.optional(S.Boolean),
+    primaryGceZone: S.optional(S.String),
+    secondaryGceZone: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "FetchDatabasePropertiesResponse",
+}) as any as S.Schema<FetchDatabasePropertiesResponse>;
 
 export interface GetProjectsLocationsEnvironmentsRequest {
   /** The resource name of the environment to get, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
   name: string;
 }
-export const GetProjectsLocationsEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://composer.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsEnvironmentsRequest" }) as any as S.Schema<GetProjectsLocationsEnvironmentsRequest>;
+export const GetProjectsLocationsEnvironmentsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://composer.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsEnvironmentsRequest",
+}) as any as S.Schema<GetProjectsLocationsEnvironmentsRequest>;
 
 export interface GetProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest {
   /** Required. The resource name of the ConfigMap to get, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsConfigMaps/{userWorkloadsConfigMapId}" */
   name: string;
 }
-export const GetProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://composer.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest" }) as any as S.Schema<GetProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest>;
+export const GetProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://composer.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "GetProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest",
+  }) as any as S.Schema<GetProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest>;
 
 export interface GetProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest {
   /** Required. The resource name of the Secret to get, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsSecrets/{userWorkloadsSecretId}" */
   name: string;
 }
-export const GetProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://composer.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest" }) as any as S.Schema<GetProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest>;
+export const GetProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://composer.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest",
+  }) as any as S.Schema<GetProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://composer.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://composer.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsOperationsRequest",
+}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export interface ListProjectsLocationsEnvironmentsRequest {
   /** The maximum number of environments to return. */
@@ -1021,16 +1270,27 @@ export interface ListProjectsLocationsEnvironmentsRequest {
   /** The next_page_token value returned from a previous List request, if any. */
   pageToken?: string;
 }
-export const ListProjectsLocationsEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/environments","baseUrl":"https://composer.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsEnvironmentsRequest" }) as any as S.Schema<ListProjectsLocationsEnvironmentsRequest>;
+export const ListProjectsLocationsEnvironmentsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/environments",
+        baseUrl: "https://composer.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsEnvironmentsRequest",
+}) as any as S.Schema<ListProjectsLocationsEnvironmentsRequest>;
 
 export type EnvironmentList = ReadonlyArray<Environment>;
-export const EnvironmentList = /*@__PURE__*/ S.Array(Environment) as any as S.Schema<EnvironmentList>;
+export const EnvironmentList = /*@__PURE__*/ S.Array(
+  Environment,
+) as any as S.Schema<EnvironmentList>;
 
 /** The environments in a project and location. */
 export interface ListEnvironmentsResponse {
@@ -1040,11 +1300,13 @@ export interface ListEnvironmentsResponse {
   nextPageToken?: string;
 }
 export const ListEnvironmentsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "environments": S.optional(EnvironmentList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListEnvironmentsResponse" }) as any as S.Schema<ListEnvironmentsResponse>;
+  S.Struct({
+    environments: S.optional(EnvironmentList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListEnvironmentsResponse",
+}) as any as S.Schema<ListEnvironmentsResponse>;
 
 export interface ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest {
   /** Optional. The maximum number of ConfigMaps to return. */
@@ -1054,16 +1316,28 @@ export interface ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest
   /** Optional. The next_page_token value returned from a previous List request, if any. */
   pageToken?: string;
 }
-export const ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/userWorkloadsConfigMaps","baseUrl":"https://composer.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest" }) as any as S.Schema<ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest>;
+export const ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/userWorkloadsConfigMaps",
+        baseUrl: "https://composer.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest",
+  }) as any as S.Schema<ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest>;
 
 export type UserWorkloadsConfigMapList = ReadonlyArray<UserWorkloadsConfigMap>;
-export const UserWorkloadsConfigMapList = /*@__PURE__*/ S.Array(UserWorkloadsConfigMap) as any as S.Schema<UserWorkloadsConfigMapList>;
+export const UserWorkloadsConfigMapList = /*@__PURE__*/ S.Array(
+  UserWorkloadsConfigMap,
+) as any as S.Schema<UserWorkloadsConfigMapList>;
 
 /** The user workloads ConfigMaps for a given environment. */
 export interface ListUserWorkloadsConfigMapsResponse {
@@ -1073,11 +1347,13 @@ export interface ListUserWorkloadsConfigMapsResponse {
   nextPageToken?: string;
 }
 export const ListUserWorkloadsConfigMapsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "userWorkloadsConfigMaps": S.optional(UserWorkloadsConfigMapList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListUserWorkloadsConfigMapsResponse" }) as any as S.Schema<ListUserWorkloadsConfigMapsResponse>;
+  S.Struct({
+    userWorkloadsConfigMaps: S.optional(UserWorkloadsConfigMapList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListUserWorkloadsConfigMapsResponse",
+}) as any as S.Schema<ListUserWorkloadsConfigMapsResponse>;
 
 export interface ListProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest {
   /** Optional. The maximum number of Secrets to return. */
@@ -1087,16 +1363,27 @@ export interface ListProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest {
   /** Optional. The next_page_token value returned from a previous List request, if any. */
   pageToken?: string;
 }
-export const ListProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/userWorkloadsSecrets","baseUrl":"https://composer.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest" }) as any as S.Schema<ListProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest>;
+export const ListProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/userWorkloadsSecrets",
+        baseUrl: "https://composer.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest",
+  }) as any as S.Schema<ListProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest>;
 
 export type UserWorkloadsSecretList = ReadonlyArray<UserWorkloadsSecret>;
-export const UserWorkloadsSecretList = /*@__PURE__*/ S.Array(UserWorkloadsSecret) as any as S.Schema<UserWorkloadsSecretList>;
+export const UserWorkloadsSecretList = /*@__PURE__*/ S.Array(
+  UserWorkloadsSecret,
+) as any as S.Schema<UserWorkloadsSecretList>;
 
 /** The user workloads Secrets for a given environment. */
 export interface ListUserWorkloadsSecretsResponse {
@@ -1106,11 +1393,13 @@ export interface ListUserWorkloadsSecretsResponse {
   nextPageToken?: string;
 }
 export const ListUserWorkloadsSecretsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "userWorkloadsSecrets": S.optional(UserWorkloadsSecretList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListUserWorkloadsSecretsResponse" }) as any as S.Schema<ListUserWorkloadsSecretsResponse>;
+  S.Struct({
+    userWorkloadsSecrets: S.optional(UserWorkloadsSecretList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListUserWorkloadsSecretsResponse",
+}) as any as S.Schema<ListUserWorkloadsSecretsResponse>;
 
 export interface ListProjectsLocationsEnvironmentsWorkloadsRequest {
   /** Optional. The list filter. Currently only supports equality on the type field. The value of a field specified in the filter expression must be one ComposerWorkloadType enum option. It's possible to get multiple types using "OR" operator, e.g.: "type=SCHEDULER OR type=CELERY_WORKER". If not specified, all items are returned. */
@@ -1122,19 +1411,44 @@ export interface ListProjectsLocationsEnvironmentsWorkloadsRequest {
   /** Optional. The maximum number of environments to return. */
   pageSize?: number;
 }
-export const ListProjectsLocationsEnvironmentsWorkloadsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/workloads","baseUrl":"https://composer.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsEnvironmentsWorkloadsRequest" }) as any as S.Schema<ListProjectsLocationsEnvironmentsWorkloadsRequest>;
+export const ListProjectsLocationsEnvironmentsWorkloadsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      filter: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/workloads",
+        baseUrl: "https://composer.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsEnvironmentsWorkloadsRequest",
+  }) as any as S.Schema<ListProjectsLocationsEnvironmentsWorkloadsRequest>;
 
-export type ComposerWorkloadTypeEnum = "COMPOSER_WORKLOAD_TYPE_UNSPECIFIED" | "CELERY_WORKER" | "KUBERNETES_WORKER" | "KUBERNETES_OPERATOR_POD" | "SCHEDULER" | "DAG_PROCESSOR" | "TRIGGERER" | "WEB_SERVER" | "REDIS";
+export type ComposerWorkloadTypeEnum =
+  | "COMPOSER_WORKLOAD_TYPE_UNSPECIFIED"
+  | "CELERY_WORKER"
+  | "KUBERNETES_WORKER"
+  | "KUBERNETES_OPERATOR_POD"
+  | "SCHEDULER"
+  | "DAG_PROCESSOR"
+  | "TRIGGERER"
+  | "WEB_SERVER"
+  | "REDIS";
 export const ComposerWorkloadTypeEnum = /*@__PURE__*/ S.String;
 
-export type ComposerWorkloadStatusStateEnum = "COMPOSER_WORKLOAD_STATE_UNSPECIFIED" | "PENDING" | "OK" | "WARNING" | "ERROR" | "SUCCEEDED" | "FAILED";
+export type ComposerWorkloadStatusStateEnum =
+  | "COMPOSER_WORKLOAD_STATE_UNSPECIFIED"
+  | "PENDING"
+  | "OK"
+  | "WARNING"
+  | "ERROR"
+  | "SUCCEEDED"
+  | "FAILED";
 export const ComposerWorkloadStatusStateEnum = /*@__PURE__*/ S.String;
 
 /** Workload status. */
@@ -1147,12 +1461,14 @@ export interface ComposerWorkloadStatus {
   statusMessage?: string;
 }
 export const ComposerWorkloadStatus = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "state": S.optional(ComposerWorkloadStatusStateEnum),
-  "detailedStatusMessage": S.optional(S.String),
-  "statusMessage": S.optional(S.String),
-}),
-).annotate({ identifier: "ComposerWorkloadStatus" }) as any as S.Schema<ComposerWorkloadStatus>;
+  S.Struct({
+    state: S.optional(ComposerWorkloadStatusStateEnum),
+    detailedStatusMessage: S.optional(S.String),
+    statusMessage: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ComposerWorkloadStatus",
+}) as any as S.Schema<ComposerWorkloadStatus>;
 
 /** Information about a single workload. */
 export interface ComposerWorkload {
@@ -1164,15 +1480,19 @@ export interface ComposerWorkload {
   status?: ComposerWorkloadStatus;
 }
 export const ComposerWorkload = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "type": S.optional(ComposerWorkloadTypeEnum),
-  "status": S.optional(ComposerWorkloadStatus),
-}),
-).annotate({ identifier: "ComposerWorkload" }) as any as S.Schema<ComposerWorkload>;
+  S.Struct({
+    name: S.optional(S.String),
+    type: S.optional(ComposerWorkloadTypeEnum),
+    status: S.optional(ComposerWorkloadStatus),
+  }),
+).annotate({
+  identifier: "ComposerWorkload",
+}) as any as S.Schema<ComposerWorkload>;
 
 export type ComposerWorkloadList = ReadonlyArray<ComposerWorkload>;
-export const ComposerWorkloadList = /*@__PURE__*/ S.Array(ComposerWorkload) as any as S.Schema<ComposerWorkloadList>;
+export const ComposerWorkloadList = /*@__PURE__*/ S.Array(
+  ComposerWorkload,
+) as any as S.Schema<ComposerWorkloadList>;
 
 /** Response to ListWorkloadsRequest. */
 export interface ListWorkloadsResponse {
@@ -1182,11 +1502,13 @@ export interface ListWorkloadsResponse {
   nextPageToken?: string;
 }
 export const ListWorkloadsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "workloads": S.optional(ComposerWorkloadList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListWorkloadsResponse" }) as any as S.Schema<ListWorkloadsResponse>;
+  S.Struct({
+    workloads: S.optional(ComposerWorkloadList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListWorkloadsResponse",
+}) as any as S.Schema<ListWorkloadsResponse>;
 
 export interface ListProjectsLocationsImageVersionsRequest {
   /** Whether or not image versions from old releases should be included. */
@@ -1198,14 +1520,23 @@ export interface ListProjectsLocationsImageVersionsRequest {
   /** The maximum number of image_versions to return. */
   pageSize?: number;
 }
-export const ListProjectsLocationsImageVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "includePastReleases": S.optional(S.Boolean.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+parent}/imageVersions","baseUrl":"https://composer.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsImageVersionsRequest" }) as any as S.Schema<ListProjectsLocationsImageVersionsRequest>;
+export const ListProjectsLocationsImageVersionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      includePastReleases: S.optional(S.Boolean.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/imageVersions",
+        baseUrl: "https://composer.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsImageVersionsRequest",
+  }) as any as S.Schema<ListProjectsLocationsImageVersionsRequest>;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface Composer_Date {
@@ -1217,11 +1548,11 @@ export interface Composer_Date {
   day?: number;
 }
 export const Composer_Date = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "month": S.optional(S.Number),
-  "year": S.optional(S.Number),
-  "day": S.optional(S.Number),
-}),
+  S.Struct({
+    month: S.optional(S.Number),
+    year: S.optional(S.Number),
+    day: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "Composer_Date" }) as any as S.Schema<Composer_Date>;
 
 /** ImageVersion information */
@@ -1240,18 +1571,20 @@ export interface ImageVersion {
   supportedPythonVersions?: StringList;
 }
 export const ImageVersion = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "releaseDate": S.optional(Composer_Date),
-  "creationDisabled": S.optional(S.Boolean),
-  "upgradeDisabled": S.optional(S.Boolean),
-  "imageVersionId": S.optional(S.String),
-  "isDefault": S.optional(S.Boolean),
-  "supportedPythonVersions": S.optional(StringList),
-}),
+  S.Struct({
+    releaseDate: S.optional(Composer_Date),
+    creationDisabled: S.optional(S.Boolean),
+    upgradeDisabled: S.optional(S.Boolean),
+    imageVersionId: S.optional(S.String),
+    isDefault: S.optional(S.Boolean),
+    supportedPythonVersions: S.optional(StringList),
+  }),
 ).annotate({ identifier: "ImageVersion" }) as any as S.Schema<ImageVersion>;
 
 export type ImageVersionList = ReadonlyArray<ImageVersion>;
-export const ImageVersionList = /*@__PURE__*/ S.Array(ImageVersion) as any as S.Schema<ImageVersionList>;
+export const ImageVersionList = /*@__PURE__*/ S.Array(
+  ImageVersion,
+) as any as S.Schema<ImageVersionList>;
 
 /** The ImageVersions in a project and location. */
 export interface ListImageVersionsResponse {
@@ -1261,11 +1594,13 @@ export interface ListImageVersionsResponse {
   imageVersions?: ImageVersionList;
 }
 export const ListImageVersionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "imageVersions": S.optional(ImageVersionList),
-}),
-).annotate({ identifier: "ListImageVersionsResponse" }) as any as S.Schema<ListImageVersionsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    imageVersions: S.optional(ImageVersionList),
+  }),
+).annotate({
+  identifier: "ListImageVersionsResponse",
+}) as any as S.Schema<ListImageVersionsResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
@@ -1279,18 +1614,29 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/operations","baseUrl":"https://composer.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      filter: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}/operations",
+        baseUrl: "https://composer.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsOperationsRequest",
+}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(
+  Operation,
+) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -1302,12 +1648,14 @@ export interface ListOperationsResponse {
   operations?: OperationList;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "unreachable": S.optional(StringList),
-  "operations": S.optional(OperationList),
-}),
-).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
+    operations: S.optional(OperationList),
+  }),
+).annotate({
+  identifier: "ListOperationsResponse",
+}) as any as S.Schema<ListOperationsResponse>;
 
 /** Request to load a snapshot into a Cloud Composer environment. */
 export interface LoadSnapshotRequest {
@@ -1323,14 +1671,16 @@ export interface LoadSnapshotRequest {
   skipGcsDataCopying?: boolean;
 }
 export const LoadSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "skipAirflowOverridesSetting": S.optional(S.Boolean),
-  "snapshotPath": S.optional(S.String),
-  "skipPypiPackagesInstallation": S.optional(S.Boolean),
-  "skipEnvironmentVariablesSetting": S.optional(S.Boolean),
-  "skipGcsDataCopying": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "LoadSnapshotRequest" }) as any as S.Schema<LoadSnapshotRequest>;
+  S.Struct({
+    skipAirflowOverridesSetting: S.optional(S.Boolean),
+    snapshotPath: S.optional(S.String),
+    skipPypiPackagesInstallation: S.optional(S.Boolean),
+    skipEnvironmentVariablesSetting: S.optional(S.Boolean),
+    skipGcsDataCopying: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "LoadSnapshotRequest",
+}) as any as S.Schema<LoadSnapshotRequest>;
 
 export interface LoadSnapshotProjectsLocationsEnvironmentsRequest {
   /** The resource name of the target environment in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
@@ -1338,12 +1688,21 @@ export interface LoadSnapshotProjectsLocationsEnvironmentsRequest {
   /** Request body */
   body?: LoadSnapshotRequest;
 }
-export const LoadSnapshotProjectsLocationsEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "environment": S.String.pipe(T.Label()),
-  "body": S.optional(LoadSnapshotRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+environment}:loadSnapshot","baseUrl":"https://composer.googleapis.com/"})),
-).annotate({ identifier: "LoadSnapshotProjectsLocationsEnvironmentsRequest" }) as any as S.Schema<LoadSnapshotProjectsLocationsEnvironmentsRequest>;
+export const LoadSnapshotProjectsLocationsEnvironmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      environment: S.String.pipe(T.Label()),
+      body: S.optional(LoadSnapshotRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+environment}:loadSnapshot",
+        baseUrl: "https://composer.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "LoadSnapshotProjectsLocationsEnvironmentsRequest",
+  }) as any as S.Schema<LoadSnapshotProjectsLocationsEnvironmentsRequest>;
 
 export interface PatchProjectsLocationsEnvironmentsRequest {
   /** The relative resource name of the environment to update, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
@@ -1353,13 +1712,22 @@ export interface PatchProjectsLocationsEnvironmentsRequest {
   /** Request body */
   body?: Environment;
 }
-export const PatchProjectsLocationsEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Environment.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://composer.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsEnvironmentsRequest" }) as any as S.Schema<PatchProjectsLocationsEnvironmentsRequest>;
+export const PatchProjectsLocationsEnvironmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Environment.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/{+name}",
+        baseUrl: "https://composer.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsEnvironmentsRequest",
+  }) as any as S.Schema<PatchProjectsLocationsEnvironmentsRequest>;
 
 /** Poll Airflow Command request. */
 export interface PollAirflowCommandRequest {
@@ -1373,13 +1741,15 @@ export interface PollAirflowCommandRequest {
   podNamespace?: string;
 }
 export const PollAirflowCommandRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pod": S.optional(S.String),
-  "executionId": S.optional(S.String),
-  "nextLineNumber": S.optional(S.Number),
-  "podNamespace": S.optional(S.String),
-}),
-).annotate({ identifier: "PollAirflowCommandRequest" }) as any as S.Schema<PollAirflowCommandRequest>;
+  S.Struct({
+    pod: S.optional(S.String),
+    executionId: S.optional(S.String),
+    nextLineNumber: S.optional(S.Number),
+    podNamespace: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PollAirflowCommandRequest",
+}) as any as S.Schema<PollAirflowCommandRequest>;
 
 export interface PollAirflowCommandProjectsLocationsEnvironmentsRequest {
   /** The resource name of the environment in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
@@ -1387,12 +1757,21 @@ export interface PollAirflowCommandProjectsLocationsEnvironmentsRequest {
   /** Request body */
   body?: PollAirflowCommandRequest;
 }
-export const PollAirflowCommandProjectsLocationsEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "environment": S.String.pipe(T.Label()),
-  "body": S.optional(PollAirflowCommandRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+environment}:pollAirflowCommand","baseUrl":"https://composer.googleapis.com/"})),
-).annotate({ identifier: "PollAirflowCommandProjectsLocationsEnvironmentsRequest" }) as any as S.Schema<PollAirflowCommandProjectsLocationsEnvironmentsRequest>;
+export const PollAirflowCommandProjectsLocationsEnvironmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      environment: S.String.pipe(T.Label()),
+      body: S.optional(PollAirflowCommandRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+environment}:pollAirflowCommand",
+        baseUrl: "https://composer.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PollAirflowCommandProjectsLocationsEnvironmentsRequest",
+  }) as any as S.Schema<PollAirflowCommandProjectsLocationsEnvironmentsRequest>;
 
 /** Information about how a command ended. */
 export interface ExitInfo {
@@ -1402,10 +1781,10 @@ export interface ExitInfo {
   error?: string;
 }
 export const ExitInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "exitCode": S.optional(S.Number),
-  "error": S.optional(S.String),
-}),
+  S.Struct({
+    exitCode: S.optional(S.Number),
+    error: S.optional(S.String),
+  }),
 ).annotate({ identifier: "ExitInfo" }) as any as S.Schema<ExitInfo>;
 
 /** Contains information about a single line from logs. */
@@ -1416,14 +1795,16 @@ export interface Line {
   lineNumber?: number;
 }
 export const Line = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "content": S.optional(S.String),
-  "lineNumber": S.optional(S.Number),
-}),
+  S.Struct({
+    content: S.optional(S.String),
+    lineNumber: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "Line" }) as any as S.Schema<Line>;
 
 export type LineList = ReadonlyArray<Line>;
-export const LineList = /*@__PURE__*/ S.Array(Line) as any as S.Schema<LineList>;
+export const LineList = /*@__PURE__*/ S.Array(
+  Line,
+) as any as S.Schema<LineList>;
 
 /** Response to PollAirflowCommandRequest. */
 export interface PollAirflowCommandResponse {
@@ -1435,18 +1816,22 @@ export interface PollAirflowCommandResponse {
   outputEnd?: boolean;
 }
 export const PollAirflowCommandResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "exitInfo": S.optional(ExitInfo),
-  "output": S.optional(LineList),
-  "outputEnd": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "PollAirflowCommandResponse" }) as any as S.Schema<PollAirflowCommandResponse>;
+  S.Struct({
+    exitInfo: S.optional(ExitInfo),
+    output: S.optional(LineList),
+    outputEnd: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "PollAirflowCommandResponse",
+}) as any as S.Schema<PollAirflowCommandResponse>;
 
 /** Restart Airflow web server. */
 export interface RestartWebServerRequest {}
 export const RestartWebServerRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "RestartWebServerRequest" }) as any as S.Schema<RestartWebServerRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "RestartWebServerRequest",
+}) as any as S.Schema<RestartWebServerRequest>;
 
 export interface RestartWebServerProjectsLocationsEnvironmentsRequest {
   /** Required. The resource name of the environment to restart the web server for, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
@@ -1454,12 +1839,21 @@ export interface RestartWebServerProjectsLocationsEnvironmentsRequest {
   /** Request body */
   body?: RestartWebServerRequest;
 }
-export const RestartWebServerProjectsLocationsEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(RestartWebServerRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:restartWebServer","baseUrl":"https://composer.googleapis.com/"})),
-).annotate({ identifier: "RestartWebServerProjectsLocationsEnvironmentsRequest" }) as any as S.Schema<RestartWebServerProjectsLocationsEnvironmentsRequest>;
+export const RestartWebServerProjectsLocationsEnvironmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(RestartWebServerRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:restartWebServer",
+        baseUrl: "https://composer.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "RestartWebServerProjectsLocationsEnvironmentsRequest",
+  }) as any as S.Schema<RestartWebServerProjectsLocationsEnvironmentsRequest>;
 
 /** Request to create a snapshot of a Cloud Composer environment. */
 export interface SaveSnapshotRequest {
@@ -1467,10 +1861,12 @@ export interface SaveSnapshotRequest {
   snapshotLocation?: string;
 }
 export const SaveSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "snapshotLocation": S.optional(S.String),
-}),
-).annotate({ identifier: "SaveSnapshotRequest" }) as any as S.Schema<SaveSnapshotRequest>;
+  S.Struct({
+    snapshotLocation: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SaveSnapshotRequest",
+}) as any as S.Schema<SaveSnapshotRequest>;
 
 export interface SaveSnapshotProjectsLocationsEnvironmentsRequest {
   /** The resource name of the source environment in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
@@ -1478,12 +1874,21 @@ export interface SaveSnapshotProjectsLocationsEnvironmentsRequest {
   /** Request body */
   body?: SaveSnapshotRequest;
 }
-export const SaveSnapshotProjectsLocationsEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "environment": S.String.pipe(T.Label()),
-  "body": S.optional(SaveSnapshotRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+environment}:saveSnapshot","baseUrl":"https://composer.googleapis.com/"})),
-).annotate({ identifier: "SaveSnapshotProjectsLocationsEnvironmentsRequest" }) as any as S.Schema<SaveSnapshotProjectsLocationsEnvironmentsRequest>;
+export const SaveSnapshotProjectsLocationsEnvironmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      environment: S.String.pipe(T.Label()),
+      body: S.optional(SaveSnapshotRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+environment}:saveSnapshot",
+        baseUrl: "https://composer.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "SaveSnapshotProjectsLocationsEnvironmentsRequest",
+  }) as any as S.Schema<SaveSnapshotProjectsLocationsEnvironmentsRequest>;
 
 /** Stop Airflow Command request. */
 export interface StopAirflowCommandRequest {
@@ -1497,13 +1902,15 @@ export interface StopAirflowCommandRequest {
   force?: boolean;
 }
 export const StopAirflowCommandRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pod": S.optional(S.String),
-  "executionId": S.optional(S.String),
-  "podNamespace": S.optional(S.String),
-  "force": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "StopAirflowCommandRequest" }) as any as S.Schema<StopAirflowCommandRequest>;
+  S.Struct({
+    pod: S.optional(S.String),
+    executionId: S.optional(S.String),
+    podNamespace: S.optional(S.String),
+    force: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "StopAirflowCommandRequest",
+}) as any as S.Schema<StopAirflowCommandRequest>;
 
 export interface StopAirflowCommandProjectsLocationsEnvironmentsRequest {
   /** The resource name of the environment in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}". */
@@ -1511,12 +1918,21 @@ export interface StopAirflowCommandProjectsLocationsEnvironmentsRequest {
   /** Request body */
   body?: StopAirflowCommandRequest;
 }
-export const StopAirflowCommandProjectsLocationsEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "environment": S.String.pipe(T.Label()),
-  "body": S.optional(StopAirflowCommandRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+environment}:stopAirflowCommand","baseUrl":"https://composer.googleapis.com/"})),
-).annotate({ identifier: "StopAirflowCommandProjectsLocationsEnvironmentsRequest" }) as any as S.Schema<StopAirflowCommandProjectsLocationsEnvironmentsRequest>;
+export const StopAirflowCommandProjectsLocationsEnvironmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      environment: S.String.pipe(T.Label()),
+      body: S.optional(StopAirflowCommandRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+environment}:stopAirflowCommand",
+        baseUrl: "https://composer.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "StopAirflowCommandProjectsLocationsEnvironmentsRequest",
+  }) as any as S.Schema<StopAirflowCommandProjectsLocationsEnvironmentsRequest>;
 
 /** Response to StopAirflowCommandRequest. */
 export interface StopAirflowCommandResponse {
@@ -1526,11 +1942,13 @@ export interface StopAirflowCommandResponse {
   output?: StringList;
 }
 export const StopAirflowCommandResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "isDone": S.optional(S.Boolean),
-  "output": S.optional(StringList),
-}),
-).annotate({ identifier: "StopAirflowCommandResponse" }) as any as S.Schema<StopAirflowCommandResponse>;
+  S.Struct({
+    isDone: S.optional(S.Boolean),
+    output: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "StopAirflowCommandResponse",
+}) as any as S.Schema<StopAirflowCommandResponse>;
 
 export interface UpdateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest {
   /** Identifier. The resource name of the ConfigMap, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsConfigMaps/{userWorkloadsConfigMapId}" */
@@ -1538,12 +1956,22 @@ export interface UpdateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsReque
   /** Request body */
   body?: UserWorkloadsConfigMap;
 }
-export const UpdateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(UserWorkloadsConfigMap.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"v1/{+name}","baseUrl":"https://composer.googleapis.com/"})),
-).annotate({ identifier: "UpdateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest" }) as any as S.Schema<UpdateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest>;
+export const UpdateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(UserWorkloadsConfigMap.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "v1/{+name}",
+        baseUrl: "https://composer.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "UpdateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest",
+  }) as any as S.Schema<UpdateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest>;
 
 export interface UpdateProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest {
   /** Identifier. The resource name of the Secret, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsSecrets/{userWorkloadsSecretId}" */
@@ -1551,14 +1979,29 @@ export interface UpdateProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest 
   /** Request body */
   body?: UserWorkloadsSecret;
 }
-export const UpdateProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(UserWorkloadsSecret.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"v1/{+name}","baseUrl":"https://composer.googleapis.com/"})),
-).annotate({ identifier: "UpdateProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest" }) as any as S.Schema<UpdateProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest>;
+export const UpdateProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(UserWorkloadsSecret.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "v1/{+name}",
+        baseUrl: "https://composer.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "UpdateProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest",
+  }) as any as S.Schema<UpdateProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest>;
 
-export type CheckUpgradeProjectsLocationsEnvironmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CheckUpgradeProjectsLocationsEnvironmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Check if an upgrade operation on the environment will succeed. In case of problems detailed info can be found in the returned Operation. */
 export const checkUpgradeProjectsLocationsEnvironments: API.OperationMethod<
   CheckUpgradeProjectsLocationsEnvironmentsRequest,
@@ -1573,7 +2016,12 @@ export const checkUpgradeProjectsLocationsEnvironments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsEnvironmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsEnvironmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Create a new environment. */
 export const createProjectsLocationsEnvironments: API.OperationMethod<
   CreateProjectsLocationsEnvironmentsRequest,
@@ -1588,7 +2036,12 @@ export const createProjectsLocationsEnvironments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a user workloads ConfigMap. This method is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer. */
 export const createProjectsLocationsEnvironmentsUserWorkloadsConfigMaps: API.OperationMethod<
   CreateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest,
@@ -1603,7 +2056,12 @@ export const createProjectsLocationsEnvironmentsUserWorkloadsConfigMaps: API.Ope
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsEnvironmentsUserWorkloadsSecretsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsEnvironmentsUserWorkloadsSecretsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a user workloads Secret. This method is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer. */
 export const createProjectsLocationsEnvironmentsUserWorkloadsSecrets: API.OperationMethod<
   CreateProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest,
@@ -1618,7 +2076,12 @@ export const createProjectsLocationsEnvironmentsUserWorkloadsSecrets: API.Operat
   retry: Retry.Retry,
 }));
 
-export type DatabaseFailoverProjectsLocationsEnvironmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DatabaseFailoverProjectsLocationsEnvironmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Triggers database failover (only for highly resilient environments). */
 export const databaseFailoverProjectsLocationsEnvironments: API.OperationMethod<
   DatabaseFailoverProjectsLocationsEnvironmentsRequest,
@@ -1633,7 +2096,12 @@ export const databaseFailoverProjectsLocationsEnvironments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsEnvironmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsEnvironmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Delete an environment. */
 export const deleteProjectsLocationsEnvironments: API.OperationMethod<
   DeleteProjectsLocationsEnvironmentsRequest,
@@ -1648,7 +2116,12 @@ export const deleteProjectsLocationsEnvironments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsEnvironmentsUserWorkloadsConfigMapsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsEnvironmentsUserWorkloadsConfigMapsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a user workloads ConfigMap. This method is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer. */
 export const deleteProjectsLocationsEnvironmentsUserWorkloadsConfigMaps: API.OperationMethod<
   DeleteProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest,
@@ -1663,7 +2136,12 @@ export const deleteProjectsLocationsEnvironmentsUserWorkloadsConfigMaps: API.Ope
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsEnvironmentsUserWorkloadsSecretsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsEnvironmentsUserWorkloadsSecretsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a user workloads Secret. This method is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer. */
 export const deleteProjectsLocationsEnvironmentsUserWorkloadsSecrets: API.OperationMethod<
   DeleteProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest,
@@ -1678,7 +2156,12 @@ export const deleteProjectsLocationsEnvironmentsUserWorkloadsSecrets: API.Operat
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsRequest,
@@ -1693,7 +2176,12 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ExecuteAirflowCommandProjectsLocationsEnvironmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ExecuteAirflowCommandProjectsLocationsEnvironmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Executes Airflow CLI command. */
 export const executeAirflowCommandProjectsLocationsEnvironments: API.OperationMethod<
   ExecuteAirflowCommandProjectsLocationsEnvironmentsRequest,
@@ -1708,7 +2196,10 @@ export const executeAirflowCommandProjectsLocationsEnvironments: API.OperationMe
   retry: Retry.Retry,
 }));
 
-export type FetchDatabasePropertiesProjectsLocationsEnvironmentsError = NotFound | Forbidden | GcpOpError;
+export type FetchDatabasePropertiesProjectsLocationsEnvironmentsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Fetches database properties. */
 export const fetchDatabasePropertiesProjectsLocationsEnvironments: API.OperationMethod<
   FetchDatabasePropertiesProjectsLocationsEnvironmentsRequest,
@@ -1723,7 +2214,10 @@ export const fetchDatabasePropertiesProjectsLocationsEnvironments: API.Operation
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsEnvironmentsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsEnvironmentsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Get an existing environment. */
 export const getProjectsLocationsEnvironments: API.OperationMethod<
   GetProjectsLocationsEnvironmentsRequest,
@@ -1738,7 +2232,10 @@ export const getProjectsLocationsEnvironments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsEnvironmentsUserWorkloadsConfigMapsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsEnvironmentsUserWorkloadsConfigMapsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets an existing user workloads ConfigMap. This method is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer. */
 export const getProjectsLocationsEnvironmentsUserWorkloadsConfigMaps: API.OperationMethod<
   GetProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest,
@@ -1753,7 +2250,10 @@ export const getProjectsLocationsEnvironmentsUserWorkloadsConfigMaps: API.Operat
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsEnvironmentsUserWorkloadsSecretsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsEnvironmentsUserWorkloadsSecretsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets an existing user workloads Secret. Values of the "data" field in the response are cleared. This method is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer. */
 export const getProjectsLocationsEnvironmentsUserWorkloadsSecrets: API.OperationMethod<
   GetProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest,
@@ -1768,7 +2268,10 @@ export const getProjectsLocationsEnvironmentsUserWorkloadsSecrets: API.Operation
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -1783,7 +2286,10 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListProjectsLocationsEnvironmentsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsEnvironmentsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** List environments. */
 export const listProjectsLocationsEnvironments: API.PaginatedOperationMethod<
   ListProjectsLocationsEnvironmentsRequest,
@@ -1796,10 +2302,16 @@ export const listProjectsLocationsEnvironments: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists user workloads ConfigMaps. This method is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer. */
 export const listProjectsLocationsEnvironmentsUserWorkloadsConfigMaps: API.PaginatedOperationMethod<
   ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest,
@@ -1812,10 +2324,16 @@ export const listProjectsLocationsEnvironmentsUserWorkloadsConfigMaps: API.Pagin
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsEnvironmentsUserWorkloadsSecretsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsEnvironmentsUserWorkloadsSecretsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists user workloads Secrets. This method is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer. */
 export const listProjectsLocationsEnvironmentsUserWorkloadsSecrets: API.PaginatedOperationMethod<
   ListProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest,
@@ -1828,10 +2346,16 @@ export const listProjectsLocationsEnvironmentsUserWorkloadsSecrets: API.Paginate
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsEnvironmentsWorkloadsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsEnvironmentsWorkloadsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists workloads in a Cloud Composer environment. Workload is a unit that runs a single Composer component. This method is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer. */
 export const listProjectsLocationsEnvironmentsWorkloads: API.PaginatedOperationMethod<
   ListProjectsLocationsEnvironmentsWorkloadsRequest,
@@ -1844,10 +2368,16 @@ export const listProjectsLocationsEnvironmentsWorkloads: API.PaginatedOperationM
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsImageVersionsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsImageVersionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** List ImageVersions for provided location. */
 export const listProjectsLocationsImageVersions: API.PaginatedOperationMethod<
   ListProjectsLocationsImageVersionsRequest,
@@ -1860,10 +2390,16 @@ export const listProjectsLocationsImageVersions: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -1876,10 +2412,18 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type LoadSnapshotProjectsLocationsEnvironmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type LoadSnapshotProjectsLocationsEnvironmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Loads a snapshot of a Cloud Composer environment. As a result of this operation, a snapshot of environment's specified in LoadSnapshotRequest is loaded into the environment. */
 export const loadSnapshotProjectsLocationsEnvironments: API.OperationMethod<
   LoadSnapshotProjectsLocationsEnvironmentsRequest,
@@ -1894,7 +2438,12 @@ export const loadSnapshotProjectsLocationsEnvironments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsEnvironmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsEnvironmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Update an environment. */
 export const patchProjectsLocationsEnvironments: API.OperationMethod<
   PatchProjectsLocationsEnvironmentsRequest,
@@ -1909,7 +2458,12 @@ export const patchProjectsLocationsEnvironments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PollAirflowCommandProjectsLocationsEnvironmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PollAirflowCommandProjectsLocationsEnvironmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Polls Airflow CLI command execution and fetches logs. */
 export const pollAirflowCommandProjectsLocationsEnvironments: API.OperationMethod<
   PollAirflowCommandProjectsLocationsEnvironmentsRequest,
@@ -1924,7 +2478,12 @@ export const pollAirflowCommandProjectsLocationsEnvironments: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type RestartWebServerProjectsLocationsEnvironmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RestartWebServerProjectsLocationsEnvironmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Restart Airflow web server. */
 export const restartWebServerProjectsLocationsEnvironments: API.OperationMethod<
   RestartWebServerProjectsLocationsEnvironmentsRequest,
@@ -1939,7 +2498,12 @@ export const restartWebServerProjectsLocationsEnvironments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SaveSnapshotProjectsLocationsEnvironmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SaveSnapshotProjectsLocationsEnvironmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a snapshots of a Cloud Composer environment. As a result of this operation, snapshot of environment's state is stored in a location specified in the SaveSnapshotRequest. */
 export const saveSnapshotProjectsLocationsEnvironments: API.OperationMethod<
   SaveSnapshotProjectsLocationsEnvironmentsRequest,
@@ -1954,7 +2518,12 @@ export const saveSnapshotProjectsLocationsEnvironments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type StopAirflowCommandProjectsLocationsEnvironmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type StopAirflowCommandProjectsLocationsEnvironmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Stops Airflow CLI command execution. */
 export const stopAirflowCommandProjectsLocationsEnvironments: API.OperationMethod<
   StopAirflowCommandProjectsLocationsEnvironmentsRequest,
@@ -1969,7 +2538,12 @@ export const stopAirflowCommandProjectsLocationsEnvironments: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type UpdateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a user workloads ConfigMap. This method is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer. */
 export const updateProjectsLocationsEnvironmentsUserWorkloadsConfigMaps: API.OperationMethod<
   UpdateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest,
@@ -1984,7 +2558,12 @@ export const updateProjectsLocationsEnvironmentsUserWorkloadsConfigMaps: API.Ope
   retry: Retry.Retry,
 }));
 
-export type UpdateProjectsLocationsEnvironmentsUserWorkloadsSecretsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateProjectsLocationsEnvironmentsUserWorkloadsSecretsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a user workloads Secret. This method is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer. */
 export const updateProjectsLocationsEnvironmentsUserWorkloadsSecrets: API.OperationMethod<
   UpdateProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest,
@@ -1998,4 +2577,3 @@ export const updateProjectsLocationsEnvironmentsUserWorkloadsSecrets: API.Operat
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

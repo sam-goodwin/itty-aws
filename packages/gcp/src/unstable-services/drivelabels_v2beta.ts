@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 /** Deletes a label permission. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing. */
@@ -67,15 +67,22 @@ export interface GoogleAppsDriveLabelsV2betaDeleteLabelPermissionRequest {
   /** Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the label before allowing access. */
   useAdminAccess?: boolean;
 }
-export const GoogleAppsDriveLabelsV2betaDeleteLabelPermissionRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "useAdminAccess": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaDeleteLabelPermissionRequest" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeleteLabelPermissionRequest>;
+export const GoogleAppsDriveLabelsV2betaDeleteLabelPermissionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.optional(S.String),
+      useAdminAccess: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsDriveLabelsV2betaDeleteLabelPermissionRequest",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeleteLabelPermissionRequest>;
 
-export type GoogleAppsDriveLabelsV2betaDeleteLabelPermissionRequestList = ReadonlyArray<GoogleAppsDriveLabelsV2betaDeleteLabelPermissionRequest>;
-export const GoogleAppsDriveLabelsV2betaDeleteLabelPermissionRequestList = /*@__PURE__*/ S.Array(GoogleAppsDriveLabelsV2betaDeleteLabelPermissionRequest) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeleteLabelPermissionRequestList>;
+export type GoogleAppsDriveLabelsV2betaDeleteLabelPermissionRequestList =
+  ReadonlyArray<GoogleAppsDriveLabelsV2betaDeleteLabelPermissionRequest>;
+export const GoogleAppsDriveLabelsV2betaDeleteLabelPermissionRequestList =
+  /*@__PURE__*/ S.Array(
+    GoogleAppsDriveLabelsV2betaDeleteLabelPermissionRequest,
+  ) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeleteLabelPermissionRequestList>;
 
 /** Deletes one or more label permissions. */
 export interface GoogleAppsDriveLabelsV2betaBatchDeleteLabelPermissionsRequest {
@@ -84,12 +91,17 @@ export interface GoogleAppsDriveLabelsV2betaBatchDeleteLabelPermissionsRequest {
   /** Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the label before allowing access. If this is set, the `use_admin_access` field in the `DeleteLabelPermissionRequest` messages must either be empty or match this field. */
   useAdminAccess?: boolean;
 }
-export const GoogleAppsDriveLabelsV2betaBatchDeleteLabelPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requests": S.optional(GoogleAppsDriveLabelsV2betaDeleteLabelPermissionRequestList),
-  "useAdminAccess": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaBatchDeleteLabelPermissionsRequest" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaBatchDeleteLabelPermissionsRequest>;
+export const GoogleAppsDriveLabelsV2betaBatchDeleteLabelPermissionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      requests: S.optional(
+        GoogleAppsDriveLabelsV2betaDeleteLabelPermissionRequestList,
+      ),
+      useAdminAccess: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsDriveLabelsV2betaBatchDeleteLabelPermissionsRequest",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaBatchDeleteLabelPermissionsRequest>;
 
 export interface BatchDeleteLabelsPermissionsRequest {
   /** Required. The parent label resource name shared by all permissions being deleted. Format: `labels/{label}`. If this is set, the parent field in the `UpdateLabelPermissionRequest` messages must either be empty or match this field. */
@@ -98,17 +110,31 @@ export interface BatchDeleteLabelsPermissionsRequest {
   body?: GoogleAppsDriveLabelsV2betaBatchDeleteLabelPermissionsRequest;
 }
 export const BatchDeleteLabelsPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleAppsDriveLabelsV2betaBatchDeleteLabelPermissionsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2beta/{+parent}/permissions:batchDelete","baseUrl":"https://drivelabels.googleapis.com/"})),
-).annotate({ identifier: "BatchDeleteLabelsPermissionsRequest" }) as any as S.Schema<BatchDeleteLabelsPermissionsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(
+      GoogleAppsDriveLabelsV2betaBatchDeleteLabelPermissionsRequest.pipe(
+        T.HttpBody(),
+      ),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v2beta/{+parent}/permissions:batchDelete",
+      baseUrl: "https://drivelabels.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "BatchDeleteLabelsPermissionsRequest",
+}) as any as S.Schema<BatchDeleteLabelsPermissionsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface GoogleProtobufEmpty {}
 export const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "GoogleProtobufEmpty" }) as any as S.Schema<GoogleProtobufEmpty>;
+  S.Struct({}),
+).annotate({
+  identifier: "GoogleProtobufEmpty",
+}) as any as S.Schema<GoogleProtobufEmpty>;
 
 export interface BatchDeleteLabelsRevisionsPermissionsRequest {
   /** Required. The parent label resource name shared by all permissions being deleted. Format: `labels/{label}`. If this is set, the parent field in the `UpdateLabelPermissionRequest` messages must either be empty or match this field. */
@@ -116,15 +142,34 @@ export interface BatchDeleteLabelsRevisionsPermissionsRequest {
   /** Request body */
   body?: GoogleAppsDriveLabelsV2betaBatchDeleteLabelPermissionsRequest;
 }
-export const BatchDeleteLabelsRevisionsPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleAppsDriveLabelsV2betaBatchDeleteLabelPermissionsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2beta/{+parent}/permissions:batchDelete","baseUrl":"https://drivelabels.googleapis.com/"})),
-).annotate({ identifier: "BatchDeleteLabelsRevisionsPermissionsRequest" }) as any as S.Schema<BatchDeleteLabelsRevisionsPermissionsRequest>;
+export const BatchDeleteLabelsRevisionsPermissionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleAppsDriveLabelsV2betaBatchDeleteLabelPermissionsRequest.pipe(
+          T.HttpBody(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v2beta/{+parent}/permissions:batchDelete",
+        baseUrl: "https://drivelabels.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "BatchDeleteLabelsRevisionsPermissionsRequest",
+  }) as any as S.Schema<BatchDeleteLabelsRevisionsPermissionsRequest>;
 
-export type GoogleAppsDriveLabelsV2betaLabelPermissionRoleEnum = "LABEL_ROLE_UNSPECIFIED" | "READER" | "APPLIER" | "ORGANIZER" | "EDITOR";
-export const GoogleAppsDriveLabelsV2betaLabelPermissionRoleEnum = /*@__PURE__*/ S.String;
+export type GoogleAppsDriveLabelsV2betaLabelPermissionRoleEnum =
+  | "LABEL_ROLE_UNSPECIFIED"
+  | "READER"
+  | "APPLIER"
+  | "ORGANIZER"
+  | "EDITOR";
+export const GoogleAppsDriveLabelsV2betaLabelPermissionRoleEnum =
+  /*@__PURE__*/ S.String;
 
 /** The permission that applies to a principal (user, group, audience) on a label. */
 export interface GoogleAppsDriveLabelsV2betaLabelPermission {
@@ -141,16 +186,19 @@ export interface GoogleAppsDriveLabelsV2betaLabelPermission {
   /** Group resource name. */
   group?: string;
 }
-export const GoogleAppsDriveLabelsV2betaLabelPermission = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "person": S.optional(S.String),
-  "email": S.optional(S.String),
-  "audience": S.optional(S.String),
-  "role": S.optional(GoogleAppsDriveLabelsV2betaLabelPermissionRoleEnum),
-  "name": S.optional(S.String),
-  "group": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaLabelPermission" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaLabelPermission>;
+export const GoogleAppsDriveLabelsV2betaLabelPermission =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      person: S.optional(S.String),
+      email: S.optional(S.String),
+      audience: S.optional(S.String),
+      role: S.optional(GoogleAppsDriveLabelsV2betaLabelPermissionRoleEnum),
+      name: S.optional(S.String),
+      group: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsDriveLabelsV2betaLabelPermission",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaLabelPermission>;
 
 /** Updates a label permission. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing. */
 export interface GoogleAppsDriveLabelsV2betaUpdateLabelPermissionRequest {
@@ -161,16 +209,23 @@ export interface GoogleAppsDriveLabelsV2betaUpdateLabelPermissionRequest {
   /** Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the label before allowing access. */
   useAdminAccess?: boolean;
 }
-export const GoogleAppsDriveLabelsV2betaUpdateLabelPermissionRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.optional(S.String),
-  "labelPermission": S.optional(GoogleAppsDriveLabelsV2betaLabelPermission),
-  "useAdminAccess": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaUpdateLabelPermissionRequest" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaUpdateLabelPermissionRequest>;
+export const GoogleAppsDriveLabelsV2betaUpdateLabelPermissionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.optional(S.String),
+      labelPermission: S.optional(GoogleAppsDriveLabelsV2betaLabelPermission),
+      useAdminAccess: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsDriveLabelsV2betaUpdateLabelPermissionRequest",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaUpdateLabelPermissionRequest>;
 
-export type GoogleAppsDriveLabelsV2betaUpdateLabelPermissionRequestList = ReadonlyArray<GoogleAppsDriveLabelsV2betaUpdateLabelPermissionRequest>;
-export const GoogleAppsDriveLabelsV2betaUpdateLabelPermissionRequestList = /*@__PURE__*/ S.Array(GoogleAppsDriveLabelsV2betaUpdateLabelPermissionRequest) as any as S.Schema<GoogleAppsDriveLabelsV2betaUpdateLabelPermissionRequestList>;
+export type GoogleAppsDriveLabelsV2betaUpdateLabelPermissionRequestList =
+  ReadonlyArray<GoogleAppsDriveLabelsV2betaUpdateLabelPermissionRequest>;
+export const GoogleAppsDriveLabelsV2betaUpdateLabelPermissionRequestList =
+  /*@__PURE__*/ S.Array(
+    GoogleAppsDriveLabelsV2betaUpdateLabelPermissionRequest,
+  ) as any as S.Schema<GoogleAppsDriveLabelsV2betaUpdateLabelPermissionRequestList>;
 
 /** Updates one or more label permissions. */
 export interface GoogleAppsDriveLabelsV2betaBatchUpdateLabelPermissionsRequest {
@@ -179,12 +234,17 @@ export interface GoogleAppsDriveLabelsV2betaBatchUpdateLabelPermissionsRequest {
   /** Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the label before allowing access. If this is set, the `use_admin_access` field in the `UpdateLabelPermissionRequest` messages must either be empty or match this field. */
   useAdminAccess?: boolean;
 }
-export const GoogleAppsDriveLabelsV2betaBatchUpdateLabelPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requests": S.optional(GoogleAppsDriveLabelsV2betaUpdateLabelPermissionRequestList),
-  "useAdminAccess": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaBatchUpdateLabelPermissionsRequest" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaBatchUpdateLabelPermissionsRequest>;
+export const GoogleAppsDriveLabelsV2betaBatchUpdateLabelPermissionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      requests: S.optional(
+        GoogleAppsDriveLabelsV2betaUpdateLabelPermissionRequestList,
+      ),
+      useAdminAccess: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsDriveLabelsV2betaBatchUpdateLabelPermissionsRequest",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaBatchUpdateLabelPermissionsRequest>;
 
 export interface BatchUpdateLabelsPermissionsRequest {
   /** Required. The parent label resource name shared by all permissions being updated. Format: `labels/{label}`. If this is set, the parent field in the `UpdateLabelPermissionRequest` messages must either be empty or match this field. */
@@ -193,25 +253,45 @@ export interface BatchUpdateLabelsPermissionsRequest {
   body?: GoogleAppsDriveLabelsV2betaBatchUpdateLabelPermissionsRequest;
 }
 export const BatchUpdateLabelsPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleAppsDriveLabelsV2betaBatchUpdateLabelPermissionsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2beta/{+parent}/permissions:batchUpdate","baseUrl":"https://drivelabels.googleapis.com/"})),
-).annotate({ identifier: "BatchUpdateLabelsPermissionsRequest" }) as any as S.Schema<BatchUpdateLabelsPermissionsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(
+      GoogleAppsDriveLabelsV2betaBatchUpdateLabelPermissionsRequest.pipe(
+        T.HttpBody(),
+      ),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v2beta/{+parent}/permissions:batchUpdate",
+      baseUrl: "https://drivelabels.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "BatchUpdateLabelsPermissionsRequest",
+}) as any as S.Schema<BatchUpdateLabelsPermissionsRequest>;
 
-export type GoogleAppsDriveLabelsV2betaLabelPermissionList = ReadonlyArray<GoogleAppsDriveLabelsV2betaLabelPermission>;
-export const GoogleAppsDriveLabelsV2betaLabelPermissionList = /*@__PURE__*/ S.Array(GoogleAppsDriveLabelsV2betaLabelPermission) as any as S.Schema<GoogleAppsDriveLabelsV2betaLabelPermissionList>;
+export type GoogleAppsDriveLabelsV2betaLabelPermissionList =
+  ReadonlyArray<GoogleAppsDriveLabelsV2betaLabelPermission>;
+export const GoogleAppsDriveLabelsV2betaLabelPermissionList =
+  /*@__PURE__*/ S.Array(
+    GoogleAppsDriveLabelsV2betaLabelPermission,
+  ) as any as S.Schema<GoogleAppsDriveLabelsV2betaLabelPermissionList>;
 
 /** Response for updating one or more label permissions. */
 export interface GoogleAppsDriveLabelsV2betaBatchUpdateLabelPermissionsResponse {
   /** Required. Permissions updated. */
   permissions?: GoogleAppsDriveLabelsV2betaLabelPermissionList;
 }
-export const GoogleAppsDriveLabelsV2betaBatchUpdateLabelPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "permissions": S.optional(GoogleAppsDriveLabelsV2betaLabelPermissionList),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaBatchUpdateLabelPermissionsResponse" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaBatchUpdateLabelPermissionsResponse>;
+export const GoogleAppsDriveLabelsV2betaBatchUpdateLabelPermissionsResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      permissions: S.optional(GoogleAppsDriveLabelsV2betaLabelPermissionList),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleAppsDriveLabelsV2betaBatchUpdateLabelPermissionsResponse",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaBatchUpdateLabelPermissionsResponse>;
 
 export interface BatchUpdateLabelsRevisionsPermissionsRequest {
   /** Required. The parent label resource name shared by all permissions being updated. Format: `labels/{label}`. If this is set, the parent field in the `UpdateLabelPermissionRequest` messages must either be empty or match this field. */
@@ -219,12 +299,25 @@ export interface BatchUpdateLabelsRevisionsPermissionsRequest {
   /** Request body */
   body?: GoogleAppsDriveLabelsV2betaBatchUpdateLabelPermissionsRequest;
 }
-export const BatchUpdateLabelsRevisionsPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleAppsDriveLabelsV2betaBatchUpdateLabelPermissionsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2beta/{+parent}/permissions:batchUpdate","baseUrl":"https://drivelabels.googleapis.com/"})),
-).annotate({ identifier: "BatchUpdateLabelsRevisionsPermissionsRequest" }) as any as S.Schema<BatchUpdateLabelsRevisionsPermissionsRequest>;
+export const BatchUpdateLabelsRevisionsPermissionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleAppsDriveLabelsV2betaBatchUpdateLabelPermissionsRequest.pipe(
+          T.HttpBody(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v2beta/{+parent}/permissions:batchUpdate",
+        baseUrl: "https://drivelabels.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "BatchUpdateLabelsRevisionsPermissionsRequest",
+  }) as any as S.Schema<BatchUpdateLabelsRevisionsPermissionsRequest>;
 
 /** Information about a user. */
 export interface GoogleAppsDriveLabelsV2betaUserInfo {
@@ -232,10 +325,12 @@ export interface GoogleAppsDriveLabelsV2betaUserInfo {
   person?: string;
 }
 export const GoogleAppsDriveLabelsV2betaUserInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "person": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaUserInfo" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaUserInfo>;
+  S.Struct({
+    person: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleAppsDriveLabelsV2betaUserInfo",
+}) as any as S.Schema<GoogleAppsDriveLabelsV2betaUserInfo>;
 
 /** The UI display hints for rendering the label. */
 export interface GoogleAppsDriveLabelsV2betaLabelDisplayHints {
@@ -248,14 +343,17 @@ export interface GoogleAppsDriveLabelsV2betaLabelDisplayHints {
   /** The order to display labels in a list. */
   priority?: string;
 }
-export const GoogleAppsDriveLabelsV2betaLabelDisplayHints = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "shownInApply": S.optional(S.Boolean),
-  "disabled": S.optional(S.Boolean),
-  "hiddenInSearch": S.optional(S.Boolean),
-  "priority": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaLabelDisplayHints" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaLabelDisplayHints>;
+export const GoogleAppsDriveLabelsV2betaLabelDisplayHints =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      shownInApply: S.optional(S.Boolean),
+      disabled: S.optional(S.Boolean),
+      hiddenInSearch: S.optional(S.Boolean),
+      priority: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsDriveLabelsV2betaLabelDisplayHints",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaLabelDisplayHints>;
 
 /** Basic properties of the label. */
 export interface GoogleAppsDriveLabelsV2betaLabelProperties {
@@ -264,23 +362,29 @@ export interface GoogleAppsDriveLabelsV2betaLabelProperties {
   /** The description of the label. */
   description?: string;
 }
-export const GoogleAppsDriveLabelsV2betaLabelProperties = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "title": S.optional(S.String),
-  "description": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaLabelProperties" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaLabelProperties>;
+export const GoogleAppsDriveLabelsV2betaLabelProperties =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      title: S.optional(S.String),
+      description: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsDriveLabelsV2betaLabelProperties",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaLabelProperties>;
 
 /** Contains information about whether a label component should be considered locked. */
 export interface GoogleAppsDriveLabelsV2betaLockStatus {
   /** Output only. Indicates whether this label component is the (direct) target of a label lock. A label component can be implicitly locked even if it's not the direct target of a label lock, in which case this field is set to false. */
   locked?: boolean;
 }
-export const GoogleAppsDriveLabelsV2betaLockStatus = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locked": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaLockStatus" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaLockStatus>;
+export const GoogleAppsDriveLabelsV2betaLockStatus = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      locked: S.optional(S.Boolean),
+    }),
+).annotate({
+  identifier: "GoogleAppsDriveLabelsV2betaLockStatus",
+}) as any as S.Schema<GoogleAppsDriveLabelsV2betaLockStatus>;
 
 /** Options for the Text field type. */
 export interface GoogleAppsDriveLabelsV2betaFieldTextOptions {
@@ -289,12 +393,15 @@ export interface GoogleAppsDriveLabelsV2betaFieldTextOptions {
   /** Output only. The maximum valid length of values for the text field. */
   maxLength?: number;
 }
-export const GoogleAppsDriveLabelsV2betaFieldTextOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "minLength": S.optional(S.Number),
-  "maxLength": S.optional(S.Number),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaFieldTextOptions" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaFieldTextOptions>;
+export const GoogleAppsDriveLabelsV2betaFieldTextOptions =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      minLength: S.optional(S.Number),
+      maxLength: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsDriveLabelsV2betaFieldTextOptions",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaFieldTextOptions>;
 
 /** Options for the Integer field type. */
 export interface GoogleAppsDriveLabelsV2betaFieldIntegerOptions {
@@ -303,12 +410,15 @@ export interface GoogleAppsDriveLabelsV2betaFieldIntegerOptions {
   /** Output only. The minimum valid value for the integer field. */
   minValue?: string;
 }
-export const GoogleAppsDriveLabelsV2betaFieldIntegerOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "maxValue": S.optional(S.String),
-  "minValue": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaFieldIntegerOptions" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaFieldIntegerOptions>;
+export const GoogleAppsDriveLabelsV2betaFieldIntegerOptions =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      maxValue: S.optional(S.String),
+      minValue: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsDriveLabelsV2betaFieldIntegerOptions",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaFieldIntegerOptions>;
 
 /** The policy that governs how to treat a disabled label, field, or selection choice in different contexts. */
 export interface GoogleAppsDriveLabelsV2betaLifecycleDisabledPolicy {
@@ -317,15 +427,24 @@ export interface GoogleAppsDriveLabelsV2betaLifecycleDisabledPolicy {
   /** Whether to hide this disabled object in the search menu for Drive items. * When `false`, the object is generally shown in the UI as disabled but it appears in the search results when searching for Drive items. * When `true`, the object is generally hidden in the UI when searching for Drive items. */
   hideInSearch?: boolean;
 }
-export const GoogleAppsDriveLabelsV2betaLifecycleDisabledPolicy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "showInApply": S.optional(S.Boolean),
-  "hideInSearch": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaLifecycleDisabledPolicy" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaLifecycleDisabledPolicy>;
+export const GoogleAppsDriveLabelsV2betaLifecycleDisabledPolicy =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      showInApply: S.optional(S.Boolean),
+      hideInSearch: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsDriveLabelsV2betaLifecycleDisabledPolicy",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaLifecycleDisabledPolicy>;
 
-export type GoogleAppsDriveLabelsV2betaLifecycleStateEnum = "STATE_UNSPECIFIED" | "UNPUBLISHED_DRAFT" | "PUBLISHED" | "DISABLED" | "DELETED";
-export const GoogleAppsDriveLabelsV2betaLifecycleStateEnum = /*@__PURE__*/ S.String;
+export type GoogleAppsDriveLabelsV2betaLifecycleStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "UNPUBLISHED_DRAFT"
+  | "PUBLISHED"
+  | "DISABLED"
+  | "DELETED";
+export const GoogleAppsDriveLabelsV2betaLifecycleStateEnum =
+  /*@__PURE__*/ S.String;
 
 /** The lifecycle state of an object, such as label, field, or choice. For more information, see [Label lifecycle](https://developers.google.com/workspace/drive/labels/guides/label-lifecycle). The lifecycle enforces the following transitions: * `UNPUBLISHED_DRAFT` (starting state) * `UNPUBLISHED_DRAFT` -> `PUBLISHED` * `UNPUBLISHED_DRAFT` -> (Deleted) * `PUBLISHED` -> `DISABLED` * `DISABLED` -> `PUBLISHED` * `DISABLED` -> (Deleted) The published and disabled states have some distinct characteristics: * `Published`: Some kinds of changes might be made to an object in this state, in which case `has_unpublished_changes` will be true. Also, some kinds of changes aren't permitted. Generally, any change that would invalidate or cause new restrictions on existing metadata related to the label are rejected. * `Disabled`: When disabled, the configured `DisabledPolicy` takes effect. */
 export interface GoogleAppsDriveLabelsV2betaLifecycle {
@@ -336,16 +455,25 @@ export interface GoogleAppsDriveLabelsV2betaLifecycle {
   /** Output only. Whether the object associated with this lifecycle has unpublished changes. */
   hasUnpublishedChanges?: boolean;
 }
-export const GoogleAppsDriveLabelsV2betaLifecycle = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "disabledPolicy": S.optional(GoogleAppsDriveLabelsV2betaLifecycleDisabledPolicy),
-  "state": S.optional(GoogleAppsDriveLabelsV2betaLifecycleStateEnum),
-  "hasUnpublishedChanges": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaLifecycle" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaLifecycle>;
+export const GoogleAppsDriveLabelsV2betaLifecycle = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      disabledPolicy: S.optional(
+        GoogleAppsDriveLabelsV2betaLifecycleDisabledPolicy,
+      ),
+      state: S.optional(GoogleAppsDriveLabelsV2betaLifecycleStateEnum),
+      hasUnpublishedChanges: S.optional(S.Boolean),
+    }),
+).annotate({
+  identifier: "GoogleAppsDriveLabelsV2betaLifecycle",
+}) as any as S.Schema<GoogleAppsDriveLabelsV2betaLifecycle>;
 
-export type GoogleAppsDriveLabelsV2betaFieldDateOptionsDateFormatTypeEnum = "DATE_FORMAT_UNSPECIFIED" | "LONG_DATE" | "SHORT_DATE";
-export const GoogleAppsDriveLabelsV2betaFieldDateOptionsDateFormatTypeEnum = /*@__PURE__*/ S.String;
+export type GoogleAppsDriveLabelsV2betaFieldDateOptionsDateFormatTypeEnum =
+  | "DATE_FORMAT_UNSPECIFIED"
+  | "LONG_DATE"
+  | "SHORT_DATE";
+export const GoogleAppsDriveLabelsV2betaFieldDateOptionsDateFormatTypeEnum =
+  /*@__PURE__*/ S.String;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface GoogleTypeDate {
@@ -357,11 +485,11 @@ export interface GoogleTypeDate {
   day?: number;
 }
 export const GoogleTypeDate = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "year": S.optional(S.Number),
-  "month": S.optional(S.Number),
-  "day": S.optional(S.Number),
-}),
+  S.Struct({
+    year: S.optional(S.Number),
+    month: S.optional(S.Number),
+    day: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "GoogleTypeDate" }) as any as S.Schema<GoogleTypeDate>;
 
 /** Options for the date field type. */
@@ -375,36 +503,47 @@ export interface GoogleAppsDriveLabelsV2betaFieldDateOptions {
   /** Output only. ICU date format. */
   dateFormat?: string;
 }
-export const GoogleAppsDriveLabelsV2betaFieldDateOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dateFormatType": S.optional(GoogleAppsDriveLabelsV2betaFieldDateOptionsDateFormatTypeEnum),
-  "minValue": S.optional(GoogleTypeDate),
-  "maxValue": S.optional(GoogleTypeDate),
-  "dateFormat": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaFieldDateOptions" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaFieldDateOptions>;
+export const GoogleAppsDriveLabelsV2betaFieldDateOptions =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      dateFormatType: S.optional(
+        GoogleAppsDriveLabelsV2betaFieldDateOptionsDateFormatTypeEnum,
+      ),
+      minValue: S.optional(GoogleTypeDate),
+      maxValue: S.optional(GoogleTypeDate),
+      dateFormat: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsDriveLabelsV2betaFieldDateOptions",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaFieldDateOptions>;
 
 /** Options for a multi-valued variant of an associated field type. */
 export interface GoogleAppsDriveLabelsV2betaFieldListOptions {
   /** Maximum number of entries permitted. */
   maxEntries?: number;
 }
-export const GoogleAppsDriveLabelsV2betaFieldListOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "maxEntries": S.optional(S.Number),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaFieldListOptions" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaFieldListOptions>;
+export const GoogleAppsDriveLabelsV2betaFieldListOptions =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      maxEntries: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsDriveLabelsV2betaFieldListOptions",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaFieldListOptions>;
 
 /** Options for the user field type. */
 export interface GoogleAppsDriveLabelsV2betaFieldUserOptions {
   /** When specified, indicates that this field supports a list of values. Once the field is published, this cannot be changed. */
   listOptions?: GoogleAppsDriveLabelsV2betaFieldListOptions;
 }
-export const GoogleAppsDriveLabelsV2betaFieldUserOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "listOptions": S.optional(GoogleAppsDriveLabelsV2betaFieldListOptions),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaFieldUserOptions" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaFieldUserOptions>;
+export const GoogleAppsDriveLabelsV2betaFieldUserOptions =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      listOptions: S.optional(GoogleAppsDriveLabelsV2betaFieldListOptions),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsDriveLabelsV2betaFieldUserOptions",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaFieldUserOptions>;
 
 /** The basic properties of the field. */
 export interface GoogleAppsDriveLabelsV2betaFieldProperties {
@@ -415,13 +554,16 @@ export interface GoogleAppsDriveLabelsV2betaFieldProperties {
   /** Required. The display text to show in the UI identifying this field. */
   displayName?: string;
 }
-export const GoogleAppsDriveLabelsV2betaFieldProperties = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "required": S.optional(S.Boolean),
-  "insertBeforeField": S.optional(S.String),
-  "displayName": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaFieldProperties" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaFieldProperties>;
+export const GoogleAppsDriveLabelsV2betaFieldProperties =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      required: S.optional(S.Boolean),
+      insertBeforeField: S.optional(S.String),
+      displayName: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsDriveLabelsV2betaFieldProperties",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaFieldProperties>;
 
 /** UI display hints for rendering a field. */
 export interface GoogleAppsDriveLabelsV2betaFieldDisplayHints {
@@ -434,14 +576,17 @@ export interface GoogleAppsDriveLabelsV2betaFieldDisplayHints {
   /** This field should be shown in the apply menu when applying values to a Drive item. */
   shownInApply?: boolean;
 }
-export const GoogleAppsDriveLabelsV2betaFieldDisplayHints = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "required": S.optional(S.Boolean),
-  "disabled": S.optional(S.Boolean),
-  "hiddenInSearch": S.optional(S.Boolean),
-  "shownInApply": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaFieldDisplayHints" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaFieldDisplayHints>;
+export const GoogleAppsDriveLabelsV2betaFieldDisplayHints =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      required: S.optional(S.Boolean),
+      disabled: S.optional(S.Boolean),
+      hiddenInSearch: S.optional(S.Boolean),
+      shownInApply: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsDriveLabelsV2betaFieldDisplayHints",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaFieldDisplayHints>;
 
 /** The capabilities related to this field on applied metadata. */
 export interface GoogleAppsDriveLabelsV2betaFieldAppliedCapabilities {
@@ -452,13 +597,16 @@ export interface GoogleAppsDriveLabelsV2betaFieldAppliedCapabilities {
   /** Whether the user can read related applied metadata on items. */
   canRead?: boolean;
 }
-export const GoogleAppsDriveLabelsV2betaFieldAppliedCapabilities = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "canSearch": S.optional(S.Boolean),
-  "canWrite": S.optional(S.Boolean),
-  "canRead": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaFieldAppliedCapabilities" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaFieldAppliedCapabilities>;
+export const GoogleAppsDriveLabelsV2betaFieldAppliedCapabilities =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      canSearch: S.optional(S.Boolean),
+      canWrite: S.optional(S.Boolean),
+      canRead: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsDriveLabelsV2betaFieldAppliedCapabilities",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaFieldAppliedCapabilities>;
 
 /** The capabilities related to this field when editing the field. */
 export interface GoogleAppsDriveLabelsV2betaFieldSchemaCapabilities {
@@ -471,14 +619,17 @@ export interface GoogleAppsDriveLabelsV2betaFieldSchemaCapabilities {
   /** Whether the user can disable this field. The user must have permission and this field must not already be disabled. */
   canDisable?: boolean;
 }
-export const GoogleAppsDriveLabelsV2betaFieldSchemaCapabilities = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "canDelete": S.optional(S.Boolean),
-  "canEnable": S.optional(S.Boolean),
-  "canUpdate": S.optional(S.Boolean),
-  "canDisable": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaFieldSchemaCapabilities" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaFieldSchemaCapabilities>;
+export const GoogleAppsDriveLabelsV2betaFieldSchemaCapabilities =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      canDelete: S.optional(S.Boolean),
+      canEnable: S.optional(S.Boolean),
+      canUpdate: S.optional(S.Boolean),
+      canDisable: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsDriveLabelsV2betaFieldSchemaCapabilities",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaFieldSchemaCapabilities>;
 
 /** Represents a color in the RGBA color space. This representation is designed for simplicity of conversion to and from color representations in various languages over compactness. For example, the fields of this representation can be trivially provided to the constructor of `java.awt.Color` in Java; it can also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha` method in iOS; and, with just a little work, it can be easily formatted into a CSS `rgba()` string in JavaScript. This reference page doesn't have information about the absolute color space that should be used to interpret the RGB value—for example, sRGB, Adobe RGB, DCI-P3, and BT.2020. By default, applications should assume the sRGB color space. When color equality needs to be decided, implementations, unless documented otherwise, treat two colors as equal if all their red, green, blue, and alpha values each differ by at most `1e-5`. Example (Java): import com.google.type.Color; // ... public static java.awt.Color fromProto(Color protocolor) { float alpha = protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); } public static Color toProto(java.awt.Color color) { float red = (float) color.getRed(); float green = (float) color.getGreen(); float blue = (float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator) .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255) { result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .build()); } return resultBuilder.build(); } // ... Example (iOS / Obj-C): // ... static UIColor* fromProto(Color* protocolor) { float red = [protocolor red]; float green = [protocolor green]; float blue = [protocolor blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (alpha_wrapper != nil) { alpha = [alpha_wrapper value]; } return [UIColor colorWithRed:red green:green blue:blue alpha:alpha]; } static Color* toProto(UIColor* color) { CGFloat red, green, blue, alpha; if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) { return nil; } Color* result = [[Color alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:blue]; if (alpha <= 0.9999) { [result setAlpha:floatWrapperWithValue(alpha)]; } [result autorelease]; return result; } // ... Example (JavaScript): // ... var protoToCssColor = function(rgb_color) { var redFrac = rgb_color.red || 0.0; var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0; var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255); var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) { return rgbToCssColor(red, green, blue); } var alphaFrac = rgb_color.alpha.value || 0.0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',', alphaFrac, ')'].join(''); }; var rgbToCssColor = function(red, green, blue) { var rgbNumber = new Number((red << 16) | (green << 8) | blue); var hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) { resultBuilder.push('0'); } resultBuilder.push(hexString); return resultBuilder.join(''); }; // ... */
 export interface GoogleTypeColor {
@@ -492,13 +643,15 @@ export interface GoogleTypeColor {
   alpha?: number;
 }
 export const GoogleTypeColor = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "red": S.optional(S.Number),
-  "green": S.optional(S.Number),
-  "blue": S.optional(S.Number),
-  "alpha": S.optional(S.Number),
-}),
-).annotate({ identifier: "GoogleTypeColor" }) as any as S.Schema<GoogleTypeColor>;
+  S.Struct({
+    red: S.optional(S.Number),
+    green: S.optional(S.Number),
+    blue: S.optional(S.Number),
+    alpha: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "GoogleTypeColor",
+}) as any as S.Schema<GoogleTypeColor>;
 
 /** Badge status of the label. */
 export interface GoogleAppsDriveLabelsV2betaBadgeConfig {
@@ -507,12 +660,15 @@ export interface GoogleAppsDriveLabelsV2betaBadgeConfig {
   /** Override the default global priority of this badge. When set to 0, the default priority heuristic is used. */
   priorityOverride?: string;
 }
-export const GoogleAppsDriveLabelsV2betaBadgeConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "color": S.optional(GoogleTypeColor),
-  "priorityOverride": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaBadgeConfig" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaBadgeConfig>;
+export const GoogleAppsDriveLabelsV2betaBadgeConfig = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      color: S.optional(GoogleTypeColor),
+      priorityOverride: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "GoogleAppsDriveLabelsV2betaBadgeConfig",
+}) as any as S.Schema<GoogleAppsDriveLabelsV2betaBadgeConfig>;
 
 /** Basic properties of the choice. */
 export interface GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceProperties {
@@ -525,14 +681,18 @@ export interface GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoicePropertie
   /** Required. The display text to show in the UI identifying this field. */
   displayName?: string;
 }
-export const GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceProperties = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "description": S.optional(S.String),
-  "badgeConfig": S.optional(GoogleAppsDriveLabelsV2betaBadgeConfig),
-  "insertBeforeChoice": S.optional(S.String),
-  "displayName": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceProperties" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceProperties>;
+export const GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceProperties =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      description: S.optional(S.String),
+      badgeConfig: S.optional(GoogleAppsDriveLabelsV2betaBadgeConfig),
+      insertBeforeChoice: S.optional(S.String),
+      displayName: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceProperties",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceProperties>;
 
 /** The color derived from BadgeConfig and changed to the closest recommended supported color. */
 export interface GoogleAppsDriveLabelsV2betaBadgeColors {
@@ -543,13 +703,16 @@ export interface GoogleAppsDriveLabelsV2betaBadgeColors {
   /** Output only. Badge background that pairs with the foreground. */
   backgroundColor?: GoogleTypeColor;
 }
-export const GoogleAppsDriveLabelsV2betaBadgeColors = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "soloColor": S.optional(GoogleTypeColor),
-  "foregroundColor": S.optional(GoogleTypeColor),
-  "backgroundColor": S.optional(GoogleTypeColor),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaBadgeColors" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaBadgeColors>;
+export const GoogleAppsDriveLabelsV2betaBadgeColors = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      soloColor: S.optional(GoogleTypeColor),
+      foregroundColor: S.optional(GoogleTypeColor),
+      backgroundColor: S.optional(GoogleTypeColor),
+    }),
+).annotate({
+  identifier: "GoogleAppsDriveLabelsV2betaBadgeColors",
+}) as any as S.Schema<GoogleAppsDriveLabelsV2betaBadgeColors>;
 
 /** UI display hints for rendering an option. */
 export interface GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceDisplayHints {
@@ -566,16 +729,20 @@ export interface GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceDisplayHi
   /** This option should be hidden in the search menu when searching for Drive items. */
   hiddenInSearch?: boolean;
 }
-export const GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceDisplayHints = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "shownInApply": S.optional(S.Boolean),
-  "darkBadgeColors": S.optional(GoogleAppsDriveLabelsV2betaBadgeColors),
-  "disabled": S.optional(S.Boolean),
-  "badgePriority": S.optional(S.String),
-  "badgeColors": S.optional(GoogleAppsDriveLabelsV2betaBadgeColors),
-  "hiddenInSearch": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceDisplayHints" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceDisplayHints>;
+export const GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceDisplayHints =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      shownInApply: S.optional(S.Boolean),
+      darkBadgeColors: S.optional(GoogleAppsDriveLabelsV2betaBadgeColors),
+      disabled: S.optional(S.Boolean),
+      badgePriority: S.optional(S.String),
+      badgeColors: S.optional(GoogleAppsDriveLabelsV2betaBadgeColors),
+      hiddenInSearch: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceDisplayHints",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceDisplayHints>;
 
 /** The capabilities related to this choice on applied metadata. */
 export interface GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceAppliedCapabilities {
@@ -586,13 +753,17 @@ export interface GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceAppliedCa
   /** Whether the user can use this choice in search queries. */
   canSearch?: boolean;
 }
-export const GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceAppliedCapabilities = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "canSelect": S.optional(S.Boolean),
-  "canRead": S.optional(S.Boolean),
-  "canSearch": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceAppliedCapabilities" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceAppliedCapabilities>;
+export const GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceAppliedCapabilities =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      canSelect: S.optional(S.Boolean),
+      canRead: S.optional(S.Boolean),
+      canSearch: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceAppliedCapabilities",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceAppliedCapabilities>;
 
 /** The capabilities related to this choice when editing the choice. */
 export interface GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceSchemaCapabilities {
@@ -605,14 +776,18 @@ export interface GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceSchemaCap
   /** Whether the user can enable this choice. */
   canEnable?: boolean;
 }
-export const GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceSchemaCapabilities = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "canDisable": S.optional(S.Boolean),
-  "canUpdate": S.optional(S.Boolean),
-  "canDelete": S.optional(S.Boolean),
-  "canEnable": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceSchemaCapabilities" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceSchemaCapabilities>;
+export const GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceSchemaCapabilities =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      canDisable: S.optional(S.Boolean),
+      canUpdate: S.optional(S.Boolean),
+      canDelete: S.optional(S.Boolean),
+      canEnable: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceSchemaCapabilities",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceSchemaCapabilities>;
 
 /** Selection field choice. */
 export interface GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoice {
@@ -647,28 +822,43 @@ export interface GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoice {
   /** Output only. The user who published this choice. This value has no meaning when the choice is not published. */
   publisher?: GoogleAppsDriveLabelsV2betaUserInfo;
 }
-export const GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoice = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updater": S.optional(GoogleAppsDriveLabelsV2betaUserInfo),
-  "lifecycle": S.optional(GoogleAppsDriveLabelsV2betaLifecycle),
-  "creator": S.optional(GoogleAppsDriveLabelsV2betaUserInfo),
-  "disableTime": S.optional(S.String),
-  "id": S.optional(S.String),
-  "properties": S.optional(GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceProperties),
-  "lockStatus": S.optional(GoogleAppsDriveLabelsV2betaLockStatus),
-  "displayHints": S.optional(GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceDisplayHints),
-  "appliedCapabilities": S.optional(GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceAppliedCapabilities),
-  "updateTime": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "disabler": S.optional(GoogleAppsDriveLabelsV2betaUserInfo),
-  "schemaCapabilities": S.optional(GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceSchemaCapabilities),
-  "publishTime": S.optional(S.String),
-  "publisher": S.optional(GoogleAppsDriveLabelsV2betaUserInfo),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoice" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoice>;
+export const GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoice =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      updater: S.optional(GoogleAppsDriveLabelsV2betaUserInfo),
+      lifecycle: S.optional(GoogleAppsDriveLabelsV2betaLifecycle),
+      creator: S.optional(GoogleAppsDriveLabelsV2betaUserInfo),
+      disableTime: S.optional(S.String),
+      id: S.optional(S.String),
+      properties: S.optional(
+        GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceProperties,
+      ),
+      lockStatus: S.optional(GoogleAppsDriveLabelsV2betaLockStatus),
+      displayHints: S.optional(
+        GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceDisplayHints,
+      ),
+      appliedCapabilities: S.optional(
+        GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceAppliedCapabilities,
+      ),
+      updateTime: S.optional(S.String),
+      createTime: S.optional(S.String),
+      disabler: S.optional(GoogleAppsDriveLabelsV2betaUserInfo),
+      schemaCapabilities: S.optional(
+        GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceSchemaCapabilities,
+      ),
+      publishTime: S.optional(S.String),
+      publisher: S.optional(GoogleAppsDriveLabelsV2betaUserInfo),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoice",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoice>;
 
-export type GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceList = ReadonlyArray<GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoice>;
-export const GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceList = /*@__PURE__*/ S.Array(GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoice) as any as S.Schema<GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceList>;
+export type GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceList =
+  ReadonlyArray<GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoice>;
+export const GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceList =
+  /*@__PURE__*/ S.Array(
+    GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoice,
+  ) as any as S.Schema<GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceList>;
 
 /** Options for the selection field type. */
 export interface GoogleAppsDriveLabelsV2betaFieldSelectionOptions {
@@ -677,12 +867,17 @@ export interface GoogleAppsDriveLabelsV2betaFieldSelectionOptions {
   /** The options available for this selection field. The list order is consistent, and modified with `insert_before_choice`. */
   choices?: GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceList;
 }
-export const GoogleAppsDriveLabelsV2betaFieldSelectionOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "listOptions": S.optional(GoogleAppsDriveLabelsV2betaFieldListOptions),
-  "choices": S.optional(GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceList),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaFieldSelectionOptions" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaFieldSelectionOptions>;
+export const GoogleAppsDriveLabelsV2betaFieldSelectionOptions =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      listOptions: S.optional(GoogleAppsDriveLabelsV2betaFieldListOptions),
+      choices: S.optional(
+        GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceList,
+      ),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsDriveLabelsV2betaFieldSelectionOptions",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaFieldSelectionOptions>;
 
 /** Defines a field that has a display name, data type, and other configuration options. This field defines the kind of metadata that may be set on a Drive item. */
 export interface GoogleAppsDriveLabelsV2betaField {
@@ -728,32 +923,43 @@ export interface GoogleAppsDriveLabelsV2betaField {
   publisher?: GoogleAppsDriveLabelsV2betaUserInfo;
 }
 export const GoogleAppsDriveLabelsV2betaField = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "textOptions": S.optional(GoogleAppsDriveLabelsV2betaFieldTextOptions),
-  "updater": S.optional(GoogleAppsDriveLabelsV2betaUserInfo),
-  "integerOptions": S.optional(GoogleAppsDriveLabelsV2betaFieldIntegerOptions),
-  "lifecycle": S.optional(GoogleAppsDriveLabelsV2betaLifecycle),
-  "creator": S.optional(GoogleAppsDriveLabelsV2betaUserInfo),
-  "disableTime": S.optional(S.String),
-  "id": S.optional(S.String),
-  "dateOptions": S.optional(GoogleAppsDriveLabelsV2betaFieldDateOptions),
-  "userOptions": S.optional(GoogleAppsDriveLabelsV2betaFieldUserOptions),
-  "properties": S.optional(GoogleAppsDriveLabelsV2betaFieldProperties),
-  "lockStatus": S.optional(GoogleAppsDriveLabelsV2betaLockStatus),
-  "displayHints": S.optional(GoogleAppsDriveLabelsV2betaFieldDisplayHints),
-  "appliedCapabilities": S.optional(GoogleAppsDriveLabelsV2betaFieldAppliedCapabilities),
-  "updateTime": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "disabler": S.optional(GoogleAppsDriveLabelsV2betaUserInfo),
-  "schemaCapabilities": S.optional(GoogleAppsDriveLabelsV2betaFieldSchemaCapabilities),
-  "selectionOptions": S.optional(GoogleAppsDriveLabelsV2betaFieldSelectionOptions),
-  "queryKey": S.optional(S.String),
-  "publisher": S.optional(GoogleAppsDriveLabelsV2betaUserInfo),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaField" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaField>;
+  S.Struct({
+    textOptions: S.optional(GoogleAppsDriveLabelsV2betaFieldTextOptions),
+    updater: S.optional(GoogleAppsDriveLabelsV2betaUserInfo),
+    integerOptions: S.optional(GoogleAppsDriveLabelsV2betaFieldIntegerOptions),
+    lifecycle: S.optional(GoogleAppsDriveLabelsV2betaLifecycle),
+    creator: S.optional(GoogleAppsDriveLabelsV2betaUserInfo),
+    disableTime: S.optional(S.String),
+    id: S.optional(S.String),
+    dateOptions: S.optional(GoogleAppsDriveLabelsV2betaFieldDateOptions),
+    userOptions: S.optional(GoogleAppsDriveLabelsV2betaFieldUserOptions),
+    properties: S.optional(GoogleAppsDriveLabelsV2betaFieldProperties),
+    lockStatus: S.optional(GoogleAppsDriveLabelsV2betaLockStatus),
+    displayHints: S.optional(GoogleAppsDriveLabelsV2betaFieldDisplayHints),
+    appliedCapabilities: S.optional(
+      GoogleAppsDriveLabelsV2betaFieldAppliedCapabilities,
+    ),
+    updateTime: S.optional(S.String),
+    createTime: S.optional(S.String),
+    disabler: S.optional(GoogleAppsDriveLabelsV2betaUserInfo),
+    schemaCapabilities: S.optional(
+      GoogleAppsDriveLabelsV2betaFieldSchemaCapabilities,
+    ),
+    selectionOptions: S.optional(
+      GoogleAppsDriveLabelsV2betaFieldSelectionOptions,
+    ),
+    queryKey: S.optional(S.String),
+    publisher: S.optional(GoogleAppsDriveLabelsV2betaUserInfo),
+  }),
+).annotate({
+  identifier: "GoogleAppsDriveLabelsV2betaField",
+}) as any as S.Schema<GoogleAppsDriveLabelsV2betaField>;
 
-export type GoogleAppsDriveLabelsV2betaFieldList = ReadonlyArray<GoogleAppsDriveLabelsV2betaField>;
-export const GoogleAppsDriveLabelsV2betaFieldList = /*@__PURE__*/ S.Array(GoogleAppsDriveLabelsV2betaField) as any as S.Schema<GoogleAppsDriveLabelsV2betaFieldList>;
+export type GoogleAppsDriveLabelsV2betaFieldList =
+  ReadonlyArray<GoogleAppsDriveLabelsV2betaField>;
+export const GoogleAppsDriveLabelsV2betaFieldList = /*@__PURE__*/ S.Array(
+  GoogleAppsDriveLabelsV2betaField,
+) as any as S.Schema<GoogleAppsDriveLabelsV2betaFieldList>;
 
 /** The capabilities a user has on this label's applied metadata. */
 export interface GoogleAppsDriveLabelsV2betaLabelAppliedCapabilities {
@@ -764,30 +970,48 @@ export interface GoogleAppsDriveLabelsV2betaLabelAppliedCapabilities {
   /** Whether the user can remove this label from items. */
   canRemove?: boolean;
 }
-export const GoogleAppsDriveLabelsV2betaLabelAppliedCapabilities = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "canRead": S.optional(S.Boolean),
-  "canApply": S.optional(S.Boolean),
-  "canRemove": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaLabelAppliedCapabilities" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaLabelAppliedCapabilities>;
+export const GoogleAppsDriveLabelsV2betaLabelAppliedCapabilities =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      canRead: S.optional(S.Boolean),
+      canApply: S.optional(S.Boolean),
+      canRemove: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsDriveLabelsV2betaLabelAppliedCapabilities",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaLabelAppliedCapabilities>;
 
-export type GoogleAppsDriveLabelsV2betaLabelAppliedLabelPolicyCopyModeEnum = "COPY_MODE_UNSPECIFIED" | "DO_NOT_COPY" | "ALWAYS_COPY" | "COPY_APPLIABLE";
-export const GoogleAppsDriveLabelsV2betaLabelAppliedLabelPolicyCopyModeEnum = /*@__PURE__*/ S.String;
+export type GoogleAppsDriveLabelsV2betaLabelAppliedLabelPolicyCopyModeEnum =
+  | "COPY_MODE_UNSPECIFIED"
+  | "DO_NOT_COPY"
+  | "ALWAYS_COPY"
+  | "COPY_APPLIABLE";
+export const GoogleAppsDriveLabelsV2betaLabelAppliedLabelPolicyCopyModeEnum =
+  /*@__PURE__*/ S.String;
 
 /** Behavior of this label when it's applied to Drive items. */
 export interface GoogleAppsDriveLabelsV2betaLabelAppliedLabelPolicy {
   /** Indicates how the applied label and field values should be copied when a Drive item is copied. */
   copyMode?: GoogleAppsDriveLabelsV2betaLabelAppliedLabelPolicyCopyModeEnum;
 }
-export const GoogleAppsDriveLabelsV2betaLabelAppliedLabelPolicy = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "copyMode": S.optional(GoogleAppsDriveLabelsV2betaLabelAppliedLabelPolicyCopyModeEnum),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaLabelAppliedLabelPolicy" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaLabelAppliedLabelPolicy>;
+export const GoogleAppsDriveLabelsV2betaLabelAppliedLabelPolicy =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      copyMode: S.optional(
+        GoogleAppsDriveLabelsV2betaLabelAppliedLabelPolicyCopyModeEnum,
+      ),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsDriveLabelsV2betaLabelAppliedLabelPolicy",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaLabelAppliedLabelPolicy>;
 
-export type GoogleAppsDriveLabelsV2betaLabelLabelTypeEnum = "LABEL_TYPE_UNSPECIFIED" | "SHARED" | "ADMIN" | "GOOGLE_APP";
-export const GoogleAppsDriveLabelsV2betaLabelLabelTypeEnum = /*@__PURE__*/ S.String;
+export type GoogleAppsDriveLabelsV2betaLabelLabelTypeEnum =
+  | "LABEL_TYPE_UNSPECIFIED"
+  | "SHARED"
+  | "ADMIN"
+  | "GOOGLE_APP";
+export const GoogleAppsDriveLabelsV2betaLabelLabelTypeEnum =
+  /*@__PURE__*/ S.String;
 
 /** The capabilities related to this label when editing the label. */
 export interface GoogleAppsDriveLabelsV2betaLabelSchemaCapabilities {
@@ -800,42 +1024,61 @@ export interface GoogleAppsDriveLabelsV2betaLabelSchemaCapabilities {
   /** Whether the user can enable this label. The user must have permission and this label must be disabled. */
   canEnable?: boolean;
 }
-export const GoogleAppsDriveLabelsV2betaLabelSchemaCapabilities = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "canDisable": S.optional(S.Boolean),
-  "canUpdate": S.optional(S.Boolean),
-  "canDelete": S.optional(S.Boolean),
-  "canEnable": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaLabelSchemaCapabilities" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaLabelSchemaCapabilities>;
+export const GoogleAppsDriveLabelsV2betaLabelSchemaCapabilities =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      canDisable: S.optional(S.Boolean),
+      canUpdate: S.optional(S.Boolean),
+      canDelete: S.optional(S.Boolean),
+      canEnable: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsDriveLabelsV2betaLabelSchemaCapabilities",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaLabelSchemaCapabilities>;
 
-export type GoogleAppsDriveLabelsV2betaLabelEnabledAppSettingsEnabledAppAppEnum = "APP_UNSPECIFIED" | "DRIVE" | "GMAIL";
-export const GoogleAppsDriveLabelsV2betaLabelEnabledAppSettingsEnabledAppAppEnum = /*@__PURE__*/ S.String;
+export type GoogleAppsDriveLabelsV2betaLabelEnabledAppSettingsEnabledAppAppEnum =
+  "APP_UNSPECIFIED" | "DRIVE" | "GMAIL";
+export const GoogleAppsDriveLabelsV2betaLabelEnabledAppSettingsEnabledAppAppEnum =
+  /*@__PURE__*/ S.String;
 
 /** An app where the label can be used. */
 export interface GoogleAppsDriveLabelsV2betaLabelEnabledAppSettingsEnabledApp {
   /** Optional. The name of the app. */
   app?: GoogleAppsDriveLabelsV2betaLabelEnabledAppSettingsEnabledAppAppEnum;
 }
-export const GoogleAppsDriveLabelsV2betaLabelEnabledAppSettingsEnabledApp = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "app": S.optional(GoogleAppsDriveLabelsV2betaLabelEnabledAppSettingsEnabledAppAppEnum),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaLabelEnabledAppSettingsEnabledApp" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaLabelEnabledAppSettingsEnabledApp>;
+export const GoogleAppsDriveLabelsV2betaLabelEnabledAppSettingsEnabledApp =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      app: S.optional(
+        GoogleAppsDriveLabelsV2betaLabelEnabledAppSettingsEnabledAppAppEnum,
+      ),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsDriveLabelsV2betaLabelEnabledAppSettingsEnabledApp",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaLabelEnabledAppSettingsEnabledApp>;
 
-export type GoogleAppsDriveLabelsV2betaLabelEnabledAppSettingsEnabledAppList = ReadonlyArray<GoogleAppsDriveLabelsV2betaLabelEnabledAppSettingsEnabledApp>;
-export const GoogleAppsDriveLabelsV2betaLabelEnabledAppSettingsEnabledAppList = /*@__PURE__*/ S.Array(GoogleAppsDriveLabelsV2betaLabelEnabledAppSettingsEnabledApp) as any as S.Schema<GoogleAppsDriveLabelsV2betaLabelEnabledAppSettingsEnabledAppList>;
+export type GoogleAppsDriveLabelsV2betaLabelEnabledAppSettingsEnabledAppList =
+  ReadonlyArray<GoogleAppsDriveLabelsV2betaLabelEnabledAppSettingsEnabledApp>;
+export const GoogleAppsDriveLabelsV2betaLabelEnabledAppSettingsEnabledAppList =
+  /*@__PURE__*/ S.Array(
+    GoogleAppsDriveLabelsV2betaLabelEnabledAppSettingsEnabledApp,
+  ) as any as S.Schema<GoogleAppsDriveLabelsV2betaLabelEnabledAppSettingsEnabledAppList>;
 
 /** Describes the Google Workspace apps in which the label can be used. */
 export interface GoogleAppsDriveLabelsV2betaLabelEnabledAppSettings {
   /** Optional. The list of apps where the label can be used. */
   enabledApps?: GoogleAppsDriveLabelsV2betaLabelEnabledAppSettingsEnabledAppList;
 }
-export const GoogleAppsDriveLabelsV2betaLabelEnabledAppSettings = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "enabledApps": S.optional(GoogleAppsDriveLabelsV2betaLabelEnabledAppSettingsEnabledAppList),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaLabelEnabledAppSettings" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaLabelEnabledAppSettings>;
+export const GoogleAppsDriveLabelsV2betaLabelEnabledAppSettings =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabledApps: S.optional(
+        GoogleAppsDriveLabelsV2betaLabelEnabledAppSettingsEnabledAppList,
+      ),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsDriveLabelsV2betaLabelEnabledAppSettings",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaLabelEnabledAppSettings>;
 
 /** A label defines a taxonomy that can be applied to Drive items in order to organize and search across items. Labels can be simple strings, or can contain fields that describe additional metadata that can be further used to organize and search Drive items. */
 export interface GoogleAppsDriveLabelsV2betaLabel {
@@ -887,32 +1130,42 @@ export interface GoogleAppsDriveLabelsV2betaLabel {
   publishTime?: string;
 }
 export const GoogleAppsDriveLabelsV2betaLabel = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "revisionCreator": S.optional(GoogleAppsDriveLabelsV2betaUserInfo),
-  "revisionCreateTime": S.optional(S.String),
-  "id": S.optional(S.String),
-  "displayHints": S.optional(GoogleAppsDriveLabelsV2betaLabelDisplayHints),
-  "properties": S.optional(GoogleAppsDriveLabelsV2betaLabelProperties),
-  "lockStatus": S.optional(GoogleAppsDriveLabelsV2betaLockStatus),
-  "fields": S.optional(GoogleAppsDriveLabelsV2betaFieldList),
-  "disableTime": S.optional(S.String),
-  "creator": S.optional(GoogleAppsDriveLabelsV2betaUserInfo),
-  "lifecycle": S.optional(GoogleAppsDriveLabelsV2betaLifecycle),
-  "appliedCapabilities": S.optional(GoogleAppsDriveLabelsV2betaLabelAppliedCapabilities),
-  "name": S.optional(S.String),
-  "disabler": S.optional(GoogleAppsDriveLabelsV2betaUserInfo),
-  "appliedLabelPolicy": S.optional(GoogleAppsDriveLabelsV2betaLabelAppliedLabelPolicy),
-  "createTime": S.optional(S.String),
-  "labelType": S.optional(GoogleAppsDriveLabelsV2betaLabelLabelTypeEnum),
-  "revisionId": S.optional(S.String),
-  "customer": S.optional(S.String),
-  "schemaCapabilities": S.optional(GoogleAppsDriveLabelsV2betaLabelSchemaCapabilities),
-  "learnMoreUri": S.optional(S.String),
-  "publisher": S.optional(GoogleAppsDriveLabelsV2betaUserInfo),
-  "enabledAppSettings": S.optional(GoogleAppsDriveLabelsV2betaLabelEnabledAppSettings),
-  "publishTime": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaLabel" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaLabel>;
+  S.Struct({
+    revisionCreator: S.optional(GoogleAppsDriveLabelsV2betaUserInfo),
+    revisionCreateTime: S.optional(S.String),
+    id: S.optional(S.String),
+    displayHints: S.optional(GoogleAppsDriveLabelsV2betaLabelDisplayHints),
+    properties: S.optional(GoogleAppsDriveLabelsV2betaLabelProperties),
+    lockStatus: S.optional(GoogleAppsDriveLabelsV2betaLockStatus),
+    fields: S.optional(GoogleAppsDriveLabelsV2betaFieldList),
+    disableTime: S.optional(S.String),
+    creator: S.optional(GoogleAppsDriveLabelsV2betaUserInfo),
+    lifecycle: S.optional(GoogleAppsDriveLabelsV2betaLifecycle),
+    appliedCapabilities: S.optional(
+      GoogleAppsDriveLabelsV2betaLabelAppliedCapabilities,
+    ),
+    name: S.optional(S.String),
+    disabler: S.optional(GoogleAppsDriveLabelsV2betaUserInfo),
+    appliedLabelPolicy: S.optional(
+      GoogleAppsDriveLabelsV2betaLabelAppliedLabelPolicy,
+    ),
+    createTime: S.optional(S.String),
+    labelType: S.optional(GoogleAppsDriveLabelsV2betaLabelLabelTypeEnum),
+    revisionId: S.optional(S.String),
+    customer: S.optional(S.String),
+    schemaCapabilities: S.optional(
+      GoogleAppsDriveLabelsV2betaLabelSchemaCapabilities,
+    ),
+    learnMoreUri: S.optional(S.String),
+    publisher: S.optional(GoogleAppsDriveLabelsV2betaUserInfo),
+    enabledAppSettings: S.optional(
+      GoogleAppsDriveLabelsV2betaLabelEnabledAppSettings,
+    ),
+    publishTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleAppsDriveLabelsV2betaLabel",
+}) as any as S.Schema<GoogleAppsDriveLabelsV2betaLabel>;
 
 export interface CreateLabelsRequest {
   /** The BCP-47 language code to use for evaluating localized field labels in response. When not specified, values in the default configured language will be used. */
@@ -923,12 +1176,20 @@ export interface CreateLabelsRequest {
   body?: GoogleAppsDriveLabelsV2betaLabel;
 }
 export const CreateLabelsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "languageCode": S.optional(S.String.pipe(T.Query())),
-  "useAdminAccess": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(GoogleAppsDriveLabelsV2betaLabel.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2beta/labels","baseUrl":"https://drivelabels.googleapis.com/"})),
-).annotate({ identifier: "CreateLabelsRequest" }) as any as S.Schema<CreateLabelsRequest>;
+  S.Struct({
+    languageCode: S.optional(S.String.pipe(T.Query())),
+    useAdminAccess: S.optional(S.Boolean.pipe(T.Query())),
+    body: S.optional(GoogleAppsDriveLabelsV2betaLabel.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v2beta/labels",
+      baseUrl: "https://drivelabels.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateLabelsRequest",
+}) as any as S.Schema<CreateLabelsRequest>;
 
 export interface CreateLabelsPermissionsRequest {
   /** Required. The parent label resource name on the label permission is created. Format: `labels/{label}`. */
@@ -939,12 +1200,22 @@ export interface CreateLabelsPermissionsRequest {
   body?: GoogleAppsDriveLabelsV2betaLabelPermission;
 }
 export const CreateLabelsPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "useAdminAccess": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(GoogleAppsDriveLabelsV2betaLabelPermission.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2beta/{+parent}/permissions","baseUrl":"https://drivelabels.googleapis.com/"})),
-).annotate({ identifier: "CreateLabelsPermissionsRequest" }) as any as S.Schema<CreateLabelsPermissionsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    useAdminAccess: S.optional(S.Boolean.pipe(T.Query())),
+    body: S.optional(
+      GoogleAppsDriveLabelsV2betaLabelPermission.pipe(T.HttpBody()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v2beta/{+parent}/permissions",
+      baseUrl: "https://drivelabels.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateLabelsPermissionsRequest",
+}) as any as S.Schema<CreateLabelsPermissionsRequest>;
 
 export interface CreateLabelsRevisionsPermissionsRequest {
   /** Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the label before allowing access. */
@@ -954,13 +1225,24 @@ export interface CreateLabelsRevisionsPermissionsRequest {
   /** Request body */
   body?: GoogleAppsDriveLabelsV2betaLabelPermission;
 }
-export const CreateLabelsRevisionsPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "useAdminAccess": S.optional(S.Boolean.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleAppsDriveLabelsV2betaLabelPermission.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2beta/{+parent}/permissions","baseUrl":"https://drivelabels.googleapis.com/"})),
-).annotate({ identifier: "CreateLabelsRevisionsPermissionsRequest" }) as any as S.Schema<CreateLabelsRevisionsPermissionsRequest>;
+export const CreateLabelsRevisionsPermissionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      useAdminAccess: S.optional(S.Boolean.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleAppsDriveLabelsV2betaLabelPermission.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v2beta/{+parent}/permissions",
+        baseUrl: "https://drivelabels.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateLabelsRevisionsPermissionsRequest",
+}) as any as S.Schema<CreateLabelsRevisionsPermissionsRequest>;
 
 export interface DeleteLabelsRequest {
   /** Required. Label resource name. */
@@ -971,12 +1253,20 @@ export interface DeleteLabelsRequest {
   useAdminAccess?: boolean;
 }
 export const DeleteLabelsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "writeControl.requiredRevisionId": S.optional(S.String.pipe(T.Query())),
-  "useAdminAccess": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v2beta/{+name}","baseUrl":"https://drivelabels.googleapis.com/"})),
-).annotate({ identifier: "DeleteLabelsRequest" }) as any as S.Schema<DeleteLabelsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    "writeControl.requiredRevisionId": S.optional(S.String.pipe(T.Query())),
+    useAdminAccess: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v2beta/{+name}",
+      baseUrl: "https://drivelabels.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteLabelsRequest",
+}) as any as S.Schema<DeleteLabelsRequest>;
 
 export interface DeleteLabelsPermissionsRequest {
   /** Required. Label permission resource name. */
@@ -985,11 +1275,19 @@ export interface DeleteLabelsPermissionsRequest {
   useAdminAccess?: boolean;
 }
 export const DeleteLabelsPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "useAdminAccess": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v2beta/{+name}","baseUrl":"https://drivelabels.googleapis.com/"})),
-).annotate({ identifier: "DeleteLabelsPermissionsRequest" }) as any as S.Schema<DeleteLabelsPermissionsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    useAdminAccess: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v2beta/{+name}",
+      baseUrl: "https://drivelabels.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteLabelsPermissionsRequest",
+}) as any as S.Schema<DeleteLabelsPermissionsRequest>;
 
 export interface DeleteLabelsRevisionsPermissionsRequest {
   /** Required. Label permission resource name. */
@@ -997,23 +1295,35 @@ export interface DeleteLabelsRevisionsPermissionsRequest {
   /** Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the label before allowing access. */
   useAdminAccess?: boolean;
 }
-export const DeleteLabelsRevisionsPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "useAdminAccess": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v2beta/{+name}","baseUrl":"https://drivelabels.googleapis.com/"})),
-).annotate({ identifier: "DeleteLabelsRevisionsPermissionsRequest" }) as any as S.Schema<DeleteLabelsRevisionsPermissionsRequest>;
+export const DeleteLabelsRevisionsPermissionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      useAdminAccess: S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v2beta/{+name}",
+        baseUrl: "https://drivelabels.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteLabelsRevisionsPermissionsRequest",
+}) as any as S.Schema<DeleteLabelsRevisionsPermissionsRequest>;
 
 /** Provides control over how write requests are executed. When not specified, the last write wins. */
 export interface GoogleAppsDriveLabelsV2betaWriteControl {
   /** The revision ID of the label that the write request will be applied to. If this isn't the latest revision of the label, the request will not be processed and will return a 400 Bad Request error. */
   requiredRevisionId?: string;
 }
-export const GoogleAppsDriveLabelsV2betaWriteControl = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requiredRevisionId": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaWriteControl" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaWriteControl>;
+export const GoogleAppsDriveLabelsV2betaWriteControl = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      requiredRevisionId: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "GoogleAppsDriveLabelsV2betaWriteControl",
+}) as any as S.Schema<GoogleAppsDriveLabelsV2betaWriteControl>;
 
 /** Request to update a choice property. */
 export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest {
@@ -1026,25 +1336,35 @@ export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateSelecti
   /** Required. The selection field to update. */
   fieldId?: string;
 }
-export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "properties": S.optional(GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceProperties),
-  "updateMask": S.optional(S.String),
-  "id": S.optional(S.String),
-  "fieldId": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest>;
+export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      properties: S.optional(
+        GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceProperties,
+      ),
+      updateMask: S.optional(S.String),
+      id: S.optional(S.String),
+      fieldId: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest>;
 
 /** Request to create a field within a label. */
 export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestCreateFieldRequest {
   /** Required. Field to create. */
   field?: GoogleAppsDriveLabelsV2betaField;
 }
-export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestCreateFieldRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "field": S.optional(GoogleAppsDriveLabelsV2betaField),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestCreateFieldRequest" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestCreateFieldRequest>;
+export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestCreateFieldRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      field: S.optional(GoogleAppsDriveLabelsV2betaField),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestCreateFieldRequest",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestCreateFieldRequest>;
 
 /** Request to disable the field. */
 export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDisableFieldRequest {
@@ -1055,24 +1375,34 @@ export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDisableFieldR
   /** Required. Key of the field to disable. */
   id?: string;
 }
-export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDisableFieldRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "disabledPolicy": S.optional(GoogleAppsDriveLabelsV2betaLifecycleDisabledPolicy),
-  "updateMask": S.optional(S.String),
-  "id": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDisableFieldRequest" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDisableFieldRequest>;
+export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDisableFieldRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      disabledPolicy: S.optional(
+        GoogleAppsDriveLabelsV2betaLifecycleDisabledPolicy,
+      ),
+      updateMask: S.optional(S.String),
+      id: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDisableFieldRequest",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDisableFieldRequest>;
 
 /** Request to enable the field. */
 export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestEnableFieldRequest {
   /** Required. ID of the field to enable. */
   id?: string;
 }
-export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestEnableFieldRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestEnableFieldRequest" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestEnableFieldRequest>;
+export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestEnableFieldRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestEnableFieldRequest",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestEnableFieldRequest>;
 
 /** Request to disable a choice. */
 export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDisableSelectionChoiceRequest {
@@ -1085,14 +1415,20 @@ export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDisableSelect
   /** Required. The selection field in which a choice will be disabled. */
   fieldId?: string;
 }
-export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDisableSelectionChoiceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "disabledPolicy": S.optional(GoogleAppsDriveLabelsV2betaLifecycleDisabledPolicy),
-  "updateMask": S.optional(S.String),
-  "id": S.optional(S.String),
-  "fieldId": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDisableSelectionChoiceRequest" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDisableSelectionChoiceRequest>;
+export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDisableSelectionChoiceRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      disabledPolicy: S.optional(
+        GoogleAppsDriveLabelsV2betaLifecycleDisabledPolicy,
+      ),
+      updateMask: S.optional(S.String),
+      id: S.optional(S.String),
+      fieldId: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDisableSelectionChoiceRequest",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDisableSelectionChoiceRequest>;
 
 /** Request to enable a choice. */
 export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestEnableSelectionChoiceRequest {
@@ -1101,12 +1437,16 @@ export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestEnableSelecti
   /** Required. The selection field in which a choice will be enabled. */
   fieldId?: string;
 }
-export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestEnableSelectionChoiceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.optional(S.String),
-  "fieldId": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestEnableSelectionChoiceRequest" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestEnableSelectionChoiceRequest>;
+export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestEnableSelectionChoiceRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      fieldId: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestEnableSelectionChoiceRequest",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestEnableSelectionChoiceRequest>;
 
 /** Request to change the type of a field. */
 export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateFieldTypeRequest {
@@ -1125,17 +1465,25 @@ export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateFieldTy
   /** The fields that should be updated. At least one field must be specified. The root of `type_options` is implied and should not be specified. A single `*` can be used as a short-hand for updating every field. */
   updateMask?: string;
 }
-export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateFieldTypeRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "textOptions": S.optional(GoogleAppsDriveLabelsV2betaFieldTextOptions),
-  "dateOptions": S.optional(GoogleAppsDriveLabelsV2betaFieldDateOptions),
-  "userOptions": S.optional(GoogleAppsDriveLabelsV2betaFieldUserOptions),
-  "id": S.optional(S.String),
-  "integerOptions": S.optional(GoogleAppsDriveLabelsV2betaFieldIntegerOptions),
-  "selectionOptions": S.optional(GoogleAppsDriveLabelsV2betaFieldSelectionOptions),
-  "updateMask": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateFieldTypeRequest" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateFieldTypeRequest>;
+export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateFieldTypeRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      textOptions: S.optional(GoogleAppsDriveLabelsV2betaFieldTextOptions),
+      dateOptions: S.optional(GoogleAppsDriveLabelsV2betaFieldDateOptions),
+      userOptions: S.optional(GoogleAppsDriveLabelsV2betaFieldUserOptions),
+      id: S.optional(S.String),
+      integerOptions: S.optional(
+        GoogleAppsDriveLabelsV2betaFieldIntegerOptions,
+      ),
+      selectionOptions: S.optional(
+        GoogleAppsDriveLabelsV2betaFieldSelectionOptions,
+      ),
+      updateMask: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateFieldTypeRequest",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateFieldTypeRequest>;
 
 /** Request to delete a choice. */
 export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDeleteSelectionChoiceRequest {
@@ -1144,12 +1492,16 @@ export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDeleteSelecti
   /** Required. The selection field from which a choice will be deleted. */
   fieldId?: string;
 }
-export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDeleteSelectionChoiceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.optional(S.String),
-  "fieldId": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDeleteSelectionChoiceRequest" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDeleteSelectionChoiceRequest>;
+export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDeleteSelectionChoiceRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      fieldId: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDeleteSelectionChoiceRequest",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDeleteSelectionChoiceRequest>;
 
 /** Request to create a selection choice. */
 export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestCreateSelectionChoiceRequest {
@@ -1158,12 +1510,18 @@ export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestCreateSelecti
   /** Required. The choice to create. */
   choice?: GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoice;
 }
-export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestCreateSelectionChoiceRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fieldId": S.optional(S.String),
-  "choice": S.optional(GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoice),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestCreateSelectionChoiceRequest" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestCreateSelectionChoiceRequest>;
+export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestCreateSelectionChoiceRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      fieldId: S.optional(S.String),
+      choice: S.optional(
+        GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoice,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestCreateSelectionChoiceRequest",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestCreateSelectionChoiceRequest>;
 
 /** Updates basic properties of a label. */
 export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateLabelPropertiesRequest {
@@ -1172,23 +1530,31 @@ export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateLabelPr
   /** Required. Label properties to update. */
   properties?: GoogleAppsDriveLabelsV2betaLabelProperties;
 }
-export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateLabelPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String),
-  "properties": S.optional(GoogleAppsDriveLabelsV2betaLabelProperties),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateLabelPropertiesRequest" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateLabelPropertiesRequest>;
+export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateLabelPropertiesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      updateMask: S.optional(S.String),
+      properties: S.optional(GoogleAppsDriveLabelsV2betaLabelProperties),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateLabelPropertiesRequest",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateLabelPropertiesRequest>;
 
 /** Request to delete the field. */
 export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDeleteFieldRequest {
   /** Required. ID of the field to delete. */
   id?: string;
 }
-export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDeleteFieldRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDeleteFieldRequest" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDeleteFieldRequest>;
+export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDeleteFieldRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDeleteFieldRequest",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDeleteFieldRequest>;
 
 /** Request to update field properties. */
 export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateFieldPropertiesRequest {
@@ -1199,13 +1565,17 @@ export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateFieldPr
   /** Required. Basic field properties. */
   properties?: GoogleAppsDriveLabelsV2betaFieldProperties;
 }
-export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateFieldPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String),
-  "id": S.optional(S.String),
-  "properties": S.optional(GoogleAppsDriveLabelsV2betaFieldProperties),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateFieldPropertiesRequest" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateFieldPropertiesRequest>;
+export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateFieldPropertiesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      updateMask: S.optional(S.String),
+      id: S.optional(S.String),
+      properties: S.optional(GoogleAppsDriveLabelsV2betaFieldProperties),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateFieldPropertiesRequest",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateFieldPropertiesRequest>;
 
 /** A single kind of update to apply to a label. */
 export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestRequest {
@@ -1234,28 +1604,62 @@ export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestRequest {
   /** Updates basic properties of a field. */
   updateField?: GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateFieldPropertiesRequest;
 }
-export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateSelectionChoiceProperties": S.optional(GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest),
-  "createField": S.optional(GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestCreateFieldRequest),
-  "disableField": S.optional(GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDisableFieldRequest),
-  "enableField": S.optional(GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestEnableFieldRequest),
-  "disableSelectionChoice": S.optional(GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDisableSelectionChoiceRequest),
-  "enableSelectionChoice": S.optional(GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestEnableSelectionChoiceRequest),
-  "updateFieldType": S.optional(GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateFieldTypeRequest),
-  "deleteSelectionChoice": S.optional(GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDeleteSelectionChoiceRequest),
-  "createSelectionChoice": S.optional(GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestCreateSelectionChoiceRequest),
-  "updateLabel": S.optional(GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateLabelPropertiesRequest),
-  "deleteField": S.optional(GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDeleteFieldRequest),
-  "updateField": S.optional(GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateFieldPropertiesRequest),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestRequest" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestRequest>;
+export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      updateSelectionChoiceProperties: S.optional(
+        GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest,
+      ),
+      createField: S.optional(
+        GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestCreateFieldRequest,
+      ),
+      disableField: S.optional(
+        GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDisableFieldRequest,
+      ),
+      enableField: S.optional(
+        GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestEnableFieldRequest,
+      ),
+      disableSelectionChoice: S.optional(
+        GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDisableSelectionChoiceRequest,
+      ),
+      enableSelectionChoice: S.optional(
+        GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestEnableSelectionChoiceRequest,
+      ),
+      updateFieldType: S.optional(
+        GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateFieldTypeRequest,
+      ),
+      deleteSelectionChoice: S.optional(
+        GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDeleteSelectionChoiceRequest,
+      ),
+      createSelectionChoice: S.optional(
+        GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestCreateSelectionChoiceRequest,
+      ),
+      updateLabel: S.optional(
+        GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateLabelPropertiesRequest,
+      ),
+      deleteField: S.optional(
+        GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestDeleteFieldRequest,
+      ),
+      updateField: S.optional(
+        GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestUpdateFieldPropertiesRequest,
+      ),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestRequest",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestRequest>;
 
-export type GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestRequestList = ReadonlyArray<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestRequest>;
-export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestRequestList = /*@__PURE__*/ S.Array(GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestRequest) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestRequestList>;
+export type GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestRequestList =
+  ReadonlyArray<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestRequest>;
+export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestRequestList =
+  /*@__PURE__*/ S.Array(
+    GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestRequest,
+  ) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestRequestList>;
 
-export type GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestViewEnum = "LABEL_VIEW_BASIC" | "LABEL_VIEW_FULL";
-export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestViewEnum = /*@__PURE__*/ S.String;
+export type GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestViewEnum =
+  | "LABEL_VIEW_BASIC"
+  | "LABEL_VIEW_FULL";
+export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestViewEnum =
+  /*@__PURE__*/ S.String;
 
 /** The set of requests for updating aspects of a label. If any request isn't valid, no requests will be applied. */
 export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequest {
@@ -1264,21 +1668,30 @@ export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequest {
   /** A list of updates to apply to the label. Requests will be applied in the order they are specified. */
   requests?: GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestRequestList;
   /** When specified, only certain fields belonging to the indicated view will be returned. */
-  view?: GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestViewEnum | (string & {});
+  view?:
+    | GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestViewEnum
+    | (string & {});
   /** Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the label before allowing access. */
   useAdminAccess?: boolean;
   /** The BCP-47 language code to use for evaluating localized field labels when `include_label_in_response` is `true`. */
   languageCode?: string;
 }
-export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "writeControl": S.optional(GoogleAppsDriveLabelsV2betaWriteControl),
-  "requests": S.optional(GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestRequestList),
-  "view": S.optional(GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestViewEnum),
-  "useAdminAccess": S.optional(S.Boolean),
-  "languageCode": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequest" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequest>;
+export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      writeControl: S.optional(GoogleAppsDriveLabelsV2betaWriteControl),
+      requests: S.optional(
+        GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestRequestList,
+      ),
+      view: S.optional(
+        GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestViewEnum,
+      ),
+      useAdminAccess: S.optional(S.Boolean),
+      languageCode: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequest",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequest>;
 
 export interface DeltaLabelsRequest {
   /** Required. The resource name of the label to update. */
@@ -1287,34 +1700,52 @@ export interface DeltaLabelsRequest {
   body?: GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequest;
 }
 export const DeltaLabelsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2beta/{+name}:delta","baseUrl":"https://drivelabels.googleapis.com/"})),
-).annotate({ identifier: "DeltaLabelsRequest" }) as any as S.Schema<DeltaLabelsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(
+      GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequest.pipe(T.HttpBody()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v2beta/{+name}:delta",
+      baseUrl: "https://drivelabels.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeltaLabelsRequest",
+}) as any as S.Schema<DeltaLabelsRequest>;
 
 /** Response following update to field properties. */
 export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateFieldPropertiesResponse {
   /** The priority of the updated field. The priority may change from what was specified to assure contiguous priorities between fields (1-n). */
   priority?: number;
 }
-export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateFieldPropertiesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "priority": S.optional(S.Number),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateFieldPropertiesResponse" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateFieldPropertiesResponse>;
+export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateFieldPropertiesResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      priority: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateFieldPropertiesResponse",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateFieldPropertiesResponse>;
 
 /** Response following update to label properties. */
 export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateLabelPropertiesResponse {}
-export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateLabelPropertiesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateLabelPropertiesResponse" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateLabelPropertiesResponse>;
+export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateLabelPropertiesResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier:
+      "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateLabelPropertiesResponse",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateLabelPropertiesResponse>;
 
 /** Response following field delete. */
 export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDeleteFieldResponse {}
-export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDeleteFieldResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDeleteFieldResponse" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDeleteFieldResponse>;
+export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDeleteFieldResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier:
+      "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDeleteFieldResponse",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDeleteFieldResponse>;
 
 /** Response following selection choice create. */
 export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseCreateSelectionChoiceResponse {
@@ -1323,59 +1754,79 @@ export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseCreateSelect
   /** The server-generated ID of the created choice within the field. */
   id?: string;
 }
-export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseCreateSelectionChoiceResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fieldId": S.optional(S.String),
-  "id": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseCreateSelectionChoiceResponse" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseCreateSelectionChoiceResponse>;
+export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseCreateSelectionChoiceResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      fieldId: S.optional(S.String),
+      id: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseCreateSelectionChoiceResponse",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseCreateSelectionChoiceResponse>;
 
 /** Response following update to field type. */
 export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateFieldTypeResponse {}
-export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateFieldTypeResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateFieldTypeResponse" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateFieldTypeResponse>;
+export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateFieldTypeResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier:
+      "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateFieldTypeResponse",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateFieldTypeResponse>;
 
 /** Response following choice delete. */
 export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDeleteSelectionChoiceResponse {}
-export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDeleteSelectionChoiceResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDeleteSelectionChoiceResponse" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDeleteSelectionChoiceResponse>;
+export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDeleteSelectionChoiceResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier:
+      "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDeleteSelectionChoiceResponse",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDeleteSelectionChoiceResponse>;
 
 /** Response following choice enable. */
 export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseEnableSelectionChoiceResponse {}
-export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseEnableSelectionChoiceResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseEnableSelectionChoiceResponse" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseEnableSelectionChoiceResponse>;
+export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseEnableSelectionChoiceResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier:
+      "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseEnableSelectionChoiceResponse",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseEnableSelectionChoiceResponse>;
 
 /** Response following field disable. */
 export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDisableFieldResponse {}
-export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDisableFieldResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDisableFieldResponse" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDisableFieldResponse>;
+export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDisableFieldResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier:
+      "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDisableFieldResponse",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDisableFieldResponse>;
 
 /** Response following field enable. */
 export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseEnableFieldResponse {}
-export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseEnableFieldResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseEnableFieldResponse" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseEnableFieldResponse>;
+export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseEnableFieldResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier:
+      "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseEnableFieldResponse",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseEnableFieldResponse>;
 
 /** Response following choice disable. */
 export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDisableSelectionChoiceResponse {}
-export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDisableSelectionChoiceResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDisableSelectionChoiceResponse" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDisableSelectionChoiceResponse>;
+export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDisableSelectionChoiceResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier:
+      "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDisableSelectionChoiceResponse",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDisableSelectionChoiceResponse>;
 
 /** Response following update to selection choice properties. */
 export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse {
   /** The priority of the updated choice. The priority may change from what was specified to assure contiguous priorities between choices (1-n). */
   priority?: number;
 }
-export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "priority": S.optional(S.Number),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse>;
+export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      priority: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse>;
 
 /** Response following field create. */
 export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseCreateFieldResponse {
@@ -1384,12 +1835,16 @@ export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseCreateFieldR
   /** The field of the created field. When left blank in a create request, a key will be autogenerated and can be identified here. */
   id?: string;
 }
-export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseCreateFieldResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "priority": S.optional(S.Number),
-  "id": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseCreateFieldResponse" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseCreateFieldResponse>;
+export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseCreateFieldResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      priority: S.optional(S.Number),
+      id: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseCreateFieldResponse",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseCreateFieldResponse>;
 
 /** A single response from an update. */
 export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseResponse {
@@ -1418,25 +1873,56 @@ export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseResponse {
   /** Creates a field. */
   createField?: GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseCreateFieldResponse;
 }
-export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateField": S.optional(GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateFieldPropertiesResponse),
-  "updateLabel": S.optional(GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateLabelPropertiesResponse),
-  "deleteField": S.optional(GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDeleteFieldResponse),
-  "createSelectionChoice": S.optional(GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseCreateSelectionChoiceResponse),
-  "updateFieldType": S.optional(GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateFieldTypeResponse),
-  "deleteSelectionChoice": S.optional(GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDeleteSelectionChoiceResponse),
-  "enableSelectionChoice": S.optional(GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseEnableSelectionChoiceResponse),
-  "disableField": S.optional(GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDisableFieldResponse),
-  "enableField": S.optional(GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseEnableFieldResponse),
-  "disableSelectionChoice": S.optional(GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDisableSelectionChoiceResponse),
-  "updateSelectionChoiceProperties": S.optional(GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse),
-  "createField": S.optional(GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseCreateFieldResponse),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseResponse" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseResponse>;
+export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      updateField: S.optional(
+        GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateFieldPropertiesResponse,
+      ),
+      updateLabel: S.optional(
+        GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateLabelPropertiesResponse,
+      ),
+      deleteField: S.optional(
+        GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDeleteFieldResponse,
+      ),
+      createSelectionChoice: S.optional(
+        GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseCreateSelectionChoiceResponse,
+      ),
+      updateFieldType: S.optional(
+        GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateFieldTypeResponse,
+      ),
+      deleteSelectionChoice: S.optional(
+        GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDeleteSelectionChoiceResponse,
+      ),
+      enableSelectionChoice: S.optional(
+        GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseEnableSelectionChoiceResponse,
+      ),
+      disableField: S.optional(
+        GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDisableFieldResponse,
+      ),
+      enableField: S.optional(
+        GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseEnableFieldResponse,
+      ),
+      disableSelectionChoice: S.optional(
+        GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseDisableSelectionChoiceResponse,
+      ),
+      updateSelectionChoiceProperties: S.optional(
+        GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse,
+      ),
+      createField: S.optional(
+        GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseCreateFieldResponse,
+      ),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseResponse",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseResponse>;
 
-export type GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseResponseList = ReadonlyArray<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseResponse>;
-export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseResponseList = /*@__PURE__*/ S.Array(GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseResponse) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseResponseList>;
+export type GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseResponseList =
+  ReadonlyArray<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseResponse>;
+export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseResponseList =
+  /*@__PURE__*/ S.Array(
+    GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseResponse,
+  ) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseResponseList>;
 
 /** Response for label update. */
 export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponse {
@@ -1445,12 +1931,17 @@ export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponse {
   /** The label after updates were applied. This is only set if `include_label_in_response` is `true` and there were no errors. */
   updatedLabel?: GoogleAppsDriveLabelsV2betaLabel;
 }
-export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "responses": S.optional(GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseResponseList),
-  "updatedLabel": S.optional(GoogleAppsDriveLabelsV2betaLabel),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponse" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponse>;
+export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      responses: S.optional(
+        GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseResponseList,
+      ),
+      updatedLabel: S.optional(GoogleAppsDriveLabelsV2betaLabel),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponse",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponse>;
 
 /** Request to deprecate a published label. */
 export interface GoogleAppsDriveLabelsV2betaDisableLabelRequest {
@@ -1465,15 +1956,20 @@ export interface GoogleAppsDriveLabelsV2betaDisableLabelRequest {
   /** The fields that should be updated. At least one field must be specified. The root `disabled_policy` is implied and should not be specified. A single `*` can be used as a short-hand for updating every field. */
   updateMask?: string;
 }
-export const GoogleAppsDriveLabelsV2betaDisableLabelRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "languageCode": S.optional(S.String),
-  "useAdminAccess": S.optional(S.Boolean),
-  "disabledPolicy": S.optional(GoogleAppsDriveLabelsV2betaLifecycleDisabledPolicy),
-  "writeControl": S.optional(GoogleAppsDriveLabelsV2betaWriteControl),
-  "updateMask": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaDisableLabelRequest" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDisableLabelRequest>;
+export const GoogleAppsDriveLabelsV2betaDisableLabelRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      languageCode: S.optional(S.String),
+      useAdminAccess: S.optional(S.Boolean),
+      disabledPolicy: S.optional(
+        GoogleAppsDriveLabelsV2betaLifecycleDisabledPolicy,
+      ),
+      writeControl: S.optional(GoogleAppsDriveLabelsV2betaWriteControl),
+      updateMask: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsDriveLabelsV2betaDisableLabelRequest",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDisableLabelRequest>;
 
 export interface DisableLabelsRequest {
   /** Required. Label resource name. */
@@ -1482,11 +1978,21 @@ export interface DisableLabelsRequest {
   body?: GoogleAppsDriveLabelsV2betaDisableLabelRequest;
 }
 export const DisableLabelsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleAppsDriveLabelsV2betaDisableLabelRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2beta/{+name}:disable","baseUrl":"https://drivelabels.googleapis.com/"})),
-).annotate({ identifier: "DisableLabelsRequest" }) as any as S.Schema<DisableLabelsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(
+      GoogleAppsDriveLabelsV2betaDisableLabelRequest.pipe(T.HttpBody()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v2beta/{+name}:disable",
+      baseUrl: "https://drivelabels.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DisableLabelsRequest",
+}) as any as S.Schema<DisableLabelsRequest>;
 
 /** Request to enable a label. */
 export interface GoogleAppsDriveLabelsV2betaEnableLabelRequest {
@@ -1497,13 +2003,16 @@ export interface GoogleAppsDriveLabelsV2betaEnableLabelRequest {
   /** The BCP-47 language code to use for evaluating localized field labels. When not specified, values in the default configured language will be used. */
   languageCode?: string;
 }
-export const GoogleAppsDriveLabelsV2betaEnableLabelRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "useAdminAccess": S.optional(S.Boolean),
-  "writeControl": S.optional(GoogleAppsDriveLabelsV2betaWriteControl),
-  "languageCode": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaEnableLabelRequest" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaEnableLabelRequest>;
+export const GoogleAppsDriveLabelsV2betaEnableLabelRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      useAdminAccess: S.optional(S.Boolean),
+      writeControl: S.optional(GoogleAppsDriveLabelsV2betaWriteControl),
+      languageCode: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsDriveLabelsV2betaEnableLabelRequest",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaEnableLabelRequest>;
 
 export interface EnableLabelsRequest {
   /** Required. Label resource name. */
@@ -1512,11 +2021,21 @@ export interface EnableLabelsRequest {
   body?: GoogleAppsDriveLabelsV2betaEnableLabelRequest;
 }
 export const EnableLabelsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleAppsDriveLabelsV2betaEnableLabelRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2beta/{+name}:enable","baseUrl":"https://drivelabels.googleapis.com/"})),
-).annotate({ identifier: "EnableLabelsRequest" }) as any as S.Schema<EnableLabelsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(
+      GoogleAppsDriveLabelsV2betaEnableLabelRequest.pipe(T.HttpBody()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v2beta/{+name}:enable",
+      baseUrl: "https://drivelabels.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "EnableLabelsRequest",
+}) as any as S.Schema<EnableLabelsRequest>;
 
 export interface GetCapabilitiesUsersRequest {
   /** Required. The resource name of the user. Only "users/me/capabilities" is supported. */
@@ -1525,11 +2044,19 @@ export interface GetCapabilitiesUsersRequest {
   customer?: string;
 }
 export const GetCapabilitiesUsersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "customer": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v2beta/{+name}","baseUrl":"https://drivelabels.googleapis.com/"})),
-).annotate({ identifier: "GetCapabilitiesUsersRequest" }) as any as S.Schema<GetCapabilitiesUsersRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    customer: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v2beta/{+name}",
+      baseUrl: "https://drivelabels.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetCapabilitiesUsersRequest",
+}) as any as S.Schema<GetCapabilitiesUsersRequest>;
 
 /** The capabilities of a user. */
 export interface GoogleAppsDriveLabelsV2betaUserCapabilities {
@@ -1544,47 +2071,64 @@ export interface GoogleAppsDriveLabelsV2betaUserCapabilities {
   /** Output only. Whether the user is allowed to create shared labels. */
   canCreateSharedLabels?: boolean;
 }
-export const GoogleAppsDriveLabelsV2betaUserCapabilities = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "canCreateAdminLabels": S.optional(S.Boolean),
-  "canAdministrateLabels": S.optional(S.Boolean),
-  "canAccessLabelManager": S.optional(S.Boolean),
-  "name": S.optional(S.String),
-  "canCreateSharedLabels": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaUserCapabilities" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaUserCapabilities>;
+export const GoogleAppsDriveLabelsV2betaUserCapabilities =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      canCreateAdminLabels: S.optional(S.Boolean),
+      canAdministrateLabels: S.optional(S.Boolean),
+      canAccessLabelManager: S.optional(S.Boolean),
+      name: S.optional(S.String),
+      canCreateSharedLabels: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsDriveLabelsV2betaUserCapabilities",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaUserCapabilities>;
 
 export interface GetLabelLimitsRequest {
   /** Required. Label revision resource name must be: "limits/label". */
   name?: string;
 }
 export const GetLabelLimitsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v2beta/limits/label","baseUrl":"https://drivelabels.googleapis.com/"})),
-).annotate({ identifier: "GetLabelLimitsRequest" }) as any as S.Schema<GetLabelLimitsRequest>;
+  S.Struct({
+    name: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v2beta/limits/label",
+      baseUrl: "https://drivelabels.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetLabelLimitsRequest",
+}) as any as S.Schema<GetLabelLimitsRequest>;
 
 /** Limits for list-variant of a field type. */
 export interface GoogleAppsDriveLabelsV2betaListLimits {
   /** Maximum number of values allowed for the field type. */
   maxEntries?: number;
 }
-export const GoogleAppsDriveLabelsV2betaListLimits = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "maxEntries": S.optional(S.Number),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaListLimits" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaListLimits>;
+export const GoogleAppsDriveLabelsV2betaListLimits = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      maxEntries: S.optional(S.Number),
+    }),
+).annotate({
+  identifier: "GoogleAppsDriveLabelsV2betaListLimits",
+}) as any as S.Schema<GoogleAppsDriveLabelsV2betaListLimits>;
 
 /** Limits for Field.Type.USER. */
 export interface GoogleAppsDriveLabelsV2betaUserLimits {
   /** Limits for list-variant of a field type. */
   listLimits?: GoogleAppsDriveLabelsV2betaListLimits;
 }
-export const GoogleAppsDriveLabelsV2betaUserLimits = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "listLimits": S.optional(GoogleAppsDriveLabelsV2betaListLimits),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaUserLimits" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaUserLimits>;
+export const GoogleAppsDriveLabelsV2betaUserLimits = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      listLimits: S.optional(GoogleAppsDriveLabelsV2betaListLimits),
+    }),
+).annotate({
+  identifier: "GoogleAppsDriveLabelsV2betaUserLimits",
+}) as any as S.Schema<GoogleAppsDriveLabelsV2betaUserLimits>;
 
 /** Limits for selection field type. */
 export interface GoogleAppsDriveLabelsV2betaSelectionLimits {
@@ -1599,15 +2143,18 @@ export interface GoogleAppsDriveLabelsV2betaSelectionLimits {
   /** Maximum number of choices. */
   maxChoices?: number;
 }
-export const GoogleAppsDriveLabelsV2betaSelectionLimits = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "listLimits": S.optional(GoogleAppsDriveLabelsV2betaListLimits),
-  "maxDisplayNameLength": S.optional(S.Number),
-  "maxIdLength": S.optional(S.Number),
-  "maxDeletedChoices": S.optional(S.Number),
-  "maxChoices": S.optional(S.Number),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaSelectionLimits" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaSelectionLimits>;
+export const GoogleAppsDriveLabelsV2betaSelectionLimits =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      listLimits: S.optional(GoogleAppsDriveLabelsV2betaListLimits),
+      maxDisplayNameLength: S.optional(S.Number),
+      maxIdLength: S.optional(S.Number),
+      maxDeletedChoices: S.optional(S.Number),
+      maxChoices: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsDriveLabelsV2betaSelectionLimits",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaSelectionLimits>;
 
 /** Limits for integer field type. */
 export interface GoogleAppsDriveLabelsV2betaIntegerLimits {
@@ -1616,12 +2163,15 @@ export interface GoogleAppsDriveLabelsV2betaIntegerLimits {
   /** Maximum value for an integer field type. */
   maxValue?: string;
 }
-export const GoogleAppsDriveLabelsV2betaIntegerLimits = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "minValue": S.optional(S.String),
-  "maxValue": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaIntegerLimits" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaIntegerLimits>;
+export const GoogleAppsDriveLabelsV2betaIntegerLimits = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      minValue: S.optional(S.String),
+      maxValue: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "GoogleAppsDriveLabelsV2betaIntegerLimits",
+}) as any as S.Schema<GoogleAppsDriveLabelsV2betaIntegerLimits>;
 
 /** Limits for date field type. */
 export interface GoogleAppsDriveLabelsV2betaDateLimits {
@@ -1630,12 +2180,15 @@ export interface GoogleAppsDriveLabelsV2betaDateLimits {
   /** Maximum value for the date field type. */
   maxValue?: GoogleTypeDate;
 }
-export const GoogleAppsDriveLabelsV2betaDateLimits = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "minValue": S.optional(GoogleTypeDate),
-  "maxValue": S.optional(GoogleTypeDate),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaDateLimits" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDateLimits>;
+export const GoogleAppsDriveLabelsV2betaDateLimits = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      minValue: S.optional(GoogleTypeDate),
+      maxValue: S.optional(GoogleTypeDate),
+    }),
+).annotate({
+  identifier: "GoogleAppsDriveLabelsV2betaDateLimits",
+}) as any as S.Schema<GoogleAppsDriveLabelsV2betaDateLimits>;
 
 /** Limits for text field type. */
 export interface GoogleAppsDriveLabelsV2betaTextLimits {
@@ -1644,12 +2197,15 @@ export interface GoogleAppsDriveLabelsV2betaTextLimits {
   /** Maximum length allowed for a text field type. */
   maxLength?: number;
 }
-export const GoogleAppsDriveLabelsV2betaTextLimits = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "minLength": S.optional(S.Number),
-  "maxLength": S.optional(S.Number),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaTextLimits" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaTextLimits>;
+export const GoogleAppsDriveLabelsV2betaTextLimits = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      minLength: S.optional(S.Number),
+      maxLength: S.optional(S.Number),
+    }),
+).annotate({
+  identifier: "GoogleAppsDriveLabelsV2betaTextLimits",
+}) as any as S.Schema<GoogleAppsDriveLabelsV2betaTextLimits>;
 
 /** Limits for long text field type. */
 export interface GoogleAppsDriveLabelsV2betaLongTextLimits {
@@ -1658,12 +2214,15 @@ export interface GoogleAppsDriveLabelsV2betaLongTextLimits {
   /** Maximum length allowed for a long text field type. */
   maxLength?: number;
 }
-export const GoogleAppsDriveLabelsV2betaLongTextLimits = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "minLength": S.optional(S.Number),
-  "maxLength": S.optional(S.Number),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaLongTextLimits" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaLongTextLimits>;
+export const GoogleAppsDriveLabelsV2betaLongTextLimits =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      minLength: S.optional(S.Number),
+      maxLength: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsDriveLabelsV2betaLongTextLimits",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaLongTextLimits>;
 
 /** Field constants governing the structure of a field; such as, the maximum title length, minimum and maximum field values or length, etc. */
 export interface GoogleAppsDriveLabelsV2betaFieldLimits {
@@ -1686,19 +2245,22 @@ export interface GoogleAppsDriveLabelsV2betaFieldLimits {
   /** Long text field limits. */
   longTextLimits?: GoogleAppsDriveLabelsV2betaLongTextLimits;
 }
-export const GoogleAppsDriveLabelsV2betaFieldLimits = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "maxIdLength": S.optional(S.Number),
-  "userLimits": S.optional(GoogleAppsDriveLabelsV2betaUserLimits),
-  "maxDescriptionLength": S.optional(S.Number),
-  "maxDisplayNameLength": S.optional(S.Number),
-  "selectionLimits": S.optional(GoogleAppsDriveLabelsV2betaSelectionLimits),
-  "integerLimits": S.optional(GoogleAppsDriveLabelsV2betaIntegerLimits),
-  "dateLimits": S.optional(GoogleAppsDriveLabelsV2betaDateLimits),
-  "textLimits": S.optional(GoogleAppsDriveLabelsV2betaTextLimits),
-  "longTextLimits": S.optional(GoogleAppsDriveLabelsV2betaLongTextLimits),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaFieldLimits" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaFieldLimits>;
+export const GoogleAppsDriveLabelsV2betaFieldLimits = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      maxIdLength: S.optional(S.Number),
+      userLimits: S.optional(GoogleAppsDriveLabelsV2betaUserLimits),
+      maxDescriptionLength: S.optional(S.Number),
+      maxDisplayNameLength: S.optional(S.Number),
+      selectionLimits: S.optional(GoogleAppsDriveLabelsV2betaSelectionLimits),
+      integerLimits: S.optional(GoogleAppsDriveLabelsV2betaIntegerLimits),
+      dateLimits: S.optional(GoogleAppsDriveLabelsV2betaDateLimits),
+      textLimits: S.optional(GoogleAppsDriveLabelsV2betaTextLimits),
+      longTextLimits: S.optional(GoogleAppsDriveLabelsV2betaLongTextLimits),
+    }),
+).annotate({
+  identifier: "GoogleAppsDriveLabelsV2betaFieldLimits",
+}) as any as S.Schema<GoogleAppsDriveLabelsV2betaFieldLimits>;
 
 /** Label constraints governing the structure of a label; such as, the maximum number of fields allowed and maximum length of the label title. */
 export interface GoogleAppsDriveLabelsV2betaLabelLimits {
@@ -1717,17 +2279,20 @@ export interface GoogleAppsDriveLabelsV2betaLabelLimits {
   /** The limits for fields. */
   fieldLimits?: GoogleAppsDriveLabelsV2betaFieldLimits;
 }
-export const GoogleAppsDriveLabelsV2betaLabelLimits = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "maxDraftRevisions": S.optional(S.Number),
-  "name": S.optional(S.String),
-  "maxTitleLength": S.optional(S.Number),
-  "maxDescriptionLength": S.optional(S.Number),
-  "maxDeletedFields": S.optional(S.Number),
-  "maxFields": S.optional(S.Number),
-  "fieldLimits": S.optional(GoogleAppsDriveLabelsV2betaFieldLimits),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaLabelLimits" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaLabelLimits>;
+export const GoogleAppsDriveLabelsV2betaLabelLimits = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      maxDraftRevisions: S.optional(S.Number),
+      name: S.optional(S.String),
+      maxTitleLength: S.optional(S.Number),
+      maxDescriptionLength: S.optional(S.Number),
+      maxDeletedFields: S.optional(S.Number),
+      maxFields: S.optional(S.Number),
+      fieldLimits: S.optional(GoogleAppsDriveLabelsV2betaFieldLimits),
+    }),
+).annotate({
+  identifier: "GoogleAppsDriveLabelsV2betaLabelLimits",
+}) as any as S.Schema<GoogleAppsDriveLabelsV2betaLabelLimits>;
 
 export type GetLabelsViewEnum = "LABEL_VIEW_BASIC" | "LABEL_VIEW_FULL";
 export const GetLabelsViewEnum = /*@__PURE__*/ S.String;
@@ -1743,15 +2308,28 @@ export interface GetLabelsRequest {
   languageCode?: string;
 }
 export const GetLabelsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "useAdminAccess": S.optional(S.Boolean.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "view": S.optional(GetLabelsViewEnum.pipe(T.Query())),
-  "languageCode": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v2beta/{+name}","baseUrl":"https://drivelabels.googleapis.com/"})),
-).annotate({ identifier: "GetLabelsRequest" }) as any as S.Schema<GetLabelsRequest>;
+  S.Struct({
+    useAdminAccess: S.optional(S.Boolean.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    view: S.optional(GetLabelsViewEnum.pipe(T.Query())),
+    languageCode: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v2beta/{+name}",
+      baseUrl: "https://drivelabels.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetLabelsRequest",
+}) as any as S.Schema<GetLabelsRequest>;
 
-export type ListLabelsMinimumRoleEnum = "LABEL_ROLE_UNSPECIFIED" | "READER" | "APPLIER" | "ORGANIZER" | "EDITOR";
+export type ListLabelsMinimumRoleEnum =
+  | "LABEL_ROLE_UNSPECIFIED"
+  | "READER"
+  | "APPLIER"
+  | "ORGANIZER"
+  | "EDITOR";
 export const ListLabelsMinimumRoleEnum = /*@__PURE__*/ S.String;
 
 export type ListLabelsViewEnum = "LABEL_VIEW_BASIC" | "LABEL_VIEW_FULL";
@@ -1776,20 +2354,31 @@ export interface ListLabelsRequest {
   view?: ListLabelsViewEnum | (string & {});
 }
 export const ListLabelsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "minimumRole": S.optional(ListLabelsMinimumRoleEnum.pipe(T.Query())),
-  "useAdminAccess": S.optional(S.Boolean.pipe(T.Query())),
-  "publishedOnly": S.optional(S.Boolean.pipe(T.Query())),
-  "languageCode": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "customer": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "view": S.optional(ListLabelsViewEnum.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v2beta/labels","baseUrl":"https://drivelabels.googleapis.com/"})),
-).annotate({ identifier: "ListLabelsRequest" }) as any as S.Schema<ListLabelsRequest>;
+  S.Struct({
+    minimumRole: S.optional(ListLabelsMinimumRoleEnum.pipe(T.Query())),
+    useAdminAccess: S.optional(S.Boolean.pipe(T.Query())),
+    publishedOnly: S.optional(S.Boolean.pipe(T.Query())),
+    languageCode: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    customer: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    view: S.optional(ListLabelsViewEnum.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v2beta/labels",
+      baseUrl: "https://drivelabels.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListLabelsRequest",
+}) as any as S.Schema<ListLabelsRequest>;
 
-export type GoogleAppsDriveLabelsV2betaLabelList = ReadonlyArray<GoogleAppsDriveLabelsV2betaLabel>;
-export const GoogleAppsDriveLabelsV2betaLabelList = /*@__PURE__*/ S.Array(GoogleAppsDriveLabelsV2betaLabel) as any as S.Schema<GoogleAppsDriveLabelsV2betaLabelList>;
+export type GoogleAppsDriveLabelsV2betaLabelList =
+  ReadonlyArray<GoogleAppsDriveLabelsV2betaLabel>;
+export const GoogleAppsDriveLabelsV2betaLabelList = /*@__PURE__*/ S.Array(
+  GoogleAppsDriveLabelsV2betaLabel,
+) as any as S.Schema<GoogleAppsDriveLabelsV2betaLabelList>;
 
 /** Response for listing labels. */
 export interface GoogleAppsDriveLabelsV2betaListLabelsResponse {
@@ -1798,12 +2387,15 @@ export interface GoogleAppsDriveLabelsV2betaListLabelsResponse {
   /** The token of the next page in the response. */
   nextPageToken?: string;
 }
-export const GoogleAppsDriveLabelsV2betaListLabelsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "labels": S.optional(GoogleAppsDriveLabelsV2betaLabelList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaListLabelsResponse" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaListLabelsResponse>;
+export const GoogleAppsDriveLabelsV2betaListLabelsResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      labels: S.optional(GoogleAppsDriveLabelsV2betaLabelList),
+      nextPageToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsDriveLabelsV2betaListLabelsResponse",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaListLabelsResponse>;
 
 export interface ListLabelsLocksRequest {
   /** Maximum number of locks to return per page. Default: 100. Max: 200. */
@@ -1814,26 +2406,41 @@ export interface ListLabelsLocksRequest {
   parent: string;
 }
 export const ListLabelsLocksRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v2beta/{+parent}/locks","baseUrl":"https://drivelabels.googleapis.com/"})),
-).annotate({ identifier: "ListLabelsLocksRequest" }) as any as S.Schema<ListLabelsLocksRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v2beta/{+parent}/locks",
+      baseUrl: "https://drivelabels.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListLabelsLocksRequest",
+}) as any as S.Schema<ListLabelsLocksRequest>;
 
-export type GoogleAppsDriveLabelsV2betaLabelLockStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "DELETING";
-export const GoogleAppsDriveLabelsV2betaLabelLockStateEnum = /*@__PURE__*/ S.String;
+export type GoogleAppsDriveLabelsV2betaLabelLockStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "DELETING";
+export const GoogleAppsDriveLabelsV2betaLabelLockStateEnum =
+  /*@__PURE__*/ S.String;
 
 /** A description of a user's capabilities on a label lock. */
 export interface GoogleAppsDriveLabelsV2betaLabelLockCapabilities {
   /** True if the user is authorized to view the policy. */
   canViewPolicy?: boolean;
 }
-export const GoogleAppsDriveLabelsV2betaLabelLockCapabilities = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "canViewPolicy": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaLabelLockCapabilities" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaLabelLockCapabilities>;
+export const GoogleAppsDriveLabelsV2betaLabelLockCapabilities =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      canViewPolicy: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsDriveLabelsV2betaLabelLockCapabilities",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaLabelLockCapabilities>;
 
 /** A lock that can be applied to a label, field, or choice. */
 export interface GoogleAppsDriveLabelsV2betaLabelLock {
@@ -1854,21 +2461,29 @@ export interface GoogleAppsDriveLabelsV2betaLabelLock {
   /** Output only. The user's capabilities on this label lock. */
   capabilities?: GoogleAppsDriveLabelsV2betaLabelLockCapabilities;
 }
-export const GoogleAppsDriveLabelsV2betaLabelLock = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "choiceId": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "name": S.optional(S.String),
-  "state": S.optional(GoogleAppsDriveLabelsV2betaLabelLockStateEnum),
-  "fieldId": S.optional(S.String),
-  "creator": S.optional(GoogleAppsDriveLabelsV2betaUserInfo),
-  "deleteTime": S.optional(S.String),
-  "capabilities": S.optional(GoogleAppsDriveLabelsV2betaLabelLockCapabilities),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaLabelLock" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaLabelLock>;
+export const GoogleAppsDriveLabelsV2betaLabelLock = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      choiceId: S.optional(S.String),
+      createTime: S.optional(S.String),
+      name: S.optional(S.String),
+      state: S.optional(GoogleAppsDriveLabelsV2betaLabelLockStateEnum),
+      fieldId: S.optional(S.String),
+      creator: S.optional(GoogleAppsDriveLabelsV2betaUserInfo),
+      deleteTime: S.optional(S.String),
+      capabilities: S.optional(
+        GoogleAppsDriveLabelsV2betaLabelLockCapabilities,
+      ),
+    }),
+).annotate({
+  identifier: "GoogleAppsDriveLabelsV2betaLabelLock",
+}) as any as S.Schema<GoogleAppsDriveLabelsV2betaLabelLock>;
 
-export type GoogleAppsDriveLabelsV2betaLabelLockList = ReadonlyArray<GoogleAppsDriveLabelsV2betaLabelLock>;
-export const GoogleAppsDriveLabelsV2betaLabelLockList = /*@__PURE__*/ S.Array(GoogleAppsDriveLabelsV2betaLabelLock) as any as S.Schema<GoogleAppsDriveLabelsV2betaLabelLockList>;
+export type GoogleAppsDriveLabelsV2betaLabelLockList =
+  ReadonlyArray<GoogleAppsDriveLabelsV2betaLabelLock>;
+export const GoogleAppsDriveLabelsV2betaLabelLockList = /*@__PURE__*/ S.Array(
+  GoogleAppsDriveLabelsV2betaLabelLock,
+) as any as S.Schema<GoogleAppsDriveLabelsV2betaLabelLockList>;
 
 /** The response to a `ListLabelLocksRequest`. */
 export interface GoogleAppsDriveLabelsV2betaListLabelLocksResponse {
@@ -1877,12 +2492,15 @@ export interface GoogleAppsDriveLabelsV2betaListLabelLocksResponse {
   /** The token of the next page in the response. */
   nextPageToken?: string;
 }
-export const GoogleAppsDriveLabelsV2betaListLabelLocksResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "labelLocks": S.optional(GoogleAppsDriveLabelsV2betaLabelLockList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaListLabelLocksResponse" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaListLabelLocksResponse>;
+export const GoogleAppsDriveLabelsV2betaListLabelLocksResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      labelLocks: S.optional(GoogleAppsDriveLabelsV2betaLabelLockList),
+      nextPageToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsDriveLabelsV2betaListLabelLocksResponse",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaListLabelLocksResponse>;
 
 export interface ListLabelsPermissionsRequest {
   /** The token of the page to return. */
@@ -1895,13 +2513,21 @@ export interface ListLabelsPermissionsRequest {
   useAdminAccess?: boolean;
 }
 export const ListLabelsPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "useAdminAccess": S.optional(S.Boolean.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v2beta/{+parent}/permissions","baseUrl":"https://drivelabels.googleapis.com/"})),
-).annotate({ identifier: "ListLabelsPermissionsRequest" }) as any as S.Schema<ListLabelsPermissionsRequest>;
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    useAdminAccess: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v2beta/{+parent}/permissions",
+      baseUrl: "https://drivelabels.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListLabelsPermissionsRequest",
+}) as any as S.Schema<ListLabelsPermissionsRequest>;
 
 /** Response for listing the permissions on a label. */
 export interface GoogleAppsDriveLabelsV2betaListLabelPermissionsResponse {
@@ -1910,12 +2536,17 @@ export interface GoogleAppsDriveLabelsV2betaListLabelPermissionsResponse {
   /** The token of the next page in the response. */
   nextPageToken?: string;
 }
-export const GoogleAppsDriveLabelsV2betaListLabelPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "labelPermissions": S.optional(GoogleAppsDriveLabelsV2betaLabelPermissionList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaListLabelPermissionsResponse" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaListLabelPermissionsResponse>;
+export const GoogleAppsDriveLabelsV2betaListLabelPermissionsResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      labelPermissions: S.optional(
+        GoogleAppsDriveLabelsV2betaLabelPermissionList,
+      ),
+      nextPageToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsDriveLabelsV2betaListLabelPermissionsResponse",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaListLabelPermissionsResponse>;
 
 export interface ListLabelsRevisionsLocksRequest {
   /** The token of the page to return. */
@@ -1926,12 +2557,20 @@ export interface ListLabelsRevisionsLocksRequest {
   parent: string;
 }
 export const ListLabelsRevisionsLocksRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v2beta/{+parent}/locks","baseUrl":"https://drivelabels.googleapis.com/"})),
-).annotate({ identifier: "ListLabelsRevisionsLocksRequest" }) as any as S.Schema<ListLabelsRevisionsLocksRequest>;
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v2beta/{+parent}/locks",
+      baseUrl: "https://drivelabels.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListLabelsRevisionsLocksRequest",
+}) as any as S.Schema<ListLabelsRevisionsLocksRequest>;
 
 export interface ListLabelsRevisionsPermissionsRequest {
   /** Required. The parent label resource name on which label permissions are listed. Format: `labels/{label}`. */
@@ -1943,14 +2582,23 @@ export interface ListLabelsRevisionsPermissionsRequest {
   /** Maximum number of permissions to return per page. Default: 50. Max: 200. */
   pageSize?: number;
 }
-export const ListLabelsRevisionsPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "useAdminAccess": S.optional(S.Boolean.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v2beta/{+parent}/permissions","baseUrl":"https://drivelabels.googleapis.com/"})),
-).annotate({ identifier: "ListLabelsRevisionsPermissionsRequest" }) as any as S.Schema<ListLabelsRevisionsPermissionsRequest>;
+export const ListLabelsRevisionsPermissionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      useAdminAccess: S.optional(S.Boolean.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v2beta/{+parent}/permissions",
+        baseUrl: "https://drivelabels.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListLabelsRevisionsPermissionsRequest",
+}) as any as S.Schema<ListLabelsRevisionsPermissionsRequest>;
 
 /** Request to publish a label. */
 export interface GoogleAppsDriveLabelsV2betaPublishLabelRequest {
@@ -1961,13 +2609,16 @@ export interface GoogleAppsDriveLabelsV2betaPublishLabelRequest {
   /** The BCP-47 language code to use for evaluating localized field labels. When not specified, values in the default configured language will be used. */
   languageCode?: string;
 }
-export const GoogleAppsDriveLabelsV2betaPublishLabelRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "useAdminAccess": S.optional(S.Boolean),
-  "writeControl": S.optional(GoogleAppsDriveLabelsV2betaWriteControl),
-  "languageCode": S.optional(S.String),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaPublishLabelRequest" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaPublishLabelRequest>;
+export const GoogleAppsDriveLabelsV2betaPublishLabelRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      useAdminAccess: S.optional(S.Boolean),
+      writeControl: S.optional(GoogleAppsDriveLabelsV2betaWriteControl),
+      languageCode: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsDriveLabelsV2betaPublishLabelRequest",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaPublishLabelRequest>;
 
 export interface PublishLabelsRequest {
   /** Required. Label resource name. */
@@ -1976,37 +2627,66 @@ export interface PublishLabelsRequest {
   body?: GoogleAppsDriveLabelsV2betaPublishLabelRequest;
 }
 export const PublishLabelsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleAppsDriveLabelsV2betaPublishLabelRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2beta/{+name}:publish","baseUrl":"https://drivelabels.googleapis.com/"})),
-).annotate({ identifier: "PublishLabelsRequest" }) as any as S.Schema<PublishLabelsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(
+      GoogleAppsDriveLabelsV2betaPublishLabelRequest.pipe(T.HttpBody()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v2beta/{+name}:publish",
+      baseUrl: "https://drivelabels.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PublishLabelsRequest",
+}) as any as S.Schema<PublishLabelsRequest>;
 
-export type GoogleAppsDriveLabelsV2betaUpdateLabelCopyModeRequestViewEnum = "LABEL_VIEW_BASIC" | "LABEL_VIEW_FULL";
-export const GoogleAppsDriveLabelsV2betaUpdateLabelCopyModeRequestViewEnum = /*@__PURE__*/ S.String;
+export type GoogleAppsDriveLabelsV2betaUpdateLabelCopyModeRequestViewEnum =
+  | "LABEL_VIEW_BASIC"
+  | "LABEL_VIEW_FULL";
+export const GoogleAppsDriveLabelsV2betaUpdateLabelCopyModeRequestViewEnum =
+  /*@__PURE__*/ S.String;
 
-export type GoogleAppsDriveLabelsV2betaUpdateLabelCopyModeRequestCopyModeEnum = "COPY_MODE_UNSPECIFIED" | "DO_NOT_COPY" | "ALWAYS_COPY" | "COPY_APPLIABLE";
-export const GoogleAppsDriveLabelsV2betaUpdateLabelCopyModeRequestCopyModeEnum = /*@__PURE__*/ S.String;
+export type GoogleAppsDriveLabelsV2betaUpdateLabelCopyModeRequestCopyModeEnum =
+  | "COPY_MODE_UNSPECIFIED"
+  | "DO_NOT_COPY"
+  | "ALWAYS_COPY"
+  | "COPY_APPLIABLE";
+export const GoogleAppsDriveLabelsV2betaUpdateLabelCopyModeRequestCopyModeEnum =
+  /*@__PURE__*/ S.String;
 
 /** Request to update the `CopyMode` of the given label. Changes to this policy aren't revisioned, don't require publishing, and take effect immediately. \ */
 export interface GoogleAppsDriveLabelsV2betaUpdateLabelCopyModeRequest {
   /** When specified, only certain fields belonging to the indicated view will be returned. */
-  view?: GoogleAppsDriveLabelsV2betaUpdateLabelCopyModeRequestViewEnum | (string & {});
+  view?:
+    | GoogleAppsDriveLabelsV2betaUpdateLabelCopyModeRequestViewEnum
+    | (string & {});
   /** Required. Indicates how the applied label and field values should be copied when a Drive item is copied. */
-  copyMode?: GoogleAppsDriveLabelsV2betaUpdateLabelCopyModeRequestCopyModeEnum | (string & {});
+  copyMode?:
+    | GoogleAppsDriveLabelsV2betaUpdateLabelCopyModeRequestCopyModeEnum
+    | (string & {});
   /** The BCP-47 language code to use for evaluating localized field labels. When not specified, values in the default configured language will be used. */
   languageCode?: string;
   /** Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the label before allowing access. */
   useAdminAccess?: boolean;
 }
-export const GoogleAppsDriveLabelsV2betaUpdateLabelCopyModeRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "view": S.optional(GoogleAppsDriveLabelsV2betaUpdateLabelCopyModeRequestViewEnum),
-  "copyMode": S.optional(GoogleAppsDriveLabelsV2betaUpdateLabelCopyModeRequestCopyModeEnum),
-  "languageCode": S.optional(S.String),
-  "useAdminAccess": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaUpdateLabelCopyModeRequest" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaUpdateLabelCopyModeRequest>;
+export const GoogleAppsDriveLabelsV2betaUpdateLabelCopyModeRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      view: S.optional(
+        GoogleAppsDriveLabelsV2betaUpdateLabelCopyModeRequestViewEnum,
+      ),
+      copyMode: S.optional(
+        GoogleAppsDriveLabelsV2betaUpdateLabelCopyModeRequestCopyModeEnum,
+      ),
+      languageCode: S.optional(S.String),
+      useAdminAccess: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "GoogleAppsDriveLabelsV2betaUpdateLabelCopyModeRequest",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaUpdateLabelCopyModeRequest>;
 
 export interface UpdateLabelCopyModeLabelsRequest {
   /** Required. The resource name of the label to update. */
@@ -2015,34 +2695,56 @@ export interface UpdateLabelCopyModeLabelsRequest {
   body?: GoogleAppsDriveLabelsV2betaUpdateLabelCopyModeRequest;
 }
 export const UpdateLabelCopyModeLabelsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleAppsDriveLabelsV2betaUpdateLabelCopyModeRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2beta/{+name}:updateLabelCopyMode","baseUrl":"https://drivelabels.googleapis.com/"})),
-).annotate({ identifier: "UpdateLabelCopyModeLabelsRequest" }) as any as S.Schema<UpdateLabelCopyModeLabelsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(
+      GoogleAppsDriveLabelsV2betaUpdateLabelCopyModeRequest.pipe(T.HttpBody()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v2beta/{+name}:updateLabelCopyMode",
+      baseUrl: "https://drivelabels.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateLabelCopyModeLabelsRequest",
+}) as any as S.Schema<UpdateLabelCopyModeLabelsRequest>;
 
-export type GoogleAppsDriveLabelsV2betaUpdateLabelEnabledAppSettingsRequestViewEnum = "LABEL_VIEW_BASIC" | "LABEL_VIEW_FULL";
-export const GoogleAppsDriveLabelsV2betaUpdateLabelEnabledAppSettingsRequestViewEnum = /*@__PURE__*/ S.String;
+export type GoogleAppsDriveLabelsV2betaUpdateLabelEnabledAppSettingsRequestViewEnum =
+  "LABEL_VIEW_BASIC" | "LABEL_VIEW_FULL";
+export const GoogleAppsDriveLabelsV2betaUpdateLabelEnabledAppSettingsRequestViewEnum =
+  /*@__PURE__*/ S.String;
 
 /** Request to update the `EnabledAppSettings` of the given label. This change is not revisioned, doesn't require publishing, and takes effect immediately. \ */
 export interface GoogleAppsDriveLabelsV2betaUpdateLabelEnabledAppSettingsRequest {
   /** Required. The new `EnabledAppSettings` value for the label. */
   enabledAppSettings?: GoogleAppsDriveLabelsV2betaLabelEnabledAppSettings;
   /** Optional. When specified, only certain fields belonging to the indicated view will be returned. */
-  view?: GoogleAppsDriveLabelsV2betaUpdateLabelEnabledAppSettingsRequestViewEnum | (string & {});
+  view?:
+    | GoogleAppsDriveLabelsV2betaUpdateLabelEnabledAppSettingsRequestViewEnum
+    | (string & {});
   /** Optional. The BCP-47 language code to use for evaluating localized field labels. When not specified, values in the default configured language will be used. */
   languageCode?: string;
   /** Optional. Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the label before allowing access. */
   useAdminAccess?: boolean;
 }
-export const GoogleAppsDriveLabelsV2betaUpdateLabelEnabledAppSettingsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "enabledAppSettings": S.optional(GoogleAppsDriveLabelsV2betaLabelEnabledAppSettings),
-  "view": S.optional(GoogleAppsDriveLabelsV2betaUpdateLabelEnabledAppSettingsRequestViewEnum),
-  "languageCode": S.optional(S.String),
-  "useAdminAccess": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "GoogleAppsDriveLabelsV2betaUpdateLabelEnabledAppSettingsRequest" }) as any as S.Schema<GoogleAppsDriveLabelsV2betaUpdateLabelEnabledAppSettingsRequest>;
+export const GoogleAppsDriveLabelsV2betaUpdateLabelEnabledAppSettingsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabledAppSettings: S.optional(
+        GoogleAppsDriveLabelsV2betaLabelEnabledAppSettings,
+      ),
+      view: S.optional(
+        GoogleAppsDriveLabelsV2betaUpdateLabelEnabledAppSettingsRequestViewEnum,
+      ),
+      languageCode: S.optional(S.String),
+      useAdminAccess: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleAppsDriveLabelsV2betaUpdateLabelEnabledAppSettingsRequest",
+  }) as any as S.Schema<GoogleAppsDriveLabelsV2betaUpdateLabelEnabledAppSettingsRequest>;
 
 export interface UpdateLabelEnabledAppSettingsLabelsRequest {
   /** Required. The resource name of the label to update. The resource name of the label to update. */
@@ -2050,12 +2752,25 @@ export interface UpdateLabelEnabledAppSettingsLabelsRequest {
   /** Request body */
   body?: GoogleAppsDriveLabelsV2betaUpdateLabelEnabledAppSettingsRequest;
 }
-export const UpdateLabelEnabledAppSettingsLabelsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GoogleAppsDriveLabelsV2betaUpdateLabelEnabledAppSettingsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2beta/{+name}:updateLabelEnabledAppSettings","baseUrl":"https://drivelabels.googleapis.com/"})),
-).annotate({ identifier: "UpdateLabelEnabledAppSettingsLabelsRequest" }) as any as S.Schema<UpdateLabelEnabledAppSettingsLabelsRequest>;
+export const UpdateLabelEnabledAppSettingsLabelsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleAppsDriveLabelsV2betaUpdateLabelEnabledAppSettingsRequest.pipe(
+          T.HttpBody(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v2beta/{+name}:updateLabelEnabledAppSettings",
+        baseUrl: "https://drivelabels.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "UpdateLabelEnabledAppSettingsLabelsRequest",
+  }) as any as S.Schema<UpdateLabelEnabledAppSettingsLabelsRequest>;
 
 export interface UpdatePermissionsLabelsRequest {
   /** Required. The parent label resource name. */
@@ -2066,12 +2781,22 @@ export interface UpdatePermissionsLabelsRequest {
   body?: GoogleAppsDriveLabelsV2betaLabelPermission;
 }
 export const UpdatePermissionsLabelsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "useAdminAccess": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(GoogleAppsDriveLabelsV2betaLabelPermission.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v2beta/{+parent}/permissions","baseUrl":"https://drivelabels.googleapis.com/"})),
-).annotate({ identifier: "UpdatePermissionsLabelsRequest" }) as any as S.Schema<UpdatePermissionsLabelsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    useAdminAccess: S.optional(S.Boolean.pipe(T.Query())),
+    body: S.optional(
+      GoogleAppsDriveLabelsV2betaLabelPermission.pipe(T.HttpBody()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v2beta/{+parent}/permissions",
+      baseUrl: "https://drivelabels.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdatePermissionsLabelsRequest",
+}) as any as S.Schema<UpdatePermissionsLabelsRequest>;
 
 export interface UpdatePermissionsLabelsRevisionsRequest {
   /** Required. The parent label resource name. */
@@ -2081,15 +2806,31 @@ export interface UpdatePermissionsLabelsRevisionsRequest {
   /** Request body */
   body?: GoogleAppsDriveLabelsV2betaLabelPermission;
 }
-export const UpdatePermissionsLabelsRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "useAdminAccess": S.optional(S.Boolean.pipe(T.Query())),
-  "body": S.optional(GoogleAppsDriveLabelsV2betaLabelPermission.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v2beta/{+parent}/permissions","baseUrl":"https://drivelabels.googleapis.com/"})),
-).annotate({ identifier: "UpdatePermissionsLabelsRevisionsRequest" }) as any as S.Schema<UpdatePermissionsLabelsRevisionsRequest>;
+export const UpdatePermissionsLabelsRevisionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      useAdminAccess: S.optional(S.Boolean.pipe(T.Query())),
+      body: S.optional(
+        GoogleAppsDriveLabelsV2betaLabelPermission.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v2beta/{+parent}/permissions",
+        baseUrl: "https://drivelabels.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "UpdatePermissionsLabelsRevisionsRequest",
+}) as any as S.Schema<UpdatePermissionsLabelsRevisionsRequest>;
 
-export type BatchDeleteLabelsPermissionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type BatchDeleteLabelsPermissionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes label permissions. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing. */
 export const batchDeleteLabelsPermissions: API.OperationMethod<
   BatchDeleteLabelsPermissionsRequest,
@@ -2104,7 +2845,12 @@ export const batchDeleteLabelsPermissions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BatchDeleteLabelsRevisionsPermissionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type BatchDeleteLabelsRevisionsPermissionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes label permissions. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing. */
 export const batchDeleteLabelsRevisionsPermissions: API.OperationMethod<
   BatchDeleteLabelsRevisionsPermissionsRequest,
@@ -2119,7 +2865,12 @@ export const batchDeleteLabelsRevisionsPermissions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BatchUpdateLabelsPermissionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type BatchUpdateLabelsPermissionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates label permissions. If a permission for the indicated principal doesn't exist, a label permission is created, otherwise the existing permission is updated. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing. */
 export const batchUpdateLabelsPermissions: API.OperationMethod<
   BatchUpdateLabelsPermissionsRequest,
@@ -2134,7 +2885,12 @@ export const batchUpdateLabelsPermissions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BatchUpdateLabelsRevisionsPermissionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type BatchUpdateLabelsRevisionsPermissionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates label permissions. If a permission for the indicated principal doesn't exist, a label permission is created, otherwise the existing permission is updated. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing. */
 export const batchUpdateLabelsRevisionsPermissions: API.OperationMethod<
   BatchUpdateLabelsRevisionsPermissionsRequest,
@@ -2149,7 +2905,12 @@ export const batchUpdateLabelsRevisionsPermissions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateLabelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateLabelsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a label. For more information, see [Create and publish a label](https://developers.google.com/workspace/drive/labels/guides/create-label). */
 export const createLabels: API.OperationMethod<
   CreateLabelsRequest,
@@ -2164,7 +2925,12 @@ export const createLabels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateLabelsPermissionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateLabelsPermissionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a label's permissions. If a permission for the indicated principal doesn't exist, a label permission is created, otherwise the existing permission is updated. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing. */
 export const createLabelsPermissions: API.OperationMethod<
   CreateLabelsPermissionsRequest,
@@ -2179,7 +2945,12 @@ export const createLabelsPermissions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateLabelsRevisionsPermissionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateLabelsRevisionsPermissionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a label's permissions. If a permission for the indicated principal doesn't exist, a label permission is created, otherwise the existing permission is updated. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing. */
 export const createLabelsRevisionsPermissions: API.OperationMethod<
   CreateLabelsRevisionsPermissionsRequest,
@@ -2194,7 +2965,12 @@ export const createLabelsRevisionsPermissions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteLabelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteLabelsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Permanently deletes a label and related metadata on Drive items. For more information, see [Disable, enable, and delete a label](https://developers.google.com/workspace/drive/labels/guides/disable-delete-label). Once deleted, the label and related Drive item metadata will be deleted. Only draft labels and disabled labels may be deleted. */
 export const deleteLabels: API.OperationMethod<
   DeleteLabelsRequest,
@@ -2209,7 +2985,12 @@ export const deleteLabels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteLabelsPermissionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteLabelsPermissionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a label's permission. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing. */
 export const deleteLabelsPermissions: API.OperationMethod<
   DeleteLabelsPermissionsRequest,
@@ -2224,7 +3005,12 @@ export const deleteLabelsPermissions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteLabelsRevisionsPermissionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteLabelsRevisionsPermissionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a label's permission. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing. */
 export const deleteLabelsRevisionsPermissions: API.OperationMethod<
   DeleteLabelsRevisionsPermissionsRequest,
@@ -2239,7 +3025,12 @@ export const deleteLabelsRevisionsPermissions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeltaLabelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeltaLabelsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a single label by applying a set of update requests resulting in a new draft revision. For more information, see [Update a label](https://developers.google.com/workspace/drive/labels/guides/update-label). The batch update is all-or-nothing: If any of the update requests are invalid, no changes are applied. The resulting draft revision must be published before the changes may be used with Drive items. */
 export const deltaLabels: API.OperationMethod<
   DeltaLabelsRequest,
@@ -2254,7 +3045,12 @@ export const deltaLabels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DisableLabelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DisableLabelsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Disable a published label. For more information, see [Disable, enable, and delete a label](https://developers.google.com/workspace/drive/labels/guides/disable-delete-label). Disabling a label will result in a new disabled published revision based on the current published revision. If there's a draft revision, a new disabled draft revision will be created based on the latest draft revision. Older draft revisions will be deleted. Once disabled, a label may be deleted with `DeleteLabel`. */
 export const disableLabels: API.OperationMethod<
   DisableLabelsRequest,
@@ -2269,7 +3065,12 @@ export const disableLabels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type EnableLabelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type EnableLabelsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Enable a disabled label and restore it to its published state. For more information, see [Disable, enable, and delete a label](https://developers.google.com/workspace/drive/labels/guides/disable-delete-label). This will result in a new published revision based on the current disabled published revision. If there's an existing disabled draft revision, a new revision will be created based on that draft and will be enabled. */
 export const enableLabels: API.OperationMethod<
   EnableLabelsRequest,
@@ -2342,7 +3143,10 @@ export const listLabels: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListLabelsLocksError = NotFound | Forbidden | GcpOpError;
@@ -2358,7 +3162,10 @@ export const listLabelsLocks: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListLabelsPermissionsError = NotFound | Forbidden | GcpOpError;
@@ -2374,7 +3181,10 @@ export const listLabelsPermissions: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListLabelsRevisionsLocksError = NotFound | Forbidden | GcpOpError;
@@ -2390,10 +3200,16 @@ export const listLabelsRevisionsLocks: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListLabelsRevisionsPermissionsError = NotFound | Forbidden | GcpOpError;
+export type ListLabelsRevisionsPermissionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists a label's permissions. */
 export const listLabelsRevisionsPermissions: API.PaginatedOperationMethod<
   ListLabelsRevisionsPermissionsRequest,
@@ -2406,10 +3222,18 @@ export const listLabelsRevisionsPermissions: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type PublishLabelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PublishLabelsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Publish all draft changes to the label. Once published, the label may not return to its draft state. For more information, see [Create and publish a label](https://developers.google.com/workspace/drive/labels/guides/create-label). Publishing a label will result in a new published revision. All previous draft revisions will be deleted. Previous published revisions will be kept but are subject to automated deletion as needed. For more information, see [Label lifecycle](https://developers.google.com/workspace/drive/labels/guides/label-lifecycle). Once published, some changes are no longer permitted. Generally, any change that would invalidate or cause new restrictions on existing metadata related to the label will be rejected. For example, the following changes to a label will be rejected after the label is published: * The label cannot be directly deleted. It must be disabled first, then deleted. * `Field.FieldType` cannot be changed. * Changes to field validation options cannot reject something that was previously accepted. * Reducing the maximum entries. */
 export const publishLabels: API.OperationMethod<
   PublishLabelsRequest,
@@ -2424,7 +3248,12 @@ export const publishLabels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateLabelCopyModeLabelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateLabelCopyModeLabelsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a label's `CopyMode`. Changes to this policy aren't revisioned, don't require publishing, and take effect immediately. */
 export const updateLabelCopyModeLabels: API.OperationMethod<
   UpdateLabelCopyModeLabelsRequest,
@@ -2439,7 +3268,12 @@ export const updateLabelCopyModeLabels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateLabelEnabledAppSettingsLabelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateLabelEnabledAppSettingsLabelsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a label's `EnabledAppSettings`. Enabling a label in a Google Workspace app allows it to be used in that app. This change isn't revisioned, doesn't require publishing, and takes effect immediately. */
 export const updateLabelEnabledAppSettingsLabels: API.OperationMethod<
   UpdateLabelEnabledAppSettingsLabelsRequest,
@@ -2454,7 +3288,12 @@ export const updateLabelEnabledAppSettingsLabels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdatePermissionsLabelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdatePermissionsLabelsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a label's permissions. If a permission for the indicated principal doesn't exist, a label permission is created, otherwise the existing permission is updated. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing. */
 export const updatePermissionsLabels: API.OperationMethod<
   UpdatePermissionsLabelsRequest,
@@ -2469,7 +3308,12 @@ export const updatePermissionsLabels: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdatePermissionsLabelsRevisionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdatePermissionsLabelsRevisionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a label's permissions. If a permission for the indicated principal doesn't exist, a label permission is created, otherwise the existing permission is updated. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing. */
 export const updatePermissionsLabelsRevisions: API.OperationMethod<
   UpdatePermissionsLabelsRevisionsRequest,
@@ -2483,4 +3327,3 @@ export const updatePermissionsLabelsRevisions: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

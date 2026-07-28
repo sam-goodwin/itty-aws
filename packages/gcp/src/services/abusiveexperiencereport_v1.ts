@@ -13,27 +13,27 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export interface GetSitesRequest {
@@ -41,15 +41,31 @@ export interface GetSitesRequest {
   name: string;
 }
 export const GetSitesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://abusiveexperiencereport.googleapis.com/"})),
-).annotate({ identifier: "GetSitesRequest" }) as any as S.Schema<GetSitesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://abusiveexperiencereport.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetSitesRequest",
+}) as any as S.Schema<GetSitesRequest>;
 
-export type SiteSummaryResponseFilterStatusEnum = "UNKNOWN" | "ON" | "OFF" | "PAUSED" | "PENDING";
+export type SiteSummaryResponseFilterStatusEnum =
+  | "UNKNOWN"
+  | "ON"
+  | "OFF"
+  | "PAUSED"
+  | "PENDING";
 export const SiteSummaryResponseFilterStatusEnum = /*@__PURE__*/ S.String;
 
-export type SiteSummaryResponseAbusiveStatusEnum = "UNKNOWN" | "PASSING" | "FAILING";
+export type SiteSummaryResponseAbusiveStatusEnum =
+  | "UNKNOWN"
+  | "PASSING"
+  | "FAILING";
 export const SiteSummaryResponseAbusiveStatusEnum = /*@__PURE__*/ S.String;
 
 /** Response message for GetSiteSummary. */
@@ -70,24 +86,36 @@ export interface SiteSummaryResponse {
   enforcementTime?: string;
 }
 export const SiteSummaryResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "reviewedSite": S.optional(S.String),
-  "filterStatus": S.optional(SiteSummaryResponseFilterStatusEnum),
-  "lastChangeTime": S.optional(S.String),
-  "abusiveStatus": S.optional(SiteSummaryResponseAbusiveStatusEnum),
-  "reportUrl": S.optional(S.String),
-  "underReview": S.optional(S.Boolean),
-  "enforcementTime": S.optional(S.String),
-}),
-).annotate({ identifier: "SiteSummaryResponse" }) as any as S.Schema<SiteSummaryResponse>;
+  S.Struct({
+    reviewedSite: S.optional(S.String),
+    filterStatus: S.optional(SiteSummaryResponseFilterStatusEnum),
+    lastChangeTime: S.optional(S.String),
+    abusiveStatus: S.optional(SiteSummaryResponseAbusiveStatusEnum),
+    reportUrl: S.optional(S.String),
+    underReview: S.optional(S.Boolean),
+    enforcementTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SiteSummaryResponse",
+}) as any as S.Schema<SiteSummaryResponse>;
 
 export interface ListViolatingSitesRequest {}
 export const ListViolatingSitesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}).pipe(T.Http({"method":"GET","uri":"v1/violatingSites","baseUrl":"https://abusiveexperiencereport.googleapis.com/"})),
-).annotate({ identifier: "ListViolatingSitesRequest" }) as any as S.Schema<ListViolatingSitesRequest>;
+  S.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/violatingSites",
+      baseUrl: "https://abusiveexperiencereport.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListViolatingSitesRequest",
+}) as any as S.Schema<ListViolatingSitesRequest>;
 
 export type SiteSummaryResponseList = ReadonlyArray<SiteSummaryResponse>;
-export const SiteSummaryResponseList = /*@__PURE__*/ S.Array(SiteSummaryResponse) as any as S.Schema<SiteSummaryResponseList>;
+export const SiteSummaryResponseList = /*@__PURE__*/ S.Array(
+  SiteSummaryResponse,
+) as any as S.Schema<SiteSummaryResponseList>;
 
 /** Response message for ListViolatingSites. */
 export interface ViolatingSitesResponse {
@@ -95,10 +123,12 @@ export interface ViolatingSitesResponse {
   violatingSites?: SiteSummaryResponseList;
 }
 export const ViolatingSitesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "violatingSites": S.optional(SiteSummaryResponseList),
-}),
-).annotate({ identifier: "ViolatingSitesResponse" }) as any as S.Schema<ViolatingSitesResponse>;
+  S.Struct({
+    violatingSites: S.optional(SiteSummaryResponseList),
+  }),
+).annotate({
+  identifier: "ViolatingSitesResponse",
+}) as any as S.Schema<ViolatingSitesResponse>;
 
 export type GetSitesError = NotFound | Forbidden | GcpOpError;
 /** Gets a site's Abusive Experience Report summary. */
@@ -129,4 +159,3 @@ export const listViolatingSites: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

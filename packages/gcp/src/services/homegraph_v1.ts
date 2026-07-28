@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export interface DeleteAgentUsersRequest {
@@ -67,17 +67,25 @@ export interface DeleteAgentUsersRequest {
   requestId?: string;
 }
 export const DeleteAgentUsersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "agentUserId": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+agentUserId}","baseUrl":"https://homegraph.googleapis.com/"})),
-).annotate({ identifier: "DeleteAgentUsersRequest" }) as any as S.Schema<DeleteAgentUsersRequest>;
+  S.Struct({
+    agentUserId: S.String.pipe(T.Label()),
+    requestId: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+agentUserId}",
+      baseUrl: "https://homegraph.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteAgentUsersRequest",
+}) as any as S.Schema<DeleteAgentUsersRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 /** Third-party device ID for one device. */
 export interface AgentDeviceId {
@@ -85,13 +93,15 @@ export interface AgentDeviceId {
   id?: string;
 }
 export const AgentDeviceId = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.optional(S.String),
-}),
+  S.Struct({
+    id: S.optional(S.String),
+  }),
 ).annotate({ identifier: "AgentDeviceId" }) as any as S.Schema<AgentDeviceId>;
 
 export type AgentDeviceIdList = ReadonlyArray<AgentDeviceId>;
-export const AgentDeviceIdList = /*@__PURE__*/ S.Array(AgentDeviceId) as any as S.Schema<AgentDeviceIdList>;
+export const AgentDeviceIdList = /*@__PURE__*/ S.Array(
+  AgentDeviceId,
+) as any as S.Schema<AgentDeviceIdList>;
 
 /** Payload containing device IDs. */
 export interface QueryRequestPayload {
@@ -99,10 +109,12 @@ export interface QueryRequestPayload {
   devices?: AgentDeviceIdList;
 }
 export const QueryRequestPayload = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "devices": S.optional(AgentDeviceIdList),
-}),
-).annotate({ identifier: "QueryRequestPayload" }) as any as S.Schema<QueryRequestPayload>;
+  S.Struct({
+    devices: S.optional(AgentDeviceIdList),
+  }),
+).annotate({
+  identifier: "QueryRequestPayload",
+}) as any as S.Schema<QueryRequestPayload>;
 
 /** Device ID inputs to QueryRequest. */
 export interface QueryRequestInput {
@@ -110,15 +122,23 @@ export interface QueryRequestInput {
   payload?: QueryRequestPayload;
 }
 export const QueryRequestInput = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "payload": S.optional(QueryRequestPayload),
-}),
-).annotate({ identifier: "QueryRequestInput" }) as any as S.Schema<QueryRequestInput>;
+  S.Struct({
+    payload: S.optional(QueryRequestPayload),
+  }),
+).annotate({
+  identifier: "QueryRequestInput",
+}) as any as S.Schema<QueryRequestInput>;
 
 export type QueryRequestInputList = ReadonlyArray<QueryRequestInput>;
-export const QueryRequestInputList = /*@__PURE__*/ S.Array(QueryRequestInput) as any as S.Schema<QueryRequestInputList>;
+export const QueryRequestInputList = /*@__PURE__*/ S.Array(
+  QueryRequestInput,
+) as any as S.Schema<QueryRequestInputList>;
 
-export type QueryRequestDeviceViewEnum = "DEVICE_VIEW_UNSPECIFIED" | "SMART_HOME_TRAIT_ONLY" | "HOME_TRAIT_ONLY" | "HOME_TRAIT_AND_SMART_HOME_TRAIT";
+export type QueryRequestDeviceViewEnum =
+  | "DEVICE_VIEW_UNSPECIFIED"
+  | "SMART_HOME_TRAIT_ONLY"
+  | "HOME_TRAIT_ONLY"
+  | "HOME_TRAIT_AND_SMART_HOME_TRAIT";
 export const QueryRequestDeviceViewEnum = /*@__PURE__*/ S.String;
 
 /** Request type for the [`Query`](#google.home.graph.v1.HomeGraphApiService.Query) call. */
@@ -135,13 +155,13 @@ export interface QueryRequest {
   deviceView?: QueryRequestDeviceViewEnum | (string & {});
 }
 export const QueryRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String),
-  "agentUserId": S.optional(S.String),
-  "includeDeviceMetadata": S.optional(S.Boolean),
-  "inputs": S.optional(QueryRequestInputList),
-  "deviceView": S.optional(QueryRequestDeviceViewEnum),
-}),
+  S.Struct({
+    requestId: S.optional(S.String),
+    agentUserId: S.optional(S.String),
+    includeDeviceMetadata: S.optional(S.Boolean),
+    inputs: S.optional(QueryRequestInputList),
+    deviceView: S.optional(QueryRequestDeviceViewEnum),
+  }),
 ).annotate({ identifier: "QueryRequest" }) as any as S.Schema<QueryRequest>;
 
 export interface QueryDevicesRequest {
@@ -149,13 +169,24 @@ export interface QueryDevicesRequest {
   body?: QueryRequest;
 }
 export const QueryDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(QueryRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/devices:query","baseUrl":"https://homegraph.googleapis.com/"})),
-).annotate({ identifier: "QueryDevicesRequest" }) as any as S.Schema<QueryDevicesRequest>;
+  S.Struct({
+    body: S.optional(QueryRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/devices:query",
+      baseUrl: "https://homegraph.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "QueryDevicesRequest",
+}) as any as S.Schema<QueryDevicesRequest>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
 /** Metadata for traits of a single device. */
 export interface DeviceMetadata {
@@ -163,16 +194,22 @@ export interface DeviceMetadata {
   traitCommitTimestamps?: StringMap;
 }
 export const DeviceMetadata = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "traitCommitTimestamps": S.optional(StringMap),
-}),
+  S.Struct({
+    traitCommitTimestamps: S.optional(StringMap),
+  }),
 ).annotate({ identifier: "DeviceMetadata" }) as any as S.Schema<DeviceMetadata>;
 
 export type DeviceMetadataMap = { [key: string]: DeviceMetadata | undefined };
-export const DeviceMetadataMap = /*@__PURE__*/ S.Record(S.String, DeviceMetadata) as any as S.Schema<DeviceMetadataMap>;
+export const DeviceMetadataMap = /*@__PURE__*/ S.Record(
+  S.String,
+  DeviceMetadata,
+) as any as S.Schema<DeviceMetadataMap>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 /** Contains the trait payload for a single trait. */
 export interface TraitData {
@@ -184,21 +221,27 @@ export interface TraitData {
   providerVersionTime?: string;
 }
 export const TraitData = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "trait": S.optional(DocumentMap),
-  "commitTime": S.optional(S.String),
-  "providerVersionTime": S.optional(S.String),
-}),
+  S.Struct({
+    trait: S.optional(DocumentMap),
+    commitTime: S.optional(S.String),
+    providerVersionTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "TraitData" }) as any as S.Schema<TraitData>;
 
 export type TraitDataList = ReadonlyArray<TraitData>;
-export const TraitDataList = /*@__PURE__*/ S.Array(TraitData) as any as S.Schema<TraitDataList>;
+export const TraitDataList = /*@__PURE__*/ S.Array(
+  TraitData,
+) as any as S.Schema<TraitDataList>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 export type ComponentList = ReadonlyArray<Component>;
-export const ComponentList = /*@__PURE__*/ S.Array(S.suspend(() => Component)) as any as S.Schema<ComponentList>;
+export const ComponentList = /*@__PURE__*/ S.Array(
+  S.suspend(() => Component),
+) as any as S.Schema<ComponentList>;
 
 /** Component of a provider device. */
 export interface Component {
@@ -212,12 +255,12 @@ export interface Component {
   childComponents?: ComponentList;
 }
 export const Component = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "traitData": S.optional(TraitDataList),
-  "id": S.optional(S.String),
-  "deviceTypes": S.optional(StringList),
-  "childComponents": S.optional(ComponentList),
-}),
+  S.Struct({
+    traitData: S.optional(TraitDataList),
+    id: S.optional(S.String),
+    deviceTypes: S.optional(StringList),
+    childComponents: S.optional(ComponentList),
+  }),
 ).annotate({ identifier: "Component" }) as any as S.Schema<Component>;
 
 /** Container for UDDM trait data associated with a device. */
@@ -226,16 +269,26 @@ export interface HomeTraitPayload {
   rootComponent?: Component;
 }
 export const HomeTraitPayload = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "rootComponent": S.optional(Component),
-}),
-).annotate({ identifier: "HomeTraitPayload" }) as any as S.Schema<HomeTraitPayload>;
+  S.Struct({
+    rootComponent: S.optional(Component),
+  }),
+).annotate({
+  identifier: "HomeTraitPayload",
+}) as any as S.Schema<HomeTraitPayload>;
 
-export type HomeTraitPayloadMap = { [key: string]: HomeTraitPayload | undefined };
-export const HomeTraitPayloadMap = /*@__PURE__*/ S.Record(S.String, HomeTraitPayload) as any as S.Schema<HomeTraitPayloadMap>;
+export type HomeTraitPayloadMap = {
+  [key: string]: HomeTraitPayload | undefined;
+};
+export const HomeTraitPayloadMap = /*@__PURE__*/ S.Record(
+  S.String,
+  HomeTraitPayload,
+) as any as S.Schema<HomeTraitPayloadMap>;
 
 export type DocumentMapMap = { [key: string]: DocumentMap | undefined };
-export const DocumentMapMap = /*@__PURE__*/ S.Record(S.String, DocumentMap) as any as S.Schema<DocumentMapMap>;
+export const DocumentMapMap = /*@__PURE__*/ S.Record(
+  S.String,
+  DocumentMap,
+) as any as S.Schema<DocumentMapMap>;
 
 /** Payload containing device states information. */
 export interface QueryResponsePayload {
@@ -247,12 +300,14 @@ export interface QueryResponsePayload {
   devices?: DocumentMapMap;
 }
 export const QueryResponsePayload = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "deviceMetadata": S.optional(DeviceMetadataMap),
-  "homeTraitPayload": S.optional(HomeTraitPayloadMap),
-  "devices": S.optional(DocumentMapMap),
-}),
-).annotate({ identifier: "QueryResponsePayload" }) as any as S.Schema<QueryResponsePayload>;
+  S.Struct({
+    deviceMetadata: S.optional(DeviceMetadataMap),
+    homeTraitPayload: S.optional(HomeTraitPayloadMap),
+    devices: S.optional(DocumentMapMap),
+  }),
+).annotate({
+  identifier: "QueryResponsePayload",
+}) as any as S.Schema<QueryResponsePayload>;
 
 /** Response type for the [`Query`](#google.home.graph.v1.HomeGraphApiService.Query) call. This should follow the same format as the Google smart home `action.devices.QUERY` [response](https://developers.home.google.com/cloud-to-cloud/intents/query). Example: ```json { "requestId": "ff36a3cc-ec34-11e6-b1a0-64510650abcf", "payload": { "devices": { "123": { "on": true, "online": true }, "456": { "on": true, "online": true, "brightness": 80, "color": { "name": "cerulean", "spectrumRGB": 31655 } } } } } ``` */
 export interface QueryResponse {
@@ -262,10 +317,10 @@ export interface QueryResponse {
   payload?: QueryResponsePayload;
 }
 export const QueryResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String),
-  "payload": S.optional(QueryResponsePayload),
-}),
+  S.Struct({
+    requestId: S.optional(S.String),
+    payload: S.optional(QueryResponsePayload),
+  }),
 ).annotate({ identifier: "QueryResponse" }) as any as S.Schema<QueryResponse>;
 
 /** Contains the details for a single event. */
@@ -278,15 +333,17 @@ export interface EventData {
   eventTime?: string;
 }
 export const EventData = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "eventId": S.optional(S.String),
-  "event": S.optional(DocumentMap),
-  "eventTime": S.optional(S.String),
-}),
+  S.Struct({
+    eventId: S.optional(S.String),
+    event: S.optional(DocumentMap),
+    eventTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "EventData" }) as any as S.Schema<EventData>;
 
 export type EventDataList = ReadonlyArray<EventData>;
-export const EventDataList = /*@__PURE__*/ S.Array(EventData) as any as S.Schema<EventDataList>;
+export const EventDataList = /*@__PURE__*/ S.Array(
+  EventData,
+) as any as S.Schema<EventDataList>;
 
 /** Contains a set of events for a specific component. */
 export interface Events {
@@ -296,14 +353,16 @@ export interface Events {
   events?: EventDataList;
 }
 export const Events = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "componentId": S.optional(S.String),
-  "events": S.optional(EventDataList),
-}),
+  S.Struct({
+    componentId: S.optional(S.String),
+    events: S.optional(EventDataList),
+  }),
 ).annotate({ identifier: "Events" }) as any as S.Schema<Events>;
 
 export type EventsList = ReadonlyArray<Events>;
-export const EventsList = /*@__PURE__*/ S.Array(Events) as any as S.Schema<EventsList>;
+export const EventsList = /*@__PURE__*/ S.Array(
+  Events,
+) as any as S.Schema<EventsList>;
 
 /** Contains the set of events for an item. */
 export interface HomeEvents {
@@ -313,14 +372,16 @@ export interface HomeEvents {
   events?: EventsList;
 }
 export const HomeEvents = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "deviceId": S.optional(S.String),
-  "events": S.optional(EventsList),
-}),
+  S.Struct({
+    deviceId: S.optional(S.String),
+    events: S.optional(EventsList),
+  }),
 ).annotate({ identifier: "HomeEvents" }) as any as S.Schema<HomeEvents>;
 
 export type HomeEventsList = ReadonlyArray<HomeEvents>;
-export const HomeEventsList = /*@__PURE__*/ S.Array(HomeEvents) as any as S.Schema<HomeEventsList>;
+export const HomeEventsList = /*@__PURE__*/ S.Array(
+  HomeEvents,
+) as any as S.Schema<HomeEventsList>;
 
 /** Contains the set of updates for a component. */
 export interface ComponentTraitUpdates {
@@ -330,14 +391,18 @@ export interface ComponentTraitUpdates {
   componentId?: string;
 }
 export const ComponentTraitUpdates = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "traitData": S.optional(TraitDataList),
-  "componentId": S.optional(S.String),
-}),
-).annotate({ identifier: "ComponentTraitUpdates" }) as any as S.Schema<ComponentTraitUpdates>;
+  S.Struct({
+    traitData: S.optional(TraitDataList),
+    componentId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ComponentTraitUpdates",
+}) as any as S.Schema<ComponentTraitUpdates>;
 
 export type ComponentTraitUpdatesList = ReadonlyArray<ComponentTraitUpdates>;
-export const ComponentTraitUpdatesList = /*@__PURE__*/ S.Array(ComponentTraitUpdates) as any as S.Schema<ComponentTraitUpdatesList>;
+export const ComponentTraitUpdatesList = /*@__PURE__*/ S.Array(
+  ComponentTraitUpdates,
+) as any as S.Schema<ComponentTraitUpdatesList>;
 
 /** Contains the set of updates for a device. */
 export interface HomeTraitUpdates {
@@ -347,14 +412,18 @@ export interface HomeTraitUpdates {
   deviceId?: string;
 }
 export const HomeTraitUpdates = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "components": S.optional(ComponentTraitUpdatesList),
-  "deviceId": S.optional(S.String),
-}),
-).annotate({ identifier: "HomeTraitUpdates" }) as any as S.Schema<HomeTraitUpdates>;
+  S.Struct({
+    components: S.optional(ComponentTraitUpdatesList),
+    deviceId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "HomeTraitUpdates",
+}) as any as S.Schema<HomeTraitUpdates>;
 
 export type HomeTraitUpdatesList = ReadonlyArray<HomeTraitUpdates>;
-export const HomeTraitUpdatesList = /*@__PURE__*/ S.Array(HomeTraitUpdates) as any as S.Schema<HomeTraitUpdatesList>;
+export const HomeTraitUpdatesList = /*@__PURE__*/ S.Array(
+  HomeTraitUpdates,
+) as any as S.Schema<HomeTraitUpdatesList>;
 
 /** The states and notifications specific to a device. */
 export interface ReportStateAndNotificationDevice {
@@ -368,13 +437,15 @@ export interface ReportStateAndNotificationDevice {
   states?: DocumentMap;
 }
 export const ReportStateAndNotificationDevice = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "notifications": S.optional(DocumentMap),
-  "homeEvents": S.optional(HomeEventsList),
-  "homeTraits": S.optional(HomeTraitUpdatesList),
-  "states": S.optional(DocumentMap),
-}),
-).annotate({ identifier: "ReportStateAndNotificationDevice" }) as any as S.Schema<ReportStateAndNotificationDevice>;
+  S.Struct({
+    notifications: S.optional(DocumentMap),
+    homeEvents: S.optional(HomeEventsList),
+    homeTraits: S.optional(HomeTraitUpdatesList),
+    states: S.optional(DocumentMap),
+  }),
+).annotate({
+  identifier: "ReportStateAndNotificationDevice",
+}) as any as S.Schema<ReportStateAndNotificationDevice>;
 
 /** Payload containing the state and notification information for devices. */
 export interface StateAndNotificationPayload {
@@ -382,10 +453,12 @@ export interface StateAndNotificationPayload {
   devices?: ReportStateAndNotificationDevice;
 }
 export const StateAndNotificationPayload = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "devices": S.optional(ReportStateAndNotificationDevice),
-}),
-).annotate({ identifier: "StateAndNotificationPayload" }) as any as S.Schema<StateAndNotificationPayload>;
+  S.Struct({
+    devices: S.optional(ReportStateAndNotificationDevice),
+  }),
+).annotate({
+  identifier: "StateAndNotificationPayload",
+}) as any as S.Schema<StateAndNotificationPayload>;
 
 /** Request type for the [`ReportStateAndNotification`](#google.home.graph.v1.HomeGraphApiService.ReportStateAndNotification) call. It may include states, notifications, home_traits, home_events, or any combination thereof. Smart Home Device Traits (SHDT) `states` and `notifications` are defined per `device_id` (for example, "123" and "456" in the following example). Google Home Traits `home_traits` and `home_events` are lists of updates or events, each associated with a `device_id` (for example, "789" in the following example). Example: ```json { "requestId": "ff36a3cc-ec34-11e6-b1a0-64510650abcf", "agentUserId": "1234", "payload": { "devices": { "states": { "123": { "on": true }, "456": { "on": true, "brightness": 10 }, }, "homeTraits": [ { "deviceId": "789", "components": [ { "componentId": "main", "traitData": [ { "trait": { "@type": "type.googleapis.com/home.graph.v1.OnOffTrait", "onOff": true } } ] } ] } ], "homeEvents": [ { "deviceId": "789", "events": [ { "componentId": "main", "events": [ { "eventId": "event-123", "eventTime": "2026-01-01T00:00:00Z", "event": { "@type": "type.googleapis.com/home.graph.v1.DoorbellPressTrait.DoorbellPressedEvent" } } ] } ] } ] } } } ``` */
 export interface ReportStateAndNotificationRequest {
@@ -401,24 +474,35 @@ export interface ReportStateAndNotificationRequest {
   agentUserId?: string;
 }
 export const ReportStateAndNotificationRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "followUpToken": S.optional(S.String),
-  "payload": S.optional(StateAndNotificationPayload),
-  "eventId": S.optional(S.String),
-  "requestId": S.optional(S.String),
-  "agentUserId": S.optional(S.String),
-}),
-).annotate({ identifier: "ReportStateAndNotificationRequest" }) as any as S.Schema<ReportStateAndNotificationRequest>;
+  S.Struct({
+    followUpToken: S.optional(S.String),
+    payload: S.optional(StateAndNotificationPayload),
+    eventId: S.optional(S.String),
+    requestId: S.optional(S.String),
+    agentUserId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ReportStateAndNotificationRequest",
+}) as any as S.Schema<ReportStateAndNotificationRequest>;
 
 export interface ReportStateAndNotificationDevicesRequest {
   /** Request body */
   body?: ReportStateAndNotificationRequest;
 }
-export const ReportStateAndNotificationDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(ReportStateAndNotificationRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/devices:reportStateAndNotification","baseUrl":"https://homegraph.googleapis.com/"})),
-).annotate({ identifier: "ReportStateAndNotificationDevicesRequest" }) as any as S.Schema<ReportStateAndNotificationDevicesRequest>;
+export const ReportStateAndNotificationDevicesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      body: S.optional(ReportStateAndNotificationRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/devices:reportStateAndNotification",
+        baseUrl: "https://homegraph.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ReportStateAndNotificationDevicesRequest",
+}) as any as S.Schema<ReportStateAndNotificationDevicesRequest>;
 
 /** Response type for the [`ReportStateAndNotification`](#google.home.graph.v1.HomeGraphApiService.ReportStateAndNotification) call. */
 export interface ReportStateAndNotificationResponse {
@@ -426,10 +510,12 @@ export interface ReportStateAndNotificationResponse {
   requestId?: string;
 }
 export const ReportStateAndNotificationResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String),
-}),
-).annotate({ identifier: "ReportStateAndNotificationResponse" }) as any as S.Schema<ReportStateAndNotificationResponse>;
+  S.Struct({
+    requestId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ReportStateAndNotificationResponse",
+}) as any as S.Schema<ReportStateAndNotificationResponse>;
 
 /** Request type for the [`RequestSyncDevices`](#google.home.graph.v1.HomeGraphApiService.RequestSyncDevices) call. */
 export interface RequestSyncDevicesRequest {
@@ -439,27 +525,39 @@ export interface RequestSyncDevicesRequest {
   async?: boolean;
 }
 export const RequestSyncDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "agentUserId": S.optional(S.String),
-  "async": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "RequestSyncDevicesRequest" }) as any as S.Schema<RequestSyncDevicesRequest>;
+  S.Struct({
+    agentUserId: S.optional(S.String),
+    async: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "RequestSyncDevicesRequest",
+}) as any as S.Schema<RequestSyncDevicesRequest>;
 
 export interface RequestSyncDevicesRequest_ {
   /** Request body */
   body?: RequestSyncDevicesRequest;
 }
 export const RequestSyncDevicesRequest_ = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(RequestSyncDevicesRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/devices:requestSync","baseUrl":"https://homegraph.googleapis.com/"})),
-).annotate({ identifier: "RequestSyncDevicesRequest_" }) as any as S.Schema<RequestSyncDevicesRequest_>;
+  S.Struct({
+    body: S.optional(RequestSyncDevicesRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/devices:requestSync",
+      baseUrl: "https://homegraph.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "RequestSyncDevicesRequest_",
+}) as any as S.Schema<RequestSyncDevicesRequest_>;
 
 /** Response type for the [`RequestSyncDevices`](#google.home.graph.v1.HomeGraphApiService.RequestSyncDevices) call. Intentionally empty upon success. An HTTP response code is returned with more details upon failure. */
 export interface RequestSyncDevicesResponse {}
 export const RequestSyncDevicesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "RequestSyncDevicesResponse" }) as any as S.Schema<RequestSyncDevicesResponse>;
+  S.Struct({}),
+).annotate({
+  identifier: "RequestSyncDevicesResponse",
+}) as any as S.Schema<RequestSyncDevicesResponse>;
 
 /** Request type for the [`Sync`](#google.home.graph.v1.HomeGraphApiService.Sync) call. */
 export interface SyncRequest {
@@ -469,10 +567,10 @@ export interface SyncRequest {
   agentUserId?: string;
 }
 export const SyncRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String),
-  "agentUserId": S.optional(S.String),
-}),
+  S.Struct({
+    requestId: S.optional(S.String),
+    agentUserId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "SyncRequest" }) as any as S.Schema<SyncRequest>;
 
 export interface SyncDevicesRequest {
@@ -480,10 +578,18 @@ export interface SyncDevicesRequest {
   body?: SyncRequest;
 }
 export const SyncDevicesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(SyncRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/devices:sync","baseUrl":"https://homegraph.googleapis.com/"})),
-).annotate({ identifier: "SyncDevicesRequest" }) as any as S.Schema<SyncDevicesRequest>;
+  S.Struct({
+    body: S.optional(SyncRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/devices:sync",
+      baseUrl: "https://homegraph.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SyncDevicesRequest",
+}) as any as S.Schema<SyncDevicesRequest>;
 
 /** Alternate third-party device ID. */
 export interface AgentOtherDeviceId {
@@ -493,14 +599,18 @@ export interface AgentOtherDeviceId {
   agentId?: string;
 }
 export const AgentOtherDeviceId = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "deviceId": S.optional(S.String),
-  "agentId": S.optional(S.String),
-}),
-).annotate({ identifier: "AgentOtherDeviceId" }) as any as S.Schema<AgentOtherDeviceId>;
+  S.Struct({
+    deviceId: S.optional(S.String),
+    agentId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AgentOtherDeviceId",
+}) as any as S.Schema<AgentOtherDeviceId>;
 
 export type AgentOtherDeviceIdList = ReadonlyArray<AgentOtherDeviceId>;
-export const AgentOtherDeviceIdList = /*@__PURE__*/ S.Array(AgentOtherDeviceId) as any as S.Schema<AgentOtherDeviceIdList>;
+export const AgentOtherDeviceIdList = /*@__PURE__*/ S.Array(
+  AgentOtherDeviceId,
+) as any as S.Schema<AgentOtherDeviceIdList>;
 
 /** Device information. */
 export interface DeviceInfo {
@@ -514,12 +624,12 @@ export interface DeviceInfo {
   hwVersion?: string;
 }
 export const DeviceInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "manufacturer": S.optional(S.String),
-  "swVersion": S.optional(S.String),
-  "model": S.optional(S.String),
-  "hwVersion": S.optional(S.String),
-}),
+  S.Struct({
+    manufacturer: S.optional(S.String),
+    swVersion: S.optional(S.String),
+    model: S.optional(S.String),
+    hwVersion: S.optional(S.String),
+  }),
 ).annotate({ identifier: "DeviceInfo" }) as any as S.Schema<DeviceInfo>;
 
 /** Identifiers used to describe the device. */
@@ -532,11 +642,11 @@ export interface DeviceNames {
   defaultNames?: StringList;
 }
 export const DeviceNames = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "nicknames": S.optional(StringList),
-  "defaultNames": S.optional(StringList),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    nicknames: S.optional(StringList),
+    defaultNames: S.optional(StringList),
+  }),
 ).annotate({ identifier: "DeviceNames" }) as any as S.Schema<DeviceNames>;
 
 /** Third-party device definition. */
@@ -567,24 +677,26 @@ export interface Device {
   name?: DeviceNames;
 }
 export const Device = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "customData": S.optional(DocumentMap),
-  "notificationSupportedByAgent": S.optional(S.Boolean),
-  "otherDeviceIds": S.optional(AgentOtherDeviceIdList),
-  "roomHint": S.optional(S.String),
-  "attributes": S.optional(DocumentMap),
-  "deviceInfo": S.optional(DeviceInfo),
-  "willReportState": S.optional(S.Boolean),
-  "traits": S.optional(StringList),
-  "structureHint": S.optional(S.String),
-  "id": S.optional(S.String),
-  "type": S.optional(S.String),
-  "name": S.optional(DeviceNames),
-}),
+  S.Struct({
+    customData: S.optional(DocumentMap),
+    notificationSupportedByAgent: S.optional(S.Boolean),
+    otherDeviceIds: S.optional(AgentOtherDeviceIdList),
+    roomHint: S.optional(S.String),
+    attributes: S.optional(DocumentMap),
+    deviceInfo: S.optional(DeviceInfo),
+    willReportState: S.optional(S.Boolean),
+    traits: S.optional(StringList),
+    structureHint: S.optional(S.String),
+    id: S.optional(S.String),
+    type: S.optional(S.String),
+    name: S.optional(DeviceNames),
+  }),
 ).annotate({ identifier: "Device" }) as any as S.Schema<Device>;
 
 export type DeviceList = ReadonlyArray<Device>;
-export const DeviceList = /*@__PURE__*/ S.Array(Device) as any as S.Schema<DeviceList>;
+export const DeviceList = /*@__PURE__*/ S.Array(
+  Device,
+) as any as S.Schema<DeviceList>;
 
 /** Payload containing device information. */
 export interface SyncResponsePayload {
@@ -594,11 +706,13 @@ export interface SyncResponsePayload {
   devices?: DeviceList;
 }
 export const SyncResponsePayload = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "agentUserId": S.optional(S.String),
-  "devices": S.optional(DeviceList),
-}),
-).annotate({ identifier: "SyncResponsePayload" }) as any as S.Schema<SyncResponsePayload>;
+  S.Struct({
+    agentUserId: S.optional(S.String),
+    devices: S.optional(DeviceList),
+  }),
+).annotate({
+  identifier: "SyncResponsePayload",
+}) as any as S.Schema<SyncResponsePayload>;
 
 /** Response type for the [`Sync`](#google.home.graph.v1.HomeGraphApiService.Sync) call. This should follow the same format as the Google smart home `action.devices.SYNC` [response](https://developers.home.google.com/cloud-to-cloud/intents/sync). Example: ```json { "requestId": "ff36a3cc-ec34-11e6-b1a0-64510650abcf", "payload": { "agentUserId": "1836.15267389", "devices": [{ "id": "123", "type": "action.devices.types.OUTLET", "traits": [ "action.devices.traits.OnOff" ], "name": { "defaultNames": ["My Outlet 1234"], "name": "Night light", "nicknames": ["wall plug"] }, "willReportState": false, "deviceInfo": { "manufacturer": "lights-out-inc", "model": "hs1234", "hwVersion": "3.2", "swVersion": "11.4" }, "customData": { "fooValue": 74, "barValue": true, "bazValue": "foo" } }] } } ``` */
 export interface SyncResponse {
@@ -608,13 +722,18 @@ export interface SyncResponse {
   payload?: SyncResponsePayload;
 }
 export const SyncResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String),
-  "payload": S.optional(SyncResponsePayload),
-}),
+  S.Struct({
+    requestId: S.optional(S.String),
+    payload: S.optional(SyncResponsePayload),
+  }),
 ).annotate({ identifier: "SyncResponse" }) as any as S.Schema<SyncResponse>;
 
-export type DeleteAgentUsersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteAgentUsersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Unlinks the given third-party user from your smart home Action. All data related to this user will be deleted. For more details on how users link their accounts, see [fulfillment and authentication](https://developers.home.google.com/cloud-to-cloud/primer/fulfillment). The third-party user's identity is passed in via the `agent_user_id` (see DeleteAgentUserRequest). This request must be authorized using service account credentials from your Actions console project. */
 export const deleteAgentUsers: API.OperationMethod<
   DeleteAgentUsersRequest,
@@ -629,7 +748,12 @@ export const deleteAgentUsers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type QueryDevicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type QueryDevicesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Gets the current states in Home Graph for the given set of the third-party user's devices. The third-party user's identity is passed in via the `agent_user_id` (see QueryRequest). This request must be authorized using service account credentials from your Actions console project. */
 export const queryDevices: API.OperationMethod<
   QueryDevicesRequest,
@@ -644,7 +768,12 @@ export const queryDevices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ReportStateAndNotificationDevicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ReportStateAndNotificationDevicesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Reports device state and optionally sends device notifications. Called by your smart home Action when the state of a third-party device changes or you need to send a notification about the device. See [Implement Report State](https://developers.home.google.com/cloud-to-cloud/integration/report-state) for more information. This method updates the device state according to its declared [traits](https://developers.home.google.com/cloud-to-cloud/primer/device-types-and-traits). Publishing a new state value outside of these traits will result in an `INVALID_ARGUMENT` error response. The third-party user's identity is passed in via the `agent_user_id` (see ReportStateAndNotificationRequest). This request must be authorized using service account credentials from your Actions console project. */
 export const reportStateAndNotificationDevices: API.OperationMethod<
   ReportStateAndNotificationDevicesRequest,
@@ -659,7 +788,12 @@ export const reportStateAndNotificationDevices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RequestSyncDevicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type RequestSyncDevicesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Requests Google to send an `action.devices.SYNC` [intent](https://developers.home.google.com/cloud-to-cloud/intents/sync) to your smart home Action to update device metadata for the given user. The third-party user's identity is passed via the `agent_user_id` (see RequestSyncDevicesRequest). This request must be authorized using service account credentials from your Actions console project. */
 export const requestSyncDevices: API.OperationMethod<
   RequestSyncDevicesRequest_,
@@ -674,7 +808,12 @@ export const requestSyncDevices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SyncDevicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SyncDevicesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Gets all the devices associated with the given third-party user. The third-party user's identity is passed in via the `agent_user_id` (see SyncRequest). This request must be authorized using service account credentials from your Actions console project. */
 export const syncDevices: API.OperationMethod<
   SyncDevicesRequest,
@@ -688,4 +827,3 @@ export const syncDevices: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

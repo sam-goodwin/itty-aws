@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 /** The SSH public key information associated with a Google account. */
@@ -72,12 +72,12 @@ export interface SshPublicKey {
   expirationTimeUsec?: string;
 }
 export const SshPublicKey = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "fingerprint": S.optional(S.String),
-  "name": S.optional(S.String),
-  "key": S.optional(S.String),
-  "expirationTimeUsec": S.optional(S.String),
-}),
+  S.Struct({
+    fingerprint: S.optional(S.String),
+    name: S.optional(S.String),
+    key: S.optional(S.String),
+    expirationTimeUsec: S.optional(S.String),
+  }),
 ).annotate({ identifier: "SshPublicKey" }) as any as S.Schema<SshPublicKey>;
 
 export interface CreateUsersSshPublicKeysRequest {
@@ -87,37 +87,61 @@ export interface CreateUsersSshPublicKeysRequest {
   body?: SshPublicKey;
 }
 export const CreateUsersSshPublicKeysRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(SshPublicKey.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/sshPublicKeys","baseUrl":"https://oslogin.googleapis.com/"})),
-).annotate({ identifier: "CreateUsersSshPublicKeysRequest" }) as any as S.Schema<CreateUsersSshPublicKeysRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(SshPublicKey.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/sshPublicKeys",
+      baseUrl: "https://oslogin.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateUsersSshPublicKeysRequest",
+}) as any as S.Schema<CreateUsersSshPublicKeysRequest>;
 
 export interface DeleteUsersProjectsRequest {
   /** Required. A reference to the POSIX account to update. POSIX accounts are identified by the project ID they are associated with. A reference to the POSIX account is in format `users/{user}/projects/{project}`. */
   name: string;
 }
 export const DeleteUsersProjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://oslogin.googleapis.com/"})),
-).annotate({ identifier: "DeleteUsersProjectsRequest" }) as any as S.Schema<DeleteUsersProjectsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://oslogin.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteUsersProjectsRequest",
+}) as any as S.Schema<DeleteUsersProjectsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 export interface DeleteUsersSshPublicKeysRequest {
   /** Required. The fingerprint of the public key to update. Public keys are identified by their SHA-256 fingerprint. The fingerprint of the public key is in format `users/{user}/sshPublicKeys/{fingerprint}`. */
   name: string;
 }
 export const DeleteUsersSshPublicKeysRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://oslogin.googleapis.com/"})),
-).annotate({ identifier: "DeleteUsersSshPublicKeysRequest" }) as any as S.Schema<DeleteUsersSshPublicKeysRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://oslogin.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteUsersSshPublicKeysRequest",
+}) as any as S.Schema<DeleteUsersSshPublicKeysRequest>;
 
 export interface GetLoginProfileUsersRequest {
   /** Required. The project ID of the Google Cloud Platform project. */
@@ -128,14 +152,25 @@ export interface GetLoginProfileUsersRequest {
   name: string;
 }
 export const GetLoginProfileUsersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectId": S.optional(S.String.pipe(T.Query())),
-  "systemId": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/loginProfile","baseUrl":"https://oslogin.googleapis.com/"})),
-).annotate({ identifier: "GetLoginProfileUsersRequest" }) as any as S.Schema<GetLoginProfileUsersRequest>;
+  S.Struct({
+    projectId: S.optional(S.String.pipe(T.Query())),
+    systemId: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}/loginProfile",
+      baseUrl: "https://oslogin.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetLoginProfileUsersRequest",
+}) as any as S.Schema<GetLoginProfileUsersRequest>;
 
-export type PosixAccountOperatingSystemTypeEnum = "OPERATING_SYSTEM_TYPE_UNSPECIFIED" | "LINUX" | "WINDOWS";
+export type PosixAccountOperatingSystemTypeEnum =
+  | "OPERATING_SYSTEM_TYPE_UNSPECIFIED"
+  | "LINUX"
+  | "WINDOWS";
 export const PosixAccountOperatingSystemTypeEnum = /*@__PURE__*/ S.String;
 
 /** The POSIX account information associated with a Google account. */
@@ -164,26 +199,31 @@ export interface PosixAccount {
   username?: string;
 }
 export const PosixAccount = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "operatingSystemType": S.optional(PosixAccountOperatingSystemTypeEnum),
-  "accountId": S.optional(S.String),
-  "shell": S.optional(S.String),
-  "gecos": S.optional(S.String),
-  "gid": S.optional(S.String),
-  "primary": S.optional(S.Boolean),
-  "homeDirectory": S.optional(S.String),
-  "systemId": S.optional(S.String),
-  "uid": S.optional(S.String),
-  "name": S.optional(S.String),
-  "username": S.optional(S.String),
-}),
+  S.Struct({
+    operatingSystemType: S.optional(PosixAccountOperatingSystemTypeEnum),
+    accountId: S.optional(S.String),
+    shell: S.optional(S.String),
+    gecos: S.optional(S.String),
+    gid: S.optional(S.String),
+    primary: S.optional(S.Boolean),
+    homeDirectory: S.optional(S.String),
+    systemId: S.optional(S.String),
+    uid: S.optional(S.String),
+    name: S.optional(S.String),
+    username: S.optional(S.String),
+  }),
 ).annotate({ identifier: "PosixAccount" }) as any as S.Schema<PosixAccount>;
 
 export type PosixAccountList = ReadonlyArray<PosixAccount>;
-export const PosixAccountList = /*@__PURE__*/ S.Array(PosixAccount) as any as S.Schema<PosixAccountList>;
+export const PosixAccountList = /*@__PURE__*/ S.Array(
+  PosixAccount,
+) as any as S.Schema<PosixAccountList>;
 
 export type SshPublicKeyMap = { [key: string]: SshPublicKey | undefined };
-export const SshPublicKeyMap = /*@__PURE__*/ S.Record(S.String, SshPublicKey) as any as S.Schema<SshPublicKeyMap>;
+export const SshPublicKeyMap = /*@__PURE__*/ S.Record(
+  S.String,
+  SshPublicKey,
+) as any as S.Schema<SshPublicKeyMap>;
 
 /** The user profile information used for logging in to a virtual machine on Google Compute Engine. */
 export interface LoginProfile {
@@ -195,11 +235,11 @@ export interface LoginProfile {
   sshPublicKeys?: SshPublicKeyMap;
 }
 export const LoginProfile = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "posixAccounts": S.optional(PosixAccountList),
-  "sshPublicKeys": S.optional(SshPublicKeyMap),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    posixAccounts: S.optional(PosixAccountList),
+    sshPublicKeys: S.optional(SshPublicKeyMap),
+  }),
 ).annotate({ identifier: "LoginProfile" }) as any as S.Schema<LoginProfile>;
 
 export interface GetUsersSshPublicKeysRequest {
@@ -207,13 +247,23 @@ export interface GetUsersSshPublicKeysRequest {
   name: string;
 }
 export const GetUsersSshPublicKeysRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://oslogin.googleapis.com/"})),
-).annotate({ identifier: "GetUsersSshPublicKeysRequest" }) as any as S.Schema<GetUsersSshPublicKeysRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://oslogin.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetUsersSshPublicKeysRequest",
+}) as any as S.Schema<GetUsersSshPublicKeysRequest>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 export interface ImportSshPublicKeyUsersRequest {
   /** The project ID of the Google Cloud Platform project. */
@@ -226,13 +276,21 @@ export interface ImportSshPublicKeyUsersRequest {
   body?: SshPublicKey;
 }
 export const ImportSshPublicKeyUsersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "projectId": S.optional(S.String.pipe(T.Query())),
-  "regions": S.optional(StringList.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(SshPublicKey.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}:importSshPublicKey","baseUrl":"https://oslogin.googleapis.com/"})),
-).annotate({ identifier: "ImportSshPublicKeyUsersRequest" }) as any as S.Schema<ImportSshPublicKeyUsersRequest>;
+  S.Struct({
+    projectId: S.optional(S.String.pipe(T.Query())),
+    regions: S.optional(StringList.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(SshPublicKey.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}:importSshPublicKey",
+      baseUrl: "https://oslogin.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ImportSshPublicKeyUsersRequest",
+}) as any as S.Schema<ImportSshPublicKeyUsersRequest>;
 
 /** A response message for importing an SSH public key. */
 export interface ImportSshPublicKeyResponse {
@@ -242,11 +300,13 @@ export interface ImportSshPublicKeyResponse {
   details?: string;
 }
 export const ImportSshPublicKeyResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "loginProfile": S.optional(LoginProfile),
-  "details": S.optional(S.String),
-}),
-).annotate({ identifier: "ImportSshPublicKeyResponse" }) as any as S.Schema<ImportSshPublicKeyResponse>;
+  S.Struct({
+    loginProfile: S.optional(LoginProfile),
+    details: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ImportSshPublicKeyResponse",
+}) as any as S.Schema<ImportSshPublicKeyResponse>;
 
 export interface PatchUsersSshPublicKeysRequest {
   /** Required. The fingerprint of the public key to update. Public keys are identified by their SHA-256 fingerprint. The fingerprint of the public key is in format `users/{user}/sshPublicKeys/{fingerprint}`. */
@@ -257,12 +317,20 @@ export interface PatchUsersSshPublicKeysRequest {
   body?: SshPublicKey;
 }
 export const PatchUsersSshPublicKeysRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(SshPublicKey.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/{+name}","baseUrl":"https://oslogin.googleapis.com/"})),
-).annotate({ identifier: "PatchUsersSshPublicKeysRequest" }) as any as S.Schema<PatchUsersSshPublicKeysRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(SshPublicKey.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+name}",
+      baseUrl: "https://oslogin.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchUsersSshPublicKeysRequest",
+}) as any as S.Schema<PatchUsersSshPublicKeysRequest>;
 
 /** A request message for creating a POSIX account entry. */
 export interface ProvisionPosixAccountRequest {
@@ -270,10 +338,12 @@ export interface ProvisionPosixAccountRequest {
   regions?: StringList;
 }
 export const ProvisionPosixAccountRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "regions": S.optional(StringList),
-}),
-).annotate({ identifier: "ProvisionPosixAccountRequest" }) as any as S.Schema<ProvisionPosixAccountRequest>;
+  S.Struct({
+    regions: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ProvisionPosixAccountRequest",
+}) as any as S.Schema<ProvisionPosixAccountRequest>;
 
 export interface ProvisionPosixAccountUsersProjectsRequest {
   /** Required. The unique ID for the user in format `users/{user}/projects/{project}`. */
@@ -281,12 +351,21 @@ export interface ProvisionPosixAccountUsersProjectsRequest {
   /** Request body */
   body?: ProvisionPosixAccountRequest;
 }
-export const ProvisionPosixAccountUsersProjectsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(ProvisionPosixAccountRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}","baseUrl":"https://oslogin.googleapis.com/"})),
-).annotate({ identifier: "ProvisionPosixAccountUsersProjectsRequest" }) as any as S.Schema<ProvisionPosixAccountUsersProjectsRequest>;
+export const ProvisionPosixAccountUsersProjectsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(ProvisionPosixAccountRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}",
+        baseUrl: "https://oslogin.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ProvisionPosixAccountUsersProjectsRequest",
+  }) as any as S.Schema<ProvisionPosixAccountUsersProjectsRequest>;
 
 /** A request message for signing an SSH public key. */
 export interface SignSshPublicKeyRequest {
@@ -302,14 +381,16 @@ export interface SignSshPublicKeyRequest {
   cloudRunResource?: string;
 }
 export const SignSshPublicKeyRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "sshPublicKey": S.optional(S.String),
-  "serviceAccount": S.optional(S.String),
-  "computeInstance": S.optional(S.String),
-  "appEngineInstance": S.optional(S.String),
-  "cloudRunResource": S.optional(S.String),
-}),
-).annotate({ identifier: "SignSshPublicKeyRequest" }) as any as S.Schema<SignSshPublicKeyRequest>;
+  S.Struct({
+    sshPublicKey: S.optional(S.String),
+    serviceAccount: S.optional(S.String),
+    computeInstance: S.optional(S.String),
+    appEngineInstance: S.optional(S.String),
+    cloudRunResource: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SignSshPublicKeyRequest",
+}) as any as S.Schema<SignSshPublicKeyRequest>;
 
 export interface SignSshPublicKeyProjectsLocationsRequest {
   /** Required. The parent for the signing request. Format: projects/{project}/locations/{location} */
@@ -317,12 +398,21 @@ export interface SignSshPublicKeyProjectsLocationsRequest {
   /** Request body */
   body?: SignSshPublicKeyRequest;
 }
-export const SignSshPublicKeyProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(SignSshPublicKeyRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}:signSshPublicKey","baseUrl":"https://oslogin.googleapis.com/"})),
-).annotate({ identifier: "SignSshPublicKeyProjectsLocationsRequest" }) as any as S.Schema<SignSshPublicKeyProjectsLocationsRequest>;
+export const SignSshPublicKeyProjectsLocationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(SignSshPublicKeyRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}:signSshPublicKey",
+        baseUrl: "https://oslogin.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "SignSshPublicKeyProjectsLocationsRequest",
+}) as any as S.Schema<SignSshPublicKeyProjectsLocationsRequest>;
 
 /** The response message for signing an SSH public key. */
 export interface SignSshPublicKeyResponse {
@@ -330,12 +420,19 @@ export interface SignSshPublicKeyResponse {
   signedSshPublicKey?: string;
 }
 export const SignSshPublicKeyResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "signedSshPublicKey": S.optional(S.String),
-}),
-).annotate({ identifier: "SignSshPublicKeyResponse" }) as any as S.Schema<SignSshPublicKeyResponse>;
+  S.Struct({
+    signedSshPublicKey: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SignSshPublicKeyResponse",
+}) as any as S.Schema<SignSshPublicKeyResponse>;
 
-export type CreateUsersSshPublicKeysError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateUsersSshPublicKeysError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Create an SSH public key */
 export const createUsersSshPublicKeys: API.OperationMethod<
   CreateUsersSshPublicKeysRequest,
@@ -350,7 +447,12 @@ export const createUsersSshPublicKeys: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteUsersProjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteUsersProjectsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a POSIX account. */
 export const deleteUsersProjects: API.OperationMethod<
   DeleteUsersProjectsRequest,
@@ -365,7 +467,12 @@ export const deleteUsersProjects: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteUsersSshPublicKeysError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteUsersSshPublicKeysError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes an SSH public key. */
 export const deleteUsersSshPublicKeys: API.OperationMethod<
   DeleteUsersSshPublicKeysRequest,
@@ -410,7 +517,12 @@ export const getUsersSshPublicKeys: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ImportSshPublicKeyUsersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ImportSshPublicKeyUsersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Adds an SSH public key and returns the profile information. Default POSIX account information is set when no username and UID exist as part of the login profile. */
 export const importSshPublicKeyUsers: API.OperationMethod<
   ImportSshPublicKeyUsersRequest,
@@ -425,7 +537,12 @@ export const importSshPublicKeyUsers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchUsersSshPublicKeysError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchUsersSshPublicKeysError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates an SSH public key and returns the profile information. This method supports patch semantics. */
 export const patchUsersSshPublicKeys: API.OperationMethod<
   PatchUsersSshPublicKeysRequest,
@@ -440,7 +557,12 @@ export const patchUsersSshPublicKeys: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ProvisionPosixAccountUsersProjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ProvisionPosixAccountUsersProjectsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Adds a POSIX account and returns the profile information. Default POSIX account information is set when no username and UID exist as part of the login profile. */
 export const provisionPosixAccountUsersProjects: API.OperationMethod<
   ProvisionPosixAccountUsersProjectsRequest,
@@ -455,7 +577,12 @@ export const provisionPosixAccountUsersProjects: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SignSshPublicKeyProjectsLocationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SignSshPublicKeyProjectsLocationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Signs an SSH public key for a user to authenticate to a virtual machine on Google Compute Engine. */
 export const signSshPublicKeyProjectsLocations: API.OperationMethod<
   SignSshPublicKeyProjectsLocationsRequest,
@@ -469,4 +596,3 @@ export const signSshPublicKeyProjectsLocations: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

@@ -13,55 +13,57 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** A request to perform batch delete on alerts. */
 export interface BatchDeleteAlertsRequest {
@@ -71,27 +73,42 @@ export interface BatchDeleteAlertsRequest {
   alertId?: StringList;
 }
 export const BatchDeleteAlertsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "customerId": S.optional(S.String),
-  "alertId": S.optional(StringList),
-}),
-).annotate({ identifier: "BatchDeleteAlertsRequest" }) as any as S.Schema<BatchDeleteAlertsRequest>;
+  S.Struct({
+    customerId: S.optional(S.String),
+    alertId: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "BatchDeleteAlertsRequest",
+}) as any as S.Schema<BatchDeleteAlertsRequest>;
 
 export interface BatchDeleteAlertsRequest_ {
   /** Request body */
   body?: BatchDeleteAlertsRequest;
 }
 export const BatchDeleteAlertsRequest_ = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(BatchDeleteAlertsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/alerts:batchDelete","baseUrl":"https://alertcenter.googleapis.com/"})),
-).annotate({ identifier: "BatchDeleteAlertsRequest_" }) as any as S.Schema<BatchDeleteAlertsRequest_>;
+  S.Struct({
+    body: S.optional(BatchDeleteAlertsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1/alerts:batchDelete",
+      baseUrl: "https://alertcenter.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "BatchDeleteAlertsRequest_",
+}) as any as S.Schema<BatchDeleteAlertsRequest_>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -103,15 +120,18 @@ export interface Status {
   message?: string;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "code": S.optional(S.Number),
-  "details": S.optional(DocumentMapList),
-  "message": S.optional(S.String),
-}),
+  S.Struct({
+    code: S.optional(S.Number),
+    details: S.optional(DocumentMapList),
+    message: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 export type StatusMap = { [key: string]: Status | undefined };
-export const StatusMap = /*@__PURE__*/ S.Record(S.String, Status) as any as S.Schema<StatusMap>;
+export const StatusMap = /*@__PURE__*/ S.Record(
+  S.String,
+  Status,
+) as any as S.Schema<StatusMap>;
 
 /** Response to batch delete operation on alerts. */
 export interface BatchDeleteAlertsResponse {
@@ -121,11 +141,13 @@ export interface BatchDeleteAlertsResponse {
   successAlertIds?: StringList;
 }
 export const BatchDeleteAlertsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "failedAlertStatus": S.optional(StatusMap),
-  "successAlertIds": S.optional(StringList),
-}),
-).annotate({ identifier: "BatchDeleteAlertsResponse" }) as any as S.Schema<BatchDeleteAlertsResponse>;
+  S.Struct({
+    failedAlertStatus: S.optional(StatusMap),
+    successAlertIds: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "BatchDeleteAlertsResponse",
+}) as any as S.Schema<BatchDeleteAlertsResponse>;
 
 /** A request to perform batch undelete on alerts. */
 export interface BatchUndeleteAlertsRequest {
@@ -135,21 +157,31 @@ export interface BatchUndeleteAlertsRequest {
   alertId?: StringList;
 }
 export const BatchUndeleteAlertsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "customerId": S.optional(S.String),
-  "alertId": S.optional(StringList),
-}),
-).annotate({ identifier: "BatchUndeleteAlertsRequest" }) as any as S.Schema<BatchUndeleteAlertsRequest>;
+  S.Struct({
+    customerId: S.optional(S.String),
+    alertId: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "BatchUndeleteAlertsRequest",
+}) as any as S.Schema<BatchUndeleteAlertsRequest>;
 
 export interface BatchUndeleteAlertsRequest_ {
   /** Request body */
   body?: BatchUndeleteAlertsRequest;
 }
 export const BatchUndeleteAlertsRequest_ = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(BatchUndeleteAlertsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/alerts:batchUndelete","baseUrl":"https://alertcenter.googleapis.com/"})),
-).annotate({ identifier: "BatchUndeleteAlertsRequest_" }) as any as S.Schema<BatchUndeleteAlertsRequest_>;
+  S.Struct({
+    body: S.optional(BatchUndeleteAlertsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1/alerts:batchUndelete",
+      baseUrl: "https://alertcenter.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "BatchUndeleteAlertsRequest_",
+}) as any as S.Schema<BatchUndeleteAlertsRequest_>;
 
 /** Response to batch undelete operation on alerts. */
 export interface BatchUndeleteAlertsResponse {
@@ -159,13 +191,19 @@ export interface BatchUndeleteAlertsResponse {
   successAlertIds?: StringList;
 }
 export const BatchUndeleteAlertsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "failedAlertStatus": S.optional(StatusMap),
-  "successAlertIds": S.optional(StringList),
-}),
-).annotate({ identifier: "BatchUndeleteAlertsResponse" }) as any as S.Schema<BatchUndeleteAlertsResponse>;
+  S.Struct({
+    failedAlertStatus: S.optional(StatusMap),
+    successAlertIds: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "BatchUndeleteAlertsResponse",
+}) as any as S.Schema<BatchUndeleteAlertsResponse>;
 
-export type AlertFeedbackTypeEnum = "ALERT_FEEDBACK_TYPE_UNSPECIFIED" | "NOT_USEFUL" | "SOMEWHAT_USEFUL" | "VERY_USEFUL";
+export type AlertFeedbackTypeEnum =
+  | "ALERT_FEEDBACK_TYPE_UNSPECIFIED"
+  | "NOT_USEFUL"
+  | "SOMEWHAT_USEFUL"
+  | "VERY_USEFUL";
 export const AlertFeedbackTypeEnum = /*@__PURE__*/ S.String;
 
 /** A customer feedback about an alert. */
@@ -184,14 +222,14 @@ export interface AlertFeedback {
   type?: AlertFeedbackTypeEnum;
 }
 export const AlertFeedback = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "customerId": S.optional(S.String),
-  "feedbackId": S.optional(S.String),
-  "email": S.optional(S.String),
-  "alertId": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "type": S.optional(AlertFeedbackTypeEnum),
-}),
+  S.Struct({
+    customerId: S.optional(S.String),
+    feedbackId: S.optional(S.String),
+    email: S.optional(S.String),
+    alertId: S.optional(S.String),
+    createTime: S.optional(S.String),
+    type: S.optional(AlertFeedbackTypeEnum),
+  }),
 ).annotate({ identifier: "AlertFeedback" }) as any as S.Schema<AlertFeedback>;
 
 export interface CreateAlertsFeedbackRequest {
@@ -203,12 +241,20 @@ export interface CreateAlertsFeedbackRequest {
   body?: AlertFeedback;
 }
 export const CreateAlertsFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "alertId": S.String.pipe(T.Label()),
-  "customerId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(AlertFeedback.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/alerts/{alertId}/feedback","baseUrl":"https://alertcenter.googleapis.com/"})),
-).annotate({ identifier: "CreateAlertsFeedbackRequest" }) as any as S.Schema<CreateAlertsFeedbackRequest>;
+  S.Struct({
+    alertId: S.String.pipe(T.Label()),
+    customerId: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(AlertFeedback.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1/alerts/{alertId}/feedback",
+      baseUrl: "https://alertcenter.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateAlertsFeedbackRequest",
+}) as any as S.Schema<CreateAlertsFeedbackRequest>;
 
 export interface DeleteAlertsRequest {
   /** Required. The identifier of the alert to delete. */
@@ -217,17 +263,25 @@ export interface DeleteAlertsRequest {
   customerId?: string;
 }
 export const DeleteAlertsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "alertId": S.String.pipe(T.Label()),
-  "customerId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"DELETE","uri":"v1beta1/alerts/{alertId}","baseUrl":"https://alertcenter.googleapis.com/"})),
-).annotate({ identifier: "DeleteAlertsRequest" }) as any as S.Schema<DeleteAlertsRequest>;
+  S.Struct({
+    alertId: S.String.pipe(T.Label()),
+    customerId: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1beta1/alerts/{alertId}",
+      baseUrl: "https://alertcenter.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteAlertsRequest",
+}) as any as S.Schema<DeleteAlertsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 export interface GetAlertsRequest {
   /** Required. The identifier of the alert to retrieve. */
@@ -236,11 +290,19 @@ export interface GetAlertsRequest {
   customerId?: string;
 }
 export const GetAlertsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "alertId": S.String.pipe(T.Label()),
-  "customerId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/alerts/{alertId}","baseUrl":"https://alertcenter.googleapis.com/"})),
-).annotate({ identifier: "GetAlertsRequest" }) as any as S.Schema<GetAlertsRequest>;
+  S.Struct({
+    alertId: S.String.pipe(T.Label()),
+    customerId: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/alerts/{alertId}",
+      baseUrl: "https://alertcenter.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetAlertsRequest",
+}) as any as S.Schema<GetAlertsRequest>;
 
 /** An alert metadata. */
 export interface AlertMetadata {
@@ -260,15 +322,15 @@ export interface AlertMetadata {
   alertId?: string;
 }
 export const AlertMetadata = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "customerId": S.optional(S.String),
-  "etag": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "severity": S.optional(S.String),
-  "status": S.optional(S.String),
-  "assignee": S.optional(S.String),
-  "alertId": S.optional(S.String),
-}),
+  S.Struct({
+    customerId: S.optional(S.String),
+    etag: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    severity: S.optional(S.String),
+    status: S.optional(S.String),
+    assignee: S.optional(S.String),
+    alertId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "AlertMetadata" }) as any as S.Schema<AlertMetadata>;
 
 /** An alert affecting a customer. */
@@ -301,21 +363,21 @@ export interface Alert {
   customerId?: string;
 }
 export const Alert = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "startTime": S.optional(S.String),
-  "type": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "etag": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "data": S.optional(DocumentMap),
-  "source": S.optional(S.String),
-  "metadata": S.optional(AlertMetadata),
-  "alertId": S.optional(S.String),
-  "securityInvestigationToolLink": S.optional(S.String),
-  "deleted": S.optional(S.Boolean),
-  "endTime": S.optional(S.String),
-  "customerId": S.optional(S.String),
-}),
+  S.Struct({
+    startTime: S.optional(S.String),
+    type: S.optional(S.String),
+    createTime: S.optional(S.String),
+    etag: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    data: S.optional(DocumentMap),
+    source: S.optional(S.String),
+    metadata: S.optional(AlertMetadata),
+    alertId: S.optional(S.String),
+    securityInvestigationToolLink: S.optional(S.String),
+    deleted: S.optional(S.Boolean),
+    endTime: S.optional(S.String),
+    customerId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Alert" }) as any as S.Schema<Alert>;
 
 export interface GetMetadataAlertsRequest {
@@ -325,23 +387,41 @@ export interface GetMetadataAlertsRequest {
   customerId?: string;
 }
 export const GetMetadataAlertsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "alertId": S.String.pipe(T.Label()),
-  "customerId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/alerts/{alertId}/metadata","baseUrl":"https://alertcenter.googleapis.com/"})),
-).annotate({ identifier: "GetMetadataAlertsRequest" }) as any as S.Schema<GetMetadataAlertsRequest>;
+  S.Struct({
+    alertId: S.String.pipe(T.Label()),
+    customerId: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/alerts/{alertId}/metadata",
+      baseUrl: "https://alertcenter.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetMetadataAlertsRequest",
+}) as any as S.Schema<GetMetadataAlertsRequest>;
 
 export interface GetSettingsV1beta1Request {
   /** Optional. The unique identifier of the Google Workspace account of the customer the alert settings are associated with. The `customer_id` must/ have the initial "C" stripped (for example, `046psxkn`). Inferred from the caller identity if not provided. [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793). */
   customerId?: string;
 }
 export const GetSettingsV1beta1Request = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "customerId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/settings","baseUrl":"https://alertcenter.googleapis.com/"})),
-).annotate({ identifier: "GetSettingsV1beta1Request" }) as any as S.Schema<GetSettingsV1beta1Request>;
+  S.Struct({
+    customerId: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/settings",
+      baseUrl: "https://alertcenter.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetSettingsV1beta1Request",
+}) as any as S.Schema<GetSettingsV1beta1Request>;
 
-export type CloudPubsubTopicPayloadFormatEnum = "PAYLOAD_FORMAT_UNSPECIFIED" | "JSON";
+export type CloudPubsubTopicPayloadFormatEnum =
+  | "PAYLOAD_FORMAT_UNSPECIFIED"
+  | "JSON";
 export const CloudPubsubTopicPayloadFormatEnum = /*@__PURE__*/ S.String;
 
 /** A reference to a Cloud Pubsub topic. To register for notifications, the owner of the topic must grant `alerts-api-push-notifications@system.gserviceaccount.com` the `projects.topics.publish` permission. */
@@ -352,11 +432,13 @@ export interface CloudPubsubTopic {
   payloadFormat?: CloudPubsubTopicPayloadFormatEnum;
 }
 export const CloudPubsubTopic = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "topicName": S.optional(S.String),
-  "payloadFormat": S.optional(CloudPubsubTopicPayloadFormatEnum),
-}),
-).annotate({ identifier: "CloudPubsubTopic" }) as any as S.Schema<CloudPubsubTopic>;
+  S.Struct({
+    topicName: S.optional(S.String),
+    payloadFormat: S.optional(CloudPubsubTopicPayloadFormatEnum),
+  }),
+).annotate({
+  identifier: "CloudPubsubTopic",
+}) as any as S.Schema<CloudPubsubTopic>;
 
 /** Settings for callback notifications. For more details see [Google Workspace Alert Notification](https://developers.google.com/workspace/admin/alertcenter/guides/notifications). */
 export interface Notification {
@@ -364,13 +446,15 @@ export interface Notification {
   cloudPubsubTopic?: CloudPubsubTopic;
 }
 export const Notification = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "cloudPubsubTopic": S.optional(CloudPubsubTopic),
-}),
+  S.Struct({
+    cloudPubsubTopic: S.optional(CloudPubsubTopic),
+  }),
 ).annotate({ identifier: "Notification" }) as any as S.Schema<Notification>;
 
 export type NotificationList = ReadonlyArray<Notification>;
-export const NotificationList = /*@__PURE__*/ S.Array(Notification) as any as S.Schema<NotificationList>;
+export const NotificationList = /*@__PURE__*/ S.Array(
+  Notification,
+) as any as S.Schema<NotificationList>;
 
 /** Customer-level settings. */
 export interface Settings {
@@ -378,9 +462,9 @@ export interface Settings {
   notifications?: NotificationList;
 }
 export const Settings = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "notifications": S.optional(NotificationList),
-}),
+  S.Struct({
+    notifications: S.optional(NotificationList),
+  }),
 ).annotate({ identifier: "Settings" }) as any as S.Schema<Settings>;
 
 export interface ListAlertsRequest {
@@ -396,17 +480,27 @@ export interface ListAlertsRequest {
   pageSize?: number;
 }
 export const ListAlertsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "customerId": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/alerts","baseUrl":"https://alertcenter.googleapis.com/"})),
-).annotate({ identifier: "ListAlertsRequest" }) as any as S.Schema<ListAlertsRequest>;
+  S.Struct({
+    customerId: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/alerts",
+      baseUrl: "https://alertcenter.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListAlertsRequest",
+}) as any as S.Schema<ListAlertsRequest>;
 
 export type AlertList = ReadonlyArray<Alert>;
-export const AlertList = /*@__PURE__*/ S.Array(Alert) as any as S.Schema<AlertList>;
+export const AlertList = /*@__PURE__*/ S.Array(
+  Alert,
+) as any as S.Schema<AlertList>;
 
 /** Response message for an alert listing request. */
 export interface ListAlertsResponse {
@@ -416,11 +510,13 @@ export interface ListAlertsResponse {
   nextPageToken?: string;
 }
 export const ListAlertsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "alerts": S.optional(AlertList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListAlertsResponse" }) as any as S.Schema<ListAlertsResponse>;
+  S.Struct({
+    alerts: S.optional(AlertList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListAlertsResponse",
+}) as any as S.Schema<ListAlertsResponse>;
 
 export interface ListAlertsFeedbackRequest {
   /** Required. The alert identifier. The "-" wildcard could be used to represent all alerts. */
@@ -431,15 +527,25 @@ export interface ListAlertsFeedbackRequest {
   filter?: string;
 }
 export const ListAlertsFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "alertId": S.String.pipe(T.Label()),
-  "customerId": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1beta1/alerts/{alertId}/feedback","baseUrl":"https://alertcenter.googleapis.com/"})),
-).annotate({ identifier: "ListAlertsFeedbackRequest" }) as any as S.Schema<ListAlertsFeedbackRequest>;
+  S.Struct({
+    alertId: S.String.pipe(T.Label()),
+    customerId: S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/alerts/{alertId}/feedback",
+      baseUrl: "https://alertcenter.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListAlertsFeedbackRequest",
+}) as any as S.Schema<ListAlertsFeedbackRequest>;
 
 export type AlertFeedbackList = ReadonlyArray<AlertFeedback>;
-export const AlertFeedbackList = /*@__PURE__*/ S.Array(AlertFeedback) as any as S.Schema<AlertFeedbackList>;
+export const AlertFeedbackList = /*@__PURE__*/ S.Array(
+  AlertFeedback,
+) as any as S.Schema<AlertFeedbackList>;
 
 /** Response message for an alert feedback listing request. */
 export interface ListAlertFeedbackResponse {
@@ -447,10 +553,12 @@ export interface ListAlertFeedbackResponse {
   feedback?: AlertFeedbackList;
 }
 export const ListAlertFeedbackResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "feedback": S.optional(AlertFeedbackList),
-}),
-).annotate({ identifier: "ListAlertFeedbackResponse" }) as any as S.Schema<ListAlertFeedbackResponse>;
+  S.Struct({
+    feedback: S.optional(AlertFeedbackList),
+  }),
+).annotate({
+  identifier: "ListAlertFeedbackResponse",
+}) as any as S.Schema<ListAlertFeedbackResponse>;
 
 /** A request to undelete a specific alert that was marked for deletion. */
 export interface UndeleteAlertRequest {
@@ -458,10 +566,12 @@ export interface UndeleteAlertRequest {
   customerId?: string;
 }
 export const UndeleteAlertRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "customerId": S.optional(S.String),
-}),
-).annotate({ identifier: "UndeleteAlertRequest" }) as any as S.Schema<UndeleteAlertRequest>;
+  S.Struct({
+    customerId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UndeleteAlertRequest",
+}) as any as S.Schema<UndeleteAlertRequest>;
 
 export interface UndeleteAlertsRequest {
   /** Required. The identifier of the alert to undelete. */
@@ -470,11 +580,19 @@ export interface UndeleteAlertsRequest {
   body?: UndeleteAlertRequest;
 }
 export const UndeleteAlertsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "alertId": S.String.pipe(T.Label()),
-  "body": S.optional(UndeleteAlertRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1beta1/alerts/{alertId}:undelete","baseUrl":"https://alertcenter.googleapis.com/"})),
-).annotate({ identifier: "UndeleteAlertsRequest" }) as any as S.Schema<UndeleteAlertsRequest>;
+  S.Struct({
+    alertId: S.String.pipe(T.Label()),
+    body: S.optional(UndeleteAlertRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1/alerts/{alertId}:undelete",
+      baseUrl: "https://alertcenter.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UndeleteAlertsRequest",
+}) as any as S.Schema<UndeleteAlertsRequest>;
 
 export interface UpdateSettingsV1beta1Request {
   /** Optional. The unique identifier of the Google Workspace account of the customer the alert settings are associated with. The `customer_id` must have the initial "C" stripped (for example, `046psxkn`). Inferred from the caller identity if not provided. [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793). */
@@ -483,13 +601,26 @@ export interface UpdateSettingsV1beta1Request {
   body?: Settings;
 }
 export const UpdateSettingsV1beta1Request = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "customerId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Settings.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1beta1/settings","baseUrl":"https://alertcenter.googleapis.com/"})),
-).annotate({ identifier: "UpdateSettingsV1beta1Request" }) as any as S.Schema<UpdateSettingsV1beta1Request>;
+  S.Struct({
+    customerId: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(Settings.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1beta1/settings",
+      baseUrl: "https://alertcenter.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateSettingsV1beta1Request",
+}) as any as S.Schema<UpdateSettingsV1beta1Request>;
 
-export type BatchDeleteAlertsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type BatchDeleteAlertsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Performs batch delete operation on alerts. */
 export const batchDeleteAlerts: API.OperationMethod<
   BatchDeleteAlertsRequest_,
@@ -504,7 +635,12 @@ export const batchDeleteAlerts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BatchUndeleteAlertsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type BatchUndeleteAlertsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Performs batch undelete operation on alerts. */
 export const batchUndeleteAlerts: API.OperationMethod<
   BatchUndeleteAlertsRequest_,
@@ -519,7 +655,12 @@ export const batchUndeleteAlerts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAlertsFeedbackError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateAlertsFeedbackError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates new feedback for an alert. Attempting to create a feedback for a non-existent alert returns `NOT_FOUND` error. Attempting to create a feedback for an alert that is marked for deletion returns `FAILED_PRECONDITION' error. */
 export const createAlertsFeedback: API.OperationMethod<
   CreateAlertsFeedbackRequest,
@@ -534,7 +675,12 @@ export const createAlertsFeedback: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAlertsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteAlertsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Marks the specified alert for deletion. An alert that has been marked for deletion is removed from Alert Center after 30 days. Marking an alert for deletion has no effect on an alert which has already been marked for deletion. Attempting to mark a nonexistent alert for deletion results in a `NOT_FOUND` error. */
 export const deleteAlerts: API.OperationMethod<
   DeleteAlertsRequest,
@@ -607,7 +753,10 @@ export const listAlerts: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListAlertsFeedbackError = NotFound | Forbidden | GcpOpError;
@@ -625,7 +774,12 @@ export const listAlertsFeedback: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UndeleteAlertsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UndeleteAlertsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Restores, or "undeletes", an alert that was marked for deletion within the past 30 days. Attempting to undelete an alert which was marked for deletion over 30 days ago (which has been removed from the Alert Center database) or a nonexistent alert returns a `NOT_FOUND` error. Attempting to undelete an alert which has not been marked for deletion has no effect. */
 export const undeleteAlerts: API.OperationMethod<
   UndeleteAlertsRequest,
@@ -640,7 +794,12 @@ export const undeleteAlerts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateSettingsV1beta1Error = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateSettingsV1beta1Error =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the customer-level settings. */
 export const updateSettingsV1beta1: API.OperationMethod<
   UpdateSettingsV1beta1Request,
@@ -654,4 +813,3 @@ export const updateSettingsV1beta1: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

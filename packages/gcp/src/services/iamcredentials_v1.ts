@@ -13,55 +13,57 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 export interface GenerateAccessTokenRequest {
   /** The desired lifetime duration of the access token in seconds. By default, the maximum allowed value is 1 hour. To set a lifetime of up to 12 hours, you can add the service account as an allowed value in an Organization Policy that enforces the `constraints/iam.allowServiceAccountCredentialLifetimeExtension` constraint. See detailed instructions at https://cloud.google.com/iam/help/credentials/lifetime If a value is not specified, the token's lifetime will be set to a default value of 1 hour. */
@@ -72,12 +74,14 @@ export interface GenerateAccessTokenRequest {
   scope?: StringList;
 }
 export const GenerateAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "lifetime": S.optional(S.String),
-  "delegates": S.optional(StringList),
-  "scope": S.optional(StringList),
-}),
-).annotate({ identifier: "GenerateAccessTokenRequest" }) as any as S.Schema<GenerateAccessTokenRequest>;
+  S.Struct({
+    lifetime: S.optional(S.String),
+    delegates: S.optional(StringList),
+    scope: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "GenerateAccessTokenRequest",
+}) as any as S.Schema<GenerateAccessTokenRequest>;
 
 export interface GenerateAccessTokenProjectsServiceAccountsRequest {
   /** Required. The resource name of the service account for which the credentials are requested, in the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing it with a project ID is invalid. */
@@ -85,12 +89,21 @@ export interface GenerateAccessTokenProjectsServiceAccountsRequest {
   /** Request body */
   body?: GenerateAccessTokenRequest;
 }
-export const GenerateAccessTokenProjectsServiceAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GenerateAccessTokenRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:generateAccessToken","baseUrl":"https://iamcredentials.googleapis.com/"})),
-).annotate({ identifier: "GenerateAccessTokenProjectsServiceAccountsRequest" }) as any as S.Schema<GenerateAccessTokenProjectsServiceAccountsRequest>;
+export const GenerateAccessTokenProjectsServiceAccountsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(GenerateAccessTokenRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:generateAccessToken",
+        baseUrl: "https://iamcredentials.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GenerateAccessTokenProjectsServiceAccountsRequest",
+  }) as any as S.Schema<GenerateAccessTokenProjectsServiceAccountsRequest>;
 
 export interface GenerateAccessTokenResponse {
   /** The OAuth 2.0 access token. */
@@ -99,11 +112,13 @@ export interface GenerateAccessTokenResponse {
   expireTime?: string;
 }
 export const GenerateAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "accessToken": S.optional(S.String),
-  "expireTime": S.optional(S.String),
-}),
-).annotate({ identifier: "GenerateAccessTokenResponse" }) as any as S.Schema<GenerateAccessTokenResponse>;
+  S.Struct({
+    accessToken: S.optional(S.String),
+    expireTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GenerateAccessTokenResponse",
+}) as any as S.Schema<GenerateAccessTokenResponse>;
 
 export interface GenerateIdTokenRequest {
   /** Include the organization number of the service account in the token. If set to `true`, the token will contain a `google.organization_number` claim. The value of the claim will be `null` if the service account isn't associated with an organization. */
@@ -116,13 +131,15 @@ export interface GenerateIdTokenRequest {
   includeEmail?: boolean;
 }
 export const GenerateIdTokenRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "organizationNumberIncluded": S.optional(S.Boolean),
-  "delegates": S.optional(StringList),
-  "audience": S.optional(S.String),
-  "includeEmail": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "GenerateIdTokenRequest" }) as any as S.Schema<GenerateIdTokenRequest>;
+  S.Struct({
+    organizationNumberIncluded: S.optional(S.Boolean),
+    delegates: S.optional(StringList),
+    audience: S.optional(S.String),
+    includeEmail: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "GenerateIdTokenRequest",
+}) as any as S.Schema<GenerateIdTokenRequest>;
 
 export interface GenerateIdTokenProjectsServiceAccountsRequest {
   /** Required. The resource name of the service account for which the credentials are requested, in the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing it with a project ID is invalid. */
@@ -130,32 +147,52 @@ export interface GenerateIdTokenProjectsServiceAccountsRequest {
   /** Request body */
   body?: GenerateIdTokenRequest;
 }
-export const GenerateIdTokenProjectsServiceAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(GenerateIdTokenRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:generateIdToken","baseUrl":"https://iamcredentials.googleapis.com/"})),
-).annotate({ identifier: "GenerateIdTokenProjectsServiceAccountsRequest" }) as any as S.Schema<GenerateIdTokenProjectsServiceAccountsRequest>;
+export const GenerateIdTokenProjectsServiceAccountsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(GenerateIdTokenRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:generateIdToken",
+        baseUrl: "https://iamcredentials.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GenerateIdTokenProjectsServiceAccountsRequest",
+  }) as any as S.Schema<GenerateIdTokenProjectsServiceAccountsRequest>;
 
 export interface GenerateIdTokenResponse {
   /** The OpenId Connect ID token. The token is a JSON Web Token (JWT) that contains a payload with claims. See the [JSON Web Token spec](https://tools.ietf.org/html/rfc7519) for more information. Here is an example of a decoded JWT payload: ``` { "iss": "https://accounts.google.com", "iat": 1496953245, "exp": 1496953245, "aud": "https://www.example.com", "sub": "107517467455664443765", "azp": "107517467455664443765", "email": "my-iam-account@my-project.iam.gserviceaccount.com", "email_verified": true, "google": { "organization_number": 123456 } } ``` */
   token?: string;
 }
 export const GenerateIdTokenResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "token": S.optional(S.String),
-}),
-).annotate({ identifier: "GenerateIdTokenResponse" }) as any as S.Schema<GenerateIdTokenResponse>;
+  S.Struct({
+    token: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GenerateIdTokenResponse",
+}) as any as S.Schema<GenerateIdTokenResponse>;
 
 export interface GetAllowedLocationsLocationsWorkforcePoolsRequest {
   /** Required. Resource name of workforce pool. */
   name: string;
 }
-export const GetAllowedLocationsLocationsWorkforcePoolsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/allowedLocations","baseUrl":"https://iamcredentials.googleapis.com/"})),
-).annotate({ identifier: "GetAllowedLocationsLocationsWorkforcePoolsRequest" }) as any as S.Schema<GetAllowedLocationsLocationsWorkforcePoolsRequest>;
+export const GetAllowedLocationsLocationsWorkforcePoolsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}/allowedLocations",
+        baseUrl: "https://iamcredentials.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetAllowedLocationsLocationsWorkforcePoolsRequest",
+  }) as any as S.Schema<GetAllowedLocationsLocationsWorkforcePoolsRequest>;
 
 /** Represents a list of allowed locations for given workforce pool. */
 export interface WorkforcePoolAllowedLocations {
@@ -165,21 +202,33 @@ export interface WorkforcePoolAllowedLocations {
   locations?: StringList;
 }
 export const WorkforcePoolAllowedLocations = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "encodedLocations": S.optional(S.String),
-  "locations": S.optional(StringList),
-}),
-).annotate({ identifier: "WorkforcePoolAllowedLocations" }) as any as S.Schema<WorkforcePoolAllowedLocations>;
+  S.Struct({
+    encodedLocations: S.optional(S.String),
+    locations: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "WorkforcePoolAllowedLocations",
+}) as any as S.Schema<WorkforcePoolAllowedLocations>;
 
 export interface GetAllowedLocationsProjectsLocationsWorkloadIdentityPoolsRequest {
   /** Required. Resource name of workload identity pool. */
   name: string;
 }
-export const GetAllowedLocationsProjectsLocationsWorkloadIdentityPoolsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/allowedLocations","baseUrl":"https://iamcredentials.googleapis.com/"})),
-).annotate({ identifier: "GetAllowedLocationsProjectsLocationsWorkloadIdentityPoolsRequest" }) as any as S.Schema<GetAllowedLocationsProjectsLocationsWorkloadIdentityPoolsRequest>;
+export const GetAllowedLocationsProjectsLocationsWorkloadIdentityPoolsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}/allowedLocations",
+        baseUrl: "https://iamcredentials.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "GetAllowedLocationsProjectsLocationsWorkloadIdentityPoolsRequest",
+  }) as any as S.Schema<GetAllowedLocationsProjectsLocationsWorkloadIdentityPoolsRequest>;
 
 /** Represents a list of allowed locations for given workload identity pool. */
 export interface WorkloadIdentityPoolAllowedLocations {
@@ -188,22 +237,34 @@ export interface WorkloadIdentityPoolAllowedLocations {
   /** Output only. The hex encoded bitmap of the trust boundary locations */
   encodedLocations?: string;
 }
-export const WorkloadIdentityPoolAllowedLocations = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locations": S.optional(StringList),
-  "encodedLocations": S.optional(S.String),
-}),
-).annotate({ identifier: "WorkloadIdentityPoolAllowedLocations" }) as any as S.Schema<WorkloadIdentityPoolAllowedLocations>;
+export const WorkloadIdentityPoolAllowedLocations = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      locations: S.optional(StringList),
+      encodedLocations: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "WorkloadIdentityPoolAllowedLocations",
+}) as any as S.Schema<WorkloadIdentityPoolAllowedLocations>;
 
 export interface GetAllowedLocationsProjectsServiceAccountsRequest {
   /** Required. Resource name of service account. Format: `projects/-/serviceAccounts/{service_account_email}` */
   name: string;
 }
-export const GetAllowedLocationsProjectsServiceAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}/allowedLocations","baseUrl":"https://iamcredentials.googleapis.com/"})),
-).annotate({ identifier: "GetAllowedLocationsProjectsServiceAccountsRequest" }) as any as S.Schema<GetAllowedLocationsProjectsServiceAccountsRequest>;
+export const GetAllowedLocationsProjectsServiceAccountsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}/allowedLocations",
+        baseUrl: "https://iamcredentials.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetAllowedLocationsProjectsServiceAccountsRequest",
+  }) as any as S.Schema<GetAllowedLocationsProjectsServiceAccountsRequest>;
 
 /** Represents a list of allowed locations for given service account. */
 export interface ServiceAccountAllowedLocations {
@@ -213,11 +274,13 @@ export interface ServiceAccountAllowedLocations {
   encodedLocations?: string;
 }
 export const ServiceAccountAllowedLocations = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "locations": S.optional(StringList),
-  "encodedLocations": S.optional(S.String),
-}),
-).annotate({ identifier: "ServiceAccountAllowedLocations" }) as any as S.Schema<ServiceAccountAllowedLocations>;
+  S.Struct({
+    locations: S.optional(StringList),
+    encodedLocations: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ServiceAccountAllowedLocations",
+}) as any as S.Schema<ServiceAccountAllowedLocations>;
 
 export interface SignBlobRequest {
   /** The sequence of service accounts in a delegation chain. Each service account must be granted the `roles/iam.serviceAccountTokenCreator` role on its next service account in the chain. The last service account in the chain must be granted the `roles/iam.serviceAccountTokenCreator` role on the service account that is specified in the `name` field of the request. The delegates must have the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing it with a project ID is invalid. */
@@ -226,11 +289,13 @@ export interface SignBlobRequest {
   payload?: string;
 }
 export const SignBlobRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "delegates": S.optional(StringList),
-  "payload": S.optional(S.String),
-}),
-).annotate({ identifier: "SignBlobRequest" }) as any as S.Schema<SignBlobRequest>;
+  S.Struct({
+    delegates: S.optional(StringList),
+    payload: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SignBlobRequest",
+}) as any as S.Schema<SignBlobRequest>;
 
 export interface SignBlobProjectsServiceAccountsRequest {
   /** Required. The resource name of the service account for which the credentials are requested, in the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing it with a project ID is invalid. */
@@ -238,12 +303,21 @@ export interface SignBlobProjectsServiceAccountsRequest {
   /** Request body */
   body?: SignBlobRequest;
 }
-export const SignBlobProjectsServiceAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(SignBlobRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:signBlob","baseUrl":"https://iamcredentials.googleapis.com/"})),
-).annotate({ identifier: "SignBlobProjectsServiceAccountsRequest" }) as any as S.Schema<SignBlobProjectsServiceAccountsRequest>;
+export const SignBlobProjectsServiceAccountsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(SignBlobRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:signBlob",
+        baseUrl: "https://iamcredentials.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "SignBlobProjectsServiceAccountsRequest",
+}) as any as S.Schema<SignBlobProjectsServiceAccountsRequest>;
 
 export interface SignBlobResponse {
   /** The ID of the key used to sign the blob. The key used for signing will remain valid for at least 12 hours after the blob is signed. To verify the signature, you can retrieve the public key in several formats from the following endpoints: - RSA public key wrapped in an X.509 v3 certificate: `https://www.googleapis.com/service_accounts/v1/metadata/x509/{ACCOUNT_EMAIL}` - Raw key in JSON format: `https://www.googleapis.com/service_accounts/v1/metadata/raw/{ACCOUNT_EMAIL}` - JSON Web Key (JWK): `https://www.googleapis.com/service_accounts/v1/metadata/jwk/{ACCOUNT_EMAIL}` */
@@ -252,11 +326,13 @@ export interface SignBlobResponse {
   signedBlob?: string;
 }
 export const SignBlobResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "keyId": S.optional(S.String),
-  "signedBlob": S.optional(S.String),
-}),
-).annotate({ identifier: "SignBlobResponse" }) as any as S.Schema<SignBlobResponse>;
+  S.Struct({
+    keyId: S.optional(S.String),
+    signedBlob: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SignBlobResponse",
+}) as any as S.Schema<SignBlobResponse>;
 
 export interface SignJwtRequest {
   /** The sequence of service accounts in a delegation chain. Each service account must be granted the `roles/iam.serviceAccountTokenCreator` role on its next service account in the chain. The last service account in the chain must be granted the `roles/iam.serviceAccountTokenCreator` role on the service account that is specified in the `name` field of the request. The delegates must have the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing it with a project ID is invalid. */
@@ -265,10 +341,10 @@ export interface SignJwtRequest {
   payload?: string;
 }
 export const SignJwtRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "delegates": S.optional(StringList),
-  "payload": S.optional(S.String),
-}),
+  S.Struct({
+    delegates: S.optional(StringList),
+    payload: S.optional(S.String),
+  }),
 ).annotate({ identifier: "SignJwtRequest" }) as any as S.Schema<SignJwtRequest>;
 
 export interface SignJwtProjectsServiceAccountsRequest {
@@ -277,12 +353,21 @@ export interface SignJwtProjectsServiceAccountsRequest {
   /** Request body */
   body?: SignJwtRequest;
 }
-export const SignJwtProjectsServiceAccountsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(SignJwtRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+name}:signJwt","baseUrl":"https://iamcredentials.googleapis.com/"})),
-).annotate({ identifier: "SignJwtProjectsServiceAccountsRequest" }) as any as S.Schema<SignJwtProjectsServiceAccountsRequest>;
+export const SignJwtProjectsServiceAccountsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(SignJwtRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:signJwt",
+        baseUrl: "https://iamcredentials.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "SignJwtProjectsServiceAccountsRequest",
+}) as any as S.Schema<SignJwtProjectsServiceAccountsRequest>;
 
 export interface SignJwtResponse {
   /** The signed JWT. Contains the automatically generated header; the client-supplied payload; and the signature, which is generated using the key referenced by the `kid` field in the header. After the key pair referenced by the `key_id` response field expires, Google no longer exposes the public key that can be used to verify the JWT. As a result, the receiver can no longer verify the signature. */
@@ -291,13 +376,20 @@ export interface SignJwtResponse {
   keyId?: string;
 }
 export const SignJwtResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "signedJwt": S.optional(S.String),
-  "keyId": S.optional(S.String),
-}),
-).annotate({ identifier: "SignJwtResponse" }) as any as S.Schema<SignJwtResponse>;
+  S.Struct({
+    signedJwt: S.optional(S.String),
+    keyId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SignJwtResponse",
+}) as any as S.Schema<SignJwtResponse>;
 
-export type GenerateAccessTokenProjectsServiceAccountsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type GenerateAccessTokenProjectsServiceAccountsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Generates an OAuth 2.0 access token for a service account. */
 export const generateAccessTokenProjectsServiceAccounts: API.OperationMethod<
   GenerateAccessTokenProjectsServiceAccountsRequest,
@@ -312,7 +404,12 @@ export const generateAccessTokenProjectsServiceAccounts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GenerateIdTokenProjectsServiceAccountsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type GenerateIdTokenProjectsServiceAccountsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Generates an OpenID Connect ID token for a service account. */
 export const generateIdTokenProjectsServiceAccounts: API.OperationMethod<
   GenerateIdTokenProjectsServiceAccountsRequest,
@@ -327,7 +424,10 @@ export const generateIdTokenProjectsServiceAccounts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAllowedLocationsLocationsWorkforcePoolsError = NotFound | Forbidden | GcpOpError;
+export type GetAllowedLocationsLocationsWorkforcePoolsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns the trust boundary info for a given workforce pool. */
 export const getAllowedLocationsLocationsWorkforcePools: API.OperationMethod<
   GetAllowedLocationsLocationsWorkforcePoolsRequest,
@@ -342,7 +442,10 @@ export const getAllowedLocationsLocationsWorkforcePools: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAllowedLocationsProjectsLocationsWorkloadIdentityPoolsError = NotFound | Forbidden | GcpOpError;
+export type GetAllowedLocationsProjectsLocationsWorkloadIdentityPoolsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns the trust boundary info for a given workload identity pool. */
 export const getAllowedLocationsProjectsLocationsWorkloadIdentityPools: API.OperationMethod<
   GetAllowedLocationsProjectsLocationsWorkloadIdentityPoolsRequest,
@@ -357,7 +460,10 @@ export const getAllowedLocationsProjectsLocationsWorkloadIdentityPools: API.Oper
   retry: Retry.Retry,
 }));
 
-export type GetAllowedLocationsProjectsServiceAccountsError = NotFound | Forbidden | GcpOpError;
+export type GetAllowedLocationsProjectsServiceAccountsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns the trust boundary info for a given service account. */
 export const getAllowedLocationsProjectsServiceAccounts: API.OperationMethod<
   GetAllowedLocationsProjectsServiceAccountsRequest,
@@ -372,7 +478,12 @@ export const getAllowedLocationsProjectsServiceAccounts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SignBlobProjectsServiceAccountsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SignBlobProjectsServiceAccountsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Signs a blob using a service account's system-managed private key. */
 export const signBlobProjectsServiceAccounts: API.OperationMethod<
   SignBlobProjectsServiceAccountsRequest,
@@ -387,7 +498,12 @@ export const signBlobProjectsServiceAccounts: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SignJwtProjectsServiceAccountsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type SignJwtProjectsServiceAccountsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Signs a JWT using a service account's system-managed private key. */
 export const signJwtProjectsServiceAccounts: API.OperationMethod<
   SignJwtProjectsServiceAccountsRequest,
@@ -401,4 +517,3 @@ export const signJwtProjectsServiceAccounts: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

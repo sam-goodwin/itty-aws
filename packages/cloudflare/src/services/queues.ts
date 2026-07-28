@@ -640,30 +640,43 @@ export const ConsumersCreateResultHTTPPull = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConsumersCreateResultHTTPPull",
 }) as any as S.Schema<ConsumersCreateResultHTTPPull>;
 
-export type ConsumersCreateResult =
-  | ConsumersCreateResultWorker
-  | ConsumersCreateResultHTTPPull;
-export const ConsumersCreateResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    [
-      "consumerId",
-      "createdOn",
-      "deadLetterQueue",
-      "queueName",
-      "settings",
-      "type",
-      "script",
-    ],
-    [
-      "consumerId",
-      "createdOn",
-      "deadLetterQueue",
-      "queueName",
-      "settings",
-      "type",
-    ],
-  ]),
-);
+export interface ConsumersCreateResult {
+  /** A Resource identifier. */
+  consumerId?: string;
+  createdOn?: string;
+  /** Name of the dead letter queue, or empty string if not configured */
+  deadLetterQueue?: string;
+  queueName?: string;
+  settings?:
+    | ConsumersCreateResultWorkerSettings
+    | ConsumersCreateResultHTTPPullSettings;
+  type?: ConsumersCreateResultWorkerType | ConsumersCreateResultHTTPPullType;
+  /** Name of a Worker */
+  script?: string;
+}
+export const ConsumersCreateResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    consumerId: S.optional(S.String.pipe(T.Body("consumer_id"))),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    deadLetterQueue: S.optional(S.String.pipe(T.Body("dead_letter_queue"))),
+    queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
+    settings: S.optional(
+      S.Union(
+        ConsumersCreateResultWorkerSettings,
+        ConsumersCreateResultHTTPPullSettings,
+      ),
+    ),
+    type: S.optional(
+      S.Union(
+        ConsumersCreateResultWorkerType,
+        ConsumersCreateResultHTTPPullType,
+      ),
+    ),
+    script: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConsumersCreateResult",
+}) as any as S.Schema<ConsumersCreateResult>;
 
 export type CreateConsumerResponse = ConsumersCreateResult;
 export const CreateConsumerResponse = /*@__PURE__*/ S.suspend(() =>
@@ -798,30 +811,45 @@ export const CreateResponseConsumersItemHTTPPull = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateResponseConsumersItemHTTPPull",
 }) as any as S.Schema<CreateResponseConsumersItemHTTPPull>;
 
-export type CreateResponseConsumersItem =
-  | CreateResponseConsumersItemWorker
-  | CreateResponseConsumersItemHTTPPull;
-export const CreateResponseConsumersItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    [
-      "consumerId",
-      "createdOn",
-      "deadLetterQueue",
-      "queueName",
-      "settings",
-      "type",
-      "script",
-    ],
-    [
-      "consumerId",
-      "createdOn",
-      "deadLetterQueue",
-      "queueName",
-      "settings",
-      "type",
-    ],
-  ]),
-);
+export interface CreateResponseConsumersItem {
+  /** A Resource identifier. */
+  consumerId?: string;
+  createdOn?: string;
+  /** Name of the dead letter queue, or empty string if not configured */
+  deadLetterQueue?: string;
+  queueName?: string;
+  settings?:
+    | CreateResponseConsumersItemWorkerSettings
+    | CreateResponseConsumersItemHTTPPullSettings;
+  type?:
+    | CreateResponseConsumersItemWorkerType
+    | CreateResponseConsumersItemHTTPPullType;
+  /** Name of a Worker */
+  script?: string;
+}
+export const CreateResponseConsumersItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    consumerId: S.optional(S.String.pipe(T.Body("consumer_id"))),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    deadLetterQueue: S.optional(S.String.pipe(T.Body("dead_letter_queue"))),
+    queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
+    settings: S.optional(
+      S.Union(
+        CreateResponseConsumersItemWorkerSettings,
+        CreateResponseConsumersItemHTTPPullSettings,
+      ),
+    ),
+    type: S.optional(
+      S.Union(
+        CreateResponseConsumersItemWorkerType,
+        CreateResponseConsumersItemHTTPPullType,
+      ),
+    ),
+    script: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateResponseConsumersItem",
+}) as any as S.Schema<CreateResponseConsumersItem>;
 
 export type CreateResponseConsumersList =
   ReadonlyArray<CreateResponseConsumersItem>;
@@ -865,15 +893,27 @@ export const CreateResponseProducersItemMqR2Producer = /*@__PURE__*/ S.suspend(
   identifier: "CreateResponseProducersItemMqR2Producer",
 }) as any as S.Schema<CreateResponseProducersItemMqR2Producer>;
 
-export type CreateResponseProducersItem =
-  | CreateResponseProducersItemMqWorkerProducer
-  | CreateResponseProducersItemMqR2Producer;
-export const CreateResponseProducersItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["script", "type"],
-    ["bucketName", "type"],
-  ]),
-);
+export interface CreateResponseProducersItem {
+  script?: string;
+  type?:
+    | CreateResponseProducersItemMqWorkerProducerType
+    | CreateResponseProducersItemMqR2ProducerType;
+  bucketName?: string;
+}
+export const CreateResponseProducersItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    script: S.optional(S.String),
+    type: S.optional(
+      S.Union(
+        CreateResponseProducersItemMqWorkerProducerType,
+        CreateResponseProducersItemMqR2ProducerType,
+      ),
+    ),
+    bucketName: S.optional(S.String.pipe(T.Body("bucket_name"))),
+  }),
+).annotate({
+  identifier: "CreateResponseProducersItem",
+}) as any as S.Schema<CreateResponseProducersItem>;
 
 export type CreateResponseProducersList =
   ReadonlyArray<CreateResponseProducersItem>;
@@ -1377,27 +1417,45 @@ export const SubscriptionsCreateResponseSourceMqEventSourceWorkflowsWorkflow =
       "SubscriptionsCreateResponseSourceMqEventSourceWorkflowsWorkflow",
   }) as any as S.Schema<SubscriptionsCreateResponseSourceMqEventSourceWorkflowsWorkflow>;
 
-export type SubscriptionsCreateResponseSource =
-  | SubscriptionsCreateResponseSourceMqEventSourceImages
-  | SubscriptionsCreateResponseSourceMqEventSourceKV
-  | SubscriptionsCreateResponseSourceMqEventSourceR2
-  | SubscriptionsCreateResponseSourceMqEventSourceSuperSlurper
-  | SubscriptionsCreateResponseSourceMqEventSourceVectorize
-  | SubscriptionsCreateResponseSourceMqEventSourceWorkersAIModel
-  | SubscriptionsCreateResponseSourceMqEventSourceWorkersBuildsWorker
-  | SubscriptionsCreateResponseSourceMqEventSourceWorkflowsWorkflow;
-export const SubscriptionsCreateResponseSource = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["type"],
-    ["type"],
-    ["type"],
-    ["type"],
-    ["type"],
-    ["modelName", "type"],
-    ["type", "workerName"],
-    ["type", "workflowName"],
-  ]),
-);
+export interface SubscriptionsCreateResponseSource {
+  /** Type of source */
+  type?:
+    | SubscriptionsCreateResponseSourceMqEventSourceImagesType
+    | SubscriptionsCreateResponseSourceMqEventSourceKVType
+    | SubscriptionsCreateResponseSourceMqEventSourceR2Type
+    | SubscriptionsCreateResponseSourceMqEventSourceSuperSlurperType
+    | SubscriptionsCreateResponseSourceMqEventSourceVectorizeType
+    | SubscriptionsCreateResponseSourceMqEventSourceWorkersAIModelType
+    | SubscriptionsCreateResponseSourceMqEventSourceWorkersBuildsWorkerType
+    | SubscriptionsCreateResponseSourceMqEventSourceWorkflowsWorkflowType;
+  /** Name of the Workers AI model */
+  modelName?: string;
+  /** Name of the worker */
+  workerName?: string;
+  /** Name of the workflow */
+  workflowName?: string;
+}
+export const SubscriptionsCreateResponseSource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(
+      S.Union(
+        SubscriptionsCreateResponseSourceMqEventSourceImagesType,
+        SubscriptionsCreateResponseSourceMqEventSourceKVType,
+        SubscriptionsCreateResponseSourceMqEventSourceR2Type,
+        SubscriptionsCreateResponseSourceMqEventSourceSuperSlurperType,
+        SubscriptionsCreateResponseSourceMqEventSourceVectorizeType,
+        SubscriptionsCreateResponseSourceMqEventSourceWorkersAIModelType,
+        SubscriptionsCreateResponseSourceMqEventSourceWorkersBuildsWorkerType,
+        SubscriptionsCreateResponseSourceMqEventSourceWorkflowsWorkflowType,
+      ),
+    ),
+    modelName: S.optional(S.String.pipe(T.Body("model_name"))),
+    workerName: S.optional(S.String.pipe(T.Body("worker_name"))),
+    workflowName: S.optional(S.String.pipe(T.Body("workflow_name"))),
+  }),
+).annotate({
+  identifier: "SubscriptionsCreateResponseSource",
+}) as any as S.Schema<SubscriptionsCreateResponseSource>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateSubscriptionResponse {
@@ -1708,27 +1766,45 @@ export const SubscriptionsDeleteResponseSourceMqEventSourceWorkflowsWorkflow =
       "SubscriptionsDeleteResponseSourceMqEventSourceWorkflowsWorkflow",
   }) as any as S.Schema<SubscriptionsDeleteResponseSourceMqEventSourceWorkflowsWorkflow>;
 
-export type SubscriptionsDeleteResponseSource =
-  | SubscriptionsDeleteResponseSourceMqEventSourceImages
-  | SubscriptionsDeleteResponseSourceMqEventSourceKV
-  | SubscriptionsDeleteResponseSourceMqEventSourceR2
-  | SubscriptionsDeleteResponseSourceMqEventSourceSuperSlurper
-  | SubscriptionsDeleteResponseSourceMqEventSourceVectorize
-  | SubscriptionsDeleteResponseSourceMqEventSourceWorkersAIModel
-  | SubscriptionsDeleteResponseSourceMqEventSourceWorkersBuildsWorker
-  | SubscriptionsDeleteResponseSourceMqEventSourceWorkflowsWorkflow;
-export const SubscriptionsDeleteResponseSource = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["type"],
-    ["type"],
-    ["type"],
-    ["type"],
-    ["type"],
-    ["modelName", "type"],
-    ["type", "workerName"],
-    ["type", "workflowName"],
-  ]),
-);
+export interface SubscriptionsDeleteResponseSource {
+  /** Type of source */
+  type?:
+    | SubscriptionsDeleteResponseSourceMqEventSourceImagesType
+    | SubscriptionsDeleteResponseSourceMqEventSourceKVType
+    | SubscriptionsDeleteResponseSourceMqEventSourceR2Type
+    | SubscriptionsDeleteResponseSourceMqEventSourceSuperSlurperType
+    | SubscriptionsDeleteResponseSourceMqEventSourceVectorizeType
+    | SubscriptionsDeleteResponseSourceMqEventSourceWorkersAIModelType
+    | SubscriptionsDeleteResponseSourceMqEventSourceWorkersBuildsWorkerType
+    | SubscriptionsDeleteResponseSourceMqEventSourceWorkflowsWorkflowType;
+  /** Name of the Workers AI model */
+  modelName?: string;
+  /** Name of the worker */
+  workerName?: string;
+  /** Name of the workflow */
+  workflowName?: string;
+}
+export const SubscriptionsDeleteResponseSource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(
+      S.Union(
+        SubscriptionsDeleteResponseSourceMqEventSourceImagesType,
+        SubscriptionsDeleteResponseSourceMqEventSourceKVType,
+        SubscriptionsDeleteResponseSourceMqEventSourceR2Type,
+        SubscriptionsDeleteResponseSourceMqEventSourceSuperSlurperType,
+        SubscriptionsDeleteResponseSourceMqEventSourceVectorizeType,
+        SubscriptionsDeleteResponseSourceMqEventSourceWorkersAIModelType,
+        SubscriptionsDeleteResponseSourceMqEventSourceWorkersBuildsWorkerType,
+        SubscriptionsDeleteResponseSourceMqEventSourceWorkflowsWorkflowType,
+      ),
+    ),
+    modelName: S.optional(S.String.pipe(T.Body("model_name"))),
+    workerName: S.optional(S.String.pipe(T.Body("worker_name"))),
+    workflowName: S.optional(S.String.pipe(T.Body("workflow_name"))),
+  }),
+).annotate({
+  identifier: "SubscriptionsDeleteResponseSource",
+}) as any as S.Schema<SubscriptionsDeleteResponseSource>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteSubscriptionResponse {
@@ -1892,30 +1968,40 @@ export const ConsumersGetResultHTTPPull = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConsumersGetResultHTTPPull",
 }) as any as S.Schema<ConsumersGetResultHTTPPull>;
 
-export type ConsumersGetResult =
-  | ConsumersGetResultWorker
-  | ConsumersGetResultHTTPPull;
-export const ConsumersGetResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    [
-      "consumerId",
-      "createdOn",
-      "deadLetterQueue",
-      "queueName",
-      "settings",
-      "type",
-      "script",
-    ],
-    [
-      "consumerId",
-      "createdOn",
-      "deadLetterQueue",
-      "queueName",
-      "settings",
-      "type",
-    ],
-  ]),
-);
+export interface ConsumersGetResult {
+  /** A Resource identifier. */
+  consumerId?: string;
+  createdOn?: string;
+  /** Name of the dead letter queue, or empty string if not configured */
+  deadLetterQueue?: string;
+  queueName?: string;
+  settings?:
+    | ConsumersGetResultWorkerSettings
+    | ConsumersGetResultHTTPPullSettings;
+  type?: ConsumersGetResultWorkerType | ConsumersGetResultHTTPPullType;
+  /** Name of a Worker */
+  script?: string;
+}
+export const ConsumersGetResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    consumerId: S.optional(S.String.pipe(T.Body("consumer_id"))),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    deadLetterQueue: S.optional(S.String.pipe(T.Body("dead_letter_queue"))),
+    queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
+    settings: S.optional(
+      S.Union(
+        ConsumersGetResultWorkerSettings,
+        ConsumersGetResultHTTPPullSettings,
+      ),
+    ),
+    type: S.optional(
+      S.Union(ConsumersGetResultWorkerType, ConsumersGetResultHTTPPullType),
+    ),
+    script: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConsumersGetResult",
+}) as any as S.Schema<ConsumersGetResult>;
 
 export type GetConsumerResponse = ConsumersGetResult;
 export const GetConsumerResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2095,30 +2181,45 @@ export const GetResponseConsumersItemHTTPPull = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseConsumersItemHTTPPull",
 }) as any as S.Schema<GetResponseConsumersItemHTTPPull>;
 
-export type GetResponseConsumersItem =
-  | GetResponseConsumersItemWorker
-  | GetResponseConsumersItemHTTPPull;
-export const GetResponseConsumersItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    [
-      "consumerId",
-      "createdOn",
-      "deadLetterQueue",
-      "queueName",
-      "settings",
-      "type",
-      "script",
-    ],
-    [
-      "consumerId",
-      "createdOn",
-      "deadLetterQueue",
-      "queueName",
-      "settings",
-      "type",
-    ],
-  ]),
-);
+export interface GetResponseConsumersItem {
+  /** A Resource identifier. */
+  consumerId?: string;
+  createdOn?: string;
+  /** Name of the dead letter queue, or empty string if not configured */
+  deadLetterQueue?: string;
+  queueName?: string;
+  settings?:
+    | GetResponseConsumersItemWorkerSettings
+    | GetResponseConsumersItemHTTPPullSettings;
+  type?:
+    | GetResponseConsumersItemWorkerType
+    | GetResponseConsumersItemHTTPPullType;
+  /** Name of a Worker */
+  script?: string;
+}
+export const GetResponseConsumersItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    consumerId: S.optional(S.String.pipe(T.Body("consumer_id"))),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    deadLetterQueue: S.optional(S.String.pipe(T.Body("dead_letter_queue"))),
+    queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
+    settings: S.optional(
+      S.Union(
+        GetResponseConsumersItemWorkerSettings,
+        GetResponseConsumersItemHTTPPullSettings,
+      ),
+    ),
+    type: S.optional(
+      S.Union(
+        GetResponseConsumersItemWorkerType,
+        GetResponseConsumersItemHTTPPullType,
+      ),
+    ),
+    script: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetResponseConsumersItem",
+}) as any as S.Schema<GetResponseConsumersItem>;
 
 export type GetResponseConsumersList = ReadonlyArray<GetResponseConsumersItem>;
 export const GetResponseConsumersList = /*@__PURE__*/ S.Array(
@@ -2160,15 +2261,27 @@ export const GetResponseProducersItemMqR2Producer = /*@__PURE__*/ S.suspend(
   identifier: "GetResponseProducersItemMqR2Producer",
 }) as any as S.Schema<GetResponseProducersItemMqR2Producer>;
 
-export type GetResponseProducersItem =
-  | GetResponseProducersItemMqWorkerProducer
-  | GetResponseProducersItemMqR2Producer;
-export const GetResponseProducersItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["script", "type"],
-    ["bucketName", "type"],
-  ]),
-);
+export interface GetResponseProducersItem {
+  script?: string;
+  type?:
+    | GetResponseProducersItemMqWorkerProducerType
+    | GetResponseProducersItemMqR2ProducerType;
+  bucketName?: string;
+}
+export const GetResponseProducersItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    script: S.optional(S.String),
+    type: S.optional(
+      S.Union(
+        GetResponseProducersItemMqWorkerProducerType,
+        GetResponseProducersItemMqR2ProducerType,
+      ),
+    ),
+    bucketName: S.optional(S.String.pipe(T.Body("bucket_name"))),
+  }),
+).annotate({
+  identifier: "GetResponseProducersItem",
+}) as any as S.Schema<GetResponseProducersItem>;
 
 export type GetResponseProducersList = ReadonlyArray<GetResponseProducersItem>;
 export const GetResponseProducersList = /*@__PURE__*/ S.Array(
@@ -2434,27 +2547,45 @@ export const SubscriptionsGetResponseSourceMqEventSourceWorkflowsWorkflow =
     identifier: "SubscriptionsGetResponseSourceMqEventSourceWorkflowsWorkflow",
   }) as any as S.Schema<SubscriptionsGetResponseSourceMqEventSourceWorkflowsWorkflow>;
 
-export type SubscriptionsGetResponseSource =
-  | SubscriptionsGetResponseSourceMqEventSourceImages
-  | SubscriptionsGetResponseSourceMqEventSourceKV
-  | SubscriptionsGetResponseSourceMqEventSourceR2
-  | SubscriptionsGetResponseSourceMqEventSourceSuperSlurper
-  | SubscriptionsGetResponseSourceMqEventSourceVectorize
-  | SubscriptionsGetResponseSourceMqEventSourceWorkersAIModel
-  | SubscriptionsGetResponseSourceMqEventSourceWorkersBuildsWorker
-  | SubscriptionsGetResponseSourceMqEventSourceWorkflowsWorkflow;
-export const SubscriptionsGetResponseSource = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["type"],
-    ["type"],
-    ["type"],
-    ["type"],
-    ["type"],
-    ["modelName", "type"],
-    ["type", "workerName"],
-    ["type", "workflowName"],
-  ]),
-);
+export interface SubscriptionsGetResponseSource {
+  /** Type of source */
+  type?:
+    | SubscriptionsGetResponseSourceMqEventSourceImagesType
+    | SubscriptionsGetResponseSourceMqEventSourceKVType
+    | SubscriptionsGetResponseSourceMqEventSourceR2Type
+    | SubscriptionsGetResponseSourceMqEventSourceSuperSlurperType
+    | SubscriptionsGetResponseSourceMqEventSourceVectorizeType
+    | SubscriptionsGetResponseSourceMqEventSourceWorkersAIModelType
+    | SubscriptionsGetResponseSourceMqEventSourceWorkersBuildsWorkerType
+    | SubscriptionsGetResponseSourceMqEventSourceWorkflowsWorkflowType;
+  /** Name of the Workers AI model */
+  modelName?: string;
+  /** Name of the worker */
+  workerName?: string;
+  /** Name of the workflow */
+  workflowName?: string;
+}
+export const SubscriptionsGetResponseSource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(
+      S.Union(
+        SubscriptionsGetResponseSourceMqEventSourceImagesType,
+        SubscriptionsGetResponseSourceMqEventSourceKVType,
+        SubscriptionsGetResponseSourceMqEventSourceR2Type,
+        SubscriptionsGetResponseSourceMqEventSourceSuperSlurperType,
+        SubscriptionsGetResponseSourceMqEventSourceVectorizeType,
+        SubscriptionsGetResponseSourceMqEventSourceWorkersAIModelType,
+        SubscriptionsGetResponseSourceMqEventSourceWorkersBuildsWorkerType,
+        SubscriptionsGetResponseSourceMqEventSourceWorkflowsWorkflowType,
+      ),
+    ),
+    modelName: S.optional(S.String.pipe(T.Body("model_name"))),
+    workerName: S.optional(S.String.pipe(T.Body("worker_name"))),
+    workflowName: S.optional(S.String.pipe(T.Body("workflow_name"))),
+  }),
+).annotate({
+  identifier: "SubscriptionsGetResponseSource",
+}) as any as S.Schema<SubscriptionsGetResponseSource>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetSubscriptionResponse {
@@ -2617,30 +2748,45 @@ export const ConsumersListResultItemHTTPPull = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConsumersListResultItemHTTPPull",
 }) as any as S.Schema<ConsumersListResultItemHTTPPull>;
 
-export type ConsumersListResultItem =
-  | ConsumersListResultItemWorker
-  | ConsumersListResultItemHTTPPull;
-export const ConsumersListResultItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    [
-      "consumerId",
-      "createdOn",
-      "deadLetterQueue",
-      "queueName",
-      "settings",
-      "type",
-      "script",
-    ],
-    [
-      "consumerId",
-      "createdOn",
-      "deadLetterQueue",
-      "queueName",
-      "settings",
-      "type",
-    ],
-  ]),
-);
+export interface ConsumersListResultItem {
+  /** A Resource identifier. */
+  consumerId?: string;
+  createdOn?: string;
+  /** Name of the dead letter queue, or empty string if not configured */
+  deadLetterQueue?: string;
+  queueName?: string;
+  settings?:
+    | ConsumersListResultItemWorkerSettings
+    | ConsumersListResultItemHTTPPullSettings;
+  type?:
+    | ConsumersListResultItemWorkerType
+    | ConsumersListResultItemHTTPPullType;
+  /** Name of a Worker */
+  script?: string;
+}
+export const ConsumersListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    consumerId: S.optional(S.String.pipe(T.Body("consumer_id"))),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    deadLetterQueue: S.optional(S.String.pipe(T.Body("dead_letter_queue"))),
+    queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
+    settings: S.optional(
+      S.Union(
+        ConsumersListResultItemWorkerSettings,
+        ConsumersListResultItemHTTPPullSettings,
+      ),
+    ),
+    type: S.optional(
+      S.Union(
+        ConsumersListResultItemWorkerType,
+        ConsumersListResultItemHTTPPullType,
+      ),
+    ),
+    script: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConsumersListResultItem",
+}) as any as S.Schema<ConsumersListResultItem>;
 
 export type ConsumersListResultList = ReadonlyArray<ConsumersListResultItem>;
 export const ConsumersListResultList = /*@__PURE__*/ S.Array(
@@ -2786,30 +2932,45 @@ export const ListResultItemConsumersItemHTTPPull = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResultItemConsumersItemHTTPPull",
 }) as any as S.Schema<ListResultItemConsumersItemHTTPPull>;
 
-export type ListResultItemConsumersItem =
-  | ListResultItemConsumersItemWorker
-  | ListResultItemConsumersItemHTTPPull;
-export const ListResultItemConsumersItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    [
-      "consumerId",
-      "createdOn",
-      "deadLetterQueue",
-      "queueName",
-      "settings",
-      "type",
-      "script",
-    ],
-    [
-      "consumerId",
-      "createdOn",
-      "deadLetterQueue",
-      "queueName",
-      "settings",
-      "type",
-    ],
-  ]),
-);
+export interface ListResultItemConsumersItem {
+  /** A Resource identifier. */
+  consumerId?: string;
+  createdOn?: string;
+  /** Name of the dead letter queue, or empty string if not configured */
+  deadLetterQueue?: string;
+  queueName?: string;
+  settings?:
+    | ListResultItemConsumersItemWorkerSettings
+    | ListResultItemConsumersItemHTTPPullSettings;
+  type?:
+    | ListResultItemConsumersItemWorkerType
+    | ListResultItemConsumersItemHTTPPullType;
+  /** Name of a Worker */
+  script?: string;
+}
+export const ListResultItemConsumersItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    consumerId: S.optional(S.String.pipe(T.Body("consumer_id"))),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    deadLetterQueue: S.optional(S.String.pipe(T.Body("dead_letter_queue"))),
+    queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
+    settings: S.optional(
+      S.Union(
+        ListResultItemConsumersItemWorkerSettings,
+        ListResultItemConsumersItemHTTPPullSettings,
+      ),
+    ),
+    type: S.optional(
+      S.Union(
+        ListResultItemConsumersItemWorkerType,
+        ListResultItemConsumersItemHTTPPullType,
+      ),
+    ),
+    script: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListResultItemConsumersItem",
+}) as any as S.Schema<ListResultItemConsumersItem>;
 
 export type ListResultItemConsumersList =
   ReadonlyArray<ListResultItemConsumersItem>;
@@ -2853,15 +3014,27 @@ export const ListResultItemProducersItemMqR2Producer = /*@__PURE__*/ S.suspend(
   identifier: "ListResultItemProducersItemMqR2Producer",
 }) as any as S.Schema<ListResultItemProducersItemMqR2Producer>;
 
-export type ListResultItemProducersItem =
-  | ListResultItemProducersItemMqWorkerProducer
-  | ListResultItemProducersItemMqR2Producer;
-export const ListResultItemProducersItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["script", "type"],
-    ["bucketName", "type"],
-  ]),
-);
+export interface ListResultItemProducersItem {
+  script?: string;
+  type?:
+    | ListResultItemProducersItemMqWorkerProducerType
+    | ListResultItemProducersItemMqR2ProducerType;
+  bucketName?: string;
+}
+export const ListResultItemProducersItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    script: S.optional(S.String),
+    type: S.optional(
+      S.Union(
+        ListResultItemProducersItemMqWorkerProducerType,
+        ListResultItemProducersItemMqR2ProducerType,
+      ),
+    ),
+    bucketName: S.optional(S.String.pipe(T.Body("bucket_name"))),
+  }),
+).annotate({
+  identifier: "ListResultItemProducersItem",
+}) as any as S.Schema<ListResultItemProducersItem>;
 
 export type ListResultItemProducersList =
   ReadonlyArray<ListResultItemProducersItem>;
@@ -3169,27 +3342,45 @@ export const SubscriptionsListResultItemSourceMqEventSourceWorkflowsWorkflow =
       "SubscriptionsListResultItemSourceMqEventSourceWorkflowsWorkflow",
   }) as any as S.Schema<SubscriptionsListResultItemSourceMqEventSourceWorkflowsWorkflow>;
 
-export type SubscriptionsListResultItemSource =
-  | SubscriptionsListResultItemSourceMqEventSourceImages
-  | SubscriptionsListResultItemSourceMqEventSourceKV
-  | SubscriptionsListResultItemSourceMqEventSourceR2
-  | SubscriptionsListResultItemSourceMqEventSourceSuperSlurper
-  | SubscriptionsListResultItemSourceMqEventSourceVectorize
-  | SubscriptionsListResultItemSourceMqEventSourceWorkersAIModel
-  | SubscriptionsListResultItemSourceMqEventSourceWorkersBuildsWorker
-  | SubscriptionsListResultItemSourceMqEventSourceWorkflowsWorkflow;
-export const SubscriptionsListResultItemSource = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["type"],
-    ["type"],
-    ["type"],
-    ["type"],
-    ["type"],
-    ["modelName", "type"],
-    ["type", "workerName"],
-    ["type", "workflowName"],
-  ]),
-);
+export interface SubscriptionsListResultItemSource {
+  /** Type of source */
+  type?:
+    | SubscriptionsListResultItemSourceMqEventSourceImagesType
+    | SubscriptionsListResultItemSourceMqEventSourceKVType
+    | SubscriptionsListResultItemSourceMqEventSourceR2Type
+    | SubscriptionsListResultItemSourceMqEventSourceSuperSlurperType
+    | SubscriptionsListResultItemSourceMqEventSourceVectorizeType
+    | SubscriptionsListResultItemSourceMqEventSourceWorkersAIModelType
+    | SubscriptionsListResultItemSourceMqEventSourceWorkersBuildsWorkerType
+    | SubscriptionsListResultItemSourceMqEventSourceWorkflowsWorkflowType;
+  /** Name of the Workers AI model */
+  modelName?: string;
+  /** Name of the worker */
+  workerName?: string;
+  /** Name of the workflow */
+  workflowName?: string;
+}
+export const SubscriptionsListResultItemSource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(
+      S.Union(
+        SubscriptionsListResultItemSourceMqEventSourceImagesType,
+        SubscriptionsListResultItemSourceMqEventSourceKVType,
+        SubscriptionsListResultItemSourceMqEventSourceR2Type,
+        SubscriptionsListResultItemSourceMqEventSourceSuperSlurperType,
+        SubscriptionsListResultItemSourceMqEventSourceVectorizeType,
+        SubscriptionsListResultItemSourceMqEventSourceWorkersAIModelType,
+        SubscriptionsListResultItemSourceMqEventSourceWorkersBuildsWorkerType,
+        SubscriptionsListResultItemSourceMqEventSourceWorkflowsWorkflowType,
+      ),
+    ),
+    modelName: S.optional(S.String.pipe(T.Body("model_name"))),
+    workerName: S.optional(S.String.pipe(T.Body("worker_name"))),
+    workflowName: S.optional(S.String.pipe(T.Body("workflow_name"))),
+  }),
+).annotate({
+  identifier: "SubscriptionsListResultItemSource",
+}) as any as S.Schema<SubscriptionsListResultItemSource>;
 
 export interface SubscriptionsListResultItem {
   /** Unique identifier for the subscription */
@@ -3396,30 +3587,45 @@ export const EditResponseConsumersItemHTTPPull = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditResponseConsumersItemHTTPPull",
 }) as any as S.Schema<EditResponseConsumersItemHTTPPull>;
 
-export type EditResponseConsumersItem =
-  | EditResponseConsumersItemWorker
-  | EditResponseConsumersItemHTTPPull;
-export const EditResponseConsumersItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    [
-      "consumerId",
-      "createdOn",
-      "deadLetterQueue",
-      "queueName",
-      "settings",
-      "type",
-      "script",
-    ],
-    [
-      "consumerId",
-      "createdOn",
-      "deadLetterQueue",
-      "queueName",
-      "settings",
-      "type",
-    ],
-  ]),
-);
+export interface EditResponseConsumersItem {
+  /** A Resource identifier. */
+  consumerId?: string;
+  createdOn?: string;
+  /** Name of the dead letter queue, or empty string if not configured */
+  deadLetterQueue?: string;
+  queueName?: string;
+  settings?:
+    | EditResponseConsumersItemWorkerSettings
+    | EditResponseConsumersItemHTTPPullSettings;
+  type?:
+    | EditResponseConsumersItemWorkerType
+    | EditResponseConsumersItemHTTPPullType;
+  /** Name of a Worker */
+  script?: string;
+}
+export const EditResponseConsumersItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    consumerId: S.optional(S.String.pipe(T.Body("consumer_id"))),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    deadLetterQueue: S.optional(S.String.pipe(T.Body("dead_letter_queue"))),
+    queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
+    settings: S.optional(
+      S.Union(
+        EditResponseConsumersItemWorkerSettings,
+        EditResponseConsumersItemHTTPPullSettings,
+      ),
+    ),
+    type: S.optional(
+      S.Union(
+        EditResponseConsumersItemWorkerType,
+        EditResponseConsumersItemHTTPPullType,
+      ),
+    ),
+    script: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EditResponseConsumersItem",
+}) as any as S.Schema<EditResponseConsumersItem>;
 
 export type EditResponseConsumersList =
   ReadonlyArray<EditResponseConsumersItem>;
@@ -3462,15 +3668,27 @@ export const EditResponseProducersItemMqR2Producer = /*@__PURE__*/ S.suspend(
   identifier: "EditResponseProducersItemMqR2Producer",
 }) as any as S.Schema<EditResponseProducersItemMqR2Producer>;
 
-export type EditResponseProducersItem =
-  | EditResponseProducersItemMqWorkerProducer
-  | EditResponseProducersItemMqR2Producer;
-export const EditResponseProducersItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["script", "type"],
-    ["bucketName", "type"],
-  ]),
-);
+export interface EditResponseProducersItem {
+  script?: string;
+  type?:
+    | EditResponseProducersItemMqWorkerProducerType
+    | EditResponseProducersItemMqR2ProducerType;
+  bucketName?: string;
+}
+export const EditResponseProducersItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    script: S.optional(S.String),
+    type: S.optional(
+      S.Union(
+        EditResponseProducersItemMqWorkerProducerType,
+        EditResponseProducersItemMqR2ProducerType,
+      ),
+    ),
+    bucketName: S.optional(S.String.pipe(T.Body("bucket_name"))),
+  }),
+).annotate({
+  identifier: "EditResponseProducersItem",
+}) as any as S.Schema<EditResponseProducersItem>;
 
 export type EditResponseProducersList =
   ReadonlyArray<EditResponseProducersItem>;
@@ -3778,27 +3996,45 @@ export const SubscriptionsUpdateResponseSourceMqEventSourceWorkflowsWorkflow =
       "SubscriptionsUpdateResponseSourceMqEventSourceWorkflowsWorkflow",
   }) as any as S.Schema<SubscriptionsUpdateResponseSourceMqEventSourceWorkflowsWorkflow>;
 
-export type SubscriptionsUpdateResponseSource =
-  | SubscriptionsUpdateResponseSourceMqEventSourceImages
-  | SubscriptionsUpdateResponseSourceMqEventSourceKV
-  | SubscriptionsUpdateResponseSourceMqEventSourceR2
-  | SubscriptionsUpdateResponseSourceMqEventSourceSuperSlurper
-  | SubscriptionsUpdateResponseSourceMqEventSourceVectorize
-  | SubscriptionsUpdateResponseSourceMqEventSourceWorkersAIModel
-  | SubscriptionsUpdateResponseSourceMqEventSourceWorkersBuildsWorker
-  | SubscriptionsUpdateResponseSourceMqEventSourceWorkflowsWorkflow;
-export const SubscriptionsUpdateResponseSource = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["type"],
-    ["type"],
-    ["type"],
-    ["type"],
-    ["type"],
-    ["modelName", "type"],
-    ["type", "workerName"],
-    ["type", "workflowName"],
-  ]),
-);
+export interface SubscriptionsUpdateResponseSource {
+  /** Type of source */
+  type?:
+    | SubscriptionsUpdateResponseSourceMqEventSourceImagesType
+    | SubscriptionsUpdateResponseSourceMqEventSourceKVType
+    | SubscriptionsUpdateResponseSourceMqEventSourceR2Type
+    | SubscriptionsUpdateResponseSourceMqEventSourceSuperSlurperType
+    | SubscriptionsUpdateResponseSourceMqEventSourceVectorizeType
+    | SubscriptionsUpdateResponseSourceMqEventSourceWorkersAIModelType
+    | SubscriptionsUpdateResponseSourceMqEventSourceWorkersBuildsWorkerType
+    | SubscriptionsUpdateResponseSourceMqEventSourceWorkflowsWorkflowType;
+  /** Name of the Workers AI model */
+  modelName?: string;
+  /** Name of the worker */
+  workerName?: string;
+  /** Name of the workflow */
+  workflowName?: string;
+}
+export const SubscriptionsUpdateResponseSource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(
+      S.Union(
+        SubscriptionsUpdateResponseSourceMqEventSourceImagesType,
+        SubscriptionsUpdateResponseSourceMqEventSourceKVType,
+        SubscriptionsUpdateResponseSourceMqEventSourceR2Type,
+        SubscriptionsUpdateResponseSourceMqEventSourceSuperSlurperType,
+        SubscriptionsUpdateResponseSourceMqEventSourceVectorizeType,
+        SubscriptionsUpdateResponseSourceMqEventSourceWorkersAIModelType,
+        SubscriptionsUpdateResponseSourceMqEventSourceWorkersBuildsWorkerType,
+        SubscriptionsUpdateResponseSourceMqEventSourceWorkflowsWorkflowType,
+      ),
+    ),
+    modelName: S.optional(S.String.pipe(T.Body("model_name"))),
+    workerName: S.optional(S.String.pipe(T.Body("worker_name"))),
+    workflowName: S.optional(S.String.pipe(T.Body("workflow_name"))),
+  }),
+).annotate({
+  identifier: "SubscriptionsUpdateResponseSource",
+}) as any as S.Schema<SubscriptionsUpdateResponseSource>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchSubscriptionResponse {
@@ -4158,30 +4394,45 @@ export const PurgeStartResponseConsumersItemHTTPPull = /*@__PURE__*/ S.suspend(
   identifier: "PurgeStartResponseConsumersItemHTTPPull",
 }) as any as S.Schema<PurgeStartResponseConsumersItemHTTPPull>;
 
-export type PurgeStartResponseConsumersItem =
-  | PurgeStartResponseConsumersItemWorker
-  | PurgeStartResponseConsumersItemHTTPPull;
-export const PurgeStartResponseConsumersItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    [
-      "consumerId",
-      "createdOn",
-      "deadLetterQueue",
-      "queueName",
-      "settings",
-      "type",
-      "script",
-    ],
-    [
-      "consumerId",
-      "createdOn",
-      "deadLetterQueue",
-      "queueName",
-      "settings",
-      "type",
-    ],
-  ]),
-);
+export interface PurgeStartResponseConsumersItem {
+  /** A Resource identifier. */
+  consumerId?: string;
+  createdOn?: string;
+  /** Name of the dead letter queue, or empty string if not configured */
+  deadLetterQueue?: string;
+  queueName?: string;
+  settings?:
+    | PurgeStartResponseConsumersItemWorkerSettings
+    | PurgeStartResponseConsumersItemHTTPPullSettings;
+  type?:
+    | PurgeStartResponseConsumersItemWorkerType
+    | PurgeStartResponseConsumersItemHTTPPullType;
+  /** Name of a Worker */
+  script?: string;
+}
+export const PurgeStartResponseConsumersItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    consumerId: S.optional(S.String.pipe(T.Body("consumer_id"))),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    deadLetterQueue: S.optional(S.String.pipe(T.Body("dead_letter_queue"))),
+    queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
+    settings: S.optional(
+      S.Union(
+        PurgeStartResponseConsumersItemWorkerSettings,
+        PurgeStartResponseConsumersItemHTTPPullSettings,
+      ),
+    ),
+    type: S.optional(
+      S.Union(
+        PurgeStartResponseConsumersItemWorkerType,
+        PurgeStartResponseConsumersItemHTTPPullType,
+      ),
+    ),
+    script: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PurgeStartResponseConsumersItem",
+}) as any as S.Schema<PurgeStartResponseConsumersItem>;
 
 export type PurgeStartResponseConsumersList =
   ReadonlyArray<PurgeStartResponseConsumersItem>;
@@ -4225,15 +4476,27 @@ export const PurgeStartResponseProducersItemMqR2Producer =
     identifier: "PurgeStartResponseProducersItemMqR2Producer",
   }) as any as S.Schema<PurgeStartResponseProducersItemMqR2Producer>;
 
-export type PurgeStartResponseProducersItem =
-  | PurgeStartResponseProducersItemMqWorkerProducer
-  | PurgeStartResponseProducersItemMqR2Producer;
-export const PurgeStartResponseProducersItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["script", "type"],
-    ["bucketName", "type"],
-  ]),
-);
+export interface PurgeStartResponseProducersItem {
+  script?: string;
+  type?:
+    | PurgeStartResponseProducersItemMqWorkerProducerType
+    | PurgeStartResponseProducersItemMqR2ProducerType;
+  bucketName?: string;
+}
+export const PurgeStartResponseProducersItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    script: S.optional(S.String),
+    type: S.optional(
+      S.Union(
+        PurgeStartResponseProducersItemMqWorkerProducerType,
+        PurgeStartResponseProducersItemMqR2ProducerType,
+      ),
+    ),
+    bucketName: S.optional(S.String.pipe(T.Body("bucket_name"))),
+  }),
+).annotate({
+  identifier: "PurgeStartResponseProducersItem",
+}) as any as S.Schema<PurgeStartResponseProducersItem>;
 
 export type PurgeStartResponseProducersList =
   ReadonlyArray<PurgeStartResponseProducersItem>;
@@ -4538,30 +4801,43 @@ export const ConsumersUpdateResultHTTPPull = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConsumersUpdateResultHTTPPull",
 }) as any as S.Schema<ConsumersUpdateResultHTTPPull>;
 
-export type ConsumersUpdateResult =
-  | ConsumersUpdateResultWorker
-  | ConsumersUpdateResultHTTPPull;
-export const ConsumersUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    [
-      "consumerId",
-      "createdOn",
-      "deadLetterQueue",
-      "queueName",
-      "settings",
-      "type",
-      "script",
-    ],
-    [
-      "consumerId",
-      "createdOn",
-      "deadLetterQueue",
-      "queueName",
-      "settings",
-      "type",
-    ],
-  ]),
-);
+export interface ConsumersUpdateResult {
+  /** A Resource identifier. */
+  consumerId?: string;
+  createdOn?: string;
+  /** Name of the dead letter queue, or empty string if not configured */
+  deadLetterQueue?: string;
+  queueName?: string;
+  settings?:
+    | ConsumersUpdateResultWorkerSettings
+    | ConsumersUpdateResultHTTPPullSettings;
+  type?: ConsumersUpdateResultWorkerType | ConsumersUpdateResultHTTPPullType;
+  /** Name of a Worker */
+  script?: string;
+}
+export const ConsumersUpdateResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    consumerId: S.optional(S.String.pipe(T.Body("consumer_id"))),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    deadLetterQueue: S.optional(S.String.pipe(T.Body("dead_letter_queue"))),
+    queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
+    settings: S.optional(
+      S.Union(
+        ConsumersUpdateResultWorkerSettings,
+        ConsumersUpdateResultHTTPPullSettings,
+      ),
+    ),
+    type: S.optional(
+      S.Union(
+        ConsumersUpdateResultWorkerType,
+        ConsumersUpdateResultHTTPPullType,
+      ),
+    ),
+    script: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConsumersUpdateResult",
+}) as any as S.Schema<ConsumersUpdateResult>;
 
 export type UpdateConsumerResponse = ConsumersUpdateResult;
 export const UpdateConsumerResponse = /*@__PURE__*/ S.suspend(() =>
@@ -4721,30 +4997,45 @@ export const UpdateResponseConsumersItemHTTPPull = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateResponseConsumersItemHTTPPull",
 }) as any as S.Schema<UpdateResponseConsumersItemHTTPPull>;
 
-export type UpdateResponseConsumersItem =
-  | UpdateResponseConsumersItemWorker
-  | UpdateResponseConsumersItemHTTPPull;
-export const UpdateResponseConsumersItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    [
-      "consumerId",
-      "createdOn",
-      "deadLetterQueue",
-      "queueName",
-      "settings",
-      "type",
-      "script",
-    ],
-    [
-      "consumerId",
-      "createdOn",
-      "deadLetterQueue",
-      "queueName",
-      "settings",
-      "type",
-    ],
-  ]),
-);
+export interface UpdateResponseConsumersItem {
+  /** A Resource identifier. */
+  consumerId?: string;
+  createdOn?: string;
+  /** Name of the dead letter queue, or empty string if not configured */
+  deadLetterQueue?: string;
+  queueName?: string;
+  settings?:
+    | UpdateResponseConsumersItemWorkerSettings
+    | UpdateResponseConsumersItemHTTPPullSettings;
+  type?:
+    | UpdateResponseConsumersItemWorkerType
+    | UpdateResponseConsumersItemHTTPPullType;
+  /** Name of a Worker */
+  script?: string;
+}
+export const UpdateResponseConsumersItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    consumerId: S.optional(S.String.pipe(T.Body("consumer_id"))),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    deadLetterQueue: S.optional(S.String.pipe(T.Body("dead_letter_queue"))),
+    queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
+    settings: S.optional(
+      S.Union(
+        UpdateResponseConsumersItemWorkerSettings,
+        UpdateResponseConsumersItemHTTPPullSettings,
+      ),
+    ),
+    type: S.optional(
+      S.Union(
+        UpdateResponseConsumersItemWorkerType,
+        UpdateResponseConsumersItemHTTPPullType,
+      ),
+    ),
+    script: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateResponseConsumersItem",
+}) as any as S.Schema<UpdateResponseConsumersItem>;
 
 export type UpdateResponseConsumersList =
   ReadonlyArray<UpdateResponseConsumersItem>;
@@ -4788,15 +5079,27 @@ export const UpdateResponseProducersItemMqR2Producer = /*@__PURE__*/ S.suspend(
   identifier: "UpdateResponseProducersItemMqR2Producer",
 }) as any as S.Schema<UpdateResponseProducersItemMqR2Producer>;
 
-export type UpdateResponseProducersItem =
-  | UpdateResponseProducersItemMqWorkerProducer
-  | UpdateResponseProducersItemMqR2Producer;
-export const UpdateResponseProducersItem = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([
-    ["script", "type"],
-    ["bucketName", "type"],
-  ]),
-);
+export interface UpdateResponseProducersItem {
+  script?: string;
+  type?:
+    | UpdateResponseProducersItemMqWorkerProducerType
+    | UpdateResponseProducersItemMqR2ProducerType;
+  bucketName?: string;
+}
+export const UpdateResponseProducersItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    script: S.optional(S.String),
+    type: S.optional(
+      S.Union(
+        UpdateResponseProducersItemMqWorkerProducerType,
+        UpdateResponseProducersItemMqR2ProducerType,
+      ),
+    ),
+    bucketName: S.optional(S.String.pipe(T.Body("bucket_name"))),
+  }),
+).annotate({
+  identifier: "UpdateResponseProducersItem",
+}) as any as S.Schema<UpdateResponseProducersItem>;
 
 export type UpdateResponseProducersList =
   ReadonlyArray<UpdateResponseProducersItem>;

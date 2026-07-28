@@ -13,58 +13,60 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
 export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "CancelOperationRequest" }) as any as S.Schema<CancelOperationRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "CancelOperationRequest",
+}) as any as S.Schema<CancelOperationRequest>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -72,20 +74,46 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+name}:cancel","baseUrl":"https://contactcenteraiplatform.googleapis.com/"})),
-).annotate({ identifier: "CancelProjectsLocationsOperationsRequest" }) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1alpha1/{+name}:cancel",
+        baseUrl: "https://contactcenteraiplatform.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CancelProjectsLocationsOperationsRequest",
+}) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
-export type InstanceConfigInstanceSizeEnum = "INSTANCE_SIZE_UNSPECIFIED" | "STANDARD_SMALL" | "STANDARD_MEDIUM" | "STANDARD_LARGE" | "STANDARD_XLARGE" | "STANDARD_2XLARGE" | "STANDARD_3XLARGE" | "MULTIREGION_SMALL" | "MULTIREGION_MEDIUM" | "MULTIREGION_LARGE" | "MULTIREGION_XLARGE" | "MULTIREGION_2XLARGE" | "MULTIREGION_3XLARGE" | "DEV_SMALL" | "SANDBOX_SMALL" | "TRIAL_SMALL" | "TIME_LIMITED_TRIAL_SMALL";
+export type InstanceConfigInstanceSizeEnum =
+  | "INSTANCE_SIZE_UNSPECIFIED"
+  | "STANDARD_SMALL"
+  | "STANDARD_MEDIUM"
+  | "STANDARD_LARGE"
+  | "STANDARD_XLARGE"
+  | "STANDARD_2XLARGE"
+  | "STANDARD_3XLARGE"
+  | "MULTIREGION_SMALL"
+  | "MULTIREGION_MEDIUM"
+  | "MULTIREGION_LARGE"
+  | "MULTIREGION_XLARGE"
+  | "MULTIREGION_2XLARGE"
+  | "MULTIREGION_3XLARGE"
+  | "DEV_SMALL"
+  | "SANDBOX_SMALL"
+  | "TRIAL_SMALL"
+  | "TIME_LIMITED_TRIAL_SMALL";
 export const InstanceConfigInstanceSizeEnum = /*@__PURE__*/ S.String;
 
 /** Message storing the instance configuration. */
@@ -94,16 +122,16 @@ export interface InstanceConfig {
   instanceSize?: InstanceConfigInstanceSizeEnum;
 }
 export const InstanceConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "instanceSize": S.optional(InstanceConfigInstanceSizeEnum),
-}),
+  S.Struct({
+    instanceSize: S.optional(InstanceConfigInstanceSizeEnum),
+  }),
 ).annotate({ identifier: "InstanceConfig" }) as any as S.Schema<InstanceConfig>;
 
 /** Instances in this Channel will receive updates after all instances in `Early` were updated + 2 days. */
 export interface Normal {}
-export const Normal = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Normal" }) as any as S.Schema<Normal>;
+export const Normal = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Normal",
+}) as any as S.Schema<Normal>;
 
 /** Message storing the URIs of the ContactCenter. */
 export interface URIs {
@@ -117,16 +145,18 @@ export interface URIs {
   chatBotUri?: string;
 }
 export const URIs = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "rootUri": S.optional(S.String),
-  "mediaUri": S.optional(S.String),
-  "virtualAgentStreamingServiceUri": S.optional(S.String),
-  "chatBotUri": S.optional(S.String),
-}),
+  S.Struct({
+    rootUri: S.optional(S.String),
+    mediaUri: S.optional(S.String),
+    virtualAgentStreamingServiceUri: S.optional(S.String),
+    chatBotUri: S.optional(S.String),
+  }),
 ).annotate({ identifier: "URIs" }) as any as S.Schema<URIs>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** Defines a logical CCAIP component that e.g. “EMAIL”, "CRM". For more information see go/ccaip-private-path-v2. Each logical component is associated with a list of service attachments. */
 export interface Component {
@@ -136,14 +166,16 @@ export interface Component {
   serviceAttachmentNames?: StringList;
 }
 export const Component = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "serviceAttachmentNames": S.optional(StringList),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    serviceAttachmentNames: S.optional(StringList),
+  }),
 ).annotate({ identifier: "Component" }) as any as S.Schema<Component>;
 
 export type ComponentList = ReadonlyArray<Component>;
-export const ComponentList = /*@__PURE__*/ S.Array(Component) as any as S.Schema<ComponentList>;
+export const ComponentList = /*@__PURE__*/ S.Array(
+  Component,
+) as any as S.Schema<ComponentList>;
 
 /** Private service connect settings. */
 export interface PscSetting {
@@ -153,10 +185,10 @@ export interface PscSetting {
   producerProjectIds?: StringList;
 }
 export const PscSetting = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "allowedConsumerProjectIds": S.optional(StringList),
-  "producerProjectIds": S.optional(StringList),
-}),
+  S.Struct({
+    allowedConsumerProjectIds: S.optional(StringList),
+    producerProjectIds: S.optional(StringList),
+  }),
 ).annotate({ identifier: "PscSetting" }) as any as S.Schema<PscSetting>;
 
 /** Defines ingress and egress private traffic settings for CCAIP instances. */
@@ -169,11 +201,11 @@ export interface PrivateAccess {
   pscSetting?: PscSetting;
 }
 export const PrivateAccess = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "ingressSettings": S.optional(ComponentList),
-  "egressSettings": S.optional(ComponentList),
-  "pscSetting": S.optional(PscSetting),
-}),
+  S.Struct({
+    ingressSettings: S.optional(ComponentList),
+    egressSettings: S.optional(ComponentList),
+    pscSetting: S.optional(PscSetting),
+  }),
 ).annotate({ identifier: "PrivateAccess" }) as any as S.Schema<PrivateAccess>;
 
 export interface FeatureConfig {
@@ -181,9 +213,9 @@ export interface FeatureConfig {
   agentDesktopEnabled?: boolean;
 }
 export const FeatureConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "agentDesktopEnabled": S.optional(S.Boolean),
-}),
+  S.Struct({
+    agentDesktopEnabled: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "FeatureConfig" }) as any as S.Schema<FeatureConfig>;
 
 /** Message storing info about the first admin user. Next ID: 3 */
@@ -194,17 +226,28 @@ export interface AdminUser {
   familyName?: string;
 }
 export const AdminUser = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "givenName": S.optional(S.String),
-  "familyName": S.optional(S.String),
-}),
+  S.Struct({
+    givenName: S.optional(S.String),
+    familyName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "AdminUser" }) as any as S.Schema<AdminUser>;
 
-export type WeeklyScheduleDaysItemEnum = "DAY_OF_WEEK_UNSPECIFIED" | "MONDAY" | "TUESDAY" | "WEDNESDAY" | "THURSDAY" | "FRIDAY" | "SATURDAY" | "SUNDAY";
+export type WeeklyScheduleDaysItemEnum =
+  | "DAY_OF_WEEK_UNSPECIFIED"
+  | "MONDAY"
+  | "TUESDAY"
+  | "WEDNESDAY"
+  | "THURSDAY"
+  | "FRIDAY"
+  | "SATURDAY"
+  | "SUNDAY";
 export const WeeklyScheduleDaysItemEnum = /*@__PURE__*/ S.String;
 
-export type WeeklyScheduleDaysItemEnumList = ReadonlyArray<WeeklyScheduleDaysItemEnum>;
-export const WeeklyScheduleDaysItemEnumList = /*@__PURE__*/ S.Array(WeeklyScheduleDaysItemEnum) as any as S.Schema<WeeklyScheduleDaysItemEnumList>;
+export type WeeklyScheduleDaysItemEnumList =
+  ReadonlyArray<WeeklyScheduleDaysItemEnum>;
+export const WeeklyScheduleDaysItemEnumList = /*@__PURE__*/ S.Array(
+  WeeklyScheduleDaysItemEnum,
+) as any as S.Schema<WeeklyScheduleDaysItemEnumList>;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
 export interface TimeOfDay {
@@ -218,12 +261,12 @@ export interface TimeOfDay {
   minutes?: number;
 }
 export const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nanos": S.optional(S.Number),
-  "hours": S.optional(S.Number),
-  "seconds": S.optional(S.Number),
-  "minutes": S.optional(S.Number),
-}),
+  S.Struct({
+    nanos: S.optional(S.Number),
+    hours: S.optional(S.Number),
+    seconds: S.optional(S.Number),
+    minutes: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "TimeOfDay" }) as any as S.Schema<TimeOfDay>;
 
 /** Message representing a weekly schedule. */
@@ -238,16 +281,18 @@ export interface WeeklySchedule {
   duration?: string;
 }
 export const WeeklySchedule = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "days": S.optional(WeeklyScheduleDaysItemEnumList),
-  "endTime": S.optional(TimeOfDay),
-  "startTime": S.optional(TimeOfDay),
-  "duration": S.optional(S.String),
-}),
+  S.Struct({
+    days: S.optional(WeeklyScheduleDaysItemEnumList),
+    endTime: S.optional(TimeOfDay),
+    startTime: S.optional(TimeOfDay),
+    duration: S.optional(S.String),
+  }),
 ).annotate({ identifier: "WeeklySchedule" }) as any as S.Schema<WeeklySchedule>;
 
 export type WeeklyScheduleList = ReadonlyArray<WeeklySchedule>;
-export const WeeklyScheduleList = /*@__PURE__*/ S.Array(WeeklySchedule) as any as S.Schema<WeeklyScheduleList>;
+export const WeeklyScheduleList = /*@__PURE__*/ S.Array(
+  WeeklySchedule,
+) as any as S.Schema<WeeklyScheduleList>;
 
 /** Instances in this Channel will receive updates after all instances in `Normal` were updated. They also will only be updated outside of their peak hours. */
 export interface Critical {
@@ -255,28 +300,72 @@ export interface Critical {
   peakHours?: WeeklyScheduleList;
 }
 export const Critical = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "peakHours": S.optional(WeeklyScheduleList),
-}),
+  S.Struct({
+    peakHours: S.optional(WeeklyScheduleList),
+  }),
 ).annotate({ identifier: "Critical" }) as any as S.Schema<Critical>;
 
 /** LINT.IfChange First Channel to receive the updates. Meant to dev/test instances */
 export interface Early {}
-export const Early = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Early" }) as any as S.Schema<Early>;
+export const Early = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Early",
+}) as any as S.Schema<Early>;
 
-export type ContactCenterStateEnum = "STATE_UNSPECIFIED" | "STATE_DEPLOYING" | "STATE_DEPLOYED" | "STATE_TERMINATING" | "STATE_FAILED" | "STATE_TERMINATING_FAILED" | "STATE_TERMINATED" | "STATE_IN_GRACE_PERIOD" | "STATE_FAILING_OVER" | "STATE_DEGRADED" | "STATE_REPAIRING" | "STATE_EXPIRING";
+export type ContactCenterStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "STATE_DEPLOYING"
+  | "STATE_DEPLOYED"
+  | "STATE_TERMINATING"
+  | "STATE_FAILED"
+  | "STATE_TERMINATING_FAILED"
+  | "STATE_TERMINATED"
+  | "STATE_IN_GRACE_PERIOD"
+  | "STATE_FAILING_OVER"
+  | "STATE_DEGRADED"
+  | "STATE_REPAIRING"
+  | "STATE_EXPIRING";
 export const ContactCenterStateEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
-export type SAMLParamsAuthenticationContextsItemEnum = "AUTHENTICATION_CONTEXT_UNSPECIFIED" | "INTERNET_PROTOCOL" | "INTERNET_PROTOCOL_PASSWORD" | "KERBEROS" | "MOBILE_ONE_FACTOR_UNREGISTERED" | "MOBILE_TWO_FACTOR_UNREGISTERED" | "MOBILE_ONE_FACTOR_CONTRACT" | "MOBILE_TWO_FACTOR_CONTRACT" | "PASSWORD" | "PASSWORD_PROTECTED_TRANSPORT" | "PREVIOUS_SESSION" | "PUBLIC_KEY_X509" | "PUBLIC_KEY_PGP" | "PUBLIC_KEY_SPKI" | "PUBLIC_KEY_XML_DIGITAL_SIGNATURE" | "SMARTCARD" | "SMARTCARD_PKI" | "SOFTWARE_PKI" | "TELEPHONY" | "TELEPHONY_NOMADIC" | "TELEPHONY_PERSONALIZED" | "TELEPHONY_AUTHENTICATED" | "SECURE_REMOTE_PASSWORD" | "SSL_TLS_CERTIFICATE_BASED" | "TIME_SYNC_TOKEN";
+export type SAMLParamsAuthenticationContextsItemEnum =
+  | "AUTHENTICATION_CONTEXT_UNSPECIFIED"
+  | "INTERNET_PROTOCOL"
+  | "INTERNET_PROTOCOL_PASSWORD"
+  | "KERBEROS"
+  | "MOBILE_ONE_FACTOR_UNREGISTERED"
+  | "MOBILE_TWO_FACTOR_UNREGISTERED"
+  | "MOBILE_ONE_FACTOR_CONTRACT"
+  | "MOBILE_TWO_FACTOR_CONTRACT"
+  | "PASSWORD"
+  | "PASSWORD_PROTECTED_TRANSPORT"
+  | "PREVIOUS_SESSION"
+  | "PUBLIC_KEY_X509"
+  | "PUBLIC_KEY_PGP"
+  | "PUBLIC_KEY_SPKI"
+  | "PUBLIC_KEY_XML_DIGITAL_SIGNATURE"
+  | "SMARTCARD"
+  | "SMARTCARD_PKI"
+  | "SOFTWARE_PKI"
+  | "TELEPHONY"
+  | "TELEPHONY_NOMADIC"
+  | "TELEPHONY_PERSONALIZED"
+  | "TELEPHONY_AUTHENTICATED"
+  | "SECURE_REMOTE_PASSWORD"
+  | "SSL_TLS_CERTIFICATE_BASED"
+  | "TIME_SYNC_TOKEN";
 export const SAMLParamsAuthenticationContextsItemEnum = /*@__PURE__*/ S.String;
 
-export type SAMLParamsAuthenticationContextsItemEnumList = ReadonlyArray<SAMLParamsAuthenticationContextsItemEnum>;
-export const SAMLParamsAuthenticationContextsItemEnumList = /*@__PURE__*/ S.Array(SAMLParamsAuthenticationContextsItemEnum) as any as S.Schema<SAMLParamsAuthenticationContextsItemEnumList>;
+export type SAMLParamsAuthenticationContextsItemEnumList =
+  ReadonlyArray<SAMLParamsAuthenticationContextsItemEnum>;
+export const SAMLParamsAuthenticationContextsItemEnumList =
+  /*@__PURE__*/ S.Array(
+    SAMLParamsAuthenticationContextsItemEnum,
+  ) as any as S.Schema<SAMLParamsAuthenticationContextsItemEnumList>;
 
 /** Message storing SAML params to enable Google as IDP. */
 export interface SAMLParams {
@@ -294,14 +383,16 @@ export interface SAMLParams {
   userEmail?: string;
 }
 export const SAMLParams = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "entityId": S.optional(S.String),
-  "certificate": S.optional(S.String),
-  "ssoUri": S.optional(S.String),
-  "emailMapping": S.optional(S.String),
-  "authenticationContexts": S.optional(SAMLParamsAuthenticationContextsItemEnumList),
-  "userEmail": S.optional(S.String),
-}),
+  S.Struct({
+    entityId: S.optional(S.String),
+    certificate: S.optional(S.String),
+    ssoUri: S.optional(S.String),
+    emailMapping: S.optional(S.String),
+    authenticationContexts: S.optional(
+      SAMLParamsAuthenticationContextsItemEnumList,
+    ),
+    userEmail: S.optional(S.String),
+  }),
 ).annotate({ identifier: "SAMLParams" }) as any as S.Schema<SAMLParams>;
 
 /** Message describing ContactCenter object */
@@ -358,33 +449,33 @@ export interface ContactCenter {
   advancedReportingEnabled?: boolean;
 }
 export const ContactCenter = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "instanceConfig": S.optional(InstanceConfig),
-  "releaseVersion": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "deleteTime": S.optional(S.String),
-  "normal": S.optional(Normal),
-  "uris": S.optional(URIs),
-  "privateComponents": S.optional(StringList),
-  "privateAccess": S.optional(PrivateAccess),
-  "expireTime": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "featureConfig": S.optional(FeatureConfig),
-  "purgeTime": S.optional(S.String),
-  "ccaipManagedUsers": S.optional(S.Boolean),
-  "adminUser": S.optional(AdminUser),
-  "critical": S.optional(Critical),
-  "customerDomainPrefix": S.optional(S.String),
-  "early": S.optional(Early),
-  "state": S.optional(ContactCenterStateEnum),
-  "labels": S.optional(StringMap),
-  "userEmail": S.optional(S.String),
-  "name": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "samlParams": S.optional(SAMLParams),
-  "kmsKey": S.optional(S.String),
-  "advancedReportingEnabled": S.optional(S.Boolean),
-}),
+  S.Struct({
+    instanceConfig: S.optional(InstanceConfig),
+    releaseVersion: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    deleteTime: S.optional(S.String),
+    normal: S.optional(Normal),
+    uris: S.optional(URIs),
+    privateComponents: S.optional(StringList),
+    privateAccess: S.optional(PrivateAccess),
+    expireTime: S.optional(S.String),
+    displayName: S.optional(S.String),
+    featureConfig: S.optional(FeatureConfig),
+    purgeTime: S.optional(S.String),
+    ccaipManagedUsers: S.optional(S.Boolean),
+    adminUser: S.optional(AdminUser),
+    critical: S.optional(Critical),
+    customerDomainPrefix: S.optional(S.String),
+    early: S.optional(Early),
+    state: S.optional(ContactCenterStateEnum),
+    labels: S.optional(StringMap),
+    userEmail: S.optional(S.String),
+    name: S.optional(S.String),
+    createTime: S.optional(S.String),
+    samlParams: S.optional(SAMLParams),
+    kmsKey: S.optional(S.String),
+    advancedReportingEnabled: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "ContactCenter" }) as any as S.Schema<ContactCenter>;
 
 export interface CreateProjectsLocationsContactCentersRequest {
@@ -397,20 +488,34 @@ export interface CreateProjectsLocationsContactCentersRequest {
   /** Request body */
   body?: ContactCenter;
 }
-export const CreateProjectsLocationsContactCentersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "contactCenterId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(ContactCenter.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+parent}/contactCenters","baseUrl":"https://contactcenteraiplatform.googleapis.com/"})),
-).annotate({ identifier: "CreateProjectsLocationsContactCentersRequest" }) as any as S.Schema<CreateProjectsLocationsContactCentersRequest>;
+export const CreateProjectsLocationsContactCentersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      contactCenterId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(ContactCenter.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1alpha1/{+parent}/contactCenters",
+        baseUrl: "https://contactcenteraiplatform.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateProjectsLocationsContactCentersRequest",
+  }) as any as S.Schema<CreateProjectsLocationsContactCentersRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -422,11 +527,11 @@ export interface Status {
   code?: number;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "details": S.optional(DocumentMapList),
-  "message": S.optional(S.String),
-  "code": S.optional(S.Number),
-}),
+  S.Struct({
+    details: S.optional(DocumentMapList),
+    message: S.optional(S.String),
+    code: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
@@ -443,13 +548,13 @@ export interface Operation {
   error?: Status;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "done": S.optional(S.Boolean),
-  "response": S.optional(DocumentMap),
-  "name": S.optional(S.String),
-  "metadata": S.optional(DocumentMap),
-  "error": S.optional(Status),
-}),
+  S.Struct({
+    done: S.optional(S.Boolean),
+    response: S.optional(DocumentMap),
+    name: S.optional(S.String),
+    metadata: S.optional(DocumentMap),
+    error: S.optional(Status),
+  }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 export interface DeleteProjectsLocationsContactCentersRequest {
@@ -458,24 +563,46 @@ export interface DeleteProjectsLocationsContactCentersRequest {
   /** Required. Name of the resource */
   name: string;
 }
-export const DeleteProjectsLocationsContactCentersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1alpha1/{+name}","baseUrl":"https://contactcenteraiplatform.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsContactCentersRequest" }) as any as S.Schema<DeleteProjectsLocationsContactCentersRequest>;
+export const DeleteProjectsLocationsContactCentersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      requestId: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1alpha1/{+name}",
+        baseUrl: "https://contactcenteraiplatform.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteProjectsLocationsContactCentersRequest",
+  }) as any as S.Schema<DeleteProjectsLocationsContactCentersRequest>;
 
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1alpha1/{+name}","baseUrl":"https://contactcenteraiplatform.googleapis.com/"})),
-).annotate({ identifier: "DeleteProjectsLocationsOperationsRequest" }) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1alpha1/{+name}",
+        baseUrl: "https://contactcenteraiplatform.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsLocationsOperationsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
 
-export type SolverConfigScheduleTypeEnum = "SCHEDULE_TYPE_UNSPECIFIED" | "SINGLE_SHIFT" | "WEEKLY_WITH_FIXED_EVENTS" | "WEEKLY_WITH_VARIABLE_EVENTS";
+export type SolverConfigScheduleTypeEnum =
+  | "SCHEDULE_TYPE_UNSPECIFIED"
+  | "SINGLE_SHIFT"
+  | "WEEKLY_WITH_FIXED_EVENTS"
+  | "WEEKLY_WITH_VARIABLE_EVENTS";
 export const SolverConfigScheduleTypeEnum = /*@__PURE__*/ S.String;
 
 /** Specifies additional parameters for the solver generating shifts. */
@@ -486,10 +613,10 @@ export interface SolverConfig {
   scheduleType?: SolverConfigScheduleTypeEnum | (string & {});
 }
 export const SolverConfig = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "maximumProcessingDuration": S.optional(S.String),
-  "scheduleType": S.optional(SolverConfigScheduleTypeEnum),
-}),
+  S.Struct({
+    maximumProcessingDuration: S.optional(S.String),
+    scheduleType: S.optional(SolverConfigScheduleTypeEnum),
+  }),
 ).annotate({ identifier: "SolverConfig" }) as any as S.Schema<SolverConfig>;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
@@ -502,15 +629,20 @@ export interface Contactcenteraiplatform_Date {
   month?: number;
 }
 export const Contactcenteraiplatform_Date = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "day": S.optional(S.Number),
-  "year": S.optional(S.Number),
-  "month": S.optional(S.Number),
-}),
-).annotate({ identifier: "Contactcenteraiplatform_Date" }) as any as S.Schema<Contactcenteraiplatform_Date>;
+  S.Struct({
+    day: S.optional(S.Number),
+    year: S.optional(S.Number),
+    month: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "Contactcenteraiplatform_Date",
+}) as any as S.Schema<Contactcenteraiplatform_Date>;
 
-export type Contactcenteraiplatform_DateList = ReadonlyArray<Contactcenteraiplatform_Date>;
-export const Contactcenteraiplatform_DateList = /*@__PURE__*/ S.Array(Contactcenteraiplatform_Date) as any as S.Schema<Contactcenteraiplatform_DateList>;
+export type Contactcenteraiplatform_DateList =
+  ReadonlyArray<Contactcenteraiplatform_Date>;
+export const Contactcenteraiplatform_DateList = /*@__PURE__*/ S.Array(
+  Contactcenteraiplatform_Date,
+) as any as S.Schema<Contactcenteraiplatform_DateList>;
 
 /** List of dates. */
 export interface DateList {
@@ -518,9 +650,9 @@ export interface DateList {
   values?: Contactcenteraiplatform_DateList;
 }
 export const DateList = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "values": S.optional(Contactcenteraiplatform_DateList),
-}),
+  S.Struct({
+    values: S.optional(Contactcenteraiplatform_DateList),
+  }),
 ).annotate({ identifier: "DateList" }) as any as S.Schema<DateList>;
 
 /** Template specifying rules for generating a single event that occurs during a shift. An event may represent a meeting, break, lunch, etc. */
@@ -537,17 +669,19 @@ export interface EventTemplate {
   id?: string;
 }
 export const EventTemplate = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "durationMinutes": S.optional(S.Number),
-  "minimumMinutesAfterShiftStart": S.optional(S.Number),
-  "startTimeIncrementMinutes": S.optional(S.Number),
-  "maximumMinutesAfterShiftStart": S.optional(S.Number),
-  "id": S.optional(S.String),
-}),
+  S.Struct({
+    durationMinutes: S.optional(S.Number),
+    minimumMinutesAfterShiftStart: S.optional(S.Number),
+    startTimeIncrementMinutes: S.optional(S.Number),
+    maximumMinutesAfterShiftStart: S.optional(S.Number),
+    id: S.optional(S.String),
+  }),
 ).annotate({ identifier: "EventTemplate" }) as any as S.Schema<EventTemplate>;
 
 export type EventTemplateList = ReadonlyArray<EventTemplate>;
-export const EventTemplateList = /*@__PURE__*/ S.Array(EventTemplate) as any as S.Schema<EventTemplateList>;
+export const EventTemplateList = /*@__PURE__*/ S.Array(
+  EventTemplate,
+) as any as S.Schema<EventTemplateList>;
 
 /** Template specifying rules for generating shifts. A shift is a unit of work that specifies a start time, end time, and may contain events (e.g. lunch, breaks etc.). Shifts will be assigned to specific dates in the response. */
 export interface ShiftTemplate {
@@ -577,24 +711,26 @@ export interface ShiftTemplate {
   latestStartTime?: TimeOfDay;
 }
 export const ShiftTemplate = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "startTimeIncrementMinutes": S.optional(S.Number),
-  "durationMinutes": S.optional(S.Number),
-  "daysOffCountPerWeek": S.optional(S.Number),
-  "earliestStartTime": S.optional(TimeOfDay),
-  "id": S.optional(S.String),
-  "maximumEmployeeCount": S.optional(S.Number),
-  "daysOffDates": S.optional(DateList),
-  "assignableEmployeeIds": S.optional(StringList),
-  "eventTemplates": S.optional(EventTemplateList),
-  "minimumIntereventGapMinutes": S.optional(S.Number),
-  "minimumEmployeeCount": S.optional(S.Number),
-  "latestStartTime": S.optional(TimeOfDay),
-}),
+  S.Struct({
+    startTimeIncrementMinutes: S.optional(S.Number),
+    durationMinutes: S.optional(S.Number),
+    daysOffCountPerWeek: S.optional(S.Number),
+    earliestStartTime: S.optional(TimeOfDay),
+    id: S.optional(S.String),
+    maximumEmployeeCount: S.optional(S.Number),
+    daysOffDates: S.optional(DateList),
+    assignableEmployeeIds: S.optional(StringList),
+    eventTemplates: S.optional(EventTemplateList),
+    minimumIntereventGapMinutes: S.optional(S.Number),
+    minimumEmployeeCount: S.optional(S.Number),
+    latestStartTime: S.optional(TimeOfDay),
+  }),
 ).annotate({ identifier: "ShiftTemplate" }) as any as S.Schema<ShiftTemplate>;
 
 export type ShiftTemplateList = ReadonlyArray<ShiftTemplate>;
-export const ShiftTemplateList = /*@__PURE__*/ S.Array(ShiftTemplate) as any as S.Schema<ShiftTemplateList>;
+export const ShiftTemplateList = /*@__PURE__*/ S.Array(
+  ShiftTemplate,
+) as any as S.Schema<ShiftTemplateList>;
 
 /** Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones). */
 export interface TimeZone {
@@ -604,10 +740,10 @@ export interface TimeZone {
   id?: string;
 }
 export const TimeZone = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "version": S.optional(S.String),
-  "id": S.optional(S.String),
-}),
+  S.Struct({
+    version: S.optional(S.String),
+    id: S.optional(S.String),
+  }),
 ).annotate({ identifier: "TimeZone" }) as any as S.Schema<TimeZone>;
 
 /** Represents civil time (or occasionally physical time). This type can represent a civil time in one of a few possible ways: * When utc_offset is set and time_zone is unset: a civil time on a calendar day with a particular offset from UTC. * When time_zone is set and utc_offset is unset: a civil time on a calendar day in a particular time zone. * When neither time_zone nor utc_offset is set: a civil time on a calendar day in local time. The date is relative to the Proleptic Gregorian Calendar. If year, month, or day are 0, the DateTime is considered not to have a specific year, month, or day respectively. This type may also be used to represent a physical time if all the date and time fields are set and either case of the `time_offset` oneof is set. Consider using `Timestamp` message for physical time instead. If your use case also would like to store the user's timezone, that can be done in another field. This type is more flexible than some applications may want. Make sure to document and validate your application's limitations. */
@@ -632,17 +768,17 @@ export interface DateTime {
   utcOffset?: string;
 }
 export const DateTime = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "timeZone": S.optional(TimeZone),
-  "minutes": S.optional(S.Number),
-  "month": S.optional(S.Number),
-  "nanos": S.optional(S.Number),
-  "year": S.optional(S.Number),
-  "day": S.optional(S.Number),
-  "seconds": S.optional(S.Number),
-  "hours": S.optional(S.Number),
-  "utcOffset": S.optional(S.String),
-}),
+  S.Struct({
+    timeZone: S.optional(TimeZone),
+    minutes: S.optional(S.Number),
+    month: S.optional(S.Number),
+    nanos: S.optional(S.Number),
+    year: S.optional(S.Number),
+    day: S.optional(S.Number),
+    seconds: S.optional(S.Number),
+    hours: S.optional(S.Number),
+    utcOffset: S.optional(S.String),
+  }),
 ).annotate({ identifier: "DateTime" }) as any as S.Schema<DateTime>;
 
 /** Specifies the number of employees required to cover the demand in the given time interval. The length of the interval must be strictly positive. */
@@ -655,15 +791,19 @@ export interface WorkforceDemand {
   startTime?: DateTime;
 }
 export const WorkforceDemand = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "endTime": S.optional(DateTime),
-  "employeeCount": S.optional(S.Number),
-  "startTime": S.optional(DateTime),
-}),
-).annotate({ identifier: "WorkforceDemand" }) as any as S.Schema<WorkforceDemand>;
+  S.Struct({
+    endTime: S.optional(DateTime),
+    employeeCount: S.optional(S.Number),
+    startTime: S.optional(DateTime),
+  }),
+).annotate({
+  identifier: "WorkforceDemand",
+}) as any as S.Schema<WorkforceDemand>;
 
 export type WorkforceDemandList_ = ReadonlyArray<WorkforceDemand>;
-export const WorkforceDemandList_ = /*@__PURE__*/ S.Array(WorkforceDemand) as any as S.Schema<WorkforceDemandList_>;
+export const WorkforceDemandList_ = /*@__PURE__*/ S.Array(
+  WorkforceDemand,
+) as any as S.Schema<WorkforceDemandList_>;
 
 /** List of workforce demands. */
 export interface WorkforceDemandList {
@@ -671,10 +811,12 @@ export interface WorkforceDemandList {
   values?: WorkforceDemandList_;
 }
 export const WorkforceDemandList = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "values": S.optional(WorkforceDemandList_),
-}),
-).annotate({ identifier: "WorkforceDemandList" }) as any as S.Schema<WorkforceDemandList>;
+  S.Struct({
+    values: S.optional(WorkforceDemandList_),
+  }),
+).annotate({
+  identifier: "WorkforceDemandList",
+}) as any as S.Schema<WorkforceDemandList>;
 
 /** Specifies a time interval during which the overlap with events (generated from event templates) should be minimal. */
 export interface UnwantedEventInterval {
@@ -684,14 +826,18 @@ export interface UnwantedEventInterval {
   durationMinutes?: number;
 }
 export const UnwantedEventInterval = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "startTime": S.optional(DateTime),
-  "durationMinutes": S.optional(S.Number),
-}),
-).annotate({ identifier: "UnwantedEventInterval" }) as any as S.Schema<UnwantedEventInterval>;
+  S.Struct({
+    startTime: S.optional(DateTime),
+    durationMinutes: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "UnwantedEventInterval",
+}) as any as S.Schema<UnwantedEventInterval>;
 
 export type UnwantedEventIntervalList = ReadonlyArray<UnwantedEventInterval>;
-export const UnwantedEventIntervalList = /*@__PURE__*/ S.Array(UnwantedEventInterval) as any as S.Schema<UnwantedEventIntervalList>;
+export const UnwantedEventIntervalList = /*@__PURE__*/ S.Array(
+  UnwantedEventInterval,
+) as any as S.Schema<UnwantedEventIntervalList>;
 
 /** Information about a particular employee for planning purposes. */
 export interface EmployeeInfo {
@@ -701,14 +847,16 @@ export interface EmployeeInfo {
   unwantedEventIntervals?: UnwantedEventIntervalList;
 }
 export const EmployeeInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.optional(S.String),
-  "unwantedEventIntervals": S.optional(UnwantedEventIntervalList),
-}),
+  S.Struct({
+    id: S.optional(S.String),
+    unwantedEventIntervals: S.optional(UnwantedEventIntervalList),
+  }),
 ).annotate({ identifier: "EmployeeInfo" }) as any as S.Schema<EmployeeInfo>;
 
 export type EmployeeInfoList = ReadonlyArray<EmployeeInfo>;
-export const EmployeeInfoList = /*@__PURE__*/ S.Array(EmployeeInfo) as any as S.Schema<EmployeeInfoList>;
+export const EmployeeInfoList = /*@__PURE__*/ S.Array(
+  EmployeeInfo,
+) as any as S.Schema<EmployeeInfoList>;
 
 /** Specifies the time interval during which the solver should generate shifts. The start time must be before the end time. */
 export interface PlanningHorizon {
@@ -718,11 +866,13 @@ export interface PlanningHorizon {
   endTime?: DateTime;
 }
 export const PlanningHorizon = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "startTime": S.optional(DateTime),
-  "endTime": S.optional(DateTime),
-}),
-).annotate({ identifier: "PlanningHorizon" }) as any as S.Schema<PlanningHorizon>;
+  S.Struct({
+    startTime: S.optional(DateTime),
+    endTime: S.optional(DateTime),
+  }),
+).annotate({
+  identifier: "PlanningHorizon",
+}) as any as S.Schema<PlanningHorizon>;
 
 /** Request with constraints for generating shifts. The shifts generated must adhere to these constraints. */
 export interface GenerateShiftsRequest {
@@ -738,14 +888,16 @@ export interface GenerateShiftsRequest {
   planningHorizon?: PlanningHorizon;
 }
 export const GenerateShiftsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "solverConfig": S.optional(SolverConfig),
-  "shiftTemplates": S.optional(ShiftTemplateList),
-  "workforceDemands": S.optional(WorkforceDemandList),
-  "employeeInfo": S.optional(EmployeeInfoList),
-  "planningHorizon": S.optional(PlanningHorizon),
-}),
-).annotate({ identifier: "GenerateShiftsRequest" }) as any as S.Schema<GenerateShiftsRequest>;
+  S.Struct({
+    solverConfig: S.optional(SolverConfig),
+    shiftTemplates: S.optional(ShiftTemplateList),
+    workforceDemands: S.optional(WorkforceDemandList),
+    employeeInfo: S.optional(EmployeeInfoList),
+    planningHorizon: S.optional(PlanningHorizon),
+  }),
+).annotate({
+  identifier: "GenerateShiftsRequest",
+}) as any as S.Schema<GenerateShiftsRequest>;
 
 export interface GenerateShiftsProjectsLocationsRequest {
   /** Required. Name of the parent resource associated with the request. Format: projects/{project}/locations/{location} */
@@ -753,22 +905,39 @@ export interface GenerateShiftsProjectsLocationsRequest {
   /** Request body */
   body?: GenerateShiftsRequest;
 }
-export const GenerateShiftsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(GenerateShiftsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1alpha1/{+parent}:generateShifts","baseUrl":"https://contactcenteraiplatform.googleapis.com/"})),
-).annotate({ identifier: "GenerateShiftsProjectsLocationsRequest" }) as any as S.Schema<GenerateShiftsProjectsLocationsRequest>;
+export const GenerateShiftsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(GenerateShiftsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1alpha1/{+parent}:generateShifts",
+        baseUrl: "https://contactcenteraiplatform.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GenerateShiftsProjectsLocationsRequest",
+}) as any as S.Schema<GenerateShiftsProjectsLocationsRequest>;
 
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
 export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+name}","baseUrl":"https://contactcenteraiplatform.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsRequest" }) as any as S.Schema<GetProjectsLocationsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha1/{+name}",
+      baseUrl: "https://contactcenteraiplatform.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsRequest",
+}) as any as S.Schema<GetProjectsLocationsRequest>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -784,34 +953,52 @@ export interface Location {
   locationId?: string;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "displayName": S.optional(S.String),
-  "metadata": S.optional(DocumentMap),
-  "labels": S.optional(StringMap),
-  "locationId": S.optional(S.String),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    displayName: S.optional(S.String),
+    metadata: S.optional(DocumentMap),
+    labels: S.optional(StringMap),
+    locationId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export interface GetProjectsLocationsContactCentersRequest {
   /** Required. Name of the resource */
   name: string;
 }
-export const GetProjectsLocationsContactCentersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+name}","baseUrl":"https://contactcenteraiplatform.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsContactCentersRequest" }) as any as S.Schema<GetProjectsLocationsContactCentersRequest>;
+export const GetProjectsLocationsContactCentersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha1/{+name}",
+        baseUrl: "https://contactcenteraiplatform.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetProjectsLocationsContactCentersRequest",
+  }) as any as S.Schema<GetProjectsLocationsContactCentersRequest>;
 
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+name}","baseUrl":"https://contactcenteraiplatform.googleapis.com/"})),
-).annotate({ identifier: "GetProjectsLocationsOperationsRequest" }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha1/{+name}",
+        baseUrl: "https://contactcenteraiplatform.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsOperationsRequest",
+}) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export interface ListProjectsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
@@ -826,17 +1013,27 @@ export interface ListProjectsLocationsRequest {
   pageSize?: number;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "extraLocationTypes": S.optional(StringList.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+name}/locations","baseUrl":"https://contactcenteraiplatform.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsRequest" }) as any as S.Schema<ListProjectsLocationsRequest>;
+  S.Struct({
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha1/{+name}/locations",
+      baseUrl: "https://contactcenteraiplatform.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsRequest",
+}) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = ReadonlyArray<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ S.Array(
+  Location,
+) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -846,11 +1043,13 @@ export interface ListLocationsResponse {
   locations?: LocationList;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "locations": S.optional(LocationList),
-}),
-).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    locations: S.optional(LocationList),
+  }),
+).annotate({
+  identifier: "ListLocationsResponse",
+}) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsLocationsContactCentersRequest {
   /** Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
@@ -864,18 +1063,29 @@ export interface ListProjectsLocationsContactCentersRequest {
   /** Filtering results */
   filter?: string;
 }
-export const ListProjectsLocationsContactCentersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "parent": S.String.pipe(T.Label()),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+parent}/contactCenters","baseUrl":"https://contactcenteraiplatform.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsContactCentersRequest" }) as any as S.Schema<ListProjectsLocationsContactCentersRequest>;
+export const ListProjectsLocationsContactCentersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha1/{+parent}/contactCenters",
+        baseUrl: "https://contactcenteraiplatform.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProjectsLocationsContactCentersRequest",
+  }) as any as S.Schema<ListProjectsLocationsContactCentersRequest>;
 
 export type ContactCenterList = ReadonlyArray<ContactCenter>;
-export const ContactCenterList = /*@__PURE__*/ S.Array(ContactCenter) as any as S.Schema<ContactCenterList>;
+export const ContactCenterList = /*@__PURE__*/ S.Array(
+  ContactCenter,
+) as any as S.Schema<ContactCenterList>;
 
 /** Message for response to listing ContactCenters */
 export interface ListContactCentersResponse {
@@ -887,12 +1097,14 @@ export interface ListContactCentersResponse {
   unreachable?: StringList;
 }
 export const ListContactCentersResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "contactCenters": S.optional(ContactCenterList),
-  "unreachable": S.optional(StringList),
-}),
-).annotate({ identifier: "ListContactCentersResponse" }) as any as S.Schema<ListContactCentersResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    contactCenters: S.optional(ContactCenterList),
+    unreachable: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ListContactCentersResponse",
+}) as any as S.Schema<ListContactCentersResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page size. */
@@ -906,18 +1118,29 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "returnPartialSuccess": S.optional(S.Boolean.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+name}/operations","baseUrl":"https://contactcenteraiplatform.googleapis.com/"})),
-).annotate({ identifier: "ListProjectsLocationsOperationsRequest" }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      filter: S.optional(S.String.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha1/{+name}/operations",
+        baseUrl: "https://contactcenteraiplatform.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListProjectsLocationsOperationsRequest",
+}) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = ReadonlyArray<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+export const OperationList = /*@__PURE__*/ S.Array(
+  Operation,
+) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -929,12 +1152,14 @@ export interface ListOperationsResponse {
   operations?: OperationList;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "unreachable": S.optional(StringList),
-  "nextPageToken": S.optional(S.String),
-  "operations": S.optional(OperationList),
-}),
-).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
+  S.Struct({
+    unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+    operations: S.optional(OperationList),
+  }),
+).annotate({
+  identifier: "ListOperationsResponse",
+}) as any as S.Schema<ListOperationsResponse>;
 
 export interface PatchProjectsLocationsContactCentersRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -946,26 +1171,61 @@ export interface PatchProjectsLocationsContactCentersRequest {
   /** Request body */
   body?: ContactCenter;
 }
-export const PatchProjectsLocationsContactCentersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requestId": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(ContactCenter.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1alpha1/{+name}","baseUrl":"https://contactcenteraiplatform.googleapis.com/"})),
-).annotate({ identifier: "PatchProjectsLocationsContactCentersRequest" }) as any as S.Schema<PatchProjectsLocationsContactCentersRequest>;
+export const PatchProjectsLocationsContactCentersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      requestId: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(ContactCenter.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1alpha1/{+name}",
+        baseUrl: "https://contactcenteraiplatform.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchProjectsLocationsContactCentersRequest",
+  }) as any as S.Schema<PatchProjectsLocationsContactCentersRequest>;
 
 export interface QueryContactCenterQuotaProjectsLocationsRequest {
   /** Required. Parent project resource id. */
   parent: string;
 }
-export const QueryContactCenterQuotaProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1alpha1/{+parent}:queryContactCenterQuota","baseUrl":"https://contactcenteraiplatform.googleapis.com/"})),
-).annotate({ identifier: "QueryContactCenterQuotaProjectsLocationsRequest" }) as any as S.Schema<QueryContactCenterQuotaProjectsLocationsRequest>;
+export const QueryContactCenterQuotaProjectsLocationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha1/{+parent}:queryContactCenterQuota",
+        baseUrl: "https://contactcenteraiplatform.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "QueryContactCenterQuotaProjectsLocationsRequest",
+  }) as any as S.Schema<QueryContactCenterQuotaProjectsLocationsRequest>;
 
-export type QuotaContactCenterInstanceSizeEnum = "INSTANCE_SIZE_UNSPECIFIED" | "STANDARD_SMALL" | "STANDARD_MEDIUM" | "STANDARD_LARGE" | "STANDARD_XLARGE" | "STANDARD_2XLARGE" | "STANDARD_3XLARGE" | "MULTIREGION_SMALL" | "MULTIREGION_MEDIUM" | "MULTIREGION_LARGE" | "MULTIREGION_XLARGE" | "MULTIREGION_2XLARGE" | "MULTIREGION_3XLARGE" | "DEV_SMALL" | "SANDBOX_SMALL" | "TRIAL_SMALL" | "TIME_LIMITED_TRIAL_SMALL";
+export type QuotaContactCenterInstanceSizeEnum =
+  | "INSTANCE_SIZE_UNSPECIFIED"
+  | "STANDARD_SMALL"
+  | "STANDARD_MEDIUM"
+  | "STANDARD_LARGE"
+  | "STANDARD_XLARGE"
+  | "STANDARD_2XLARGE"
+  | "STANDARD_3XLARGE"
+  | "MULTIREGION_SMALL"
+  | "MULTIREGION_MEDIUM"
+  | "MULTIREGION_LARGE"
+  | "MULTIREGION_XLARGE"
+  | "MULTIREGION_2XLARGE"
+  | "MULTIREGION_3XLARGE"
+  | "DEV_SMALL"
+  | "SANDBOX_SMALL"
+  | "TRIAL_SMALL"
+  | "TIME_LIMITED_TRIAL_SMALL";
 export const QuotaContactCenterInstanceSizeEnum = /*@__PURE__*/ S.String;
 
 /** Quota details. */
@@ -978,15 +1238,17 @@ export interface Quota {
   contactCenterCountLimit?: number;
 }
 export const Quota = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "contactCenterCountSum": S.optional(S.Number),
-  "contactCenterInstanceSize": S.optional(QuotaContactCenterInstanceSizeEnum),
-  "contactCenterCountLimit": S.optional(S.Number),
-}),
+  S.Struct({
+    contactCenterCountSum: S.optional(S.Number),
+    contactCenterInstanceSize: S.optional(QuotaContactCenterInstanceSizeEnum),
+    contactCenterCountLimit: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "Quota" }) as any as S.Schema<Quota>;
 
 export type QuotaList = ReadonlyArray<Quota>;
-export const QuotaList = /*@__PURE__*/ S.Array(Quota) as any as S.Schema<QuotaList>;
+export const QuotaList = /*@__PURE__*/ S.Array(
+  Quota,
+) as any as S.Schema<QuotaList>;
 
 /** Represents a quota for contact centers. */
 export interface ContactCenterQuota {
@@ -998,14 +1260,21 @@ export interface ContactCenterQuota {
   quotas?: QuotaList;
 }
 export const ContactCenterQuota = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "contactCenterCountLimit": S.optional(S.Number),
-  "contactCenterCountSum": S.optional(S.Number),
-  "quotas": S.optional(QuotaList),
-}),
-).annotate({ identifier: "ContactCenterQuota" }) as any as S.Schema<ContactCenterQuota>;
+  S.Struct({
+    contactCenterCountLimit: S.optional(S.Number),
+    contactCenterCountSum: S.optional(S.Number),
+    quotas: S.optional(QuotaList),
+  }),
+).annotate({
+  identifier: "ContactCenterQuota",
+}) as any as S.Schema<ContactCenterQuota>;
 
-export type CancelProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CancelProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsRequest,
@@ -1020,7 +1289,12 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsContactCentersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateProjectsLocationsContactCentersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new ContactCenter in a given project and location. */
 export const createProjectsLocationsContactCenters: API.OperationMethod<
   CreateProjectsLocationsContactCentersRequest,
@@ -1035,7 +1309,12 @@ export const createProjectsLocationsContactCenters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsContactCentersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsContactCentersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a single ContactCenter. */
 export const deleteProjectsLocationsContactCenters: API.OperationMethod<
   DeleteProjectsLocationsContactCentersRequest,
@@ -1050,7 +1329,12 @@ export const deleteProjectsLocationsContactCenters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsLocationsOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsRequest,
@@ -1065,7 +1349,12 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GenerateShiftsProjectsLocationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type GenerateShiftsProjectsLocationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Generates shifts constrained by various parameters. */
 export const generateShiftsProjectsLocations: API.OperationMethod<
   GenerateShiftsProjectsLocationsRequest,
@@ -1095,7 +1384,10 @@ export const getProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsContactCentersError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsContactCentersError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets details of a single ContactCenter. */
 export const getProjectsLocationsContactCenters: API.OperationMethod<
   GetProjectsLocationsContactCentersRequest,
@@ -1110,7 +1402,10 @@ export const getProjectsLocationsContactCenters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type GetProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -1138,10 +1433,16 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsContactCentersError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsContactCentersError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists ContactCenters in a given project and location. */
 export const listProjectsLocationsContactCenters: API.PaginatedOperationMethod<
   ListProjectsLocationsContactCentersRequest,
@@ -1154,10 +1455,16 @@ export const listProjectsLocationsContactCenters: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListProjectsLocationsOperationsError = NotFound | Forbidden | GcpOpError;
+export type ListProjectsLocationsOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -1170,10 +1477,18 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type PatchProjectsLocationsContactCentersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchProjectsLocationsContactCentersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates the parameters of a single ContactCenter. */
 export const patchProjectsLocationsContactCenters: API.OperationMethod<
   PatchProjectsLocationsContactCentersRequest,
@@ -1188,7 +1503,10 @@ export const patchProjectsLocationsContactCenters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type QueryContactCenterQuotaProjectsLocationsError = NotFound | Forbidden | GcpOpError;
+export type QueryContactCenterQuotaProjectsLocationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Queries the contact center quota, an aggregation over all the projects, that belongs to the billing account, which the input project belongs to. */
 export const queryContactCenterQuotaProjectsLocations: API.OperationMethod<
   QueryContactCenterQuotaProjectsLocationsRequest,
@@ -1202,4 +1520,3 @@ export const queryContactCenterQuotaProjectsLocations: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

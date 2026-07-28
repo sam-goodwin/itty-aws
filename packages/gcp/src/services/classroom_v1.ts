@@ -13,51 +13,51 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 export interface AcceptInvitationsRequest {
@@ -65,18 +65,32 @@ export interface AcceptInvitationsRequest {
   id: string;
 }
 export const AcceptInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"POST","uri":"v1/invitations/{id}:accept","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "AcceptInvitationsRequest" }) as any as S.Schema<AcceptInvitationsRequest>;
+  S.Struct({
+    id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/invitations/{id}:accept",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "AcceptInvitationsRequest",
+}) as any as S.Schema<AcceptInvitationsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
-export type CourseCourseStateEnum = "COURSE_STATE_UNSPECIFIED" | "ACTIVE" | "ARCHIVED" | "PROVISIONED" | "DECLINED" | "SUSPENDED";
+export type CourseCourseStateEnum =
+  | "COURSE_STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "ARCHIVED"
+  | "PROVISIONED"
+  | "DECLINED"
+  | "SUSPENDED";
 export const CourseCourseStateEnum = /*@__PURE__*/ S.String;
 
 /** Google Forms item. */
@@ -91,12 +105,12 @@ export interface Form {
   responseUrl?: string;
 }
 export const Form = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "title": S.optional(S.String),
-  "thumbnailUrl": S.optional(S.String),
-  "formUrl": S.optional(S.String),
-  "responseUrl": S.optional(S.String),
-}),
+  S.Struct({
+    title: S.optional(S.String),
+    thumbnailUrl: S.optional(S.String),
+    formUrl: S.optional(S.String),
+    responseUrl: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Form" }) as any as S.Schema<Form>;
 
 /** URL item. */
@@ -109,11 +123,11 @@ export interface Link {
   thumbnailUrl?: string;
 }
 export const Link = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "url": S.optional(S.String),
-  "title": S.optional(S.String),
-  "thumbnailUrl": S.optional(S.String),
-}),
+  S.Struct({
+    url: S.optional(S.String),
+    title: S.optional(S.String),
+    thumbnailUrl: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Link" }) as any as S.Schema<Link>;
 
 /** Representation of a Google Drive file. */
@@ -128,12 +142,12 @@ export interface DriveFile {
   alternateLink?: string;
 }
 export const DriveFile = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "title": S.optional(S.String),
-  "thumbnailUrl": S.optional(S.String),
-  "id": S.optional(S.String),
-  "alternateLink": S.optional(S.String),
-}),
+  S.Struct({
+    title: S.optional(S.String),
+    thumbnailUrl: S.optional(S.String),
+    id: S.optional(S.String),
+    alternateLink: S.optional(S.String),
+  }),
 ).annotate({ identifier: "DriveFile" }) as any as S.Schema<DriveFile>;
 
 /** YouTube video item. */
@@ -148,12 +162,12 @@ export interface YouTubeVideo {
   thumbnailUrl?: string;
 }
 export const YouTubeVideo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.optional(S.String),
-  "alternateLink": S.optional(S.String),
-  "title": S.optional(S.String),
-  "thumbnailUrl": S.optional(S.String),
-}),
+  S.Struct({
+    id: S.optional(S.String),
+    alternateLink: S.optional(S.String),
+    title: S.optional(S.String),
+    thumbnailUrl: S.optional(S.String),
+  }),
 ).annotate({ identifier: "YouTubeVideo" }) as any as S.Schema<YouTubeVideo>;
 
 /** A material attached to a course as part of a material set. */
@@ -168,16 +182,18 @@ export interface CourseMaterial {
   youTubeVideo?: YouTubeVideo;
 }
 export const CourseMaterial = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "form": S.optional(Form),
-  "link": S.optional(Link),
-  "driveFile": S.optional(DriveFile),
-  "youTubeVideo": S.optional(YouTubeVideo),
-}),
+  S.Struct({
+    form: S.optional(Form),
+    link: S.optional(Link),
+    driveFile: S.optional(DriveFile),
+    youTubeVideo: S.optional(YouTubeVideo),
+  }),
 ).annotate({ identifier: "CourseMaterial" }) as any as S.Schema<CourseMaterial>;
 
 export type CourseMaterialList = ReadonlyArray<CourseMaterial>;
-export const CourseMaterialList = /*@__PURE__*/ S.Array(CourseMaterial) as any as S.Schema<CourseMaterialList>;
+export const CourseMaterialList = /*@__PURE__*/ S.Array(
+  CourseMaterial,
+) as any as S.Schema<CourseMaterialList>;
 
 /** A set of materials that appears on the "About" page of the course. These materials might include a syllabus, schedule, or other background information relating to the course as a whole. */
 export interface CourseMaterialSet {
@@ -187,16 +203,23 @@ export interface CourseMaterialSet {
   title?: string;
 }
 export const CourseMaterialSet = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "materials": S.optional(CourseMaterialList),
-  "title": S.optional(S.String),
-}),
-).annotate({ identifier: "CourseMaterialSet" }) as any as S.Schema<CourseMaterialSet>;
+  S.Struct({
+    materials: S.optional(CourseMaterialList),
+    title: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CourseMaterialSet",
+}) as any as S.Schema<CourseMaterialSet>;
 
 export type CourseMaterialSetList = ReadonlyArray<CourseMaterialSet>;
-export const CourseMaterialSetList = /*@__PURE__*/ S.Array(CourseMaterialSet) as any as S.Schema<CourseMaterialSetList>;
+export const CourseMaterialSetList = /*@__PURE__*/ S.Array(
+  CourseMaterialSet,
+) as any as S.Schema<CourseMaterialSetList>;
 
-export type GradebookSettingsCalculationTypeEnum = "CALCULATION_TYPE_UNSPECIFIED" | "TOTAL_POINTS" | "WEIGHTED_CATEGORIES";
+export type GradebookSettingsCalculationTypeEnum =
+  | "CALCULATION_TYPE_UNSPECIFIED"
+  | "TOTAL_POINTS"
+  | "WEIGHTED_CATEGORIES";
 export const GradebookSettingsCalculationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Details for a grade category in a course. Coursework may have zero or one grade category, and the category may be used in computing the overall grade. See the [help center article](https://support.google.com/edu/classroom/answer/9184995) for details. */
@@ -211,18 +234,24 @@ export interface GradeCategory {
   name?: string;
 }
 export const GradeCategory = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "weight": S.optional(S.Number),
-  "defaultGradeDenominator": S.optional(S.Number),
-  "id": S.optional(S.String),
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    weight: S.optional(S.Number),
+    defaultGradeDenominator: S.optional(S.Number),
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "GradeCategory" }) as any as S.Schema<GradeCategory>;
 
 export type GradeCategoryList = ReadonlyArray<GradeCategory>;
-export const GradeCategoryList = /*@__PURE__*/ S.Array(GradeCategory) as any as S.Schema<GradeCategoryList>;
+export const GradeCategoryList = /*@__PURE__*/ S.Array(
+  GradeCategory,
+) as any as S.Schema<GradeCategoryList>;
 
-export type GradebookSettingsDisplaySettingEnum = "DISPLAY_SETTING_UNSPECIFIED" | "SHOW_OVERALL_GRADE" | "HIDE_OVERALL_GRADE" | "SHOW_TEACHERS_ONLY";
+export type GradebookSettingsDisplaySettingEnum =
+  | "DISPLAY_SETTING_UNSPECIFIED"
+  | "SHOW_OVERALL_GRADE"
+  | "HIDE_OVERALL_GRADE"
+  | "SHOW_TEACHERS_ONLY";
 export const GradebookSettingsDisplaySettingEnum = /*@__PURE__*/ S.String;
 
 /** The gradebook settings for a course. See the [help center article](https://support.google.com/edu/classroom/answer/9184995) for details. */
@@ -235,12 +264,14 @@ export interface GradebookSettings {
   displaySetting?: GradebookSettingsDisplaySettingEnum;
 }
 export const GradebookSettings = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "calculationType": S.optional(GradebookSettingsCalculationTypeEnum),
-  "gradeCategories": S.optional(GradeCategoryList),
-  "displaySetting": S.optional(GradebookSettingsDisplaySettingEnum),
-}),
-).annotate({ identifier: "GradebookSettings" }) as any as S.Schema<GradebookSettings>;
+  S.Struct({
+    calculationType: S.optional(GradebookSettingsCalculationTypeEnum),
+    gradeCategories: S.optional(GradeCategoryList),
+    displaySetting: S.optional(GradebookSettingsDisplaySettingEnum),
+  }),
+).annotate({
+  identifier: "GradebookSettings",
+}) as any as S.Schema<GradebookSettings>;
 
 /** Representation of a Google Drive folder. */
 export interface DriveFolder {
@@ -252,11 +283,11 @@ export interface DriveFolder {
   alternateLink?: string;
 }
 export const DriveFolder = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "title": S.optional(S.String),
-  "id": S.optional(S.String),
-  "alternateLink": S.optional(S.String),
-}),
+  S.Struct({
+    title: S.optional(S.String),
+    id: S.optional(S.String),
+    alternateLink: S.optional(S.String),
+  }),
 ).annotate({ identifier: "DriveFolder" }) as any as S.Schema<DriveFolder>;
 
 /** A Course in Classroom. */
@@ -305,29 +336,29 @@ export interface Course {
   room?: string;
 }
 export const Course = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseState": S.optional(CourseCourseStateEnum),
-  "courseGroupEmail": S.optional(S.String),
-  "guardiansEnabled": S.optional(S.Boolean),
-  "description": S.optional(S.String),
-  "ownerId": S.optional(S.String),
-  "courseMaterialSets": S.optional(CourseMaterialSetList),
-  "descriptionHeading": S.optional(S.String),
-  "subject": S.optional(S.String),
-  "gradebookSettings": S.optional(GradebookSettings),
-  "id": S.optional(S.String),
-  "calendarId": S.optional(S.String),
-  "teacherFolder": S.optional(DriveFolder),
-  "section": S.optional(S.String),
-  "creationTime": S.optional(S.String),
-  "name": S.optional(S.String),
-  "alternateLink": S.optional(S.String),
-  "enrollmentCode": S.optional(S.String),
-  "levels": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "teacherGroupEmail": S.optional(S.String),
-  "room": S.optional(S.String),
-}),
+  S.Struct({
+    courseState: S.optional(CourseCourseStateEnum),
+    courseGroupEmail: S.optional(S.String),
+    guardiansEnabled: S.optional(S.Boolean),
+    description: S.optional(S.String),
+    ownerId: S.optional(S.String),
+    courseMaterialSets: S.optional(CourseMaterialSetList),
+    descriptionHeading: S.optional(S.String),
+    subject: S.optional(S.String),
+    gradebookSettings: S.optional(GradebookSettings),
+    id: S.optional(S.String),
+    calendarId: S.optional(S.String),
+    teacherFolder: S.optional(DriveFolder),
+    section: S.optional(S.String),
+    creationTime: S.optional(S.String),
+    name: S.optional(S.String),
+    alternateLink: S.optional(S.String),
+    enrollmentCode: S.optional(S.String),
+    levels: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    teacherGroupEmail: S.optional(S.String),
+    room: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Course" }) as any as S.Schema<Course>;
 
 export interface CreateCoursesRequest {
@@ -335,10 +366,18 @@ export interface CreateCoursesRequest {
   body?: Course;
 }
 export const CreateCoursesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(Course.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/courses","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "CreateCoursesRequest" }) as any as S.Schema<CreateCoursesRequest>;
+  S.Struct({
+    body: S.optional(Course.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/courses",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateCoursesRequest",
+}) as any as S.Schema<CreateCoursesRequest>;
 
 /** Alternative identifier for a course. An alias uniquely identifies a course. It must be unique within one of the following scopes: * domain: A domain-scoped alias is visible to all users within the alias creator's domain and can be created only by a domain admin. A domain-scoped alias is often used when a course has an identifier external to Classroom. * project: A project-scoped alias is visible to any request from an application using the Developer Console project ID that created the alias and can be created by any project. A project-scoped alias is often used when an application has alternative identifiers. A random value can also be used to avoid duplicate courses in the event of transmission failures, as retrying a request will return `ALREADY_EXISTS` if a previous one has succeeded. */
 export interface CourseAlias {
@@ -346,9 +385,9 @@ export interface CourseAlias {
   alias?: string;
 }
 export const CourseAlias = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "alias": S.optional(S.String),
-}),
+  S.Struct({
+    alias: S.optional(S.String),
+  }),
 ).annotate({ identifier: "CourseAlias" }) as any as S.Schema<CourseAlias>;
 
 export interface CreateCoursesAliasesRequest {
@@ -358,16 +397,31 @@ export interface CreateCoursesAliasesRequest {
   body?: CourseAlias;
 }
 export const CreateCoursesAliasesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseId": S.String.pipe(T.Label()),
-  "body": S.optional(CourseAlias.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/courses/{courseId}/aliases","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "CreateCoursesAliasesRequest" }) as any as S.Schema<CreateCoursesAliasesRequest>;
+  S.Struct({
+    courseId: S.String.pipe(T.Label()),
+    body: S.optional(CourseAlias.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/courses/{courseId}/aliases",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateCoursesAliasesRequest",
+}) as any as S.Schema<CreateCoursesAliasesRequest>;
 
-export type AnnouncementAssigneeModeEnum = "ASSIGNEE_MODE_UNSPECIFIED" | "ALL_STUDENTS" | "INDIVIDUAL_STUDENTS";
+export type AnnouncementAssigneeModeEnum =
+  | "ASSIGNEE_MODE_UNSPECIFIED"
+  | "ALL_STUDENTS"
+  | "INDIVIDUAL_STUDENTS";
 export const AnnouncementAssigneeModeEnum = /*@__PURE__*/ S.String;
 
-export type AnnouncementStateEnum = "ANNOUNCEMENT_STATE_UNSPECIFIED" | "PUBLISHED" | "DRAFT" | "DELETED";
+export type AnnouncementStateEnum =
+  | "ANNOUNCEMENT_STATE_UNSPECIFIED"
+  | "PUBLISHED"
+  | "DRAFT"
+  | "DELETED";
 export const AnnouncementStateEnum = /*@__PURE__*/ S.String;
 
 /** Gemini Gem link. */
@@ -380,14 +434,18 @@ export interface GeminiGem {
   title?: string;
 }
 export const GeminiGem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.optional(S.String),
-  "url": S.optional(S.String),
-  "title": S.optional(S.String),
-}),
+  S.Struct({
+    id: S.optional(S.String),
+    url: S.optional(S.String),
+    title: S.optional(S.String),
+  }),
 ).annotate({ identifier: "GeminiGem" }) as any as S.Schema<GeminiGem>;
 
-export type SharedDriveFileShareModeEnum = "UNKNOWN_SHARE_MODE" | "VIEW" | "EDIT" | "STUDENT_COPY";
+export type SharedDriveFileShareModeEnum =
+  | "UNKNOWN_SHARE_MODE"
+  | "VIEW"
+  | "EDIT"
+  | "STUDENT_COPY";
 export const SharedDriveFileShareModeEnum = /*@__PURE__*/ S.String;
 
 /** Drive file that is used as material for course work. */
@@ -398,11 +456,13 @@ export interface SharedDriveFile {
   shareMode?: SharedDriveFileShareModeEnum;
 }
 export const SharedDriveFile = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "driveFile": S.optional(DriveFile),
-  "shareMode": S.optional(SharedDriveFileShareModeEnum),
-}),
-).annotate({ identifier: "SharedDriveFile" }) as any as S.Schema<SharedDriveFile>;
+  S.Struct({
+    driveFile: S.optional(DriveFile),
+    shareMode: S.optional(SharedDriveFileShareModeEnum),
+  }),
+).annotate({
+  identifier: "SharedDriveFile",
+}) as any as S.Schema<SharedDriveFile>;
 
 /** NotebookLM Notebook link. */
 export interface NotebookLmNotebook {
@@ -414,12 +474,14 @@ export interface NotebookLmNotebook {
   url?: string;
 }
 export const NotebookLmNotebook = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "title": S.optional(S.String),
-  "id": S.optional(S.String),
-  "url": S.optional(S.String),
-}),
-).annotate({ identifier: "NotebookLmNotebook" }) as any as S.Schema<NotebookLmNotebook>;
+  S.Struct({
+    title: S.optional(S.String),
+    id: S.optional(S.String),
+    url: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "NotebookLmNotebook",
+}) as any as S.Schema<NotebookLmNotebook>;
 
 /** Material attached to course work. When creating attachments, setting the `form`, `gem`, or `notebook` field is not supported. */
 export interface Material {
@@ -437,21 +499,25 @@ export interface Material {
   notebook?: NotebookLmNotebook;
 }
 export const Material = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "gem": S.optional(GeminiGem),
-  "driveFile": S.optional(SharedDriveFile),
-  "youtubeVideo": S.optional(YouTubeVideo),
-  "form": S.optional(Form),
-  "link": S.optional(Link),
-  "notebook": S.optional(NotebookLmNotebook),
-}),
+  S.Struct({
+    gem: S.optional(GeminiGem),
+    driveFile: S.optional(SharedDriveFile),
+    youtubeVideo: S.optional(YouTubeVideo),
+    form: S.optional(Form),
+    link: S.optional(Link),
+    notebook: S.optional(NotebookLmNotebook),
+  }),
 ).annotate({ identifier: "Material" }) as any as S.Schema<Material>;
 
 export type MaterialList = ReadonlyArray<Material>;
-export const MaterialList = /*@__PURE__*/ S.Array(Material) as any as S.Schema<MaterialList>;
+export const MaterialList = /*@__PURE__*/ S.Array(
+  Material,
+) as any as S.Schema<MaterialList>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** Assignee details about a coursework/announcement. This field is set if and only if `assigneeMode` is `INDIVIDUAL_STUDENTS`. */
 export interface IndividualStudentsOptions {
@@ -459,10 +525,12 @@ export interface IndividualStudentsOptions {
   studentIds?: StringList;
 }
 export const IndividualStudentsOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "studentIds": S.optional(StringList),
-}),
-).annotate({ identifier: "IndividualStudentsOptions" }) as any as S.Schema<IndividualStudentsOptions>;
+  S.Struct({
+    studentIds: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "IndividualStudentsOptions",
+}) as any as S.Schema<IndividualStudentsOptions>;
 
 /** Announcement created by a teacher for students of the course */
 export interface Announcement {
@@ -492,20 +560,20 @@ export interface Announcement {
   individualStudentsOptions?: IndividualStudentsOptions;
 }
 export const Announcement = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "alternateLink": S.optional(S.String),
-  "creationTime": S.optional(S.String),
-  "assigneeMode": S.optional(AnnouncementAssigneeModeEnum),
-  "text": S.optional(S.String),
-  "state": S.optional(AnnouncementStateEnum),
-  "updateTime": S.optional(S.String),
-  "id": S.optional(S.String),
-  "materials": S.optional(MaterialList),
-  "courseId": S.optional(S.String),
-  "creatorUserId": S.optional(S.String),
-  "scheduledTime": S.optional(S.String),
-  "individualStudentsOptions": S.optional(IndividualStudentsOptions),
-}),
+  S.Struct({
+    alternateLink: S.optional(S.String),
+    creationTime: S.optional(S.String),
+    assigneeMode: S.optional(AnnouncementAssigneeModeEnum),
+    text: S.optional(S.String),
+    state: S.optional(AnnouncementStateEnum),
+    updateTime: S.optional(S.String),
+    id: S.optional(S.String),
+    materials: S.optional(MaterialList),
+    courseId: S.optional(S.String),
+    creatorUserId: S.optional(S.String),
+    scheduledTime: S.optional(S.String),
+    individualStudentsOptions: S.optional(IndividualStudentsOptions),
+  }),
 ).annotate({ identifier: "Announcement" }) as any as S.Schema<Announcement>;
 
 export interface CreateCoursesAnnouncementsRequest {
@@ -515,11 +583,19 @@ export interface CreateCoursesAnnouncementsRequest {
   body?: Announcement;
 }
 export const CreateCoursesAnnouncementsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseId": S.String.pipe(T.Label()),
-  "body": S.optional(Announcement.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/courses/{courseId}/announcements","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "CreateCoursesAnnouncementsRequest" }) as any as S.Schema<CreateCoursesAnnouncementsRequest>;
+  S.Struct({
+    courseId: S.String.pipe(T.Label()),
+    body: S.optional(Announcement.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/courses/{courseId}/announcements",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateCoursesAnnouncementsRequest",
+}) as any as S.Schema<CreateCoursesAnnouncementsRequest>;
 
 /** URI to be iframed after being populated with query parameters. */
 export interface EmbedUri {
@@ -527,9 +603,9 @@ export interface EmbedUri {
   uri?: string;
 }
 export const EmbedUri = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "uri": S.optional(S.String),
-}),
+  S.Struct({
+    uri: S.optional(S.String),
+  }),
 ).annotate({ identifier: "EmbedUri" }) as any as S.Schema<EmbedUri>;
 
 /** Identifier of a previous copy of a given attachment. */
@@ -544,16 +620,18 @@ export interface CopyHistory {
   courseId?: string;
 }
 export const CopyHistory = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "postId": S.optional(S.String),
-  "attachmentId": S.optional(S.String),
-  "itemId": S.optional(S.String),
-  "courseId": S.optional(S.String),
-}),
+  S.Struct({
+    postId: S.optional(S.String),
+    attachmentId: S.optional(S.String),
+    itemId: S.optional(S.String),
+    courseId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "CopyHistory" }) as any as S.Schema<CopyHistory>;
 
 export type CopyHistoryList = ReadonlyArray<CopyHistory>;
-export const CopyHistoryList = /*@__PURE__*/ S.Array(CopyHistory) as any as S.Schema<CopyHistoryList>;
+export const CopyHistoryList = /*@__PURE__*/ S.Array(
+  CopyHistory,
+) as any as S.Schema<CopyHistoryList>;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
 export interface TimeOfDay {
@@ -567,12 +645,12 @@ export interface TimeOfDay {
   minutes?: number;
 }
 export const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nanos": S.optional(S.Number),
-  "seconds": S.optional(S.Number),
-  "hours": S.optional(S.Number),
-  "minutes": S.optional(S.Number),
-}),
+  S.Struct({
+    nanos: S.optional(S.Number),
+    seconds: S.optional(S.Number),
+    hours: S.optional(S.Number),
+    minutes: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "TimeOfDay" }) as any as S.Schema<TimeOfDay>;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
@@ -585,11 +663,11 @@ export interface Classroom_Date {
   month?: number;
 }
 export const Classroom_Date = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "day": S.optional(S.Number),
-  "year": S.optional(S.Number),
-  "month": S.optional(S.Number),
-}),
+  S.Struct({
+    day: S.optional(S.Number),
+    year: S.optional(S.Number),
+    month: S.optional(S.Number),
+  }),
 ).annotate({ identifier: "Classroom_Date" }) as any as S.Schema<Classroom_Date>;
 
 /** An add-on attachment on a post. */
@@ -620,21 +698,23 @@ export interface AddOnAttachment {
   postId?: string;
 }
 export const AddOnAttachment = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "itemId": S.optional(S.String),
-  "studentWorkReviewUri": S.optional(EmbedUri),
-  "studentViewUri": S.optional(EmbedUri),
-  "maxPoints": S.optional(S.Number),
-  "teacherViewUri": S.optional(EmbedUri),
-  "copyHistory": S.optional(CopyHistoryList),
-  "title": S.optional(S.String),
-  "dueTime": S.optional(TimeOfDay),
-  "id": S.optional(S.String),
-  "courseId": S.optional(S.String),
-  "dueDate": S.optional(Classroom_Date),
-  "postId": S.optional(S.String),
-}),
-).annotate({ identifier: "AddOnAttachment" }) as any as S.Schema<AddOnAttachment>;
+  S.Struct({
+    itemId: S.optional(S.String),
+    studentWorkReviewUri: S.optional(EmbedUri),
+    studentViewUri: S.optional(EmbedUri),
+    maxPoints: S.optional(S.Number),
+    teacherViewUri: S.optional(EmbedUri),
+    copyHistory: S.optional(CopyHistoryList),
+    title: S.optional(S.String),
+    dueTime: S.optional(TimeOfDay),
+    id: S.optional(S.String),
+    courseId: S.optional(S.String),
+    dueDate: S.optional(Classroom_Date),
+    postId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AddOnAttachment",
+}) as any as S.Schema<AddOnAttachment>;
 
 export interface CreateCoursesAnnouncementsAddOnAttachmentsRequest {
   /** Required. Identifier of the course. */
@@ -648,17 +728,30 @@ export interface CreateCoursesAnnouncementsAddOnAttachmentsRequest {
   /** Request body */
   body?: AddOnAttachment;
 }
-export const CreateCoursesAnnouncementsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseId": S.String.pipe(T.Label()),
-  "itemId": S.String.pipe(T.Label()),
-  "addOnToken": S.optional(S.String.pipe(T.Query())),
-  "postId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(AddOnAttachment.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/courses/{courseId}/announcements/{itemId}/addOnAttachments","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "CreateCoursesAnnouncementsAddOnAttachmentsRequest" }) as any as S.Schema<CreateCoursesAnnouncementsAddOnAttachmentsRequest>;
+export const CreateCoursesAnnouncementsAddOnAttachmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      courseId: S.String.pipe(T.Label()),
+      itemId: S.String.pipe(T.Label()),
+      addOnToken: S.optional(S.String.pipe(T.Query())),
+      postId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(AddOnAttachment.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/courses/{courseId}/announcements/{itemId}/addOnAttachments",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateCoursesAnnouncementsAddOnAttachmentsRequest",
+  }) as any as S.Schema<CreateCoursesAnnouncementsAddOnAttachmentsRequest>;
 
-export type CourseWorkWorkTypeEnum = "COURSE_WORK_TYPE_UNSPECIFIED" | "ASSIGNMENT" | "SHORT_ANSWER_QUESTION" | "MULTIPLE_CHOICE_QUESTION";
+export type CourseWorkWorkTypeEnum =
+  | "COURSE_WORK_TYPE_UNSPECIFIED"
+  | "ASSIGNMENT"
+  | "SHORT_ANSWER_QUESTION"
+  | "MULTIPLE_CHOICE_QUESTION";
 export const CourseWorkWorkTypeEnum = /*@__PURE__*/ S.String;
 
 /** Additional details for multiple-choice questions. */
@@ -667,18 +760,30 @@ export interface MultipleChoiceQuestion {
   choices?: StringList;
 }
 export const MultipleChoiceQuestion = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "choices": S.optional(StringList),
-}),
-).annotate({ identifier: "MultipleChoiceQuestion" }) as any as S.Schema<MultipleChoiceQuestion>;
+  S.Struct({
+    choices: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "MultipleChoiceQuestion",
+}) as any as S.Schema<MultipleChoiceQuestion>;
 
-export type CourseWorkSubmissionModificationModeEnum = "SUBMISSION_MODIFICATION_MODE_UNSPECIFIED" | "MODIFIABLE_UNTIL_TURNED_IN" | "MODIFIABLE";
+export type CourseWorkSubmissionModificationModeEnum =
+  | "SUBMISSION_MODIFICATION_MODE_UNSPECIFIED"
+  | "MODIFIABLE_UNTIL_TURNED_IN"
+  | "MODIFIABLE";
 export const CourseWorkSubmissionModificationModeEnum = /*@__PURE__*/ S.String;
 
-export type CourseWorkStateEnum = "COURSE_WORK_STATE_UNSPECIFIED" | "PUBLISHED" | "DRAFT" | "DELETED";
+export type CourseWorkStateEnum =
+  | "COURSE_WORK_STATE_UNSPECIFIED"
+  | "PUBLISHED"
+  | "DRAFT"
+  | "DELETED";
 export const CourseWorkStateEnum = /*@__PURE__*/ S.String;
 
-export type CourseWorkAssigneeModeEnum = "ASSIGNEE_MODE_UNSPECIFIED" | "ALL_STUDENTS" | "INDIVIDUAL_STUDENTS";
+export type CourseWorkAssigneeModeEnum =
+  | "ASSIGNEE_MODE_UNSPECIFIED"
+  | "ALL_STUDENTS"
+  | "INDIVIDUAL_STUDENTS";
 export const CourseWorkAssigneeModeEnum = /*@__PURE__*/ S.String;
 
 /** Additional details for assignments. */
@@ -687,9 +792,9 @@ export interface Assignment {
   studentWorkFolder?: DriveFolder;
 }
 export const Assignment = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "studentWorkFolder": S.optional(DriveFolder),
-}),
+  S.Struct({
+    studentWorkFolder: S.optional(DriveFolder),
+  }),
 ).annotate({ identifier: "Assignment" }) as any as S.Schema<Assignment>;
 
 /** Course work created by a teacher for students of the course. */
@@ -744,32 +849,34 @@ export interface CourseWork {
   dueTime?: TimeOfDay;
 }
 export const CourseWork = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "alternateLink": S.optional(S.String),
-  "creationTime": S.optional(S.String),
-  "workType": S.optional(CourseWorkWorkTypeEnum),
-  "topicId": S.optional(S.String),
-  "gradingPeriodId": S.optional(S.String),
-  "associatedWithDeveloper": S.optional(S.Boolean),
-  "materials": S.optional(MaterialList),
-  "courseId": S.optional(S.String),
-  "dueDate": S.optional(Classroom_Date),
-  "individualStudentsOptions": S.optional(IndividualStudentsOptions),
-  "multipleChoiceQuestion": S.optional(MultipleChoiceQuestion),
-  "submissionModificationMode": S.optional(CourseWorkSubmissionModificationModeEnum),
-  "state": S.optional(CourseWorkStateEnum),
-  "updateTime": S.optional(S.String),
-  "title": S.optional(S.String),
-  "description": S.optional(S.String),
-  "maxPoints": S.optional(S.Number),
-  "id": S.optional(S.String),
-  "creatorUserId": S.optional(S.String),
-  "scheduledTime": S.optional(S.String),
-  "assigneeMode": S.optional(CourseWorkAssigneeModeEnum),
-  "assignment": S.optional(Assignment),
-  "gradeCategory": S.optional(GradeCategory),
-  "dueTime": S.optional(TimeOfDay),
-}),
+  S.Struct({
+    alternateLink: S.optional(S.String),
+    creationTime: S.optional(S.String),
+    workType: S.optional(CourseWorkWorkTypeEnum),
+    topicId: S.optional(S.String),
+    gradingPeriodId: S.optional(S.String),
+    associatedWithDeveloper: S.optional(S.Boolean),
+    materials: S.optional(MaterialList),
+    courseId: S.optional(S.String),
+    dueDate: S.optional(Classroom_Date),
+    individualStudentsOptions: S.optional(IndividualStudentsOptions),
+    multipleChoiceQuestion: S.optional(MultipleChoiceQuestion),
+    submissionModificationMode: S.optional(
+      CourseWorkSubmissionModificationModeEnum,
+    ),
+    state: S.optional(CourseWorkStateEnum),
+    updateTime: S.optional(S.String),
+    title: S.optional(S.String),
+    description: S.optional(S.String),
+    maxPoints: S.optional(S.Number),
+    id: S.optional(S.String),
+    creatorUserId: S.optional(S.String),
+    scheduledTime: S.optional(S.String),
+    assigneeMode: S.optional(CourseWorkAssigneeModeEnum),
+    assignment: S.optional(Assignment),
+    gradeCategory: S.optional(GradeCategory),
+    dueTime: S.optional(TimeOfDay),
+  }),
 ).annotate({ identifier: "CourseWork" }) as any as S.Schema<CourseWork>;
 
 export interface CreateCoursesCourseWorkRequest {
@@ -779,11 +886,19 @@ export interface CreateCoursesCourseWorkRequest {
   body?: CourseWork;
 }
 export const CreateCoursesCourseWorkRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseId": S.String.pipe(T.Label()),
-  "body": S.optional(CourseWork.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/courses/{courseId}/courseWork","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "CreateCoursesCourseWorkRequest" }) as any as S.Schema<CreateCoursesCourseWorkRequest>;
+  S.Struct({
+    courseId: S.String.pipe(T.Label()),
+    body: S.optional(CourseWork.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/courses/{courseId}/courseWork",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateCoursesCourseWorkRequest",
+}) as any as S.Schema<CreateCoursesCourseWorkRequest>;
 
 export interface CreateCoursesCourseWorkAddOnAttachmentsRequest {
   /** Optional. Deprecated, use `item_id` instead. */
@@ -797,20 +912,36 @@ export interface CreateCoursesCourseWorkAddOnAttachmentsRequest {
   /** Request body */
   body?: AddOnAttachment;
 }
-export const CreateCoursesCourseWorkAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "postId": S.optional(S.String.pipe(T.Query())),
-  "courseId": S.String.pipe(T.Label()),
-  "itemId": S.String.pipe(T.Label()),
-  "addOnToken": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(AddOnAttachment.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "CreateCoursesCourseWorkAddOnAttachmentsRequest" }) as any as S.Schema<CreateCoursesCourseWorkAddOnAttachmentsRequest>;
+export const CreateCoursesCourseWorkAddOnAttachmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      postId: S.optional(S.String.pipe(T.Query())),
+      courseId: S.String.pipe(T.Label()),
+      itemId: S.String.pipe(T.Label()),
+      addOnToken: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(AddOnAttachment.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateCoursesCourseWorkAddOnAttachmentsRequest",
+  }) as any as S.Schema<CreateCoursesCourseWorkAddOnAttachmentsRequest>;
 
-export type CourseWorkMaterialAssigneeModeEnum = "ASSIGNEE_MODE_UNSPECIFIED" | "ALL_STUDENTS" | "INDIVIDUAL_STUDENTS";
+export type CourseWorkMaterialAssigneeModeEnum =
+  | "ASSIGNEE_MODE_UNSPECIFIED"
+  | "ALL_STUDENTS"
+  | "INDIVIDUAL_STUDENTS";
 export const CourseWorkMaterialAssigneeModeEnum = /*@__PURE__*/ S.String;
 
-export type CourseWorkMaterialStateEnum = "COURSEWORK_MATERIAL_STATE_UNSPECIFIED" | "PUBLISHED" | "DRAFT" | "DELETED";
+export type CourseWorkMaterialStateEnum =
+  | "COURSEWORK_MATERIAL_STATE_UNSPECIFIED"
+  | "PUBLISHED"
+  | "DRAFT"
+  | "DELETED";
 export const CourseWorkMaterialStateEnum = /*@__PURE__*/ S.String;
 
 /** Course work material created by a teacher for students of the course */
@@ -845,23 +976,25 @@ export interface CourseWorkMaterial {
   title?: string;
 }
 export const CourseWorkMaterial = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "description": S.optional(S.String),
-  "id": S.optional(S.String),
-  "creatorUserId": S.optional(S.String),
-  "scheduledTime": S.optional(S.String),
-  "assigneeMode": S.optional(CourseWorkMaterialAssigneeModeEnum),
-  "alternateLink": S.optional(S.String),
-  "creationTime": S.optional(S.String),
-  "topicId": S.optional(S.String),
-  "materials": S.optional(MaterialList),
-  "courseId": S.optional(S.String),
-  "individualStudentsOptions": S.optional(IndividualStudentsOptions),
-  "state": S.optional(CourseWorkMaterialStateEnum),
-  "updateTime": S.optional(S.String),
-  "title": S.optional(S.String),
-}),
-).annotate({ identifier: "CourseWorkMaterial" }) as any as S.Schema<CourseWorkMaterial>;
+  S.Struct({
+    description: S.optional(S.String),
+    id: S.optional(S.String),
+    creatorUserId: S.optional(S.String),
+    scheduledTime: S.optional(S.String),
+    assigneeMode: S.optional(CourseWorkMaterialAssigneeModeEnum),
+    alternateLink: S.optional(S.String),
+    creationTime: S.optional(S.String),
+    topicId: S.optional(S.String),
+    materials: S.optional(MaterialList),
+    courseId: S.optional(S.String),
+    individualStudentsOptions: S.optional(IndividualStudentsOptions),
+    state: S.optional(CourseWorkMaterialStateEnum),
+    updateTime: S.optional(S.String),
+    title: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CourseWorkMaterial",
+}) as any as S.Schema<CourseWorkMaterial>;
 
 export interface CreateCoursesCourseWorkMaterialsRequest {
   /** Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
@@ -869,12 +1002,21 @@ export interface CreateCoursesCourseWorkMaterialsRequest {
   /** Request body */
   body?: CourseWorkMaterial;
 }
-export const CreateCoursesCourseWorkMaterialsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseId": S.String.pipe(T.Label()),
-  "body": S.optional(CourseWorkMaterial.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/courses/{courseId}/courseWorkMaterials","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "CreateCoursesCourseWorkMaterialsRequest" }) as any as S.Schema<CreateCoursesCourseWorkMaterialsRequest>;
+export const CreateCoursesCourseWorkMaterialsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      courseId: S.String.pipe(T.Label()),
+      body: S.optional(CourseWorkMaterial.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/courses/{courseId}/courseWorkMaterials",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateCoursesCourseWorkMaterialsRequest",
+}) as any as S.Schema<CreateCoursesCourseWorkMaterialsRequest>;
 
 export interface CreateCoursesCourseWorkMaterialsAddOnAttachmentsRequest {
   /** Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which to create the attachment. This field is required, but is not marked as such while we are migrating from post_id. */
@@ -888,15 +1030,24 @@ export interface CreateCoursesCourseWorkMaterialsAddOnAttachmentsRequest {
   /** Request body */
   body?: AddOnAttachment;
 }
-export const CreateCoursesCourseWorkMaterialsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "itemId": S.String.pipe(T.Label()),
-  "addOnToken": S.optional(S.String.pipe(T.Query())),
-  "courseId": S.String.pipe(T.Label()),
-  "postId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(AddOnAttachment.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/courses/{courseId}/courseWorkMaterials/{itemId}/addOnAttachments","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "CreateCoursesCourseWorkMaterialsAddOnAttachmentsRequest" }) as any as S.Schema<CreateCoursesCourseWorkMaterialsAddOnAttachmentsRequest>;
+export const CreateCoursesCourseWorkMaterialsAddOnAttachmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemId: S.String.pipe(T.Label()),
+      addOnToken: S.optional(S.String.pipe(T.Query())),
+      courseId: S.String.pipe(T.Label()),
+      postId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(AddOnAttachment.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/courses/{courseId}/courseWorkMaterials/{itemId}/addOnAttachments",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateCoursesCourseWorkMaterialsAddOnAttachmentsRequest",
+  }) as any as S.Schema<CreateCoursesCourseWorkMaterialsAddOnAttachmentsRequest>;
 
 /** A level of the criterion. */
 export interface Level {
@@ -910,16 +1061,18 @@ export interface Level {
   id?: string;
 }
 export const Level = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "title": S.optional(S.String),
-  "points": S.optional(S.Number),
-  "description": S.optional(S.String),
-  "id": S.optional(S.String),
-}),
+  S.Struct({
+    title: S.optional(S.String),
+    points: S.optional(S.Number),
+    description: S.optional(S.String),
+    id: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Level" }) as any as S.Schema<Level>;
 
 export type LevelList = ReadonlyArray<Level>;
-export const LevelList = /*@__PURE__*/ S.Array(Level) as any as S.Schema<LevelList>;
+export const LevelList = /*@__PURE__*/ S.Array(
+  Level,
+) as any as S.Schema<LevelList>;
 
 /** A rubric criterion. Each criterion is a dimension on which performance is rated. */
 export interface Criterion {
@@ -933,16 +1086,18 @@ export interface Criterion {
   id?: string;
 }
 export const Criterion = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "title": S.optional(S.String),
-  "levels": S.optional(LevelList),
-  "description": S.optional(S.String),
-  "id": S.optional(S.String),
-}),
+  S.Struct({
+    title: S.optional(S.String),
+    levels: S.optional(LevelList),
+    description: S.optional(S.String),
+    id: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Criterion" }) as any as S.Schema<Criterion>;
 
 export type CriterionList = ReadonlyArray<Criterion>;
-export const CriterionList = /*@__PURE__*/ S.Array(Criterion) as any as S.Schema<CriterionList>;
+export const CriterionList = /*@__PURE__*/ S.Array(
+  Criterion,
+) as any as S.Schema<CriterionList>;
 
 /** The rubric of the course work. A rubric is a scoring guide used to evaluate student work and give feedback. For further details, see [Rubrics structure and known limitations](/classroom/rubrics/limitations). */
 export interface Rubric {
@@ -962,15 +1117,15 @@ export interface Rubric {
   sourceSpreadsheetId?: string;
 }
 export const Rubric = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseWorkId": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "id": S.optional(S.String),
-  "courseId": S.optional(S.String),
-  "creationTime": S.optional(S.String),
-  "criteria": S.optional(CriterionList),
-  "sourceSpreadsheetId": S.optional(S.String),
-}),
+  S.Struct({
+    courseWorkId: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    id: S.optional(S.String),
+    courseId: S.optional(S.String),
+    creationTime: S.optional(S.String),
+    criteria: S.optional(CriterionList),
+    sourceSpreadsheetId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Rubric" }) as any as S.Schema<Rubric>;
 
 export interface CreateCoursesCourseWorkRubricsRequest {
@@ -981,13 +1136,22 @@ export interface CreateCoursesCourseWorkRubricsRequest {
   /** Request body */
   body?: Rubric;
 }
-export const CreateCoursesCourseWorkRubricsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseId": S.String.pipe(T.Label()),
-  "courseWorkId": S.String.pipe(T.Label()),
-  "body": S.optional(Rubric.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/courses/{courseId}/courseWork/{courseWorkId}/rubrics","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "CreateCoursesCourseWorkRubricsRequest" }) as any as S.Schema<CreateCoursesCourseWorkRubricsRequest>;
+export const CreateCoursesCourseWorkRubricsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      courseId: S.String.pipe(T.Label()),
+      courseWorkId: S.String.pipe(T.Label()),
+      body: S.optional(Rubric.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/courses/{courseId}/courseWork/{courseWorkId}/rubrics",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateCoursesCourseWorkRubricsRequest",
+}) as any as S.Schema<CreateCoursesCourseWorkRubricsRequest>;
 
 export interface CreateCoursesPostsAddOnAttachmentsRequest {
   /** Optional. Deprecated, use `item_id` instead. */
@@ -1001,15 +1165,24 @@ export interface CreateCoursesPostsAddOnAttachmentsRequest {
   /** Request body */
   body?: AddOnAttachment;
 }
-export const CreateCoursesPostsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "postId": S.String.pipe(T.Label()),
-  "courseId": S.String.pipe(T.Label()),
-  "itemId": S.optional(S.String.pipe(T.Query())),
-  "addOnToken": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(AddOnAttachment.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/courses/{courseId}/posts/{postId}/addOnAttachments","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "CreateCoursesPostsAddOnAttachmentsRequest" }) as any as S.Schema<CreateCoursesPostsAddOnAttachmentsRequest>;
+export const CreateCoursesPostsAddOnAttachmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      postId: S.String.pipe(T.Label()),
+      courseId: S.String.pipe(T.Label()),
+      itemId: S.optional(S.String.pipe(T.Query())),
+      addOnToken: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(AddOnAttachment.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/courses/{courseId}/posts/{postId}/addOnAttachments",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateCoursesPostsAddOnAttachmentsRequest",
+  }) as any as S.Schema<CreateCoursesPostsAddOnAttachmentsRequest>;
 
 /** A student group in a course. */
 export interface StudentGroup {
@@ -1021,11 +1194,11 @@ export interface StudentGroup {
   courseId?: string;
 }
 export const StudentGroup = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "title": S.optional(S.String),
-  "id": S.optional(S.String),
-  "courseId": S.optional(S.String),
-}),
+  S.Struct({
+    title: S.optional(S.String),
+    id: S.optional(S.String),
+    courseId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "StudentGroup" }) as any as S.Schema<StudentGroup>;
 
 export interface CreateCoursesStudentGroupsRequest {
@@ -1035,11 +1208,19 @@ export interface CreateCoursesStudentGroupsRequest {
   body?: StudentGroup;
 }
 export const CreateCoursesStudentGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseId": S.String.pipe(T.Label()),
-  "body": S.optional(StudentGroup.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/courses/{courseId}/studentGroups","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "CreateCoursesStudentGroupsRequest" }) as any as S.Schema<CreateCoursesStudentGroupsRequest>;
+  S.Struct({
+    courseId: S.String.pipe(T.Label()),
+    body: S.optional(StudentGroup.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/courses/{courseId}/studentGroups",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateCoursesStudentGroupsRequest",
+}) as any as S.Schema<CreateCoursesStudentGroupsRequest>;
 
 /** A student member in a student group. */
 export interface StudentGroupMember {
@@ -1051,12 +1232,14 @@ export interface StudentGroupMember {
   studentGroupId?: string;
 }
 export const StudentGroupMember = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "userId": S.optional(S.String),
-  "courseId": S.optional(S.String),
-  "studentGroupId": S.optional(S.String),
-}),
-).annotate({ identifier: "StudentGroupMember" }) as any as S.Schema<StudentGroupMember>;
+  S.Struct({
+    userId: S.optional(S.String),
+    courseId: S.optional(S.String),
+    studentGroupId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "StudentGroupMember",
+}) as any as S.Schema<StudentGroupMember>;
 
 export interface CreateCoursesStudentGroupsStudentGroupMembersRequest {
   /** Required. The identifier of the course. */
@@ -1066,13 +1249,22 @@ export interface CreateCoursesStudentGroupsStudentGroupMembersRequest {
   /** Request body */
   body?: StudentGroupMember;
 }
-export const CreateCoursesStudentGroupsStudentGroupMembersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseId": S.String.pipe(T.Label()),
-  "studentGroupId": S.String.pipe(T.Label()),
-  "body": S.optional(StudentGroupMember.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/courses/{courseId}/studentGroups/{studentGroupId}/studentGroupMembers","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "CreateCoursesStudentGroupsStudentGroupMembersRequest" }) as any as S.Schema<CreateCoursesStudentGroupsStudentGroupMembersRequest>;
+export const CreateCoursesStudentGroupsStudentGroupMembersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      courseId: S.String.pipe(T.Label()),
+      studentGroupId: S.String.pipe(T.Label()),
+      body: S.optional(StudentGroupMember.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/courses/{courseId}/studentGroups/{studentGroupId}/studentGroupMembers",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateCoursesStudentGroupsStudentGroupMembersRequest",
+  }) as any as S.Schema<CreateCoursesStudentGroupsStudentGroupMembersRequest>;
 
 /** Details of the user's name. */
 export interface Name {
@@ -1084,14 +1276,16 @@ export interface Name {
   familyName?: string;
 }
 export const Name = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "givenName": S.optional(S.String),
-  "fullName": S.optional(S.String),
-  "familyName": S.optional(S.String),
-}),
+  S.Struct({
+    givenName: S.optional(S.String),
+    fullName: S.optional(S.String),
+    familyName: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Name" }) as any as S.Schema<Name>;
 
-export type GlobalPermissionPermissionEnum = "PERMISSION_UNSPECIFIED" | "CREATE_COURSE";
+export type GlobalPermissionPermissionEnum =
+  | "PERMISSION_UNSPECIFIED"
+  | "CREATE_COURSE";
 export const GlobalPermissionPermissionEnum = /*@__PURE__*/ S.String;
 
 /** Global user permission description. */
@@ -1100,13 +1294,17 @@ export interface GlobalPermission {
   permission?: GlobalPermissionPermissionEnum;
 }
 export const GlobalPermission = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "permission": S.optional(GlobalPermissionPermissionEnum),
-}),
-).annotate({ identifier: "GlobalPermission" }) as any as S.Schema<GlobalPermission>;
+  S.Struct({
+    permission: S.optional(GlobalPermissionPermissionEnum),
+  }),
+).annotate({
+  identifier: "GlobalPermission",
+}) as any as S.Schema<GlobalPermission>;
 
 export type GlobalPermissionList = ReadonlyArray<GlobalPermission>;
-export const GlobalPermissionList = /*@__PURE__*/ S.Array(GlobalPermission) as any as S.Schema<GlobalPermissionList>;
+export const GlobalPermissionList = /*@__PURE__*/ S.Array(
+  GlobalPermission,
+) as any as S.Schema<GlobalPermissionList>;
 
 /** Global information for a user. */
 export interface UserProfile {
@@ -1124,14 +1322,14 @@ export interface UserProfile {
   photoUrl?: string;
 }
 export const UserProfile = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.optional(S.String),
-  "name": S.optional(Name),
-  "emailAddress": S.optional(S.String),
-  "permissions": S.optional(GlobalPermissionList),
-  "verifiedTeacher": S.optional(S.Boolean),
-  "photoUrl": S.optional(S.String),
-}),
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(Name),
+    emailAddress: S.optional(S.String),
+    permissions: S.optional(GlobalPermissionList),
+    verifiedTeacher: S.optional(S.Boolean),
+    photoUrl: S.optional(S.String),
+  }),
 ).annotate({ identifier: "UserProfile" }) as any as S.Schema<UserProfile>;
 
 /** Student in a course. */
@@ -1146,12 +1344,12 @@ export interface Student {
   studentWorkFolder?: DriveFolder;
 }
 export const Student = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "profile": S.optional(UserProfile),
-  "courseId": S.optional(S.String),
-  "userId": S.optional(S.String),
-  "studentWorkFolder": S.optional(DriveFolder),
-}),
+  S.Struct({
+    profile: S.optional(UserProfile),
+    courseId: S.optional(S.String),
+    userId: S.optional(S.String),
+    studentWorkFolder: S.optional(DriveFolder),
+  }),
 ).annotate({ identifier: "Student" }) as any as S.Schema<Student>;
 
 export interface CreateCoursesStudentsRequest {
@@ -1163,12 +1361,20 @@ export interface CreateCoursesStudentsRequest {
   body?: Student;
 }
 export const CreateCoursesStudentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseId": S.String.pipe(T.Label()),
-  "enrollmentCode": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Student.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/courses/{courseId}/students","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "CreateCoursesStudentsRequest" }) as any as S.Schema<CreateCoursesStudentsRequest>;
+  S.Struct({
+    courseId: S.String.pipe(T.Label()),
+    enrollmentCode: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(Student.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/courses/{courseId}/students",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateCoursesStudentsRequest",
+}) as any as S.Schema<CreateCoursesStudentsRequest>;
 
 /** Teacher of a course. */
 export interface Teacher {
@@ -1180,11 +1386,11 @@ export interface Teacher {
   userId?: string;
 }
 export const Teacher = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseId": S.optional(S.String),
-  "profile": S.optional(UserProfile),
-  "userId": S.optional(S.String),
-}),
+  S.Struct({
+    courseId: S.optional(S.String),
+    profile: S.optional(UserProfile),
+    userId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Teacher" }) as any as S.Schema<Teacher>;
 
 export interface CreateCoursesTeachersRequest {
@@ -1194,11 +1400,19 @@ export interface CreateCoursesTeachersRequest {
   body?: Teacher;
 }
 export const CreateCoursesTeachersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseId": S.String.pipe(T.Label()),
-  "body": S.optional(Teacher.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/courses/{courseId}/teachers","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "CreateCoursesTeachersRequest" }) as any as S.Schema<CreateCoursesTeachersRequest>;
+  S.Struct({
+    courseId: S.String.pipe(T.Label()),
+    body: S.optional(Teacher.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/courses/{courseId}/teachers",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateCoursesTeachersRequest",
+}) as any as S.Schema<CreateCoursesTeachersRequest>;
 
 /** Topic created by a teacher for the course */
 export interface Topic {
@@ -1212,12 +1426,12 @@ export interface Topic {
   updateTime?: string;
 }
 export const Topic = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "courseId": S.optional(S.String),
-  "topicId": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    courseId: S.optional(S.String),
+    topicId: S.optional(S.String),
+    updateTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Topic" }) as any as S.Schema<Topic>;
 
 export interface CreateCoursesTopicsRequest {
@@ -1227,13 +1441,25 @@ export interface CreateCoursesTopicsRequest {
   body?: Topic;
 }
 export const CreateCoursesTopicsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseId": S.String.pipe(T.Label()),
-  "body": S.optional(Topic.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/courses/{courseId}/topics","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "CreateCoursesTopicsRequest" }) as any as S.Schema<CreateCoursesTopicsRequest>;
+  S.Struct({
+    courseId: S.String.pipe(T.Label()),
+    body: S.optional(Topic.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/courses/{courseId}/topics",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateCoursesTopicsRequest",
+}) as any as S.Schema<CreateCoursesTopicsRequest>;
 
-export type InvitationRoleEnum = "COURSE_ROLE_UNSPECIFIED" | "STUDENT" | "TEACHER" | "OWNER";
+export type InvitationRoleEnum =
+  | "COURSE_ROLE_UNSPECIFIED"
+  | "STUDENT"
+  | "TEACHER"
+  | "OWNER";
 export const InvitationRoleEnum = /*@__PURE__*/ S.String;
 
 /** An invitation to join a course. */
@@ -1248,12 +1474,12 @@ export interface Invitation {
   id?: string;
 }
 export const Invitation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "userId": S.optional(S.String),
-  "courseId": S.optional(S.String),
-  "role": S.optional(InvitationRoleEnum),
-  "id": S.optional(S.String),
-}),
+  S.Struct({
+    userId: S.optional(S.String),
+    courseId: S.optional(S.String),
+    role: S.optional(InvitationRoleEnum),
+    id: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Invitation" }) as any as S.Schema<Invitation>;
 
 export interface CreateInvitationsRequest {
@@ -1261,12 +1487,24 @@ export interface CreateInvitationsRequest {
   body?: Invitation;
 }
 export const CreateInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(Invitation.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/invitations","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "CreateInvitationsRequest" }) as any as S.Schema<CreateInvitationsRequest>;
+  S.Struct({
+    body: S.optional(Invitation.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/invitations",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateInvitationsRequest",
+}) as any as S.Schema<CreateInvitationsRequest>;
 
-export type FeedFeedTypeEnum = "FEED_TYPE_UNSPECIFIED" | "DOMAIN_ROSTER_CHANGES" | "COURSE_ROSTER_CHANGES" | "COURSE_WORK_CHANGES";
+export type FeedFeedTypeEnum =
+  | "FEED_TYPE_UNSPECIFIED"
+  | "DOMAIN_ROSTER_CHANGES"
+  | "COURSE_ROSTER_CHANGES"
+  | "COURSE_WORK_CHANGES";
 export const FeedFeedTypeEnum = /*@__PURE__*/ S.String;
 
 /** Information about a `Feed` with a `feed_type` of `COURSE_ROSTER_CHANGES`. */
@@ -1275,10 +1513,12 @@ export interface CourseRosterChangesInfo {
   courseId?: string;
 }
 export const CourseRosterChangesInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseId": S.optional(S.String),
-}),
-).annotate({ identifier: "CourseRosterChangesInfo" }) as any as S.Schema<CourseRosterChangesInfo>;
+  S.Struct({
+    courseId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CourseRosterChangesInfo",
+}) as any as S.Schema<CourseRosterChangesInfo>;
 
 /** Information about a `Feed` with a `feed_type` of `COURSE_WORK_CHANGES`. */
 export interface CourseWorkChangesInfo {
@@ -1286,10 +1526,12 @@ export interface CourseWorkChangesInfo {
   courseId?: string;
 }
 export const CourseWorkChangesInfo = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseId": S.optional(S.String),
-}),
-).annotate({ identifier: "CourseWorkChangesInfo" }) as any as S.Schema<CourseWorkChangesInfo>;
+  S.Struct({
+    courseId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CourseWorkChangesInfo",
+}) as any as S.Schema<CourseWorkChangesInfo>;
 
 /** A class of notifications that an application can register to receive. For example: "all roster changes for a domain". */
 export interface Feed {
@@ -1301,11 +1543,11 @@ export interface Feed {
   courseWorkChangesInfo?: CourseWorkChangesInfo;
 }
 export const Feed = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "feedType": S.optional(FeedFeedTypeEnum),
-  "courseRosterChangesInfo": S.optional(CourseRosterChangesInfo),
-  "courseWorkChangesInfo": S.optional(CourseWorkChangesInfo),
-}),
+  S.Struct({
+    feedType: S.optional(FeedFeedTypeEnum),
+    courseRosterChangesInfo: S.optional(CourseRosterChangesInfo),
+    courseWorkChangesInfo: S.optional(CourseWorkChangesInfo),
+  }),
 ).annotate({ identifier: "Feed" }) as any as S.Schema<Feed>;
 
 /** A reference to a Cloud Pub/Sub topic. To register for notifications, the owner of the topic must grant `classroom-notifications@system.gserviceaccount.com` the `projects.topics.publish` permission. */
@@ -1314,10 +1556,12 @@ export interface CloudPubsubTopic {
   topicName?: string;
 }
 export const CloudPubsubTopic = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "topicName": S.optional(S.String),
-}),
-).annotate({ identifier: "CloudPubsubTopic" }) as any as S.Schema<CloudPubsubTopic>;
+  S.Struct({
+    topicName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CloudPubsubTopic",
+}) as any as S.Schema<CloudPubsubTopic>;
 
 /** An instruction to Classroom to send notifications from the `feed` to the provided destination. */
 export interface Registration {
@@ -1331,12 +1575,12 @@ export interface Registration {
   registrationId?: string;
 }
 export const Registration = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "feed": S.optional(Feed),
-  "cloudPubsubTopic": S.optional(CloudPubsubTopic),
-  "expiryTime": S.optional(S.String),
-  "registrationId": S.optional(S.String),
-}),
+  S.Struct({
+    feed: S.optional(Feed),
+    cloudPubsubTopic: S.optional(CloudPubsubTopic),
+    expiryTime: S.optional(S.String),
+    registrationId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Registration" }) as any as S.Schema<Registration>;
 
 export interface CreateRegistrationsRequest {
@@ -1344,12 +1588,23 @@ export interface CreateRegistrationsRequest {
   body?: Registration;
 }
 export const CreateRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(Registration.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/registrations","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "CreateRegistrationsRequest" }) as any as S.Schema<CreateRegistrationsRequest>;
+  S.Struct({
+    body: S.optional(Registration.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/registrations",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateRegistrationsRequest",
+}) as any as S.Schema<CreateRegistrationsRequest>;
 
-export type GuardianInvitationStateEnum = "GUARDIAN_INVITATION_STATE_UNSPECIFIED" | "PENDING" | "COMPLETE";
+export type GuardianInvitationStateEnum =
+  | "GUARDIAN_INVITATION_STATE_UNSPECIFIED"
+  | "PENDING"
+  | "COMPLETE";
 export const GuardianInvitationStateEnum = /*@__PURE__*/ S.String;
 
 /** An invitation to become the guardian of a specified user, sent to a specified email address. */
@@ -1366,14 +1621,16 @@ export interface GuardianInvitation {
   creationTime?: string;
 }
 export const GuardianInvitation = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "state": S.optional(GuardianInvitationStateEnum),
-  "studentId": S.optional(S.String),
-  "invitedEmailAddress": S.optional(S.String),
-  "invitationId": S.optional(S.String),
-  "creationTime": S.optional(S.String),
-}),
-).annotate({ identifier: "GuardianInvitation" }) as any as S.Schema<GuardianInvitation>;
+  S.Struct({
+    state: S.optional(GuardianInvitationStateEnum),
+    studentId: S.optional(S.String),
+    invitedEmailAddress: S.optional(S.String),
+    invitationId: S.optional(S.String),
+    creationTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GuardianInvitation",
+}) as any as S.Schema<GuardianInvitation>;
 
 export interface CreateUserProfilesGuardianInvitationsRequest {
   /** ID of the student (in standard format) */
@@ -1381,22 +1638,39 @@ export interface CreateUserProfilesGuardianInvitationsRequest {
   /** Request body */
   body?: GuardianInvitation;
 }
-export const CreateUserProfilesGuardianInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "studentId": S.String.pipe(T.Label()),
-  "body": S.optional(GuardianInvitation.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/userProfiles/{studentId}/guardianInvitations","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "CreateUserProfilesGuardianInvitationsRequest" }) as any as S.Schema<CreateUserProfilesGuardianInvitationsRequest>;
+export const CreateUserProfilesGuardianInvitationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      studentId: S.String.pipe(T.Label()),
+      body: S.optional(GuardianInvitation.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/userProfiles/{studentId}/guardianInvitations",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateUserProfilesGuardianInvitationsRequest",
+  }) as any as S.Schema<CreateUserProfilesGuardianInvitationsRequest>;
 
 export interface DeleteCoursesRequest {
   /** Identifier of the course to delete. This identifier can be either the Classroom-assigned identifier or an alias. */
   id: string;
 }
 export const DeleteCoursesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/courses/{id}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "DeleteCoursesRequest" }) as any as S.Schema<DeleteCoursesRequest>;
+  S.Struct({
+    id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/courses/{id}",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteCoursesRequest",
+}) as any as S.Schema<DeleteCoursesRequest>;
 
 export interface DeleteCoursesAliasesRequest {
   /** Identifier of the course whose alias should be deleted. This identifier can be either the Classroom-assigned identifier or an alias. */
@@ -1405,11 +1679,19 @@ export interface DeleteCoursesAliasesRequest {
   alias: string;
 }
 export const DeleteCoursesAliasesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseId": S.String.pipe(T.Label()),
-  "alias": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/courses/{courseId}/aliases/{alias}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "DeleteCoursesAliasesRequest" }) as any as S.Schema<DeleteCoursesAliasesRequest>;
+  S.Struct({
+    courseId: S.String.pipe(T.Label()),
+    alias: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/courses/{courseId}/aliases/{alias}",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteCoursesAliasesRequest",
+}) as any as S.Schema<DeleteCoursesAliasesRequest>;
 
 export interface DeleteCoursesAnnouncementsRequest {
   /** Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
@@ -1418,11 +1700,19 @@ export interface DeleteCoursesAnnouncementsRequest {
   id: string;
 }
 export const DeleteCoursesAnnouncementsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseId": S.String.pipe(T.Label()),
-  "id": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/courses/{courseId}/announcements/{id}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "DeleteCoursesAnnouncementsRequest" }) as any as S.Schema<DeleteCoursesAnnouncementsRequest>;
+  S.Struct({
+    courseId: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/courses/{courseId}/announcements/{id}",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteCoursesAnnouncementsRequest",
+}) as any as S.Schema<DeleteCoursesAnnouncementsRequest>;
 
 export interface DeleteCoursesAnnouncementsAddOnAttachmentsRequest {
   /** Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id. */
@@ -1434,14 +1724,23 @@ export interface DeleteCoursesAnnouncementsAddOnAttachmentsRequest {
   /** Required. Identifier of the attachment. */
   attachmentId: string;
 }
-export const DeleteCoursesAnnouncementsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "itemId": S.String.pipe(T.Label()),
-  "courseId": S.String.pipe(T.Label()),
-  "postId": S.optional(S.String.pipe(T.Query())),
-  "attachmentId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/courses/{courseId}/announcements/{itemId}/addOnAttachments/{attachmentId}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "DeleteCoursesAnnouncementsAddOnAttachmentsRequest" }) as any as S.Schema<DeleteCoursesAnnouncementsAddOnAttachmentsRequest>;
+export const DeleteCoursesAnnouncementsAddOnAttachmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemId: S.String.pipe(T.Label()),
+      courseId: S.String.pipe(T.Label()),
+      postId: S.optional(S.String.pipe(T.Query())),
+      attachmentId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/courses/{courseId}/announcements/{itemId}/addOnAttachments/{attachmentId}",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteCoursesAnnouncementsAddOnAttachmentsRequest",
+  }) as any as S.Schema<DeleteCoursesAnnouncementsAddOnAttachmentsRequest>;
 
 export interface DeleteCoursesCourseWorkRequest {
   /** Identifier of the course work to delete. This identifier is a Classroom-assigned identifier. */
@@ -1450,11 +1749,19 @@ export interface DeleteCoursesCourseWorkRequest {
   courseId: string;
 }
 export const DeleteCoursesCourseWorkRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.String.pipe(T.Label()),
-  "courseId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/courses/{courseId}/courseWork/{id}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "DeleteCoursesCourseWorkRequest" }) as any as S.Schema<DeleteCoursesCourseWorkRequest>;
+  S.Struct({
+    id: S.String.pipe(T.Label()),
+    courseId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/courses/{courseId}/courseWork/{id}",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteCoursesCourseWorkRequest",
+}) as any as S.Schema<DeleteCoursesCourseWorkRequest>;
 
 export interface DeleteCoursesCourseWorkAddOnAttachmentsRequest {
   /** Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id. */
@@ -1466,14 +1773,23 @@ export interface DeleteCoursesCourseWorkAddOnAttachmentsRequest {
   /** Required. Identifier of the attachment. */
   attachmentId: string;
 }
-export const DeleteCoursesCourseWorkAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "itemId": S.String.pipe(T.Label()),
-  "courseId": S.String.pipe(T.Label()),
-  "postId": S.optional(S.String.pipe(T.Query())),
-  "attachmentId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments/{attachmentId}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "DeleteCoursesCourseWorkAddOnAttachmentsRequest" }) as any as S.Schema<DeleteCoursesCourseWorkAddOnAttachmentsRequest>;
+export const DeleteCoursesCourseWorkAddOnAttachmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemId: S.String.pipe(T.Label()),
+      courseId: S.String.pipe(T.Label()),
+      postId: S.optional(S.String.pipe(T.Query())),
+      attachmentId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments/{attachmentId}",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteCoursesCourseWorkAddOnAttachmentsRequest",
+  }) as any as S.Schema<DeleteCoursesCourseWorkAddOnAttachmentsRequest>;
 
 export interface DeleteCoursesCourseWorkMaterialsRequest {
   /** Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
@@ -1481,12 +1797,21 @@ export interface DeleteCoursesCourseWorkMaterialsRequest {
   /** Identifier of the course work material to delete. This identifier is a Classroom-assigned identifier. */
   id: string;
 }
-export const DeleteCoursesCourseWorkMaterialsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseId": S.String.pipe(T.Label()),
-  "id": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/courses/{courseId}/courseWorkMaterials/{id}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "DeleteCoursesCourseWorkMaterialsRequest" }) as any as S.Schema<DeleteCoursesCourseWorkMaterialsRequest>;
+export const DeleteCoursesCourseWorkMaterialsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      courseId: S.String.pipe(T.Label()),
+      id: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/courses/{courseId}/courseWorkMaterials/{id}",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteCoursesCourseWorkMaterialsRequest",
+}) as any as S.Schema<DeleteCoursesCourseWorkMaterialsRequest>;
 
 export interface DeleteCoursesCourseWorkMaterialsAddOnAttachmentsRequest {
   /** Required. Identifier of the attachment. */
@@ -1498,14 +1823,23 @@ export interface DeleteCoursesCourseWorkMaterialsAddOnAttachmentsRequest {
   /** Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id. */
   itemId: string;
 }
-export const DeleteCoursesCourseWorkMaterialsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "attachmentId": S.String.pipe(T.Label()),
-  "postId": S.optional(S.String.pipe(T.Query())),
-  "courseId": S.String.pipe(T.Label()),
-  "itemId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/courses/{courseId}/courseWorkMaterials/{itemId}/addOnAttachments/{attachmentId}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "DeleteCoursesCourseWorkMaterialsAddOnAttachmentsRequest" }) as any as S.Schema<DeleteCoursesCourseWorkMaterialsAddOnAttachmentsRequest>;
+export const DeleteCoursesCourseWorkMaterialsAddOnAttachmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attachmentId: S.String.pipe(T.Label()),
+      postId: S.optional(S.String.pipe(T.Query())),
+      courseId: S.String.pipe(T.Label()),
+      itemId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/courses/{courseId}/courseWorkMaterials/{itemId}/addOnAttachments/{attachmentId}",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteCoursesCourseWorkMaterialsAddOnAttachmentsRequest",
+  }) as any as S.Schema<DeleteCoursesCourseWorkMaterialsAddOnAttachmentsRequest>;
 
 export interface DeleteCoursesCourseWorkRubricsRequest {
   /** Required. Identifier of the course work. */
@@ -1515,13 +1849,22 @@ export interface DeleteCoursesCourseWorkRubricsRequest {
   /** Required. Identifier of the course. */
   courseId: string;
 }
-export const DeleteCoursesCourseWorkRubricsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseWorkId": S.String.pipe(T.Label()),
-  "id": S.String.pipe(T.Label()),
-  "courseId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/courses/{courseId}/courseWork/{courseWorkId}/rubrics/{id}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "DeleteCoursesCourseWorkRubricsRequest" }) as any as S.Schema<DeleteCoursesCourseWorkRubricsRequest>;
+export const DeleteCoursesCourseWorkRubricsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      courseWorkId: S.String.pipe(T.Label()),
+      id: S.String.pipe(T.Label()),
+      courseId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/courses/{courseId}/courseWork/{courseWorkId}/rubrics/{id}",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteCoursesCourseWorkRubricsRequest",
+}) as any as S.Schema<DeleteCoursesCourseWorkRubricsRequest>;
 
 export interface DeleteCoursesPostsAddOnAttachmentsRequest {
   /** Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id. */
@@ -1533,14 +1876,23 @@ export interface DeleteCoursesPostsAddOnAttachmentsRequest {
   /** Required. Identifier of the attachment. */
   attachmentId: string;
 }
-export const DeleteCoursesPostsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "itemId": S.optional(S.String.pipe(T.Query())),
-  "courseId": S.String.pipe(T.Label()),
-  "postId": S.String.pipe(T.Label()),
-  "attachmentId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/courses/{courseId}/posts/{postId}/addOnAttachments/{attachmentId}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "DeleteCoursesPostsAddOnAttachmentsRequest" }) as any as S.Schema<DeleteCoursesPostsAddOnAttachmentsRequest>;
+export const DeleteCoursesPostsAddOnAttachmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemId: S.optional(S.String.pipe(T.Query())),
+      courseId: S.String.pipe(T.Label()),
+      postId: S.String.pipe(T.Label()),
+      attachmentId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/courses/{courseId}/posts/{postId}/addOnAttachments/{attachmentId}",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteCoursesPostsAddOnAttachmentsRequest",
+  }) as any as S.Schema<DeleteCoursesPostsAddOnAttachmentsRequest>;
 
 export interface DeleteCoursesStudentGroupsRequest {
   /** Required. The identifier of the student group to delete. */
@@ -1549,11 +1901,19 @@ export interface DeleteCoursesStudentGroupsRequest {
   courseId: string;
 }
 export const DeleteCoursesStudentGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.String.pipe(T.Label()),
-  "courseId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/courses/{courseId}/studentGroups/{id}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "DeleteCoursesStudentGroupsRequest" }) as any as S.Schema<DeleteCoursesStudentGroupsRequest>;
+  S.Struct({
+    id: S.String.pipe(T.Label()),
+    courseId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/courses/{courseId}/studentGroups/{id}",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteCoursesStudentGroupsRequest",
+}) as any as S.Schema<DeleteCoursesStudentGroupsRequest>;
 
 export interface DeleteCoursesStudentGroupsStudentGroupMembersRequest {
   /** Required. The identifier of the course containing the relevant student group. */
@@ -1563,13 +1923,22 @@ export interface DeleteCoursesStudentGroupsStudentGroupMembersRequest {
   /** Required. The identifier of the student group member to delete. */
   userId: string;
 }
-export const DeleteCoursesStudentGroupsStudentGroupMembersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseId": S.String.pipe(T.Label()),
-  "studentGroupId": S.String.pipe(T.Label()),
-  "userId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/courses/{courseId}/studentGroups/{studentGroupId}/studentGroupMembers/{userId}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "DeleteCoursesStudentGroupsStudentGroupMembersRequest" }) as any as S.Schema<DeleteCoursesStudentGroupsStudentGroupMembersRequest>;
+export const DeleteCoursesStudentGroupsStudentGroupMembersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      courseId: S.String.pipe(T.Label()),
+      studentGroupId: S.String.pipe(T.Label()),
+      userId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/courses/{courseId}/studentGroups/{studentGroupId}/studentGroupMembers/{userId}",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteCoursesStudentGroupsStudentGroupMembersRequest",
+  }) as any as S.Schema<DeleteCoursesStudentGroupsStudentGroupMembersRequest>;
 
 export interface DeleteCoursesStudentsRequest {
   /** Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
@@ -1578,11 +1947,19 @@ export interface DeleteCoursesStudentsRequest {
   userId: string;
 }
 export const DeleteCoursesStudentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseId": S.String.pipe(T.Label()),
-  "userId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/courses/{courseId}/students/{userId}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "DeleteCoursesStudentsRequest" }) as any as S.Schema<DeleteCoursesStudentsRequest>;
+  S.Struct({
+    courseId: S.String.pipe(T.Label()),
+    userId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/courses/{courseId}/students/{userId}",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteCoursesStudentsRequest",
+}) as any as S.Schema<DeleteCoursesStudentsRequest>;
 
 export interface DeleteCoursesTeachersRequest {
   /** Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
@@ -1591,11 +1968,19 @@ export interface DeleteCoursesTeachersRequest {
   userId: string;
 }
 export const DeleteCoursesTeachersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseId": S.String.pipe(T.Label()),
-  "userId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/courses/{courseId}/teachers/{userId}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "DeleteCoursesTeachersRequest" }) as any as S.Schema<DeleteCoursesTeachersRequest>;
+  S.Struct({
+    courseId: S.String.pipe(T.Label()),
+    userId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/courses/{courseId}/teachers/{userId}",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteCoursesTeachersRequest",
+}) as any as S.Schema<DeleteCoursesTeachersRequest>;
 
 export interface DeleteCoursesTopicsRequest {
   /** Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
@@ -1604,31 +1989,55 @@ export interface DeleteCoursesTopicsRequest {
   id: string;
 }
 export const DeleteCoursesTopicsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseId": S.String.pipe(T.Label()),
-  "id": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/courses/{courseId}/topics/{id}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "DeleteCoursesTopicsRequest" }) as any as S.Schema<DeleteCoursesTopicsRequest>;
+  S.Struct({
+    courseId: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/courses/{courseId}/topics/{id}",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteCoursesTopicsRequest",
+}) as any as S.Schema<DeleteCoursesTopicsRequest>;
 
 export interface DeleteInvitationsRequest {
   /** Identifier of the invitation to delete. */
   id: string;
 }
 export const DeleteInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/invitations/{id}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "DeleteInvitationsRequest" }) as any as S.Schema<DeleteInvitationsRequest>;
+  S.Struct({
+    id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/invitations/{id}",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteInvitationsRequest",
+}) as any as S.Schema<DeleteInvitationsRequest>;
 
 export interface DeleteRegistrationsRequest {
   /** The `registration_id` of the `Registration` to be deleted. */
   registrationId: string;
 }
 export const DeleteRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "registrationId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/registrations/{registrationId}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "DeleteRegistrationsRequest" }) as any as S.Schema<DeleteRegistrationsRequest>;
+  S.Struct({
+    registrationId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/registrations/{registrationId}",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteRegistrationsRequest",
+}) as any as S.Schema<DeleteRegistrationsRequest>;
 
 export interface DeleteUserProfilesGuardiansRequest {
   /** The `id` field from a `Guardian`. */
@@ -1637,11 +2046,19 @@ export interface DeleteUserProfilesGuardiansRequest {
   studentId: string;
 }
 export const DeleteUserProfilesGuardiansRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "guardianId": S.String.pipe(T.Label()),
-  "studentId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/userProfiles/{studentId}/guardians/{guardianId}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "DeleteUserProfilesGuardiansRequest" }) as any as S.Schema<DeleteUserProfilesGuardiansRequest>;
+  S.Struct({
+    guardianId: S.String.pipe(T.Label()),
+    studentId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/userProfiles/{studentId}/guardians/{guardianId}",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteUserProfilesGuardiansRequest",
+}) as any as S.Schema<DeleteUserProfilesGuardiansRequest>;
 
 export interface GetAddOnContextCoursesAnnouncementsRequest {
   /** Optional. Deprecated, use `item_id` instead. */
@@ -1655,15 +2072,24 @@ export interface GetAddOnContextCoursesAnnouncementsRequest {
   /** Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id. */
   itemId: string;
 }
-export const GetAddOnContextCoursesAnnouncementsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "postId": S.optional(S.String.pipe(T.Query())),
-  "attachmentId": S.optional(S.String.pipe(T.Query())),
-  "addOnToken": S.optional(S.String.pipe(T.Query())),
-  "courseId": S.String.pipe(T.Label()),
-  "itemId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/courses/{courseId}/announcements/{itemId}/addOnContext","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "GetAddOnContextCoursesAnnouncementsRequest" }) as any as S.Schema<GetAddOnContextCoursesAnnouncementsRequest>;
+export const GetAddOnContextCoursesAnnouncementsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      postId: S.optional(S.String.pipe(T.Query())),
+      attachmentId: S.optional(S.String.pipe(T.Query())),
+      addOnToken: S.optional(S.String.pipe(T.Query())),
+      courseId: S.String.pipe(T.Label()),
+      itemId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/courses/{courseId}/announcements/{itemId}/addOnContext",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetAddOnContextCoursesAnnouncementsRequest",
+  }) as any as S.Schema<GetAddOnContextCoursesAnnouncementsRequest>;
 
 /** Role-specific context if the requesting user is a student. */
 export interface StudentContext {
@@ -1671,15 +2097,15 @@ export interface StudentContext {
   submissionId?: string;
 }
 export const StudentContext = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "submissionId": S.optional(S.String),
-}),
+  S.Struct({
+    submissionId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "StudentContext" }) as any as S.Schema<StudentContext>;
 
 /** Role-specific context if the requesting user is a teacher. */
 export interface TeacherContext {}
 export const TeacherContext = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
+  S.Struct({}),
 ).annotate({ identifier: "TeacherContext" }) as any as S.Schema<TeacherContext>;
 
 /** Attachment-relevant metadata for Classroom add-ons in the context of a specific post. */
@@ -1698,14 +2124,14 @@ export interface AddOnContext {
   teacherContext?: TeacherContext;
 }
 export const AddOnContext = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseId": S.optional(S.String),
-  "supportsStudentWork": S.optional(S.Boolean),
-  "postId": S.optional(S.String),
-  "itemId": S.optional(S.String),
-  "studentContext": S.optional(StudentContext),
-  "teacherContext": S.optional(TeacherContext),
-}),
+  S.Struct({
+    courseId: S.optional(S.String),
+    supportsStudentWork: S.optional(S.Boolean),
+    postId: S.optional(S.String),
+    itemId: S.optional(S.String),
+    studentContext: S.optional(StudentContext),
+    teacherContext: S.optional(TeacherContext),
+  }),
 ).annotate({ identifier: "AddOnContext" }) as any as S.Schema<AddOnContext>;
 
 export interface GetAddOnContextCoursesCourseWorkRequest {
@@ -1720,15 +2146,24 @@ export interface GetAddOnContextCoursesCourseWorkRequest {
   /** Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id. */
   itemId: string;
 }
-export const GetAddOnContextCoursesCourseWorkRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "postId": S.optional(S.String.pipe(T.Query())),
-  "attachmentId": S.optional(S.String.pipe(T.Query())),
-  "addOnToken": S.optional(S.String.pipe(T.Query())),
-  "courseId": S.String.pipe(T.Label()),
-  "itemId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/courses/{courseId}/courseWork/{itemId}/addOnContext","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "GetAddOnContextCoursesCourseWorkRequest" }) as any as S.Schema<GetAddOnContextCoursesCourseWorkRequest>;
+export const GetAddOnContextCoursesCourseWorkRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      postId: S.optional(S.String.pipe(T.Query())),
+      attachmentId: S.optional(S.String.pipe(T.Query())),
+      addOnToken: S.optional(S.String.pipe(T.Query())),
+      courseId: S.String.pipe(T.Label()),
+      itemId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/courses/{courseId}/courseWork/{itemId}/addOnContext",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetAddOnContextCoursesCourseWorkRequest",
+}) as any as S.Schema<GetAddOnContextCoursesCourseWorkRequest>;
 
 export interface GetAddOnContextCoursesCourseWorkMaterialsRequest {
   /** Optional. Deprecated, use `item_id` instead. */
@@ -1742,15 +2177,24 @@ export interface GetAddOnContextCoursesCourseWorkMaterialsRequest {
   /** Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id. */
   itemId: string;
 }
-export const GetAddOnContextCoursesCourseWorkMaterialsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "postId": S.optional(S.String.pipe(T.Query())),
-  "attachmentId": S.optional(S.String.pipe(T.Query())),
-  "addOnToken": S.optional(S.String.pipe(T.Query())),
-  "courseId": S.String.pipe(T.Label()),
-  "itemId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/courses/{courseId}/courseWorkMaterials/{itemId}/addOnContext","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "GetAddOnContextCoursesCourseWorkMaterialsRequest" }) as any as S.Schema<GetAddOnContextCoursesCourseWorkMaterialsRequest>;
+export const GetAddOnContextCoursesCourseWorkMaterialsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      postId: S.optional(S.String.pipe(T.Query())),
+      attachmentId: S.optional(S.String.pipe(T.Query())),
+      addOnToken: S.optional(S.String.pipe(T.Query())),
+      courseId: S.String.pipe(T.Label()),
+      itemId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/courses/{courseId}/courseWorkMaterials/{itemId}/addOnContext",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetAddOnContextCoursesCourseWorkMaterialsRequest",
+  }) as any as S.Schema<GetAddOnContextCoursesCourseWorkMaterialsRequest>;
 
 export interface GetAddOnContextCoursesPostsRequest {
   /** Required. Identifier of the course. */
@@ -1765,24 +2209,40 @@ export interface GetAddOnContextCoursesPostsRequest {
   itemId?: string;
 }
 export const GetAddOnContextCoursesPostsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseId": S.String.pipe(T.Label()),
-  "addOnToken": S.optional(S.String.pipe(T.Query())),
-  "attachmentId": S.optional(S.String.pipe(T.Query())),
-  "postId": S.String.pipe(T.Label()),
-  "itemId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/courses/{courseId}/posts/{postId}/addOnContext","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "GetAddOnContextCoursesPostsRequest" }) as any as S.Schema<GetAddOnContextCoursesPostsRequest>;
+  S.Struct({
+    courseId: S.String.pipe(T.Label()),
+    addOnToken: S.optional(S.String.pipe(T.Query())),
+    attachmentId: S.optional(S.String.pipe(T.Query())),
+    postId: S.String.pipe(T.Label()),
+    itemId: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/courses/{courseId}/posts/{postId}/addOnContext",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetAddOnContextCoursesPostsRequest",
+}) as any as S.Schema<GetAddOnContextCoursesPostsRequest>;
 
 export interface GetCoursesRequest {
   /** Identifier of the course to return. This identifier can be either the Classroom-assigned identifier or an alias. */
   id: string;
 }
 export const GetCoursesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/courses/{id}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "GetCoursesRequest" }) as any as S.Schema<GetCoursesRequest>;
+  S.Struct({
+    id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/courses/{id}",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetCoursesRequest",
+}) as any as S.Schema<GetCoursesRequest>;
 
 export interface GetCoursesAnnouncementsRequest {
   /** Identifier of the announcement. */
@@ -1791,11 +2251,19 @@ export interface GetCoursesAnnouncementsRequest {
   courseId: string;
 }
 export const GetCoursesAnnouncementsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.String.pipe(T.Label()),
-  "courseId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/courses/{courseId}/announcements/{id}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "GetCoursesAnnouncementsRequest" }) as any as S.Schema<GetCoursesAnnouncementsRequest>;
+  S.Struct({
+    id: S.String.pipe(T.Label()),
+    courseId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/courses/{courseId}/announcements/{id}",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetCoursesAnnouncementsRequest",
+}) as any as S.Schema<GetCoursesAnnouncementsRequest>;
 
 export interface GetCoursesAnnouncementsAddOnAttachmentsRequest {
   /** Required. Identifier of the course. */
@@ -1807,14 +2275,23 @@ export interface GetCoursesAnnouncementsAddOnAttachmentsRequest {
   /** Optional. Deprecated, use `item_id` instead. */
   postId?: string;
 }
-export const GetCoursesAnnouncementsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseId": S.String.pipe(T.Label()),
-  "itemId": S.String.pipe(T.Label()),
-  "attachmentId": S.String.pipe(T.Label()),
-  "postId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/courses/{courseId}/announcements/{itemId}/addOnAttachments/{attachmentId}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "GetCoursesAnnouncementsAddOnAttachmentsRequest" }) as any as S.Schema<GetCoursesAnnouncementsAddOnAttachmentsRequest>;
+export const GetCoursesAnnouncementsAddOnAttachmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      courseId: S.String.pipe(T.Label()),
+      itemId: S.String.pipe(T.Label()),
+      attachmentId: S.String.pipe(T.Label()),
+      postId: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/courses/{courseId}/announcements/{itemId}/addOnAttachments/{attachmentId}",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetCoursesAnnouncementsAddOnAttachmentsRequest",
+  }) as any as S.Schema<GetCoursesAnnouncementsAddOnAttachmentsRequest>;
 
 export interface GetCoursesCourseWorkRequest {
   /** Identifier of the course work. */
@@ -1823,11 +2300,19 @@ export interface GetCoursesCourseWorkRequest {
   courseId: string;
 }
 export const GetCoursesCourseWorkRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.String.pipe(T.Label()),
-  "courseId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/courses/{courseId}/courseWork/{id}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "GetCoursesCourseWorkRequest" }) as any as S.Schema<GetCoursesCourseWorkRequest>;
+  S.Struct({
+    id: S.String.pipe(T.Label()),
+    courseId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/courses/{courseId}/courseWork/{id}",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetCoursesCourseWorkRequest",
+}) as any as S.Schema<GetCoursesCourseWorkRequest>;
 
 export interface GetCoursesCourseWorkAddOnAttachmentsRequest {
   /** Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id. */
@@ -1839,14 +2324,23 @@ export interface GetCoursesCourseWorkAddOnAttachmentsRequest {
   /** Required. Identifier of the attachment. */
   attachmentId: string;
 }
-export const GetCoursesCourseWorkAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "itemId": S.String.pipe(T.Label()),
-  "courseId": S.String.pipe(T.Label()),
-  "postId": S.optional(S.String.pipe(T.Query())),
-  "attachmentId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments/{attachmentId}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "GetCoursesCourseWorkAddOnAttachmentsRequest" }) as any as S.Schema<GetCoursesCourseWorkAddOnAttachmentsRequest>;
+export const GetCoursesCourseWorkAddOnAttachmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemId: S.String.pipe(T.Label()),
+      courseId: S.String.pipe(T.Label()),
+      postId: S.optional(S.String.pipe(T.Query())),
+      attachmentId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments/{attachmentId}",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetCoursesCourseWorkAddOnAttachmentsRequest",
+  }) as any as S.Schema<GetCoursesCourseWorkAddOnAttachmentsRequest>;
 
 export interface GetCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest {
   /** Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id. */
@@ -1860,18 +2354,34 @@ export interface GetCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest {
   /** Required. Identifier of the attachment. */
   attachmentId: string;
 }
-export const GetCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "itemId": S.String.pipe(T.Label()),
-  "submissionId": S.String.pipe(T.Label()),
-  "courseId": S.String.pipe(T.Label()),
-  "postId": S.optional(S.String.pipe(T.Query())),
-  "attachmentId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments/{attachmentId}/studentSubmissions/{submissionId}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "GetCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest" }) as any as S.Schema<GetCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest>;
+export const GetCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemId: S.String.pipe(T.Label()),
+      submissionId: S.String.pipe(T.Label()),
+      courseId: S.String.pipe(T.Label()),
+      postId: S.optional(S.String.pipe(T.Query())),
+      attachmentId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments/{attachmentId}/studentSubmissions/{submissionId}",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest",
+  }) as any as S.Schema<GetCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest>;
 
-export type AddOnAttachmentStudentSubmissionPostSubmissionStateEnum = "SUBMISSION_STATE_UNSPECIFIED" | "NEW" | "CREATED" | "TURNED_IN" | "RETURNED" | "RECLAIMED_BY_STUDENT";
-export const AddOnAttachmentStudentSubmissionPostSubmissionStateEnum = /*@__PURE__*/ S.String;
+export type AddOnAttachmentStudentSubmissionPostSubmissionStateEnum =
+  | "SUBMISSION_STATE_UNSPECIFIED"
+  | "NEW"
+  | "CREATED"
+  | "TURNED_IN"
+  | "RETURNED"
+  | "RECLAIMED_BY_STUDENT";
+export const AddOnAttachmentStudentSubmissionPostSubmissionStateEnum =
+  /*@__PURE__*/ S.String;
 
 /** Payload for grade update requests. */
 export interface AddOnAttachmentStudentSubmission {
@@ -1887,14 +2397,18 @@ export interface AddOnAttachmentStudentSubmission {
   postSubmissionState?: AddOnAttachmentStudentSubmissionPostSubmissionStateEnum;
 }
 export const AddOnAttachmentStudentSubmission = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pointsEarned": S.optional(S.Number),
-  "id": S.optional(S.String),
-  "userId": S.optional(S.String),
-  "courseWorkSubmissionId": S.optional(S.String),
-  "postSubmissionState": S.optional(AddOnAttachmentStudentSubmissionPostSubmissionStateEnum),
-}),
-).annotate({ identifier: "AddOnAttachmentStudentSubmission" }) as any as S.Schema<AddOnAttachmentStudentSubmission>;
+  S.Struct({
+    pointsEarned: S.optional(S.Number),
+    id: S.optional(S.String),
+    userId: S.optional(S.String),
+    courseWorkSubmissionId: S.optional(S.String),
+    postSubmissionState: S.optional(
+      AddOnAttachmentStudentSubmissionPostSubmissionStateEnum,
+    ),
+  }),
+).annotate({
+  identifier: "AddOnAttachmentStudentSubmission",
+}) as any as S.Schema<AddOnAttachmentStudentSubmission>;
 
 export interface GetCoursesCourseWorkMaterialsRequest {
   /** Identifier of the course work material. */
@@ -1902,12 +2416,21 @@ export interface GetCoursesCourseWorkMaterialsRequest {
   /** Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
   courseId: string;
 }
-export const GetCoursesCourseWorkMaterialsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.String.pipe(T.Label()),
-  "courseId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/courses/{courseId}/courseWorkMaterials/{id}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "GetCoursesCourseWorkMaterialsRequest" }) as any as S.Schema<GetCoursesCourseWorkMaterialsRequest>;
+export const GetCoursesCourseWorkMaterialsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String.pipe(T.Label()),
+      courseId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/courses/{courseId}/courseWorkMaterials/{id}",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetCoursesCourseWorkMaterialsRequest",
+}) as any as S.Schema<GetCoursesCourseWorkMaterialsRequest>;
 
 export interface GetCoursesCourseWorkMaterialsAddOnAttachmentsRequest {
   /** Optional. Deprecated, use `item_id` instead. */
@@ -1919,14 +2442,23 @@ export interface GetCoursesCourseWorkMaterialsAddOnAttachmentsRequest {
   /** Required. Identifier of the course. */
   courseId: string;
 }
-export const GetCoursesCourseWorkMaterialsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "postId": S.optional(S.String.pipe(T.Query())),
-  "attachmentId": S.String.pipe(T.Label()),
-  "itemId": S.String.pipe(T.Label()),
-  "courseId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/courses/{courseId}/courseWorkMaterials/{itemId}/addOnAttachments/{attachmentId}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "GetCoursesCourseWorkMaterialsAddOnAttachmentsRequest" }) as any as S.Schema<GetCoursesCourseWorkMaterialsAddOnAttachmentsRequest>;
+export const GetCoursesCourseWorkMaterialsAddOnAttachmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      postId: S.optional(S.String.pipe(T.Query())),
+      attachmentId: S.String.pipe(T.Label()),
+      itemId: S.String.pipe(T.Label()),
+      courseId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/courses/{courseId}/courseWorkMaterials/{itemId}/addOnAttachments/{attachmentId}",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetCoursesCourseWorkMaterialsAddOnAttachmentsRequest",
+  }) as any as S.Schema<GetCoursesCourseWorkMaterialsAddOnAttachmentsRequest>;
 
 export interface GetCoursesCourseWorkRubricsRequest {
   /** Required. Identifier of the course. */
@@ -1937,12 +2469,20 @@ export interface GetCoursesCourseWorkRubricsRequest {
   id: string;
 }
 export const GetCoursesCourseWorkRubricsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseId": S.String.pipe(T.Label()),
-  "courseWorkId": S.String.pipe(T.Label()),
-  "id": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/courses/{courseId}/courseWork/{courseWorkId}/rubrics/{id}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "GetCoursesCourseWorkRubricsRequest" }) as any as S.Schema<GetCoursesCourseWorkRubricsRequest>;
+  S.Struct({
+    courseId: S.String.pipe(T.Label()),
+    courseWorkId: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/courses/{courseId}/courseWork/{courseWorkId}/rubrics/{id}",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetCoursesCourseWorkRubricsRequest",
+}) as any as S.Schema<GetCoursesCourseWorkRubricsRequest>;
 
 export interface GetCoursesCourseWorkStudentSubmissionsRequest {
   /** Identifier of the course work. */
@@ -1952,13 +2492,22 @@ export interface GetCoursesCourseWorkStudentSubmissionsRequest {
   /** Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
   courseId: string;
 }
-export const GetCoursesCourseWorkStudentSubmissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseWorkId": S.String.pipe(T.Label()),
-  "id": S.String.pipe(T.Label()),
-  "courseId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "GetCoursesCourseWorkStudentSubmissionsRequest" }) as any as S.Schema<GetCoursesCourseWorkStudentSubmissionsRequest>;
+export const GetCoursesCourseWorkStudentSubmissionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      courseWorkId: S.String.pipe(T.Label()),
+      id: S.String.pipe(T.Label()),
+      courseId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetCoursesCourseWorkStudentSubmissionsRequest",
+  }) as any as S.Schema<GetCoursesCourseWorkStudentSubmissionsRequest>;
 
 /** A rubric grade set for the student submission. There is at most one entry per rubric criterion. */
 export interface RubricGrade {
@@ -1970,17 +2519,24 @@ export interface RubricGrade {
   levelId?: string;
 }
 export const RubricGrade = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "points": S.optional(S.Number),
-  "criterionId": S.optional(S.String),
-  "levelId": S.optional(S.String),
-}),
+  S.Struct({
+    points: S.optional(S.Number),
+    criterionId: S.optional(S.String),
+    levelId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "RubricGrade" }) as any as S.Schema<RubricGrade>;
 
 export type RubricGradeMap = { [key: string]: RubricGrade | undefined };
-export const RubricGradeMap = /*@__PURE__*/ S.Record(S.String, RubricGrade) as any as S.Schema<RubricGradeMap>;
+export const RubricGradeMap = /*@__PURE__*/ S.Record(
+  S.String,
+  RubricGrade,
+) as any as S.Schema<RubricGradeMap>;
 
-export type StudentSubmissionCourseWorkTypeEnum = "COURSE_WORK_TYPE_UNSPECIFIED" | "ASSIGNMENT" | "SHORT_ANSWER_QUESTION" | "MULTIPLE_CHOICE_QUESTION";
+export type StudentSubmissionCourseWorkTypeEnum =
+  | "COURSE_WORK_TYPE_UNSPECIFIED"
+  | "ASSIGNMENT"
+  | "SHORT_ANSWER_QUESTION"
+  | "MULTIPLE_CHOICE_QUESTION";
 export const StudentSubmissionCourseWorkTypeEnum = /*@__PURE__*/ S.String;
 
 /** Attachment added to student assignment work. When creating attachments, setting the `form` field is not supported. */
@@ -1995,16 +2551,18 @@ export interface Attachment {
   form?: Form;
 }
 export const Attachment = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "driveFile": S.optional(DriveFile),
-  "youTubeVideo": S.optional(YouTubeVideo),
-  "link": S.optional(Link),
-  "form": S.optional(Form),
-}),
+  S.Struct({
+    driveFile: S.optional(DriveFile),
+    youTubeVideo: S.optional(YouTubeVideo),
+    link: S.optional(Link),
+    form: S.optional(Form),
+  }),
 ).annotate({ identifier: "Attachment" }) as any as S.Schema<Attachment>;
 
 export type AttachmentList = ReadonlyArray<Attachment>;
-export const AttachmentList = /*@__PURE__*/ S.Array(Attachment) as any as S.Schema<AttachmentList>;
+export const AttachmentList = /*@__PURE__*/ S.Array(
+  Attachment,
+) as any as S.Schema<AttachmentList>;
 
 /** Student work for an assignment. */
 export interface AssignmentSubmission {
@@ -2012,12 +2570,20 @@ export interface AssignmentSubmission {
   attachments?: AttachmentList;
 }
 export const AssignmentSubmission = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "attachments": S.optional(AttachmentList),
-}),
-).annotate({ identifier: "AssignmentSubmission" }) as any as S.Schema<AssignmentSubmission>;
+  S.Struct({
+    attachments: S.optional(AttachmentList),
+  }),
+).annotate({
+  identifier: "AssignmentSubmission",
+}) as any as S.Schema<AssignmentSubmission>;
 
-export type StudentSubmissionStateEnum = "SUBMISSION_STATE_UNSPECIFIED" | "NEW" | "CREATED" | "TURNED_IN" | "RETURNED" | "RECLAIMED_BY_STUDENT";
+export type StudentSubmissionStateEnum =
+  | "SUBMISSION_STATE_UNSPECIFIED"
+  | "NEW"
+  | "CREATED"
+  | "TURNED_IN"
+  | "RETURNED"
+  | "RECLAIMED_BY_STUDENT";
 export const StudentSubmissionStateEnum = /*@__PURE__*/ S.String;
 
 /** Student work for a multiple-choice question. */
@@ -2026,10 +2592,12 @@ export interface MultipleChoiceSubmission {
   answer?: string;
 }
 export const MultipleChoiceSubmission = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "answer": S.optional(S.String),
-}),
-).annotate({ identifier: "MultipleChoiceSubmission" }) as any as S.Schema<MultipleChoiceSubmission>;
+  S.Struct({
+    answer: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MultipleChoiceSubmission",
+}) as any as S.Schema<MultipleChoiceSubmission>;
 
 /** Student work for a short answer question. */
 export interface ShortAnswerSubmission {
@@ -2037,12 +2605,20 @@ export interface ShortAnswerSubmission {
   answer?: string;
 }
 export const ShortAnswerSubmission = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "answer": S.optional(S.String),
-}),
-).annotate({ identifier: "ShortAnswerSubmission" }) as any as S.Schema<ShortAnswerSubmission>;
+  S.Struct({
+    answer: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ShortAnswerSubmission",
+}) as any as S.Schema<ShortAnswerSubmission>;
 
-export type StateHistoryStateEnum = "STATE_UNSPECIFIED" | "CREATED" | "TURNED_IN" | "RETURNED" | "RECLAIMED_BY_STUDENT" | "STUDENT_EDITED_AFTER_TURN_IN";
+export type StateHistoryStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "CREATED"
+  | "TURNED_IN"
+  | "RETURNED"
+  | "RECLAIMED_BY_STUDENT"
+  | "STUDENT_EDITED_AFTER_TURN_IN";
 export const StateHistoryStateEnum = /*@__PURE__*/ S.String;
 
 /** The history of each state this submission has been in. */
@@ -2055,14 +2631,18 @@ export interface StateHistory {
   actorUserId?: string;
 }
 export const StateHistory = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "state": S.optional(StateHistoryStateEnum),
-  "stateTimestamp": S.optional(S.String),
-  "actorUserId": S.optional(S.String),
-}),
+  S.Struct({
+    state: S.optional(StateHistoryStateEnum),
+    stateTimestamp: S.optional(S.String),
+    actorUserId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "StateHistory" }) as any as S.Schema<StateHistory>;
 
-export type GradeHistoryGradeChangeTypeEnum = "UNKNOWN_GRADE_CHANGE_TYPE" | "DRAFT_GRADE_POINTS_EARNED_CHANGE" | "ASSIGNED_GRADE_POINTS_EARNED_CHANGE" | "MAX_POINTS_CHANGE";
+export type GradeHistoryGradeChangeTypeEnum =
+  | "UNKNOWN_GRADE_CHANGE_TYPE"
+  | "DRAFT_GRADE_POINTS_EARNED_CHANGE"
+  | "ASSIGNED_GRADE_POINTS_EARNED_CHANGE"
+  | "MAX_POINTS_CHANGE";
 export const GradeHistoryGradeChangeTypeEnum = /*@__PURE__*/ S.String;
 
 /** The history of each grade on this submission. */
@@ -2079,13 +2659,13 @@ export interface GradeHistory {
   actorUserId?: string;
 }
 export const GradeHistory = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "gradeTimestamp": S.optional(S.String),
-  "gradeChangeType": S.optional(GradeHistoryGradeChangeTypeEnum),
-  "maxPoints": S.optional(S.Number),
-  "pointsEarned": S.optional(S.Number),
-  "actorUserId": S.optional(S.String),
-}),
+  S.Struct({
+    gradeTimestamp: S.optional(S.String),
+    gradeChangeType: S.optional(GradeHistoryGradeChangeTypeEnum),
+    maxPoints: S.optional(S.Number),
+    pointsEarned: S.optional(S.Number),
+    actorUserId: S.optional(S.String),
+  }),
 ).annotate({ identifier: "GradeHistory" }) as any as S.Schema<GradeHistory>;
 
 /** The history of the submission. This currently includes state and grade histories. */
@@ -2096,14 +2676,18 @@ export interface SubmissionHistory {
   gradeHistory?: GradeHistory;
 }
 export const SubmissionHistory = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "stateHistory": S.optional(StateHistory),
-  "gradeHistory": S.optional(GradeHistory),
-}),
-).annotate({ identifier: "SubmissionHistory" }) as any as S.Schema<SubmissionHistory>;
+  S.Struct({
+    stateHistory: S.optional(StateHistory),
+    gradeHistory: S.optional(GradeHistory),
+  }),
+).annotate({
+  identifier: "SubmissionHistory",
+}) as any as S.Schema<SubmissionHistory>;
 
 export type SubmissionHistoryList = ReadonlyArray<SubmissionHistory>;
-export const SubmissionHistoryList = /*@__PURE__*/ S.Array(SubmissionHistory) as any as S.Schema<SubmissionHistoryList>;
+export const SubmissionHistoryList = /*@__PURE__*/ S.Array(
+  SubmissionHistory,
+) as any as S.Schema<SubmissionHistoryList>;
 
 /** Student submission for course work. `StudentSubmission` items are generated when a `CourseWork` item is created. Student submissions that have never been accessed (i.e. with `state` = NEW) may not have a creation time or update time. */
 export interface StudentSubmission {
@@ -2147,28 +2731,30 @@ export interface StudentSubmission {
   submissionHistory?: SubmissionHistoryList;
 }
 export const StudentSubmission = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "draftGrade": S.optional(S.Number),
-  "draftRubricGrades": S.optional(RubricGradeMap),
-  "alternateLink": S.optional(S.String),
-  "courseWorkType": S.optional(StudentSubmissionCourseWorkTypeEnum),
-  "assignmentSubmission": S.optional(AssignmentSubmission),
-  "creationTime": S.optional(S.String),
-  "associatedWithDeveloper": S.optional(S.Boolean),
-  "courseWorkId": S.optional(S.String),
-  "courseId": S.optional(S.String),
-  "assignedGrade": S.optional(S.Number),
-  "updateTime": S.optional(S.String),
-  "state": S.optional(StudentSubmissionStateEnum),
-  "assignedRubricGrades": S.optional(RubricGradeMap),
-  "multipleChoiceSubmission": S.optional(MultipleChoiceSubmission),
-  "shortAnswerSubmission": S.optional(ShortAnswerSubmission),
-  "late": S.optional(S.Boolean),
-  "userId": S.optional(S.String),
-  "id": S.optional(S.String),
-  "submissionHistory": S.optional(SubmissionHistoryList),
-}),
-).annotate({ identifier: "StudentSubmission" }) as any as S.Schema<StudentSubmission>;
+  S.Struct({
+    draftGrade: S.optional(S.Number),
+    draftRubricGrades: S.optional(RubricGradeMap),
+    alternateLink: S.optional(S.String),
+    courseWorkType: S.optional(StudentSubmissionCourseWorkTypeEnum),
+    assignmentSubmission: S.optional(AssignmentSubmission),
+    creationTime: S.optional(S.String),
+    associatedWithDeveloper: S.optional(S.Boolean),
+    courseWorkId: S.optional(S.String),
+    courseId: S.optional(S.String),
+    assignedGrade: S.optional(S.Number),
+    updateTime: S.optional(S.String),
+    state: S.optional(StudentSubmissionStateEnum),
+    assignedRubricGrades: S.optional(RubricGradeMap),
+    multipleChoiceSubmission: S.optional(MultipleChoiceSubmission),
+    shortAnswerSubmission: S.optional(ShortAnswerSubmission),
+    late: S.optional(S.Boolean),
+    userId: S.optional(S.String),
+    id: S.optional(S.String),
+    submissionHistory: S.optional(SubmissionHistoryList),
+  }),
+).annotate({
+  identifier: "StudentSubmission",
+}) as any as S.Schema<StudentSubmission>;
 
 export interface GetCoursesPostsAddOnAttachmentsRequest {
   /** Optional. Deprecated, use `item_id` instead. */
@@ -2180,14 +2766,23 @@ export interface GetCoursesPostsAddOnAttachmentsRequest {
   /** Required. Identifier of the course. */
   courseId: string;
 }
-export const GetCoursesPostsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "postId": S.String.pipe(T.Label()),
-  "attachmentId": S.String.pipe(T.Label()),
-  "itemId": S.optional(S.String.pipe(T.Query())),
-  "courseId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/courses/{courseId}/posts/{postId}/addOnAttachments/{attachmentId}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "GetCoursesPostsAddOnAttachmentsRequest" }) as any as S.Schema<GetCoursesPostsAddOnAttachmentsRequest>;
+export const GetCoursesPostsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      postId: S.String.pipe(T.Label()),
+      attachmentId: S.String.pipe(T.Label()),
+      itemId: S.optional(S.String.pipe(T.Query())),
+      courseId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/courses/{courseId}/posts/{postId}/addOnAttachments/{attachmentId}",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetCoursesPostsAddOnAttachmentsRequest",
+}) as any as S.Schema<GetCoursesPostsAddOnAttachmentsRequest>;
 
 export interface GetCoursesPostsAddOnAttachmentsStudentSubmissionsRequest {
   /** Required. Identifier of the student’s submission. */
@@ -2201,15 +2796,24 @@ export interface GetCoursesPostsAddOnAttachmentsStudentSubmissionsRequest {
   /** Required. Identifier of the course. */
   courseId: string;
 }
-export const GetCoursesPostsAddOnAttachmentsStudentSubmissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "submissionId": S.String.pipe(T.Label()),
-  "itemId": S.optional(S.String.pipe(T.Query())),
-  "postId": S.String.pipe(T.Label()),
-  "attachmentId": S.String.pipe(T.Label()),
-  "courseId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/courses/{courseId}/posts/{postId}/addOnAttachments/{attachmentId}/studentSubmissions/{submissionId}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "GetCoursesPostsAddOnAttachmentsStudentSubmissionsRequest" }) as any as S.Schema<GetCoursesPostsAddOnAttachmentsStudentSubmissionsRequest>;
+export const GetCoursesPostsAddOnAttachmentsStudentSubmissionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      submissionId: S.String.pipe(T.Label()),
+      itemId: S.optional(S.String.pipe(T.Query())),
+      postId: S.String.pipe(T.Label()),
+      attachmentId: S.String.pipe(T.Label()),
+      courseId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/courses/{courseId}/posts/{postId}/addOnAttachments/{attachmentId}/studentSubmissions/{submissionId}",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetCoursesPostsAddOnAttachmentsStudentSubmissionsRequest",
+  }) as any as S.Schema<GetCoursesPostsAddOnAttachmentsStudentSubmissionsRequest>;
 
 export interface GetCoursesStudentsRequest {
   /** Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
@@ -2218,11 +2822,19 @@ export interface GetCoursesStudentsRequest {
   userId: string;
 }
 export const GetCoursesStudentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseId": S.String.pipe(T.Label()),
-  "userId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/courses/{courseId}/students/{userId}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "GetCoursesStudentsRequest" }) as any as S.Schema<GetCoursesStudentsRequest>;
+  S.Struct({
+    courseId: S.String.pipe(T.Label()),
+    userId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/courses/{courseId}/students/{userId}",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetCoursesStudentsRequest",
+}) as any as S.Schema<GetCoursesStudentsRequest>;
 
 export interface GetCoursesTeachersRequest {
   /** Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
@@ -2231,11 +2843,19 @@ export interface GetCoursesTeachersRequest {
   userId: string;
 }
 export const GetCoursesTeachersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseId": S.String.pipe(T.Label()),
-  "userId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/courses/{courseId}/teachers/{userId}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "GetCoursesTeachersRequest" }) as any as S.Schema<GetCoursesTeachersRequest>;
+  S.Struct({
+    courseId: S.String.pipe(T.Label()),
+    userId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/courses/{courseId}/teachers/{userId}",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetCoursesTeachersRequest",
+}) as any as S.Schema<GetCoursesTeachersRequest>;
 
 export interface GetCoursesTopicsRequest {
   /** Identifier of the topic. */
@@ -2244,21 +2864,38 @@ export interface GetCoursesTopicsRequest {
   courseId: string;
 }
 export const GetCoursesTopicsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.String.pipe(T.Label()),
-  "courseId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/courses/{courseId}/topics/{id}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "GetCoursesTopicsRequest" }) as any as S.Schema<GetCoursesTopicsRequest>;
+  S.Struct({
+    id: S.String.pipe(T.Label()),
+    courseId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/courses/{courseId}/topics/{id}",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetCoursesTopicsRequest",
+}) as any as S.Schema<GetCoursesTopicsRequest>;
 
 export interface GetGradingPeriodSettingsCoursesRequest {
   /** Required. The identifier of the course. */
   courseId: string;
 }
-export const GetGradingPeriodSettingsCoursesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/courses/{courseId}/gradingPeriodSettings","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "GetGradingPeriodSettingsCoursesRequest" }) as any as S.Schema<GetGradingPeriodSettingsCoursesRequest>;
+export const GetGradingPeriodSettingsCoursesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      courseId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/courses/{courseId}/gradingPeriodSettings",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetGradingPeriodSettingsCoursesRequest",
+}) as any as S.Schema<GetGradingPeriodSettingsCoursesRequest>;
 
 /** An individual grading period. Grading periods must not have overlapping date ranges and must be listed in chronological order. For example, if the end_date of a grading period is 2024-01-25, then the start_date of the next grading period must be 2024-01-26 or later. Each grading period must have a unique title within a course. */
 export interface GradingPeriod {
@@ -2272,16 +2909,18 @@ export interface GradingPeriod {
   title?: string;
 }
 export const GradingPeriod = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.optional(S.String),
-  "startDate": S.optional(Classroom_Date),
-  "endDate": S.optional(Classroom_Date),
-  "title": S.optional(S.String),
-}),
+  S.Struct({
+    id: S.optional(S.String),
+    startDate: S.optional(Classroom_Date),
+    endDate: S.optional(Classroom_Date),
+    title: S.optional(S.String),
+  }),
 ).annotate({ identifier: "GradingPeriod" }) as any as S.Schema<GradingPeriod>;
 
 export type GradingPeriodList = ReadonlyArray<GradingPeriod>;
-export const GradingPeriodList = /*@__PURE__*/ S.Array(GradingPeriod) as any as S.Schema<GradingPeriodList>;
+export const GradingPeriodList = /*@__PURE__*/ S.Array(
+  GradingPeriod,
+) as any as S.Schema<GradingPeriodList>;
 
 /** Grading period settings that include all the individual grading periods in a course. */
 export interface GradingPeriodSettings {
@@ -2291,31 +2930,49 @@ export interface GradingPeriodSettings {
   applyToExistingCoursework?: boolean;
 }
 export const GradingPeriodSettings = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "gradingPeriods": S.optional(GradingPeriodList),
-  "applyToExistingCoursework": S.optional(S.Boolean),
-}),
-).annotate({ identifier: "GradingPeriodSettings" }) as any as S.Schema<GradingPeriodSettings>;
+  S.Struct({
+    gradingPeriods: S.optional(GradingPeriodList),
+    applyToExistingCoursework: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "GradingPeriodSettings",
+}) as any as S.Schema<GradingPeriodSettings>;
 
 export interface GetInvitationsRequest {
   /** Identifier of the invitation to return. */
   id: string;
 }
 export const GetInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/invitations/{id}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "GetInvitationsRequest" }) as any as S.Schema<GetInvitationsRequest>;
+  S.Struct({
+    id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/invitations/{id}",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetInvitationsRequest",
+}) as any as S.Schema<GetInvitationsRequest>;
 
 export interface GetUserProfilesRequest {
   /** Identifier of the profile to return. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user */
   userId: string;
 }
 export const GetUserProfilesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "userId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/userProfiles/{userId}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "GetUserProfilesRequest" }) as any as S.Schema<GetUserProfilesRequest>;
+  S.Struct({
+    userId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/userProfiles/{userId}",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetUserProfilesRequest",
+}) as any as S.Schema<GetUserProfilesRequest>;
 
 export interface GetUserProfilesGuardianInvitationsRequest {
   /** The `id` field of the `GuardianInvitation` being requested. */
@@ -2323,12 +2980,21 @@ export interface GetUserProfilesGuardianInvitationsRequest {
   /** The ID of the student whose guardian invitation is being requested. */
   studentId: string;
 }
-export const GetUserProfilesGuardianInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "invitationId": S.String.pipe(T.Label()),
-  "studentId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/userProfiles/{studentId}/guardianInvitations/{invitationId}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "GetUserProfilesGuardianInvitationsRequest" }) as any as S.Schema<GetUserProfilesGuardianInvitationsRequest>;
+export const GetUserProfilesGuardianInvitationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      invitationId: S.String.pipe(T.Label()),
+      studentId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/userProfiles/{studentId}/guardianInvitations/{invitationId}",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetUserProfilesGuardianInvitationsRequest",
+  }) as any as S.Schema<GetUserProfilesGuardianInvitationsRequest>;
 
 export interface GetUserProfilesGuardiansRequest {
   /** The `id` field from a `Guardian`. */
@@ -2337,11 +3003,19 @@ export interface GetUserProfilesGuardiansRequest {
   studentId: string;
 }
 export const GetUserProfilesGuardiansRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "guardianId": S.String.pipe(T.Label()),
-  "studentId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/userProfiles/{studentId}/guardians/{guardianId}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "GetUserProfilesGuardiansRequest" }) as any as S.Schema<GetUserProfilesGuardiansRequest>;
+  S.Struct({
+    guardianId: S.String.pipe(T.Label()),
+    studentId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/userProfiles/{studentId}/guardians/{guardianId}",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetUserProfilesGuardiansRequest",
+}) as any as S.Schema<GetUserProfilesGuardiansRequest>;
 
 /** Association between a student and a guardian of that student. The guardian may receive information about the student's course work. */
 export interface Guardian {
@@ -2355,19 +3029,29 @@ export interface Guardian {
   guardianProfile?: UserProfile;
 }
 export const Guardian = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "studentId": S.optional(S.String),
-  "invitedEmailAddress": S.optional(S.String),
-  "guardianId": S.optional(S.String),
-  "guardianProfile": S.optional(UserProfile),
-}),
+  S.Struct({
+    studentId: S.optional(S.String),
+    invitedEmailAddress: S.optional(S.String),
+    guardianId: S.optional(S.String),
+    guardianProfile: S.optional(UserProfile),
+  }),
 ).annotate({ identifier: "Guardian" }) as any as S.Schema<Guardian>;
 
-export type ListCoursesCourseStatesEnum = "COURSE_STATE_UNSPECIFIED" | "ACTIVE" | "ARCHIVED" | "PROVISIONED" | "DECLINED" | "SUSPENDED";
+export type ListCoursesCourseStatesEnum =
+  | "COURSE_STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "ARCHIVED"
+  | "PROVISIONED"
+  | "DECLINED"
+  | "SUSPENDED";
 export const ListCoursesCourseStatesEnum = /*@__PURE__*/ S.String;
 
-export type ListCoursesCourseStatesEnumList = ReadonlyArray<ListCoursesCourseStatesEnum | (string & {})>;
-export const ListCoursesCourseStatesEnumList = /*@__PURE__*/ S.Array(ListCoursesCourseStatesEnum) as any as S.Schema<ListCoursesCourseStatesEnumList>;
+export type ListCoursesCourseStatesEnumList = ReadonlyArray<
+  ListCoursesCourseStatesEnum | (string & {})
+>;
+export const ListCoursesCourseStatesEnumList = /*@__PURE__*/ S.Array(
+  ListCoursesCourseStatesEnum,
+) as any as S.Schema<ListCoursesCourseStatesEnumList>;
 
 export interface ListCoursesRequest {
   /** Restricts returned courses to those having a teacher with the specified identifier. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user If specified, `student_id` must be empty. */
@@ -2382,17 +3066,27 @@ export interface ListCoursesRequest {
   courseStates?: ListCoursesCourseStatesEnumList;
 }
 export const ListCoursesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "teacherId": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "studentId": S.optional(S.String.pipe(T.Query())),
-  "courseStates": S.optional(ListCoursesCourseStatesEnumList.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/courses","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "ListCoursesRequest" }) as any as S.Schema<ListCoursesRequest>;
+  S.Struct({
+    teacherId: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    studentId: S.optional(S.String.pipe(T.Query())),
+    courseStates: S.optional(ListCoursesCourseStatesEnumList.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/courses",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListCoursesRequest",
+}) as any as S.Schema<ListCoursesRequest>;
 
 export type CourseList = ReadonlyArray<Course>;
-export const CourseList = /*@__PURE__*/ S.Array(Course) as any as S.Schema<CourseList>;
+export const CourseList = /*@__PURE__*/ S.Array(
+  Course,
+) as any as S.Schema<CourseList>;
 
 /** Response when listing courses. */
 export interface ListCoursesResponse {
@@ -2402,11 +3096,13 @@ export interface ListCoursesResponse {
   courses?: CourseList;
 }
 export const ListCoursesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "courses": S.optional(CourseList),
-}),
-).annotate({ identifier: "ListCoursesResponse" }) as any as S.Schema<ListCoursesResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    courses: S.optional(CourseList),
+  }),
+).annotate({
+  identifier: "ListCoursesResponse",
+}) as any as S.Schema<ListCoursesResponse>;
 
 export interface ListCoursesAliasesRequest {
   /** The identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
@@ -2417,15 +3113,25 @@ export interface ListCoursesAliasesRequest {
   pageToken?: string;
 }
 export const ListCoursesAliasesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseId": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/courses/{courseId}/aliases","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "ListCoursesAliasesRequest" }) as any as S.Schema<ListCoursesAliasesRequest>;
+  S.Struct({
+    courseId: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/courses/{courseId}/aliases",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListCoursesAliasesRequest",
+}) as any as S.Schema<ListCoursesAliasesRequest>;
 
 export type CourseAliasList = ReadonlyArray<CourseAlias>;
-export const CourseAliasList = /*@__PURE__*/ S.Array(CourseAlias) as any as S.Schema<CourseAliasList>;
+export const CourseAliasList = /*@__PURE__*/ S.Array(
+  CourseAlias,
+) as any as S.Schema<CourseAliasList>;
 
 /** Response when listing course aliases. */
 export interface ListCourseAliasesResponse {
@@ -2435,17 +3141,29 @@ export interface ListCourseAliasesResponse {
   aliases?: CourseAliasList;
 }
 export const ListCourseAliasesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "aliases": S.optional(CourseAliasList),
-}),
-).annotate({ identifier: "ListCourseAliasesResponse" }) as any as S.Schema<ListCourseAliasesResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    aliases: S.optional(CourseAliasList),
+  }),
+).annotate({
+  identifier: "ListCourseAliasesResponse",
+}) as any as S.Schema<ListCourseAliasesResponse>;
 
-export type ListCoursesAnnouncementsAnnouncementStatesEnum = "ANNOUNCEMENT_STATE_UNSPECIFIED" | "PUBLISHED" | "DRAFT" | "DELETED";
-export const ListCoursesAnnouncementsAnnouncementStatesEnum = /*@__PURE__*/ S.String;
+export type ListCoursesAnnouncementsAnnouncementStatesEnum =
+  | "ANNOUNCEMENT_STATE_UNSPECIFIED"
+  | "PUBLISHED"
+  | "DRAFT"
+  | "DELETED";
+export const ListCoursesAnnouncementsAnnouncementStatesEnum =
+  /*@__PURE__*/ S.String;
 
-export type ListCoursesAnnouncementsAnnouncementStatesEnumList = ReadonlyArray<ListCoursesAnnouncementsAnnouncementStatesEnum | (string & {})>;
-export const ListCoursesAnnouncementsAnnouncementStatesEnumList = /*@__PURE__*/ S.Array(ListCoursesAnnouncementsAnnouncementStatesEnum) as any as S.Schema<ListCoursesAnnouncementsAnnouncementStatesEnumList>;
+export type ListCoursesAnnouncementsAnnouncementStatesEnumList = ReadonlyArray<
+  ListCoursesAnnouncementsAnnouncementStatesEnum | (string & {})
+>;
+export const ListCoursesAnnouncementsAnnouncementStatesEnumList =
+  /*@__PURE__*/ S.Array(
+    ListCoursesAnnouncementsAnnouncementStatesEnum,
+  ) as any as S.Schema<ListCoursesAnnouncementsAnnouncementStatesEnumList>;
 
 export interface ListCoursesAnnouncementsRequest {
   /** Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
@@ -2460,17 +3178,29 @@ export interface ListCoursesAnnouncementsRequest {
   announcementStates?: ListCoursesAnnouncementsAnnouncementStatesEnumList;
 }
 export const ListCoursesAnnouncementsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseId": S.String.pipe(T.Label()),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "announcementStates": S.optional(ListCoursesAnnouncementsAnnouncementStatesEnumList.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/courses/{courseId}/announcements","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "ListCoursesAnnouncementsRequest" }) as any as S.Schema<ListCoursesAnnouncementsRequest>;
+  S.Struct({
+    courseId: S.String.pipe(T.Label()),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    announcementStates: S.optional(
+      ListCoursesAnnouncementsAnnouncementStatesEnumList.pipe(T.Query()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/courses/{courseId}/announcements",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListCoursesAnnouncementsRequest",
+}) as any as S.Schema<ListCoursesAnnouncementsRequest>;
 
 export type AnnouncementList = ReadonlyArray<Announcement>;
-export const AnnouncementList = /*@__PURE__*/ S.Array(Announcement) as any as S.Schema<AnnouncementList>;
+export const AnnouncementList = /*@__PURE__*/ S.Array(
+  Announcement,
+) as any as S.Schema<AnnouncementList>;
 
 /** Response when listing course work. */
 export interface ListAnnouncementsResponse {
@@ -2480,11 +3210,13 @@ export interface ListAnnouncementsResponse {
   announcements?: AnnouncementList;
 }
 export const ListAnnouncementsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "announcements": S.optional(AnnouncementList),
-}),
-).annotate({ identifier: "ListAnnouncementsResponse" }) as any as S.Schema<ListAnnouncementsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    announcements: S.optional(AnnouncementList),
+  }),
+).annotate({
+  identifier: "ListAnnouncementsResponse",
+}) as any as S.Schema<ListAnnouncementsResponse>;
 
 export interface ListCoursesAnnouncementsAddOnAttachmentsRequest {
   /** Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` whose attachments should be enumerated. This field is required, but is not marked as such while we are migrating from post_id. */
@@ -2498,18 +3230,29 @@ export interface ListCoursesAnnouncementsAddOnAttachmentsRequest {
   /** Optional. Identifier of the post under the course whose attachments to enumerate. Deprecated, use `item_id` instead. */
   postId?: string;
 }
-export const ListCoursesAnnouncementsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "itemId": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "courseId": S.String.pipe(T.Label()),
-  "postId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/courses/{courseId}/announcements/{itemId}/addOnAttachments","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "ListCoursesAnnouncementsAddOnAttachmentsRequest" }) as any as S.Schema<ListCoursesAnnouncementsAddOnAttachmentsRequest>;
+export const ListCoursesAnnouncementsAddOnAttachmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemId: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      courseId: S.String.pipe(T.Label()),
+      postId: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/courses/{courseId}/announcements/{itemId}/addOnAttachments",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListCoursesAnnouncementsAddOnAttachmentsRequest",
+  }) as any as S.Schema<ListCoursesAnnouncementsAddOnAttachmentsRequest>;
 
 export type AddOnAttachmentList = ReadonlyArray<AddOnAttachment>;
-export const AddOnAttachmentList = /*@__PURE__*/ S.Array(AddOnAttachment) as any as S.Schema<AddOnAttachmentList>;
+export const AddOnAttachmentList = /*@__PURE__*/ S.Array(
+  AddOnAttachment,
+) as any as S.Schema<AddOnAttachmentList>;
 
 /** Response when listing add-on attachments. */
 export interface ListAddOnAttachmentsResponse {
@@ -2519,17 +3262,28 @@ export interface ListAddOnAttachmentsResponse {
   nextPageToken?: string;
 }
 export const ListAddOnAttachmentsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "addOnAttachments": S.optional(AddOnAttachmentList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListAddOnAttachmentsResponse" }) as any as S.Schema<ListAddOnAttachmentsResponse>;
+  S.Struct({
+    addOnAttachments: S.optional(AddOnAttachmentList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListAddOnAttachmentsResponse",
+}) as any as S.Schema<ListAddOnAttachmentsResponse>;
 
-export type ListCoursesCourseWorkCourseWorkStatesEnum = "COURSE_WORK_STATE_UNSPECIFIED" | "PUBLISHED" | "DRAFT" | "DELETED";
+export type ListCoursesCourseWorkCourseWorkStatesEnum =
+  | "COURSE_WORK_STATE_UNSPECIFIED"
+  | "PUBLISHED"
+  | "DRAFT"
+  | "DELETED";
 export const ListCoursesCourseWorkCourseWorkStatesEnum = /*@__PURE__*/ S.String;
 
-export type ListCoursesCourseWorkCourseWorkStatesEnumList = ReadonlyArray<ListCoursesCourseWorkCourseWorkStatesEnum | (string & {})>;
-export const ListCoursesCourseWorkCourseWorkStatesEnumList = /*@__PURE__*/ S.Array(ListCoursesCourseWorkCourseWorkStatesEnum) as any as S.Schema<ListCoursesCourseWorkCourseWorkStatesEnumList>;
+export type ListCoursesCourseWorkCourseWorkStatesEnumList = ReadonlyArray<
+  ListCoursesCourseWorkCourseWorkStatesEnum | (string & {})
+>;
+export const ListCoursesCourseWorkCourseWorkStatesEnumList =
+  /*@__PURE__*/ S.Array(
+    ListCoursesCourseWorkCourseWorkStatesEnum,
+  ) as any as S.Schema<ListCoursesCourseWorkCourseWorkStatesEnumList>;
 
 export interface ListCoursesCourseWorkRequest {
   /** Maximum number of items to return. Zero or unspecified indicates that the server may assign a maximum. The server may return fewer than the specified number of results. */
@@ -2544,17 +3298,29 @@ export interface ListCoursesCourseWorkRequest {
   courseWorkStates?: ListCoursesCourseWorkCourseWorkStatesEnumList;
 }
 export const ListCoursesCourseWorkRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "courseId": S.String.pipe(T.Label()),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-  "courseWorkStates": S.optional(ListCoursesCourseWorkCourseWorkStatesEnumList.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/courses/{courseId}/courseWork","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "ListCoursesCourseWorkRequest" }) as any as S.Schema<ListCoursesCourseWorkRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    courseId: S.String.pipe(T.Label()),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+    courseWorkStates: S.optional(
+      ListCoursesCourseWorkCourseWorkStatesEnumList.pipe(T.Query()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/courses/{courseId}/courseWork",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListCoursesCourseWorkRequest",
+}) as any as S.Schema<ListCoursesCourseWorkRequest>;
 
 export type CourseWorkList = ReadonlyArray<CourseWork>;
-export const CourseWorkList = /*@__PURE__*/ S.Array(CourseWork) as any as S.Schema<CourseWorkList>;
+export const CourseWorkList = /*@__PURE__*/ S.Array(
+  CourseWork,
+) as any as S.Schema<CourseWorkList>;
 
 /** Response when listing course work. */
 export interface ListCourseWorkResponse {
@@ -2564,11 +3330,13 @@ export interface ListCourseWorkResponse {
   nextPageToken?: string;
 }
 export const ListCourseWorkResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseWork": S.optional(CourseWorkList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListCourseWorkResponse" }) as any as S.Schema<ListCourseWorkResponse>;
+  S.Struct({
+    courseWork: S.optional(CourseWorkList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListCourseWorkResponse",
+}) as any as S.Schema<ListCourseWorkResponse>;
 
 export interface ListCoursesCourseWorkAddOnAttachmentsRequest {
   /** Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` whose attachments should be enumerated. This field is required, but is not marked as such while we are migrating from post_id. */
@@ -2582,21 +3350,41 @@ export interface ListCoursesCourseWorkAddOnAttachmentsRequest {
   /** Required. Identifier of the course. */
   courseId: string;
 }
-export const ListCoursesCourseWorkAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "itemId": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "postId": S.optional(S.String.pipe(T.Query())),
-  "courseId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "ListCoursesCourseWorkAddOnAttachmentsRequest" }) as any as S.Schema<ListCoursesCourseWorkAddOnAttachmentsRequest>;
+export const ListCoursesCourseWorkAddOnAttachmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      itemId: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      postId: S.optional(S.String.pipe(T.Query())),
+      courseId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListCoursesCourseWorkAddOnAttachmentsRequest",
+  }) as any as S.Schema<ListCoursesCourseWorkAddOnAttachmentsRequest>;
 
-export type ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnum = "COURSEWORK_MATERIAL_STATE_UNSPECIFIED" | "PUBLISHED" | "DRAFT" | "DELETED";
-export const ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnum = /*@__PURE__*/ S.String;
+export type ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnum =
+  | "COURSEWORK_MATERIAL_STATE_UNSPECIFIED"
+  | "PUBLISHED"
+  | "DRAFT"
+  | "DELETED";
+export const ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnum =
+  /*@__PURE__*/ S.String;
 
-export type ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnumList = ReadonlyArray<ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnum | (string & {})>;
-export const ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnumList = /*@__PURE__*/ S.Array(ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnum) as any as S.Schema<ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnumList>;
+export type ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnumList =
+  ReadonlyArray<
+    ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnum | (string & {})
+  >;
+export const ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnumList =
+  /*@__PURE__*/ S.Array(
+    ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnum,
+  ) as any as S.Schema<ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnumList>;
 
 export interface ListCoursesCourseWorkMaterialsRequest {
   /** Maximum number of items to return. Zero or unspecified indicates that the server may assign a maximum. The server may return fewer than the specified number of results. */
@@ -2614,20 +3402,35 @@ export interface ListCoursesCourseWorkMaterialsRequest {
   /** Optional sort ordering for results. A comma-separated list of fields with an optional sort direction keyword. Supported field is `updateTime`. Supported direction keywords are `asc` and `desc`. If not specified, `updateTime desc` is the default behavior. Examples: `updateTime asc`, `updateTime` */
   orderBy?: string;
 }
-export const ListCoursesCourseWorkMaterialsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "materialLink": S.optional(S.String.pipe(T.Query())),
-  "materialDriveId": S.optional(S.String.pipe(T.Query())),
-  "courseId": S.String.pipe(T.Label()),
-  "courseWorkMaterialStates": S.optional(ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnumList.pipe(T.Query())),
-  "orderBy": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/courses/{courseId}/courseWorkMaterials","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "ListCoursesCourseWorkMaterialsRequest" }) as any as S.Schema<ListCoursesCourseWorkMaterialsRequest>;
+export const ListCoursesCourseWorkMaterialsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      materialLink: S.optional(S.String.pipe(T.Query())),
+      materialDriveId: S.optional(S.String.pipe(T.Query())),
+      courseId: S.String.pipe(T.Label()),
+      courseWorkMaterialStates: S.optional(
+        ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnumList.pipe(
+          T.Query(),
+        ),
+      ),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/courses/{courseId}/courseWorkMaterials",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListCoursesCourseWorkMaterialsRequest",
+}) as any as S.Schema<ListCoursesCourseWorkMaterialsRequest>;
 
 export type CourseWorkMaterialList = ReadonlyArray<CourseWorkMaterial>;
-export const CourseWorkMaterialList = /*@__PURE__*/ S.Array(CourseWorkMaterial) as any as S.Schema<CourseWorkMaterialList>;
+export const CourseWorkMaterialList = /*@__PURE__*/ S.Array(
+  CourseWorkMaterial,
+) as any as S.Schema<CourseWorkMaterialList>;
 
 /** Response when listing course work material. */
 export interface ListCourseWorkMaterialResponse {
@@ -2637,11 +3440,13 @@ export interface ListCourseWorkMaterialResponse {
   nextPageToken?: string;
 }
 export const ListCourseWorkMaterialResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseWorkMaterial": S.optional(CourseWorkMaterialList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListCourseWorkMaterialResponse" }) as any as S.Schema<ListCourseWorkMaterialResponse>;
+  S.Struct({
+    courseWorkMaterial: S.optional(CourseWorkMaterialList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListCourseWorkMaterialResponse",
+}) as any as S.Schema<ListCourseWorkMaterialResponse>;
 
 export interface ListCoursesCourseWorkMaterialsAddOnAttachmentsRequest {
   /** The maximum number of attachments to return. The service may return fewer than this value. If unspecified, at most 20 attachments will be returned. The maximum value is 20; values above 20 will be coerced to 20. */
@@ -2655,15 +3460,24 @@ export interface ListCoursesCourseWorkMaterialsAddOnAttachmentsRequest {
   /** Required. Identifier of the course. */
   courseId: string;
 }
-export const ListCoursesCourseWorkMaterialsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "itemId": S.String.pipe(T.Label()),
-  "postId": S.optional(S.String.pipe(T.Query())),
-  "courseId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/courses/{courseId}/courseWorkMaterials/{itemId}/addOnAttachments","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "ListCoursesCourseWorkMaterialsAddOnAttachmentsRequest" }) as any as S.Schema<ListCoursesCourseWorkMaterialsAddOnAttachmentsRequest>;
+export const ListCoursesCourseWorkMaterialsAddOnAttachmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      itemId: S.String.pipe(T.Label()),
+      postId: S.optional(S.String.pipe(T.Query())),
+      courseId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/courses/{courseId}/courseWorkMaterials/{itemId}/addOnAttachments",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListCoursesCourseWorkMaterialsAddOnAttachmentsRequest",
+  }) as any as S.Schema<ListCoursesCourseWorkMaterialsAddOnAttachmentsRequest>;
 
 export interface ListCoursesCourseWorkRubricsRequest {
   /** Required. Identifier of the course work. */
@@ -2676,16 +3490,26 @@ export interface ListCoursesCourseWorkRubricsRequest {
   pageToken?: string;
 }
 export const ListCoursesCourseWorkRubricsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseWorkId": S.String.pipe(T.Label()),
-  "courseId": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/courses/{courseId}/courseWork/{courseWorkId}/rubrics","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "ListCoursesCourseWorkRubricsRequest" }) as any as S.Schema<ListCoursesCourseWorkRubricsRequest>;
+  S.Struct({
+    courseWorkId: S.String.pipe(T.Label()),
+    courseId: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/courses/{courseId}/courseWork/{courseWorkId}/rubrics",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListCoursesCourseWorkRubricsRequest",
+}) as any as S.Schema<ListCoursesCourseWorkRubricsRequest>;
 
 export type RubricList = ReadonlyArray<Rubric>;
-export const RubricList = /*@__PURE__*/ S.Array(Rubric) as any as S.Schema<RubricList>;
+export const RubricList = /*@__PURE__*/ S.Array(
+  Rubric,
+) as any as S.Schema<RubricList>;
 
 /** Response when listing rubrics. */
 export interface ListRubricsResponse {
@@ -2695,20 +3519,39 @@ export interface ListRubricsResponse {
   nextPageToken?: string;
 }
 export const ListRubricsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "rubrics": S.optional(RubricList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListRubricsResponse" }) as any as S.Schema<ListRubricsResponse>;
+  S.Struct({
+    rubrics: S.optional(RubricList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListRubricsResponse",
+}) as any as S.Schema<ListRubricsResponse>;
 
-export type ListCoursesCourseWorkStudentSubmissionsLateEnum = "LATE_VALUES_UNSPECIFIED" | "LATE_ONLY" | "NOT_LATE_ONLY";
-export const ListCoursesCourseWorkStudentSubmissionsLateEnum = /*@__PURE__*/ S.String;
+export type ListCoursesCourseWorkStudentSubmissionsLateEnum =
+  | "LATE_VALUES_UNSPECIFIED"
+  | "LATE_ONLY"
+  | "NOT_LATE_ONLY";
+export const ListCoursesCourseWorkStudentSubmissionsLateEnum =
+  /*@__PURE__*/ S.String;
 
-export type ListCoursesCourseWorkStudentSubmissionsStatesEnum = "SUBMISSION_STATE_UNSPECIFIED" | "NEW" | "CREATED" | "TURNED_IN" | "RETURNED" | "RECLAIMED_BY_STUDENT";
-export const ListCoursesCourseWorkStudentSubmissionsStatesEnum = /*@__PURE__*/ S.String;
+export type ListCoursesCourseWorkStudentSubmissionsStatesEnum =
+  | "SUBMISSION_STATE_UNSPECIFIED"
+  | "NEW"
+  | "CREATED"
+  | "TURNED_IN"
+  | "RETURNED"
+  | "RECLAIMED_BY_STUDENT";
+export const ListCoursesCourseWorkStudentSubmissionsStatesEnum =
+  /*@__PURE__*/ S.String;
 
-export type ListCoursesCourseWorkStudentSubmissionsStatesEnumList = ReadonlyArray<ListCoursesCourseWorkStudentSubmissionsStatesEnum | (string & {})>;
-export const ListCoursesCourseWorkStudentSubmissionsStatesEnumList = /*@__PURE__*/ S.Array(ListCoursesCourseWorkStudentSubmissionsStatesEnum) as any as S.Schema<ListCoursesCourseWorkStudentSubmissionsStatesEnumList>;
+export type ListCoursesCourseWorkStudentSubmissionsStatesEnumList =
+  ReadonlyArray<
+    ListCoursesCourseWorkStudentSubmissionsStatesEnum | (string & {})
+  >;
+export const ListCoursesCourseWorkStudentSubmissionsStatesEnumList =
+  /*@__PURE__*/ S.Array(
+    ListCoursesCourseWorkStudentSubmissionsStatesEnum,
+  ) as any as S.Schema<ListCoursesCourseWorkStudentSubmissionsStatesEnumList>;
 
 export interface ListCoursesCourseWorkStudentSubmissionsRequest {
   /** Identifier of the student work to request. This may be set to the string literal `"-"` to request student work for all course work in the specified course. */
@@ -2726,20 +3569,35 @@ export interface ListCoursesCourseWorkStudentSubmissionsRequest {
   /** Optional argument to restrict returned student work to those owned by the student with the specified identifier. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user */
   userId?: string;
 }
-export const ListCoursesCourseWorkStudentSubmissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseWorkId": S.String.pipe(T.Label()),
-  "late": S.optional(ListCoursesCourseWorkStudentSubmissionsLateEnum.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "courseId": S.String.pipe(T.Label()),
-  "states": S.optional(ListCoursesCourseWorkStudentSubmissionsStatesEnumList.pipe(T.Query())),
-  "userId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "ListCoursesCourseWorkStudentSubmissionsRequest" }) as any as S.Schema<ListCoursesCourseWorkStudentSubmissionsRequest>;
+export const ListCoursesCourseWorkStudentSubmissionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      courseWorkId: S.String.pipe(T.Label()),
+      late: S.optional(
+        ListCoursesCourseWorkStudentSubmissionsLateEnum.pipe(T.Query()),
+      ),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      courseId: S.String.pipe(T.Label()),
+      states: S.optional(
+        ListCoursesCourseWorkStudentSubmissionsStatesEnumList.pipe(T.Query()),
+      ),
+      userId: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListCoursesCourseWorkStudentSubmissionsRequest",
+  }) as any as S.Schema<ListCoursesCourseWorkStudentSubmissionsRequest>;
 
 export type StudentSubmissionList = ReadonlyArray<StudentSubmission>;
-export const StudentSubmissionList = /*@__PURE__*/ S.Array(StudentSubmission) as any as S.Schema<StudentSubmissionList>;
+export const StudentSubmissionList = /*@__PURE__*/ S.Array(
+  StudentSubmission,
+) as any as S.Schema<StudentSubmissionList>;
 
 /** Response when listing student submissions. */
 export interface ListStudentSubmissionsResponse {
@@ -2749,11 +3607,13 @@ export interface ListStudentSubmissionsResponse {
   nextPageToken?: string;
 }
 export const ListStudentSubmissionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "studentSubmissions": S.optional(StudentSubmissionList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListStudentSubmissionsResponse" }) as any as S.Schema<ListStudentSubmissionsResponse>;
+  S.Struct({
+    studentSubmissions: S.optional(StudentSubmissionList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListStudentSubmissionsResponse",
+}) as any as S.Schema<ListStudentSubmissionsResponse>;
 
 export interface ListCoursesPostsAddOnAttachmentsRequest {
   /** Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` whose attachments should be enumerated. This field is required, but is not marked as such while we are migrating from post_id. */
@@ -2767,15 +3627,24 @@ export interface ListCoursesPostsAddOnAttachmentsRequest {
   /** Optional. Identifier of the post under the course whose attachments to enumerate. Deprecated, use `item_id` instead. */
   postId: string;
 }
-export const ListCoursesPostsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "itemId": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "courseId": S.String.pipe(T.Label()),
-  "postId": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/courses/{courseId}/posts/{postId}/addOnAttachments","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "ListCoursesPostsAddOnAttachmentsRequest" }) as any as S.Schema<ListCoursesPostsAddOnAttachmentsRequest>;
+export const ListCoursesPostsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      itemId: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      courseId: S.String.pipe(T.Label()),
+      postId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/courses/{courseId}/posts/{postId}/addOnAttachments",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ListCoursesPostsAddOnAttachmentsRequest",
+}) as any as S.Schema<ListCoursesPostsAddOnAttachmentsRequest>;
 
 export interface ListCoursesStudentGroupsRequest {
   /** Required. The identifier of the course. */
@@ -2786,15 +3655,25 @@ export interface ListCoursesStudentGroupsRequest {
   pageToken?: string;
 }
 export const ListCoursesStudentGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseId": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/courses/{courseId}/studentGroups","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "ListCoursesStudentGroupsRequest" }) as any as S.Schema<ListCoursesStudentGroupsRequest>;
+  S.Struct({
+    courseId: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/courses/{courseId}/studentGroups",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListCoursesStudentGroupsRequest",
+}) as any as S.Schema<ListCoursesStudentGroupsRequest>;
 
 export type StudentGroupList = ReadonlyArray<StudentGroup>;
-export const StudentGroupList = /*@__PURE__*/ S.Array(StudentGroup) as any as S.Schema<StudentGroupList>;
+export const StudentGroupList = /*@__PURE__*/ S.Array(
+  StudentGroup,
+) as any as S.Schema<StudentGroupList>;
 
 /** Response when listing student groups. */
 export interface ListStudentGroupsResponse {
@@ -2804,11 +3683,13 @@ export interface ListStudentGroupsResponse {
   nextPageToken?: string;
 }
 export const ListStudentGroupsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "studentGroups": S.optional(StudentGroupList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListStudentGroupsResponse" }) as any as S.Schema<ListStudentGroupsResponse>;
+  S.Struct({
+    studentGroups: S.optional(StudentGroupList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListStudentGroupsResponse",
+}) as any as S.Schema<ListStudentGroupsResponse>;
 
 export interface ListCoursesStudentGroupsStudentGroupMembersRequest {
   /** Required. The identifier of the course. */
@@ -2820,17 +3701,28 @@ export interface ListCoursesStudentGroupsStudentGroupMembersRequest {
   /** nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token. */
   pageToken?: string;
 }
-export const ListCoursesStudentGroupsStudentGroupMembersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseId": S.String.pipe(T.Label()),
-  "studentGroupId": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/courses/{courseId}/studentGroups/{studentGroupId}/studentGroupMembers","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "ListCoursesStudentGroupsStudentGroupMembersRequest" }) as any as S.Schema<ListCoursesStudentGroupsStudentGroupMembersRequest>;
+export const ListCoursesStudentGroupsStudentGroupMembersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      courseId: S.String.pipe(T.Label()),
+      studentGroupId: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/courses/{courseId}/studentGroups/{studentGroupId}/studentGroupMembers",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListCoursesStudentGroupsStudentGroupMembersRequest",
+  }) as any as S.Schema<ListCoursesStudentGroupsStudentGroupMembersRequest>;
 
 export type StudentGroupMemberList = ReadonlyArray<StudentGroupMember>;
-export const StudentGroupMemberList = /*@__PURE__*/ S.Array(StudentGroupMember) as any as S.Schema<StudentGroupMemberList>;
+export const StudentGroupMemberList = /*@__PURE__*/ S.Array(
+  StudentGroupMember,
+) as any as S.Schema<StudentGroupMemberList>;
 
 /** Response when listing students in a group. */
 export interface ListStudentGroupMembersResponse {
@@ -2840,11 +3732,13 @@ export interface ListStudentGroupMembersResponse {
   nextPageToken?: string;
 }
 export const ListStudentGroupMembersResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "studentGroupMembers": S.optional(StudentGroupMemberList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListStudentGroupMembersResponse" }) as any as S.Schema<ListStudentGroupMembersResponse>;
+  S.Struct({
+    studentGroupMembers: S.optional(StudentGroupMemberList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListStudentGroupMembersResponse",
+}) as any as S.Schema<ListStudentGroupMembersResponse>;
 
 export interface ListCoursesStudentsRequest {
   /** Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
@@ -2855,15 +3749,25 @@ export interface ListCoursesStudentsRequest {
   pageToken?: string;
 }
 export const ListCoursesStudentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseId": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/courses/{courseId}/students","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "ListCoursesStudentsRequest" }) as any as S.Schema<ListCoursesStudentsRequest>;
+  S.Struct({
+    courseId: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/courses/{courseId}/students",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListCoursesStudentsRequest",
+}) as any as S.Schema<ListCoursesStudentsRequest>;
 
 export type StudentList = ReadonlyArray<Student>;
-export const StudentList = /*@__PURE__*/ S.Array(Student) as any as S.Schema<StudentList>;
+export const StudentList = /*@__PURE__*/ S.Array(
+  Student,
+) as any as S.Schema<StudentList>;
 
 /** Response when listing students. */
 export interface ListStudentsResponse {
@@ -2873,11 +3777,13 @@ export interface ListStudentsResponse {
   nextPageToken?: string;
 }
 export const ListStudentsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "students": S.optional(StudentList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListStudentsResponse" }) as any as S.Schema<ListStudentsResponse>;
+  S.Struct({
+    students: S.optional(StudentList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListStudentsResponse",
+}) as any as S.Schema<ListStudentsResponse>;
 
 export interface ListCoursesTeachersRequest {
   /** Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
@@ -2888,15 +3794,25 @@ export interface ListCoursesTeachersRequest {
   pageToken?: string;
 }
 export const ListCoursesTeachersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseId": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/courses/{courseId}/teachers","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "ListCoursesTeachersRequest" }) as any as S.Schema<ListCoursesTeachersRequest>;
+  S.Struct({
+    courseId: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/courses/{courseId}/teachers",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListCoursesTeachersRequest",
+}) as any as S.Schema<ListCoursesTeachersRequest>;
 
 export type TeacherList = ReadonlyArray<Teacher>;
-export const TeacherList = /*@__PURE__*/ S.Array(Teacher) as any as S.Schema<TeacherList>;
+export const TeacherList = /*@__PURE__*/ S.Array(
+  Teacher,
+) as any as S.Schema<TeacherList>;
 
 /** Response when listing teachers. */
 export interface ListTeachersResponse {
@@ -2906,11 +3822,13 @@ export interface ListTeachersResponse {
   teachers?: TeacherList;
 }
 export const ListTeachersResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "teachers": S.optional(TeacherList),
-}),
-).annotate({ identifier: "ListTeachersResponse" }) as any as S.Schema<ListTeachersResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    teachers: S.optional(TeacherList),
+  }),
+).annotate({
+  identifier: "ListTeachersResponse",
+}) as any as S.Schema<ListTeachersResponse>;
 
 export interface ListCoursesTopicsRequest {
   /** Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
@@ -2921,15 +3839,25 @@ export interface ListCoursesTopicsRequest {
   pageToken?: string;
 }
 export const ListCoursesTopicsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseId": S.String.pipe(T.Label()),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/courses/{courseId}/topics","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "ListCoursesTopicsRequest" }) as any as S.Schema<ListCoursesTopicsRequest>;
+  S.Struct({
+    courseId: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/courses/{courseId}/topics",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListCoursesTopicsRequest",
+}) as any as S.Schema<ListCoursesTopicsRequest>;
 
 export type TopicList = ReadonlyArray<Topic>;
-export const TopicList = /*@__PURE__*/ S.Array(Topic) as any as S.Schema<TopicList>;
+export const TopicList = /*@__PURE__*/ S.Array(
+  Topic,
+) as any as S.Schema<TopicList>;
 
 /** Response when listing topics. */
 export interface ListTopicResponse {
@@ -2939,11 +3867,13 @@ export interface ListTopicResponse {
   nextPageToken?: string;
 }
 export const ListTopicResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "topic": S.optional(TopicList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListTopicResponse" }) as any as S.Schema<ListTopicResponse>;
+  S.Struct({
+    topic: S.optional(TopicList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListTopicResponse",
+}) as any as S.Schema<ListTopicResponse>;
 
 export interface ListInvitationsRequest {
   /** Restricts returned invitations to those for a course with the specified identifier. */
@@ -2956,16 +3886,26 @@ export interface ListInvitationsRequest {
   userId?: string;
 }
 export const ListInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseId": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "userId": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/invitations","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "ListInvitationsRequest" }) as any as S.Schema<ListInvitationsRequest>;
+  S.Struct({
+    courseId: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    userId: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/invitations",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListInvitationsRequest",
+}) as any as S.Schema<ListInvitationsRequest>;
 
 export type InvitationList = ReadonlyArray<Invitation>;
-export const InvitationList = /*@__PURE__*/ S.Array(Invitation) as any as S.Schema<InvitationList>;
+export const InvitationList = /*@__PURE__*/ S.Array(
+  Invitation,
+) as any as S.Schema<InvitationList>;
 
 /** Response when listing invitations. */
 export interface ListInvitationsResponse {
@@ -2975,17 +3915,28 @@ export interface ListInvitationsResponse {
   nextPageToken?: string;
 }
 export const ListInvitationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "invitations": S.optional(InvitationList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListInvitationsResponse" }) as any as S.Schema<ListInvitationsResponse>;
+  S.Struct({
+    invitations: S.optional(InvitationList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListInvitationsResponse",
+}) as any as S.Schema<ListInvitationsResponse>;
 
-export type ListUserProfilesGuardianInvitationsStatesEnum = "GUARDIAN_INVITATION_STATE_UNSPECIFIED" | "PENDING" | "COMPLETE";
-export const ListUserProfilesGuardianInvitationsStatesEnum = /*@__PURE__*/ S.String;
+export type ListUserProfilesGuardianInvitationsStatesEnum =
+  | "GUARDIAN_INVITATION_STATE_UNSPECIFIED"
+  | "PENDING"
+  | "COMPLETE";
+export const ListUserProfilesGuardianInvitationsStatesEnum =
+  /*@__PURE__*/ S.String;
 
-export type ListUserProfilesGuardianInvitationsStatesEnumList = ReadonlyArray<ListUserProfilesGuardianInvitationsStatesEnum | (string & {})>;
-export const ListUserProfilesGuardianInvitationsStatesEnumList = /*@__PURE__*/ S.Array(ListUserProfilesGuardianInvitationsStatesEnum) as any as S.Schema<ListUserProfilesGuardianInvitationsStatesEnumList>;
+export type ListUserProfilesGuardianInvitationsStatesEnumList = ReadonlyArray<
+  ListUserProfilesGuardianInvitationsStatesEnum | (string & {})
+>;
+export const ListUserProfilesGuardianInvitationsStatesEnumList =
+  /*@__PURE__*/ S.Array(
+    ListUserProfilesGuardianInvitationsStatesEnum,
+  ) as any as S.Schema<ListUserProfilesGuardianInvitationsStatesEnumList>;
 
 export interface ListUserProfilesGuardianInvitationsRequest {
   /** The ID of the student whose guardian invitations are to be returned. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user * the string literal `"-"`, indicating that results should be returned for all students that the requesting user is permitted to view guardian invitations. */
@@ -2999,18 +3950,31 @@ export interface ListUserProfilesGuardianInvitationsRequest {
   /** Maximum number of items to return. Zero or unspecified indicates that the server may assign a maximum. The server may return fewer than the specified number of results. */
   pageSize?: number;
 }
-export const ListUserProfilesGuardianInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "studentId": S.String.pipe(T.Label()),
-  "invitedEmailAddress": S.optional(S.String.pipe(T.Query())),
-  "states": S.optional(ListUserProfilesGuardianInvitationsStatesEnumList.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/userProfiles/{studentId}/guardianInvitations","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "ListUserProfilesGuardianInvitationsRequest" }) as any as S.Schema<ListUserProfilesGuardianInvitationsRequest>;
+export const ListUserProfilesGuardianInvitationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      studentId: S.String.pipe(T.Label()),
+      invitedEmailAddress: S.optional(S.String.pipe(T.Query())),
+      states: S.optional(
+        ListUserProfilesGuardianInvitationsStatesEnumList.pipe(T.Query()),
+      ),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/userProfiles/{studentId}/guardianInvitations",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListUserProfilesGuardianInvitationsRequest",
+  }) as any as S.Schema<ListUserProfilesGuardianInvitationsRequest>;
 
 export type GuardianInvitationList = ReadonlyArray<GuardianInvitation>;
-export const GuardianInvitationList = /*@__PURE__*/ S.Array(GuardianInvitation) as any as S.Schema<GuardianInvitationList>;
+export const GuardianInvitationList = /*@__PURE__*/ S.Array(
+  GuardianInvitation,
+) as any as S.Schema<GuardianInvitationList>;
 
 /** Response when listing guardian invitations. */
 export interface ListGuardianInvitationsResponse {
@@ -3020,11 +3984,13 @@ export interface ListGuardianInvitationsResponse {
   nextPageToken?: string;
 }
 export const ListGuardianInvitationsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "guardianInvitations": S.optional(GuardianInvitationList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListGuardianInvitationsResponse" }) as any as S.Schema<ListGuardianInvitationsResponse>;
+  S.Struct({
+    guardianInvitations: S.optional(GuardianInvitationList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListGuardianInvitationsResponse",
+}) as any as S.Schema<ListGuardianInvitationsResponse>;
 
 export interface ListUserProfilesGuardiansRequest {
   /** Filter results by the student who the guardian is linked to. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user * the string literal `"-"`, indicating that results should be returned for all students that the requesting user has access to view. */
@@ -3037,16 +4003,26 @@ export interface ListUserProfilesGuardiansRequest {
   pageSize?: number;
 }
 export const ListUserProfilesGuardiansRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "studentId": S.String.pipe(T.Label()),
-  "invitedEmailAddress": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/userProfiles/{studentId}/guardians","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "ListUserProfilesGuardiansRequest" }) as any as S.Schema<ListUserProfilesGuardiansRequest>;
+  S.Struct({
+    studentId: S.String.pipe(T.Label()),
+    invitedEmailAddress: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/userProfiles/{studentId}/guardians",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListUserProfilesGuardiansRequest",
+}) as any as S.Schema<ListUserProfilesGuardiansRequest>;
 
 export type GuardianList = ReadonlyArray<Guardian>;
-export const GuardianList = /*@__PURE__*/ S.Array(Guardian) as any as S.Schema<GuardianList>;
+export const GuardianList = /*@__PURE__*/ S.Array(
+  Guardian,
+) as any as S.Schema<GuardianList>;
 
 /** Response when listing guardians. */
 export interface ListGuardiansResponse {
@@ -3056,14 +4032,20 @@ export interface ListGuardiansResponse {
   nextPageToken?: string;
 }
 export const ListGuardiansResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "guardians": S.optional(GuardianList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListGuardiansResponse" }) as any as S.Schema<ListGuardiansResponse>;
+  S.Struct({
+    guardians: S.optional(GuardianList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListGuardiansResponse",
+}) as any as S.Schema<ListGuardiansResponse>;
 
-export type ModifyAnnouncementAssigneesRequestAssigneeModeEnum = "ASSIGNEE_MODE_UNSPECIFIED" | "ALL_STUDENTS" | "INDIVIDUAL_STUDENTS";
-export const ModifyAnnouncementAssigneesRequestAssigneeModeEnum = /*@__PURE__*/ S.String;
+export type ModifyAnnouncementAssigneesRequestAssigneeModeEnum =
+  | "ASSIGNEE_MODE_UNSPECIFIED"
+  | "ALL_STUDENTS"
+  | "INDIVIDUAL_STUDENTS";
+export const ModifyAnnouncementAssigneesRequestAssigneeModeEnum =
+  /*@__PURE__*/ S.String;
 
 /** Contains fields to add or remove students from a course work or announcement where the `assigneeMode` is set to `INDIVIDUAL_STUDENTS`. */
 export interface ModifyIndividualStudentsOptions {
@@ -3073,25 +4055,35 @@ export interface ModifyIndividualStudentsOptions {
   removeStudentIds?: StringList;
 }
 export const ModifyIndividualStudentsOptions = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "addStudentIds": S.optional(StringList),
-  "removeStudentIds": S.optional(StringList),
-}),
-).annotate({ identifier: "ModifyIndividualStudentsOptions" }) as any as S.Schema<ModifyIndividualStudentsOptions>;
+  S.Struct({
+    addStudentIds: S.optional(StringList),
+    removeStudentIds: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ModifyIndividualStudentsOptions",
+}) as any as S.Schema<ModifyIndividualStudentsOptions>;
 
 /** Request to modify assignee mode and options of an announcement. */
 export interface ModifyAnnouncementAssigneesRequest {
   /** Mode of the announcement describing whether it is accessible by all students or specified individual students. */
-  assigneeMode?: ModifyAnnouncementAssigneesRequestAssigneeModeEnum | (string & {});
+  assigneeMode?:
+    | ModifyAnnouncementAssigneesRequestAssigneeModeEnum
+    | (string & {});
   /** Set which students can view or cannot view the announcement. Must be specified only when `assigneeMode` is `INDIVIDUAL_STUDENTS`. */
   modifyIndividualStudentsOptions?: ModifyIndividualStudentsOptions;
 }
 export const ModifyAnnouncementAssigneesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "assigneeMode": S.optional(ModifyAnnouncementAssigneesRequestAssigneeModeEnum),
-  "modifyIndividualStudentsOptions": S.optional(ModifyIndividualStudentsOptions),
-}),
-).annotate({ identifier: "ModifyAnnouncementAssigneesRequest" }) as any as S.Schema<ModifyAnnouncementAssigneesRequest>;
+  S.Struct({
+    assigneeMode: S.optional(
+      ModifyAnnouncementAssigneesRequestAssigneeModeEnum,
+    ),
+    modifyIndividualStudentsOptions: S.optional(
+      ModifyIndividualStudentsOptions,
+    ),
+  }),
+).annotate({
+  identifier: "ModifyAnnouncementAssigneesRequest",
+}) as any as S.Schema<ModifyAnnouncementAssigneesRequest>;
 
 export interface ModifyAssigneesCoursesAnnouncementsRequest {
   /** Identifier of the announcement. */
@@ -3101,30 +4093,49 @@ export interface ModifyAssigneesCoursesAnnouncementsRequest {
   /** Request body */
   body?: ModifyAnnouncementAssigneesRequest;
 }
-export const ModifyAssigneesCoursesAnnouncementsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.String.pipe(T.Label()),
-  "courseId": S.String.pipe(T.Label()),
-  "body": S.optional(ModifyAnnouncementAssigneesRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/courses/{courseId}/announcements/{id}:modifyAssignees","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "ModifyAssigneesCoursesAnnouncementsRequest" }) as any as S.Schema<ModifyAssigneesCoursesAnnouncementsRequest>;
+export const ModifyAssigneesCoursesAnnouncementsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String.pipe(T.Label()),
+      courseId: S.String.pipe(T.Label()),
+      body: S.optional(ModifyAnnouncementAssigneesRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/courses/{courseId}/announcements/{id}:modifyAssignees",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ModifyAssigneesCoursesAnnouncementsRequest",
+  }) as any as S.Schema<ModifyAssigneesCoursesAnnouncementsRequest>;
 
-export type ModifyCourseWorkAssigneesRequestAssigneeModeEnum = "ASSIGNEE_MODE_UNSPECIFIED" | "ALL_STUDENTS" | "INDIVIDUAL_STUDENTS";
-export const ModifyCourseWorkAssigneesRequestAssigneeModeEnum = /*@__PURE__*/ S.String;
+export type ModifyCourseWorkAssigneesRequestAssigneeModeEnum =
+  | "ASSIGNEE_MODE_UNSPECIFIED"
+  | "ALL_STUDENTS"
+  | "INDIVIDUAL_STUDENTS";
+export const ModifyCourseWorkAssigneesRequestAssigneeModeEnum =
+  /*@__PURE__*/ S.String;
 
 /** Request to modify assignee mode and options of a coursework. */
 export interface ModifyCourseWorkAssigneesRequest {
   /** Mode of the coursework describing whether it will be assigned to all students or specified individual students. */
-  assigneeMode?: ModifyCourseWorkAssigneesRequestAssigneeModeEnum | (string & {});
+  assigneeMode?:
+    | ModifyCourseWorkAssigneesRequestAssigneeModeEnum
+    | (string & {});
   /** Set which students are assigned or not assigned to the coursework. Must be specified only when `assigneeMode` is `INDIVIDUAL_STUDENTS`. */
   modifyIndividualStudentsOptions?: ModifyIndividualStudentsOptions;
 }
 export const ModifyCourseWorkAssigneesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "assigneeMode": S.optional(ModifyCourseWorkAssigneesRequestAssigneeModeEnum),
-  "modifyIndividualStudentsOptions": S.optional(ModifyIndividualStudentsOptions),
-}),
-).annotate({ identifier: "ModifyCourseWorkAssigneesRequest" }) as any as S.Schema<ModifyCourseWorkAssigneesRequest>;
+  S.Struct({
+    assigneeMode: S.optional(ModifyCourseWorkAssigneesRequestAssigneeModeEnum),
+    modifyIndividualStudentsOptions: S.optional(
+      ModifyIndividualStudentsOptions,
+    ),
+  }),
+).annotate({
+  identifier: "ModifyCourseWorkAssigneesRequest",
+}) as any as S.Schema<ModifyCourseWorkAssigneesRequest>;
 
 export interface ModifyAssigneesCoursesCourseWorkRequest {
   /** Identifier of the coursework. */
@@ -3134,13 +4145,22 @@ export interface ModifyAssigneesCoursesCourseWorkRequest {
   /** Request body */
   body?: ModifyCourseWorkAssigneesRequest;
 }
-export const ModifyAssigneesCoursesCourseWorkRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.String.pipe(T.Label()),
-  "courseId": S.String.pipe(T.Label()),
-  "body": S.optional(ModifyCourseWorkAssigneesRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/courses/{courseId}/courseWork/{id}:modifyAssignees","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "ModifyAssigneesCoursesCourseWorkRequest" }) as any as S.Schema<ModifyAssigneesCoursesCourseWorkRequest>;
+export const ModifyAssigneesCoursesCourseWorkRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String.pipe(T.Label()),
+      courseId: S.String.pipe(T.Label()),
+      body: S.optional(ModifyCourseWorkAssigneesRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/courses/{courseId}/courseWork/{id}:modifyAssignees",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "ModifyAssigneesCoursesCourseWorkRequest",
+}) as any as S.Schema<ModifyAssigneesCoursesCourseWorkRequest>;
 
 /** Request to modify the attachments of a student submission. */
 export interface ModifyAttachmentsRequest {
@@ -3148,10 +4168,12 @@ export interface ModifyAttachmentsRequest {
   addAttachments?: AttachmentList;
 }
 export const ModifyAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "addAttachments": S.optional(AttachmentList),
-}),
-).annotate({ identifier: "ModifyAttachmentsRequest" }) as any as S.Schema<ModifyAttachmentsRequest>;
+  S.Struct({
+    addAttachments: S.optional(AttachmentList),
+  }),
+).annotate({
+  identifier: "ModifyAttachmentsRequest",
+}) as any as S.Schema<ModifyAttachmentsRequest>;
 
 export interface ModifyAttachmentsCoursesCourseWorkStudentSubmissionsRequest {
   /** Identifier of the course work. */
@@ -3163,14 +4185,23 @@ export interface ModifyAttachmentsCoursesCourseWorkStudentSubmissionsRequest {
   /** Request body */
   body?: ModifyAttachmentsRequest;
 }
-export const ModifyAttachmentsCoursesCourseWorkStudentSubmissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseWorkId": S.String.pipe(T.Label()),
-  "id": S.String.pipe(T.Label()),
-  "courseId": S.String.pipe(T.Label()),
-  "body": S.optional(ModifyAttachmentsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}:modifyAttachments","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "ModifyAttachmentsCoursesCourseWorkStudentSubmissionsRequest" }) as any as S.Schema<ModifyAttachmentsCoursesCourseWorkStudentSubmissionsRequest>;
+export const ModifyAttachmentsCoursesCourseWorkStudentSubmissionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      courseWorkId: S.String.pipe(T.Label()),
+      id: S.String.pipe(T.Label()),
+      courseId: S.String.pipe(T.Label()),
+      body: S.optional(ModifyAttachmentsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}:modifyAttachments",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ModifyAttachmentsCoursesCourseWorkStudentSubmissionsRequest",
+  }) as any as S.Schema<ModifyAttachmentsCoursesCourseWorkStudentSubmissionsRequest>;
 
 export interface PatchCoursesRequest {
   /** Mask that identifies which fields on the course to update. This field is required to do an update. The update will fail if invalid fields are specified. The following fields are valid: * `courseState` * `description` * `descriptionHeading` * `name` * `ownerId` * `room` * `section` * `subject` * `learningStandardSettings` * `levels` Note: patches to ownerId are treated as being effective immediately, but in practice it may take some time for the ownership transfer of all affected resources to complete. When set in a query parameter, this field should be specified as `updateMask=,,...` */
@@ -3181,12 +4212,20 @@ export interface PatchCoursesRequest {
   body?: Course;
 }
 export const PatchCoursesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "id": S.String.pipe(T.Label()),
-  "body": S.optional(Course.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/courses/{id}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "PatchCoursesRequest" }) as any as S.Schema<PatchCoursesRequest>;
+  S.Struct({
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    id: S.String.pipe(T.Label()),
+    body: S.optional(Course.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/courses/{id}",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchCoursesRequest",
+}) as any as S.Schema<PatchCoursesRequest>;
 
 export interface PatchCoursesAnnouncementsRequest {
   /** Mask that identifies which fields on the announcement to update. This field is required to do an update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the Announcement object. If a field that does not support empty values is included in the update mask and not set in the Announcement object, an `INVALID_ARGUMENT` error is returned. The following fields may be specified by teachers: * `text` * `state` * `scheduled_time` */
@@ -3199,13 +4238,21 @@ export interface PatchCoursesAnnouncementsRequest {
   body?: Announcement;
 }
 export const PatchCoursesAnnouncementsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "id": S.String.pipe(T.Label()),
-  "courseId": S.String.pipe(T.Label()),
-  "body": S.optional(Announcement.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/courses/{courseId}/announcements/{id}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "PatchCoursesAnnouncementsRequest" }) as any as S.Schema<PatchCoursesAnnouncementsRequest>;
+  S.Struct({
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    id: S.String.pipe(T.Label()),
+    courseId: S.String.pipe(T.Label()),
+    body: S.optional(Announcement.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/courses/{courseId}/announcements/{id}",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchCoursesAnnouncementsRequest",
+}) as any as S.Schema<PatchCoursesAnnouncementsRequest>;
 
 export interface PatchCoursesAnnouncementsAddOnAttachmentsRequest {
   /** Required. Identifier of the attachment. */
@@ -3221,16 +4268,25 @@ export interface PatchCoursesAnnouncementsAddOnAttachmentsRequest {
   /** Request body */
   body?: AddOnAttachment;
 }
-export const PatchCoursesAnnouncementsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "attachmentId": S.String.pipe(T.Label()),
-  "postId": S.optional(S.String.pipe(T.Query())),
-  "courseId": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "itemId": S.String.pipe(T.Label()),
-  "body": S.optional(AddOnAttachment.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/courses/{courseId}/announcements/{itemId}/addOnAttachments/{attachmentId}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "PatchCoursesAnnouncementsAddOnAttachmentsRequest" }) as any as S.Schema<PatchCoursesAnnouncementsAddOnAttachmentsRequest>;
+export const PatchCoursesAnnouncementsAddOnAttachmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attachmentId: S.String.pipe(T.Label()),
+      postId: S.optional(S.String.pipe(T.Query())),
+      courseId: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      itemId: S.String.pipe(T.Label()),
+      body: S.optional(AddOnAttachment.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/courses/{courseId}/announcements/{itemId}/addOnAttachments/{attachmentId}",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchCoursesAnnouncementsAddOnAttachmentsRequest",
+  }) as any as S.Schema<PatchCoursesAnnouncementsAddOnAttachmentsRequest>;
 
 export interface PatchCoursesCourseWorkRequest {
   /** Mask that identifies which fields on the course work to update. This field is required to do an update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the `CourseWork` object. If a field that does not support empty values is included in the update mask and not set in the `CourseWork` object, an `INVALID_ARGUMENT` error is returned. The following fields may be specified by teachers: * `title` * `description` * `state` * `due_date` * `due_time` * `max_points` * `scheduled_time` * `submission_modification_mode` * `topic_id` * `grading_period_id` */
@@ -3243,13 +4299,21 @@ export interface PatchCoursesCourseWorkRequest {
   body?: CourseWork;
 }
 export const PatchCoursesCourseWorkRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "courseId": S.String.pipe(T.Label()),
-  "id": S.String.pipe(T.Label()),
-  "body": S.optional(CourseWork.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/courses/{courseId}/courseWork/{id}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "PatchCoursesCourseWorkRequest" }) as any as S.Schema<PatchCoursesCourseWorkRequest>;
+  S.Struct({
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    courseId: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    body: S.optional(CourseWork.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/courses/{courseId}/courseWork/{id}",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchCoursesCourseWorkRequest",
+}) as any as S.Schema<PatchCoursesCourseWorkRequest>;
 
 export interface PatchCoursesCourseWorkAddOnAttachmentsRequest {
   /** Required. Identifier of the post under which the attachment is attached. */
@@ -3265,16 +4329,25 @@ export interface PatchCoursesCourseWorkAddOnAttachmentsRequest {
   /** Request body */
   body?: AddOnAttachment;
 }
-export const PatchCoursesCourseWorkAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "postId": S.optional(S.String.pipe(T.Query())),
-  "attachmentId": S.String.pipe(T.Label()),
-  "courseId": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "itemId": S.String.pipe(T.Label()),
-  "body": S.optional(AddOnAttachment.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments/{attachmentId}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "PatchCoursesCourseWorkAddOnAttachmentsRequest" }) as any as S.Schema<PatchCoursesCourseWorkAddOnAttachmentsRequest>;
+export const PatchCoursesCourseWorkAddOnAttachmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      postId: S.optional(S.String.pipe(T.Query())),
+      attachmentId: S.String.pipe(T.Label()),
+      courseId: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      itemId: S.String.pipe(T.Label()),
+      body: S.optional(AddOnAttachment.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments/{attachmentId}",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchCoursesCourseWorkAddOnAttachmentsRequest",
+  }) as any as S.Schema<PatchCoursesCourseWorkAddOnAttachmentsRequest>;
 
 export interface PatchCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest {
   /** Required. Identifier of the course. */
@@ -3292,17 +4365,27 @@ export interface PatchCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest
   /** Request body */
   body?: AddOnAttachmentStudentSubmission;
 }
-export const PatchCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseId": S.String.pipe(T.Label()),
-  "attachmentId": S.String.pipe(T.Label()),
-  "postId": S.optional(S.String.pipe(T.Query())),
-  "itemId": S.String.pipe(T.Label()),
-  "submissionId": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(AddOnAttachmentStudentSubmission.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments/{attachmentId}/studentSubmissions/{submissionId}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "PatchCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest" }) as any as S.Schema<PatchCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest>;
+export const PatchCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      courseId: S.String.pipe(T.Label()),
+      attachmentId: S.String.pipe(T.Label()),
+      postId: S.optional(S.String.pipe(T.Query())),
+      itemId: S.String.pipe(T.Label()),
+      submissionId: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(AddOnAttachmentStudentSubmission.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments/{attachmentId}/studentSubmissions/{submissionId}",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "PatchCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest",
+  }) as any as S.Schema<PatchCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest>;
 
 export interface PatchCoursesCourseWorkMaterialsRequest {
   /** Identifier of the course work material. */
@@ -3314,14 +4397,23 @@ export interface PatchCoursesCourseWorkMaterialsRequest {
   /** Request body */
   body?: CourseWorkMaterial;
 }
-export const PatchCoursesCourseWorkMaterialsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.String.pipe(T.Label()),
-  "courseId": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(CourseWorkMaterial.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/courses/{courseId}/courseWorkMaterials/{id}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "PatchCoursesCourseWorkMaterialsRequest" }) as any as S.Schema<PatchCoursesCourseWorkMaterialsRequest>;
+export const PatchCoursesCourseWorkMaterialsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String.pipe(T.Label()),
+      courseId: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(CourseWorkMaterial.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/courses/{courseId}/courseWorkMaterials/{id}",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "PatchCoursesCourseWorkMaterialsRequest",
+}) as any as S.Schema<PatchCoursesCourseWorkMaterialsRequest>;
 
 export interface PatchCoursesCourseWorkMaterialsAddOnAttachmentsRequest {
   /** Required. Identifier of the course. */
@@ -3337,16 +4429,25 @@ export interface PatchCoursesCourseWorkMaterialsAddOnAttachmentsRequest {
   /** Request body */
   body?: AddOnAttachment;
 }
-export const PatchCoursesCourseWorkMaterialsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseId": S.String.pipe(T.Label()),
-  "postId": S.optional(S.String.pipe(T.Query())),
-  "attachmentId": S.String.pipe(T.Label()),
-  "itemId": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(AddOnAttachment.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/courses/{courseId}/courseWorkMaterials/{itemId}/addOnAttachments/{attachmentId}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "PatchCoursesCourseWorkMaterialsAddOnAttachmentsRequest" }) as any as S.Schema<PatchCoursesCourseWorkMaterialsAddOnAttachmentsRequest>;
+export const PatchCoursesCourseWorkMaterialsAddOnAttachmentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      courseId: S.String.pipe(T.Label()),
+      postId: S.optional(S.String.pipe(T.Query())),
+      attachmentId: S.String.pipe(T.Label()),
+      itemId: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(AddOnAttachment.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/courses/{courseId}/courseWorkMaterials/{itemId}/addOnAttachments/{attachmentId}",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchCoursesCourseWorkMaterialsAddOnAttachmentsRequest",
+  }) as any as S.Schema<PatchCoursesCourseWorkMaterialsAddOnAttachmentsRequest>;
 
 export interface PatchCoursesCourseWorkRubricsRequest {
   /** Optional. Mask that identifies which fields on the rubric to update. This field is required to do an update. The update fails if invalid fields are specified. There are multiple options to define the criteria of a rubric: the `source_spreadsheet_id` and the `criteria` list. Only one of these can be used at a time to define a rubric. The rubric `criteria` list is fully replaced by the rubric criteria specified in the update request. For example, if a criterion or level is missing from the request, it is deleted. New criteria and levels are added and an ID is assigned. Existing criteria and levels retain the previously assigned ID if the ID is specified in the request. The following fields can be specified by teachers: * `criteria` * `source_spreadsheet_id` */
@@ -3360,15 +4461,24 @@ export interface PatchCoursesCourseWorkRubricsRequest {
   /** Request body */
   body?: Rubric;
 }
-export const PatchCoursesCourseWorkRubricsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "courseId": S.String.pipe(T.Label()),
-  "courseWorkId": S.String.pipe(T.Label()),
-  "id": S.String.pipe(T.Label()),
-  "body": S.optional(Rubric.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/courses/{courseId}/courseWork/{courseWorkId}/rubrics/{id}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "PatchCoursesCourseWorkRubricsRequest" }) as any as S.Schema<PatchCoursesCourseWorkRubricsRequest>;
+export const PatchCoursesCourseWorkRubricsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      courseId: S.String.pipe(T.Label()),
+      courseWorkId: S.String.pipe(T.Label()),
+      id: S.String.pipe(T.Label()),
+      body: S.optional(Rubric.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/courses/{courseId}/courseWork/{courseWorkId}/rubrics/{id}",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "PatchCoursesCourseWorkRubricsRequest",
+}) as any as S.Schema<PatchCoursesCourseWorkRubricsRequest>;
 
 export interface PatchCoursesCourseWorkStudentSubmissionsRequest {
   /** Identifier of the course work. */
@@ -3382,15 +4492,24 @@ export interface PatchCoursesCourseWorkStudentSubmissionsRequest {
   /** Request body */
   body?: StudentSubmission;
 }
-export const PatchCoursesCourseWorkStudentSubmissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseWorkId": S.String.pipe(T.Label()),
-  "id": S.String.pipe(T.Label()),
-  "courseId": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(StudentSubmission.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "PatchCoursesCourseWorkStudentSubmissionsRequest" }) as any as S.Schema<PatchCoursesCourseWorkStudentSubmissionsRequest>;
+export const PatchCoursesCourseWorkStudentSubmissionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      courseWorkId: S.String.pipe(T.Label()),
+      id: S.String.pipe(T.Label()),
+      courseId: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(StudentSubmission.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchCoursesCourseWorkStudentSubmissionsRequest",
+  }) as any as S.Schema<PatchCoursesCourseWorkStudentSubmissionsRequest>;
 
 export interface PatchCoursesPostsAddOnAttachmentsRequest {
   /** Required. Identifier of the attachment. */
@@ -3406,16 +4525,25 @@ export interface PatchCoursesPostsAddOnAttachmentsRequest {
   /** Request body */
   body?: AddOnAttachment;
 }
-export const PatchCoursesPostsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "attachmentId": S.String.pipe(T.Label()),
-  "postId": S.String.pipe(T.Label()),
-  "courseId": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "itemId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(AddOnAttachment.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/courses/{courseId}/posts/{postId}/addOnAttachments/{attachmentId}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "PatchCoursesPostsAddOnAttachmentsRequest" }) as any as S.Schema<PatchCoursesPostsAddOnAttachmentsRequest>;
+export const PatchCoursesPostsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      attachmentId: S.String.pipe(T.Label()),
+      postId: S.String.pipe(T.Label()),
+      courseId: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      itemId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(AddOnAttachment.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/courses/{courseId}/posts/{postId}/addOnAttachments/{attachmentId}",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "PatchCoursesPostsAddOnAttachmentsRequest",
+}) as any as S.Schema<PatchCoursesPostsAddOnAttachmentsRequest>;
 
 export interface PatchCoursesPostsAddOnAttachmentsStudentSubmissionsRequest {
   /** Optional. Deprecated, use `item_id` instead. */
@@ -3433,17 +4561,26 @@ export interface PatchCoursesPostsAddOnAttachmentsStudentSubmissionsRequest {
   /** Request body */
   body?: AddOnAttachmentStudentSubmission;
 }
-export const PatchCoursesPostsAddOnAttachmentsStudentSubmissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "postId": S.String.pipe(T.Label()),
-  "attachmentId": S.String.pipe(T.Label()),
-  "courseId": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "submissionId": S.String.pipe(T.Label()),
-  "itemId": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(AddOnAttachmentStudentSubmission.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/courses/{courseId}/posts/{postId}/addOnAttachments/{attachmentId}/studentSubmissions/{submissionId}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "PatchCoursesPostsAddOnAttachmentsStudentSubmissionsRequest" }) as any as S.Schema<PatchCoursesPostsAddOnAttachmentsStudentSubmissionsRequest>;
+export const PatchCoursesPostsAddOnAttachmentsStudentSubmissionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      postId: S.String.pipe(T.Label()),
+      attachmentId: S.String.pipe(T.Label()),
+      courseId: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      submissionId: S.String.pipe(T.Label()),
+      itemId: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(AddOnAttachmentStudentSubmission.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/courses/{courseId}/posts/{postId}/addOnAttachments/{attachmentId}/studentSubmissions/{submissionId}",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchCoursesPostsAddOnAttachmentsStudentSubmissionsRequest",
+  }) as any as S.Schema<PatchCoursesPostsAddOnAttachmentsStudentSubmissionsRequest>;
 
 export interface PatchCoursesStudentGroupsRequest {
   /** Required. Identifier of the student group. */
@@ -3456,13 +4593,21 @@ export interface PatchCoursesStudentGroupsRequest {
   body?: StudentGroup;
 }
 export const PatchCoursesStudentGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.String.pipe(T.Label()),
-  "courseId": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(StudentGroup.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/courses/{courseId}/studentGroups/{id}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "PatchCoursesStudentGroupsRequest" }) as any as S.Schema<PatchCoursesStudentGroupsRequest>;
+  S.Struct({
+    id: S.String.pipe(T.Label()),
+    courseId: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(StudentGroup.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/courses/{courseId}/studentGroups/{id}",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchCoursesStudentGroupsRequest",
+}) as any as S.Schema<PatchCoursesStudentGroupsRequest>;
 
 export interface PatchCoursesTopicsRequest {
   /** Mask that identifies which fields on the topic to update. This field is required to do an update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the Topic object. If a field that does not support empty values is included in the update mask and not set in the Topic object, an `INVALID_ARGUMENT` error is returned. The following fields may be specified: * `name` */
@@ -3475,13 +4620,21 @@ export interface PatchCoursesTopicsRequest {
   body?: Topic;
 }
 export const PatchCoursesTopicsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "courseId": S.String.pipe(T.Label()),
-  "id": S.String.pipe(T.Label()),
-  "body": S.optional(Topic.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/courses/{courseId}/topics/{id}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "PatchCoursesTopicsRequest" }) as any as S.Schema<PatchCoursesTopicsRequest>;
+  S.Struct({
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    courseId: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    body: S.optional(Topic.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/courses/{courseId}/topics/{id}",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchCoursesTopicsRequest",
+}) as any as S.Schema<PatchCoursesTopicsRequest>;
 
 export interface PatchUserProfilesGuardianInvitationsRequest {
   /** The `id` field of the `GuardianInvitation` to be modified. */
@@ -3493,20 +4646,31 @@ export interface PatchUserProfilesGuardianInvitationsRequest {
   /** Request body */
   body?: GuardianInvitation;
 }
-export const PatchUserProfilesGuardianInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "invitationId": S.String.pipe(T.Label()),
-  "studentId": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(GuardianInvitation.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/userProfiles/{studentId}/guardianInvitations/{invitationId}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "PatchUserProfilesGuardianInvitationsRequest" }) as any as S.Schema<PatchUserProfilesGuardianInvitationsRequest>;
+export const PatchUserProfilesGuardianInvitationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      invitationId: S.String.pipe(T.Label()),
+      studentId: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(GuardianInvitation.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/userProfiles/{studentId}/guardianInvitations/{invitationId}",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchUserProfilesGuardianInvitationsRequest",
+  }) as any as S.Schema<PatchUserProfilesGuardianInvitationsRequest>;
 
 /** Request to reclaim a student submission. */
 export interface ReclaimStudentSubmissionRequest {}
 export const ReclaimStudentSubmissionRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "ReclaimStudentSubmissionRequest" }) as any as S.Schema<ReclaimStudentSubmissionRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "ReclaimStudentSubmissionRequest",
+}) as any as S.Schema<ReclaimStudentSubmissionRequest>;
 
 export interface ReclaimCoursesCourseWorkStudentSubmissionsRequest {
   /** Identifier of the course work. */
@@ -3518,20 +4682,31 @@ export interface ReclaimCoursesCourseWorkStudentSubmissionsRequest {
   /** Request body */
   body?: ReclaimStudentSubmissionRequest;
 }
-export const ReclaimCoursesCourseWorkStudentSubmissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseWorkId": S.String.pipe(T.Label()),
-  "id": S.String.pipe(T.Label()),
-  "courseId": S.String.pipe(T.Label()),
-  "body": S.optional(ReclaimStudentSubmissionRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}:reclaim","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "ReclaimCoursesCourseWorkStudentSubmissionsRequest" }) as any as S.Schema<ReclaimCoursesCourseWorkStudentSubmissionsRequest>;
+export const ReclaimCoursesCourseWorkStudentSubmissionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      courseWorkId: S.String.pipe(T.Label()),
+      id: S.String.pipe(T.Label()),
+      courseId: S.String.pipe(T.Label()),
+      body: S.optional(ReclaimStudentSubmissionRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}:reclaim",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ReclaimCoursesCourseWorkStudentSubmissionsRequest",
+  }) as any as S.Schema<ReclaimCoursesCourseWorkStudentSubmissionsRequest>;
 
 /** Request to return a student submission. */
 export interface ReturnStudentSubmissionRequest {}
 export const ReturnStudentSubmissionRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "ReturnStudentSubmissionRequest" }) as any as S.Schema<ReturnStudentSubmissionRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "ReturnStudentSubmissionRequest",
+}) as any as S.Schema<ReturnStudentSubmissionRequest>;
 
 export interface ReturnCoursesCourseWorkStudentSubmissionsRequest {
   /** Identifier of the course work. */
@@ -3543,20 +4718,31 @@ export interface ReturnCoursesCourseWorkStudentSubmissionsRequest {
   /** Request body */
   body?: ReturnStudentSubmissionRequest;
 }
-export const ReturnCoursesCourseWorkStudentSubmissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseWorkId": S.String.pipe(T.Label()),
-  "id": S.String.pipe(T.Label()),
-  "courseId": S.String.pipe(T.Label()),
-  "body": S.optional(ReturnStudentSubmissionRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}:return","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "ReturnCoursesCourseWorkStudentSubmissionsRequest" }) as any as S.Schema<ReturnCoursesCourseWorkStudentSubmissionsRequest>;
+export const ReturnCoursesCourseWorkStudentSubmissionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      courseWorkId: S.String.pipe(T.Label()),
+      id: S.String.pipe(T.Label()),
+      courseId: S.String.pipe(T.Label()),
+      body: S.optional(ReturnStudentSubmissionRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}:return",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ReturnCoursesCourseWorkStudentSubmissionsRequest",
+  }) as any as S.Schema<ReturnCoursesCourseWorkStudentSubmissionsRequest>;
 
 /** Request to turn in a student submission. */
 export interface TurnInStudentSubmissionRequest {}
 export const TurnInStudentSubmissionRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "TurnInStudentSubmissionRequest" }) as any as S.Schema<TurnInStudentSubmissionRequest>;
+  S.Struct({}),
+).annotate({
+  identifier: "TurnInStudentSubmissionRequest",
+}) as any as S.Schema<TurnInStudentSubmissionRequest>;
 
 export interface TurnInCoursesCourseWorkStudentSubmissionsRequest {
   /** Identifier of the course work. */
@@ -3568,14 +4754,23 @@ export interface TurnInCoursesCourseWorkStudentSubmissionsRequest {
   /** Request body */
   body?: TurnInStudentSubmissionRequest;
 }
-export const TurnInCoursesCourseWorkStudentSubmissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseWorkId": S.String.pipe(T.Label()),
-  "id": S.String.pipe(T.Label()),
-  "courseId": S.String.pipe(T.Label()),
-  "body": S.optional(TurnInStudentSubmissionRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}:turnIn","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "TurnInCoursesCourseWorkStudentSubmissionsRequest" }) as any as S.Schema<TurnInCoursesCourseWorkStudentSubmissionsRequest>;
+export const TurnInCoursesCourseWorkStudentSubmissionsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      courseWorkId: S.String.pipe(T.Label()),
+      id: S.String.pipe(T.Label()),
+      courseId: S.String.pipe(T.Label()),
+      body: S.optional(TurnInStudentSubmissionRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}:turnIn",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "TurnInCoursesCourseWorkStudentSubmissionsRequest",
+  }) as any as S.Schema<TurnInCoursesCourseWorkStudentSubmissionsRequest>;
 
 export interface UpdateCoursesRequest {
   /** Identifier of the course to update. This identifier can be either the Classroom-assigned identifier or an alias. */
@@ -3584,11 +4779,19 @@ export interface UpdateCoursesRequest {
   body?: Course;
 }
 export const UpdateCoursesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "id": S.String.pipe(T.Label()),
-  "body": S.optional(Course.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PUT","uri":"v1/courses/{id}","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "UpdateCoursesRequest" }) as any as S.Schema<UpdateCoursesRequest>;
+  S.Struct({
+    id: S.String.pipe(T.Label()),
+    body: S.optional(Course.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "v1/courses/{id}",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateCoursesRequest",
+}) as any as S.Schema<UpdateCoursesRequest>;
 
 export interface UpdateGradingPeriodSettingsCoursesRequest {
   /** Required. The identifier of the course. */
@@ -3598,13 +4801,22 @@ export interface UpdateGradingPeriodSettingsCoursesRequest {
   /** Request body */
   body?: GradingPeriodSettings;
 }
-export const UpdateGradingPeriodSettingsCoursesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseId": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(GradingPeriodSettings.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/courses/{courseId}/gradingPeriodSettings","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "UpdateGradingPeriodSettingsCoursesRequest" }) as any as S.Schema<UpdateGradingPeriodSettingsCoursesRequest>;
+export const UpdateGradingPeriodSettingsCoursesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      courseId: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(GradingPeriodSettings.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/courses/{courseId}/gradingPeriodSettings",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "UpdateGradingPeriodSettingsCoursesRequest",
+  }) as any as S.Schema<UpdateGradingPeriodSettingsCoursesRequest>;
 
 export interface UpdateRubricCoursesCourseWorkRequest {
   /** Required. Identifier of the course. */
@@ -3618,17 +4830,31 @@ export interface UpdateRubricCoursesCourseWorkRequest {
   /** Request body */
   body?: Rubric;
 }
-export const UpdateRubricCoursesCourseWorkRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "courseId": S.String.pipe(T.Label()),
-  "courseWorkId": S.String.pipe(T.Label()),
-  "id": S.optional(S.String.pipe(T.Query())),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(Rubric.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v1/courses/{courseId}/courseWork/{courseWorkId}/rubric","baseUrl":"https://classroom.googleapis.com/"})),
-).annotate({ identifier: "UpdateRubricCoursesCourseWorkRequest" }) as any as S.Schema<UpdateRubricCoursesCourseWorkRequest>;
+export const UpdateRubricCoursesCourseWorkRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      courseId: S.String.pipe(T.Label()),
+      courseWorkId: S.String.pipe(T.Label()),
+      id: S.optional(S.String.pipe(T.Query())),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Rubric.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v1/courses/{courseId}/courseWork/{courseWorkId}/rubric",
+        baseUrl: "https://classroom.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "UpdateRubricCoursesCourseWorkRequest",
+}) as any as S.Schema<UpdateRubricCoursesCourseWorkRequest>;
 
-export type AcceptInvitationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type AcceptInvitationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Accepts an invitation, removing it and adding the invited user to the teachers or students (as appropriate) of the specified course. Only the invited user may accept an invitation. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to accept the requested invitation or for access errors. * `FAILED_PRECONDITION` for the following request errors: * CourseMemberLimitReached * CourseNotModifiable * CourseTeacherLimitReached * UserGroupsMembershipLimitReached * `NOT_FOUND` if no invitation exists with the requested ID. */
 export const acceptInvitations: API.OperationMethod<
   AcceptInvitationsRequest,
@@ -3643,7 +4869,12 @@ export const acceptInvitations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateCoursesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateCoursesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a course. The user specified in `ownerId` is the owner of the created course and added as a teacher. A non-admin requesting user can only create a course with themselves as the owner. Domain admins can create courses owned by any user within their domain. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to create courses or for access errors. * `NOT_FOUND` if the primary teacher is not a valid user. * `FAILED_PRECONDITION` if the course owner's account is disabled or for the following request errors: * UserCannotOwnCourse * UserGroupsMembershipLimitReached * CourseTitleCannotContainUrl * `ALREADY_EXISTS` if an alias was specified in the `id` and already exists. */
 export const createCourses: API.OperationMethod<
   CreateCoursesRequest,
@@ -3658,7 +4889,12 @@ export const createCourses: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateCoursesAliasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateCoursesAliasesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates an alias for a course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to create the alias or for access errors. * `NOT_FOUND` if the course does not exist. * `ALREADY_EXISTS` if the alias already exists. * `FAILED_PRECONDITION` if the alias requested does not make sense for the requesting user or course (for example, if a user not in a domain attempts to access a domain-scoped alias). */
 export const createCoursesAliases: API.OperationMethod<
   CreateCoursesAliasesRequest,
@@ -3673,7 +4909,12 @@ export const createCoursesAliases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateCoursesAnnouncementsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateCoursesAnnouncementsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates an announcement. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course, create announcements in the requested course, share a Drive attachment, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course does not exist. * `FAILED_PRECONDITION` for the following request error: * AttachmentNotVisible */
 export const createCoursesAnnouncements: API.OperationMethod<
   CreateCoursesAnnouncementsRequest,
@@ -3688,7 +4929,12 @@ export const createCoursesAnnouncements: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateCoursesAnnouncementsAddOnAttachmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateCoursesAnnouncementsAddOnAttachmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates an add-on attachment under a post. Requires the add-on to have permission to create new attachments on the post. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const createCoursesAnnouncementsAddOnAttachments: API.OperationMethod<
   CreateCoursesAnnouncementsAddOnAttachmentsRequest,
@@ -3703,7 +4949,12 @@ export const createCoursesAnnouncementsAddOnAttachments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateCoursesCourseWorkError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateCoursesCourseWorkError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates course work. The resulting course work (and corresponding student submissions) are associated with the Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to make the request. Classroom API requests to modify course work and student submissions must be made with an OAuth client ID from the associated Developer Console project. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course, create course work in the requested course, share a Drive attachment, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course does not exist. * `FAILED_PRECONDITION` for the following request error: * AttachmentNotVisible */
 export const createCoursesCourseWork: API.OperationMethod<
   CreateCoursesCourseWorkRequest,
@@ -3718,7 +4969,12 @@ export const createCoursesCourseWork: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateCoursesCourseWorkAddOnAttachmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateCoursesCourseWorkAddOnAttachmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates an add-on attachment under a post. Requires the add-on to have permission to create new attachments on the post. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const createCoursesCourseWorkAddOnAttachments: API.OperationMethod<
   CreateCoursesCourseWorkAddOnAttachmentsRequest,
@@ -3733,7 +4989,12 @@ export const createCoursesCourseWorkAddOnAttachments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateCoursesCourseWorkMaterialsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateCoursesCourseWorkMaterialsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a course work material. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course, create course work material in the requested course, share a Drive attachment, or for access errors. * `INVALID_ARGUMENT` if the request is malformed or if more than 20 * materials are provided. * `NOT_FOUND` if the requested course does not exist. * `FAILED_PRECONDITION` for the following request error: * AttachmentNotVisible */
 export const createCoursesCourseWorkMaterials: API.OperationMethod<
   CreateCoursesCourseWorkMaterialsRequest,
@@ -3748,7 +5009,12 @@ export const createCoursesCourseWorkMaterials: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateCoursesCourseWorkMaterialsAddOnAttachmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateCoursesCourseWorkMaterialsAddOnAttachmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates an add-on attachment under a post. Requires the add-on to have permission to create new attachments on the post. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const createCoursesCourseWorkMaterialsAddOnAttachments: API.OperationMethod<
   CreateCoursesCourseWorkMaterialsAddOnAttachmentsRequest,
@@ -3763,7 +5029,12 @@ export const createCoursesCourseWorkMaterialsAddOnAttachments: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type CreateCoursesCourseWorkRubricsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateCoursesCourseWorkRubricsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a rubric. The requesting user and course owner must have rubrics creation capabilities. For details, see [licensing requirements](https://developers.google.com/workspace/classroom/rubrics/limitations#license-requirements). For further details, see [Rubrics structure and known limitations](/classroom/rubrics/limitations). This request must be made by the Google Cloud console of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the parent course work item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user isn't permitted to create rubrics for course work in the requested course. * `INTERNAL` if the request has insufficient OAuth scopes. * `INVALID_ARGUMENT` if the request is malformed and for the following request error: * `RubricCriteriaInvalidFormat` * `NOT_FOUND` if the requested course or course work don't exist or the user doesn't have access to the course or course work. * `FAILED_PRECONDITION` for the following request error: * `AttachmentNotVisible` */
 export const createCoursesCourseWorkRubrics: API.OperationMethod<
   CreateCoursesCourseWorkRubricsRequest,
@@ -3778,7 +5049,12 @@ export const createCoursesCourseWorkRubrics: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateCoursesPostsAddOnAttachmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateCoursesPostsAddOnAttachmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates an add-on attachment under a post. Requires the add-on to have permission to create new attachments on the post. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const createCoursesPostsAddOnAttachments: API.OperationMethod<
   CreateCoursesPostsAddOnAttachmentsRequest,
@@ -3793,7 +5069,12 @@ export const createCoursesPostsAddOnAttachments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateCoursesStudentGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateCoursesStudentGroupsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a student group for a course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to create the student group or for access errors. * `NOT_FOUND` if the course does not exist or the requesting user doesn't have access to the course. * `FAILED_PRECONDITION` if creating the student group would exceed the maximum number of student groups per course. */
 export const createCoursesStudentGroups: API.OperationMethod<
   CreateCoursesStudentGroupsRequest,
@@ -3808,7 +5089,12 @@ export const createCoursesStudentGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateCoursesStudentGroupsStudentGroupMembersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateCoursesStudentGroupsStudentGroupMembersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a student group member for a student group. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to create the student group or member for access errors. * `NOT_FOUND` if the student group does not exist or the user does not have access to the student group. * `ALREADY_EXISTS` if the student group member already exists. * `FAILED_PRECONDITION` if attempting to add a member to a student group that has reached its member limit. */
 export const createCoursesStudentGroupsStudentGroupMembers: API.OperationMethod<
   CreateCoursesStudentGroupsStudentGroupMembersRequest,
@@ -3823,7 +5109,12 @@ export const createCoursesStudentGroupsStudentGroupMembers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateCoursesStudentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateCoursesStudentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Adds a user as a student of a course. Domain administrators are permitted to [directly add](https://developers.google.com/workspace/classroom/guides/manage-users) users within their domain as students to courses within their domain. Students are permitted to add themselves to a course using an enrollment code. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to create students in this course or for access errors. * `NOT_FOUND` if the requested course ID does not exist. * `FAILED_PRECONDITION` if the requested user's account is disabled, for the following request errors: * CourseMemberLimitReached * CourseNotModifiable * UserGroupsMembershipLimitReached * InactiveCourseOwner * `ALREADY_EXISTS` if the user is already a student or teacher in the course. */
 export const createCoursesStudents: API.OperationMethod<
   CreateCoursesStudentsRequest,
@@ -3838,7 +5129,12 @@ export const createCoursesStudents: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateCoursesTeachersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateCoursesTeachersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a teacher of a course. Domain administrators are permitted to [directly add](https://developers.google.com/workspace/classroom/guides/manage-users) users within their domain as teachers to courses within their domain. Non-admin users should send an Invitation instead. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to create teachers in this course or for access errors. * `NOT_FOUND` if the requested course ID does not exist. * `FAILED_PRECONDITION` if the requested user's account is disabled, for the following request errors: * CourseMemberLimitReached * CourseNotModifiable * CourseTeacherLimitReached * UserGroupsMembershipLimitReached * InactiveCourseOwner * `ALREADY_EXISTS` if the user is already a teacher or student in the course. */
 export const createCoursesTeachers: API.OperationMethod<
   CreateCoursesTeachersRequest,
@@ -3853,7 +5149,12 @@ export const createCoursesTeachers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateCoursesTopicsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateCoursesTopicsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a topic. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course, create a topic in the requested course, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `ALREADY_EXISTS` if there exists a topic in the course with the same name. * `FAILED_PRECONDITION` for the following request error: * CourseTopicLimitReached * `NOT_FOUND` if the requested course does not exist. */
 export const createCoursesTopics: API.OperationMethod<
   CreateCoursesTopicsRequest,
@@ -3868,7 +5169,12 @@ export const createCoursesTopics: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateInvitationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateInvitationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates an invitation. Only one invitation for a user and course may exist at a time. Delete and re-create an invitation to make changes. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to create invitations for this course or for access errors. * `NOT_FOUND` if the course or the user does not exist. * `FAILED_PRECONDITION`: * if the requested user's account is disabled. * if the user already has this role or a role with greater permissions. * for the following request errors: * IneligibleOwner * `ALREADY_EXISTS` if an invitation for the specified user and course already exists. */
 export const createInvitations: API.OperationMethod<
   CreateInvitationsRequest,
@@ -3883,7 +5189,12 @@ export const createInvitations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateRegistrationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateRegistrationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a `Registration`, causing Classroom to start sending notifications from the provided `feed` to the destination provided in `cloudPubSubTopic`. Returns the created `Registration`. Currently, this will be the same as the argument, but with server-assigned fields such as `expiry_time` and `id` filled in. Note that any value specified for the `expiry_time` or `id` fields will be ignored. While Classroom may validate the `cloudPubSubTopic` and return errors on a best effort basis, it is the caller's responsibility to ensure that it exists and that Classroom has permission to publish to it. This method may return the following error codes: * `PERMISSION_DENIED` if: * the authenticated user does not have permission to receive notifications from the requested field; or * the current user has not granted access to the current Cloud project with the appropriate scope for the requested feed. Note that domain-wide delegation of authority is not currently supported for this purpose. If the request has the appropriate scope, but no grant exists, a Request Errors is returned. * another access error is encountered. * `INVALID_ARGUMENT` if: * no `cloudPubsubTopic` is specified, or the specified `cloudPubsubTopic` is not valid; or * no `feed` is specified, or the specified `feed` is not valid. * `NOT_FOUND` if: * the specified `feed` cannot be located, or the requesting user does not have permission to determine whether or not it exists; or * the specified `cloudPubsubTopic` cannot be located, or Classroom has not been granted permission to publish to it. */
 export const createRegistrations: API.OperationMethod<
   CreateRegistrationsRequest,
@@ -3898,7 +5209,12 @@ export const createRegistrations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateUserProfilesGuardianInvitationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateUserProfilesGuardianInvitationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a guardian invitation, and sends an email to the guardian asking them to confirm that they are the student's guardian. Once the guardian accepts the invitation, their `state` will change to `COMPLETED` and they will start receiving guardian notifications. A `Guardian` resource will also be created to represent the active guardian. The request object must have the `student_id` and `invited_email_address` fields set. Failing to set these fields, or setting any other fields in the request, will result in an error. This method returns the following error codes: * `PERMISSION_DENIED` if the current user does not have permission to manage guardians, if the guardian in question has already rejected too many requests for that student, if guardians are not enabled for the domain in question, or for other access errors. * `RESOURCE_EXHAUSTED` if the student or guardian has exceeded the guardian link limit. * `INVALID_ARGUMENT` if the guardian email address is not valid (for example, if it is too long), or if the format of the student ID provided cannot be recognized (it is not an email address, nor a `user_id` from this API). This error will also be returned if read-only fields are set, or if the `state` field is set to to a value other than `PENDING`. * `NOT_FOUND` if the student ID provided is a valid student ID, but Classroom has no record of that student. * `ALREADY_EXISTS` if there is already a pending guardian invitation for the student and `invited_email_address` provided, or if the provided `invited_email_address` matches the Google account of an existing `Guardian` for this user. */
 export const createUserProfilesGuardianInvitations: API.OperationMethod<
   CreateUserProfilesGuardianInvitationsRequest,
@@ -3913,7 +5229,12 @@ export const createUserProfilesGuardianInvitations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteCoursesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteCoursesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to delete the requested course or for access errors. * `NOT_FOUND` if no course exists with the requested ID. */
 export const deleteCourses: API.OperationMethod<
   DeleteCoursesRequest,
@@ -3928,7 +5249,12 @@ export const deleteCourses: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteCoursesAliasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteCoursesAliasesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes an alias of a course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to remove the alias or for access errors. * `NOT_FOUND` if the alias does not exist. * `FAILED_PRECONDITION` if the alias requested does not make sense for the requesting user or course (for example, if a user not in a domain attempts to delete a domain-scoped alias). */
 export const deleteCoursesAliases: API.OperationMethod<
   DeleteCoursesAliasesRequest,
@@ -3943,7 +5269,12 @@ export const deleteCoursesAliases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteCoursesAnnouncementsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteCoursesAnnouncementsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes an announcement. This request must be made by the Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding announcement item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project did not create the corresponding announcement, if the requesting user is not permitted to delete the requested course or for access errors. * `FAILED_PRECONDITION` if the requested announcement has already been deleted. * `NOT_FOUND` if no course exists with the requested ID. */
 export const deleteCoursesAnnouncements: API.OperationMethod<
   DeleteCoursesAnnouncementsRequest,
@@ -3958,7 +5289,12 @@ export const deleteCoursesAnnouncements: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteCoursesAnnouncementsAddOnAttachmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteCoursesAnnouncementsAddOnAttachmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const deleteCoursesAnnouncementsAddOnAttachments: API.OperationMethod<
   DeleteCoursesAnnouncementsAddOnAttachmentsRequest,
@@ -3973,7 +5309,12 @@ export const deleteCoursesAnnouncementsAddOnAttachments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteCoursesCourseWorkError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteCoursesCourseWorkError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a course work. This request must be made by the Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project did not create the corresponding course work, if the requesting user is not permitted to delete the requested course or for access errors. * `FAILED_PRECONDITION` if the requested course work has already been deleted. * `NOT_FOUND` if no course exists with the requested ID. */
 export const deleteCoursesCourseWork: API.OperationMethod<
   DeleteCoursesCourseWorkRequest,
@@ -3988,7 +5329,12 @@ export const deleteCoursesCourseWork: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteCoursesCourseWorkAddOnAttachmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteCoursesCourseWorkAddOnAttachmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const deleteCoursesCourseWorkAddOnAttachments: API.OperationMethod<
   DeleteCoursesCourseWorkAddOnAttachmentsRequest,
@@ -4003,7 +5349,12 @@ export const deleteCoursesCourseWorkAddOnAttachments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteCoursesCourseWorkMaterialsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteCoursesCourseWorkMaterialsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a course work material. This request must be made by the Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work material item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project did not create the corresponding course work material, if the requesting user is not permitted to delete the requested course or for access errors. * `FAILED_PRECONDITION` if the requested course work material has already been deleted. * `NOT_FOUND` if no course exists with the requested ID. */
 export const deleteCoursesCourseWorkMaterials: API.OperationMethod<
   DeleteCoursesCourseWorkMaterialsRequest,
@@ -4018,7 +5369,12 @@ export const deleteCoursesCourseWorkMaterials: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteCoursesCourseWorkMaterialsAddOnAttachmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteCoursesCourseWorkMaterialsAddOnAttachmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const deleteCoursesCourseWorkMaterialsAddOnAttachments: API.OperationMethod<
   DeleteCoursesCourseWorkMaterialsAddOnAttachmentsRequest,
@@ -4033,7 +5389,12 @@ export const deleteCoursesCourseWorkMaterialsAddOnAttachments: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type DeleteCoursesCourseWorkRubricsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteCoursesCourseWorkRubricsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a rubric. The requesting user and course owner must have rubrics creation capabilities. For details, see [licensing requirements](https://developers.google.com/workspace/classroom/rubrics/limitations#license-requirements). This request must be made by the Google Cloud console of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding rubric. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project didn't create the corresponding rubric, or if the requesting user isn't permitted to delete the requested rubric. * `NOT_FOUND` if no rubric exists with the requested ID or the user does not have access to the course, course work, or rubric. * `INVALID_ARGUMENT` if grading has already started on the rubric. */
 export const deleteCoursesCourseWorkRubrics: API.OperationMethod<
   DeleteCoursesCourseWorkRubricsRequest,
@@ -4048,7 +5409,12 @@ export const deleteCoursesCourseWorkRubrics: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteCoursesPostsAddOnAttachmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteCoursesPostsAddOnAttachmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const deleteCoursesPostsAddOnAttachments: API.OperationMethod<
   DeleteCoursesPostsAddOnAttachmentsRequest,
@@ -4063,7 +5429,12 @@ export const deleteCoursesPostsAddOnAttachments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteCoursesStudentGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteCoursesStudentGroupsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a student group. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to delete the requested student group or for access errors. * `NOT_FOUND` if the student group does not exist or the user does not have access to the student group. */
 export const deleteCoursesStudentGroups: API.OperationMethod<
   DeleteCoursesStudentGroupsRequest,
@@ -4078,7 +5449,12 @@ export const deleteCoursesStudentGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteCoursesStudentGroupsStudentGroupMembersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteCoursesStudentGroupsStudentGroupMembersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a student group member. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to delete the requested student group member or for access errors. * `NOT_FOUND` if the student group member does not exist or the user does not have access to the student group. */
 export const deleteCoursesStudentGroupsStudentGroupMembers: API.OperationMethod<
   DeleteCoursesStudentGroupsStudentGroupMembersRequest,
@@ -4093,7 +5469,12 @@ export const deleteCoursesStudentGroupsStudentGroupMembers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteCoursesStudentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteCoursesStudentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a student of a course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to delete students of this course or for access errors. * `NOT_FOUND` if no student of this course has the requested ID or if the course does not exist. */
 export const deleteCoursesStudents: API.OperationMethod<
   DeleteCoursesStudentsRequest,
@@ -4108,7 +5489,12 @@ export const deleteCoursesStudents: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteCoursesTeachersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteCoursesTeachersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Removes the specified teacher from the specified course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to delete teachers of this course or for access errors. * `NOT_FOUND` if no teacher of this course has the requested ID or if the course does not exist. * `FAILED_PRECONDITION` if the requested ID belongs to the primary teacher of this course. * `FAILED_PRECONDITION` if the requested ID belongs to the owner of the course Drive folder. * `FAILED_PRECONDITION` if the course no longer has an active owner. */
 export const deleteCoursesTeachers: API.OperationMethod<
   DeleteCoursesTeachersRequest,
@@ -4123,7 +5509,12 @@ export const deleteCoursesTeachers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteCoursesTopicsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteCoursesTopicsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a topic. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not allowed to delete the requested topic or for access errors. * `FAILED_PRECONDITION` if the requested topic has already been deleted. * `NOT_FOUND` if no course or topic exists with the requested ID. */
 export const deleteCoursesTopics: API.OperationMethod<
   DeleteCoursesTopicsRequest,
@@ -4138,7 +5529,12 @@ export const deleteCoursesTopics: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteInvitationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteInvitationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes an invitation. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to delete the requested invitation or for access errors. * `NOT_FOUND` if no invitation exists with the requested ID. */
 export const deleteInvitations: API.OperationMethod<
   DeleteInvitationsRequest,
@@ -4153,7 +5549,12 @@ export const deleteInvitations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteRegistrationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteRegistrationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a `Registration`, causing Classroom to stop sending notifications for that `Registration`. */
 export const deleteRegistrations: API.OperationMethod<
   DeleteRegistrationsRequest,
@@ -4168,7 +5569,12 @@ export const deleteRegistrations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteUserProfilesGuardiansError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteUserProfilesGuardiansError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a guardian. The guardian will no longer receive guardian notifications and the guardian will no longer be accessible via the API. This method returns the following error codes: * `PERMISSION_DENIED` if no user that matches the provided `student_id` is visible to the requesting user, if the requesting user is not permitted to manage guardians for the student identified by the `student_id`, if guardians are not enabled for the domain in question, or for other access errors. * `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized (it is not an email address, nor a `student_id` from the API). * `NOT_FOUND` if the requesting user is permitted to modify guardians for the requested `student_id`, but no `Guardian` record exists for that student with the provided `guardian_id`. */
 export const deleteUserProfilesGuardians: API.OperationMethod<
   DeleteUserProfilesGuardiansRequest,
@@ -4183,7 +5589,10 @@ export const deleteUserProfilesGuardians: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAddOnContextCoursesAnnouncementsError = NotFound | Forbidden | GcpOpError;
+export type GetAddOnContextCoursesAnnouncementsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets metadata for Classroom add-ons in the context of a specific post. To maintain the integrity of its own data and permissions model, an add-on should call this to validate query parameters and the requesting user's role whenever the add-on is opened in an [iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/iframes-overview). This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const getAddOnContextCoursesAnnouncements: API.OperationMethod<
   GetAddOnContextCoursesAnnouncementsRequest,
@@ -4198,7 +5607,10 @@ export const getAddOnContextCoursesAnnouncements: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAddOnContextCoursesCourseWorkError = NotFound | Forbidden | GcpOpError;
+export type GetAddOnContextCoursesCourseWorkError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets metadata for Classroom add-ons in the context of a specific post. To maintain the integrity of its own data and permissions model, an add-on should call this to validate query parameters and the requesting user's role whenever the add-on is opened in an [iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/iframes-overview). This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const getAddOnContextCoursesCourseWork: API.OperationMethod<
   GetAddOnContextCoursesCourseWorkRequest,
@@ -4213,7 +5625,10 @@ export const getAddOnContextCoursesCourseWork: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAddOnContextCoursesCourseWorkMaterialsError = NotFound | Forbidden | GcpOpError;
+export type GetAddOnContextCoursesCourseWorkMaterialsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets metadata for Classroom add-ons in the context of a specific post. To maintain the integrity of its own data and permissions model, an add-on should call this to validate query parameters and the requesting user's role whenever the add-on is opened in an [iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/iframes-overview). This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const getAddOnContextCoursesCourseWorkMaterials: API.OperationMethod<
   GetAddOnContextCoursesCourseWorkMaterialsRequest,
@@ -4228,7 +5643,10 @@ export const getAddOnContextCoursesCourseWorkMaterials: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAddOnContextCoursesPostsError = NotFound | Forbidden | GcpOpError;
+export type GetAddOnContextCoursesPostsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Gets metadata for Classroom add-ons in the context of a specific post. To maintain the integrity of its own data and permissions model, an add-on should call this to validate query parameters and the requesting user's role whenever the add-on is opened in an [iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/iframes-overview). This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const getAddOnContextCoursesPosts: API.OperationMethod<
   GetAddOnContextCoursesPostsRequest,
@@ -4273,7 +5691,10 @@ export const getCoursesAnnouncements: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetCoursesAnnouncementsAddOnAttachmentsError = NotFound | Forbidden | GcpOpError;
+export type GetCoursesAnnouncementsAddOnAttachmentsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns an add-on attachment. Requires the add-on requesting the attachment to be the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const getCoursesAnnouncementsAddOnAttachments: API.OperationMethod<
   GetCoursesAnnouncementsAddOnAttachmentsRequest,
@@ -4303,7 +5724,10 @@ export const getCoursesCourseWork: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetCoursesCourseWorkAddOnAttachmentsError = NotFound | Forbidden | GcpOpError;
+export type GetCoursesCourseWorkAddOnAttachmentsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns an add-on attachment. Requires the add-on requesting the attachment to be the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const getCoursesCourseWorkAddOnAttachments: API.OperationMethod<
   GetCoursesCourseWorkAddOnAttachmentsRequest,
@@ -4318,7 +5742,10 @@ export const getCoursesCourseWorkAddOnAttachments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetCoursesCourseWorkAddOnAttachmentsStudentSubmissionsError = NotFound | Forbidden | GcpOpError;
+export type GetCoursesCourseWorkAddOnAttachmentsStudentSubmissionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns a student submission for an add-on attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const getCoursesCourseWorkAddOnAttachmentsStudentSubmissions: API.OperationMethod<
   GetCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest,
@@ -4333,7 +5760,10 @@ export const getCoursesCourseWorkAddOnAttachmentsStudentSubmissions: API.Operati
   retry: Retry.Retry,
 }));
 
-export type GetCoursesCourseWorkMaterialsError = NotFound | Forbidden | GcpOpError;
+export type GetCoursesCourseWorkMaterialsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns a course work material. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work material, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course or course work material does not exist. */
 export const getCoursesCourseWorkMaterials: API.OperationMethod<
   GetCoursesCourseWorkMaterialsRequest,
@@ -4348,7 +5778,10 @@ export const getCoursesCourseWorkMaterials: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetCoursesCourseWorkMaterialsAddOnAttachmentsError = NotFound | Forbidden | GcpOpError;
+export type GetCoursesCourseWorkMaterialsAddOnAttachmentsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns an add-on attachment. Requires the add-on requesting the attachment to be the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const getCoursesCourseWorkMaterialsAddOnAttachments: API.OperationMethod<
   GetCoursesCourseWorkMaterialsAddOnAttachmentsRequest,
@@ -4363,7 +5796,10 @@ export const getCoursesCourseWorkMaterialsAddOnAttachments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetCoursesCourseWorkRubricsError = NotFound | Forbidden | GcpOpError;
+export type GetCoursesCourseWorkRubricsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns a rubric. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course, course work, or rubric doesn't exist or if the user doesn't have access to the corresponding course work. */
 export const getCoursesCourseWorkRubrics: API.OperationMethod<
   GetCoursesCourseWorkRubricsRequest,
@@ -4378,7 +5814,10 @@ export const getCoursesCourseWorkRubrics: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetCoursesCourseWorkStudentSubmissionsError = NotFound | Forbidden | GcpOpError;
+export type GetCoursesCourseWorkStudentSubmissionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns a student submission. * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course, course work, or student submission or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course, course work, or student submission does not exist. */
 export const getCoursesCourseWorkStudentSubmissions: API.OperationMethod<
   GetCoursesCourseWorkStudentSubmissionsRequest,
@@ -4393,7 +5832,10 @@ export const getCoursesCourseWorkStudentSubmissions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetCoursesPostsAddOnAttachmentsError = NotFound | Forbidden | GcpOpError;
+export type GetCoursesPostsAddOnAttachmentsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns an add-on attachment. Requires the add-on requesting the attachment to be the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const getCoursesPostsAddOnAttachments: API.OperationMethod<
   GetCoursesPostsAddOnAttachmentsRequest,
@@ -4408,7 +5850,10 @@ export const getCoursesPostsAddOnAttachments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetCoursesPostsAddOnAttachmentsStudentSubmissionsError = NotFound | Forbidden | GcpOpError;
+export type GetCoursesPostsAddOnAttachmentsStudentSubmissionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns a student submission for an add-on attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const getCoursesPostsAddOnAttachmentsStudentSubmissions: API.OperationMethod<
   GetCoursesPostsAddOnAttachmentsStudentSubmissionsRequest,
@@ -4468,7 +5913,10 @@ export const getCoursesTopics: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetGradingPeriodSettingsCoursesError = NotFound | Forbidden | GcpOpError;
+export type GetGradingPeriodSettingsCoursesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns the grading period settings in a course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user isn't permitted to access the grading period settings in the requested course or for access errors. * `NOT_FOUND` if the requested course does not exist. */
 export const getGradingPeriodSettingsCourses: API.OperationMethod<
   GetGradingPeriodSettingsCoursesRequest,
@@ -4513,7 +5961,10 @@ export const getUserProfiles: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetUserProfilesGuardianInvitationsError = NotFound | Forbidden | GcpOpError;
+export type GetUserProfilesGuardianInvitationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns a specific guardian invitation. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to view guardian invitations for the student identified by the `student_id`, if guardians are not enabled for the domain in question, or for other access errors. * `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized (it is not an email address, nor a `student_id` from the API, nor the literal string `me`). * `NOT_FOUND` if Classroom cannot find any record of the given student or `invitation_id`. May also be returned if the student exists, but the requesting user does not have access to see that student. */
 export const getUserProfilesGuardianInvitations: API.OperationMethod<
   GetUserProfilesGuardianInvitationsRequest,
@@ -4556,7 +6007,10 @@ export const listCourses: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListCoursesAliasesError = NotFound | Forbidden | GcpOpError;
@@ -4572,7 +6026,10 @@ export const listCoursesAliases: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListCoursesAnnouncementsError = NotFound | Forbidden | GcpOpError;
@@ -4588,10 +6045,16 @@ export const listCoursesAnnouncements: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListCoursesAnnouncementsAddOnAttachmentsError = NotFound | Forbidden | GcpOpError;
+export type ListCoursesAnnouncementsAddOnAttachmentsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns all attachments created by an add-on under the post. Requires the add-on to have active attachments on the post or have permission to create new attachments on the post. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const listCoursesAnnouncementsAddOnAttachments: API.PaginatedOperationMethod<
   ListCoursesAnnouncementsAddOnAttachmentsRequest,
@@ -4604,7 +6067,10 @@ export const listCoursesAnnouncementsAddOnAttachments: API.PaginatedOperationMet
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListCoursesCourseWorkError = NotFound | Forbidden | GcpOpError;
@@ -4620,10 +6086,16 @@ export const listCoursesCourseWork: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListCoursesCourseWorkAddOnAttachmentsError = NotFound | Forbidden | GcpOpError;
+export type ListCoursesCourseWorkAddOnAttachmentsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns all attachments created by an add-on under the post. Requires the add-on to have active attachments on the post or have permission to create new attachments on the post. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const listCoursesCourseWorkAddOnAttachments: API.PaginatedOperationMethod<
   ListCoursesCourseWorkAddOnAttachmentsRequest,
@@ -4636,10 +6108,16 @@ export const listCoursesCourseWorkAddOnAttachments: API.PaginatedOperationMethod
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListCoursesCourseWorkMaterialsError = NotFound | Forbidden | GcpOpError;
+export type ListCoursesCourseWorkMaterialsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns a list of course work material that the requester is permitted to view. Course students may only view `PUBLISHED` course work material. Course teachers and domain administrators may view all course work material. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course does not exist. */
 export const listCoursesCourseWorkMaterials: API.PaginatedOperationMethod<
   ListCoursesCourseWorkMaterialsRequest,
@@ -4652,10 +6130,16 @@ export const listCoursesCourseWorkMaterials: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListCoursesCourseWorkMaterialsAddOnAttachmentsError = NotFound | Forbidden | GcpOpError;
+export type ListCoursesCourseWorkMaterialsAddOnAttachmentsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns all attachments created by an add-on under the post. Requires the add-on to have active attachments on the post or have permission to create new attachments on the post. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const listCoursesCourseWorkMaterialsAddOnAttachments: API.PaginatedOperationMethod<
   ListCoursesCourseWorkMaterialsAddOnAttachmentsRequest,
@@ -4668,10 +6152,16 @@ export const listCoursesCourseWorkMaterialsAddOnAttachments: API.PaginatedOperat
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListCoursesCourseWorkRubricsError = NotFound | Forbidden | GcpOpError;
+export type ListCoursesCourseWorkRubricsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns a list of rubrics that the requester is permitted to view. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course or course work doesn't exist or if the user doesn't have access to the corresponding course work. */
 export const listCoursesCourseWorkRubrics: API.PaginatedOperationMethod<
   ListCoursesCourseWorkRubricsRequest,
@@ -4684,10 +6174,16 @@ export const listCoursesCourseWorkRubrics: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListCoursesCourseWorkStudentSubmissionsError = NotFound | Forbidden | GcpOpError;
+export type ListCoursesCourseWorkStudentSubmissionsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns a list of student submissions that the requester is permitted to view, factoring in the OAuth scopes of the request. A hyphen (`-`) may be specified as the `course_work_id` to include student submissions for multiple course work items. Course students may only view their own work. Course teachers and domain administrators may view all student submissions. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course does not exist. */
 export const listCoursesCourseWorkStudentSubmissions: API.PaginatedOperationMethod<
   ListCoursesCourseWorkStudentSubmissionsRequest,
@@ -4700,10 +6196,16 @@ export const listCoursesCourseWorkStudentSubmissions: API.PaginatedOperationMeth
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListCoursesPostsAddOnAttachmentsError = NotFound | Forbidden | GcpOpError;
+export type ListCoursesPostsAddOnAttachmentsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns all attachments created by an add-on under the post. Requires the add-on to have active attachments on the post or have permission to create new attachments on the post. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const listCoursesPostsAddOnAttachments: API.PaginatedOperationMethod<
   ListCoursesPostsAddOnAttachmentsRequest,
@@ -4716,7 +6218,10 @@ export const listCoursesPostsAddOnAttachments: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListCoursesStudentGroupsError = NotFound | Forbidden | GcpOpError;
@@ -4732,10 +6237,16 @@ export const listCoursesStudentGroups: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListCoursesStudentGroupsStudentGroupMembersError = NotFound | Forbidden | GcpOpError;
+export type ListCoursesStudentGroupsStudentGroupMembersError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns a list of students in a group. This method returns the following error codes: * `NOT_FOUND` if the course or student group does not exist. */
 export const listCoursesStudentGroupsStudentGroupMembers: API.PaginatedOperationMethod<
   ListCoursesStudentGroupsStudentGroupMembersRequest,
@@ -4748,7 +6259,10 @@ export const listCoursesStudentGroupsStudentGroupMembers: API.PaginatedOperation
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListCoursesStudentsError = NotFound | Forbidden | GcpOpError;
@@ -4764,7 +6278,10 @@ export const listCoursesStudents: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListCoursesTeachersError = NotFound | Forbidden | GcpOpError;
@@ -4780,7 +6297,10 @@ export const listCoursesTeachers: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListCoursesTopicsError = NotFound | Forbidden | GcpOpError;
@@ -4796,7 +6316,10 @@ export const listCoursesTopics: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListInvitationsError = NotFound | Forbidden | GcpOpError;
@@ -4812,10 +6335,16 @@ export const listInvitations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ListUserProfilesGuardianInvitationsError = NotFound | Forbidden | GcpOpError;
+export type ListUserProfilesGuardianInvitationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** Returns a list of guardian invitations that the requesting user is permitted to view, filtered by the parameters provided. This method returns the following error codes: * `PERMISSION_DENIED` if a `student_id` is specified, and the requesting user is not permitted to view guardian invitations for that student, if `"-"` is specified as the `student_id` and the user is not a domain administrator, if guardians are not enabled for the domain in question, or for other access errors. * `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized (it is not an email address, nor a `student_id` from the API, nor the literal string `me`). May also be returned if an invalid `page_token` or `state` is provided. * `NOT_FOUND` if a `student_id` is specified, and its format can be recognized, but Classroom has no record of that student. */
 export const listUserProfilesGuardianInvitations: API.PaginatedOperationMethod<
   ListUserProfilesGuardianInvitationsRequest,
@@ -4828,7 +6357,10 @@ export const listUserProfilesGuardianInvitations: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListUserProfilesGuardiansError = NotFound | Forbidden | GcpOpError;
@@ -4844,10 +6376,18 @@ export const listUserProfilesGuardians: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type ModifyAssigneesCoursesAnnouncementsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ModifyAssigneesCoursesAnnouncementsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Modifies assignee mode and options of an announcement. Only a teacher of the course that contains the announcement may call this method. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course or course work does not exist. * `FAILED_PRECONDITION` for the following request error: * EmptyAssignees */
 export const modifyAssigneesCoursesAnnouncements: API.OperationMethod<
   ModifyAssigneesCoursesAnnouncementsRequest,
@@ -4862,7 +6402,12 @@ export const modifyAssigneesCoursesAnnouncements: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ModifyAssigneesCoursesCourseWorkError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ModifyAssigneesCoursesCourseWorkError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Modifies assignee mode and options of a coursework. Only a teacher of the course that contains the coursework may call this method. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course or course work does not exist. * `FAILED_PRECONDITION` for the following request error: * EmptyAssignees */
 export const modifyAssigneesCoursesCourseWork: API.OperationMethod<
   ModifyAssigneesCoursesCourseWorkRequest,
@@ -4877,7 +6422,12 @@ export const modifyAssigneesCoursesCourseWork: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ModifyAttachmentsCoursesCourseWorkStudentSubmissionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ModifyAttachmentsCoursesCourseWorkStudentSubmissionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Modifies attachments of student submission. Attachments may only be added to student submissions belonging to course work objects with a `workType` of `ASSIGNMENT`. This request must be made by the Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work, if the user is not permitted to modify attachments on the requested student submission, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course, course work, or student submission does not exist. */
 export const modifyAttachmentsCoursesCourseWorkStudentSubmissions: API.OperationMethod<
   ModifyAttachmentsCoursesCourseWorkStudentSubmissionsRequest,
@@ -4892,7 +6442,12 @@ export const modifyAttachmentsCoursesCourseWorkStudentSubmissions: API.Operation
   retry: Retry.Retry,
 }));
 
-export type PatchCoursesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchCoursesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates one or more fields in a course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to modify the requested course or for access errors. * `NOT_FOUND` if no course exists with the requested ID. * `INVALID_ARGUMENT` if invalid fields are specified in the update mask or if no update mask is supplied. * `FAILED_PRECONDITION` for the following request errors: * CourseNotModifiable * InactiveCourseOwner * IneligibleOwner * CourseTitleCannotContainUrl */
 export const patchCourses: API.OperationMethod<
   PatchCoursesRequest,
@@ -4907,7 +6462,12 @@ export const patchCourses: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchCoursesAnnouncementsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchCoursesAnnouncementsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates one or more fields of an announcement. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project did not create the corresponding announcement or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `FAILED_PRECONDITION` if the requested announcement has already been deleted. * `NOT_FOUND` if the requested course or announcement does not exist */
 export const patchCoursesAnnouncements: API.OperationMethod<
   PatchCoursesAnnouncementsRequest,
@@ -4922,7 +6482,12 @@ export const patchCoursesAnnouncements: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchCoursesAnnouncementsAddOnAttachmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchCoursesAnnouncementsAddOnAttachmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const patchCoursesAnnouncementsAddOnAttachments: API.OperationMethod<
   PatchCoursesAnnouncementsAddOnAttachmentsRequest,
@@ -4937,7 +6502,12 @@ export const patchCoursesAnnouncementsAddOnAttachments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchCoursesCourseWorkError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchCoursesCourseWorkError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates one or more fields of a course work. See google.classroom.v1.CourseWork for details of which fields may be updated and who may change them. This request must be made by the Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project did not create the corresponding course work, if the user is not permitted to make the requested modification to the student submission, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `FAILED_PRECONDITION` if the requested course work has already been deleted. * `NOT_FOUND` if the requested course or course work does not exist. */
 export const patchCoursesCourseWork: API.OperationMethod<
   PatchCoursesCourseWorkRequest,
@@ -4952,7 +6522,12 @@ export const patchCoursesCourseWork: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchCoursesCourseWorkAddOnAttachmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchCoursesCourseWorkAddOnAttachmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const patchCoursesCourseWorkAddOnAttachments: API.OperationMethod<
   PatchCoursesCourseWorkAddOnAttachmentsRequest,
@@ -4967,7 +6542,12 @@ export const patchCoursesCourseWorkAddOnAttachments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchCoursesCourseWorkAddOnAttachmentsStudentSubmissionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchCoursesCourseWorkAddOnAttachmentsStudentSubmissionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates data associated with an add-on attachment submission. Requires the add-on to have been the original creator of the attachment and the attachment to have a positive `max_points` value set. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const patchCoursesCourseWorkAddOnAttachmentsStudentSubmissions: API.OperationMethod<
   PatchCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest,
@@ -4982,7 +6562,12 @@ export const patchCoursesCourseWorkAddOnAttachmentsStudentSubmissions: API.Opera
   retry: Retry.Retry,
 }));
 
-export type PatchCoursesCourseWorkMaterialsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchCoursesCourseWorkMaterialsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates one or more fields of a course work material. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `FAILED_PRECONDITION` if the requested course work material has already been deleted. * `NOT_FOUND` if the requested course or course work material does not exist */
 export const patchCoursesCourseWorkMaterials: API.OperationMethod<
   PatchCoursesCourseWorkMaterialsRequest,
@@ -4997,7 +6582,12 @@ export const patchCoursesCourseWorkMaterials: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchCoursesCourseWorkMaterialsAddOnAttachmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchCoursesCourseWorkMaterialsAddOnAttachmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const patchCoursesCourseWorkMaterialsAddOnAttachments: API.OperationMethod<
   PatchCoursesCourseWorkMaterialsAddOnAttachmentsRequest,
@@ -5012,7 +6602,12 @@ export const patchCoursesCourseWorkMaterialsAddOnAttachments: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type PatchCoursesCourseWorkRubricsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchCoursesCourseWorkRubricsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a rubric. See google.classroom.v1.Rubric for details of which fields can be updated. Rubric update capabilities are [limited](/classroom/rubrics/limitations) once grading has started. The requesting user and course owner must have rubrics creation capabilities. For details, see [licensing requirements](https://developers.google.com/workspace/classroom/rubrics/limitations#license-requirements). This request must be made by the Google Cloud console of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the parent course work item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project didn't create the corresponding course work, if the user isn't permitted to make the requested modification to the rubric, or for access errors. This error code is also returned if grading has already started on the rubric. * `INVALID_ARGUMENT` if the request is malformed and for the following request error: * `RubricCriteriaInvalidFormat` * `NOT_FOUND` if the requested course, course work, or rubric doesn't exist or if the user doesn't have access to the corresponding course work. * `INTERNAL` if grading has already started on the rubric. */
 export const patchCoursesCourseWorkRubrics: API.OperationMethod<
   PatchCoursesCourseWorkRubricsRequest,
@@ -5027,7 +6622,12 @@ export const patchCoursesCourseWorkRubrics: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchCoursesCourseWorkStudentSubmissionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchCoursesCourseWorkStudentSubmissionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates one or more fields of a student submission. See google.classroom.v1.StudentSubmission for details of which fields may be updated and who may change them. This request must be made by the Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project did not create the corresponding course work, if the user is not permitted to make the requested modification to the student submission, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course, course work, or student submission does not exist. */
 export const patchCoursesCourseWorkStudentSubmissions: API.OperationMethod<
   PatchCoursesCourseWorkStudentSubmissionsRequest,
@@ -5042,7 +6642,12 @@ export const patchCoursesCourseWorkStudentSubmissions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchCoursesPostsAddOnAttachmentsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchCoursesPostsAddOnAttachmentsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const patchCoursesPostsAddOnAttachments: API.OperationMethod<
   PatchCoursesPostsAddOnAttachmentsRequest,
@@ -5057,7 +6662,12 @@ export const patchCoursesPostsAddOnAttachments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchCoursesPostsAddOnAttachmentsStudentSubmissionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchCoursesPostsAddOnAttachmentsStudentSubmissionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates data associated with an add-on attachment submission. Requires the add-on to have been the original creator of the attachment and the attachment to have a positive `max_points` value set. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const patchCoursesPostsAddOnAttachmentsStudentSubmissions: API.OperationMethod<
   PatchCoursesPostsAddOnAttachmentsStudentSubmissionsRequest,
@@ -5072,7 +6682,12 @@ export const patchCoursesPostsAddOnAttachmentsStudentSubmissions: API.OperationM
   retry: Retry.Retry,
 }));
 
-export type PatchCoursesStudentGroupsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchCoursesStudentGroupsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates one or more fields in a student group. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to modify the requested student group or for access errors. * `NOT_FOUND` if the student group does not exist or the user does not have access to the student group. * `INVALID_ARGUMENT` if invalid fields are specified in the update mask or if no update mask is supplied. */
 export const patchCoursesStudentGroups: API.OperationMethod<
   PatchCoursesStudentGroupsRequest,
@@ -5087,7 +6702,12 @@ export const patchCoursesStudentGroups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchCoursesTopicsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchCoursesTopicsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates one or more fields of a topic. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project did not create the corresponding topic or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `FAILED_PRECONDITION` if there exists a topic in the course with the same name. * `NOT_FOUND` if the requested course or topic does not exist */
 export const patchCoursesTopics: API.OperationMethod<
   PatchCoursesTopicsRequest,
@@ -5102,7 +6722,12 @@ export const patchCoursesTopics: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchUserProfilesGuardianInvitationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchUserProfilesGuardianInvitationsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Modifies a guardian invitation. Currently, the only valid modification is to change the `state` from `PENDING` to `COMPLETE`. This has the effect of withdrawing the invitation. This method returns the following error codes: * `PERMISSION_DENIED` if the current user does not have permission to manage guardians, if guardians are not enabled for the domain in question or for other access errors. * `FAILED_PRECONDITION` if the guardian link is not in the `PENDING` state. * `INVALID_ARGUMENT` if the format of the student ID provided cannot be recognized (it is not an email address, nor a `user_id` from this API), or if the passed `GuardianInvitation` has a `state` other than `COMPLETE`, or if it modifies fields other than `state`. * `NOT_FOUND` if the student ID provided is a valid student ID, but Classroom has no record of that student, or if the `id` field does not refer to a guardian invitation known to Classroom. */
 export const patchUserProfilesGuardianInvitations: API.OperationMethod<
   PatchUserProfilesGuardianInvitationsRequest,
@@ -5117,7 +6742,12 @@ export const patchUserProfilesGuardianInvitations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ReclaimCoursesCourseWorkStudentSubmissionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ReclaimCoursesCourseWorkStudentSubmissionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Reclaims a student submission on behalf of the student that owns it. Reclaiming a student submission transfers ownership of attached Drive files to the student and updates the submission state. Only the student that owns the requested student submission may call this method, and only for a student submission that has been turned in. This request must be made by the Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work, unsubmit the requested student submission, or for access errors. * `FAILED_PRECONDITION` if the student submission has not been turned in. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course, course work, or student submission does not exist. */
 export const reclaimCoursesCourseWorkStudentSubmissions: API.OperationMethod<
   ReclaimCoursesCourseWorkStudentSubmissionsRequest,
@@ -5132,7 +6762,12 @@ export const reclaimCoursesCourseWorkStudentSubmissions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ReturnCoursesCourseWorkStudentSubmissionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type ReturnCoursesCourseWorkStudentSubmissionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Returns a student submission. Returning a student submission transfers ownership of attached Drive files to the student and may also update the submission state. Unlike the Classroom application, returning a student submission does not set assignedGrade to the draftGrade value. Only a teacher of the course that contains the requested student submission may call this method. This request must be made by the Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work, return the requested student submission, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course, course work, or student submission does not exist. */
 export const returnCoursesCourseWorkStudentSubmissions: API.OperationMethod<
   ReturnCoursesCourseWorkStudentSubmissionsRequest,
@@ -5147,7 +6782,12 @@ export const returnCoursesCourseWorkStudentSubmissions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TurnInCoursesCourseWorkStudentSubmissionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type TurnInCoursesCourseWorkStudentSubmissionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Turns in a student submission. Turning in a student submission transfers ownership of attached Drive files to the teacher and may also update the submission state. This may only be called by the student that owns the specified student submission. This request must be made by the Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work, turn in the requested student submission, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course, course work, or student submission does not exist. */
 export const turnInCoursesCourseWorkStudentSubmissions: API.OperationMethod<
   TurnInCoursesCourseWorkStudentSubmissionsRequest,
@@ -5162,7 +6802,12 @@ export const turnInCoursesCourseWorkStudentSubmissions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateCoursesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateCoursesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a course. Note: Unlike other fields, `levels` is not cleared if omitted from the request. The `UpdateCourse` method only modifies `levels` if it is explicitly provided; otherwise, the existing value is preserved. Use the `PatchCourse` method to clear the `levels` field. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to modify the requested course or for access errors. * `NOT_FOUND` if no course exists with the requested ID. * `FAILED_PRECONDITION` for the following request errors: * CourseNotModifiable * CourseTitleCannotContainUrl */
 export const updateCourses: API.OperationMethod<
   UpdateCoursesRequest,
@@ -5177,7 +6822,12 @@ export const updateCourses: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateGradingPeriodSettingsCoursesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateGradingPeriodSettingsCoursesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates grading period settings of a course. Individual grading periods can be added, removed, or modified using this method. The requesting user and course owner must be eligible to modify Grading Periods. For details, see [licensing requirements](https://developers.google.com/workspace/classroom/grading-periods/manage-grading-periods#licensing_requirements). This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to modify the grading period settings in a course or for access errors: * UserIneligibleToUpdateGradingPeriodSettings * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course does not exist. */
 export const updateGradingPeriodSettingsCourses: API.OperationMethod<
   UpdateGradingPeriodSettingsCoursesRequest,
@@ -5192,7 +6842,12 @@ export const updateGradingPeriodSettingsCourses: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateRubricCoursesCourseWorkError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type UpdateRubricCoursesCourseWorkError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Updates a rubric. See google.classroom.v1.Rubric for details of which fields can be updated. Rubric update capabilities are [limited](/classroom/rubrics/limitations) once grading has started. The requesting user and course owner must have rubrics creation capabilities. For details, see [licensing requirements](https://developers.google.com/workspace/classroom/rubrics/limitations#license-requirements). This request must be made by the Google Cloud console of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the parent course work item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project didn't create the corresponding course work, if the user isn't permitted to make the requested modification to the rubric, or for access errors. This error code is also returned if grading has already started on the rubric. * `INVALID_ARGUMENT` if the request is malformed and for the following request error: * `RubricCriteriaInvalidFormat` * `NOT_FOUND` if the requested course, course work, or rubric doesn't exist or if the user doesn't have access to the corresponding course work. * `INTERNAL` if grading has already started on the rubric. */
 export const updateRubricCoursesCourseWork: API.OperationMethod<
   UpdateRubricCoursesCourseWorkRequest,
@@ -5206,4 +6861,3 @@ export const updateRubricCoursesCourseWork: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-

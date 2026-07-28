@@ -122,9 +122,26 @@ export const DeletedCard = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DeletedCard" }) as any as S.Schema<DeletedCard>;
 
-export type DeletedExternalAccount = DeletedBankAccount | DeletedCard;
-export const DeletedExternalAccount =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<DeletedExternalAccount>;
+export interface DeletedExternalAccount {
+  /** Three-letter [ISO code for the currency](https://stripe.com/docs/payouts) paid out to the bank account. */
+  currency?: string | null;
+  /** Always true for a deleted object */
+  deleted: boolean;
+  /** Unique identifier for the object. */
+  id: string;
+  /** String representing the object's type. Objects of the same type share the same value. */
+  object: DeletedBankAccountObject | DeletedCardObject;
+}
+export const DeletedExternalAccount = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    currency: S.optional(S.NullOr(S.String)),
+    deleted: S.Boolean,
+    id: S.String,
+    object: S.Union(DeletedBankAccountObject, DeletedCardObject),
+  }),
+).annotate({
+  identifier: "DeletedExternalAccount",
+}) as any as S.Schema<DeletedExternalAccount>;
 
 export type DeleteAccountsAccountExternalAccountsIdResponse =
   DeletedExternalAccount;
@@ -2094,9 +2111,148 @@ export const Card = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Card" }) as any as S.Schema<Card>;
 
-export type ExternalAccount = BankAccount | Card;
-export const ExternalAccount =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<ExternalAccount>;
+export interface ExternalAccount {
+  /** The account this bank account belongs to. Only applicable on Accounts (not customers or recipients) This property is only available when returned as an [External Account](/api/external_account_bank_accounts/object) where [controller.is_controller](/api/accounts/object#account_object-controller-is_controller) is `true`. */
+  account?: BankAccountAccount | CardAccount | null;
+  /** The name of the person or business that owns the bank account. */
+  account_holder_name?: string | null;
+  /** The type of entity that holds the account. This can be either `individual` or `company`. */
+  account_holder_type?: string | null;
+  /** The bank account type. This can only be `checking` or `savings` in most countries. In Japan, this can only be `futsu` or `toza`. */
+  account_type?: string | null;
+  /** A set of available payout methods for this bank account. Only values from this set should be passed as the `method` when creating a payout. */
+  available_payout_methods?:
+    | BankAccountAvailablePayoutMethodsList
+    | CardAvailablePayoutMethodsList
+    | null;
+  /** Name of the bank associated with the routing number (e.g., `WELLS FARGO`). */
+  bank_name?: string | null;
+  /** Two-letter ISO code representing the country the bank account is located in. */
+  country: string | null;
+  /** Three-letter [ISO code for the currency](https://stripe.com/docs/payouts) paid out to the bank account. */
+  currency?: string | null;
+  /** The ID of the customer that the bank account is associated with. */
+  customer?: BankAccountCustomer | CardCustomer | null;
+  /** Whether this bank account is the default external account for its currency. */
+  default_for_currency?: boolean | null;
+  /** Uniquely identifies this particular bank account. You can use this attribute to check whether two bank accounts are the same. */
+  fingerprint?: string | null;
+  /** Information about the [upcoming new requirements for the bank account](https://docs.stripe.com/connect/custom-accounts/future-requirements), including what information needs to be collected, and by when. */
+  future_requirements?: ExternalAccountRequirements | null;
+  /** Unique identifier for the object. */
+  id: string;
+  /** The last four digits of the bank account number. */
+  last4: string;
+  /** Set of [key-value pairs](https://docs.stripe.com/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. */
+  metadata?: BankAccountMetadataMap | CardMetadataMap | null;
+  /** String representing the object's type. Objects of the same type share the same value. */
+  object: BankAccountObject | CardObject;
+  /** Information about the requirements for the bank account, including what information needs to be collected. */
+  requirements?: ExternalAccountRequirements | null;
+  /** The routing transit number for the bank account. */
+  routing_number?: string | null;
+  /** For bank accounts, possible values are `new`, `validated`, `verified`, `verification_failed`, `tokenized_account_number_deactivated` or `errored`. A bank account that hasn't had any activity or validation performed is `new`. If Stripe can determine that the bank account exists, its status will be `validated`. Note that there often isn’t enough information to know (e.g., for smaller credit unions), and the validation is not always run. If customer bank account verification has succeeded, the bank account status will be `verified`. If the verification failed for any reason, such as microdeposit failure, the status will be `verification_failed`. If the status is `tokenized_account_number_deactivated`, the account utilizes a tokenized account number which has been deactivated due to expiration or revocation. This account will need to be reverified to continue using it for money movement. If a payout sent to this bank account fails, we'll set the status to `errored` and will not continue to send [scheduled payouts](https://stripe.com/docs/payouts#payout-schedule) until the bank details are updated. For external accounts, possible values are `new`, `errored`, `verification_failed`, and `tokenized_account_number_deactivated`. If a payout fails, the status is set to `errored` and scheduled payouts are stopped until account details are updated. In the US and India, if we can't [verify the owner of the bank account](https://support.stripe.com/questions/bank-account-ownership-verification), we'll set the status to `verification_failed`. Other validations aren't run against external accounts because they're only used for payouts. This means the other statuses don't apply. */
+  status?: string | null;
+  /** City/District/Suburb/Town/Village. */
+  address_city?: string | null;
+  /** Billing address country, if provided when creating card. */
+  address_country?: string | null;
+  /** Address line 1 (Street address/PO Box/Company name). */
+  address_line1?: string | null;
+  /** If `address_line1` was provided, results of the check: `pass`, `fail`, `unavailable`, or `unchecked`. */
+  address_line1_check?: string | null;
+  /** Address line 2 (Apartment/Suite/Unit/Building). */
+  address_line2?: string | null;
+  /** State/County/Province/Region. */
+  address_state?: string | null;
+  /** ZIP or postal code. */
+  address_zip?: string | null;
+  /** If `address_zip` was provided, results of the check: `pass`, `fail`, `unavailable`, or `unchecked`. */
+  address_zip_check?: string | null;
+  /** This field indicates whether this payment method can be shown again to its customer in a checkout flow. Stripe products such as Checkout and Elements use this field to determine whether a payment method can be shown as a saved payment method in a checkout flow. The field defaults to “unspecified”. */
+  allow_redisplay?: CardAllowRedisplay | null;
+  /** Card brand. Can be `American Express`, `Cartes Bancaires`, `Diners Club`, `Discover`, `Eftpos Australia`, `Girocard`, `JCB`, `MasterCard`, `UnionPay`, `Visa`, or `Unknown`. */
+  brand?: string;
+  /** If a CVC was provided, results of the check: `pass`, `fail`, `unavailable`, or `unchecked`. A result of unchecked indicates that CVC was provided but hasn't been checked yet. Checks are typically performed when attaching a card to a Customer object, or when creating a charge. For more details, see [Check if a card is valid without a charge](https://support.stripe.com/questions/check-if-a-card-is-valid-without-a-charge). */
+  cvc_check?: string | null;
+  /** A high-level description of the type of cards issued in this range. (For internal use only and not typically available in standard API requests.) */
+  description?: string;
+  /** (For tokenized numbers only.) The last four digits of the device account number. */
+  dynamic_last4?: string | null;
+  /** Two-digit number representing the card's expiration month. */
+  exp_month?: number;
+  /** Four-digit number representing the card's expiration year. */
+  exp_year?: number;
+  /** Card funding type. Can be `credit`, `debit`, `prepaid`, or `unknown`. */
+  funding?: string;
+  /** Issuer identification number of the card. (For internal use only and not typically available in standard API requests.) */
+  iin?: string;
+  /** The name of the card's issuing bank. (For internal use only and not typically available in standard API requests.) */
+  issuer?: string;
+  /** Cardholder name. */
+  name?: string | null;
+  networks?: TokenCardNetworks;
+  /** Status of a card based on the card issuer. */
+  regulated_status?: CardRegulatedStatus | null;
+  /** If the card number is tokenized, this is the method that was used. Can be `android_pay` (includes Google Pay), `apple_pay`, `masterpass`, `visa_checkout`, or null. */
+  tokenization_method?: string | null;
+}
+export const ExternalAccount = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    account: S.optional(S.NullOr(S.Union(BankAccountAccount, CardAccount))),
+    account_holder_name: S.optional(S.NullOr(S.String)),
+    account_holder_type: S.optional(S.NullOr(S.String)),
+    account_type: S.optional(S.NullOr(S.String)),
+    available_payout_methods: S.optional(
+      S.NullOr(
+        S.Union(
+          BankAccountAvailablePayoutMethodsList,
+          CardAvailablePayoutMethodsList,
+        ),
+      ),
+    ),
+    bank_name: S.optional(S.NullOr(S.String)),
+    country: S.NullOr(S.String),
+    currency: S.optional(S.NullOr(S.String)),
+    customer: S.optional(S.NullOr(S.Union(BankAccountCustomer, CardCustomer))),
+    default_for_currency: S.optional(S.NullOr(S.Boolean)),
+    fingerprint: S.optional(S.NullOr(S.String)),
+    future_requirements: S.optional(S.NullOr(ExternalAccountRequirements)),
+    id: S.String,
+    last4: S.String,
+    metadata: S.optional(
+      S.NullOr(S.Union(BankAccountMetadataMap, CardMetadataMap)),
+    ),
+    object: S.Union(BankAccountObject, CardObject),
+    requirements: S.optional(S.NullOr(ExternalAccountRequirements)),
+    routing_number: S.optional(S.NullOr(S.String)),
+    status: S.optional(S.NullOr(S.String)),
+    address_city: S.optional(S.NullOr(S.String)),
+    address_country: S.optional(S.NullOr(S.String)),
+    address_line1: S.optional(S.NullOr(S.String)),
+    address_line1_check: S.optional(S.NullOr(S.String)),
+    address_line2: S.optional(S.NullOr(S.String)),
+    address_state: S.optional(S.NullOr(S.String)),
+    address_zip: S.optional(S.NullOr(S.String)),
+    address_zip_check: S.optional(S.NullOr(S.String)),
+    allow_redisplay: S.optional(S.NullOr(CardAllowRedisplay)),
+    brand: S.optional(S.String),
+    cvc_check: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.String),
+    dynamic_last4: S.optional(S.NullOr(S.String)),
+    exp_month: S.optional(S.Number),
+    exp_year: S.optional(S.Number),
+    funding: S.optional(S.String),
+    iin: S.optional(S.String),
+    issuer: S.optional(S.String),
+    name: S.optional(S.NullOr(S.String)),
+    networks: S.optional(TokenCardNetworks),
+    regulated_status: S.optional(S.NullOr(CardRegulatedStatus)),
+    tokenization_method: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "ExternalAccount",
+}) as any as S.Schema<ExternalAccount>;
 
 /** The list contains all external accounts that have been attached to the Stripe account. These may be bank accounts or cards. */
 export type AccountExternalAccountsDataList = ReadonlyArray<ExternalAccount>;
@@ -4353,9 +4509,282 @@ export const Source = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Source" }) as any as S.Schema<Source>;
 
-export type PaymentSource = Account | BankAccount | Card | Source;
-export const PaymentSource =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<PaymentSource>;
+export interface PaymentSource {
+  /** Business information about the account. */
+  business_profile?: AccountBusinessProfile | null;
+  /** The business type. */
+  business_type?: AccountBusinessType | null;
+  capabilities?: AccountCapabilities;
+  /** Whether the account can process charges. */
+  charges_enabled?: boolean;
+  company?: LegalEntityCompany;
+  controller?: AccountUnificationAccountController;
+  /** The account's country. */
+  country?: string | null;
+  /** Time at which the account was connected. Measured in seconds since the Unix epoch. */
+  created?: number;
+  /** Three-letter ISO currency code representing the default currency for the account. This must be a currency that [Stripe supports in the account's country](https://stripe.com/docs/payouts). */
+  default_currency?: string;
+  /** Whether account details have been submitted. Accounts with Stripe Dashboard access, which includes Standard accounts, cannot receive payouts before this is true. Accounts where this is false should be directed to [an onboarding flow](/connect/onboarding) to finish submitting account details. */
+  details_submitted?: boolean;
+  /** An email address associated with the account. It's not used for authentication and Stripe doesn't market to this field without explicit approval from the platform. */
+  email?: string | null;
+  /** External accounts (bank accounts and debit cards) currently attached to this account. External accounts are only returned for requests where `controller[is_controller]` is true. */
+  external_accounts?: AccountExternalAccounts;
+  /** Information about the [upcoming new requirements for the bank account](https://docs.stripe.com/connect/custom-accounts/future-requirements), including what information needs to be collected, and by when. */
+  future_requirements?:
+    | AccountFutureRequirements
+    | ExternalAccountRequirements
+    | null;
+  /** The groups associated with the account. */
+  groups?: AccountGroupMembership | null;
+  /** Unique identifier for the object. */
+  id: string;
+  individual?: Person;
+  /** Set of [key-value pairs](https://docs.stripe.com/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. */
+  metadata?:
+    | AccountMetadataMap
+    | BankAccountMetadataMap
+    | CardMetadataMap
+    | SourceMetadataMap
+    | null;
+  /** String representing the object's type. Objects of the same type share the same value. */
+  object: AccountObject | BankAccountObject | CardObject | SourceObject;
+  /** Whether the funds in this account can be paid out. */
+  payouts_enabled?: boolean;
+  /** Information about the requirements for the bank account, including what information needs to be collected. */
+  requirements?: AccountRequirements | ExternalAccountRequirements | null;
+  /** Options for customizing how the account functions within Stripe. */
+  settings?: AccountSettings | null;
+  tos_acceptance?: AccountTosAcceptance;
+  /** The Stripe account type. Can be `standard`, `express`, `custom`, or `none`. */
+  type?: AccountType | SourceType;
+  /** The account this bank account belongs to. Only applicable on Accounts (not customers or recipients) This property is only available when returned as an [External Account](/api/external_account_bank_accounts/object) where [controller.is_controller](/api/accounts/object#account_object-controller-is_controller) is `true`. */
+  account?: BankAccountAccount | CardAccount | null;
+  /** The name of the person or business that owns the bank account. */
+  account_holder_name?: string | null;
+  /** The type of entity that holds the account. This can be either `individual` or `company`. */
+  account_holder_type?: string | null;
+  /** The bank account type. This can only be `checking` or `savings` in most countries. In Japan, this can only be `futsu` or `toza`. */
+  account_type?: string | null;
+  /** A set of available payout methods for this bank account. Only values from this set should be passed as the `method` when creating a payout. */
+  available_payout_methods?:
+    | BankAccountAvailablePayoutMethodsList
+    | CardAvailablePayoutMethodsList
+    | null;
+  /** Name of the bank associated with the routing number (e.g., `WELLS FARGO`). */
+  bank_name?: string | null;
+  /** Three-letter [ISO code for the currency](https://stripe.com/docs/payouts) paid out to the bank account. */
+  currency?: string | null;
+  /** The ID of the customer that the bank account is associated with. */
+  customer?: BankAccountCustomer | CardCustomer | string | null;
+  /** Whether this bank account is the default external account for its currency. */
+  default_for_currency?: boolean | null;
+  /** Uniquely identifies this particular bank account. You can use this attribute to check whether two bank accounts are the same. */
+  fingerprint?: string | null;
+  /** The last four digits of the bank account number. */
+  last4?: string;
+  /** The routing transit number for the bank account. */
+  routing_number?: string | null;
+  /** For bank accounts, possible values are `new`, `validated`, `verified`, `verification_failed`, `tokenized_account_number_deactivated` or `errored`. A bank account that hasn't had any activity or validation performed is `new`. If Stripe can determine that the bank account exists, its status will be `validated`. Note that there often isn’t enough information to know (e.g., for smaller credit unions), and the validation is not always run. If customer bank account verification has succeeded, the bank account status will be `verified`. If the verification failed for any reason, such as microdeposit failure, the status will be `verification_failed`. If the status is `tokenized_account_number_deactivated`, the account utilizes a tokenized account number which has been deactivated due to expiration or revocation. This account will need to be reverified to continue using it for money movement. If a payout sent to this bank account fails, we'll set the status to `errored` and will not continue to send [scheduled payouts](https://stripe.com/docs/payouts#payout-schedule) until the bank details are updated. For external accounts, possible values are `new`, `errored`, `verification_failed`, and `tokenized_account_number_deactivated`. If a payout fails, the status is set to `errored` and scheduled payouts are stopped until account details are updated. In the US and India, if we can't [verify the owner of the bank account](https://support.stripe.com/questions/bank-account-ownership-verification), we'll set the status to `verification_failed`. Other validations aren't run against external accounts because they're only used for payouts. This means the other statuses don't apply. */
+  status?: string | null;
+  /** City/District/Suburb/Town/Village. */
+  address_city?: string | null;
+  /** Billing address country, if provided when creating card. */
+  address_country?: string | null;
+  /** Address line 1 (Street address/PO Box/Company name). */
+  address_line1?: string | null;
+  /** If `address_line1` was provided, results of the check: `pass`, `fail`, `unavailable`, or `unchecked`. */
+  address_line1_check?: string | null;
+  /** Address line 2 (Apartment/Suite/Unit/Building). */
+  address_line2?: string | null;
+  /** State/County/Province/Region. */
+  address_state?: string | null;
+  /** ZIP or postal code. */
+  address_zip?: string | null;
+  /** If `address_zip` was provided, results of the check: `pass`, `fail`, `unavailable`, or `unchecked`. */
+  address_zip_check?: string | null;
+  /** This field indicates whether this payment method can be shown again to its customer in a checkout flow. Stripe products such as Checkout and Elements use this field to determine whether a payment method can be shown as a saved payment method in a checkout flow. The field defaults to “unspecified”. */
+  allow_redisplay?: CardAllowRedisplay | SourceAllowRedisplay | null;
+  /** Card brand. Can be `American Express`, `Cartes Bancaires`, `Diners Club`, `Discover`, `Eftpos Australia`, `Girocard`, `JCB`, `MasterCard`, `UnionPay`, `Visa`, or `Unknown`. */
+  brand?: string;
+  /** If a CVC was provided, results of the check: `pass`, `fail`, `unavailable`, or `unchecked`. A result of unchecked indicates that CVC was provided but hasn't been checked yet. Checks are typically performed when attaching a card to a Customer object, or when creating a charge. For more details, see [Check if a card is valid without a charge](https://support.stripe.com/questions/check-if-a-card-is-valid-without-a-charge). */
+  cvc_check?: string | null;
+  /** A high-level description of the type of cards issued in this range. (For internal use only and not typically available in standard API requests.) */
+  description?: string;
+  /** (For tokenized numbers only.) The last four digits of the device account number. */
+  dynamic_last4?: string | null;
+  /** Two-digit number representing the card's expiration month. */
+  exp_month?: number;
+  /** Four-digit number representing the card's expiration year. */
+  exp_year?: number;
+  /** Card funding type. Can be `credit`, `debit`, `prepaid`, or `unknown`. */
+  funding?: string;
+  /** Issuer identification number of the card. (For internal use only and not typically available in standard API requests.) */
+  iin?: string;
+  /** The name of the card's issuing bank. (For internal use only and not typically available in standard API requests.) */
+  issuer?: string;
+  /** Cardholder name. */
+  name?: string | null;
+  networks?: TokenCardNetworks;
+  /** Status of a card based on the card issuer. */
+  regulated_status?: CardRegulatedStatus | null;
+  /** If the card number is tokenized, this is the method that was used. Can be `android_pay` (includes Google Pay), `apple_pay`, `masterpass`, `visa_checkout`, or null. */
+  tokenization_method?: string | null;
+  ach_credit_transfer?: SourceTypeAchCreditTransfer;
+  ach_debit?: SourceTypeAchDebit;
+  acss_debit?: SourceTypeAcssDebit;
+  alipay?: SourceTypeAlipay;
+  /** A positive integer in the smallest currency unit (that is, 100 cents for $1.00, or 1 for ¥1, Japanese Yen being a zero-decimal currency) representing the total amount associated with the source. This is the amount for which the source will be chargeable once ready. Required for `single_use` sources. */
+  amount?: number | null;
+  au_becs_debit?: SourceTypeAuBecsDebit;
+  bancontact?: SourceTypeBancontact;
+  card?: SourceTypeCard;
+  card_present?: SourceTypeCardPresent;
+  /** The client secret of the source. Used for client-side retrieval using a publishable key. */
+  client_secret?: string | Redacted.Redacted<string>;
+  code_verification?: SourceCodeVerificationFlow;
+  eps?: SourceTypeEps;
+  /** The authentication `flow` of the source. `flow` is one of `redirect`, `receiver`, `code_verification`, `none`. */
+  flow?: string;
+  giropay?: SourceTypeGiropay;
+  ideal?: SourceTypeIdeal;
+  klarna?: SourceTypeKlarna;
+  /** If the object exists in live mode, the value is `true`. If the object exists in test mode, the value is `false`. */
+  livemode?: boolean;
+  multibanco?: SourceTypeMultibanco;
+  /** Information about the owner of the payment instrument that may be used or required by particular source types. */
+  owner?: SourceOwner | null;
+  p24?: SourceTypeP24;
+  receiver?: SourceReceiverFlow;
+  redirect?: SourceRedirectFlow;
+  sepa_credit_transfer?: SourceTypeSepaCreditTransfer;
+  sepa_debit?: SourceTypeSepaDebit;
+  sofort?: SourceTypeSofort;
+  source_order?: SourceOrder;
+  /** Extra information about a source. This will appear on your customer's statement every time you charge the source. */
+  statement_descriptor?: string | null;
+  three_d_secure?: SourceTypeThreeDSecure;
+  /** Either `reusable` or `single_use`. Whether this source should be reusable or not. Some source types may or may not be reusable by construction, while others may leave the option at creation. If an incompatible value is passed, an error will be returned. */
+  usage?: string | null;
+  wechat?: SourceTypeWechat;
+}
+export const PaymentSource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    business_profile: S.optional(S.NullOr(AccountBusinessProfile)),
+    business_type: S.optional(S.NullOr(AccountBusinessType)),
+    capabilities: S.optional(AccountCapabilities),
+    charges_enabled: S.optional(S.Boolean),
+    company: S.optional(LegalEntityCompany),
+    controller: S.optional(AccountUnificationAccountController),
+    country: S.optional(S.NullOr(S.String)),
+    created: S.optional(S.Number),
+    default_currency: S.optional(S.String),
+    details_submitted: S.optional(S.Boolean),
+    email: S.optional(S.NullOr(S.String)),
+    external_accounts: S.optional(AccountExternalAccounts),
+    future_requirements: S.optional(
+      S.NullOr(S.Union(AccountFutureRequirements, ExternalAccountRequirements)),
+    ),
+    groups: S.optional(S.NullOr(AccountGroupMembership)),
+    id: S.String,
+    individual: S.optional(Person),
+    metadata: S.optional(
+      S.NullOr(
+        S.Union(
+          AccountMetadataMap,
+          BankAccountMetadataMap,
+          CardMetadataMap,
+          SourceMetadataMap,
+        ),
+      ),
+    ),
+    object: S.Union(AccountObject, BankAccountObject, CardObject, SourceObject),
+    payouts_enabled: S.optional(S.Boolean),
+    requirements: S.optional(
+      S.NullOr(S.Union(AccountRequirements, ExternalAccountRequirements)),
+    ),
+    settings: S.optional(S.NullOr(AccountSettings)),
+    tos_acceptance: S.optional(AccountTosAcceptance),
+    type: S.optional(S.Union(AccountType, SourceType)),
+    account: S.optional(S.NullOr(S.Union(BankAccountAccount, CardAccount))),
+    account_holder_name: S.optional(S.NullOr(S.String)),
+    account_holder_type: S.optional(S.NullOr(S.String)),
+    account_type: S.optional(S.NullOr(S.String)),
+    available_payout_methods: S.optional(
+      S.NullOr(
+        S.Union(
+          BankAccountAvailablePayoutMethodsList,
+          CardAvailablePayoutMethodsList,
+        ),
+      ),
+    ),
+    bank_name: S.optional(S.NullOr(S.String)),
+    currency: S.optional(S.NullOr(S.String)),
+    customer: S.optional(
+      S.NullOr(S.Union(BankAccountCustomer, CardCustomer, S.String)),
+    ),
+    default_for_currency: S.optional(S.NullOr(S.Boolean)),
+    fingerprint: S.optional(S.NullOr(S.String)),
+    last4: S.optional(S.String),
+    routing_number: S.optional(S.NullOr(S.String)),
+    status: S.optional(S.NullOr(S.String)),
+    address_city: S.optional(S.NullOr(S.String)),
+    address_country: S.optional(S.NullOr(S.String)),
+    address_line1: S.optional(S.NullOr(S.String)),
+    address_line1_check: S.optional(S.NullOr(S.String)),
+    address_line2: S.optional(S.NullOr(S.String)),
+    address_state: S.optional(S.NullOr(S.String)),
+    address_zip: S.optional(S.NullOr(S.String)),
+    address_zip_check: S.optional(S.NullOr(S.String)),
+    allow_redisplay: S.optional(
+      S.NullOr(S.Union(CardAllowRedisplay, SourceAllowRedisplay)),
+    ),
+    brand: S.optional(S.String),
+    cvc_check: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.String),
+    dynamic_last4: S.optional(S.NullOr(S.String)),
+    exp_month: S.optional(S.Number),
+    exp_year: S.optional(S.Number),
+    funding: S.optional(S.String),
+    iin: S.optional(S.String),
+    issuer: S.optional(S.String),
+    name: S.optional(S.NullOr(S.String)),
+    networks: S.optional(TokenCardNetworks),
+    regulated_status: S.optional(S.NullOr(CardRegulatedStatus)),
+    tokenization_method: S.optional(S.NullOr(S.String)),
+    ach_credit_transfer: S.optional(SourceTypeAchCreditTransfer),
+    ach_debit: S.optional(SourceTypeAchDebit),
+    acss_debit: S.optional(SourceTypeAcssDebit),
+    alipay: S.optional(SourceTypeAlipay),
+    amount: S.optional(S.NullOr(S.Number)),
+    au_becs_debit: S.optional(SourceTypeAuBecsDebit),
+    bancontact: S.optional(SourceTypeBancontact),
+    card: S.optional(SourceTypeCard),
+    card_present: S.optional(SourceTypeCardPresent),
+    client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
+    code_verification: S.optional(SourceCodeVerificationFlow),
+    eps: S.optional(SourceTypeEps),
+    flow: S.optional(S.String),
+    giropay: S.optional(SourceTypeGiropay),
+    ideal: S.optional(SourceTypeIdeal),
+    klarna: S.optional(SourceTypeKlarna),
+    livemode: S.optional(S.Boolean),
+    multibanco: S.optional(SourceTypeMultibanco),
+    owner: S.optional(S.NullOr(SourceOwner)),
+    p24: S.optional(SourceTypeP24),
+    receiver: S.optional(SourceReceiverFlow),
+    redirect: S.optional(SourceRedirectFlow),
+    sepa_credit_transfer: S.optional(SourceTypeSepaCreditTransfer),
+    sepa_debit: S.optional(SourceTypeSepaDebit),
+    sofort: S.optional(SourceTypeSofort),
+    source_order: S.optional(SourceOrder),
+    statement_descriptor: S.optional(S.NullOr(S.String)),
+    three_d_secure: S.optional(SourceTypeThreeDSecure),
+    usage: S.optional(S.NullOr(S.String)),
+    wechat: S.optional(SourceTypeWechat),
+  }),
+).annotate({ identifier: "PaymentSource" }) as any as S.Schema<PaymentSource>;
 
 /** ID of the default payment source for the customer. If you use payment methods created through the PaymentMethods API, see the [invoice_settings.default_payment_method](https://docs.stripe.com/api/customers/object#customer_object-invoice_settings-default_payment_method) field instead. */
 export type CustomerDefaultSource = string | PaymentSource;
@@ -13292,9 +13721,26 @@ export const PaymentIntentReview =
 export type PaymentIntentSetupFutureUsage = "off_session" | "on_session";
 export const PaymentIntentSetupFutureUsage = /*@__PURE__*/ S.String;
 
-export type DeletedPaymentSource = DeletedBankAccount | DeletedCard;
-export const DeletedPaymentSource =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<DeletedPaymentSource>;
+export interface DeletedPaymentSource {
+  /** Three-letter [ISO code for the currency](https://stripe.com/docs/payouts) paid out to the bank account. */
+  currency?: string | null;
+  /** Always true for a deleted object */
+  deleted: boolean;
+  /** Unique identifier for the object. */
+  id: string;
+  /** String representing the object's type. Objects of the same type share the same value. */
+  object: DeletedBankAccountObject | DeletedCardObject;
+}
+export const DeletedPaymentSource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    currency: S.optional(S.NullOr(S.String)),
+    deleted: S.Boolean,
+    id: S.String,
+    object: S.Union(DeletedBankAccountObject, DeletedCardObject),
+  }),
+).annotate({
+  identifier: "DeletedPaymentSource",
+}) as any as S.Schema<DeletedPaymentSource>;
 
 /** This is a legacy field that will be removed in the future. It is the ID of the Source object that is associated with this PaymentIntent, if one was supplied. */
 export type PaymentIntentSource = string | PaymentSource | DeletedPaymentSource;
@@ -35643,9 +36089,108 @@ export const GetCustomersCustomerRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCustomersCustomerRequest",
 }) as any as S.Schema<GetCustomersCustomerRequest>;
 
-export type GetCustomersCustomerResponseBody = Customer | DeletedCustomer;
-export const GetCustomersCustomerResponseBody =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<GetCustomersCustomerResponseBody>;
+export interface GetCustomersCustomerResponseBody {
+  /** The customer's address. */
+  address?: Address | null;
+  /** The current balance, if any, that's stored on the customer in their default currency. If negative, the customer has credit to apply to their next invoice. If positive, the customer has an amount owed that's added to their next invoice. The balance only considers amounts that Stripe hasn't successfully applied to any invoice. It doesn't reflect unpaid invoices. This balance is only taken into account after invoices finalize. For multi-currency balances, see [invoice_credit_balance](https://docs.stripe.com/api/customers/object#customer_object-invoice_credit_balance). */
+  balance?: number;
+  /** The customer's business name. */
+  business_name?: string;
+  /** The current funds being held by Stripe on behalf of the customer. You can apply these funds towards payment intents when the source is "cash_balance". The `settings[reconciliation_mode]` field describes if these funds apply to these payment intents manually or automatically. */
+  cash_balance?: CashBalance | null;
+  /** Time at which the object was created. Measured in seconds since the Unix epoch. */
+  created?: number;
+  /** Three-letter [ISO code for the currency](https://stripe.com/docs/currencies) the customer can be charged in for recurring billing purposes. */
+  currency?: string | null;
+  /** The ID of an Account representing a customer. You can use this ID with any v1 API that accepts a customer_account parameter. */
+  customer_account?: string | null;
+  /** ID of the default payment source for the customer. If you use payment methods created through the PaymentMethods API, see the [invoice_settings.default_payment_method](https://docs.stripe.com/api/customers/object#customer_object-invoice_settings-default_payment_method) field instead. */
+  default_source?: CustomerDefaultSource | null;
+  /** Tracks the most recent state change on any invoice belonging to the customer. Paying an invoice or marking it uncollectible via the API will set this field to false. An automatic payment failure or passing the `invoice.due_date` will set this field to `true`. If an invoice becomes uncollectible by [dunning](https://docs.stripe.com/billing/automatic-collection), `delinquent` doesn't reset to `false`. If you care whether the customer has paid their most recent subscription invoice, use `subscription.status` instead. Paying or marking uncollectible any customer invoice regardless of whether it is the latest invoice for a subscription will always set this field to `false`. */
+  delinquent?: boolean | null;
+  /** An arbitrary string attached to the object. Often useful for displaying to users. */
+  description?: string | null;
+  /** Describes the current discount active on the customer, if there is one. */
+  discount?: Discount | null;
+  /** The customer's email address. */
+  email?: string | null;
+  /** Unique identifier for the object. */
+  id: string;
+  /** The customer's individual name. */
+  individual_name?: string;
+  /** The current multi-currency balances, if any, that's stored on the customer. If positive in a currency, the customer has a credit to apply to their next invoice denominated in that currency. If negative, the customer has an amount owed that's added to their next invoice denominated in that currency. These balances don't apply to unpaid invoices. They solely track amounts that Stripe hasn't successfully applied to any invoice. Stripe only applies a balance in a specific currency to an invoice after that invoice (which is in the same currency) finalizes. */
+  invoice_credit_balance?: CustomerInvoiceCreditBalanceMap;
+  /** The prefix for the customer used to generate unique invoice numbers. */
+  invoice_prefix?: string | null;
+  invoice_settings?: InvoiceSettingCustomerSetting;
+  /** If the object exists in live mode, the value is `true`. If the object exists in test mode, the value is `false`. */
+  livemode?: boolean;
+  /** Set of [key-value pairs](https://docs.stripe.com/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. */
+  metadata?: CustomerMetadataMap;
+  /** The customer's full name or business name. */
+  name?: string | null;
+  /** The suffix of the customer's next invoice number (for example, 0001). When the account uses account level sequencing, this parameter is ignored in API requests and the field omitted in API responses. */
+  next_invoice_sequence?: number;
+  /** String representing the object's type. Objects of the same type share the same value. */
+  object: CustomerObject | DeletedCustomerObject;
+  /** The customer's phone number. */
+  phone?: string | null;
+  /** The customer's preferred locales (languages), ordered by preference. */
+  preferred_locales?: CustomerPreferredLocalesList | null;
+  /** Mailing and shipping address for the customer. Appears on invoices emailed to this customer. */
+  shipping?: Shipping | null;
+  /** The customer's payment sources, if any. */
+  sources?: CustomerSources;
+  /** The customer's current subscriptions, if any. */
+  subscriptions?: CustomerSubscriptions;
+  tax?: CustomerTax;
+  /** Describes the customer's tax exemption status, which is `none`, `exempt`, or `reverse`. When set to `reverse`, invoice and receipt PDFs include the following text: **"Reverse charge"**. */
+  tax_exempt?: CustomerTaxExempt | null;
+  /** The customer's tax IDs. */
+  tax_ids?: CustomerTaxIds;
+  /** ID of the test clock that this customer belongs to. */
+  test_clock?: CustomerTestClock | null;
+  /** Always true for a deleted object */
+  deleted?: boolean;
+}
+export const GetCustomersCustomerResponseBody = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    address: S.optional(S.NullOr(Address)),
+    balance: S.optional(S.Number),
+    business_name: S.optional(S.String),
+    cash_balance: S.optional(S.NullOr(CashBalance)),
+    created: S.optional(S.Number),
+    currency: S.optional(S.NullOr(S.String)),
+    customer_account: S.optional(S.NullOr(S.String)),
+    default_source: S.optional(S.NullOr(CustomerDefaultSource)),
+    delinquent: S.optional(S.NullOr(S.Boolean)),
+    description: S.optional(S.NullOr(S.String)),
+    discount: S.optional(S.NullOr(Discount)),
+    email: S.optional(S.NullOr(S.String)),
+    id: S.String,
+    individual_name: S.optional(S.String),
+    invoice_credit_balance: S.optional(CustomerInvoiceCreditBalanceMap),
+    invoice_prefix: S.optional(S.NullOr(S.String)),
+    invoice_settings: S.optional(InvoiceSettingCustomerSetting),
+    livemode: S.optional(S.Boolean),
+    metadata: S.optional(CustomerMetadataMap),
+    name: S.optional(S.NullOr(S.String)),
+    next_invoice_sequence: S.optional(S.Number),
+    object: S.Union(CustomerObject, DeletedCustomerObject),
+    phone: S.optional(S.NullOr(S.String)),
+    preferred_locales: S.optional(S.NullOr(CustomerPreferredLocalesList)),
+    shipping: S.optional(S.NullOr(Shipping)),
+    sources: S.optional(CustomerSources),
+    subscriptions: S.optional(CustomerSubscriptions),
+    tax: S.optional(CustomerTax),
+    tax_exempt: S.optional(S.NullOr(CustomerTaxExempt)),
+    tax_ids: S.optional(CustomerTaxIds),
+    test_clock: S.optional(S.NullOr(CustomerTestClock)),
+    deleted: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "GetCustomersCustomerResponseBody",
+}) as any as S.Schema<GetCustomersCustomerResponseBody>;
 
 export type GetCustomersCustomerResponse = GetCustomersCustomerResponseBody;
 export const GetCustomersCustomerResponse = /*@__PURE__*/ S.suspend(() =>
@@ -57052,11 +57597,88 @@ export const GetTerminalConfigurationsConfigurationRequest =
     identifier: "GetTerminalConfigurationsConfigurationRequest",
   }) as any as S.Schema<GetTerminalConfigurationsConfigurationRequest>;
 
-export type GetTerminalConfigurationsConfigurationResponseBody =
-  | TerminalConfiguration
-  | DeletedTerminalConfiguration;
+export interface GetTerminalConfigurationsConfigurationResponseBody {
+  bbpos_wisepad3?: TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig;
+  bbpos_wisepos_e?: TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig;
+  cellular?: TerminalConfigurationConfigurationResourceCellularConfig;
+  /** Unique identifier for the object. */
+  id: string;
+  /** Whether this Configuration is the default for your account */
+  is_account_default?: boolean | null;
+  /** If the object exists in live mode, the value is `true`. If the object exists in test mode, the value is `false`. */
+  livemode?: boolean;
+  /** String indicating the name of the Configuration object, set by the user */
+  name?: string | null;
+  /** String representing the object's type. Objects of the same type share the same value. */
+  object: TerminalConfigurationObject | DeletedTerminalConfigurationObject;
+  offline?: TerminalConfigurationConfigurationResourceOfflineConfig;
+  reboot_window?: TerminalConfigurationConfigurationResourceRebootWindow;
+  stripe_s700?: TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig;
+  stripe_s710?: TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig;
+  tipping?: TerminalConfigurationConfigurationResourceTipping;
+  verifone_m425?: TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig;
+  verifone_p400?: TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig;
+  verifone_p630?: TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig;
+  verifone_ux700?: TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig;
+  verifone_v660p?: TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig;
+  wifi?: TerminalConfigurationConfigurationResourceWifiConfig;
+  /** Always true for a deleted object */
+  deleted?: boolean;
+}
 export const GetTerminalConfigurationsConfigurationResponseBody =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<GetTerminalConfigurationsConfigurationResponseBody>;
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      bbpos_wisepad3: S.optional(
+        TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig,
+      ),
+      bbpos_wisepos_e: S.optional(
+        TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig,
+      ),
+      cellular: S.optional(
+        TerminalConfigurationConfigurationResourceCellularConfig,
+      ),
+      id: S.String,
+      is_account_default: S.optional(S.NullOr(S.Boolean)),
+      livemode: S.optional(S.Boolean),
+      name: S.optional(S.NullOr(S.String)),
+      object: S.Union(
+        TerminalConfigurationObject,
+        DeletedTerminalConfigurationObject,
+      ),
+      offline: S.optional(
+        TerminalConfigurationConfigurationResourceOfflineConfig,
+      ),
+      reboot_window: S.optional(
+        TerminalConfigurationConfigurationResourceRebootWindow,
+      ),
+      stripe_s700: S.optional(
+        TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig,
+      ),
+      stripe_s710: S.optional(
+        TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig,
+      ),
+      tipping: S.optional(TerminalConfigurationConfigurationResourceTipping),
+      verifone_m425: S.optional(
+        TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig,
+      ),
+      verifone_p400: S.optional(
+        TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig,
+      ),
+      verifone_p630: S.optional(
+        TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig,
+      ),
+      verifone_ux700: S.optional(
+        TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig,
+      ),
+      verifone_v660p: S.optional(
+        TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig,
+      ),
+      wifi: S.optional(TerminalConfigurationConfigurationResourceWifiConfig),
+      deleted: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "GetTerminalConfigurationsConfigurationResponseBody",
+  }) as any as S.Schema<GetTerminalConfigurationsConfigurationResponseBody>;
 
 export type GetTerminalConfigurationsConfigurationResponse =
   GetTerminalConfigurationsConfigurationResponseBody;
@@ -57216,11 +57838,51 @@ export const GetTerminalLocationsLocationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetTerminalLocationsLocationRequest",
 }) as any as S.Schema<GetTerminalLocationsLocationRequest>;
 
-export type GetTerminalLocationsLocationResponseBody =
-  | TerminalLocation
-  | DeletedTerminalLocation;
-export const GetTerminalLocationsLocationResponseBody =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<GetTerminalLocationsLocationResponseBody>;
+export interface GetTerminalLocationsLocationResponseBody {
+  address?: Address;
+  address_kana?: LegalEntityJapanAddress;
+  address_kanji?: LegalEntityJapanAddress;
+  /** The ID of a configuration that will be used to customize all readers in this location. */
+  configuration_overrides?: string;
+  /** The display name of the location. */
+  display_name?: string;
+  /** The Kana variation of the display name of the location. */
+  display_name_kana?: string;
+  /** The Kanji variation of the display name of the location. */
+  display_name_kanji?: string;
+  /** Unique identifier for the object. */
+  id: string;
+  /** If the object exists in live mode, the value is `true`. If the object exists in test mode, the value is `false`. */
+  livemode?: boolean;
+  /** Set of [key-value pairs](https://docs.stripe.com/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. */
+  metadata?: TerminalLocationMetadataMap;
+  /** String representing the object's type. Objects of the same type share the same value. */
+  object: TerminalLocationObject | DeletedTerminalLocationObject;
+  /** The phone number of the location. */
+  phone?: string;
+  /** Always true for a deleted object */
+  deleted?: boolean;
+}
+export const GetTerminalLocationsLocationResponseBody = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      address: S.optional(Address),
+      address_kana: S.optional(LegalEntityJapanAddress),
+      address_kanji: S.optional(LegalEntityJapanAddress),
+      configuration_overrides: S.optional(S.String),
+      display_name: S.optional(S.String),
+      display_name_kana: S.optional(S.String),
+      display_name_kanji: S.optional(S.String),
+      id: S.String,
+      livemode: S.optional(S.Boolean),
+      metadata: S.optional(TerminalLocationMetadataMap),
+      object: S.Union(TerminalLocationObject, DeletedTerminalLocationObject),
+      phone: S.optional(S.String),
+      deleted: S.optional(S.Boolean),
+    }),
+).annotate({
+  identifier: "GetTerminalLocationsLocationResponseBody",
+}) as any as S.Schema<GetTerminalLocationsLocationResponseBody>;
 
 export type GetTerminalLocationsLocationResponse =
   GetTerminalLocationsLocationResponseBody;
@@ -58188,11 +58850,60 @@ export const GetTerminalReadersReaderRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetTerminalReadersReaderRequest",
 }) as any as S.Schema<GetTerminalReadersReaderRequest>;
 
-export type GetTerminalReadersReaderResponseBody =
-  | TerminalReader
-  | DeletedTerminalReader;
-export const GetTerminalReadersReaderResponseBody =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<GetTerminalReadersReaderResponseBody>;
+export interface GetTerminalReadersReaderResponseBody {
+  /** The most recent action performed by the reader. */
+  action?: TerminalReaderReaderResourceReaderAction | null;
+  /** The current software version of the reader. */
+  device_sw_version?: string | null;
+  /** Device type of the reader. */
+  device_type: TerminalReaderDeviceType | DeletedTerminalReaderDeviceType;
+  /** Unique identifier for the object. */
+  id: string;
+  /** The local IP address of the reader. */
+  ip_address?: string | null;
+  /** Custom label given to the reader for easier identification. */
+  label?: string;
+  /** The last time this reader reported to Stripe backend. Timestamp is measured in milliseconds since the Unix epoch. Unlike most other Stripe timestamp fields which use seconds, this field uses milliseconds. */
+  last_seen_at?: number | null;
+  /** If the object exists in live mode, the value is `true`. If the object exists in test mode, the value is `false`. */
+  livemode?: boolean;
+  /** The location identifier of the reader. */
+  location?: TerminalReaderLocation | null;
+  /** Set of [key-value pairs](https://docs.stripe.com/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. */
+  metadata?: TerminalReaderMetadataMap;
+  /** String representing the object's type. Objects of the same type share the same value. */
+  object: TerminalReaderObject | DeletedTerminalReaderObject;
+  /** Serial number of the reader. */
+  serial_number: string;
+  /** The networking status of the reader. We do not recommend using this field in flows that may block taking payments. */
+  status?: TerminalReaderStatus | null;
+  /** Always true for a deleted object */
+  deleted?: boolean;
+}
+export const GetTerminalReadersReaderResponseBody = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      action: S.optional(S.NullOr(TerminalReaderReaderResourceReaderAction)),
+      device_sw_version: S.optional(S.NullOr(S.String)),
+      device_type: S.Union(
+        TerminalReaderDeviceType,
+        DeletedTerminalReaderDeviceType,
+      ),
+      id: S.String,
+      ip_address: S.optional(S.NullOr(S.String)),
+      label: S.optional(S.String),
+      last_seen_at: S.optional(S.NullOr(S.Number)),
+      livemode: S.optional(S.Boolean),
+      location: S.optional(S.NullOr(TerminalReaderLocation)),
+      metadata: S.optional(TerminalReaderMetadataMap),
+      object: S.Union(TerminalReaderObject, DeletedTerminalReaderObject),
+      serial_number: S.String,
+      status: S.optional(S.NullOr(TerminalReaderStatus)),
+      deleted: S.optional(S.Boolean),
+    }),
+).annotate({
+  identifier: "GetTerminalReadersReaderResponseBody",
+}) as any as S.Schema<GetTerminalReadersReaderResponseBody>;
 
 export type GetTerminalReadersReaderResponse =
   GetTerminalReadersReaderResponseBody;
@@ -93210,12 +93921,232 @@ export const PostCustomersCustomerSourcesIdRequest = /*@__PURE__*/ S.suspend(
   identifier: "PostCustomersCustomerSourcesIdRequest",
 }) as any as S.Schema<PostCustomersCustomerSourcesIdRequest>;
 
-export type PostCustomersCustomerSourcesIdResponseBody =
-  | Card
-  | BankAccount
-  | Source;
+export interface PostCustomersCustomerSourcesIdResponseBody {
+  /** The account this bank account belongs to. Only applicable on Accounts (not customers or recipients) This property is only available when returned as an [External Account](/api/external_account_bank_accounts/object) where [controller.is_controller](/api/accounts/object#account_object-controller-is_controller) is `true`. */
+  account?: CardAccount | BankAccountAccount | null;
+  /** City/District/Suburb/Town/Village. */
+  address_city?: string | null;
+  /** Billing address country, if provided when creating card. */
+  address_country?: string | null;
+  /** Address line 1 (Street address/PO Box/Company name). */
+  address_line1?: string | null;
+  /** If `address_line1` was provided, results of the check: `pass`, `fail`, `unavailable`, or `unchecked`. */
+  address_line1_check?: string | null;
+  /** Address line 2 (Apartment/Suite/Unit/Building). */
+  address_line2?: string | null;
+  /** State/County/Province/Region. */
+  address_state?: string | null;
+  /** ZIP or postal code. */
+  address_zip?: string | null;
+  /** If `address_zip` was provided, results of the check: `pass`, `fail`, `unavailable`, or `unchecked`. */
+  address_zip_check?: string | null;
+  /** This field indicates whether this payment method can be shown again to its customer in a checkout flow. Stripe products such as Checkout and Elements use this field to determine whether a payment method can be shown as a saved payment method in a checkout flow. The field defaults to “unspecified”. */
+  allow_redisplay?: CardAllowRedisplay | SourceAllowRedisplay | null;
+  /** A set of available payout methods for this card. Only values from this set should be passed as the `method` when creating a payout. */
+  available_payout_methods?:
+    | CardAvailablePayoutMethodsList
+    | BankAccountAvailablePayoutMethodsList
+    | null;
+  /** Card brand. Can be `American Express`, `Cartes Bancaires`, `Diners Club`, `Discover`, `Eftpos Australia`, `Girocard`, `JCB`, `MasterCard`, `UnionPay`, `Visa`, or `Unknown`. */
+  brand?: string;
+  /** Two-letter ISO code representing the country of the card. You could use this attribute to get a sense of the international breakdown of cards you've collected. */
+  country?: string | null;
+  /** Three-letter [ISO code for currency](https://www.iso.org/iso-4217-currency-codes.html) in lowercase. Must be a [supported currency](https://docs.stripe.com/currencies). Only applicable on accounts (not customers or recipients). The card can be used as a transfer destination for funds in this currency. This property is only available when returned as an [External Account](/api/external_account_cards/object) where [controller.is_controller](/api/accounts/object#account_object-controller-is_controller) is `true`. */
+  currency?: string | null;
+  /** The customer that this card belongs to. This attribute will not be in the card object if the card belongs to an account or recipient instead. */
+  customer?: CardCustomer | BankAccountCustomer | string | null;
+  /** If a CVC was provided, results of the check: `pass`, `fail`, `unavailable`, or `unchecked`. A result of unchecked indicates that CVC was provided but hasn't been checked yet. Checks are typically performed when attaching a card to a Customer object, or when creating a charge. For more details, see [Check if a card is valid without a charge](https://support.stripe.com/questions/check-if-a-card-is-valid-without-a-charge). */
+  cvc_check?: string | null;
+  /** Whether this card is the default external account for its currency. This property is only available for accounts where [controller.requirement_collection](/api/accounts/object#account_object-controller-requirement_collection) is `application`, which includes Custom accounts. */
+  default_for_currency?: boolean | null;
+  /** A high-level description of the type of cards issued in this range. (For internal use only and not typically available in standard API requests.) */
+  description?: string;
+  /** (For tokenized numbers only.) The last four digits of the device account number. */
+  dynamic_last4?: string | null;
+  /** Two-digit number representing the card's expiration month. */
+  exp_month?: number;
+  /** Four-digit number representing the card's expiration year. */
+  exp_year?: number;
+  /** Uniquely identifies this particular card number. You can use this attribute to check whether two customers who’ve signed up with you are using the same card number, for example. For payment methods that tokenize card information (Apple Pay, Google Pay), the tokenized number might be provided instead of the underlying card number. *As of May 1, 2021, card fingerprint in India for Connect changed to allow two fingerprints for the same card---one for India and one for the rest of the world.* */
+  fingerprint?: string | null;
+  /** Card funding type. Can be `credit`, `debit`, `prepaid`, or `unknown`. */
+  funding?: string;
+  /** Unique identifier for the object. */
+  id: string;
+  /** Issuer identification number of the card. (For internal use only and not typically available in standard API requests.) */
+  iin?: string;
+  /** The name of the card's issuing bank. (For internal use only and not typically available in standard API requests.) */
+  issuer?: string;
+  /** The last four digits of the card. */
+  last4?: string;
+  /** Set of [key-value pairs](https://docs.stripe.com/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. */
+  metadata?:
+    | CardMetadataMap
+    | BankAccountMetadataMap
+    | SourceMetadataMap
+    | null;
+  /** Cardholder name. */
+  name?: string | null;
+  networks?: TokenCardNetworks;
+  /** String representing the object's type. Objects of the same type share the same value. */
+  object: CardObject | BankAccountObject | SourceObject;
+  /** Status of a card based on the card issuer. */
+  regulated_status?: CardRegulatedStatus | null;
+  /** For external accounts that are cards, possible values are `new` and `errored`. If a payout fails, the status is set to `errored` and [scheduled payouts](https://stripe.com/docs/payouts#payout-schedule) are stopped until account details are updated. */
+  status?: string | null;
+  /** If the card number is tokenized, this is the method that was used. Can be `android_pay` (includes Google Pay), `apple_pay`, `masterpass`, `visa_checkout`, or null. */
+  tokenization_method?: string | null;
+  /** The name of the person or business that owns the bank account. */
+  account_holder_name?: string | null;
+  /** The type of entity that holds the account. This can be either `individual` or `company`. */
+  account_holder_type?: string | null;
+  /** The bank account type. This can only be `checking` or `savings` in most countries. In Japan, this can only be `futsu` or `toza`. */
+  account_type?: string | null;
+  /** Name of the bank associated with the routing number (e.g., `WELLS FARGO`). */
+  bank_name?: string | null;
+  /** Information about the [upcoming new requirements for the bank account](https://docs.stripe.com/connect/custom-accounts/future-requirements), including what information needs to be collected, and by when. */
+  future_requirements?: ExternalAccountRequirements | null;
+  /** Information about the requirements for the bank account, including what information needs to be collected. */
+  requirements?: ExternalAccountRequirements | null;
+  /** The routing transit number for the bank account. */
+  routing_number?: string | null;
+  ach_credit_transfer?: SourceTypeAchCreditTransfer;
+  ach_debit?: SourceTypeAchDebit;
+  acss_debit?: SourceTypeAcssDebit;
+  alipay?: SourceTypeAlipay;
+  /** A positive integer in the smallest currency unit (that is, 100 cents for $1.00, or 1 for ¥1, Japanese Yen being a zero-decimal currency) representing the total amount associated with the source. This is the amount for which the source will be chargeable once ready. Required for `single_use` sources. */
+  amount?: number | null;
+  au_becs_debit?: SourceTypeAuBecsDebit;
+  bancontact?: SourceTypeBancontact;
+  card?: SourceTypeCard;
+  card_present?: SourceTypeCardPresent;
+  /** The client secret of the source. Used for client-side retrieval using a publishable key. */
+  client_secret?: string | Redacted.Redacted<string>;
+  code_verification?: SourceCodeVerificationFlow;
+  /** Time at which the object was created. Measured in seconds since the Unix epoch. */
+  created?: number;
+  eps?: SourceTypeEps;
+  /** The authentication `flow` of the source. `flow` is one of `redirect`, `receiver`, `code_verification`, `none`. */
+  flow?: string;
+  giropay?: SourceTypeGiropay;
+  ideal?: SourceTypeIdeal;
+  klarna?: SourceTypeKlarna;
+  /** If the object exists in live mode, the value is `true`. If the object exists in test mode, the value is `false`. */
+  livemode?: boolean;
+  multibanco?: SourceTypeMultibanco;
+  /** Information about the owner of the payment instrument that may be used or required by particular source types. */
+  owner?: SourceOwner | null;
+  p24?: SourceTypeP24;
+  receiver?: SourceReceiverFlow;
+  redirect?: SourceRedirectFlow;
+  sepa_credit_transfer?: SourceTypeSepaCreditTransfer;
+  sepa_debit?: SourceTypeSepaDebit;
+  sofort?: SourceTypeSofort;
+  source_order?: SourceOrder;
+  /** Extra information about a source. This will appear on your customer's statement every time you charge the source. */
+  statement_descriptor?: string | null;
+  three_d_secure?: SourceTypeThreeDSecure;
+  /** The `type` of the source. The `type` is a payment method, one of `ach_credit_transfer`, `ach_debit`, `alipay`, `bancontact`, `card`, `card_present`, `eps`, `giropay`, `ideal`, `multibanco`, `klarna`, `p24`, `sepa_debit`, `sofort`, `three_d_secure`, or `wechat`. An additional hash is included on the source with a name matching this value. It contains additional information specific to the [payment method](https://docs.stripe.com/sources) used. */
+  type?: SourceType;
+  /** Either `reusable` or `single_use`. Whether this source should be reusable or not. Some source types may or may not be reusable by construction, while others may leave the option at creation. If an incompatible value is passed, an error will be returned. */
+  usage?: string | null;
+  wechat?: SourceTypeWechat;
+}
 export const PostCustomersCustomerSourcesIdResponseBody =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<PostCustomersCustomerSourcesIdResponseBody>;
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      account: S.optional(S.NullOr(S.Union(CardAccount, BankAccountAccount))),
+      address_city: S.optional(S.NullOr(S.String)),
+      address_country: S.optional(S.NullOr(S.String)),
+      address_line1: S.optional(S.NullOr(S.String)),
+      address_line1_check: S.optional(S.NullOr(S.String)),
+      address_line2: S.optional(S.NullOr(S.String)),
+      address_state: S.optional(S.NullOr(S.String)),
+      address_zip: S.optional(S.NullOr(S.String)),
+      address_zip_check: S.optional(S.NullOr(S.String)),
+      allow_redisplay: S.optional(
+        S.NullOr(S.Union(CardAllowRedisplay, SourceAllowRedisplay)),
+      ),
+      available_payout_methods: S.optional(
+        S.NullOr(
+          S.Union(
+            CardAvailablePayoutMethodsList,
+            BankAccountAvailablePayoutMethodsList,
+          ),
+        ),
+      ),
+      brand: S.optional(S.String),
+      country: S.optional(S.NullOr(S.String)),
+      currency: S.optional(S.NullOr(S.String)),
+      customer: S.optional(
+        S.NullOr(S.Union(CardCustomer, BankAccountCustomer, S.String)),
+      ),
+      cvc_check: S.optional(S.NullOr(S.String)),
+      default_for_currency: S.optional(S.NullOr(S.Boolean)),
+      description: S.optional(S.String),
+      dynamic_last4: S.optional(S.NullOr(S.String)),
+      exp_month: S.optional(S.Number),
+      exp_year: S.optional(S.Number),
+      fingerprint: S.optional(S.NullOr(S.String)),
+      funding: S.optional(S.String),
+      id: S.String,
+      iin: S.optional(S.String),
+      issuer: S.optional(S.String),
+      last4: S.optional(S.String),
+      metadata: S.optional(
+        S.NullOr(
+          S.Union(CardMetadataMap, BankAccountMetadataMap, SourceMetadataMap),
+        ),
+      ),
+      name: S.optional(S.NullOr(S.String)),
+      networks: S.optional(TokenCardNetworks),
+      object: S.Union(CardObject, BankAccountObject, SourceObject),
+      regulated_status: S.optional(S.NullOr(CardRegulatedStatus)),
+      status: S.optional(S.NullOr(S.String)),
+      tokenization_method: S.optional(S.NullOr(S.String)),
+      account_holder_name: S.optional(S.NullOr(S.String)),
+      account_holder_type: S.optional(S.NullOr(S.String)),
+      account_type: S.optional(S.NullOr(S.String)),
+      bank_name: S.optional(S.NullOr(S.String)),
+      future_requirements: S.optional(S.NullOr(ExternalAccountRequirements)),
+      requirements: S.optional(S.NullOr(ExternalAccountRequirements)),
+      routing_number: S.optional(S.NullOr(S.String)),
+      ach_credit_transfer: S.optional(SourceTypeAchCreditTransfer),
+      ach_debit: S.optional(SourceTypeAchDebit),
+      acss_debit: S.optional(SourceTypeAcssDebit),
+      alipay: S.optional(SourceTypeAlipay),
+      amount: S.optional(S.NullOr(S.Number)),
+      au_becs_debit: S.optional(SourceTypeAuBecsDebit),
+      bancontact: S.optional(SourceTypeBancontact),
+      card: S.optional(SourceTypeCard),
+      card_present: S.optional(SourceTypeCardPresent),
+      client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
+      code_verification: S.optional(SourceCodeVerificationFlow),
+      created: S.optional(S.Number),
+      eps: S.optional(SourceTypeEps),
+      flow: S.optional(S.String),
+      giropay: S.optional(SourceTypeGiropay),
+      ideal: S.optional(SourceTypeIdeal),
+      klarna: S.optional(SourceTypeKlarna),
+      livemode: S.optional(S.Boolean),
+      multibanco: S.optional(SourceTypeMultibanco),
+      owner: S.optional(S.NullOr(SourceOwner)),
+      p24: S.optional(SourceTypeP24),
+      receiver: S.optional(SourceReceiverFlow),
+      redirect: S.optional(SourceRedirectFlow),
+      sepa_credit_transfer: S.optional(SourceTypeSepaCreditTransfer),
+      sepa_debit: S.optional(SourceTypeSepaDebit),
+      sofort: S.optional(SourceTypeSofort),
+      source_order: S.optional(SourceOrder),
+      statement_descriptor: S.optional(S.NullOr(S.String)),
+      three_d_secure: S.optional(SourceTypeThreeDSecure),
+      type: S.optional(SourceType),
+      usage: S.optional(S.NullOr(S.String)),
+      wechat: S.optional(SourceTypeWechat),
+    }),
+  ).annotate({
+    identifier: "PostCustomersCustomerSourcesIdResponseBody",
+  }) as any as S.Schema<PostCustomersCustomerSourcesIdResponseBody>;
 
 export type PostCustomersCustomerSourcesIdResponse =
   PostCustomersCustomerSourcesIdResponseBody;
@@ -170349,11 +171280,88 @@ export const PostTerminalConfigurationsConfigurationRequest =
     identifier: "PostTerminalConfigurationsConfigurationRequest",
   }) as any as S.Schema<PostTerminalConfigurationsConfigurationRequest>;
 
-export type PostTerminalConfigurationsConfigurationResponseBody =
-  | TerminalConfiguration
-  | DeletedTerminalConfiguration;
+export interface PostTerminalConfigurationsConfigurationResponseBody {
+  bbpos_wisepad3?: TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig;
+  bbpos_wisepos_e?: TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig;
+  cellular?: TerminalConfigurationConfigurationResourceCellularConfig;
+  /** Unique identifier for the object. */
+  id: string;
+  /** Whether this Configuration is the default for your account */
+  is_account_default?: boolean | null;
+  /** If the object exists in live mode, the value is `true`. If the object exists in test mode, the value is `false`. */
+  livemode?: boolean;
+  /** String indicating the name of the Configuration object, set by the user */
+  name?: string | null;
+  /** String representing the object's type. Objects of the same type share the same value. */
+  object: TerminalConfigurationObject | DeletedTerminalConfigurationObject;
+  offline?: TerminalConfigurationConfigurationResourceOfflineConfig;
+  reboot_window?: TerminalConfigurationConfigurationResourceRebootWindow;
+  stripe_s700?: TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig;
+  stripe_s710?: TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig;
+  tipping?: TerminalConfigurationConfigurationResourceTipping;
+  verifone_m425?: TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig;
+  verifone_p400?: TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig;
+  verifone_p630?: TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig;
+  verifone_ux700?: TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig;
+  verifone_v660p?: TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig;
+  wifi?: TerminalConfigurationConfigurationResourceWifiConfig;
+  /** Always true for a deleted object */
+  deleted?: boolean;
+}
 export const PostTerminalConfigurationsConfigurationResponseBody =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<PostTerminalConfigurationsConfigurationResponseBody>;
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      bbpos_wisepad3: S.optional(
+        TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig,
+      ),
+      bbpos_wisepos_e: S.optional(
+        TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig,
+      ),
+      cellular: S.optional(
+        TerminalConfigurationConfigurationResourceCellularConfig,
+      ),
+      id: S.String,
+      is_account_default: S.optional(S.NullOr(S.Boolean)),
+      livemode: S.optional(S.Boolean),
+      name: S.optional(S.NullOr(S.String)),
+      object: S.Union(
+        TerminalConfigurationObject,
+        DeletedTerminalConfigurationObject,
+      ),
+      offline: S.optional(
+        TerminalConfigurationConfigurationResourceOfflineConfig,
+      ),
+      reboot_window: S.optional(
+        TerminalConfigurationConfigurationResourceRebootWindow,
+      ),
+      stripe_s700: S.optional(
+        TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig,
+      ),
+      stripe_s710: S.optional(
+        TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig,
+      ),
+      tipping: S.optional(TerminalConfigurationConfigurationResourceTipping),
+      verifone_m425: S.optional(
+        TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig,
+      ),
+      verifone_p400: S.optional(
+        TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig,
+      ),
+      verifone_p630: S.optional(
+        TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig,
+      ),
+      verifone_ux700: S.optional(
+        TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig,
+      ),
+      verifone_v660p: S.optional(
+        TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig,
+      ),
+      wifi: S.optional(TerminalConfigurationConfigurationResourceWifiConfig),
+      deleted: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "PostTerminalConfigurationsConfigurationResponseBody",
+  }) as any as S.Schema<PostTerminalConfigurationsConfigurationResponseBody>;
 
 export type PostTerminalConfigurationsConfigurationResponse =
   PostTerminalConfigurationsConfigurationResponseBody;
@@ -170816,11 +171824,51 @@ export const PostTerminalLocationsLocationRequest = /*@__PURE__*/ S.suspend(
   identifier: "PostTerminalLocationsLocationRequest",
 }) as any as S.Schema<PostTerminalLocationsLocationRequest>;
 
-export type PostTerminalLocationsLocationResponseBody =
-  | TerminalLocation
-  | DeletedTerminalLocation;
+export interface PostTerminalLocationsLocationResponseBody {
+  address?: Address;
+  address_kana?: LegalEntityJapanAddress;
+  address_kanji?: LegalEntityJapanAddress;
+  /** The ID of a configuration that will be used to customize all readers in this location. */
+  configuration_overrides?: string;
+  /** The display name of the location. */
+  display_name?: string;
+  /** The Kana variation of the display name of the location. */
+  display_name_kana?: string;
+  /** The Kanji variation of the display name of the location. */
+  display_name_kanji?: string;
+  /** Unique identifier for the object. */
+  id: string;
+  /** If the object exists in live mode, the value is `true`. If the object exists in test mode, the value is `false`. */
+  livemode?: boolean;
+  /** Set of [key-value pairs](https://docs.stripe.com/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. */
+  metadata?: TerminalLocationMetadataMap;
+  /** String representing the object's type. Objects of the same type share the same value. */
+  object: TerminalLocationObject | DeletedTerminalLocationObject;
+  /** The phone number of the location. */
+  phone?: string;
+  /** Always true for a deleted object */
+  deleted?: boolean;
+}
 export const PostTerminalLocationsLocationResponseBody =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<PostTerminalLocationsLocationResponseBody>;
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      address: S.optional(Address),
+      address_kana: S.optional(LegalEntityJapanAddress),
+      address_kanji: S.optional(LegalEntityJapanAddress),
+      configuration_overrides: S.optional(S.String),
+      display_name: S.optional(S.String),
+      display_name_kana: S.optional(S.String),
+      display_name_kanji: S.optional(S.String),
+      id: S.String,
+      livemode: S.optional(S.Boolean),
+      metadata: S.optional(TerminalLocationMetadataMap),
+      object: S.Union(TerminalLocationObject, DeletedTerminalLocationObject),
+      phone: S.optional(S.String),
+      deleted: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "PostTerminalLocationsLocationResponseBody",
+  }) as any as S.Schema<PostTerminalLocationsLocationResponseBody>;
 
 export type PostTerminalLocationsLocationResponse =
   PostTerminalLocationsLocationResponseBody;
@@ -171088,11 +172136,60 @@ export const PostTerminalReadersReaderRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PostTerminalReadersReaderRequest",
 }) as any as S.Schema<PostTerminalReadersReaderRequest>;
 
-export type PostTerminalReadersReaderResponseBody =
-  | TerminalReader
-  | DeletedTerminalReader;
-export const PostTerminalReadersReaderResponseBody =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<PostTerminalReadersReaderResponseBody>;
+export interface PostTerminalReadersReaderResponseBody {
+  /** The most recent action performed by the reader. */
+  action?: TerminalReaderReaderResourceReaderAction | null;
+  /** The current software version of the reader. */
+  device_sw_version?: string | null;
+  /** Device type of the reader. */
+  device_type: TerminalReaderDeviceType | DeletedTerminalReaderDeviceType;
+  /** Unique identifier for the object. */
+  id: string;
+  /** The local IP address of the reader. */
+  ip_address?: string | null;
+  /** Custom label given to the reader for easier identification. */
+  label?: string;
+  /** The last time this reader reported to Stripe backend. Timestamp is measured in milliseconds since the Unix epoch. Unlike most other Stripe timestamp fields which use seconds, this field uses milliseconds. */
+  last_seen_at?: number | null;
+  /** If the object exists in live mode, the value is `true`. If the object exists in test mode, the value is `false`. */
+  livemode?: boolean;
+  /** The location identifier of the reader. */
+  location?: TerminalReaderLocation | null;
+  /** Set of [key-value pairs](https://docs.stripe.com/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. */
+  metadata?: TerminalReaderMetadataMap;
+  /** String representing the object's type. Objects of the same type share the same value. */
+  object: TerminalReaderObject | DeletedTerminalReaderObject;
+  /** Serial number of the reader. */
+  serial_number: string;
+  /** The networking status of the reader. We do not recommend using this field in flows that may block taking payments. */
+  status?: TerminalReaderStatus | null;
+  /** Always true for a deleted object */
+  deleted?: boolean;
+}
+export const PostTerminalReadersReaderResponseBody = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      action: S.optional(S.NullOr(TerminalReaderReaderResourceReaderAction)),
+      device_sw_version: S.optional(S.NullOr(S.String)),
+      device_type: S.Union(
+        TerminalReaderDeviceType,
+        DeletedTerminalReaderDeviceType,
+      ),
+      id: S.String,
+      ip_address: S.optional(S.NullOr(S.String)),
+      label: S.optional(S.String),
+      last_seen_at: S.optional(S.NullOr(S.Number)),
+      livemode: S.optional(S.Boolean),
+      location: S.optional(S.NullOr(TerminalReaderLocation)),
+      metadata: S.optional(TerminalReaderMetadataMap),
+      object: S.Union(TerminalReaderObject, DeletedTerminalReaderObject),
+      serial_number: S.String,
+      status: S.optional(S.NullOr(TerminalReaderStatus)),
+      deleted: S.optional(S.Boolean),
+    }),
+).annotate({
+  identifier: "PostTerminalReadersReaderResponseBody",
+}) as any as S.Schema<PostTerminalReadersReaderResponseBody>;
 
 export type PostTerminalReadersReaderResponse =
   PostTerminalReadersReaderResponseBody;

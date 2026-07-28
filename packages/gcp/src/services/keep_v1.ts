@@ -13,58 +13,58 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
 /** Describes a single Google Family. */
 export interface Family {}
-export const Family = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Family" }) as any as S.Schema<Family>;
+export const Family = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Family",
+}) as any as S.Schema<Family>;
 
 /** Describes a single Group. */
 export interface Group {
@@ -72,9 +72,9 @@ export interface Group {
   email?: string;
 }
 export const Group = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "email": S.optional(S.String),
-}),
+  S.Struct({
+    email: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Group" }) as any as S.Schema<Group>;
 
 /** Describes a single user. */
@@ -83,9 +83,9 @@ export interface User {
   email?: string;
 }
 export const User = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "email": S.optional(S.String),
-}),
+  S.Struct({
+    email: S.optional(S.String),
+  }),
 ).annotate({ identifier: "User" }) as any as S.Schema<User>;
 
 export type PermissionRoleEnum = "ROLE_UNSPECIFIED" | "OWNER" | "WRITER";
@@ -109,15 +109,15 @@ export interface Permission {
   deleted?: boolean;
 }
 export const Permission = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "family": S.optional(Family),
-  "group": S.optional(Group),
-  "user": S.optional(User),
-  "role": S.optional(PermissionRoleEnum),
-  "email": S.optional(S.String),
-  "name": S.optional(S.String),
-  "deleted": S.optional(S.Boolean),
-}),
+  S.Struct({
+    family: S.optional(Family),
+    group: S.optional(Group),
+    user: S.optional(User),
+    role: S.optional(PermissionRoleEnum),
+    email: S.optional(S.String),
+    name: S.optional(S.String),
+    deleted: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "Permission" }) as any as S.Schema<Permission>;
 
 /** The request to add a single permission on the note. */
@@ -128,14 +128,19 @@ export interface CreatePermissionRequest {
   permission?: Permission;
 }
 export const CreatePermissionRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.optional(S.String),
-  "permission": S.optional(Permission),
-}),
-).annotate({ identifier: "CreatePermissionRequest" }) as any as S.Schema<CreatePermissionRequest>;
+  S.Struct({
+    parent: S.optional(S.String),
+    permission: S.optional(Permission),
+  }),
+).annotate({
+  identifier: "CreatePermissionRequest",
+}) as any as S.Schema<CreatePermissionRequest>;
 
-export type CreatePermissionRequestList = ReadonlyArray<CreatePermissionRequest>;
-export const CreatePermissionRequestList = /*@__PURE__*/ S.Array(CreatePermissionRequest) as any as S.Schema<CreatePermissionRequestList>;
+export type CreatePermissionRequestList =
+  ReadonlyArray<CreatePermissionRequest>;
+export const CreatePermissionRequestList = /*@__PURE__*/ S.Array(
+  CreatePermissionRequest,
+) as any as S.Schema<CreatePermissionRequestList>;
 
 /** The request to add one or more permissions on the note. Currently, only the `WRITER` role may be specified. If adding a permission fails, then the entire request fails and no changes are made. */
 export interface BatchCreatePermissionsRequest {
@@ -143,10 +148,12 @@ export interface BatchCreatePermissionsRequest {
   requests?: CreatePermissionRequestList;
 }
 export const BatchCreatePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requests": S.optional(CreatePermissionRequestList),
-}),
-).annotate({ identifier: "BatchCreatePermissionsRequest" }) as any as S.Schema<BatchCreatePermissionsRequest>;
+  S.Struct({
+    requests: S.optional(CreatePermissionRequestList),
+  }),
+).annotate({
+  identifier: "BatchCreatePermissionsRequest",
+}) as any as S.Schema<BatchCreatePermissionsRequest>;
 
 export interface BatchCreateNotesPermissionsRequest {
   /** The parent resource shared by all Permissions being created. Format: `notes/{note}` If this is set, the parent field in the CreatePermission messages must either be empty or match this field. */
@@ -155,14 +162,24 @@ export interface BatchCreateNotesPermissionsRequest {
   body?: BatchCreatePermissionsRequest;
 }
 export const BatchCreateNotesPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(BatchCreatePermissionsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/permissions:batchCreate","baseUrl":"https://keep.googleapis.com/"})),
-).annotate({ identifier: "BatchCreateNotesPermissionsRequest" }) as any as S.Schema<BatchCreateNotesPermissionsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(BatchCreatePermissionsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/permissions:batchCreate",
+      baseUrl: "https://keep.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "BatchCreateNotesPermissionsRequest",
+}) as any as S.Schema<BatchCreateNotesPermissionsRequest>;
 
 export type PermissionList = ReadonlyArray<Permission>;
-export const PermissionList = /*@__PURE__*/ S.Array(Permission) as any as S.Schema<PermissionList>;
+export const PermissionList = /*@__PURE__*/ S.Array(
+  Permission,
+) as any as S.Schema<PermissionList>;
 
 /** The response for creating permissions on a note. */
 export interface BatchCreatePermissionsResponse {
@@ -170,13 +187,17 @@ export interface BatchCreatePermissionsResponse {
   permissions?: PermissionList;
 }
 export const BatchCreatePermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "permissions": S.optional(PermissionList),
-}),
-).annotate({ identifier: "BatchCreatePermissionsResponse" }) as any as S.Schema<BatchCreatePermissionsResponse>;
+  S.Struct({
+    permissions: S.optional(PermissionList),
+  }),
+).annotate({
+  identifier: "BatchCreatePermissionsResponse",
+}) as any as S.Schema<BatchCreatePermissionsResponse>;
 
 export type StringList = ReadonlyArray<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** The request to remove one or more permissions from a note. A permission with the `OWNER` role can't be removed. If removing a permission fails, then the entire request fails and no changes are made. Returns a 400 bad request error if a specified permission does not exist on the note. */
 export interface BatchDeletePermissionsRequest {
@@ -184,10 +205,12 @@ export interface BatchDeletePermissionsRequest {
   names?: StringList;
 }
 export const BatchDeletePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "names": S.optional(StringList),
-}),
-).annotate({ identifier: "BatchDeletePermissionsRequest" }) as any as S.Schema<BatchDeletePermissionsRequest>;
+  S.Struct({
+    names: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "BatchDeletePermissionsRequest",
+}) as any as S.Schema<BatchDeletePermissionsRequest>;
 
 export interface BatchDeleteNotesPermissionsRequest {
   /** The parent resource shared by all permissions being deleted. Format: `notes/{note}` If this is set, the parent of all of the permissions specified in the DeletePermissionRequest messages must match this field. */
@@ -196,17 +219,25 @@ export interface BatchDeleteNotesPermissionsRequest {
   body?: BatchDeletePermissionsRequest;
 }
 export const BatchDeleteNotesPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(BatchDeletePermissionsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/{+parent}/permissions:batchDelete","baseUrl":"https://keep.googleapis.com/"})),
-).annotate({ identifier: "BatchDeleteNotesPermissionsRequest" }) as any as S.Schema<BatchDeleteNotesPermissionsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(BatchDeletePermissionsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/permissions:batchDelete",
+      baseUrl: "https://keep.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "BatchDeleteNotesPermissionsRequest",
+}) as any as S.Schema<BatchDeleteNotesPermissionsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 /** The block of text for a single text section or list item. */
 export interface TextContent {
@@ -214,9 +245,9 @@ export interface TextContent {
   text?: string;
 }
 export const TextContent = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "text": S.optional(S.String),
-}),
+  S.Struct({
+    text: S.optional(S.String),
+  }),
 ).annotate({ identifier: "TextContent" }) as any as S.Schema<TextContent>;
 
 /** A single list item in a note's list. */
@@ -229,15 +260,17 @@ export interface ListItem {
   checked?: boolean;
 }
 export const ListItem = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "text": S.optional(TextContent),
-  "childListItems": S.optional(S.suspend(() => ListItemList)),
-  "checked": S.optional(S.Boolean),
-}),
+  S.Struct({
+    text: S.optional(TextContent),
+    childListItems: S.optional(S.suspend(() => ListItemList)),
+    checked: S.optional(S.Boolean),
+  }),
 ).annotate({ identifier: "ListItem" }) as any as S.Schema<ListItem>;
 
 export type ListItemList = ReadonlyArray<ListItem>;
-export const ListItemList = /*@__PURE__*/ S.Array(ListItem) as any as S.Schema<ListItemList>;
+export const ListItemList = /*@__PURE__*/ S.Array(
+  ListItem,
+) as any as S.Schema<ListItemList>;
 
 /** The list of items for a single list note. */
 export interface ListContent {
@@ -245,9 +278,9 @@ export interface ListContent {
   listItems?: ListItemList;
 }
 export const ListContent = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "listItems": S.optional(ListItemList),
-}),
+  S.Struct({
+    listItems: S.optional(ListItemList),
+  }),
 ).annotate({ identifier: "ListContent" }) as any as S.Schema<ListContent>;
 
 /** The content of the note. */
@@ -258,10 +291,10 @@ export interface Section {
   list?: ListContent;
 }
 export const Section = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "text": S.optional(TextContent),
-  "list": S.optional(ListContent),
-}),
+  S.Struct({
+    text: S.optional(TextContent),
+    list: S.optional(ListContent),
+  }),
 ).annotate({ identifier: "Section" }) as any as S.Schema<Section>;
 
 /** An attachment to a note. */
@@ -272,14 +305,16 @@ export interface Attachment {
   mimeType?: StringList;
 }
 export const Attachment = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "mimeType": S.optional(StringList),
-}),
+  S.Struct({
+    name: S.optional(S.String),
+    mimeType: S.optional(StringList),
+  }),
 ).annotate({ identifier: "Attachment" }) as any as S.Schema<Attachment>;
 
 export type AttachmentList = ReadonlyArray<Attachment>;
-export const AttachmentList = /*@__PURE__*/ S.Array(Attachment) as any as S.Schema<AttachmentList>;
+export const AttachmentList = /*@__PURE__*/ S.Array(
+  Attachment,
+) as any as S.Schema<AttachmentList>;
 
 /** A single note. */
 export interface Note {
@@ -303,17 +338,17 @@ export interface Note {
   permissions?: PermissionList;
 }
 export const Note = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(Section),
-  "attachments": S.optional(AttachmentList),
-  "trashed": S.optional(S.Boolean),
-  "trashTime": S.optional(S.String),
-  "title": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "name": S.optional(S.String),
-  "updateTime": S.optional(S.String),
-  "permissions": S.optional(PermissionList),
-}),
+  S.Struct({
+    body: S.optional(Section),
+    attachments: S.optional(AttachmentList),
+    trashed: S.optional(S.Boolean),
+    trashTime: S.optional(S.String),
+    title: S.optional(S.String),
+    createTime: S.optional(S.String),
+    name: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    permissions: S.optional(PermissionList),
+  }),
 ).annotate({ identifier: "Note" }) as any as S.Schema<Note>;
 
 export interface CreateNotesRequest {
@@ -321,20 +356,36 @@ export interface CreateNotesRequest {
   body?: Note;
 }
 export const CreateNotesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(Note.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v1/notes","baseUrl":"https://keep.googleapis.com/"})),
-).annotate({ identifier: "CreateNotesRequest" }) as any as S.Schema<CreateNotesRequest>;
+  S.Struct({
+    body: S.optional(Note.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/notes",
+      baseUrl: "https://keep.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateNotesRequest",
+}) as any as S.Schema<CreateNotesRequest>;
 
 export interface DeleteNotesRequest {
   /** Required. Name of the note to delete. */
   name: string;
 }
 export const DeleteNotesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v1/{+name}","baseUrl":"https://keep.googleapis.com/"})),
-).annotate({ identifier: "DeleteNotesRequest" }) as any as S.Schema<DeleteNotesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://keep.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteNotesRequest",
+}) as any as S.Schema<DeleteNotesRequest>;
 
 export interface DownloadMediaRequest {
   /** The IANA MIME type format requested. The requested MIME type must be one specified in the attachment.mime_type. Required when downloading attachment media and ignored otherwise. */
@@ -343,21 +394,37 @@ export interface DownloadMediaRequest {
   name: string;
 }
 export const DownloadMediaRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "mimeType": S.optional(S.String.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://keep.googleapis.com/"})),
-).annotate({ identifier: "DownloadMediaRequest" }) as any as S.Schema<DownloadMediaRequest>;
+  S.Struct({
+    mimeType: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://keep.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DownloadMediaRequest",
+}) as any as S.Schema<DownloadMediaRequest>;
 
 export interface GetNotesRequest {
   /** Required. Name of the resource. */
   name: string;
 }
 export const GetNotesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v1/{+name}","baseUrl":"https://keep.googleapis.com/"})),
-).annotate({ identifier: "GetNotesRequest" }) as any as S.Schema<GetNotesRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://keep.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetNotesRequest",
+}) as any as S.Schema<GetNotesRequest>;
 
 export interface ListNotesRequest {
   /** The maximum number of results to return. */
@@ -368,15 +435,25 @@ export interface ListNotesRequest {
   pageToken?: string;
 }
 export const ListNotesRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "filter": S.optional(S.String.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v1/notes","baseUrl":"https://keep.googleapis.com/"})),
-).annotate({ identifier: "ListNotesRequest" }) as any as S.Schema<ListNotesRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/notes",
+      baseUrl: "https://keep.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListNotesRequest",
+}) as any as S.Schema<ListNotesRequest>;
 
 export type NoteList = ReadonlyArray<Note>;
-export const NoteList = /*@__PURE__*/ S.Array(Note) as any as S.Schema<NoteList>;
+export const NoteList = /*@__PURE__*/ S.Array(
+  Note,
+) as any as S.Schema<NoteList>;
 
 /** The response when listing a page of notes. */
 export interface ListNotesResponse {
@@ -386,13 +463,20 @@ export interface ListNotesResponse {
   nextPageToken?: string;
 }
 export const ListNotesResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "notes": S.optional(NoteList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListNotesResponse" }) as any as S.Schema<ListNotesResponse>;
+  S.Struct({
+    notes: S.optional(NoteList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListNotesResponse",
+}) as any as S.Schema<ListNotesResponse>;
 
-export type BatchCreateNotesPermissionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type BatchCreateNotesPermissionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates one or more permissions on the note. Only permissions with the `WRITER` role may be created. If adding any permission fails, then the entire request fails and no changes are made. */
 export const batchCreateNotesPermissions: API.OperationMethod<
   BatchCreateNotesPermissionsRequest,
@@ -407,7 +491,12 @@ export const batchCreateNotesPermissions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BatchDeleteNotesPermissionsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type BatchDeleteNotesPermissionsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes one or more permissions on the note. The specified entities will immediately lose access. A permission with the `OWNER` role can't be removed. If removing a permission fails, then the entire request fails and no changes are made. Returns a 400 bad request error if a specified permission does not exist on the note. */
 export const batchDeleteNotesPermissions: API.OperationMethod<
   BatchDeleteNotesPermissionsRequest,
@@ -422,7 +511,12 @@ export const batchDeleteNotesPermissions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateNotesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateNotesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Creates a new note. */
 export const createNotes: API.OperationMethod<
   CreateNotesRequest,
@@ -437,7 +531,12 @@ export const createNotes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteNotesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteNotesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Deletes a note. Caller must have the `OWNER` role on the note to delete. Deleting a note removes the resource immediately and cannot be undone. Any collaborators will lose access to the note. */
 export const deleteNotes: API.OperationMethod<
   DeleteNotesRequest,
@@ -495,6 +594,8 @@ export const listNotes: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
-

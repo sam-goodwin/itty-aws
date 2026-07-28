@@ -279,12 +279,24 @@ export const NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadata =
     identifier: "NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadata",
   }) as any as S.Schema<NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadata>;
 
-export type NamespacesBulkGetResult =
-  | NamespacesBulkGetResultWorkersKVBulkGetResult
-  | NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadata;
-export const NamespacesBulkGetResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["values"], ["values"]]),
-);
+export interface NamespacesBulkGetResult {
+  /** Requested keys are paired with their values in an object. */
+  values?:
+    | NamespacesBulkGetResultWorkersKVBulkGetResultValues
+    | NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadataValuesMap;
+}
+export const NamespacesBulkGetResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    values: S.optional(
+      S.Union(
+        NamespacesBulkGetResultWorkersKVBulkGetResultValues,
+        NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadataValuesMap,
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "NamespacesBulkGetResult",
+}) as any as S.Schema<NamespacesBulkGetResult>;
 
 export type BulkGetNamespacesResponse = NamespacesBulkGetResult;
 export const BulkGetNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
@@ -924,12 +936,24 @@ export const NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadata =
     identifier: "NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadata",
   }) as any as S.Schema<NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadata>;
 
-export type NamespacesKeysBulkGetResult =
-  | NamespacesKeysBulkGetResultWorkersKVBulkGetResult
-  | NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadata;
-export const NamespacesKeysBulkGetResult = /*@__PURE__*/ S.Unknown.pipe(
-  T.UnionCases([["values"], ["values"]]),
-);
+export interface NamespacesKeysBulkGetResult {
+  /** Requested keys are paired with their values in an object. */
+  values?:
+    | NamespacesKeysBulkGetResultWorkersKVBulkGetResultValues
+    | NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadataValuesMap;
+}
+export const NamespacesKeysBulkGetResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    values: S.optional(
+      S.Union(
+        NamespacesKeysBulkGetResultWorkersKVBulkGetResultValues,
+        NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadataValuesMap,
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "NamespacesKeysBulkGetResult",
+}) as any as S.Schema<NamespacesKeysBulkGetResult>;
 
 export type NamespacesKeysBulkGetResponse = NamespacesKeysBulkGetResult;
 export const NamespacesKeysBulkGetResponse = /*@__PURE__*/ S.suspend(() =>

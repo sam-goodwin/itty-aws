@@ -13,54 +13,63 @@ import * as Retry from "../retry.ts";
 export type { GcpOpError, GcpOpContext };
 
 export class BadRequest extends T.applyErrorMatchers(
-S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":400}],
+  S.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 400 }],
 ) {}
 
 export class Conflict extends T.applyErrorMatchers(
-S.TaggedErrorClass<Conflict>()("Conflict", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":409}],
+  S.TaggedErrorClass<Conflict>()("Conflict", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 409 }],
 ) {}
 
 export class Forbidden extends T.applyErrorMatchers(
-S.TaggedErrorClass<Forbidden>()("Forbidden", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":403}],
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 403 }],
 ) {}
 
 export class NotFound extends T.applyErrorMatchers(
-S.TaggedErrorClass<NotFound>()("NotFound", {
-  code: S.optional(S.Number),
-  message: S.String,
-  status: S.optional(S.String),
-  reason: S.optional(S.String),
-  domain: S.optional(S.String),
-  details: S.optional(S.Array(S.Unknown)),
-}),
-[{"status":404}],
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.optional(S.Number),
+    message: S.String,
+    status: S.optional(S.String),
+    reason: S.optional(S.String),
+    domain: S.optional(S.String),
+    details: S.optional(S.Array(S.Unknown)),
+  }),
+  [{ status: 404 }],
 ) {}
 
-export type BaseMetricStandardMetricEnum = "STANDARD_METRIC_UNSPECIFIED" | "FEEDBACK_LOOP_ID" | "FEEDBACK_LOOP_SPAM_RATE" | "SPAM_RATE" | "AUTH_SUCCESS_RATE" | "TLS_ENCRYPTION_MESSAGE_COUNT" | "TLS_ENCRYPTION_RATE" | "DELIVERY_ERROR_COUNT" | "DELIVERY_ERROR_RATE";
+export type BaseMetricStandardMetricEnum =
+  | "STANDARD_METRIC_UNSPECIFIED"
+  | "FEEDBACK_LOOP_ID"
+  | "FEEDBACK_LOOP_SPAM_RATE"
+  | "SPAM_RATE"
+  | "AUTH_SUCCESS_RATE"
+  | "TLS_ENCRYPTION_MESSAGE_COUNT"
+  | "TLS_ENCRYPTION_RATE"
+  | "DELIVERY_ERROR_COUNT"
+  | "DELIVERY_ERROR_RATE";
 export const BaseMetricStandardMetricEnum = /*@__PURE__*/ S.String;
 
 /** Specifies the base metric to query, which can be a predefined standard metric or a user-defined custom metric (if supported in the future). */
@@ -69,9 +78,9 @@ export interface BaseMetric {
   standardMetric?: BaseMetricStandardMetricEnum | (string & {});
 }
 export const BaseMetric = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "standardMetric": S.optional(BaseMetricStandardMetricEnum),
-}),
+  S.Struct({
+    standardMetric: S.optional(BaseMetricStandardMetricEnum),
+  }),
 ).annotate({ identifier: "BaseMetric" }) as any as S.Schema<BaseMetric>;
 
 /** Defines a specific metric to query, including a user-defined name, the base metric type, and optional filters. */
@@ -84,15 +93,19 @@ export interface MetricDefinition {
   filter?: string;
 }
 export const MetricDefinition = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.optional(S.String),
-  "baseMetric": S.optional(BaseMetric),
-  "filter": S.optional(S.String),
-}),
-).annotate({ identifier: "MetricDefinition" }) as any as S.Schema<MetricDefinition>;
+  S.Struct({
+    name: S.optional(S.String),
+    baseMetric: S.optional(BaseMetric),
+    filter: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MetricDefinition",
+}) as any as S.Schema<MetricDefinition>;
 
 export type MetricDefinitionList = ReadonlyArray<MetricDefinition>;
-export const MetricDefinitionList = /*@__PURE__*/ S.Array(MetricDefinition) as any as S.Schema<MetricDefinitionList>;
+export const MetricDefinitionList = /*@__PURE__*/ S.Array(
+  MetricDefinition,
+) as any as S.Schema<MetricDefinitionList>;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface Gmailpostmastertools_Date {
@@ -104,15 +117,20 @@ export interface Gmailpostmastertools_Date {
   month?: number;
 }
 export const Gmailpostmastertools_Date = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "year": S.optional(S.Number),
-  "day": S.optional(S.Number),
-  "month": S.optional(S.Number),
-}),
-).annotate({ identifier: "Gmailpostmastertools_Date" }) as any as S.Schema<Gmailpostmastertools_Date>;
+  S.Struct({
+    year: S.optional(S.Number),
+    day: S.optional(S.Number),
+    month: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "Gmailpostmastertools_Date",
+}) as any as S.Schema<Gmailpostmastertools_Date>;
 
-export type Gmailpostmastertools_DateList = ReadonlyArray<Gmailpostmastertools_Date>;
-export const Gmailpostmastertools_DateList = /*@__PURE__*/ S.Array(Gmailpostmastertools_Date) as any as S.Schema<Gmailpostmastertools_DateList>;
+export type Gmailpostmastertools_DateList =
+  ReadonlyArray<Gmailpostmastertools_Date>;
+export const Gmailpostmastertools_DateList = /*@__PURE__*/ S.Array(
+  Gmailpostmastertools_Date,
+) as any as S.Schema<Gmailpostmastertools_DateList>;
 
 /** A set of specific dates. */
 export interface DateList {
@@ -120,9 +138,9 @@ export interface DateList {
   dates?: Gmailpostmastertools_DateList;
 }
 export const DateList = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dates": S.optional(Gmailpostmastertools_DateList),
-}),
+  S.Struct({
+    dates: S.optional(Gmailpostmastertools_DateList),
+  }),
 ).annotate({ identifier: "DateList" }) as any as S.Schema<DateList>;
 
 /** A single date range defined by a start and end date. */
@@ -133,14 +151,16 @@ export interface DateRange {
   start?: Gmailpostmastertools_Date;
 }
 export const DateRange = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "end": S.optional(Gmailpostmastertools_Date),
-  "start": S.optional(Gmailpostmastertools_Date),
-}),
+  S.Struct({
+    end: S.optional(Gmailpostmastertools_Date),
+    start: S.optional(Gmailpostmastertools_Date),
+  }),
 ).annotate({ identifier: "DateRange" }) as any as S.Schema<DateRange>;
 
 export type DateRangeList = ReadonlyArray<DateRange>;
-export const DateRangeList = /*@__PURE__*/ S.Array(DateRange) as any as S.Schema<DateRangeList>;
+export const DateRangeList = /*@__PURE__*/ S.Array(
+  DateRange,
+) as any as S.Schema<DateRangeList>;
 
 /** A set of date ranges. */
 export interface DateRanges {
@@ -148,9 +168,9 @@ export interface DateRanges {
   dateRanges?: DateRangeList;
 }
 export const DateRanges = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dateRanges": S.optional(DateRangeList),
-}),
+  S.Struct({
+    dateRanges: S.optional(DateRangeList),
+  }),
 ).annotate({ identifier: "DateRanges" }) as any as S.Schema<DateRanges>;
 
 /** The date ranges or specific dates for which you want to retrieve data. */
@@ -161,14 +181,18 @@ export interface TimeQuery {
   dateRanges?: DateRanges;
 }
 export const TimeQuery = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "dateList": S.optional(DateList),
-  "dateRanges": S.optional(DateRanges),
-}),
+  S.Struct({
+    dateList: S.optional(DateList),
+    dateRanges: S.optional(DateRanges),
+  }),
 ).annotate({ identifier: "TimeQuery" }) as any as S.Schema<TimeQuery>;
 
-export type QueryDomainStatsRequestAggregationGranularityEnum = "AGGREGATION_GRANULARITY_UNSPECIFIED" | "DAILY" | "OVERALL";
-export const QueryDomainStatsRequestAggregationGranularityEnum = /*@__PURE__*/ S.String;
+export type QueryDomainStatsRequestAggregationGranularityEnum =
+  | "AGGREGATION_GRANULARITY_UNSPECIFIED"
+  | "DAILY"
+  | "OVERALL";
+export const QueryDomainStatsRequestAggregationGranularityEnum =
+  /*@__PURE__*/ S.String;
 
 /** Request message for QueryDomainStats. */
 export interface QueryDomainStatsRequest {
@@ -181,23 +205,32 @@ export interface QueryDomainStatsRequest {
   /** Required. The time range or specific dates for which to retrieve the metrics. */
   timeQuery?: TimeQuery;
   /** Optional. The granularity at which to aggregate the statistics. If unspecified, defaults to DAILY. */
-  aggregationGranularity?: QueryDomainStatsRequestAggregationGranularityEnum | (string & {});
+  aggregationGranularity?:
+    | QueryDomainStatsRequestAggregationGranularityEnum
+    | (string & {});
   /** Required. The parent resource name where the stats are queried. Format: domains/{domain} */
   parent?: string;
 }
 export const QueryDomainStatsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number),
-  "pageToken": S.optional(S.String),
-  "metricDefinitions": S.optional(MetricDefinitionList),
-  "timeQuery": S.optional(TimeQuery),
-  "aggregationGranularity": S.optional(QueryDomainStatsRequestAggregationGranularityEnum),
-  "parent": S.optional(S.String),
-}),
-).annotate({ identifier: "QueryDomainStatsRequest" }) as any as S.Schema<QueryDomainStatsRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number),
+    pageToken: S.optional(S.String),
+    metricDefinitions: S.optional(MetricDefinitionList),
+    timeQuery: S.optional(TimeQuery),
+    aggregationGranularity: S.optional(
+      QueryDomainStatsRequestAggregationGranularityEnum,
+    ),
+    parent: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "QueryDomainStatsRequest",
+}) as any as S.Schema<QueryDomainStatsRequest>;
 
-export type QueryDomainStatsRequestList = ReadonlyArray<QueryDomainStatsRequest>;
-export const QueryDomainStatsRequestList = /*@__PURE__*/ S.Array(QueryDomainStatsRequest) as any as S.Schema<QueryDomainStatsRequestList>;
+export type QueryDomainStatsRequestList =
+  ReadonlyArray<QueryDomainStatsRequest>;
+export const QueryDomainStatsRequestList = /*@__PURE__*/ S.Array(
+  QueryDomainStatsRequest,
+) as any as S.Schema<QueryDomainStatsRequestList>;
 
 /** Request message for BatchQueryDomainStats. */
 export interface BatchQueryDomainStatsRequest {
@@ -205,26 +238,41 @@ export interface BatchQueryDomainStatsRequest {
   requests?: QueryDomainStatsRequestList;
 }
 export const BatchQueryDomainStatsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "requests": S.optional(QueryDomainStatsRequestList),
-}),
-).annotate({ identifier: "BatchQueryDomainStatsRequest" }) as any as S.Schema<BatchQueryDomainStatsRequest>;
+  S.Struct({
+    requests: S.optional(QueryDomainStatsRequestList),
+  }),
+).annotate({
+  identifier: "BatchQueryDomainStatsRequest",
+}) as any as S.Schema<BatchQueryDomainStatsRequest>;
 
 export interface BatchQueryDomainStatsRequest_ {
   /** Request body */
   body?: BatchQueryDomainStatsRequest;
 }
 export const BatchQueryDomainStatsRequest_ = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(BatchQueryDomainStatsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2/domainStats:batchQuery","baseUrl":"https://gmailpostmastertools.googleapis.com/"})),
-).annotate({ identifier: "BatchQueryDomainStatsRequest_" }) as any as S.Schema<BatchQueryDomainStatsRequest_>;
+  S.Struct({
+    body: S.optional(BatchQueryDomainStatsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v2/domainStats:batchQuery",
+      baseUrl: "https://gmailpostmastertools.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "BatchQueryDomainStatsRequest_",
+}) as any as S.Schema<BatchQueryDomainStatsRequest_>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = ReadonlyArray<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -236,15 +284,17 @@ export interface Status {
   details?: DocumentMapList;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "message": S.optional(S.String),
-  "code": S.optional(S.Number),
-  "details": S.optional(DocumentMapList),
-}),
+  S.Struct({
+    message: S.optional(S.String),
+    code: S.optional(S.Number),
+    details: S.optional(DocumentMapList),
+  }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 export type StringList_ = ReadonlyArray<string>;
-export const StringList_ = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList_>;
+export const StringList_ = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList_>;
 
 /** Represents a list of strings. */
 export interface StringList {
@@ -252,9 +302,9 @@ export interface StringList {
   values?: StringList_;
 }
 export const StringList = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "values": S.optional(StringList_),
-}),
+  S.Struct({
+    values: S.optional(StringList_),
+  }),
 ).annotate({ identifier: "StringList" }) as any as S.Schema<StringList>;
 
 /** The actual value of a statistic. */
@@ -271,13 +321,13 @@ export interface StatisticValue {
   stringList?: StringList;
 }
 export const StatisticValue = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "doubleValue": S.optional(S.Number),
-  "intValue": S.optional(S.String),
-  "stringValue": S.optional(S.String),
-  "floatValue": S.optional(S.Number),
-  "stringList": S.optional(StringList),
-}),
+  S.Struct({
+    doubleValue: S.optional(S.Number),
+    intValue: S.optional(S.String),
+    stringValue: S.optional(S.String),
+    floatValue: S.optional(S.Number),
+    stringList: S.optional(StringList),
+  }),
 ).annotate({ identifier: "StatisticValue" }) as any as S.Schema<StatisticValue>;
 
 /** Email statistics for a domain for a specified time period or date. */
@@ -292,16 +342,18 @@ export interface DomainStat {
   value?: StatisticValue;
 }
 export const DomainStat = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "date": S.optional(Gmailpostmastertools_Date),
-  "name": S.optional(S.String),
-  "metric": S.optional(S.String),
-  "value": S.optional(StatisticValue),
-}),
+  S.Struct({
+    date: S.optional(Gmailpostmastertools_Date),
+    name: S.optional(S.String),
+    metric: S.optional(S.String),
+    value: S.optional(StatisticValue),
+  }),
 ).annotate({ identifier: "DomainStat" }) as any as S.Schema<DomainStat>;
 
 export type DomainStatList = ReadonlyArray<DomainStat>;
-export const DomainStatList = /*@__PURE__*/ S.Array(DomainStat) as any as S.Schema<DomainStatList>;
+export const DomainStatList = /*@__PURE__*/ S.Array(
+  DomainStat,
+) as any as S.Schema<DomainStatList>;
 
 /** Response message for QueryDomainStats. */
 export interface QueryDomainStatsResponse {
@@ -311,11 +363,13 @@ export interface QueryDomainStatsResponse {
   domainStats?: DomainStatList;
 }
 export const QueryDomainStatsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "nextPageToken": S.optional(S.String),
-  "domainStats": S.optional(DomainStatList),
-}),
-).annotate({ identifier: "QueryDomainStatsResponse" }) as any as S.Schema<QueryDomainStatsResponse>;
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    domainStats: S.optional(DomainStatList),
+  }),
+).annotate({
+  identifier: "QueryDomainStatsResponse",
+}) as any as S.Schema<QueryDomainStatsResponse>;
 
 /** Represents the result of a single QueryDomainStatsRequest within a batch. */
 export interface BatchQueryDomainStatsResult {
@@ -325,14 +379,19 @@ export interface BatchQueryDomainStatsResult {
   response?: QueryDomainStatsResponse;
 }
 export const BatchQueryDomainStatsResult = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "error": S.optional(Status),
-  "response": S.optional(QueryDomainStatsResponse),
-}),
-).annotate({ identifier: "BatchQueryDomainStatsResult" }) as any as S.Schema<BatchQueryDomainStatsResult>;
+  S.Struct({
+    error: S.optional(Status),
+    response: S.optional(QueryDomainStatsResponse),
+  }),
+).annotate({
+  identifier: "BatchQueryDomainStatsResult",
+}) as any as S.Schema<BatchQueryDomainStatsResult>;
 
-export type BatchQueryDomainStatsResultList = ReadonlyArray<BatchQueryDomainStatsResult>;
-export const BatchQueryDomainStatsResultList = /*@__PURE__*/ S.Array(BatchQueryDomainStatsResult) as any as S.Schema<BatchQueryDomainStatsResultList>;
+export type BatchQueryDomainStatsResultList =
+  ReadonlyArray<BatchQueryDomainStatsResult>;
+export const BatchQueryDomainStatsResultList = /*@__PURE__*/ S.Array(
+  BatchQueryDomainStatsResult,
+) as any as S.Schema<BatchQueryDomainStatsResultList>;
 
 /** Response message for BatchQueryDomainStats. */
 export interface BatchQueryDomainStatsResponse {
@@ -340,10 +399,12 @@ export interface BatchQueryDomainStatsResponse {
   results?: BatchQueryDomainStatsResultList;
 }
 export const BatchQueryDomainStatsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "results": S.optional(BatchQueryDomainStatsResultList),
-}),
-).annotate({ identifier: "BatchQueryDomainStatsResponse" }) as any as S.Schema<BatchQueryDomainStatsResponse>;
+  S.Struct({
+    results: S.optional(BatchQueryDomainStatsResultList),
+  }),
+).annotate({
+  identifier: "BatchQueryDomainStatsResponse",
+}) as any as S.Schema<BatchQueryDomainStatsResponse>;
 
 /** [Developer Preview](https://developers.google.com/workspace/preview): Request message for CreateDomain. */
 export interface CreateDomainRequest {
@@ -351,25 +412,43 @@ export interface CreateDomainRequest {
   domainId?: string;
 }
 export const CreateDomainRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "domainId": S.optional(S.String),
-}),
-).annotate({ identifier: "CreateDomainRequest" }) as any as S.Schema<CreateDomainRequest>;
+  S.Struct({
+    domainId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateDomainRequest",
+}) as any as S.Schema<CreateDomainRequest>;
 
 export interface CreateDomainsRequest {
   /** Request body */
   body?: CreateDomainRequest;
 }
 export const CreateDomainsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "body": S.optional(CreateDomainRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2/domains","baseUrl":"https://gmailpostmastertools.googleapis.com/"})),
-).annotate({ identifier: "CreateDomainsRequest" }) as any as S.Schema<CreateDomainsRequest>;
+  S.Struct({
+    body: S.optional(CreateDomainRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v2/domains",
+      baseUrl: "https://gmailpostmastertools.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateDomainsRequest",
+}) as any as S.Schema<CreateDomainsRequest>;
 
-export type DomainVerificationStateEnum = "VERIFICATION_STATE_UNSPECIFIED" | "UNVERIFIED" | "VERIFIED";
+export type DomainVerificationStateEnum =
+  | "VERIFICATION_STATE_UNSPECIFIED"
+  | "UNVERIFIED"
+  | "VERIFIED";
 export const DomainVerificationStateEnum = /*@__PURE__*/ S.String;
 
-export type DomainPermissionEnum = "PERMISSION_UNSPECIFIED" | "READER" | "ADMIN" | "OWNER" | "NONE";
+export type DomainPermissionEnum =
+  | "PERMISSION_UNSPECIFIED"
+  | "READER"
+  | "ADMIN"
+  | "OWNER"
+  | "NONE";
 export const DomainPermissionEnum = /*@__PURE__*/ S.String;
 
 /** Information about a domain registered by the user. */
@@ -386,16 +465,21 @@ export interface Domain {
   createTime?: string;
 }
 export const Domain = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "verificationState": S.optional(DomainVerificationStateEnum),
-  "permission": S.optional(DomainPermissionEnum),
-  "lastVerifyTime": S.optional(S.String),
-  "name": S.optional(S.String),
-  "createTime": S.optional(S.String),
-}),
+  S.Struct({
+    verificationState: S.optional(DomainVerificationStateEnum),
+    permission: S.optional(DomainPermissionEnum),
+    lastVerifyTime: S.optional(S.String),
+    name: S.optional(S.String),
+    createTime: S.optional(S.String),
+  }),
 ).annotate({ identifier: "Domain" }) as any as S.Schema<Domain>;
 
-export type CreateUserRequestPermissionEnum = "PERMISSION_UNSPECIFIED" | "READER" | "ADMIN" | "OWNER" | "NONE";
+export type CreateUserRequestPermissionEnum =
+  | "PERMISSION_UNSPECIFIED"
+  | "READER"
+  | "ADMIN"
+  | "OWNER"
+  | "NONE";
 export const CreateUserRequestPermissionEnum = /*@__PURE__*/ S.String;
 
 /** [Developer Preview](https://developers.google.com/workspace/preview): Request message for CreateUser. */
@@ -406,11 +490,13 @@ export interface CreateUserRequest {
   permission?: CreateUserRequestPermissionEnum | (string & {});
 }
 export const CreateUserRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "userId": S.optional(S.String),
-  "permission": S.optional(CreateUserRequestPermissionEnum),
-}),
-).annotate({ identifier: "CreateUserRequest" }) as any as S.Schema<CreateUserRequest>;
+  S.Struct({
+    userId: S.optional(S.String),
+    permission: S.optional(CreateUserRequestPermissionEnum),
+  }),
+).annotate({
+  identifier: "CreateUserRequest",
+}) as any as S.Schema<CreateUserRequest>;
 
 export interface CreateDomainsUsersRequest {
   /** Required. The parent resource where this user will be created. Format: domains/{domain} */
@@ -419,13 +505,26 @@ export interface CreateDomainsUsersRequest {
   body?: CreateUserRequest;
 }
 export const CreateDomainsUsersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(CreateUserRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2/{+parent}/users","baseUrl":"https://gmailpostmastertools.googleapis.com/"})),
-).annotate({ identifier: "CreateDomainsUsersRequest" }) as any as S.Schema<CreateDomainsUsersRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(CreateUserRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v2/{+parent}/users",
+      baseUrl: "https://gmailpostmastertools.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateDomainsUsersRequest",
+}) as any as S.Schema<CreateDomainsUsersRequest>;
 
-export type UserPermissionEnum = "PERMISSION_UNSPECIFIED" | "READER" | "ADMIN" | "OWNER" | "NONE";
+export type UserPermissionEnum =
+  | "PERMISSION_UNSPECIFIED"
+  | "READER"
+  | "ADMIN"
+  | "OWNER"
+  | "NONE";
 export const UserPermissionEnum = /*@__PURE__*/ S.String;
 
 /** [Developer Preview](https://developers.google.com/workspace/preview): Information about a user's access to a domain. */
@@ -442,13 +541,13 @@ export interface User {
   name?: string;
 }
 export const User = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "user": S.optional(S.String),
-  "createTime": S.optional(S.String),
-  "permission": S.optional(UserPermissionEnum),
-  "accessGranter": S.optional(S.String),
-  "name": S.optional(S.String),
-}),
+  S.Struct({
+    user: S.optional(S.String),
+    createTime: S.optional(S.String),
+    permission: S.optional(UserPermissionEnum),
+    accessGranter: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
 ).annotate({ identifier: "User" }) as any as S.Schema<User>;
 
 export interface DeleteDomainsRequest {
@@ -456,38 +555,65 @@ export interface DeleteDomainsRequest {
   name: string;
 }
 export const DeleteDomainsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v2/{+name}","baseUrl":"https://gmailpostmastertools.googleapis.com/"})),
-).annotate({ identifier: "DeleteDomainsRequest" }) as any as S.Schema<DeleteDomainsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v2/{+name}",
+      baseUrl: "https://gmailpostmastertools.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteDomainsRequest",
+}) as any as S.Schema<DeleteDomainsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "Empty" }) as any as S.Schema<Empty>;
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
 
 export interface DeleteDomainsUsersRequest {
   /** Required. The resource name of the user to delete. Format: domains/{domain}/users/{user} */
   name: string;
 }
 export const DeleteDomainsUsersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"DELETE","uri":"v2/{+name}","baseUrl":"https://gmailpostmastertools.googleapis.com/"})),
-).annotate({ identifier: "DeleteDomainsUsersRequest" }) as any as S.Schema<DeleteDomainsUsersRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v2/{+name}",
+      baseUrl: "https://gmailpostmastertools.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteDomainsUsersRequest",
+}) as any as S.Schema<DeleteDomainsUsersRequest>;
 
 export interface GetComplianceStatusDomainsRequest {
   /** Required. The resource name of the domain's compliance status to retrieve. Format: `domains/{domain_id}/complianceStatus`. */
   name: string;
 }
 export const GetComplianceStatusDomainsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v2/{+name}","baseUrl":"https://gmailpostmastertools.googleapis.com/"})),
-).annotate({ identifier: "GetComplianceStatusDomainsRequest" }) as any as S.Schema<GetComplianceStatusDomainsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v2/{+name}",
+      baseUrl: "https://gmailpostmastertools.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetComplianceStatusDomainsRequest",
+}) as any as S.Schema<GetComplianceStatusDomainsRequest>;
 
-export type ComplianceStatusStatusEnum = "STATE_UNSPECIFIED" | "COMPLIANT" | "NEEDS_WORK";
+export type ComplianceStatusStatusEnum =
+  | "STATE_UNSPECIFIED"
+  | "COMPLIANT"
+  | "NEEDS_WORK";
 export const ComplianceStatusStatusEnum = /*@__PURE__*/ S.String;
 
 /** The status of a sender compliance requirement. */
@@ -496,12 +622,18 @@ export interface ComplianceStatus {
   status?: ComplianceStatusStatusEnum;
 }
 export const ComplianceStatus = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "status": S.optional(ComplianceStatusStatusEnum),
-}),
-).annotate({ identifier: "ComplianceStatus" }) as any as S.Schema<ComplianceStatus>;
+  S.Struct({
+    status: S.optional(ComplianceStatusStatusEnum),
+  }),
+).annotate({
+  identifier: "ComplianceStatus",
+}) as any as S.Schema<ComplianceStatus>;
 
-export type OneClickUnsubscribeVerdictReasonEnum = "REASON_UNSPECIFIED" | "NO_UNSUB_GENERAL" | "NO_UNSUB_SPAM_REPORTS" | "NO_UNSUB_PROMO_SPAM_REPORTS";
+export type OneClickUnsubscribeVerdictReasonEnum =
+  | "REASON_UNSPECIFIED"
+  | "NO_UNSUB_GENERAL"
+  | "NO_UNSUB_SPAM_REPORTS"
+  | "NO_UNSUB_PROMO_SPAM_REPORTS";
 export const OneClickUnsubscribeVerdictReasonEnum = /*@__PURE__*/ S.String;
 
 /** Compliance verdict for whether a sender meets the one-click unsubscribe compliance requirement. */
@@ -512,13 +644,19 @@ export interface OneClickUnsubscribeVerdict {
   reason?: OneClickUnsubscribeVerdictReasonEnum;
 }
 export const OneClickUnsubscribeVerdict = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "status": S.optional(ComplianceStatus),
-  "reason": S.optional(OneClickUnsubscribeVerdictReasonEnum),
-}),
-).annotate({ identifier: "OneClickUnsubscribeVerdict" }) as any as S.Schema<OneClickUnsubscribeVerdict>;
+  S.Struct({
+    status: S.optional(ComplianceStatus),
+    reason: S.optional(OneClickUnsubscribeVerdictReasonEnum),
+  }),
+).annotate({
+  identifier: "OneClickUnsubscribeVerdict",
+}) as any as S.Schema<OneClickUnsubscribeVerdict>;
 
-export type HonorUnsubscribeVerdictReasonEnum = "REASON_UNSPECIFIED" | "NOT_HONORING" | "NOT_HONORING_TOO_FEW_CAMPAIGNS" | "NOT_HONORING_TOO_MANY_CAMPAIGNS";
+export type HonorUnsubscribeVerdictReasonEnum =
+  | "REASON_UNSPECIFIED"
+  | "NOT_HONORING"
+  | "NOT_HONORING_TOO_FEW_CAMPAIGNS"
+  | "NOT_HONORING_TOO_MANY_CAMPAIGNS";
 export const HonorUnsubscribeVerdictReasonEnum = /*@__PURE__*/ S.String;
 
 /** Compliance verdict for whether a sender meets the unsubscribe honoring compliance requirement. */
@@ -529,13 +667,27 @@ export interface HonorUnsubscribeVerdict {
   reason?: HonorUnsubscribeVerdictReasonEnum;
 }
 export const HonorUnsubscribeVerdict = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "status": S.optional(ComplianceStatus),
-  "reason": S.optional(HonorUnsubscribeVerdictReasonEnum),
-}),
-).annotate({ identifier: "HonorUnsubscribeVerdict" }) as any as S.Schema<HonorUnsubscribeVerdict>;
+  S.Struct({
+    status: S.optional(ComplianceStatus),
+    reason: S.optional(HonorUnsubscribeVerdictReasonEnum),
+  }),
+).annotate({
+  identifier: "HonorUnsubscribeVerdict",
+}) as any as S.Schema<HonorUnsubscribeVerdict>;
 
-export type ComplianceRowDataRequirementEnum = "COMPLIANCE_REQUIREMENT_UNSPECIFIED" | "SPF" | "DKIM" | "SPF_AND_DKIM" | "DMARC_POLICY" | "DMARC_ALIGNMENT" | "MESSAGE_FORMATTING" | "DNS_RECORDS" | "ENCRYPTION" | "USER_REPORTED_SPAM_RATE" | "ONE_CLICK_UNSUBSCRIBE" | "HONOR_UNSUBSCRIBE";
+export type ComplianceRowDataRequirementEnum =
+  | "COMPLIANCE_REQUIREMENT_UNSPECIFIED"
+  | "SPF"
+  | "DKIM"
+  | "SPF_AND_DKIM"
+  | "DMARC_POLICY"
+  | "DMARC_ALIGNMENT"
+  | "MESSAGE_FORMATTING"
+  | "DNS_RECORDS"
+  | "ENCRYPTION"
+  | "USER_REPORTED_SPAM_RATE"
+  | "ONE_CLICK_UNSUBSCRIBE"
+  | "HONOR_UNSUBSCRIBE";
 export const ComplianceRowDataRequirementEnum = /*@__PURE__*/ S.String;
 
 /** Data for a single row of the compliance status table. */
@@ -546,16 +698,28 @@ export interface ComplianceRowData {
   requirement?: ComplianceRowDataRequirementEnum;
 }
 export const ComplianceRowData = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "status": S.optional(ComplianceStatus),
-  "requirement": S.optional(ComplianceRowDataRequirementEnum),
-}),
-).annotate({ identifier: "ComplianceRowData" }) as any as S.Schema<ComplianceRowData>;
+  S.Struct({
+    status: S.optional(ComplianceStatus),
+    requirement: S.optional(ComplianceRowDataRequirementEnum),
+  }),
+).annotate({
+  identifier: "ComplianceRowData",
+}) as any as S.Schema<ComplianceRowData>;
 
 export type ComplianceRowDataList = ReadonlyArray<ComplianceRowData>;
-export const ComplianceRowDataList = /*@__PURE__*/ S.Array(ComplianceRowData) as any as S.Schema<ComplianceRowDataList>;
+export const ComplianceRowDataList = /*@__PURE__*/ S.Array(
+  ComplianceRowData,
+) as any as S.Schema<ComplianceRowDataList>;
 
-export type DeliverabilityStatusVerdictReasonEnum = "REASON_UNSPECIFIED" | "MESSAGE_VOLUME_LOW" | "SMTP_ERRORS_HIGH" | "SENDER_NOT_COMPLIANT" | "SPAM_RATE_HIGH" | "USER_FEEDBACK_NEGATIVE" | "USER_FEEDBACK_LOW" | "USER_FEEDBACK_POSITIVE";
+export type DeliverabilityStatusVerdictReasonEnum =
+  | "REASON_UNSPECIFIED"
+  | "MESSAGE_VOLUME_LOW"
+  | "SMTP_ERRORS_HIGH"
+  | "SENDER_NOT_COMPLIANT"
+  | "SPAM_RATE_HIGH"
+  | "USER_FEEDBACK_NEGATIVE"
+  | "USER_FEEDBACK_LOW"
+  | "USER_FEEDBACK_POSITIVE";
 export const DeliverabilityStatusVerdictReasonEnum = /*@__PURE__*/ S.String;
 
 /** [Developer Preview](https://developers.google.com/workspace/preview): Verdict of domain deliverability status. */
@@ -566,11 +730,13 @@ export interface DeliverabilityStatusVerdict {
   reason?: DeliverabilityStatusVerdictReasonEnum;
 }
 export const DeliverabilityStatusVerdict = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "state": S.optional(ComplianceStatus),
-  "reason": S.optional(DeliverabilityStatusVerdictReasonEnum),
-}),
-).annotate({ identifier: "DeliverabilityStatusVerdict" }) as any as S.Schema<DeliverabilityStatusVerdict>;
+  S.Struct({
+    state: S.optional(ComplianceStatus),
+    reason: S.optional(DeliverabilityStatusVerdictReasonEnum),
+  }),
+).annotate({
+  identifier: "DeliverabilityStatusVerdict",
+}) as any as S.Schema<DeliverabilityStatusVerdict>;
 
 /** Compliance data for a given domain. */
 export interface DomainComplianceData {
@@ -586,14 +752,16 @@ export interface DomainComplianceData {
   domainId?: string;
 }
 export const DomainComplianceData = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "oneClickUnsubscribeVerdict": S.optional(OneClickUnsubscribeVerdict),
-  "honorUnsubscribeVerdict": S.optional(HonorUnsubscribeVerdict),
-  "rowData": S.optional(ComplianceRowDataList),
-  "deliverabilityStatusVerdict": S.optional(DeliverabilityStatusVerdict),
-  "domainId": S.optional(S.String),
-}),
-).annotate({ identifier: "DomainComplianceData" }) as any as S.Schema<DomainComplianceData>;
+  S.Struct({
+    oneClickUnsubscribeVerdict: S.optional(OneClickUnsubscribeVerdict),
+    honorUnsubscribeVerdict: S.optional(HonorUnsubscribeVerdict),
+    rowData: S.optional(ComplianceRowDataList),
+    deliverabilityStatusVerdict: S.optional(DeliverabilityStatusVerdict),
+    domainId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DomainComplianceData",
+}) as any as S.Schema<DomainComplianceData>;
 
 /** Compliance status for a domain. */
 export interface DomainComplianceStatus {
@@ -605,51 +773,89 @@ export interface DomainComplianceStatus {
   name?: string;
 }
 export const DomainComplianceStatus = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "complianceData": S.optional(DomainComplianceData),
-  "subdomainComplianceData": S.optional(DomainComplianceData),
-  "name": S.optional(S.String),
-}),
-).annotate({ identifier: "DomainComplianceStatus" }) as any as S.Schema<DomainComplianceStatus>;
+  S.Struct({
+    complianceData: S.optional(DomainComplianceData),
+    subdomainComplianceData: S.optional(DomainComplianceData),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DomainComplianceStatus",
+}) as any as S.Schema<DomainComplianceStatus>;
 
 export interface GetDomainsRequest {
   /** Required. The resource name of the domain. Format: `domains/{domain_name}`, where domain_name is the fully qualified domain name (i.e., mymail.mydomain.com). */
   name: string;
 }
 export const GetDomainsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v2/{+name}","baseUrl":"https://gmailpostmastertools.googleapis.com/"})),
-).annotate({ identifier: "GetDomainsRequest" }) as any as S.Schema<GetDomainsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v2/{+name}",
+      baseUrl: "https://gmailpostmastertools.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetDomainsRequest",
+}) as any as S.Schema<GetDomainsRequest>;
 
 export interface GetDomainsUsersRequest {
   /** Required. The resource name of the user to retrieve. Format: `domains/{domain}/users/{user}` */
   name: string;
 }
 export const GetDomainsUsersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v2/{+name}","baseUrl":"https://gmailpostmastertools.googleapis.com/"})),
-).annotate({ identifier: "GetDomainsUsersRequest" }) as any as S.Schema<GetDomainsUsersRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v2/{+name}",
+      baseUrl: "https://gmailpostmastertools.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetDomainsUsersRequest",
+}) as any as S.Schema<GetDomainsUsersRequest>;
 
-export type GetVerificationTokenDomainsVerificationMethodEnum = "DOMAIN_VERIFICATION_METHOD_UNSPECIFIED" | "TXT" | "CNAME";
-export const GetVerificationTokenDomainsVerificationMethodEnum = /*@__PURE__*/ S.String;
+export type GetVerificationTokenDomainsVerificationMethodEnum =
+  | "DOMAIN_VERIFICATION_METHOD_UNSPECIFIED"
+  | "TXT"
+  | "CNAME";
+export const GetVerificationTokenDomainsVerificationMethodEnum =
+  /*@__PURE__*/ S.String;
 
 export interface GetVerificationTokenDomainsRequest {
   /** Required. The verification method used. Must be specified, i.e. TXT or CNAME. */
-  verificationMethod?: GetVerificationTokenDomainsVerificationMethodEnum | (string & {});
+  verificationMethod?:
+    | GetVerificationTokenDomainsVerificationMethodEnum
+    | (string & {});
   /** Required. The resource name of the verification token to retrieve. Format: `domains/{domain}/verificationToken` */
   name: string;
 }
 export const GetVerificationTokenDomainsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "verificationMethod": S.optional(GetVerificationTokenDomainsVerificationMethodEnum.pipe(T.Query())),
-  "name": S.String.pipe(T.Label()),
-}).pipe(T.Http({"method":"GET","uri":"v2/{+name}","baseUrl":"https://gmailpostmastertools.googleapis.com/"})),
-).annotate({ identifier: "GetVerificationTokenDomainsRequest" }) as any as S.Schema<GetVerificationTokenDomainsRequest>;
+  S.Struct({
+    verificationMethod: S.optional(
+      GetVerificationTokenDomainsVerificationMethodEnum.pipe(T.Query()),
+    ),
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v2/{+name}",
+      baseUrl: "https://gmailpostmastertools.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetVerificationTokenDomainsRequest",
+}) as any as S.Schema<GetVerificationTokenDomainsRequest>;
 
-export type DomainVerificationTokenVerificationMethodEnum = "DOMAIN_VERIFICATION_METHOD_UNSPECIFIED" | "TXT" | "CNAME";
-export const DomainVerificationTokenVerificationMethodEnum = /*@__PURE__*/ S.String;
+export type DomainVerificationTokenVerificationMethodEnum =
+  | "DOMAIN_VERIFICATION_METHOD_UNSPECIFIED"
+  | "TXT"
+  | "CNAME";
+export const DomainVerificationTokenVerificationMethodEnum =
+  /*@__PURE__*/ S.String;
 
 /** [Developer Preview](https://developers.google.com/workspace/preview): The DNS token a user can use to verify ownership of a domain. */
 export interface DomainVerificationToken {
@@ -661,12 +867,16 @@ export interface DomainVerificationToken {
   token?: string;
 }
 export const DomainVerificationToken = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "verificationMethod": S.optional(DomainVerificationTokenVerificationMethodEnum),
-  "name": S.optional(S.String),
-  "token": S.optional(S.String),
-}),
-).annotate({ identifier: "DomainVerificationToken" }) as any as S.Schema<DomainVerificationToken>;
+  S.Struct({
+    verificationMethod: S.optional(
+      DomainVerificationTokenVerificationMethodEnum,
+    ),
+    name: S.optional(S.String),
+    token: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DomainVerificationToken",
+}) as any as S.Schema<DomainVerificationToken>;
 
 export interface ListDomainsRequest {
   /** Optional. Requested page size. Server may return fewer domains than requested. If unspecified, the default value for this field is 10. The maximum value for this field is 200. */
@@ -675,14 +885,24 @@ export interface ListDomainsRequest {
   pageToken?: string;
 }
 export const ListDomainsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v2/domains","baseUrl":"https://gmailpostmastertools.googleapis.com/"})),
-).annotate({ identifier: "ListDomainsRequest" }) as any as S.Schema<ListDomainsRequest>;
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v2/domains",
+      baseUrl: "https://gmailpostmastertools.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListDomainsRequest",
+}) as any as S.Schema<ListDomainsRequest>;
 
 export type DomainList = ReadonlyArray<Domain>;
-export const DomainList = /*@__PURE__*/ S.Array(Domain) as any as S.Schema<DomainList>;
+export const DomainList = /*@__PURE__*/ S.Array(
+  Domain,
+) as any as S.Schema<DomainList>;
 
 /** Response message for ListDomains. */
 export interface ListDomainsResponse {
@@ -692,11 +912,13 @@ export interface ListDomainsResponse {
   nextPageToken?: string;
 }
 export const ListDomainsResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "domains": S.optional(DomainList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListDomainsResponse" }) as any as S.Schema<ListDomainsResponse>;
+  S.Struct({
+    domains: S.optional(DomainList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListDomainsResponse",
+}) as any as S.Schema<ListDomainsResponse>;
 
 export interface ListDomainsUsersRequest {
   /** Required. The parent resource name for which to list users. Format: `domains/{domain}` */
@@ -707,15 +929,25 @@ export interface ListDomainsUsersRequest {
   pageSize?: number;
 }
 export const ListDomainsUsersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "pageToken": S.optional(S.String.pipe(T.Query())),
-  "pageSize": S.optional(S.Number.pipe(T.Query())),
-}).pipe(T.Http({"method":"GET","uri":"v2/{+parent}/users","baseUrl":"https://gmailpostmastertools.googleapis.com/"})),
-).annotate({ identifier: "ListDomainsUsersRequest" }) as any as S.Schema<ListDomainsUsersRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v2/{+parent}/users",
+      baseUrl: "https://gmailpostmastertools.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListDomainsUsersRequest",
+}) as any as S.Schema<ListDomainsUsersRequest>;
 
 export type UserList = ReadonlyArray<User>;
-export const UserList = /*@__PURE__*/ S.Array(User) as any as S.Schema<UserList>;
+export const UserList = /*@__PURE__*/ S.Array(
+  User,
+) as any as S.Schema<UserList>;
 
 /** [Developer Preview](https://developers.google.com/workspace/preview): Response message for ListUsers. */
 export interface ListUsersResponse {
@@ -725,11 +957,13 @@ export interface ListUsersResponse {
   nextPageToken?: string;
 }
 export const ListUsersResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "users": S.optional(UserList),
-  "nextPageToken": S.optional(S.String),
-}),
-).annotate({ identifier: "ListUsersResponse" }) as any as S.Schema<ListUsersResponse>;
+  S.Struct({
+    users: S.optional(UserList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListUsersResponse",
+}) as any as S.Schema<ListUsersResponse>;
 
 export interface PatchDomainsUsersRequest {
   /** Identifier. The resource name of the user. Format: users/{user} Note: {user} is the user's email address. */
@@ -740,12 +974,20 @@ export interface PatchDomainsUsersRequest {
   body?: User;
 }
 export const PatchDomainsUsersRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "updateMask": S.optional(S.String.pipe(T.Query())),
-  "body": S.optional(User.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"PATCH","uri":"v2/{+name}","baseUrl":"https://gmailpostmastertools.googleapis.com/"})),
-).annotate({ identifier: "PatchDomainsUsersRequest" }) as any as S.Schema<PatchDomainsUsersRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(User.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v2/{+name}",
+      baseUrl: "https://gmailpostmastertools.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchDomainsUsersRequest",
+}) as any as S.Schema<PatchDomainsUsersRequest>;
 
 export interface QueryDomainsDomainStatsRequest {
   /** Required. The parent resource name where the stats are queried. Format: domains/{domain} */
@@ -754,25 +996,40 @@ export interface QueryDomainsDomainStatsRequest {
   body?: QueryDomainStatsRequest;
 }
 export const QueryDomainsDomainStatsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "parent": S.String.pipe(T.Label()),
-  "body": S.optional(QueryDomainStatsRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2/{+parent}/domainStats:query","baseUrl":"https://gmailpostmastertools.googleapis.com/"})),
-).annotate({ identifier: "QueryDomainsDomainStatsRequest" }) as any as S.Schema<QueryDomainsDomainStatsRequest>;
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(QueryDomainStatsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v2/{+parent}/domainStats:query",
+      baseUrl: "https://gmailpostmastertools.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "QueryDomainsDomainStatsRequest",
+}) as any as S.Schema<QueryDomainsDomainStatsRequest>;
 
-export type VerifyDomainRequestVerificationMethodEnum = "DOMAIN_VERIFICATION_METHOD_UNSPECIFIED" | "TXT" | "CNAME";
+export type VerifyDomainRequestVerificationMethodEnum =
+  | "DOMAIN_VERIFICATION_METHOD_UNSPECIFIED"
+  | "TXT"
+  | "CNAME";
 export const VerifyDomainRequestVerificationMethodEnum = /*@__PURE__*/ S.String;
 
 /** [Developer Preview](https://developers.google.com/workspace/preview): Request message for VerifyDomain. */
 export interface VerifyDomainRequest {
   /** Required. The verification method used. Must be specified, i.e. TXT or CNAME. */
-  verificationMethod?: VerifyDomainRequestVerificationMethodEnum | (string & {});
+  verificationMethod?:
+    | VerifyDomainRequestVerificationMethodEnum
+    | (string & {});
 }
 export const VerifyDomainRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "verificationMethod": S.optional(VerifyDomainRequestVerificationMethodEnum),
-}),
-).annotate({ identifier: "VerifyDomainRequest" }) as any as S.Schema<VerifyDomainRequest>;
+  S.Struct({
+    verificationMethod: S.optional(VerifyDomainRequestVerificationMethodEnum),
+  }),
+).annotate({
+  identifier: "VerifyDomainRequest",
+}) as any as S.Schema<VerifyDomainRequest>;
 
 export interface VerifyDomainsRequest {
   /** Required. The domain to verify. */
@@ -781,19 +1038,34 @@ export interface VerifyDomainsRequest {
   body?: VerifyDomainRequest;
 }
 export const VerifyDomainsRequest = /*@__PURE__*/ S.suspend(() =>
-S.Struct({
-  "name": S.String.pipe(T.Label()),
-  "body": S.optional(VerifyDomainRequest.pipe(T.HttpBody())),
-}).pipe(T.Http({"method":"POST","uri":"v2/{+name}:verify","baseUrl":"https://gmailpostmastertools.googleapis.com/"})),
-).annotate({ identifier: "VerifyDomainsRequest" }) as any as S.Schema<VerifyDomainsRequest>;
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(VerifyDomainRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v2/{+name}:verify",
+      baseUrl: "https://gmailpostmastertools.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "VerifyDomainsRequest",
+}) as any as S.Schema<VerifyDomainsRequest>;
 
 /** [Developer Preview](https://developers.google.com/workspace/preview): Response message for VerifyDomain. */
 export interface VerifyDomainResponse {}
 export const VerifyDomainResponse = /*@__PURE__*/ S.suspend(() =>
-S.Struct({}),
-).annotate({ identifier: "VerifyDomainResponse" }) as any as S.Schema<VerifyDomainResponse>;
+  S.Struct({}),
+).annotate({
+  identifier: "VerifyDomainResponse",
+}) as any as S.Schema<VerifyDomainResponse>;
 
-export type BatchQueryDomainStatsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type BatchQueryDomainStatsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Executes a batch of QueryDomainStats requests for multiple domains. Returns PERMISSION_DENIED if you don't have permission to access DomainStats for any of the requested domains. */
 export const batchQueryDomainStats: API.OperationMethod<
   BatchQueryDomainStatsRequest_,
@@ -808,7 +1080,12 @@ export const batchQueryDomainStats: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateDomainsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateDomainsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** [Developer Preview](https://developers.google.com/workspace/preview): Adds a domain to the user's account. Returns INVALID_ARGUMENT if a domain is not provided. Returns ALREADY_EXISTS if the domain is already registered by the user. */
 export const createDomains: API.OperationMethod<
   CreateDomainsRequest,
@@ -823,7 +1100,12 @@ export const createDomains: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateDomainsUsersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type CreateDomainsUsersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** [Developer Preview](https://developers.google.com/workspace/preview): Creates a user, who has access to a domain. Returns INVALID_ARGUMENT if a user is not provided. */
 export const createDomainsUsers: API.OperationMethod<
   CreateDomainsUsersRequest,
@@ -838,7 +1120,12 @@ export const createDomainsUsers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteDomainsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteDomainsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** [Developer Preview](https://developers.google.com/workspace/preview): Deletes a domain from the user's account. Returns NOT_FOUND if the domain is not registered by the user. */
 export const deleteDomains: API.OperationMethod<
   DeleteDomainsRequest,
@@ -853,7 +1140,12 @@ export const deleteDomains: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteDomainsUsersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteDomainsUsersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** [Developer Preview](https://developers.google.com/workspace/preview): Deletes a user from a domain. Returns NOT_FOUND if the user does not exist. */
 export const deleteDomainsUsers: API.OperationMethod<
   DeleteDomainsUsersRequest,
@@ -913,7 +1205,10 @@ export const getDomainsUsers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetVerificationTokenDomainsError = NotFound | Forbidden | GcpOpError;
+export type GetVerificationTokenDomainsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
 /** [Developer Preview](https://developers.google.com/workspace/preview): Gets a verification token used for verifying a user's ownership over a domain. */
 export const getVerificationTokenDomains: API.OperationMethod<
   GetVerificationTokenDomainsRequest,
@@ -941,7 +1236,10 @@ export const listDomains: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
 export type ListDomainsUsersError = NotFound | Forbidden | GcpOpError;
@@ -957,10 +1255,18 @@ export const listDomainsUsers: API.PaginatedOperationMethod<
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-  pagination: {"inputToken":"pageToken","outputToken":"nextPageToken"} as const,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
 }));
 
-export type PatchDomainsUsersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchDomainsUsersError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** [Developer Preview](https://developers.google.com/workspace/preview): Updates a user for a domain. Only Owners and Admins can execute this RPC, only a user's domain permission will be allowed to be updated. Returns NOT_FOUND if the user does not exist. Returns INVALID_ARGUMENT if a permission is not provided or is PERMISSION_UNSPECIFIED, NONE, or OWNER. */
 export const patchDomainsUsers: API.OperationMethod<
   PatchDomainsUsersRequest,
@@ -975,7 +1281,12 @@ export const patchDomainsUsers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type QueryDomainsDomainStatsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type QueryDomainsDomainStatsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** Retrieves a list of domain statistics for a given domain and time period. Returns statistics only for dates where data is available. Returns PERMISSION_DENIED if you don't have permission to access DomainStats for the domain. */
 export const queryDomainsDomainStats: API.OperationMethod<
   QueryDomainsDomainStatsRequest,
@@ -990,7 +1301,12 @@ export const queryDomainsDomainStats: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type VerifyDomainsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type VerifyDomainsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
 /** [Developer Preview](https://developers.google.com/workspace/preview): Verifies a user's ownership of a domain at the DNS level. Note that this is distinct from checking if the user has OWNER status within IRDB. */
 export const verifyDomains: API.OperationMethod<
   VerifyDomainsRequest,
@@ -1004,4 +1320,3 @@ export const verifyDomains: API.OperationMethod<
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-
